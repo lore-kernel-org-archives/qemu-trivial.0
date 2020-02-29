@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7rIC-000451-Or
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 20:51:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33270)
+	id 1j7rkv-0002as-1w
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 21:21:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41321)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yuanzi@google.com>) id 1j7qEE-0007CW-1O
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:43:39 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j7rkr-0002Z1-HR
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 21:21:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <yuanzi@google.com>) id 1j7qEC-0000h4-PQ
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:43:37 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:44671)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <yuanzi@google.com>) id 1j7qEC-0000gd-Ib
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:43:36 -0500
-Received: by mail-oi1-x241.google.com with SMTP id d62so4639304oia.11
- for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 16:43:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W7nuvaWsjXLJMeKbo1frRq/4Vd8hFCnRBBwkhk29YBw=;
- b=c7UWjc1YmtIzGTJA7Gb+c4293IHg78xKaMq3VhFKU/W8+Zta/i//sEGfTYfFZQe4dL
- ToQPetoVicGpsP9cTc1xzkHZe8DCV1W88+A5/n8I84rZ5JJhx5tuZse0wx19PjEWN5gA
- zP5JUAKptuhzJyN/Lna3BDD+tSslAxphzxUqyv3x47abfGibMy8SfhtVrmoilxQHaOJI
- In6Zr2qxm2gz3YHbXmEulZ67GqMHXsCyq6954Ma2/dodFfnc5L4rWIp/iOcQcRbWso4d
- uTuyMnTnZIW6PhhZ3iS3S5TdOwPWm398cWeTG+jQv9I3IWQUFYMqCtaIrBnffiecq2qI
- KuFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W7nuvaWsjXLJMeKbo1frRq/4Vd8hFCnRBBwkhk29YBw=;
- b=JMZ+I+ax6okD+WN6o7SvcWSUU81LCyn7e8UfLB6j/mfY4k8zRcF2eKRMEKyqCmirny
- LJbr9C1Q9feHyxEvgpSZcC0C0yUVsXM3g7b9jb1xntueu7tO2wFZ3C9Ja9XwivXyk4I8
- RNVC9ZWR3hHoAFf4NgdUrYAmU6VRqEOiAnR9xZRxZc1rEc0JZJHmZf7Cnc2kcd40GVe9
- xKWXmPJoOY2WMFFnmuKhnFTUPVfCr8CMHBfPOuLyQ7TiDQnqmvYxFq8D7FR0ODSM7STL
- 2+6iEaND2+BYUp5Y6mh4stk4KSH3/J6GjHYinEH8xHTHXxBh/BfGqaiBQrTx9Hg7cO4q
- erGw==
-X-Gm-Message-State: APjAAAVwTEl8tTJnrrqFd9ryw05ooQKS729k/1SXV/KhIFMARlP1zj0x
- 2p+/bakaGsh7MRx8p2eMhMjwHXBOG0TwcLTxpt6qxQ==
-X-Google-Smtp-Source: APXvYqxOzoQ7LK8bnCVWMy7mVU078AjfjnK6aVEZu8J1rhMG3tFIUP9Q93bJO8bLeQT+8fn5E9rT8o3B8YihktGYiK0=
-X-Received: by 2002:aca:62c4:: with SMTP id w187mr5057038oib.38.1582937015392; 
- Fri, 28 Feb 2020 16:43:35 -0800 (PST)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j7rkp-0000xD-Nt
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 21:21:25 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2453 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j7rkk-0000sW-Om; Fri, 28 Feb 2020 21:21:20 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id AF7D5AB77B5405CF4E06;
+ Sat, 29 Feb 2020 10:21:12 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Sat, 29 Feb 2020 10:21:12 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
+ Sat, 29 Feb 2020 10:21:03 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Kevin Wolf <kwolf@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Ronnie Sahlberg
+ <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven
+ <pl@kamp.de>, Max Reitz <mreitz@redhat.com>
+Subject: RE: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
+ iscsi_open()
+Thread-Topic: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
+ iscsi_open()
+Thread-Index: AQHV7IFlkw7HklI9YUytmY61YTlYXagstmsAgAGL6HCAABCIAIABhb7ggAATXYCAAYIY8A==
+Date: Sat, 29 Feb 2020 02:21:02 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B66524B@dggemm531-mbx.china.huawei.com>
+References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-3-kuhn.chenqun@huawei.com>
+ <20200226095444.GB6096@linux.fritz.box>
+ <7412CDE03601674DA8197E2EBD8937E83B6638BE@dggemm531-mbx.china.huawei.com>
+ <20200227103054.GB7493@linux.fritz.box>
+ <7412CDE03601674DA8197E2EBD8937E83B664140@dggemm531-mbx.china.huawei.com>
+ <20200228105509.GB5274@linux.fritz.box>
+In-Reply-To: <20200228105509.GB5274@linux.fritz.box>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200222010925.32858-1-yuanzi@google.com>
-In-Reply-To: <20200222010925.32858-1-yuanzi@google.com>
-From: Lirong Yuan <yuanzi@google.com>
-Date: Fri, 28 Feb 2020 16:43:24 -0800
-Message-ID: <CADjx4CKoSuu2zWn7BRhpxLL3TaimR7fX99u_r41egctwA1LVTQ@mail.gmail.com>
-Subject: Re: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom
- mmap base address in qemu user mode
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-Mailman-Approved-At: Fri, 28 Feb 2020 20:51:45 -0500
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,93 +67,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Feb 2020 00:43:39 -0000
+X-List-Received-Date: Sat, 29 Feb 2020 02:21:27 -0000
 
-On Fri, Feb 21, 2020 at 5:09 PM Lirong Yuan <yuanzi@google.com> wrote:
->
-> This change allows us to set custom base address for guest programs. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
-> https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
->
-> Signed-off-by: Lirong Yuan <yuanzi@google.com>
-> ---
->  linux-user/main.c | 12 ++++++++++++
->  linux-user/mmap.c |  3 ++-
->  linux-user/qemu.h |  5 +++++
->  3 files changed, 19 insertions(+), 1 deletion(-)
->
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index fba833aac9..c01af6bfee 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -336,6 +336,16 @@ static void handle_arg_guest_base(const char *arg)
->      have_guest_base = 1;
->  }
->
-> +static void handle_arg_mmap_base(const char *arg)
-> +{
-> +    int err = qemu_strtoul(arg, NULL, 0, &mmap_base);
-> +    if (err) {
-> +        fprintf(stderr, "Invalid mmap_base: %s, err: %d\n", arg, err);
-> +        exit(EXIT_FAILURE);
-> +    }
-> +    mmap_next_start = mmap_base;
-> +}
-> +
->  static void handle_arg_reserved_va(const char *arg)
->  {
->      char *p;
-> @@ -440,6 +450,8 @@ static const struct qemu_argument arg_table[] = {
->       "uname",      "set qemu uname release string to 'uname'"},
->      {"B",          "QEMU_GUEST_BASE",  true,  handle_arg_guest_base,
->       "address",    "set guest_base address to 'address'"},
-> +    {"mmap_base",  "QEMU_MMAP_BASE",   true,  handle_arg_mmap_base,
-> +     "",           "begin allocating guest pages at this host address"},
->      {"R",          "QEMU_RESERVED_VA", true,  handle_arg_reserved_va,
->       "size",       "reserve 'size' bytes for guest virtual address space"},
->      {"d",          "QEMU_LOG",         true,  handle_arg_log,
-> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-> index 8685f02e7e..3f35543acf 100644
-> --- a/linux-user/mmap.c
-> +++ b/linux-user/mmap.c
-> @@ -189,6 +189,7 @@ static int mmap_frag(abi_ulong real_start,
->  # define TASK_UNMAPPED_BASE  0x40000000
->  #endif
->  abi_ulong mmap_next_start = TASK_UNMAPPED_BASE;
-> +abi_ulong mmap_base = TASK_UNMAPPED_BASE;
->
->  unsigned long last_brk;
->
-> @@ -299,7 +300,7 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
->
->              if ((addr & (align - 1)) == 0) {
->                  /* Success.  */
-> -                if (start == mmap_next_start && addr >= TASK_UNMAPPED_BASE) {
-> +                if (start == mmap_next_start && addr >= mmap_base) {
->                      mmap_next_start = addr + size;
->                  }
->                  return addr;
-> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-> index 560a68090e..83c00cfea2 100644
-> --- a/linux-user/qemu.h
-> +++ b/linux-user/qemu.h
-> @@ -161,6 +161,11 @@ void task_settid(TaskState *);
->  void stop_all_tasks(void);
->  extern const char *qemu_uname_release;
->  extern unsigned long mmap_min_addr;
-> +/*
-> + * mmap_base is minimum address to use when allocating guest pages. All guest
-> + * pages will be allocated at this (guest) address or higher addresses.
-> + */
-> +extern abi_ulong mmap_base;
->
->  /* ??? See if we can avoid exposing so much of the loader internals.  */
->
-> --
-> 2.25.0.265.gbab2e86ba0-goog
->
-
-Friendly ping~
-
-Link to the page for the patch on patchwork:
-http://patchwork.ozlabs.org/patch/1242370/
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3
+b2xmQHJlZGhhdC5jb21dDQo+U2VudDogRnJpZGF5LCBGZWJydWFyeSAyOCwgMjAyMCA2OjU1IFBN
+DQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5DYzogcWVt
+dS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsNCj5wZXRlci5tYXlk
+ZWxsQGxpbmFyby5vcmc7IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2Vp
+LmNvbT47DQo+RXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBSb25uaWUgU2Fo
+bGJlcmcNCj48cm9ubmllc2FobGJlcmdAZ21haWwuY29tPjsgUGFvbG8gQm9uemluaSA8cGJvbnpp
+bmlAcmVkaGF0LmNvbT47IFBldGVyDQo+TGlldmVuIDxwbEBrYW1wLmRlPjsgTWF4IFJlaXR6IDxt
+cmVpdHpAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEzXSBibG9jay9p
+c2NzaTpSZW1vdmUgcmVkdW5kYW50IHN0YXRlbWVudCBpbg0KPmlzY3NpX29wZW4oKQ0KPg0KPkFt
+IDI4LjAyLjIwMjAgdW0gMDg6MzAgaGF0IENoZW5xdW4gKGt1aG4pIGdlc2NocmllYmVuOg0KPj4g
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+PiA+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRv
+Omt3b2xmQHJlZGhhdC5jb21dDQo+PiA+U2VudDogVGh1cnNkYXksIEZlYnJ1YXJ5IDI3LCAyMDIw
+IDY6MzEgUE0NCj4+ID5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29t
+Pg0KPj4gPkNjOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3Jn
+Ow0KPj4gPnBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgWmhhbmdoYWlsaWFuZw0KPj4gPjx6aGFu
+Zy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBFdWxlciBSb2JvdA0KPj4gPjxldWxlci5yb2Jv
+dEBodWF3ZWkuY29tPjsgUm9ubmllIFNhaGxiZXJnDQo+PHJvbm5pZXNhaGxiZXJnQGdtYWlsLmNv
+bT47DQo+PiA+UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT47IFBldGVyIExpZXZl
+biA8cGxAa2FtcC5kZT47IE1heA0KPj4gPlJlaXR6IDxtcmVpdHpAcmVkaGF0LmNvbT4NCj4+ID5T
+dWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEzXSBibG9jay9pc2NzaTpSZW1vdmUgcmVkdW5kYW50
+IHN0YXRlbWVudA0KPj4gPmluDQo+PiA+aXNjc2lfb3BlbigpDQo+PiA+DQo+PiA+QW0gMjcuMDIu
+MjAyMCB1bSAwMjo0OSBoYXQgQ2hlbnF1biAoa3VobikgZ2VzY2hyaWViZW46DQo+PiA+PiA+LS0t
+LS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4+ID4+ID5Gcm9tOiBLZXZpbiBXb2xmIFttYWlsdG86
+a3dvbGZAcmVkaGF0LmNvbV0NCj4+ID4+ID5TZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDI2LCAy
+MDIwIDU6NTUgUE0NCj4+ID4+ID5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
+ZWkuY29tPg0KPj4gPj4gPkNjOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBu
+b25nbnUub3JnOw0KPj4gPj4gPnBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgWmhhbmdoYWlsaWFu
+Zw0KPj4gPj4gPjx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBFdWxlciBSb2JvdA0K
+Pj4gPj4gPjxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsgUm9ubmllIFNhaGxiZXJnDQo+PiA+PHJv
+bm5pZXNhaGxiZXJnQGdtYWlsLmNvbT47DQo+PiA+PiA+UGFvbG8gQm9uemluaSA8cGJvbnppbmlA
+cmVkaGF0LmNvbT47IFBldGVyIExpZXZlbiA8cGxAa2FtcC5kZT47DQo+PiA+PiA+TWF4IFJlaXR6
+IDxtcmVpdHpAcmVkaGF0LmNvbT4NCj4+ID4+ID5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEz
+XSBibG9jay9pc2NzaTpSZW1vdmUgcmVkdW5kYW50DQo+PiA+PiA+c3RhdGVtZW50IGluDQo+PiA+
+PiA+aXNjc2lfb3BlbigpDQo+PiA+PiA+DQo+PiA+PiA+QW0gMjYuMDIuMjAyMCB1bSAwOTo0NiBo
+YXQga3Vobi5jaGVucXVuQGh1YXdlaS5jb20gZ2VzY2hyaWViZW46DQo+PiA+PiA+PiBGcm9tOiBD
+aGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiA+PiA+Pg0KPj4gPj4gPj4gQ2xh
+bmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hvdyB3YXJuaW5nOg0KPj4gPj4gPj4gICBibG9jay9p
+c2NzaS5jOjE5MjA6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICdmbGFncycgaXMgbmV2ZXIg
+cmVhZA0KPj4gPj4gPj4gICAgICAgICBmbGFncyAmPSB+QkRSVl9PX1JEV1I7DQo+PiA+PiA+PiAg
+ICAgICAgIF4gICAgICAgIH5+fn5+fn5+fn5+fg0KPj4gPj4gPj4NCj4+ID4+ID4+IFJlcG9ydGVk
+LWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4+ID4+ID4+IFNpZ25l
+ZC1vZmYtYnk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+ID4+ID4NCj4+
+ID4+ID5IbW0sIEknbSBub3Qgc28gc3VyZSBhYm91dCB0aGlzIG9uZSBiZWNhdXNlIGlmIHdlIHJl
+bW92ZSB0aGUgbGluZSwNCj4+ID4+ID5mbGFncyB3aWxsIGJlIGluY29uc2lzdGVudCB3aXRoIGJz
+LT5vcGVuX2ZsYWdzLiBJdCBmZWVscyBsaWtlDQo+PiA+PiA+c2V0dGluZyBhIHRyYXAgZm9yIGFu
+eW9uZSB3aG8gd2FudHMgdG8gYWRkIGNvZGUgdXNpbmcgZmxhZ3MgaW4gdGhlDQo+ZnV0dXJlLg0K
+Pj4gPj4gSGkgS2V2aW4sDQo+PiA+PiBJIGZpbmQgaXQgZXhpc3RzIHNpbmNlIDhmM2JmNTBkMzQw
+MzcyNjYuICAgOiAgKQ0KPj4gPg0KPj4gPlllcywgaXQgaGFzIGV4aXN0ZWQgZnJvbSB0aGUgc3Rh
+cnQgd2l0aCBhdXRvLXJlYWQtb25seS4NCj4+ID4NCj4+ID4+IEl0J3Mgbm90IGEgYmlnIGRlYWws
+ICBqdXN0IHVwc2V0IGNsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyLg0KPj4gPj4gQXMgeW91IHNh
+aWQsIGl0IGNvdWxkIGJlIGEgdHJhcCBmb3IgdGhlIGZ1dHVyZS4NCj4+ID4NCj4+ID5XaGF0J3Mg
+aW50ZXJlc3RpbmcgaXMgdGhhdCB3ZSBkbyBoYXZlIG9uZSB1c2VyIG9mIHRoZSBmbGFncyBsYXRl
+ciBpbg0KPj4gPnRoZSBmdW5jdGlvbiwgYnV0IGl0IHVzZXMgYnMtPm9wZW5fZmxhZ3MgaW5zdGVh
+ZDoNCj4+ID4NCj4+ID4gICAgcmV0ID0gaXNjc2lfYWxsb2NtYXBfaW5pdChpc2NzaWx1biwgYnMt
+Pm9wZW5fZmxhZ3MpOw0KPj4gPg0KPj4gPk1heWJlIHRoaXMgc2hvdWxkIGJlIHVzaW5nIGZsYWdz
+PyAoVGhlIHZhbHVlIG9mIHRoZSBiaXRzIHdlJ3JlDQo+PiA+aW50ZXJlc3RlZCBpbiBpcyB0aGUg
+c2FtZSwgYnV0IHdoZW4gZmxhZ3MgaXMgcGFzc2VkIGFzIGEgcGFyYW1ldGVyLCBJDQo+PiA+d291
+bGQgZXhwZWN0IGl0IHRvIGJlDQo+PiA+dXNlZC4pDQo+PiA+DQo+PiBIaSBLZXZpbiwNCj4+IEkg
+aGF2ZSBhIHF1ZXN0aW9uOiBhcmUgJ2ZsYWdzJyBleGFjdGx5IHRoZSBzYW1lIGFzICdicy0+IG9w
+ZW5fZmxhZ3MnPw0KPj4gSW4gdGhlIGZ1bmN0aW9uIGJkcnZfb3Blbl9jb21tb24oKSBhdCBibG9j
+ay5jIGZpbGUsICB0aGUgZXhpc3RlbmNlIG9mDQo+c3RhdGVtZW50KCBvcGVuX2ZsYWdzID0gYmRy
+dl9vcGVuX2ZsYWdzKGJzLCBicy0+b3Blbl9mbGFncyk7ICkgbWFrZXMgdGhlbQ0KPmEgbGl0dGxl
+IGRpZmZlcmVudC4NCj4+IFdpbGwgdGhpcyBwbGFjZSBhZmZlY3QgdGhlbSBpbmNvbnNpc3RlbnRs
+eSA/DQo+DQo+Tm90IGV4YWN0bHkgdGhlIHNhbWUsIHRoYXQncyB3aHkgSSBzYWlkICJ2YWx1ZSBv
+ZiB0aGUgYml0cyB3ZSdyZSBpbnRlcmVzdGVkIGluIGlzDQo+dGhlIHNhbWUiLiBiZHJ2X29wZW5f
+ZmxhZ3MoKSBiYXNpY2FsbHkganVzdCBmaWx0ZXJzIG91dCB0aGluZ3MgdGhhdCBhcmUgaGFuZGxl
+ZA0KPmJ5IHRoZSBnZW5lcmljIGJsb2NrIGxheWVyIGFuZCBub25lIG9mIHRoZSBibG9jayBkcml2
+ZXIncyBidXNpbmVzcy4NCj4NCj5UbyBiZSBwcmVjaXNlLCBpc2NzaV9hbGxvY21hcF9pbml0KCkg
+b25seSBjaGVja3MgQkRSVl9PX05PQ0FDSEUsIHdoaWNoIGlzDQo+dGhlIHNhbWUgaW4gYm90aC4N
+Cj4NCj4+IElzIGl0IHNhZmVyIGlmIHdlIGFzc2lnbiBicy0+IG9wZW5fZmxhZ3MgdG8gZmxhZ3M/
+DQo+DQo+VGhpcyB3b3VsZCBhZGQgYmFjayB0aGUgZmxhZ3MgdGhhdCB3ZSBjb25zY2lvdXNseSBm
+aWx0ZXJlZCBvdXQgYmVmb3JlLCBzbyBJDQo+d291bGQgc2F5IG5vLg0KPg0KV2VsbCwgSSBzZWUs
+IHRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHlvdXIgZGV0YWlsZWQgZXhwbGFuYXRpb24hDQoNClRo
+YW5rcy4NCg==
 
