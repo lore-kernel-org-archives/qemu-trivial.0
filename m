@@ -1,43 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7wkd-0003z0-JG
-	for mharc-qemu-trivial@gnu.org; Sat, 29 Feb 2020 02:41:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35073)
+	id 1j80kH-0004mA-IP
+	for mharc-qemu-trivial@gnu.org; Sat, 29 Feb 2020 06:57:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55656)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1j7wkb-0003w4-0g
- for qemu-trivial@nongnu.org; Sat, 29 Feb 2020 02:41:29 -0500
+ (envelope-from <sw@weilnetz.de>) id 1j80kE-0004j4-Ez
+ for qemu-trivial@nongnu.org; Sat, 29 Feb 2020 06:57:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1j7wka-0006vS-1F
- for qemu-trivial@nongnu.org; Sat, 29 Feb 2020 02:41:28 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:57861)
+ (envelope-from <sw@weilnetz.de>) id 1j80kD-0002FP-6v
+ for qemu-trivial@nongnu.org; Sat, 29 Feb 2020 06:57:22 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:55124
+ helo=v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1j7wkT-0006bD-3O; Sat, 29 Feb 2020 02:41:22 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48TyyH6tGtz9sRQ; Sat, 29 Feb 2020 18:41:11 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1582962071;
- bh=JnDgk9cG0azdmYFP0Vh5Ie0HMWdWQImcTF5M77KEuRk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZDad9ZsVYj35lGrmhgbXuC014YjTQLDuvQX4xD75SK1E1oOpfXsPUfywXzT0IiXs8
- egNpHbDxhl5X9GWxgvI/fBxijKtEIPpeu2KqryzzvchNVciHno02vJB2MJlMZuvwBj
- tBJw5yjh0+y7fLaSlq2XqWynnHsL+QzavxNEhIf4=
-Date: Sat, 29 Feb 2020 18:22:15 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Subject: Re: [PATCH] hw/ppc/pnv: Fix typo in comment
-Message-ID: <20200229072215.GA90032@umbus.fritz.box>
-References: <20200228123303.14540-1-philmd@redhat.com>
- <2d21f81c-e0bd-11aa-b27e-37c39d0c6e23@kaod.org>
+ (Exim 4.71) (envelope-from <sw@weilnetz.de>)
+ id 1j80k9-0002CZ-Ru; Sat, 29 Feb 2020 06:57:18 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id DDECADBACF3;
+ Sat, 29 Feb 2020 12:57:15 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id IJyla46lEHsD; Sat, 29 Feb 2020 12:57:14 +0100 (CET)
+Received: from macbook02.fritz.box (pD9EC3042.dip0.t-ipconnect.de
+ [217.236.48.66])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 39F16DBAC73;
+ Sat, 29 Feb 2020 12:57:14 +0100 (CET)
+Subject: Re: [PATCH] l2tpv3: fix RFC number typo in qemu-options.hx
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc: jasowang@redhat.com, Henrik Johansson <henrikjohansson@rocketmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200229111727.350893-1-stefanha@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+Autocrypt: addr=sw@weilnetz.de; keydata=
+ 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
+Message-ID: <ae5cd213-ada2-1b20-064c-a0bc63d3622d@weilnetz.de>
+Date: Sat, 29 Feb 2020 12:57:07 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
+ Gecko/20100101 Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200229111727.350893-1-stefanha@redhat.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="W/nzBZO5zC0uMSeA"
-Content-Disposition: inline
-In-Reply-To: <2d21f81c-e0bd-11aa-b27e-37c39d0c6e23@kaod.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+ protocol="application/pgp-signature";
+ boundary="9M06oy5AiPKJ80t69hIt6k4UIEC8UoM8s"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 37.120.169.71
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,75 +99,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Feb 2020 07:41:30 -0000
+X-List-Received-Date: Sat, 29 Feb 2020 11:57:23 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--9M06oy5AiPKJ80t69hIt6k4UIEC8UoM8s
+Content-Type: multipart/mixed; boundary="9gd7Nk3DtNIB21Ul05OR93CQ24yTEWEPd"
 
---W/nzBZO5zC0uMSeA
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--9gd7Nk3DtNIB21Ul05OR93CQ24yTEWEPd
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Feb 28, 2020 at 01:39:02PM +0100, C=E9dric Le Goater wrote:
-> On 2/28/20 1:33 PM, Philippe Mathieu-Daud=E9 wrote:
-> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
->=20
-> Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
+Am 29.02.20 um 12:17 schrieb Stefan Hajnoczi:
 
-Applied to ppc-for-5.0, thanks.
+> The L2TPv3 RFC number is 3931:
+> https://tools.ietf.org/html/rfc3931
+>
+> Reported-by: Henrik Johansson <henrikjohansson@rocketmail.com>
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  qemu-options.hx | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index ac315c1ac4..55a539e04f 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -2330,7 +2330,7 @@ DEF("netdev", HAS_ARG, QEMU_OPTION_netdev,
+>      "                Linux kernel 3.3+ as well as most routers can tal=
+k\n"
+>      "                L2TPv3. This transport allows connecting a VM to =
+a VM,\n"
+>      "                VM to a router and even VM to Host. It is a nearl=
+y-universal\n"
+> -    "                standard (RFC3391). Note - this implementation us=
+es static\n"
+> +    "                standard (RFC3931). Note - this implementation us=
+es static\n"
+>      "                pre-configured tunnels (same as the Linux kernel)=
+=2E\n"
+>      "                use 'src=3D' to specify source address\n"
+>      "                use 'dst=3D' to specify destination address\n"
+> @@ -2737,7 +2737,7 @@ Example (send packets from host's 1.2.3.4):
+>  @end example
+> =20
+>  @item -netdev l2tpv3,id=3D@var{id},src=3D@var{srcaddr},dst=3D@var{dsta=
+ddr}[,srcport=3D@var{srcport}][,dstport=3D@var{dstport}],txsession=3D@var=
+{txsession}[,rxsession=3D@var{rxsession}][,ipv6][,udp][,cookie64][,counte=
+r][,pincounter][,txcookie=3D@var{txcookie}][,rxcookie=3D@var{rxcookie}][,=
+offset=3D@var{offset}]
+> -Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3391) i=
+s a
+> +Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931) i=
+s a
+>  popular protocol to transport Ethernet (and other Layer 2) data frames=
+ between
+>  two systems. It is present in routers, firewalls and the Linux kernel
+>  (from version 3.3 onwards).
 
->=20
-> Thnaks,
->=20
-> C.=20
->=20
->=20
-> > ---
-> >  hw/ppc/pnv_lpc.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/hw/ppc/pnv_lpc.c b/hw/ppc/pnv_lpc.c
-> > index f150deca34..b5ffa48dac 100644
-> > --- a/hw/ppc/pnv_lpc.c
-> > +++ b/hw/ppc/pnv_lpc.c
-> > @@ -829,7 +829,7 @@ ISABus *pnv_lpc_isa_create(PnvLpcController *lpc, b=
-ool use_cpld, Error **errp)
-> >      bool hostboot_mode =3D !!pnv->fw_load_addr;
-> > =20
-> >      /* let isa_bus_new() create its own bridge on SysBus otherwise
-> > -     * devices speficied on the command line won't find the bus and
-> > +     * devices specified on the command line won't find the bus and
-> >       * will fail to create.
-> >       */
-> >      isa_bus =3D isa_bus_new(NULL, &lpc->isa_mem, &lpc->isa_io, &local_=
-err);
-> >=20
->=20
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Thank you, Stefan and Henrik.
 
---W/nzBZO5zC0uMSeA
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+
+
+
+--9gd7Nk3DtNIB21Ul05OR93CQ24yTEWEPd--
+
+--9M06oy5AiPKJ80t69hIt6k4UIEC8UoM8s
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5aESQACgkQbDjKyiDZ
-s5JLTg//QVePSxqMjTp4BFKrC9m2Hvuq9fqKGwiqI1DuRS6nMwjKhJ7/28F/73ac
-5uzKlqh/uoSUh3FPYyAi3Qkj8jvIXZkGg0q3KRXoMQjDITkAeX9alOS25QEvP7Z+
-xtvFwZZsZbEozvBHaf0SK787IZedfjs7xQp78BUCPxvH+zie5ZIo/okOWKwf7zsH
-cGqviv+tpWAJaIkRc7SVaWdXRfUszHuUuhdx4NVMakzZDILIlxkw3bpKp3OuEcID
-T5amBuUkOtlqTlR2LHB9ejZHuP3hOVjGGgrdVDXdOtQFnTazN3rEwuc+0fNL+MmQ
-blpu628TZbvq3v6p37y1ltYy6K6tBvhWmZYC0qWo4M9BpPHd3jlG8z2sQgop0Z3a
-5bSUJar5AYQp3XXB82RyqVTT8/jw08+3rfGtNfc/nw6bB6aOCZvceFZ8qT1EpD7f
-MuPsDGHN0MMEqDN6SKRWeRE/0Rton/WzmrzHTW2V55OmYFwSZ+SQEidlLIhrMtfO
-dqaZsOgRP1WydAZBsThOMb0bIktXSgryX3KrtijQ+0yeXZ3pvsqXwSwf96MXWkdX
-SxhgE2b+mdofjC7m87iDat1Ovek/ybSBDeMm7sAhGBYCCM3zCj33ZaXDsAzX/IG6
-E5mVPgLHHhm7P7WS2gdqHs+STLOHkP67vfur0HfDsnR7FS7itqE=
-=yMx1
+iQIzBAEBCAAdFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAl5aUZkACgkQ4Iwh1Wd0
+UK1obw//TBEcus+NOACZz00D4nlNE+2pEvs/PZVHYU6YNJ0phhGWRMnEGzJw9oZE
+goz5t/DlmyAnJF+ZlFBYCe0zY/ow9TDEoN4QunyCll9K5VSIl7HsHZBKGLVNekf2
+jJRFe5qeWSlufrEGDKdoeeRTOCxVpGKgZI+9m2wck7SId67iEsSuxL4KuSC0FmUD
+9N2+BYHM/Edb9ueGpzOIAmRSGc+Fnn+oQYcNIX3kSf+7NTrGdfosF9/mzMWafk/n
+KEgCYueN4p9DIhw2td/nWluiAyteZtp5rvmqJz2Uo5nVSDHS5jjbGRy97oo5uSxL
+sEcm0jA5DA6e2y76YMB9qJRrAyr1cPgPcx+IK/2H8jwPS15LXg72X7ajsCsGlAB5
+AeWUr/IynRCVXST5MRoYH4gO4dBGYUN7JQ5JmWLtrenG+/d+2ixbP775J1WHlhBK
+PZukpxj2ECErb2Gzzg+O9aZbm1VLQSavsMlFmHkdL3QHuihR8Zw0IxSJxx5oU1nk
+Q+5j33D34CIy9TGp3DrUCCe+9NuNO1N2zua44rM6Ib3A47KBNyPg8ID0fWEB6xtq
+YzMqwcioiJ9So2L9BOH5x9RBB17aAlDSmOJZqOngh187qxJxegLWaxWu8Cs0diY8
+Tmig0MzVuGbdOrq2evVU3+gnSW+xyE95ra0Ri2nXk44ErWZitBw=
+=oT0i
 -----END PGP SIGNATURE-----
 
---W/nzBZO5zC0uMSeA--
+--9M06oy5AiPKJ80t69hIt6k4UIEC8UoM8s--
 
