@@ -1,43 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j8koZ-0007hk-FW
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 08:08:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48922)
+	id 1j8lvb-0006k0-IS
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 09:20:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58847)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j8koA-0006tO-6g
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:31 -0500
+ (envelope-from <edgar.iglesias@gmail.com>) id 1j8lvY-0006iY-2a
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:20:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j8ko9-0003SX-4H
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:30 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:51764 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j8ko4-0003Ms-Dc; Mon, 02 Mar 2020 08:08:24 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 404A2974DEB5C69ADDAE;
- Mon,  2 Mar 2020 21:07:58 +0800 (CST)
-Received: from huawei.com (10.133.205.93) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Mon, 2 Mar 2020
- 21:07:47 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Paolo
- Bonzini" <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
-Subject: [PATCH v3 05/12] scsi/scsi-disk: Remove redundant statement in
- scsi_disk_emulate_command()
-Date: Mon, 2 Mar 2020 21:07:08 +0800
-Message-ID: <20200302130715.29440-7-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
-In-Reply-To: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
-References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
+ (envelope-from <edgar.iglesias@gmail.com>) id 1j8lvW-0002cn-Lx
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:20:12 -0500
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:44081)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1j8lvT-0002a0-Je; Mon, 02 Mar 2020 09:20:07 -0500
+Received: by mail-lf1-x143.google.com with SMTP id 7so8192790lfz.11;
+ Mon, 02 Mar 2020 06:20:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KJrtEdPJ2SAb4JoHKL3JdyltZQZyjNQylqk3c3NRDOI=;
+ b=HDpaZWerVHaZs56omrBVz/2XvkuwraB3CtAd0uBNpSIGGdg0yww4Y9HJjqwsVVMgms
+ NKOcdr4whJ1E1bB7RdV5EEvyU3eUFy6JMHUa1cx/1LqFBWAvyZRZoav321ZDPXhrQuGi
+ QTfb+apJV5PUtNNCp7tUk3LLIxcsGGs1Q5fxtGDLtdYC7hfgsNXZ+wFjH3VaXyWonU+y
+ TKU1do+KPvNcB43ksO0gAik9g1wRROAurELAC1oG7tmEtZhcBQ4EanYeuE9PNT+zMXnh
+ zy1fIbOTUtzgtkrIV9H8g/r9Q8EPJEHEtdPMN1+v8SeOq8iCYpgbfHET6iy5eyd7A0nz
+ sWVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KJrtEdPJ2SAb4JoHKL3JdyltZQZyjNQylqk3c3NRDOI=;
+ b=poWB7FZ9/Tu5y6nlhF2Dp7LK1gT/FcqDgSeSMzGuniENea2WCV4UlialHrC1csLHf7
+ l70iqq1rPpSxVMge+xLWstHj7D97i978cUX6vucAeU9UwDlHOURUkjdlT+NC2msQoZfL
+ nxz+FVj6Gamk+wI2eJe+FXvKsOZZ3FVvJmY46ipEboh6AC+xCiovsW3d+wVzgfvtgtO+
+ OB2fkvl2qhH+/e4sCqoYikMJAGGeda6O63CMduMKsR0SViaoVii3l91qmJymFZli+LUr
+ zZzWNYUfUrBP/syLvyhTWNXu8+SISr/LklG9d32NrjVBNbhcsFnutTMMjm8Atxqo6yoH
+ XnMA==
+X-Gm-Message-State: ANhLgQ1sgnLPKL/eEn5Byg7IwVB9KcG0GKUDy119RS+aULItukz9jTIb
+ 07KuaoRrBzAUVQz8D4PNBnT0MF6ThPy+i9vrgE8=
+X-Google-Smtp-Source: ADFU+vsKn8d3EIosn7+llY7DEsvnDT6tGX8EhlAuJSuoHJJxBNHFXInotGpVwZCgOm8dXSBiRpE+ytalXpiFoSUSBds=
+X-Received: by 2002:a19:ee0d:: with SMTP id g13mr11164993lfb.179.1583158805747; 
+ Mon, 02 Mar 2020 06:20:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.133.205.93]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
+References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-11-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200302130715.29440-11-kuhn.chenqun@huawei.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 2 Mar 2020 08:19:52 -0600
+Message-ID: <CAJy5ezqf08b=FVGY9WHYuOif5Kb8VpENQxomKNg2MXP3y_CDXw@mail.gmail.com>
+Subject: Re: [PATCH v3 09/12] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, 
+ Euler Robot <euler.robot@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Alistair Francis <alistair@alistair23.me>
+Content-Type: multipart/alternative; boundary="0000000000003d5c32059fdfe24c"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::143
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,37 +71,215 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2020 13:08:31 -0000
+X-List-Received-Date: Mon, 02 Mar 2020 14:20:13 -0000
 
-Clang static code analyzer show warning:
-scsi/scsi-disk.c:1918:5: warning: Value stored to 'buflen' is never read
-    buflen =3D req->cmd.xfer;
-    ^        ~~~~~~~~~~~~~
+--0000000000003d5c32059fdfe24c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Fam Zheng <fam@euphon.net>
----
- hw/scsi/scsi-disk.c | 1 -
- 1 file changed, 1 deletion(-)
+On Mon, 2 Mar. 2020, 07:09 Chen Qun, <kuhn.chenqun@huawei.com> wrote:
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 10d0794d60..1c0cb63a6f 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -1915,7 +1915,6 @@ static int32_t scsi_disk_emulate_command(SCSIReques=
-t *req, uint8_t *buf)
-         r->iov.iov_base =3D blk_blockalign(s->qdev.conf.blk, r->buflen);
-     }
-=20
--    buflen =3D req->cmd.xfer;
-     outbuf =3D r->iov.iov_base;
-     memset(outbuf, 0, r->buflen);
-     switch (req->cmd.buf[0]) {
---=20
-2.23.0
+> Clang static code analyzer show warning:
+> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never
+> read
+>             dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
+> ZDMA_CH_DST_DSCR_WORD3,
+>
 
 
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
+
+            ^
+> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+> v1->v2: move the 'dst_type' declaration.(Base on Philippe's suggestion).
+> ---
+>  hw/dma/xlnx-zdma.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index 8fb83f5b07..eeacad59ce 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s,
+> bool type,
+>  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+>  {
+>      uint32_t dst_size, dlen;
+> -    bool dst_intr, dst_type;
+> +    bool dst_intr;
+>      unsigned int ptype =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0,
+> POINT_TYPE);
+>      unsigned int rw_mode =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MO=
+DE);
+>      unsigned int burst_type =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_A=
+TTR,
+> @@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t
+> *buf, uint32_t len)
+>      while (len) {
+>          dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WO=
+RD2,
+>                                SIZE);
+> -        dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WO=
+RD3,
+> -                              TYPE);
+>          if (dst_size =3D=3D 0 && ptype =3D=3D PT_MEM) {
+>              uint64_t next;
+> +            bool dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
+> +                                       ZDMA_CH_DST_DSCR_WORD3,
+> +                                       TYPE);
+> +
+>              next =3D zdma_update_descr_addr(s, dst_type,
+>                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
+>              zdma_load_descriptor(s, next, &s->dsc_dst);
+>              dst_size =3D FIELD_EX32(s->dsc_dst.words[2],
+> ZDMA_CH_DST_DSCR_WORD2,
+>                                    SIZE);
+> -            dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
+> ZDMA_CH_DST_DSCR_WORD3,
+> -                                  TYPE);
+>          }
+>
+>          /* Match what hardware does by ignoring the dst_size and only
+> using
+> --
+> 2.23.0
+>
+>
+>
+
+--0000000000003d5c32059fdfe24c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Mon, 2 Mar. 2020, 07:09 Chen Qun, &lt;<a href=3D"ma=
+ilto:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
+:1px #ccc solid;padding-left:1ex">Clang static code analyzer show warning:<=
+br>
+hw/dma/xlnx-zdma.c:399:13: warning: Value stored to &#39;dst_type&#39; is n=
+ever read<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;dsc=
+_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,<br></blockquote></div></div><div dir=
+=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex"></blockquote></div></div><div dir=3D"auto"><br></div><=
+div dir=3D"auto">Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar=
+.iglesias@xilinx.com">edgar.iglesias@xilinx.com</a>&gt;</div><div dir=3D"au=
+to"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div =
+dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+<br>
+Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
+et=3D"_blank" rel=3D"noreferrer">euler.robot@huawei.com</a>&gt;<br>
+Signed-off-by: Chen Qun &lt;<a href=3D"mailto:kuhn.chenqun@huawei.com" targ=
+et=3D"_blank" rel=3D"noreferrer">kuhn.chenqun@huawei.com</a>&gt;<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redha=
+t.com" target=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;<br>
+Reviewed-by: Francisco Iglesias &lt;<a href=3D"mailto:frasse.iglesias@gmail=
+.com" target=3D"_blank" rel=3D"noreferrer">frasse.iglesias@gmail.com</a>&gt=
+;<br>
+Reviewed-by: Alistair Francis &lt;<a href=3D"mailto:alistair.francis@wdc.co=
+m" target=3D"_blank" rel=3D"noreferrer">alistair.francis@wdc.com</a>&gt;<br=
+>
+---<br>
+Cc: Alistair Francis &lt;<a href=3D"mailto:alistair@alistair23.me" target=
+=3D"_blank" rel=3D"noreferrer">alistair@alistair23.me</a>&gt;<br>
+Cc: &quot;Edgar E. Iglesias&quot; &lt;<a href=3D"mailto:edgar.iglesias@gmai=
+l.com" target=3D"_blank" rel=3D"noreferrer">edgar.iglesias@gmail.com</a>&gt=
+;<br>
+Cc: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D=
+"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt;<br>
+Cc: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com" ta=
+rget=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;<br>
+<br>
+v1-&gt;v2: move the &#39;dst_type&#39; declaration.(Base on Philippe&#39;s =
+suggestion).<br>
+---<br>
+=C2=A0hw/dma/xlnx-zdma.c | 10 +++++-----<br>
+=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c<br>
+index 8fb83f5b07..eeacad59ce 100644<br>
+--- a/hw/dma/xlnx-zdma.c<br>
++++ b/hw/dma/xlnx-zdma.c<br>
+@@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, boo=
+l type,<br>
+=C2=A0static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)<b=
+r>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t dst_size, dlen;<br>
+-=C2=A0 =C2=A0 bool dst_intr, dst_type;<br>
++=C2=A0 =C2=A0 bool dst_intr;<br>
+=C2=A0 =C2=A0 =C2=A0unsigned int ptype =3D ARRAY_FIELD_EX32(s-&gt;regs, ZDM=
+A_CH_CTRL0, POINT_TYPE);<br>
+=C2=A0 =C2=A0 =C2=A0unsigned int rw_mode =3D ARRAY_FIELD_EX32(s-&gt;regs, Z=
+DMA_CH_CTRL0, MODE);<br>
+=C2=A0 =C2=A0 =C2=A0unsigned int burst_type =3D ARRAY_FIELD_EX32(s-&gt;regs=
+, ZDMA_CH_DATA_ATTR,<br>
+@@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf,=
+ uint32_t len)<br>
+=C2=A0 =C2=A0 =C2=A0while (len) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dst_size =3D FIELD_EX32(s-&gt;dsc_dst.wor=
+ds[2], ZDMA_CH_DST_DSCR_WORD2,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SIZE);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;dsc_dst.words[3]=
+, ZDMA_CH_DST_DSCR_WORD3,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (dst_size =3D=3D 0 &amp;&amp; ptype =
+=3D=3D PT_MEM) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t next;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool dst_type =3D FIELD_EX32(s-&=
+gt;dsc_dst.words[3],<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ZDMA_CH_D=
+ST_DSCR_WORD3,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE);<br=
+>
++<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0next =3D zdma_update_descr_=
+addr(s, dst_type,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0R_ZDMA_CH_DST_CUR_DSCR_LSB);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0zdma_load_descriptor(s, nex=
+t, &amp;s-&gt;dsc_dst);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dst_size =3D FIELD_EX32(s-&=
+gt;dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SIZE);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;ds=
+c_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Match what hardware does by ignoring t=
+he dst_size and only using<br>
+-- <br>
+2.23.0<br>
+<br>
+<br>
+</blockquote></div></div></div>
+
+--0000000000003d5c32059fdfe24c--
 
