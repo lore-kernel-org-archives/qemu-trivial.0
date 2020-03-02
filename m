@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j8koY-0007fy-Gi
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 08:08:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48888)
+	id 1j8koZ-0007hY-AI
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 08:08:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48860)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j8knp-0006JR-3X
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:10 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j8knn-0006Hj-9B
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j8knm-0003Qz-W8
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:08 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:51768 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j8knm-0003Qh-B1
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 08:08:07 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:51766 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j8knj-0003Mq-K9; Mon, 02 Mar 2020 08:08:04 -0500
+ id 1j8knj-0003Mr-L8; Mon, 02 Mar 2020 08:08:03 -0500
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 64C489648BA4CAF3AFE9;
+ by Forcepoint Email with ESMTP id 44B5381F7092D2E362EC;
  Mon,  2 Mar 2020 21:07:58 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Mon, 2 Mar 2020
- 21:07:52 +0800
+ 21:07:51 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, "Dr. David
- Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH v3 12/12] monitor/hmp-cmds: Remove redundant statement in
- hmp_rocker_of_dpa_groups()
-Date: Mon, 2 Mar 2020 21:07:15 +0800
-Message-ID: <20200302130715.29440-14-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
+ Mitsyanko" <i.mitsyanko@gmail.com>
+Subject: [PATCH v3 10/12] timer/exynos4210_mct: Remove redundant statement in
+ exynos4210_mct_write()
+Date: Mon, 2 Mar 2020 21:07:13 +0800
+Message-ID: <20200302130715.29440-12-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
 References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
@@ -50,65 +49,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2020 13:08:10 -0000
+X-List-Received-Date: Mon, 02 Mar 2020 13:08:09 -0000
 
 Clang static code analyzer show warning:
-monitor/hmp-cmds.c:2867:17: warning: Value stored to 'set' is never read
-                set =3D true;
-                ^     ~~~~
+hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-v1->v2: move the 'set' declaration to the for() statement(Base on Philipp=
-e's suggestion).
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- monitor/hmp-cmds.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ hw/timer/exynos4210_mct.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 53bc3f76c4..c6b0495822 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -2808,7 +2808,6 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const Q=
-Dict *qdict)
-     const char *name =3D qdict_get_str(qdict, "name");
-     uint8_t type =3D qdict_get_try_int(qdict, "type", 9);
-     Error *err =3D NULL;
--    bool set =3D false;
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 944120aea5..570cf7075b 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
 =20
-     list =3D qmp_query_rocker_of_dpa_groups(name, type !=3D 9, type, &er=
-r);
-     if (err !=3D NULL) {
-@@ -2820,6 +2819,7 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const Q=
-Dict *qdict)
+     case L0_TCNTB: case L1_TCNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
 =20
-     for (g =3D list; g; g =3D g->next) {
-         RockerOfDpaGroup *group =3D g->value;
-+        bool set =3D false;
+         /*
+          * TCNTB is updated to internal register only after CNT expired.
+@@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
 =20
-         monitor_printf(mon, "0x%08x", group->id);
+     case L0_ICNTB: case L1_ICNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
 =20
-@@ -2864,14 +2864,11 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const=
- QDict *qdict)
+         s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_ICNTB_WRITE;
+         s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] =3D value &
+@@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
 =20
-         if (group->has_set_eth_dst) {
-             if (!set) {
--                set =3D true;
-                 monitor_printf(mon, " set");
-             }
-             monitor_printf(mon, " dst %s", group->set_eth_dst);
-         }
-=20
--        set =3D false;
+     case L0_FRCNTB: case L1_FRCNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
 -
-         if (group->has_ttl_check && group->ttl_check) {
-             monitor_printf(mon, " check TTL");
-         }
+         DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
+=20
+         s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_FRCCNTB_WRITE;
 --=20
 2.23.0
 
