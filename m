@@ -1,65 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j8lvb-0006k0-IS
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 09:20:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58847)
+	id 1j8mE0-0002ue-FU
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 09:39:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33600)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1j8lvY-0006iY-2a
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:20:13 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j8mDy-0002uT-1J
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:39:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1j8lvW-0002cn-Lx
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:20:12 -0500
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:44081)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1j8lvT-0002a0-Je; Mon, 02 Mar 2020 09:20:07 -0500
-Received: by mail-lf1-x143.google.com with SMTP id 7so8192790lfz.11;
- Mon, 02 Mar 2020 06:20:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KJrtEdPJ2SAb4JoHKL3JdyltZQZyjNQylqk3c3NRDOI=;
- b=HDpaZWerVHaZs56omrBVz/2XvkuwraB3CtAd0uBNpSIGGdg0yww4Y9HJjqwsVVMgms
- NKOcdr4whJ1E1bB7RdV5EEvyU3eUFy6JMHUa1cx/1LqFBWAvyZRZoav321ZDPXhrQuGi
- QTfb+apJV5PUtNNCp7tUk3LLIxcsGGs1Q5fxtGDLtdYC7hfgsNXZ+wFjH3VaXyWonU+y
- TKU1do+KPvNcB43ksO0gAik9g1wRROAurELAC1oG7tmEtZhcBQ4EanYeuE9PNT+zMXnh
- zy1fIbOTUtzgtkrIV9H8g/r9Q8EPJEHEtdPMN1+v8SeOq8iCYpgbfHET6iy5eyd7A0nz
- sWVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KJrtEdPJ2SAb4JoHKL3JdyltZQZyjNQylqk3c3NRDOI=;
- b=poWB7FZ9/Tu5y6nlhF2Dp7LK1gT/FcqDgSeSMzGuniENea2WCV4UlialHrC1csLHf7
- l70iqq1rPpSxVMge+xLWstHj7D97i978cUX6vucAeU9UwDlHOURUkjdlT+NC2msQoZfL
- nxz+FVj6Gamk+wI2eJe+FXvKsOZZ3FVvJmY46ipEboh6AC+xCiovsW3d+wVzgfvtgtO+
- OB2fkvl2qhH+/e4sCqoYikMJAGGeda6O63CMduMKsR0SViaoVii3l91qmJymFZli+LUr
- zZzWNYUfUrBP/syLvyhTWNXu8+SISr/LklG9d32NrjVBNbhcsFnutTMMjm8Atxqo6yoH
- XnMA==
-X-Gm-Message-State: ANhLgQ1sgnLPKL/eEn5Byg7IwVB9KcG0GKUDy119RS+aULItukz9jTIb
- 07KuaoRrBzAUVQz8D4PNBnT0MF6ThPy+i9vrgE8=
-X-Google-Smtp-Source: ADFU+vsKn8d3EIosn7+llY7DEsvnDT6tGX8EhlAuJSuoHJJxBNHFXInotGpVwZCgOm8dXSBiRpE+ytalXpiFoSUSBds=
-X-Received: by 2002:a19:ee0d:: with SMTP id g13mr11164993lfb.179.1583158805747; 
- Mon, 02 Mar 2020 06:20:05 -0800 (PST)
+ (envelope-from <laurent@vivier.eu>) id 1j8mDw-0001QL-DZ
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 09:39:13 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:35093)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1j8mDs-0001Pa-BV; Mon, 02 Mar 2020 09:39:08 -0500
+Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MV2Sk-1izX6o16Dm-00S7nC; Mon, 02 Mar 2020 15:39:00 +0100
+To: Lirong Yuan <yuanzi@google.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>
+References: <20200221202857.126170-1-yuanzi@google.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
+ WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
+ SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
+ UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
+ Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
+ JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
+ q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
+ RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
+ 8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
+ LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABtCJMYXVyZW50IFZp
+ dmllciA8bGF1cmVudEB2aXZpZXIuZXU+iQI4BBMBAgAiBQJWBTDeAhsDBgsJCAcDAgYVCAIJ
+ CgsEFgIDAQIeAQIXgAAKCRDzDDi9Py++PCEdD/oD8LD5UWxhQrMQCsUgLlXCSM7sxGLkwmmF
+ ozqSSljEGRhffxZvO35wMFcdX9Z0QOabVoFTKrT04YmvbjsErh/dP5zeM/4EhUByeOS7s6Yl
+ HubMXVQTkak9Wa9Eq6irYC6L41QNzz/oTwNEqL1weV1+XC3TNnht9B76lIaELyrJvRfgsp9M
+ rE+PzGPo5h7QHWdL/Cmu8yOtPLa8Y6l/ywEJ040IoiAUfzRoaJs2csMXf0eU6gVBhCJ4bs91
+ jtWTXhkzdl4tdV+NOwj3j0ukPy+RjqeL2Ej+bomnPTOW8nAZ32dapmu7Fj7VApuQO/BSIHyO
+ NkowMMjB46yohEepJaJZkcgseaus0x960c4ua/SUm/Nm6vioRsxyUmWd2nG0m089pp8LPopq
+ WfAk1l4GciiMepp1Cxn7cnn1kmG6fhzedXZ/8FzsKjvx/aVeZwoEmucA42uGJ3Vk9TiVdZes
+ lqMITkHqDIpHjC79xzlWkXOsDbA2UY/P18AtgJEZQPXbcrRBtdSifCuXdDfHvI+3exIdTpvj
+ BfbgZAar8x+lcsQBugvktlQWPfAXZu4Shobi3/mDYMEDOE92dnNRD2ChNXg2IuvAL4OW40wh
+ gXlkHC1ZgToNGoYVvGcZFug1NI+vCeCFchX+L3bXyLMg3rAfWMFPAZLzn42plIDMsBs+x2yP
+ +bkCDQRWBSYZARAAvFJBFuX9A6eayxUPFaEczlMbGXugs0mazbOYGlyaWsiyfyc3PStHLFPj
+ rSTaeJpPCjBJErwpZUN4BbpkBpaJiMuVO6egrC8Xy8/cnJakHPR2JPEvmj7Gm/L9DphTcE15
+ 92rxXLesWzGBbuYxKsj8LEnrrvLyi3kNW6B5LY3Id+ZmU8YTQ2zLuGV5tLiWKKxc6s3eMXNq
+ wrJTCzdVd6ThXrmUfAHbcFXOycUyf9vD+s+WKpcZzCXwKgm7x1LKsJx3UhuzT8ier1L363RW
+ ZaJBZ9CTPiu8R5NCSn9V+BnrP3wlFbtLqXp6imGhazT9nJF86b5BVKpF8Vl3F0/Y+UZ4gUwL
+ d9cmDKBcmQU/JaRUSWvvolNu1IewZZu3rFSVgcpdaj7F/1aC0t5vLdx9KQRyEAKvEOtCmP4m
+ 38kU/6r33t3JuTJnkigda4+Sfu5kYGsogeYG6dNyjX5wpK5GJIJikEhdkwcLM+BUOOTi+I9u
+ tX03BGSZo7FW/J7S9y0l5a8nooDs2gBRGmUgYKqQJHCDQyYut+hmcr+BGpUn9/pp2FTWijrP
+ inb/Pc96YDQLQA1q2AeAFv3Rx3XoBTGl0RCY4KZ02c0kX/dm3eKfMX40XMegzlXCrqtzUk+N
+ 8LeipEsnOoAQcEONAWWo1HcgUIgCjhJhBEF0AcELOQzitbJGG5UAEQEAAYkCHwQYAQIACQUC
+ VgUmGQIbDAAKCRDzDDi9Py++PCD3D/9VCtydWDdOyMTJvEMRQGbx0GacqpydMEWbE3kUW0ha
+ US5jz5gyJZHKR3wuf1En/3z+CEAEfP1M3xNGjZvpaKZXrgWaVWfXtGLoWAVTfE231NMQKGoB
+ w2Dzx5ivIqxikXB6AanBSVpRpoaHWb06tPNxDL6SVV9lZpUn03DSR6gZEZvyPheNWkvz7bE6
+ FcqszV/PNvwm0C5Ju7NlJA8PBAQjkIorGnvN/vonbVh5GsRbhYPOc/JVwNNr63P76rZL8Gk/
+ hb3xtcIEi5CCzab45+URG/lzc6OV2nTj9Lg0SNcRhFZ2ILE3txrmI+aXmAu26+EkxLLfqCVT
+ ohb2SffQha5KgGlOSBXustQSGH0yzzZVZb+HZPEvx6d/HjQ+t9sO1bCpEgPdZjyMuuMp9N1H
+ ctbwGdQM2Qb5zgXO+8ZSzwC+6rHHIdtcB8PH2j+Nd88dVGYlWFKZ36ELeZxD7iJflsE8E8yg
+ OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
+ JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
+ ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
+Subject: Re: [PATCH] linux-user: Add AT_EXECFN and AT_EXECFD auxval
+Message-ID: <f9ef0046-9d0f-c53d-bf58-417df31705a6@vivier.eu>
+Date: Mon, 2 Mar 2020 15:38:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
- <20200302130715.29440-11-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200302130715.29440-11-kuhn.chenqun@huawei.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Mon, 2 Mar 2020 08:19:52 -0600
-Message-ID: <CAJy5ezqf08b=FVGY9WHYuOif5Kb8VpENQxomKNg2MXP3y_CDXw@mail.gmail.com>
-Subject: Re: [PATCH v3 09/12] dma/xlnx-zdma: Remove redundant statement in
- zdma_write_dst()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, 
- Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Alistair Francis <alistair@alistair23.me>
-Content-Type: multipart/alternative; boundary="0000000000003d5c32059fdfe24c"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::143
+In-Reply-To: <20200221202857.126170-1-yuanzi@google.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:uAGHyEfGJdFoYJRogZfs2+tA1sWmxYl9AlB3A0MvYi632elwJMv
+ 44HhTXD47GPmC2eydGJebwU0iXEz/3ngRNwgJ/NXFc3xGtJOEC1C/CZaKUAIotKCjeSH4oM
+ pdyPVIPJ/RoXmYZSzkNfjIu8QNhtdj4JhP7h0uYIqOT7jW0X3zT0heTYm2F2RZpTDtPOCyj
+ ah2+jeVisEkhNoXw8cNHA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:yLy5Q6FI6b0=:Kurzv/Hjk4KM+ZVneYB5ke
+ m+GH4hQKFPRLMnIK0xLq83dGpIMw1MDGw7EUKSQIHZaeLX2BFu3pCh6cDO91Q5yuC3WIm4xfb
+ W8c01MMZl4aMhVPUOCAKrLMljdXWXQWGVW5VkNtyAJcZ+0wh/mvf0NZnWRDmuOJ7QkQHCXV3W
+ 22M3yewMvCn/o9A9MWTUB/zYP4ze0GQul/8k5XscRtxnHab9EJHg9PsDkAOFggclF3wGoFcYM
+ wWeHOvatbZUegye24Wv0C3dGHMIvnK3v1Rci/j85fhVQD+ic6oOCT1IlrejGKxVHG86YMWlgb
+ Ru8O23OQIxliKpqaLFLwA/mQBvG/3sg7iJvNJJCHm1diC434V8N39wZMuo2bUej3DfHXVLXnM
+ 7gvZwo8uUA4/rpdiUMmjZwLkFZv/VhZkB4EviNp1+FL8lE8Ddjz6WApN14nuTPx5oLxExup93
+ BQx+hjkkKDhUmvR5fz8EJ61Ya6JcRVuM0zaWyS0nDjITfZq++r1bEPt9JZ4GvQeCj2vfVK4It
+ NyyfFrexOdoXUcVhwdCDUOgv+DDZ8VkJV6EYPWjiaGHjPxhghnajXAPkU1xJCaqHUmHDN9gEe
+ Qh9tGHFWpdHim72mWoR/UtzF1eAcsK/Wl8jSZKA7vm4Q2UGND/n9wKxfsrFTsLdJwoHOxfM7d
+ rwpTVVmxrvJfMN3V6AkqILFRuSqK+I8dyb8RJ/o1YppiR89tI3SBLVO5jlvQSDYz3mYWGy+Qx
+ BKi+BM4y99lONPVxvIkx7Ulw+OLfW/LTiEtWcNvRYSISJb04gAwrRIKeut/fw2BNNfqZmPKHx
+ f3X+huTcz3f/I3xhkULgvu6tl7kEIAt42SkNjaED7M4hUQYnjeeFklZgqDAdrNWMEarYYvK
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,215 +102,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2020 14:20:13 -0000
+X-List-Received-Date: Mon, 02 Mar 2020 14:39:15 -0000
 
---0000000000003d5c32059fdfe24c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Le 21/02/2020 à 21:28, Lirong Yuan a écrit :
+> This change adds the support for AT_EXECFN and AT_EXECFD auxval.
 
-On Mon, 2 Mar. 2020, 07:09 Chen Qun, <kuhn.chenqun@huawei.com> wrote:
+Why do we need AT_EXECFD?
 
-> Clang static code analyzer show warning:
-> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never
-> read
->             dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
-> ZDMA_CH_DST_DSCR_WORD3,
->
+AT_EXECFD is normally only used with binfmt_misc so I don't see any use
+cases for it with QEMU.
 
+For AT_EXECFN, according to kernel commit
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+  651910874633 execve filename: document and export via auxiliary vector
 
+It sould be like readlink("/proc/self/exe",), and thus I think we should
+use realpath() like we have in syscall.c for TARGET_NR_readlink:
 
+ 8843     case TARGET_NR_readlink:
+...
+ 8854                 char real[PATH_MAX], *temp;
+ 8855                 temp = realpath(exec_path, real);
+...
 
-            ^
-> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Thanks,
+Laurent
+
+> 
+> Signed-off-by: Lirong Yuan <yuanzi@google.com>
 > ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> v1->v2: move the 'dst_type' declaration.(Base on Philippe's suggestion).
-> ---
->  hw/dma/xlnx-zdma.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-> index 8fb83f5b07..eeacad59ce 100644
-> --- a/hw/dma/xlnx-zdma.c
-> +++ b/hw/dma/xlnx-zdma.c
-> @@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s,
-> bool type,
->  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+>  linux-user/elfload.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index f3080a1635..7e0f3042f1 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -1568,7 +1568,7 @@ struct exec
+>                                   ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
+>  #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+>  
+> -#define DLINFO_ITEMS 15
+> +#define DLINFO_ITEMS 17
+>  
+>  static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
 >  {
->      uint32_t dst_size, dlen;
-> -    bool dst_intr, dst_type;
-> +    bool dst_intr;
->      unsigned int ptype =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0,
-> POINT_TYPE);
->      unsigned int rw_mode =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MO=
-DE);
->      unsigned int burst_type =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_A=
-TTR,
-> @@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t
-> *buf, uint32_t len)
->      while (len) {
->          dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WO=
-RD2,
->                                SIZE);
-> -        dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WO=
-RD3,
-> -                              TYPE);
->          if (dst_size =3D=3D 0 && ptype =3D=3D PT_MEM) {
->              uint64_t next;
-> +            bool dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
-> +                                       ZDMA_CH_DST_DSCR_WORD3,
-> +                                       TYPE);
-> +
->              next =3D zdma_update_descr_addr(s, dst_type,
->                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
->              zdma_load_descriptor(s, next, &s->dsc_dst);
->              dst_size =3D FIELD_EX32(s->dsc_dst.words[2],
-> ZDMA_CH_DST_DSCR_WORD2,
->                                    SIZE);
-> -            dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
-> ZDMA_CH_DST_DSCR_WORD3,
-> -                                  TYPE);
->          }
->
->          /* Match what hardware does by ignoring the dst_size and only
-> using
-> --
-> 2.23.0
->
->
->
+> @@ -1888,11 +1888,14 @@ static abi_ulong loader_build_fdpic_loadmap(struct image_info *info, abi_ulong s
+>      return sp;
+>  }
+>  
+> -static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+> +static abi_ulong create_elf_tables(struct linux_binprm *bprm,
+>                                     struct elfhdr *exec,
+>                                     struct image_info *info,
+>                                     struct image_info *interp_info)
+>  {
+> +    abi_ulong p = bprm->p;
+> +    int argc = bprm->argc;
+> +    int envc = bprm->envc;
+>      abi_ulong sp;
+>      abi_ulong u_argc, u_argv, u_envp, u_auxv;
+>      int size;
+> @@ -2032,6 +2035,8 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+>      NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
+>      NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
+>      NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
+> +    NEW_AUX_ENT(AT_EXECFN, info->file_string);
+> +    NEW_AUX_ENT(AT_EXECFD, bprm->fd);
+>  
+>  #ifdef ELF_HWCAP2
+>      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+> @@ -2870,8 +2875,8 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
+>  #endif
+>      }
+>  
+> -    bprm->p = create_elf_tables(bprm->p, bprm->argc, bprm->envc, &elf_ex,
+> -                                info, (elf_interpreter ? &interp_info : NULL));
+> +    bprm->p = create_elf_tables(bprm, &elf_ex, info,
+> +                                (elf_interpreter ? &interp_info : NULL));
+>      info->start_stack = bprm->p;
+>  
+>      /* If we have an interpreter, set that as the program's entry point.
+> 
 
---0000000000003d5c32059fdfe24c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Mon, 2 Mar. 2020, 07:09 Chen Qun, &lt;<a href=3D"ma=
-ilto:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</a>&gt; wrote:<br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
-:1px #ccc solid;padding-left:1ex">Clang static code analyzer show warning:<=
-br>
-hw/dma/xlnx-zdma.c:399:13: warning: Value stored to &#39;dst_type&#39; is n=
-ever read<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;dsc=
-_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,<br></blockquote></div></div><div dir=
-=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
-id;padding-left:1ex"></blockquote></div></div><div dir=3D"auto"><br></div><=
-div dir=3D"auto">Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar=
-.iglesias@xilinx.com">edgar.iglesias@xilinx.com</a>&gt;</div><div dir=3D"au=
-to"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div =
-dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
-<br>
-Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
-et=3D"_blank" rel=3D"noreferrer">euler.robot@huawei.com</a>&gt;<br>
-Signed-off-by: Chen Qun &lt;<a href=3D"mailto:kuhn.chenqun@huawei.com" targ=
-et=3D"_blank" rel=3D"noreferrer">kuhn.chenqun@huawei.com</a>&gt;<br>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redha=
-t.com" target=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;<br>
-Reviewed-by: Francisco Iglesias &lt;<a href=3D"mailto:frasse.iglesias@gmail=
-.com" target=3D"_blank" rel=3D"noreferrer">frasse.iglesias@gmail.com</a>&gt=
-;<br>
-Reviewed-by: Alistair Francis &lt;<a href=3D"mailto:alistair.francis@wdc.co=
-m" target=3D"_blank" rel=3D"noreferrer">alistair.francis@wdc.com</a>&gt;<br=
->
----<br>
-Cc: Alistair Francis &lt;<a href=3D"mailto:alistair@alistair23.me" target=
-=3D"_blank" rel=3D"noreferrer">alistair@alistair23.me</a>&gt;<br>
-Cc: &quot;Edgar E. Iglesias&quot; &lt;<a href=3D"mailto:edgar.iglesias@gmai=
-l.com" target=3D"_blank" rel=3D"noreferrer">edgar.iglesias@gmail.com</a>&gt=
-;<br>
-Cc: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D=
-"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt;<br>
-Cc: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com" ta=
-rget=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;<br>
-<br>
-v1-&gt;v2: move the &#39;dst_type&#39; declaration.(Base on Philippe&#39;s =
-suggestion).<br>
----<br>
-=C2=A0hw/dma/xlnx-zdma.c | 10 +++++-----<br>
-=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
-<br>
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c<br>
-index 8fb83f5b07..eeacad59ce 100644<br>
---- a/hw/dma/xlnx-zdma.c<br>
-+++ b/hw/dma/xlnx-zdma.c<br>
-@@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, boo=
-l type,<br>
-=C2=A0static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)<b=
-r>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0uint32_t dst_size, dlen;<br>
--=C2=A0 =C2=A0 bool dst_intr, dst_type;<br>
-+=C2=A0 =C2=A0 bool dst_intr;<br>
-=C2=A0 =C2=A0 =C2=A0unsigned int ptype =3D ARRAY_FIELD_EX32(s-&gt;regs, ZDM=
-A_CH_CTRL0, POINT_TYPE);<br>
-=C2=A0 =C2=A0 =C2=A0unsigned int rw_mode =3D ARRAY_FIELD_EX32(s-&gt;regs, Z=
-DMA_CH_CTRL0, MODE);<br>
-=C2=A0 =C2=A0 =C2=A0unsigned int burst_type =3D ARRAY_FIELD_EX32(s-&gt;regs=
-, ZDMA_CH_DATA_ATTR,<br>
-@@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf,=
- uint32_t len)<br>
-=C2=A0 =C2=A0 =C2=A0while (len) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dst_size =3D FIELD_EX32(s-&gt;dsc_dst.wor=
-ds[2], ZDMA_CH_DST_DSCR_WORD2,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SIZE);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;dsc_dst.words[3]=
-, ZDMA_CH_DST_DSCR_WORD3,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (dst_size =3D=3D 0 &amp;&amp; ptype =
-=3D=3D PT_MEM) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t next;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bool dst_type =3D FIELD_EX32(s-&=
-gt;dsc_dst.words[3],<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ZDMA_CH_D=
-ST_DSCR_WORD3,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE);<br=
->
-+<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0next =3D zdma_update_descr_=
-addr(s, dst_type,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0R_ZDMA_CH_DST_CUR_DSCR_LSB);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0zdma_load_descriptor(s, nex=
-t, &amp;s-&gt;dsc_dst);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dst_size =3D FIELD_EX32(s-&=
-gt;dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SIZE);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dst_type =3D FIELD_EX32(s-&gt;ds=
-c_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Match what hardware does by ignoring t=
-he dst_size and only using<br>
--- <br>
-2.23.0<br>
-<br>
-<br>
-</blockquote></div></div></div>
-
---0000000000003d5c32059fdfe24c--
 
