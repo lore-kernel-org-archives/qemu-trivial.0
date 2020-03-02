@@ -1,26 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j8prJ-0002ec-RM
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 13:32:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45679)
+	id 1j8pyO-0006tg-4a
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2020 13:39:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46803)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j8prH-0002cD-9p
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 13:32:04 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j8pyK-0006pN-Bd
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 13:39:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j8prF-00020i-Ct
- for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 13:32:03 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:56255)
+ (envelope-from <laurent@vivier.eu>) id 1j8pyF-0005Zk-Ko
+ for qemu-trivial@nongnu.org; Mon, 02 Mar 2020 13:39:20 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:38193)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j8prF-0001zt-3e; Mon, 02 Mar 2020 13:32:01 -0500
+ id 1j8pyC-0005YX-1z; Mon, 02 Mar 2020 13:39:12 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MYvse-1ivaKg0HoG-00Uvoh; Mon, 02 Mar 2020 19:31:54 +0100
-To: Lirong Yuan <yuanzi@google.com>
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MxDgm-1jJtbn1hsW-00xY6O; Mon, 02 Mar 2020 19:38:59 +0100
+Subject: Re: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom
+ mmap base address in qemu user mode
+To: Lirong Yuan <yuanzi@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  Riku Voipio <riku.voipio@iki.fi>
-References: <20200221202857.126170-1-yuanzi@google.com>
- <f9ef0046-9d0f-c53d-bf58-417df31705a6@vivier.eu>
- <CADjx4C+YyTL9W0us5-vvGdeXyiHKcSZt2odV_p3+E4NCLTYSSg@mail.gmail.com>
+References: <20200222010925.32858-1-yuanzi@google.com>
+ <CADjx4CKoSuu2zWn7BRhpxLL3TaimR7fX99u_r41egctwA1LVTQ@mail.gmail.com>
+ <553af2a0-2092-fe7f-ad7a-3b7ecebbe0a5@vivier.eu>
+ <CADjx4CJSDkA3aDxhp2yZJBnKtUe4YntfpdEKp91VS0JiUhE+2Q@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +68,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Subject: Re: [PATCH] linux-user: Add AT_EXECFN and AT_EXECFD auxval
-Message-ID: <66e63949-7224-8bed-afb5-d914ac5969bc@vivier.eu>
-Date: Mon, 2 Mar 2020 19:31:51 +0100
+Message-ID: <0f138812-b036-f99b-3d50-b871863d22f2@vivier.eu>
+Date: Mon, 2 Mar 2020 19:38:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CADjx4C+YyTL9W0us5-vvGdeXyiHKcSZt2odV_p3+E4NCLTYSSg@mail.gmail.com>
+In-Reply-To: <CADjx4CJSDkA3aDxhp2yZJBnKtUe4YntfpdEKp91VS0JiUhE+2Q@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GSjVTBIrHJ/vrbgPRLN0jFFlxjBxAg3tTNcVY4PvnPJF9Q5Xgrj
- OSzbFuB/86PLUao1tDUYO/YBA3eDDUhW918mkYA8Q50IbLuq9XynwOP094B7xlZ6W4U/5E0
- SA1VlakhVr/Xac9qQ+3gnmKgdxRo/gjTNsGkHZvx+0w1LBhZsfSuWUIDgsuOSjFzUqZkdz+
- 3fhvZwBSDCmCynIcjkR4g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5csXkjVJWPU=:exHrd4TlBCp5a+d/Qbd1fS
- meBl12omT/5IkZl9h2+6GgIKVg+/5577nwuXYFdOBM+HTUHzbmbcHCkJyRx2uCSWHHE2fbuQ6
- F8Z89C5OkW4FcMUQOguDXnO2THLQB3QqS8m+LcW/nCdjuvfRpHFkB2l8GKfQA61xE6tYp8D3Z
- vlUC0dgwn8vslL2tZmQ00XyvP+4U2zVxFhwpYLObaOAQ/kFNFrY6EQqg7iFSDcNUNg2Ka/WYf
- uWJvXz7R9xtbfzYDdcZ7s4IgU2IMbFe5Yxr703r15RlQ+AG72FXHxXQDeaSGWc6lC7BKtWIDO
- mv0aGttTV9cw9kk3WKKAKrB47v/6LXCN3Bwv6sJRv2YuKLvPqbIQVBSovGcT9/V207M6L+M90
- kxDhyQJaBWteCldtWxNG9v0G181kKALzhuv6zDF9bCFjOonaHT4bIJBthqM+NLPcnyD5oEEFB
- RvjflBLfW5A3aw44FKpoWTylAE7SXblM8/ZHD3SSWm6TjoBMGg5rduQMqrct+5uLSRfbfRVQ7
- NM1h7kahi+iFSJSko/9tcQLObACIZ0XKU+yheonmXNLf+0rekILZC0H5APe0BfWkXcdx+JmpQ
- qLg1vSCJS3ZuK1MuMhFB452klqkg7r+cj3S3HrpvAWA32aPlBvPHxw7WyC3VFW4zhZDo7CvPa
- Ez0Rcm0gr4vLU/SuNjPljHlMcD85TFBaNebg1CYNaTReHLE8BICdF9Mnyoq4+FoyaZWnZ9d9Z
- sPNVqzo5E1/DpwEAlvQfSHpxdDjdap5P6E6Hr45uXY/Ad73/Sgp433rpW9sA21oZ5mlo9Fku6
- 1uY/eZFCHTNq/7QfrdJeCOpaeIfHMEDxC1WXal4b+DN8qxM3rPwU5vrRb4ZzPBafZA0V8fA
+X-Provags-ID: V03:K1:DhG4r/jap2Rxn2hhGsDsLLtJfLXOkA96wFdPmt7n1HadfPTUCgO
+ Ne8TmxTwsRvRctsIoWRMD48DhQjniE0NTYsZ5cRbZD0JUa46saOLZvFWgvvUu/gzkUe4+Jm
+ NFS0r1U3b18CYTrGklvioOMbGuKNX8MvMfatWwuBSJeIxUOFEYOPo4aHS2p66p/eDC7ohtm
+ Elvm/9SS7aqiRtarMChNw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GlyQIt+EsVU=:nVN7RY92h6giu1pUMgZvx6
+ mcxEdblbJm3Xug2Rvgujo4v2fAxfYfd/6edtH0OyW3GRhT1iJOXF0z29vLgoJHi16A1apIL11
+ knDozorwRwp+47X+41pGKl2pToGgYSKwRDMpIclgS9Em4AcKr4f2SVIcIrI2+o3u/sfuILlE1
+ wqaP60QvHiyshAp+zT2PjRQ2Tg10uo3Wbv8EsGhyhvLAHosKxSCnytguLGocZIfGDZNzMDZ0d
+ b9VH9gLG904mXqDeDkzQQkcmtA8oROG7DhAeq/Gn5yAVDLSo1DvHuqltgIzrjcmc1Ae27STc+
+ EsRQfvSr2l9V0JDhmZLffQ6aURTG8CUe5zExzwVFIbCOHW1NK+eMvkeVC37yUl+mQ7ytWzY0n
+ erThmS11KPB23MQkoPMxaWWgGcYPRYEhyDKlvD2AC2ZTi3uXaBG/EJ8Mz6PZBWwAjmoJo7pBG
+ BmAvgZspgHjhZ97WQBGSn0SEiPajY3UhXDCaeVj6+wzgLSJJUR1pGhtKy2CTAo79+AEheD4i6
+ hwzkt2SghkOwiSxCpIHYtaA2I0+sFONRxLgEuCg2/asDsoFI4Io1msTwgkP1vvyG3vJ7e7sFY
+ 2YXRl2+Asat2pIWSnEX4LjUVCaR+4YDDPe6RlaKgBxg5Dl1E+ZS1xlePHunSDKhDFo/+tQ+w7
+ JKNwoxYP7KsRGd825uDqWp6EhZO3bY2L5HoPG5mg3/F5TLzVwBR9zNu2cvhhEZx2Yf7k27C/C
+ 1wM2lvPlH5IBjb5jjdFO4osSRaDA2BPxZGwnv4FOfLNxy/RjgJ7HIzp9+Tg+ZS/gHqFZtqapW
+ PpwwFhfBfb31/pIdC5bbTrHvHBSRwcML7YaQTRXoMhcb6RzeSfuYGrnmd38yTsrxrIn3CRW
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,128 +107,164 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2020 18:32:04 -0000
+X-List-Received-Date: Mon, 02 Mar 2020 18:39:22 -0000
 
-Le 02/03/2020 à 19:18, Lirong Yuan a écrit :
-> On Mon, Mar 2, 2020 at 6:39 AM Laurent Vivier <laurent@vivier.eu> wrote:
+Le 02/03/2020 à 18:53, Lirong Yuan a écrit :
+> On Mon, Mar 2, 2020 at 6:56 AM Laurent Vivier <laurent@vivier.eu> wrote:
 >>
->> Le 21/02/2020 à 21:28, Lirong Yuan a écrit :
->>> This change adds the support for AT_EXECFN and AT_EXECFD auxval.
+>> Le 29/02/2020 à 01:43, Lirong Yuan a écrit :
+>>> On Fri, Feb 21, 2020 at 5:09 PM Lirong Yuan <yuanzi@google.com> wrote:
+>>>>
+>>>> This change allows us to set custom base address for guest programs. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
+>>>> https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
 >>
->> Why do we need AT_EXECFD?
->>
->> AT_EXECFD is normally only used with binfmt_misc so I don't see any use
->> cases for it with QEMU.
->>
->> For AT_EXECFN, according to kernel commit
->>
->>   651910874633 execve filename: document and export via auxiliary vector
->>
->> It sould be like readlink("/proc/self/exe",), and thus I think we should
->> use realpath() like we have in syscall.c for TARGET_NR_readlink:
->>
->>  8843     case TARGET_NR_readlink:
->> ...
->>  8854                 char real[PATH_MAX], *temp;
->>  8855                 temp = realpath(exec_path, real);
->> ...
+>> Could you give more details and some examples?
 >>
 >> Thanks,
 >> Laurent
 >>
+>>>> Signed-off-by: Lirong Yuan <yuanzi@google.com>
+>>>> ---
+>>>>  linux-user/main.c | 12 ++++++++++++
+>>>>  linux-user/mmap.c |  3 ++-
+>>>>  linux-user/qemu.h |  5 +++++
+>>>>  3 files changed, 19 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/linux-user/main.c b/linux-user/main.c
+>>>> index fba833aac9..c01af6bfee 100644
+>>>> --- a/linux-user/main.c
+>>>> +++ b/linux-user/main.c
+>>>> @@ -336,6 +336,16 @@ static void handle_arg_guest_base(const char *arg)
+>>>>      have_guest_base = 1;
+>>>>  }
+>>>>
+>>>> +static void handle_arg_mmap_base(const char *arg)
+>>>> +{
+>>>> +    int err = qemu_strtoul(arg, NULL, 0, &mmap_base);
+>>>> +    if (err) {
+>>>> +        fprintf(stderr, "Invalid mmap_base: %s, err: %d\n", arg, err);
+>>>> +        exit(EXIT_FAILURE);
+>>>> +    }
+>>>> +    mmap_next_start = mmap_base;
+>>>> +}
+>>>> +
+>>>>  static void handle_arg_reserved_va(const char *arg)
+>>>>  {
+>>>>      char *p;
+>>>> @@ -440,6 +450,8 @@ static const struct qemu_argument arg_table[] = {
+>>>>       "uname",      "set qemu uname release string to 'uname'"},
+>>>>      {"B",          "QEMU_GUEST_BASE",  true,  handle_arg_guest_base,
+>>>>       "address",    "set guest_base address to 'address'"},
+>>>> +    {"mmap_base",  "QEMU_MMAP_BASE",   true,  handle_arg_mmap_base,
+>>>> +     "",           "begin allocating guest pages at this host address"},
+>>>>      {"R",          "QEMU_RESERVED_VA", true,  handle_arg_reserved_va,
+>>>>       "size",       "reserve 'size' bytes for guest virtual address space"},
+>>>>      {"d",          "QEMU_LOG",         true,  handle_arg_log,
+>>>> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+>>>> index 8685f02e7e..3f35543acf 100644
+>>>> --- a/linux-user/mmap.c
+>>>> +++ b/linux-user/mmap.c
+>>>> @@ -189,6 +189,7 @@ static int mmap_frag(abi_ulong real_start,
+>>>>  # define TASK_UNMAPPED_BASE  0x40000000
+>>>>  #endif
+>>>>  abi_ulong mmap_next_start = TASK_UNMAPPED_BASE;
+>>>> +abi_ulong mmap_base = TASK_UNMAPPED_BASE;
+>>>>
+>>>>  unsigned long last_brk;
+>>>>
+>>>> @@ -299,7 +300,7 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
+>>>>
+>>>>              if ((addr & (align - 1)) == 0) {
+>>>>                  /* Success.  */
+>>>> -                if (start == mmap_next_start && addr >= TASK_UNMAPPED_BASE) {
+>>>> +                if (start == mmap_next_start && addr >= mmap_base) {
+>>>>                      mmap_next_start = addr + size;
+>>>>                  }
+>>>>                  return addr;
+>>>> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+>>>> index 560a68090e..83c00cfea2 100644
+>>>> --- a/linux-user/qemu.h
+>>>> +++ b/linux-user/qemu.h
+>>>> @@ -161,6 +161,11 @@ void task_settid(TaskState *);
+>>>>  void stop_all_tasks(void);
+>>>>  extern const char *qemu_uname_release;
+>>>>  extern unsigned long mmap_min_addr;
+>>>> +/*
+>>>> + * mmap_base is minimum address to use when allocating guest pages. All guest
+>>>> + * pages will be allocated at this (guest) address or higher addresses.
+>>>> + */
+>>>> +extern abi_ulong mmap_base;
+>>>>
+>>>>  /* ??? See if we can avoid exposing so much of the loader internals.  */
+>>>>
+>>>> --
+>>>> 2.25.0.265.gbab2e86ba0-goog
+>>>>
 >>>
->>> Signed-off-by: Lirong Yuan <yuanzi@google.com>
->>> ---
->>>  linux-user/elfload.c | 13 +++++++++----
->>>  1 file changed, 9 insertions(+), 4 deletions(-)
+>>> Friendly ping~
 >>>
->>> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
->>> index f3080a1635..7e0f3042f1 100644
->>> --- a/linux-user/elfload.c
->>> +++ b/linux-user/elfload.c
->>> @@ -1568,7 +1568,7 @@ struct exec
->>>                                   ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
->>>  #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
->>>
->>> -#define DLINFO_ITEMS 15
->>> +#define DLINFO_ITEMS 17
->>>
->>>  static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
->>>  {
->>> @@ -1888,11 +1888,14 @@ static abi_ulong loader_build_fdpic_loadmap(struct image_info *info, abi_ulong s
->>>      return sp;
->>>  }
->>>
->>> -static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
->>> +static abi_ulong create_elf_tables(struct linux_binprm *bprm,
->>>                                     struct elfhdr *exec,
->>>                                     struct image_info *info,
->>>                                     struct image_info *interp_info)
->>>  {
->>> +    abi_ulong p = bprm->p;
->>> +    int argc = bprm->argc;
->>> +    int envc = bprm->envc;
->>>      abi_ulong sp;
->>>      abi_ulong u_argc, u_argv, u_envp, u_auxv;
->>>      int size;
->>> @@ -2032,6 +2035,8 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
->>>      NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
->>>      NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
->>>      NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
->>> +    NEW_AUX_ENT(AT_EXECFN, info->file_string);
->>> +    NEW_AUX_ENT(AT_EXECFD, bprm->fd);
->>>
->>>  #ifdef ELF_HWCAP2
->>>      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
->>> @@ -2870,8 +2875,8 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
->>>  #endif
->>>      }
->>>
->>> -    bprm->p = create_elf_tables(bprm->p, bprm->argc, bprm->envc, &elf_ex,
->>> -                                info, (elf_interpreter ? &interp_info : NULL));
->>> +    bprm->p = create_elf_tables(bprm, &elf_ex, info,
->>> +                                (elf_interpreter ? &interp_info : NULL));
->>>      info->start_stack = bprm->p;
->>>
->>>      /* If we have an interpreter, set that as the program's entry point.
+>>> Link to the page for the patch on patchwork:
+>>> http://patchwork.ozlabs.org/patch/1242370/
 >>>
 >>
 > 
 > Hi Laurent,
-
-Hi Lirong,
-
-> I added support for AT_EXECFD because I thought it might be useful to
-> implement all types that getauxval could take as an argument.
-> Would you prefer that it be removed?
-
-I think providing the AT_EXECFD to the target binary could make it think
-it has been run directly by binfmt_misc (as an interpreter itself), and
-that is not the case (qemu is run by binfmt_misc and is the interpreter).
-
-So I would prefer you remove it.
-
-> For AT_EXECFN, there are two questions that we considered:
-> 1) What should it return?
-> Since QEMU is emulating running the guest program, the function should
-> return the file name of the guest program (info->file_string), rather
-> than the QEMU program itself, which we get from
-> qemu_getauxval(AT_EXECFN).
 > 
-> 2) Should it return the full path or as is?
-> We tested the behavior of getauxval with a simple test program on
-> Linux, and it turned out that it returned file path as is. For
-> example,
-> $ ./test
-> getauxval(AT_EXECFN): ./test
-> $ /usr/local/home/tmp/test
-> getauxval(AT_EXECFN): /usr/local/home/tmp/test
+> Sure! We tried to run a program with TSAN enabled
+> (https://github.com/google/sanitizers/wiki/ThreadSanitizerCppManual)
+> in qemu, and got this error message:
+> "FATAL: ThreadSanitizer: unexpected memory mapping
+> 0x004000000000-0x004000253000"
+> 
+> The root cause is that the default guest base address that qemu uses
+> is 0x4000000000 (1ul<<38), and does not align with TSAN's expectation:
+> https://github.com/qemu/qemu/blob/c81acb643a61db199b9198add7972d8a8496b27c/linux-user/mmap.c#L187
+> https://github.com/llvm/llvm-project/blob/e7de00cf974a4e30d4900518ae8473a117efbd6c/compiler-rt/lib/tsan/rtl/tsan_platform.h#L150
+> 
+> By setting QEMU_GUEST_BASE, we can place the guest program at a
+> different base address in the host program. However, the h2g function
+> (in |open_self_maps| in syscall.c) translates the address back to be
+> based at 0x4000000000. E.g. the base address
+> 0x4000000000+QEMU_GUEST_BASE will be converted to 0x4000000000 with
+> function h2g:
+> https://github.com/qemu/qemu/blob/c81acb643a61db199b9198add7972d8a8496b27c/linux-user/syscall.c#L7076
+> 
+> One solution then, is to update |open_self_maps| in syscall.c to not
+> use h2g. However this changes the meaning of QEMU_GUEST_BASE and could
+> break existing programs that set non-zero QEMU_GUEST_BASE.
+> 
+> So, how did qemu pick the base address 0x4000000000 then? Looking at
+> the blame output in github, one recent change for the base address was
+> committed 10 years ago:
+> https://github.com/qemu/qemu/c|open_self_maps| in
+> syscall.commit/14f24e1465edc44b9b4d89fbbea66e06088154e1
+> 
+> Another one was committed 12 years ago:
+> https://github.com/qemu/qemu/commit/a03e2d421e7f33316750d6b7396d1a7e14b18d53
+> 
+> The description of the first change is "place the default mapping base
+> for 64-bit guests (on 64-bit hosts) outside the low 4G". It would seem
+> that minimum requirements for the base address are:
+> 1) addr >= 4G (for 64-bit)
+> 2) addr < lowest address used by the host qemu program by some margin
+> 
+> Given that
+> 1) only TSAN explicitly check for the validity of addresses
+> 2) 0x4000000000 is not a valid address for programs on aarch64
+> (according to TSAN)
+> 3) different architectures have different valid addresses,
+> it would seem that adding an argument for changing the hard-coded base
+> address is a viable solution.
 
-If you have compared the result with the real one it's fine for me.
+Thank you for the detailed explanation.
 
-Resend tou patch without the AT_EXECFD part and it will be good.
+Could you show me an example of the QEMU command line you use?
+
+I'm wondering if hardcoding directly the good value would be a better
+solution?
+
+Richard, do you have some thoughts on this?
 
 Thanks,
 Laurent
-
 
