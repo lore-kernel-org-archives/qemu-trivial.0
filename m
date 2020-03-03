@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j92K4-0005uq-TF
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 02:50:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33838)
+	id 1j942X-0001Zn-C2
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 04:40:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48053)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j92K2-0005ug-AJ
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 02:50:35 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j942U-0001Zf-Q6
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:40:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j92K1-00049S-6c
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 02:50:34 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:57413)
+ (envelope-from <laurent@vivier.eu>) id 1j942T-0001kf-Pv
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:40:34 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:52741)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j92K0-00048v-U2; Tue, 03 Mar 2020 02:50:33 -0500
+ id 1j942R-0001jq-Et; Tue, 03 Mar 2020 04:40:31 -0500
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N79dk-1jRyrb1HRs-017SB0; Tue, 03 Mar 2020 08:50:23 +0100
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MStKw-1iwS4n3FDa-00UJ1e; Tue, 03 Mar 2020 10:40:23 +0100
 Subject: Re: [PATCH v2] linux-user: Add AT_EXECFN auxval
 To: Lirong Yuan <yuanzi@google.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, scw@google.com, jkz@google.com,
@@ -63,8 +63,8 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7458ac82-2dee-7fcb-d6c1-2c84e0ed972b@vivier.eu>
-Date: Tue, 3 Mar 2020 08:50:20 +0100
+Message-ID: <d9dc23a7-61a8-c28a-47e0-4a4d9590be04@vivier.eu>
+Date: Tue, 3 Mar 2020 10:40:22 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
@@ -72,25 +72,25 @@ In-Reply-To: <20200302193153.66415-1-yuanzi@google.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:n5WfMXkGoFlSGOAr2flKbfBq0nijklFn0h3QpoNvcAQfuhSxmgM
- Ufnuuwanm8PjmHAfl0IoOD+mBWRXdVuaVgRI1TRHRSY6uVw+svkc92XfS1OCF5Gs+YGnoxS
- BmSeXuofa7/it44UhvF4ndOG2fk77WYcwGYBXgakGYQ6EqcHERiYzF2izZhnnQbkaJqmXMb
- 6LCl3bCCnR12ebBAxWW3g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:LvWPwrJYS6c=:sOrkasBlcpCGWDRwITRBrd
- qyrjpr+gFRHYksGLla1Sp5vW0CQx6OTXPkGoSzjST+1yc8sMuBvDjT2G6VhwLXDVbNDThqGI7
- uLJCxgwDqhL3nNKYDH7TWKyxOcDp9wMeMLv6WnhRn9dWR+PKMNdenEMv/W9f09f3K2WpgRBam
- rTiUoEWUgCi7T9Fq3/ZMgoUE/rZGjTbW0iNBckKlhg0pomGzCYpssw8XyGEhAvihz0l+p9anO
- IxkMVUzG40v0LLbEGwDTvn7zGvT0VDfDGj5CChdLCpKndRnIlbNhkQoGb2e3ttIhY72btJFkL
- humEEEnW0yUgPCuLB/Kti/hNSOuEDULcYi4UmdQ1BFCqS9+vL6Ftg7UwAYjeY5aWeWthhLF+H
- g2zGieXv10zb3hTQe5FFWXKG2DpNGEQJPoxtPLDpvwn7Q3g2Wg7kIutu6geyTwa9t8Yb8G7Yg
- jjp04gSORcdKDAEkLGv0SI3ZY4JFfdxuw+aWhg10JINsNBiQnVc2DpYH0/G99hPA91+uur6mq
- dQtSgS8L6m7cutEkBTjH+s/+Br3RXwJ6tt3DVM9IgwWQgEwUgH0eS4MST+uU3PS8dKe3mK+uP
- u4IbamRJLbW4oMIga/1vYAsJWGeFHXlUVAbZrcR5/HAiaspQGfVjGxHpxOB4qxuHDyVpqDC09
- TiETwS7M+ut17+QYeCe4F3/wIzMAfzoL1lfwiMwGwY3eads8xJoUHK4GMd5TLsQsh/RMuBW1z
- UsyY/VyIgreMO32K4KoUnhm7aEcVRwoEAQM1PsxRJ/oegvPTX+vD/EmDQTg9G0sm8PF9bYsED
- C/h9EdoxFSoRt5RCtvx0m2+FxkX7ShBZ4TghOzU+DESmUA0XT1J0No7ocWlBnPmi9fhiBmK
+X-Provags-ID: V03:K1:VqaWaLAIjjs0nnUfakPQXUoNjSe8FXn61Kh2uHK0EP13nr8le4F
+ P18L7f+03/vU2n0i8RpIXDzE9EbWin4HDqBq8e6LQ56mPKWIRDcicuG47ihRM3eI4m5kMpU
+ GN6sqRJbf2oKJC0XMjBPB+n1PRTyKOBp2ZTUeoVJIxKnd08SbeaUCdk9vqXA9LJmOn8EnhS
+ BIQUYNVnGCuFSm/PjdGpg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uV7M9feddg8=:B88iVTfB43+hVBSwtK099Q
+ rzlrrVN76FfomjSosHT356kad7J6dLcTGqTz2UiLFWr1p8MbBY550wwZR/bBqpG6HNGQO6ocr
+ n5B47epSP4eIkhq00JLuwyTIztUOVE/lBQSj+fzXXHJhG20w9QREc/+GoaopwDSc5OFki0vVX
+ f6Y8W12wd3b0EMskxBGJEdeKx/QfP7QEPDApwK2hqeLvFfzESONeSJTSCkGqS6Y6w6cM5mLg2
+ udO5ECynU9kE82K7XV30ikWQdoMHyW2Ye76kgmaG/XYwrvvG+mwynbQvFeg2ZDXMpakFo44ud
+ SPJ8Duj7YxIs8iB7boAL5bNKV81hRnwwESaiigJOIkFonksW0oDqUrst9J8qmhbF3zxSXlItH
+ cf5JjO6lhTBSgoMezuBYK88HLnn6Up8L5+MGHyd/rUyqkwc2FPglYlVOOWwKN+Nw6k5Tbg944
+ PYLeuD0KEv7mKMsSeCyJbbGN9MK/eAHzPJbTvXpK/bfO9nClKh5o8UOa/isHPhQ2dsjCyP6Mo
+ puiBmhwn9SM4R6/mWrkZ1iRnIOf5HlNVGTTXjWLjBf7HG83Ld/fkmgo3d2S2j73J26C98iJMe
+ tm8i4bsiScc4tIoUhhdbZ2dFZ0MtAkRdS/NhKPyQfQGGCVp0aeOlPzz6dQbbRUWYo5powa6MI
+ flxBHhFUCQcE4sUB2DxcMUXMqv/tY7dkM/HjyVJddtoOTE1eEEOD9sw6bs4m8mwS6TgDpibIA
+ tKV7TI2w2bGTuP+ycreQbIT0ppVP/NTuk4nfoPrWwn2fnyb8GLsCJNR1nwVVgM9KvA/JHSdny
+ rXACr8GiQOHQPe0rqB+FgDeOTwKtLUVWpijLHzoUoNheyxr3yKSUUndPFSjy2qKXGAMLND2
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,7 +102,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2020 07:50:35 -0000
+X-List-Received-Date: Tue, 03 Mar 2020 09:40:36 -0000
 
 Le 02/03/2020 à 20:31, Lirong Yuan a écrit :
 > This change adds the support for AT_EXECFN auxval.
@@ -138,5 +138,8 @@ Le 02/03/2020 à 20:31, Lirong Yuan a écrit :
 >      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my linux-user branch.
+
+Thanks,
+Laurent
 
