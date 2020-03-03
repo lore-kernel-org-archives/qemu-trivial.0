@@ -1,27 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j94Hx-0007tb-D5
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 04:56:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50375)
+	id 1j94OP-0002Qi-FO
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 05:03:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51344)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j94Hu-0007qJ-J7
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:56:31 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j94ON-0002P0-I5
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:03:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j94Ht-0008HS-Jn
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:56:30 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:56295)
+ (envelope-from <laurent@vivier.eu>) id 1j94OM-0003kg-He
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:03:11 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:46657)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j94Hr-0008Fy-4i; Tue, 03 Mar 2020 04:56:27 -0500
+ id 1j94OK-0003k8-8c; Tue, 03 Mar 2020 05:03:08 -0500
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MkpKR-1jnacb282Z-00mKKs; Tue, 03 Mar 2020 10:56:14 +0100
-Subject: Re: [PATCH] hw/unicore32/puv3: Simplify puv3_soc_init()
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MeCxj-1jh21h0HgN-00bLZw; Tue, 03 Mar 2020 11:02:54 +0100
+Subject: Re: [PATCH] hw/nios2/boot: Remove dead code (big endian check)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200221162325.28194-1-philmd@redhat.com>
+Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jenner <andrew@codesourcery.com>, qemu-trivial@nongnu.org,
+ Chris Wulff <crwulff@gmail.com>, Julian Brown <julian@codesourcery.com>,
+ Sandra Loosemore <sandra@codesourcery.com>,
+ Richard Henderson <rth@twiddle.net>
+References: <20200225115140.10023-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <87fde6ef-5579-3539-a35a-ecc3b1661175@vivier.eu>
-Date: Tue, 3 Mar 2020 10:56:12 +0100
+Message-ID: <7671cb2b-965c-ead3-92f0-9ecfa0500f6a@vivier.eu>
+Date: Tue, 3 Mar 2020 11:02:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200221162325.28194-1-philmd@redhat.com>
+In-Reply-To: <20200225115140.10023-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TVTuFw2zLrsJaTxIWKVSErrc/6nxwFFmVyfj/1T15lIpTsnUF4f
- v8pTO62eMWOXiCf0/jo1fG3LNXfKnnhr9HcDk1LKdD2tBRjBb2w3O3aC6xkoLEk9mBKYZLx
- oPTiuQmREJKBuCvigDVXd1NlqNWiFtJMKFvkF8SMBwZmVKj78zTpjFSQM9p5Xb7tUHGZjNj
- lOSx0sYNnHpHJ7UQh0GJQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:CE6enpv29Fo=:sMYSLgKPZCbUvelVqX0wj3
- 9URyUDftm1OKIK9ky1dI+w88OWmcMLbIWh7c0OnPx14LP0rYfk7FQvFPgkoClC0B2UfU2RtUT
- WQTKLlBzsz/jQ9c952e6jtNzlTqlnzxVu+cQ01ru1TJr2/UzG/sflLJEHBq353tN334BE0ITs
- RXh5JUA7ZY3g1fJ/KaBORyGKT+qO/IU/nkyDkXe/UsmlODMBbdqznSAt54XzraqAaEW9Ef7hc
- 7E9pwczKPQsk5cFdgXZC3H9JAN64IGrGLb//dZIk+sCzscqMqvENxvrFCeEvtmQDPGJOYbdnO
- GxXswSbT9Nc7MD1rMBHTryfZLGfgZu0IBYquJjsA9lJaw37sh9Os9l52UJFJkL2mxIsttB1fv
- Y9OzISRzaDp7NEPtHSVEkqNJZ/Kb715P/me2vioyrGfTrU/Qw60Ub+iUYyixCNdQnGEI5wm1h
- jnlTcLlea4zPbVJcbv5aTS+UoMyMPk3HeJmskMnyAVMdZL7D9MlZhMKta47QwZk7QkLjVqfdL
- lKHpoRD64YU7vBn6GiJGNxjujoBof2R+oFNAJdw2/ew3a5SF5T1XiF9cj8eQDvM4gJuGeCZzt
- AGmIhze3j/oR6Jq+wAK02OK2rJWrgZGLTxfz9xBfWvoARdTzP7RR1LXdH13xzDqogGzjM00x2
- NjlwGlHv+sewS9xxTCK2HLC3mqkpuHaoI99AhDDzffB6XDtO7IphvuawAwCEUDbj4Q16bDaKu
- 8lIjHWQX0/dQD65gHZ0f2hdk7EcGAzXDJTX+Ctdw5RVBN6AOeh3lXExggplXzErjj8ktDzr8T
- TfLlNlwgy4Z3P11EnmBq9sANkM0cCqKlRVioGTNTDBNiWOlsT77gNnEe+Rp6knleNPb5y4x
+X-Provags-ID: V03:K1:+pXMbzew0B9HB8ZkrL6HdGMsrSQc4wfcijPa6HcT8Kd1X1YkwZ2
+ u46HpMypBJtjwrliTByElDDfq+A/idi/1y4fsiCe+KK6Z1u91pQubbDRbYutbItwp1Hn4eE
+ WS+BhPFiWDEMUyT9DD2sEpfM3MQHIT+KTw0JkPt2PccqDnqnwcWRz8n83vzkZdF78ZpGeca
+ 1OXM/glUKb6+mdZgDSavQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:326kxxqNPxY=:FzX/IIZvogPWtAUR3cY7I3
+ NIWAblvFHG6KWN494ZnT3nqzk0RcvS9Nu+HyHo0m5DssYqAfYAuOY0IvskxiobRgRuyoCuzQ+
+ 8EhAoPNhghh1bUwf9G0xCyZdIaToH03u2CKkGnDv8qq6q9XlKBS+ftRlinj1kF9cxvBMc4C+w
+ JRCNn+k5ROvn4gvVot8H78KXWKXbpmI6PDIaEufKaobNNG04kzAfoNKxErSJ1lWvffEJdti45
+ XmgdeQFA5d8CIicTwOXoQCgF5ELjZOtdJGtHYuPogk39BWhVZ9zEOin/8lGApvSFiNaFQQNzJ
+ ik+1KM2cURobsfQu0vto1NG523WMc2IHYSngh5iu5eVHKu7X78y77uMjwJ6mxgfUJ5hGxGuIo
+ V3T/I1dPt5mig216jK2VwglMXk4vXlVXx0rBqSHnPwVHOQ9XGuIIdl9eMH0EApGnJY+uZS3G9
+ MDH6tnM0P6bwNVOtB5Vdx4l0Q/NzSih1beRl1LmMzdGIv9kg9GdVmRR1AyelgwDYUZaT5WEkq
+ Fv8KkipEdwH+oSPVW1orU6TWjsRSn41mGRU3D0/lzEAOKKObyEywMFvtodYwyWF7ij9HV8dHQ
+ J6TautyZUNjhaT0+3rYPnTL6jYA5SZla1zcTeaXhL0ytPWRoghm1uVoZ67fmlPn1GURxpKDw0
+ btF9VV1ENUdWksUR7eHvttJl22lIu6UR3yvHOXZTQfiBH9neE6QHJXK1d1+NC5K/rTkd8BdZP
+ dSYC22DSuWqrwgfRPcq4auc24l3t0hqoMf/oG+JGXSAk/HJHMlcJodyVkvxAnBQc6xMAwhhIT
+ C2+fs0N1Bx/Mykopj3JTiwnzcXEeVble2pE7iqm7YrpDjIfmAlFz4DcITFqaq/iir1R/y5Q
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,54 +106,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2020 09:56:31 -0000
+X-List-Received-Date: Tue, 03 Mar 2020 10:03:12 -0000
 
-Le 21/02/2020 à 17:23, Philippe Mathieu-Daudé a écrit :
-> Since commit d8ed887bdc, the puv3_intc_cpu_handler handler takes
-> a pointer to UniCore32CPU in its opaque argument.  Directly pass
-> the cpu pointer.
+Le 25/02/2020 à 12:51, Philippe Mathieu-Daudé a écrit :
+> We only build the little-endian softmmu configuration (all
+> Nios II processors are only little endian). Checking for
+> big endian is pointless, remove the unused code.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/unicore32/puv3.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>  hw/nios2/boot.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
 > 
-> diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
-> index 7e933de228..eec7f561eb 100644
-> --- a/hw/unicore32/puv3.c
-> +++ b/hw/unicore32/puv3.c
-> @@ -48,7 +48,7 @@ static void puv3_intc_cpu_handler(void *opaque, int irq, int level)
->      }
->  }
+> diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
+> index 88224aa84c..000f8205d6 100644
+> --- a/hw/nios2/boot.c
+> +++ b/hw/nios2/boot.c
+> @@ -140,16 +140,11 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
+>      if (kernel_filename) {
+>          int kernel_size, fdt_size;
+>          uint64_t entry, low, high;
+> -        int big_endian = 0;
+> -
+> -#ifdef TARGET_WORDS_BIGENDIAN
+> -        big_endian = 1;
+> -#endif
 >  
-> -static void puv3_soc_init(CPUUniCore32State *env)
-> +static void puv3_soc_init(UniCore32CPU *cpu)
->  {
->      qemu_irq cpu_intc, irqs[PUV3_IRQS_NR];
->      DeviceState *dev;
-> @@ -56,8 +56,7 @@ static void puv3_soc_init(CPUUniCore32State *env)
->      int i;
->  
->      /* Initialize interrupt controller */
-> -    cpu_intc = qemu_allocate_irq(puv3_intc_cpu_handler,
-> -                                 env_archcpu(env), 0);
-> +    cpu_intc = qemu_allocate_irq(puv3_intc_cpu_handler, cpu, 0);
->      dev = sysbus_create_simple("puv3_intc", PUV3_INTC_BASE, cpu_intc);
->      for (i = 0; i < PUV3_IRQS_NR; i++) {
->          irqs[i] = qdev_get_gpio_in(dev, i);
-> @@ -131,7 +130,7 @@ static void puv3_init(MachineState *machine)
->      cpu = UNICORE32_CPU(cpu_create(machine->cpu_type));
->      env = &cpu->env;
->  
-> -    puv3_soc_init(env);
-> +    puv3_soc_init(cpu);
->      puv3_board_init(env, ram_size);
->      puv3_load_kernel(kernel_filename);
->  }
+>          /* Boots a kernel elf binary. */
+>          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
+>                                 &entry, &low, &high, NULL,
+> -                               big_endian, EM_ALTERA_NIOS2, 0, 0);
+> +                               0, EM_ALTERA_NIOS2, 0, 0);
+>          if ((uint32_t)entry == 0xc0000000) {
+>              /*
+>               * The Nios II processor reference guide documents that the
+> @@ -160,7 +155,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
+>              kernel_size = load_elf(kernel_filename, NULL,
+>                                     translate_kernel_address, NULL,
+>                                     &entry, NULL, NULL, NULL,
+> -                                   big_endian, EM_ALTERA_NIOS2, 0, 0);
+> +                                   0, EM_ALTERA_NIOS2, 0, 0);
+>              boot_info.bootstrap_pc = ddr_base + 0xc0000000 +
+>                  (entry & 0x07ffffff);
+>          } else {
 > 
 
-I think you can remove totally env as puv3_board_init() doesn't use it.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
