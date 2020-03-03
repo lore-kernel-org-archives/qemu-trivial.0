@@ -1,25 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j942X-0001Zn-C2
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 04:40:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48053)
+	id 1j94Hx-0007tb-D5
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 04:56:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50375)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j942U-0001Zf-Q6
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:40:35 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j94Hu-0007qJ-J7
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:56:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j942T-0001kf-Pv
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:40:34 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:52741)
+ (envelope-from <laurent@vivier.eu>) id 1j94Ht-0008HS-Jn
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 04:56:30 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:56295)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j942R-0001jq-Et; Tue, 03 Mar 2020 04:40:31 -0500
+ id 1j94Hr-0008Fy-4i; Tue, 03 Mar 2020 04:56:27 -0500
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MStKw-1iwS4n3FDa-00UJ1e; Tue, 03 Mar 2020 10:40:23 +0100
-Subject: Re: [PATCH v2] linux-user: Add AT_EXECFN auxval
-To: Lirong Yuan <yuanzi@google.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, scw@google.com, jkz@google.com,
- Riku Voipio <riku.voipio@iki.fi>
-References: <20200302193153.66415-1-yuanzi@google.com>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MkpKR-1jnacb282Z-00mKKs; Tue, 03 Mar 2020 10:56:14 +0100
+Subject: Re: [PATCH] hw/unicore32/puv3: Simplify puv3_soc_init()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20200221162325.28194-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,34 +65,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <d9dc23a7-61a8-c28a-47e0-4a4d9590be04@vivier.eu>
-Date: Tue, 3 Mar 2020 10:40:22 +0100
+Message-ID: <87fde6ef-5579-3539-a35a-ecc3b1661175@vivier.eu>
+Date: Tue, 3 Mar 2020 10:56:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200302193153.66415-1-yuanzi@google.com>
+In-Reply-To: <20200221162325.28194-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VqaWaLAIjjs0nnUfakPQXUoNjSe8FXn61Kh2uHK0EP13nr8le4F
- P18L7f+03/vU2n0i8RpIXDzE9EbWin4HDqBq8e6LQ56mPKWIRDcicuG47ihRM3eI4m5kMpU
- GN6sqRJbf2oKJC0XMjBPB+n1PRTyKOBp2ZTUeoVJIxKnd08SbeaUCdk9vqXA9LJmOn8EnhS
- BIQUYNVnGCuFSm/PjdGpg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:uV7M9feddg8=:B88iVTfB43+hVBSwtK099Q
- rzlrrVN76FfomjSosHT356kad7J6dLcTGqTz2UiLFWr1p8MbBY550wwZR/bBqpG6HNGQO6ocr
- n5B47epSP4eIkhq00JLuwyTIztUOVE/lBQSj+fzXXHJhG20w9QREc/+GoaopwDSc5OFki0vVX
- f6Y8W12wd3b0EMskxBGJEdeKx/QfP7QEPDApwK2hqeLvFfzESONeSJTSCkGqS6Y6w6cM5mLg2
- udO5ECynU9kE82K7XV30ikWQdoMHyW2Ye76kgmaG/XYwrvvG+mwynbQvFeg2ZDXMpakFo44ud
- SPJ8Duj7YxIs8iB7boAL5bNKV81hRnwwESaiigJOIkFonksW0oDqUrst9J8qmhbF3zxSXlItH
- cf5JjO6lhTBSgoMezuBYK88HLnn6Up8L5+MGHyd/rUyqkwc2FPglYlVOOWwKN+Nw6k5Tbg944
- PYLeuD0KEv7mKMsSeCyJbbGN9MK/eAHzPJbTvXpK/bfO9nClKh5o8UOa/isHPhQ2dsjCyP6Mo
- puiBmhwn9SM4R6/mWrkZ1iRnIOf5HlNVGTTXjWLjBf7HG83Ld/fkmgo3d2S2j73J26C98iJMe
- tm8i4bsiScc4tIoUhhdbZ2dFZ0MtAkRdS/NhKPyQfQGGCVp0aeOlPzz6dQbbRUWYo5powa6MI
- flxBHhFUCQcE4sUB2DxcMUXMqv/tY7dkM/HjyVJddtoOTE1eEEOD9sw6bs4m8mwS6TgDpibIA
- tKV7TI2w2bGTuP+ycreQbIT0ppVP/NTuk4nfoPrWwn2fnyb8GLsCJNR1nwVVgM9KvA/JHSdny
- rXACr8GiQOHQPe0rqB+FgDeOTwKtLUVWpijLHzoUoNheyxr3yKSUUndPFSjy2qKXGAMLND2
+X-Provags-ID: V03:K1:TVTuFw2zLrsJaTxIWKVSErrc/6nxwFFmVyfj/1T15lIpTsnUF4f
+ v8pTO62eMWOXiCf0/jo1fG3LNXfKnnhr9HcDk1LKdD2tBRjBb2w3O3aC6xkoLEk9mBKYZLx
+ oPTiuQmREJKBuCvigDVXd1NlqNWiFtJMKFvkF8SMBwZmVKj78zTpjFSQM9p5Xb7tUHGZjNj
+ lOSx0sYNnHpHJ7UQh0GJQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CE6enpv29Fo=:sMYSLgKPZCbUvelVqX0wj3
+ 9URyUDftm1OKIK9ky1dI+w88OWmcMLbIWh7c0OnPx14LP0rYfk7FQvFPgkoClC0B2UfU2RtUT
+ WQTKLlBzsz/jQ9c952e6jtNzlTqlnzxVu+cQ01ru1TJr2/UzG/sflLJEHBq353tN334BE0ITs
+ RXh5JUA7ZY3g1fJ/KaBORyGKT+qO/IU/nkyDkXe/UsmlODMBbdqznSAt54XzraqAaEW9Ef7hc
+ 7E9pwczKPQsk5cFdgXZC3H9JAN64IGrGLb//dZIk+sCzscqMqvENxvrFCeEvtmQDPGJOYbdnO
+ GxXswSbT9Nc7MD1rMBHTryfZLGfgZu0IBYquJjsA9lJaw37sh9Os9l52UJFJkL2mxIsttB1fv
+ Y9OzISRzaDp7NEPtHSVEkqNJZ/Kb715P/me2vioyrGfTrU/Qw60Ub+iUYyixCNdQnGEI5wm1h
+ jnlTcLlea4zPbVJcbv5aTS+UoMyMPk3HeJmskMnyAVMdZL7D9MlZhMKta47QwZk7QkLjVqfdL
+ lKHpoRD64YU7vBn6GiJGNxjujoBof2R+oFNAJdw2/ew3a5SF5T1XiF9cj8eQDvM4gJuGeCZzt
+ AGmIhze3j/oR6Jq+wAK02OK2rJWrgZGLTxfz9xBfWvoARdTzP7RR1LXdH13xzDqogGzjM00x2
+ NjlwGlHv+sewS9xxTCK2HLC3mqkpuHaoI99AhDDzffB6XDtO7IphvuawAwCEUDbj4Q16bDaKu
+ 8lIjHWQX0/dQD65gHZ0f2hdk7EcGAzXDJTX+Ctdw5RVBN6AOeh3lXExggplXzErjj8ktDzr8T
+ TfLlNlwgy4Z3P11EnmBq9sANkM0cCqKlRVioGTNTDBNiWOlsT77gNnEe+Rp6knleNPb5y4x
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,43 +104,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2020 09:40:36 -0000
+X-List-Received-Date: Tue, 03 Mar 2020 09:56:31 -0000
 
-Le 02/03/2020 à 20:31, Lirong Yuan a écrit :
-> This change adds the support for AT_EXECFN auxval.
+Le 21/02/2020 à 17:23, Philippe Mathieu-Daudé a écrit :
+> Since commit d8ed887bdc, the puv3_intc_cpu_handler handler takes
+> a pointer to UniCore32CPU in its opaque argument.  Directly pass
+> the cpu pointer.
 > 
-> Signed-off-by: Lirong Yuan <yuanzi@google.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> Changelog since v1:
-> - remove implementation for AT_EXECFD auxval.
+>  hw/unicore32/puv3.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 > 
->  linux-user/elfload.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index db748c5877..8198be0446 100644
-> --- a/linux-user/elfload.c
-> +++ b/linux-user/elfload.c
-> @@ -1573,7 +1573,7 @@ struct exec
->                                   ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
->  #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+> diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
+> index 7e933de228..eec7f561eb 100644
+> --- a/hw/unicore32/puv3.c
+> +++ b/hw/unicore32/puv3.c
+> @@ -48,7 +48,7 @@ static void puv3_intc_cpu_handler(void *opaque, int irq, int level)
+>      }
+>  }
 >  
-> -#define DLINFO_ITEMS 15
-> +#define DLINFO_ITEMS 16
->  
->  static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
+> -static void puv3_soc_init(CPUUniCore32State *env)
+> +static void puv3_soc_init(UniCore32CPU *cpu)
 >  {
-> @@ -2037,6 +2037,7 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
->      NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
->      NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
->      NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
-> +    NEW_AUX_ENT(AT_EXECFN, info->file_string);
+>      qemu_irq cpu_intc, irqs[PUV3_IRQS_NR];
+>      DeviceState *dev;
+> @@ -56,8 +56,7 @@ static void puv3_soc_init(CPUUniCore32State *env)
+>      int i;
 >  
->  #ifdef ELF_HWCAP2
->      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+>      /* Initialize interrupt controller */
+> -    cpu_intc = qemu_allocate_irq(puv3_intc_cpu_handler,
+> -                                 env_archcpu(env), 0);
+> +    cpu_intc = qemu_allocate_irq(puv3_intc_cpu_handler, cpu, 0);
+>      dev = sysbus_create_simple("puv3_intc", PUV3_INTC_BASE, cpu_intc);
+>      for (i = 0; i < PUV3_IRQS_NR; i++) {
+>          irqs[i] = qdev_get_gpio_in(dev, i);
+> @@ -131,7 +130,7 @@ static void puv3_init(MachineState *machine)
+>      cpu = UNICORE32_CPU(cpu_create(machine->cpu_type));
+>      env = &cpu->env;
+>  
+> -    puv3_soc_init(env);
+> +    puv3_soc_init(cpu);
+>      puv3_board_init(env, ram_size);
+>      puv3_load_kernel(kernel_filename);
+>  }
 > 
 
-Applied to my linux-user branch.
+I think you can remove totally env as puv3_board_init() doesn't use it.
 
 Thanks,
 Laurent
