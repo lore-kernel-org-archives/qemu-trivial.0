@@ -1,29 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j94OP-0002Qi-FO
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 05:03:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51344)
+	id 1j94ZG-0007BZ-Ic
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 05:14:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53587)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j94ON-0002P0-I5
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:03:12 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j94ZE-00075u-FY
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:14:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j94OM-0003kg-He
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:03:11 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:46657)
+ (envelope-from <laurent@vivier.eu>) id 1j94ZD-000856-5Z
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:14:24 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:34387)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j94OK-0003k8-8c; Tue, 03 Mar 2020 05:03:08 -0500
+ id 1j94ZC-00084k-ST; Tue, 03 Mar 2020 05:14:23 -0500
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MeCxj-1jh21h0HgN-00bLZw; Tue, 03 Mar 2020 11:02:54 +0100
-Subject: Re: [PATCH] hw/nios2/boot: Remove dead code (big endian check)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jenner <andrew@codesourcery.com>, qemu-trivial@nongnu.org,
- Chris Wulff <crwulff@gmail.com>, Julian Brown <julian@codesourcery.com>,
- Sandra Loosemore <sandra@codesourcery.com>,
- Richard Henderson <rth@twiddle.net>
-References: <20200225115140.10023-1-philmd@redhat.com>
+ 1MxmBi-1jIdMZ1gPm-00zCId; Tue, 03 Mar 2020 11:14:05 +0100
+To: pannengyuan@huawei.com, pbonzini@redhat.com, rth@twiddle.net,
+ ehabkost@redhat.com
+Cc: qemu-trivial@nongnu.org, euler.robot@huawei.com, qemu-devel@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+References: <20200224065139.19567-1-pannengyuan@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -67,34 +63,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7671cb2b-965c-ead3-92f0-9ecfa0500f6a@vivier.eu>
-Date: Tue, 3 Mar 2020 11:02:51 +0100
+Subject: Re: [PATCH] target/i386/hax-posix: fix two 'format-truncation'
+ compile warnings
+Message-ID: <e87fbecb-c6fe-e491-76e8-166e15ef977b@vivier.eu>
+Date: Tue, 3 Mar 2020 11:14:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200225115140.10023-1-philmd@redhat.com>
+In-Reply-To: <20200224065139.19567-1-pannengyuan@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+pXMbzew0B9HB8ZkrL6HdGMsrSQc4wfcijPa6HcT8Kd1X1YkwZ2
- u46HpMypBJtjwrliTByElDDfq+A/idi/1y4fsiCe+KK6Z1u91pQubbDRbYutbItwp1Hn4eE
- WS+BhPFiWDEMUyT9DD2sEpfM3MQHIT+KTw0JkPt2PccqDnqnwcWRz8n83vzkZdF78ZpGeca
- 1OXM/glUKb6+mdZgDSavQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:326kxxqNPxY=:FzX/IIZvogPWtAUR3cY7I3
- NIWAblvFHG6KWN494ZnT3nqzk0RcvS9Nu+HyHo0m5DssYqAfYAuOY0IvskxiobRgRuyoCuzQ+
- 8EhAoPNhghh1bUwf9G0xCyZdIaToH03u2CKkGnDv8qq6q9XlKBS+ftRlinj1kF9cxvBMc4C+w
- JRCNn+k5ROvn4gvVot8H78KXWKXbpmI6PDIaEufKaobNNG04kzAfoNKxErSJ1lWvffEJdti45
- XmgdeQFA5d8CIicTwOXoQCgF5ELjZOtdJGtHYuPogk39BWhVZ9zEOin/8lGApvSFiNaFQQNzJ
- ik+1KM2cURobsfQu0vto1NG523WMc2IHYSngh5iu5eVHKu7X78y77uMjwJ6mxgfUJ5hGxGuIo
- V3T/I1dPt5mig216jK2VwglMXk4vXlVXx0rBqSHnPwVHOQ9XGuIIdl9eMH0EApGnJY+uZS3G9
- MDH6tnM0P6bwNVOtB5Vdx4l0Q/NzSih1beRl1LmMzdGIv9kg9GdVmRR1AyelgwDYUZaT5WEkq
- Fv8KkipEdwH+oSPVW1orU6TWjsRSn41mGRU3D0/lzEAOKKObyEywMFvtodYwyWF7ij9HV8dHQ
- J6TautyZUNjhaT0+3rYPnTL6jYA5SZla1zcTeaXhL0ytPWRoghm1uVoZ67fmlPn1GURxpKDw0
- btF9VV1ENUdWksUR7eHvttJl22lIu6UR3yvHOXZTQfiBH9neE6QHJXK1d1+NC5K/rTkd8BdZP
- dSYC22DSuWqrwgfRPcq4auc24l3t0hqoMf/oG+JGXSAk/HJHMlcJodyVkvxAnBQc6xMAwhhIT
- C2+fs0N1Bx/Mykopj3JTiwnzcXEeVble2pE7iqm7YrpDjIfmAlFz4DcITFqaq/iir1R/y5Q
+X-Provags-ID: V03:K1:5utFFIHBMVS12Kl97i78VWq8aUKOSVd0LQiHwWbxuyMRUkhK1E4
+ X+HsEputhpSoUUOtrIjM7W7yI2tualzn4EOiT9nXB67jfL8ErIf84bWItcqJGNNdKaEC/JF
+ EansI4AziWXVoghA+/UWrtG5l4LMjSQ2DPNxr4FX1FCLQyz/uQDpUTDykZ69Ji65pbSwM7B
+ y3Cham4w9kFbtptqoAohg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hf1Pri22ruo=:S+Ut91An+NgCQxw6hnFQPF
+ VvsvGlLia/kVmbca3POu7WJKHyi+VgBLLKmn34icBGAaHo1DfEblF79OjQXD6C+M8a4HyvkM0
+ 6OSUM+yg8gHsWI6sV6p/o1uahjsleDYyPGVN2XsiVxUkmDjewhFeC4W1cFELydy3pUpT8qfUt
+ 34DduONMbEbYE/mAPF8DHGIHa1YNENDQ+v+YdRRJBIewTYc7eVdPFsqmGgSNl8neSUAW6yMEQ
+ U/GeOoac4bqsjomYG4jaGAN7RKUE/ZdYsPxQjJqvioN38y6chHGBC4BlVOMguJ4XBttyQ+uKT
+ q9UrPU2XdTAn2P6nU5vok1DdC5rPctAGqQMdnxGyCfk3UGkrGj2IQwDSN9sq/SZgnsTv7zVmL
+ ADqOAZhZCG+EAtstMlFEN7fw4R5NSJdJCEvNUtVdyO/hEjY+QkNkjRedzIEiLpFSOK5DY+Umj
+ s3fvyF1NYiQUfAVFMt85BMUblPNwQuk2E22i/h1hk18epuTv3BNcmBYlwz5EfZM5Ln1XIu73o
+ ZyPEI8OXcRmCoxdTh9jXrFOFqqh6hwXO0dTaT0We4dIowAd2xnnYZKbIRqEmC075V9eq+bMXh
+ 76wL8lxfs51wg7XmGWk9JhKip1P5C6E1TS7z2JinGW2CPomFUlg6Auvrh/WqT1wgSOwofmN1z
+ 5OT3z8h7BohmIf3KyTmi9gz0YKDaU87e4AxOcaIntgphmGFKR6kO+AmEmJ5dzXcBR/6Ndn4Gq
+ nDnifJjOFfI76LY85sjy/OGsGmFuYC//MCoOOBaLX7ndDfc88rT+7RtdqOKtIkcHQ3rmHm1vR
+ FGhxwclZbccRPycn9GdhurW1caEseqbJmmIl7d6j3CWigT25ePHALosGteRa3Gpp2EbZzfq
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,50 +104,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2020 10:03:12 -0000
+X-List-Received-Date: Tue, 03 Mar 2020 10:14:26 -0000
 
-Le 25/02/2020 à 12:51, Philippe Mathieu-Daudé a écrit :
-> We only build the little-endian softmmu configuration (all
-> Nios II processors are only little endian). Checking for
-> big endian is pointless, remove the unused code.
+Le 24/02/2020 à 07:51, pannengyuan@huawei.com a écrit :
+> From: Pan Nengyuan <pannengyuan@huawei.com>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Fix compile warnings:
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:56: error: ‘%02d’ directive output may be truncated writing between 2 and 11 bytes into a region of size 3 [-Werror=format-truncation=]
+>      snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+>                                                         ^~~~
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:41: note: directive argument in the range [-2147483648, 64]
+>      snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+>                                          ^~~~~~~~~~~~~~~~~~~~
+> In file included from /usr/include/stdio.h:873,
+>                  from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep.h:99,
+>                  from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:14:
+> /usr/include/bits/stdio2.h:67:10: note: ‘__builtin___snprintf_chk’ output between 17 and 26 bytes into a destination of size 17
+>    return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+>           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>         __bos (__s), __fmt, __va_arg_pack ());
+>         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c: In function ‘hax_vcpu_devfs_string’:
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:55: error: ‘%02d’ directive output may be truncated writing between 2 and 11 bytes into a region of size 10 [-Werror=format-truncation=]
+>      snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+>                                                        ^~~~
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: directive argument in the range [-2147483648, 64]
+>      snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+>                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: directive argument in the range [-2147483648, 64]
+> In file included from /usr/include/stdio.h:873,
+>                  from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep.h:99,
+>                  from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:14:
+> /usr/include/bits/stdio2.h:67:10: note: ‘__builtin___snprintf_chk’ output between 21 and 39 bytes into a destination of size 21
+>    return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+>           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>         __bos (__s), __fmt, __va_arg_pack ());
+> 
+> We know that we have checked the vm_id and vcpu_id in the first(less than 0x40), it will never be truncated in snprintf().
+> Thus, this patch add an assertion to clear this false-positive warning.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 > ---
->  hw/nios2/boot.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
+>  target/i386/hax-posix.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-> index 88224aa84c..000f8205d6 100644
-> --- a/hw/nios2/boot.c
-> +++ b/hw/nios2/boot.c
-> @@ -140,16 +140,11 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
->      if (kernel_filename) {
->          int kernel_size, fdt_size;
->          uint64_t entry, low, high;
-> -        int big_endian = 0;
-> -
-> -#ifdef TARGET_WORDS_BIGENDIAN
-> -        big_endian = 1;
-> -#endif
+> diff --git a/target/i386/hax-posix.c b/target/i386/hax-posix.c
+> index a5426a6dac..197d5bc0f9 100644
+> --- a/target/i386/hax-posix.c
+> +++ b/target/i386/hax-posix.c
+> @@ -121,7 +121,8 @@ static char *hax_vm_devfs_string(int vm_id)
+>          return NULL;
+>      }
 >  
->          /* Boots a kernel elf binary. */
->          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
->                                 &entry, &low, &high, NULL,
-> -                               big_endian, EM_ALTERA_NIOS2, 0, 0);
-> +                               0, EM_ALTERA_NIOS2, 0, 0);
->          if ((uint32_t)entry == 0xc0000000) {
->              /*
->               * The Nios II processor reference guide documents that the
-> @@ -160,7 +155,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
->              kernel_size = load_elf(kernel_filename, NULL,
->                                     translate_kernel_address, NULL,
->                                     &entry, NULL, NULL, NULL,
-> -                                   big_endian, EM_ALTERA_NIOS2, 0, 0);
-> +                                   0, EM_ALTERA_NIOS2, 0, 0);
->              boot_info.bootstrap_pc = ddr_base + 0xc0000000 +
->                  (entry & 0x07ffffff);
->          } else {
+> -    snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+> +    int len = snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+> +    assert(len < sizeof HAX_VM_DEVFS);
+>      return name;
+>  }
+>  
+> @@ -140,8 +141,9 @@ static char *hax_vcpu_devfs_string(int vm_id, int vcpu_id)
+>          return NULL;
+>      }
+>  
+> -    snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+> -             vm_id, vcpu_id);
+> +    int len = snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+> +                       vm_id, vcpu_id);
+> +    assert(len < sizeof HAX_VCPU_DEVFS);
+>      return name;
+>  }
+>  
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+You should check instead that vm_id and vcpu_id are >= 0 where they are
+checked to be <= MAX_VM_ID and MAX_VCPU_ID, this will avoid the overflow
+of "%02d" and should remove the compile warning.
+
+Thanks,
+Laurent
 
