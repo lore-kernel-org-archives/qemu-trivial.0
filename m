@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j94ZG-0007BZ-Ic
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 05:14:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53587)
+	id 1j94bo-0004f6-Dd
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2020 05:17:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54117)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j94ZE-00075u-FY
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:14:25 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j94bk-0004V0-1t
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:17:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j94ZD-000856-5Z
- for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:14:24 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:34387)
+ (envelope-from <laurent@vivier.eu>) id 1j94bj-0000pD-0k
+ for qemu-trivial@nongnu.org; Tue, 03 Mar 2020 05:16:59 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:53521)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j94ZC-00084k-ST; Tue, 03 Mar 2020 05:14:23 -0500
+ id 1j94bg-0000mP-5i; Tue, 03 Mar 2020 05:16:56 -0500
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MxmBi-1jIdMZ1gPm-00zCId; Tue, 03 Mar 2020 11:14:05 +0100
-To: pannengyuan@huawei.com, pbonzini@redhat.com, rth@twiddle.net,
- ehabkost@redhat.com
-Cc: qemu-trivial@nongnu.org, euler.robot@huawei.com, qemu-devel@nongnu.org,
- zhang.zhanghailiang@huawei.com
-References: <20200224065139.19567-1-pannengyuan@huawei.com>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M4KFF-1j9Lil0znl-000KJs; Tue, 03 Mar 2020 11:16:50 +0100
+Subject: Re: [PATCH] vhost-vsock: fix error message output
+To: Nick Erdmann <n@nirf.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
+References: <04df3f47-c93b-1d02-d250-f9bda8dbc0fa@nirf.de>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,36 +63,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Subject: Re: [PATCH] target/i386/hax-posix: fix two 'format-truncation'
- compile warnings
-Message-ID: <e87fbecb-c6fe-e491-76e8-166e15ef977b@vivier.eu>
-Date: Tue, 3 Mar 2020 11:14:01 +0100
+Message-ID: <3cd04e60-f4d5-6ab8-3ea8-ae8ac30262bf@vivier.eu>
+Date: Tue, 3 Mar 2020 11:16:49 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200224065139.19567-1-pannengyuan@huawei.com>
+In-Reply-To: <04df3f47-c93b-1d02-d250-f9bda8dbc0fa@nirf.de>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5utFFIHBMVS12Kl97i78VWq8aUKOSVd0LQiHwWbxuyMRUkhK1E4
- X+HsEputhpSoUUOtrIjM7W7yI2tualzn4EOiT9nXB67jfL8ErIf84bWItcqJGNNdKaEC/JF
- EansI4AziWXVoghA+/UWrtG5l4LMjSQ2DPNxr4FX1FCLQyz/uQDpUTDykZ69Ji65pbSwM7B
- y3Cham4w9kFbtptqoAohg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hf1Pri22ruo=:S+Ut91An+NgCQxw6hnFQPF
- VvsvGlLia/kVmbca3POu7WJKHyi+VgBLLKmn34icBGAaHo1DfEblF79OjQXD6C+M8a4HyvkM0
- 6OSUM+yg8gHsWI6sV6p/o1uahjsleDYyPGVN2XsiVxUkmDjewhFeC4W1cFELydy3pUpT8qfUt
- 34DduONMbEbYE/mAPF8DHGIHa1YNENDQ+v+YdRRJBIewTYc7eVdPFsqmGgSNl8neSUAW6yMEQ
- U/GeOoac4bqsjomYG4jaGAN7RKUE/ZdYsPxQjJqvioN38y6chHGBC4BlVOMguJ4XBttyQ+uKT
- q9UrPU2XdTAn2P6nU5vok1DdC5rPctAGqQMdnxGyCfk3UGkrGj2IQwDSN9sq/SZgnsTv7zVmL
- ADqOAZhZCG+EAtstMlFEN7fw4R5NSJdJCEvNUtVdyO/hEjY+QkNkjRedzIEiLpFSOK5DY+Umj
- s3fvyF1NYiQUfAVFMt85BMUblPNwQuk2E22i/h1hk18epuTv3BNcmBYlwz5EfZM5Ln1XIu73o
- ZyPEI8OXcRmCoxdTh9jXrFOFqqh6hwXO0dTaT0We4dIowAd2xnnYZKbIRqEmC075V9eq+bMXh
- 76wL8lxfs51wg7XmGWk9JhKip1P5C6E1TS7z2JinGW2CPomFUlg6Auvrh/WqT1wgSOwofmN1z
- 5OT3z8h7BohmIf3KyTmi9gz0YKDaU87e4AxOcaIntgphmGFKR6kO+AmEmJ5dzXcBR/6Ndn4Gq
- nDnifJjOFfI76LY85sjy/OGsGmFuYC//MCoOOBaLX7ndDfc88rT+7RtdqOKtIkcHQ3rmHm1vR
- FGhxwclZbccRPycn9GdhurW1caEseqbJmmIl7d6j3CWigT25ePHALosGteRa3Gpp2EbZzfq
+X-Provags-ID: V03:K1:VbT8VQjaXYjXb8bI2jOP5td8AFSVknbv8e7si24U5oZy5vWIxDf
+ R2evLRWsfZhta7H0mYwxpr9j36KHILjUdrjZsNqJtCx6Voczkxc9IV02G7N3azSg7DyiDjl
+ MeH1wQZUuCGc8nCVb8D/Wl6zgtogBPE3uhorLfJKcHva/BZrcfjlQxVYZ8+48cqCCG5HkSs
+ xkpw+bqGo1JWrQ5R7idjA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hAReeVOnt3U=:+tt9k7MUaX7XNx1XBnR20N
+ mjA5eRFK/IE6vZKOmCPpuJh7L7hDIP81QsGlkr2XxZV5bR6Hw0C3JclrtmBlDbL/pl+ymHUU/
+ sfioTV1jKlBTX2bmR8WUqso0U2f+4IxOHd6DBo6ozABDD9x28GMbtYXgbr8YzWXD17buANyH7
+ lBHsIHbMizhOM6F65TqEkaM5vwufysNGquiN9uYYwzGu8sZTtWbVauRKay19B85HOurn5/wK0
+ o2NyYQgC4CdwS52yK0b8lMrUpGU+FoU5+s+WDQCZ8Ymib94SEbhI+gDQp2FeeIAqCSPVx0p86
+ kB5uJEiPv5N9xtmngbxUYXJV4bZgu3X7MgJJSltSqezaC4KzhZsvTwelyJv/zrFCGNtWJVqw1
+ 64RjSvfWAzW4YljKfGv6kPyh44E8uiDVTNwWzKbUTxmp+v5hc+crz4iQdtt/cUdvCdUvJfKk7
+ /gfw+hwsB+qBpH2xpoVh74Lt691iWxPHdtCVN5KUPpTqQHChuue6mU4hFDsGdCeD7zpmZb73P
+ JBRyGMwVXO6a4jJAciWAvru3yiqCdI+w4iydj5G8wTm32yXMjHhlWXaEHrpiucXHHFClwz+gV
+ lBPXhsDAVHXcWSWETqt6eylEVzr+vpbxhdoEkTNh3qg+HCEfXBx7Nmm1ZUa6ZY/xZekjeEezY
+ Ujk6FdBSr+soXOxIqydZJ9qBfXFlufnG5nUM3akmEf3Ly7lAUREsBBhAJAK1LH6awAFFSJSDB
+ CR23HOJByXOnhx4CxGZ5MHI9sUN0o5YtBKXddHtXv9Uy8xLnyhO9bsuFvnIkBR0fs86ve1MUd
+ W/qrJq0u7JuCRy7YpolZC2Ap94D8N8bif9e9S6gVlahPtglmXb1B9rvs9Kc2uU/X5xcN+5x
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,83 +102,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2020 10:14:26 -0000
+X-List-Received-Date: Tue, 03 Mar 2020 10:17:01 -0000
 
-Le 24/02/2020 à 07:51, pannengyuan@huawei.com a écrit :
-> From: Pan Nengyuan <pannengyuan@huawei.com>
+Le 01/03/2020 à 13:03, Nick Erdmann a écrit :
+> error_setg_errno takes a positive error number, so we should not invert
+> errno's sign.
 > 
-> Fix compile warnings:
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:56: error: ‘%02d’ directive output may be truncated writing between 2 and 11 bytes into a region of size 3 [-Werror=format-truncation=]
->      snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
->                                                         ^~~~
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:41: note: directive argument in the range [-2147483648, 64]
->      snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
->                                          ^~~~~~~~~~~~~~~~~~~~
-> In file included from /usr/include/stdio.h:873,
->                  from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep.h:99,
->                  from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:14:
-> /usr/include/bits/stdio2.h:67:10: note: ‘__builtin___snprintf_chk’ output between 17 and 26 bytes into a destination of size 17
->    return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
->           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->         __bos (__s), __fmt, __va_arg_pack ());
->         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c: In function ‘hax_vcpu_devfs_string’:
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:55: error: ‘%02d’ directive output may be truncated writing between 2 and 11 bytes into a region of size 10 [-Werror=format-truncation=]
->      snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
->                                                        ^~~~
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: directive argument in the range [-2147483648, 64]
->      snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
->                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
-> /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: directive argument in the range [-2147483648, 64]
-> In file included from /usr/include/stdio.h:873,
->                  from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep.h:99,
->                  from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:14:
-> /usr/include/bits/stdio2.h:67:10: note: ‘__builtin___snprintf_chk’ output between 21 and 39 bytes into a destination of size 21
->    return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
->           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->         __bos (__s), __fmt, __va_arg_pack ());
-> 
-> We know that we have checked the vm_id and vcpu_id in the first(less than 0x40), it will never be truncated in snprintf().
-> Thus, this patch add an assertion to clear this false-positive warning.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> Signed-off-by: Nick Erdmann <n@nirf.de>
 > ---
->  target/i386/hax-posix.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  hw/virtio/vhost-vsock.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/target/i386/hax-posix.c b/target/i386/hax-posix.c
-> index a5426a6dac..197d5bc0f9 100644
-> --- a/target/i386/hax-posix.c
-> +++ b/target/i386/hax-posix.c
-> @@ -121,7 +121,8 @@ static char *hax_vm_devfs_string(int vm_id)
->          return NULL;
->      }
->  
-> -    snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
-> +    int len = snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
-> +    assert(len < sizeof HAX_VM_DEVFS);
->      return name;
->  }
->  
-> @@ -140,8 +141,9 @@ static char *hax_vcpu_devfs_string(int vm_id, int vcpu_id)
->          return NULL;
->      }
->  
-> -    snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
-> -             vm_id, vcpu_id);
-> +    int len = snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
-> +                       vm_id, vcpu_id);
-> +    assert(len < sizeof HAX_VCPU_DEVFS);
->      return name;
->  }
->  
+> diff --git a/hw/virtio/vhost-vsock.c b/hw/virtio/vhost-vsock.c
+> index 66da96583b..9f9093e196 100644
+> --- a/hw/virtio/vhost-vsock.c
+> +++ b/hw/virtio/vhost-vsock.c
+> @@ -325,7 +325,7 @@ static void vhost_vsock_device_realize(DeviceState
+> *dev, Error **errp)
+>      } else {
+>          vhostfd = open("/dev/vhost-vsock", O_RDWR);
+>          if (vhostfd < 0) {
+> -            error_setg_errno(errp, -errno,
+> +            error_setg_errno(errp, errno,
+>                               "vhost-vsock: failed to open vhost device");
+>              return;
+>          }
+> -- 
+> 2.25.1
 > 
 
-You should check instead that vm_id and vcpu_id are >= 0 where they are
-checked to be <= MAX_VM_ID and MAX_VCPU_ID, this will avoid the overflow
-of "%02d" and should remove the compile warning.
 
-Thanks,
-Laurent
+Fixes: fc0b9b0e1cbb ("vhost-vsock: add virtio sockets device")
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
