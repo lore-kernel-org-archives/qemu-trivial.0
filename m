@@ -1,82 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9ptg-0008Np-AK
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 07:46:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41882)
+	id 1j9qLh-0001TS-Td
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:15:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48071)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9ptN-0007kx-LQ
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:22 -0500
+ (envelope-from <no-reply@patchew.org>) id 1j9qLd-0001T2-NO
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:15:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9ptM-0001pa-J9
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:21 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57939
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9ptM-0001pL-FM
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583412380;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PX36u3szPgZ2Q41knWXAoeXL+fhHmUrIIdFIn10MJtI=;
- b=Xk5phjzFY4/qeHNpugGsyn3awK2cUsg7BRv51zeAmrewZZbEXftUDw/MdC06f+yhlMAe+b
- baSEUUXlffXnL38uFSUNBmwnmnR6tRXq9RsOALHGaji1x1ELfgWuOnN8TW3VP+6hqSRKR1
- a7bWd3Gl/jKfv6QiGPa9O8i14+lXUDU=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-2-dadow9FpPda26IACANhonQ-1; Thu, 05 Mar 2020 07:46:18 -0500
-X-MC-Unique: dadow9FpPda26IACANhonQ-1
-Received: by mail-ed1-f72.google.com with SMTP id p21so4234848edr.22
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 04:46:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AaV1ZZro3f+XiD92hHRr5sJi0Jy1dhCplYtiC3TxZ9Q=;
- b=NvDAtRm5Yh9NGcyDB263EwXD83OOGl0myfmGRbfNSvjYj9HTL2hLWSa6fT0P2x3UFt
- pQvuAiv/XowaLIyQlay/NKSZjNCNBFVFabMvLNoR8d4bVfK2Nn+IcouRpXuNHnoU0/wp
- xT9lYp49siiufaKYV94pFJ8oURDew/s//E7QqLmF6xdFeMtFCkOxNFyd4FcVqyo4mO6h
- r7QBKbVH/1kE/RLK5PHMwVz7rc+RSEAYB2nuwou66dIUxEDBW5/bbZiem6g8CR3ELqrC
- bjM0C8DntFe9lF5wlp3pnsAwv+hMEIRk5QPn6suT7EZF99iJSP4L6T3VtpBUxRnOyQf7
- CzYw==
-X-Gm-Message-State: ANhLgQ3up0E45X9gKAnTJqkpUMcK5KNQHlcQWpulZNtHojj1FVqKGHZv
- NGN8K61c7XUmGuv6szyoJwCJOfHPe8ufBtVALS4kbDLgB50DgHtBKOCqnrqyWybej1uXVMw9WNu
- ZO7Lj2r3iJ5ccumBXEw==
-X-Received: by 2002:a17:907:20ae:: with SMTP id
- pw14mr5158865ejb.347.1583412376856; 
- Thu, 05 Mar 2020 04:46:16 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsXzhx6R4H7sx/neIO4/kU2XBgcI7lnVex83myb4LLHWpAvKquZR8H+zNUYUqKhe7Q024X6Zw==
-X-Received: by 2002:a17:907:20ae:: with SMTP id
- pw14mr5158849ejb.347.1583412376669; 
- Thu, 05 Mar 2020 04:46:16 -0800 (PST)
-Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id q26sm1529544ejb.50.2020.03.05.04.46.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 04:46:16 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Stefano Garzarella <sgarzare@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 9/9] virtfs-proxy-helper: Make the helper_opts[] array const
-Date: Thu,  5 Mar 2020 13:45:25 +0100
-Message-Id: <20200305124525.14555-10-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ (envelope-from <no-reply@patchew.org>) id 1j9qLa-0000zo-Sh
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:15:33 -0500
+Resent-Date: Thu, 05 Mar 2020 08:15:33 -0500
+Resent-Message-Id: <E1j9qLa-0000zo-Sh@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21142)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1j9qLa-0000z0-KN; Thu, 05 Mar 2020 08:15:30 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1583414112; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=EGw1BMOkEKkxUXniMv/RojgEKPxiNdgcjArG6Wqchj/RULBi46HAWIRE622ZzJZ4ILMtfVyz+bSyryOCucg4wQmLASLDjKgOj/eLsuqkqlmNtBFBkVtgmqdPk9cFJoaTX8l5MZAce9HdkWuah59njLGYKlK5aLryUNv6eWidDAY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1583414112;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=b2WjPbx7ABr6Z6Ibnyfwnc3OeckHwPK5DWgCvRHtb0Q=; 
+ b=n6VBPeU3mE35V+/KGHqJC0SNw9CpPJDdS1Mzj0P2tWf+HlygR8NnfPTyw+Pgwubqvugm6plPeBsWMG5PyaYmced0ccvlVSpr5yXNct2a0szBn8H4DBz0c5NL5XJxbJFRYwBtWTIV6JSR3qXEvdyLGrjyZZJFETIKNj7xZzeDOls=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1583414108630967.4914829022118;
+ Thu, 5 Mar 2020 05:15:08 -0800 (PST)
 In-Reply-To: <20200305124525.14555-1-philmd@redhat.com>
-References: <20200305124525.14555-1-philmd@redhat.com>
+Subject: Re: [PATCH v2 0/9] hw, ui,
+ virtfs-proxy-helper: Reduce QEMU .data/.rodata/.bss footprint
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <158341410705.357.2895009481636676985@39012742ff91>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, dmitry.fleytman@gmail.com,
+ jasowang@redhat.com, qemu_oss@crudebyte.com, groug@kaod.org, kraxel@redhat.com,
+ philmd@redhat.com, sgarzare@redhat.com
+Date: Thu, 5 Mar 2020 05:15:08 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,32 +60,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 12:46:23 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 13:15:34 -0000
 
-Reduce a bit the memory footprint by making the helper_opts[]
-array const.
-
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Acked-by: Greg Kurz <groug@kaod.org>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- fsdev/virtfs-proxy-helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index aa1ab2590d..de061a8a0e 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -43,7 +43,7 @@
- #define BTRFS_SUPER_MAGIC 0x9123683E
- #endif
-=20
--static struct option helper_opts[] =3D {
-+static const struct option helper_opts[] =3D {
-     {"fd", required_argument, NULL, 'f'},
-     {"path", required_argument, NULL, 'p'},
-     {"nodaemon", no_argument, NULL, 'n'},
---=20
-2.21.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwNTEyNDUyNS4xNDU1
+NS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
+a2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
+bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
+ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
+VCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVU
+V09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0x
+NCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVsZSAnZHRjJyAoaHR0
+cHM6Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGggJ2R0YycK
+Q2xvbmluZyBpbnRvICdkdGMnLi4uCnJlbW90ZTogQ291bnRpbmcgb2JqZWN0czogNTM5NCwgZG9u
+ZS4gICAgICAgIAplcnJvcjogUlBDIGZhaWxlZDsgcmVzdWx0PTE4LCBIVFRQIGNvZGUgPSAyMDAK
+ZmF0YWw6IFRoZSByZW1vdGUgZW5kIGh1bmcgdXAgdW5leHBlY3RlZGx5CmZhdGFsOiBwcm90b2Nv
+bCBlcnJvcjogYmFkIHBhY2sgaGVhZGVyCkNsb25lIG9mICdodHRwczovL2dpdC5xZW11Lm9yZy9n
+aXQvZHRjLmdpdCcgaW50byBzdWJtb2R1bGUgcGF0aCAnZHRjJyBmYWlsZWQKZmFpbGVkIHRvIHVw
+ZGF0ZSBzdWJtb2R1bGUgZHRjClN1Ym1vZHVsZSAnZHRjJyAoaHR0cHM6Ly9naXQucWVtdS5vcmcv
+Z2l0L2R0Yy5naXQpIHVucmVnaXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwptYWtlWzFdOiAqKiogWy92
+YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1hdzJwMXczcC9zcmMvZG9ja2VyLXNyYy4yMDIwLTAz
+LTA1LTA4LjA5LjA0LjI3NjMwXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAv
+dmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtYXcycDF3M3Avc3JjJwptYWtlOiAqKiogW2RvY2tl
+ci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDZtMy40NTlzCnVzZXIg
+ICAgMG0yLjQ4NHMKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3
+Lm9yZy9sb2dzLzIwMjAwMzA1MTI0NTI1LjE0NTU1LTEtcGhpbG1kQHJlZGhhdC5jb20vdGVzdGlu
+Zy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
+IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
+c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
