@@ -1,85 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9pCN-0005hd-HI
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 07:01:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33551)
+	id 1j9psg-00066b-K3
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 07:45:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41570)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9pCC-0005en-GJ
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:01:45 -0500
+ (envelope-from <philmd@redhat.com>) id 1j9psd-0005vd-7u
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:45:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9pCB-0004JR-G6
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:01:44 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25032
+ (envelope-from <philmd@redhat.com>) id 1j9psb-0001Hw-VS
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:45:35 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28264
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9pCB-0004HE-B3
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:01:43 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9psb-0001HZ-Pl
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:45:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583409702;
+ s=mimecast20190719; t=1583412333;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ar8CYivpVy6FUoJvhUtX6ynC1Z30c2C8GMW/wP3ZGlw=;
- b=LIgY5dpuXKlHyOb0nPQdU1IEKERnpYJQGczTrAfLVHbwjnw7J9mX0TrJbrWWWHGtquwvxa
- 83SeolUGqLxQuBmaJ6SyIgY2iqOaiRWNkg3KGfSq20Q6yySKK87y9Fcl1w1z8IZAJlTouH
- 1M4/u+PbDJgeTnW2pfZFiLjftg6y3mo=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-453-JxAnlIu9PUmm9U1L0XpVSw-1; Thu, 05 Mar 2020 07:01:41 -0500
-X-MC-Unique: JxAnlIu9PUmm9U1L0XpVSw-1
-Received: by mail-ed1-f71.google.com with SMTP id y35so4205617ede.4
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 04:01:40 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Nhwgrxnqpunrz8zBbMeODrFA6z+v6v0KC0yLbmsGqoc=;
+ b=eAiKzlYlJOnUY5nVl7U3Z9SJRBqZRZyHZvlEXegFiLAaHTqVCblM2U12USG2tYEWcVG7pI
+ bhirRKwWvtoCsW+SxF6Wbyfp5Njb09sJ9nyclQY/LjNf2p2ecv9p7GvypPp7j6b473/TCs
+ APuuFJRnaFGaBfRDP9A5Fs0rVP7PXLg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-354-unoQv4OGM0WzUHzjvwQLOw-1; Thu, 05 Mar 2020 07:45:30 -0500
+X-MC-Unique: unoQv4OGM0WzUHzjvwQLOw-1
+Received: by mail-wr1-f70.google.com with SMTP id s10so493863wrr.21
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 04:45:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ar8CYivpVy6FUoJvhUtX6ynC1Z30c2C8GMW/wP3ZGlw=;
- b=J+mN1Japt+edIMIu8hwmmxNxa5NkBHU2wefWcP22xMBJudOxJnZ3xBRsik/izyTWwb
- DPHE4hI+mKpjCu3J42hHtD8JCP8bntzQrCiFL2yuojtpwILrEB9zwWbvJ4i5x8aLcP0n
- 32p90VAwfJqXN9dbjCDGf6lq9GIWROPfoeYKOYxa5orGMPGSHcmuIst3uKSo31/F/T7P
- 5hiNOp5xZvh7p9NeKBZloyW53cg7qK+9G/RXhYndJUw8Qe0gh4ME2QWlduWio+4k0Rok
- 7ZGv/k7NVRUzb9sWFv1mYjeLPhSPB5yUslavnC4t1WIPMgELdMJYx0tZu9pOa2mcV40U
- KpJg==
-X-Gm-Message-State: ANhLgQ3zBNl5gGl9Y3y7Fpc+x3PFh5tCjsHNCilGJjTffnrLS5+wzZ9B
- oHqPyarW14+H8/SIG5EDP5g/tfYKb1t/X3acGv44ktTEvaHbohKrOni/TAMa3VlB9eKRBZVvAo1
- JUAbOIpJ5+keYnX0uPA==
-X-Received: by 2002:a17:906:f44:: with SMTP id h4mr7329106ejj.44.1583409699498; 
- Thu, 05 Mar 2020 04:01:39 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vs1BTaMHRvNgQVM2YmYdD9IWJ3dgCsKgcJGQNwkPzMjWYO8LSagSRFcOcUuIaP8ONNd2V9FXw==
-X-Received: by 2002:a17:906:f44:: with SMTP id h4mr7329071ejj.44.1583409699188; 
- Thu, 05 Mar 2020 04:01:39 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
+ bh=VZtzsSVzb5DX3o4pkmW7ktCi9rq5BRkqUN3Jv0Apib8=;
+ b=dZQssoHqAKFatu/mfGKjSaBhUBnT1n6nD2z8yE1lSRhAv5j3v3T1La4UpaZHd+MQwM
+ TgsqrAZ0/G6KJ+sKs3r3r2wQCn8cPcGmqaU/o3A7FHGQXWUE90sSZOcvynDuPEIzX6rt
+ ZWWW29gerOdAQkQjtv1x4IIJPcX6Yfv3kI8KBa8dDn0kaNkdBosbl2hJ+JVIWEtD5H8r
+ nABR3F5MCaMsUfsgYw4Vcd7s0y13Rf8ZP/TyDlx5OtEda09L75Z2wz8GirEV44MXoIGL
+ ZgbaiZDD+7hXk+mmu2QiCOs4Xoo78wn4tK+nOTniHw965cKJ4SDlzeBX2jFutt8x8M5P
+ y4JA==
+X-Gm-Message-State: ANhLgQ0s103zwoFi+oZv84f2I0yykeAHEte+B826oKGqSEknQTTlGPws
+ bQ7gCNxTxxAhY6J0wONq2r5CaSIYblhUbNjq6ipsHBVkbi1ltIHMeWe7vllVh+TcplagnspSn5O
+ XEu6DRGwzGWzE53gdBw==
+X-Received: by 2002:a5d:4f85:: with SMTP id d5mr9009096wru.130.1583412328841; 
+ Thu, 05 Mar 2020 04:45:28 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsj+5NKjCRIPqq/H/Brzjh0otlE9Qe8SQpdfKd2O3ZmDaikh5SOyIb4K+v2hWE41E3CKuSJxw==
+X-Received: by 2002:a5d:4f85:: with SMTP id d5mr9009071wru.130.1583412328568; 
+ Thu, 05 Mar 2020 04:45:28 -0800 (PST)
+Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
  [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id gf7sm1028813ejb.57.2020.03.05.04.01.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2020 04:01:38 -0800 (PST)
-Subject: Re: [PATCH 3/6] hw/usb/quirks: Use smaller types to reduce .rodata by
- 10KiB
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200304221807.25212-1-philmd@redhat.com>
- <20200304221807.25212-4-philmd@redhat.com>
- <20200305080237.j2a7waokxominirn@sirius.home.kraxel.org>
- <a5b6cddf-5887-be27-db76-2e515daa2c11@redhat.com>
- <CAP+75-XBbTPHbQJWxn5nEYsz4hdGXSTLTqKRRR-sx-APbPN2Sg@mail.gmail.com>
- <20200305115910.zhmaw3xqgoz4fan2@sirius.home.kraxel.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <8ce21679-20c1-19db-c0df-9c7cb1bff629@redhat.com>
-Date: Thu, 5 Mar 2020 13:01:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ by smtp.gmail.com with ESMTPSA id u17sm8282608wmj.47.2020.03.05.04.45.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 04:45:28 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Stefano Garzarella <sgarzare@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2 0/9] hw, ui,
+ virtfs-proxy-helper: Reduce QEMU .data/.rodata/.bss footprint
+Date: Thu,  5 Mar 2020 13:45:16 +0100
+Message-Id: <20200305124525.14555-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-In-Reply-To: <20200305115910.zhmaw3xqgoz4fan2@sirius.home.kraxel.org>
-Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,24 +83,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 12:01:45 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 12:45:36 -0000
 
-On 3/5/20 12:59 PM, Gerd Hoffmann wrote:
->>> And went this less intrusive way.
->>>
->>> I'll respin with s/-1/UINT8_MAX/.
->>
->> Problem, now this entry is ignored (interface_class==-1):
-> 
-> Yep, "-1" is used as "not used" or "end-of-list" indicator, and it is
-> outside the valid range to avoid that kind of clashes.  You need some
-> other way to express that if you want go with smaller types which don't
-> allow values outside the valid range any more.  Add a "flags" field for
-> that maybe?
+Since v1:
+- merged 2 series
+- reworked hw/usb/quirks
+- added R-b/A-b tags
 
-Oh I wasn't expecting 0xffff valid for idVendor /
-idProduct, neither 0xff for bInterfaceClass / bInterfaceSubClass /
-bInterfaceProtocol. Well maybe it doesn't worth the churn for 10KB of 
-.rodata.
+This series reduce the footprint of the QEMU binary:
+.bss: 106KiB (moved to .heap)
+.data: 1MiB
+.rodata: 4.34MiB
+(sizes on x86_64 building with -Os)
+
+The elf-dissector tool [1] [2] helped to notice the big array.
+
+[1] https://phabricator.kde.org/source/elf-dissector/
+[2] https://www.volkerkrause.eu/2019/06/22/elf-dissector-aarch64-support.ht=
+ml
+[heap equivalent tool working with QEMU: https://github.com/KDE/heaptrack]
+
+Supersedes: <20200304221807.25212-1-philmd@redhat.com>
+Supersedes: <20200305010446.17029-1-philmd@redhat.com>
+
+Philippe Mathieu-Daud=C3=A9 (9):
+  hw/audio/fmopl: Fix a typo twice
+  hw/audio/fmopl: Move ENV_CURVE to .heap to save 32KiB of .bss
+  hw/audio/intel-hda: Use memory region alias to reduce .rodata by
+    4.34MB
+  hw/net/e1000: Add readops/writeops typedefs
+  hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
+  hw/usb/quirks: Use smaller types to reduce .rodata by 10KiB
+  ui/curses: Make control_characters[] array const
+  ui/curses: Move arrays to .heap to save 74KiB of .bss
+  virtfs-proxy-helper: Make the helper_opts[] array const
+
+ hw/usb/quirks.h             | 22 +++++++++++++---------
+ fsdev/virtfs-proxy-helper.c |  2 +-
+ hw/audio/fmopl.c            |  8 +++++---
+ hw/audio/intel-hda.c        | 24 ++++++++++--------------
+ hw/net/e1000.c              |  6 ++++--
+ hw/net/e1000e_core.c        |  6 ++++--
+ hw/usb/quirks.c             |  4 ++--
+ ui/curses.c                 | 10 +++++++---
+ 8 files changed, 46 insertions(+), 36 deletions(-)
+
+--=20
+2.21.1
 
 
