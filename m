@@ -1,75 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9o4U-00058u-Se
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:49:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49799)
+	id 1j9o8h-0000Yb-4H
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:54:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50656)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9o4O-00057E-KZ
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:49:41 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j9o8e-0000UL-Gl
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:54:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9o4N-0005Pl-9m
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:49:36 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:27769
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j9o8d-000298-JU
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:54:00 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:60830 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9o4N-0005OT-6P
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:49:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583405374;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KjATUW/5m3yTKYSiJ131MJpBOfWBVsXMfEsSS1NFroE=;
- b=NL/7Z+2uhzxWMWqMvZZR5vX2vlGol1n4pf7Ltk2Y7lNbFmAmyxAOLJ5Uyrweu+Lh0dLL0x
- BajVwe8+sfHEqaPbafaK8uyXPMEG09pthzJKAn0TuCSYUm8TaIxxMYvykaZN19Bhriw5YU
- RYvfPvyBCvAxmwAOD2IAf29ob4O4hak=
-Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com
- [209.85.221.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-321-3-T8HK0vMcGdh1ZYw5nk-g-1; Thu, 05 Mar 2020 05:49:32 -0500
-X-MC-Unique: 3-T8HK0vMcGdh1ZYw5nk-g-1
-Received: by mail-vk1-f200.google.com with SMTP id f65so442284vkc.0
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 02:49:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=KjATUW/5m3yTKYSiJ131MJpBOfWBVsXMfEsSS1NFroE=;
- b=Xc606S/9Pavvm7ndfkGTvV4uC6KfzWvI5cfBZtCXYAJ1Ag3s2c9q909EPulqmSwgXl
- 8FVWDer3IXrCf+1LO1+OG5Tbv1yZrvHyaaiIe1ACZ88iTL6q7b5h55DUVQhR6HqXF+ef
- qLIQDTKgV5sZXbf25+sodls3ycWRueWaEGkF+QbUROnoOH9QYM1OYXdSQL12mD4fFF/b
- 3bdyqr0svZje6Qdv9niNxYehRn88i8eJZrIIWo581m329Hpt1xWXKoDnpSdV0ks2dgIf
- P7UGc3gxDduh6TANYtqStfSz1pJSwK6rA+r/+VLyWruRzpMqBjll9CKCbjHHDmD1hoAY
- l6gQ==
-X-Gm-Message-State: ANhLgQ2uW4CzsBF+ikAEdRr8nDKQcKIrXVGSK8rTinvmkUjJ9bnt5xki
- HIriSUB9lQHc3W7SjR5qnHEnzXCWxHjdcYajRpTIY2bSeJzaPCf8pvKu4R5KyVcFDkQ0MMyvDKy
- nXaoJeyLvgumwlu75xlUSguPv4GHhj/FD/g==
-X-Received: by 2002:a67:f296:: with SMTP id m22mr4460448vsk.237.1583405372086; 
- Thu, 05 Mar 2020 02:49:32 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsFs/p/Py5fwqBoWxmfdA2gU4jv9MGYe0k1KetSxux7/LHbtiuv9T+LxzpjB0/34fSVCUNaMjU8tcGAwPDVMrI=
-X-Received: by 2002:a67:f296:: with SMTP id m22mr4460438vsk.237.1583405371794; 
- Thu, 05 Mar 2020 02:49:31 -0800 (PST)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j9o8Z-0001z8-7r; Thu, 05 Mar 2020 05:53:55 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id C6E3C4963A861A13CF41;
+ Thu,  5 Mar 2020 18:53:44 +0800 (CST)
+Received: from huawei.com (10.133.205.93) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Thu, 5 Mar 2020
+ 18:53:37 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>,
+ <jasowang@redhat.com>, <peter.chubb@nicta.com.au>, <qemu-arm@nongnu.org>,
+ Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+Date: Thu, 5 Mar 2020 18:53:25 +0800
+Message-ID: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
 MIME-Version: 1.0
-References: <20200304221807.25212-1-philmd@redhat.com>
- <20200304221807.25212-4-philmd@redhat.com>
- <20200305080237.j2a7waokxominirn@sirius.home.kraxel.org>
- <a5b6cddf-5887-be27-db76-2e515daa2c11@redhat.com>
-In-Reply-To: <a5b6cddf-5887-be27-db76-2e515daa2c11@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 5 Mar 2020 11:49:20 +0100
-Message-ID: <CAP+75-XBbTPHbQJWxn5nEYsz4hdGXSTLTqKRRR-sx-APbPN2Sg@mail.gmail.com>
-Subject: Re: [PATCH 3/6] hw/usb/quirks: Use smaller types to reduce .rodata by
- 10KiB
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,46 +46,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 10:49:42 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 10:54:01 -0000
 
-On Thu, Mar 5, 2020 at 11:41 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
-> On 3/5/20 9:02 AM, Gerd Hoffmann wrote:
-> >>   struct usb_device_id {
-> >> -    int vendor_id;
-> >> -    int product_id;
-> >> -    int interface_class;
-> >> -    int interface_subclass;
-> >> -    int interface_protocol;
-> >> +    int16_t vendor_id;
-> >> +    int16_t product_id;
-> >> +    int8_t interface_class;
-> >> +    int8_t interface_subclass;
-> >> +    int8_t interface_protocol;
-> >
-> > I guess we should better use the uint variants here ...
->
-> I tried it first but I got:
->
->    CC      hw/usb/quirks.o
-> hw/usb/quirks.c:25:34: error: result of comparison of constant -1 with
-> expression of type 'const uint16_t' (aka 'const unsigned short') is
-> always true [-Werror,-Wtautological-constant-out-of-range-compare]
->      for (i =3D 0; ids[i].vendor_id !=3D -1; i++) {
->                  ~~~~~~~~~~~~~~~~ ^  ~~
-> hw/usb/quirks.c:28:37: error: result of comparison of constant -1 with
-> expression of type 'const uint8_t' (aka 'const unsigned char') is always
-> false [-Werror,-Wtautological-constant-out-of-range-compare]
->              (ids[i].interface_class =3D=3D -1 ||
->               ~~~~~~~~~~~~~~~~~~~~~~ ^  ~~
->
-> And went this less intrusive way.
->
-> I'll respin with s/-1/UINT8_MAX/.
+The current code causes clang static code analyzer generate warning:
+hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
+        value =3D value & 0x0000000f;
+        ^       ~~~~~~~~~~~~~~~~~~
+hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
+        value =3D value & 0x000000fd;
+        ^       ~~~~~~~~~~~~~~~~~~
 
-Problem, now this entry is ignored (interface_class=3D=3D-1):
+According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
+=9D assignments
+ should be written to registers.
 
-    { USB_DEVICE_AND_INTERFACE_INFO(MICROCHIP_VID, MICROCHIP_USB_BOARD_PID,
-                                    0xff, 0xff, 0x00) },
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+v1->v2:
+  The register 'ENET_TGSR' write-1-to-clear timer flag.
+  The register 'ENET_TCSRn' 7bit(TF) write-1-to-clear timer flag.
+---
+ hw/net/imx_fec.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 6a124a154a..322cbdcc17 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -855,13 +855,15 @@ static void imx_enet_write(IMXFECState *s, uint32_t=
+ index, uint32_t value)
+         break;
+     case ENET_TGSR:
+         /* implement clear timer flag */
+-        value =3D value & 0x0000000f;
++        s->regs[index] ^=3D s->regs[index] & value;
++        s->regs[index] &=3D 0x0000000f;
+         break;
+     case ENET_TCSR0:
+     case ENET_TCSR1:
+     case ENET_TCSR2:
+     case ENET_TCSR3:
+-        value =3D value & 0x000000fd;
++        s->regs[index] =3D (value & 0x00000080) ? (0x0000007d & value) :
++                         (value & 0x000000fd);
+         break;
+     case ENET_TCCR0:
+     case ENET_TCCR1:
+--=20
+2.23.0
+
 
 
