@@ -1,54 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9qVG-0007ol-5a
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:25:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49831)
+	id 1j9qiG-0006XO-Fd
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:38:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52388)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j9qVB-0007jc-V4
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:25:27 -0500
+ (envelope-from <sgarzare@redhat.com>) id 1j9qiD-0006Wb-Rb
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:38:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j9qVA-000270-Gy
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:25:25 -0500
-Resent-Date: Thu, 05 Mar 2020 08:25:25 -0500
-Resent-Message-Id: <E1j9qVA-000270-Gy@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21102)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j9qVA-00022q-9P; Thu, 05 Mar 2020 08:25:24 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1583414706; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=PW8z9Hat7M0DguTjTde4EqUQK6AOx/XSd4g5YFpmHEEslfzvEjjs+jXtg6nOl7iw7Cpwz06gbF5sf6g/DziRliJShcggEEp10V5vREbR5brlRDC032IXy+T9JgMfaOa9HS9++A+WBSs90fD/fHM2QTQiiH8TSwNSaPbniapUEx8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1583414706;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=iB39fA9O5m7eK+YUEoGW6EdHpQpTR3H0xeZbbv0GWP0=; 
- b=epGzRbVTgpEG0lQlsib4ZjsohxROSi2Fi4YychfjU2Dn2R8aOBh69lsweZGHc7LehJoD2wsT65KdO1QrHflrWTWNxPHeHmdIktxap19dW5+r7WthAJ3lH4jqa4pd5YtGTBqV1j07T/Az4KRTo7U8Q2bBnBtsLldbrLr88Bftn38=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1583414704759272.0421415334814;
- Thu, 5 Mar 2020 05:25:04 -0800 (PST)
-In-Reply-To: <20200305124525.14555-1-philmd@redhat.com>
-Subject: Re: [PATCH v2 0/9] hw, ui,
- virtfs-proxy-helper: Reduce QEMU .data/.rodata/.bss footprint
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <158341470305.357.9549898548102843307@39012742ff91>
+ (envelope-from <sgarzare@redhat.com>) id 1j9qiC-0007jH-B5
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:38:53 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45178
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j9qiC-0007gy-6M
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:38:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583415531;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HPHH8mW0biUif/wcEtnaW3iI515wvlFzH+LPakX53NQ=;
+ b=My91TENfIZ+0HN4a5rSOIAXpvCDGdgNLXoH/T7Epmfpt6woTd3KKD5F0BvoJ4oazVAne6t
+ 6mQXv/j7OTfujlPw0Suq0Acv/sOeVMQ0+6ha7RaBXPrF4Y1sbxfdxpizY8qcvWOrnNXXHW
+ zfvrJ8zoceCgsDpU1QZ5/4Vyp2Q5JbU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-228-KraLn9mSMQaMzep8J8-PkQ-1; Thu, 05 Mar 2020 08:38:47 -0500
+X-MC-Unique: KraLn9mSMQaMzep8J8-PkQ-1
+Received: by mail-wr1-f71.google.com with SMTP id o9so2316423wrw.14
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 05:38:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=OLW08cT74B6c6FcSqTjhCMVIlW3TGZ96x2uEB+fBE3Y=;
+ b=GHBGt9bQrqn2ZVSBRiFNE6KQBMw3pI6YgoKDLTRxI+EVvJEx0vP/JcL/pdwJXw9288
+ TfzVJlvYmXcXNg33G7De73pVzXdcmjAYle4/bv2BtCeju/kB+qzvHuqgOux6QlVxHoLu
+ qI7RBkyO4JfhWq3uBH4GLfek5SESuaFmN0zBCJsS9O/Hb0s6ZgTd2UxFK0HTWsSwsqdA
+ rS+HizNXrYuj24TTWsybHiAvgsMXthw3dcFYikqr2ZceyRu30/rHPpdueLeEh+vHgsjP
+ ij2ZF+zxDQkcdLH936AOWvWtfUgM5/UtVmO6XDR2BQdAIoPqf0cM3DLqF3Kcd5kouyTz
+ IhFg==
+X-Gm-Message-State: ANhLgQ3e5I/5GJ7oQXZMwAdr6D45WsIdlY8ovuGx/bYjRA0JEcM6Nnfh
+ ng+hlEaZpljhLqw+DtacXUpsXqV8Wpy80HGpqSac9fTj8adAIuh9eq3jDgyfADMSDiWssYO0wec
+ uBiYDpxiYOu9z7aurlg==
+X-Received: by 2002:a5d:67c7:: with SMTP id n7mr10144921wrw.319.1583415526344; 
+ Thu, 05 Mar 2020 05:38:46 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvBNWs60kENM6S7JQjqmsyt/pT6TR6QT07quSc2AnrK3APygqd2E0Nh4XgSMB6EbXWWc27W3Q==
+X-Received: by 2002:a5d:67c7:: with SMTP id n7mr10144893wrw.319.1583415526083; 
+ Thu, 05 Mar 2020 05:38:46 -0800 (PST)
+Received: from steredhat (host34-204-dynamic.43-79-r.retail.telecomitalia.it.
+ [79.43.204.34])
+ by smtp.gmail.com with ESMTPSA id h20sm23748217wrc.47.2020.03.05.05.38.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 05:38:45 -0800 (PST)
+Date: Thu, 5 Mar 2020 14:38:42 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH v2 1/9] hw/audio/fmopl: Fix a typo twice
+Message-ID: <20200305133842.sjalzixcx5j5qimw@steredhat>
+References: <20200305124525.14555-1-philmd@redhat.com>
+ <20200305124525.14555-2-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: philmd@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, dmitry.fleytman@gmail.com,
- jasowang@redhat.com, qemu_oss@crudebyte.com, groug@kaod.org, kraxel@redhat.com,
- philmd@redhat.com, sgarzare@redhat.com
-Date: Thu, 5 Mar 2020 05:25:04 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <20200305124525.14555-2-philmd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,31 +86,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 13:25:27 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 13:38:55 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwNTEyNDUyNS4xNDU1
-NS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
-a2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
-YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
-LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
-IEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2VyLWlt
-YWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0BmZWRv
-cmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVsZSAnZHRj
-JyAoaHR0cHM6Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGgg
-J2R0YycKQ2xvbmluZyBpbnRvICdkdGMnLi4uCnJlbW90ZTogQ291bnRpbmcgb2JqZWN0czogNTM5
-NCwgZG9uZS4gICAgICAgIAplcnJvcjogUlBDIGZhaWxlZDsgcmVzdWx0PTE4LCBIVFRQIGNvZGUg
-PSAyMDAKZmF0YWw6IFRoZSByZW1vdGUgZW5kIGh1bmcgdXAgdW5leHBlY3RlZGx5CmZhdGFsOiBw
-cm90b2NvbCBlcnJvcjogYmFkIHBhY2sgaGVhZGVyCkNsb25lIG9mICdodHRwczovL2dpdC5xZW11
-Lm9yZy9naXQvZHRjLmdpdCcgaW50byBzdWJtb2R1bGUgcGF0aCAnZHRjJyBmYWlsZWQKZmFpbGVk
-IHRvIHVwZGF0ZSBzdWJtb2R1bGUgZHRjClN1Ym1vZHVsZSAnZHRjJyAoaHR0cHM6Ly9naXQucWVt
-dS5vcmcvZ2l0L2R0Yy5naXQpIHVucmVnaXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwptYWtlWzFdOiAq
-KiogWy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1sNHM1cjZwdi9zcmMvZG9ja2VyLXNyYy4y
-MDIwLTAzLTA1LTA4LjE1LjQ2LjI4MzE5XSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0
-b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtbDRzNXI2cHYvc3JjJwptYWtlOiAqKiog
-W2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAgOW0xNy43Njhz
-CnVzZXIgICAgMG0yLjkzN3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9w
-YXRjaGV3Lm9yZy9sb2dzLzIwMjAwMzA1MTI0NTI1LjE0NTU1LTEtcGhpbG1kQHJlZGhhdC5jb20v
-dGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5l
-cmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBs
-ZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On Thu, Mar 05, 2020 at 01:45:17PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+>  hw/audio/fmopl.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+> index 9f50a89b4a..173a7521f2 100644
+> --- a/hw/audio/fmopl.c
+> +++ b/hw/audio/fmopl.c
+> @@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
+>  =09}
+>  }
+> =20
+> -/* ----------  Create one of vietual YM3812 ----------       */
+> +/* ----------  Create one of virtual YM3812 ----------       */
+>  /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
+                               ^
+If you need to respin, what do you think about removing also "and 'bufsiz' =
+is
+the size of the"?
+
+With or without:
+
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+
+>  FM_OPL *OPLCreate(int clock, int rate)
+>  {
+> @@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
+>  =09return OPL;
+>  }
+> =20
+> -/* ----------  Destroy one of vietual YM3812 ----------       */
+> +/* ----------  Destroy one of virtual YM3812 ----------       */
+>  void OPLDestroy(FM_OPL *OPL)
+>  {
+>  #ifdef OPL_OUTPUT_LOG
+> --=20
+> 2.21.1
+>=20
+
 
