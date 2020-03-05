@@ -1,81 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9r2l-0002W3-At
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 09:00:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57415)
+	id 1j9rNM-0007dG-3O
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 09:21:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33019)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1j9r2i-0002Uz-Bo
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:00:05 -0500
+ (envelope-from <eblake@redhat.com>) id 1j9rNG-0007Yr-1D
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:21:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1j9r2g-0003Rl-4w
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:00:04 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43974
+ (envelope-from <eblake@redhat.com>) id 1j9rNE-0001mM-67
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:21:17 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44892
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j9r2f-0003R2-Vs
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:00:02 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j9rNC-0001hv-8D
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 09:21:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583416801;
+ s=mimecast20190719; t=1583418070;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bI0iCfiamLeEOlmfWmRkJ5EiM2hPPw5h7iy2jORdykg=;
- b=Pb4rQo64TrkFBn4JbRyH8YyYGijaZH12Y635tXqdpG/QUO7RLSrNbOesOL1lSSxdkF9Q2N
- /foKzjIjrdyyhpNXNh+P+Ten6bERNSgxg7eGROqIwEd0daYpQsmxFV4F+AKoM1FmBcH8a8
- 701lAQmbmcmfBJZYZleOI7GkLs7UrQ8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-183-vNv82f8NPUCxHZ_Pxs3JHA-1; Thu, 05 Mar 2020 08:59:59 -0500
-X-MC-Unique: vNv82f8NPUCxHZ_Pxs3JHA-1
-Received: by mail-wm1-f70.google.com with SMTP id w12so1619002wmc.3
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 05:59:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=u8jd0a0+Xax7mUAYuC9xZiQiejfDA6QnsCIrTtfC9sU=;
- b=t0TIUCzT2RJtAC283Yi6OpXwEihtMlyeLmkttDQXXVxWxPla5Aq7qJhkfJJIsHa6BV
- /hbcuSVAQvtKRsdssn43dWqDMNBg2UGlEmeRwjbbEf9JXubsMe5YFJPRlzAv+g1x+sw0
- lRYgZY9XrYRaYW6IAtRPamh9Gr2EMo6DyIw+MgXoTBTkS0h2/FYDg4gNa+nLBXqEc3B2
- 2nx0xwat6B/NcbOhecaLf57JKUrGlIPEN4nTA7nJ8JZOo27shnCXei0csoCPWe+JW+yD
- LBE2Uhg4dVJNPEe7esrD7JikTSWHdfsK2MEehcZmpGZ5RxyNuMVBxCpIJtM6rGhvon3a
- oOvw==
-X-Gm-Message-State: ANhLgQ0FbyqNB7zy5ItGOyRURtgO5qD/NTfIM/0MytkqVepfdZJUmXDV
- KVYSNUX4AyntvSmDy5sEG0YeWdLZN5cwL9uF+OF0tCcok5DXHzqGYlmAU8qarg22eExgG/7a828
- IGTnvwGOhugWC3dMVfQ==
-X-Received: by 2002:adf:d4d1:: with SMTP id w17mr4133191wrk.206.1583416797995; 
- Thu, 05 Mar 2020 05:59:57 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtjEL1EUYiWx20HGAbu7L3jUMDJx1yfopfkBinXSHcbx3hKoL/XDiW6l4gy3l9mbC3NbrZKUA==
-X-Received: by 2002:adf:d4d1:: with SMTP id w17mr4133167wrk.206.1583416797769; 
- Thu, 05 Mar 2020 05:59:57 -0800 (PST)
-Received: from steredhat (host34-204-dynamic.43-79-r.retail.telecomitalia.it.
- [79.43.204.34])
- by smtp.gmail.com with ESMTPSA id n11sm11090406wrw.11.2020.03.05.05.59.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 05:59:57 -0800 (PST)
-Date: Thu, 5 Mar 2020 14:59:55 +0100
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ bh=kgiHdTwWq2BJ7jSvIn5hjBeU4NXqJk+81u1OgKO9k7g=;
+ b=dTwmIz3lXijQpeHzuKZcOODl/QpSqhA2y/D3a7nWBNy4Io68L+6e4d2tVGEgCMuHY1ZwHj
+ /3vFWrpzPbC87cS6LEpmPntxWtgyRrUqUbx/aUIHEjKJpCnGaueHOehFGhIP7k+fEQfwqz
+ uwkNhvaW4PjD+KvN9xykkGTi6l9JPzY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-361-izcVbNStN7mlV1Lq45IQig-1; Thu, 05 Mar 2020 09:21:06 -0500
+X-MC-Unique: izcVbNStN7mlV1Lq45IQig-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5509C1007268;
+ Thu,  5 Mar 2020 14:21:05 +0000 (UTC)
+Received: from [10.3.117.177] (ovpn-117-177.phx2.redhat.com [10.3.117.177])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A0AAA5C21B;
+ Thu,  5 Mar 2020 14:21:04 +0000 (UTC)
+Subject: Re: [PATCH v2 0/9] hw, ui, virtfs-proxy-helper: Reduce QEMU
+ .data/.rodata/.bss footprint
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Subject: Re: [PATCH v2 2/9] hw/audio/fmopl: Move ENV_CURVE to .heap to save
- 32KiB of .bss
-Message-ID: <20200305135955.balxqnfpmxvsee5b@steredhat>
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
 References: <20200305124525.14555-1-philmd@redhat.com>
- <20200305124525.14555-3-philmd@redhat.com>
- <20200305134403.sagzdlf5iyk2iufs@steredhat>
- <20200305134837.ucdb6blcguyfrh6d@steredhat>
- <467b8f3a-7d11-8a10-009f-5e1affadea69@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <d32c4278-5879-c485-6f02-bdd9d1f890d1@redhat.com>
+Date: Thu, 5 Mar 2020 08:21:03 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <467b8f3a-7d11-8a10-009f-5e1affadea69@redhat.com>
+In-Reply-To: <20200305124525.14555-1-philmd@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.120
@@ -90,48 +73,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 14:00:05 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 14:21:19 -0000
 
-On Thu, Mar 05, 2020 at 02:50:47PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On 3/5/20 2:48 PM, Stefano Garzarella wrote:
-> > On Thu, Mar 05, 2020 at 02:44:03PM +0100, Stefano Garzarella wrote:
-> > > On Thu, Mar 05, 2020 at 01:45:18PM +0100, Philippe Mathieu-Daud=E9 wr=
-ote:
-> > > > This buffer is only used by the adlib audio device. Move it to
-> > > > the .heap to release 32KiB of .bss (size reported on x86_64 host).
-> > > >=20
-> > > > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> > > > ---
-> > > >   hw/audio/fmopl.c | 4 +++-
-> > > >   1 file changed, 3 insertions(+), 1 deletion(-)
-> > > >=20
-> > > > diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-> > > > index 173a7521f2..356d4dfbca 100644
-> > > > --- a/hw/audio/fmopl.c
-> > > > +++ b/hw/audio/fmopl.c
-> > > > @@ -186,7 +186,7 @@ static int32_t *VIB_TABLE;
-> > > >   /* envelope output curve table */
-> > > >   /* attack + decay + OFF */
-> > > > -static int32_t ENV_CURVE[2*EG_ENT+1];
-> > > > +static int32_t *ENV_CURVE;
-> > > >   /* multiple table */
-> > > >   #define ML 2
-> > > > @@ -1090,6 +1090,7 @@ FM_OPL *OPLCreate(int clock, int rate)
-> > > >   =09OPL->clock =3D clock;
-> > > >   =09OPL->rate  =3D rate;
-> > > >   =09OPL->max_ch =3D max_ch;
-> > > > +    ENV_CURVE =3D g_new(int32_t, 2 * EG_ENT + 1);
-> >=20
-> > Should we use g_new0() ?
+On 3/5/20 6:45 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Since v1:
+> - merged 2 series
+> - reworked hw/usb/quirks
+> - added R-b/A-b tags
 >=20
-> No because the array is filled before being used. I can add a note about
-> this.
->=20
+> This series reduce the footprint of the QEMU binary:
+> .bss: 106KiB (moved to .heap)
 
-Thanks for the clarification!
-Yes, if you need to respin, maybe it's better.
+Why is moving stuff from .bss to .heap beneficial?  With .bss,=20
+0-initialization is cheap (the OS gives it to us for free by mapping the=20
+entire .bss to a copy-on-write zero page); but with .heap, we generally=20
+have to zero it at runtime ourselves.
 
-Thanks,
-Stefano
+> .data: 1MiB
+> .rodata: 4.34MiB
+
+But reducing these sizes makes sense.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
