@@ -1,67 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9xsG-0007AS-6v
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 16:17:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40297)
+	id 1j9y9x-0005mW-V5
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 16:36:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <palmerdabbelt@google.com>) id 1j9wlH-0001cd-Kz
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:28 -0500
+ (envelope-from <mansourweb@gmail.com>) id 1j9xxN-0001Uu-GN
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <palmerdabbelt@google.com>) id 1j9wlG-0000RD-LV
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:27 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:32931)
+ (envelope-from <mansourweb@gmail.com>) id 1j9xxM-0008SY-6e
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:01 -0500
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:44568)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <palmerdabbelt@google.com>)
- id 1j9wlG-0000Qt-Fd
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:26 -0500
-Received: by mail-pl1-x641.google.com with SMTP id ay11so3107814plb.0
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 12:06:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=aK2JQAB7Q1gn7fdcHul4fN6uds+oVK0UvAfAjO2mZ9Q=;
- b=nkLciiEOFdnmJr4oaNmteD5JKyspPP2UPNugBq1tAic4ve8l5Go3WA297cbIfocXnq
- BMxP9DE+LMWiv5M0NoYtrF2ixRGqcVgpxowEdPeRYaakQIejO/tLvLl2PtMSjTFqmXhI
- tP/cnCetytZdexpXIQtUB7w6Q/t3X4ZE20Sb/BbZ9Au603Z8ZtV8N0iUJvnOgQsIL75G
- psKuKZurxHD7A6TXquL8Z2Q+dXVAjHtL/D976QhA6+cyvwJnuq+nvFDq63WvuA9xFEUe
- uILwGjbduMG1YXCNqMuw9zN27eNRkO3ZJehju+jkVFs/Mjh3pH+D/4Gu1RJmvDosub2H
- ziog==
+ (Exim 4.71) (envelope-from <mansourweb@gmail.com>)
+ id 1j9xxL-0008Rj-Uc
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:00 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id i10so108390lfg.11
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 13:22:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=UlDFHDD6C6K4MqyN6QSxw8ae9bFx8S/bZMSBUKfWd2M=;
+ b=To5vsaMzbo6D/9YuwM3rjmQF8oynERkmos2Fs7fTQwxt6HVG5eIuRmxqyqKYZI6vvz
+ fvYSk7GwAg80Ryu6mM9W21oheIa/mBfMq5qPzEtjbblfxOD6zYBX1y0/1wjFEn8/WN5/
+ PeKadK3WPuN8OYGF8qwRHa7TDbPIP273B2kQ3Jd9ta8GjMURfYWcPgv5MmhU2Dwvw/ZQ
+ XImUQHB3+Xmx/k3qURnOILwmMVwW1w4+PPxdGvI0yOGdpcw+qAQFmF44JZxgfrUyjsrO
+ Qm5HhoTZNhf7DBnInQJCRAXrr3xvsAx68uzwMtxizS9qhMEujP2wsZ2LEFyM7FJPpgMX
+ V0Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=aK2JQAB7Q1gn7fdcHul4fN6uds+oVK0UvAfAjO2mZ9Q=;
- b=IGG+HgQG2WL3EuwTa3ORa13ow2BdBA+k7sdFcsTAHoigfQtE/wUun85v4Itotoid6e
- DFJDL55tbzF45vJdzVedfsaIC0NfCsd9E9qZm5F2Xg6KcxNbGbFOdiuOXgtp4D+NTDMF
- gaKd5IrKLcSzmDX35EA9NPx2aEH/TKMIyPkkK/QFm2t28PPbyEQsr4SO2EE3W/VCuHWv
- rO/dt9RwSdaR/pwNu6hhPyZKO+6YwRwrzg0kZ1Wpct5/W7VPcnrSw1D4hH2PH21Yna9h
- s5/eTizEm49nHjl5l9YS2g2CdHi/VwZ3VzKN7xxkudF4LfFnedYkxnoW2LZyfB6iwZTL
- o1mg==
-X-Gm-Message-State: ANhLgQ3rUspSz3IWtwICn93/1gD3LTfKOpkblF9Zte1011G7yTFmchPX
- Ih31tH3FIKDtTzNT1PIrjfrpIQ==
-X-Google-Smtp-Source: ADFU+vsOxdipjlXH6tWhcB8BNh2LE6l/eUDwDH4lZXskAUlEvO2bwAXVEzAT0oFf5hTuNGjRjmEtWg==
-X-Received: by 2002:a17:90a:22cd:: with SMTP id
- s71mr299051pjc.181.1583438785358; 
- Thu, 05 Mar 2020 12:06:25 -0800 (PST)
-Received: from localhost ([2620:0:1000:2514:23a5:d584:6a92:3e3c])
- by smtp.gmail.com with ESMTPSA id r13sm6969216pjp.14.2020.03.05.12.06.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 12:06:24 -0800 (PST)
-Date: Thu, 05 Mar 2020 12:06:24 -0800 (PST)
-X-Google-Original-Date: Thu, 05 Mar 2020 12:06:22 PST (-0800)
-Subject: Re: [PATCH] RISC-V: Add a missing "," in riscv_excp_names
-In-Reply-To: <CAP+75-XPHkSkcOmLct=jerOPx_WmYTc6a-=f2LfvtFku_p1WBw@mail.gmail.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-From: Palmer Dabbelt <palmerdabbelt@google.com>
-To: philmd@redhat.com
-Message-ID: <mhng-9606b2d7-09a7-4598-81ad-120a74a40e68@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=UlDFHDD6C6K4MqyN6QSxw8ae9bFx8S/bZMSBUKfWd2M=;
+ b=q2eab/OIy0S1TPJZD7Ch7FRx0DeugnAWDZX1rig25WnGZn7rTeBOAXGsauOcRYjzwW
+ vCJ7IZv8vd+0E7lOBNN5POdERLvdBFNJoPYexEmT4oSsX6glGiYJ6MStzWoVq1ieJKHq
+ h2wqmcVy/JCMaeprCqdzKR4Yfwhc7LT63OyieLKGmNXTjADm7apJNvR0BNajgdZwYgWq
+ NJENkrJU1ZlRC4qvQaQlaBx0geSkXEXrSWSA9+QlgP9dAmlOVQSnmuMnDGm1A+OWQwbl
+ 4cgS431zI90YufmbnW5Jn7/be/K6cjceqi7Id8f11mrcfnDHvYjBFl1IGL3aWSU5xvZJ
+ MuDg==
+X-Gm-Message-State: ANhLgQ0VHBxv0x11tlGPbW6Eq35GpMHe+JulYstVmTGugACzNQWpzDym
+ ksMIxyJGXFX5C+rms0/qokBz6S6q80EZsHeUFbJYaEutA4M=
+X-Google-Smtp-Source: ADFU+vuxudCcryilO8UjcbRMBKc8dlfx1ddVIN00J6OiAvw5J7yvF4mGiMq+tpwhuJngBG1wOWzdhkJ79dAoMPFwtWs=
+X-Received: by 2002:a05:6512:203c:: with SMTP id
+ s28mr308966lfs.117.1583443377299; 
+ Thu, 05 Mar 2020 13:22:57 -0800 (PST)
+MIME-Version: 1.0
+From: Mansour Ahmadi <mansourweb@gmail.com>
+Date: Thu, 5 Mar 2020 16:22:46 -0500
+Message-ID: <CAGT9xrCF740RKCBrOFVN2LJUKMkLj25oO4pVD1LOfM=ZVKgLeQ@mail.gmail.com>
+Subject: Inconsistency - potential bug
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000006a65405a02224c6"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-X-Mailman-Approved-At: Thu, 05 Mar 2020 16:17:42 -0500
+X-Received-From: 2a00:1450:4864:20::12d
+X-Mailman-Approved-At: Thu, 05 Mar 2020 16:36:00 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,58 +62,160 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 20:06:28 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 21:23:02 -0000
 
-On Thu, 05 Mar 2020 09:20:31 PST (-0800), philmd@redhat.com wrote:
-> Cc'ing qemu-trivial@ in case there is a pending PR in  progress, it
-> might get merged quicker.
->
-> On Thu, Mar 5, 2020 at 6:19 PM Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> On 3/5/20 5:48 PM, Palmer Dabbelt wrote:
->> > THis would almost certainly cause the exception names to be reported
->> > incorrectly.  Covarity found the issue (CID 1420223).  As per Peter's
->>
->> "This", "Coverity" typos.
->>
->> Fixes: ab67a1d07a4
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+--00000000000006a65405a02224c6
+Content-Type: text/plain; charset="UTF-8"
 
-Thanks.  I guess I'll just send the PR, as there's really no reason to block
-this on the other RISC-V stuff.  It'll just be a single patch PR, so if the
-patch goes in some other way then it should be easy to drop.  I usually don't
-like rushing these sorts of things, but this one seems pretty safe.
+Hi
 
->>
->> > suggestion, I've also added a comma at the end of the list to avoid the issue
->> > reappearing in the future.
->> >
->> > Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
->> > ---
->> >   target/riscv/cpu.c | 4 ++--
->> >   1 file changed, 2 insertions(+), 2 deletions(-)
->> >
->> > diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
->> > index c47d10b739..c0b7023100 100644
->> > --- a/target/riscv/cpu.c
->> > +++ b/target/riscv/cpu.c
->> > @@ -66,7 +66,7 @@ const char * const riscv_excp_names[] = {
->> >       "exec_page_fault",
->> >       "load_page_fault",
->> >       "reserved",
->> > -    "store_page_fault"
->> > +    "store_page_fault",
->> >       "reserved",
->> >       "reserved",
->> >       "reserved",
->> > @@ -74,7 +74,7 @@ const char * const riscv_excp_names[] = {
->> >       "guest_exec_page_fault",
->> >       "guest_load_page_fault",
->> >       "reserved",
->> > -    "guest_store_page_fault"
->> > +    "guest_store_page_fault",
->> >   };
->> >
->> >   const char * const riscv_intr_names[] = {
->> >
+It seems there is an inconsistency here:
+
+https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L996
+if (((insn & (1 << 21)) == 0) != ((insn & (1 << 15)) == 0))
+*invalid = 1;
+https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L1041
+if (((insn & (1 << 21)) == 0) == ((insn & (1 << 15)) == 0))
+*invalid = 1;
+
+Does "==" need to be changed to "!="?
+
+Mansour
+
+--00000000000006a65405a02224c6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:garamond=
+,serif;font-size:large">Hi</div><div class=3D"gmail_default" style=3D"font-=
+family:garamond,serif;font-size:large"><br></div><div class=3D"gmail_defaul=
+t" style=3D"font-family:garamond,serif;font-size:large">It seems there is a=
+n inconsistency here:</div><div class=3D"gmail_default" style=3D"font-famil=
+y:garamond,serif;font-size:large"><br></div><div class=3D"gmail_default" st=
+yle=3D"font-family:garamond,serif;font-size:large"><a href=3D"https://githu=
+b.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L=
+996">https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54=
+268b/disas/ppc.c#L996</a><br></div><div class=3D"gmail_default" style=3D"fo=
+nt-family:garamond,serif;font-size:large"><span class=3D"gmail-pl-k" style=
+=3D"box-sizing:border-box;color:rgb(215,58,73);font-family:SFMono-Regular,C=
+onsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-sp=
+ace:pre">if</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Reg=
+ular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;wh=
+ite-space:pre;background-color:rgb(255,251,221)"> (((insn &amp; (</span><sp=
+an class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197)=
+;font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mono=
+space;font-size:12px;white-space:pre">1</span><span style=3D"color:rgb(36,4=
+1,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo=
+,monospace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)=
+"> &lt;&lt; </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-b=
+ox;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation=
+ Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">21</span><span =
+style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Libe=
+ration Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;background=
+-color:rgb(255,251,221)">)) =3D=3D </span><span class=3D"gmail-pl-c1" style=
+=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Co=
+nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
+ce:pre">0</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regul=
+ar,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;whit=
+e-space:pre;background-color:rgb(255,251,221)">) !=3D ((insn &amp; (</span>=
+<span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,1=
+97);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,m=
+onospace;font-size:12px;white-space:pre">1</span><span style=3D"color:rgb(3=
+6,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Me=
+nlo,monospace;font-size:12px;white-space:pre;background-color:rgb(255,251,2=
+21)"> &lt;&lt; </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:borde=
+r-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberat=
+ion Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">15</span><sp=
+an style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;L=
+iberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;backgro=
+und-color:rgb(255,251,221)">)) =3D=3D </span><span class=3D"gmail-pl-c1" st=
+yle=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular=
+,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-=
+space:pre">0</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Re=
+gular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;w=
+hite-space:pre;background-color:rgb(255,251,221)">))</span><br></div><div c=
+lass=3D"gmail_default" style=3D"font-family:garamond,serif;font-size:large"=
+><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&qu=
+ot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;bac=
+kground-color:rgb(255,251,221)">    </span><span style=3D"color:rgb(36,41,4=
+6);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mo=
+nospace;font-size:12px;white-space:pre">*invalid =3D </span><span class=3D"=
+gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-family=
+:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-s=
+ize:12px;white-space:pre">1</span><span style=3D"color:rgb(36,41,46);font-f=
+amily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;f=
+ont-size:12px;white-space:pre">;</span></div><div class=3D"gmail_default" s=
+tyle=3D"font-family:garamond,serif;font-size:large"><a href=3D"https://gith=
+ub.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#=
+L1041">https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e=
+54268b/disas/ppc.c#L1041</a><span style=3D"color:rgb(36,41,46);font-family:=
+SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-si=
+ze:12px;white-space:pre;background-color:rgb(255,251,221)"><br></span></div=
+><div class=3D"gmail_default" style=3D"font-family:garamond,serif;font-size=
+:large"><span class=3D"gmail-pl-k" style=3D"box-sizing:border-box;color:rgb=
+(215,58,73);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;=
+,Menlo,monospace;font-size:12px;white-space:pre">if</span><span style=3D"co=
+lor:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono=
+&quot;,Menlo,monospace;font-size:12px;white-space:pre;background-color:rgb(=
+255,251,221)"> (((insn &amp; (</span><span class=3D"gmail-pl-c1" style=3D"b=
+ox-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consola=
+s,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pr=
+e">1</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Co=
+nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
+ce:pre;background-color:rgb(255,251,221)"> &lt;&lt; </span><span class=3D"g=
+mail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:=
+SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-si=
+ze:12px;white-space:pre">21</span><span style=3D"color:rgb(36,41,46);font-f=
+amily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;f=
+ont-size:12px;white-space:pre;background-color:rgb(255,251,221)">)) =3D=3D =
+</span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb=
+(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,=
+Menlo,monospace;font-size:12px;white-space:pre">0</span><span style=3D"colo=
+r:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&q=
+uot;,Menlo,monospace;font-size:12px;white-space:pre;background-color:rgb(25=
+5,251,221)">) =3D=3D ((insn &amp; (</span><span class=3D"gmail-pl-c1" style=
+=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Co=
+nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
+ce:pre">1</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regul=
+ar,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;whit=
+e-space:pre;background-color:rgb(255,251,221)"> &lt;&lt; </span><span class=
+=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-fa=
+mily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;fo=
+nt-size:12px;white-space:pre">15</span><span style=3D"color:rgb(36,41,46);f=
+ont-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monosp=
+ace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)">)) =
+=3D=3D </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;co=
+lor:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono=
+&quot;,Menlo,monospace;font-size:12px;white-space:pre">0</span><span style=
+=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberatio=
+n Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;background-colo=
+r:rgb(255,251,221)">))</span></div><div class=3D"gmail_default" style=3D"fo=
+nt-family:garamond,serif;font-size:large"><span style=3D"color:rgb(36,41,46=
+);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mon=
+ospace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)">  =
+  </span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Cons=
+olas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space=
+:pre">*invalid =3D </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:b=
+order-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Lib=
+eration Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">1</span>=
+<span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quo=
+t;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">;</=
+span><br></div><div class=3D"gmail_default" style=3D"font-family:garamond,s=
+erif;font-size:large"><br></div><div class=3D"gmail_default" style=3D"font-=
+family:garamond,serif;font-size:large">Does &quot;=3D=3D&quot; need to be c=
+hanged to &quot;!=3D&quot;?<span style=3D"font-family:Arial,Helvetica,sans-=
+serif;font-size:small"><br></span></div><div class=3D"gmail_default" style=
+=3D"font-family:garamond,serif;font-size:large"><br></div><div class=3D"gma=
+il_default" style=3D"font-family:garamond,serif;font-size:large">Mansour</d=
+iv><div class=3D"gmail_default" style=3D"font-family:garamond,serif;font-si=
+ze:large"><span style=3D"font-family:Arial,Helvetica,sans-serif;font-size:s=
+mall"><br></span></div><div><div dir=3D"ltr" class=3D"gmail_signature" data=
+-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div>=
+<div dir=3D"ltr"><div dir=3D"ltr"><span style=3D"border-collapse:collapse;w=
+hite-space:pre-wrap"><span style=3D"border-collapse:separate;white-space:no=
+rmal"><font color=3D"#000000" size=3D"2"><div style=3D"font-family:Calibri"=
+><div style=3D"font-family:arial,sans-serif"></div></div></font></span></sp=
+an></div></div></div></div></div></div></div></div></div>
+
+--00000000000006a65405a02224c6--
 
