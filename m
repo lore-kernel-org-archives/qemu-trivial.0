@@ -1,98 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9nOq-0005EI-U9
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:06:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39658)
+	id 1j9nSb-0007rB-0S
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:10:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40743)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j9nOo-0005E1-C1
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:06:39 -0500
+ (envelope-from <groug@kaod.org>) id 1j9nSY-0007n1-Aj
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:10:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j9nOn-0004Nx-Eu
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:06:38 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:33767)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j9nOl-0004Ge-69; Thu, 05 Mar 2020 05:06:35 -0500
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M6UuX-1jGg5k2yXx-006v89; Thu, 05 Mar 2020 11:06:29 +0100
-Subject: Re: [PATCH 1/6] hw/audio/fmopl: Fix a typo twice
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20200304221807.25212-1-philmd@redhat.com>
- <20200304221807.25212-2-philmd@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <cb226473-f7be-02cb-62c8-94c71adbb164@vivier.eu>
-Date: Thu, 5 Mar 2020 11:06:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <groug@kaod.org>) id 1j9nSX-00039B-5M
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:10:30 -0500
+Received: from 1.mo69.mail-out.ovh.net ([178.33.251.173]:50999)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1j9nSW-00031Z-Va
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:10:29 -0500
+Received: from player697.ha.ovh.net (unknown [10.108.57.50])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 4D9CE7F53D
+ for <qemu-trivial@nongnu.org>; Thu,  5 Mar 2020 11:10:26 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player697.ha.ovh.net (Postfix) with ESMTPSA id 3A4601016F37D;
+ Thu,  5 Mar 2020 10:10:19 +0000 (UTC)
+Date: Thu, 5 Mar 2020 11:10:15 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Dmitry Fleytman
+ <dmitry.fleytman@gmail.com>, Christian Schoenebeck
+ <qemu_oss@crudebyte.com>, Jason Wang <jasowang@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH 3/3] virtfs-proxy-helper: Make the helper_opts[] array
+ const
+Message-ID: <20200305111015.10ad9479@bahia.home>
+In-Reply-To: <20200305010446.17029-4-philmd@redhat.com>
+References: <20200305010446.17029-1-philmd@redhat.com>
+ <20200305010446.17029-4-philmd@redhat.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20200304221807.25212-2-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:SVrP9RUn+z4TOSjzBerozJ+li+7WFZ0ms2M15GY6Q+h0OTvjC/r
- dZV4lZAy1G3c5ffBaKvsWatKwuNAwuYF9Be+NV0w8FSS2fpKTfXVCoKW5XBeK484ARrNioE
- QU2jP+Q/PreEdrnoeG4Yc9nApCpzYyVZ0b7mU3LxRY4WhNbuo8UWNP3d9DxWffTxd/VZ01o
- OUxR3uBUBFTkipua+dqOw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:HPvNT8uZMb0=:3MBZWvNpqUGHUaD7N98PUC
- WaxA5U+mj7idkAmFmgmdclHmocvw46wmFmzadoCgihxw7xaZ364W+ecvsU59tVUOGasvwQCcx
- 5C2mAOp9OxKRYXZObl99OU5t1hzKbpCT/5pUriKsd5Ej+FtyjLf/psuM976Xvek1otG0N51Oa
- LOyznSKL70LjHkfMwiowwHI0ivTVy5nx23eGUf7gnQaiWCXXKY92G0MPR1I1lAkbUJX7hRpe4
- UEdRYRqI6M4IbKtjRYTrUQmV0B8hvlVR5aFKEo5tYs00GAwmafnDJKucDYRkItJ+OyCqkBpPW
- 5R8vXFly5kVuIhH+GCnwhiaSHmgJBwopGrvylf93BQmVAl5iUuFAPCWvCL9z179uDUBbguRGN
- W/6aCBa3+B2IeLza06h6vCEcO05m2S9jWR+fMbe6WbkvbI9HMqCNHoByxSJUbAg2QQpqP5uYd
- D/02FGRKJrLjSWHM4LKnJog1bZceR8/ltNftH5blktoKAXeGVbsIp7x6fpB8+FkatDruwAx7O
- 8U3JNr6TwCESBV1Xw7zhW/8WhiIkb0eeK3nrCnYnIvDP7+ag4tUeoVK1Bif6eWyRJ6nfVRLkP
- lnibUBUxjVExQ+OGOvjegETcnp1AE6bjCFlDdoIbI3fySV7CQ+Zz//yX40iHSt8D+4trSfHH3
- ENNRLXX5gUiCagXor1dpGqluaJiWABAm3iz8V9VNQXBEg+e1NMmt2yN4rvvcNhkNZF31QzXhq
- pDiasV2G5Xt4YXsiCY9AMMCtUUH5bAe6guv5bzEghe8Xy0emH3Xribom00OESsHDwBZe8jORi
- avwyR8HFTbGnYJBRr3oZ1FagQT60JKanJXud042TQ4EoRBHZj/8p0mOZTv0IhEhsOWvn5j9
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Ovh-Tracer-Id: 14992764638741895459
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedruddutddgudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthhqredtredtjeenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheileejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrgh
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+X-Received-From: 178.33.251.173
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,37 +53,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 10:06:39 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 10:10:31 -0000
 
-Le 04/03/2020 à 23:18, Philippe Mathieu-Daudé a écrit :
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+On Thu,  5 Mar 2020 02:04:46 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+
+> Reduce a bit the memory footprint by making the helper_opts[]
+> array const.
+>=20
+
+... and, maybe most importantly, make it clear helper_opts[] is
+not supposed to be modified at runtime.
+
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/audio/fmopl.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-> index 9f50a89b4a..173a7521f2 100644
-> --- a/hw/audio/fmopl.c
-> +++ b/hw/audio/fmopl.c
-> @@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
->  	}
->  }
->  
-> -/* ----------  Create one of vietual YM3812 ----------       */
-> +/* ----------  Create one of virtual YM3812 ----------       */
->  /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
->  FM_OPL *OPLCreate(int clock, int rate)
->  {
-> @@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
->  	return OPL;
->  }
->  
-> -/* ----------  Destroy one of vietual YM3812 ----------       */
-> +/* ----------  Destroy one of virtual YM3812 ----------       */
->  void OPLDestroy(FM_OPL *OPL)
->  {
->  #ifdef OPL_OUTPUT_LOG
-> 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Assuming this goes to the trivial tree:
+
+Acked-by: Greg Kurz <groug@kaod.org>
+
+>  fsdev/virtfs-proxy-helper.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+> index aa1ab2590d..de061a8a0e 100644
+> --- a/fsdev/virtfs-proxy-helper.c
+> +++ b/fsdev/virtfs-proxy-helper.c
+> @@ -43,7 +43,7 @@
+>  #define BTRFS_SUPER_MAGIC 0x9123683E
+>  #endif
+> =20
+> -static struct option helper_opts[] =3D {
+> +static const struct option helper_opts[] =3D {
+>      {"fd", required_argument, NULL, 'f'},
+>      {"path", required_argument, NULL, 'p'},
+>      {"nodaemon", no_argument, NULL, 'n'},
+
 
