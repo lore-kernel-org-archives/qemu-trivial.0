@@ -1,54 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9p6S-0008NI-AG
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 06:55:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60322)
+	id 1j9p9u-0002gr-4w
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 06:59:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60916)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j9p6Q-0008NA-Hq
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:55:47 -0500
+ (envelope-from <kraxel@redhat.com>) id 1j9p9n-0002e9-JP
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:59:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j9p6P-0006Dn-8V
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:55:46 -0500
-Resent-Date: Thu, 05 Mar 2020 06:55:46 -0500
-Resent-Message-Id: <E1j9p6P-0006Dn-8V@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21173)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j9p6L-000677-Lm; Thu, 05 Mar 2020 06:55:42 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1583409318; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=XyzW4gh8vBt5k8iZAdsZ990DvLef4jWlK5u056NsXE4hqCX2iHkjZwxvIhmUrNqZtwQqS04rAC0GJfAWkW3dvgJiAWhh+XNRvJuIGwlNyQaBRPx8KbmjExNckmdi9PyvYyWKNnE8RfbqvyDKOjLt8uIZdGJ+pgbwSVNU0JoWbgA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1583409318;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=OqxZg/6nJG+xmoBE5njyrN9NQCUqIlrDCXZpa7fXJrs=; 
- b=O+p4ub6tGcXepaEp7NTE7RToVCbrqVdj7N3Fv6YNz8E2yXf4HOIcrOrSmQM7jLofHVLsA1021UMJdpCUK64Mj4KsTyL4cVxvwy1WvB9xuWdFbejF/WUTGSmdebqmr7QuKgq29+aRLlu5ENGqWnbiy/FCW6BQVJb4cZyQ5gautx0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1583409316626629.7816668153877;
- Thu, 5 Mar 2020 03:55:16 -0800 (PST)
-In-Reply-To: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
-Subject: Re: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <158340931491.357.2497052944687105374@39012742ff91>
+ (envelope-from <kraxel@redhat.com>) id 1j9p9m-00019h-Lm
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:59:15 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:56526
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1j9p9m-000187-Hk
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:59:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583409553;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DMBX7jwvEhYERR2oFqWerlGCA/xirpAAmT2ofGoiN5M=;
+ b=XXT3W1/XJ4e/pqPWzoLcK76pwpdaN/esLx/IX2+gm9w6O4pmxh0iSOajtyChy4AKfv6wr0
+ celOZKzjHCEFVK+kbaNcGG2ZypnFU1q1/G8yQK7AdHAjA1MIrCJ9I3MvRraKt08p36g7EH
+ VTlDvQR2/dQKtRAuH6YiQb38lZapOtU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-290-GfbOGbD9OkW4nFvGc6OPjA-1; Thu, 05 Mar 2020 06:59:12 -0500
+X-MC-Unique: GfbOGbD9OkW4nFvGc6OPjA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28EB6DB23;
+ Thu,  5 Mar 2020 11:59:11 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-150.ams2.redhat.com
+ [10.36.116.150])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DEAC510027A3;
+ Thu,  5 Mar 2020 11:59:10 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 21A8717449; Thu,  5 Mar 2020 12:59:10 +0100 (CET)
+Date: Thu, 5 Mar 2020 12:59:10 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH 3/6] hw/usb/quirks: Use smaller types to reduce .rodata
+ by 10KiB
+Message-ID: <20200305115910.zhmaw3xqgoz4fan2@sirius.home.kraxel.org>
+References: <20200304221807.25212-1-philmd@redhat.com>
+ <20200304221807.25212-4-philmd@redhat.com>
+ <20200305080237.j2a7waokxominirn@sirius.home.kraxel.org>
+ <a5b6cddf-5887-be27-db76-2e515daa2c11@redhat.com>
+ <CAP+75-XBbTPHbQJWxn5nEYsz4hdGXSTLTqKRRR-sx-APbPN2Sg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: kuhn.chenqun@huawei.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, peter.maydell@linaro.org,
- zhang.zhanghailiang@huawei.com, jasowang@redhat.com, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au, euler.robot@huawei.com, kuhn.chenqun@huawei.com
-Date: Thu, 5 Mar 2020 03:55:16 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <CAP+75-XBbTPHbQJWxn5nEYsz4hdGXSTLTqKRRR-sx-APbPN2Sg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,32 +73,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 11:55:47 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 11:59:16 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwNTEwNTMyNS4zMTI2
-NC0xLWt1aG4uY2hlbnF1bkBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
-aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
-ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
-dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
-U0NSSVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9j
-a2VyLWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5n
-d0BmZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVs
-ZSAnZHRjJyAoaHR0cHM6Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9y
-IHBhdGggJ2R0YycKQ2xvbmluZyBpbnRvICdkdGMnLi4uCnJlbW90ZTogQ291bnRpbmcgb2JqZWN0
-czogNTM5NCwgZG9uZS4gICAgICAgIAplcnJvcjogUlBDIGZhaWxlZDsgcmVzdWx0PTE4LCBIVFRQ
-IGNvZGUgPSAyMDAKZmF0YWw6IFRoZSByZW1vdGUgZW5kIGh1bmcgdXAgdW5leHBlY3RlZGx5CmZh
-dGFsOiBwcm90b2NvbCBlcnJvcjogYmFkIHBhY2sgaGVhZGVyCkNsb25lIG9mICdodHRwczovL2dp
-dC5xZW11Lm9yZy9naXQvZHRjLmdpdCcgaW50byBzdWJtb2R1bGUgcGF0aCAnZHRjJyBmYWlsZWQK
-ZmFpbGVkIHRvIHVwZGF0ZSBzdWJtb2R1bGUgZHRjClN1Ym1vZHVsZSAnZHRjJyAoaHR0cHM6Ly9n
-aXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHVucmVnaXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwptYWtl
-WzFdOiAqKiogWy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC11MHdqbDZ4bS9zcmMvZG9ja2Vy
-LXNyYy4yMDIwLTAzLTA1LTA2LjUxLjEzLjE1NTU4XSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcg
-ZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtdTB3amw2eG0vc3JjJwptYWtl
-OiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAgNG0y
-Ljc0OXMKdXNlciAgICAwbTIuMzU2cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0
-cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAzMDUxMDUzMjUuMzEyNjQtMS1rdWhuLmNoZW5xdW5A
-aHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0t
-CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
-dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
-dC5jb20=
+> > And went this less intrusive way.
+> >
+> > I'll respin with s/-1/UINT8_MAX/.
+>=20
+> Problem, now this entry is ignored (interface_class=3D=3D-1):
+
+Yep, "-1" is used as "not used" or "end-of-list" indicator, and it is
+outside the valid range to avoid that kind of clashes.  You need some
+other way to express that if you want go with smaller types which don't
+allow values outside the valid range any more.  Add a "flags" field for
+that maybe?
+
+cheers,
+  Gerd
+
 
