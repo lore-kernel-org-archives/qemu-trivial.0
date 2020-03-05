@@ -1,68 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9mcW-0006lQ-SD
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 04:16:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57578)
+	id 1j9nCx-00043B-Ci
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 04:54:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37258)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dmitry.fleytman@gmail.com>) id 1j9mcS-0006iX-43
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 04:16:41 -0500
+ (envelope-from <sgarzare@redhat.com>) id 1j9nCu-0003zc-MY
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 04:54:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dmitry.fleytman@gmail.com>) id 1j9mcR-0005w5-3b
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 04:16:40 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45235)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <dmitry.fleytman@gmail.com>)
- id 1j9mcN-0005ts-PD; Thu, 05 Mar 2020 04:16:35 -0500
-Received: by mail-wr1-x442.google.com with SMTP id v2so6014686wrp.12;
- Thu, 05 Mar 2020 01:16:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=Sa5xELSz1LdXwv+NNsxnr763IH/tmmTTgRXtX0dAO3s=;
- b=l+deQQBa35UWr9RbNYbqxl8hApwU96ErvCRqm3ZVDje2MrVTEFMWR+rJ/JGtc/hoSX
- iVjFtY6ZCXY2ZhvaBdnaQjuDUrCgGFcBfAWzS9pXl1bcf1Dq0mqG/aclp+pLL9qqUqob
- iSBoBpmmpdOHqLZTuGr9OMrilE6mnD4CRqrPewSLRRxOa6fz1XrQj4ZKS3uIRQMTgdyB
- 2XODplcp0GteqP2HvGS0iVVxxnhoWoHWICrpD2BUWmymdujbI+09wJPOjUtN9ayCmTwA
- JBY755XMG7H3315fO3J8ahjEbEiia++L0KK7QRhoTdw19CJbu+qROCsu7KBhwyMm2JVL
- LcZw==
+ (envelope-from <sgarzare@redhat.com>) id 1j9nCt-0003fp-Gk
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 04:54:20 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44285
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j9nCt-0003cc-DY
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 04:54:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583402057;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TpQwTX6rFgd+J7TGeYNfoXyO8Q28zM3gmYTbPVJg9qo=;
+ b=CT3ft5CX/2bo6LTeMuGJwhXNh1u931MV1fPAGhxopORv1QN95ROs29uWHMTyRbe8duDYe/
+ gL1HbOU6CvrVxHJObH2RgWWDLjpJ3RJpON6ky0kLwJnhCEnQNGOajh84VAaIQByzWSJoax
+ 36RoZRxC2Un3wt26t56fVmJVqj2EXCQ=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-93-1zuOk29IMlKi88eofFsWMw-1; Thu, 05 Mar 2020 04:54:13 -0500
+X-MC-Unique: 1zuOk29IMlKi88eofFsWMw-1
+Received: by mail-wm1-f69.google.com with SMTP id p17so527861wmc.9
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 01:54:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=Sa5xELSz1LdXwv+NNsxnr763IH/tmmTTgRXtX0dAO3s=;
- b=aRom05ty71Ff2qDch7Y7Ifsc52D9EHLxfX0Avt9KlK5jl+JnMEVwcdaBcMwprSnfP/
- yVFnMcTotty4z4Y2AnkrleEQ1VB+h6m95DlcDczmG7Sw4Hak+o9T1mpkqYuWiiLSfdJX
- JiUe+x6AsmKOiGhUVUMuhXrAdIPupa9EUQT15PCIOBRAj2hgUr8i8kzjmRCPJBspZ9ih
- V8FBlnqv6Xa/F8pCKlXLxuLpJ+2IfcCcjCQKU2wWNuMMVhHkuAuUzkv0iyj0Qkt1RRh7
- Q0FQKsaTNq5fQpW8pR1WcbRPThP0p/VdHeqli4E5ZMWyS122PrlTwCabaHUHR0p0+7S/
- 9FIg==
-X-Gm-Message-State: ANhLgQ27c2FIvRpYfllOslqUUyGPfYGHGyH+gxXnHCPiamm/rwtKm23w
- 1BDna8O2iHumW9N4EmFk0XI=
-X-Google-Smtp-Source: ADFU+vvxrbddaqdxO3PJX4PU7SrWcKndqj2fXT6O2+krAcrBwjr+rgVposWk0l9KQDVf5tPOYHDxMw==
-X-Received: by 2002:adf:a512:: with SMTP id i18mr9155203wrb.61.1583399794739; 
- Thu, 05 Mar 2020 01:16:34 -0800 (PST)
-Received: from [10.0.1.16] ([141.226.29.227])
- by smtp.gmail.com with ESMTPSA id a7sm7897520wmj.12.2020.03.05.01.16.33
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 05 Mar 2020 01:16:34 -0800 (PST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.60.0.2.5\))
-Subject: Re: [PATCH 1/3] hw/net/e1000: Add readops/writeops typedefs
-From: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-In-Reply-To: <20200305010446.17029-2-philmd@redhat.com>
-Date: Thu, 5 Mar 2020 11:16:33 +0200
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=AueDNYRzjb6zvVf8u2dbaAFqkvxA14DFweVB5xzTenU=;
+ b=SJG3801yWcB8tWlcyMa1kUbPO7eG4/3mv2BdqMGaCuXDZM4knQRjma5QqD6AFSRaVF
+ h3eZ0L9n5CDaUS+ZG1Tzc7x7BjFQFjgoASIkxecxPJbNTQ+1/iHBzZm7inrDeXD1ixB5
+ LyVNbmKvYtja7GJ7ASoxcGxYPPEKxjz2N8p5dxxAtTPmjTqhPgVAOIt9N7E977mMyXl2
+ 7Xrm9My3lQ6FiwfX4ABtoCTFlgBJICvR7wZwrHimx8rcEeW8UpkvZvrzqFjgtJNO7ehX
+ p2V9WqGOERC7ZlX7VIek4zOfhjIsnnAk09DeavSOgrMVv5psvk8qrTj8Ubzh/LiTIFio
+ dDxw==
+X-Gm-Message-State: ANhLgQ07ryfLCEH09pqRG/RPso72idSwd1ipxd0pQiIXO05aHFavSunF
+ xwjQiEXbQz6tRsnECWkCqN4/ju1fhzwtYDeZx7qUfCAJuZFl4rSJ1NSOkZ21tFgOe3QvOB3tRwI
+ XyAhOBI/V6VxtavW/yA==
+X-Received: by 2002:adf:e9c2:: with SMTP id l2mr8996079wrn.86.1583402052031;
+ Thu, 05 Mar 2020 01:54:12 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vs1Rt3xvHCyPx2q2O+U1+gj2iJoGFuu1a5B6EMMz6S1TSWHbqL5LDQ2sVT53X3WlMT1eBQQmA==
+X-Received: by 2002:adf:e9c2:: with SMTP id l2mr8996053wrn.86.1583402051791;
+ Thu, 05 Mar 2020 01:54:11 -0800 (PST)
+Received: from steredhat (host34-204-dynamic.43-79-r.retail.telecomitalia.it.
+ [79.43.204.34])
+ by smtp.gmail.com with ESMTPSA id b12sm16260813wro.66.2020.03.05.01.54.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 01:54:11 -0800 (PST)
+Date: Thu, 5 Mar 2020 10:53:57 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <E35EF54E-E5AF-40F5-B91F-941810A5F219@gmail.com>
+ Greg Kurz <groug@kaod.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 0/3] hw/net,virtfs-proxy-helper: Reduce .data footprint
+Message-ID: <20200305095357.nvhjz7q7tuquys4k@steredhat>
 References: <20200305010446.17029-1-philmd@redhat.com>
- <20200305010446.17029-2-philmd@redhat.com>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-X-Mailer: Apple Mail (2.3608.60.0.2.5)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::442
+MIME-Version: 1.0
+In-Reply-To: <20200305010446.17029-1-philmd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,86 +85,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 09:16:42 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 09:54:21 -0000
 
+On Thu, Mar 05, 2020 at 02:04:43AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> More memory footprint reduction, similar to:
+> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg00984.html
+>=20
+> The elf-dissector tool [1] [2] helped to notice the big array.
+>=20
+> [1] https://phabricator.kde.org/source/elf-dissector/
+> [2] https://www.volkerkrause.eu/2019/06/22/elf-dissector-aarch64-support.=
+html
+>=20
 
-> On 5 Mar 2020, at 3:04, Philippe Mathieu-Daud=C3=A9 =
-<philmd@redhat.com> wrote:
->=20
-> Express the macreg[] arrays using typedefs.
-> No logical changes introduced here.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Thanks to share these links!
 
+> Philippe Mathieu-Daud=E9 (3):
+>   hw/net/e1000: Add readops/writeops typedefs
+>   hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
+>   virtfs-proxy-helper: Make the helper_opts[] array const
+>=20
+>  fsdev/virtfs-proxy-helper.c | 2 +-
+>  hw/net/e1000.c              | 6 ++++--
+>  hw/net/e1000e_core.c        | 6 ++++--
+>  3 files changed, 9 insertions(+), 5 deletions(-)
+>=20
 
-Reviewed-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Cool and clear changes!
 
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
-> ---
-> hw/net/e1000.c       | 6 ++++--
-> hw/net/e1000e_core.c | 6 ++++--
-> 2 files changed, 8 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-> index 0b833d5a15..972d9b5083 100644
-> --- a/hw/net/e1000.c
-> +++ b/hw/net/e1000.c
-> @@ -1150,7 +1150,8 @@ set_ims(E1000State *s, int index, uint32_t val)
-> }
->=20
-> #define getreg(x)    [x] =3D mac_readreg
-> -static uint32_t (*macreg_readops[])(E1000State *, int) =3D {
-> +typedef uint32_t (*readops)(E1000State *, int);
-> +static readops macreg_readops[] =3D {
->     getreg(PBA),      getreg(RCTL),     getreg(TDH),      =
-getreg(TXDCTL),
->     getreg(WUFC),     getreg(TDT),      getreg(CTRL),     =
-getreg(LEDCTL),
->     getreg(MANC),     getreg(MDIC),     getreg(SWSM),     =
-getreg(STATUS),
-> @@ -1205,7 +1206,8 @@ static uint32_t (*macreg_readops[])(E1000State =
-*, int) =3D {
-> enum { NREADOPS =3D ARRAY_SIZE(macreg_readops) };
->=20
-> #define putreg(x)    [x] =3D mac_writereg
-> -static void (*macreg_writeops[])(E1000State *, int, uint32_t) =3D {
-> +typedef void (*writeops)(E1000State *, int, uint32_t);
-> +static writeops macreg_writeops[] =3D {
->     putreg(PBA),      putreg(EERD),     putreg(SWSM),     =
-putreg(WUFC),
->     putreg(TDBAL),    putreg(TDBAH),    putreg(TXDCTL),   =
-putreg(RDBAH),
->     putreg(RDBAL),    putreg(LEDCTL),   putreg(VET),      =
-putreg(FCRUC),
-> diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-> index 94ea34dca5..38bdb90114 100644
-> --- a/hw/net/e1000e_core.c
-> +++ b/hw/net/e1000e_core.c
-> @@ -2855,7 +2855,8 @@ e1000e_set_gcr(E1000ECore *core, int index, =
-uint32_t val)
-> }
->=20
-> #define e1000e_getreg(x)    [x] =3D e1000e_mac_readreg
-> -static uint32_t (*e1000e_macreg_readops[])(E1000ECore *, int) =3D {
-> +typedef uint32_t (*readops)(E1000ECore *, int);
-> +static readops e1000e_macreg_readops[] =3D {
->     e1000e_getreg(PBA),
->     e1000e_getreg(WUFC),
->     e1000e_getreg(MANC),
-> @@ -3061,7 +3062,8 @@ static uint32_t =
-(*e1000e_macreg_readops[])(E1000ECore *, int) =3D {
-> enum { E1000E_NREADOPS =3D ARRAY_SIZE(e1000e_macreg_readops) };
->=20
-> #define e1000e_putreg(x)    [x] =3D e1000e_mac_writereg
-> -static void (*e1000e_macreg_writeops[])(E1000ECore *, int, uint32_t) =
-=3D {
-> +typedef void (*writeops)(E1000ECore *, int, uint32_t);
-> +static writeops e1000e_macreg_writeops[] =3D {
->     e1000e_putreg(PBA),
->     e1000e_putreg(SWSM),
->     e1000e_putreg(WUFC),
-> --=20
-> 2.21.1
->=20
+Thanks,
+Stefano
 
 
