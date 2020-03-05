@@ -1,73 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9uAz-0002LT-TM
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 12:20:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40225)
+	id 1j9vnj-0007Xo-CI
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 14:04:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57413)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9uAx-0002HA-BA
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 12:20:48 -0500
+ (envelope-from <viktor.prutyanov@phystech.edu>) id 1j9viC-0004iZ-9K
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9uAw-0003Iu-73
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 12:20:47 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:31344
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9uAw-0003HC-3Q
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 12:20:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583428845;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dLkB9BSm7Is6yJ0510IOvVsMgRVA2lYlOEvMCiPgrwI=;
- b=ABjERMJXMx0UEaVmbjZIIcKNViQ41EUD7zvqZcEzg46ifZFmW2qv/PmzOAQAT03PjNsIhH
- wfgujvTPJDTb1vVrUCKAezsXHMVZdjnshh/SmuwavVHXlFkxrNaxnbQB8chQSJaGWT1UCf
- CDAiXf/GBEH9FdFacfLNx5+FzUQFVAA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-23-8KerrNiMMimRlwpaZH1bHQ-1; Thu, 05 Mar 2020 12:20:43 -0500
-X-MC-Unique: 8KerrNiMMimRlwpaZH1bHQ-1
-Received: by mail-wr1-f72.google.com with SMTP id w6so2550011wrm.16
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 09:20:43 -0800 (PST)
+ (envelope-from <viktor.prutyanov@phystech.edu>) id 1j9vi9-0000JC-LU
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:10 -0500
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:40840)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <viktor.prutyanov@phystech.edu>)
+ id 1j9vi9-0000Fu-4Q
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:09 -0500
+Received: by mail-lj1-x244.google.com with SMTP id 143so7292183ljj.7
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 10:59:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=phystech-edu.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=6ctMZbT0iX5dwuANiokz+Sby/9fJ8AvTdWSX4ROvYbg=;
+ b=Gcr/mDzZuAsJurFgzb/OEw0IXr8qAmLvjqRk41k+Cg3KKIjbZAbjlcxElwJE3zY2M2
+ 5EEjmZ2hwASG4IXVBAWhZn0YaoDL7vAhocHD/CGpQIllYkvr/6vGBvmKhq8YjbWi4i3B
+ fHaLULRf60xBfuwggFU+vgGuGpqtLdGzp65Zlb6QsScFiVpmJMdVG+LEiFQyEKEqjY+f
+ Qqmj7GWlzzV22eSNsaEEzummn6M9vYDSxQMiv7eMQTO+Wdc232JesKX4daL/Niamp/qi
+ 3vmimgdgJ2RuB0wUCzG8sqqSQ339Bc0DNW48ya1cbHUSGDDzn77Hibc8E7tAa2Ye3fTJ
+ Ohyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=dLkB9BSm7Is6yJ0510IOvVsMgRVA2lYlOEvMCiPgrwI=;
- b=DMu9opKaPvyi2H/xM+32/ZaE6wuwATlAvgmbfmMMpJlCfVWtQrTJx0JWtCdEPp85zT
- 4bIFLglab8mhAcWnFtvaC6mPPJT/Bs9oRTsxQMMySOIzsxrC3p/4bDTqi+k3ZwT61FtH
- JKx/5Lle5WoctW2HiOSpcJwk0ha0YEFbs+CKvOSTCcY10yARdAK6NoYde6hpTKO7/+6q
- MDj3z3vS2gdITryPO18dLgeRKRr9VWq6t7eh+3RLEc/TJIPIHWE7NkwMwTUy8d08rBtu
- 7gqGrOT7yhVgPkgolV6xGrgEbAfhhNfgqJHxe9ftUB9WY9Wg5V0SGvAVrbnOQ+GQCaRZ
- 1r8g==
-X-Gm-Message-State: ANhLgQ0Y64CjiGS4emE/GAVEbhvIMrvZe//DS9JPjKPFP5c2kjs2gK2x
- MOYudsgGTo5qTWTSRgS2o+k7vxbr0s/grdoTocspoDf8aD4sApqvzrFUW/rR9xvejAVPdZvpHqm
- SkxEE8wKC6/9lcfFMPttlMVcKUBsoFFthZg==
-X-Received: by 2002:a7b:ca55:: with SMTP id m21mr10644563wml.162.1583428842518; 
- Thu, 05 Mar 2020 09:20:42 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsDv7+ycUAaUOWYb2OGm5L5VPnf3T9wqIt5vfbbAL5YXY9uzfsn5W3Zr1qa7SQnVZaZuoQMy/0TiVnC27tmMpI=
-X-Received: by 2002:a7b:ca55:: with SMTP id m21mr10644540wml.162.1583428842269; 
- Thu, 05 Mar 2020 09:20:42 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=6ctMZbT0iX5dwuANiokz+Sby/9fJ8AvTdWSX4ROvYbg=;
+ b=SNgoqYuxteuBIvgn8S2Yo63yiBj+mGBMKGZ+idMl7Q9sfLgBt4V3+I9gXUtI4CqtOU
+ yady91oZuikgxy9xNhz3tG1yF828R0gq6YzkYKpseibZiR83PwLm9NtGeaOTJJc7MzTL
+ IL0z6nFZwvoAu5us2+SMsLSRLwqoVSuQRv6x0qypFp3uSg4Y8nR5im917Hx4f8EjqUuW
+ ebF8RdYKc/8PWkM1xQG6qZ8o2mfox73laYxLyygwZ8PASskIL5QYePgzMe/9ucCcMUc+
+ iVIyuj9DI1k7O/BGhn/Zo/22ZphBefNLOIJE7uDbEYi7W2nEFOby2NHn/XCHRCWZ+Uwe
+ 2NFg==
+X-Gm-Message-State: ANhLgQ1Myp/0/MLRGkGD57cSgx6VVGkjMbbyhzK8Yi1f+lpe/9f1G14W
+ uK/yMksJsF8RUfwqbbBd8UJS0A==
+X-Google-Smtp-Source: ADFU+vvYP15BC4RlolCUBDWr9rDG22YG6kSKpnGmFbIoJmfPEasONKjyo0NgkhBDVI5KqlXv7/oxBQ==
+X-Received: by 2002:a2e:9110:: with SMTP id m16mr6072280ljg.42.1583434746956; 
+ Thu, 05 Mar 2020 10:59:06 -0800 (PST)
+Received: from localhost ([93.175.11.132])
+ by smtp.gmail.com with ESMTPSA id j6sm15718532lfk.88.2020.03.05.10.59.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 10:59:06 -0800 (PST)
+Date: Thu, 5 Mar 2020 21:59:02 +0300
+From: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+To: <kuhn.chenqun@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <pbonzini@redhat.com>,
+ <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] contrib/elf2dmp: prevent uninitialized warning
+Message-ID: <20200305215902.24bbe6ce@phystech.edu>
+In-Reply-To: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
+References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
+Organization: MIPT
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20200305164839.201311-1-palmerdabbelt@google.com>
- <cfc728aa-56a5-6a2d-a997-e1dfd871885c@redhat.com>
-In-Reply-To: <cfc728aa-56a5-6a2d-a997-e1dfd871885c@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 5 Mar 2020 18:20:31 +0100
-Message-ID: <CAP+75-XPHkSkcOmLct=jerOPx_WmYTc6a-=f2LfvtFku_p1WBw@mail.gmail.com>
-Subject: Re: [PATCH] RISC-V: Add a missing "," in riscv_excp_names
-To: Palmer Dabbelt <palmerdabbelt@google.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- "open list:RISC-V" <qemu-riscv@nongnu.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::244
+X-Mailman-Approved-At: Thu, 05 Mar 2020 14:04:53 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,54 +75,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 17:20:48 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 18:59:13 -0000
 
-Cc'ing qemu-trivial@ in case there is a pending PR in  progress, it
-might get merged quicker.
+On Fri, 7 Feb 2020 12:16:01 +0800
+<kuhn.chenqun@huawei.com> wrote:
 
-On Thu, Mar 5, 2020 at 6:19 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> On 3/5/20 5:48 PM, Palmer Dabbelt wrote:
-> > THis would almost certainly cause the exception names to be reported
-> > incorrectly.  Covarity found the issue (CID 1420223).  As per Peter's
->
-> "This", "Coverity" typos.
->
-> Fixes: ab67a1d07a4
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> > suggestion, I've also added a comma at the end of the list to avoid the=
- issue
-> > reappearing in the future.
-> >
-> > Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
-> > ---
-> >   target/riscv/cpu.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> > index c47d10b739..c0b7023100 100644
-> > --- a/target/riscv/cpu.c
-> > +++ b/target/riscv/cpu.c
-> > @@ -66,7 +66,7 @@ const char * const riscv_excp_names[] =3D {
-> >       "exec_page_fault",
-> >       "load_page_fault",
-> >       "reserved",
-> > -    "store_page_fault"
-> > +    "store_page_fault",
-> >       "reserved",
-> >       "reserved",
-> >       "reserved",
-> > @@ -74,7 +74,7 @@ const char * const riscv_excp_names[] =3D {
-> >       "guest_exec_page_fault",
-> >       "guest_load_page_fault",
-> >       "reserved",
-> > -    "guest_store_page_fault"
-> > +    "guest_store_page_fault",
-> >   };
-> >
-> >   const char * const riscv_intr_names[] =3D {
-> >
+> From: Chen Qun <kuhn.chenqun@huawei.com>
+>=20
+> Fix compilation warnings:
+> contrib/elf2dmp/main.c:66:17: warning: =E2=80=98KdpDataBlockEncoded=E2=80=
+=99 may be
+> used uninitialized in this function [-Wmaybe-uninitialized]
+>          block =3D __builtin_bswap64(block ^ kdbe) ^ kwa;
+>                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> contrib/elf2dmp/main.c:78:24: note: =E2=80=98KdpDataBlockEncoded=E2=80=99=
+ was
+> declared here uint64_t kwn, kwa, KdpDataBlockEncoded;
+>                         ^~~~~~~~~~~~~~~~~~~
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+>  contrib/elf2dmp/main.c | 25 ++++++++++++-------------
+>  1 file changed, 12 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
+> index 9a2dbc2902..203b9e6d04 100644
+> --- a/contrib/elf2dmp/main.c
+> +++ b/contrib/elf2dmp/main.c
+> @@ -76,6 +76,7 @@ static KDDEBUGGER_DATA64 *get_kdbg(uint64_t
+> KernBase, struct pdb_reader *pdb, DBGKD_DEBUG_DATA_HEADER64 kdbg_hdr;
+>      bool decode =3D false;
+>      uint64_t kwn, kwa, KdpDataBlockEncoded;
+> +    uint64_t KiWaitNever, KiWaitAlways;
+> =20
+>      if (va_space_rw(vs,
+>                  KdDebuggerDataBlock + offsetof(KDDEBUGGER_DATA64,
+> Header), @@ -84,21 +85,19 @@ static KDDEBUGGER_DATA64
+> *get_kdbg(uint64_t KernBase, struct pdb_reader *pdb, return NULL;
+>      }
+> =20
+> -    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
+> -        uint64_t KiWaitNever, KiWaitAlways;
+> -
+> -        decode =3D true;
+> +    if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
+> +            !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
+> +            !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded)) {
+> +        return NULL;
+> +    }
+> =20
+> -        if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
+> -                !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
+> -                !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded)) {
+> -            return NULL;
+> -        }
+> +    if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
+> +            va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa), 0)) {
+> +        return NULL;
+> +    }
+> =20
+> -        if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
+> -                va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa), 0))
+> {
+> -            return NULL;
+> -        }
+> +    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
+> +        decode =3D true;
+> =20
+>          printf("[KiWaitNever] =3D 0x%016"PRIx64"\n", kwn);
+>          printf("[KiWaitAlways] =3D 0x%016"PRIx64"\n", kwa);
 
+Hi!
+
+I suppose the problem is in your compiler, because kdbg_decode() is
+only used when KdpDataBlockEncoded is already initialized by
+SYM_RESOLVE().=20
+
+--=20
+Viktor Prutyanov
 
