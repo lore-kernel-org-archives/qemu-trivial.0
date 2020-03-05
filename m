@@ -1,78 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9nii-0000Ap-Ur
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44529)
+	id 1j9nsq-0004oO-Jz
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 05:37:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47869)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9nig-0000AQ-HC
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:27:11 -0500
+ (envelope-from <philmd@redhat.com>) id 1j9nso-0004l3-2b
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:37:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9nif-0007xq-4m
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:27:10 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22844
+ (envelope-from <philmd@redhat.com>) id 1j9nsm-0001Jl-Q8
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:37:37 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:47461
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9nie-0007xD-W9
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:27:09 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9nsm-0001Fw-Mc
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 05:37:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583404028;
+ s=mimecast20190719; t=1583404650;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=glnZh63agBY9jTgHy4oFd+qzRVfbjw7LMtpKPPibQwY=;
- b=Et00Ea/glSg9N/7SiSsf1HXMnWMqSrEQPI95S8DF4LlxJwcrxL392Nqos0Wojnw9k+cgID
- 9j5Cr1ARkz2PgOl+7d8x1FgEqRydv8P8/zKTqPhOGEaxwrblfcEZpgEYO+ATeYGjHc2Kfx
- rwiUwLG0Q4AuE/WGawM4pcnqfFm5Uks=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=W1jtqUOiDyJWfbsH0y3MGloQy0LFzf5sRFvE+Olrdxk=;
+ b=Q4KdC1k3t4wVZcl3/4zxA/4G8eGHAsW6VgzXt8Yz0VYaO25u/h55FcNh19MrWHrVYpiOZF
+ iQxESFkkRuAlKHRPl/xSIHY3CJQE+M9do40Dsaii2VeWdf/nBbj/XfD+s9NdA/AbubUeMD
+ 8+QvWg7docFOQqOrI4K++DKw2ciyZXA=
 Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
  [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-479-rANmVVEaOVKm0BbEuPd_Rg-1; Thu, 05 Mar 2020 05:27:06 -0500
-X-MC-Unique: rANmVVEaOVKm0BbEuPd_Rg-1
-Received: by mail-ed1-f70.google.com with SMTP id a1so583254edv.8
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 02:27:06 -0800 (PST)
+ us-mta-433-BiO59gBpOXK3JR8l_lmP0w-1; Thu, 05 Mar 2020 05:37:26 -0500
+X-MC-Unique: BiO59gBpOXK3JR8l_lmP0w-1
+Received: by mail-ed1-f70.google.com with SMTP id n12so4028657edq.13
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 02:37:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=tlYR1W8zAZXcdKzJjizsFD/7Jmu1H/2LfMgVC3H1d9M=;
- b=BG5fYiJPAQFYAN1pdgMmJ6r7brZcCssWS+CIrBZj/xDT9SsVVVzp3ob30vvFCPeu6/
- 6jLSrW+E7LvmPn4CCxvOFlEhLE+ouR/xuxWN+yzOkM/WawN+JslLUEJw1lJBCdxFJ3PA
- KoB98gkfUjrOnNuvJsi+3GlyXV8Xw9N7P80YjQwovjF7DhnEIzWJRVbcOHBwF2IIHVHe
- CymztErZu/oSCBMCEOdT2b+iP8Ab/ZqGkEZ2xWheLIHvDpbHHxcdLVYfE4xz2Bo5+h8g
- 5m6/mUV2rhKpXcvy2ZntRtyb8Pkre9a7W+yM2tzc8jHiQFAuNTQ0DZDBRDw+72Z9spXR
- iniA==
-X-Gm-Message-State: ANhLgQ3jTCUl+XtD5rHm62cOSzo34MZlE6BTbQESrJtUlA6KwHuqgJox
- VnVA1MVwLc0uPm4SOBuhOtu14Cah0Y8frbWSVxrnyf6dD6fMxMsk/GPXxGF4NoZnQw8X9IsHKBa
- zbPLGq3Gy2OMFhbsX+A==
-X-Received: by 2002:a05:6402:1481:: with SMTP id
- e1mr7536891edv.219.1583404025220; 
- Thu, 05 Mar 2020 02:27:05 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvCWVROkqixQzTZ5oXhvzzm2LLJyWWOo1alqJISLP5GP2X9Ktr5PVSfzKA+1q45rTlehYcP/g==
-X-Received: by 2002:a05:6402:1481:: with SMTP id
- e1mr7536865edv.219.1583404025033; 
- Thu, 05 Mar 2020 02:27:05 -0800 (PST)
-Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
+ bh=N+cxLmP08Sog3fQ2kUzzCL1tQJ8Fhjt86s7D+fDGMR8=;
+ b=UQFZIP78+4Abah7OUUpVJpYgyhSquxtCkCj4X+OxMO6/VkC9P5WFh9+A51qoMEK7XT
+ 6RVv/2zrm6lAQQBHc0MzOowIlDd+dsarcGzINjvcXevWboB2z+WAwp3X+3OjV/m2E31y
+ Vtpo6sSVT6SLjR1D00kZAke+eLyNZy4LEMWGPRrDqWHh8xMS5n7H6FQhNsao5abmoTc7
+ K8miuHAYv4I4aG2EEkZKGt/ua22m8qqZnC2O5pbFoHScQjR6xX+yIhz8jEZddA7Ezcja
+ tSaDwtdUiNS3aqmG3fOUhk/q0iQgUg8DmsVsAYIVEas7lDBmfvtpv0FjVKAj/QqrLvHc
+ FcJQ==
+X-Gm-Message-State: ANhLgQ2+1o9AF5HP5BQTCndyXcZJbfGRXW+4iBupfod/2PRoqr4QGcLg
+ XJkh8VjXSXhGUInc0cC4uVHLnDQJeX3rvEvhd9t3anCtj3M3DJnjs1CD232qM/ahGt508/c4jH9
+ AodzSwx2gbCdfBTCWJw==
+X-Received: by 2002:a17:906:970f:: with SMTP id
+ k15mr6706519ejx.334.1583404644813; 
+ Thu, 05 Mar 2020 02:37:24 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvA4U4MgmVJt4DZ4gjM43QVnANIvUnYIs48IrIZkKZWBuoGAgvMpdHBwiXxpkWQqKN8WOgpog==
+X-Received: by 2002:a17:906:970f:: with SMTP id
+ k15mr6706497ejx.334.1583404644603; 
+ Thu, 05 Mar 2020 02:37:24 -0800 (PST)
+Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
  [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id f25sm1858980edt.73.2020.03.05.02.27.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 02:27:04 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Auger <eric.auger@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- Yi Sun <yi.y.sun@linux.intel.com>, Liu Yi L <yi.l.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4] hw/i386/intel_iommu: Simplify vtd_find_as_from_bus_num()
- logic
-Date: Thu,  5 Mar 2020 11:27:02 +0100
-Message-Id: <20200305102702.31512-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ by smtp.gmail.com with ESMTPSA id b23sm436021ejq.84.2020.03.05.02.37.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Mar 2020 02:37:24 -0800 (PST)
+Subject: Re: [PATCH 0/3] hw/net,virtfs-proxy-helper: Reduce .data footprint
+To: Stefano Garzarella <sgarzare@redhat.com>
+Cc: qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20200305010446.17029-1-philmd@redhat.com>
+ <20200305095357.nvhjz7q7tuquys4k@steredhat>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <8488759c-022a-1c74-c9a1-ad223959494b@redhat.com>
+Date: Thu, 5 Mar 2020 11:37:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
+In-Reply-To: <20200305095357.nvhjz7q7tuquys4k@steredhat>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -88,79 +90,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 10:27:11 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 10:37:39 -0000
 
-The vtd_find_as_from_bus_num() function was introduced (in commit
-dbaabb25f) in a code format that could return an incorrect pointer,
-which was later fixed by commit a2e1cd41ccf.
-We could have avoided this by writing the if() statement differently.
-Do it now, in case this function is re-used. The code is easier to
-review (harder to miss bugs).
+On 3/5/20 10:53 AM, Stefano Garzarella wrote:
+> On Thu, Mar 05, 2020 at 02:04:43AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>> More memory footprint reduction, similar to:
+>> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg00984.html
+>>
+>> The elf-dissector tool [1] [2] helped to notice the big array.
+>>
+>> [1] https://phabricator.kde.org/source/elf-dissector/
+>> [2] https://www.volkerkrause.eu/2019/06/22/elf-dissector-aarch64-support=
+.html
+>>
+>=20
+> Thanks to share these links!
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-Since v1: Re-worded commit description, patch sent without -w.
-Since v2: patch send without diff
-Since v3: Fix typo in description and comment (Eric Auger)
+FYI the heap equivalent (besides that more powerful) is:
+https://github.com/KDE/heaptrack
 
-This patch is easier to review with 'git-diff -w' (--ignore-all-space)
----
- hw/i386/intel_iommu.c | 34 ++++++++++++++++++----------------
- 1 file changed, 18 insertions(+), 16 deletions(-)
-
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 6258c58ac9..204b6841ec 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -987,24 +987,26 @@ static bool vtd_slpte_nonzero_rsvd(uint64_t slpte, ui=
-nt32_t level)
- static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_nu=
-m)
- {
-     VTDBus *vtd_bus =3D s->vtd_as_by_bus_num[bus_num];
--    if (!vtd_bus) {
--        /*
--         * Iterate over the registered buses to find the one which
--         * currently hold this bus number, and update the bus_num
--         * lookup table:
--         */
--        GHashTableIter iter;
-+    GHashTableIter iter;
-=20
--        g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
--        while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
--            if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
--                s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
--                return vtd_bus;
--            }
--        }
--        vtd_bus =3D NULL;
-+    if (vtd_bus) {
-+        return vtd_bus;
-     }
--    return vtd_bus;
-+
-+    /*
-+     * Iterate over the registered buses to find the one which
-+     * currently holds this bus number and update the bus_num
-+     * lookup table.
-+     */
-+    g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
-+    while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
-+        if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
-+            s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
-+            return vtd_bus;
-+        }
-+    }
-+
-+    return NULL;
- }
-=20
- /* Given the @iova, get relevant @slptep. @slpte_level will be the last le=
-vel
---=20
-2.21.1
+>=20
+>> Philippe Mathieu-Daud=C3=A9 (3):
+>>    hw/net/e1000: Add readops/writeops typedefs
+>>    hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
+>>    virtfs-proxy-helper: Make the helper_opts[] array const
+>>
+>>   fsdev/virtfs-proxy-helper.c | 2 +-
+>>   hw/net/e1000.c              | 6 ++++--
+>>   hw/net/e1000e_core.c        | 6 ++++--
+>>   3 files changed, 9 insertions(+), 5 deletions(-)
+>>
+>=20
+> Cool and clear changes!
+>=20
+> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+>=20
+> Thanks,
+> Stefano
+>=20
 
 
