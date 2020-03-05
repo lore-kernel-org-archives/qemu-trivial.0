@@ -1,73 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9qnO-0002Jj-4r
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:44:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53649)
+	id 1j9qpk-0004Pr-Lv
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:46:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54248)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1j9qnL-0002JA-5i
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:44:12 -0500
+ (envelope-from <sgarzare@redhat.com>) id 1j9qph-0004Oe-B4
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:46:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1j9qnK-0005U5-34
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:44:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33428
+ (envelope-from <sgarzare@redhat.com>) id 1j9qpg-0001EK-97
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:46:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24679
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j9qnJ-0005Tk-Vn
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:44:10 -0500
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j9qpE-0008Ij-8S
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:46:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583415849;
+ s=mimecast20190719; t=1583415968;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gwcwYXZlPF9Dk0/jPDfbxoZaOzWGw0oBubIUXep8s/I=;
- b=jSxEJDKz9TiZ84NheuamQjWARrGu4+Prtu7kbpEMTw84bVcB449SIq44MtSLXb5x3SbyzT
- RHIiLGFIZknv3r1n9bTH0AQbNBNWhdI8qx2OLc0wRvC0sjhOhbYysNzug9AP0aYeZ3vNjO
- Cz0q5mA+tOMrvdOnIhv6fQ7HKAkEcW0=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-339-DhAIFpj9PrOpIEHKe9F33A-1; Thu, 05 Mar 2020 08:44:08 -0500
-X-MC-Unique: DhAIFpj9PrOpIEHKe9F33A-1
-Received: by mail-wm1-f70.google.com with SMTP id 7so2096371wmo.7
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 05:44:07 -0800 (PST)
+ bh=6i6J/ZO2uJcvhEMUp6AaWtb7QAU+P3DUj5FKCo8zhpM=;
+ b=ZuGA7Avb8QnXaPBAvQgUW1DLZFns6kYjjDdkFEtDhHer28CTDGOly8cjT5R8HpkEDTfIXd
+ c3a2d3orGhKfQF8lTwHCgL3Zqsj+Nw5FPrpAerScvgF1w6yj3RquTB1GolHo2xJgxWThah
+ 6sEeH+QEp7kF/B4evhvGJdBtrBI4RfE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-313-1d9pE7LQP4CFFp3tHs_U5g-1; Thu, 05 Mar 2020 08:46:04 -0500
+X-MC-Unique: 1d9pE7LQP4CFFp3tHs_U5g-1
+Received: by mail-wm1-f71.google.com with SMTP id m4so2104637wmi.5
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 05:46:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=7l0LObX4r/xJtw1gjV6AL5tW2N5ztcljA57Sob6iSHE=;
- b=AVUiGxNQPp0U5BSQ9iwguOaXTgd1dvx/2xT1syY8deHqJS4dKLM7yFZO95KSHL5E6p
- NgvhmLdL8DUVMgkMbj5CBSxEDPmqU/cZRYEb3n37KnfZMtaPgTjqTxes5nGUat/ExwTa
- se0RkVJIemBorIUkWDv3WLlEB5yXvXrQ2IF1YDNTdekSSNJ3CM4ZS02ijVlyH4o4KDl1
- yReW2RGdwMAWMKKdrA1VMoLLhKHtco8HcUCZ35O3Wx7cJNpHMVU+Wn21fpbWiWcjN4MV
- EBSDCsOnJpycwEMSuuzu0IcTR+n0RV6Ptw2PUXMJN5iwLeppsE3X/5XMKnP7tlgRiRcv
- wkWg==
-X-Gm-Message-State: ANhLgQ0ZD5Rx9iReihpeg8RAo8CMhfxCzaO+1OrFgHEGG4IqBbIHQSwK
- cFnWZutCzT7h5Sp3fo+pJvTIlfF0JKV8x7tIZFe03oMhEidLk9ioCln3GuQn1FpFbCwDbQrYtFE
- Uk6lfkm33wXT8ZYZA3A==
-X-Received: by 2002:a1c:c2c5:: with SMTP id s188mr9502263wmf.162.1583415846844; 
- Thu, 05 Mar 2020 05:44:06 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvXx8VjEeaoJ9zKpAM+3to7ChD9HmipjjfEmJ2i5yqGd33zM0WYLyAjz43k44VLSEfOUWTDBw==
-X-Received: by 2002:a1c:c2c5:: with SMTP id s188mr9502243wmf.162.1583415846580; 
- Thu, 05 Mar 2020 05:44:06 -0800 (PST)
+ bh=R70thXHi2jvFEPUziKxN/UBg3AR9WUqn2zvOAbJVSGY=;
+ b=G/Gyz/UEyVOYJjzVIrnbd8Expe7OONBbTomdHFXBaV3c/67Yrjq5Loj4ElgWbartny
+ RG/MrIoHUAsEaAIjTqQIlehB79BRtPVITFq4KCz3oex7RLOwdCqa/1m82UuzTzzW5S1A
+ +WKQwUTBwNUs+sIlKxMdg8IpjHH6yqYz1sdCnIWja83m1u3RVp58D5orZSmiHcY2S4Dg
+ lGVhP/xhcwqxxLCFaTPx2udnMNMls0Vlg3JdtcWGAzhj/ctNCaMVK4wgRoqYpLhhPM8S
+ 5UzsO7vnedsFM5JIsFtiF28Vk/sFwHeV9VllnW4qkmlJTVF72JzG++FLdpG5euuNvLnU
+ HoZQ==
+X-Gm-Message-State: ANhLgQ1ZHpCqwqzhRW4i4ObXt27XtAyo8+RJEdCH3QuueVU6/wpVJ6eh
+ rcXiu5aKbIGmaRDiE66G2bGtj+eagYJV4IQLsbu8OxA013gGX6LexIMIqZq8NZmkAZV30RrsUTs
+ c2C8yaBZcX+ClUbgssg==
+X-Received: by 2002:a1c:9602:: with SMTP id y2mr9518975wmd.23.1583415963431;
+ Thu, 05 Mar 2020 05:46:03 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsTsbUktOcERlYeYj35xB/mlIbD0LIvakGqkk80wLIsxAj+VRiJpHQTtWVNo+j2yvwFXEpl9g==
+X-Received: by 2002:a1c:9602:: with SMTP id y2mr9518954wmd.23.1583415963233;
+ Thu, 05 Mar 2020 05:46:03 -0800 (PST)
 Received: from steredhat (host34-204-dynamic.43-79-r.retail.telecomitalia.it.
  [79.43.204.34])
- by smtp.gmail.com with ESMTPSA id l83sm2860204wmf.43.2020.03.05.05.44.05
+ by smtp.gmail.com with ESMTPSA id f6sm11781555wrw.4.2020.03.05.05.46.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 05:44:05 -0800 (PST)
-Date: Thu, 5 Mar 2020 14:44:03 +0100
+ Thu, 05 Mar 2020 05:46:02 -0800 (PST)
+Date: Thu, 5 Mar 2020 14:46:00 +0100
 From: Stefano Garzarella <sgarzare@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
  Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Subject: Re: [PATCH v2 2/9] hw/audio/fmopl: Move ENV_CURVE to .heap to save
- 32KiB of .bss
-Message-ID: <20200305134403.sagzdlf5iyk2iufs@steredhat>
+Subject: Re: [PATCH v2 7/9] ui/curses: Make control_characters[] array const
+Message-ID: <20200305134600.w3hdfi7o7tldivww@steredhat>
 References: <20200305124525.14555-1-philmd@redhat.com>
- <20200305124525.14555-3-philmd@redhat.com>
+ <20200305124525.14555-8-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200305124525.14555-3-philmd@redhat.com>
+In-Reply-To: <20200305124525.14555-8-philmd@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
@@ -87,50 +86,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 13:44:12 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 13:46:39 -0000
 
-On Thu, Mar 05, 2020 at 01:45:18PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> This buffer is only used by the adlib audio device. Move it to
-> the .heap to release 32KiB of .bss (size reported on x86_64 host).
+On Thu, Mar 05, 2020 at 01:45:23PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> As we only use this array as input, make it const.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > ---
->  hw/audio/fmopl.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-> index 173a7521f2..356d4dfbca 100644
-> --- a/hw/audio/fmopl.c
-> +++ b/hw/audio/fmopl.c
-> @@ -186,7 +186,7 @@ static int32_t *VIB_TABLE;
-> =20
->  /* envelope output curve table */
->  /* attack + decay + OFF */
-> -static int32_t ENV_CURVE[2*EG_ENT+1];
-> +static int32_t *ENV_CURVE;
-> =20
->  /* multiple table */
->  #define ML 2
-> @@ -1090,6 +1090,7 @@ FM_OPL *OPLCreate(int clock, int rate)
->  =09OPL->clock =3D clock;
->  =09OPL->rate  =3D rate;
->  =09OPL->max_ch =3D max_ch;
-> +    ENV_CURVE =3D g_new(int32_t, 2 * EG_ENT + 1);
->  =09/* init grobal tables */
->  =09OPL_initialize(OPL);
->  =09/* reset chip */
-> @@ -1127,6 +1128,7 @@ void OPLDestroy(FM_OPL *OPL)
->  #endif
->  =09OPL_UnLockTable();
->  =09free(OPL);
-> +    g_free(ENV_CURVE);
+>  ui/curses.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Just for curiosity, here the entire fmopl.c is indented with tabs.
-
-In this case, is it better to continue with the tabs or use spaces
-for new changes?
-
-Anyway the changes LGTM:
 Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+
+>=20
+> diff --git a/ui/curses.c b/ui/curses.c
+> index 3a1b71451c..3bafc10c1c 100644
+> --- a/ui/curses.c
+> +++ b/ui/curses.c
+> @@ -529,7 +529,7 @@ static void font_setup(void)
+>       * Control characters are normally non-printable, but VGA does have
+>       * well-known glyphs for them.
+>       */
+> -    static uint16_t control_characters[0x20] =3D {
+> +    static const uint16_t control_characters[0x20] =3D {
+>        0x0020,
+>        0x263a,
+>        0x263b,
+> --=20
+> 2.21.1
+>=20
 
 
