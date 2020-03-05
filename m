@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9qLh-0001TS-Td
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:15:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48071)
+	id 1j9qVG-0007ol-5a
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 08:25:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49831)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j9qLd-0001T2-NO
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:15:34 -0500
+ (envelope-from <no-reply@patchew.org>) id 1j9qVB-0007jc-V4
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:25:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j9qLa-0000zo-Sh
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:15:33 -0500
-Resent-Date: Thu, 05 Mar 2020 08:15:33 -0500
-Resent-Message-Id: <E1j9qLa-0000zo-Sh@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21142)
+ (envelope-from <no-reply@patchew.org>) id 1j9qVA-000270-Gy
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 08:25:25 -0500
+Resent-Date: Thu, 05 Mar 2020 08:25:25 -0500
+Resent-Message-Id: <E1j9qVA-000270-Gy@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21102)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j9qLa-0000z0-KN; Thu, 05 Mar 2020 08:15:30 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1583414112; cv=none; 
+ id 1j9qVA-00022q-9P; Thu, 05 Mar 2020 08:25:24 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1583414706; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=EGw1BMOkEKkxUXniMv/RojgEKPxiNdgcjArG6Wqchj/RULBi46HAWIRE622ZzJZ4ILMtfVyz+bSyryOCucg4wQmLASLDjKgOj/eLsuqkqlmNtBFBkVtgmqdPk9cFJoaTX8l5MZAce9HdkWuah59njLGYKlK5aLryUNv6eWidDAY=
+ b=PW8z9Hat7M0DguTjTde4EqUQK6AOx/XSd4g5YFpmHEEslfzvEjjs+jXtg6nOl7iw7Cpwz06gbF5sf6g/DziRliJShcggEEp10V5vREbR5brlRDC032IXy+T9JgMfaOa9HS9++A+WBSs90fD/fHM2QTQiiH8TSwNSaPbniapUEx8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1583414112;
+ s=zohoarc; t=1583414706;
  h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=b2WjPbx7ABr6Z6Ibnyfwnc3OeckHwPK5DWgCvRHtb0Q=; 
- b=n6VBPeU3mE35V+/KGHqJC0SNw9CpPJDdS1Mzj0P2tWf+HlygR8NnfPTyw+Pgwubqvugm6plPeBsWMG5PyaYmced0ccvlVSpr5yXNct2a0szBn8H4DBz0c5NL5XJxbJFRYwBtWTIV6JSR3qXEvdyLGrjyZZJFETIKNj7xZzeDOls=
+ bh=iB39fA9O5m7eK+YUEoGW6EdHpQpTR3H0xeZbbv0GWP0=; 
+ b=epGzRbVTgpEG0lQlsib4ZjsohxROSi2Fi4YychfjU2Dn2R8aOBh69lsweZGHc7LehJoD2wsT65KdO1QrHflrWTWNxPHeHmdIktxap19dW5+r7WthAJ3lH4jqa4pd5YtGTBqV1j07T/Az4KRTo7U8Q2bBnBtsLldbrLr88Bftn38=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=patchew.org;
  spf=pass  smtp.mailfrom=no-reply@patchew.org;
  dmarc=pass header.from=<no-reply@patchew.org>
  header.from=<no-reply@patchew.org>
 Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1583414108630967.4914829022118;
- Thu, 5 Mar 2020 05:15:08 -0800 (PST)
+ mx.zohomail.com with SMTPS id 1583414704759272.0421415334814;
+ Thu, 5 Mar 2020 05:25:04 -0800 (PST)
 In-Reply-To: <20200305124525.14555-1-philmd@redhat.com>
 Subject: Re: [PATCH v2 0/9] hw, ui,
  virtfs-proxy-helper: Reduce QEMU .data/.rodata/.bss footprint
 Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <158341410705.357.2895009481636676985@39012742ff91>
+Message-ID: <158341470305.357.9549898548102843307@39012742ff91>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
@@ -44,7 +44,7 @@ To: philmd@redhat.com
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, dmitry.fleytman@gmail.com,
  jasowang@redhat.com, qemu_oss@crudebyte.com, groug@kaod.org, kraxel@redhat.com,
  philmd@redhat.com, sgarzare@redhat.com
-Date: Thu, 5 Mar 2020 05:15:08 -0800 (PST)
+Date: Thu, 5 Mar 2020 05:25:04 -0800 (PST)
 X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -60,31 +60,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 13:15:34 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 13:25:27 -0000
 
 UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwNTEyNDUyNS4xNDU1
 NS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
-a2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
-bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
-ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
-VCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVU
-V09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0x
-NCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVsZSAnZHRjJyAoaHR0
-cHM6Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGggJ2R0YycK
-Q2xvbmluZyBpbnRvICdkdGMnLi4uCnJlbW90ZTogQ291bnRpbmcgb2JqZWN0czogNTM5NCwgZG9u
-ZS4gICAgICAgIAplcnJvcjogUlBDIGZhaWxlZDsgcmVzdWx0PTE4LCBIVFRQIGNvZGUgPSAyMDAK
-ZmF0YWw6IFRoZSByZW1vdGUgZW5kIGh1bmcgdXAgdW5leHBlY3RlZGx5CmZhdGFsOiBwcm90b2Nv
-bCBlcnJvcjogYmFkIHBhY2sgaGVhZGVyCkNsb25lIG9mICdodHRwczovL2dpdC5xZW11Lm9yZy9n
-aXQvZHRjLmdpdCcgaW50byBzdWJtb2R1bGUgcGF0aCAnZHRjJyBmYWlsZWQKZmFpbGVkIHRvIHVw
-ZGF0ZSBzdWJtb2R1bGUgZHRjClN1Ym1vZHVsZSAnZHRjJyAoaHR0cHM6Ly9naXQucWVtdS5vcmcv
-Z2l0L2R0Yy5naXQpIHVucmVnaXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwptYWtlWzFdOiAqKiogWy92
-YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1hdzJwMXczcC9zcmMvZG9ja2VyLXNyYy4yMDIwLTAz
-LTA1LTA4LjA5LjA0LjI3NjMwXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAv
-dmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtYXcycDF3M3Avc3JjJwptYWtlOiAqKiogW2RvY2tl
-ci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDZtMy40NTlzCnVzZXIg
-ICAgMG0yLjQ4NHMKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3
-Lm9yZy9sb2dzLzIwMjAwMzA1MTI0NTI1LjE0NTU1LTEtcGhpbG1kQHJlZGhhdC5jb20vdGVzdGlu
-Zy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
-IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
-c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+a2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
+YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
+LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
+IEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2VyLWlt
+YWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0BmZWRv
+cmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVsZSAnZHRj
+JyAoaHR0cHM6Ly9naXQucWVtdS5vcmcvZ2l0L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGgg
+J2R0YycKQ2xvbmluZyBpbnRvICdkdGMnLi4uCnJlbW90ZTogQ291bnRpbmcgb2JqZWN0czogNTM5
+NCwgZG9uZS4gICAgICAgIAplcnJvcjogUlBDIGZhaWxlZDsgcmVzdWx0PTE4LCBIVFRQIGNvZGUg
+PSAyMDAKZmF0YWw6IFRoZSByZW1vdGUgZW5kIGh1bmcgdXAgdW5leHBlY3RlZGx5CmZhdGFsOiBw
+cm90b2NvbCBlcnJvcjogYmFkIHBhY2sgaGVhZGVyCkNsb25lIG9mICdodHRwczovL2dpdC5xZW11
+Lm9yZy9naXQvZHRjLmdpdCcgaW50byBzdWJtb2R1bGUgcGF0aCAnZHRjJyBmYWlsZWQKZmFpbGVk
+IHRvIHVwZGF0ZSBzdWJtb2R1bGUgZHRjClN1Ym1vZHVsZSAnZHRjJyAoaHR0cHM6Ly9naXQucWVt
+dS5vcmcvZ2l0L2R0Yy5naXQpIHVucmVnaXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwptYWtlWzFdOiAq
+KiogWy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1sNHM1cjZwdi9zcmMvZG9ja2VyLXNyYy4y
+MDIwLTAzLTA1LTA4LjE1LjQ2LjI4MzE5XSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0
+b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtbDRzNXI2cHYvc3JjJwptYWtlOiAqKiog
+W2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAgOW0xNy43Njhz
+CnVzZXIgICAgMG0yLjkzN3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9w
+YXRjaGV3Lm9yZy9sb2dzLzIwMjAwMzA1MTI0NTI1LjE0NTU1LTEtcGhpbG1kQHJlZGhhdC5jb20v
+dGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5l
+cmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBs
+ZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
