@@ -1,69 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9vnj-0007Xo-CI
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 14:04:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57413)
+	id 1j9xsG-0007AS-6v
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 16:17:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40297)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <viktor.prutyanov@phystech.edu>) id 1j9viC-0004iZ-9K
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:13 -0500
+ (envelope-from <palmerdabbelt@google.com>) id 1j9wlH-0001cd-Kz
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <viktor.prutyanov@phystech.edu>) id 1j9vi9-0000JC-LU
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:10 -0500
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:40840)
+ (envelope-from <palmerdabbelt@google.com>) id 1j9wlG-0000RD-LV
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:27 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:32931)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <viktor.prutyanov@phystech.edu>)
- id 1j9vi9-0000Fu-4Q
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 13:59:09 -0500
-Received: by mail-lj1-x244.google.com with SMTP id 143so7292183ljj.7
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 10:59:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=phystech-edu.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=6ctMZbT0iX5dwuANiokz+Sby/9fJ8AvTdWSX4ROvYbg=;
- b=Gcr/mDzZuAsJurFgzb/OEw0IXr8qAmLvjqRk41k+Cg3KKIjbZAbjlcxElwJE3zY2M2
- 5EEjmZ2hwASG4IXVBAWhZn0YaoDL7vAhocHD/CGpQIllYkvr/6vGBvmKhq8YjbWi4i3B
- fHaLULRf60xBfuwggFU+vgGuGpqtLdGzp65Zlb6QsScFiVpmJMdVG+LEiFQyEKEqjY+f
- Qqmj7GWlzzV22eSNsaEEzummn6M9vYDSxQMiv7eMQTO+Wdc232JesKX4daL/Niamp/qi
- 3vmimgdgJ2RuB0wUCzG8sqqSQ339Bc0DNW48ya1cbHUSGDDzn77Hibc8E7tAa2Ye3fTJ
- Ohyg==
+ (Exim 4.71) (envelope-from <palmerdabbelt@google.com>)
+ id 1j9wlG-0000Qt-Fd
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 15:06:26 -0500
+Received: by mail-pl1-x641.google.com with SMTP id ay11so3107814plb.0
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 12:06:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=aK2JQAB7Q1gn7fdcHul4fN6uds+oVK0UvAfAjO2mZ9Q=;
+ b=nkLciiEOFdnmJr4oaNmteD5JKyspPP2UPNugBq1tAic4ve8l5Go3WA297cbIfocXnq
+ BMxP9DE+LMWiv5M0NoYtrF2ixRGqcVgpxowEdPeRYaakQIejO/tLvLl2PtMSjTFqmXhI
+ tP/cnCetytZdexpXIQtUB7w6Q/t3X4ZE20Sb/BbZ9Au603Z8ZtV8N0iUJvnOgQsIL75G
+ psKuKZurxHD7A6TXquL8Z2Q+dXVAjHtL/D976QhA6+cyvwJnuq+nvFDq63WvuA9xFEUe
+ uILwGjbduMG1YXCNqMuw9zN27eNRkO3ZJehju+jkVFs/Mjh3pH+D/4Gu1RJmvDosub2H
+ ziog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=6ctMZbT0iX5dwuANiokz+Sby/9fJ8AvTdWSX4ROvYbg=;
- b=SNgoqYuxteuBIvgn8S2Yo63yiBj+mGBMKGZ+idMl7Q9sfLgBt4V3+I9gXUtI4CqtOU
- yady91oZuikgxy9xNhz3tG1yF828R0gq6YzkYKpseibZiR83PwLm9NtGeaOTJJc7MzTL
- IL0z6nFZwvoAu5us2+SMsLSRLwqoVSuQRv6x0qypFp3uSg4Y8nR5im917Hx4f8EjqUuW
- ebF8RdYKc/8PWkM1xQG6qZ8o2mfox73laYxLyygwZ8PASskIL5QYePgzMe/9ucCcMUc+
- iVIyuj9DI1k7O/BGhn/Zo/22ZphBefNLOIJE7uDbEYi7W2nEFOby2NHn/XCHRCWZ+Uwe
- 2NFg==
-X-Gm-Message-State: ANhLgQ1Myp/0/MLRGkGD57cSgx6VVGkjMbbyhzK8Yi1f+lpe/9f1G14W
- uK/yMksJsF8RUfwqbbBd8UJS0A==
-X-Google-Smtp-Source: ADFU+vvYP15BC4RlolCUBDWr9rDG22YG6kSKpnGmFbIoJmfPEasONKjyo0NgkhBDVI5KqlXv7/oxBQ==
-X-Received: by 2002:a2e:9110:: with SMTP id m16mr6072280ljg.42.1583434746956; 
- Thu, 05 Mar 2020 10:59:06 -0800 (PST)
-Received: from localhost ([93.175.11.132])
- by smtp.gmail.com with ESMTPSA id j6sm15718532lfk.88.2020.03.05.10.59.06
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=aK2JQAB7Q1gn7fdcHul4fN6uds+oVK0UvAfAjO2mZ9Q=;
+ b=IGG+HgQG2WL3EuwTa3ORa13ow2BdBA+k7sdFcsTAHoigfQtE/wUun85v4Itotoid6e
+ DFJDL55tbzF45vJdzVedfsaIC0NfCsd9E9qZm5F2Xg6KcxNbGbFOdiuOXgtp4D+NTDMF
+ gaKd5IrKLcSzmDX35EA9NPx2aEH/TKMIyPkkK/QFm2t28PPbyEQsr4SO2EE3W/VCuHWv
+ rO/dt9RwSdaR/pwNu6hhPyZKO+6YwRwrzg0kZ1Wpct5/W7VPcnrSw1D4hH2PH21Yna9h
+ s5/eTizEm49nHjl5l9YS2g2CdHi/VwZ3VzKN7xxkudF4LfFnedYkxnoW2LZyfB6iwZTL
+ o1mg==
+X-Gm-Message-State: ANhLgQ3rUspSz3IWtwICn93/1gD3LTfKOpkblF9Zte1011G7yTFmchPX
+ Ih31tH3FIKDtTzNT1PIrjfrpIQ==
+X-Google-Smtp-Source: ADFU+vsOxdipjlXH6tWhcB8BNh2LE6l/eUDwDH4lZXskAUlEvO2bwAXVEzAT0oFf5hTuNGjRjmEtWg==
+X-Received: by 2002:a17:90a:22cd:: with SMTP id
+ s71mr299051pjc.181.1583438785358; 
+ Thu, 05 Mar 2020 12:06:25 -0800 (PST)
+Received: from localhost ([2620:0:1000:2514:23a5:d584:6a92:3e3c])
+ by smtp.gmail.com with ESMTPSA id r13sm6969216pjp.14.2020.03.05.12.06.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 10:59:06 -0800 (PST)
-Date: Thu, 5 Mar 2020 21:59:02 +0300
-From: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-To: <kuhn.chenqun@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <pbonzini@redhat.com>,
- <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] contrib/elf2dmp: prevent uninitialized warning
-Message-ID: <20200305215902.24bbe6ce@phystech.edu>
-In-Reply-To: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
-References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
-Organization: MIPT
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+ Thu, 05 Mar 2020 12:06:24 -0800 (PST)
+Date: Thu, 05 Mar 2020 12:06:24 -0800 (PST)
+X-Google-Original-Date: Thu, 05 Mar 2020 12:06:22 PST (-0800)
+Subject: Re: [PATCH] RISC-V: Add a missing "," in riscv_excp_names
+In-Reply-To: <CAP+75-XPHkSkcOmLct=jerOPx_WmYTc6a-=f2LfvtFku_p1WBw@mail.gmail.com>
+CC: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+To: philmd@redhat.com
+Message-ID: <mhng-9606b2d7-09a7-4598-81ad-120a74a40e68@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::244
-X-Mailman-Approved-At: Thu, 05 Mar 2020 14:04:53 -0500
+X-Received-From: 2607:f8b0:4864:20::641
+X-Mailman-Approved-At: Thu, 05 Mar 2020 16:17:42 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,83 +73,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 18:59:13 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 20:06:28 -0000
 
-On Fri, 7 Feb 2020 12:16:01 +0800
-<kuhn.chenqun@huawei.com> wrote:
+On Thu, 05 Mar 2020 09:20:31 PST (-0800), philmd@redhat.com wrote:
+> Cc'ing qemu-trivial@ in case there is a pending PR in  progress, it
+> might get merged quicker.
+>
+> On Thu, Mar 5, 2020 at 6:19 PM Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> On 3/5/20 5:48 PM, Palmer Dabbelt wrote:
+>> > THis would almost certainly cause the exception names to be reported
+>> > incorrectly.  Covarity found the issue (CID 1420223).  As per Peter's
+>>
+>> "This", "Coverity" typos.
+>>
+>> Fixes: ab67a1d07a4
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> From: Chen Qun <kuhn.chenqun@huawei.com>
->=20
-> Fix compilation warnings:
-> contrib/elf2dmp/main.c:66:17: warning: =E2=80=98KdpDataBlockEncoded=E2=80=
-=99 may be
-> used uninitialized in this function [-Wmaybe-uninitialized]
->          block =3D __builtin_bswap64(block ^ kdbe) ^ kwa;
->                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> contrib/elf2dmp/main.c:78:24: note: =E2=80=98KdpDataBlockEncoded=E2=80=99=
- was
-> declared here uint64_t kwn, kwa, KdpDataBlockEncoded;
->                         ^~~~~~~~~~~~~~~~~~~
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
->  contrib/elf2dmp/main.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
->=20
-> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
-> index 9a2dbc2902..203b9e6d04 100644
-> --- a/contrib/elf2dmp/main.c
-> +++ b/contrib/elf2dmp/main.c
-> @@ -76,6 +76,7 @@ static KDDEBUGGER_DATA64 *get_kdbg(uint64_t
-> KernBase, struct pdb_reader *pdb, DBGKD_DEBUG_DATA_HEADER64 kdbg_hdr;
->      bool decode =3D false;
->      uint64_t kwn, kwa, KdpDataBlockEncoded;
-> +    uint64_t KiWaitNever, KiWaitAlways;
-> =20
->      if (va_space_rw(vs,
->                  KdDebuggerDataBlock + offsetof(KDDEBUGGER_DATA64,
-> Header), @@ -84,21 +85,19 @@ static KDDEBUGGER_DATA64
-> *get_kdbg(uint64_t KernBase, struct pdb_reader *pdb, return NULL;
->      }
-> =20
-> -    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
-> -        uint64_t KiWaitNever, KiWaitAlways;
-> -
-> -        decode =3D true;
-> +    if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
-> +            !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
-> +            !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded)) {
-> +        return NULL;
-> +    }
-> =20
-> -        if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
-> -                !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
-> -                !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded)) {
-> -            return NULL;
-> -        }
-> +    if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
-> +            va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa), 0)) {
-> +        return NULL;
-> +    }
-> =20
-> -        if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
-> -                va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa), 0))
-> {
-> -            return NULL;
-> -        }
-> +    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
-> +        decode =3D true;
-> =20
->          printf("[KiWaitNever] =3D 0x%016"PRIx64"\n", kwn);
->          printf("[KiWaitAlways] =3D 0x%016"PRIx64"\n", kwa);
+Thanks.  I guess I'll just send the PR, as there's really no reason to block
+this on the other RISC-V stuff.  It'll just be a single patch PR, so if the
+patch goes in some other way then it should be easy to drop.  I usually don't
+like rushing these sorts of things, but this one seems pretty safe.
 
-Hi!
-
-I suppose the problem is in your compiler, because kdbg_decode() is
-only used when KdpDataBlockEncoded is already initialized by
-SYM_RESOLVE().=20
-
---=20
-Viktor Prutyanov
+>>
+>> > suggestion, I've also added a comma at the end of the list to avoid the issue
+>> > reappearing in the future.
+>> >
+>> > Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>> > ---
+>> >   target/riscv/cpu.c | 4 ++--
+>> >   1 file changed, 2 insertions(+), 2 deletions(-)
+>> >
+>> > diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+>> > index c47d10b739..c0b7023100 100644
+>> > --- a/target/riscv/cpu.c
+>> > +++ b/target/riscv/cpu.c
+>> > @@ -66,7 +66,7 @@ const char * const riscv_excp_names[] = {
+>> >       "exec_page_fault",
+>> >       "load_page_fault",
+>> >       "reserved",
+>> > -    "store_page_fault"
+>> > +    "store_page_fault",
+>> >       "reserved",
+>> >       "reserved",
+>> >       "reserved",
+>> > @@ -74,7 +74,7 @@ const char * const riscv_excp_names[] = {
+>> >       "guest_exec_page_fault",
+>> >       "guest_load_page_fault",
+>> >       "reserved",
+>> > -    "guest_store_page_fault"
+>> > +    "guest_store_page_fault",
+>> >   };
+>> >
+>> >   const char * const riscv_intr_names[] = {
+>> >
 
