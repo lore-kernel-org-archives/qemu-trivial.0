@@ -1,55 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9oJW-0006Tl-Mp
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 06:05:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52344)
+	id 1j9oWb-0003b4-KV
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 06:18:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54449)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j9oJT-0006QO-CL
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:05:12 -0500
+ (envelope-from <mst@redhat.com>) id 1j9oWZ-0003ar-CT
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:18:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j9oJS-0002mL-08
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:05:11 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:51302 helo=huawei.com)
+ (envelope-from <mst@redhat.com>) id 1j9oWY-000113-9a
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:18:43 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35345
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j9oJM-0002Xb-2E; Thu, 05 Mar 2020 06:05:04 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 54C90AAAFE4961260910;
- Thu,  5 Mar 2020 19:04:58 +0800 (CST)
-Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
- DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 5 Mar 2020 19:04:57 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
- Thu, 5 Mar 2020 19:04:47 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "jasowang@redhat.com"
- <jasowang@redhat.com>, "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Euler Robot
- <euler.robot@huawei.com>
-Subject: RE: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-Thread-Topic: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-Thread-Index: AQHV8txXWFydji2esEaJwP7bouY1uqg507VQ
-Date: Thu, 5 Mar 2020 11:04:46 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B66DA01@dggemm531-mbx.china.huawei.com>
-References: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1j9oWY-00010l-6B
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 06:18:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583407121;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xrVtzktr0qiOU8ITwSEN0ihc/kYonAkgE5cdM+DSZys=;
+ b=AgsEgN3LTHlHY2Bgz922uxf2vdD/FtOmvSEfRMORFnUdEdQs1XzMN3tpp8xGgMz1GumF2v
+ m53WLnzHTUFVTi9OnS6cZ4imYBxC7KaJB/q6VTjVso3wgT7nNCXYY85J3l4ibCrdNydJnr
+ rtheO1oHLk5Zn3HE8trtK229SWbp/0c=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-147--2A_62NIN2mFGDrjPu0Zlg-1; Thu, 05 Mar 2020 06:18:38 -0500
+X-MC-Unique: -2A_62NIN2mFGDrjPu0Zlg-1
+Received: by mail-qk1-f199.google.com with SMTP id 22so3559730qkc.7
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 03:18:38 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=kLQGRxKT3nC1QBPHTb+Z4AYfSERnI81tpjagDVFshsw=;
+ b=lOA+MpLsHuTuowR1yrekl2hx/7HiXBP3unxori791kFTL77sojoZ3/boHEpyjCFUVS
+ nZ5SUJd2DYi1Gz5TPv3ensDtN3K5f2RTX8ep/5QbnkALbduzWzeiX2BUnTC13Xo964Gw
+ zNdq1YB1oXbKU3Az0iIH9HKqvQPryowi/CTNgK7aHXqylmpZx5mZ+1gWdVWoQ6rUFcOk
+ G7JcDaIFzuvBzPhxbz06WFel2wTwSdkaR6RgK/mZLkhvQVs+6tqGUCFoVrRxP58LV0B2
+ Qh41JTxEQE6zYe5z4J8+Vyi8Akt9GkRimBujcOebVfOc2yqaCZo1RKR79Cvt/cUKq8Xz
+ mSsw==
+X-Gm-Message-State: ANhLgQ2oI1KwK2FVSEGgOfCMXGHMyrwb2Kb+y/Uh8j3sYFCwteLP5ic/
+ IsFFFqUXaz1/3ZWs+7wGflms2ait3sh+b4a08024o9aCA4ZwQX02M+X/4nJm+O55kIPH2j4zLip
+ wXEUJ/QyNSiQ24lOeaw==
+X-Received: by 2002:a37:b304:: with SMTP id c4mr7630524qkf.348.1583407117832; 
+ Thu, 05 Mar 2020 03:18:37 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvi89OFp9a1bai4JatJvF/e2yckl006J6IaXUvmNHMnL2IjmZPTdRCi47N2iNcXyBf2+hK5hw==
+X-Received: by 2002:a37:b304:: with SMTP id c4mr7630490qkf.348.1583407117532; 
+ Thu, 05 Mar 2020 03:18:37 -0800 (PST)
+Received: from redhat.com (bzq-79-180-48-224.red.bezeqint.net. [79.180.48.224])
+ by smtp.gmail.com with ESMTPSA id 69sm535439qki.131.2020.03.05.03.18.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 03:18:36 -0800 (PST)
+Date: Thu, 5 Mar 2020 06:18:30 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-trivial@nongnu.org, Yi Sun <yi.y.sun@linux.intel.com>,
+ Liu Yi L <yi.l.liu@intel.com>, Peter Xu <peterx@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH v4] hw/i386/intel_iommu: Simplify
+ vtd_find_as_from_bus_num() logic
+Message-ID: <20200305061809-mutt-send-email-mst@kernel.org>
+References: <20200305102702.31512-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200305102702.31512-1-philmd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.255
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,89 +87,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 11:05:13 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 11:18:44 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogQ2hlbnF1biAoa3VobikNCj5TZW50
-OiBUaHVyc2RheSwgTWFyY2ggNSwgMjAyMCA2OjUzIFBNDQo+VG86IHFlbXUtZGV2ZWxAbm9uZ251
-Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCj5DYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8u
-b3JnOyBaaGFuZ2hhaWxpYW5nDQo+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGph
-c293YW5nQHJlZGhhdC5jb207DQo+cGV0ZXIuY2h1YmJAbmljdGEuY29tLmF1OyBxZW11LWFybUBu
-b25nbnUub3JnOyBDaGVucXVuIChrdWhuKQ0KPjxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47IEV1
-bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPlN1YmplY3Q6IFtQQVRDSCB2Ml0g
-aHcvbmV0L2lteF9mZWM6IHdyaXRlIFRHU1IgYW5kIFRDU1IzIGluDQo+aW14X2VuZXRfd3JpdGUo
-KQ0KPg0KPlRoZSBjdXJyZW50IGNvZGUgY2F1c2VzIGNsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVy
-IGdlbmVyYXRlIHdhcm5pbmc6DQo+aHcvbmV0L2lteF9mZWMuYzo4NTg6OTogd2FybmluZzogVmFs
-dWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPiAgICAgICAgdmFsdWUgPSB2YWx1
-ZSAmIDB4MDAwMDAwMGY7DQo+ICAgICAgICBeICAgICAgIH5+fn5+fn5+fn5+fn5+fn5+fg0KPmh3
-L25ldC9pbXhfZmVjLmM6ODY0Ojk6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAndmFsdWUnIGlz
-IG5ldmVyIHJlYWQNCj4gICAgICAgIHZhbHVlID0gdmFsdWUgJiAweDAwMDAwMGZkOw0KPiAgICAg
-ICAgXiAgICAgICB+fn5+fn5+fn5+fn5+fn5+fn4NCj4NCj5BY2NvcmRpbmcgdG8gdGhlIGRlZmlu
-aXRpb24gb2YgdGhlIGZ1bmN0aW9uLCB0aGUgdHdvIOKAnHZhbHVl4oCdIGFzc2lnbm1lbnRzDQo+
-c2hvdWxkIGJlIHdyaXR0ZW4gdG8gcmVnaXN0ZXJzLg0KPg0KPlJlcG9ydGVkLWJ5OiBFdWxlciBS
-b2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj5TaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8
-a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+LS0tDQo+djEtPnYyOg0KPiAgVGhlIHJlZ2lzdGVy
-ICdFTkVUX1RHU1InIHdyaXRlLTEtdG8tY2xlYXIgdGltZXIgZmxhZy4NCj4gIFRoZSByZWdpc3Rl
-ciAnRU5FVF9UQ1NSbicgN2JpdChURikgd3JpdGUtMS10by1jbGVhciB0aW1lciBmbGFnLg0KPi0t
-LQ0KPiBody9uZXQvaW14X2ZlYy5jIHwgNiArKysrLS0NCj4gMSBmaWxlIGNoYW5nZWQsIDQgaW5z
-ZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4NCj5kaWZmIC0tZ2l0IGEvaHcvbmV0L2lteF9m
-ZWMuYyBiL2h3L25ldC9pbXhfZmVjLmMgaW5kZXgNCj42YTEyNGExNTRhLi4zMjJjYmRjYzE3IDEw
-MDY0NA0KPi0tLSBhL2h3L25ldC9pbXhfZmVjLmMNCj4rKysgYi9ody9uZXQvaW14X2ZlYy5jDQo+
-QEAgLTg1NSwxMyArODU1LDE1IEBAIHN0YXRpYyB2b2lkIGlteF9lbmV0X3dyaXRlKElNWEZFQ1N0
-YXRlICpzLA0KPnVpbnQzMl90IGluZGV4LCB1aW50MzJfdCB2YWx1ZSkNCj4gICAgICAgICBicmVh
-azsNCj4gICAgIGNhc2UgRU5FVF9UR1NSOg0KPiAgICAgICAgIC8qIGltcGxlbWVudCBjbGVhciB0
-aW1lciBmbGFnICovDQo+LSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+KyAg
-ICAgICAgcy0+cmVnc1tpbmRleF0gXj0gcy0+cmVnc1tpbmRleF0gJiB2YWx1ZTsNCj4rICAgICAg
-ICBzLT5yZWdzW2luZGV4XSAmPSAweDAwMDAwMDBmOw0KPg0KSW4gImkuTVggNkR1YWwvNlF1YWQg
-QXBwbGljYXRpb25zIFByb2Nlc3NvciBSZWZlcmVuY2UgTWFudWFsIiBkb2N1bWVudGF0aW9uLCAg
-DQp0aGUgcmVnaXN0ZXIgICdFTkVUX1RHU1InICBhbGwgIGZpZWxkcyBURm4gIGlzIHdyaXRlLTEt
-dG8tY2xlYXIuIA0KSXQgaXMgZGVzY3JpYmVkIGluIGRldGFpbCBhcyBmb2xsb3dz77yaDQotLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpGaWVs
-ZCAgICAgICAgICBEZXNjcmlwdGlvbg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KMzHigJM0ICAgICAgICAgVGhpcyBmaWVsZCBpcyByZXNl
-cnZlZC4gIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQ0KMyAgICAgICAgICAgICAgQ29weSBPZiBUaW1lciBGbGFnIEZvciBDaGFubmVsIDMN
-ClRGMyAgICAgICAgIDAgVGltZXIgRmxhZyBmb3IgQ2hhbm5lbCAzIGlzIGNsZWFyDQogICAgICAg
-ICAgICAgICAgMSBUaW1lciBGbGFnIGZvciBDaGFubmVsIDMgaXMgc2V0DQotLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoyICAgICAgICAgICAg
-IENvcHkgT2YgVGltZXIgRmxhZyBGb3IgQ2hhbm5lbCAyDQpURjIgICAgICAgICAwIFRpbWVyIEZs
-YWcgZm9yIENoYW5uZWwgMiBpcyBjbGVhcg0KICAgICAgICAgICAgICAgIDEgVGltZXIgRmxhZyBm
-b3IgQ2hhbm5lbCAyIGlzIHNldA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQ0KMSAgICAgICAgICAgICAgQ29weSBPZiBUaW1lciBGbGFnIEZv
-ciBDaGFubmVsIDENClRGMSAgICAgICAgIDAgVGltZXIgRmxhZyBmb3IgQ2hhbm5lbCAxIGlzIGNs
-ZWFyDQogICAgICAgICAgICAgICAgMSBUaW1lciBGbGFnIGZvciBDaGFubmVsIDEgaXMgc2V0DQot
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQow
-ICAgICAgICAgICAgICBDb3B5IE9mIFRpbWVyIEZsYWcgRm9yIENoYW5uZWwgMA0KVEYwICAgICAg
-ICAgMCBUaW1lciBGbGFnIGZvciBDaGFubmVsIDAgaXMgY2xlYXINCiAgICAgICAgICAgICAgICAx
-IFRpbWVyIEZsYWcgZm9yIENoYW5uZWwgMCBpcyBzZXQNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiAgICAgICAgIGJyZWFrOw0KPiAgICAg
-Y2FzZSBFTkVUX1RDU1IwOg0KPiAgICAgY2FzZSBFTkVUX1RDU1IxOg0KPiAgICAgY2FzZSBFTkVU
-X1RDU1IyOg0KPiAgICAgY2FzZSBFTkVUX1RDU1IzOg0KPi0gICAgICAgIHZhbHVlID0gdmFsdWUg
-JiAweDAwMDAwMGZkOw0KPisgICAgICAgIHMtPnJlZ3NbaW5kZXhdID0gKHZhbHVlICYgMHgwMDAw
-MDA4MCkgPyAoMHgwMDAwMDA3ZCAmIHZhbHVlKSA6DQo+KyAgICAgICAgICAgICAgICAgICAgICAg
-ICAodmFsdWUgJiAweDAwMDAwMGZkKTsNCj4NClRoZSBFTkVUX1RDU1JuIGZpZWxkIGRlc2NyaXB0
-aW9uczoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0NCkZpZWxkICAgICAgICAgIERlc2NyaXB0aW9uDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQozMeKAkzggICAgICBUaGlzIGZpZWxk
-IGlzIHJlc2VydmVkLg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tDQo3ICAgICAgICAgICAgICBUaW1lciBGbGFnDQpURiAgICAgICAgICAgIFNl
-dHMgd2hlbiBpbnB1dCBjYXB0dXJlIG9yIG91dHB1dCBjb21wYXJlIG9jY3Vycy4gDQogICAgICAg
-ICAgICAgICAgVGhpcyBmbGFnIGlzIGRvdWJsZSBidWZmZXJlZCBiZXR3ZWVuIHRoZSBtb2R1bGUg
-Y2xvY2sgYW5kIDE1ODggY2xvY2sgZG9tYWlucy4gDQogICAgICAgICAgICAgICAgV2hlbiB0aGlz
-IGZpZWxkIGlzIDEsIGl0IGNhbiBiZSBjbGVhcmVkIHRvIDAgYnkgd3JpdGluZyAxdG8gaXQuDQoN
-CiAgICAgICAgICAgICAgICAgMCBJbnB1dCBDYXB0dXJlIG9yIE91dHB1dCBDb21wYXJlIGhhcyBu
-b3Qgb2NjdXJyZWQNCiAgICAgICAgICAgICAgICAgMSBJbnB1dCBDYXB0dXJlIG9yIE91dHB1dCBD
-b21wYXJlIGhhcyBvY2N1cnJlZA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0NCjYgICAgICAgICAgICAgIFRpbWVyIEludGVycnVwdCBFbmFi
-bGUNClRJRSAgICAgICAgICAgMCBJbnRlcnJ1cHQgaXMgZGlzYWJsZWQNCiAgICAgICAgICAgICAg
-ICAgMSBJbnRlcnJ1cHQgaXMgZW5hYmxlZA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCjItNSAgICAgICAgICAgVGltZXIgTW9kZQ0KICAg
-ICAgICAgICAgICAgICAuLi4uLi4uLi4uLi4uLi4uLi4NCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoxICAgICAgICAgICAgICBUaGlzIGZp
-ZWxkIGlzIHJlc2VydmVkLg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0NCjAgICAgICAgICAgICAgICAgVGltZXIgRE1BIFJlcXVlc3QgRW5h
-YmxlICAgDQpURFJFICAgICAgICAwIERNQSByZXF1ZXN0IGlzIGRpc2FibGVkDQogICAgICAgICAg
-ICAgICAgICAgMSBETUEgcmVxdWVzdCBpcyBlbmFibGVkDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KDQo+ICAgICAgICAgYnJlYWs7DQo+
-ICAgICBjYXNlIEVORVRfVENDUjA6DQo+ICAgICBjYXNlIEVORVRfVENDUjE6DQo+LS0NCj4yLjIz
-LjANCj4NCg0K
+On Thu, Mar 05, 2020 at 11:27:02AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> The vtd_find_as_from_bus_num() function was introduced (in commit
+> dbaabb25f) in a code format that could return an incorrect pointer,
+> which was later fixed by commit a2e1cd41ccf.
+> We could have avoided this by writing the if() statement differently.
+> Do it now, in case this function is re-used. The code is easier to
+> review (harder to miss bugs).
+>=20
+> Reviewed-by: Peter Xu <peterx@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+I'll queues this.
+
+> ---
+> Since v1: Re-worded commit description, patch sent without -w.
+> Since v2: patch send without diff
+> Since v3: Fix typo in description and comment (Eric Auger)
+>=20
+> This patch is easier to review with 'git-diff -w' (--ignore-all-space)
+> ---
+>  hw/i386/intel_iommu.c | 34 ++++++++++++++++++----------------
+>  1 file changed, 18 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 6258c58ac9..204b6841ec 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -987,24 +987,26 @@ static bool vtd_slpte_nonzero_rsvd(uint64_t slpte, =
+uint32_t level)
+>  static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_=
+num)
+>  {
+>      VTDBus *vtd_bus =3D s->vtd_as_by_bus_num[bus_num];
+> -    if (!vtd_bus) {
+> -        /*
+> -         * Iterate over the registered buses to find the one which
+> -         * currently hold this bus number, and update the bus_num
+> -         * lookup table:
+> -         */
+> -        GHashTableIter iter;
+> +    GHashTableIter iter;
+> =20
+> -        g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
+> -        while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
+> -            if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
+> -                s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
+> -                return vtd_bus;
+> -            }
+> -        }
+> -        vtd_bus =3D NULL;
+> +    if (vtd_bus) {
+> +        return vtd_bus;
+>      }
+> -    return vtd_bus;
+> +
+> +    /*
+> +     * Iterate over the registered buses to find the one which
+> +     * currently holds this bus number and update the bus_num
+> +     * lookup table.
+> +     */
+> +    g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
+> +    while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
+> +        if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
+> +            s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
+> +            return vtd_bus;
+> +        }
+> +    }
+> +
+> +    return NULL;
+>  }
+> =20
+>  /* Given the @iova, get relevant @slptep. @slpte_level will be the last =
+level
+> --=20
+> 2.21.1
+
 
