@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9ptA-0007T7-HM
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 07:46:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41762)
+	id 1j9ptM-0007fP-5S
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 07:46:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41841)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9pt7-0007NC-Je
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:06 -0500
+ (envelope-from <philmd@redhat.com>) id 1j9ptI-0007bn-5F
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9pt6-0001bd-DS
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:05 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:26233
+ (envelope-from <philmd@redhat.com>) id 1j9ptH-0001n5-4l
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:16 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35212
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9pt6-0001b9-AA
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:04 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9ptH-0001mT-1i
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 07:46:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583412364;
+ s=mimecast20190719; t=1583412374;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BfL2wrp1xmfb4e/iaQpRjnEbNuM8Iy0Ua18MeCip/nA=;
- b=Qy7OUH5DCmXrOVPm8HnEfxQG4vBZUYiNku8n6D8kJUiZtmKkSiPuDN0ApoT1JEJxQ9Ljvi
- H//JbEeTjt8EFo76SU/J58FwKtFMiKsaszApx0DvMlXLQ3ThPpfJSHttxkGMnok/PnfxDy
- UtgfBq9gnIUQrTZJWD6JmZVQWsIibPc=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-220-6-noYMk0PF6CdHLZCQfjow-1; Thu, 05 Mar 2020 07:46:02 -0500
-X-MC-Unique: 6-noYMk0PF6CdHLZCQfjow-1
-Received: by mail-wr1-f70.google.com with SMTP id x14so1662881wrv.23
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 04:46:02 -0800 (PST)
+ bh=bHjWSXQJGHXqNSVRp2m+ndgaVWWtzd8pKBpNi2noriY=;
+ b=icWHILUMfHGiRIMH+8LQ3lLAU9/Eq+mopmOdCsFMeCQwDyF3iD0r9NA/0p5X7xWW6WohBn
+ QmvP//+7PpyZQkY0VVqoz4hyjwGe42pdKJkqrdI+GTDsHuu5Ak8hQdeZp5ca1MHtMOJyd8
+ c+apTWfqv7zW4T5Lh1GaZmpvCoUAEdw=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-94-BTNNcA2ZP0Oy2B9ZbXKUiQ-1; Thu, 05 Mar 2020 07:46:13 -0500
+X-MC-Unique: BTNNcA2ZP0Oy2B9ZbXKUiQ-1
+Received: by mail-wm1-f71.google.com with SMTP id w12so1535812wmc.3
+ for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 04:46:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cOfgZg45p005Cf8aNVaFJuLhPI+JdhyWRao0wzg6LoM=;
- b=XQ+OMjrTA1IXAa22sSUkpt2MhkXTE4OQY+aKmO6aioZ7BDLIMaZoAAtAEexVzyhCrv
- 7iC7PAuQWe7+o1PUP5Cw3dDTbMw4oiLSs8uGPHF1D3U8+6I4nKYQiUdd5J/By6/SWB19
- vPIRa1r1k/+0zrRuhs8qkgg+tHG6CA5itmed6B0H4rm4azARZwYpxkdYvD0mX7pPRs02
- ibVJ9+Kbje3R6ahBjmbAdE068LEg2Teo9BmuL34HW+e9wjBJUW+HWoqI4mg897i9AvYL
- yGFi4/EjuKM/pswwwnc8aVlcoF53JnARTBNYhsNhXM7X2pTf5T9B2BaZ3SOmKHecnIR1
- zR2w==
-X-Gm-Message-State: ANhLgQ2riralNgTKDeYWhxm3A/DcGzM5TDixIz1Iia0bPzfOamBduXXP
- sNLiHVHvCjfYQbGqGoCdutEaqWg7LxrdW92zkVdsnKQE9WwhI9JXCaW5LKHgh5G172SdL1G2TYG
- jKr5g/5eKxNH4Ot5VBA==
-X-Received: by 2002:a7b:ce99:: with SMTP id q25mr9353856wmj.34.1583412360848; 
- Thu, 05 Mar 2020 04:46:00 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtYQ3Fcji41liGZ4F/ZeQyFAYO+TfPXs7EPSdszQCv1mrO1EYqxHjHgHw9ceMByt1uuFupuDw==
-X-Received: by 2002:a7b:ce99:: with SMTP id q25mr9353820wmj.34.1583412360562; 
- Thu, 05 Mar 2020 04:46:00 -0800 (PST)
+ bh=37TekRuQ1Sj7bzipU9xMQGxHx7Oe/Uk9FNfgupkTT1U=;
+ b=tFFqiOd9lIO2VMczDF0bel0YRUHmXljauVtADoYTMaxmTLt7beC9tIGMTyeY/V3ReT
+ nTeF24I8SBLRQgPKnnt/xVT8HCc18uKjk/6zwB0OLA020VffsmUh5NwhF2SgPUV61YO+
+ RimKnQvgOPYtisgerngHBITo8r4H9xe9TXcQILG1SKF3MnRYZLgsL1S+9c3cqj7nYDFf
+ QoAVzNCwEaeEzJ9pTAfpjp/iH75yDe0q/SiP+8ZdIitqi6YDNWkRWdQGRzhhP1dpTQIn
+ 05SQi2LUwr26V1u38Qbje+O7hjeI4vkHfbFTNeKW76o/3tYn8qwXTGQxHeWESDJf1zA9
+ mTqA==
+X-Gm-Message-State: ANhLgQ1dUkmsTO27Yd9zf1r76qtBuOXq6iIi7eNoDW4mcTSlUpfJN4DI
+ 6Sgqna1HrTvfr2dHN1Kk5YGMW6T0CH1Z2LFTrIrY3w7/PiCg7z0NuIEDpFpHdyCG7DeV1rFyVn2
+ 2lglaST8fxH9JtE+LSA==
+X-Received: by 2002:a5d:6544:: with SMTP id z4mr9651521wrv.31.1583412371625;
+ Thu, 05 Mar 2020 04:46:11 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvVrt/Sswq4FSHm0E1EBtr0g0kjYs6V37K0HOy2fXC7aQIxGtsR2optAa52Vkzx0QP0QDKzXQ==
+X-Received: by 2002:a5d:6544:: with SMTP id z4mr9651493wrv.31.1583412371400;
+ Thu, 05 Mar 2020 04:46:11 -0800 (PST)
 Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
  [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id z12sm17054451wrs.43.2020.03.05.04.45.59
+ by smtp.gmail.com with ESMTPSA id r12sm9493551wrw.77.2020.03.05.04.46.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 04:46:00 -0800 (PST)
+ Thu, 05 Mar 2020 04:46:10 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
@@ -61,10 +61,9 @@ Cc: Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  Stefano Garzarella <sgarzare@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 6/9] hw/usb/quirks: Use smaller types to reduce .rodata by
- 10KiB
-Date: Thu,  5 Mar 2020 13:45:22 +0100
-Message-Id: <20200305124525.14555-7-philmd@redhat.com>
+Subject: [PATCH v2 8/9] ui/curses: Move arrays to .heap to save 74KiB of .bss
+Date: Thu,  5 Mar 2020 13:45:24 +0100
+Message-Id: <20200305124525.14555-9-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200305124525.14555-1-philmd@redhat.com>
 References: <20200305124525.14555-1-philmd@redhat.com>
@@ -87,99 +86,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 12:46:07 -0000
+X-List-Received-Date: Thu, 05 Mar 2020 12:46:18 -0000
 
-The USB descriptor sizes are specified as 16-bit for idVendor /
-idProduct, and 8-bit for bInterfaceClass / bInterfaceSubClass /
-bInterfaceProtocol. Doing so we reduce the usbredir_raw_serial_ids[]
-and usbredir_ftdi_serial_ids[] arrays from 16KiB to 6KiB (size
-reported on x86_64 host, building with --extra-cflags=3D-Os).
+We only need these arrays when using the curses display.
+Move them from the .bss to the .heap (sizes reported on
+x86_64 host: screen[] is 64KiB, vga_to_curses 7KiB).
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-v2: Add bitfield values and use unsigned types (Gerd)
----
- hw/usb/quirks.h | 22 +++++++++++++---------
- hw/usb/quirks.c |  4 ++--
- 2 files changed, 15 insertions(+), 11 deletions(-)
+ ui/curses.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/hw/usb/quirks.h b/hw/usb/quirks.h
-index 89480befd7..50ef2f9c2e 100644
---- a/hw/usb/quirks.h
-+++ b/hw/usb/quirks.h
-@@ -21,19 +21,23 @@
- #include "quirks-pl2303-ids.h"
-=20
- struct usb_device_id {
--    int vendor_id;
--    int product_id;
--    int interface_class;
--    int interface_subclass;
--    int interface_protocol;
-+    uint16_t vendor_id;
-+    uint16_t product_id;
-+    uint8_t interface_class;
-+    uint8_t interface_subclass;
-+    uint8_t interface_protocol;
-+    uint8_t interface_protocol_used:1,
-+            terminating_entry:1,
-+            reserved:6;
+diff --git a/ui/curses.c b/ui/curses.c
+index 3bafc10c1c..a59b23a9cf 100644
+--- a/ui/curses.c
++++ b/ui/curses.c
+@@ -54,13 +54,13 @@ enum maybe_keycode {
  };
 =20
- #define USB_DEVICE(vendor, product) \
--    .vendor_id =3D vendor, .product_id =3D product, .interface_class =3D -=
-1,
-+    .vendor_id =3D vendor, .product_id =3D product, .interface_protocol_us=
-ed =3D 0,
+ static DisplayChangeListener *dcl;
+-static console_ch_t screen[160 * 100];
++static console_ch_t *screen;
+ static WINDOW *screenpad =3D NULL;
+ static int width, height, gwidth, gheight, invalidate;
+ static int px, py, sminx, sminy, smaxx, smaxy;
 =20
- #define USB_DEVICE_AND_INTERFACE_INFO(vend, prod, iclass, isubclass, iprot=
-o) \
-     .vendor_id =3D vend, .product_id =3D prod, .interface_class =3D iclass=
-, \
--    .interface_subclass =3D isubclass, .interface_protocol =3D iproto
-+    .interface_subclass =3D isubclass, .interface_protocol =3D iproto, \
-+    .interface_protocol_used =3D 1
+ static const char *font_charset =3D "CP437";
+-static cchar_t vga_to_curses[256];
++static cchar_t *vga_to_curses;
 =20
- static const struct usb_device_id usbredir_raw_serial_ids[] =3D {
-     /*
-@@ -206,7 +210,7 @@ static const struct usb_device_id usbredir_raw_serial_i=
-ds[] =3D {
-     { USB_DEVICE(ADLINK_VENDOR_ID, ADLINK_ND6530_PRODUCT_ID) },
-     { USB_DEVICE(SMART_VENDOR_ID, SMART_PRODUCT_ID) },
+ static void curses_update(DisplayChangeListener *dcl,
+                           int x, int y, int w, int h)
+@@ -405,6 +405,8 @@ static void curses_refresh(DisplayChangeListener *dcl)
+ static void curses_atexit(void)
+ {
+     endwin();
++    g_free(vga_to_curses);
++    g_free(screen);
+ }
 =20
--    { USB_DEVICE(-1, -1) } /* Terminating Entry */
-+    { .terminating_entry =3D 1 } /* Terminating Entry */
- };
-=20
- static const struct usb_device_id usbredir_ftdi_serial_ids[] =3D {
-@@ -906,7 +910,7 @@ static const struct usb_device_id usbredir_ftdi_serial_=
-ids[] =3D {
-     { USB_DEVICE(FTDI_VID, FTDI_DISTORTEC_JTAG_LOCK_PICK_PID) },
-     { USB_DEVICE(FTDI_VID, FTDI_LUMEL_PD12_PID) },
-=20
--    { USB_DEVICE(-1, -1) } /* Terminating Entry */
-+    { .terminating_entry =3D 1 } /* Terminating Entry */
- };
-=20
- #undef USB_DEVICE
-diff --git a/hw/usb/quirks.c b/hw/usb/quirks.c
-index 38a9c5634a..23ea7a23ea 100644
---- a/hw/usb/quirks.c
-+++ b/hw/usb/quirks.c
-@@ -22,10 +22,10 @@ static bool usb_id_match(const struct usb_device_id *id=
-s,
-                          uint8_t interface_protocol) {
-     int i;
-=20
--    for (i =3D 0; ids[i].vendor_id !=3D -1; i++) {
-+    for (i =3D 0; ids[i].terminating_entry =3D=3D 0; i++) {
-         if (ids[i].vendor_id  =3D=3D vendor_id &&
-             ids[i].product_id =3D=3D product_id &&
--            (ids[i].interface_class =3D=3D -1 ||
-+            (ids[i].interface_protocol_used =3D=3D 0 ||
-              (ids[i].interface_class =3D=3D interface_class &&
-               ids[i].interface_subclass =3D=3D interface_subclass &&
-               ids[i].interface_protocol =3D=3D interface_protocol))) {
+ /*
+@@ -783,6 +785,8 @@ static void curses_display_init(DisplayState *ds, Displ=
+ayOptions *opts)
+     if (opts->u.curses.charset) {
+         font_charset =3D opts->u.curses.charset;
+     }
++    screen =3D g_new0(console_ch_t, 160 * 100);
++    vga_to_curses =3D g_new0(cchar_t, 256);
+     curses_setup();
+     curses_keyboard_setup();
+     atexit(curses_atexit);
 --=20
 2.21.1
 
