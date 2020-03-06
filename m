@@ -1,94 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jAAt3-0005GK-Ot
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Mar 2020 06:11:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40727)
+	id 1jABST-0004vQ-EC
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Mar 2020 06:48:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48023)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jAAt1-0005A2-EH
- for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:11:24 -0500
+ (envelope-from <viktor.prutyanov@phystech.edu>) id 1jABSQ-0004ut-DD
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:47:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jAAt0-0007Lh-8I
- for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:11:23 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:35481)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1jAAsz-0007CN-VS
- for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:11:22 -0500
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MYehP-1inwuL32Id-00VhNq; Fri, 06 Mar 2020 12:11:18 +0100
-To: Mansour Ahmadi <mansourweb@gmail.com>, qemu-trivial@nongnu.org
-References: <CAGT9xrCF740RKCBrOFVN2LJUKMkLj25oO4pVD1LOfM=ZVKgLeQ@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
- WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
- SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
- UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
- Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
- JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
- q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
- RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
- 8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
- LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABtCJMYXVyZW50IFZp
- dmllciA8bGF1cmVudEB2aXZpZXIuZXU+iQI4BBMBAgAiBQJWBTDeAhsDBgsJCAcDAgYVCAIJ
- CgsEFgIDAQIeAQIXgAAKCRDzDDi9Py++PCEdD/oD8LD5UWxhQrMQCsUgLlXCSM7sxGLkwmmF
- ozqSSljEGRhffxZvO35wMFcdX9Z0QOabVoFTKrT04YmvbjsErh/dP5zeM/4EhUByeOS7s6Yl
- HubMXVQTkak9Wa9Eq6irYC6L41QNzz/oTwNEqL1weV1+XC3TNnht9B76lIaELyrJvRfgsp9M
- rE+PzGPo5h7QHWdL/Cmu8yOtPLa8Y6l/ywEJ040IoiAUfzRoaJs2csMXf0eU6gVBhCJ4bs91
- jtWTXhkzdl4tdV+NOwj3j0ukPy+RjqeL2Ej+bomnPTOW8nAZ32dapmu7Fj7VApuQO/BSIHyO
- NkowMMjB46yohEepJaJZkcgseaus0x960c4ua/SUm/Nm6vioRsxyUmWd2nG0m089pp8LPopq
- WfAk1l4GciiMepp1Cxn7cnn1kmG6fhzedXZ/8FzsKjvx/aVeZwoEmucA42uGJ3Vk9TiVdZes
- lqMITkHqDIpHjC79xzlWkXOsDbA2UY/P18AtgJEZQPXbcrRBtdSifCuXdDfHvI+3exIdTpvj
- BfbgZAar8x+lcsQBugvktlQWPfAXZu4Shobi3/mDYMEDOE92dnNRD2ChNXg2IuvAL4OW40wh
- gXlkHC1ZgToNGoYVvGcZFug1NI+vCeCFchX+L3bXyLMg3rAfWMFPAZLzn42plIDMsBs+x2yP
- +bkCDQRWBSYZARAAvFJBFuX9A6eayxUPFaEczlMbGXugs0mazbOYGlyaWsiyfyc3PStHLFPj
- rSTaeJpPCjBJErwpZUN4BbpkBpaJiMuVO6egrC8Xy8/cnJakHPR2JPEvmj7Gm/L9DphTcE15
- 92rxXLesWzGBbuYxKsj8LEnrrvLyi3kNW6B5LY3Id+ZmU8YTQ2zLuGV5tLiWKKxc6s3eMXNq
- wrJTCzdVd6ThXrmUfAHbcFXOycUyf9vD+s+WKpcZzCXwKgm7x1LKsJx3UhuzT8ier1L363RW
- ZaJBZ9CTPiu8R5NCSn9V+BnrP3wlFbtLqXp6imGhazT9nJF86b5BVKpF8Vl3F0/Y+UZ4gUwL
- d9cmDKBcmQU/JaRUSWvvolNu1IewZZu3rFSVgcpdaj7F/1aC0t5vLdx9KQRyEAKvEOtCmP4m
- 38kU/6r33t3JuTJnkigda4+Sfu5kYGsogeYG6dNyjX5wpK5GJIJikEhdkwcLM+BUOOTi+I9u
- tX03BGSZo7FW/J7S9y0l5a8nooDs2gBRGmUgYKqQJHCDQyYut+hmcr+BGpUn9/pp2FTWijrP
- inb/Pc96YDQLQA1q2AeAFv3Rx3XoBTGl0RCY4KZ02c0kX/dm3eKfMX40XMegzlXCrqtzUk+N
- 8LeipEsnOoAQcEONAWWo1HcgUIgCjhJhBEF0AcELOQzitbJGG5UAEQEAAYkCHwQYAQIACQUC
- VgUmGQIbDAAKCRDzDDi9Py++PCD3D/9VCtydWDdOyMTJvEMRQGbx0GacqpydMEWbE3kUW0ha
- US5jz5gyJZHKR3wuf1En/3z+CEAEfP1M3xNGjZvpaKZXrgWaVWfXtGLoWAVTfE231NMQKGoB
- w2Dzx5ivIqxikXB6AanBSVpRpoaHWb06tPNxDL6SVV9lZpUn03DSR6gZEZvyPheNWkvz7bE6
- FcqszV/PNvwm0C5Ju7NlJA8PBAQjkIorGnvN/vonbVh5GsRbhYPOc/JVwNNr63P76rZL8Gk/
- hb3xtcIEi5CCzab45+URG/lzc6OV2nTj9Lg0SNcRhFZ2ILE3txrmI+aXmAu26+EkxLLfqCVT
- ohb2SffQha5KgGlOSBXustQSGH0yzzZVZb+HZPEvx6d/HjQ+t9sO1bCpEgPdZjyMuuMp9N1H
- ctbwGdQM2Qb5zgXO+8ZSzwC+6rHHIdtcB8PH2j+Nd88dVGYlWFKZ36ELeZxD7iJflsE8E8yg
- OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
- JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
- ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Subject: Re: Inconsistency - potential bug
-Message-ID: <d2214def-4bbc-fe26-67b1-232542cd09e2@vivier.eu>
-Date: Fri, 6 Mar 2020 12:11:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <viktor.prutyanov@phystech.edu>) id 1jABSN-0003fn-NN
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:47:57 -0500
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:34235)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <viktor.prutyanov@phystech.edu>)
+ id 1jABSN-0003bl-8f
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 06:47:55 -0500
+Received: by mail-lj1-x243.google.com with SMTP id j19so1913868lji.1
+ for <qemu-trivial@nongnu.org>; Fri, 06 Mar 2020 03:47:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=phystech-edu.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=DQ+V1IeSmPQO9wkH9m1UPFVySzxnNCk5Wge4L88LvqI=;
+ b=W1PYg+hy2x5x1YUw6CmS5SJmWLzxlzPI9+OCbT4uBr8xkm+MVkBUGayr6zlCiVGo8w
+ a2utMnYlY5LNGcS1WnQf4NQMMmdG6SQzKstfZ2Jl9/OurcU9GXpd7Y6nqGqDgjeqslEG
+ jp61jQ30R1immi9L34eYN87MLtOEtO1xoqqSHrwPNS4GmS7yCUMpFnF50XemCuIM3xDU
+ EeowFmzPggrZXk5O21mU9Tfhbm19zCqxDUXHJ49/tdDOqBvptdYT8FFuoLiOAAr9N5pF
+ 7RElL++IUxGx4+UWtsKf5oMm7t3DtpnojauLQzab+zgkt3U/acAZkIA7TIePACMURfj5
+ hIVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=DQ+V1IeSmPQO9wkH9m1UPFVySzxnNCk5Wge4L88LvqI=;
+ b=Wc1JsCU5w6i5BKhplDy+NRRqU8M6RNX1X6zZV8WqCcZcLwwU06ukOMurJYgJsDXco8
+ V5mTFWCU5g0ZY63pPyib4lOiYAvnWlJwJbxA1xuyjS6n4vtyNkSU23AsSfXJ0Vahc+i3
+ htNWfqyURF4NSbUL87iq8O0ZwrMDIthavg4pJ6OmQB9ocnBNbbzxj8u2tXbFTOtfSMhT
+ 9lJq1LkKreA6995sFAHLnuSVihrYTMLGy0gN87gFcZ7hK7c6EZtm7l5z1ANrtj0oKnV+
+ A02t6YuitLHp4kLJgnvZiIzAKtq+ihFz/CbAisdSLteO754eKP0HoGq5S9C4aeQutjlk
+ 6OLg==
+X-Gm-Message-State: ANhLgQ05/xyBFh+oZsHyiyFIolbhv3jG/pKVMwplwJRMLGg2gbDHbWJc
+ VyWYXaWsPplD8/086FF1VmdTFalaegjhTQ==
+X-Google-Smtp-Source: ADFU+vt5o1YUKRBnfj7lBa1ij+K9BW2EHcyy2plPPp+i5PiKcrxaXSuIi1rqNSQXkqKw6qJk15uDbw==
+X-Received: by 2002:a2e:998f:: with SMTP id w15mr49100lji.58.1583495273573;
+ Fri, 06 Mar 2020 03:47:53 -0800 (PST)
+Received: from localhost ([93.175.11.132])
+ by smtp.gmail.com with ESMTPSA id s8sm18949689ljs.45.2020.03.06.03.47.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Mar 2020 03:47:53 -0800 (PST)
+Date: Fri, 6 Mar 2020 14:47:49 +0300
+From: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: Re: [PATCH] contrib/elf2dmp: prevent uninitialized warning
+Message-ID: <20200306144749.64f08e84@phystech.edu>
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B66F9DA@dggemm531-mbx.china.huawei.com>
+References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
+ <20200305215902.24bbe6ce@phystech.edu>
+ <7412CDE03601674DA8197E2EBD8937E83B66F9DA@dggemm531-mbx.china.huawei.com>
+Organization: MIPT
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <CAGT9xrCF740RKCBrOFVN2LJUKMkLj25oO4pVD1LOfM=ZVKgLeQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qLZ/9ZxqUhuny6O6dYskM3Cp+N7NjyhQg0eXvNqPIOiW5rk4Tzt
- 9aqsAYK7DOgOjelDs+OyHxwHq8jVHOcmwJgJK+gAIu8vRztcShpWLLMtt7Q+SXluTA2UTbh
- Fepc7nzVk5GYt+8WlitYzb52uwAWyzT4qVVOLzABKJtUdxIoxV+r3CZlCjNe/xzLRzy+toP
- 9uje98Dblw1tjzo8Sgg+g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1Ffd8Wu54g0=:FxAGZTrZMIVD8lkoyPg5+d
- 0b44uyt1YVSzptb9m9gRjU0BGpY2E83pqGQg54I8F9dTKJgli8u0F9fhHAU0oBqafv3YIS2HQ
- gIkXcdxuDqkA1/ZmwXOZ4pJO/sLVCdbsXDNBOmdb1Nif809bhmKXZFJny3qOivUneHA7kz3pD
- kibTw5H6Va2hU/YVyDWlYDbJBeB4ZvqtOXOc4f8yzHw0W/YoG/RGkxKMjXIvwBHKzPM4iJ6K6
- QNC1Z0K5NEwYiQPAdqvAgvQypG2woY0lJ8N47FG2W+0fWr32WHYZfl8TlQIBd/BCotczymUsz
- iqgHL1sfzWxHNZ1HZe3ZwhCJuRKZ6r55MxWN4OUjNpmfnxbDCmVcKHvQllxaHESMIH8XM4xMb
- xweYayoIqnf2DMw7aPkMpGLztTNMqi9MAuFO+WRYaJ2Ma2VlShonNIOyhHJo7YkpSrme6S3Ud
- bB5caC+BYtN02m7rUjZil8rpbkLbA3z+AmOkkWkakJquGUKz1L+UU1Hyv/fpvPnfdfUA0EoDR
- p7Xef7di/Pf4XhDPmWv1Qf8ztITCVkHgXX2mhqWeYByUF/h4heOJqXyYbNJJ1UZPpjkAeuEOh
- DtPzVkSLONCTS9sziz7dJSebAKzyBspxUbsPGmrQAqDcvrow/YvkeLAOND7vgY3XvZs334QZS
- 6pZB4UPGlG8yATfZoCH24N+9McKIIzc/0iH+jPWkotb419OHWX2xpXd/AM2icfVlQ9xdzjSFC
- PTUlLryaOXGHkmKyOuiXeu/DQsE6UYhCqtcKLQprza4zBgceiy6GQsYtqPjDUVo45rtm41+kq
- 6Sx4iS7TqH3ZiMu4NF6Ifjgt8g0VWd5rQ0IXOj5eQ+4+w9t/IXg1en9/M1Y/RcdIwUFS2E0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::243
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,45 +77,120 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Mar 2020 11:11:24 -0000
+X-List-Received-Date: Fri, 06 Mar 2020 11:47:59 -0000
 
-Le 05/03/2020 à 22:22, Mansour Ahmadi a écrit :
-> Hi
-> 
-> It seems there is an inconsistency here:
-> 
-> https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L996
-> if(((insn & (1<< 21)) == 0) != ((insn & (1<< 15)) == 0))
-> *invalid = 1;
-> https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L1041
-> if(((insn & (1<< 21)) == 0) == ((insn & (1<< 15)) == 0))
-> *invalid = 1;
-> 
-> Does "==" need to be changed to "!="?
-> 
-> Mansour
-> 
+On Fri, 6 Mar 2020 02:18:07 +0000
+"Chenqun (kuhn)" <kuhn.chenqun@huawei.com> wrote:
 
-This comes from binutils 2.17:
+> >-----Original Message-----
+> >From: Viktor Prutyanov [mailto:viktor.prutyanov@phystech.edu]
+> >Sent: Friday, March 6, 2020 2:59 AM
+> >To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
+> >Cc: qemu-devel@nongnu.org; pbonzini@redhat.com; Zhanghailiang
+> ><zhang.zhanghailiang@huawei.com>; qemu-trivial@nongnu.org
+> >Subject: Re: [PATCH] contrib/elf2dmp: prevent uninitialized warning
+> >
+> >On Fri, 7 Feb 2020 12:16:01 +0800
+> ><kuhn.chenqun@huawei.com> wrote:
+> > =20
+> >> From: Chen Qun <kuhn.chenqun@huawei.com>
+> >>
+> >> Fix compilation warnings:
+> >> contrib/elf2dmp/main.c:66:17: warning: =E2=80=98KdpDataBlockEncoded=E2=
+=80=99 may be
+> >> used uninitialized in this function [-Wmaybe-uninitialized]
+> >>          block =3D __builtin_bswap64(block ^ kdbe) ^ kwa;
+> >>                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> >> contrib/elf2dmp/main.c:78:24: note: =E2=80=98KdpDataBlockEncoded=E2=80=
+=99 was
+> >> declared here uint64_t kwn, kwa, KdpDataBlockEncoded;
+> >>                         ^~~~~~~~~~~~~~~~~~~
+> >>
+> >> Reported-by: Euler Robot <euler.robot@huawei.com>
+> >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> >> ---
+> >>  contrib/elf2dmp/main.c | 25 ++++++++++++-------------
+> >>  1 file changed, 12 insertions(+), 13 deletions(-)
+> >>
+> >> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c index
+> >> 9a2dbc2902..203b9e6d04 100644
+> >> --- a/contrib/elf2dmp/main.c
+> >> +++ b/contrib/elf2dmp/main.c
+> >> @@ -76,6 +76,7 @@ static KDDEBUGGER_DATA64 *get_kdbg(uint64_t
+> >> KernBase, struct pdb_reader *pdb, DBGKD_DEBUG_DATA_HEADER64 =20
+> >kdbg_hdr; =20
+> >>      bool decode =3D false;
+> >>      uint64_t kwn, kwa, KdpDataBlockEncoded;
+> >> +    uint64_t KiWaitNever, KiWaitAlways;
+> >>
+> >>      if (va_space_rw(vs,
+> >>                  KdDebuggerDataBlock + offsetof(KDDEBUGGER_DATA64,
+> >> Header), @@ -84,21 +85,19 @@ static KDDEBUGGER_DATA64
+> >> *get_kdbg(uint64_t KernBase, struct pdb_reader *pdb, return NULL;
+> >>      }
+> >>
+> >> -    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
+> >> -        uint64_t KiWaitNever, KiWaitAlways;
+> >> -
+> >> -        decode =3D true;
+> >> +    if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
+> >> +            !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
+> >> +            !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded)) {
+> >> +        return NULL;
+> >> +    }
+> >>
+> >> -        if (!SYM_RESOLVE(KernBase, pdb, KiWaitNever) ||
+> >> -                !SYM_RESOLVE(KernBase, pdb, KiWaitAlways) ||
+> >> -                !SYM_RESOLVE(KernBase, pdb, KdpDataBlockEncoded))
+> >> {
+> >> -            return NULL;
+> >> -        }
+> >> +    if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
+> >> +            va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa), 0)) {
+> >> +        return NULL;
+> >> +    }
+> >>
+> >> -        if (va_space_rw(vs, KiWaitNever, &kwn, sizeof(kwn), 0) ||
+> >> -                va_space_rw(vs, KiWaitAlways, &kwa, sizeof(kwa),
+> >> 0)) {
+> >> -            return NULL;
+> >> -        }
+> >> +    if (memcmp(&kdbg_hdr.OwnerTag, OwnerTag, sizeof(OwnerTag))) {
+> >> +        decode =3D true;
+> >>
+> >>          printf("[KiWaitNever] =3D 0x%016"PRIx64"\n", kwn);
+> >>          printf("[KiWaitAlways] =3D 0x%016"PRIx64"\n", kwa); =20
+> >
+> >Hi!
+> >
+> >I suppose the problem is in your compiler, because kdbg_decode() is
+> >only used when KdpDataBlockEncoded is already initialized by
+> >SYM_RESOLVE().
+> > =20
+> Hi  Viktor,
+>=20
+>        I know it's actually initialized when  'decode =3D true;',
+> otherwise ' return kdbg;'  no need to initialize.=20
+>      But usually the compiler cannot understand it, because it seems
+> that the initialization is only in the if() statement.
 
- eca8f8889ff5 ("Update ppc-dis.c from binutils 2.17")
+As for me, my GCC 9.2.1 doesn't show any warning while building elf2dmp.
 
-Latest binutils has kept the same lines.
+> If we put the initialization outside the if() statement, it might
+> looks better without affecting the functionality ?
 
- https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=opcodes/ppc-opc.c#l25
+For now, your original patch affects the functionality. The utility
+tries to resolve symbols as little as possible during conversion,
+because we don't know exactly how Windows kernel works. This is the
+reason why KDBG header should be checked before resolving 3 symbols.
 
-extract_bdm
+>=20
+> Thanks.
+> >--
+> >Viktor Prutyanov =20
 
- 250       if (((insn & (1 << 21)) == 0) != ((insn & (1 << 15)) == 0))
 
-https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=opcodes/ppc-opc.c#l289
 
-extract_bdp
-
- 295       if (((insn & (1 << 21)) == 0) == ((insn & (1 << 15)) == 0))
-
-So if there is a bug, it has to be reported to binutils.
-
-Thanks,
-Laurent
+--=20
+Viktor Prutyanov
 
