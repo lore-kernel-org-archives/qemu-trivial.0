@@ -1,48 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jA2ZI-0002Si-TJ
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 21:18:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53412)
+	id 1jA9D9-0006Mh-QV
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Mar 2020 04:24:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47835)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jA2ZF-0002PC-EE
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 21:18:26 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1jA9D6-0006Lx-Mw
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 04:24:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jA2ZE-00070e-7U
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 21:18:25 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2075 helo=huawei.com)
+ (envelope-from <pbonzini@redhat.com>) id 1jA9D5-0005ek-Bd
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 04:24:00 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60566
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jA2ZB-0006mu-9n; Thu, 05 Mar 2020 21:18:21 -0500
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 30EB245F27C7070C3DC1;
- Fri,  6 Mar 2020 10:18:15 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0439.000;
- Fri, 6 Mar 2020 10:18:07 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: RE: [PATCH] contrib/elf2dmp: prevent uninitialized warning
-Thread-Topic: [PATCH] contrib/elf2dmp: prevent uninitialized warning
-Thread-Index: AQHV3W1WZ2Vkfkjjwke0Rzm+ZufchKg5/00AgAD71fA=
-Date: Fri, 6 Mar 2020 02:18:07 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B66F9DA@dggemm531-mbx.china.huawei.com>
-References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
- <20200305215902.24bbe6ce@phystech.edu>
-In-Reply-To: <20200305215902.24bbe6ce@phystech.edu>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1jA9D5-0005ct-7I
+ for qemu-trivial@nongnu.org; Fri, 06 Mar 2020 04:23:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583486638;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZtVK4BFDHb7p+oiNFUrphKF7XMZoZh2XSFGhvTVLTls=;
+ b=G6UzwGb4wnXsg3JR66YOuBCPY5/q+Cw39UpRGEHjRffJNjgWIf81De8yVCz0gzi6Qn9lOL
+ 3NUP9X76bJ+fIVsbegmOAUeS/QjTGpaZmcW5zzDyCjPEVNWoWyb4R27qsUqzRr5UXdJZDd
+ B4qoOBy3zl6Z5QOdXU94NWD7Bu3Wotw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-164-WS19CQION4yZQR32eUS_YQ-1; Fri, 06 Mar 2020 04:23:57 -0500
+X-MC-Unique: WS19CQION4yZQR32eUS_YQ-1
+Received: by mail-wr1-f69.google.com with SMTP id b12so751849wro.4
+ for <qemu-trivial@nongnu.org>; Fri, 06 Mar 2020 01:23:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=QBsVmMlrTGuubKxpYEy/Asmz1QzMkBk1urMD4D5nG00=;
+ b=eaOTFwnhBXne9JBZNqp36IyhecrSx+dUmKZcXYfZGglZoJTLT4FhfdVFF1iTb6pVdD
+ M25dWfccRBEkr0An3FCaSnM+tyY9jymc0qXM0BtwfS6tnQzWgzKJlzW5ndfvYXEeypSH
+ vdimep6lka9orH4MqTUPi97anW5eLxFAtTtsyfNXumJukwgambXWB+slGy5mQXY8Y/ki
+ FqojYGreuMvX1VWK+3U4+xJwozkscX63gJlP5HJ/biy18AkWf/DW3g2dZIW7uLATGtcT
+ umtcOoFJl95nF9cnEiavVVSlyEIZr1OkM9h6G5d3i7k9q+v1cFOXmaXCw9Uj7U/+RzQn
+ qpcg==
+X-Gm-Message-State: ANhLgQ2MsCAXwkWoTYYrk8HJu8Rn+z1LaNtYRU5Rpth6E4MG8ZG1OcYq
+ KxdN5LiijDqiAuByOtTZjq/IkJUtqO+OOYDyJu8/IQtipJRpbqzCCOtIBvH/NiP9H6idWhpRBJN
+ hs/BpSprQk3B15mt0MQ==
+X-Received: by 2002:adf:f84d:: with SMTP id d13mr3136968wrq.92.1583486635529; 
+ Fri, 06 Mar 2020 01:23:55 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtpFfwSkj6fMSCmjD72ZBzEe3exxjVpuLjiviqv9KguC8pDOIraaNAi1PGwP1f0erjco+hf8w==
+X-Received: by 2002:adf:f84d:: with SMTP id d13mr3136938wrq.92.1583486635244; 
+ Fri, 06 Mar 2020 01:23:55 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:b99a:4374:773d:f32e?
+ ([2001:b07:6468:f312:b99a:4374:773d:f32e])
+ by smtp.gmail.com with ESMTPSA id c16sm19382376wrm.24.2020.03.06.01.23.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Mar 2020 01:23:54 -0800 (PST)
+Subject: Re: [PATCH 0/2] Makefile: Re-indent 'help' target and list tools
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-trivial@nongnu.org
+References: <20200305004855.9665-1-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <c1685d5d-9e74-4674-7e38-d3a0c618face@redhat.com>
+Date: Fri, 6 Mar 2020 10:23:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200305004855.9665-1-philmd@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.189
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,71 +85,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Mar 2020 02:18:26 -0000
+X-List-Received-Date: Fri, 06 Mar 2020 09:24:01 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogVmlrdG9yIFBydXR5YW5vdiBbbWFp
-bHRvOnZpa3Rvci5wcnV0eWFub3ZAcGh5c3RlY2guZWR1XQ0KPlNlbnQ6IEZyaWRheSwgTWFyY2gg
-NiwgMjAyMCAyOjU5IEFNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2Vp
-LmNvbT4NCj5DYzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBwYm9uemluaUByZWRoYXQuY29tOyBa
-aGFuZ2hhaWxpYW5nDQo+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IHFlbXUtdHJp
-dmlhbEBub25nbnUub3JnDQo+U3ViamVjdDogUmU6IFtQQVRDSF0gY29udHJpYi9lbGYyZG1wOiBw
-cmV2ZW50IHVuaW5pdGlhbGl6ZWQgd2FybmluZw0KPg0KPk9uIEZyaSwgNyBGZWIgMjAyMCAxMjox
-NjowMSArMDgwMA0KPjxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4gd3JvdGU6DQo+DQo+PiBGcm9t
-OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+Pg0KPj4gRml4IGNvbXBpbGF0
-aW9uIHdhcm5pbmdzOg0KPj4gY29udHJpYi9lbGYyZG1wL21haW4uYzo2NjoxNzogd2FybmluZzog
-4oCYS2RwRGF0YUJsb2NrRW5jb2RlZOKAmSBtYXkgYmUNCj4+IHVzZWQgdW5pbml0aWFsaXplZCBp
-biB0aGlzIGZ1bmN0aW9uIFstV21heWJlLXVuaW5pdGlhbGl6ZWRdDQo+PiAgICAgICAgICBibG9j
-ayA9IF9fYnVpbHRpbl9ic3dhcDY0KGJsb2NrIF4ga2RiZSkgXiBrd2E7DQo+PiAgICAgICAgICAg
-ICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4NCj4+IGNvbnRyaWIvZWxmMmRt
-cC9tYWluLmM6Nzg6MjQ6IG5vdGU6IOKAmEtkcERhdGFCbG9ja0VuY29kZWTigJkgd2FzIGRlY2xh
-cmVkDQo+PiBoZXJlIHVpbnQ2NF90IGt3biwga3dhLCBLZHBEYXRhQmxvY2tFbmNvZGVkOw0KPj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fg0KPj4NCj4+IFJlcG9y
-dGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4+IFNpZ25lZC1v
-ZmYtYnk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+IC0tLQ0KPj4gIGNv
-bnRyaWIvZWxmMmRtcC9tYWluLmMgfCAyNSArKysrKysrKysrKystLS0tLS0tLS0tLS0tDQo+PiAg
-MSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQ0KPj4NCj4+
-IGRpZmYgLS1naXQgYS9jb250cmliL2VsZjJkbXAvbWFpbi5jIGIvY29udHJpYi9lbGYyZG1wL21h
-aW4uYyBpbmRleA0KPj4gOWEyZGJjMjkwMi4uMjAzYjllNmQwNCAxMDA2NDQNCj4+IC0tLSBhL2Nv
-bnRyaWIvZWxmMmRtcC9tYWluLmMNCj4+ICsrKyBiL2NvbnRyaWIvZWxmMmRtcC9tYWluLmMNCj4+
-IEBAIC03Niw2ICs3Niw3IEBAIHN0YXRpYyBLRERFQlVHR0VSX0RBVEE2NCAqZ2V0X2tkYmcodWlu
-dDY0X3QNCj4+IEtlcm5CYXNlLCBzdHJ1Y3QgcGRiX3JlYWRlciAqcGRiLCBEQkdLRF9ERUJVR19E
-QVRBX0hFQURFUjY0DQo+a2RiZ19oZHI7DQo+PiAgICAgIGJvb2wgZGVjb2RlID0gZmFsc2U7DQo+
-PiAgICAgIHVpbnQ2NF90IGt3biwga3dhLCBLZHBEYXRhQmxvY2tFbmNvZGVkOw0KPj4gKyAgICB1
-aW50NjRfdCBLaVdhaXROZXZlciwgS2lXYWl0QWx3YXlzOw0KPj4NCj4+ICAgICAgaWYgKHZhX3Nw
-YWNlX3J3KHZzLA0KPj4gICAgICAgICAgICAgICAgICBLZERlYnVnZ2VyRGF0YUJsb2NrICsgb2Zm
-c2V0b2YoS0RERUJVR0dFUl9EQVRBNjQsDQo+PiBIZWFkZXIpLCBAQCAtODQsMjEgKzg1LDE5IEBA
-IHN0YXRpYyBLRERFQlVHR0VSX0RBVEE2NA0KPj4gKmdldF9rZGJnKHVpbnQ2NF90IEtlcm5CYXNl
-LCBzdHJ1Y3QgcGRiX3JlYWRlciAqcGRiLCByZXR1cm4gTlVMTDsNCj4+ICAgICAgfQ0KPj4NCj4+
-IC0gICAgaWYgKG1lbWNtcCgma2RiZ19oZHIuT3duZXJUYWcsIE93bmVyVGFnLCBzaXplb2YoT3du
-ZXJUYWcpKSkgew0KPj4gLSAgICAgICAgdWludDY0X3QgS2lXYWl0TmV2ZXIsIEtpV2FpdEFsd2F5
-czsNCj4+IC0NCj4+IC0gICAgICAgIGRlY29kZSA9IHRydWU7DQo+PiArICAgIGlmICghU1lNX1JF
-U09MVkUoS2VybkJhc2UsIHBkYiwgS2lXYWl0TmV2ZXIpIHx8DQo+PiArICAgICAgICAgICAgIVNZ
-TV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtpV2FpdEFsd2F5cykgfHwNCj4+ICsgICAgICAgICAg
-ICAhU1lNX1JFU09MVkUoS2VybkJhc2UsIHBkYiwgS2RwRGF0YUJsb2NrRW5jb2RlZCkpIHsNCj4+
-ICsgICAgICAgIHJldHVybiBOVUxMOw0KPj4gKyAgICB9DQo+Pg0KPj4gLSAgICAgICAgaWYgKCFT
-WU1fUkVTT0xWRShLZXJuQmFzZSwgcGRiLCBLaVdhaXROZXZlcikgfHwNCj4+IC0gICAgICAgICAg
-ICAgICAgIVNZTV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtpV2FpdEFsd2F5cykgfHwNCj4+IC0g
-ICAgICAgICAgICAgICAgIVNZTV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtkcERhdGFCbG9ja0Vu
-Y29kZWQpKSB7DQo+PiAtICAgICAgICAgICAgcmV0dXJuIE5VTEw7DQo+PiAtICAgICAgICB9DQo+
-PiArICAgIGlmICh2YV9zcGFjZV9ydyh2cywgS2lXYWl0TmV2ZXIsICZrd24sIHNpemVvZihrd24p
-LCAwKSB8fA0KPj4gKyAgICAgICAgICAgIHZhX3NwYWNlX3J3KHZzLCBLaVdhaXRBbHdheXMsICZr
-d2EsIHNpemVvZihrd2EpLCAwKSkgew0KPj4gKyAgICAgICAgcmV0dXJuIE5VTEw7DQo+PiArICAg
-IH0NCj4+DQo+PiAtICAgICAgICBpZiAodmFfc3BhY2VfcncodnMsIEtpV2FpdE5ldmVyLCAma3du
-LCBzaXplb2Yoa3duKSwgMCkgfHwNCj4+IC0gICAgICAgICAgICAgICAgdmFfc3BhY2VfcncodnMs
-IEtpV2FpdEFsd2F5cywgJmt3YSwgc2l6ZW9mKGt3YSksIDApKQ0KPj4gew0KPj4gLSAgICAgICAg
-ICAgIHJldHVybiBOVUxMOw0KPj4gLSAgICAgICAgfQ0KPj4gKyAgICBpZiAobWVtY21wKCZrZGJn
-X2hkci5Pd25lclRhZywgT3duZXJUYWcsIHNpemVvZihPd25lclRhZykpKSB7DQo+PiArICAgICAg
-ICBkZWNvZGUgPSB0cnVlOw0KPj4NCj4+ICAgICAgICAgIHByaW50ZigiW0tpV2FpdE5ldmVyXSA9
-IDB4JTAxNiJQUkl4NjQiXG4iLCBrd24pOw0KPj4gICAgICAgICAgcHJpbnRmKCJbS2lXYWl0QWx3
-YXlzXSA9IDB4JTAxNiJQUkl4NjQiXG4iLCBrd2EpOw0KPg0KPkhpIQ0KPg0KPkkgc3VwcG9zZSB0
-aGUgcHJvYmxlbSBpcyBpbiB5b3VyIGNvbXBpbGVyLCBiZWNhdXNlIGtkYmdfZGVjb2RlKCkgaXMg
-b25seQ0KPnVzZWQgd2hlbiBLZHBEYXRhQmxvY2tFbmNvZGVkIGlzIGFscmVhZHkgaW5pdGlhbGl6
-ZWQgYnkgU1lNX1JFU09MVkUoKS4NCj4NCkhpICBWaWt0b3IsDQoNCiAgICAgICBJIGtub3cgaXQn
-cyBhY3R1YWxseSBpbml0aWFsaXplZCB3aGVuICAnZGVjb2RlID0gdHJ1ZTsnLCAgb3RoZXJ3aXNl
-ICcgcmV0dXJuIGtkYmc7JyAgbm8gbmVlZCB0byBpbml0aWFsaXplLg0KICAgICAgDQogICAgIEJ1
-dCB1c3VhbGx5IHRoZSBjb21waWxlciBjYW5ub3QgdW5kZXJzdGFuZCBpdCwgYmVjYXVzZSBpdCBz
-ZWVtcyB0aGF0IHRoZSBpbml0aWFsaXphdGlvbiBpcyBvbmx5IGluIHRoZSBpZigpIHN0YXRlbWVu
-dC4NCklmIHdlIHB1dCB0aGUgaW5pdGlhbGl6YXRpb24gb3V0c2lkZSB0aGUgaWYoKSBzdGF0ZW1l
-bnQsIGl0IG1pZ2h0IGxvb2tzIGJldHRlciB3aXRob3V0IGFmZmVjdGluZyB0aGUgZnVuY3Rpb25h
-bGl0eSA/DQoNClRoYW5rcy4NCj4tLQ0KPlZpa3RvciBQcnV0eWFub3YNCg==
+On 05/03/20 01:48, Philippe Mathieu-Daud=C3=A9 wrote:
+> This series improves the 'make help' output:
+> - re-indent current output
+> - list tools targets:
+>=20
+>     $ make help
+>     [...]
+>=20
+>     Architecture specific targets:
+>       x86_64-softmmu/all             - Build for x86_64-softmmu
+>=20
+>     Tools targets:
+>       qemu-ga                        - Build qemu-ga tool
+>       qemu-keymap                    - Build qemu-keymap tool
+>       elf2dmp                        - Build elf2dmp tool
+>       ivshmem-client                 - Build ivshmem-client tool
+>       ivshmem-server                 - Build ivshmem-server tool
+>       qemu-nbd                       - Build qemu-nbd tool
+>       qemu-img                       - Build qemu-img tool
+>       qemu-io                        - Build qemu-io tool
+>       qemu-edid                      - Build qemu-edid tool
+>       fsdev/virtfs-proxy-helper      - Build virtfs-proxy-helper tool
+>       scsi/qemu-pr-helper            - Build qemu-pr-helper tool
+>=20
+>     Cleaning targets:
+>       clean                          - Remove most generated files but ke=
+ep t=3D
+> he config
+>       distclean                      - Remove all generated files
+>       dist                           - Build a distributable tarball
+>=20
+> Philippe Mathieu-Daud=3DC3=3DA9 (2):
+>   Makefile: Align 'help' target output
+>   Makefile: Let the 'help' target list the tools targets
+>=20
+>  Makefile | 49 ++++++++++++++++++++++++++++---------------------
+>  1 file changed, 28 insertions(+), 21 deletions(-)
+>=20
+> --=3D20
+> 2.21.1
+>=20
+
+Queued, thanks.
+
+Paolo
+
 
