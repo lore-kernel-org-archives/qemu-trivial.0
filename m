@@ -1,56 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j9y9x-0005mW-V5
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 16:36:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53460)
+	id 1jA2ZI-0002Si-TJ
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2020 21:18:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mansourweb@gmail.com>) id 1j9xxN-0001Uu-GN
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:02 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jA2ZF-0002PC-EE
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 21:18:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mansourweb@gmail.com>) id 1j9xxM-0008SY-6e
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:01 -0500
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:44568)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <mansourweb@gmail.com>)
- id 1j9xxL-0008Rj-Uc
- for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 16:23:00 -0500
-Received: by mail-lf1-x12d.google.com with SMTP id i10so108390lfg.11
- for <qemu-trivial@nongnu.org>; Thu, 05 Mar 2020 13:22:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=UlDFHDD6C6K4MqyN6QSxw8ae9bFx8S/bZMSBUKfWd2M=;
- b=To5vsaMzbo6D/9YuwM3rjmQF8oynERkmos2Fs7fTQwxt6HVG5eIuRmxqyqKYZI6vvz
- fvYSk7GwAg80Ryu6mM9W21oheIa/mBfMq5qPzEtjbblfxOD6zYBX1y0/1wjFEn8/WN5/
- PeKadK3WPuN8OYGF8qwRHa7TDbPIP273B2kQ3Jd9ta8GjMURfYWcPgv5MmhU2Dwvw/ZQ
- XImUQHB3+Xmx/k3qURnOILwmMVwW1w4+PPxdGvI0yOGdpcw+qAQFmF44JZxgfrUyjsrO
- Qm5HhoTZNhf7DBnInQJCRAXrr3xvsAx68uzwMtxizS9qhMEujP2wsZ2LEFyM7FJPpgMX
- V0Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=UlDFHDD6C6K4MqyN6QSxw8ae9bFx8S/bZMSBUKfWd2M=;
- b=q2eab/OIy0S1TPJZD7Ch7FRx0DeugnAWDZX1rig25WnGZn7rTeBOAXGsauOcRYjzwW
- vCJ7IZv8vd+0E7lOBNN5POdERLvdBFNJoPYexEmT4oSsX6glGiYJ6MStzWoVq1ieJKHq
- h2wqmcVy/JCMaeprCqdzKR4Yfwhc7LT63OyieLKGmNXTjADm7apJNvR0BNajgdZwYgWq
- NJENkrJU1ZlRC4qvQaQlaBx0geSkXEXrSWSA9+QlgP9dAmlOVQSnmuMnDGm1A+OWQwbl
- 4cgS431zI90YufmbnW5Jn7/be/K6cjceqi7Id8f11mrcfnDHvYjBFl1IGL3aWSU5xvZJ
- MuDg==
-X-Gm-Message-State: ANhLgQ0VHBxv0x11tlGPbW6Eq35GpMHe+JulYstVmTGugACzNQWpzDym
- ksMIxyJGXFX5C+rms0/qokBz6S6q80EZsHeUFbJYaEutA4M=
-X-Google-Smtp-Source: ADFU+vuxudCcryilO8UjcbRMBKc8dlfx1ddVIN00J6OiAvw5J7yvF4mGiMq+tpwhuJngBG1wOWzdhkJ79dAoMPFwtWs=
-X-Received: by 2002:a05:6512:203c:: with SMTP id
- s28mr308966lfs.117.1583443377299; 
- Thu, 05 Mar 2020 13:22:57 -0800 (PST)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jA2ZE-00070e-7U
+ for qemu-trivial@nongnu.org; Thu, 05 Mar 2020 21:18:25 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2075 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jA2ZB-0006mu-9n; Thu, 05 Mar 2020 21:18:21 -0500
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 30EB245F27C7070C3DC1;
+ Fri,  6 Mar 2020 10:18:15 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0439.000;
+ Fri, 6 Mar 2020 10:18:07 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH] contrib/elf2dmp: prevent uninitialized warning
+Thread-Topic: [PATCH] contrib/elf2dmp: prevent uninitialized warning
+Thread-Index: AQHV3W1WZ2Vkfkjjwke0Rzm+ZufchKg5/00AgAD71fA=
+Date: Fri, 6 Mar 2020 02:18:07 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B66F9DA@dggemm531-mbx.china.huawei.com>
+References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
+ <20200305215902.24bbe6ce@phystech.edu>
+In-Reply-To: <20200305215902.24bbe6ce@phystech.edu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-From: Mansour Ahmadi <mansourweb@gmail.com>
-Date: Thu, 5 Mar 2020 16:22:46 -0500
-Message-ID: <CAGT9xrCF740RKCBrOFVN2LJUKMkLj25oO4pVD1LOfM=ZVKgLeQ@mail.gmail.com>
-Subject: Inconsistency - potential bug
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000006a65405a02224c6"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::12d
-X-Mailman-Approved-At: Thu, 05 Mar 2020 16:36:00 -0500
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.189
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,160 +54,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2020 21:23:02 -0000
+X-List-Received-Date: Fri, 06 Mar 2020 02:18:26 -0000
 
---00000000000006a65405a02224c6
-Content-Type: text/plain; charset="UTF-8"
-
-Hi
-
-It seems there is an inconsistency here:
-
-https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L996
-if (((insn & (1 << 21)) == 0) != ((insn & (1 << 15)) == 0))
-*invalid = 1;
-https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L1041
-if (((insn & (1 << 21)) == 0) == ((insn & (1 << 15)) == 0))
-*invalid = 1;
-
-Does "==" need to be changed to "!="?
-
-Mansour
-
---00000000000006a65405a02224c6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:garamond=
-,serif;font-size:large">Hi</div><div class=3D"gmail_default" style=3D"font-=
-family:garamond,serif;font-size:large"><br></div><div class=3D"gmail_defaul=
-t" style=3D"font-family:garamond,serif;font-size:large">It seems there is a=
-n inconsistency here:</div><div class=3D"gmail_default" style=3D"font-famil=
-y:garamond,serif;font-size:large"><br></div><div class=3D"gmail_default" st=
-yle=3D"font-family:garamond,serif;font-size:large"><a href=3D"https://githu=
-b.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#L=
-996">https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54=
-268b/disas/ppc.c#L996</a><br></div><div class=3D"gmail_default" style=3D"fo=
-nt-family:garamond,serif;font-size:large"><span class=3D"gmail-pl-k" style=
-=3D"box-sizing:border-box;color:rgb(215,58,73);font-family:SFMono-Regular,C=
-onsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-sp=
-ace:pre">if</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Reg=
-ular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;wh=
-ite-space:pre;background-color:rgb(255,251,221)"> (((insn &amp; (</span><sp=
-an class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197)=
-;font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mono=
-space;font-size:12px;white-space:pre">1</span><span style=3D"color:rgb(36,4=
-1,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo=
-,monospace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)=
-"> &lt;&lt; </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-b=
-ox;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation=
- Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">21</span><span =
-style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Libe=
-ration Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;background=
--color:rgb(255,251,221)">)) =3D=3D </span><span class=3D"gmail-pl-c1" style=
-=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Co=
-nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
-ce:pre">0</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regul=
-ar,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;whit=
-e-space:pre;background-color:rgb(255,251,221)">) !=3D ((insn &amp; (</span>=
-<span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,1=
-97);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,m=
-onospace;font-size:12px;white-space:pre">1</span><span style=3D"color:rgb(3=
-6,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Me=
-nlo,monospace;font-size:12px;white-space:pre;background-color:rgb(255,251,2=
-21)"> &lt;&lt; </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:borde=
-r-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberat=
-ion Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">15</span><sp=
-an style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;L=
-iberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;backgro=
-und-color:rgb(255,251,221)">)) =3D=3D </span><span class=3D"gmail-pl-c1" st=
-yle=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular=
-,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-=
-space:pre">0</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Re=
-gular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;w=
-hite-space:pre;background-color:rgb(255,251,221)">))</span><br></div><div c=
-lass=3D"gmail_default" style=3D"font-family:garamond,serif;font-size:large"=
-><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&qu=
-ot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;bac=
-kground-color:rgb(255,251,221)">    </span><span style=3D"color:rgb(36,41,4=
-6);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mo=
-nospace;font-size:12px;white-space:pre">*invalid =3D </span><span class=3D"=
-gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-family=
-:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-s=
-ize:12px;white-space:pre">1</span><span style=3D"color:rgb(36,41,46);font-f=
-amily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;f=
-ont-size:12px;white-space:pre">;</span></div><div class=3D"gmail_default" s=
-tyle=3D"font-family:garamond,serif;font-size:large"><a href=3D"https://gith=
-ub.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e54268b/disas/ppc.c#=
-L1041">https://github.com/qemu/qemu/blob/55afdac3b29e672aad51e953412364127e=
-54268b/disas/ppc.c#L1041</a><span style=3D"color:rgb(36,41,46);font-family:=
-SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-si=
-ze:12px;white-space:pre;background-color:rgb(255,251,221)"><br></span></div=
-><div class=3D"gmail_default" style=3D"font-family:garamond,serif;font-size=
-:large"><span class=3D"gmail-pl-k" style=3D"box-sizing:border-box;color:rgb=
-(215,58,73);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;=
-,Menlo,monospace;font-size:12px;white-space:pre">if</span><span style=3D"co=
-lor:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono=
-&quot;,Menlo,monospace;font-size:12px;white-space:pre;background-color:rgb(=
-255,251,221)"> (((insn &amp; (</span><span class=3D"gmail-pl-c1" style=3D"b=
-ox-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consola=
-s,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pr=
-e">1</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Co=
-nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
-ce:pre;background-color:rgb(255,251,221)"> &lt;&lt; </span><span class=3D"g=
-mail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:=
-SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-si=
-ze:12px;white-space:pre">21</span><span style=3D"color:rgb(36,41,46);font-f=
-amily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;f=
-ont-size:12px;white-space:pre;background-color:rgb(255,251,221)">)) =3D=3D =
-</span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb=
-(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,=
-Menlo,monospace;font-size:12px;white-space:pre">0</span><span style=3D"colo=
-r:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&q=
-uot;,Menlo,monospace;font-size:12px;white-space:pre;background-color:rgb(25=
-5,251,221)">) =3D=3D ((insn &amp; (</span><span class=3D"gmail-pl-c1" style=
-=3D"box-sizing:border-box;color:rgb(0,92,197);font-family:SFMono-Regular,Co=
-nsolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-spa=
-ce:pre">1</span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regul=
-ar,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;whit=
-e-space:pre;background-color:rgb(255,251,221)"> &lt;&lt; </span><span class=
-=3D"gmail-pl-c1" style=3D"box-sizing:border-box;color:rgb(0,92,197);font-fa=
-mily:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monospace;fo=
-nt-size:12px;white-space:pre">15</span><span style=3D"color:rgb(36,41,46);f=
-ont-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,monosp=
-ace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)">)) =
-=3D=3D </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:border-box;co=
-lor:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono=
-&quot;,Menlo,monospace;font-size:12px;white-space:pre">0</span><span style=
-=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quot;Liberatio=
-n Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre;background-colo=
-r:rgb(255,251,221)">))</span></div><div class=3D"gmail_default" style=3D"fo=
-nt-family:garamond,serif;font-size:large"><span style=3D"color:rgb(36,41,46=
-);font-family:SFMono-Regular,Consolas,&quot;Liberation Mono&quot;,Menlo,mon=
-ospace;font-size:12px;white-space:pre;background-color:rgb(255,251,221)">  =
-  </span><span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Cons=
-olas,&quot;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space=
-:pre">*invalid =3D </span><span class=3D"gmail-pl-c1" style=3D"box-sizing:b=
-order-box;color:rgb(0,92,197);font-family:SFMono-Regular,Consolas,&quot;Lib=
-eration Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">1</span>=
-<span style=3D"color:rgb(36,41,46);font-family:SFMono-Regular,Consolas,&quo=
-t;Liberation Mono&quot;,Menlo,monospace;font-size:12px;white-space:pre">;</=
-span><br></div><div class=3D"gmail_default" style=3D"font-family:garamond,s=
-erif;font-size:large"><br></div><div class=3D"gmail_default" style=3D"font-=
-family:garamond,serif;font-size:large">Does &quot;=3D=3D&quot; need to be c=
-hanged to &quot;!=3D&quot;?<span style=3D"font-family:Arial,Helvetica,sans-=
-serif;font-size:small"><br></span></div><div class=3D"gmail_default" style=
-=3D"font-family:garamond,serif;font-size:large"><br></div><div class=3D"gma=
-il_default" style=3D"font-family:garamond,serif;font-size:large">Mansour</d=
-iv><div class=3D"gmail_default" style=3D"font-family:garamond,serif;font-si=
-ze:large"><span style=3D"font-family:Arial,Helvetica,sans-serif;font-size:s=
-mall"><br></span></div><div><div dir=3D"ltr" class=3D"gmail_signature" data=
--smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div>=
-<div dir=3D"ltr"><div dir=3D"ltr"><span style=3D"border-collapse:collapse;w=
-hite-space:pre-wrap"><span style=3D"border-collapse:separate;white-space:no=
-rmal"><font color=3D"#000000" size=3D"2"><div style=3D"font-family:Calibri"=
-><div style=3D"font-family:arial,sans-serif"></div></div></font></span></sp=
-an></div></div></div></div></div></div></div></div></div>
-
---00000000000006a65405a02224c6--
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogVmlrdG9yIFBydXR5YW5vdiBbbWFp
+bHRvOnZpa3Rvci5wcnV0eWFub3ZAcGh5c3RlY2guZWR1XQ0KPlNlbnQ6IEZyaWRheSwgTWFyY2gg
+NiwgMjAyMCAyOjU5IEFNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2Vp
+LmNvbT4NCj5DYzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBwYm9uemluaUByZWRoYXQuY29tOyBa
+aGFuZ2hhaWxpYW5nDQo+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IHFlbXUtdHJp
+dmlhbEBub25nbnUub3JnDQo+U3ViamVjdDogUmU6IFtQQVRDSF0gY29udHJpYi9lbGYyZG1wOiBw
+cmV2ZW50IHVuaW5pdGlhbGl6ZWQgd2FybmluZw0KPg0KPk9uIEZyaSwgNyBGZWIgMjAyMCAxMjox
+NjowMSArMDgwMA0KPjxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4gd3JvdGU6DQo+DQo+PiBGcm9t
+OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+Pg0KPj4gRml4IGNvbXBpbGF0
+aW9uIHdhcm5pbmdzOg0KPj4gY29udHJpYi9lbGYyZG1wL21haW4uYzo2NjoxNzogd2FybmluZzog
+4oCYS2RwRGF0YUJsb2NrRW5jb2RlZOKAmSBtYXkgYmUNCj4+IHVzZWQgdW5pbml0aWFsaXplZCBp
+biB0aGlzIGZ1bmN0aW9uIFstV21heWJlLXVuaW5pdGlhbGl6ZWRdDQo+PiAgICAgICAgICBibG9j
+ayA9IF9fYnVpbHRpbl9ic3dhcDY0KGJsb2NrIF4ga2RiZSkgXiBrd2E7DQo+PiAgICAgICAgICAg
+ICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4NCj4+IGNvbnRyaWIvZWxmMmRt
+cC9tYWluLmM6Nzg6MjQ6IG5vdGU6IOKAmEtkcERhdGFCbG9ja0VuY29kZWTigJkgd2FzIGRlY2xh
+cmVkDQo+PiBoZXJlIHVpbnQ2NF90IGt3biwga3dhLCBLZHBEYXRhQmxvY2tFbmNvZGVkOw0KPj4g
+ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fg0KPj4NCj4+IFJlcG9y
+dGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4+IFNpZ25lZC1v
+ZmYtYnk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+IC0tLQ0KPj4gIGNv
+bnRyaWIvZWxmMmRtcC9tYWluLmMgfCAyNSArKysrKysrKysrKystLS0tLS0tLS0tLS0tDQo+PiAg
+MSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQ0KPj4NCj4+
+IGRpZmYgLS1naXQgYS9jb250cmliL2VsZjJkbXAvbWFpbi5jIGIvY29udHJpYi9lbGYyZG1wL21h
+aW4uYyBpbmRleA0KPj4gOWEyZGJjMjkwMi4uMjAzYjllNmQwNCAxMDA2NDQNCj4+IC0tLSBhL2Nv
+bnRyaWIvZWxmMmRtcC9tYWluLmMNCj4+ICsrKyBiL2NvbnRyaWIvZWxmMmRtcC9tYWluLmMNCj4+
+IEBAIC03Niw2ICs3Niw3IEBAIHN0YXRpYyBLRERFQlVHR0VSX0RBVEE2NCAqZ2V0X2tkYmcodWlu
+dDY0X3QNCj4+IEtlcm5CYXNlLCBzdHJ1Y3QgcGRiX3JlYWRlciAqcGRiLCBEQkdLRF9ERUJVR19E
+QVRBX0hFQURFUjY0DQo+a2RiZ19oZHI7DQo+PiAgICAgIGJvb2wgZGVjb2RlID0gZmFsc2U7DQo+
+PiAgICAgIHVpbnQ2NF90IGt3biwga3dhLCBLZHBEYXRhQmxvY2tFbmNvZGVkOw0KPj4gKyAgICB1
+aW50NjRfdCBLaVdhaXROZXZlciwgS2lXYWl0QWx3YXlzOw0KPj4NCj4+ICAgICAgaWYgKHZhX3Nw
+YWNlX3J3KHZzLA0KPj4gICAgICAgICAgICAgICAgICBLZERlYnVnZ2VyRGF0YUJsb2NrICsgb2Zm
+c2V0b2YoS0RERUJVR0dFUl9EQVRBNjQsDQo+PiBIZWFkZXIpLCBAQCAtODQsMjEgKzg1LDE5IEBA
+IHN0YXRpYyBLRERFQlVHR0VSX0RBVEE2NA0KPj4gKmdldF9rZGJnKHVpbnQ2NF90IEtlcm5CYXNl
+LCBzdHJ1Y3QgcGRiX3JlYWRlciAqcGRiLCByZXR1cm4gTlVMTDsNCj4+ICAgICAgfQ0KPj4NCj4+
+IC0gICAgaWYgKG1lbWNtcCgma2RiZ19oZHIuT3duZXJUYWcsIE93bmVyVGFnLCBzaXplb2YoT3du
+ZXJUYWcpKSkgew0KPj4gLSAgICAgICAgdWludDY0X3QgS2lXYWl0TmV2ZXIsIEtpV2FpdEFsd2F5
+czsNCj4+IC0NCj4+IC0gICAgICAgIGRlY29kZSA9IHRydWU7DQo+PiArICAgIGlmICghU1lNX1JF
+U09MVkUoS2VybkJhc2UsIHBkYiwgS2lXYWl0TmV2ZXIpIHx8DQo+PiArICAgICAgICAgICAgIVNZ
+TV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtpV2FpdEFsd2F5cykgfHwNCj4+ICsgICAgICAgICAg
+ICAhU1lNX1JFU09MVkUoS2VybkJhc2UsIHBkYiwgS2RwRGF0YUJsb2NrRW5jb2RlZCkpIHsNCj4+
+ICsgICAgICAgIHJldHVybiBOVUxMOw0KPj4gKyAgICB9DQo+Pg0KPj4gLSAgICAgICAgaWYgKCFT
+WU1fUkVTT0xWRShLZXJuQmFzZSwgcGRiLCBLaVdhaXROZXZlcikgfHwNCj4+IC0gICAgICAgICAg
+ICAgICAgIVNZTV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtpV2FpdEFsd2F5cykgfHwNCj4+IC0g
+ICAgICAgICAgICAgICAgIVNZTV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtkcERhdGFCbG9ja0Vu
+Y29kZWQpKSB7DQo+PiAtICAgICAgICAgICAgcmV0dXJuIE5VTEw7DQo+PiAtICAgICAgICB9DQo+
+PiArICAgIGlmICh2YV9zcGFjZV9ydyh2cywgS2lXYWl0TmV2ZXIsICZrd24sIHNpemVvZihrd24p
+LCAwKSB8fA0KPj4gKyAgICAgICAgICAgIHZhX3NwYWNlX3J3KHZzLCBLaVdhaXRBbHdheXMsICZr
+d2EsIHNpemVvZihrd2EpLCAwKSkgew0KPj4gKyAgICAgICAgcmV0dXJuIE5VTEw7DQo+PiArICAg
+IH0NCj4+DQo+PiAtICAgICAgICBpZiAodmFfc3BhY2VfcncodnMsIEtpV2FpdE5ldmVyLCAma3du
+LCBzaXplb2Yoa3duKSwgMCkgfHwNCj4+IC0gICAgICAgICAgICAgICAgdmFfc3BhY2VfcncodnMs
+IEtpV2FpdEFsd2F5cywgJmt3YSwgc2l6ZW9mKGt3YSksIDApKQ0KPj4gew0KPj4gLSAgICAgICAg
+ICAgIHJldHVybiBOVUxMOw0KPj4gLSAgICAgICAgfQ0KPj4gKyAgICBpZiAobWVtY21wKCZrZGJn
+X2hkci5Pd25lclRhZywgT3duZXJUYWcsIHNpemVvZihPd25lclRhZykpKSB7DQo+PiArICAgICAg
+ICBkZWNvZGUgPSB0cnVlOw0KPj4NCj4+ICAgICAgICAgIHByaW50ZigiW0tpV2FpdE5ldmVyXSA9
+IDB4JTAxNiJQUkl4NjQiXG4iLCBrd24pOw0KPj4gICAgICAgICAgcHJpbnRmKCJbS2lXYWl0QWx3
+YXlzXSA9IDB4JTAxNiJQUkl4NjQiXG4iLCBrd2EpOw0KPg0KPkhpIQ0KPg0KPkkgc3VwcG9zZSB0
+aGUgcHJvYmxlbSBpcyBpbiB5b3VyIGNvbXBpbGVyLCBiZWNhdXNlIGtkYmdfZGVjb2RlKCkgaXMg
+b25seQ0KPnVzZWQgd2hlbiBLZHBEYXRhQmxvY2tFbmNvZGVkIGlzIGFscmVhZHkgaW5pdGlhbGl6
+ZWQgYnkgU1lNX1JFU09MVkUoKS4NCj4NCkhpICBWaWt0b3IsDQoNCiAgICAgICBJIGtub3cgaXQn
+cyBhY3R1YWxseSBpbml0aWFsaXplZCB3aGVuICAnZGVjb2RlID0gdHJ1ZTsnLCAgb3RoZXJ3aXNl
+ICcgcmV0dXJuIGtkYmc7JyAgbm8gbmVlZCB0byBpbml0aWFsaXplLg0KICAgICAgDQogICAgIEJ1
+dCB1c3VhbGx5IHRoZSBjb21waWxlciBjYW5ub3QgdW5kZXJzdGFuZCBpdCwgYmVjYXVzZSBpdCBz
+ZWVtcyB0aGF0IHRoZSBpbml0aWFsaXphdGlvbiBpcyBvbmx5IGluIHRoZSBpZigpIHN0YXRlbWVu
+dC4NCklmIHdlIHB1dCB0aGUgaW5pdGlhbGl6YXRpb24gb3V0c2lkZSB0aGUgaWYoKSBzdGF0ZW1l
+bnQsIGl0IG1pZ2h0IGxvb2tzIGJldHRlciB3aXRob3V0IGFmZmVjdGluZyB0aGUgZnVuY3Rpb25h
+bGl0eSA/DQoNClRoYW5rcy4NCj4tLQ0KPlZpa3RvciBQcnV0eWFub3YNCg==
 
