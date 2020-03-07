@@ -1,50 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jATSj-0007h3-O7
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Mar 2020 02:01:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53683)
+	id 1jAWs4-00027l-FN
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Mar 2020 05:39:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56663)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jATSg-0007fO-0M
- for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 02:01:28 -0500
+ (envelope-from <marcandre.lureau@gmail.com>) id 1jAWs1-00026S-RT
+ for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 05:39:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jATSe-00073F-Jj
- for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 02:01:25 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2455 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jATSa-0006Mc-Pa; Sat, 07 Mar 2020 02:01:21 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id BD9673555D99461F8F11;
- Sat,  7 Mar 2020 15:01:09 +0800 (CST)
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
- DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0439.000;
- Sat, 7 Mar 2020 15:00:59 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: RE: [PATCH] contrib/elf2dmp: prevent uninitialized warning
-Thread-Topic: [PATCH] contrib/elf2dmp: prevent uninitialized warning
-Thread-Index: AQHV3W1WZ2Vkfkjjwke0Rzm+ZufchKg5/00AgAD71fCAAB4FgIABxzBA
-Date: Sat, 7 Mar 2020 07:00:58 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B679333@dggemm511-mbx.china.huawei.com>
-References: <20200207041601.89668-1-kuhn.chenqun@huawei.com>
- <20200305215902.24bbe6ce@phystech.edu>
- <7412CDE03601674DA8197E2EBD8937E83B66F9DA@dggemm531-mbx.china.huawei.com>
- <20200306144749.64f08e84@phystech.edu>
-In-Reply-To: <20200306144749.64f08e84@phystech.edu>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (envelope-from <marcandre.lureau@gmail.com>) id 1jAWs0-00037N-SJ
+ for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 05:39:49 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43229)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1jAWry-0002rD-Ja; Sat, 07 Mar 2020 05:39:46 -0500
+Received: by mail-wr1-x441.google.com with SMTP id v9so5235607wrf.10;
+ Sat, 07 Mar 2020 02:39:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=TmYE89S1PG0f8Ul1HiItJ+u0Ybcnre9qw8rMFV2zRK0=;
+ b=RMXZZa7Ou4Oq1JG3kj4HrjkrjMGqHwIj10uZrHuUJVqr7JA31MhxAh0qZARU9yxIO/
+ qx3lDdQOSCTBcxUUiQCvb5QknNe8RxGVA0r0pXj+4Htjb+rYRJk3ZKml03ERu5Eb2Jpl
+ HnZBWzNnN0an0YgYDP4COk24owxGJhy5AS6+kyc7aqRJA/D9k8GWc3ArtgbHh1imX6iQ
+ jr43bMf9c+U5nuvqilyyQ9BtpiWT+vMaxIknc9J7hUnpegGKqhKIzY7U2NK8uLcCrvbk
+ IDWjs5U8rCKQ6LY+ptDBybkyvdH1Tc8ef3/Q/y1g7YD86rSfEi4jEelc0Hwydkj2PjoS
+ NX3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=TmYE89S1PG0f8Ul1HiItJ+u0Ybcnre9qw8rMFV2zRK0=;
+ b=h8vOZqL2cGSNVgn4aNgkum2EVOu9u1n5VzNgJVgxLdwqOFQUqMxIzubcbE+TQykbUk
+ niA3kLxJXHcpDxZq/uwC38p99ve5BV9JY5AAPph8w3cuokMmZeo8AphcJbgHzJEusGJk
+ WJdMbWWFNfDExuWbbJPktCduZsJ96pJOm6UhA6q+EgSnjHrk00A1W1zU4G7mMUqZQ2Bk
+ 021Fzau7IQ0sj4XPCBO5iPBLaXV1VIG7g8Xy79GUeIp9lkCN9m/FB/ntywXGNZt1P5j9
+ tnHzRlzCdK2gODMP3Wfve9mCyYZAS7saAuEUODVuccFiBYY8IlkPscKaRTc3gck8obGB
+ CtnA==
+X-Gm-Message-State: ANhLgQ1JlTSS9A0UcTL4SZhYRNnJr9AfLBVSvzet3jMhFtOmEOmGsy4k
+ 0svErnYV3Yc06Mz2zYbnjzQMD//hpScq+aaO/Gg=
+X-Google-Smtp-Source: ADFU+vvgQF4PKbf0oG/+TWv1ZDUD0CkOoc80OnKZ9Zfe9PpMvSiDE608hIeq1R3WdInPtGsT4EoE7RHwLEf/u/3xEfI=
+X-Received: by 2002:adf:9e8b:: with SMTP id a11mr8929283wrf.32.1583577585084; 
+ Sat, 07 Mar 2020 02:39:45 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.187
+References: <20200307030756.5913-1-pannengyuan@huawei.com>
+In-Reply-To: <20200307030756.5913-1-pannengyuan@huawei.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Sat, 7 Mar 2020 11:39:32 +0100
+Message-ID: <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
+Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
+To: Pan Nengyuan <pannengyuan@huawei.com>
+Cc: QEMU <qemu-devel@nongnu.org>, "Daniel P. Berrange" <berrange@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>,
+ qemu trival <qemu-trivial@nongnu.org>, 
+ Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,93 +69,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Mar 2020 07:01:28 -0000
+X-List-Received-Date: Sat, 07 Mar 2020 10:39:51 -0000
 
-DQo+LS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj5Gcm9tOiBWaWt0b3IgUHJ1dHlhbm92IFtt
-YWlsdG86dmlrdG9yLnBydXR5YW5vdkBwaHlzdGVjaC5lZHVdDQo+U2VudDogRnJpZGF5LCBNYXJj
-aCA2LCAyMDIwIDc6NDggUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
-ZWkuY29tPg0KPkNjOiBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsgcGJvbnppbmlAcmVkaGF0LmNv
-bTsgcWVtdS0NCj5kZXZlbEBub25nbnUub3JnOyBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hh
-aWxpYW5nQGh1YXdlaS5jb20+DQo+U3ViamVjdDogUmU6IFtQQVRDSF0gY29udHJpYi9lbGYyZG1w
-OiBwcmV2ZW50IHVuaW5pdGlhbGl6ZWQgd2FybmluZw0KPg0KPk9uIEZyaSwgNiBNYXIgMjAyMCAw
-MjoxODowNyArMDAwMA0KPiJDaGVucXVuIChrdWhuKSIgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29t
-PiB3cm90ZToNCj4NCj4+ID4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPj4gPkZyb206IFZp
-a3RvciBQcnV0eWFub3YgW21haWx0bzp2aWt0b3IucHJ1dHlhbm92QHBoeXN0ZWNoLmVkdV0NCj4+
-ID5TZW50OiBGcmlkYXksIE1hcmNoIDYsIDIwMjAgMjo1OSBBTQ0KPj4gPlRvOiBDaGVucXVuIChr
-dWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiA+Q2M6IHFlbXUtZGV2ZWxAbm9uZ251
-Lm9yZzsgcGJvbnppbmlAcmVkaGF0LmNvbTsgWmhhbmdoYWlsaWFuZw0KPj4gPjx6aGFuZy56aGFu
-Z2hhaWxpYW5nQGh1YXdlaS5jb20+OyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0KPj4gPlN1Ympl
-Y3Q6IFJlOiBbUEFUQ0hdIGNvbnRyaWIvZWxmMmRtcDogcHJldmVudCB1bmluaXRpYWxpemVkIHdh
-cm5pbmcNCj4+ID4NCj4+ID5PbiBGcmksIDcgRmViIDIwMjAgMTI6MTY6MDEgKzA4MDANCj4+ID48
-a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+IHdyb3RlOg0KPj4gPg0KPj4gPj4gRnJvbTogQ2hlbiBR
-dW4gPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPj4gPj4NCj4+ID4+IEZpeCBjb21waWxhdGlv
-biB3YXJuaW5nczoNCj4+ID4+IGNvbnRyaWIvZWxmMmRtcC9tYWluLmM6NjY6MTc6IHdhcm5pbmc6
-IOKAmEtkcERhdGFCbG9ja0VuY29kZWTigJkgbWF5IGJlDQo+PiA+PiB1c2VkIHVuaW5pdGlhbGl6
-ZWQgaW4gdGhpcyBmdW5jdGlvbiBbLVdtYXliZS11bmluaXRpYWxpemVkXQ0KPj4gPj4gICAgICAg
-ICAgYmxvY2sgPSBfX2J1aWx0aW5fYnN3YXA2NChibG9jayBeIGtkYmUpIF4ga3dhOw0KPj4gPj4g
-ICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+DQo+PiA+PiBj
-b250cmliL2VsZjJkbXAvbWFpbi5jOjc4OjI0OiBub3RlOiDigJhLZHBEYXRhQmxvY2tFbmNvZGVk
-4oCZIHdhcw0KPj4gPj4gZGVjbGFyZWQgaGVyZSB1aW50NjRfdCBrd24sIGt3YSwgS2RwRGF0YUJs
-b2NrRW5jb2RlZDsNCj4+ID4+ICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+
-fn5+fn4NCj4+ID4+DQo+PiA+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90
-QGh1YXdlaS5jb20+DQo+PiA+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVu
-QGh1YXdlaS5jb20+DQo+PiA+PiAtLS0NCj4+ID4+ICBjb250cmliL2VsZjJkbXAvbWFpbi5jIHwg
-MjUgKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQ0KPj4gPj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBp
-bnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMoLSkNCj4+ID4+DQo+PiA+PiBkaWZmIC0tZ2l0IGEv
-Y29udHJpYi9lbGYyZG1wL21haW4uYyBiL2NvbnRyaWIvZWxmMmRtcC9tYWluLmMgaW5kZXgNCj4+
-ID4+IDlhMmRiYzI5MDIuLjIwM2I5ZTZkMDQgMTAwNjQ0DQo+PiA+PiAtLS0gYS9jb250cmliL2Vs
-ZjJkbXAvbWFpbi5jDQo+PiA+PiArKysgYi9jb250cmliL2VsZjJkbXAvbWFpbi5jDQo+PiA+PiBA
-QCAtNzYsNiArNzYsNyBAQCBzdGF0aWMgS0RERUJVR0dFUl9EQVRBNjQgKmdldF9rZGJnKHVpbnQ2
-NF90DQo+PiA+PiBLZXJuQmFzZSwgc3RydWN0IHBkYl9yZWFkZXIgKnBkYiwgREJHS0RfREVCVUdf
-REFUQV9IRUFERVI2NA0KPj4gPmtkYmdfaGRyOw0KPj4gPj4gICAgICBib29sIGRlY29kZSA9IGZh
-bHNlOw0KPj4gPj4gICAgICB1aW50NjRfdCBrd24sIGt3YSwgS2RwRGF0YUJsb2NrRW5jb2RlZDsN
-Cj4+ID4+ICsgICAgdWludDY0X3QgS2lXYWl0TmV2ZXIsIEtpV2FpdEFsd2F5czsNCj4+ID4+DQo+
-PiA+PiAgICAgIGlmICh2YV9zcGFjZV9ydyh2cywNCj4+ID4+ICAgICAgICAgICAgICAgICAgS2RE
-ZWJ1Z2dlckRhdGFCbG9jayArIG9mZnNldG9mKEtEREVCVUdHRVJfREFUQTY0LA0KPj4gPj4gSGVh
-ZGVyKSwgQEAgLTg0LDIxICs4NSwxOSBAQCBzdGF0aWMgS0RERUJVR0dFUl9EQVRBNjQNCj4+ID4+
-ICpnZXRfa2RiZyh1aW50NjRfdCBLZXJuQmFzZSwgc3RydWN0IHBkYl9yZWFkZXIgKnBkYiwgcmV0
-dXJuIE5VTEw7DQo+PiA+PiAgICAgIH0NCj4+ID4+DQo+PiA+PiAtICAgIGlmIChtZW1jbXAoJmtk
-YmdfaGRyLk93bmVyVGFnLCBPd25lclRhZywgc2l6ZW9mKE93bmVyVGFnKSkpIHsNCj4+ID4+IC0g
-ICAgICAgIHVpbnQ2NF90IEtpV2FpdE5ldmVyLCBLaVdhaXRBbHdheXM7DQo+PiA+PiAtDQo+PiA+
-PiAtICAgICAgICBkZWNvZGUgPSB0cnVlOw0KPj4gPj4gKyAgICBpZiAoIVNZTV9SRVNPTFZFKEtl
-cm5CYXNlLCBwZGIsIEtpV2FpdE5ldmVyKSB8fA0KPj4gPj4gKyAgICAgICAgICAgICFTWU1fUkVT
-T0xWRShLZXJuQmFzZSwgcGRiLCBLaVdhaXRBbHdheXMpIHx8DQo+PiA+PiArICAgICAgICAgICAg
-IVNZTV9SRVNPTFZFKEtlcm5CYXNlLCBwZGIsIEtkcERhdGFCbG9ja0VuY29kZWQpKSB7DQo+PiA+
-PiArICAgICAgICByZXR1cm4gTlVMTDsNCj4+ID4+ICsgICAgfQ0KPj4gPj4NCj4+ID4+IC0gICAg
-ICAgIGlmICghU1lNX1JFU09MVkUoS2VybkJhc2UsIHBkYiwgS2lXYWl0TmV2ZXIpIHx8DQo+PiA+
-PiAtICAgICAgICAgICAgICAgICFTWU1fUkVTT0xWRShLZXJuQmFzZSwgcGRiLCBLaVdhaXRBbHdh
-eXMpIHx8DQo+PiA+PiAtICAgICAgICAgICAgICAgICFTWU1fUkVTT0xWRShLZXJuQmFzZSwgcGRi
-LCBLZHBEYXRhQmxvY2tFbmNvZGVkKSkNCj4+ID4+IHsNCj4+ID4+IC0gICAgICAgICAgICByZXR1
-cm4gTlVMTDsNCj4+ID4+IC0gICAgICAgIH0NCj4+ID4+ICsgICAgaWYgKHZhX3NwYWNlX3J3KHZz
-LCBLaVdhaXROZXZlciwgJmt3biwgc2l6ZW9mKGt3biksIDApIHx8DQo+PiA+PiArICAgICAgICAg
-ICAgdmFfc3BhY2VfcncodnMsIEtpV2FpdEFsd2F5cywgJmt3YSwgc2l6ZW9mKGt3YSksIDApKSB7
-DQo+PiA+PiArICAgICAgICByZXR1cm4gTlVMTDsNCj4+ID4+ICsgICAgfQ0KPj4gPj4NCj4+ID4+
-IC0gICAgICAgIGlmICh2YV9zcGFjZV9ydyh2cywgS2lXYWl0TmV2ZXIsICZrd24sIHNpemVvZihr
-d24pLCAwKSB8fA0KPj4gPj4gLSAgICAgICAgICAgICAgICB2YV9zcGFjZV9ydyh2cywgS2lXYWl0
-QWx3YXlzLCAma3dhLCBzaXplb2Yoa3dhKSwNCj4+ID4+IDApKSB7DQo+PiA+PiAtICAgICAgICAg
-ICAgcmV0dXJuIE5VTEw7DQo+PiA+PiAtICAgICAgICB9DQo+PiA+PiArICAgIGlmIChtZW1jbXAo
-JmtkYmdfaGRyLk93bmVyVGFnLCBPd25lclRhZywgc2l6ZW9mKE93bmVyVGFnKSkpIHsNCj4+ID4+
-ICsgICAgICAgIGRlY29kZSA9IHRydWU7DQo+PiA+Pg0KPj4gPj4gICAgICAgICAgcHJpbnRmKCJb
-S2lXYWl0TmV2ZXJdID0gMHglMDE2IlBSSXg2NCJcbiIsIGt3bik7DQo+PiA+PiAgICAgICAgICBw
-cmludGYoIltLaVdhaXRBbHdheXNdID0gMHglMDE2IlBSSXg2NCJcbiIsIGt3YSk7DQo+PiA+DQo+
-PiA+SGkhDQo+PiA+DQo+PiA+SSBzdXBwb3NlIHRoZSBwcm9ibGVtIGlzIGluIHlvdXIgY29tcGls
-ZXIsIGJlY2F1c2Uga2RiZ19kZWNvZGUoKSBpcw0KPj4gPm9ubHkgdXNlZCB3aGVuIEtkcERhdGFC
-bG9ja0VuY29kZWQgaXMgYWxyZWFkeSBpbml0aWFsaXplZCBieQ0KPj4gPlNZTV9SRVNPTFZFKCku
-DQo+PiA+DQo+PiBIaSAgVmlrdG9yLA0KPj4NCj4+ICAgICAgICBJIGtub3cgaXQncyBhY3R1YWxs
-eSBpbml0aWFsaXplZCB3aGVuICAnZGVjb2RlID0gdHJ1ZTsnLA0KPj4gb3RoZXJ3aXNlICcgcmV0
-dXJuIGtkYmc7JyAgbm8gbmVlZCB0byBpbml0aWFsaXplLg0KPj4gICAgICBCdXQgdXN1YWxseSB0
-aGUgY29tcGlsZXIgY2Fubm90IHVuZGVyc3RhbmQgaXQsIGJlY2F1c2UgaXQgc2VlbXMNCj4+IHRo
-YXQgdGhlIGluaXRpYWxpemF0aW9uIGlzIG9ubHkgaW4gdGhlIGlmKCkgc3RhdGVtZW50Lg0KPg0K
-PkFzIGZvciBtZSwgbXkgR0NDIDkuMi4xIGRvZXNuJ3Qgc2hvdyBhbnkgd2FybmluZyB3aGlsZSBi
-dWlsZGluZyBlbGYyZG1wLg0KPg0KTWF5YmUgeW91IGFyZSByaWdodCwgbXkgR0NDIHZlcnNpb24g
-bG93ZXIoIDcuMy4wKS4NCg0KPg0KPj4gSWYgd2UgcHV0IHRoZSBpbml0aWFsaXphdGlvbiBvdXRz
-aWRlIHRoZSBpZigpIHN0YXRlbWVudCwgaXQgbWlnaHQNCj4+IGxvb2tzIGJldHRlciB3aXRob3V0
-IGFmZmVjdGluZyB0aGUgZnVuY3Rpb25hbGl0eSA/DQo+DQo+Rm9yIG5vdywgeW91ciBvcmlnaW5h
-bCBwYXRjaCBhZmZlY3RzIHRoZSBmdW5jdGlvbmFsaXR5LiBUaGUgdXRpbGl0eSB0cmllcyB0bw0K
-PnJlc29sdmUgc3ltYm9scyBhcyBsaXR0bGUgYXMgcG9zc2libGUgZHVyaW5nIGNvbnZlcnNpb24s
-IGJlY2F1c2Ugd2UgZG9uJ3QNCj5rbm93IGV4YWN0bHkgaG93IFdpbmRvd3Mga2VybmVsIHdvcmtz
-LiBUaGlzIGlzIHRoZSByZWFzb24gd2h5IEtEQkcNCj5oZWFkZXIgc2hvdWxkIGJlIGNoZWNrZWQg
-YmVmb3JlIHJlc29sdmluZyAzIHN5bWJvbHMuDQo+DQpPSyAsICBsZXQncyBkcm9wIHRoaXMgcGF0
-Y2guDQoNClRoYW5rcy4NCj4+DQo+PiBUaGFua3MuDQo+PiA+LS0NCj4+ID5WaWt0b3IgUHJ1dHlh
-bm92DQo+DQo+DQo+DQo+LS0NCj5WaWt0b3IgUHJ1dHlhbm92DQo=
+Hi
+
+On Sat, Mar 7, 2020 at 3:53 AM Pan Nengyuan <pannengyuan@huawei.com> wrote:
+>
+> Fix a memory leak in qdev_get_gpio_out_connector().
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+
+good catch,
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+
+> ---
+>  hw/core/qdev.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 3937d1eb1a..85f062def7 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, co=
+nst char *name, int n,
+>
+>  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name,=
+ int n)
+>  {
+> -    char *propname =3D g_strdup_printf("%s[%d]",
+> +    g_autofree char *propname =3D g_strdup_printf("%s[%d]",
+>                                       name ? name : "unnamed-gpio-out", n=
+);
+>
+>      qemu_irq ret =3D (qemu_irq)object_property_get_link(OBJECT(dev), pro=
+pname,
+> --
+> 2.18.2
+>
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
