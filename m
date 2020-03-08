@@ -1,63 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jAWs4-00027l-FN
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Mar 2020 05:39:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56663)
+	id 1jAsbb-0001Um-1B
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Mar 2020 05:52:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58560)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1jAWs1-00026S-RT
- for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 05:39:50 -0500
+ (envelope-from <laurent@vivier.eu>) id 1jAsbY-0001Ue-G9
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2020 05:52:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1jAWs0-00037N-SJ
- for qemu-trivial@nongnu.org; Sat, 07 Mar 2020 05:39:49 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43229)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1jAWry-0002rD-Ja; Sat, 07 Mar 2020 05:39:46 -0500
-Received: by mail-wr1-x441.google.com with SMTP id v9so5235607wrf.10;
- Sat, 07 Mar 2020 02:39:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=TmYE89S1PG0f8Ul1HiItJ+u0Ybcnre9qw8rMFV2zRK0=;
- b=RMXZZa7Ou4Oq1JG3kj4HrjkrjMGqHwIj10uZrHuUJVqr7JA31MhxAh0qZARU9yxIO/
- qx3lDdQOSCTBcxUUiQCvb5QknNe8RxGVA0r0pXj+4Htjb+rYRJk3ZKml03ERu5Eb2Jpl
- HnZBWzNnN0an0YgYDP4COk24owxGJhy5AS6+kyc7aqRJA/D9k8GWc3ArtgbHh1imX6iQ
- jr43bMf9c+U5nuvqilyyQ9BtpiWT+vMaxIknc9J7hUnpegGKqhKIzY7U2NK8uLcCrvbk
- IDWjs5U8rCKQ6LY+ptDBybkyvdH1Tc8ef3/Q/y1g7YD86rSfEi4jEelc0Hwydkj2PjoS
- NX3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=TmYE89S1PG0f8Ul1HiItJ+u0Ybcnre9qw8rMFV2zRK0=;
- b=h8vOZqL2cGSNVgn4aNgkum2EVOu9u1n5VzNgJVgxLdwqOFQUqMxIzubcbE+TQykbUk
- niA3kLxJXHcpDxZq/uwC38p99ve5BV9JY5AAPph8w3cuokMmZeo8AphcJbgHzJEusGJk
- WJdMbWWFNfDExuWbbJPktCduZsJ96pJOm6UhA6q+EgSnjHrk00A1W1zU4G7mMUqZQ2Bk
- 021Fzau7IQ0sj4XPCBO5iPBLaXV1VIG7g8Xy79GUeIp9lkCN9m/FB/ntywXGNZt1P5j9
- tnHzRlzCdK2gODMP3Wfve9mCyYZAS7saAuEUODVuccFiBYY8IlkPscKaRTc3gck8obGB
- CtnA==
-X-Gm-Message-State: ANhLgQ1JlTSS9A0UcTL4SZhYRNnJr9AfLBVSvzet3jMhFtOmEOmGsy4k
- 0svErnYV3Yc06Mz2zYbnjzQMD//hpScq+aaO/Gg=
-X-Google-Smtp-Source: ADFU+vvgQF4PKbf0oG/+TWv1ZDUD0CkOoc80OnKZ9Zfe9PpMvSiDE608hIeq1R3WdInPtGsT4EoE7RHwLEf/u/3xEfI=
-X-Received: by 2002:adf:9e8b:: with SMTP id a11mr8929283wrf.32.1583577585084; 
- Sat, 07 Mar 2020 02:39:45 -0800 (PST)
+ (envelope-from <laurent@vivier.eu>) id 1jAsbX-00063j-In
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2020 05:52:16 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:44857)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1jAsbX-00061x-AU; Sun, 08 Mar 2020 05:52:15 -0400
+Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MnpwC-1jiLxF1FAQ-00pLph; Sun, 08 Mar 2020 10:52:07 +0100
+Subject: Re: [PATCH] dp8393x: Mask EOL bit from descriptor addresses, take 2
+To: Jason Wang <jasowang@redhat.com>
+Cc: Finn Thain <fthain@telegraphics.com.au>, peter.maydell@linaro.org,
+ qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <alpine.LNX.2.22.394.2003041421280.12@nippy.intranet>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <2116e607-52c8-7e7d-8ac1-c80d4628b2de@vivier.eu>
+Date: Sun, 8 Mar 2020 10:52:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200307030756.5913-1-pannengyuan@huawei.com>
-In-Reply-To: <20200307030756.5913-1-pannengyuan@huawei.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Sat, 7 Mar 2020 11:39:32 +0100
-Message-ID: <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
-Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
-To: Pan Nengyuan <pannengyuan@huawei.com>
-Cc: QEMU <qemu-devel@nongnu.org>, "Daniel P. Berrange" <berrange@redhat.com>, 
- Eduardo Habkost <ehabkost@redhat.com>,
- qemu trival <qemu-trivial@nongnu.org>, 
- Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
+In-Reply-To: <alpine.LNX.2.22.394.2003041421280.12@nippy.intranet>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:PZOKLY9nZKzq4x7v0oNVyW/EBJAiqI9pSaeMD3ZOE3JgTYlq5Rl
+ JnVaE7O4bSyQ6HPLADMRlfoXv01gddudzHrno8A5edIYGs3f/kbndxbZJJ3SCUfYeoK40P/
+ e8aftKLWhb+lpMahSbxxJf0BkOCXFrAIqP2Q4RgkeuFcBUa6NOJWio88Uxlq6k/RRMn6v9Q
+ DDToCAhHjxEr2c4tpem0g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:cCB1db2V8S0=:swgEqX4kAwfUinbPbrQV1e
+ jeat35sXng4elqrrJwdgmEQLSrJ5GDky7+NIU7UhJeZqtTirg4pC2M2HIpLW0BbZeBEg6bjiF
+ IeJgJyXMTXPfBj6LSR2xKe2SUTRnuklOpZjLDawPrfZrso6bhw9JbgkUwvrts0MJAPPgccfgO
+ aQLuCzKGCrRPhQhq72yael3OdxnqHuVnyzgxaDhHrChb3rejWrrPwpeM2wKdJ1O4F2JYFZQ5E
+ WMjWVC9omIN3IolaVxleACtK1I8irk6nVMhGokqihFOyWqUeYtTNdD3Om+efzv+/DLWGxNKQ2
+ pehS8xsbserYzXhR/JNVHGiNeGheSOSZmWHs1UeLEsa55dzv066vB1pMKDcj7OZQMs2fJ02qv
+ 3JU9Mmqwlx47QC/9Zcaznw+oyY8N9V7lQwOkrtrk5Fpi8LfyBe0/IImnlUaj+X/AcBsKQaVPg
+ Ldx1T2gNqLMWPpdPQeV0FE1kCaldmv+Xk9mwFWhdaNXIBFalOEhtMHGhY/uOBvzEG9ev7sW4U
+ r6d/+g/y5e99nV8nduJwjtKPEXCNu+BCfV19fAsAuqFtPbB8oU6NS5wQ5wQVP6pfArpND+1jv
+ cYU88QG5rKVU+1866rzZmkeLTPeUQycL0S4mvqtOJlq4r2zlwmIaoneyPneEPgMNOnpiQkGRO
+ OJ1aDsHt4k3BIwDMIxU2DZ5arRa8ZlrsJVM0zRqFv5UuRIxxcmSUCQTGjloOKUz0eiUeX/xJc
+ ZeAB5uiu0SEHP1IY2LT0wpYeM8rWrgkMCbe3xvmLqCUcMGTeYkO18vEqxUqlf0oXJQXJo3iwo
+ 5JHk5kaYsgMRNPPOA948eMX+QcCHRmT+1o3dVZZL72KCNnFWlGmRGIrE7QQY7WLd0Fwda4l
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,49 +102,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Mar 2020 10:39:51 -0000
+X-List-Received-Date: Sun, 08 Mar 2020 09:52:17 -0000
 
-Hi
-
-On Sat, Mar 7, 2020 at 3:53 AM Pan Nengyuan <pannengyuan@huawei.com> wrote:
->
-> Fix a memory leak in qdev_get_gpio_out_connector().
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-
-good catch,
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
-
+Le 04/03/2020 à 04:23, Finn Thain a écrit :
+> A portion of a recent patch got lost due to a merge snafu. That patch is
+> now commit 88f632fbb1 ("dp8393x: Mask EOL bit from descriptor addresses").
+> This patch restores the portion that got lost.
+> 
+> Signed-off-by: Finn Thain <fthain@telegraphics.com.au>
 > ---
->  hw/core/qdev.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 3937d1eb1a..85f062def7 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, co=
-nst char *name, int n,
->
->  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name,=
- int n)
->  {
-> -    char *propname =3D g_strdup_printf("%s[%d]",
-> +    g_autofree char *propname =3D g_strdup_printf("%s[%d]",
->                                       name ? name : "unnamed-gpio-out", n=
-);
->
->      qemu_irq ret =3D (qemu_irq)object_property_get_link(OBJECT(dev), pro=
-pname,
-> --
-> 2.18.2
->
->
+>  hw/net/dp8393x.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+> index 8a3504d962..81fc13ee9f 100644
+> --- a/hw/net/dp8393x.c
+> +++ b/hw/net/dp8393x.c
+> @@ -525,8 +525,8 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
+>                                   * (4 + 3 * s->regs[SONIC_TFC]),
+>                                 MEMTXATTRS_UNSPECIFIED, s->data,
+>                                 size);
+> -            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
+> -            if (dp8393x_get(s, width, 0) & SONIC_DESC_EOL) {
+> +            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0);
+> +            if (s->regs[SONIC_CTDA] & SONIC_DESC_EOL) {
+>                  /* EOL detected */
+>                  break;
+>              }
+> 
 
+Jason,
 
---=20
-Marc-Andr=C3=A9 Lureau
+as it's a trivial bug fixes (only a diff between the commit and the
+patch), will you merge it via the network queue or do you want I take it
+via trivial queue?
+
+Thanks,
+Laurent
 
