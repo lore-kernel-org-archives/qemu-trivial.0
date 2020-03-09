@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2f-0008KD-U2
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33524)
+	id 1jBK2g-0008L7-8u
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33532)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2a-000883-FY
+ (envelope-from <laurent@vivier.eu>) id 1jBK2a-00089G-TR
  for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2Z-0007nX-C5
+ (envelope-from <laurent@vivier.eu>) id 1jBK2Z-0007o7-O8
  for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:00 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:36727)
+Received: from mout.kundenserver.de ([217.72.192.73]:39435)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2U-0007hq-Ac; Mon, 09 Mar 2020 11:09:54 -0400
+ id 1jBK2X-0007ju-1I; Mon, 09 Mar 2020 11:09:57 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MGz5h-1j6f2k11LX-00E6BZ; Mon, 09 Mar 2020 16:08:45 +0100
+ id 1N3Kc8-1jJg4w01ac-010J9Q; Mon, 09 Mar 2020 16:09:04 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,35 +39,35 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Finn Thain <fthain@telegraphics.com.au>
-Subject: [PULL 01/33] dp8393x: Mask EOL bit from descriptor addresses, take 2
-Date: Mon,  9 Mar 2020 16:08:05 +0100
-Message-Id: <20200309150837.3193387-2-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 09/33] hw/southbridge/ich9: Removed unused headers
+Date: Mon,  9 Mar 2020 16:08:13 +0100
+Message-Id: <20200309150837.3193387-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+TAkKLV0CIXTz0Mr9Xhgny60rXsV/drmGR3EGLSIm7g4KaxGwJI
- G9/nP0tkn2RsIVSHMo3zDeqfWVPCU5u8OsIGMRp6MPT1tObWdaR5XhatwW5JtZaeoGsP9hK
- x4kCPcJkFNLak0tc9qIZe13RsQgC3/YogsfGkwe/EFem+BGe1d0vqnByv9dq45pLrNGFase
- PtXgyvDDGPTc4EM9+D9pw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EbA4j4yfY2A=:CQ09mVT0DAh1Fg/k4OfT0F
- 6LewUgHUDckKH+qV1GR4e8ySJyFS1F7oSJSySzvqe1pZDaMq/gwHJZUO9vKkqtmatAr2YMbxD
- 8wtxRXH5OLzWonGxXBjvP06irGV8X75YTFnqGz2eNHT1lscKjCr8Aum4uYZmnNu61tgvB+HVt
- DMg4yr1FCxw67WL4F+v+psjyNRYaDlTUXYiacTvmTt0MU7tp2JcCBXunQ8fVFOcTn8K63/8Hj
- iDKrAh03iCNYtO5eC2m+SKdG0Rit8Q3GkhoYamZIM7+ic4SAMuz4/lhTQa91awr7PXy0NHvju
- 7TMhdWUFazTyb3aaln9guCY39fY2R9lA1QPa1L6BgDbcMYMKlUUWSavlLpUWLKa4uIL7PeWYK
- IrE4hFBhGe7hiYoeoyTrCaUvJv8AlX9mPx+rhElDSz0FtlSRjQeMXGlJNqkAGMvED1LA9qFBB
- NBn2FUVVXCS0xCY0JYy92aUsaHknmD9cn07xvHanGhdNPUpCptfqRMVaN0CiDKwBL0DzmcYBX
- mzcrlZHZWhOomn61U3vspLHyfDCI1Qz7Ukc2eG85GHDzezr5QCoE2A/q1ey+Ro7B5lEwRp9Zj
- VjZ8mGdEYlUJHo0o56195ermlFZRBL6gMwYY5+WX5rzHlxz8Ez5J09NbZ0ZOKWqfTmJPHiWzl
- XYagUH5AyC1100p+vwgrNaswbCDRG8CtTs7ZV4+sHajS7kFglMlwA8oR9422iJTGNNwrQDzvN
- /yLENPHNOd07Utz9nQNBYlK5V1rCRJQU7oLt/PDUTtCDJs2KJk8EEdqCApYJwJ0KqnbZmNAuC
- /Gua+Kx4Aguvwrfs2qN8wxRU80M0KqCWxNAdoXRN+EGBptf7dhtwdArDoPW4aAB9l9tOKEv
+X-Provags-ID: V03:K1:He56TwfhJa52GOGz0EJqZEjoGZlFdNLZsoH3h/kooJRBmO3UGxH
+ tKyYkftvnQTlB+T1skORNFDy8AzTmEPvISinUrtkUNnNj45ZqRv2R7bSrs3ee3Cnx5cT0WI
+ YGYoZAhBpGPOwmc5FGBsBGyk8uJKJc2HOrkXlVlO1n3vR1bcnjFftYXy63DXylETT2vk1EQ
+ kj11Rtk709JH9zDXwjusA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nkohTncFmnU=:X8IHw1mNLvGEWBqMFnaX5Y
+ Q1CvPz3i/rGpm7UY2HJlWtdWiMMccEFNdmxNyYsPtBR10fUnC7QXg+IykaTAjlJDO85a0+YLm
+ PTJS8WiCnIvMT8h9rbKLZEyMvkwRaBmLzDHgfRFKjFKEef/UawYHvuIs9zLbao7gHResGUcof
+ HSySVUlY1rFX7pm/BQ9rdcpW40AVPRKalvEETCU3m4zJbWj0xEkD/dKMpL7ZXaNwtRE15npsy
+ itvmFfF+OVpVcj6Zs9m0LuHyTGnmnnhY6PVVpKdHIrXpODm06dPYsGUC5BN6fiHvfDkJKbSAU
+ TElOp5Vds0k4cM8ol6aK8XeJQe/dIuzHoWaJQgJ7SBzcb+oOI0HK2KtfVOBlgoCWx33LdAM7O
+ sYQCHNCezbeOxlNJNnA5FzPZQZmXiJkNbH5b5vDygWhiBRG9fKSsYkUwR6VmxSsmdrsxd5kaK
+ ZWJvUpwycNp5tALkXiCsJX/IUbER+DasVzZ0tjAL0wqHYfB84yPxugjH0uC+eP61dFPw2Kax7
+ tHHptPy+nUmKyEXSqbXgIPtcGs9oP8fPRtQqEe+L/+wN1j7bDNoP/4ukKPMSfmrJRBHGRFRyC
+ /JEqkc2ZmCL3YmhWRCR+OhTXgIIYuNHVAXICwJh3Eq/2HwlXRzeTwBvMOgR//tZ2Fnvn3agLY
+ sQ99S4XvwSGTtuZ8ayxyU3xKe2dR9VkPC13yTHJcjxB7HBqTWP/MRNRdyTOWftguhMfrADiDl
+ FaVzu0JsLwDDI6hqXjJCMndVvdz/LKv3DgHT+GWGExDbi870hyEq2orl/FdIsykPpbGbKE8ut
+ ADNHx6UurIWeSmhdi9OEDkFr9wyZ67jsbaAJ8V9UJZq6Cg5GDV+wFqy9eikoKHPLHnfQg/P
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+X-Received-From: 217.72.192.73
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,38 +79,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:10:01 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:10:02 -0000
 
-From: Finn Thain <fthain@telegraphics.com.au>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-A portion of a recent patch got lost due to a merge snafu. That patch is
-now commit 88f632fbb1 ("dp8393x: Mask EOL bit from descriptor addresses").
-This patch restores the portion that got lost.
+The ICH9 chipset is not X86/PC specific.
 
-Signed-off-by: Finn Thain <fthain@telegraphics.com.au>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <alpine.LNX.2.22.394.2003041421280.12@nippy.intranet>
+These files don't use anything declared by the "hw/i386/pc.h"
+or "hw/i386/ioapic.h" headers. Remove them.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200228114649.12818-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/net/dp8393x.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/acpi/ich9.c         | 1 -
+ hw/isa/lpc_ich9.c      | 1 -
+ include/hw/i386/ich9.h | 1 -
+ 3 files changed, 3 deletions(-)
 
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-index 8a3504d9628e..81fc13ee9fa7 100644
---- a/hw/net/dp8393x.c
-+++ b/hw/net/dp8393x.c
-@@ -525,8 +525,8 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                                  * (4 + 3 * s->regs[SONIC_TFC]),
-                                MEMTXATTRS_UNSPECIFIED, s->data,
-                                size);
--            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
--            if (dp8393x_get(s, width, 0) & SONIC_DESC_EOL) {
-+            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0);
-+            if (s->regs[SONIC_CTDA] & SONIC_DESC_EOL) {
-                 /* EOL detected */
-                 break;
-             }
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index 2034dd749edc..fdd0a6c79e11 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -27,7 +27,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+-#include "hw/i386/pc.h"
+ #include "hw/pci/pci.h"
+ #include "migration/vmstate.h"
+ #include "qemu/timer.h"
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index f85b484eac63..cb79616cede8 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -37,7 +37,6 @@
+ #include "migration/vmstate.h"
+ #include "hw/irq.h"
+ #include "hw/isa/apm.h"
+-#include "hw/i386/ioapic.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/i386/ich9.h"
+diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+index 72e803f6e2e0..a98d10b252df 100644
+--- a/include/hw/i386/ich9.h
++++ b/include/hw/i386/ich9.h
+@@ -5,7 +5,6 @@
+ #include "hw/sysbus.h"
+ #include "hw/i386/pc.h"
+ #include "hw/isa/apm.h"
+-#include "hw/i386/ioapic.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci_bridge.h"
 -- 
 2.24.1
 
