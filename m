@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2S-0007mm-3a
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33251)
+	id 1jBK2T-0007sw-Tl
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33269)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2O-0007ad-B3
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:49 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2P-0007d4-5m
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2N-0007dj-Bi
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:48 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:42163)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2O-0007eE-3m
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:49 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:37311)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2L-0007bH-3U; Mon, 09 Mar 2020 11:09:45 -0400
+ id 1jBK2G-0007Ya-Dt; Mon, 09 Mar 2020 11:09:40 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MLA6m-1it6gQ1PvO-00ICtI; Mon, 09 Mar 2020 16:08:52 +0100
+ id 1MHX3X-1j7DR62up7-00DXxH; Mon, 09 Mar 2020 16:09:01 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,35 +39,35 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PULL 04/33] hw/audio/fmopl: Fix a typo twice
-Date: Mon,  9 Mar 2020 16:08:08 +0100
-Message-Id: <20200309150837.3193387-5-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 08/33] vl: Add missing "hw/boards.h" include
+Date: Mon,  9 Mar 2020 16:08:12 +0100
+Message-Id: <20200309150837.3193387-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UW5nFl3f49l8EiqWcfH03Ht250um51CqWYk29wqkrHzC4CE9/8v
- yvNVfXE6dwOJmOKLhm1rMwsd2FKEPF8KExXy1sjgLYb8o7YUNLn0xL5tObTiul3rg/iJ3R8
- yZrQgO/JHzMPIznk/T8XviRYpr1UopbO4Ledubv6MxDlLgoeQ7EqB+GOtiu8WDJEMoEK1Tj
- SM0ey6TJpqQa5oAMnGufQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PKcDQf/GEU0=:NYOCc4WQHMU5AT87QeR0WP
- wgmyeLkw8DoGQnnPhw2UJ1tHCnK/DR2s34/VLUlp2KZE2Jd9IucAAAGCxqa516KS/qVEU0cXr
- xcarRNVNjequblZzPzs3o5jsYpaU/W94DqzginImn1mWNpWBCVdi7RIG8nKdU8IghpEqPuh/1
- XEskxxrrrcYX9w5kGqASWqlcIEW2Vq74d7ZXK6D6RUb4YyBkQGnBtZWVpgfQVy/XlNTimp+ni
- ytabDwqgN5geI99zsa+YsOavglqs+Z+Cw1smyI4BoLfecKSj6BeReyUhlJxlD8T9ubQ1Yv3HS
- EmTaAWH2SenB/Ngjv5OKdHj0YJMm15BLf9pCTavl6Gp21NR8uZZdfTnezukBkZ2nZu84f+IVK
- wRfSsz8peXfxV5G3IXfB31zbE3FZ2LDrooOGw0xM5OITcpgD1tyvCb781RrpwFZ6wzK72XdHm
- VzV9gEk1LUkENAPZIG6w8IfY/0BM32DJM/s7CyPOdfWiIrwdTipWIX7ME4IfubbFdBK7hrupn
- Y+cVnFnrjMMNkgbrX7zTgF25xm853uDyTnkJY5tqoTxH8d0xJp5wkXVvTBVpm4RmwDUxblC7q
- dvTxBCEykduxUMj440r1JOT4N1xYWJw6jgNZIQb1YUZFuAtM5tMONI9rjNa3E6cbgEGk14S4P
- bZxXgBqPBcUG0DCbe4L3ofcvOA4ZFDEUJIOvDWlfWdYVV95ak68XJycOGzKystn6w1nDBmZsO
- v40onrSU9yo6MMLktRWK7OU8ZAjFbu1RUVLeW+HiXCqw770JLYMynKpzfJCEOTJc4UUtD8BM4
- Irr26i1hFfbJOI0z8ApQ3mU77QjcQbF44yrulu64Z8Iv6VMo84dhTUzucd/m3LeaH0WsZ2I
+X-Provags-ID: V03:K1:0Fkei+2Tt1Tdpv8J++VfECwShiRaK3eOrGgS7RSiid7DnfG9jQ7
+ wiHY6j6PhMpnumCxFjkerbQ6HhAkUIKw8m/a4HZ5tawrCyfvCwH/sIX4hE+dC1Vpy+nOc0N
+ byu+c+a91Nu3kUNh7/b4Yk29kfjlPSmrpewB5Q3haXNQTbDp+d8d4r8D2YtenHl9zffWqsS
+ ML/O7o0l0ZYVKQz3xBAvg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Mzwa1rvCDwA=:pXKJSSDa+HrCXHL1s9xszf
+ nEicKRMDuoRr4cPdjnIc6z0BFL42vaQLcNKyUQkvI/yO4SC4TmUUtWb2bld/im6rsttBxn7Rh
+ lBuyX7He+FQbPQisrwdwLV7PiUWwA8R9fAdnegTI9n9qKT16KeXUdeo1dXe0rFHfjrOJl9KFc
+ ralgwx9UNhcki3/lBeFJyrmmnc8ZRIUsXS1SxBwdx/+j6HMQkjrbPuqTMdG8RNTgU61rqP7mF
+ k4tfaXmcek85v7eptBqp/eKu4NzENr98JlfbTgI8ipZhYpI0vrbwJOzpivvABI2yOMPgWH/en
+ ysBGNhYGfF5tsJHmVj5LVWsb3rP5fawdbh12tlQ0cL9MTRi1DiVozkKQ6yKEy9XmhbwWOeDWX
+ 3XnT5Zs9+Fs+CISWGhQSmRlTFE0ojs3umaM406SKRF6CTLt42PuphAj3zmBCEZv8LIr15TUt4
+ ARwLh/gk3TiXEZ06ogccC9KXYksdgoFgx/1B6YQZVflxeDmshtFbU1XNxjAzqyEmnwHXnGIKD
+ cZNYUTFij5dXOjVRlDMbD7IDTNYYctyJuyQBoAMb8bh3NiGY9gV04npEtaXC8wwUJOKae2SSf
+ mgi4PCcwq0lEpCfooRz4jEdc/61O8zW26OGn3GJPjhiMVAIPAmiL3nEORipsSTLES/wfOqf/N
+ o/Aq+wjOANi9v9vPzx1b9ASiDxFF+q3vV325XIK0nQHy04+VYhQ3X8lPzpfhp5TRPLgEnq3Ov
+ IN8r2GHKYl08xclBMj74s0nBqIvpXRH++/rJB5QuaA9AqIFp5cccoyn4S0TBrSL/2sDu/BvsX
+ vXLm3Ues3mv+FEn7D8J25OrjuUb+m4vQizwd4ZoWNxtBDgqxyfs6+W5T1hGJshO228LVf7l
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,41 +79,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:09:49 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:09:50 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+vl.c calls machine_usb() declared in "hw/boards.h". Include it.
+
+This fixes (when modifying unrelated headers):
+
+  vl.c:1283:10: error: implicit declaration of function 'machine_usb' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+      if (!machine_usb(current_machine)) {
+           ^
+  vl.c:1283:10: error: this function declaration is not a prototype [-Werror,-Wstrict-prototypes]
+  vl.c:1283:22: error: use of undeclared identifier 'current_machine'
+      if (!machine_usb(current_machine)) {
+                       ^
+
+Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20200305124525.14555-2-philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200228114649.12818-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/audio/fmopl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ softmmu/vl.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-index 9f50a89b4a88..173a7521f2a7 100644
---- a/hw/audio/fmopl.c
-+++ b/hw/audio/fmopl.c
-@@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
- 	}
- }
- 
--/* ----------  Create one of vietual YM3812 ----------       */
-+/* ----------  Create one of virtual YM3812 ----------       */
- /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
- FM_OPL *OPLCreate(int clock, int rate)
- {
-@@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
- 	return OPL;
- }
- 
--/* ----------  Destroy one of vietual YM3812 ----------       */
-+/* ----------  Destroy one of virtual YM3812 ----------       */
- void OPLDestroy(FM_OPL *OPL)
- {
- #ifdef OPL_OUTPUT_LOG
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 5549f4b61986..ff2685dff845 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -25,6 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+ #include "qemu/units.h"
++#include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu-version.h"
 -- 
 2.24.1
 
