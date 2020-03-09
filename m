@@ -1,65 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBFPl-0003av-2v
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 06:13:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36428)
+	id 1jBFqd-00078o-Tj
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 06:41:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40847)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kraxel@redhat.com>) id 1jBFPi-0003Zv-Sz
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:13:35 -0400
+ (envelope-from <pannengyuan@huawei.com>) id 1jBFqb-00076d-5O
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:41:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kraxel@redhat.com>) id 1jBFPi-00032i-1b
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:13:34 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:36427
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <pannengyuan@huawei.com>) id 1jBFqa-0005ha-4w
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:41:21 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3266 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1jBFPh-00032Q-Uh
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:13:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583748813;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aAKOGH/KUbB4026TG+is9BMIjscEbXjSnMP3ULLdV2c=;
- b=VucVpPdGnk7GMmOOj8BcPG/8SKGACciHNLuxHPGSLeX8BeGo4ZBFzEh0KyKIVXrVx9qhFj
- QdJ2ZXRhuNRng1hec5a7p+a6Qwmys3NsbZaFJ/ECq2NWx3GY15/FuJkB8t0hoGPRJIopfE
- dQ1BZwxRg/i9ixqj9f00U881RMH2pdQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-xs3-jlGQP_6xIl7j5gC71Q-1; Mon, 09 Mar 2020 06:13:31 -0400
-X-MC-Unique: xs3-jlGQP_6xIl7j5gC71Q-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4E6E91137843;
- Mon,  9 Mar 2020 10:13:30 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-117.ams2.redhat.com
- [10.36.116.117])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0DDF85D9CA;
- Mon,  9 Mar 2020 10:13:30 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 334F39D43; Mon,  9 Mar 2020 11:13:29 +0100 (CET)
-Date: Mon, 9 Mar 2020 11:13:29 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: kuhn.chenqun@huawei.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- Euler Robot <euler.robot@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 12/13] usb/hcd-ehci: Remove redundant statements
-Message-ID: <20200309101329.bwdkyqa6z4lazlkn@sirius.home.kraxel.org>
-References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-13-kuhn.chenqun@huawei.com>
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1jBFqX-0005dp-J6; Mon, 09 Mar 2020 06:41:17 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id BD5C185AF02A3B0B19EC;
+ Mon,  9 Mar 2020 18:41:12 +0800 (CST)
+Received: from [10.184.39.213] (10.184.39.213) by smtp.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.487.0; Mon, 9 Mar 2020
+ 18:41:03 +0800
+Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
+To: Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@gmail.com>
+CC: "Daniel P. Berrange" <berrange@redhat.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, qemu trival <qemu-trivial@nongnu.org>, QEMU
+ <qemu-devel@nongnu.org>, Euler Robot <euler.robot@huawei.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <20200307030756.5913-1-pannengyuan@huawei.com>
+ <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
+ <87b027ab-7bed-249a-08a2-2c27fdd05a31@vivier.eu>
+From: Pan Nengyuan <pannengyuan@huawei.com>
+Message-ID: <a69e324c-21c4-dcfd-516d-0515f86a2f28@huawei.com>
+Date: Mon, 9 Mar 2020 18:41:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200226084647.20636-13-kuhn.chenqun@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: <87b027ab-7bed-249a-08a2-2c27fdd05a31@vivier.eu>
+Content-Type: text/plain; charset="utf-8"
+X-Originating-IP: [10.184.39.213]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,27 +53,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 10:13:35 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 10:41:22 -0000
 
-On Wed, Feb 26, 2020 at 04:46:46PM +0800, kuhn.chenqun@huawei.com wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
+
+
+On 3/9/2020 5:16 PM, Laurent Vivier wrote:
+> Le 07/03/2020 =C3=A0 11:39, Marc-Andr=C3=A9 Lureau a =C3=A9crit=C2=A0:
+>> Hi
+>>
+>> On Sat, Mar 7, 2020 at 3:53 AM Pan Nengyuan <pannengyuan@huawei.com> w=
+rote:
+>>>
+>>> Fix a memory leak in qdev_get_gpio_out_connector().
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+>>
+>> good catch,
+>> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >=20
-> The "again" assignment is meaningless before g_assert_not_reached.
-> In addition, the break statements no longer needs to be after
-> g_assert_not_reached.
+> trivial question:
 >=20
-> Clang static code analyzer show warning:
-> hw/usb/hcd-ehci.c:2108:13: warning: Value stored to 'again' is never read
->             again =3D -1;
->             ^       ~~
+> Why do we prefer g_autofree() to the g_free() function?
+
+Honestly, it's no special reason in this case, just personal preference. =
+:)
+Both of them is ok.
+
+Thanks.
+
 >=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Patch added to usb queue.
-
-thanks,
-  Gerd
-
+> Thanks,
+> Laurent
+>=20
+>>> ---
+>>>  hw/core/qdev.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>>> index 3937d1eb1a..85f062def7 100644
+>>> --- a/hw/core/qdev.c
+>>> +++ b/hw/core/qdev.c
+>>> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev=
+, const char *name, int n,
+>>>
+>>>  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *n=
+ame, int n)
+>>>  {
+>>> -    char *propname =3D g_strdup_printf("%s[%d]",
+>>> +    g_autofree char *propname =3D g_strdup_printf("%s[%d]",
+>>>                                       name ? name : "unnamed-gpio-out=
+", n);
+>>>
+>>>      qemu_irq ret =3D (qemu_irq)object_property_get_link(OBJECT(dev),=
+ propname,
+>>> --
+>>> 2.18.2
+>>>
+>>>
+>>
+>>
+>=20
 
