@@ -1,77 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK3s-0001ck-4q
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:11:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34722)
+	id 1jBKDj-0000Hg-LY
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:21:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36159)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK3n-0001Xj-IF
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:11:18 -0400
+ (envelope-from <kwolf@redhat.com>) id 1jBKDf-0000C9-Ug
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:21:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK3l-0000Ds-Gb
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:11:15 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:32827)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK3a-00007m-6F; Mon, 09 Mar 2020 11:11:02 -0400
-Received: from localhost.localdomain ([82.252.135.106]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MxUfn-1jZqAI2tKr-00xr6l; Mon, 09 Mar 2020 16:09:51 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Max Reitz <mreitz@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Fam Zheng <fam@euphon.net>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Helge Deller <deller@gmx.de>,
- qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- Euler Robot <euler.robot@huawei.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
-Subject: [PULL 29/33] dma/xlnx-zdma: Remove redundant statement in
- zdma_write_dst()
-Date: Mon,  9 Mar 2020 16:08:33 +0100
-Message-Id: <20200309150837.3193387-30-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
+ (envelope-from <kwolf@redhat.com>) id 1jBKDe-0003vf-Jo
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:21:27 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43864
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1jBKDe-0003v7-Dp
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:21:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583767284;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5LbgiGGlJQ3AL4Gec/ApZifD2V3O4x1g104VF59gBMI=;
+ b=DD4CpBdBA0WsIfo1ItvH4sU8gt4OJV87Osg7oZVkNO0YLYUng0MF2+moUsu+V6nFg9WPWE
+ Fn28Ob2NNoVHV5nonAByekeBtLfNYpE8u16wpIS000PNw+OMOUQoBhPAomagN13mrHqeZt
+ XfupFjI9AL90+c4V+cTLnmEg/mK6UuM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-143-NVrN1dDSOL2aiJ5ImoulCg-1; Mon, 09 Mar 2020 11:21:22 -0400
+X-MC-Unique: NVrN1dDSOL2aiJ5ImoulCg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E9982107ACC9;
+ Mon,  9 Mar 2020 15:21:20 +0000 (UTC)
+Received: from linux.fritz.box (ovpn-116-162.ams2.redhat.com [10.36.116.162])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9744B5C3F8;
+ Mon,  9 Mar 2020 15:21:13 +0000 (UTC)
+Date: Mon, 9 Mar 2020 16:21:12 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, pkrempa@redhat.com,
+ mreitz@redhat.com, libvir-list@redhat.com,
+ Liu Yuan <namei.unix@gmail.com>, Fam Zheng <fam@euphon.net>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ "open list:Sheepdog" <sheepdog@lists.wpkg.org>,
+ "open list:Trivial patches" <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH v3 1/4] block: Add trivial backing_fmt support to qcow,
+ sheepdog, vmdk
+Message-ID: <20200309152112.GC6478@linux.fritz.box>
+References: <20200306225121.3199279-1-eblake@redhat.com>
+ <20200306225121.3199279-2-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VR7JvRspay92/RpC3019xh/+yKSsaZhhChauw/DzrILMmPwVQbl
- KT4mJuwv7zsMg8kFmidAhL99c1eGnnbg5NNW/kWiba09T5ch/Xk+uCGHmODaXNx4gqY9foN
- MHoIHGw1idZjYnPtI+UwJ0/GC0NKFMGfrCLc4/0mWRW2Ci0UJzNhUSWtgfS1YWnWTBrFo5J
- WgnNnY1Gd1b1rSq0R9iNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:d/Zn4yl+QlE=:bGwabL+x5posZ6fqHJw5as
- cbs5eAUKfZbTwBoLi20DntdUpuY1+oivFuvbLrQ3Sqy7FFk6BSHr1InaA+3IInPAYXrYZObX6
- Ss7HORg+et8/6Ve5saonFY7g+ytd6/EthYjPSeE0Ot9S1VmimpI2JVz0zNdBZESUrulqkrBVR
- ZULkjXUwca+BMN1wUILV/jYp+hGhsc2nMa4ZYWgVBtqOjCX0z0dg7+9pcAZIa/UjtI3Kg3LRJ
- Y2J9VZ1UcEbEllt/+H3gkuwni7WU0+c4IQTw7lYV2wdWpHN6y0IITPCbCAPRNimU/JEnVe2mH
- Qbb15PdX8Scgp0zU6WxwjhCXQAdifK2y3I0CQBdpac4sRwX9fbzjMS0XLY+S1L27FHyS3S+Wi
- 7kqNnpN6n4uNt65GW1Y2xpyjFZ5gQcRajJ/BVAr9HLZrxHpoFi+GtjPvaGRD9U+DbfVxisMLM
- VPhupl0DIfC67sSmh91aao/kkmxhD1ie+stKIgVMI7Oobcrr61Ntl/I5ZW3o10meYsZ/Cz5Gg
- 5z2QnwAUwXpg9OXWYIOlVhBwhzroe2TZvzOoNQu8dM0zSHpH+Vvhg4/hOYSHMp1b15N1nLmVl
- hYuUxGiE/XVYIid6DntY0XMzHlaToiQ9QkaH7gSawR+FmKpopFR+T253t2zKGlNHdH5Miw7ke
- kP04ynScr7SwHy0/ZAT1iFfGrRd2dqOSm4hbV9EY0g4Eo1ysEjYzYbspsc0HplGPYqFb6vBmI
- pguoy+EqZy+Ll4xvB6p1meABu/CAZ8YvuLf0DofO2CeWnvyXOxlHDrRJgTpRm2L10mGjqIvmT
- dAQR4AAmHLyZiElb9iF33OIfDetvDh/kRUEI7e/yDVhNkVQ2tvMCozg2+AsKadReuG9lIt4
+In-Reply-To: <20200306225121.3199279-2-eblake@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,63 +73,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:11:18 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:21:29 -0000
 
-From: Chen Qun <kuhn.chenqun@huawei.com>
+Am 06.03.2020 um 23:51 hat Eric Blake geschrieben:
+> For qcow2 and qed, we want to encourage the use of -F always, as these
+> formats can suffer from data corruption or security holes if backing
+> format is probed.  But for other formats, the backing format cannot be
+> recorded.  Making the user decide on a per-format basis whether to
+> supply a backing format string is awkward, better is to just blindly
+> accept a backing format argument even if it is ignored by the
+> contraints of the format at hand.
+>=20
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 
-Clang static code analyzer show warning:
-hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never read
-            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
-            ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I'm not sure if I agree with this reasoning. Accepting and silently
+ignoring -F could give users a false sense of security. If I specify a
+-F raw and QEMU later probes qcow2, that would be very surprising.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Message-Id: <20200302130715.29440-11-kuhn.chenqun@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/dma/xlnx-zdma.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 1c1b142293a6..2d9c0a0d5e19 100644
---- a/hw/dma/xlnx-zdma.c
-+++ b/hw/dma/xlnx-zdma.c
-@@ -372,7 +372,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
- static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
- {
-     uint32_t dst_size, dlen;
--    bool dst_intr, dst_type;
-+    bool dst_intr;
-     unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
-     unsigned int rw_mode = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MODE);
-     unsigned int burst_type = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_ATTR,
-@@ -386,17 +386,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
-     while (len) {
-         dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
-                               SIZE);
--        dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
--                              TYPE);
-         if (dst_size == 0 && ptype == PT_MEM) {
-             uint64_t next;
-+            bool dst_type = FIELD_EX32(s->dsc_dst.words[3],
-+                                       ZDMA_CH_DST_DSCR_WORD3,
-+                                       TYPE);
-+
-             next = zdma_update_descr_addr(s, dst_type,
-                                           R_ZDMA_CH_DST_CUR_DSCR_LSB);
-             zdma_load_descriptor(s, next, &s->dsc_dst);
-             dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
-                                   SIZE);
--            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
--                                  TYPE);
-         }
- 
-         /* Match what hardware does by ignoring the dst_size and only using
--- 
-2.24.1
+Kevin
 
 
