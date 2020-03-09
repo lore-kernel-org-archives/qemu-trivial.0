@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2g-0008L7-8u
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33532)
+	id 1jBK2h-0008Nu-En
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33621)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2a-00089G-TR
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:01 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2e-0008HX-Ki
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2Z-0007o7-O8
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:00 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:39435)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2d-0007sc-Kj
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:04 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:55201)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2X-0007ju-1I; Mon, 09 Mar 2020 11:09:57 -0400
+ id 1jBK2Y-0007lh-OO; Mon, 09 Mar 2020 11:09:58 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N3Kc8-1jJg4w01ac-010J9Q; Mon, 09 Mar 2020 16:09:04 +0100
+ id 1Moex5-1jik6Y1NUX-00p5hP; Mon, 09 Mar 2020 16:09:27 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -40,34 +40,34 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 09/33] hw/southbridge/ich9: Removed unused headers
-Date: Mon,  9 Mar 2020 16:08:13 +0100
-Message-Id: <20200309150837.3193387-10-laurent@vivier.eu>
+Subject: [PULL 19/33] hw/pci-host/q35: Include "qemu/range.h"
+Date: Mon,  9 Mar 2020 16:08:23 +0100
+Message-Id: <20200309150837.3193387-20-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:He56TwfhJa52GOGz0EJqZEjoGZlFdNLZsoH3h/kooJRBmO3UGxH
- tKyYkftvnQTlB+T1skORNFDy8AzTmEPvISinUrtkUNnNj45ZqRv2R7bSrs3ee3Cnx5cT0WI
- YGYoZAhBpGPOwmc5FGBsBGyk8uJKJc2HOrkXlVlO1n3vR1bcnjFftYXy63DXylETT2vk1EQ
- kj11Rtk709JH9zDXwjusA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nkohTncFmnU=:X8IHw1mNLvGEWBqMFnaX5Y
- Q1CvPz3i/rGpm7UY2HJlWtdWiMMccEFNdmxNyYsPtBR10fUnC7QXg+IykaTAjlJDO85a0+YLm
- PTJS8WiCnIvMT8h9rbKLZEyMvkwRaBmLzDHgfRFKjFKEef/UawYHvuIs9zLbao7gHResGUcof
- HSySVUlY1rFX7pm/BQ9rdcpW40AVPRKalvEETCU3m4zJbWj0xEkD/dKMpL7ZXaNwtRE15npsy
- itvmFfF+OVpVcj6Zs9m0LuHyTGnmnnhY6PVVpKdHIrXpODm06dPYsGUC5BN6fiHvfDkJKbSAU
- TElOp5Vds0k4cM8ol6aK8XeJQe/dIuzHoWaJQgJ7SBzcb+oOI0HK2KtfVOBlgoCWx33LdAM7O
- sYQCHNCezbeOxlNJNnA5FzPZQZmXiJkNbH5b5vDygWhiBRG9fKSsYkUwR6VmxSsmdrsxd5kaK
- ZWJvUpwycNp5tALkXiCsJX/IUbER+DasVzZ0tjAL0wqHYfB84yPxugjH0uC+eP61dFPw2Kax7
- tHHptPy+nUmKyEXSqbXgIPtcGs9oP8fPRtQqEe+L/+wN1j7bDNoP/4ukKPMSfmrJRBHGRFRyC
- /JEqkc2ZmCL3YmhWRCR+OhTXgIIYuNHVAXICwJh3Eq/2HwlXRzeTwBvMOgR//tZ2Fnvn3agLY
- sQ99S4XvwSGTtuZ8ayxyU3xKe2dR9VkPC13yTHJcjxB7HBqTWP/MRNRdyTOWftguhMfrADiDl
- FaVzu0JsLwDDI6hqXjJCMndVvdz/LKv3DgHT+GWGExDbi870hyEq2orl/FdIsykPpbGbKE8ut
- ADNHx6UurIWeSmhdi9OEDkFr9wyZ67jsbaAJ8V9UJZq6Cg5GDV+wFqy9eikoKHPLHnfQg/P
+X-Provags-ID: V03:K1:bDf+R+TkyUWaYGGT4Rw8RwyZQRZFhUKc76uXRlzIYLOjqGHIbry
+ aog87OGgxYXkb+GEk5vws7NgiRPu1/0Mfrbe6ahc7llLY5adLC4PB4xZuTgedJltIOK+rvv
+ IjhMmrsrT2wIZV8hhvJri1k4E/nTqlJhEM+7qhjpyrZDy8wcOPKeNYts9nnN75fx86dzqmi
+ cIwCWwzsT6mUNUSmTgnIQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oTF7Y6BYuTM=:m0dC/7n1v0qsJFRdheP0yz
+ O9X7FXs1T6jt4MUX38OC3mqAv+flzFusYESDYhH80Gxs/e7wYwmJ2G0vzk5WPIUSO2eqvikhV
+ BlNauqZH4g3r/MzkBdh6kl+qeEAQUBv9VZblVNZYYMgjCncCPiVKxqpuFNumUysRqeHGzKg6W
+ ILaP80lK5KXW8qahodoA0MzX5RASYlkf9wH/xnvMx0tNkX9AhGNbPl1z3BnndgTD2NCGs0LOB
+ qBLEO2lHpSB7Xivc2udzA+TTW/gt3Fi55YPpUspM8hq/wsJ3pjRITIvDxb81l0/S0n9F1rRaS
+ 6NyC1kW6c49RtlXfprpEr9lPaaKKd3hmD3Tcor63GMAfSjmm1LpjE3fg8XoLoN/7HidYFCreH
+ jVei8qZFWpzcEhMKcnMv1MRgpPQoRUv/cWjaImH5RGrQGWT7com7Xh7bMa6LAnCOO5+2vbc95
+ Mm3Ki5dCbLZfUey9NU/VCz+opifeQBtzuPADxsYL8qT/E3Do7KPh97+Mw6NB8BNE9qOFuTUvK
+ J+WNn1deRQVwKIjcVg4508Y4YSvinC4yMgCsQZxwjTEFfFK/bbo1yPOMn4r7h1kgrfTAuD9w7
+ pxbQuxPDBGT5hIKB0LlHLR0odXDixhpOrW2qsb4hgBxO2ATN/F+j7xi1yGZGh1U88ZF4/4wvL
+ CwX1vj2LyO8azMHF8NgzrJSlqCf/t7SndWOSBLwvZj90vz0rErkJFBf9HjAeoAQAEkXMFG68Z
+ CcUMmm+v3wm7bPZvXH/ADBjpOrrUZawuoA8flQg+tkPcd6uW0ZlY7cpXKVvR8hCfMjyTeVl+k
+ TdI2MNk3KYAdxcmgBpQRw0pmqp3rAivVMgLc/gHEWMswTuvahh31DAHLSWS4NuzO/XJWYXx
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,62 +79,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:10:02 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:10:05 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The ICH9 chipset is not X86/PC specific.
+The MCHPCIState structure uses the Range type which is declared in
+"qemu/range.h". Include it.
 
-These files don't use anything declared by the "hw/i386/pc.h"
-or "hw/i386/ioapic.h" headers. Remove them.
+This fixes (when modifying unrelated headers):
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+  In file included from hw/pci-host/q35.c:32:
+  include/hw/pci-host/q35.h:57:11: error: field has incomplete type 'Range' (aka 'struct Range')
+      Range pci_hole;
+            ^
+  include/qemu/typedefs.h:116:16: note: forward declaration of 'struct Range'
+  typedef struct Range Range;
+                 ^
+
+Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200228114649.12818-3-philmd@redhat.com>
+Message-Id: <20200228114649.12818-13-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/acpi/ich9.c         | 1 -
- hw/isa/lpc_ich9.c      | 1 -
- include/hw/i386/ich9.h | 1 -
- 3 files changed, 3 deletions(-)
+ include/hw/pci-host/q35.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 2034dd749edc..fdd0a6c79e11 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -27,7 +27,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "migration/vmstate.h"
- #include "qemu/timer.h"
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index f85b484eac63..cb79616cede8 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -37,7 +37,6 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/i386/ich9.h"
-diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 72e803f6e2e0..a98d10b252df 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/i386/ich9.h
-@@ -5,7 +5,6 @@
- #include "hw/sysbus.h"
- #include "hw/i386/pc.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci_bridge.h"
+diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+index 976fbae5996b..47086c645e9f 100644
+--- a/include/hw/pci-host/q35.h
++++ b/include/hw/pci-host/q35.h
+@@ -33,6 +33,7 @@
+ #include "hw/pci-host/pam.h"
+ #include "hw/i386/intel_iommu.h"
+ #include "qemu/units.h"
++#include "qemu/range.h"
+ 
+ #define TYPE_Q35_HOST_DEVICE "q35-pcihost"
+ #define Q35_HOST_DEVICE(obj) \
 -- 
 2.24.1
 
