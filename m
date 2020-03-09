@@ -1,24 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBE8M-0004To-Db
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 04:51:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50868)
+	id 1jBEWl-00055N-KW
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 05:16:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55369)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBE8J-0004TV-S5
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 04:51:32 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBEWj-00055G-S7
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 05:16:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBE8I-00028o-TX
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 04:51:31 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:43449)
+ (envelope-from <laurent@vivier.eu>) id 1jBEWi-0000Et-EW
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 05:16:45 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:50121)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBE8I-00028A-L9; Mon, 09 Mar 2020 04:51:30 -0400
+ id 1jBEWi-0000EL-67; Mon, 09 Mar 2020 05:16:44 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MCbR7-1j2BSP2Fvf-009eqM; Mon, 09 Mar 2020 09:51:26 +0100
-Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-References: <20200220162214.3474280-1-eblake@redhat.com>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MKbc2-1iunZ40f2i-00KxYn; Mon, 09 Mar 2020 10:16:30 +0100
+Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+ Pan Nengyuan <pannengyuan@huawei.com>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu trival
+ <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
+ Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <20200307030756.5913-1-pannengyuan@huawei.com>
+ <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,34 +68,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <59b4ee3b-787d-a71c-e606-9f682188b302@vivier.eu>
-Date: Mon, 9 Mar 2020 09:51:25 +0100
+Message-ID: <87b027ab-7bed-249a-08a2-2c27fdd05a31@vivier.eu>
+Date: Mon, 9 Mar 2020 10:16:28 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200220162214.3474280-1-eblake@redhat.com>
+In-Reply-To: <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UtnjFEooBMlgwjorYzAkl4nNF+ZuYJIr/L9xEcY0Tyg3h4ecN2R
- xlNQHIsDQ6iKWzXJk9sD1mqpJMKFph+8+bLUBr/0KL8mCiNVOupB28gYormCvS5cEpcvSrW
- BUT4reX2SKelCo1aOWH4n5oQadh/Iil/OrEqmV859zuG0lOgsOWYnRPHKX1FyXhirtdDehq
- eeXlu2A/ShpHm7/57/Q+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qD7ukt6TIBk=:9fN0w+nPHy0IUfMr+vvcQo
- SJzr+o85ixmOxmCX0713lO8rr2NKGWYOTn5yGI39TFJWgZzRG0a46LxPWVJSzkxQZ2njjUhoK
- YV6IvHslZC/Yfl9s3wPl5bfQQAPYZOde1oujs6P1Nj5vHLg6ks2q7XqFk7jpsHf/ZbCD3RMn+
- Z16tMxGYviLl+Emz5TTmXiZPEkxE+En7ANetkEEuGZZdZZnGCTj7YylAffLPx2VzX2l+7Ne46
- FaaZHhDBqPRiMKpKMrT/L+qkSFRujd2fbih1azhGniYUdyl5zx00fZUAu3inUNol4xevirTBD
- U26KCwdzePC71wOpHdKFO15quq8pRZyF4qRDXtivb4Ivgv8DHuWo7cIWL5GfmQUm56hnlAx+D
- r/nZUh9wHp1UEDYykhtSI41IfnWeaMcH4k2Vqm6+ESG+0bP3ogW+WlHJ8b1Vck5kWGHxRxjnK
- AnN4X7x3BS5Yj7CdmLFj1KyKPhDnXLlmVX8mSQeFlzBVWD1u3FN7kH9cEyJ1Fjm5PTz4e2UcG
- ImRygzSGlHMd9JdoP33DSAYgVq4ZTND4nKiAXvdo1MWPXJxDQ3H3zM7hhkR/39/3SBt2MKkJc
- l9y+WkddZU0CTszGNNANwWPzweeIh1K86GaMSNaErkz+LKmGi/VvydKoiZeGO3WDSgy0mHC3N
- QnEZAxGGgqZMB/BBBR9SN4flkphZYueMw3MeuhsT/R3I+3nRQxZMGMmz+y+CwPnJ/LtbHs6Fi
- SpLUSsa5Aq6+mwS1yC2hOUwfZjKBy1XH2AIVEwIC3ZZGTWJpjebaZbn0YyK0qU548VqQtvJnz
- 9ntRBBoOuTm2IHacFzr3ZBUshPBvG828IRChrqytcSWeUsYbehY8rq9R9zNo8wZDxr5pBkA
+X-Provags-ID: V03:K1:nryeCMovkafuqJxKaiOZiRlwfKTUSZRIofqOTXH1gWwaCgnw7qC
+ OBqT8bLSxpJWzaWB3tu189je0vOweAU7gAoFyqUySyGcbb0ipJXrqDJ6IBFocNbcdm06ZWc
+ Wep8PwgLk0AB1FguffG1Ypt0DzFEK6MtBmtfPqkOSoLia5clHUgOp5kW3WpjWUbLcVrq1an
+ ObNQxaEwgEAOgxtboLmgQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3ZPX6QDt+d0=:BKdEi56kXX7+62Je9xrdCT
+ 0ZprflYR1y/1OM9bKUmhnEr/KAFA2X+fqJVj+nfpAqEK9S7jYpGnRPdqjo13JaFRRFZH6DAVY
+ m4sa18AfNGKALhVZ9L1MzCyS3q9LpVpmf8fKSItUqORYvCwJ/NiugG5iPx96k+AKxlTtwbwyr
+ sXuPVTwFiSo3ytRBwWFhTsMtHpxV7xpNxl536/h6BI6tghp0GcAwZWH/ftGjxLpmmL5ftYbAa
+ bEUr/ek8YG0eAgWvnchJe918ShDZCibElKS9U1wQ0POOqoOa5FjRSn/8xt3Av6hMKMuNHdnD8
+ XZyis/z0bST+cCaTuq5g0hbkexndpw2ZJCkAgw0NX/dOp46rEOYFUf6PmcertB6n8HCkSxxBm
+ VfV3t9cvzRg5knUhP1Ofn+jHXOsEfcw/+gPTUWn9SQqv1BhNz+2uasC96MKRThb1M+LRw3qrb
+ xaaOtlGjAYhk6ybTtELAF81lhDc7KEtP315S1aYIqGqTFa8wMv7CR4vEFs9XTOLEDs09tHqI/
+ kUpgE4hF6nANJQuiS/FKA7ORJUwrVYhu8fQg+DAAXvQ+9uNi2C/QmSoihHw5z33mxFtIYAW0a
+ G+uicTRqNvElXiqEjBybeiRfjoGWiuc6XGVCxmLRf2RzXNTL5pZKX8T8dffgHixFvAtXxOcuB
+ NliDYEztnbzFeqrXw87wY//89AayxjA89kFEz1CYmn27356VaPzCrZ/dBYcdeJ20NrSL3vekm
+ pR47rGoV8hIaDfJapdBPgh6dNO2P4C0Xa2k+FHCJr1ZOML49Q8ToFqwjBjet3kTxEm2216NOL
+ F+5IZ8cZgprVD2VOS45dv0lTsFI6C8J0oS9FBn3CEV3PXAiJSd2D+zlQfYmSVSJq53W98dQ
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,40 +107,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 08:51:33 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 09:16:46 -0000
 
-Le 20/02/2020 à 17:22, Eric Blake a écrit :
-> We are converting more doc files to *.rst rather than *.texi.  Most
-> doc files are already listed early in diffs due to our catchall
-> docs/*, but a few top-level files get missed by that glob.
+Le 07/03/2020 à 11:39, Marc-André Lureau a écrit :
+> Hi
 > 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
+> On Sat, Mar 7, 2020 at 3:53 AM Pan Nengyuan <pannengyuan@huawei.com> wrote:
+>>
+>> Fix a memory leak in qdev_get_gpio_out_connector().
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 > 
-> Both *.texi and *.rst entries make sense while we are still converting
-> things, but we'll need a followup to drop *.texi when the conversion
-> is complete...
-> 
->  scripts/git.orderfile | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 1f747b583a9e..abd8a67a2b4e 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -11,6 +11,7 @@
-> 
->  # Documentation
->  docs/*
-> +*.rst
->  *.texi
-> 
->  # build system
-> 
+> good catch,
+> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Applied to my trivial-patches branch.
+trivial question:
+
+Why do we prefer g_autofree() to the g_free() function?
 
 Thanks,
 Laurent
+
+>> ---
+>>  hw/core/qdev.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>> index 3937d1eb1a..85f062def7 100644
+>> --- a/hw/core/qdev.c
+>> +++ b/hw/core/qdev.c
+>> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+>>
+>>  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n)
+>>  {
+>> -    char *propname = g_strdup_printf("%s[%d]",
+>> +    g_autofree char *propname = g_strdup_printf("%s[%d]",
+>>                                       name ? name : "unnamed-gpio-out", n);
+>>
+>>      qemu_irq ret = (qemu_irq)object_property_get_link(OBJECT(dev), propname,
+>> --
+>> 2.18.2
+>>
+>>
+> 
+> 
 
 
