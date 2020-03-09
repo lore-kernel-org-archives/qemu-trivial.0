@@ -1,62 +1,98 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jB8WM-0002My-DY
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Mar 2020 22:51:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33867)
+	id 1jBE5F-0003Js-Tp
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 04:48:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50138)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jasowang@redhat.com>) id 1jB8WJ-0002LA-Op
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2020 22:51:56 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBE5C-0003IM-5C
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 04:48:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jasowang@redhat.com>) id 1jB8WH-0007j1-UY
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2020 22:51:55 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50752
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jasowang@redhat.com>) id 1jB8WH-0007iI-Rc
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2020 22:51:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583722312;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vZ+yYr0Xi/9AmWZBxXKkBmg5mAtFHm3+s3MfXAH6Kzc=;
- b=WSMLi5pnisSns+rX36MgT2ARmxhjfgOQWOEz1FZ+4+bbODz2ePjiX0Wu8B0G+t4aAItxzN
- YUHR3Phox0civKPlBLZfVkBNzrLsA54h7+plQ4BLYWVeaddgSq01MDfsJFGiHzclcZDqEF
- FKqmxw7KxQExWrSaFG5q9XrELTK1WIA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-340-hwJpTLk_MMehStz7L8sHgw-1; Sun, 08 Mar 2020 22:51:50 -0400
-X-MC-Unique: hwJpTLk_MMehStz7L8sHgw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3BF4800D53;
- Mon,  9 Mar 2020 02:51:49 +0000 (UTC)
-Received: from [10.72.13.185] (ovpn-13-185.pek2.redhat.com [10.72.13.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AE6A138D;
- Mon,  9 Mar 2020 02:51:47 +0000 (UTC)
+ (envelope-from <laurent@vivier.eu>) id 1jBE5A-0007Vl-QL
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 04:48:18 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:52305)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1jBE57-0007Ta-Tv; Mon, 09 Mar 2020 04:48:14 -0400
+Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MxmJs-1jY0Yz1oL8-00zH2V; Mon, 09 Mar 2020 09:48:07 +0100
 Subject: Re: [PATCH] dp8393x: Mask EOL bit from descriptor addresses, take 2
-To: Laurent Vivier <laurent@vivier.eu>
+To: Jason Wang <jasowang@redhat.com>
 Cc: Finn Thain <fthain@telegraphics.com.au>, peter.maydell@linaro.org,
  qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <alpine.LNX.2.22.394.2003041421280.12@nippy.intranet>
  <2116e607-52c8-7e7d-8ac1-c80d4628b2de@vivier.eu>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <d2e80d5b-3c7a-92ad-7371-1cd0800195ca@redhat.com>
-Date: Mon, 9 Mar 2020 10:51:46 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ <d2e80d5b-3c7a-92ad-7371-1cd0800195ca@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <23179263-a8fb-57cc-e98a-bfe9a2ee9037@vivier.eu>
+Date: Mon, 9 Mar 2020 09:48:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <2116e607-52c8-7e7d-8ac1-c80d4628b2de@vivier.eu>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <d2e80d5b-3c7a-92ad-7371-1cd0800195ca@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:nW5+porYYJUczELFs0G+M24y9dQ7Sw8MfpqGS4LjlN1vtGXxboE
+ QGgEuVM22bcDOkhI+pI4+8X1TN4aSz9r5FgI9wiytV+9q6TtORZ1TKula/IT4etkpoKlRHL
+ g/yMLcOewZnvbTref+ABj2vVb74HyuX++Cvu77WENqflxOXZj1R8Qrpeca+RvK4KhcgG4lF
+ qqTU9mjjpr6B5DVp5r/LQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:juIUUIMqmv4=:dI/auL1JLYxesFklA6hCiI
+ L5Wy9crXLPEMkTCpjMGRtzBTOrazxs+ex/ETWxqZK7SVzJRpiPLA2YmGqoF6GSMwt21idYhHq
+ ILgHbNehwIWuMHH6Xdr3AczMZYNf56rSyZseSYO6COi3LC73MzhYdOMnHyOzz9u0CurK4Byag
+ H/XRJo04vyPXAfh5u+4xc8ZjqBUKhyIr/uUNKTZgEa9og7z46V0IfDrRTez3bfaBoNSXXRfOw
+ HSlDcllP59upK17ZSJH7XUf4lDhwZwQvHuJ+1vWBPEjTVwI/bYV7beK3oeXhmvQGeAddqAUOz
+ ZP/bhxBBMH0/cpGGaXkb0mgcnZzWPCYzOH8/ozpJEIbBEq/4GpaQJM32do8bBOw7Qy5/NHIdr
+ zSuetgp+YadIG7dQBBBGdWduqa9/Rsmu/ijDF88mDxTbOQOYcp6Oq7zf4zW3dai2AZISbsn+4
+ /4crSMDFW11wa582SZRNarkIZb1Wf25Gh1b5LduCZZOxTLTDCYoWO1xiUAhGVhrmGpsjuAuy7
+ 82+7Fd2ngYpSe385QSkK67DsAIuZLBjLMk3H/fAsPN2i/5b5tbuV55p56LasYKr4RGCTljESI
+ Myb7bpKZicb26NKZVEP5VvpsK8u56bNmOnGFan/MbX7XtGmP41nC8rjuO14/p4EGeS411xZyI
+ QPkZ7zEjjXxP8NrJrhQh0Ijhxw5zvrGp3IGbIV1wATUliSdvYnyoWYcwBi2nJ1vLREtCoi0Kp
+ Q2IsEQkA8AeWEOvMe2l3jInWvQ6pdg6uXlPHc8V5XpJtpVB5gC04lrf3Nvexd/9DLRjbKcus1
+ EN+fL3wL16SgMHBmWEEncwVlevOsLj9tDT1dH8pHsdqtbce4Etqsa2wgOaPDO1FXl5B75i5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,55 +104,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 02:51:56 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 08:48:19 -0000
 
-
-On 2020/3/8 =E4=B8=8B=E5=8D=885:52, Laurent Vivier wrote:
-> Le 04/03/2020 =C3=A0 04:23, Finn Thain a =C3=A9crit=C2=A0:
->> A portion of a recent patch got lost due to a merge snafu. That patch is
->> now commit 88f632fbb1 ("dp8393x: Mask EOL bit from descriptor addresses"=
-).
->> This patch restores the portion that got lost.
+Le 09/03/2020 à 03:51, Jason Wang a écrit :
+> 
+> On 2020/3/8 下午5:52, Laurent Vivier wrote:
+>> Le 04/03/2020 à 04:23, Finn Thain a écrit :
+>>> A portion of a recent patch got lost due to a merge snafu. That patch is
+>>> now commit 88f632fbb1 ("dp8393x: Mask EOL bit from descriptor
+>>> addresses").
+>>> This patch restores the portion that got lost.
+>>>
+>>> Signed-off-by: Finn Thain <fthain@telegraphics.com.au>
+>>> ---
+>>>   hw/net/dp8393x.c | 4 ++--
+>>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+>>> index 8a3504d962..81fc13ee9f 100644
+>>> --- a/hw/net/dp8393x.c
+>>> +++ b/hw/net/dp8393x.c
+>>> @@ -525,8 +525,8 @@ static void
+>>> dp8393x_do_transmit_packets(dp8393xState *s)
+>>>                                    * (4 + 3 * s->regs[SONIC_TFC]),
+>>>                                  MEMTXATTRS_UNSPECIFIED, s->data,
+>>>                                  size);
+>>> -            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
+>>> -            if (dp8393x_get(s, width, 0) & SONIC_DESC_EOL) {
+>>> +            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0);
+>>> +            if (s->regs[SONIC_CTDA] & SONIC_DESC_EOL) {
+>>>                   /* EOL detected */
+>>>                   break;
+>>>               }
+>>>
+>> Jason,
 >>
->> Signed-off-by: Finn Thain <fthain@telegraphics.com.au>
->> ---
->>   hw/net/dp8393x.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
->> index 8a3504d962..81fc13ee9f 100644
->> --- a/hw/net/dp8393x.c
->> +++ b/hw/net/dp8393x.c
->> @@ -525,8 +525,8 @@ static void dp8393x_do_transmit_packets(dp8393xState=
- *s)
->>                                    * (4 + 3 * s->regs[SONIC_TFC]),
->>                                  MEMTXATTRS_UNSPECIFIED, s->data,
->>                                  size);
->> -            s->regs[SONIC_CTDA] =3D dp8393x_get(s, width, 0) & ~0x1;
->> -            if (dp8393x_get(s, width, 0) & SONIC_DESC_EOL) {
->> +            s->regs[SONIC_CTDA] =3D dp8393x_get(s, width, 0);
->> +            if (s->regs[SONIC_CTDA] & SONIC_DESC_EOL) {
->>                   /* EOL detected */
->>                   break;
->>               }
->>
-> Jason,
->
-> as it's a trivial bug fixes (only a diff between the commit and the
-> patch), will you merge it via the network queue or do you want I take it
-> via trivial queue?
+>> as it's a trivial bug fixes (only a diff between the commit and the
+>> patch), will you merge it via the network queue or do you want I take it
+>> via trivial queue?
+> 
+> 
+> Hi Laurent:
+> 
+> Please merge it.
 
+Applied to my trivial-patch branch.
 
-Hi Laurent:
-
-Please merge it.
-
-Thanks
-
-
->
-> Thanks,
-> Laurent
->
-
+Thanks,
+Laurent
 
