@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2E-0007EF-0g
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33002)
+	id 1jBK2L-0007TG-Sy
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33124)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2B-00077X-Cw
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:36 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2I-0007Lq-9F
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK29-0007Ud-Nw
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:34 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:39165)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2G-0007ZS-SB
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:57699)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK29-0007U2-EG; Mon, 09 Mar 2020 11:09:33 -0400
+ id 1jBK2B-0007Up-0b; Mon, 09 Mar 2020 11:09:35 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MJm8N-1iw7ce3yYr-00K8ZL; Mon, 09 Mar 2020 16:08:50 +0100
+ id 1MD9Kp-1j2piJ2lxh-009AEZ; Mon, 09 Mar 2020 16:08:54 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,35 +39,35 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 03/33] build-sys: Move the print-variable rule to rules.mak
-Date: Mon,  9 Mar 2020 16:08:07 +0100
-Message-Id: <20200309150837.3193387-4-laurent@vivier.eu>
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 05/33] hw/net/e1000: Add readops/writeops typedefs
+Date: Mon,  9 Mar 2020 16:08:09 +0100
+Message-Id: <20200309150837.3193387-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Ai7ynpyxzGre05ka6l4GHxtd8qdyahqT071p9CAte9wTwaVdbM3
- pHDOymBtC/BvQqlP10iUnTuKFyHWpDKASXeJ/bW6G0v0fVTGSF5Ljp4PCjGqP+TIJ9ZNDRF
- K6HMcD16Vs7MQh6h8BIGO8yntewAIqBTOekGCjOlFf2vEJIEV7rOrXubkpjFZ57I8MB07eU
- O+rjV/JwLevP1eAGA39mw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Sfa1dDNsXDU=:9u5wgKBUFXudeh8bQQnT2U
- hdCTsT6kbqwpRz7WgE7IHH/m+OwP6e+qOyrrV37mgpctyPzGgwd4pVO4zhtJJZMGm3K9fmsmr
- cfMDp+t3pwTTrcyCCsrlKo5ljsWP6qyu1dFFt4mtJKol1kOpoU7kudYcjRmR+yX9rT2sGvsuQ
- k2wiNcXnuJzvUze1hfR6MS3HSLrjGRk3u1KHYBnA+JDnraMuhRnfSXbR/VBhAH/9WzGKiTQUf
- c38sngokSEH+Kdx7DZs7U1rz70Ln/+5eDQmuUq0Snbclge1aZnKt8iEfaAQPh4pJh5BGJql7K
- Xp6NryO9xJrV/V8ekAZwWB8Q6QY3LFDEFuxkWbSDFtsVOgY1Bhq6HjKQ1r/Iy9OUvhEXhYJab
- ClcnAPME1ZKDIuLThJl0DHvkahAhJVFJhiz9yaQlGoJ5KSwFf12kc7VQy8ufGNcRfwMOUQ1iN
- rPmNU4x5+VM5TaDJP1kTA4StxGQMQXFZAm5+9kk2PpSnIX9ct9DRK6O8X1G0IXeskjiR0Hsmx
- D3gx/WAf4Fn17MUQvQE5txRg7MEE8LoBgwhiOazCpMzRHHRxZ1t0T15Rx30W9AIOLdc9r+iOl
- n2diFPff6lpEso40mpvi/sUNl8N1qyFoWOYnDJEY99qXC8Pb0kMy2mduiT18q0k6ys18+HPIE
- sAVLRQ8EoOLIL6P1b39TtKEdOmKHKj4VQzvuMpG1khli4vSfSgdyIA8LSnJqGeGDP9iHxhAXT
- 8xdPd7qOaGHPh4ugoblbVTAM4oI+1I4vLASJXigLq2UzBmbJqxof15K69EzZKFp/ok+Zql7JY
- ERfm375SNigSccT6w0HvKAEPc5CeXgtBPj5Oq4PwtCUb+YWjF1Sj2e3Vy2FNf5KHIewmKww
+X-Provags-ID: V03:K1:Qt3XGoPWrOD3BOImoMd7HNggjubM61z0oqiZ7LhCP7pIMl1lmam
+ W+B1pBUpHxxgKYc+QeT9fJZVePjB1nbc/cyBXufeZCuGjvXvRhh/ztiE9SBPBBXtg0/tYh+
+ sJqtkyt4p/cNboE5VGPxDBeVTwkUVEDnqK0DknnOLbRmUDIpn+dMSshEsInbamEv8d4LGdL
+ 8hd2cVZpto4DRzEPSi/LA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+H0uxhaaPt8=:tGeZfvwQVmF9M2qjfCs55R
+ N4nHzotQRiMkvedJMn9gcLNCjzxesAogaqO+zFpPsZovO6nCQt3jA2XTIIYHoRMHzb1eFii6G
+ ZZKmqmUtWc+73UZ/0O5HgC0tdsejeUdkh2zwDw4OUBQrXWVnuW1QEW2RmYcCfPZhdmc8gunSE
+ r5MAKEeFGdIi1Y46YULAXz69LmdwPqYdfYHiLVux36mSVJPzfO2iExTP+xy555AVYsabIl+kh
+ YG+GKp1i9yeaikyWFcSOSTkpnYAC7XTmBGOSo+luqWaMIttV+kS51tU4Em1daZPQxgAKqTfj/
+ aRC90uRg7vTvP0oG0bo/Mwc+KW3zMgd4FqhjArhzyu+O9sy2pp41cQYy19wWXf4ZxCSvdiuBF
+ Y/5rBjJSEyplUDA/ZrWImL+UcofvE9r0VvkWEHIR7P8ki2p/y7gJBPMnnKIeoKpO4wFo+XNcz
+ G+lVsywOfUjj5zoh20uoBZNp1ZCA8yJkLKqjcU4lOYkJxMdeoBIv3jItUKfnHgPWomPNLpw+Y
+ sakx+4YTrXZ3ceOaOSPz7e+qdqc8hjbi0tuApftEkBNvMIm4FhkjslPzI+5aQFeFwrlsKTwBa
+ USEVUIK8yuvW+EdpCIrigUhNgPopuIO0A/5dnnceWxSMRcgvrMoVDEwWPeWaPsGyqa5pgGpUI
+ AuyVfNCXC9r2FghE4v3x3Ihs3Ng+J1W+v2Pj2dQ6nFqPBDsaMbNeH7CdfdGTcwMHVoQ+QFKnK
+ 5t0KZA5atoLd2C1kkvixoHpxZJUUtsXzzuowV1IXVXTYqGOZfQ9zNJisxWkSHeLHivqov/hGV
+ GIrAxd55koq74hE+Ylc/IfFSo4snzb/nBfP1U5QJmCSxvjsFZazVIFn34qXiUynf+nOYOD2
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,62 +79,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:09:36 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:09:44 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Currently the print-variable rule can only be used in the
-root directory:
-
-  $ make print-vhost-user-json-y
-  vhost-user-json-y= contrib/vhost-user-gpu/50-qemu-gpu.json tools/virtiofsd/50-qemu-virtiofsd.json
-
-  $ make -C i386-softmmu print-obj-y
-  make: Entering directory 'build/i386-softmmu'
-  make: *** No rule to make target 'print-obj-y'.  Stop.
-  make: Leaving directory 'build/i386-softmmu'
-
-Move it to rules.mak so we can use it from other directories:
-
-  $ make -C i386-softmmu print-obj-y
-  make: Entering directory 'build/i386-softmmu'
-  obj-y=qapi-introspect.o qapi-types-machine-target.o qapi-types-misc-target.o qapi-types.o qapi-visit-machine-target.o qapi-visit-misc-target.o qapi-visit.o qapi-events-machine-target.o qapi-events-misc-target.o qapi-events.o qapi-commands-machine-target.o qapi-commands-misc-target.o qapi-commands.o qapi-init-commands.o
-  make: Leaving directory 'build/i386-softmmu'
+Express the macreg[] arrays using typedefs.
+No logical changes introduced here.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Message-Id: <20200306170456.21977-1-philmd@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20200305010446.17029-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Makefile  | 3 ---
- rules.mak | 3 +++
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ hw/net/e1000.c       | 6 ++++--
+ hw/net/e1000e_core.c | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 2e930688942b..37aed4a24422 100644
---- a/Makefile
-+++ b/Makefile
-@@ -15,9 +15,6 @@ UNCHECKED_GOALS := %clean TAGS cscope ctags dist \
-     help check-help print-% \
-     docker docker-% vm-help vm-test vm-build-%
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index 0b833d5a152e..972d9b508399 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -1150,7 +1150,8 @@ set_ims(E1000State *s, int index, uint32_t val)
+ }
  
--print-%:
--	@echo '$*=$($*)'
--
- # All following code might depend on configuration variables
- ifneq ($(wildcard config-host.mak),)
- # Put the all: rule here so that config-host.mak can contain dependencies.
-diff --git a/rules.mak b/rules.mak
-index e39b073d4648..694865b63ee8 100644
---- a/rules.mak
-+++ b/rules.mak
-@@ -435,3 +435,6 @@ sentinel = .$(subst $(SPACE),_,$(subst /,_,$1)).sentinel.
- atomic = $(eval $1: $(call sentinel,$1) ; @:) \
-          $(call sentinel,$1) : $2 ; @touch $$@ \
-          $(foreach t,$1,$(if $(wildcard $t),,$(shell rm -f $(call sentinel,$1))))
-+
-+print-%:
-+	@echo '$*=$($*)'
+ #define getreg(x)    [x] = mac_readreg
+-static uint32_t (*macreg_readops[])(E1000State *, int) = {
++typedef uint32_t (*readops)(E1000State *, int);
++static readops macreg_readops[] = {
+     getreg(PBA),      getreg(RCTL),     getreg(TDH),      getreg(TXDCTL),
+     getreg(WUFC),     getreg(TDT),      getreg(CTRL),     getreg(LEDCTL),
+     getreg(MANC),     getreg(MDIC),     getreg(SWSM),     getreg(STATUS),
+@@ -1205,7 +1206,8 @@ static uint32_t (*macreg_readops[])(E1000State *, int) = {
+ enum { NREADOPS = ARRAY_SIZE(macreg_readops) };
+ 
+ #define putreg(x)    [x] = mac_writereg
+-static void (*macreg_writeops[])(E1000State *, int, uint32_t) = {
++typedef void (*writeops)(E1000State *, int, uint32_t);
++static writeops macreg_writeops[] = {
+     putreg(PBA),      putreg(EERD),     putreg(SWSM),     putreg(WUFC),
+     putreg(TDBAL),    putreg(TDBAH),    putreg(TXDCTL),   putreg(RDBAH),
+     putreg(RDBAL),    putreg(LEDCTL),   putreg(VET),      putreg(FCRUC),
+diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+index 94ea34dca56d..38bdb90114c6 100644
+--- a/hw/net/e1000e_core.c
++++ b/hw/net/e1000e_core.c
+@@ -2855,7 +2855,8 @@ e1000e_set_gcr(E1000ECore *core, int index, uint32_t val)
+ }
+ 
+ #define e1000e_getreg(x)    [x] = e1000e_mac_readreg
+-static uint32_t (*e1000e_macreg_readops[])(E1000ECore *, int) = {
++typedef uint32_t (*readops)(E1000ECore *, int);
++static readops e1000e_macreg_readops[] = {
+     e1000e_getreg(PBA),
+     e1000e_getreg(WUFC),
+     e1000e_getreg(MANC),
+@@ -3061,7 +3062,8 @@ static uint32_t (*e1000e_macreg_readops[])(E1000ECore *, int) = {
+ enum { E1000E_NREADOPS = ARRAY_SIZE(e1000e_macreg_readops) };
+ 
+ #define e1000e_putreg(x)    [x] = e1000e_mac_writereg
+-static void (*e1000e_macreg_writeops[])(E1000ECore *, int, uint32_t) = {
++typedef void (*writeops)(E1000ECore *, int, uint32_t);
++static writeops e1000e_macreg_writeops[] = {
+     e1000e_putreg(PBA),
+     e1000e_putreg(SWSM),
+     e1000e_putreg(WUFC),
 -- 
 2.24.1
 
