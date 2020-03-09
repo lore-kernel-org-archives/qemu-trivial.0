@@ -1,46 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBH3O-00087d-Nf
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:58:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53525)
+	id 1jBHAn-0004EO-M8
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:06:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54689)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBH3M-00081b-0s
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:58:37 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBHAk-0004DI-Pb
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:06:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBH3K-0004I6-R5
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:58:35 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:40077)
+ (envelope-from <laurent@vivier.eu>) id 1jBHAj-0006fX-Ma
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:06:14 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:43639)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBH3F-0004Bj-PN; Mon, 09 Mar 2020 07:58:30 -0400
+ id 1jBHAj-0006fF-ET; Mon, 09 Mar 2020 08:06:13 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MkYkC-1jcJJt0bwE-00m51N; Mon, 09 Mar 2020 12:57:39 +0100
-Subject: Re: [PATCH 00/20] hw: Clean up hw/i386 headers (and few alpha/hppa)
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Xie Changlong <xiechanglong.d@gmail.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
- Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20191014142246.4538-1-philmd@redhat.com>
- <dacba192-0a1e-9801-3e6f-02583bd8b994@redhat.com>
- <fe8ef9e8-d8d2-e92c-cde3-13a11fa1a5bf@vivier.eu>
- <18164a90-1ad2-28d1-f6e2-cc7741532f72@redhat.com>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MowOm-1jgj2C0C6Q-00qRo9; Mon, 09 Mar 2020 13:05:54 +0100
+Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
+To: Pan Nengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org
+Cc: berrange@redhat.com, ehabkost@redhat.com, qemu-trivial@nongnu.org,
+ euler.robot@huawei.com, pbonzini@redhat.com, zhang.zhanghailiang@huawei.com
+References: <20200307030756.5913-1-pannengyuan@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -84,34 +63,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <03b48649-0a19-80fd-88d2-6241e284f7af@vivier.eu>
-Date: Mon, 9 Mar 2020 12:57:34 +0100
+Message-ID: <065a73ce-c0ee-07be-b442-c98763f99e1c@vivier.eu>
+Date: Mon, 9 Mar 2020 13:05:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <18164a90-1ad2-28d1-f6e2-cc7741532f72@redhat.com>
+In-Reply-To: <20200307030756.5913-1-pannengyuan@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hw0IUu3amw8TetNO1ivmES2MS1pUP6jUBz/1S57ei78TgyBpZu5
- BybeLBWx2rLDxktiNDNlAbNbCFCWWHORTuzm08z9R1s4GvklfvRu/KnIAOSxRHc/WNH6xRV
- SGQUfob/nimb+IvN6H9VJ+dWYp42uKtz+5+G+pNyHnYOtDs0THWLmHlx2g/rSbbjmvwK2RZ
- dpXdH7XKDoySSv7ikwQhw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QBn88ySfXdg=:+TDsBMIs+q38J4/rwQ+WFk
- Jq7YhVun69Y0ym2zCri/WxN0LmtO+0HXgwrEz3CbFub/lP2vdxzYCMEl+prybIxUvFbc77lX5
- 08LSScHDyBvDmiYm8t+y6B8gsm1WRKEQaU0gPdv2L+g4UZfizxhmxxN0o1aOpLHw45n2IILid
- FvLZkFtYDx3z6RqXH1g5ATvKKsTtqBs9ZbTUAYoKaNC63ibDF5Cxv/7ndG+E1VZWmiHhECNb4
- ZOtVwLCHHXrSUZSi/UA+FdUz70BX0CF5sHuvph/iWM1AGME+QBaXCca4eYyWCgUvvWFnQW3Q8
- 6/L0JuWrsxigbG9bypnfKrl8UrLTMKEYLbl8+2zUDySKYA2FpeZCFfafRnLYcW1wFSu0vgQst
- LOeB9dgJfitEa9r/WwZczgEAki+ldc2KfWvNidBg0+HyEZLWYZ8KTu0ARTKbXOLyD/rfSZONE
- 46UKdV7ondDpYnAUQBj33k0cZFnpPFBq+pUPCUvqdgLPLKaIVbA9iHcFdd0uJyYnHXvS1wVNY
- zro0Zex1Gipl9km4IDZ0lm1SffzDW1rDGydTG1j3rAl8e57kegIvo9lLwaeIQ7+/H70MQFeN7
- YW8FGOzMjNr/1czdYsyMjf+6OwtvRG+CNsIDMAZ2E5tcrIET5LoYtNj6V6lNTaKpWpnfAduQA
- OqNl5bzPuworqIhuphLaO99ephIbU0g9TG9hOES9DZ7LjD4J3p1UQ/LMkqf9Tu/uDwBsmURUY
- LGDmlIaENf3Ub+y9mwwAafGvNLNy4aUpXjVkKGz1F6SvXQs8u6azx/ZqeAPkcH2NYI05aRIE3
- aSzZppTSC0VQZbgW5DdgxS5hlIKiObonK09rcKS8ZhTFwjI/o+3hT7VnoM3YWgxxGpLKRmE
+X-Provags-ID: V03:K1:xH/ThBAAXWcjDMLwZPCc0yT6eD/9YcwuXFAXxJQ60OkagyQWA03
+ SLMRKiQ6HTRcIH+zpTC9rgqf2Hp/C/f2ZdNWZM/pI5D5jSJow0CKmk1jEBPeMY/X124gLAQ
+ lsYBuLNdgxXr96ru79eq4zRWwNNumDpo9jq+yrQKq47hIwlktgbODFWmM8RmK5cNEFnsq2v
+ uFds54OYZNFLkH7Qsz+8Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iTyDS3J4pSo=:Afc28itw6n3t7VNL15Il/l
+ 4gVv5Bp+K4DGEFR5Hu4YtR1kjqz4LRXWiadLmLQ/3p48QKGn8Tln5mvKIxfz1Ayj/fY1gVj6l
+ KE8lD75IlYfjQsCzsZgMul6nx78o6OAeGajGbctr2FmemM75nGPdXkkl7XRHl0Cm2DLaDpUhY
+ ZKBjmkRUGVDzrOPrL9s+/gHWGJ9Q81rLm+xSDfNeL42720iPQdxHLA8PHs8R4a4bAWH5eok5P
+ OlXL7X8zHVAjsM6n6Dn8jRs9hExAT+sj86FUe+u2XJgaxfIWvoAL+9XIhxTYOjPZl1pVgeW8s
+ KNEhT8qXO2OiZwEGX7HYbitg7tr+rm2JugryiU5qHIWP4a0shFDRAsk4wZN44kCXcXGpf6OT3
+ A6fqMUjKTl4C96wDnUd6kLkXAFY6krFkLcJdfqrnVen2NICpqO0KLAXuIge+Sz/8MHQRlCoEI
+ H1S8URoMCneYQC7I0bZBPJNUAgCA/pWXe0g6MXLLoX99cunf00Bc9am7FJ3waxpUuIPY8Hem8
+ L3AEzk2Hnm5W41ALLKg1A3vh2O5Be/H1z+v+D2JRlC8KbvVHcf1BjCVVqZFF3iW/yeXushFDz
+ Gxp2HZg9p/M1KOnE8bHNCW4GKiWPzbAssHSED7xQxtDJFltPAI7/EnWX70//3SswtgnN1konz
+ IRiIvjd468R//Rq2li3Y6sLfODC8zOVxNyciqE9KVAZBfL0uybyrZR8T4MeQjeFIP/yAMDHon
+ O4Vz5RosQVPe+RtInyQT5Nd615MgKUcLYzyDtje+ycbamyeYjSMeGBky6ZXCfUsMw7OoPNKlm
+ 6EEfvwS2zJ+W4bpZm9Ax4s1eZmJTo8RtCRLasi9dFES7mYp+TOMb2k7lr0sCKIu6Up10Ka5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,60 +102,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 11:58:37 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 12:06:15 -0000
 
-Le 27/02/2020 à 14:28, Paolo Bonzini a écrit :
-> On 26/10/19 15:32, Laurent Vivier wrote:
->> Le 26/10/2019 à 14:20, Philippe Mathieu-Daudé a écrit :
->>> Hi,
->>>
->>> On 10/14/19 4:22 PM, Philippe Mathieu-Daudé wrote:
->>>> This is a follow-up of Markus's cleanup series:
->>>> Tame a few "touch this, recompile the world"
->>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
->>>>
->>>> This part is mostly restricted to X86, but since some file from the
->>>> Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
->>>> too.
->>>>
->>>> Eventually I'll succeed at removing hw/i386/ dependency on non-X86
->>>> platforms (Quest I started 2 years ago...).
->>>>
->>>> Regards,
->>>>
->>>> Phil.
->>>>
->>>> Philippe Mathieu-Daudé (20):
->>>>    vl: Add missing "hw/boards.h" include
->>>>    hw/southbridge/ich9: Removed unused headers
->>>>    hw/input/pckbd: Remove unused "hw/i386/pc.h" header
->>>>    hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
->>>>    hw/timer: Remove unused "ui/console.h" header
->>>>    hw/usb/dev-storage: Remove unused "ui/console.h" header
->>>>    hw/i386/intel_iommu: Remove unused includes
->>>>    hw/xen/xen_pt_load_rom: Remove unused includes
->>>>    hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
->>>>    hw/alpha/dp264: Include "net/net.h"
->>>>    hw/hppa/machine: Include "net/net.h"
->>>>    hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
->>>>    hw/timer/hpet: Include "exec/address-spaces.h"
->>>>    hw/pci-host/q35: Include "qemu/range.h"
->>>>    hw/i2c/smbus_ich9: Include "qemu/range.h"
->>>>    hw/pci-host/piix: Include "qemu/range.h"
->>>>    hw/acpi: Include "hw/mem/nvdimm.h"
->>>>    hw/i386: Include "hw/mem/nvdimm.h"
->>>>    hw/pci-host/q35: Remove unused includes
->>>>    hw/i386/pc: Clean up includes
->>> Laurent, since this series is fully reviewed, can it go via
->>> your qemu-trivial tree?
->>
->> I'll try but I'm not sure to have the time to do that before the softfreeze.
+Le 07/03/2020 à 04:07, Pan Nengyuan a écrit :
+> Fix a memory leak in qdev_get_gpio_out_connector().
 > 
-> Ping :)
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> ---
+>  hw/core/qdev.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 3937d1eb1a..85f062def7 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+>  
+>  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n)
+>  {
+> -    char *propname = g_strdup_printf("%s[%d]",
+> +    g_autofree char *propname = g_strdup_printf("%s[%d]",
+>                                       name ? name : "unnamed-gpio-out", n);
+>  
+>      qemu_irq ret = (qemu_irq)object_property_get_link(OBJECT(dev), propname,
+> 
 
-Applied v2 to my trivial-patches branch.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
