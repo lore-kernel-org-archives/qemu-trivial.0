@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBKiM-00072q-JX
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:53:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41933)
+	id 1jBKlD-0004Gh-Nx
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:56:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42394)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1jBKiJ-0006xV-W1
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:53:09 -0400
+ (envelope-from <eblake@redhat.com>) id 1jBKlA-000486-0M
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:56:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1jBKiH-0006oR-MN
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:53:07 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42763
+ (envelope-from <eblake@redhat.com>) id 1jBKl8-0008Fc-W7
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:56:03 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:40232
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jBKiH-0006o7-J1
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:53:05 -0400
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jBKl8-0008FP-Sd
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:56:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583769185;
+ s=mimecast20190719; t=1583769362;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=s3selgosqe81iHKKWeIq+bCUz6NF8r7dmwXWy8sl0tg=;
- b=XZHvw6WIKCRd4eRVWQ9vGOER3126upu4Yoi3QvM08e7WFQtm4Bpe//fC4gGT7AGJr4K2ax
- QRz6kT28Ic5f9ON/bH8IhE6IHcPPqiuJZVDThjEwNrimk9oOFpmQNh4JBXD/5mLwsZ0yJj
- OubAMnKVQdAzxPOXPTPQC1AzYlK1tSk=
+ bh=63SRlbouFohdzAoq4x0ekJ0rctE7A77TQ2/DOmmrdzI=;
+ b=TSIG5w3vFLXAbWsw21ukFvwOj7Zf2Y9TjEi9pAzF9p/sj5s8vUUMcwB6xBn9aQj28W1Q6E
+ a65NCDX8J42g19ickVmuh6mdpH3msbVghsr87+ckLa/VcrFNuch3r4+tmNiq1MlRwpsuAc
+ CIyAXHeMS7ckdP1bhAsgv5gBqj9oXOo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-349-gprlnQYZO-OPizgSZM2ItA-1; Mon, 09 Mar 2020 11:53:01 -0400
-X-MC-Unique: gprlnQYZO-OPizgSZM2ItA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-394-A8n9hKn-ND2VrgQXZ8iyHw-1; Mon, 09 Mar 2020 11:55:58 -0400
+X-MC-Unique: A8n9hKn-ND2VrgQXZ8iyHw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C345477;
- Mon,  9 Mar 2020 15:52:59 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3CBCD107ACC7;
+ Mon,  9 Mar 2020 15:55:57 +0000 (UTC)
 Received: from [10.3.116.177] (ovpn-116-177.phx2.redhat.com [10.3.116.177])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B2FBC9051C;
- Mon,  9 Mar 2020 15:52:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 93B1C5D9C5;
+ Mon,  9 Mar 2020 15:55:53 +0000 (UTC)
 Subject: Re: [PATCH v3 1/4] block: Add trivial backing_fmt support to qcow,
  sheepdog, vmdk
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
- pkrempa@redhat.com, "open list:Sheepdog" <sheepdog@lists.wpkg.org>,
- qemu-block@nongnu.org, libvir-list@redhat.com,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, mreitz@redhat.com,
- "open list:Trivial patches" <qemu-trivial@nongnu.org>,
- Liu Yuan <namei.unix@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, pkrempa@redhat.com,
+ mreitz@redhat.com, libvir-list@redhat.com, Liu Yuan <namei.unix@gmail.com>,
+ Fam Zheng <fam@euphon.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "open list:Sheepdog" <sheepdog@lists.wpkg.org>,
+ "open list:Trivial patches" <qemu-trivial@nongnu.org>
 References: <20200306225121.3199279-1-eblake@redhat.com>
  <20200306225121.3199279-2-eblake@redhat.com>
  <20200309152112.GC6478@linux.fritz.box>
  <7b7f12f8-ca03-12d4-b93d-2edefb51cb42@redhat.com>
- <20200309154412.GL3033513@redhat.com>
+ <20200309154841.GD6478@linux.fritz.box>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <8c54a809-4fbb-8a77-550f-679c646880cb@redhat.com>
-Date: Mon, 9 Mar 2020 10:52:55 -0500
+Message-ID: <c6a6ed42-181b-f3ce-9fa3-5ad683c70da9@redhat.com>
+Date: Mon, 9 Mar 2020 10:55:52 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200309154412.GL3033513@redhat.com>
+In-Reply-To: <20200309154841.GD6478@linux.fritz.box>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,87 +77,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:53:09 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:56:05 -0000
 
-On 3/9/20 10:44 AM, Daniel P. Berrang=C3=A9 wrote:
+On 3/9/20 10:48 AM, Kevin Wolf wrote:
 
-> Consider the user creates an image with "-F raw". We can validate the bac=
-king
-> image is raw, and so our check succeeds.  Later the malicious <something>=
- can
-> write a qcow header into this raw file and QEMU will thereafter probe the
-> image as qcow, not raw.
->=20
-> IOW, in the case of "-F raw", even if we immediately check the format, we=
-'re
-> still not offering the protection promised by the "-F" flag, because that
-> promise refers to the runtime behaviour of the QEMU emulator, not the
-> immediate qemu-img cmd.
->=20
-> We could support "-F ..." and validate any non-raw formats, while raising=
- a
-> runtime error in the case of "-F raw", as only the "raw" backing format h=
-as
-> the probing security risk.
->=20
-> Users who need  to use qcow, with a backing file, without a format can
-> just not pass "-F" and in doing so will be insecure.
-
-And the warning will remind them of that.
-
->=20
-> We could take this opportunity to deprecate 'qcow' perhaps, declare it
-> a read-only format, restricted to qemu-img/qemu-io for purpose of data
-> liberation ?
-
-I'm fine with that, although it makes for a bigger task.
-
->=20
-> For sheepdog, if it is something we genuinely still care about, then
-> adding a backing file format record seems neccessary, unless we either
-> forbid use of raw backing files, or forbid use of non-raw backing files,
-> either way would be safe.
-
-I concur - as long as you either have ONLY non-raw (in which case=20
-probing is safe), or ONLY raw (in which case no probing is necessary),=20
-then not recording the backing format is safe.  It is only for formats=20
-that allow both raw and non-raw backing, but which do not have space in=20
-the image to document which of the two backing formats is expected,=20
-where we have problems.
-
->=20
->> I'm guessing that qcow works with either raw or qcow as backing format (=
-and
->> anything else is odd - a qcow2 backing to a qcow is unusual, and would b=
-e
->> better to reject).  I'm not sure if sheepdog can be backed by anything b=
-ut
->> another sheepdog, similarly, I'm not sure if a vmdk can be backed by
->> anything but another vmdk.  If so, it should be simple enough to do a v4=
- of
->> this patch which requires -F to be a known-acceptable probe type for the=
-se
->> images.
->>
 >> Still, the point of this patch is that I want to add -F into all the
->> iotests, and without something along the lines of this patch, all of tho=
-se
+>> iotests, and without something along the lines of this patch, all of those
 >> iotests are broken for these image formats.  Patch 2 is a lot harder to
->> write if we have to make our use of -F conditional on the image format i=
-n
+>> write if we have to make our use of -F conditional on the image format in
 >> question.
->>
->> --=20
->> Eric Blake, Principal Software Engineer
->> Red Hat, Inc.           +1-919-301-3226
->> Virtualization:  qemu.org | libvirt.org
->>
->=20
-> Regards,
-> Daniel
->=20
+> 
+> Hm... Maybe _make_test_img can insert/filter out -F depending on $IMGFMT?
 
---=20
+I was hoping to avoid that, but yes, if that's what we have to do... :(
+
+The complication is that even if I filter out -F from the command line 
+based on $IMGFMT, then I have conditional output (whether backing_fmt= 
+or the warning message is output), which means doubling the number of 
+expected output cases, or else adding a multi-line filter which is also 
+smart enough based on $IMGFMT to translate a warning on one line into an 
+addition of a faked backing_fmt= on the next line.
+
+-- 
 Eric Blake, Principal Software Engineer
 Red Hat, Inc.           +1-919-301-3226
 Virtualization:  qemu.org | libvirt.org
