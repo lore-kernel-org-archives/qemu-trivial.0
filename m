@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBHQF-0004Xr-EN
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:22:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57896)
+	id 1jBHZZ-0000iJ-Ji
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:31:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59662)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBHQC-0004Qm-Dq
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:22:13 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBHZW-0000cg-CX
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:31:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBHQB-0001DJ-7F
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:22:12 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:32787)
+ (envelope-from <laurent@vivier.eu>) id 1jBHZT-0007cS-3c
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:31:50 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:36997)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBHQ6-00017k-EA; Mon, 09 Mar 2020 08:22:06 -0400
+ id 1jBHZR-0007TE-DP; Mon, 09 Mar 2020 08:31:46 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MuDTn-1jUSrZ1urV-00uaMh; Mon, 09 Mar 2020 13:21:56 +0100
-Subject: Re: [PATCH v3 04/12] scsi/esp-pci: Remove redundant statement in
- esp_pci_io_write()
+ 1M9WmQ-1jEYo845wK-005WWB; Mon, 09 Mar 2020 13:30:49 +0100
+Subject: Re: [PATCH v3 05/12] scsi/scsi-disk: Remove redundant statement in
+ scsi_disk_emulate_command()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, Euler Robot <euler.robot@huawei.com>,
- zhang.zhanghailiang@huawei.com, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>, peter.maydell@linaro.org,
+ zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
- <20200302130715.29440-6-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-7-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -66,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <111d4416-2281-6f8d-9b1d-66e60a05e02a@vivier.eu>
-Date: Mon, 9 Mar 2020 13:21:54 +0100
+Message-ID: <8354d3b7-d632-12fc-de79-e3fcae97c4fa@vivier.eu>
+Date: Mon, 9 Mar 2020 13:30:46 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200302130715.29440-6-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200302130715.29440-7-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:N7nZ+yRlmt+ldpJyL0zhhKdixUDNFobjmk2n2+0g0k72SaZRgn7
- V644D96QsN44GDbOqRqd2yOAbiwPBDspgRYGMVeUSeCZAiU8wskq+bYnpS00/Bnbcom+usR
- slRupE1QocsPBNEMczkQtt5eRGfbOCiqOFjya2mbZjTR24G+BmuaYAarYkjeq0nHAdkQchl
- u/vy1pZ4rGhLfCp5557xA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lxVcRoxmxj0=:dEiBv5UT0dpoKvJ0iGtaPR
- mj6sr8lKEcFW+MCHSAy1GD6+bAYlDjd3i/6BCq2qM0jQMqtjRgfesGi5bt9Cyzg8H440ymrZy
- S1F3369LW7595frNqAHJOgzHGod80154RXivMueS42dPLxglMrgnS2TbFpOfP5ggrYZG155j6
- vPF6aO/iUw/O7th5GE2D87tNQBRBi0CV7TdqKow1Ynw7DxPJxFyncb/tprYXmpv3vCXXfwi92
- ieLC84hMFQLSMhW10IZJIOcqT6lbm74N7OqpQ/CsXchfh/BoJM9TzTMn7dtBOcPRgw5UFvyrz
- yBsoheltMRSWjIsxhDAclkI5dGMqYcukohwTNiIPkOUKHnJDMKux6uMR/Dx6ydqcs+hE8ULMC
- 3fQ49iHnzV4NxFDZ1H6TkZ89D57KLv2NDdEZUZzIr0/HRJC8zFut2qaytdbhfhHuU6MC9fc4C
- iMEZLDV51NPjoei3Ps3MlMO6LME6egZBKGjYy4DczLCcjsp3ez8GmDErFGW7MJGKx9UpI+RFC
- DrRVuSgwLusx/LXYwzLew45tyFfeFBeZ1QGNz17RA+jCOcNDmSc3HzeARKBPpv4LAHPRIXJ/v
- X6TQNv1kCKy8uvZSijTptTLLPk4r7f5akAap0aCDAvVNvaFYnR3YRqsji3uZevTDAZULmYOrd
- AgpMih3JE4yj/Pz2t6SUK1iBjJuwfUfT2sknn46gyCl5Iqfqeqk0F93kN5E6Gzj34rKrLqgIM
- K9t69fUtLOSvUS8e5BNf2HbsBmaC/guXIFfzFec8TgmWDQbX+GfOthmfTknwPHzenqG9uqhta
- AUQ4JwHX37SMZjFtCyIxJRC37/XhLpeVN4rIY7bLeWgGDacly/rwduhBUXfed3NJBoNls55
+X-Provags-ID: V03:K1:1zdvKBWzrIt9rkuATXZxXHM+RnYbN0BjWGx+NS9RgFK0vahAP5r
+ MPRavXH2/Ms5z+QnPWfPedCkiX9qaYyx+WN7pQe61KLnLh4Z4P7hN1MyTa4ZlQUskeD8NTy
+ fs82A7vF/qh5zTPIH/MULPimMJ+etn00TUF/AuimMTr1yquGdxRsoXAIh22ZZZP/cnD9E5J
+ saBCxTUrqliVhKD2ugVvQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lk5e5yM663g=:sITGnOcElomp9X+9m0lVA7
+ DVDTr2X2R+4igHRj+c9Om9ScvaJkOGqK4T7CdpAaSefhjUP64+n3x8Ovqfqv1P0DOAif/cBGN
+ joYIUne8/8DQkOXiN8zeHbgv60TAZnBwXSiDQzu+NWr6AMzB3rbdkYVWzbRE8FEo4naegssWR
+ a1F1e+hmrzSHhHIW8jGBO4J2Bjf04cfBRJ7rbtkXBfxjgY8u3rHunvUfHYuoCsfFTajigWGcD
+ oA/1TIAoEwnT2hHqRukru44C5zQjrJ8U3Q+BR+5h4aAhVvEoUuDT5Xd+/tI5NJlUmIn31AORP
+ SMLz4RYIzbDYjV8TopOv7qnSx5tkPEDidt7MU53Svcq69cQfjxlYVpiv5eOEN1jeUj4ONOEYE
+ GF1LVYjHrKRF618ksuix5OLwcEnRFvdAgOtI/nSijJwxZu2z09k4a4/6tyiV/qWmwfbXrIzt+
+ /r9XU0VgV7kzSmwSz3zAYBQ+rtQ/w9XyQJ54zPLbHxZ+fc+F/sBhO0CkUDJ7WnRZnzHlG278/
+ 4/QKIXylZsKuWJwOekCZpLIA55p8+gLmfsm1VY9YDQ0SyiiVxdqmAvpZ5+FETanpGziuw6Wf+
+ zSLL9oWL0DqACpWU56rXYQHF056SD05q8GHHEsOPFJZMaopJGBbzOR9qks5AbEtgdKwGIcovA
+ xRR2FCQrrx5qFpBSyfCwEKR90kItOKBT3JlQ3x2TEOiAAkn1HcZXDiZ3PdRYo0i6X+7xc7GdW
+ uE6IGtod/Faixyl2sbyebxH+DYxGGEmorAQNZ2+dOBrm1on9AkYOmvAvjmtD4OmLDrWeX2L/u
+ alUu2+0zfeUhf+kEKif3gl+Ss7mY39gyun7tkGoMAJYI5+/Hpvaasqvd+ncmFz4uVaHvLBJ
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,42 +106,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 12:22:13 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 12:31:51 -0000
 
 Le 02/03/2020 à 14:07, Chen Qun a écrit :
 > Clang static code analyzer show warning:
->   hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
->         size = 4;
->         ^      ~
+> scsi/scsi-disk.c:1918:5: warning: Value stored to 'buflen' is never read
+>     buflen = req->cmd.xfer;
+>     ^        ~~~~~~~~~~~~~
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
 > Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc:Fam Zheng <fam@euphon.net>
+> Cc: Fam Zheng <fam@euphon.net>
 > ---
->  hw/scsi/esp-pci.c | 1 -
+>  hw/scsi/scsi-disk.c | 1 -
 >  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-> index d5a1f9e017..2e6cc07d4e 100644
-> --- a/hw/scsi/esp-pci.c
-> +++ b/hw/scsi/esp-pci.c
-> @@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
->          val <<= shift;
->          val |= current & ~(mask << shift);
->          addr &= ~3;
-> -        size = 4;
+> diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+> index 10d0794d60..1c0cb63a6f 100644
+> --- a/hw/scsi/scsi-disk.c
+> +++ b/hw/scsi/scsi-disk.c
+> @@ -1915,7 +1915,6 @@ static int32_t scsi_disk_emulate_command(SCSIRequest *req, uint8_t *buf)
+>          r->iov.iov_base = blk_blockalign(s->qdev.conf.blk, r->buflen);
 >      }
+>  
+> -    buflen = req->cmd.xfer;
+>      outbuf = r->iov.iov_base;
+>      memset(outbuf, 0, r->buflen);
+>      switch (req->cmd.buf[0]) {
+> 
 
-perhaps a "g_assert(size >= 4)" instead would be cleaner to mute the
-warning?
-
-I think it's a good point to update the size if in the future the code
-below is modified to use size.
-
-Thanks,
-Laurent
-
-
+Fixes: c8dcb531bcd3 ("scsi: do not return short responses for emulated
+commands")
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
