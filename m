@@ -1,32 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBFz3-0003xZ-AI
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 06:50:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42122)
+	id 1jBGXt-0007vl-Nz
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:26:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48483)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBFz0-0003tH-LJ
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:50:03 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBGXr-0007p6-3y
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:26:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBFyz-0003k3-M3
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 06:50:02 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:46375)
+ (envelope-from <laurent@vivier.eu>) id 1jBGXp-0006uC-Qs
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:26:03 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:58395)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBFyx-0003iG-77; Mon, 09 Mar 2020 06:49:59 -0400
+ id 1jBGXm-0006sH-J1; Mon, 09 Mar 2020 07:25:58 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MY64R-1iqhlf0uq5-00YVVW; Mon, 09 Mar 2020 11:49:46 +0100
-Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
-To: Pan Nengyuan <pannengyuan@huawei.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu trival
- <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
- Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-References: <20200307030756.5913-1-pannengyuan@huawei.com>
- <CAJ+F1C+6QSYBhO_M+Vqps4XvOujnV+Wbq6o9Q+qUmC5Z0dmxSQ@mail.gmail.com>
- <87b027ab-7bed-249a-08a2-2c27fdd05a31@vivier.eu>
- <a69e324c-21c4-dcfd-516d-0515f86a2f28@huawei.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1ML9i0-1itBQW0ViU-00IDoY; Mon, 09 Mar 2020 12:25:54 +0100
+Subject: Re: [PATCH] build-sys: Move the print-variable rule to rules.mak
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20200306170456.21977-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -70,34 +65,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <ad16dac4-8534-7b19-fe16-0e799e615005@vivier.eu>
-Date: Mon, 9 Mar 2020 11:49:44 +0100
+Message-ID: <e044e2cf-cb41-a2fc-f27f-cd54d76cd4bd@vivier.eu>
+Date: Mon, 9 Mar 2020 12:25:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <a69e324c-21c4-dcfd-516d-0515f86a2f28@huawei.com>
+In-Reply-To: <20200306170456.21977-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bFYQFPfn7KlSc3MCDKnOInzgmqyDAr4Dt9fXFiWRH4eI9l0xocF
- goLB4ZFhEp/NL+Wf1cSDVGWomimxL0q/e58OdrROGHJUBCBNgaf9JYlPGxQH176LcRViZ4Z
- fSDsKXgcO3zuIEgGvgjjPWThmYfCibMyCB8G2aN696m2qtYV1maQqaHS0qGhR4+MY47vVSn
- AMDGMEVjEUAmsGPV42DAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RTTMtxAacWw=:lwOmlzXHXLXupbQ5d9eiO4
- ubIKJwsizeydzDSjPMzn4z0ofdu2L8KblFCNw5mCztmIJj5EIdGqMQA3ht3DH5bXpTS61KwxM
- bC4Qzs/JRZ0zlIQflKEeDttjzswNqHRHt1r4KF2A2QwVC122v1QlRM8vSoMsRqr8eq5pz3zUD
- N7b+Qq1xYP3SLA6HVGt7KWdhPOQ1OSQhfntzFaJ9iZcibyHd4Ks6q95MwLDzTQkJXDdE9hO+x
- 23qTju/aTqnIQFUBfpwlL4xASF2t/LjthE+MzePVX10tdobMoOYArNTynG8LKTXXT5LwZc+la
- UOA5V2ylaM+KTUF6OteJqDrfHDcjSE8VTXWRmqfy9uE2VEMLksaYr7P5UgRjogliXKWnyXRce
- iaDXJMjcwS217awzn8V5ZBG3RVYoeIGsFougFyQ1NOkHlwnFIwniuxFatEj6oTKpjn2Vq5NlO
- 6x0tKfKZcs0uOZoEZ8FU068t9/o1KkbU/4/ZKSO05twIQz6P1nBcGYRCyGbnZDcrCcjXAVwxJ
- 56VFz4SXNDacmd0PC4QwgzCXYooR1zqB8ryjPHbiiDKhg8evE8Hmro6U84W7D4V615DTTqSOq
- v7/R+fzNv/J0mf0O0Bwvqn3ksURKIuseH35pBjJ/Oo9E4p29KL+DM2CNuw9UwdyZd+llEdLOC
- WTdZRLg04m2u0nZ8GfAH77pGGOLohWbakztzO9B6Wh9Z8MmRC/WybaAYOSzO9KsKIdRpqSQ5/
- /uC3fIUjglb6jgSOGag0xeXxIrEtZjhKvLxS4hOil1HqLgS5PJ8zWRbBxbOh8tGLQhiage1hr
- CNTFMQOaSDbKlLLPTtqaAoDIsRFSPAfezFdHMZp7HG90fLsv5f6lm46k/+zslFEZ+8w6Zny
+X-Provags-ID: V03:K1:WX80ArZkF9DZQnJRTqBWq4Spfe/xW8NONjMadk02SXNZxgyJtVM
+ 6EZGtZupk6+wUbwwAmXYButiplGjmnN7NCB+MOhG4gdnVhr/wmggAnx0cYFZVoiqKsednBh
+ 9p6IlpeC+bkwlNZ744Pfy00hTnBl4WuwVJkk/tjLG2ehzkxqEFdIMHu7XoMfK9/RiJUBnv+
+ 5Rnz5V0yn5CZRvUvFBz+w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8sjUbY+aX/8=:Gfgq8c+kAsZV05KDFCToFC
+ O6V0T+fqBy09MdGOHOpZfJBM965Cx+GB35UtatO8QKyp6uVyzk2fLgl1A1wUZPx4PEQrHM2tJ
+ AOth/wJnR21ekxn6Vl3giWqYR0BEAIk7LYf85WV4v8tyBazKgt2YJFWteXJ0UNs1NhVhpyBkA
+ CTseG1aiZqeUC8TOZkLWwOElQIu0bkEiftFxQD8PO7l1mbWElt86+fK+C6sniWmaWnL7/rkd9
+ pY3nJJwj+Ld1EsY1b3IGY/7ewdPQkv5cRE8kmVVzvnMfMZ6sg7zKkfEHO8Tf5pRwOcKueubam
+ w8ICbgDgwxwgkBybtKSOdYtegFUvXlB21c1Qw8r2n96zjyHBRDjAvbQHV1k4wr/5wAKlWyUnE
+ O7Wxcokt+zbqacsTU+ZxiPcuGnoXaetfabjaylIG6pmgxRiH+ubVmbUc2zmx2s8A7h1Dr7rQi
+ ub85uP+8Tdcos5tucMwS0AMLUHyetry+AV2vniDkKajS2iwWV/VWQGGH7NIXSJ8Hx/PYMLP1x
+ 5rCM9K0PxxV+KP1/2fjQT7ogbMdYBXAgbUOUSUuY3n6fquJDwpqlQADgN+zOgh0QWRqVA4K3B
+ SmyA04DBKAF3zvMb1mMuBcACXooPt3ZylQVvo4WJgqnARkgOmQXLlHyo9E4/Okj96hNkQVfNs
+ Z4QWyLdffI3YWsxKshdNy4cVIoMPHoPYNJD7tOZQz+wxT8zpXeIU74Pcj17se25ExisyxZz2K
+ MUqctmxMOEdoNPRXkMeKp7TP22U/7CtnNar4hfuw9B8syM7TkMux+7Xy8v1z4fBc5X2pQNa4A
+ OlJpH8/Zt1lDWm4AOlaDXkOYRWospoHM5X0Dr5Fi4aOioq7PS2OkLXHiqRvQnkBGLN0uEKw
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,34 +104,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 10:50:03 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 11:26:04 -0000
 
-Le 09/03/2020 à 11:41, Pan Nengyuan a écrit :
+Le 06/03/2020 à 18:04, Philippe Mathieu-Daudé a écrit :
+> Currently the print-variable rule can only be used in the
+> root directory:
 > 
+>   $ make print-vhost-user-json-y
+>   vhost-user-json-y= contrib/vhost-user-gpu/50-qemu-gpu.json tools/virtiofsd/50-qemu-virtiofsd.json
 > 
-> On 3/9/2020 5:16 PM, Laurent Vivier wrote:
->> Le 07/03/2020 à 11:39, Marc-André Lureau a écrit :
->>> Hi
->>>
->>> On Sat, Mar 7, 2020 at 3:53 AM Pan Nengyuan <pannengyuan@huawei.com> wrote:
->>>>
->>>> Fix a memory leak in qdev_get_gpio_out_connector().
->>>>
->>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
->>>
->>> good catch,
->>> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>
->> trivial question:
->>
->> Why do we prefer g_autofree() to the g_free() function?
+>   $ make -C i386-softmmu print-obj-y
+>   make: Entering directory 'build/i386-softmmu'
+>   make: *** No rule to make target 'print-obj-y'.  Stop.
+>   make: Leaving directory 'build/i386-softmmu'
 > 
-> Honestly, it's no special reason in this case, just personal preference. :)
-> Both of them is ok.
+> Move it to rules.mak so we can use it from other directories:
+> 
+>   $ make -C i386-softmmu print-obj-y
+>   make: Entering directory 'build/i386-softmmu'
+>   obj-y=qapi-introspect.o qapi-types-machine-target.o qapi-types-misc-target.o qapi-types.o qapi-visit-machine-target.o qapi-visit-misc-target.o qapi-visit.o qapi-events-machine-target.o qapi-events-misc-target.o qapi-events.o qapi-commands-machine-target.o qapi-commands-misc-target.o qapi-commands.o qapi-init-commands.o
+>   make: Leaving directory 'build/i386-softmmu'
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  Makefile  | 3 ---
+>  rules.mak | 3 +++
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Makefile b/Makefile
+> index 9d4b224126..fdc5d29bb9 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -15,9 +15,6 @@ UNCHECKED_GOALS := %clean TAGS cscope ctags dist \
+>      help check-help print-% \
+>      docker docker-% vm-help vm-test vm-build-%
+>  
+> -print-%:
+> -	@echo '$*=$($*)'
+> -
+>  # All following code might depend on configuration variables
+>  ifneq ($(wildcard config-host.mak),)
+>  # Put the all: rule here so that config-host.mak can contain dependencies.
+> diff --git a/rules.mak b/rules.mak
+> index e39b073d46..694865b63e 100644
+> --- a/rules.mak
+> +++ b/rules.mak
+> @@ -435,3 +435,6 @@ sentinel = .$(subst $(SPACE),_,$(subst /,_,$1)).sentinel.
+>  atomic = $(eval $1: $(call sentinel,$1) ; @:) \
+>           $(call sentinel,$1) : $2 ; @touch $$@ \
+>           $(foreach t,$1,$(if $(wildcard $t),,$(shell rm -f $(call sentinel,$1))))
+> +
+> +print-%:
+> +	@echo '$*=$($*)'
+> 
 
-I asked because the function above uses a g_free() for the same purpose.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
