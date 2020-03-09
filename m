@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBHI3-0007CA-T9
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:13:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55891)
+	id 1jBHMS-0006ga-Vq
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:18:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57248)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBHI1-000794-VD
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:13:46 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBHMP-0006b1-RS
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:18:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBHI0-0001QZ-PE
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:13:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:54311)
+ (envelope-from <laurent@vivier.eu>) id 1jBHMO-0005kZ-Nt
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:18:17 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:57965)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBHI0-0001PU-Gj; Mon, 09 Mar 2020 08:13:44 -0400
+ id 1jBHMO-0005iS-F6; Mon, 09 Mar 2020 08:18:16 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MmkfQ-1ja8Ap12uM-00jr7h; Mon, 09 Mar 2020 13:13:29 +0100
-Subject: Re: [PATCH v3 01/12] block/stream: Remove redundant statement in
- stream_run()
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MtfRp-1jTuy31B2l-00v7Og; Mon, 09 Mar 2020 13:18:04 +0100
+Subject: Re: [PATCH v3 03/12] block/file-posix: Remove redundant statement in
+ raw_handle_perm_lock()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
  zhang.zhanghailiang@huawei.com, Max Reitz <mreitz@redhat.com>,
- Euler Robot <euler.robot@huawei.com>, John Snow <jsnow@redhat.com>
+ Euler Robot <euler.robot@huawei.com>
 References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
- <20200302130715.29440-3-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-5-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -67,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <66182cbb-7492-dd16-4552-e4cf0f1911ab@vivier.eu>
-Date: Mon, 9 Mar 2020 13:13:27 +0100
+Message-ID: <2e5e3dc1-4853-6ea6-3b98-dc529e4a0509@vivier.eu>
+Date: Mon, 9 Mar 2020 13:18:02 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200302130715.29440-3-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200302130715.29440-5-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:R0yNBrn9cVFozWcqfejX3Sim6HkSZMhIkY99/rb0SwJOL/Ujzwg
- mbjk+6v+q65A5b2lMMb26vbsjfrnAO1PLVqJSn1XC6ULvBw/b+B5iIwHUEu6s9hYejF9ymj
- x9hip6p1AX6yDLSvA7FtPk87BHTiW9PLKxBALE3+YqhDeIVp3J7x5CZUmHQVVapSmfTjLNo
- lEQzWqlDVmfcT0KSmvRZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GWOS/nlNgLM=:7dY99Ss43YOdEdiHoCVcGE
- WlYO/Ae/+/uV+PGNgj4LOILyDEf6cXjP4UvwZQ/Dx2dE/9+ABGMIYlIjkrHHJ/NANDGvxh0wp
- XKuXiqiRAMSa9gXOCuXAYJDsk+hXrwy4ldOBcEJXcm4ZNNz0ps96MLy0DzDhCGdK1aPuBwNrA
- MsdkYQr/+Bd2toR4hJV4YYhc/jslgYJkG0PtUp4g+8+6FibxzdCeLchOsf8kJY4y1mpaoa1tK
- r6tA3Xlf7pKY1mkw3OrYCYkzRnY76PgmiPSJGtcKm3PGMBtKU5Qu6yTmbeG7Dh8k9OBf+ySi1
- IbblUNGVYTZddEgaykLhTUXzH/X5NqGE8nI1m2Qw1hwPHs7OJoCu9OUzPAvxfZZFv+4gliFXR
- o+m5hoClDyJHP19uvBCO6Asy34ekl88YPJeM5c/o0TDEWyZLjmBkj9xo5PQ9AG6frs/wNs8XB
- aQlI5mBFumKTYzSoMXpFuPSam8tMX/mTWci1h1cKqCKHqj2DswvefR3BmOpu5ta00AYgR7bcJ
- RD8fS7sQeWAC/+lX4OJujGXQEed2vvxlnhv00sPFlurR3ydL+u8R8O38J4Q3fAA/YxeMkaveG
- 6rLIi+X1WGz40SOfDaiVlsIqswtikm1JLwkJ14oIG65rF7UC2T8JZJjEsIqdXh2PB+d08E/iq
- VcYoH394LGww1JPjCVTwEiH6HHbD2/BYYvkyDC4emKm+mC7wDFMqUOXPCXknHS2t7P7y3Q5hc
- a/bptzhH8Gdi1EvRejBYZJR6w33EWLunjH/YwiLwDp6pbxI+4GjKbIxtwScIG5hlTX0wJXWmg
- CQ36hVlA8sK/4FB+Ykw0bPhZ/xxFvchlv4bYnfkWqIFRNax47NoYKHkLkebq+n8N5GYrEvN
+X-Provags-ID: V03:K1:PJCiHkaRJR8HMofr4hJhTAc4ll1/UZisRAj7J3i/SV+b/JYR9FL
+ GJM+qhBlRq40xnsZT6FGpSsMrCa4P2NswcE6CDFOkyUu0Oil7+MySjg6sc4lFoqzcvCRvFV
+ OOUi3CymlV0DgCMh8Jv+50zMdmRNVjdeSWNkyR1RBjNmdeRdHwDygjEUR/UCV7Ey2q+DoZU
+ UE5YHGsscuSSsxDvFwGHw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hfCfatswNzA=:wQfwrGg2fjEjbxHgQe21YQ
+ 6Uw4AvrGj31ulcpxeDVTbEVem8BTiQb87SGPigfcryAMtzJEthZQyKJP5WifRdYbV5yvHFW20
+ FUoVjDd9nWkT9dKYR6jkGocgK0gVinWJMIAU4Fwag8ebObGDhmNFsJXd/pSx+qytyQ0K8xSFq
+ pUYoF5lPjrrMM81CnMhUa8MVOBPkVmsMRvrpSNghpd9mKGUioCRStkUeeZopJMChGvXFvXDsN
+ 3dKZ6oYbrBH3yAqeQcOyB4JMs+AnRcc/Wb4xVbFQsM322EUWjTxLW9RR13o5tGmozvOr9tHYw
+ IyZzUJJGlEJOxjDf7tiEEWPD3o/TVdZh4u7y+f6vxYy4t/j0vVTRomeSd/SqXR3llmgMwqGR7
+ If3YhkL0dYn/vMXd7ehSF6PuPPokD0w2j+PkRauTM6Xppqlw53+sng/7iw44tSYkcTwexmLML
+ sMhWVtf/UoLD1uQwlsd9uGW+Hiw3rdMYtdR+BPWnIeZ0vmPSiWrFYqSc5fcRtr37gr6LDY7Yh
+ XcR42zVFgxCWZn6mVJeZw1xeTLXdQ+C/IH/yVls6S3T8L5jOs5LljJx7l68OB/8XaXUc8G9Hi
+ a3TNqiIh3ozbkgTIYfd+KIU5+C2b2pTdSWfrKV14neOOBPUvgimlC7i0xlTlsrd5VsJkOb8v8
+ EsVUcIzFtVVbvLQuDIQ6Ree68eXz/DQCqKvJYII6LrmXTsWm+w013s442I6kVtny/Lvf2rwx6
+ OS5HAYbwdJex0cD+FXh8EnvGCVLpaBkAC32k/LCSL+Ho12X2mJ63kw3NzJexvSKSKkvqUEPQl
+ oy/AoRC6psEhhiF0lHXV6DjXEUJ2XtcNiXjLtFUq8Y37CdbhDsoRimD7qmiv0ZzVSJUK3FR
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
+X-Received-From: 212.227.17.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,60 +106,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 12:13:47 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 12:18:20 -0000
 
 Le 02/03/2020 à 14:07, Chen Qun a écrit :
 > Clang static code analyzer show warning:
->   block/stream.c:186:9: warning: Value stored to 'ret' is never read
->         ret = 0;
->         ^     ~
+>   block/file-posix.c:891:9: warning: Value stored to 'op' is never read
+>         op = RAW_PL_ABORT;
+>         ^    ~~~~~~~~~~~~
+> 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: John Snow <jsnow@redhat.com>
 > Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 > ---
-> Cc: John Snow <jsnow@redhat.com>
 > Cc: Kevin Wolf <kwolf@redhat.com>
 > Cc: Max Reitz <mreitz@redhat.com>
-> 
-> v1->v2:move 'ret' declaration to the for() statement(Base on Kevin's comments).
 > ---
->  block/stream.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  block/file-posix.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/block/stream.c b/block/stream.c
-> index 5562ccbf57..aa2e7af98e 100644
-> --- a/block/stream.c
-> +++ b/block/stream.c
-> @@ -114,7 +114,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
->      int64_t offset = 0;
->      uint64_t delay_ns = 0;
->      int error = 0;
-> -    int ret = 0;
->      int64_t n = 0; /* bytes */
->  
->      if (bs == s->bottom) {
-> @@ -139,6 +138,7 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
->  
->      for ( ; offset < len; offset += n) {
->          bool copy;
-> +        int ret;
->  
->          /* Note that even when no rate limit is applied we need to yield
->           * with no pending I/O here so that bdrv_drain_all() returns.
-> @@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
->                  break;
->              }
+> diff --git a/block/file-posix.c b/block/file-posix.c
+> index 6345477112..0f77447a25 100644
+> --- a/block/file-posix.c
+> +++ b/block/file-posix.c
+> @@ -888,7 +888,6 @@ static int raw_handle_perm_lock(BlockDriverState *bs,
+>                                "Is another process using the image [%s]?\n",
+>                                bs->filename);
 >          }
-> -        ret = 0;
->  
->          /* Publish progress */
->          job_progress_update(&s->common.job, n);
+> -        op = RAW_PL_ABORT;
+>          /* fall through to unlock bytes. */
+>      case RAW_PL_ABORT:
+>          raw_apply_lock_bytes(s, s->fd, s->perm, ~s->shared_perm,
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
