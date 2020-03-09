@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBGiV-00054b-3n
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:37:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49894)
+	id 1jBGpi-00006J-83
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:44:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51160)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBGiS-00050R-G0
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:37:01 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBGpf-0008SZ-Qv
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:44:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBGiR-00024J-Ib
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:37:00 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:48385)
+ (envelope-from <laurent@vivier.eu>) id 1jBGpe-00056F-Me
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:44:27 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:37193)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBGiP-00022K-Dz; Mon, 09 Mar 2020 07:36:57 -0400
+ id 1jBGpc-00054Q-0Q; Mon, 09 Mar 2020 07:44:24 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mq2vU-1jfdSL1J1m-00nAG9; Mon, 09 Mar 2020 12:36:51 +0100
-Subject: Re: [PATCH v2 1/9] hw/audio/fmopl: Fix a typo twice
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
-References: <20200305124525.14555-1-philmd@redhat.com>
- <20200305124525.14555-2-philmd@redhat.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MLhwM-1itjyk1Sim-00HfzE; Mon, 09 Mar 2020 12:44:18 +0100
+Subject: Re: [PATCH 0/3] hw/net,virtfs-proxy-helper: Reduce .data footprint
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>
+References: <20200305010446.17029-1-philmd@redhat.com>
+ <92a0e3c4-2d50-49a6-f794-c5df57e1b3fc@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -67,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <fe8114e8-b420-09b9-5c2d-4c63de10d0b2@vivier.eu>
-Date: Mon, 9 Mar 2020 12:36:50 +0100
+Message-ID: <3613c1f0-eda8-0385-4e38-a90c69777a57@vivier.eu>
+Date: Mon, 9 Mar 2020 12:44:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200305124525.14555-2-philmd@redhat.com>
+In-Reply-To: <92a0e3c4-2d50-49a6-f794-c5df57e1b3fc@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:K7ibR9WJX6AvI52oFFTbmzzOrptX4RvagkdxPHRka0clhs1YO7H
- S95MqKmt1ofD7pTrIDVAWH3+htNVZJdcg4/j6dPipnqqG88yuSXA7T/KMvCG4OJR08t54M+
- afVX8Qw7FQ1eQLmMxBWES5um09YudQlxKa+prH25eyhcUDg28/vEDe21mK7FSg2daujfeix
- Jkd+1sSfKOIRIsSFWYaPA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:T7XPaN8PCzM=:a2zQUexkN1LRxcxuJdFkxi
- 2rmCvQ1D+RX1M/iYhpngqNH2y3s1ZtBKLixmfNjLFOpBUFjueQ41lFdPffMPfR5Lfi1bnz01D
- J0YYifGXrPMSxeIsJENBEjz53C2rNKjsk39eXcIcd694Rlg/2Hhg1nHVXxatadDyLlHTlh/U/
- F5DRRp/2X9mxkMsCnEHryNPf8Qm5SStsAAnBvaqEAirhFexgb9dQ6AWeeaNrqp2WvDOejJo/n
- HuWs0iUnJjuBDQ2HyKBVuCYXdaJynf4egX4RLPqJCpphp5SEIv4WLJJpzlSupFsfZtTGRE2XH
- Ksi6r4LbuQVYCvNSrsMmdoQmidNncbQuMp/fRM7zzCOkjDS6rVX5sqOUdSW9aj8q1hgYUZ9xB
- Ga0G8/kogVlkhOgKJecagOm7z7VZTbR55K9Jnl+kAslUOE8fmWGym+btBr8ix6MWqINM2LJzF
- WjCMXdzuhovJDtjYS3cIVBC/+qP1O7Ws6OhmPbP6vDJcgID6cuQC+4OOXoMkG1fb5OTzPOzHe
- SnAPEJG9/SzpKWhP0zOaHbqtJoYBaLAwS3otlvwoGYXCElPPvfVSBkwo4bEUfkj1s+F2pOAIQ
- kS737yZzKfdv7MP2g9QwiI4tHMWsNwb3MoezwTGyo0QvLVND1mrNc/0K9jh57EN8noGAjEtIn
- 85pw/7Zacr99LyRUps6EGHOJwjFw7ygehrtEHRqABHTlc2BAikdNNZQAIGGyK82PBscXujP6B
- BdZ9BNT4+9xlBrMiVr9/bcxrH7KjSbeVkC68XBrbLLoNFyI8sFzlqPwxBB+fh3tCoCYOH0mXJ
- jEbT5IpgXv3ZROsEmIJ9xFEqxOadH2WarbjLcPIG8qtFWLEY7HqVVIQNWGDk8xqdxsU4EBz
+X-Provags-ID: V03:K1:LS6KDhhXc/vQ7XHTjveDL1AOYOmdaJbiLJvO23CwysCdn2TdRJx
+ w+JKpTjzV/wsrcfUcP/LCRmfOfG2Kppsc17XIXGVJxZcFyvjGPcmUAlRRFx06+O32Qwcuq9
+ C2g00UXpj7y5W/tZrHeyiVTDpyGOD+5lsp4+GMXWrJCLLY2G90PnUS9h3WSwGFQzmgWxynU
+ KKS6nh3jb1XKLuXdWqIjg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:84EivtRHnHI=:RVe5C8cmuoo5Y5QW2WjJLP
+ eJqwKoNm/lM4s7Yfc7GfHns7xHNO6knekftLz6xVV9IdJyyN+GucB6o62lbMF+Je9GVQGj91+
+ IRCZnRk4byFsTRkYczBW9nW8oW0iY352UwoGziOiqdVATAKY5RZCkOH9vKITHu0BkovpmYLRT
+ ZHh+gAu2X3xbozLwbY34Jk8Krw1Q4HWfYibi9jLbsW/Mt+AUiiaFDbdBiFv22nSC6cLYQtBe1
+ PfxLAGT3SUkP6U0785x6cYrSbVgdjG+sEEKY/02rih3Q7tvFPnRN2eRUOn2Q1Vx1o5yuvc8bo
+ jmEyzGFEHQQnHQVqlV4CM21tv2s1OET8Hn468/48yx4/7KnZPu5Lu03aOA+EJpWe6v5TpTCpw
+ FIgZR/ADVzr1wfog0LqlVuMPQ00EKRqKJUxXIlISz/etMnbskQcQeE180JFL3dlOln35h+jMz
+ eW7G84AzTz/pbmNE1YwqbSQyzX6CQDTicl7aLB7TIB5jOaJlAns0iXXPN1WYRW7/rEbYosz5w
+ iqSNmOxrqcnGN60W81h9dEb6EUUPpzWQCWDhKD/xeAEUa2gbIMZEeyvBz5vF/zU3LXCtQSF75
+ 4QyHhbuo8ESHuff59itGUJuuSYRM6ESFF3yRV7tbDtEWWLZ+vswGQEHOvNs/p6NdtQ8HWpkLK
+ Y+Tt46JBPjK/XpubQN0JRDLa3bx/kAEJITsD8ugB9/CVbdKb0ZaNDJIoc/79DLTxarUaimcEq
+ HYpWbqCrmMtes8ZHsHmgVeVWTjy6m1pEgtnxnTrRnDzNWRd8+u6CdkLFV91Zk7I9fz2hv3l2W
+ E4YrSaOTN9Gaq8NGmwaqpaYC0zAY9RSPfynzLpmNldDxLaSoTZghxW77DskTiTkbMjxeH6A
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,38 +106,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 11:37:01 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 11:44:29 -0000
 
-Le 05/03/2020 à 13:45, Philippe Mathieu-Daudé a écrit :
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/audio/fmopl.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Le 06/03/2020 à 10:25, Paolo Bonzini a écrit :
+> On 05/03/20 02:04, Philippe Mathieu-Daudé wrote:
+>> More memory footprint reduction, similar to:
+>> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg00984.html
+>>
+>> The elf-dissector tool [1] [2] helped to notice the big array.
+>>
+>> [1] https://phabricator.kde.org/source/elf-dissector/
+>> [2] https://www.volkerkrause.eu/2019/06/22/elf-dissector-aarch64-support.html
+>>
+>> Philippe Mathieu-Daudé (3):
+>>   hw/net/e1000: Add readops/writeops typedefs
+>>   hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
+>>   virtfs-proxy-helper: Make the helper_opts[] array const
+>>
+>>  fsdev/virtfs-proxy-helper.c | 2 +-
+>>  hw/net/e1000.c              | 6 ++++--
+>>  hw/net/e1000e_core.c        | 6 ++++--
+>>  3 files changed, 9 insertions(+), 5 deletions(-)
+>>
 > 
-> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-> index 9f50a89b4a..173a7521f2 100644
-> --- a/hw/audio/fmopl.c
-> +++ b/hw/audio/fmopl.c
-> @@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
->  	}
->  }
->  
-> -/* ----------  Create one of vietual YM3812 ----------       */
-> +/* ----------  Create one of virtual YM3812 ----------       */
->  /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
->  FM_OPL *OPLCreate(int clock, int rate)
->  {
-> @@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
->  	return OPL;
->  }
->  
-> -/* ----------  Destroy one of vietual YM3812 ----------       */
-> +/* ----------  Destroy one of virtual YM3812 ----------       */
->  void OPLDestroy(FM_OPL *OPL)
->  {
->  #ifdef OPL_OUTPUT_LOG
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 > 
+> These can certainly go through qemu-trivial.
 
 Applied to my trivial-patches branch.
 
