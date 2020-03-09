@@ -1,25 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBHAn-0004EO-M8
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:06:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54689)
+	id 1jBHI3-0007CA-T9
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:13:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55891)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBHAk-0004DI-Pb
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:06:15 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBHI1-000794-VD
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:13:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBHAj-0006fX-Ma
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:06:14 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43639)
+ (envelope-from <laurent@vivier.eu>) id 1jBHI0-0001QZ-PE
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:13:45 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:54311)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBHAj-0006fF-ET; Mon, 09 Mar 2020 08:06:13 -0400
+ id 1jBHI0-0001PU-Gj; Mon, 09 Mar 2020 08:13:44 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MowOm-1jgj2C0C6Q-00qRo9; Mon, 09 Mar 2020 13:05:54 +0100
-Subject: Re: [PATCH] core/qdev: fix memleak in qdev_get_gpio_out_connector()
-To: Pan Nengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org
-Cc: berrange@redhat.com, ehabkost@redhat.com, qemu-trivial@nongnu.org,
- euler.robot@huawei.com, pbonzini@redhat.com, zhang.zhanghailiang@huawei.com
-References: <20200307030756.5913-1-pannengyuan@huawei.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MmkfQ-1ja8Ap12uM-00jr7h; Mon, 09 Mar 2020 13:13:29 +0100
+Subject: Re: [PATCH v3 01/12] block/stream: Remove redundant statement in
+ stream_run()
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
+ zhang.zhanghailiang@huawei.com, Max Reitz <mreitz@redhat.com>,
+ Euler Robot <euler.robot@huawei.com>, John Snow <jsnow@redhat.com>
+References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-3-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <065a73ce-c0ee-07be-b442-c98763f99e1c@vivier.eu>
-Date: Mon, 9 Mar 2020 13:05:51 +0100
+Message-ID: <66182cbb-7492-dd16-4552-e4cf0f1911ab@vivier.eu>
+Date: Mon, 9 Mar 2020 13:13:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200307030756.5913-1-pannengyuan@huawei.com>
+In-Reply-To: <20200302130715.29440-3-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xH/ThBAAXWcjDMLwZPCc0yT6eD/9YcwuXFAXxJQ60OkagyQWA03
- SLMRKiQ6HTRcIH+zpTC9rgqf2Hp/C/f2ZdNWZM/pI5D5jSJow0CKmk1jEBPeMY/X124gLAQ
- lsYBuLNdgxXr96ru79eq4zRWwNNumDpo9jq+yrQKq47hIwlktgbODFWmM8RmK5cNEFnsq2v
- uFds54OYZNFLkH7Qsz+8Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iTyDS3J4pSo=:Afc28itw6n3t7VNL15Il/l
- 4gVv5Bp+K4DGEFR5Hu4YtR1kjqz4LRXWiadLmLQ/3p48QKGn8Tln5mvKIxfz1Ayj/fY1gVj6l
- KE8lD75IlYfjQsCzsZgMul6nx78o6OAeGajGbctr2FmemM75nGPdXkkl7XRHl0Cm2DLaDpUhY
- ZKBjmkRUGVDzrOPrL9s+/gHWGJ9Q81rLm+xSDfNeL42720iPQdxHLA8PHs8R4a4bAWH5eok5P
- OlXL7X8zHVAjsM6n6Dn8jRs9hExAT+sj86FUe+u2XJgaxfIWvoAL+9XIhxTYOjPZl1pVgeW8s
- KNEhT8qXO2OiZwEGX7HYbitg7tr+rm2JugryiU5qHIWP4a0shFDRAsk4wZN44kCXcXGpf6OT3
- A6fqMUjKTl4C96wDnUd6kLkXAFY6krFkLcJdfqrnVen2NICpqO0KLAXuIge+Sz/8MHQRlCoEI
- H1S8URoMCneYQC7I0bZBPJNUAgCA/pWXe0g6MXLLoX99cunf00Bc9am7FJ3waxpUuIPY8Hem8
- L3AEzk2Hnm5W41ALLKg1A3vh2O5Be/H1z+v+D2JRlC8KbvVHcf1BjCVVqZFF3iW/yeXushFDz
- Gxp2HZg9p/M1KOnE8bHNCW4GKiWPzbAssHSED7xQxtDJFltPAI7/EnWX70//3SswtgnN1konz
- IRiIvjd468R//Rq2li3Y6sLfODC8zOVxNyciqE9KVAZBfL0uybyrZR8T4MeQjeFIP/yAMDHon
- O4Vz5RosQVPe+RtInyQT5Nd615MgKUcLYzyDtje+ycbamyeYjSMeGBky6ZXCfUsMw7OoPNKlm
- 6EEfvwS2zJ+W4bpZm9Ax4s1eZmJTo8RtCRLasi9dFES7mYp+TOMb2k7lr0sCKIu6Up10Ka5
+X-Provags-ID: V03:K1:R0yNBrn9cVFozWcqfejX3Sim6HkSZMhIkY99/rb0SwJOL/Ujzwg
+ mbjk+6v+q65A5b2lMMb26vbsjfrnAO1PLVqJSn1XC6ULvBw/b+B5iIwHUEu6s9hYejF9ymj
+ x9hip6p1AX6yDLSvA7FtPk87BHTiW9PLKxBALE3+YqhDeIVp3J7x5CZUmHQVVapSmfTjLNo
+ lEQzWqlDVmfcT0KSmvRZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GWOS/nlNgLM=:7dY99Ss43YOdEdiHoCVcGE
+ WlYO/Ae/+/uV+PGNgj4LOILyDEf6cXjP4UvwZQ/Dx2dE/9+ABGMIYlIjkrHHJ/NANDGvxh0wp
+ XKuXiqiRAMSa9gXOCuXAYJDsk+hXrwy4ldOBcEJXcm4ZNNz0ps96MLy0DzDhCGdK1aPuBwNrA
+ MsdkYQr/+Bd2toR4hJV4YYhc/jslgYJkG0PtUp4g+8+6FibxzdCeLchOsf8kJY4y1mpaoa1tK
+ r6tA3Xlf7pKY1mkw3OrYCYkzRnY76PgmiPSJGtcKm3PGMBtKU5Qu6yTmbeG7Dh8k9OBf+ySi1
+ IbblUNGVYTZddEgaykLhTUXzH/X5NqGE8nI1m2Qw1hwPHs7OJoCu9OUzPAvxfZZFv+4gliFXR
+ o+m5hoClDyJHP19uvBCO6Asy34ekl88YPJeM5c/o0TDEWyZLjmBkj9xo5PQ9AG6frs/wNs8XB
+ aQlI5mBFumKTYzSoMXpFuPSam8tMX/mTWci1h1cKqCKHqj2DswvefR3BmOpu5ta00AYgR7bcJ
+ RD8fS7sQeWAC/+lX4OJujGXQEed2vvxlnhv00sPFlurR3ydL+u8R8O38J4Q3fAA/YxeMkaveG
+ 6rLIi+X1WGz40SOfDaiVlsIqswtikm1JLwkJ14oIG65rF7UC2T8JZJjEsIqdXh2PB+d08E/iq
+ VcYoH394LGww1JPjCVTwEiH6HHbD2/BYYvkyDC4emKm+mC7wDFMqUOXPCXknHS2t7P7y3Q5hc
+ a/bptzhH8Gdi1EvRejBYZJR6w33EWLunjH/YwiLwDp6pbxI+4GjKbIxtwScIG5hlTX0wJXWmg
+ CQ36hVlA8sK/4FB+Ykw0bPhZ/xxFvchlv4bYnfkWqIFRNax47NoYKHkLkebq+n8N5GYrEvN
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,34 +106,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 12:06:15 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 12:13:47 -0000
 
-Le 07/03/2020 à 04:07, Pan Nengyuan a écrit :
-> Fix a memory leak in qdev_get_gpio_out_connector().
-> 
+Le 02/03/2020 à 14:07, Chen Qun a écrit :
+> Clang static code analyzer show warning:
+>   block/stream.c:186:9: warning: Value stored to 'ret' is never read
+>         ret = 0;
+>         ^     ~
 > Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: John Snow <jsnow@redhat.com>
+> Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 > ---
->  hw/core/qdev.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
 > 
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 3937d1eb1a..85f062def7 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -557,7 +557,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+> v1->v2:move 'ret' declaration to the for() statement(Base on Kevin's comments).
+> ---
+>  block/stream.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/block/stream.c b/block/stream.c
+> index 5562ccbf57..aa2e7af98e 100644
+> --- a/block/stream.c
+> +++ b/block/stream.c
+> @@ -114,7 +114,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
+>      int64_t offset = 0;
+>      uint64_t delay_ns = 0;
+>      int error = 0;
+> -    int ret = 0;
+>      int64_t n = 0; /* bytes */
 >  
->  qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n)
->  {
-> -    char *propname = g_strdup_printf("%s[%d]",
-> +    g_autofree char *propname = g_strdup_printf("%s[%d]",
->                                       name ? name : "unnamed-gpio-out", n);
+>      if (bs == s->bottom) {
+> @@ -139,6 +138,7 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
 >  
->      qemu_irq ret = (qemu_irq)object_property_get_link(OBJECT(dev), propname,
+>      for ( ; offset < len; offset += n) {
+>          bool copy;
+> +        int ret;
+>  
+>          /* Note that even when no rate limit is applied we need to yield
+>           * with no pending I/O here so that bdrv_drain_all() returns.
+> @@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
+>                  break;
+>              }
+>          }
+> -        ret = 0;
+>  
+>          /* Publish progress */
+>          job_progress_update(&s->common.job, n);
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
