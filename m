@@ -1,29 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBGpi-00006J-83
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:44:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51160)
+	id 1jBH1h-0006OU-FF
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:56:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53086)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBGpf-0008SZ-Qv
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:44:29 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBH1e-0006ON-Ql
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:56:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBGpe-00056F-Me
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:44:27 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:37193)
+ (envelope-from <laurent@vivier.eu>) id 1jBH1d-0002gr-JI
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:56:50 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:35697)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBGpc-00054Q-0Q; Mon, 09 Mar 2020 07:44:24 -0400
+ id 1jBH1d-0002gI-Ae; Mon, 09 Mar 2020 07:56:49 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MLhwM-1itjyk1Sim-00HfzE; Mon, 09 Mar 2020 12:44:18 +0100
-Subject: Re: [PATCH 0/3] hw/net,virtfs-proxy-helper: Reduce .data footprint
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Ml6i2-1jcrSr0QLk-00lX2Q; Mon, 09 Mar 2020 12:56:45 +0100
+Subject: Re: [PATCH v2 00/18] hw: Clean up hw/i386 headers (and few alpha/hppa)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Greg Kurz <groug@kaod.org>
-References: <20200305010446.17029-1-philmd@redhat.com>
- <92a0e3c4-2d50-49a6-f794-c5df57e1b3fc@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200228114649.12818-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -67,34 +64,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3613c1f0-eda8-0385-4e38-a90c69777a57@vivier.eu>
-Date: Mon, 9 Mar 2020 12:44:16 +0100
+Message-ID: <488840b3-5d5c-0fc1-d39d-eb2fb46f330c@vivier.eu>
+Date: Mon, 9 Mar 2020 12:56:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <92a0e3c4-2d50-49a6-f794-c5df57e1b3fc@redhat.com>
+In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LS6KDhhXc/vQ7XHTjveDL1AOYOmdaJbiLJvO23CwysCdn2TdRJx
- w+JKpTjzV/wsrcfUcP/LCRmfOfG2Kppsc17XIXGVJxZcFyvjGPcmUAlRRFx06+O32Qwcuq9
- C2g00UXpj7y5W/tZrHeyiVTDpyGOD+5lsp4+GMXWrJCLLY2G90PnUS9h3WSwGFQzmgWxynU
- KKS6nh3jb1XKLuXdWqIjg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:84EivtRHnHI=:RVe5C8cmuoo5Y5QW2WjJLP
- eJqwKoNm/lM4s7Yfc7GfHns7xHNO6knekftLz6xVV9IdJyyN+GucB6o62lbMF+Je9GVQGj91+
- IRCZnRk4byFsTRkYczBW9nW8oW0iY352UwoGziOiqdVATAKY5RZCkOH9vKITHu0BkovpmYLRT
- ZHh+gAu2X3xbozLwbY34Jk8Krw1Q4HWfYibi9jLbsW/Mt+AUiiaFDbdBiFv22nSC6cLYQtBe1
- PfxLAGT3SUkP6U0785x6cYrSbVgdjG+sEEKY/02rih3Q7tvFPnRN2eRUOn2Q1Vx1o5yuvc8bo
- jmEyzGFEHQQnHQVqlV4CM21tv2s1OET8Hn468/48yx4/7KnZPu5Lu03aOA+EJpWe6v5TpTCpw
- FIgZR/ADVzr1wfog0LqlVuMPQ00EKRqKJUxXIlISz/etMnbskQcQeE180JFL3dlOln35h+jMz
- eW7G84AzTz/pbmNE1YwqbSQyzX6CQDTicl7aLB7TIB5jOaJlAns0iXXPN1WYRW7/rEbYosz5w
- iqSNmOxrqcnGN60W81h9dEb6EUUPpzWQCWDhKD/xeAEUa2gbIMZEeyvBz5vF/zU3LXCtQSF75
- 4QyHhbuo8ESHuff59itGUJuuSYRM6ESFF3yRV7tbDtEWWLZ+vswGQEHOvNs/p6NdtQ8HWpkLK
- Y+Tt46JBPjK/XpubQN0JRDLa3bx/kAEJITsD8ugB9/CVbdKb0ZaNDJIoc/79DLTxarUaimcEq
- HYpWbqCrmMtes8ZHsHmgVeVWTjy6m1pEgtnxnTrRnDzNWRd8+u6CdkLFV91Zk7I9fz2hv3l2W
- E4YrSaOTN9Gaq8NGmwaqpaYC0zAY9RSPfynzLpmNldDxLaSoTZghxW77DskTiTkbMjxeH6A
+X-Provags-ID: V03:K1:Of+lnJafQ7C9aQsv7T3RbIuo6HXgrSbiIK6CY9Aes4CG9noCzLD
+ OHxiG3vKoHe+6O/UX/xtYL3EI1Fz95T0mrMU9TW9Y9VOLZTC4BsmnKBZD40dUrDcGqHoyNo
+ J2k7PFhX+ZpEm0nDRDD5Vdm9Jtx5azHgzOnCkDXX6HidX2Gasz2OcltIywV4RX4hU6NUHg6
+ AoHGtXVzMd4ikn1j3vdHg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:owwteoday58=:RWJsoesCQD5GhUSzpqKGNA
+ p+EyywfTrkbUa1ZR271bBeNMdQ5aiUrNG9ZxCDioQdOLUCsMBJUwwniFm1PeNgwF4c7IDaQj/
+ rWjYdOfhnS5SrgKKdPUgneBcF0UTN/PjKZtYYEl9goI4QeC+sQcM4mwOjkIih6pc6jST4BH5V
+ TRgPqZaYN2WN4gqwPpq+Qna/sS7SzZa6DFX5v36RRBxUrDBklllllgZQCcOFMk5qqJwzKvkr7
+ 2RULGWeGrvym7f0qbyBwioCpO3+lZvfHLV9MnEwFs5Jk7N8lgH8AfjTBLOXKUUcbxKCY1qoPc
+ UGtXSu8kDTegByqc1PqYSckIh9r5Y2+BueGjp48ez7R9MkdHQoFg7fyrvIRC7gnruYZXf0II0
+ /rlmUlSRuJnJu3jPhku0BKauy+UNwstHAkCU40W5irDwDRu8GPg05PscN27b+u8A709io+kVk
+ KuUWhkeCj0SLbEpSeMpVqxuHmQdmju4oQnoHAtt7r9lxjLNH6sZiEiex73vhsBHIYAcMHX1DT
+ 4xwPrSNR8FqShoa6Esztpyn75fS/uMOdVN9Q0MJ5bCkxzwfxpOc0vdWgzGwHS6n2iDzHGkG9H
+ E5zdq4fiMWstVe0O83HUr9mfUIzsUIKiUN24q11KC58/zZr6PvCgXfvSm6Kkh3wsyxJNMoO2+
+ PCwK1lgOGg+eKNSxYB/aHRNQIcuX107yrYjMyFuxZBTb1Gl7JeoK6svvrtFrVFjGwuIgXD+HU
+ Jp/MT/pR4EgRfaEi8i+zaMvmsaQafDSO5drxRDuOh3YvUw1cpMBhs1E6af4kShdJSPqOO2fxt
+ 7x/WJeZB/BKQNcB7XGHN3C/WekFO4DvVjLhPCzXpH8l0UkpoDOWKoNTws/nr0i+Kp3++wmh
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 217.72.192.73
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,35 +103,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 11:44:29 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 11:56:52 -0000
 
-Le 06/03/2020 à 10:25, Paolo Bonzini a écrit :
-> On 05/03/20 02:04, Philippe Mathieu-Daudé wrote:
->> More memory footprint reduction, similar to:
->> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg00984.html
->>
->> The elf-dissector tool [1] [2] helped to notice the big array.
->>
->> [1] https://phabricator.kde.org/source/elf-dissector/
->> [2] https://www.volkerkrause.eu/2019/06/22/elf-dissector-aarch64-support.html
->>
->> Philippe Mathieu-Daudé (3):
->>   hw/net/e1000: Add readops/writeops typedefs
->>   hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
->>   virtfs-proxy-helper: Make the helper_opts[] array const
->>
->>  fsdev/virtfs-proxy-helper.c | 2 +-
->>  hw/net/e1000.c              | 6 ++++--
->>  hw/net/e1000e_core.c        | 6 ++++--
->>  3 files changed, 9 insertions(+), 5 deletions(-)
->>
+Le 28/02/2020 à 12:46, Philippe Mathieu-Daudé a écrit :
+> [Rebased since v1]:
+> https://www.mail-archive.com/qemu-block@nongnu.org/msg57485.html
 > 
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> This is a follow-up of Markus's cleanup series:
+> Tame a few "touch this, recompile the world"
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
 > 
-> These can certainly go through qemu-trivial.
+> This part is mostly restricted to X86, but since some file from the
+> Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
+> too.
+> 
+> Eventually I'll succeed at removing hw/i386/ dependency on non-X86
+> platforms (Quest I started 2 years ago...).
+> 
+> Regards,
+> 
+> Phil.
+> 
+> Philippe Mathieu-Daudé (18):
+>   vl: Add missing "hw/boards.h" include
+>   hw/southbridge/ich9: Removed unused headers
+>   hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
+>   hw/timer: Remove unused "ui/console.h" header
+>   hw/usb/dev-storage: Remove unused "ui/console.h" header
+>   hw/i386/intel_iommu: Remove unused includes
+>   hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
+>   hw/alpha/dp264: Include "net/net.h"
+>   hw/hppa/machine: Include "net/net.h"
+>   hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
+>   hw/timer/hpet: Include "exec/address-spaces.h"
+>   hw/pci-host/q35: Include "qemu/range.h"
+>   hw/i2c/smbus_ich9: Include "qemu/range.h"
+>   hw/pci-host/piix: Include "qemu/range.h"
+>   hw/acpi: Include "hw/mem/nvdimm.h"
+>   hw/i386: Include "hw/mem/nvdimm.h"
+>   hw/pci-host/q35: Remove unused includes
+>   hw/i386/pc: Clean up includes
+> 
+>  hw/alpha/alpha_sys.h              |  1 -
+>  include/hw/i386/ich9.h            |  1 -
+>  include/hw/i386/intel_iommu.h     |  4 ----
+>  include/hw/i386/ioapic_internal.h |  1 -
+>  include/hw/i386/pc.h              | 11 +++--------
+>  include/hw/pci-host/q35.h         |  8 +-------
+>  hw/acpi/cpu_hotplug.c             |  1 +
+>  hw/acpi/ich9.c                    |  2 +-
+>  hw/acpi/piix4.c                   |  1 +
+>  hw/alpha/dp264.c                  |  1 +
+>  hw/hppa/machine.c                 |  1 +
+>  hw/i2c/smbus_ich9.c               |  1 +
+>  hw/i386/acpi-build.c              |  1 +
+>  hw/i386/pc.c                      |  1 +
+>  hw/i386/pc_piix.c                 |  1 +
+>  hw/i386/pc_q35.c                  |  1 +
+>  hw/isa/lpc_ich9.c                 |  1 -
+>  hw/pci-host/i440fx.c              |  1 +
+>  hw/pci-host/q35.c                 |  1 +
+>  hw/rtc/twl92230.c                 |  1 -
+>  hw/timer/hpet.c                   |  2 +-
+>  hw/usb/dev-storage.c              |  1 -
+>  softmmu/vl.c                      |  1 +
+>  23 files changed, 18 insertions(+), 27 deletions(-)
+> 
 
-Applied to my trivial-patches branch.
+Series applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
