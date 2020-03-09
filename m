@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBHrf-0008CV-AZ
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:50:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34592)
+	id 1jBHtu-0003Cp-Vf
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 08:52:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35149)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBHrc-00086q-L1
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:50:33 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBHtp-0003AB-Ot
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:52:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBHrb-00044g-Hx
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:50:32 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:44241)
+ (envelope-from <laurent@vivier.eu>) id 1jBHto-0001CG-OI
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 08:52:49 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:51585)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBHrY-0003t9-RE; Mon, 09 Mar 2020 08:50:29 -0400
+ id 1jBHto-00018u-FY; Mon, 09 Mar 2020 08:52:48 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MaIGB-1ioU620zpd-00WILQ; Mon, 09 Mar 2020 13:50:19 +0100
-Subject: Re: [PATCH v3 12/12] monitor/hmp-cmds: Remove redundant statement in
- hmp_rocker_of_dpa_groups()
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MWBC8-1iqwyA3iKA-00Xa0R; Mon, 09 Mar 2020 13:52:17 +0100
+Subject: Re: [PATCH v3 05/12] scsi/scsi-disk: Remove redundant statement in
+ scsi_disk_emulate_command()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>, peter.maydell@linaro.org,
+ zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
- <20200302130715.29440-14-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-7-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -68,34 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <5224a100-b573-9d92-09ec-b7f0b5b824ce@vivier.eu>
-Date: Mon, 9 Mar 2020 13:50:17 +0100
+Message-ID: <330690b1-c267-3609-dde2-0cdc4f17ca99@vivier.eu>
+Date: Mon, 9 Mar 2020 13:52:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200302130715.29440-14-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200302130715.29440-7-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gXg9lWx7sn5VqNEQKodDFiMSkYMvxQHZE5RnPbsmYP7w4BaiB11
- PtU1iUWnCsx9LZoxvvE3ZVXRAES/IhS5JLQgnqfcJiAI/btlfyYSEiWoHUHAZbPXhVB0+xP
- vkqC2YBP2eJx+dUTUUQ1fEnn0EsmM3vOYt33okh1/eZisV0o2PJ59x8JCzpyMhO2VYH0oK+
- oIAtwIIcZuPaQFdB+8/1w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ncrj1F0UDlw=:FSKUUT7yHbIndMVmMbz/eY
- JXSS16F1sdp/Excab7XGGX1HgxAC/YIQrfpGAj3xxvPR87E0qvpzQkhB991PvH4TBr8/LqO8J
- b5sfeOm2NfIfgCx1uB7/h2Qut7rJWjtduiF8f9xodubfXYBWCbYrsx1osveHb3VeIfSGy94wm
- XEOqDcriWnjo874KlNJyPI0DXsy/ZMDS4R+i1ltb+d3HCci2rJng5l/d016t0gGbF0VmPqkTo
- ovaX9FXX6ihb3wvbG/VCvREDsMgbTLAlx1+e3+j3kWPc3LCf7FSJyXn8oHS3uh2peGbQ8ZMpE
- AxwvKX22DQzrhTz6keB8J8uLT40Y2dOl2XaY1odnRs9MBEsI8Tbfc7RisT/GqP4NUVuAszRLT
- 4v6C/Puj3cUnS3q89EsWzjUf2Xl40qrzw6PGgMa9s9SvG4XgYTSr4j3uIvfLteuzONy77RTMD
- yGmNU6XTvzHilZqvo302qbQ9mBVfst/MPPb2iHx05gmVPhQdyi5hzKWxVgRfrDuF7tGt6Jdk4
- pgfdsF1TLvrlOuj0HZlx688EAcj33PFkbTHFY3KLUmzjTAjrEHSwza9l6NpGzWH+4ZuK22QV6
- IeechsZMfY+5/WWELoD1urOyu++98M0uyD0Wy2SB9xnPqRvT4TWrZPTGzvev8Nz9jt8XOZVRO
- nU8jz/LEDSC8yA+BGjffHJQCIOdhhiaGAWmpD1B0GBbL9HyIYz/9TW+0dxbtSqVmfohbXfDfg
- t4y41TKKci6sIaIQuJ4iDKPdKo37nAXAOdCGzGd3JRP3y/D5E7+ZcolzLSey3yryyJ3N4FcoI
- uZKYYfx/tB1OghZenKYJvItxY0ZPFz5BEwdexE0dWFGkytwruY9TKc8q0npQuRggw71bkA4
+X-Provags-ID: V03:K1:5eNEMnSghZyV2qMybn2a4A2xDp7sZqvefGqRO1uyH7Eku+PM1HF
+ DCXPrSmpk8M241XpiBm+CcuQ5xa5eU/qJFQtOWXropoROIXlPrhUz4KAhxBGnPILcqL1HiG
+ E4474WwmeSsyWoPTGP1qbyb/S/V4q3iDwE3qy3F4HurW2yy7Q5Wdz6YGWz5hSkAL7qlM5bu
+ +Xp0brj/YZINWvikk+l5g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3jMrLlZLByg=:pTKNpgSHnelKaCMBXX5G1u
+ j+ooBtkk+wuDJuZb+5VNk0flsBu+dx9rQroykzsxezYIfP3pwHXjRJ6J1fHgXGP0ueBrbKs6n
+ roPEZa5x29ZDdtkngN+ly8PPQ4uKtL/YJsvabTQY4Mjvg6VURYPGvFtYzA3bJ3dVPwkaSv4pF
+ i7DFq13ivaPl6wJm2RhO4OxJfXMI9DB29CQD2Ti0L0hQCq7X+NJkoa86+tmx0o+EgaN1cm/36
+ cQ1ADMICu1yihnirmECM1PSohEQxZ05jH3ldjIJdcuG25At64Br1Bh9ckQKJlrqUPhkUJXzUX
+ 2t6Eqzu/L9ReNs4Fgd2Aed3aLbTm2/EclKVba++NBMchYJ4BVqBCMNN1lVWUw5pVMBdys5ZlJ
+ MXvGy4+8Ou4L+8JIO8myuuMUpztQ7XeurbcrFOLMS2iwydemh10oHzMztWeU7maoQ1AOgho9F
+ w/mX+478Ngwhzk2CfThaMHAPPhuMwSyzNkRyyuQ/pg5ghdiFdTDfvEaNDIkYFEaUdO/vAqe2v
+ vQkPnfVX+NjFEovd8neGE8m0SaXyOPQyQ5AePOeQjlFAt/FczqCP0L6IDH1lYdFqL6OjEfL9G
+ B1ZXpl+qoqmCwEcQP8z8mNPkSvNOYmXc0DiQB+K7yj5FJbYjyXOQQa5y9hmtuY8DuvQS6XN20
+ 18FFbFn1CnFTvPijix6XXwm4k1UYpnTuxMJPOVqMIIAvNGOFUoBpu9Ug9+LKHIsv0N0AbTC+B
+ lN7jgJqJK4PEDocO0NJ06yds61zDLl64hNNT8nsiVUhnecPVLzjPe1O80uWCtAfA24K6lKB65
+ mLzWqABqjxGjEprMVHLU+Ct1LrKQgWkpITvEReZis5Lm330LMQ7z3Z1Z0332E9kuA4RtcvN
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,62 +106,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 12:50:33 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 12:52:53 -0000
 
 Le 02/03/2020 à 14:07, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> monitor/hmp-cmds.c:2867:17: warning: Value stored to 'set' is never read
->                 set = true;
->                 ^     ~~~~
+> scsi/scsi-disk.c:1918:5: warning: Value stored to 'buflen' is never read
+>     buflen = req->cmd.xfer;
+>     ^        ~~~~~~~~~~~~~
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
-> 
-> v1->v2: move the 'set' declaration to the for() statement(Base on Philippe's suggestion).
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Fam Zheng <fam@euphon.net>
 > ---
->  monitor/hmp-cmds.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  hw/scsi/scsi-disk.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-> index 53bc3f76c4..c6b0495822 100644
-> --- a/monitor/hmp-cmds.c
-> +++ b/monitor/hmp-cmds.c
-> @@ -2808,7 +2808,6 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict)
->      const char *name = qdict_get_str(qdict, "name");
->      uint8_t type = qdict_get_try_int(qdict, "type", 9);
->      Error *err = NULL;
-> -    bool set = false;
+> diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+> index 10d0794d60..1c0cb63a6f 100644
+> --- a/hw/scsi/scsi-disk.c
+> +++ b/hw/scsi/scsi-disk.c
+> @@ -1915,7 +1915,6 @@ static int32_t scsi_disk_emulate_command(SCSIRequest *req, uint8_t *buf)
+>          r->iov.iov_base = blk_blockalign(s->qdev.conf.blk, r->buflen);
+>      }
 >  
->      list = qmp_query_rocker_of_dpa_groups(name, type != 9, type, &err);
->      if (err != NULL) {
-> @@ -2820,6 +2819,7 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict)
->  
->      for (g = list; g; g = g->next) {
->          RockerOfDpaGroup *group = g->value;
-> +        bool set = false;
->  
->          monitor_printf(mon, "0x%08x", group->id);
->  
-> @@ -2864,14 +2864,11 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict)
->  
->          if (group->has_set_eth_dst) {
->              if (!set) {
-> -                set = true;
->                  monitor_printf(mon, " set");
->              }
->              monitor_printf(mon, " dst %s", group->set_eth_dst);
->          }
->  
-> -        set = false;
-> -
->          if (group->has_ttl_check && group->ttl_check) {
->              monitor_printf(mon, " check TTL");
->          }
+> -    buflen = req->cmd.xfer;
+>      outbuf = r->iov.iov_base;
+>      memset(outbuf, 0, r->buflen);
+>      switch (req->cmd.buf[0]) {
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
