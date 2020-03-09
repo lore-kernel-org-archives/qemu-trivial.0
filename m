@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBGXt-0007vl-Nz
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:26:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48483)
+	id 1jBGZu-0003fG-Tg
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 07:28:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48794)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBGXr-0007p6-3y
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:26:04 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBGZr-0003Xi-TV
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:28:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBGXp-0006uC-Qs
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:26:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:58395)
+ (envelope-from <laurent@vivier.eu>) id 1jBGZq-0007oD-Th
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 07:28:07 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:40751)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBGXm-0006sH-J1; Mon, 09 Mar 2020 07:25:58 -0400
+ id 1jBGZk-0007lM-FW; Mon, 09 Mar 2020 07:28:00 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1ML9i0-1itBQW0ViU-00IDoY; Mon, 09 Mar 2020 12:25:54 +0100
-Subject: Re: [PATCH] build-sys: Move the print-variable rule to rules.mak
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MvsMz-1jRhlM1ekB-00suaN; Mon, 09 Mar 2020 12:27:55 +0100
+Subject: Re: [PATCH] tests/qemu-iotests: Fix socket_scm_helper build path
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Blake <eblake@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20200306170456.21977-1-philmd@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20200306165751.18986-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,32 +66,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e044e2cf-cb41-a2fc-f27f-cd54d76cd4bd@vivier.eu>
-Date: Mon, 9 Mar 2020 12:25:53 +0100
+Message-ID: <1666c913-634a-6b8e-6ab2-928f7571e89e@vivier.eu>
+Date: Mon, 9 Mar 2020 12:27:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200306170456.21977-1-philmd@redhat.com>
+In-Reply-To: <20200306165751.18986-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WX80ArZkF9DZQnJRTqBWq4Spfe/xW8NONjMadk02SXNZxgyJtVM
- 6EZGtZupk6+wUbwwAmXYButiplGjmnN7NCB+MOhG4gdnVhr/wmggAnx0cYFZVoiqKsednBh
- 9p6IlpeC+bkwlNZ744Pfy00hTnBl4WuwVJkk/tjLG2ehzkxqEFdIMHu7XoMfK9/RiJUBnv+
- 5Rnz5V0yn5CZRvUvFBz+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8sjUbY+aX/8=:Gfgq8c+kAsZV05KDFCToFC
- O6V0T+fqBy09MdGOHOpZfJBM965Cx+GB35UtatO8QKyp6uVyzk2fLgl1A1wUZPx4PEQrHM2tJ
- AOth/wJnR21ekxn6Vl3giWqYR0BEAIk7LYf85WV4v8tyBazKgt2YJFWteXJ0UNs1NhVhpyBkA
- CTseG1aiZqeUC8TOZkLWwOElQIu0bkEiftFxQD8PO7l1mbWElt86+fK+C6sniWmaWnL7/rkd9
- pY3nJJwj+Ld1EsY1b3IGY/7ewdPQkv5cRE8kmVVzvnMfMZ6sg7zKkfEHO8Tf5pRwOcKueubam
- w8ICbgDgwxwgkBybtKSOdYtegFUvXlB21c1Qw8r2n96zjyHBRDjAvbQHV1k4wr/5wAKlWyUnE
- O7Wxcokt+zbqacsTU+ZxiPcuGnoXaetfabjaylIG6pmgxRiH+ubVmbUc2zmx2s8A7h1Dr7rQi
- ub85uP+8Tdcos5tucMwS0AMLUHyetry+AV2vniDkKajS2iwWV/VWQGGH7NIXSJ8Hx/PYMLP1x
- 5rCM9K0PxxV+KP1/2fjQT7ogbMdYBXAgbUOUSUuY3n6fquJDwpqlQADgN+zOgh0QWRqVA4K3B
- SmyA04DBKAF3zvMb1mMuBcACXooPt3ZylQVvo4WJgqnARkgOmQXLlHyo9E4/Okj96hNkQVfNs
- Z4QWyLdffI3YWsxKshdNy4cVIoMPHoPYNJD7tOZQz+wxT8zpXeIU74Pcj17se25ExisyxZz2K
- MUqctmxMOEdoNPRXkMeKp7TP22U/7CtnNar4hfuw9B8syM7TkMux+7Xy8v1z4fBc5X2pQNa4A
- OlJpH8/Zt1lDWm4AOlaDXkOYRWospoHM5X0Dr5Fi4aOioq7PS2OkLXHiqRvQnkBGLN0uEKw
+X-Provags-ID: V03:K1:NSok+hTigjQlIrmcToDiIxQZMld/i0Mv8uSvoxJEic3fXWhAo3x
+ PEpmQhZ6m7ho65LUyY3RKnou8G47e7UIEE/eICXpWJvXt1fE1juBSuhZ3J2tV51FotHGc09
+ 3cOTS7MqaVW5gB2fMHktOjhzEzWoDwaG8GdTDxYAjKvhgT1jba5sMNT4ZU/aF5iBPaKIlcB
+ y4TMJvayRFbBWpThMwOBA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+4543JNx1bM=:z0XSAGPHWQUgzzgKGWSBM6
+ u6LlI6mIovf/KalDBQtQtJGk+x4uvdoebO5JjAY9ckM6dnEq+59gdZ1P3v7qb/bV2aYRGiMod
+ 8WqwFsBqX5PvBm7+zdg18NcRgnpvpIPheT94CQphZFCZwBwCiqGiFLrC/YQGXBgeinbOKgIO9
+ YuElj4cVEdLTKgR6b+5g3HA8jRx6UUeuDBq4/9Q9ZxQInRxElPsc7/+UaTCGaZu0YbxzhmlJN
+ WBY7UrJYE7ajvC9huuQ21HAAjLXkm9lgFVQkdjyFQvKOtMlbadwFaZivc9Ovpga/WJCpc+ndy
+ 234xI7FdhGkqX5agxLDul+nKGbpEWuXt8Xm27Gnve6a3kwlVh+j7DA3FcMjdEB+X2PW11At4G
+ kDh1AqXdPhN4bz5WbO2/hTh6Qr5UhR6kUuYhpBn2w2nS72ziz03zsGALCtvKVZt/d/RWPUJdi
+ WQxPxldGTA73re48SNE9eiY8r3gAiFJ4TADXPfP6+jM551+cRkFWak9uinrLXF5tlAGJhvMTN
+ u3FVQp9qzJF/7pU03aqvNu63N5HbgT90ErGXkq5f7hkwlbZ6T39ZY4kul+odJzpRcMAGrk4cQ
+ BkiuT5S13y801GqN6OxyprxxAI9CExGrNAOzEaMX+XZhUWIKhAIzJw8uZMyNlfAjqhgPP8Fns
+ zyinpcKE0vsRbmaWtmxj8VererDuCSh12Rf9oBUKpNgqf8+dXEVb4g+6oErzTw/dOGs/vX8oX
+ 85OGzUzALRtFvX/SmGq01gZSOa9aDUlNtQBN1O94wSe3B34vsOlHiKcjA2NQY9bb1zBPuQSls
+ M/jOCliiefK+3apSesNG6jxFQ88oJ3tYwrwySoD/2/R6o8GFjK+ltYUrsMHPkiyh9z76OTN
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
@@ -104,63 +105,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 11:26:04 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 11:28:09 -0000
 
-Le 06/03/2020 à 18:04, Philippe Mathieu-Daudé a écrit :
-> Currently the print-variable rule can only be used in the
-> root directory:
+Le 06/03/2020 à 17:57, Philippe Mathieu-Daudé a écrit :
+> The socket_scm_helper path got corrupted during the mechanical
+> refactor moving the qtests files into their own sub-directory.
 > 
->   $ make print-vhost-user-json-y
->   vhost-user-json-y= contrib/vhost-user-gpu/50-qemu-gpu.json tools/virtiofsd/50-qemu-virtiofsd.json
-> 
->   $ make -C i386-softmmu print-obj-y
->   make: Entering directory 'build/i386-softmmu'
->   make: *** No rule to make target 'print-obj-y'.  Stop.
->   make: Leaving directory 'build/i386-softmmu'
-> 
-> Move it to rules.mak so we can use it from other directories:
-> 
->   $ make -C i386-softmmu print-obj-y
->   make: Entering directory 'build/i386-softmmu'
->   obj-y=qapi-introspect.o qapi-types-machine-target.o qapi-types-misc-target.o qapi-types.o qapi-visit-machine-target.o qapi-visit-misc-target.o qapi-visit.o qapi-events-machine-target.o qapi-events-misc-target.o qapi-events.o qapi-commands-machine-target.o qapi-commands-misc-target.o qapi-commands.o qapi-init-commands.o
->   make: Leaving directory 'build/i386-softmmu'
-> 
+> Fixes: 1e8a1fae7 ("test: Move qtests to a separate directory")
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  Makefile  | 3 ---
->  rules.mak | 3 +++
->  2 files changed, 3 insertions(+), 3 deletions(-)
+>  tests/Makefile.include       | 1 +
+>  tests/qtest/Makefile.include | 1 -
+>  2 files changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/Makefile b/Makefile
-> index 9d4b224126..fdc5d29bb9 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -15,9 +15,6 @@ UNCHECKED_GOALS := %clean TAGS cscope ctags dist \
->      help check-help print-% \
->      docker docker-% vm-help vm-test vm-build-%
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index edcbd475aa..67e8fcddda 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -589,6 +589,7 @@ include $(SRC_PATH)/tests/qtest/Makefile.include
+>  tests/test-qga$(EXESUF): qemu-ga$(EXESUF)
+>  tests/test-qga$(EXESUF): tests/test-qga.o $(qtest-obj-y)
+>  tests/vhost-user-bridge$(EXESUF): tests/vhost-user-bridge.o $(test-util-obj-y) libvhost-user.a
+> +tests/qemu-iotests/socket_scm_helper$(EXESUF): tests/qemu-iotests/socket_scm_helper.o
 >  
-> -print-%:
-> -	@echo '$*=$($*)'
-> -
->  # All following code might depend on configuration variables
->  ifneq ($(wildcard config-host.mak),)
->  # Put the all: rule here so that config-host.mak can contain dependencies.
-> diff --git a/rules.mak b/rules.mak
-> index e39b073d46..694865b63e 100644
-> --- a/rules.mak
-> +++ b/rules.mak
-> @@ -435,3 +435,6 @@ sentinel = .$(subst $(SPACE),_,$(subst /,_,$1)).sentinel.
->  atomic = $(eval $1: $(call sentinel,$1) ; @:) \
->           $(call sentinel,$1) : $2 ; @touch $$@ \
->           $(foreach t,$1,$(if $(wildcard $t),,$(shell rm -f $(call sentinel,$1))))
-> +
-> +print-%:
-> +	@echo '$*=$($*)'
+>  SPEED = quick
+>  
+> diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
+> index 383b0ab217..76672990a7 100644
+> --- a/tests/qtest/Makefile.include
+> +++ b/tests/qtest/Makefile.include
+> @@ -287,7 +287,6 @@ tests/qtest/usb-hcd-ehci-test$(EXESUF): tests/qtest/usb-hcd-ehci-test.o $(libqos
+>  tests/qtest/usb-hcd-xhci-test$(EXESUF): tests/qtest/usb-hcd-xhci-test.o $(libqos-usb-obj-y)
+>  tests/qtest/cpu-plug-test$(EXESUF): tests/qtest/cpu-plug-test.o
+>  tests/qtest/migration-test$(EXESUF): tests/qtest/migration-test.o tests/qtest/migration-helpers.o
+> -tests/qtest/qemu-iotests/qtest/socket_scm_helper$(EXESUF): tests/qtest/qemu-iotests/qtest/socket_scm_helper.o
+>  tests/qtest/test-netfilter$(EXESUF): tests/qtest/test-netfilter.o $(qtest-obj-y)
+>  tests/qtest/test-filter-mirror$(EXESUF): tests/qtest/test-filter-mirror.o $(qtest-obj-y)
+>  tests/qtest/test-filter-redirector$(EXESUF): tests/qtest/test-filter-redirector.o $(qtest-obj-y)
 > 
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
