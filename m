@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2X-0007zt-5E
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33340)
+	id 1jBK2c-0008Co-Gl
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33494)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2S-0007pN-JM
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:53 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2Z-00085V-FM
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2R-0007gG-9y
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:52 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:55997)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2Y-0007m6-9E
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:59 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:37415)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2H-0007ZW-NY; Mon, 09 Mar 2020 11:09:41 -0400
+ id 1jBK2R-0007fp-AF; Mon, 09 Mar 2020 11:09:51 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MBDvU-1j36H63dRW-00CkKu; Mon, 09 Mar 2020 16:08:43 +0100
+ id 1Mw9Lu-1jRt0S2TYa-00s5PG; Mon, 09 Mar 2020 16:09:08 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -38,33 +38,36 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Andrzej Zaborowski <balrogg@gmail.com>, Helge Deller <deller@gmx.de>,
  qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 00/33] Trivial branch patches
-Date: Mon,  9 Mar 2020 16:08:04 +0100
-Message-Id: <20200309150837.3193387-1-laurent@vivier.eu>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 11/33] hw/timer: Remove unused "ui/console.h" header
+Date: Mon,  9 Mar 2020 16:08:15 +0100
+Message-Id: <20200309150837.3193387-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
+References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:SApzpcpsmSfYibdb12MFYd1QAcw82t9w97GzLJeXDPb/WJsBOB8
- zZUEbwiC/d8fSglVHMz/fCsVgBhbDSq1I9QbdgMSXZ0MaDdYyJmYVLm0HyJ4pkdpbjBJZzG
- pywRwjJXcw4HWEXQBpaNmg7JLeySPbNrbZvOx1Wo6vn1+eEDzYOIq3v4NlFCOLtxn+EKqhV
- 2v1pwrOgQgpHPQFnRhdHw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lcXOGMhUGlc=:kZ/DjWtgceH3kkelzqPL7P
- bkqCjNXTeDZdHd9A7rlKvvyM6ExUIvub/tImaEzlC3h8/uzb7+ETM1W/AAW+pwvu2vHV76x+I
- TYmpbBK6LwSIRwrqfp+3Uc15ky9DD9evBV66+RF1/AnrdwYHXTQzYoY/l0F8hO1iLEBzJZthT
- XXAC9gZlYCqwUDWpq7uu3Bg8ktFxPmEQ9JBLCx0ewSAbwEj12SnonmGIOsEZOrUhOjCeeL0aR
- lbm8b9RGejL72IWQw66vz3qUmS1FYZHVa80faQrFaL9LQ6T/ShtQLsvGETh4Rf31bwFIgnd0M
- 9O2849cmO/FmPfkT8JDB/BrDJDI+2w/7hn/90kapL09fntqOSgp6PuC98LpaE6dxjRWTOZc1T
- knr9pKck/JbnmQga/gC7t+ZfjdLOpLSIm/qLyr/5HSIdpLNV/3SIFL/uoKpamzvLNKFK9ae3S
- B2R/DkQE1ABklRfiypKjm/oyCQvwyiLJx5qlio3Pts7OWV2MOf4kbznDeo5lb3qAqYVPSxSVN
- 3y9MUx75QkU3DhBEz1uzaIjoSX3uWghh9VtQAi/XbfDU4yK5ibIsJzoIz7Wu2pXHUYH4TfXtN
- sLtDbRKxwK5gZ0c/QdjtJW76AufweNjCH6HZggU2bAicJBIV/Fo2kuQtnhL+E25HoL7jzRikc
- GM2pY+nQc+8zfl8XFAgeZ1pZbs6eCNEg4SsH+Y3HyrpokKDYeSoZHHq0QqxJUmGKSwNP8Y2kK
- 7vHyaV3WEQ+71rEALxFJ91W4T97mYcustMBGd1ZSA8Bb8UiVcQCGr69tT+gC41IjrUsarTFNv
- Dfb0btiPnpYgJn2KXaGGV4F9o6OMCRDu9+KB08e92kyywBvQkJJtGxLZWRmKFeU3ZnQYhPY
+X-Provags-ID: V03:K1:tM2YDmot9ihGaPhyf6qhTyarNgEYi/pV4Q4kB4JhgYFNz9yEN62
+ 6m9K4srE81GDTMvq6HW+nrSU05dgDqxVxoc6T1JP8ZoPzReEsm9oCFmiYrW7TFq6QNQ9Ivb
+ QL8ROcBTlwseBc7uI2EEjChxJ4a5Yi/bNPj9QgQihMxcuhPos3qlUU4111hzZvhfx/icFOB
+ qfLvLwApS1ROlZFps2Qmg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BIzu0BJEkmM=:abdPkxT3jKmvPh6xvVPRht
+ tK6BS77CiBwZeTxvxE/HDiQIU3QjYLrT8MuFRRjUjleEfVxDtRCC84+xETfRuzkLYUlhk3Xiv
+ uuN/i6cvXRag8xpnAUFbHxMX0/AVjBbSh3BfmOMlu4AOqoqTZzh1F8Uojf3TZhCs3FSlw5A05
+ 9RE4fRJrhC9j11rZ4zTwvhxyTT/pS2H+dkT9cPkeg01384pxU+lTXSIsXeXcHWARfu5HwJ5uW
+ L4hxSdHjOWHAG5j5PPHs19o5Cgt5QttzkQo31YNsfu9ONMnRHnwZpyRdYzPNmTyn1ScPwXOX3
+ pyXw9qmMrBoqsdM4/1kShYW75XxpQknfOzqXB7FTeVWHe/k09aqNjRGPsZ/b98+rD2qYJz3nY
+ G7AC5aaz8+k596vl/EKgMCVMhY3GcCVzKBa74hJxWwXxhp7eMmNuyjVg5E7C1SUx0GVaa9+wM
+ 8zt8mkwLe+ac4sBLiqCs6++21kVyZ+FIA1MzLWx6YWEwkkFkOAWmEOoRvbHipb464ftaOcwOT
+ ThR5B95U/L6ubo6ecMzlppO5VGa8OtcbsbqiVmA3Pt7g2zBgZmEcCjzi6qZV2qkVDxifen7/K
+ OUMaNmIQYSHKU+WBFIVc+WfLeex+9V9bijKEimyn1ZBRGROGfbuLaRXY5GavIS0mNVdUrZPRi
+ Xm9DJPcAWhNoFJXi2WB1aSo8uYOOxEnWHbevGVcXXK0BRNc5lSEQ/DVH3mow1nH3P5PnF0QyB
+ 9hvSfqmF8cQyM6aquaQRP/JrvCL0/yhDrtg6J16ZSIK0q3Y6ZRq7HcazP8E87BrUpdyore2xK
+ uUIag31ivesa3qSz6jlHiV7PLLFVTcHV5aZjyP+G5JW0W/V/MAXyzUmGqscHZfp1ui1rVQy
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,117 +79,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:09:54 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:10:00 -0000
 
-The following changes since commit 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2020-03-09 10:32:53 +0000)
+The timer models don't need anything from "ui/console.h".
+Remove it.
 
-are available in the Git repository at:
+Acked-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200228114649.12818-5-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/rtc/twl92230.c | 1 -
+ hw/timer/hpet.c   | 1 -
+ 2 files changed, 2 deletions(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
-
-  monitor/hmp-cmds: Remove redundant statement in hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
-
-----------------------------------------------------------------
-- includes cleanup
-- reduce .data footprint
-- fix warnings reported by Clang static code analyzer
-- fix dp8393x part lost in merge
-- update git.orderfile and rules.mak
-
-----------------------------------------------------------------
-
-Chen Qun (7):
-  block/stream: Remove redundant statement in stream_run()
-  block/file-posix: Remove redundant statement in raw_handle_perm_lock()
-  dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
-  scsi/scsi-disk: Remove redundant statement in
-    scsi_disk_emulate_command()
-  display/pxa2xx_lcd: Remove redundant statement in
-    pxa2xx_palette_parse()
-  display/exynos4210_fimd: Remove redundant statement in
-    exynos4210_fimd_update()
-  monitor/hmp-cmds: Remove redundant statement in
-    hmp_rocker_of_dpa_groups()
-
-Eric Blake (1):
-  maint: Include top-level *.rst files early in git diff
-
-Finn Thain (1):
-  dp8393x: Mask EOL bit from descriptor addresses, take 2
-
-Pan Nengyuan (1):
-  core/qdev: fix memleak in qdev_get_gpio_out_connector()
-
-Philippe Mathieu-Daudé (23):
-  build-sys: Move the print-variable rule to rules.mak
-  hw/audio/fmopl: Fix a typo twice
-  hw/net/e1000: Add readops/writeops typedefs
-  hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
-  virtfs-proxy-helper: Make the helper_opts[] array const
-  vl: Add missing "hw/boards.h" include
-  hw/southbridge/ich9: Removed unused headers
-  hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
-  hw/timer: Remove unused "ui/console.h" header
-  hw/usb/dev-storage: Remove unused "ui/console.h" header
-  hw/i386/intel_iommu: Remove unused includes
-  hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
-  hw/alpha/dp264: Include "net/net.h"
-  hw/hppa/machine: Include "net/net.h"
-  hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
-  hw/timer/hpet: Include "exec/address-spaces.h"
-  hw/pci-host/q35: Include "qemu/range.h"
-  hw/i2c/smbus_ich9: Include "qemu/range.h"
-  hw/pci-host/piix: Include "qemu/range.h"
-  hw/acpi: Include "hw/mem/nvdimm.h"
-  hw/i386: Include "hw/mem/nvdimm.h"
-  hw/pci-host/q35: Remove unused includes
-  hw/i386/pc: Clean up includes
-
- Makefile                          |  3 ---
- block/file-posix.c                |  1 -
- block/stream.c                    |  3 +--
- fsdev/virtfs-proxy-helper.c       |  2 +-
- hw/acpi/cpu_hotplug.c             |  1 +
- hw/acpi/ich9.c                    |  2 +-
- hw/acpi/piix4.c                   |  1 +
- hw/alpha/alpha_sys.h              |  1 -
- hw/alpha/dp264.c                  |  1 +
- hw/audio/fmopl.c                  |  4 ++--
- hw/core/qdev.c                    |  2 +-
- hw/display/exynos4210_fimd.c      |  1 -
- hw/display/pxa2xx_lcd.c           |  1 -
- hw/dma/xlnx-zdma.c                | 10 +++++-----
- hw/hppa/machine.c                 |  1 +
- hw/i2c/smbus_ich9.c               |  1 +
- hw/i386/acpi-build.c              |  1 +
- hw/i386/pc.c                      |  1 +
- hw/i386/pc_piix.c                 |  1 +
- hw/i386/pc_q35.c                  |  1 +
- hw/isa/lpc_ich9.c                 |  1 -
- hw/net/dp8393x.c                  |  4 ++--
- hw/net/e1000.c                    |  6 ++++--
- hw/net/e1000e_core.c              |  6 ++++--
- hw/pci-host/i440fx.c              |  1 +
- hw/pci-host/q35.c                 |  1 +
- hw/rtc/twl92230.c                 |  1 -
- hw/scsi/scsi-disk.c               |  1 -
- hw/timer/hpet.c                   |  2 +-
- hw/usb/dev-storage.c              |  1 -
- include/hw/i386/ich9.h            |  1 -
- include/hw/i386/intel_iommu.h     |  4 ----
- include/hw/i386/ioapic_internal.h |  1 -
- include/hw/i386/pc.h              | 11 +++--------
- include/hw/pci-host/q35.h         |  8 +-------
- monitor/hmp-cmds.c                |  5 +----
- rules.mak                         |  3 +++
- scripts/git.orderfile             |  1 +
- softmmu/vl.c                      |  1 +
- 39 files changed, 43 insertions(+), 55 deletions(-)
-
+diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+index 63bd13d2caa4..d0011be89eef 100644
+--- a/hw/rtc/twl92230.c
++++ b/hw/rtc/twl92230.c
+@@ -27,7 +27,6 @@
+ #include "migration/qemu-file-types.h"
+ #include "migration/vmstate.h"
+ #include "sysemu/sysemu.h"
+-#include "ui/console.h"
+ #include "qemu/bcd.h"
+ #include "qemu/module.h"
+ 
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 8dbcbdca16a6..4f30dd50a40a 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -27,7 +27,6 @@
+ #include "qemu/osdep.h"
+ #include "hw/i386/pc.h"
+ #include "hw/irq.h"
+-#include "ui/console.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/timer.h"
 -- 
 2.24.1
 
