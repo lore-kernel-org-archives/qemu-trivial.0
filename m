@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK31-0000R5-75
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33886)
+	id 1jBK36-0000VO-EJ
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2z-0000L2-2L
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:26 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK30-0000Pa-BG
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2x-00084h-3h
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:24 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:43071)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2z-00086Q-8r
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:26 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:38419)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2w-00080q-Qu; Mon, 09 Mar 2020 11:10:23 -0400
+ id 1jBK2m-0007yY-As; Mon, 09 Mar 2020 11:10:12 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mz9d7-1jX6La2m0Z-00wCPd; Mon, 09 Mar 2020 16:09:29 +0100
+ id 1My3AX-1jYBjR1Hm3-00zVGb; Mon, 09 Mar 2020 16:09:06 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -40,32 +40,33 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 20/33] hw/i2c/smbus_ich9: Include "qemu/range.h"
-Date: Mon,  9 Mar 2020 16:08:24 +0100
-Message-Id: <20200309150837.3193387-21-laurent@vivier.eu>
+Subject: [PULL 10/33] hw/i386/ioapic_internal: Remove unused
+ "hw/i386/ioapic.h" header
+Date: Mon,  9 Mar 2020 16:08:14 +0100
+Message-Id: <20200309150837.3193387-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Alwa6Yq6anJ25qqFb2ZJCqayl5qxuKrCwWQL2K641TjDVv8DxnD
- UJkIGN3SM0DllsWqOE1Q2KYBM0cIesPhI79sdPoQyBdoLbAXe9AJLhVRYpKiLGQqpDKHzDt
- GrC7m/3NQDbiIJRmlWUBWUgCziy5lGGkrNjNN5Bor9wIBQ+JOLewBBQgn8yVC1/vrTmv4rS
- cz4gI88sb4xqWMZZ0aC6g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PuxzSjGLkMI=:rKTJ09YAr7MO8ckm3p+HHB
- nTQRRCXJ2wnTUopWfg0flpXTcAvErHxm0yhofCwSwtfMkxvZYCUmlww4Rr5KjT0ebccRMoJV2
- sWbXdgymVKmJsuUnJr+Cx3Hrfxtu8O5zCnWsUbaWn3q5bz3cpKQ7AFEuNccDI/kWt89TzCgxf
- 14BUy+Ay1kIj9ZaMtJYQWkKTJMVYIad5jHYJyijOYkHy9wlg1roIGHDgjzhYhqCMKd/4KxyjC
- QYfsJJahDeu4o5Jx0bH100FvOCImi3vF2X5QFtpvbsEKl78DbmlwBrmvvX/ZBTlXdF3wvi7Dw
- 7E5sDlMt/RZwc53y3kx013vZYz5VD4iTrqw62D0G+TTC9ksGNQdPHstZlbD+yZCFbjr6f6nMP
- crFuMsqjos+n2Owy5H7y2BG4Pb+CLIpqTIN+9F39PDSyzueQLuf7wsZAIkKtUG4iXKoFaXmgi
- NSZuZjsb55f+8Of5wjTfQiQRjYVhhpHwVUcJwxC5ds1BsS3KBRzjMkkc82LjYhFhw0Sh/TfJ/
- fanwylNwK4bbIVBb/KWeEi7y6sN7tZUB4G+BIC8K5VFzT7UzCpe2SlDwLtFdYLXCA2guwGhR6
- +h/TEbmQW9cdtfZsX4k7pRZx1LetraWGqUN3LYaHVxFjsjaolT86SQzPcTTQ+HoMq9NFGgdL6
- kn0Ex0zP1qvLA70+6i6VN7G6jmr2AmIIFy4G/54vkqR9vfTeA+VOdst7ntoZYCXzBTXrCX4BU
- /2Fe/dAkdmLwyTtmNHgzhmdpqnl/W4JpieDDgL0jufxp1kxgvtl21OjePQTmKSMttB/8r/0jO
- H5ORpJRfTO/RZIbCVT6OUbbg3Nv2pQRAUAqN529o4yy+sHk2WHfvJGvZm7JQ6rmv22X+T4T
+X-Provags-ID: V03:K1:u3cPHvNvPGZ71fbGyaPeuOYlBQ264xiRTyGLhSmLmH67HijXfLa
+ Y/qoXbhDzpPStZaVi8UaZJHHsBWYEYYo4GbKgMgSUSzEmvFukXni5rNTb74DFo151g7oIxi
+ dpsTu61sW3Wtu1cntATyfaBQ1zSOTP7c5tLLEKT6h+m28jrS6w/F4c2ae0QzxhHS0Y8rfUr
+ AyJ0kIDUuVP4xkFH2c3WA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MIrVBrtyA2c=:o3LjRP0DEiWUwk9amWDB/8
+ LvmxIIbSkJi+oVil9V4+sj2po18yeoP0ZdBYcJlNUkLUMRusu6NlHxNG5g8xnz4/N5Lw5/UDa
+ U/AMdA1HG++9XdJPUIB9EpzeYICB2F/Fn7CWl1tn1NJGyP0BpyNAqAZczbqLMwrwJy1SnPx8R
+ N2HwHd8deHULP2tzUO4d8gATrp65MeKWmt0vGxN9S9ZEPe7C5EZJBjt3Z+vkb3g8fof2O8u4m
+ 3yg6Qqrp+9qcGm4Q7QDSZvYDrdFF3gA2Hm47Cx5dB6AtfCIvsKQKzMEDDcIzoYWCrTtx4Hh0j
+ ZjsPA/+hNVp2YS4SMbbvySVyskubCOYgfBB2CISmX0mWoD0jeLQfZ0DsjT8TtQWuQ+wGDH76c
+ 4Ivo+aQVKcF06BSUQ94OVN3FFSjqYzKQzRWXsS2gDJmqR1WXoB8evoS7rRPnQW9xRPq5AGARd
+ O9jNqsfg2G29v0fT01Xw/G+tfTtzt/dU7LchYctnZDOW/P+Iyibl4ST6ddi7lQFL/ql03EOj/
+ Gz/EGXp/w4+kUrqQL9PLZ3awYU8oiHN04Pt+P66bekr6sD5mMVQcrlKAaqvJ5zpo/eaI9Ueaf
+ De+tPClMoGMYg/IswaS6fmezKptwNOafBN3/k8Ok9/xH+qT/qZ8FDazpaVxdZzJmfRzwaq5Ig
+ ab1CkZwoL4MRqEyyZfm5Ft1nHArvR51vRVVXK5+dfua2MUPc5Pf2mkjSEYWsJVT+i7UyjBlAJ
+ 1q24dxVpAGwkYWMLrTCKofEcI9QsrXdjMrBOke77JtOVixNNzkjnakYzV21DUN4cYfymwENXe
+ X2Dzz+hOuA0iTrV6ryhcNjZXva4icWSW+jk08jK6NRIw6UbreyCqETJeWugpaSh2c4RnfqX
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,40 +80,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:10:26 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:10:27 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-hw/i2c/smbus_ich9.c calls range_covers_byte(). Include "qemu/range.h"
-which declares it.
-
-This fixes (when modifying unrelated headers):
-
-  hw/i2c/smbus_ich9.c:66:9: error: implicit declaration of function 'range_covers_byte' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-      if (range_covers_byte(address, len, ICH9_SMB_HOSTC)) {
-          ^
+The "ioapic_internal.h" does not use anything from
+"hw/i386/ioapic.h", remove it.
 
 Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200228114649.12818-14-philmd@redhat.com>
+Message-Id: <20200228114649.12818-4-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i2c/smbus_ich9.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/i386/ioapic_internal.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
-index fd50fb851af4..48f1ff419174 100644
---- a/hw/i2c/smbus_ich9.c
-+++ b/hw/i2c/smbus_ich9.c
-@@ -21,6 +21,7 @@
-  */
+diff --git a/include/hw/i386/ioapic_internal.h b/include/hw/i386/ioapic_internal.h
+index d46c87c51030..fe06938bda47 100644
+--- a/include/hw/i386/ioapic_internal.h
++++ b/include/hw/i386/ioapic_internal.h
+@@ -23,7 +23,6 @@
+ #define QEMU_IOAPIC_INTERNAL_H
  
- #include "qemu/osdep.h"
-+#include "qemu/range.h"
- #include "hw/i2c/pm_smbus.h"
- #include "hw/pci/pci.h"
- #include "migration/vmstate.h"
+ #include "exec/memory.h"
+-#include "hw/i386/ioapic.h"
+ #include "hw/sysbus.h"
+ #include "qemu/notify.h"
+ 
 -- 
 2.24.1
 
