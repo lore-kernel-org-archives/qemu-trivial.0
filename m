@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2O-0007be-OS
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33190)
+	id 1jBK2S-0007mm-3a
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:09:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33251)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2L-0007Su-M7
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:46 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2O-0007ad-B3
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2K-0007bb-GZ
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:45 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:53871)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2N-0007dj-Bi
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:09:48 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:42163)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2D-0007WR-9J; Mon, 09 Mar 2020 11:09:37 -0400
+ id 1jBK2L-0007bH-3U; Mon, 09 Mar 2020 11:09:45 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mn2eH-1jaW6g006p-00k9D7; Mon, 09 Mar 2020 16:08:57 +0100
+ id 1MLA6m-1it6gQ1PvO-00ICtI; Mon, 09 Mar 2020 16:08:52 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -40,35 +40,34 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PULL 06/33] hw/net/e1000: Move macreg[] arrays to .rodata to save
- 1MiB of .data
-Date: Mon,  9 Mar 2020 16:08:10 +0100
-Message-Id: <20200309150837.3193387-7-laurent@vivier.eu>
+Subject: [PULL 04/33] hw/audio/fmopl: Fix a typo twice
+Date: Mon,  9 Mar 2020 16:08:08 +0100
+Message-Id: <20200309150837.3193387-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YyRFb0QVs++UPBSB53XqpVLXEQfKS7K49GB3cL3acP1AOQCExY9
- TtdIBd7g6SYuGpmv+dOlPNbhE9xHYum80NKXyqzLvjt5TeDJjumfiIcTQaljmqKILkU1BG+
- wH2s8w6MW46GmtE95JFraQoQJO4p3m2sizdf+NfwkVNXh6mNEB8AnOMaKl3C75q0EF+yjHk
- tb0b4IEA7aZfHvmNXFgnA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zw3fgSlGvOE=:J5jVvWgMih5r6yNQLJ9g9J
- fBY3mZLV18RGoCgNp1nhVCsuewAU6Yfc9uSNeaf0qCvZDUYzprYb5rxxByBW8W8622rryJ3qX
- AJSgatMlFwhd8TWv0h7sbcq9y56Pw6qYXUCVAv7LkaECS3dEpdfMi85mOkLcG4Ni2bHfd9neA
- J54tvsxY0JH2+ZUOxUmo4WyR3Hwa0+GRKjtvGd33GeNG/0a+sZjbDHtVLPs8aWXDp7G1d09w8
- asJCG/wA45+q+F+jYlVj9/geDlh1TlwV0w6NileQESE1motDTbeE0U5THfrURLKo00ECZ1l8b
- S0CMaDBpYEQhyWSMhw5oB8yWJibAFafiYoLxoRUIzjcv4/pU+j4X4G0YOWR+zr72arng4R9/8
- 4Xpb67IDaHGcYN1zOxp9oKWNVOyG1DjVAo2S2lgmWVxt2VlT2k9C4qbCtp63uxHU7ThCLjgZK
- ivCzhaBc2v0QmAoXlEpJQ0azzQT2ztnNypfp+7Z0Tu/uOFLHG13PBAxdeDCzG0JhRm0UgI2Ck
- iXNRMriIOmhNsqQb7jJtCtbS+PJ5Ea/EyuaLbJGDAuoGaaRm0ALuD81F08y5rtWPU1rBCe4In
- A5uRtHGiJH0s78dFePJTItdKMtreZRMbYtnUAlE3n525BknXIScqJJI0QnwJC56Bqp5w3jgOe
- BLOxG6jsAOhf5rdSWgAOmvIk1tbs9xX6AlwvSB3qnnJQcfyB+6WGW4V/WpYq2lLqPe8m4my7+
- X5lLgqv0yySiTYD+9yMUL2R8SyB5DcHeDfQTD8A4QkmYIl21q3BgsHST4uaPNx+VaVZ4ieRmb
- xuq9u4FXMGNqKhBKsTCz0+cDSXooLeReOfv3pG8D8xh3ZtgAf/Xp/aNeYbYUJAa/BPLbTIS
+X-Provags-ID: V03:K1:UW5nFl3f49l8EiqWcfH03Ht250um51CqWYk29wqkrHzC4CE9/8v
+ yvNVfXE6dwOJmOKLhm1rMwsd2FKEPF8KExXy1sjgLYb8o7YUNLn0xL5tObTiul3rg/iJ3R8
+ yZrQgO/JHzMPIznk/T8XviRYpr1UopbO4Ledubv6MxDlLgoeQ7EqB+GOtiu8WDJEMoEK1Tj
+ SM0ey6TJpqQa5oAMnGufQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PKcDQf/GEU0=:NYOCc4WQHMU5AT87QeR0WP
+ wgmyeLkw8DoGQnnPhw2UJ1tHCnK/DR2s34/VLUlp2KZE2Jd9IucAAAGCxqa516KS/qVEU0cXr
+ xcarRNVNjequblZzPzs3o5jsYpaU/W94DqzginImn1mWNpWBCVdi7RIG8nKdU8IghpEqPuh/1
+ XEskxxrrrcYX9w5kGqASWqlcIEW2Vq74d7ZXK6D6RUb4YyBkQGnBtZWVpgfQVy/XlNTimp+ni
+ ytabDwqgN5geI99zsa+YsOavglqs+Z+Cw1smyI4BoLfecKSj6BeReyUhlJxlD8T9ubQ1Yv3HS
+ EmTaAWH2SenB/Ngjv5OKdHj0YJMm15BLf9pCTavl6Gp21NR8uZZdfTnezukBkZ2nZu84f+IVK
+ wRfSsz8peXfxV5G3IXfB31zbE3FZ2LDrooOGw0xM5OITcpgD1tyvCb781RrpwFZ6wzK72XdHm
+ VzV9gEk1LUkENAPZIG6w8IfY/0BM32DJM/s7CyPOdfWiIrwdTipWIX7ME4IfubbFdBK7hrupn
+ Y+cVnFnrjMMNkgbrX7zTgF25xm853uDyTnkJY5tqoTxH8d0xJp5wkXVvTBVpm4RmwDUxblC7q
+ dvTxBCEykduxUMj440r1JOT4N1xYWJw6jgNZIQb1YUZFuAtM5tMONI9rjNa3E6cbgEGk14S4P
+ bZxXgBqPBcUG0DCbe4L3ofcvOA4ZFDEUJIOvDWlfWdYVV95ak68XJycOGzKystn6w1nDBmZsO
+ v40onrSU9yo6MMLktRWK7OU8ZAjFbu1RUVLeW+HiXCqw770JLYMynKpzfJCEOTJc4UUtD8BM4
+ Irr26i1hFfbJOI0z8ApQ3mU77QjcQbF44yrulu64Z8Iv6VMo84dhTUzucd/m3LeaH0WsZ2I
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,69 +79,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:09:47 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:09:49 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Each array consumes 256KiB of .data. As we do not reassign entries,
-we can move it to the .rodata section, and save a total of 1MiB of
-.data (size reported on x86_64 host).
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
 Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20200305010446.17029-3-philmd@redhat.com>
+Message-Id: <20200305124525.14555-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/net/e1000.c       | 4 ++--
- hw/net/e1000e_core.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/audio/fmopl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-index 972d9b508399..9233248c9af0 100644
---- a/hw/net/e1000.c
-+++ b/hw/net/e1000.c
-@@ -1151,7 +1151,7 @@ set_ims(E1000State *s, int index, uint32_t val)
+diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+index 9f50a89b4a88..173a7521f2a7 100644
+--- a/hw/audio/fmopl.c
++++ b/hw/audio/fmopl.c
+@@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
+ 	}
+ }
  
- #define getreg(x)    [x] = mac_readreg
- typedef uint32_t (*readops)(E1000State *, int);
--static readops macreg_readops[] = {
-+static const readops macreg_readops[] = {
-     getreg(PBA),      getreg(RCTL),     getreg(TDH),      getreg(TXDCTL),
-     getreg(WUFC),     getreg(TDT),      getreg(CTRL),     getreg(LEDCTL),
-     getreg(MANC),     getreg(MDIC),     getreg(SWSM),     getreg(STATUS),
-@@ -1207,7 +1207,7 @@ enum { NREADOPS = ARRAY_SIZE(macreg_readops) };
+-/* ----------  Create one of vietual YM3812 ----------       */
++/* ----------  Create one of virtual YM3812 ----------       */
+ /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
+ FM_OPL *OPLCreate(int clock, int rate)
+ {
+@@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
+ 	return OPL;
+ }
  
- #define putreg(x)    [x] = mac_writereg
- typedef void (*writeops)(E1000State *, int, uint32_t);
--static writeops macreg_writeops[] = {
-+static const writeops macreg_writeops[] = {
-     putreg(PBA),      putreg(EERD),     putreg(SWSM),     putreg(WUFC),
-     putreg(TDBAL),    putreg(TDBAH),    putreg(TXDCTL),   putreg(RDBAH),
-     putreg(RDBAL),    putreg(LEDCTL),   putreg(VET),      putreg(FCRUC),
-diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-index 38bdb90114c6..df957e0c1a09 100644
---- a/hw/net/e1000e_core.c
-+++ b/hw/net/e1000e_core.c
-@@ -2856,7 +2856,7 @@ e1000e_set_gcr(E1000ECore *core, int index, uint32_t val)
- 
- #define e1000e_getreg(x)    [x] = e1000e_mac_readreg
- typedef uint32_t (*readops)(E1000ECore *, int);
--static readops e1000e_macreg_readops[] = {
-+static const readops e1000e_macreg_readops[] = {
-     e1000e_getreg(PBA),
-     e1000e_getreg(WUFC),
-     e1000e_getreg(MANC),
-@@ -3063,7 +3063,7 @@ enum { E1000E_NREADOPS = ARRAY_SIZE(e1000e_macreg_readops) };
- 
- #define e1000e_putreg(x)    [x] = e1000e_mac_writereg
- typedef void (*writeops)(E1000ECore *, int, uint32_t);
--static writeops e1000e_macreg_writeops[] = {
-+static const writeops e1000e_macreg_writeops[] = {
-     e1000e_putreg(PBA),
-     e1000e_putreg(SWSM),
-     e1000e_putreg(WUFC),
+-/* ----------  Destroy one of vietual YM3812 ----------       */
++/* ----------  Destroy one of virtual YM3812 ----------       */
+ void OPLDestroy(FM_OPL *OPL)
+ {
+ #ifdef OPL_OUTPUT_LOG
 -- 
 2.24.1
 
