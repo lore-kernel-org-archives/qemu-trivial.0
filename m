@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBK2e-0008HW-OT
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33533)
+	id 1jBK2f-0008KD-U2
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 11:10:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33524)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2a-00089I-UM
+ (envelope-from <laurent@vivier.eu>) id 1jBK2a-000883-FY
  for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2Z-0007oD-Oo
+ (envelope-from <laurent@vivier.eu>) id 1jBK2Z-0007nX-C5
  for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 11:10:00 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:33815)
+Received: from mout.kundenserver.de ([212.227.17.24]:36727)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2U-0007iF-TR; Mon, 09 Mar 2020 11:09:55 -0400
+ id 1jBK2U-0007hq-Ac; Mon, 09 Mar 2020 11:09:54 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N0X4c-1jWGih02Fg-00wT7y; Mon, 09 Mar 2020 16:09:11 +0100
+ id 1MGz5h-1j6f2k11LX-00E6BZ; Mon, 09 Mar 2020 16:08:45 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,35 +39,35 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 12/33] hw/usb/dev-storage: Remove unused "ui/console.h" header
-Date: Mon,  9 Mar 2020 16:08:16 +0100
-Message-Id: <20200309150837.3193387-13-laurent@vivier.eu>
+ Finn Thain <fthain@telegraphics.com.au>
+Subject: [PULL 01/33] dp8393x: Mask EOL bit from descriptor addresses, take 2
+Date: Mon,  9 Mar 2020 16:08:05 +0100
+Message-Id: <20200309150837.3193387-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cx4oEENfxr2esELXcSzclJo1ER6icxlnYhY9ZGi8Hz1d0GQw3/J
- V3O8tJqht91pGcTQkOnoKk2gaJ3MEQhwcCuCxma5dLH2fGpYBzuiIjAkk2djRj8xuvgKUK5
- FEtpQUeaqrZP1Kilxgjn5td/+H4RHB1hM1EYmBjG20ped+UMXbcq8XRLava2nvAqORnu9qD
- tjzauQTLhL51KPtlXORug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:neaUZy5AqdU=:ZxWR/fHhRlXmI8Ju/HKRUJ
- /8aRdKLbKre+x7HHGW2sq4nuiF8rwxXP+iAeJqpG7MU/qFRae00K8wDu07lxyGY3RgwYkhj1A
- J+A5yzcc6+CM59lShCT7gzckvbSEClR4XEdj3sf6rRWMEffEvIzpSbDUyRmX8KpDgP0awjUxu
- W29kueU4rEWxv9ydm+Uh01fW+DOt5m6QMYT9QhbpbxbVgg03Qe/qMyRBnKAbLGcLbDjEQsgQf
- k+F8hPsFkWzPlCiTU7yQq8ofB9Y3Akwq8ftyEySGE2QmbJMtOjUwVtgBl3bKpvtIBNClo1t86
- pWvtdhg6rKRiT+AgNuWwZFarmgqyBrEr9AC/OmUhm742hJ/kRw8ZqJOm4lGRrdiNgXp+2EsaM
- Uu4IsQX9o6Ps15JHrx/oNwuLhH763tEg7+R7UXOLxRg6HtS25EyyA4RUEnfae4aaD3Q5sEibW
- Nyy4EyaXY3UCsH8uSGgKZ4IFrIfqr9gcPWtoq46/oGZwGOFa8C9562S+26fp8QwlV4SbedHAH
- jp2Mg6CSy5mC3CeXRu5Hv+1vdO2BjnqM3gNgXPZ0DDq9XlzPCCIyL3IgA3TsNekcOTbcv/+vS
- urwoKZ0YtKaRyhR97XE/zUJt+uVur/UxIYLEIgJgPGnL+/xdvrjmGZz9ne2kCJfGZgbbvgNcN
- bJGVk73Rk/Hg6Z+VpiqOICixyNG+vNkrUxoEhYRsw2vO7m6KSiYYpphSgAFxLBj4h+Ua3bOIw
- Me8CVhqYmc2c/vDYdTmL1kXNVxRg93J6Hr2M/ITzFGYiQXhdsJWcT6k0/P35AKjfq4TLjz/Bs
- FYZWfBsBPRX0ZX8fJxyD5X7Nn3KRa4SppXZz9DNFibkODng+z2nO5j+sS6RDFNSyBbAw0XL
+X-Provags-ID: V03:K1:+TAkKLV0CIXTz0Mr9Xhgny60rXsV/drmGR3EGLSIm7g4KaxGwJI
+ G9/nP0tkn2RsIVSHMo3zDeqfWVPCU5u8OsIGMRp6MPT1tObWdaR5XhatwW5JtZaeoGsP9hK
+ x4kCPcJkFNLak0tc9qIZe13RsQgC3/YogsfGkwe/EFem+BGe1d0vqnByv9dq45pLrNGFase
+ PtXgyvDDGPTc4EM9+D9pw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EbA4j4yfY2A=:CQ09mVT0DAh1Fg/k4OfT0F
+ 6LewUgHUDckKH+qV1GR4e8ySJyFS1F7oSJSySzvqe1pZDaMq/gwHJZUO9vKkqtmatAr2YMbxD
+ 8wtxRXH5OLzWonGxXBjvP06irGV8X75YTFnqGz2eNHT1lscKjCr8Aum4uYZmnNu61tgvB+HVt
+ DMg4yr1FCxw67WL4F+v+psjyNRYaDlTUXYiacTvmTt0MU7tp2JcCBXunQ8fVFOcTn8K63/8Hj
+ iDKrAh03iCNYtO5eC2m+SKdG0Rit8Q3GkhoYamZIM7+ic4SAMuz4/lhTQa91awr7PXy0NHvju
+ 7TMhdWUFazTyb3aaln9guCY39fY2R9lA1QPa1L6BgDbcMYMKlUUWSavlLpUWLKa4uIL7PeWYK
+ IrE4hFBhGe7hiYoeoyTrCaUvJv8AlX9mPx+rhElDSz0FtlSRjQeMXGlJNqkAGMvED1LA9qFBB
+ NBn2FUVVXCS0xCY0JYy92aUsaHknmD9cn07xvHanGhdNPUpCptfqRMVaN0CiDKwBL0DzmcYBX
+ mzcrlZHZWhOomn61U3vspLHyfDCI1Qz7Ukc2eG85GHDzezr5QCoE2A/q1ey+Ro7B5lEwRp9Zj
+ VjZ8mGdEYlUJHo0o56195ermlFZRBL6gMwYY5+WX5rzHlxz8Ez5J09NbZ0ZOKWqfTmJPHiWzl
+ XYagUH5AyC1100p+vwgrNaswbCDRG8CtTs7ZV4+sHajS7kFglMlwA8oR9422iJTGNNwrQDzvN
+ /yLENPHNOd07Utz9nQNBYlK5V1rCRJQU7oLt/PDUTtCDJs2KJk8EEdqCApYJwJ0KqnbZmNAuC
+ /Gua+Kx4Aguvwrfs2qN8wxRU80M0KqCWxNAdoXRN+EGBptf7dhtwdArDoPW4aAB9l9tOKEv
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,35 +79,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 15:10:02 -0000
+X-List-Received-Date: Mon, 09 Mar 2020 15:10:01 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Finn Thain <fthain@telegraphics.com.au>
 
-The USB models related to storage don't need anything from
-"ui/console.h". Remove it.
+A portion of a recent patch got lost due to a merge snafu. That patch is
+now commit 88f632fbb1 ("dp8393x: Mask EOL bit from descriptor addresses").
+This patch restores the portion that got lost.
 
-Acked-by: John Snow <jsnow@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200228114649.12818-6-philmd@redhat.com>
+Signed-off-by: Finn Thain <fthain@telegraphics.com.au>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <alpine.LNX.2.22.394.2003041421280.12@nippy.intranet>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/usb/dev-storage.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/net/dp8393x.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
-index 90da008df18c..4883c1d89e0c 100644
---- a/hw/usb/dev-storage.c
-+++ b/hw/usb/dev-storage.c
-@@ -17,7 +17,6 @@
- #include "desc.h"
- #include "hw/qdev-properties.h"
- #include "hw/scsi/scsi.h"
--#include "ui/console.h"
- #include "migration/vmstate.h"
- #include "monitor/monitor.h"
- #include "sysemu/sysemu.h"
+diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+index 8a3504d9628e..81fc13ee9fa7 100644
+--- a/hw/net/dp8393x.c
++++ b/hw/net/dp8393x.c
+@@ -525,8 +525,8 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
+                                  * (4 + 3 * s->regs[SONIC_TFC]),
+                                MEMTXATTRS_UNSPECIFIED, s->data,
+                                size);
+-            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
+-            if (dp8393x_get(s, width, 0) & SONIC_DESC_EOL) {
++            s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0);
++            if (s->regs[SONIC_CTDA] & SONIC_DESC_EOL) {
+                 /* EOL detected */
+                 break;
+             }
 -- 
 2.24.1
 
