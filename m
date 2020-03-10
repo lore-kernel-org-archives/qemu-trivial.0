@@ -1,48 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBe6h-0007xe-Ov
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 08:35:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33663)
+	id 1jBeVM-0004mV-VP
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 09:01:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39611)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBe6f-0007tF-2t
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 08:35:34 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBeVF-0004fh-8p
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 09:01:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBe6d-0008Pn-La
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 08:35:32 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:59779)
+ (envelope-from <laurent@vivier.eu>) id 1jBeVE-000883-2c
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 09:00:57 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:53565)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBe6V-0007wZ-8H; Tue, 10 Mar 2020 08:35:23 -0400
+ id 1jBeV7-0007zD-FN; Tue, 10 Mar 2020 09:00:49 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1McXs5-1jlWfn0Gx3-00d0AR; Tue, 10 Mar 2020 13:34:34 +0100
-Subject: Re: [PULL 00/33] Trivial branch patches
-To: Kevin Wolf <kwolf@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Max Reitz <mreitz@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Fam Zheng <fam@euphon.net>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Helge Deller <deller@gmx.de>,
- qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, John Snow <jsnow@redhat.com>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
- <20200309151621-mutt-send-email-mst@kernel.org>
- <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
- <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
- <20200310114548.GA6926@linux.fritz.box>
- <ced636a7-dbda-9247-5dd7-37e8c2ccabce@redhat.com>
- <20200310121300.GD6926@linux.fritz.box>
+ 1MYedH-1iowfq0WOZ-00VdvT; Tue, 10 Mar 2020 14:00:25 +0100
+Subject: Re: [PATCH v3 04/12] scsi/esp-pci: Remove redundant statement in
+ esp_pci_io_write()
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Euler Robot <euler.robot@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-6-kuhn.chenqun@huawei.com>
+ <111d4416-2281-6f8d-9b1d-66e60a05e02a@vivier.eu>
+ <7412CDE03601674DA8197E2EBD8937E83B681D85@dggemm511-mbx.china.huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -86,34 +71,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <28fb5e38-48c1-e640-90d2-830924ad93d3@vivier.eu>
-Date: Tue, 10 Mar 2020 13:34:29 +0100
+Message-ID: <88cf82c2-9318-1be9-1d56-b1af891acdea@vivier.eu>
+Date: Tue, 10 Mar 2020 14:00:23 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200310121300.GD6926@linux.fritz.box>
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B681D85@dggemm511-mbx.china.huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qPob5bEhxxf2oCVXsTbluzu1WU+AQrrkifSiGqobVrxhsys/OtP
- ryZ4/C5bvOmzc+UP8oiWHmPgxFtXXE9pDMnsiup+l1F8YqlScZoh9uMukHPzDFOWWyhotGf
- zu72Cevt1vCkrmaw52cK91GiSqx7950cZRRP1U6El19F32NQci2KlC9ST0WcSkMTzisGYw4
- Ngg8HTrern4qb8Ai3eccA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:s9+upii/4B0=:oC45h7Z1mZynwAEsAFOGKS
- iQ6Ukc/r9TLf7pWDUUcVLajK727W5bvK5N4IXQswLJQHiuF/ylZAlElXDE49es1zy8XtZ4qdj
- Nn2FRoLcXtQ2owh1cBrEDMW/QPIFXEYfiA6lE/WX+JxERgX9ObcRbCp24YqfmSDezgb3woghl
- YN71HwCrG9WV0B5rUMPvUFl2l5xLcekYofIWnEAs+guDHNJgjD3kUhgZNTS5i9U0HEoZqEI6P
- bo+nQYgE8jLO8Q/dgu5ii49+EA2h/iBR5aIG63WYfhbH5udZkNzsr7Jng7c5JNGF4mjOypWll
- pT/3MtFboKJ7az8JCMrhCvi+eUda6NbXvtCg22XrRfvq42OfHRdsfvCc/v0uWhjNeSU2nA/R4
- gZcvDCIgCkZ8sGdML3e0x8dH2CpiIO0/wDeHWfAOBQbCphWDMgxNalImbMlJqE51RMKpUCCr9
- UfYc67Kr7L5AkNYFOImOcdycPXJfrTLvF/GZXY4zCRiVV9q7ysmC0zsylS+mRZ+0RESQVfkHZ
- fkm8RtDaP9jz4DpZL7gX37mpl1uoe19iUtdIhWJZdPJWCtO/WcVicjPoV6Ije1o2n/aSukSQJ
- CHM1GG0CHUIcZGSMBKvg9ISVsp57uuUqpv4Q2ZvaJtc6nf0psUXXljYn//m0YD9Rw/dMHkmQK
- OFABbKlIROZqnLd4FktmNEp0pCStGpi0cFjy5QkocpcIkCUVnjZjYH/MvP8KSc4ioIA/nw5F9
- f4h91Gfb77ClnLqVnL1009+2B1VQM4dXC07VVgG9vs5oXV2mCI45+EC8bu7wyFyJsZker2upP
- nB/vE1wSuU0N9k4KS9leX8HFwoybcURdjvHPUrAEieAHbJUu8GP28zIdJM8zyfSIjyUUfNm
+X-Provags-ID: V03:K1:g1D0t4oSLKzMdYiH8RvEfUeTUQxuSFR/83A2KrcieVp+T0GOrAK
+ s60038tBQVkEhqcA1vL+LRQrHjOWW5/KFnw1sfHIrIIlylldH4Q5DUzurOPNBwWsq1D9eOn
+ zSn3hcSAGS/dlJRvT7o8Ht6H73dKr8iEjo+TGE4Ry25bGOLGizEd4BI02Cx6zMfbKfBb6h9
+ 5GXwczOZif2gy/l5dBTvw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:rBU6bvA0PWE=:AuomNXMMOv5cfSnv+2O66o
+ LPj8uGFbx9ZhTLeBEv0qzmxCRuR9nODcuRkLk7vfnV8Az0dj9Zh6Ar30jX43YdEAzVW6yJkYU
+ o+w5aCKHIomCU/3SYXqNtEFM+EfdwTITI2G7av5GdCzXs7Gv8Y3+CUJ3mDi1pvBMjOfxLttVD
+ U5bT6UPKiQrlY9KGl7vQsGRninAfj5dTL35ZRYxri0njvyS4qkEs2DOmvwbfyS7Y8pH1Guk7S
+ VpBjl4fua4pvgOoNGrR27PFWVvFIxT7jQwm0c0avmkG7sDhntLo0PzNCQ0qAD4wMZVlCV2wnZ
+ 6g8Xmtd2xkPxnAIuGHbeo1oa99nclCiFhKrKS4+KTlXk8xnXmTxxe80yWrKEiQixcVsYqRPBF
+ SUfKtFWOwNW/aBuzhdBao1A89c61dExHMNqjLtgygN5Zz2Zjuv9fMUEx2EEpKhWuGNl+LzA24
+ ulj25aLvvio89A2TcfLhdVEYTOlN+aH8b8lmtOld/S4a695WDYjy0/912B+BPlNzB86DjCU7X
+ Cv3OURgFBl5IxUpPPUWV2aYVmAHj9NP9NiOvUgExSyTGk7tuhyJ7ca4qXhsn5YyxmL5995FhW
+ lnVttYiC21EeMctE7K3wWqJ4IWlagSZsf7IOST3PanDTlHaPc/zBHXGCounEYjBbJFVQ7Y+ba
+ y8H9kzGcyEyc5cevf8e3T3Sb5XHACDfEWk/iuwpjS0covsR0Cn+mXCc2fSlfdpdDENGSMCGYQ
+ TgSc8ZHlkx0COYvU8NWlKZDc9LGzn61nf2b7fDaHfBihT9aKndhJ3HYWGKZxihphRKX8uTcfZ
+ 7uYURgaJylFKzhC+4BwcECV2mNWnbhCUgxvlSjUA9FTCDiAfEwemq3x1orEAM5r4FzXaZfg
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,73 +110,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2020 12:35:34 -0000
+X-List-Received-Date: Tue, 10 Mar 2020 13:01:02 -0000
 
-Le 10/03/2020 à 13:13, Kevin Wolf a écrit :
-> Am 10.03.2020 um 13:00 hat Philippe Mathieu-Daudé geschrieben:
->> On 3/10/20 12:45 PM, Kevin Wolf wrote:
->>> Am 10.03.2020 um 09:02 hat Laurent Vivier geschrieben:
->>>> Le 09/03/2020 à 20:30, Philippe Mathieu-Daudé a écrit :
->>>>> On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
->>>>>> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
->>>>>>> The following changes since commit
->>>>>>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
->>>>>>>
->>>>>>>     Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into
->>>>>>> staging (2020-03-09 10:32:53 +0000)
->>>>>>>
->>>>>>> are available in the Git repository at:
->>>>>>>
->>>>>>>     git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->>>>>>>
->>>>>>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
->>>>>>>
->>>>>>>     monitor/hmp-cmds: Remove redundant statement in
->>>>>>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
->>>>>>
->>>>>>
->>>>>> Could you avoid CC everyone involved on the whole PULL req?
->>>>>> I was involved in a patch or two and don't really need to see
->>>>>> the whole series. Just the cover and the relevant patches
->>>>>> would be enough - if I do want it there's always lore.
->>>>>
->>>>> I suppose Laurent used git-publish, which has this limitation.
->>>>>
->>>>
->>>> Yes, I use git publish and CC are automatically added.
->>>>
->>>> Philippe, you told me some time ago you have a patch to fix this
->>>> behaviour and only CC people on a patch base. Is it available?
+Le 10/03/2020 à 12:52, Chenqun (kuhn) a écrit :
+>> -----Original Message-----
+>> From: Laurent Vivier [mailto:laurent@vivier.eu]
+>> Sent: Monday, March 9, 2020 8:22 PM
+>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
+>> devel@nongnu.org; qemu-trivial@nongnu.org
+>> Cc: peter.maydell@linaro.org; Euler Robot <euler.robot@huawei.com>;
+>> Zhanghailiang <zhang.zhanghailiang@huawei.com>; Paolo Bonzini
+>> <pbonzini@redhat.com>
+>> Subject: Re: [PATCH v3 04/12] scsi/esp-pci: Remove redundant statement in
+>> esp_pci_io_write()
 >>
->> I guess you mean https://github.com/philmd/git-publish/commit/5bab6e2cc77, I
->> haven't improved it but plan to spend time on it during my next holidays.
+>> Le 02/03/2020 à 14:07, Chen Qun a écrit :
+>>> Clang static code analyzer show warning:
+>>>   hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
+>>>         size = 4;
+>>>         ^      ~
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>>> ---
+>>> Cc: Paolo Bonzini <pbonzini@redhat.com> Cc:Fam Zheng
+>> <fam@euphon.net>
+>>> ---
+>>>  hw/scsi/esp-pci.c | 1 -
+>>>  1 file changed, 1 deletion(-)
+>>>
+>>> diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c index
+>>> d5a1f9e017..2e6cc07d4e 100644
+>>> --- a/hw/scsi/esp-pci.c
+>>> +++ b/hw/scsi/esp-pci.c
+>>> @@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr
+>> addr,
+>>>          val <<= shift;
+>>>          val |= current & ~(mask << shift);
+>>>          addr &= ~3;
+>>> -        size = 4;
+>>>      }
 >>
->>> Actually, I don't think it's even necessary to CC anyone at all (except
->>> the relevant lists) for pull requests. These patches were already
->>> reviewed.
+>> perhaps a "g_assert(size >= 4)" instead would be cleaner to mute the warning?
 >>
->> Well as a contributor I find useful to get notified when patches are merged.
+> Yes, add 'g_assert(size >= 4)' can mute the warning.
 > 
-> Hm, I guess a matter of different preferences then.
+>>
+>> I think it's a good point to update the size if in the future the code below is
+>> modified to use size.
+>>
+> Hmm, maybe it is true.
 > 
->> I guess remember some time ago patchew (or another bot?) was sending a
->> notification on pull request merged, this was even more useful than Cc'ing
->> ppl on pull-req. It is also helpful when you track someone else patch on the
->> list.
->> Since most of the maintainers now include the patch RFC822 Message-Id, it is
->> now easy for a bot to reply to patch taken from the last.
-> 
-> I don't remember anything like this, but having an automatic reply to
-> the email thread of each merged patch series might be a good idea.
+> So, let's  keep ' size = 4'  and  add 'g_assert(size >= 4)' after if() statement , shall we?
 
-I receive an email for each merge [1]
+Yes, it's what I would prefer. But it's a question of taste...
 
-There is a mailing list for that:
-
-https://lists.nongnu.org/mailman/listinfo/qemu-commits
+Paolo? Fam?
 
 Thanks,
 Laurent
 
-[1] https://lists.nongnu.org/archive/html/qemu-commits/2020-03/index.html
 
