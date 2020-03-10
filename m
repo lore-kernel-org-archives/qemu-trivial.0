@@ -1,64 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBO74-00021r-Q1
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2020 15:30:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51688)
+	id 1jBZrc-0003cc-LV
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 04:03:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50535)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jBO71-0001y1-Lw
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 15:30:52 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBZrZ-0003Yn-M4
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 04:03:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jBO70-0006Wj-1q
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 15:30:51 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:22153
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jBO6z-0006WB-UC
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2020 15:30:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583782249;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KgSJZz+7N/XmtB00LpHxgmUeu7UHgxPmmEpXRLIPeGI=;
- b=W0PdNQ7m8CFha3Pn4/PD7O2RcfHlrstic85rgV0YOX2RlHxhwU6zrP/FJy/szZnxCSetLb
- x6d9IywSalJ4xI18+CA5wTJou6TZVZsQrBNAkG+BCtAluJaPpYDZJACuSuh4wGtYuHn7Ci
- TAFIYBROivP1uvBzrTJtmi6khhn5Mw8=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-323-TM-k9pHTNIKAIlxVe6GCtQ-1; Mon, 09 Mar 2020 15:30:46 -0400
-X-MC-Unique: TM-k9pHTNIKAIlxVe6GCtQ-1
-Received: by mail-ed1-f69.google.com with SMTP id r30so8916581edi.9
- for <qemu-trivial@nongnu.org>; Mon, 09 Mar 2020 12:30:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=U5+hxV+pTb4wFwWjLPVekY2Ubg939vPBJHcCEcGKxmE=;
- b=F2JAieervppQ28tCXVeCI9jXHeZ5z6kRKKzsiCx49F0qINsnLI7mhgNCKNyV4/Et7M
- +dFS9vpD7o3qU3btEuUIs3fCO8PkHo1wFWEg1pCxDvEm9ba+0VTD8JbcsNTy8SK0b5Fh
- q+ZVXTo2JZ+svJu/T3i+i0OaQYTS60CJV90lGbfsUF6cQiOl07kxdQsKTYM/tRpTk5rq
- BxOlRSt5rATY6/n5a5ta+6RW2BQ4QbHe34cEt/dWfj7O2KIhuZzkHeL3kfVWsZ2m7P/Q
- 24kG6yc4xuBw7s/KXU5lES9x699TTtQKnyjObEdXmXrAIVKYJDFRq4gNkegP7D8ubTcV
- 63sw==
-X-Gm-Message-State: ANhLgQ0JPichh5GXJoitwqwFJheE1KUiEEI+WCgPqDjNReKA+1ib/uLu
- 3eFqWIB0U74j2kjxiH2Y/ZORKdbn9lHOIQKWeHx2Z67srb4Qys1xJATxoHFA+yg49Zv4ulqZAtf
- TffeUn8bEb5bCLPRlHQ==
-X-Received: by 2002:a05:6402:b71:: with SMTP id
- cb17mr2188473edb.190.1583782245450; 
- Mon, 09 Mar 2020 12:30:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQIU11aTSIxU6QqYJC4x0VEsBlbRUF6QtQdM9MSXMeSgCMJFCEH/tgIoL0OKmlv/FLuzmNvw==
-X-Received: by 2002:a05:6402:b71:: with SMTP id
- cb17mr2188423edb.190.1583782245110; 
- Mon, 09 Mar 2020 12:30:45 -0700 (PDT)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id h17sm1137078ejc.11.2020.03.09.12.30.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2020 12:30:44 -0700 (PDT)
+ (envelope-from <laurent@vivier.eu>) id 1jBZrY-0000Bn-JB
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 04:03:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:50965)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1jBZrR-0008BD-Ro; Tue, 10 Mar 2020 04:03:34 -0400
+Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MElhb-1j8b2O15HH-00GGLv; Tue, 10 Mar 2020 09:02:43 +0100
 Subject: Re: [PULL 00/33] Trivial branch patches
-To: "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier
- <laurent@vivier.eu>, Stefan Hajnoczi <stefanha@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
 Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
  <berrange@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -78,21 +37,78 @@ Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
  Paolo Bonzini <pbonzini@redhat.com>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
  <20200309151621-mutt-send-email-mst@kernel.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
-Date: Mon, 9 Mar 2020 20:30:40 +0100
+ <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
+Date: Tue, 10 Mar 2020 09:02:38 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200309151621-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:GK0EHf67tnwp5mS1BBx1c2NmH2cc7kZix51MFuxaU0c+g9SvWAz
+ iL9lCntOuacagwnpOB/OW3+3vL2o3UMijKb2hp1s1nAhp28akoFEvhqOhKMFIl87nWw0HV1
+ okxw1zNKpCVpSG8ZNSKOjKz6NcIfAgrlGCeheijZ/gYy7C8q8oKVyoEE2tyCvwuShl8+b1w
+ ePGj0NGhp7N8IMuYybGtg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9C8NqVNEXN4=:E+xGrhX7kxGhPGHY8EtGGZ
+ wQG1ER3VuRPBWk/bppd7Zyxe7i4Cqyt1MSeHbukBfFQWRFEpxgSeFOYlVFNgyRBFEYGuIsmfX
+ 6zia7v3fVf1OPwWF99uJBfTITONtBz4xlNawPYSYZPHUTmSJSlqHTaZpwcp+QJyFXDqxOwBd6
+ 7PZaT+CR69qqjWZz/vOHq82jt3IpygXpWBsv82KJrQijQWhLGhoNRaIWUMKhB1Z4JTwqh3zsL
+ xfKxix+nVxdJTcoSkHJ20wqkX3GiQyF7xzTUXQ3GxV9zAGv+v3XCZj8rxWPfWE2Kh2r6k+uDn
+ sp2gDSDZvToXMe2WqRY/nVvnU7vqYD1s7mMbFSEk5+m2LaP90p3vkfmGf4tDEMHSPDIL1sHIs
+ nemp4lCufUY7iYAC9y/+MkXpLzdae3gaqMd/9o2+d7e/g7O2XGrfMy2hAkXQHqAJ8lHXS1qsH
+ 17fze1Wpn+iAuaVKzkbqFar5hQl1KfSSEj+HL4QCgFU0qBfnPo1n5k3uJobIV0d0yJJmlogIG
+ yRIR6AWyYr9j8v+dP9W5nTSUmvrFWj+OcrDvgcPy4eFkDCqiMIgIAUlnNDaJeOxZUWccBrO+7
+ PJwCtwrrNmkBIKl9QCsK3bMtGQ8NY1hOI4DEPuSu4f/dkL256/GyEEI7XYLBqQ4rxskecLs5b
+ 2vyjQUYK6+6Z+vo5bjVUXRkoAj+Jo5ybEmAXeaiIrgHe5zOKG6Vkm5YOZW9P7cJvWs0OoYQsw
+ a+CnpwpjqnFyWuEZBFkuxlvPS4dKnZROGqhSU47wBVrM/079vLH1fEH7t8pLANXFMvFst5bLK
+ 06bSAMbUBxTddL0VcYFEJStmVuJHBg68wPWtpUn1IiyrGnjNR6R4M3sD7KHqcsKAtxIXW2u
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,134 +120,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2020 19:30:53 -0000
+X-List-Received-Date: Tue, 10 Mar 2020 08:03:43 -0000
 
-On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
-> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
->> The following changes since commit 7a5853cec479a448edae0fb2aaf4e2f78c9c7=
-74d:
+Le 09/03/2020 à 20:30, Philippe Mathieu-Daudé a écrit :
+> On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
+>> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
+>>> The following changes since commit
+>>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
+>>>
+>>>    Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into
+>>> staging (2020-03-09 10:32:53 +0000)
+>>>
+>>> are available in the Git repository at:
+>>>
+>>>    git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>>>
+>>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
+>>>
+>>>    monitor/hmp-cmds: Remove redundant statement in
+>>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
 >>
->>    Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into sta=
-ging (2020-03-09 10:32:53 +0000)
 >>
->> are available in the Git repository at:
->>
->>    git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->>
->> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
->>
->>    monitor/hmp-cmds: Remove redundant statement in hmp_rocker_of_dpa_gro=
-ups() (2020-03-09 15:59:31 +0100)
->=20
->=20
-> Could you avoid CC everyone involved on the whole PULL req?
-> I was involved in a patch or two and don't really need to see
-> the whole series. Just the cover and the relevant patches
-> would be enough - if I do want it there's always lore.
+>> Could you avoid CC everyone involved on the whole PULL req?
+>> I was involved in a patch or two and don't really need to see
+>> the whole series. Just the cover and the relevant patches
+>> would be enough - if I do want it there's always lore.
+> 
+> I suppose Laurent used git-publish, which has this limitation.
+> 
 
-I suppose Laurent used git-publish, which has this limitation.
+Yes, I use git publish and CC are automatically added.
 
->=20
->> ----------------------------------------------------------------
->> - includes cleanup
->> - reduce .data footprint
->> - fix warnings reported by Clang static code analyzer
->> - fix dp8393x part lost in merge
->> - update git.orderfile and rules.mak
->>
->> ----------------------------------------------------------------
->>
->> Chen Qun (7):
->>    block/stream: Remove redundant statement in stream_run()
->>    block/file-posix: Remove redundant statement in raw_handle_perm_lock(=
-)
->>    dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
->>    scsi/scsi-disk: Remove redundant statement in
->>      scsi_disk_emulate_command()
->>    display/pxa2xx_lcd: Remove redundant statement in
->>      pxa2xx_palette_parse()
->>    display/exynos4210_fimd: Remove redundant statement in
->>      exynos4210_fimd_update()
->>    monitor/hmp-cmds: Remove redundant statement in
->>      hmp_rocker_of_dpa_groups()
->>
->> Eric Blake (1):
->>    maint: Include top-level *.rst files early in git diff
->>
->> Finn Thain (1):
->>    dp8393x: Mask EOL bit from descriptor addresses, take 2
->>
->> Pan Nengyuan (1):
->>    core/qdev: fix memleak in qdev_get_gpio_out_connector()
->>
->> Philippe Mathieu-Daud=C3=A9 (23):
->>    build-sys: Move the print-variable rule to rules.mak
->>    hw/audio/fmopl: Fix a typo twice
->>    hw/net/e1000: Add readops/writeops typedefs
->>    hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
->>    virtfs-proxy-helper: Make the helper_opts[] array const
->>    vl: Add missing "hw/boards.h" include
->>    hw/southbridge/ich9: Removed unused headers
->>    hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
->>    hw/timer: Remove unused "ui/console.h" header
->>    hw/usb/dev-storage: Remove unused "ui/console.h" header
->>    hw/i386/intel_iommu: Remove unused includes
->>    hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
->>    hw/alpha/dp264: Include "net/net.h"
->>    hw/hppa/machine: Include "net/net.h"
->>    hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
->>    hw/timer/hpet: Include "exec/address-spaces.h"
->>    hw/pci-host/q35: Include "qemu/range.h"
->>    hw/i2c/smbus_ich9: Include "qemu/range.h"
->>    hw/pci-host/piix: Include "qemu/range.h"
->>    hw/acpi: Include "hw/mem/nvdimm.h"
->>    hw/i386: Include "hw/mem/nvdimm.h"
->>    hw/pci-host/q35: Remove unused includes
->>    hw/i386/pc: Clean up includes
->>
->>   Makefile                          |  3 ---
->>   block/file-posix.c                |  1 -
->>   block/stream.c                    |  3 +--
->>   fsdev/virtfs-proxy-helper.c       |  2 +-
->>   hw/acpi/cpu_hotplug.c             |  1 +
->>   hw/acpi/ich9.c                    |  2 +-
->>   hw/acpi/piix4.c                   |  1 +
->>   hw/alpha/alpha_sys.h              |  1 -
->>   hw/alpha/dp264.c                  |  1 +
->>   hw/audio/fmopl.c                  |  4 ++--
->>   hw/core/qdev.c                    |  2 +-
->>   hw/display/exynos4210_fimd.c      |  1 -
->>   hw/display/pxa2xx_lcd.c           |  1 -
->>   hw/dma/xlnx-zdma.c                | 10 +++++-----
->>   hw/hppa/machine.c                 |  1 +
->>   hw/i2c/smbus_ich9.c               |  1 +
->>   hw/i386/acpi-build.c              |  1 +
->>   hw/i386/pc.c                      |  1 +
->>   hw/i386/pc_piix.c                 |  1 +
->>   hw/i386/pc_q35.c                  |  1 +
->>   hw/isa/lpc_ich9.c                 |  1 -
->>   hw/net/dp8393x.c                  |  4 ++--
->>   hw/net/e1000.c                    |  6 ++++--
->>   hw/net/e1000e_core.c              |  6 ++++--
->>   hw/pci-host/i440fx.c              |  1 +
->>   hw/pci-host/q35.c                 |  1 +
->>   hw/rtc/twl92230.c                 |  1 -
->>   hw/scsi/scsi-disk.c               |  1 -
->>   hw/timer/hpet.c                   |  2 +-
->>   hw/usb/dev-storage.c              |  1 -
->>   include/hw/i386/ich9.h            |  1 -
->>   include/hw/i386/intel_iommu.h     |  4 ----
->>   include/hw/i386/ioapic_internal.h |  1 -
->>   include/hw/i386/pc.h              | 11 +++--------
->>   include/hw/pci-host/q35.h         |  8 +-------
->>   monitor/hmp-cmds.c                |  5 +----
->>   rules.mak                         |  3 +++
->>   scripts/git.orderfile             |  1 +
->>   softmmu/vl.c                      |  1 +
->>   39 files changed, 43 insertions(+), 55 deletions(-)
->>
->> --=20
->> 2.24.1
->=20
+Philippe, you told me some time ago you have a patch to fix this
+behaviour and only CC people on a patch base. Is it available?
+
+Thanks,
+Laurent
+
 
 
