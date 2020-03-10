@@ -1,84 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBdKx-0005Yz-UN
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 07:46:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42254)
+	id 1jBdR1-0003P5-Rv
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 07:52:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51345)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1jBdKv-0005Vp-I3
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 07:46:14 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBdQz-0003MX-Hm
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 07:52:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1jBdKt-0006OG-CB
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 07:46:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:39578
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBdQy-0002GQ-EL
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 07:52:29 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2508 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1jBdKp-0006LA-Fc
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 07:46:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583840767;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZGqiBJ0CZ5WpkyFas6I7eUP/AIVUqtGGfpTG+U12qXY=;
- b=iyNQiMF1boAl46pDHJn6uPQnKpjBadV4OI9N3EO/hp2PzGnFfBktDpbx09j2hDKQ0ub/mB
- acriOFiZHWR0qRz8VDInfgGf4oHfXLcc3ogvPb550uXHJ8EY3hZg2zRTdlQRJetH6do2z8
- BVOtW8wUnVEKx/nmXzOupUjhs0n0lqs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-75-Sc4CF4rQPUqcyMlVXzSYDQ-1; Tue, 10 Mar 2020 07:46:05 -0400
-X-MC-Unique: Sc4CF4rQPUqcyMlVXzSYDQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2CCA108442C;
- Tue, 10 Mar 2020 11:46:02 +0000 (UTC)
-Received: from linux.fritz.box (unknown [10.36.118.104])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 74EEA10013A1;
- Tue, 10 Mar 2020 11:45:49 +0000 (UTC)
-Date: Tue, 10 Mar 2020 12:45:48 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Max Reitz <mreitz@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, Fam Zheng <fam@euphon.net>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- Helge Deller <deller@gmx.de>, qemu-trivial@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PULL 00/33] Trivial branch patches
-Message-ID: <20200310114548.GA6926@linux.fritz.box>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
- <20200309151621-mutt-send-email-mst@kernel.org>
- <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
- <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jBdQt-0001cN-Lk; Tue, 10 Mar 2020 07:52:23 -0400
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 5F123583ED6FED16B8BF;
+ Tue, 10 Mar 2020 19:52:18 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
+ DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0439.000;
+ Tue, 10 Mar 2020 19:52:11 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Euler Robot
+ <euler.robot@huawei.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: RE: [PATCH v3 04/12] scsi/esp-pci: Remove redundant statement in
+ esp_pci_io_write()
+Thread-Topic: [PATCH v3 04/12] scsi/esp-pci: Remove redundant statement in
+ esp_pci_io_write()
+Thread-Index: AQHV8JOVS578ZhzbJE28CpTx6OhzAqg/s18AgAHkKuA=
+Date: Tue, 10 Mar 2020 11:52:11 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B681D85@dggemm511-mbx.china.huawei.com>
+References: <20200302130715.29440-1-kuhn.chenqun@huawei.com>
+ <20200302130715.29440-6-kuhn.chenqun@huawei.com>
+ <111d4416-2281-6f8d-9b1d-66e60a05e02a@vivier.eu>
+In-Reply-To: <111d4416-2281-6f8d-9b1d-66e60a05e02a@vivier.eu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 45.249.212.188
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,48 +58,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2020 11:46:14 -0000
+X-List-Received-Date: Tue, 10 Mar 2020 11:52:30 -0000
 
-Am 10.03.2020 um 09:02 hat Laurent Vivier geschrieben:
-> Le 09/03/2020 =E0 20:30, Philippe Mathieu-Daud=E9 a =E9crit=A0:
-> > On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
-> >> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
-> >>> The following changes since commit
-> >>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
-> >>>
-> >>> =A0=A0 Merge remote-tracking branch 'remotes/mst/tags/for_upstream' i=
-nto
-> >>> staging (2020-03-09 10:32:53 +0000)
-> >>>
-> >>> are available in the Git repository at:
-> >>>
-> >>> =A0=A0 git://github.com/vivier/qemu.git tags/trivial-branch-pull-requ=
-est
-> >>>
-> >>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636=
-bb:
-> >>>
-> >>> =A0=A0 monitor/hmp-cmds: Remove redundant statement in
-> >>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
-> >>
-> >>
-> >> Could you avoid CC everyone involved on the whole PULL req?
-> >> I was involved in a patch or two and don't really need to see
-> >> the whole series. Just the cover and the relevant patches
-> >> would be enough - if I do want it there's always lore.
-> >=20
-> > I suppose Laurent used git-publish, which has this limitation.
-> >=20
->=20
-> Yes, I use git publish and CC are automatically added.
->=20
-> Philippe, you told me some time ago you have a patch to fix this
-> behaviour and only CC people on a patch base. Is it available?
-
-Actually, I don't think it's even necessary to CC anyone at all (except
-the relevant lists) for pull requests. These patches were already
-reviewed.
-
-Kevin
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
+bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBNb25kYXksIE1hcmNoIDksIDIwMjAgODoyMiBQ
+TQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBxZW11LQ0K
+PmRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Q2M6IHBldGVyLm1h
+eWRlbGxAbGluYXJvLm9yZzsgRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+Ow0K
+PlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IFBhb2xvIEJv
+bnppbmkNCj48cGJvbnppbmlAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYzIDA0
+LzEyXSBzY3NpL2VzcC1wY2k6IFJlbW92ZSByZWR1bmRhbnQgc3RhdGVtZW50IGluDQo+ZXNwX3Bj
+aV9pb193cml0ZSgpDQo+DQo+TGUgMDIvMDMvMjAyMCDDoCAxNDowNywgQ2hlbiBRdW4gYSDDqWNy
+aXTCoDoNCj4+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+ICAg
+aHcvc2NzaS9lc3AtcGNpLmM6MTk4Ojk6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnc2l6ZScg
+aXMgbmV2ZXIgcmVhZA0KPj4gICAgICAgICBzaXplID0gNDsNCj4+ICAgICAgICAgXiAgICAgIH4N
+Cj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+
+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+
+PiAtLS0NCj4+IENjOiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29tPiBDYzpGYW0g
+WmhlbmcNCj48ZmFtQGV1cGhvbi5uZXQ+DQo+PiAtLS0NCj4+ICBody9zY3NpL2VzcC1wY2kuYyB8
+IDEgLQ0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pDQo+Pg0KPj4gZGlmZiAtLWdp
+dCBhL2h3L3Njc2kvZXNwLXBjaS5jIGIvaHcvc2NzaS9lc3AtcGNpLmMgaW5kZXgNCj4+IGQ1YTFm
+OWUwMTcuLjJlNmNjMDdkNGUgMTAwNjQ0DQo+PiAtLS0gYS9ody9zY3NpL2VzcC1wY2kuYw0KPj4g
+KysrIGIvaHcvc2NzaS9lc3AtcGNpLmMNCj4+IEBAIC0xOTUsNyArMTk1LDYgQEAgc3RhdGljIHZv
+aWQgZXNwX3BjaV9pb193cml0ZSh2b2lkICpvcGFxdWUsIGh3YWRkcg0KPmFkZHIsDQo+PiAgICAg
+ICAgICB2YWwgPDw9IHNoaWZ0Ow0KPj4gICAgICAgICAgdmFsIHw9IGN1cnJlbnQgJiB+KG1hc2sg
+PDwgc2hpZnQpOw0KPj4gICAgICAgICAgYWRkciAmPSB+MzsNCj4+IC0gICAgICAgIHNpemUgPSA0
+Ow0KPj4gICAgICB9DQo+DQo+cGVyaGFwcyBhICJnX2Fzc2VydChzaXplID49IDQpIiBpbnN0ZWFk
+IHdvdWxkIGJlIGNsZWFuZXIgdG8gbXV0ZSB0aGUgd2FybmluZz8NCj4NClllcywgYWRkICdnX2Fz
+c2VydChzaXplID49IDQpJyBjYW4gbXV0ZSB0aGUgd2FybmluZy4NCg0KPg0KPkkgdGhpbmsgaXQn
+cyBhIGdvb2QgcG9pbnQgdG8gdXBkYXRlIHRoZSBzaXplIGlmIGluIHRoZSBmdXR1cmUgdGhlIGNv
+ZGUgYmVsb3cgaXMNCj5tb2RpZmllZCB0byB1c2Ugc2l6ZS4NCj4NCkhtbSwgbWF5YmUgaXQgaXMg
+dHJ1ZS4NCg0KU28sIGxldCdzICBrZWVwICcgc2l6ZSA9IDQnICBhbmQgIGFkZCAnZ19hc3NlcnQo
+c2l6ZSA+PSA0KScgYWZ0ZXIgaWYoKSBzdGF0ZW1lbnQgLCBzaGFsbCB3ZT8NCg0KVGhhbmtzLA0K
+Q2hlbiBRdW4NCj4NCj5UaGFua3MsDQo+TGF1cmVudA0KPg0KDQo=
 
