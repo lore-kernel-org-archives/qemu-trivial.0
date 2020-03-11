@@ -1,55 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBvAm-000406-Fz
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Mar 2020 02:48:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60984)
+	id 1jBy6L-0004Gj-L3
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Mar 2020 05:56:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33345)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jBvAi-0003x5-5Z
- for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 02:48:53 -0400
+ (envelope-from <sgarzare@redhat.com>) id 1jBy6J-0004GV-68
+ for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 05:56:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jBvAg-0007Ue-2u
- for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 02:48:51 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2457 helo=huawei.com)
+ (envelope-from <sgarzare@redhat.com>) id 1jBy6I-0002Iz-6o
+ for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 05:56:31 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29549
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jBvAX-0007GO-6i; Wed, 11 Mar 2020 02:48:41 -0400
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id 4E25B68315DBA7FFA642;
- Wed, 11 Mar 2020 14:48:37 +0800 (CST)
-Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
- DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 11 Mar 2020 14:48:37 +0800
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
- dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0439.000;
- Wed, 11 Mar 2020 14:48:27 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-CC: Fam Zheng <fam@euphon.net>, Hannes Reinecke <hare@suse.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>, Euler Robot <euler.robot@huawei.com>, Paolo Bonzini
- <pbonzini@redhat.com>
-Subject: RE: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
- warnings
-Thread-Topic: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
- warnings
-Thread-Index: AQHV9t0YSMWYddN3YEKvEzi9xBDShqhBZbEAgAGJB+A=
-Date: Wed, 11 Mar 2020 06:48:27 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B684485@dggemm511-mbx.china.huawei.com>
-References: <20200310130844.30076-1-kuhn.chenqun@huawei.com>
- <bccf78b8-4c63-1587-742c-2595fe78e632@vivier.eu>
-In-Reply-To: <bccf78b8-4c63-1587-742c-2595fe78e632@vivier.eu>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1jBy6I-0002Hn-2Y
+ for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 05:56:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583920589;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=L0+asA5DTHEAtkwKXEAUoVcm7EKaHU50stltHUcW1qg=;
+ b=IZYsTeriVzEdR+Z/DkawqLpU+1ODIK7ORkrkPDGOk0cqjOXEUOl8VmgAYVpIn5HIfvIgOE
+ hGePS/nfw7T/HwZE3Scy6Oo6d8vvSt9DoNeS71AycxA+W8Yd0mUUwsps9nY5uHuzXMOIzP
+ REOCNnk6jZEvudHUG0l8iaKNnBJQtyI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-130-bbHX28nvOw69K76KKXFSoA-1; Wed, 11 Mar 2020 05:56:27 -0400
+X-MC-Unique: bbHX28nvOw69K76KKXFSoA-1
+Received: by mail-wm1-f71.google.com with SMTP id z14so449500wmc.7
+ for <qemu-trivial@nongnu.org>; Wed, 11 Mar 2020 02:56:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=LF9pqJIb06girj2Cmul2tQCYIuIsqdoetjtfYvVouOo=;
+ b=ckg0IOJWUUHwlWmblH/V3SPo9ybCbqg5bt/lSHwx1V70AfjxTS0Ll5hEU6QtHQYGDH
+ dZy9EhizUbNtEYjBbzacXsCYrY/KGG1lwzguaJsltUI1X5IuPFFLckfLweAE4n9esR67
+ s5xXqb9OJz18SMuG3AyKq1T8rgH6w0rQSElIKFbizVEVUhKSNy70wdBaRfg3pTTSGpas
+ DE5AK2iIjCtF9wsh0b+HOr26JpXjJXpHXJ3KbJqlROoxHhARbwwa10mj8v7yhMzQ0pmY
+ NhDTzPWycmIpiKcRSEchz0JEWoM1Vly7QdR1Kj84Y+hvvIVnoUhwOyuPyEf7Twe3MUFP
+ oCNw==
+X-Gm-Message-State: ANhLgQ0yvT51FEN9NyWuhkI51XB6pPA+BGiCMnjUN6YnxxnK8y142hqQ
+ sLbAfLV6JgaG6vkfYc97tFlGjLJfoiIHm8KwWJy5W8DFvOllVicX1iYMSs8wDARAqwvRu9hRkHx
+ yCwnYTFdYxGkDRe57cA==
+X-Received: by 2002:adf:f2ca:: with SMTP id d10mr3725701wrp.247.1583920586619; 
+ Wed, 11 Mar 2020 02:56:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvLS6jfCl4dGnrZiuYjKWkc4Wsp65Ie/UyhGADVO+FmcMmjKMv96LHbBcKKFShfoP1tvVCk0g==
+X-Received: by 2002:adf:f2ca:: with SMTP id d10mr3725682wrp.247.1583920586418; 
+ Wed, 11 Mar 2020 02:56:26 -0700 (PDT)
+Received: from steredhat (host32-201-dynamic.27-79-r.retail.telecomitalia.it.
+ [79.27.201.32])
+ by smtp.gmail.com with ESMTPSA id k12sm10340633wrv.88.2020.03.11.02.56.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Mar 2020 02:56:25 -0700 (PDT)
+Date: Wed, 11 Mar 2020 10:56:23 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, imammedo@redhat.com,
+ mst@redhat.com
+Subject: Re: [PATCH 0/2] hw/mem/pc-dimm: Trivial code changes
+Message-ID: <20200311095623.g32nabv45ws23uah@steredhat>
+References: <20200310180510.19489-1-wainersm@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200310180510.19489-1-wainersm@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.187
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,51 +81,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Mar 2020 06:48:54 -0000
+X-List-Received-Date: Wed, 11 Mar 2020 09:56:32 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
-bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBUdWVzZGF5LCBNYXJjaCAxMCwgMjAyMCAxMTow
-MSBQTQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBxZW11
-LQ0KPmRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Q2M6IEZhbSBa
-aGVuZyA8ZmFtQGV1cGhvbi5uZXQ+OyBIYW5uZXMgUmVpbmVja2UgPGhhcmVAc3VzZS5jb20+Ow0K
-PlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IHFlbXUtYmxv
-Y2tAbm9uZ251Lm9yZzsNCj5FdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IFBh
-b2xvIEJvbnppbmkNCj48cGJvbnppbmlAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENI
-XSBody9zY3NpL21lZ2FzYXM6Q2xlYW4gdXAgc29tZSByZWR1bmRhbnQgY29kZSBmaXgNCj5DbGFu
-ZyB3YXJuaW5ncw0KPg0KPkxlIDEwLzAzLzIwMjAgw6AgMTQ6MDgsIENoZW4gUXVuIGEgw6ljcml0
-wqA6DQo+PiBIZXJlIGFyZSBzb21lIHJlZHVuZGFudCBzdGF0ZW1lbnRzLCB3ZSBjYW4gY2xlYW4g
-dGhlbSB1cC4NCj4+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+
-IGh3L3Njc2kvbWVnYXNhcy5jOjExNzU6MzI6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnbWF4
-X2xkX2Rpc2tzJyBkdXJpbmcNCj5pdHMgaW5pdGlhbGl6YXRpb24gaXMgbmV2ZXIgcmVhZA0KPj4g
-ICAgIHVpbnQzMl90IG51bV9sZF9kaXNrcyA9IDAsIG1heF9sZF9kaXNrcyA9IHMtPmZ3X2x1bnM7
-DQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+ICAgfn5+fn5+
-fn5+fg0KPj4gaHcvc2NzaS9tZWdhc2FzLmM6MTE4Mzo5OiB3YXJuaW5nOiBWYWx1ZSBzdG9yZWQg
-dG8gJ21heF9sZF9kaXNrcycgaXMgbmV2ZXINCj5yZWFkDQo+PiAgICAgICAgIG1heF9sZF9kaXNr
-cyA9IDA7DQo+PiAgICAgICAgIF4gICAgICAgICAgICAgIH4NCj4NCj5UaGlzIGhhcyBiZWVuIGlu
-dHJvZHVjZWQgYnk6DQo+DQo+ZDk3YWUzNjg0ODYzICgibWVnYXNhczogZml4dXAgTUZJX0RDTURf
-TERfTElTVF9RVUVSWSIpDQo+DQo+QW5kIG1vZGlmaWVkIGJ5Og0KPg0KPmNvbW1pdCAzZjJjZDRk
-ZDQ3NzE5NDk3NTQwZmIwZTBhYTA2MzVlMTI3ZjI4MzhmDQo+DQpZZXMsIHRoaXMgbW9kaWZpY2F0
-aW9uIG1ha2VzIHRoZSBmaXJzdCBwaWVjZSBvZiBjb2RlKHRoZSBpZiBzdGF0ZW1lbnQgaW4gbWVn
-YXNhcy5jOjExODMpICBsb29rIG1lYW5pbmdsZXNzIGFuZCByZXN1bHRpbmcgaW4gd2FybmluZy4N
-Cg0KTWF5YmUgd2UgY2FuIG1ha2UgdGhpcyBwaWVjZSBjb2RlIGJldHRlciwgIGFsdGhvdWdoIG15
-IG1vZGlmaWNhdGlvbiBpcyB3cm9uZy4NCg0KVGhhbmtzLg0KPkF1dGhvcjogSGFubmVzIFJlaW5l
-Y2tlIDxoYXJlQHN1c2UuZGU+DQo+RGF0ZTogICBXZWQgT2N0IDI5IDEzOjAwOjA3IDIwMTQgKzAx
-MDANCj4NCj4gICAgbWVnYXNhczogZml4dXAgZGV2aWNlIG1hcHBpbmcNCj4NCj4gICAgTG9naWNh
-bCBkcml2ZXMgY2FuIG9ubHkgYmUgYWRkcmVzc2VkIHdpdGggdGhlICd0YXJnZXRfaWQnIG51bWJl
-cjsNCj4gICAgTFVOIG51bWJlcnMgY2Fubm90IGJlIHNlbGVjdGVkLg0KPiAgICBQaHlzaWNhbCBk
-cml2ZXMgY2FuIGJlIHNlbGVjdGVkIHdpdGggYm90aCwgdGFyZ2V0IGFuZCBMVU4gaWQuDQo+DQo+
-ICAgIFNvIHdlIHNob3VsZCBkaXNhbGxvdyBMVU4gbnVtYmVycyBub3QgZXF1YWwgdG8gMCB3aGVu
-IGluDQo+ICAgIFJBSUQgbW9kZS4NCj4NCj4gICAgU2lnbmVkLW9mZi1ieTogSGFubmVzIFJlaW5l
-Y2tlIDxoYXJlQHN1c2UuZGU+DQo+ICAgIFNpZ25lZC1vZmYtYnk6IFBhb2xvIEJvbnppbmkgPHBi
-b256aW5pQHJlZGhhdC5jb20+IC4uLg0KPkBAIC0xMTQzLDEwICsxMTUyLDEzIEBAIHN0YXRpYyBp
-bnQNCj5tZWdhc2FzX2RjbWRfbGRfbGlzdF9xdWVyeShNZWdhc2FzU3RhdGUgKnMsIE1lZ2FzYXND
-bWQgKmNtZCkNCj4gICAgICAgICByZXR1cm4gTUZJX1NUQVRfSU5WQUxJRF9QQVJBTUVURVI7DQo+
-ICAgICB9DQo+ICAgICBkY21kX3NpemUgPSBzaXplb2YodWludDMyX3QpICogMiArIDM7DQo+LQ0K
-PisgICAgbWF4X2xkX2Rpc2tzID0gY21kLT5pb3Zfc2l6ZSAtIGRjbWRfc2l6ZTsNCj4gICAgIGlm
-IChtZWdhc2FzX2lzX2pib2QocykpIHsNCj4gICAgICAgICBtYXhfbGRfZGlza3MgPSAwOw0KPiAg
-ICAgfQ0KPisgICAgaWYgKG1heF9sZF9kaXNrcyA+IE1GSV9NQVhfTEQpIHsNCj4rICAgICAgICBt
-YXhfbGRfZGlza3MgPSBNRklfTUFYX0xEOw0KPisgICAgfQ0KPiAgICAgUVRBSUxRX0ZPUkVBQ0go
-a2lkLCAmcy0+YnVzLnFidXMuY2hpbGRyZW4sIHNpYmxpbmcpIHsNCj4gICAgICAgICBTQ1NJRGV2
-aWNlICpzZGV2ID0gRE9fVVBDQVNUKFNDU0lEZXZpY2UsIHFkZXYsIGtpZC0+Y2hpbGQpOyAuLi4N
-Cj4NCj4NCj5UaGFua3MsDQo+TGF1cmVudA0K
+On Tue, Mar 10, 2020 at 03:05:08PM -0300, Wainer dos Santos Moschetta wrote=
+:
+> Improve one error message and fix one code style warning.
+>=20
+> Wainer dos Santos Moschetta (2):
+>   hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()
+>   hw/mem/pc-dimm: Fix line over 80 characters warning
+>=20
+>  hw/mem/pc-dimm.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>=20
+
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+
 
