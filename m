@@ -1,43 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBs4J-0001hj-17
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 23:30:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54332)
+	id 1jBvAm-000406-Fz
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Mar 2020 02:48:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60984)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jBs4F-0001er-Jh
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 23:30:01 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBvAi-0003x5-5Z
+ for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 02:48:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jBs4E-0001TL-Jc
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 23:29:59 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3196 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBvAg-0007Ue-2u
+ for qemu-trivial@nongnu.org; Wed, 11 Mar 2020 02:48:51 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2457 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jBs4C-0001Bh-20; Tue, 10 Mar 2020 23:29:56 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 5643B4A7CBD4F5EEDE15;
- Wed, 11 Mar 2020 11:29:49 +0800 (CST)
-Received: from huawei.com (10.133.205.93) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Mar 2020
- 11:29:38 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Kevin Wolf <kwolf@redhat.com>, "Ronnie
- Sahlberg" <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Lieven <pl@kamp.de>, Max Reitz <mreitz@redhat.com>, Laurent Vivier
- <laurent@vivier.eu>
-Subject: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent Clang
- warning
-Date: Wed, 11 Mar 2020 11:29:27 +0800
-Message-ID: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
+ id 1jBvAX-0007GO-6i; Wed, 11 Mar 2020 02:48:41 -0400
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 4E25B68315DBA7FFA642;
+ Wed, 11 Mar 2020 14:48:37 +0800 (CST)
+Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 11 Mar 2020 14:48:37 +0800
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
+ dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0439.000;
+ Wed, 11 Mar 2020 14:48:27 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: Fam Zheng <fam@euphon.net>, Hannes Reinecke <hare@suse.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, Euler Robot <euler.robot@huawei.com>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: RE: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
+ warnings
+Thread-Topic: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
+ warnings
+Thread-Index: AQHV9t0YSMWYddN3YEKvEzi9xBDShqhBZbEAgAGJB+A=
+Date: Wed, 11 Mar 2020 06:48:27 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B684485@dggemm511-mbx.china.huawei.com>
+References: <20200310130844.30076-1-kuhn.chenqun@huawei.com>
+ <bccf78b8-4c63-1587-742c-2595fe78e632@vivier.eu>
+In-Reply-To: <bccf78b8-4c63-1587-742c-2595fe78e632@vivier.eu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 45.249.212.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,54 +61,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Mar 2020 03:30:01 -0000
+X-List-Received-Date: Wed, 11 Mar 2020 06:48:54 -0000
 
-Clang static code analyzer show warning:
-  block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
-        flags &=3D ~BDRV_O_RDWR;
-        ^        ~~~~~~~~~~~~
-
-In iscsi_allocmap_init() only checks BDRV_O_NOCACHE, which
-is the same in both of flags and bs->open_flags.
-We can use the flags instead bs->open_flags to prevent Clang warning.
-
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Kevin Wolf <kwolf@redhat.com>
----
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Peter Lieven <pl@kamp.de>
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Max Reitz <mreitz@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>
-
-v1->v2:
- Keep the 'flags' then use it(Base on Kevin's comments).
-
-v2->v3:
- Modify subject and commit messages(Base on Kevin's and Laurent's comment=
-s).
----
- block/iscsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/block/iscsi.c b/block/iscsi.c
-index 682abd8e09..50bae51700 100644
---- a/block/iscsi.c
-+++ b/block/iscsi.c
-@@ -2002,7 +2002,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
-         iscsilun->cluster_size =3D iscsilun->bl.opt_unmap_gran *
-             iscsilun->block_size;
-         if (iscsilun->lbprz) {
--            ret =3D iscsi_allocmap_init(iscsilun, bs->open_flags);
-+            ret =3D iscsi_allocmap_init(iscsilun, flags);
-         }
-     }
-=20
---=20
-2.23.0
-
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
+bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBUdWVzZGF5LCBNYXJjaCAxMCwgMjAyMCAxMTow
+MSBQTQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBxZW11
+LQ0KPmRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Q2M6IEZhbSBa
+aGVuZyA8ZmFtQGV1cGhvbi5uZXQ+OyBIYW5uZXMgUmVpbmVja2UgPGhhcmVAc3VzZS5jb20+Ow0K
+PlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IHFlbXUtYmxv
+Y2tAbm9uZ251Lm9yZzsNCj5FdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IFBh
+b2xvIEJvbnppbmkNCj48cGJvbnppbmlAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENI
+XSBody9zY3NpL21lZ2FzYXM6Q2xlYW4gdXAgc29tZSByZWR1bmRhbnQgY29kZSBmaXgNCj5DbGFu
+ZyB3YXJuaW5ncw0KPg0KPkxlIDEwLzAzLzIwMjAgw6AgMTQ6MDgsIENoZW4gUXVuIGEgw6ljcml0
+wqA6DQo+PiBIZXJlIGFyZSBzb21lIHJlZHVuZGFudCBzdGF0ZW1lbnRzLCB3ZSBjYW4gY2xlYW4g
+dGhlbSB1cC4NCj4+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+
+IGh3L3Njc2kvbWVnYXNhcy5jOjExNzU6MzI6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnbWF4
+X2xkX2Rpc2tzJyBkdXJpbmcNCj5pdHMgaW5pdGlhbGl6YXRpb24gaXMgbmV2ZXIgcmVhZA0KPj4g
+ICAgIHVpbnQzMl90IG51bV9sZF9kaXNrcyA9IDAsIG1heF9sZF9kaXNrcyA9IHMtPmZ3X2x1bnM7
+DQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+ICAgfn5+fn5+
+fn5+fg0KPj4gaHcvc2NzaS9tZWdhc2FzLmM6MTE4Mzo5OiB3YXJuaW5nOiBWYWx1ZSBzdG9yZWQg
+dG8gJ21heF9sZF9kaXNrcycgaXMgbmV2ZXINCj5yZWFkDQo+PiAgICAgICAgIG1heF9sZF9kaXNr
+cyA9IDA7DQo+PiAgICAgICAgIF4gICAgICAgICAgICAgIH4NCj4NCj5UaGlzIGhhcyBiZWVuIGlu
+dHJvZHVjZWQgYnk6DQo+DQo+ZDk3YWUzNjg0ODYzICgibWVnYXNhczogZml4dXAgTUZJX0RDTURf
+TERfTElTVF9RVUVSWSIpDQo+DQo+QW5kIG1vZGlmaWVkIGJ5Og0KPg0KPmNvbW1pdCAzZjJjZDRk
+ZDQ3NzE5NDk3NTQwZmIwZTBhYTA2MzVlMTI3ZjI4MzhmDQo+DQpZZXMsIHRoaXMgbW9kaWZpY2F0
+aW9uIG1ha2VzIHRoZSBmaXJzdCBwaWVjZSBvZiBjb2RlKHRoZSBpZiBzdGF0ZW1lbnQgaW4gbWVn
+YXNhcy5jOjExODMpICBsb29rIG1lYW5pbmdsZXNzIGFuZCByZXN1bHRpbmcgaW4gd2FybmluZy4N
+Cg0KTWF5YmUgd2UgY2FuIG1ha2UgdGhpcyBwaWVjZSBjb2RlIGJldHRlciwgIGFsdGhvdWdoIG15
+IG1vZGlmaWNhdGlvbiBpcyB3cm9uZy4NCg0KVGhhbmtzLg0KPkF1dGhvcjogSGFubmVzIFJlaW5l
+Y2tlIDxoYXJlQHN1c2UuZGU+DQo+RGF0ZTogICBXZWQgT2N0IDI5IDEzOjAwOjA3IDIwMTQgKzAx
+MDANCj4NCj4gICAgbWVnYXNhczogZml4dXAgZGV2aWNlIG1hcHBpbmcNCj4NCj4gICAgTG9naWNh
+bCBkcml2ZXMgY2FuIG9ubHkgYmUgYWRkcmVzc2VkIHdpdGggdGhlICd0YXJnZXRfaWQnIG51bWJl
+cjsNCj4gICAgTFVOIG51bWJlcnMgY2Fubm90IGJlIHNlbGVjdGVkLg0KPiAgICBQaHlzaWNhbCBk
+cml2ZXMgY2FuIGJlIHNlbGVjdGVkIHdpdGggYm90aCwgdGFyZ2V0IGFuZCBMVU4gaWQuDQo+DQo+
+ICAgIFNvIHdlIHNob3VsZCBkaXNhbGxvdyBMVU4gbnVtYmVycyBub3QgZXF1YWwgdG8gMCB3aGVu
+IGluDQo+ICAgIFJBSUQgbW9kZS4NCj4NCj4gICAgU2lnbmVkLW9mZi1ieTogSGFubmVzIFJlaW5l
+Y2tlIDxoYXJlQHN1c2UuZGU+DQo+ICAgIFNpZ25lZC1vZmYtYnk6IFBhb2xvIEJvbnppbmkgPHBi
+b256aW5pQHJlZGhhdC5jb20+IC4uLg0KPkBAIC0xMTQzLDEwICsxMTUyLDEzIEBAIHN0YXRpYyBp
+bnQNCj5tZWdhc2FzX2RjbWRfbGRfbGlzdF9xdWVyeShNZWdhc2FzU3RhdGUgKnMsIE1lZ2FzYXND
+bWQgKmNtZCkNCj4gICAgICAgICByZXR1cm4gTUZJX1NUQVRfSU5WQUxJRF9QQVJBTUVURVI7DQo+
+ICAgICB9DQo+ICAgICBkY21kX3NpemUgPSBzaXplb2YodWludDMyX3QpICogMiArIDM7DQo+LQ0K
+PisgICAgbWF4X2xkX2Rpc2tzID0gY21kLT5pb3Zfc2l6ZSAtIGRjbWRfc2l6ZTsNCj4gICAgIGlm
+IChtZWdhc2FzX2lzX2pib2QocykpIHsNCj4gICAgICAgICBtYXhfbGRfZGlza3MgPSAwOw0KPiAg
+ICAgfQ0KPisgICAgaWYgKG1heF9sZF9kaXNrcyA+IE1GSV9NQVhfTEQpIHsNCj4rICAgICAgICBt
+YXhfbGRfZGlza3MgPSBNRklfTUFYX0xEOw0KPisgICAgfQ0KPiAgICAgUVRBSUxRX0ZPUkVBQ0go
+a2lkLCAmcy0+YnVzLnFidXMuY2hpbGRyZW4sIHNpYmxpbmcpIHsNCj4gICAgICAgICBTQ1NJRGV2
+aWNlICpzZGV2ID0gRE9fVVBDQVNUKFNDU0lEZXZpY2UsIHFkZXYsIGtpZC0+Y2hpbGQpOyAuLi4N
+Cj4NCj4NCj5UaGFua3MsDQo+TGF1cmVudA0K
 
