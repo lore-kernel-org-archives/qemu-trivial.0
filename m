@@ -1,61 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jBjFx-0007oy-O8
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 14:05:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51672)
+	id 1jBptG-0007JN-G1
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2020 21:10:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44504)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1jBjFu-0007ik-Tx
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 14:05:27 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBptE-0007FY-A4
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 21:10:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1jBjFt-0005HH-Qn
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 14:05:26 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:49043
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jBptD-0002bs-4X
+ for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 21:10:28 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:36218 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1jBjFt-0005ED-LK
- for qemu-trivial@nongnu.org; Tue, 10 Mar 2020 14:05:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583863525;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=27otnlpCCc6Oj80P4U1wJDCLkbDt2NBJY+YO7yC4c2Q=;
- b=WKtF/toLgJwZP8bVQDAREgD32PLyP71anZgtzpm9Y/btamSuVtdFw3gH2iBQBpxsMWKO+t
- WwLEV/x4yzAVNNcXMe/Bc5I4ed/v5xZCHR+LoN5Tg3Fa8olvGqvOS2sxjKeHHDaRFND0RC
- FVC7eAdry+ahoN2lEnPOiA5Bs6S0Ve0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-171-7VVRL2bfPayd7ql-Cy4jzw-1; Tue, 10 Mar 2020 14:05:23 -0400
-X-MC-Unique: 7VVRL2bfPayd7ql-Cy4jzw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19FDC13EA;
- Tue, 10 Mar 2020 18:05:22 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-125-115.rdu2.redhat.com
- [10.10.125.115])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9688519C7F;
- Tue, 10 Mar 2020 18:05:20 +0000 (UTC)
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: imammedo@redhat.com,
-	mst@redhat.com,
-	qemu-trivial@nongnu.org
-Subject: [PATCH 2/2] hw/mem/pc-dimm: Fix line over 80 characters warning
-Date: Tue, 10 Mar 2020 15:05:10 -0300
-Message-Id: <20200310180510.19489-3-wainersm@redhat.com>
-In-Reply-To: <20200310180510.19489-1-wainersm@redhat.com>
-References: <20200310180510.19489-1-wainersm@redhat.com>
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jBpt7-0002AX-Ni; Tue, 10 Mar 2020 21:10:22 -0400
+Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 45A31B8D47AC5803E4B4;
+ Wed, 11 Mar 2020 09:10:16 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
+ DGGEMM402-HUB.china.huawei.com ([10.3.20.210]) with mapi id 14.03.0439.000;
+ Wed, 11 Mar 2020 09:10:09 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Fam Zheng <fam@euphon.net>, Hannes Reinecke
+ <hare@suse.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>, Qemu-block
+ <qemu-block@nongnu.org>, Euler Robot <euler.robot@huawei.com>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: RE: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
+ warnings
+Thread-Topic: [PATCH] hw/scsi/megasas:Clean up some redundant code fix Clang
+ warnings
+Thread-Index: AQHV9t0YSMWYddN3YEKvEzi9xBDShqhBUMqAgAFChQA=
+Date: Wed, 11 Mar 2020 01:10:08 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B683DFE@dggemm511-mbx.china.huawei.com>
+References: <20200310130844.30076-1-kuhn.chenqun@huawei.com>
+ <CAFEAcA_W2pRztEAmd1v+6O-1J9-CckVV8+G6kZ3igmR-ie6k+Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA_W2pRztEAmd1v+6O-1J9-CckVV8+G6kZ3igmR-ie6k+Q@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 45.249.212.255
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,30 +58,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2020 18:05:28 -0000
+X-List-Received-Date: Wed, 11 Mar 2020 01:10:29 -0000
 
-Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
----
- hw/mem/pc-dimm.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 36edfcf467..6d62588fea 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -218,7 +218,8 @@ static MemoryRegion *pc_dimm_get_memory_region(PCDIMMDe=
-vice *dimm, Error **errp)
-=20
- static uint64_t pc_dimm_md_get_addr(const MemoryDeviceState *md)
- {
--    return object_property_get_uint(OBJECT(md), PC_DIMM_ADDR_PROP, &error_=
-abort);
-+    return object_property_get_uint(OBJECT(md), PC_DIMM_ADDR_PROP,
-+                                    &error_abort);
- }
-=20
- static void pc_dimm_md_set_addr(MemoryDeviceState *md, uint64_t addr,
---=20
-2.24.1
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUGV0ZXIgTWF5ZGVsbCBbbWFpbHRv
+OnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj5TZW50OiBUdWVzZGF5LCBNYXJjaCAxMCwgMjAy
+MCA5OjQ3IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4N
+Cj5DYzogUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBRRU1VIFRyaXZp
+YWwgPHFlbXUtDQo+dHJpdmlhbEBub25nbnUub3JnPjsgRmFtIFpoZW5nIDxmYW1AZXVwaG9uLm5l
+dD47IEhhbm5lcyBSZWluZWNrZQ0KPjxoYXJlQHN1c2UuY29tPjsgWmhhbmdoYWlsaWFuZyA8emhh
+bmcuemhhbmdoYWlsaWFuZ0BodWF3ZWkuY29tPjsNCj5RZW11LWJsb2NrIDxxZW11LWJsb2NrQG5v
+bmdudS5vcmc+OyBFdWxlciBSb2JvdA0KPjxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsgUGFvbG8g
+Qm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIXSBody9z
+Y3NpL21lZ2FzYXM6Q2xlYW4gdXAgc29tZSByZWR1bmRhbnQgY29kZSBmaXgNCj5DbGFuZyB3YXJu
+aW5ncw0KPg0KPk9uIFR1ZSwgMTAgTWFyIDIwMjAgYXQgMTM6MTAsIENoZW4gUXVuIDxrdWhuLmNo
+ZW5xdW5AaHVhd2VpLmNvbT4NCj53cm90ZToNCj4+DQo+PiBIZXJlIGFyZSBzb21lIHJlZHVuZGFu
+dCBzdGF0ZW1lbnRzLCB3ZSBjYW4gY2xlYW4gdGhlbSB1cC4NCj4+IENsYW5nIHN0YXRpYyBjb2Rl
+IGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+IGh3L3Njc2kvbWVnYXNhcy5jOjExNzU6MzI6IHdh
+cm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnbWF4X2xkX2Rpc2tzJyBkdXJpbmcNCj5pdHMgaW5pdGlh
+bGl6YXRpb24gaXMgbmV2ZXIgcmVhZA0KPj4gICAgIHVpbnQzMl90IG51bV9sZF9kaXNrcyA9IDAs
+IG1heF9sZF9kaXNrcyA9IHMtPmZ3X2x1bnM7DQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgXn5+fn5+fn5+fn5+ICAgfn5+fn5+fn5+fg0KPj4gaHcvc2NzaS9tZWdhc2FzLmM6MTE4
+Mzo5OiB3YXJuaW5nOiBWYWx1ZSBzdG9yZWQgdG8gJ21heF9sZF9kaXNrcycgaXMgbmV2ZXINCj5y
+ZWFkDQo+PiAgICAgICAgIG1heF9sZF9kaXNrcyA9IDA7DQo+PiAgICAgICAgIF4gICAgICAgICAg
+ICAgIH4NCj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdl
+aS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5j
+b20+DQo+PiAtLS0NCj4+IENjOiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29tPg0K
+Pj4gQ2M6IEZhbSBaaGVuZyA8ZmFtQGV1cGhvbi5uZXQ+DQo+PiBDYzogSGFubmVzIFJlaW5lY2tl
+IDxoYXJlQHN1c2UuY29tPg0KPj4gQ2M6IHFlbXUtYmxvY2tAbm9uZ251Lm9yZw0KPj4gLS0tDQo+
+PiAgaHcvc2NzaS9tZWdhc2FzLmMgfCAzICstLQ0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
+dGlvbigrKSwgMiBkZWxldGlvbnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvaHcvc2NzaS9tZWdh
+c2FzLmMgYi9ody9zY3NpL21lZ2FzYXMuYyBpbmRleA0KPj4gYWYxOGM4OGI2NS4uM2Y5ODJlMWQz
+YiAxMDA2NDQNCj4+IC0tLSBhL2h3L3Njc2kvbWVnYXNhcy5jDQo+PiArKysgYi9ody9zY3NpL21l
+Z2FzYXMuYw0KPj4gQEAgLTExNzIsNyArMTE3Miw3IEBAIHN0YXRpYyBpbnQNCj5tZWdhc2FzX2Rj
+bWRfbGRfbGlzdF9xdWVyeShNZWdhc2FzU3RhdGUgKnMsIE1lZ2FzYXNDbWQgKmNtZCkNCj4+ICAg
+ICAgdWludDE2X3QgZmxhZ3M7DQo+PiAgICAgIHN0cnVjdCBtZmlfbGRfdGFyZ2V0aWRfbGlzdCBp
+bmZvOw0KPj4gICAgICBzaXplX3QgZGNtZF9zaXplID0gc2l6ZW9mKGluZm8pLCByZXNpZDsNCj4+
+IC0gICAgdWludDMyX3QgbnVtX2xkX2Rpc2tzID0gMCwgbWF4X2xkX2Rpc2tzID0gcy0+ZndfbHVu
+czsNCj4+ICsgICAgdWludDMyX3QgbnVtX2xkX2Rpc2tzID0gMCwgbWF4X2xkX2Rpc2tzOw0KPj4g
+ICAgICBCdXNDaGlsZCAqa2lkOw0KPj4NCj4+ICAgICAgLyogbWJveDAgY29udGFpbnMgZmxhZ3Mg
+Ki8NCj4+IEBAIC0xMTgwLDcgKzExODAsNiBAQCBzdGF0aWMgaW50DQo+bWVnYXNhc19kY21kX2xk
+X2xpc3RfcXVlcnkoTWVnYXNhc1N0YXRlICpzLCBNZWdhc2FzQ21kICpjbWQpDQo+PiAgICAgIHRy
+YWNlX21lZ2FzYXNfZGNtZF9sZF9saXN0X3F1ZXJ5KGNtZC0+aW5kZXgsIGZsYWdzKTsNCj4+ICAg
+ICAgaWYgKGZsYWdzICE9IE1SX0xEX1FVRVJZX1RZUEVfQUxMICYmDQo+PiAgICAgICAgICBmbGFn
+cyAhPSBNUl9MRF9RVUVSWV9UWVBFX0VYUE9TRURfVE9fSE9TVCkgew0KPj4gLSAgICAgICAgbWF4
+X2xkX2Rpc2tzID0gMDsNCj4+ICAgICAgfQ0KPg0KPlRoaXMgZG9lc24ndCBsb29rIHJpZ2h0IC0t
+IHlvdXIgY2hhbmdlIHJlbW92ZXMgdGhlIG9ubHkgc3RhdGVtZW50IGluIHRoZSBib2R5DQo+b2Yg
+dGhpcyAiaWYiLiBJIHRoaW5rIHlvdSBuZWVkIHRvIGV4YW1pbmUgd2hhdCB0aGUgZnVuY3Rpb24g
+aXMgdHJ5aW5nIHRvIGRvIHdpdGgNCj50aGUgdGVzdCBpdCBpcyBkb2luZyBvbiB0aGVzZSBmbGFn
+cyBpbiBvcmRlciB0byBpZGVudGlmeSB3aGF0IHRoZSByaWdodCBjaGFuZ2UgaXMuLi4NCj4NCkFo
+LCBzb3JyeSBmb3IgdHJvdWJsZSwgIGl0IGlzIG5vdCBhIG1pc3Rha2UgdGhhdCBzaG91bGQgaGFw
+cGVuLiBJIHNob3VsZCBkb3VibGUgY2hlY2sgaXQgbmV4dCB0aW1lLg0KDQo+UHJvYmFibHkgdGhp
+cyBtZWFucyBnb2luZyBiYWNrIHRvIHRoZSBoL3cgc3BlYyB0byBpZGVudGlmeSB0aGUgY29ycmVj
+dA0KPmJlaGF2aW91ciBvdmVyYWxsLg0KPg0KWWVzLCBJIHNob3VsZCBnbyBiYWNrIHRoZSBodyBz
+cGVjIGluIG9yZGVyIHRvIHVuZGVyc3RhbmQgdGhlIGJlaGF2aW91ciBvdmVyYWxsLg0KDQpUaGFu
+a3MuDQpDaGVuIFF1bg0K
 
