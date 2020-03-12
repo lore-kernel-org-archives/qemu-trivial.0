@@ -1,67 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCRCh-0006SX-Mj
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2020 13:01:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38408)
+	id 1jCTVY-0004JR-At
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2020 15:28:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42175)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jCRCf-0006IN-4m
- for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 13:01:02 -0400
+ (envelope-from <eblake@redhat.com>) id 1jCTVW-0004Fz-DP
+ for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 15:28:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jCRCd-00084p-Ts
- for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 13:01:00 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:35618)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jCRCd-00084M-OI
- for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 13:00:59 -0400
-Received: by mail-oi1-x243.google.com with SMTP id k8so4759489oik.2
- for <qemu-trivial@nongnu.org>; Thu, 12 Mar 2020 10:00:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sG2XHxtL29liFM8qAyu3jpV/gaMswIfwBnXLqD75KIw=;
- b=tUY0rHtEFZga2G8zMqXXlIUYHIZ+tIEwasI8rTQMdtlszrxnH+GZ3gyv1DaUQpyy0U
- Xy7GJ3pDw0Rqp+WhO1ASz0i+TFyU1EE+RGBVR6amSqNjbVhfb/NDIQJXym+0DbFM6wt6
- eirhDm+K1X4e3rUFsDw+0TpAAMDoW0NV8YCk+6njKAqUpsJHG/n5JA6y2nTuieHyVMIq
- guR1Lcl0/aJiQljsjhtVRY3d3MGaW9KKcYE5vHpLHJv69JSqkLqa+o/q+J0B7bFsi7Gf
- 7rG92FXA9u9sc7ygSEVSORBsjyh20/wDDjOfU2X2Dhbwmlj8lyq6BsDroqzQo2ecBX8z
- RbAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sG2XHxtL29liFM8qAyu3jpV/gaMswIfwBnXLqD75KIw=;
- b=rYRqbNAmpTj9FPnvrtQvsdi6bf7KgYSvepgFEAULtNbhLnb9vP7eUzTL8XSxL+Tq49
- VR2PEsO6drR+9nCqJbV2SeHHnXiiDXvie6cF0ZK0FG7BMMRc0utbID9AjdW5MkrjwERB
- BtPLnSWG63XwxB8it1zGEUVik6O/ZlqYNM0sXu8yAjAhFkCJ7Rjt9DMlcConNu/30GxX
- q1Lvd/CXNfeD6dmkM0Y8XB2DErsIPjAcq9FJAL+qTvAbtmx/6bjAam7JOyHyJNoBQ9qU
- Hi2NhSi3tQVy5H/wzgKY1HztEewfXyE6KUZTj1sAVHGtjCkQm32JoDCGAgtmTmrMQGbM
- e+LQ==
-X-Gm-Message-State: ANhLgQ0kvy0Yon/z4Nk8MOq++BBOlYJAB1uU4B0Urd9k0E7cH1aXeDwa
- TYNnyjaSBZWRypaqXuf1INDcM9XHsN6RYpzmRvBDIg==
-X-Google-Smtp-Source: ADFU+vuJ7k8R+ip/KOjJj6uWne3Jv24J0fy4U6KiLTAI0KU+Pm2pKuhlfUf0zt76SYIITIHWtqlR9aUEXJmH+2aTEjI=
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr3226853oic.48.1584032458496; 
- Thu, 12 Mar 2020 10:00:58 -0700 (PDT)
+ (envelope-from <eblake@redhat.com>) id 1jCTVV-0006tm-EN
+ for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 15:28:38 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48499
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jCTVV-0006sI-AV
+ for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 15:28:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584041317;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iuMYgC9w9ONLyxeRRLmmWK1FsLOHsfI+Gf/8rjpkgSs=;
+ b=EOf7Fd2fwKuczSX0iz2neLpvMsk9i8dd/OsBCrjeZsVyyqUBzpYO2kTrHVjmMp/A0zTPH+
+ A8XvKNcOyong7lSeLMztMmP0nOKv61lTcaruTD/JivwC8xQnPWg0wKeSPrvueHpHDSVJLL
+ E7HV7gufvxoPkKZgg0x+NaY5kOJ3qgs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-364-zIX4nardOLeBD12wl20DFw-1; Thu, 12 Mar 2020 15:28:34 -0400
+X-MC-Unique: zIX4nardOLeBD12wl20DFw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7A5A6800D53;
+ Thu, 12 Mar 2020 19:28:33 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-116-177.phx2.redhat.com [10.3.116.177])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6B0985DA7B;
+ Thu, 12 Mar 2020 19:28:32 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, libvir-list@redhat.com, pkrempa@redhat.com,
+ mreitz@redhat.com, kwolf@redhat.com, kchamart@redhat.com,
+ Fam Zheng <fam@euphon.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH v4 2/7] vmdk: Add trivial backing_fmt support
+Date: Thu, 12 Mar 2020 14:28:17 -0500
+Message-Id: <20200312192822.3739399-3-eblake@redhat.com>
+In-Reply-To: <20200312192822.3739399-1-eblake@redhat.com>
+References: <20200312192822.3739399-1-eblake@redhat.com>
 MIME-Version: 1.0
-References: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
- <CAFEAcA8fnz2oaa-CO-EEK_vQTWfPih4PrAB3i4UUgQpv9Y_4mg@mail.gmail.com>
- <7412CDE03601674DA8197E2EBD8937E83B68019B@dggemm511-mbx.china.huawei.com>
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B68019B@dggemm511-mbx.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Mar 2020 17:00:46 +0000
-Message-ID: <CAFEAcA-q4t3yQcHaHzOGx2GpKpuW=kti51myuFK_K3aieRY3dg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Jason Wang <jasowang@redhat.com>, 
- Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>, 
- Euler Robot <euler.robot@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,51 +67,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2020 17:01:02 -0000
+X-List-Received-Date: Thu, 12 Mar 2020 19:28:39 -0000
 
-On Tue, 10 Mar 2020 at 08:08, Chenqun (kuhn) <kuhn.chenqun@huawei.com> wrote:
->
-> >-----Original Message-----
-> >From: Peter Maydell [mailto:peter.maydell@linaro.org]
-> >>
-> >> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c index
-> >> 6a124a154a..322cbdcc17 100644
-> >> --- a/hw/net/imx_fec.c
-> >> +++ b/hw/net/imx_fec.c
-> >> @@ -855,13 +855,15 @@ static void imx_enet_write(IMXFECState *s,
-> >uint32_t index, uint32_t value)
-> >>          break;
-> >>      case ENET_TGSR:
-> >>          /* implement clear timer flag */
-> >> -        value = value & 0x0000000f;
-> >> +        s->regs[index] ^= s->regs[index] & value;
-> >> +        s->regs[index] &= 0x0000000f;
-> >>          break;
-> >>      case ENET_TCSR0:
-> >>      case ENET_TCSR1:
-> >>      case ENET_TCSR2:
-> >>      case ENET_TCSR3:
-> >> -        value = value & 0x000000fd;
-> >> +        s->regs[index] = (value & 0x00000080) ? (0x0000007d & value) :
-> >> +                         (value & 0x000000fd);
-> >>          break;
-> >>      case ENET_TCCR0:
-> >>      case ENET_TCCR1:
-> >
-> >This isn't the usual way to write W1C behaviour.
-> >If all the relevant bits are W1C, as for TGSR:
-> >
-> >   s->regs[index] &= ~(value & 0xf); /* all bits W1C */
-> >
-> Yes, it looks better.
-> But do we need clear the reserved bit (31 - 4 bits) explicitly ?
+vmdk already requires that if backing_file is present, that it be
+another vmdk image (see vmdk_co_do_create).  Meanwhile, we want to
+move towards always being explicit about the backing format for other
+drivers where it matters.  So for convenience, make qemu-img create -F
+vmdk work, while rejecting all other explicit formats (note that this
+is only for QemuOpts usage; there is no change to the QAPI to allow a
+format through -blockdev).
 
-Not necessarily, but it seems to be how the other registers
-in the device have generally been coded, and it's clearly
-what the intent was here given that the original (buggy)
-code was masking out reserved bits. So I think it makes
-sense to continue in that style.
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ block/vmdk.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-thanks
--- PMM
+diff --git a/block/vmdk.c b/block/vmdk.c
+index 20e909d99794..3c7893817afe 100644
+--- a/block/vmdk.c
++++ b/block/vmdk.c
+@@ -2611,6 +2611,14 @@ static int coroutine_fn vmdk_co_create_opts(const ch=
+ar *filename, QemuOpts *opts
+     bool zeroed_grain;
+     bool compat6;
+     VMDKCreateOptsData data;
++    char *backing_fmt =3D NULL;
++
++    backing_fmt =3D qemu_opt_get_del(opts, BLOCK_OPT_BACKING_FMT);
++    if (backing_fmt && strcmp(backing_fmt, "vmdk") !=3D 0) {
++        error_setg(errp, "backing_file must be a vmdk image");
++        ret =3D -EINVAL;
++        goto exit;
++    }
+
+     if (filename_decompose(filename, path, prefix, postfix, PATH_MAX, errp=
+)) {
+         ret =3D -EINVAL;
+@@ -2669,6 +2677,7 @@ static int coroutine_fn vmdk_co_create_opts(const cha=
+r *filename, QemuOpts *opts
+                             vmdk_co_create_opts_cb, &data, errp);
+
+ exit:
++    g_free(backing_fmt);
+     g_free(adapter_type);
+     g_free(backing_file);
+     g_free(hw_version);
+@@ -3005,6 +3014,11 @@ static QemuOptsList vmdk_create_opts =3D {
+             .type =3D QEMU_OPT_STRING,
+             .help =3D "File name of a base image"
+         },
++        {
++            .name =3D BLOCK_OPT_BACKING_FMT,
++            .type =3D QEMU_OPT_STRING,
++            .help =3D "Must be 'vmdk' if present",
++        },
+         {
+             .name =3D BLOCK_OPT_COMPAT6,
+             .type =3D QEMU_OPT_BOOL,
+--=20
+2.25.1
+
 
