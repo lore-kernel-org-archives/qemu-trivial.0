@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCgJG-0007JO-41
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 05:08:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36763)
+	id 1jChQb-00049G-KI
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 06:20:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54394)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jCgJE-0007JH-DO
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 05:08:49 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jChQZ-000488-Dg
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 06:20:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jCgJD-0001JA-DK
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 05:08:48 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:46901)
+ (envelope-from <laurent@vivier.eu>) id 1jChQY-00083c-AN
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 06:20:27 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:51209)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1jCgJD-0001F4-4G
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 05:08:47 -0400
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1jChQY-00081v-1h
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 06:20:26 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MBltK-1j2nt12rxU-00CBlp; Fri, 13 Mar 2020 10:08:43 +0100
-Subject: Re: Missing unlock_user_struct , Deadlock
-To: Mansour Ahmadi <mansourweb@gmail.com>, qemu-trivial@nongnu.org
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N4R0a-1jM95d003i-011UHa for <qemu-trivial@nongnu.org>; Fri, 13 Mar 2020
+ 11:20:23 +0100
+To: qemu-trivial@nongnu.org
 References: <CAGT9xrAYkEMy=Yd1exCyqoq8xsiM9a7kVnG0LfdiisCpn+jiuA@mail.gmail.com>
+ <d32cda89-7212-27e6-25e2-a2b9c8014ebb@vivier.eu>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -61,34 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <d32cda89-7212-27e6-25e2-a2b9c8014ebb@vivier.eu>
-Date: Fri, 13 Mar 2020 10:08:42 +0100
+Subject: Re: Missing unlock_user_struct , Deadlock
+Message-ID: <08029dab-7119-61ff-78b3-b1b6272356be@vivier.eu>
+Date: Fri, 13 Mar 2020 11:20:22 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAGT9xrAYkEMy=Yd1exCyqoq8xsiM9a7kVnG0LfdiisCpn+jiuA@mail.gmail.com>
+In-Reply-To: <d32cda89-7212-27e6-25e2-a2b9c8014ebb@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wzvoHjCbFD4trzTNqsynDnycc+6KsEFr4XfXTc7ryppw/P1mhDv
- ZEqKJ6AtlgXDSAePgyQFZdhPS+n6FvGOAIEGmVnrvCOHqlKyTjqwmNteowllcRE3RwtOTvx
- 1tWFGEq3dD10WLZQObaYeC8FRvoAG15POGTTFLDhpDfXll6zta+Lp1fe8YYwlTmu3ofSbmf
- z3gS9BRQCuR1yCNpKMsVA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5aO4Y6fUEpQ=:O9Fsz0qyyGr1Q9qAIidYy7
- DfkpBhqfmDCY8gdDYad/CPXYvBifdoB22cUA6wP4ZSRTBKIQQtsFVcixzXa0HJ4qwd/tgGSa3
- 2kLK93s1QzSL6jfj+fVEFrHkHCCUIVHqTEWZdyDYO6T4+UeASigVxqFwNFozhWCAClQWl/shs
- +7/IQCWC3WwbfbmCMpJWNeBV69sWoW6hmm2rbch6VP2VbnRb+ABw2B0J7fgQh3Rhsc1GNvNbj
- UBSAp4YsDpdpuONwEA3XSg3SQzf0jd25UoKxJ4o6e2uKtfrRpZKG+eTx8Ns8Or4s5tgeHYPqv
- 6Dubfnwb+MnVr14AlL7GV7LaHjlabam/w4EM4ZKpMVbQ9+HnM9oz4YitR4WNTmzP93M6Q2+Kn
- lhLgs0Lb+nBV+MfIBRpNQlI5q7fCRMxhqLu1SPYCAO6pxuQn0SFOpH2mAq6wTGbvMOxvm0jlg
- 7AgAqzS993BiriXKZv0URZTkBVBw2gk/0zPS4MlYXzag3JCc20aQCZJSmA2uirGhbmOKgqjV5
- AdxkfR6+rM3R636d+jYLo6UhO7CkSKu/sKqxqoaYs4HE3X1tk+W+Jkk9ki2qj1c7wa6mpGTfB
- iTZxTgMDecjfFY4dyNTTj9kfeaE86eaR2MHhJllDInUjEnKDA9JNNi5TZCJrg64SYlBQx9f0d
- aPk4E5xSJx1RnAQMC41Cb9AOsZxGYEsKAA+Lz2n5LFd0mXiNZBkwMoU0kaMRh33vcooJiEg80
- FiiyKAC4gKP7hfn2XfeYrk3BnsEJkgfE72qigI7rG+08wRNwYWYOW5RGb5t/fFqJnNub3oKpA
- 5nwm2Bmo51egU1g+1DbA5YlWgagFC5UEKaM1BSqlUxlG4pyJBe0romAllwlsrfoT3HIckvd
+X-Provags-ID: V03:K1:vKVgNHzD9e/15iMw1BtPVy3wrst6h2raY71tW9B/eUMUEPLXtGj
+ Piwf/NEHqS0BmlPzXTE4og9LM13s8RybK6FLDVYk3GmX+qNhEXRM/9XXjuew5AdWXOPkcmw
+ CapERNtEPELwAgfkxrY3wyBR1uqXj0eyD9yHwm9yYH6y9OpP3FTzPoG2ih2SBuwnMpt+COf
+ JdQUtq5zIC3VwF6/9P/BQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KEs2x48cAp8=:njexmhjpZ1XjCtqB7qG5Fq
+ z1/BK4hi3AhgfG5RR182XalG9H7bOR6w5BAnsCejqbSXKa+oAiw0NYLvNoNJcC2MxVFEQhruh
+ A8WVtnxRN61uOLXPC69tGM/XPf3gikadGD5sr8gXz+cQ3uffAJqQPi14QakjodDsfrNs7oZqe
+ YZ2nFpUPjcmlg8vJW1WNriIaM+XT2HiXebouYSuO+FzQ9f1zgX1ztM1E7WxGGyLNeNQMWihmo
+ CEp7hd6hVKnIadu5IaebNppzrfn+Dsq2Ropf4t8h5sSS41s9JFt0Oh1VUMNKWdx5ANwJnq6c6
+ 5FgeXS2/fnaYSdw+qJV1l8qt45/tZC8Qv2ZtFLAx2wgNDOpW8kdxZe1GPO5wlqVzCvq3kuvfc
+ fQvVist1aBewkl5ZyHiQZrK5lGDds7U/fQUmoS4XTVhdHMzpy8iKTvbFNCSM8dCaThbBnISN5
+ xj8zxwRBzuxCIIq47eJOM4F0mRDp8nUsCYXW44wzFNMvGChxolH45zDM5OkFXo+pwmcvTgKXk
+ rBYaySUNOgY8fx20PIrIFJ5j10dpMPCpy9axdfY+rATHkIqEdkak89SdUFHY0wjytSpSRu+0d
+ 8moCIkKWiniK95d7IngoL6OGfGJqskU0UZdCx1NeEcyUPZFnbtjDtiW81HcNRLNa72wlb4zYR
+ TbFlXhghJf+lGEHmZUXuVwALdgOt5TIcEQz7/l6fW5UGb03ca2h5twh5LhmleQBhDGxi5x8i+
+ zKec+50BNLI2FdMLEGnzqRJvRZbikKKNcGmM1Tv8bLyMZY7t3KNuEynBIIaRGAPNNFMpRhec3
+ a1fq0FFCo1HDHVkS2BgUucqhlEuJLK+hfDBnzGx22iruk1QQU5eajoGzxTCTo9MQ03laydu
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,22 +102,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 09:08:49 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 10:20:28 -0000
 
-Le 13/03/2020 à 05:52, Mansour Ahmadi a écrit :
-> Hi
+Le 13/03/2020 à 10:08, Laurent Vivier a écrit :
+> Le 13/03/2020 à 05:52, Mansour Ahmadi a écrit :
+>> Hi
+>>
+>> In the case of badframe, user struct is not unlocked here and may lead
+>> to deadlock:
+>>
+>> https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/m68k/signal.c#L380
 > 
-> In the case of badframe, user struct is not unlocked here and may lead
-> to deadlock:
+> badframe is called if lock fails, so no need to unlock.
 > 
-> https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/m68k/signal.c#L380
+>> In similar case, it in unlocked correctly:
+>> https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/sh4/signal.c#L303
 
-badframe is called if lock fails, so no need to unlock.
+In fact, this case is a little bit different and wrong but to fix that
+the solution is to set frame to NULL when it is declared:
 
-> In similar case, it in unlocked correctly:
-> https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/sh4/signal.c#L303
+linux-user/qemu.h:
 
-ditto
+* Unlock an area of guest memory.  The first LEN bytes must be
+   flushed back to guest memory. host_ptr = NULL is explicitly
+   allowed and does nothing. */
+static inline void unlock_user(void *host_ptr, abi_ulong guest_addr,
+                               long len)
+
+
+like for linux-user/aarch64/signal.c:
+
+long do_rt_sigreturn(CPUARMState *env)
+{
+    struct target_rt_sigframe *frame = NULL;
+...
+
+We have several targets with the same problem.
 
 Thanks,
 Laurent
