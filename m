@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCs6r-0007KS-IJ
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 17:44:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42994)
+	id 1jCs80-0008MY-53
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 17:46:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43890)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jCs6o-0007HB-RV
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:44:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jCs7v-0008Lt-Sn
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:45:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jCs6n-00074E-NA
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:44:46 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:34137)
+ (envelope-from <laurent@vivier.eu>) id 1jCs7u-0005RD-Sr
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:45:55 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:46745)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jCs6k-0006mt-Sy; Fri, 13 Mar 2020 17:44:43 -0400
+ id 1jCs7u-0005Nw-Iz; Fri, 13 Mar 2020 17:45:54 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mgvn9-1jovXU49dd-00hKdW; Fri, 13 Mar 2020 22:44:30 +0100
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MEF87-1j4rFa439B-00ACzN; Fri, 13 Mar 2020 22:45:52 +0100
 Subject: Re: [PATCH] linux-user: Update TASK_UNMAPPED_BASE for aarch64
 To: Lirong Yuan <yuanzi@google.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, riku.voipio@iki.fi, scw@google.com, jkz@google.com
@@ -62,8 +62,8 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c0ec754a-9a74-fe2f-fc7f-3e9b2a405d51@vivier.eu>
-Date: Fri, 13 Mar 2020 22:44:27 +0100
+Message-ID: <d7185952-521e-8ad5-30fb-cea86e356e5e@vivier.eu>
+Date: Fri, 13 Mar 2020 22:45:50 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
@@ -71,23 +71,23 @@ In-Reply-To: <20200313002813.3857-1-yuanzi@google.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ftXUeNe4XgCE+YIKqpVgE9eIsFw8v8wVm53Wo+yLHTaaD9CBCmg
- 92pPZkzlJ2jUEt+LtR3PtV8yQfhZZR220Ozphwq/W1NsELz6I7QdJ3jEtUrX5fWNLq3huMR
- 6VXk1aXMtqLZRCinFsCy5dimdxvD864WGVgt3LKLdXmXsZccg/5p3U6rJdb1VyrtkTaeC+c
- O4N34RDMTY7TrZFczEKTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:U2nMj/ss10c=:AcNmNGrKoJPRLCBdTpCkAa
- ufaz6cytcnk7Ll10mKXEitpYetHp7OYPUSXI8IpGuxBOSdCReVv4FZktj7CFxhTitGCGREAP2
- 0BoKu40vHmIWYq/zq1vP7GfdstJx2x2v5oeAVJTbtRSNrxTpLiWE3h57jEE2oc5h1MBPJRJmc
- 9wj5jXZX3ISS5QshnjtDFTPlFW11zfwEsAxF4LD8Hz8BnRQZ5KaL0ygYDgz77HyHpppC/rSIr
- jNaTxIGITKoRV0fI5V12XxBSMB3tYjl2DeUYtzwOErkljsqJVQHO9pLBygNTThsm31dc/JEsl
- xc84MJrI+M1j2QLw41dDBPHfmnKshbySjugJ6fcfbqh4CnOlPDVIIgx0n7NrdT2gj6kkHhWyw
- OM4n1cInBbMjJmR7YYyccI5YQlgNTpA3QPLFgLdJ0qLPkTUy9FUwhlZdPRfboh+tB95N8IxhJ
- xZPEGnPRa27LFgpR0trd0Rdu+KzRa9ZRG3t5uDjjmmL44QPRshobSU9taUL8kGv0jmPNz9UCE
- y8VcjazHYUs+I5MBgVFwwW7tucnNcJxRQPBgKlElUZWV22sV2M4BV89ZWJo6cliXlOC/UqaxL
- lXHQDDXkIzlg9wDHibjbws2u6ua76CfPUNeFZnX2zh0z7f+BVNlDQGawUNCb4EdqOgm6JyJe7
- SSLnPj+0mVwJ/SPfjIDa4TtqNigSXg1DqulbhAp8aBJNfTLYYbAJ39ogSnnjIR5si3tnvLRsz
- E0Zcv7oNIHHm+mPLOI5HJojqz4bMRNvWEWUyGTX+fIBcwKuCPGWrhGZatoeRmgPDjpk5rwpYH
- M+pk8goHmfZ+ZD8UqWemIjIMhvUQmKqS/IzBmG3Ue9jYrq62xj3Bh8ZrZs7aSXcYtybpp0p
+X-Provags-ID: V03:K1:p3qyssUE262D1N/TH4soxr7mLMIbbR+9vcS40iwkqGM9FLgern7
+ tS1Vj5a0HGqNRHwfFdC35AfWPGfxvT4fDvrdM4CPodGHrdC5RikZiQ2gmcqyNmiTFxVk8ET
+ ceJbzKRv739AjudctTHokHRYw6DIqQDqs7XI5ldnqjIDJcrwrfY1INOxy+zvRSQ/tV9kJ1C
+ QOcBV9cJazJ/CBT23b8cg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7+UmUg2AKMA=:ugVBjlQS2W27BFVQ3Rt7dY
+ y1tQw9BNzYE9woNgwpmUT1NP6GCs7SaSWqVKeG4iV5a71SKKv6IH+eJS7ER/2LG/K3TC6znYl
+ VRFITfsIDPEQmT1nLLJmkDqjwmdoZTGFMcxPVlKX9tWDbAPvD8G31QAQX3CQeVk7PE37qmecQ
+ qHUHImY/fDiVbvrOSzB6fccVGh2PriGeSZNN3OQFTcPkXnShEVejXeFG9Pr3wZ1quhzlJ1DaQ
+ 4k9gEFbcJTib0WJfP/Mrgo0G6G/m/vkCSjqhOk1iHlAFMD2cv1EfaySzGeA4V90415kNL7kbO
+ Hiu76qgM8PIweoPQIL9DLzWfdkTGopocOiCR/CuPe41yewJXaVipCYse8UyNPrZuFlU0LlDfR
+ kea/1Vlo+V5XJMHokePNMwaayWv86X2M7AESRYDiFYOwjYW5hcSjDg75iIgtft2JDn+Fey0uE
+ 7YFexdk/oUCTu3nF+PUCJdqQ1V5G5vNv9bksNzzWoVOhh6uYXfrSAqqjEVZmkiPdS6EWOb8/S
+ CjImgUjlJUnVVuqa4BD8gdlz4lgpukA4sob8Yn30AmOb9rtw+m6KV0GMPjOwYiEuuf65RIeg4
+ rG8TyFeHRHvsuXNDhkgoALd/1Jwv6UbNV77FvUfNZXzKtpcvS7YF0TxfhWJy5VR/gx525i4UP
+ 50DAk4Ilk5RM6ozKe2CAWldqI0NyvvWbEoWE0nbHuI0+yAfSBBnB1bO0VCf9oMCYXpVT6RRR4
+ E1All2jIpmICCxnUhZHG/IIGEIwRmhJcH8ZqYlfm8ZGDhx/4kIPxf3ZXjWS+GWrtsSDiUEWlX
+ aPjhZb85mAnOAnGD0SbLJ3Q/KlG3fimdTFHzVH5/AQwb25CC4EfkyU+lC5k1UGUlR59kzVi
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
@@ -101,7 +101,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 21:44:48 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 21:45:57 -0000
 
 Le 13/03/2020 à 01:28, Lirong Yuan a écrit :
 > This change updates TASK_UNMAPPED_BASE (the base address for guest programs) for aarch64. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
@@ -130,5 +130,8 @@ Le 13/03/2020 à 01:28, Lirong Yuan a écrit :
 >  #endif
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my linux-user branch.
+
+Thanks,
+Laurent
 
