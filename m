@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCjQd-0001kr-Ks
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 08:28:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59538)
+	id 1jCjVB-0006Ho-SW
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 08:33:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35416)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjQb-0001hN-2L
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:28:38 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjV9-0006GD-Vc
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:33:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjQZ-0007qg-Qz
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:28:36 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2458 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjV8-00084P-V6
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:33:19 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:39488 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jCjQW-0007RI-OA; Fri, 13 Mar 2020 08:28:33 -0400
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id D6D892A0FBBEADF3A927;
- Fri, 13 Mar 2020 20:28:27 +0800 (CST)
-Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
- DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 13 Mar 2020 20:28:27 +0800
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
- dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0439.000;
- Fri, 13 Mar 2020 20:28:17 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Jason Wang <jasowang@redhat.com>, Peter
- Chubb <peter.chubb@nicta.com.au>
-Subject: RE: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-Thread-Topic: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in
- imx_enet_write()
-Thread-Index: AQHV+ObPtRtUe3LsBUSeORYMttecbahF3cmAgACVqvA=
-Date: Fri, 13 Mar 2020 12:28:17 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B68C891@dggemm511-mbx.china.huawei.com>
-References: <20200313032327.7008-1-kuhn.chenqun@huawei.com>
- <CAFEAcA9mOppVAYgP4LJeuSBgiaYN16H+JHbKr7OTFvjbvD-3wA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9mOppVAYgP4LJeuSBgiaYN16H+JHbKr7OTFvjbvD-3wA@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ id 1jCjV6-0007ru-Ct; Fri, 13 Mar 2020 08:33:16 -0400
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 43E7045E502A98DD8788;
+ Fri, 13 Mar 2020 20:33:08 +0800 (CST)
+Received: from huawei.com (10.133.205.93) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Fri, 13 Mar 2020
+ 20:32:58 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, Peter Chubb
+ <peter.chubb@nicta.com.au>
+Subject: [PATCH v4] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+Date: Fri, 13 Mar 2020 20:32:42 +0800
+Message-ID: <20200313123242.13236-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.187
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,61 +47,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 12:28:38 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 12:33:21 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUGV0ZXIgTWF5ZGVsbCBbbWFpbHRv
-OnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj5TZW50OiBGcmlkYXksIE1hcmNoIDEzLCAyMDIw
-IDc6MzEgUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0K
-PkNjOiBRRU1VIERldmVsb3BlcnMgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47IFFFTVUgVHJpdmlh
-bCA8cWVtdS0NCj50cml2aWFsQG5vbmdudS5vcmc+OyBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFu
-Z2hhaWxpYW5nQGh1YXdlaS5jb20+Ow0KPkV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWku
-Y29tPjsgSmFzb24gV2FuZw0KPjxqYXNvd2FuZ0ByZWRoYXQuY29tPjsgUGV0ZXIgQ2h1YmIgPHBl
-dGVyLmNodWJiQG5pY3RhLmNvbS5hdT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYzXSBody9uZXQv
-aW14X2ZlYzogd3JpdGUgVEdTUiBhbmQgVENTUjMgaW4NCj5pbXhfZW5ldF93cml0ZSgpDQo+DQo+
-T24gRnJpLCAxMyBNYXIgMjAyMCBhdCAwMzoyMywgQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3
-ZWkuY29tPiB3cm90ZToNCj4+DQo+PiBUaGUgY3VycmVudCBjb2RlIGNhdXNlcyBjbGFuZyBzdGF0
-aWMgY29kZSBhbmFseXplciBnZW5lcmF0ZSB3YXJuaW5nOg0KPj4gaHcvbmV0L2lteF9mZWMuYzo4
-NTg6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPj4g
-ICAgICAgICB2YWx1ZSA9IHZhbHVlICYgMHgwMDAwMDAwZjsNCj4+ICAgICAgICAgXiAgICAgICB+
-fn5+fn5+fn5+fn5+fn5+fn4NCj4+IGh3L25ldC9pbXhfZmVjLmM6ODY0Ojk6IHdhcm5pbmc6IFZh
-bHVlIHN0b3JlZCB0byAndmFsdWUnIGlzIG5ldmVyIHJlYWQNCj4+ICAgICAgICAgdmFsdWUgPSB2
-YWx1ZSAmIDB4MDAwMDAwZmQ7DQo+PiAgICAgICAgIF4gICAgICAgfn5+fn5+fn5+fn5+fn5+fn5+
-DQo+Pg0KPj4gQWNjb3JkaW5nIHRvIHRoZSBkZWZpbml0aW9uIG9mIHRoZSBmdW5jdGlvbiwgdGhl
-IHR3byDigJx2YWx1ZeKAnQ0KPj4gYXNzaWdubWVudHMgIHNob3VsZCBiZSB3cml0dGVuIHRvIHJl
-Z2lzdGVycy4NCj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1
-YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdl
-aS5jb20+DQo+PiAtLS0NCj4+IENjOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFy
-by5vcmc+DQo+PiBDYzogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT4NCj4+IENjOiBQ
-ZXRlciBDaHViYiA8cGV0ZXIuY2h1YmJAbmljdGEuY29tLmF1Pg0KPj4NCj4+IHYxLT52MjoNCj4+
-ICAgVGhlIHJlZ2lzdGVyICdFTkVUX1RHU1InIHdyaXRlLTEtdG8tY2xlYXIgdGltZXIgZmxhZy4N
-Cj4+ICAgVGhlIHJlZ2lzdGVyICdFTkVUX1RDU1JuJyA3Yml0KFRGKSB3cml0ZS0xLXRvLWNsZWFy
-IHRpbWVyIGZsYWcuDQo+Pg0KPj4gdjItPnYzOg0KPj4gICBPcHRpbWl6ZSBjb2RlIHN0eWxlLCBi
-YXNlZCBvbiBkaXNjdXNzaW9ucyB3aXRoIFBldGVyLg0KPj4gLS0tDQo+PiAgaHcvbmV0L2lteF9m
-ZWMuYyB8IDkgKysrKysrLS0tDQo+PiAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwg
-MyBkZWxldGlvbnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvaHcvbmV0L2lteF9mZWMuYyBiL2h3
-L25ldC9pbXhfZmVjLmMgaW5kZXgNCj4+IDZhMTI0YTE1NGEuLjM1NDc5NzU3MTAgMTAwNjQ0DQo+
-PiAtLS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+PiArKysgYi9ody9uZXQvaW14X2ZlYy5jDQo+PiBA
-QCAtODU0LDE0ICs4NTQsMTcgQEAgc3RhdGljIHZvaWQgaW14X2VuZXRfd3JpdGUoSU1YRkVDU3Rh
-dGUgKnMsDQo+dWludDMyX3QgaW5kZXgsIHVpbnQzMl90IHZhbHVlKQ0KPj4gICAgICAgICAgcy0+
-cmVnc1tpbmRleF0gPSB2YWx1ZSAmIDB4MDAwMDdmN2Y7DQo+PiAgICAgICAgICBicmVhazsNCj4+
-ICAgICAgY2FzZSBFTkVUX1RHU1I6DQo+PiAtICAgICAgICAvKiBpbXBsZW1lbnQgY2xlYXIgdGlt
-ZXIgZmxhZyAqLw0KPj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+PiAr
-ICAgICAgICAvKiBpbXBsZW1lbnQgY2xlYXIgdGltZXIgZmxhZywgMC0zIGJpdHMgVzFDLCByZXNl
-cnZlZCBiaXRzIHdyaXRlIHplcm8gKi8NCj4+ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdICY9IH4o
-dmFsdWUgJiAweDAwMDAwMDBmKSAmIDB4MDAwMDAwMGY7DQo+DQo+SSB0aGluayBJIG11c3QgaGF2
-ZSBtaXN1bmRlcnN0b29kIHdoYXQgeW91IHdlcmUgc3VnZ2VzdGluZyBpbiB5b3VyIHByZXZpb3Vz
-DQo+cXVlc3Rpb24uDQo+VGhlIGZpbmFsICYgd2l0aCAweDAwMDAwMDBmIGhlcmUgaXMgdW5uZWNl
-c3NhcnksIGJlY2F1c2UgdGhvc2UgYml0cyBhcmUNCj5hbHdheXMgMCBpbiBzLT5yZWdzW2luZGV4
-XSBhbnl3YXkuDQo+DQo+PiAgICAgICAgICBicmVhazsNCj4+ICAgICAgY2FzZSBFTkVUX1RDU1Iw
-Og0KPj4gICAgICBjYXNlIEVORVRfVENTUjE6DQo+PiAgICAgIGNhc2UgRU5FVF9UQ1NSMjoNCj4+
-ICAgICAgY2FzZSBFTkVUX1RDU1IzOg0KPj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAw
-MDAwZmQ7DQo+PiArICAgICAgICAvKiA3IGJpdHMgVzFDLCByZXNlcnZlZCBiaXRzIHdyaXRlIHpl
-cm8gKi8NCj4+ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdICY9IH4odmFsdWUgJiAweDAwMDAwMDgw
-KSAmIDB4MDAwMDAwZmY7DQo+DQo+U2ltaWxhcmx5IGhlcmUuDQo+DQo+PiArICAgICAgICBzLT5y
-ZWdzW2luZGV4XSAmPSB+MHgwMDAwMDA3ZDsgLyogd3JpdGFibGUgZmllbGRzICovDQo+PiArICAg
-ICAgICBzLT5yZWdzW2luZGV4XSB8PSAodmFsdWUgJiAweDAwMDAwMDdkKTsNCj4+ICAgICAgICAg
-IGJyZWFrOw0KPj4gICAgICBjYXNlIEVORVRfVENDUjA6DQo+PiAgICAgIGNhc2UgRU5FVF9UQ0NS
-MToNCj4NCj5TaG9ydCBhbnN3ZXI6IG15IHJlY29tbWVuZGF0aW9uIGlzIHRvIHVzZSB0aGUgZXhw
-cmVzc2lvbnMgSSByZWNvbW1lbmRlZA0KPnRoYXQgeW91IHVzZS4uLg0KDQpBbGwgcmlnaHQsICBJ
-IGNoYW5nZSBpdCBsYXRlci4NCg0KVGhhbmtzLg0K
+The current code causes clang static code analyzer generate warning:
+hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
+        value =3D value & 0x0000000f;
+        ^       ~~~~~~~~~~~~~~~~~~
+hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
+        value =3D value & 0x000000fd;
+        ^       ~~~~~~~~~~~~~~~~~~
+
+According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
+=9D assignments
+ should be written to registers.
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>
+Cc: Peter Chubb <peter.chubb@nicta.com.au>
+
+v1->v2:
+  The register 'ENET_TGSR' write-1-to-clear timer flag.
+  The register 'ENET_TCSRn' 7bit(TF) write-1-to-clear timer flag.
+
+v2->v3:
+  Optimize code style, based on discussions with Peter.
+
+v3->v4:
+  Delete reserved bits write zero(Base on Peter's comments).
+---
+ hw/net/imx_fec.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 6a124a154a..5c145a8197 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -855,13 +855,15 @@ static void imx_enet_write(IMXFECState *s, uint32_t=
+ index, uint32_t value)
+         break;
+     case ENET_TGSR:
+         /* implement clear timer flag */
+-        value =3D value & 0x0000000f;
++        s->regs[index] &=3D ~(value & 0x0000000f); /* all bits W1C */
+         break;
+     case ENET_TCSR0:
+     case ENET_TCSR1:
+     case ENET_TCSR2:
+     case ENET_TCSR3:
+-        value =3D value & 0x000000fd;
++        s->regs[index] &=3D ~(value & 0x00000080); /* W1C bits */
++        s->regs[index] &=3D ~0x0000007d; /* writable fields */
++        s->regs[index] |=3D (value & 0x0000007d);
+         break;
+     case ENET_TCCR0:
+     case ENET_TCCR1:
+--=20
+2.23.0
+
+
 
