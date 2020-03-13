@@ -1,65 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCiX2-0000bj-70
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 07:31:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35627)
+	id 1jCjQd-0001kr-Ks
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 08:28:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59538)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jCiWw-0000bM-W1
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 07:31:08 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjQb-0001hN-2L
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:28:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jCiWv-0002vC-SU
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 07:31:06 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39567)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jCiWv-0002p9-N8
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 07:31:05 -0400
-Received: by mail-ot1-x341.google.com with SMTP id a9so9696053otl.6
- for <qemu-trivial@nongnu.org>; Fri, 13 Mar 2020 04:31:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=if/r4vhAG7a4GtEP5IdX/8TjTnZVSBtb22Vph6IFxds=;
- b=RVxZbbhXqIb/UUD71GKEx0l4ixmcZhVCjXZs9f6Z8Nloai3TcaSitIBzOWGALDXAqV
- Q5ccBG3l6h2/LwLLVNAy0bANYqLrWvM2xD7nrioBAQf0qwD2eEt26P10Muj+eMdjkddV
- 31xzu88veHngwrPj08T9MdcihS2RXq6GHRzYzt0y7/8dXzAISxPiYozoA9CIGApleMJY
- vll82BAhe2scJJoG0NbWIvZLpsdthe+bki7TAtF7V3w5x/E4T1UKuJERcfBPrpSDjOa9
- UE5mAIVDw1KxkaMwKB9kOmyPQc4ew3Zs66CEVM5rqstf0Hwv0KS6TPmSd05L39qneuEX
- PRrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=if/r4vhAG7a4GtEP5IdX/8TjTnZVSBtb22Vph6IFxds=;
- b=KJ89bivDNk6ojKFLU+riHk+3ufZoHEnoS2KRV9hsn2WOfs0ebcs0uNUW6LUaPuumcj
- sEVKvM+E92OTS7JO84rtAmgY7TJEISBxGsRPqUp/GoO6sWocka1M1kXhHlRAIm/JycjV
- EkqFvZ7lSEX/GkqQzGTjBGmwB1ridYNN4LfyQlNTi6nqN8NLkJUcJXvQh8XgdB0n1BJR
- i89Mn7DvD2k0Vin7nM3svX8zQIbtZeQl97XivT2CYNkShJxb4ImmNzl5ytjZ74n03E3Y
- y7x1matpJIB95C5mfx1BomF7L6oqX7arC+5zKyRNUQj9xZx8jICPQXqerBLiiGtCrFoR
- pSJA==
-X-Gm-Message-State: ANhLgQ0+YvcsW9dryWpeim1XE7izeYso1vpaOawwtu9DXUNcdH28mZPs
- aTmx4pThg0QZi9jqhxJ0T6PUi8CRV0FV9kvp/WEYBDHGNqA=
-X-Google-Smtp-Source: ADFU+vu5/FKfSmmbkyhf0WACghwf/J7mf02Wjz4MdB/8YCHIakVrrTagmUpmP6kU+R/3XHbQzNwcls/sF+E1rP1g2UI=
-X-Received: by 2002:a9d:1d43:: with SMTP id m61mr1574284otm.91.1584099062575; 
- Fri, 13 Mar 2020 04:31:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200313032327.7008-1-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200313032327.7008-1-kuhn.chenqun@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2020 11:30:51 +0000
-Message-ID: <CAFEAcA9mOppVAYgP4LJeuSBgiaYN16H+JHbKr7OTFvjbvD-3wA@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjQZ-0007qg-Qz
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:28:36 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2458 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jCjQW-0007RI-OA; Fri, 13 Mar 2020 08:28:33 -0400
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id D6D892A0FBBEADF3A927;
+ Fri, 13 Mar 2020 20:28:27 +0800 (CST)
+Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 13 Mar 2020 20:28:27 +0800
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.115]) by
+ dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0439.000;
+ Fri, 13 Mar 2020 20:28:17 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Jason Wang <jasowang@redhat.com>, Peter
+ Chubb <peter.chubb@nicta.com.au>
+Subject: RE: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in
  imx_enet_write()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, 
- Jason Wang <jasowang@redhat.com>, Peter Chubb <peter.chubb@nicta.com.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+Thread-Topic: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+Thread-Index: AQHV+ObPtRtUe3LsBUSeORYMttecbahF3cmAgACVqvA=
+Date: Fri, 13 Mar 2020 12:28:17 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B68C891@dggemm511-mbx.china.huawei.com>
+References: <20200313032327.7008-1-kuhn.chenqun@huawei.com>
+ <CAFEAcA9mOppVAYgP4LJeuSBgiaYN16H+JHbKr7OTFvjbvD-3wA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9mOppVAYgP4LJeuSBgiaYN16H+JHbKr7OTFvjbvD-3wA@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,79 +60,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 11:31:08 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 12:28:38 -0000
 
-On Fri, 13 Mar 2020 at 03:23, Chen Qun <kuhn.chenqun@huawei.com> wrote:
->
-> The current code causes clang static code analyzer generate warning:
-> hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
->         value =3D value & 0x0000000f;
->         ^       ~~~~~~~~~~~~~~~~~~
-> hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
->         value =3D value & 0x000000fd;
->         ^       ~~~~~~~~~~~~~~~~~~
->
-> According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
-=9D assignments
->  should be written to registers.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: Peter Chubb <peter.chubb@nicta.com.au>
->
-> v1->v2:
->   The register 'ENET_TGSR' write-1-to-clear timer flag.
->   The register 'ENET_TCSRn' 7bit(TF) write-1-to-clear timer flag.
->
-> v2->v3:
->   Optimize code style, based on discussions with Peter.
-> ---
->  hw/net/imx_fec.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index 6a124a154a..3547975710 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -854,14 +854,17 @@ static void imx_enet_write(IMXFECState *s, uint32_t=
- index, uint32_t value)
->          s->regs[index] =3D value & 0x00007f7f;
->          break;
->      case ENET_TGSR:
-> -        /* implement clear timer flag */
-> -        value =3D value & 0x0000000f;
-> +        /* implement clear timer flag, 0-3 bits W1C, reserved bits write=
- zero */
-> +        s->regs[index] &=3D ~(value & 0x0000000f) & 0x0000000f;
-
-I think I must have misunderstood what you were
-suggesting in your previous question.
-The final & with 0x0000000f here is unnecessary, because
-those bits are always 0 in s->regs[index] anyway.
-
->          break;
->      case ENET_TCSR0:
->      case ENET_TCSR1:
->      case ENET_TCSR2:
->      case ENET_TCSR3:
-> -        value =3D value & 0x000000fd;
-> +        /* 7 bits W1C, reserved bits write zero */
-> +        s->regs[index] &=3D ~(value & 0x00000080) & 0x000000ff;
-
-Similarly here.
-
-> +        s->regs[index] &=3D ~0x0000007d; /* writable fields */
-> +        s->regs[index] |=3D (value & 0x0000007d);
->          break;
->      case ENET_TCCR0:
->      case ENET_TCCR1:
-
-Short answer: my recommendation is to use the expressions
-I recommended that you use...
-
-thanks
--- PMM
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUGV0ZXIgTWF5ZGVsbCBbbWFpbHRv
+OnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj5TZW50OiBGcmlkYXksIE1hcmNoIDEzLCAyMDIw
+IDc6MzEgUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0K
+PkNjOiBRRU1VIERldmVsb3BlcnMgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47IFFFTVUgVHJpdmlh
+bCA8cWVtdS0NCj50cml2aWFsQG5vbmdudS5vcmc+OyBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFu
+Z2hhaWxpYW5nQGh1YXdlaS5jb20+Ow0KPkV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWku
+Y29tPjsgSmFzb24gV2FuZw0KPjxqYXNvd2FuZ0ByZWRoYXQuY29tPjsgUGV0ZXIgQ2h1YmIgPHBl
+dGVyLmNodWJiQG5pY3RhLmNvbS5hdT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYzXSBody9uZXQv
+aW14X2ZlYzogd3JpdGUgVEdTUiBhbmQgVENTUjMgaW4NCj5pbXhfZW5ldF93cml0ZSgpDQo+DQo+
+T24gRnJpLCAxMyBNYXIgMjAyMCBhdCAwMzoyMywgQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3
+ZWkuY29tPiB3cm90ZToNCj4+DQo+PiBUaGUgY3VycmVudCBjb2RlIGNhdXNlcyBjbGFuZyBzdGF0
+aWMgY29kZSBhbmFseXplciBnZW5lcmF0ZSB3YXJuaW5nOg0KPj4gaHcvbmV0L2lteF9mZWMuYzo4
+NTg6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPj4g
+ICAgICAgICB2YWx1ZSA9IHZhbHVlICYgMHgwMDAwMDAwZjsNCj4+ICAgICAgICAgXiAgICAgICB+
+fn5+fn5+fn5+fn5+fn5+fn4NCj4+IGh3L25ldC9pbXhfZmVjLmM6ODY0Ojk6IHdhcm5pbmc6IFZh
+bHVlIHN0b3JlZCB0byAndmFsdWUnIGlzIG5ldmVyIHJlYWQNCj4+ICAgICAgICAgdmFsdWUgPSB2
+YWx1ZSAmIDB4MDAwMDAwZmQ7DQo+PiAgICAgICAgIF4gICAgICAgfn5+fn5+fn5+fn5+fn5+fn5+
+DQo+Pg0KPj4gQWNjb3JkaW5nIHRvIHRoZSBkZWZpbml0aW9uIG9mIHRoZSBmdW5jdGlvbiwgdGhl
+IHR3byDigJx2YWx1ZeKAnQ0KPj4gYXNzaWdubWVudHMgIHNob3VsZCBiZSB3cml0dGVuIHRvIHJl
+Z2lzdGVycy4NCj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1
+YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdl
+aS5jb20+DQo+PiAtLS0NCj4+IENjOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFy
+by5vcmc+DQo+PiBDYzogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT4NCj4+IENjOiBQ
+ZXRlciBDaHViYiA8cGV0ZXIuY2h1YmJAbmljdGEuY29tLmF1Pg0KPj4NCj4+IHYxLT52MjoNCj4+
+ICAgVGhlIHJlZ2lzdGVyICdFTkVUX1RHU1InIHdyaXRlLTEtdG8tY2xlYXIgdGltZXIgZmxhZy4N
+Cj4+ICAgVGhlIHJlZ2lzdGVyICdFTkVUX1RDU1JuJyA3Yml0KFRGKSB3cml0ZS0xLXRvLWNsZWFy
+IHRpbWVyIGZsYWcuDQo+Pg0KPj4gdjItPnYzOg0KPj4gICBPcHRpbWl6ZSBjb2RlIHN0eWxlLCBi
+YXNlZCBvbiBkaXNjdXNzaW9ucyB3aXRoIFBldGVyLg0KPj4gLS0tDQo+PiAgaHcvbmV0L2lteF9m
+ZWMuYyB8IDkgKysrKysrLS0tDQo+PiAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwg
+MyBkZWxldGlvbnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvaHcvbmV0L2lteF9mZWMuYyBiL2h3
+L25ldC9pbXhfZmVjLmMgaW5kZXgNCj4+IDZhMTI0YTE1NGEuLjM1NDc5NzU3MTAgMTAwNjQ0DQo+
+PiAtLS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+PiArKysgYi9ody9uZXQvaW14X2ZlYy5jDQo+PiBA
+QCAtODU0LDE0ICs4NTQsMTcgQEAgc3RhdGljIHZvaWQgaW14X2VuZXRfd3JpdGUoSU1YRkVDU3Rh
+dGUgKnMsDQo+dWludDMyX3QgaW5kZXgsIHVpbnQzMl90IHZhbHVlKQ0KPj4gICAgICAgICAgcy0+
+cmVnc1tpbmRleF0gPSB2YWx1ZSAmIDB4MDAwMDdmN2Y7DQo+PiAgICAgICAgICBicmVhazsNCj4+
+ICAgICAgY2FzZSBFTkVUX1RHU1I6DQo+PiAtICAgICAgICAvKiBpbXBsZW1lbnQgY2xlYXIgdGlt
+ZXIgZmxhZyAqLw0KPj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+PiAr
+ICAgICAgICAvKiBpbXBsZW1lbnQgY2xlYXIgdGltZXIgZmxhZywgMC0zIGJpdHMgVzFDLCByZXNl
+cnZlZCBiaXRzIHdyaXRlIHplcm8gKi8NCj4+ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdICY9IH4o
+dmFsdWUgJiAweDAwMDAwMDBmKSAmIDB4MDAwMDAwMGY7DQo+DQo+SSB0aGluayBJIG11c3QgaGF2
+ZSBtaXN1bmRlcnN0b29kIHdoYXQgeW91IHdlcmUgc3VnZ2VzdGluZyBpbiB5b3VyIHByZXZpb3Vz
+DQo+cXVlc3Rpb24uDQo+VGhlIGZpbmFsICYgd2l0aCAweDAwMDAwMDBmIGhlcmUgaXMgdW5uZWNl
+c3NhcnksIGJlY2F1c2UgdGhvc2UgYml0cyBhcmUNCj5hbHdheXMgMCBpbiBzLT5yZWdzW2luZGV4
+XSBhbnl3YXkuDQo+DQo+PiAgICAgICAgICBicmVhazsNCj4+ICAgICAgY2FzZSBFTkVUX1RDU1Iw
+Og0KPj4gICAgICBjYXNlIEVORVRfVENTUjE6DQo+PiAgICAgIGNhc2UgRU5FVF9UQ1NSMjoNCj4+
+ICAgICAgY2FzZSBFTkVUX1RDU1IzOg0KPj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAw
+MDAwZmQ7DQo+PiArICAgICAgICAvKiA3IGJpdHMgVzFDLCByZXNlcnZlZCBiaXRzIHdyaXRlIHpl
+cm8gKi8NCj4+ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdICY9IH4odmFsdWUgJiAweDAwMDAwMDgw
+KSAmIDB4MDAwMDAwZmY7DQo+DQo+U2ltaWxhcmx5IGhlcmUuDQo+DQo+PiArICAgICAgICBzLT5y
+ZWdzW2luZGV4XSAmPSB+MHgwMDAwMDA3ZDsgLyogd3JpdGFibGUgZmllbGRzICovDQo+PiArICAg
+ICAgICBzLT5yZWdzW2luZGV4XSB8PSAodmFsdWUgJiAweDAwMDAwMDdkKTsNCj4+ICAgICAgICAg
+IGJyZWFrOw0KPj4gICAgICBjYXNlIEVORVRfVENDUjA6DQo+PiAgICAgIGNhc2UgRU5FVF9UQ0NS
+MToNCj4NCj5TaG9ydCBhbnN3ZXI6IG15IHJlY29tbWVuZGF0aW9uIGlzIHRvIHVzZSB0aGUgZXhw
+cmVzc2lvbnMgSSByZWNvbW1lbmRlZA0KPnRoYXQgeW91IHVzZS4uLg0KDQpBbGwgcmlnaHQsICBJ
+IGNoYW5nZSBpdCBsYXRlci4NCg0KVGhhbmtzLg0K
 
