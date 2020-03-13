@@ -1,95 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCs80-0008MY-53
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 17:46:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43890)
+	id 1jCu7A-0007Dj-VY
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 19:53:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39974)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jCs7v-0008Lt-Sn
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:45:57 -0400
+ (envelope-from <yuanzi@google.com>) id 1jCu78-0007DC-8x
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 19:53:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jCs7u-0005RD-Sr
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 17:45:55 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:46745)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jCs7u-0005Nw-Iz; Fri, 13 Mar 2020 17:45:54 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MEF87-1j4rFa439B-00ACzN; Fri, 13 Mar 2020 22:45:52 +0100
-Subject: Re: [PATCH] linux-user: Update TASK_UNMAPPED_BASE for aarch64
-To: Lirong Yuan <yuanzi@google.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, riku.voipio@iki.fi, scw@google.com, jkz@google.com
-References: <20200313002813.3857-1-yuanzi@google.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <d7185952-521e-8ad5-30fb-cea86e356e5e@vivier.eu>
-Date: Fri, 13 Mar 2020 22:45:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (envelope-from <yuanzi@google.com>) id 1jCu75-0003K2-T6
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 19:53:14 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43676)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <yuanzi@google.com>) id 1jCu75-0003BX-LF
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 19:53:11 -0400
+Received: by mail-oi1-x242.google.com with SMTP id p125so11332025oif.10
+ for <qemu-trivial@nongnu.org>; Fri, 13 Mar 2020 16:53:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4qgvcBvsvxDXUIWoO/wStgaB8uHC5dmwflQZN278YUQ=;
+ b=bPf3KX4Xydh9j2K9GUYotdqrRqvKfQxy+To3dATfLYUaw2i/c6Q3X2dYavVdfcYYgj
+ 6Jtz0Tq1gQiIZJP4jC5yOSQi7k/WTSyFWnXc2U8JyYVZaQA8vhb7ItwCPY+Z7YBNG+oP
+ e/rZ0PfliAanj4d2ZR2n/X6TE86wqnSbfy+XBEwWGro6tIeUCbnbAAjHq9PY9JuQMtfS
+ TvnOW58ZLlQ0WHPJGP3lLGzmzSdVLEFxQKutghcDbvFuZu9uiJbb83liepH+WQmQ+BfT
+ CGr7q+TlJaEtLCBDYlsm95H8oQxYNsXAMcHwIJlb2I53HCjjRnx0VqJduiNWzeZIiFkS
+ wTiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4qgvcBvsvxDXUIWoO/wStgaB8uHC5dmwflQZN278YUQ=;
+ b=ebwznC2V7Jd6KzlTRS5HDPGYBLtUes9MJf3dqsGZ0sbkZxle5jYQud/D66f6OlXK0G
+ F5Zo+ndxiNEBufgm5F7YZQkRYJx8EEWReEN4xUbvT4tEx3MxOnqrT8B0ZXISHF2sP+lF
+ F5e161SngXrYCMhuxMN4p9yfKTiZAFvgigEhhJ6/tN9tDixx0mnNxMT5WE15Zr1mV0+c
+ CXrQSD//pbItyg7OPH//UvgodXJPaGd2af0NGynjFQ8fB6Jwi5MH+hnXDwWysVfwDFtj
+ DaVZFpF5+xElufWRgjbTad5Wsy+2mKygJu0r0wkDjCfUB/tk16fVa9/50jYGAr3xT+WD
+ GfrQ==
+X-Gm-Message-State: ANhLgQ0fA2HjRDPpGSBCTmqoqiK4ZshiV55RhkUC/lFEuuyy6HJLVIgA
+ 9zFlIi8JTqvho8NmTWDck4fqHaynHe7xOTrzbfS6jQ==
+X-Google-Smtp-Source: ADFU+vv20X3XOYWAK8HLABJQVEO5xWI+eMM4RDKWBqKsyFX4CZQtN+pZZho90suHspwgAQAP1XE1Ku39b6tHhS6Iugg=
+X-Received: by 2002:aca:b4c3:: with SMTP id d186mr8787914oif.131.1584143589805; 
+ Fri, 13 Mar 2020 16:53:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200313002813.3857-1-yuanzi@google.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:p3qyssUE262D1N/TH4soxr7mLMIbbR+9vcS40iwkqGM9FLgern7
- tS1Vj5a0HGqNRHwfFdC35AfWPGfxvT4fDvrdM4CPodGHrdC5RikZiQ2gmcqyNmiTFxVk8ET
- ceJbzKRv739AjudctTHokHRYw6DIqQDqs7XI5ldnqjIDJcrwrfY1INOxy+zvRSQ/tV9kJ1C
- QOcBV9cJazJ/CBT23b8cg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7+UmUg2AKMA=:ugVBjlQS2W27BFVQ3Rt7dY
- y1tQw9BNzYE9woNgwpmUT1NP6GCs7SaSWqVKeG4iV5a71SKKv6IH+eJS7ER/2LG/K3TC6znYl
- VRFITfsIDPEQmT1nLLJmkDqjwmdoZTGFMcxPVlKX9tWDbAPvD8G31QAQX3CQeVk7PE37qmecQ
- qHUHImY/fDiVbvrOSzB6fccVGh2PriGeSZNN3OQFTcPkXnShEVejXeFG9Pr3wZ1quhzlJ1DaQ
- 4k9gEFbcJTib0WJfP/Mrgo0G6G/m/vkCSjqhOk1iHlAFMD2cv1EfaySzGeA4V90415kNL7kbO
- Hiu76qgM8PIweoPQIL9DLzWfdkTGopocOiCR/CuPe41yewJXaVipCYse8UyNPrZuFlU0LlDfR
- kea/1Vlo+V5XJMHokePNMwaayWv86X2M7AESRYDiFYOwjYW5hcSjDg75iIgtft2JDn+Fey0uE
- 7YFexdk/oUCTu3nF+PUCJdqQ1V5G5vNv9bksNzzWoVOhh6uYXfrSAqqjEVZmkiPdS6EWOb8/S
- CjImgUjlJUnVVuqa4BD8gdlz4lgpukA4sob8Yn30AmOb9rtw+m6KV0GMPjOwYiEuuf65RIeg4
- rG8TyFeHRHvsuXNDhkgoALd/1Jwv6UbNV77FvUfNZXzKtpcvS7YF0TxfhWJy5VR/gx525i4UP
- 50DAk4Ilk5RM6ozKe2CAWldqI0NyvvWbEoWE0nbHuI0+yAfSBBnB1bO0VCf9oMCYXpVT6RRR4
- E1All2jIpmICCxnUhZHG/IIGEIwRmhJcH8ZqYlfm8ZGDhx/4kIPxf3ZXjWS+GWrtsSDiUEWlX
- aPjhZb85mAnOAnGD0SbLJ3Q/KlG3fimdTFHzVH5/AQwb25CC4EfkyU+lC5k1UGUlR59kzVi
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
+References: <20200313002813.3857-1-yuanzi@google.com>
+ <d7185952-521e-8ad5-30fb-cea86e356e5e@vivier.eu>
+In-Reply-To: <d7185952-521e-8ad5-30fb-cea86e356e5e@vivier.eu>
+From: Lirong Yuan <yuanzi@google.com>
+Date: Fri, 13 Mar 2020 16:52:58 -0700
+Message-ID: <CADjx4C+BdQGk=zAfO+dFanJoucoWrpENQaGo6_tPVSXi0MuM+A@mail.gmail.com>
+Subject: Re: [PATCH] linux-user: Update TASK_UNMAPPED_BASE for aarch64
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Riku Voipio <riku.voipio@iki.fi>, Shu-Chun Weng <scw@google.com>,
+ Josh Kunz <jkz@google.com>
+Content-Type: multipart/alternative; boundary="000000000000f1ed2805a0c52b14"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,37 +66,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 21:45:57 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 23:53:15 -0000
 
-Le 13/03/2020 à 01:28, Lirong Yuan a écrit :
-> This change updates TASK_UNMAPPED_BASE (the base address for guest programs) for aarch64. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
-> https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
-> 
-> Signed-off-by: Lirong Yuan <yuanzi@google.com>
-> ---
->  linux-user/mmap.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-> index 8685f02e7e..e378033797 100644
-> --- a/linux-user/mmap.c
-> +++ b/linux-user/mmap.c
-> @@ -184,7 +184,11 @@ static int mmap_frag(abi_ulong real_start,
->  }
->  
->  #if HOST_LONG_BITS == 64 && TARGET_ABI_BITS == 64
-> +#ifdef TARGET_AARCH64
-> +# define TASK_UNMAPPED_BASE  0x5500000000
-> +#else
->  # define TASK_UNMAPPED_BASE  (1ul << 38)
-> +#endif
->  #else
->  # define TASK_UNMAPPED_BASE  0x40000000
->  #endif
-> 
+--000000000000f1ed2805a0c52b14
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Applied to my linux-user branch.
+On Fri, Mar 13, 2020 at 2:45 PM Laurent Vivier <laurent@vivier.eu> wrote:
 
-Thanks,
-Laurent
+> Le 13/03/2020 =C3=A0 01:28, Lirong Yuan a =C3=A9crit :
+> > This change updates TASK_UNMAPPED_BASE (the base address for guest
+> programs) for aarch64. It is needed to allow qemu to work with Thread
+> Sanitizer (TSan), which has specific boundary definitions for memory
+> mappings on different platforms:
+> >
+> https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl=
+/tsan_platform.h
+> >
+> > Signed-off-by: Lirong Yuan <yuanzi@google.com>
+> > ---
+> >  linux-user/mmap.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+> > index 8685f02e7e..e378033797 100644
+> > --- a/linux-user/mmap.c
+> > +++ b/linux-user/mmap.c
+> > @@ -184,7 +184,11 @@ static int mmap_frag(abi_ulong real_start,
+> >  }
+> >
+> >  #if HOST_LONG_BITS =3D=3D 64 && TARGET_ABI_BITS =3D=3D 64
+> > +#ifdef TARGET_AARCH64
+> > +# define TASK_UNMAPPED_BASE  0x5500000000
+> > +#else
+> >  # define TASK_UNMAPPED_BASE  (1ul << 38)
+> > +#endif
+> >  #else
+> >  # define TASK_UNMAPPED_BASE  0x40000000
+> >  #endif
+> >
+>
+> Applied to my linux-user branch.
+>
+> Thanks,
+> Laurent
+>
+
+Great, thanks a lot! :)
+
+--000000000000f1ed2805a0c52b14
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Fri, Mar 13, 2020 at 2:45 PM Laurent V=
+ivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Le 13/03/20=
+20 =C3=A0 01:28, Lirong Yuan a =C3=A9crit=C2=A0:<br>
+&gt; This change updates TASK_UNMAPPED_BASE (the base address for guest pro=
+grams) for aarch64. It is needed to allow qemu to work with Thread Sanitize=
+r (TSan), which has specific boundary definitions for memory mappings on di=
+fferent platforms:<br>
+&gt; <a href=3D"https://github.com/llvm/llvm-project/blob/master/compiler-r=
+t/lib/tsan/rtl/tsan_platform.h" rel=3D"noreferrer" target=3D"_blank">https:=
+//github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_pl=
+atform.h</a><br>
+&gt; <br>
+&gt; Signed-off-by: Lirong Yuan &lt;<a href=3D"mailto:yuanzi@google.com" ta=
+rget=3D"_blank">yuanzi@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 linux-user/mmap.c | 4 ++++<br>
+&gt;=C2=A0 1 file changed, 4 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/linux-user/mmap.c b/linux-user/mmap.c<br>
+&gt; index 8685f02e7e..e378033797 100644<br>
+&gt; --- a/linux-user/mmap.c<br>
+&gt; +++ b/linux-user/mmap.c<br>
+&gt; @@ -184,7 +184,11 @@ static int mmap_frag(abi_ulong real_start,<br>
+&gt;=C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #if HOST_LONG_BITS =3D=3D 64 &amp;&amp; TARGET_ABI_BITS =3D=3D 6=
+4<br>
+&gt; +#ifdef TARGET_AARCH64<br>
+&gt; +# define TASK_UNMAPPED_BASE=C2=A0 0x5500000000<br>
+&gt; +#else<br>
+&gt;=C2=A0 # define TASK_UNMAPPED_BASE=C2=A0 (1ul &lt;&lt; 38)<br>
+&gt; +#endif<br>
+&gt;=C2=A0 #else<br>
+&gt;=C2=A0 # define TASK_UNMAPPED_BASE=C2=A0 0x40000000<br>
+&gt;=C2=A0 #endif<br>
+&gt; <br>
+<br>
+Applied to my linux-user branch.<br>
+<br>
+Thanks,<br>
+Laurent<br></blockquote><div><br></div><div>Great, thanks a lot! :)=C2=A0</=
+div></div></div>
+
+--000000000000f1ed2805a0c52b14--
 
