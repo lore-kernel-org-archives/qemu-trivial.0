@@ -1,41 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCjVB-0006Ho-SW
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 08:33:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35416)
+	id 1jClJJ-0001DD-Qf
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 10:29:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52001)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjV9-0006GD-Vc
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:33:20 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jClJG-0001Cc-IR
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 10:29:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCjV8-00084P-V6
- for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 08:33:19 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:39488 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jCjV6-0007ru-Ct; Fri, 13 Mar 2020 08:33:16 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 43E7045E502A98DD8788;
- Fri, 13 Mar 2020 20:33:08 +0800 (CST)
-Received: from huawei.com (10.133.205.93) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Fri, 13 Mar 2020
- 20:32:58 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Peter Maydell
- <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, Peter Chubb
- <peter.chubb@nicta.com.au>
-Subject: [PATCH v4] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-Date: Fri, 13 Mar 2020 20:32:42 +0800
-Message-ID: <20200313123242.13236-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
+ (envelope-from <peter.maydell@linaro.org>) id 1jClJF-00024V-D0
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 10:29:10 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37409)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jClJF-00021o-7M
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 10:29:09 -0400
+Received: by mail-ot1-x343.google.com with SMTP id i12so5006422otp.4
+ for <qemu-trivial@nongnu.org>; Fri, 13 Mar 2020 07:29:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=d7ExToA7ukFgaIlGlPhMKk8Km2pb+rGkei+b6krgOkM=;
+ b=qZyixREPridVpxFGXnekwCA1wEFxdbXDOObBp0di8XzaYvCdGNL1TKjKpcauMuGtdi
+ TFVGwmBfZ4TLQ1N/p+d78CmNwWHwNb2T9D4bsdela98KXb+LhxXqHkGh/Pi8LcEKXMPf
+ d7ZWFOYszeQ1QvD4B72cFWTFU6w9QBksOP2aSR30XtrAF1p83zdlgn5aRbrFIaB20b9/
+ 4RPPoHxpbaHxTGGog4aHeal6/E00BAWkPsboGZC2TQagU7Ah4G8AZnOb932Np83O2fsp
+ 7xwMZ+3jAjfk63pSyREGGPcxgTKZOjJKxZQliFSfxLc0pzfznvdMW2MftDWzyPJDBVD8
+ uUmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=d7ExToA7ukFgaIlGlPhMKk8Km2pb+rGkei+b6krgOkM=;
+ b=aaemXsxXcDA7O3ZqgDfFo6W/0YwDGV16+B8zBLUkd0D/dGeOj0Iz5F2Et524FzEgHO
+ 1qX82ZS/QC5ol59j2C+2zVFd1AC+bhwat6YILCOz5M7mwQsVZ5s+A268SCZ1nbzGh9So
+ 811eMJwNpJd5lKp7uihDW6AGU5Motq01HjUeyh7QRlf3NaAd1pSZBD0YWCV5AQCPT7GY
+ jqyA2JJpS2s6Z5PCklQWmQJAR0beHUEZT7EmHTL5y90Q1UV/EU6ntAUVTvMstwB9dHjC
+ HpE+Dq8Tsf0tLHCe4sXA+s1iGhV5CbJSCgVRwuaUxvAcaB0S2o4c3BdP9NIOYzxFRVZC
+ ogrA==
+X-Gm-Message-State: ANhLgQ1eJKK50yvf6d55fHBfCyuc3xsgF8RRsK3RD6s85JVZizbxJn/V
+ uBoNAzBfl/sBWhiQOjQnuVCPXGl9M161T0XrFMa2Mg==
+X-Google-Smtp-Source: ADFU+vsd8TxBx6Lk8dbWCxWoA5LHQvluGxwglrALxjwp73ZAAqWySSOdVoRlh6Tq5Vq8mHVM+PGMNB2fdOJt8ZCXbhc=
+X-Received: by 2002:a05:6830:19e2:: with SMTP id
+ t2mr10680836ott.97.1584109748226; 
+ Fri, 13 Mar 2020 07:29:08 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200313123242.13236-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200313123242.13236-1-kuhn.chenqun@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Mar 2020 14:28:57 +0000
+Message-ID: <CAFEAcA9kM_=52JT=XyhjDLA3CUSpeKwCB2nhLRrjY+MaBLw1yg@mail.gmail.com>
+Subject: Re: [PATCH v4] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, 
+ Jason Wang <jasowang@redhat.com>, Peter Chubb <peter.chubb@nicta.com.au>
 Content-Type: text/plain; charset="UTF-8"
-X-Originating-IP: [10.133.205.93]
-X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,65 +72,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 12:33:21 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 14:29:11 -0000
 
-The current code causes clang static code analyzer generate warning:
-hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
-        value =3D value & 0x0000000f;
-        ^       ~~~~~~~~~~~~~~~~~~
-hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
-        value =3D value & 0x000000fd;
-        ^       ~~~~~~~~~~~~~~~~~~
-
-According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
+On Fri, 13 Mar 2020 at 12:33, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
+> The current code causes clang static code analyzer generate warning:
+> hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
+>         value =3D value & 0x0000000f;
+>         ^       ~~~~~~~~~~~~~~~~~~
+> hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
+>         value =3D value & 0x000000fd;
+>         ^       ~~~~~~~~~~~~~~~~~~
+>
+> According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
 =9D assignments
- should be written to registers.
-
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: Peter Chubb <peter.chubb@nicta.com.au>
-
-v1->v2:
-  The register 'ENET_TGSR' write-1-to-clear timer flag.
-  The register 'ENET_TCSRn' 7bit(TF) write-1-to-clear timer flag.
-
-v2->v3:
-  Optimize code style, based on discussions with Peter.
-
-v3->v4:
-  Delete reserved bits write zero(Base on Peter's comments).
----
- hw/net/imx_fec.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 6a124a154a..5c145a8197 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -855,13 +855,15 @@ static void imx_enet_write(IMXFECState *s, uint32_t=
- index, uint32_t value)
-         break;
-     case ENET_TGSR:
-         /* implement clear timer flag */
--        value =3D value & 0x0000000f;
-+        s->regs[index] &=3D ~(value & 0x0000000f); /* all bits W1C */
-         break;
-     case ENET_TCSR0:
-     case ENET_TCSR1:
-     case ENET_TCSR2:
-     case ENET_TCSR3:
--        value =3D value & 0x000000fd;
-+        s->regs[index] &=3D ~(value & 0x00000080); /* W1C bits */
-+        s->regs[index] &=3D ~0x0000007d; /* writable fields */
-+        s->regs[index] |=3D (value & 0x0000007d);
-         break;
-     case ENET_TCCR0:
-     case ENET_TCCR1:
---=20
-2.23.0
+>  should be written to registers.
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
 
+Applied to target-arm.next; thanks for working through the code
+review process.
+
+-- PMM
 
