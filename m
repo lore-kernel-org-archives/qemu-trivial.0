@@ -1,41 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jCavY-0004fb-EL
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2020 23:24:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35987)
+	id 1jCcJe-0005qT-BB
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2020 00:52:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33267)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCavW-0004e1-6e
- for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 23:23:59 -0400
+ (envelope-from <mansourweb@gmail.com>) id 1jCcJc-0005q9-Gv
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 00:52:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jCavV-0000q2-6I
- for qemu-trivial@nongnu.org; Thu, 12 Mar 2020 23:23:58 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3282 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jCavS-0000cs-Fa; Thu, 12 Mar 2020 23:23:54 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A2495D93C612C1A163E7;
- Fri, 13 Mar 2020 11:23:47 +0800 (CST)
-Received: from huawei.com (10.133.205.93) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Fri, 13 Mar 2020
- 11:23:39 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Peter Maydell
- <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, Peter Chubb
- <peter.chubb@nicta.com.au>
-Subject: [PATCH v3] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-Date: Fri, 13 Mar 2020 11:23:27 +0800
-Message-ID: <20200313032327.7008-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
+ (envelope-from <mansourweb@gmail.com>) id 1jCcJb-00065K-Ir
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 00:52:56 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236]:41899)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <mansourweb@gmail.com>)
+ id 1jCcJb-00061m-Bc
+ for qemu-trivial@nongnu.org; Fri, 13 Mar 2020 00:52:55 -0400
+Received: by mail-lj1-x236.google.com with SMTP id o10so9037735ljc.8
+ for <qemu-trivial@nongnu.org>; Thu, 12 Mar 2020 21:52:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=WwmgiojUsfIVy1Lf7pSIzWrFwQmd0fXZ6lmVwXUDjgs=;
+ b=bs5X/RX+6kDzrSqlY75NdWvHfmN/zsuNORP70RyJmCpYZBf987YPWXP4CX3KMDKw12
+ 53gWM+YPmmy7zqTXhAe/mmwLflT9DnQzNH5jdYi8fZ1UtZ+7T83fu9sy5bk9oDOcz9tY
+ LVjNgyXjQ013JZicWC3YfnZTt96nLns3RBdIrHwLMkvC8dMk26/5FJu3Ot4dSybKp7c+
+ E5pMfIwEIrvSlxAhWhRdqR/mleR2MJw3PCsMj1/3LgF4tPTCyab3LZ8QH1SFuJv/t/mi
+ Xeef8LWtGFLuSakJV+cVoIRrq1t+EDQHhR08JlqEbK1tYD18ht6hC9+NRNVmeB2kqIkD
+ FtAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=WwmgiojUsfIVy1Lf7pSIzWrFwQmd0fXZ6lmVwXUDjgs=;
+ b=PReKYu8DuV4vaDnrlwHou4w6xkFqZ6ElvWJf1r57gocwQf7uV4/lRV4VWMTKtJLm4b
+ JIdEmg+1Dnn4gz3ca2wUqbfhSYy521wLeFwuIUMsoJtnk8O2C5Mw6QDsovfgH7jf0AGy
+ P88ehR+QxzVCqD5TEj8Cmv6/YMXBr+QUkvNXxykmrjORgK5OF35Uzw5GtGwR1rqiA4jv
+ D+4BpL9aQOgvdwbQloEJiA2zitH/bTKi7W66BOe28fbn5MnlxaZqDKFmfFqDZssU5lAl
+ gXueOON9UnAWtvVnQqr/dH82uAYZH2tuGxR0vvo+VdiPY/SYxW0FTSB1UXiwsPwmxn4h
+ bvGw==
+X-Gm-Message-State: ANhLgQ1kmwlDuy2fGnmwWZnh6QBfmyBW3ewyUN7IXHk/bqE8CBad8Qc9
+ eoNDiqAHIMfDGygMvRUSTBZO4PciTwvWLY2zGlC9k6M1rnY=
+X-Google-Smtp-Source: ADFU+vsf6kNaE52jJnvuf2+BxGmj34EZjX0gnJyQ7cCSSD+tNEPzTy2Tl4y3H0OliKXnPUJOcmEDFP9H6dg9mkHkwXY=
+X-Received: by 2002:a2e:9b87:: with SMTP id z7mr6980032lji.197.1584075173496; 
+ Thu, 12 Mar 2020 21:52:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Originating-IP: [10.133.205.93]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.191
+From: Mansour Ahmadi <mansourweb@gmail.com>
+Date: Fri, 13 Mar 2020 00:52:42 -0400
+Message-ID: <CAGT9xrAYkEMy=Yd1exCyqoq8xsiM9a7kVnG0LfdiisCpn+jiuA@mail.gmail.com>
+Subject: Missing unlock_user_struct , Deadlock
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000038c1505a0b53e23"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::236
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,66 +60,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2020 03:23:59 -0000
+X-List-Received-Date: Fri, 13 Mar 2020 04:52:57 -0000
 
-The current code causes clang static code analyzer generate warning:
-hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
-        value =3D value & 0x0000000f;
-        ^       ~~~~~~~~~~~~~~~~~~
-hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
-        value =3D value & 0x000000fd;
-        ^       ~~~~~~~~~~~~~~~~~~
+--000000000000038c1505a0b53e23
+Content-Type: text/plain; charset="UTF-8"
 
-According to the definition of the function, the two =E2=80=9Cvalue=E2=80=
-=9D assignments
- should be written to registers.
+Hi
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: Peter Chubb <peter.chubb@nicta.com.au>
+In the case of badframe, user struct is not unlocked here and may lead to
+deadlock:
 
-v1->v2:
-  The register 'ENET_TGSR' write-1-to-clear timer flag.
-  The register 'ENET_TCSRn' 7bit(TF) write-1-to-clear timer flag.
+https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/m68k/signal.c#L380
 
-v2->v3:
-  Optimize code style, based on discussions with Peter.
----
- hw/net/imx_fec.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+In similar case, it in unlocked correctly:
+https://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/sh4/signal.c#L303
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 6a124a154a..3547975710 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -854,14 +854,17 @@ static void imx_enet_write(IMXFECState *s, uint32_t=
- index, uint32_t value)
-         s->regs[index] =3D value & 0x00007f7f;
-         break;
-     case ENET_TGSR:
--        /* implement clear timer flag */
--        value =3D value & 0x0000000f;
-+        /* implement clear timer flag, 0-3 bits W1C, reserved bits write=
- zero */
-+        s->regs[index] &=3D ~(value & 0x0000000f) & 0x0000000f;
-         break;
-     case ENET_TCSR0:
-     case ENET_TCSR1:
-     case ENET_TCSR2:
-     case ENET_TCSR3:
--        value =3D value & 0x000000fd;
-+        /* 7 bits W1C, reserved bits write zero */
-+        s->regs[index] &=3D ~(value & 0x00000080) & 0x000000ff;
-+        s->regs[index] &=3D ~0x0000007d; /* writable fields */
-+        s->regs[index] |=3D (value & 0x0000007d);
-         break;
-     case ENET_TCCR0:
-     case ENET_TCCR1:
---=20
-2.23.0
+Thanks,
+Mansour
 
+--000000000000038c1505a0b53e23
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:garamond=
+,serif;font-size:large">Hi</div><div class=3D"gmail_default" style=3D"font-=
+family:garamond,serif;font-size:large"><br></div><div class=3D"gmail_defaul=
+t" style=3D"font-family:garamond,serif;font-size:large">In the case of badf=
+rame, user struct is not unlocked here and may lead to deadlock:</div><div =
+class=3D"gmail_default" style=3D"font-family:garamond,serif;font-size:large=
+"><br></div><div class=3D"gmail_default" style=3D"font-family:garamond,seri=
+f;font-size:large"><a href=3D"https://github.com/qemu/qemu/blob/d4f7d56759f=
+7c75270c13d5f3f5f736a9558929c/linux-user/m68k/signal.c#L380">https://github=
+.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/m68=
+k/signal.c#L380</a><br></div><div class=3D"gmail_default" style=3D"font-fam=
+ily:garamond,serif;font-size:large"><br></div><div class=3D"gmail_default" =
+style=3D"font-family:garamond,serif;font-size:large">In similar case, it in=
+ unlocked correctly:</div><div class=3D"gmail_default" style=3D"font-family=
+:garamond,serif;font-size:large"><a href=3D"https://github.com/qemu/qemu/bl=
+ob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/linux-user/sh4/signal.c#L303">h=
+ttps://github.com/qemu/qemu/blob/d4f7d56759f7c75270c13d5f3f5f736a9558929c/l=
+inux-user/sh4/signal.c#L303</a><br></div><div class=3D"gmail_default" style=
+=3D"font-family:garamond,serif;font-size:large"><br></div><div class=3D"gma=
+il_default" style=3D"font-family:garamond,serif;font-size:large">Thanks,</d=
+iv><div class=3D"gmail_default" style=3D"font-family:garamond,serif;font-si=
+ze:large">Mansour</div><div class=3D"gmail_default" style=3D"font-family:ga=
+ramond,serif;font-size:large"></div></div>
+
+--000000000000038c1505a0b53e23--
 
