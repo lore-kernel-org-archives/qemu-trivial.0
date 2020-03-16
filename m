@@ -1,97 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jDXim-0004Er-V3
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2020 14:10:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55025)
+	id 1jDfNs-000851-3X
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2020 22:21:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38757)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jDXii-0004BD-7G
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 14:10:42 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1jDfNo-00084E-PV
+ for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 22:21:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jDXih-0003d8-2T
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 14:10:40 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:58249)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jDXig-0003Rg-1c; Sun, 15 Mar 2020 14:10:38 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mz9EL-1jZLgh0GAd-00wFSO; Sun, 15 Mar 2020 19:10:24 +0100
-To: Vincent Fazio <vfazio@xes-inc.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
- qemu-ppc@nongnu.org, Vincent Fazio <vfazio@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20200315155202.13107-1-vfazio@xes-inc.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
+ (envelope-from <dgibson@ozlabs.org>) id 1jDfNn-00017w-95
+ for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 22:21:36 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:45035)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1jDfNc-0007LK-O7; Sun, 15 Mar 2020 22:21:25 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 48gg5l0n8Sz9sPk; Mon, 16 Mar 2020 13:21:15 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1584325275;
+ bh=kNPuvmutNMSpow2OEw0f9w0Hrn2qrGtSJHoDupFgDlY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZdFTEqI0b40VhWqxYNlNIsgTEMcxJ7Pwfk/uqTPrnbryvdNPunmGN7yO/AQPLCs2D
+ ZfcARtGYlPN/xd7DrhVTg86+UMyJfTktToBxThjuqwPEU9zuLO0TqFCJzq9gCgbj7n
+ BdCqMBySKXEv8Dq9Q/4xGoM/xFbVt1F9b9O7XQ10=
+Date: Mon, 16 Mar 2020 13:21:07 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Vincent Fazio <vfazio@gmail.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, Vincent Fazio <vfazio@xes-inc.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>, qemu-ppc@nongnu.org
 Subject: Re: [PATCH 1/1] target/ppc: fix ELFv2 signal handler endianness
-Message-ID: <346e47c8-4a80-860c-ec55-e38d2021d63d@vivier.eu>
-Date: Sun, 15 Mar 2020 19:10:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Message-ID: <20200316022107.GA2013@umbus.fritz.box>
+References: <20200315155202.13107-1-vfazio@xes-inc.com>
+ <346e47c8-4a80-860c-ec55-e38d2021d63d@vivier.eu>
+ <CAOrEah5Fq7Kp9wF_4Vtb4Qfcdm0gtwin_5b_ft7h7my+RnTOWA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200315155202.13107-1-vfazio@xes-inc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HSAkNgkNWHKumEPR4fAtVKdapgxR6zXKplH3ToLX1Ig3qg1Bzki
- BCLgZgT4JA334hpNjVN+pWPKz41gKdUUhpLMZQPzzagv9tLlz0Y96ke7QIaICnV5096qkrF
- w30HkZT/2UsXJzmJukBhjwKx2pJqaYlE7pF3VO55nzUXDbsVjK2I5TLYCJdNxWJKi/RiIo5
- dS/Of+8kGqx/P7avKTf/A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EUhjz1IhIH0=:8441MSP/+OgMs6dQraSSG7
- glkae+SSssFwOdymFArZCW7avDEWEzmI1lurpR0QWOFhtsA+d1eFCsjoBatDPYQdi7uhlLIe+
- IvmUukaefU7SF91dcdpfUjBy8tJnd7Mu81JSxBmXZoRApUDmS1PdW09zRntp0i8VMAaN//Xe+
- P4u6saUvxCG/6h2heb6rOfAYeuiyfrvoSrrE8yiAqc8pA6kNPpY7p4BFdxGma3J1zQtwLIUSC
- m4vWidCngQXNO5qjvMZ68ywTOWf8myeaFY+0itn04wS8p29ps5/wfTNp0tiiD3by3k4KYSFVJ
- dLhd59Ec13TCJethpBFGFdPpAbREKRfvQrMp8BeIASQSyn83N7MOv4u5Q0fNDslJhUZC0CLSY
- 32MFaiJxHwb4sLlg2Lxgqfgao2mi85msBzkpI2ClBmeMrdw73OemVOpfIFIUMaR2dQCNWzv/g
- EaoXy530KBcwrbGuIC8+vWN6UaZKlZRMCw59onaIHr7SMZcIRwuTkstraAcAy6LlbOWqvxf8P
- +yU8gk1D9CV61Vpg+Drt9BhgZrycSOiJXkt3Rp/wFZDjNiVq7ya8ysi/IOIDLIGcojCCOmJrY
- SlbTiLvzthVaJz3qFRhxfoneG1bBb3e5h8Pw+OWThgj4xXlpsKBTr68uK3BhN83WK7R1FAJds
- aaypP7VKETYMIeA56abyvSlgLhE9SQ7/h98gaGV8WZR71/uo3RE79EJbHWOpsBqjD6FvDdL6e
- 1hUH9CqT0koK1G18Xd/wakJ6xk8oTtP67v1unSDndDco3fhNQ1fPA/DJvhNqGK4/+Sfay865S
- 1LpFBmFCTFy7wlfUHcFGwiElTswBMAONADfFp83wTjd8wcuA6e6xJ1S05H7auo3YJqXu+z1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="82I3+IH0IqGh5yIs"
+Content-Disposition: inline
+In-Reply-To: <CAOrEah5Fq7Kp9wF_4Vtb4Qfcdm0gtwin_5b_ft7h7my+RnTOWA@mail.gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,72 +51,160 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Mar 2020 18:10:42 -0000
+X-List-Received-Date: Mon, 16 Mar 2020 02:21:38 -0000
 
-Le 15/03/2020 à 16:52, Vincent Fazio a écrit :
-> From: Vincent Fazio <vfazio@gmail.com>
-> 
-> In ELFv2, function pointers are entry points and are in host endianness.
 
-"host endianness" is misleading here. "target endianness" is better.
+--82I3+IH0IqGh5yIs
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> Previously, the signal handler would be swapped if the target CPU was a
-> different endianness than the host. This would cause a SIGSEGV when
-> attempting to translate the opcode pointed to by the swapped address.
+On Sun, Mar 15, 2020 at 07:29:04PM -0500, Vincent Fazio wrote:
+> Laurent,
+>=20
+> On Sun, Mar 15, 2020 at 1:10 PM Laurent Vivier <laurent@vivier.eu> wrote:
+> >
+> > Le 15/03/2020 =E0 16:52, Vincent Fazio a =E9crit :
+> > > From: Vincent Fazio <vfazio@gmail.com>
+> > >
+> > > In ELFv2, function pointers are entry points and are in host endianne=
+ss.
+> >
+> > "host endianness" is misleading here. "target endianness" is better.
 
-This is correct.
+Yeah, the trouble here is that I think the ELF spec will use "host"
+and "target" in a quite different sense than qemu.
 
->  Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
->  0x00000000600a9257 in ldl_he_p (ptr=0x4c2c061000000000) at qemu/include/qemu/bswap.h:351
->  351        __builtin_memcpy(&r, ptr, sizeof(r));
-> 
->  #0  0x00000000600a9257 in ldl_he_p (ptr=0x4c2c061000000000) at qemu/include/qemu/bswap.h:351
->  #1  0x00000000600a92fe in ldl_be_p (ptr=0x4c2c061000000000) at qemu/include/qemu/bswap.h:449
->  #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec/translator.h:201
->  #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc/translate.c:7856
->  #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/translator.c:102
-> 
-> Now, no swap is performed and execution continues properly.
-> 
-> Signed-off-by: Vincent Fazio <vfazio@gmail.com>
-> ---
->  linux-user/ppc/signal.c | 10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
-> 
-> diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-> index 5b82af6cb6..c7f6455170 100644
-> --- a/linux-user/ppc/signal.c
-> +++ b/linux-user/ppc/signal.c
-> @@ -567,9 +567,13 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
->          env->nip = tswapl(handler->entry);
->          env->gpr[2] = tswapl(handler->toc);
->      } else {
-> -        /* ELFv2 PPC64 function pointers are entry points, but R12
-> -         * must also be set */
-> -        env->nip = tswapl((target_ulong) ka->_sa_handler);
-> +        /*
-> +         * ELFv2 PPC64 function pointers are entry points and are in host
-> +         * endianness so should not to be swapped.
+> I do want to clarify here. In a mixed endian scenario (my test case
+> was an x86 host and e5500 PPC BE target), the function pointers are in
+> host endianness (little endian) so that the virtual address can be
+> dereferenced by the host for the target instructions to be
+> translated.
 
-"target endianness"
+This can't be right.  The ELF is operating entirely within the guest,
+and has no concept of a host (in the qemu sense).  Therefore it's
+impossible for it to specify anything as "host endian" (again in the
+qemu sense).
 
-> +         *
-> +         * Note: R12 must also be set.
-> +         */
-> +        env->nip = (target_ulong) ka->_sa_handler;
+It *is* possible that it's little endian explicitly (in which case
+we'd need a conditional swap that's different from the one we have
+now).
 
-The cast is not needed: nip and _sa_handler are abi_ulong.
+But even that seems pretty odd.  AFAICT that target_sigaction
+structure is copied verbatim from guest memory when the guest makes
+the sigaction() syscall.  Are we expecting a BE process to put LE
+parameters into a syscall structure?  That seems unlikely.
 
->          env->gpr[12] = env->nip;
->      }
->  #else
-> 
+I really think you need to put some instrumentation in the sigaction()
+call that comes before this, to see exactly what the guest process is
+supplying there.
 
-If you repost with the fix I've reported above you can add my:
+And then we maybe need to look at your guest side libc and/or a native
+e5500 BE kernel to see what it expects in that structure.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> > > Previously, the signal handler would be swapped if the target CPU was=
+ a
+> > > different endianness than the host. This would cause a SIGSEGV when
+> > > attempting to translate the opcode pointed to by the swapped address.
+> >
+> > This is correct.
+> >
+> > >  Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
+> > >  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/in=
+clude/qemu/bswap.h:351
+> > >  351        __builtin_memcpy(&r, ptr, sizeof(r));
+> > >
+> > >  #0  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qem=
+u/include/qemu/bswap.h:351
+> > >  #1  0x00000000600a92fe in ldl_be_p (ptr=3D0x4c2c061000000000) at qem=
+u/include/qemu/bswap.h:449
+> > >  #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec/t=
+ranslator.h:201
+> > >  #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc/t=
+ranslate.c:7856
+> > >  #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/translat=
+or.c:102
+> > >
+> > > Now, no swap is performed and execution continues properly.
+> > >
+> > > Signed-off-by: Vincent Fazio <vfazio@gmail.com>
+> > > ---
+> > >  linux-user/ppc/signal.c | 10 +++++++---
+> > >  1 file changed, 7 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
+> > > index 5b82af6cb6..c7f6455170 100644
+> > > --- a/linux-user/ppc/signal.c
+> > > +++ b/linux-user/ppc/signal.c
+> > > @@ -567,9 +567,13 @@ void setup_rt_frame(int sig, struct target_sigac=
+tion *ka,
+> > >          env->nip =3D tswapl(handler->entry);
+> > >          env->gpr[2] =3D tswapl(handler->toc);
+> > >      } else {
+> > > -        /* ELFv2 PPC64 function pointers are entry points, but R12
+> > > -         * must also be set */
+> > > -        env->nip =3D tswapl((target_ulong) ka->_sa_handler);
+> > > +        /*
+> > > +         * ELFv2 PPC64 function pointers are entry points and are in=
+ host
+> > > +         * endianness so should not to be swapped.
+> >
+> > "target endianness"
+> >
+> > > +         *
+> > > +         * Note: R12 must also be set.
+> > > +         */
+> > > +        env->nip =3D (target_ulong) ka->_sa_handler;
+> >
+> > The cast is not needed: nip and _sa_handler are abi_ulong.
+>=20
+> I'll drop this in v2
+>=20
+> >
+> > >          env->gpr[12] =3D env->nip;
+> > >      }
+> > >  #else
+> > >
+> >
+> > If you repost with the fix I've reported above you can add my:
+> >
+> > Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> >
+>=20
+> I'll hold off on reposting until the endianness wording is figured out.
+>=20
+> > Thanks,
+> > Laurent
+>=20
+> Thanks,
+> -Vincent
+>=20
 
-Thanks,
-Laurent
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--82I3+IH0IqGh5yIs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5u4pMACgkQbDjKyiDZ
+s5Igsg/+Mvu/+X+e+CbgPKcjNA0dOSBYCdBEzoAPI3cfIk+OoAKmTBDObK2BKJ4X
+88axe7ZIcZp5zsVkpLFHsPFoSAkNTvVKPQFoGqqN8FCHH0fdt32JDHhErkjCIl4O
+sZ2svN60qemNvNyK/tnrFGifeQedpfOSiiGhi1CVwBplDkd8LMX6XyqkJG+b8vh5
+WIqhcUPTzgaCyUh/JSyY3yvBlhQXKWL/J2jlAUTIQxn2pXYajafaSQoawHCst6Hy
+W+0clM4641izXfYxMJjFQa6vrGy/JPnhUSuAClHqO8yJ52zvQq0iHtHm4FIpg4sF
+Km0VDp482k6ze9qK6Qt8nUTTLMN3LX18Rh6xI2mvNjOY1FBggc6pMg9PaGXSz5Gu
+vneTkUFvQORe3TxrAdnHKajFHpG+5g99y9YgP5q4usJKsbZ7VJmw+BOwvmwyik3y
+NXblhPuVnuPtOIUN7LMuYzjI3M00B+MviTqqRph1CN2gcWq2AGLQC+jW+05v02r5
+0l5WsLIBNaflPw4Fk+DtGxR/ACpuIzLylK+sw9T+6tICepxLMKQNoxanS6o2w44a
+EA1NWd0z7/aw0++eEsU/CDM4TY+AZLdo/HLiAY4p9pv7Uu1KRsbbKvdScRmZaraM
+iElE6zjsZbDm7s2VIJGKrUc5gXYUA87tuzPuoGVv7A3WDviDWn4=
+=4ygq
+-----END PGP SIGNATURE-----
+
+--82I3+IH0IqGh5yIs--
 
