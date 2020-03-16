@@ -1,65 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jDqhS-0007Hu-Bn
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2020 10:26:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59360)
+	id 1jDqjP-000814-RD
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2020 10:28:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51111)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vfazio@gmail.com>) id 1jDddV-0006Po-5J
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 20:29:42 -0400
+ (envelope-from <philmd@redhat.com>) id 1jDqjN-00080A-Gv
+ for qemu-trivial@nongnu.org; Mon, 16 Mar 2020 10:28:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vfazio@gmail.com>) id 1jDddT-000876-3i
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2020 20:29:40 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:42605)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <vfazio@gmail.com>)
- id 1jDddM-0007XN-VH; Sun, 15 Mar 2020 20:29:33 -0400
-Received: by mail-ed1-x543.google.com with SMTP id b21so9584702edy.9;
- Sun, 15 Mar 2020 17:29:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=4ZbYphjZfXVF1533ZbXdDhT49U8OBqjrcyxFroiuUP4=;
- b=MYRRn6TbDSpZ1NQgqZeIqblEChgzIYRKCUxccmTv/nua4iXs8IkzCCHKqpP7mF7lIE
- 94i0DCZlazCc7IoT7SvnxKacxVGIeBk8FALHZ8mgl/kV6UfLC9e2dMxqhUzP3GSuy+MQ
- J+wypkMXvrbM/jjUPJQk52NFXuZIaeV/je0y3WjmnglVM61t1rapsViyMauWdoIkg6Sh
- 5wRU0Dkeew19kwycLZT6qX/LKbYnkE8qDWxxHl/BbjNwOuCpzJlLy/wfb3cx1ffbV49+
- oFIuOastKI9R/iOPGQ5BmtMHAZwkOuTBmtjsu5t7NgMr2IVeEhADqBpy7eMjcmv+0fuC
- c47w==
+ (envelope-from <philmd@redhat.com>) id 1jDqjL-0002sJ-Iy
+ for qemu-trivial@nongnu.org; Mon, 16 Mar 2020 10:28:37 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:50822
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jDqjL-0002ra-F4
+ for qemu-trivial@nongnu.org; Mon, 16 Mar 2020 10:28:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584368915;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fOKrfo5bbyxSEwW8Bb/6gBXkGPftjp1ADluFRQkIlR8=;
+ b=dF8gJ8M6SgkNs2vSCkvBLwOyrakVtO8bCiwskhwEjcEgwv9dpLyPM+XAmoDSUmNkGIYPxp
+ Or3eRkpm8yvybHqydtO0KOkF7BZ+WgfdZrPDAvrDnLypMTvYOit0CBE2T6Xl2q7ch0y/jK
+ G7v6jbTTVhpOP0V7eofub3GSOYLGYhE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-340-w5_tsxmkNJ2D1MpUk5P5FQ-1; Mon, 16 Mar 2020 10:28:32 -0400
+X-MC-Unique: w5_tsxmkNJ2D1MpUk5P5FQ-1
+Received: by mail-wm1-f71.google.com with SMTP id g26so4684196wmk.6
+ for <qemu-trivial@nongnu.org>; Mon, 16 Mar 2020 07:28:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=4ZbYphjZfXVF1533ZbXdDhT49U8OBqjrcyxFroiuUP4=;
- b=Pt7fi6pAMnigXEewxmfRDfH6iejIuhVVfCW+AKi0M9qqsBmtGFcUJFqCVjdyn3DOI8
- 0mEh6jxcvqLo7aAyivNw3fCH6zGtLX4DWgBd3j8jkeRg8dg5dRkk3YK2dxfPRPF0BCVm
- 2R3kP9y/G6/5h0Nv0uJzirdlvA58S38gPc+/uJENISxw5hm53LjOCLgsiXrhPTtdEve4
- +SyN6RzSAhecOtzuGJIHKXuhlzdlo5882aBQ9fClqgMQUOxy0XkWtcuqHtYt+Su8iT+o
- SzjIgi16BnR6ClwL6sk0z0e8CNbYUv/wDaz4HrqRq2IuFhu8vab6kB5Z9fAcg9cCX1/q
- h7Ag==
-X-Gm-Message-State: ANhLgQ1ePUPxY6/vPWcuAVJgZ9toGMuEDg8KsRR/H/XIb8iQaIgHO4C7
- SrhXqDkfwz7ntsys82mH5iE1IBfbUDw+ZssPWVw=
-X-Google-Smtp-Source: ADFU+vs8YnXrfDGn7kN+b0+iaJozhJhjQyFw0z6nurbBjwbK/ZmtXkZVqdpiqttluhy2cXSTOcxEPXOFX15/fdn688I=
-X-Received: by 2002:a05:6402:b8c:: with SMTP id
- cf12mr14741807edb.322.1584318567485; 
- Sun, 15 Mar 2020 17:29:27 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TDKRgixbJAcVUYD4Ybb2gvKa7rLyvdtOHGcjQKF6N9w=;
+ b=FzVW8rmxbd5i0wsRgDHx8+ZDTtTqFurHURx94nRbweQ43ldygFKFRwxOzNykG3KTp+
+ d/3KDPbshOLg4cwzt2B5Qzt9q+EqwOgQqju0ymRCHXdCR00JsuskJl7QP08+3utDciyj
+ iKdoUDLF84UuAmx5eN9QVVx7uxDd1T34pTQ9KvKL/m5WsO8mWj0SpY/zfQwWulasZtM/
+ MGD4AsHPIOcGmbd/lA/VI8C/LWodkoIZamVHfb7be4Cwt+3RlXYQj/yZ279Qy320x8aQ
+ +oQXIQzv7QP6NZ+oTkSqR37EV2XzEQMvlZd3UIodSjhk+bxJYZaMs1BqgTwBK/AOyW6O
+ fv4A==
+X-Gm-Message-State: ANhLgQ2B6FYzxma2tESO2rltJlWfDDxdHMQ3NQr+5D9yRYzu/2pQrg1R
+ 59vGZnBWDtlcd/G5W8tO/YGahc4lTcZWeL9+ijbp/1WGb5JfDpM3Yjr+UmgkutAvfyDN2voFn+P
+ P2hYCmraX0oIJEscf9Q==
+X-Received: by 2002:a7b:c391:: with SMTP id s17mr27039051wmj.55.1584368911114; 
+ Mon, 16 Mar 2020 07:28:31 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu6eNhDEYbXHwMl5ihSAYArb+HJ5waefmoYQoCCKuDAoI9gtrCoKXJA0yOJKdtgD+h3j7Pc8A==
+X-Received: by 2002:a7b:c391:: with SMTP id s17mr27039033wmj.55.1584368910848; 
+ Mon, 16 Mar 2020 07:28:30 -0700 (PDT)
+Received: from localhost.localdomain (191.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.191])
+ by smtp.gmail.com with ESMTPSA id z6sm94673wrp.95.2020.03.16.07.28.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Mar 2020 07:28:29 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Michael Walle <michael@walle.cc>,
+ =?UTF-8?q?=C3=81kos=20Kov=C3=A1cs?= <akoskovacs@gmx.com>,
+ qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Emilio G . Cota" <cota@braap.org>, Richard Henderson <rth@twiddle.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2] MAINTAINERS: Mark the LatticeMico32 target as orphan
+Date: Mon, 16 Mar 2020 15:28:27 +0100
+Message-Id: <20200316142827.20867-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-References: <20200315155202.13107-1-vfazio@xes-inc.com>
- <346e47c8-4a80-860c-ec55-e38d2021d63d@vivier.eu>
-In-Reply-To: <346e47c8-4a80-860c-ec55-e38d2021d63d@vivier.eu>
-From: Vincent Fazio <vfazio@gmail.com>
-Date: Sun, 15 Mar 2020 19:29:04 -0500
-Message-ID: <CAOrEah5Fq7Kp9wF_4Vtb4Qfcdm0gtwin_5b_ft7h7my+RnTOWA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/ppc: fix ELFv2 signal handler endianness
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Vincent Fazio <vfazio@xes-inc.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, 
- Riku Voipio <riku.voipio@iki.fi>, qemu-ppc@nongnu.org, 
- David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::543
-X-Mailman-Approved-At: Mon, 16 Mar 2020 10:26:36 -0400
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,100 +85,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2020 00:29:43 -0000
+X-List-Received-Date: Mon, 16 Mar 2020 14:28:39 -0000
 
-Laurent,
+Michael Walle expressed his desire to orphan the lm32 target [*]:
 
-On Sun, Mar 15, 2020 at 1:10 PM Laurent Vivier <laurent@vivier.eu> wrote:
->
-> Le 15/03/2020 =C3=A0 16:52, Vincent Fazio a =C3=A9crit :
-> > From: Vincent Fazio <vfazio@gmail.com>
-> >
-> > In ELFv2, function pointers are entry points and are in host endianness=
-.
->
-> "host endianness" is misleading here. "target endianness" is better.
+  I guess it is time to pull the plug. Mainly, because I have
+  no time for this anymore. I've always worked on this on my
+  spare time and life changed. And secondly, I guess RISC-V is
+  taking over ;) It has a far better ecosystem. Also, to my
+  knowledge the only (public) user of LM32 is milkymist and this
+  project is dead for years now..
 
-I do want to clarify here. In a mixed endian scenario (my test case
-was an x86 host and e5500 PPC BE target), the function pointers are in
-host endianness (little endian) so that the virtual address can be
-dereferenced by the host for the target instructions to be translated.
+  So time to say goodbye. It was fun and I've learned a lot -
+  technically and also how a huge open source project works.
+  Thank you everyone for that :)
 
->
-> >
-> > Previously, the signal handler would be swapped if the target CPU was a
-> > different endianness than the host. This would cause a SIGSEGV when
-> > attempting to translate the opcode pointed to by the swapped address.
->
-> This is correct.
->
-> >  Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
-> >  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/incl=
-ude/qemu/bswap.h:351
-> >  351        __builtin_memcpy(&r, ptr, sizeof(r));
-> >
-> >  #0  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/=
-include/qemu/bswap.h:351
-> >  #1  0x00000000600a92fe in ldl_be_p (ptr=3D0x4c2c061000000000) at qemu/=
-include/qemu/bswap.h:449
-> >  #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec/tra=
-nslator.h:201
-> >  #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc/tra=
-nslate.c:7856
-> >  #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/translator=
-.c:102
-> >
-> > Now, no swap is performed and execution continues properly.
-> >
-> > Signed-off-by: Vincent Fazio <vfazio@gmail.com>
-> > ---
-> >  linux-user/ppc/signal.c | 10 +++++++---
-> >  1 file changed, 7 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-> > index 5b82af6cb6..c7f6455170 100644
-> > --- a/linux-user/ppc/signal.c
-> > +++ b/linux-user/ppc/signal.c
-> > @@ -567,9 +567,13 @@ void setup_rt_frame(int sig, struct target_sigacti=
-on *ka,
-> >          env->nip =3D tswapl(handler->entry);
-> >          env->gpr[2] =3D tswapl(handler->toc);
-> >      } else {
-> > -        /* ELFv2 PPC64 function pointers are entry points, but R12
-> > -         * must also be set */
-> > -        env->nip =3D tswapl((target_ulong) ka->_sa_handler);
-> > +        /*
-> > +         * ELFv2 PPC64 function pointers are entry points and are in h=
-ost
-> > +         * endianness so should not to be swapped.
->
-> "target endianness"
->
-> > +         *
-> > +         * Note: R12 must also be set.
-> > +         */
-> > +        env->nip =3D (target_ulong) ka->_sa_handler;
->
-> The cast is not needed: nip and _sa_handler are abi_ulong.
+  Basically everything still works and there are even TCG test
+  cases which covers all instructions the processor has.
 
-I'll drop this in v2
+Many thanks to Michael for his substantial contributions to QEMU,
+and for maintaining the LM32 target for various years!
 
->
-> >          env->gpr[12] =3D env->nip;
-> >      }
-> >  #else
-> >
->
-> If you repost with the fix I've reported above you can add my:
->
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->
+[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg605024.html
 
-I'll hold off on reposting until the endianness wording is figured out.
+Acked-by: Michael Walle <michael@walle.cc>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+v2: Also orphan machines, added Michael A-b tag
+---
+ MAINTAINERS | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-> Thanks,
-> Laurent
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 32867bc636..c89bf61989 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -183,8 +183,8 @@ F: hw/net/*i82596*
+ F: include/hw/net/lasi_82596.h
+=20
+ LM32 TCG CPUs
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: target/lm32/
+ F: disas/lm32.c
+ F: hw/lm32/
+@@ -945,13 +945,13 @@ F: pc-bios/hppa-firmware.img
+ LM32 Machines
+ -------------
+ EVR32 and uclinux BSP
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: hw/lm32/lm32_boards.c
+=20
+ milkymist
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: hw/lm32/milkymist.c
+=20
+ M68K Machines
+--=20
+2.21.1
 
-Thanks,
--Vincent
 
