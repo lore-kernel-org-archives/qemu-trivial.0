@@ -1,56 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jEZ4M-0005zZ-Cx
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Mar 2020 09:49:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41494)
+	id 1jEaBa-0001fv-1n
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Mar 2020 11:00:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50359)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jusual@redhat.com>) id 1jEZ4J-0005yt-9H
- for qemu-trivial@nongnu.org; Wed, 18 Mar 2020 09:49:12 -0400
+ (envelope-from <vfazio@xes-inc.com>) id 1jEaBX-0001bN-4V
+ for qemu-trivial@nongnu.org; Wed, 18 Mar 2020 11:00:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jusual@redhat.com>) id 1jEZ4I-0002We-7u
- for qemu-trivial@nongnu.org; Wed, 18 Mar 2020 09:49:11 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:25916)
+ (envelope-from <vfazio@xes-inc.com>) id 1jEaBV-0008La-Do
+ for qemu-trivial@nongnu.org; Wed, 18 Mar 2020 11:00:43 -0400
+Received: from xes-mad.com ([162.248.234.2]:20005 helo=mail.xes-mad.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jusual@redhat.com>) id 1jEZ4I-0002U7-3n
- for qemu-trivial@nongnu.org; Wed, 18 Mar 2020 09:49:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584539349;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=tDXB/8+Q9VTzUqH6QIri9JT1cxyBCk802SIj4HcYUp4=;
- b=B1j/XfjSPG+kXgzuggLNFXiujPjCLVvnBr6fBMv9llmEkNquJfGOXgI5hNAZfKuL0bVFlb
- fJP7rJYU+HIQSJkNDqEnOHHKS/0nkWcXJDFesVtiLytm58QcPx0mq7BjbaswnIjDthAryS
- xQjvjYPfVbDbZNDQtGJjPIehqy32x+c=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-46-cPIBvck8NrWIG10ooCm2yg-1; Wed, 18 Mar 2020 09:49:06 -0400
-X-MC-Unique: cPIBvck8NrWIG10ooCm2yg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4099C18B5FA0;
- Wed, 18 Mar 2020 13:49:05 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-41.sin2.redhat.com
- [10.67.116.41])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F40D60BEC;
- Wed, 18 Mar 2020 13:48:57 +0000 (UTC)
-From: Julia Suvorova <jusual@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Julia Suvorova <jusual@redhat.com>
-Subject: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
-Date: Wed, 18 Mar 2020 14:48:49 +0100
-Message-Id: <20200318134849.237011-1-jusual@redhat.com>
+ (Exim 4.71) (envelope-from <vfazio@xes-inc.com>)
+ id 1jEaBD-0006zz-FU; Wed, 18 Mar 2020 11:00:23 -0400
+Received: from [10.52.16.140] (vfazio1.xes-mad.com [10.52.16.140])
+ by mail.xes-mad.com (Postfix) with ESMTP id 2206D20296;
+ Wed, 18 Mar 2020 10:00:20 -0500 (CDT)
+Subject: Re: [PATCH 1/1] target/ppc: fix ELFv2 signal handler endianness
+To: David Gibson <david@gibson.dropbear.id.au>,
+ Vincent Fazio <vfazio@gmail.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+ qemu-ppc@nongnu.org
+References: <20200315155202.13107-1-vfazio@xes-inc.com>
+ <346e47c8-4a80-860c-ec55-e38d2021d63d@vivier.eu>
+ <CAOrEah5Fq7Kp9wF_4Vtb4Qfcdm0gtwin_5b_ft7h7my+RnTOWA@mail.gmail.com>
+ <20200316022107.GA2013@umbus.fritz.box>
+From: Vincent Fazio <vfazio@xes-inc.com>
+Message-ID: <0a4f5e07-3934-ea6b-4fe1-9fc3ec4c8d85@xes-inc.com>
+Date: Wed, 18 Mar 2020 10:00:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200316022107.GA2013@umbus.fritz.box>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 162.248.234.2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,41 +49,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Mar 2020 13:49:12 -0000
+X-List-Received-Date: Wed, 18 Mar 2020 15:00:45 -0000
 
-ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untruncated
-strncpy with QEMU function.
-This case prevented QEMU from compiling with --enable-sanitizers.
+David, Laurent,
 
-Signed-off-by: Julia Suvorova <jusual@redhat.com>
----
- hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c
-index d7bc7f5ccc..c2b3dd70a9 100644
---- a/hw/rdma/vmw/pvrdma_dev_ring.c
-+++ b/hw/rdma/vmw/pvrdma_dev_ring.c
-@@ -16,6 +16,7 @@
- #include "qemu/osdep.h"
- #include "hw/pci/pci.h"
- #include "cpu.h"
-+#include "qemu/cutils.h"
-=20
- #include "trace.h"
-=20
-@@ -30,8 +31,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name, =
-PCIDevice *dev,
-     int i;
-     int rc =3D 0;
-=20
--    strncpy(ring->name, name, MAX_RING_NAME_SZ);
--    ring->name[MAX_RING_NAME_SZ - 1] =3D 0;
-+    pstrcpy(ring->name, MAX_RING_NAME_SZ, name);
-     ring->dev =3D dev;
-     ring->ring_state =3D ring_state;
-     ring->max_elems =3D max_elems;
+On 3/15/20 9:21 PM, David Gibson wrote:
+> On Sun, Mar 15, 2020 at 07:29:04PM -0500, Vincent Fazio wrote:
+>> Laurent,
+>>
+>> On Sun, Mar 15, 2020 at 1:10 PM Laurent Vivier <laurent@vivier.eu> wro=
+te:
+>>> Le 15/03/2020 =E0 16:52, Vincent Fazio a =E9crit :
+>>>> From: Vincent Fazio <vfazio@gmail.com>
+>>>>
+>>>> In ELFv2, function pointers are entry points and are in host endiann=
+ess.
+>>> "host endianness" is misleading here. "target endianness" is better.
+> Yeah, the trouble here is that I think the ELF spec will use "host"
+> and "target" in a quite different sense than qemu.
+>
+I'll be simplifying the wording in the message to just mention the=20
+problematic cross-endian scenario
+>> I do want to clarify here. In a mixed endian scenario (my test case
+>> was an x86 host and e5500 PPC BE target), the function pointers are in
+>> host endianness (little endian) so that the virtual address can be
+>> dereferenced by the host for the target instructions to be
+>> translated.
+> This can't be right.  The ELF is operating entirely within the guest,
+> and has no concept of a host (in the qemu sense).  Therefore it's
+> impossible for it to specify anything as "host endian" (again in the
+> qemu sense).
+>
+> It *is* possible that it's little endian explicitly (in which case
+> we'd need a conditional swap that's different from the one we have
+> now).
+>
+> But even that seems pretty odd.  AFAICT that target_sigaction
+> structure is copied verbatim from guest memory when the guest makes
+> the sigaction() syscall.  Are we expecting a BE process to put LE
+> parameters into a syscall structure?  That seems unlikely.
+>
+> I really think you need to put some instrumentation in the sigaction()
+> call that comes before this, to see exactly what the guest process is
+> supplying there.
+>
+> And then we maybe need to look at your guest side libc and/or a native
+> e5500 BE kernel to see what it expects in that structure.
+As we discussed in the other thread, I missed the endian swap done as=20
+part of get_user in do_sigaction. So while my initial determination for=20
+the root cause of the problem was wrong, the fix is still the same (drop=20
+the `tswapl` call). The commit message will be updated.
+>>>> Previously, the signal handler would be swapped if the target CPU wa=
+s a
+>>>> different endianness than the host. This would cause a SIGSEGV when
+>>>> attempting to translate the opcode pointed to by the swapped address=
+.
+>>> This is correct.
+>>>
+>>>>   Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
+>>>>   0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/=
+include/qemu/bswap.h:351
+>>>>   351        __builtin_memcpy(&r, ptr, sizeof(r));
+>>>>
+>>>>   #0  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at q=
+emu/include/qemu/bswap.h:351
+>>>>   #1  0x00000000600a92fe in ldl_be_p (ptr=3D0x4c2c061000000000) at q=
+emu/include/qemu/bswap.h:449
+>>>>   #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec=
+/translator.h:201
+>>>>   #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc=
+/translate.c:7856
+>>>>   #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/transl=
+ator.c:102
+>>>>
+>>>> Now, no swap is performed and execution continues properly.
+>>>>
+>>>> Signed-off-by: Vincent Fazio <vfazio@gmail.com>
+>>>> ---
+>>>>   linux-user/ppc/signal.c | 10 +++++++---
+>>>>   1 file changed, 7 insertions(+), 3 deletions(-)
+>>>>
+>>>> diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
+>>>> index 5b82af6cb6..c7f6455170 100644
+>>>> --- a/linux-user/ppc/signal.c
+>>>> +++ b/linux-user/ppc/signal.c
+>>>> @@ -567,9 +567,13 @@ void setup_rt_frame(int sig, struct target_siga=
+ction *ka,
+>>>>           env->nip =3D tswapl(handler->entry);
+>>>>           env->gpr[2] =3D tswapl(handler->toc);
+>>>>       } else {
+>>>> -        /* ELFv2 PPC64 function pointers are entry points, but R12
+>>>> -         * must also be set */
+>>>> -        env->nip =3D tswapl((target_ulong) ka->_sa_handler);
+>>>> +        /*
+>>>> +         * ELFv2 PPC64 function pointers are entry points and are i=
+n host
+>>>> +         * endianness so should not to be swapped.
+>>> "target endianness"
+>>>
+>>>> +         *
+>>>> +         * Note: R12 must also be set.
+>>>> +         */
+>>>> +        env->nip =3D (target_ulong) ka->_sa_handler;
+>>> The cast is not needed: nip and _sa_handler are abi_ulong.
+>> I'll drop this in v2
+>>
+>>>>           env->gpr[12] =3D env->nip;
+>>>>       }
+>>>>   #else
+>>>>
+>>> If you repost with the fix I've reported above you can add my:
+>>>
+>>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>>>
+>> I'll hold off on reposting until the endianness wording is figured out=
+.
+I'll be submitting v2 shortly, but it will have a different commit=20
+message to better reflect the issue.
+>>> Thanks,
+>>> Laurent
+>> Thanks,
+>> -Vincent
+>>
 --=20
-2.24.1
+Vincent Fazio
+Embedded Software Engineer - Linux
+Extreme Engineering Solutions, Inc
+http://www.xes-inc.com
 
 
