@@ -1,43 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jEoTc-0008CS-1N
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 02:16:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53367)
+	id 1jEtmh-0001xE-22
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 07:56:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45102)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1jEoTZ-00087m-5t
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 02:16:18 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1jEtme-0001v4-MC
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 07:56:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1jEoTX-0004KV-U2
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 02:16:17 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:46239)
+ (envelope-from <pbonzini@redhat.com>) id 1jEtmd-0004c7-KX
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 07:56:20 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:45013)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1jEoTR-0004AX-6q; Thu, 19 Mar 2020 02:16:10 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48jc9K0L5lz9sRY; Thu, 19 Mar 2020 17:16:04 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1584598565;
- bh=1kJa1h1Pk6NFiplL8k2R/HLr6Dj2e+3d0d8zSMPJIFM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bHXIiHZlwZ+FXpibB0MHJ1V3ziL4KutA1qMYB1NDJgMDsokJQwfJsx25/ANQMf9Vt
- hmJjrZNjTKDoHit8h/m6KNp2ZSkpKlvA0GJAnwIyjH1f1SdRALYpQHa41jVKxTbYT+
- R3am4XlJLjWT1ZldnGo9d/ZACPKKxrnj0gKl9U6A=
-Date: Thu, 19 Mar 2020 16:35:13 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Vincent Fazio <vfazio@xes-inc.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Riku Voipio <riku.voipio@iki.fi>, qemu-ppc@nongnu.org,
- qemu-trivial@nongnu.org, Vincent Fazio <vfazio@gmail.com>
-Subject: Re: [PATCH v2 1/1] target/ppc: don't byte swap ELFv2 signal handler
-Message-ID: <20200319053513.GH628315@umbus.fritz.box>
-References: <20200318170116.1922-1-vfazio@xes-inc.com>
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1jEtmd-0004bJ-Hi
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 07:56:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584618979;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=be0q9ZHIRTRarz/YFy+cCj0leqx5lfgIKYVCSf44jWY=;
+ b=PykAd2aN5+XcT9tfpAEbZXFn9AolbR2sbJQ4cquMheDz+0onJoo0m1g58AoWcZY1K308fQ
+ seQ3MN8YTTIJTVt5epyXXGCApXlJteNewuZWOTum7ag7dpxZL8QRLGZVDD84lxTzznFfHs
+ laYUgLMhVFzLhFJTrAeRYw5JBLZ6Pjg=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-137-6WTZz2tPN36VV1c6bciPzQ-1; Thu, 19 Mar 2020 07:56:17 -0400
+X-MC-Unique: 6WTZz2tPN36VV1c6bciPzQ-1
+Received: by mail-wr1-f71.google.com with SMTP id l16so893713wrr.6
+ for <qemu-trivial@nongnu.org>; Thu, 19 Mar 2020 04:56:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4mN8e2YUDMF2Q8E19Xczl63rnrWlCgvY8HgHBpRw48w=;
+ b=a3MP9t+Oj8SAvgA+NUBHdocgfdBKvXOMycLwfB9ORAmkriooZ0emfJTGRFNgxF1Lwo
+ k4XsSld7n1xL3WEqoSsRtW5/p25ok59jootQYZIbkguhHTQ0G9jiyCilt0Tm+O0ky3s3
+ yooWR9vSMbAKqEJ1+o7GuTebmEoSVaRncQj4lLm/rkZP7vdyNmH7z1yK7EFhVDvYT6FK
+ 2rNMi8jrNq750YGrVZh6reipo1FfRsBxCPj2H25oa9klWk6hm+80b+zZx2dP93tsO/fm
+ DHSStwZIKRY51eJpaDs6hnXyuaHfdgQpriQjxwy4CHr+AelUzviANDDQ53KuoXYX9541
+ vRqw==
+X-Gm-Message-State: ANhLgQ3Zdvh1wCVnTv51BuiPOeOovVuT/NS8aanODVgZmH3KW9VwKMcF
+ 9i7TQpykLGR3zeRGHQ8ObFFoMzaLwZFEkCBuXsPT6s3dVdw384G3Mw0Kgh7r4k4wvB5f1CE74xu
+ at/03FjKdWFyTUOK3ZA==
+X-Received: by 2002:adf:ed86:: with SMTP id c6mr3701192wro.286.1584618975696; 
+ Thu, 19 Mar 2020 04:56:15 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu9vsau8S7NJNU7xSjIVy2lNbs92ldz5OljgBgjULdzoRsFXEFBa/uIGEXkQt8sdVgnV4JEuw==
+X-Received: by 2002:adf:ed86:: with SMTP id c6mr3701161wro.286.1584618975402; 
+ Thu, 19 Mar 2020 04:56:15 -0700 (PDT)
+Received: from [192.168.178.58] ([151.21.15.43])
+ by smtp.gmail.com with ESMTPSA id y5sm2817683wmi.34.2020.03.19.04.56.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Mar 2020 04:56:14 -0700 (PDT)
+Subject: Re: [PATCH] hw/isa/superio: Correct the license text
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Richard Henderson
+ <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org
+References: <20200312213712.16671-1-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <eb427089-c7c2-c4d2-ba39-51d79c39484f@redhat.com>
+Date: Thu, 19 Mar 2020 12:56:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="AzNpbZlgThVzWita"
-Content-Disposition: inline
-In-Reply-To: <20200318170116.1922-1-vfazio@xes-inc.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+In-Reply-To: <20200312213712.16671-1-philmd@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,100 +84,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Mar 2020 06:16:18 -0000
+X-List-Received-Date: Thu, 19 Mar 2020 11:56:22 -0000
 
-
---AzNpbZlgThVzWita
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Mar 18, 2020 at 12:01:16PM -0500, Vincent Fazio wrote:
-> From: Vincent Fazio <vfazio@gmail.com>
+On 12/03/20 22:37, Philippe Mathieu-Daud=C3=A9 wrote:
+> The license is the 'GNU General Public License v2.0 or later',
+> not 'and':
 >=20
-> Previously, the signal handler would be byte swapped if the target and
-> host CPU used different endianness. This would cause a SIGSEGV when
-> attempting to translate the opcode pointed to by the swapped address.
+>   This program is free software; you can redistribute it and/ori
+>   modify it under the terms of the GNU General Public License as
+>   published by the Free Software Foundation; either version 2 of
+>   the License, or (at your option) any later version.
 >=20
->  Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
->  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/includ=
-e/qemu/bswap.h:351
->  351        __builtin_memcpy(&r, ptr, sizeof(r));
+> Fix the license comment.
 >=20
->  #0  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/in=
-clude/qemu/bswap.h:351
->  #1  0x00000000600a92fe in ldl_be_p (ptr=3D0x4c2c061000000000) at qemu/in=
-clude/qemu/bswap.h:449
->  #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec/trans=
-lator.h:201
->  #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc/trans=
-late.c:7856
->  #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/translator.c=
-:102
->=20
-> Now, no swap is performed and execution continues properly.
-
-Patch is good, but the message still needs some work.  It should point
-out that the necessary swap is already done at sigaction() time by the
-__get_user().
-
->=20
-> Signed-off-by: Vincent Fazio <vfazio@gmail.com>
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> Changes since v1:
-> - Drop host/target endianness callouts
-> - Drop unnecessary pointer cast
-> - Clarify commit message
+>  include/hw/isa/superio.h   | 2 +-
+>  hw/isa/isa-superio.c       | 2 +-
+>  hw/isa/smc37c669-superio.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 >=20
->  linux-user/ppc/signal.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+> diff --git a/include/hw/isa/superio.h b/include/hw/isa/superio.h
+> index b151dcd753..147cc0a7b7 100644
+> --- a/include/hw/isa/superio.h
+> +++ b/include/hw/isa/superio.h
+> @@ -3,7 +3,7 @@
+>   *
+>   * Copyright (c) 2018 Philippe Mathieu-Daud=C3=A9
+>   *
+> - * This code is licensed under the GNU GPLv2 and later.
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+>   * See the COPYING file in the top-level directory.
+>   * SPDX-License-Identifier: GPL-2.0-or-later
+>   */
+> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+> index c4e391916c..180a8b9625 100644
+> --- a/hw/isa/isa-superio.c
+> +++ b/hw/isa/isa-superio.c
+> @@ -5,7 +5,7 @@
+>   * Copyright (c) 2011-2012 Andreas F=C3=A4rber
+>   * Copyright (c) 2018 Philippe Mathieu-Daud=C3=A9
+>   *
+> - * This code is licensed under the GNU GPLv2 and later.
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+>   * See the COPYING file in the top-level directory.
+>   * SPDX-License-Identifier: GPL-2.0-or-later
+>   */
+> diff --git a/hw/isa/smc37c669-superio.c b/hw/isa/smc37c669-superio.c
+> index 901a9f8e65..18287741cb 100644
+> --- a/hw/isa/smc37c669-superio.c
+> +++ b/hw/isa/smc37c669-superio.c
+> @@ -3,7 +3,7 @@
+>   *
+>   * Copyright (c) 2018 Philippe Mathieu-Daud=C3=A9
+>   *
+> - * This code is licensed under the GNU GPLv2 and later.
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+>   * See the COPYING file in the top-level directory.
+>   * SPDX-License-Identifier: GPL-2.0-or-later
+>   */
 >=20
-> diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-> index 5b82af6cb6..b8613c5e1b 100644
-> --- a/linux-user/ppc/signal.c
-> +++ b/linux-user/ppc/signal.c
-> @@ -567,10 +567,8 @@ void setup_rt_frame(int sig, struct target_sigaction=
- *ka,
->          env->nip =3D tswapl(handler->entry);
->          env->gpr[2] =3D tswapl(handler->toc);
->      } else {
-> -        /* ELFv2 PPC64 function pointers are entry points, but R12
-> -         * must also be set */
-> -        env->nip =3D tswapl((target_ulong) ka->_sa_handler);
-> -        env->gpr[12] =3D env->nip;
-> +        /* ELFv2 PPC64 function pointers are entry points. R12 must also=
- be set. */
-> +        env->gpr[12] =3D env->nip =3D ka->_sa_handler;
->      }
->  #else
->      env->nip =3D (target_ulong) ka->_sa_handler;
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Queued, thanks.
 
---AzNpbZlgThVzWita
-Content-Type: application/pgp-signature; name="signature.asc"
+Paolo
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5zBI4ACgkQbDjKyiDZ
-s5I/9hAA2uxLh3c3Dckg4o1lHXcf3bkxiRDVC7Us+yuddW9yRjOln91jcKITAlJp
-8+i0/DMQOzw/0bquQzJ28gWpm9om3yylvdrVe0OTx2/UCVUdmWPwEE5J+EWrsPeD
-8lp+6lB38hXUxl0NzU4ifS8+9LVXc01tYaiSwd382wNswUlELjPQPo+zRdp9Kba/
-DrK41tB/9Daa6OZ8yf8h57owrAYfcbSuF86px47BfvBFgS/lswmEQ1xn9lrwYjAJ
-G8IKf3Z+ZqsEREqcESbKNYXPIPu9uV9YfGtJxTUdZeuUQqoLIbHXouslLVXAJbK7
-6jz1u4f+2Z/K9rVXEm+7W26sgXm4ppJD5HyIZGUTxfrPaFl6IsccvgM7sUG7XyXA
-zCkJnj93FfNBZjvxkKVnkme1rTJKTp7kCApX5xhZvg+RFF4dNFi2afXeVIdP86GB
-GUZXK5lkQxaAqV0Jzs2yaPUMIc4A4s6vGDgwVT3azrr+6JfE2vKH4Huy1IYmlzh3
-S6Ow07NdsWQZG8L28Xyf5N8rqK/FnJj1p3sUfPpgh4GhJ6zK6PDCHuRJUjKMN0SO
-ChLQ48etQT5Q9mmXynzET7FtyNHBJiOTjhVYTUVpTsm676x2LLsWqb6joJ7/a3uS
-wwqPwLOYKn+AvLUs+FMuvoF9qlMgDQc0L57o7OyLUhskfaoYpVg=
-=YjmD
------END PGP SIGNATURE-----
-
---AzNpbZlgThVzWita--
 
