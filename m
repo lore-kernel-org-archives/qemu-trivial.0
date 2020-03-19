@@ -1,35 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jEvIO-0003yW-Nq
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 09:33:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37267)
+	id 1jEygI-0001F5-Mo
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 13:10:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58580)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vfazio@xes-inc.com>) id 1jEvIL-0003uB-F6
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 09:33:10 -0400
+ (envelope-from <philmd@redhat.com>) id 1jEygG-0001Ae-F1
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vfazio@xes-inc.com>) id 1jEvIK-0007hN-Bu
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 09:33:09 -0400
-Received: from xes-mad.com ([162.248.234.2]:16735 helo=mail.xes-mad.com)
+ (envelope-from <philmd@redhat.com>) id 1jEygF-0002S1-EG
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:04 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:38363)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vfazio@xes-inc.com>)
- id 1jEvIF-0007af-GO; Thu, 19 Mar 2020 09:33:03 -0400
-Received: from vfazio1.xes-mad.com (vfazio1.xes-mad.com [10.52.16.140])
- by mail.xes-mad.com (Postfix) with ESMTP id 75A3B201E3;
- Thu, 19 Mar 2020 08:33:01 -0500 (CDT)
-From: Vincent Fazio <vfazio@xes-inc.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
- qemu-trivial@nongnu.org, Vincent Fazio <vfazio@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 1/1] target/ppc: don't byte swap ELFv2 signal handler
-Date: Thu, 19 Mar 2020 08:32:44 -0500
-Message-Id: <20200319133244.8818-1-vfazio@xes-inc.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jEygF-0002R3-An
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584637803;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=d0AD3md2JrKuoXzgHTQ6a6blYLaLqpMNpIstDJfJZ2A=;
+ b=AY2DRdEhH0kXiwN8rBO0j3po0mJRnQmb6+foCZB1XuS+fCvdoMvKYAVrhRCtxwDvsy5Z7q
+ NjmP7eFefURRnpzGgNCWk55oNIWmLr9bRgg/9vrKHHi2i76H5jilYziUDD9/dHaxEWDogo
+ /UWkUgS7HHQvBVWKl1DpLbD1/zSIUss=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-482-bPE4cLU7PDKTo2sck2rwGQ-1; Thu, 19 Mar 2020 13:09:59 -0400
+X-MC-Unique: bPE4cLU7PDKTo2sck2rwGQ-1
+Received: by mail-ed1-f71.google.com with SMTP id i25so2548727edx.12
+ for <qemu-trivial@nongnu.org>; Thu, 19 Mar 2020 10:09:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=itBaS7TTJpDr6mA42Crb/kFQ0RZRvY5MneNOmacld7U=;
+ b=Zbkk4bbhlHuDmzOIDQzbTSqs6qiPPsAf2FDR7e19R/Ah1QdXKYaK8r4o+ogyUQEl+N
+ jlkXbT/O6YitzJJDUNMMcb9B/N+ET6EDwrSh73SR7RmvjwnTJ4pQDht42Lx9rQYk4Fxk
+ OyAWa5wgKlkuXp65TvCndVh4vLTs1+VmcAO4MlNYRzqbZT/HREE5JRVrwHFP2o1y0qL4
+ BzzfhB7+yTrzxiRG/oOqAPOqK5m1wDfM4XAewFWBq2Kc7fSwSStn1SzELylR+DIvy8Yd
+ mK9/x5A52oyc5+Wu2Aum+GpVLsbigb7kH4lolmw9ZGjf9plRpu4BZfg2+tRnhD9z6kb8
+ HB+w==
+X-Gm-Message-State: ANhLgQ1pOj20W0LApgAYA9cvfK2JHx6SkmwI/E/pzxOdNvLq7iaO9iik
+ GuQWTQN8QVAtCKa9opRnDWFX8peC88+UoX5FArNSTn6d3ucD1USrk8ibWPC+6IiDDCa5dicVwV0
+ WjAusxwoLyhb0hj3O1g==
+X-Received: by 2002:a50:e041:: with SMTP id g1mr3920680edl.118.1584637797978; 
+ Thu, 19 Mar 2020 10:09:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuv/w4KLaobmd1S8C+GPx3zHqyPigMMA31mYRDgoSwpWvdbRrxsCiHJ1QQBXg4J+2wjdU+UYQ==
+X-Received: by 2002:a50:e041:: with SMTP id g1mr3920654edl.118.1584637797713; 
+ Thu, 19 Mar 2020 10:09:57 -0700 (PDT)
+Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id dj4sm2313edb.91.2020.03.19.10.09.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Mar 2020 10:09:56 -0700 (PDT)
+Subject: Re: [PATCH v1] configure: record sphinx output
+To: Olaf Hering <olaf@aepfle.de>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200319143954.25694-1-olaf@aepfle.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <64f7658b-556d-6bbc-b486-487f3822f64d@redhat.com>
+Date: Thu, 19 Mar 2020 18:09:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200319143954.25694-1-olaf@aepfle.de>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 162.248.234.2
+X-Received-From: 63.128.21.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -41,68 +84,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Mar 2020 13:33:11 -0000
+X-List-Received-Date: Thu, 19 Mar 2020 17:10:05 -0000
 
-From: Vincent Fazio <vfazio@gmail.com>
-
-Previously, the signal handler would be byte swapped if the target and
-host CPU used different endianness. This would cause a SIGSEGV when
-attempting to translate the opcode pointed to by the swapped address.
-
- Thread 1 "qemu-ppc64" received signal SIGSEGV, Segmentation fault.
- 0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/includ=
-e/qemu/bswap.h:351
- 351        __builtin_memcpy(&r, ptr, sizeof(r));
-
- #0  0x00000000600a9257 in ldl_he_p (ptr=3D0x4c2c061000000000) at qemu/in=
-clude/qemu/bswap.h:351
- #1  0x00000000600a92fe in ldl_be_p (ptr=3D0x4c2c061000000000) at qemu/in=
-clude/qemu/bswap.h:449
- #2  0x00000000600c0790 in translator_ldl_swap at qemu/include/exec/trans=
-lator.h:201
- #3  0x000000006011c1ab in ppc_tr_translate_insn at qemu/target/ppc/trans=
-late.c:7856
- #4  0x000000006005ae70 in translator_loop at qemu/accel/tcg/translator.c=
-:102
-
-The signal handler will be byte swapped as a result of the __get_user()
-call in sigaction() if it is necessary, no additional swap is required.
-
-Signed-off-by: Vincent Fazio <vfazio@gmail.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-Changes since v2:
-- Explain why the swap is not necessary
-
-Changes since v1:
-- Drop host/target endianness callouts
-- Drop unnecessary pointer cast
-- Clarify commit message
-
- linux-user/ppc/signal.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-index 5b82af6cb6..b8613c5e1b 100644
---- a/linux-user/ppc/signal.c
-+++ b/linux-user/ppc/signal.c
-@@ -567,10 +567,8 @@ void setup_rt_frame(int sig, struct target_sigaction=
- *ka,
-         env->nip =3D tswapl(handler->entry);
-         env->gpr[2] =3D tswapl(handler->toc);
-     } else {
--        /* ELFv2 PPC64 function pointers are entry points, but R12
--         * must also be set */
--        env->nip =3D tswapl((target_ulong) ka->_sa_handler);
--        env->gpr[12] =3D env->nip;
-+        /* ELFv2 PPC64 function pointers are entry points. R12 must also=
- be set. */
-+        env->gpr[12] =3D env->nip =3D ka->_sa_handler;
-     }
- #else
-     env->nip =3D (target_ulong) ka->_sa_handler;
---=20
-2.25.1
+On 3/19/20 3:39 PM, Olaf Hering wrote:
+> If configure fails to run due to errors in the expected sphinx
+> environment no helpful message is recorded. Write all of the output to
+> config.log to assist with debugging.
+>=20
+> Signed-off-by: Olaf Hering <olaf@aepfle.de>
+> ---
+>   configure | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/configure b/configure
+> index 12dbb0c76b..55086b0280 100755
+> --- a/configure
+> +++ b/configure
+> @@ -4908,7 +4908,7 @@ has_sphinx_build() {
+>       # sphinx-build doesn't exist at all or if it is too old.
+>       mkdir -p "$TMPDIR1/sphinx"
+>       touch "$TMPDIR1/sphinx/index.rst"
+> -    "$sphinx_build" -c "$source_path/docs" -b html "$TMPDIR1/sphinx" "$T=
+MPDIR1/sphinx/out" >/dev/null 2>&1
+> +    "$sphinx_build" -c "$source_path/docs" -b html "$TMPDIR1/sphinx" "$T=
+MPDIR1/sphinx/out" >> config.log 2>&1
+>   }
+>  =20
+>   # Check if tools are available to build documentation.
+>=20
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
 
