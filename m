@@ -1,62 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFKKD-0002uv-Tm
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 12:16:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43539)
+	id 1jFLTS-0006kW-0i
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 13:30:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32945)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jFKKA-0002sB-Q4
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:43 -0400
+ (envelope-from <jsuvorov@redhat.com>) id 1jFLTP-0006iU-MC
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jFKK9-0001fK-FM
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:42 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:21049)
+ (envelope-from <jsuvorov@redhat.com>) id 1jFLTO-00047T-Nr
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:19 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56266)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jFKK9-0001el-AY
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:41 -0400
+ (Exim 4.71) (envelope-from <jsuvorov@redhat.com>) id 1jFLTO-00047B-Km
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584721000;
+ s=mimecast20190719; t=1584725418;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WPGyl0ES/D0a+JnECTtVka7RZxzK4aeXitbCQH4DaQA=;
- b=VbN+DtJmZRuEuG5XgJccaU4Ib6xBDYGJtFLBvYeoyr7JeZ0qB7DFRgpcgmYI0hMrmvqmRB
- 8rCStXLxpNqP3TpqiGBcqTGtcB6dna3wxvniOh64bnRrJmJjay2LYD/T4nkXKBb0GfYMS9
- 2M9+T63Xl8pdHDklT7XkvTb5Ir32p5A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-376-p_DgBYmkOQ2mKp-DM6FjVA-1; Fri, 20 Mar 2020 12:16:38 -0400
-X-MC-Unique: p_DgBYmkOQ2mKp-DM6FjVA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09C1E8017CC;
- Fri, 20 Mar 2020 16:16:37 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-130.ams2.redhat.com
- [10.36.112.130])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DD42594972;
- Fri, 20 Mar 2020 16:16:33 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4954F1138404; Fri, 20 Mar 2020 17:16:31 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
- qemu-trivial@nongnu.org,  qemu-ppc@nongnu.org,  Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,  David Gibson
- <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH] ppc/ppc405_boards: Remove unnecessary NULL check
-References: <20200320155740.5342-1-philmd@redhat.com>
-Date: Fri, 20 Mar 2020 17:16:31 +0100
-In-Reply-To: <20200320155740.5342-1-philmd@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 20 Mar 2020 16:57:40
- +0100")
-Message-ID: <877dzfypb4.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ bh=ykXk2E+lWMcuiOhPMluf7qmvakDaNrmcJ7I4Dqdlu7U=;
+ b=CdQ6MF1UUVxvIHQLIJHc3LQ/+zsoHcEygo8e/EitRTTWsQcLN+4tDlwlYAC30ioy1BzqDX
+ gUdsp2HxpJjNtio6R8N7qL217onZCdTxI2/siLNtttPUh4nXDhOUY1eviboD/Is6pvy9VO
+ iKccy2RcduuSdIrstH17v8GSmwRnSuw=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-402-RQpa6B_CPoyhdcnOyn2D2w-1; Fri, 20 Mar 2020 13:30:15 -0400
+X-MC-Unique: RQpa6B_CPoyhdcnOyn2D2w-1
+Received: by mail-lj1-f197.google.com with SMTP id e8so1124900ljk.23
+ for <qemu-trivial@nongnu.org>; Fri, 20 Mar 2020 10:30:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=GOcoe0J9w1J/GQg4S1bRWkNrGCbJYRtmcESUhZ2BySI=;
+ b=QhpVgPJDBCIbtLV/4nzvnB+KFtGvpOA3ru3apigUDN9fwaZxbTttPvuwVhPYOd60Uo
+ 8m1CCwwzcfEvnW9R9w7sEuSYUC3mhqMuPeYiDv5UN/7rnQQQVdGT/NebZX0OGUans2AF
+ mKS+j/7I6TFKXFxRDZR8xMkwVIc7ekIKvqdpwjcLX1i7/zcauX0CKt4jRIOgQhgkvQ5T
+ pdHnYzI+Zm/w1VERfRKS0TetTQvMo5pOq4QKTmw7tbDhCDR+M8rGvVPS7UgNlpA5F5HL
+ Be6HcxwfYvAr70aJcQ966vNtcKEoHiwxcj0O30KwvJMMBkI+lkzVs8/R37ls8h8fRAPu
+ Y30w==
+X-Gm-Message-State: ANhLgQ15GT/ygaDezv4HAhDhZln5Ctp9Nr1sTzIq7MJmBuCKg85ZKs4e
+ DX14OLJCBS3+xLMdeEFFLywR01r6Tmf+umijf5NLa9/syeCawy3ovsTJBrhGZowywIcQYfxxBWq
+ 8JEw2GUAKtxqQSuiEIqYXMUJce7npny3FpA==
+X-Received: by 2002:a19:f008:: with SMTP id p8mr5886137lfc.217.1584725413705; 
+ Fri, 20 Mar 2020 10:30:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvmbmm10XxnYGNsEhCnO3kX0zteatMw5OcwiFwCzctx21ktliZUKd51vUCSPoHJWyQQwcf9mbEv1rB/N83dYR0=
+X-Received: by 2002:a19:f008:: with SMTP id p8mr5886120lfc.217.1584725413269; 
+ Fri, 20 Mar 2020 10:30:13 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+References: <20200318134849.237011-1-jusual@redhat.com>
+ <20200320152022.GC138042@stefanha-x1.localdomain>
+In-Reply-To: <20200320152022.GC138042@stefanha-x1.localdomain>
+From: Julia Suvorova <jusual@redhat.com>
+Date: Fri, 20 Mar 2020 18:30:02 +0100
+Message-ID: <CAMDeoFX2D-c03PHcfiQ_ub4GMptjdUkUozZ53P4a-Vd_eNw86g@mail.gmail.com>
+Subject: Re: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Yuval Shaia <yuval.shaia.ml@gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 63.128.21.74
@@ -71,57 +75,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 16:16:44 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 17:30:20 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
-> This code is inside the "if (dinfo)" condition, so testing
-> again here whether it is NULL is unnecessary.
+On Fri, Mar 20, 2020 at 4:20 PM Stefan Hajnoczi <stefanha@gmail.com> wrote:
 >
-> Fixes: dd59bcae7 (Don't size flash memory to match backing image)
-> Reported-by: Coverity (CID 1421917)
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/ppc/ppc405_boards.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> On Wed, Mar 18, 2020 at 02:48:49PM +0100, Julia Suvorova wrote:
+> > ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untrunc=
+ated
+> > strncpy with QEMU function.
+> > This case prevented QEMU from compiling with --enable-sanitizers.
+> >
+> > Signed-off-by: Julia Suvorova <jusual@redhat.com>
+> > ---
+> >  hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index e6bffb9e1a..6198ec1035 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -191,7 +191,7 @@ static void ref405ep_init(MachineState *machine)
->          bios_size =3D 8 * MiB;
->          pflash_cfi02_register((uint32_t)(-bios_size),
->                                "ef405ep.bios", bios_size,
-> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> +                              blk_by_legacy_dinfo(dinfo),
->                                64 * KiB, 1,
->                                2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
-> @@ -459,7 +459,7 @@ static void taihu_405ep_init(MachineState *machine)
->          bios_size =3D 2 * MiB;
->          pflash_cfi02_register(0xFFE00000,
->                                "taihu_405ep.bios", bios_size,
-> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> +                              blk_by_legacy_dinfo(dinfo),
->                                64 * KiB, 1,
->                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
-> @@ -494,7 +494,7 @@ static void taihu_405ep_init(MachineState *machine)
->      if (dinfo) {
->          bios_size =3D 32 * MiB;
->          pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size=
-,
-> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> +                              blk_by_legacy_dinfo(dinfo),
->                                64 * KiB, 1,
->                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
+> Here is my equivalent patch
+> <20200316160702.478964-3-stefanha@redhat.com> but feel free to merge
+> this.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Oops, sorry, I guess I didn't search carefully enough for the solution.
+
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
 
