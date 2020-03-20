@@ -1,59 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFHjS-0001OW-CU
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 09:30:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51821)
+	id 1jFIG5-0008II-I9
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 10:04:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45907)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yuval.shaia.ml@gmail.com>) id 1jFG9l-00013t-RX
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 07:49:42 -0400
+ (envelope-from <stefanha@gmail.com>) id 1jFIFz-0008F8-0m
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 10:04:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <yuval.shaia.ml@gmail.com>) id 1jFG9k-0004tF-Md
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 07:49:41 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:40965)
+ (envelope-from <stefanha@gmail.com>) id 1jFIFx-0006dF-VN
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 10:04:14 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55243)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <yuval.shaia.ml@gmail.com>)
- id 1jFG9i-0004s8-AJ; Fri, 20 Mar 2020 07:49:38 -0400
-Received: by mail-oi1-x244.google.com with SMTP id b17so6126711oic.8;
- Fri, 20 Mar 2020 04:49:38 -0700 (PDT)
+ (Exim 4.71) (envelope-from <stefanha@gmail.com>)
+ id 1jFIFu-0006bN-By; Fri, 20 Mar 2020 10:04:10 -0400
+Received: by mail-wm1-x342.google.com with SMTP id f130so5451204wmf.4;
+ Fri, 20 Mar 2020 07:04:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gyOnx1nzAHzLx2CPSjU3uktBQhRrmpu053D+0rZDdrs=;
- b=PU06joafaL9KHCeD+wfxOp8Se3vNNRfIf5pfUDGsvK/6WAb+f5SqruPpmfWJj/xkR9
- 0m1/OcQULBlA5UIts0/PGUhghXUUXdwwIwY39fV6IVtGLmzGsiBjkPfjtZJo8BqqutSK
- q7+NTFZHoLUCS1xxdQeqX3C/+KhaouqAyxVU8WREgveyr/O6WCQ6/uDdKfb5ABcOAniW
- VmZhVuoSv6vt1Sf7m3E4vRmmPBR9DG6Ltl0PRdS2fL5wtLaJfR72J0JJAd601tC4SvEg
- 77TLN2+gV7pZxcRO544BXoaTs4PH4PKWJFL0MYKdbxbc0kvy4kLKoJ+nb+8rP5A5iZ8z
- Xdiw==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=73KCCYSwGSq9irnuaUcZKSkQ2zWBpWoys7duxTzinOE=;
+ b=DbZCpQKKxHBpQIgzBVgmn5Nhyts62skPrKx4h2Tx02nPg4lIyUly6znObMFygFlCQ7
+ UspKQyS1m0TOnJKmpJcmWOfS5Wo2KXyppJ6brp6zxH9LPMGg1S5NyZcr7PKCVlFqBXtO
+ M9hjp2ogMhLEqyBsHVY6dmA5ibqr4quXfvEfnpbnZxbZ4eowPoUtYdchwVAyGbv473/s
+ KpjfljjDoQT5jldyBxTPgzKVIXTo410JJ4wD1KV1bTi+oq/IN8LmsaLGlJ6/HTUgc8A4
+ gVdkKSQgH4+MMhP+T/JTvsfqRzdmChVdeqfhgVE6tfs5JAHU6Qlw9y964p4IrUWNRZyv
+ wF+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gyOnx1nzAHzLx2CPSjU3uktBQhRrmpu053D+0rZDdrs=;
- b=XBZMTRjuLY8WxIKGskAKdZYxW98AxkBw8W/RY4Hw3MQAF4xsfMn++T3OjZ//3GXmeU
- E+4QRYp4h7i0MC4itV3gN7nQTRMT+sX6pQ91swKZn5SFKwW035LleEgt/ay0zjmktAqR
- xQDffaA84cVi2EGB9x5wM2f1aqhJ0TQdhU5m+Bcz49jU9+qye+NCABX6/YUvXype9mh4
- Xr3BkO+3yQwHNv2tBOP2oVqBrCXVYQI1oXzUZkIq+i4JPEvGfa99I7k9QF9apYltN3b2
- i+NdISH0OiR+C6DFHXpN2AXXbjVshiQDplRll8k6fu6N6Vy5F5oLzvM//NbApRSoIylq
- 1JAQ==
-X-Gm-Message-State: ANhLgQ28sKz3MnlLatQZoGVku+sbpALmc57K+wl6ExPeqfaiqFM0E3kb
- +x9QGP/Yjp/bgbL5CPG6gFeWbYbWKfzOAVscfYM=
-X-Google-Smtp-Source: ADFU+vuRXKolinRzb4RA/S259EekPXxH4S2n+HMzvC3JYl08lzf40ILwEjgLJEDWVF6W7hi+ouu6Fb5E4AviLdy3ees=
-X-Received: by 2002:aca:cc08:: with SMTP id c8mr5912527oig.42.1584704977135;
- Fri, 20 Mar 2020 04:49:37 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=73KCCYSwGSq9irnuaUcZKSkQ2zWBpWoys7duxTzinOE=;
+ b=BhLauPzBnOxa6A0Rqi3ulA1GJE4UVDdYX2TOBalJAqEPPnKcBMVUo2KS7CkZ3+fegN
+ 7GAcYC7GanIVXjnL/a2EUSgvSHYveWdQK8NBcK6pn7uGfKDR6TiSuQ/kJZEdlTnBkkYe
+ eHWTDurAgThRpttABJCbjMsjmj6STfs4/7Vs2kplrWQTeBaanqB3bGcMevh95ZbNvwGA
+ wY7VLKTXtn1PpQbPGK/r25ghnaZ4vzZW2quo2ieCiZq5spsUPWp0rv4N9WYDkUXF0IhP
+ gnJ4AsKBGqjeLI1Rzvlm/oHIWXnhl+l+dWrxDrv65+HJjPndZwbcwDmW4I83h6P+bDwO
+ Y8Jw==
+X-Gm-Message-State: ANhLgQ2PLQpawcAm+YecxPqq5UA2eMpnvoqg1+lfNlaHsB1Xw3ZKYJ0S
+ RRsrxcIsuZS56Ytf0mHMeVA=
+X-Google-Smtp-Source: ADFU+vu1UkY+uJLdm+mzwhBu8KZsG5zoPXlqyJ2iVgnF1APfInZ9YBGqKQZLCEzFcWJrHWl3quJ1Vw==
+X-Received: by 2002:a1c:b686:: with SMTP id g128mr10447572wmf.75.1584713049028; 
+ Fri, 20 Mar 2020 07:04:09 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id p10sm4172337wrm.6.2020.03.20.07.04.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Mar 2020 07:04:08 -0700 (PDT)
+Date: Fri, 20 Mar 2020 14:04:06 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, zhang.zhanghailiang@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Peter Lieven <pl@kamp.de>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>,
+ Chen Qun <kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent
+ Clang warning
+Message-ID: <20200320140406.GA138042@stefanha-x1.localdomain>
+References: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-References: <20200318134849.237011-1-jusual@redhat.com>
-In-Reply-To: <20200318134849.237011-1-jusual@redhat.com>
-From: Yuval Shaia <yuval.shaia.ml@gmail.com>
-Date: Fri, 20 Mar 2020 13:49:26 +0200
-Message-ID: <CAMPkWoPp7mSp5_bBBxmu8KJ1=C+_+-0UXX-oab6Wcw8vNjK5Jg@mail.gmail.com>
-Subject: Re: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
-To: Julia Suvorova <jusual@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000003c6bc105a147e1c5"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="6TrnltStXW4iwmi0"
+Content-Disposition: inline
+In-Reply-To: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-Mailman-Approved-At: Fri, 20 Mar 2020 09:30:37 -0400
+X-Received-From: 2a00:1450:4864:20::342
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,102 +76,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 11:49:43 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 14:04:16 -0000
 
---0000000000003c6bc105a147e1c5
-Content-Type: text/plain; charset="UTF-8"
 
-Thanks,
-Reviewed-by: Yuval Shaia <yuval.shaia.ml.gmail.com>
-
-On Wed, 18 Mar 2020 at 15:49, Julia Suvorova <jusual@redhat.com> wrote:
-
-> ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untruncated
-> strncpy with QEMU function.
-> This case prevented QEMU from compiling with --enable-sanitizers.
->
-> Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> ---
->  hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c
-> index d7bc7f5ccc..c2b3dd70a9 100644
-> --- a/hw/rdma/vmw/pvrdma_dev_ring.c
-> +++ b/hw/rdma/vmw/pvrdma_dev_ring.c
-> @@ -16,6 +16,7 @@
->  #include "qemu/osdep.h"
->  #include "hw/pci/pci.h"
->  #include "cpu.h"
-> +#include "qemu/cutils.h"
->
->  #include "trace.h"
->
-> @@ -30,8 +31,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name,
-> PCIDevice *dev,
->      int i;
->      int rc = 0;
->
-> -    strncpy(ring->name, name, MAX_RING_NAME_SZ);
-> -    ring->name[MAX_RING_NAME_SZ - 1] = 0;
-> +    pstrcpy(ring->name, MAX_RING_NAME_SZ, name);
->      ring->dev = dev;
->      ring->ring_state = ring_state;
->      ring->max_elems = max_elems;
-> --
-> 2.24.1
->
->
-
---0000000000003c6bc105a147e1c5
-Content-Type: text/html; charset="UTF-8"
+--6TrnltStXW4iwmi0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Thanks,<div>Reviewed-by: Yuval Shaia &lt;<a href=3D"http:/=
-/yuval.shaia.ml.gmail.com">yuval.shaia.ml.gmail.com</a>&gt;</div></div><br>=
-<div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, 18=
- Mar 2020 at 15:49, Julia Suvorova &lt;<a href=3D"mailto:jusual@redhat.com"=
->jusual@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">ring-&gt;name is defined as &#39;char name[MAX_RING_NAME_=
-SZ]&#39;. Replace untruncated<br>
-strncpy with QEMU function.<br>
-This case prevented QEMU from compiling with --enable-sanitizers.<br>
-<br>
-Signed-off-by: Julia Suvorova &lt;<a href=3D"mailto:jusual@redhat.com" targ=
-et=3D"_blank">jusual@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--<br>
-=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c<=
-br>
-index d7bc7f5ccc..c2b3dd70a9 100644<br>
---- a/hw/rdma/vmw/pvrdma_dev_ring.c<br>
-+++ b/hw/rdma/vmw/pvrdma_dev_ring.c<br>
-@@ -16,6 +16,7 @@<br>
-=C2=A0#include &quot;qemu/osdep.h&quot;<br>
-=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
-=C2=A0#include &quot;cpu.h&quot;<br>
-+#include &quot;qemu/cutils.h&quot;<br>
-<br>
-=C2=A0#include &quot;trace.h&quot;<br>
-<br>
-@@ -30,8 +31,7 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name, =
-PCIDevice *dev,<br>
-=C2=A0 =C2=A0 =C2=A0int i;<br>
-=C2=A0 =C2=A0 =C2=A0int rc =3D 0;<br>
-<br>
--=C2=A0 =C2=A0 strncpy(ring-&gt;name, name, MAX_RING_NAME_SZ);<br>
--=C2=A0 =C2=A0 ring-&gt;name[MAX_RING_NAME_SZ - 1] =3D 0;<br>
-+=C2=A0 =C2=A0 pstrcpy(ring-&gt;name, MAX_RING_NAME_SZ, name);<br>
-=C2=A0 =C2=A0 =C2=A0ring-&gt;dev =3D dev;<br>
-=C2=A0 =C2=A0 =C2=A0ring-&gt;ring_state =3D ring_state;<br>
-=C2=A0 =C2=A0 =C2=A0ring-&gt;max_elems =3D max_elems;<br>
--- <br>
-2.24.1<br>
-<br>
-</blockquote></div>
+On Wed, Mar 11, 2020 at 11:29:27AM +0800, Chen Qun wrote:
+> Clang static code analyzer show warning:
+>   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
+>         flags &=3D ~BDRV_O_RDWR;
+>         ^        ~~~~~~~~~~~~
+>=20
+> In iscsi_allocmap_init() only checks BDRV_O_NOCACHE, which
+> is the same in both of flags and bs->open_flags.
+> We can use the flags instead bs->open_flags to prevent Clang warning.
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
---0000000000003c6bc105a147e1c5--
+This can go via Paolo's SCSI tree.
+
+> ---
+> Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Peter Lieven <pl@kamp.de>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> Cc: Laurent Vivier <laurent@vivier.eu>
+>=20
+> v1->v2:
+>  Keep the 'flags' then use it(Base on Kevin's comments).
+>=20
+> v2->v3:
+>  Modify subject and commit messages(Base on Kevin's and Laurent's comment=
+s).
+> ---
+>  block/iscsi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/block/iscsi.c b/block/iscsi.c
+> index 682abd8e09..50bae51700 100644
+> --- a/block/iscsi.c
+> +++ b/block/iscsi.c
+> @@ -2002,7 +2002,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
+options, int flags,
+>          iscsilun->cluster_size =3D iscsilun->bl.opt_unmap_gran *
+>              iscsilun->block_size;
+>          if (iscsilun->lbprz) {
+> -            ret =3D iscsi_allocmap_init(iscsilun, bs->open_flags);
+> +            ret =3D iscsi_allocmap_init(iscsilun, flags);
+>          }
+>      }
+> =20
+> --=20
+> 2.23.0
+>=20
+>=20
+>=20
+
+--6TrnltStXW4iwmi0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl50zVYACgkQnKSrs4Gr
+c8ivZQf/ZUeVWKUHOMH/mnrkpp6hvahHi3xc06MRKHPuN0B3vNZ+0MGWHen74qHJ
+wfqvDEdF3onbddapTQwszioUbjjsizkVFYFZMt+QqEDwk6fga9HM/b9bOUGVzloZ
+XSIEr3HdGsNutgAXvE0JfdAxU4Tzw5bwjusKFtjFga6D6kbAMdg8vAJJuDBTDGOa
+OxQCoPFuB3iV4nwzI8u2RQPGcoPNRLEVKuhRHMeqi/1V3WtLJYWZY5vJXENrHeY0
+ecJc6TkSDtdSQm0lSG4HBe0a/HMH3f/REkY8zVmJ5aU3QTLaYKcCuhBtq9MDvBGj
+5X4EjJKPBANVPWaxxxXF4vf/SHLZlw==
+=lkRs
+-----END PGP SIGNATURE-----
+
+--6TrnltStXW4iwmi0--
 
