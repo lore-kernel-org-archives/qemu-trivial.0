@@ -1,76 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFK21-0008KN-IZ
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 11:57:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37052)
+	id 1jFKKD-0002uv-Tm
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 12:16:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43539)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFK1x-0008JE-Uk
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:54 -0400
+ (envelope-from <armbru@redhat.com>) id 1jFKKA-0002sB-Q4
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFK1w-0003qb-Ue
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:53 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:60983)
+ (envelope-from <armbru@redhat.com>) id 1jFKK9-0001fK-FM
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:42 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:21049)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFK1w-0003on-RO
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:52 -0400
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jFKK9-0001el-AY
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 12:16:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584719871;
+ s=mimecast20190719; t=1584721000;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=jY9hFXsRQKShgR6fFRHDQkteEgkZAWGBxIuQEuqC1Q8=;
- b=fkhTYMLwgGCjY47ahSOrkK5/xyt32bwngpZLClwSKedvQRf3/t6L0+IUGWd8alf84pP8sf
- r5kWnfX5QQPXahzp1rek7xtCA22IoCrKn5D4SuBH+qOWHoCwMYvkNyYpSZkAG0WJcC34gM
- ARPK1eeCpyWi3ocWZggW0yPeACVws/E=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-351-wsUgF1T4NIqQr4u9lVvsrA-1; Fri, 20 Mar 2020 11:57:49 -0400
-X-MC-Unique: wsUgF1T4NIqQr4u9lVvsrA-1
-Received: by mail-wr1-f72.google.com with SMTP id c6so2806664wrm.18
- for <qemu-trivial@nongnu.org>; Fri, 20 Mar 2020 08:57:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yo0Dd1h/opLMkm38keM/qX9N7f08guLSjUkx4P9OCWI=;
- b=oolanLe926Fcwxt/SUDjA/K1eZx0FFKC8b43vwewVmjH1QYPsRnZQRr1tS5y9ddwjy
- n4itDOwIxIzJuE8yoFF34SoY+/pLk0BLQiTGV05d24QCw6DJVMr/RA71sBIZEY65RVQl
- 5z1wmXbEc/lpipfQHd9lfifSy92h97URK/SNWvjaDaqwbT8KPuxypw7vUIj3MuIxIdUA
- nYL/HJLV8NjvMFoGOmj1RlHJ0zboFYMbYBoKPS9NuNLOEMJ4w0YKTdD5tbvA9cFOlsNn
- 9fmDwTQwcqPrGfy+h51rt7cItb87ReJY+e9YXLR3WEZrBW1dwXbRANKCG26cF1/SVijm
- cUfA==
-X-Gm-Message-State: ANhLgQ1IcBw/gjioYYGW2k2j27aYsCQmFTduLgiycNh7IV+vkCeVGomU
- mCGlkYWphUjZ7AdSCJW6QinSp2FBCMuPKH0B8qfDyBAlmCWT3Y3uRXmAWzIK8Cbw8BoNwPyqD1D
- Ty5Fp8Hvp7vQURujhDg==
-X-Received: by 2002:adf:9ccd:: with SMTP id h13mr5342136wre.427.1584719868731; 
- Fri, 20 Mar 2020 08:57:48 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtKNIySo+0h9nKi1gF8SVhvWINxKpB6fvuZ/k49TAlOK+68wRu67Dh8yorrIbw24AcvMbgFaQ==
-X-Received: by 2002:adf:9ccd:: with SMTP id h13mr5342111wre.427.1584719868467; 
- Fri, 20 Mar 2020 08:57:48 -0700 (PDT)
-Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id x5sm9117419wrv.67.2020.03.20.08.57.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2020 08:57:47 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] ppc/ppc405_boards: Remove unnecessary NULL check
-Date: Fri, 20 Mar 2020 16:57:40 +0100
-Message-Id: <20200320155740.5342-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WPGyl0ES/D0a+JnECTtVka7RZxzK4aeXitbCQH4DaQA=;
+ b=VbN+DtJmZRuEuG5XgJccaU4Ib6xBDYGJtFLBvYeoyr7JeZ0qB7DFRgpcgmYI0hMrmvqmRB
+ 8rCStXLxpNqP3TpqiGBcqTGtcB6dna3wxvniOh64bnRrJmJjay2LYD/T4nkXKBb0GfYMS9
+ 2M9+T63Xl8pdHDklT7XkvTb5Ir32p5A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-376-p_DgBYmkOQ2mKp-DM6FjVA-1; Fri, 20 Mar 2020 12:16:38 -0400
+X-MC-Unique: p_DgBYmkOQ2mKp-DM6FjVA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09C1E8017CC;
+ Fri, 20 Mar 2020 16:16:37 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-130.ams2.redhat.com
+ [10.36.112.130])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DD42594972;
+ Fri, 20 Mar 2020 16:16:33 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4954F1138404; Fri, 20 Mar 2020 17:16:31 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+ qemu-trivial@nongnu.org,  qemu-ppc@nongnu.org,  Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,  David Gibson
+ <david@gibson.dropbear.id.au>
+Subject: Re: [PATCH] ppc/ppc405_boards: Remove unnecessary NULL check
+References: <20200320155740.5342-1-philmd@redhat.com>
+Date: Fri, 20 Mar 2020 17:16:31 +0100
+In-Reply-To: <20200320155740.5342-1-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 20 Mar 2020 16:57:40
+ +0100")
+Message-ID: <877dzfypb4.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+X-Received-From: 63.128.21.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,54 +71,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 15:57:55 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 16:16:44 -0000
 
-This code is inside the "if (dinfo)" condition, so testing
-again here whether it is NULL is unnecessary.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Fixes: dd59bcae7 (Don't size flash memory to match backing image)
-Reported-by: Coverity (CID 1421917)
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/ppc/ppc405_boards.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> This code is inside the "if (dinfo)" condition, so testing
+> again here whether it is NULL is unnecessary.
+>
+> Fixes: dd59bcae7 (Don't size flash memory to match backing image)
+> Reported-by: Coverity (CID 1421917)
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/ppc/ppc405_boards.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+> index e6bffb9e1a..6198ec1035 100644
+> --- a/hw/ppc/ppc405_boards.c
+> +++ b/hw/ppc/ppc405_boards.c
+> @@ -191,7 +191,7 @@ static void ref405ep_init(MachineState *machine)
+>          bios_size =3D 8 * MiB;
+>          pflash_cfi02_register((uint32_t)(-bios_size),
+>                                "ef405ep.bios", bios_size,
+> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+> +                              blk_by_legacy_dinfo(dinfo),
+>                                64 * KiB, 1,
+>                                2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
+0x2AA,
+>                                1);
+> @@ -459,7 +459,7 @@ static void taihu_405ep_init(MachineState *machine)
+>          bios_size =3D 2 * MiB;
+>          pflash_cfi02_register(0xFFE00000,
+>                                "taihu_405ep.bios", bios_size,
+> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+> +                              blk_by_legacy_dinfo(dinfo),
+>                                64 * KiB, 1,
+>                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
+0x2AA,
+>                                1);
+> @@ -494,7 +494,7 @@ static void taihu_405ep_init(MachineState *machine)
+>      if (dinfo) {
+>          bios_size =3D 32 * MiB;
+>          pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size=
+,
+> -                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+> +                              blk_by_legacy_dinfo(dinfo),
+>                                64 * KiB, 1,
+>                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
+0x2AA,
+>                                1);
 
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index e6bffb9e1a..6198ec1035 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -191,7 +191,7 @@ static void ref405ep_init(MachineState *machine)
-         bios_size =3D 8 * MiB;
-         pflash_cfi02_register((uint32_t)(-bios_size),
-                               "ef405ep.bios", bios_size,
--                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                              blk_by_legacy_dinfo(dinfo),
-                               64 * KiB, 1,
-                               2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
-2AA,
-                               1);
-@@ -459,7 +459,7 @@ static void taihu_405ep_init(MachineState *machine)
-         bios_size =3D 2 * MiB;
-         pflash_cfi02_register(0xFFE00000,
-                               "taihu_405ep.bios", bios_size,
--                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                              blk_by_legacy_dinfo(dinfo),
-                               64 * KiB, 1,
-                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
-2AA,
-                               1);
-@@ -494,7 +494,7 @@ static void taihu_405ep_init(MachineState *machine)
-     if (dinfo) {
-         bios_size =3D 32 * MiB;
-         pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size,
--                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                              blk_by_legacy_dinfo(dinfo),
-                               64 * KiB, 1,
-                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
-2AA,
-                               1);
---=20
-2.21.1
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
