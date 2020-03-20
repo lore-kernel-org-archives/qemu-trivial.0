@@ -1,78 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jEygI-0001F5-Mo
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 13:10:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58580)
+	id 1jF7M1-00036c-UH
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2020 22:25:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42301)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jEygG-0001Ae-F1
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:05 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jF7Lz-00033D-4z
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 22:25:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jEygF-0002S1-EG
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:04 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:38363)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jF7Lx-00028P-Tz
+ for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 22:25:43 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2078 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jEygF-0002R3-An
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2020 13:10:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584637803;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=d0AD3md2JrKuoXzgHTQ6a6blYLaLqpMNpIstDJfJZ2A=;
- b=AY2DRdEhH0kXiwN8rBO0j3po0mJRnQmb6+foCZB1XuS+fCvdoMvKYAVrhRCtxwDvsy5Z7q
- NjmP7eFefURRnpzGgNCWk55oNIWmLr9bRgg/9vrKHHi2i76H5jilYziUDD9/dHaxEWDogo
- /UWkUgS7HHQvBVWKl1DpLbD1/zSIUss=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-482-bPE4cLU7PDKTo2sck2rwGQ-1; Thu, 19 Mar 2020 13:09:59 -0400
-X-MC-Unique: bPE4cLU7PDKTo2sck2rwGQ-1
-Received: by mail-ed1-f71.google.com with SMTP id i25so2548727edx.12
- for <qemu-trivial@nongnu.org>; Thu, 19 Mar 2020 10:09:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:cc:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=itBaS7TTJpDr6mA42Crb/kFQ0RZRvY5MneNOmacld7U=;
- b=Zbkk4bbhlHuDmzOIDQzbTSqs6qiPPsAf2FDR7e19R/Ah1QdXKYaK8r4o+ogyUQEl+N
- jlkXbT/O6YitzJJDUNMMcb9B/N+ET6EDwrSh73SR7RmvjwnTJ4pQDht42Lx9rQYk4Fxk
- OyAWa5wgKlkuXp65TvCndVh4vLTs1+VmcAO4MlNYRzqbZT/HREE5JRVrwHFP2o1y0qL4
- BzzfhB7+yTrzxiRG/oOqAPOqK5m1wDfM4XAewFWBq2Kc7fSwSStn1SzELylR+DIvy8Yd
- mK9/x5A52oyc5+Wu2Aum+GpVLsbigb7kH4lolmw9ZGjf9plRpu4BZfg2+tRnhD9z6kb8
- HB+w==
-X-Gm-Message-State: ANhLgQ1pOj20W0LApgAYA9cvfK2JHx6SkmwI/E/pzxOdNvLq7iaO9iik
- GuQWTQN8QVAtCKa9opRnDWFX8peC88+UoX5FArNSTn6d3ucD1USrk8ibWPC+6IiDDCa5dicVwV0
- WjAusxwoLyhb0hj3O1g==
-X-Received: by 2002:a50:e041:: with SMTP id g1mr3920680edl.118.1584637797978; 
- Thu, 19 Mar 2020 10:09:57 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuv/w4KLaobmd1S8C+GPx3zHqyPigMMA31mYRDgoSwpWvdbRrxsCiHJ1QQBXg4J+2wjdU+UYQ==
-X-Received: by 2002:a50:e041:: with SMTP id g1mr3920654edl.118.1584637797713; 
- Thu, 19 Mar 2020 10:09:57 -0700 (PDT)
-Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id dj4sm2313edb.91.2020.03.19.10.09.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Mar 2020 10:09:56 -0700 (PDT)
-Subject: Re: [PATCH v1] configure: record sphinx output
-To: Olaf Hering <olaf@aepfle.de>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200319143954.25694-1-olaf@aepfle.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <64f7658b-556d-6bbc-b486-487f3822f64d@redhat.com>
-Date: Thu, 19 Mar 2020 18:09:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jF7Lv-0001sV-84; Thu, 19 Mar 2020 22:25:39 -0400
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 71F7EE67EEDC492CD667;
+ Fri, 20 Mar 2020 10:25:29 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.221]) by
+ DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0439.000;
+ Fri, 20 Mar 2020 10:25:23 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Kevin Wolf <kwolf@redhat.com>, Ronnie Sahlberg
+ <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven
+ <pl@kamp.de>, Max Reitz <mreitz@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>
+Subject: RE: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent
+ Clang warning
+Thread-Topic: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent
+ Clang warning
+Thread-Index: AQHV91VRoTJjKENIM0yjt9fTbzvVVKhQzWiQ
+Date: Fri, 20 Mar 2020 02:25:23 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6A4539@dggemm531-mbx.china.huawei.com>
+References: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200319143954.25694-1-olaf@aepfle.de>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 45.249.212.189
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,34 +58,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Mar 2020 17:10:05 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 02:25:44 -0000
 
-On 3/19/20 3:39 PM, Olaf Hering wrote:
-> If configure fails to run due to errors in the expected sphinx
-> environment no helpful message is recorded. Write all of the output to
-> config.log to assist with debugging.
->=20
-> Signed-off-by: Olaf Hering <olaf@aepfle.de>
-> ---
->   configure | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/configure b/configure
-> index 12dbb0c76b..55086b0280 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4908,7 +4908,7 @@ has_sphinx_build() {
->       # sphinx-build doesn't exist at all or if it is too old.
->       mkdir -p "$TMPDIR1/sphinx"
->       touch "$TMPDIR1/sphinx/index.rst"
-> -    "$sphinx_build" -c "$source_path/docs" -b html "$TMPDIR1/sphinx" "$T=
-MPDIR1/sphinx/out" >/dev/null 2>&1
-> +    "$sphinx_build" -c "$source_path/docs" -b html "$TMPDIR1/sphinx" "$T=
-MPDIR1/sphinx/out" >> config.log 2>&1
->   }
->  =20
->   # Check if tools are available to build documentation.
->=20
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
+R2VudGxlIHBpbmcuDQoNCkFueSBvdGhlciBzdWdnZXN0aW9ucyBhYm91dCB0aGlzPw0KDQpUaGFu
+a3MuDQoNCj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPkZyb206IENoZW5xdW4gKGt1aG4p
+DQo+U2VudDogV2VkbmVzZGF5LCBNYXJjaCAxMSwgMjAyMCAxMToyOSBBTQ0KPlRvOiBxZW11LWRl
+dmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Q2M6IFpoYW5naGFpbGlh
+bmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IENoZW5xdW4gKGt1aG4pDQo+PGt1
+aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5j
+b20+Ow0KPktldmluIFdvbGYgPGt3b2xmQHJlZGhhdC5jb20+OyBSb25uaWUgU2FobGJlcmcNCj48
+cm9ubmllc2FobGJlcmdAZ21haWwuY29tPjsgUGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0
+LmNvbT47IFBldGVyDQo+TGlldmVuIDxwbEBrYW1wLmRlPjsgTWF4IFJlaXR6IDxtcmVpdHpAcmVk
+aGF0LmNvbT47IExhdXJlbnQgVml2aWVyDQo+PGxhdXJlbnRAdml2aWVyLmV1Pg0KPlN1YmplY3Q6
+IFtQQVRDSCB2M10gYmxvY2svaXNjc2k6dXNlIHRoZSBmbGFncyBpbiBpc2NzaV9vcGVuKCkgcHJl
+dmVudCBDbGFuZw0KPndhcm5pbmcNCj4NCj5DbGFuZyBzdGF0aWMgY29kZSBhbmFseXplciBzaG93
+IHdhcm5pbmc6DQo+ICBibG9jay9pc2NzaS5jOjE5MjA6OTogd2FybmluZzogVmFsdWUgc3RvcmVk
+IHRvICdmbGFncycgaXMgbmV2ZXIgcmVhZA0KPiAgICAgICAgZmxhZ3MgJj0gfkJEUlZfT19SRFdS
+Ow0KPiAgICAgICAgXiAgICAgICAgfn5+fn5+fn5+fn5+DQo+DQo+SW4gaXNjc2lfYWxsb2NtYXBf
+aW5pdCgpIG9ubHkgY2hlY2tzIEJEUlZfT19OT0NBQ0hFLCB3aGljaCBpcyB0aGUgc2FtZSBpbg0K
+PmJvdGggb2YgZmxhZ3MgYW5kIGJzLT5vcGVuX2ZsYWdzLg0KPldlIGNhbiB1c2UgdGhlIGZsYWdz
+IGluc3RlYWQgYnMtPm9wZW5fZmxhZ3MgdG8gcHJldmVudCBDbGFuZyB3YXJuaW5nLg0KPg0KPlJl
+cG9ydGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj5TaWduZWQt
+b2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+UmV2aWV3ZWQtYnk6
+IEtldmluIFdvbGYgPGt3b2xmQHJlZGhhdC5jb20+DQo+LS0tDQo+Q2M6IFJvbm5pZSBTYWhsYmVy
+ZyA8cm9ubmllc2FobGJlcmdAZ21haWwuY29tPg0KPkNjOiBQYW9sbyBCb256aW5pIDxwYm9uemlu
+aUByZWRoYXQuY29tPg0KPkNjOiBQZXRlciBMaWV2ZW4gPHBsQGthbXAuZGU+DQo+Q2M6IEtldmlu
+IFdvbGYgPGt3b2xmQHJlZGhhdC5jb20+DQo+Q2M6IE1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5j
+b20+DQo+Q2M6IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZpdmllci5ldT4NCj4NCj52MS0+djI6
+DQo+IEtlZXAgdGhlICdmbGFncycgdGhlbiB1c2UgaXQoQmFzZSBvbiBLZXZpbidzIGNvbW1lbnRz
+KS4NCj4NCj52Mi0+djM6DQo+IE1vZGlmeSBzdWJqZWN0IGFuZCBjb21taXQgbWVzc2FnZXMoQmFz
+ZSBvbiBLZXZpbidzIGFuZCBMYXVyZW50J3MNCj5jb21tZW50cykuDQo+LS0tDQo+IGJsb2NrL2lz
+Y3NpLmMgfCAyICstDQo+IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlv
+bigtKQ0KPg0KPmRpZmYgLS1naXQgYS9ibG9jay9pc2NzaS5jIGIvYmxvY2svaXNjc2kuYyBpbmRl
+eCA2ODJhYmQ4ZTA5Li41MGJhZTUxNzAwIDEwMDY0NA0KPi0tLSBhL2Jsb2NrL2lzY3NpLmMNCj4r
+KysgYi9ibG9jay9pc2NzaS5jDQo+QEAgLTIwMDIsNyArMjAwMiw3IEBAIHN0YXRpYyBpbnQgaXNj
+c2lfb3BlbihCbG9ja0RyaXZlclN0YXRlICpicywgUURpY3QNCj4qb3B0aW9ucywgaW50IGZsYWdz
+LA0KPiAgICAgICAgIGlzY3NpbHVuLT5jbHVzdGVyX3NpemUgPSBpc2NzaWx1bi0+Ymwub3B0X3Vu
+bWFwX2dyYW4gKg0KPiAgICAgICAgICAgICBpc2NzaWx1bi0+YmxvY2tfc2l6ZTsNCj4gICAgICAg
+ICBpZiAoaXNjc2lsdW4tPmxicHJ6KSB7DQo+LSAgICAgICAgICAgIHJldCA9IGlzY3NpX2FsbG9j
+bWFwX2luaXQoaXNjc2lsdW4sIGJzLT5vcGVuX2ZsYWdzKTsNCj4rICAgICAgICAgICAgcmV0ID0g
+aXNjc2lfYWxsb2NtYXBfaW5pdChpc2NzaWx1biwgZmxhZ3MpOw0KPiAgICAgICAgIH0NCj4gICAg
+IH0NCj4NCj4tLQ0KPjIuMjMuMA0KPg0KDQo=
 
