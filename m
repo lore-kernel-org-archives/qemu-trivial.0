@@ -1,66 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFJRs-0003vn-F9
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 11:20:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56850)
+	id 1jFK21-0008KN-IZ
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 11:57:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37052)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@gmail.com>) id 1jFJRm-0003tX-Ac
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:20:31 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFK1x-0008JE-Uk
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1jFJRl-0005gS-8b
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:20:30 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50259)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1jFJRj-0005ac-2o; Fri, 20 Mar 2020 11:20:27 -0400
-Received: by mail-wm1-x342.google.com with SMTP id d198so1193713wmd.0;
- Fri, 20 Mar 2020 08:20:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=UjdZKPXiUWUEicE+z/OuFQfCMXvdDVk6kxJN6ZvZQ9Y=;
- b=IRKRFu/9RrqQV003gJUzvQXwwgkVX+N4mtby/veWgZxdnoK/4fMZqm57gAc67PcAUh
- 17oDETCxLOvH7BvbF82cPah9gavkPE+fMmRaqHZtbWwjlH7Nl4te2IF971jbX+wyA5ef
- PKYwootRF4CgifOAjEGYBCeiTjplRyoUmpj7oB8jcjEYeZNtHlM2C1G59kvgBFhNIZfZ
- WEchns5rayYCC3AHdVLg1DUeP243Ri/UjNxA0Hs5vJCsFw+cWnumTxFnGL9JYy/xVJLI
- rQVPOx0WvYYD33FIrF0kCE6Qibe37CgzRSWa72EDmL4XZUDEPo9UIhiKFPyk/4TLplGy
- eA5Q==
+ (envelope-from <philmd@redhat.com>) id 1jFK1w-0003qb-Ue
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:53 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:60983)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFK1w-0003on-RO
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:57:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584719871;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=jY9hFXsRQKShgR6fFRHDQkteEgkZAWGBxIuQEuqC1Q8=;
+ b=fkhTYMLwgGCjY47ahSOrkK5/xyt32bwngpZLClwSKedvQRf3/t6L0+IUGWd8alf84pP8sf
+ r5kWnfX5QQPXahzp1rek7xtCA22IoCrKn5D4SuBH+qOWHoCwMYvkNyYpSZkAG0WJcC34gM
+ ARPK1eeCpyWi3ocWZggW0yPeACVws/E=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-351-wsUgF1T4NIqQr4u9lVvsrA-1; Fri, 20 Mar 2020 11:57:49 -0400
+X-MC-Unique: wsUgF1T4NIqQr4u9lVvsrA-1
+Received: by mail-wr1-f72.google.com with SMTP id c6so2806664wrm.18
+ for <qemu-trivial@nongnu.org>; Fri, 20 Mar 2020 08:57:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=UjdZKPXiUWUEicE+z/OuFQfCMXvdDVk6kxJN6ZvZQ9Y=;
- b=gF9XTrhuAenDjvX3p0gM+tnoN/pHe0oZ6mneYG/ve5Dqg9cCGHqTb/4sZln8bks4yX
- mNq8+lh3nCItCytHt0Q6F0cEw+JtBC4LjzxgF8kTSVLcPqKRYNvSwLhBs3AB+or+Rt+Z
- lJ0+/5aMjnokRbUepilQFgjT5+Oy1qvCi0YN8+mEL1dO17mJSTJwTW/VNpOWPFsqkltO
- 4Rk2JBdvDSjTx+aY4ySOoKA92BH2JFczwJTDdXpe10L2TlYlinBwEdhVCuLvAie63OJJ
- NdDokDEoLNKHkCDSI5J5jxrwXKZjufx15bISBo/fV+k4op2uGMktrSdRwEP3Zpwq2n+f
- gMpQ==
-X-Gm-Message-State: ANhLgQ14RXeZOHABlt0Oo4+ipRZmDw0m1MwMe5WoyfVQcpHBsVoY6mpB
- 7U7VXRiKr3SWl/rzrH8eAWw=
-X-Google-Smtp-Source: ADFU+vt1p90o3dOblFxxY3aEFSPwOpJZRgZAjvY6AaRiMeNeIaCwNuOBbeYukMc7jzdeNUSgODrang==
-X-Received: by 2002:a05:600c:2947:: with SMTP id
- n7mr11367154wmd.13.1584717624963; 
- Fri, 20 Mar 2020 08:20:24 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id q13sm8610120wrs.91.2020.03.20.08.20.23
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yo0Dd1h/opLMkm38keM/qX9N7f08guLSjUkx4P9OCWI=;
+ b=oolanLe926Fcwxt/SUDjA/K1eZx0FFKC8b43vwewVmjH1QYPsRnZQRr1tS5y9ddwjy
+ n4itDOwIxIzJuE8yoFF34SoY+/pLk0BLQiTGV05d24QCw6DJVMr/RA71sBIZEY65RVQl
+ 5z1wmXbEc/lpipfQHd9lfifSy92h97URK/SNWvjaDaqwbT8KPuxypw7vUIj3MuIxIdUA
+ nYL/HJLV8NjvMFoGOmj1RlHJ0zboFYMbYBoKPS9NuNLOEMJ4w0YKTdD5tbvA9cFOlsNn
+ 9fmDwTQwcqPrGfy+h51rt7cItb87ReJY+e9YXLR3WEZrBW1dwXbRANKCG26cF1/SVijm
+ cUfA==
+X-Gm-Message-State: ANhLgQ1IcBw/gjioYYGW2k2j27aYsCQmFTduLgiycNh7IV+vkCeVGomU
+ mCGlkYWphUjZ7AdSCJW6QinSp2FBCMuPKH0B8qfDyBAlmCWT3Y3uRXmAWzIK8Cbw8BoNwPyqD1D
+ Ty5Fp8Hvp7vQURujhDg==
+X-Received: by 2002:adf:9ccd:: with SMTP id h13mr5342136wre.427.1584719868731; 
+ Fri, 20 Mar 2020 08:57:48 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtKNIySo+0h9nKi1gF8SVhvWINxKpB6fvuZ/k49TAlOK+68wRu67Dh8yorrIbw24AcvMbgFaQ==
+X-Received: by 2002:adf:9ccd:: with SMTP id h13mr5342111wre.427.1584719868467; 
+ Fri, 20 Mar 2020 08:57:48 -0700 (PDT)
+Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id x5sm9117419wrv.67.2020.03.20.08.57.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2020 08:20:24 -0700 (PDT)
-Date: Fri, 20 Mar 2020 15:20:22 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Julia Suvorova <jusual@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Yuval Shaia <yuval.shaia.ml@gmail.com>
-Subject: Re: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
-Message-ID: <20200320152022.GC138042@stefanha-x1.localdomain>
-References: <20200318134849.237011-1-jusual@redhat.com>
+ Fri, 20 Mar 2020 08:57:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] ppc/ppc405_boards: Remove unnecessary NULL check
+Date: Fri, 20 Mar 2020 16:57:40 +0100
+Message-Id: <20200320155740.5342-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="Izn7cH1Com+I3R9J"
-Content-Disposition: inline
-In-Reply-To: <20200318134849.237011-1-jusual@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::342
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,45 +82,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 15:20:31 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 15:57:55 -0000
 
+This code is inside the "if (dinfo)" condition, so testing
+again here whether it is NULL is unnecessary.
 
---Izn7cH1Com+I3R9J
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fixes: dd59bcae7 (Don't size flash memory to match backing image)
+Reported-by: Coverity (CID 1421917)
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/ppc/ppc405_boards.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On Wed, Mar 18, 2020 at 02:48:49PM +0100, Julia Suvorova wrote:
-> ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untruncat=
-ed
-> strncpy with QEMU function.
-> This case prevented QEMU from compiling with --enable-sanitizers.
->=20
-> Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> ---
->  hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index e6bffb9e1a..6198ec1035 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -191,7 +191,7 @@ static void ref405ep_init(MachineState *machine)
+         bios_size =3D 8 * MiB;
+         pflash_cfi02_register((uint32_t)(-bios_size),
+                               "ef405ep.bios", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
+2AA,
+                               1);
+@@ -459,7 +459,7 @@ static void taihu_405ep_init(MachineState *machine)
+         bios_size =3D 2 * MiB;
+         pflash_cfi02_register(0xFFE00000,
+                               "taihu_405ep.bios", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
+2AA,
+                               1);
+@@ -494,7 +494,7 @@ static void taihu_405ep_init(MachineState *machine)
+     if (dinfo) {
+         bios_size =3D 32 * MiB;
+         pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x=
+2AA,
+                               1);
+--=20
+2.21.1
 
-Here is my equivalent patch
-<20200316160702.478964-3-stefanha@redhat.com> but feel free to merge
-this.
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---Izn7cH1Com+I3R9J
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl503zYACgkQnKSrs4Gr
-c8jheQf9HA1iCTM/WkiNOjSVOp8hXbM26YCCYKH1uetfSd5qSDmFs8iHPNRESuMN
-56Jdi5mI7oeJYtj/1niU9OFZrhgbdfQQkiU4gzwdqQw/N21e6cQTD+VlYsHD4PRs
-ZgpJprNPxbu9RM82L4NAJLZq/uQGER/n59flQndWBJS68cpBx+R7nR0p3inpH7QR
-STBQ0GKvf8rRqEwsVztUsCE809SsLSix6+OV42OylomvtO9CsR4s5ugPMNwefhl3
-WuF5b4Lc5kSZhC0BasCLribZnhLWtoEC/BxIMmzhy30s0WcBzAMPgGBmPtsY7m/M
-v/ZhACAqo4gdiqkbY/QqbdY+8dhWSA==
-=Of2S
------END PGP SIGNATURE-----
-
---Izn7cH1Com+I3R9J--
 
