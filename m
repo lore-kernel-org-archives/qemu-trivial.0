@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFIG5-0008II-I9
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 10:04:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45907)
+	id 1jFJRs-0003vn-F9
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 11:20:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56850)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@gmail.com>) id 1jFIFz-0008F8-0m
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 10:04:16 -0400
+ (envelope-from <stefanha@gmail.com>) id 1jFJRm-0003tX-Ac
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:20:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1jFIFx-0006dF-VN
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 10:04:14 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55243)
+ (envelope-from <stefanha@gmail.com>) id 1jFJRl-0005gS-8b
+ for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 11:20:30 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50259)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1jFIFu-0006bN-By; Fri, 20 Mar 2020 10:04:10 -0400
-Received: by mail-wm1-x342.google.com with SMTP id f130so5451204wmf.4;
- Fri, 20 Mar 2020 07:04:10 -0700 (PDT)
+ id 1jFJRj-0005ac-2o; Fri, 20 Mar 2020 11:20:27 -0400
+Received: by mail-wm1-x342.google.com with SMTP id d198so1193713wmd.0;
+ Fri, 20 Mar 2020 08:20:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=73KCCYSwGSq9irnuaUcZKSkQ2zWBpWoys7duxTzinOE=;
- b=DbZCpQKKxHBpQIgzBVgmn5Nhyts62skPrKx4h2Tx02nPg4lIyUly6znObMFygFlCQ7
- UspKQyS1m0TOnJKmpJcmWOfS5Wo2KXyppJ6brp6zxH9LPMGg1S5NyZcr7PKCVlFqBXtO
- M9hjp2ogMhLEqyBsHVY6dmA5ibqr4quXfvEfnpbnZxbZ4eowPoUtYdchwVAyGbv473/s
- KpjfljjDoQT5jldyBxTPgzKVIXTo410JJ4wD1KV1bTi+oq/IN8LmsaLGlJ6/HTUgc8A4
- gVdkKSQgH4+MMhP+T/JTvsfqRzdmChVdeqfhgVE6tfs5JAHU6Qlw9y964p4IrUWNRZyv
- wF+g==
+ bh=UjdZKPXiUWUEicE+z/OuFQfCMXvdDVk6kxJN6ZvZQ9Y=;
+ b=IRKRFu/9RrqQV003gJUzvQXwwgkVX+N4mtby/veWgZxdnoK/4fMZqm57gAc67PcAUh
+ 17oDETCxLOvH7BvbF82cPah9gavkPE+fMmRaqHZtbWwjlH7Nl4te2IF971jbX+wyA5ef
+ PKYwootRF4CgifOAjEGYBCeiTjplRyoUmpj7oB8jcjEYeZNtHlM2C1G59kvgBFhNIZfZ
+ WEchns5rayYCC3AHdVLg1DUeP243Ri/UjNxA0Hs5vJCsFw+cWnumTxFnGL9JYy/xVJLI
+ rQVPOx0WvYYD33FIrF0kCE6Qibe37CgzRSWa72EDmL4XZUDEPo9UIhiKFPyk/4TLplGy
+ eA5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=73KCCYSwGSq9irnuaUcZKSkQ2zWBpWoys7duxTzinOE=;
- b=BhLauPzBnOxa6A0Rqi3ulA1GJE4UVDdYX2TOBalJAqEPPnKcBMVUo2KS7CkZ3+fegN
- 7GAcYC7GanIVXjnL/a2EUSgvSHYveWdQK8NBcK6pn7uGfKDR6TiSuQ/kJZEdlTnBkkYe
- eHWTDurAgThRpttABJCbjMsjmj6STfs4/7Vs2kplrWQTeBaanqB3bGcMevh95ZbNvwGA
- wY7VLKTXtn1PpQbPGK/r25ghnaZ4vzZW2quo2ieCiZq5spsUPWp0rv4N9WYDkUXF0IhP
- gnJ4AsKBGqjeLI1Rzvlm/oHIWXnhl+l+dWrxDrv65+HJjPndZwbcwDmW4I83h6P+bDwO
- Y8Jw==
-X-Gm-Message-State: ANhLgQ2PLQpawcAm+YecxPqq5UA2eMpnvoqg1+lfNlaHsB1Xw3ZKYJ0S
- RRsrxcIsuZS56Ytf0mHMeVA=
-X-Google-Smtp-Source: ADFU+vu1UkY+uJLdm+mzwhBu8KZsG5zoPXlqyJ2iVgnF1APfInZ9YBGqKQZLCEzFcWJrHWl3quJ1Vw==
-X-Received: by 2002:a1c:b686:: with SMTP id g128mr10447572wmf.75.1584713049028; 
- Fri, 20 Mar 2020 07:04:09 -0700 (PDT)
+ bh=UjdZKPXiUWUEicE+z/OuFQfCMXvdDVk6kxJN6ZvZQ9Y=;
+ b=gF9XTrhuAenDjvX3p0gM+tnoN/pHe0oZ6mneYG/ve5Dqg9cCGHqTb/4sZln8bks4yX
+ mNq8+lh3nCItCytHt0Q6F0cEw+JtBC4LjzxgF8kTSVLcPqKRYNvSwLhBs3AB+or+Rt+Z
+ lJ0+/5aMjnokRbUepilQFgjT5+Oy1qvCi0YN8+mEL1dO17mJSTJwTW/VNpOWPFsqkltO
+ 4Rk2JBdvDSjTx+aY4ySOoKA92BH2JFczwJTDdXpe10L2TlYlinBwEdhVCuLvAie63OJJ
+ NdDokDEoLNKHkCDSI5J5jxrwXKZjufx15bISBo/fV+k4op2uGMktrSdRwEP3Zpwq2n+f
+ gMpQ==
+X-Gm-Message-State: ANhLgQ14RXeZOHABlt0Oo4+ipRZmDw0m1MwMe5WoyfVQcpHBsVoY6mpB
+ 7U7VXRiKr3SWl/rzrH8eAWw=
+X-Google-Smtp-Source: ADFU+vt1p90o3dOblFxxY3aEFSPwOpJZRgZAjvY6AaRiMeNeIaCwNuOBbeYukMc7jzdeNUSgODrang==
+X-Received: by 2002:a05:600c:2947:: with SMTP id
+ n7mr11367154wmd.13.1584717624963; 
+ Fri, 20 Mar 2020 08:20:24 -0700 (PDT)
 Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id p10sm4172337wrm.6.2020.03.20.07.04.07
+ by smtp.gmail.com with ESMTPSA id q13sm8610120wrs.91.2020.03.20.08.20.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2020 07:04:08 -0700 (PDT)
-Date: Fri, 20 Mar 2020 14:04:06 +0000
+ Fri, 20 Mar 2020 08:20:24 -0700 (PDT)
+Date: Fri, 20 Mar 2020 15:20:22 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
+To: Julia Suvorova <jusual@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, zhang.zhanghailiang@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Peter Lieven <pl@kamp.de>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>,
- Chen Qun <kuhn.chenqun@huawei.com>
-Subject: Re: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent
- Clang warning
-Message-ID: <20200320140406.GA138042@stefanha-x1.localdomain>
-References: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
+ Yuval Shaia <yuval.shaia.ml@gmail.com>
+Subject: Re: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
+Message-ID: <20200320152022.GC138042@stefanha-x1.localdomain>
+References: <20200318134849.237011-1-jusual@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="6TrnltStXW4iwmi0"
+ protocol="application/pgp-signature"; boundary="Izn7cH1Com+I3R9J"
 Content-Disposition: inline
-In-Reply-To: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200318134849.237011-1-jusual@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::342
@@ -76,82 +72,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 14:04:16 -0000
+X-List-Received-Date: Fri, 20 Mar 2020 15:20:31 -0000
 
 
---6TrnltStXW4iwmi0
+--Izn7cH1Com+I3R9J
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Mar 11, 2020 at 11:29:27AM +0800, Chen Qun wrote:
-> Clang static code analyzer show warning:
->   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
->         flags &=3D ~BDRV_O_RDWR;
->         ^        ~~~~~~~~~~~~
+On Wed, Mar 18, 2020 at 02:48:49PM +0100, Julia Suvorova wrote:
+> ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untruncat=
+ed
+> strncpy with QEMU function.
+> This case prevented QEMU from compiling with --enable-sanitizers.
 >=20
-> In iscsi_allocmap_init() only checks BDRV_O_NOCACHE, which
-> is the same in both of flags and bs->open_flags.
-> We can use the flags instead bs->open_flags to prevent Clang warning.
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Kevin Wolf <kwolf@redhat.com>
-
-This can go via Paolo's SCSI tree.
-
+> Signed-off-by: Julia Suvorova <jusual@redhat.com>
 > ---
-> Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Peter Lieven <pl@kamp.de>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> Cc: Laurent Vivier <laurent@vivier.eu>
->=20
-> v1->v2:
->  Keep the 'flags' then use it(Base on Kevin's comments).
->=20
-> v2->v3:
->  Modify subject and commit messages(Base on Kevin's and Laurent's comment=
-s).
-> ---
->  block/iscsi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/block/iscsi.c b/block/iscsi.c
-> index 682abd8e09..50bae51700 100644
-> --- a/block/iscsi.c
-> +++ b/block/iscsi.c
-> @@ -2002,7 +2002,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
->          iscsilun->cluster_size =3D iscsilun->bl.opt_unmap_gran *
->              iscsilun->block_size;
->          if (iscsilun->lbprz) {
-> -            ret =3D iscsi_allocmap_init(iscsilun, bs->open_flags);
-> +            ret =3D iscsi_allocmap_init(iscsilun, flags);
->          }
->      }
-> =20
-> --=20
-> 2.23.0
->=20
->=20
->=20
+>  hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
---6TrnltStXW4iwmi0
+Here is my equivalent patch
+<20200316160702.478964-3-stefanha@redhat.com> but feel free to merge
+this.
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--Izn7cH1Com+I3R9J
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl50zVYACgkQnKSrs4Gr
-c8ivZQf/ZUeVWKUHOMH/mnrkpp6hvahHi3xc06MRKHPuN0B3vNZ+0MGWHen74qHJ
-wfqvDEdF3onbddapTQwszioUbjjsizkVFYFZMt+QqEDwk6fga9HM/b9bOUGVzloZ
-XSIEr3HdGsNutgAXvE0JfdAxU4Tzw5bwjusKFtjFga6D6kbAMdg8vAJJuDBTDGOa
-OxQCoPFuB3iV4nwzI8u2RQPGcoPNRLEVKuhRHMeqi/1V3WtLJYWZY5vJXENrHeY0
-ecJc6TkSDtdSQm0lSG4HBe0a/HMH3f/REkY8zVmJ5aU3QTLaYKcCuhBtq9MDvBGj
-5X4EjJKPBANVPWaxxxXF4vf/SHLZlw==
-=lkRs
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl503zYACgkQnKSrs4Gr
+c8jheQf9HA1iCTM/WkiNOjSVOp8hXbM26YCCYKH1uetfSd5qSDmFs8iHPNRESuMN
+56Jdi5mI7oeJYtj/1niU9OFZrhgbdfQQkiU4gzwdqQw/N21e6cQTD+VlYsHD4PRs
+ZgpJprNPxbu9RM82L4NAJLZq/uQGER/n59flQndWBJS68cpBx+R7nR0p3inpH7QR
+STBQ0GKvf8rRqEwsVztUsCE809SsLSix6+OV42OylomvtO9CsR4s5ugPMNwefhl3
+WuF5b4Lc5kSZhC0BasCLribZnhLWtoEC/BxIMmzhy30s0WcBzAMPgGBmPtsY7m/M
+v/ZhACAqo4gdiqkbY/QqbdY+8dhWSA==
+=Of2S
 -----END PGP SIGNATURE-----
 
---6TrnltStXW4iwmi0--
+--Izn7cH1Com+I3R9J--
 
