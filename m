@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFcbI-0002MQ-A2
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:47:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35132)
+	id 1jFcbJ-0002Oi-6r
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:47:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35153)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFcbE-0002FL-Cq
+ (envelope-from <philmd@redhat.com>) id 1jFcbE-0002Gd-Vb
  for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFcbD-0006yf-7l
+ (envelope-from <philmd@redhat.com>) id 1jFcbD-0006zS-VE
  for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:32 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:25186)
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:25430)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcbB-0006va-JK
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:29 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcbD-0006z6-Qy
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584791246;
+ s=mimecast20190719; t=1584791251;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9RrFXtWXIAKlsNCj4fxVkxendU8386lJ6GdPQwHKuZc=;
- b=YkUjYlu/TrEERFw/pJKQQ/DEKAC1g7mG1s1JUKoOuI1m34ugPoQqJ+tcCXERzWzxMLy1PC
- RNGNMDpuECdAS5Mokry7iD6A8X3vIABkik0iobe1zgzncUZ/xDMWVCHgLaiiHi8BpY8zHu
- ZIA9PdJ/cQfv6vqRt8qp1FnZDxL72Aw=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-435-YoePT04hMES4x8fWRoSQLQ-1; Sat, 21 Mar 2020 07:47:23 -0400
-X-MC-Unique: YoePT04hMES4x8fWRoSQLQ-1
-Received: by mail-ed1-f69.google.com with SMTP id y14so7311713edq.22
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:47:23 -0700 (PDT)
+ bh=H2ZxNlM8IiHu0dxI+a0SAXUIREttoqtshJPpfqAJ9kA=;
+ b=dmWpPGut6F+AowOqExDr/GZiXf7BpJqqZ89L04aOfUQchr3HXz+Q2lIjxpm70n3I23uMMQ
+ LZ2DqttqMPgHJNtdJXLdwFvKzQlxbZo62SloqVM6MbgC8QwPriGSEolcipVwptjpE21ba3
+ vXw9UyzPkMwaacDwq/Ucjr7iClTMc6I=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-5-eZZy1AiVN9GvfyGNHRH8Fw-1; Sat, 21 Mar 2020 07:47:29 -0400
+X-MC-Unique: eZZy1AiVN9GvfyGNHRH8Fw-1
+Received: by mail-wm1-f69.google.com with SMTP id g9so690995wmh.1
+ for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:47:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9gGzKQU/hca0N/HfH89YEyKKEwjuVATrynJmMDBqHuA=;
- b=jXAPnEOKNoWFd1t0eZfcX1inOZEaHobizzn04Z6UtIwT1hqqO8lwMdk8/ykVviUyWw
- 0zKFe77ifAASbWPuIXMRAFuCsetl0byGP008TRx80O2CEL04LjwlwoUnj3voRa4OD8Lg
- G0vIUbiFwukJ6IMZl9lCiYmn7iXsbpqDnpE2H2JmTsXHaCkY3izaXqbCf0jvpnPI/lT2
- MvvjzpV9hunbPtBgmvN+YTdCmdHC98JpFoFEC7v1/VTqg5ySD90Bn1YYODhi1/lr8xWV
- pIEII1iVenTipi8NjsUxxHe0TkrZb8jJV5ylcUquKuMXHQ5Jne75MTrjX1aeBHnd6s+c
- Hq9g==
-X-Gm-Message-State: ANhLgQ39czG7mONyjG6p5mbhoRESD3QoEKfCDRcqtljBK7c/s/W2LtLy
- RJ/pU8zSjt3SCqu+FodJHGwZrr/sj1bbd8mCYcE9dbAF62aXOHRb462YjIU3lBV3zJjtr2WS3CH
- Q7wErVmt2tIbVYbJPIA==
-X-Received: by 2002:aa7:c0cd:: with SMTP id j13mr12145110edp.287.1584791242059; 
- Sat, 21 Mar 2020 04:47:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsNje2ZBWZggIXMm+1aJu4RAQiqKLCRY2id164eUSg0Un6tqRjsI5Yaw3McsVqiA0SKAsuv3g==
-X-Received: by 2002:aa7:c0cd:: with SMTP id j13mr12145088edp.287.1584791241814; 
- Sat, 21 Mar 2020 04:47:21 -0700 (PDT)
+ bh=860B2IkAp+GSKWrMYmt9BxqMmpnco8VZzzV9xEgKT/A=;
+ b=neN5CnFY4l4DNHyTD+p7V38aOLHtPf1haH6sOy2Bhf334eL2TVsqvzOoz48c9carPB
+ DLr+8xSyEUY0VFSKpOUSipz50UjGMqkUlB5nyAacoOLgPXPVOTzPj1bhO/X1OoapXwrL
+ /DZAYS0bz5sjgwP68Bnup446sdbns8KWQmoGeWjjXIbMXZ7GD3+EBP8oHsoBXBYnX2Bm
+ sBk17RTX+yzW6kwf9UstWmTohrF6nyUdCM6uU6zVLrg5F1N9xArwl+xGcO3NpqipCGzX
+ WpaSyhTX0DaiL6EP/S8i3joRel1evwP5jQzCieqCgqauAb+v8rQssKy7YazEfNivyIDm
+ j/7A==
+X-Gm-Message-State: ANhLgQ0lkhKTXbQoz7QLK+DGdTJrKQ495JTsBiwMTK1xTDYKFz9/1gW5
+ SOoNA2I66EU8n9oc/k05s238IUt0Jwj2RJPLfUe//AlyM32r0VN7RPT5gYV8rv+2D87J8C9nDUd
+ XDGburv/23fwyBC8XLQ==
+X-Received: by 2002:a5d:6082:: with SMTP id w2mr17078551wrt.300.1584791248577; 
+ Sat, 21 Mar 2020 04:47:28 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsvu5wfvhRuM6jVgboSn3IbxzjQxhFrW0gmXdleJclIAtsXaDBlpnQ+JjoWQKg5OAX+ODoNhA==
+X-Received: by 2002:a5d:6082:: with SMTP id w2mr17078523wrt.300.1584791248363; 
+ Sat, 21 Mar 2020 04:47:28 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id d23sm540531ejk.26.2020.03.21.04.47.19
+ by smtp.gmail.com with ESMTPSA id s22sm11269798wmc.16.2020.03.21.04.47.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:47:21 -0700 (PDT)
+ Sat, 21 Mar 2020 04:47:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -70,9 +70,9 @@ Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH-for-5.0 08/11] hw/timer/exynos4210_mct: Remove dead assignments
-Date: Sat, 21 Mar 2020 12:46:12 +0100
-Message-Id: <20200321114615.5360-9-philmd@redhat.com>
+Subject: [PATCH-for-5.0 09/11] hw/timer/stm32f2xx_timer: Remove dead assignment
+Date: Sat, 21 Mar 2020 12:46:13 +0100
+Message-Id: <20200321114615.5360-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
 References: <20200321114615.5360-1-philmd@redhat.com>
@@ -96,60 +96,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 11:47:33 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 11:47:34 -0000
 
-Fix warnings reported by Clang static code analyzer:
+Fix warning reported by Clang static code analyzer:
 
-  hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is nev=
+    CC      hw/timer/stm32f2xx_timer.o
+  hw/timer/stm32f2xx_timer.c:225:9: warning: Value stored to 'value' is nev=
 er read
-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is nev=
-er read
-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is nev=
-er read
-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          value =3D timer_val;
+          ^       ~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/timer/exynos4210_mct.c | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/timer/stm32f2xx_timer.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index 944120aea5..c0a25e71ec 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr=
- offset,
-=20
-     case L0_TCNTB: case L1_TCNTB:
-         lt_i =3D GET_L_TIMER_IDX(offset);
--        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-=20
-         /*
-          * TCNTB is updated to internal register only after CNT expired.
-@@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr=
- offset,
-=20
-     case L0_ICNTB: case L1_ICNTB:
-         lt_i =3D GET_L_TIMER_IDX(offset);
--        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-=20
-         s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_ICNTB_WRITE;
-         s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] =3D value &
-@@ -1438,7 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr=
- offset,
-=20
-     case L0_FRCNTB: case L1_FRCNTB:
-         lt_i =3D GET_L_TIMER_IDX(offset);
--        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-=20
-         DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
-=20
+diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
+index 06ec8a02c2..ba8694dcd3 100644
+--- a/hw/timer/stm32f2xx_timer.c
++++ b/hw/timer/stm32f2xx_timer.c
+@@ -222,7 +222,6 @@ static void stm32f2xx_timer_write(void *opaque, hwaddr =
+offset,
+     case TIM_PSC:
+         timer_val =3D stm32f2xx_ns_to_ticks(s, now) - s->tick_offset;
+         s->tim_psc =3D value & 0xFFFF;
+-        value =3D timer_val;
+         break;
+     case TIM_CNT:
+         timer_val =3D value;
 --=20
 2.21.1
 
