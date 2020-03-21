@@ -1,69 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFLTS-0006kW-0i
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2020 13:30:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32945)
+	id 1jFcaG-0000FQ-Dt
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:46:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34454)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsuvorov@redhat.com>) id 1jFLTP-0006iU-MC
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:20 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFcaE-0000EX-7W
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsuvorov@redhat.com>) id 1jFLTO-00047T-Nr
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:19 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56266)
+ (envelope-from <philmd@redhat.com>) id 1jFcaC-0006Gx-Rz
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:29 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:45389)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsuvorov@redhat.com>) id 1jFLTO-00047B-Km
- for qemu-trivial@nongnu.org; Fri, 20 Mar 2020 13:30:18 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcaC-0006Ge-Ne
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584725418;
+ s=mimecast20190719; t=1584791188;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ykXk2E+lWMcuiOhPMluf7qmvakDaNrmcJ7I4Dqdlu7U=;
- b=CdQ6MF1UUVxvIHQLIJHc3LQ/+zsoHcEygo8e/EitRTTWsQcLN+4tDlwlYAC30ioy1BzqDX
- gUdsp2HxpJjNtio6R8N7qL217onZCdTxI2/siLNtttPUh4nXDhOUY1eviboD/Is6pvy9VO
- iKccy2RcduuSdIrstH17v8GSmwRnSuw=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-402-RQpa6B_CPoyhdcnOyn2D2w-1; Fri, 20 Mar 2020 13:30:15 -0400
-X-MC-Unique: RQpa6B_CPoyhdcnOyn2D2w-1
-Received: by mail-lj1-f197.google.com with SMTP id e8so1124900ljk.23
- for <qemu-trivial@nongnu.org>; Fri, 20 Mar 2020 10:30:14 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=H/kvBiPyxCh595bpD+FYmGkaOOWay12gFZX+EGKqT6I=;
+ b=MK282tFuILqCW9uBZTiJ9UmKJep/iJrOqYIhu3bjL+KwG1pTbI+zvcPhhDDZZNdYEB2HdU
+ V/6zBSA8qMZXp02EVDdePaawTl5JEP8wBt/GJNYdaoqZSdOfYgC3JjLpOGcXKwFvKYuSUo
+ hz5GQaYoE67V4MboctMwEcD026oVjc8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-91-aOwVOnh1P3-7hhXwlpazKQ-1; Sat, 21 Mar 2020 07:46:26 -0400
+X-MC-Unique: aOwVOnh1P3-7hhXwlpazKQ-1
+Received: by mail-wr1-f69.google.com with SMTP id p2so4173869wrw.8
+ for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:46:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GOcoe0J9w1J/GQg4S1bRWkNrGCbJYRtmcESUhZ2BySI=;
- b=QhpVgPJDBCIbtLV/4nzvnB+KFtGvpOA3ru3apigUDN9fwaZxbTttPvuwVhPYOd60Uo
- 8m1CCwwzcfEvnW9R9w7sEuSYUC3mhqMuPeYiDv5UN/7rnQQQVdGT/NebZX0OGUans2AF
- mKS+j/7I6TFKXFxRDZR8xMkwVIc7ekIKvqdpwjcLX1i7/zcauX0CKt4jRIOgQhgkvQ5T
- pdHnYzI+Zm/w1VERfRKS0TetTQvMo5pOq4QKTmw7tbDhCDR+M8rGvVPS7UgNlpA5F5HL
- Be6HcxwfYvAr70aJcQ966vNtcKEoHiwxcj0O30KwvJMMBkI+lkzVs8/R37ls8h8fRAPu
- Y30w==
-X-Gm-Message-State: ANhLgQ15GT/ygaDezv4HAhDhZln5Ctp9Nr1sTzIq7MJmBuCKg85ZKs4e
- DX14OLJCBS3+xLMdeEFFLywR01r6Tmf+umijf5NLa9/syeCawy3ovsTJBrhGZowywIcQYfxxBWq
- 8JEw2GUAKtxqQSuiEIqYXMUJce7npny3FpA==
-X-Received: by 2002:a19:f008:: with SMTP id p8mr5886137lfc.217.1584725413705; 
- Fri, 20 Mar 2020 10:30:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvmbmm10XxnYGNsEhCnO3kX0zteatMw5OcwiFwCzctx21ktliZUKd51vUCSPoHJWyQQwcf9mbEv1rB/N83dYR0=
-X-Received: by 2002:a19:f008:: with SMTP id p8mr5886120lfc.217.1584725413269; 
- Fri, 20 Mar 2020 10:30:13 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9dXP4N8TyULZAzjZYqxK/uANHHgjWwDCR4io6WeB96U=;
+ b=ZLouHR6hPJFsRYI504ukkMfrn5XTMTqPNfuEh4nb6nAYzK0j7I00T/LlmfyihkchL5
+ KpT0BqQA5wCU5IEQ1LwePSKxFPXvQSPX2idHZ8bFMbBQd4eG0tUtJmxNIu8gnIHEwGAW
+ CZNAf5KdXVAxvDyUpmuJaOG0KHTAeFUjJoqtfwzX79dTqGEw5WBqioa3wQcZLFFKRJiR
+ 099Alb4u4o7Q400T8SrzIpJzZfsj56dIB/BhkklpT4FDnQuCtX26V6Erx65+JdDWXpTO
+ WLS8r9yC/Wk9vl4WNIduBCECgJ7KIs4exhBL0AAjpd//qth2kIi1n69yx+4avV9j6/3o
+ ceZA==
+X-Gm-Message-State: ANhLgQ0G9r1QkZmKxMIOPlOY1x1jhS4Uis5yFDjBB19udfo5D9kVv9OQ
+ uNZkRU/rRv9wCapSrEEyj6SlVM/lixdROxiwWDvZ3vqUYDYEhs0HbNyHFEbMOMMbres+pFsn//4
+ q/72/6zZ/mRn6j1AhKQ==
+X-Received: by 2002:a7b:c5d9:: with SMTP id n25mr16445017wmk.160.1584791185176; 
+ Sat, 21 Mar 2020 04:46:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsSWCMAhwipawfBMfkPl4+F8HWrgcbof15lyslD5n9fBr4SnAzQxKtSsuZj7e5L0nZTE/KW3g==
+X-Received: by 2002:a7b:c5d9:: with SMTP id n25mr16444963wmk.160.1584791184820; 
+ Sat, 21 Mar 2020 04:46:24 -0700 (PDT)
+Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id d21sm12882125wrb.51.2020.03.21.04.46.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 21 Mar 2020 04:46:24 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Andrew Jeffery <andrew@aj.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-ppc@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH-for-5.0 00/11] misc: Trivial static code analyzer fixes
+Date: Sat, 21 Mar 2020 12:46:04 +0100
+Message-Id: <20200321114615.5360-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-References: <20200318134849.237011-1-jusual@redhat.com>
- <20200320152022.GC138042@stefanha-x1.localdomain>
-In-Reply-To: <20200320152022.GC138042@stefanha-x1.localdomain>
-From: Julia Suvorova <jusual@redhat.com>
-Date: Fri, 20 Mar 2020 18:30:02 +0100
-Message-ID: <CAMDeoFX2D-c03PHcfiQ_ub4GMptjdUkUozZ53P4a-Vd_eNw86g@mail.gmail.com>
-Subject: Re: [PATCH] hw/rdma/vmw/pvrdma_dev_ring: Replace strncpy with pstrcpy
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Yuval Shaia <yuval.shaia.ml@gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,27 +92,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2020 17:30:20 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 11:46:31 -0000
 
-On Fri, Mar 20, 2020 at 4:20 PM Stefan Hajnoczi <stefanha@gmail.com> wrote:
->
-> On Wed, Mar 18, 2020 at 02:48:49PM +0100, Julia Suvorova wrote:
-> > ring->name is defined as 'char name[MAX_RING_NAME_SZ]'. Replace untrunc=
-ated
-> > strncpy with QEMU function.
-> > This case prevented QEMU from compiling with --enable-sanitizers.
-> >
-> > Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> > ---
-> >  hw/rdma/vmw/pvrdma_dev_ring.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> Here is my equivalent patch
-> <20200316160702.478964-3-stefanha@redhat.com> but feel free to merge
-> this.
+Fix trivial warnings reported by the Clang static code analyzer.
 
-Oops, sorry, I guess I didn't search carefully enough for the solution.
+Philippe Mathieu-Daud=C3=A9 (11):
+  block: Remove dead assignment
+  blockdev: Remove dead assignment
+  hw/i2c/pm_smbus: Remove dead assignment
+  hw/input/adb-kbd: Remove dead assignment
+  hw/ide/sii3112: Remove dead assignment
+  hw/isa/i82378: Remove dead assignment
+  hw/gpio/aspeed_gpio: Remove dead assignment
+  hw/timer/exynos4210_mct: Remove dead assignments
+  hw/timer/stm32f2xx_timer: Remove dead assignment
+  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
+  hw/scsi/esp-pci: Remove dead assignment
 
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+ block.c                    | 2 +-
+ blockdev.c                 | 2 +-
+ hw/gpio/aspeed_gpio.c      | 4 ++--
+ hw/i2c/pm_smbus.c          | 1 -
+ hw/ide/sii3112.c           | 2 +-
+ hw/input/adb-kbd.c         | 1 -
+ hw/isa/i82378.c            | 8 ++++----
+ hw/scsi/esp-pci.c          | 1 -
+ hw/timer/exynos4210_mct.c  | 3 ---
+ hw/timer/pxa2xx_timer.c    | 1 +
+ hw/timer/stm32f2xx_timer.c | 1 -
+ 11 files changed, 10 insertions(+), 16 deletions(-)
+
+--=20
+2.21.1
 
 
