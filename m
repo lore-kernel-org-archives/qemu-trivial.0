@@ -1,53 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFe8W-0004wc-Dd
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 09:26:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48947)
+	id 1jFeMB-00025o-Gc
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 09:40:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50728)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <balaton@eik.bme.hu>) id 1jFe8S-0004qw-WB
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 09:25:57 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1jFeM8-000215-5d
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 09:40:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1jFe8S-0007qo-27
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 09:25:56 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:33896)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1jFe8J-0007gn-2x; Sat, 21 Mar 2020 09:25:47 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 458BA747DFB;
- Sat, 21 Mar 2020 14:25:43 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id A10F274638A; Sat, 21 Mar 2020 14:25:42 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 9837D746381;
- Sat, 21 Mar 2020 14:25:42 +0100 (CET)
-Date: Sat, 21 Mar 2020 14:22:16 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
-cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, 
- Markus Armbruster <armbru@redhat.com>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, 
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH-for-5.0 07/11] hw/gpio/aspeed_gpio: Remove dead assignment
-In-Reply-To: <20200321114615.5360-8-philmd@redhat.com>
-Message-ID: <alpine.BSF.2.22.395.2003211420450.82121@zero.eik.bme.hu>
-References: <20200321114615.5360-1-philmd@redhat.com>
- <20200321114615.5360-8-philmd@redhat.com>
-User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1jFeM6-0002YP-Pc
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 09:40:04 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:40403)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1jFeM1-0002Sp-Rr; Sat, 21 Mar 2020 09:39:58 -0400
+Received: by mail-oi1-x243.google.com with SMTP id y71so9661630oia.7;
+ Sat, 21 Mar 2020 06:39:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=p4HXzZVbh/QYOWLxtVfg2M72s5Y67wp6zELlRy3Nl58=;
+ b=q1j8ibuoWEUaiNlU0koPNqsiJOA4d+44D/CEvQrrfEWBk8HYcHUrwosVur54km4QAt
+ QRjUoWAc7cnvfkUN9i8wrvUSB99ZYR6D3MwDVS+3rdaPRARawWiaVVdSH+H5aM6k0r0G
+ 8M/N8iuyXSXFsQsLoXr3PzMwTLa6hr7OQtVtvUVpeDbu4xEnVET2apIw39uxj0wq8N7H
+ f5Ks3ibwzWPilHYiSNAjEwuuDNzeeB4Y4OGuLolaAAt3hOpv2tNGqF3YC9kqndxHzwNt
+ +dilHZXrUSdR12WWwMWYc/DnaoXeMNKqz6jzaSBy9AYxTxV4IdwM8blGlZnODjIOd801
+ agyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=p4HXzZVbh/QYOWLxtVfg2M72s5Y67wp6zELlRy3Nl58=;
+ b=GLiHVEtts/2GKbcoXy6CiMbrnng9W8eSC601cGVHgZJ5seQOxUtwL//l7AlKsZ+Ifu
+ tC/69BCtbxZ/mWICyQ5P/pqo2YvA1W7nQPPRSG6jpCaiyypO71zxYhDVaihNS3wqH3Ih
+ FP7xOEhN00Ya4tIaIdUEGsi5y659LDESobfvRwFQC80HB/0CV9zCpA4ZkJmukXHP3hxL
+ 0PJBG+ecQE+erkBiytYFYiJMz+0E/IWIzU4dsVDfPsP1OB0JyTsFROdKuXvNCuyRQQNT
+ LPHOi4ayChaxCCXbiafQk/iSJOXitzosqnMo6MARr5ns2UM0fx7LuoNHTktF0MWl8to7
+ fw4Q==
+X-Gm-Message-State: ANhLgQ1SsQfOfAyy9EYXJhSMW2GBcaiULQeU9aeMxsQxjT3YVNGDTJN6
+ hCbpQ8ft2dmFbWqgUly6IHsZuCGw0tOXkHCVAAA=
+X-Google-Smtp-Source: ADFU+vueEFgDyHBsMxT29YJtgGELti/+1/Yl5JX6rSTapBU+CYZI4CUI5+TAgOYLkMTVo1MkNA/eS7LegmjPPk7a7pc=
+X-Received: by 2002:a54:478c:: with SMTP id o12mr10159207oic.106.1584797996903; 
+ Sat, 21 Mar 2020 06:39:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-224705287-1584797142=:82121"
+Received: by 2002:a9d:4044:0:0:0:0:0 with HTTP; Sat, 21 Mar 2020 06:39:56
+ -0700 (PDT)
+In-Reply-To: <20200321114615.5360-6-philmd@redhat.com>
+References: <20200321114615.5360-1-philmd@redhat.com>
+ <20200321114615.5360-6-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Sat, 21 Mar 2020 14:39:56 +0100
+Message-ID: <CAL1e-=hQPwJ3XKrt4ip2S92ScjyjS63-A4REDeXzyiCt1Phx6A@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 05/11] hw/ide/sii3112: Remove dead assignment
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>, 
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ Joel Stanley <joel@jms.id.au>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
+ Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Laurent Vivier <laurent@vivier.eu>, 
+ Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000a571a805a15d8915"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2001:738:2001:2001::2001
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,58 +82,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 13:25:58 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 13:40:05 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-224705287-1584797142=:82121
-Content-Type: text/plain; charset=UTF-8; format=flowed
+--000000000000a571a805a15d8915
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Sat, 21 Mar 2020, Philippe Mathieu-Daud=C3=A9 wrote:
+On Saturday, March 21, 2020, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+>
+wrote:
+
 > Fix warning reported by Clang static code analyzer:
 >
->  hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during =
-its initialization is never read
->      int set_idx, g_idx =3D *group_idx;
->                   ^~~~~   ~~~~~~~~~~
+>     CC      hw/ide/sii3112.o
+>   hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+>           val =3D 0;
+>           ^     ~
 >
 > Reported-by: Clang Static Analyzer
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> hw/gpio/aspeed_gpio.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/ide/sii3112.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index 41e11ea9b0..cc07ab9866 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -714,11 +714,11 @@ static void aspeed_gpio_write(void *opaque, hwadd=
-r offset, uint64_t data,
-> static int get_set_idx(AspeedGPIOState *s, const char *group, int *grou=
-p_idx)
-> {
->     AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
-> -    int set_idx, g_idx =3D *group_idx;
-> +    int set_idx;
->
->     for (set_idx =3D 0; set_idx < agc->nr_gpio_sets; set_idx++) {
->         const GPIOSetProperties *set_props =3D &agc->props[set_idx];
-> -        for (g_idx =3D 0; g_idx < ASPEED_GROUPS_PER_SET; g_idx++) {
-> +        for (int g_idx =3D 0; g_idx < ASPEED_GROUPS_PER_SET; g_idx++) =
-{
+> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+> index 06605d7af2..36f1905ddb 100644
+> --- a/hw/ide/sii3112.c
+> +++ b/hw/ide/sii3112.c
+> @@ -125,7 +125,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr
+> addr,
+>          val =3D (uint32_t)d->regs[1].sien << 16;
+>          break;
+>      default:
+> -        val =3D 0;
+> +        break;
 
-Is declaring variables here allowed by coding style? Shouldn't you only=20
-remove init value from above?
+
+There is another function in the same file, having a similar switch
+statement. There is no warning for that second tunction, since "val" is its
+parameter, not a local varioble, like is the case here. This means that the
+proposed change introduces inconsistency between two functions, therefore
+it is better to remove the initialization of "val" to 0, than to remove
+this line in "default" section.
 
 Regards,
-BALATON Zoltan
+Aleksandar
 
->             if (!strncmp(group, set_props->group_label[g_idx], strlen(g=
-roup))) {
->                 *group_idx =3D g_idx;
->                 return set_idx;
+
+
+>      }
+>      trace_sii3112_read(size, addr, val);
+>      return val;
+> --
+> 2.21.1
 >
---3866299591-224705287-1584797142=:82121--
+>
+>
+
+--000000000000a571a805a15d8915
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Saturday, March 21, 2020, Philippe Mathieu-Daud=C3=A9 &lt;<a hre=
+f=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc s=
+olid;padding-left:1ex">Fix warning reported by Clang static code analyzer:<=
+br>
+<br>
+=C2=A0 =C2=A0 CC=C2=A0 =C2=A0 =C2=A0 hw/ide/sii3112.o<br>
+=C2=A0 hw/ide/sii3112.c:204:9: warning: Value stored to &#39;val&#39; is ne=
+ver read<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^=C2=A0 =C2=A0 =C2=A0~<br>
+<br>
+Reported-by: Clang Static Analyzer<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com">philmd@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0hw/ide/sii3112.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c<br>
+index 06605d7af2..36f1905ddb 100644<br>
+--- a/hw/ide/sii3112.c<br>
++++ b/hw/ide/sii3112.c<br>
+@@ -125,7 +125,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr a=
+ddr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0val =3D (uint32_t)d-&gt;regs[1].sien &lt;=
+&lt; 16;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D 0;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;</blockquote><div><br></div><div>There i=
+s another function in the same file, having a similar switch statement. The=
+re is no warning for that second tunction, since &quot;val&quot; is its par=
+ameter, not a local varioble, like is the case here. This means that the pr=
+oposed change introduces inconsistency between two functions, therefore it =
+is better to remove the initialization of &quot;val&quot; to 0, than to rem=
+ove this line in &quot;default&quot; section.</div><div><br></div><div>Rega=
+rds,</div><div>Aleksandar</div><div><br></div><div>=C2=A0</div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid=
+;padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0trace_sii3112_read(size, addr, val);<br>
+=C2=A0 =C2=A0 =C2=A0return val;<br>
+-- <br>
+2.21.1<br>
+<br>
+<br>
+</blockquote>
+
+--000000000000a571a805a15d8915--
 
