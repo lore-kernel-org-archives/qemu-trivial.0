@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFcad-00018b-TY
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:46:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34725)
+	id 1jFcan-0001aW-Mo
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:47:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34860)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFcaZ-00013P-6f
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:52 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFcal-0001Sp-3o
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFcaY-0006U5-8f
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:51 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56877)
+ (envelope-from <philmd@redhat.com>) id 1jFcaj-0006d1-0v
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:03 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:27899)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcaY-0006TX-5O
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:46:50 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcai-0006cc-TN
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584791209;
+ s=mimecast20190719; t=1584791220;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kQDd9EbUfb0uuK6iIsTzZMSp5qbZytglJrEh2QYroHU=;
- b=R21Rd9VFdZ5mtmU3ebmk0jiWjvTc0+L+XMHHW5i+CIZoZTU+5b5WyYfcIsVN0H6YlrHrwf
- BW7wdPwF48DSoFpJiMAQ8gCXSdclxcwEDyytiCAOOK2KX6PjIJ64/wFJ+/Za3KwlgV0izk
- gIUHcTq/9oTcqXD+btLlq6Qanrpl5gw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-jHtMp6B4NoqtlR-YkfKk7g-1; Sat, 21 Mar 2020 07:46:48 -0400
-X-MC-Unique: jHtMp6B4NoqtlR-YkfKk7g-1
-Received: by mail-wr1-f71.google.com with SMTP id e10so2409778wru.6
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:46:48 -0700 (PDT)
+ bh=c4GCDGuXxVBz+Q5fzhTo9pG6tPh9hgrqUC7e1TLGPOU=;
+ b=gsjcjqu7FwfvAoI9aaO6Txw/uJUpEJXGA2I0N5JnB8DBLP2Oz0RLLQNVjNqsgfdATqnQp6
+ CEoquSRrC3wSWJND24rUux/41jqcPwRh8fRZ6z8tHo5I3ALttoCHLEGeelFmLUvNuOqjvG
+ Z+2WjWT7A5sTJxkfQ+O0Gy4fivIt/i8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-448-2ULmPAOHOdq8D5GsRUM4Ag-1; Sat, 21 Mar 2020 07:46:57 -0400
+X-MC-Unique: 2ULmPAOHOdq8D5GsRUM4Ag-1
+Received: by mail-wr1-f72.google.com with SMTP id l17so3772237wro.3
+ for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:46:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=7jHPzgLUxabSngeicFYbktzokTE6KbRJJJ5XQsCuGXA=;
- b=XLRfDHJtNNmYYMzlAiST7dOKQW28MPzRiG991S5l8yxdXpDyt3rRaDcWBxlRg3+yp8
- 6t0ZjoL8UYywrs+7pbC/LDxm2+2EmhlUJVtw0ViXez1c4J0Ba/MCWC1o42hSSzM2/sOP
- aFwixoUQoR43eIjEI71laa+4m7G2tgdtRCLl9IR2Ys+Bp/HGjsgBE+aRTNJL9ZjdTuBM
- BK/DVhgo30U66hTiTifNWwWc5Ru3Zr9k//iZjzITX89l60JZAgGpAy08VEO21N0+HwU2
- BD6MvA3GpmFsCN0A7nJqJ94ywOvX8Ng/2Y0BBDVQPS0LPnsKEka4Nq/9DlwXtLe3iPts
- Mbwg==
-X-Gm-Message-State: ANhLgQ3igCNmM18rCnX4fLwNWr8NH/cc86MnSs9GXwrRijOiOMqaDPuo
- dsgkW+JxQR/+TOXxSeenumPdKOUxJbLYWUG9S7liUvJMokFBwq97GtLaUQ+09XDANoYZoZGaROh
- U0euuIhyCSm33kSK62A==
-X-Received: by 2002:a5d:66c2:: with SMTP id k2mr16786071wrw.408.1584791204441; 
- Sat, 21 Mar 2020 04:46:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuFSW+CXcA6YfLipptcKR9ABiJniuj3MZjBTWYLGZb0p+0Bf/8+S0d9XoeCUTxe7T9qj4FMdg==
-X-Received: by 2002:a5d:66c2:: with SMTP id k2mr16786051wrw.408.1584791204274; 
- Sat, 21 Mar 2020 04:46:44 -0700 (PDT)
+ bh=EI7aeJF1EJiZnbf/LHlroG4oQCKwaeGXEJr4kT4GssI=;
+ b=XOUmJ7WWBbd8aAQ/JxjZs+8oyI4vjXHpzKWFFGjEgF+UgqTvv8otqPO7P2xlhBS/CK
+ rTLAt5VtKk+Zg/NQ7IETRM5tibMvwud1vf7W3XE1KMpQtcHqKOAGQUO+NLDhcVOm+v9f
+ blr8lzYec/ELvPjscLJgZWn2vGmTdNFipmqb0nz97j/ah12rNexNdLXjsC6MVra5JKCw
+ 6LaZ8Y+XP1xXum9KopDDuCa5HNNweJR4MjWycMkSBA1Qvch6lQMN2vEcwjLTDusz+EgC
+ M4sPipF6xM6aA35HNGV4bTw7jC1L0awoqwXKiV8snfH6lv5tHrqeTVgTLPd09U88N7bH
+ WCJw==
+X-Gm-Message-State: ANhLgQ0zaUpz+kXUTifxvYaJrOPOWz264NbOMom40R7d2W+K9nXjdphn
+ sUMGW3F6ELQYlwKCUmb63jWOF/RRlJi46DQ9LSqty+zC2sZS99M/FwIfMGbCSyc+MX9ml/Eyci6
+ aOItkDsZ++UiPTQXbMw==
+X-Received: by 2002:a1c:a950:: with SMTP id s77mr15599446wme.176.1584791215862; 
+ Sat, 21 Mar 2020 04:46:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvfQ4vrBm8KBgyUaD+hLChCbh5Ae2/d75e8M+xeE+5T8Oik5ZY2x5rINBu/X0yrYPRPHas5yw==
+X-Received: by 2002:a1c:a950:: with SMTP id s77mr15599432wme.176.1584791215666; 
+ Sat, 21 Mar 2020 04:46:55 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id i67sm13424296wri.50.2020.03.21.04.46.41
+ by smtp.gmail.com with ESMTPSA id y189sm12549500wmb.26.2020.03.21.04.46.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:46:43 -0700 (PDT)
+ Sat, 21 Mar 2020 04:46:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -70,9 +70,9 @@ Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH-for-5.0 03/11] hw/i2c/pm_smbus: Remove dead assignment
-Date: Sat, 21 Mar 2020 12:46:07 +0100
-Message-Id: <20200321114615.5360-4-philmd@redhat.com>
+Subject: [PATCH-for-5.0 04/11] hw/input/adb-kbd: Remove dead assignment
+Date: Sat, 21 Mar 2020 12:46:08 +0100
+Message-Id: <20200321114615.5360-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
 References: <20200321114615.5360-1-philmd@redhat.com>
@@ -95,33 +95,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 11:46:52 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 11:47:04 -0000
 
 Fix warning reported by Clang static code analyzer:
 
-    CC      hw/i2c/pm_smbus.o
-  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
-                  ret =3D 0;
-                  ^     ~
+    CC      hw/input/adb-kbd.o
+  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
+      olen =3D 0;
+      ^      ~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/i2c/pm_smbus.c | 1 -
+ hw/input/adb-kbd.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
-index 36994ff585..4728540c37 100644
---- a/hw/i2c/pm_smbus.c
-+++ b/hw/i2c/pm_smbus.c
-@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
-                 s->smb_stat |=3D STS_HOST_BUSY | STS_BYTE_DONE;
-                 s->smb_data[0] =3D s->smb_blkdata;
-                 s->smb_index =3D 0;
--                ret =3D 0;
-             }
-             goto out;
-         }
+diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+index 0ba8207589..b0565be21b 100644
+--- a/hw/input/adb-kbd.c
++++ b/hw/input/adb-kbd.c
+@@ -197,7 +197,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+     int keycode;
+     int olen;
+=20
+-    olen =3D 0;
+     if (s->count =3D=3D 0) {
+         return 0;
+     }
 --=20
 2.21.1
 
