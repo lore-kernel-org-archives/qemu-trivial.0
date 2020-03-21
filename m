@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFcaz-0001wG-PI
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:47:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34983)
+	id 1jFcb5-00029I-Ee
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 07:47:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35032)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFcax-0001qw-DH
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:16 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFcb2-00022J-2I
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFcaw-0006o7-E9
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:15 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:57702)
+ (envelope-from <philmd@redhat.com>) id 1jFcb1-0006rc-0w
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:19 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:39020)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcaw-0006nl-Ad
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:14 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcb0-0006rC-Ts
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 07:47:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584791234;
+ s=mimecast20190719; t=1584791238;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=aNR2u2S6oJHTNfAafS+3cPQs0kK7tiu5/JdDcxGLqd4=;
- b=dLbIMrOFCNCAoii6J6EKqCQha4fPlYv+kVB2HimPcMZiC4fPT/eAp427kz0WR3/sTE9Edq
- qkeeivToHbxr2iSacgq8YxVhMsh9GOvnwwA+rkVk7Da9903c114oaXD65StRLGf2lFw59S
- 7bkJUrF4Vk7hE2Ac69fP2OvuJ23c1f4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-289-bQJescQIOXiJzHX0BxiINw-1; Sat, 21 Mar 2020 07:47:10 -0400
-X-MC-Unique: bQJescQIOXiJzHX0BxiINw-1
-Received: by mail-wr1-f72.google.com with SMTP id j12so334141wrr.18
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:47:09 -0700 (PDT)
+ bh=Yg/uPhRkx9OjPcaTO9vlYALUXN3pIoYxovXY5zX2+JQ=;
+ b=ANdBkhE71Ysnxc3IpXx1C31x3TUFRrWyb5W/vYjjlLg/lnLmm154AzmAU2OSfDBsVLIcw1
+ AcRYKl9fXXczbM+VhuUorGKSZDjOASbmptmkxdXAAFHmWgDyVq3GNeOMCxVLNuYW1cHAMs
+ K41Xy1Afg49MQv+FbcPpDnyKjN0GQnw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-357-XCdjykDmOf6fzDl9LBskAw-1; Sat, 21 Mar 2020 07:47:16 -0400
+X-MC-Unique: XCdjykDmOf6fzDl9LBskAw-1
+Received: by mail-wr1-f69.google.com with SMTP id b12so4216306wro.4
+ for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 04:47:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=10vzrd1KB4hBe4ZZMwH09166mQI1VXUjkd4JvuSfJzs=;
- b=SWx6MW7Crz+NszSXlc+2Q4hgic4yYWlTnStRtE4GZL+T/14oaHvqe4xNeLxcFU0CQS
- VNq2kRmnNUY0DQtdDxuL5otxQdf0a18PpDZqstRQR8zEsAUf8lHcnXHH2P95GS5SsQkO
- TSdmvS+mGDuRsXMvuOtfjvZ+kwH5XOJBO3omCa2sgAKfivLOqMnSp+C+8efRVxQ4gXxg
- WHWK2qOgX1VEId+N71AE8Yt1oFfMmVwn68OnOVb+ZT16gPTxydfiEXSzT3O+UfEsGZNd
- Pio9ppXVLlpk7VP8n00cLO/0f1zoI0gZgEVgxDCnhGb1k1gvtmtN9pRGaciX5CGl89+i
- 7/lg==
-X-Gm-Message-State: ANhLgQ3LQwZMvIVShK4IyDGG5NDya3xXoCBi5BrZRxf/8P7Vu0VEoxY+
- 2CO8gmmkxGMt9gb/RUORsR7YWoenJLfZ73hsZ6HBieET6Mh7vSLpn/vT0amx9znEETGzXywyikK
- uZlPAUya61mph1U1svQ==
-X-Received: by 2002:a1c:acc8:: with SMTP id
- v191mr16571796wme.185.1584791229019; 
- Sat, 21 Mar 2020 04:47:09 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuEZgHJ9R2CzOVD7FrVhKwfAt4ODRiXCw3f347rqB1NUIjLfREWV9rK0W33q2PNc68qUhcXew==
-X-Received: by 2002:a1c:acc8:: with SMTP id
- v191mr16571770wme.185.1584791228755; 
- Sat, 21 Mar 2020 04:47:08 -0700 (PDT)
+ bh=8CJ+9lz/G6rwsxDBjnubfjrbrfbpIvcJrGa1k2G4+/Y=;
+ b=XIRnZxV7R/sHa9nVWLIGY2mMYscNd1L9JQu56CqLDOjId6q9DmYuvqfmo2i/iQeBcq
+ ARfa8dPwdNblMBsa3pNSddt2KSwNTF73tRGtIpp5qmM6tbcRoJeCdp7u1HO+pCvjiKIZ
+ 6N2UkeBWoQ57hMWbYHc9UURYqcuEcc31lNvKVKnn39fBLWbURFdUB9fkMRCxRGDjeq6Q
+ ZbWtEp77GJyb1ymz8pXB0PWXQrtwhHvd0gGGfxjogTYn+jSGyQ2/gTURIYzR88wu/7PO
+ 3P/8i67qj5Q/ddLrH4K2ZuCqrlP5SvzUoCo8PFNt7ymOrZWDvbolEeAajRNDJnO/gwBG
+ lZzQ==
+X-Gm-Message-State: ANhLgQ1xGE8jioQwg59FjCsgKYo4N4Fg2oOOgcMDPO6tF6Nx6OzQHxHo
+ ee4YjdkCm19x+bSEN2rT5o70xZ1E3ymBGFMFF1e109EUYhcC4zPPiH7v88phOPMeOL3djwPapVR
+ ZcTXQzIsltaBdwHCwxA==
+X-Received: by 2002:a05:600c:10ce:: with SMTP id
+ l14mr576557wmd.161.1584791235492; 
+ Sat, 21 Mar 2020 04:47:15 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv3kYG0GXzyCiOia7dq8AGBTEPkdgA9K0YR3lk8tgmzZM3dgpvC+FSCqi8gMIeK6PeKsjCiPg==
+X-Received: by 2002:a05:600c:10ce:: with SMTP id
+ l14mr576530wmd.161.1584791235271; 
+ Sat, 21 Mar 2020 04:47:15 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id v7sm12822140wml.18.2020.03.21.04.47.06
+ by smtp.gmail.com with ESMTPSA id y187sm2407206wmd.0.2020.03.21.04.47.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:47:08 -0700 (PDT)
+ Sat, 21 Mar 2020 04:47:14 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,9 @@ Cc: qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH-for-5.0 06/11] hw/isa/i82378: Remove dead assignment
-Date: Sat, 21 Mar 2020 12:46:10 +0100
-Message-Id: <20200321114615.5360-7-philmd@redhat.com>
+Subject: [PATCH-for-5.0 07/11] hw/gpio/aspeed_gpio: Remove dead assignment
+Date: Sat, 21 Mar 2020 12:46:11 +0100
+Message-Id: <20200321114615.5360-8-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
 References: <20200321114615.5360-1-philmd@redhat.com>
@@ -98,54 +98,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 11:47:17 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 11:47:21 -0000
 
-Rename the unique variable assigned as 'pit' which better
-represents what it holds, to fix a warning reported by the
-Clang static code analyzer:
+Fix warning reported by Clang static code analyzer:
 
-    CC      hw/isa/i82378.o
-  hw/isa/i82378.c:108:5: warning: Value stored to 'isa' is never read
-      isa =3D isa_create_simple(isabus, "i82374");
-      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during its=
+ initialization is never read
+      int set_idx, g_idx =3D *group_idx;
+                   ^~~~~   ~~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/isa/i82378.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/gpio/aspeed_gpio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-index dcb6b479ea..d9e6c7fa00 100644
---- a/hw/isa/i82378.c
-+++ b/hw/isa/i82378.c
-@@ -67,7 +67,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     I82378State *s =3D I82378(dev);
-     uint8_t *pci_conf;
-     ISABus *isabus;
--    ISADevice *isa;
-+    ISADevice *pit;
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index 41e11ea9b0..cc07ab9866 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -714,11 +714,11 @@ static void aspeed_gpio_write(void *opaque, hwaddr of=
+fset, uint64_t data,
+ static int get_set_idx(AspeedGPIOState *s, const char *group, int *group_i=
+dx)
+ {
+     AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
+-    int set_idx, g_idx =3D *group_idx;
++    int set_idx;
 =20
-     pci_conf =3D pci->config;
-     pci_set_word(pci_conf + PCI_COMMAND,
-@@ -99,13 +99,13 @@ static void i82378_realize(PCIDevice *pci, Error **errp=
-)
-     isa_bus_irqs(isabus, s->i8259);
-=20
-     /* 1 82C54 (pit) */
--    isa =3D i8254_pit_init(isabus, 0x40, 0, NULL);
-+    pit =3D i8254_pit_init(isabus, 0x40, 0, NULL);
-=20
-     /* speaker */
--    pcspk_init(isabus, isa);
-+    pcspk_init(isabus, pit);
-=20
-     /* 2 82C37 (dma) */
--    isa =3D isa_create_simple(isabus, "i82374");
-+    isa_create_simple(isabus, "i82374");
- }
-=20
- static void i82378_init(Object *obj)
+     for (set_idx =3D 0; set_idx < agc->nr_gpio_sets; set_idx++) {
+         const GPIOSetProperties *set_props =3D &agc->props[set_idx];
+-        for (g_idx =3D 0; g_idx < ASPEED_GROUPS_PER_SET; g_idx++) {
++        for (int g_idx =3D 0; g_idx < ASPEED_GROUPS_PER_SET; g_idx++) {
+             if (!strncmp(group, set_props->group_label[g_idx], strlen(grou=
+p))) {
+                 *group_idx =3D g_idx;
+                 return set_idx;
 --=20
 2.21.1
 
