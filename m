@@ -1,91 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFfLr-0000X7-MU
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 10:43:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60627)
+	id 1jFfMG-0000xl-4i
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 10:44:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37771)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFfLo-0000P7-4t
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:43:49 -0400
+ (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jFcoj-0004fl-MD
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:01:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFfLm-0000QU-Ua
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:43:48 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:23305)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFfLm-0000Py-Q7
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:43:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584801826;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xP1X/vYsg9JeRGG0cK/lMXeLtyzTis334aQojn7RlgE=;
- b=HHIgpkooSOqThk6ov3hkn9C68OEu7nzd0ekSPL6PaGw4RisGtoLzdvQesspOFlpaxLDfeN
- BfyOhMX44k2bCdFb3mS2rvGwPcred8C66opBtu5JA7Src5jYNv55mjoo6P+rGEUFkOSLKn
- JOpXMe9rrDJ96c9zQIW47h9hWKVsqaY=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-309-myyldbW4NaCM_YEoQuGh9w-1; Sat, 21 Mar 2020 10:43:40 -0400
-X-MC-Unique: myyldbW4NaCM_YEoQuGh9w-1
-Received: by mail-ed1-f70.google.com with SMTP id i10so7610052edk.13
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 07:43:39 -0700 (PDT)
+ (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jFcoi-0004Kt-Eq
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:01:29 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:36256)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jFcoc-0004HU-1C; Sat, 21 Mar 2020 08:01:22 -0400
+Received: by mail-wr1-x435.google.com with SMTP id 31so4619865wrs.3;
+ Sat, 21 Mar 2020 05:01:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WD+fLXhzDeprzYi56If8q8l8H2M2HFiJuPfnS3uR8Mc=;
+ b=DD7MzWnvmZi4hF/I/U9y+S/Na+/rhRUQTYle6AdROUp/S91bpFg//P2AwDQ7YnFuNf
+ ctBBrvjnh/hl8oy4oD2oNR0+0sK4Q5le3NSjvkocBuCK7dH6qoSCA0Pt8Guhgzj3d2fE
+ zyvyeLjVATdss3uakgP1oQVfwtpXLiY8j5heFNbc0UC57uFW+M7DrYp5F0x89gkwn4K0
+ WxN3x5O1PdJ4MGYnF7V07oXlGAV93Q4m9hQUZILoiSg+l9JsOPIhPWDlRg0YjhpeOqAh
+ Bgdi3NTILNeDxPDpZn1Ditz6tdvzqjDNQU661cle6ezMYa73KtnBubYB/vplxSrFdRH3
+ 71HQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=F/OLVnoElxwEF3rlTbyB1ANgms+SlUxPt5Z/ioqo0ws=;
- b=sPjT/Khm4C5U1Pu+yZDgwnc9ErKNrwK0CQDtBPGQNMZQamKNvbgNbcgA63d8aOxfZT
- 3AQpYlhwZdJNbx0pVTbRAaNbSH0/XXvBDbhtKFnO9NaQ/SNoyaVEIttQGMeJsh2dmf4m
- DM0D+JEupksUf/lHM5YYaRk1h7Lb14pk+VdZolgZd73pg6YDlB6siALxRROkY1a5cKyw
- rv4BSOHxKkRexP7MWObH/sEZ0M8moiNk/ZHLTqkJl1EIaQKFwKN2Jkat6YU8YHzhWFAR
- JzBg9UEQgHYhkGG+eEJwWBs2l2HClL3ckbSlDJD544IfmEzu3RpcevqOrh1PwPWsi6Sn
- duTg==
-X-Gm-Message-State: ANhLgQ2x0garwEWyQYIWucxbwlkPTi1xqHsw04q39OGG1de61kWcMl8z
- w7ItQAlbzvSO5ETwMRvmHaW38owN95JHPezP11BrgaRaZsJRLQjMEzsQwYpQtnISgSbidkEQa1R
- K4psjURvSRg0fYrnUXA==
-X-Received: by 2002:a17:906:9451:: with SMTP id
- z17mr12858633ejx.176.1584801818842; 
- Sat, 21 Mar 2020 07:43:38 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuQpSBay0NoE2JtF/dbQw/BKYEI/H2jAJkkC81gLLfWpRUJt8dIypFXtrHpnZV46cFcJZPGng==
-X-Received: by 2002:a17:906:9451:: with SMTP id
- z17mr12858601ejx.176.1584801818627; 
- Sat, 21 Mar 2020 07:43:38 -0700 (PDT)
-Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id t13sm613293edw.49.2020.03.21.07.43.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 21 Mar 2020 07:43:38 -0700 (PDT)
-Subject: Re: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
-To: qemu-devel@nongnu.org
-Cc: John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>, Markus Armbruster <armbru@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Max Reitz <mreitz@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Fam Zheng <fam@euphon.net>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-References: <20200321144110.5010-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <f16abe6b-f0d5-60f1-71e4-f4c40e08aa33@redhat.com>
-Date: Sat, 21 Mar 2020 15:43:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WD+fLXhzDeprzYi56If8q8l8H2M2HFiJuPfnS3uR8Mc=;
+ b=shbprQngrQB7xxCrxqvC5pPO9Xu9dEUmXdzCVUsxs6LNRzeeHBnNWwg6Mupd+VeXlx
+ jUw5hBPlk88F9vHBh3mFEfJnUKN4UhESt2FXDXVzIFwo8nAFAdGYAKO/Kfn+WyYGMRKX
+ wM1BR+UfYWkXmIcXYQ/OI9S0LPaw0I2s44kqL4R2tFQYRK0F8KjZ8UyykN3T0zlXueWu
+ Nq1GPLUnDOBH0LAvUJawb9Qhprf6bFZikTYwtrFa5culQAhGX3H+raAndGTMlCLsUhzm
+ /Hp7FPN/Lp5I6IwtCnceQQxz/lMMJjpZkZO3LJtMUGrTnrD+f5RIkYxsRm7I52KWzAhQ
+ zk4A==
+X-Gm-Message-State: ANhLgQ3nte9NhU2YCOJqFBq+wv/4eNGFpHx8q8KsFlHj/9c5gXORYlJf
+ bYFMHUioYRX9G7ZiU93goRSQqHcR1bztQdWixEE=
+X-Google-Smtp-Source: ADFU+vt8ZCNwHP/oXhtbUSr29OOd034nVzPkmxze3fPYS8nueBp+NqWX7KfRMRbENayiNHEiato32XVg2Wu+AiNpJ+M=
+X-Received: by 2002:adf:f64a:: with SMTP id x10mr1281251wrp.402.1584792080733; 
+ Sat, 21 Mar 2020 05:01:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200321144110.5010-1-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+References: <20200321114615.5360-1-philmd@redhat.com>
+In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Date: Sat, 21 Mar 2020 13:01:06 +0100
+Message-ID: <CAHiYmc7JCR-_2Vb8hm1ob56-e3Et+1mtsoftt-CzY76i_qe2QA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 00/11] misc: Trivial static code analyzer fixes
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, 
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ Joel Stanley <joel@jms.id.au>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
+ Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Laurent Vivier <laurent@vivier.eu>, 
+ Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000003daa205a15c296b"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::435
+X-Mailman-Approved-At: Sat, 21 Mar 2020 10:44:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,47 +76,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 14:43:49 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 12:01:31 -0000
 
-On 3/21/20 3:40 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+--00000000000003daa205a15c296b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+12:47 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =
+=D1=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
 > Fix trivial warnings reported by the Clang static code analyzer.
+>
 
-I forgot to add the official Clang static code analyzer documentation is=20
-on https://clang-analyzer.llvm.org/ and on Fedora I simply used it as:
+Philippe,
 
-$ sudo dnf install clang-analyzer
-$ ../configure
-$ scan-build make
+It would be useful and customary for this type of fixes to provide here the
+environment you used for obtaining the warnings (clang version, configure
+parameters, and all needed elenents to repro the warnings).
 
->=20
-> Since v1:
-> - Addressed Markus/Zoltan/Aleksandar review comments
->=20
+Regards,
+Aleksandar
+
 > Philippe Mathieu-Daud=C3=A9 (11):
->    block: Avoid dead assignment
->    blockdev: Remove dead assignment
->    hw/i2c/pm_smbus: Remove dead assignment
->    hw/input/adb-kbd: Remove dead assignment
->    hw/ide/sii3112: Remove dead assignment
->    hw/isa/i82378: Remove dead assignment
->    hw/gpio/aspeed_gpio: Remove dead assignment
->    hw/timer/exynos4210_mct: Remove dead assignments
->    hw/timer/stm32f2xx_timer: Remove dead assignment
->    hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
->    hw/scsi/esp-pci: Remove dead assignment
->=20
->   block.c                    | 2 +-
->   blockdev.c                 | 2 +-
->   hw/gpio/aspeed_gpio.c      | 2 +-
->   hw/i2c/pm_smbus.c          | 1 -
->   hw/ide/sii3112.c           | 5 +++--
->   hw/input/adb-kbd.c         | 6 +-----
->   hw/isa/i82378.c            | 8 ++++----
->   hw/scsi/esp-pci.c          | 1 -
->   hw/timer/exynos4210_mct.c  | 3 ---
->   hw/timer/pxa2xx_timer.c    | 1 +
->   hw/timer/stm32f2xx_timer.c | 1 -
->   11 files changed, 12 insertions(+), 20 deletions(-)
->=20
+>   block: Remove dead assignment
+>   blockdev: Remove dead assignment
+>   hw/i2c/pm_smbus: Remove dead assignment
+>   hw/input/adb-kbd: Remove dead assignment
+>   hw/ide/sii3112: Remove dead assignment
+>   hw/isa/i82378: Remove dead assignment
+>   hw/gpio/aspeed_gpio: Remove dead assignment
+>   hw/timer/exynos4210_mct: Remove dead assignments
+>   hw/timer/stm32f2xx_timer: Remove dead assignment
+>   hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
+>   hw/scsi/esp-pci: Remove dead assignment
+>
+>  block.c                    | 2 +-
+>  blockdev.c                 | 2 +-
+>  hw/gpio/aspeed_gpio.c      | 4 ++--
+>  hw/i2c/pm_smbus.c          | 1 -
+>  hw/ide/sii3112.c           | 2 +-
+>  hw/input/adb-kbd.c         | 1 -
+>  hw/isa/i82378.c            | 8 ++++----
+>  hw/scsi/esp-pci.c          | 1 -
+>  hw/timer/exynos4210_mct.c  | 3 ---
+>  hw/timer/pxa2xx_timer.c    | 1 +
+>  hw/timer/stm32f2xx_timer.c | 1 -
+>  11 files changed, 10 insertions(+), 16 deletions(-)
+>
+> --
+> 2.21.1
+>
+>
 
+--00000000000003daa205a15c296b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr"></p>
+<p dir=3D"ltr">12:47 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 &lt;<a=
+ href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =D1=98=D0=B5 =
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; Fix trivial warnings reported by the Clang static code analyzer.<br>
+&gt;</p>
+<p dir=3D"ltr">Philippe,</p>
+<p dir=3D"ltr">It would be useful and customary for this type of fixes to p=
+rovide here the environment you used for obtaining the warnings (clang vers=
+ion, configure parameters, and all needed elenents to repro the warnings).<=
+/p>
+<p dir=3D"ltr">Regards,<br>
+Aleksandar</p>
+<p dir=3D"ltr">&gt; Philippe Mathieu-Daud=C3=A9 (11):<br>
+&gt; =C2=A0 block: Remove dead assignment<br>
+&gt; =C2=A0 blockdev: Remove dead assignment<br>
+&gt; =C2=A0 hw/i2c/pm_smbus: Remove dead assignment<br>
+&gt; =C2=A0 hw/input/adb-kbd: Remove dead assignment<br>
+&gt; =C2=A0 hw/ide/sii3112: Remove dead assignment<br>
+&gt; =C2=A0 hw/isa/i82378: Remove dead assignment<br>
+&gt; =C2=A0 hw/gpio/aspeed_gpio: Remove dead assignment<br>
+&gt; =C2=A0 hw/timer/exynos4210_mct: Remove dead assignments<br>
+&gt; =C2=A0 hw/timer/stm32f2xx_timer: Remove dead assignment<br>
+&gt; =C2=A0 hw/timer/pxa2xx_timer: Add assertion to silent static analyzer =
+warning<br>
+&gt; =C2=A0 hw/scsi/esp-pci: Remove dead assignment<br>
+&gt;<br>
+&gt; =C2=A0block.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 | 2 +-<br>
+&gt; =C2=A0blockdev.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0| 2 +-<br>
+&gt; =C2=A0hw/gpio/aspeed_gpio.c=C2=A0 =C2=A0 =C2=A0 | 4 ++--<br>
+&gt; =C2=A0hw/i2c/pm_smbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 -<br>
+&gt; =C2=A0hw/ide/sii3112.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<=
+br>
+&gt; =C2=A0hw/input/adb-kbd.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 -<br>
+&gt; =C2=A0hw/isa/i82378.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 8 +++=
++----<br>
+&gt; =C2=A0hw/scsi/esp-pci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 -<br>
+&gt; =C2=A0hw/timer/exynos4210_mct.c=C2=A0 | 3 ---<br>
+&gt; =C2=A0hw/timer/pxa2xx_timer.c=C2=A0 =C2=A0 | 1 +<br>
+&gt; =C2=A0hw/timer/stm32f2xx_timer.c | 1 -<br>
+&gt; =C2=A011 files changed, 10 insertions(+), 16 deletions(-)<br>
+&gt;<br>
+&gt; -- <br>
+&gt; 2.21.1<br>
+&gt;<br>
+&gt;<br>
+</p>
+
+--00000000000003daa205a15c296b--
 
