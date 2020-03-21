@@ -1,91 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFd7F-00032s-05
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 08:20:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40737)
+	id 1jFdiF-0004ET-JZ
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 08:58:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45279)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFd7D-00032f-70
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:20:36 -0400
+ (envelope-from <balaton@eik.bme.hu>) id 1jFdiC-00045l-Jt
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:58:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFd7C-00049W-2K
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:20:35 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:51883)
+ (envelope-from <balaton@eik.bme.hu>) id 1jFdiB-0003JA-9i
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:58:48 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:44100)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFd7A-00048Y-7f
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 08:20:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584793231;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Jdy9cM4yEkHa5BYOrLX/ZvLh08lyhMZqVUzEW6/vdc=;
- b=Kzpb6M8MG6E8hq6qfmCK9EpKUqpfYk+D3dBH7Vv/U4nvhyAMhGMEilCdSGLyoBItfWPZ5J
- E0uYF8JME+m1Dz1/1o7NPax9iN0Dz8yAfrVXW4qTLA3cz2kdWvun0PxHS2G0iKMVdzeh5Z
- D3xzuPUbXfvCBs70LQe8po5VLNZELNI=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-267-Wf177zRWNWOQQLoUyUrECQ-1; Sat, 21 Mar 2020 08:20:26 -0400
-X-MC-Unique: Wf177zRWNWOQQLoUyUrECQ-1
-Received: by mail-ed1-f71.google.com with SMTP id t1so6755515edv.2
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 05:20:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=d0Qv/xpPKwvzSW/cvuupg5cn1SBat6NtfdKMxcB1t74=;
- b=A619gvslETpk8ukb6t/GoYK0hgh5sYETVFVFvceptCpzgvPN+bc3xmdlDGqBuda2L1
- 3tZjZG5aJwU66hkTG4mg9hCKsLSvGB4s8V/3RzLTfsIHl9psmnDlIgPUADOz7M7Avp6w
- VGLJG2ryFxGnXNRcUUrsdfjdFImxfF94TB1VIx18fQ5B/CFTjs1T9e2V/JmhDyPmNsmA
- Td4eRYvgRkpsW8EuDsIYdkndBup1r6hqrjRk2Dy7nISolCbnY4PGhhuGMQCx0cDNp6or
- q0a/srv+upjx1qLOvSrdpz+G/1Ua2gw19WAxbWHybirFeEtsf/N0ZdLN3iG8Seqgz4mw
- m7pA==
-X-Gm-Message-State: ANhLgQ3iIneI3ZT+Pn+jH7lUwrml2mQTR5EgdYd9tYQfKyB2C8xnkAZE
- g83pa77HKDBJk+5R+GB2EqAzrJNmhTcLhzLppg2py6/LB9yzm7T1yEmi8sd/xXNiu9fMqmqNtwu
- hsauFIvWs5nmDgTL/tw==
-X-Received: by 2002:a50:ed06:: with SMTP id j6mr13038313eds.89.1584793224760; 
- Sat, 21 Mar 2020 05:20:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs/rvcri/kawgabzmYXNC30aSF7aXzaAQU9WhRkxRncuRvO06EdaSpW3bNFIqWA7qIey19NTw==
-X-Received: by 2002:a50:ed06:: with SMTP id j6mr13038282eds.89.1584793224557; 
- Sat, 21 Mar 2020 05:20:24 -0700 (PDT)
-Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id z22sm578021edl.6.2020.03.21.05.20.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 21 Mar 2020 05:20:23 -0700 (PDT)
-Subject: Re: [PATCH-for-5.0 00/11] misc: Trivial static code analyzer fixes
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+ (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+ id 1jFdi1-0002Vg-Kg; Sat, 21 Mar 2020 08:58:38 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id F0227747871;
+ Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id CF6537476D5; Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id CD57D7475F6;
+ Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+Date: Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
+cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Andrew Jeffery <andrew@aj.id.au>, Andrzej Zaborowski <balrogg@gmail.com>, 
+ Laurent Vivier <laurent@vivier.eu>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+ David Gibson <david@gibson.dropbear.id.au>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org, 
+ Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ qemu-ppc@nongnu.org, =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org
+Subject: Re: [PATCH-for-5.0 04/11] hw/input/adb-kbd: Remove dead assignment
+In-Reply-To: <20200321114615.5360-5-philmd@redhat.com>
+Message-ID: <alpine.BSF.2.22.395.2003211347330.82121@zero.eik.bme.hu>
 References: <20200321114615.5360-1-philmd@redhat.com>
- <CAHiYmc7JCR-_2Vb8hm1ob56-e3Et+1mtsoftt-CzY76i_qe2QA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <21211cae-5ccb-0851-7c24-9a6b84924ad1@redhat.com>
-Date: Sat, 21 Mar 2020 13:20:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ <20200321114615.5360-5-philmd@redhat.com>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-In-Reply-To: <CAHiYmc7JCR-_2Vb8hm1ob56-e3Et+1mtsoftt-CzY76i_qe2QA@mail.gmail.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+Content-Type: multipart/mixed;
+ boundary="3866299591-964345878-1584795513=:82121"
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,68 +61,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 12:20:36 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 12:58:49 -0000
 
-On 3/21/20 1:01 PM, Aleksandar Markovic wrote:
-> 12:47 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
-=20
-> <mailto:philmd@redhat.com>> =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=
-=D0=B0=D0=BE/=D0=BB=D0=B0:
->  >
->  > Fix trivial warnings reported by the Clang static code analyzer.
->  >
->=20
-> Philippe,
->=20
-> It would be useful and customary for this type of fixes to provide here=
-=20
-> the environment you used for obtaining the warnings (clang version,=20
-> configure parameters, and all needed elenents to repro the warnings).
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-https://clang-analyzer.llvm.org/
+--3866299591-964345878-1584795513=:82121
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-$ sudo dnf install clang-analyzer
-$ ../configure
-$ scan-build make
+On Sat, 21 Mar 2020, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix warning reported by Clang static code analyzer:
+>
+>    CC      hw/input/adb-kbd.o
+>  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never rea=
+d
+>      olen =3D 0;
+>      ^      ~
+>
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> hw/input/adb-kbd.c | 1 -
+> 1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+> index 0ba8207589..b0565be21b 100644
+> --- a/hw/input/adb-kbd.c
+> +++ b/hw/input/adb-kbd.c
+> @@ -197,7 +197,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf=
+)
+>     int keycode;
+>     int olen;
+>
+> -    olen =3D 0;
+>     if (s->count =3D=3D 0) {
+>         return 0;
+>     }
 
->=20
-> Regards,
-> Aleksandar
->=20
->  > Philippe Mathieu-Daud=C3=A9 (11):
->  > =C2=A0 block: Remove dead assignment
->  > =C2=A0 blockdev: Remove dead assignment
->  > =C2=A0 hw/i2c/pm_smbus: Remove dead assignment
->  > =C2=A0 hw/input/adb-kbd: Remove dead assignment
->  > =C2=A0 hw/ide/sii3112: Remove dead assignment
->  > =C2=A0 hw/isa/i82378: Remove dead assignment
->  > =C2=A0 hw/gpio/aspeed_gpio: Remove dead assignment
->  > =C2=A0 hw/timer/exynos4210_mct: Remove dead assignments
->  > =C2=A0 hw/timer/stm32f2xx_timer: Remove dead assignment
->  > =C2=A0 hw/timer/pxa2xx_timer: Add assertion to silent static analyzer =
-warning
->  > =C2=A0 hw/scsi/esp-pci: Remove dead assignment
->  >
->  > =C2=A0block.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 | 2 +-
->  > =C2=A0blockdev.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 2 +-
->  > =C2=A0hw/gpio/aspeed_gpio.c=C2=A0 =C2=A0 =C2=A0 | 4 ++--
->  > =C2=A0hw/i2c/pm_smbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 -
->  > =C2=A0hw/ide/sii3112.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-
->  > =C2=A0hw/input/adb-kbd.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 -
->  > =C2=A0hw/isa/i82378.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 8 +++=
-+----
->  > =C2=A0hw/scsi/esp-pci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 1 -
->  > =C2=A0hw/timer/exynos4210_mct.c=C2=A0 | 3 ---
->  > =C2=A0hw/timer/pxa2xx_timer.c=C2=A0 =C2=A0 | 1 +
->  > =C2=A0hw/timer/stm32f2xx_timer.c | 1 -
->  > =C2=A011 files changed, 10 insertions(+), 16 deletions(-)
->  >
->  > --
->  > 2.21.1
->  >
->  >
->=20
+Is this variable still needed at all? Looks like it's a remnant after=20
+a1f4971863 that can now only return 0 or 2 so you could just remove this=20
+variable and return 2 where now it's assigned as 2 or change return olen=20
+at the end to return 2 or maybe keep olen and change the return 0 above t=
+o=20
+return olen to silence warning but I think this could be cleaned up.
 
+Regards,
+BALATON Zoltan
+--3866299591-964345878-1584795513=:82121--
 
