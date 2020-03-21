@@ -1,91 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFerF-00010i-Pb
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 10:12:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54669)
+	id 1jFes4-0001yi-1K
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 10:13:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54964)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFerC-0000yg-SM
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:12:11 -0400
+ (envelope-from <balaton@eik.bme.hu>) id 1jFerz-0001vc-7T
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:13:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFerB-0005KD-Bt
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:12:10 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:31471)
+ (envelope-from <balaton@eik.bme.hu>) id 1jFery-0006W6-7C
+ for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:12:59 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:35595)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFerB-0005Ix-3v
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 10:12:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584799927;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vdctJkNr5flfamIlFadkGaxBCJU9nr8W/MsX0dp2l2I=;
- b=AQYd09d+SlEur792/nXQOFU1UqEqmJxtpN1kckTBulq2PscUQOfRR4Acog+ldFmF4JQnBC
- +3fqym3yUvGjdLPLtNjmE4f46iTY4vEbaX9MzROp//m1nSyOzXmUK3DHxPF0AzAkm9PrO7
- /qCUU73OxY4Hve04Mg5nEz5p4I+xi00=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-446-_RqRCv9OMFGNryY8nH17cQ-1; Sat, 21 Mar 2020 10:12:05 -0400
-X-MC-Unique: _RqRCv9OMFGNryY8nH17cQ-1
-Received: by mail-ed1-f69.google.com with SMTP id m24so7556412edq.8
- for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2020 07:12:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5YTr7B8Vhgph7+l62ANtSEn/6x+hhNiv2LZGdPA8a70=;
- b=FjCYP91MTTYrFOph3l+3XwqT6Z9kgP8Q4zkEpLLizEg8WqC1+oAzzpdKGruL1FYJCH
- lRkF7NnqtMA0IyOvanM+17iwYACT43SRH1JVFsrxTiY1izu3Vgp1ElOSyv1nCJgZPoYE
- C4snAPB0fUIOayhflCPlyeW+OBJQn37m4GKLrjj1qdcI14MzitMlD2Z66TbwZpiGms0/
- yPcD4Nt7ieQ3i3UX0UHL2EX6mh8ehnwvp25u0pvJVJFt0Femjb14M/qGsHTovkXAOL3F
- qgNlDnhqqzyTP33h8NhlhDT5mBfSC1uqKvSBP4N5x/n1h6de6Gl629w+0kL1OsCWADzw
- TDFg==
-X-Gm-Message-State: ANhLgQ3BtZlz0wrirf7nL6wR04zGmeEg85i24S5ERUWgCrSQks14AonG
- nEZzTmrZibQZ7Hj92zOF1AERh+KoXDKGQYPswL1UTCmGjdjLhlDcHvwYIQLhxZJYsY/B9TK4X9g
- 0J3lE+cF6KepqAbQW/Q==
-X-Received: by 2002:a17:906:c835:: with SMTP id
- dd21mr12788922ejb.140.1584799924262; 
- Sat, 21 Mar 2020 07:12:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vswvkINXM0tFJgCuBXez3xd6Rkdtm0y9xcA9GO2JYtSqgDsa1eOwjCFZ/2m9CnVXgMc2rEQ2A==
-X-Received: by 2002:a17:906:c835:: with SMTP id
- dd21mr12788886ejb.140.1584799923899; 
- Sat, 21 Mar 2020 07:12:03 -0700 (PDT)
-Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id oz27sm579169ejb.13.2020.03.21.07.12.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 21 Mar 2020 07:12:02 -0700 (PDT)
-Subject: Re: [PATCH-for-5.0 07/11] hw/gpio/aspeed_gpio: Remove dead assignment
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+ id 1jFero-0006DI-OJ; Sat, 21 Mar 2020 10:12:48 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id C9D97747DCF;
+ Sat, 21 Mar 2020 15:12:44 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A9E567476D5; Sat, 21 Mar 2020 15:12:44 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A7DC47475F6;
+ Sat, 21 Mar 2020 15:12:44 +0100 (CET)
+Date: Sat, 21 Mar 2020 15:12:44 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, 
+ Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ Markus Armbruster <armbru@redhat.com>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
+ Kevin Wolf <kwolf@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+ Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, 
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH-for-5.0 05/11] hw/ide/sii3112: Remove dead assignment
+In-Reply-To: <CAL1e-=hQPwJ3XKrt4ip2S92ScjyjS63-A4REDeXzyiCt1Phx6A@mail.gmail.com>
+Message-ID: <alpine.BSF.2.22.395.2003211511170.82121@zero.eik.bme.hu>
 References: <20200321114615.5360-1-philmd@redhat.com>
- <20200321114615.5360-8-philmd@redhat.com>
- <alpine.BSF.2.22.395.2003211420450.82121@zero.eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <41f0d6a5-8699-e272-4832-fc1fce2e019e@redhat.com>
-Date: Sat, 21 Mar 2020 15:12:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ <20200321114615.5360-6-philmd@redhat.com>
+ <CAL1e-=hQPwJ3XKrt4ip2S92ScjyjS63-A4REDeXzyiCt1Phx6A@mail.gmail.com>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-In-Reply-To: <alpine.BSF.2.22.395.2003211420450.82121@zero.eik.bme.hu>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+Content-Type: multipart/mixed;
+ boundary="3866299591-195879098-1584799964=:82121"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2001:738:2001:2001::2001
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,64 +64,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 14:12:12 -0000
+X-List-Received-Date: Sat, 21 Mar 2020 14:13:00 -0000
 
-On 3/21/20 2:22 PM, BALATON Zoltan wrote:
-> On Sat, 21 Mar 2020, Philippe Mathieu-Daud=C3=A9 wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-195879098-1584799964=:82121
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, 21 Mar 2020, Aleksandar Markovic wrote:
+> On Saturday, March 21, 2020, Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com>
+> wrote:
+>
 >> Fix warning reported by Clang static code analyzer:
 >>
->> =C2=A0hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' dur=
-ing=20
->> its initialization is never read
->> =C2=A0=C2=A0=C2=A0=C2=A0 int set_idx, g_idx =3D *group_idx;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ^~~~~=C2=A0=C2=A0 ~~~~~~~~~~
+>>     CC      hw/ide/sii3112.o
+>>   hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+>>           val =3D 0;
+>>           ^     ~
 >>
 >> Reported-by: Clang Static Analyzer
 >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >> ---
->> hw/gpio/aspeed_gpio.c | 4 ++--
->> 1 file changed, 2 insertions(+), 2 deletions(-)
+>>  hw/ide/sii3112.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
->> index 41e11ea9b0..cc07ab9866 100644
->> --- a/hw/gpio/aspeed_gpio.c
->> +++ b/hw/gpio/aspeed_gpio.c
->> @@ -714,11 +714,11 @@ static void aspeed_gpio_write(void *opaque,=20
->> hwaddr offset, uint64_t data,
->> static int get_set_idx(AspeedGPIOState *s, const char *group, int=20
->> *group_idx)
->> {
->> =C2=A0=C2=A0=C2=A0 AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
->> -=C2=A0=C2=A0=C2=A0 int set_idx, g_idx =3D *group_idx;
->> +=C2=A0=C2=A0=C2=A0 int set_idx;
->>
->> =C2=A0=C2=A0=C2=A0 for (set_idx =3D 0; set_idx < agc->nr_gpio_sets; set_=
-idx++) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const GPIOSetProperties *set_=
-props =3D &agc->props[set_idx];
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (g_idx =3D 0; g_idx < AS=
-PEED_GROUPS_PER_SET; g_idx++) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (int g_idx =3D 0; g_idx =
-< ASPEED_GROUPS_PER_SET; g_idx++) {
->=20
-> Is declaring variables here allowed by coding style? Shouldn't you only=
+>> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+>> index 06605d7af2..36f1905ddb 100644
+>> --- a/hw/ide/sii3112.c
+>> +++ b/hw/ide/sii3112.c
+>> @@ -125,7 +125,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwa=
+ddr
+>> addr,
+>>          val =3D (uint32_t)d->regs[1].sien << 16;
+>>          break;
+>>      default:
+>> -        val =3D 0;
+>> +        break;
+>
+>
+> There is another function in the same file, having a similar switch
+> statement. There is no warning for that second tunction, since "val" is=
+ its
+> parameter, not a local varioble, like is the case here. This means that=
+ the
+> proposed change introduces inconsistency between two functions, therefo=
+re
+> it is better to remove the initialization of "val" to 0, than to remove
+> this line in "default" section.
+
+Oh, actually I think the warning was for that statement not for the one=20
+patched as it makes more sense there where val is assigned in void=20
+sii3112_reg_write() where it's indeed not used so maybe that was meant to=
 =20
-> remove init value from above?
+be patched instead?
 
-You are right, it is not (yet?) allowed by QEMU coding style.
-
->=20
-> Regards,
-> BALATON Zoltan
->=20
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!=
-strncmp(group, set_props->group_label[g_idx],=20
->> strlen(group))) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 *group_idx =3D g_idx;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 return set_idx;
->>
-
+Regards,
+BALATON Zoltan
+--3866299591-195879098-1584799964=:82121--
 
