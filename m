@@ -1,53 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jFfnH-0004RF-GL
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2020 11:12:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36754)
+	id 1jFtJj-0006z5-Dt
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Mar 2020 01:38:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33656)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <balaton@eik.bme.hu>) id 1jFfnF-0004Mp-8j
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 11:12:10 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1jFtJg-0006rn-0k
+ for qemu-trivial@nongnu.org; Sun, 22 Mar 2020 01:38:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1jFfnE-0001Gl-8f
- for qemu-trivial@nongnu.org; Sat, 21 Mar 2020 11:12:09 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:52287)
+ (envelope-from <dgibson@ozlabs.org>) id 1jFtJe-0007sL-M6
+ for qemu-trivial@nongnu.org; Sun, 22 Mar 2020 01:38:31 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:39211 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1jFfn3-0001BP-VL; Sat, 21 Mar 2020 11:11:58 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 142A3747DCF;
- Sat, 21 Mar 2020 16:11:56 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id E38E6747DF8; Sat, 21 Mar 2020 16:11:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id DE5A3747871;
- Sat, 21 Mar 2020 16:11:55 +0100 (CET)
-Date: Sat, 21 Mar 2020 16:11:55 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, 
- Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org, 
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, 
- Markus Armbruster <armbru@redhat.com>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
- Kevin Wolf <kwolf@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
- Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, 
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH-for-5.0 01/11] block: Remove dead assignment
-In-Reply-To: <CAHiYmc5gpHCUfc5bPMs8Qa7NETYkkj8rfV5dTyqZF4ZQTeNa8Q@mail.gmail.com>
-Message-ID: <alpine.BSF.2.22.395.2003211608170.82121@zero.eik.bme.hu>
-References: <20200321114615.5360-1-philmd@redhat.com>
- <20200321114615.5360-2-philmd@redhat.com>
- <CAHiYmc5gpHCUfc5bPMs8Qa7NETYkkj8rfV5dTyqZF4ZQTeNa8Q@mail.gmail.com>
-User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1jFtJJ-0007jL-4J; Sun, 22 Mar 2020 01:38:09 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 48lR9x0slYz9sPF; Sun, 22 Mar 2020 16:37:57 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1584855477;
+ bh=F4WJjh+4C1y+czVXBLaP8DstTq8ObneFRp7nfValy5s=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XpIu+4MLnl+yeZ0C79fkefwDvOHeyInEHL+0sw6eWx06219QTexLt1cOQjy19sznI
+ v2cqQeKn20S1uUvk/pt6C4lVITzJlwdTfPpUEX8fYqcCLUYPmuJje/XZnKgnvhudZy
+ cq1Wxqfi/ZnXMHnppCskKhelGUWss3OPHzvl+FNU=
+Date: Sun, 22 Mar 2020 16:34:27 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>, Markus Armbruster <armbru@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Max Reitz <mreitz@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Fam Zheng <fam@euphon.net>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH-for-5.0 v2 04/11] hw/input/adb-kbd: Remove dead assignment
+Message-ID: <20200322053427.GH781112@umbus.fritz.box>
+References: <20200321144110.5010-1-philmd@redhat.com>
+ <20200321144110.5010-5-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1870441923-1584803515=:82121"
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="CNK/L7dwKXQ4Ub8J"
+Content-Disposition: inline
+In-Reply-To: <20200321144110.5010-5-philmd@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,72 +63,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2020 15:12:10 -0000
+X-List-Received-Date: Sun, 22 Mar 2020 05:38:33 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-1870441923-1584803515=:82121
-Content-Type: text/plain; charset=UTF-8; format=flowed
+--CNK/L7dwKXQ4Ub8J
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Sat, 21 Mar 2020, Aleksandar Markovic wrote:
-> 12:49 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> =D1=98=D0=B5
-> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->>
->> Fix warning reported by Clang static code analyzer:
->>
->>   block.c:3167:5: warning: Value stored to 'ret' is never read
->>       ret =3D bdrv_fill_options(&options, filename, &flags, &local_err=
-);
->>       ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>
->> Reported-by: Clang Static Analyzer
->
-> Peter, and others,
->
-> Is this allowed use of "Reported-by:" mark?
->
-> I did not notice it being used this way before. And was under impressio=
-n
-> that all similar tags/marks must be followed by a person, not a tool.
+On Sat, Mar 21, 2020 at 03:41:03PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Since commit 5a1f49718 the 'olen' variable is not really
+> used. Remove it to fix a warning reported by Clang static
+> code analyzer:
+>=20
+>     CC      hw/input/adb-kbd.o
+>   hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
+>       olen =3D 0;
+>       ^      ~
+>=20
+> Fixes: 5a1f49718 (adb: add support for QKeyCode)
+> Reported-by: Clang Static Analyzer
+> Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-I think there were previous patches with Reported-by: Euler Robot which=20
-may be similar to this usage.
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-Regards,
-BALATON Zoltan
+> ---
+> v2: Remove 'olen' (Zoltan)
+> ---
+>  hw/input/adb-kbd.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+>=20
+> diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+> index 0ba8207589..a6d5c9b7c9 100644
+> --- a/hw/input/adb-kbd.c
+> +++ b/hw/input/adb-kbd.c
+> @@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+>  {
+>      KBDState *s =3D ADB_KEYBOARD(d);
+>      int keycode;
+> -    int olen;
+> =20
+> -    olen =3D 0;
+>      if (s->count =3D=3D 0) {
+>          return 0;
+>      }
+> @@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+>      if (keycode =3D=3D 0x7f) {
+>          obuf[0] =3D 0x7f;
+>          obuf[1] =3D 0x7f;
+> -        olen =3D 2;
+>      } else {
+>          obuf[0] =3D keycode;
+>          /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
+> @@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+>           * byte, but choose not to bother.
+>           */
+>          obuf[1] =3D 0xff;
+> -        olen =3D 2;
+>      }
+> =20
+> -    return olen;
+> +    return 2;
+>  }
+> =20
+>  static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
 
->
-> Regards,
-> Aleksandar
->
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->>  block.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/block.c b/block.c
->> index a2542c977b..908c109a8c 100644
->> --- a/block.c
->> +++ b/block.c
->> @@ -3164,7 +3164,7 @@ static BlockDriverState *bdrv_open_inherit(const
-> char *filename,
->>                                      parent->open_flags, parent->optio=
-ns);
->>      }
->>
->> -    ret =3D bdrv_fill_options(&options, filename, &flags, &local_err)=
-;
->> +    bdrv_fill_options(&options, filename, &flags, &local_err);
->>      if (local_err) {
->>          goto fail;
->>      }
->> --
->> 2.21.1
->>
->>
->
---3866299591-1870441923-1584803515=:82121--
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--CNK/L7dwKXQ4Ub8J
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl52+OMACgkQbDjKyiDZ
+s5J3ihAAyQdD4J2JEB7fYHRvYktz4BhNLIrD6t2qFSAUGeBC2CU+FA4jy4r3qRy8
+bk2AWU8o2poFSBT0CCYUZeGuFEPf1MkxZt3p6saNZVk0IX5q3z3WR2d9z+p6veWG
+rUzXkpbraEZcI5QHQ+iG9iapqikWxmc4GMQAxD4FFRrSwkju9dTQDN4zlLXs7hhL
+YGaQWoIcnfhMQBeM1QFV2mSF4M+SoTTp8RCNsteZAPqf0LAY6BJ3iVb8tH9dpoaO
+qEv5Pyjgcs9IeYore+VR67yLq3dSMdKgryO35OBk2EQKrI+2xXjGt8ehECFgDNBt
+JULe0H3mGq3EXefuKPTby5NReZaKIWDgtoTuzycDT4F1JERG/kCfUpEcKbjwS3N1
+yJsCMshYqqSS1yBfEe0MXi453m8h6N+jzXIQAJXhFVqiyb3mIG2FENNu7g78TMiD
+dN9L8f5lnhRxk0pZXzsOjCjyE9fkthUBU3UBE7xAyHczIaQ/+5nPjr2kKRkjc+Rw
+RkLHCEfHMaJA81znCp6sQhQ5EKskkIVZxvIrdsRpweydRNUNfvdZtF6EGpJBStEc
+btANFqt7dcMWVjxukE711vQJoq1A1k8IulwkkolJB+jnRq2TadAloQjhMdRSPiLE
+CPUAX76wERETZC6h/hgmHd7PzQSFXT6J9gmP1ziJ62ibcLpda1A=
+=8mA0
+-----END PGP SIGNATURE-----
+
+--CNK/L7dwKXQ4Ub8J--
 
