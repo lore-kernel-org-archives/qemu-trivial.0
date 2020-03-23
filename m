@@ -1,76 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGPXw-0007oH-QI
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2020 12:03:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32855)
+	id 1jGQPY-0006Te-7v
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2020 12:58:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44190)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jGPXt-0007j6-Qu
- for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 12:03:23 -0400
+ (envelope-from <kwolf@redhat.com>) id 1jGQPV-0006Qj-VC
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 12:58:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jGPXs-0006hz-LF
- for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 12:03:21 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:37717)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jGPXk-0006dA-KV; Mon, 23 Mar 2020 12:03:12 -0400
-Received: by mail-ua1-x944.google.com with SMTP id l18so966748uak.4;
- Mon, 23 Mar 2020 09:03:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=JnyeopB+Gr3i1azSR4z83W38j2lgLgHE6PDpwzZJBB8=;
- b=p2kvYCwkVukiiOQHNpOTZjXZ3qUhT2afJEgMCmV0WTjTzaqibkNcZdaUTtSLRN0J5C
- 5blHrzibFGYcVx1aGlzOBkTIC/WY+Wyd1kBaVrr1VpE+tcR7+xRqwT6tQGDGSOF1aRZI
- t31rf2eFACLhd9OxEZ73GD8R3v2mhKs3mxwa1/fi4KOAQAfOqlG/vhCRoERQpVeTAq0N
- tViP7821FddrPWi0mOIl6Uh/QhXdlhecgVWvxjN6fR1oXV/g80k1wpdLjdx51o9PWPl5
- nkAX/MyVJvglANyR+WW1A+vKlruZKNhUfs5W9EuH7X6JlHVw53O7UXX8gmNGvInMDBw3
- rpxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=JnyeopB+Gr3i1azSR4z83W38j2lgLgHE6PDpwzZJBB8=;
- b=uYRsWxQbNq/smPf/MRNth0LHrKkwY8EsJu8EKUCDjnPHD/uIjAaNwBSKPHwcE5RmWm
- rzli1h/MFYMqUTVLhyCkZyivpR3OsfLbkvcOAwHXLcNUA6N5JbZahs9Yu1kchjiS3n50
- rYiMCCl/iz+/YuurIUoDNs5jRIa0yZgYg8WyRJ6wop5K560wjoxPLA0ZCz0VoEvnAL19
- rqJ27CdRgoRC+70eyziSdzaIk2MlcawSasPk3hBQ+JkZ++jZxlnOUxnKShmtxLw8qLI4
- n+LnQTOHGp2qxrDuCjYR7L33TBi1UnDKuFkBNJIF9UerU/Kelg2BgPvhcxFfexQQCGWP
- +aOQ==
-X-Gm-Message-State: ANhLgQ0E2PPRa4uAOITIqOCHau6tnlaEG/9oNurb9DRvS8fvJFRs5lSP
- UWAFeZyeYV5fay8wq5tbz5TrYaHSC8nS0hKWgrg=
-X-Google-Smtp-Source: ADFU+vultXvB6mUVHmmwMfWDB+Ux8l9wUoYuTCjGAJKPULuO0JSO86/77/q+fLk3kmIqdWHMgtuDtFn1LpShSqoLDYc=
-X-Received: by 2002:a9f:2964:: with SMTP id t91mr7742050uat.21.1584979390662; 
- Mon, 23 Mar 2020 09:03:10 -0700 (PDT)
+ (envelope-from <kwolf@redhat.com>) id 1jGQPU-0005G9-74
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 12:58:45 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:21357)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1jGQPT-0005F4-Vc
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 12:58:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584982723;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0zh/3RA5d1WqX2AO38T5+TftwgyCnqytpYntcHMRogU=;
+ b=P9kjxijlM86Chl8ljkb/D3SLloRVm19FAIbc8tg1q5oIerXVNKf+9SVQBgZb7YBjBvu71Y
+ SsUCJri7c5soeN5tlik1BnMS9jKRTRT6/i1JjffrZjstXCH7BXSY0zFfx5IPEOeIv7LwJk
+ TL6RW24rrG7KFLmbtf9bDHsJuE7zNgM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-107-HLIzCtxxNhiVjDXp0y0_2w-1; Mon, 23 Mar 2020 12:58:39 -0400
+X-MC-Unique: HLIzCtxxNhiVjDXp0y0_2w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BD81107ACCA;
+ Mon, 23 Mar 2020 16:58:38 +0000 (UTC)
+Received: from linux.fritz.box (ovpn-114-85.ams2.redhat.com [10.36.114.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 78A839B92F;
+ Mon, 23 Mar 2020 16:58:35 +0000 (UTC)
+Date: Mon, 23 Mar 2020 17:58:34 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>,
+ Max Reitz <mreitz@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH v3] block/iscsi:use the flags in iscsi_open() prevent
+ Clang warning
+Message-ID: <20200323165834.GB8049@linux.fritz.box>
+References: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-11-philmd@redhat.com>
-In-Reply-To: <20200321144110.5010-11-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Mar 2020 08:55:08 -0700
-Message-ID: <CAKmqyKOt9+O8fYsSOabSP6kOqi879-qE-GBJqhVvW=EtH_2rmg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 v2 10/11] hw/timer/pxa2xx_timer: Add assertion to
- silent static analyzer warning
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Fam Zheng <fam@euphon.net>, 
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Qemu-block <qemu-block@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Markus Armbruster <armbru@redhat.com>, 
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Laurent Vivier <laurent@vivier.eu>, 
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
- "open list:New World" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20200311032927.35092-1-kuhn.chenqun@huawei.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::944
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,71 +70,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Mar 2020 16:03:23 -0000
+X-List-Received-Date: Mon, 23 Mar 2020 16:58:47 -0000
 
-On Sat, Mar 21, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> pxa2xx_timer_tick4() takes an opaque pointer, then calls
-> pxa2xx_timer_update4(), so the static analyzer can not
-> verify that the 'n < 8':
->
->   425 static void pxa2xx_timer_tick4(void *opaque)
->   426 {
->   427     PXA2xxTimer4 *t =3D (PXA2xxTimer4 *) opaque;
->   428     PXA2xxTimerInfo *i =3D (PXA2xxTimerInfo *) t->tm.info;
->   429
->   430     pxa2xx_timer_tick(&t->tm);
->   433     if (t->control & (1 << 6))
->   434         pxa2xx_timer_update4(i, qemu_clock_get_ns(QEMU_CLOCK_VIRTUA=
-L), t->tm.num - 4);
->
->   135 static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, i=
-nt n)
->   136 {
->   137     PXA2xxTimerInfo *s =3D (PXA2xxTimerInfo *) opaque;
->   140     static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
->   142
->   143     if (s->tm4[n].control & (1 << 7))
->   144         counter =3D n;
->   145     else
->   146         counter =3D counters[n];
->
-> Add an assert() to give the static analyzer a hint, this fixes a
-> warning reported by Clang static code analyzer:
->
->     CC      hw/timer/pxa2xx_timer.o
->   hw/timer/pxa2xx_timer.c:146:17: warning: Assigned value is garbage or u=
-ndefined
->           counter =3D counters[n];
->                   ^ ~~~~~~~~~~~
->
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Am 11.03.2020 um 04:29 hat Chen Qun geschrieben:
+> Clang static code analyzer show warning:
+>   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
+>         flags &=3D ~BDRV_O_RDWR;
+>         ^        ~~~~~~~~~~~~
+>=20
+> In iscsi_allocmap_init() only checks BDRV_O_NOCACHE, which
+> is the same in both of flags and bs->open_flags.
+> We can use the flags instead bs->open_flags to prevent Clang warning.
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Thanks, applied to the block branch.
 
-Alistair
+Kevin
 
-> ---
->  hw/timer/pxa2xx_timer.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-> index cd172cc1e9..944c165889 100644
-> --- a/hw/timer/pxa2xx_timer.c
-> +++ b/hw/timer/pxa2xx_timer.c
-> @@ -140,6 +140,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64=
-_t now_qemu, int n)
->      static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
->      int counter;
->
-> +    assert(n < ARRAY_SIZE(counters));
->      if (s->tm4[n].control & (1 << 7))
->          counter =3D n;
->      else
-> --
-> 2.21.1
->
->
 
