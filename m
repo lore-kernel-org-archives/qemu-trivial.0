@@ -1,47 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGDef-0001yM-7y
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Mar 2020 23:21:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51768)
+	id 1jGJ8i-0005wd-9l
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2020 05:12:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51533)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1jGDec-0001pg-A5
- for qemu-trivial@nongnu.org; Sun, 22 Mar 2020 23:21:31 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jGJ8f-0005vR-3x
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 05:12:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1jGDeb-0005wP-5X
- for qemu-trivial@nongnu.org; Sun, 22 Mar 2020 23:21:30 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:44375 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1jGDeV-0005op-2v; Sun, 22 Mar 2020 23:21:23 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48m05q0Bbzz9sR4; Mon, 23 Mar 2020 14:21:18 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1584933679;
- bh=k/cpSl3hBGwY9eKjU2UwtGFRBxzWB6/1VLumGcR7Sx8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZKb0gly2s7cFQuRjHOm2RRycmE87p9D1Y037IhX9GIe3jQ7CWV8NB+ZN5I8h2P/Nk
- Ghu3zI9kyzdHNnz0MFB1PC8LyiZi5WDErCaj/zoaf5XccxBv6xi7ghVq5/SZXVct2P
- xeC/+QOYtKh7PIoiLTzPoe1qSGA9ZX6wffuqSEss=
-Date: Mon, 23 Mar 2020 13:34:24 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] ppc/ppc405_boards: Remove unnecessary NULL check
-Message-ID: <20200323023424.GB2213@umbus.fritz.box>
-References: <20200320155740.5342-1-philmd@redhat.com>
- <20200322084608.GI781112@umbus.fritz.box>
- <CAFEAcA-TPqVN98T=tYAOyQ4JPj8iu+eB3Zi-txgV+GUgcHNjCQ@mail.gmail.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1jGJ8d-0004Km-VW
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 05:12:52 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:39753)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jGJ8d-0004KZ-Qb
+ for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 05:12:51 -0400
+Received: by mail-ot1-x344.google.com with SMTP id x11so549378otp.6
+ for <qemu-trivial@nongnu.org>; Mon, 23 Mar 2020 02:12:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=StYhV2lHqDdL8GVjx4Q/ZJ8fCC3CSz1lNcbb9k1iBQQ=;
+ b=XS3ABJFPZiIbEtLJAt7sZ9CTqXOF7rsQ8Aha/qKZNVg8GZiz3Ufi8YXwDwUgL2UiI8
+ iWzNepWlfYlMl49LMa9ecNHJpB5ifEgsONDOd9CoEbN0uES94MDGtpGP0LDgtfne3qWm
+ C56jQf1uqo9j/qT1bOdsTJcdgmlB3sP7ORi7oO+TiIjZ///AqHUupXH1Pz+QcS6UxECM
+ 7S6jnOoCDsH2JDgF75lP9mRgkKCMqhrjMvdMISkn16glSqYdA86Yl0mZKucwf7iAUJgX
+ ZURuA2H25NLq96MjWv6zhnkimJAPlDquQaYnCGr+yDREt21+Tytf+KBM2Fh4Bf/aDEvP
+ kWQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=StYhV2lHqDdL8GVjx4Q/ZJ8fCC3CSz1lNcbb9k1iBQQ=;
+ b=mX2JunAZ3LWBrZn+EK4sQVJbw3dsmDd8AmRL4eVNYTic6CBgm6T2YDnbmfsAusUf6i
+ LYgmDmYKURHSzYKWpMrc2TugyJcYljcn/ZKAVxKWQJy4YgA/qLqQuxcXCf6oWv02eQxU
+ 4ggSbqKOYmAI1jBNqbJXOKJJHLwfZHtRjUtT9cEcYQXA7HIpbS6fu4cEr+sWjsnmRqP7
+ HeS15E5dlL1Jb9sZfwtoXj5oxaJ6+hMok4aXOP9jl6V/9amaDcGnFog3VJXMXBDpf5xD
+ 9zsOt6apllyysLGM7YiqJZlHGZuKB73HuuoLL9SlE2/q+CnD7QzNYi8uekPZfOJLSgKk
+ yjwQ==
+X-Gm-Message-State: ANhLgQ2WKaGrP8uUDqkC/p0fYNuG/8KvaFycC20zNxrplIh/vhmvLbsx
+ WJRwRSk+/KdJAG4OLam74GqGQd9Ke+WkHtM5ohb/nw==
+X-Google-Smtp-Source: ADFU+vtVmJQfNIBjmB/LPEitJoL8dvERBpgzyEIKt0+gb62TYc56oHZo/BwkM+TcodKlmzJ918911USOCQgMct1jDbk=
+X-Received: by 2002:a9d:1d43:: with SMTP id m61mr17260836otm.91.1584954770862; 
+ Mon, 23 Mar 2020 02:12:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="3lcZGd9BuhuYXNfi"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-TPqVN98T=tYAOyQ4JPj8iu+eB3Zi-txgV+GUgcHNjCQ@mail.gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 203.11.71.1
+References: <20200312213455.15854-1-philmd@redhat.com>
+In-Reply-To: <20200312213455.15854-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Mar 2020 09:12:39 +0000
+Message-ID: <CAFEAcA-i5L1Xz_r28xs1waDcoz5ChnzUcoTb51s31oXBqeO_RQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/bcm283x: Correct the license text
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, 
+ Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,64 +69,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Mar 2020 03:21:31 -0000
+X-List-Received-Date: Mon, 23 Mar 2020 09:12:54 -0000
 
+On Thu, 12 Mar 2020 at 21:35, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> The license is the 'GNU General Public License v2.0 or later',
+> not 'and':
+>
+>   This program is free software; you can redistribute it and/ori
+>   modify it under the terms of the GNU General Public License as
+>   published by the Free Software Foundation; either version 2 of
+>   the License, or (at your option) any later version.
+>
+> Fix the license comment.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
---3lcZGd9BuhuYXNfi
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I was hoping for an ack from Andrew, but in any case I think
+the original licensing intention was clear and this is just
+a fixup on the wording.
 
-On Sun, Mar 22, 2020 at 10:06:13AM +0000, Peter Maydell wrote:
-> On Sun, 22 Mar 2020 at 08:50, David Gibson <david@gibson.dropbear.id.au> =
-wrote:
-> >
-> > On Fri, Mar 20, 2020 at 04:57:40PM +0100, Philippe Mathieu-Daud=E9 wrot=
-e:
-> > > This code is inside the "if (dinfo)" condition, so testing
-> > > again here whether it is NULL is unnecessary.
-> > >
-> > > Fixes: dd59bcae7 (Don't size flash memory to match backing image)
-> > > Reported-by: Coverity (CID 1421917)
-> > > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> > > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> >
-> > Applied to ppc-for-5.1.
->=20
-> This would be OK for 5.0 too at this stage.
+Applied to target-arm.next, thanks.
 
-Understood, I've moved this into the ppc-for-5.0 tree.
-
->=20
-> thanks
-> -- PMM
->=20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---3lcZGd9BuhuYXNfi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl54IC8ACgkQbDjKyiDZ
-s5KfUhAAkV39fJ+5/pJVof+FcfX2TJXBlY8rT1atyWMaclkjKaKwb4+ZZMwa1ZWV
-Qq3adQMfyaq9dHTHu4FrOobqI4UcHnOVM1/T3DLGmXa0Ib3ncwzlywQXunfKGi7k
-Pv5Dx9v15TZei9M6RgHRxNDMB5ssip+/zB6orA1gZCRYnx08p3HYg1aQ267Shx+t
-FWubQzt+peYS+3lHN+OYAmP9ubIHNjpDpVHefux8S8M/mh7CeHOyvGptOYlSsoql
-90dbt+Qf9ymABls2QmOp5USxyKe8VLfgeSSEhWprHn+FFDz4OuKtc/hZ/mx+mBjO
-0IjlnBJHwsND7mUvozFpZpUMCkaahVhSVCwMi6sr6QevTrEIpPgyhlmqWwpZVosF
-PGU0VCm/C0FBstEUzygEnZMs6mxgAY7Lyt9aShhglJ/qzZP5FpB9QfhNZn87bnVJ
-YMG4J50mSMY4a7J0XY1Lqf6cHb9m9oNlS/K9Wh+k+syYtgRAdIe4fxGbHpZ4pdHM
-4Cav3tMZENbNJQTs9QKtZ7SC0D09qNmmIhmjWlkIHDaZk6/MOhcgnci8FQ4Wji9w
-QBphUXxW/1+s3p/G6cFg0ka9WdkM7YqCiYmFtXJJ5gqbgXt3+F3lZa9mxboekGMO
-3H2ie48QiJY4dhlDHQ6A8Zi6u0svs0Hf4LFrID6+y6tYUNtflTg=
-=nHHQ
------END PGP SIGNATURE-----
-
---3lcZGd9BuhuYXNfi--
+-- PMM
 
