@@ -1,147 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGS6B-0006nB-MG
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2020 14:46:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37588)
+	id 1jGe4n-00088y-0A
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 03:34:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57708)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1jGS69-0006ga-HZ
- for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 14:46:54 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGe4j-00081E-4T
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 03:34:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1jGS68-0005X9-Cs
- for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 14:46:53 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:59376)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGe4h-0004f8-F6
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 03:34:13 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2079 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1jGS68-0005Wv-9a
- for qemu-trivial@nongnu.org; Mon, 23 Mar 2020 14:46:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584989211;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ot+Xp4AikkjrX/qUt8wNmQUVftBhJ2mV/fSndMYKPsE=;
- b=Inng9S0ZDqU1/ohDTaCkGFPOy85VzWNmO3lZBQ6vMYsU5YFKjgoU5u+skq/tOMKnwbqhcs
- VfH3qNotolz0q7MbWoWykDFuW0fuXObWm3LpS6j3YxCZ9iVAe2XPiO7vvXBFiqjqm5w5SQ
- QXhMNYrKbGnFefTI8WGWUj5Q243Gnng=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-hAoyErYePhyo-FNLQ9EnEQ-1; Mon, 23 Mar 2020 14:46:48 -0400
-X-MC-Unique: hAoyErYePhyo-FNLQ9EnEQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9BED190D377;
- Mon, 23 Mar 2020 18:46:26 +0000 (UTC)
-Received: from [10.10.112.191] (ovpn-112-191.rdu2.redhat.com [10.10.112.191])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 62EA894B23;
- Mon, 23 Mar 2020 18:46:15 +0000 (UTC)
-Subject: Re: [PATCH-for-5.0 v2 05/11] hw/ide/sii3112: Remove dead assignment
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-ppc@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
- Markus Armbruster <armbru@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Max Reitz <mreitz@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Fam Zheng <fam@euphon.net>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jGe4U-0004Y0-5y; Tue, 24 Mar 2020 03:33:58 -0400
+Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 9AC82E6DE52D4E6F858D;
+ Tue, 24 Mar 2020 15:33:48 +0800 (CST)
+Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
+ DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Tue, 24 Mar 2020 15:33:48 +0800
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.202]) by
+ dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0487.000;
+ Tue, 24 Mar 2020 15:33:47 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ Markus Armbruster <armbru@redhat.com>, =?utf-8?B?SGVydsOpIFBvdXNzaW5lYXU=?=
+ <hpoussin@reactos.org>, Joel Stanley <joel@jms.id.au>, Michael Tokarev
+ <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, John Snow
+ <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf
+ <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, Max Reitz
+ <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: RE: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
+Thread-Topic: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
+Thread-Index: AQHV/48K2ZlJeIAEFEKXhkI1InUyf6hVun8AgAADyACAAALNgIABj56A
+Date: Tue, 24 Mar 2020 07:33:46 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6BE8AD@dggemm511-mbx.china.huawei.com>
 References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-6-philmd@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <9a385d04-719a-7630-a403-63296e8e6c7c@redhat.com>
-Date: Mon, 23 Mar 2020 14:46:14 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ <1c711740-6166-c730-ef67-d07511add1e6@vivier.eu>
+ <262f8318-1590-1c48-f4de-a6482fdc3071@redhat.com>
+ <10431e44-880a-cbec-c35e-1d425064c40b@vivier.eu>
+In-Reply-To: <10431e44-880a-cbec-c35e-1d425064c40b@vivier.eu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200321144110.5010-6-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 45.249.212.189
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -153,63 +72,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Mar 2020 18:46:54 -0000
+X-List-Received-Date: Tue, 24 Mar 2020 07:34:15 -0000
 
-
-
-On 3/21/20 10:41 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Fix warning reported by Clang static code analyzer:
->=20
->     CC      hw/ide/sii3112.o
->   hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
->           val =3D 0;
->           ^     ~
->=20
-> Fixes: a9dd6604
-> Reported-by: Clang Static Analyzer
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: Fix the correct function (Aleksandar review)
-> ---
->  hw/ide/sii3112.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-> index 06605d7af2..b2ff6dd6d9 100644
-> --- a/hw/ide/sii3112.c
-> +++ b/hw/ide/sii3112.c
-> @@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr a=
-ddr,
->                                  unsigned int size)
->  {
->      SiI3112PCIState *d =3D opaque;
-> -    uint64_t val =3D 0;
-> +    uint64_t val;
-> =20
->      switch (addr) {
->      case 0x00:
-> @@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr=
- addr,
->          break;
->      default:
->          val =3D 0;
-> +        break;
->      }
->      trace_sii3112_read(size, addr, val);
->      return val;
-> @@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr ad=
-dr,
->          d->regs[1].sien =3D (val >> 16) & 0x3eed;
->          break;
->      default:
-> -        val =3D 0;
-> +        break;
->      }
->  }
-> =20
->=20
-
-Acked-by: John Snow <jsnow@redhat.com>
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUWVtdS1kZXZlbCBbbWFpbHRvOnFl
+bXUtZGV2ZWwtDQo+Ym91bmNlcytrdWhuLmNoZW5xdW49aHVhd2VpLmNvbUBub25nbnUub3JnXSBP
+biBCZWhhbGYgT2YgTGF1cmVudCBWaXZpZXINCj5TZW50OiBNb25kYXksIE1hcmNoIDIzLCAyMDIw
+IDEwOjU2IFBNDQo+VG86IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNv
+bT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPkNjOiBGYW0gWmhlbmcgPGZhbUBldXBob24ubmV0
+PjsgUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsNCj5NaWNoYWVsIFMu
+IFRzaXJraW4gPG1zdEByZWRoYXQuY29tPjsgTWFyayBDYXZlLUF5bGFuZCA8bWFyay5jYXZlLQ0K
+PmF5bGFuZEBpbGFuZGUuY28udWs+OyBxZW11LWJsb2NrQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlh
+bEBub25nbnUub3JnOw0KPk1hcmt1cyBBcm1icnVzdGVyIDxhcm1icnVAcmVkaGF0LmNvbT47IEhl
+cnbDqSBQb3Vzc2luZWF1DQo+PGhwb3Vzc2luQHJlYWN0b3Mub3JnPjsgSm9lbCBTdGFubGV5IDxq
+b2VsQGptcy5pZC5hdT47IE1pY2hhZWwgVG9rYXJldg0KPjxtanRAdGxzLm1zay5ydT47IEFsaXN0
+YWlyIEZyYW5jaXMgPGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+OyBxZW11LQ0KPmFybUBub25nbnUu
+b3JnOyBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPjsgSm9obiBTbm93DQo+PGpzbm93
+QHJlZGhhdC5jb20+OyBEYXZpZCBHaWJzb24gPGRhdmlkQGdpYnNvbi5kcm9wYmVhci5pZC5hdT47
+IEtldmluIFdvbGYNCj48a3dvbGZAcmVkaGF0LmNvbT47IEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdA
+YWouaWQuYXU+OyBNYXggUmVpdHoNCj48bXJlaXR6QHJlZGhhdC5jb20+OyBJZ29yIE1pdHN5YW5r
+byA8aS5taXRzeWFua29AZ21haWwuY29tPjsgcWVtdS0NCj5wcGNAbm9uZ251Lm9yZzsgUGFvbG8g
+Qm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENILWZvci01
+LjAgdjIgMDAvMTFdIG1pc2M6IFRyaXZpYWwgc3RhdGljIGNvZGUgYW5hbHl6ZXIgZml4ZXMNCj4N
+Cj5MZSAyMy8wMy8yMDIwIMOgIDE1OjQ1LCBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSBhIMOpY3Jp
+dMKgOg0KPj4gT24gMy8yMy8yMCAzOjMyIFBNLCBMYXVyZW50IFZpdmllciB3cm90ZToNCj4+PiBM
+ZSAyMS8wMy8yMDIwIMOgIDE1OjQwLCBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSBhIMOpY3JpdMKg
+Og0KPj4+PiBGaXggdHJpdmlhbCB3YXJuaW5ncyByZXBvcnRlZCBieSB0aGUgQ2xhbmcgc3RhdGlj
+IGNvZGUgYW5hbHl6ZXIuDQo+Pj4+DQo+Pj4+IFNpbmNlIHYxOg0KPj4+PiAtIEFkZHJlc3NlZCBN
+YXJrdXMvWm9sdGFuL0FsZWtzYW5kYXIgcmV2aWV3IGNvbW1lbnRzDQo+Pj4+DQo+Pj4+IFBoaWxp
+cHBlIE1hdGhpZXUtRGF1ZMOpICgxMSk6DQo+Pj4+IMKgwqAgYmxvY2s6IEF2b2lkIGRlYWQgYXNz
+aWdubWVudA0KPj4+PiDCoMKgIGJsb2NrZGV2OiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50DQo+Pj4+
+IMKgwqAgaHcvaTJjL3BtX3NtYnVzOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50DQo+Pj4+IMKgwqAg
+aHcvaW5wdXQvYWRiLWtiZDogUmVtb3ZlIGRlYWQgYXNzaWdubWVudA0KPj4+PiDCoMKgIGh3L2lk
+ZS9zaWkzMTEyOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50DQo+Pj4+IMKgwqAgaHcvaXNhL2k4MjM3
+ODogUmVtb3ZlIGRlYWQgYXNzaWdubWVudA0KPj4+PiDCoMKgIGh3L2dwaW8vYXNwZWVkX2dwaW86
+IFJlbW92ZSBkZWFkIGFzc2lnbm1lbnQNCj4+Pj4gwqDCoCBody90aW1lci9leHlub3M0MjEwX21j
+dDogUmVtb3ZlIGRlYWQgYXNzaWdubWVudHMNCg0KU2FtZSBhcyB0aGlzOg0KaHR0cHM6Ly9wYXRj
+aHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMTQxNTUyNy8NCg0KPj4+PiDCoMKgIGh3L3RpbWVyL3N0
+bTMyZjJ4eF90aW1lcjogUmVtb3ZlIGRlYWQgYXNzaWdubWVudA0KPj4+PiDCoMKgIGh3L3RpbWVy
+L3B4YTJ4eF90aW1lcjogQWRkIGFzc2VydGlvbiB0byBzaWxlbnQgc3RhdGljIGFuYWx5emVyDQo+
+Pj4+IHdhcm5pbmcNCj4+Pj4gwqDCoCBody9zY3NpL2VzcC1wY2k6IFJlbW92ZSBkZWFkIGFzc2ln
+bm1lbnQNCg0KU2FtZSBhcyB0aGlzOg0KaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
+aC8xMTQxNTUyOS8NCg0KPj4+Pg0KPj4+PiDCoCBibG9jay5jwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgfCAyICstDQo+Pj4+IMKgIGJsb2NrZGV2LmPCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCB8IDIgKy0NCj4+Pj4gwqAgaHcvZ3Bpby9hc3BlZWRfZ3Bpby5j
+wqDCoMKgwqDCoCB8IDIgKy0NCj4+Pj4gwqAgaHcvaTJjL3BtX3NtYnVzLmPCoMKgwqDCoMKgwqDC
+oMKgwqAgfCAxIC0NCj4+Pj4gwqAgaHcvaWRlL3NpaTMxMTIuY8KgwqDCoMKgwqDCoMKgwqDCoMKg
+IHwgNSArKystLQ0KPj4+PiDCoCBody9pbnB1dC9hZGIta2JkLmPCoMKgwqDCoMKgwqDCoMKgIHwg
+NiArLS0tLS0NCj4+Pj4gwqAgaHcvaXNhL2k4MjM3OC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
+IDggKysrKy0tLS0NCj4+Pj4gwqAgaHcvc2NzaS9lc3AtcGNpLmPCoMKgwqDCoMKgwqDCoMKgwqAg
+fCAxIC0NCj4+Pj4gwqAgaHcvdGltZXIvZXh5bm9zNDIxMF9tY3QuY8KgIHwgMyAtLS0NCj4+Pj4g
+wqAgaHcvdGltZXIvcHhhMnh4X3RpbWVyLmPCoMKgwqAgfCAxICsNCj4+Pj4gwqAgaHcvdGltZXIv
+c3RtMzJmMnh4X3RpbWVyLmMgfCAxIC0NCj4+Pj4gwqAgMTEgZmlsZXMgY2hhbmdlZCwgMTIgaW5z
+ZXJ0aW9ucygrKSwgMjAgZGVsZXRpb25zKC0pDQo+Pj4+DQo+Pj4NCj4+PiBJIHRoaW5rIHlvdXIg
+c2VyaWVzIGNvdmVycyBjYXNlcyBhbHJlYWR5IGNvdmVyZWQgYnk6DQo+Pj4NCj4+PiBbUEFUQ0gg
+djMgMDAvMTJdIHJlZHVuZGFudCBjb2RlOiBGaXggd2FybmluZ3MgcmVwb3J0ZWQgYnkgQ2xhbmcN
+Cj4+PiBzdGF0aWMgY29kZSBhbmFseXplcg0KPj4+IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8y
+MDIwMDMwMjEzMDcxNS4yOTQ0MC0xLWt1aG4uY2gNCj4+DQo+PiBVbmZvcnR1bmF0ZWx5IFtmb3Ig
+bWUuLi5dIEkgZG9uJ3QgaGF2ZSB2MyBpbiBteSBJTkJPWC4uLiAqc2lnaCogVGhpcw0KPj4gd2Fz
+IDMgd2Vla3MgYWdvLiAqc2lnaCouDQo+Pg0KPj4gSSBjYW4gc2VlIHRoZSBzZXJpZXMgaW4gdGhl
+IGFyY2hpdmVzOg0KPj4gaHR0cHM6Ly9saXN0cy5nbnUub3JnL2FyY2hpdmUvaHRtbC9xZW11LWRl
+dmVsLzIwMjAtMDMvbXNnMDAyMTkuaHRtbA0KPj4gQnV0IEkgY2FuJ3QgZmluZCB0aGUgb3V0Y29t
+ZSwgd2FzIGl0IHF1ZXVlZCBpbiB0aGUgdHJpdmlhbCB0cmVlPw0KPj4gQW55IGlkZWEgd2hlbiB0
+aGlzIHdpbGwgYmUgbWVyZ2VkIGluIHRoZSBtYXN0ZXIgdHJlZT8NCj4NCj5Tb21lIHBhdGNoZXMg
+YXJlIGFscmVhZHkgbWVyZ2VkIHZpYSB0cml2aWFsICgxLCAyIChzaG91bGQgZ28gYnkgU0NTSQ0K
+PnF1ZXVlKSAzLCA1LCA2LCA3LCA5LCAxMSAoYnkgVVNCIHF1ZXVlKSwgMTIpLg0KPg0KPkJ1dCBv
+dGhlcnMgbmVlZGVkIFItYiB0YWdzIG9yIG5ldyB2ZXJzaW9uLiBJIGRpZG4ndCBjaGVjayB3aGlj
+aCBvZiB5b3VyIHBhdGNoZXMNCj5hcmUgYWxyZWFkeSBjb3ZlcmVkIGJ5IHRoaXMgc2VyaWVzLg0K
+Pg0KSGksIExhdXJlbnQgYW5kIFBoaWxpcHBlDQoNCiAgICAgIFllcywgdGhlcmUgYXJlIGN1cnJl
+bnRseSB0aHJlZSBwYXRjaGVzKCA044CBOCDjgIExMCkgdGhhdCBhcmUgbm90IG1lcmdlZC4gIA0K
+QW5kLCBvbmx5IHBhdGNoNCBhbmQgcGF0Y2gxMCAgaGF2ZSB0aGUgc2FtZSBwb2ludHMgYXMgdGhp
+cyBzZXJpZXMuDQoNCkkgc2hvdWxkIHVwZGF0ZSBpdCBhZ2FpbiBlYXJsaWVyLg0KDQpUaGFua3Mu
+DQo=
 
