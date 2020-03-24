@@ -1,52 +1,104 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGia9-0007Ab-4k
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 08:22:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41487)
+	id 1jGjV5-0005gy-F3
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 09:21:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48629)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jGia6-00072Y-4f
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 08:22:55 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jGjV2-0005fB-Lf
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 09:21:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1jGia4-0000KY-Vm
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 08:22:54 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2513 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jGia1-0000IX-Td; Tue, 24 Mar 2020 08:22:50 -0400
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id B8600CFE2B2CD2F35A43;
- Tue, 24 Mar 2020 20:22:43 +0800 (CST)
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.202]) by
- DGGEMM403-HUB.china.huawei.com ([10.3.20.211]) with mapi id 14.03.0487.000;
- Tue, 24 Mar 2020 20:22:37 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, "philmd@redhat.com"
- <philmd@redhat.com>, Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko
- <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: RE: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant statement
- in exynos4210_mct_write()
-Thread-Topic: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant
- statement in exynos4210_mct_write()
-Thread-Index: AQHWAbVx4EDwTTiLjUyFR/2shcgJzKhXDQGAgACVgIA=
-Date: Tue, 24 Mar 2020 12:22:37 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6BF788@dggemm511-mbx.china.huawei.com>
+ (envelope-from <laurent@vivier.eu>) id 1jGjV1-00027e-FK
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 09:21:44 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:41533)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1jGjV1-00027K-6q; Tue, 24 Mar 2020 09:21:43 -0400
+Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M6UuX-1jAPpY1SFF-006uvj; Tue, 24 Mar 2020 14:21:29 +0100
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "philmd@redhat.com" <philmd@redhat.com>, Euler Robot
+ <euler.robot@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20200324082235.27980-1-kuhn.chenqun@huawei.com>
  <20200324082235.27980-4-kuhn.chenqun@huawei.com>
  <b1e4dbf2-842a-dedd-819e-4f2b272dcfb9@vivier.eu>
-In-Reply-To: <b1e4dbf2-842a-dedd-819e-4f2b272dcfb9@vivier.eu>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ <7412CDE03601674DA8197E2EBD8937E83B6BF788@dggemm511-mbx.china.huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant statement
+ in exynos4210_mct_write()
+Message-ID: <5de513c0-9b32-3a5f-ad63-06e4ce342693@vivier.eu>
+Date: Tue, 24 Mar 2020 14:21:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B6BF788@dggemm511-mbx.china.huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:jB7J043Nhz0VqMFaNUgMqZG7Cy95R4E8YubhOpp67uyfr9CkRs5
+ bpwSYiIHz8/khMPigEob0Ko8xKtOhcLZiYrriQIizKghbbkCzHmslCcllJiuGXDAseEoFWy
+ r5XPNxVchHotnTrrbWcwHnCve0tdNtCuWszyDccnbldNPo33ZJ1pQjgv7sCxMnjPIkKVLv9
+ IPTbFqkKYOzlB+10qOF6g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Zj17ohsPvdw=:368tUY0eTzczKQtBtZYGAX
+ URBUs4IfGcQ3YrZlsG/l9sFDWiY6lFdcydkm99NV69Y9yrxbiA0mUP3duUq7K0b0BfnYfr/dN
+ 3XKvX2o7YhN3YZax3kin/NQ0k7drQvu+tmmykEymDh/ORzTUMCYKtLgPLWj8OrmZAlCWmpKh+
+ Bx+hwnnf8w1VfjzFSbH/vlbsDKnphp2SS2e4jdI+gKj2L0hKj+QSKWi9kVLu8XVZHxwJr8fUd
+ uxAmlmt7EgQ16MsdPsicaJN3tVi8Ekh74OskYGJim9EQj811InAH48gfJ3sselqR0L2aCbY8q
+ UHfgpobfoRJg6MFOHi80aYt1i7LCh/r8VrBEyn0uw508iOid0xjP+Qyrrmq6HbJQEVRpRnuC4
+ NRIaB2GffeWOwGwPiUE+gkejYFfPq3dyZ7pG0H4jZxcYNoVeKJpaLZagrEMXy/C1StVclygUE
+ 6hR3D9Zz5PIJ+A5zLjcQoCUvizaaMvnrJugYYEylWHZOKUo4pPXuiAo6G/iGcWbk6IGlrqzEf
+ gUW32DyR6vdMsyc3zHsdI3D0GTR66wqEAD0fNSYa7PZd7KeUouOBgRKmpyquoW6juc5Jt0+dX
+ 9QAstgIdE6a9hvLkZcOTpOlbexo0GMJckF1F9YoTkqFevP7XWkQ9I1Za1/xTHfomFFLeyHW8G
+ N8ERXmkyuf2VkbiEczWtOyBRI48c0laZIsHpihVu5ltnuxEy5vhVUpL5BvxMAr8GNKce4Rwe1
+ HjVwt/AKAIzwraIo8SYa0l6Sj4G86eFJuIwHMJ6kU2UhkYGcLxDhZ3AK3Cb48qUynfND1QTzj
+ KlB278JzzscywoZUPK7ly/x6pkZYr2aEVVbC6Un7+8mLsYLucKmSsNKau0IpQQjeXztpWap
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.188
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,66 +110,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Mar 2020 12:22:55 -0000
+X-List-Received-Date: Tue, 24 Mar 2020 13:21:45 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
-bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBUdWVzZGF5LCBNYXJjaCAyNCwgMjAyMCA2OjU5
-IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47IHFlbXUt
-ZGV2ZWxAbm9uZ251Lm9yZzsNCj5xZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0KPkNjOiBaaGFuZ2hh
-aWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBwaGlsbWRAcmVkaGF0LmNv
-bTsNCj5FdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IElnb3IgTWl0c3lhbmtv
-DQo+PGkubWl0c3lhbmtvQGdtYWlsLmNvbT47IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxA
-bGluYXJvLm9yZz4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHY0IDMvM10gdGltZXIvZXh5bm9zNDIx
-MF9tY3Q6IFJlbW92ZSByZWR1bmRhbnQNCj5zdGF0ZW1lbnQgaW4gZXh5bm9zNDIxMF9tY3Rfd3Jp
-dGUoKQ0KPg0KPkxlIDI0LzAzLzIwMjAgw6AgMDk6MjIsIENoZW4gUXVuIGEgw6ljcml0wqA6DQo+
-PiBDbGFuZyBzdGF0aWMgY29kZSBhbmFseXplciBzaG93IHdhcm5pbmc6DQo+PiBody90aW1lci9l
-eHlub3M0MjEwX21jdC5jOjEzNzA6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICdpbmRleCcg
-aXMgbmV2ZXINCj5yZWFkDQo+PiAgICAgICAgIGluZGV4ID0gR0VUX0xfVElNRVJfQ05UX1JFR19J
-RFgob2Zmc2V0LCBsdF9pKTsNCj4+ICAgICAgICAgXiAgICAgICB+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+DQo+PiBody90aW1lci9leHlub3M0MjEwX21jdC5jOjEzOTk6OTog
-d2FybmluZzogVmFsdWUgc3RvcmVkIHRvICdpbmRleCcgaXMgbmV2ZXINCj5yZWFkDQo+PiAgICAg
-ICAgIGluZGV4ID0gR0VUX0xfVElNRVJfQ05UX1JFR19JRFgob2Zmc2V0LCBsdF9pKTsNCj4+ICAg
-ICAgICAgXiAgICAgICB+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+DQo+PiBo
-dy90aW1lci9leHlub3M0MjEwX21jdC5jOjE0NDE6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRv
-ICdpbmRleCcgaXMgbmV2ZXINCj5yZWFkDQo+PiAgICAgICAgIGluZGV4ID0gR0VUX0xfVElNRVJf
-Q05UX1JFR19JRFgob2Zmc2V0LCBsdF9pKTsNCj4+ICAgICAgICAgXiAgICAgICB+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+DQo+DQo+SXQgd291bGQgYmUgaW50ZXJlc3Rpbmcg
-dG8gdW5kZXJzdGFuZCB3aHkgd2UgbmVlZCB0aGUgaW5kZXggZm9yIHRoZXNlIHJlZ2lzdGVycw0K
-PmluIGV4eW5vczQyMTBfbWN0X3JlYWQoKSBhbmQgbm90IGluIGV4eW5vczQyMTBfbWN0X3dyaXRl
-KCkuDQo+DQpJIHRoaW5rIHRoZSBpbmRleCBjYW4gYWxzbyBiZSB1c2VkIGluIGV4eW5vczQyMTBf
-bWN0X3dyaXRlKCksIGJ1dCB0aGUgb3JpZ2luYWwgYXV0aG9yIHVzZWQgYSBtb3JlIG9idmlvdXMg
-cmVnIG5hbWUgaW5zdGVhZCBvZiBpdC4NCg0KVGhlIG9idmlvdXMgcmVnIG5hbWU6DQpjYXNlIEww
-X1RDTlRCOiBjYXNlIEwxX1RDTlRCOg0KICAgICAgICAgICByZWcgbmFtZSBpcyA6ICBMX1JFR19D
-TlRfVENOVEIgDQoNCmNhc2UgTDBfSUNOVEI6IGNhc2UgTDFfSUNOVEI6DQogICAgICAgICAgIHJl
-ZyBuYW1lIGlzIDogICBMX1JFR19DTlRfSUNOVEINCg0KY2FzZSBMMF9GUkNOVEI6IGNhc2UgTDFf
-RlJDTlRCOg0KICAgICAgICAgICByZWcgbmFtZSBpcyA6ICAgTF9SRUdfQ05UX0ZSQ0NOVEINCg0K
-VGhhbmtzLg0KPg0KPj4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3
-ZWkuY29tPg0KPj4gU2lnbmVkLW9mZi1ieTogQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3ZWku
-Y29tPg0KPj4gLS0tDQo+PiBDYzogSWdvciBNaXRzeWFua28gPGkubWl0c3lhbmtvQGdtYWlsLmNv
-bT4NCj4+IENjOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+DQo+PiAt
-LS0NCj4+ICBody90aW1lci9leHlub3M0MjEwX21jdC5jIHwgNCAtLS0tDQo+PiAgMSBmaWxlIGNo
-YW5nZWQsIDQgZGVsZXRpb25zKC0pDQo+Pg0KPj4gZGlmZiAtLWdpdCBhL2h3L3RpbWVyL2V4eW5v
-czQyMTBfbWN0LmMgYi9ody90aW1lci9leHlub3M0MjEwX21jdC5jDQo+PiBpbmRleCA5NDQxMjBh
-ZWE1Li41NzBjZjcwNzViIDEwMDY0NA0KPj4gLS0tIGEvaHcvdGltZXIvZXh5bm9zNDIxMF9tY3Qu
-Yw0KPj4gKysrIGIvaHcvdGltZXIvZXh5bm9zNDIxMF9tY3QuYw0KPj4gQEAgLTEzNjcsNyArMTM2
-Nyw2IEBAIHN0YXRpYyB2b2lkIGV4eW5vczQyMTBfbWN0X3dyaXRlKHZvaWQgKm9wYXF1ZSwNCj4+
-IGh3YWRkciBvZmZzZXQsDQo+Pg0KPj4gICAgICBjYXNlIEwwX1RDTlRCOiBjYXNlIEwxX1RDTlRC
-Og0KPj4gICAgICAgICAgbHRfaSA9IEdFVF9MX1RJTUVSX0lEWChvZmZzZXQpOw0KPj4gLSAgICAg
-ICAgaW5kZXggPSBHRVRfTF9USU1FUl9DTlRfUkVHX0lEWChvZmZzZXQsIGx0X2kpOw0KPj4NCj4+
-ICAgICAgICAgIC8qDQo+PiAgICAgICAgICAgKiBUQ05UQiBpcyB1cGRhdGVkIHRvIGludGVybmFs
-IHJlZ2lzdGVyIG9ubHkgYWZ0ZXIgQ05UIGV4cGlyZWQuDQo+PiBAQCAtMTM5Niw3ICsxMzk1LDYg
-QEAgc3RhdGljIHZvaWQgZXh5bm9zNDIxMF9tY3Rfd3JpdGUodm9pZCAqb3BhcXVlLA0KPj4gaHdh
-ZGRyIG9mZnNldCwNCj4+DQo+PiAgICAgIGNhc2UgTDBfSUNOVEI6IGNhc2UgTDFfSUNOVEI6DQo+
-PiAgICAgICAgICBsdF9pID0gR0VUX0xfVElNRVJfSURYKG9mZnNldCk7DQo+PiAtICAgICAgICBp
-bmRleCA9IEdFVF9MX1RJTUVSX0NOVF9SRUdfSURYKG9mZnNldCwgbHRfaSk7DQo+Pg0KPj4gICAg
-ICAgICAgcy0+bF90aW1lcltsdF9pXS5yZWcud3N0YXQgfD0gTF9XU1RBVF9JQ05UQl9XUklURTsN
-Cj4+ICAgICAgICAgIHMtPmxfdGltZXJbbHRfaV0ucmVnLmNudFtMX1JFR19DTlRfSUNOVEJdID0g
-dmFsdWUgJiBAQA0KPj4gLTE0MzgsOCArMTQzNiw2IEBAIHN0YXRpYyB2b2lkIGV4eW5vczQyMTBf
-bWN0X3dyaXRlKHZvaWQgKm9wYXF1ZSwNCj4+IGh3YWRkciBvZmZzZXQsDQo+Pg0KPj4gICAgICBj
-YXNlIEwwX0ZSQ05UQjogY2FzZSBMMV9GUkNOVEI6DQo+PiAgICAgICAgICBsdF9pID0gR0VUX0xf
-VElNRVJfSURYKG9mZnNldCk7DQo+PiAtICAgICAgICBpbmRleCA9IEdFVF9MX1RJTUVSX0NOVF9S
-RUdfSURYKG9mZnNldCwgbHRfaSk7DQo+PiAtDQo+PiAgICAgICAgICBEUFJJTlRGKCJsb2NhbCB0
-aW1lclslZF0gRlJDTlRCIHdyaXRlICVsbHhcbiIsIGx0X2ksIHZhbHVlKTsNCj4+DQo+PiAgICAg
-ICAgICBzLT5sX3RpbWVyW2x0X2ldLnJlZy53c3RhdCB8PSBMX1dTVEFUX0ZSQ0NOVEJfV1JJVEU7
-DQo+Pg0KDQo=
+Le 24/03/2020 à 13:22, Chenqun (kuhn) a écrit :
+>> -----Original Message-----
+>> From: Laurent Vivier [mailto:laurent@vivier.eu]
+>> Sent: Tuesday, March 24, 2020 6:59 PM
+>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
+>> qemu-trivial@nongnu.org
+>> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>; philmd@redhat.com;
+>> Euler Robot <euler.robot@huawei.com>; Igor Mitsyanko
+>> <i.mitsyanko@gmail.com>; Peter Maydell <peter.maydell@linaro.org>
+>> Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant
+>> statement in exynos4210_mct_write()
+>>
+>> Le 24/03/2020 à 09:22, Chen Qun a écrit :
+>>> Clang static code analyzer show warning:
+>>> hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never
+>> read
+>>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>> hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never
+>> read
+>>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>> hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never
+>> read
+>>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>
+>> It would be interesting to understand why we need the index for these registers
+>> in exynos4210_mct_read() and not in exynos4210_mct_write().
+>>
+> I think the index can also be used in exynos4210_mct_write(), but the original author used a more obvious reg name instead of it.
+> 
+> The obvious reg name:
+> case L0_TCNTB: case L1_TCNTB:
+>            reg name is :  L_REG_CNT_TCNTB 
+> 
+> case L0_ICNTB: case L1_ICNTB:
+>            reg name is :   L_REG_CNT_ICNTB
+> 
+> case L0_FRCNTB: case L1_FRCNTB:
+>            reg name is :   L_REG_CNT_FRCCNTB
+>
+
+Yes, you're right.
+
+Computed index gives the value used with s->l_timer[lt_i].reg.cnt[].
+
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+Thanks,
+Laurent
+
 
