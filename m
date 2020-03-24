@@ -1,104 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGjV5-0005gy-F3
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 09:21:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48629)
+	id 1jGpXa-00016V-Sx
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 15:48:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51089)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jGjV2-0005fB-Lf
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 09:21:45 -0400
+ (envelope-from <philmd@redhat.com>) id 1jGpXY-00015j-Cz
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jGjV1-00027e-FK
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 09:21:44 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:41533)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jGjV1-00027K-6q; Tue, 24 Mar 2020 09:21:43 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M6UuX-1jAPpY1SFF-006uvj; Tue, 24 Mar 2020 14:21:29 +0100
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "philmd@redhat.com" <philmd@redhat.com>, Euler Robot
- <euler.robot@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200324082235.27980-1-kuhn.chenqun@huawei.com>
- <20200324082235.27980-4-kuhn.chenqun@huawei.com>
- <b1e4dbf2-842a-dedd-819e-4f2b272dcfb9@vivier.eu>
- <7412CDE03601674DA8197E2EBD8937E83B6BF788@dggemm511-mbx.china.huawei.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant statement
- in exynos4210_mct_write()
-Message-ID: <5de513c0-9b32-3a5f-ad63-06e4ce342693@vivier.eu>
-Date: Tue, 24 Mar 2020 14:21:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (envelope-from <philmd@redhat.com>) id 1jGpXX-0004Pm-BF
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:44 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:36218)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jGpXX-0004Pd-7z
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585079322;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fQpQWlGEevylLVzzOus2xrHbH7b95lvZ5rhLQuOzdWA=;
+ b=JIhij82oClzv49KyCETFCSZBqJdkI6Q5/urkkFMY6InUHZjgi9XsYSHOyZjgDIycdwqbi4
+ 3dQ7iFDlagEcyHEK8IH8n78kry0tnCpfkJ3iQz1zRujNjV56bIPuJSor/uRwSrF053cIqv
+ X+J4MWTdSAhyYk4QiurLDQrffd0vnEw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-429-g0QSPY5eNyac39PxhL8TiQ-1; Tue, 24 Mar 2020 15:48:41 -0400
+X-MC-Unique: g0QSPY5eNyac39PxhL8TiQ-1
+Received: by mail-wr1-f71.google.com with SMTP id e10so6973304wrm.2
+ for <qemu-trivial@nongnu.org>; Tue, 24 Mar 2020 12:48:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HUCsr8+QDfcKRBXcL3ItOGncj3i21qbJvqFsGhi9mwo=;
+ b=tbOagHtAoT8oO1HE+viEbz6X/QVZem0prg9Unsk54UzQcEQCb2NzZF1b+S1Ml774Tf
+ nxQ8ckw+1pQcRm6F5V9E+rox4ahbkb0fQBmWQ3o0SuMJeV0h5l7EnriyDtDbJ64bjjJ2
+ 18W7o6fiTs1AuHOZz3txM/NK/zUwrdHA/2rFMblYteBfCbIjACs+WoEnTn08Am1kwvTH
+ mPXn9OxloTLT9RFwsU46486XdMFo48PqUuB2gtqHW67YrBNeRbb3goliPkHqLiPAY012
+ 7+XSZcD9n6P6L7D9PNf6m9upUna2Wxi0Jb5+nzsFPbrEmll3U6QQk/H1A3LJr0VEdlsc
+ VSWg==
+X-Gm-Message-State: ANhLgQ0dH/QvFASRJQDCY0f4DBlVu1NPnGEXKk07Hq+yZu+A/+xMKa6A
+ R83feS4fgjvEeLOhQJoMtoOwofBajNMm4k90UeKPiIaZ+y7FHiw1/SxqnA3to+wy9nO4sf1DE5K
+ Xywo3DCe+JhOKgUVpGg==
+X-Received: by 2002:adf:f544:: with SMTP id j4mr37050312wrp.183.1585079319861; 
+ Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsZtk/7FxKipYvMh4Rs8YWEI2e7o6IucE6NnNl3FURQUAR2IkDVtxN+uEPJOQm3yr64/t/l0w==
+X-Received: by 2002:adf:f544:: with SMTP id j4mr37050288wrp.183.1585079319518; 
+ Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
+Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id h5sm4998811wro.83.2020.03.24.12.48.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Sameeh Jubran <sjubran@redhat.com>, Basil Salman <basil@daynix.com>,
+ qemu-trivial@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-stable@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
+Subject: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing to
+ allocate memory
+Date: Tue, 24 Mar 2020 20:48:36 +0100
+Message-Id: <20200324194836.21539-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B6BF788@dggemm511-mbx.china.huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jB7J043Nhz0VqMFaNUgMqZG7Cy95R4E8YubhOpp67uyfr9CkRs5
- bpwSYiIHz8/khMPigEob0Ko8xKtOhcLZiYrriQIizKghbbkCzHmslCcllJiuGXDAseEoFWy
- r5XPNxVchHotnTrrbWcwHnCve0tdNtCuWszyDccnbldNPo33ZJ1pQjgv7sCxMnjPIkKVLv9
- IPTbFqkKYOzlB+10qOF6g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Zj17ohsPvdw=:368tUY0eTzczKQtBtZYGAX
- URBUs4IfGcQ3YrZlsG/l9sFDWiY6lFdcydkm99NV69Y9yrxbiA0mUP3duUq7K0b0BfnYfr/dN
- 3XKvX2o7YhN3YZax3kin/NQ0k7drQvu+tmmykEymDh/ORzTUMCYKtLgPLWj8OrmZAlCWmpKh+
- Bx+hwnnf8w1VfjzFSbH/vlbsDKnphp2SS2e4jdI+gKj2L0hKj+QSKWi9kVLu8XVZHxwJr8fUd
- uxAmlmt7EgQ16MsdPsicaJN3tVi8Ekh74OskYGJim9EQj811InAH48gfJ3sselqR0L2aCbY8q
- UHfgpobfoRJg6MFOHi80aYt1i7LCh/r8VrBEyn0uw508iOid0xjP+Qyrrmq6HbJQEVRpRnuC4
- NRIaB2GffeWOwGwPiUE+gkejYFfPq3dyZ7pG0H4jZxcYNoVeKJpaLZagrEMXy/C1StVclygUE
- 6hR3D9Zz5PIJ+A5zLjcQoCUvizaaMvnrJugYYEylWHZOKUo4pPXuiAo6G/iGcWbk6IGlrqzEf
- gUW32DyR6vdMsyc3zHsdI3D0GTR66wqEAD0fNSYa7PZd7KeUouOBgRKmpyquoW6juc5Jt0+dX
- 9QAstgIdE6a9hvLkZcOTpOlbexo0GMJckF1F9YoTkqFevP7XWkQ9I1Za1/xTHfomFFLeyHW8G
- N8ERXmkyuf2VkbiEczWtOyBRI48c0laZIsHpihVu5ltnuxEy5vhVUpL5BvxMAr8GNKce4Rwe1
- HjVwt/AKAIzwraIo8SYa0l6Sj4G86eFJuIwHMJ6kU2UhkYGcLxDhZ3AK3Cb48qUynfND1QTzj
- KlB278JzzscywoZUPK7ly/x6pkZYr2aEVVbC6Un7+8mLsYLucKmSsNKau0IpQQjeXztpWap
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,58 +82,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Mar 2020 13:21:45 -0000
+X-List-Received-Date: Tue, 24 Mar 2020 19:48:45 -0000
 
-Le 24/03/2020 à 13:22, Chenqun (kuhn) a écrit :
->> -----Original Message-----
->> From: Laurent Vivier [mailto:laurent@vivier.eu]
->> Sent: Tuesday, March 24, 2020 6:59 PM
->> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
->> qemu-trivial@nongnu.org
->> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>; philmd@redhat.com;
->> Euler Robot <euler.robot@huawei.com>; Igor Mitsyanko
->> <i.mitsyanko@gmail.com>; Peter Maydell <peter.maydell@linaro.org>
->> Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant
->> statement in exynos4210_mct_write()
->>
->> Le 24/03/2020 à 09:22, Chen Qun a écrit :
->>> Clang static code analyzer show warning:
->>> hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never
->> read
->>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>> hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never
->> read
->>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>> hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never
->> read
->>>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->>>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>
->> It would be interesting to understand why we need the index for these registers
->> in exynos4210_mct_read() and not in exynos4210_mct_write().
->>
-> I think the index can also be used in exynos4210_mct_write(), but the original author used a more obvious reg name instead of it.
-> 
-> The obvious reg name:
-> case L0_TCNTB: case L1_TCNTB:
->            reg name is :  L_REG_CNT_TCNTB 
-> 
-> case L0_ICNTB: case L1_ICNTB:
->            reg name is :   L_REG_CNT_ICNTB
-> 
-> case L0_FRCNTB: case L1_FRCNTB:
->            reg name is :   L_REG_CNT_FRCCNTB
->
+Similarly to commit 807e2b6fce0 for Windows, kindly return a
+QMP error message instead of crashing the whole process.
 
-Yes, you're right.
+Cc: qemu-stable@nongnu.org
+Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=3D1594054
+Reported-by: Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ qga/commands-posix.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-Computed index gives the value used with s->l_timer[lt_i].reg.cnt[].
-
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-
-Thanks,
-Laurent
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index 93474ff770..8f127788e6 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t hand=
+le, bool has_count,
+         gfh->state =3D RW_STATE_NEW;
+     }
+=20
+-    buf =3D g_malloc0(count+1);
++    buf =3D g_try_malloc0(count + 1);
++    if (!buf) {
++        error_setg(errp,
++                   "failed to allocate sufficient memory "
++                   "to complete the requested service");
++        return NULL;
++    }
+     read_count =3D fread(buf, 1, count, fh);
+     if (ferror(fh)) {
+         error_setg_errno(errp, errno, "failed to read file");
+--=20
+2.21.1
 
 
