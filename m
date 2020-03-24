@@ -1,100 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGhHb-0006TG-SQ
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 06:59:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58900)
+	id 1jGi3f-0003Qy-F0
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 07:49:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36763)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jGhHY-0006Qe-TX
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 06:59:41 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGi3c-0003Oy-J7
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 07:49:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jGhHX-0007SJ-MY
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 06:59:40 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:52515)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jGhHV-0007Ok-4U; Tue, 24 Mar 2020 06:59:37 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MmyzH-1jiJ4R2Cxz-00k7gO; Tue, 24 Mar 2020 11:59:20 +0100
-Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant statement
- in exynos4210_mct_write()
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, philmd@redhat.com,
- Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko
- <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGi3b-0004Cg-F2
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 07:49:20 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2080 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jGi3Y-00049x-S0; Tue, 24 Mar 2020 07:49:17 -0400
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 13BEF8FCEEAEE8E4FBC8;
+ Tue, 24 Mar 2020 19:49:10 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.202]) by
+ DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0487.000;
+ Tue, 24 Mar 2020 19:49:02 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, "philmd@redhat.com"
+ <philmd@redhat.com>, Euler Robot <euler.robot@huawei.com>, Andrzej Zaborowski
+ <balrogg@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: RE: [PATCH v4 2/3] display/blizzard: Remove redundant statement in
+ blizzard_draw_line16_32()
+Thread-Topic: [PATCH v4 2/3] display/blizzard: Remove redundant statement in
+ blizzard_draw_line16_32()
+Thread-Index: AQHWAbVx/A3Wg4UYH0Gv6GR7DLfPXKhW5cyAgAAAagCAAKfykA==
+Date: Tue, 24 Mar 2020 11:49:00 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6BF710@dggemm511-mbx.china.huawei.com>
 References: <20200324082235.27980-1-kuhn.chenqun@huawei.com>
- <20200324082235.27980-4-kuhn.chenqun@huawei.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <b1e4dbf2-842a-dedd-819e-4f2b272dcfb9@vivier.eu>
-Date: Tue, 24 Mar 2020 11:59:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ <20200324082235.27980-3-kuhn.chenqun@huawei.com>
+ <aff5ca8a-af20-a3ba-4354-5c203a9eea81@vivier.eu>
+ <a3798e7d-702b-3da8-bde2-f5b920d89feb@vivier.eu>
+In-Reply-To: <a3798e7d-702b-3da8-bde2-f5b920d89feb@vivier.eu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200324082235.27980-4-kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GWZNHaelLFq8QGIKGd/6WOl0PWGlEPbhU3SZWVZ56nuBb60U2w9
- 7px/jGNxss98t8WMRqw+n89yVSCFoFLSM2RnLledwD0w5Ar7glGrN+qLRLUm/uDrJr0oWO+
- nTwTjAV0FNP8X1IyuVmgvdzS7U8qYDz78aRoGmAa8453gb8BSTjeSN4r40uxIvzRxyehqjx
- bjmLtLgrwF0swJ02QX1GQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QpGY5pnbCow=:FNB8elLuM3vANXOTpaiclx
- apxGPHFYBl1mR/7aNbXoyGkl8oJBQVXJ3UF70BvQjFpmOoVPUh9NMi5rnfvBQ/sob/iR4uTwB
- FARxAZEzC4cPwM87+tGcWcVP+rPWVUrGGXwSNEEeSq1/11qglr21vkhYQFF8e9EI8Kvu1fkP8
- d0LCjG08p406nTk6aLgiXtZ7ZPOEYtG5zxpiJals0xjYOo86U8uKaLBg7ZWt/9OyVnPW/1YGq
- Bq7MMJ1b004GIWeQnNlsDV3hRcPTYwtx2GyaDEO9YqYGszFWFEOKZnjLLfd+06cK8Dmo4bwzu
- YKGAyjivLhEm1RQQ5Wpz1+fkorQpSWGfsNL/ddT5UeNN85N/7ZMWmjepFnlBtUiKcw2UXS7cv
- SkQVfdTtxYDY/wNQN0aRZXVjYbpGxpIFzU7r+YKCEROqTN6aMq3W4gOYpDKYFoSsNbcNhPhLc
- SkMwURZ5ehoOMsU3DvG9Nx2quP90O0XjEhKEtQi4yMfKl2QdfHEDwS9h+Ol6tN6GDqDRplTn8
- 2IlG/ozKlWNhN7b9EZOCnglmA3admoz+dRXxH9O/SFMhaEpmucXIicmk9J2dMaAxE8yMQvHIB
- YMvg7GvJmKeih/6cf4OcozAGEixXm2qgUDkHrNPhTU197COR8PpFKDrfZzoAWDZMJvSO73/9S
- wNjuBts/TkHJ6G9svVyDkfIrATV1X9tCl4zqEwPwURytT7d1WwcPHdd3Wdnt4Y6OKH5/i3wCz
- Lk6f7yXjPHc6blDjuiyrRmPrwHXDfzmDCwM+rvd7IRoZZnihGHeD4Q+ksNuv2cBW/TdLOdRJe
- Leq05st42fSDHnzmzYQy3nOwZqBgPM8kbYbIo354xfxBkObP+DHXNUg3giT2c2WJNlU1O+l
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+ [fuzzy]
+X-Received-From: 45.249.212.189
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,64 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Mar 2020 10:59:42 -0000
+X-List-Received-Date: Tue, 24 Mar 2020 11:49:21 -0000
 
-Le 24/03/2020 à 09:22, Chen Qun a écrit :
-> Clang static code analyzer show warning:
-> hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never read
->         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never read
->         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never read
->         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It would be interesting to understand why we need the index for these
-registers in exynos4210_mct_read() and not in exynos4210_mct_write().
-
-Thanks,
-Laurent
-
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/timer/exynos4210_mct.c | 4 ----
->  1 file changed, 4 deletions(-)
-> 
-> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-> index 944120aea5..570cf7075b 100644
-> --- a/hw/timer/exynos4210_mct.c
-> +++ b/hw/timer/exynos4210_mct.c
-> @@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
->  
->      case L0_TCNTB: case L1_TCNTB:
->          lt_i = GET_L_TIMER_IDX(offset);
-> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->  
->          /*
->           * TCNTB is updated to internal register only after CNT expired.
-> @@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
->  
->      case L0_ICNTB: case L1_ICNTB:
->          lt_i = GET_L_TIMER_IDX(offset);
-> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->  
->          s->l_timer[lt_i].reg.wstat |= L_WSTAT_ICNTB_WRITE;
->          s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] = value &
-> @@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
->  
->      case L0_FRCNTB: case L1_FRCNTB:
->          lt_i = GET_L_TIMER_IDX(offset);
-> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-> -
->          DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
->  
->          s->l_timer[lt_i].reg.wstat |= L_WSTAT_FRCCNTB_WRITE;
-> 
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
+bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBUdWVzZGF5LCBNYXJjaCAyNCwgMjAyMCA0OjQw
+IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47IHFlbXUt
+ZGV2ZWxAbm9uZ251Lm9yZzsNCj5xZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0KPkNjOiBaaGFuZ2hh
+aWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBwaGlsbWRAcmVkaGF0LmNv
+bTsNCj5FdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IEFuZHJ6ZWogWmFib3Jv
+d3NraQ0KPjxiYWxyb2dnQGdtYWlsLmNvbT47IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxA
+bGluYXJvLm9yZz4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHY0IDIvM10gZGlzcGxheS9ibGl6emFy
+ZDogUmVtb3ZlIHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4NCj5ibGl6emFyZF9kcmF3X2xpbmUxNl8z
+MigpDQo+DQo+TGUgMjQvMDMvMjAyMCDDoCAwOTozOCwgTGF1cmVudCBWaXZpZXIgYSDDqWNyaXTC
+oDoNCj4+IExlIDI0LzAzLzIwMjAgw6AgMDk6MjIsIENoZW4gUXVuIGEgw6ljcml0wqA6DQo+Pj4g
+Q2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hvdyB3YXJuaW5nOg0KPj4+ICAgaHcvZGlzcGxh
+eS9ibGl6emFyZC5jOjk0MDo5OiB3YXJuaW5nOiBWYWx1ZSBzdG9yZWQgdG8gJ2RhdGEnIGlzIG5l
+dmVyIHJlYWQNCj4+PiAgICAgICAgIGRhdGEgPj49IDU7DQo+Pj4gICAgICAgICBeICAgICAgICB+
+DQo+Pj4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0K
+Pj4+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+
+PiAtLS0NCj4+PiBDYzogQW5kcnplaiBaYWJvcm93c2tpIDxiYWxyb2dnQGdtYWlsLmNvbT4NCj4+
+PiBDYzogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPj4+IC0tLQ0K
+Pj4+ICBody9kaXNwbGF5L2JsaXp6YXJkLmMgfCAxIC0NCj4+PiAgMSBmaWxlIGNoYW5nZWQsIDEg
+ZGVsZXRpb24oLSkNCj4+Pg0KPj4+IGRpZmYgLS1naXQgYS9ody9kaXNwbGF5L2JsaXp6YXJkLmMg
+Yi9ody9kaXNwbGF5L2JsaXp6YXJkLmMgaW5kZXgNCj4+PiAzNTllMzk5YzJhLi42MjUxN2JkZjc1
+IDEwMDY0NA0KPj4+IC0tLSBhL2h3L2Rpc3BsYXkvYmxpenphcmQuYw0KPj4+ICsrKyBiL2h3L2Rp
+c3BsYXkvYmxpenphcmQuYw0KPj4+IEBAIC05MzcsNyArOTM3LDYgQEAgc3RhdGljIHZvaWQgYmxp
+enphcmRfZHJhd19saW5lMTZfMzIodWludDMyX3QgKmRlc3QsDQo+Pj4gICAgICAgICAgZyA9IChk
+YXRhICYgMHgzZikgPDwgMjsNCj4+PiAgICAgICAgICBkYXRhID4+PSA2Ow0KPj4+ICAgICAgICAg
+IHIgPSAoZGF0YSAmIDB4MWYpIDw8IDM7DQo+Pj4gLSAgICAgICAgZGF0YSA+Pj0gNTsNCj4+PiAg
+ICAgICAgICAqZGVzdCsrID0gcmdiX3RvX3BpeGVsMzIociwgZywgYik7DQo+Pj4gICAgICB9DQo+
+Pj4gIH0NCj4+Pg0KPj4NCj4+IFBlcmhhcHMgaXQgd291bGQgYmUgY2xlYXJlciB0byB1c2UgZXh0
+cmFjdDMyKCkgdG8gY29tcHV0ZSByLCBnIGFuZCBiPw0KPg0KPmluIGZhY3QgZXh0cmFjdDE2KCkg
+YXMgZGF0YSBpcyB1aW50MTZfdC4uLg0KDQpHb29kIFBvaW50LCBJIHdpbGwgdXBkYXRlIGl0IG5l
+eHQgdmVyaXNvbi4NCg0KVGhhbmtzLg0K
 
