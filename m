@@ -1,31 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGf7A-0001Uo-T3
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 04:40:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38415)
+	id 1jGhHb-0006TG-SQ
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 06:59:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58900)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jGf78-0001Ug-7X
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 04:40:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jGhHY-0006Qe-TX
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 06:59:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jGf76-0005HR-5N
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 04:40:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:43387)
+ (envelope-from <laurent@vivier.eu>) id 1jGhHX-0007SJ-MY
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 06:59:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:52515)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jGf75-0005H0-Sf; Tue, 24 Mar 2020 04:40:44 -0400
+ id 1jGhHV-0007Ok-4U; Tue, 24 Mar 2020 06:59:37 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MOiLv-1itmte15Dj-00QG5S; Tue, 24 Mar 2020 09:40:29 +0100
-Subject: Re: [PATCH v4 2/3] display/blizzard: Remove redundant statement in
- blizzard_draw_line16_32()
-From: Laurent Vivier <laurent@vivier.eu>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MmyzH-1jiJ4R2Cxz-00k7gO; Tue, 24 Mar 2020 11:59:20 +0100
+Subject: Re: [PATCH v4 3/3] timer/exynos4210_mct: Remove redundant statement
+ in exynos4210_mct_write()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: zhang.zhanghailiang@huawei.com, philmd@redhat.com,
- Euler Robot <euler.robot@huawei.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+ Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20200324082235.27980-1-kuhn.chenqun@huawei.com>
- <20200324082235.27980-3-kuhn.chenqun@huawei.com>
- <aff5ca8a-af20-a3ba-4354-5c203a9eea81@vivier.eu>
+ <20200324082235.27980-4-kuhn.chenqun@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
@@ -68,32 +67,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <a3798e7d-702b-3da8-bde2-f5b920d89feb@vivier.eu>
-Date: Tue, 24 Mar 2020 09:40:28 +0100
+Message-ID: <b1e4dbf2-842a-dedd-819e-4f2b272dcfb9@vivier.eu>
+Date: Tue, 24 Mar 2020 11:59:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <aff5ca8a-af20-a3ba-4354-5c203a9eea81@vivier.eu>
+In-Reply-To: <20200324082235.27980-4-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:A/GU3WvmHX4R771hgnpncV4rErbiRaBuJlRDaXWMGythgWhwUGv
- lwq6EuYf5i49hJuImxCdK64AeuyBhlI/3YESRtCnefXqZJF2IZ2kuHQfvZ+jIofiDlrZtvO
- BfJNaK4uOSSWLY66lNbYd4EKyGZElr9FP8MomDzxTqckhvbYHZbtuVxk71VGpz7lIPxUAYo
- i1yUkmq3wHZh5S0VNnqTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rom9t8kUlr4=:j/H2G6Wpoadr9gXpFRJzBj
- FKDVBwk/1Eahzj3IUshRJln9qS0/SR/9tX+1ZqKQEhTcYrbV6BDuabWt1hIQ5907YXE9MmqHh
- ILXrJtMix9/8Ywq+QWKVH2NJ37hczGjoQf/xyw4B0V29XkOgyp7t6W7wSkWwiVqKkQG2QgrGc
- ga5i0zIkKxO4blB8/4Iag6Uiqq6KVTnork79o8JWbFqBXA2pRVoOH5umXR6JQSezBfiqs0bDE
- 0O2Y09Kx/1dxHUzwiXDdBfD2+5aPUMEbIIBGM3qD8FhTcCeLEFzbgImukumAd0UNqLIwUQQr0
- cd9DLTuWGPrfEdOtsIywv2oRB+8fiJ5Uv4fe+J0j/T6q9pB3s1mWLJ6WDMuYUQBL/pHGx5vbr
- Zxh5eUUhOPTZFSGq5Wq6yhRlx+84TVVERrcCkkVkE+5MtLLGykfbh7o/mmzSUC4XUFIJvq0pq
- SJGqF9AsMvjz2weAMnrIGOsojEOGOQ9/QS0dNkC1TGTMVTnGfCMikIU5WKdbEZEO+AB0rgyjT
- R0VLmhbXm+ky2frio+eZ1BX5+ZoCvV0aJDyukPhq4l3t7dOd+WKZ9Jc7BB30b8Ij9rmDGF6Us
- g8TauFLS8D6mk8z+g2/3/g/npndHXD/XeNjCkBPDzRpUKLQmLtSpzm4iYar2qGJSSYK+SWhXg
- IRbn1hEAlvdFV3g7GTWBQSfj0At3jel+iOanfv0a4sIZ6bewmfmZFuBe9LwYsm2yGedzYUn1o
- 6whPynY3PpW+9wdYteKNRHZkDsI6NlaQnucRvPIhaCOvqv8I2eTEBOAVAM2ykq7mUBsqf+hej
- ihvD7eozyZhvfOxdypUzN8lJ+MAf9DoDcPSPhJv+3aQEo4g4hHhFAEUJKCe8jW1OSj7CZ6h
+X-Provags-ID: V03:K1:GWZNHaelLFq8QGIKGd/6WOl0PWGlEPbhU3SZWVZ56nuBb60U2w9
+ 7px/jGNxss98t8WMRqw+n89yVSCFoFLSM2RnLledwD0w5Ar7glGrN+qLRLUm/uDrJr0oWO+
+ nTwTjAV0FNP8X1IyuVmgvdzS7U8qYDz78aRoGmAa8453gb8BSTjeSN4r40uxIvzRxyehqjx
+ bjmLtLgrwF0swJ02QX1GQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QpGY5pnbCow=:FNB8elLuM3vANXOTpaiclx
+ apxGPHFYBl1mR/7aNbXoyGkl8oJBQVXJ3UF70BvQjFpmOoVPUh9NMi5rnfvBQ/sob/iR4uTwB
+ FARxAZEzC4cPwM87+tGcWcVP+rPWVUrGGXwSNEEeSq1/11qglr21vkhYQFF8e9EI8Kvu1fkP8
+ d0LCjG08p406nTk6aLgiXtZ7ZPOEYtG5zxpiJals0xjYOo86U8uKaLBg7ZWt/9OyVnPW/1YGq
+ Bq7MMJ1b004GIWeQnNlsDV3hRcPTYwtx2GyaDEO9YqYGszFWFEOKZnjLLfd+06cK8Dmo4bwzu
+ YKGAyjivLhEm1RQQ5Wpz1+fkorQpSWGfsNL/ddT5UeNN85N/7ZMWmjepFnlBtUiKcw2UXS7cv
+ SkQVfdTtxYDY/wNQN0aRZXVjYbpGxpIFzU7r+YKCEROqTN6aMq3W4gOYpDKYFoSsNbcNhPhLc
+ SkMwURZ5ehoOMsU3DvG9Nx2quP90O0XjEhKEtQi4yMfKl2QdfHEDwS9h+Ol6tN6GDqDRplTn8
+ 2IlG/ozKlWNhN7b9EZOCnglmA3admoz+dRXxH9O/SFMhaEpmucXIicmk9J2dMaAxE8yMQvHIB
+ YMvg7GvJmKeih/6cf4OcozAGEixXm2qgUDkHrNPhTU197COR8PpFKDrfZzoAWDZMJvSO73/9S
+ wNjuBts/TkHJ6G9svVyDkfIrATV1X9tCl4zqEwPwURytT7d1WwcPHdd3Wdnt4Y6OKH5/i3wCz
+ Lk6f7yXjPHc6blDjuiyrRmPrwHXDfzmDCwM+rvd7IRoZZnihGHeD4Q+ksNuv2cBW/TdLOdRJe
+ Leq05st42fSDHnzmzYQy3nOwZqBgPM8kbYbIo354xfxBkObP+DHXNUg3giT2c2WJNlU1O+l
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
@@ -107,41 +106,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Mar 2020 08:40:47 -0000
+X-List-Received-Date: Tue, 24 Mar 2020 10:59:42 -0000
 
-Le 24/03/2020 à 09:38, Laurent Vivier a écrit :
-> Le 24/03/2020 à 09:22, Chen Qun a écrit :
->> Clang static code analyzer show warning:
->>   hw/display/blizzard.c:940:9: warning: Value stored to 'data' is never read
->>         data >>= 5;
->>         ^        ~
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->> ---
->> Cc: Andrzej Zaborowski <balrogg@gmail.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  hw/display/blizzard.c | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
->> index 359e399c2a..62517bdf75 100644
->> --- a/hw/display/blizzard.c
->> +++ b/hw/display/blizzard.c
->> @@ -937,7 +937,6 @@ static void blizzard_draw_line16_32(uint32_t *dest,
->>          g = (data & 0x3f) << 2;
->>          data >>= 6;
->>          r = (data & 0x1f) << 3;
->> -        data >>= 5;
->>          *dest++ = rgb_to_pixel32(r, g, b);
->>      }
->>  }
->>
-> 
-> Perhaps it would be clearer to use extract32() to compute r, g and b?
+Le 24/03/2020 à 09:22, Chen Qun a écrit :
+> Clang static code analyzer show warning:
+> hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never read
+>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never read
+>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never read
+>         index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-in fact extract16() as data is uint16_t...
+It would be interesting to understand why we need the index for these
+registers in exynos4210_mct_read() and not in exynos4210_mct_write().
 
 Thanks,
 Laurent
+
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/timer/exynos4210_mct.c | 4 ----
+>  1 file changed, 4 deletions(-)
+> 
+> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+> index 944120aea5..570cf7075b 100644
+> --- a/hw/timer/exynos4210_mct.c
+> +++ b/hw/timer/exynos4210_mct.c
+> @@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>  
+>      case L0_TCNTB: case L1_TCNTB:
+>          lt_i = GET_L_TIMER_IDX(offset);
+> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>  
+>          /*
+>           * TCNTB is updated to internal register only after CNT expired.
+> @@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>  
+>      case L0_ICNTB: case L1_ICNTB:
+>          lt_i = GET_L_TIMER_IDX(offset);
+> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+>  
+>          s->l_timer[lt_i].reg.wstat |= L_WSTAT_ICNTB_WRITE;
+>          s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] = value &
+> @@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+>  
+>      case L0_FRCNTB: case L1_FRCNTB:
+>          lt_i = GET_L_TIMER_IDX(offset);
+> -        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+> -
+>          DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
+>  
+>          s->l_timer[lt_i].reg.wstat |= L_WSTAT_FRCCNTB_WRITE;
+> 
+
 
