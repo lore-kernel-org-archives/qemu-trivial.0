@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jH5k1-0002r6-Ok
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2020 09:06:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51715)
+	id 1jH60j-0002Yn-47
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2020 09:23:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60177)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mrezanin@redhat.com>) id 1jH5jz-0002oo-CK
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 09:06:40 -0400
+ (envelope-from <dietmar@proxmox.com>) id 1jGzOA-0007C3-DQ
+ for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 02:19:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mrezanin@redhat.com>) id 1jH5jy-0004GR-Ci
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 09:06:39 -0400
-Received: from 212-4-128-36.cust.selfnet.cz ([212.4.128.36]:39696
- helo=workimage.localdomain) by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <mrezanin@redhat.com>)
- id 1jH5jw-00049l-01; Wed, 25 Mar 2020 09:06:36 -0400
-Received: by workimage.localdomain (Postfix, from userid 1000)
- id 4EEE21AE442; Wed, 25 Mar 2020 13:56:33 +0100 (CET)
-Date: Wed, 25 Mar 2020 13:56:33 +0100
-From: Miroslav Rezanina <mrezanin@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- laurent@vivier.eu, Euler Robot <euler.robot@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH 1/3] gdbstub: prevent uninitialized warning
-Message-ID: <20200325125633.kuot6un2rbujwdvv@lws.brq.redhat.com>
-References: <20200325092137.24020-1-kuhn.chenqun@huawei.com>
- <20200325092137.24020-2-kuhn.chenqun@huawei.com>
+ (envelope-from <dietmar@proxmox.com>) id 1jGzO9-0005ec-CR
+ for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 02:19:42 -0400
+Received: from proxmox-new.maurer-it.com ([212.186.127.180]:26302)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dietmar@proxmox.com>)
+ id 1jGzO4-0005Zu-K0; Wed, 25 Mar 2020 02:19:36 -0400
+Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
+ by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 3F9AD41E13;
+ Wed, 25 Mar 2020 07:19:24 +0100 (CET)
+Date: Wed, 25 Mar 2020 07:19:22 +0100 (CET)
+From: Dietmar Maurer <dietmar@proxmox.com>
+Reply-To: Dietmar Maurer <dietmar@proxmox.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>,
+ qemu-stable@nongnu.org, Sameeh Jubran <sjubran@redhat.com>,
+ Basil Salman <basil@daynix.com>
+Message-ID: <1242083041.1.1585117162620@webmail.proxmox.com>
+In-Reply-To: <20200324194836.21539-1-philmd@redhat.com>
+References: <20200324194836.21539-1-philmd@redhat.com>
+Subject: Re: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing
+ to allocate memory
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20200325092137.24020-2-kuhn.chenqun@huawei.com>
-User-Agent: NeoMutt/20180716
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Priority: 3
+Importance: Normal
+X-Mailer: Open-Xchange Mailer v7.10.2-Rev22
+X-Originating-Client: open-xchange-appsuite
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.4.128.36
+X-Received-From: 212.186.127.180
+X-Mailman-Approved-At: Wed, 25 Mar 2020 09:23:56 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,53 +50,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Mar 2020 13:06:40 -0000
+X-List-Received-Date: Wed, 25 Mar 2020 06:19:43 -0000
 
-On Wed, Mar 25, 2020 at 05:21:35PM +0800, Chen Qun wrote:
-> According to the glib function requirements, we need initialise
->      the variable. Otherwise there will be compilation warnings:
+but error_setg() also calls malloc, so this does not help at all?
+
+> On March 24, 2020 8:48 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>=
+ wrote:
 >=20
-> qemu/gdbstub.c: In function =E2=80=98handle_query_thread_extra=E2=80=99=
-:
-> /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning:
->  =E2=80=98cpu_name=E2=80=99 may be used uninitialized in this function =
-[-Wmaybe-uninitialized]
->    g_free (*pp);
->    ^~~~~~~~~~~~
+> =20
+> Similarly to commit 807e2b6fce0 for Windows, kindly return a
+> QMP error message instead of crashing the whole process.
 >=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Cc: qemu-stable@nongnu.org
+> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=3D1594054
+> Reported-by: Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> Cc: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
-> Cc: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
-> ---
->  gdbstub.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  qga/commands-posix.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/gdbstub.c b/gdbstub.c
-> index 013fb1ac0f..171e150950 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -2060,8 +2060,8 @@ static void handle_query_thread_extra(GdbCmdConte=
-xt *gdb_ctx, void *user_ctx)
->          /* Print the CPU model and name in multiprocess mode */
->          ObjectClass *oc =3D object_get_class(OBJECT(cpu));
->          const char *cpu_model =3D object_class_get_name(oc);
-> -        g_autofree char *cpu_name;
-> -        cpu_name  =3D object_get_canonical_path_component(OBJECT(cpu))=
-;
-> +        g_autofree char *cpu_name =3D
-> +            object_get_canonical_path_component(OBJECT(cpu));
->          g_string_printf(rs, "%s %s [%s]", cpu_model, cpu_name,
->                          cpu->halted ? "halted " : "running");
->      } else {
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index 93474ff770..8f127788e6 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t ha=
+ndle, bool has_count,
+>          gfh->state =3D RW_STATE_NEW;
+>      }
+> =20
+> -    buf =3D g_malloc0(count+1);
+> +    buf =3D g_try_malloc0(count + 1);
+> +    if (!buf) {
+> +        error_setg(errp,
+> +                   "failed to allocate sufficient memory "
+> +                   "to complete the requested service");
+> +        return NULL;
+> +    }
+>      read_count =3D fread(buf, 1, count, fh);
+>      if (ferror(fh)) {
+>          error_setg_errno(errp, errno, "failed to read file");
 > --=20
-> 2.23.0
->=20
->=20
->
+> 2.21.1
 
-Fixing broken build with -Wall.
-
-Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>=20
 
