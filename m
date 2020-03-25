@@ -1,76 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jGpXa-00016V-Sx
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 15:48:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51089)
+	id 1jGwGi-0001Ba-F9
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Mar 2020 22:59:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45491)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jGpXY-00015j-Cz
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:45 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGwGf-00014X-Q7
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 22:59:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jGpXX-0004Pm-BF
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:44 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:36218)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jGwGe-000513-MW
+ for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 22:59:45 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3213 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jGpXX-0004Pd-7z
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2020 15:48:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585079322;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=fQpQWlGEevylLVzzOus2xrHbH7b95lvZ5rhLQuOzdWA=;
- b=JIhij82oClzv49KyCETFCSZBqJdkI6Q5/urkkFMY6InUHZjgi9XsYSHOyZjgDIycdwqbi4
- 3dQ7iFDlagEcyHEK8IH8n78kry0tnCpfkJ3iQz1zRujNjV56bIPuJSor/uRwSrF053cIqv
- X+J4MWTdSAhyYk4QiurLDQrffd0vnEw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-429-g0QSPY5eNyac39PxhL8TiQ-1; Tue, 24 Mar 2020 15:48:41 -0400
-X-MC-Unique: g0QSPY5eNyac39PxhL8TiQ-1
-Received: by mail-wr1-f71.google.com with SMTP id e10so6973304wrm.2
- for <qemu-trivial@nongnu.org>; Tue, 24 Mar 2020 12:48:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=HUCsr8+QDfcKRBXcL3ItOGncj3i21qbJvqFsGhi9mwo=;
- b=tbOagHtAoT8oO1HE+viEbz6X/QVZem0prg9Unsk54UzQcEQCb2NzZF1b+S1Ml774Tf
- nxQ8ckw+1pQcRm6F5V9E+rox4ahbkb0fQBmWQ3o0SuMJeV0h5l7EnriyDtDbJ64bjjJ2
- 18W7o6fiTs1AuHOZz3txM/NK/zUwrdHA/2rFMblYteBfCbIjACs+WoEnTn08Am1kwvTH
- mPXn9OxloTLT9RFwsU46486XdMFo48PqUuB2gtqHW67YrBNeRbb3goliPkHqLiPAY012
- 7+XSZcD9n6P6L7D9PNf6m9upUna2Wxi0Jb5+nzsFPbrEmll3U6QQk/H1A3LJr0VEdlsc
- VSWg==
-X-Gm-Message-State: ANhLgQ0dH/QvFASRJQDCY0f4DBlVu1NPnGEXKk07Hq+yZu+A/+xMKa6A
- R83feS4fgjvEeLOhQJoMtoOwofBajNMm4k90UeKPiIaZ+y7FHiw1/SxqnA3to+wy9nO4sf1DE5K
- Xywo3DCe+JhOKgUVpGg==
-X-Received: by 2002:adf:f544:: with SMTP id j4mr37050312wrp.183.1585079319861; 
- Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsZtk/7FxKipYvMh4Rs8YWEI2e7o6IucE6NnNl3FURQUAR2IkDVtxN+uEPJOQm3yr64/t/l0w==
-X-Received: by 2002:adf:f544:: with SMTP id j4mr37050288wrp.183.1585079319518; 
- Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
-Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id h5sm4998811wro.83.2020.03.24.12.48.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2020 12:48:39 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Sameeh Jubran <sjubran@redhat.com>, Basil Salman <basil@daynix.com>,
- qemu-trivial@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-stable@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
-Subject: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing to
- allocate memory
-Date: Tue, 24 Mar 2020 20:48:36 +0100
-Message-Id: <20200324194836.21539-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jGwGc-0004x2-92; Tue, 24 Mar 2020 22:59:42 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 9D30A52F1980FDBAAC69;
+ Wed, 25 Mar 2020 10:59:37 +0800 (CST)
+Received: from huawei.com (10.133.205.93) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 25 Mar 2020
+ 10:59:27 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <zhang.zhanghailiang@huawei.com>, <laurent@vivier.eu>,
+ <philmd@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v5 1/3] scsi/esp-pci: add g_assert() for fix clang analyzer
+ warning in esp_pci_io_write()
+Date: Wed, 25 Mar 2020 10:59:17 +0800
+Message-ID: <20200325025919.21316-2-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
+In-Reply-To: <20200325025919.21316-1-kuhn.chenqun@huawei.com>
+References: <20200325025919.21316-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 216.205.24.74
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,40 +49,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Mar 2020 19:48:45 -0000
+X-List-Received-Date: Wed, 25 Mar 2020 02:59:47 -0000
 
-Similarly to commit 807e2b6fce0 for Windows, kindly return a
-QMP error message instead of crashing the whole process.
+Clang static code analyzer show warning:
+  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
+        size =3D 4;
+        ^      ~
 
-Cc: qemu-stable@nongnu.org
-Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=3D1594054
-Reported-by: Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qga/commands-posix.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc:Fam Zheng <fam@euphon.net>
 
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 93474ff770..8f127788e6 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t hand=
-le, bool has_count,
-         gfh->state =3D RW_STATE_NEW;
+v1->v2:
+keep ' size =3D 4'  and  add 'g_assert(size >=3D 4)' after if() statement=
+.
+(Base on Laurent's comments)
+---
+ hw/scsi/esp-pci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index d5a1f9e017..497a8d5901 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -197,6 +197,7 @@ static void esp_pci_io_write(void *opaque, hwaddr add=
+r,
+         addr &=3D ~3;
+         size =3D 4;
      }
++    g_assert(size >=3D 4);
 =20
--    buf =3D g_malloc0(count+1);
-+    buf =3D g_try_malloc0(count + 1);
-+    if (!buf) {
-+        error_setg(errp,
-+                   "failed to allocate sufficient memory "
-+                   "to complete the requested service");
-+        return NULL;
-+    }
-     read_count =3D fread(buf, 1, count, fh);
-     if (ferror(fh)) {
-         error_setg_errno(errp, errno, "failed to read file");
+     if (addr < 0x40) {
+         /* SCSI core reg */
 --=20
-2.21.1
+2.23.0
+
 
 
