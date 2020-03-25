@@ -1,63 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jH2bg-00078t-Fj
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2020 05:45:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55330)
+	id 1jH2wN-0003Xo-BB
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2020 06:07:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58216)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <berrange@redhat.com>) id 1jH2bc-000705-U9
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 05:45:50 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jH2wK-0003S8-UB
+ for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 06:07:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <berrange@redhat.com>) id 1jH2bb-0006jc-OF
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 05:45:48 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:53797)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jH2wH-0007T0-Ri
+ for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 06:07:11 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2514 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1jH2bb-0006jK-Kf
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 05:45:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585129547;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YatZZOyuZ308lN1KRkU5kMjJAmYX5A2P6ON3GllVG4o=;
- b=Gs50Cd4gZkFKksUJ+kJN1yv5UdVFtOQYHTiES7eJ7muHx/BorjCrMDEu3M5KRNbLUJQtdg
- U2FecvDW0iUAQcPS5a60z/ZIepK36RZJmSmxjw5wAoSdrFXfFZBxnOaW0IV9xbjj8myKtP
- WgDVAvnDaIJMMq7gk065GrXYeu1atNM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-AafgimZ8NRKDIR0c-HQK7w-1; Wed, 25 Mar 2020 05:45:32 -0400
-X-MC-Unique: AafgimZ8NRKDIR0c-HQK7w-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 345901005509;
- Wed, 25 Mar 2020 09:45:31 +0000 (UTC)
-Received: from redhat.com (ovpn-115-2.ams2.redhat.com [10.36.115.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6631C5DA7B;
- Wed, 25 Mar 2020 09:45:29 +0000 (UTC)
-Date: Wed, 25 Mar 2020 09:45:26 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com, laurent@vivier.eu,
- Euler Robot <euler.robot@huawei.com>
-Subject: Re: [PATCH 3/3] crypto: Redundant type conversion for AES_KEY pointer
-Message-ID: <20200325094526.GA3722209@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jH2wF-0007NQ-72; Wed, 25 Mar 2020 06:07:07 -0400
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id DF311A1E6AA37241058B;
+ Wed, 25 Mar 2020 18:07:01 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.202]) by
+ DGGEMM405-HUB.china.huawei.com ([10.3.20.213]) with mapi id 14.03.0487.000;
+ Wed, 25 Mar 2020 18:06:52 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?=
+ <berrange@redhat.com>
+Subject: RE: [PATCH 3/3] crypto: Redundant type conversion for AES_KEY pointer
+Thread-Topic: [PATCH 3/3] crypto: Redundant type conversion for AES_KEY pointer
+Thread-Index: AQHWAoba7fbUDZCqgEW/3PLwSBDmBahYiQSAgACKuMA=
+Date: Wed, 25 Mar 2020 10:06:51 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6C24A6@dggemm511-mbx.china.huawei.com>
 References: <20200325092137.24020-1-kuhn.chenqun@huawei.com>
  <20200325092137.24020-4-kuhn.chenqun@huawei.com>
+ <f57b72eb-fdf8-b811-64d1-04d95a15f6e6@vivier.eu>
+In-Reply-To: <f57b72eb-fdf8-b811-64d1-04d95a15f6e6@vivier.eu>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200325092137.24020-4-kuhn.chenqun@huawei.com>
-User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 45.249.212.188
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,61 +56,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Mar 2020 09:45:50 -0000
+X-List-Received-Date: Wed, 25 Mar 2020 10:07:14 -0000
 
-On Wed, Mar 25, 2020 at 05:21:37PM +0800, Chen Qun wrote:
-> Fix: eaec903c5b8
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: "Daniel P. Berrang=C3=A9" <berrange@redhat.com>
-> ---
->  crypto/cipher-builtin.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-
-Acked-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-
->=20
-> diff --git a/crypto/cipher-builtin.c b/crypto/cipher-builtin.c
-> index bf8413e71a..99d6280a16 100644
-> --- a/crypto/cipher-builtin.c
-> +++ b/crypto/cipher-builtin.c
-> @@ -133,8 +133,7 @@ static void qcrypto_cipher_aes_xts_encrypt(const void=
- *ctx,
->  {
->      const QCryptoCipherBuiltinAESContext *aesctx =3D ctx;
-> =20
-> -    qcrypto_cipher_aes_ecb_encrypt((AES_KEY *)&aesctx->enc,
-> -                                   src, dst, length);
-> +    qcrypto_cipher_aes_ecb_encrypt(&aesctx->enc, src, dst, length);
->  }
-> =20
-> =20
-> @@ -145,8 +144,7 @@ static void qcrypto_cipher_aes_xts_decrypt(const void=
- *ctx,
->  {
->      const QCryptoCipherBuiltinAESContext *aesctx =3D ctx;
-> =20
-> -    qcrypto_cipher_aes_ecb_decrypt((AES_KEY *)&aesctx->dec,
-> -                                   src, dst, length);
-> +    qcrypto_cipher_aes_ecb_decrypt(&aesctx->dec, src, dst, length);
->  }
-> =20
-> =20
-> --=20
-> 2.23.0
->=20
->=20
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
- :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com=
- :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
- :|
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogTGF1cmVudCBWaXZpZXIgW21haWx0
+bzpsYXVyZW50QHZpdmllci5ldV0NCj5TZW50OiBXZWRuZXNkYXksIE1hcmNoIDI1LCAyMDIwIDU6
+NDUgUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgcWVt
+dS1kZXZlbEBub25nbnUub3JnOw0KPnFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Q2M6IFpoYW5n
+aGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IEV1bGVyIFJvYm90DQo+
+PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJyYW5nZUBy
+ZWRoYXQuY29tPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0ggMy8zXSBjcnlwdG86IFJlZHVuZGFudCB0
+eXBlIGNvbnZlcnNpb24gZm9yIEFFU19LRVkgcG9pbnRlcg0KPg0KPkxlIDI1LzAzLzIwMjAgw6Ag
+MTA6MjEsIENoZW4gUXVuIGEgw6ljcml0wqA6DQo+PiBGaXg6IGVhZWM5MDNjNWI4DQo+Pg0KPg0K
+PkRpZCB5b3UgcnVuIHRoZSBjb2NjaW5lbGxlIHNjcmlwdCBzY3JpcHRzL2NvY2NpbmVsbGUvdHlw
+ZWNhc3QuY29jY2kgPw0KPg0KWWVzLCBJIHJ1biBpdCBhbmQgcGxhbiB0byBpbnRlZ3JhdGUgaXQg
+aW50byBFdWxlclJvYm90IHNvIHRoYXQgc2ltaWxhciBpc3N1ZXMgY2FuIGJlIGRpc2NvdmVyZWQg
+c29vbmVyLg0KDQpUaGFua3MuDQo+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVy
+LnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVu
+cXVuQGh1YXdlaS5jb20+DQo+PiAtLS0NCj4+IENjOiAiRGFuaWVsIFAuIEJlcnJhbmfDqSIgPGJl
+cnJhbmdlQHJlZGhhdC5jb20+DQo+PiAtLS0NCj4+ICBjcnlwdG8vY2lwaGVyLWJ1aWx0aW4uYyB8
+IDYgKystLS0tDQo+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlv
+bnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvY3J5cHRvL2NpcGhlci1idWlsdGluLmMgYi9jcnlw
+dG8vY2lwaGVyLWJ1aWx0aW4uYyBpbmRleA0KPj4gYmY4NDEzZTcxYS4uOTlkNjI4MGExNiAxMDA2
+NDQNCj4+IC0tLSBhL2NyeXB0by9jaXBoZXItYnVpbHRpbi5jDQo+PiArKysgYi9jcnlwdG8vY2lw
+aGVyLWJ1aWx0aW4uYw0KPj4gQEAgLTEzMyw4ICsxMzMsNyBAQCBzdGF0aWMgdm9pZCBxY3J5cHRv
+X2NpcGhlcl9hZXNfeHRzX2VuY3J5cHQoY29uc3QNCj4+IHZvaWQgKmN0eCwgIHsNCj4+ICAgICAg
+Y29uc3QgUUNyeXB0b0NpcGhlckJ1aWx0aW5BRVNDb250ZXh0ICphZXNjdHggPSBjdHg7DQo+Pg0K
+Pj4gLSAgICBxY3J5cHRvX2NpcGhlcl9hZXNfZWNiX2VuY3J5cHQoKEFFU19LRVkgKikmYWVzY3R4
+LT5lbmMsDQo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzcmMsIGRzdCwg
+bGVuZ3RoKTsNCj4+ICsgICAgcWNyeXB0b19jaXBoZXJfYWVzX2VjYl9lbmNyeXB0KCZhZXNjdHgt
+PmVuYywgc3JjLCBkc3QsIGxlbmd0aCk7DQo+PiAgfQ0KPj4NCj4+DQo+PiBAQCAtMTQ1LDggKzE0
+NCw3IEBAIHN0YXRpYyB2b2lkIHFjcnlwdG9fY2lwaGVyX2Flc194dHNfZGVjcnlwdChjb25zdA0K
+Pj4gdm9pZCAqY3R4LCAgew0KPj4gICAgICBjb25zdCBRQ3J5cHRvQ2lwaGVyQnVpbHRpbkFFU0Nv
+bnRleHQgKmFlc2N0eCA9IGN0eDsNCj4+DQo+PiAtICAgIHFjcnlwdG9fY2lwaGVyX2Flc19lY2Jf
+ZGVjcnlwdCgoQUVTX0tFWSAqKSZhZXNjdHgtPmRlYywNCj4+IC0gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHNyYywgZHN0LCBsZW5ndGgpOw0KPj4gKyAgICBxY3J5cHRvX2NpcGhl
+cl9hZXNfZWNiX2RlY3J5cHQoJmFlc2N0eC0+ZGVjLCBzcmMsIGRzdCwgbGVuZ3RoKTsNCj4+ICB9
+DQo+Pg0KPj4NCj4+DQoNCg==
 
