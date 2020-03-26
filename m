@@ -1,44 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jH60j-0002Yn-47
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2020 09:23:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60177)
+	id 1jHRuc-0001zX-Op
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Mar 2020 08:47:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47425)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dietmar@proxmox.com>) id 1jGzOA-0007C3-DQ
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 02:19:43 -0400
+ (envelope-from <like.xu@linux.intel.com>) id 1jHRua-0001ve-6N
+ for qemu-trivial@nongnu.org; Thu, 26 Mar 2020 08:47:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dietmar@proxmox.com>) id 1jGzO9-0005ec-CR
- for qemu-trivial@nongnu.org; Wed, 25 Mar 2020 02:19:42 -0400
-Received: from proxmox-new.maurer-it.com ([212.186.127.180]:26302)
+ (envelope-from <like.xu@linux.intel.com>) id 1jHRuZ-0007rp-5j
+ for qemu-trivial@nongnu.org; Thu, 26 Mar 2020 08:47:04 -0400
+Received: from mga17.intel.com ([192.55.52.151]:14044)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dietmar@proxmox.com>)
- id 1jGzO4-0005Zu-K0; Wed, 25 Mar 2020 02:19:36 -0400
-Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
- by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 3F9AD41E13;
- Wed, 25 Mar 2020 07:19:24 +0100 (CET)
-Date: Wed, 25 Mar 2020 07:19:22 +0100 (CET)
-From: Dietmar Maurer <dietmar@proxmox.com>
-Reply-To: Dietmar Maurer <dietmar@proxmox.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>,
- qemu-stable@nongnu.org, Sameeh Jubran <sjubran@redhat.com>,
- Basil Salman <basil@daynix.com>
-Message-ID: <1242083041.1.1585117162620@webmail.proxmox.com>
-In-Reply-To: <20200324194836.21539-1-philmd@redhat.com>
-References: <20200324194836.21539-1-philmd@redhat.com>
-Subject: Re: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing
- to allocate memory
+ (Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+ id 1jHRuW-0007kM-SU; Thu, 26 Mar 2020 08:47:01 -0400
+IronPort-SDR: 3AJ5+34dz68nhnqrVD4bGtWOHQt7lKXbw0Jp1cquznmlwJRWd2lJWvKDOec40uOf2ArdrH9mYX
+ SXKueToT25dg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 05:46:53 -0700
+IronPort-SDR: yRhMi71P7Y+NC5PufaxjVPB1Phjhhz0iuF2fO2dgWp0giOiUdWSSPWcPDmKPYTJ4+POVQcSVln
+ pkAY8iZITVNQ==
+X-IronPort-AV: E=Sophos;i="5.72,308,1580803200"; d="scan'208";a="420687528"
+Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.249.175.106])
+ ([10.249.175.106])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 05:46:51 -0700
+Subject: Re: [PATCH] i386/cpu: Expand MAX_FIXED_COUNTERS from 3 to 4 to for
+ Icelake
+To: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
+ Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20200317055413.66404-1-like.xu@linux.intel.com>
+From: Like Xu <like.xu@linux.intel.com>
+Organization: Intel OTC
+Message-ID: <4d7696af-b6d3-80b8-dd66-229f3d23ac5c@linux.intel.com>
+Date: Thu, 26 Mar 2020 20:46:48 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Priority: 3
-Importance: Normal
-X-Mailer: Open-Xchange Mailer v7.10.2-Rev22
-X-Originating-Client: open-xchange-appsuite
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 212.186.127.180
-X-Mailman-Approved-At: Wed, 25 Mar 2020 09:23:56 -0400
+In-Reply-To: <20200317055413.66404-1-like.xu@linux.intel.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 192.55.52.151
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -50,46 +56,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Mar 2020 06:19:43 -0000
+X-List-Received-Date: Thu, 26 Mar 2020 12:47:05 -0000
 
-but error_setg() also calls malloc, so this does not help at all?
+Anyone to help review this change?
 
-> On March 24, 2020 8:48 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>=
- wrote:
->=20
-> =20
-> Similarly to commit 807e2b6fce0 for Windows, kindly return a
-> QMP error message instead of crashing the whole process.
->=20
-> Cc: qemu-stable@nongnu.org
-> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=3D1594054
-> Reported-by: Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Thanks,
+Like Xu
+
+On 2020/3/17 13:54, Like Xu wrote:
+> In the Intel SDM, "Table 18-2. Association of Fixed-Function
+> Performance Counters with Architectural Performance Events",
+> we may have a new fixed counter 'TOPDOWN.SLOTS' (since Icelake),
+> which counts the number of available slots for an unhalted
+> logical processor. Check commit 6017608936 in the kernel tree.
+> 
+> Signed-off-by: Like Xu <like.xu@linux.intel.com>
 > ---
->  qga/commands-posix.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->=20
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index 93474ff770..8f127788e6 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t ha=
-ndle, bool has_count,
->          gfh->state =3D RW_STATE_NEW;
->      }
-> =20
-> -    buf =3D g_malloc0(count+1);
-> +    buf =3D g_try_malloc0(count + 1);
-> +    if (!buf) {
-> +        error_setg(errp,
-> +                   "failed to allocate sufficient memory "
-> +                   "to complete the requested service");
-> +        return NULL;
-> +    }
->      read_count =3D fread(buf, 1, count, fh);
->      if (ferror(fh)) {
->          error_setg_errno(errp, errno, "failed to read file");
-> --=20
-> 2.21.1
+>   target/i386/cpu.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index 576f309bbf..ec2b67d425 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -1185,7 +1185,7 @@ typedef struct {
+>   #define CPU_NB_REGS CPU_NB_REGS32
+>   #endif
+>   
+> -#define MAX_FIXED_COUNTERS 3
+> +#define MAX_FIXED_COUNTERS 4
+>   #define MAX_GP_COUNTERS    (MSR_IA32_PERF_STATUS - MSR_P6_EVNTSEL0)
+>   
+>   #define TARGET_INSN_START_EXTRA_WORDS 1
+> 
 
 
