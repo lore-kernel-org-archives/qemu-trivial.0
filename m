@@ -1,65 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jIv9C-0006co-M4
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2020 10:12:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54479)
+	id 1jIwuW-00067R-GW
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2020 12:05:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45222)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jIv9A-0006Zx-6c
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 10:12:13 -0400
+ (envelope-from <philmd@redhat.com>) id 1jIwuP-00064P-Fb
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:05:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jIv99-0002D8-0P
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 10:12:12 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:45600)
+ (envelope-from <philmd@redhat.com>) id 1jIwuN-0008IF-RE
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:05:05 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:32514)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jIv98-0002CS-TA
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 10:12:10 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jIwuN-0008Ef-C5
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:05:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585577530;
+ s=mimecast20190719; t=1585584299;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pF1F6NpNuBSwTTOg2T/k/CDpYiduV/eJ2TCcoScwUnE=;
- b=VtVqziosPXsrp7pLZmBbzDcoienikU7np8/F/iMNRKYhQPhfcQ16j7zNa14Ad/H/yPbDtN
- rk0nT8PK3d/I7/o6862zylEO0CJzpt3Oc/J8NfCg0qfGNfxsqjPRslM7u5mt8dYszFeC+p
- PFZEMhSowS0suFovtLiFaAZpxrjSSGk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-JfULx0OPM6eT8XoXc--NDA-1; Mon, 30 Mar 2020 10:12:04 -0400
-X-MC-Unique: JfULx0OPM6eT8XoXc--NDA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 166E6800D5F;
- Mon, 30 Mar 2020 14:12:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-69.ams2.redhat.com
- [10.36.112.69])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B1A521036D00;
- Mon, 30 Mar 2020 14:11:59 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 412BB11385E2; Mon, 30 Mar 2020 16:11:58 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ bh=xb+aPsiv2uaWbWXaN12OZGlbPQ4K+SmUQv6l5jUfU90=;
+ b=Nv8+JJ/CS7/CSIg1aXnprPrRWWKtJrnjHitzAD+3+fMzL1sqwT3m8wIFYeto/xTl1EntHP
+ GgC+4oe9JaprEJ2Gq4CzNa4SZP1tOIlOB/n5qnHR/v0AW06oBwiG2rVQL/TMS0wV/RjvC6
+ H2ixfNe34XZsLq8q0VfcGybPmyWDyZA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-22-BtOHwTSZMj2isPxlzOhTeQ-1; Mon, 30 Mar 2020 12:04:53 -0400
+X-MC-Unique: BtOHwTSZMj2isPxlzOhTeQ-1
+Received: by mail-wr1-f72.google.com with SMTP id b2so11064891wrq.8
+ for <qemu-trivial@nongnu.org>; Mon, 30 Mar 2020 09:04:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eL3QibjcvLjwB2MqyrJIvS7OIKsHSFRia/T4h9f/mGM=;
+ b=tO1dkqxtVfTzYnKZzHPk4UAj1TSLwdCdLqQHy5UY0+NZTAya6ahfLluAwvGTcWDyaY
+ A7vCQZxH+SJxzmwq82h5ovuAYknuWVZ6JaU8uwKJjQQhSx3D3jeBr9b9unXOEjyob0fF
+ jKGGrEgXeSnSe+9IvcFg3CwXV/FJRwVtp6nxLi52LHSLIZlA5ykbLwxbbd7kMsKKlTrp
+ S/TyDm1Iph4WtcMWWPF3XsRdXB2cKvC9GTPIqCdwupk8nnvNIcBjoynKqkhJR9rKGi27
+ ZaLTQ05F5/oG8UgyViqR5Ov/3XfA+Ks703Ex2S4tTuFl4VlUQIJxylftlye2DvSdC2GA
+ tHRQ==
+X-Gm-Message-State: ANhLgQ0TR7QUwGTmy6/9b0QzTgjnhsR1GADyUkeCd7G89gJVJGuiY/IP
+ 9nh/j8aCQTjS/il4Yt9Qoa84YAJ2d/E2R/QrZsUeYidsE4kbXW+Qbx78Gxl1lrhZRvYSsRtfrQV
+ Y1g0q0e9KKDUdlAdvyA==
+X-Received: by 2002:a5d:4fce:: with SMTP id h14mr14798041wrw.243.1585584292220; 
+ Mon, 30 Mar 2020 09:04:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuC3wS/vwwMxbzG5VcGI9s6qkxVIyadz2J/+fNSAOaU1mTdjsdsn68BQJ5QZBn5zuQRPcFPFQ==
+X-Received: by 2002:a5d:4fce:: with SMTP id h14mr14798007wrw.243.1585584291877; 
+ Mon, 30 Mar 2020 09:04:51 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id b82sm21589523wmb.46.2020.03.30.09.04.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Mar 2020 09:04:51 -0700 (PDT)
+Subject: Re: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing to
+ allocate memory
+To: Markus Armbruster <armbru@redhat.com>
 Cc: Dietmar Maurer <dietmar@proxmox.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org, Sameeh Jubran <sjubran@redhat.com>,
  qemu-stable@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>,
- Basil Salman <basil@daynix.com>
-Subject: Re: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing to
- allocate memory
+ Basil Salman <basil@daynix.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
 References: <20200324194836.21539-1-philmd@redhat.com>
  <1242083041.1.1585117162620@webmail.proxmox.com>
  <6be54d1f-e5fc-5b34-ba4d-fa050029f26b@redhat.com>
-Date: Mon, 30 Mar 2020 16:11:58 +0200
-In-Reply-To: <6be54d1f-e5fc-5b34-ba4d-fa050029f26b@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 25 Mar 2020 13:10:11
- +0100")
-Message-ID: <87mu7yue35.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <87mu7yue35.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <81317f7f-7de9-f616-27dc-c389f06792c3@redhat.com>
+Date: Mon, 30 Mar 2020 18:04:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <87mu7yue35.fsf@dusky.pond.sub.org>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 63.128.21.74
@@ -74,39 +93,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Mar 2020 14:12:13 -0000
+X-List-Received-Date: Mon, 30 Mar 2020 16:05:10 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+Cc'ing the ppl who responded the thread you quoted.
 
-> On 3/25/20 7:19 AM, Dietmar Maurer wrote:
->> but error_setg() also calls malloc, so this does not help at all?
->
-> IIUC the problem, you can send a QMP command to ask to read let's say
-> 3GB of a file, and QEMU crashes. But this doesn't mean there the .heap
-> is empty, there is probably few bytes still available, enough to
-> respond with an error message.
+On 3/30/20 4:11 PM, Markus Armbruster wrote:
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+ > ---
+ >   qga/commands-posix.c | 8 +++++++-
+ >   1 file changed, 7 insertions(+), 1 deletion(-)
+ >
+ > diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+ > index 93474ff770..8f127788e6 100644
+ > --- a/qga/commands-posix.c
+ > +++ b/qga/commands-posix.c
+ > @@ -493,7 +493,13 @@ struct GuestFileRead=20
+*qmp_guest_file_read(int64_t handle, bool has_count,
+ >           gfh->state =3D RW_STATE_NEW;
+ >       }
+ >
+ > -    buf =3D g_malloc0(count+1);
+ > +    buf =3D g_try_malloc0(count + 1);
+ > +    if (!buf) {
+ > +        error_setg(errp,
+ > +                   "failed to allocate sufficient memory "
+ > +                   "to complete the requested service");
+ > +        return NULL;
+ > +    }
+ >       read_count =3D fread(buf, 1, count, fh);
+ >       if (ferror(fh)) {
+ >           error_setg_errno(errp, errno, "failed to read file");
+ >
 
-We've discussed how to handle out-of-memory conditions many times.
-Here's one instance:
+>> On 3/25/20 7:19 AM, Dietmar Maurer wrote:
+>>> but error_setg() also calls malloc, so this does not help at all?
+>>
+>> IIUC the problem, you can send a QMP command to ask to read let's say
+>> 3GB of a file, and QEMU crashes. But this doesn't mean there the .heap
+>> is empty, there is probably few bytes still available, enough to
+>> respond with an error message.
+>=20
+> We've discussed how to handle out-of-memory conditions many times.
+> Here's one instance:
+>=20
+>      Subject: When it's okay to treat OOM as fatal?
+>      Message-ID: <87efcqniza.fsf@dusky.pond.sub.org>
+>      https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03212.ht=
+ml
+>=20
+> No improvement since then; there's no guidance on when to check for OOM.
+> Actual code tends to check only "large" allocations (for subjective
+> values of "large").
+>=20
+> I reiterate my opinion that whatever OOM handling we have is too
+> unreliable to be worth much, since it can only help when (1) allocations
+> actually fail (they generally don't[*]), and (2) the allocation that
+> fails is actually handled (they generally aren't), and (3) the handling
+> actually works (we don't test OOM, so it generally doesn't).
+>=20
+>=20
+> [*] Linux overcommits memory, which means malloc() pretty much always
+> succeeds, but when you try to use "too much" of the memory you
+> supposedly allocated, a lethal signal is coming your way.  Reasd the
+> thread I quoted for examples.
 
-    Subject: When it's okay to treat OOM as fatal?
-    Message-ID: <87efcqniza.fsf@dusky.pond.sub.org>
-    https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03212.html
+So this patch takes Stefan reasoning:
+https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03525.html
 
-No improvement since then; there's no guidance on when to check for OOM.
-Actual code tends to check only "large" allocations (for subjective
-values of "large").
+   My thinking has been to use g_new() for small QEMU-internal structures
+   and g_try_new() for large amounts of memory allocated in response to
+   untrusted inputs.  (Untrusted inputs must never be used for unbounded
+   allocation sizes but those bounded sizes can still be large.)
 
-I reiterate my opinion that whatever OOM handling we have is too
-unreliable to be worth much, since it can only help when (1) allocations
-actually fail (they generally don't[*]), and (2) the allocation that
-fails is actually handled (they generally aren't), and (3) the handling
-actually works (we don't test OOM, so it generally doesn't).
+In any cases (malloc/malloc_try) we have a denial of service=20
+(https://www.openwall.com/lists/oss-security/2018/10/17/4) and the=20
+service is restarted.
 
+Daniel suggests such behavior should be catched by external firewall=20
+guard (either on the process or on the network). This seems out of scope=20
+of QEMU and hard to fix.
 
-[*] Linux overcommits memory, which means malloc() pretty much always
-succeeds, but when you try to use "too much" of the memory you
-supposedly allocated, a lethal signal is coming your way.  Reasd the
-thread I quoted for examples.
+So, can we improve something? Or should we let this code as it?
 
 
