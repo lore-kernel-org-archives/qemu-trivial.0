@@ -1,61 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jIxED-0006Au-MP
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2020 12:25:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49089)
+	id 1jIxQu-0005vB-0A
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2020 12:38:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51288)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <berrange@redhat.com>) id 1jIxEA-000656-Qe
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:25:32 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jIxQr-0005rK-9m
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:38:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <berrange@redhat.com>) id 1jIxE9-0002kZ-HB
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:25:30 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:26206)
+ (envelope-from <dgilbert@redhat.com>) id 1jIxQp-0008Tt-CD
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:38:36 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:58037)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1jIxE9-0002kD-Da
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:25:29 -0400
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1jIxQp-0008St-7Q
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2020 12:38:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585585529;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1585586314;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VYCc39bvJPgwiYaAoHpsrecasJdUJg2PE7mHgSDENzs=;
- b=RYseZT90VetQ+Xkj6Rl4I6DhiWzNUM6KSXir3K2h/xS2FosvZpimKhTOOe1yuT42cTOul8
- 9gTLQ6EfZ+JlmsvWG2B2X3R4ofQ4bAxGv8M2I+EIzI+fU/pC+Q3m4FHdMvCfb5KUukFs2X
- xlNsi45xUj6LqmNsL465xAAMxonomuI=
+ bh=Eqh6QkStzsumL9GQqhPS/drHtOb2t7poIGAncc6tEY4=;
+ b=cb+CKW7Wb/sYM1NUVgxjBuhdtI/htyGmghPQ8plRSHC1UnVvH5oKBRZua5tDvB78RlHrUX
+ vHs7IDmO7ZGZ1W09+/kFEF142qTOi63t1+xKVhcJisDjWzx2whZLXtxjzNxVUa6P79BhA8
+ Ph3eoauddEanh1JqS24U+ovO821gC0o=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-Fmz9TNGuMFC0-HtWKIJSmA-1; Mon, 30 Mar 2020 12:25:14 -0400
-X-MC-Unique: Fmz9TNGuMFC0-HtWKIJSmA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-164-EEZRb2YxNIuwqxABoGK7kA-1; Mon, 30 Mar 2020 12:38:30 -0400
+X-MC-Unique: EEZRb2YxNIuwqxABoGK7kA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D617D1005509;
- Mon, 30 Mar 2020 16:25:12 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 065D350C01;
- Mon, 30 Mar 2020 16:25:07 +0000 (UTC)
-Date: Mon, 30 Mar 2020 17:25:05 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Michael Roth <mdroth@linux.vnet.ibm.com>,
- Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>,
- qemu-stable@nongnu.org, Sameeh Jubran <sjubran@redhat.com>,
- Basil Salman <basil@daynix.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94927802563;
+ Mon, 30 Mar 2020 16:38:28 +0000 (UTC)
+Received: from work-vm (ovpn-114-162.ams2.redhat.com [10.36.114.162])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0629A96B60;
+ Mon, 30 Mar 2020 16:38:08 +0000 (UTC)
+Date: Mon, 30 Mar 2020 17:38:05 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+ Dietmar Maurer <dietmar@proxmox.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Sameeh Jubran <sjubran@redhat.com>,
+ qemu-stable@nongnu.org, Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>,
+ Basil Salman <basil@daynix.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
 Subject: Re: [PATCH-for-5.0] qga-posix: Avoid crashing process when failing
  to allocate memory
-Message-ID: <20200330162505.GP236854@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Message-ID: <20200330163805.GB2843@work-vm>
 References: <20200324194836.21539-1-philmd@redhat.com>
+ <1242083041.1.1585117162620@webmail.proxmox.com>
+ <6be54d1f-e5fc-5b34-ba4d-fa050029f26b@redhat.com>
+ <87mu7yue35.fsf@dusky.pond.sub.org>
+ <81317f7f-7de9-f616-27dc-c389f06792c3@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200324194836.21539-1-philmd@redhat.com>
+In-Reply-To: <81317f7f-7de9-f616-27dc-c389f06792c3@redhat.com>
 User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -71,81 +76,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Mar 2020 16:25:32 -0000
+X-List-Received-Date: Mon, 30 Mar 2020 16:38:38 -0000
 
-On Tue, Mar 24, 2020 at 08:48:36PM +0100, Philippe Mathieu-Daud=C3=A9 wrote=
-:
-> Similarly to commit 807e2b6fce0 for Windows, kindly return a
-> QMP error message instead of crashing the whole process.
+* Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
+> Cc'ing the ppl who responded the thread you quoted.
 >=20
-> Cc: qemu-stable@nongnu.org
-> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=3D1594054
-
-I find that bug report pretty dubious
-
-   "The QEMU Guest Agent in QEMU is vulnerable to an integer=20
-    overflow in the qmp_guest_file_read(). An attacker could=20
-    exploit this by sending a crafted QMP command (including=20
-    guest-file-read with a large count value) to the agent via=20
-    the listening socket to trigger a g_malloc() call with a=20
-    large memory chunk resulting in a segmentation fault."
-
-"the attacker" in this case has to have access to the QEMU
-chardev associated with the guest agent. IOW, in any sensible
-configuration of the chardev, "the attacker" is the same person
-who launched QEMU in the first place.  There's no elevation of
-privilege here and any denial of service is inflicted against
-themselves. Finally it doesn't cause a segmentation fault,
-it causes an abort.
-
-This is *NOT* a security bug.
-
-In fact I'd call this NOTABUG entirely. It is just user error
-to set the "count" to such a huge value that it hits OOM.
-
-> Reported-by: Fakhri Zulkifli <mohdfakhrizulkifli@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  qga/commands-posix.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+> On 3/30/20 4:11 PM, Markus Armbruster wrote:
+> > Philippe Mathieu-Daud=E9 <philmd@redhat.com> writes:
+> > ---
+> >   qga/commands-posix.c | 8 +++++++-
+> >   1 file changed, 7 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> > index 93474ff770..8f127788e6 100644
+> > --- a/qga/commands-posix.c
+> > +++ b/qga/commands-posix.c
+> > @@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t
+> handle, bool has_count,
+> >           gfh->state =3D RW_STATE_NEW;
+> >       }
+> >
+> > -    buf =3D g_malloc0(count+1);
+> > +    buf =3D g_try_malloc0(count + 1);
+> > +    if (!buf) {
+> > +        error_setg(errp,
+> > +                   "failed to allocate sufficient memory "
+> > +                   "to complete the requested service");
+> > +        return NULL;
+> > +    }
+> >       read_count =3D fread(buf, 1, count, fh);
+> >       if (ferror(fh)) {
+> >           error_setg_errno(errp, errno, "failed to read file");
+> >
 >=20
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index 93474ff770..8f127788e6 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -493,7 +493,13 @@ struct GuestFileRead *qmp_guest_file_read(int64_t ha=
-ndle, bool has_count,
->          gfh->state =3D RW_STATE_NEW;
->      }
-> =20
-> -    buf =3D g_malloc0(count+1);
-> +    buf =3D g_try_malloc0(count + 1);
-> +    if (!buf) {
-> +        error_setg(errp,
-> +                   "failed to allocate sufficient memory "
-> +                   "to complete the requested service");
-> +        return NULL;
-> +    }
+> > > On 3/25/20 7:19 AM, Dietmar Maurer wrote:
+> > > > but error_setg() also calls malloc, so this does not help at all?
+> > >=20
+> > > IIUC the problem, you can send a QMP command to ask to read let's say
+> > > 3GB of a file, and QEMU crashes. But this doesn't mean there the .hea=
+p
+> > > is empty, there is probably few bytes still available, enough to
+> > > respond with an error message.
+> >=20
+> > We've discussed how to handle out-of-memory conditions many times.
+> > Here's one instance:
+> >=20
+> >      Subject: When it's okay to treat OOM as fatal?
+> >      Message-ID: <87efcqniza.fsf@dusky.pond.sub.org>
+> >      https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03212.=
+html
+> >=20
+> > No improvement since then; there's no guidance on when to check for OOM=
+.
+> > Actual code tends to check only "large" allocations (for subjective
+> > values of "large").
+> >=20
+> > I reiterate my opinion that whatever OOM handling we have is too
+> > unreliable to be worth much, since it can only help when (1) allocation=
+s
+> > actually fail (they generally don't[*]), and (2) the allocation that
+> > fails is actually handled (they generally aren't), and (3) the handling
+> > actually works (we don't test OOM, so it generally doesn't).
+> >=20
+> >=20
+> > [*] Linux overcommits memory, which means malloc() pretty much always
+> > succeeds, but when you try to use "too much" of the memory you
+> > supposedly allocated, a lethal signal is coming your way.  Reasd the
+> > thread I quoted for examples.
+>=20
+> So this patch takes Stefan reasoning:
+> https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03525.html
+>=20
+>   My thinking has been to use g_new() for small QEMU-internal structures
+>   and g_try_new() for large amounts of memory allocated in response to
+>   untrusted inputs.  (Untrusted inputs must never be used for unbounded
+>   allocation sizes but those bounded sizes can still be large.)
+>=20
+> In any cases (malloc/malloc_try) we have a denial of service
+> (https://www.openwall.com/lists/oss-security/2018/10/17/4) and the servic=
+e
+> is restarted.
+>=20
+> Daniel suggests such behavior should be catched by external firewall guar=
+d
+> (either on the process or on the network). This seems out of scope of QEM=
+U
+> and hard to fix.
+>=20
+> So, can we improve something? Or should we let this code as it?
 
-So you've prevented an OOM when we call fread() on the file.
+I'll agree with Stefan's description; we should use 'try' for anything
+'large' (badly defined) or user controlled.
 
-The contents of 'buf' now need to be turned into JSON which
-means the buffer need to be base64 encoded. This will consume
-even more memory than the original read.  So checking malloc
-here has achieved nothing AFAICT.
+So I think this should switch to having the try.
 
->      read_count =3D fread(buf, 1, count, fh);
->      if (ferror(fh)) {
->          error_setg_errno(errp, errno, "failed to read file");
+Dave
 
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
- :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com=
- :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
- :|
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
