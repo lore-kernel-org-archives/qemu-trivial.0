@@ -1,22 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jKHb0-00010H-0S
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 04:22:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45203)
+	id 1jKHgG-0005LQ-Jk
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 04:28:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45956)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jKHay-000108-5L
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:22:33 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jKHgE-0005LI-0r
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:27:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jKHax-0005mU-3Q
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:22:32 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:43403)
+ (envelope-from <laurent@vivier.eu>) id 1jKHgC-0002nL-PD
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:27:57 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:55361)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jKHaw-0005lp-RR; Fri, 03 Apr 2020 04:22:31 -0400
+ id 1jKHgC-0002ma-Gk; Fri, 03 Apr 2020 04:27:56 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M72wT-1jPVBK1Ryp-008dVf; Fri, 03 Apr 2020 10:22:21 +0200
+ 1M89P3-1jOO9I2cR1-005Klb; Fri, 03 Apr 2020 10:27:47 +0200
 Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by Clang
  static code analyzer
+From: Laurent Vivier <laurent@vivier.eu>
 To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
@@ -26,7 +27,7 @@ References: <20200325025919.21316-1-kuhn.chenqun@huawei.com>
  <7412CDE03601674DA8197E2EBD8937E83B6D495C@dggemm511-mbx.china.huawei.com>
  <b273c5c9-18cc-691f-bd1f-df056f448ade@vivier.eu>
  <7412CDE03601674DA8197E2EBD8937E83B6D4A27@dggemm511-mbx.china.huawei.com>
-From: Laurent Vivier <laurent@vivier.eu>
+ <f2601173-f46d-ac93-c012-f715a52400ba@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
@@ -69,32 +70,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f2601173-f46d-ac93-c012-f715a52400ba@vivier.eu>
-Date: Fri, 3 Apr 2020 10:22:20 +0200
+Message-ID: <d002a05d-d028-92e6-80e7-4f2ae91a67a6@vivier.eu>
+Date: Fri, 3 Apr 2020 10:27:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B6D4A27@dggemm511-mbx.china.huawei.com>
+In-Reply-To: <f2601173-f46d-ac93-c012-f715a52400ba@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:q6Pb9/31V0V+KqGh/sSA+Ej/Ru3Qpfx7/pIA5KDPxAvsvWKMsNL
- eEqo3eMkAGVfJLY5LGnYQFbd179a2LHXbOSs6X3OA3AU48kzniaWncGQiIx5sM+YVf+M4Gh
- maKRTnZKBB6fEbbpOAHOV+05frgKnJyz1uyN8wt8qsrW3UCIkz2bovrFkkIyEpEDJEF3I3o
- kZTmnLdQ4rLcY12odktRg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1QkKLD1D1Eg=:Pe9R+3zrfNiKCn2EbVJHe3
- Uy+ZDA9AJGcOHcdaLxeyjVrtKu9BkMdfxt/O5D8xYmkThbwf6I4Rv5XhgRlc90TswfVaFH+5r
- XQWbLuN1ijn/EB5dkvx+Gafcd8YegyaCpnWsaD0H6wfoFf7mw+BloT2S9ugzxeY/XgcwPHfeY
- z8R52fZuk3HN4+WJo78b+Vm8YH+X4cVpeLCRsGkXbKOFl3y/EqnwBpDTuCTS4MTnC7yXxOSwO
- KATm19T8ug9PJaTdwvdmeALsrErn70V+em2ChDteHXXkAvb6mIMqi573Pea/xmETulFr2tDFq
- RrtbfmRNPHIE4Ybw0OkQ5Bil7FSyhGMnFfv3ssZiriWs8b9vzWYzVlPmNNSUtN1ZG1Cg0npA5
- lMH2ftFGCC/73J4i+2RqIWWigRY+aX+M2ZOt69pAtPXyAVeXvLnYpYrhWcJur8sGyJYFeHqRA
- 9EFquYq9CHMDcNgNY6BUjB0I2Cm3K1yFnlW6M9S5GY3XjAfQmUD3kTDC7phv8amnZ44dUzblc
- T9NDSTv3hSvZXOTDiOfCFMt79RBbzclRA64XtdHouuVe7DmKX2S4P8jg+wm+updFcmXahpn6f
- XE2cVOiHA8dKpxUkTnmsoFD5zhOB5iud0vBErsm2GmamC2L77CHAkJt9/iyCxO7F/Wxo13d1o
- IRB1gz9c9mKpSp0QMMSm+kMDTYCvWOwXShvRtHfHuomC5HkE84Lk9+pWUCBmHBBhwPd2AM+mN
- Ruj8VVkBUcT4IJMbNAtjCXbdM0xtsKWpD5zodwOp1qM3TwFjqibm5ICEClnbzarQRC+wHOju3
- qKt6MOBZRRzVL12eYuxAi8vBbVzP2hW/LkYGNkB5NsY+CUPT5ddrUOo5eIKGwK4ljXXEU5S
+X-Provags-ID: V03:K1:ma4ZC2Pgw7mPkYlD8GVh4EroLZmapZPTin6N7afVQjmR826lqKJ
+ ssvfD/KQDNSZkEfz/6+dVN15axqtcrBGg7h1r+gA6CoRpWLvpIr2kbyfahig2sTbAngaymw
+ ZUD11ijVm90y3i3M8NxzpSk1jGwqROiGig8+Mwv1fS8fdMOI+oTN2drO8PVmmXJtVIAkyyO
+ BhK2JX/StxBAK/tks5p1Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7hK4hXecxec=:bVN9qj73/seY2HoSa41kof
+ 9S2C7x8CZ5t1iIjBdtWVEph0cbJZRpWuIdTWeXie6MD5RMqv68dfAZ1PgEh5vmvH/sDEGIX8b
+ Ljop+i2Sv8+Y3wcfF+XhWCr+Z2kNcjg/bt9zY+H4LTNvrz2LORtT/OVnFunYv4CtqkZ87EtE9
+ oDb35BqTB9i+lPRNLPXAEJxFIYTskEcJi20c7ciNXDuKTLGjNDqEL6pNadjkeAbDEhk4YMlw7
+ TaA9bnS1rSH4YNSBXnveDA5cw33Q/8c9APMKkzlwbfq/ZZ56gH3Rpph5ociQLh+C/GbmTMetS
+ jf+OYz+BYWDJwn0qiTKLItP1TYSRmXA0xcnIIbZ63Gdfse/apvg/wN9H7K7IIjQh5jqNMBmqF
+ wAyIiPhVg27M7fdSXlZzGMEwzGczfdfPfWks+eLnCO/unks1gh5dl0WADvgrORp1Wn6ZmDlc4
+ Yehwa1DnChy8J0BtH8ovhc2WSfJuev1FjE3aOLrkg2Ov410nlqPUPnka8J2Jzc4NCaIzXB7G9
+ 5cPrl7B7Df4UoXg7xvOReWTc6kcuQT+KuZPjXubk2bRM0ZB1WWha+W/qObRqB5eSH9QrwkLO2
+ BhTEXmVX1yvUD4aqMdCcW33zYso5meOtunLJE0ZAdescDrkXPNl37PqQDIozQVDJoJrIWosHB
+ JObE1zcBtC7iAlDRSaPNMppKDb3eYXQRCKjDCEFhU1wi9zDVao/z+QK8SmHdOwy4q8r6PT2Vc
+ RwkpZpToJ5RwZOfpvBgYPLETVVIrRIwHchsIbPIfM0/v9KqaZb3aFp+FK2h5XbPmRPyh0rxJk
+ YYzBaUmiJvsB1EPTutC5p0t5RptQ1Bg4eKEOqgGLUEatxrMbZB3GrSbTUtg05vnM/zwiv2Z
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -108,31 +109,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Apr 2020 08:22:33 -0000
+X-List-Received-Date: Fri, 03 Apr 2020 08:27:59 -0000
 
-Le 03/04/2020 à 10:10, Chenqun (kuhn) a écrit :
->> -----Original Message-----
->> From: Laurent Vivier [mailto:laurent@vivier.eu]
->> Sent: Friday, April 3, 2020 4:04 PM
->> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
->> qemu-trivial@nongnu.org
->> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>; philmd@redhat.com
->> Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by Clang
->> static code analyzer
->>
->> Le 03/04/2020 à 09:51, Chenqun (kuhn) a écrit :
->>> Ping!
+Le 03/04/2020 à 10:22, Laurent Vivier a écrit :
+> Le 03/04/2020 à 10:10, Chenqun (kuhn) a écrit :
+>>> -----Original Message-----
+>>> From: Laurent Vivier [mailto:laurent@vivier.eu]
+>>> Sent: Friday, April 3, 2020 4:04 PM
+>>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
+>>> qemu-trivial@nongnu.org
+>>> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>; philmd@redhat.com
+>>> Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by Clang
+>>> static code analyzer
 >>>
->>> This series has been reviewed.  Could someone please pick this up (e.g. qemu-
->> trivial?)?
->>
->> As we are in hard feature freeze now and this is not critical bug fixes I'm going
->> to queue them for 5.1 except if you have good arguments to have them in 5.0.
->>
-> OK,  I get it. 
-> It is important to ensure a stable version!
+>>> Le 03/04/2020 à 09:51, Chenqun (kuhn) a écrit :
+>>>> Ping!
+>>>>
+>>>> This series has been reviewed.  Could someone please pick this up (e.g. qemu-
+>>> trivial?)?
+>>>
+>>> As we are in hard feature freeze now and this is not critical bug fixes I'm going
+>>> to queue them for 5.1 except if you have good arguments to have them in 5.0.
+>>>
+>> OK,  I get it. 
+>> It is important to ensure a stable version!
+> 
+> Queued to my linux-user-for-5.1 queue.
 
-Queued to my linux-user-for-5.1 queue.
+I meant trivial-patches-for-5.1
 
 Thanks,
 Laurent
