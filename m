@@ -1,71 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jKLou-0006Wd-U7
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 08:53:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56512)
+	id 1jKQbT-00084U-OW
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 13:59:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39167)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@gmail.com>) id 1jKLos-0006ST-H5
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 08:53:11 -0400
+ (envelope-from <eblake@redhat.com>) id 1jKQbR-00081I-FL
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 13:59:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1jKLor-00065k-Jv
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 08:53:10 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39356)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1jKLon-00063R-Cv; Fri, 03 Apr 2020 08:53:05 -0400
-Received: by mail-wr1-x444.google.com with SMTP id p10so8386876wrt.6;
- Fri, 03 Apr 2020 05:53:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=o7/hZKmPC/OCtVWf1ZKVf9rFl5J6uMyMvtdJvK7UDmo=;
- b=D4Ok14Lj6umSjIPEW+0474ZWvztJj1hf0rdN2dgbWDF82REnUmAL9aibi1+dck8JEp
- 5kr/GwqV4/95QLC0wqP2DlDODsxysBMn/yIlwzSjHEUEL2otzlo6GBVSR0+LeLm35QV5
- MVn075jT9L1RPBOXmlIoKTa8EdA9aP5kdAGWFjGWXPXmy1JMgAbVR8rdupax4PMSyUo+
- t5ECulrzHxJDLhWhU4mw1dlYqQrt1uqk9X4v7kLgt0KUQVXoHfX0CaedRifntG9uhSL8
- JqN7ViZLBdabBppELSEQ2DWue3X6j4s/ly8lZLrvOZD0SnRWCfub/kP0xcs2GiEWN1pF
- 6UTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=o7/hZKmPC/OCtVWf1ZKVf9rFl5J6uMyMvtdJvK7UDmo=;
- b=hJhjXMS9mDfH5nl1cGsPq+Pg2kHZ+Wdgt22JjJo7F+bRrvcBP4eD7TnzB/SVi1LM05
- /QuVsBl1PJtIoGu3Tqs/St9ioX6/L2dI7r+N1BoB8cr99GYAZiS31FD3MdHUIYmWWkIy
- RmJlSp+YQxTsiOsj5iDWTB9QUkzDt2hiND6PCF21JHyjBP+pHmCqtDmX7oN3VkmE/jGY
- 8GqAA/vZ0/imicFouJLf/QlzkAX2dnB6A6h5lsu5cgyz5Us5nfFm87WHWQKn0SHqBRM4
- uuD3AD/r2oIikBowcylLSm9x4FQ1dIWg/ukcpqiyvJt6gb7bUPmX9OasxTdZ4hkwm4v6
- QDwA==
-X-Gm-Message-State: AGi0PuZFNLahgwFCHPJ8OHb7MybF+YuPPstzwNLl5vo1QtaqVl9e3Dk1
- 95whGnB6FGv4FSysVMCwIdg=
-X-Google-Smtp-Source: APiQypJqA2kIVJH9lUQOUeoaVz+SCak/sLx6utw53Jsu6EXXDDUpBzF3CNESWfwK1MJdKIoAqx13VQ==
-X-Received: by 2002:adf:e4d2:: with SMTP id v18mr1099748wrm.22.1585918384447; 
- Fri, 03 Apr 2020 05:53:04 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id z17sm2029572wru.39.2020.04.03.05.53.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 05:53:03 -0700 (PDT)
-Date: Fri, 3 Apr 2020 13:53:01 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Simran Singhal <singhalsimran0@gmail.com>
-Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Peter Lieven <pl@kamp.de>, Fam Zheng <fam@euphon.net>,
- Jeff Cody <codyprime@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Julia Suvorova <jusual@mail.ru>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v2] Compress lines for immediate return
-Message-ID: <20200403125301.GD146016@stefanha-x1.localdomain>
-References: <20200401165314.GA3213@simran-Inspiron-5558>
+ (envelope-from <eblake@redhat.com>) id 1jKQbP-0007QX-AM
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 13:59:37 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:36931
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jKQbP-0007Pw-5l
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 13:59:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585936774;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ow8fHVhdF5XdDD9HXHcAMKy9dd3Xe7mid7JBL1s9T2Y=;
+ b=OOR9INK94RiiqXdWqWHyPiLF0dyMpq/6usjGrA/gM/L24TtUuwBblt5aImt191HR2c308W
+ ZYBlZLQmfrdabIwfaKNlIofgOCBKbHHtOzALLrPWHr+8w8RIP9tGfY+pt+7aCNVUKEFr/S
+ f/GtcDztqXvNcFVkCtOvNPof/sdxjr4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-25-u0b58hJkPs2nQclaNpvbgw-1; Fri, 03 Apr 2020 13:59:33 -0400
+X-MC-Unique: u0b58hJkPs2nQclaNpvbgw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 63CD2107ACC4;
+ Fri,  3 Apr 2020 17:59:30 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-113-246.phx2.redhat.com [10.3.113.246])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9463B5C1BE;
+ Fri,  3 Apr 2020 17:59:14 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, pkrempa@redhat.com, kchamart@redhat.com,
+ mreitz@redhat.com, libvir-list@redhat.com, qemu-block@nongnu.org,
+ Liu Yuan <namei.unix@gmail.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ sheepdog@lists.wpkg.org (open list:Sheepdog),
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH v5 1/7] sheepdog: Add trivial backing_fmt support
+Date: Fri,  3 Apr 2020 12:58:53 -0500
+Message-Id: <20200403175859.863248-2-eblake@redhat.com>
+In-Reply-To: <20200403175859.863248-1-eblake@redhat.com>
+References: <20200403175859.863248-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="at6+YcpfzWZg/htY"
-Content-Disposition: inline
-In-Reply-To: <20200401165314.GA3213@simran-Inspiron-5558>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::444
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,69 +69,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Apr 2020 12:53:11 -0000
+X-List-Received-Date: Fri, 03 Apr 2020 17:59:38 -0000
 
+Sheepdog already requires that if backing_file is present, that it be
+another sheepdog image (see sd_co_create).  Meanwhile, we want to move
+towards always being explicit about the backing format for other
+drivers where it matters.  So for convenience, make qemu-img create -F
+sheepdog work, while rejecting all other explicit formats (note that
+this is only for QemuOpts usage; there is no change to the QAPI to
+allow a format through -blockdev).
 
---at6+YcpfzWZg/htY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ block/sheepdog.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-On Wed, Apr 01, 2020 at 10:23:14PM +0530, Simran Singhal wrote:
-> Compress two lines into a single line if immediate return statement is fo=
-und.
->=20
-> It also remove variables progress, val, data, ret and sock
-> as they are no longer needed.
->=20
-> Remove space between function "mixer_load" and '(' to fix the
-> checkpatch.pl error:-
-> ERROR: space prohibited between function name and open parenthesis '('
->=20
-> Done using following coccinelle script:
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->=20
-> -ret =3D
-> +return
->      e;
-> -return ret;
->=20
-> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
-> ---
-> Changes in v2:
-> 	-Added coccinelle script wrote for changes in commit message.
->=20
->  block/file-posix.c      | 3 +--
->  block/nfs.c             | 3 +--
->  block/nvme.c            | 4 +---
->  block/vhdx.c            | 3 +--
->  hw/audio/ac97.c         | 4 +---
->  hw/audio/adlib.c        | 5 +----
->  hw/display/cirrus_vga.c | 4 +---
->  migration/ram.c         | 4 +---
->  ui/gtk.c                | 3 +--
->  util/qemu-sockets.c     | 5 +----
->  10 files changed, 10 insertions(+), 28 deletions(-)
+diff --git a/block/sheepdog.c b/block/sheepdog.c
+index 59f7ebb1710f..8f558367d2d5 100644
+--- a/block/sheepdog.c
++++ b/block/sheepdog.c
+@@ -2163,13 +2163,21 @@ static int coroutine_fn sd_co_create_opts(BlockDriv=
+er *drv,
+                                           Error **errp)
+ {
+     BlockdevCreateOptions *create_options =3D NULL;
+-    QDict *qdict, *location_qdict;
++    QDict *qdict =3D NULL, *location_qdict;
+     Visitor *v;
+-    char *redundancy;
++    char *redundancy =3D NULL;
+     Error *local_err =3D NULL;
+     int ret;
++    char *backing_fmt =3D NULL;
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+     redundancy =3D qemu_opt_get_del(opts, BLOCK_OPT_REDUNDANCY);
++    backing_fmt =3D qemu_opt_get_del(opts, BLOCK_OPT_BACKING_FMT);
++
++    if (backing_fmt && strcmp(backing_fmt, "sheepdog") !=3D 0) {
++        error_setg(errp, "backing_file must be a sheepdog image");
++        ret =3D -EINVAL;
++        goto fail;
++    }
 
---at6+YcpfzWZg/htY
-Content-Type: application/pgp-signature; name="signature.asc"
+     qdict =3D qemu_opts_to_qdict(opts, NULL);
+     qdict_put_str(qdict, "driver", "sheepdog");
+@@ -2234,6 +2242,7 @@ fail:
+     qapi_free_BlockdevCreateOptions(create_options);
+     qobject_unref(qdict);
+     g_free(redundancy);
++    g_free(backing_fmt);
+     return ret;
+ }
 
------BEGIN PGP SIGNATURE-----
+@@ -3191,6 +3200,11 @@ static QemuOptsList sd_create_opts =3D {
+             .type =3D QEMU_OPT_STRING,
+             .help =3D "File name of a base image"
+         },
++        {
++            .name =3D BLOCK_OPT_BACKING_FMT,
++            .type =3D QEMU_OPT_STRING,
++            .help =3D "Must be 'sheepdog' if present",
++        },
+         {
+             .name =3D BLOCK_OPT_PREALLOC,
+             .type =3D QEMU_OPT_STRING,
+--=20
+2.26.0.rc2
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl6HMa0ACgkQnKSrs4Gr
-c8jcJgf/cWxTV2jyHVycQm9E0N8K/chNkY1Qr8/y4iR399Zo8NLy7qfUcncU5x7+
-D9X6ni0mT5OUZ86WULhTcGc8JVKYV2um43suBW+o3vqnyL9vLReictGLx7NjdK5k
-1OijuuDsDKiwQJ3lB4F0LSq2xotRb8vS/gxxnAZlIA9rw3avazSJj0GYXKtX6Od9
-+MMEBzhOpXaVRcsNl1h9Lamh3qbqvi3IJNfHfYCVaGeCnlVCvEfFsYtkV7nrkZP1
-v0wMwWP/aINMHoeJBXLLX9q7GJGcYaC/tCflNK/gVHuLoqCaWALlkMXHd8xVlT5I
-EfFXY0LED3bXhHfAobYT1PczxFol1A==
-=ir9p
------END PGP SIGNATURE-----
-
---at6+YcpfzWZg/htY--
 
