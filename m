@@ -1,105 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jKI0G-0006yw-Tx
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 04:48:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48529)
+	id 1jKLou-0006Wd-U7
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2020 08:53:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56512)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jKI0E-0006uQ-1W
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:48:39 -0400
+ (envelope-from <stefanha@gmail.com>) id 1jKLos-0006ST-H5
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 08:53:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jKI0C-0004N4-T3
- for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 04:48:37 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:54787)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jKI09-0004JO-9A; Fri, 03 Apr 2020 04:48:33 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1McYP5-1imKIF3r3N-00cuXa; Fri, 03 Apr 2020 10:48:23 +0200
-Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by Clang
- static code analyzer
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "philmd@redhat.com" <philmd@redhat.com>
-References: <20200325025919.21316-1-kuhn.chenqun@huawei.com>
- <7412CDE03601674DA8197E2EBD8937E83B6D495C@dggemm511-mbx.china.huawei.com>
- <b273c5c9-18cc-691f-bd1f-df056f448ade@vivier.eu>
- <7412CDE03601674DA8197E2EBD8937E83B6D4A27@dggemm511-mbx.china.huawei.com>
- <f2601173-f46d-ac93-c012-f715a52400ba@vivier.eu>
- <d002a05d-d028-92e6-80e7-4f2ae91a67a6@vivier.eu>
- <7412CDE03601674DA8197E2EBD8937E83B6D4B32@dggemm511-mbx.china.huawei.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <914fdc3c-c7a4-0aac-bed4-9df6acd78295@vivier.eu>
-Date: Fri, 3 Apr 2020 10:48:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (envelope-from <stefanha@gmail.com>) id 1jKLor-00065k-Jv
+ for qemu-trivial@nongnu.org; Fri, 03 Apr 2020 08:53:10 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39356)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <stefanha@gmail.com>)
+ id 1jKLon-00063R-Cv; Fri, 03 Apr 2020 08:53:05 -0400
+Received: by mail-wr1-x444.google.com with SMTP id p10so8386876wrt.6;
+ Fri, 03 Apr 2020 05:53:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=o7/hZKmPC/OCtVWf1ZKVf9rFl5J6uMyMvtdJvK7UDmo=;
+ b=D4Ok14Lj6umSjIPEW+0474ZWvztJj1hf0rdN2dgbWDF82REnUmAL9aibi1+dck8JEp
+ 5kr/GwqV4/95QLC0wqP2DlDODsxysBMn/yIlwzSjHEUEL2otzlo6GBVSR0+LeLm35QV5
+ MVn075jT9L1RPBOXmlIoKTa8EdA9aP5kdAGWFjGWXPXmy1JMgAbVR8rdupax4PMSyUo+
+ t5ECulrzHxJDLhWhU4mw1dlYqQrt1uqk9X4v7kLgt0KUQVXoHfX0CaedRifntG9uhSL8
+ JqN7ViZLBdabBppELSEQ2DWue3X6j4s/ly8lZLrvOZD0SnRWCfub/kP0xcs2GiEWN1pF
+ 6UTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=o7/hZKmPC/OCtVWf1ZKVf9rFl5J6uMyMvtdJvK7UDmo=;
+ b=hJhjXMS9mDfH5nl1cGsPq+Pg2kHZ+Wdgt22JjJo7F+bRrvcBP4eD7TnzB/SVi1LM05
+ /QuVsBl1PJtIoGu3Tqs/St9ioX6/L2dI7r+N1BoB8cr99GYAZiS31FD3MdHUIYmWWkIy
+ RmJlSp+YQxTsiOsj5iDWTB9QUkzDt2hiND6PCF21JHyjBP+pHmCqtDmX7oN3VkmE/jGY
+ 8GqAA/vZ0/imicFouJLf/QlzkAX2dnB6A6h5lsu5cgyz5Us5nfFm87WHWQKn0SHqBRM4
+ uuD3AD/r2oIikBowcylLSm9x4FQ1dIWg/ukcpqiyvJt6gb7bUPmX9OasxTdZ4hkwm4v6
+ QDwA==
+X-Gm-Message-State: AGi0PuZFNLahgwFCHPJ8OHb7MybF+YuPPstzwNLl5vo1QtaqVl9e3Dk1
+ 95whGnB6FGv4FSysVMCwIdg=
+X-Google-Smtp-Source: APiQypJqA2kIVJH9lUQOUeoaVz+SCak/sLx6utw53Jsu6EXXDDUpBzF3CNESWfwK1MJdKIoAqx13VQ==
+X-Received: by 2002:adf:e4d2:: with SMTP id v18mr1099748wrm.22.1585918384447; 
+ Fri, 03 Apr 2020 05:53:04 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id z17sm2029572wru.39.2020.04.03.05.53.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Apr 2020 05:53:03 -0700 (PDT)
+Date: Fri, 3 Apr 2020 13:53:01 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Simran Singhal <singhalsimran0@gmail.com>
+Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Peter Lieven <pl@kamp.de>, Fam Zheng <fam@euphon.net>,
+ Jeff Cody <codyprime@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Julia Suvorova <jusual@mail.ru>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH v2] Compress lines for immediate return
+Message-ID: <20200403125301.GD146016@stefanha-x1.localdomain>
+References: <20200401165314.GA3213@simran-Inspiron-5558>
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B6D4B32@dggemm511-mbx.china.huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TloK6O0tUy5tHtNT6LX5Vzpd15s+focAssA2tBK52FJAUIkjgks
- uhLk+vMAlGBHOUw5z+D82YiIyNfGJn++iAs5UNaLoQeJPtNB2ERcj+8Ldp9VaivgvuH6nqs
- szCytGnvjyDVEdtKAScG0u7hYsIKd41xCGax2iVXrWckVPENuSuh/C3E57rRH8T1a6nBIyM
- e0l++jku2tcqIES9DW5ow==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:btXgDJoq4zg=:adCW+kFXYXr+ZldNdX/uOh
- 0FADiLHgGOeytWqg+xQ2B2BWXjUuErNWIDBIYqYODAvhp5e+PmwB1525aV8LmA2delLbTgvTv
- NJZKFaO58rB/mYhouAbqpyyoJJ/Rs/n6ZPGv+LkQ3NY0IlgEYp71EJtW6tIXFI7UE1R/Y8MLW
- GwRnxCd+I1m27p8gMsbz8dTeOkbEnlkXVMt1DhJF4IIJRKg0KdhbQbWNAFFgQQPJhZSznrQKm
- 41JcFgKW0UWZKaB0IZjdIdMIpPBB+N6l8okAtFE/0WLXbje3QwVuabSVTOEKw6bpTHzc5hc+O
- JWyJLmbkV38YX1cuxrP/x3W40NiqlKoRXpL4cEFYPPgCzWvvVecIN5Nqx6RjXhOyLrjDjMTkc
- BOkAhSRV+E41Fl/C0k3oM48dpt6Oz6NyrerOj4wedB1yFs4KfRPxJYemhSxUUw/Oj87DcIHe5
- cEV/83jdFC+BdUn6grZ+y4GB8L9eIyVgIq6aWKmbqqI5DGwJHo7qNK2zEtixD4mXVx1Mk7CUk
- vT+NEw3AKPHBrg7OivJ2vXG5JrdeCk392O/43oRQwpi6UQ5SY1xtDUvnXx96J0pvzIMuLf1yK
- MNcdgCbi9nIuWfwhjyXv1zr9npXfaDUEA89OYUP0P6YhPYRT701uMQ18Ev6hRVr43SbTI+d8t
- S2S25AmvCH/zsMdEUIY4GMRAXIvFvduzYrbCmHw02SFAQ6fZYIXHw4jolSOxFpYNFbB72T+Eh
- ViIsKFxFOgQ7oXJrSBOzh9OYTUmDO0PofhqHMuRfY54namBO9cD2hDtm9q29vVIOhFB53G/cu
- A9wWkgagIQUCX8HZ1TU/73tbO5JKEZu0AWTbiY3OzEMKF2Unil9NCLoSk5k2o9jxlPUwrfX
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="at6+YcpfzWZg/htY"
+Content-Disposition: inline
+In-Reply-To: <20200401165314.GA3213@simran-Inspiron-5558>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,54 +77,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Apr 2020 08:48:39 -0000
+X-List-Received-Date: Fri, 03 Apr 2020 12:53:11 -0000
 
-Le 03/04/2020 à 10:41, Chenqun (kuhn) a écrit :
->> -----Original Message-----
->> From: Laurent Vivier [mailto:laurent@vivier.eu]
->> Sent: Friday, April 3, 2020 4:28 PM
->> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
->> qemu-trivial@nongnu.org
->> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>; philmd@redhat.com
->> Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by Clang
->> static code analyzer
->>
->> Le 03/04/2020 à 10:22, Laurent Vivier a écrit :
->>> Le 03/04/2020 à 10:10, Chenqun (kuhn) a écrit :
->>>>> -----Original Message-----
->>>>> From: Laurent Vivier [mailto:laurent@vivier.eu]
->>>>> Sent: Friday, April 3, 2020 4:04 PM
->>>>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
->> devel@nongnu.org;
->>>>> qemu-trivial@nongnu.org
->>>>> Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>;
->>>>> philmd@redhat.com
->>>>> Subject: Re: [PATCH v5 0/3] redundant code: Fix warnings reported by
->>>>> Clang static code analyzer
->>>>>
->>>>> Le 03/04/2020 à 09:51, Chenqun (kuhn) a écrit :
->>>>>> Ping!
->>>>>>
->>>>>> This series has been reviewed.  Could someone please pick this up
->>>>>> (e.g. qemu-
->>>>> trivial?)?
->>>>>
->>>>> As we are in hard feature freeze now and this is not critical bug
->>>>> fixes I'm going to queue them for 5.1 except if you have good arguments to
->> have them in 5.0.
->>>>>
->>>> OK,  I get it.
->>>> It is important to ensure a stable version!
->>>
->>> Queued to my linux-user-for-5.1 queue.
->>
->> I meant trivial-patches-for-5.1
->>
-> Thanks. Could you add another trivial patch to the queue by the way?
-> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg07534.html
 
-Yes, done.
+--at6+YcpfzWZg/htY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Laurent
+On Wed, Apr 01, 2020 at 10:23:14PM +0530, Simran Singhal wrote:
+> Compress two lines into a single line if immediate return statement is fo=
+und.
+>=20
+> It also remove variables progress, val, data, ret and sock
+> as they are no longer needed.
+>=20
+> Remove space between function "mixer_load" and '(' to fix the
+> checkpatch.pl error:-
+> ERROR: space prohibited between function name and open parenthesis '('
+>=20
+> Done using following coccinelle script:
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+>=20
+> -ret =3D
+> +return
+>      e;
+> -return ret;
+>=20
+> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+> ---
+> Changes in v2:
+> 	-Added coccinelle script wrote for changes in commit message.
+>=20
+>  block/file-posix.c      | 3 +--
+>  block/nfs.c             | 3 +--
+>  block/nvme.c            | 4 +---
+>  block/vhdx.c            | 3 +--
+>  hw/audio/ac97.c         | 4 +---
+>  hw/audio/adlib.c        | 5 +----
+>  hw/display/cirrus_vga.c | 4 +---
+>  migration/ram.c         | 4 +---
+>  ui/gtk.c                | 3 +--
+>  util/qemu-sockets.c     | 5 +----
+>  10 files changed, 10 insertions(+), 28 deletions(-)
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--at6+YcpfzWZg/htY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl6HMa0ACgkQnKSrs4Gr
+c8jcJgf/cWxTV2jyHVycQm9E0N8K/chNkY1Qr8/y4iR399Zo8NLy7qfUcncU5x7+
+D9X6ni0mT5OUZ86WULhTcGc8JVKYV2um43suBW+o3vqnyL9vLReictGLx7NjdK5k
+1OijuuDsDKiwQJ3lB4F0LSq2xotRb8vS/gxxnAZlIA9rw3avazSJj0GYXKtX6Od9
++MMEBzhOpXaVRcsNl1h9Lamh3qbqvi3IJNfHfYCVaGeCnlVCvEfFsYtkV7nrkZP1
+v0wMwWP/aINMHoeJBXLLX9q7GJGcYaC/tCflNK/gVHuLoqCaWALlkMXHd8xVlT5I
+EfFXY0LED3bXhHfAobYT1PczxFol1A==
+=ir9p
+-----END PGP SIGNATURE-----
+
+--at6+YcpfzWZg/htY--
 
