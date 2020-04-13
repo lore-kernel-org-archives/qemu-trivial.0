@@ -1,78 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jNwk4-0000FO-G2
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Apr 2020 06:55:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57512)
+	id 1jO3JB-0004M7-9q
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Apr 2020 13:55:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46191)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1jNwk1-0000E7-Ft
- for qemu-trivial@nongnu.org; Mon, 13 Apr 2020 06:55:02 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1jO3J9-0004KU-Jl
+ for qemu-trivial@nongnu.org; Mon, 13 Apr 2020 13:55:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1jNwjz-0005Rw-1T
- for qemu-trivial@nongnu.org; Mon, 13 Apr 2020 06:55:00 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:26061
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jNwjy-0005RY-Ud
- for qemu-trivial@nongnu.org; Mon, 13 Apr 2020 06:54:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586775297;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mouWL9esHDQH3pzbVuALj79s7czZcOh6oOLChTjBtn4=;
- b=G4YJCTWqj+KGUdEHw69TNK1WEuu7UP7VEFJpfk855KfTiRBMpzDl+/bYiauALY1bVLwFXc
- ifGGDP9kKZTAvqpDEr1MF5XAXps5mgCChd4ZerhUSnCcHSs6RPXzmIT+kDSIm8ZkeFPTHS
- hU9Hf5niGZS/Y/X1uLW6pe/sRAbBDD4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-461-ZccBcgsiNlSaGVXrlynr1Q-1; Mon, 13 Apr 2020 06:54:56 -0400
-X-MC-Unique: ZccBcgsiNlSaGVXrlynr1Q-1
-Received: by mail-wr1-f71.google.com with SMTP id m15so6561152wrb.0
- for <qemu-trivial@nongnu.org>; Mon, 13 Apr 2020 03:54:55 -0700 (PDT)
+ (envelope-from <rfried.dev@gmail.com>) id 1jO3J8-0002Hq-Gk
+ for qemu-trivial@nongnu.org; Mon, 13 Apr 2020 13:55:43 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:35998)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1jO3J6-0002FT-1L; Mon, 13 Apr 2020 13:55:40 -0400
+Received: by mail-ot1-x341.google.com with SMTP id b13so5710973oti.3;
+ Mon, 13 Apr 2020 10:55:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=xO3UzWfTGH5oRZBrcP5KEcJ/+eQcg1votYrluf9FII0=;
+ b=taQg3IC5hZ/YPiP+3xBRt7zv/wcDMcmUOchJLje8qUSj2ZQJW3/FHBPFZ/C9ZK74NJ
+ roQRXC1OMYyNrgT5irxPj+mqQTxuGdZd7zZEP7JrmFLEWhR8eQsHBE1fUzsmGVstygXA
+ yg2n49d6AkEQ/GsS/vzjRCWgb16LHt9drLR/gv+qJ40qIca5+ikV393nViNPxBooFeDn
+ 9US/7px/Q4rK+YutjHJM0USWCRfzS9lHA1PkSftqBz5q0v2CB4d5l900Xbia2xY52Upq
+ AnamXypzzT/NP3J5sbkBpNPGFltQYXnVq52AjY/HdI6finrFW9ZlpMPyLeJpYUVTDmNL
+ glIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=YALn3EL1CPLgXOJUl/YE29JEMwzz7MeT7P7e/v7/gsc=;
- b=l9rxw8g07pjA6je71yTFV9JRO7k1e+0p56kRDGF7bJYkKUneqV+yhPVRj1a3ToAQQz
- vfT8KerUpyPwFDQEZpXZRHCxdnRTOQjG3fiiXx2WY6xEhH1od45oyApf4gC0XXOaK+5t
- hdtzRoTj8RRy21PljdZFivnqLPXtSyvs/tEvx+xUYq2gYx1NX5yb/r5AH6jFIAJ+SpxY
- F+rkN3zvmkAuxYHJiyCmq+lAbqv5CQuqf8pNogUQeX25tvGfApTxvxZtH6km6gS6UBHZ
- R3YmOzEgTDJAqK25imxSKarDHgG6q7mMh3ePANnZCkoStZhg9+U7A2V9sDXR01s3wwI6
- C+GA==
-X-Gm-Message-State: AGi0Puahbd0DSqz7Zv236jeZ8mhMQZxZh6hGoh/ta2jPoOWsVhRLcTim
- tGRt1nLiZof+gAClVIzOPei9gfUjhMCpMJDiBybf3y81Obm3fXqchQbMAZwY+E/LbLntybzhvPc
- NpgEIwmhKp5RETFkykQ==
-X-Received: by 2002:a1c:9d0d:: with SMTP id g13mr14116866wme.102.1586775294899; 
- Mon, 13 Apr 2020 03:54:54 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKwtKCfU23v8E1dcO7AOY88ARasRhIagbdH4SmBfaqgTgkrzVzGM3/dluN0KiuTKIqFGWIrig==
-X-Received: by 2002:a1c:9d0d:: with SMTP id g13mr14116844wme.102.1586775294549; 
- Mon, 13 Apr 2020 03:54:54 -0700 (PDT)
-Received: from redhat.com ([185.107.45.41])
- by smtp.gmail.com with ESMTPSA id t20sm4722285wmi.2.2020.04.13.03.54.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Apr 2020 03:54:53 -0700 (PDT)
-Date: Mon, 13 Apr 2020 06:54:51 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Julia Suvorova <jusual@redhat.com>, qemu-devel@nongnu.org,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Laine Stump <laine@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/pci/pcie: Forbid hot-plug via QMP if it's disabled on
- the slot
-Message-ID: <20200413065048-mutt-send-email-mst@kernel.org>
-References: <20200407145017.1041256-1-jusual@redhat.com>
- <20200408125120.7678d9ae@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xO3UzWfTGH5oRZBrcP5KEcJ/+eQcg1votYrluf9FII0=;
+ b=QGUB4hHvQF7DqhlQmyTsso7GjlEeBAo6N08WSdWRtK8M6DN5YsXPpj8wQcmWs7zgSA
+ Gt/P/Ye3N3IhqTEZ5TE5yqDnnG1cpcvP2ZiroyRoeTKScZu/6+eBmc+aVR4Gp9cmGxX+
+ a993bDe6hNb/uD/M0OH9n8bu5cBbQvdBPj36f4a+ou+5IQEuIXqQTpVyAJXE/V85+IT8
+ cD2aWh7MWUUq24srkB6p8+UuCUm4tsdvK1io6rTxBIYOOyFXbYLNZmoyq2MOBdtzYOw0
+ jTjC601hQVWgymuHErEcb9dU3AIBbIbDlr3u17V+74yXLTqWHN/1/yMCkegKX5G4BrDM
+ WIng==
+X-Gm-Message-State: AGi0PuaUsTNSuSev9St45Lv4VYlVXoRnxVjI0fc7BqN1ojbMdJ6iqSxH
+ udmsea/KolcCFwofCuPUa+Hokfwb70QQFZsnlOQ=
+X-Google-Smtp-Source: APiQypJ0iTyB3HwY7d5CmRHrh0gGHiCyyaQvqmm85wdmoLb2qC33Gm+PaN4TiKRS4Wwoohjs3SDpiFLFZ3EjT3+AiIA=
+X-Received: by 2002:a9d:3f2:: with SMTP id f105mr16110555otf.187.1586800538869; 
+ Mon, 13 Apr 2020 10:55:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200408125120.7678d9ae@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+References: <20190615051559.13767-1-rfried.dev@gmail.com>
+ <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
+ <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
+In-Reply-To: <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
+From: Ramon Fried <rfried.dev@gmail.com>
+Date: Mon, 13 Apr 2020 20:55:29 +0300
+Message-ID: <CAGi-RUJ_0LBfAe6eVXRrhqpW0EQH97TtdvjaQnXNY0Ts73zJCg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v3] net: cadence_gem: fix compilation error
+ when debug is on
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,116 +72,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Apr 2020 10:55:02 -0000
+X-List-Received-Date: Mon, 13 Apr 2020 17:55:44 -0000
 
-On Wed, Apr 08, 2020 at 12:51:20PM +0200, Igor Mammedov wrote:
-> On Tue,  7 Apr 2020 16:50:17 +0200
-> Julia Suvorova <jusual@redhat.com> wrote:
->=20
-> > Raise an error when trying to hot-plug/unplug a device through QMP to a=
- device
-> > with disabled hot-plug capability. This makes the device behaviour more
-> > consistent and provides an explanation of the failure in the case of
-> > asynchronous unplug.
->=20
-> it applies to hotplug in general (i.e. not only QMP)
->=20
-> >=20
-> > Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> > ---
-> >  hw/pci/pcie.c | 24 +++++++++++++++++++++---
-> >  1 file changed, 21 insertions(+), 3 deletions(-)
-> >=20
-> > diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-> > index 0eb3a2a5d2..e9798caa8a 100644
-> > --- a/hw/pci/pcie.c
-> > +++ b/hw/pci/pcie.c
-> > @@ -415,6 +415,7 @@ void pcie_cap_slot_plug_cb(HotplugHandler *hotplug_=
-dev, DeviceState *dev,
-> >  {
-> >      PCIDevice *hotplug_pdev =3D PCI_DEVICE(hotplug_dev);
-> >      uint8_t *exp_cap =3D hotplug_pdev->config + hotplug_pdev->exp.exp_=
-cap;
-> > +    uint32_t sltcap =3D pci_get_word(exp_cap + PCI_EXP_SLTCAP);
-> >      PCIDevice *pci_dev =3D PCI_DEVICE(dev);
-> > =20
-> >      /* Don't send event when device is enabled during qemu machine cre=
-ation:
-> > @@ -430,6 +431,13 @@ void pcie_cap_slot_plug_cb(HotplugHandler *hotplug=
-_dev, DeviceState *dev,
-> >          return;
-> >      }
-> > =20
-> > +    /* Hot-plug is disabled on the slot */
-> > +    if ((sltcap & PCI_EXP_SLTCAP_HPC) =3D=3D 0) {
-> > +        error_setg(errp, "Device '%s' does not support hot-plug",
-> > +                         DEVICE(hotplug_dev)->id);
-> plug and unplug_req are synchronous. so one can skip on "Device '%s'",
-> user will get this error message as response to device_add/del command.
->=20
-> and more exactly it's concrete slot that does not support hotplug, how ab=
-out
-> "slot doesn't support ..." or just "hotlpug is not supported"
+Hi.
+Just noticed that this patch didn't hit master.
+Got lost ?
 
-Well device name is useful here, while these commands are synchronous
-others aren't so log parsing might not be synchronous.
+Thanks,
+Ramon.
 
-I do think we should mention slot since that's the reason
-hotplug failed:
-    "Device '%s' hot-plug failed: unsupported by slot"
-
-> > +        return;
-> > +    }
-> > +
-> >      /* To enable multifunction hot-plug, we just ensure the function
-> >       * 0 added last. When function 0 is added, we set the sltsta and
-> >       * inform OS via event notification.
-> > @@ -464,14 +472,24 @@ static void pcie_unplug_device(PCIBus *bus, PCIDe=
-vice *dev, void *opaque)
-> >      object_unparent(OBJECT(dev));
-> >  }
-> > =20
-> > -void pcie_cap_slot_unplug_request_cb(HotplugHandler *hotplug_dev,
-> > +void pcie_cap_slot_unplug_request_cb(HotplugHandler *hotplug_handler,
-> >                                       DeviceState *dev, Error **errp)
-> >  {
-> >      Error *local_err =3D NULL;
-> >      PCIDevice *pci_dev =3D PCI_DEVICE(dev);
-> >      PCIBus *bus =3D pci_get_bus(pci_dev);
-> > +    PCIDevice *hotplug_dev =3D PCI_DEVICE(hotplug_handler);
-> > +    uint8_t *exp_cap =3D hotplug_dev->config + hotplug_dev->exp.exp_ca=
-p;
-> > +    uint32_t sltcap =3D pci_get_word(exp_cap + PCI_EXP_SLTCAP);
-> > +
-> > +    /* Hot-unplug is disabled on the slot */
-> > +    if ((sltcap & PCI_EXP_SLTCAP_HPC) =3D=3D 0) {
-> > +        error_setg(errp, "Device '%s' does not support hot-unplug",
-> > +                         DEVICE(hotplug_dev)->id);
-> > +        return;
-
-Here too let's mention slot since that's the reason
-hotplug failed:
-    "Device '%s' hot-unplug failed: unsupported by slot"
-
-?
-
-> > +    }
-> > =20
-> > -    pcie_cap_slot_plug_common(PCI_DEVICE(hotplug_dev), dev, &local_err=
-);
-> > +    pcie_cap_slot_plug_common(hotplug_dev, dev, &local_err);
-> >      if (local_err) {
-> >          error_propagate(errp, local_err);
-> >          return;
-> > @@ -490,7 +508,7 @@ void pcie_cap_slot_unplug_request_cb(HotplugHandler=
- *hotplug_dev,
-> >          return;
-> >      }
-> > =20
-> > -    pcie_cap_slot_push_attention_button(PCI_DEVICE(hotplug_dev));
-> > +    pcie_cap_slot_push_attention_button(hotplug_dev);
-> >  }
-> > =20
-> >  /* pci express slot for pci express root/downstream port
-
+On Sat, Jun 15, 2019 at 9:16 AM Ramon Fried <rfried.dev@gmail.com> wrote:
+>
+>
+>
+> On June 15, 2019 8:38:35 AM GMT+03:00, "Philippe Mathieu-Daud=C3=A9" <phi=
+lmd@redhat.com> wrote:
+> >Hi Ramon,
+> >
+> >On 6/15/19 7:15 AM, Ramon Fried wrote:
+> >> defining CADENCE_GEM_ERR_DEBUG causes compilation
+> >> errors, fix that.
+> >>
+> >> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+> >> ---
+> >> v2: change %lx to HWADDR_PRIx and %lx to %zdx
+> >> v3: change %zdx to %zx
+> >>
+> >>  hw/net/cadence_gem.c | 6 +++---
+> >>  1 file changed, 3 insertions(+), 3 deletions(-)
+> >>
+> >> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> >> index 7f63411430..ecee22525c 100644
+> >> --- a/hw/net/cadence_gem.c
+> >> +++ b/hw/net/cadence_gem.c
+> >> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc,
+> >const uint8_t *buf, size_t size)
+> >>              return -1;
+> >>          }
+> >>
+> >> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
+> >rxbufsize),
+> >> -                rx_desc_get_buffer(s->rx_desc[q]));
+> >> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
+> >MIN(bytes_to_copy, rxbufsize),
+> >> +                rx_desc_get_buffer(s, s->rx_desc[q]));
+> >>
+> >>          /* Copy packet data to emulated DMA buffer */
+> >>          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
+> >s->rx_desc[q]) +
+> >> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
+> >>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+> >>                                                 (p - tx_packet)) {
+> >>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
+> >space " \
+> >> -                         "0x%x\n", (unsigned)packet_desc_addr,
+> >> +                         "0x%zx\n", (unsigned)packet_desc_addr,
+> >>                           (unsigned)tx_desc_get_length(desc),
+> >>                           sizeof(tx_packet) - (p - tx_packet));
+> >>                  break;
+> >>
+> >
+> >I still get an error when trying to build on 32bit host with
+> >CADENCE_GEM_ERR_DEBUG enabled (pre-existing to your patch):
+> >
+> >  CC      hw/net/cadence_gem.o
+> >./hw/net/cadence_gem.c: In function 'gem_receive':
+> >./hw/net/cadence_gem.c:973:14: error: format '%ld' expects argument of
+> >type 'long int', but argument 4 has type 'size_t {aka unsigned int}'
+> >[-Werror=3Dformat=3D]
+> >    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
+> >              ^
+> >./hw/net/cadence_gem.c:38:24: note: in definition of macro 'DB_PRINT'
+> >     fprintf(stderr, ## __VA_ARGS__); \
+> >                        ^
+> >cc1: all warnings being treated as errors
+> >./rules.mak:69: recipe for target 'hw/net/cadence_gem.o' failed
+> >make: *** [hw/net/cadence_gem.o] Error 1
+> >
+> >However the 64bit host is indeed fixed, so I'm fine with your patch:
+> >Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> >Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> >
+> >Regards,
+> >
+> >Phil.
+> Thanks!
+>
+> --
+> Sent from my Android device with K-9 Mail. Please excuse my brevity.
 
