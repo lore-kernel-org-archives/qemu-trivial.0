@@ -1,63 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jPZI4-0006rU-QQ
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Apr 2020 18:16:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46991)
+	id 1jPgwY-0002AH-Oj
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Apr 2020 02:27:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39336)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1jPZI1-0006nE-J1
- for qemu-trivial@nongnu.org; Fri, 17 Apr 2020 18:16:51 -0400
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jPgwU-00028F-PH
+ for qemu-trivial@nongnu.org; Sat, 18 Apr 2020 02:27:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1jPZI0-0001RV-Fa
- for qemu-trivial@nongnu.org; Fri, 17 Apr 2020 18:16:49 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25668
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1jPgwQ-0006m4-8D
+ for qemu-trivial@nongnu.org; Sat, 18 Apr 2020 02:27:05 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3673 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jPZI0-0001Pc-Bx
- for qemu-trivial@nongnu.org; Fri, 17 Apr 2020 18:16:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587161808;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=syBgCS5Esla0lu5vZPZZKzGs0qRBljvfPIltt3id39A=;
- b=R2vHhY84OXHTBeL7K0l4eqoinRll0RFScbnLXUiVQDwdlfFS8KfM0Gw0wZ5rhYnAOWkyWn
- AEv8DgmqfD4qWfjI+wg7nGFndMkSoMjWnCqoMUcuhjJjyHa8FlIgAJodstbySOXk9kdGxc
- 6VXwx90rNnGCD+uIb2hzCHcBnL7kizY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-482-oT_2r349P4W5eJFhCeYNKw-1; Fri, 17 Apr 2020 18:16:41 -0400
-X-MC-Unique: oT_2r349P4W5eJFhCeYNKw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C05A0800D53;
- Fri, 17 Apr 2020 22:16:40 +0000 (UTC)
-Received: from [10.3.115.59] (ovpn-115-59.phx2.redhat.com [10.3.115.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 123F29E0D4;
- Fri, 17 Apr 2020 22:16:40 +0000 (UTC)
-Subject: Re: [PATCH] qemu-img: Fix stale doc comment
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
-References: <20200417221258.900117-1-eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <c3c49393-eedd-3aa0-6156-86cc1e732762@redhat.com>
-Date: Fri, 17 Apr 2020 17:16:39 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jPgwE-0004N2-Tu; Sat, 18 Apr 2020 02:26:51 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id A998E56E407A6C3971DD;
+ Sat, 18 Apr 2020 14:26:32 +0800 (CST)
+Received: from huawei.com (10.133.205.93) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Sat, 18 Apr 2020
+ 14:26:23 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ "Prasad J Pandit" <ppandit@redhat.com>, Max Reitz <mreitz@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>, Ronnie Sahlberg
+ <ronniesahlberg@gmail.com>, <qemu-block@nongnu.org>
+Subject: [PATCH] block/iscsi:fix heap-buffer-overflow in iscsi_aio_ioctl_cb
+Date: Sat, 18 Apr 2020 14:26:02 +0800
+Message-ID: <20200418062602.10776-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20200417221258.900117-1-eblake@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,37 +49,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Apr 2020 22:16:51 -0000
+X-List-Received-Date: Sat, 18 Apr 2020 06:27:09 -0000
 
-On 4/17/20 5:12 PM, Eric Blake wrote:
-> Missed in commit e13c59fa.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->   qemu-img-cmds.hx | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+There is an overflow, the source 'datain.data[2]' is 100 bytes,
+ but the 'ss' is 252 bytes.This may cause a security issue because
+ we can access a lot of unrelated memory data.
 
-and I should have grepped for other instances; this needs to be squashed in:
+The len for sbp copy data should take the minimum of mx_sb_len and
+ sb_len_wr, not the maximum.
 
-diff --git i/qemu-img.c w/qemu-img.c
-index d900bde89911..481103f7a10f 100644
---- i/qemu-img.c
-+++ w/qemu-img.c
-@@ -110,7 +110,7 @@ static void QEMU_NORETURN unrecognized_option(const 
-char *option)
-      error_exit("unrecognized option '%s'", option);
-  }
+If we use iscsi device for VM backend storage, ASAN show stack:
 
--/* Please keep in synch with qemu-img.texi */
-+/* Please keep in synch with docs/tools/qemu-img.rst */
-  static void QEMU_NORETURN help(void)
-  {
-      const char *help_msg =
+READ of size 252 at 0xfffd149dcfc4 thread T0
+    #0 0xaaad433d0d34 in __asan_memcpy (aarch64-softmmu/qemu-system-aarch=
+64+0x2cb0d34)
+    #1 0xaaad45f9d6d0 in iscsi_aio_ioctl_cb /qemu/block/iscsi.c:996:9
+    #2 0xfffd1af0e2dc  (/usr/lib64/iscsi/libiscsi.so.8+0xe2dc)
+    #3 0xfffd1af0d174  (/usr/lib64/iscsi/libiscsi.so.8+0xd174)
+    #4 0xfffd1af19fac  (/usr/lib64/iscsi/libiscsi.so.8+0x19fac)
+    #5 0xaaad45f9acc8 in iscsi_process_read /qemu/block/iscsi.c:403:5
+    #6 0xaaad4623733c in aio_dispatch_handler /qemu/util/aio-posix.c:467:=
+9
+    #7 0xaaad4622f350 in aio_dispatch_handlers /qemu/util/aio-posix.c:510=
+:20
+    #8 0xaaad4622f350 in aio_dispatch /qemu/util/aio-posix.c:520
+    #9 0xaaad46215944 in aio_ctx_dispatch /qemu/util/async.c:298:5
+    #10 0xfffd1bed12f4 in g_main_context_dispatch (/lib64/libglib-2.0.so.=
+0+0x512f4)
+    #11 0xaaad46227de0 in glib_pollfds_poll /qemu/util/main-loop.c:219:9
+    #12 0xaaad46227de0 in os_host_main_loop_wait /qemu/util/main-loop.c:2=
+42
+    #13 0xaaad46227de0 in main_loop_wait /qemu/util/main-loop.c:518
+    #14 0xaaad43d9d60c in qemu_main_loop /qemu/softmmu/vl.c:1662:9
+    #15 0xaaad4607a5b0 in main /qemu/softmmu/main.c:49:5
+    #16 0xfffd1a460b9c in __libc_start_main (/lib64/libc.so.6+0x20b9c)
+    #17 0xaaad43320740 in _start (aarch64-softmmu/qemu-system-aarch64+0x2=
+c00740)
 
+0xfffd149dcfc4 is located 0 bytes to the right of 100-byte region [0xfffd=
+149dcf60,0xfffd149dcfc4)
+allocated by thread T0 here:
+    #0 0xaaad433d1e70 in __interceptor_malloc (aarch64-softmmu/qemu-syste=
+m-aarch64+0x2cb1e70)
+    #1 0xfffd1af0e254  (/usr/lib64/iscsi/libiscsi.so.8+0xe254)
+    #2 0xfffd1af0d174  (/usr/lib64/iscsi/libiscsi.so.8+0xd174)
+    #3 0xfffd1af19fac  (/usr/lib64/iscsi/libiscsi.so.8+0x19fac)
+    #4 0xaaad45f9acc8 in iscsi_process_read /qemu/block/iscsi.c:403:5
+    #5 0xaaad4623733c in aio_dispatch_handler /qemu/util/aio-posix.c:467:=
+9
+    #6 0xaaad4622f350 in aio_dispatch_handlers /qemu/util/aio-posix.c:510=
+:20
+    #7 0xaaad4622f350 in aio_dispatch /qemu/util/aio-posix.c:520
+    #8 0xaaad46215944 in aio_ctx_dispatch /qemu/util/async.c:298:5
+    #9 0xfffd1bed12f4 in g_main_context_dispatch (/lib64/libglib-2.0.so.0=
++0x512f4)
+    #10 0xaaad46227de0 in glib_pollfds_poll /qemu/util/main-loop.c:219:9
+    #11 0xaaad46227de0 in os_host_main_loop_wait /qemu/util/main-loop.c:2=
+42
+    #12 0xaaad46227de0 in main_loop_wait /qemu/util/main-loop.c:518
+    #13 0xaaad43d9d60c in qemu_main_loop /qemu/softmmu/vl.c:1662:9
+    #14 0xaaad4607a5b0 in main /qemu/softmmu/main.c:49:5
+    #15 0xfffd1a460b9c in __libc_start_main (/lib64/libc.so.6+0x20b9c)
+    #16 0xaaad43320740 in _start (aarch64-softmmu/qemu-system-aarch64+0x2=
+c00740)
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+v1->v2:
+Use MIN() macro for mx_sb_len and sb_len_wr.
+(Base comments from Michael S. Tsirkin, Stefan Hajnoczi, Kevin Wolf)
+
+Cc: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Cc: Prasad J Pandit <ppandit@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Lieven <pl@kamp.de>
+Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
+Cc: qemu-block@nongnu.org
+---
+ block/iscsi.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/block/iscsi.c b/block/iscsi.c
+index 4e216bd8aa..0b4b7210df 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -991,8 +991,7 @@ iscsi_aio_ioctl_cb(struct iscsi_context *iscsi, int s=
+tatus,
+         acb->ioh->driver_status |=3D SG_ERR_DRIVER_SENSE;
+=20
+         acb->ioh->sb_len_wr =3D acb->task->datain.size - 2;
+-        ss =3D (acb->ioh->mx_sb_len >=3D acb->ioh->sb_len_wr) ?
+-             acb->ioh->mx_sb_len : acb->ioh->sb_len_wr;
++        ss =3D MIN(acb->ioh->mx_sb_len, acb->ioh->sb_len_wr);
+         memcpy(acb->ioh->sbp, &acb->task->datain.data[2], ss);
+     }
+=20
+--=20
+2.23.0
+
 
 
