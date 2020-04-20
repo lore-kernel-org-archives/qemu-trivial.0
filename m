@@ -1,63 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQbop-0007Rv-Lc
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Apr 2020 15:10:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51882 helo=eggs1p.gnu.org)
+	id 1jQeZw-0007bf-RK
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Apr 2020 18:07:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48506)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQboo-0007Po-4N
- for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 15:10:58 -0400
-Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQbob-0000f2-Ly
- for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 15:10:57 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37873)
- by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jQbob-0000aW-82
- for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 15:10:45 -0400
-Received: by mail-ot1-x342.google.com with SMTP id z17so9141416oto.4
- for <qemu-trivial@nongnu.org>; Mon, 20 Apr 2020 12:10:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=P8yPlcsiN05KrZRP9kREIzCaAYz3BNatIa+gv60TYdU=;
- b=kyZwTKQn93h3ojK+U8q5LYoyOvQ17xOAfaSxkyZOR1IOCu8y3Z9sedm01BuoGYCchi
- IFD/kuA+FN7AM07nt9IS0l438e5sfBnJ5l1iSh6f46OmYfinDBqT30Boh7mbLCb8X7Hp
- jf6AjPZFaZVQFRdGIb6r9c1uIbibr9qqku0GP+WwXxVjxcGv947Q64TkleoZqb4tLc0d
- 2BZTIaJZCn82yJexWPlZteiQYPBjJPRpRQDEdjF4XUhDp7KmGSvY10asjOzcZuHYOrv8
- H3K+tg2CyOzZaV6t0UXHxhcKlInsokgjle/SNmhDnUpQcZmXxzIaUGj8ALnG0sLAg04K
- 4Vfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=P8yPlcsiN05KrZRP9kREIzCaAYz3BNatIa+gv60TYdU=;
- b=ecxH7YtOCocJHClDIcoVvzlnZh0B7Lq0yKy4fdho4yh3lPTf7y69XwG7+k+gmnqtqO
- TbvkMeZm5Saw0jHl2YlZ3i8xW0uIA3gCMdf2InMdChqGe98tbse5GSm6JF5fg0Tqr1Hs
- FLz8j1xf1iJQSQZyYSo0xzysLbBsLsn9M+WzwOke05F+IvVgvXsCUjW0PML0HOHN28g3
- W2f9iSQX0mdoaq2Jm0sMZvcmCpoZI3Gm+HUAJkwdsjvfBnvDJ2tZ9lbA9qhq/x+jeh9x
- 55frTHA8QaeI0hXXJGb2cgxH9kaZOKF+sUkyTiz9QL1ZmkHtkikOV4LYid51/zlgCAGo
- kbIA==
-X-Gm-Message-State: AGi0Pua6jXltmh6Z9fr5DlzNIX/cA7VsXsC341T1B64PtpAmovTIVrkE
- PGlfopnGYg7qEp+eJh7W17etzbmqUhfLdqMQM4MSGg==
-X-Google-Smtp-Source: APiQypIyrnNSjvCb54M/GNT/zkuCEqvtyjk6Bhj20izMmdPjmn2hRjUlNCPGSOzJsle61QsWci46/YDLiREJ1AbUCDY=
-X-Received: by 2002:a05:6830:22dc:: with SMTP id
- q28mr10254358otc.221.1587409841108; 
- Mon, 20 Apr 2020 12:10:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200420175309.75894-1-eblake@redhat.com>
-In-Reply-To: <20200420175309.75894-1-eblake@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Apr 2020 20:10:29 +0100
-Message-ID: <CAFEAcA8z_zQC5f2aD1w0ae=P-D3jHRwj_J3yijv2kwnqoYtKTA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] fix fcntl(F_SETFD) usage
+ (envelope-from <ehabkost@redhat.com>) id 1jQeZr-0007Wk-Ig
+ for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 18:07:46 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <ehabkost@redhat.com>) id 1jQeZr-0006X5-4n
+ for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 18:07:43 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33284
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1jQeZq-0006VE-Mh
+ for qemu-trivial@nongnu.org; Mon, 20 Apr 2020 18:07:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587420461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Eba6AAaAwPQna7twZ39GzRHBpJVsFHAoPc+eW4Ra8vs=;
+ b=LVswOyMsrfUu5jfbqaLMCdIMF/NtDL+2yX2kV15ol/EEzQJYUIrCNlTazSd2KJNQoxYPvc
+ EokBv/lon5x+svJn+93ROlygRM/u/L7FI8FZXbzI4GMwBBwtqV+fs5x6K7QNXQ/NELCpvp
+ gkeSOdEykV0sTgC2yyXsdmR3scoTEbM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-339-q36TAyMaPvaLL3C0-4alvg-1; Mon, 20 Apr 2020 18:07:37 -0400
+X-MC-Unique: q36TAyMaPvaLL3C0-4alvg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFBE21005509;
+ Mon, 20 Apr 2020 22:07:35 +0000 (UTC)
+Received: from localhost (ovpn-112-218.phx2.redhat.com [10.3.112.218])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 151A560C80;
+ Mon, 20 Apr 2020 22:07:34 +0000 (UTC)
+Date: Mon, 20 Apr 2020 18:07:33 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
 To: Eric Blake <eblake@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs1p.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::342
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ peter.maydell@linaro.org, Wenchao Wang <wenchao.wang@intel.com>,
+ Colin Xu <colin.xu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ "open list:X86 HAXM CPUs" <haxm-team@intel.com>
+Subject: Re: [PATCH 1/2] hax: Fix setting of FD_CLOEXEC
+Message-ID: <20200420220733.GH4952@habkost.net>
+References: <20200420175309.75894-1-eblake@redhat.com>
+ <20200420175309.75894-2-eblake@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <20200420175309.75894-2-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/20 18:07:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,26 +73,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Apr 2020 19:10:58 -0000
+X-List-Received-Date: Mon, 20 Apr 2020 22:07:47 -0000
 
-On Mon, 20 Apr 2020 at 18:53, Eric Blake <eblake@redhat.com> wrote:
->
-> As recently pointed out:
-> https://lists.gnu.org/archive/html/qemu-devel/2020-04/msg03133.html
-> code that blindly calls fcntl(fd, F_SETFD, 1) rather than performing a
-> read-modify-write when it intends to add FD_CLOEXEC is broken, in that
-> it can inadvertently clear other bits.
->
-> Thankfully, the culprits fixed in this series are unlikely to be
-> clearing either FD_CLOFORK (if Linux ever follows Solaris' lead in
-> adding that), or the new FD_32BIT_MODE being proposed (as the fds in
-> question are unlikely to have that set) - but it is still better to
-> write proper code than to set up a bad example prone to copy-and-paste
-> propagation.  And as these usages are not new to 5.0, I don't see any
-> reason against waiting until 5.1 to apply them.
+On Mon, Apr 20, 2020 at 12:53:07PM -0500, Eric Blake wrote:
+> Blindly setting FD_CLOEXEC without a read-modify-write will
+> inadvertently clear any other intentionally-set bits, such as a
+> proposed new bit for designating a fd that must behave in 32-bit mode.
+> Use our wrapper function instead of an incorrect hand-rolled version.
+>=20
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Thanks, queued for 5.1.
 
-thanks
--- PMM
+--=20
+Eduardo
+
 
