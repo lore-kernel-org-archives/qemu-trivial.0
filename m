@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQrpo-0005k7-0j
+	id 1jQrpo-0005lN-HB
 	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:17:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59274)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59316)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpf-0005XE-Ai
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:55 -0400
+ id 1jQrpi-0005cB-QX
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpe-0006dD-S4
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:55 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45478)
+ id 1jQrpg-0006ic-Mm
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:58 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39746)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpb-0006Ll-3e; Tue, 21 Apr 2020 08:16:51 -0400
-Received: by mail-wr1-x444.google.com with SMTP id t14so16164074wrw.12;
- Tue, 21 Apr 2020 05:16:49 -0700 (PDT)
+ id 1jQrpU-0006B5-HG; Tue, 21 Apr 2020 08:16:44 -0400
+Received: by mail-wr1-x441.google.com with SMTP id b11so16192155wrs.6;
+ Tue, 21 Apr 2020 05:16:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dxi1KO+TbSTdgnmzvfmca5B9kXzDJPZKOcIl8f3DUQw=;
- b=BQjmJ8enz8lUSt6E5WQY5PUGsO/9S96y4lvBf6t5cXsBreDBc61nc8Zi8ULKzcHQ7s
- 74CDd24JP69qrGcAPyYuVIV08ZfY3Z8KGgAiH3U4tOk25BgIQX11kbP6m8OZgU2pxwWW
- JVovd/a/oq2kSgRtT9RqL4BS2E9ar3f05I2aI6HooTIaSmg3TVkp5JaLUCDNf+3Rf7gm
- XT69TSTSyswd9i75aoqawj6WhJF4wQGPvdvt+gXH7nhUeEX/Bl0PSZpOGLs+F1TF7i23
- rKoK3NwT90CNYClLgwXG5ol/mgxhU7E1D0B1ExNBx5U1J864QVVBZeylL7UkeEoMoFbE
- FamQ==
+ bh=9frTWORwoZW0igeAZ1RXaslrznC6xIFQopqjx+iyoJ4=;
+ b=Jy8aISSO9mAH6DEX7PgZAbbFPpnz8qQOpSBTdbT0Zo4AAEBL+o5p4GUNMtweMYSaGh
+ ikB2eMudeWP5n3oviEJ5lFEAVCRJCer+b1VklP7SmLoxCaRps3SiiyYBQRnX1j/DkJg/
+ DtbTqX6X/m9qLCs+viF0KkIkOhHR6S1Oj45L6oE8sAXrpaiClUJeka0rouKofKRJBEo8
+ CUkFCMtabI1vm4gHllXIxWIzly0Mmr2qZZqFeIaUABKWBdS034Mi2CCMD0Yf+fQ+AKp4
+ Fbn0wJYvrK9VEXOvArmlraxbPs8jXBJ3HIOveVsmUB8RhM/MqF+uGoBEPOQljJWwY70a
+ e2rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dxi1KO+TbSTdgnmzvfmca5B9kXzDJPZKOcIl8f3DUQw=;
- b=nH/DeazyqcFbTb3WbSdEfQOiNPm5JJsCBviC8BFvExZUjKrlOxmCsaCrMwp5CHXvzY
- 67q+JkDUNOwlykF3oldR8lrqJrcwHd6vEOs0ink+YsclrOrviWg/Ho7+J3+PoK2HUc+R
- zqN+UPDWAOL+C+jBrPNcZts28fwesG5Zeuy3qekNqwag14j2B+SGoMWadx5UzIH2DSwT
- Rg1a4/ySkVfNzeI+aabDhgaD+/F2Ulj3duAIBrCwObRNjlTjJuuKFq8/Gckqtz95zSRN
- zZ4sp38LQL+IFQx7qR1Yxn+b8r8BzzKj6J0e2RUAnCK8nrFRdix7BikRiK/m9ycM3Np6
- uiEg==
-X-Gm-Message-State: AGi0PubTprjWin7NfsZHPN57eFtvnIUbhrMFnIy6g3GgZAV2/vUd8bza
- mEaBh6DLEhwktwQplKYswKsfIhRV62M=
-X-Google-Smtp-Source: APiQypI8eN/kNGtO8H27o8kq3sndlRYJmjoJy9u/vHksOMTcHQhVVH44ZebXFb7/QmfOeZNxPAlcAQ==
-X-Received: by 2002:adf:ce02:: with SMTP id p2mr23552791wrn.173.1587471408332; 
- Tue, 21 Apr 2020 05:16:48 -0700 (PDT)
+ bh=9frTWORwoZW0igeAZ1RXaslrznC6xIFQopqjx+iyoJ4=;
+ b=cDYsiLFg+HRVP/0G/NRztQ0bcWw7LH6Y+mcGM/EG9hlBJgG/YHxUVTUiAg/PDtq0mk
+ KgQEiNAxBT5FxgENTlEnZ+hrm/7y5RJeRoKHzR3+2rYIHd6VrlKXFgE8LAEncV5v1m/k
+ pOqXc3qySmLDk7+462OJ19tXMF/5WcFkTqwUDxaxAWxZkpONtJxX2OyhyQQ/EmRdNTiF
+ InIM4hIZnXELiLrDGuJpUndA3yIOrSItKOGYkLd9R44r97E8mi8fwEFm9jVsZhYlKx8T
+ ilegiHap76l3nTploXIGQusYiw3HAcWptBH0OaS1tZdsB++PUyJ15A04rneTYU/kOE13
+ gzVg==
+X-Gm-Message-State: AGi0PuZQ8TpnmDwiMxS/jKqQS3ig495mBFyWTO8P8gx2ZdesXJLIURrr
+ yex3q3PvVeCLReiGJTqpb06wVivTJZQ=
+X-Google-Smtp-Source: APiQypLh+DQtRvRShV5urHKpQIWQgY1sdAMBTcs8jaJl8+gJRWqQQvBc54o/x6gyjiNkow+JssEiMA==
+X-Received: by 2002:a5d:5224:: with SMTP id i4mr23837459wra.1.1587471402031;
+ Tue, 21 Apr 2020 05:16:42 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.46
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:47 -0700 (PDT)
+ Tue, 21 Apr 2020 05:16:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -62,10 +62,9 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 10/17] hw/misc/bcm2835_thermal: Hold the temperature in
- the device state
-Date: Tue, 21 Apr 2020 14:16:19 +0200
-Message-Id: <20200421121626.23791-11-f4bug@amsat.org>
+Subject: [RFC PATCH 07/17] hw/misc/tmp421: Extract get_temp_mC() helper
+Date: Tue, 21 Apr 2020 14:16:16 +0200
+Message-Id: <20200421121626.23791-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
 References: <20200421121626.23791-1-f4bug@amsat.org>
@@ -73,12 +72,12 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::444
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,87 +89,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Apr 2020 12:16:56 -0000
+X-List-Received-Date: Tue, 21 Apr 2020 12:17:00 -0000
 
-We are going to modify this variable, move it to the device state.
+Since we are going to reuse this code, extract it first.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/bcm2835_thermal.h |  1 +
- hw/misc/bcm2835_thermal.c         | 18 +++++++++++++-----
- 2 files changed, 14 insertions(+), 5 deletions(-)
+ hw/misc/tmp421.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/misc/bcm2835_thermal.h b/include/hw/misc/bcm2835_thermal.h
-index c3651b27ec..df6a7b86c3 100644
---- a/include/hw/misc/bcm2835_thermal.h
-+++ b/include/hw/misc/bcm2835_thermal.h
-@@ -22,6 +22,7 @@ typedef struct {
-     /*< public >*/
-     MemoryRegion iomem;
-     uint32_t ctl;
-+    float64 temp;
- } Bcm2835ThermalState;
+diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
+index 04c3b3ca6e..8003356307 100644
+--- a/hw/misc/tmp421.c
++++ b/hw/misc/tmp421.c
+@@ -112,12 +112,19 @@ typedef struct TMP421Class {
+ static const int32_t mins[2] = { -40000, -55000 };
+ static const int32_t maxs[2] = { 127000, 150000 };
  
- #endif
-diff --git a/hw/misc/bcm2835_thermal.c b/hw/misc/bcm2835_thermal.c
-index c6f3b1ad60..6ee149de20 100644
---- a/hw/misc/bcm2835_thermal.c
-+++ b/hw/misc/bcm2835_thermal.c
-@@ -32,7 +32,7 @@ FIELD(STAT, INTERRUPT, 11, 1)
- #define THERMAL_OFFSET_C 412
- #define THERMAL_COEFF  (-0.538f)
- 
--static uint16_t bcm2835_thermal_temp2adc(int temp_C)
-+static uint16_t bcm2835_thermal_temp2adc(float64 temp_C)
- {
-     return (temp_C - THERMAL_OFFSET_C) / THERMAL_COEFF;
- }
-@@ -47,8 +47,7 @@ static uint64_t bcm2835_thermal_read(void *opaque, hwaddr addr, unsigned size)
-         val = s->ctl;
-         break;
-     case A_STAT:
--        /* Temperature is constantly 25°C. */
--        val = FIELD_DP32(bcm2835_thermal_temp2adc(25), STAT, VALID, true);
-+        val = FIELD_DP32(bcm2835_thermal_temp2adc(s->temp), STAT, VALID, true);
-         break;
-     default:
-         /* MemoryRegionOps are aligned, so this can not happen. */
-@@ -85,6 +84,13 @@ static const MemoryRegionOps bcm2835_thermal_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
-+static void bcm2835_thermal_init(Object *obj)
++static int64_t get_temp_mC(TMP421State *s, unsigned int id)
 +{
-+    Bcm2835ThermalState *s = BCM2835_THERMAL(obj);
++    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
++    int offset = ext_range * 64 * 256;
 +
-+    s->temp = 25.0;
++    assert(id < SENSORS_COUNT);
++
++    return ((s->temperature[id] - offset) * 1000 + 128) / 256;
 +}
 +
- static void bcm2835_thermal_reset(DeviceState *dev)
+ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
+                                    void *opaque, Error **errp)
  {
-     Bcm2835ThermalState *s = BCM2835_THERMAL(dev);
-@@ -103,10 +109,11 @@ static void bcm2835_thermal_realize(DeviceState *dev, Error **errp)
+-    TMP421State *s = TMP421(obj);
+-    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
+-    int offset = ext_range * 64 * 256;
+     int64_t value;
+     int tempid;
  
- static const VMStateDescription bcm2835_thermal_vmstate = {
-     .name = "bcm2835_thermal",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(ctl, Bcm2835ThermalState),
-+        VMSTATE_FLOAT64(temp, Bcm2835ThermalState),
-         VMSTATE_END_OF_LIST()
+@@ -131,7 +138,7 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
+         return;
      }
- };
-@@ -124,6 +131,7 @@ static const TypeInfo bcm2835_thermal_info = {
-     .name = TYPE_BCM2835_THERMAL,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(Bcm2835ThermalState),
-+    .instance_init = bcm2835_thermal_init,
-     .class_init = bcm2835_thermal_class_init,
- };
  
+-    value = ((s->temperature[tempid] - offset) * 1000 + 128) / 256;
++    value = get_temp_mC(TMP421(obj), tempid);
+ 
+     visit_type_int(v, name, &value, errp);
+ }
 -- 
 2.21.1
 
