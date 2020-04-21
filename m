@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQrpx-000614-70
+	id 1jQrpx-00061V-D6
 	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:17:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59446)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59454)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpu-0005wg-IV
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:10 -0400
+ id 1jQrpv-0005xm-2N
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpt-00074t-PC
+ id 1jQrpu-00077Z-Mi
  for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:10 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39043)
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46460)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpi-0006dA-SF; Tue, 21 Apr 2020 08:16:59 -0400
-Received: by mail-wm1-x343.google.com with SMTP id y24so3411611wma.4;
- Tue, 21 Apr 2020 05:16:55 -0700 (PDT)
+ id 1jQrpp-0006xF-LR; Tue, 21 Apr 2020 08:17:06 -0400
+Received: by mail-wr1-x444.google.com with SMTP id f13so16187768wrm.13;
+ Tue, 21 Apr 2020 05:17:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6IZGXEDwfoPtCg1GsMDYigPQKwJxDM34TttvkoqeAQE=;
- b=cld4TGjXlImqH0i0Lx9y7Jn/yVaEqLd0qkfCoCKNfcIqctdkFSoFFTgxOLZY3AffYE
- FM0xjenwG0+N2/SINbmuvXhTOZ5hgHiS3GCsDLDCSCs5rUtDDVUNzrFbvSZDdvAoFZkJ
- s5VlXJwhMC9Zp8/Gc3IZx3lmB07cvvxXqgnjRd+aIEeXPU/mmsgh4KD8JWi3MN1n/dEg
- aLYTAId3WRlgFST9uUntla4IdEFECOezHme9rdd346di9T+O2W5fOMPdEoNe68xFN1qn
- MCngY4a0nPnfTcGXcmms+7RMTlwyJArgcc8I5KWTZMJi1Gk7qpT+plwkrgQyJyo/lCso
- TVsw==
+ bh=6G+yfsnGl0+FoI1DVe5nG84rFUeB4gMvQlTXCcmvbGo=;
+ b=P28zWxOhgj/kk2eFtgcOogIrmHhqvdVkBUxEqOBLZDSXbJR4aDlGb6OJRXrE+ucTJh
+ /mRlRhNA6dRmFOJMVJfv5MFOCzuDlgPN3+gR2Ou1oquTSOnc3Rrd8oL87UrZnZmeTbJm
+ JPqyRT7CxAnKjbn0EVfscA2FmaiFc4LEtUt93YLVIk4+XJfZTa2p+wUFebt7BtuLi1NN
+ rZ8GSu823RJfkTcNOF4vbJkDeN2wx0uqeCi5rGee15YV2zBbGnXIIOUF7JEdE6IhzVVg
+ ZoSBdKfiwpRkGXnWXC31/fvc0FCVJ3ETFghWKoHX+UrENu+gEQlM08Ei1Vt3V3PNnZfp
+ U3Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=6IZGXEDwfoPtCg1GsMDYigPQKwJxDM34TttvkoqeAQE=;
- b=kNYFgg49V+SwKvM5GKgDgMJtF/5zZvZakvvD7OGX+sNNmB6j4JMvPifnnrp9eMiAg/
- tx5rlx+baSJTbxyElZu0HQr98Ii/7Tfx0GmNxUZaaHZ3w2tN2I91LXGaF5fwfVPquq9A
- QAJiSkO4Ye0SaBCYMV4fil8KrqT53s1O3GWDiSeYBh15QUWMGojJ2SfzPpNPa4AjJiJi
- rwYOmpXcfZg9hEWfMYvlEZ8tIFti4rlcCfZcoEq9iPyAzksVfNvz2ZLxLMldsSF4dEVu
- /Y2xlMe5X3ndihXQFyyFxu1vMmAVYH6RK+YxtpZfRaaZUICC81YUAM1Rvp5Ffmkm6NNT
- X3xQ==
-X-Gm-Message-State: AGi0PuZYhHwD4vG7byIli6vmqmfMSsk+opkGYatm34GFqGA3FZhzvW5j
- lqpX+uroa3TdKyZ4zwxsD9Rwf5kDynA=
-X-Google-Smtp-Source: APiQypKkBl6/Wv7/xjSPwC6+whbKMyjIMWK75D5sxM+69/jcpVqMC5dEkTNbIVRKSahKpmd3K+c8BQ==
-X-Received: by 2002:a05:600c:2c04:: with SMTP id
- q4mr4410317wmg.7.1587471414039; 
- Tue, 21 Apr 2020 05:16:54 -0700 (PDT)
+ bh=6G+yfsnGl0+FoI1DVe5nG84rFUeB4gMvQlTXCcmvbGo=;
+ b=J+R47HTsYSC8ZgG6p/N4miLx59onvvZ8xOupaQSaH8cGlA03arjOB9GRn7ga0igM48
+ FZMbfBcljbeAHuOmtcjMsT9dSZ8pnmfxi6nU1wpDfI//tQXYd16KRYHSKXXhjgpxLFc1
+ OCTnJ8W2Uc3bcyfeOjX3S7SlUMlf4sxwNouZtQDobetFCvAEZ1lGrczRgc2DT5lCYeIG
+ cH2wooYlHjvOPJg3GEHVnVS1bP8WUYARbE+YU2SrEB2ZJJB6fTKEvRNmVijMoWsA9dcg
+ 2J/HkyXJssiVwDGqUoRm3KMoLTBY4oqJQBnBRmcCi7lWGp1TR/7PFZSgUaw+hxsR0D7W
+ SKeg==
+X-Gm-Message-State: AGi0PuZ9CcROhWC+2lAnPa7vZjOqVw9BQ16rhB412Y9gypTZcfbx4DPT
+ 7n1NxOp9YVv4s67cIMnumL6ZUudY1eY=
+X-Google-Smtp-Source: APiQypLT0kV7SUOMIsBIsPVtCVbLNbao9Mr8xhh/jELgIudFntr1gJk2fR+ozPEYlGZHrd/C8V+QMg==
+X-Received: by 2002:a5d:65cb:: with SMTP id e11mr23542319wrw.402.1587471421434; 
+ Tue, 21 Apr 2020 05:17:01 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.52
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:53 -0700 (PDT)
+ Tue, 21 Apr 2020 05:17:00 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -63,10 +62,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 13/17] hw/misc/bcm2835_property: Implement the
- 'temperature-sensor' interface
-Date: Tue, 21 Apr 2020 14:16:22 +0200
-Message-Id: <20200421121626.23791-14-f4bug@amsat.org>
+Subject: [RFC PATCH 17/17] tests/qtest/tmp105-test: Trivial test for
+ TempSensorClass
+Date: Tue, 21 Apr 2020 14:16:26 +0200
+Message-Id: <20200421121626.23791-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
 References: <20200421121626.23791-1-f4bug@amsat.org>
@@ -74,12 +73,12 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::343
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,83 +92,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 21 Apr 2020 12:17:11 -0000
 
-The BCM2835 'property' QEMU device models the serialized responses
-from the VideoCore firmware. As we can query the VC for its current
-temperatyre, let this model implement the 'temperature-sensor'
-interface.
+The qmp_tmp105_set_temperature() call will trigger
+TempSensorClass::set_temperature(), then hmp_info_temperature()
+triggers TempSensorClass::get_temperature().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/bcm2835_property.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ tests/qtest/tmp105-test.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index bbe80affd4..dd1e9a2e03 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -12,6 +12,7 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
-+#include "hw/misc/temp-sensor.h"
- #include "sysemu/dma.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-@@ -372,6 +373,27 @@ static const VMStateDescription vmstate_bcm2835_property = {
-     }
- };
- 
-+static const char *bcm2835_property_get_temp_sensor_name(TempSensor *obj,
-+                                                         unsigned sensor_id)
-+{
-+    return "videocore";
-+}
-+
-+static float bcm2835_property_get_temp(TempSensor *obj, unsigned sensor_id)
-+{
-+    BCM2835PropertyState *s = BCM2835_PROPERTY(obj);
-+
-+    return s->temp_mC / 1000;
-+}
-+
-+static void bcm2835_property_set_temp(TempSensor *obj, unsigned sensor_id,
-+                                      float temp_C, Error **errp)
-+{
-+    BCM2835PropertyState *s = BCM2835_PROPERTY(obj);
-+
-+    s->temp_mC = temp_C * 1000;
-+}
-+
- static void bcm2835_property_init(Object *obj)
- {
-     BCM2835PropertyState *s = BCM2835_PROPERTY(obj);
-@@ -429,10 +451,15 @@ static Property bcm2835_property_props[] = {
- static void bcm2835_property_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    TempSensorClass *tc = TEMPSENSOR_INTERFACE_CLASS(klass);
- 
-     device_class_set_props(dc, bcm2835_property_props);
-     dc->realize = bcm2835_property_realize;
-     dc->vmsd = &vmstate_bcm2835_property;
-+    tc->sensor_count = 1;
-+    tc->get_name = bcm2835_property_get_temp_sensor_name;
-+    tc->set_temperature = bcm2835_property_set_temp;
-+    tc->get_temperature = bcm2835_property_get_temp;
+diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
+index f930a96b83..db7e505cbe 100644
+--- a/tests/qtest/tmp105-test.c
++++ b/tests/qtest/tmp105-test.c
+@@ -41,11 +41,26 @@ static void qmp_tmp105_set_temperature(const char *id, int value)
+     qobject_unref(response);
  }
  
- static TypeInfo bcm2835_property_info = {
-@@ -441,6 +468,10 @@ static TypeInfo bcm2835_property_info = {
-     .instance_size = sizeof(BCM2835PropertyState),
-     .class_init    = bcm2835_property_class_init,
-     .instance_init = bcm2835_property_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_TEMPSENSOR_INTERFACE },
-+        { }
-+    },
- };
++static char *hmp_info_temperature(const char *id)
++{
++    QDict *response;
++    char *output;
++
++    response = qmp("{'execute': 'human-monitor-command',"
++                   " 'arguments': {'command-line': 'info temp'}}");
++    g_assert(qdict_haskey(response, "return"));
++    output = g_strdup(qdict_get_try_str(response, "return"));
++    qobject_unref(response);
++
++    return output;
++}
++
+ #define TMP105_PRECISION (1000/16)
+ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
+ {
+     uint16_t value;
+     QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    g_autofree char *s = NULL;
  
- static void bcm2835_property_register_types(void)
+     value = qmp_tmp105_get_temperature(TMP105_TEST_ID);
+     g_assert_cmpuint(value, ==, 0);
+@@ -56,6 +71,9 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
+     qmp_tmp105_set_temperature(TMP105_TEST_ID, 20000);
+     value = qmp_tmp105_get_temperature(TMP105_TEST_ID);
+     g_assert_cmpuint(value, ==, 20000);
++    /* Test TempSensorClass via 'info temp' */
++    s = hmp_info_temperature(TMP105_TEST_ID);
++    g_assert(strstr(s, "tmp105-0                           20.00"));
+ 
+     value = i2c_get16(i2cdev, TMP105_REG_TEMPERATURE);
+     g_assert_cmphex(value, ==, 0x1400);
 -- 
 2.21.1
 
