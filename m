@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQvk0-0000uQ-1e
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 12:27:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55314)
+	id 1jQxCN-00070P-4I
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 14:00:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39986)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jQvjx-0000p7-Lo
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:18 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jQxCM-0006zi-2I
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 14:00:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jQvjw-0007YM-Me
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:17 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30850
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <dgilbert@redhat.com>) id 1jQxCL-0004DX-2X
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 14:00:41 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:52334
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jQvjw-0007Wh-96
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:16 -0400
+ id 1jQxCK-0004Ch-K8
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 14:00:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587486434;
+ s=mimecast20190719; t=1587492039;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u3RIyp3k3WY4ae/Nr/nbgqE/rLJHMav9wSoI3NqDtmU=;
- b=TMUatleXBs+lCrwJrXD8GQaJPP952gP7A7NbLxVUM1Yip49uOr842wAdORPa5cUNs06XxW
- fRMQ7a+l7Uyj9YRj8/Ly4vW0HAdooFq/jT4JXF8duTGwlPzv+WcSmHYatPtX2aQ2waYgeJ
- EABI0ukLmJW4wtdxQZdUVQrPa+35Hdg=
+ bh=xwpNrYKj/zzgQ1bzbyDvID/w73eI2bj4wJvZ0HwZmO0=;
+ b=JgMbZLnlxDty/NRff9UogF7ljURDt8Ci+sZpo2hTC9TQBVr02T+9Sefs0n/XhCCZyHx2b5
+ 9uL23zCXx/rXQyymblbiuyN5xa+TCJ/ezBOva0o+5hXsGDkjYvYEBKwuYi7TMgZofmrbvT
+ xO+EwRvkGRfK9B+TNLdaesgAOlYEsFo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-HkqSt9wxO8--ome4KF4Szw-1; Tue, 21 Apr 2020 12:27:12 -0400
-X-MC-Unique: HkqSt9wxO8--ome4KF4Szw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-483-aB9XF869Mta-plaDVrrYDw-1; Tue, 21 Apr 2020 14:00:35 -0400
+X-MC-Unique: aB9XF869Mta-plaDVrrYDw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 44D77DB23;
- Tue, 21 Apr 2020 16:27:11 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE8F2107ACC7;
+ Tue, 21 Apr 2020 18:00:30 +0000 (UTC)
 Received: from work-vm (ovpn-115-8.ams2.redhat.com [10.36.115.8])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C53A960C63;
- Tue, 21 Apr 2020 16:27:07 +0000 (UTC)
-Date: Tue, 21 Apr 2020 17:27:05 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 307161001B09;
+ Tue, 21 Apr 2020 18:00:26 +0000 (UTC)
+Date: Tue, 21 Apr 2020 19:00:24 +0100
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
@@ -50,25 +50,24 @@ Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <lvivier@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
-Subject: Re: [RFC PATCH 02/17] hw/misc/temp-sensor: Add
- 'query-temperature-sensors' QMP command
-Message-ID: <20200421162705.GJ3029@work-vm>
+Subject: Re: [RFC PATCH 03/17] hw/misc/temp-sensor: Add 'info temp' HMP command
+Message-ID: <20200421180024.GL3029@work-vm>
 References: <20200421121626.23791-1-f4bug@amsat.org>
- <20200421121626.23791-3-f4bug@amsat.org>
+ <20200421121626.23791-4-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200421121626.23791-3-f4bug@amsat.org>
+In-Reply-To: <20200421121626.23791-4-f4bug@amsat.org>
 User-Agent: Mutt/1.13.4 (2020-02-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 01:28:51
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 04:54:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,133 +79,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Apr 2020 16:27:18 -0000
+X-List-Received-Date: Tue, 21 Apr 2020 18:00:42 -0000
 
 * Philippe Mathieu-Daud=E9 (f4bug@amsat.org) wrote:
-> Add a command to query current temperature from all sensors able
-> to report it:
+> Add a command to display current devices temperature in the monitor:
 >=20
->   { "execute": "query-temperature-sensors" }
->   {
->       "return": [
->           {
->               "temperature": 25,
->               "name": "videocore"
->           },
->           {
->               "temperature": 25,
->               "name": "bcm2835-thermal-0"
->           }
->       ]
->   }
+>   (qemu) info temp
+>   Temperatures (in C):
+>   videocore                          25.00
+>   bcm2835-thermal-0                  25.00
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+
+How do I set the temperature?
+
 > ---
->  qapi/misc.json        | 24 ++++++++++++++++++++++
->  hw/misc/temp-sensor.c | 48 +++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 72 insertions(+)
+>  include/monitor/hmp.h |  1 +
+>  hw/misc/temp-sensor.c | 29 +++++++++++++++++++++++++++++
+>  hmp-commands-info.hx  | 11 +++++++++++
+>  3 files changed, 41 insertions(+)
 >=20
-> diff --git a/qapi/misc.json b/qapi/misc.json
-> index 99b90ac80b..51881931e2 100644
-> --- a/qapi/misc.json
-> +++ b/qapi/misc.json
-> @@ -1550,3 +1550,27 @@
->  ##
->  { 'command': 'query-vm-generation-id', 'returns': 'GuidInfo' }
+> diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
+> index e33ca5a911..f023230bd1 100644
+> --- a/include/monitor/hmp.h
+> +++ b/include/monitor/hmp.h
+> @@ -129,5 +129,6 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict =
+*qdict);
+>  void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict);
+>  void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict);
+>  void hmp_info_sev(Monitor *mon, const QDict *qdict);
+> +void hmp_info_temp(Monitor *mon, const QDict *qdict);
 > =20
-> +##
-> +# @TemperatureSensor:
-> +#
-> +# Temperature sensor information.
-> +#
-> +# @name: the name of the sensor
-> +#
-> +# @temperature: the current temperature of the sensor (in C)
-> +#
-> +# Since: 5.1
-> +##
-> +{ 'struct': 'TemperatureSensor',
-> +  'data': { 'name': 'str',
-> +            'temperature': 'number' } }
-> +
-> +##
-> +# @query-temperature-sensors:
-> +#
-> +# Return a list of TemperatureSensor for devices that support
-> +# the TYPE_TEMPSENSOR_INTERFACE.
-> +#
-> +# Since: 5.1
-> +##
-> +{ 'command': 'query-temperature-sensors', 'returns': ['TemperatureSensor=
-']}
+>  #endif
 > diff --git a/hw/misc/temp-sensor.c b/hw/misc/temp-sensor.c
-> index b7c1eb2d87..27750c533d 100644
+> index 27750c533d..5f591bd9c3 100644
 > --- a/hw/misc/temp-sensor.c
 > +++ b/hw/misc/temp-sensor.c
-> @@ -10,6 +10,54 @@
-> =20
->  #include "qemu/osdep.h"
+> @@ -12,6 +12,8 @@
 >  #include "hw/misc/temp-sensor.h"
-> +#include "qapi/qapi-commands-misc.h"
-> +#include "qapi/error.h"
-> +
-> +static int query_temperature_sensors_foreach(Object *obj, void *opaque)
+>  #include "qapi/qapi-commands-misc.h"
+>  #include "qapi/error.h"
+> +#include "monitor/monitor.h"
+> +#include "monitor/hmp.h"
+> =20
+>  static int query_temperature_sensors_foreach(Object *obj, void *opaque)
+>  {
+> @@ -59,6 +61,33 @@ TemperatureSensorList *qmp_query_temperature_sensors(E=
+rror **errp)
+>      return list;
+>  }
+> =20
+> +void hmp_info_temp(Monitor *mon, const QDict *qdict)
 > +{
-> +    TemperatureSensorList **list =3D opaque;
-> +    TempSensor *sensor;
-> +    TempSensorClass *k;
+> +    TemperatureSensorList *list, *sensor;
+> +    Error *err =3D NULL;
 > +
-> +    if (!object_dynamic_cast(obj, TYPE_TEMPSENSOR_INTERFACE)) {
-> +        return 0;
+> +    list =3D qmp_query_temperature_sensors(&err);
+> +    if (!list) {
+> +        monitor_printf(mon, "No temperature sensors\n");
+> +        return;
 > +    }
-> +
-> +    k =3D TEMPSENSOR_INTERFACE_GET_CLASS(obj);
-> +    if (!k->get_temperature) {
-> +        return 0;
-> +    }
-> +
-> +    sensor =3D TEMPSENSOR_INTERFACE(obj);
-> +    for (size_t i =3D 0; i < k->sensor_count; i++) {
-> +        TemperatureSensorList *info =3D g_malloc0(sizeof(*info));
-> +        TemperatureSensor *value =3D g_malloc0(sizeof(*value));
-> +
-> +        if (k->get_name) {
-> +            value->name =3D g_strdup(k->get_name(sensor, i));
-> +        } else {
-> +            value->name =3D g_strdup_printf("%s-%zu",
-> +                                          object_get_typename(obj), i);
-> +        }
+> +    if (err) {
+> +        monitor_printf(mon, "Error while getting temperatures: %s\n",
+> +                       error_get_pretty(err));
+> +        error_free(err);
 
-How do the names work if you've got multiple of the same device; e.g.
-is the get_name() method supposed to return the device path as well as
-the sensor name?  if I have an emulated PCI device with two sensors on
-and I then instantiate two of the PCI devices, do I get a name with the
-PCI path in?
+Maybe use hmp_handle_error
+
+> +        goto out;
+> +    }
+> +
+> +    monitor_printf(mon, "Temperatures (in C):\n");
+> +    for (sensor =3D list; sensor; sensor =3D sensor->next) {
+> +        monitor_printf(mon, "%-33s %6.2f\n", sensor->value->name,
+> +                       sensor->value->temperature);
+
+See my question on the earlier patch; I'm curious here whether we want
+device name, and then subname within that device.
 
 Dave
 
-> +        value->temperature =3D k->get_temperature(sensor, i);
-> +
-> +        info->value =3D value;
-> +        info->next =3D *list;
-> +        *list =3D info;
 > +    }
 > +
-> +    return 0;
+> +out:
+> +    qapi_free_TemperatureSensorList(list);
 > +}
 > +
-> +TemperatureSensorList *qmp_query_temperature_sensors(Error **errp)
-> +{
-> +    TemperatureSensorList *list =3D NULL;
-> +
-> +    object_child_foreach_recursive(object_get_root(),
-> +                                   query_temperature_sensors_foreach,
-> +                                   &list);
-> +    return list;
-> +}
-> =20
 >  static TypeInfo tempsensor_interface_type_info =3D {
 >      .name =3D TYPE_TEMPSENSOR_INTERFACE,
+>      .parent =3D TYPE_INTERFACE,
+> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
+> index ca5198438d..77f1c43ce3 100644
+> --- a/hmp-commands-info.hx
+> +++ b/hmp-commands-info.hx
+> @@ -880,4 +880,15 @@ SRST
+>      Show SEV information.
+>  ERST
+> =20
+> +    {
+> +        .name       =3D "temp",
+> +        .args_type  =3D "",
+> +        .params     =3D "",
+> +        .help       =3D "show device temperatures",
+> +        .cmd        =3D hmp_info_temp,
+> +    },
+> =20
+> +SRST
+> +  ``info temp``
+> +    Show device temperatures.
+> +ERST
 > --=20
 > 2.21.1
 >=20
