@@ -1,84 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQrq0-00068a-JC
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:17:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59474)
+	id 1jQvk0-0000uQ-1e
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 12:27:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55314)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpy-00063X-AW
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:14 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jQvjx-0000p7-Lo
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrps-00072m-Db
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:14 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55865)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpn-0006tX-1C; Tue, 21 Apr 2020 08:17:03 -0400
-Received: by mail-wm1-x343.google.com with SMTP id e26so3291642wmk.5;
- Tue, 21 Apr 2020 05:17:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=v/VKNfTk/p6cUWVFeTBWVu5kpM3OkAcXwfifz7UuQ5M=;
- b=YouLP0jXEAwMPe2IYglMiWmL9ZNdMl1jFFNZvPxXV7HCv4BEqup6xWUhJoKEYVUydY
- 5WYdzdNS/qEFld2XJsV4xkR02HPF9WCTRUAljClMYnGrfnJQEHzt8OFkeQLqWAe0bGf8
- IX2/pab2ZiLgwWCMLXP0pkyWKqciysHH0BCeraxfvqZ4aycioXFhQjlxtZ1z4Y+XGT/+
- cMHbZGH2ichhFCbf7qNQxIzqI2LtocnYz7nHRBcEtBbg95d91u4Qr4pPB8dJsfzZ6rfM
- l0SE27oWnH3BUrymC7oX+5lGbcH/APYcNt75c82TwkmgiSjuw6bKBdHO566J8woXg5It
- 8+Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=v/VKNfTk/p6cUWVFeTBWVu5kpM3OkAcXwfifz7UuQ5M=;
- b=rVEEEznTW0gPOFE/upSYQz6BvkbwjQYO1Bli1efFQrFHS5rG+Hg/mGJ5Mk/NeKveM4
- FXn2Q7epHWFHfWZPB2G/U9Ns1lh4LKB10Ju6I+Jnzpxu1F8lbUit7ZtmOK6U0T6CNrbT
- opdm34NqawjYR+CXLUYGRrS8s0rHaLmJrFgEGCbEbMYb8SQYY7m0+3UZX+3lz75LSxjF
- v3FbOW/tjX/poI+X8LPPTe/VmtR18ZJ9d6qzfUUJDC3OaYkJ+Pn0dWQJedbB7ILW18dR
- Tz3utcaqPAzS0AbKiO031yhwvDoCuB0L6hNlcEqHVXtbRxof95MbAVnGia/82kuWCSv1
- 4DAA==
-X-Gm-Message-State: AGi0PuYLDknkLcA/eMs5bFmTGbqSbGRaPZMdbRPF/nWmNHpZ2A/xbi49
- m/hG1EUnL0xV6SVbo7WnPoykZVeZRZw=
-X-Google-Smtp-Source: APiQypJ+CajEavIA6cRjLXp4Jv4QccTdur7j7ltn/UDE0eCtkhmhD9mjHBFwYBa4QPcIipljBySG6w==
-X-Received: by 2002:a1c:f416:: with SMTP id z22mr4666667wma.32.1587471419716; 
- Tue, 21 Apr 2020 05:16:59 -0700 (PDT)
-Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:59 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ (envelope-from <dgilbert@redhat.com>) id 1jQvjw-0007YM-Me
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:17 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30850
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jQvjw-0007Wh-96
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 12:27:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587486434;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=u3RIyp3k3WY4ae/Nr/nbgqE/rLJHMav9wSoI3NqDtmU=;
+ b=TMUatleXBs+lCrwJrXD8GQaJPP952gP7A7NbLxVUM1Yip49uOr842wAdORPa5cUNs06XxW
+ fRMQ7a+l7Uyj9YRj8/Ly4vW0HAdooFq/jT4JXF8duTGwlPzv+WcSmHYatPtX2aQ2waYgeJ
+ EABI0ukLmJW4wtdxQZdUVQrPa+35Hdg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-367-HkqSt9wxO8--ome4KF4Szw-1; Tue, 21 Apr 2020 12:27:12 -0400
+X-MC-Unique: HkqSt9wxO8--ome4KF4Szw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 44D77DB23;
+ Tue, 21 Apr 2020 16:27:11 +0000 (UTC)
+Received: from work-vm (ovpn-115-8.ams2.redhat.com [10.36.115.8])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C53A960C63;
+ Tue, 21 Apr 2020 16:27:07 +0000 (UTC)
+Date: Tue, 21 Apr 2020 17:27:05 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
  qemu-block@nongnu.org, Thomas Huth <thuth@redhat.com>,
  qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 16/17] hw/misc/imx6ul_ccm: Implement the
- 'temperature-sensor' qdev interface
-Date: Tue, 21 Apr 2020 14:16:25 +0200
-Message-Id: <20200421121626.23791-17-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Subject: Re: [RFC PATCH 02/17] hw/misc/temp-sensor: Add
+ 'query-temperature-sensors' QMP command
+Message-ID: <20200421162705.GJ3029@work-vm>
 References: <20200421121626.23791-1-f4bug@amsat.org>
+ <20200421121626.23791-3-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::343
+In-Reply-To: <20200421121626.23791-3-f4bug@amsat.org>
+User-Agent: Mutt/1.13.4 (2020-02-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 01:28:51
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,56 +80,137 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Apr 2020 12:17:15 -0000
+X-List-Received-Date: Tue, 21 Apr 2020 16:27:18 -0000
 
-The IMX6UL Clock Control Module can report few temperatures.
-While the model doesn't implement it, we can still let it
-implement the 'temperature-sensor' interface.
+* Philippe Mathieu-Daud=E9 (f4bug@amsat.org) wrote:
+> Add a command to query current temperature from all sensors able
+> to report it:
+>=20
+>   { "execute": "query-temperature-sensors" }
+>   {
+>       "return": [
+>           {
+>               "temperature": 25,
+>               "name": "videocore"
+>           },
+>           {
+>               "temperature": 25,
+>               "name": "bcm2835-thermal-0"
+>           }
+>       ]
+>   }
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> ---
+>  qapi/misc.json        | 24 ++++++++++++++++++++++
+>  hw/misc/temp-sensor.c | 48 +++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 72 insertions(+)
+>=20
+> diff --git a/qapi/misc.json b/qapi/misc.json
+> index 99b90ac80b..51881931e2 100644
+> --- a/qapi/misc.json
+> +++ b/qapi/misc.json
+> @@ -1550,3 +1550,27 @@
+>  ##
+>  { 'command': 'query-vm-generation-id', 'returns': 'GuidInfo' }
+> =20
+> +##
+> +# @TemperatureSensor:
+> +#
+> +# Temperature sensor information.
+> +#
+> +# @name: the name of the sensor
+> +#
+> +# @temperature: the current temperature of the sensor (in C)
+> +#
+> +# Since: 5.1
+> +##
+> +{ 'struct': 'TemperatureSensor',
+> +  'data': { 'name': 'str',
+> +            'temperature': 'number' } }
+> +
+> +##
+> +# @query-temperature-sensors:
+> +#
+> +# Return a list of TemperatureSensor for devices that support
+> +# the TYPE_TEMPSENSOR_INTERFACE.
+> +#
+> +# Since: 5.1
+> +##
+> +{ 'command': 'query-temperature-sensors', 'returns': ['TemperatureSensor=
+']}
+> diff --git a/hw/misc/temp-sensor.c b/hw/misc/temp-sensor.c
+> index b7c1eb2d87..27750c533d 100644
+> --- a/hw/misc/temp-sensor.c
+> +++ b/hw/misc/temp-sensor.c
+> @@ -10,6 +10,54 @@
+> =20
+>  #include "qemu/osdep.h"
+>  #include "hw/misc/temp-sensor.h"
+> +#include "qapi/qapi-commands-misc.h"
+> +#include "qapi/error.h"
+> +
+> +static int query_temperature_sensors_foreach(Object *obj, void *opaque)
+> +{
+> +    TemperatureSensorList **list =3D opaque;
+> +    TempSensor *sensor;
+> +    TempSensorClass *k;
+> +
+> +    if (!object_dynamic_cast(obj, TYPE_TEMPSENSOR_INTERFACE)) {
+> +        return 0;
+> +    }
+> +
+> +    k =3D TEMPSENSOR_INTERFACE_GET_CLASS(obj);
+> +    if (!k->get_temperature) {
+> +        return 0;
+> +    }
+> +
+> +    sensor =3D TEMPSENSOR_INTERFACE(obj);
+> +    for (size_t i =3D 0; i < k->sensor_count; i++) {
+> +        TemperatureSensorList *info =3D g_malloc0(sizeof(*info));
+> +        TemperatureSensor *value =3D g_malloc0(sizeof(*value));
+> +
+> +        if (k->get_name) {
+> +            value->name =3D g_strdup(k->get_name(sensor, i));
+> +        } else {
+> +            value->name =3D g_strdup_printf("%s-%zu",
+> +                                          object_get_typename(obj), i);
+> +        }
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/imx6ul_ccm.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+How do the names work if you've got multiple of the same device; e.g.
+is the get_name() method supposed to return the device path as well as
+the sensor name?  if I have an emulated PCI device with two sensors on
+and I then instantiate two of the PCI devices, do I get a name with the
+PCI path in?
 
-diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
-index a2fc1d0364..2711cdaf09 100644
---- a/hw/misc/imx6ul_ccm.c
-+++ b/hw/misc/imx6ul_ccm.c
-@@ -16,6 +16,7 @@
- #include "hw/misc/imx6ul_ccm.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "hw/misc/temp-sensor.h"
- 
- #include "trace.h"
- 
-@@ -864,12 +865,14 @@ static void imx6ul_ccm_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
-+    TempSensorClass *tc = TEMPSENSOR_INTERFACE_CLASS(klass);
- 
-     dc->reset = imx6ul_ccm_reset;
-     dc->vmsd = &vmstate_imx6ul_ccm;
-     dc->desc = "i.MX6UL Clock Control Module";
- 
-     ccm->get_clock_frequency = imx6ul_ccm_get_clock_frequency;
-+    tc->sensor_count = 3;
- }
- 
- static const TypeInfo imx6ul_ccm_info = {
-@@ -878,6 +881,10 @@ static const TypeInfo imx6ul_ccm_info = {
-     .instance_size = sizeof(IMX6ULCCMState),
-     .instance_init = imx6ul_ccm_init,
-     .class_init    = imx6ul_ccm_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_TEMPSENSOR_INTERFACE },
-+        { }
-+    },
- };
- 
- static void imx6ul_ccm_register_types(void)
--- 
-2.21.1
+Dave
+
+> +        value->temperature =3D k->get_temperature(sensor, i);
+> +
+> +        info->value =3D value;
+> +        info->next =3D *list;
+> +        *list =3D info;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +TemperatureSensorList *qmp_query_temperature_sensors(Error **errp)
+> +{
+> +    TemperatureSensorList *list =3D NULL;
+> +
+> +    object_child_foreach_recursive(object_get_root(),
+> +                                   query_temperature_sensors_foreach,
+> +                                   &list);
+> +    return list;
+> +}
+> =20
+>  static TypeInfo tempsensor_interface_type_info =3D {
+>      .name =3D TYPE_TEMPSENSOR_INTERFACE,
+> --=20
+> 2.21.1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
