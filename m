@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQrpo-0005m0-Po
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:17:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59326)
+	id 1jQrpu-0005w5-Ct
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:17:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59414)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpk-0005fQ-Mh
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:01 -0400
+ id 1jQrps-0005rs-Ft
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpi-0006pe-Re
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:59 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34061)
+ id 1jQrps-000728-4Q
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:17:08 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36235)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpe-0006V0-JR; Tue, 21 Apr 2020 08:16:54 -0400
-Received: by mail-wm1-x342.google.com with SMTP id v4so2389855wme.1;
- Tue, 21 Apr 2020 05:16:53 -0700 (PDT)
+ id 1jQrpl-0006pL-3X; Tue, 21 Apr 2020 08:17:01 -0400
+Received: by mail-wm1-x342.google.com with SMTP id u127so3433073wmg.1;
+ Tue, 21 Apr 2020 05:16:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MYojzKJL3MzJX+X4CMNSUQHgAXt7TO+oqY6sRewqpC0=;
- b=fzVKn+D0xJbCPZzxfr5U2LpSjA4e1Y0zk1LtDoVL1TsYHRVgw0xYnPTsmuQLzlQAgW
- BX5BjKAf9yW34McU2o5Jr/EW38HwcUonDKiIt/ZUyALW5NT1a2/xJhILFAs1RgYDyHPr
- 3L65KM+7dS0/A3SQc8W53lPviMVGnBpPqQ6eQLRyLIDiIOha7YyU64KnyQ096unvROwW
- OyABNYsOcFBVJiZeCRXwsvU7FYLZ+C5Fl9ZJns290xdf+HpdmCr6xC3BSY7WNq2Y4e1w
- f1d0ntp9la7vUXrYpFxj0BNOCAq6tgEd6lNd3e0GgTPEaPRw1FWnvskEGDTLBJybPnPB
- Ik+g==
+ bh=zOrL0Bw2XAb9sksyQa2AaC8LCpCTMRMx/mgWehci6Rg=;
+ b=qvMWhnmPkerQAXKEyBEg3wcrkLbAxN5Gm+OCD5CFWHErRv5J9TMYMyH0RmeO0r8U7G
+ QQ8sOnefZQZ8ENHxkwTwCUSfd6YrQKTVrkfHJJMAvXt1t6nQOR2yvb/0LyK/ksTcXEVx
+ /RaDHNvEtxeL+LmcSafDOOpZtUFNXIajcwCypfZX14Zb7Q5VTHEVRKs0M4ZMrfMok+SE
+ tzMszs5Gkhxk1NvP8UFrLye5G66xtiLuGbuhE3YPTOwT8zKHJLi21G2ZrvpW/t1MJ3dA
+ 8b08MhvOzdXEQiN/U6hPfw0TMwQycQXQkb08FnTTb1UI49p96Psxh0KhNxmul7iU/OTn
+ mQbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=MYojzKJL3MzJX+X4CMNSUQHgAXt7TO+oqY6sRewqpC0=;
- b=loImYDtebiY4Uiv3C6D+EDYpECycvoU+VcasgoO1TwehOwJnjOE4rExDt7HOpG7+kK
- Evy16PXqMDCee03f1qMTIZ86KQZg75JErrA40cW4Q/Lvxk4ad4lfpBQ5YXP3eR3esQvC
- clM/QIOmcLUur+eW3+87SnXUutjjfntxq8upywE6VNIFESAkk/CnzpQOgNiQqkRn2pDw
- Fwk6P+SNc/ahugIX2IpHqykmCDzHB392YKgU6r2qDmfb+RxhSyAJvkxXs88r8wGbyGrt
- tlNWooAFT28CUUzhrmyOpptopEGl2z8z5vnE+lA8V6hR1hN5d76LDHOXq6P6aJLuksUS
- zCIQ==
-X-Gm-Message-State: AGi0PuaVnMbRL4OACjRDUEVnRimT5shBvoayurWlBDsMzKqA80qRbQ1v
- EeELzlhbv9AmuwdJ3XaYXKk8gCv0jXo=
-X-Google-Smtp-Source: APiQypLGUzA5fTPwIDwshylPJXVc2vLwZbwTc2zBEuIOwVWZEqL+BjA6yfsM/73YDpi4q3ZnYR9P3A==
-X-Received: by 2002:a1c:2dc7:: with SMTP id t190mr4368526wmt.129.1587471411914; 
- Tue, 21 Apr 2020 05:16:51 -0700 (PDT)
+ bh=zOrL0Bw2XAb9sksyQa2AaC8LCpCTMRMx/mgWehci6Rg=;
+ b=aFy2zNVAGdBdG0azm2ssoXUgy2T1fhfPQ5aCOSMfgf9JPqAO6BAhBqM3wQ0JVonTMo
+ V01zI6HSQUuX5G6ZJmhN0FrpGLPbWGbEF1X0ctiu1FKrVsndEKwXo6Vxw+XoqUzmJpMa
+ OKdU6iBbQ9pTYfAFuE3EV3k1YR8/HkKiFH7HA61R5HFGuzKia1e6C4TimYfYhISx9Abj
+ UVqoDhChFUIpmxjkIJ3ln1DCFETVoFKWIWAihV14ZOK/beboXIDfmxOa9WnFxBbY1oZY
+ GRoRL3r/XYNeqIrKuC3sa4UFgBbyiFTG3DnOnPErFFWbsZVuuZwIp3etD89kCpBRSWwj
+ 5eGw==
+X-Gm-Message-State: AGi0PuZs5l+RZE6CI/EBex6YCG3a9FoHXGJZuWzL6MC8Ws9Cv64kEQIz
+ 8/b8CIRbq3tPEohJw5/fCAZZaT0fVIk=
+X-Google-Smtp-Source: APiQypIYPDgFFpBFbwESXHwQ6Kj5g/rORzJTF60JCbZ+SPujuhkgh5XcYcVJIhSZF/Fa54CYeUTeKQ==
+X-Received: by 2002:a1c:3986:: with SMTP id g128mr4586515wma.8.1587471417858; 
+ Tue, 21 Apr 2020 05:16:57 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.50
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:51 -0700 (PDT)
+ Tue, 21 Apr 2020 05:16:57 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -62,10 +62,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 12/17] hw/misc/bcm2835_property: Hold the temperature in
- the device state
-Date: Tue, 21 Apr 2020 14:16:21 +0200
-Message-Id: <20200421121626.23791-13-f4bug@amsat.org>
+Subject: [RFC PATCH 15/17] hw/ide/qdev: Implement the 'temperature-sensor'
+ qdev interface
+Date: Tue, 21 Apr 2020 14:16:24 +0200
+Message-Id: <20200421121626.23791-16-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
 References: <20200421121626.23791-1-f4bug@amsat.org>
@@ -90,65 +90,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Apr 2020 12:17:02 -0000
+X-List-Received-Date: Tue, 21 Apr 2020 12:17:09 -0000
 
-We are going to modify this variable, move it to the device state.
+IDE drives exposing a SMART interface report the air flow
+temperature. Let them implement the 'temperature-sensor'
+interface.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/bcm2835_property.h | 1 +
- hw/misc/bcm2835_property.c         | 8 +++++---
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/ide/qdev.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
-index b321f22499..010ad39ed0 100644
---- a/include/hw/misc/bcm2835_property.h
-+++ b/include/hw/misc/bcm2835_property.h
-@@ -31,6 +31,7 @@ typedef struct {
-     uint32_t board_rev;
-     uint32_t addr;
-     bool pending;
-+    float64 temp_mC;
- } BCM2835PropertyState;
+diff --git a/hw/ide/qdev.c b/hw/ide/qdev.c
+index c22afdb8ee..144d6ab533 100644
+--- a/hw/ide/qdev.c
++++ b/hw/ide/qdev.c
+@@ -32,6 +32,7 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/runstate.h"
+ #include "qapi/visitor.h"
++#include "hw/misc/temp-sensor.h"
  
- #endif
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 3e228ca0ae..bbe80affd4 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -143,7 +143,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         /* Temperature */
+ /* --------------------------------- */
  
-         case 0x00030006: /* Get temperature */
--            stl_le_phys(&s->dma_as, value + 16, 25000);
-+            stl_le_phys(&s->dma_as, value + 16, s->temp_mC);
-             resplen = 8;
-             break;
+@@ -270,6 +271,12 @@ static void ide_dev_instance_init(Object *obj)
+     object_property_set_int(obj, -1, "bootindex", NULL);
+ }
  
-@@ -361,12 +361,13 @@ static const MemoryRegionOps bcm2835_property_ops = {
- 
- static const VMStateDescription vmstate_bcm2835_property = {
-     .name = TYPE_BCM2835_PROPERTY,
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields      = (VMStateField[]) {
-         VMSTATE_MACADDR(macaddr, BCM2835PropertyState),
-         VMSTATE_UINT32(addr, BCM2835PropertyState),
-         VMSTATE_BOOL(pending, BCM2835PropertyState),
-+        VMSTATE_FLOAT64(temp_mC, BCM2835PropertyState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -375,6 +376,7 @@ static void bcm2835_property_init(Object *obj)
++static float ide_hd_get_temp(TempSensor *obj, unsigned sensor_id)
++{
++    /* See airflow-temperature-celsius in smart_attributes[] */
++    return 100.f - 0x45;
++}
++
+ static void ide_hd_realize(IDEDevice *dev, Error **errp)
  {
-     BCM2835PropertyState *s = BCM2835_PROPERTY(obj);
+     ide_dev_initfn(dev, IDE_HD, errp);
+@@ -315,11 +322,14 @@ static void ide_hd_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     IDEDeviceClass *k = IDE_DEVICE_CLASS(klass);
++    TempSensorClass *tc = TEMPSENSOR_INTERFACE_CLASS(klass);
  
-+    s->temp_mC = 25e3;
-     memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_property_ops, s,
-                           TYPE_BCM2835_PROPERTY, 0x10);
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+     k->realize  = ide_hd_realize;
+     dc->fw_name = "drive";
+     dc->desc    = "virtual IDE disk";
+     device_class_set_props(dc, ide_hd_properties);
++    tc->sensor_count = 1;
++    tc->get_temperature = ide_hd_get_temp;
+ }
+ 
+ static const TypeInfo ide_hd_info = {
+@@ -327,6 +337,10 @@ static const TypeInfo ide_hd_info = {
+     .parent        = TYPE_IDE_DEVICE,
+     .instance_size = sizeof(IDEDrive),
+     .class_init    = ide_hd_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { TYPE_TEMPSENSOR_INTERFACE },
++        { }
++    },
+ };
+ 
+ static Property ide_cd_properties[] = {
 -- 
 2.21.1
 
