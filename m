@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jQrpd-0005SC-BZ
+	id 1jQrpd-0005Sw-Kg
 	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 08:16:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59160)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59168)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpa-0005Mm-BX
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:50 -0400
+ id 1jQrpa-0005NE-GN
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpZ-0006Mj-Li
+ id 1jQrpa-0006NH-1K
  for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 08:16:50 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54841)
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38065)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpW-0006DY-MC; Tue, 21 Apr 2020 08:16:46 -0400
-Received: by mail-wm1-x343.google.com with SMTP id h2so3289007wmb.4;
- Tue, 21 Apr 2020 05:16:45 -0700 (PDT)
+ id 1jQrpP-00064K-9U; Tue, 21 Apr 2020 08:16:39 -0400
+Received: by mail-wm1-x343.google.com with SMTP id g12so3417100wmh.3;
+ Tue, 21 Apr 2020 05:16:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vcBPhZxwd+4vvuNFMjpVIGG8AsZi9zdExeOhoYV7tu4=;
- b=MRKiQrMRjgF15Z5ST3R4ycE1fKYuE1z0PoxMQYHXYmcNIi9JtZ3GdS/Ztw94805CeU
- gOyiifBLeLMskzOcbqAOBjaJmeP0T5fnkaO6NwvZN2vM5We2ZpW6FdaqQ5erHdViSSqt
- i8awh+/TkBDHEY/HQLwsmSGOmI3PJa3PXDlsiSNfQ9jMQFA9SIX1iMz6EznWXTM0uWlY
- Csou5J2ClG5qH7eRZlKgvHTbqForst7yHH4/A4ilURBdsJW7mnFZ+YWkQgLFNeq/nbqe
- GfqNt9S2dLBkyvBF24L9RDsnz0sdX0w5LffLdYaZ0F8jgQhtFH/gbgMCjO2CsHaNB7n9
- DMcA==
+ bh=suzA1mVxEZBQKnRRP2Gao+Iu8bshykLk7J9aBD7X5OY=;
+ b=UPy3yN3rdRSn7/7rXCowU8U1nMW0j/I3Q5YkHBGZYHQML5L8nBizIzU40XmFWcFw4K
+ K7xNLH8/7y5wVy0BUo0gi2U0fzfdoWkZNbhUCGdET8QEXD/9P0xJiRCT1ksp8REUCp7K
+ tTw+SekC5XwCeA7OtAUbcpnEgbutTZmyVgb8R6NwSMQgOvFNqEqm9XgXmLpdQ3K6+W42
+ hhtm9toZOmL7PAPdgfvraIGxoOTFGqGvxc553HN9zVVFE16PlWvdJ2wWexgjUsfnh668
+ 0ZNAmLAhgDhPsUROioePfp0HnZBV08qrhkugAiks+TjRX9GRO0g80LBJGUNcTsNGo3vO
+ mJaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=vcBPhZxwd+4vvuNFMjpVIGG8AsZi9zdExeOhoYV7tu4=;
- b=YoGTOq2/mTgBVhHwQEucRGhL5kp8Zzvwa0GI91qpKdjJ7finfpQHSyr/4a3sBkFxOM
- L36RIIP6CeHGg/yEMDipDr5Q3qwexVTUSB6quOf2G71S48l0IRQTH1m3AmhPy/T8LrW0
- oYKu2XjxR8FKcOsV1q78Sn8qR0f4VKRZmAWsbOAJtWAIbWcDIXejKV5wqH9Ioz5nw//r
- moVByoSh9k8QGZiORduM+p3y/XRHUBXKNOsqZ1v/fJiRF4ElabNlWe88qgtph3so2QJA
- 4de9Le3NwoiSCXnGEq9oLsSQa1GzzH9XCT1TMo9Y5uao55HJYbgFV2cklXg39/bwoV4x
- zS0w==
-X-Gm-Message-State: AGi0PuYmaOYwhrYgdqPzRVTem8PBP0SCgy/fFvrLOjYibzQl8dxorG1B
- e0XtUM+7tex/e6Wum454a5cXJavhsrQ=
-X-Google-Smtp-Source: APiQypKJqU8Ykv5xmIWbbrw/HrMyoeq+McjLKCOM+hTjvKZgIn/a4W6oM+n+x/NWqkkT6lVMQ2E7XA==
-X-Received: by 2002:a1c:9cc6:: with SMTP id f189mr4486493wme.75.1587471404227; 
- Tue, 21 Apr 2020 05:16:44 -0700 (PDT)
+ bh=suzA1mVxEZBQKnRRP2Gao+Iu8bshykLk7J9aBD7X5OY=;
+ b=VgceEd6RyGsw2d1osBVfQhT0pS9KYuEfdv9VX/tk2DG5RdMpoZ5gFKCa7D2n/jU18q
+ 4imO6hjZkO2Z5w7I1R99LWcxvDr6Sje1ewW8blyBb2ycIS+Bqi3emm27v+KLJUFCTWRG
+ 0onL5QHI3fCz4NGtDuu13wV3tqf/82yVxGOBhg7oaE6hvWEgl744FPXMPfx0+nHr0g86
+ 3RguftEeBMuvRgTTXu+iD4BDTFtChrCIGXDnInYZivhfyFt48AjTSxZ6YU7AoT7p6TC1
+ UXrmHJWgVI/WuNcVS7RZztrLfaTAqrE9Pi623i0stD4t1aH0LC15yD/5HWWy8kHkwVjl
+ cmtQ==
+X-Gm-Message-State: AGi0PubPJJyn3/NUbKLQQBzFLu7lqRs6PN3WJFIPmQE9HHvqal8wf3AC
+ 8lY/q4PN5DMCfdYLT5P0H6rr+Is+bMM=
+X-Google-Smtp-Source: APiQypKMhUFf3vKrVdSLtgrz2RLyPcd9qxCxwkO9UqqIstDoCYMsf/1iL+Y8OoMXEjgjqEvT0D+nlg==
+X-Received: by 2002:a1c:f416:: with SMTP id z22mr4665135wma.32.1587471396775; 
+ Tue, 21 Apr 2020 05:16:36 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.42
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:43 -0700 (PDT)
+ Tue, 21 Apr 2020 05:16:36 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -62,9 +62,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 08/17] hw/misc/tmp421: Extract set_temp_mC() helper
-Date: Tue, 21 Apr 2020 14:16:17 +0200
-Message-Id: <20200421121626.23791-9-f4bug@amsat.org>
+Subject: [RFC PATCH 04/17] hw/misc/tmp105: Extract get_temp_mC() and
+ set_temp_mC() helpers
+Date: Tue, 21 Apr 2020 14:16:13 +0200
+Message-Id: <20200421121626.23791-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
 References: <20200421121626.23791-1-f4bug@amsat.org>
@@ -91,74 +92,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 21 Apr 2020 12:16:51 -0000
 
-Since we are going to reuse this code, extract it first.
+Since we are going to reuse this code, extract it as helpers.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/tmp421.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
+ hw/misc/tmp105.c | 31 ++++++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
 
-diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
-index 8003356307..270e7d5510 100644
---- a/hw/misc/tmp421.c
-+++ b/hw/misc/tmp421.c
-@@ -122,6 +122,22 @@ static int64_t get_temp_mC(TMP421State *s, unsigned int id)
-     return ((s->temperature[id] - offset) * 1000 + 128) / 256;
+diff --git a/hw/misc/tmp105.c b/hw/misc/tmp105.c
+index 75ddad3a12..754c8a6eb4 100644
+--- a/hw/misc/tmp105.c
++++ b/hw/misc/tmp105.c
+@@ -56,11 +56,28 @@ static void tmp105_alarm_update(TMP105State *s)
+     tmp105_interrupt_update(s);
  }
  
-+static void set_temp_mC(TMP421State *s, unsigned int id,
-+                        int64_t temp, Error **errp)
++static int64_t get_temp_mC(TMP105State *s)
 +{
-+    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
-+    int offset = ext_range * 64 * 256;
++    return s->temperature * 1000 / 256;
++}
 +
-+    assert(id < SENSORS_COUNT);
-+    if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
++static void set_temp_mC(TMP105State *s, int64_t temp_mC, Error **errp)
++{
++    if (temp_mC >= 128000 || temp_mC < -128000) {
 +        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
-+                   temp / 1000, temp % 1000);
++                   temp_mC / 1000, temp_mC % 1000);
 +        return;
 +    }
 +
-+    s->temperature[id] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
++    s->temperature = (int16_t) (temp_mC * 256 / 1000);
++
++    tmp105_alarm_update(s);
 +}
 +
- static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
+ static void tmp105_get_temperature(Object *obj, Visitor *v, const char *name,
                                     void *opaque, Error **errp)
  {
-@@ -149,11 +165,8 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
- static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+-    TMP105State *s = TMP105(obj);
+-    int64_t value = s->temperature * 1000 / 256;
++    int64_t value = get_temp_mC(TMP105(obj));
+ 
+     visit_type_int(v, name, &value, errp);
+ }
+@@ -71,7 +88,6 @@ static void tmp105_get_temperature(Object *obj, Visitor *v, const char *name,
+ static void tmp105_set_temperature(Object *obj, Visitor *v, const char *name,
                                     void *opaque, Error **errp)
  {
--    TMP421State *s = TMP421(obj);
+-    TMP105State *s = TMP105(obj);
      Error *local_err = NULL;
      int64_t temp;
--    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
--    int offset = ext_range * 64 * 256;
-     int tempid;
  
-     visit_type_int(v, name, &temp, &local_err);
-@@ -162,12 +175,6 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+@@ -80,15 +96,8 @@ static void tmp105_set_temperature(Object *obj, Visitor *v, const char *name,
+         error_propagate(errp, local_err);
          return;
      }
- 
--    if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
+-    if (temp >= 128000 || temp < -128000) {
 -        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
 -                   temp / 1000, temp % 1000);
 -        return;
 -    }
--
-     if (sscanf(name, "temperature%d", &tempid) != 1) {
-         error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
-         return;
-@@ -178,7 +185,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
-         return;
-     }
  
--    s->temperature[tempid] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
-+    set_temp_mC(TMP421(obj), tempid, temp, errp);
+-    s->temperature = (int16_t) (temp * 256 / 1000);
+-
+-    tmp105_alarm_update(s);
++    set_temp_mC(TMP105(obj), temp, errp);
  }
  
- static void tmp421_read(TMP421State *s)
+ static const int tmp105_faultq[4] = { 1, 2, 4, 6 };
 -- 
 2.21.1
 
