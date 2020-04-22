@@ -1,66 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jR0jN-0002tR-NE
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Apr 2020 17:47:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42528)
+	id 1jRFU6-0006Hf-7x
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Apr 2020 09:32:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59114)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1jR0jJ-0002pP-V4
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 17:46:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1jRFU2-0006GT-SJ
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1jR0jI-0001MU-M6
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 17:46:57 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35467
+ (envelope-from <philmd@redhat.com>) id 1jRFU1-0002Gj-8k
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:09 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:21054
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jR0jI-0001Hy-0w
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2020 17:46:56 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRFU0-0002Cb-Qu
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587505614;
+ s=mimecast20190719; t=1587562328;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ISw6c4GHvGqoGOp/HGKgTicBxUOMvPj3sGUkvS18AKg=;
- b=AQMXh5pBuMmWyNG/fzQyNJKi4feFnE83cpmnA5XcJimJtRLLJ6WJ/2Kvj7vExLbD02/nYT
- 7xRDEEu/8Xn7iKATBdFPHP65R/T6JquMGfL/+2sevMLgyd6e253PhgLIoU20LoOdFgm7/U
- 6jX5IAeR91RlSBPwBcRF+4o7/a1MJ/k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-212-RIeGk8QAMraxEdo2ii6iHA-1; Tue, 21 Apr 2020 17:46:52 -0400
-X-MC-Unique: RIeGk8QAMraxEdo2ii6iHA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7D365802570;
- Tue, 21 Apr 2020 21:46:39 +0000 (UTC)
-Received: from [10.10.116.80] (ovpn-116-80.rdu2.redhat.com [10.10.116.80])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E027860BEC;
- Tue, 21 Apr 2020 21:46:38 +0000 (UTC)
-Subject: Re: [PATCH 2/2] tools: Fix use of fcntl(F_SETFD) during socket
- activation
-From: Eric Blake <eblake@redhat.com>
+ bh=2U6ARuvMvLKS+fqGTEoijz7r0B3fBwOwTnOOBFQNRAw=;
+ b=DSkWiBpP3LMLoTusaVQGbgc8A4fDzt8MWk41wKtL6TiWIuGZVn3yXipa0bN3hM5k37s1/F
+ IwaE8Z19YayL1Bi0GBwtsufXHsLQY6nnKWYThaUeaU/3DuuJSjBaLXv2CMfB4wUVPS5usG
+ wREhOaB6lrmN8ot25AKygWOltTEcSGs=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-fRSjUxQhONS6zPP932GmSA-1; Wed, 22 Apr 2020 09:32:06 -0400
+X-MC-Unique: fRSjUxQhONS6zPP932GmSA-1
+Received: by mail-wr1-f71.google.com with SMTP id o8so603724wrm.11
+ for <qemu-trivial@nongnu.org>; Wed, 22 Apr 2020 06:32:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ez+E9s5mwrT8B9y8nVUYgFPf3iN6ckUcWWVa90evmD4=;
+ b=BwqEM+w7DlljYUszAAL0LYzQhtte/nJH3neuUgOEMgJ6+104dN5jgwkJcdI7uKrnm4
+ xcgbRhaBLrOyW01teSZZ1WzojbckFzUE4TgT6KfpELLdr7HbDncT4nPbR9V9owkT1bz/
+ w1WdL4s+YE43CudpXyqzSZnwI6InZDtLmAYfQF4SYxBerw50Kw/HQ+b5BeyGMbensP99
+ mpVIHcn+WdTgBcxjMUHYh4KphTt9jnxrG/Xhv+aS4LLP2I1CV4p5wwvqqr84sqStOFoy
+ DSGo47iEmUtYiSsoJpYsjByvc7Cduz7RiNyz0dM4uPQSbGhffRf0grrrBOgbm48JAa1y
+ Urzw==
+X-Gm-Message-State: AGi0PuYn9S/G4y2FhV1VWij6iKhX0ksJcD20wG3g5qLtS9CSCVMVzb/h
+ 8OOGL7VV0XaUbamSHH/TyxxnlzKgGjJL4akmI5e/H8AtUmMm9FFlAN2BwJ8bLmCKvXQzKVMiKZN
+ AMBNkd1wp29HB2X0PkA==
+X-Received: by 2002:a7b:cf25:: with SMTP id m5mr11344964wmg.65.1587562325530; 
+ Wed, 22 Apr 2020 06:32:05 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLEMtqlGM7tlPDkeJxSPb7125x+W85cCCPYOZelLyU8UzBj4cOszGUa++XN2tBEWSaTPl4QZQ==
+X-Received: by 2002:a7b:cf25:: with SMTP id m5mr11344924wmg.65.1587562325181; 
+ Wed, 22 Apr 2020 06:32:05 -0700 (PDT)
+Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id b82sm8326135wmh.1.2020.04.22.06.32.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Apr 2020 06:32:04 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-References: <20200420175309.75894-1-eblake@redhat.com>
- <20200420175309.75894-3-eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <645b3b83-1494-36a9-35df-fa09c364b85e@redhat.com>
-Date: Tue, 21 Apr 2020 16:46:37 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org (open list:Block layer core)
+Subject: [PATCH v3 2/9] blockdev: Remove dead assignment
+Date: Wed, 22 Apr 2020 15:31:45 +0200
+Message-Id: <20200422133152.16770-3-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200422133152.16770-1-philmd@redhat.com>
+References: <20200422133152.16770-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200420175309.75894-3-eblake@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=eblake@redhat.com;
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 15:21:16
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/22 09:07:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,29 +88,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Apr 2020 21:46:59 -0000
+X-List-Received-Date: Wed, 22 Apr 2020 13:32:12 -0000
 
-On 4/20/20 12:53 PM, Eric Blake wrote:
-> Blindly setting FD_CLOEXEC without a read-modify-write will
-> inadvertently clear any other intentionally-set bits, such as a
-> proposed new bit for designating a fd that must behave in 32-bit mode.
-> However, we cannot use our wrapper qemu_set_cloexec(), because that
-> wrapper intentionally abort()s on failure, whereas the probe here
-> intentionally tolerates failure to deal with incorrect socket
-> activation gracefully.  Instead, fix the code to do the proper
-> read-modify-write.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->   util/systemd.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+Fix warning reported by Clang static code analyzer:
 
-As qemu-nbd is impacted, I'll queue 2/2 through my NBD tree if 
-qemu-trivial doesn't pick it up first.
+    CC      blockdev.o
+  blockdev.c:2744:5: warning: Value stored to 'ret' is never read
+      ret =3D blk_truncate(blk, size, false, PREALLOC_MODE_OFF, errp);
+      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ blockdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/blockdev.c b/blockdev.c
+index fa8630cb41..6effd5afaa 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -2741,7 +2741,7 @@ void qmp_block_resize(bool has_device, const char *de=
+vice,
+     }
+=20
+     bdrv_drained_begin(bs);
+-    ret =3D blk_truncate(blk, size, false, PREALLOC_MODE_OFF, errp);
++    blk_truncate(blk, size, false, PREALLOC_MODE_OFF, errp);
+     bdrv_drained_end(bs);
+=20
+ out:
+--=20
+2.21.1
 
 
