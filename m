@@ -1,76 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jRFU7-0006JA-Uk
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Apr 2020 09:32:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59148)
+	id 1jRFUL-0006Pw-Dw
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Apr 2020 09:32:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59126)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRFU4-0006Gi-Tp
- for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:13 -0400
+ (envelope-from <philmd@redhat.com>) id 1jRFU2-0006GW-Ue
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRFU4-0002Mo-Cv
- for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22306
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1jRFTz-0002B9-So
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:10 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:47373
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRFU3-0002IX-To
- for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:11 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRFTz-00026x-FV
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2020 09:32:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587562330;
+ s=mimecast20190719; t=1587562326;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=XUlKyT73AlkHFlQ8zqyTxGozcuh5OB4qVGei5hmsoHw=;
- b=dJDLUOuGQHBkwoEKoUeJYNj4Y519YH1sZtjPCV5XWHv028I+lvhgbS5PkV61iRvjfHEkAH
- /S/YtQEHTMfPLqg/mZ5tjsxhRNRg0jeP2ezGFK+2OKb7BfyTAXVLPQvaqjoFbG+PHMRRni
- DIw0U3GszasUp4f2T6Vv1IAy9EEfUDU=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EddQPcYtdLgHdxZ2GiPc2DPPevSFRzd+HN7v8HerO6Q=;
+ b=DjTedRQM2b1TdvcLhnjXFp/fNmfkETkQ/lUV77tw3TkRmmzZQ2/jSfJ9oIbjR9T06pjKoV
+ 3oYH6F8xx3B1nV+4H5HjXUCl3KsM9Smnqi69hSdV+/n04yIBAMJYT0MBYgoYvkekawMBUZ
+ BMNLvqauZ2DM7w3jPNaQTy3HzmIPkoE=
 Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
  [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-235-rD1lsA4vNYSM7mgTny9WAA-1; Wed, 22 Apr 2020 09:31:56 -0400
-X-MC-Unique: rD1lsA4vNYSM7mgTny9WAA-1
-Received: by mail-wm1-f72.google.com with SMTP id o26so810011wmh.1
- for <qemu-trivial@nongnu.org>; Wed, 22 Apr 2020 06:31:56 -0700 (PDT)
+ us-mta-446-q1sVwsPgNZGQ8rhpJHt2PQ-1; Wed, 22 Apr 2020 09:32:01 -0400
+X-MC-Unique: q1sVwsPgNZGQ8rhpJHt2PQ-1
+Received: by mail-wm1-f72.google.com with SMTP id h184so804206wmf.5
+ for <qemu-trivial@nongnu.org>; Wed, 22 Apr 2020 06:32:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zqmfue2UwrwiHNMR4TPo8N6a37zrjxPCjDQGfvWFQLs=;
- b=AUrCV8i1QNahvyOCIgaut4bMz+FcICDXjT6DzxNvEo95DugdL4/4S0881AYzAlm/gq
- BmIx+XSSFCh235HuZoX8hF0GbhnPZY1g4NQTgwstuiZ9maZORPvRERpYYUVZNtLhaw5T
- 3Sto3gXp3yIZ8ghd039mRuMx3Ff24ovDik/a+7EEMsxu5nm8c9BrFJ/X6L2XLjyGvdTX
- q30rDnMarv6woWoD2fhmeNNXPcXwhI84wkktF8Nv2PCvSkV4YjKhpnRnZ8d9K8bbMiq1
- 29RQ2duAEFqrsGI76dJVCVrCm9P8nZNnjzdyDqQ6X3kgQA5bUefSn7duJrgwPq9RdPun
- /Fhg==
-X-Gm-Message-State: AGi0PuYCFQjPAkD+WHVMXcJDbUFUG9XPCW3g5T2nWDe+W9S4BGz3IusO
- yJynrRANqN6k/vyKYNu1fWOLtH9vcM6oTzBTxZMTzhzHegnKltgiOPnbokuG/YrkcTT0L5neJBm
- 3d6SBusooDQvvxv2Sjg==
-X-Received: by 2002:a5d:4d8f:: with SMTP id b15mr29991361wru.107.1587562315143; 
- Wed, 22 Apr 2020 06:31:55 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLyOb25132StkCLkHX76Eh5KmJs4V9ysBdaVfZ86rojqHY1LjtJXpThxFsh99WOQlyoK7dstQ==
-X-Received: by 2002:a5d:4d8f:: with SMTP id b15mr29991348wru.107.1587562314953; 
- Wed, 22 Apr 2020 06:31:54 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=W1lYGStJLCIwnYjiuY8mcwIaZ71ZmPjavSPH5JD14Mc=;
+ b=BbR6wDz0SHYjoZpJy8H7qrrye54YRGk3vg8F5M0PFWFxvqos5ObKfA3kGkd69wPYZ5
+ uNaIz+jGqd5VdrRhoLbvlY+4Av70lgchXlNu67KbPCjUt1ON4fTXEJOMPf6DhiEvuyhZ
+ Ch3M5jxuNwzphrWdi/eS2ytyOOImnnwq4DC/Hngd/SYSizoLJu4vuuuszBg6bVf7LJBt
+ wHlUCeP+HZI/0b6gcJwnu19ogPGQhAFwl92qoMp58FFGaa6Z2WWm/ySn/EOX+TvvmxqE
+ nogr02aZ5SkZ/2PT6ReXLwbUhKpD7oq/Ugp7Q6ZAghaJh4Dl8nlB+uLuGYAeo+ZS3g0c
+ KLTA==
+X-Gm-Message-State: AGi0PuYRNBr/9oAyZRDeuRqOVD8aRasWobrwPydqhUtQHvSneNLsOnhH
+ zBqUIvN52+OvQDogKzqCcKC0Nxw014ATO4QOlaQ+2EBEulRmWBY2PsPxFobLUF0Eg+k1AB/Il5b
+ B+Sf+665T8nASa92V2g==
+X-Received: by 2002:adf:f0cb:: with SMTP id x11mr30143985wro.266.1587562320628; 
+ Wed, 22 Apr 2020 06:32:00 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLQNZoYRve3BMh/BCsvwykR4XDFWol49DCJ0F1Tpd1HazAVoxGAfH3vkEkcxaX/yVgFs4TCUA==
+X-Received: by 2002:adf:f0cb:: with SMTP id x11mr30143935wro.266.1587562319974; 
+ Wed, 22 Apr 2020 06:31:59 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id j3sm8165750wrw.28.2020.04.22.06.31.53
+ by smtp.gmail.com with ESMTPSA id u12sm8166030wmu.25.2020.04.22.06.31.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2020 06:31:54 -0700 (PDT)
+ Wed, 22 Apr 2020 06:31:59 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 0/9] misc: Trivial static code analyzer fixes
-Date: Wed, 22 Apr 2020 15:31:43 +0200
-Message-Id: <20200422133152.16770-1-philmd@redhat.com>
+ Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org (open list:Block layer core)
+Subject: [PATCH v3 1/9] block: Avoid dead assignment
+Date: Wed, 22 Apr 2020 15:31:44 +0200
+Message-Id: <20200422133152.16770-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200422133152.16770-1-philmd@redhat.com>
+References: <20200422133152.16770-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/22 09:07:24
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.120
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/22 02:57:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,49 +89,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Apr 2020 13:32:13 -0000
+X-List-Received-Date: Wed, 22 Apr 2020 13:32:26 -0000
 
-Fix trivial warnings reported by the Clang static code analyzer.
+Fix warning reported by Clang static code analyzer:
 
-Only patch #2 'blockdev: Remove dead assignment' misses review.
+  block.c:3167:5: warning: Value stored to 'ret' is never read
+      ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
+      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The official Clang static code analyzer documentation is on:
-https://clang-analyzer.llvm.org/
+Fixes: 462f5bcf6
+Reported-by: Clang Static Analyzer
+Suggested-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ block.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Fedora I simply used it as:
-
-  $ sudo dnf install clang-analyzer
-  $ ../configure
-  $ scan-build make
-
-Since v2:
-- Based on lvivier/trivial-patches-for-5.1
-- Removed dup patches from Kuhn Chenqun
-Since v1:
-- Addressed Markus/Zoltan/Aleksandar review comments
-
-Philippe Mathieu-Daud=C3=A9 (9):
-  block: Avoid dead assignment
-  blockdev: Remove dead assignment
-  hw/i2c/pm_smbus: Remove dead assignment
-  hw/input/adb-kbd: Remove dead assignment
-  hw/ide/sii3112: Remove dead assignment
-  hw/isa/i82378: Remove dead assignment
-  hw/gpio/aspeed_gpio: Remove dead assignment
-  hw/timer/stm32f2xx_timer: Remove dead assignment
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
-
- block.c                    | 2 +-
- blockdev.c                 | 2 +-
- hw/gpio/aspeed_gpio.c      | 2 +-
- hw/i2c/pm_smbus.c          | 1 -
- hw/ide/sii3112.c           | 5 +++--
- hw/input/adb-kbd.c         | 6 +-----
- hw/isa/i82378.c            | 8 ++++----
- hw/timer/pxa2xx_timer.c    | 1 +
- hw/timer/stm32f2xx_timer.c | 1 -
- 9 files changed, 12 insertions(+), 16 deletions(-)
-
+diff --git a/block.c b/block.c
+index 2e3905c99e..27e7e0e3ab 100644
+--- a/block.c
++++ b/block.c
+@@ -3171,7 +3171,7 @@ static BlockDriverState *bdrv_open_inherit(const char=
+ *filename,
+     }
+=20
+     ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
+-    if (local_err) {
++    if (ret < 0) {
+         goto fail;
+     }
+=20
 --=20
 2.21.1
 
