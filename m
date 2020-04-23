@@ -1,81 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jRiP9-0004Sv-CK
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Apr 2020 16:25:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55866)
+	id 1jRilJ-0001hd-Nx
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Apr 2020 16:47:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32912)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRiP8-0004Q8-6T
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:25:02 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jRilH-0001fU-4U
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:47:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRiP7-0006b7-Fo
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:25:01 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39272
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRiP7-0006ZW-1s
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:25:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587673500;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hRuWYIm0h37MXf90sUc1NyTNNDVl+nEUAxdgAji08gY=;
- b=B0Du57E/k9w6QvxpnqUxpl5lVvL+e9TN8pDDjN1NceQGuM7NYMkF1pUEUFufbHr8shL398
- g9pS5JW35gVXLA/V9/kzt/u/iPcQdfJ1kQZP0PH3jGhS2U2pOArGyEgSPM4pTdONHH3PPW
- pHt11uL9jRujdbrX+7De0QKRQlOZpF0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-e8nCJTPVM_SR9ZvVUl-HFQ-1; Thu, 23 Apr 2020 16:24:57 -0400
-X-MC-Unique: e8nCJTPVM_SR9ZvVUl-HFQ-1
-Received: by mail-wm1-f69.google.com with SMTP id o26so2997350wmh.1
- for <qemu-trivial@nongnu.org>; Thu, 23 Apr 2020 13:24:57 -0700 (PDT)
+ (envelope-from <peter.maydell@linaro.org>) id 1jRilG-0007VV-Ad
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:47:54 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39148)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jRilD-0007RS-8p
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 16:47:53 -0400
+Received: by mail-ot1-x341.google.com with SMTP id m13so8571083otf.6
+ for <qemu-trivial@nongnu.org>; Thu, 23 Apr 2020 13:47:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yuRNKYOyrXq31eODqoSQA8Il9L22mdjCutxbVpqukMo=;
+ b=HYxBO9IocyV36w6tRGQlKtMJmW0UhLb9qOx9X2XuLJZu2XFkDJVvo0ZgLSoknvtt6v
+ wCFLvSs7lsksmQB+zEJGHDFgjzFzgu2qb2SYZritGipdlRspy3HoxEvqSki9X2PXpmET
+ wvp1ke/3ovYrBMJcQx3KBbj32aYU0RgXTkAgBcIBu8dONQSBNCXm+djdSrNQq9qW0SuM
+ Z9V2RYOHgJPyQrWIH4+5syBL6QDntfDPPfb4XuaNjtYX8VjhqvoSHMRY0ZWK/23Xm2xQ
+ +1kuGWtKMf0aGFckBieoRIFWgWY27oIdAgxc3wAUOrPaqWVY4AogdeQ6Ay/gZaSL21uC
+ KuSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zV4Z3fPcHI1OYVDggGNp6FNKRP8SznCFk9VObR96orc=;
- b=strmarLP5ZYGxkQU2RY+aMMkmXpHyYzvuzzLGz+/4Pi7JOcm8NpnK21YgZ93pDfhxz
- rgZVt0RcpEUcZau2luJNmBZEFH4HaAQ92P52EnmNgJR0EYW8zZWH8iZenYl5q0/Qtt2H
- tKKavO7ML4DqUlNhs8x6C8/7G/JN4ndLLHzi4T2MpFJYlHNgQmSe++n5By5o+zPrtsP+
- prZeyA8yNyeW3IM8Hhb2DkPDZ2sAS8RzDlQPQQe6lA5hVgrJVGIKWeNa4uIsPl2iZwql
- vTNeog3FqVeUm7gVdkdkDRQGkbPLXQG5w7n4idvPFaeVN5wNHuocDX3PWkDdkJmkdNai
- 486A==
-X-Gm-Message-State: AGi0PuYz752eOz+jtrroiJe1gxcSNOvn2e7VhvIZHZky7oan9HUd0QYa
- is0VjnXVUk3jzdS+Hw9exoM0IScwpWuI086xtHb2aS2oCpnW7Y4sO0J5q7SzyIBGjnJWolVTPFw
- tUdSD1BT03s6YuYQfEA==
-X-Received: by 2002:a05:600c:1:: with SMTP id g1mr5896909wmc.142.1587673496046; 
- Thu, 23 Apr 2020 13:24:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIW4JUq7RYmK9dE4G+tWA4EQIixYMsepVbL/SlRUjKxzfgYb1cLQ7Ze4kzMPK+CSFN0qeNDDQ==
-X-Received: by 2002:a05:600c:1:: with SMTP id g1mr5896893wmc.142.1587673495788; 
- Thu, 23 Apr 2020 13:24:55 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id k184sm5159946wmf.9.2020.04.23.13.24.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2020 13:24:55 -0700 (PDT)
-Subject: Re: [PATCH] elf_ops: Don't try to g_mapped_file_unref(NULL)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Randy Yates <yates@ieee.org>
-References: <20200423202011.32686-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d9e2c1cf-30e5-a889-3e87-eed6480610ab@redhat.com>
-Date: Thu, 23 Apr 2020 22:24:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yuRNKYOyrXq31eODqoSQA8Il9L22mdjCutxbVpqukMo=;
+ b=YhMy35dFRUIn4R+FwKMthb0KCYzrruV8egmDzATpGklsrHhOJMURB678g5aXNOEIKL
+ ije/cwDYb8f1OjX+p5CCQJORxv9Rernb+7NYgzM/b6yJvsH4ieq/ox1H3/PyDzzcBXo2
+ uTlUFfoVXN44L5eMqqUG56al1mqw0LYyMeOQ1rpsQX+00VoB8WvY+5+vIEGr5u3ZyszV
+ tvmx/6SUxLzCDwwLVhK+0adNr6A7hNYKe3Cqtcqr26KZVMrQAe8s+ow/mF/MzbiaEPzO
+ u0pd0k88AZrjSZ7+OeSAHFebc3cN3ZGJak5l+l2u81xLnIOGEz5c8VdekxageJkA34j+
+ 6L1w==
+X-Gm-Message-State: AGi0PuZkfn+G0O2Aa5BqjqlP+CYElpkcYzvGUv5+mxCV2KSXxTT5XMiY
+ eBLH6yZXKN14A2LQLJ1Dsk0i40kAQ2kX9yzfPuHugQ==
+X-Google-Smtp-Source: APiQypLLJB0eckpV1phYkzfJtZrxZDdfSfHj5Q1EzFGoIucRTfYxasmJHAIVrrjNWAlKc6ajxzlXo4zHSXt2Sxy7xHA=
+X-Received: by 2002:aca:3441:: with SMTP id b62mr3172454oia.146.1587674869774; 
+ Thu, 23 Apr 2020 13:47:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200423202011.32686-1-peter.maydell@linaro.org>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+References: <20200423202011.32686-1-peter.maydell@linaro.org>
+ <d9e2c1cf-30e5-a889-3e87-eed6480610ab@redhat.com>
+In-Reply-To: <d9e2c1cf-30e5-a889-3e87-eed6480610ab@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Apr 2020 21:47:38 +0100
+Message-ID: <CAFEAcA8XBsfZvxsjXVFbcHwcBYx3ohyfhntAKTTEWKcCw9xSCg@mail.gmail.com>
+Subject: Re: [PATCH] elf_ops: Don't try to g_mapped_file_unref(NULL)
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Randy Yates <yates@ieee.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 16:25:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,57 +71,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Apr 2020 20:25:03 -0000
+X-List-Received-Date: Thu, 23 Apr 2020 20:47:55 -0000
 
-On 4/23/20 10:20 PM, Peter Maydell wrote:
-> Calling g_mapped_file_unref() on a NULL pointer is not valid, and
-> glib will assert if you try it.
->=20
-> $ qemu-system-arm -M virt -display none -device loader,file=3D/tmp/bad.el=
-f
-> qemu-system-arm: -device loader,file=3D/tmp/bad.elf: GLib: g_mapped_file_=
-unref: assertion 'file !=3D NULL' failed
->=20
-> (One way to produce an ELF file that fails like this is to copy just
-> the first 16 bytes of a valid ELF file; this is sufficient to fool
-> the code in load_elf_ram_sym() into thinking it's an ELF file and
-> calling load_elf32() or load_elf64().)
->=20
-> The failure-exit path in load_elf can be reached from various points
-> in execution, and for some of those we haven't yet called
-> g_mapped_file_new_from_fd().  Add a condition to the unref call so we
-> only call it if we successfully created the GMappedFile to start with.
->=20
-> This will fix the assertion; for the specific case of the generic
-> loader it will then fall back from "guess this is an ELF file" to
-> "maybe it's a uImage or a hex file" and eventually to "just load as
-> a raw data file".
->=20
-> Reported-by: Randy Yates <yates@ieee.org>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Thu, 23 Apr 2020 at 21:25, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> On 4/23/20 10:20 PM, Peter Maydell wrote:
+> > This will fix the assertion; for the specific case of the generic
+> > loader it will then fall back from "guess this is an ELF file" to
+> > "maybe it's a uImage or a hex file" and eventually to "just load as
+> > a raw data file".
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-> ---
->   include/hw/elf_ops.h | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> index e0bb47bb678..398a4a2c85b 100644
-> --- a/include/hw/elf_ops.h
-> +++ b/include/hw/elf_ops.h
-> @@ -606,7 +606,9 @@ static int glue(load_elf, SZ)(const char *name, int f=
-d,
->           *highaddr =3D (uint64_t)(elf_sword)high;
->       ret =3D total_size;
->    fail:
-> -    g_mapped_file_unref(mapped_file);
-> +    if (mapped_file) {
-> +        g_mapped_file_unref(mapped_file);
-> +    }
->       g_free(phdr);
->       return ret;
->   }
->=20
+Thanks; as a side note "let me just load this as a raw data file"
+is not a very user-friendly way to report issues with the ELF
+file like "seems to be truncated" or "has no program headers".
+Not sure what to do about that...
 
+thanks
+-- PMM
 
