@@ -1,76 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jRZKk-0001BH-VL
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Apr 2020 06:43:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35172)
+	id 1jRgKC-0005lC-0D
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Apr 2020 14:11:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57132)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRZKj-0001B4-3p
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 06:43:53 -0400
+ (envelope-from <mreitz@redhat.com>) id 1jRgKA-0005j3-JI
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 14:11:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRZKi-0004I2-IV
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 06:43:52 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40096
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <mreitz@redhat.com>) id 1jRgKA-0000qN-8y
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 14:11:46 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42163
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRZKi-0004Fy-2w
- for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 06:43:52 -0400
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1jRgK9-0000pt-T2
+ for qemu-trivial@nongnu.org; Thu, 23 Apr 2020 14:11:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587638631;
+ s=mimecast20190719; t=1587665505;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Bpp6hbr0UrVbS5RqMZ78rxToJ7J2eWO/p7gvEI7VzJc=;
- b=NVKWt3JXYIpG7CuFeN9P6qLosZJNRpqN7BgxeUAScjjNC7KFM2PanU0uwOWbjVzxnr5u/I
- cdro5N995UNV2mQj/5r+eJ917w34i80uVW8mfRPlAuOCLwUQF8wdXzOm3LQuEfb/GgiD6g
- Z5026miGTd0jJb26p06DKu0SctH/q9k=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-55-4mx_KtaMNZuSpWmrdVfm0Q-1; Thu, 23 Apr 2020 06:43:48 -0400
-X-MC-Unique: 4mx_KtaMNZuSpWmrdVfm0Q-1
-Received: by mail-wr1-f71.google.com with SMTP id r11so2636906wrx.21
- for <qemu-trivial@nongnu.org>; Thu, 23 Apr 2020 03:43:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=F39B6Ts+xUlpDBnNeMGvV+UtHlMajEV3NxM0wy/7W20=;
- b=K1MLcBUvxtsXR3629GKB6axptUay14/vlxX+t4bjVyI8oW0qJSBHwMPDEbyzuHnu5Q
- Wf5ggmBQoCYeXkDJLMqOsLQ77LyCGjwTPBZal/m6uX1SSQEfswZt/CPr1LgqqZVh8YBd
- N4rqoqEXtv/5VSpuDB/jIGhrxYdzl2PgzSGo7w+A0xdNAF45p7lmFzmTrxNVCCfu8Dp4
- z2ya7wtoYXxZuohCDgjl+5aQXvbb/f478UVSdKoCl51Cvb8wOv6BBhCAeeWEwSU7k+fj
- 6sSK4NlyRyJ07stu4OgkXlPDqH+ZhCdUf698CyGvrcoiglEsDJU9L8hFBlO9ujzjG8bj
- GwBg==
-X-Gm-Message-State: AGi0PubmJ7EyvsLgyYnBtk+7B2cHLhr/BRGJ8i18HeTNOC0Rogj5QUDs
- 2nsHlZ9dqeeuHAkp3mLvo8rV/nb9Rgn6xc4wzGQBjK2cVnBpHC6buXIihR96vA5270j2/X2tF14
- EWa0yauBbx11YGXsueQ==
-X-Received: by 2002:adf:9168:: with SMTP id j95mr4040423wrj.145.1587638627050; 
- Thu, 23 Apr 2020 03:43:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKqwTXB0xEaJkfSGYJJALGGXeKDFeYOsXKnM28pqZDYAIUacM6QBH4017g4PLDPsPjcuZS25w==
-X-Received: by 2002:adf:9168:: with SMTP id j95mr4040403wrj.145.1587638626843; 
- Thu, 23 Apr 2020 03:43:46 -0700 (PDT)
-Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id n9sm3127249wrx.61.2020.04.23.03.43.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 03:43:46 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] Makefile: Let the 'help' target list the helper targets
-Date: Thu, 23 Apr 2020 12:43:45 +0200
-Message-Id: <20200423104345.5092-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=fKOoQHlwejstIPDsKBzo2H5ZweXGujCZV6cVqo5UN+A=;
+ b=g6WjCV5m+oiMGEHSrDsVmT3kqt6Yzd84pm/hbSVlT2WaHXv57Tqehgufaov6QaxnqlICIt
+ hVq3SbZDHlpPO4nD+0R9gIqku6OsKk4H5PD7sxGCaXl0R+ZIo2WtyBxFZ4LUUaPTeIPUs2
+ awYkM26TnVD2GvxZRoo2EkiE7a+UWzw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-269-SQQIe7QvP4Swz1021EdQ9Q-1; Thu, 23 Apr 2020 14:11:41 -0400
+X-MC-Unique: SQQIe7QvP4Swz1021EdQ9Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0AAD835B8B;
+ Thu, 23 Apr 2020 18:11:39 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-113-212.ams2.redhat.com
+ [10.36.113.212])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F25355C1BE;
+ Thu, 23 Apr 2020 18:11:37 +0000 (UTC)
+Subject: Re: [PATCH v3 2/9] blockdev: Remove dead assignment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+References: <20200422133152.16770-1-philmd@redhat.com>
+ <20200422133152.16770-3-philmd@redhat.com>
+From: Max Reitz <mreitz@redhat.com>
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <00527168-b277-4ba4-4b87-ba42de873448@redhat.com>
+Date: Thu, 23 Apr 2020 20:11:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <20200422133152.16770-3-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 06:43:51
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="qApt932lU6fkmI1vh25q203p0trDWiTul"
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=mreitz@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 02:14:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,101 +97,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Apr 2020 10:43:53 -0000
+X-List-Received-Date: Thu, 23 Apr 2020 18:11:47 -0000
 
-List the name of the helper targets when calling 'make help',
-along with the tool targets:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--qApt932lU6fkmI1vh25q203p0trDWiTul
+Content-Type: multipart/mixed; boundary="v2iLgr8qPyA5meqiOcppP4uerFAi4UICf"
 
-  $ make help
-  [...]
+--v2iLgr8qPyA5meqiOcppP4uerFAi4UICf
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-  Helper targets:
-    fsdev/virtfs-proxy-helper      - Build virtfs-proxy-helper
-    scsi/qemu-pr-helper            - Build qemu-pr-helper
-    qemu-bridge-helper             - Build qemu-bridge-helper
-    vhost-user-gpu                 - Build vhost-user-gpu
-    virtiofsd                      - Build virtiofsd
+On 22.04.20 15:31, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix warning reported by Clang static code analyzer:
+>=20
+>     CC      blockdev.o
+>   blockdev.c:2744:5: warning: Value stored to 'ret' is never read
+>       ret =3D blk_truncate(blk, size, false, PREALLOC_MODE_OFF, errp);
+>       ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>=20
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  blockdev.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-  Tools targets:
-    qemu-ga                        - Build qemu-ga tool
-    qemu-keymap                    - Build qemu-keymap tool
-    elf2dmp                        - Build elf2dmp tool
-    ivshmem-client                 - Build ivshmem-client tool
-    ivshmem-server                 - Build ivshmem-server tool
-    qemu-nbd                       - Build qemu-nbd tool
-    qemu-storage-daemon            - Build qemu-storage-daemon tool
-    qemu-img                       - Build qemu-img tool
-    qemu-io                        - Build qemu-io tool
-    qemu-edid                      - Build qemu-edid tool
+Reviewed-by: Max Reitz <mreitz@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- configure | 5 +++--
- Makefile  | 9 +++++++--
- 2 files changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/configure b/configure
-index 23b5e93752..caf880c38e 100755
---- a/configure
-+++ b/configure
-@@ -6374,7 +6374,7 @@ if test "$softmmu" =3D yes ; then
-   if test "$linux" =3D yes; then
-     if test "$virtfs" !=3D no && test "$cap_ng" =3D yes && test "$attr" =
-=3D yes ; then
-       virtfs=3Dyes
--      tools=3D"$tools fsdev/virtfs-proxy-helper\$(EXESUF)"
-+      helpers=3D"$helpers fsdev/virtfs-proxy-helper\$(EXESUF)"
-     else
-       if test "$virtfs" =3D yes; then
-         error_exit "VirtFS requires libcap-ng devel and libattr devel"
-@@ -6389,7 +6389,7 @@ if test "$softmmu" =3D yes ; then
-       fi
-       mpath=3Dno
-     fi
--    tools=3D"$tools scsi/qemu-pr-helper\$(EXESUF)"
-+    helpers=3D"$helpers scsi/qemu-pr-helper\$(EXESUF)"
-   else
-     if test "$virtfs" =3D yes; then
-       error_exit "VirtFS is supported only on Linux"
-@@ -7630,6 +7630,7 @@ else
-   QEMU_INCLUDES=3D"-iquote \$(SRC_PATH)/tcg/\$(ARCH) $QEMU_INCLUDES"
- fi
-=20
-+echo "HELPERS=3D$helpers" >> $config_host_mak
- echo "TOOLS=3D$tools" >> $config_host_mak
- echo "ROMS=3D$roms" >> $config_host_mak
- echo "MAKE=3D$make" >> $config_host_mak
-diff --git a/Makefile b/Makefile
-index 8a9113e666..021a0cd491 100644
---- a/Makefile
-+++ b/Makefile
-@@ -336,9 +336,9 @@ $(call set-vpath, $(SRC_PATH))
- LIBS+=3D-lz $(LIBS_TOOLS)
-=20
- vhost-user-json-y =3D
--HELPERS-y =3D
-+HELPERS-y =3D $(HELPERS)
-=20
--HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) =3D qemu-bridge-hel=
-per$(EXESUF)
-+HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) +=3D qemu-bridge-he=
-lper$(EXESUF)
-=20
- ifeq ($(CONFIG_LINUX)$(CONFIG_VIRGL)$(CONFIG_GBM)$(CONFIG_TOOLS),yyyy)
- HELPERS-y +=3D vhost-user-gpu$(EXESUF)
-@@ -1255,6 +1255,11 @@ endif
- =09=09$(foreach t, $(TARGET_DIRS), \
- =09=09$(call print-help-run,$(t)/all,Build for $(t));) \
- =09=09echo '')
-+=09@$(if $(HELPERS-y), \
-+=09=09echo 'Helper targets:'; \
-+=09=09$(foreach t, $(HELPERS-y), \
-+=09=09$(call print-help-run,$(t),Build $(shell basename $(t)));) \
-+=09=09echo '')
- =09@$(if $(TOOLS), \
- =09=09echo 'Tools targets:'; \
- =09=09$(foreach t, $(TOOLS), \
---=20
-2.21.1
+--v2iLgr8qPyA5meqiOcppP4uerFAi4UICf--
+
+--qApt932lU6fkmI1vh25q203p0trDWiTul
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl6h2lcACgkQ9AfbAGHV
+z0D67wgAmD2pz5fEgnsMNt5g7m9+JpXBoTRGhMr8KBZE1tehYcS1HZIjBnZWNVeD
+0rIS3+cNum2/rGPnQjVvYZmuLOm2UVsuZ4IthOTGoPreWqIpEoxZ61BhDqEI0Z1B
+lEXA3NGdv1BZ3Sw9AFwaZka21nRZJ9aN6z7Kb58wwNqcbdX/1KMJ36UpxqnCD+91
+cFLEWF+0+NztHb7Hxch6igV521idOkbZiVYtW8g9a2ZfWhM5GDdBpFWbY1Dfyk7S
+XKmLch8+4YT4V9nbJzl9dPjR0btEt0DLDp4u1wbxTusOiqVaG9z2RNLM4owV4X/L
+yboVLFl7Y22ZC7nXCtwNbpZ5b+BFbA==
+=HIVQ
+-----END PGP SIGNATURE-----
+
+--qApt932lU6fkmI1vh25q203p0trDWiTul--
 
 
