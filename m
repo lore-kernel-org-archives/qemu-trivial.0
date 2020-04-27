@@ -1,76 +1,101 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jSpZl-000678-GV
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Apr 2020 18:16:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60718)
+	id 1jT0pP-00018n-Du
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2020 06:17:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dottedmag@dottedmag.net>) id 1jSoZg-0000Bu-Qn
- for qemu-trivial@nongnu.org; Sun, 26 Apr 2020 17:12:29 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jT0pM-00017f-KN
+ for qemu-trivial@nongnu.org; Mon, 27 Apr 2020 06:17:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <dottedmag@dottedmag.net>) id 1jSoZg-00067X-GC
- for qemu-trivial@nongnu.org; Sun, 26 Apr 2020 17:12:28 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:38145)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dottedmag@dottedmag.net>)
- id 1jSoZe-00061P-GD; Sun, 26 Apr 2020 17:12:26 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id D11FC5C0118;
- Sun, 26 Apr 2020 17:12:23 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Sun, 26 Apr 2020 17:12:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dottedmag.net;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm2; bh=zgV7/9k3Hto6rUVeJ6s8ZLt/qf
- Ekaj7t1R0wnIL3X6o=; b=PeZEBz7+eJbhoBUDGw9nt13MTe6nMKvZ2hxgCNRYfL
- Y7is5YTkSymjYSYwWcmiz5s3zeJuFGu3/xccky738FMhjGHD0WjF1M4lhrU1PpDn
- RnuK8sR8USmeLsayBjMpowYavI/NX0vJxOflwwGV2NqgcYLZ7aFpWe6fT9lT5bFl
- gPsN+SZCFJmG0pNFqPHJ0479f20NyE8FWlQGJIo/uNXcGRV9JzSJHgy+Fh4ZWQTF
- F344rF9Em6T6sUbktWra53duMGA9E3/j5sKZa8NVMaxywg0PcpGODKCLE5jCkQ11
- L6iL+ELZ2kgtOF1GEoOHreAzQwbeU6d/IM1GyPtgD4KQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=zgV7/9k3Hto6rUVeJ
- 6s8ZLt/qfEkaj7t1R0wnIL3X6o=; b=mkWyZJMQhA9Xzp9PlXDax5ssqYKu3jkAC
- QNPDoMD7U/qyLLInkOlTWYC5un7hmEF1yJyEz1AfHh/zzszM3esdujoSSBjovXAc
- CrYwmIBAizCYjTEyyE3kyzfNZvorSwbaa/3Ag709aM5vIlnLGSfozSjk2sKagsX0
- z619rrCnU9GXgAFkVZCNnBJeUHec5eIMaaQe/Lco9aAKGoKDK7gGlXx2ZFocfYMA
- g5oDPD+d00o/GUiTeswIUAfEzXZz1IEcMeaAB4Cr1/Rr+wjCiUdfU65Oh56klnYQ
- nzDxP0nG0OIlU5TdplGHz14Qfz+ThrBtZX1Hlz5/yA2WfzDe7BJWw==
-X-ME-Sender: <xms:N_mlXsmhcShj0Rv8CKKE8FmBZrdqB-6nA3Rqvtpn5kdo3cljtsKF4w>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrheejgdduheelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
- dttdenucfhrhhomhepofhikhhhrghilhcuifhushgrrhhovhcuoeguohhtthgvughmrghg
- seguohhtthgvughmrghgrdhnvghtqeenucfkphepledvrddvhedurdefgedrvddvkeenuc
- evlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpeguohhtthgv
- ughmrghgseguohhtthgvughmrghgrdhnvght
-X-ME-Proxy: <xmx:N_mlXtZ0D4x3Q0oXR_H3sK4N8jwmuoXpNzY8-6m9SIq1OLKJqaY7Kw>
- <xmx:N_mlXg_qoEaUCYaAw23ZDPeEYaHUxcNGMDIZtVrOblxZYoCdoe4YFw>
- <xmx:N_mlXkZbR-CBSG-CM24d51GYXyHEJ9afbhmVxq0ZBQEjGu3AL26Epw>
- <xmx:N_mlXnE5qU_NvmRTytefv_tplM4yLGsUa8Zp-aZV0sM5Du8Tq34LOA>
-Received: from newton.malta.dottedmag.net (c34-228.i07-9.onvol.net
- [92.251.34.228])
- by mail.messagingengine.com (Postfix) with ESMTPA id 566AE3280067;
- Sun, 26 Apr 2020 17:12:23 -0400 (EDT)
-Received: by newton.malta.dottedmag.net (Postfix, from userid 501)
- id 2654F2CE1CF5; Sun, 26 Apr 2020 23:12:20 +0200 (CEST)
-From: Mikhail Gusarov <dottedmag@dottedmag.net>
-To: qemu-devel@nongnu.org
-Cc: Mikhail Gusarov <dottedmag@dottedmag.net>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] chardev: Add macOS to list of OSes that support -chardev
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jT0pH-0001I1-N4
+ for qemu-trivial@nongnu.org; Mon, 27 Apr 2020 06:17:28 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:44189)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jT0pH-0001Ax-A8; Mon, 27 Apr 2020 06:17:23 -0400
+Received: by mail-wr1-x443.google.com with SMTP id d17so19857291wrg.11;
+ Mon, 27 Apr 2020 03:17:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yxwzn8F5oHtItWkeR1/MbHSJihRf/baZIBBiplF6lsg=;
+ b=NMovLMUwfO31whS2CE202jpOPT0TO/s5YwSsABm7XY29BP/i9G9w4CW07W/QGZap2R
+ DFCEpe3q+DgxCXFwL6RW/AQcUF1NVnlXeHc9h/OMVGrbPy1ktDm5OxghQ2mlq5iZHj+E
+ 0IseGg04VK2GJhFilMCxErx2eYHnfKpT9MN4KQ2rqXFOFMQZAVM2D0FJ7VDyhBCrYo51
+ 1Ogar0ao/3k9m8zxU3TVy5ODL3CZQyjkdbd+1HZi2tJWExxNDzPmgA7B1BLyhQjeRN8W
+ xIWADfv2OHXURTy3frJWtpvbXUcsMJmKo0iT5vwedvF2e1zMhqEDElc2/tPvgPOJIqlF
+ 4P+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=yxwzn8F5oHtItWkeR1/MbHSJihRf/baZIBBiplF6lsg=;
+ b=ZqSVY670uJZnQjXK9YVeMLG/moon88cX55I8BFr7AbpaLX4JH1tMryInrN5xn/Ln6K
+ HXTdr7MkNYGSbQC0jDBHmzR126EbnDFtbJhcADxoenbtIXH1w6hU3fNp42p6LTo5lNNO
+ tpCDogeXgArzhU5yiJs+tGvIeqFay+Ly5DkjHeussZTtbeq3U0fEl7hCtsoK8G4LVTlN
+ 0avsLBepN7Fl2Fn4uLdlCjc1JQJiSZMmZOkz3j78mpUOeVbNIuom1XnYPlDSwhl6LufI
+ +WQFhvwzW/WjUtGyBmTfDBx1gXzgAJCNGF6Oej9UGcE+b5kTUwZpryEJQ+o6Fq3pmJEn
+ REMg==
+X-Gm-Message-State: AGi0PuYD+l6s4zZ4dcmviGwI5ICS9HoGzKIJL8Cj/lXA6ZgL0kxNpIO+
+ DGhHrLlk5CshyECI15MS+5Ec/JLf
+X-Google-Smtp-Source: APiQypLrHHZDM6S7v8nYYYQqmnT74Nb59LgiX30ZQP53e/NHgyE9EJ6/KxwjcejfqhJOe+p2kOQ+pg==
+X-Received: by 2002:a05:6000:8f:: with SMTP id
+ m15mr26680151wrx.19.1587982640861; 
+ Mon, 27 Apr 2020 03:17:20 -0700 (PDT)
+Received: from [192.168.1.39] (137.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.137])
+ by smtp.gmail.com with ESMTPSA id k14sm20813049wrp.53.2020.04.27.03.17.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Apr 2020 03:17:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] chardev: Add macOS to list of OSes that support -chardev
  serial
-Date: Sun, 26 Apr 2020 23:09:58 +0200
-Message-Id: <20200426210956.17324-1-dottedmag@dottedmag.net>
-X-Mailer: git-send-email 2.24.0
+To: Mikhail Gusarov <dottedmag@dottedmag.net>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200426210956.17324-1-dottedmag@dottedmag.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <4e9edcaf-d623-b5c6-fdf9-0d649ef8ba2d@amsat.org>
+Date: Mon, 27 Apr 2020 12:17:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200426210956.17324-1-dottedmag@dottedmag.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=dottedmag@dottedmag.net;
- helo=out1-smtp.messagingengine.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/26 17:12:23
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 66.111.4.25
-X-Mailman-Approved-At: Sun, 26 Apr 2020 18:16:35 -0400
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,48 +107,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Apr 2020 21:12:29 -0000
+X-List-Received-Date: Mon, 27 Apr 2020 10:17:30 -0000
 
-macOS API for dealing with serial ports/ttys is identical to BSDs.
+On 4/26/20 11:09 PM, Mikhail Gusarov wrote:
+> macOS API for dealing with serial ports/ttys is identical to BSDs.
+> 
+> Signed-off-by: Mikhail Gusarov <dottedmag@dottedmag.net>
+> ---
+> 
+> Note that the same file has a line
+>> #endif /* linux || sun */
+> that is severely out of date.
+> 
+>  chardev/char-serial.c | 2 +-
+>  include/qemu/osdep.h  | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/chardev/char-serial.c b/chardev/char-serial.c
+> index 5b833ea077..7c3d84ae24 100644
+> --- a/chardev/char-serial.c
+> +++ b/chardev/char-serial.c
+> @@ -53,7 +53,7 @@ static void qmp_chardev_open_serial(Chardev *chr,
+>  
+>  #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)      \
+>      || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
+> -    || defined(__GLIBC__)
+> +    || defined(__GLIBC__) || defined(__APPLE__)
+>  
+>  static void tty_serial_init(int fd, int speed,
+>                              int parity, int data_bits, int stop_bits)
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 20f5c5f197..ff7c17b857 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -379,7 +379,7 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+>  #define HAVE_CHARDEV_SERIAL 1
+>  #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)    \
+>      || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
+> -    || defined(__GLIBC__)
+> +    || defined(__GLIBC__) || defined(__APPLE__)
+>  #define HAVE_CHARDEV_SERIAL 1
+>  #endif
+>  
+> 
 
-Signed-off-by: Mikhail Gusarov <dottedmag@dottedmag.net>
----
-
-Note that the same file has a line
-> #endif /* linux || sun */
-that is severely out of date.
-
- chardev/char-serial.c | 2 +-
- include/qemu/osdep.h  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/chardev/char-serial.c b/chardev/char-serial.c
-index 5b833ea077..7c3d84ae24 100644
---- a/chardev/char-serial.c
-+++ b/chardev/char-serial.c
-@@ -53,7 +53,7 @@ static void qmp_chardev_open_serial(Chardev *chr,
- 
- #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)      \
-     || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
--    || defined(__GLIBC__)
-+    || defined(__GLIBC__) || defined(__APPLE__)
- 
- static void tty_serial_init(int fd, int speed,
-                             int parity, int data_bits, int stop_bits)
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 20f5c5f197..ff7c17b857 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -379,7 +379,7 @@ void qemu_anon_ram_free(void *ptr, size_t size);
- #define HAVE_CHARDEV_SERIAL 1
- #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)    \
-     || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
--    || defined(__GLIBC__)
-+    || defined(__GLIBC__) || defined(__APPLE__)
- #define HAVE_CHARDEV_SERIAL 1
- #endif
- 
--- 
-2.19.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
