@@ -1,73 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jTSTk-0004qQ-JE
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2020 11:49:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55300)
+	id 1jTXwu-0001Pj-KI
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2020 17:39:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50092)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTSTi-0004kT-Ik
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2020 11:48:58 -0400
+ (envelope-from <eblake@redhat.com>) id 1jTXwo-0001KC-9S
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2020 17:39:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTSTg-00065o-E1
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2020 11:48:58 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35242)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTSRk-0003dE-N2; Tue, 28 Apr 2020 11:46:56 -0400
-Received: by mail-wm1-x341.google.com with SMTP id r26so3440949wmh.0;
- Tue, 28 Apr 2020 08:46:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WekwITYydgUniyXF2jacUDLRb2z7FsHSDmau6DFbuNI=;
- b=ArA3p1NNIcKpe2Ppg66K5N3H6H8M6FQbh170ipLfbW+PFfLvxdIgr21zr3DoWVuYxC
- GyHhuhn1ECyvONSwIUDNs+U7CVVGbOYQdKpnnGHBR/WMRW8qCQhVIJj7weiLKP0mNjQK
- Upu7e7PdG+LSq+Q+MKHSITiPL9OwNHxLIzbt9u3DJcDhq0e2wR+k+HgB6e8lEaug3Mlb
- 3n3mu/0xLdEoDOiFVBvhdiB+WJ44hQ4ld0e4+UIzbR72FOsuWAMsWuJUrLMSgmTNeCUv
- Cn1mMxJXTserHMzisV+PhKa3H+4QN6Yl7iLkGxMB/FPP2bF59iKKtzyB0GftYNsa5dtU
- 6bEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=WekwITYydgUniyXF2jacUDLRb2z7FsHSDmau6DFbuNI=;
- b=EhfIviKSxtBFjepT42DhWIczCF/KVA2AE1XnC9wqh1i9HUu4ZaklGWQ8PKLq/AYlPn
- Y9jxMMMg+UNPttN+6b4h/dpagS0kLZI7MrnCqnuoL4wqcUNqhBHdEYUuOgk0Hg4Y6s3N
- DLFg9tem2FWQbTM6gLjk5cYohakTDSzYOkOEuEI8U9CwrmOldRFl1auWIffJcLZC69bt
- jcTopITrTV4xtQbRQKusnbJmEvG/FSBsdHDzRDL/9f9BI8fEY72wpTYPqcOSXl2fyWE+
- FwhDXjtPDz2zof2HjAB4c4RXH90yNYzYLXAvvzpKfSM9d6bE5hg2r0lT6Yg1wN9fseYm
- eHMA==
-X-Gm-Message-State: AGi0PuYUCAqN0COooBEfZRB9I7mXnOpVqSFzFSo0YCHwqJ95GH2Kiwts
- rsVPIYPIuvxfAXjHta0L3lCTT08Y8WM=
-X-Google-Smtp-Source: APiQypKLLJbSzMVCYslY+5PJNT0OaoLaHVxNsbPfzHyyQFW054lR26lIpyw7OweH3ZtoZFe72oHpFA==
-X-Received: by 2002:a1c:a5c8:: with SMTP id o191mr5448147wme.77.1588088812969; 
- Tue, 28 Apr 2020 08:46:52 -0700 (PDT)
-Received: from x1w.redhat.com (137.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.137])
- by smtp.gmail.com with ESMTPSA id p7sm27339428wrf.31.2020.04.28.08.46.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2020 08:46:51 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ (envelope-from <eblake@redhat.com>) id 1jTXvq-0008C2-Pl
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2020 17:39:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37519
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jTXvq-0008Bj-Cy
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2020 17:38:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588109901;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=LK75nYSRtRRZuMEp++Qb+RXUesvk1OVJFMBt4OC3ZfQ=;
+ b=Eu0E4Ur+LO4MPm0p8EP34V9oElZ6liUnN6qsk9DHDAlVOdYW7jgt7CtYEgzzSj7wH2q/R2
+ uh2QZN7W/+xhTbnZnAs3A5cqRsd/aB43vVplRQcTHvPHJhrm8G8+5N8TrO4ynU8Hzts6qO
+ xhw9nFgsfMHH9qAUHv3ZuGd1XSGQ+Ps=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-198-T8V2cAIEOOefrCaFyz1-2Q-1; Tue, 28 Apr 2020 17:38:17 -0400
+X-MC-Unique: T8V2cAIEOOefrCaFyz1-2Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A24F118FF663;
+ Tue, 28 Apr 2020 21:38:16 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-116-80.rdu2.redhat.com [10.10.116.80])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9216B1002388;
+ Tue, 28 Apr 2020 21:38:09 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/arm/mps2-tz: Use TYPE_IOTKIT instead of hardcoded string
-Date: Tue, 28 Apr 2020 17:46:50 +0200
-Message-Id: <20200428154650.21991-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
+Cc: qemu-trivial@nongnu.org, berto@igalia.com,
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org (open list:Block I/O path)
+Subject: [PATCH] block: Comment cleanups
+Date: Tue, 28 Apr 2020 16:38:07 -0500
+Message-Id: <20200428213807.776655-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::341
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=eblake@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/28 02:16:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,31 +66,154 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Apr 2020 15:48:59 -0000
+X-List-Received-Date: Tue, 28 Apr 2020 21:39:27 -0000
 
-By using the TYPE_* definitions for devices, we can:
- - quickly find where devices are used with 'git-grep'
- - easily rename a device (one-line change).
+It's been a while since we got rid of the sector-based bdrv_read and
+bdrv_write (commit 2e11d756); let's finish the job on a few remaining
+comments.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 ---
- hw/arm/mps2-tz.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index a8dea7dde1..2c43041564 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -395,7 +395,7 @@ static void mps2tz_common_init(MachineState *machine)
-         exit(EXIT_FAILURE);
+Hmm - I started this in Nov 2018, and just barely noticed that it has
+been sitting in a stale tree on my disk for a while now...
+
+ block/io.c             |  3 ++-
+ block/qcow2-refcount.c |  2 +-
+ block/vvfat.c          | 10 +++++-----
+ tests/qemu-iotests/001 |  2 +-
+ tests/qemu-iotests/052 |  2 +-
+ tests/qemu-iotests/134 |  2 +-
+ tests/qemu-iotests/188 |  2 +-
+ 7 files changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/block/io.c b/block/io.c
+index a4f971423093..7d30e61edc6c 100644
+--- a/block/io.c
++++ b/block/io.c
+@@ -960,7 +960,7 @@ int bdrv_pwrite_zeroes(BdrvChild *child, int64_t offset=
+,
+  * flags are passed through to bdrv_pwrite_zeroes (e.g. BDRV_REQ_MAY_UNMAP=
+,
+  * BDRV_REQ_FUA).
+  *
+- * Returns < 0 on error, 0 on success. For error codes see bdrv_write().
++ * Returns < 0 on error, 0 on success. For error codes see bdrv_pwrite().
+  */
+ int bdrv_make_zero(BdrvChild *child, BdrvRequestFlags flags)
+ {
+@@ -994,6 +994,7 @@ int bdrv_make_zero(BdrvChild *child, BdrvRequestFlags f=
+lags)
      }
- 
--    sysbus_init_child_obj(OBJECT(machine), "iotkit", &mms->iotkit,
-+    sysbus_init_child_obj(OBJECT(machine), TYPE_IOTKIT, &mms->iotkit,
-                           sizeof(mms->iotkit), mmc->armsse_type);
-     iotkitdev = DEVICE(&mms->iotkit);
-     object_property_set_link(OBJECT(&mms->iotkit), OBJECT(system_memory),
--- 
-2.21.1
+ }
+
++/* return < 0 if error. See bdrv_pwrite() for the return codes */
+ int bdrv_preadv(BdrvChild *child, int64_t offset, QEMUIOVector *qiov)
+ {
+     int ret;
+diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+index d9650b9b6c50..0457a6060d11 100644
+--- a/block/qcow2-refcount.c
++++ b/block/qcow2-refcount.c
+@@ -2660,7 +2660,7 @@ fail:
+  * - 0 if writing to this offset will not affect the mentioned metadata
+  * - a positive QCow2MetadataOverlap value indicating one overlapping sect=
+ion
+  * - a negative value (-errno) indicating an error while performing a chec=
+k,
+- *   e.g. when bdrv_read failed on QCOW2_OL_INACTIVE_L2
++ *   e.g. when bdrv_pread failed on QCOW2_OL_INACTIVE_L2
+  */
+ int qcow2_check_metadata_overlap(BlockDriverState *bs, int ign, int64_t of=
+fset,
+                                  int64_t size)
+diff --git a/block/vvfat.c b/block/vvfat.c
+index ab800c4887a2..6d5c090dec4d 100644
+--- a/block/vvfat.c
++++ b/block/vvfat.c
+@@ -2148,7 +2148,7 @@ DLOG(checkpoint());
+      * - get modified FAT
+      * - compare the two FATs (TODO)
+      * - get buffer for marking used clusters
+-     * - recurse direntries from root (using bs->bdrv_read to make
++     * - recurse direntries from root (using bs->bdrv_pread to make
+      *    sure to get the new data)
+      *   - check that the FAT agrees with the size
+      *   - count the number of clusters occupied by this directory and
+@@ -2913,9 +2913,9 @@ static int handle_deletes(BDRVVVFATState* s)
+ /*
+  * synchronize mapping with new state:
+  *
+- * - copy FAT (with bdrv_read)
++ * - copy FAT (with bdrv_pread)
+  * - mark all filenames corresponding to mappings as deleted
+- * - recurse direntries from root (using bs->bdrv_read)
++ * - recurse direntries from root (using bs->bdrv_pread)
+  * - delete files corresponding to mappings marked as deleted
+  */
+ static int do_commit(BDRVVVFATState* s)
+@@ -2935,10 +2935,10 @@ static int do_commit(BDRVVVFATState* s)
+         return ret;
+     }
+
+-    /* copy FAT (with bdrv_read) */
++    /* copy FAT (with bdrv_pread) */
+     memcpy(s->fat.pointer, s->fat2, 0x200 * s->sectors_per_fat);
+
+-    /* recurse direntries from root (using bs->bdrv_read) */
++    /* recurse direntries from root (using bs->bdrv_pread) */
+     ret =3D commit_direntries(s, 0, -1);
+     if (ret) {
+         fprintf(stderr, "Fatal: error while committing (%d)\n", ret);
+diff --git a/tests/qemu-iotests/001 b/tests/qemu-iotests/001
+index d87a535c3391..696726e45f56 100755
+--- a/tests/qemu-iotests/001
++++ b/tests/qemu-iotests/001
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ #
+-# Test simple read/write using plain bdrv_read/bdrv_write
++# Test simple read/write using plain bdrv_pread/bdrv_pwrite
+ #
+ # Copyright (C) 2009 Red Hat, Inc.
+ #
+diff --git a/tests/qemu-iotests/052 b/tests/qemu-iotests/052
+index 45a140910da1..8d5c10601fe9 100755
+--- a/tests/qemu-iotests/052
++++ b/tests/qemu-iotests/052
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ #
+-# Test bdrv_read/bdrv_write using BDRV_O_SNAPSHOT
++# Test bdrv_pread/bdrv_pwrite using BDRV_O_SNAPSHOT
+ #
+ # Copyright (C) 2013 Red Hat, Inc.
+ #
+diff --git a/tests/qemu-iotests/134 b/tests/qemu-iotests/134
+index 5f0fb86211e3..5162d2166248 100755
+--- a/tests/qemu-iotests/134
++++ b/tests/qemu-iotests/134
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ #
+-# Test encrypted read/write using plain bdrv_read/bdrv_write
++# Test encrypted read/write using plain bdrv_pread/bdrv_pwrite
+ #
+ # Copyright (C) 2015 Red Hat, Inc.
+ #
+diff --git a/tests/qemu-iotests/188 b/tests/qemu-iotests/188
+index afca44df5427..09b9b6083ab3 100755
+--- a/tests/qemu-iotests/188
++++ b/tests/qemu-iotests/188
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ #
+-# Test encrypted read/write using plain bdrv_read/bdrv_write
++# Test encrypted read/write using plain bdrv_pread/bdrv_pwrite
+ #
+ # Copyright (C) 2017 Red Hat, Inc.
+ #
+--=20
+2.26.2
 
 
