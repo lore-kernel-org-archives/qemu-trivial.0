@@ -1,68 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jU8vP-0007BK-23
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2020 09:08:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43266)
+	id 1jUBXl-0000It-BA
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2020 11:56:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44614)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mlevitsk@redhat.com>) id 1jU8tB-00062D-7s
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 09:08:21 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jUBWb-0007cK-LM
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:56:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <mlevitsk@redhat.com>) id 1jU8qW-000173-Sl
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 09:06:04 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:48034
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mlevitsk@redhat.com>)
- id 1jU8qW-00016n-C8
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 09:03:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588251798;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=f8E8pe4uJFSVCL12YBXfbCIOFNXJWwSkFGUcxoMb0vY=;
- b=ResWDvWOjo/KpZ6GMnhyrUsSBOFrvNTIL/rL4B5FcPHmX/1CYE+Q+OoVCxTHOx1m3CqFmD
- lU9zf2fTljHyqCaYOZF0ah7NSDrjJ/vyGt458GO4wQas2fEtEg47lJ0lKROAanCoeIU+Nq
- sveBuFjyP9i4rjLlHeaYoqd3GzyC3Q4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-136-JhWeAgEcME2-nVeDX2TtQg-1; Thu, 30 Apr 2020 09:03:16 -0400
-X-MC-Unique: JhWeAgEcME2-nVeDX2TtQg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5609F1005510;
- Thu, 30 Apr 2020 13:03:15 +0000 (UTC)
-Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.42])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A0FF42855B;
- Thu, 30 Apr 2020 13:03:08 +0000 (UTC)
-Message-ID: <01347fa11dedc2eec731c405468eb12081efdd43.camel@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/2] LUKS: better error message when
- creating too large files
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: "Daniel P." =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org,  qemu-trivial@nongnu.org, Michael Tokarev
- <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, Max Reitz
- <mreitz@redhat.com>
-Date: Thu, 30 Apr 2020 16:03:06 +0300
-In-Reply-To: <ae6593445a8329735ef6fc6c8f395c328fe04dc1.camel@redhat.com>
-References: <20190721181508.28608-1-mlevitsk@redhat.com>
- <20190721181508.28608-2-mlevitsk@redhat.com>
- <20190722090556.GC23775@redhat.com>
- <ae6593445a8329735ef6fc6c8f395c328fe04dc1.camel@redhat.com>
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (envelope-from <peter.maydell@linaro.org>) id 1jUBUH-00032U-JF
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:54:57 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41490)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jUBUH-000327-1P
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:52:33 -0400
+Received: by mail-ot1-x342.google.com with SMTP id c3so5299510otp.8
+ for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2020 08:52:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=OqJGNyVDz211UW5Fz6r9VsMwrvbPs0yJjE+VVXfRzaY=;
+ b=NgU1xVL5dlm6s/vd508ky3LILETIShXJR9DvsuTXIu5wNU14jxv6LBeelmlVsqo37m
+ c2QNxwyA/zH6z8Lqphum/NUhatGuN6BJoSdiYBcpFn97mCkPfLmGuieq440TQ9mn+nuW
+ zRjsWCLdCgIAOV6GM+b3n/oMIcnIqba0AzXs70I/IscDhUJhogpLitXw65PaAqlo26S6
+ TXy5KJ68AgZp8X++SD580wRKofYxCsok3P1UEVhFufdvSQgPbkE9NP2zfJlv8fHqsZeF
+ WRx049Yai0N6D/FaxPdHv+fPwa18tg9AEuTToU4VUoOV9Xd4/CWChKimAhPzc9QHgzHg
+ 8eTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=OqJGNyVDz211UW5Fz6r9VsMwrvbPs0yJjE+VVXfRzaY=;
+ b=H740l8KTHdSoVPMGMZCuq6JDCImDYYZsLpS1dGwOJvzaT5DiRD5hOCMSR7GNUOujQc
+ Il4044XFtEuDcLko+Py32B81cpadvwQmKzmJVmS5e5Xdn79akyEhIs4nKQv71kR2sI7d
+ u4S0NK0P/tJQ8+RIqRde19NuRQTMTkaFshelBnEVdtqkTSMmcA7dRWk1+Tgw8jcL5ULb
+ w8FHojgjAM90SczRHz2iwiFMQwXWeHFb56JFPmLvknPGtpEqO/BeC9K7QFQVsatq1/A9
+ thXt3/J/2qobdyu0n46dimnzuOllptuCHwX09SsqgUJv7bYWHZzIU5wu2C6vqafG8Gaz
+ l6iQ==
+X-Gm-Message-State: AGi0PuZK82uf2gqMcF6zeQU7wB2ZpkTgTS+6OJwFeloRfeaxYtSMfk7s
+ UsJMETm60w+wWFxnvjkG9mjM8ph7LqGjc9x27VRY2w==
+X-Google-Smtp-Source: APiQypKwzEHA9CQrVuq2torBs0zfWrQDfXi7K37xxkMF51uz0u5so8s1eR9NSMClyelz1K3Qsbw2lqjkl0oxr/kMA/Q=
+X-Received: by 2002:a05:6830:22dc:: with SMTP id
+ q28mr2937146otc.221.1588261951836; 
+ Thu, 30 Apr 2020 08:52:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200428154650.21991-1-f4bug@amsat.org>
+In-Reply-To: <20200428154650.21991-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2020 16:52:21 +0100
+Message-ID: <CAFEAcA-1FmK0x3+X2Gzd_e20oz4OaRWV=CSVHA7EOLjc3EvJGw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/mps2-tz: Use TYPE_IOTKIT instead of hardcoded
+ string
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=mlevitsk@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/30 01:04:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,59 +72,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2020 13:08:21 -0000
+X-List-Received-Date: Thu, 30 Apr 2020 15:56:07 -0000
 
-On Thu, 2020-04-30 at 15:18 +0300, Maxim Levitsky wrote:
-> On Mon, 2019-07-22 at 10:05 +0100, Daniel P. Berrang=C3=A9 wrote:
-> > On Sun, Jul 21, 2019 at 09:15:07PM +0300, Maxim Levitsky wrote:
-> > > Currently if you attampt to create too large file with luks you
-> > > get the following error message:
-> > >=20
-> > > Formatting 'test.luks', fmt=3Dluks size=3D17592186044416 key-secret=
-=3Dsec0
-> > > qemu-img: test.luks: Could not resize file: File too large
-> > >=20
-> > > While for raw format the error message is
-> > > qemu-img: test.img: The image size is too large for file format 'raw'
-> > >=20
-> > >=20
-> > > The reason for this is that qemu-img checks for errono of the failure=
-,
-> > > and presents the later error when it is -EFBIG
-> > >=20
-> > > However crypto generic code 'swallows' the errno and replaces it
-> > > with -EIO.
-> > >=20
-> > > As an attempt to make it better, we can make luks driver,
-> > > detect -EFBIG and in this case present a better error message,
-> > > which is what this patch does
-> > >=20
-> > > The new error message is:
-> > >=20
-> > > qemu-img: error creating test.luks: The requested file size is too la=
-rge
-> > >=20
-> > > Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=3D1534898
-> > > Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> > > ---
-> > >  block/crypto.c | 25 +++++++++++++++++++++----
-> > >  1 file changed, 21 insertions(+), 4 deletions(-)
-> >=20
-> > Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->=20
->=20
-> Could someone pick to a maintainer tree, now that freeze is over?
->=20
->=20
-> Best regards,
-> =09Maxim Levitsky
-> >=20
-> > Regards,
-> > Daniel
->=20
->=20
-I replied to an old version, please disregard,
-Best regards,
-=09Maxim Levitsky
+On Tue, 28 Apr 2020 at 16:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> By using the TYPE_* definitions for devices, we can:
+>  - quickly find where devices are used with 'git-grep'
+>  - easily rename a device (one-line change).
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/mps2-tz.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
+
+
+Applied to target-arm.next, thanks.
+
+-- PMM
 
