@@ -1,66 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jUBXl-0000It-BA
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2020 11:56:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44614)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUBWb-0007cK-LM
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:56:07 -0400
+	id 1jUjGJ-0003WH-FD
+	for mharc-qemu-trivial@gnu.org; Fri, 01 May 2020 23:56:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60468)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <johnnymarler@gmail.com>)
+ id 1jUjCn-00029p-Mi
+ for qemu-trivial@nongnu.org; Fri, 01 May 2020 23:56:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUBUH-00032U-JF
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:54:57 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41490)
+ (envelope-from <johnnymarler@gmail.com>) id 1jUjB2-0002bm-5M
+ for qemu-trivial@nongnu.org; Fri, 01 May 2020 23:52:45 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37737)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jUBUH-000327-1P
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2020 11:52:33 -0400
-Received: by mail-ot1-x342.google.com with SMTP id c3so5299510otp.8
- for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2020 08:52:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=OqJGNyVDz211UW5Fz6r9VsMwrvbPs0yJjE+VVXfRzaY=;
- b=NgU1xVL5dlm6s/vd508ky3LILETIShXJR9DvsuTXIu5wNU14jxv6LBeelmlVsqo37m
- c2QNxwyA/zH6z8Lqphum/NUhatGuN6BJoSdiYBcpFn97mCkPfLmGuieq440TQ9mn+nuW
- zRjsWCLdCgIAOV6GM+b3n/oMIcnIqba0AzXs70I/IscDhUJhogpLitXw65PaAqlo26S6
- TXy5KJ68AgZp8X++SD580wRKofYxCsok3P1UEVhFufdvSQgPbkE9NP2zfJlv8fHqsZeF
- WRx049Yai0N6D/FaxPdHv+fPwa18tg9AEuTToU4VUoOV9Xd4/CWChKimAhPzc9QHgzHg
- 8eTQ==
+ (Exim 4.90_1) (envelope-from <johnnymarler@gmail.com>)
+ id 1jUjB1-0002bK-Me
+ for qemu-trivial@nongnu.org; Fri, 01 May 2020 23:50:55 -0400
+Received: by mail-pl1-x641.google.com with SMTP id a21so810372pls.4
+ for <qemu-trivial@nongnu.org>; Fri, 01 May 2020 20:50:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Dz+gbxdaWmQyAZeXjiBi7Ecu2ECehDjlt0/PgCoMzPI=;
+ b=DbYp8aGkCDknsVLctySE25rAFAWJqJAz6gSurUQvJxn1FFGWudmJaL95cx4egPasS2
+ VDYvGAOngnob0ZwQqQ0S/ECI2EcNUgFR2CKCBa3YCl0uXeUC2D2AfzAfx2GkwTAVO5GC
+ qn9jyNvhMTjGCw1eclnP/wFsgBP0Z9MUlboB0VWrx535IVCD50ScHEH7scHxRGaXl4o2
+ MAi3ejybVaJmdx/kMxdWqTc5uVyVKLzUREIc3Ok8v6Tvv6x9SaP07z8ebwmRq2+MUfPC
+ FgjXE3CTP8pRX0p9wCS1CVzRdMJjOyei1oUZNR8yYgZYUo3dnKJ3ZiFBHowbQFN1hCVM
+ oSLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=OqJGNyVDz211UW5Fz6r9VsMwrvbPs0yJjE+VVXfRzaY=;
- b=H740l8KTHdSoVPMGMZCuq6JDCImDYYZsLpS1dGwOJvzaT5DiRD5hOCMSR7GNUOujQc
- Il4044XFtEuDcLko+Py32B81cpadvwQmKzmJVmS5e5Xdn79akyEhIs4nKQv71kR2sI7d
- u4S0NK0P/tJQ8+RIqRde19NuRQTMTkaFshelBnEVdtqkTSMmcA7dRWk1+Tgw8jcL5ULb
- w8FHojgjAM90SczRHz2iwiFMQwXWeHFb56JFPmLvknPGtpEqO/BeC9K7QFQVsatq1/A9
- thXt3/J/2qobdyu0n46dimnzuOllptuCHwX09SsqgUJv7bYWHZzIU5wu2C6vqafG8Gaz
- l6iQ==
-X-Gm-Message-State: AGi0PuZK82uf2gqMcF6zeQU7wB2ZpkTgTS+6OJwFeloRfeaxYtSMfk7s
- UsJMETm60w+wWFxnvjkG9mjM8ph7LqGjc9x27VRY2w==
-X-Google-Smtp-Source: APiQypKwzEHA9CQrVuq2torBs0zfWrQDfXi7K37xxkMF51uz0u5so8s1eR9NSMClyelz1K3Qsbw2lqjkl0oxr/kMA/Q=
-X-Received: by 2002:a05:6830:22dc:: with SMTP id
- q28mr2937146otc.221.1588261951836; 
- Thu, 30 Apr 2020 08:52:31 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Dz+gbxdaWmQyAZeXjiBi7Ecu2ECehDjlt0/PgCoMzPI=;
+ b=AB+Xoy//zYa7WTVcVRzSOP3/ofKZDYDw3EWygLoGzgKKlIxX4NCil2T2GA0ioZxVzV
+ TeD9ZCtxHs2VZZC8eVy/I3EQqqIm+E2Sms6bDxtvM94WH8wJAIy0ipXG48PR8OEl9q2/
+ uQ1ftrrTInja9CzvPnvZr1WMSQXEVOE9hLwgbIVE98B8em0uajfon+h0hlh9hYuelp+m
+ ziModRSoWF56kVgM4NiGb+nog6RFov7q2E7XswTAEzwuwALzLYMiRGrzjrqK4FNiLUNR
+ jD9znw41K2zvEa+LCLGg0xsPf79qgiVwSFj7LF9i+idrUVNtm+k0e0vpfhjqowZ0iyvS
+ HzHg==
+X-Gm-Message-State: AGi0PubrLcpRU/6w0cpSQ66NZXGQ+8IL2A4fp8wqzm9mdSl3jVYE21h9
+ +YjNEBSbMOQ4rLNM3LEZ38EbPCUYzpagtotU
+X-Google-Smtp-Source: APiQypLwBP2zyueiAdVTAKmxaJkcXRUf4z+cI1iDxDzwkxmCF59emonSABeLwB2L2fJXpABvpXS8kA==
+X-Received: by 2002:a17:90a:589:: with SMTP id
+ i9mr3366083pji.156.1588391453124; 
+ Fri, 01 May 2020 20:50:53 -0700 (PDT)
+Received: from localhost.localdomain (96-19-96-19-192-232.cpe.sparklight.net.
+ [96.19.192.232])
+ by smtp.gmail.com with ESMTPSA id f2sm929986pju.32.2020.05.01.20.50.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 May 2020 20:50:52 -0700 (PDT)
+From: Jonathan Marler <johnnymarler@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: Jonathan Marler <johnnymarler@gmail.com>
+Subject: [PATCH] linux-user/mmap.c: fix integer underflow during mremap shrink
+Date: Fri,  1 May 2020 21:50:48 -0600
+Message-Id: <20200502035048.4720-1-johnnymarler@gmail.com>
+X-Mailer: git-send-email 2.23.1
 MIME-Version: 1.0
-References: <20200428154650.21991-1-f4bug@amsat.org>
-In-Reply-To: <20200428154650.21991-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2020 16:52:21 +0100
-Message-ID: <CAFEAcA-1FmK0x3+X2Gzd_e20oz4OaRWV=CSVHA7EOLjc3EvJGw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/mps2-tz: Use TYPE_IOTKIT instead of hardcoded
- string
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
+ envelope-from=johnnymarler@gmail.com; helo=mail-pl1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,23 +74,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2020 15:56:07 -0000
+X-List-Received-Date: Sat, 02 May 2020 03:56:22 -0000
 
-On Tue, 28 Apr 2020 at 16:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> By using the TYPE_* definitions for devices, we can:
->  - quickly find where devices are used with 'git-grep'
->  - easily rename a device (one-line change).
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/mps2-tz.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
+---
+ linux-user/mmap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index e378033797..da0fe4cc86 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -708,7 +708,8 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
+         if (prot == 0) {
+             host_addr = mremap(g2h(old_addr), old_size, new_size, flags);
+             if (host_addr != MAP_FAILED && reserved_va && old_size > new_size) {
+-                mmap_reserve(old_addr + old_size, new_size - old_size);
++                if (new_size > old_size)
++                    mmap_reserve(old_addr + old_size, new_size - old_size);
+             }
+         } else {
+             errno = ENOMEM;
+-- 
+2.23.1
 
-
-Applied to target-arm.next, thanks.
-
--- PMM
 
