@@ -1,62 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jUult-0007FC-Qi
-	for mharc-qemu-trivial@gnu.org; Sat, 02 May 2020 12:13:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43460)
+	id 1jVCrG-0001sf-VT
+	for mharc-qemu-trivial@gnu.org; Sun, 03 May 2020 07:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <johnnymarler@gmail.com>)
- id 1jUulr-0007Be-PO
- for qemu-trivial@nongnu.org; Sat, 02 May 2020 12:13:44 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <johnnymarler@gmail.com>) id 1jUulq-0000Pt-0W
- for qemu-trivial@nongnu.org; Sat, 02 May 2020 12:13:43 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:39780)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVCrF-0001sT-DS; Sun, 03 May 2020 07:32:29 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37724)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <johnnymarler@gmail.com>)
- id 1jUulp-0000PS-JK; Sat, 02 May 2020 12:13:41 -0400
-Received: by mail-lf1-x141.google.com with SMTP id h26so3168975lfg.6;
- Sat, 02 May 2020 09:13:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVCrE-0008KO-0l; Sun, 03 May 2020 07:32:29 -0400
+Received: by mail-wm1-x344.google.com with SMTP id z6so5480741wml.2;
+ Sun, 03 May 2020 04:32:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QI6dDMD60TcAVgWF0v5LoxJFHaYci7038PFh0Hlgf7c=;
- b=s+b8/mIcq7wiNrvxItcAt/G/55wRld9lz4OvJhEy2GbCrx4uARf25Wz6qZZZNiT4QQ
- i1MvYZ5aUN5Vx1AkIUbBgZpV8RlnpqiZrNpbKG4CZv+5auVnGgvtn2U+jOj8DK0oMyZC
- 7SXIUtNaHkCRBRKLpWabr3ajDNEVsGcDPIWh2PAg67cr+Z36hSiGxsAwQBbW5XUw2dHm
- bLwXjyQ4DxwKk3Oq/idkiu2uRSc9iZh3w7AP6VkP1XrUZdTcj88sLnvXmXDZmM0AIMiy
- 8A4Pynxpum2zdMeRm/Y4uSfpo0gx9EIA0to5gz2F6Kct0leznSZ+XZl8WeVmu6BxRalB
- ZOrw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f1nPi+oQinHEr6TQxWwU7YkttsDFOpqeOrrr/3RoJBA=;
+ b=YPCKPQTifNurp4ArMBxRLl/kA/eqZ68wvmv/vu05nyRNlWCNi0ZoZLs3z/0O83/YXF
+ mzO/Z01o0vGAVWS4edsOqCjXspH3u/2p77VgQy09Lgvr02bObyaKdo4cg5Gkmbcf4uij
+ 09TCv1pxVAq5iG6ZynGuPq2TrenU9jZktwK7rOOC1hsV0oVwadQlvLZW2XBN/JqYzZGl
+ IyecscWpIqd0nNKYDvFMGzSatDuCWwFL25MGJFjFRbmbUTmjjl82tF0Hs7ETeBHHmegZ
+ Ur3AbkYIPeKgoRZT8lYhbtynaByGX/RBKn2lXDNWs2e8rhDo8OGF+rAnUycHfxLpKFbE
+ pB6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QI6dDMD60TcAVgWF0v5LoxJFHaYci7038PFh0Hlgf7c=;
- b=AjF6qBua9mBUF0RDMUf6OuewA9CEwBDCpaz6+U5fHV0GpJeOEnFeVd17HaBHFXQIXr
- e1w03QBBep7Ay6ARO0t03kwEb4xU5eaiSzLIizLC7vpRv1eoIjC2QeIkCFskgJDzucEb
- tz2iA5gDVkUm1BHq6/pHGXoE2p5dax+rtZWbqRrJ1/fqwfmctSNACDap3aJhd96MJHYG
- dtleO2VxJtOOe4FxhwVjCrq4UcY/MXf61Gsf0pbbqvA032p23CQIKcnoVALQtchgPhzr
- 9U5NH3DvwIn7oS0TUBRuaVAQXVJbTZ8ZE8jtoG/WtIZrQswiUhQ3L7PkMlGrl0pGksc/
- /wVA==
-X-Gm-Message-State: AGi0Puag3M+pdsiMq0IKIM1Z7XGzgXVu7j5/w9cLu04j2vyYtIFStgQF
- cUKWCoLLVVyhyJFGvPtN5yTMVPDifD94cyx0fxeZONkOXJwwtw==
-X-Google-Smtp-Source: APiQypIXPPkQ8+ECle3XDMN0VzxBnbMuBgByH4tCg7SN5ZwZIbSeGrD68tqnw1g2xyx9qHIYFu9XWXTlESEQRH+lGJk=
-X-Received: by 2002:ac2:5395:: with SMTP id g21mr5983408lfh.61.1588436019543; 
- Sat, 02 May 2020 09:13:39 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=f1nPi+oQinHEr6TQxWwU7YkttsDFOpqeOrrr/3RoJBA=;
+ b=WRh6thVqISPL2m5wiTUKejTn1Sn/odgJ3iDdqjbD1rynE5WFZJquD0M1C+hapXEkle
+ HvSMfbY8gmPfQ5j+mUA6g3GqtOVUqSIxsA7a4uSkBwHTwtDW3QNkp5Dk2nSokFe2/lfF
+ n1gKSWVRsE9A0ZLrU0OCGvTjpEy16MCiNCVOcPZ/o6VojWY+YV1NCjZt3DPau3yxFvF2
+ XSyDzZAXwuhxpCgKWatWvLw1FxH6pSdlVeac79+YH9SZYIC5j2z3/TETCTki0gHgKzRF
+ R6HcHd7bPpDqTtZtwynaJ6ZH+4C4LakMBG/pUMXFdonTwiEEech1XLfmbSNjhpuJUnLy
+ 4kkg==
+X-Gm-Message-State: AGi0PuYMUb1Gn1hbv1zGjsVVZI9EsaFKcQ4qZAZbr11XXsDNKVwl8WPN
+ q4/tKfKp1RXCbki76XMhCGiAMXKa
+X-Google-Smtp-Source: APiQypIlNdICjVUNCPCJ8NEfdAXcoMGNDAxDdh2Qzrp1bTLvVeIj77swUpzIqLT1syNonJFC319Vtg==
+X-Received: by 2002:a1c:9cc6:: with SMTP id f189mr8859204wme.75.1588505545434; 
+ Sun, 03 May 2020 04:32:25 -0700 (PDT)
+Received: from localhost.localdomain (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id n9sm13485904wrx.61.2020.05.03.04.32.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 03 May 2020 04:32:24 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-trivial@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [RFC PATCH 0/2] misc: fix Clang10 warnings
+Date: Sun,  3 May 2020 13:32:18 +0200
+Message-Id: <20200503113220.30808-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200502074901.30784-1-johnnymarler@gmail.com>
- <fb7daa98-f403-6388-0958-c0d821efe835@vivier.eu>
-In-Reply-To: <fb7daa98-f403-6388-0958-c0d821efe835@vivier.eu>
-From: Jonathan Marler <johnnymarler@gmail.com>
-Date: Sat, 2 May 2020 10:13:29 -0600
-Message-ID: <CACKT+Ao=5ZqmEz8evVJFzgUoRHYo+wqyetVVaX7Qv6EJzrFMrw@mail.gmail.com>
-Subject: Re: [PATCH] linux-user/mmap.c: fix integer underflow in target_mremap
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000b19d7305a4ac9400"
-Received-SPF: pass client-ip=2a00:1450:4864:20::141;
- envelope-from=johnnymarler@gmail.com; helo=mail-lf1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::141
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,123 +80,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 May 2020 16:13:44 -0000
+X-List-Received-Date: Sun, 03 May 2020 11:32:29 -0000
 
---000000000000b19d7305a4ac9400
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Fix 2 warnings when building with Clang on Fedora32.
 
-Yes the first patch was incorrect.  The second patch should be the correct
-one.
+Philippe Mathieu-Daudé (2):
+  audio/mixeng: Fix Clang 'int-conversion' warning
+  linux-user/mmap: Fix Clang 'type-limit-compare' warning
 
-Thanks for the guidance.  I have created a new patch with a "Fixes: ..."
-and a description of the fix, and have sent that patch to
-qemu-devel@nongnu.org
+ audio/mixeng.c    | 2 +-
+ linux-user/mmap.c | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-On Sat, May 2, 2020 at 2:38 AM Laurent Vivier <laurent@vivier.eu> wrote:
+-- 
+2.21.3
 
-> Hi,
->
-> does this patch replace your previous one?
->
-> Please add more details in the description, as you did in the launchpad
-> bug.
->
-> You can also add:
-> Fixes: https://bugs.launchpad.net/bugs/1876373
->
-> You must also send the patch to qemu-devel@nongnu.org
->
-> Thanks,
-> Laurent
->
-> Le 02/05/2020 =C3=A0 09:49, Jonathan Marler a =C3=A9crit :
-> > Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
-> > ---
-> >  linux-user/mmap.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-> > index e378033797..caab62909e 100644
-> > --- a/linux-user/mmap.c
-> > +++ b/linux-user/mmap.c
-> > @@ -708,7 +708,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulon=
-g
-> old_size,
-> >          if (prot =3D=3D 0) {
-> >              host_addr =3D mremap(g2h(old_addr), old_size, new_size,
-> flags);
-> >              if (host_addr !=3D MAP_FAILED && reserved_va && old_size >
-> new_size) {
-> > -                mmap_reserve(old_addr + old_size, new_size - old_size)=
-;
-> > +                mmap_reserve(old_addr + old_size, old_size - new_size)=
-;
-> >              }
-> >          } else {
-> >              errno =3D ENOMEM;
-> >
->
->
-
---000000000000b19d7305a4ac9400
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Yes the first patch was incorrect.=C2=A0 The second patch =
-should be the correct one.<div><br></div><div>Thanks for the guidance.=C2=
-=A0 I have created a new patch with a &quot;Fixes: ...&quot; and a descript=
-ion of the fix, and have sent that patch to <a href=3D"mailto:qemu-devel@no=
-ngnu.org">qemu-devel@nongnu.org</a></div></div><br><div class=3D"gmail_quot=
-e"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, May 2, 2020 at 2:38 AM Lau=
-rent Vivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&=
-gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi,<b=
-r>
-<br>
-does this patch replace your previous one?<br>
-<br>
-Please add more details in the description, as you did in the launchpad bug=
-.<br>
-<br>
-You can also add:<br>
-Fixes: <a href=3D"https://bugs.launchpad.net/bugs/1876373" rel=3D"noreferre=
-r" target=3D"_blank">https://bugs.launchpad.net/bugs/1876373</a><br>
-<br>
-You must also send the patch to <a href=3D"mailto:qemu-devel@nongnu.org" ta=
-rget=3D"_blank">qemu-devel@nongnu.org</a><br>
-<br>
-Thanks,<br>
-Laurent<br>
-<br>
-Le 02/05/2020 =C3=A0 09:49, Jonathan Marler a =C3=A9crit=C2=A0:<br>
-&gt; Signed-off-by: Jonathan Marler &lt;<a href=3D"mailto:johnnymarler@gmai=
-l.com" target=3D"_blank">johnnymarler@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 linux-user/mmap.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/linux-user/mmap.c b/linux-user/mmap.c<br>
-&gt; index e378033797..caab62909e 100644<br>
-&gt; --- a/linux-user/mmap.c<br>
-&gt; +++ b/linux-user/mmap.c<br>
-&gt; @@ -708,7 +708,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulo=
-ng old_size,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (prot =3D=3D 0) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 host_addr =3D mremap(g=
-2h(old_addr), old_size, new_size, flags);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (host_addr !=3D MAP=
-_FAILED &amp;&amp; reserved_va &amp;&amp; old_size &gt; new_size) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mmap_reserve(=
-old_addr + old_size, new_size - old_size);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mmap_reserve(=
-old_addr + old_size, old_size - new_size);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 errno =3D ENOMEM;<br>
-&gt; <br>
-<br>
-</blockquote></div>
-
---000000000000b19d7305a4ac9400--
 
