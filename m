@@ -1,81 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVIGA-0007ij-RK
-	for mharc-qemu-trivial@gnu.org; Sun, 03 May 2020 13:18:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49568)
+	id 1jVJuY-0001gX-8e
+	for mharc-qemu-trivial@gnu.org; Sun, 03 May 2020 15:04:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33404)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jVIG8-0007Y7-Ff
- for qemu-trivial@nongnu.org; Sun, 03 May 2020 13:18:32 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:38924)
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jVJuW-0001f2-4Q; Sun, 03 May 2020 15:04:20 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36231)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jVIG7-0007LT-BO
- for qemu-trivial@nongnu.org; Sun, 03 May 2020 13:18:32 -0400
-Received: by mail-pf1-x443.google.com with SMTP id 18so4376754pfx.6
- for <qemu-trivial@nongnu.org>; Sun, 03 May 2020 10:18:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KGIW5W7BgT3oIKOmWT+7ki2S7423w+LxIvwe9IaaH4Q=;
- b=PDn3TSoRsk/PRdvsZMA1VcX0LExYFAI1AG5YwP4b1PV4e9LFjBeTdtMRdgBXbrrP5g
- 9x4vDskQM636vUZ242oRHd9GZwGr1AMuBVv9PGlWMfDmC6620Ok0zh874blWLwH9m60X
- spZuPiYnWOvMrq7DA542anV9d4WiX9hC+LEA8FetIN5kxuzE2FzeuxhW1Dvn7HLMzmAm
- +jEdSKPQYnFVZAKIXpOq4FAlyrUZbztntoQPtSXcItA1BUWJIuBvs+XaiwbYSyQaTvWT
- pliLCONPYjZNmmxiiuEw1Sh9VWA6p6Gqxtx0XWCRqq+g3la0Hj+0oEiRux421dophJaZ
- ENVQ==
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jVJuU-0007Yn-H9; Sun, 03 May 2020 15:04:19 -0400
+Received: by mail-wr1-x443.google.com with SMTP id d15so18328941wrx.3;
+ Sun, 03 May 2020 12:04:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=41/IStyiu74sSS/aN+F7TBYubDOeaoaS5GLBPdHLcFI=;
+ b=aKq4OPdWqpiAgWySCtJTu0nj9ZvfSWqM+HPdbm9n7mSml8ktbDo59K+NSdRUROwT9Y
+ B7mp1Nr/Erhhst3By9oiCII7BNI45itli1LlvNSCWaVAvLT+ibAT5rgGKt9eUG2mUu4r
+ JrmMnXpIdz0niLiV8VoB+s3l/df7g0wNrDVBVrWI5++JW0Lezq+dA0/0xhHMwEKEbZIs
+ hR/9ydTJloTtl/NJr3GBheBtVve+1MDoj6ydd4I4yRdzIdVmZ3ZoaLuu2mqXPGmDdbrJ
+ yDYZQI6nO1bliZiSuxKASSiGjCGxpa5BSQ3A2+GclPn2WuyuksSCbKBxlSlsjknoKGGn
+ ADJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KGIW5W7BgT3oIKOmWT+7ki2S7423w+LxIvwe9IaaH4Q=;
- b=gbjre0Ft5dW3z0k6fPycWCUJXGDRZEEWqAcq/hKz27CvPRZpURu3G9GF2NFNVWjDYS
- uPQOrDlwhNRLU1HUVtYiN8fidkozuA0Y9rFcX9eDjaFVpGATySM6/rxqMhCECszteXJk
- 5PArnuwwzAC8BvVN6zhLPUW8+LxJofipyJvIzX3jXYTD4hEF5V0EuHtUdfjzlF3RTRis
- atTt2KLPvhAlcSoJtxuqtI8PgLqG1znlQKqqMHv+Kz2K55U7UEYrEliEgJ02tp8DBY4E
- S8oMabKZHC8Z+FT6JovluCmgk+GLxbTEvhLiVmBEggXCWvyFuVwiNhFw7ZI+MGfhq4aw
- t22A==
-X-Gm-Message-State: AGi0PuZO60ZErKYSG6GkiMua29MiVvTkvAsd1A7X8ih1gSI7nIQCbTcG
- EPOAtD74g72MTFKkEjabiAOahw==
-X-Google-Smtp-Source: APiQypIJ+v1FaltfSk1XL74NfJG4CWgckDvRZFTLuvKABx96kJGWcP0VSYPw3JpNpQehPFqHEq5MXA==
-X-Received: by 2002:a62:1bd0:: with SMTP id
- b199mr13751624pfb.283.1588526309745; 
- Sun, 03 May 2020 10:18:29 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id h14sm4548356pjc.46.2020.05.03.10.18.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 May 2020 10:18:29 -0700 (PDT)
-Subject: Re: [RFC PATCH 2/2] linux-user/mmap: Fix Clang 'type-limit-compare'
- warning
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
- Gerd Hoffmann <kraxel@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=41/IStyiu74sSS/aN+F7TBYubDOeaoaS5GLBPdHLcFI=;
+ b=IEeEw85rb98zz/UVlKr5Cg7q2S8dG7rNcXaQV/D1sziIwC3Xu6KwAEqIiGUBJmuB0Q
+ WDTIlopjK37tpZR+PghAR0NUyl0PAfGzzTHli27fjrCtJvXtA9eGJyOr9HeB3Euc7SRc
+ iOvQdCPw4BjvZtLW50v/1TB+qCETL53vTYny2Z7eGjvB986MVdRHazMknFrY5vsQCHJZ
+ 4bebUT2NjpRWn0Hrlq03D887DbIBF59iOMAUvA5hO6LWMLLurHL3wBAfH/KMKYMis3vZ
+ OcruAlGqNUy2MM17v133JmZctOLjxBky2nQJuLYi9ZeESF8cUrX4zakJn4E9rssGH244
+ cyaA==
+X-Gm-Message-State: AGi0PuZAy1pH1psQXxSDEQXiI0HyEtslOh8X9aVyNEHQOzqzuh5ff92l
+ HHAT1wN8Mk5ZCdoFc0tQPNMQZKiFg7PjC8kBnqU=
+X-Google-Smtp-Source: APiQypKVHBS+NXaSXJ/llFw3TFvsp7OLD8sD2dlBPmYU353zmN6OnIeoCUOeDGofWdlmHfE5onw8yzwZTkdDaKQGk+c=
+X-Received: by 2002:adf:dc50:: with SMTP id m16mr15106994wrj.329.1588532656614; 
+ Sun, 03 May 2020 12:04:16 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200503113220.30808-1-f4bug@amsat.org>
  <20200503113220.30808-3-f4bug@amsat.org>
- <CAHiYmc61KAjFHuYCMyRunkfMdf4DD83TFTo4DJF-58KZ5YQ+Jg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <cf98c9d2-a671-3efe-3e12-858f46a4a746@linaro.org>
-Date: Sun, 3 May 2020 10:18:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAHiYmc61KAjFHuYCMyRunkfMdf4DD83TFTo4DJF-58KZ5YQ+Jg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
+In-Reply-To: <20200503113220.30808-3-f4bug@amsat.org>
+From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Date: Sun, 3 May 2020 21:04:03 +0200
+Message-ID: <CAHiYmc6LC7B=Ce9a746emqqGbYCxtacFGd=TRBCzJiktRNWcXg@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/2] linux-user/mmap: Fix Clang 'type-limit-compare'
+ warning
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>, 
+ Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,64 +72,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 03 May 2020 17:18:32 -0000
+X-List-Received-Date: Sun, 03 May 2020 19:04:20 -0000
 
-On 5/3/20 5:49 AM, Aleksandar Markovic wrote:
-> нед, 3. мај 2020. у 13:33 Philippe Mathieu-Daudé <f4bug@amsat.org> је
-> написао/ла:
->>
->> When building with Clang 10 on Fedora 32, we get:
->>
->>     CC      linux-user/mmap.o
->>   linux-user/mmap.c:720:49: error: result of comparison 'unsigned long' > 18446744073709551615 is always false [-Werror,-Wtautological-type-limit-compare]
->>           if ((unsigned long)host_addr + new_size > (abi_ulong)-1) {
->>               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~
->>
->> Fix by restricting the check for when target sizeof(abi_ulong) is
->> smaller than target sizeof(unsigned long).
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  linux-user/mmap.c | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
->> index e378033797..b14652d894 100644
->> --- a/linux-user/mmap.c
->> +++ b/linux-user/mmap.c
->> @@ -714,6 +714,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
->>              errno = ENOMEM;
->>              host_addr = MAP_FAILED;
->>          }
->> +#if TARGET_ABI_BITS < TARGET_LONG_BITS
->>          /* Check if address fits target address space */
->>          if ((unsigned long)host_addr + new_size > (abi_ulong)-1) {
->>              /* Revert mremap() changes */
->> @@ -721,6 +722,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
->>              errno = ENOMEM;
->>              host_addr = MAP_FAILED;
->>          }
->> +#endif /* TARGET_ABI_BITS < TARGET_LONG_BITS */
-> 
-> Hm, Philippe, this will silence the clang error, but is this the right
-> thing to do?
-> 
-> Why do you think the case:
-> 
-> TARGET_ABI_BITS < TARGET_LONG_BITS
-> 
-> doesn't need this check?
+> +#if TARGET_ABI_BITS < TARGET_LONG_BITS
+>          /* Check if address fits target address space */
+>          if ((unsigned long)host_addr + new_size > (abi_ulong)-1) {
 
-I think that's quite obvious from the clang warning -- the test is always false
-due to type limits.
+It would be clearer if "#if  TARGET_LONG_BITS > TARGET_ABI_BITS"
+is used, to match the comparison in if() statement.
 
-That said, this is at minimum the second occurrence of having to add ifdefs to
-work around this particular new warning, because there does not seem to be any
-other way to suppress the warning, and I'm not keen on that.
-
-I would prefer that we disable the warning on the compiler command line in
-configure.
-
-
-r~
+>              /* Revert mremap() changes */
+> @@ -721,6 +722,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
+>              errno = ENOMEM;
+>              host_addr = MAP_FAILED;
+>          }
+> +#endif /* TARGET_ABI_BITS < TARGET_LONG_BITS */
+>      }
+>
+>      if (host_addr == MAP_FAILED) {
+> --
+> 2.21.3
+>
+>
 
