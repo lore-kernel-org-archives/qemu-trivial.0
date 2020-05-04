@@ -1,54 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZjg-0002ti-J1
+	id 1jVZjg-0002uK-PD
 	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51970)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjd-0002lb-LQ; Mon, 04 May 2020 07:58:09 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:56681)
+ id 1jVZje-0002oU-QJ; Mon, 04 May 2020 07:58:10 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:51679)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjY-0001mN-Sg; Mon, 04 May 2020 07:58:09 -0400
+ id 1jVZjd-0001mg-Pa; Mon, 04 May 2020 07:58:10 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MbBQU-1iyix72864-00bc8I; Mon, 04 May 2020 13:58:01 +0200
+ id 1MUog3-1jekfK0kJF-00Qi79; Mon, 04 May 2020 13:58:03 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: [PULL 00/20] Trivial branch for 5.1 patches
-Date: Mon,  4 May 2020 13:57:38 +0200
-Message-Id: <20200504115758.283914-1-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>
+Subject: [PULL 02/20] display/blizzard: use extract16() for fix clang analyzer
+ warning in blizzard_draw_line16_32()
+Date: Mon,  4 May 2020 13:57:40 +0200
+Message-Id: <20200504115758.283914-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
+References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:tBJwOv8bE2eBF0fY88vmkqDjUtbtgnP3SpYz/dhSbso72ASJPkG
- ndE3/gGPxGCWHPUy1gsXcbd9CPcDVnLdfQc34oi/ROVkkcrXmBrC+OVxGwX/9OF/xXVBZmp
- swNSSYWag5NrXw7gxT/IXUFX/Ll6ZMgIx/zT0Ry9qOq/1Up4r4hnn9bACnHlUr8zfoqGdZX
- 37gro6HqzmOn9+z/q7ztg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:98VtgozjV6w=:hQeQlZYBUIJK1UMxNxwKyA
- Ykbh1rsPZ40BpSfIRGaF9iINdTlA2oC5fp9ssbv0ck1tuYH9brjqpRMdQLnwUzbRIvjiW4PEU
- CXmJL5FwdIQC1Yc0miRu+7aNsm2aVc77CUDagybL+yRRk7wNu5f795yoQxR9/wsXkHwCru/Jt
- jP+GtrgR9dBxUp0Euq1Yx7/wBZh32edipXooqXHaDK9EtzjcgZmPggbkxlYHp5J116QcLY6wV
- hwRPr8Ifln2mYpcQFzEptgtFS7+KeXe8JWXI/0Fao42kFZKQlKmRG61vxF6pUBCxLWBl3Pcef
- g5YcBnVNcVRoCAG3bBeG/wH3WsfdJ/EKG+x/16UbKzeQ6CVnYX2lEdkI77+Z7ASDF4qX5iRue
- ih7kceKyQ8LTq4WX46Ib6z3K9VdnJwp8qzty9NpfSM8ajUszHhQZ9ePl8pmmAvxtMryc8AkXJ
- 3LaFgdLUmyW9QPk4ut7Fj2XfQPiW9+Zmh3deLfDtaYkugXVXtr1ddyyxhFkAymQzh/6AIJ7qX
- Jz8Uyo0yZrpW7HxFSmQ7tAdWLqKgiYArRI0eXhhk3o440lzxJ6dBeo11ChUipvNF2xPaDOzdn
- TKzM5ElW64dQWpcQ1L8QSzhD8fEH0xc0E4/qnxlt/Oi8ypfY7coK8F59rZzKclfAqnl/sJIxf
- U3a9Nsn87/ntps/wJhT7NbggLfFRczkSG80szZRxLDPLjqTd848d69JPXqsavVcLWWcYr8Mmk
- kMJs+QR6ibR4QmRqM8RRpBl+nXp+59HhpQoM4VhavB3Mk4VCKmrlFv13A0cminpYW05uue1Ag
- OvJ10aNGmb3JjKDlA+uN87Jgkbi4Cs4wnvzOIlcSx9ZaGGiS7KHKhI18lva3loP9bOF7bpW
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:foyPSr7xsSevWh/8RpltGSGoNnpQUkoxfNoJfKzpLy2pDhFRZuw
+ 9i6AvXlNwaFpIy1fjQxKlCdAVkUL26S6pnRB71Nk2rgbTGocd8DGvBKV7RkCEiE4ECIJIr4
+ x4wiNs3C8Qom709dEcQIQzv9kgoVSfbAGAyddGEn4qI0XZq9Hos2fHqxAzwml1FyMiKa54g
+ mX/4fC/PsP9hUovG9ACfg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IlICTlhBH4Y=:bw3P7mCJcpuQH/5fL1qitb
+ gbDpr8+IgvYTMmc8TsQc6EFp04kmgnpCXb7DR1sMti7TNQETDgM6UtY8DhNZTVN04vF5goCjk
+ 7+Yve4GOo45Q/JdoMvI9YRUBDX+8IFbYeDBuMZLlv9NeXkDUJa7nXundwO1EGt6VaPNVjOzlk
+ bEVCIlLHGyoW+X9lrBnk/Q3CBqJJSGHk2mExGX49zrdHxuKd46z5bkJXWuTyLzFviFwrBhb8W
+ mKn4wg+wbF06sppNavdLetoiNoMFUl30WxOTHQ93wEJvdqUxPcZsQvsD9i8nUrNN5CSGn2Yf/
+ qg+3qt38Amm7KVyN20A1n5Vi5lmIQlJIvmt7qQIXyWEJqbNoMOWWRK2f5GYEgRGCe8IWBTT/g
+ VZC7keXet0s/shpKNpwk1toe+SDEH2Rn3982PXxABBNiuKM4aCa8SNzb2yyEnenVXOv/1NlV7
+ 0s6JCndZ1RsdOteKV+Q5dISgaO0bcU14B9qRwIBxeHSV4YZvCkqYdhmPuo3Nl+gxbif9oFmKl
+ 3SC80hahz9LL4rr2HnDQfVCtw1YyPqMUa4LTrWI26/IbRYkWlIhc6oFPxtNfUskvANHLgMDED
+ HeAyEWBbmUC76VtT2pTGvQ2+0pUMxvtYZqcq9o7KE3gR849WIys+NAcX9Ux/isGPx8A3rGxkW
+ G+K6s/8/r0e7wMzT3bv4xOMrSK9O+DbQvbs0qlQCyhXaFvvkKOgimP7xSd1u7xX+M9fqcV6EP
+ THPe30z4+g84vuBZZw5GCzwoN0FrLFVoKtc0mFceeFauIvFILApA6yvEF/zb5ck1Wjb0sk0vR
+ TPFJL7Py31FxvlqB+pPq6Ya3ehpg2XP1JA24qUzCnXkOudEgU7AB2eeGT0w8c7gQPIP3IOi
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:02
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,103 +65,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:10 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:11 -0000
 
-The following changes since commit 2ef486e76d64436be90f7359a3071fb2a56ce835=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/marcel/tags/rdma-pull-request' into=
- s=3D=0D
-taging (2020-05-03 14:12:56 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.1-pull-request=
-=0D
-=0D
-for you to fetch changes up to 4341a0106781043a708c061b676312e5bb5d4488:=0D
-=0D
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning (2=
-02=3D=0D
-0-05-04 12:06:21 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-trivial patches (20200504)=0D
-=0D
-Silent static analyzer warning=0D
-Remove dead assignments=0D
-Support -chardev serial on macOS=0D
-Update MAINTAINERS=0D
-Some cosmetic changes=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Chen Qun (4):=0D
-  scsi/esp-pci: add g_assert() for fix clang analyzer warning in=0D
-    esp_pci_io_write()=0D
-  display/blizzard: use extract16() for fix clang analyzer warning in=0D
-    blizzard_draw_line16_32()=0D
-  timer/exynos4210_mct: Remove redundant statement in=0D
-    exynos4210_mct_write()=0D
-  crypto: Redundant type conversion for AES_KEY pointer=0D
-=0D
-Mikhail Gusarov (1):=0D
-  chardev: Add macOS to list of OSes that support -chardev serial=0D
-=0D
-Peter Maydell (1):=0D
-  elf_ops: Don't try to g_mapped_file_unref(NULL)=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (11):=0D
-  MAINTAINERS: Mark the LatticeMico32 target as orphan=0D
-  MAINTAINERS: Update Keith Busch's email address=0D
-  block: Avoid dead assignment=0D
-  blockdev: Remove dead assignment=0D
-  hw/i2c/pm_smbus: Remove dead assignment=0D
-  hw/input/adb-kbd: Remove dead assignment=0D
-  hw/ide/sii3112: Remove dead assignment=0D
-  hw/isa/i82378: Remove dead assignment=0D
-  hw/gpio/aspeed_gpio: Remove dead assignment=0D
-  hw/timer/stm32f2xx_timer: Remove dead assignment=0D
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning=0D
-=0D
-Simran Singhal (1):=0D
-  Compress lines for immediate return=0D
-=0D
-Wainer dos Santos Moschetta (2):=0D
-  hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()=0D
-  hw/mem/pc-dimm: Fix line over 80 characters warning=0D
-=0D
- MAINTAINERS                | 14 +++++++-------=0D
- block.c                    |  2 +-=0D
- block/file-posix.c         |  3 +--=0D
- block/nfs.c                |  3 +--=0D
- block/nvme.c               |  4 +---=0D
- block/vhdx.c               |  3 +--=0D
- blockdev.c                 |  2 +-=0D
- chardev/char-serial.c      |  2 +-=0D
- crypto/cipher-builtin.c    |  6 ++----=0D
- hw/audio/ac97.c            |  4 +---=0D
- hw/audio/adlib.c           |  5 +----=0D
- hw/display/blizzard.c      | 10 ++++------=0D
- hw/display/cirrus_vga.c    |  4 +---=0D
- hw/gpio/aspeed_gpio.c      |  2 +-=0D
- hw/i2c/pm_smbus.c          |  1 -=0D
- hw/ide/sii3112.c           |  5 +++--=0D
- hw/input/adb-kbd.c         |  6 +-----=0D
- hw/isa/i82378.c            |  8 ++++----=0D
- hw/mem/pc-dimm.c           |  7 ++++---=0D
- hw/scsi/esp-pci.c          |  1 +=0D
- hw/timer/exynos4210_mct.c  |  4 ----=0D
- hw/timer/pxa2xx_timer.c    |  1 +=0D
- hw/timer/stm32f2xx_timer.c |  1 -=0D
- include/hw/elf_ops.h       |  4 +++-=0D
- include/qemu/osdep.h       |  2 +-=0D
- migration/ram.c            |  4 +---=0D
- ui/gtk.c                   |  3 +--=0D
- util/qemu-sockets.c        |  5 +----=0D
- 28 files changed, 45 insertions(+), 71 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+From: Chen Qun <kuhn.chenqun@huawei.com>
+
+Clang static code analyzer show warning:
+  hw/display/blizzard.c:940:9: warning: Value stored to 'data' is never read
+        data >>= 5;
+        ^        ~
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20200325025919.21316-3-kuhn.chenqun@huawei.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/display/blizzard.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
+index 359e399c2a0b..105241577de1 100644
+--- a/hw/display/blizzard.c
++++ b/hw/display/blizzard.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/bitops.h"
+ #include "ui/console.h"
+ #include "hw/display/blizzard.h"
+ #include "ui/pixel_ops.h"
+@@ -932,12 +933,9 @@ static void blizzard_draw_line16_32(uint32_t *dest,
+     const uint16_t *end = (const void *) src + width;
+     while (src < end) {
+         data = *src ++;
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x1f) << 3;
+-        data >>= 5;
++        b = extract16(data, 0, 5) << 3;
++        g = extract16(data, 5, 6) << 2;
++        r = extract16(data, 11, 5) << 3;
+         *dest++ = rgb_to_pixel32(r, g, b);
+     }
+ }
+-- 
+2.26.2
+
 
