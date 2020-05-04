@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdWM-0001lV-Ef
+	id 1jVdWM-0001m1-Ls
 	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38102)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdW4-0001Xj-6g; Mon, 04 May 2020 12:00:32 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:41617)
+ id 1jVdWA-0001Z8-89; Mon, 04 May 2020 12:00:32 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:45347)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdW2-0005vM-UT; Mon, 04 May 2020 12:00:23 -0400
+ id 1jVdW2-0005uo-4r; Mon, 04 May 2020 12:00:24 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M89bP-1jS30z2dMp-005MI8; Mon, 04 May 2020 18:00:11 +0200
+ id 1Mzydy-1jBTXE2WIA-00x2jx; Mon, 04 May 2020 18:00:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>, Max Reitz <mreitz@redhat.com>
-Subject: [PULL v2 11/19] block: Avoid dead assignment
-Date: Mon,  4 May 2020 17:59:48 +0200
-Message-Id: <20200504155956.380695-12-laurent@vivier.eu>
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ David Gibson <david@gibson.dropbear.id.au>
+Subject: [PULL v2 14/19] hw/input/adb-kbd: Remove dead assignment
+Date: Mon,  4 May 2020 17:59:51 +0200
+Message-Id: <20200504155956.380695-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wjbZekFVd4AkavH5+JmTqVCPmGJX0WgY9p/LrSaZFwnmTM1VvtI
- 5gut4ghCyk5HKRwG8JoJ2vXgwNOrvB9T93E5yYMDNrE0z2Z7/FD/sd0iqUZIFoF120g80xL
- OyA4efYpyN1muvywIAWyLE/KCPZczGYwDmgs8wnlKwFNUcJ3j8B47ifai7VpOXfo09H5cgt
- Iq54vC0d0+ssIMrvLxTqg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QAy3hNWbORI=:WJsPiZTOctC0R0fb9aSIIA
- 3OOLthmg8m4kDP+sLN5zIcgk/2HARA0zsC7n1VCh3e8QAtOuPaOSpHqWScTnXhkzp54k0H1NM
- 9KTk4wdqket3n0cwhZeYysSLRN1cfDwOWRMFGEefKKKQTqF/zeAgW6wnKiEHV/e/y+Mheb/hF
- 03E3BAN10p/FvunyZmU55cJDEEc3zP1hohuxLrf9yrDavpc9EIbt4gR20ZXjw4wUoq2jeczYr
- bISQdfFBwSb9VPbBTG+L5N3tGgSif8ld5SEtYD+Y2trNBk41H0K9fsz47bzZKkMfX/ozEnVda
- fvZBWky4+XZimVwUQO1LiyBLoom1GAnoFtCL8XYuljbRrGi2auYyEIqGMi4ryXwGFt94sFuAJ
- MgHW+h9mOhOcys4zjfoBuLv86BBMCZ9q+6aqKim/WI/LenLKrI/a1llmWxady/051Cyx16bPv
- XktY4DhCzW8iOSNH6mUEcQ+YJWw12zgfenPcpQ+/0XK18oZxR5zuZME/i6Q/6cn55tzfu+GIO
- vAnv6VGuCFbtDLO9VQeX41RdCV1VMb9ulWErTIaFT24fwD87991LFOmWPtiDxQ/LjnvQJ5U2M
- 4rMoPjytuQffwrnsTtszb27WV/foZBjS6CtZzgu/YjcsT89wcCEH8d8QQwFbDomeHjZd/S2PR
- 4vqcn1ilHdTgvbwd9Bh0bpKl9Agx5gvngHBxdKgjUxE4pI1ZjRMQzfeqQqPc4BTwiWfaa05Xo
- 8yH81H5lpbcBj575WLxpLqIm/eopGSnUCEHYoKRvG78gIicir1LTJ2rG3O8WX958kyAKHchO+
- +JsUwpp0jLzkD+C/n//uOJn0JWQCEtFYsURXjkxUN5AgD0jEnZgP4sdfbHYi1PLc6IQvYEx
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:pP2iFbrOwoCpjoZYcWB3oBDpYLt6NWP4+aZCPwxjbAxZq1NP7vT
+ cP4L6qVJLBhsmINheshkGRXS+F4MzzZBKKZc18YI+4Oq5i8AzUeDs7Pg0cQRcpHOmQ4V7A2
+ Gy6KcE+H144TPF1CPuFhbGGvBm2je2fzRBYYjNE08VCFC5rvCmUbCbWryfBLbEukjFUkcXK
+ BK13xnR7ESjMXkVwH0rEA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Uu7VC6fA5c4=:Kx4jAe/Bslcq3RWJoegR7A
+ pkq1FlvFj1fMWyRFZJwvH1KCfybx+H6yA/Sf5sD6Uldoe8o0nv9AuNHqvYNox97PSaOvN3Ldm
+ TXPO1ZY2yq9Ej2mcegb1y3nlJkxwZurSQF2+v8mgmvMam2o90mDPIdGinVkQQwP0WNb9J2Hp3
+ TkzC1nf+JPOX0GyxSvTVQGyRKZoXlsGUH7Aj28dv0IX2CBr0AqHk7JFMoVqx9BJNcS+6RowGv
+ bSDHerG2BVm2emdaAUZEQr2mVbteTzqqcTNd/39tRyHdjDn/II89366QW/bDl1IIrbuXhcZfi
+ u1DNI1TJAgbZ7z5N898AUIgLsA6INqphZGkYMlX0nxo+MZ0SPO484gG/yvd+3YkAk8eRtnPvP
+ CyeMyKDXsxE8taBRvpQcAcW04L9W8XsjkdaYtyawfWXqvYZxuhQZmHZp+00FpUDRI7viKMt/0
+ AnWtXoOAMwHoUnjLClGBhXeo1ltBo5wfmJizxKpO0my4Oibsqh0fo4+AW1CmkhTpbrHxI2iM8
+ +vWa3o0BQwrc1mqPJqIHDNN0UhiAk3OYMU5kUoYbmDMmDazAVvURmUZA9HTh1Pj5OnQftToOm
+ R0NeUs4m2aI6kf6jivUhAyuUHG5HQf+nbRJ4wZOoKFQRe7qHA0Nan2YkDSQ5jTwtn9BnZnyis
+ fwYmZmDlLNH71dwN+XC33vQMeQgUE0PqMRKRKTiEm+qelTvJdKSSRnYmjKIvH6JG9RmBzJW4o
+ 6WY5wdYuezClJzeyBhGb/1D/Tho4rZx317ixn/4TUuMGsBkfwXTnFqMp5Dqb3ELpJ6ks8Fy28
+ NiPaji83ueETH6nGulc5IC26XLmvIVLsZwRIv2in7tmKNQT9tZqTLE8UaCBOP4O5X93RFWw
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:18
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -70,37 +70,60 @@ X-List-Received-Date: Mon, 04 May 2020 16:00:32 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix warning reported by Clang static code analyzer:
+Since commit 5a1f49718 the 'olen' variable is not really
+used. Remove it to fix a warning reported by Clang static
+code analyzer:
 
-  block.c:3167:5: warning: Value stored to 'ret' is never read
-      ret = bdrv_fill_options(&options, filename, &flags, &local_err);
-      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    CC      hw/input/adb-kbd.o
+  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
+      olen = 0;
+      ^      ~
 
-Fixes: 462f5bcf6
+Fixes: 5a1f49718 (adb: add support for QKeyCode)
 Reported-by: Clang Static Analyzer
-Suggested-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Max Reitz <mreitz@redhat.com>
-Message-Id: <20200422133152.16770-2-philmd@redhat.com>
+Message-Id: <20200422133152.16770-5-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/input/adb-kbd.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/block.c b/block.c
-index 301ec588bda2..cf5c19b1db49 100644
---- a/block.c
-+++ b/block.c
-@@ -3165,7 +3165,7 @@ static BlockDriverState *bdrv_open_inherit(const char *filename,
+diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+index 0ba82075897f..a6d5c9b7c9ac 100644
+--- a/hw/input/adb-kbd.c
++++ b/hw/input/adb-kbd.c
+@@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+ {
+     KBDState *s = ADB_KEYBOARD(d);
+     int keycode;
+-    int olen;
+ 
+-    olen = 0;
+     if (s->count == 0) {
+         return 0;
+     }
+@@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+     if (keycode == 0x7f) {
+         obuf[0] = 0x7f;
+         obuf[1] = 0x7f;
+-        olen = 2;
+     } else {
+         obuf[0] = keycode;
+         /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
+@@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+          * byte, but choose not to bother.
+          */
+         obuf[1] = 0xff;
+-        olen = 2;
      }
  
-     ret = bdrv_fill_options(&options, filename, &flags, &local_err);
--    if (local_err) {
-+    if (ret < 0) {
-         goto fail;
-     }
+-    return olen;
++    return 2;
+ }
  
+ static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
 -- 
 2.26.2
 
