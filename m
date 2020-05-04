@@ -1,60 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk9-0003dk-Re
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52102)
+	id 1jVZyB-0007AF-SN
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 08:13:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZk3-0003Lt-Kr; Mon, 04 May 2020 07:58:35 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:34201)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZk2-0002Lm-EZ; Mon, 04 May 2020 07:58:35 -0400
-Received: from localhost.localdomain ([82.252.135.106]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MNtjq-1jl4JV2sAa-00OE4o; Mon, 04 May 2020 13:58:17 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jVZy8-0006yt-7V; Mon, 04 May 2020 08:13:08 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:56632)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jVZy4-00048F-UI; Mon, 04 May 2020 08:13:07 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 6771B746357;
+ Mon,  4 May 2020 14:12:59 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 44248746324; Mon,  4 May 2020 14:12:59 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 420FE746354;
+ Mon,  4 May 2020 14:12:59 +0200 (CEST)
+Date: Mon, 4 May 2020 14:12:59 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+cc: Peter Maydell <peter.maydell@linaro.org>, 
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrew Jeffery <andrew@aj.id.au>, 
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, 
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-trivial@nongnu.org, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, 
+ qemu-ppc@nongnu.org, =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
  David Gibson <david@gibson.dropbear.id.au>
-Subject: [PULL 15/20] hw/input/adb-kbd: Remove dead assignment
-Date: Mon,  4 May 2020 13:57:53 +0200
-Message-Id: <20200504115758.283914-16-laurent@vivier.eu>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
-References: <20200504115758.283914-1-laurent@vivier.eu>
+Subject: Re: [PATCH] hw/usb: Make "hcd-ehci.h" header public
+In-Reply-To: <0ffd398d-5585-e7f4-85f7-20e9c001428e@amsat.org>
+Message-ID: <alpine.BSF.2.22.395.2005041400320.22079@zero.eik.bme.hu>
+References: <20200504082238.16655-1-f4bug@amsat.org>
+ <alpine.BSF.2.22.395.2005041044550.59496@zero.eik.bme.hu>
+ <0de65ed7-37b0-8916-2ccb-bbb524934351@amsat.org>
+ <0ffd398d-5585-e7f4-85f7-20e9c001428e@amsat.org>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hsInISMjZejKFc62NlpU9zM5vQXucwUAa8UscLt3PndFE9WJkyK
- ordHkV3voxT9Q7M4Bn28UJTjwBxcLVM6lDP+5eqNoJCwuQvMRwfsuHoBysHciRoajIy3uOn
- x5kTEp4/ESd1daJvO3kX1Lps5whX741dgFhpmprWTQ4TM6P7sFR+SrGI3JeeyjzdLtMz5tm
- Sw4ni9SIoLb1Br2JlMYEQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pr5xlVTbTMc=:+GCZhwc2vN6rcl3tyWabAy
- pLi2IWhCnUji0x2fGqrV6I+R0j/5IfmJafRtG9J/Syg5R0b7CfzD/sXYOS2/l1vUCtvmUX8dT
- 7se5Nl7cdZNIOmswjwIgOa2Jwv3TD4P/qD2vzbY4vrnh6gvCvP37wQPKmYWee6Z/787pdSaKs
- TXVZg8dbgwyhDjd+koNvXcGK3Pv8gRqjBvyuxQfwuLZfrwldveV3xzjnWgosQOgdZ77cQW7Tr
- ZVFC1KYNIiYU/EAlnneIVrb7yzrl15M/V2UUVyc+TDp3MHc79dssgIEm6w28pxVfYFTifR22q
- Fe5qeQpjeeUOLEMVLrhy2KnzwF/tselF36hnSNqXe0UzbqEQe+MH6v3r9ABwx1BjcJOnWbdqK
- LA8ABb0XMjScPkPqz9thAT1kFAE55i2JB7QPQSOGbdYOb/QVlr9y9uBrBO6hlX/Qwf3eY4dmW
- Ly6aZVMm2Qh9yVATYm97dpxPypDhSE3Z92mkDIk96DQJwoYK3CA5xOxI/NlOlNVjAAnkjfmC2
- uUSzl7U7TJLHZ7hgz6yeMPT1iNCK35BJjfKR0v6FhUSpe/08GsycYdwNVKmyNfIkj4/Rqav84
- zOtmikx/C2cLxiHIue9dsTinIIuNobqUOLitKctsf9akcJ6m6E/oxTgDGbAGA72u1ZkaqGlBX
- 3jkNBDfd0R6/DcqmY0D5aaWzPkgNTBsxlsckycdeukVaYdxv8ITFGcEaEGzUaKgY+GPNFEMQ0
- nndhS7swfRirLnLP9bN9CE+DhgufgjZpqvAGpIT5EsGFzxl9sLJbQUfefryyN0nRp0WF1OOqs
- 2Ab2AGm+PTwBJ0xf5BiJnszZHoZhut8LKch/KaZS+VmsQ0vlYglFW44b1KSoEl+xEGXYKvt
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:12
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+Content-Type: multipart/mixed;
+ boundary="3866299591-470502501-1588594379=:22079"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,65 +60,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:36 -0000
+X-List-Received-Date: Mon, 04 May 2020 12:13:09 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Since commit 5a1f49718 the 'olen' variable is not really
-used. Remove it to fix a warning reported by Clang static
-code analyzer:
+--3866299591-470502501-1588594379=:22079
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-    CC      hw/input/adb-kbd.o
-  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
-      olen = 0;
-      ^      ~
+On Mon, 4 May 2020, Philippe Mathieu-Daudé wrote:
+> On 5/4/20 12:12 PM, Philippe Mathieu-Daudé wrote:
+>> On 5/4/20 10:48 AM, BALATON Zoltan wrote:
+>>> On Mon, 4 May 2020, Philippe Mathieu-Daudé wrote:
+>>>> As target-specific code use this header, move it to the publicly
+>>>> accessible include/ folder.
+>>>> 
+>>>>  $ git grep hw/usb/hcd-ehci.h
+>>>>  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
+>>>>  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
+>>>>  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
+>>>>  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
+>>>>  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
+>>> 
+>>> All of these only need either the type #define or EHCISysBusState so 
+>>> splitting only those off to a public header should be enough and better 
+>>> than making public all of ehci's internal header.
+>> 
+>> Ah you mean forward-declare EHCISysBusState in "qemu/typedefs.h", OK.
+>
+> It won't work because AspeedSoCState and AwA10State use the full structure 
+> (not a pointer to it).
 
-Fixes: 5a1f49718 (adb: add support for QKeyCode)
-Reported-by: Clang Static Analyzer
-Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-5-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/input/adb-kbd.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+I've meant splitting the internal header into a public one only containing 
+the EHCISysBusState struct definition and TYPE_* #defines (or those could 
+be replaced with string value where used as done at several other places 
+to reduce dependence on this header). These are the only parts which used 
+outside hcd-ehci. All other internal stuff would remain in internal 
+header where they belong.
 
-diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
-index 0ba82075897f..a6d5c9b7c9ac 100644
---- a/hw/input/adb-kbd.c
-+++ b/hw/input/adb-kbd.c
-@@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
- {
-     KBDState *s = ADB_KEYBOARD(d);
-     int keycode;
--    int olen;
- 
--    olen = 0;
-     if (s->count == 0) {
-         return 0;
-     }
-@@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
-     if (keycode == 0x7f) {
-         obuf[0] = 0x7f;
-         obuf[1] = 0x7f;
--        olen = 2;
-     } else {
-         obuf[0] = keycode;
-         /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
-@@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
-          * byte, but choose not to bother.
-          */
-         obuf[1] = 0xff;
--        olen = 2;
-     }
- 
--    return olen;
-+    return 2;
- }
- 
- static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
--- 
-2.26.2
+AwA10State also uses OHCISysBusState, why doesn't that have the same 
+problem? Why no other models need this? could this be really a problem 
+with these two models?
 
+Regards,
+BALATON Zoltan
+--3866299591-470502501-1588594379=:22079--
 
