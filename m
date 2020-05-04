@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk4-0003PW-VZ
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52066)
+	id 1jVZk5-0003RR-Hn
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjt-0003AL-Hx; Mon, 04 May 2020 07:58:25 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:44793)
+ id 1jVZjr-00034M-H8; Mon, 04 May 2020 07:58:23 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:57893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjs-0002JF-0h; Mon, 04 May 2020 07:58:25 -0400
+ id 1jVZjo-0001ye-Mx; Mon, 04 May 2020 07:58:23 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MXpM2-1jdPLr2KgG-00YAEA; Mon, 04 May 2020 13:58:19 +0200
+ id 1MwPjf-1jFYr103BF-00sJdn; Mon, 04 May 2020 13:58:10 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 18/20] hw/gpio/aspeed_gpio: Remove dead assignment
-Date: Mon,  4 May 2020 13:57:56 +0200
-Message-Id: <20200504115758.283914-19-laurent@vivier.eu>
+ Michael Walle <michael@walle.cc>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 05/20] MAINTAINERS: Mark the LatticeMico32 target as orphan
+Date: Mon,  4 May 2020 13:57:43 +0200
+Message-Id: <20200504115758.283914-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Epmdrbj84mM4+CNaeDulwlmvqtjjjQC/X1eHvYAmsWRk8j3Fn2h
- QijUH4N79c1Jg6lWt19bDhVMvk/Fj3FTs9poJ1QXh3aMQ5r0b8lJIHp3QSTozpdbUciXm25
- VVPTRMxVD1zVS5dEB+qkxiSoTk1022LNoMuTcce8wtvCp2lK6lglv/R0gGm/hwnzHlhWFh3
- CtfAXsijfUc58kuHBdKAA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jrJy+udALk0=:xw/Jpa4PCL6qHBVS5+PejC
- ndl36lGw0tPEOdos0jaqJC5FVvwaZXiPbauA+5GOOdTK4DP2DPF4aCcuLhP+SrEiJsQorTTru
- BPCODmZharzbKU/M39ybMnqXQYKDHdOpUNUGhSVV6YROR2pd/Br96I7i3mmCapAfZfVjiaqdQ
- JRqLLUKZhXdyxVnfebn5TiowuUqNmLs45YZJbUt1b6v/JTnsqhhR0dJWx8VGkfpvBeUch8CiL
- w7Ngjt4qKnqN+qIpxhqdftoMSwjOhNf5NaPKoGFSinHY4HcT7yJpH5QuCDMZW1q8VcYhHmzbq
- IIwwMYI081LcnoQUa01yJJusRXpKLnz1H0ng5Azof/+VFXDVckc7zq5G8nC/FaYJRWjjMAAS6
- UN+GLv/k8Oc+rhgH/nk4FxR1SobQXkfhxTTfHKHaChYpW2tCL4OtXnwi4dnzS6oBvOVRUmfp7
- EnYietJzuUPxV/MAyx18YE5DQ/FfNdmvpl8rCZl5ZlOKKe/v92xAzW+F8m+bQ8MXIY4pFV1b/
- t4ooIu4UNCJRq9O/bYS3tC/PbffaJnZELZ1/HsGIPS4Uj/OLl1Bf8reX3O6RS7UUtxjjD5bni
- MBo2Zc8EqACo7VESU3mnfNMUHedisofGZ4JlKjQAgQyAn5zU1VlWGBY2W8JRradDZWde2rnIY
- Ly/qsgQBJpnd/+wn7xHh6gtXgziCmuDlUtcBUocEbZ9ZXFqqYCjJWFfLl5ZY9L/D/Yt5P0pcH
- EjavFRteaS5LJNW/anMoSIvBJMXm2vaLa4MIWAZaP3CV2BtyexkpmWqUZsfiNihemWN5RF089
- n9EzzrTncQwheMoOLr2sDrQnxsDPgWFXev6IolOoSwbTdU+WOa5rewlYNjiNzhkVAPigFR+
+X-Provags-ID: V03:K1:hi4ZlP8k5hKSLyW93PzeAzjqJe7XRZDKE3QUbZJxRddbZ0QtWkK
+ bVT5faEL9/nfqe6W5s0oAEPHhkS7yQLTIWeqaeOpNp1Nabf4FtufvCxcnIFsGk2jczIYj3s
+ eGuH1PWZ6ATYKIss8VmC5lU0zquPKHNhIWMfqQ3XmMiK3ZZDxSPjkKvYXPAoSzFN70AjxKZ
+ 5D/GMNs6xYaoMV7eADNFQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xchtK2hLMPU=:mTpDgH15Fmum6Aeypk48KQ
+ cbP9u2PgvmOPCBawOU7I0CitFqGORSTF9fJautdXkhq0IMHXTApODc8h1v9rIpN/uXzHj2Pb1
+ D4SgxcwwNrLsv28aHYHmKgb8Xcf0qJPzgbLYyeSFj0hVEIm80vgnCrRDPxOVjxt4vHhRZvwVN
+ aTOIAWxB6MO2yQ+5wpOU3mQu7yV6vJMFUUgLj/66E7gSJzuU+uBV66AyyFzuXZ3oPS7rGR0FW
+ mICwAZ1w8DDhu/HyCVX5MByeRAhZ44yE7oxBMz55NOREKfJo2szXFNokg9/7xdAhjbyX7n7r0
+ war8ie8OZhojCgMDU42Eo1SUuN5gDXoo0s4/8wbqgD/a9EnOgrsDTylgOftCcdNg4LvS62zzM
+ Z9smX4/ii7XltmU2BqWALIL1xI0GD4dZI+bQM3AdHFN3jEaqoxRtmLTY4PzfQL02fyq+m5KYv
+ SNW7XEvQ3pMU4Oi+3ZVRsDXl+Hcykv728JgY/rlqTS/g8Xo2nrpWWSVzC45T+4+zNZUc13A+K
+ PvK7mgVuyCfbv6tvcT8My1mXJoCfLQKYRsLeF/t7zvEs7d1O3vGUbIYIaV2MPTWKJeq37aiUW
+ d9Ws/X0IzHotkdJ7sMQUsQLwZTbDmXLVNvlTCzTolxBVQzh+xmjA2Rejas+h/DppqPtT5XvEc
+ P3j8+VXX4IofbVqJQ87vgyw8OGf84mOlrE68qpEdk3YEhnzMw21McXfDVMfx/jZ9nEsXar7+a
+ DStnPN12FWw48aq1TTqDjOtRB2GdEh+grrwmgBm4w1u7rMfwoV8R7LS8kYRfq+hV/0y9/B3wd
+ jlnWWUhOh4sXbG+AmKld2q//rWZ2rNNhqIftUu2EfJFvM7rdD8UTK3WAkg3JH365NEf1YGd
 Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:13
@@ -66,38 +67,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:26 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:24 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix warning reported by Clang static code analyzer:
+Michael Walle expressed his desire to orphan the lm32 target [*]:
 
-  hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during its initialization is never read
-      int set_idx, g_idx = *group_idx;
-                   ^~~~~   ~~~~~~~~~~
+  I guess it is time to pull the plug. Mainly, because I have
+  no time for this anymore. I've always worked on this on my
+  spare time and life changed. And secondly, I guess RISC-V is
+  taking over ;) It has a far better ecosystem. Also, to my
+  knowledge the only (public) user of LM32 is milkymist and this
+  project is dead for years now..
 
-Reported-by: Clang Static Analyzer
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+  So time to say goodbye. It was fun and I've learned a lot -
+  technically and also how a huge open source project works.
+  Thank you everyone for that :)
+
+  Basically everything still works and there are even TCG test
+  cases which covers all instructions the processor has.
+
+Many thanks to Michael for his substantial contributions to QEMU,
+and for maintaining the LM32 target for various years!
+
+[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg605024.html
+
+Acked-by: Michael Walle <michael@walle.cc>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-8-philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200316142827.20867-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/gpio/aspeed_gpio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index e52fcfd9a030..4c75b5c80cc9 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -712,7 +712,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
- static int get_set_idx(AspeedGPIOState *s, const char *group, int *group_idx)
- {
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
--    int set_idx, g_idx = *group_idx;
-+    int set_idx, g_idx;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8aa8efaf1d7f..d6886be13159 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -184,8 +184,8 @@ F: hw/net/*i82596*
+ F: include/hw/net/lasi_82596.h
  
-     for (set_idx = 0; set_idx < agc->nr_gpio_sets; set_idx++) {
-         const GPIOSetProperties *set_props = &agc->props[set_idx];
+ LM32 TCG CPUs
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: target/lm32/
+ F: disas/lm32.c
+ F: hw/lm32/
+@@ -977,13 +977,13 @@ F: pc-bios/hppa-firmware.img
+ LM32 Machines
+ -------------
+ EVR32 and uclinux BSP
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: hw/lm32/lm32_boards.c
+ 
+ milkymist
+-M: Michael Walle <michael@walle.cc>
+-S: Maintained
++R: Michael Walle <michael@walle.cc>
++S: Orphan
+ F: hw/lm32/milkymist.c
+ 
+ M68K Machines
 -- 
 2.26.2
 
