@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdWK-0001iZ-D3
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38122)
+	id 1jVdWL-0001ju-NN
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38094)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdWE-0001aj-9d; Mon, 04 May 2020 12:00:34 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:52599)
+ id 1jVdW2-0001Vc-KU; Mon, 04 May 2020 12:00:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:36561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdWC-0005wC-9D; Mon, 04 May 2020 12:00:33 -0400
+ id 1jVdW1-0005ud-D3; Mon, 04 May 2020 12:00:22 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MXGak-1jdtPD37AE-00YfI9; Mon, 04 May 2020 18:00:17 +0200
+ id 1Mum6l-1jF4ZA1Blz-00ro4i; Mon, 04 May 2020 18:00:15 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL v2 19/19] hw/timer/pxa2xx_timer: Add assertion to silent static
- analyzer warning
-Date: Mon,  4 May 2020 17:59:56 +0200
-Message-Id: <20200504155956.380695-20-laurent@vivier.eu>
+ BALATON Zoltan <balaton@eik.bme.hu>, John Snow <jsnow@redhat.com>
+Subject: [PULL v2 15/19] hw/ide/sii3112: Remove dead assignment
+Date: Mon,  4 May 2020 17:59:52 +0200
+Message-Id: <20200504155956.380695-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZR9NwCl1SFOgGjyeI8D8NNykyUUgcLLZMaS5wwwT9tGrGCiso3d
- jKesMyobdiAq/1V/HdBSo4zP+EyzbIeW+wKRGU70X+KuHce1J31ptF5wxj/Lwk3PevYgdiM
- GpDbDiyg3R+Ncj0NVpCh/XXJ3BNk3BoPO+BsEb1qjuEHGkzNiAQNerJCPT3rKJY1K9+qFLA
- 5di38YMSNBFPtps5uaHgA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hTJ9bSQVtK8=:YSECT2GJKj6Au0QHE8bFYy
- 9gpQ6CBPyhA4xIZulZOklEk1mGc6OAjWlTJRnhHAGgI+OsrBStqsg5Cqdp2Kv/0PW729sHU+B
- /DCI9fa91rP/MDGF4lg0+c5TrHJuu9MXclpTtPAopMaU7ava0wHfuuL/p6U+t6jNyCjuSd/IA
- EQ9V5jI5hLtBLhcNhWSoA5Ws02qyOTNbyF83zyXQAQg9maGtIgQOJtKzoXJWQiuA+Nh2E8Nt1
- 00hVQ6e98laPdqmTCXKzA0KaGXsmLxs/ka++REhD3wl8ViqNWev8teY/MI8568TMosxpoRH+/
- 4HhXtZQMFVX894TtwUGf/qkLQFhh9081M7ZS3mhIDjM0jcdZy9gufzAyW3xZDGRpTaAd67ZNU
- smDzQLQXiOz9XngK7igdPaQpYQhClQWpaR0uFJcPKUsnI1AgLwFSDfdlaXvqpTP+wjGBKTLDw
- czUhJ2Rf95gbdVYHg446bFOZkZ/XVrjhcM5cv7iCWHtcuT6LQRoyNjZicz313i3Xjx4Qwlzf/
- aWW7XPZZYHHa6R1nXWD5o+Vy0yb3RPvC8A4TgkU+a6HWoagwT22ZTh+JnLUcnJiVFYoj1gUww
- j9VL4HWH4Gy1yZ9I10/a6IvHC6S2dnXdrA2n12doqrJE0ASAY83/QaYnMVFZQFQjNMbPNUObo
- FK07mAcEL7SGSw490N68M+2Ato9dOZ7AHzeTiQWmRXKOhLI32P6wBqlrTWkkgel038r1SuL+g
- vfjGc3HMgRHTfu2dtYJ4ZzHaRfLxegMHANDJ9oclgpTHHofi0ENrnZP52Hedf6VmLXFQfpetn
- QHco45Tftjvr/pbicdCwWjCylCPXC14ysAQ/OPd49y2TEa78pL1/S8v3LnzKSQZW1WNOtCS
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:lgVrMoml8bYCxI2Y+gJetK2X5PYyHDeGI0vM/BCBrUlgBU4vesB
+ pRo0wzORuvfwE6X1WN6sO4awT/cBaHaEpkBIzOrb29e5qRkF+DKKulCYWiTbiTZW36AZe2x
+ y/ETeVuZ8C2ddWYrFex1exTvGsxSi+yDXW4fSY5Dw8hwzWPiQpYfDZJnA9C5ZSBZKSb9ybR
+ IC6zji8W6X/W4oy8SENJg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MLrnwyS2kLE=:ZgXkqqoKPTBCTYfeCGH6gQ
+ XtapdkH+03aGfU9tO3cD5rcUDIUa7Kmv2JFRyUK4TuL4SJaaDLOZMZy31FopHZskQ1YjLKOuQ
+ pwnaQSqvtSuGa8ylCGgPJMItsKfB/HnG0QKaIg5n1opTetZYqofbzQbWlalX0wJa/NUdX6EXx
+ vdo4BocXO1gfXZBbuN5GqDxqZG6oJUMdowPRqx9dX/nPIliJZp1WkMLaL2YWXFFLfz1J/3w30
+ sbXJ53rm447U60SAwL0zcCU2IFrUCuJhA8SX1MI9MdPZQHmDUucF4UkiqdSJptpK+eXw3emtu
+ BvCucf1+d/T4MHD/LVeVMJenqogQduQYiC60LHfQoEO3PcdH/8qz033F4JqVl/YER6g8BbjI3
+ /lVJ4gBYYTpcSs6LeWB3Yy6HikW0pTkxU4Rz+EdYPqm4WPnfsbPPHa8gJtRicrta8oHgOb2dR
+ rvH2w1UCXSG1wiZLPk1USl7c8Z0CGYrtvStX6PZgijUBQ+C+F5F2zTig3gciXWq5/nzXDNqUs
+ lvKXxx9hWlUqxdJGoL4yofnTlFRUymiMCfKzCGTzPBaQqaMfEjwH7Y0QwGXZjwE0ULNE3CH1k
+ dDdLaSI0wGID0f+0GToBhZbUGnG1hl0Qx2xHtt3MNTnC7VA3RwiBMkhldBahT++eFhvwRKV4b
+ uO3trKmrqgiH9lDby5xB1VXBc6RVbl8qiJ8pRONk4dH45bCKPUb3M816Omb0cXp2Kj8MsjCpH
+ ZF7CUzODPyXCB4hm1twQ4LqYq9OX225rWoSMdSiixXSlDPAZu9LASjEI7kHEs7miGBBUVRMAp
+ NU7Pp+Fh4SQDOkjVWkaFXeMwsVjFnsZwklqbFVuYUJStHVQGwapKacITYiRmUEIwt0ibX2+
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:07
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,62 +65,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:35 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:23 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-pxa2xx_timer_tick4() takes an opaque pointer, then calls
-pxa2xx_timer_update4(), so the static analyzer can not
-verify that the 'n < 8':
+Fix warning reported by Clang static code analyzer:
 
-  425 static void pxa2xx_timer_tick4(void *opaque)
-  426 {
-  427     PXA2xxTimer4 *t = (PXA2xxTimer4 *) opaque;
-  428     PXA2xxTimerInfo *i = (PXA2xxTimerInfo *) t->tm.info;
-  429
-  430     pxa2xx_timer_tick(&t->tm);
-  433     if (t->control & (1 << 6))
-  434         pxa2xx_timer_update4(i, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), t->tm.num - 4);
+    CC      hw/ide/sii3112.o
+  hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+          val = 0;
+          ^     ~
 
-  135 static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
-  136 {
-  137     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
-  140     static const int counters[8] = { 0, 0, 0, 0, 4, 4, 6, 6 };
-  142
-  143     if (s->tm4[n].control & (1 << 7))
-  144         counter = n;
-  145     else
-  146         counter = counters[n];
-
-Add an assert() to give the static analyzer a hint, this fixes a
-warning reported by Clang static code analyzer:
-
-    CC      hw/timer/pxa2xx_timer.o
-  hw/timer/pxa2xx_timer.c:146:17: warning: Assigned value is garbage or undefined
-          counter = counters[n];
-                  ^ ~~~~~~~~~~~
-
+Fixes: a9dd6604
 Reported-by: Clang Static Analyzer
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-10-philmd@redhat.com>
+Message-Id: <20200422133152.16770-6-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/timer/pxa2xx_timer.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/ide/sii3112.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index cd172cc1e960..944c16588926 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -140,6 +140,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
-     static const int counters[8] = { 0, 0, 0, 0, 4, 4, 6, 6 };
-     int counter;
+diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+index d69079c3d9b7..94d2b57f9535 100644
+--- a/hw/ide/sii3112.c
++++ b/hw/ide/sii3112.c
+@@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
+                                 unsigned int size)
+ {
+     SiI3112PCIState *d = opaque;
+-    uint64_t val = 0;
++    uint64_t val;
  
-+    assert(n < ARRAY_SIZE(counters));
-     if (s->tm4[n].control & (1 << 7))
-         counter = n;
-     else
+     switch (addr) {
+     case 0x00:
+@@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
+         break;
+     default:
+         val = 0;
++        break;
+     }
+     trace_sii3112_read(size, addr, val);
+     return val;
+@@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr addr,
+         d->regs[1].sien = (val >> 16) & 0x3eed;
+         break;
+     default:
+-        val = 0;
++        break;
+     }
+ }
+ 
 -- 
 2.26.2
 
