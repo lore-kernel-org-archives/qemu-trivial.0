@@ -1,27 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVXHV-0002ze-5q
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:20:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49484)
+	id 1jVXKM-0005AF-69
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:23:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXHS-0002yH-Vh; Mon, 04 May 2020 05:20:54 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:40539)
+ id 1jVXKK-00057Y-Mi; Mon, 04 May 2020 05:23:52 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:58177)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXHQ-0004Zl-8g; Mon, 04 May 2020 05:20:54 -0400
+ id 1jVXKJ-0005Re-QB; Mon, 04 May 2020 05:23:52 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MJn8J-1jkaDf0UeX-00K5AA; Mon, 04 May 2020 11:20:22 +0200
-Subject: Re: [PATCH v2] MAINTAINERS: Mark the LatticeMico32 target as orphan
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Michael Walle <michael@walle.cc>, =?UTF-8?B?w4Frb3MgS292w6Fjcw==?=
- <akoskovacs@gmx.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, "Emilio G . Cota" <cota@braap.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>,
- Richard Henderson <rth@twiddle.net>
-References: <20200316142827.20867-1-philmd@redhat.com>
+ 1M3lLh-1jUhyi0QJ1-000tBF; Mon, 04 May 2020 11:23:47 +0200
+Subject: Re: [PATCH 0/2] hw/mem/pc-dimm: Trivial code changes
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, mst@redhat.com
+References: <20200310180510.19489-1-wainersm@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,32 +59,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <aaa6f467-be8d-df10-9124-2a16d52c3d46@vivier.eu>
-Date: Mon, 4 May 2020 11:20:14 +0200
+Message-ID: <e1971140-9762-a148-ec5e-1dbb72dd9452@vivier.eu>
+Date: Mon, 4 May 2020 11:23:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200316142827.20867-1-philmd@redhat.com>
+In-Reply-To: <20200310180510.19489-1-wainersm@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JGuZRSSVJ11i3o7Q9JdiaCyhgxGObSuG19ZZkb8klvHBjlixWHE
- pq1T9KuIrGEytT3CJmqRHvmaojtWOI6reITN45ZWKBxpkk/kNHcep67CyzGoPjM6/frAVjd
- MRTAUwABuBn4WLy76WL8OiJC67UHljlOpKtifcYwGrKIjZiBhKXghk5eeM777kCzvqM1Vlj
- KJ7wbs2mvL8r75z0oWRUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QcZr/dS+lUw=:lMT7aFMaBKqW2dsfIREeP4
- 70aoEAsdKnqrmkpdI8vJgyqPjtMCBVM+Iq/LQEoJ6aKfhsmGjIhJixbJFVKRucjEr+aP2aaar
- K01hGQ1vupBDRYZESLUpHYb4/cKZUI8uDBzKuLAcua6O12suowoRR5R+oDIJa46P4M3NwehYy
- 8CmbZKpPRADW1wkMJ5Bo3QpxqYJMWfH1rw61/slCY9AK3YLeQF1CH7C2ebfrjPkqC78U+6DUM
- P3VlOORvTJgF+ro6PSXPdJ+pI7bsTMPU/zS5YXROaD20wW25yYFxYtEMiAKu9YdBJddqoxBZ8
- NjMWOlgjG6B4OEQJCox8UGT7hYiWpSsCX7kFrTf9j+8eJr09SH/D9tFL/7vJ2ETBDFcBNl8UV
- 1EnseD0ZZFQ5NYDybrNAIPdX5GQ5CnIpAEPYH5Bf1kqOMeWMKV1E4ZYvGbm50r1A9PhQlCTML
- Z134+M9egTJODI3urAi0yOLnvA+EAZzJbJ96WA2MPVcfW8N96yqURiisGYLC+BrHArSi0rQOg
- ADWSLZB/546oda+4wm3ORypG1rCp0JNwqgUuevePbhzrjVDbVAlX/6M3zJbVSD6raSyPGNIL0
- MahO7/ZoExdg9NUZkWN2SaDK8UJAtD/bbitYvvbWs0BMwaeOLcPBxNrhjQJVZzaXsGr7ugJlr
- ZCUrwNcmfcdOIaQflAD6feJChzISeYOfnQK/H9FYysyVVULqKFKIIm/hBlQiUiQoXcJ6yoilp
- 7fP2DwMURNmm+VzfUiXVebMTSlSmGSjSpia/AGblNgd8pmOv8fVAGbekmfHMb43n8me+s/Q4I
- B9VLu5uIDMSznrJdvGkfSNN9oaBwtW6dBTN0pBdiRK+0nGGBwtr+TKNwrYvDqa5AjzTtZyt
+X-Provags-ID: V03:K1:vSGkG6poRXJLtvt527W4L8dFsoi+shWvnJa38SGnpYrzfVM/v81
+ CEqGW0GrHgAG6HswgEIkadVYZMD+IDS4ERxptoh7VGnrLU7774whIdKPK0681GlGSWiWN26
+ mxbbSnOS6H+MAkWCgDPsvO4BCqruTtgyFA4+5skQV3cNMGpGZQ9nKgpS8o0+5OxNz8CwV+l
+ E74o/oRwQ1PJIrFHGcXEw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:G306E2kNnK8=:BKK+XcP5e/xErzgwS46W6S
+ 39gNTjY4bHSMOyWBUUle2nnTUoT0n531GkoJGMR49OZaqRWWkpk9b4dHaV1b5vb5xBexvS0s7
+ kbi11iAkUFRgPc7/wGTPcD7cPBVHAgA9N5PWZ+Wlb+np3dLRg2k2rNDvC5ikPdTzXelZK6C8Q
+ aWCA1sfFUAxeC4OVQRX2b890bpGGrN5ky3Rliy2Ggdjn5EYMZnq4ve2gx4+HJb4fIqgC+CSWC
+ y3D5n5pYx7g9d0C6RDBaKySDdjGCS4nKXPpo4Y+AzS2xizu66x8pcCdiv+dbeZeE37y74ES9v
+ ys+0e6P6DFz5hv5mPRe0w5Me50B3R+q1NchFMraUz/64BgilBH78FOKzxn4NJBTvYuA2dbYi0
+ aEGYPg/k4Sc6g6/jjQF+iYNAoo/lKOAy5XsIrcBTqSRZ5X2gAZFG5ErWs2Mrecv3+4ylEdYUt
+ bPNNPxx13OQH5oOhqUBazVWl1+J9kpBefC2xigG8g+VWjfimrGmq+Jicr1vcM/v6yaZezy80t
+ ZS5P4w1bkMCEEWEe+5qLnU7RC+gkZFjH0Vk4aSfV8R6Ud9AwB3sXKBgmuaQSioJF4rjwJxCsm
+ xPQjeGfKEcjQ8YyLZkk/XWnln6ms/Yo6PyX2me7ZHfwOpO8Uh2OZewGTCRjmdHppS21mII5eM
+ T+Ue1HcHaOlMH7rFWQaUH3WCZebukxRuxqzkhBmIJRMyHBciL83NYsFZFoLgMhkDNEhVFGKd8
+ TMMhdnJAJOsVg36BlcTf8/kfBQWascBUb7JGiLQEzkUhgP4E5XUxOv1YyS16o/LHOhnUf/IdD
+ H5PANULYhfPp1Tql+aiTQIWmw0tKuS8SDeBIGLnz/OiH0M8AoTmY0YoOBNvlC1TbQCFIqIW
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:20:49
@@ -99,7 +93,7 @@ X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,71 +106,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 09:20:55 -0000
+X-List-Received-Date: Mon, 04 May 2020 09:23:52 -0000
 
-Le 16/03/2020 à 15:28, Philippe Mathieu-Daudé a écrit :
-> Michael Walle expressed his desire to orphan the lm32 target [*]:
+Le 10/03/2020 à 19:05, Wainer dos Santos Moschetta a écrit :
+> Improve one error message and fix one code style warning.
 > 
->   I guess it is time to pull the plug. Mainly, because I have
->   no time for this anymore. I've always worked on this on my
->   spare time and life changed. And secondly, I guess RISC-V is
->   taking over ;) It has a far better ecosystem. Also, to my
->   knowledge the only (public) user of LM32 is milkymist and this
->   project is dead for years now..
+> Wainer dos Santos Moschetta (2):
+>   hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()
+>   hw/mem/pc-dimm: Fix line over 80 characters warning
 > 
->   So time to say goodbye. It was fun and I've learned a lot -
->   technically and also how a huge open source project works.
->   Thank you everyone for that :)
-> 
->   Basically everything still works and there are even TCG test
->   cases which covers all instructions the processor has.
-> 
-> Many thanks to Michael for his substantial contributions to QEMU,
-> and for maintaining the LM32 target for various years!
-> 
-> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg605024.html
-> 
-> Acked-by: Michael Walle <michael@walle.cc>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> v2: Also orphan machines, added Michael A-b tag
-> ---
->  MAINTAINERS | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 32867bc636..c89bf61989 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -183,8 +183,8 @@ F: hw/net/*i82596*
->  F: include/hw/net/lasi_82596.h
->  
->  LM32 TCG CPUs
-> -M: Michael Walle <michael@walle.cc>
-> -S: Maintained
-> +R: Michael Walle <michael@walle.cc>
-> +S: Orphan
->  F: target/lm32/
->  F: disas/lm32.c
->  F: hw/lm32/
-> @@ -945,13 +945,13 @@ F: pc-bios/hppa-firmware.img
->  LM32 Machines
->  -------------
->  EVR32 and uclinux BSP
-> -M: Michael Walle <michael@walle.cc>
-> -S: Maintained
-> +R: Michael Walle <michael@walle.cc>
-> +S: Orphan
->  F: hw/lm32/lm32_boards.c
->  
->  milkymist
-> -M: Michael Walle <michael@walle.cc>
-> -S: Maintained
-> +R: Michael Walle <michael@walle.cc>
-> +S: Orphan
->  F: hw/lm32/milkymist.c
->  
->  M68K Machines
+>  hw/mem/pc-dimm.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
 
 Applied to my trivial-patches branch.
