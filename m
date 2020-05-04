@@ -1,53 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdVx-0001N2-4x
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38016)
+	id 1jVdVy-0001Q7-Vw
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVt-0001J4-F6; Mon, 04 May 2020 12:00:14 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:55581)
+ id 1jVdVx-0001Nc-Hk; Mon, 04 May 2020 12:00:17 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:54491)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVq-0005kX-Nj; Mon, 04 May 2020 12:00:13 -0400
+ id 1jVdVu-0005mC-KA; Mon, 04 May 2020 12:00:17 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Ml6Vg-1ir1uS0yyq-00lVLH; Mon, 04 May 2020 18:00:04 +0200
+ id 1MYvoW-1ja3O40YzY-00UpXT; Mon, 04 May 2020 18:00:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Walle <michael@walle.cc>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL v2 04/19] MAINTAINERS: Mark the LatticeMico32 target as orphan
-Date: Mon,  4 May 2020 17:59:41 +0200
-Message-Id: <20200504155956.380695-5-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>
+Subject: [PULL v2 02/19] display/blizzard: use extract16() for fix clang
+ analyzer warning in blizzard_draw_line16_32()
+Date: Mon,  4 May 2020 17:59:39 +0200
+Message-Id: <20200504155956.380695-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uL5p/nsB0SL9v6+OlrXPk88iIW/lceEcRXqq1kPFLlsqck5NLVq
- qnFfxx8gneiX7DlS8ylUgCy2qulqQehChjELnmOQXYixnBG7nOp4AghGJOb/tAK1D06M6G/
- Z8pFWlTnTdcQ4gAX/7CZ2mnfgDf72ibAURP/yAMWP6yyK2x43ItDp4rh3C6N8g170jV8cdW
- jS+bAfM6/MaXgsxwv95uQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gJBEcdtFzpU=:TZ5Wxr+iLpdkhvFv8jb4ak
- +v+UkQmcrkGliVcfy/3JCiGWiKAn93usySCSvwP9e6Q9AqB4HpueODQKp+gIJiuFCQeGW6RGV
- jzcqLT8SvngEias602hhuQMRRU5nJLYOXDg4jUkvxvSszaCTjM7zD6TKSU/Ob7TNKNDh6apxv
- kUpVnXCeGtbj3JDNIKUu1zigaUxRE1si5f8JFnHc3YJZTN2uANIdapqYBZbw9BjlVVUb22h4m
- ffOsP1R++6UOqUtETM/9aX2x29QFZh6UdXiw7NaRW8s7YH7mGgRWPR5durE3kSRWOmFC4hAUl
- VesIAUVvAzCtT1N+i7I887ExLHA76PSsYzMdkeOVL5NPPFy22pInsxC1ZmVD8n+2BZnv4uyQo
- AMPd0dcLHGl98hybsVsU6AYQvuvfOBzF6+loGt6nB7sun6rZu07paSjg4p7Al9vJvUubV+gvp
- PQH2ATcg6JHwZY+KZ3gXlefO+1OnolW9Ouxa7OBvEMJYlNPRlEtuVDkrADM/d4nPn6lo9Io/I
- Nv9O3vJYk+l6lowYjMP00wKpbsgkxgNMI/v/F5ThYh3BmloAsEHVGJZcZoFiPCB9JTl/G0evW
- IBhUwghYj6wNjWFBKiHsJfTMhnhKzBvdSse5QMAUa/kNQHcgX/iSlUBPYrNHAgXm5U4VwPdV6
- d8M8P3cNznFNdKzSd1rcQdmD2sVbe/Cl+nmiZrzQ6S7MhHzMt8EumloGLzf+VlGYD22lcguBd
- vsheW8FU9FbryDuUq4GfzJAoHA6HKCjg2xCQDbpT21+W6swWk5xwnGi2ah7wkDKMGnjd+2wFx
- uAaG02ouXsLQbBwEseVmyvGt7rOvt5Y68fjxc24GIJZjv52p7q1ZpFMnUSsk3KJXLBGySep
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:C4Bu8a/krPIoq9y/FOF4tSxvMpaOkr1nID8+jsE3cCLyOe7/GfS
+ 8bL9BvXbqA2/YdCniElhEUEYlZgvpyMOEhgGwusD1bal7OQZJGSJODms3PdsI/6BPwTqA3V
+ mUzA+E1a98aiSWFEQipW7cHrC4r1eb3+jobVQXXBJp82sGfIKwZskg/KJHXNO/HDkYp76J6
+ IilYDiBWUs9eH4Hgpu0YA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:06UROSzpzgI=:MtR1W0RDxQy0GEUzp10D4X
+ 09yGpidYwYTnMWOJdKpUtC3Dq8RVwxIVGovF/0MZPVOSjx9jeI3ZmxoQitEkFCswY9hbOnhQL
+ ThGrzqJxC/avlGSOHF+b8JobZ9fBkuoLymeWEgNCupG8ofT/xP/pH5YFVM3IMH2rRFmueNYft
+ kAlOH9B5c3GaSRE3DSIVsKbUg2qEiLrFTxnXNRm3XLWzuORENoUwMeBit5+OqBHGrPAYm4Y6D
+ +e1Vjby/RLp0bV/zV2+GOTgHwvxLBwhHL1KXeaDHtWfE5jgvvAwrfbMlYcA+HB7XK/5b1wksY
+ 2ZTGp2YdZNJf396oxZ8zHkpMT6b9+gz/W4B7jXcBjHdA7TfK4gTxfC3PJtueZOch/pptOg8nA
+ aAg7EfQMkmZccktkG9DcaOocpHmPz8CiUC3jmKIS7yBl+K/s2yzX7xi+PLrvxD9oOnynKhxnL
+ 3EGE2NaD8YYlNILaGr6vNlpgdvi7RlheoLq9xZDTnlR1LOyxC/oJqEz1N+BnOVGxCXcX2kNci
+ SqBDJOvnOZbUAMUA0r/XtPbmMgn4B/JYR9c3mB3rnlhMIdj+DAMiYfFIDtV7KU6K09s0+Nhw/
+ wW/KRf5dHLMmhzYQBmpVEbybuxfra5mkBl8wu17dgMdqntn6t7iN4oiOpDBMkfSfKPzhVLXDP
+ GtDpS8QJtOXb6LeNyuGta+5lMkJTDQA/cOO/wgjBxTyZ9K82mpKJrQXNgKhzA2TPHEvpDP3S6
+ 9BM5mT5P8MiW4EPlio4DbNgTqwmKHkz1Dcg0mcsqc+uoSPWazEMldjWczp87n12yXe8pEl7f1
+ bt9CFzIsvqA3v1gp9ziRs0SqJIUXSRxVisnChq433u4wPe6npo3YZOKRECWYOgp5UlAzTJ7
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:09
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,73 +64,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:14 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:17 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Michael Walle expressed his desire to orphan the lm32 target [*]:
-
-  I guess it is time to pull the plug. Mainly, because I have
-  no time for this anymore. I've always worked on this on my
-  spare time and life changed. And secondly, I guess RISC-V is
-  taking over ;) It has a far better ecosystem. Also, to my
-  knowledge the only (public) user of LM32 is milkymist and this
-  project is dead for years now..
-
-  So time to say goodbye. It was fun and I've learned a lot -
-  technically and also how a huge open source project works.
-  Thank you everyone for that :)
-
-  Basically everything still works and there are even TCG test
-  cases which covers all instructions the processor has.
-
-Many thanks to Michael for his substantial contributions to QEMU,
-and for maintaining the LM32 target for various years!
-
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg605024.html
-
-Acked-by: Michael Walle <michael@walle.cc>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200316142827.20867-1-philmd@redhat.com>
+Clang static code analyzer show warning:
+  hw/display/blizzard.c:940:9: warning: Value stored to 'data' is never read
+        data >>= 5;
+        ^        ~
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20200325025919.21316-3-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ hw/display/blizzard.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8aa8efaf1d7f..d6886be13159 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -184,8 +184,8 @@ F: hw/net/*i82596*
- F: include/hw/net/lasi_82596.h
+diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
+index 359e399c2a0b..105241577de1 100644
+--- a/hw/display/blizzard.c
++++ b/hw/display/blizzard.c
+@@ -19,6 +19,7 @@
+  */
  
- LM32 TCG CPUs
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: target/lm32/
- F: disas/lm32.c
- F: hw/lm32/
-@@ -977,13 +977,13 @@ F: pc-bios/hppa-firmware.img
- LM32 Machines
- -------------
- EVR32 and uclinux BSP
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: hw/lm32/lm32_boards.c
- 
- milkymist
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: hw/lm32/milkymist.c
- 
- M68K Machines
+ #include "qemu/osdep.h"
++#include "qemu/bitops.h"
+ #include "ui/console.h"
+ #include "hw/display/blizzard.h"
+ #include "ui/pixel_ops.h"
+@@ -932,12 +933,9 @@ static void blizzard_draw_line16_32(uint32_t *dest,
+     const uint16_t *end = (const void *) src + width;
+     while (src < end) {
+         data = *src ++;
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x1f) << 3;
+-        data >>= 5;
++        b = extract16(data, 0, 5) << 3;
++        g = extract16(data, 5, 6) << 2;
++        r = extract16(data, 11, 5) << 3;
+         *dest++ = rgb_to_pixel32(r, g, b);
+     }
+ }
 -- 
 2.26.2
 
