@@ -1,52 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZQz-00037O-Q4
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:38:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51968)
+	id 1jVZih-0001vW-17
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:57:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1jVTyX-0006Co-Cb; Mon, 04 May 2020 01:49:09 -0400
-Received: from mailout11.t-online.de ([194.25.134.85]:41036)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1jVTyW-0001CP-4I; Mon, 04 May 2020 01:49:08 -0400
-Received: from fwd05.aul.t-online.de (fwd05.aul.t-online.de [172.20.27.149])
- by mailout11.t-online.de (Postfix) with SMTP id C36D3421ECC8;
- Mon,  4 May 2020 07:49:03 +0200 (CEST)
-Received: from [192.168.211.200]
- (XjjhFZZLghF-c9rmoHf2fx+EMefnVv6b86KKG8Y-E3s6pCFKLxp0oOLUMtoYc1JZ1W@[46.86.59.135])
- by fwd05.t-online.de
- with (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384 encrypted)
- esmtp id 1jVTyQ-0PAFV20; Mon, 4 May 2020 07:49:02 +0200
-From: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>
-Subject: Re: [RFC PATCH 1/2] audio/mixeng: Fix Clang 'int-conversion' warning
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20200503113220.30808-1-f4bug@amsat.org>
- <20200503113220.30808-2-f4bug@amsat.org>
-Message-ID: <06aef378-80cf-e24c-d271-58a7670d975d@t-online.de>
-Date: Mon, 4 May 2020 07:49:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVZie-0001qs-2O; Mon, 04 May 2020 07:57:08 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:36656)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVZid-0001G9-Cd; Mon, 04 May 2020 07:57:07 -0400
+Received: by mail-wr1-x441.google.com with SMTP id d15so20574349wrx.3;
+ Mon, 04 May 2020 04:57:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
+ b=OnCK6mhU9G9SVkGhpY5pbKk+MRkuYS47AV66uu4tzs2/gtCqXvvvnHH7JudFKDPPHF
+ htrPx2KMZjAZy9uKmL4GL4bKGwJKnM/X/jejPyctXNd5xEGeYj5Iadeq+Pjwr/vGD+PD
+ S2RytjYaE6aJ96hOOgEMMAQNnxwEHvueFhLJYsB/Kh8f0TUk5kGdNHyWpRFVYfn6uKrQ
+ nuMHYaTnKmJwSkcwvb380WneVcgxRglW43+lhBGQbOFInNJvUj1Qqy+hnK+iUrHaS5Q1
+ R+GKpQH7ZUTgrmjgZM5YxObCj9F4s0j8P4bareMfZwi+myQ0wDPx41gvK/0QRuiI5myA
+ pWLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
+ b=sTC+ywQtm3abwI2QxEShTRWsXe3FIuYkx5qeuqagj+I7hB3kY1ggXx8u6hUEvPuLp8
+ lVXv3tDXMvW0TCASCH3GcwfU5sgfFJorynyk43oIgiBUCn+HEcvl1DsNmntZuTeP0bww
+ bvJJRPPSSNMjX0NXqsU1DoLIMdbP/v+IyGkxerdPvSLl39vPISSoH7N09KP1vP3EcYr0
+ 1Tc9QwGC4q55mTVLm9lbePb1xng6oyyVL1dtczPGhw1uHO/GtAB/Do5LQOQRk73ZpRep
+ sqChbHeXCsyEMoApH4yiwWs8IRTQww25ZjsN6Feaj4BSsNCrq0IUChaBbfPTe0vkfdEX
+ Fzmw==
+X-Gm-Message-State: AGi0PuZZooCteVsZq6Up1Xs3+lgEIv+9Nie6YjHx/x8ymXs91mFEkkPx
+ nbOWmd48zXpyT22F4lGlT/Nk3Qva
+X-Google-Smtp-Source: APiQypJsyuG2c/A4OQ3/iYixKP3P+ijzEYV8F+Bo2y915r7C5w8QQ8mnDS1SQ80UjthvbFgDUwf8PQ==
+X-Received: by 2002:adf:c7c3:: with SMTP id y3mr17461703wrg.196.1588593423019; 
+ Mon, 04 May 2020 04:57:03 -0700 (PDT)
+Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id n12sm5660984wrj.95.2020.05.04.04.57.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 04:57:02 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v2 3/3] qom/object: Make reparenting error more verbose
+Date: Mon,  4 May 2020 13:56:56 +0200
+Message-Id: <20200504115656.6045-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200504115656.6045-1-f4bug@amsat.org>
+References: <20200504115656.6045-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200503113220.30808-2-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-ID: XjjhFZZLghF-c9rmoHf2fx+EMefnVv6b86KKG8Y-E3s6pCFKLxp0oOLUMtoYc1JZ1W
-X-TOI-MSGID: 64880c6e-1779-49f8-8721-2106c0d29683
-Received-SPF: none client-ip=194.25.134.85; envelope-from=vr_qemu@t-online.de;
- helo=mailout11.t-online.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 01:49:04
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 04 May 2020 07:38:51 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,41 +85,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 05:49:09 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:57:08 -0000
 
+Display child and parent names when reparenting occurs.
 
-> Fix by using a 64-bit float for the conversion, before casting
-> back to 32-bit float.
->
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  audio/mixeng.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/audio/mixeng.c b/audio/mixeng.c
-> index 739a500449..9946bfeaec 100644
-> --- a/audio/mixeng.c
-> +++ b/audio/mixeng.c
-> @@ -271,7 +271,7 @@ f_sample *mixeng_clip[2][2][2][3] = {
->  #define CONV_NATURAL_FLOAT(x) (x)
->  #define CLIP_NATURAL_FLOAT(x) (x)
->  #else
-> -static const float float_scale = UINT_MAX / 2.f;
-> +static const float float_scale = UINT_MAX / 2.;
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ qom/object.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-I would prefer an explicit cast of UINT_MAX to float. This is what we already have in audio/mixeng_template.h in the conf_* and clip_* functions with FLOAT_MIXENG defined. I think similar functions should look similar.
-
->  #define CONV_NATURAL_FLOAT(x) ((x) * float_scale)
->  
->  #ifdef RECIPROCAL
-
-Please don't forget to fix the RECIPROCAL case.
-
-
-Btw. the problem was reported here:
-https://lists.nongnu.org/archive/html/qemu-devel/2020-03/msg02270.html
-
-With best regards,
-Volker
+diff --git a/qom/object.c b/qom/object.c
+index be700e831f..417fd90aa5 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1683,7 +1683,12 @@ void object_property_add_child(Object *obj, const char *name,
+     ObjectProperty *op;
+ 
+     if (child->parent != NULL) {
+-        error_setg(errp, "child object is already parented");
++        error_setg(errp, "child object '%s' is already parented (parent: '%s') "
++                         "can not be children '%s' of '%s'",
++                   object_get_typename(child),
++                   object_get_typename(child->parent),
++                   name,
++                   object_get_typename(obj));
+         return;
+     }
+ 
+-- 
+2.21.3
 
 
