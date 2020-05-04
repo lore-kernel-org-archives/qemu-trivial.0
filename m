@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdWI-0001fx-OV
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38096)
+	id 1jVdWK-0001iZ-D3
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdW3-0001WZ-8J; Mon, 04 May 2020 12:00:23 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:37377)
+ id 1jVdWE-0001aj-9d; Mon, 04 May 2020 12:00:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:52599)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdW1-0005uk-R5; Mon, 04 May 2020 12:00:22 -0400
+ id 1jVdWC-0005wC-9D; Mon, 04 May 2020 12:00:33 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MRTAj-1jkG7J29ob-00NR8k; Mon, 04 May 2020 18:00:16 +0200
+ id 1MXGak-1jdtPD37AE-00YfI9; Mon, 04 May 2020 18:00:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL v2 17/19] hw/gpio/aspeed_gpio: Remove dead assignment
-Date: Mon,  4 May 2020 17:59:54 +0200
-Message-Id: <20200504155956.380695-18-laurent@vivier.eu>
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL v2 19/19] hw/timer/pxa2xx_timer: Add assertion to silent static
+ analyzer warning
+Date: Mon,  4 May 2020 17:59:56 +0200
+Message-Id: <20200504155956.380695-20-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hBrsijXPJ2Ho2iRXx3sz00wduvdEf20MNyVGGEbhdMg0T31HWrF
- BF5475bsyyioCHPf1bOgcCPdzjyfsrbwqg6YyTSiV6m3i0LKmwZOLRp1J07PlFVhHLAoNHl
- zWyVEwZmYxxcFGzEs1Y5Lg3Xn+EtEBWuFgmJ/erRm9Gxhf0Xv6YeExvyXbvhPz4OP2MwTfQ
- H1dcbBh9+pWwUf+v8ZgJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SMt7dqAidCo=:fbuwDLr0XNpjrCpzvu35Yc
- Q0b4YtHPORcIIvGfcQE5zmzdppzrzIhyb7fjMzEfDcWC26RvtYWJy9yH7f9UhTvLSNuPVdeYh
- pV2uTNd9CvZi1qimzGVaSOcu/EwgGZxcI1C4c6SXiIfLZeZjc4l4GvLZqRLYPbmTzgR5iED3s
- X25YMEfEHymiOHaiNQ5TpnMjpsglmcvMefU6F2/56/2sHej4wFpVaNX+yKO9lyVyS+ok27fwC
- 9xAAKR6q8Of3g2uEwR/QTNYTB44/+hJr5ppDiH0iF1hNcUUeiWUA2RWVTfypWJioDjTF1Wx3U
- o1fVIZk5jBeMeTg9TldLD2WB3O8ZN02+7m1K4Cxw+WAa6ojwnUV1B8aJnTCpZvRmjAf622GIi
- RK/U/2BLCoLvobYPAEBfMfvYSS1OI2OKWrJFduG4SjNs9Y2VAN9Ey1z8gyOvlZkYBBsR7kIlv
- eS9rT2nUBt5df5cGdxleJCEu0tXvXyKKcc/IWX+x62kv201y3TAYVwTCcBbf5IFanHxnjtet1
- EFf+rse16VcelbzImkcUZtt5xj7AcBhQQUu8H4YHIMfsN2duBkyZpL1RCgjVILVKoOjU6r2ss
- +PxjqwlpFsfeAOkjCS7Q3z68CyD6LTOAy6swYqX3LXqxyA2xLZH+LSyxaks/xO+rsVzDfr94h
- RgWf6kqeO7ZsYpXReW4K54LSd6fD994iqKa6jEBNNoup5m9LpJWzVX+yHP3bQFrVFZgSwRtak
- XFRWiSlZeEexAPsZU//Ym3Sn+KHSFmvNyw7UDtou8y13bhcVszYS82jM8pRABTWOifazklu4x
- rlptXC2kBcbBK/ipZDpJCKn5JEwhQmQtn2QTC+wM0gZyGcPkEXdpscHvQrE7rq8JT4xc+sJ
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZR9NwCl1SFOgGjyeI8D8NNykyUUgcLLZMaS5wwwT9tGrGCiso3d
+ jKesMyobdiAq/1V/HdBSo4zP+EyzbIeW+wKRGU70X+KuHce1J31ptF5wxj/Lwk3PevYgdiM
+ GpDbDiyg3R+Ncj0NVpCh/XXJ3BNk3BoPO+BsEb1qjuEHGkzNiAQNerJCPT3rKJY1K9+qFLA
+ 5di38YMSNBFPtps5uaHgA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hTJ9bSQVtK8=:YSECT2GJKj6Au0QHE8bFYy
+ 9gpQ6CBPyhA4xIZulZOklEk1mGc6OAjWlTJRnhHAGgI+OsrBStqsg5Cqdp2Kv/0PW729sHU+B
+ /DCI9fa91rP/MDGF4lg0+c5TrHJuu9MXclpTtPAopMaU7ava0wHfuuL/p6U+t6jNyCjuSd/IA
+ EQ9V5jI5hLtBLhcNhWSoA5Ws02qyOTNbyF83zyXQAQg9maGtIgQOJtKzoXJWQiuA+Nh2E8Nt1
+ 00hVQ6e98laPdqmTCXKzA0KaGXsmLxs/ka++REhD3wl8ViqNWev8teY/MI8568TMosxpoRH+/
+ 4HhXtZQMFVX894TtwUGf/qkLQFhh9081M7ZS3mhIDjM0jcdZy9gufzAyW3xZDGRpTaAd67ZNU
+ smDzQLQXiOz9XngK7igdPaQpYQhClQWpaR0uFJcPKUsnI1AgLwFSDfdlaXvqpTP+wjGBKTLDw
+ czUhJ2Rf95gbdVYHg446bFOZkZ/XVrjhcM5cv7iCWHtcuT6LQRoyNjZicz313i3Xjx4Qwlzf/
+ aWW7XPZZYHHa6R1nXWD5o+Vy0yb3RPvC8A4TgkU+a6HWoagwT22ZTh+JnLUcnJiVFYoj1gUww
+ j9VL4HWH4Gy1yZ9I10/a6IvHC6S2dnXdrA2n12doqrJE0ASAY83/QaYnMVFZQFQjNMbPNUObo
+ FK07mAcEL7SGSw490N68M+2Ato9dOZ7AHzeTiQWmRXKOhLI32P6wBqlrTWkkgel038r1SuL+g
+ vfjGc3HMgRHTfu2dtYJ4ZzHaRfLxegMHANDJ9oclgpTHHofi0ENrnZP52Hedf6VmLXFQfpetn
+ QHco45Tftjvr/pbicdCwWjCylCPXC14ysAQ/OPd49y2TEa78pL1/S8v3LnzKSQZW1WNOtCS
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:20
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,38 +66,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:23 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:35 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix warning reported by Clang static code analyzer:
+pxa2xx_timer_tick4() takes an opaque pointer, then calls
+pxa2xx_timer_update4(), so the static analyzer can not
+verify that the 'n < 8':
 
-  hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during its initialization is never read
-      int set_idx, g_idx = *group_idx;
-                   ^~~~~   ~~~~~~~~~~
+  425 static void pxa2xx_timer_tick4(void *opaque)
+  426 {
+  427     PXA2xxTimer4 *t = (PXA2xxTimer4 *) opaque;
+  428     PXA2xxTimerInfo *i = (PXA2xxTimerInfo *) t->tm.info;
+  429
+  430     pxa2xx_timer_tick(&t->tm);
+  433     if (t->control & (1 << 6))
+  434         pxa2xx_timer_update4(i, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), t->tm.num - 4);
+
+  135 static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
+  136 {
+  137     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
+  140     static const int counters[8] = { 0, 0, 0, 0, 4, 4, 6, 6 };
+  142
+  143     if (s->tm4[n].control & (1 << 7))
+  144         counter = n;
+  145     else
+  146         counter = counters[n];
+
+Add an assert() to give the static analyzer a hint, this fixes a
+warning reported by Clang static code analyzer:
+
+    CC      hw/timer/pxa2xx_timer.o
+  hw/timer/pxa2xx_timer.c:146:17: warning: Assigned value is garbage or undefined
+          counter = counters[n];
+                  ^ ~~~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-8-philmd@redhat.com>
+Message-Id: <20200422133152.16770-10-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/gpio/aspeed_gpio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/timer/pxa2xx_timer.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index e52fcfd9a030..4c75b5c80cc9 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -712,7 +712,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
- static int get_set_idx(AspeedGPIOState *s, const char *group, int *group_idx)
- {
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
--    int set_idx, g_idx = *group_idx;
-+    int set_idx, g_idx;
+diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
+index cd172cc1e960..944c16588926 100644
+--- a/hw/timer/pxa2xx_timer.c
++++ b/hw/timer/pxa2xx_timer.c
+@@ -140,6 +140,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
+     static const int counters[8] = { 0, 0, 0, 0, 4, 4, 6, 6 };
+     int counter;
  
-     for (set_idx = 0; set_idx < agc->nr_gpio_sets; set_idx++) {
-         const GPIOSetProperties *set_props = &agc->props[set_idx];
++    assert(n < ARRAY_SIZE(counters));
+     if (s->tm4[n].control & (1 << 7))
+         counter = n;
+     else
 -- 
 2.26.2
 
