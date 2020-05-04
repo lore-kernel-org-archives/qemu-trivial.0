@@ -1,60 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk5-0003RR-Hn
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52044)
+	id 1jVZk7-0003XD-I3
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52076)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjr-00034M-H8; Mon, 04 May 2020 07:58:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:57893)
+ id 1jVZju-0003DP-Lf; Mon, 04 May 2020 07:58:26 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:34947)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjo-0001ye-Mx; Mon, 04 May 2020 07:58:23 -0400
+ id 1jVZjs-0002JU-Ii; Mon, 04 May 2020 07:58:26 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MwPjf-1jFYr103BF-00sJdn; Mon, 04 May 2020 13:58:10 +0200
+ id 1M894P-1jS0xl1PVr-005JNp; Mon, 04 May 2020 13:58:18 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Walle <michael@walle.cc>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 05/20] MAINTAINERS: Mark the LatticeMico32 target as orphan
-Date: Mon,  4 May 2020 13:57:43 +0200
-Message-Id: <20200504115758.283914-6-laurent@vivier.eu>
+ BALATON Zoltan <balaton@eik.bme.hu>, John Snow <jsnow@redhat.com>
+Subject: [PULL 16/20] hw/ide/sii3112: Remove dead assignment
+Date: Mon,  4 May 2020 13:57:54 +0200
+Message-Id: <20200504115758.283914-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hi4ZlP8k5hKSLyW93PzeAzjqJe7XRZDKE3QUbZJxRddbZ0QtWkK
- bVT5faEL9/nfqe6W5s0oAEPHhkS7yQLTIWeqaeOpNp1Nabf4FtufvCxcnIFsGk2jczIYj3s
- eGuH1PWZ6ATYKIss8VmC5lU0zquPKHNhIWMfqQ3XmMiK3ZZDxSPjkKvYXPAoSzFN70AjxKZ
- 5D/GMNs6xYaoMV7eADNFQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xchtK2hLMPU=:mTpDgH15Fmum6Aeypk48KQ
- cbP9u2PgvmOPCBawOU7I0CitFqGORSTF9fJautdXkhq0IMHXTApODc8h1v9rIpN/uXzHj2Pb1
- D4SgxcwwNrLsv28aHYHmKgb8Xcf0qJPzgbLYyeSFj0hVEIm80vgnCrRDPxOVjxt4vHhRZvwVN
- aTOIAWxB6MO2yQ+5wpOU3mQu7yV6vJMFUUgLj/66E7gSJzuU+uBV66AyyFzuXZ3oPS7rGR0FW
- mICwAZ1w8DDhu/HyCVX5MByeRAhZ44yE7oxBMz55NOREKfJo2szXFNokg9/7xdAhjbyX7n7r0
- war8ie8OZhojCgMDU42Eo1SUuN5gDXoo0s4/8wbqgD/a9EnOgrsDTylgOftCcdNg4LvS62zzM
- Z9smX4/ii7XltmU2BqWALIL1xI0GD4dZI+bQM3AdHFN3jEaqoxRtmLTY4PzfQL02fyq+m5KYv
- SNW7XEvQ3pMU4Oi+3ZVRsDXl+Hcykv728JgY/rlqTS/g8Xo2nrpWWSVzC45T+4+zNZUc13A+K
- PvK7mgVuyCfbv6tvcT8My1mXJoCfLQKYRsLeF/t7zvEs7d1O3vGUbIYIaV2MPTWKJeq37aiUW
- d9Ws/X0IzHotkdJ7sMQUsQLwZTbDmXLVNvlTCzTolxBVQzh+xmjA2Rejas+h/DppqPtT5XvEc
- P3j8+VXX4IofbVqJQ87vgyw8OGf84mOlrE68qpEdk3YEhnzMw21McXfDVMfx/jZ9nEsXar7+a
- DStnPN12FWw48aq1TTqDjOtRB2GdEh+grrwmgBm4w1u7rMfwoV8R7LS8kYRfq+hV/0y9/B3wd
- jlnWWUhOh4sXbG+AmKld2q//rWZ2rNNhqIftUu2EfJFvM7rdD8UTK3WAkg3JH365NEf1YGd
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:bMYhpdRoGq4TloRGXhT0RRzVkdA2HsVH38gxEEbUu2mBiqfL14C
+ rte2EhtZ3DK3F+uI/Cvm/n41idenNNxJAQnBY5pTs5lpFeMOmG2Fx9D4F3SJCPDUzyV8HLu
+ vcMgs1C9QyjCq/20MaJIBFWuHpnvNeutjXOm1CD4kgLCqIh64wySvIX/h2VmQpA7Yysa2jl
+ BvgeAa7MVvTIllHzAUCOw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:s6R3vZ250Cg=:cZEQ0lRSD/yu4gi2y6GAU4
+ O2NPZy/PsS7BUcdfns+ith+XK5cceEgGhsPyqAQ7nV5xQ3KdoXYAOA6t4p9ikl6pJk0g0WJhW
+ TU2ft8Z0fTgGwCDveJuSsKtWckF5Own9vSds2m+qSV85dg0tRG0GjiGfWqtxJuQN6Vp+cfj+J
+ VKaz3ZzDd2r9Irlrg1PEdghPyEKo/XmlzERnKBrtSl1uo+G7L/a0Y3eabm2zviTs8bKEEWAfd
+ 5EbbjDtUmtnyiOYQYhI+cxwXX/AN2V7EzJqUITiQrW5s6c77Y7RqPa1ivm7GeGSwEKUiYvgiO
+ YD7DDfRxtNQ1zZCVk7+Q+F0RqKkji5PuzDUSdR7aG6+J8tTDuE2hmLusp3iEjgQUF6x9G02ez
+ 3tuNLP8kmzLIsCVFdP/8JmNIzIF5rtfzoJ7md8jzwqbez3ZsnkysONSbI9Yxam//DjPQ+8gs/
+ DlXsLl/INGbGm6OMfUyjL0EJNX53pLL39Mk0YB3OyvgPNbMyesqUCo2UQED15zmMSOIXixaNZ
+ UFfqVnquYpsf0b99nKQF0AdH8LLOvy9lVYK0euZpvGUREmETKjCuW+58QN0CNDq+XSpQSoGad
+ eFVKOtyEcm1qPxjenWhGY8nOUqlSdGgYJICXL/+xrSUNzD8YQAktCienIKO1oe7kp2Wqqnmvv
+ J2RCZvhlZkB9a85iaWceUhJy+Xl0WpH0/0jNo4tMZxBzvY+fbIw6D9b4sMwUJFQwH/UGxEg2i
+ jWP4s5JN52pqwBgt+ylOUTz8OTRBneMDNRVZor7Zuc5TQiS/pgkDTQE3al4tI4mGCgLw8zI+X
+ rhV+zEdS3poc+zj2Unj8SXTJ/z3O8Rba18aZ57TV/igWJNqVpOSppa06dIYFx5gk+dVoHxA
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:13
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 06:04:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,73 +65,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:24 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:27 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Michael Walle expressed his desire to orphan the lm32 target [*]:
+Fix warning reported by Clang static code analyzer:
 
-  I guess it is time to pull the plug. Mainly, because I have
-  no time for this anymore. I've always worked on this on my
-  spare time and life changed. And secondly, I guess RISC-V is
-  taking over ;) It has a far better ecosystem. Also, to my
-  knowledge the only (public) user of LM32 is milkymist and this
-  project is dead for years now..
+    CC      hw/ide/sii3112.o
+  hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+          val = 0;
+          ^     ~
 
-  So time to say goodbye. It was fun and I've learned a lot -
-  technically and also how a huge open source project works.
-  Thank you everyone for that :)
-
-  Basically everything still works and there are even TCG test
-  cases which covers all instructions the processor has.
-
-Many thanks to Michael for his substantial contributions to QEMU,
-and for maintaining the LM32 target for various years!
-
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg605024.html
-
-Acked-by: Michael Walle <michael@walle.cc>
+Fixes: a9dd6604
+Reported-by: Clang Static Analyzer
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200316142827.20867-1-philmd@redhat.com>
+Message-Id: <20200422133152.16770-6-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ hw/ide/sii3112.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8aa8efaf1d7f..d6886be13159 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -184,8 +184,8 @@ F: hw/net/*i82596*
- F: include/hw/net/lasi_82596.h
+diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+index d69079c3d9b7..94d2b57f9535 100644
+--- a/hw/ide/sii3112.c
++++ b/hw/ide/sii3112.c
+@@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
+                                 unsigned int size)
+ {
+     SiI3112PCIState *d = opaque;
+-    uint64_t val = 0;
++    uint64_t val;
  
- LM32 TCG CPUs
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: target/lm32/
- F: disas/lm32.c
- F: hw/lm32/
-@@ -977,13 +977,13 @@ F: pc-bios/hppa-firmware.img
- LM32 Machines
- -------------
- EVR32 and uclinux BSP
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: hw/lm32/lm32_boards.c
+     switch (addr) {
+     case 0x00:
+@@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
+         break;
+     default:
+         val = 0;
++        break;
+     }
+     trace_sii3112_read(size, addr, val);
+     return val;
+@@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr addr,
+         d->regs[1].sien = (val >> 16) & 0x3eed;
+         break;
+     default:
+-        val = 0;
++        break;
+     }
+ }
  
- milkymist
--M: Michael Walle <michael@walle.cc>
--S: Maintained
-+R: Michael Walle <michael@walle.cc>
-+S: Orphan
- F: hw/lm32/milkymist.c
- 
- M68K Machines
 -- 
 2.26.2
 
