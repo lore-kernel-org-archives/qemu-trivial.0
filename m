@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVWk3-0003uv-T4
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:46:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42652)
+	id 1jVWk4-0003x1-Ul
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:46:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWk2-0003sc-DP; Mon, 04 May 2020 04:46:22 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:33379)
+ id 1jVWk3-0003ui-P2; Mon, 04 May 2020 04:46:23 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35336)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWk0-00057F-W7; Mon, 04 May 2020 04:46:22 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id h9so9569838wrt.0;
- Mon, 04 May 2020 01:46:20 -0700 (PDT)
+ id 1jVWk3-0005A4-3f; Mon, 04 May 2020 04:46:23 -0400
+Received: by mail-wr1-x444.google.com with SMTP id x18so19916912wrq.2;
+ Mon, 04 May 2020 01:46:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SkzVF0IAQenJ+vuaRxVd2feGaJRdUO/UKBkIdIBtTMo=;
- b=c73G7AIf02xEPxib1pJs4u5FUlo9ab0wnzH783TUYR6omj+qer5h7DRzhPiS7xNIKw
- Im7+DM3Zv9AJkXLvJjETkQuX4LCfj9uZmD2+T5q8w5Jsc3uUGZzxyp8vMmMkC0h/QroI
- 6ew83yYKDYqYBh4O5rERY36jLAGiJlsIeXsKq6HgB0U2i2oZVDHPs88cLzaKICLXonv8
- TY5dDIDavYUegz1i/IdWQ4uIXeglAfUUp4L9xu5llC+22n28sbuOdVxE2GI7GcVp6PYh
- +khClOdo55ZtczhuV+McfSyZpVzm68eniJjXMHhJK+ei8bu1NYU3BWhYQgZGPRdNeG+p
- OU/A==
+ bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
+ b=LMli5Ycftq50qDovpVx2BVYHKwF46lqCoDqY5tfX7XuHCkNIwVjbUHykKpSNh3z0OH
+ pFH897SPxW/L+a5YAO1+Nx5b3xrqXYLWojiOl+/sEGpmvss+Q4z12cJ0f3Rf6G702Nz2
+ NjVYuhe2PQiqdxNs8pEkDDER4vf/oQYxFsFYAQm0BZxqSvbnVnFGywAGykJChmH+Z90Z
+ mt4dwkopUi+eZG+8P2mPtvcDteS8HnsY+wdHnCBCwlsFpTf+JEkkMx8FpwtTuReKtbet
+ dKfTpQRpDuIHlkb8kx3u2LrUO9SWVZXO0UZrmAxR9hiNWsryKcTmsGrh4SnfVkBble3e
+ iV2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=SkzVF0IAQenJ+vuaRxVd2feGaJRdUO/UKBkIdIBtTMo=;
- b=bgLMf4ijkKkvYb+OUMH0r01V5pmNh6o8fE9cCBT40udpkP4UbgRJ1akErsLOwoYgYI
- Kj6mHCvMf4AAywai6ucFTQVi1/ZYMBWiKhUCdU9jc/LG/ZEczQDCgFAtG5Xc6rCugsom
- QuMAzi3LfKHmEjOGzx/rWjW6b7gZHhn5sgi5srrfZzh3edQ2VzNO19eLqdK5lELW6Mt2
- dL+7eBjYn63haSKDeBRx9upgbfnj+qLERRaNLsrLF1W3l5WCi7dhzqT10Jvusqms2ix3
- 1PxxX/lKyKUgTWQhRGM8/wlXPjtxevKov++pgmPIYUEDvkz17XvV0oOsqpSR7aAwlvSh
- iZDg==
-X-Gm-Message-State: AGi0PuayfukbrPDFIyURbdLC+1zye/VHZIHWZnuSZ0cK0Z21ev7r8fEu
- ac3OwuBdRoF+gh4VYMQbOjF/oIJm
-X-Google-Smtp-Source: APiQypIw4ubh1VWVYRKjwYkeY5N3hwWTvpxXkD+d8A3wLzF3ve8Zuu4Dmn5P+pjEpzIBY/S572nCfg==
-X-Received: by 2002:adf:e7ca:: with SMTP id e10mr18432009wrn.18.1588581978772; 
- Mon, 04 May 2020 01:46:18 -0700 (PDT)
+ bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
+ b=ORCqY42TPQ5TBsHvsd5WMG4sgUZBj94ioQC81xmt7pYNzTGr0GhKVnydWAt8SGgg0L
+ 26HZJ6XHDQnoRdj70Tzi6LO8IFYZFdDlSE+QTzJAkSHkfFZ4DcV1jHFeXH4caiXXnm7j
+ RVg7R+48sdUHORrwe1K9fVc5GSXhMlcEU4V1tUejkm4UAokPI7EC1MgEKRn1qfc/JoY4
+ RelD77H+QWbRWMSFCifXn+i49kuOzUnRSt9DT7oK3JjVJG4J8A9mweNVj5B18uoP5W8C
+ HJ6SskMUphIR+YM9ZsdQqNJGhcHNPWR1yL9iDmJKOQo/lq5VEll/vSxMULV2U2aHuDTB
+ Tlrg==
+X-Gm-Message-State: AGi0PuZoUe9o5UCZBntefIqFtt9wZLAzc8bMss4NLBsR8+lg6LuSU6gU
+ FKXxIbR6DR7KBUA6EBCvIrGKnfNr
+X-Google-Smtp-Source: APiQypL8IYJwhIZ1YGlLBCl4ZFybfnP1SZCSz8tDIjCk975wpi7l83A+O/6xGCkHA0yE/OKhNQ/uhw==
+X-Received: by 2002:a5d:5651:: with SMTP id j17mr17455133wrw.406.1588581981066; 
+ Mon, 04 May 2020 01:46:21 -0700 (PDT)
 Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
  [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id w6sm10740621wrt.39.2020.05.04.01.46.17
+ by smtp.gmail.com with ESMTPSA id w6sm10740621wrt.39.2020.05.04.01.46.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 01:46:18 -0700 (PDT)
+ Mon, 04 May 2020 01:46:20 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -51,9 +51,9 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 1/3] qom/object: Move Object typedef to 'qemu/typedefs.h'
-Date: Mon,  4 May 2020 10:46:13 +0200
-Message-Id: <20200504084615.27642-2-f4bug@amsat.org>
+Subject: [PATCH 3/3] qom/object: Make reparenting error more verbose
+Date: Mon,  4 May 2020 10:46:15 +0200
+Message-Id: <20200504084615.27642-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200504084615.27642-1-f4bug@amsat.org>
 References: <20200504084615.27642-1-f4bug@amsat.org>
@@ -61,8 +61,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -85,68 +85,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 08:46:23 -0000
+X-List-Received-Date: Mon, 04 May 2020 08:46:24 -0000
 
-We use the Object type all over the place.
-Forward declare it in "qemu/typedefs.h".
+Display child and parent names when reparenting occurs.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/qemu/typedefs.h   | 1 +
- include/qom/object.h      | 2 --
- include/qom/qom-qobject.h | 2 --
- include/sysemu/sysemu.h   | 1 -
- 4 files changed, 1 insertion(+), 5 deletions(-)
+ qom/object.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 375770a80f..b03ec9f40a 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
- typedef struct NICInfo NICInfo;
- typedef struct NodeInfo NodeInfo;
- typedef struct NumaNodeMem NumaNodeMem;
-+typedef struct Object Object;
- typedef struct ObjectClass ObjectClass;
- typedef struct PCIBridge PCIBridge;
- typedef struct PCIBus PCIBus;
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 784c97c0e1..1edc12e64c 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -20,8 +20,6 @@
- struct TypeImpl;
- typedef struct TypeImpl *Type;
+diff --git a/qom/object.c b/qom/object.c
+index be700e831f..417fd90aa5 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1683,7 +1683,12 @@ void object_property_add_child(Object *obj, const char *name,
+     ObjectProperty *op;
  
--typedef struct Object Object;
--
- typedef struct TypeInfo TypeInfo;
- 
- typedef struct InterfaceClass InterfaceClass;
-diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
-index 77cd717e3f..82136e6e80 100644
---- a/include/qom/qom-qobject.h
-+++ b/include/qom/qom-qobject.h
-@@ -13,8 +13,6 @@
- #ifndef QEMU_QOM_QOBJECT_H
- #define QEMU_QOM_QOBJECT_H
- 
--#include "qom/object.h"
--
- /*
-  * object_property_get_qobject:
-  * @obj: the object
-diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-index ef81302e1a..ca4458e451 100644
---- a/include/sysemu/sysemu.h
-+++ b/include/sysemu/sysemu.h
-@@ -5,7 +5,6 @@
- #include "qemu/timer.h"
- #include "qemu/notify.h"
- #include "qemu/uuid.h"
--#include "qom/object.h"
- 
- /* vl.c */
+     if (child->parent != NULL) {
+-        error_setg(errp, "child object is already parented");
++        error_setg(errp, "child object '%s' is already parented (parent: '%s') "
++                         "can not be children '%s' of '%s'",
++                   object_get_typename(child),
++                   object_get_typename(child->parent),
++                   name,
++                   object_get_typename(obj));
+         return;
+     }
  
 -- 
 2.21.3
