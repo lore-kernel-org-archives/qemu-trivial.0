@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdW4-0001Xp-6I
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38072)
+	id 1jVdWC-0001Ze-LG
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVz-0001RH-IJ; Mon, 04 May 2020 12:00:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:42691)
+ id 1jVdVt-0001JK-QA; Mon, 04 May 2020 12:00:14 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:57839)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVx-0005qM-8V; Mon, 04 May 2020 12:00:19 -0400
+ id 1jVdVr-0005kl-9y; Mon, 04 May 2020 12:00:13 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MAOeB-1jPp1k3wt9-00Btk4; Mon, 04 May 2020 18:00:12 +0200
+ id 1MT9zD-1jiaRc24h5-00UWYS; Mon, 04 May 2020 17:59:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Max Reitz <mreitz@redhat.com>
-Subject: [PULL v2 12/19] blockdev: Remove dead assignment
-Date: Mon,  4 May 2020 17:59:49 +0200
-Message-Id: <20200504155956.380695-13-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>
+Subject: [PULL v2 01/19] scsi/esp-pci: add g_assert() for fix clang analyzer
+ warning in esp_pci_io_write()
+Date: Mon,  4 May 2020 17:59:38 +0200
+Message-Id: <20200504155956.380695-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HYgsKFXXXn5jb8yMhowbBtiXs7B48AJ162XJfhs2pgSxwyfg618
- qSD5/LJEl1z1apY73pcyxemslYuJsJZ23b09qAQa6e06UHbu9FCp3LxMkN+a0HBpvVbT+/n
- RzejGdlY4/mdArEy6qtdXSp2BMaudJXaaEpu3rg2EieVhh4G/1uHdvaDDr2t2M+f8oI1uZ1
- d8EEqOrD+ZjkQjs41n0BQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:D98ZUZ4ikz0=:dN9XYPFem0J+MPhvCTRLR4
- qslSRBaaITbv2PAE69bUXZZciOluUJD/A8d8OHbwA2SvRyg4jpRSXmHJPznDaHls5viWkBmHW
- pfYJysZWOSOQGYDE5lX45DUYIJUT+yGWhaS2Jg0vVxdAWcyQGkgh6erUEsD9h3OmETRKeuOTS
- VqHA5jzT4PceXC878wJFDz1qo6cVFNss4YgDQpIxGMElgPQT6BH+c8VJ9VNEuby/Q+QYb769H
- PgzABVGLKx4hXnaRaFE/BKtka3eL2at2OSWpTW/U4VZLxt6UwwSs1rRuvS9tLr9u5rclwoBpJ
- ZJLmDeFCS8VFQ6rUHRuqc1SyNcFrI9dApBPcSz5L7NCjHieAvI+X7JXcAetP+w2VKtfpxfOIx
- /xbULrptFrMR5BDiMpS2CZ+NYsVmBnT95qJVMEvq9iaqoyug8xGhodNq4kfy/mNKMN2UNCCLc
- a4vkqjI8eQP1hJscKIQxrbvo2p88fXSMlfNLat2vuDLSGVtjJphLIgjQFo6dgy0tO4zyNwaSO
- lf/8HHcanAGbm0XOSmAj4qM/yFEyRzGOfbYiGTRzV3WK2S+ujNggzvigryzCf3ZxkFEj2Vl+r
- sIL+yYeaqb3ZL3IHHkb9NwafBRo+PI2zUYYJhocNo/JPPaa+uvMN+L2sRZ0ufm/or414GIGSY
- v95Sf/I2OmAix9NZ85JWTFriEOQnpY4fw4AqXocWjsC6zZ7gRHhC3/f8z5futGavMCIPgUCUK
- OddrUcnj0zEyNuNIeimvPt+luUwv0w7JBno4LeRRv1pQEIDbrv8ona63Os5P4927U9HiSZ4YU
- I9broP6297RbcBV6TekKfBZNDxAnVUgapx0JDB2TCl8XnQNcRqPybcwP9c4HQV+UBMncn5s
+X-Provags-ID: V03:K1:hlY/jz48hSKyGJeykHcVLtxPX1ei8qGh18vdGZtCqwgAEJ2Pi/m
+ LHSYGUh+QXbyIWCt1lmMWS16QL2SaDyCyh3gllwlndkJct+A7Wxc8jgdrlXoqp5k2iGRAzB
+ jNm39927q9U/u/EGg/p/VKm0PlMmFuLHflkhnnWaXSPaSRizkO2bmDcM/T1aL9pMXSd8g0U
+ FpMytWLT/anA8Js5niAMQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DToFnN6RxIs=:V6FXeoRq2XH7OH/k9Pg3Mu
+ zNvT1XFJGyp7YtVDbGhzFx+FnJFGCFwAF6EG6APfhbcZnvNqfVfLbk0OPTXaEuzBvb14wrrRx
+ F+XAjNwZQtvgJN2sPURooMFLwvsL9DNaB+fDVVLfrYLu1RlEENP1Gx/exhFBJyCCaxM6Udz76
+ F3AzU1xGHnjmwgmrO/yJzS2dHz93wEDFXl6uAB0HmPpR18EUZ6Hkv+9DGUG/DznVbbMjaA6Qw
+ aDEr/9fXQS1oxVzy7JbaqKVWFBDJCd5JWMRvUKeEL/eGCy0jbWEkhuryNXdyMvvGftsP1vy4Q
+ O9814yQPbd2t3ZZsP19iX3PxYhyZzJFMfsPcwS2caq3HdHDJF9LwEoPqrzNRDbN/dEtHJeD4F
+ lFaTihFCzldivtGstN8bJyE/0DiFRTbvnwAOqW/aD1eUpdk8v41vJqUW/+QZ/+J3jadp84/Ri
+ osglQAd+KoAI9J8hZHuZV8w9VNXMnhXNevFlrDj/76Ce/QnYSKV8h2UEhSKZokF/NCMp/f8S2
+ /AwGrFrp+A1Cyp1oU73cfcEHSqJ4l3mP1aF3GM6skadRAHrMmC1IVxXRFXSUjjT68TcoRAhtb
+ LRu6L+3oobHR+M35N9fDnmTAC+Z6ZLP/yEWsdUDb808CIVIER4PB42TOEb4uRvN+il2YZ/11q
+ B0gPc32aTuCT/k1kdlAEea3YU+6mf9QBlfLMopEiu5klZx5brRfC9mngoep4FOnWVTejwQVOO
+ 6Vgwg24JEOj1Bxdiw63n2oBaUdTn8IfC45IIIx0bjjSS9W++dDGNU6nE76caDRFZGzNyJ79xF
+ HpodzSlMRzYYUZqLEsKbB1qKGeR2ibMgBNdSzzKkkpofEf29m+2wSX0uFzcv8NO/N2vvRms
 Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:07
@@ -65,40 +64,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:20 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:14 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Fix warning reported by Clang static code analyzer:
+Clang static code analyzer show warning:
+  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
+        size = 4;
+        ^      ~
 
-    CC      blockdev.o
-  blockdev.c:2744:5: warning: Value stored to 'ret' is never read
-      ret = blk_truncate(blk, size, false, PREALLOC_MODE_OFF, errp);
-      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Max Reitz <mreitz@redhat.com>
-Message-Id: <20200422133152.16770-3-philmd@redhat.com>
-[lv: fix conflict because of "Add flags to blk_truncate()"]
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20200325025919.21316-2-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- blockdev.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/scsi/esp-pci.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/blockdev.c b/blockdev.c
-index dc1a0c7c2fd4..708d0c323fd2 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -2741,7 +2741,7 @@ void qmp_block_resize(bool has_device, const char *device,
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index d5a1f9e01748..497a8d590190 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -197,6 +197,7 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
+         addr &= ~3;
+         size = 4;
      }
++    g_assert(size >= 4);
  
-     bdrv_drained_begin(bs);
--    ret = blk_truncate(blk, size, false, PREALLOC_MODE_OFF, 0, errp);
-+    blk_truncate(blk, size, false, PREALLOC_MODE_OFF, 0, errp);
-     bdrv_drained_end(bs);
- 
- out:
+     if (addr < 0x40) {
+         /* SCSI core reg */
 -- 
 2.26.2
 
