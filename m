@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk2-0003Ja-Tg
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52050)
+	id 1jVZk3-0003KH-4v
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjr-00035e-UQ; Mon, 04 May 2020 07:58:23 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:46785)
+ id 1jVZjs-00038T-SD; Mon, 04 May 2020 07:58:24 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:58235)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjo-00028z-TH; Mon, 04 May 2020 07:58:23 -0400
+ id 1jVZjq-0002ID-EY; Mon, 04 May 2020 07:58:24 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N8XDT-1j1JFE44Kf-014Si3; Mon, 04 May 2020 13:58:14 +0200
+ id 1Mna0x-1ip83G3zJl-00jcTf; Mon, 04 May 2020 13:58:16 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, Simran Singhal <singhalsimran0@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [PULL 11/20] Compress lines for immediate return
-Date: Mon,  4 May 2020 13:57:49 +0200
-Message-Id: <20200504115758.283914-12-laurent@vivier.eu>
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 14/20] hw/i2c/pm_smbus: Remove dead assignment
+Date: Mon,  4 May 2020 13:57:52 +0200
+Message-Id: <20200504115758.283914-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wYnk4vWOlgTtlHnIFo0rRCQ8QcF1UrGGnMVNrzZXwL2/Q4XJ14P
- v3QnL+h1N9163JYXJdFWgin7dPF9X6BQYgkLRA8KQCNZIs3HkgQM8e1caBI2hs9pzbyHAAP
- w17ghkS/+7oPHI1m2WnbwZAHccuUVMvXigMmgxnotFicqfdRQizJSeYh0JYfxgyA6xjOvX6
- LY3Vs8WGWiIm5Hg0eZ6Dw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:t/7b+5QkGpg=:EDaEgGyQI8ThhafOVj5yiQ
- pkzUWbPCVHIbIKXXReH8yH/YuxK2dGkAH6gKnk1rdITyHb/tSED++QIY9igYA4LGxS8PTn1JO
- gvTePLgAhUlod+l7q/TT9I//y+pPf0PtTFvubQBY1O3IjgbSlW65/vSIvAB6GEG0WZqILuCRW
- Ud/xIN+6smb1Q97Hqj2OlE3uA4nvTbdymxHPe5Lju8Gzc/dkyCmvtOfZKyAsN8eA80Oysmm8Z
- IkPPFcFIaNhoAq4SdOE2X0aPh/2gpAB+jihhmTXSlIduWRE4NMnUMRrKoYqjNXVmAMSFIM6N5
- r1PU/m89fbM3UnXgkexpj+Oo7ocPLfoAvf1s+bEVLUEHdDM0HSIgadGQ9YoAEqYUQ0qkScDgf
- RSh7Q7oy8EJ6zWTYNetxElpvkqmFaLMX/ePsuBglDq6DqFn7CiBbVOsQDR77bKWCECBWsF3Ew
- W+0cCail8Ai+Ils4kc2PkeJxXUTWelmP/7dBBG4iMwA70sieUaQf1ayexpjsN5cYT5+AUr1m7
- x4A4H4mpjsiJd2c+PG9GH279XeRNZ1JVZxiZdjSEJwEONaBJgXrTHFxG2LtVJTM3NxjcNU3OB
- EiiVmlRw7DsabczrXKs2unfzlvFclxl5CQvd8bCwCHmWR2fi4zRqe8MYXDZCCEZK344UqLbXJ
- YMSlP8JzocE97vbTEgub+Rs0G4dI6Sn9y3jpiG+/OIzk+HRiqcs7EvRMC2Y5ry/5XxmsFOZ5C
- ne96HEwdL4OCzxlA7fv61gguT2dsCjHSm3tJdczyVilTgQSUi2Y4y2DldwcnOrfI7cJ8n3m8h
- ryXeLHikwcCyLCxuGSHPXi8Lu8vuD7G76vjU3sO6PofldkGSp4G18rPB4mdAZMfdDJuOUrV
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:lAdcSX0kajxnl05WjULUUsCSNLGK9FItQz984ooxQyMQ3F2VPXe
+ tP2kTCLf1i7xGJL6rHvLRWjRV0vrBeoYerXrvt+t0jxSbV05ACXHngJrc9qQRkXtiHw4o6d
+ nFW4ITSXkFBpj7hBZqJBRz31vumaMsKWJhm6VqXRQxT/7DQ/V6laMHNRbun9f4+JHcEb849
+ M7D2l/ulhZwt0yjCVoxrg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GbPX6t2rIxs=:a6/vmlwAKH50bZFZYh7e8+
+ UCnVb5hrzq9WKE1jsF3wEgP/pZv0hruh9jX33wgSKGxDO6sb145St1c0DCejA3Wq61IKiyuoz
+ BvBxlK5/ItUi6NcGirc0wv891RKFRgkIr4gMWyOEP+1XxeObA0mnUdwq4qGvIBFRz3bfsVg8Y
+ prFvK0F08fZVti82dQ+M/YpRCo5Gk0q2HvM2PKMkUE2AQz2aPrx69Jy1ph8c9va3grWtAjC+V
+ eOkwuM3nxt7t4udiqBIG0u5nzM1EGJZGfznDVXgJgUx2DfpOSRM2srpUMRMRu9rc+2NO3sGry
+ L5ffMB0Cv2fg4505aE7kWu/Uze+fWyL43TRMf8lUFYLwaqjYq100J/wIfDL/kfDVvOvDsnA2H
+ xSRMcAzQ5iEarkruRlxYup3/Pf+WkdLy2faTsxBcy12CutEDkqVJxwfpsEwT0PWA+zd72GShe
+ +tvCzn5yPL7EzlbF8/nowJYiJy6ShQXj8BitXgX8xWBwXBbBrB4wBlEKpS6zOHOeiKvanc7Qv
+ Uc499rhCPlD59wNlqqnhR2pSwYrTi+X8xJh5kJGEeVbPMNkydKB6m3tAB1qC0ehsvHQQs6N9x
+ ohDhNtxUQUDLvn0eHa3UCuX2L6b+n5ldGN/PG8I1fBm8HP8RnSdw5CDBrz7Npaz9tsvG7Qpi5
+ CHFXxUvVMSPzOu0AhUM7x9CuFo+WnKpCBP3D/gClbhKC8RmGcY6SGpyXsU3LBmDf9Zt/ADcnG
+ Q++cGg35BeERxm73PP+YtgvUaNSYcugQPNANAV31720DAmO1S2FJ4clQCgn9ELEIOr4mS9YfM
+ srNMe0BkFPfqsgsL7mK/ymhagRPQUXRZB0ATXvwxs0zfFgH9kjkxMbGgcHxJcuBiHlPEa+i
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:12
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -64,210 +66,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:24 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:25 -0000
 
-From: Simran Singhal <singhalsimran0@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Compress two lines into a single line if immediate return statement is found.
+Fix warning reported by Clang static code analyzer:
 
-It also remove variables progress, val, data, ret and sock
-as they are no longer needed.
+    CC      hw/i2c/pm_smbus.o
+  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
+                  ret = 0;
+                  ^     ~
 
-Remove space between function "mixer_load" and '(' to fix the
-checkpatch.pl error:-
-ERROR: space prohibited between function name and open parenthesis '('
-
-Done using following coccinelle script:
-@@
-local idexpression ret;
-expression e;
-@@
-
--ret =
-+return
-     e;
--return ret;
-
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20200401165314.GA3213@simran-Inspiron-5558>
+Reported-by: Clang Static Analyzer
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200422133152.16770-4-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block/file-posix.c      | 3 +--
- block/nfs.c             | 3 +--
- block/nvme.c            | 4 +---
- block/vhdx.c            | 3 +--
- hw/audio/ac97.c         | 4 +---
- hw/audio/adlib.c        | 5 +----
- hw/display/cirrus_vga.c | 4 +---
- migration/ram.c         | 4 +---
- ui/gtk.c                | 3 +--
- util/qemu-sockets.c     | 5 +----
- 10 files changed, 10 insertions(+), 28 deletions(-)
+ hw/i2c/pm_smbus.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/block/file-posix.c b/block/file-posix.c
-index bf09ad8bc0d0..8fd8c27305cc 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -1631,8 +1631,7 @@ static int handle_aiocb_write_zeroes_unmap(void *opaque)
- 
-     /* If we couldn't manage to unmap while guaranteed that the area reads as
-      * all-zero afterwards, just write zeroes without unmapping */
--    ret = handle_aiocb_write_zeroes(aiocb);
--    return ret;
-+    return handle_aiocb_write_zeroes(aiocb);
- }
- 
- #ifndef HAVE_COPY_FILE_RANGE
-diff --git a/block/nfs.c b/block/nfs.c
-index 2393fbfe6bcc..18c0a7369454 100644
---- a/block/nfs.c
-+++ b/block/nfs.c
-@@ -623,8 +623,7 @@ static int nfs_file_open(BlockDriverState *bs, QDict *options, int flags,
-     }
- 
-     bs->total_sectors = ret;
--    ret = 0;
--    return ret;
-+    return 0;
- }
- 
- static QemuOptsList nfs_create_opts = {
-diff --git a/block/nvme.c b/block/nvme.c
-index 7b7c0cc5d673..eb2f54dd9dc9 100644
---- a/block/nvme.c
-+++ b/block/nvme.c
-@@ -575,11 +575,9 @@ static bool nvme_poll_cb(void *opaque)
- {
-     EventNotifier *e = opaque;
-     BDRVNVMeState *s = container_of(e, BDRVNVMeState, irq_notifier);
--    bool progress = false;
- 
-     trace_nvme_poll_cb(s);
--    progress = nvme_poll_queues(s);
--    return progress;
-+    return nvme_poll_queues(s);
- }
- 
- static int nvme_init(BlockDriverState *bs, const char *device, int namespace,
-diff --git a/block/vhdx.c b/block/vhdx.c
-index 45be0a43218c..aedd78260455 100644
---- a/block/vhdx.c
-+++ b/block/vhdx.c
-@@ -411,8 +411,7 @@ int vhdx_update_headers(BlockDriverState *bs, BDRVVHDXState *s,
-     if (ret < 0) {
-         return ret;
-     }
--    ret = vhdx_update_header(bs, s, generate_data_write_guid, log_guid);
--    return ret;
-+    return vhdx_update_header(bs, s, generate_data_write_guid, log_guid);
- }
- 
- /* opens the specified header block from the VHDX file header section */
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index 1ec87feec0cb..8a9b9924c495 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -573,11 +573,9 @@ static uint32_t nam_readb (void *opaque, uint32_t addr)
- static uint32_t nam_readw (void *opaque, uint32_t addr)
- {
-     AC97LinkState *s = opaque;
--    uint32_t val = ~0U;
-     uint32_t index = addr;
-     s->cas = 0;
--    val = mixer_load (s, index);
--    return val;
-+    return mixer_load(s, index);
- }
- 
- static uint32_t nam_readl (void *opaque, uint32_t addr)
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index d6c1fb0586c6..7c3b67dcfb8c 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -120,13 +120,10 @@ static void adlib_write(void *opaque, uint32_t nport, uint32_t val)
- static uint32_t adlib_read(void *opaque, uint32_t nport)
- {
-     AdlibState *s = opaque;
--    uint8_t data;
-     int a = nport & 3;
- 
-     adlib_kill_timers (s);
--    data = OPLRead (s->opl, a);
--
--    return data;
-+    return OPLRead (s->opl, a);
- }
- 
- static void timer_handler (void *opaque, int c, double interval_Sec)
-diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-index 0d391e1300aa..1f29731ffe11 100644
---- a/hw/display/cirrus_vga.c
-+++ b/hw/display/cirrus_vga.c
-@@ -2411,12 +2411,10 @@ static uint64_t cirrus_linear_bitblt_read(void *opaque,
-                                           unsigned size)
- {
-     CirrusVGAState *s = opaque;
--    uint32_t ret;
- 
-     /* XXX handle bitblt */
-     (void)s;
--    ret = 0xff;
--    return ret;
-+    return 0xff;
- }
- 
- static void cirrus_linear_bitblt_write(void *opaque,
-diff --git a/migration/ram.c b/migration/ram.c
-index 04f13feb2e77..06cba8863280 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -2135,9 +2135,7 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
-     }
-     trace_ram_postcopy_send_discard_bitmap();
- 
--    ret = postcopy_each_ram_send_discard(ms);
--
--    return ret;
-+    return postcopy_each_ram_send_discard(ms);
- }
- 
- /**
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 030b251c6109..83f2f5d49b2a 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -1650,8 +1650,7 @@ static GSList *gd_vc_menu_init(GtkDisplayState *s, VirtualConsole *vc,
-                      G_CALLBACK(gd_menu_switch_vc), s);
-     gtk_menu_shell_append(GTK_MENU_SHELL(view_menu), vc->menu_item);
- 
--    group = gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(vc->menu_item));
--    return group;
-+    return gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(vc->menu_item));
- }
- 
- #if defined(CONFIG_VTE)
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index bcc06d0e01c7..86c48b9fa5de 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -765,15 +765,12 @@ static int vsock_connect_addr(const struct sockaddr_vm *svm, Error **errp)
- static int vsock_connect_saddr(VsockSocketAddress *vaddr, Error **errp)
- {
-     struct sockaddr_vm svm;
--    int sock = -1;
- 
-     if (!vsock_parse_vaddr_to_sockaddr(vaddr, &svm, errp)) {
-         return -1;
-     }
- 
--    sock = vsock_connect_addr(&svm, errp);
--
--    return sock;
-+    return vsock_connect_addr(&svm, errp);
- }
- 
- static int vsock_listen_saddr(VsockSocketAddress *vaddr,
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index 36994ff5857c..4728540c37e6 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
+                 s->smb_stat |= STS_HOST_BUSY | STS_BYTE_DONE;
+                 s->smb_data[0] = s->smb_blkdata;
+                 s->smb_index = 0;
+-                ret = 0;
+             }
+             goto out;
+         }
 -- 
 2.26.2
 
