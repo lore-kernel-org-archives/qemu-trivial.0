@@ -1,58 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZjs-00037G-Eh
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52026)
+	id 1jVZjt-0003B8-T6
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52040)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjq-00031X-I8; Mon, 04 May 2020 07:58:22 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43835)
+ id 1jVZjr-00033m-9p; Mon, 04 May 2020 07:58:23 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:41055)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjo-0001zs-RL; Mon, 04 May 2020 07:58:22 -0400
+ id 1jVZjo-0001zK-VS; Mon, 04 May 2020 07:58:22 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MUGRh-1jfIdL30tf-00RG4v; Mon, 04 May 2020 13:58:12 +0200
+ id 1MLyzP-1jnW5l0VaD-00HsQV; Mon, 04 May 2020 13:58:04 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Keith Busch <kbusch@kernel.org>
-Subject: [PULL 09/20] MAINTAINERS: Update Keith Busch's email address
-Date: Mon,  4 May 2020 13:57:47 +0200
-Message-Id: <20200504115758.283914-10-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Chen Qun <kuhn.chenqun@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 03/20] timer/exynos4210_mct: Remove redundant statement in
+ exynos4210_mct_write()
+Date: Mon,  4 May 2020 13:57:41 +0200
+Message-Id: <20200504115758.283914-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Kw1W33UiramJN05FkDK+uqteuGHK9DNSy0wNvsi6LhGV1x1aGnK
- LUzQcOejjGsZP8hegmDlZtxy/WJHzFVeplRBnfiE+may1hT1i3TYmt0DKw8pDd790Upp4g0
- bagpdJbyQyUtgn5S3bbhZGIEaaqDQcJtg+A4gdbB+e9Z8ccpAu0J3xcpw2jPMRpx7l9i2+u
- LaVXz/fZoJj+ZcA6HV2lw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6r08Tl0UI+g=:Le3/aX/SokAIznQ7lezQ2c
- GOdJTRwsZnAmcF9EGHEHa7vPmwImBhsgpBwSo0sY4n8xqtetbj0eZBV0i9RNrhHCp0C3twkHb
- fxJuAo28jyZLf7NEejuQoDyJ1W6RKdtD9kXXLmy2/Ru02EKxnfsOZ8wrWylzqT7sIs4dRTM+r
- HAXHiovfQvoiGV6RmG6vhxKtD4Qod2NtunWsLnrOsxflfx2TzX+MJGKH8dKzFA5dH9t2MZUA7
- YQfJjtWYBIeY1HiR3POJ9Q5I+XL9bJJYzCwoOFf/CM1qthCRNvg5wA8ikYBw5JaGwbKi6iF/s
- im/a+O7vaFI9/2Ctx9wRVH0Lw/Fb6OfBVlJcX3dwFWFMFPnvv+bxILY2s4J7ns/8m7R9Wcg80
- PouONWzD21nN2LKgLWLv0d51EnkgUTi6aMrc+5Rz+pHZA+ycbFax5ymM8BVk7KMryqNpJNb8r
- J5wuVsDthUt0oXlk27skkpn4wv3eB8w7kzGtMEpboM9X4GzzyTqZ0wIi7/xgjT8JJkgu+jAYg
- S8uq2M8XAx6yRP+GSbK/02+/PleHseG+CTjQDOSSwF4GF9BTpcG6fWWG/On8Lo6RuqBhDEjqS
- bbXKGdQpjigzps4QjwvsPlOmpiY50c48jAWJwW+NvhMMcWEq+o3lIQ4CfxEycCmj+FqxX43st
- whFid3Wd/WPFgyrmGmPgmo2+suxxtX3m20r4QP1oJfAlvzv2BfLlgdDtyrOtuY3HM4xJ4f5fb
- tG7jib9kg89fQY2cay/kmhLyQknrKOZsi3V20DWo+Jg2xjTQMAj13URMSm8OpxHdFWnpr90xz
- Y0YJ6iEWxnEwdXbqkBFV1JSH2imIBC052Gz0ddsa+bksEsQtNsmT9ZPk8msxoi0yP7AFqNc
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:rGPmTbt3LS78KZblEyLnOBFOGWdEOJIuW7LeCx9f7iNzdLmp2Lj
+ MzlPvWoRUqDr4hftXRpUfCkZ+eu/L8o1FwdUoZIscg4UsGuLngTWEI8luCNcA9ULd8RyMpI
+ ESycGUHZjkaBLlzuN0t6tG8TJKAdmFY0yhVhk/K4zwt6GCDOHxVNMdpiJD2JppGFgCN/1hC
+ jZjpWN1myU3sPr5drXerg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oIhUnmCaHA8=:i1Umx/M5mqCude2CXClJ6q
+ zhUjfRd7IHXVe4z3jLXwNQ1jk6UOfz/6jpQRFqr8ejnISHO3sODrX4ZQO8qlTrRMJ4hpOQqhw
+ KpeLbs4SORsLKtma75BuEt4yU+CXbaDY2UFeDyb+75IFKLobS6bP+PfmqnmlG3yfTCGA9pWXk
+ 5HTzy+zLin6r1klIhXL5u4XacdP8O/yhLl41lEIl/4SWsh2XefzTWJdjAb1oVIhWlxroSxF98
+ Qz34YvvF4qpvHXPnAYBcWqGt8umAT91rNwPxMvej+xcfgopk6mGzhA7IS8FNS/aUHZA4n8ohV
+ ViCVTT0u43oMiUXHdnRgBchq9JYtBRC0RgnL+y9swFACaTM1T7KdxNKMj6SJ3h6cGnG/hGwtH
+ 0OyHBSGRzcbRIv+HhgIBXmpdibogFJz5MfkCiXK/aOgWAkM50xBtssSZ9nBcCaO9Wa8jXTrWn
+ 7Eeq9ZtfTGPjKXiK1htdyuGt6+VOQ/kgK+09NGctibO6ZULGT5dCdNi4fD7d3y0wXAqA1hKv9
+ Sucaz4tDGof8Wd9a5x9OEYtUCq2OQpw6uJor8ogruV2ecoMeWOvbHK0wJeKKZxMYXZOeSSduj
+ lGbUYYjxAkuSdRArSZSJgyEOZjRjVRTXc0zmQgEdYaC7UrO3QreSTfh5onc/o6Xe55lLHp3OR
+ OlCJvV2uHtyphJGABHMlZwliok04mDBDMAnhD2D0YzXKGUfQHjDotIM1hmXwMZ221DwVCxzbx
+ Zt817jB+p/i09Uv2Rtx1hXn9JUJsarLsFItHghBqq+2pJ5ehERtG4F+9yynucmQnQvYLT4t6K
+ 7X3K7ayZ9xoI+k5v6B8T0zirQ8GBUi3qYQIErnLV3RS3sWAbNp091P4ZGvMf/VZdJwY9Y8j
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:14
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:12
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,34 +68,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:23 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:24 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-keith.busch@intel.com address is being rejected.
-Replace by the email address Keith is actively using.
+Clang static code analyzer show warning:
+hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never read
+        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never read
+        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never read
+        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Keith Busch <kbusch@kernel.org>
-Message-Id: <20200421122236.24867-1-f4bug@amsat.org>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200325025919.21316-4-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/timer/exynos4210_mct.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d6886be13159..1f84e3ae2c6a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1735,7 +1735,7 @@ F: hw/virtio/virtio-crypto-pci.c
- F: include/hw/virtio/virtio-crypto.h
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 944120aea59c..570cf7075bc5 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
  
- nvme
--M: Keith Busch <keith.busch@intel.com>
-+M: Keith Busch <kbusch@kernel.org>
- L: qemu-block@nongnu.org
- S: Supported
- F: hw/block/nvme*
+     case L0_TCNTB: case L1_TCNTB:
+         lt_i = GET_L_TIMER_IDX(offset);
+-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+ 
+         /*
+          * TCNTB is updated to internal register only after CNT expired.
+@@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+ 
+     case L0_ICNTB: case L1_ICNTB:
+         lt_i = GET_L_TIMER_IDX(offset);
+-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+ 
+         s->l_timer[lt_i].reg.wstat |= L_WSTAT_ICNTB_WRITE;
+         s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] = value &
+@@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+ 
+     case L0_FRCNTB: case L1_FRCNTB:
+         lt_i = GET_L_TIMER_IDX(offset);
+-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+-
+         DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
+ 
+         s->l_timer[lt_i].reg.wstat |= L_WSTAT_FRCCNTB_WRITE;
 -- 
 2.26.2
 
