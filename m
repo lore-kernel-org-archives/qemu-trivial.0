@@ -1,69 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVavC-0006GY-Bl
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 09:14:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34652)
+	id 1jVdVl-00017t-Lu
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jVavA-0006ER-HX; Mon, 04 May 2020 09:14:08 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40526)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1jVdVj-000166-1E; Mon, 04 May 2020 12:00:03 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:57541)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jVav8-00072G-Ut; Mon, 04 May 2020 09:14:08 -0400
-Received: by mail-wr1-x444.google.com with SMTP id e16so15756394wra.7;
- Mon, 04 May 2020 06:14:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=AnRb0eZBrwoPn6RFXt5s6W3yLMQWDznSV0TSb1huZKE=;
- b=ZmYsR2Gfn7jJCpaVjic1/rz/FRaBdnOAus7VpU4J3l7PjRdf4gODcLcQsa/wW6jKBs
- gO9mXA7tiXzXta4LXEsWCt+2x7N4vTO3keiAawnXvJoIccHKl5Y+RtOEPziy1C8eeBGf
- 3CahFT69wNrrPUdIxeQGzvA50TkFxkKc1RrGmLyEr0kcFROij1pF+CbRbe8VmA4XDHiJ
- r7obtQgH+Q8D6K0a+0h3L6SeSQ2zcA0CJMTkobjQQdpmG23ttEXulv1FPY0qdbWyYMN8
- Sx6YH94IxmhrRJbBq66vRnx01lJBMV/56B2yc75z2URyj3F2oIhkfyWhSSmFae8V+3zV
- H5nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AnRb0eZBrwoPn6RFXt5s6W3yLMQWDznSV0TSb1huZKE=;
- b=Dn2WQtCaimh/bJt/6PQ6kdceyprSbs99u1p8Y9ExO3g1OBhe6NZ+tlW+cwlkXYtCbP
- Lf6Xd3eOWGGoOllYogLIH2GNXvIF1Ky81z5IcdA5wuwlmR/00bJbTjlxPMXAMu1KY/xk
- xiXDlMt4spJz7CJsayLNwPqOI9LyHPffLXpclwRvXbmqtsWPsbhuoAICJudsifhmTOOA
- 3dDLOCHL8V+pruw2queS8CaDzhRFxmKoRuGgieR6vegO55AFg3dN0ZwcsFVXtF8SNomE
- R+5MkJijrh9Scxv+q1kYDtqjzp+I14YjTSZzxAjDyzpzdwYx3PimOpnX9F9RCyGRxUyk
- brjQ==
-X-Gm-Message-State: AGi0PuaxvuaZXBR8ji7iH4kMmvGEs2DPSO5VojrxrFRoOgnhRQb3/B3/
- wgWjVV7/trsJnOl+at705iU=
-X-Google-Smtp-Source: APiQypKKb+jGlpsgO9VhJO6spI5LN1wgpU/Wx3VvLKsdy/NTy3fETINepz3bQ3VaZco0ZdgSZ5m/UQ==
-X-Received: by 2002:adf:ed07:: with SMTP id a7mr19804681wro.2.1588598045116;
- Mon, 04 May 2020 06:14:05 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id z22sm12774193wma.20.2020.05.04.06.14.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 06:14:04 -0700 (PDT)
-Date: Mon, 4 May 2020 14:14:02 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] Makefile: Let the 'help' target list the helper targets
-Message-ID: <20200504131402.GE354891@stefanha-x1.localdomain>
-References: <20200423104345.5092-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1jVdVh-0005h3-FB; Mon, 04 May 2020 12:00:02 -0400
+Received: from localhost.localdomain ([82.252.135.106]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MFsIZ-1jMVDV3hNP-00HPWS; Mon, 04 May 2020 17:59:59 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL v2 00/19] Trivial branch for 5.1 patches
+Date: Mon,  4 May 2020 17:59:37 +0200
+Message-Id: <20200504155956.380695-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="PGNNI9BzQDUtgA2J"
-Content-Disposition: inline
-In-Reply-To: <20200423104345.5092-1-philmd@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=stefanha@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:8X93X9BA8SbCjdCaWf0GAFQQC6rxNOEKPMyjqxs1tRx6tejx0TX
+ k87NL/TrrnGM/KscyS5xoDqUpKUb5PCA21kR854svk9kVrC0UKSlPD/RUQzrORpLLxVa1nX
+ OoPw77pZq05nYaDzoIJqh7dRXx0rg/QTQJq9nCKSVhmVics8LFNAkLA+xTDRmyoO3+7fR/O
+ o4Qu+XsEd+BwNFOpVecZw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IWrzMbkagxA=:1Ei0iSQw5lWbFFpSW1eKyt
+ acyucOKFxehtqB7y2Hy5UheidiF1zzOYanjZvR6jYWJTh5ZQsxRUN1fzxV+R61ApxNqCbqh23
+ xHZP/Zm7da237vJE8grmW3yy7NEJLvGw7VGbFAcn/T1OdF9QsO/r0bazr5MAw6bvqEzbIouWL
+ Wi628UxlU7ewewTkAQWQntT5Ll2NE8T/5/wPaJE18Z3E8CgvRnTISY8Z0xvD8oaT/Z/mb37KQ
+ IOtYNvkgskTmX+X0E0ExO0Jz7ms+4Gd0Zy7luMrSnn2vMoBKK/2oz7YQRNQKqvPYHvUOSrDSZ
+ udGZjQiZ0AhDeh7BW6XPFiQTBEly+d6I0u8OMidT2mZ/jf0Qu9UT0KY0z48Qy8sBTU+l2Rr7h
+ hFtMy99dOvVZKGcp4r4i3ect5V2vL6ps5YoWFwfCNS0GM1JEtUha1qhCewc6NyDj58CVMG+2r
+ F8cj49F7xvgxuM/XscAa0rwpR+lF5g4wMPwndtVdKJnXpo2TwCrO8bKW8hz2pTRZgAUCTZzl1
+ /IMJ+QxWP8TQ1ATAiZ5RTPSbK/6OgfFOA2HSLfKh89g5rVTLGKAkoqSm5WjpcWodrj364PH/t
+ eWQG5iYOEzCFpwZoRxs1r+gP2i8uccCxZyMGSIpHJ0Aki2osAmIjLv2yxKbViwxubJvQ7crak
+ j5gHUgsp/sDs5/0BxVl3mKkW3Bx8UjVOOHBs5uersOvIBgPGjSGyKxgzLbnu6FY0M1s7UkeY7
+ wBapvoWl2SQ3fIo+3AO3wWFSg4vKQWrN2OIAYdUy1HBMHUoyWizKLcsh3RvdRw9pY4rlCHEe5
+ BIePVMRR2FlC/Wn43zLwk++446E7y6xs7Fu6+SN71dXbMWeqk9Vy6tpGdsw0BjjMCLS9XQ9
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,62 +61,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 13:14:08 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:03 -0000
 
-
---PGNNI9BzQDUtgA2J
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Apr 23, 2020 at 12:43:45PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> List the name of the helper targets when calling 'make help',
-> along with the tool targets:
->=20
->   $ make help
->   [...]
->=20
->   Helper targets:
->     fsdev/virtfs-proxy-helper      - Build virtfs-proxy-helper
->     scsi/qemu-pr-helper            - Build qemu-pr-helper
->     qemu-bridge-helper             - Build qemu-bridge-helper
->     vhost-user-gpu                 - Build vhost-user-gpu
->     virtiofsd                      - Build virtiofsd
->=20
->   Tools targets:
->     qemu-ga                        - Build qemu-ga tool
->     qemu-keymap                    - Build qemu-keymap tool
->     elf2dmp                        - Build elf2dmp tool
->     ivshmem-client                 - Build ivshmem-client tool
->     ivshmem-server                 - Build ivshmem-server tool
->     qemu-nbd                       - Build qemu-nbd tool
->     qemu-storage-daemon            - Build qemu-storage-daemon tool
->     qemu-img                       - Build qemu-img tool
->     qemu-io                        - Build qemu-io tool
->     qemu-edid                      - Build qemu-edid tool
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  configure | 5 +++--
->  Makefile  | 9 +++++++--
->  2 files changed, 10 insertions(+), 4 deletions(-)
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---PGNNI9BzQDUtgA2J
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl6wFRoACgkQnKSrs4Gr
-c8h+rwf9Gyu4FIQ+zCZRInWW4GHT/urJ8Qpnctgi71UuE61xksRjxELp1zUs4lJp
-XglTeXBZG8kgZqHeAc5/zzoko3uztcNZBYlFzIPCauCAvG6uVV/satFxrgc8vTl0
-CcUuRs0ZPGQkDe5bnoK3+JH1j6Fy6ErE2/w7ncsgjoxdK8e3m+KdedXWRq9dDQt2
-2jsUPC2nloJIix88o57LVFUlQeI77/15FqjM0imJNqN8T0NVZAg+Lt+lYmnhd4uh
-neRcZSrqdhfbRVCk+G2nVUd+reW9jdtaCkNR15TJFsK6h1RuY3nvZIZz47GY9WjM
-NV2nBm7E8BgPMu0RHHrRYrYfSg3DUg==
-=zXGx
------END PGP SIGNATURE-----
-
---PGNNI9BzQDUtgA2J--
+The following changes since commit 2ef486e76d64436be90f7359a3071fb2a56ce835=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/marcel/tags/rdma-pull-request' into=
+ s=3D=0D
+taging (2020-05-03 14:12:56 +0100)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.1-pull-request=
+=0D
+=0D
+for you to fetch changes up to e702fba83108519618046a2a09235a62e3a81595:=0D
+=0D
+  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning (2=
+02=3D=0D
+0-05-04 14:43:24 +0200)=0D
+=0D
+----------------------------------------------------------------=0D
+trivial patches (20200504)=0D
+=0D
+Silent static analyzer warning=0D
+Remove dead assignments=0D
+Support -chardev serial on macOS=0D
+Update MAINTAINERS=0D
+Some cosmetic changes=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Chen Qun (3):=0D
+  scsi/esp-pci: add g_assert() for fix clang analyzer warning in=0D
+    esp_pci_io_write()=0D
+  display/blizzard: use extract16() for fix clang analyzer warning in=0D
+    blizzard_draw_line16_32()=0D
+  timer/exynos4210_mct: Remove redundant statement in=0D
+    exynos4210_mct_write()=0D
+=0D
+Mikhail Gusarov (1):=0D
+  chardev: Add macOS to list of OSes that support -chardev serial=0D
+=0D
+Peter Maydell (1):=0D
+  elf_ops: Don't try to g_mapped_file_unref(NULL)=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (11):=0D
+  MAINTAINERS: Mark the LatticeMico32 target as orphan=0D
+  MAINTAINERS: Update Keith Busch's email address=0D
+  block: Avoid dead assignment=0D
+  blockdev: Remove dead assignment=0D
+  hw/i2c/pm_smbus: Remove dead assignment=0D
+  hw/input/adb-kbd: Remove dead assignment=0D
+  hw/ide/sii3112: Remove dead assignment=0D
+  hw/isa/i82378: Remove dead assignment=0D
+  hw/gpio/aspeed_gpio: Remove dead assignment=0D
+  hw/timer/stm32f2xx_timer: Remove dead assignment=0D
+  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning=0D
+=0D
+Simran Singhal (1):=0D
+  Compress lines for immediate return=0D
+=0D
+Wainer dos Santos Moschetta (2):=0D
+  hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()=0D
+  hw/mem/pc-dimm: Fix line over 80 characters warning=0D
+=0D
+ MAINTAINERS                | 14 +++++++-------=0D
+ block.c                    |  2 +-=0D
+ block/file-posix.c         |  8 +++-----=0D
+ block/nfs.c                |  3 +--=0D
+ block/nvme.c               |  4 +---=0D
+ block/vhdx.c               |  3 +--=0D
+ blockdev.c                 |  2 +-=0D
+ chardev/char-serial.c      |  2 +-=0D
+ hw/audio/ac97.c            |  4 +---=0D
+ hw/audio/adlib.c           |  5 +----=0D
+ hw/display/blizzard.c      | 10 ++++------=0D
+ hw/display/cirrus_vga.c    |  4 +---=0D
+ hw/gpio/aspeed_gpio.c      |  2 +-=0D
+ hw/i2c/pm_smbus.c          |  1 -=0D
+ hw/ide/sii3112.c           |  5 +++--=0D
+ hw/input/adb-kbd.c         |  6 +-----=0D
+ hw/isa/i82378.c            |  8 ++++----=0D
+ hw/mem/pc-dimm.c           |  7 ++++---=0D
+ hw/scsi/esp-pci.c          |  1 +=0D
+ hw/timer/exynos4210_mct.c  |  4 ----=0D
+ hw/timer/pxa2xx_timer.c    |  1 +=0D
+ hw/timer/stm32f2xx_timer.c |  1 -=0D
+ include/hw/elf_ops.h       |  4 +++-=0D
+ include/qemu/osdep.h       |  2 +-=0D
+ migration/ram.c            |  4 +---=0D
+ ui/gtk.c                   |  3 +--=0D
+ util/qemu-sockets.c        |  5 +----=0D
+ 27 files changed, 45 insertions(+), 70 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D
 
