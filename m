@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk7-0003XD-I3
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52076)
+	id 1jVZk8-0003YS-0v
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZju-0003DP-Lf; Mon, 04 May 2020 07:58:26 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:34947)
+ id 1jVZjt-0003BS-Vg; Mon, 04 May 2020 07:58:26 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:53973)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjs-0002JU-Ii; Mon, 04 May 2020 07:58:26 -0400
+ id 1jVZjq-0002Ia-L3; Mon, 04 May 2020 07:58:25 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M894P-1jS0xl1PVr-005JNp; Mon, 04 May 2020 13:58:18 +0200
+ id 1MsZif-1jHDHZ2zWd-00ty41; Mon, 04 May 2020 13:58:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, John Snow <jsnow@redhat.com>
-Subject: [PULL 16/20] hw/ide/sii3112: Remove dead assignment
-Date: Mon,  4 May 2020 13:57:54 +0200
-Message-Id: <20200504115758.283914-17-laurent@vivier.eu>
+ Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Max Reitz <mreitz@redhat.com>
+Subject: [PULL 12/20] block: Avoid dead assignment
+Date: Mon,  4 May 2020 13:57:50 +0200
+Message-Id: <20200504115758.283914-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bMYhpdRoGq4TloRGXhT0RRzVkdA2HsVH38gxEEbUu2mBiqfL14C
- rte2EhtZ3DK3F+uI/Cvm/n41idenNNxJAQnBY5pTs5lpFeMOmG2Fx9D4F3SJCPDUzyV8HLu
- vcMgs1C9QyjCq/20MaJIBFWuHpnvNeutjXOm1CD4kgLCqIh64wySvIX/h2VmQpA7Yysa2jl
- BvgeAa7MVvTIllHzAUCOw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:s6R3vZ250Cg=:cZEQ0lRSD/yu4gi2y6GAU4
- O2NPZy/PsS7BUcdfns+ith+XK5cceEgGhsPyqAQ7nV5xQ3KdoXYAOA6t4p9ikl6pJk0g0WJhW
- TU2ft8Z0fTgGwCDveJuSsKtWckF5Own9vSds2m+qSV85dg0tRG0GjiGfWqtxJuQN6Vp+cfj+J
- VKaz3ZzDd2r9Irlrg1PEdghPyEKo/XmlzERnKBrtSl1uo+G7L/a0Y3eabm2zviTs8bKEEWAfd
- 5EbbjDtUmtnyiOYQYhI+cxwXX/AN2V7EzJqUITiQrW5s6c77Y7RqPa1ivm7GeGSwEKUiYvgiO
- YD7DDfRxtNQ1zZCVk7+Q+F0RqKkji5PuzDUSdR7aG6+J8tTDuE2hmLusp3iEjgQUF6x9G02ez
- 3tuNLP8kmzLIsCVFdP/8JmNIzIF5rtfzoJ7md8jzwqbez3ZsnkysONSbI9Yxam//DjPQ+8gs/
- DlXsLl/INGbGm6OMfUyjL0EJNX53pLL39Mk0YB3OyvgPNbMyesqUCo2UQED15zmMSOIXixaNZ
- UFfqVnquYpsf0b99nKQF0AdH8LLOvy9lVYK0euZpvGUREmETKjCuW+58QN0CNDq+XSpQSoGad
- eFVKOtyEcm1qPxjenWhGY8nOUqlSdGgYJICXL/+xrSUNzD8YQAktCienIKO1oe7kp2Wqqnmvv
- J2RCZvhlZkB9a85iaWceUhJy+Xl0WpH0/0jNo4tMZxBzvY+fbIw6D9b4sMwUJFQwH/UGxEg2i
- jWP4s5JN52pqwBgt+ylOUTz8OTRBneMDNRVZor7Zuc5TQiS/pgkDTQE3al4tI4mGCgLw8zI+X
- rhV+zEdS3poc+zj2Unj8SXTJ/z3O8Rba18aZ57TV/igWJNqVpOSppa06dIYFx5gk+dVoHxA
+X-Provags-ID: V03:K1:03Ne1koK0HaDqr7XUYO5Az/zXyQGSOVXkNfUdTSsTFAQaOqrJ/C
+ 0CQUOCkrCLo+5MUw1MsCdEGaPwJmxgVO1i4LZy9hgBkMSnNzCTC6XHEFhI6N3L22Xd7Z3Uc
+ eavPtNqExSvODzxEqrcynmQyOtrQIZbl7jY3QFCxR8NWsaWVGyLYuHX3KkbDVyLPJ433jIk
+ Us/qW/oi/4QQyyStn8zlw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OSJn6/64oNE=:7gJq+oN4AFSNitIRtBwkJm
+ oFMAsPOA/DRbPjrdgqWVWw2cuc1T82ViK6wa+ZvYFgCWgn9DhHpD0IJ9WaWAyxiFI8wqEFJsM
+ wjFccASv9E4KP/yHUpedREy2oKkHzQP5+YRV7nc1ErA0b81UOA2zRISyNwUNn1GFGhrGtZzEp
+ Ob8EDptQSdLl1wlWyfq0AY/uC91lingK+4r/0xm2oIRCnhFvxOZyAYFlLQdVu1bq1INRzboWd
+ pNySifc7V4Xsilc8pBJPbkaZ5jK5C5/rUDuABZODGsGfNbiEjbqMurMxT4C+ZLI5zKfY/4F2O
+ +bScd0TZnHl/8q67SzNnHJYrDasqyW2XTzUbPtuEiub2JQVDObCgEjamc26leRC6tHnL6EYva
+ pXRC6AMKs2Dxeb/Fg/EggvdvDDlpaukSdX+rxRTynYVXc++gcnXQe87zSZ2M5EGxEXrSz4YeK
+ VVhIrLwbM+/82hu1akVvivibeJLqZCEUTv2r63ac5MtkymOoXgG0tSCkBhEjTsFKprj8Qdo4M
+ wWXv4k4/RS/osJqTE+FTO5gpSr3e6v9a94ZZfcHs10ZensCwQzulWRm4eCrLbFyTs5EtUyTRn
+ 0VVwvBW9ptNpVFBBBhENBDyXh6V5jVzp8dGW34+jvyI9KToapdMzUcxyHH+Rqk5rbgjoIe/0u
+ F2vY8uc605aW/LwPBbwP/Nec71fKISzbAx7JjscvxbnSaHDqwee8NwIV8zm7fAQfzxD9QSM93
+ xgvGWxYyD7uDbd5BnKAtyBiOroQLms9UbdEBJ6QZ/UQwA1OqyIsJvWt8MXe6otuaJs4rGUCu3
+ o3/2/yKUDBRtbwLWZ6RRJlHsUQhI/roAjZ8gBgmNmI6SzMExa5SdDzHWMYtjv8QCLfx3Fk5
 Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 06:04:59
@@ -65,57 +66,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:27 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:26 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 Fix warning reported by Clang static code analyzer:
 
-    CC      hw/ide/sii3112.o
-  hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
-          val = 0;
-          ^     ~
+  block.c:3167:5: warning: Value stored to 'ret' is never read
+      ret = bdrv_fill_options(&options, filename, &flags, &local_err);
+      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Fixes: a9dd6604
+Fixes: 462f5bcf6
 Reported-by: Clang Static Analyzer
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-Acked-by: John Snow <jsnow@redhat.com>
+Suggested-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-6-philmd@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Message-Id: <20200422133152.16770-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/ide/sii3112.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ block.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-index d69079c3d9b7..94d2b57f9535 100644
---- a/hw/ide/sii3112.c
-+++ b/hw/ide/sii3112.c
-@@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
-                                 unsigned int size)
- {
-     SiI3112PCIState *d = opaque;
--    uint64_t val = 0;
-+    uint64_t val;
+diff --git a/block.c b/block.c
+index 301ec588bda2..cf5c19b1db49 100644
+--- a/block.c
++++ b/block.c
+@@ -3165,7 +3165,7 @@ static BlockDriverState *bdrv_open_inherit(const char *filename,
+     }
  
-     switch (addr) {
-     case 0x00:
-@@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr addr,
-         break;
-     default:
-         val = 0;
-+        break;
+     ret = bdrv_fill_options(&options, filename, &flags, &local_err);
+-    if (local_err) {
++    if (ret < 0) {
+         goto fail;
      }
-     trace_sii3112_read(size, addr, val);
-     return val;
-@@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr addr,
-         d->regs[1].sien = (val >> 16) & 0x3eed;
-         break;
-     default:
--        val = 0;
-+        break;
-     }
- }
  
 -- 
 2.26.2
