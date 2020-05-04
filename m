@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZjs-00036T-7L
+	id 1jVZjs-00037G-Eh
 	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52020)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjp-0002zg-Sf; Mon, 04 May 2020 07:58:21 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:42191)
+ id 1jVZjq-00031X-I8; Mon, 04 May 2020 07:58:22 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:43835)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjo-0001yg-Om; Mon, 04 May 2020 07:58:21 -0400
+ id 1jVZjo-0001zs-RL; Mon, 04 May 2020 07:58:22 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MOzfO-1jmAmM2VKO-00PKXW; Mon, 04 May 2020 13:58:10 +0200
+ id 1MUGRh-1jfIdL30tf-00RG4v; Mon, 04 May 2020 13:58:12 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL 06/20] hw/mem/pc-dimm: Print slot number on error at
- pc_dimm_pre_plug()
-Date: Mon,  4 May 2020 13:57:44 +0200
-Message-Id: <20200504115758.283914-7-laurent@vivier.eu>
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Keith Busch <kbusch@kernel.org>
+Subject: [PULL 09/20] MAINTAINERS: Update Keith Busch's email address
+Date: Mon,  4 May 2020 13:57:47 +0200
+Message-Id: <20200504115758.283914-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nMIjpqcyfeagiB2tomuREloaNkW9VnRkFmvDSw6OsS7MG4ZWEii
- 4KXMpA6rphhNRiAmq5w26xpimy2x9RyUt1nWl1050+tx5soX9Y9ErNKzM3GkZEhwNJRD3NR
- /TuI4KSaaKe2wa5fhFrNcuB8TJ013OSrCQeKlQuECnzyvaeKK9j74xftsZc7ugV+9CH+9qk
- Vy1PKXICu3pjuZ/ADCYnA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mTVN/XyWfEY=:W16uyu/pJhNvkGvWiPgjvA
- 2FWi/MiH2OyqHoIKaAEFr02+vgsbblDvDWSVhkbwGHKBGdZCLG5P30o86Xir5E7FdC2FifVsR
- h4MQhI7bC4IfLArOSalR9WxYlEB2Y9/TVQ4Q9Q/4iun+O+f6sHYs23ZAUxqMQ6LV0UNuCLtpe
- 4Z3040p1xG0mvpUCfys22cVjxtsCR6e1JpQPgd8EYGcUJf/4s8G06rBG5+0xpd/4eGu3c4EKH
- bY0DnYZVJHzySeqRbKTGZ6Kiu5zNZpqFrij7ziboOX+po+ivuIcP93NKzQBzhvTIAyPaB8i6N
- Mz5TcRB3EXm5kNl9mPl/FiIvv/nCSUwkD1prNjI+b1494bJtaHa/HRLRadbEumg3m+6qHd33D
- imJa1PMWBnNHOql+9teP+kFBQJMtbaMTRaEz1k71l/uNMky/morF4jQfY7hulWSEBoK1oiFiG
- YslBiV6EkrPphmZ0MNQcuXdhaaN8lS5KgB+GLwZCPtYf6eLjGRxbBGwu9Fc35r49tZ3eu6aUO
- 5zDhpuBPFgjuxBK/j2IycSlxk5xQw2KJsDIKnxnmfJD9jHu2ex/sRVH/MjIfrAcJkL49bTz9k
- GrUtrclUpqc2+WXgO1WGMsEwMhFaoWHO2j9a6EIroO6HTKL8Zfma1AgvIfbNSxZK5wBG05Gs1
- 0ha1HlasfB3mgQRQUkI+wivgNE9rJYaBL8Kd1DvSe/mdn+MfgoXm/TkuSIIlkN19h7PCNYikH
- rAdYXRFw0ji90cBFO0ERL2tVcRdKDRi9sOOoP05U3xMgvdJUQuYwMjVA7VTJRztUsVJGZ9+jx
- vRzKidr6n/kn5EapysUJ+ZxZyjQtteYpQ+NrKqLtpeqkGn3w1rlz0UlQqLZoq0Ze8QsIusr
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Kw1W33UiramJN05FkDK+uqteuGHK9DNSy0wNvsi6LhGV1x1aGnK
+ LUzQcOejjGsZP8hegmDlZtxy/WJHzFVeplRBnfiE+may1hT1i3TYmt0DKw8pDd790Upp4g0
+ bagpdJbyQyUtgn5S3bbhZGIEaaqDQcJtg+A4gdbB+e9Z8ccpAu0J3xcpw2jPMRpx7l9i2+u
+ LaVXz/fZoJj+ZcA6HV2lw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6r08Tl0UI+g=:Le3/aX/SokAIznQ7lezQ2c
+ GOdJTRwsZnAmcF9EGHEHa7vPmwImBhsgpBwSo0sY4n8xqtetbj0eZBV0i9RNrhHCp0C3twkHb
+ fxJuAo28jyZLf7NEejuQoDyJ1W6RKdtD9kXXLmy2/Ru02EKxnfsOZ8wrWylzqT7sIs4dRTM+r
+ HAXHiovfQvoiGV6RmG6vhxKtD4Qod2NtunWsLnrOsxflfx2TzX+MJGKH8dKzFA5dH9t2MZUA7
+ YQfJjtWYBIeY1HiR3POJ9Q5I+XL9bJJYzCwoOFf/CM1qthCRNvg5wA8ikYBw5JaGwbKi6iF/s
+ im/a+O7vaFI9/2Ctx9wRVH0Lw/Fb6OfBVlJcX3dwFWFMFPnvv+bxILY2s4J7ns/8m7R9Wcg80
+ PouONWzD21nN2LKgLWLv0d51EnkgUTi6aMrc+5Rz+pHZA+ycbFax5ymM8BVk7KMryqNpJNb8r
+ J5wuVsDthUt0oXlk27skkpn4wv3eB8w7kzGtMEpboM9X4GzzyTqZ0wIi7/xgjT8JJkgu+jAYg
+ S8uq2M8XAx6yRP+GSbK/02+/PleHseG+CTjQDOSSwF4GF9BTpcG6fWWG/On8Lo6RuqBhDEjqS
+ bbXKGdQpjigzps4QjwvsPlOmpiY50c48jAWJwW+NvhMMcWEq+o3lIQ4CfxEycCmj+FqxX43st
+ whFid3Wd/WPFgyrmGmPgmo2+suxxtX3m20r4QP1oJfAlvzv2BfLlgdDtyrOtuY3HM4xJ4f5fb
+ tG7jib9kg89fQY2cay/kmhLyQknrKOZsi3V20DWo+Jg2xjTQMAj13URMSm8OpxHdFWnpr90xz
+ Y0YJ6iEWxnEwdXbqkBFV1JSH2imIBC052Gz0ddsa+bksEsQtNsmT9ZPk8msxoi0yP7AFqNc
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:08
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:14
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,35 +65,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:22 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:23 -0000
 
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The error report in pc_dimm_pre_plug() now has the slot
-number printed.
+keith.busch@intel.com address is being rejected.
+Replace by the email address Keith is actively using.
 
-Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-Id: <20200310180510.19489-2-wainersm@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Keith Busch <kbusch@kernel.org>
+Message-Id: <20200421122236.24867-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/mem/pc-dimm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 8f50b8afea3c..36edfcf46799 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -44,8 +44,8 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                                    &error_abort);
-     if ((slot < 0 || slot >= machine->ram_slots) &&
-          slot != PC_DIMM_UNASSIGNED_SLOT) {
--        error_setg(&local_err, "invalid slot number, valid range is [0-%"
--                   PRIu64 "]", machine->ram_slots - 1);
-+        error_setg(&local_err, "invalid slot number %d, valid range is [0-%"
-+                   PRIu64 "]", slot, machine->ram_slots - 1);
-         goto out;
-     }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d6886be13159..1f84e3ae2c6a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1735,7 +1735,7 @@ F: hw/virtio/virtio-crypto-pci.c
+ F: include/hw/virtio/virtio-crypto.h
  
+ nvme
+-M: Keith Busch <keith.busch@intel.com>
++M: Keith Busch <kbusch@kernel.org>
+ L: qemu-block@nongnu.org
+ S: Supported
+ F: hw/block/nvme*
 -- 
 2.26.2
 
