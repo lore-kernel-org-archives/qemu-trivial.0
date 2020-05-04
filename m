@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk9-0003be-4d
+	id 1jVZk9-0003dk-Re
 	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52078)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZju-0003Dy-Sb; Mon, 04 May 2020 07:58:26 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:49795)
+ id 1jVZk3-0003Lt-Kr; Mon, 04 May 2020 07:58:35 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:34201)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjt-0002Kb-TK; Mon, 04 May 2020 07:58:26 -0400
+ id 1jVZk2-0002Lm-EZ; Mon, 04 May 2020 07:58:35 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mw8cU-1jFHsE3x3s-00s2Wc; Mon, 04 May 2020 13:58:19 +0200
+ id 1MNtjq-1jl4JV2sAa-00OE4o; Mon, 04 May 2020 13:58:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 17/20] hw/isa/i82378: Remove dead assignment
-Date: Mon,  4 May 2020 13:57:55 +0200
-Message-Id: <20200504115758.283914-18-laurent@vivier.eu>
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ David Gibson <david@gibson.dropbear.id.au>
+Subject: [PULL 15/20] hw/input/adb-kbd: Remove dead assignment
+Date: Mon,  4 May 2020 13:57:53 +0200
+Message-Id: <20200504115758.283914-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1189xm37UdNK1k0GFY7Kwh9INa2C9dyqIqZiJ5nteJeW9dspCI6
- Ug7k66AL0LbDoAPNB6xnInFIcmqEDpBgA/UC7IPzNn/bYYmMk9y3LosMRt0BqLIXj5853wI
- oqZARO+O+YgaSlAOJx2QNEAQJeysHN/JvTo9v6NJwZSOswaIeqhLPuyofZ3MKdvGGQjnBg9
- bkzn49cZCgScE55dOp6BQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zao/5C13Mrw=:Blt4HTwKetOwahNbNu+5JW
- T73tXpk52G/jNRHQ4l2zcd5YyEersTe+ifNss8wVOJuHDdK+0mugrjvoQTdS63x0/0rtiAiFf
- 3fdbiDZHhKtiiDedqcw53DSc2zeU7UNl2jw2Ri6dyCaVe+2xSWzjO/sxB4j7Gb/BLR2eEXbBm
- fTU6n/rEj1Q90JJukEOJMTE1+yda8Bo99w7wuWAVqpCESo7D1amuZsyg0CnKElRSaxw1ArrK2
- RSG3BWkctGcwi+A+a4vMJUUAfRSRMZR+RFcYz5X966eXPArNd+GCuEBZYyQfPpff5g2j36jEd
- TAENBZXVJfH4kmU0e70gZiL/l6TXzyXCRP6jTdfs3dyzlwR7OPXEGlayaBZPxgvjbbSMpzMvM
- oZE4qyuAYM72X7nPFdIaz/zN6PdGVzvB3zXlmwA6QUVTS4KSSpWzHU0rVgWc9WnRAR+W5nyGU
- PLaWnrCkbfBkvjQBlQrjBSY6o1pIe4YG+qiOwczG7HctTGdP5Egnk8ZHbh4vxZ1c0Lbf6adys
- 79gIK4qzeaaH7bYpPsAqxSKdph4fYPSJ+Wq+HUDJpny+6mMqPNBVfjfPi9hgN7Sj915QOlx/G
- DMVmbKBAMIF1iPKREKivdrEb8AUc1rHWtcTSnZOH2XynYXmi14zTbBS3KsjJgSw8QmNDlrgG9
- CO6a/eYB0zqmcoIS0nw/mX23yz3SuI9gBaPHCOm2LTFniS/6WhhIyrGEjSnrpy8/ZfCY3Erp7
- qrS8GUkCNNQ6zZNAufVS0yp/oel2HhO23eEOCDsj7W91LIOOyEhdIe/5s6qA9WEpacKXuK/d3
- 6zHTqA8aN3jS53lFIVFMDqmTbR/ohuyBNiOsjgXjRP8rAkiC0zTe6xxd1StO12IRifq8/mY
+X-Provags-ID: V03:K1:hsInISMjZejKFc62NlpU9zM5vQXucwUAa8UscLt3PndFE9WJkyK
+ ordHkV3voxT9Q7M4Bn28UJTjwBxcLVM6lDP+5eqNoJCwuQvMRwfsuHoBysHciRoajIy3uOn
+ x5kTEp4/ESd1daJvO3kX1Lps5whX741dgFhpmprWTQ4TM6P7sFR+SrGI3JeeyjzdLtMz5tm
+ Sw4ni9SIoLb1Br2JlMYEQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pr5xlVTbTMc=:+GCZhwc2vN6rcl3tyWabAy
+ pLi2IWhCnUji0x2fGqrV6I+R0j/5IfmJafRtG9J/Syg5R0b7CfzD/sXYOS2/l1vUCtvmUX8dT
+ 7se5Nl7cdZNIOmswjwIgOa2Jwv3TD4P/qD2vzbY4vrnh6gvCvP37wQPKmYWee6Z/787pdSaKs
+ TXVZg8dbgwyhDjd+koNvXcGK3Pv8gRqjBvyuxQfwuLZfrwldveV3xzjnWgosQOgdZ77cQW7Tr
+ ZVFC1KYNIiYU/EAlnneIVrb7yzrl15M/V2UUVyc+TDp3MHc79dssgIEm6w28pxVfYFTifR22q
+ Fe5qeQpjeeUOLEMVLrhy2KnzwF/tselF36hnSNqXe0UzbqEQe+MH6v3r9ABwx1BjcJOnWbdqK
+ LA8ABb0XMjScPkPqz9thAT1kFAE55i2JB7QPQSOGbdYOb/QVlr9y9uBrBO6hlX/Qwf3eY4dmW
+ Ly6aZVMm2Qh9yVATYm97dpxPypDhSE3Z92mkDIk96DQJwoYK3CA5xOxI/NlOlNVjAAnkjfmC2
+ uUSzl7U7TJLHZ7hgz6yeMPT1iNCK35BJjfKR0v6FhUSpe/08GsycYdwNVKmyNfIkj4/Rqav84
+ zOtmikx/C2cLxiHIue9dsTinIIuNobqUOLitKctsf9akcJ6m6E/oxTgDGbAGA72u1ZkaqGlBX
+ 3jkNBDfd0R6/DcqmY0D5aaWzPkgNTBsxlsckycdeukVaYdxv8ITFGcEaEGzUaKgY+GPNFEMQ0
+ nndhS7swfRirLnLP9bN9CE+DhgufgjZpqvAGpIT5EsGFzxl9sLJbQUfefryyN0nRp0WF1OOqs
+ 2Ab2AGm+PTwBJ0xf5BiJnszZHoZhut8LKch/KaZS+VmsQ0vlYglFW44b1KSoEl+xEGXYKvt
 Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:12
@@ -66,58 +67,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 11:58:27 -0000
+X-List-Received-Date: Mon, 04 May 2020 11:58:36 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Rename the unique variable assigned as 'pit' which better
-represents what it holds, to fix a warning reported by the
-Clang static code analyzer:
+Since commit 5a1f49718 the 'olen' variable is not really
+used. Remove it to fix a warning reported by Clang static
+code analyzer:
 
-    CC      hw/isa/i82378.o
-  hw/isa/i82378.c:108:5: warning: Value stored to 'isa' is never read
-      isa = isa_create_simple(isabus, "i82374");
-      ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    CC      hw/input/adb-kbd.o
+  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
+      olen = 0;
+      ^      ~
 
+Fixes: 5a1f49718 (adb: add support for QKeyCode)
 Reported-by: Clang Static Analyzer
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-7-philmd@redhat.com>
+Message-Id: <20200422133152.16770-5-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/isa/i82378.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/input/adb-kbd.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-index dcb6b479ea0d..d9e6c7fa0096 100644
---- a/hw/isa/i82378.c
-+++ b/hw/isa/i82378.c
-@@ -67,7 +67,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     I82378State *s = I82378(dev);
-     uint8_t *pci_conf;
-     ISABus *isabus;
--    ISADevice *isa;
-+    ISADevice *pit;
+diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+index 0ba82075897f..a6d5c9b7c9ac 100644
+--- a/hw/input/adb-kbd.c
++++ b/hw/input/adb-kbd.c
+@@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+ {
+     KBDState *s = ADB_KEYBOARD(d);
+     int keycode;
+-    int olen;
  
-     pci_conf = pci->config;
-     pci_set_word(pci_conf + PCI_COMMAND,
-@@ -99,13 +99,13 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     isa_bus_irqs(isabus, s->i8259);
+-    olen = 0;
+     if (s->count == 0) {
+         return 0;
+     }
+@@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+     if (keycode == 0x7f) {
+         obuf[0] = 0x7f;
+         obuf[1] = 0x7f;
+-        olen = 2;
+     } else {
+         obuf[0] = keycode;
+         /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
+@@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+          * byte, but choose not to bother.
+          */
+         obuf[1] = 0xff;
+-        olen = 2;
+     }
  
-     /* 1 82C54 (pit) */
--    isa = i8254_pit_init(isabus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(isabus, 0x40, 0, NULL);
- 
-     /* speaker */
--    pcspk_init(isabus, isa);
-+    pcspk_init(isabus, pit);
- 
-     /* 2 82C37 (dma) */
--    isa = isa_create_simple(isabus, "i82374");
-+    isa_create_simple(isabus, "i82374");
+-    return olen;
++    return 2;
  }
  
- static void i82378_init(Object *obj)
+ static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
 -- 
 2.26.2
 
