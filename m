@@ -1,79 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVfyU-0003oA-Dv
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 14:37:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39206)
+	id 1jVgzn-00042R-2v
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 15:43:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jVfyS-0003nO-Mx
- for qemu-trivial@nongnu.org; Mon, 04 May 2020 14:37:52 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:37911)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVgzm-00042D-2j; Mon, 04 May 2020 15:43:18 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34703)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jVfyR-0001jp-K6
- for qemu-trivial@nongnu.org; Mon, 04 May 2020 14:37:52 -0400
-Received: by mail-pf1-x441.google.com with SMTP id y25so5959287pfn.5
- for <qemu-trivial@nongnu.org>; Mon, 04 May 2020 11:37:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVgzl-0006wt-Ed; Mon, 04 May 2020 15:43:17 -0400
+Received: by mail-wm1-x342.google.com with SMTP id v4so778096wme.1;
+ Mon, 04 May 2020 12:43:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LBe0LByfI8ODUWHGnqMJ+kv/EENUQD7l4y3Ff87mtOY=;
- b=o2VLUdgdRU3jcUhS4YAg9ZVj3HfDwCVN6K2pmcpbMe4R4rXaI1rb9rI+aMxlsKqetB
- 6ispbs1sm/pkVAUbBiLwoH1EatCwPoEZDzC6QuOTNe24pAFY4o/arTCOtDGRstaf2DIf
- 6aHp86FMMIIJgxAJEltyfZYrbDiZfuCRzazWAniSm3IK5krWBsJioMikYqeLc9E98vlc
- mP9FpsAKoB6XUDqGALEe+OWVK1QYwHJMpn1iSOkLxkKQKo0o4qHOc+0mGDR2xpBFx5U1
- PY5w36AYyZ5IKqtEtIJtcb6UCQX9Mfxa38z+1JWa+VmheaeSY4ys/N0lAZOn3vnL9FmP
- j7Lw==
+ bh=KtlccjpCc3cTSA86pPoexRbefD9KvD3tNDzKPg80V/4=;
+ b=CAPZIwhF9qSuFvyBuABfwRDczNcLtY/nbHdWF0/dgAMMRlRxWd78K34FbnfaOLg0ke
+ d1RFlq8M8pbsmAEbdvjp/eelXUHBY4T825uYTT4Hk1jKRfVBOT0yEGI6zrWXeFMWd8vz
+ FG1JbmxT6c6sF2/N3a513LHwHWqTikqNygpRvxY4eIHWdn8yOxBkIz6pC3L6/HSjY96u
+ JHIqMRoVF5qzrwKFHgKCOWw5pDrteTRmsrJ9cbjgIVC8jdCQEPdrgL/Z1czswz/JcbQ+
+ 57rTNLcdWl/Q4p1Zn88+gBcXf58eU0At0NQ5lQrlY5izEqh64LQaQXg2940IcAyoI9n1
+ /OoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LBe0LByfI8ODUWHGnqMJ+kv/EENUQD7l4y3Ff87mtOY=;
- b=hgIm1soW3p3wtgZwGAAeNF3Bw4NHUiv7YVtU7Xu19PhhoIAQr3wGDB4WBpYbeduvbF
- Ab/K7RKsS1zrnVjmqHkK2GkPpNyFrF/h7zrybpCk+wtIxcneYkgSVUdeBPsBS3hpXdM+
- cUXy+eE+NuKjkhM1AfhV2uAKKxeCHGfX1W9CtKWmIMAw+RL06CIl6O0XxXsiAmisSBAe
- Upof2QlFWO8K6h4Xy790O+WMRWK0DZE6PeSuOojB/3of1ZrLPtFrQsmmKc1wBgUFSOrW
- reTz+vcY83wsO8kS4M/qwxENW+tVpip47hpYJcs/3/mqAr8sHe7LOSwok0JxRQFfWWPr
- tNIg==
-X-Gm-Message-State: AGi0Pubib1VVxFWmYSmARpFmLTzaSazUHRcbkYBbUoOzy5FZMRVggnuO
- g85ZwetIjLydi1xEy5Vp5Ex6Fg==
-X-Google-Smtp-Source: APiQypLbr5FD3QQNUzyqmShvcsCxrF4kOZIPzVCLBHzvVa/Y+r3gb9nY3twq+7k9AGrktEF5gjMi8Q==
-X-Received: by 2002:a63:ef04:: with SMTP id u4mr312580pgh.280.1588617469673;
- Mon, 04 May 2020 11:37:49 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id 1sm9259922pff.151.2020.05.04.11.37.48
+ bh=KtlccjpCc3cTSA86pPoexRbefD9KvD3tNDzKPg80V/4=;
+ b=p9puTdwrziMfCdizEClWftwZxQnwuQpx5nHkp+MPNEw/TBjL2z915/AAwP6SIdODWd
+ GBamrlQJi3Eunv0rbjCOQ0jgvhRZeiFBupe2JKSsU5Zlht1x3/qwuu6eRYeuH3SVUD9U
+ 1lyzM+pdRAtEfU3qeJePMHzUyQIgAZoE0tY0tKdYJWH8elwZ60KmJQodIcFkTekqVg4p
+ pfjlLUEslEJRXOiYaNa4b/VCabdTu2L89FIngFuP9Ty48Ka0/PAnyO+DFU5zjs8Xc7+0
+ 5gjXo1IPIjImiHFjyq/8F+4awpgFT/8cgDR/hwxbg6uMYFCRyKGnHftHTDdb6bwF+C7p
+ TdGg==
+X-Gm-Message-State: AGi0PuYQP9PFhkHAGR/N7ccfm1n8frWFuxWe1eI814iDUMhqnf0BaQsc
+ L4IveH92gWo5sKojJdlMwLw=
+X-Google-Smtp-Source: APiQypLNWMEjCWzpTTqRlNQ5fM43DasBthqPDNGNs3dvQ9EgTcvJOMNXBfjnILMttnezy+7yq4bt+g==
+X-Received: by 2002:a1c:f606:: with SMTP id w6mr15993457wmc.59.1588621395641; 
+ Mon, 04 May 2020 12:43:15 -0700 (PDT)
+Received: from [192.168.1.39] (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id y11sm19530695wrh.59.2020.05.04.12.43.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2020 11:37:49 -0700 (PDT)
-Subject: Re: [PATCH 2/2] hw/display/edid: Add missing 'qdev-properties.h'
- header
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20200504082003.16298-1-f4bug@amsat.org>
- <20200504082003.16298-3-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <59e5a700-e2fe-b053-3bbd-71c36134c116@linaro.org>
-Date: Mon, 4 May 2020 11:37:47 -0700
+ Mon, 04 May 2020 12:43:14 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 2/3] io/task: Move 'qom/object.h' header to source
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200504084615.27642-1-f4bug@amsat.org>
+ <20200504084615.27642-3-f4bug@amsat.org>
+ <799fe603-906c-c00b-07ce-0e7619c444f5@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c28f6af0-4a41-3f01-6bac-db87f40fd5fc@amsat.org>
+Date: Mon, 4 May 2020 21:43:13 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200504082003.16298-3-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <799fe603-906c-c00b-07ce-0e7619c444f5@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,19 +87,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 18:37:52 -0000
+X-List-Received-Date: Mon, 04 May 2020 19:43:18 -0000
 
-On 5/4/20 1:20 AM, Philippe Mathieu-Daudé wrote:
-> To use the DEFINE_EDID_PROPERTIES() macro we need the
-> definitions from "hw/qdev-properties.h".
+On 5/4/20 7:42 PM, Richard Henderson wrote:
+> On 5/4/20 1:46 AM, Philippe Mathieu-Daudé wrote:
+>> We need "qom/object.h" to call object_ref()/object_unref().
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/display/edid.h | 1 +
->  1 file changed, 1 insertion(+)
+> This description doesn't seem to match
+> 
+>> +++ b/include/io/task.h
+>> @@ -21,8 +21,6 @@
+>>   #ifndef QIO_TASK_H
+>>   #define QIO_TASK_H
+>>   
+>> -#include "qom/object.h"
+>> -
+>>   typedef struct QIOTask QIOTask;
+>>   
+>>   typedef void (*QIOTaskFunc)(QIOTask *task,
+>> diff --git a/io/task.c b/io/task.c
+>> index 1ae7b86488..53c0bed686 100644
+>> --- a/io/task.c
+>> +++ b/io/task.c
+>> @@ -22,6 +22,7 @@
+>>   #include "io/task.h"
+>>   #include "qapi/error.h"
+>>   #include "qemu/thread.h"
+>> +#include "qom/object.h"
+> 
+> the change.  Since io/task.c includes io/tash.h, what are you actually doing?
 
-Does this not currently build?  I'm not sure what you're fixing.
+Sorry to not document clearly on the cover.
 
+The original goal was to stop using $SRC_PATH as include directory, but 
+as it is huge I believe it will never get fully accepted, so I simply 
+kept the few maybe worthwhile patches...
 
-r~
+The final patch is:
+
+-- >8 --
+--- a/configure
++++ b/configure
+@@ -601,7 +601,7 @@ QEMU_CFLAGS="-fno-strict-aliasing -fno-common 
+-fwrapv -std=gnu99 $QEMU_CFLAGS"
+  QEMU_CFLAGS="-Wall -Wundef -Wwrite-strings -Wmissing-prototypes 
+$QEMU_CFLAGS"
+  QEMU_CFLAGS="-Wstrict-prototypes -Wredundant-decls $QEMU_CFLAGS"
+  QEMU_CFLAGS="-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE 
+$QEMU_CFLAGS"
+-QEMU_INCLUDES="-iquote . -iquote \$(SRC_PATH) -iquote 
+\$(SRC_PATH)/accel/tcg -iquote \$(SRC_PATH)/include"
++QEMU_INCLUDES="-iquote . -iquote \$(SRC_PATH)/accel/tcg -iquote 
+\$(SRC_PATH)/include"
+  QEMU_INCLUDES="$QEMU_INCLUDES -iquote \$(SRC_PATH)/disas/libvixl"
+  if test "$debug_info" = "yes"; then
+      CFLAGS="-g $CFLAGS"
+---
 
