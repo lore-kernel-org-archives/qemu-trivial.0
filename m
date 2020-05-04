@@ -1,81 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVWNA-0005BK-Ke
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:22:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38806)
+	id 1jVWk2-0003sK-9T
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:46:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWN9-000599-8d; Mon, 04 May 2020 04:22:43 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42350)
+ id 1jVWk0-0003py-BB; Mon, 04 May 2020 04:46:20 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:54639)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWN8-0006wX-IL; Mon, 04 May 2020 04:22:42 -0400
-Received: by mail-wr1-x443.google.com with SMTP id s8so9502020wrt.9;
- Mon, 04 May 2020 01:22:41 -0700 (PDT)
+ id 1jVWjz-000559-Gg; Mon, 04 May 2020 04:46:20 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id h4so7492099wmb.4;
+ Mon, 04 May 2020 01:46:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=gVwDMqU7IDBJFvdNOuVVuB4LeRx8gjOeYN0o0mGV2Qw=;
- b=Bo1dZolLpAJb7IszJBw0u2h4zHCqI7s79sB6g6e+8ImLO7sS5vQ1M1SeFuj/raxw48
- nq83UtV3qqFMkvBbP8sezzfxuvNGWvzqGN4UsY3jpfkooNON4q2n2FfIV7f+gBn/A/Q0
- OPaiewQM8UC/kCpH6fCMWQafSzhgW5T/4Z6NOb/gMuQ/xJj5jkDGYk1R8uBC6qT1EE/6
- VckYA0ZLtPrxdaoq/DOO+UFvv0RTcbxAHd/clTSw+hOkpX3kDRGCun52vRfJxZ/LGMh2
- HvyBFRp0hYhswBMbUBP0IJEUXbbBHJzb25NxzHpwVi8ah0fblnpIxkV7RcYjzt1UaRTQ
- LXzQ==
+ bh=0RTS00HEifBctOofTSWRWi8RSs+cYienIFHInwck1Qg=;
+ b=ZwqgvSSV3NGEsYocLS8E7fSOLGaXDliCWoZUCZHKs1pmh89DIofzmqpvg5ftTr99lO
+ MW/tqi/cEz7poxAUkQuTNIULa9I2QxJpLShjjAORDmRkKfgdbZQT85hIPMFxyWJkEgLj
+ B6VNbyvjU3Hs0p9TlfEXGbyhxnTToHQeW8OCEKVePtMJT/O81bIXMd2nWcKETwsa2Ngs
+ ngwXCr4zJy8cwzwfig0yF1maOiWy/jXpNV1aAmtG2eMF36tREMoNbAVdTPwDloJtx5nG
+ 6Unue9pfydWKkSMXZQ2GkxaBAXWn7AAjKCIeXPjNC4EdSJofO8xx3BpqpT81wF4eCltO
+ wVcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=gVwDMqU7IDBJFvdNOuVVuB4LeRx8gjOeYN0o0mGV2Qw=;
- b=mweS/D82ZS2m7C61gzdiFevld6HPdiKxwDjzjTzBQKpwbit+wPJqlMg/zHQBBFBmz8
- KwE+VBwfQ/tSJc0mcTpjMt61NipEDvlPTSagH3mfWVWQlCyUA1H1XmRcaIrOqa9g9G34
- YQyFyeslK9ZEKk7rKpSnp7lcw+Fh0G6J7/+6X32uDABB7usfeF4EJv2q7NhKbKy7lVL3
- Hq4Wcyy3OX1C0yMBIP9vwg0oAOt1wK47cWEHvndwYs6NJkXxL5a/6q/FtB7Lf1YNxrqd
- k5lLgVu3lr5c98eXPRqmiE+iZIuyRUo+gj8Cex38OEBhfa9+Ih7H21L+T33d0ZCiB1ob
- HTXA==
-X-Gm-Message-State: AGi0Pua7eMtvskBIxyH7o25UDx9WTRQqC82T1nh1ri3FE+VF2pJCN7pJ
- 8AmggE4uI9o0ZewIOkJsNS9+SGrg
-X-Google-Smtp-Source: APiQypJy3OfBaZK5dQxpWyDdbvySBklTV0VqAzt8csYksJOa0eN+2/+gA6WA+ZEV+cz0Mzk1t77lqQ==
-X-Received: by 2002:adf:d841:: with SMTP id k1mr10114465wrl.129.1588580560042; 
- Mon, 04 May 2020 01:22:40 -0700 (PDT)
+ bh=0RTS00HEifBctOofTSWRWi8RSs+cYienIFHInwck1Qg=;
+ b=tmkvJHNSrCQfKoJEbt00Sv+NXDXb1K43Zj+skkjonsOo3QsBabJmkvYbHG+rZx1fRO
+ /+EL+S/Rts+hOUrF9ZNhWe8UwyNA+IP3iG+4RVO4MXuM/Q3ILq0TRgmkEOUzd+OarlY+
+ owm62LQkN1I9uUCnv8lms7v3tBSgkaSbx3u0M3B09prFQfbRc+ptOkp+O3XHyLZ5hW8W
+ k80UA2Ri7ExtYiTY8irrLGbeOLhHM7K1tBkwYwDQ9wqm2XoIa1fktFd3qQ7mSvXOsKFd
+ gdXMWQA5CfU7eWUv1g05UN9bfRvqpWb8Obi72h4/ZnYQoBcMoIERWTrVWubduPBY37sc
+ xyIg==
+X-Gm-Message-State: AGi0PuZ+gNewOGT2nI+dF4bYqkRNaHAj5cKexFYXgsYq0vcF1ESW1XQ7
+ 0SXdCF4UzWRatNyLM4AZck12V0WL
+X-Google-Smtp-Source: APiQypJIhRjHdK6vz6kAFba2LAZrZaIF0so8/HHKTvaeNklDnm6VRdnIeja/V4S9448KC7ppg35zZg==
+X-Received: by 2002:a1c:bc08:: with SMTP id m8mr13219144wmf.119.1588581977483; 
+ Mon, 04 May 2020 01:46:17 -0700 (PDT)
 Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
  [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id b66sm13045738wmh.12.2020.05.04.01.22.38
+ by smtp.gmail.com with ESMTPSA id w6sm10740621wrt.39.2020.05.04.01.46.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 01:22:39 -0700 (PDT)
+ Mon, 04 May 2020 01:46:16 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/usb: Make "hcd-ehci.h" header public
-Date: Mon,  4 May 2020 10:22:37 +0200
-Message-Id: <20200504082238.16655-1-f4bug@amsat.org>
+Subject: [PATCH 0/3] qom: Few trivial patches
+Date: Mon,  4 May 2020 10:46:12 +0200
+Message-Id: <20200504084615.27642-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
  FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,28 +82,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 08:22:43 -0000
+X-List-Received-Date: Mon, 04 May 2020 08:46:20 -0000
 
-As target-specific code use this header, move it to the publicly
-accessible include/ folder.
+Some QOM patches worth salvaging while doing housekeeping.
 
-  $ git grep hw/usb/hcd-ehci.h
-  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
-  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
-  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
-  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
-  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
+Philippe Mathieu-Daudé (3):
+  qom/object: Move Object typedef to 'qemu/typedefs.h'
+  io/task: Move 'qom/object.h' header to source
+  qom/object: Make reparenting error more verbose
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- {hw => include/hw}/usb/hcd-ehci.h | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- rename {hw => include/hw}/usb/hcd-ehci.h (100%)
+ include/io/task.h         | 2 --
+ include/qemu/typedefs.h   | 1 +
+ include/qom/object.h      | 2 --
+ include/qom/qom-qobject.h | 2 --
+ include/sysemu/sysemu.h   | 1 -
+ io/task.c                 | 1 +
+ qom/object.c              | 7 ++++++-
+ 7 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/usb/hcd-ehci.h b/include/hw/usb/hcd-ehci.h
-similarity index 100%
-rename from hw/usb/hcd-ehci.h
-rename to include/hw/usb/hcd-ehci.h
 -- 
 2.21.3
 
