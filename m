@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVXgK-0004J6-Md
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:46:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57130)
+	id 1jVXi2-0006pf-AQ
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:48:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXgJ-0004Fx-8R; Mon, 04 May 2020 05:46:35 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:39521)
+ id 1jVXi0-0006k3-67; Mon, 04 May 2020 05:48:20 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:45219)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXgH-0003gA-TU; Mon, 04 May 2020 05:46:34 -0400
+ id 1jVXhz-0005zl-3Q; Mon, 04 May 2020 05:48:19 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mtfa5-1j9cVu3VxX-00v8YD; Mon, 04 May 2020 11:46:30 +0200
-Subject: Re: [PATCH] elf_ops: Don't try to g_mapped_file_unref(NULL)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Randy Yates <yates@ieee.org>
-References: <20200423202011.32686-1-peter.maydell@linaro.org>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MmlfM-1ilim03G22-00jtAt; Mon, 04 May 2020 11:48:14 +0200
+Subject: Re: [PATCH] chardev: Add macOS to list of OSes that support -chardev
+ serial
+To: Mikhail Gusarov <dottedmag@dottedmag.net>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200426210956.17324-1-dottedmag@dottedmag.net>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,42 +60,41 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c44d6231-1b11-1d4e-8885-dd4e81745acf@vivier.eu>
-Date: Mon, 4 May 2020 11:46:28 +0200
+Message-ID: <283aa50d-2899-c414-b566-aae0e12b52fb@vivier.eu>
+Date: Mon, 4 May 2020 11:48:13 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200423202011.32686-1-peter.maydell@linaro.org>
+In-Reply-To: <20200426210956.17324-1-dottedmag@dottedmag.net>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:78WMLJn5tnIOJ0XzIeaJ9HFq5dYXhc/VvqhcNZ7z0tXiOIP9OxW
- zL/cFlWjLi52nNXucYOM65uDdR4rh7+BMjVXD0qoKzDUxprYvSIJchb1H+DuXZkcSLtoE4e
- JW97Jya6ShVSRjLGVFHINUu5luPzjEi5LhpsNaEuN/6SDuFvfy3iXJo0gxvQqH/nMAic4lx
- ggz/g1Z8OXdifTYplM9MQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:T3VCYg3yp2w=:qbBhRE0DYWT5YWOOPoXt6d
- +c4V2mv7XZLwc4DHxgy3kjPP+3E3T4cIM33nSsbwYxo5+bWUPNi6RGms+9GAHJdnCQ+dmjDOK
- yKUjNt6tVLjk1+xFuY0Zs2HmrPF3mp3qybo4oQY9mhIFRy9qiiGtpYK3lQgLRHOhp6LIpEY68
- pFDjE/i+N6iuuJLr7IE6t4S1Y7WpQ1gf2nzXku7OC1CSIQQBwJpmswzH2DooCSRI2XumZ6Agl
- Gf58PQgac5Zv70i0bjReJuGhV/TouSbeBLppzhdiFqPzK6ePoZ73awe3XmYWp2ibP2ISMOWeR
- XcR1+9EuCX/98ZAf03YiOMU+6s6OdDTjc2rpSnso+HOjAPGhQ0DKc/hq+pQwYY/7CU3hcztql
- OI6/2XrwWlECrbi0ljmS1FHiURHP79w44xQ1xHHdRR9vwDOG6S3tuB7cvz6Eqgn39F78pP/nD
- ED731rimoqttKHrB2GgO/zVn1/5AUvlOxrH7UyLlCEKNWtFQZIdMOzs4h0s4L13CLI5I5Bs4r
- fVmBM7lbEHTsf2YsCFbYiKfNhz1oI37pZQcIf3uzcKD707vv9g1SghKEG9U4ofDTUCz4N7KvE
- YkKw0UBgdwtOck8sgVCkfW1dYp3NKRY0N4Rqvi5mLdt4qzFvwD0ZXGjtCy/rp32xYZuZf2tRq
- m8AyzcNAdskX7jh7rDL7rqpjSALc69EmZkeJsmbyZHLXW5moskEDjsL1kEKLTS7NI865Ljr2n
- tfNRJnN8c45CBgB1jO0Zv81nRYpngjKVacxqIMBsbtUl49gBQuw6S0NMjPYxx0RelVv6ao3Uw
- fvKndeIMHK/SA5XYIR7OmOdymW4GolbwjZDy19CE/dmfMkYQy6qjEoqlcRvkYsIBBsfYUVn
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:w8mKWqrjuqJzEm4EpUTXc1mgS618S4qnWRw2zNlJGQRGVeN0V1Q
+ j6tDN8pLyUWM0cGtQTXV5htzgppmFOYNabg8hNBfxKuUsG2IJCMMwt1VZlJbUUwgW1hpFnf
+ mOBy2/X3pF0+TdSQEQUuaiIe8Rf4hZt3RmF9FNBOWO3uU0v/sD2FCUAy+c3t8YCipYghFK6
+ r9XWiI3FDTL6pXiVMa/ug==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:c6MIoP8jW64=:xg1RmtczvyQtHuW4FHbGJc
+ Y5sEVrVSSNvs2t1oL8/8fjKEACeIAA4YGOtRPB4n03034XUtM4jfzN6S2g+JhULC+HVI/i2OB
+ co33SymtE89yLv3BjxCSaHW4nrxkW1BrSXxJmKiODBY82ler1NRauFzyShDCb5QL8ZwcgwUOf
+ dWqYCi4yYH6fz2ChRzxVlHCumkbNvjbti1BxzdMDkjnpzEkEuhbAmpoecrzeuU889vJMmYwg3
+ G1SLJ5npXEqtL/h/cJD8oEmR4x93IBYkXCw5gtsGRRnxYJQ+5jF0R9hkjEIVehDg4q9ri0D6J
+ Fxv8XEzg/qTyq3TMgyD3hV09X/cY+bLMJBNFHJKEjuFfsQZp/jXAQ0TiiyYooWg6us/TQJkdX
+ vO6KcS2GbjPy28p6NfMPhIPXNHN9Z+jrcSoUnQx2C1/SJ7uMuSvaVgo2Em2Kwgham8TPuCqe1
+ Ci1k7Vgeg60A1MZGwHcx98cv37tT8XLnmdQVertPBzRknQyfXaikTEbRnvxTOp9Rvzn5gHRId
+ vaaC21OfWaEYGa2LBPtuW4zFQpFbSzD+vpyv0xMMj2ZpAmOJYF63paez2pUasNkpUMLFcVs7M
+ ewHuJQheoQc1+yATZrEVm2k85LoaArVYKkL8CRV32wqihgAa8I0T5SY+/mC/1j/icj39PI6Gz
+ BaNuVT0mk9/Je7A64IFRACoAAUEx82bSsy7ddWcFVGczt9hRa5NiI9WDmP9XLYTa090yi1q2d
+ oxbyI9twAxGaPBZT+GjR/fcgeZvQZh0mEf8TSUT/4296TJ8pNlDhNGWOLNhHV6j86W9Pd2eUm
+ DLzT3HmW519u8l9iRVOlEHd26nm7kJCcHj9wAGJaZLd++5BYa0OOSGuW2ordZSENh8AVzuB
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:45:54
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:20:49
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,56 +107,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 09:46:35 -0000
+X-List-Received-Date: Mon, 04 May 2020 09:48:20 -0000
 
-Le 23/04/2020 à 22:20, Peter Maydell a écrit :
-> Calling g_mapped_file_unref() on a NULL pointer is not valid, and
-> glib will assert if you try it.
+Le 26/04/2020 à 23:09, Mikhail Gusarov a écrit :
+> macOS API for dealing with serial ports/ttys is identical to BSDs.
 > 
-> $ qemu-system-arm -M virt -display none -device loader,file=/tmp/bad.elf
-> qemu-system-arm: -device loader,file=/tmp/bad.elf: GLib: g_mapped_file_unref: assertion 'file != NULL' failed
-> 
-> (One way to produce an ELF file that fails like this is to copy just
-> the first 16 bytes of a valid ELF file; this is sufficient to fool
-> the code in load_elf_ram_sym() into thinking it's an ELF file and
-> calling load_elf32() or load_elf64().)
-> 
-> The failure-exit path in load_elf can be reached from various points
-> in execution, and for some of those we haven't yet called
-> g_mapped_file_new_from_fd().  Add a condition to the unref call so we
-> only call it if we successfully created the GMappedFile to start with.
-> 
-> This will fix the assertion; for the specific case of the generic
-> loader it will then fall back from "guess this is an ELF file" to
-> "maybe it's a uImage or a hex file" and eventually to "just load as
-> a raw data file".
-> 
-> Reported-by: Randy Yates <yates@ieee.org>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Mikhail Gusarov <dottedmag@dottedmag.net>
 > ---
->  include/hw/elf_ops.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> index e0bb47bb678..398a4a2c85b 100644
-> --- a/include/hw/elf_ops.h
-> +++ b/include/hw/elf_ops.h
-> @@ -606,7 +606,9 @@ static int glue(load_elf, SZ)(const char *name, int fd,
->          *highaddr = (uint64_t)(elf_sword)high;
->      ret = total_size;
->   fail:
-> -    g_mapped_file_unref(mapped_file);
-> +    if (mapped_file) {
-> +        g_mapped_file_unref(mapped_file);
-> +    }
->      g_free(phdr);
->      return ret;
->  }
+> Note that the same file has a line
+>> #endif /* linux || sun */
+> that is severely out of date.
+> 
+>  chardev/char-serial.c | 2 +-
+>  include/qemu/osdep.h  | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/chardev/char-serial.c b/chardev/char-serial.c
+> index 5b833ea077..7c3d84ae24 100644
+> --- a/chardev/char-serial.c
+> +++ b/chardev/char-serial.c
+> @@ -53,7 +53,7 @@ static void qmp_chardev_open_serial(Chardev *chr,
+>  
+>  #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)      \
+>      || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
+> -    || defined(__GLIBC__)
+> +    || defined(__GLIBC__) || defined(__APPLE__)
+>  
+>  static void tty_serial_init(int fd, int speed,
+>                              int parity, int data_bits, int stop_bits)
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 20f5c5f197..ff7c17b857 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -379,7 +379,7 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+>  #define HAVE_CHARDEV_SERIAL 1
+>  #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)    \
+>      || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
+> -    || defined(__GLIBC__)
+> +    || defined(__GLIBC__) || defined(__APPLE__)
+>  #define HAVE_CHARDEV_SERIAL 1
+>  #endif
+>  
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
