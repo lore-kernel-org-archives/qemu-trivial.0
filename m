@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVZk3-0003KH-4v
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52058)
+	id 1jVZk4-0003Op-OA
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 07:58:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjs-00038T-SD; Mon, 04 May 2020 07:58:24 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:58235)
+ id 1jVZjt-000393-37; Mon, 04 May 2020 07:58:25 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:38807)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVZjq-0002ID-EY; Mon, 04 May 2020 07:58:24 -0400
+ id 1jVZjp-00027i-02; Mon, 04 May 2020 07:58:24 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mna0x-1ip83G3zJl-00jcTf; Mon, 04 May 2020 13:58:16 +0200
+ id 1Mn1mb-1ipg1502hr-00kARR; Mon, 04 May 2020 13:58:12 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org,
+ qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Randy Yates <yates@ieee.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 14/20] hw/i2c/pm_smbus: Remove dead assignment
-Date: Mon,  4 May 2020 13:57:52 +0200
-Message-Id: <20200504115758.283914-15-laurent@vivier.eu>
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 08/20] elf_ops: Don't try to g_mapped_file_unref(NULL)
+Date: Mon,  4 May 2020 13:57:46 +0200
+Message-Id: <20200504115758.283914-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504115758.283914-1-laurent@vivier.eu>
 References: <20200504115758.283914-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lAdcSX0kajxnl05WjULUUsCSNLGK9FItQz984ooxQyMQ3F2VPXe
- tP2kTCLf1i7xGJL6rHvLRWjRV0vrBeoYerXrvt+t0jxSbV05ACXHngJrc9qQRkXtiHw4o6d
- nFW4ITSXkFBpj7hBZqJBRz31vumaMsKWJhm6VqXRQxT/7DQ/V6laMHNRbun9f4+JHcEb849
- M7D2l/ulhZwt0yjCVoxrg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GbPX6t2rIxs=:a6/vmlwAKH50bZFZYh7e8+
- UCnVb5hrzq9WKE1jsF3wEgP/pZv0hruh9jX33wgSKGxDO6sb145St1c0DCejA3Wq61IKiyuoz
- BvBxlK5/ItUi6NcGirc0wv891RKFRgkIr4gMWyOEP+1XxeObA0mnUdwq4qGvIBFRz3bfsVg8Y
- prFvK0F08fZVti82dQ+M/YpRCo5Gk0q2HvM2PKMkUE2AQz2aPrx69Jy1ph8c9va3grWtAjC+V
- eOkwuM3nxt7t4udiqBIG0u5nzM1EGJZGfznDVXgJgUx2DfpOSRM2srpUMRMRu9rc+2NO3sGry
- L5ffMB0Cv2fg4505aE7kWu/Uze+fWyL43TRMf8lUFYLwaqjYq100J/wIfDL/kfDVvOvDsnA2H
- xSRMcAzQ5iEarkruRlxYup3/Pf+WkdLy2faTsxBcy12CutEDkqVJxwfpsEwT0PWA+zd72GShe
- +tvCzn5yPL7EzlbF8/nowJYiJy6ShQXj8BitXgX8xWBwXBbBrB4wBlEKpS6zOHOeiKvanc7Qv
- Uc499rhCPlD59wNlqqnhR2pSwYrTi+X8xJh5kJGEeVbPMNkydKB6m3tAB1qC0ehsvHQQs6N9x
- ohDhNtxUQUDLvn0eHa3UCuX2L6b+n5ldGN/PG8I1fBm8HP8RnSdw5CDBrz7Npaz9tsvG7Qpi5
- CHFXxUvVMSPzOu0AhUM7x9CuFo+WnKpCBP3D/gClbhKC8RmGcY6SGpyXsU3LBmDf9Zt/ADcnG
- Q++cGg35BeERxm73PP+YtgvUaNSYcugQPNANAV31720DAmO1S2FJ4clQCgn9ELEIOr4mS9YfM
- srNMe0BkFPfqsgsL7mK/ymhagRPQUXRZB0ATXvwxs0zfFgH9kjkxMbGgcHxJcuBiHlPEa+i
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BQ5r9yph8+G/Az6IX8fW6EIIjsM+kUd3mF51aPquBfwZdBe78HQ
+ eJny12BmQEzKP8RuUE9iCi84G9lQkzH84XG1tI0BSjC4quvIP1FWMvd5pHl8s1dMCMQcmMq
+ HQ/ZxSNvlyXyh1WBdViEbgdbjsSe4iTbQPZQC/nZ0qrsH/WQ5FI3bVxbct72uEReOO+FK2o
+ 8PG5uPIteltoGpTuG3VQQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XJXUFm27smw=:7Iahaa0JmqSlE5YatvC0bp
+ 6dutlD/QcvXKvsQesDZwrOqnOx2bgnQgs2kE2tjaUEt4pqrUr4hhvfv39aviY2DJIIe9CAJ4W
+ 4dLdNRocSko0IUkiOFLyNLZ+f7EmktNNPRAoAlaoMIQ4vXqRWpuY2bgyW7C0qIkffQvK8r4HF
+ Sz5f1OP1QfMbrnoiLprwcRt1bnbr4E+uTJMYxTKDkRMn0FFgLIaN5PQzMmYxfoLmZuvxEoX+L
+ vEhOHJiJMZOZ/rbzEMZN++Nz03/jO8Xvhre069TkTwfOCAPI3+YKpKiAitq0ict5J3+jYHqJE
+ YoH1O78NYE6fBnw98wvxqpDgmEJ2tRrqrMZCYeCueOw5CZu82fhPBZctFOb16ajAGfwqsHqq/
+ RXF5HOF9c8OuZuTbzeYZeZTBSsFPdzQFHe2roUdntS30VfNcRxEVfKBCFlH1/pAhtUNtRnR9/
+ JqSSzlEHhYYS3A/mKOXqibmtBvjWdvs72zdgVDClXvDizo5nCnZ3x8b37wTWUSGnfyyHXZKkt
+ 02mF77bMEosg/WCYQfxqB2P+VF3dSktHaWPNvo1qxqTICMevNLvo0wiuwS9yZhB7hDeDh1apY
+ Q9HY/6dKQZyAGC0kNRm4Qfh/H57BxpKXm97/0gPFLqhf0/ODnTxQiEv4uibzfd4WcZaszuPV4
+ AAFFoWLzyHdQlLrC6oheP5UU7AwyBWQYZHkhQOS3ZLnoHkV59Rf1/f3IFn6c1Cew+9sOuZOch
+ kLc9mRWuqphz92qXxtNVPe7uFKs4K16kkCjR+pOQojIVp1RqaZlAirT3gBMEJ9bXvijOxagSP
+ lBRiOWlL2GF4INTR0VwQJjJAA0JU0c+GxMxvJS/N+pLw4C45JMpac3WpyjunCJTPIuvCMUF
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:12
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 07:58:14
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,36 +68,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 04 May 2020 11:58:25 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Fix warning reported by Clang static code analyzer:
+Calling g_mapped_file_unref() on a NULL pointer is not valid, and
+glib will assert if you try it.
 
-    CC      hw/i2c/pm_smbus.o
-  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
-                  ret = 0;
-                  ^     ~
+$ qemu-system-arm -M virt -display none -device loader,file=/tmp/bad.elf
+qemu-system-arm: -device loader,file=/tmp/bad.elf: GLib: g_mapped_file_unref: assertion 'file != NULL' failed
 
-Reported-by: Clang Static Analyzer
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-4-philmd@redhat.com>
+(One way to produce an ELF file that fails like this is to copy just
+the first 16 bytes of a valid ELF file; this is sufficient to fool
+the code in load_elf_ram_sym() into thinking it's an ELF file and
+calling load_elf32() or load_elf64().)
+
+The failure-exit path in load_elf can be reached from various points
+in execution, and for some of those we haven't yet called
+g_mapped_file_new_from_fd().  Add a condition to the unref call so we
+only call it if we successfully created the GMappedFile to start with.
+
+This will fix the assertion; for the specific case of the generic
+loader it will then fall back from "guess this is an ELF file" to
+"maybe it's a uImage or a hex file" and eventually to "just load as
+a raw data file".
+
+Reported-by: Randy Yates <yates@ieee.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20200423202011.32686-1-peter.maydell@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i2c/pm_smbus.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/hw/elf_ops.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
-index 36994ff5857c..4728540c37e6 100644
---- a/hw/i2c/pm_smbus.c
-+++ b/hw/i2c/pm_smbus.c
-@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
-                 s->smb_stat |= STS_HOST_BUSY | STS_BYTE_DONE;
-                 s->smb_data[0] = s->smb_blkdata;
-                 s->smb_index = 0;
--                ret = 0;
-             }
-             goto out;
-         }
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+index e0bb47bb678d..398a4a2c85bb 100644
+--- a/include/hw/elf_ops.h
++++ b/include/hw/elf_ops.h
+@@ -606,7 +606,9 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+         *highaddr = (uint64_t)(elf_sword)high;
+     ret = total_size;
+  fail:
+-    g_mapped_file_unref(mapped_file);
++    if (mapped_file) {
++        g_mapped_file_unref(mapped_file);
++    }
+     g_free(phdr);
+     return ret;
+ }
 -- 
 2.26.2
 
