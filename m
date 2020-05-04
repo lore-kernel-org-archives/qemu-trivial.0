@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdWH-0001eC-Fn
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38082)
+	id 1jVdWI-0001fx-OV
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdW0-0001Sd-NH; Mon, 04 May 2020 12:00:20 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:52241)
+ id 1jVdW3-0001WZ-8J; Mon, 04 May 2020 12:00:23 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:37377)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVz-0005tc-O2; Mon, 04 May 2020 12:00:20 -0400
+ id 1jVdW1-0005uk-R5; Mon, 04 May 2020 12:00:22 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MScHp-1jgwCr2R4L-00Ssf8; Mon, 04 May 2020 18:00:12 +0200
+ id 1MRTAj-1jkG7J29ob-00NR8k; Mon, 04 May 2020 18:00:16 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL v2 13/19] hw/i2c/pm_smbus: Remove dead assignment
-Date: Mon,  4 May 2020 17:59:50 +0200
-Message-Id: <20200504155956.380695-14-laurent@vivier.eu>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL v2 17/19] hw/gpio/aspeed_gpio: Remove dead assignment
+Date: Mon,  4 May 2020 17:59:54 +0200
+Message-Id: <20200504155956.380695-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IcV9362VkIZBpTgL0+Mugc2QoGskXIha9mZ+/XOQjriZYJzKTZr
- KXo0iV1TNpqa7CvEg1EEpjnJa1p7v+USa6SUuw/WH+ALG5Uywf3q8jSk3bOXHwi5Pc2XRAI
- 7/kgREaBr2fE5loNgrBzU1d+6mHa57M57V4qu8GjJG+kQEPW0rHgxYi6mH9qfVS2ZpdeRYl
- hN2UdSE4D/vaoayjBWjYg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pSVrhZIcdm4=:PiZDsZnNHMtOpHRBwhkzAB
- vGXoKZ4OLsiAfHmWW+bB/oIFdQKpZMhtdmt/RV87hef3uDXv48ZYDlB0zDHru2PU2cdVYCqHJ
- EQxk9wm1wtBzn+jJz3HFflDrqFnByFX5n4/mLBb7SvZxagFYUPhPaIVcc3nd+qU47uzK2OKGp
- Aw7uwsG0EOqLitfICDiOvcWyzphA3L/hjqL1k/zu9KLDBPBoNWst1sXFrZutTP6j4lPxy2UDb
- 7+VeNybb6QQ8I71B0hLIGPAJADZl2U4X10vEAxW4txZiNtxvFqvwd35suLK2+CZ3S5jCy+AKc
- cib1aGb+gIMyfl/UHsrOXXQt1EOW8gRnNQrtMny6JZVIAkHX4CFe/YTYFfbFoeu21a2YltX+K
- 8D7tPj4Lx5CmVk9ExD6LWtpVTi4nLTE8vHB/hMV1jXurezPmStwS82dOR0pcejEFARpR4uP0P
- qFzWtcq8XyhKWsInX06lk1Ftk05bPp1NdbzP4mBGb9fmfjpozUoX3UeZcbt6pKetMhG90HPO5
- CxcqvWqMdvApJ/iLWcMjTZeob4Qsdu+ZRHwg9V5oJX5P8eOn0objHkVI7f9OC0oG5/TM0/Jbm
- xnnFb4WrSsre6rIoJM9sHxRzZddjGuW3yj/Kg3uMpdqYOTA4zYO+q9PPu1rVe6d+CkwLJOehS
- k0ErdAuoOup6N7gLcIpJbR4psuNDfoEgkVohDahF2TeKISzLRkeqYMBZQnIM4ihiel9EimCeQ
- T5MA3Dx7pjMNsVprVkfuylB51FeTnj2WgtAugSuXBxKlXVl3W/9c6jqZPBKws55INzl3+mKSx
- 9KXXWFRO8xlhCkJccjKD10TIG78YWJrd1hviYa5+a0bDlVJDIi1hklY8codY1jliRH3rX0F
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:hBrsijXPJ2Ho2iRXx3sz00wduvdEf20MNyVGGEbhdMg0T31HWrF
+ BF5475bsyyioCHPf1bOgcCPdzjyfsrbwqg6YyTSiV6m3i0LKmwZOLRp1J07PlFVhHLAoNHl
+ zWyVEwZmYxxcFGzEs1Y5Lg3Xn+EtEBWuFgmJ/erRm9Gxhf0Xv6YeExvyXbvhPz4OP2MwTfQ
+ H1dcbBh9+pWwUf+v8ZgJg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:SMt7dqAidCo=:fbuwDLr0XNpjrCpzvu35Yc
+ Q0b4YtHPORcIIvGfcQE5zmzdppzrzIhyb7fjMzEfDcWC26RvtYWJy9yH7f9UhTvLSNuPVdeYh
+ pV2uTNd9CvZi1qimzGVaSOcu/EwgGZxcI1C4c6SXiIfLZeZjc4l4GvLZqRLYPbmTzgR5iED3s
+ X25YMEfEHymiOHaiNQ5TpnMjpsglmcvMefU6F2/56/2sHej4wFpVaNX+yKO9lyVyS+ok27fwC
+ 9xAAKR6q8Of3g2uEwR/QTNYTB44/+hJr5ppDiH0iF1hNcUUeiWUA2RWVTfypWJioDjTF1Wx3U
+ o1fVIZk5jBeMeTg9TldLD2WB3O8ZN02+7m1K4Cxw+WAa6ojwnUV1B8aJnTCpZvRmjAf622GIi
+ RK/U/2BLCoLvobYPAEBfMfvYSS1OI2OKWrJFduG4SjNs9Y2VAN9Ey1z8gyOvlZkYBBsR7kIlv
+ eS9rT2nUBt5df5cGdxleJCEu0tXvXyKKcc/IWX+x62kv201y3TAYVwTCcBbf5IFanHxnjtet1
+ EFf+rse16VcelbzImkcUZtt5xj7AcBhQQUu8H4YHIMfsN2duBkyZpL1RCgjVILVKoOjU6r2ss
+ +PxjqwlpFsfeAOkjCS7Q3z68CyD6LTOAy6swYqX3LXqxyA2xLZH+LSyxaks/xO+rsVzDfr94h
+ RgWf6kqeO7ZsYpXReW4K54LSd6fD994iqKa6jEBNNoup5m9LpJWzVX+yHP3bQFrVFZgSwRtak
+ XFRWiSlZeEexAPsZU//Ym3Sn+KHSFmvNyw7UDtou8y13bhcVszYS82jM8pRABTWOifazklu4x
+ rlptXC2kBcbBK/ipZDpJCKn5JEwhQmQtn2QTC+wM0gZyGcPkEXdpscHvQrE7rq8JT4xc+sJ
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:18
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:20
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,38 +66,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:21 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:23 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 Fix warning reported by Clang static code analyzer:
 
-    CC      hw/i2c/pm_smbus.o
-  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
-                  ret = 0;
-                  ^     ~
+  hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during its initialization is never read
+      int set_idx, g_idx = *group_idx;
+                   ^~~~~   ~~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200422133152.16770-4-philmd@redhat.com>
+Message-Id: <20200422133152.16770-8-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i2c/pm_smbus.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/gpio/aspeed_gpio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
-index 36994ff5857c..4728540c37e6 100644
---- a/hw/i2c/pm_smbus.c
-+++ b/hw/i2c/pm_smbus.c
-@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
-                 s->smb_stat |= STS_HOST_BUSY | STS_BYTE_DONE;
-                 s->smb_data[0] = s->smb_blkdata;
-                 s->smb_index = 0;
--                ret = 0;
-             }
-             goto out;
-         }
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index e52fcfd9a030..4c75b5c80cc9 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -712,7 +712,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+ static int get_set_idx(AspeedGPIOState *s, const char *group, int *group_idx)
+ {
+     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
+-    int set_idx, g_idx = *group_idx;
++    int set_idx, g_idx;
+ 
+     for (set_idx = 0; set_idx < agc->nr_gpio_sets; set_idx++) {
+         const GPIOSetProperties *set_props = &agc->props[set_idx];
 -- 
 2.26.2
 
