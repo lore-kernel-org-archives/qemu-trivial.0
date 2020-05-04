@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdWE-0001bQ-P2
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38048)
+	id 1jVdWH-0001eC-Fn
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVx-0001NX-DD; Mon, 04 May 2020 12:00:17 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:58873)
+ id 1jVdW0-0001Sd-NH; Mon, 04 May 2020 12:00:20 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:52241)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVu-0005mN-L9; Mon, 04 May 2020 12:00:16 -0400
+ id 1jVdVz-0005tc-O2; Mon, 04 May 2020 12:00:20 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MtwEO-1jHX0O2B6y-00uGmh; Mon, 04 May 2020 18:00:08 +0200
+ id 1MScHp-1jgwCr2R4L-00Ssf8; Mon, 04 May 2020 18:00:12 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- Mikhail Gusarov <dottedmag@dottedmag.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL v2 09/19] chardev: Add macOS to list of OSes that support
- -chardev serial
-Date: Mon,  4 May 2020 17:59:46 +0200
-Message-Id: <20200504155956.380695-10-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL v2 13/19] hw/i2c/pm_smbus: Remove dead assignment
+Date: Mon,  4 May 2020 17:59:50 +0200
+Message-Id: <20200504155956.380695-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
 References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ztskHpBKtS2LEZa2rd5pUT7MUtywI+lbGEOKJzUhgQcINrv8zeD
- cvokyfxJn/l/J6Id6XWrInilYuQrPmxPpU38sv1bpoFA8T/4BHkinqFjUMfpt0EcpKyW0j5
- 6PKOysySrOGbONfH3B0iJ7RxaTgo+YHMyUqa7gnZrVOFp+eTW4RBf7Zjtd8FguuCovwFegZ
- e3gWhNvk+ZrGkZ3O0oHfA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FG5QM0EzYyk=:JebFrSXuin2jq56kRdm6C1
- 1llKqLWziMbBx/wph2QKqJvl83Ljz+IppD8Ye8zqjD63SZLgCK4JZftk2sZy2XmW3IWU8ziXx
- DX/JBS0OL39d3ofN1DNlPFsSCde1UQgQpXqYULCBLdOFxLW1Ucc8Vr6OjW8B3FbVEhgjvBzdL
- 22L8KXIrWnxmK07w6My1vDEZzsYNA4JIuaZPq4KhJVVqXJ+NMjcwbA5Q8ZqPsBJcCEXT/tGIk
- 7iw4gtYCCglwm/+I2rF/oMQrpj5zoe8JYpOoYat6GS4D2dOJV1aSqLf7aTNw8IacuEdJu0u8B
- mrsxcfGegmL2kAFBsNQ3CcslfFEAHQweHdMXggeepou/2a5p0GBLiqdLRBXWcd2hlVqRdxhOy
- cwn8BP4PL/fT91zyoc+q0pQJ1DRzRr9Yzd6vUUONcTzJyr4gPkvp4NQ9u3NCvDksTzVn4frfC
- SB4HPGEiEIChYc/frd99o1YllUosBNsXX9ktWXV7qd3J04Kl6vVt4D7/Vetn609u0altwv7Sx
- LiELoUyBKPhTTY9OP0DKDmfsd+6CpooGu88cw0BGZJV7qazveHxsk0NrIvHpW6SIw34gElCmu
- EHoEkirBUN0fsBMKgZd4fbC2IF1grrsClYl3gEYfp9MKfmyp5ksBIpDD+6HvMX1xHJc3FThoQ
- V+2mWf1ELh4N0dP/HqmTQR4jFYq/hEgbW3x0p1MDgJhlij33TQgqFczRERhu++QB2/+Nc5l/n
- S7Pk9aLyHLn/A44yM91fdeyzHAgGg0WnO2sYyGv16oUP09bkXcWV/0TQ8sjZQY2Jooo7Q8Mkd
- ng04yHkjhJA9XIGOIU7uAlDoP12Ug5mTxcP3bBUg4w9FMuNDzh/Mbp6wiNRZdim6PHyh7TU
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IcV9362VkIZBpTgL0+Mugc2QoGskXIha9mZ+/XOQjriZYJzKTZr
+ KXo0iV1TNpqa7CvEg1EEpjnJa1p7v+USa6SUuw/WH+ALG5Uywf3q8jSk3bOXHwi5Pc2XRAI
+ 7/kgREaBr2fE5loNgrBzU1d+6mHa57M57V4qu8GjJG+kQEPW0rHgxYi6mH9qfVS2ZpdeRYl
+ hN2UdSE4D/vaoayjBWjYg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pSVrhZIcdm4=:PiZDsZnNHMtOpHRBwhkzAB
+ vGXoKZ4OLsiAfHmWW+bB/oIFdQKpZMhtdmt/RV87hef3uDXv48ZYDlB0zDHru2PU2cdVYCqHJ
+ EQxk9wm1wtBzn+jJz3HFflDrqFnByFX5n4/mLBb7SvZxagFYUPhPaIVcc3nd+qU47uzK2OKGp
+ Aw7uwsG0EOqLitfICDiOvcWyzphA3L/hjqL1k/zu9KLDBPBoNWst1sXFrZutTP6j4lPxy2UDb
+ 7+VeNybb6QQ8I71B0hLIGPAJADZl2U4X10vEAxW4txZiNtxvFqvwd35suLK2+CZ3S5jCy+AKc
+ cib1aGb+gIMyfl/UHsrOXXQt1EOW8gRnNQrtMny6JZVIAkHX4CFe/YTYFfbFoeu21a2YltX+K
+ 8D7tPj4Lx5CmVk9ExD6LWtpVTi4nLTE8vHB/hMV1jXurezPmStwS82dOR0pcejEFARpR4uP0P
+ qFzWtcq8XyhKWsInX06lk1Ftk05bPp1NdbzP4mBGb9fmfjpozUoX3UeZcbt6pKetMhG90HPO5
+ CxcqvWqMdvApJ/iLWcMjTZeob4Qsdu+ZRHwg9V5oJX5P8eOn0objHkVI7f9OC0oG5/TM0/Jbm
+ xnnFb4WrSsre6rIoJM9sHxRzZddjGuW3yj/Kg3uMpdqYOTA4zYO+q9PPu1rVe6d+CkwLJOehS
+ k0ErdAuoOup6N7gLcIpJbR4psuNDfoEgkVohDahF2TeKISzLRkeqYMBZQnIM4ihiel9EimCeQ
+ T5MA3Dx7pjMNsVprVkfuylB51FeTnj2WgtAugSuXBxKlXVl3W/9c6jqZPBKws55INzl3+mKSx
+ 9KXXWFRO8xlhCkJccjKD10TIG78YWJrd1hviYa5+a0bDlVJDIi1hklY8codY1jliRH3rX0F
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:18
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,48 +65,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:17 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:21 -0000
 
-From: Mikhail Gusarov <dottedmag@dottedmag.net>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-macOS API for dealing with serial ports/ttys is identical to BSDs.
+Fix warning reported by Clang static code analyzer:
 
-Signed-off-by: Mikhail Gusarov <dottedmag@dottedmag.net>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200426210956.17324-1-dottedmag@dottedmag.net>
+    CC      hw/i2c/pm_smbus.o
+  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
+                  ret = 0;
+                  ^     ~
+
+Reported-by: Clang Static Analyzer
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200422133152.16770-4-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- chardev/char-serial.c | 2 +-
- include/qemu/osdep.h  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/i2c/pm_smbus.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/chardev/char-serial.c b/chardev/char-serial.c
-index 5b833ea0773b..7c3d84ae243e 100644
---- a/chardev/char-serial.c
-+++ b/chardev/char-serial.c
-@@ -53,7 +53,7 @@ static void qmp_chardev_open_serial(Chardev *chr,
- 
- #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)      \
-     || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
--    || defined(__GLIBC__)
-+    || defined(__GLIBC__) || defined(__APPLE__)
- 
- static void tty_serial_init(int fd, int speed,
-                             int parity, int data_bits, int stop_bits)
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 20f5c5f197d0..ff7c17b85735 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -379,7 +379,7 @@ void qemu_anon_ram_free(void *ptr, size_t size);
- #define HAVE_CHARDEV_SERIAL 1
- #elif defined(__linux__) || defined(__sun__) || defined(__FreeBSD__)    \
-     || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) \
--    || defined(__GLIBC__)
-+    || defined(__GLIBC__) || defined(__APPLE__)
- #define HAVE_CHARDEV_SERIAL 1
- #endif
- 
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index 36994ff5857c..4728540c37e6 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
+                 s->smb_stat |= STS_HOST_BUSY | STS_BYTE_DONE;
+                 s->smb_data[0] = s->smb_blkdata;
+                 s->smb_index = 0;
+-                ret = 0;
+             }
+             goto out;
+         }
 -- 
 2.26.2
 
