@@ -1,25 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVXfj-0003CK-8U
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:45:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56706)
+	id 1jVXgK-0004J6-Md
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:46:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXfh-0003A1-IG; Mon, 04 May 2020 05:45:57 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:35391)
+ id 1jVXgJ-0004Fx-8R; Mon, 04 May 2020 05:46:35 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:39521)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXfg-0002vT-91; Mon, 04 May 2020 05:45:57 -0400
+ id 1jVXgH-0003gA-TU; Mon, 04 May 2020 05:46:34 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MRSZX-1jq6vF2LCf-00NSWO; Mon, 04 May 2020 11:45:52 +0200
-Subject: Re: [PATCH] MAINTAINERS: Update Keith Busch's email address
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Keith Busch <kbusch@kernel.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
- Qemu-block <qemu-block@nongnu.org>
-References: <20200421122236.24867-1-f4bug@amsat.org>
- <20200422164531.GA14788@redsun51.ssa.fujisawa.hgst.com>
- <fd5be7a9-3ad2-c535-cc68-0565cf5ed3ef@amsat.org>
+ 1Mtfa5-1j9cVu3VxX-00v8YD; Mon, 04 May 2020 11:46:30 +0200
+Subject: Re: [PATCH] elf_ops: Don't try to g_mapped_file_unref(NULL)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Randy Yates <yates@ieee.org>
+References: <20200423202011.32686-1-peter.maydell@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,32 +60,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <785542b3-852b-7ad4-9eb1-c65efdf0cf5f@vivier.eu>
-Date: Mon, 4 May 2020 11:45:51 +0200
+Message-ID: <c44d6231-1b11-1d4e-8885-dd4e81745acf@vivier.eu>
+Date: Mon, 4 May 2020 11:46:28 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <fd5be7a9-3ad2-c535-cc68-0565cf5ed3ef@amsat.org>
+In-Reply-To: <20200423202011.32686-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vQUG0SIbVIOUBPOLnxLzIW9R4IQB8cX6L+qMj+IEoOOWuONVzLO
- W93uH2y3suATW3cNl/dRJVhXfZfmiUQ86+iZdzpZvOU8UGjRgjsFoKqKzqQOnK/TfOYPs/O
- xHRtl/5ZnNiD5a1/6LZJDdOOoSVcfV+w7N+y+rgdR8IKH+kU0jehaMQeHi5oAz//FL7VADZ
- 466z2ZELBPrsxTHic23Vw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:b0EHrTd878Q=:prC2Z4ZB/MvpOHMnLCx743
- 1t1wQdzXFhL2ybXsxsk5bS24iZ79DadVVCb84ueKQLW61wSeyKUpql6/b0CX+czsBpODLty64
- 7mKEV6mN+ENuXMVmagzFM4EXkASllwm7M5oiZKw8nSBrtQ0Ng8R+29l/PjcbXHxa598IN824l
- d5CJdZ79P4mo5Gdr789j5JluYpYHUx7eWwpmyhozpWOi92jNoQhR7hvvXpvJCgANvPR4jHh0f
- WtshQWRtFUWbtf9c2vUt4xpyQb7dglRFgzmfQ5tqVvKlQ2xC3FpY6KcsByoDSWjZWtYCHFvx5
- okMddWrHoy1AnZAckgeCSEKcfTI1PNBcRpINiWM7jrzTwEaYnSJ9mfwy62zBCnnYgBBkGM/aG
- z44qP+RR+Pxg2wU8GcJoQCY2B7M7Z9hDCOkahq6vPzpE5sMcbHuNV2l6auGgyRxUJOR20JjMK
- bC2B4pqPnB9f2T9rpJ9wV6EHMVmCUQYQFT+Ptn03tD516MzsIbW4q4HZ8t4qEV6Cg0g5dcA2+
- QbD58CdxqozQ9Xxy9v255Lis9J3XpTU3brD+3atd7taeb/h9Y6K2MyivU1LyuOGE3IFX3n7Kb
- fil57ZRnsIfCCs2xpdEmgQ1f58Y2M4fowr7L4DEyvbkmR38JbH5bgJv/04GDkZ4wq1N5+EojC
- WmjTLW8qRixuxDvMVPkI/pPULeoHoPWq1xaecuHJKISW+MgloiLkUuml1pI6O3OBMszJH5YtJ
- KyEz2kj2RtnguBfvNgZRUNlyzB6BygJIA4ihgN0Gc4xcZ4g5Mc5fi1F4+vrHfRY/7lThYi6GL
- k0AR2WdECMhjGAJ3YHwPJD0iU0GeUXdhAr9AAnWqINLB43BPjhXez7mmICaHWcT9SRxbSNv
+X-Provags-ID: V03:K1:78WMLJn5tnIOJ0XzIeaJ9HFq5dYXhc/VvqhcNZ7z0tXiOIP9OxW
+ zL/cFlWjLi52nNXucYOM65uDdR4rh7+BMjVXD0qoKzDUxprYvSIJchb1H+DuXZkcSLtoE4e
+ JW97Jya6ShVSRjLGVFHINUu5luPzjEi5LhpsNaEuN/6SDuFvfy3iXJo0gxvQqH/nMAic4lx
+ ggz/g1Z8OXdifTYplM9MQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:T3VCYg3yp2w=:qbBhRE0DYWT5YWOOPoXt6d
+ +c4V2mv7XZLwc4DHxgy3kjPP+3E3T4cIM33nSsbwYxo5+bWUPNi6RGms+9GAHJdnCQ+dmjDOK
+ yKUjNt6tVLjk1+xFuY0Zs2HmrPF3mp3qybo4oQY9mhIFRy9qiiGtpYK3lQgLRHOhp6LIpEY68
+ pFDjE/i+N6iuuJLr7IE6t4S1Y7WpQ1gf2nzXku7OC1CSIQQBwJpmswzH2DooCSRI2XumZ6Agl
+ Gf58PQgac5Zv70i0bjReJuGhV/TouSbeBLppzhdiFqPzK6ePoZ73awe3XmYWp2ibP2ISMOWeR
+ XcR1+9EuCX/98ZAf03YiOMU+6s6OdDTjc2rpSnso+HOjAPGhQ0DKc/hq+pQwYY/7CU3hcztql
+ OI6/2XrwWlECrbi0ljmS1FHiURHP79w44xQ1xHHdRR9vwDOG6S3tuB7cvz6Eqgn39F78pP/nD
+ ED731rimoqttKHrB2GgO/zVn1/5AUvlOxrH7UyLlCEKNWtFQZIdMOzs4h0s4L13CLI5I5Bs4r
+ fVmBM7lbEHTsf2YsCFbYiKfNhz1oI37pZQcIf3uzcKD707vv9g1SghKEG9U4ofDTUCz4N7KvE
+ YkKw0UBgdwtOck8sgVCkfW1dYp3NKRY0N4Rqvi5mLdt4qzFvwD0ZXGjtCy/rp32xYZuZf2tRq
+ m8AyzcNAdskX7jh7rDL7rqpjSALc69EmZkeJsmbyZHLXW5moskEDjsL1kEKLTS7NI865Ljr2n
+ tfNRJnN8c45CBgB1jO0Zv81nRYpngjKVacxqIMBsbtUl49gBQuw6S0NMjPYxx0RelVv6ao3Uw
+ fvKndeIMHK/SA5XYIR7OmOdymW4GolbwjZDy19CE/dmfMkYQy6qjEoqlcRvkYsIBBsfYUVn
 Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:45:54
@@ -111,26 +108,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 09:45:57 -0000
+X-List-Received-Date: Mon, 04 May 2020 09:46:35 -0000
 
-Le 04/05/2020 à 10:58, Philippe Mathieu-Daudé a écrit :
-> +block +trivial to raise the odds to get this patch merged.
+Le 23/04/2020 à 22:20, Peter Maydell a écrit :
+> Calling g_mapped_file_unref() on a NULL pointer is not valid, and
+> glib will assert if you try it.
 > 
-> On 4/22/20 6:45 PM, Keith Busch wrote:
->> On Tue, Apr 21, 2020 at 02:22:36PM +0200, Philippe Mathieu-Daudé wrote:
->>> keith.busch@intel.com address is being rejected.
->>> Replace by the email address Keith is actively using.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>
->> Thank you for sending the correction.
->>
->> Acked-by: Keith Busch <kbusch@kernel.org>
->>
+> $ qemu-system-arm -M virt -display none -device loader,file=/tmp/bad.elf
+> qemu-system-arm: -device loader,file=/tmp/bad.elf: GLib: g_mapped_file_unref: assertion 'file != NULL' failed
+> 
+> (One way to produce an ELF file that fails like this is to copy just
+> the first 16 bytes of a valid ELF file; this is sufficient to fool
+> the code in load_elf_ram_sym() into thinking it's an ELF file and
+> calling load_elf32() or load_elf64().)
+> 
+> The failure-exit path in load_elf can be reached from various points
+> in execution, and for some of those we haven't yet called
+> g_mapped_file_new_from_fd().  Add a condition to the unref call so we
+> only call it if we successfully created the GMappedFile to start with.
+> 
+> This will fix the assertion; for the specific case of the generic
+> loader it will then fall back from "guess this is an ELF file" to
+> "maybe it's a uImage or a hex file" and eventually to "just load as
+> a raw data file".
+> 
+> Reported-by: Randy Yates <yates@ieee.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/elf_ops.h | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index e0bb47bb678..398a4a2c85b 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -606,7 +606,9 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+>          *highaddr = (uint64_t)(elf_sword)high;
+>      ret = total_size;
+>   fail:
+> -    g_mapped_file_unref(mapped_file);
+> +    if (mapped_file) {
+> +        g_mapped_file_unref(mapped_file);
+> +    }
+>      g_free(phdr);
+>      return ret;
+>  }
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
