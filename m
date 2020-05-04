@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVWk4-0003x1-Ul
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:46:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42670)
+	id 1jVWk6-00041G-Bz
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 04:46:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWk3-0003ui-P2; Mon, 04 May 2020 04:46:23 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35336)
+ id 1jVWk2-0003tG-Q1; Mon, 04 May 2020 04:46:22 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:45796)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWk3-0005A4-3f; Mon, 04 May 2020 04:46:23 -0400
-Received: by mail-wr1-x444.google.com with SMTP id x18so19916912wrq.2;
- Mon, 04 May 2020 01:46:22 -0700 (PDT)
+ id 1jVWk1-00059V-NI; Mon, 04 May 2020 04:46:22 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id k1so1027359wro.12;
+ Mon, 04 May 2020 01:46:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
- b=LMli5Ycftq50qDovpVx2BVYHKwF46lqCoDqY5tfX7XuHCkNIwVjbUHykKpSNh3z0OH
- pFH897SPxW/L+a5YAO1+Nx5b3xrqXYLWojiOl+/sEGpmvss+Q4z12cJ0f3Rf6G702Nz2
- NjVYuhe2PQiqdxNs8pEkDDER4vf/oQYxFsFYAQm0BZxqSvbnVnFGywAGykJChmH+Z90Z
- mt4dwkopUi+eZG+8P2mPtvcDteS8HnsY+wdHnCBCwlsFpTf+JEkkMx8FpwtTuReKtbet
- dKfTpQRpDuIHlkb8kx3u2LrUO9SWVZXO0UZrmAxR9hiNWsryKcTmsGrh4SnfVkBble3e
- iV2w==
+ bh=yQVaxRYvRYKfoRoJCtXozicb6p4ygnojFcpJd6zilzU=;
+ b=AkoRA9MJn/AfYwzLdmr06wHLXPz9SpdPPdOdLYAgnb5WI2mX/+HOAt1HAnrGOMCtDM
+ Wf0lSoj4SEYzYHW1/kgfqF2gG/9ULSELuQQXY4flsQhGgiHXTiwtjIwDE1pAVvYXO6jD
+ SpwlMp9uohSj6gkizRKHCgZDi9HaV8eXQaLeNJsnrnVeF44o1p75KJbUozGNBJKF55xa
+ OfYA5mxdV/qEczgVN32vD4xjtrX+wHDHSroum/L7RCyT6VksPHCFrgtVCyzayE0VQXYq
+ Q/sUaPa//S0Mky/IlyLLGuekc5hUgn+y1LzMRR9XjOVAfU5bGGZcqhptwLvjxAC8ezZq
+ WHyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=f+EbD9Q86u44mnUNC8LdzOT84sTEw0zjnLN96ls2FY8=;
- b=ORCqY42TPQ5TBsHvsd5WMG4sgUZBj94ioQC81xmt7pYNzTGr0GhKVnydWAt8SGgg0L
- 26HZJ6XHDQnoRdj70Tzi6LO8IFYZFdDlSE+QTzJAkSHkfFZ4DcV1jHFeXH4caiXXnm7j
- RVg7R+48sdUHORrwe1K9fVc5GSXhMlcEU4V1tUejkm4UAokPI7EC1MgEKRn1qfc/JoY4
- RelD77H+QWbRWMSFCifXn+i49kuOzUnRSt9DT7oK3JjVJG4J8A9mweNVj5B18uoP5W8C
- HJ6SskMUphIR+YM9ZsdQqNJGhcHNPWR1yL9iDmJKOQo/lq5VEll/vSxMULV2U2aHuDTB
- Tlrg==
-X-Gm-Message-State: AGi0PuZoUe9o5UCZBntefIqFtt9wZLAzc8bMss4NLBsR8+lg6LuSU6gU
- FKXxIbR6DR7KBUA6EBCvIrGKnfNr
-X-Google-Smtp-Source: APiQypL8IYJwhIZ1YGlLBCl4ZFybfnP1SZCSz8tDIjCk975wpi7l83A+O/6xGCkHA0yE/OKhNQ/uhw==
-X-Received: by 2002:a5d:5651:: with SMTP id j17mr17455133wrw.406.1588581981066; 
- Mon, 04 May 2020 01:46:21 -0700 (PDT)
+ bh=yQVaxRYvRYKfoRoJCtXozicb6p4ygnojFcpJd6zilzU=;
+ b=Qr7OZk0xLT4YWYMgFpc1fzObYAUQo8us3LZP6hkQftNWq5IM2vxAEFHIrBsmGM2KK4
+ haEEogd1EstycB9EqY258Z2+aKzYHu7Ul9/OXmPlPk0pmNE+XbPJdvvNFqGxuK+hQurw
+ vQXn0GXHjyd6hnvPRFFHVlbQn3c17vFkX2y/oQMRfbfQwoavWzrQlrXl63w/lCCixIdV
+ A94Zj11220ecGFkYGxy2CktxnO7/xDnnbzH+Feg0PatESd8ejO7KyXOEgkuJBGWzwx1Y
+ fyiWqgxiG7cHt3yeiVilXpZN99k4myTQztvxH9JPXMNVzNpanfzNRaUe18mHwkCpKAlF
+ sfsw==
+X-Gm-Message-State: AGi0PuaSJjTm1zhK/gip04V0D3746p3JogJS1VcqWBrzkpEuSiP4+jbw
+ BM9x/ieOc3NZCzJCbh43kJZFX+17
+X-Google-Smtp-Source: APiQypIx+HTNBLgl2366kAbs8WSlR1dLjbD4LY/EUpg6Ur8BoQGOpKpVkIHh8YXHVezYy0h1Wi+VmQ==
+X-Received: by 2002:adf:dfc8:: with SMTP id q8mr813952wrn.325.1588581979953;
+ Mon, 04 May 2020 01:46:19 -0700 (PDT)
 Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
  [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id w6sm10740621wrt.39.2020.05.04.01.46.20
+ by smtp.gmail.com with ESMTPSA id w6sm10740621wrt.39.2020.05.04.01.46.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 01:46:20 -0700 (PDT)
+ Mon, 04 May 2020 01:46:19 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -51,9 +51,9 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/3] qom/object: Make reparenting error more verbose
-Date: Mon,  4 May 2020 10:46:15 +0200
-Message-Id: <20200504084615.27642-4-f4bug@amsat.org>
+Subject: [PATCH 2/3] io/task: Move 'qom/object.h' header to source
+Date: Mon,  4 May 2020 10:46:14 +0200
+Message-Id: <20200504084615.27642-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200504084615.27642-1-f4bug@amsat.org>
 References: <20200504084615.27642-1-f4bug@amsat.org>
@@ -61,8 +61,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -85,33 +85,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 08:46:24 -0000
+X-List-Received-Date: Mon, 04 May 2020 08:46:23 -0000
 
-Display child and parent names when reparenting occurs.
+We need "qom/object.h" to call object_ref()/object_unref().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- qom/object.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ include/io/task.h | 2 --
+ io/task.c         | 1 +
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/qom/object.c b/qom/object.c
-index be700e831f..417fd90aa5 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -1683,7 +1683,12 @@ void object_property_add_child(Object *obj, const char *name,
-     ObjectProperty *op;
+diff --git a/include/io/task.h b/include/io/task.h
+index 1abbfb8b65..6818dfedd0 100644
+--- a/include/io/task.h
++++ b/include/io/task.h
+@@ -21,8 +21,6 @@
+ #ifndef QIO_TASK_H
+ #define QIO_TASK_H
  
-     if (child->parent != NULL) {
--        error_setg(errp, "child object is already parented");
-+        error_setg(errp, "child object '%s' is already parented (parent: '%s') "
-+                         "can not be children '%s' of '%s'",
-+                   object_get_typename(child),
-+                   object_get_typename(child->parent),
-+                   name,
-+                   object_get_typename(obj));
-         return;
-     }
+-#include "qom/object.h"
+-
+ typedef struct QIOTask QIOTask;
  
+ typedef void (*QIOTaskFunc)(QIOTask *task,
+diff --git a/io/task.c b/io/task.c
+index 1ae7b86488..53c0bed686 100644
+--- a/io/task.c
++++ b/io/task.c
+@@ -22,6 +22,7 @@
+ #include "io/task.h"
+ #include "qapi/error.h"
+ #include "qemu/thread.h"
++#include "qom/object.h"
+ #include "trace.h"
+ 
+ struct QIOTaskThreadData {
 -- 
 2.21.3
 
