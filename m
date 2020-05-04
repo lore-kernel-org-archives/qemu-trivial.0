@@ -1,30 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVXlZ-0004Ty-PJ
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:52:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60118)
+	id 1jVXyF-000152-Ev
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 06:05:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXlU-0004Qw-E2; Mon, 04 May 2020 05:51:57 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:35719)
+ id 1jVXyC-00012s-Po; Mon, 04 May 2020 06:05:04 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:38125)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXlS-0001rb-MY; Mon, 04 May 2020 05:51:56 -0400
+ id 1jVXy9-0001w3-W8; Mon, 04 May 2020 06:05:04 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MHndY-1jPTTm2eNK-00Eu2R; Mon, 04 May 2020 11:51:32 +0200
-Subject: Re: [PATCH v2] Compress lines for immediate return
-To: Stefan Hajnoczi <stefanha@gmail.com>,
- Simran Singhal <singhalsimran0@gmail.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
- Jeff Cody <codyprime@gmail.com>, Peter Lieven <pl@kamp.de>,
- qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Julia Suvorova <jusual@mail.ru>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>
-References: <20200401165314.GA3213@simran-Inspiron-5558>
- <20200403125301.GD146016@stefanha-x1.localdomain>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N336J-1j1KTd2mTt-013MBj; Mon, 04 May 2020 12:04:56 +0200
+Subject: Re: [PATCH v3 0/9] misc: Trivial static code analyzer fixes
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+References: <20200422133152.16770-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -68,42 +60,41 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <85e649e5-5ce1-866e-801c-4385eb9c25d7@vivier.eu>
-Date: Mon, 4 May 2020 11:51:29 +0200
+Message-ID: <d207c198-d8e9-7ca6-dd5a-56223db45cd3@vivier.eu>
+Date: Mon, 4 May 2020 12:04:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200403125301.GD146016@stefanha-x1.localdomain>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="IUpxxvdxAyMgoPXKMzFgC4Z93WFaQSU2L"
-X-Provags-ID: V03:K1:B0vemVVc6zxBf2NO+fSd7UdV0bnvzFN18n+XxNYVKYs08b4DU5U
- lscsJFRMrzhRqt18TxBkC4YW/5tXUInZyaAo1UGVYZQGPmMjyAl2wfVSqAS1G1HmV/IuecY
- UnS592p/L/xWa8riMtmzanWhYJrNSK86a1iMghf8TRlZ2PHCbfNPZdrXRIS4D2SeJivinkc
- Mbuq8CHcseYwONeqIO/MA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3CPr9MERVao=:7fNwkti7W+2oFVz+XZq4MQ
- 8CHJymy17eKrZ9RIxC+kHlD1aDqBWcZXmOshPNlIqL+v+/5t7xcPvvL2dY5QrNogxdbVnnEEq
- THp07PkAxLSz7IjCtHwi6kShZyIfVdF9AEbZhv3DZGZZXXbZ4n5AasNU2gZZLn7OQ1zzdAP5K
- u313RzFN00eaBx1cnMvVQARI53pxtWCgCEcfF0fOF1r3a9vrRQUmk9PRELX1ULO+3VXuS73d+
- vIVtAtRpAhMXaQkSkGlVOadQOsgXE/aUloC5XyGl+m0aX8szuwNAUTG6xgqLcwZBswfub6GbY
- kKTpCtTauozueI2pSyIIorPRoDFr1jOVQl+B1qknZ0/3ZlymadPt2lMBU9xxjHILvwvZaNBy4
- PoScDrQ3HW8vr3fW59IhjWH4YjA9bBfxsBujWg7ZHY73tNrBYA38BuczREnaDm2cJKPJ952Wq
- F2b2PiEstVL7wmVgHclXUah2AQc43XcjcCtqdb/yX1gg76bDb016HmpMWxIw+fIT+XGZ4osOL
- 893cae877hwC+7tEwq+BexAUFEQWa4YRkUUyJTqed07G7wA8NXYPlslUIuyf/zPITlm4obaqP
- zi8NKG0jpTx3h6OEZGlXNkcDMIT8jPqm+giS86OZJ7ds5DPg3yHQpakk0LSrpJwTPSfcGmGqK
- RmJBurpqcs2Bg3q3etZOWcQ1b4MORWMEjRfuFcFSaROWu0G8V7jyRdZ3MqzZK4isN0CPWWykP
- mY6iE+dW/0xO6WQJyOIDMHGGeCBMbN6t2Z1Gy0JnIo0FQoAywSYze6u8ivR6Q/qqbsWkwBXX1
- zaQxV/zpWcWYNLUd0lHZ39NVlcMt9Skp1WdpNppzyVRPHnIJaXEQVrShB4b2Thm9LBHj0oe
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+In-Reply-To: <20200422133152.16770-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:RdBR9BuuAMP3pdzIUQfjU0Yy6eP+6DVTVntJR9iaD2Kgo1wnTS3
+ qFyN7/IvytbdCNcBTeIWS/Ubdw+rWhFOX9GY443O+8ETrDDwFNnSyOo7O1U0N8N9CgtaUwf
+ Z9aboQNMM/VxrbcqApX8Uur48e5KpD8CeAScXzKsppKeN8xKnuQvj7nGMNzhulRQsfgTXeD
+ 0y3uU0DKJBhjrWZ4J91ww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jhIUCYqChxk=:aOOphGg51vxjpkuhf520Bv
+ 6HEFY6mEwApcsjGFkNk55HxQGcCFb9SoGFwuWbW+ITKoeq5f1EWQIZ0G8ZKhE5wVXMq1BucvL
+ 4YHC3em+sNbYfsIvHDEpEbKyx8Gji1czPxsm3i8Svzd0e0u2i9+XmRVfx+sb8LsLL35+agyJf
+ ECayzpoH6vK1LFbnmGu3UDde5fcnAmuZ6zbx7ROkzHGhqNPs40gLjbPz7Aa6YtmyIcZkLzzHm
+ swhTbVwB0Cw10wPFB8wKxPHu7TpcFNAH6V14bt1YIvLvEDwqKgTQ9GGFpr9oDFWLB5KqxvkZs
+ FuSz+mi48g2tlxozbdIOZjaYySQFo72H32Kuerkvh9pev8mMWqJ/6LbJfvMgyDV0JU3jVVln2
+ cVK9RbdAplYvbQtEO3AFvptkuMDPQytuzslmwa3isVYDUTdmRpN9ipvs9tX/eShLo6AM1FDQT
+ 8bjxcloP53SjoI+P5pn4ZYZfqQOskZ0A6KkK+0ZLJMPnr9qhMXl6IJmC6QznmfNWsSOlSsbKw
+ eJb8KmIaNcoQkwvV8yIGAPBOpY+o7q83+paGUswE4by2pcXkYsQDly5XeOHk3RtLvJSfAutA9
+ Up5x4jY+6Y8u7c/umYq1QUugJqTXKM+pEIZKgHJVMaO6x8JL6jELII1CBhvdwUOcQyWaJCEnn
+ UewhsJfgheQTUSTu2QfLIl3ca295a0i/OKjGmcRkMnty0wWhC42nAqtGPLLsJwRoS4R75D4Rr
+ vyYVJR668z40LFJXf8NqtwxxJX0f3HdfRaK/Okmnd51OvKSzM7byGMSuCSh8qSFu2DNvtesww
+ xWR8OSE+QRlbPgRqq0N5+uowMa/o5xNrTBQ3pOpUdH1CfTApush1PY5Gxos/Y7vHC2LZsdv
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:51:52
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 06:04:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,108 +107,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 09:51:58 -0000
+X-List-Received-Date: Mon, 04 May 2020 10:05:05 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---IUpxxvdxAyMgoPXKMzFgC4Z93WFaQSU2L
-Content-Type: multipart/mixed; boundary="yW2uBl7fbcovMPdtAvldpeVBDIsy6oD6K";
- protected-headers="v1"
-From: Laurent Vivier <laurent@vivier.eu>
-To: Stefan Hajnoczi <stefanha@gmail.com>,
- Simran Singhal <singhalsimran0@gmail.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
- Jeff Cody <codyprime@gmail.com>, Peter Lieven <pl@kamp.de>,
- qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Julia Suvorova <jusual@mail.ru>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>
-Message-ID: <85e649e5-5ce1-866e-801c-4385eb9c25d7@vivier.eu>
-Subject: Re: [PATCH v2] Compress lines for immediate return
-References: <20200401165314.GA3213@simran-Inspiron-5558>
- <20200403125301.GD146016@stefanha-x1.localdomain>
-In-Reply-To: <20200403125301.GD146016@stefanha-x1.localdomain>
-
---yW2uBl7fbcovMPdtAvldpeVBDIsy6oD6K
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: quoted-printable
-
-Le 03/04/2020 =C3=A0 14:53, Stefan Hajnoczi a =C3=A9crit=C2=A0:
-> On Wed, Apr 01, 2020 at 10:23:14PM +0530, Simran Singhal wrote:
->> Compress two lines into a single line if immediate return statement is=
- found.
->>
->> It also remove variables progress, val, data, ret and sock
->> as they are no longer needed.
->>
->> Remove space between function "mixer_load" and '(' to fix the
->> checkpatch.pl error:-
->> ERROR: space prohibited between function name and open parenthesis '('=
-
->>
->> Done using following coccinelle script:
->> @@
->> local idexpression ret;
->> expression e;
->> @@
->>
->> -ret =3D
->> +return
->>      e;
->> -return ret;
->>
->> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
->> ---
->> Changes in v2:
->> 	-Added coccinelle script wrote for changes in commit message.
->>
->>  block/file-posix.c      | 3 +--
->>  block/nfs.c             | 3 +--
->>  block/nvme.c            | 4 +---
->>  block/vhdx.c            | 3 +--
->>  hw/audio/ac97.c         | 4 +---
->>  hw/audio/adlib.c        | 5 +----
->>  hw/display/cirrus_vga.c | 4 +---
->>  migration/ram.c         | 4 +---
->>  ui/gtk.c                | 3 +--
->>  util/qemu-sockets.c     | 5 +----
->>  10 files changed, 10 insertions(+), 28 deletions(-)
->=20
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
->=20
+Le 22/04/2020 à 15:31, Philippe Mathieu-Daudé a écrit :
+> Fix trivial warnings reported by the Clang static code analyzer.
+> 
+> Only patch #2 'blockdev: Remove dead assignment' misses review.
+> 
+> The official Clang static code analyzer documentation is on:
+> https://clang-analyzer.llvm.org/
+> 
+> On Fedora I simply used it as:
+> 
+>   $ sudo dnf install clang-analyzer
+>   $ ../configure
+>   $ scan-build make
+> 
+> Since v2:
+> - Based on lvivier/trivial-patches-for-5.1
+> - Removed dup patches from Kuhn Chenqun
+> Since v1:
+> - Addressed Markus/Zoltan/Aleksandar review comments
+> 
+> Philippe Mathieu-Daudé (9):
+>   block: Avoid dead assignment
+>   blockdev: Remove dead assignment
+>   hw/i2c/pm_smbus: Remove dead assignment
+>   hw/input/adb-kbd: Remove dead assignment
+>   hw/ide/sii3112: Remove dead assignment
+>   hw/isa/i82378: Remove dead assignment
+>   hw/gpio/aspeed_gpio: Remove dead assignment
+>   hw/timer/stm32f2xx_timer: Remove dead assignment
+>   hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
+> 
+>  block.c                    | 2 +-
+>  blockdev.c                 | 2 +-
+>  hw/gpio/aspeed_gpio.c      | 2 +-
+>  hw/i2c/pm_smbus.c          | 1 -
+>  hw/ide/sii3112.c           | 5 +++--
+>  hw/input/adb-kbd.c         | 6 +-----
+>  hw/isa/i82378.c            | 8 ++++----
+>  hw/timer/pxa2xx_timer.c    | 1 +
+>  hw/timer/stm32f2xx_timer.c | 1 -
+>  9 files changed, 12 insertions(+), 16 deletions(-)
+> 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
 
-
-
---yW2uBl7fbcovMPdtAvldpeVBDIsy6oD6K--
-
---IUpxxvdxAyMgoPXKMzFgC4Z93WFaQSU2L
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEzS913cjjpNwuT1Fz8ww4vT8vvjwFAl6v5aEACgkQ8ww4vT8v
-vjxS/RAAs4IScEtPgDRP/Og+v7OrrWOdSzzzuNJySohawWzzSKkJxrl7kXuf/KfI
-s1RxKqxHDGL5ehHuCy0YOxsgBXCpbw2QrKc/6peldH9qfbd6uvdwUjaJEqvTTugb
-4o/mUI4mGVQuQOxLRAjoVF17V6tzLr7WVvGKobAF6+dOD8SNP/SB/yeFmlVJKUoG
-T74JEIU4W6jrOyS3zjdZp60JfE+e2IHjSciL6p4LIsWEhXuvKX2EHdH2wB+0JLkM
-q3cZMB9dMGS0l79k+1oIt6XKEQqeUDBKJncktxHujzrVNP4tnhnA3dGsXXVAxamg
-5xm2nRwebxddMbyCrGFAK+VH3jFF7RdKPFvputeHzEnzPqJABdfz41PpI4volNO9
-Gk48ZAJd4TB9ut36qVbmdrv8SPG/B4V/6VvTMRquNzlsPdg8YbXUK5lAMOAxE/ln
-y4HFmmxkk2MEjVfkS/JjV1lgN8wWf6E/WMWksCL4TGRwCjRD5zGtmkW/8Y3tHPSE
-QairOSYyG2Jptz/cfOkmEPkVs0VoKc9O6iFfSfgMLc9g3cLPGGVk4rbEmjcPWAYm
-SLUolM5ikwgJ9nG8lh5F7zCMtXfdf5Tw/IgRugsAH5rI5xKOntbK4J1ZEKsSHG+A
-hUmYUMuVtafQvS2dZnZCYJ5MaXv+ITcRNgKBj8kJojFLEaDw5J8=
-=mlIO
------END PGP SIGNATURE-----
-
---IUpxxvdxAyMgoPXKMzFgC4Z93WFaQSU2L--
 
