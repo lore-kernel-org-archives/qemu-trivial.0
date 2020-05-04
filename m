@@ -1,21 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVXKM-0005AF-69
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:23:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50098)
+	id 1jVXfj-0003CK-8U
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 05:45:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXKK-00057Y-Mi; Mon, 04 May 2020 05:23:52 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:58177)
+ id 1jVXfh-0003A1-IG; Mon, 04 May 2020 05:45:57 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:35391)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVXKJ-0005Re-QB; Mon, 04 May 2020 05:23:52 -0400
+ id 1jVXfg-0002vT-91; Mon, 04 May 2020 05:45:57 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M3lLh-1jUhyi0QJ1-000tBF; Mon, 04 May 2020 11:23:47 +0200
-Subject: Re: [PATCH 0/2] hw/mem/pc-dimm: Trivial code changes
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, mst@redhat.com
-References: <20200310180510.19489-1-wainersm@redhat.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MRSZX-1jq6vF2LCf-00NSWO; Mon, 04 May 2020 11:45:52 +0200
+Subject: Re: [PATCH] MAINTAINERS: Update Keith Busch's email address
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Keith Busch <kbusch@kernel.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+ Qemu-block <qemu-block@nongnu.org>
+References: <20200421122236.24867-1-f4bug@amsat.org>
+ <20200422164531.GA14788@redsun51.ssa.fujisawa.hgst.com>
+ <fd5be7a9-3ad2-c535-cc68-0565cf5ed3ef@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -59,41 +63,42 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e1971140-9762-a148-ec5e-1dbb72dd9452@vivier.eu>
-Date: Mon, 4 May 2020 11:23:46 +0200
+Message-ID: <785542b3-852b-7ad4-9eb1-c65efdf0cf5f@vivier.eu>
+Date: Mon, 4 May 2020 11:45:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200310180510.19489-1-wainersm@redhat.com>
+In-Reply-To: <fd5be7a9-3ad2-c535-cc68-0565cf5ed3ef@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vSGkG6poRXJLtvt527W4L8dFsoi+shWvnJa38SGnpYrzfVM/v81
- CEqGW0GrHgAG6HswgEIkadVYZMD+IDS4ERxptoh7VGnrLU7774whIdKPK0681GlGSWiWN26
- mxbbSnOS6H+MAkWCgDPsvO4BCqruTtgyFA4+5skQV3cNMGpGZQ9nKgpS8o0+5OxNz8CwV+l
- E74o/oRwQ1PJIrFHGcXEw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:G306E2kNnK8=:BKK+XcP5e/xErzgwS46W6S
- 39gNTjY4bHSMOyWBUUle2nnTUoT0n531GkoJGMR49OZaqRWWkpk9b4dHaV1b5vb5xBexvS0s7
- kbi11iAkUFRgPc7/wGTPcD7cPBVHAgA9N5PWZ+Wlb+np3dLRg2k2rNDvC5ikPdTzXelZK6C8Q
- aWCA1sfFUAxeC4OVQRX2b890bpGGrN5ky3Rliy2Ggdjn5EYMZnq4ve2gx4+HJb4fIqgC+CSWC
- y3D5n5pYx7g9d0C6RDBaKySDdjGCS4nKXPpo4Y+AzS2xizu66x8pcCdiv+dbeZeE37y74ES9v
- ys+0e6P6DFz5hv5mPRe0w5Me50B3R+q1NchFMraUz/64BgilBH78FOKzxn4NJBTvYuA2dbYi0
- aEGYPg/k4Sc6g6/jjQF+iYNAoo/lKOAy5XsIrcBTqSRZ5X2gAZFG5ErWs2Mrecv3+4ylEdYUt
- bPNNPxx13OQH5oOhqUBazVWl1+J9kpBefC2xigG8g+VWjfimrGmq+Jicr1vcM/v6yaZezy80t
- ZS5P4w1bkMCEEWEe+5qLnU7RC+gkZFjH0Vk4aSfV8R6Ud9AwB3sXKBgmuaQSioJF4rjwJxCsm
- xPQjeGfKEcjQ8YyLZkk/XWnln6ms/Yo6PyX2me7ZHfwOpO8Uh2OZewGTCRjmdHppS21mII5eM
- T+Ue1HcHaOlMH7rFWQaUH3WCZebukxRuxqzkhBmIJRMyHBciL83NYsFZFoLgMhkDNEhVFGKd8
- TMMhdnJAJOsVg36BlcTf8/kfBQWascBUb7JGiLQEzkUhgP4E5XUxOv1YyS16o/LHOhnUf/IdD
- H5PANULYhfPp1Tql+aiTQIWmw0tKuS8SDeBIGLnz/OiH0M8AoTmY0YoOBNvlC1TbQCFIqIW
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:vQUG0SIbVIOUBPOLnxLzIW9R4IQB8cX6L+qMj+IEoOOWuONVzLO
+ W93uH2y3suATW3cNl/dRJVhXfZfmiUQ86+iZdzpZvOU8UGjRgjsFoKqKzqQOnK/TfOYPs/O
+ xHRtl/5ZnNiD5a1/6LZJDdOOoSVcfV+w7N+y+rgdR8IKH+kU0jehaMQeHi5oAz//FL7VADZ
+ 466z2ZELBPrsxTHic23Vw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:b0EHrTd878Q=:prC2Z4ZB/MvpOHMnLCx743
+ 1t1wQdzXFhL2ybXsxsk5bS24iZ79DadVVCb84ueKQLW61wSeyKUpql6/b0CX+czsBpODLty64
+ 7mKEV6mN+ENuXMVmagzFM4EXkASllwm7M5oiZKw8nSBrtQ0Ng8R+29l/PjcbXHxa598IN824l
+ d5CJdZ79P4mo5Gdr789j5JluYpYHUx7eWwpmyhozpWOi92jNoQhR7hvvXpvJCgANvPR4jHh0f
+ WtshQWRtFUWbtf9c2vUt4xpyQb7dglRFgzmfQ5tqVvKlQ2xC3FpY6KcsByoDSWjZWtYCHFvx5
+ okMddWrHoy1AnZAckgeCSEKcfTI1PNBcRpINiWM7jrzTwEaYnSJ9mfwy62zBCnnYgBBkGM/aG
+ z44qP+RR+Pxg2wU8GcJoQCY2B7M7Z9hDCOkahq6vPzpE5sMcbHuNV2l6auGgyRxUJOR20JjMK
+ bC2B4pqPnB9f2T9rpJ9wV6EHMVmCUQYQFT+Ptn03tD516MzsIbW4q4HZ8t4qEV6Cg0g5dcA2+
+ QbD58CdxqozQ9Xxy9v255Lis9J3XpTU3brD+3atd7taeb/h9Y6K2MyivU1LyuOGE3IFX3n7Kb
+ fil57ZRnsIfCCs2xpdEmgQ1f58Y2M4fowr7L4DEyvbkmR38JbH5bgJv/04GDkZ4wq1N5+EojC
+ WmjTLW8qRixuxDvMVPkI/pPULeoHoPWq1xaecuHJKISW+MgloiLkUuml1pI6O3OBMszJH5YtJ
+ KyEz2kj2RtnguBfvNgZRUNlyzB6BygJIA4ihgN0Gc4xcZ4g5Mc5fi1F4+vrHfRY/7lThYi6GL
+ k0AR2WdECMhjGAJ3YHwPJD0iU0GeUXdhAr9AAnWqINLB43BPjhXez7mmICaHWcT9SRxbSNv
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:20:49
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:45:54
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,17 +111,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 09:23:52 -0000
+X-List-Received-Date: Mon, 04 May 2020 09:45:57 -0000
 
-Le 10/03/2020 à 19:05, Wainer dos Santos Moschetta a écrit :
-> Improve one error message and fix one code style warning.
+Le 04/05/2020 à 10:58, Philippe Mathieu-Daudé a écrit :
+> +block +trivial to raise the odds to get this patch merged.
 > 
-> Wainer dos Santos Moschetta (2):
->   hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()
->   hw/mem/pc-dimm: Fix line over 80 characters warning
-> 
->  hw/mem/pc-dimm.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+> On 4/22/20 6:45 PM, Keith Busch wrote:
+>> On Tue, Apr 21, 2020 at 02:22:36PM +0200, Philippe Mathieu-Daudé wrote:
+>>> keith.busch@intel.com address is being rejected.
+>>> Replace by the email address Keith is actively using.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> Thank you for sending the correction.
+>>
+>> Acked-by: Keith Busch <kbusch@kernel.org>
+>>
 > 
 
 Applied to my trivial-patches branch.
