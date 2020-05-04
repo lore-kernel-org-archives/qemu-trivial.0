@@ -1,73 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVY5n-0004I1-Fy
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 06:12:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37934)
+	id 1jVYE3-0002Be-Rh
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 06:21:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVY5l-0004H0-PZ; Mon, 04 May 2020 06:12:53 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34120)
+ id 1jVYE1-0002A7-Tt; Mon, 04 May 2020 06:21:25 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40813)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVY5l-0004dP-5v; Mon, 04 May 2020 06:12:53 -0400
-Received: by mail-wr1-x442.google.com with SMTP id y3so1184236wrt.1;
- Mon, 04 May 2020 03:12:51 -0700 (PDT)
+ id 1jVYE1-00039D-88; Mon, 04 May 2020 06:21:25 -0400
+Received: by mail-wm1-x341.google.com with SMTP id u16so8380979wmc.5;
+ Mon, 04 May 2020 03:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=c1RJHnLwGnOHA1qprnfYYlQHbL15pxYDC9M3A/Cja3c=;
- b=Fh06wm2mHu3/IA+GJkS6TJs+DN93yySBsWpMaxhfITyeuhc8PdAJmsfjoBu/vUSgB+
- DKdE7ULkSERxxaB9ifn/5wVRBznWcqF1BfjcmJ+Z1XgYg3qDcy/RJDb7D8zmNheBA7DO
- zzF9MvoppzyCsZLnZZ2cPq06ZVy86K0mNtXcUIxPAOHS7HEUB3DA2qwfhAkuLLhNe+8X
- DKAdku2+UnNF4N9A4hdBY2AB5TUY1ufwxd2N9sWfZLdyjcpgKkvEZeKs4KHAzpTp0xbU
- PDNG2CHcKwwm1YJGofLjdfRkOwIVe8HeQwzIufvS16DcqyiHKFKq2X+sh0BeoN+5gYrG
- hm7Q==
+ bh=bAay7sHF5UAuLC5K3PGUp3iLEXMVE/Vr87IM8AUWwC4=;
+ b=P5PvWZoksifcRarY1/qYOt2Rte/DxXJYwem5h8yr/OEelyXIB+UN8plufsDUTj0yIk
+ Hqrs5zMz2g1vZDJtwQjN9unM2ma5jlBiu4wyaLRzMTpJYfgehaDg3K7aX9qAvs7hVSUG
+ ywJ7vyZkLrkGAIPicQmYtBmV1shqAV102pW30i7ox48WUcsNJrvqXRBvcQKsfmOCBfWO
+ 7u9UYldlNPP35PZyVprWIswBOM1QlUbuTzWElTdX6Cw74skrcS4B5U3mJKBRaGjTlhjm
+ cQJSyEQABM6PO3ivDSM9f5wXEW8Q9/DZxMJ11bjU/ph6DmQy9UK4FFai5Enx8Xp9USd7
+ RYUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=c1RJHnLwGnOHA1qprnfYYlQHbL15pxYDC9M3A/Cja3c=;
- b=mgkDALnc0uvySvIYxtZUpZLnSoo6yjTx2t/GWJAkXTtMLoScy49TngfldjahbYi5GO
- VCvDceibwQ7KJ5VX/y/DiD0jQVTcK9eUWjoxMkRz7WreDVQk1dXAB/+lJB6OhJAeFt5d
- vS8r55GkcnZ3EFwOiIUbFxOROLRqf8ix32Gg7yGDFEAwTroEkvfx1k74+PI5CQYjq2/a
- dOuhzEcMCzZ9WP23muZAz1VZ0waca+rt2m8L79wh4jnESLpvUdvsuI4Q/iEBwtNvketd
- nuW/BOfeSp3s1MGAHPh/Y5nlKLwEvgGEco0RSdTuTo5R3KKj9WW9mqTBMyl1NfGD2Kqz
- Tv5A==
-X-Gm-Message-State: AGi0PuYzWywjT1RTesnIeI4e6XFYMJNCE41iksTlHR7aFnnbI+UiqWmo
- /lsZiMdCc+4Zl7cMkCEcQOY=
-X-Google-Smtp-Source: APiQypI/g48kjG3SpI4QJTNqKqDlbjvJoJsvr9wv4jvaiDIeZkUgzklwJarsKurqwygAVu7DGZ212g==
-X-Received: by 2002:adf:f004:: with SMTP id j4mr18026230wro.123.1588587170753; 
- Mon, 04 May 2020 03:12:50 -0700 (PDT)
+ bh=bAay7sHF5UAuLC5K3PGUp3iLEXMVE/Vr87IM8AUWwC4=;
+ b=gFOvZLCH4ouq5GrhZze0M7ZkXO13AsHLRs1Ls8Y+idGJAB9lOX/AY+Fbs5ibuI0U+s
+ 4/oxuo8y/qBmLct2i7oJfrJ3SIMapKZXJVV1ADMCPt9cgA/9oNBJvASfytp1ql0GSONi
+ 1n3Fq8aiSQt1q9dScrA4KGvedIjBQYZSHTzpuhrpTQEJpDLClxAxKlQLDyYZsG/WXL4J
+ 0PD2xd0104DI5eJinvaSsDN+mGyELHNH5/+j8eMoSZFCBlBlWDheNvBb38xDTd3ctiDg
+ +kkjFqppLde/SUyHLyT+bP46B0KKbnKpWQEU2gOCbhKFQdttHDWQVHGGVcwUGhvr/zUD
+ ovDA==
+X-Gm-Message-State: AGi0PuZpQEbyfGtfgfTV7FkkmOMczqPo35TSS8u0/28G+1BC8ytVi75d
+ QrEFBXjX2d/kEBLTkwIJliI=
+X-Google-Smtp-Source: APiQypKwE29coJzDx/DvE2mi7+aO95YAF5ZlP6zWvsF42kGDWUpuMahBhlZC5l5WVQi+a0zjITQmvg==
+X-Received: by 2002:a1c:35c3:: with SMTP id c186mr14683203wma.66.1588587682879; 
+ Mon, 04 May 2020 03:21:22 -0700 (PDT)
 Received: from [192.168.1.39] (26.red-88-21-207.staticip.rima-tde.net.
  [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id f12sm15785894wrg.77.2020.05.04.03.12.48
+ by smtp.gmail.com with ESMTPSA id 17sm12247523wmo.2.2020.05.04.03.21.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2020 03:12:49 -0700 (PDT)
+ Mon, 04 May 2020 03:21:22 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] hw/usb: Make "hcd-ehci.h" header public
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
- qemu-trivial@nongnu.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, David Gibson <david@gibson.dropbear.id.au>,
- Joel Stanley <joel@jms.id.au>
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-trivial@nongnu.org,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>
 References: <20200504082238.16655-1-f4bug@amsat.org>
  <alpine.BSF.2.22.395.2005041044550.59496@zero.eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <0de65ed7-37b0-8916-2ccb-bbb524934351@amsat.org>
-Date: Mon, 4 May 2020 12:12:48 +0200
+ <0de65ed7-37b0-8916-2ccb-bbb524934351@amsat.org>
+Message-ID: <0ffd398d-5585-e7f4-85f7-20e9c001428e@amsat.org>
+Date: Mon, 4 May 2020 12:21:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <alpine.BSF.2.22.395.2005041044550.59496@zero.eik.bme.hu>
+In-Reply-To: <0de65ed7-37b0-8916-2ccb-bbb524934351@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -89,27 +90,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 10:12:54 -0000
+X-List-Received-Date: Mon, 04 May 2020 10:21:26 -0000
 
-On 5/4/20 10:48 AM, BALATON Zoltan wrote:
-> On Mon, 4 May 2020, Philippe Mathieu-Daudé wrote:
->> As target-specific code use this header, move it to the publicly
->> accessible include/ folder.
+On 5/4/20 12:12 PM, Philippe Mathieu-Daudé wrote:
+> On 5/4/20 10:48 AM, BALATON Zoltan wrote:
+>> On Mon, 4 May 2020, Philippe Mathieu-Daudé wrote:
+>>> As target-specific code use this header, move it to the publicly
+>>> accessible include/ folder.
+>>>
+>>>  $ git grep hw/usb/hcd-ehci.h
+>>>  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
+>>>  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
+>>>  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
+>>>  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
+>>>  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
 >>
->>  $ git grep hw/usb/hcd-ehci.h
->>  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
->>  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
->>  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
->>  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
->>  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
+>> All of these only need either the type #define or EHCISysBusState so 
+>> splitting only those off to a public header should be enough and 
+>> better than making public all of ehci's internal header.
 > 
-> All of these only need either the type #define or EHCISysBusState so 
-> splitting only those off to a public header should be enough and better 
-> than making public all of ehci's internal header.
+> Ah you mean forward-declare EHCISysBusState in "qemu/typedefs.h", OK.
 
-Ah you mean forward-declare EHCISysBusState in "qemu/typedefs.h", OK.
+It won't work because AspeedSoCState and AwA10State use the full 
+structure (not a pointer to it).
 
+>>
+>> Regards,
+>> BALATON Zoltan
 > 
-> Regards,
-> BALATON Zoltan
 
