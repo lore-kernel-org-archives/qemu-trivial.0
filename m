@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVdVl-00017t-Lu
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37958)
+	id 1jVdVr-0001Gv-VD
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 12:00:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37990)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVj-000166-1E; Mon, 04 May 2020 12:00:03 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:57541)
+ id 1jVdVq-0001Dj-1i; Mon, 04 May 2020 12:00:10 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:54233)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jVdVh-0005h3-FB; Mon, 04 May 2020 12:00:02 -0400
+ id 1jVdVp-0005kG-3H; Mon, 04 May 2020 12:00:09 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MFsIZ-1jMVDV3hNP-00HPWS; Mon, 04 May 2020 17:59:59 +0200
+ id 1Mr8vG-1ikyR83KUw-00oHIX; Mon, 04 May 2020 18:00:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL v2 00/19] Trivial branch for 5.1 patches
-Date: Mon,  4 May 2020 17:59:37 +0200
-Message-Id: <20200504155956.380695-1-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PULL v2 05/19] hw/mem/pc-dimm: Print slot number on error at
+ pc_dimm_pre_plug()
+Date: Mon,  4 May 2020 17:59:42 +0200
+Message-Id: <20200504155956.380695-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200504155956.380695-1-laurent@vivier.eu>
+References: <20200504155956.380695-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:8X93X9BA8SbCjdCaWf0GAFQQC6rxNOEKPMyjqxs1tRx6tejx0TX
- k87NL/TrrnGM/KscyS5xoDqUpKUb5PCA21kR854svk9kVrC0UKSlPD/RUQzrORpLLxVa1nX
- OoPw77pZq05nYaDzoIJqh7dRXx0rg/QTQJq9nCKSVhmVics8LFNAkLA+xTDRmyoO3+7fR/O
- o4Qu+XsEd+BwNFOpVecZw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:IWrzMbkagxA=:1Ei0iSQw5lWbFFpSW1eKyt
- acyucOKFxehtqB7y2Hy5UheidiF1zzOYanjZvR6jYWJTh5ZQsxRUN1fzxV+R61ApxNqCbqh23
- xHZP/Zm7da237vJE8grmW3yy7NEJLvGw7VGbFAcn/T1OdF9QsO/r0bazr5MAw6bvqEzbIouWL
- Wi628UxlU7ewewTkAQWQntT5Ll2NE8T/5/wPaJE18Z3E8CgvRnTISY8Z0xvD8oaT/Z/mb37KQ
- IOtYNvkgskTmX+X0E0ExO0Jz7ms+4Gd0Zy7luMrSnn2vMoBKK/2oz7YQRNQKqvPYHvUOSrDSZ
- udGZjQiZ0AhDeh7BW6XPFiQTBEly+d6I0u8OMidT2mZ/jf0Qu9UT0KY0z48Qy8sBTU+l2Rr7h
- hFtMy99dOvVZKGcp4r4i3ect5V2vL6ps5YoWFwfCNS0GM1JEtUha1qhCewc6NyDj58CVMG+2r
- F8cj49F7xvgxuM/XscAa0rwpR+lF5g4wMPwndtVdKJnXpo2TwCrO8bKW8hz2pTRZgAUCTZzl1
- /IMJ+QxWP8TQ1ATAiZ5RTPSbK/6OgfFOA2HSLfKh89g5rVTLGKAkoqSm5WjpcWodrj364PH/t
- eWQG5iYOEzCFpwZoRxs1r+gP2i8uccCxZyMGSIpHJ0Aki2osAmIjLv2yxKbViwxubJvQ7crak
- j5gHUgsp/sDs5/0BxVl3mKkW3Bx8UjVOOHBs5uersOvIBgPGjSGyKxgzLbnu6FY0M1s7UkeY7
- wBapvoWl2SQ3fIo+3AO3wWFSg4vKQWrN2OIAYdUy1HBMHUoyWizKLcsh3RvdRw9pY4rlCHEe5
- BIePVMRR2FlC/Wn43zLwk++446E7y6xs7Fu6+SN71dXbMWeqk9Vy6tpGdsw0BjjMCLS9XQ9
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ENPdAA29+zp3lVMUvxu80YJ8Ojw2ObQTjp6eS5nqnTAZiXMr8PL
+ 8017I3ybDAr5rqXD5VSiGdieseTxwSupG/lzj8zYKp+E7PJvAv8Fgmgflh2zyk4SHU4j3S9
+ S4Ik8Ht5w+83x3jpxBb8B5FW1K6oZWU+vklaw+GjbLnIRct7mBjLKn5rIKV8DGlnZopxqgs
+ e0hPsIsce0IcKH0kEAKOA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LwBAzQSgGuw=:PIHfKXJj341vsl2wfh5GMs
+ 6IAoBvMhHUO1IQ6RWnj3hvFCtOsqSzgiBVrxww70CyRQy5auFBwsDcN5tbGpVk+Aow41ouRsz
+ fgzv0uLDDWILlpv/p1iIF4dDKCXCN4E+wPhTAI3XfWJ+9h8aE+pV1retfSVQSLR6zVf0pElIt
+ XhbBhWfxKt6yK4E3zesBpjfW9IqzTPx38WoPJw6ARvqcWtWSGJZclnRAjU33RQ6KioWbxoYQ4
+ HbQRwODYBc/6+jcM+iJLPkwZcpiIVhv/rok28+W1eiTuziZ50aH7DWHNP9cvQlP1qbSq1E/jx
+ 1WrmAPOGRTLHG1+DntFwFfAiW/7eTQBUbMYAwuA616/xUgEQhSSq8XIklVBA08i1b0XrKHfZ6
+ Vpnv2QZ6GOVIGV8Jn/8uR8rScyj5ll4LylCPPWwZWjGiFE/XAXSeHRYZ6LO70ax5TI8gUwvAr
+ uyA3EzlOIUH3+VQ2K+hyuyeWeMXoSNvUkALLZeHDnlZVVwLXip9znCBsp62bvoBf8V+UQAEhI
+ pk4Cd8DhR7tHVcMN5Q/S+didc/nVdQqL8sKQdtzVWd0vQWW6N3Zu/vrEamcF7+HJ+P9GsnoA3
+ sVhk3Q6n+mk1tnuRnRJtpBl95xWofT4G+M9u/mKiV/3WTZKkOTR4J8nT8JbTKZavyEzmYAv3b
+ VewdN5AhwHDPM96fYxT7k9Lccngf7p1PLfUCYG9FNOPSNv6wHZrXmSVz58qljNw9EWFkbBV2A
+ 7XAGr7UbDbGpOsvolemahh6mf+O/eFjh5OCDMytYz6mK1VHjgvBjIxa3o90dPgpVtGZ7aC3iw
+ awbS0y4vNMNXJUBZpD3mRzH5nAkxgULltVF+nCBF0kXY4KBIyDkmyJSYzYchguByLqxskkD
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 11:59:59
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 12:00:07
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -61,101 +64,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 16:00:03 -0000
+X-List-Received-Date: Mon, 04 May 2020 16:00:10 -0000
 
-The following changes since commit 2ef486e76d64436be90f7359a3071fb2a56ce835=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/marcel/tags/rdma-pull-request' into=
- s=3D=0D
-taging (2020-05-03 14:12:56 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.1-pull-request=
-=0D
-=0D
-for you to fetch changes up to e702fba83108519618046a2a09235a62e3a81595:=0D
-=0D
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning (2=
-02=3D=0D
-0-05-04 14:43:24 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-trivial patches (20200504)=0D
-=0D
-Silent static analyzer warning=0D
-Remove dead assignments=0D
-Support -chardev serial on macOS=0D
-Update MAINTAINERS=0D
-Some cosmetic changes=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Chen Qun (3):=0D
-  scsi/esp-pci: add g_assert() for fix clang analyzer warning in=0D
-    esp_pci_io_write()=0D
-  display/blizzard: use extract16() for fix clang analyzer warning in=0D
-    blizzard_draw_line16_32()=0D
-  timer/exynos4210_mct: Remove redundant statement in=0D
-    exynos4210_mct_write()=0D
-=0D
-Mikhail Gusarov (1):=0D
-  chardev: Add macOS to list of OSes that support -chardev serial=0D
-=0D
-Peter Maydell (1):=0D
-  elf_ops: Don't try to g_mapped_file_unref(NULL)=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (11):=0D
-  MAINTAINERS: Mark the LatticeMico32 target as orphan=0D
-  MAINTAINERS: Update Keith Busch's email address=0D
-  block: Avoid dead assignment=0D
-  blockdev: Remove dead assignment=0D
-  hw/i2c/pm_smbus: Remove dead assignment=0D
-  hw/input/adb-kbd: Remove dead assignment=0D
-  hw/ide/sii3112: Remove dead assignment=0D
-  hw/isa/i82378: Remove dead assignment=0D
-  hw/gpio/aspeed_gpio: Remove dead assignment=0D
-  hw/timer/stm32f2xx_timer: Remove dead assignment=0D
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning=0D
-=0D
-Simran Singhal (1):=0D
-  Compress lines for immediate return=0D
-=0D
-Wainer dos Santos Moschetta (2):=0D
-  hw/mem/pc-dimm: Print slot number on error at pc_dimm_pre_plug()=0D
-  hw/mem/pc-dimm: Fix line over 80 characters warning=0D
-=0D
- MAINTAINERS                | 14 +++++++-------=0D
- block.c                    |  2 +-=0D
- block/file-posix.c         |  8 +++-----=0D
- block/nfs.c                |  3 +--=0D
- block/nvme.c               |  4 +---=0D
- block/vhdx.c               |  3 +--=0D
- blockdev.c                 |  2 +-=0D
- chardev/char-serial.c      |  2 +-=0D
- hw/audio/ac97.c            |  4 +---=0D
- hw/audio/adlib.c           |  5 +----=0D
- hw/display/blizzard.c      | 10 ++++------=0D
- hw/display/cirrus_vga.c    |  4 +---=0D
- hw/gpio/aspeed_gpio.c      |  2 +-=0D
- hw/i2c/pm_smbus.c          |  1 -=0D
- hw/ide/sii3112.c           |  5 +++--=0D
- hw/input/adb-kbd.c         |  6 +-----=0D
- hw/isa/i82378.c            |  8 ++++----=0D
- hw/mem/pc-dimm.c           |  7 ++++---=0D
- hw/scsi/esp-pci.c          |  1 +=0D
- hw/timer/exynos4210_mct.c  |  4 ----=0D
- hw/timer/pxa2xx_timer.c    |  1 +=0D
- hw/timer/stm32f2xx_timer.c |  1 -=0D
- include/hw/elf_ops.h       |  4 +++-=0D
- include/qemu/osdep.h       |  2 +-=0D
- migration/ram.c            |  4 +---=0D
- ui/gtk.c                   |  3 +--=0D
- util/qemu-sockets.c        |  5 +----=0D
- 27 files changed, 45 insertions(+), 70 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+The error report in pc_dimm_pre_plug() now has the slot
+number printed.
+
+Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-Id: <20200310180510.19489-2-wainersm@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/mem/pc-dimm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index 8f50b8afea3c..36edfcf46799 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -44,8 +44,8 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
+                                    &error_abort);
+     if ((slot < 0 || slot >= machine->ram_slots) &&
+          slot != PC_DIMM_UNASSIGNED_SLOT) {
+-        error_setg(&local_err, "invalid slot number, valid range is [0-%"
+-                   PRIu64 "]", machine->ram_slots - 1);
++        error_setg(&local_err, "invalid slot number %d, valid range is [0-%"
++                   PRIu64 "]", slot, machine->ram_slots - 1);
+         goto out;
+     }
+ 
+-- 
+2.26.2
+
 
