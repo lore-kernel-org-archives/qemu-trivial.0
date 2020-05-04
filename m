@@ -1,72 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVagD-000227-7C
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 08:58:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60002)
+	id 1jVavC-0006GY-Bl
+	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 09:14:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jVag9-000208-WF
- for qemu-trivial@nongnu.org; Mon, 04 May 2020 08:58:38 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39721
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jVag8-0004jG-Bg
- for qemu-trivial@nongnu.org; Mon, 04 May 2020 08:58:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588597114;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=U05Kp7C8HXmvLrUvUyv8t64M+ewRGwsbBz/fv0kA7C0=;
- b=bcWPTdZMCiTJxK83s/rNXlPfhB9C6ojki4RxL9TQQy4yEo8b3zQ4oD0n2mfQliLaIgR/M9
- r7gfn1B9IKGoX8NkNad9gbE/+vmwB9kWNenxW1Evc1vk3ZXIvOVy3Ph5m2ki5W69aNgDk9
- VA8+kSjtu4bcBx9oXq0jy9bhDANsh1E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-236-AakZ6xgyMNu5Ne7AQ34ViQ-1; Mon, 04 May 2020 08:58:30 -0400
-X-MC-Unique: AakZ6xgyMNu5Ne7AQ34ViQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 18E0383DE6C;
- Mon,  4 May 2020 12:58:29 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E580605DC;
- Mon,  4 May 2020 12:58:26 +0000 (UTC)
-Date: Mon, 4 May 2020 13:58:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Euler Robot <euler.robot@huawei.com>
-Subject: Re: [PULL 04/20] crypto: Redundant type conversion for AES_KEY pointer
-Message-ID: <20200504125824.GL115875@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200504115758.283914-1-laurent@vivier.eu>
- <20200504115758.283914-5-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1jVavA-0006ER-HX; Mon, 04 May 2020 09:14:08 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40526)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1jVav8-00072G-Ut; Mon, 04 May 2020 09:14:08 -0400
+Received: by mail-wr1-x444.google.com with SMTP id e16so15756394wra.7;
+ Mon, 04 May 2020 06:14:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=AnRb0eZBrwoPn6RFXt5s6W3yLMQWDznSV0TSb1huZKE=;
+ b=ZmYsR2Gfn7jJCpaVjic1/rz/FRaBdnOAus7VpU4J3l7PjRdf4gODcLcQsa/wW6jKBs
+ gO9mXA7tiXzXta4LXEsWCt+2x7N4vTO3keiAawnXvJoIccHKl5Y+RtOEPziy1C8eeBGf
+ 3CahFT69wNrrPUdIxeQGzvA50TkFxkKc1RrGmLyEr0kcFROij1pF+CbRbe8VmA4XDHiJ
+ r7obtQgH+Q8D6K0a+0h3L6SeSQ2zcA0CJMTkobjQQdpmG23ttEXulv1FPY0qdbWyYMN8
+ Sx6YH94IxmhrRJbBq66vRnx01lJBMV/56B2yc75z2URyj3F2oIhkfyWhSSmFae8V+3zV
+ H5nQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=AnRb0eZBrwoPn6RFXt5s6W3yLMQWDznSV0TSb1huZKE=;
+ b=Dn2WQtCaimh/bJt/6PQ6kdceyprSbs99u1p8Y9ExO3g1OBhe6NZ+tlW+cwlkXYtCbP
+ Lf6Xd3eOWGGoOllYogLIH2GNXvIF1Ky81z5IcdA5wuwlmR/00bJbTjlxPMXAMu1KY/xk
+ xiXDlMt4spJz7CJsayLNwPqOI9LyHPffLXpclwRvXbmqtsWPsbhuoAICJudsifhmTOOA
+ 3dDLOCHL8V+pruw2queS8CaDzhRFxmKoRuGgieR6vegO55AFg3dN0ZwcsFVXtF8SNomE
+ R+5MkJijrh9Scxv+q1kYDtqjzp+I14YjTSZzxAjDyzpzdwYx3PimOpnX9F9RCyGRxUyk
+ brjQ==
+X-Gm-Message-State: AGi0PuaxvuaZXBR8ji7iH4kMmvGEs2DPSO5VojrxrFRoOgnhRQb3/B3/
+ wgWjVV7/trsJnOl+at705iU=
+X-Google-Smtp-Source: APiQypKKb+jGlpsgO9VhJO6spI5LN1wgpU/Wx3VvLKsdy/NTy3fETINepz3bQ3VaZco0ZdgSZ5m/UQ==
+X-Received: by 2002:adf:ed07:: with SMTP id a7mr19804681wro.2.1588598045116;
+ Mon, 04 May 2020 06:14:05 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id z22sm12774193wma.20.2020.05.04.06.14.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 06:14:04 -0700 (PDT)
+Date: Mon, 4 May 2020 14:14:02 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH] Makefile: Let the 'help' target list the helper targets
+Message-ID: <20200504131402.GE354891@stefanha-x1.localdomain>
+References: <20200423104345.5092-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200504115758.283914-5-laurent@vivier.eu>
-User-Agent: Mutt/1.13.4 (2020-02-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="PGNNI9BzQDUtgA2J"
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 01:21:32
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_EXCESS_BASE64=0.979, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200423104345.5092-1-philmd@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=stefanha@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,73 +76,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 12:58:38 -0000
+X-List-Received-Date: Mon, 04 May 2020 13:14:08 -0000
 
-Hi Chen,
 
-This patch triggered a build failure in QEMU about discarding the
-"const" qualifier.
+--PGNNI9BzQDUtgA2J
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-IOW, the type conversion is not redundant after all - it is required
-in order to explicitly discard "const".
-
-I believe we can probably fix this by changing
-qcrypto_cipher_aes_ecb_(en|de)crypt() methods so that they also have
-a "const" qualifier on the AES_KEY parameter.
-
-On Mon, May 04, 2020 at 01:57:42PM +0200, Laurent Vivier wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
+On Thu, Apr 23, 2020 at 12:43:45PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> List the name of the helper targets when calling 'make help',
+> along with the tool targets:
 >=20
-> Fix: eaec903c5b8
+>   $ make help
+>   [...]
 >=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Acked-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Message-Id: <20200325092137.24020-4-kuhn.chenqun@huawei.com>
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+>   Helper targets:
+>     fsdev/virtfs-proxy-helper      - Build virtfs-proxy-helper
+>     scsi/qemu-pr-helper            - Build qemu-pr-helper
+>     qemu-bridge-helper             - Build qemu-bridge-helper
+>     vhost-user-gpu                 - Build vhost-user-gpu
+>     virtiofsd                      - Build virtiofsd
+>=20
+>   Tools targets:
+>     qemu-ga                        - Build qemu-ga tool
+>     qemu-keymap                    - Build qemu-keymap tool
+>     elf2dmp                        - Build elf2dmp tool
+>     ivshmem-client                 - Build ivshmem-client tool
+>     ivshmem-server                 - Build ivshmem-server tool
+>     qemu-nbd                       - Build qemu-nbd tool
+>     qemu-storage-daemon            - Build qemu-storage-daemon tool
+>     qemu-img                       - Build qemu-img tool
+>     qemu-io                        - Build qemu-io tool
+>     qemu-edid                      - Build qemu-edid tool
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > ---
->  crypto/cipher-builtin.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->=20
-> diff --git a/crypto/cipher-builtin.c b/crypto/cipher-builtin.c
-> index bf8413e71a6e..99d6280a1669 100644
-> --- a/crypto/cipher-builtin.c
-> +++ b/crypto/cipher-builtin.c
-> @@ -133,8 +133,7 @@ static void qcrypto_cipher_aes_xts_encrypt(const void=
- *ctx,
->  {
->      const QCryptoCipherBuiltinAESContext *aesctx =3D ctx;
-> =20
-> -    qcrypto_cipher_aes_ecb_encrypt((AES_KEY *)&aesctx->enc,
-> -                                   src, dst, length);
-> +    qcrypto_cipher_aes_ecb_encrypt(&aesctx->enc, src, dst, length);
->  }
-> =20
-> =20
-> @@ -145,8 +144,7 @@ static void qcrypto_cipher_aes_xts_decrypt(const void=
- *ctx,
->  {
->      const QCryptoCipherBuiltinAESContext *aesctx =3D ctx;
-> =20
-> -    qcrypto_cipher_aes_ecb_decrypt((AES_KEY *)&aesctx->dec,
-> -                                   src, dst, length);
-> +    qcrypto_cipher_aes_ecb_decrypt(&aesctx->dec, src, dst, length);
->  }
-> =20
-> =20
-> --=20
-> 2.26.2
->=20
+>  configure | 5 +++--
+>  Makefile  | 9 +++++++--
+>  2 files changed, 10 insertions(+), 4 deletions(-)
 
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
- :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com=
- :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
- :|
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
+--PGNNI9BzQDUtgA2J
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl6wFRoACgkQnKSrs4Gr
+c8h+rwf9Gyu4FIQ+zCZRInWW4GHT/urJ8Qpnctgi71UuE61xksRjxELp1zUs4lJp
+XglTeXBZG8kgZqHeAc5/zzoko3uztcNZBYlFzIPCauCAvG6uVV/satFxrgc8vTl0
+CcUuRs0ZPGQkDe5bnoK3+JH1j6Fy6ErE2/w7ncsgjoxdK8e3m+KdedXWRq9dDQt2
+2jsUPC2nloJIix88o57LVFUlQeI77/15FqjM0imJNqN8T0NVZAg+Lt+lYmnhd4uh
+neRcZSrqdhfbRVCk+G2nVUd+reW9jdtaCkNR15TJFsK6h1RuY3nvZIZz47GY9WjM
+NV2nBm7E8BgPMu0RHHrRYrYfSg3DUg==
+=zXGx
+-----END PGP SIGNATURE-----
+
+--PGNNI9BzQDUtgA2J--
 
