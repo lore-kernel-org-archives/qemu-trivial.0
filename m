@@ -1,70 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVtgD-0007D2-FV
-	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2020 05:15:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44910)
+	id 1jVuw5-0000hk-E7
+	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2020 06:36:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jVtgC-0007Bw-9J
- for qemu-trivial@nongnu.org; Tue, 05 May 2020 05:15:56 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46238
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jVtg2-00022L-Qn
- for qemu-trivial@nongnu.org; Tue, 05 May 2020 05:15:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588670144;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=okxyS+7StYMGmF5fIDP4QbjnN153iBH2OplGw8ScCMY=;
- b=b2YhYFM8eKzcAWLnStszRMhw5473eiyc77JPC8gMRsz9Ckm2okdwBsk9ZoUFj/kwC+Ckzf
- vg9zx4tAQYxUyokrDyLjwDnAsXtTua2DvVlt3Tk/6d/oEfOCsEJP44202xmyqO7bMjFLQ7
- G5wXJqhWnRCpJXbjfHuFx/hKjnPaNxc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-123-FauiMTmNOG2kbnhTL2eHZg-1; Tue, 05 May 2020 05:15:40 -0400
-X-MC-Unique: FauiMTmNOG2kbnhTL2eHZg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 144C8800D24;
- Tue,  5 May 2020 09:15:39 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.63])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C70955D9D3;
- Tue,  5 May 2020 09:15:36 +0000 (UTC)
-Date: Tue, 5 May 2020 10:15:33 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu,
- zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>
-Subject: Re: [PATCH v2] crypto: Redundant type conversion for AES_KEY pointer
-Message-ID: <20200505091533.GD764268@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200505085940.28592-1-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVuw3-0000gn-SL; Tue, 05 May 2020 06:36:23 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40795)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVuw2-0000mQ-QJ; Tue, 05 May 2020 06:36:23 -0400
+Received: by mail-wr1-x441.google.com with SMTP id e16so2115374wra.7;
+ Tue, 05 May 2020 03:36:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=sklmjy3eA+wxj59B/HeXK/747r+mSrWS964aHUgV2lo=;
+ b=f17EbuiSkA+BazVWyFvtm53SDrQe2ieCrzLCjMj+oSl78CnMmkIM8ZJh9HxAlinj4q
+ pKdnyiK4uAEO9OsONCkfbz5SiHviufO42U0b79KbQx+fwQgHvwxBnD8idQc/pycC9EwY
+ dBPewcB9OiUTU+A/kvqTn7mQPATfi7Rk9VO/VXcQa7zkpiQYI7jJ+lM9vx6C/J1+FY5W
+ 61/DXaqvPIq/q+lJ5FIkvEqAI+EuYwcAHN3pg58QmQgnO9NMeeUgRqP1x0p4wilxOKD5
+ wUHOSoGluXYemeJ56Cw5elEwAw039VGvf3Z5Azd9WXYEIGvljSwYSYZOGV23RmAA3Hmt
+ sLxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sklmjy3eA+wxj59B/HeXK/747r+mSrWS964aHUgV2lo=;
+ b=ff8q/eOPTPneLgq9ENBMhoRqUFpJq1cRsWyTyGebxedNAz/ehJ15oRWb+xMHavSVod
+ ePXMK18/7XNfsfdc/JrVjErj/UZRNMcGfkgvToKuijqDxrdS5aI3TpjuvtlzmMyJjqxg
+ HEw+C3JNgNwbJGOKGT6IBYGmK0ELC0xZ+DN2fRadUG8uPI+rhm6rrCm7/DzwTss1KozH
+ 6nkI6VN6ryuoNlM+AmHRz5H6MxaqBujCARnmKgGvNJK2HURDhNsq/Ub/1CxImUWId1I3
+ cCtOzLYzyN8DjOXtuk4hWYZl0le7dy3gSGcRGgR8PKnem+lly4CzufT1fMvfMzHb+4Pa
+ ZXQQ==
+X-Gm-Message-State: AGi0PuYrbkIa7BKfEFQ53h3dhr8+OLHd8cCz+rsHwjQyLLH55CV1c7tG
+ wokmvf4bAGBkcuEqPrOcrzA=
+X-Google-Smtp-Source: APiQypL8WdQMX19fALBss6Xbp/NGFu5wzc47ZYNIdhMmdQe9Kkw0DmNqWgvwcluTcT1sqjr64GCJ7w==
+X-Received: by 2002:adf:82c1:: with SMTP id 59mr2809240wrc.377.1588674980969; 
+ Tue, 05 May 2020 03:36:20 -0700 (PDT)
+Received: from [192.168.1.38] (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id p7sm2630504wrf.31.2020.05.05.03.36.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 May 2020 03:36:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH V2] tests/Makefile: Fix description of "make check"
+To: Huacai Chen <zltjiangshi@gmail.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Fam Zheng <fam@euphon.net>,
+ Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, Huacai Chen <chenhuacai@gmail.com>,
+ qemu-devel@nongnu.org, Huacai Chen <chenhc@lemote.com>
+References: <1588674291-6486-1-git-send-email-chenhc@lemote.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6c0fbc8f-e838-16e8-083c-6390c4fd2938@amsat.org>
+Date: Tue, 5 May 2020 12:36:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200505085940.28592-1-kuhn.chenqun@huawei.com>
-User-Agent: Mutt/1.13.4 (2020-02-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 00:37:38
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+In-Reply-To: <1588674291-6486-1-git-send-email-chenhc@lemote.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_EXCESS_BASE64=0.979, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,43 +86,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 May 2020 09:15:56 -0000
+X-List-Received-Date: Tue, 05 May 2020 10:36:24 -0000
 
-On Tue, May 05, 2020 at 04:59:40PM +0800, Chen Qun wrote:
-> We can delete the redundant type conversion if
-> we set the the AES_KEY parameter with 'const' in
-> qcrypto_cipher_aes_ecb_(en|de)crypt() function.
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+On 5/5/20 12:24 PM, Huacai Chen wrote:
+> The description of "make check" is out-of-date, so fix it by adding
+> block and softfloat.
+> 
+> Reviewed-by: Claudio Fontana <cfontana@suse.de>
+> Signed-off-by: Huacai Chen <chenhc@lemote.com>
 > ---
-> v1->v2:
-> Cc: "Daniel P. Berrang=C3=A9" <berrange@redhat.com>
->=20
-> Modify the AES_KEY parameter with 'const' in
-> qcrypto_cipher_aes_ecb_(en|de)crypt() methods.
-> (Base on Daniel P. Berrang=C3=A9's suggestion)
->=20
-> https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg00515.html
->=20
-> ---
->  crypto/cipher-builtin.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
+>   tests/Makefile.include | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 03a74b6..5d32239 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -4,7 +4,7 @@
+>   check-help:
+>   	@echo "Regression testing targets:"
+>   	@echo
+> -	@echo " $(MAKE) check                Run unit, qapi-schema, qtest and decodetree"
+> +	@echo " $(MAKE) check                Run block, qapi-schema, unit, softfloat, qtest and decodetree tests"
+>   	@echo
+>   	@echo " $(MAKE) check-qtest-TARGET   Run qtest tests for given target"
+>   	@echo " $(MAKE) check-qtest          Run qtest tests"
+> 
 
-Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-
-and queued - will send a PR with this and some other crypto fixes later
-today most likely.
-
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
- :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com=
- :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
- :|
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
