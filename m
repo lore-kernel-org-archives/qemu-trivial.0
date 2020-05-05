@@ -1,80 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVgzn-00042R-2v
-	for mharc-qemu-trivial@gnu.org; Mon, 04 May 2020 15:43:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49162)
+	id 1jVrtK-0002cR-5F
+	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2020 03:21:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVgzm-00042D-2j; Mon, 04 May 2020 15:43:18 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34703)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVgzl-0006wt-Ed; Mon, 04 May 2020 15:43:17 -0400
-Received: by mail-wm1-x342.google.com with SMTP id v4so778096wme.1;
- Mon, 04 May 2020 12:43:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KtlccjpCc3cTSA86pPoexRbefD9KvD3tNDzKPg80V/4=;
- b=CAPZIwhF9qSuFvyBuABfwRDczNcLtY/nbHdWF0/dgAMMRlRxWd78K34FbnfaOLg0ke
- d1RFlq8M8pbsmAEbdvjp/eelXUHBY4T825uYTT4Hk1jKRfVBOT0yEGI6zrWXeFMWd8vz
- FG1JbmxT6c6sF2/N3a513LHwHWqTikqNygpRvxY4eIHWdn8yOxBkIz6pC3L6/HSjY96u
- JHIqMRoVF5qzrwKFHgKCOWw5pDrteTRmsrJ9cbjgIVC8jdCQEPdrgL/Z1czswz/JcbQ+
- 57rTNLcdWl/Q4p1Zn88+gBcXf58eU0At0NQ5lQrlY5izEqh64LQaQXg2940IcAyoI9n1
- /OoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KtlccjpCc3cTSA86pPoexRbefD9KvD3tNDzKPg80V/4=;
- b=p9puTdwrziMfCdizEClWftwZxQnwuQpx5nHkp+MPNEw/TBjL2z915/AAwP6SIdODWd
- GBamrlQJi3Eunv0rbjCOQ0jgvhRZeiFBupe2JKSsU5Zlht1x3/qwuu6eRYeuH3SVUD9U
- 1lyzM+pdRAtEfU3qeJePMHzUyQIgAZoE0tY0tKdYJWH8elwZ60KmJQodIcFkTekqVg4p
- pfjlLUEslEJRXOiYaNa4b/VCabdTu2L89FIngFuP9Ty48Ka0/PAnyO+DFU5zjs8Xc7+0
- 5gjXo1IPIjImiHFjyq/8F+4awpgFT/8cgDR/hwxbg6uMYFCRyKGnHftHTDdb6bwF+C7p
- TdGg==
-X-Gm-Message-State: AGi0PuYQP9PFhkHAGR/N7ccfm1n8frWFuxWe1eI814iDUMhqnf0BaQsc
- L4IveH92gWo5sKojJdlMwLw=
-X-Google-Smtp-Source: APiQypLNWMEjCWzpTTqRlNQ5fM43DasBthqPDNGNs3dvQ9EgTcvJOMNXBfjnILMttnezy+7yq4bt+g==
-X-Received: by 2002:a1c:f606:: with SMTP id w6mr15993457wmc.59.1588621395641; 
- Mon, 04 May 2020 12:43:15 -0700 (PDT)
-Received: from [192.168.1.39] (26.red-88-21-207.staticip.rima-tde.net.
- [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id y11sm19530695wrh.59.2020.05.04.12.43.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2020 12:43:14 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 2/3] io/task: Move 'qom/object.h' header to source
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200504084615.27642-1-f4bug@amsat.org>
- <20200504084615.27642-3-f4bug@amsat.org>
- <799fe603-906c-c00b-07ce-0e7619c444f5@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c28f6af0-4a41-3f01-6bac-db87f40fd5fc@amsat.org>
-Date: Mon, 4 May 2020 21:43:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jVrtI-0002cB-OT; Tue, 05 May 2020 03:21:20 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2085 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1jVrtH-0007e8-Aj; Tue, 05 May 2020 03:21:20 -0400
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id EBD162FE295B54D41022;
+ Tue,  5 May 2020 15:21:02 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.204]) by
+ DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0487.000;
+ Tue, 5 May 2020 15:20:54 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Michael Tokarev
+ <mjt@tls.msk.ru>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Laurent Vivier <laurent@vivier.eu>, Euler Robot <euler.robot@huawei.com>
+Subject: RE: [PULL 04/20] crypto: Redundant type conversion for AES_KEY pointer
+Thread-Topic: [PULL 04/20] crypto: Redundant type conversion for AES_KEY
+ pointer
+Thread-Index: AQHWIgtJNfVldeG70EujwLgGnpgYH6iXXTEAgAGs29A=
+Date: Tue, 5 May 2020 07:20:52 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B72DC6D@dggemm511-mbx.china.huawei.com>
+References: <20200504115758.283914-1-laurent@vivier.eu>
+ <20200504115758.283914-5-laurent@vivier.eu>
+ <20200504125824.GL115875@redhat.com>
+In-Reply-To: <20200504125824.GL115875@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <799fe603-906c-c00b-07ce-0e7619c444f5@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 03:21:03
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,60 +61,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 May 2020 19:43:18 -0000
+X-List-Received-Date: Tue, 05 May 2020 07:21:21 -0000
 
-On 5/4/20 7:42 PM, Richard Henderson wrote:
-> On 5/4/20 1:46 AM, Philippe Mathieu-Daudé wrote:
->> We need "qom/object.h" to call object_ref()/object_unref().
-> 
-> This description doesn't seem to match
-> 
->> +++ b/include/io/task.h
->> @@ -21,8 +21,6 @@
->>   #ifndef QIO_TASK_H
->>   #define QIO_TASK_H
->>   
->> -#include "qom/object.h"
->> -
->>   typedef struct QIOTask QIOTask;
->>   
->>   typedef void (*QIOTaskFunc)(QIOTask *task,
->> diff --git a/io/task.c b/io/task.c
->> index 1ae7b86488..53c0bed686 100644
->> --- a/io/task.c
->> +++ b/io/task.c
->> @@ -22,6 +22,7 @@
->>   #include "io/task.h"
->>   #include "qapi/error.h"
->>   #include "qemu/thread.h"
->> +#include "qom/object.h"
-> 
-> the change.  Since io/task.c includes io/tash.h, what are you actually doing?
-
-Sorry to not document clearly on the cover.
-
-The original goal was to stop using $SRC_PATH as include directory, but 
-as it is huge I believe it will never get fully accepted, so I simply 
-kept the few maybe worthwhile patches...
-
-The final patch is:
-
--- >8 --
---- a/configure
-+++ b/configure
-@@ -601,7 +601,7 @@ QEMU_CFLAGS="-fno-strict-aliasing -fno-common 
--fwrapv -std=gnu99 $QEMU_CFLAGS"
-  QEMU_CFLAGS="-Wall -Wundef -Wwrite-strings -Wmissing-prototypes 
-$QEMU_CFLAGS"
-  QEMU_CFLAGS="-Wstrict-prototypes -Wredundant-decls $QEMU_CFLAGS"
-  QEMU_CFLAGS="-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE 
-$QEMU_CFLAGS"
--QEMU_INCLUDES="-iquote . -iquote \$(SRC_PATH) -iquote 
-\$(SRC_PATH)/accel/tcg -iquote \$(SRC_PATH)/include"
-+QEMU_INCLUDES="-iquote . -iquote \$(SRC_PATH)/accel/tcg -iquote 
-\$(SRC_PATH)/include"
-  QEMU_INCLUDES="$QEMU_INCLUDES -iquote \$(SRC_PATH)/disas/libvixl"
-  if test "$debug_info" = "yes"; then
-      CFLAGS="-g $CFLAGS"
----
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogRGFuaWVsIFAuIEJlcnJhbmfDqSBb
+bWFpbHRvOmJlcnJhbmdlQHJlZGhhdC5jb21dDQo+U2VudDogTW9uZGF5LCBNYXkgNCwgMjAyMCA4
+OjU4IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5D
+YzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1
+PjsgcWVtdS0NCj50cml2aWFsQG5vbmdudS5vcmc7IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZp
+dmllci5ldT47IEV1bGVyIFJvYm90DQo+PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+U3ViamVj
+dDogUmU6IFtQVUxMIDA0LzIwXSBjcnlwdG86IFJlZHVuZGFudCB0eXBlIGNvbnZlcnNpb24gZm9y
+IEFFU19LRVkNCj5wb2ludGVyDQo+DQo+SGkgQ2hlbiwNCj4NCj5UaGlzIHBhdGNoIHRyaWdnZXJl
+ZCBhIGJ1aWxkIGZhaWx1cmUgaW4gUUVNVSBhYm91dCBkaXNjYXJkaW5nIHRoZSAiY29uc3QiDQo+
+cXVhbGlmaWVyLg0KPg0KPklPVywgdGhlIHR5cGUgY29udmVyc2lvbiBpcyBub3QgcmVkdW5kYW50
+IGFmdGVyIGFsbCAtIGl0IGlzIHJlcXVpcmVkIGluIG9yZGVyIHRvDQo+ZXhwbGljaXRseSBkaXNj
+YXJkICJjb25zdCIuDQo+DQpZZXMsIHlvdSBhcmUgcmlnaHQhICBUaGFuayB5b3UgZm9yIHBvaW50
+aW5nIGl0IG91dCAhDQpJdCBpcyBteSBjYXJlbGVzc25lc3MsIHRoaXMgcGF0Y2ggaXMgbm90IGNv
+bXBsZXRlLiANCg0KPkkgYmVsaWV2ZSB3ZSBjYW4gcHJvYmFibHkgZml4IHRoaXMgYnkgY2hhbmdp
+bmcNCj5xY3J5cHRvX2NpcGhlcl9hZXNfZWNiXyhlbnxkZSljcnlwdCgpIG1ldGhvZHMgc28gdGhh
+dCB0aGV5IGFsc28gaGF2ZSBhICJjb25zdCINCj5xdWFsaWZpZXIgb24gdGhlIEFFU19LRVkgcGFy
+YW1ldGVyLg0KPg0KSXQncyBhIGdvb2QgcG9pbnQuICBJIHdpbGwgdXBkYXRlIHRoZSBwYXRjaCBs
+YXRlci4NCg0KVGhhbmtzLg0K
 
