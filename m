@@ -1,55 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jVrtK-0002cR-5F
-	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2020 03:21:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47650)
+	id 1jVsqL-0008KA-6b
+	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2020 04:22:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jVrtI-0002cB-OT; Tue, 05 May 2020 03:21:20 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2085 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1jVsNW-0007OH-Lu; Tue, 05 May 2020 03:52:34 -0400
+Received: from mx2.suse.de ([195.135.220.15]:46516)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1jVrtH-0007e8-Aj; Tue, 05 May 2020 03:21:20 -0400
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id EBD162FE295B54D41022;
- Tue,  5 May 2020 15:21:02 +0800 (CST)
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.204]) by
- DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0487.000;
- Tue, 5 May 2020 15:20:54 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Michael Tokarev
- <mjt@tls.msk.ru>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, Euler Robot <euler.robot@huawei.com>
-Subject: RE: [PULL 04/20] crypto: Redundant type conversion for AES_KEY pointer
-Thread-Topic: [PULL 04/20] crypto: Redundant type conversion for AES_KEY
- pointer
-Thread-Index: AQHWIgtJNfVldeG70EujwLgGnpgYH6iXXTEAgAGs29A=
-Date: Tue, 5 May 2020 07:20:52 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B72DC6D@dggemm511-mbx.china.huawei.com>
-References: <20200504115758.283914-1-laurent@vivier.eu>
- <20200504115758.283914-5-laurent@vivier.eu>
- <20200504125824.GL115875@redhat.com>
-In-Reply-To: <20200504125824.GL115875@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1jVsNV-0001sG-JF; Tue, 05 May 2020 03:52:34 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id E5B42AF2A;
+ Tue,  5 May 2020 07:52:32 +0000 (UTC)
+Subject: Re: [PATCH] tests/Makefile: Fix description of "make check"
+To: Huacai Chen <zltjiangshi@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Fam Zheng <fam@euphon.net>, Markus Armbruster <armbru@redhat.com>
+Cc: Huacai Chen <chenhuacai@gmail.com>, Huacai Chen <chenhc@lemote.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <1588663771-5534-1-git-send-email-chenhc@lemote.com>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <6e63336a-4457-ffde-b5ce-b9985d6a9c4b@suse.de>
+Date: Tue, 5 May 2020 09:52:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 03:21:03
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+In-Reply-To: <1588663771-5534-1-git-send-email-chenhc@lemote.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 00:07:51
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x (no timestamps) [generic]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 05 May 2020 04:22:19 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,24 +54,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 May 2020 07:21:21 -0000
+X-List-Received-Date: Tue, 05 May 2020 07:52:35 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogRGFuaWVsIFAuIEJlcnJhbmfDqSBb
-bWFpbHRvOmJlcnJhbmdlQHJlZGhhdC5jb21dDQo+U2VudDogTW9uZGF5LCBNYXkgNCwgMjAyMCA4
-OjU4IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5D
-YzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1
-PjsgcWVtdS0NCj50cml2aWFsQG5vbmdudS5vcmc7IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZp
-dmllci5ldT47IEV1bGVyIFJvYm90DQo+PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+U3ViamVj
-dDogUmU6IFtQVUxMIDA0LzIwXSBjcnlwdG86IFJlZHVuZGFudCB0eXBlIGNvbnZlcnNpb24gZm9y
-IEFFU19LRVkNCj5wb2ludGVyDQo+DQo+SGkgQ2hlbiwNCj4NCj5UaGlzIHBhdGNoIHRyaWdnZXJl
-ZCBhIGJ1aWxkIGZhaWx1cmUgaW4gUUVNVSBhYm91dCBkaXNjYXJkaW5nIHRoZSAiY29uc3QiDQo+
-cXVhbGlmaWVyLg0KPg0KPklPVywgdGhlIHR5cGUgY29udmVyc2lvbiBpcyBub3QgcmVkdW5kYW50
-IGFmdGVyIGFsbCAtIGl0IGlzIHJlcXVpcmVkIGluIG9yZGVyIHRvDQo+ZXhwbGljaXRseSBkaXNj
-YXJkICJjb25zdCIuDQo+DQpZZXMsIHlvdSBhcmUgcmlnaHQhICBUaGFuayB5b3UgZm9yIHBvaW50
-aW5nIGl0IG91dCAhDQpJdCBpcyBteSBjYXJlbGVzc25lc3MsIHRoaXMgcGF0Y2ggaXMgbm90IGNv
-bXBsZXRlLiANCg0KPkkgYmVsaWV2ZSB3ZSBjYW4gcHJvYmFibHkgZml4IHRoaXMgYnkgY2hhbmdp
-bmcNCj5xY3J5cHRvX2NpcGhlcl9hZXNfZWNiXyhlbnxkZSljcnlwdCgpIG1ldGhvZHMgc28gdGhh
-dCB0aGV5IGFsc28gaGF2ZSBhICJjb25zdCINCj5xdWFsaWZpZXIgb24gdGhlIEFFU19LRVkgcGFy
-YW1ldGVyLg0KPg0KSXQncyBhIGdvb2QgcG9pbnQuICBJIHdpbGwgdXBkYXRlIHRoZSBwYXRjaCBs
-YXRlci4NCg0KVGhhbmtzLg0K
+On 5/5/20 9:29 AM, Huacai Chen wrote:
+> The description of "make check" is out-of-date, so fix it by adding
+> block and softfloat.
+> 
+> Signed-off-by: Huacai Chen <chenhc@lemote.com>
+> ---
+>  tests/Makefile.include | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 03a74b6..5d32239 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -4,7 +4,7 @@
+>  check-help:
+>  	@echo "Regression testing targets:"
+>  	@echo
+> -	@echo " $(MAKE) check                Run unit, qapi-schema, qtest and decodetree"
+> +	@echo " $(MAKE) check                Run block, qapi-schema, unit, softfloat, qtest and decodetree"
+>  	@echo
+>  	@echo " $(MAKE) check-qtest-TARGET   Run qtest tests for given target"
+>  	@echo " $(MAKE) check-qtest          Run qtest tests"
+> 
+
+added Cc: qemu-trivial@nongnu.org
+
+Reviewed-by: Claudio Fontana <cfontana@suse.de>
 
