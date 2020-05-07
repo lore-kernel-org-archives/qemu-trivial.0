@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jWngT-0002fJ-Pm
-	for mharc-qemu-trivial@gnu.org; Thu, 07 May 2020 17:03:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39918)
+	id 1jWoDd-0008BG-Ez
+	for mharc-qemu-trivial@gnu.org; Thu, 07 May 2020 17:38:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1jWmms-0000K3-Qz; Thu, 07 May 2020 16:06:30 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:42200)
+ id 1jWoDb-0008AI-LT; Thu, 07 May 2020 17:38:11 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:42387)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1jWmmr-0006br-TM; Thu, 07 May 2020 16:06:30 -0400
-Received: by mail-il1-x144.google.com with SMTP id t12so2890756ile.9;
- Thu, 07 May 2020 13:06:29 -0700 (PDT)
+ id 1jWoDa-00048q-T1; Thu, 07 May 2020 17:38:11 -0400
+Received: by mail-io1-xd41.google.com with SMTP id e9so4424640iok.9;
+ Thu, 07 May 2020 14:38:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to
+ h=mime-version:from:date:message-id:subject:to:cc
  :content-transfer-encoding;
- bh=UsVrLH10VrnwJQa3T0/DmLttPhHiMDiEHKItwQOxx8k=;
- b=Y98V1p9ni2qBeYG5aE9BfaNxuHD201ux5KkijNRt8ortzHfq/+ZSj6w3FjrHD+GqmI
- LgmW8WpIrn0gdy9ATMoQQxKLk3LhZBiQ9bHi6SW3/XMLfiffYd213mkKsrAgboqxtg0M
- vP2w6m3Nl5Iur8t+aZEkSfw0hMeEI5w5lGFilQtUfn1rpu60NPKe/xWwUPTcm0Ym1XTi
- VsGvx0QsgxveL14fbPFGb5FOZnz++79Mxwzp/CK46BF956Xg91aaVpnwoFQYQ4dLHAg0
- us1B81YVBoCWrmMX7RBTaZ87DkI6lrJId1KkCQNcV9CJkQ6BX6V7r23uhlAUfPqxlFO/
- nJLA==
+ bh=mzFs3fGCzwOhGj1FmmUOmxFD2e1lVknc6E09yCHo1j0=;
+ b=Q0HcLBosWDAMNnbUwkO1AtpqAQneSKWhyC4zBkTC/Y7mseCpRaOQZ2syRukEMmN5gf
+ nnmovHSgqoapisorZD8+piXf1g/L7MmvUYoVpzVy4Ys1qFXcg2Em93QK/tX5ytGQW+jw
+ FQC+68jzTlzxH6BdDRpCbDFrNTp3yn05VIlNp4/FDz+GM6MSoDGUcEnfbFK7a4k3YfMj
+ u7IKToXtBRtNj25yY6m8/G06+jhsblJbbSmnRzvy4ETQdaCZNAAHsUZQpw2KC/mfFRro
+ bbwbKP3rygGRiuWTVskwwo3M4DPxv4usQLn7t3lVHXkTlVevzq/L/+3hacjJCoRkFBvu
+ bHsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
  :content-transfer-encoding;
- bh=UsVrLH10VrnwJQa3T0/DmLttPhHiMDiEHKItwQOxx8k=;
- b=uh+TPSWpSPqxdBLaaBJ6YThgM/2K5oJtgMgs1cCnGazuo+Ul83eiA+NAR3Vg1Vv6WO
- ShIb0DnVEFHy+dcoYh0WFCa94Pmzc6WXNb2vEzzo5v6UPROiT0mY/dLSVT7/Xgj1qCMU
- ul7gkB5pwgb684yy8/QRYzoNhw2K8xcXIL5ZIfZJG7+uTtXcdFRZnOFbihwU4zFdsAvZ
- qQwmHtFEwgXyZ+CWai0A7mEDhdLiql/4Nk9F6+9bD8+cskh5LmmAw5NZAvCc0yxxZTxF
- Iazrb8+bY3g5AA001xPmUUJe/omAJlnNpU4ou4q59g3SNsu3i0vwE3hBQq9n8pAwv05c
- 3jjw==
-X-Gm-Message-State: AGi0PuYTBJeWaT1IsAiINeZBKrPPYrZGBuwfF8fluNnie24ZRsV+l9/s
- /pLpB0Jab9l91crlUp+6GTlsq+kGGfkIdn7w/andQPApBfHDaA==
-X-Google-Smtp-Source: APiQypJsbW+/rYVV7BOLtIm2mSe2FCSduu+zYHB37JhBZyY9htOqpUh0o1yb7XMJ1fsdv+fgcFQax2tOEd0W1j41E60=
-X-Received: by 2002:a92:cb4c:: with SMTP id f12mr17225133ilq.263.1588881988086; 
- Thu, 07 May 2020 13:06:28 -0700 (PDT)
+ bh=mzFs3fGCzwOhGj1FmmUOmxFD2e1lVknc6E09yCHo1j0=;
+ b=jNDWKIGpsQV+Uv090DPYJBlv/EB1CJsGPJY9x7lOHMa8OgKvwt2ciJoHO/SM5KP7QE
+ nEMRSpTjcy+OaCe7XJFdw2Z5msu+eZj5myyx+urSOq/5y2aeEaR6iomMmbjIcVLFHY9o
+ Z5BAwipzRsecEJss7x6vALeHmaBgW+J+5MlBWFU2wJt0Zs0JiIY+q7lZVTFfqRuJramB
+ 1DX9q7Nq3p0QS0tGSQoaKyDskxJRmyEj4S99mGCdwDWeyshESOKQ0kJaS902PZFQXq/o
+ TI8B+Pch+hpMn43lDTQWlX+qnDRNMNA4u8EaQ5zVeqat2fQ52KBSjcx/fn9kiYHDbSlg
+ DJJA==
+X-Gm-Message-State: AGi0PuYnyWQgZKV93rmRfI9Tr4H3/CW3Sm5rqAK6XNqWsCmnuIWcirKW
+ pbW1cOuQ+yoaawSTmQxIoJUJm7uIhN2vPfs2y78=
+X-Google-Smtp-Source: APiQypJtqqW7KTy7Gzcxep9DebsKsEQjR4AR+FZPjWe80S+t0wMAxQHB+/SI1XoYNQVIr4neBsp+tmCfA2TzDTGRPgs=
+X-Received: by 2002:a6b:b582:: with SMTP id
+ e124mr16272990iof.161.1588887489505; 
+ Thu, 07 May 2020 14:38:09 -0700 (PDT)
 MIME-Version: 1.0
 From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
-Date: Thu, 7 May 2020 16:06:17 -0400
-Message-ID: <CAFubqFt+KVJFYCEimgdTYRiiBm9y9ZRvSshxRv0kizRcUZTkLQ@mail.gmail.com>
-Subject: [PATCH] Fix erroneous double negation in conditional
-To: qemu-devel@nongnu.org, mst@redhat.com, qemu-trivial@nongnu.org
+Date: Thu, 7 May 2020 17:37:58 -0400
+Message-ID: <CAFubqFtqNZw=Y-ar3N=3zTQi6LkKg_G-7W7OOHHbE7Y1fV7HAQ@mail.gmail.com>
+Subject: [PATCH v2] Fix parameter type in vhost migration log path
+To: eblake@redhat.com, mst@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=raphael.s.norwitz@gmail.com; helo=mail-il1-x144.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=raphael.s.norwitz@gmail.com; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -57,7 +59,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 07 May 2020 17:03:56 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,28 +70,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 May 2020 20:06:31 -0000
+X-List-Received-Date: Thu, 07 May 2020 21:38:12 -0000
 
-In vhost_migration_log() there is the following check:
-    if(!!enable =3D=3D dev->log_enabled) {
-        return 0;
-    }
-
-The double negative =E2=80=9C!!=E2=80=9D is unnecessary and bad coding styl=
-e. This
-change removes it.
+The =E2=80=98enable=E2=80=99 parameter to the vhost_migraion_log() function=
+ is given as
+an int, but "true"/"false" values are passed in wherever it is invoked.
+Inside the function itself it is only ever compared with bool values.
+Therefore the parameter value itself should be changed to bool.
 
 Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
 ---
- hw/virtio/vhost.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/virtio/vhost.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index aff98a0..83be0c8 100644
+index aff98a0..aa06a36 100644
 --- a/hw/virtio/vhost.c
 +++ b/hw/virtio/vhost.c
-@@ -814,7 +814,7 @@ static int vhost_migration_log(MemoryListener
-*listener, int enable)
+@@ -809,12 +809,12 @@ err_features:
+     return r;
+ }
+
+-static int vhost_migration_log(MemoryListener *listener, int enable)
++static int vhost_migration_log(MemoryListener *listener, bool enable)
+ {
      struct vhost_dev *dev =3D container_of(listener, struct vhost_dev,
                                           memory_listener);
      int r;
