@@ -1,55 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jWiuO-0006kf-Ls
-	for mharc-qemu-trivial@gnu.org; Thu, 07 May 2020 11:58:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35642)
+	id 1jWn8K-0001FC-39
+	for mharc-qemu-trivial@gnu.org; Thu, 07 May 2020 16:28:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jWiuM-0006h1-Rn
- for qemu-trivial@nongnu.org; Thu, 07 May 2020 11:57:58 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:35333
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jWn8I-0001BP-2l
+ for qemu-trivial@nongnu.org; Thu, 07 May 2020 16:28:38 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43080
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jWiuL-0007AR-BV
- for qemu-trivial@nongnu.org; Thu, 07 May 2020 11:57:58 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jWn8F-0002Jx-Iy
+ for qemu-trivial@nongnu.org; Thu, 07 May 2020 16:28:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588867076;
+ s=mimecast20190719; t=1588883313;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3pa/qGE+qXqxrxEd+Fi97eHx+zO/WPGWBNSQBS3Fysk=;
- b=dFAt7N/LSdbfn6x+AfskBzIP1VrruXUXnfQ0b5yNZ2P24452ZvCn4zAX6COlGnjTtWaNYS
- 6OcpTvjwG9dHC/AEBxAXrqibq0p5VTUsEGXyfClz9lhwxVASIQEXSO1yC9dVr5GjJEHoZy
- 7pCS7D4Mauek952X1Ah/Q8Tf30j1Rc4=
+ bh=mSxWDZsjj3SaGgtFx1GscCkXpWzyoWovCugop63z/1U=;
+ b=ZI0QYpBJXdIhNVg+nKo2qJQ9U5Q0BiSQKAl3qCToxIyN19xrVwoemBtInu4TAQ07XHDxuf
+ qKOB3z488USx3r1Wg/Gjl2gtlRcYCOABNQHkDoYhystWEYZw/8HLsF8804q4GufxSWQPse
+ eZHW2wUzoR0OxBNN9qllGDzVTNdTPfk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-57-dkB70dfGPb6e5WOJQ8piYQ-1; Thu, 07 May 2020 11:57:54 -0400
-X-MC-Unique: dkB70dfGPb6e5WOJQ8piYQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-187-hN_DlCjLN7CG9P-XeVUyBg-1; Thu, 07 May 2020 16:28:29 -0400
+X-MC-Unique: hN_DlCjLN7CG9P-XeVUyBg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B1B63835B40;
- Thu,  7 May 2020 15:57:53 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B13118FE860;
+ Thu,  7 May 2020 20:28:28 +0000 (UTC)
 Received: from [10.3.114.73] (ovpn-114-73.phx2.redhat.com [10.3.114.73])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3FA2D5D9C5;
- Thu,  7 May 2020 15:57:53 +0000 (UTC)
-Subject: Re: [PATCH 2/2] block/block-copy: Simplify block_copy_do_copy()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
-References: <20200507121129.29760-1-philmd@redhat.com>
- <20200507121129.29760-3-philmd@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FCFD19C4F;
+ Thu,  7 May 2020 20:28:25 +0000 (UTC)
+Subject: Re: [PATCH] Fix erroneous double negation in conditional
+To: Raphael Norwitz <raphael.s.norwitz@gmail.com>, qemu-devel@nongnu.org,
+ mst@redhat.com, qemu-trivial@nongnu.org
+References: <CAFubqFt+KVJFYCEimgdTYRiiBm9y9ZRvSshxRv0kizRcUZTkLQ@mail.gmail.com>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <9825c54d-a1aa-bf14-b5f2-e44070a3ad03@redhat.com>
-Date: Thu, 7 May 2020 10:57:52 -0500
+Message-ID: <62e04219-9254-3210-e948-e6049f535da3@redhat.com>
+Date: Thu, 7 May 2020 15:28:24 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200507121129.29760-3-philmd@redhat.com>
+In-Reply-To: <CAFubqFt+KVJFYCEimgdTYRiiBm9y9ZRvSshxRv0kizRcUZTkLQ@mail.gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
@@ -77,19 +74,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 May 2020 15:57:59 -0000
+X-List-Received-Date: Thu, 07 May 2020 20:28:38 -0000
 
-On 5/7/20 7:11 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> block_copy_do_copy() is static, only used in block_copy_task_entry
-> with the error_is_read argument set. No need to check for it,
-> simplify.
+On 5/7/20 3:06 PM, Raphael Norwitz wrote:
+> In vhost_migration_log() there is the following check:
+>      if(!!enable =3D=3D dev->log_enabled) {
+>          return 0;
+>      }
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   block/block-copy.c | 12 +++---------
->   1 file changed, 3 insertions(+), 9 deletions(-)
+> The double negative =E2=80=9C!!=E2=80=9D is unnecessary and bad coding st=
+yle. This
+> change removes it.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+!!int or !!ptr is not bad coding style - it is the shortest way to=20
+compare a non-bool against 0, and canonicalize the result back into bool=20
+(that is, convert all non-zero values into '1').  But !!bool is a waste=20
+of typing, since bool is already in the proper form.  Your patch as-is=20
+is incorrect; since the function declares 'int enable', this is using=20
+the !!int form which is not bad coding style.
+
+On the other hand, looking at this function closer, we see that=20
+vhost_migration_log() is static, so all uses lie within this file.  And=20
+the callers are:
+
+static void vhost_log_global_start(MemoryListener *listener)
+     r =3D vhost_migration_log(listener, true);
+static void vhost_log_global_stop(MemoryListener *listener)
+     r =3D vhost_migration_log(listener, false);
+
+and looking at struct vhost_dev, its log_enabled member is bool.
+
+So the _real_ problem with this file is that it uses 'int enable' rather=20
+than 'bool enable'.  And once you fix the parameter type, then you are=20
+indeed correct that you would have a !!bool scenario worth cleaning up.
+
+Looking forward to v2 along those lines.
 
 --=20
 Eric Blake, Principal Software Engineer
