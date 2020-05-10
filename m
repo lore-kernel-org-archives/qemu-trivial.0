@@ -1,76 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jXpUB-0005uJ-VR
-	for mharc-qemu-trivial@gnu.org; Sun, 10 May 2020 13:11:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36888)
+	id 1jXsLo-00088E-Iw
+	for mharc-qemu-trivial@gnu.org; Sun, 10 May 2020 16:15:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXpUA-0005q6-7N; Sun, 10 May 2020 13:11:30 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:37071)
+ (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jXsLn-00086o-7U
+ for qemu-trivial@nongnu.org; Sun, 10 May 2020 16:15:03 -0400
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:41004)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXpU9-0000CE-I8; Sun, 10 May 2020 13:11:29 -0400
-Received: by mail-ed1-x544.google.com with SMTP id w2so5875810edx.4;
- Sun, 10 May 2020 10:11:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=opJWKypD+HXG5axwxyBOWTbtCOfa9yREZFCiYnwvuD0=;
- b=CPVHAz98Cmyf66upvDkvwXPvXF2FlyrWNlWEPK9BTzDafFEvCTWTKyJOZS0FY9y2ep
- FPTd1Ne7PW2YXr1TbXIsAagS5afadsDh/MByCOZzKD1bqwEaTf4Yx5TPXHYvOOiREelY
- fDtUUajWOgEEslD8HRZuRXW4J1GnqT1vvs8YolXnG9sa7m8ydj9MOMHuc44LQ2NsyUoq
- kkDyWNXygnn1uIVd9M0f591pKGA7dEngCSRyKsiOMdjd3oGhmaaTLWetKO0H2f6RY6J+
- m1QU7uaeuiipcM+GURd76Bse9WyOd3sz9V5aRHvbduCYMjLhYnm1JPH4gICKLlApJumZ
- 0Ekg==
+ (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jXsLm-00031b-35
+ for qemu-trivial@nongnu.org; Sun, 10 May 2020 16:15:02 -0400
+Received: by mail-qk1-x741.google.com with SMTP id n14so7714584qke.8
+ for <qemu-trivial@nongnu.org>; Sun, 10 May 2020 13:15:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=braap-org.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=hX2R1RWxpEhvyTijKWVn7q08cfvfUch4RDo/el+QvE0=;
+ b=aoDt+471dihpltzDYK6ZLC/dop8mje5IeKwrtNAHS6cRTDfJLKcnfWPxDEZ8CfD5C0
+ 5GRsH8O/3LLq37Hfmu2cwNC3AmYzhM8l6SEv9HT7N29mLTa7Ok8k8wepejNf0kcv9+4w
+ VXHNoKIfte0GtcycPKr7m+CHHEKKBgPojmRLV7GiV5CuBWFmCn+8meTv0Ynh0wmx3aBD
+ 6d4bzAou4FE8A2Z2cZeR+1gU8HirjevYohQHSecbvk3xGxdhe/UCLRztYNVc6MMiaSnp
+ FauTNAVWMfJ0pRwk0j5tKhXxp6XLLywfFblasPwigu63tDqxDGEOw/Ky/7Qa1g77gY4D
+ SbIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=opJWKypD+HXG5axwxyBOWTbtCOfa9yREZFCiYnwvuD0=;
- b=fDuYmkcZ8HlguyRutVGMkn2sxVvi+4Tp1y0nQEPOPvLEreBYwL6bDccLVlS8DrDg9Q
- cFJD3WNI2RFxfzoqzlRIU4JqavzsqWWkqqgTTqbE+faipntuliySHuv3d8f2NgbSaWon
- hz1UmR5a008AelodGJBAZ4x+dEEnPKD3pjRdxZsCTbOpO73HAwb5TezlR7WVzrWa6sbZ
- bd0rccPuW25oZ32o1XwYEIasgDNlPM3IYfoigp3nc2RY0lKkev7Ar+j0njWD2VNoGIWm
- aflWpZsGmclYT7rJBQZqNY9ZFuyat7HYpfCeXR/UfMgC2zzw/DuEYGK5tWZPthTKJyPD
- 8XwQ==
-X-Gm-Message-State: AOAM531sYjA8RAuF20gL7oeeyoJo9gMzLJNU/0tp/xmHKXvsy94SdMFn
- DymVUFI7LQlQhLLY3vhAoQbANTsjMH4=
-X-Google-Smtp-Source: ABdhPJx6fDzA1yjGn8O/Y7E0YHHrCbPFvmdyGZmtFczPoLoYv7bGshd4zW04ykGRZpFKfm3Pi8fZlg==
-X-Received: by 2002:aa7:d496:: with SMTP id b22mr918491edr.301.1589130687702; 
- Sun, 10 May 2020 10:11:27 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id w7sm960776edr.20.2020.05.10.10.11.26
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=hX2R1RWxpEhvyTijKWVn7q08cfvfUch4RDo/el+QvE0=;
+ b=dfWHmRhHwTL/TETpl70V6DWu7/FC+GzsFANg+mBq8yPVfniz1GCmHSNdImUihVek7A
+ 0A6mJS+t1Mn28/E2Fh8eQErutrPk1XBGUFBqvKs2vGCxncTN7UxwS9MmD4kQ2fevIMb3
+ 2drzKgqxV8yALTIFDYeamGmv/Qd0oTwCZuwVIYFodVNz24aG3PRCIEUDi7fR9++FoWT3
+ CpHuQ2tNnejjrrYZW2Zn+I+6rG7JOMNnS4H+uWvkhszs9ZgoVFEckWVuX4k9pJrWIkYS
+ 0NFwYOpOGBLOhChee8+L7cj1o90m3fdeu4YQ4v2yXRD5DkbyGypqitE4+TYwemVLCsT3
+ P3Rg==
+X-Gm-Message-State: AGi0PuavvA5bwBNw1Sgz7NJLv+8jn4T1XL8969CR97CU24reeqNuD8OB
+ +C0RPG0zlEBiHamkY+AoTSik3Q==
+X-Google-Smtp-Source: APiQypIDGKqrcOgN9NZ5pJIwEKyviY1gDkzTj8I5S8s6f784W3goS2ff5D9Lyt3cLH3Ht9Cl5282zw==
+X-Received: by 2002:a37:a50d:: with SMTP id o13mr12418341qke.121.1589141700879; 
+ Sun, 10 May 2020 13:15:00 -0700 (PDT)
+Received: from localhost ([70.19.54.161])
+ by smtp.gmail.com with ESMTPSA id c26sm6482838qkm.98.2020.05.10.13.14.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 May 2020 10:11:27 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: "Emilio G . Cota" <cota@braap.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/3] qemu/qemu-plugin: Make qemu_plugin_hwaddr_is_io() hwaddr
- argument const
-Date: Sun, 10 May 2020 19:11:19 +0200
-Message-Id: <20200510171119.20827-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200510171119.20827-1-f4bug@amsat.org>
+ Sun, 10 May 2020 13:15:00 -0700 (PDT)
+Date: Sun, 10 May 2020 16:14:59 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH 0/3] plugins: Move declarations around and rename
+ 'hwaddr' argument
+Message-ID: <20200510201459.GA125078@sff>
 References: <20200510171119.20827-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
+In-Reply-To: <20200510171119.20827-1-f4bug@amsat.org>
+Received-SPF: softfail client-ip=2607:f8b0:4864:20::741;
+ envelope-from=cota@braap.org; helo=mail-qk1-x741.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_SOFTFAIL=0.665,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -84,55 +79,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 May 2020 17:11:30 -0000
+X-List-Received-Date: Sun, 10 May 2020 20:15:03 -0000
 
-Rename qemu_plugin_hwaddr_is_io() address argument 'haddr'
-similarly to qemu_plugin_hwaddr_device_offset(), and make
-it const.
+On Sun, May 10, 2020 at 19:11:16 +0200, Philippe Mathieu-DaudÈ wrote:
+> Rename qemu_plugin_hwaddr_is_io() 'hwaddr' argument to later
+> allow declaration of the 'hwaddr' type to be poisoned (see [*]).
+> 
+> [*] https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg02254.html
+>     "exec/cpu: Poison 'hwaddr' type in user-mode emulation"
+> 
+> Philippe Mathieu-DaudÈ (3):
+>   qemu/plugin: Trivial code movement
+>   qemu/plugin: Move !CONFIG_PLUGIN stubs altogether
+>   qemu/qemu-plugin: Make qemu_plugin_hwaddr_is_io() hwaddr argument
+>     const
 
-Signed-off-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
----
-Having the variable named similarly to the 'hwaddr' typedef is
-slighly confusing. Also if we declare 'hwaddr' typedef poisoned,
-GCC complains qemu_plugin_hwaddr_is_io() use a poisoned variable...
+Reviewed-by: Emilio G. Cota <cota@braap.org>
+for the series.
 
-Signed-off-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
----
- include/qemu/qemu-plugin.h | 2 +-
- plugins/api.c              | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 5502e112c8..89ed579f55 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -331,7 +331,7 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
-  * to return information about it. For non-IO accesses the device
-  * offset will be into the appropriate block of RAM.
-  */
--bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr);
-+bool qemu_plugin_hwaddr_is_io(const struct qemu_plugin_hwaddr *haddr);
- uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr);
- 
- typedef void
-diff --git a/plugins/api.c b/plugins/api.c
-index 53c8a73582..bbdc5a4eb4 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -275,10 +275,10 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
- }
- #endif
- 
--bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr)
-+bool qemu_plugin_hwaddr_is_io(const struct qemu_plugin_hwaddr *haddr)
- {
- #ifdef CONFIG_SOFTMMU
--    return hwaddr->is_io;
-+    return haddr->is_io;
- #else
-     return false;
- #endif
--- 
-2.21.3
-
+Thanks,
+		E.
 
