@@ -1,80 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jY3nY-0003OL-D4
-	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2020 04:28:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58796)
+	id 1jYBb7-0002yK-2Q
+	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2020 12:48:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY3nW-0003MT-NJ
- for qemu-trivial@nongnu.org; Mon, 11 May 2020 04:28:26 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41227
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY3nV-0005qx-KM
- for qemu-trivial@nongnu.org; Mon, 11 May 2020 04:28:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589185705;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=EdEkKifv9sBa/sBVzNieXwncHlzbzRmDxxk06hFaTkk=;
- b=ZErCd9RMkb3eo3rkYIiQiiN9DuBKmLKtSGjfqEnJJ6BhVpqUJpLbSvoA+B+W2XTj+V3TWc
- zDEeqbOd1uNkH4cyEbMQzs45OyMTcW2vP9NxKjDAgeeInhvGVM6KCcxkgO++9ZforrloHg
- Juz3hbBdd1pkaIxx5KrjttBqW2qh87Y=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-143-6Ls5vz4YOPybm4kTw_B4Ew-1; Mon, 11 May 2020 04:28:23 -0400
-X-MC-Unique: 6Ls5vz4YOPybm4kTw_B4Ew-1
-Received: by mail-wr1-f70.google.com with SMTP id 37so1649894wrc.4
- for <qemu-trivial@nongnu.org>; Mon, 11 May 2020 01:28:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jYBb5-0002yA-Na; Mon, 11 May 2020 12:48:07 -0400
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:45223)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jYBb4-0004MH-US; Mon, 11 May 2020 12:48:07 -0400
+Received: by mail-io1-xd44.google.com with SMTP id i19so10479143ioh.12;
+ Mon, 11 May 2020 09:48:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=MWJveCUZ0uKJCkmQvcC9nArilKrXkegojoXCehmFwXU=;
+ b=PWFaFqethFsYKZnML2XRm8so5ovmyRmFyM66KNaz1DDxFdr/g+qEDO4UrDQ9IOgFPa
+ vgxawWUY005MnGITIcEgV/T/DHBgZyHfteavbMw34RpNrdRUtgEXNw2GDkR2p9PGjDSm
+ /s1Ps5QetiulQuBVBFCpSRIX4KF4LM6KdffooVimvxKaTXd741b4bIb5el2QilTedZ1E
+ vuQnt+av0gD8s0i46X1FqCjYPH1brN3Kmde6pJBSdlTGaodH5KWPqWkc8lbf3JCaWaNM
+ Gw5FMxcud+N9Ovd3HDQrnQKa1TN88YNlzxcwvMh3F3y4tUOgj0vBSxH/RhfYmOO4q4ED
+ uQ6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EdEkKifv9sBa/sBVzNieXwncHlzbzRmDxxk06hFaTkk=;
- b=GGQYorHMjs8UYzR6OIWe5Y509TgPEOHmCVFQloHfhsBjEkrRyvJT9IAlyr4T+6jASp
- V0ic/HdUDBzUjUZT8q23GeQ6sw5k9pHgRLalMAZzDLDx17cigMwAetrKU9xwdPv/tFbT
- hzrnxvCGeNuhbDMCqNNI7dYxmUsMvChTif7ULsB/yG4FEHCQSL0HLzNY8p/uQ3zEoY8A
- EcH1hQz+J4lo56XVnjjsy47T8c77WEFBZekcPbBPWnNP9KQ2Ow1KmacZfVbcxRNxgk+S
- bl4UwF4D4aBviq31/oP5NX65pq1uS//jyyNguj2oRdAiQlX5yNgR+UlIPGJaD/zrWvM1
- CJeA==
-X-Gm-Message-State: AGi0Pub10+87MO68CYQ41vzgR63vpsN6bzRZn2DM9LWFwO1Z3MyjhYCv
- FGbVxZW2c80FIdWpA1WzAqvG0/6W5S/WZTui8/M8uPas+Fvk9WSAhPKv6KbwAGKLjlrbvxEnXOF
- wphOi1BZfgZ6AHtVGMA==
-X-Received: by 2002:a1c:9e51:: with SMTP id h78mr32303661wme.177.1589185698794; 
- Mon, 11 May 2020 01:28:18 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJAU1InPfKBnYFEIuqlGR3bbHZHjIaOPNt8tuAxZed7CU5KeOpacJszWuRXnEv0xoQJzsIS5Q==
-X-Received: by 2002:a1c:9e51:: with SMTP id h78mr32303639wme.177.1589185698557; 
- Mon, 11 May 2020 01:28:18 -0700 (PDT)
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id 1sm26363072wmi.0.2020.05.11.01.28.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2020 01:28:17 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
- John Snow <jsnow@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] scripts/tracetool: Update maintainer email address
-Date: Mon, 11 May 2020 10:28:16 +0200
-Message-Id: <20200511082816.696-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MWJveCUZ0uKJCkmQvcC9nArilKrXkegojoXCehmFwXU=;
+ b=uS8xIoiIYd9ZGN8mFXOc8QEeAq+sjiRHWjqix1jSISJWA7qLLuMEs/W/JqgCdxFcv0
+ OD5M2MKbox7/pvTtpIlamopt4ExFfAIbL4aBq93YqgSfyd2UUSqlcZcJFwvZX3ODBYmT
+ FFx3D1VYPXfEcoqKfmpcKuJdQQZ49bky7BQgPkyFRbBijZnJdRqPpIxLawg+2J9K0T7Y
+ DEkHubnFLowTIThitE34bRTe/cficwztJkPbZzT0boPBoed2GmbjHiOR+eChajdohC4A
+ MJTrQrbcgKo+qui073ubWQzOyPRSodOQ40LWQkfq8aXHVpBxp5FLTfAz8bS9SHedOA6e
+ nWCQ==
+X-Gm-Message-State: AGi0PuYNqO3cBcmWkUViOqssoVqitrSputOehY2l4sZjMbxct33OM1Pc
+ Rb4/43u24FJ/ZuSEeNYdj+r2dCgDVQwup3qGQ+w=
+X-Google-Smtp-Source: APiQypJSnv9kSKwP3NVeY/64oV539Ei1/cJfUrCklLvyQluUracFRfIA/gDvhlayI56c9+tS0rh1VcW5kWzyMJesiTQ=
+X-Received: by 2002:a5e:880b:: with SMTP id l11mr16379108ioj.42.1589215684749; 
+ Mon, 11 May 2020 09:48:04 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 02:55:57
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+References: <20200510203457.10546-1-f4bug@amsat.org>
+In-Reply-To: <20200510203457.10546-1-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 11 May 2020 09:39:18 -0700
+Message-ID: <CAKmqyKO0FToRt-nHP7OKgbYf_2V8XLBV3FYhtz+c+n02u=kD3g@mail.gmail.com>
+Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
+ in macros
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -88,275 +75,133 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 May 2020 08:28:26 -0000
+X-List-Received-Date: Mon, 11 May 2020 16:48:08 -0000
 
-There is an effort in progress to generate a QEMU Python
-package. As I'm not sure this old email is still valid,
-update it to not produce package with broken maintainer
-email.
+On Sun, May 10, 2020 at 1:35 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> One can name a local variable holding a value as 'v', but it
+> currently clashes with the registerfields macros. To save others
+> to debug the same mistake, prefix the macro's local variables
+> with an underscore.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Patch created mechanically by running:
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
- $ sed -i 's,\(__email__ *= "\)stefanha@linux.vnet.ibm.com",\1stefanha@redhat.com",' \
-         $(git grep -l 'email.*stefanha@linux.vnet.ibm.com')
+Alistair
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- scripts/tracetool.py                             | 2 +-
- scripts/tracetool/__init__.py                    | 2 +-
- scripts/tracetool/backend/__init__.py            | 2 +-
- scripts/tracetool/backend/dtrace.py              | 2 +-
- scripts/tracetool/backend/log.py                 | 2 +-
- scripts/tracetool/backend/simple.py              | 2 +-
- scripts/tracetool/backend/ust.py                 | 2 +-
- scripts/tracetool/format/__init__.py             | 2 +-
- scripts/tracetool/format/c.py                    | 2 +-
- scripts/tracetool/format/d.py                    | 2 +-
- scripts/tracetool/format/h.py                    | 2 +-
- scripts/tracetool/format/stap.py                 | 2 +-
- scripts/tracetool/format/tcg_h.py                | 2 +-
- scripts/tracetool/format/tcg_helper_c.py         | 2 +-
- scripts/tracetool/format/tcg_helper_h.py         | 2 +-
- scripts/tracetool/format/tcg_helper_wrapper_h.py | 2 +-
- scripts/tracetool/transform.py                   | 2 +-
- scripts/tracetool/vcpu.py                        | 2 +-
- 18 files changed, 18 insertions(+), 18 deletions(-)
-
-diff --git a/scripts/tracetool.py b/scripts/tracetool.py
-index 264cc9eecc..31146242b7 100755
---- a/scripts/tracetool.py
-+++ b/scripts/tracetool.py
-@@ -10,7 +10,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- import sys
-diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-index 13d29f1e42..3ccfa1e116 100644
---- a/scripts/tracetool/__init__.py
-+++ b/scripts/tracetool/__init__.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- import re
-diff --git a/scripts/tracetool/backend/__init__.py b/scripts/tracetool/backend/__init__.py
-index 54cab2c4de..7bfcc86cc5 100644
---- a/scripts/tracetool/backend/__init__.py
-+++ b/scripts/tracetool/backend/__init__.py
-@@ -50,7 +50,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- import os
-diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/backend/dtrace.py
-index 638990db79..5711892ba0 100644
---- a/scripts/tracetool/backend/dtrace.py
-+++ b/scripts/tracetool/backend/dtrace.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend/log.py
-index 23b274c0fd..877222bbe9 100644
---- a/scripts/tracetool/backend/log.py
-+++ b/scripts/tracetool/backend/log.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/backend/simple.py
-index b650c262b5..a74d61fcd6 100644
---- a/scripts/tracetool/backend/simple.py
-+++ b/scripts/tracetool/backend/simple.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend/ust.py
-index a772a3b53b..6c0a5f8d68 100644
---- a/scripts/tracetool/backend/ust.py
-+++ b/scripts/tracetool/backend/ust.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/__init__.py b/scripts/tracetool/format/__init__.py
-index aba2f7a441..2dc46f3dd9 100644
---- a/scripts/tracetool/format/__init__.py
-+++ b/scripts/tracetool/format/__init__.py
-@@ -32,7 +32,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- import os
-diff --git a/scripts/tracetool/format/c.py b/scripts/tracetool/format/c.py
-index 78af8aff72..23d82ea861 100644
---- a/scripts/tracetool/format/c.py
-+++ b/scripts/tracetool/format/c.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/d.py b/scripts/tracetool/format/d.py
-index d3980b914b..0afb5f3f47 100644
---- a/scripts/tracetool/format/d.py
-+++ b/scripts/tracetool/format/d.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/h.py b/scripts/tracetool/format/h.py
-index 83e1a2f355..e94f0be7da 100644
---- a/scripts/tracetool/format/h.py
-+++ b/scripts/tracetool/format/h.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/stap.py b/scripts/tracetool/format/stap.py
-index 8fc808f2ef..a218b0445c 100644
---- a/scripts/tracetool/format/stap.py
-+++ b/scripts/tracetool/format/stap.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/tcg_h.py b/scripts/tracetool/format/tcg_h.py
-index 0180e3d76c..33cf6a31b3 100644
---- a/scripts/tracetool/format/tcg_h.py
-+++ b/scripts/tracetool/format/tcg_h.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out, Arguments
-diff --git a/scripts/tracetool/format/tcg_helper_c.py b/scripts/tracetool/format/tcg_helper_c.py
-index 6527b69afd..2db6317f3c 100644
---- a/scripts/tracetool/format/tcg_helper_c.py
-+++ b/scripts/tracetool/format/tcg_helper_c.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import Arguments, out
-diff --git a/scripts/tracetool/format/tcg_helper_h.py b/scripts/tracetool/format/tcg_helper_h.py
-index 98ebe52f18..08554fbc85 100644
---- a/scripts/tracetool/format/tcg_helper_h.py
-+++ b/scripts/tracetool/format/tcg_helper_h.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/format/tcg_helper_wrapper_h.py b/scripts/tracetool/format/tcg_helper_wrapper_h.py
-index 6adeab74df..0c5a9797d1 100644
---- a/scripts/tracetool/format/tcg_helper_wrapper_h.py
-+++ b/scripts/tracetool/format/tcg_helper_wrapper_h.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import out
-diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform.py
-index 8fd4dcf20d..ea8b27799d 100644
---- a/scripts/tracetool/transform.py
-+++ b/scripts/tracetool/transform.py
-@@ -9,7 +9,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- def _transform_type(type_, trans):
-diff --git a/scripts/tracetool/vcpu.py b/scripts/tracetool/vcpu.py
-index 0b104e4f15..b54e4f4e7a 100644
---- a/scripts/tracetool/vcpu.py
-+++ b/scripts/tracetool/vcpu.py
-@@ -10,7 +10,7 @@
- __license__    = "GPL version 2 or (at your option) any later version"
- 
- __maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@linux.vnet.ibm.com"
-+__email__      = "stefanha@redhat.com"
- 
- 
- from tracetool import Arguments, try_import
--- 
-2.21.3
-
+> ---
+>  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)
+>
+> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+> index 0407edb7ec..93fa4a84c2 100644
+> --- a/include/hw/registerfields.h
+> +++ b/include/hw/registerfields.h
+> @@ -66,35 +66,35 @@
+>  #define FIELD_DP8(storage, reg, field, val) ({                          =
+  \
+>      struct {                                                            =
+  \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;              =
+  \
+> -    } v =3D { .v =3D val };                                             =
+      \
+> -    uint8_t d;                                                          =
+  \
+> -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,       =
+    \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);             =
+  \
+> -    d; })
+> +    } _v =3D { .v =3D val };                                            =
+      \
+> +    uint8_t _d;                                                         =
+  \
+> +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,      =
+    \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);            =
+  \
+> +    _d; })
+>  #define FIELD_DP16(storage, reg, field, val) ({                         =
+  \
+>      struct {                                                            =
+  \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;              =
+  \
+> -    } v =3D { .v =3D val };                                             =
+      \
+> -    uint16_t d;                                                         =
+  \
+> -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,       =
+    \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);             =
+  \
+> -    d; })
+> +    } _v =3D { .v =3D val };                                            =
+      \
+> +    uint16_t _d;                                                        =
+  \
+> +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,      =
+    \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);            =
+  \
+> +    _d; })
+>  #define FIELD_DP32(storage, reg, field, val) ({                         =
+  \
+>      struct {                                                            =
+  \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;              =
+  \
+> -    } v =3D { .v =3D val };                                             =
+      \
+> -    uint32_t d;                                                         =
+  \
+> -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,       =
+    \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);             =
+  \
+> -    d; })
+> +    } _v =3D { .v =3D val };                                            =
+      \
+> +    uint32_t _d;                                                        =
+  \
+> +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,      =
+    \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);            =
+  \
+> +    _d; })
+>  #define FIELD_DP64(storage, reg, field, val) ({                         =
+  \
+>      struct {                                                            =
+  \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;              =
+  \
+> -    } v =3D { .v =3D val };                                             =
+      \
+> -    uint64_t d;                                                         =
+  \
+> -    d =3D deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,       =
+    \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);             =
+  \
+> -    d; })
+> +    } _v =3D { .v =3D val };                                            =
+      \
+> +    uint64_t _d;                                                        =
+  \
+> +    _d =3D deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,      =
+    \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);            =
+  \
+> +    _d; })
+>
+>  /* Deposit a field to array of registers.  */
+>  #define ARRAY_FIELD_DP32(regs, reg, field, val)                         =
+  \
+> --
+> 2.21.3
+>
+>
 
