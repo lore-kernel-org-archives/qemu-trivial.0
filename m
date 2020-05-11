@@ -1,64 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jXsfA-0003JG-8j
-	for mharc-qemu-trivial@gnu.org; Sun, 10 May 2020 16:35:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57412)
+	id 1jY2Tm-0007gL-9y
+	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2020 03:03:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXsf9-0003J3-3z; Sun, 10 May 2020 16:35:03 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38320)
+ id 1jY2Tk-0007g1-Lu; Mon, 11 May 2020 03:03:56 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37776)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXsf8-0004Fe-DU; Sun, 10 May 2020 16:35:02 -0400
-Received: by mail-wm1-x344.google.com with SMTP id g12so16862560wmh.3;
- Sun, 10 May 2020 13:35:01 -0700 (PDT)
+ id 1jY2Tj-0007FB-OR; Mon, 11 May 2020 03:03:56 -0400
+Received: by mail-wr1-x441.google.com with SMTP id k1so9459315wrx.4;
+ Mon, 11 May 2020 00:03:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CdR2hYCzbd1Jp+0wuJ0jJdj1H6jPDY78QR9wtm9dhxs=;
- b=LCrUm0Un7MPEJO13S04LGY6UQwkyJZmxYz3o6UeJ6bpEpqCfOaew0aCcJcBgiTRugp
- MnPJV6dtifMco50XyhhJwUfSSiBHWdO+AYHz1dg/66aeal3jVdIgyaC5bcEs+dTFS3da
- ox48CDuECQAo3AAT3xbg8jedXiOauu/nEBBRmQA9qvps1ejlDVnYme8pxbmAOWy78vCs
- zZl2q+MbyYYcaEb/X81Zmne1IOmRQnRa/sWMQL0/cs6LvA77pC4DLHD0JfI8zSRrA4Ex
- 01GJEQ04ZDY/Us27BNn3yP43YIvRk/VmdoqVP168h/ieA4B8YIDy7ZT31jiRMSg8gGIn
- rpgw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PBbm2rT9MzHZvmOkHUsfFM7PIuWNpVS0isoEqsMJPYU=;
+ b=kh5djo/qT1QepUQXmC7b/4aACZZDxutLcxDu6O8xdmYDaxjF4dT1cjorJbw/9g6vHo
+ SGrJc7O2Rv2gqDt68meWMBvaymTZ75ycGNWmO+/MSnZsNu5CUVonp548GFcPXUi9o0Xk
+ VR8stWqIJvcqyiyT+xj1XOJdPfJU2lwnm/YfV2aFU/v+NdJ0cVZtyB4KYyyQqVvTTbSw
+ XHJPHiviDthU7PVmjovA1TrG9hw7g2WQFh+4HyJpdrqaWamY9axqksoTwA/BYKlJ6h0j
+ cSkkiDhEN1vQTmTAuYqnwyyTK3HhJsmnbIvLtna52uy56CzvSOcMOU2FbciUqVa+n4ik
+ +g8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=CdR2hYCzbd1Jp+0wuJ0jJdj1H6jPDY78QR9wtm9dhxs=;
- b=rthnyxqjSmw1rfwtzhyj/MDXafnU6ctkSH+kmWynQNkF6ToYFrOIklcLNeOZzPKZh+
- nVtnE9iQjyf0Kn9/SomFpRa7KWxRIrEKMXozU1QvpZpKbDpUZNp7rj1xgLdqmHmobloE
- +n3FXCtCCBV9zHMoeg8WGjBFDzjEacqgx+aPn+bVb2CL+wZXNFX6sfrgQm4UvVnvFeo1
- VKKvjfO+GI6/jzflvWx4HmcTrSSd/M2K/ocN5h/9o6gbZptDg7e4KD2/UFtZgEEJPrKY
- +rnnZjEBmJIHlpH7NogSXXueIKdA+98OJXuqeI6uNVLJg9P0odrOgY5SzlN2car/BaVO
- NNXw==
-X-Gm-Message-State: AGi0PubgjVvcq51XD2rI2wAvGomOR5ZG6zRhrK0bf7MDGI7goh9YpgFQ
- vw1LazZCgxSkALF5zeudP6HA7PUM0Qc=
-X-Google-Smtp-Source: APiQypLdF8Tfp/bXfNZJBzvO4dcsPezdOhhxyXxFWaRMZ3W11CIihEQecz9G6smKxboSOvD+p3D2OQ==
-X-Received: by 2002:a1c:7213:: with SMTP id n19mr1998096wmc.88.1589142900284; 
- Sun, 10 May 2020 13:35:00 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=PBbm2rT9MzHZvmOkHUsfFM7PIuWNpVS0isoEqsMJPYU=;
+ b=lMiSeYd89YpKm8S6S5Tyty2LD0uHW8L0Rg+FG2H/bGHQX20igkigwgbIVf9O0m8FsB
+ bhW3WQsorGDQqkgWpfHva3ha0chMrvz6YWh+u0IT885dvFgGCDrGQfNB4b92Y/X3rTPq
+ lmGUrimI13E88ScPSi1YLMaCeGKo1qIkDO2O0cZ6N2X47WPC5rSLy+2JF5J78XpKN1Ih
+ 8xtbSfLt3Ik48Fh+WAXBnYxynw7KtTfOj9aelEcORxAw0MfilNf3UnUgCr8APng5BxE3
+ U0u0HPbF4e+KpxnuMGeLm/Lziz35MPf2zgdLVmN+r3pLxaSUeOzw6kbxBY1bCoJMexcF
+ HCew==
+X-Gm-Message-State: AGi0PuabsU6/qtXHiqFpFoNZWjfes34EoUyDv6gKXz04Ko8Y8Llrhdco
+ vDWpIZiiFlbY22k8O29zfTUgu0+j1Ko=
+X-Google-Smtp-Source: APiQypJ4GwxuRJ2fTHQd2J6Fq/Gvpf5Jltc2DngGaFJ9IoI3A/GBMUfjbIhtapWindIVYs6f8pXctg==
+X-Received: by 2002:a05:6000:12c2:: with SMTP id
+ l2mr5358852wrx.133.1589180633670; 
+ Mon, 11 May 2020 00:03:53 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id 5sm23486211wmz.16.2020.05.10.13.34.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 May 2020 13:34:59 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id b2sm12300203wrm.30.2020.05.11.00.03.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 May 2020 00:03:52 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/registerfields: Prefix local variables with underscore in
- macros
-Date: Sun, 10 May 2020 22:34:57 +0200
-Message-Id: <20200510203457.10546-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+Subject: Re: [PATCH 0/7] hw/sparc/leon3: Few fixes and disable HelenOS test
+To: KONRAD Frederic <frederic.konrad@adacore.com>, qemu-devel@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Fabien Chouteau <chouteau@adacore.com>, Jiri Gaisler <jiri@gaisler.se>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200331105048.27989-1-f4bug@amsat.org>
+ <81737d76-06c6-4c83-1287-b0d14db4ce2f@amsat.org>
+ <989bf2f5-0e23-f9c3-e9e1-0bd8c03f3231@adacore.com>
+ <1b7a4c63-5a31-6efe-d807-7092e3ee0ffb@amsat.org>
+ <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <23588fda-b95b-45a9-b788-e846d26a3bc3@amsat.org>
+Date: Mon, 11 May 2020 09:03:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -81,79 +92,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 May 2020 20:35:03 -0000
+X-List-Received-Date: Mon, 11 May 2020 07:03:56 -0000
 
-One can name a local variable holding a value as 'v', but it
-currently clashes with the registerfields macros. To save others
-to debug the same mistake, prefix the macro's local variables
-with an underscore.
+On 4/14/20 12:00 PM, KONRAD Frederic wrote:
+> Le 4/13/20 à 11:07 PM, Philippe Mathieu-Daudé a écrit :
+>> [Cc'ing Peter]
+>>
+>> On 4/13/20 12:12 PM, KONRAD Frederic wrote:
+>>> Le 4/11/20 à 7:30 PM, Philippe Mathieu-Daudé a écrit :
+>>>> On 3/31/20 12:50 PM, Philippe Mathieu-Daudé wrote:
+>>>>> Philippe Mathieu-Daudé (7):
+>>>>>     hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to AHB PnP
+>>>>>       registers
+>>>>>     hw/misc/grlib_ahb_apb_pnp: Fix AHB PnP 8-bit accesses
+>>>>
+>>>> Ping ^^^ for 5.0?
+>>>
+>>> Hi Philippe,
+>>>
+>>> You already have my rb tag for those one, and IMHO they should be good
+>>> candidate
+>>> for 5.0 (if it's not too late).
+>>
+>> Yes, thanks for the reviews. I see Mark Cave-Ayland merged this file
+>> first, but you are listed as maintainer :) I was hoping you could send a
+>> pull request.
+> 
+> Yes that's usually Mark who take the patches, sorry I didn't get it.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+No worries. As there are other sparc64 patches on the list, maybe Mark 
+will prepare a pull request now.
 
-diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-index 0407edb7ec..93fa4a84c2 100644
---- a/include/hw/registerfields.h
-+++ b/include/hw/registerfields.h
-@@ -66,35 +66,35 @@
- #define FIELD_DP8(storage, reg, field, val) ({                            \
-     struct {                                                              \
-         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
--    } v = { .v = val };                                                   \
--    uint8_t d;                                                            \
--    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
--                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
--    d; })
-+    } _v = { .v = val };                                                  \
-+    uint8_t _d;                                                           \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
- #define FIELD_DP16(storage, reg, field, val) ({                           \
-     struct {                                                              \
-         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
--    } v = { .v = val };                                                   \
--    uint16_t d;                                                           \
--    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
--                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
--    d; })
-+    } _v = { .v = val };                                                  \
-+    uint16_t _d;                                                          \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
- #define FIELD_DP32(storage, reg, field, val) ({                           \
-     struct {                                                              \
-         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
--    } v = { .v = val };                                                   \
--    uint32_t d;                                                           \
--    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
--                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
--    d; })
-+    } _v = { .v = val };                                                  \
-+    uint32_t _d;                                                          \
-+    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
- #define FIELD_DP64(storage, reg, field, val) ({                           \
-     struct {                                                              \
-         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
--    } v = { .v = val };                                                   \
--    uint64_t d;                                                           \
--    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
--                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
--    d; })
-+    } _v = { .v = val };                                                  \
-+    uint64_t _d;                                                          \
-+    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-+                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-+    _d; })
- 
- /* Deposit a field to array of registers.  */
- #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
--- 
-2.21.3
+> 
+>>
+>> $ scripts/get_maintainer.pl -f hw/misc/grlib_ahb_apb_pnp.c
+>> Fabien Chouteau <chouteau@adacore.com> (maintainer:Leon3)
+>> KONRAD Frederic <frederic.konrad@adacore.com> (maintainer:Leon3)
+>> qemu-devel@nongnu.org (open list:All patches CC here)
+>>
+> 
+>> This is a bug but not 'security critical', so it might wait 5.1 and go
+>> via qemu-trivial tree.
+> 
+> Well let's do that then if you're ok.
 
+OK, then ping? :)
+
+> 
+> Best Regards,
+> Fred
+> 
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>>>
+>>> Cheers,
+>>> Fred
+>>>
+>>>>
+>>>>>     hw/misc/grlib_ahb_apb_pnp: Add trace events on read accesses
+>>>>>     hw/timer/grlib_gptimer: Display frequency in decimal
+>>>>>     target/sparc/int32_helper: Remove DEBUG_PCALL definition
+>>>>>     target/sparc/int32_helper: Extract and use excp_name_str()
+>>>>>
+>>>>>    hw/misc/grlib_ahb_apb_pnp.c             | 24 
+>>>>> ++++++++++++++++++++++--
+>>>>>    target/sparc/int32_helper.c             | 23 
+>>>>> ++++++++++++-----------
+>>>>>    hw/misc/trace-events                    |  4 ++++
+>>>>>    hw/timer/trace-events                   |  2 +-
+>>>>>    tests/acceptance/machine_sparc_leon3.py |  4 ++++
+>>>>>    5 files changed, 43 insertions(+), 14 deletions(-)
+>>>>>
+>>>
+> 
 
