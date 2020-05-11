@@ -1,84 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jY2Tm-0007gL-9y
-	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2020 03:03:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49034)
+	id 1jY3nY-0003OL-D4
+	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2020 04:28:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jY2Tk-0007g1-Lu; Mon, 11 May 2020 03:03:56 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37776)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jY2Tj-0007FB-OR; Mon, 11 May 2020 03:03:56 -0400
-Received: by mail-wr1-x441.google.com with SMTP id k1so9459315wrx.4;
- Mon, 11 May 2020 00:03:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PBbm2rT9MzHZvmOkHUsfFM7PIuWNpVS0isoEqsMJPYU=;
- b=kh5djo/qT1QepUQXmC7b/4aACZZDxutLcxDu6O8xdmYDaxjF4dT1cjorJbw/9g6vHo
- SGrJc7O2Rv2gqDt68meWMBvaymTZ75ycGNWmO+/MSnZsNu5CUVonp548GFcPXUi9o0Xk
- VR8stWqIJvcqyiyT+xj1XOJdPfJU2lwnm/YfV2aFU/v+NdJ0cVZtyB4KYyyQqVvTTbSw
- XHJPHiviDthU7PVmjovA1TrG9hw7g2WQFh+4HyJpdrqaWamY9axqksoTwA/BYKlJ6h0j
- cSkkiDhEN1vQTmTAuYqnwyyTK3HhJsmnbIvLtna52uy56CzvSOcMOU2FbciUqVa+n4ik
- +g8Q==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY3nW-0003MT-NJ
+ for qemu-trivial@nongnu.org; Mon, 11 May 2020 04:28:26 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41227
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY3nV-0005qx-KM
+ for qemu-trivial@nongnu.org; Mon, 11 May 2020 04:28:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589185705;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=EdEkKifv9sBa/sBVzNieXwncHlzbzRmDxxk06hFaTkk=;
+ b=ZErCd9RMkb3eo3rkYIiQiiN9DuBKmLKtSGjfqEnJJ6BhVpqUJpLbSvoA+B+W2XTj+V3TWc
+ zDEeqbOd1uNkH4cyEbMQzs45OyMTcW2vP9NxKjDAgeeInhvGVM6KCcxkgO++9ZforrloHg
+ Juz3hbBdd1pkaIxx5KrjttBqW2qh87Y=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-143-6Ls5vz4YOPybm4kTw_B4Ew-1; Mon, 11 May 2020 04:28:23 -0400
+X-MC-Unique: 6Ls5vz4YOPybm4kTw_B4Ew-1
+Received: by mail-wr1-f70.google.com with SMTP id 37so1649894wrc.4
+ for <qemu-trivial@nongnu.org>; Mon, 11 May 2020 01:28:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=PBbm2rT9MzHZvmOkHUsfFM7PIuWNpVS0isoEqsMJPYU=;
- b=lMiSeYd89YpKm8S6S5Tyty2LD0uHW8L0Rg+FG2H/bGHQX20igkigwgbIVf9O0m8FsB
- bhW3WQsorGDQqkgWpfHva3ha0chMrvz6YWh+u0IT885dvFgGCDrGQfNB4b92Y/X3rTPq
- lmGUrimI13E88ScPSi1YLMaCeGKo1qIkDO2O0cZ6N2X47WPC5rSLy+2JF5J78XpKN1Ih
- 8xtbSfLt3Ik48Fh+WAXBnYxynw7KtTfOj9aelEcORxAw0MfilNf3UnUgCr8APng5BxE3
- U0u0HPbF4e+KpxnuMGeLm/Lziz35MPf2zgdLVmN+r3pLxaSUeOzw6kbxBY1bCoJMexcF
- HCew==
-X-Gm-Message-State: AGi0PuabsU6/qtXHiqFpFoNZWjfes34EoUyDv6gKXz04Ko8Y8Llrhdco
- vDWpIZiiFlbY22k8O29zfTUgu0+j1Ko=
-X-Google-Smtp-Source: APiQypJ4GwxuRJ2fTHQd2J6Fq/Gvpf5Jltc2DngGaFJ9IoI3A/GBMUfjbIhtapWindIVYs6f8pXctg==
-X-Received: by 2002:a05:6000:12c2:: with SMTP id
- l2mr5358852wrx.133.1589180633670; 
- Mon, 11 May 2020 00:03:53 -0700 (PDT)
-Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
+ bh=EdEkKifv9sBa/sBVzNieXwncHlzbzRmDxxk06hFaTkk=;
+ b=GGQYorHMjs8UYzR6OIWe5Y509TgPEOHmCVFQloHfhsBjEkrRyvJT9IAlyr4T+6jASp
+ V0ic/HdUDBzUjUZT8q23GeQ6sw5k9pHgRLalMAZzDLDx17cigMwAetrKU9xwdPv/tFbT
+ hzrnxvCGeNuhbDMCqNNI7dYxmUsMvChTif7ULsB/yG4FEHCQSL0HLzNY8p/uQ3zEoY8A
+ EcH1hQz+J4lo56XVnjjsy47T8c77WEFBZekcPbBPWnNP9KQ2Ow1KmacZfVbcxRNxgk+S
+ bl4UwF4D4aBviq31/oP5NX65pq1uS//jyyNguj2oRdAiQlX5yNgR+UlIPGJaD/zrWvM1
+ CJeA==
+X-Gm-Message-State: AGi0Pub10+87MO68CYQ41vzgR63vpsN6bzRZn2DM9LWFwO1Z3MyjhYCv
+ FGbVxZW2c80FIdWpA1WzAqvG0/6W5S/WZTui8/M8uPas+Fvk9WSAhPKv6KbwAGKLjlrbvxEnXOF
+ wphOi1BZfgZ6AHtVGMA==
+X-Received: by 2002:a1c:9e51:: with SMTP id h78mr32303661wme.177.1589185698794; 
+ Mon, 11 May 2020 01:28:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJAU1InPfKBnYFEIuqlGR3bbHZHjIaOPNt8tuAxZed7CU5KeOpacJszWuRXnEv0xoQJzsIS5Q==
+X-Received: by 2002:a1c:9e51:: with SMTP id h78mr32303639wme.177.1589185698557; 
+ Mon, 11 May 2020 01:28:18 -0700 (PDT)
+Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id b2sm12300203wrm.30.2020.05.11.00.03.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 May 2020 00:03:52 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/7] hw/sparc/leon3: Few fixes and disable HelenOS test
-To: KONRAD Frederic <frederic.konrad@adacore.com>, qemu-devel@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Fabien Chouteau <chouteau@adacore.com>, Jiri Gaisler <jiri@gaisler.se>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200331105048.27989-1-f4bug@amsat.org>
- <81737d76-06c6-4c83-1287-b0d14db4ce2f@amsat.org>
- <989bf2f5-0e23-f9c3-e9e1-0bd8c03f3231@adacore.com>
- <1b7a4c63-5a31-6efe-d807-7092e3ee0ffb@amsat.org>
- <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <23588fda-b95b-45a9-b788-e846d26a3bc3@amsat.org>
-Date: Mon, 11 May 2020 09:03:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ by smtp.gmail.com with ESMTPSA id 1sm26363072wmi.0.2020.05.11.01.28.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2020 01:28:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ John Snow <jsnow@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] scripts/tracetool: Update maintainer email address
+Date: Mon, 11 May 2020 10:28:16 +0200
+Message-Id: <20200511082816.696-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 02:55:57
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -92,80 +88,275 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 May 2020 07:03:56 -0000
+X-List-Received-Date: Mon, 11 May 2020 08:28:26 -0000
 
-On 4/14/20 12:00 PM, KONRAD Frederic wrote:
-> Le 4/13/20 à 11:07 PM, Philippe Mathieu-Daudé a écrit :
->> [Cc'ing Peter]
->>
->> On 4/13/20 12:12 PM, KONRAD Frederic wrote:
->>> Le 4/11/20 à 7:30 PM, Philippe Mathieu-Daudé a écrit :
->>>> On 3/31/20 12:50 PM, Philippe Mathieu-Daudé wrote:
->>>>> Philippe Mathieu-Daudé (7):
->>>>>     hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to AHB PnP
->>>>>       registers
->>>>>     hw/misc/grlib_ahb_apb_pnp: Fix AHB PnP 8-bit accesses
->>>>
->>>> Ping ^^^ for 5.0?
->>>
->>> Hi Philippe,
->>>
->>> You already have my rb tag for those one, and IMHO they should be good
->>> candidate
->>> for 5.0 (if it's not too late).
->>
->> Yes, thanks for the reviews. I see Mark Cave-Ayland merged this file
->> first, but you are listed as maintainer :) I was hoping you could send a
->> pull request.
-> 
-> Yes that's usually Mark who take the patches, sorry I didn't get it.
+There is an effort in progress to generate a QEMU Python
+package. As I'm not sure this old email is still valid,
+update it to not produce package with broken maintainer
+email.
 
-No worries. As there are other sparc64 patches on the list, maybe Mark 
-will prepare a pull request now.
+Patch created mechanically by running:
 
-> 
->>
->> $ scripts/get_maintainer.pl -f hw/misc/grlib_ahb_apb_pnp.c
->> Fabien Chouteau <chouteau@adacore.com> (maintainer:Leon3)
->> KONRAD Frederic <frederic.konrad@adacore.com> (maintainer:Leon3)
->> qemu-devel@nongnu.org (open list:All patches CC here)
->>
-> 
->> This is a bug but not 'security critical', so it might wait 5.1 and go
->> via qemu-trivial tree.
-> 
-> Well let's do that then if you're ok.
+ $ sed -i 's,\(__email__ *= "\)stefanha@linux.vnet.ibm.com",\1stefanha@redhat.com",' \
+         $(git grep -l 'email.*stefanha@linux.vnet.ibm.com')
 
-OK, then ping? :)
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ scripts/tracetool.py                             | 2 +-
+ scripts/tracetool/__init__.py                    | 2 +-
+ scripts/tracetool/backend/__init__.py            | 2 +-
+ scripts/tracetool/backend/dtrace.py              | 2 +-
+ scripts/tracetool/backend/log.py                 | 2 +-
+ scripts/tracetool/backend/simple.py              | 2 +-
+ scripts/tracetool/backend/ust.py                 | 2 +-
+ scripts/tracetool/format/__init__.py             | 2 +-
+ scripts/tracetool/format/c.py                    | 2 +-
+ scripts/tracetool/format/d.py                    | 2 +-
+ scripts/tracetool/format/h.py                    | 2 +-
+ scripts/tracetool/format/stap.py                 | 2 +-
+ scripts/tracetool/format/tcg_h.py                | 2 +-
+ scripts/tracetool/format/tcg_helper_c.py         | 2 +-
+ scripts/tracetool/format/tcg_helper_h.py         | 2 +-
+ scripts/tracetool/format/tcg_helper_wrapper_h.py | 2 +-
+ scripts/tracetool/transform.py                   | 2 +-
+ scripts/tracetool/vcpu.py                        | 2 +-
+ 18 files changed, 18 insertions(+), 18 deletions(-)
 
-> 
-> Best Regards,
-> Fred
-> 
->>
->> Regards,
->>
->> Phil.
->>
->>>
->>> Cheers,
->>> Fred
->>>
->>>>
->>>>>     hw/misc/grlib_ahb_apb_pnp: Add trace events on read accesses
->>>>>     hw/timer/grlib_gptimer: Display frequency in decimal
->>>>>     target/sparc/int32_helper: Remove DEBUG_PCALL definition
->>>>>     target/sparc/int32_helper: Extract and use excp_name_str()
->>>>>
->>>>>    hw/misc/grlib_ahb_apb_pnp.c             | 24 
->>>>> ++++++++++++++++++++++--
->>>>>    target/sparc/int32_helper.c             | 23 
->>>>> ++++++++++++-----------
->>>>>    hw/misc/trace-events                    |  4 ++++
->>>>>    hw/timer/trace-events                   |  2 +-
->>>>>    tests/acceptance/machine_sparc_leon3.py |  4 ++++
->>>>>    5 files changed, 43 insertions(+), 14 deletions(-)
->>>>>
->>>
-> 
+diff --git a/scripts/tracetool.py b/scripts/tracetool.py
+index 264cc9eecc..31146242b7 100755
+--- a/scripts/tracetool.py
++++ b/scripts/tracetool.py
+@@ -10,7 +10,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ import sys
+diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
+index 13d29f1e42..3ccfa1e116 100644
+--- a/scripts/tracetool/__init__.py
++++ b/scripts/tracetool/__init__.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ import re
+diff --git a/scripts/tracetool/backend/__init__.py b/scripts/tracetool/backend/__init__.py
+index 54cab2c4de..7bfcc86cc5 100644
+--- a/scripts/tracetool/backend/__init__.py
++++ b/scripts/tracetool/backend/__init__.py
+@@ -50,7 +50,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ import os
+diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/backend/dtrace.py
+index 638990db79..5711892ba0 100644
+--- a/scripts/tracetool/backend/dtrace.py
++++ b/scripts/tracetool/backend/dtrace.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend/log.py
+index 23b274c0fd..877222bbe9 100644
+--- a/scripts/tracetool/backend/log.py
++++ b/scripts/tracetool/backend/log.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/backend/simple.py
+index b650c262b5..a74d61fcd6 100644
+--- a/scripts/tracetool/backend/simple.py
++++ b/scripts/tracetool/backend/simple.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend/ust.py
+index a772a3b53b..6c0a5f8d68 100644
+--- a/scripts/tracetool/backend/ust.py
++++ b/scripts/tracetool/backend/ust.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/__init__.py b/scripts/tracetool/format/__init__.py
+index aba2f7a441..2dc46f3dd9 100644
+--- a/scripts/tracetool/format/__init__.py
++++ b/scripts/tracetool/format/__init__.py
+@@ -32,7 +32,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ import os
+diff --git a/scripts/tracetool/format/c.py b/scripts/tracetool/format/c.py
+index 78af8aff72..23d82ea861 100644
+--- a/scripts/tracetool/format/c.py
++++ b/scripts/tracetool/format/c.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/d.py b/scripts/tracetool/format/d.py
+index d3980b914b..0afb5f3f47 100644
+--- a/scripts/tracetool/format/d.py
++++ b/scripts/tracetool/format/d.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/h.py b/scripts/tracetool/format/h.py
+index 83e1a2f355..e94f0be7da 100644
+--- a/scripts/tracetool/format/h.py
++++ b/scripts/tracetool/format/h.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/stap.py b/scripts/tracetool/format/stap.py
+index 8fc808f2ef..a218b0445c 100644
+--- a/scripts/tracetool/format/stap.py
++++ b/scripts/tracetool/format/stap.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/tcg_h.py b/scripts/tracetool/format/tcg_h.py
+index 0180e3d76c..33cf6a31b3 100644
+--- a/scripts/tracetool/format/tcg_h.py
++++ b/scripts/tracetool/format/tcg_h.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out, Arguments
+diff --git a/scripts/tracetool/format/tcg_helper_c.py b/scripts/tracetool/format/tcg_helper_c.py
+index 6527b69afd..2db6317f3c 100644
+--- a/scripts/tracetool/format/tcg_helper_c.py
++++ b/scripts/tracetool/format/tcg_helper_c.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import Arguments, out
+diff --git a/scripts/tracetool/format/tcg_helper_h.py b/scripts/tracetool/format/tcg_helper_h.py
+index 98ebe52f18..08554fbc85 100644
+--- a/scripts/tracetool/format/tcg_helper_h.py
++++ b/scripts/tracetool/format/tcg_helper_h.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/format/tcg_helper_wrapper_h.py b/scripts/tracetool/format/tcg_helper_wrapper_h.py
+index 6adeab74df..0c5a9797d1 100644
+--- a/scripts/tracetool/format/tcg_helper_wrapper_h.py
++++ b/scripts/tracetool/format/tcg_helper_wrapper_h.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import out
+diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform.py
+index 8fd4dcf20d..ea8b27799d 100644
+--- a/scripts/tracetool/transform.py
++++ b/scripts/tracetool/transform.py
+@@ -9,7 +9,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ def _transform_type(type_, trans):
+diff --git a/scripts/tracetool/vcpu.py b/scripts/tracetool/vcpu.py
+index 0b104e4f15..b54e4f4e7a 100644
+--- a/scripts/tracetool/vcpu.py
++++ b/scripts/tracetool/vcpu.py
+@@ -10,7 +10,7 @@
+ __license__    = "GPL version 2 or (at your option) any later version"
+ 
+ __maintainer__ = "Stefan Hajnoczi"
+-__email__      = "stefanha@linux.vnet.ibm.com"
++__email__      = "stefanha@redhat.com"
+ 
+ 
+ from tracetool import Arguments, try_import
+-- 
+2.21.3
+
 
