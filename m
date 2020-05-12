@@ -1,82 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYSDy-00074a-MW
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 06:33:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53974)
+	id 1jYSu7-0000tQ-0z
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 07:16:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDr-00072Z-Gd
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:17 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:21560
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYSu6-0000sc-2d
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 07:16:54 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53624
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDo-0007Xk-QH
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:14 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYSu5-0001Ok-Bd
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 07:16:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589279592;
+ s=mimecast20190719; t=1589282212;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eW6bfQ4PBPfgnbJADVXdHyk1e9elM2KC/4eDs8BhUVc=;
- b=iPNW8SBr1DoK3kFXJD0y/+aDNr8YkLb1JkrTkzkhq2NaKEnupGetgry6jyiSwvbQNB9rpN
- HXE4gKVY0Nv9UsFI8P7PzEBDivX/zTtTQ6Z7NFHvtylExopDIgYMAQRHOsdamOZ5dzHoUw
- ojl8PBETz4b9WDAoshv6ZAhyCesp/kU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-233-F5pBgJfUMayXqJF1fve1eg-1; Tue, 12 May 2020 06:33:10 -0400
-X-MC-Unique: F5pBgJfUMayXqJF1fve1eg-1
-Received: by mail-wm1-f72.google.com with SMTP id j5so9765440wmi.4
- for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 03:33:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=eW6bfQ4PBPfgnbJADVXdHyk1e9elM2KC/4eDs8BhUVc=;
- b=TSXv3k1Uhq2pHGzWHDq1xCTV5FrYSEqVG+afzfYyZDT3u7vT5Wgcfk13t3PFXhg1Fg
- fB7EcRQPFFdbBcsMzG6c+E11tUIt+YhWOX3HOFdZ5CUXgFPW8+kW3CLLUP4YGV/m/89q
- ilDpTcopOHX/rZ/tgmFftBwp/Q6d14fxKvSIoX3b2cSFIg3zV0G1YiZlSo0kNOV5AO0Z
- OPE5aAYKWREqxXSde3zoYpQmaSTX5ZkCqrPki6V3GGE/g43IqflA6mLCN93wp9LV2P4Q
- w0Ssp8LfzHrZem/Nia86RHkj2vJ0k6BeHHw8i0vQf9/4cFfq/UP7pd6j7kfhF34yNEKj
- O+hA==
-X-Gm-Message-State: AGi0Puba2ltS0VUigjsbLiXOmzO7ruHGu1hklMsZerKZO9i0jWE7Dv98
- f9AnriTbCVrOmAhw6fTA6mEvBRNzLMF8sqAl08lJKp4i3J4iUbvzSMP54ZGOXtnKO+zlPIZL4uW
- HLaDFgs5ARksqCQHZ6g==
-X-Received: by 2002:a5d:526f:: with SMTP id l15mr23961460wrc.367.1589279589595; 
- Tue, 12 May 2020 03:33:09 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKAy4y1dqGWaojxWwDczmxiyvjplmoiyIK4YplpgxZqaLOv7U32GRAJXJeKUMX6KRAwfFepYQ==
-X-Received: by 2002:a5d:526f:: with SMTP id l15mr23961434wrc.367.1589279589392; 
- Tue, 12 May 2020 03:33:09 -0700 (PDT)
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id y3sm21421190wrt.87.2020.05.12.03.33.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2020 03:33:08 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
- Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ bh=MLWC9tiJgqJ4f9t7I2NkuKApfx65ObWmgWxE+kr2YFg=;
+ b=LDvsAdyD9dKqPd3LW2kywMxcHmd6dRWGNYSvfyaHNCI7y6YyIRZFaElXGUG3epWzO7zykO
+ gxWPSeoXfadidPJhBfIstYKPN/4XTxVqmqPi6WFaXPP7WvNCTU3x9XZ/V91r7hR9KbWiTP
+ WHpFQbtZZG20vbO4WllTsRrFm6fhubQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-64-C4f_ajaDNqa9YGj5dZxytQ-1; Tue, 12 May 2020 07:16:50 -0400
+X-MC-Unique: C4f_ajaDNqa9YGj5dZxytQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9CA8C800687;
+ Tue, 12 May 2020 11:16:49 +0000 (UTC)
+Received: from linux.fritz.box (ovpn-114-74.ams2.redhat.com [10.36.114.74])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 260211036B4B;
+ Tue, 12 May 2020 11:16:42 +0000 (UTC)
+Date: Tue, 12 May 2020 13:16:41 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, kvm@vger.kernel.org,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
  Marcelo Tosatti <mtosatti@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>
-Subject: [PATCH v4 6/6] tests/migration/guestperf: Use Python 3 interpreter
-Date: Tue, 12 May 2020 12:32:38 +0200
-Message-Id: <20200512103238.7078-7-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200512103238.7078-1-philmd@redhat.com>
+ Markus Armbruster <armbru@redhat.com>,
+ Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH v4 0/6] scripts: More Python fixes
+Message-ID: <20200512111641.GJ5951@linux.fritz.box>
 References: <20200512103238.7078-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 01:41:59
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+In-Reply-To: <20200512103238.7078-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,46 +76,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 10:33:17 -0000
+X-List-Received-Date: Tue, 12 May 2020 11:16:54 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/migration/guestperf-batch.py | 2 +-
- tests/migration/guestperf-plot.py  | 2 +-
- tests/migration/guestperf.py       | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Am 12.05.2020 um 12:32 hat Philippe Mathieu-Daudé geschrieben:
+> Trivial Python3 fixes, again...
+> 
+> Since v3:
+> - Fixed missing scripts/qemugdb/timers.py (kwolf)
+> - Cover more scripts
+> - Check for __main__ in few scripts
 
-diff --git a/tests/migration/guestperf-batch.py b/tests/migration/guestperf-batch.py
-index cb150ce804..f1e900908d 100755
---- a/tests/migration/guestperf-batch.py
-+++ b/tests/migration/guestperf-batch.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python3
- #
- # Migration test batch comparison invokation
- #
-diff --git a/tests/migration/guestperf-plot.py b/tests/migration/guestperf-plot.py
-index d70bb7a557..907151011a 100755
---- a/tests/migration/guestperf-plot.py
-+++ b/tests/migration/guestperf-plot.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python3
- #
- # Migration test graph plotting command
- #
-diff --git a/tests/migration/guestperf.py b/tests/migration/guestperf.py
-index 99b027e8ba..ba1c4bc4ca 100755
---- a/tests/migration/guestperf.py
-+++ b/tests/migration/guestperf.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python3
- #
- # Migration test direct invokation command
- #
--- 
-2.21.3
+I'm not sure if the __main__ check actually provides anything useful in
+source files of standalone tools that aren't supposed to be imported
+from somewhere else. But of course, it's not wrong either.
+
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
 
