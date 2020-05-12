@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYQhd-0003DF-PR
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 04:55:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37058)
+	id 1jYQjU-0006N2-Es
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 04:57:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37304)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQhc-00039k-8F
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:55:52 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52701
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQjR-0006H5-J3
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:57:45 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:22234
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQhb-0004Mj-0K
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:55:51 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQjQ-0004f8-UP
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:57:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589273749;
+ s=mimecast20190719; t=1589273864;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=khPtlGFl/jbzeSkl95woBP+xzqQsKUvE43NL6g4ggjE=;
- b=SBMZKqrU1dzd+hcz6qCCTi1nU8DkyJeP3WV2Kp9Lzdob4UMFpzwrAOUYNaHIRWTNGesQgP
- PHtfJgHhQAHM1iN8iIGmfDHuYC+PJdMkVGp31BNGTj5z/vp+sBrQ2YtBnBNu57AeWt3bcF
- qXFZHflR4kRqx0BvcQJnOB+0kL/RTC0=
+ bh=+HkJHmvfp47qTrUnZsALifOroEeHh2ViJTllZabDSEg=;
+ b=PzpF4ETZjffIN+mHzOi47yTFRDvF1Ory113vz3xU7ZnjCuWZQF4O5N5R0Ksn+vJ9ko1YwO
+ +cHYX5gdFIy+gnM5zb2tXcM2kDAOXpT7feqHksPSnCsyBy9B63XN0NQ8AiLCcTSgXXdEe8
+ sfBfS6GxRn+DTznwIVEjlRtZD4Um8l4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-276-D3vgxvN2OXiAISZsYfXX8Q-1; Tue, 12 May 2020 04:55:44 -0400
-X-MC-Unique: D3vgxvN2OXiAISZsYfXX8Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-222-f7T9YZ2YNnWDo3XAheDU8w-1; Tue, 12 May 2020 04:57:40 -0400
+X-MC-Unique: f7T9YZ2YNnWDo3XAheDU8w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1420A0C05;
- Tue, 12 May 2020 08:55:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47FD5460;
+ Tue, 12 May 2020 08:57:39 +0000 (UTC)
 Received: from linux.fritz.box (ovpn-114-74.ams2.redhat.com [10.36.114.74])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9AC806E6E6;
- Tue, 12 May 2020 08:55:37 +0000 (UTC)
-Date: Tue, 12 May 2020 10:55:36 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F3597528C;
+ Tue, 12 May 2020 08:57:34 +0000 (UTC)
+Date: Tue, 12 May 2020 10:57:33 +0200
 From: Kevin Wolf <kwolf@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
@@ -43,21 +43,21 @@ Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>,
  Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 1/2] scripts/qemugdb: Remove shebang header
-Message-ID: <20200512085536.GA5951@linux.fritz.box>
+Subject: Re: [PATCH v3 2/2] scripts/qmp: Use Python 3 interpreter
+Message-ID: <20200512085733.GB5951@linux.fritz.box>
 References: <20200512070642.23986-1-f4bug@amsat.org>
- <20200512070642.23986-2-f4bug@amsat.org>
+ <20200512070642.23986-3-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200512070642.23986-2-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20200512070642.23986-3-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kwolf@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:04
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -78,23 +78,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 08:55:52 -0000
+X-List-Received-Date: Tue, 12 May 2020 08:57:46 -0000
 
 Am 12.05.2020 um 09:06 hat Philippe Mathieu-Daudé geschrieben:
-> These scripts are loaded as plugin by GDB (and they don't
-> have any __main__ entry point). Remove the shebang header.
-> 
-> Acked-by: Alex Bennée <alex.bennee@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  scripts/qemugdb/__init__.py  | 3 +--
->  scripts/qemugdb/aio.py       | 3 +--
->  scripts/qemugdb/coroutine.py | 3 +--
->  scripts/qemugdb/mtree.py     | 4 +---
->  scripts/qemugdb/tcg.py       | 1 -
 
-There is still a shebang line left in scripts/qemugdb/timers.py.
-
-Kevin
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
 
