@@ -1,63 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYQjU-0006N2-Es
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 04:57:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37304)
+	id 1jYSDP-0006Mn-QP
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 06:32:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQjR-0006H5-J3
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:57:45 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:22234
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDN-0006JN-Tq
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:32:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27010
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jYQjQ-0004f8-UP
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 04:57:45 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDN-0007Sm-6W
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:32:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589273864;
+ s=mimecast20190719; t=1589279564;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+HkJHmvfp47qTrUnZsALifOroEeHh2ViJTllZabDSEg=;
- b=PzpF4ETZjffIN+mHzOi47yTFRDvF1Ory113vz3xU7ZnjCuWZQF4O5N5R0Ksn+vJ9ko1YwO
- +cHYX5gdFIy+gnM5zb2tXcM2kDAOXpT7feqHksPSnCsyBy9B63XN0NQ8AiLCcTSgXXdEe8
- sfBfS6GxRn+DTznwIVEjlRtZD4Um8l4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-222-f7T9YZ2YNnWDo3XAheDU8w-1; Tue, 12 May 2020 04:57:40 -0400
-X-MC-Unique: f7T9YZ2YNnWDo3XAheDU8w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47FD5460;
- Tue, 12 May 2020 08:57:39 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-114-74.ams2.redhat.com [10.36.114.74])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F3597528C;
- Tue, 12 May 2020 08:57:34 +0000 (UTC)
-Date: Tue, 12 May 2020 10:57:33 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ content-transfer-encoding:content-transfer-encoding;
+ bh=D3s9LSGcZEYro7u0ScBs6UfFzzI5QWTXiQteI6q/kVs=;
+ b=Q/pAH9mxXJarZLgrUdMadrFo65LuiQTPtOSuIqUFmEuTzxPs3G2FQe8RXBG6ksYip/Erzy
+ AO7xfS5Be1DtSMLa9Z0lHwPYZ400ijdPhNwvGX124Pwj4u8DatmNClkaLwVu+rG1mvtFkc
+ oAwe/8sfR++Rv53Ecen5X/QMXbTwag0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-126-ksGU1VnuNCG8F9RfSJ9lMQ-1; Tue, 12 May 2020 06:32:41 -0400
+X-MC-Unique: ksGU1VnuNCG8F9RfSJ9lMQ-1
+Received: by mail-wm1-f71.google.com with SMTP id g10so2811937wme.0
+ for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 03:32:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=D3s9LSGcZEYro7u0ScBs6UfFzzI5QWTXiQteI6q/kVs=;
+ b=dMJ+SosJD1V6kWUt++1HuAW/Wgz5d/OHsYXZDvzziaO7uHi9aJ0xcLo2NCPSudtSDQ
+ CM9zUIiElYBLqd3geretcYJUvqOCq87PaLYIeKfxryXdXTrgMTFp8VH9ePlJTm+6X1Rs
+ 7BTr8S4RUuGSfYlNoAjl9Nrb/BBAElDsTwE4N1lKsrpE5lPUOEzB9DZT6w3tFzfVcipg
+ AmA1N/fWyQBb6m2+ARaDIbSzTUG5pVQrfpWro4xYbWUF3l/4NHb8zzHKMLMI/cAPoEXJ
+ G1m1ps0m+tFqW4l7aZDM3tZqX+uEJoWTQ6yVOByP/RnSJHbJT4M3oud0JA3DnznPdThb
+ kxMQ==
+X-Gm-Message-State: AGi0PuadxjvCJz8jfTOhv+qHsTNAQQa83MkAh+2xtcpDbAZ8pcrSUo+o
+ TDjT9VjR+gu5C9sFuLmjrfMfSUUWExzZcb6lYZGphRdvRToQaCQDTYD/w4JRn5H01JI2r0qUkTL
+ PO9RzohbEEiyqaryMsA==
+X-Received: by 2002:a7b:c4da:: with SMTP id g26mr20748012wmk.3.1589279560418; 
+ Tue, 12 May 2020 03:32:40 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI7UX/2eCYXEuygt24GZ0cIrBaT7G/B+iwW2cYEEuIZJysOnDbHZJBLcIIaLOSrWhvw7mpSHA==
+X-Received: by 2002:a7b:c4da:: with SMTP id g26mr20747977wmk.3.1589279560089; 
+ Tue, 12 May 2020 03:32:40 -0700 (PDT)
+Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id x5sm23249077wro.12.2020.05.12.03.32.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 May 2020 03:32:39 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 2/2] scripts/qmp: Use Python 3 interpreter
-Message-ID: <20200512085733.GB5951@linux.fritz.box>
-References: <20200512070642.23986-1-f4bug@amsat.org>
- <20200512070642.23986-3-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>
+Subject: [PATCH v4 0/6] scripts: More Python fixes
+Date: Tue, 12 May 2020 12:32:32 +0200
+Message-Id: <20200512103238.7078-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200512070642.23986-3-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:05
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -78,11 +93,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 08:57:46 -0000
+X-List-Received-Date: Tue, 12 May 2020 10:32:46 -0000
 
-Am 12.05.2020 um 09:06 hat Philippe Mathieu-Daudé geschrieben:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Trivial Python3 fixes, again...
 
-Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Since v3:
+- Fixed missing scripts/qemugdb/timers.py (kwolf)
+- Cover more scripts
+- Check for __main__ in few scripts
+
+Since v2:
+- Remove patch updating MAINTAINERS
+
+Since v1:
+- Added Alex Bennée A-b tags
+- Addressed John Snow review comments
+  - Use /usr/bin/env
+  - Do not modify os.path (dropped last patch)
+
+Philippe Mathieu-Daudé (6):
+  scripts/qemugdb: Remove shebang header
+  scripts/qemu-gdb: Use Python 3 interpreter
+  scripts/qmp: Use Python 3 interpreter
+  scripts/kvm/vmxcap: Use Python 3 interpreter and add pseudo-main()
+  scripts/modules/module_block: Use Python 3 interpreter & add
+    pseudo-main
+  tests/migration/guestperf: Use Python 3 interpreter
+
+ scripts/kvm/vmxcap                 |  7 ++++---
+ scripts/modules/module_block.py    | 31 +++++++++++++++---------------
+ scripts/qemu-gdb.py                |  4 ++--
+ scripts/qemugdb/__init__.py        |  3 +--
+ scripts/qemugdb/aio.py             |  3 +--
+ scripts/qemugdb/coroutine.py       |  3 +--
+ scripts/qemugdb/mtree.py           |  4 +---
+ scripts/qemugdb/tcg.py             |  1 -
+ scripts/qemugdb/timers.py          |  1 -
+ scripts/qmp/qom-get                |  2 +-
+ scripts/qmp/qom-list               |  2 +-
+ scripts/qmp/qom-set                |  2 +-
+ scripts/qmp/qom-tree               |  2 +-
+ tests/migration/guestperf-batch.py |  2 +-
+ tests/migration/guestperf-plot.py  |  2 +-
+ tests/migration/guestperf.py       |  2 +-
+ 16 files changed, 33 insertions(+), 38 deletions(-)
+
+-- 
+2.21.3
 
 
