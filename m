@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYP06-0004Jr-2F
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 03:06:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53894)
+	id 1jYP09-0004TE-GT
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 03:06:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jYP03-0004F8-TG; Tue, 12 May 2020 03:06:47 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:35537)
+ id 1jYP08-0004Ov-1E; Tue, 12 May 2020 03:06:52 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:36822)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jYP03-000849-6j; Tue, 12 May 2020 03:06:47 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id h15so7913598edv.2;
- Tue, 12 May 2020 00:06:46 -0700 (PDT)
+ id 1jYP07-00085D-8R; Tue, 12 May 2020 03:06:51 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id z5so9311112ejb.3;
+ Tue, 12 May 2020 00:06:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=O53LT9XpVwSPMFK4w2PFhzkO8rIO707i+mYTAM8vrqo=;
- b=BPVRJjBgnA3w4caDu0x8u3D5q+AUBj1TVz0lPYgJb8UxOFuhF2tJ3r67D3ENujcqpc
- EJS6Pm1drXWnJ11Lt3hE4x0iLX+l9Xd9WjA5oFpIuR81Md+/hKGXXJggOOgUlKT1yUxh
- Jchd4mUSmWBOCuP5veW3EDWVoPZUWuMZ5GmmhA6ZZlBT3nzH30wf9HdH4xmJ1Q1pM45k
- mIVGX3gUhFPHHGm/o4jzqqsq9mpZIaQVbIrkJKZ290Z7XCp+SH6GJM1aiEYd56XFag+y
- 4ozxDu+A/6LHlhge1iIUCDMl4go6/9aVoTGlvgjFzmjT+8DI44JMnr4Ap/cjx5oPuPQY
- 5B3A==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=6Uadd1ojRpaMx0mLMXfks6u0zzq06r1l8ClSFuRdt/0=;
+ b=Lve2YfLxhhXeSgv5Krij9v7iClkHFU9IYLL1EMzOtur3IbsSeX5J2PhnP3ea5rcDow
+ KCO/7Ix8CN9b+m8CsAIY0pmFSuliKq3InStM3c/YPkvHoUAI+y/XOstktewpaTglkXEe
+ R029xn2fabGHuoCSfdrlWuPlCbDMHh8/rZPfQBZ3f/I/qECKUWyVOt/48IDcOiOJM+th
+ Acida2utRJvngm7vbXkBRC04KtD2Tgqr7TWTLwHQjfEi/LDTgJaXwtDV0yg21iRrQduo
+ cboOXzAuYYEkATvUfF2mEzCPhSE0PHvgXw6PKJkBHZ5g7KKbzBAPoFbjnYSPlwkrU4xY
+ YR1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=O53LT9XpVwSPMFK4w2PFhzkO8rIO707i+mYTAM8vrqo=;
- b=ssb8/Ti2DfSTon+wcH6LyuAaHnjtV8Gs62s2HLYdpibybe1PbtCAGIn3zIaW2TIfth
- ORGkZllxfOMBnC5IkJ5P4evo4HugH99DCrGZ9XdvKuU0SLubniZ6Ocf9rguY4t/j0gWA
- cVcndUxvdNmRgj2jYihdpT66vCpWUFvSAXGQNehYnz2wmUVAywsdjtgWrsWykY4UsYdl
- fBG0/FcAwVJZPcpS0g0lL8zJaruW3qdFo6hPhReqR0pjyHbYLEdhyY2I7polTzgbveou
- PJe6Dq4K1fe2dDBBCB4jOvHk78r/pIh5aJsm7FjjMGzewB78oR9fgNNPOUoy8WIysoQM
- XynA==
-X-Gm-Message-State: AGi0PuYZopJtQQLpRq3+m8MufZys4eqpMhgOmPsVchAA3Wsy9NgIU+Ou
- oGKFXgYkNPF37tb9Y+F1WNfgPRXjhg0=
-X-Google-Smtp-Source: APiQypJvyhzrJAdrXVvj8uIBesdmGSBX+wtQSS7k/BZ4yTivh6nzaZyVch8mdkCY5Gs/R6bubf1xHg==
-X-Received: by 2002:a50:c047:: with SMTP id u7mr9273128edd.208.1589267204824; 
- Tue, 12 May 2020 00:06:44 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=6Uadd1ojRpaMx0mLMXfks6u0zzq06r1l8ClSFuRdt/0=;
+ b=jPS4w/Z1c5gNnxNPeqhU0I4ODDqG0MpsRHjptUu07lILvX6RekKCS0TbYheQVmias1
+ AxaZtdUFVL8khZJmCfR1PEFgZOeJTzqA9vx9MxCz7e1ydYhFn/rEL2A5FYa4N6x6odbz
+ Um0FgHTwjIvFCu8t7d3s9gJDsSXLIxpE2TAmGxx1n4FePXKqs1y1JiPp4UbuOFlUqtZl
+ pXNcZ7i8kdw+4eR8YcQcaY7SAlzuQBKYhvL8HsPTJIm7rjhPqSguMm443EMPZZgAwle6
+ q74d5ZlVVZmQrgShOFuYi5zdjAH8RRzQ2FYEYY8ujnVlOiX6BFrF2O4SHjGXE9ba7A+z
+ 8ZYQ==
+X-Gm-Message-State: AOAM531M162Ntii+2R3vH0LRIKmMDID1JBoM2O5flRY+VuBHRq5DOlC9
+ 9Dm8UKzrYMWd2u8W4GnHz9Waq6ZSpqM=
+X-Google-Smtp-Source: ABdhPJyuIeaK/oBHofNRayb58D3awM1asnahvw86j9vw44VhzMHZmbFRxKnXxl0x1VRgby9/5HHuoQ==
+X-Received: by 2002:a17:906:f84b:: with SMTP id
+ ks11mr4649807ejb.114.1589267208486; 
+ Tue, 12 May 2020 00:06:48 -0700 (PDT)
 Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id ch8sm247345ejb.53.2020.05.12.00.06.43
+ by smtp.gmail.com with ESMTPSA id ch8sm247345ejb.53.2020.05.12.00.06.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2020 00:06:44 -0700 (PDT)
+ Tue, 12 May 2020 00:06:47 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -55,16 +56,18 @@ Cc: Fam Zheng <fam@euphon.net>,
  Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
  Cleber Rosa <crosa@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 0/2] scripts: More Python fixes
-Date: Tue, 12 May 2020 09:06:40 +0200
-Message-Id: <20200512070642.23986-1-f4bug@amsat.org>
+Subject: [PATCH v3 2/2] scripts/qmp: Use Python 3 interpreter
+Date: Tue, 12 May 2020 09:06:42 +0200
+Message-Id: <20200512070642.23986-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200512070642.23986-1-f4bug@amsat.org>
+References: <20200512070642.23986-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -87,34 +90,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 07:06:48 -0000
+X-List-Received-Date: Tue, 12 May 2020 07:06:52 -0000
 
-Trivial Python3 fixes, again...
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ scripts/qmp/qom-get  | 2 +-
+ scripts/qmp/qom-list | 2 +-
+ scripts/qmp/qom-set  | 2 +-
+ scripts/qmp/qom-tree | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-Since v2:
-- Remove patch updating MAINTAINERS
-
-Since v1:
-- Added Alex Bennée A-b tags
-- Addressed John Snow review comments
-  - Use /usr/bin/env
-  - Do not modify os.path (dropped last patch)
-
-Philippe Mathieu-Daudé (2):
-  scripts/qemugdb: Remove shebang header
-  scripts/qmp: Use Python 3 interpreter
-
- scripts/qemugdb/__init__.py  | 3 +--
- scripts/qemugdb/aio.py       | 3 +--
- scripts/qemugdb/coroutine.py | 3 +--
- scripts/qemugdb/mtree.py     | 4 +---
- scripts/qemugdb/tcg.py       | 1 -
- scripts/qmp/qom-get          | 2 +-
- scripts/qmp/qom-list         | 2 +-
- scripts/qmp/qom-set          | 2 +-
- scripts/qmp/qom-tree         | 2 +-
- 9 files changed, 8 insertions(+), 14 deletions(-)
-
+diff --git a/scripts/qmp/qom-get b/scripts/qmp/qom-get
+index 007b4cd442..7c5ede91bb 100755
+--- a/scripts/qmp/qom-get
++++ b/scripts/qmp/qom-get
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ ##
+ # QEMU Object Model test tools
+ #
+diff --git a/scripts/qmp/qom-list b/scripts/qmp/qom-list
+index 03bda3446b..bb68fd65d4 100755
+--- a/scripts/qmp/qom-list
++++ b/scripts/qmp/qom-list
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ ##
+ # QEMU Object Model test tools
+ #
+diff --git a/scripts/qmp/qom-set b/scripts/qmp/qom-set
+index c37fe78b00..19881d85e9 100755
+--- a/scripts/qmp/qom-set
++++ b/scripts/qmp/qom-set
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ ##
+ # QEMU Object Model test tools
+ #
+diff --git a/scripts/qmp/qom-tree b/scripts/qmp/qom-tree
+index 1c8acf61e7..fa91147a03 100755
+--- a/scripts/qmp/qom-tree
++++ b/scripts/qmp/qom-tree
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ ##
+ # QEMU Object Model test tools
+ #
 -- 
 2.21.3
 
