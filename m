@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYSDw-00074J-W9
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 06:33:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53956)
+	id 1jYSDy-00074a-MW
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 06:33:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDn-000721-EF
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45725
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDr-00072Z-Gd
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:17 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:21560
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDk-0007X9-4D
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:11 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYSDo-0007Xk-QH
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 06:33:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589279587;
+ s=mimecast20190719; t=1589279592;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ds4l+7fZ3gMORFydzgGtrLwAaPpZWtJvEPP6Ecz3QgY=;
- b=R6TlvJWcujM+79/FFFj8EWoTJXpSs3ZBNsHpuvhwK8nOr9Rr4aGGmgeiW7uEuhyACTL8MF
- FchymfnVkQRLWI0KIH6HlhLbqQxjatbi0EYbMUedBq11pKY2VO+d5/jPoeE+NAFaWfP8zX
- ZvDXle84C4PBuv2vQ7++A4pvS6r0baI=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-283-95xbgFWBNkeU_BOEUI_vhQ-1; Tue, 12 May 2020 06:33:05 -0400
-X-MC-Unique: 95xbgFWBNkeU_BOEUI_vhQ-1
-Received: by mail-wr1-f69.google.com with SMTP id 30so6720093wrq.15
- for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 03:33:05 -0700 (PDT)
+ bh=eW6bfQ4PBPfgnbJADVXdHyk1e9elM2KC/4eDs8BhUVc=;
+ b=iPNW8SBr1DoK3kFXJD0y/+aDNr8YkLb1JkrTkzkhq2NaKEnupGetgry6jyiSwvbQNB9rpN
+ HXE4gKVY0Nv9UsFI8P7PzEBDivX/zTtTQ6Z7NFHvtylExopDIgYMAQRHOsdamOZ5dzHoUw
+ ojl8PBETz4b9WDAoshv6ZAhyCesp/kU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-233-F5pBgJfUMayXqJF1fve1eg-1; Tue, 12 May 2020 06:33:10 -0400
+X-MC-Unique: F5pBgJfUMayXqJF1fve1eg-1
+Received: by mail-wm1-f72.google.com with SMTP id j5so9765440wmi.4
+ for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 03:33:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ds4l+7fZ3gMORFydzgGtrLwAaPpZWtJvEPP6Ecz3QgY=;
- b=Ax53zrndL08Z0FhVwy8a3iWkyWn2RiP/y8WZOJSKp6hiN/4bOAsamyHq4jYnDIyb/0
- bLBVITOyO/6pbttMfU76maEdtRbtr0pyMM0JVTPaJm0e7Vtn1xJ8Z8a4boaxB9W9vdd5
- to2i7fJy+XQ4JyKRPzN+hZop1NGnoRC+9n/jQb/0r8SpB43OqnHMM7T1QoTrZHSyuifV
- 6w4nXTcG1sDPH4Wp81a819Y9FGy1E/+WYr2xFJ4RxWreJZnMp0LhK2jlOB6f8jUrIkEt
- u8dl70UHUuFEXSbkScTdW+ukVnaHQmFF40cLVFszFnwk8Q8u9Kk4qGT2btSWDLvGuI+G
- dI+A==
-X-Gm-Message-State: AGi0PubNMTnA4Qoz82O9FHkqNJghH4hCNvjASdkqKC86PWHl4SgWh8Bb
- 0uEquOW7Su3Z4Kip/dMINTO+MzaYt5ndQjl4KoUjXh8W36268Xt4SjgiHPq8Vgij2gJtmCLihPn
- uqSbp2Tzxjrm7HjjcGw==
-X-Received: by 2002:a1c:e4c1:: with SMTP id b184mr20242346wmh.4.1589279584721; 
- Tue, 12 May 2020 03:33:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI/laT2LsXrPFPVBKvEk7pWPnx7ibaLAWboB7OwBuZFbrY2ibbD5F30XX0MAqw3dY3xhmeCtA==
-X-Received: by 2002:a1c:e4c1:: with SMTP id b184mr20242317wmh.4.1589279584461; 
- Tue, 12 May 2020 03:33:04 -0700 (PDT)
+ bh=eW6bfQ4PBPfgnbJADVXdHyk1e9elM2KC/4eDs8BhUVc=;
+ b=TSXv3k1Uhq2pHGzWHDq1xCTV5FrYSEqVG+afzfYyZDT3u7vT5Wgcfk13t3PFXhg1Fg
+ fB7EcRQPFFdbBcsMzG6c+E11tUIt+YhWOX3HOFdZ5CUXgFPW8+kW3CLLUP4YGV/m/89q
+ ilDpTcopOHX/rZ/tgmFftBwp/Q6d14fxKvSIoX3b2cSFIg3zV0G1YiZlSo0kNOV5AO0Z
+ OPE5aAYKWREqxXSde3zoYpQmaSTX5ZkCqrPki6V3GGE/g43IqflA6mLCN93wp9LV2P4Q
+ w0Ssp8LfzHrZem/Nia86RHkj2vJ0k6BeHHw8i0vQf9/4cFfq/UP7pd6j7kfhF34yNEKj
+ O+hA==
+X-Gm-Message-State: AGi0Puba2ltS0VUigjsbLiXOmzO7ruHGu1hklMsZerKZO9i0jWE7Dv98
+ f9AnriTbCVrOmAhw6fTA6mEvBRNzLMF8sqAl08lJKp4i3J4iUbvzSMP54ZGOXtnKO+zlPIZL4uW
+ HLaDFgs5ARksqCQHZ6g==
+X-Received: by 2002:a5d:526f:: with SMTP id l15mr23961460wrc.367.1589279589595; 
+ Tue, 12 May 2020 03:33:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKAy4y1dqGWaojxWwDczmxiyvjplmoiyIK4YplpgxZqaLOv7U32GRAJXJeKUMX6KRAwfFepYQ==
+X-Received: by 2002:a5d:526f:: with SMTP id l15mr23961434wrc.367.1589279589392; 
+ Tue, 12 May 2020 03:33:09 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id w15sm21193073wrl.73.2020.05.12.03.33.03
+ by smtp.gmail.com with ESMTPSA id y3sm21421190wrt.87.2020.05.12.03.33.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2020 03:33:03 -0700 (PDT)
+ Tue, 12 May 2020 03:33:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>,
@@ -61,10 +61,9 @@ Cc: Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Marcelo Tosatti <mtosatti@redhat.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>
-Subject: [PATCH v4 5/6] scripts/modules/module_block: Use Python 3 interpreter
- & add pseudo-main
-Date: Tue, 12 May 2020 12:32:37 +0200
-Message-Id: <20200512103238.7078-6-philmd@redhat.com>
+Subject: [PATCH v4 6/6] tests/migration/guestperf: Use Python 3 interpreter
+Date: Tue, 12 May 2020 12:32:38 +0200
+Message-Id: <20200512103238.7078-7-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200512103238.7078-1-philmd@redhat.com>
 References: <20200512103238.7078-1-philmd@redhat.com>
@@ -74,9 +73,9 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:20:15
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 01:41:59
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -101,62 +100,41 @@ X-List-Received-Date: Tue, 12 May 2020 10:33:17 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- scripts/modules/module_block.py | 31 ++++++++++++++++---------------
- 1 file changed, 16 insertions(+), 15 deletions(-)
+ tests/migration/guestperf-batch.py | 2 +-
+ tests/migration/guestperf-plot.py  | 2 +-
+ tests/migration/guestperf.py       | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/scripts/modules/module_block.py b/scripts/modules/module_block.py
-index f23191fac1..2e7021b952 100644
---- a/scripts/modules/module_block.py
-+++ b/scripts/modules/module_block.py
+diff --git a/tests/migration/guestperf-batch.py b/tests/migration/guestperf-batch.py
+index cb150ce804..f1e900908d 100755
+--- a/tests/migration/guestperf-batch.py
++++ b/tests/migration/guestperf-batch.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/env python3
  #
- # Module information generator
+ # Migration test batch comparison invokation
  #
-@@ -10,7 +10,6 @@
- # This work is licensed under the terms of the GNU GPL, version 2.
- # See the COPYING file in the top-level directory.
- 
--import sys
- import os
- 
- def get_string_struct(line):
-@@ -80,19 +79,21 @@ def print_bottom(fheader):
- #endif
- ''')
- 
--# First argument: output file
--# All other arguments: modules source files (.c)
--output_file = sys.argv[1]
--with open(output_file, 'w') as fheader:
--    print_top(fheader)
-+if __name__ == '__main__':
-+    import sys
-+    # First argument: output file
-+    # All other arguments: modules source files (.c)
-+    output_file = sys.argv[1]
-+    with open(output_file, 'w') as fheader:
-+        print_top(fheader)
- 
--    for filename in sys.argv[2:]:
--        if os.path.isfile(filename):
--            process_file(fheader, filename)
--        else:
--            print("File " + filename + " does not exist.", file=sys.stderr)
--            sys.exit(1)
-+        for filename in sys.argv[2:]:
-+            if os.path.isfile(filename):
-+                process_file(fheader, filename)
-+            else:
-+                print("File " + filename + " does not exist.", file=sys.stderr)
-+                sys.exit(1)
- 
--    print_bottom(fheader)
-+        print_bottom(fheader)
- 
--sys.exit(0)
-+    sys.exit(0)
+diff --git a/tests/migration/guestperf-plot.py b/tests/migration/guestperf-plot.py
+index d70bb7a557..907151011a 100755
+--- a/tests/migration/guestperf-plot.py
++++ b/tests/migration/guestperf-plot.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ #
+ # Migration test graph plotting command
+ #
+diff --git a/tests/migration/guestperf.py b/tests/migration/guestperf.py
+index 99b027e8ba..ba1c4bc4ca 100755
+--- a/tests/migration/guestperf.py
++++ b/tests/migration/guestperf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ #
+ # Migration test direct invokation command
+ #
 -- 
 2.21.3
 
