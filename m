@@ -1,21 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYbDL-00069R-Gc
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 16:09:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51734)
+	id 1jYbO6-0005m3-N6
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 16:20:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jYbDJ-00068s-IL; Tue, 12 May 2020 16:09:17 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:44145)
+ id 1jYbO4-0005kS-AW; Tue, 12 May 2020 16:20:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:49383)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jYbDI-0001uT-Fv; Tue, 12 May 2020 16:09:17 -0400
+ id 1jYbO3-0004S8-1D; Tue, 12 May 2020 16:20:23 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N95mR-1j4Kz23MmN-0163pk; Tue, 12 May 2020 22:09:04 +0200
-From: Laurent Vivier <laurent@vivier.eu>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1McGp2-1iyRgU3WPM-00ck8w; Tue, 12 May 2020 22:20:11 +0200
+Subject: Re: [PATCH 2/2] linux-user: add do_setsockopt CAN_RAW_FD_FRAMES
+ support
 To: Tomas Krcka <tomas.krcka@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
 References: <20200506132114.76406-1-tomas.krcka@gmail.com>
+ <20200506132114.76406-2-tomas.krcka@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
@@ -58,34 +61,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Subject: Re: [PATCH 1/2] linux-user: add do_setsockopt SOL_CAN_RAW
- CAN_RAW_FILTER support
-Message-ID: <5cf6dee4-7bfa-76b2-9f44-14bfc7f3d510@vivier.eu>
-Date: Tue, 12 May 2020 22:09:01 +0200
+Message-ID: <70c3f462-d1eb-73c6-745b-8872ef0a6f12@vivier.eu>
+Date: Tue, 12 May 2020 22:20:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200506132114.76406-1-tomas.krcka@gmail.com>
+In-Reply-To: <20200506132114.76406-2-tomas.krcka@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Kr5cnNnJP3am184o777Aa5utcB0Tmo2301IiygVZsBYt84NCmJu
- 7T+WVTkaaFGFo1BfK8bSeB5Way22Xe/2mCtVSX+gmx71EHOwRk/K3VHfblcUrieHAyO8iK8
- xfEWEwvhuuyTIXlkD1lKFx4RBDrnxWXU2TY1jXTSVQ97kPuvzrCRYTeNs2fpD/I+pVvTUUj
- wRM691FWMtgSIn95cqzlw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:M+y3S525V0s=:fvKI0FSswwktw5Et6OHnLs
- JroHuECTiDCdQhWDvOft1CJXFw1hHwKBbSw7U/mxsDVO170lTNGlrDUe3Rso4MX2YGFzjzdxQ
- oqJt+Bb2fEnLpyvtWINfVQXAI4Mcto8g7yASP/E08vSmhRyPtAF/82oF9zT9dlbnwROeYtaQ6
- n1WGvI8Qm4En/Cv3u35pbu8DBtxv9EzqiUxU1QU/pxaf1XE7coYBAk2kxOwdRpmK+yKl87YRJ
- ZUf8StjzdAIS2En8zcv+SDI0tEfu30uV8e7PR+kd22PcOn4016u3wS5gxb7v/1LNIcay5QvaY
- vdGivX0QyperQ1j9J46ZUyN31+ljn4ItslcLrd97YXuAyt8Z0BDMdSNDQIWuDfo/Q7F9hgBSr
- xwpwRRFLTW0caJUFTLV0fl/cMNrWKiqDNdBurciRNy0q/ltvClpgNM5+dqu4MiE5juAFppmqw
- azOQ29yF6FjM0CF7Dl0Vclh/6Q/5sKFhU4oF9JdYf5KW7FwiGASePCa+q0GngrVGJV0M4OVIk
- zf/0siJb4pVGNQ+2ICCglnOcjba9rRfnfyYtBwhl2dDn/ymMW1NLtgp4gwRbEhC4hymq4w3iC
- JHFMseXMXr1zoZsU1ke+KEsVPpyBXHZ5QWtGKBJDbJxFqg5WwV8Ciu6EOU9WvOlfldZ7yxa+0
- bXqQFLV1l1v85xKmY7Mc5gc4W4YCEZzpKzQCuu86SLqs0lC49xkC07TWj+3SnXANpwlBwdLy/
- 3gsVFkqDukX1BJFcQlQHzyZw+Ag0duxpU99afm+IMA69bSHtUZ/ezvzX2Z4MTMm+D3f5Uvs3o
- rfxBpvp6EdlI2rtVOQObn7TWUGIH6IwjLRvUf2E3hoUUAK1wNXBQixUMq/9k1eLiHhq0Tgt
+X-Provags-ID: V03:K1:WMDM2ekR7RKBlo8K5oWhrE2qZVKTAV5Vegd5PAgQiPpAAYRq0M/
+ 9gsE5FHRzafxUJ4Xg60eRWX5Jg+jYOLx50f9BU8RHa94bvMltvS5wuVlUfLDyf/NsgQyfv2
+ hu/Gt5oycQcnf38PnFz2mMzkiE2+HyKYkMp21X06ndZeEXQdSZn81EW8rs9i7EheDzFvxcg
+ 4CWw/1dl4zg+nf7XEUiCg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:cGJBYSfY30Q=:2DioiJTEYQwn9rdeiZmLXW
+ fgee02Bp5RXHbjtp9D3LkeRZS0fvttu5zmAtENMpMotPQabHhf53zyPp6F6/LlDhd0cgRiAok
+ 4K+iH2KjSLDRAfmpImYYI5Tg6E3OkBpPAH7Qj8bwHZErlZq4+HhGZbA2mTxkFToHbWqR1lVt0
+ 1UEkYpmtfk7JMloJih3LefOwhOgQZUWQZmfzmCEjGqL3MKoXlM76mm1QabsNZvBlYODTgiQ1Q
+ NuB4Yx0GLnglEo/pz26LRDTU0RyDogUhImrF2ebbtGlYTExolOx7sI41WlxvRPlk+s7+CiV4Z
+ Cj2sY3BsLMQOAVFZcU1vFwAd5OxE/VKuqmJL0UNVgFFo5b8K8NsLZP6eSOXkqL536igrZGk+n
+ v0Y/ldLfsMBjgTT8J8f4XNmwiQWfrfvzfGnc+rqkeP5BbPpUNCqgUqQVViVU1PMmW+5egIA4H
+ EOyTldP/mxXma0EZdb+rnq7dgZKSN+gTwRjBl1zjgpHWryIF4L3ttSves//RcUVCnAlw1psoI
+ k4zQF+Lfnr6fSCCxIXVvy8EfbfTPbT1D1s9LlMtwK3zZVaSTfsjKTAfisT0j0hF5qiVG5x3Cb
+ VYIXtE9z6mg6Eziit6V6jw23jWLTAGbE73bEqLYE1fFMGTMIHGzH92YQnrhJ/lX0NwC836Mfd
+ vihe1W5GGjxYaxhxuaTslz6wwTY+PHteYO7E2xDM602L1vZPNEfRgsj5sVtlaA7SOLrRza4B1
+ IOxk8W4/5Tiwtup5bBtV8D+8ICOkYgkDISMH0mf3UdJZc4Sq1Aka3/3/mjX1bDSXdSPI3Qgcm
+ gbTv8YJxz9LkwHcfilPQ+A/WCJD2bkwHTxsiCUqNnd9ao5cLI7ki6VRhCXYPRjbsUvM9ezS
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 16:09:14
@@ -107,100 +108,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 20:09:17 -0000
+X-List-Received-Date: Tue, 12 May 2020 20:20:24 -0000
 
 Le 06/05/2020 à 15:21, Tomas Krcka a écrit :
 > Signed-off-by: Tomas Krcka <tomas.krcka@gmail.com>
 > ---
->  linux-user/syscall.c | 34 ++++++++++++++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
+>  linux-user/syscall.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
 > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 05f03919ff..88d4c85b70 100644
+> index 88d4c85b70..f751ed8b37 100644
 > --- a/linux-user/syscall.c
 > +++ b/linux-user/syscall.c
-> @@ -56,6 +56,7 @@
->  #include <linux/wireless.h>
->  #include <linux/icmp.h>
->  #include <linux/icmpv6.h>
-> +#include <linux/can/raw.h>
->  #include <linux/errqueue.h>
->  #include <linux/random.h>
->  #ifdef CONFIG_TIMERFD
-> @@ -2111,6 +2112,39 @@ static abi_long do_setsockopt(int sockfd, int level, int optname,
->              goto unimplemented;
+> @@ -2141,6 +2141,19 @@ static abi_long do_setsockopt(int sockfd, int level, int optname,
+>              g_free(can_filters);
+>              break;
 >          }
->          break;
-> +    case SOL_CAN_RAW:
-> +        switch (optname) {
-> +        case CAN_RAW_FILTER:
+> +        case CAN_RAW_FD_FRAMES:
 > +        {
-> +            if (optlen % sizeof(struct can_filter) != 0) {
+> +            val = 0;
+
+You don't need to set val to 0.
+
+> +            if (optlen < sizeof(uint32_t)) {
+
+kernel checks for the exact size and fails otherwise.
+
 > +                return -TARGET_EINVAL;
 > +            }
-> +
-> +            struct can_filter  *can_filters = NULL;
-
-Move the declaration to the top of the block.
-
-> +            if (optlen != 0) {
-
-If you check, like in kernel, "optlen > CAN_RAW_FILTER_MAX *
-sizeof(struct can_filter)", you can exit here (and no need to set
-can_filters to NULL).
-
-> +                can_filters = g_new0(struct can_filter, optlen);
-> +
-> +                if (!can_filters) {
-
-no need to check the result, g_new0() aborts in case of problem.
-
-> +                    return -TARGET_ENOMEM;
-> +                }
-> +                if (copy_from_user(can_filters, optval_addr, optlen)) {
-> +                    g_free(can_filters);
-> +                    return -TARGET_EFAULT;
-> +                }
-
-It would be cleaner not to use the copy_from_user() as we need to
-byte-swap all the fields in the loop below (I know it's done like that
-in SOL_ICMPV6...)
-
-> +                for (val = 0; val < optlen / sizeof(struct can_filter); val++) {
-> +                    can_filters[val].can_id = tswap32(can_filters[val].can_id);
-> +                    can_filters[val].can_mask = tswap32(can_filters[val].can_mask);
-> +                }
-
-So, something like:
-
-target_can_filters = lock_user(VERIFY_READ, optval_addr, optlen, 1);
-for (val = 0; val < optlen / sizeof(struct can_filter); val++) {
-    __get_user(can_filters[val].can_id, \
-               &target_can_filters[val].can_id);
-    __get_user(can_filters[val].can_mask, \
-               &target_can_filters[val].can_mask);
-}
-unlock_user(target_can_filters);
-
+> +            if (get_user_u32(val, optval_addr)) {
+> +                return -TARGET_EFAULT;
 > +            }
 > +            ret = get_errno(setsockopt(sockfd, level, optname,
-> +                                        can_filters, optlen));
-> +            g_free(can_filters);
+> +                                    &val, sizeof(val)));
 > +            break;
 > +        }
-> +        default:
-> +            goto unimplemented;
-> +        }
-> +        break;
->      case SOL_RAW:
->          switch (optname) {
->          case ICMP_FILTER:
+>          default:
+>              goto unimplemented;
+>          }
 > 
 
-Could you also update getsockopt()?
+Could you implement getsockopt() too?
 
 Thanks,
 Laurent
-
-
 
