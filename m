@@ -1,93 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYTCB-0006Ho-Iy
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 07:35:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33496)
+	id 1jYZtL-0003Mu-6Z
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2020 14:44:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jYTCA-0006GB-22
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 07:35:34 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40750
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jYTC8-000710-HJ
- for qemu-trivial@nongnu.org; Tue, 12 May 2020 07:35:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589283331;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+BiTuuhaiRCRuygJo/UfgMumeWw31HiTY05kAioh0sw=;
- b=aI5hNrAW8dWtsg8iX64oeJ+bBnCen+LPzVDJpI6j/48p3MTV4viLvyDnxCGXfnx7f0Zjch
- zf7sMIqGfqZ8EtSUZUWV8QEsREW8lVsbo8vpLJftZ/ytxRA9V6/wC3gG/0l7SyUlFjBNly
- x52UXqYwkSth8uoPvc55swUzjzPNlls=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-111-TXVKrW_UNmGtkywWHnIT_Q-1; Tue, 12 May 2020 07:35:29 -0400
-X-MC-Unique: TXVKrW_UNmGtkywWHnIT_Q-1
-Received: by mail-wr1-f70.google.com with SMTP id z10so2796607wrs.2
- for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 04:35:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1jYZtJ-0003Ix-Oo
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 14:44:33 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55289)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1jYZtI-0004UG-DT
+ for qemu-trivial@nongnu.org; Tue, 12 May 2020 14:44:33 -0400
+Received: by mail-wm1-x343.google.com with SMTP id h4so23211935wmb.4
+ for <qemu-trivial@nongnu.org>; Tue, 12 May 2020 11:44:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=6hv6Z+ErM2Tx/RhfYkWQgackaDiVa+y6R62kWHd6a3E=;
+ b=Oyts7iMKxXCUpW8TOcnr46fA2W7ESqPP+TnbbmjHpsRwPKktxl59fSzgYpXDg9snsF
+ 3j6LZml20RuocZyHMjvQBFIjqZgIANAgZeAh2Pgg6tXOfCDAMvJ3HzSxc95AfFMWaTnK
+ ueSKux0mPha6dXHChKrKR3+LUhAkf37FVv9pqk/s0kTb9880FtLEWOZMzlLsENAF1plo
+ 4xX6EGgm6DNIAOBpVeRONblrrM5U5NM/1QgFH3f7cVAYiwa6QCHXV5PLF+Tte4DWUtRp
+ EFkeFc9RrEm8n2t86JCaIb4/PhbBk/fQQiM43rVq7ZarUHp8Wz4+1A/SkmSyxW6SScjP
+ 93aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+BiTuuhaiRCRuygJo/UfgMumeWw31HiTY05kAioh0sw=;
- b=HQ772mrHPoPbj8rBECmB78VpQLP17sKv0yF18up7ypeJOXBtDtFTHhV6+L9ex9VHFh
- GAqkgDM9QiGAhi2o/7+4G75koEi3KMOGy/oUEPrHyz5X1hk/6cyamyfXJIZGGZsx0Fhg
- hk2psUqdxJBGVxCRTS1TTYQo+a411GU/aWl/eZ8AE3ji/b9rYzAJH8Sh4kuRNf6mArVi
- bI/dQtl5ARHyJGw7xQv4wvls/+Ffc029GK+tjG453MB/ppy79DCf47p5hqN5JwvubzmO
- v5anGKJCJYQqofxmYykVrZ/+myg+jzYGGPF9WppvXHWUIgkQhpnNfJLQr/svQueLpgDf
- RGyg==
-X-Gm-Message-State: AGi0PuaBRuriuLhyPaOv8cV8Q68cVZ3g9jbe4iNT6hbwOhqekpZvjEsR
- nrEpjufOwfnYsxm6yulmU/RLop1WJauEO+7Bu5z4iNKGOTNsVyGFF9/xnX8lXQGqEchJyjwpuES
- yZVSAsP9oOx9JUchP6A==
-X-Received: by 2002:a7b:c5d4:: with SMTP id n20mr38375023wmk.92.1589283328774; 
- Tue, 12 May 2020 04:35:28 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIZBWCP2oEj/S8LiXheSW7eg8C7utjhj4b5hLWz7aH6Dpnc1ic28b7BJX+0qQj2+ajALvIbPA==
-X-Received: by 2002:a7b:c5d4:: with SMTP id n20mr38374993wmk.92.1589283328508; 
- Tue, 12 May 2020 04:35:28 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:4c95:a679:8cf7:9fb6?
- ([2001:b07:6468:f312:4c95:a679:8cf7:9fb6])
- by smtp.gmail.com with ESMTPSA id g184sm16877850wmg.1.2020.05.12.04.35.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2020 04:35:27 -0700 (PDT)
-Subject: Re: [PATCH v4 4/6] scripts/kvm/vmxcap: Use Python 3 interpreter and
- add pseudo-main()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
- Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Marcelo Tosatti <mtosatti@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>
-References: <20200512103238.7078-1-philmd@redhat.com>
- <20200512103238.7078-5-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <2c1a9a41-6e94-c20b-fdbd-445e260507ec@redhat.com>
-Date: Tue, 12 May 2020 13:35:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=6hv6Z+ErM2Tx/RhfYkWQgackaDiVa+y6R62kWHd6a3E=;
+ b=HCOBBYkZOwq/j4flLAUw+uERBlstGOjm5xi0NaR61mRDpi0T8i8xWdSPJu0T4AFvQv
+ AEhhYsyGVVtFtWBm1DciItgS3GzM6KSaJjeIqS4Xcxbw2SeVrVs6xRXFKuoWtrvZXLCj
+ ZBbsnSw5WwNLXCnobmC901rHyddvo9ZQHTnxbnVail6hcp27jXVZXDC0o9MDGx67J7Iy
+ vUnUxXY5SBUFYrSJMAmhmnsZMWJlx4kw1tMBHfTjb8UyLqMTvoeiV9UYWVgfR1o+ci+U
+ epbcdYig3GTtoIgEUY0NzRODc8DANHAy/SunWduKX9tp7GLRpHUUuKJ4QiReT6FOJD2+
+ gUyQ==
+X-Gm-Message-State: AGi0PuY+HLBzjPlQE7cqFJJ6dsqx/a7RheArH0TE1uSk5WbewsFxcUDE
+ H6TPak6JY7aQ3YV8geaE0Wv5Rw==
+X-Google-Smtp-Source: APiQypLp/8L+AA8czA0tacaHBGBGuCJxTJm/ORum0IC7FEMfm6hukYhIAtc9t+goSHvbozJJU/6ryg==
+X-Received: by 2002:a1c:7c10:: with SMTP id x16mr37492346wmc.74.1589309070722; 
+ Tue, 12 May 2020 11:44:30 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id l13sm7617836wrm.55.2020.05.12.11.44.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 May 2020 11:44:29 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 898C61FF7E;
+ Tue, 12 May 2020 19:44:28 +0100 (BST)
+References: <20200510171119.20827-1-f4bug@amsat.org>
+User-agent: mu4e 1.4.5; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, "Emilio G . Cota" <cota@braap.org>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/3] plugins: Move declarations around and rename
+ 'hwaddr' argument
+In-reply-to: <20200510171119.20827-1-f4bug@amsat.org>
+Date: Tue, 12 May 2020 19:44:28 +0100
+Message-ID: <875zd1f0xf.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200512103238.7078-5-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:20:15
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,35 +83,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2020 11:35:34 -0000
+X-List-Received-Date: Tue, 12 May 2020 18:44:34 -0000
 
-On 12/05/20 12:32, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  scripts/kvm/vmxcap | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/scripts/kvm/vmxcap b/scripts/kvm/vmxcap
-> index 971ed0e721..6fe66d5f57 100755
-> --- a/scripts/kvm/vmxcap
-> +++ b/scripts/kvm/vmxcap
-> @@ -1,4 +1,4 @@
-> -#!/usr/bin/python
-> +#!/usr/bin/env python3
->  #
->  # tool for querying VMX capabilities
->  #
-> @@ -275,5 +275,6 @@ controls = [
->          ),
->      ]
->  
-> -for c in controls:
-> -    c.show()
-> +if __name__ == '__main__':
-> +    for c in controls:
-> +        c.show()
-> 
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
+> Rename qemu_plugin_hwaddr_is_io() 'hwaddr' argument to later
+> allow declaration of the 'hwaddr' type to be poisoned (see [*]).
+>
+> [*] https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg02254.html
+>     "exec/cpu: Poison 'hwaddr' type in user-mode emulation"
+
+
+Queued to plugins/next, thanks.
+
+>
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   qemu/plugin: Trivial code movement
+>   qemu/plugin: Move !CONFIG_PLUGIN stubs altogether
+>   qemu/qemu-plugin: Make qemu_plugin_hwaddr_is_io() hwaddr argument
+>     const
+>
+>  include/qemu/plugin.h      | 65 ++++++++++++++++++--------------------
+>  include/qemu/qemu-plugin.h |  2 +-
+>  plugins/api.c              |  4 +--
+>  3 files changed, 34 insertions(+), 37 deletions(-)
+
+
+--=20
+Alex Benn=C3=A9e
 
