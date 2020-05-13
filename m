@@ -1,44 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYxyp-0001s2-TI
-	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2020 16:27:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53392)
+	id 1jYySS-00039W-AF
+	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2020 16:58:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYxyo-0001pk-DO
- for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:27:50 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51323
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYySQ-00037p-Rk
+ for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:58:26 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:56833
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYxyl-0005IV-VD
- for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:27:50 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYySP-0003HN-OE
+ for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:58:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589401666;
+ s=mimecast20190719; t=1589403502;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=fpOblpsChEVSwJJyQMeP1u1HXTIIEDuSAfSgT5ay+WI=;
- b=KXSeahsbiWOArjwdBGx/ALXAQnQkm0VJN7cFqNc6+x9JBeeQgZ/57dPpLq+B9AskUefS52
- msZtbkxBCHVINV14Wdpr+exOezy8KyrJXa/J/FCAvH9vQV1svp9GM21IVKYUsoYrZKWVlt
- zy5Bg91QwV1u82P6Jx8G6VPD/KJLn44=
+ bh=8wLUdnFT09GDL04b6CqFzsLR99c0+umfo+U+BpFvMQk=;
+ b=ZJNhzIQHK9By6ZSvluRVPSKPinQAmNwD3mGOJYG1yxYP8/8ZZgvXswhgPNEd37CA95x+o5
+ bOUyZozu0aUUTRdxrhsDvWkJbtuODzBtkMjE9vggTO00mfcnM2TeLyFckWhDGuKeVVWAPR
+ uvZia+stps/WIiIdye9Nq9IgvqwJSvg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-487-VX1liiW1NoasZ_SIzGVKfA-1; Wed, 13 May 2020 16:27:44 -0400
-X-MC-Unique: VX1liiW1NoasZ_SIzGVKfA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-506-YZBuYDFdNvmjWrusuW7G8Q-1; Wed, 13 May 2020 16:58:19 -0400
+X-MC-Unique: YZBuYDFdNvmjWrusuW7G8Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 771CB835B49;
- Wed, 13 May 2020 20:27:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DD9ED1009443;
+ Wed, 13 May 2020 20:58:17 +0000 (UTC)
 Received: from [10.10.113.80] (ovpn-113-80.rdu2.redhat.com [10.10.113.80])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9CD3261541;
- Wed, 13 May 2020 20:27:38 +0000 (UTC)
-Subject: Re: [PATCH] scripts/tracetool: Update maintainer email address
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 92ADA6A94A;
+ Wed, 13 May 2020 20:58:13 +0000 (UTC)
+Subject: Re: [PATCH v4 1/6] scripts/qemugdb: Remove shebang header
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
-References: <20200511082816.696-1-philmd@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
+ Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20200512103238.7078-1-philmd@redhat.com>
+ <20200512103238.7078-2-philmd@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
@@ -114,22 +120,20 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <9f05c462-8a1f-ac2f-ecc9-d3a1f71f328c@redhat.com>
-Date: Wed, 13 May 2020 16:27:38 -0400
+Message-ID: <2178978e-5d14-3a94-d65c-f4d849e153ba@redhat.com>
+Date: Wed, 13 May 2020 16:58:13 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200511082816.696-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200512103238.7078-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=jsnow@redhat.com;
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/13 04:17:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/13 01:56:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -149,285 +153,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 May 2020 20:27:50 -0000
+X-List-Received-Date: Wed, 13 May 2020 20:58:27 -0000
 
 
 
-On 5/11/20 4:28 AM, Philippe Mathieu-Daudé wrote:
-> There is an effort in progress to generate a QEMU Python
-> package. As I'm not sure this old email is still valid,
-> update it to not produce package with broken maintainer
-> email.
+On 5/12/20 6:32 AM, Philippe Mathieu-Daudé wrote:
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > 
-> Patch created mechanically by running:
+> These scripts are loaded as plugin by GDB (and they don't
+> have any __main__ entry point). Remove the shebang header.
 > 
->  $ sed -i 's,\(__email__ *= "\)stefanha@linux.vnet.ibm.com",\1stefanha@redhat.com",' \
->          $(git grep -l 'email.*stefanha@linux.vnet.ibm.com')
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-I hadn't started trying to move the tracetool yet, but this can't hurt :)
+> Acked-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org
+(The A-B should come below the S-O-B unless you do mean to indicate
+you've since made changes that AB didn't acknowledge, I think.)
 
 Reviewed-by: John Snow <jsnow@redhat.com>
-
-> ---
->  scripts/tracetool.py                             | 2 +-
->  scripts/tracetool/__init__.py                    | 2 +-
->  scripts/tracetool/backend/__init__.py            | 2 +-
->  scripts/tracetool/backend/dtrace.py              | 2 +-
->  scripts/tracetool/backend/log.py                 | 2 +-
->  scripts/tracetool/backend/simple.py              | 2 +-
->  scripts/tracetool/backend/ust.py                 | 2 +-
->  scripts/tracetool/format/__init__.py             | 2 +-
->  scripts/tracetool/format/c.py                    | 2 +-
->  scripts/tracetool/format/d.py                    | 2 +-
->  scripts/tracetool/format/h.py                    | 2 +-
->  scripts/tracetool/format/stap.py                 | 2 +-
->  scripts/tracetool/format/tcg_h.py                | 2 +-
->  scripts/tracetool/format/tcg_helper_c.py         | 2 +-
->  scripts/tracetool/format/tcg_helper_h.py         | 2 +-
->  scripts/tracetool/format/tcg_helper_wrapper_h.py | 2 +-
->  scripts/tracetool/transform.py                   | 2 +-
->  scripts/tracetool/vcpu.py                        | 2 +-
->  18 files changed, 18 insertions(+), 18 deletions(-)
-> 
-> diff --git a/scripts/tracetool.py b/scripts/tracetool.py
-> index 264cc9eecc..31146242b7 100755
-> --- a/scripts/tracetool.py
-> +++ b/scripts/tracetool.py
-> @@ -10,7 +10,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  import sys
-> diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-> index 13d29f1e42..3ccfa1e116 100644
-> --- a/scripts/tracetool/__init__.py
-> +++ b/scripts/tracetool/__init__.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  import re
-> diff --git a/scripts/tracetool/backend/__init__.py b/scripts/tracetool/backend/__init__.py
-> index 54cab2c4de..7bfcc86cc5 100644
-> --- a/scripts/tracetool/backend/__init__.py
-> +++ b/scripts/tracetool/backend/__init__.py
-> @@ -50,7 +50,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  import os
-> diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/backend/dtrace.py
-> index 638990db79..5711892ba0 100644
-> --- a/scripts/tracetool/backend/dtrace.py
-> +++ b/scripts/tracetool/backend/dtrace.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend/log.py
-> index 23b274c0fd..877222bbe9 100644
-> --- a/scripts/tracetool/backend/log.py
-> +++ b/scripts/tracetool/backend/log.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/backend/simple.py
-> index b650c262b5..a74d61fcd6 100644
-> --- a/scripts/tracetool/backend/simple.py
-> +++ b/scripts/tracetool/backend/simple.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend/ust.py
-> index a772a3b53b..6c0a5f8d68 100644
-> --- a/scripts/tracetool/backend/ust.py
-> +++ b/scripts/tracetool/backend/ust.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/__init__.py b/scripts/tracetool/format/__init__.py
-> index aba2f7a441..2dc46f3dd9 100644
-> --- a/scripts/tracetool/format/__init__.py
-> +++ b/scripts/tracetool/format/__init__.py
-> @@ -32,7 +32,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  import os
-> diff --git a/scripts/tracetool/format/c.py b/scripts/tracetool/format/c.py
-> index 78af8aff72..23d82ea861 100644
-> --- a/scripts/tracetool/format/c.py
-> +++ b/scripts/tracetool/format/c.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/d.py b/scripts/tracetool/format/d.py
-> index d3980b914b..0afb5f3f47 100644
-> --- a/scripts/tracetool/format/d.py
-> +++ b/scripts/tracetool/format/d.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/h.py b/scripts/tracetool/format/h.py
-> index 83e1a2f355..e94f0be7da 100644
-> --- a/scripts/tracetool/format/h.py
-> +++ b/scripts/tracetool/format/h.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/stap.py b/scripts/tracetool/format/stap.py
-> index 8fc808f2ef..a218b0445c 100644
-> --- a/scripts/tracetool/format/stap.py
-> +++ b/scripts/tracetool/format/stap.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/tcg_h.py b/scripts/tracetool/format/tcg_h.py
-> index 0180e3d76c..33cf6a31b3 100644
-> --- a/scripts/tracetool/format/tcg_h.py
-> +++ b/scripts/tracetool/format/tcg_h.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out, Arguments
-> diff --git a/scripts/tracetool/format/tcg_helper_c.py b/scripts/tracetool/format/tcg_helper_c.py
-> index 6527b69afd..2db6317f3c 100644
-> --- a/scripts/tracetool/format/tcg_helper_c.py
-> +++ b/scripts/tracetool/format/tcg_helper_c.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import Arguments, out
-> diff --git a/scripts/tracetool/format/tcg_helper_h.py b/scripts/tracetool/format/tcg_helper_h.py
-> index 98ebe52f18..08554fbc85 100644
-> --- a/scripts/tracetool/format/tcg_helper_h.py
-> +++ b/scripts/tracetool/format/tcg_helper_h.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/format/tcg_helper_wrapper_h.py b/scripts/tracetool/format/tcg_helper_wrapper_h.py
-> index 6adeab74df..0c5a9797d1 100644
-> --- a/scripts/tracetool/format/tcg_helper_wrapper_h.py
-> +++ b/scripts/tracetool/format/tcg_helper_wrapper_h.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import out
-> diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform.py
-> index 8fd4dcf20d..ea8b27799d 100644
-> --- a/scripts/tracetool/transform.py
-> +++ b/scripts/tracetool/transform.py
-> @@ -9,7 +9,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  def _transform_type(type_, trans):
-> diff --git a/scripts/tracetool/vcpu.py b/scripts/tracetool/vcpu.py
-> index 0b104e4f15..b54e4f4e7a 100644
-> --- a/scripts/tracetool/vcpu.py
-> +++ b/scripts/tracetool/vcpu.py
-> @@ -10,7 +10,7 @@
->  __license__    = "GPL version 2 or (at your option) any later version"
->  
->  __maintainer__ = "Stefan Hajnoczi"
-> -__email__      = "stefanha@linux.vnet.ibm.com"
-> +__email__      = "stefanha@redhat.com"
->  
->  
->  from tracetool import Arguments, try_import
-> 
-
--- 
-—js
 
 
