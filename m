@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jYyTn-0004ju-I8
-	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2020 16:59:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57222)
+	id 1jYyUY-0005lr-Pc
+	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2020 17:00:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57322)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYyTl-0004fw-L6
- for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:59:49 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34619
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYyUW-0005jz-7y
+ for qemu-trivial@nongnu.org; Wed, 13 May 2020 17:00:36 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39868
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYyTj-0003UC-KM
- for qemu-trivial@nongnu.org; Wed, 13 May 2020 16:59:49 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1jYyUV-0003m8-4O
+ for qemu-trivial@nongnu.org; Wed, 13 May 2020 17:00:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589403586;
+ s=mimecast20190719; t=1589403634;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=tLHfgE1Ooryb4OIF5RrYvOr6+B9l75OGUHJ8Rz3ztME=;
- b=dZwEioX3u5k1MRXXbqhBcUU33Y5b8YNlBNL7AuVEcnbAH5oGMe25KsRzq2it4Y97U3fHpD
- 2fRAt8IfycB1UEUsgXrQM0+AP/3R4JWSL8FyuDnEmmVox1sXUJLDyL00WDmBB4LWTSIMOs
- wq/CLf/lDvlUIUhe1fcLNK5msnqqNJo=
+ bh=53fd68m5UCLTEoHNKadETXWFfovquJWPxe7ozpnkvxk=;
+ b=ZJ1UwMGzCISHGcg3OjPJPTTuR+f4bV3v7JiBxyKbvyMETcBvMnfFdYVCOWHqb4u/Ix7atl
+ zpbr1He3uH59jNnPPffoXq96g5MpyQe1ysFc+IjX2ucPv79oXkColPdiEqHNTlcFIGI9R1
+ ukSYs6P8OrukVyXBcVzSkc0jb+sRfG4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-231-TzKnQYlaM7OFVKsMc0jf5Q-1; Wed, 13 May 2020 16:59:45 -0400
-X-MC-Unique: TzKnQYlaM7OFVKsMc0jf5Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-324-5Ju5undXOcylp5pCvJRYaQ-1; Wed, 13 May 2020 17:00:32 -0400
+X-MC-Unique: 5Ju5undXOcylp5pCvJRYaQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC25C1899528;
- Wed, 13 May 2020 20:59:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 58859801503;
+ Wed, 13 May 2020 21:00:31 +0000 (UTC)
 Received: from [10.10.113.80] (ovpn-113-80.rdu2.redhat.com [10.10.113.80])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 19BC760BF1;
- Wed, 13 May 2020 20:59:39 +0000 (UTC)
-Subject: Re: [PATCH v4 3/6] scripts/qmp: Use Python 3 interpreter
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 172E86A94A;
+ Wed, 13 May 2020 21:00:26 +0000 (UTC)
+Subject: Re: [PATCH v4 4/6] scripts/kvm/vmxcap: Use Python 3 interpreter and
+ add pseudo-main()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini
@@ -41,10 +42,9 @@ Cc: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini
  Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
  Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  <alex.bennee@linaro.org>, Marcelo Tosatti <mtosatti@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>
 References: <20200512103238.7078-1-philmd@redhat.com>
- <20200512103238.7078-4-philmd@redhat.com>
+ <20200512103238.7078-5-philmd@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
@@ -120,27 +120,27 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <6c63d15d-2232-8a97-bd07-708fd5295c11@redhat.com>
-Date: Wed, 13 May 2020 16:59:38 -0400
+Message-ID: <6859ece7-540d-25d3-a634-2443ded694a0@redhat.com>
+Date: Wed, 13 May 2020 17:00:26 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200512103238.7078-4-philmd@redhat.com>
+In-Reply-To: <20200512103238.7078-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=jsnow@redhat.com;
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/13 04:17:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/13 01:56:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -153,70 +153,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 May 2020 20:59:49 -0000
+X-List-Received-Date: Wed, 13 May 2020 21:00:36 -0000
+
 
 
 On 5/12/20 6:32 AM, Philippe Mathieu-Daudé wrote:
-> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  scripts/kvm/vmxcap | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> diff --git a/scripts/kvm/vmxcap b/scripts/kvm/vmxcap
+> index 971ed0e721..6fe66d5f57 100755
+> --- a/scripts/kvm/vmxcap
+> +++ b/scripts/kvm/vmxcap
+> @@ -1,4 +1,4 @@
+> -#!/usr/bin/python
+> +#!/usr/bin/env python3
+>  #
+>  # tool for querying VMX capabilities
+>  #
+> @@ -275,5 +275,6 @@ controls = [
+>          ),
+>      ]
+>  
+> -for c in controls:
+> -    c.show()
+> +if __name__ == '__main__':
+> +    for c in controls:
+> +        c.show()
+> 
 
-Whoops, I address this in a patch series I'm working on, too. I'll keep
-my patch in there for now until this one makes it in, or vice-versa.
+yay
 
 Reviewed-by: John Snow <jsnow@redhat.com>
-
-
-> ---
->  scripts/qmp/qom-get  | 2 +-
->  scripts/qmp/qom-list | 2 +-
->  scripts/qmp/qom-set  | 2 +-
->  scripts/qmp/qom-tree | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/scripts/qmp/qom-get b/scripts/qmp/qom-get
-> index 007b4cd442..7c5ede91bb 100755
-> --- a/scripts/qmp/qom-get
-> +++ b/scripts/qmp/qom-get
-> @@ -1,4 +1,4 @@
-> -#!/usr/bin/python
-> +#!/usr/bin/env python3
->  ##
->  # QEMU Object Model test tools
->  #
-> diff --git a/scripts/qmp/qom-list b/scripts/qmp/qom-list
-> index 03bda3446b..bb68fd65d4 100755
-> --- a/scripts/qmp/qom-list
-> +++ b/scripts/qmp/qom-list
-> @@ -1,4 +1,4 @@
-> -#!/usr/bin/python
-> +#!/usr/bin/env python3
->  ##
->  # QEMU Object Model test tools
->  #
-> diff --git a/scripts/qmp/qom-set b/scripts/qmp/qom-set
-> index c37fe78b00..19881d85e9 100755
-> --- a/scripts/qmp/qom-set
-> +++ b/scripts/qmp/qom-set
-> @@ -1,4 +1,4 @@
-> -#!/usr/bin/python
-> +#!/usr/bin/env python3
->  ##
->  # QEMU Object Model test tools
->  #
-> diff --git a/scripts/qmp/qom-tree b/scripts/qmp/qom-tree
-> index 1c8acf61e7..fa91147a03 100755
-> --- a/scripts/qmp/qom-tree
-> +++ b/scripts/qmp/qom-tree
-> @@ -1,4 +1,4 @@
-> -#!/usr/bin/python
-> +#!/usr/bin/env python3
->  ##
->  # QEMU Object Model test tools
->  #
-> 
-
--- 
-—js
 
 
