@@ -1,72 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jZTVV-0007i4-91
-	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2020 02:07:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56242)
+	id 1jZUKf-00081P-A8
+	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2020 03:00:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTVT-0007dJ-QS
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 02:07:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45541
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTVQ-0005Hk-W9
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 02:07:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589522854;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sT2EpVcdb4CHg+FKs0qoxn+ObY2zXYzhu6d67pde+b0=;
- b=a2bRZ9Xuf4h9CpUckKW7XJtHW1OYVzENPDewStgXpW4YdnomSI/LRiiqxG6NpsDENW6Udr
- XyCtNdSfjcAmD3gsrLNAhnigMNz+0Ac65rBxV9duM0VEjz9p+hIBaivc8HdlwG+gYFfJ0G
- g7DdpL4p7alFCT+NV4BdPIn2w9ZTQIA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-257-vo1IfYmsNa-pMRz6q0xkew-1; Fri, 15 May 2020 02:07:32 -0400
-X-MC-Unique: vo1IfYmsNa-pMRz6q0xkew-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49E5480183C;
- Fri, 15 May 2020 06:07:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 174FA78B22;
- Fri, 15 May 2020 06:07:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BA94211358BC; Fri, 15 May 2020 08:07:25 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo Habkost <ehabkost@redhat.com>,
- qemu-trivial@nongnu.org,  Michael Tokarev <mjt@tls.msk.ru>,  Laurent
- Vivier <laurent@vivier.eu>,  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2 1/3] qom/object: Move Object typedef to
- 'qemu/typedefs.h'
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jZUKe-00080q-GF; Fri, 15 May 2020 03:00:32 -0400
+Received: from mail-ej1-f66.google.com ([209.85.218.66]:37063)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jZUKc-0003IQ-E8; Fri, 15 May 2020 03:00:31 -0400
+Received: by mail-ej1-f66.google.com with SMTP id l21so1367169eji.4;
+ Fri, 15 May 2020 00:00:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=paM8N59x/1u1Pc1lakMLHVTYb3X1cVpISIuyc1pkY5E=;
+ b=blQ7VbfmfUKdbQ/RStMbTjL1RB88ANf/kVUaAVsdrIzRf/UByI9Vp7K+LsqW5cJiEa
+ ZgJ4edbduygVGGYb/2id5//eJsA7vHmxMeXlknV7ic8rkWSUz/fyiH70GBIXRp/OREFJ
+ hAiBRjMI8Oex/cvE2lxB3/PX0jSFAvAlgnJS2qahLDSH+hJSO8yuufzUlNIHNBUc/U1m
+ hV8FCSdurfjf/JRX3wXzHEwqJ2Q5hTzFZ7UoU9kVe8GAyF/oHOQa5V7EO+SnRJBLJ+y/
+ t+g/xFA9E5rd3yyAj+Igj++On+V43JCsTBvAICdqzFiNCeVfjoF/jVHSALX+atzTJBcU
+ lHZw==
+X-Gm-Message-State: AOAM531+KnJS9T2EEeOHOGptqn50qRS/Bq72eg5xESES/vpYJBP4arCA
+ 25UoSPRspB/QtTrYhq8SD/qoWb3AN1lNvSq6G0A=
+X-Google-Smtp-Source: ABdhPJw0Mx3A+BG3xC5h0Lfmuuu8NPGmLj7QFQ0Afgw3FGp/vwDzLxD8DQr73eenJB/Bi9NKbQK0XgXvF2yNODsadXM=
+X-Received: by 2002:a17:906:5e50:: with SMTP id
+ b16mr1459147eju.331.1589526028556; 
+ Fri, 15 May 2020 00:00:28 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200504115656.6045-1-f4bug@amsat.org>
  <20200504115656.6045-2-f4bug@amsat.org>
-Date: Fri, 15 May 2020 08:07:25 +0200
-In-Reply-To: <20200504115656.6045-2-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 May 2020 13:56:54
- +0200")
-Message-ID: <87wo5drasi.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+ <87wo5drasi.fsf@dusky.pond.sub.org>
+In-Reply-To: <87wo5drasi.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Fri, 15 May 2020 09:00:17 +0200
+Message-ID: <CAAdtpL4wpqv8vMOFgRubghr53fJyoXJ+DcGwi84wp0PiczyUpg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] qom/object: Move Object typedef to
+ 'qemu/typedefs.h'
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/14 22:56:02
+Received-SPF: pass client-ip=209.85.218.66;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f66.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/15 03:00:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,71 +70,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 May 2020 06:07:40 -0000
+X-List-Received-Date: Fri, 15 May 2020 07:00:32 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> We use the Object type all over the place.
-> Forward declare it in "qemu/typedefs.h".
+On Fri, May 15, 2020 at 8:07 AM Markus Armbruster <armbru@redhat.com> wrote=
+:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/qemu/typedefs.h   | 1 +
->  include/qom/object.h      | 2 --
->  include/qom/qom-qobject.h | 2 --
->  include/sysemu/sysemu.h   | 1 -
->  4 files changed, 1 insertion(+), 5 deletions(-)
+> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 >
-> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index 375770a80f..b03ec9f40a 100644
-> --- a/include/qemu/typedefs.h
-> +++ b/include/qemu/typedefs.h
-> @@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
->  typedef struct NICInfo NICInfo;
->  typedef struct NodeInfo NodeInfo;
->  typedef struct NumaNodeMem NumaNodeMem;
-> +typedef struct Object Object;
->  typedef struct ObjectClass ObjectClass;
->  typedef struct PCIBridge PCIBridge;
->  typedef struct PCIBus PCIBus;
-> diff --git a/include/qom/object.h b/include/qom/object.h
-> index 784c97c0e1..1edc12e64c 100644
-> --- a/include/qom/object.h
-> +++ b/include/qom/object.h
-> @@ -20,8 +20,6 @@
->  struct TypeImpl;
->  typedef struct TypeImpl *Type;
-> =20
-> -typedef struct Object Object;
-> -
->  typedef struct TypeInfo TypeInfo;
-> =20
->  typedef struct InterfaceClass InterfaceClass;
-> diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
-> index 77cd717e3f..82136e6e80 100644
-> --- a/include/qom/qom-qobject.h
-> +++ b/include/qom/qom-qobject.h
-> @@ -13,8 +13,6 @@
->  #ifndef QEMU_QOM_QOBJECT_H
->  #define QEMU_QOM_QOBJECT_H
-> =20
-> -#include "qom/object.h"
-> -
->  /*
->   * object_property_get_qobject:
->   * @obj: the object
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index ef81302e1a..ca4458e451 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -5,7 +5,6 @@
->  #include "qemu/timer.h"
->  #include "qemu/notify.h"
->  #include "qemu/uuid.h"
-> -#include "qom/object.h"
-> =20
->  /* vl.c */
+> > We use the Object type all over the place.
+> > Forward declare it in "qemu/typedefs.h".
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >  include/qemu/typedefs.h   | 1 +
+> >  include/qom/object.h      | 2 --
+> >  include/qom/qom-qobject.h | 2 --
+> >  include/sysemu/sysemu.h   | 1 -
+> >  4 files changed, 1 insertion(+), 5 deletions(-)
+> >
+> > diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> > index 375770a80f..b03ec9f40a 100644
+> > --- a/include/qemu/typedefs.h
+> > +++ b/include/qemu/typedefs.h
+> > @@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
+> >  typedef struct NICInfo NICInfo;
+> >  typedef struct NodeInfo NodeInfo;
+> >  typedef struct NumaNodeMem NumaNodeMem;
+> > +typedef struct Object Object;
+> >  typedef struct ObjectClass ObjectClass;
+> >  typedef struct PCIBridge PCIBridge;
+> >  typedef struct PCIBus PCIBus;
+> > diff --git a/include/qom/object.h b/include/qom/object.h
+> > index 784c97c0e1..1edc12e64c 100644
+> > --- a/include/qom/object.h
+> > +++ b/include/qom/object.h
+> > @@ -20,8 +20,6 @@
+> >  struct TypeImpl;
+> >  typedef struct TypeImpl *Type;
+> >
+> > -typedef struct Object Object;
+> > -
+> >  typedef struct TypeInfo TypeInfo;
+> >
+> >  typedef struct InterfaceClass InterfaceClass;
+> > diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
+> > index 77cd717e3f..82136e6e80 100644
+> > --- a/include/qom/qom-qobject.h
+> > +++ b/include/qom/qom-qobject.h
+> > @@ -13,8 +13,6 @@
+> >  #ifndef QEMU_QOM_QOBJECT_H
+> >  #define QEMU_QOM_QOBJECT_H
+> >
+> > -#include "qom/object.h"
+> > -
+> >  /*
+> >   * object_property_get_qobject:
+> >   * @obj: the object
+> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> > index ef81302e1a..ca4458e451 100644
+> > --- a/include/sysemu/sysemu.h
+> > +++ b/include/sysemu/sysemu.h
+> > @@ -5,7 +5,6 @@
+> >  #include "qemu/timer.h"
+> >  #include "qemu/notify.h"
+> >  #include "qemu/uuid.h"
+> > -#include "qom/object.h"
+> >
+> >  /* vl.c */
+>
+> How did you identify the inclusions to drop?
 
-How did you identify the inclusions to drop?
+Nothing very strict I'm afraid. I suppose I had the files opened in my edit=
+or.
 
+The output of
+$ git grep -L -E '(OBJECT_|INTERFACE_)' $(git grep -l qom/object include)
+suggests I missed those:
+
+-- >8 --
+diff --git a/include/hw/display/edid.h b/include/hw/display/edid.h
+index ff99dc0a05..5b1de57f24 100644
+--- a/include/hw/display/edid.h
++++ b/include/hw/display/edid.h
+@@ -1,8 +1,6 @@
+ #ifndef EDID_H
+ #define EDID_H
+
+-#include "qom/object.h"
+-
+ typedef struct qemu_edid_info {
+     const char *vendor; /* http://www.uefi.org/pnp_id_list */
+     const char *name;
+diff --git a/include/io/task.h b/include/io/task.h
+index 1abbfb8b65..6818dfedd0 100644
+--- a/include/io/task.h
++++ b/include/io/task.h
+@@ -21,8 +21,6 @@
+ #ifndef QIO_TASK_H
+ #define QIO_TASK_H
+
+-#include "qom/object.h"
+-
+ typedef struct QIOTask QIOTask;
+
+ typedef void (*QIOTaskFunc)(QIOTask *task,
+---
 
