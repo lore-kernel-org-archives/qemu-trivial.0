@@ -1,82 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jZTMh-0000Ei-Ga
-	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2020 01:58:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55240)
+	id 1jZTVV-0007i4-91
+	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2020 02:07:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTMf-0000BU-Kt
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 01:58:33 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:39711
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTVT-0007dJ-QS
+ for qemu-trivial@nongnu.org; Fri, 15 May 2020 02:07:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45541
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTMf-0002yV-0e
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 01:58:33 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZTVQ-0005Hk-W9
+ for qemu-trivial@nongnu.org; Fri, 15 May 2020 02:07:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589522312;
+ s=mimecast20190719; t=1589522854;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pWfAQ0tUqEVcxnRaG3DXAf86VAbLFMa86O/kZ9GP1v0=;
- b=IaAlzbR9DUN4a0fDNNHb0TFtWsNNssS71Rw7QfcbaA40fqhzMKkXU3AGrd7WbovpPtTkhI
- ifq4WTuAm2TrdM4A++kBQedDkb+pYO0DYdP7ai+rvNg4ePp0kv7KgNPvShb+tdyCTwg7/7
- cmQd41J9Jfonv2iNTn/o92bNNrJdaWA=
+ bh=sT2EpVcdb4CHg+FKs0qoxn+ObY2zXYzhu6d67pde+b0=;
+ b=a2bRZ9Xuf4h9CpUckKW7XJtHW1OYVzENPDewStgXpW4YdnomSI/LRiiqxG6NpsDENW6Udr
+ XyCtNdSfjcAmD3gsrLNAhnigMNz+0Ac65rBxV9duM0VEjz9p+hIBaivc8HdlwG+gYFfJ0G
+ g7DdpL4p7alFCT+NV4BdPIn2w9ZTQIA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-166-PR4YSkK4P7mzfPK4-G2OSA-1; Fri, 15 May 2020 01:58:28 -0400
-X-MC-Unique: PR4YSkK4P7mzfPK4-G2OSA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-257-vo1IfYmsNa-pMRz6q0xkew-1; Fri, 15 May 2020 02:07:32 -0400
+X-MC-Unique: vo1IfYmsNa-pMRz6q0xkew-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 32191107ACF3;
- Fri, 15 May 2020 05:58:25 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49E5480183C;
+ Fri, 15 May 2020 06:07:30 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 96F0A5D9D7;
- Fri, 15 May 2020 05:58:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 174FA78B22;
+ Fri, 15 May 2020 06:07:27 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 44AA411358BC; Fri, 15 May 2020 07:58:17 +0200 (CEST)
+ id BA94211358BC; Fri, 15 May 2020 08:07:25 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Paul
- Durrant <paul@xen.org>,  Jason Wang <jasowang@redhat.com>,  Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Gerd Hoffmann
- <kraxel@redhat.com>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,  qemu-block@nongnu.org,
- qemu-trivial@nongnu.org,  David Hildenbrand <david@redhat.com>,  Halil
- Pasic <pasic@linux.ibm.com>,  Christian Borntraeger
- <borntraeger@de.ibm.com>,  Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>,  Joel Stanley <joel@jms.id.au>,
- Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org,  David Gibson
- <david@gibson.dropbear.id.au>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>,  Eduardo Habkost <ehabkost@redhat.com>,  Corey
- Minyard <minyard@acm.org>,  "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>,  qemu-s390x@nongnu.org,  qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>,
- John Snow <jsnow@redhat.com>,  Richard Henderson <rth@twiddle.net>,
- Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Andrew Jeffery
- <andrew@aj.id.au>,  Cornelia Huck <cohuck@redhat.com>,  Laurent Vivier
- <laurent@vivier.eu>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH v3 0/3] various: Remove unnecessary casts
-References: <20200512070020.22782-1-f4bug@amsat.org>
-Date: Fri, 15 May 2020 07:58:17 +0200
-In-Reply-To: <20200512070020.22782-1-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 12 May 2020 09:00:17
+Cc: qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-trivial@nongnu.org,  Michael Tokarev <mjt@tls.msk.ru>,  Laurent
+ Vivier <laurent@vivier.eu>,  Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 1/3] qom/object: Move Object typedef to
+ 'qemu/typedefs.h'
+References: <20200504115656.6045-1-f4bug@amsat.org>
+ <20200504115656.6045-2-f4bug@amsat.org>
+Date: Fri, 15 May 2020 08:07:25 +0200
+In-Reply-To: <20200504115656.6045-2-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 May 2020 13:56:54
  +0200")
-Message-ID: <871rnlsps6.fsf@dusky.pond.sub.org>
+Message-ID: <87wo5drasi.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/14 23:27:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/14 22:56:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,18 +80,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 May 2020 05:58:33 -0000
+X-List-Received-Date: Fri, 15 May 2020 06:07:40 -0000
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-> Remove unnecessary casts using coccinelle scripts.
+> We use the Object type all over the place.
+> Forward declare it in "qemu/typedefs.h".
 >
-> The CPU()/OBJECT() patches don't introduce logical change,
-> The DEVICE() one removes various OBJECT_CHECK() calls.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/qemu/typedefs.h   | 1 +
+>  include/qom/object.h      | 2 --
+>  include/qom/qom-qobject.h | 2 --
+>  include/sysemu/sysemu.h   | 1 -
+>  4 files changed, 1 insertion(+), 5 deletions(-)
+>
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 375770a80f..b03ec9f40a 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
+>  typedef struct NICInfo NICInfo;
+>  typedef struct NodeInfo NodeInfo;
+>  typedef struct NumaNodeMem NumaNodeMem;
+> +typedef struct Object Object;
+>  typedef struct ObjectClass ObjectClass;
+>  typedef struct PCIBridge PCIBridge;
+>  typedef struct PCIBus PCIBus;
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index 784c97c0e1..1edc12e64c 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -20,8 +20,6 @@
+>  struct TypeImpl;
+>  typedef struct TypeImpl *Type;
+> =20
+> -typedef struct Object Object;
+> -
+>  typedef struct TypeInfo TypeInfo;
+> =20
+>  typedef struct InterfaceClass InterfaceClass;
+> diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
+> index 77cd717e3f..82136e6e80 100644
+> --- a/include/qom/qom-qobject.h
+> +++ b/include/qom/qom-qobject.h
+> @@ -13,8 +13,6 @@
+>  #ifndef QEMU_QOM_QOBJECT_H
+>  #define QEMU_QOM_QOBJECT_H
+> =20
+> -#include "qom/object.h"
+> -
+>  /*
+>   * object_property_get_qobject:
+>   * @obj: the object
+> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> index ef81302e1a..ca4458e451 100644
+> --- a/include/sysemu/sysemu.h
+> +++ b/include/sysemu/sysemu.h
+> @@ -5,7 +5,6 @@
+>  #include "qemu/timer.h"
+>  #include "qemu/notify.h"
+>  #include "qemu/uuid.h"
+> -#include "qom/object.h"
+> =20
+>  /* vl.c */
 
-Queued, thanks!
-
-Managing expecations: I'm not a QOM maintainer, I don't want to become
-one, and I don't normally queue QOM patches :)
+How did you identify the inclusions to drop?
 
 
