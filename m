@@ -1,80 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jZbZb-0002Wf-QF
-	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2020 10:44:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44570)
+	id 1jZykj-0008P7-Oj
+	for mharc-qemu-trivial@gnu.org; Sat, 16 May 2020 11:29:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jZbZX-0002Sq-Ri
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 10:44:24 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:51645)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jZbZW-000105-9e
- for qemu-trivial@nongnu.org; Fri, 15 May 2020 10:44:23 -0400
-Received: by mail-wm1-x336.google.com with SMTP id f134so2596473wmf.1
- for <qemu-trivial@nongnu.org>; Fri, 15 May 2020 07:44:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+a2TvwRII2J7AoPGBoNpj53l/Ezc+QlB4IwOZgMmlqY=;
- b=if1+c6mFY3gjwptzcSIKYu57JQSJPsBtm2MSa1f5mOhsDDcOMRUO5DQO/Xa04vkEDE
- D9vm4MGzPns7zad2RecwqmUMhyYTLrRqlV6OxMhbEAolgHg48MrCM0+8JoBEqXVljKdS
- Aw9gdZg8zXOtkQw5fp2vZhU2iAhDFnFJLXReO4D09A2k5FcwAhPC8O0R39sPQPUtdkSM
- pmNo88+HPjGbMFO81Rn3iqImmXk8GMPixDJvyrh1e3RBCeMRP5ov6sW7RNneJWtMzL7U
- gALE11rnlV01ut2HJSLzhgzA6Ff40jyiKvh9dU5yJpmiOMdIjsYula/1671Py9mZR2Uf
- FsuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+a2TvwRII2J7AoPGBoNpj53l/Ezc+QlB4IwOZgMmlqY=;
- b=W3IZOwYVSNomO4wLNIeejaBD8O7tIGuf4Q2pjUINnirvZm2ILoqXARp4GyUQ56Ualz
- rxqqTTrAZRYJZaYe1O10TeVAsYJfM2DgdKS4F46Xa05xnhpqyqLiuBVNwjcxWd8FARdv
- m3k8DF9qjbjiev8jG8C+8HcE9L1NaHmr+JQkDj0+pl/dWdrk/cYLvXMd82vULmi58ZL6
- VVRTD/udzDSAYOvZj83WFmCBjT5H0gQf67y9d6YJg56Gr78Fbfmb4QCIG8k8SrVQEMFD
- UEXYfAA/cKQ50jU4oTIa6pRlvlfIOh6O19xJ5A0v79SkEzuCZC9Kuw11QvCW/3FNoJbL
- JGzA==
-X-Gm-Message-State: AOAM531dx6ztylV9eXQWCiXRrTCn6dEvuUz0sUwzDsAFomqShT06Pkld
- xAqox/1AXaTUtYRdgclv0NUHE6exLgs=
-X-Google-Smtp-Source: ABdhPJz+TqOIwyABF4FGW1pCKR9WxHx7jEVlbiWVb0f0lVMea9p2sRAgSXaW6XBUgrBBDcQytEp6Wg==
-X-Received: by 2002:a1c:b354:: with SMTP id c81mr4355499wmf.136.1589553860752; 
- Fri, 15 May 2020 07:44:20 -0700 (PDT)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id t7sm3982423wrq.39.2020.05.15.07.44.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 May 2020 07:44:12 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 1D6E61FF99;
- Fri, 15 May 2020 15:44:06 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "Emilio G . Cota" <cota@braap.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PULL v2 10/13] qemu/plugin: Trivial code movement
-Date: Fri, 15 May 2020 15:44:02 +0100
-Message-Id: <20200515144405.20580-11-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200515144405.20580-1-alex.bennee@linaro.org>
-References: <20200515144405.20580-1-alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <victor.lavaud@protonmail.com>)
+ id 1jZy1k-0004nN-6v
+ for qemu-trivial@nongnu.org; Sat, 16 May 2020 10:43:00 -0400
+Received: from mail-40131.protonmail.ch ([185.70.40.131]:64199)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <victor.lavaud@protonmail.com>)
+ id 1jZy1i-0008Jg-En
+ for qemu-trivial@nongnu.org; Sat, 16 May 2020 10:42:59 -0400
+Date: Sat, 16 May 2020 14:42:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+ s=protonmail; t=1589640174;
+ bh=SsCpBDNAIQ3v58OWvOEydwcu9WNsco8XmUdn2Sorlog=;
+ h=Date:To:From:Cc:Reply-To:Subject:From;
+ b=C5Hc9nzIDKi47Sgh/tqylfT/uAjELSSXjSfzQlPtxDNKnqlV2BF70A3BawNEccWpB
+ 4cZOvTfGlK7u6Cp5H+WF2QTnw+nHjpmTl9RbpOPicUKGvNBXKyTB1wYJrfXxoaIRDv
+ F6gSkkPuZthvsN/HLO1Y+lcBN/xn/lsXCeT2PeYg=
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+From: Victor Lavaud <victor.lavaud@protonmail.com>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Reply-To: Victor Lavaud <victor.lavaud@protonmail.com>
+Subject: Patch to fix missing Exec field in qemu.desktop
+Message-ID: <zrVSyE1D2Xtxcr723wTf2sJRtM0IPuBRH0S-Gyx2XsvooDqbMYhqrK_aVk3AZM8RkjyOzYKWQH3VrnWDjwVUspDJHYUKXOyLZEZlvAzz6Ww=@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; protocol="application/pgp-signature";
+ micalg=pgp-sha256;
+ boundary="---------------------b60704120c712c8953f031f4042c4404";
+ charset=UTF-8
+Received-SPF: pass client-ip=185.70.40.131;
+ envelope-from=victor.lavaud@protonmail.com; helo=mail-40131.protonmail.ch
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/16 10:42:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 16 May 2020 11:29:28 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,70 +55,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 May 2020 14:44:24 -0000
+X-List-Received-Date: Sat, 16 May 2020 14:43:00 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+-----------------------b60704120c712c8953f031f4042c4404
+Content-Type: multipart/mixed;boundary=---------------------5c8d758721f74f3fcee08b6133b9dea2
 
-Move the qemu_plugin_event enum declaration earlier.
-This will make the next commit easier to review.
+-----------------------5c8d758721f74f3fcee08b6133b9dea2
+Content-Type: multipart/alternative;boundary=---------------------4f0d7dc96b6a713bd2eb1cca549316f4
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Emilio G. Cota <cota@braap.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20200510171119.20827-2-f4bug@amsat.org>
-Message-Id: <20200513173200.11830-2-alex.bennee@linaro.org>
+-----------------------4f0d7dc96b6a713bd2eb1cca549316f4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;charset=utf-8
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 11687e8cdc3..e45f950fe36 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -13,6 +13,22 @@
- #include "qemu/queue.h"
- #include "qemu/option.h"
- 
-+/*
-+ * Events that plugins can subscribe to.
-+ */
-+enum qemu_plugin_event {
-+    QEMU_PLUGIN_EV_VCPU_INIT,
-+    QEMU_PLUGIN_EV_VCPU_EXIT,
-+    QEMU_PLUGIN_EV_VCPU_TB_TRANS,
-+    QEMU_PLUGIN_EV_VCPU_IDLE,
-+    QEMU_PLUGIN_EV_VCPU_RESUME,
-+    QEMU_PLUGIN_EV_VCPU_SYSCALL,
-+    QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
-+    QEMU_PLUGIN_EV_FLUSH,
-+    QEMU_PLUGIN_EV_ATEXIT,
-+    QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
-+};
-+
- /*
-  * Option parsing/processing.
-  * Note that we can load an arbitrary number of plugins.
-@@ -47,22 +63,6 @@ static inline int qemu_plugin_load_list(QemuPluginList *head)
- }
- #endif /* !CONFIG_PLUGIN */
- 
--/*
-- * Events that plugins can subscribe to.
-- */
--enum qemu_plugin_event {
--    QEMU_PLUGIN_EV_VCPU_INIT,
--    QEMU_PLUGIN_EV_VCPU_EXIT,
--    QEMU_PLUGIN_EV_VCPU_TB_TRANS,
--    QEMU_PLUGIN_EV_VCPU_IDLE,
--    QEMU_PLUGIN_EV_VCPU_RESUME,
--    QEMU_PLUGIN_EV_VCPU_SYSCALL,
--    QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
--    QEMU_PLUGIN_EV_FLUSH,
--    QEMU_PLUGIN_EV_ATEXIT,
--    QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
--};
--
- union qemu_plugin_cb_sig {
-     qemu_plugin_simple_cb_t          simple;
-     qemu_plugin_udata_cb_t           udata;
--- 
-2.20.1
+
+
+
+Sent with ProtonMail Secure Email.
+
+
+-----------------------4f0d7dc96b6a713bd2eb1cca549316f4
+Content-Type: multipart/related;boundary=---------------------5d95b9c6d1cd288cbde1fa0773d162a6
+
+-----------------------5d95b9c6d1cd288cbde1fa0773d162a6
+Content-Type: text/html;charset=utf-8
+Content-Transfer-Encoding: base64
+
+PGRpdj48YnI+PC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdiBjbGFzcz0icHJvdG9ubWFpbF9zaWdu
+YXR1cmVfYmxvY2siPjxkaXYgY2xhc3M9InByb3Rvbm1haWxfc2lnbmF0dXJlX2Jsb2NrLXVzZXIg
+cHJvdG9ubWFpbF9zaWduYXR1cmVfYmxvY2stZW1wdHkiPjxicj48L2Rpdj48ZGl2IGNsYXNzPSJw
+cm90b25tYWlsX3NpZ25hdHVyZV9ibG9jay1wcm90b24iPlNlbnQgd2l0aCA8YSBocmVmPSJodHRw
+czovL3Byb3Rvbm1haWwuY29tIiB0YXJnZXQ9Il9ibGFuayI+UHJvdG9uTWFpbDwvYT4gU2VjdXJl
+IEVtYWlsLjxicj48L2Rpdj48L2Rpdj4=
+-----------------------5d95b9c6d1cd288cbde1fa0773d162a6--
+
+-----------------------4f0d7dc96b6a713bd2eb1cca549316f4--
+
+-----------------------5c8d758721f74f3fcee08b6133b9dea2
+Content-Type: text/x-patch; filename="fix-exec-field-in-qemu-desktop.patch"; name="fix-exec-field-in-qemu-desktop.patch"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="fix-exec-field-in-qemu-desktop.patch"; name="fix-exec-field-in-qemu-desktop.patch"
+
+RnJvbSAyMDdhMWEzNGFjY2RjNWI1NjNkMjk0ODQyOTI4MjlhNDE5M2MzNWY4IE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBWaWN0b3IgTGF2YXVkIDx2aWN0b3IubGF2YXVkQGdtYWlsLmNv
+bT4KRGF0ZTogU2F0LCAxNiBNYXkgMjAyMCAxNjozMzowMCArMDIwMApTdWJqZWN0OiBbUEFUQ0hd
+IEZpeCBtaXNzaW5nIEV4ZWMgZmllbGQgaW4gcWVtdS5kZXNrdG9wCgpTaWduZWQtb2ZmLWJ5OiBW
+aWN0b3IgTGF2YXVkIDx2aWN0b3IubGF2YXVkQHBtLm1lPgotLS0KIHVpL3FlbXUuZGVza3RvcCB8
+IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvdWkvcWVt
+dS5kZXNrdG9wIGIvdWkvcWVtdS5kZXNrdG9wCmluZGV4IDIwZjA5ZjU2YmUuLjFiOWYwMmEwY2Mg
+MTAwNjQ0Ci0tLSBhL3VpL3FlbXUuZGVza3RvcAorKysgYi91aS9xZW11LmRlc2t0b3AKQEAgLTYs
+MyArNiw0IEBAIFR5cGU9QXBwbGljYXRpb24KIFRlcm1pbmFsPWZhbHNlCiBLZXl3b3Jkcz1FbXVs
+YXRvcnM7VmlydHVhbGl6YXRpb247S1ZNOwogTm9EaXNwbGF5PXRydWUKK0V4ZWM9cWVtdQotLSAK
+Mi4yNi4yCgo=
+-----------------------5c8d758721f74f3fcee08b6133b9dea2
+Content-Type: application/pgp-keys; filename="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"; name="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"; name="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"
+
+LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tDQpWZXJzaW9uOiBPcGVuUEdQLmpz
+IHY0LjEwLjENCkNvbW1lbnQ6IGh0dHBzOi8vb3BlbnBncGpzLm9yZw0KDQp4c0JOQkZ3dWIxTUJD
+QURjVlhTU0JhZHUrOHNxMExvbitlSXdXcHVZUGt6NFcxVUxqMTMyUHdzUGIxNjUNClE2OU5yVUF6
+R2ljak1zclgwNUpzS2lhdThzUW9oVkY1U01saUJ5T1JDelBiSGFWK0ZXNWEvRnBWRHNDZg0KaUFw
+RWxLT2Q5QVZLcURveHpJYW82NVhDUnVFVG1jN2FDQWk1ZDJTV3Y1akNNZEpNdUhlR20rbTRoaW9z
+DQpPaW0reFpCdzFnQ3F4TVdvTUFCeXAwTmxsSmliUHBIR2hYd2o4RzF4UUM2N2hYY3Vuc1QyQjFN
+OEFDY3kNCk9kd2s0RUkrRHh6cVk1L0c0ZmlwMmpHZVJiVFM0UUFEQkZXMnhNNi8xQUp6V0ZoM0pQ
+UU9md2Zwc2ZETA0KaWJsRHFFMzlDMm15dldWWnltR05NZWlJZVJmaGZrN3ZxbkpFRDlPZEh6QWZB
+RkUwd2lSK0liYVRBQkVCDQpBQUhOUFNKMmFXTjBiM0l1YkdGMllYVmtRSEJ5YjNSdmJtMWhhV3d1
+WTI5dElpQThkbWxqZEc5eUxteGgNCmRtRjFaRUJ3Y205MGIyNXRZV2xzTG1OdmJUN0N3SFVFRUFF
+SUFCOEZBbHd1YjFNR0N3a0hDQU1DQkJVSQ0KQ2dJREZnSUJBaGtCQWhzREFoNEJBQW9KRUp3VlJ4
+eFVqdThlSERNSCtnTmhKL3ROeG0zdHViTk0wVEpODQpNR0Rrbm1qM0huVlNaUldVTWsyUzRnTmJj
+QnV6eXcyVlUzVm1xaFVLNUR6RVdLaDJrU25yR2xmV3JGTkcNCnJCZEg2UERrZ3p4bUxUbnhYNE5n
+cFVQM1l6Q3dLaW42V2dZdUNJTDd4ZnRVVnRoYkpQemZ4c2FhYy9vQQ0KaVphTjhGZmdZbTlJc2NX
+TGxxaFUycnZ3dEpuZW50endjU2ZwOGN4SE1aVjhwdVBxOExIVHFpd3haTTZDDQppZENYMEhRWjZs
+Rzk4REhRdC9Ed21kNlk0SnIycU9Lekw0Qytad0FyeTk3dXdKbWxvS1F2eTB0WnRrNCsNCmRjRnhB
+MDc2b1pNSTBSbjdkZVJ4ejNybzJId3VCZW5aTFJTajl6Tk1ReHNVTXRTUkUrclZJejRGTDdRRg0K
+V1ZNKzBqMEVLbjJjYzdaQWZ6bmI5elBPd0UwRVhDNXZVd0VJQUxsVm9MYXgxRUN0UDBtdDI2UTRV
+QytEDQpxazJrcVFCMDcwVzZCQjdNdEhiM2p4OHZ1WEFyUm1CTWIvTlpaQU5BV09mekU0dG9xdGFz
+RmhZTy9ra28NCjVybi9ZRHVCc0FqOXJXRjRRUHBKWWo2U2M5anBLZWI2NkZCL1p0N0VsbzBOWTFE
+QmFldEwwNmMyZDE1ZA0KcVJ0cFUySnprbE81ZUI1UUI0aFpYTWZFd0NkbUo4d2NoWlhpdjhXSS9Y
+eG4zRVhSbGw5OEplbk9ObjBtDQp2K1FKV3QzbGZJV0pQY09kVHFwT0RCdGlFdlJNTDB3RFZHVjRW
+cWtmU3BSWi9CMVgxM0RQZ1hodkVXaGMNCkVhVlp2QTd0VjU1YkxKTURGcmNhZnFXWmp1VFNaUGIz
+Z2FLc2lFbDBwa3lWNVRCNjFDZXU3aDhBOThQMA0KYmgwZU5EQU1WdGllQmZCWjVWY0FFUUVBQWNM
+QVh3UVlBUWdBQ1FVQ1hDNXZVd0liREFBS0NSQ2NGVWNjDQpWSTd2SGtBekNBRExjNHpGL21Hc2th
+SFZ2MFFocm1JU2NpaGlGTFpCYno1ZWI0anV0RkwySlJTVVZWMHANCnRmb01TcjVqS3RlYUN0Q1FQ
+MzNwbGRERjVNNXNrdm9tRnNUMEpvR0M1T0RIMXY1alcrUXhNUzJjL1lVdA0KVjNTWDVtclZxYmt6
+OVRxZytKK0w1YlI0YU0weVNzN3pOQlJxTnduQmFNSTNLdHNUOCs2T2paY0tsWStqDQovVDBpdUp6
+VWJLWE9jaHBaWWdCVGJHYVIxV0dNMFVaRXRwNjVIV0ZYbUNEaWJyUnkzN0pXS0VIV2tmZkENCjJk
+L2dBOGNqNzJkNHU1RnVoMXFDSVVydWk4MjNMUnQ4WTViNjF2RzZzVERpQ0tzL216czBQSWJHaWlM
+Ng0KNW1nQ1BXbE5zcGhVVng2Q3pLRjF5WEphcGtlb3d0NTEvNndxRzVrYVkweitJSFZ4UzZJSg0K
+PUVzYmoNCi0tLS0tRU5EIFBHUCBQVUJMSUMgS0VZIEJMT0NLLS0tLS0NCg==
+-----------------------5c8d758721f74f3fcee08b6133b9dea2--
+
+-----------------------b60704120c712c8953f031f4042c4404
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: ProtonMail
+
+wsBcBAEBCAAGBQJev/vlAAoJEJwVRxxUju8eE5EIAIjyyiEGbcwqd7brXwJa
+pp43dSl2ccFRaW+9/kPUAUMQJcbTdaceYHt9tdiGbHqxweWUhxyD+mWM9itG
+HiGQWNvKAlU5npb5rya8oMFBC09xOAeJbtjmGzaHobrM5/9laG3nX1P0ijpR
+B1mUqvWI7uD3r0K5fcxcz6r2fe87UnIKgN6qSYPzi3fuIW3Qw4/92JBWzX3p
+qwTV5BJer27MRsm8+7QlLGA/Smab8jnEFtHMOokuD7gQta0RXyQpO+aF7K18
+BaZwmNbbhZqyLFIpfzLCiqqlJ9qCXIMSAxVqSOB468bc5gMS627ZcdG92TzL
+Kce8GD+Y82aDnK4YF6TGA9Y=
+=MSm5
+-----END PGP SIGNATURE-----
+
+
+-----------------------b60704120c712c8953f031f4042c4404--
 
 
