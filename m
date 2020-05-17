@@ -1,49 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jZykj-0008P7-Oj
-	for mharc-qemu-trivial@gnu.org; Sat, 16 May 2020 11:29:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60280)
+	id 1jaNaa-0006PO-9u
+	for mharc-qemu-trivial@gnu.org; Sun, 17 May 2020 14:00:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <victor.lavaud@protonmail.com>)
- id 1jZy1k-0004nN-6v
- for qemu-trivial@nongnu.org; Sat, 16 May 2020 10:43:00 -0400
-Received: from mail-40131.protonmail.ch ([185.70.40.131]:64199)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <victor.lavaud@protonmail.com>)
- id 1jZy1i-0008Jg-En
- for qemu-trivial@nongnu.org; Sat, 16 May 2020 10:42:59 -0400
-Date: Sat, 16 May 2020 14:42:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
- s=protonmail; t=1589640174;
- bh=SsCpBDNAIQ3v58OWvOEydwcu9WNsco8XmUdn2Sorlog=;
- h=Date:To:From:Cc:Reply-To:Subject:From;
- b=C5Hc9nzIDKi47Sgh/tqylfT/uAjELSSXjSfzQlPtxDNKnqlV2BF70A3BawNEccWpB
- 4cZOvTfGlK7u6Cp5H+WF2QTnw+nHjpmTl9RbpOPicUKGvNBXKyTB1wYJrfXxoaIRDv
- F6gSkkPuZthvsN/HLO1Y+lcBN/xn/lsXCeT2PeYg=
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-From: Victor Lavaud <victor.lavaud@protonmail.com>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Reply-To: Victor Lavaud <victor.lavaud@protonmail.com>
-Subject: Patch to fix missing Exec field in qemu.desktop
-Message-ID: <zrVSyE1D2Xtxcr723wTf2sJRtM0IPuBRH0S-Gyx2XsvooDqbMYhqrK_aVk3AZM8RkjyOzYKWQH3VrnWDjwVUspDJHYUKXOyLZEZlvAzz6Ww=@protonmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaNaZ-0006Ma-1j
+ for qemu-trivial@nongnu.org; Sun, 17 May 2020 14:00:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32594
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaNaV-00065L-V4
+ for qemu-trivial@nongnu.org; Sun, 17 May 2020 14:00:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589738433;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=fLpKO8sZ/hqI9BOhCP2moj/9si8EyxyqgTEpAoV6SQ0=;
+ b=exZ2Vrm9HI8Wi3tv5E62Wsca43fXzXINop13Bq1JSZRCRmtlnw6qiix/FmQ1pwQWK9Miue
+ 3S8+mxbAHNGgdC2jUIC71FwmnVsgL7eeBmaLwvPngGlR6r8hPqe9GaPiE8+q8BWscmA7VB
+ d43dx4yMOktdB0Plu9c6Lp9jmC4QKQg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-225-gqQGG_ssOUKA9tW4Zb9CzQ-1; Sun, 17 May 2020 14:00:30 -0400
+X-MC-Unique: gqQGG_ssOUKA9tW4Zb9CzQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2358C460;
+ Sun, 17 May 2020 18:00:26 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-98.ams2.redhat.com [10.36.112.98])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6BFE85D9D7;
+ Sun, 17 May 2020 18:00:19 +0000 (UTC)
+Subject: Re: [PATCH v2 05/10] Makefile: Remove dangerous EOL trailing backslash
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-riscv@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200515170804.5707-1-philmd@redhat.com>
+ <20200515170804.5707-6-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <d1eea504-4e09-55a4-53be-20f812f5b272@redhat.com>
+Date: Sun, 17 May 2020 20:00:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; protocol="application/pgp-signature";
- micalg=pgp-sha256;
- boundary="---------------------b60704120c712c8953f031f4042c4404";
- charset=UTF-8
-Received-SPF: pass client-ip=185.70.40.131;
- envelope-from=victor.lavaud@protonmail.com; helo=mail-40131.protonmail.ch
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/16 10:42:54
+In-Reply-To: <20200515170804.5707-6-philmd@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 13:26:55
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 16 May 2020 11:29:28 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -55,116 +88,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 16 May 2020 14:43:00 -0000
+X-List-Received-Date: Sun, 17 May 2020 18:00:39 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
------------------------b60704120c712c8953f031f4042c4404
-Content-Type: multipart/mixed;boundary=---------------------5c8d758721f74f3fcee08b6133b9dea2
+On 15/05/2020 19.07, Philippe Mathieu-Daudé wrote:
+> One might get caught trying to understand unexpected Makefile
+> behavior. Trailing backslash can help to split very long lines,
+> but are rather dangerous when nothing follow. Preserve other
+> developers debugging time by removing this one.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Makefile b/Makefile
+> index 34275f57c9..84453789f9 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -420,7 +420,7 @@ MINIKCONF_ARGS = \
+>  
+>  MINIKCONF_INPUTS = $(SRC_PATH)/Kconfig.host $(SRC_PATH)/hw/Kconfig
+>  MINIKCONF_DEPS = $(MINIKCONF_INPUTS) $(wildcard $(SRC_PATH)/hw/*/Kconfig)
+> -MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py \
+> +MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
+>  
+>  $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MINIKCONF_DEPS) $(BUILD_DIR)/config-host.mak
+>  	$(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) > $@.tmp, "GEN", "$@.tmp")
+> 
 
------------------------5c8d758721f74f3fcee08b6133b9dea2
-Content-Type: multipart/alternative;boundary=---------------------4f0d7dc96b6a713bd2eb1cca549316f4
-
------------------------4f0d7dc96b6a713bd2eb1cca549316f4
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;charset=utf-8
-
-
-
-
-Sent with ProtonMail Secure Email.
-
-
------------------------4f0d7dc96b6a713bd2eb1cca549316f4
-Content-Type: multipart/related;boundary=---------------------5d95b9c6d1cd288cbde1fa0773d162a6
-
------------------------5d95b9c6d1cd288cbde1fa0773d162a6
-Content-Type: text/html;charset=utf-8
-Content-Transfer-Encoding: base64
-
-PGRpdj48YnI+PC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdiBjbGFzcz0icHJvdG9ubWFpbF9zaWdu
-YXR1cmVfYmxvY2siPjxkaXYgY2xhc3M9InByb3Rvbm1haWxfc2lnbmF0dXJlX2Jsb2NrLXVzZXIg
-cHJvdG9ubWFpbF9zaWduYXR1cmVfYmxvY2stZW1wdHkiPjxicj48L2Rpdj48ZGl2IGNsYXNzPSJw
-cm90b25tYWlsX3NpZ25hdHVyZV9ibG9jay1wcm90b24iPlNlbnQgd2l0aCA8YSBocmVmPSJodHRw
-czovL3Byb3Rvbm1haWwuY29tIiB0YXJnZXQ9Il9ibGFuayI+UHJvdG9uTWFpbDwvYT4gU2VjdXJl
-IEVtYWlsLjxicj48L2Rpdj48L2Rpdj4=
------------------------5d95b9c6d1cd288cbde1fa0773d162a6--
-
------------------------4f0d7dc96b6a713bd2eb1cca549316f4--
-
------------------------5c8d758721f74f3fcee08b6133b9dea2
-Content-Type: text/x-patch; filename="fix-exec-field-in-qemu-desktop.patch"; name="fix-exec-field-in-qemu-desktop.patch"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="fix-exec-field-in-qemu-desktop.patch"; name="fix-exec-field-in-qemu-desktop.patch"
-
-RnJvbSAyMDdhMWEzNGFjY2RjNWI1NjNkMjk0ODQyOTI4MjlhNDE5M2MzNWY4IE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBWaWN0b3IgTGF2YXVkIDx2aWN0b3IubGF2YXVkQGdtYWlsLmNv
-bT4KRGF0ZTogU2F0LCAxNiBNYXkgMjAyMCAxNjozMzowMCArMDIwMApTdWJqZWN0OiBbUEFUQ0hd
-IEZpeCBtaXNzaW5nIEV4ZWMgZmllbGQgaW4gcWVtdS5kZXNrdG9wCgpTaWduZWQtb2ZmLWJ5OiBW
-aWN0b3IgTGF2YXVkIDx2aWN0b3IubGF2YXVkQHBtLm1lPgotLS0KIHVpL3FlbXUuZGVza3RvcCB8
-IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvdWkvcWVt
-dS5kZXNrdG9wIGIvdWkvcWVtdS5kZXNrdG9wCmluZGV4IDIwZjA5ZjU2YmUuLjFiOWYwMmEwY2Mg
-MTAwNjQ0Ci0tLSBhL3VpL3FlbXUuZGVza3RvcAorKysgYi91aS9xZW11LmRlc2t0b3AKQEAgLTYs
-MyArNiw0IEBAIFR5cGU9QXBwbGljYXRpb24KIFRlcm1pbmFsPWZhbHNlCiBLZXl3b3Jkcz1FbXVs
-YXRvcnM7VmlydHVhbGl6YXRpb247S1ZNOwogTm9EaXNwbGF5PXRydWUKK0V4ZWM9cWVtdQotLSAK
-Mi4yNi4yCgo=
------------------------5c8d758721f74f3fcee08b6133b9dea2
-Content-Type: application/pgp-keys; filename="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"; name="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"; name="publickey - victor.lavaud@protonmail.com - 0x54FBFBBD.asc"
-
-LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tDQpWZXJzaW9uOiBPcGVuUEdQLmpz
-IHY0LjEwLjENCkNvbW1lbnQ6IGh0dHBzOi8vb3BlbnBncGpzLm9yZw0KDQp4c0JOQkZ3dWIxTUJD
-QURjVlhTU0JhZHUrOHNxMExvbitlSXdXcHVZUGt6NFcxVUxqMTMyUHdzUGIxNjUNClE2OU5yVUF6
-R2ljak1zclgwNUpzS2lhdThzUW9oVkY1U01saUJ5T1JDelBiSGFWK0ZXNWEvRnBWRHNDZg0KaUFw
-RWxLT2Q5QVZLcURveHpJYW82NVhDUnVFVG1jN2FDQWk1ZDJTV3Y1akNNZEpNdUhlR20rbTRoaW9z
-DQpPaW0reFpCdzFnQ3F4TVdvTUFCeXAwTmxsSmliUHBIR2hYd2o4RzF4UUM2N2hYY3Vuc1QyQjFN
-OEFDY3kNCk9kd2s0RUkrRHh6cVk1L0c0ZmlwMmpHZVJiVFM0UUFEQkZXMnhNNi8xQUp6V0ZoM0pQ
-UU9md2Zwc2ZETA0KaWJsRHFFMzlDMm15dldWWnltR05NZWlJZVJmaGZrN3ZxbkpFRDlPZEh6QWZB
-RkUwd2lSK0liYVRBQkVCDQpBQUhOUFNKMmFXTjBiM0l1YkdGMllYVmtRSEJ5YjNSdmJtMWhhV3d1
-WTI5dElpQThkbWxqZEc5eUxteGgNCmRtRjFaRUJ3Y205MGIyNXRZV2xzTG1OdmJUN0N3SFVFRUFF
-SUFCOEZBbHd1YjFNR0N3a0hDQU1DQkJVSQ0KQ2dJREZnSUJBaGtCQWhzREFoNEJBQW9KRUp3VlJ4
-eFVqdThlSERNSCtnTmhKL3ROeG0zdHViTk0wVEpODQpNR0Rrbm1qM0huVlNaUldVTWsyUzRnTmJj
-QnV6eXcyVlUzVm1xaFVLNUR6RVdLaDJrU25yR2xmV3JGTkcNCnJCZEg2UERrZ3p4bUxUbnhYNE5n
-cFVQM1l6Q3dLaW42V2dZdUNJTDd4ZnRVVnRoYkpQemZ4c2FhYy9vQQ0KaVphTjhGZmdZbTlJc2NX
-TGxxaFUycnZ3dEpuZW50endjU2ZwOGN4SE1aVjhwdVBxOExIVHFpd3haTTZDDQppZENYMEhRWjZs
-Rzk4REhRdC9Ed21kNlk0SnIycU9Lekw0Qytad0FyeTk3dXdKbWxvS1F2eTB0WnRrNCsNCmRjRnhB
-MDc2b1pNSTBSbjdkZVJ4ejNybzJId3VCZW5aTFJTajl6Tk1ReHNVTXRTUkUrclZJejRGTDdRRg0K
-V1ZNKzBqMEVLbjJjYzdaQWZ6bmI5elBPd0UwRVhDNXZVd0VJQUxsVm9MYXgxRUN0UDBtdDI2UTRV
-QytEDQpxazJrcVFCMDcwVzZCQjdNdEhiM2p4OHZ1WEFyUm1CTWIvTlpaQU5BV09mekU0dG9xdGFz
-RmhZTy9ra28NCjVybi9ZRHVCc0FqOXJXRjRRUHBKWWo2U2M5anBLZWI2NkZCL1p0N0VsbzBOWTFE
-QmFldEwwNmMyZDE1ZA0KcVJ0cFUySnprbE81ZUI1UUI0aFpYTWZFd0NkbUo4d2NoWlhpdjhXSS9Y
-eG4zRVhSbGw5OEplbk9ObjBtDQp2K1FKV3QzbGZJV0pQY09kVHFwT0RCdGlFdlJNTDB3RFZHVjRW
-cWtmU3BSWi9CMVgxM0RQZ1hodkVXaGMNCkVhVlp2QTd0VjU1YkxKTURGcmNhZnFXWmp1VFNaUGIz
-Z2FLc2lFbDBwa3lWNVRCNjFDZXU3aDhBOThQMA0KYmgwZU5EQU1WdGllQmZCWjVWY0FFUUVBQWNM
-QVh3UVlBUWdBQ1FVQ1hDNXZVd0liREFBS0NSQ2NGVWNjDQpWSTd2SGtBekNBRExjNHpGL21Hc2th
-SFZ2MFFocm1JU2NpaGlGTFpCYno1ZWI0anV0RkwySlJTVVZWMHANCnRmb01TcjVqS3RlYUN0Q1FQ
-MzNwbGRERjVNNXNrdm9tRnNUMEpvR0M1T0RIMXY1alcrUXhNUzJjL1lVdA0KVjNTWDVtclZxYmt6
-OVRxZytKK0w1YlI0YU0weVNzN3pOQlJxTnduQmFNSTNLdHNUOCs2T2paY0tsWStqDQovVDBpdUp6
-VWJLWE9jaHBaWWdCVGJHYVIxV0dNMFVaRXRwNjVIV0ZYbUNEaWJyUnkzN0pXS0VIV2tmZkENCjJk
-L2dBOGNqNzJkNHU1RnVoMXFDSVVydWk4MjNMUnQ4WTViNjF2RzZzVERpQ0tzL216czBQSWJHaWlM
-Ng0KNW1nQ1BXbE5zcGhVVng2Q3pLRjF5WEphcGtlb3d0NTEvNndxRzVrYVkweitJSFZ4UzZJSg0K
-PUVzYmoNCi0tLS0tRU5EIFBHUCBQVUJMSUMgS0VZIEJMT0NLLS0tLS0NCg==
------------------------5c8d758721f74f3fcee08b6133b9dea2--
-
------------------------b60704120c712c8953f031f4042c4404
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: ProtonMail
-
-wsBcBAEBCAAGBQJev/vlAAoJEJwVRxxUju8eE5EIAIjyyiEGbcwqd7brXwJa
-pp43dSl2ccFRaW+9/kPUAUMQJcbTdaceYHt9tdiGbHqxweWUhxyD+mWM9itG
-HiGQWNvKAlU5npb5rya8oMFBC09xOAeJbtjmGzaHobrM5/9laG3nX1P0ijpR
-B1mUqvWI7uD3r0K5fcxcz6r2fe87UnIKgN6qSYPzi3fuIW3Qw4/92JBWzX3p
-qwTV5BJer27MRsm8+7QlLGA/Smab8jnEFtHMOokuD7gQta0RXyQpO+aF7K18
-BaZwmNbbhZqyLFIpfzLCiqqlJ9qCXIMSAxVqSOB468bc5gMS627ZcdG92TzL
-Kce8GD+Y82aDnK4YF6TGA9Y=
-=MSm5
------END PGP SIGNATURE-----
-
-
------------------------b60704120c712c8953f031f4042c4404--
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
