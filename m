@@ -1,75 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jafj6-0003NS-Bp
-	for mharc-qemu-trivial@gnu.org; Mon, 18 May 2020 09:22:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59884)
+	id 1jag1a-0001zq-E9
+	for mharc-qemu-trivial@gnu.org; Mon, 18 May 2020 09:41:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jafj4-0003JL-Rs
- for qemu-trivial@nongnu.org; Mon, 18 May 2020 09:22:38 -0400
-Received: from 10.mo173.mail-out.ovh.net ([46.105.74.148]:52799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jafj2-0007YA-Lw
- for qemu-trivial@nongnu.org; Mon, 18 May 2020 09:22:38 -0400
-Received: from player732.ha.ovh.net (unknown [10.110.115.164])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id EBE9913D3C0
- for <qemu-trivial@nongnu.org>; Mon, 18 May 2020 15:22:33 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player732.ha.ovh.net (Postfix) with ESMTPSA id D7420125CCEDC;
- Mon, 18 May 2020 13:21:52 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003b3c596e5-fc65-4a7f-a892-87f5b49a92ea,2E2A9519E3FAC9D985F861812C9F86F7BE89492F)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v3 0/3] various: Remove unnecessary casts
-To: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>
-References: <20200512070020.22782-1-f4bug@amsat.org>
- <871rnlsps6.fsf@dusky.pond.sub.org>
- <8791b385-8493-f81d-5ee3-cca5b8559c27@redhat.com>
- <87imgt9ycp.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2f4607cf-90a9-ca9a-4ef6-a8358631cdf0@kaod.org>
-Date: Mon, 18 May 2020 15:21:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jag1Z-0001zA-AP
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 09:41:45 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:30496
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jag1Y-00053q-F3
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 09:41:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589809302;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fLbqQj4oPY/pz3+K/1DR9PwFYqJi1eePZQ97u1eMfpM=;
+ b=T964OfjkhUEqtJilOzL3jQBFJc8t3/W1XDr7GV0VyteNVlgoiZDxwOX4bQzAMbRnXZTdZ1
+ k1kGdeqTjvNN2PRWln7WDD2vL40e0u/XWs/Rf+v+/OIO0jmuo7LmcvkEExxB5lIUBz8cJP
+ mk4jSY4QlvtXmiIauVKJRxUYqlOwNPM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-184-on3S1ucMN1iM6g0NouvV4A-1; Mon, 18 May 2020 09:41:40 -0400
+X-MC-Unique: on3S1ucMN1iM6g0NouvV4A-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45231100CCC2;
+ Mon, 18 May 2020 13:41:38 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
+ [10.36.113.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BAFDD34661;
+ Mon, 18 May 2020 13:41:37 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id DCE9417444; Mon, 18 May 2020 15:41:36 +0200 (CEST)
+Date: Mon, 18 May 2020 15:41:36 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <huth@tuxfamily.org>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 1/2] hw/display: Include local 'framebuffer.h'
+Message-ID: <20200518134136.2y3fq5a4kwgwocwt@sirius.home.kraxel.org>
+References: <20200504082003.16298-1-f4bug@amsat.org>
+ <20200504082003.16298-2-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <87imgt9ycp.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <20200504082003.16298-2-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10095100040702757704
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddthedgieefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffhfffudegjeeggedugeefgeeifffhueethefhfeekkedvkefggfelteefuddvteenucffohhmrghinhepohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefvddrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.74.148; envelope-from=clg@kaod.org;
- helo=10.mo173.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 09:22:34
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 23:32:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,34 +77,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 May 2020 13:22:39 -0000
+X-List-Received-Date: Mon, 18 May 2020 13:41:45 -0000
 
-On 5/18/20 3:17 PM, Markus Armbruster wrote:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
+On Mon, May 04, 2020 at 10:20:02AM +0200, Philippe Mathieu-Daudé wrote:
+> The "framebuffer.h" header is not an exported include.
+
+Patch added to ui queue.
+(patch 2/2 skipped, has unanswered quesions).
+
+thanks,
+  Gerd
+
 > 
->> On 15/05/20 07:58, Markus Armbruster wrote:
->>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
->>>
->>>> Remove unnecessary casts using coccinelle scripts.
->>>>
->>>> The CPU()/OBJECT() patches don't introduce logical change,
->>>> The DEVICE() one removes various OBJECT_CHECK() calls.
->>> Queued, thanks!
->>>
->>> Managing expecations: I'm not a QOM maintainer, I don't want to become
->>> one, and I don't normally queue QOM patches :)
->>>
->>
->> I want to be again a QOM maintainer, but it's not the best time for me
->> to be one.  So thanks for picking up my slack.
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/display/artist.c  | 2 +-
+>  hw/display/next-fb.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> You're welcome :)
+> diff --git a/hw/display/artist.c b/hw/display/artist.c
+> index 753dbb9a77..e1d5885fed 100644
+> --- a/hw/display/artist.c
+> +++ b/hw/display/artist.c
+> @@ -21,7 +21,7 @@
+>  #include "migration/vmstate.h"
+>  #include "ui/console.h"
+>  #include "trace.h"
+> -#include "hw/display/framebuffer.h"
+> +#include "framebuffer.h"
+>  
+>  #define TYPE_ARTIST "artist"
+>  #define ARTIST(obj) OBJECT_CHECK(ARTISTState, (obj), TYPE_ARTIST)
+> diff --git a/hw/display/next-fb.c b/hw/display/next-fb.c
+> index 2b726a10f8..b0513a8fba 100644
+> --- a/hw/display/next-fb.c
+> +++ b/hw/display/next-fb.c
+> @@ -27,7 +27,7 @@
+>  #include "hw/hw.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+> -#include "hw/display/framebuffer.h"
+> +#include "framebuffer.h"
+>  #include "ui/pixel_ops.h"
+>  #include "hw/m68k/next-cube.h"
+>  
+> -- 
+> 2.21.3
+> 
 
-Could you help me getting this patch merged ? :)
-
-http://patchwork.ozlabs.org/project/qemu-devel/patch/20200404153340.164861-1-clg@kaod.org/
-
-Thanks,
-
-C. 
 
