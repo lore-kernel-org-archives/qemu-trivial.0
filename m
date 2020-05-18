@@ -1,77 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jaXm1-0001kn-Sf
-	for mharc-qemu-trivial@gnu.org; Mon, 18 May 2020 00:53:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48314)
+	id 1jaaRO-0006sP-PT
+	for mharc-qemu-trivial@gnu.org; Mon, 18 May 2020 03:44:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXlz-0001hl-V4
- for qemu-trivial@nongnu.org; Mon, 18 May 2020 00:53:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46164
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaaRM-0006rE-SL
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 03:44:00 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:36081
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXly-0001nf-1t
- for qemu-trivial@nongnu.org; Mon, 18 May 2020 00:53:07 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaaRM-0001nx-4k
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 03:44:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589777584;
+ s=mimecast20190719; t=1589787838;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3oFTT1i/krsx/U2z+dfLmiG6D5PAuB4SqMSd5F98jBk=;
- b=EaXfcYU5uZUuBb6P3qPpJNsTTVm+TpLEm4cip4Ay39pMYFee+icjLJSstQxKb//oIsWkBK
- vMWPBvf6hMbSWrZkid9MiEXH368St6S+NgDE4QyThJfZQedxI1zrDpQOeNGNBBjXLXCKYP
- dAn7WkNHc+6LE6Eqg6NWEj9O5o9+pKE=
+ to:to:cc:cc:content-type:content-type;
+ bh=UElHim+FDsfadnKXsfBdfHKm+vRH2ogsYCXWhw1L3H4=;
+ b=Nh+UPrA3/tHnjTFS4vyj3NFS4UWz3IEM+DVL86EKXnlbFXwvTq5mnULJqHp/pL9oUl8BxW
+ DpbhAVeQBkhzhHvgcvvLfBTUgBBU8Hsu7C5Z9j5kKNTdFnQVh9GUTg9UoAKJ0QrreMkgtW
+ J6fqm0G/PVijzPAEGnQ2ReTmxsrSdfA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-299-pFafZkPKMXa17-N4iAaWBw-1; Mon, 18 May 2020 00:52:53 -0400
-X-MC-Unique: pFafZkPKMXa17-N4iAaWBw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-499-b6W_CpdSMfuHAT1HMKgL1w-1; Mon, 18 May 2020 03:43:56 -0400
+X-MC-Unique: b6W_CpdSMfuHAT1HMKgL1w-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28B4A460;
- Mon, 18 May 2020 04:52:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
- [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C08782E049;
- Mon, 18 May 2020 04:52:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 51A0D11358BC; Mon, 18 May 2020 06:52:48 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
- Habkost <ehabkost@redhat.com>,  QEMU Trivial <qemu-trivial@nongnu.org>,
- Michael Tokarev <mjt@tls.msk.ru>,  "qemu-devel\@nongnu.org Developers"
- <qemu-devel@nongnu.org>,  Laurent Vivier <laurent@vivier.eu>,  Paolo
- Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2 1/3] qom/object: Move Object typedef to
- 'qemu/typedefs.h'
-References: <20200504115656.6045-1-f4bug@amsat.org>
- <20200504115656.6045-2-f4bug@amsat.org>
- <87wo5drasi.fsf@dusky.pond.sub.org>
- <CAAdtpL4wpqv8vMOFgRubghr53fJyoXJ+DcGwi84wp0PiczyUpg@mail.gmail.com>
-Date: Mon, 18 May 2020 06:52:48 +0200
-In-Reply-To: <CAAdtpL4wpqv8vMOFgRubghr53fJyoXJ+DcGwi84wp0PiczyUpg@mail.gmail.com>
- ("Philippe =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 15 May 2020
- 09:00:17 +0200")
-Message-ID: <87d071kfof.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D007107ACCA;
+ Mon, 18 May 2020 07:43:55 +0000 (UTC)
+Received: from thuth.com (ovpn-112-182.ams2.redhat.com [10.36.112.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 51BC65C1B2;
+ Mon, 18 May 2020 07:43:54 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Jason Wang <jasowang@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH] net: Do not include a newline in the id of -nic devices
+Date: Mon, 18 May 2020 09:43:52 +0200
+Message-Id: <20200518074352.23125-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 00:53:04
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 22:52:27
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,115 +66,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 May 2020 04:53:08 -0000
+X-List-Received-Date: Mon, 18 May 2020 07:44:01 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+The '\n' sneaked in by accident here, an "id" string should really
+not contain a newline character at the end.
 
-> On Fri, May 15, 2020 at 8:07 AM Markus Armbruster <armbru@redhat.com> wro=
-te:
->>
->> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>
->> > We use the Object type all over the place.
->> > Forward declare it in "qemu/typedefs.h".
->> >
->> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> > ---
->> >  include/qemu/typedefs.h   | 1 +
->> >  include/qom/object.h      | 2 --
->> >  include/qom/qom-qobject.h | 2 --
->> >  include/sysemu/sysemu.h   | 1 -
->> >  4 files changed, 1 insertion(+), 5 deletions(-)
->> >
->> > diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
->> > index 375770a80f..b03ec9f40a 100644
->> > --- a/include/qemu/typedefs.h
->> > +++ b/include/qemu/typedefs.h
->> > @@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
->> >  typedef struct NICInfo NICInfo;
->> >  typedef struct NodeInfo NodeInfo;
->> >  typedef struct NumaNodeMem NumaNodeMem;
->> > +typedef struct Object Object;
->> >  typedef struct ObjectClass ObjectClass;
->> >  typedef struct PCIBridge PCIBridge;
->> >  typedef struct PCIBus PCIBus;
->> > diff --git a/include/qom/object.h b/include/qom/object.h
->> > index 784c97c0e1..1edc12e64c 100644
->> > --- a/include/qom/object.h
->> > +++ b/include/qom/object.h
->> > @@ -20,8 +20,6 @@
->> >  struct TypeImpl;
->> >  typedef struct TypeImpl *Type;
->> >
->> > -typedef struct Object Object;
->> > -
->> >  typedef struct TypeInfo TypeInfo;
->> >
->> >  typedef struct InterfaceClass InterfaceClass;
->> > diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
->> > index 77cd717e3f..82136e6e80 100644
->> > --- a/include/qom/qom-qobject.h
->> > +++ b/include/qom/qom-qobject.h
->> > @@ -13,8 +13,6 @@
->> >  #ifndef QEMU_QOM_QOBJECT_H
->> >  #define QEMU_QOM_QOBJECT_H
->> >
->> > -#include "qom/object.h"
->> > -
->> >  /*
->> >   * object_property_get_qobject:
->> >   * @obj: the object
->> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
->> > index ef81302e1a..ca4458e451 100644
->> > --- a/include/sysemu/sysemu.h
->> > +++ b/include/sysemu/sysemu.h
->> > @@ -5,7 +5,6 @@
->> >  #include "qemu/timer.h"
->> >  #include "qemu/notify.h"
->> >  #include "qemu/uuid.h"
->> > -#include "qom/object.h"
->> >
->> >  /* vl.c */
->>
->> How did you identify the inclusions to drop?
->
-> Nothing very strict I'm afraid. I suppose I had the files opened in my ed=
-itor.
->
-> The output of
-> $ git grep -L -E '(OBJECT_|INTERFACE_)' $(git grep -l qom/object include)
+Fixes: 78cd6f7bf6b ('net: Add a new convenience option "--nic" ...')
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ net/net.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Why limit to include, and not check '*.h', or even '*.[ch]'?
-
-> suggests I missed those:
->
-> -- >8 --
-> diff --git a/include/hw/display/edid.h b/include/hw/display/edid.h
-> index ff99dc0a05..5b1de57f24 100644
-> --- a/include/hw/display/edid.h
-> +++ b/include/hw/display/edid.h
-> @@ -1,8 +1,6 @@
->  #ifndef EDID_H
->  #define EDID_H
->
-> -#include "qom/object.h"
-> -
->  typedef struct qemu_edid_info {
->      const char *vendor; /* http://www.uefi.org/pnp_id_list */
->      const char *name;
-> diff --git a/include/io/task.h b/include/io/task.h
-> index 1abbfb8b65..6818dfedd0 100644
-> --- a/include/io/task.h
-> +++ b/include/io/task.h
-> @@ -21,8 +21,6 @@
->  #ifndef QIO_TASK_H
->  #define QIO_TASK_H
->
-> -#include "qom/object.h"
-> -
->  typedef struct QIOTask QIOTask;
->
->  typedef void (*QIOTaskFunc)(QIOTask *task,
-> ---
+diff --git a/net/net.c b/net/net.c
+index 38778e831d..cbeeeadff8 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1506,7 +1506,7 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+     /* Create an ID if the user did not specify one */
+     nd_id = g_strdup(qemu_opts_id(opts));
+     if (!nd_id) {
+-        nd_id = g_strdup_printf("__org.qemu.nic%i\n", idx);
++        nd_id = g_strdup_printf("__org.qemu.nic%i", idx);
+         qemu_opts_set_id(opts, nd_id);
+     }
+ 
+-- 
+2.18.1
 
 
