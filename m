@@ -1,73 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jaNaa-0006PO-9u
-	for mharc-qemu-trivial@gnu.org; Sun, 17 May 2020 14:00:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37482)
+	id 1jaXm1-0001kn-Sf
+	for mharc-qemu-trivial@gnu.org; Mon, 18 May 2020 00:53:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaNaZ-0006Ma-1j
- for qemu-trivial@nongnu.org; Sun, 17 May 2020 14:00:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32594
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXlz-0001hl-V4
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 00:53:07 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46164
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jaNaV-00065L-V4
- for qemu-trivial@nongnu.org; Sun, 17 May 2020 14:00:38 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXly-0001nf-1t
+ for qemu-trivial@nongnu.org; Mon, 18 May 2020 00:53:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589738433;
+ s=mimecast20190719; t=1589777584;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=fLpKO8sZ/hqI9BOhCP2moj/9si8EyxyqgTEpAoV6SQ0=;
- b=exZ2Vrm9HI8Wi3tv5E62Wsca43fXzXINop13Bq1JSZRCRmtlnw6qiix/FmQ1pwQWK9Miue
- 3S8+mxbAHNGgdC2jUIC71FwmnVsgL7eeBmaLwvPngGlR6r8hPqe9GaPiE8+q8BWscmA7VB
- d43dx4yMOktdB0Plu9c6Lp9jmC4QKQg=
+ in-reply-to:in-reply-to:references:references;
+ bh=3oFTT1i/krsx/U2z+dfLmiG6D5PAuB4SqMSd5F98jBk=;
+ b=EaXfcYU5uZUuBb6P3qPpJNsTTVm+TpLEm4cip4Ay39pMYFee+icjLJSstQxKb//oIsWkBK
+ vMWPBvf6hMbSWrZkid9MiEXH368St6S+NgDE4QyThJfZQedxI1zrDpQOeNGNBBjXLXCKYP
+ dAn7WkNHc+6LE6Eqg6NWEj9O5o9+pKE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-225-gqQGG_ssOUKA9tW4Zb9CzQ-1; Sun, 17 May 2020 14:00:30 -0400
-X-MC-Unique: gqQGG_ssOUKA9tW4Zb9CzQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-299-pFafZkPKMXa17-N4iAaWBw-1; Mon, 18 May 2020 00:52:53 -0400
+X-MC-Unique: pFafZkPKMXa17-N4iAaWBw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2358C460;
- Sun, 17 May 2020 18:00:26 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-98.ams2.redhat.com [10.36.112.98])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6BFE85D9D7;
- Sun, 17 May 2020 18:00:19 +0000 (UTC)
-Subject: Re: [PATCH v2 05/10] Makefile: Remove dangerous EOL trailing backslash
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-riscv@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200515170804.5707-1-philmd@redhat.com>
- <20200515170804.5707-6-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <d1eea504-4e09-55a4-53be-20f812f5b272@redhat.com>
-Date: Sun, 17 May 2020 20:00:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28B4A460;
+ Mon, 18 May 2020 04:52:52 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C08782E049;
+ Mon, 18 May 2020 04:52:49 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 51A0D11358BC; Mon, 18 May 2020 06:52:48 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
+ Habkost <ehabkost@redhat.com>,  QEMU Trivial <qemu-trivial@nongnu.org>,
+ Michael Tokarev <mjt@tls.msk.ru>,  "qemu-devel\@nongnu.org Developers"
+ <qemu-devel@nongnu.org>,  Laurent Vivier <laurent@vivier.eu>,  Paolo
+ Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 1/3] qom/object: Move Object typedef to
+ 'qemu/typedefs.h'
+References: <20200504115656.6045-1-f4bug@amsat.org>
+ <20200504115656.6045-2-f4bug@amsat.org>
+ <87wo5drasi.fsf@dusky.pond.sub.org>
+ <CAAdtpL4wpqv8vMOFgRubghr53fJyoXJ+DcGwi84wp0PiczyUpg@mail.gmail.com>
+Date: Mon, 18 May 2020 06:52:48 +0200
+In-Reply-To: <CAAdtpL4wpqv8vMOFgRubghr53fJyoXJ+DcGwi84wp0PiczyUpg@mail.gmail.com>
+ ("Philippe =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 15 May 2020
+ 09:00:17 +0200")
+Message-ID: <87d071kfof.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200515170804.5707-6-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 13:26:55
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 00:53:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -88,34 +84,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 May 2020 18:00:39 -0000
+X-List-Received-Date: Mon, 18 May 2020 04:53:08 -0000
 
-On 15/05/2020 19.07, Philippe Mathieu-Daudé wrote:
-> One might get caught trying to understand unexpected Makefile
-> behavior. Trailing backslash can help to split very long lines,
-> but are rather dangerous when nothing follow. Preserve other
-> developers debugging time by removing this one.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> On Fri, May 15, 2020 at 8:07 AM Markus Armbruster <armbru@redhat.com> wro=
+te:
+>>
+>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+>>
+>> > We use the Object type all over the place.
+>> > Forward declare it in "qemu/typedefs.h".
+>> >
+>> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> > ---
+>> >  include/qemu/typedefs.h   | 1 +
+>> >  include/qom/object.h      | 2 --
+>> >  include/qom/qom-qobject.h | 2 --
+>> >  include/sysemu/sysemu.h   | 1 -
+>> >  4 files changed, 1 insertion(+), 5 deletions(-)
+>> >
+>> > diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+>> > index 375770a80f..b03ec9f40a 100644
+>> > --- a/include/qemu/typedefs.h
+>> > +++ b/include/qemu/typedefs.h
+>> > @@ -75,6 +75,7 @@ typedef struct NetFilterState NetFilterState;
+>> >  typedef struct NICInfo NICInfo;
+>> >  typedef struct NodeInfo NodeInfo;
+>> >  typedef struct NumaNodeMem NumaNodeMem;
+>> > +typedef struct Object Object;
+>> >  typedef struct ObjectClass ObjectClass;
+>> >  typedef struct PCIBridge PCIBridge;
+>> >  typedef struct PCIBus PCIBus;
+>> > diff --git a/include/qom/object.h b/include/qom/object.h
+>> > index 784c97c0e1..1edc12e64c 100644
+>> > --- a/include/qom/object.h
+>> > +++ b/include/qom/object.h
+>> > @@ -20,8 +20,6 @@
+>> >  struct TypeImpl;
+>> >  typedef struct TypeImpl *Type;
+>> >
+>> > -typedef struct Object Object;
+>> > -
+>> >  typedef struct TypeInfo TypeInfo;
+>> >
+>> >  typedef struct InterfaceClass InterfaceClass;
+>> > diff --git a/include/qom/qom-qobject.h b/include/qom/qom-qobject.h
+>> > index 77cd717e3f..82136e6e80 100644
+>> > --- a/include/qom/qom-qobject.h
+>> > +++ b/include/qom/qom-qobject.h
+>> > @@ -13,8 +13,6 @@
+>> >  #ifndef QEMU_QOM_QOBJECT_H
+>> >  #define QEMU_QOM_QOBJECT_H
+>> >
+>> > -#include "qom/object.h"
+>> > -
+>> >  /*
+>> >   * object_property_get_qobject:
+>> >   * @obj: the object
+>> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+>> > index ef81302e1a..ca4458e451 100644
+>> > --- a/include/sysemu/sysemu.h
+>> > +++ b/include/sysemu/sysemu.h
+>> > @@ -5,7 +5,6 @@
+>> >  #include "qemu/timer.h"
+>> >  #include "qemu/notify.h"
+>> >  #include "qemu/uuid.h"
+>> > -#include "qom/object.h"
+>> >
+>> >  /* vl.c */
+>>
+>> How did you identify the inclusions to drop?
+>
+> Nothing very strict I'm afraid. I suppose I had the files opened in my ed=
+itor.
+>
+> The output of
+> $ git grep -L -E '(OBJECT_|INTERFACE_)' $(git grep -l qom/object include)
+
+Why limit to include, and not check '*.h', or even '*.[ch]'?
+
+> suggests I missed those:
+>
+> -- >8 --
+> diff --git a/include/hw/display/edid.h b/include/hw/display/edid.h
+> index ff99dc0a05..5b1de57f24 100644
+> --- a/include/hw/display/edid.h
+> +++ b/include/hw/display/edid.h
+> @@ -1,8 +1,6 @@
+>  #ifndef EDID_H
+>  #define EDID_H
+>
+> -#include "qom/object.h"
+> -
+>  typedef struct qemu_edid_info {
+>      const char *vendor; /* http://www.uefi.org/pnp_id_list */
+>      const char *name;
+> diff --git a/include/io/task.h b/include/io/task.h
+> index 1abbfb8b65..6818dfedd0 100644
+> --- a/include/io/task.h
+> +++ b/include/io/task.h
+> @@ -21,8 +21,6 @@
+>  #ifndef QIO_TASK_H
+>  #define QIO_TASK_H
+>
+> -#include "qom/object.h"
+> -
+>  typedef struct QIOTask QIOTask;
+>
+>  typedef void (*QIOTaskFunc)(QIOTask *task,
 > ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 34275f57c9..84453789f9 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -420,7 +420,7 @@ MINIKCONF_ARGS = \
->  
->  MINIKCONF_INPUTS = $(SRC_PATH)/Kconfig.host $(SRC_PATH)/hw/Kconfig
->  MINIKCONF_DEPS = $(MINIKCONF_INPUTS) $(wildcard $(SRC_PATH)/hw/*/Kconfig)
-> -MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py \
-> +MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
->  
->  $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MINIKCONF_DEPS) $(BUILD_DIR)/config-host.mak
->  	$(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) > $@.tmp, "GEN", "$@.tmp")
-> 
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
