@@ -1,94 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jatxm-0004lF-1O
-	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2020 00:34:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58316)
+	id 1jb4AS-0007He-R4
+	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2020 11:28:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jatxk-0004es-96
- for qemu-trivial@nongnu.org; Tue, 19 May 2020 00:34:44 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35201
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jatxj-0002je-Bo
- for qemu-trivial@nongnu.org; Tue, 19 May 2020 00:34:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589862882;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DfnN/w0SbYD3vSZtzIfW4lXKbb9M26zh5YzR9hzaFVI=;
- b=L8MLLXhQkMrLbyq8ielh0e5Ls515T2WhfpAccUrMMN3yBZG14Ol8b7SBEL2K8XkXZlJOjL
- JKMANNIRkfxsdxSjlUNZ/KgRP/OPV9g1rf0gybJmCnel8KYaFqAni/tfn+2RvaqYoKSBbR
- FeHiF56IjFLyS+3l5yuns55Pumoi9mA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-365-m6FuIhfxMOmghIZJQdusCw-1; Tue, 19 May 2020 00:34:31 -0400
-X-MC-Unique: m6FuIhfxMOmghIZJQdusCw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B63A6A0BD7;
- Tue, 19 May 2020 04:34:27 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
- [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A0F5E19C4F;
- Tue, 19 May 2020 04:34:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2FD6311358BC; Tue, 19 May 2020 06:34:19 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Paul Durrant <paul@xen.org>,  Jason Wang
- <jasowang@redhat.com>,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-devel@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Gerd
- Hoffmann <kraxel@redhat.com>,  "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>,  Stefano Stabellini <sstabellini@kernel.org>,
- qemu-block@nongnu.org,  qemu-trivial@nongnu.org,  David Hildenbrand
- <david@redhat.com>,  Halil Pasic <pasic@linux.ibm.com>,  Christian
- Borntraeger <borntraeger@de.ibm.com>,  Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>,  Joel Stanley <joel@jms.id.au>,
- Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org,  David Gibson
- <david@gibson.dropbear.id.au>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>,  Eduardo Habkost <ehabkost@redhat.com>,  Corey
- Minyard <minyard@acm.org>,  "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>,  qemu-s390x@nongnu.org,  qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,  John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Andrew Jeffery <andrew@aj.id.au>,  Cornelia Huck
- <cohuck@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>,
- qemu-ppc@nongnu.org,  Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH v3 0/3] various: Remove unnecessary casts
-References: <20200512070020.22782-1-f4bug@amsat.org>
- <871rnlsps6.fsf@dusky.pond.sub.org>
- <8791b385-8493-f81d-5ee3-cca5b8559c27@redhat.com>
- <87imgt9ycp.fsf@dusky.pond.sub.org>
- <2f4607cf-90a9-ca9a-4ef6-a8358631cdf0@kaod.org>
-Date: Tue, 19 May 2020 06:34:19 +0200
-In-Reply-To: <2f4607cf-90a9-ca9a-4ef6-a8358631cdf0@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Mon, 18 May 2020 15:21:52 +0200")
-Message-ID: <87k1187dbo.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jb4AR-0007E9-B8
+ for qemu-trivial@nongnu.org; Tue, 19 May 2020 11:28:31 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:46231)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jb4AO-00038a-Bv
+ for qemu-trivial@nongnu.org; Tue, 19 May 2020 11:28:31 -0400
+Received: by mail-pg1-x542.google.com with SMTP id p21so6553951pgm.13
+ for <qemu-trivial@nongnu.org>; Tue, 19 May 2020 08:28:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5qJv6cRYHCSoY2DRMd/7gIc7baIbvMyMHOR1QeolGxA=;
+ b=UYHDO759dsFt7a8bVK/ji3X4XJhkpUkYj8AfBXJZPoLoR7ZkArMVEoTiXRTQdrmsYo
+ rsJa9JtpPNEZOijsWw1cdwRR4OR3BsN+/PYeGqueTxgbVL3H92DsiPEQrcwgepl+9+dy
+ MONzUdJkUpJbqGcrdC+b9gEZeM6FsnHOBDZntK0GNYAWMDXqCo0Kr2bBF2mgeqf/Ho9J
+ B4YiAS+S3qzHdxWUohp7cQPJILLwJfnA7ZBXBCAYnLd0nQsIa67o/Uf7rtcqWJEHYgX0
+ 4yrvhW8Dy0arWfJ4YKXkXRLYIPgY24C+X5rMCd9htRA6p7WyGWldljWfeSXeUMg5qDmr
+ pFPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5qJv6cRYHCSoY2DRMd/7gIc7baIbvMyMHOR1QeolGxA=;
+ b=O8Iqu5/Yb5CbJsqLiQK7bp6vynMF69xYyMEt+YkWtKtTACbuPtU+l8V+f13vwYQBG7
+ 03hJh9ugPX2EZZoBvPWdf6aul8qBEfR+R7lpmss5EEExfLNlJeFE/O8VZ7CnOf/iSfIu
+ /tqPjcrhrpCOW0oAeB5Ne3RgsFdJRwTG2fYpHZe35XR0k+mj01KrELKLlSvQe0DVpRHr
+ HpqqWqCWGwkTevFtwBcW7vJxngYAZJK06uXMpBeWdE8uUf9Q/TaVg2oY+reglsbrKRDR
+ SMhnjkmmRxxgibRnQJ78/9NfnAX7SDZDGwSiitur5L+JlaghGc4xXyKEqU+bKa/swwkg
+ 8xGw==
+X-Gm-Message-State: AOAM532tIAfq36P/rEQB4JAXLq6IyeyVdUNtv2US8QSTvEn21h+AiPoJ
+ 0tqluvC/7fGQu+2kfxiwJzc/OQ==
+X-Google-Smtp-Source: ABdhPJw4wlRYDZ8yjQfhbs6wV4PCoTV5qhCRS6vltBa3NB71guqOcm2fS+0vLn903wQa98S8cXu2bg==
+X-Received: by 2002:a62:e707:: with SMTP id s7mr8260869pfh.208.1589902106834; 
+ Tue, 19 May 2020 08:28:26 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id i3sm11544992pfe.44.2020.05.19.08.28.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 May 2020 08:28:26 -0700 (PDT)
+Subject: Re: [PATCH v2] hw/display/edid: Add missing 'qdev-properties.h' header
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <huth@tuxfamily.org>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20200518174523.18076-1-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ce656f41-afa3-dee0-d5f4-0e8f47b9a5cb@linaro.org>
+Date: Tue, 19 May 2020 08:28:24 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200518174523.18076-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 00:34:39
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,39 +84,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 May 2020 04:34:44 -0000
+X-List-Received-Date: Tue, 19 May 2020 15:28:31 -0000
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+On 5/18/20 10:45 AM, Philippe Mathieu-Daudé wrote:
+> When trying to consume the DEFINE_EDID_PROPERTIES() macro
+> by including "hw/display/edid.h", we get this build failure:
+> 
+>   include/hw/display/edid.h:24:5: error: implicit declaration of
+>   function ‘DEFINE_PROP_UINT32’ [-Werror=implicit-function-declaration]
+>      24 |     DEFINE_PROP_UINT32("xres", _state, _edid_info.prefx, 0),    \
+>         |     ^~~~~~~~~~~~~~~~~~
+> 
+> Headers should be self-contained, and one shouldn't have to
+> dig to find the missing headers.
+> In this case "hw/qdev-properties.h" is missing. Add it.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> Since v1: reworded description (rth)
+> 
+> Supersedes: <20200504082003.16298-1-f4bug@amsat.org>
+> ---
+>  include/hw/display/edid.h | 1 +
+>  1 file changed, 1 insertion(+)
 
-> On 5/18/20 3:17 PM, Markus Armbruster wrote:
->> Paolo Bonzini <pbonzini@redhat.com> writes:
->>=20
->>> On 15/05/20 07:58, Markus Armbruster wrote:
->>>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>>>
->>>>> Remove unnecessary casts using coccinelle scripts.
->>>>>
->>>>> The CPU()/OBJECT() patches don't introduce logical change,
->>>>> The DEVICE() one removes various OBJECT_CHECK() calls.
->>>> Queued, thanks!
->>>>
->>>> Managing expecations: I'm not a QOM maintainer, I don't want to become
->>>> one, and I don't normally queue QOM patches :)
->>>>
->>>
->>> I want to be again a QOM maintainer, but it's not the best time for me
->>> to be one.  So thanks for picking up my slack.
->>=20
->> You're welcome :)
->
-> Could you help me getting this patch merged ? :)
->
-> http://patchwork.ozlabs.org/project/qemu-devel/patch/20200404153340.16486=
-1-1-clg@kaod.org/
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-I have more QOM patches in the pipe, and I may well post another QOM
-pull request while Paolo is busy with other stuff.  I'll consider
-including other QOM patches then.  Non-trivial ones need an R-by from
-Paolo, Daniel or Eduardo.
 
+r~
 
