@@ -1,69 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jc6Ci-0003QO-Qd
-	for mharc-qemu-trivial@gnu.org; Fri, 22 May 2020 07:51:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37618)
+	id 1jc9q3-00052f-Vf
+	for mharc-qemu-trivial@gnu.org; Fri, 22 May 2020 11:43:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jc6Cg-0003JP-9Q; Fri, 22 May 2020 07:51:06 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55743)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jc9q3-0004yk-0k; Fri, 22 May 2020 11:43:59 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:39872)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jc6Cf-0004cP-Bl; Fri, 22 May 2020 07:51:05 -0400
-Received: by mail-wm1-x342.google.com with SMTP id f13so8374141wmc.5;
- Fri, 22 May 2020 04:51:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jc9px-00081R-Ig; Fri, 22 May 2020 11:43:58 -0400
+Received: by mail-io1-xd42.google.com with SMTP id q129so2667800iod.6;
+ Fri, 22 May 2020 08:43:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=ATw2AQdt0tMLUBC524HixfrRhPl572ZT8HtNHYF2xvw=;
- b=dxBVMRpg+o021KVHz5A8ks0zutiZTujaLqO42y2jmH0xWCjP6saCePCEciz/aotlv2
- auN9x41lY5UXjVFoi2hQdFPA5caXoKjxjqXL0gpC1cCvwCQVeCCQ+VHbAnxfAMkWsnv5
- 8BLDHzi6xsH3htbgiKiI8rnRYEwFVb8nekUuvXBDovBDHCdBA2sBbDUXdbzRrJSCIo4i
- AiaQox3x70+aaDcnuJ+BboGY8Kpp3zLmjwcpS0cKpQGzv71EIwK+P33+cq4UrWMF8pPQ
- yoHOVZrcfsjj8MmASQuZnmCLoh+Rsa0ZBTnsZAxdsOeDNlJWZXRsCP7rBOQ2/0clZ/yC
- bggA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PC7ssX+ZFZ33aEp3xUpkKd5iG93Ot5l7HURqGdFeHfQ=;
+ b=a6AwITcidtwgAgQ+0aeKMHg8JLpzz5bTpIxk9xEMrVQfe9EgGk+Rqo+4UzE9qgEiWZ
+ kX1TnOO7ekhdJOY+CnZxMU+Eqyn1qadsZ2iaWS2hplxLnG4lJaZ4hGN+OreVgl4jZVl0
+ r6RefFFivAQxDqqA5JPRQDxjJsqHQq41QmA9Yc3nIlDj6aHsjwg34r+oBOI4Jmhbnnyx
+ ZDX1+imDUxtv3CHVnU75+N2fYCk5JxTlROOYPLCJA/igDTXOcLjlCt/4lwh2ONghOGkI
+ 98p/fuYEn9fav8ZGU1LiepZ4oIzRGs7f1sFo8IVsv2GstfVmjUbMZhhcU5+7JrVhAsA2
+ PFWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=ATw2AQdt0tMLUBC524HixfrRhPl572ZT8HtNHYF2xvw=;
- b=re4ndstB6uSFYJRxJbGZTuPIqqxlJKGRQSPS3yc80tk6ohj9LsS3Ss1dTU/aCc75qt
- SxejqNCYZamwuh0GEFILqPhPsIOVrdz4692TZJ1Q+GO0e6O3HR9bI42N1EDpjLFHC+gU
- me9ZsdzP/nRPweWsXJEPryS4UPK+tE7IC2rEAHMNOkye4VBqP4+UaE8iZ6TCeuHwV93+
- VECfnNXu0nq03DyNTNEOSIgIAa53kIlqWtna39+KDST0NGu/JP4FLXU4s9UbVVD0UMib
- gtctvv3r7uxs6i9jLUkd/EMJS4YHxSuCbW+fJ9xt4RDNHR8r3FxxBBR7hd8PyVC4/XZ7
- erEQ==
-X-Gm-Message-State: AOAM530j8f0u7c4iX4F4gcfX8G9FWzJV4S1EFrYXy1evgjGvaWKbEotw
- xwWLM97tNBFSpgUoHh+yvM0=
-X-Google-Smtp-Source: ABdhPJx4pJZpBmySqwHifSC2uYjzqgo1cF1Z9J0UvHeHi7upWFmPmdioA+AqPcCwgKmjeIsw3Ye1TA==
-X-Received: by 2002:a1c:dc05:: with SMTP id t5mr13600278wmg.112.1590148262694; 
- Fri, 22 May 2020 04:51:02 -0700 (PDT)
-Received: from eden-linux.lan (bzq-109-66-59-205.red.bezeqint.net.
- [109.66.59.205])
- by smtp.gmail.com with ESMTPSA id m3sm9237640wrn.96.2020.05.22.04.51.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 04:51:01 -0700 (PDT)
-From: Eden Mikitas <e.mikitas@gmail.com>
-To: peter.maydell@linaro.org
-Cc: alistair@alistair23.me, e.mikitas@gmail.com, jcd@tribudubois.net,
- peter.chubb@nicta.com.au, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: [PATCH 2/2] hw/ssi/imx_spi: Removed unnecessary cast of rx data
- received from slave
-Date: Fri, 22 May 2020 14:50:36 +0300
-Message-Id: <20200522115036.31516-3-e.mikitas@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200522115036.31516-1-e.mikitas@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PC7ssX+ZFZ33aEp3xUpkKd5iG93Ot5l7HURqGdFeHfQ=;
+ b=q3c3nCUvbdkmGbZKv0vteeRkvKxboFJaZfXMBdJfxE76oqTeRkw8Z7JB2KvSrT1c00
+ IVBCb6W+XLA3wcft0J3NpiOm4veM1xoYvyyXPtJw8uqtkgm5kIK4B3AH0Qiy1VUe+10P
+ iPb7VAPW7U/4kbpd5RxizFo8/q49MuCi9XaR1b1LKYpU0ffBaJ2/f2vB8iD7JevspazK
+ eWJAOJ94tL5ju+ptnJkNcdJMEE/I3ajERHApUTVh2naaYUkDozkesrL5hi0uLEhLYDfG
+ vNTBEYNHvTu3DtXMtZ4ixInokqQ6O3SttFrsYwyvKKmFKHevPB6E59yGzIkW9qmwuQYZ
+ NzWQ==
+X-Gm-Message-State: AOAM532bG7MXsukeDSBoG/6LliwTIq9ksrYMCBjaVb94G4LQsJ/20kdt
+ gMcRRJ4CT6I30nzt5AGUdfnQlUMgvKICywG8uEU=
+X-Google-Smtp-Source: ABdhPJz9+vQJA0UZQAg8yQ8HPIXlSkdtbMfXGa35ZFXix3wQINuZ0wfiWbdSIbXhfB0t7+4VFxp5uVcuwWy47rfI71Q=
+X-Received: by 2002:a6b:8f82:: with SMTP id r124mr3681687iod.42.1590162231039; 
+ Fri, 22 May 2020 08:43:51 -0700 (PDT)
+MIME-Version: 1.0
 References: <CAFEAcA8FFc_Vf-UQO9f_3qoXiCJf9N1uWh7qB-WXrEWTzKBu8Q@mail.gmail.com>
  <20200522115036.31516-1-e.mikitas@gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=e.mikitas@gmail.com; helo=mail-wm1-x342.google.com
+ <20200522115036.31516-2-e.mikitas@gmail.com>
+In-Reply-To: <20200522115036.31516-2-e.mikitas@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 22 May 2020 08:34:53 -0700
+Message-ID: <CAKmqyKOrNwjsLSAOjcj2jmcZftqAi6W-8whOwQ6nwnxC8wf-cA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/ssi/imx_spi: changed while statement to prevent
+ underflow
+To: Eden Mikitas <e.mikitas@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, 
+ qemu-arm <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_TEMPERROR=0.01,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,33 +78,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 May 2020 11:51:07 -0000
+X-List-Received-Date: Fri, 22 May 2020 15:43:59 -0000
 
-When inserting the value retrieved (rx) from the spi slave, rx is pushed to
-rx_fifo after being cast to uint8_t. rx_fifo is a fifo32, and the rx
-register the driver uses is also 32 bit. This zeroes the 24 most
-significant bits of rx. This proved problematic with devices that expect to
-use the whole 32 bits of the rx register.
+On Fri, May 22, 2020 at 4:51 AM Eden Mikitas <e.mikitas@gmail.com> wrote:
+>
+> The while statement in question only checked if tx_burst is not 0.
+> tx_burst is a signed int, which is assigned the value put by the
+> guest driver in ECSPI_CONREG. The burst length can be anywhere
+> between 1 and 4096, and since tx_burst is always decremented by 8
+> it could possibly underflow, causing an infinite loop.
+>
+> Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
 
-Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
----
- hw/ssi/imx_spi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 6fef5c7958..43b2f14dd2 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -206,7 +206,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-         if (fifo32_is_full(&s->rx_fifo)) {
-             s->regs[ECSPI_STATREG] |= ECSPI_STATREG_RO;
-         } else {
--            fifo32_push(&s->rx_fifo, (uint8_t)rx);
-+            fifo32_push(&s->rx_fifo, rx);
-         }
- 
-         if (s->burst_length <= 0) {
--- 
-2.17.1
+Alistair
 
+> ---
+>  hw/ssi/imx_spi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> index 2dd9a631e1..6fef5c7958 100644
+> --- a/hw/ssi/imx_spi.c
+> +++ b/hw/ssi/imx_spi.c
+> @@ -182,7 +182,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+>
+>          rx = 0;
+>
+> -        while (tx_burst) {
+> +        while (tx_burst > 0) {
+>              uint8_t byte = tx & 0xff;
+>
+>              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+> --
+> 2.17.1
+>
+>
 
