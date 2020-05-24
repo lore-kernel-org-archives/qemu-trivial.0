@@ -1,48 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jcqlF-0001yu-Gr
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 09:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36432)
+	id 1jcr44-0008Q2-9Z
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 09:53:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41360)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1jcpx7-0001f8-3G; Sun, 24 May 2020 08:42:05 -0400
-Received: from relay68.bu.edu ([128.197.228.73]:34029)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1jcpx6-0006f5-2h; Sun, 24 May 2020 08:42:04 -0400
-X-Envelope-From: alxndr@bu.edu
-X-BU-AUTH: mozz.bu.edu [128.197.127.33]
-Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
- bits=0)
- by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 04OCfWig012398
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Sun, 24 May 2020 08:41:36 -0400
-Date: Sun, 24 May 2020 08:41:32 -0400
-From: Alexander Bulekov <alxndr@bu.edu>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jcr43-0008PK-7Q; Sun, 24 May 2020 09:53:19 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43373)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jcr42-000134-JH; Sun, 24 May 2020 09:53:18 -0400
+Received: by mail-wr1-x442.google.com with SMTP id i15so14751844wrx.10;
+ Sun, 24 May 2020 06:53:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=KU0L7HoiTfXHEnpKdKbEtcdMjtpbb22uEejOrgQORew=;
+ b=IDmrC2aetv1moiyJpsMsv4i2i3vYYJC0yZX1/NGV3OZMcdMZLAup463yF7ovq7pNzG
+ 406DlhNfFmMDBwlBisxBSdBfmZ4Sfddo5RMEtor8BRDP6oAMe8Cqem4yKYx94eTt/6J2
+ a+VkP3xSkzCFFV39oG207kRajZtbEgMjGTgwTnznA45mOJnhf6hl57eb0mjLIT1b7yAO
+ SxvhzqTl9rn80xbozrI8ab6LpeKTsiRNhUX2H9Jaq6Vcgl0fAIPboeBPYPurTGidnCP5
+ NzTWBVAV02BbZfLaNfo0yCXcVIscYaPMrb1lyqicA7eMZdVYeU4zn3l5KkOcEnhT7DjT
+ tJmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=KU0L7HoiTfXHEnpKdKbEtcdMjtpbb22uEejOrgQORew=;
+ b=TL7DqFZwrGFdR49dcjaYIgPW52ds9WxgXgNH2+n3TjuYvevOH/pe+pAH8JcZ8MVe0o
+ nqZZPXoGjLJF8jupr6CXs/UcSFOp0vJAkHjq5EnMktL2+dW31EZ0pJqFa0Dq76XMjm/N
+ eoHcjVqzjkX59RzWv9IvzvDJtRmOZBqNad+1rU60Rq0+t1j/YQrnD5HZChRsBUgF0OPr
+ 7WdzQ1RD3Riia7qA7AL9mVkWsdJLLdAJcqMmhNrbxCS6oEtFkGP7R46o2Sh+oLbqX80x
+ ohEVI7BhPrYCzShYoLKq704GL3+TP2/RRzf5AKBwUMkJMcyGwwimiWcAoKHCRTTxI3TR
+ VStw==
+X-Gm-Message-State: AOAM532tAcQvukzR+xqESUqBGxuMSPoMCR244NqNKKHCe0FhKLs8FB5Q
+ ZLAfeNRQxBLWkbsF1W66+gDtuIBXAIA=
+X-Google-Smtp-Source: ABdhPJzZ5B835F0pDkrhLRXT8wkO/XT7FYCfEgq5fXVdPb7z+qJKYTpcaxeAdblNX8+lvf9FYLUyEw==
+X-Received: by 2002:a5d:6145:: with SMTP id y5mr10471814wrt.195.1590328395735; 
+ Sun, 24 May 2020 06:53:15 -0700 (PDT)
+Received: from [192.168.1.39] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id s7sm1040818wrr.60.2020.05.24.06.53.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 24 May 2020 06:53:15 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] hw/display/omap_dss: Replace fprintf() call by
  qemu_log_mask(LOG_UNIMP)
-Message-ID: <20200524124132.dri74sl5iei3aaxl@mozz.bu.edu>
+To: Alexander Bulekov <alxndr@bu.edu>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20200524103833.8188-1-f4bug@amsat.org>
+ <20200524124132.dri74sl5iei3aaxl@mozz.bu.edu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <61f80fea-d37d-e84b-773a-5ec083b61b94@amsat.org>
+Date: Sun, 24 May 2020 15:53:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200524124132.dri74sl5iei3aaxl@mozz.bu.edu>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200524103833.8188-1-f4bug@amsat.org>
-User-Agent: NeoMutt/20180716
-Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
- helo=relay68.bu.edu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/24 08:42:02
-X-ACL-Warn: Detected OS   = Linux 2.6.x
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 24 May 2020 09:33:51 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,41 +86,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 12:42:05 -0000
+X-List-Received-Date: Sun, 24 May 2020 13:53:19 -0000
 
-On 200524 1238, Philippe Mathieu-Daudé wrote:
-> Replace fprintf() call by qemu_log_mask(LOG_UNIMP), which is
-> disabled by default. This avoid flooding the terminal when
-> fuzzing the device.
-> 
-Hi Philippe,
-libfuzzer also lets you pass -close_fd_mask=[1,2,3] to close stdout,
-stderr or both. As a side-effect, In this mode, libfuzzer will write the
-crashing stacktraces to individual files ./.$PID, instead of to the
-terminal's output. As far as I know, closing the FDs doesn't bypass all
-of printf's allocation/formatting code, so getting rid of calls can
-still be a good idea for performance, sometimes.
--Alex
+On 5/24/20 2:41 PM, Alexander Bulekov wrote:
+> On 200524 1238, Philippe Mathieu-Daudé wrote:
+>> Replace fprintf() call by qemu_log_mask(LOG_UNIMP), which is
+>> disabled by default. This avoid flooding the terminal when
+>> fuzzing the device.
+>>
+> Hi Philippe,
+> libfuzzer also lets you pass -close_fd_mask=[1,2,3] to close stdout,
+> stderr or both. As a side-effect, In this mode, libfuzzer will write the
+> crashing stacktraces to individual files ./.$PID, instead of to the
+> terminal's output.
 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/display/omap_dss.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks, good to know.
+
+This information is worth adding in docs/devel/fuzzing.txt :P
+
+> As far as I know, closing the FDs doesn't bypass all
+> of printf's allocation/formatting code, so getting rid of calls can
+> still be a good idea for performance, sometimes.
+
+Certainly.
+
+> -Alex
 > 
-> diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
-> index 32dc0d6aa7..21fde58a26 100644
-> --- a/hw/display/omap_dss.c
-> +++ b/hw/display/omap_dss.c
-> @@ -619,7 +619,7 @@ static void omap_rfbi_transfer_start(struct omap_dss_s *s)
->      if (s->rfbi.control & (1 << 1)) {				/* BYPASS */
->          /* TODO: in non-Bypass mode we probably need to just assert the
->           * DRQ and wait for DMA to write the pixels.  */
-> -        fprintf(stderr, "%s: Bypass mode unimplemented\n", __func__);
-> +        qemu_log_mask(LOG_UNIMP, "%s: Bypass mode unimplemented\n", __func__);
->          return;
->      }
->  
-> -- 
-> 2.21.3
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/display/omap_dss.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
+>> index 32dc0d6aa7..21fde58a26 100644
+>> --- a/hw/display/omap_dss.c
+>> +++ b/hw/display/omap_dss.c
+>> @@ -619,7 +619,7 @@ static void omap_rfbi_transfer_start(struct omap_dss_s *s)
+>>      if (s->rfbi.control & (1 << 1)) {				/* BYPASS */
+>>          /* TODO: in non-Bypass mode we probably need to just assert the
+>>           * DRQ and wait for DMA to write the pixels.  */
+>> -        fprintf(stderr, "%s: Bypass mode unimplemented\n", __func__);
+>> +        qemu_log_mask(LOG_UNIMP, "%s: Bypass mode unimplemented\n", __func__);
+>>          return;
+>>      }
+>>  
+>> -- 
+>> 2.21.3
+>>
 > 
 
