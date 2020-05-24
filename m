@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jctkS-0001yv-KR
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 12:45:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53860)
+	id 1jctnJ-00046L-6O
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 12:48:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctkQ-0001ve-NA; Sun, 24 May 2020 12:45:14 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46672)
+ id 1jctnH-00042n-1v; Sun, 24 May 2020 12:48:11 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51892)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctkP-0006bg-5B; Sun, 24 May 2020 12:45:14 -0400
-Received: by mail-wr1-x441.google.com with SMTP id x6so1425438wrm.13;
- Sun, 24 May 2020 09:45:12 -0700 (PDT)
+ id 1jctnG-0007BK-B9; Sun, 24 May 2020 12:48:10 -0400
+Received: by mail-wm1-x341.google.com with SMTP id u13so4640336wml.1;
+ Sun, 24 May 2020 09:48:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=wI8dCrsMkXEY+JNiQUJR4Y0BM65XvUZSpfaLli4P94Y=;
- b=mBeidOkftPDrOyik0MCIj1wQUtofEw4/9SCT0ecl59aqZLTanjnVoViyRo8I7voh/z
- BNcx4JgIXSi6TfmHYHhTnV8FxdRbQVkll/k3TfaIv9k0NvWBoyBK81St7AiKbsxcEhHT
- cGR0eyd0Si7AyOXaI3G/Vwij85l7ybGI/rL2CSf69J71x6UReNMMmtXqxQb3bfiQBhqR
- NuceizPacxZi4/Hn1jEUerrsEJllV0laPwdZrbguate45PGgHpWZONkGVXqPzhv7lO32
- CgxQLTgy4F78T1yrlOzwerkDrzO6/fyjPusLTQZCok+nQefM6WSCn0beWUKlzf4swc7A
- UFDg==
+ bh=d+AFOFh8gCQwnWPlMSLulMjA1GT+eEiX+AJqYwO+CG4=;
+ b=RSEtAGWqAndGpdCQxoIr7cxn6G8UYZkzzjuDJ3LzMjrgXAY/NPFSqjULUvmN9fNpCa
+ doquZseoZz5i0hLoOgb45Sh6ox7PjaeS7qT6g1VMMYG859b65sgN8PXboemh8EfveiJc
+ vsTywHVsksxd0KW0fsmwqoNB0vOJfY9/JVNzeF6I7M74o8/6+FJi+TMEWk2byjR5rqvQ
+ tFc41eqS1gysgD/UMA5Z2jZslIgnb3jzFkiqP3nCRxMKrbI2wjLoTDKUiKmbs2CrL2Do
+ 0J7o28qkOHQh8+oiVolY75V1KKcf2f2RvrjJi0KA4M/jOMvvzSgAokElcHmrlMZnoxLd
+ 85SA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=wI8dCrsMkXEY+JNiQUJR4Y0BM65XvUZSpfaLli4P94Y=;
- b=cUV1nQRWtNhKilZHzSbEYMkZXPCSxCUqwMikRiVWGXbcVjAdtFb3qRNC2m2A63swHT
- nHhkgN8w364On7C+fxBTUW2PrKK4AmUzXTYQoiPDyE0imTspYVYQ/UUHughCaQhlfylM
- UXA8g+liRtE5UVolL4tHQukJGc3POp8DVV5XbZI0dOXcUnsZRRgzAiwIMZgZWUd8Wbkn
- Ej7X5WFouSmGwrAwlUNkEfEJIJaxBxhjhWHkeGacb7XOn2p9xwE7OMr0+27AOBwKTOB9
- RpQfWKGblEMRF/gc+g4C7ZbIVVAzXKjXmXESXHk6P8KHXgL7oe8tfeYBECKK2q0q4goC
- gEAw==
-X-Gm-Message-State: AOAM532SkMYvS7yW6/pm3TYVU5/DkIJU5QCMM95YHBOEQs0EC5Em7MZT
- D1kDN8JUPmsRuYjaXCMkFYoaQ0ZAE4g=
-X-Google-Smtp-Source: ABdhPJzpSESA7dbgKfVoB3Azcaa+rTd6+5ARd38GfTZ63YxfcBB4jiQsaRjof41NMeCgzTjW50At2g==
-X-Received: by 2002:a5d:67d2:: with SMTP id n18mr8633350wrw.65.1590338710923; 
- Sun, 24 May 2020 09:45:10 -0700 (PDT)
+ bh=d+AFOFh8gCQwnWPlMSLulMjA1GT+eEiX+AJqYwO+CG4=;
+ b=tnJjEGpCzOQY3Zbk+p/ZdXffnJNmyiv2ZO+pv0xRJr7oeZS5jkCgRpDo5h7QxGoAkD
+ KcDqWXO9oxcmc1wxsmBLn7JV8mSOmaTLy+5Pk2CwbwMvARbMLGtm8oJx8ZFqaw2nAAx9
+ HWQY8LHuxg5/LbrFjxcui3u7TwkiPwvAamzFs4ooi1ark2Y5eb0EkRKvN1ULdQUKyNlj
+ qIlGLiMsH08SQsPgz6Epx/CDqA9juP5jtTXByu22vgk7V2JqTpE7+V8AuHOuTIJYyDFL
+ c2U0Rcy2EPv7DkRfSq0V7k/OyVH0BC3SuGzdIddHoziQie+4mF2vszQJw2uYntkTsb1r
+ 71iA==
+X-Gm-Message-State: AOAM5326T5RXZ/fb2/qhPPGaCf3CnUj8/lZZcTBkCym3/w4qC/EGelVa
+ dkcUpnTVUfXD542X+v39Z9vYOpckynM=
+X-Google-Smtp-Source: ABdhPJySVzDiJ0xFvvDt+W0uVgMpLntaPLbybphhuVJtwr1ypjInUvwpPvV9eKAGw2iKf0+VhJiFXQ==
+X-Received: by 2002:a7b:c741:: with SMTP id w1mr21641668wmk.63.1590338888293; 
+ Sun, 24 May 2020 09:48:08 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id y207sm16918972wmd.7.2020.05.24.09.45.09
+ by smtp.gmail.com with ESMTPSA id 37sm15540478wrk.61.2020.05.24.09.48.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 09:45:10 -0700 (PDT)
+ Sun, 24 May 2020 09:48:07 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>, qemu-trivial@nongnu.org,
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/unicore32/puv3: Use qemu_log_mask(ERROR) instead of debug
- printf()
-Date: Sun, 24 May 2020 18:45:03 +0200
-Message-Id: <20200524164503.11944-1-f4bug@amsat.org>
+Subject: [PATCH] hw/isa/apm: Convert debug printf()s to trace events
+Date: Sun, 24 May 2020 18:48:06 +0200
+Message-Id: <20200524164806.12658-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -81,222 +81,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 16:45:15 -0000
+X-List-Received-Date: Sun, 24 May 2020 16:48:11 -0000
 
-Replace some debug printf() calls by qemu_log_mask(LOG_GUEST_ERROR).
+Convert APM_DPRINTF() to trace events and remove ifdef'ry.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/dma/puv3_dma.c   |  9 +++++++--
- hw/gpio/puv3_gpio.c | 15 +++++++++++----
- hw/intc/puv3_intc.c |  9 +++++++--
- hw/misc/puv3_pm.c   |  9 +++++++--
- hw/timer/puv3_ost.c |  9 +++++++--
- hw/unicore32/puv3.c |  2 --
- 6 files changed, 39 insertions(+), 14 deletions(-)
+ hw/isa/apm.c        | 15 +++++----------
+ hw/isa/trace-events |  4 ++++
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/hw/dma/puv3_dma.c b/hw/dma/puv3_dma.c
-index 5488d388a9..7fa979180f 100644
---- a/hw/dma/puv3_dma.c
-+++ b/hw/dma/puv3_dma.c
-@@ -15,6 +15,7 @@
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
+diff --git a/hw/isa/apm.c b/hw/isa/apm.c
+index 6300b1ba7a..bce266b957 100644
+--- a/hw/isa/apm.c
++++ b/hw/isa/apm.c
+@@ -24,14 +24,8 @@
+ #include "hw/isa/apm.h"
+ #include "hw/pci/pci.h"
+ #include "migration/vmstate.h"
++#include "trace.h"
  
- #define PUV3_DMA_CH_NR          (6)
- #define PUV3_DMA_CH_MASK        (0xff)
-@@ -43,7 +44,9 @@ static uint64_t puv3_dma_read(void *opaque, hwaddr offset,
-         ret = s->reg_CFG[PUV3_DMA_CH(offset)];
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, ret);
- 
-@@ -62,7 +65,9 @@ static void puv3_dma_write(void *opaque, hwaddr offset,
-         s->reg_CFG[PUV3_DMA_CH(offset)] = value;
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, value);
- }
-diff --git a/hw/gpio/puv3_gpio.c b/hw/gpio/puv3_gpio.c
-index d19e342514..7362b6715f 100644
---- a/hw/gpio/puv3_gpio.c
-+++ b/hw/gpio/puv3_gpio.c
-@@ -15,6 +15,7 @@
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- #define TYPE_PUV3_GPIO "puv3_gpio"
- #define PUV3_GPIO(obj) OBJECT_CHECK(PUV3GPIOState, (obj), TYPE_PUV3_GPIO)
-@@ -47,7 +48,9 @@ static uint64_t puv3_gpio_read(void *opaque, hwaddr offset,
-         ret = s->reg_GPIR;
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, ret);
- 
-@@ -68,14 +71,16 @@ static void puv3_gpio_write(void *opaque, hwaddr offset,
-         if (s->reg_GPDR & value) {
-             s->reg_GPLR |= value;
-         } else {
--            DPRINTF("Write gpio input port error!");
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Write gpio input port\n",
-+                          __func__);
-         }
-         break;
-     case 0x0c:
-         if (s->reg_GPDR & value) {
-             s->reg_GPLR &= ~value;
-         } else {
--            DPRINTF("Write gpio input port error!");
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Write gpio input port\n",
-+                          __func__);
-         }
-         break;
-     case 0x10: /* GRER */
-@@ -86,7 +91,9 @@ static void puv3_gpio_write(void *opaque, hwaddr offset,
-         s->reg_GPIR = value;
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
- }
- 
-diff --git a/hw/intc/puv3_intc.c b/hw/intc/puv3_intc.c
-index e018955ce8..090d4839d1 100644
---- a/hw/intc/puv3_intc.c
-+++ b/hw/intc/puv3_intc.c
-@@ -16,6 +16,7 @@
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- #define TYPE_PUV3_INTC "puv3_intc"
- #define PUV3_INTC(obj) OBJECT_CHECK(PUV3INTCState, (obj), TYPE_PUV3_INTC)
-@@ -68,7 +69,9 @@ static uint64_t puv3_intc_read(void *opaque, hwaddr offset,
-         ret = s->reg_ICPR; /* the same value with ICPR */
-         break;
-     default:
--        DPRINTF("Bad offset %x\n", (int)offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, ret);
-     return ret;
-@@ -88,7 +91,9 @@ static void puv3_intc_write(void *opaque, hwaddr offset,
-         s->reg_ICMR = value;
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", (int)offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-         return;
-     }
-     puv3_intc_update(s);
-diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c
-index c213500d9c..8989d363cd 100644
---- a/hw/misc/puv3_pm.c
-+++ b/hw/misc/puv3_pm.c
-@@ -15,6 +15,7 @@
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- #define TYPE_PUV3_PM "puv3_pm"
- #define PUV3_PM(obj) OBJECT_CHECK(PUV3PMState, (obj), TYPE_PUV3_PM)
-@@ -73,7 +74,9 @@ static uint64_t puv3_pm_read(void *opaque, hwaddr offset,
-         ret = 0x7;
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, ret);
- 
-@@ -105,7 +108,9 @@ static void puv3_pm_write(void *opaque, hwaddr offset,
-     case 0x38:
-         break;
-     default:
--        DPRINTF("Bad offset 0x%x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, value);
- }
-diff --git a/hw/timer/puv3_ost.c b/hw/timer/puv3_ost.c
-index 697519593b..f76b0bb1ca 100644
---- a/hw/timer/puv3_ost.c
-+++ b/hw/timer/puv3_ost.c
-@@ -14,6 +14,7 @@
- #include "hw/irq.h"
- #include "hw/ptimer.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
-@@ -52,7 +53,9 @@ static uint64_t puv3_ost_read(void *opaque, hwaddr offset,
-         ret = s->reg_OIER;
-         break;
-     default:
--        DPRINTF("Bad offset %x\n", (int)offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
-     DPRINTF("offset 0x%x, value 0x%x\n", offset, ret);
-     return ret;
-@@ -88,7 +91,9 @@ static void puv3_ost_write(void *opaque, hwaddr offset,
-         s->reg_OIER = value;
-         break;
-     default:
--        DPRINTF("Bad offset %x\n", (int)offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
-+                      __func__, offset);
-     }
- }
- 
-diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
-index 7f9c0238fe..eacacb4249 100644
---- a/hw/unicore32/puv3.c
-+++ b/hw/unicore32/puv3.c
-@@ -16,8 +16,6 @@
- #include "hw/boards.h"
- #include "hw/loader.h"
- #include "sysemu/qtest.h"
+-//#define DEBUG
 -
--#undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
- #include "hw/input/i8042.h"
- #include "hw/irq.h"
+-#ifdef DEBUG
+-# define APM_DPRINTF(format, ...)       printf(format, ## __VA_ARGS__)
+-#else
+-# define APM_DPRINTF(format, ...)       do { } while (0)
+-#endif
+ 
+ /* fixed I/O location */
+ #define APM_STS_IOPORT  0xb3
+@@ -41,8 +35,8 @@ static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+ {
+     APMState *apm = opaque;
+     addr &= 1;
+-    APM_DPRINTF("apm_ioport_writeb addr=0x%" HWADDR_PRIx
+-                " val=0x%02" PRIx64 "\n", addr, val);
++
++    trace_apm_io_write(addr, val);
+     if (addr == 0) {
+         apm->apmc = val;
+ 
+@@ -65,7 +59,8 @@ static uint64_t apm_ioport_readb(void *opaque, hwaddr addr, unsigned size)
+     } else {
+         val = apm->apms;
+     }
+-    APM_DPRINTF("apm_ioport_readb addr=0x%" HWADDR_PRIx " val=0x%02x\n", addr, val);
++    trace_apm_io_read(addr, val);
++
+     return val;
+ }
+ 
+diff --git a/hw/isa/trace-events b/hw/isa/trace-events
+index 202f8938e7..3544c6213c 100644
+--- a/hw/isa/trace-events
++++ b/hw/isa/trace-events
+@@ -9,3 +9,7 @@ superio_create_ide(int id, uint16_t base, unsigned int irq) "id=%d, base 0x%03x,
+ # pc87312.c
+ pc87312_io_read(uint32_t addr, uint32_t val) "read addr=0x%x val=0x%x"
+ pc87312_io_write(uint32_t addr, uint32_t val) "write addr=0x%x val=0x%x"
++
++# apm.c
++apm_io_read(uint8_t addr, uint8_t val) "read addr=0x%x val=0x%02x"
++apm_io_write(uint8_t addr, uint8_t val) "write addr=0x%x val=0x%02x"
 -- 
 2.21.3
 
