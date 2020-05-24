@@ -1,63 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jctz9-0002W4-0I
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 13:00:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
+	id 1jcyc9-00063Y-L0
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 17:57:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctz7-0002V0-Fu; Sun, 24 May 2020 13:00:25 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35606)
+ id 1jcyc8-00062y-7z; Sun, 24 May 2020 17:57:00 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40828)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctz6-0000t6-M9; Sun, 24 May 2020 13:00:25 -0400
-Received: by mail-wm1-x343.google.com with SMTP id n5so14780422wmd.0;
- Sun, 24 May 2020 10:00:23 -0700 (PDT)
+ id 1jcyc7-00076X-AI; Sun, 24 May 2020 17:56:59 -0400
+Received: by mail-wm1-x344.google.com with SMTP id y5so1810505wmi.5;
+ Sun, 24 May 2020 14:56:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=wFXfZneeiWkWgYk/J4K7V5igm6mMCSvKQWr+H8oYqlw=;
- b=WoET6v+CL1BseG3+foSEfd4SrI/+ME5YNARNKcS3EvEyX3xL/VovmCWVYxrVJoUnLl
- nSjcaayIO4gCKo1DDgIpI5wQW2OQHv8Q85ZryoO3Xcln85i/TE8Ux7aImBq+8WBPs4mJ
- 3ecpQzYgl2hMk8pGEVDQ/XQFREKI+uC0KKE3YdJIiW4ql59SYCLv6GbxECO0W0U4B06+
- vanGlidGF6cBCICu3fzZGZS364HUcZQeaItE5WKeLqFNwL8ubEegfNC87Y2VfizPAYs/
- 0vP+GGeNp/aKbEALEuwriHbrgrWoHklLPnIWIRFaBTof8HSpZlXMXjc+1RIXSsJUs2mf
- KKOA==
+ bh=4guKOBYUaC4RD94kzeLD7DKKy9KDIS0J6f/pzDhfBdw=;
+ b=aS/bUMlPFciBlbRBklfwvEYEjywl5vhVHOv70c2U4d4gLCptLBfmQBQW42iu/aOGcM
+ iaYk5XfHMjDQgzDhgMedc06+2u4uVr+3e9nVw9A7K++UZKc6R5QJAX7nijTXMiaefuBe
+ P/9QoyOQRMTljgWZ0OiplsdYNpRgf+hvkd3G2YXzcmSNapN2n7FlJd293oOIp1JQRBCo
+ 7j855raomoUNTvg+s0gZAE1rjXhyhyzTrmMtjaciJ09zKiToPnVz94xSAUn0Bb/RBz7Z
+ gocgtwTpsfjUMEcodzsb0Iyy1QGsBzwTSAZ0pEmYM6phuhYJs3faci8Tl5tQ30b5UBRL
+ AQ2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=wFXfZneeiWkWgYk/J4K7V5igm6mMCSvKQWr+H8oYqlw=;
- b=J02pDEv+lstam1tiv8bQH0rGIO1cCrQY5ACfuBiJmzMUzkiW+HO99V+blGVUCuYqdz
- GvJy8LFQQajUeElcs6d/GAa4VsaodfYQ+mYBf/dKgfhljEvk2sAdNKiOfBD77iQiUyGN
- tFnrYBXWOt2aiaTFODvEtqcK91U/t1gXHHP9IThiUk68qc6ZjO3RoJwK6dbO+22MBUHV
- fQerCATtQvrSrKyriMjuQ5BQktLAEtR7LqlxEEX3WA7eNWd6t81aatMcDoIa7x2qqG/p
- FWcM+tQTqkHD/fVBc7SJXgyMS17BZjo3zKFivHl+WnR54t64TI+3vMzZ8zacJqi0bjYa
- 09kg==
-X-Gm-Message-State: AOAM530aLA2IkvWeO+QioxvuXObfoC3wQ3tHMr/2saQkr0G5Hl/1CTpP
- ExGm9sLJwpz5fzjZG7rlapTbcWSHfRA=
-X-Google-Smtp-Source: ABdhPJyzMNk5SdoYSAu0GoOWc7oMSFB1P8ZFEdb0a+rB3v5ZJA3IYXnjrnj6W7smf5pS+PSDzLQf7g==
-X-Received: by 2002:a1c:2e16:: with SMTP id u22mr21604500wmu.168.1590339622449; 
- Sun, 24 May 2020 10:00:22 -0700 (PDT)
+ bh=4guKOBYUaC4RD94kzeLD7DKKy9KDIS0J6f/pzDhfBdw=;
+ b=Y79l6spirf0p+oOyDAztyl3ghKk3BbR8+jFImnmSvOclhaUNSdVteS76ZqVBqEMiez
+ dEh/HNrj5nxRiuQSi9x1eSofWyiyDa9EAEcxrpWY9nk5EwQ73e76bE2ZcQDuyEuEH5H3
+ 84Ac+MdQB3x/vElxJvZ2h0lNvSFZfbEb6G+s1DdZqqglj+qwQU+NB08aQOj+QjGTmLkN
+ a0ZujRhi4hQVheahb3S9t66uG61SMM7Hls+X+Ysu4ia1WaXn/CvjA/rSPDrsbFYBMrJo
+ PgCmsxwhh+jVQOgKporlyDkHLs4sBWF0ehu2Hfb7COqmh2+kd7G0K5itpaC6TjhAkA6Z
+ Yh4Q==
+X-Gm-Message-State: AOAM53100/PxqC0hRp46XwYxwr3h+ovZ1GYBAiKVPIAjzNA5uhDbtz8m
+ HrP/6UJnvNmxRtfoZtYtUK0nPyFEfak=
+X-Google-Smtp-Source: ABdhPJzURmPnbuefAyljBaQeatfisdvsO4o/obArnWLEnkpHyBoXOJ1Xx1lwkDyWdVlRaWYgP9fogQ==
+X-Received: by 2002:a05:600c:2dd7:: with SMTP id
+ e23mr21868342wmh.96.1590357417085; 
+ Sun, 24 May 2020 14:56:57 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id v24sm16185510wmh.45.2020.05.24.10.00.21
+ by smtp.gmail.com with ESMTPSA id u3sm7215228wrw.89.2020.05.24.14.56.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 10:00:21 -0700 (PDT)
+ Sun, 24 May 2020 14:56:55 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+Cc: "Emilio G . Cota" <cota@braap.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/display/cg3: Convert debug printf()s to trace events
-Date: Sun, 24 May 2020 19:00:20 +0200
-Message-Id: <20200524170020.16546-1-f4bug@amsat.org>
+Subject: [PATCH] scripts/clean-includes: Mark 'qemu/qemu-plugin.h' as special
+ header
+Date: Sun, 24 May 2020 23:56:54 +0200
+Message-Id: <20200524215654.13256-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -80,74 +84,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 17:00:25 -0000
+X-List-Received-Date: Sun, 24 May 2020 21:57:00 -0000
 
-Convert DPRINTF() to trace events and remove ifdef'ry.
+"qemu/qemu-plugin.h" isn't meant to be include by QEMU codebase,
+but by 3rd party plugins that QEMU can use. These plugins can be
+built out of QEMU and don't include "qemu/osdep.h".
+Mark "qemu/qemu-plugin.h" as a special header that doesn't need
+to be cleaned for "qemu/osdep.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/display/cg3.c        | 14 ++++----------
- hw/display/trace-events |  4 ++++
- 2 files changed, 8 insertions(+), 10 deletions(-)
+ scripts/clean-includes | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index f7f1c199ce..f6100c0e3d 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -35,6 +35,7 @@
- #include "hw/qdev-properties.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "trace.h"
- 
- /* Change to 1 to enable debugging */
- #define DEBUG_CG3 0
-@@ -63,12 +64,6 @@
- #define CG3_VRAM_SIZE 0x100000
- #define CG3_VRAM_OFFSET 0x800000
- 
--#define DPRINTF(fmt, ...) do { \
--    if (DEBUG_CG3) { \
--        printf("CG3: " fmt , ## __VA_ARGS__); \
--    } \
--} while (0)
--
- #define TYPE_CG3 "cgthree"
- #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
- 
-@@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
-         val = 0;
-         break;
-     }
--    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
-+    trace_cg3_read(size, addr, val);
-+
-     return val;
- }
- 
-@@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
-     uint8_t regval;
-     int i;
- 
--    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
--            val, addr, size);
--
-+    trace_cg3_write(size, addr, val);
-     switch (addr) {
-     case CG3_REG_BT458_ADDR:
-         s->dac_index = val;
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index e6e22bef88..1ebcbeea46 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
- artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
- artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
- artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
-+
-+# cg3.c
-+cg3_read(unsigned size, uint32_t addr, uint32_t val) "read size:%u addr:0x%06"PRIx32" val:0x%08"PRIx32
-+cg3_write(unsigned size, uint32_t addr, uint32_t val) "read write:%u addr:0x%06"PRIx32" val:0x%08"PRIx32
+diff --git a/scripts/clean-includes b/scripts/clean-includes
+index dd938daa3e..795b3bea31 100755
+--- a/scripts/clean-includes
++++ b/scripts/clean-includes
+@@ -123,6 +123,7 @@ for f in "$@"; do
+       ;;
+     *include/qemu/osdep.h | \
+     *include/qemu/compiler.h | \
++    *include/qemu/qemu-plugin.h | \
+     *include/glib-compat.h | \
+     *include/sysemu/os-posix.h | \
+     *include/sysemu/os-win32.h | \
 -- 
 2.21.3
 
