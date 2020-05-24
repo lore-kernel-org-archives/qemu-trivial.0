@@ -1,74 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jcoXp-0003Qf-PJ
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 07:11:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57650)
+	id 1jcpiJ-0000x0-Rp
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 08:26:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jcoXl-0003QE-Rd; Sun, 24 May 2020 07:11:49 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43442)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jcoXh-0001A5-PA; Sun, 24 May 2020 07:11:46 -0400
-Received: by mail-wr1-x444.google.com with SMTP id i15so14549492wrx.10;
- Sun, 24 May 2020 04:11:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=C1eszk0Q8nnnhJsx17RLrSJtA9SbbE0OV6yQiljuJ0I=;
- b=iveI+CismgTPerhEU7qbOOxEFnl8EU3He6R+1d2wWFrxTM6WdB9PF0oycUGvZzPGk8
- s6Ui/Lg9ZOFFE9yiuWT5F43BkDSp0swMlJ7RV6VPVdAHsit1HQJbX0mhtecMoGUlYEGS
- vqxii9tqgyk5wb1s4mbT42VrkCXGaRogJp8r1cmDW8SgjTwZB41/nm1btGZiWtQhV8Rb
- Oh6h5j2IGnYkmTDM2Fg4GuOZs60MtQDi3fWssbEbF+kWjQ33yhR6/uUO4W+pQxPDS1ZX
- NySMO8ciC70zqSBce0bq0C1rUDJNN2NSk/v+OpFfuaIg/Q3sP4HN2HiG2QZqhYQHTmh0
- cdmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=C1eszk0Q8nnnhJsx17RLrSJtA9SbbE0OV6yQiljuJ0I=;
- b=gGRs8l51ea9xtYSrbwt4+vXxQGXwRux555qCWqQCIuz/wjBafNxY9KmDC3iSKsE5Br
- kDc3t4Rb5SSO7D5kGcVeY1bt6mZOsl8jtlsl58SmVfFc/o1eukwMm44mlMXMonyv1yw3
- lMHOlegKXImy73aoudMffygkYooD+YIvrkodZloPU9i3lPb+j6rEncziwoErwkQP0sLj
- 0fESG6rwaYTH+TjGFJnoXiK9t1jDL7/Mt5uHyvfRqqrYddb5b6M2JTUg8yFKKCCKseFR
- 61QvUbfwVRS3UaHPdMImI77g5jCwkAQRiVIp8EsIIDqHKnG7lquqKZkQU7I7BlvSL9O6
- nX8Q==
-X-Gm-Message-State: AOAM530Rl4kUXmY3F8/Uvrzlwp+N+dcVbJhj2nzVvF0SIFIU9u0/U3h3
- qBpfb/tlLz7oOxjFuiDxiG70EBzFjvc=
-X-Google-Smtp-Source: ABdhPJzMvcspME0+nQdavVFZYQ4XEOgABUrwV/cNPCUfKbNnYefevQWuDFkD7jKxevQmkadqbhTPPQ==
-X-Received: by 2002:adf:ef01:: with SMTP id e1mr10160998wro.28.1590318703168; 
- Sun, 24 May 2020 04:11:43 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id a12sm9109661wrs.70.2020.05.24.04.11.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 04:11:42 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/display/exynos4210_fimd: Use qemu_log_mask(GUEST_ERROR)
-Date: Sun, 24 May 2020 13:11:40 +0200
-Message-Id: <20200524111140.16365-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jcpiF-0000uv-6g; Sun, 24 May 2020 08:26:43 -0400
+Resent-Date: Sun, 24 May 2020 08:26:43 -0400
+Resent-Message-Id: <E1jcpiF-0000uv-6g@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21369)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jcpiD-0004tq-Js; Sun, 24 May 2020 08:26:42 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1590323192; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=EKPWL/M0bX0HZ4Ztic6d5R/w2X4DqMJKkjqGLrTYhAvixa9lz4wqj+1yjDfPtaUAwOACExgL4R+CIL8vjDi0BGrBm27ojYjMu0l6Mf8ARSW8Tnm8oOPd84H1fLvju9WWecClpPz7rUJNPD/yBUqhBdTFa3Jxl+U407Gv0ss1TZU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1590323192;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=LegiIIBweImhjf0t5touw530zc19+0bLIDt2o/sEL5M=; 
+ b=aY7IddXA7Rk29S2gT1D/AvWBibYZNonimrgr7HuEKZokN0eMZwuhyp+m5vzggekLMQKHnQ7muAJ6z/+uEcMI0rp5MsbqkJnrm3zb7c913EVpRHZEpGRwoTYSed200fqyeDyjcSG8uqZJIEif/XYj1k2YQ175t8UvZeZsAOCetTE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1590323191407618.5473013240561;
+ Sun, 24 May 2020 05:26:31 -0700 (PDT)
+Message-ID: <159032319028.25024.16341819742251742761@45ef0f9c86ae>
+In-Reply-To: <20200524110121.12686-1-f4bug@amsat.org>
+Subject: Re: [PATCH 0/4] hw/display/cirrus_vga: Convert debug printf() to
+ qemu_log_mask & trace
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kraxel@redhat.com,
+ f4bug@amsat.org
+Date: Sun, 24 May 2020 05:26:31 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/24 08:26:38
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,161 +63,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 11:11:50 -0000
+X-List-Received-Date: Sun, 24 May 2020 12:26:44 -0000
 
-Replace DPRINT_ERROR() by qemu_log_mask(GUEST_ERROR).
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/exynos4210_fimd.c | 46 +++++++++++++++++++++++-------------
- 1 file changed, 29 insertions(+), 17 deletions(-)
-
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index 1c0266ce9f..4b7286b7c9 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -31,6 +31,7 @@
- #include "ui/pixel_ops.h"
- #include "qemu/bswap.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- /* Debug messages configuration */
- #define EXYNOS4210_FIMD_DEBUG              0
-@@ -39,20 +40,15 @@
- #if EXYNOS4210_FIMD_DEBUG == 0
-     #define DPRINT_L1(fmt, args...)       do { } while (0)
-     #define DPRINT_L2(fmt, args...)       do { } while (0)
--    #define DPRINT_ERROR(fmt, args...)    do { } while (0)
- #elif EXYNOS4210_FIMD_DEBUG == 1
-     #define DPRINT_L1(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
-     #define DPRINT_L2(fmt, args...)       do { } while (0)
--    #define DPRINT_ERROR(fmt, args...)  \
--        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0)
- #else
-     #define DPRINT_L1(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
-     #define DPRINT_L2(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
--    #define DPRINT_ERROR(fmt, args...)  \
--        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0)
- #endif
- 
- #if EXYNOS4210_FIMD_MODE_TRACE == 0
-@@ -1108,7 +1104,7 @@ static inline int fimd_get_buffer_id(Exynos4210fimdWindow *w)
-     case FIMD_WINCON_BUF2_STAT:
-         return 2;
-     default:
--        DPRINT_ERROR("Non-existent buffer index\n");
-+        qemu_log_mask(LOG_GUEST_ERROR, "FIMD: Non-existent buffer index\n");
-         return 0;
-     }
- }
-@@ -1160,20 +1156,24 @@ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
- 
-     if (int128_get64(w->mem_section.size) != w->fb_len ||
-             !memory_region_is_ram(w->mem_section.mr)) {
--        DPRINT_ERROR("Failed to find window %u framebuffer region\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Failed to find window %u framebuffer region\n",
-+                      win);
-         goto error_return;
-     }
- 
-     w->host_fb_addr = cpu_physical_memory_map(fb_start_addr, &fb_mapped_len,
-                                               false);
-     if (!w->host_fb_addr) {
--        DPRINT_ERROR("Failed to map window %u framebuffer\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Failed to map window %u framebuffer\n", win);
-         goto error_return;
-     }
- 
-     if (fb_mapped_len != w->fb_len) {
--        DPRINT_ERROR("Window %u mapped framebuffer length is less then "
--                "expected\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Window %u mapped framebuffer length is less than "
-+                      "expected\n", win);
-         cpu_physical_memory_unmap(w->host_fb_addr, fb_mapped_len, 0, 0);
-         goto error_return;
-     }
-@@ -1490,7 +1490,9 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-             break;
-         case 3:
-             if (w != 1 && w != 2) {
--                DPRINT_ERROR("Bad write offset 0x%08x\n", offset);
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "FIMD: Bad write offset 0x%08"HWADDR_PRIx"\n",
-+                              offset);
-                 return;
-             }
-             s->window[w].osdsize = val;
-@@ -1624,7 +1626,9 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         break;
-     case FIMD_VIDW0ADD0_B2 ... FIMD_VIDW4ADD0_B2:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
-         }
-         w = (offset - FIMD_VIDW0ADD0_B2) >> 3;
-@@ -1638,14 +1642,18 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         break;
-     case FIMD_SHD_ADD0_START ... FIMD_SHD_ADD0_END:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
-         }
-         s->window[(offset - FIMD_SHD_ADD0_START) >> 3].shadow_buf_start = val;
-         break;
-     case FIMD_SHD_ADD1_START ... FIMD_SHD_ADD1_END:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
-         }
-         s->window[(offset - FIMD_SHD_ADD1_START) >> 3].shadow_buf_end = val;
-@@ -1665,7 +1673,8 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         s->window[w].palette[i] = val;
-         break;
-     default:
--        DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n", offset);
-         break;
-     }
- }
-@@ -1715,7 +1724,9 @@ static uint64_t exynos4210_fimd_read(void *opaque, hwaddr offset,
-             break;
-         case 3:
-             if (w != 1 && w != 2) {
--                DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "FIMD: bad read offset 0x%08"HWADDR_PRIx"\n",
-+                              offset);
-                 return 0xBAADBAAD;
-             }
-             ret = s->window[w].osdsize;
-@@ -1809,7 +1820,8 @@ static uint64_t exynos4210_fimd_read(void *opaque, hwaddr offset,
-         return s->window[w].palette[i];
-     }
- 
--    DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "FIMD: bad read offset 0x%08"HWADDR_PRIx"\n", offset);
-     return 0xBAADBAAD;
- }
- 
--- 
-2.21.3
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyNDExMDEyMS4xMjY4
+Ni0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
+bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
+bWF0aW9uOgoKTWVzc2FnZS1pZDogMjAyMDA1MjQxMTAxMjEuMTI2ODYtMS1mNGJ1Z0BhbXNhdC5v
+cmcKU3ViamVjdDogW1BBVENIIDAvNF0gaHcvZGlzcGxheS9jaXJydXNfdmdhOiBDb252ZXJ0IGRl
+YnVnIHByaW50ZigpIHRvIHFlbXVfbG9nX21hc2sgJiB0cmFjZQpUeXBlOiBzZXJpZXMKCj09PSBU
+RVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rl
+di9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdp
+dCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sg
+YmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4
+MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcK
+ZjJjNWE3NiBody9kaXNwbGF5L2NpcnJ1c192Z2E6IENvbnZlcnQgZGVidWcgcHJpbnRmKCkgdG8g
+dHJhY2UgZXZlbnQKMGIwMWE2MyBody9kaXNwbGF5L2NpcnJ1c192Z2E6IFVzZSBxZW11X2xvZ19t
+YXNrKEVSUk9SKSBpbnN0ZWFkIG9mIGRlYnVnIHByaW50Zgo3NGQxOGI3IGh3L2Rpc3BsYXkvY2ly
+cnVzX3ZnYTogVXNlIHFlbXVfbG9nX21hc2soVU5JTVApIGluc3RlYWQgb2YgZGVidWcgcHJpbnRm
+CjkwMDA1MzUgaHcvZGlzcGxheS9jaXJydXNfdmdhOiBDb252ZXJ0IGRlYnVnIHByaW50ZigpIHRv
+IHRyYWNlIGV2ZW50Cgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzQgQ2hlY2tpbmcgY29tbWl0IDkw
+MDA1MzU0YjdkNCAoaHcvZGlzcGxheS9jaXJydXNfdmdhOiBDb252ZXJ0IGRlYnVnIHByaW50Zigp
+IHRvIHRyYWNlIGV2ZW50KQoyLzQgQ2hlY2tpbmcgY29tbWl0IDc0ZDE4YjdjYTgzYiAoaHcvZGlz
+cGxheS9jaXJydXNfdmdhOiBVc2UgcWVtdV9sb2dfbWFzayhVTklNUCkgaW5zdGVhZCBvZiBkZWJ1
+ZyBwcmludGYpCjMvNCBDaGVja2luZyBjb21taXQgMGIwMWE2MzNmZTkyIChody9kaXNwbGF5L2Np
+cnJ1c192Z2E6IFVzZSBxZW11X2xvZ19tYXNrKEVSUk9SKSBpbnN0ZWFkIG9mIGRlYnVnIHByaW50
+ZikKRVJST1I6IHN1c3BlY3QgY29kZSBpbmRlbnQgZm9yIGNvbmRpdGlvbmFsIHN0YXRlbWVudHMg
+KDE2LCAxMikKIzMxOiBGSUxFOiBody9kaXNwbGF5L2NpcnJ1c192Z2EuYzoxMDM4OgogICAgICAg
+ICAgICAgICAgaWYgKHMtPmNpcnJ1c19ibHRfcGl4ZWx3aWR0aCA+IDIpIHsKKyAgICAgICAgICAg
+IHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLAoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5p
+bmdzLCAxNTYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy80IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxl
+YXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyBy
+ZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5F
+UlMuCgo0LzQgQ2hlY2tpbmcgY29tbWl0IGYyYzVhNzY4NjU3NCAoaHcvZGlzcGxheS9jaXJydXNf
+dmdhOiBDb252ZXJ0IGRlYnVnIHByaW50ZigpIHRvIHRyYWNlIGV2ZW50KQo9PT0gT1VUUFVUIEVO
+RCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlz
+IGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDUyNDExMDEyMS4xMjY4
+Ni0xLWY0YnVnQGFtc2F0Lm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0t
+CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
+dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
+dC5jb20=
 
