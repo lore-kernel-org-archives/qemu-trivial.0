@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jctqX-0006JL-KH
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 12:51:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54236)
+	id 1jctz9-0002W4-0I
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 13:00:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctqV-0006IG-U9; Sun, 24 May 2020 12:51:31 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45724)
+ id 1jctz7-0002V0-Fu; Sun, 24 May 2020 13:00:25 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35606)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jctqV-0007gH-2l; Sun, 24 May 2020 12:51:31 -0400
-Received: by mail-wr1-x441.google.com with SMTP id c3so10789988wru.12;
- Sun, 24 May 2020 09:51:30 -0700 (PDT)
+ id 1jctz6-0000t6-M9; Sun, 24 May 2020 13:00:25 -0400
+Received: by mail-wm1-x343.google.com with SMTP id n5so14780422wmd.0;
+ Sun, 24 May 2020 10:00:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=A5eA3fxA5I4ePu0JOBPPzSYvNnOc3wYRHkvM98rYLYw=;
- b=Wmxx7/09bXydbBHx2rl23xn3p3t8BsJdlIY73HQt026N03cq/wRW2ow0kARH82M2HT
- MCop+RWNZonu0gm+xfTUi/DDCAejsHmVGmZx518ru1daEpni9IOqV0TcplPTILdAxj4p
- 2YpfPXR+4Iw5vrDj070O0wiqoyr78nKbRvQMzJVjvK7sxkG9OQmZ7m44lGc6NdHLXxqu
- oEIp0ab2xPr5deIKtuyQPNqEo3zq5kPNcwSXMXo6rfH9DhNxVh8mClR62SnA4EOijCDz
- FiaAttrBsYXzO5PYGPX0tRohjeq3ELQ16+gSii2Z0EoriSScId4ukJEWnEft9u5NIfhE
- Q9fg==
+ bh=wFXfZneeiWkWgYk/J4K7V5igm6mMCSvKQWr+H8oYqlw=;
+ b=WoET6v+CL1BseG3+foSEfd4SrI/+ME5YNARNKcS3EvEyX3xL/VovmCWVYxrVJoUnLl
+ nSjcaayIO4gCKo1DDgIpI5wQW2OQHv8Q85ZryoO3Xcln85i/TE8Ux7aImBq+8WBPs4mJ
+ 3ecpQzYgl2hMk8pGEVDQ/XQFREKI+uC0KKE3YdJIiW4ql59SYCLv6GbxECO0W0U4B06+
+ vanGlidGF6cBCICu3fzZGZS364HUcZQeaItE5WKeLqFNwL8ubEegfNC87Y2VfizPAYs/
+ 0vP+GGeNp/aKbEALEuwriHbrgrWoHklLPnIWIRFaBTof8HSpZlXMXjc+1RIXSsJUs2mf
+ KKOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=A5eA3fxA5I4ePu0JOBPPzSYvNnOc3wYRHkvM98rYLYw=;
- b=a7OJe3E1Y+SzEeKJWaWfOzyzmek0UDdWyvWc/K+RhX4P+SJZtMj2RImlIgGEFzj0fD
- vn9pwBWpT/+hh5nPOyYvMLIF8x5iASzke7SQUkJ56qeBc0MsoNaeoUshc4Olc0YqLH2c
- 4iJplToBwwYh+wJmxYL4Qt4OWhsjpXCpq45Grrm7k0bxtgaGyrALXwS5/HHP5UDfpUYe
- SdhRdq6pxVPVM1fVj1gpF3PdWnjHxfsk52p18f8ZGbwAVLbz25BnwNAvrljFeS7InOcs
- o5pFf39XGXRkj2GJy7x02qOHUSfNB1otK94tSdqkqSR7YGGP3sAomDRteGqo7gmr/a/y
- IjTg==
-X-Gm-Message-State: AOAM533LjK1vr7wGYoyybY8AF+JiYGUXEoPv3f7br3XzeA1L1oInLS7A
- ycF7npVSestINRnriQekUZMHZz3XkiA=
-X-Google-Smtp-Source: ABdhPJzEF93AKx2SLN9aDAtEBZfewUfCrmOfY1csZ2oHTHijp2wuofJIP1EIGSit393fO7Y3db0VnA==
-X-Received: by 2002:a05:6000:12c2:: with SMTP id
- l2mr11228431wrx.133.1590339088792; 
- Sun, 24 May 2020 09:51:28 -0700 (PDT)
+ bh=wFXfZneeiWkWgYk/J4K7V5igm6mMCSvKQWr+H8oYqlw=;
+ b=J02pDEv+lstam1tiv8bQH0rGIO1cCrQY5ACfuBiJmzMUzkiW+HO99V+blGVUCuYqdz
+ GvJy8LFQQajUeElcs6d/GAa4VsaodfYQ+mYBf/dKgfhljEvk2sAdNKiOfBD77iQiUyGN
+ tFnrYBXWOt2aiaTFODvEtqcK91U/t1gXHHP9IThiUk68qc6ZjO3RoJwK6dbO+22MBUHV
+ fQerCATtQvrSrKyriMjuQ5BQktLAEtR7LqlxEEX3WA7eNWd6t81aatMcDoIa7x2qqG/p
+ FWcM+tQTqkHD/fVBc7SJXgyMS17BZjo3zKFivHl+WnR54t64TI+3vMzZ8zacJqi0bjYa
+ 09kg==
+X-Gm-Message-State: AOAM530aLA2IkvWeO+QioxvuXObfoC3wQ3tHMr/2saQkr0G5Hl/1CTpP
+ ExGm9sLJwpz5fzjZG7rlapTbcWSHfRA=
+X-Google-Smtp-Source: ABdhPJyzMNk5SdoYSAu0GoOWc7oMSFB1P8ZFEdb0a+rB3v5ZJA3IYXnjrnj6W7smf5pS+PSDzLQf7g==
+X-Received: by 2002:a1c:2e16:: with SMTP id u22mr21604500wmu.168.1590339622449; 
+ Sun, 24 May 2020 10:00:22 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id z206sm3125552wmg.30.2020.05.24.09.51.27
+ by smtp.gmail.com with ESMTPSA id v24sm16185510wmh.45.2020.05.24.10.00.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 09:51:28 -0700 (PDT)
+ Sun, 24 May 2020 10:00:21 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- David Gibson <david@gibson.dropbear.id.au>,
+Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/nvram/mac_nvram: Convert debug printf()s to trace events
-Date: Sun, 24 May 2020 18:51:26 +0200
-Message-Id: <20200524165126.13920-1-f4bug@amsat.org>
+Subject: [PATCH] hw/display/cg3: Convert debug printf()s to trace events
+Date: Sun, 24 May 2020 19:00:20 +0200
+Message-Id: <20200524170020.16546-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -83,73 +80,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 16:51:32 -0000
+X-List-Received-Date: Sun, 24 May 2020 17:00:25 -0000
 
-Convert NVR_DPRINTF() to trace events and remove ifdef'ry.
+Convert DPRINTF() to trace events and remove ifdef'ry.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/nvram/mac_nvram.c  | 17 +++--------------
- hw/nvram/trace-events |  4 ++++
- 2 files changed, 7 insertions(+), 14 deletions(-)
+ hw/display/cg3.c        | 14 ++++----------
+ hw/display/trace-events |  4 ++++
+ 2 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
-index ff5db03e6b..beec1c4e4d 100644
---- a/hw/nvram/mac_nvram.c
-+++ b/hw/nvram/mac_nvram.c
-@@ -30,18 +30,9 @@
- #include "migration/vmstate.h"
- #include "qemu/cutils.h"
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index f7f1c199ce..f6100c0e3d 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -35,6 +35,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/log.h"
  #include "qemu/module.h"
 +#include "trace.h"
- #include <zlib.h>
  
--/* debug NVR */
--//#define DEBUG_NVR
+ /* Change to 1 to enable debugging */
+ #define DEBUG_CG3 0
+@@ -63,12 +64,6 @@
+ #define CG3_VRAM_SIZE 0x100000
+ #define CG3_VRAM_OFFSET 0x800000
+ 
+-#define DPRINTF(fmt, ...) do { \
+-    if (DEBUG_CG3) { \
+-        printf("CG3: " fmt , ## __VA_ARGS__); \
+-    } \
+-} while (0)
 -
--#ifdef DEBUG_NVR
--#define NVR_DPRINTF(fmt, ...)                                   \
--    do { printf("NVR: " fmt , ## __VA_ARGS__); } while (0)
--#else
--#define NVR_DPRINTF(fmt, ...)
--#endif
--
- #define DEF_SYSTEM_SIZE 0xc10
+ #define TYPE_CG3 "cgthree"
+ #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
  
- /* macio style NVRAM device */
-@@ -51,9 +42,8 @@ static void macio_nvram_writeb(void *opaque, hwaddr addr,
-     MacIONVRAMState *s = opaque;
- 
-     addr = (addr >> s->it_shift) & (s->size - 1);
-+    trace_macio_nvram_write(addr, value);
-     s->data[addr] = value;
--    NVR_DPRINTF("writeb addr %04" HWADDR_PRIx " val %" PRIx64 "\n",
--                addr, value);
- }
- 
- static uint64_t macio_nvram_readb(void *opaque, hwaddr addr,
-@@ -64,8 +54,7 @@ static uint64_t macio_nvram_readb(void *opaque, hwaddr addr,
- 
-     addr = (addr >> s->it_shift) & (s->size - 1);
-     value = s->data[addr];
--    NVR_DPRINTF("readb addr %04" HWADDR_PRIx " val %" PRIx32 "\n",
--                addr, value);
-+    trace_macio_nvram_read(addr, value);
- 
-     return value;
- }
-diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
-index 0dea9260ce..e023193295 100644
---- a/hw/nvram/trace-events
-+++ b/hw/nvram/trace-events
-@@ -13,3 +13,7 @@ fw_cfg_add_string(uint16_t key_value, const char *key_name, const char *value) "
- fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
- fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
- fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
+@@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
+         val = 0;
+         break;
+     }
+-    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
++    trace_cg3_read(size, addr, val);
 +
-+# mac_nvram.c
-+macio_nvram_read(uint32_t addr, uint8_t val) "read addr=0x%04"PRIx32" val=0x%02x"
-+macio_nvram_write(uint32_t addr, uint8_t val) "write addr=0x%04"PRIx32" val=0x%02x"
+     return val;
+ }
+ 
+@@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
+     uint8_t regval;
+     int i;
+ 
+-    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
+-            val, addr, size);
+-
++    trace_cg3_write(size, addr, val);
+     switch (addr) {
+     case CG3_REG_BT458_ADDR:
+         s->dac_index = val;
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index e6e22bef88..1ebcbeea46 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
+ artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
+ artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
+ artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
++
++# cg3.c
++cg3_read(unsigned size, uint32_t addr, uint32_t val) "read size:%u addr:0x%06"PRIx32" val:0x%08"PRIx32
++cg3_write(unsigned size, uint32_t addr, uint32_t val) "read write:%u addr:0x%06"PRIx32" val:0x%08"PRIx32
 -- 
 2.21.3
 
