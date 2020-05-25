@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdAzg-0002Ly-9X
-	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 07:10:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56630)
+	id 1jdBD8-0000n4-An
+	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 07:24:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdAze-0002JC-9z; Mon, 25 May 2020 07:10:06 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43374)
+ id 1jdBD7-0000lY-3Z; Mon, 25 May 2020 07:24:01 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:33486)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdAzd-0006qS-MM; Mon, 25 May 2020 07:10:06 -0400
-Received: by mail-wr1-x441.google.com with SMTP id i15so16676264wrx.10;
- Mon, 25 May 2020 04:10:04 -0700 (PDT)
+ id 1jdBD6-0000pJ-CA; Mon, 25 May 2020 07:24:00 -0400
+Received: by mail-wm1-x342.google.com with SMTP id j198so2777857wmj.0;
+ Mon, 25 May 2020 04:23:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JIFaeFek0SvjmieIuqV9ZQHX7s4EvNNwtRVCIFLPqBM=;
- b=VxjMdZESY8SxnXATmKnoAVQKPP1bmGfkLSj+iWBH5Wn91KgVVJnxKc9JJ9j8loY0QK
- P2CwB1golbfv5dari5QV1o5+Uy+z7n+kQ5kGukKXahaF6KZSqYxxwWZpBmezCtwsxu6g
- tdKShgR3mmof2CCpcWDVhuZAEe/16NFYXHZ1LXbMl7RqYUUTtgkTspX56i6kjx558xMD
- 3LXyXCPhDAy31y64tkG5WyH0J8Houa82gwL6B2orwTdeAS3E4niDxqbxCkuoXW1752M6
- /2VGxh233rOekUNG9gPGDSHPt23XaMNwsKMQF+9SQRPAt5iVLt5H10YC95QoyddPkStb
- mMpg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=BQFbmyT7pL5wAyilWhYCYPO6t2SCt7Rg549UrO0JLKQ=;
+ b=Qu1LLg0zwbfQTztCtVZ093pynpUtbqdTRI+OUdCu8fDIe6QyW/BoeI2hi52B3uZ0rZ
+ QSrhxQIVzOLVi3AYIahCVYNi89OZqb2YRQtqc4QJb/+eZ1zbp1Ncp9WwH4G90n9VQwNn
+ Zwo2MxLYyaT0MoLClAkiLb0z5XSOd9UEx8SjIOwG5fRWmrEP8ZmGGXo0TgXOCUVSncl1
+ 2vIE0FIsZDWraABsb+KlgBPFBrNUj9XD9Z5vym/6ZrWaaa4qgW6KVnHMI5ClJI6y+STg
+ ndBjajKfcvtQ//VU2x3Y0OE79LaUCUJ7zNv+iB46BzWee/578pMXOoY5jWm7poKG9iez
+ WxSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=JIFaeFek0SvjmieIuqV9ZQHX7s4EvNNwtRVCIFLPqBM=;
- b=CUfHg80TqHl1upGY1NwbIMvcRpIiQ4AZ/3pC7+DY3MGWiWgF3UJL7oRku95qu/X2CU
- O8pAHtDKuW1coWtfA40+FkpyMXahBJ1v80+RUxZJ7flfVw0r3NThEmxa1BAOd03TQ3L8
- Er2RJr1ir7rDS6m5eAlctDcuOlhYoRqaMC+jl6fjuC1SuPccH4+LNpjUjpzCgxDBNz10
- LMKYbxbW6Bg0Y5xg/0BJfNOoNXk4X5xMtX6QNUkQgxRndBV4KbwmeTzdnG4AQKADeHql
- my4QrFEzeRwYWLffWxOGurrMC4Zvu7/JdRq59blwnOAuZFs8rTFP+UrqNAtI9yJ/zFuY
- 9YwQ==
-X-Gm-Message-State: AOAM533g04e63CJKaxhLmkoafEr744AD67NCTiERT0Q+IrZBIaC6R80t
- 4eJxEs45IPfW4XGBL1wdic9lSPXLEjM=
-X-Google-Smtp-Source: ABdhPJxS9AGEqXaO0oc/HXxWS+H8SxRDHU//deZFT2w938Lf/8XGWneddUC5T1/idfJG7QDma3YvLg==
-X-Received: by 2002:a5d:5585:: with SMTP id i5mr11547107wrv.112.1590405003215; 
- Mon, 25 May 2020 04:10:03 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=BQFbmyT7pL5wAyilWhYCYPO6t2SCt7Rg549UrO0JLKQ=;
+ b=PTSPxcsE49Sq3iLxRLSKk/v8VW4gUozp/72dEFNFYaFAlA/GfgqCW1PN4TaDssizX9
+ SSxq6Zh7mv+lBQLWeLILsBN7BT9OGU+1kKER9SMO8yPQ6BfctRhMfUA15FLAjDZgdyL6
+ KUXIQqPzXrMa5l1UHubd4eZ+JWKYFtbrkNP8yeEE6eHxWRd0gFu0DeNA1+rgUlccffc4
+ /KcCx/OQvvf7L4BebgtoZZT6XNcV3cFPkxvWrlKZzX0m/Nn5tYyAHRkiD+h3wdSgomGc
+ 1q1z58XB5auxr8ZMWA2fGOS9J6wsLiS9daisPwhGiS6B4xOPhX6B4XX+QxShs9QzyFOq
+ Uy5g==
+X-Gm-Message-State: AOAM530aHsALZQEqifZ6y0U5XQPwkD7QuC1zQRCvoLfhf1tt5KtBO1vJ
+ jgkYwOgZO/2y5XV6DqzaD0Wt1phHO3Y=
+X-Google-Smtp-Source: ABdhPJxOj/dPQBiRKnXN/RrL5mOqFDr5LjUIyezdTrSbrB1ikQ8mraX1bX2xCDh6oUc9lJODWY1PcQ==
+X-Received: by 2002:a7b:cb86:: with SMTP id m6mr25951955wmi.41.1590405838376; 
+ Mon, 25 May 2020 04:23:58 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id p65sm17516870wmp.36.2020.05.25.04.10.02
+ by smtp.gmail.com with ESMTPSA id h196sm10715635wme.22.2020.05.25.04.23.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 May 2020 04:10:02 -0700 (PDT)
+ Mon, 25 May 2020 04:23:57 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>, qemu-trivial@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2] hw/adc/stm32f2xx_adc: Correct memory region size and
- access size
-Date: Mon, 25 May 2020 13:10:01 +0200
-Message-Id: <20200525111001.8147-1-f4bug@amsat.org>
+Subject: [PATCH 1/3] MAINTAINERS: Cover vmware_vga related files in VMware
+ section
+Date: Mon, 25 May 2020 13:23:52 +0200
+Message-Id: <20200525112354.10445-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200525112354.10445-1-f4bug@amsat.org>
+References: <20200525112354.10445-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -82,51 +85,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2020 11:10:06 -0000
+X-List-Received-Date: Mon, 25 May 2020 11:24:01 -0000
 
-The ADC region size is 256B, split as:
- - [0x00 - 0x4f] defined
- - [0x50 - 0xff] reserved
-
-All registers are 32-bit (thus when the datasheet mentions the
-last defined register is 0x4c, it means its address range is
-0x4c .. 0x4f.
-
-This model implementation is also 32-bit. Set MemoryRegionOps
-'impl' fields.
-
-See:
-  'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
+Add the VMware VGA display and its ROM files to the VMware section.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v2: Commit staged changes... (MemoryRegionOps::impl)
----
- hw/adc/stm32f2xx_adc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ MAINTAINERS | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
-index 4f9d485ecf..01a0b14e69 100644
---- a/hw/adc/stm32f2xx_adc.c
-+++ b/hw/adc/stm32f2xx_adc.c
-@@ -246,6 +246,8 @@ static const MemoryRegionOps stm32f2xx_adc_ops = {
-     .read = stm32f2xx_adc_read,
-     .write = stm32f2xx_adc_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl.min_access_size = 4,
-+    .impl.max_access_size = 4,
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3690f313c3..2da00ce798 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1776,9 +1776,12 @@ F: hw/net/net_tx_pkt*
+ Vmware
+ M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+ S: Maintained
++F: hw/display/vmware_vga.c
+ F: hw/net/vmxnet*
+ F: hw/scsi/vmw_pvscsi*
+ F: tests/qtest/vmxnet3-test.c
++F: pc-bios/vgabios-vmware.bin
++F: roms/config.vga-vmware
  
- static const VMStateDescription vmstate_stm32f2xx_adc = {
-@@ -278,7 +280,7 @@ static void stm32f2xx_adc_init(Object *obj)
-     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
- 
-     memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
--                          TYPE_STM32F2XX_ADC, 0xFF);
-+                          TYPE_STM32F2XX_ADC, 0x100);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
- }
- 
+ Rocker
+ M: Jiri Pirko <jiri@resnulli.us>
 -- 
 2.21.3
 
