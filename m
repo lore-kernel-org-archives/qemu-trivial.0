@@ -1,76 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jcyc9-00063Y-L0
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 17:57:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49400)
+	id 1jd3R7-0008Fg-9V
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 23:05:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jcyc8-00062y-7z; Sun, 24 May 2020 17:57:00 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40828)
+ (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jd3R6-0008FG-90
+ for qemu-trivial@nongnu.org; Sun, 24 May 2020 23:05:56 -0400
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:40156)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jcyc7-00076X-AI; Sun, 24 May 2020 17:56:59 -0400
-Received: by mail-wm1-x344.google.com with SMTP id y5so1810505wmi.5;
- Sun, 24 May 2020 14:56:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=4guKOBYUaC4RD94kzeLD7DKKy9KDIS0J6f/pzDhfBdw=;
- b=aS/bUMlPFciBlbRBklfwvEYEjywl5vhVHOv70c2U4d4gLCptLBfmQBQW42iu/aOGcM
- iaYk5XfHMjDQgzDhgMedc06+2u4uVr+3e9nVw9A7K++UZKc6R5QJAX7nijTXMiaefuBe
- P/9QoyOQRMTljgWZ0OiplsdYNpRgf+hvkd3G2YXzcmSNapN2n7FlJd293oOIp1JQRBCo
- 7j855raomoUNTvg+s0gZAE1rjXhyhyzTrmMtjaciJ09zKiToPnVz94xSAUn0Bb/RBz7Z
- gocgtwTpsfjUMEcodzsb0Iyy1QGsBzwTSAZ0pEmYM6phuhYJs3faci8Tl5tQ30b5UBRL
- AQ2Q==
+ (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jd3R5-0000o0-8s
+ for qemu-trivial@nongnu.org; Sun, 24 May 2020 23:05:55 -0400
+Received: by mail-qv1-xf43.google.com with SMTP id l3so7520498qvo.7
+ for <qemu-trivial@nongnu.org>; Sun, 24 May 2020 20:05:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=braap-org.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=JUw6SA+aFNJL0DhGpFZToE7ce5zu8tNK/aXrR0hv2cI=;
+ b=MbZscF39G5D3hLk3ESYZ8wmiThFp4/+QXu8fYNxIUl/eIN/dD00f0WQZEPyDn9qyR+
+ 8JueNueg7UnrD8wVmpskxnrgKsFGChAsUYj421DJ/qTriE+BS+arX/LAbPQ2HMbnRMpw
+ feegx4USbeqeW7GdXDKfAvezZkT05z2buShDGPR6uMY8URhUCrsDUqWh1ehug7wfpVKo
+ 3OKS34v3aGSCBQvWxz/4me0dvh0z1ZDAeauK98OuvHoiHACkDifte8J3wo3MGt+/CkD3
+ m8+Oi9HvyswZesPAY8CuUIMt9L5mnhXY0AvKWeXEccSs8IRyxcXC/xYf+nJNd0oY6phP
+ k1Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=4guKOBYUaC4RD94kzeLD7DKKy9KDIS0J6f/pzDhfBdw=;
- b=Y79l6spirf0p+oOyDAztyl3ghKk3BbR8+jFImnmSvOclhaUNSdVteS76ZqVBqEMiez
- dEh/HNrj5nxRiuQSi9x1eSofWyiyDa9EAEcxrpWY9nk5EwQ73e76bE2ZcQDuyEuEH5H3
- 84Ac+MdQB3x/vElxJvZ2h0lNvSFZfbEb6G+s1DdZqqglj+qwQU+NB08aQOj+QjGTmLkN
- a0ZujRhi4hQVheahb3S9t66uG61SMM7Hls+X+Ysu4ia1WaXn/CvjA/rSPDrsbFYBMrJo
- PgCmsxwhh+jVQOgKporlyDkHLs4sBWF0ehu2Hfb7COqmh2+kd7G0K5itpaC6TjhAkA6Z
- Yh4Q==
-X-Gm-Message-State: AOAM53100/PxqC0hRp46XwYxwr3h+ovZ1GYBAiKVPIAjzNA5uhDbtz8m
- HrP/6UJnvNmxRtfoZtYtUK0nPyFEfak=
-X-Google-Smtp-Source: ABdhPJzURmPnbuefAyljBaQeatfisdvsO4o/obArnWLEnkpHyBoXOJ1Xx1lwkDyWdVlRaWYgP9fogQ==
-X-Received: by 2002:a05:600c:2dd7:: with SMTP id
- e23mr21868342wmh.96.1590357417085; 
- Sun, 24 May 2020 14:56:57 -0700 (PDT)
-Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id u3sm7215228wrw.89.2020.05.24.14.56.55
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=JUw6SA+aFNJL0DhGpFZToE7ce5zu8tNK/aXrR0hv2cI=;
+ b=k4rBW3GnaKr4R8JxAxJwFR19BJbrjMcxfH77QmuXVBI/rw3igVj7y3RqgjHm7elvib
+ 9B+sw7weYvNAj3rrTklCjAkBaQQixIB/w/XTfL4O/vAefQOx1CkyZPvB87fV9rxxlT39
+ OxLoMAGwI8kHKnbd4oFlxBG8LSHpqzB+5uaew9ya2iPHCGUG2gNNR9eGkPznc4xqqJXy
+ 1F7E1c1/RWFGI7o+bLPkdDMonUdCcl1fT6WYhKCdFUGYLWGt1tmekOBFa9/jsSz8fHWN
+ P/mFyS86BAnWRNLUovEkYV7betQQdAy/VeEmztVZVxIBTnk5tlXkCj9tMTb0C3yOT5vR
+ NHJA==
+X-Gm-Message-State: AOAM531iPdubKzVdN69I+9RO47Rgp/4IyYavTYiHpY4LYLSBeO4P9eRW
+ aYwrcCxv75EceXrD08G8D6fjOg==
+X-Google-Smtp-Source: ABdhPJwQI409Ly1PwqwjTotVB6dTVDuVh88Oxv9+L1YFdyDGS6zX+m7xQhkHTlTaZpfGmwn8YLLAPg==
+X-Received: by 2002:a0c:8e84:: with SMTP id x4mr14069567qvb.175.1590375954151; 
+ Sun, 24 May 2020 20:05:54 -0700 (PDT)
+Received: from localhost ([70.19.54.161])
+ by smtp.gmail.com with ESMTPSA id v1sm10520417qkb.19.2020.05.24.20.05.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 14:56:55 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: "Emilio G . Cota" <cota@braap.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] scripts/clean-includes: Mark 'qemu/qemu-plugin.h' as special
- header
-Date: Sun, 24 May 2020 23:56:54 +0200
-Message-Id: <20200524215654.13256-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ Sun, 24 May 2020 20:05:53 -0700 (PDT)
+Date: Sun, 24 May 2020 23:05:52 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org,
+ Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] scripts/clean-includes: Mark 'qemu/qemu-plugin.h' as
+ special header
+Message-ID: <20200525030552.GA990262@sff>
+References: <20200524215654.13256-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+In-Reply-To: <20200524215654.13256-1-f4bug@amsat.org>
+Received-SPF: softfail client-ip=2607:f8b0:4864:20::f43;
+ envelope-from=cota@braap.org; helo=mail-qv1-xf43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_SOFTFAIL=0.665,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -84,32 +80,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 May 2020 21:57:00 -0000
+X-List-Received-Date: Mon, 25 May 2020 03:05:56 -0000
 
-"qemu/qemu-plugin.h" isn't meant to be include by QEMU codebase,
-but by 3rd party plugins that QEMU can use. These plugins can be
-built out of QEMU and don't include "qemu/osdep.h".
-Mark "qemu/qemu-plugin.h" as a special header that doesn't need
-to be cleaned for "qemu/osdep.h".
+On Sun, May 24, 2020 at 23:56:54 +0200, Philippe Mathieu-Daudé wrote:
+> "qemu/qemu-plugin.h" isn't meant to be include by QEMU codebase,
+> but by 3rd party plugins that QEMU can use. These plugins can be
+> built out of QEMU and don't include "qemu/osdep.h".
+> Mark "qemu/qemu-plugin.h" as a special header that doesn't need
+> to be cleaned for "qemu/osdep.h".
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
----
- scripts/clean-includes | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Emilio G. Cota <cota@braap.org>
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index dd938daa3e..795b3bea31 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -123,6 +123,7 @@ for f in "$@"; do
-       ;;
-     *include/qemu/osdep.h | \
-     *include/qemu/compiler.h | \
-+    *include/qemu/qemu-plugin.h | \
-     *include/glib-compat.h | \
-     *include/sysemu/os-posix.h | \
-     *include/sysemu/os-win32.h | \
--- 
-2.21.3
-
+Thanks,
+		Emilio
 
