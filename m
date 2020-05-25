@@ -1,72 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jd3R7-0008Fg-9V
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 23:05:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44428)
+	id 1jd3xO-0006ER-01
+	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 23:39:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jd3R6-0008FG-90
- for qemu-trivial@nongnu.org; Sun, 24 May 2020 23:05:56 -0400
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:40156)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jd3xL-0006Cf-OI; Sun, 24 May 2020 23:39:15 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45244)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cota@braap.org>) id 1jd3R5-0000o0-8s
- for qemu-trivial@nongnu.org; Sun, 24 May 2020 23:05:55 -0400
-Received: by mail-qv1-xf43.google.com with SMTP id l3so7520498qvo.7
- for <qemu-trivial@nongnu.org>; Sun, 24 May 2020 20:05:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=braap-org.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=JUw6SA+aFNJL0DhGpFZToE7ce5zu8tNK/aXrR0hv2cI=;
- b=MbZscF39G5D3hLk3ESYZ8wmiThFp4/+QXu8fYNxIUl/eIN/dD00f0WQZEPyDn9qyR+
- 8JueNueg7UnrD8wVmpskxnrgKsFGChAsUYj421DJ/qTriE+BS+arX/LAbPQ2HMbnRMpw
- feegx4USbeqeW7GdXDKfAvezZkT05z2buShDGPR6uMY8URhUCrsDUqWh1ehug7wfpVKo
- 3OKS34v3aGSCBQvWxz/4me0dvh0z1ZDAeauK98OuvHoiHACkDifte8J3wo3MGt+/CkD3
- m8+Oi9HvyswZesPAY8CuUIMt9L5mnhXY0AvKWeXEccSs8IRyxcXC/xYf+nJNd0oY6phP
- k1Ug==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jd3xL-0005mt-1b; Sun, 24 May 2020 23:39:15 -0400
+Received: by mail-wr1-x442.google.com with SMTP id c3so11532779wru.12;
+ Sun, 24 May 2020 20:39:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=sq1aSztEgRKZjqwY5A9ArV/YRZucwBcuoboNL0Rmw54=;
+ b=DG/TLFp5LtiGTynL8t5bLD74hzmpH/PMdeIOaGvdeFw2sly77c+Zm0gZgOw2MYzYX2
+ OMJ5Gf8xl6Fa5ZQHASz7BgHEtiP4LXAGv3CfsSnZ0mST9vPPqpXn+fjS7EKyPvVb/g6z
+ ftdsUWFPFt5E969y2RFWKyAf34b8bMxnSZCiv7Pl9IkLGgfMdOXxfgTQWm+ElM9/xoOq
+ 1Jh7Dfsi6qAp6m+PiCMFj/8jEKJNBjWaG9iL7o/OipnpliKTm/njfXaL2uQTAax4sdA0
+ P8fGQDVq9jjC6U99j57zbspzV/e4HnPt8epWGeBoiBwOxqmemn/EuIkIJMnmV4hpWlCp
+ 0rUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=JUw6SA+aFNJL0DhGpFZToE7ce5zu8tNK/aXrR0hv2cI=;
- b=k4rBW3GnaKr4R8JxAxJwFR19BJbrjMcxfH77QmuXVBI/rw3igVj7y3RqgjHm7elvib
- 9B+sw7weYvNAj3rrTklCjAkBaQQixIB/w/XTfL4O/vAefQOx1CkyZPvB87fV9rxxlT39
- OxLoMAGwI8kHKnbd4oFlxBG8LSHpqzB+5uaew9ya2iPHCGUG2gNNR9eGkPznc4xqqJXy
- 1F7E1c1/RWFGI7o+bLPkdDMonUdCcl1fT6WYhKCdFUGYLWGt1tmekOBFa9/jsSz8fHWN
- P/mFyS86BAnWRNLUovEkYV7betQQdAy/VeEmztVZVxIBTnk5tlXkCj9tMTb0C3yOT5vR
- NHJA==
-X-Gm-Message-State: AOAM531iPdubKzVdN69I+9RO47Rgp/4IyYavTYiHpY4LYLSBeO4P9eRW
- aYwrcCxv75EceXrD08G8D6fjOg==
-X-Google-Smtp-Source: ABdhPJwQI409Ly1PwqwjTotVB6dTVDuVh88Oxv9+L1YFdyDGS6zX+m7xQhkHTlTaZpfGmwn8YLLAPg==
-X-Received: by 2002:a0c:8e84:: with SMTP id x4mr14069567qvb.175.1590375954151; 
- Sun, 24 May 2020 20:05:54 -0700 (PDT)
-Received: from localhost ([70.19.54.161])
- by smtp.gmail.com with ESMTPSA id v1sm10520417qkb.19.2020.05.24.20.05.53
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=sq1aSztEgRKZjqwY5A9ArV/YRZucwBcuoboNL0Rmw54=;
+ b=Tah9HugatEIUzg+zMm+XLlkuahRPf2oVvohMITQ+w4CvCnqbtphcDC/3+MEXLM8+JC
+ 9xzMqrTEgILU2sh2H2DfFN5XRShqs0yTmDn8UN9F1nSKrSriTzLJ94bOumhou+vUh93E
+ lRxfynmj7kjjU0WLPkpyLE2nBA1Fx681N+rkZ2UNAK156Ir7VHG+tDf49KkH5c0Fz5Qg
+ Hu98GjWzjxvhO6L7MXspyuSR6Xz/QolXivXE8+2BR5wXU+K0x4jpWzb/FwLjLagDSFng
+ E9ZbWDIAC5AgplKEWGO96coz71xN9GoNgMaDYLESm5n5ZrSG6lxS+xr252FZpD3jDxMs
+ hnAg==
+X-Gm-Message-State: AOAM530H0mEbFCaRrKq2KvupvWTAkIe4yVYEgAVMnvCFdLyBRcd7AlZ6
+ DHvrcHxBTsIrENWfEQ09n2CrdiFy3TA=
+X-Google-Smtp-Source: ABdhPJzesD/+02BoyafaUDwnVpfoPfUr2dAmUr57sKRqm8aEAB+YwAcfc9dMcYrO7lrM0qN/CuIqhQ==
+X-Received: by 2002:a5d:650f:: with SMTP id x15mr13204619wru.100.1590377952333; 
+ Sun, 24 May 2020 20:39:12 -0700 (PDT)
+Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
+ [88.21.204.71])
+ by smtp.gmail.com with ESMTPSA id c16sm16669427wrv.62.2020.05.24.20.39.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 20:05:53 -0700 (PDT)
-Date: Sun, 24 May 2020 23:05:52 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] scripts/clean-includes: Mark 'qemu/qemu-plugin.h' as
- special header
-Message-ID: <20200525030552.GA990262@sff>
-References: <20200524215654.13256-1-f4bug@amsat.org>
+ Sun, 24 May 2020 20:39:11 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/pci-bridge/dec: Remove dead debug code
+Date: Mon, 25 May 2020 05:39:10 +0200
+Message-Id: <20200525033910.26166-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200524215654.13256-1-f4bug@amsat.org>
-Received-SPF: softfail client-ip=2607:f8b0:4864:20::f43;
- envelope-from=cota@braap.org; helo=mail-qv1-xf43.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_SOFTFAIL=0.665,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,19 +83,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2020 03:05:56 -0000
+X-List-Received-Date: Mon, 25 May 2020 03:39:16 -0000
 
-On Sun, May 24, 2020 at 23:56:54 +0200, Philippe Mathieu-Daudé wrote:
-> "qemu/qemu-plugin.h" isn't meant to be include by QEMU codebase,
-> but by 3rd party plugins that QEMU can use. These plugins can be
-> built out of QEMU and don't include "qemu/osdep.h".
-> Mark "qemu/qemu-plugin.h" as a special header that doesn't need
-> to be cleaned for "qemu/osdep.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Remove debug code never used since added in commit e1c6bbabee30.
 
-Reviewed-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+---
+ hw/pci-bridge/dec.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-Thanks,
-		Emilio
+diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
+index 3ae2f788a4..952bc71122 100644
+--- a/hw/pci-bridge/dec.c
++++ b/hw/pci-bridge/dec.c
+@@ -32,16 +32,6 @@
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pci_bus.h"
+ 
+-/* debug DEC */
+-//#define DEBUG_DEC
+-
+-#ifdef DEBUG_DEC
+-#define DEC_DPRINTF(fmt, ...)                               \
+-    do { printf("DEC: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DEC_DPRINTF(fmt, ...)
+-#endif
+-
+ #define DEC_21154(obj) OBJECT_CHECK(DECState, (obj), TYPE_DEC_21154)
+ 
+ typedef struct DECState {
+-- 
+2.21.3
+
 
