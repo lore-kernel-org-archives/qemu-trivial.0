@@ -1,76 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jd444-0008SZ-TH
-	for mharc-qemu-trivial@gnu.org; Sun, 24 May 2020 23:46:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46680)
+	id 1jd5LM-00034M-EY
+	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 01:08:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jd432-0008Dt-9d; Sun, 24 May 2020 23:45:39 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:38411)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jd430-0006vp-Uu; Sun, 24 May 2020 23:45:08 -0400
-Received: by mail-wr1-x433.google.com with SMTP id e1so15794036wrt.5;
- Sun, 24 May 2020 20:45:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=A80EDSkKnmPL8Q+dFqA3I3MZqZ/GPALeIVPMrzoZlZc=;
- b=Q7a5JY+/x/Fx8Puy7mvB8bc96TFJwCYWRF1TNHrzBQ6wS280/G0dWTYtryHJp9/RG9
- BjV8BW6CmxY8NkIPacBmsCDs/n/8JDo+VNkPuh8K3XZGXLHQBj8eeSeKg++PavsFF6NI
- bgrD29jq1stlaQYZiYyAp4fskPLfpFNwy/jWuHH/BhDvCyVkOnCk/Nv1EoQt/s2Bc++5
- UX6IjzzSobNjtXHCJfXlEsZNnkn7GT9MoYJU1HRrWVgic+KjudfaV/RNMTzPjj/6vpXz
- N3hG6KJx01xhYx6GQT1tvLsdARhPVheO+bbc67WDfzV15qp5qm0B9MQ6GDJFC0GPMp7y
- tsGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=A80EDSkKnmPL8Q+dFqA3I3MZqZ/GPALeIVPMrzoZlZc=;
- b=hb3qpWlk80Nq+8IHooA5KNRetoTEj8E2mv2uMWKwYpPSTv0ilmUXD0K88LavgVkR67
- wftyTGntz715qvfX0xQe5yKiNPCl10DS77M0Gz1eZDQTRP28lFTnHhCwOJnX6LteAb9e
- pT5af4F9LNvSLQP9w6/IYxBSY4b8qa0qHnuEuUCCvpOkmSwM7E6UdfZaubojAFsV6ASo
- mSDZvYoXCUdycN1t00HLz2jPEN/Smb/wuzl606zhb5jWMO9w+jMx6Fa1Wjl8QfR31nnP
- Go1C9lntm72tMFCvM5Va+fBPh/JiT/2EKij0B0p9YMFV/RQz6Rx2H7X77b4OOF/qduka
- FRKA==
-X-Gm-Message-State: AOAM531xZLBh1ey7LLqt5CMV5IVnpAYXKndCJjjvBgIZ0g1w/6hsCXf1
- D+gyAkaEHxozR9116gxTyEItXJrT5E0=
-X-Google-Smtp-Source: ABdhPJxltcSi0U8fVcMkD1hzzK4nljCMvyR/zDmwlRrs9C5jQBO1cet2W/WTTvCmIpotLWttzr9Y0g==
-X-Received: by 2002:a5d:6806:: with SMTP id w6mr13727886wru.324.1590378304686; 
- Sun, 24 May 2020 20:45:04 -0700 (PDT)
-Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id n9sm17555150wmj.5.2020.05.24.20.45.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 20:45:04 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/4] hw/display/dpcd: Convert debug printf()s to trace events
-Date: Mon, 25 May 2020 05:44:58 +0200
-Message-Id: <20200525034459.28535-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200525034459.28535-1-f4bug@amsat.org>
-References: <20200525034459.28535-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1jd5LJ-00031y-W2; Mon, 25 May 2020 01:08:06 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:33271 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1jd5LI-00047g-31; Mon, 25 May 2020 01:08:05 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 49VlTl07SXz9sSx; Mon, 25 May 2020 15:07:54 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1590383275;
+ bh=/bQ/EMPthSOxtGzy68UC0DYKSqD6F2AiBpfo9nE5SZQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GHo67Yhnv5MIZzNb9fuL76uq7F4xN3bG+2/dJYw6ut4czG6baAxY6C/wD6WRrgqrN
+ JfCWBJnso2zO0FjaAp9h3RF29WwIQZNaffgHjutLLUSImpED2r7sP2DZ4CKAAeJoSo
+ 90S+aUinqFMcX9kNpNg+CCFOG7rkVBJvs/if51UQ=
+Date: Mon, 25 May 2020 15:07:47 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [PATCH] hw/nvram/mac_nvram: Convert debug printf()s to trace
+ events
+Message-ID: <20200525050747.GD23110@umbus.fritz.box>
+References: <20200524165126.13920-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="hxkXGo8AKqTJ+9QI"
+Content-Disposition: inline
+In-Reply-To: <20200524165126.13920-1-f4bug@amsat.org>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/25 01:07:56
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -84,71 +54,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2020 03:45:40 -0000
+X-List-Received-Date: Mon, 25 May 2020 05:08:06 -0000
 
-Convert DPRINTF() to trace events and remove ifdef'ry.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/dpcd.c       | 16 +++-------------
- hw/display/trace-events |  4 ++++
- 2 files changed, 7 insertions(+), 13 deletions(-)
+--hxkXGo8AKqTJ+9QI
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
-index 0c1b7b35fb..64463654a1 100644
---- a/hw/display/dpcd.c
-+++ b/hw/display/dpcd.c
-@@ -32,16 +32,7 @@
- #include "hw/misc/auxbus.h"
- #include "migration/vmstate.h"
- #include "hw/display/dpcd.h"
--
--#ifndef DEBUG_DPCD
--#define DEBUG_DPCD 0
--#endif
--
--#define DPRINTF(fmt, ...) do {                                                 \
--    if (DEBUG_DPCD) {                                                          \
--        qemu_log("dpcd: " fmt, ## __VA_ARGS__);                                \
--    }                                                                          \
--} while (0)
-+#include "trace.h"
- 
- #define DPCD_READABLE_AREA                      0x600
- 
-@@ -70,8 +61,8 @@ static uint64_t dpcd_read(void *opaque, hwaddr offset, unsigned size)
-                                        offset);
-         ret = 0;
-     }
-+    trace_dpcd_read(offset, ret);
- 
--    DPRINTF("read 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", ret, offset);
-     return ret;
- }
- 
-@@ -80,8 +71,7 @@ static void dpcd_write(void *opaque, hwaddr offset, uint64_t value,
- {
-     DPCDState *e = DPCD(opaque);
- 
--    DPRINTF("write 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", (uint8_t)value, offset);
--
-+    trace_dpcd_write(offset, value);
-     if (offset < DPCD_READABLE_AREA) {
-         e->dpcd_info[offset] = value;
-     } else {
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index e6e22bef88..00543f1601 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
- artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
- artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
- artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
-+
-+# dpcd.c
-+dpcd_read(uint32_t addr, uint8_t val) "read addr:0x%"PRIx32" val:0x%02x"
-+dpcd_write(uint32_t addr, uint8_t val) "write addr:0x%"PRIx32" val:0x%02x"
--- 
-2.21.3
+On Sun, May 24, 2020 at 06:51:26PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Convert NVR_DPRINTF() to trace events and remove ifdef'ry.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
+Applied to ppc-for-5.1, thanks.
+
+> ---
+>  hw/nvram/mac_nvram.c  | 17 +++--------------
+>  hw/nvram/trace-events |  4 ++++
+>  2 files changed, 7 insertions(+), 14 deletions(-)
+>=20
+> diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
+> index ff5db03e6b..beec1c4e4d 100644
+> --- a/hw/nvram/mac_nvram.c
+> +++ b/hw/nvram/mac_nvram.c
+> @@ -30,18 +30,9 @@
+>  #include "migration/vmstate.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/module.h"
+> +#include "trace.h"
+>  #include <zlib.h>
+> =20
+> -/* debug NVR */
+> -//#define DEBUG_NVR
+> -
+> -#ifdef DEBUG_NVR
+> -#define NVR_DPRINTF(fmt, ...)                                   \
+> -    do { printf("NVR: " fmt , ## __VA_ARGS__); } while (0)
+> -#else
+> -#define NVR_DPRINTF(fmt, ...)
+> -#endif
+> -
+>  #define DEF_SYSTEM_SIZE 0xc10
+> =20
+>  /* macio style NVRAM device */
+> @@ -51,9 +42,8 @@ static void macio_nvram_writeb(void *opaque, hwaddr add=
+r,
+>      MacIONVRAMState *s =3D opaque;
+> =20
+>      addr =3D (addr >> s->it_shift) & (s->size - 1);
+> +    trace_macio_nvram_write(addr, value);
+>      s->data[addr] =3D value;
+> -    NVR_DPRINTF("writeb addr %04" HWADDR_PRIx " val %" PRIx64 "\n",
+> -                addr, value);
+>  }
+> =20
+>  static uint64_t macio_nvram_readb(void *opaque, hwaddr addr,
+> @@ -64,8 +54,7 @@ static uint64_t macio_nvram_readb(void *opaque, hwaddr =
+addr,
+> =20
+>      addr =3D (addr >> s->it_shift) & (s->size - 1);
+>      value =3D s->data[addr];
+> -    NVR_DPRINTF("readb addr %04" HWADDR_PRIx " val %" PRIx32 "\n",
+> -                addr, value);
+> +    trace_macio_nvram_read(addr, value);
+> =20
+>      return value;
+>  }
+> diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
+> index 0dea9260ce..e023193295 100644
+> --- a/hw/nvram/trace-events
+> +++ b/hw/nvram/trace-events
+> @@ -13,3 +13,7 @@ fw_cfg_add_string(uint16_t key_value, const char *key_n=
+ame, const char *value) "
+>  fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t value)=
+ "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
+>  fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t value)=
+ "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
+>  fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t value)=
+ "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
+> +
+> +# mac_nvram.c
+> +macio_nvram_read(uint32_t addr, uint8_t val) "read addr=3D0x%04"PRIx32" =
+val=3D0x%02x"
+> +macio_nvram_write(uint32_t addr, uint8_t val) "write addr=3D0x%04"PRIx32=
+" val=3D0x%02x"
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--hxkXGo8AKqTJ+9QI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl7LUqMACgkQbDjKyiDZ
+s5ILbBAArevA+vueEYNUYrjH3U5CYBs/frum5fEekewYFQggMlh/Mbu2VkwHq5Af
+8AEa8oO7xe1ckKeKheTi9pphheRpZjm5ajybjcduBvewAmqkszh4gAZ2qxiU7EKM
+kL8Ad16DdrQ5Jlgv5w25mvSkooFf6BRBpaBfpCp0yXg8X/l+h7jiWnbD2MnraY+f
+oC9w8ylY2suKiIWt5icWL6atdptZE7mYTLG594q69E3xaKoy33MR+4i9b/cOld/J
+JcQw1s7fllpSlfkZpZ2cDmgiSkC3pNus/NW55KbwcXAMqscMDSJid08U9JGNM3kY
+vtr9GNVelTkILi/yOlVAlwa3j/Vt5We70gcVyIzWM8CJoA8TsxVCzG1VTuwcKt6z
+X0ujUOa9zqmiX2Qakh60b52HbNlYh0CUiWXaSITk9+Vm4qNVdjERX/Bzqzns/yFu
+kVQlNvgerkqkhr0IH7Ao/hs9WtGXsog3xrcq8mPNB9eObQCRaeRm9e5p25RS8yfv
+hrXaH1WPX5l5HKmXENF3O/O1xmbGf2hRIZTZBDITyH+SKq9p9/uidNYL/u03Zdws
+DZIEZzsYqQ/DBEPYnnFvy3yZBp2ArlV4YgaRLhyp81Hb8SoXVGYWnu3F8OipEaM8
+wMcruQvmXAKLnU9+Ja1pPOEePgk1xPQEyLNBkTWeVXeLvKMXBnM=
+=C4uW
+-----END PGP SIGNATURE-----
+
+--hxkXGo8AKqTJ+9QI--
 
