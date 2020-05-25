@@ -1,68 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jd7bT-0005IT-LL
-	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 03:32:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35476)
+	id 1jd9Dn-0006Za-Eb
+	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 05:16:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jd7bQ-0005Hx-PS
- for qemu-trivial@nongnu.org; Mon, 25 May 2020 03:32:54 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:48920
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jd7bP-0002m9-QL
- for qemu-trivial@nongnu.org; Mon, 25 May 2020 03:32:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590391970;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=bn1dhPxPDMF82dpFns6DlfjW95B1FNlZTbQG//S8qXA=;
- b=LTTccBgBVSKltMpDsEbLSqlaqSyI/A9CKtSSylgaWmhH4eKTiA5pEs5p0cpJNXrpgXzeNb
- CLf8ultyrJJm4vAsHbgQP39unXW7Dtjjly2pw36vEz1Yoio+AuUX8yH1x8a6z+lYCzNMb1
- EqrD9kEMFePY6dwet4M1gIfquJUmMMI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-316-bZJSwpTXP8WaCVvi_j2qUQ-1; Mon, 25 May 2020 03:32:46 -0400
-X-MC-Unique: bZJSwpTXP8WaCVvi_j2qUQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1E3241855A06;
- Mon, 25 May 2020 07:32:44 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-78.ams2.redhat.com [10.36.113.78])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 91CB16FB6D;
- Mon, 25 May 2020 07:32:40 +0000 (UTC)
-Subject: Re: [PATCH] hw/unicore32/puv3: Use qemu_log_mask(ERROR) instead of
- debug printf()
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jd9Dk-0006YA-Ii; Mon, 25 May 2020 05:16:32 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:50316
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jd9Dj-0003dT-R8; Mon, 25 May 2020 05:16:32 -0400
+Received: from host109-156-104-24.range109-156.btcentralplus.com
+ ([109.156.104.24] helo=[192.168.1.65])
+ by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jd9DZ-0000Og-HC; Mon, 25 May 2020 10:16:30 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Guan Xuetao <gxt@mprc.pku.edu.cn>
-References: <20200524164503.11944-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <e6b47284-1f22-c5a0-ce99-aa14e9462653@redhat.com>
-Date: Mon, 25 May 2020 09:32:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20200524165126.13920-1-f4bug@amsat.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+ OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+Message-ID: <1a402dac-ee39-f454-4488-c48d0e46da1f@ilande.co.uk>
+Date: Mon, 25 May 2020 10:16:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200524164503.11944-1-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200524165126.13920-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/25 02:40:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+X-SA-Exim-Connect-IP: 109.156.104.24
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] hw/nvram/mac_nvram: Convert debug printf()s to trace
+ events
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,22 +83,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2020 07:32:54 -0000
+X-List-Received-Date: Mon, 25 May 2020 09:16:33 -0000
 
-On 24/05/2020 18.45, Philippe Mathieu-Daudé wrote:
-> Replace some debug printf() calls by qemu_log_mask(LOG_GUEST_ERROR).
+On 24/05/2020 17:51, Philippe Mathieu-Daudé wrote:
+
+> Convert NVR_DPRINTF() to trace events and remove ifdef'ry.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/dma/puv3_dma.c   |  9 +++++++--
->  hw/gpio/puv3_gpio.c | 15 +++++++++++----
->  hw/intc/puv3_intc.c |  9 +++++++--
->  hw/misc/puv3_pm.c   |  9 +++++++--
->  hw/timer/puv3_ost.c |  9 +++++++--
->  hw/unicore32/puv3.c |  2 --
->  6 files changed, 39 insertions(+), 14 deletions(-)
+>  hw/nvram/mac_nvram.c  | 17 +++--------------
+>  hw/nvram/trace-events |  4 ++++
+>  2 files changed, 7 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
+> index ff5db03e6b..beec1c4e4d 100644
+> --- a/hw/nvram/mac_nvram.c
+> +++ b/hw/nvram/mac_nvram.c
+> @@ -30,18 +30,9 @@
+>  #include "migration/vmstate.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/module.h"
+> +#include "trace.h"
+>  #include <zlib.h>
+>  
+> -/* debug NVR */
+> -//#define DEBUG_NVR
+> -
+> -#ifdef DEBUG_NVR
+> -#define NVR_DPRINTF(fmt, ...)                                   \
+> -    do { printf("NVR: " fmt , ## __VA_ARGS__); } while (0)
+> -#else
+> -#define NVR_DPRINTF(fmt, ...)
+> -#endif
+> -
+>  #define DEF_SYSTEM_SIZE 0xc10
+>  
+>  /* macio style NVRAM device */
+> @@ -51,9 +42,8 @@ static void macio_nvram_writeb(void *opaque, hwaddr addr,
+>      MacIONVRAMState *s = opaque;
+>  
+>      addr = (addr >> s->it_shift) & (s->size - 1);
+> +    trace_macio_nvram_write(addr, value);
+>      s->data[addr] = value;
+> -    NVR_DPRINTF("writeb addr %04" HWADDR_PRIx " val %" PRIx64 "\n",
+> -                addr, value);
+>  }
+>  
+>  static uint64_t macio_nvram_readb(void *opaque, hwaddr addr,
+> @@ -64,8 +54,7 @@ static uint64_t macio_nvram_readb(void *opaque, hwaddr addr,
+>  
+>      addr = (addr >> s->it_shift) & (s->size - 1);
+>      value = s->data[addr];
+> -    NVR_DPRINTF("readb addr %04" HWADDR_PRIx " val %" PRIx32 "\n",
+> -                addr, value);
+> +    trace_macio_nvram_read(addr, value);
+>  
+>      return value;
+>  }
+> diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
+> index 0dea9260ce..e023193295 100644
+> --- a/hw/nvram/trace-events
+> +++ b/hw/nvram/trace-events
+> @@ -13,3 +13,7 @@ fw_cfg_add_string(uint16_t key_value, const char *key_name, const char *value) "
+>  fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
+>  fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
+>  fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
+> +
+> +# mac_nvram.c
+> +macio_nvram_read(uint32_t addr, uint8_t val) "read addr=0x%04"PRIx32" val=0x%02x"
+> +macio_nvram_write(uint32_t addr, uint8_t val) "write addr=0x%04"PRIx32" val=0x%02x"
 
-Looks reasonable to me.
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Looks good to me.
 
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.
 
