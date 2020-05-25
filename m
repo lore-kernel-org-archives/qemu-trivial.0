@@ -1,68 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdBDB-0000wF-Oz
-	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 07:24:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58108)
+	id 1jdBHf-00082b-V7
+	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2020 07:28:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdBD9-0000qe-KV; Mon, 25 May 2020 07:24:03 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42219)
+ id 1jdBHZ-0007z4-UM; Mon, 25 May 2020 07:28:39 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:53773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdBD8-0000pw-Tr; Mon, 25 May 2020 07:24:03 -0400
-Received: by mail-wr1-x441.google.com with SMTP id s8so16722138wrt.9;
- Mon, 25 May 2020 04:24:02 -0700 (PDT)
+ id 1jdBHY-0001h5-DE; Mon, 25 May 2020 07:28:37 -0400
+Received: by mail-wm1-x332.google.com with SMTP id l26so856008wme.3;
+ Mon, 25 May 2020 04:28:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=T2fFw/3ecGdUBJpHTI/rjWpVW7MRtnqzt7F58rWYdgA=;
- b=fWtk1o+sZqyNBzm6LFIIfkZOaAz9pm2D5LIGFDda7OJzZ/A5GzFnFTCjpXkLw72yPP
- WXmclKnXy4DUzT0/R5aFbmLIqyNs22Lf1/DFFFN+06I1jLO7ySU08fZ2+ijqkplGQ3Wk
- ZgVy7Q7a5iKwXdZsml1ftEBja6JaMvnabnIA5NISQLd5pDKEuVpvijS7ei009ayeJLeE
- z32iYXj/UlcDJn9YZHMqljoysiCU0Dt/yxwtVYGMXDa3P6MTcIVn7s1zSEyqexs0Uza/
- DpWCqBgUwrDVqqQECk1iHOjHcDqzw4z+u3G00Y0fjbwvfYljYpK6JpqAKfsEF41Kb9de
- I7Aw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8or0Jt1EOa4HRL3qYrPJ2szYMkUXx13MFz/tHwUyMew=;
+ b=HreIQBAyjC1oLr2Saez0nDxlNXi7c4/ZQ8T3xKZWIbsER2nkpxL7iHenvN4n9vAUi+
+ GwdkHvmhXrFswoYgYwC2cBdMSOdNGlx4BTUmVLtUuo2RVbJe8TjdT1ZGsGpEd+CQkuAu
+ IBbd+luJHCUQHAI/0UNyS0TgksHmZVV6eSow+Q7T1Jy6ubWIAC07eGKp1mqHLCPc2FPd
+ bdG5r+jl6PmnnQX1PPMAQY/zYSrY4Qo27BDgOcdeHUd0ZUdzXH6leuu7//jtzs3cLCZ7
+ 0MU2gH4vwYx4q/KLWEjJoo+FrRuIY4TW8PR27J4lahNVyaK2I6t1OjHGTcLqKoJ+jmTo
+ YF6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=T2fFw/3ecGdUBJpHTI/rjWpVW7MRtnqzt7F58rWYdgA=;
- b=g2RIcDaCAnQcu/BiWHnZJNJltiwHaRC0HmpVHm9Bikm9BLZ53TCr+6pywwQZllZipY
- gE7Thh4VRF2EU5iPfEXx4uWtiCeYZJBWvdhnwQxZWe6/ufnp8ky0kfUgCUwdIC0MX8mA
- fCyCsW99EqlXWg8YyZLexhqfYeskO1Hb5URtZ7hMeBoV0cYI/Vj0Qh+Ol3ovzPrY0QrW
- AcnlYvn6WTADj+8wd9lN32AKsbFQRtc1aJbGpkKYPVvBPD5p90DYIJ3cKn/AkYQXv1jc
- mG6PIxE42NPLvEEtoxduI9NbrnxeAttjzFVbl0A0RAlnI6t5vOo51EH4VUbKzk3/568U
- dDsg==
-X-Gm-Message-State: AOAM533Fd92hJ/V0jpAVKj2Ebbo9zbbO1j6v5ZlVb2x/1jJ2+HYyS+Zt
- 4cmoBVqPnTrAdDa1rW+F1WLwZzPekOQ=
-X-Google-Smtp-Source: ABdhPJwHFbDJddx3JhGgAkJIbabXkEDdSaTnrDZ4W+ZIzlMGKsSS/yXYPBxx08QA0Q8/fqvRvJjs6w==
-X-Received: by 2002:a5d:6444:: with SMTP id d4mr13369464wrw.239.1590405841073; 
- Mon, 25 May 2020 04:24:01 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=8or0Jt1EOa4HRL3qYrPJ2szYMkUXx13MFz/tHwUyMew=;
+ b=Wbg1B9sopvybiR1PEgmZi60zqIgov1CrMgtjaTvRIhKoIhzyqHAWu7ItCZ3EUUxiyI
+ m6s8EEaHHaWXC5TGcbJYhc3w7buBAGfLIctl0orv83BO0me81J7EgpRbs0KQzSOS6EBW
+ qU8MS0xOeUMecSZksSAauCPvxxHUMfNflEetVZ9lp/s8EExHn9efvtecqu0vyrsS0gVL
+ /7JHRK80LKzx+aHqEyohw0M3t5e/ejShqrGC3sf+z+wXJgSwU5zPdt5zy5VQn4Dmo2sW
+ uPdsn5M15paq4CNTG50QT6TsERoGSfztcA31Z/FvJxQHGfv0hfvz92SbdkH4o7A27M04
+ VHgQ==
+X-Gm-Message-State: AOAM531g6f5A8p21Xxr98a/ZW+KenOtnf9Vs9q/7JxpofZI9HoO0/WmS
+ 4alQGD4zfOqsJbPndOIOiwgyBy2RJdQ=
+X-Google-Smtp-Source: ABdhPJw4ufyliGA5gLQfdRqqMe3yVfyCvCUfmsqVg+rkFA3i9+vyvMk8YZyrpwhiet9S8PlRx5p2fw==
+X-Received: by 2002:a1c:dc05:: with SMTP id t5mr26061736wmg.112.1590406114001; 
+ Mon, 25 May 2020 04:28:34 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id h196sm10715635wme.22.2020.05.25.04.24.00
+ by smtp.gmail.com with ESMTPSA id x17sm17849039wrp.71.2020.05.25.04.28.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 May 2020 04:24:00 -0700 (PDT)
+ Mon, 25 May 2020 04:28:33 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>,
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH 3/3] hw/display/vmware_vga: Let the PCI device own its I/O
- MemoryRegion
-Date: Mon, 25 May 2020 13:23:54 +0200
-Message-Id: <20200525112354.10445-4-f4bug@amsat.org>
+Subject: [PATCH v2] hw/display/cg3: Convert debug printf()s to trace events
+Date: Mon, 25 May 2020 13:28:31 +0200
+Message-Id: <20200525112831.12697-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200525112354.10445-1-f4bug@amsat.org>
-References: <20200525112354.10445-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -85,31 +80,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2020 11:24:04 -0000
+X-List-Received-Date: Mon, 25 May 2020 11:28:42 -0000
 
-To avoid the orphan I/O memory region being added in the /unattached
-QOM container, register the PCI device as its owner.
+Convert DPRINTF() to trace events and remove ifdef'ry.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-RFC: This might break migration
+v2: Order addr/val/size (Mark review)
 ---
- hw/display/vmware_vga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/cg3.c        | 14 ++++----------
+ hw/display/trace-events |  4 ++++
+ 2 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 5c0fc49d9d..2579f6b218 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -1306,7 +1306,7 @@ static void pci_vmsvga_realize(PCIDevice *dev, Error **errp)
-     dev->config[PCI_LATENCY_TIMER] = 0x40;
-     dev->config[PCI_INTERRUPT_LINE] = 0xff;          /* End */
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index f7f1c199ce..7cbe6e56ff 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -35,6 +35,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
  
--    memory_region_init_io(&s->io_bar, NULL, &vmsvga_io_ops, &s->chip,
-+    memory_region_init_io(&s->io_bar, OBJECT(dev), &vmsvga_io_ops, &s->chip,
-                           "vmsvga-io", 0x10);
-     memory_region_set_flush_coalesced(&s->io_bar);
-     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io_bar);
+ /* Change to 1 to enable debugging */
+ #define DEBUG_CG3 0
+@@ -63,12 +64,6 @@
+ #define CG3_VRAM_SIZE 0x100000
+ #define CG3_VRAM_OFFSET 0x800000
+ 
+-#define DPRINTF(fmt, ...) do { \
+-    if (DEBUG_CG3) { \
+-        printf("CG3: " fmt , ## __VA_ARGS__); \
+-    } \
+-} while (0)
+-
+ #define TYPE_CG3 "cgthree"
+ #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
+ 
+@@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
+         val = 0;
+         break;
+     }
+-    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
++    trace_cg3_read(addr, val, size);
++
+     return val;
+ }
+ 
+@@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
+     uint8_t regval;
+     int i;
+ 
+-    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
+-            val, addr, size);
+-
++    trace_cg3_write(addr, val, size);
+     switch (addr) {
+     case CG3_REG_BT458_ADDR:
+         s->dac_index = val;
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index e6e22bef88..47b2b168ae 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
+ artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
+ artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
+ artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
++
++# cg3.c
++cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
++cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
 -- 
 2.21.3
 
