@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdVcT-0001gw-9X
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 05:11:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53212)
+	id 1jdW4x-00079T-A9
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 05:40:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1jdVcR-0001f5-MH; Tue, 26 May 2020 05:11:31 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:52118
- helo=mail.default.ilande.uk0.bigv.io)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1jdVcQ-0007l4-CK; Tue, 26 May 2020 05:11:31 -0400
-Received: from host109-156-104-24.range109-156.btcentralplus.com
- ([109.156.104.24] helo=[192.168.1.65])
- by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1jdVcI-0007Ya-AV; Tue, 26 May 2020 10:11:28 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20200525112831.12697-1-f4bug@amsat.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
- OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-Message-ID: <a137385c-1032-ac12-8c29-064531280354@ilande.co.uk>
-Date: Tue, 26 May 2020 10:11:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdW4v-00078o-LU; Tue, 26 May 2020 05:40:57 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:37039)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdW4v-0005De-1u; Tue, 26 May 2020 05:40:57 -0400
+Received: by mail-ed1-x542.google.com with SMTP id k8so1027181edq.4;
+ Tue, 26 May 2020 02:40:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uKvxRsw0Ou+rV8yTkVyvX3UcLqAJFgcQKp+hrzqIsVQ=;
+ b=qHGYwu7/nVUbgIGVjdSwI5MT5uSvILN7X5bJLu8YnV3HV98fJo6IBJLVgJTPAw+maS
+ aZNPvG1Sn6VoxmTCt3gVWa6H/QJeByA6zmB+SnkCyeDebnLh2N+pOKYWEAJvamokwNOU
+ fa+WoXZhuKnoZo2vJNaZag4jEp0hy8CNG7gyn9Mu+coLaUawjllqCO1ELCD/0zIuxXSE
+ Z46QAKEFXTSNJbipkhWpKQNmli6BVwjU0zOKphOrMDwfYRbQlSBClzHXH9PSmTl7Mp6S
+ g6yDjIkzLavwdetLjzg+qwohQdeGzLU5UBYTXJEvH7MxwLuEvKO+rwyFGcH0FIGf2qEz
+ ntRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=uKvxRsw0Ou+rV8yTkVyvX3UcLqAJFgcQKp+hrzqIsVQ=;
+ b=Vm30z7lzKjkm/wWoZnxdCkug1YqhB6KG78lHEOrzAJu/flxlx2b8hjC4hxm70WLLpI
+ jQe54Xaa1DFUm0amf8m6z5nmgeRmRN/LjFmYw9nP2/zcCnLOL9PmCItnPhXpryJOd14I
+ CnZ354Ihag2/awOQv7mRpzsZuwei+rWJwmy7NtYiaSUXprw1N9PVQbgJpict7XT8BC/g
+ cqJ+zT7+7QzQKLROXRi//8EaWoe5TNifmZuAiH3liDMoRcFch4zBgUMwenxoZIXNEIb3
+ YdOy6oiFr051rJtqv8mvjfG4OAwRioapg8JxUTzmDHK9X9U79DtWKg+mzdvwBRm6fkKO
+ QmBQ==
+X-Gm-Message-State: AOAM5312Z8QaNHIPvhan7k8SVEehD6GAtA+njBLEM2IB8SeTcPCrSPsg
+ Ikzb6QuuTp/Decz3wKHKgHp2pXzgbEw=
+X-Google-Smtp-Source: ABdhPJy+zNOEP5u6EQ4wk9cwWQS6zrQvA8T8ctOHSN6/RqaCYN/6vJDd31yPHT9xhC9KephPcyFSeg==
+X-Received: by 2002:aa7:dd0a:: with SMTP id i10mr18433744edv.291.1590486054663; 
+ Tue, 26 May 2020 02:40:54 -0700 (PDT)
+Received: from x1w.redhat.com (71.red-88-21-204.staticip.rima-tde.net.
+ [88.21.204.71])
+ by smtp.gmail.com with ESMTPSA id s1sm18337981ejh.81.2020.05.26.02.40.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2020 02:40:53 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v3 0/2] hw/m68k/mcf52xx: Replace hw_error() by qemu_log_mask()
+Date: Tue, 26 May 2020 11:40:50 +0200
+Message-Id: <20200526094052.1723-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200525112831.12697-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 109.156.104.24
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2] hw/display/cg3: Convert debug printf()s to trace events
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.uk0.bigv.io
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_PASS=-0.001,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,85 +81,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 09:11:31 -0000
+X-List-Received-Date: Tue, 26 May 2020 09:40:58 -0000
 
-On 25/05/2020 12:28, Philippe Mathieu-Daudé wrote:
+Since v2: Addressed Thomas review comments:
+- use PRIx16 format for 16-bit values
 
-> Convert DPRINTF() to trace events and remove ifdef'ry.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> v2: Order addr/val/size (Mark review)
-> ---
->  hw/display/cg3.c        | 14 ++++----------
->  hw/display/trace-events |  4 ++++
->  2 files changed, 8 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-> index f7f1c199ce..7cbe6e56ff 100644
-> --- a/hw/display/cg3.c
-> +++ b/hw/display/cg3.c
-> @@ -35,6 +35,7 @@
->  #include "hw/qdev-properties.h"
->  #include "qemu/log.h"
->  #include "qemu/module.h"
-> +#include "trace.h"
->  
->  /* Change to 1 to enable debugging */
->  #define DEBUG_CG3 0
-> @@ -63,12 +64,6 @@
->  #define CG3_VRAM_SIZE 0x100000
->  #define CG3_VRAM_OFFSET 0x800000
->  
-> -#define DPRINTF(fmt, ...) do { \
-> -    if (DEBUG_CG3) { \
-> -        printf("CG3: " fmt , ## __VA_ARGS__); \
-> -    } \
-> -} while (0)
-> -
->  #define TYPE_CG3 "cgthree"
->  #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
->  
-> @@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
->          val = 0;
->          break;
->      }
-> -    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
-> +    trace_cg3_read(addr, val, size);
-> +
->      return val;
->  }
->  
-> @@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
->      uint8_t regval;
->      int i;
->  
-> -    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
-> -            val, addr, size);
-> -
-> +    trace_cg3_write(addr, val, size);
->      switch (addr) {
->      case CG3_REG_BT458_ADDR:
->          s->dac_index = val;
-> diff --git a/hw/display/trace-events b/hw/display/trace-events
-> index e6e22bef88..47b2b168ae 100644
-> --- a/hw/display/trace-events
-> +++ b/hw/display/trace-events
-> @@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
->  artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
->  artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
->  artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
-> +
-> +# cg3.c
-> +cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
-> +cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
+Since v1: Addressed Thomas review comments:
+- return instead of break + call update()
+- fixed format strings
+- add more LOG_UNIMP
 
-Thanks for managing to turn this around so quickly Philippe!
+Supersedes: <20200518094904.24226-1-f4bug@amsat.org>
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Philippe Mathieu-Daudé (2):
+  hw/m68k/mcf5206: Reduce m5206_mbar_read/write() offset arg to 16-bit
+  hw/m68k/mcf52xx: Replace hw_error() by qemu_log_mask()
 
+ hw/m68k/mcf5206.c  | 14 +++++++++-----
+ hw/m68k/mcf5208.c  | 16 ++++++++++------
+ hw/m68k/mcf_intc.c | 10 +++++++---
+ hw/net/mcf_fec.c   |  9 ++++++---
+ 4 files changed, 32 insertions(+), 17 deletions(-)
 
-ATB,
+-- 
+2.21.3
 
-Mark.
 
