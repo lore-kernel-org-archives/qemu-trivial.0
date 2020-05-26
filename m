@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdcmw-0008Ph-IE
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:50:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50110)
+	id 1jdcoA-00029T-Lh
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:52:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcmu-0008Mx-Fs; Tue, 26 May 2020 12:50:48 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:41494)
+ id 1jdco8-00024J-M6; Tue, 26 May 2020 12:52:04 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:46973)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcmt-0008P8-8X; Tue, 26 May 2020 12:50:48 -0400
-Received: by mail-io1-xd42.google.com with SMTP id o5so22742175iow.8;
- Tue, 26 May 2020 09:50:45 -0700 (PDT)
+ id 1jdco6-0000m8-Ov; Tue, 26 May 2020 12:52:03 -0400
+Received: by mail-io1-xd41.google.com with SMTP id j8so22723257iog.13;
+ Tue, 26 May 2020 09:52:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=4xhxIuW5e7MTY17vJexhuzlogi09eAgFg3lNXL700Oc=;
- b=uygr6lw7iZ5vnE1WD+PojkgydN/vd4U/GOGrtaI/dHHgBelfq8fXQLEZBUGrcMUsNx
- s2rQZCjSKAqSfcK26TuA2103yaVQA3WDL0sguGB5GmNSdahiErUrIshSroZpJjAta886
- Wss6/sg8albn11yBHg+T+F6OPJO3A/Ks743qAmYjkoKN8ovFpnCnqZcczJLQ8Bk7jyaA
- gjlkDQg/DjFGTOlQj6LfX6zQ8nXnTkGhDLdAftnT57/lMh27od5U7QDjJ0S9ao1+O02a
- lB6WeJLRnWOGG1xIvPLT6PgkU3fTrzwHHzNiXPOvz3cC0Yfs8c/koWijyChHWvWFFps2
- Ek7A==
+ bh=wogobYdgA7pdWEUiow9y+BbE4SrJpOahPEjnfmC9ss0=;
+ b=jheA7ja9yxFsNrUeovavT8+NzngQH/J+PJ4kuh0t/fwMH3SYb7nkLNyudNtVldLNNG
+ eoXiq06CtQJ3uxyzvV7NyH0N4JoqlcLnh6vWkJrTiNrLgNheyz7gP8R0shM89QDbtw8p
+ JZUjizEJni0l4y29EpjSrqEqzOExoJi634eEtOXK+9pty7OITgNGpiG5Njr+V5wn3Ry5
+ LUxNVYgx6wx+92PYH/nfCF7INVc2/A2sARyBanCkXDNPf/YA4jgAjgZwE5TLFKt6dvr/
+ 2dGc0B+aWkRbqkeM0yEc0gIlX8XwbYOB1Vb1c/7zNZNbnr7PEu7PeYRjx5CfWXvGsEvI
+ K1Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=4xhxIuW5e7MTY17vJexhuzlogi09eAgFg3lNXL700Oc=;
- b=P1LIyHs0mAzCei121O86kF/tnPI9SkJLpxCrz6ryvr5kaLeBswOHtD0WsWVCg+7O3T
- mYq47dOYj6iEV+6imzwLXygiEaPJrk29YS2nnzIKVuOYhIWgmscjnjAZW267+M7lS74s
- ubnPbreOmURq7h1wcVHaZOGLKoigCtTODtvMyHGGfCHNa8MJY5e9f/YSK8WB0t0MPo2Z
- 4HtWTcZhyoJW37QkNjGQRvm8xKFWuoq3XPoQ2lYbimZdBof4vjtT1CfP2m8er6sQ2/78
- W+bsqPpb7bnBepIF6j//FAekNqGSZXst39vn4K9TeJkyu/sFH//XuxjwrpwzYHdDHidb
- 5zhw==
-X-Gm-Message-State: AOAM5306fIBOM7ql0S9QRIAzs0p455DlVoGiuKupvYpbb5w450XmUrAm
- Ec4Ne8A8LKgFq6ZKvQLBiT6+HE1PmreQTSlhGtc=
-X-Google-Smtp-Source: ABdhPJyncKVcuCtrgK6WZ/NuVPhU4G8aCrFJYvhnLbiixk+Wq6nzRO7BdNF5PR7woGqtLp76fSqzuNp+iDnaojUPX0U=
-X-Received: by 2002:a5d:9d03:: with SMTP id j3mr4516138ioj.176.1590511845417; 
- Tue, 26 May 2020 09:50:45 -0700 (PDT)
+ bh=wogobYdgA7pdWEUiow9y+BbE4SrJpOahPEjnfmC9ss0=;
+ b=CQdEyb2BmSYeFi0aoF4/Zpd0L2m/DQJwV0ZDHw3j9x7XWiC9AppndmTJGB8OrVjsjh
+ e+105rY3Shc2Uuy+Om6vijqDX0+W/RHmgpb/MJMUy8on51uuodI0F5zj5WlBUXlWAkSf
+ 7iqNNeTlTvzEpezg+ojij8y0cN5oUnnLmpzb2SY8RsByEaw060Or+p070vArXcwxZKuU
+ pbj+0pYf2mvCFseimZXbfFhB3jbtnF+yw+qbcoZriRre0YlLj8qxRFKUyKO0gBfF6XGU
+ 3/VZXSCZ3Toloisz+IQASvG9TXnnTTYvNicLxiLZoWJEoolw0eUIS6WBe94Hfbcgt8Y0
+ qD4A==
+X-Gm-Message-State: AOAM5339RCJddAREkCFztbzLr1AMND+aOpG9zlyXKjERQHwAJv+YhFeH
+ IVBJq89Yvcvw1BFY7ka9nsY9jR2JVHpKkGiBB6w=
+X-Google-Smtp-Source: ABdhPJwG6bLuMi57LOOhtuFM7Cd+Y8FlPRKN7hczqoZy/Qg+bhnVHVNLF7Y1r4RMiuDna+oMVFZgZrmdvQFR8GxrUj4=
+X-Received: by 2002:a02:7009:: with SMTP id f9mr1962296jac.8.1590511920816;
+ Tue, 26 May 2020 09:52:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-3-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-3-f4bug@amsat.org>
+ <20200526062252.19852-5-f4bug@amsat.org>
+In-Reply-To: <20200526062252.19852-5-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:41:46 -0700
-Message-ID: <CAKmqyKMhGXK+NPH16neMJc+8q7tGACHzTpMqT1CgpXT6x9fR0A@mail.gmail.com>
-Subject: Re: [PATCH 02/14] hw/display/cg3: Convert debug printf()s to trace
- events
+Date: Tue, 26 May 2020 09:42:56 -0700
+Message-ID: <CAKmqyKOc=Zs0VA-_BKDsrG__RXtgcM7JR8cwsNsd8RNr9VKVgA@mail.gmail.com>
+Subject: Re: [PATCH 04/14] hw/display/cirrus_vga: Use qemu_log_mask(UNIMP)
+ instead of debug printf
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Gerd Hoffmann <kraxel@redhat.com>, 
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
@@ -57,8 +57,8 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -81,12 +81,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 16:50:49 -0000
+X-List-Received-Date: Tue, 26 May 2020 16:52:05 -0000
 
-On Mon, May 25, 2020 at 11:23 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Mon, May 25, 2020 at 11:25 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg> wrote:
 >
-> Convert DPRINTF() to trace events and remove ifdef'ry.
+> Replace some debug printf() calls by qemu_log_mask(LOG_UNIMP),
+> and add a new one in cirrus_linear_bitblt_read().
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -95,78 +96,58 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/display/cg3.c        | 14 ++++----------
->  hw/display/trace-events |  4 ++++
->  2 files changed, 8 insertions(+), 10 deletions(-)
+>  hw/display/cirrus_vga.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
 >
-> diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-> index f7f1c199ce..7cbe6e56ff 100644
-> --- a/hw/display/cg3.c
-> +++ b/hw/display/cg3.c
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index 33ccdde000..f9f837b850 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
 > @@ -35,6 +35,7 @@
->  #include "hw/qdev-properties.h"
->  #include "qemu/log.h"
+>  #include "qemu/osdep.h"
 >  #include "qemu/module.h"
-> +#include "trace.h"
->
->  /* Change to 1 to enable debugging */
->  #define DEBUG_CG3 0
-> @@ -63,12 +64,6 @@
->  #define CG3_VRAM_SIZE 0x100000
->  #define CG3_VRAM_OFFSET 0x800000
->
-> -#define DPRINTF(fmt, ...) do { \
-> -    if (DEBUG_CG3) { \
-> -        printf("CG3: " fmt , ## __VA_ARGS__); \
-> -    } \
-> -} while (0)
-> -
->  #define TYPE_CG3 "cgthree"
->  #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
->
-> @@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr add=
-r, unsigned size)
->          val =3D 0;
->          break;
->      }
-> -    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
-> +    trace_cg3_read(addr, val, size);
-> +
->      return val;
+>  #include "qemu/units.h"
+> +#include "qemu/log.h"
+>  #include "sysemu/reset.h"
+>  #include "qapi/error.h"
+>  #include "trace.h"
+> @@ -905,9 +906,8 @@ static int cirrus_bitblt_cputovideo(CirrusVGAState * =
+s)
+>  static int cirrus_bitblt_videotocpu(CirrusVGAState * s)
+>  {
+>      /* XXX */
+> -#ifdef DEBUG_BITBLT
+> -    printf("cirrus: bitblt (video to cpu) is not implemented yet\n");
+> -#endif
+> +    qemu_log_mask(LOG_UNIMP,
+> +                  "cirrus: bitblt (video to cpu) is not implemented\n");
+>      return 0;
 >  }
 >
-> @@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, =
-uint64_t val,
->      uint8_t regval;
->      int i;
+> @@ -989,9 +989,8 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
+>          cirrus_blt_mode & (CIRRUS_BLTMODE_MEMSYSSRC |
+>                             CIRRUS_BLTMODE_MEMSYSDEST))
+>         =3D=3D (CIRRUS_BLTMODE_MEMSYSSRC | CIRRUS_BLTMODE_MEMSYSDEST)) {
+> -#ifdef DEBUG_BITBLT
+> -       printf("cirrus: bitblt - memory-to-memory copy is requested\n");
+> -#endif
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "cirrus: bitblt - memory-to-memory copy requested\=
+n");
+>         goto bitblt_ignore;
+>      }
 >
-> -    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
-> -            val, addr, size);
-> -
-> +    trace_cg3_write(addr, val, size);
->      switch (addr) {
->      case CG3_REG_BT458_ADDR:
->          s->dac_index =3D val;
-> diff --git a/hw/display/trace-events b/hw/display/trace-events
-> index e6e22bef88..47b2b168ae 100644
-> --- a/hw/display/trace-events
-> +++ b/hw/display/trace-events
-> @@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, u=
-int64_t val) "%u 0x%"PRIx64
->  artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned =
-int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=3D%ux%=
-u length=3D%ux%u op=3D0x%08x ctlpln=3D0x%08x"
->  artist_block_move(unsigned int start_x, unsigned int start_y, unsigned i=
-nt dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "s=
-ource %ux%u -> dest %ux%u size %ux%u"
->  artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned in=
-t end_x, unsigned int end_y) "%ux%u %ux%u"
+> @@ -2412,6 +2411,9 @@ static uint64_t cirrus_linear_bitblt_read(void *opa=
+que,
+>
+>      /* XXX handle bitblt */
+>      (void)s;
+> +    qemu_log_mask(LOG_UNIMP,
+> +                  "cirrus: linear bitblt is not implemented\n");
 > +
-> +# cg3.c
-> +cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PR=
-Ix32" val:0x%08"PRIx32" size:%u"
-> +cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"=
-PRIx32" val:0x%08"PRIx32" size:%u"
+>      return 0xff;
+>  }
+>
 > --
 > 2.21.3
 >
