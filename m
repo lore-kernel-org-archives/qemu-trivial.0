@@ -1,62 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdc43-0006Zu-D2
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:04:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
+	id 1jdcPo-000085-Q9
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:26:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jdc41-0006Vd-3R; Tue, 26 May 2020 12:04:25 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:33718)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcPm-0008Tn-Us; Tue, 26 May 2020 12:26:54 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:37731)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jdc3y-0005GW-EK; Tue, 26 May 2020 12:04:24 -0400
-Received: by mail-wm1-f67.google.com with SMTP id j198so315105wmj.0;
- Tue, 26 May 2020 09:04:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcPl-0001HP-Mw; Tue, 26 May 2020 12:26:54 -0400
+Received: by mail-io1-xd43.google.com with SMTP id r2so12356192ioo.4;
+ Tue, 26 May 2020 09:26:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=xs1WdF5fP6lxE8eq6v707XjDgHgEkFuq+mQF9FJR/HM=;
+ b=a3HFgQfC2Bs99jop3X0v7/QPt2AxWe71X03l+KQ073uCwMmETMsKdGEdXdKJnbaYaT
+ AiOi5zfnp3knDP3oVhy/MLA7NH+g1LgPfWrvKrYf+VOjcxcEsOI37nIUTqBU8dh31Jct
+ MmvTMMlWDz1GYAD+1bt3I8m+0v/NrXN7QPn38CynHMVic4HBKMAyp53d1zbP7nQc+cNK
+ +95t2aCdBjAGqb2i9KqZTS144z0Doljgzz7nrUZxn5ZioYVJMjAb4F6uAGhLNvPbC8+m
+ BtiRbB+fRynLSUCC16GqVwK0X/WitvwtwIXswNcx+qsnGjfrZ7DqnWXOxn6s1c8okC9v
+ HpwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Oup9OvPZI88PbTh2vNNYQeJPSoFJ13JYSMC/2Zn3D2A=;
- b=D1bnNi78U0zyuaD1DJT402FuCG3lVDTNG+5MrDEbVdPzSixLbqvclV0gRbUY2Xdyuc
- ont0FyUuGXwOaRWSYHySrwuhYTQdh2mUEMEd5KtCG8WVKuTkJC9K+L7+WRNGZrIzEvhY
- Nr/wglgv2+iM5M4vyh5YzwILpCnbXESbfv4w6Q5jxn9e/5CKCYOfSyk0hYb3x/lHDrl2
- Fb3VcUffYD54cGxvbdCTJx39bZ4qrYvbABpQAUHI3HLk+9VjZPeVj1NsbrCL3wcFzMbn
- duvvQK6zPT5lpZLDwXfGOEEqF/caf3pWw2znPPj+3BDNelH8DuCmLeBtuHn+ijV4qqRR
- 8yNQ==
-X-Gm-Message-State: AOAM532rKpYtTY2bHoTv7NlK193xtnL3hlFaH3tVsBZ1cEjX7mUGf+IG
- 1wKRH3UygKSAbsPXow2koDQ=
-X-Google-Smtp-Source: ABdhPJwfC0XTrCqh+pacFLPv1HhD/AFHhQ5ZLofqCK5i9DglRcJRZ97iuYIEmQQEdRYPbOYAZEoBrA==
-X-Received: by 2002:a7b:c046:: with SMTP id u6mr1918554wmc.57.1590509060427;
- Tue, 26 May 2020 09:04:20 -0700 (PDT)
-Received: from thl530 (x590feeb5.dyn.telefonica.de. [89.15.238.181])
- by smtp.gmail.com with ESMTPSA id s7sm261900wrr.60.2020.05.26.09.04.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 09:04:19 -0700 (PDT)
-Date: Tue, 26 May 2020 18:04:16 +0200
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Jason Wang
- <jasowang@redhat.com>
-Subject: Re: [PATCH v3 2/2] hw/m68k/mcf52xx: Replace hw_error() by
- qemu_log_mask()
-Message-ID: <20200526180416.4f151f81@thl530>
-In-Reply-To: <20200526094052.1723-3-f4bug@amsat.org>
-References: <20200526094052.1723-1-f4bug@amsat.org>
- <20200526094052.1723-3-f4bug@amsat.org>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xs1WdF5fP6lxE8eq6v707XjDgHgEkFuq+mQF9FJR/HM=;
+ b=kxpbeHo2drBy+W3nFPR3q3VE7tsMyQxB0zDM367rOL671npn4Bf+0Y70ciddKpRKB1
+ crNDZkHqwWG7qDc/WFqbrc05V2UxZW6U6oj4qB3DIf9JpoxJmb+v88Cu+dTxgVHcWjUY
+ ZTiXhPl2ptVdmmeItcdwbo9gU0I1NOX25aU2BWdIsNaXeUhTZyqZ6FtN69JNmtfBbEFH
+ gB7S0Ezsh+mZ5NZ6t9GidpVwfWtbuN8uVkTk0xmZsCiO9gViB/fzdEMF1JrlAo8qFGvX
+ euBcK5UIdJ1+iei2oNDCcE5w84bHhd2NufRvS1g5BZInlkYHm3cDoDHIStU7dsJWttVk
+ IQsA==
+X-Gm-Message-State: AOAM530o08dxe23YViXu0VdQ/EIW5zfj8UkF5EKL0f78q7oEEAb1HUy4
+ UN/urQQQTAghBNS9/CYkd9xl4CvmBvkp3ju0/FI=
+X-Google-Smtp-Source: ABdhPJwU9HNHY2EYA4fuxyNw09V5EY6lQs8ZqIpczXrOCc1SBb8TLZ3dT5UNRNgZscpNzpOibapzruwdgPp7dbNQvnA=
+X-Received: by 2002:a5d:9d03:: with SMTP id j3mr4422414ioj.176.1590510411634; 
+ Tue, 26 May 2020 09:26:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <20200525034459.28535-1-f4bug@amsat.org>
+ <20200525034459.28535-2-f4bug@amsat.org>
+In-Reply-To: <20200525034459.28535-2-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 26 May 2020 09:17:52 -0700
+Message-ID: <CAKmqyKPtvUKYkdGXSNNhHSc1yW+8-Bm+caAu_ZTrOt0RzFfe9w@mail.gmail.com>
+Subject: Re: [PATCH 1/4] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of
+ debug printf
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.128.67; envelope-from=th.huth@gmail.com;
- helo=mail-wm1-f67.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 12:04:20
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -15
-X-Spam_score: -1.6
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd43.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,86 +78,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 16:04:25 -0000
+X-List-Received-Date: Tue, 26 May 2020 16:26:55 -0000
 
-Am Tue, 26 May 2020 11:40:52 +0200
-schrieb Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>:
-
-> hw_error() calls exit(). This a bit overkill when we can log
-> the accesses as unimplemented or guest error.
->=20
-> When fuzzing the devices, we don't want the whole process to
-> exit. Replace some hw_error() calls by qemu_log_mask().
->=20
+On Sun, May 24, 2020 at 8:46 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> Convert the deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
+>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-[...]
-> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-> index b84c152ce3..108623b4ad 100644
-> --- a/hw/m68k/mcf5208.c
-> +++ b/hw/m68k/mcf5208.c
-> @@ -9,10 +9,10 @@
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
->  #include "qemu/error-report.h"
-> +#include "qemu/log.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> -#include "hw/hw.h"
->  #include "hw/irq.h"
->  #include "hw/m68k/mcf.h"
->  #include "hw/m68k/mcf_fec.h"
-> @@ -111,8 +111,9 @@ static void m5208_timer_write(void *opaque,
-> hwaddr offset, case 4:
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+>  hw/misc/auxbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> index f8e7b97971..06aabf20c5 100644
+> --- a/hw/misc/auxbus.c
+> +++ b/hw/misc/auxbus.c
+> @@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uin=
+t32_t address,
+>          }
 >          break;
 >      default:
-> -        hw_error("m5208_timer_write: Bad offset 0x%x\n",
-> (int)offset);
-> -        break;
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" PRIx64
-> "\n",
-
-That likely should be HWADDR_PRIX, too? ... could be fixed up while
-applying the patch.
-
-With that:
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
-
-
-> +                      __func__, offset);
-> +        return;
+> -        DPRINTF("Not implemented!\n");
+> +        qemu_log_mask(LOG_UNIMP, "AUX cmd=3D%u not implemented\n", cmd);
+>          return AUX_NACK;
 >      }
->      m5208_timer_update(s);
->  }
-> @@ -136,7 +137,8 @@ static uint64_t m5208_timer_read(void *opaque,
-> hwaddr addr, case 4:
->          return ptimer_get_count(s->timer);
->      default:
-> -        hw_error("m5208_timer_read: Bad offset 0x%x\n", (int)addr);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
-> HWADDR_PRIX "\n",
-> +                      __func__, addr);
->          return 0;
->      }
->  }
-> @@ -164,7 +166,8 @@ static uint64_t m5208_sys_read(void *opaque,
-> hwaddr addr, return 0;
-> =20
->      default:
-> -        hw_error("m5208_sys_read: Bad offset 0x%x\n", (int)addr);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
-> HWADDR_PRIX "\n",
-> +                      __func__, addr);
->          return 0;
->      }
->  }
-> @@ -172,7 +175,8 @@ static uint64_t m5208_sys_read(void *opaque,
-> hwaddr addr, static void m5208_sys_write(void *opaque, hwaddr addr,
->                              uint64_t value, unsigned size)
->  {
-> -    hw_error("m5208_sys_write: Bad offset 0x%x\n", (int)addr);
-> +    qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX
-> "\n",
-> +                  __func__, addr);
->  }
+>
+> --
+> 2.21.3
+>
+>
 
