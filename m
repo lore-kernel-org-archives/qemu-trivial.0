@@ -1,61 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdefu-0008EC-Hc
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 14:51:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37606)
+	id 1jdgNQ-0002cC-QX
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 16:40:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdefs-0008DT-QB
- for qemu-trivial@nongnu.org; Tue, 26 May 2020 14:51:40 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:50462
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdefr-0007mA-0g
- for qemu-trivial@nongnu.org; Tue, 26 May 2020 14:51:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590519097;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=2ydOfTw8OsfWw1siHbzG2BFpL5Hls3rDtFu6wUE+ywc=;
- b=cuIP0sHwhGP0+hsP331ybjUtaBoTbpGY40OxP6BhOLT19ozZ9hD7Gj4jyRROA9GXeU9MWs
- 6J05yzXPIbJNW7jhHu2WfZS4Zes/Ho7xSLVTUos8LAHmCdqa82mf38xekKaZFERSS7dtiH
- oxrNiYa9DFwzCLXfdKeQQKXJo2OtMew=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-dp4oLmvCPo-6h9q0dtucpA-1; Tue, 26 May 2020 14:51:35 -0400
-X-MC-Unique: dp4oLmvCPo-6h9q0dtucpA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 99039460;
- Tue, 26 May 2020 18:51:34 +0000 (UTC)
-Received: from blue.redhat.com (ovpn-112-88.phx2.redhat.com [10.3.112.88])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3AD0B5D9E5;
- Tue, 26 May 2020 18:51:34 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>,
- Stafford Horne <shorne@gmail.com>
-Subject: [PATCH] or1k: Fix compilation hiccup
-Date: Tue, 26 May 2020 13:51:32 -0500
-Message-Id: <20200526185132.1652355-1-eblake@redhat.com>
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jdgNN-0002bV-MS; Tue, 26 May 2020 16:40:41 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:44161)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jdgNM-0005Bd-4E; Tue, 26 May 2020 16:40:41 -0400
+Received: by mail-ej1-x644.google.com with SMTP id x20so25247920ejb.11;
+ Tue, 26 May 2020 13:40:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=wIVSx8nuFV0C/ZwGcJt2YLvwEDbKDhleCMhZsPUzjfY=;
+ b=dIFiVkvlrBsqp6mDY8MwaicIuBSA27u9IHzh1o9+6k3GFKAfeM+lh1AiXZjutbIjhj
+ Ro8sGQG9hyfl6Ld08Z1/tpg6NmJF6aeNsqfW8FVfqsTzzG7ro1mtDVKeoNbUjIRivsci
+ q4ctuK3GNOeGxf36ZKTpP8gb5z/r1Oz016AzHwDYueV7StkOdTipy4A6AU8OI9jS1cl3
+ R+5iZsvHOUMBZnoCPBYDbhgZM+9HN5CCz8L8KrtHcx+ed24Tp3OlqLDQouVOoBFw3yHm
+ E66978vRpOldaC6GZtf9gbGO/jSxJYKtucKxPLJlOEkjAOT4NK4kR/5XJDr3p+tcqagL
+ q1Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=wIVSx8nuFV0C/ZwGcJt2YLvwEDbKDhleCMhZsPUzjfY=;
+ b=J3CS+vhqxqxYijSG4xr3tiBE7exRYSKmMfGfvGOo4jV3hm3SSvl7EC+xyAnEZdORDs
+ arA+xu0aIb66xaSuA70lKkJQpVYfCEmhwEp7nj9FheGOM1d7jyixG45DbfViK8D+Kphe
+ 5uJuVjC/6x1sxZwMPC0BSWq+9xKUIGSw3oLTA+KSveowFAgDuaDElzaFiz+C/2sPZXuk
+ HwQDMQEZtx015vIiRYXPkr5QbnLJCgVUn7xyLqsm62oLVuUl87AvDHAupvQRg2JDuFit
+ fZrDK/xdubJRAzcJcsHs9mzpO+AEgJm709MFPvnvM0KpdDm3NEAESwq3TALBwIBxGNer
+ Mdeg==
+X-Gm-Message-State: AOAM531DsV8UNJLPiv8aCkzoQNG8OnuRAEWOAixx/K9jTT9YvoB5PIVF
+ Td1DNarCwBwlopAjvq5Z+JRUkNIippSmQ0IXcJh4/rPy+MA=
+X-Google-Smtp-Source: ABdhPJz0FjjNinoGNLHCdNwJtvEC58jETArNtwLJswN3j7CR5NUwxr1waY8c4R/bP/3jID8BCai6bOweCxZVNCSMtGA=
+X-Received: by 2002:a17:906:3481:: with SMTP id
+ g1mr2541665ejb.530.1590525638120; 
+ Tue, 26 May 2020 13:40:38 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 01:14:47
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+From: David CARLIER <devnexen@gmail.com>
+Date: Tue, 26 May 2020 21:40:27 +0100
+Message-ID: <CA+XhMqwH6btbKFD0Ei47e+QHN2eBPG5H2PTS92MAje2Tij4Y=A@mail.gmail.com>
+Subject: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for MacOS
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=devnexen@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,41 +65,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 18:51:41 -0000
+X-List-Received-Date: Tue, 26 May 2020 20:40:42 -0000
 
-On my Fedora 32 machine, gcc 10.1.1 at -O2 (the default for a bare
-'./configure') has a false-positive complaint:
+From b24a6702beb2a4e2a9c1c03b69c6d1dd07d4cf08 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Tue, 26 May 2020 21:35:27 +0100
+Subject: [PATCH] util/oslib: current process full path resolution on MacOS
 
-  CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-/home/eblake/qemu/hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
-/home/eblake/qemu/hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-   87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
-      |                                  ~~~~~~~~^~~
+Using existing libproc to fill the path.
 
-Initializing both pointers of cpu_irqs[] to NULL is sufficient to shut
-up the compiler, even though they are definitely assigned in
-openrisc_sim_init() prior to the inlined call to
-openrisc_sim_ompic_init() containing the line in question.
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: David Carlier <devnexen@gmail.com>
 ---
- hw/openrisc/openrisc_sim.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ util/oslib-posix.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index d08ce6181199..95011a8015b4 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
-     const char *kernel_filename = machine->kernel_filename;
-     OpenRISCCPU *cpu = NULL;
-     MemoryRegion *ram;
--    qemu_irq *cpu_irqs[2];
-+    qemu_irq *cpu_irqs[2] = {};
-     qemu_irq serial_irq;
-     int n;
-     unsigned int smp_cpus = machine->smp.cpus;
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 062236a1ab..96f0405ee6 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -55,6 +55,10 @@
+ #include <sys/sysctl.h>
+ #endif
+
++#ifdef __APPLE__
++#include <libproc.h>
++#endif
++
+ #include "qemu/mmap-alloc.h"
+
+ #ifdef CONFIG_DEBUG_STACK_USAGE
+@@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
+             p = buf;
+         }
+     }
++#elif defined(__APPLE__)
++    {
++        uint32_t len;
++        len = proc_pidpath(getpid(), buf, sizeof(buf) - 1);
++        if (len > 0) {
++            buf[len] = 0;
++            p = buf;
++        }
++    }
+ #endif
+     /* If we don't have any way of figuring out the actual executable
+        location then try argv[0].  */
 -- 
 2.26.2
-
 
