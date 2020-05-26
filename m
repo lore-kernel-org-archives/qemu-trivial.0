@@ -1,70 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdcXl-0007lI-Fy
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:35:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33172)
+	id 1jdcj1-0002jc-6P
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:46:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdcXh-0007k3-M2; Tue, 26 May 2020 12:35:05 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:46670)
+ id 1jdciz-0002g7-HZ; Tue, 26 May 2020 12:46:45 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42054)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdcXf-0005vA-RS; Tue, 26 May 2020 12:35:04 -0400
-Received: by mail-ed1-x543.google.com with SMTP id m21so1652153eds.13;
- Tue, 26 May 2020 09:35:02 -0700 (PDT)
+ id 1jdciy-0005hv-M7; Tue, 26 May 2020 12:46:45 -0400
+Received: by mail-ed1-x544.google.com with SMTP id k19so18231787edv.9;
+ Tue, 26 May 2020 09:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CwD+5/sJjrX1n3x46dk05WNppGiKdaTTjs5dbKTiJVc=;
- b=lnfyh9n6eqnG/z0US/t7N/P9z2EQVGQfTP6tqD0uCwDD4OkAN2hy4ZLTBrUN4xTowO
- tZx7976Deo69SBr/m4NjeSG/7wFyf0v9jAPJDcYRes1MLgCqkiNtE47Sa2BXitOgcRQd
- ez3z6j8umiXknGIKbmeedlj2ZXcNDY0BDwn281ScyAYyJ4gEtdrzE2HpaJ2GP+IKFwd2
- 4+K1VoiYy97G11In6WJF6DAtSIBG4kj7OoJUQRRLQSM/rUTvy/HPo/IQnUiNCFrMP9f7
- aD3E/AMjYafQnrnP3s4G1oXTmw6TLUnTfmo+Aof7P/+VGdvA4dM/gUqVJaVOaEIt18zx
- TC0g==
+ bh=5dc+q+V0lscs6cXnzEkH5M+IYF1zKZogiJC+dn3t85w=;
+ b=GFDaXguavyRv45sHK3kwXd6gWaCQ24YuhbUn0za1/qb9MdXDAEUe3kHLhVhU1GV/9Q
+ HziPyj9k3iYI7QaeXfrz7hUCr+QmpyoGx3wGFSbPkQrr/wi34nOHTHNryEEHLh/ZwUV+
+ +F6e6Lms+OhsKoB3YqVC0tSk+Y0T/XeFWnZImwuckdr13zS9ipXioc6BmVQBdipCJhIa
+ XuSmjjiR/PJDDBKw2Q9bUaEU3xlgv9kPsS4WpGtgPGErCoylF777dan7uWMDuXjixivO
+ MC3BGcc5L0lTQJNJ1Y5+04g0o0mlauN8obCQO7Wj3HN5cStgy6FjKb3CE1oo3lYIpuJ5
+ tfHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=CwD+5/sJjrX1n3x46dk05WNppGiKdaTTjs5dbKTiJVc=;
- b=NaPdtrpwIhB8BVNdUdmjaB/I1Lp0a9Sjt/BwFyXSySKUTN/kRH6ow8IHaFKCs3iW8x
- NXIHdeelKo+LlKsvrHPAXrG1fDD0D/jKbQWm9TOqC94OoYqeC86noQJFVHejUtVBNLme
- WKNIzil24R9g6BeNgV1kTDD8FKl9EB1ydgK5A8qrZ5wwcj/ZI2cffYUTr5/USE1e6WPX
- XCFKVEbnNBZAS+WBJkN41Vuc9InN284m8LsRxgtzk2bjleFCqiVy0QWMQkhnfVEwagoz
- 2YtAH2FGCiNTTjlZW51c+ecmmKuqKPnJ/IlDDLITGirb0MGQas80CwpeA82hMiREyupX
- T0oQ==
-X-Gm-Message-State: AOAM533gJ8AyCdrQuI4uA3xk8TWvQ46nyNMEZfPKZOYW09at6fPphO6Y
- wg/xl5OGUbu3UOrCTNJ8PV0lnjTMKJ8=
-X-Google-Smtp-Source: ABdhPJzNl8p2EGcucUZK8OPqtAO7QmDhJbWwx645fAHiMoCwWbxqLr6eS+qgNPp4C4xliChqP2/opA==
-X-Received: by 2002:a05:6402:2035:: with SMTP id
- ay21mr19837725edb.279.1590510901278; 
- Tue, 26 May 2020 09:35:01 -0700 (PDT)
+ bh=5dc+q+V0lscs6cXnzEkH5M+IYF1zKZogiJC+dn3t85w=;
+ b=S3Ct8PbcMvYza44zY18gEk+pHeAdj1xBTWtSuXfDRdCF+iKB9/cZ+GnUCK0WqOiRGp
+ MWvkWACch7rXfNXBsNPNRwngzbdMGoam0apntouFpku3Xyl4brgAg7zqEOziOm27pfuK
+ X3oZAnu0AfR/E44BmeKXE+VfcxAy+PrckPiCXgAD4TsfC62CjnWadNE91a7O0qnOgr9n
+ hWjbcHqpB3ESDgsJ3lAdeycegBHmmdTWU/Dj83Oek9JeDZLJF8a+7NijDHwvBpC/9/Mk
+ xw3LKayvexFvBjOcE1ltDs0PV7/+8S64W24/qj+yHmQrB8o9QIlUNQ96LTYKS1uW6Rj6
+ ZJXg==
+X-Gm-Message-State: AOAM530LlGQaJle6WxuHLULFsbyzqjb7BGJz/19x37lzZ4e6MoPPHvQv
+ qTkekufV0M22FDz6xD7D0GhgBjCWqAg=
+X-Google-Smtp-Source: ABdhPJykay5hDSLsoJOR17vA7AzJ//AEN7BDDFIRx/mc6nuLklAmvNQynP9/gxQlByzVdDPkXU508g==
+X-Received: by 2002:a05:6402:c95:: with SMTP id
+ cm21mr20907665edb.81.1590511602757; 
+ Tue, 26 May 2020 09:46:42 -0700 (PDT)
 Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id nj6sm302535ejb.99.2020.05.26.09.34.59
+ by smtp.gmail.com with ESMTPSA id dr19sm370475ejc.122.2020.05.26.09.46.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2020 09:35:00 -0700 (PDT)
+ Tue, 26 May 2020 09:46:42 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v3 2/2] hw/m68k/mcf52xx: Replace hw_error() by
- qemu_log_mask()
-To: Thomas Huth <huth@tuxfamily.org>
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200526094052.1723-1-f4bug@amsat.org>
- <20200526094052.1723-3-f4bug@amsat.org> <20200526180416.4f151f81@thl530>
+Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
+ in macros
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
+References: <20200510203457.10546-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d2171c12-ae7f-30aa-2361-30b8e58906c5@amsat.org>
-Date: Tue, 26 May 2020 18:34:59 +0200
+Message-ID: <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
+Date: Tue, 26 May 2020 18:46:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200526180416.4f151f81@thl530>
+In-Reply-To: <20200510203457.10546-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x543.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -87,91 +85,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 16:35:07 -0000
+X-List-Received-Date: Tue, 26 May 2020 16:46:46 -0000
 
-On 5/26/20 6:04 PM, Thomas Huth wrote:
-> Am Tue, 26 May 2020 11:40:52 +0200
-> schrieb Philippe Mathieu-Daudé <f4bug@amsat.org>:
-> 
->> hw_error() calls exit(). This a bit overkill when we can log
->> the accesses as unimplemented or guest error.
->>
->> When fuzzing the devices, we don't want the whole process to
->> exit. Replace some hw_error() calls by qemu_log_mask().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> [...]
->> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
->> index b84c152ce3..108623b4ad 100644
->> --- a/hw/m68k/mcf5208.c
->> +++ b/hw/m68k/mcf5208.c
->> @@ -9,10 +9,10 @@
->>  #include "qemu/osdep.h"
->>  #include "qemu/units.h"
->>  #include "qemu/error-report.h"
->> +#include "qemu/log.h"
->>  #include "qapi/error.h"
->>  #include "qemu-common.h"
->>  #include "cpu.h"
->> -#include "hw/hw.h"
->>  #include "hw/irq.h"
->>  #include "hw/m68k/mcf.h"
->>  #include "hw/m68k/mcf_fec.h"
->> @@ -111,8 +111,9 @@ static void m5208_timer_write(void *opaque,
->> hwaddr offset, case 4:
->>          break;
->>      default:
->> -        hw_error("m5208_timer_write: Bad offset 0x%x\n",
->> (int)offset);
->> -        break;
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" PRIx64
->> "\n",
-> 
-> That likely should be HWADDR_PRIX, too? ... could be fixed up while
-> applying the patch.
+ping?
 
-Oops yes. Thanks a lot!
-
+On 5/10/20 10:34 PM, Philippe Mathieu-Daudé wrote:
+> One can name a local variable holding a value as 'v', but it
+> currently clashes with the registerfields macros. To save others
+> to debug the same mistake, prefix the macro's local variables
+> with an underscore.
 > 
-> With that:
-> Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)
 > 
-> 
->> +                      __func__, offset);
->> +        return;
->>      }
->>      m5208_timer_update(s);
->>  }
->> @@ -136,7 +137,8 @@ static uint64_t m5208_timer_read(void *opaque,
->> hwaddr addr, case 4:
->>          return ptimer_get_count(s->timer);
->>      default:
->> -        hw_error("m5208_timer_read: Bad offset 0x%x\n", (int)addr);
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
->> HWADDR_PRIX "\n",
->> +                      __func__, addr);
->>          return 0;
->>      }
->>  }
->> @@ -164,7 +166,8 @@ static uint64_t m5208_sys_read(void *opaque,
->> hwaddr addr, return 0;
->>  
->>      default:
->> -        hw_error("m5208_sys_read: Bad offset 0x%x\n", (int)addr);
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
->> HWADDR_PRIX "\n",
->> +                      __func__, addr);
->>          return 0;
->>      }
->>  }
->> @@ -172,7 +175,8 @@ static uint64_t m5208_sys_read(void *opaque,
->> hwaddr addr, static void m5208_sys_write(void *opaque, hwaddr addr,
->>                              uint64_t value, unsigned size)
->>  {
->> -    hw_error("m5208_sys_write: Bad offset 0x%x\n", (int)addr);
->> +    qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX
->> "\n",
->> +                  __func__, addr);
->>  }
+> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+> index 0407edb7ec..93fa4a84c2 100644
+> --- a/include/hw/registerfields.h
+> +++ b/include/hw/registerfields.h
+> @@ -66,35 +66,35 @@
+>  #define FIELD_DP8(storage, reg, field, val) ({                            \
+>      struct {                                                              \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+> -    } v = { .v = val };                                                   \
+> -    uint8_t d;                                                            \
+> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+> -    d; })
+> +    } _v = { .v = val };                                                  \
+> +    uint8_t _d;                                                           \
+> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+> +    _d; })
+>  #define FIELD_DP16(storage, reg, field, val) ({                           \
+>      struct {                                                              \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+> -    } v = { .v = val };                                                   \
+> -    uint16_t d;                                                           \
+> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+> -    d; })
+> +    } _v = { .v = val };                                                  \
+> +    uint16_t _d;                                                          \
+> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+> +    _d; })
+>  #define FIELD_DP32(storage, reg, field, val) ({                           \
+>      struct {                                                              \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+> -    } v = { .v = val };                                                   \
+> -    uint32_t d;                                                           \
+> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+> -    d; })
+> +    } _v = { .v = val };                                                  \
+> +    uint32_t _d;                                                          \
+> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+> +    _d; })
+>  #define FIELD_DP64(storage, reg, field, val) ({                           \
+>      struct {                                                              \
+>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+> -    } v = { .v = val };                                                   \
+> -    uint64_t d;                                                           \
+> -    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+> -    d; })
+> +    } _v = { .v = val };                                                  \
+> +    uint64_t _d;                                                          \
+> +    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+> +    _d; })
+>  
+>  /* Deposit a field to array of registers.  */
+>  #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
 > 
 
