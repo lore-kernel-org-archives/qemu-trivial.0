@@ -1,61 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdi1F-0006pY-HI
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 18:25:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44900)
+	id 1jdiWu-00048i-42
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 18:58:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jdi1D-0006oE-N2; Tue, 26 May 2020 18:25:55 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:46751)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdiWs-00048H-I3; Tue, 26 May 2020 18:58:38 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:39622)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jdi1C-0000ao-Tn; Tue, 26 May 2020 18:25:55 -0400
-Received: by mail-ed1-x541.google.com with SMTP id m21so2468820eds.13;
- Tue, 26 May 2020 15:25:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdiWr-0007va-FU; Tue, 26 May 2020 18:58:38 -0400
+Received: by mail-il1-x141.google.com with SMTP id c20so22229100ilk.6;
+ Tue, 26 May 2020 15:58:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=Mc/EJD8EAO84GIr8ydCzqGkSxsnybC6HXt0SYil3CIk=;
- b=r28w/dloRmYKvuo7X7edP9LLC4EWvRjq22X38MuXw4ZlydMT/V6vtwtXi7sqH6NF5c
- GEROFJNcdiTxLpZ3MloBETCyNmS9BB4nBWCc2sw2d2BbG7HT3+UK5yVInf2QAjWK/SC3
- kHDcgssGYAcyfBdCAaH+n5KxMUuEblWBbzUC0SjdrqlneMYn7gjAXagwwamQxhEjgU7V
- 07rxwKENZxVsLwhBRQsS4+CdcxDdU5lxrH2Ec15vl8XFCEn088HIFkXq2u1BraSeyxhP
- XVgRp95JcE18gxVSGsnM6jGDZ+IeMvpPPh1S8CiCypm979WQNZ7PwprHi+wwWjB85K+L
- 8nxg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=eDfxy0++XROwpEsafEQ9yfqaJc8TkJ0xi+rc7yTuJLo=;
+ b=anjqwDtDdlRz/KgDNa0Mmsh4sAu9vzA/STOEvb9wdNbnMTVdUDu1SMQAdlWXivobsK
+ HlJS0yUaar7sjP7xdkUCBDJBrvOeW03+zfgmWDxV7g2GywsSiXzKwvk4sCo0p0PjrrIu
+ lJgYTQpRzKXrOzn2meGnzo9wPrv/OUTG3sbSwoqdxjZZwQDnqC0R6bJWS9vg3w0uPqeU
+ bhsxWIaxyEIZ+/QQaA1Y4rgjI1OprvOJS/Wx0e/wtYb9JFekQfX8VMmvmbp2Oa3nWJdr
+ FUph9enlDE9Sm+EI3pqE9haPULvZpUcEiI/BIMmolip6LRSdHSvyaDi85otor0GSlAdy
+ DoXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=Mc/EJD8EAO84GIr8ydCzqGkSxsnybC6HXt0SYil3CIk=;
- b=IWwS1ILAyQ228Vid70BjeyWBxn3Fizqv/RKI/lnlkz+Zd4z9TTJ953KJTgA+A/LbSd
- ykf7arHyz0vjfLRv0ZBJdWdQwMOUVg+/8I0JNZSuupOx+C1IxJ1mlbM5elT5dN0a+onM
- bCvu4th6/FJUoIcAHvTA8dOV2xMgXV8CcA4bVGgKS8IBqmjtUgM5w3JweBvsydU9xfdu
- SPWcIJ32tD90w3hg7BTS/J/kCBwJtHx+grc8Pp1W9WIuMlJqpOT1scq2TmcDo6tGTg3E
- bZys8QG32gu3c2oPQgWaWKfA3XeF/cMg4FDV4pagV2j5+RYptFjqrDxi76IUHcVjwhtO
- CIhg==
-X-Gm-Message-State: AOAM530K7uiRo0skFf0pGM9+ILXQqUS7Jr9li9BYmBzC37XrTGEolyxj
- gXMijGeUrw2DlKrVlMAkhnViv+TAnJWzob2eoUu0pcEL+Ko=
-X-Google-Smtp-Source: ABdhPJy3uBLe5dV1RsFwOAM71Oet7r9/HAE4Ve7qnPoYx5c/P0KVlp/pGnypgcgAtlxOYoy8qc2ebm6BOnJFjJWkjoQ=
-X-Received: by 2002:aa7:c38f:: with SMTP id k15mr22166851edq.7.1590531952654; 
- Tue, 26 May 2020 15:25:52 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=eDfxy0++XROwpEsafEQ9yfqaJc8TkJ0xi+rc7yTuJLo=;
+ b=EukHV0GWacozhQLLqABuKzgeSPZ1MbmtczQ4BCKC4BoDHb/hJINorKePaYnB6r5W2S
+ fo43fCefGmyvMyHOM9S2zcmnknFws4tVwlSKqVfe3+V2QzXhVU7zUeAtn23qsj/mNwNy
+ rmlKhXGB4db4H/NAuSvSbk4+yxtMlGhtgNMpbgNaQ5q2e6esb+GAKwnYXacLmL12oEWP
+ caSoFsKV0fZyVuP7772N6dg1qHJMc7zv+uJxKc9pMY39Ttibdu+F2NbM7bEc4PwEePe/
+ x48Uor2IjrBhjFOdyLyjT+46/gMa6ME7dScXz/scY6hgsk3HF4fNAj6zWUY1DVj6+I/5
+ Q/WA==
+X-Gm-Message-State: AOAM533elAWCuvCT1/A1lAG1UpU3Bf8l1HbMaApv54f77zn1biXBjLGZ
+ cXPYF6yKeNJUk4m0o1/Cmc0bn5dti+HE/3w3/Zj3q5vK
+X-Google-Smtp-Source: ABdhPJzxgmvwx1BLuwTblhJ4FIgiHU9yfrUXNOh62Q4nQH9uYbxeys1W4mGi6SXFmdA/hphCD/wNc1yRGt87amjNUXI=
+X-Received: by 2002:a92:48d1:: with SMTP id j78mr3460637ilg.131.1590533915614; 
+ Tue, 26 May 2020 15:58:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqwH6btbKFD0Ei47e+QHN2eBPG5H2PTS92MAje2Tij4Y=A@mail.gmail.com>
-In-Reply-To: <CA+XhMqwH6btbKFD0Ei47e+QHN2eBPG5H2PTS92MAje2Tij4Y=A@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Tue, 26 May 2020 23:25:41 +0100
-Message-ID: <CA+XhMqwZ_AkyiMKRNTiyi14DDfXybXHSn_=LsjoDzk_nr3K7rA@mail.gmail.com>
-Subject: Re: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for
- MacOS
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com
+References: <20200510203457.10546-1-f4bug@amsat.org>
+ <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
+In-Reply-To: <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 26 May 2020 15:49:36 -0700
+Message-ID: <CAKmqyKOXjNTgUtvwBnm-=fY-i8zX=k23TkoWSM=3WuWAHioXAQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
+ in macros
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Alistair Francis <alistair@alistair23.me>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x541.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,99 +76,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 22:25:56 -0000
+X-List-Received-Date: Tue, 26 May 2020 22:58:38 -0000
 
-From ce857629697e8b6a2149fd3a1e16b7eea26aafca Mon Sep 17 00:00:00 2001
-From: David Carlier <devnexen@gmail.com>
-Date: Tue, 26 May 2020 21:35:27 +0100
-Subject: [PATCH] util/oslib: current process full path resolution on MacOS
-
-Using existing libproc to fill the path.
-
-Signed-off-by: David Carlier <devnexen@gmail.com>
----
- util/oslib-posix.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 062236a1ab..445af2f9be 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -55,6 +55,10 @@
- #include <sys/sysctl.h>
- #endif
-
-+#ifdef __APPLE__
-+#include <libproc.h>
-+#endif
-+
- #include "qemu/mmap-alloc.h"
-
- #ifdef CONFIG_DEBUG_STACK_USAGE
-@@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
-             p = buf;
-         }
-     }
-+#elif defined(__APPLE__)
-+    {
-+        int len;
-+        len = proc_pidpath(getpid(), buf, sizeof(buf) - 1);
-+        if (len > 0) {
-+            buf[len] = 0;
-+            p = buf;
-+        }
-+    }
- #endif
-     /* If we don't have any way of figuring out the actual executable
-        location then try argv[0].  */
--- 
-2.26.2
-
-On Tue, 26 May 2020 at 21:40, David CARLIER <devnexen@gmail.com> wrote:
+On Tue, May 26, 2020 at 9:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
-> From b24a6702beb2a4e2a9c1c03b69c6d1dd07d4cf08 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Tue, 26 May 2020 21:35:27 +0100
-> Subject: [PATCH] util/oslib: current process full path resolution on MacOS
+> ping?
+
+I'll send a PR with this.
+
+Alistair
+
 >
-> Using existing libproc to fill the path.
+> On 5/10/20 10:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > One can name a local variable holding a value as 'v', but it
+> > currently clashes with the registerfields macros. To save others
+> > to debug the same mistake, prefix the macro's local variables
+> > with an underscore.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
+> >  1 file changed, 20 insertions(+), 20 deletions(-)
+> >
+> > diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+> > index 0407edb7ec..93fa4a84c2 100644
+> > --- a/include/hw/registerfields.h
+> > +++ b/include/hw/registerfields.h
+> > @@ -66,35 +66,35 @@
+> >  #define FIELD_DP8(storage, reg, field, val) ({                        =
+    \
+> >      struct {                                                          =
+    \
+> >          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;            =
+    \
+> > -    } v =3D { .v =3D val };                                           =
+        \
+> > -    uint8_t d;                                                        =
+    \
+> > -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,     =
+      \
+> > -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);           =
+    \
+> > -    d; })
+> > +    } _v =3D { .v =3D val };                                          =
+        \
+> > +    uint8_t _d;                                                       =
+    \
+> > +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,    =
+      \
+> > +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);          =
+    \
+> > +    _d; })
+> >  #define FIELD_DP16(storage, reg, field, val) ({                       =
+    \
+> >      struct {                                                          =
+    \
+> >          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;            =
+    \
+> > -    } v =3D { .v =3D val };                                           =
+        \
+> > -    uint16_t d;                                                       =
+    \
+> > -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,     =
+      \
+> > -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);           =
+    \
+> > -    d; })
+> > +    } _v =3D { .v =3D val };                                          =
+        \
+> > +    uint16_t _d;                                                      =
+    \
+> > +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,    =
+      \
+> > +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);          =
+    \
+> > +    _d; })
+> >  #define FIELD_DP32(storage, reg, field, val) ({                       =
+    \
+> >      struct {                                                          =
+    \
+> >          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;            =
+    \
+> > -    } v =3D { .v =3D val };                                           =
+        \
+> > -    uint32_t d;                                                       =
+    \
+> > -    d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,     =
+      \
+> > -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);           =
+    \
+> > -    d; })
+> > +    } _v =3D { .v =3D val };                                          =
+        \
+> > +    uint32_t _d;                                                      =
+    \
+> > +    _d =3D deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,    =
+      \
+> > +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);          =
+    \
+> > +    _d; })
+> >  #define FIELD_DP64(storage, reg, field, val) ({                       =
+    \
+> >      struct {                                                          =
+    \
+> >          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;            =
+    \
+> > -    } v =3D { .v =3D val };                                           =
+        \
+> > -    uint64_t d;                                                       =
+    \
+> > -    d =3D deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,     =
+      \
+> > -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);           =
+    \
+> > -    d; })
+> > +    } _v =3D { .v =3D val };                                          =
+        \
+> > +    uint64_t _d;                                                      =
+    \
+> > +    _d =3D deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,    =
+      \
+> > +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);          =
+    \
+> > +    _d; })
+> >
+> >  /* Deposit a field to array of registers.  */
+> >  #define ARRAY_FIELD_DP32(regs, reg, field, val)                       =
+    \
+> >
 >
-> Signed-off-by: David Carlier <devnexen@gmail.com>
-> ---
->  util/oslib-posix.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
->
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index 062236a1ab..96f0405ee6 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -55,6 +55,10 @@
->  #include <sys/sysctl.h>
->  #endif
->
-> +#ifdef __APPLE__
-> +#include <libproc.h>
-> +#endif
-> +
->  #include "qemu/mmap-alloc.h"
->
->  #ifdef CONFIG_DEBUG_STACK_USAGE
-> @@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
->              p = buf;
->          }
->      }
-> +#elif defined(__APPLE__)
-> +    {
-> +        uint32_t len;
-> +        len = proc_pidpath(getpid(), buf, sizeof(buf) - 1);
-> +        if (len > 0) {
-> +            buf[len] = 0;
-> +            p = buf;
-> +        }
-> +    }
->  #endif
->      /* If we don't have any way of figuring out the actual executable
->         location then try argv[0].  */
-> --
-> 2.26.2
 
