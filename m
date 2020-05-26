@@ -1,74 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jddWB-0001o9-2t
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 13:37:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45530)
+	id 1jdefu-0008EC-Hc
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 14:51:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jddW8-0001j9-Vn; Tue, 26 May 2020 13:37:33 -0400
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:36680)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jddW7-0005ll-4D; Tue, 26 May 2020 13:37:31 -0400
-Received: by mail-il1-x141.google.com with SMTP id 17so21344269ilj.3;
- Tue, 26 May 2020 10:37:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=7dIEbDvjdPSgiC8KM+8KpNw2JYaYxr6R5A6LSlImonY=;
- b=jQgFVP3zBEvCFOi/6th7JnPuipZCfzltmxZv+SAGJbagvzWUylgKGdXJTbxZ/wqNIR
- 8cr9l+hXsuY3MfkvyUYE2FDHVv3Q++ZKvgJN12jdv6C11BrFVr8RuJIDJHhjKWpFlWCF
- WMiEC/9BdIics6oxDXdqi8E0eVKzqCrtmbnhAti77ZtRsYE4/M0+S/09dw474ZJKbHFi
- 9FG1QRJwvkjk8fCT7C1Yi2EFxnGD4V5TRfY/JR88nqPkikv90yNpkhvXgf0RGrpsWA0R
- hiWYEYaGOKd3+tFwn62+jvI55mmfQo+HE0MxDmAK3XsYJuGFIFHXxNzb/XBeggEgzxex
- ndkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=7dIEbDvjdPSgiC8KM+8KpNw2JYaYxr6R5A6LSlImonY=;
- b=UE4WoQ+LhGxQtUFXVwXHAQreVzRAKJZjCPke00y1jxpypceB8Mf4cMqSEIZ8q95iCS
- VT8ZvSqBrtocBWLXV5bkqzZJhpYZZ2xnX18lfkDiXIi2fto2/kiPycKFurTuu0LhCGKn
- 3LyVNpQKfgCK4uoyd6Si4wZjC8yTTv92bg9FSFQ16itZ+hZXetLqOz00Bc0KgzwnLRhM
- GS5nspLPiJw8ju3DwZ/LJo8fcavkvgVbOHu+OQr5ZblghVE8igCzD3STGIIbNe7nkFy4
- aR5RPfYkB9esspp3xDJUSvRhHQ2J8oX6T9/i7Biz7QvSWp3w6gH7cNf/v5ErddFwAuGx
- PDTA==
-X-Gm-Message-State: AOAM533l0ZZO5ohZftrRntKIDgoKjrq+mBRTK+G4h1mEy6kMW8KcX4Uq
- mBO7OAI76YucMStKaluufn97Y6MQNH04jGYHil4=
-X-Google-Smtp-Source: ABdhPJzhC0PdugwaudBVQOwlxOW61qX8+Ql10z8rH3hctJ4A1vgLodp3f51KA/0/+6NrK4kpdNc3MNv2rc1Si2r2Dwg=
-X-Received: by 2002:a92:d087:: with SMTP id h7mr2336786ilh.227.1590514649527; 
- Tue, 26 May 2020 10:37:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdefs-0008DT-QB
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 14:51:40 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:50462
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdefr-0007mA-0g
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 14:51:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590519097;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2ydOfTw8OsfWw1siHbzG2BFpL5Hls3rDtFu6wUE+ywc=;
+ b=cuIP0sHwhGP0+hsP331ybjUtaBoTbpGY40OxP6BhOLT19ozZ9hD7Gj4jyRROA9GXeU9MWs
+ 6J05yzXPIbJNW7jhHu2WfZS4Zes/Ho7xSLVTUos8LAHmCdqa82mf38xekKaZFERSS7dtiH
+ oxrNiYa9DFwzCLXfdKeQQKXJo2OtMew=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-432-dp4oLmvCPo-6h9q0dtucpA-1; Tue, 26 May 2020 14:51:35 -0400
+X-MC-Unique: dp4oLmvCPo-6h9q0dtucpA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 99039460;
+ Tue, 26 May 2020 18:51:34 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-112-88.phx2.redhat.com [10.3.112.88])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3AD0B5D9E5;
+ Tue, 26 May 2020 18:51:34 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>,
+ Stafford Horne <shorne@gmail.com>
+Subject: [PATCH] or1k: Fix compilation hiccup
+Date: Tue, 26 May 2020 13:51:32 -0500
+Message-Id: <20200526185132.1652355-1-eblake@redhat.com>
 MIME-Version: 1.0
-References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-15-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-15-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 10:28:29 -0700
-Message-ID: <CAKmqyKM9r2QXppfiEW4RVrXNbYzhx-Ds2CsODKVUk0Sxei0JwA@mail.gmail.com>
-Subject: Re: [PATCH 14/14] hw/display/pxa2xx_lcd: Replace printf() call by
- qemu_log_mask()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, 
- qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 01:14:47
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,94 +68,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 17:37:33 -0000
+X-List-Received-Date: Tue, 26 May 2020 18:51:41 -0000
 
-On Mon, May 25, 2020 at 11:36 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> Replace printf() calls by qemu_log_mask(UNIMP), which is
-> disabled by default. This avoid flooding the terminal when
-> fuzzing the device.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On my Fedora 32 machine, gcc 10.1.1 at -O2 (the default for a bare
+'./configure') has a false-positive complaint:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+  CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
+/home/eblake/qemu/hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
+/home/eblake/qemu/hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
+      |                                  ~~~~~~~~^~~
 
-Alistair
+Initializing both pointers of cpu_irqs[] to NULL is sufficient to shut
+up the compiler, even though they are definitely assigned in
+openrisc_sim_init() prior to the inlined call to
+openrisc_sim_ompic_init() containing the line in question.
 
-> ---
->  hw/display/pxa2xx_lcd.c | 26 ++++++++++++++------------
->  1 file changed, 14 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-> index d5f2e82a4e..ff90104b80 100644
-> --- a/hw/display/pxa2xx_lcd.c
-> +++ b/hw/display/pxa2xx_lcd.c
-> @@ -426,9 +426,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr o=
-ffset,
->          if ((s->control[0] & LCCR0_ENB) && !(value & LCCR0_ENB))
->              s->status[0] |=3D LCSR0_QD;
->
-> -        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT))
-> -            printf("%s: internal frame buffer unsupported\n", __func__);
-> -
-> +        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "%s: internal frame buffer unsupported\n", __f=
-unc__);
-> +        }
->          if ((s->control[3] & LCCR3_API) &&
->                  (value & LCCR0_ENB) && !(value & LCCR0_LCDT))
->              s->status[0] |=3D LCSR0_ABC;
-> @@ -462,9 +463,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr of=
-fset,
->          break;
->
->      case OVL1C1:
-> -        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN))
-> -            printf("%s: Overlay 1 not supported\n", __func__);
-> -
-> +        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
-> +            qemu_log_mask(LOG_UNIMP, "%s: Overlay 1 not supported\n", __=
-func__);
-> +        }
->          s->ovl1c[0] =3D value & 0x80ffffff;
->          s->dma_ch[1].up =3D (value & OVLC1_EN) || (s->control[0] & LCCR0=
-_SDS);
->          break;
-> @@ -474,9 +475,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr of=
-fset,
->          break;
->
->      case OVL2C1:
-> -        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN))
-> -            printf("%s: Overlay 2 not supported\n", __func__);
-> -
-> +        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
-> +            qemu_log_mask(LOG_UNIMP, "%s: Overlay 2 not supported\n", __=
-func__);
-> +        }
->          s->ovl2c[0] =3D value & 0x80ffffff;
->          s->dma_ch[2].up =3D !!(value & OVLC1_EN);
->          s->dma_ch[3].up =3D !!(value & OVLC1_EN);
-> @@ -488,9 +489,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr o=
-ffset,
->          break;
->
->      case CCR:
-> -        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN))
-> -            printf("%s: Hardware cursor unimplemented\n", __func__);
-> -
-> +        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN)) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "%s: Hardware cursor unimplemented\n", __func_=
-_);
-> +        }
->          s->ccr =3D value & 0x81ffffe7;
->          s->dma_ch[5].up =3D !!(value & CCR_CEN);
->          break;
-> --
-> 2.21.3
->
->
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ hw/openrisc/openrisc_sim.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
+index d08ce6181199..95011a8015b4 100644
+--- a/hw/openrisc/openrisc_sim.c
++++ b/hw/openrisc/openrisc_sim.c
+@@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
+     const char *kernel_filename = machine->kernel_filename;
+     OpenRISCCPU *cpu = NULL;
+     MemoryRegion *ram;
+-    qemu_irq *cpu_irqs[2];
++    qemu_irq *cpu_irqs[2] = {};
+     qemu_irq serial_irq;
+     int n;
+     unsigned int smp_cpus = machine->smp.cpus;
+-- 
+2.26.2
+
 
