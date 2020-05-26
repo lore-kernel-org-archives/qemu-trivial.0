@@ -1,72 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdUY2-0005fj-Qu
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 04:02:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45790)
+	id 1jdUl7-00012h-Fq
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 04:16:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdUY1-0005dz-De
- for qemu-trivial@nongnu.org; Tue, 26 May 2020 04:02:53 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48638
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdUY0-00043r-Jc
- for qemu-trivial@nongnu.org; Tue, 26 May 2020 04:02:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590480171;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XRKd3HVkwMFDo9h1+ozzoJxrtyzcJF6y9QBACpjVzYk=;
- b=berQ5q3LZeNkoe67yOnJijuq0MUz17wPWds7DjTPPauVm6Uq30nvoNylqbbqOLIxKmgmhj
- X1iwfXj/oQQ6uIFBQYOJ0l1UAR5EfIFi7w3gzteNnVeUFc1hsMAYzWEQ6jjEPT08ARK1fz
- NRX6W9bKFhxHA21SazMSKqbCQwX1+ro=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-64-4gsj2E1NPTOxfS86RZNLSA-1; Tue, 26 May 2020 04:02:47 -0400
-X-MC-Unique: 4gsj2E1NPTOxfS86RZNLSA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EAAE9107ACCD;
- Tue, 26 May 2020 08:02:45 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
- [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9F72B610AB;
- Tue, 26 May 2020 08:02:45 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 80EF217444; Tue, 26 May 2020 10:02:44 +0200 (CEST)
-Date: Tue, 26 May 2020 10:02:44 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-trivial@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/14] hw/display: Omnibus cleanups
-Message-ID: <20200526080244.cq7gqhriyr6aeke2@sirius.home.kraxel.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdUl6-00012M-Bo; Tue, 26 May 2020 04:16:24 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37362)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdUl5-0006kf-LM; Tue, 26 May 2020 04:16:24 -0400
+Received: by mail-wm1-x343.google.com with SMTP id f5so2331379wmh.2;
+ Tue, 26 May 2020 01:16:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Xtv3pfI08ph+Vnmgl5CRTzpt6lk1dLDI5NDSsSeV5NE=;
+ b=XuyX8DWNsDZzoxOWgZP2RYH/wao6LBYcz3c+h9E1RlN0+O0pbtm2ZgyEPpB4HFrSZl
+ Vzk9MWgufj/PgHh4bxiYnlvGKfMqBQ5Ps0gyIKNdkGQlfKdMmNy2BL1cZcfPvpMbvYeQ
+ mQiK12iPqCWPNWg3+0KZqyWyt7dI6j4dEmRCDo3OO68/Rb39HqdnktXngS7aXd1Im4md
+ 6PkBZZLPU9+G8qMArSJbSIEEgb8qM93Ruzrqg9adbbxe/IrUZ5G33+x6OMyWHBTL1uC2
+ ZKHEgA/PTBOBzQfgqpF5pvajUhRq2R0APL36U1rneQ8GJzAFPjMKL9AEPFehz/L3qyOn
+ iTdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Xtv3pfI08ph+Vnmgl5CRTzpt6lk1dLDI5NDSsSeV5NE=;
+ b=Z5NCXVjPvYJ6cx5hcKDzMGWnQf0SXNSg9K9b2YFIOogXhsBMte/IkP9IbcyEVgeewK
+ A0S79l1SSZFACkJeBlsB8V02MnYQAoXPC9QMxCRN7DutEy/NUWmrC0Sw1QBon1B/+S8T
+ A40m83WJtp9jUJl9eZZfkhDbs8aUzf1yujfi61SmmTiHiUgimSkoofVR142iyf5xWtrL
+ 1Nmtc11RdAvQR6rmAuLT2BtLgZ+4b4C/DxZ6476Y2saakad/kVDXpo98Y3BPRje/zJkW
+ kgdpCzF6aWfwk8rGeFMroiZ8UznqsbBHJtz3DCUeaqNzqEIVBci1VzDMQWAtTQl3nFVV
+ 6TRQ==
+X-Gm-Message-State: AOAM530u7GGOCD92/S/qMCmMQkmyEj+LDH6ZdJeZaifBfSd3Nul+vDyx
+ g1+Wkf0ZIviyvotzLrIzEAw=
+X-Google-Smtp-Source: ABdhPJxFIzWUGLU+DjwiXREVvpqVyDfTwQ2HTwdQKxBbh9zXAyDl3DXP4Psk7OsNwFjlEY4/EJR5ow==
+X-Received: by 2002:a05:600c:297:: with SMTP id 23mr305757wmk.12.1590480981152; 
+ Tue, 26 May 2020 01:16:21 -0700 (PDT)
+Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
+ [88.21.204.71])
+ by smtp.gmail.com with ESMTPSA id b185sm170016wmd.3.2020.05.26.01.16.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 May 2020 01:16:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 11/14] hw/display/vmware_vga: Let the PCI device own its
+ I/O MemoryRegion
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Andrzej Zaborowski <balrogg@gmail.com>
 References: <20200526062252.19852-1-f4bug@amsat.org>
+ <20200526062252.19852-12-f4bug@amsat.org>
+ <20200526080123.ul5r4abphqfi7lkq@sirius.home.kraxel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4a6478f2-6b70-40df-093f-e81d2437bfa7@amsat.org>
+Date: Tue, 26 May 2020 10:16:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200526062252.19852-1-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: <20200526080123.ul5r4abphqfi7lkq@sirius.home.kraxel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 01:19:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,16 +90,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 08:02:54 -0000
+X-List-Received-Date: Tue, 26 May 2020 08:16:24 -0000
 
-On Tue, May 26, 2020 at 08:22:38AM +0200, Philippe Mathieu-Daudé wrote:
-> Hi Gerd, for your convenience I joined all the hw/display/
-> patches I sent recently altogether in a series.
+On 5/26/20 10:01 AM, Gerd Hoffmann wrote:
+> On Tue, May 26, 2020 at 08:22:49AM +0200, Philippe Mathieu-DaudÃƒÆ’Ã‚Â© wrote:
+>> To avoid the orphan I/O memory region being added in the /unattached
+>> QOM container, register the PCI device as its owner.
+>>
+>> Signed-off-by: Philippe Mathieu-DaudÃƒÆ’Ã‚Â© <f4bug@amsat.org>
+>> ---
+>> RFC: This might break migration
+> 
+> --verbose please.  This doesn't touch the live migration data stream?
 
-Nice service.  I was about to collect them from my inbox after sending
-out the audio pull req ...
+Oops, this is an I/O region... I was confused by this warning form Peter:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg681970.html
 
-thanks,
-  Gerd
-
+But it is restricted to RAM regions, so this patch is harmless.
 
