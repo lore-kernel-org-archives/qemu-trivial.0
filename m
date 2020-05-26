@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdbzC-0000fI-0Y
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 11:59:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51628)
+	id 1jdc43-0006Zu-D2
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:04:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jdbz9-0000cW-Jx; Tue, 26 May 2020 11:59:23 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:50476)
+ id 1jdc41-0006Vd-3R; Tue, 26 May 2020 12:04:25 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:33718)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jdbz7-000473-4D; Tue, 26 May 2020 11:59:23 -0400
-Received: by mail-wm1-f68.google.com with SMTP id v19so65631wmj.0;
- Tue, 26 May 2020 08:59:20 -0700 (PDT)
+ id 1jdc3y-0005GW-EK; Tue, 26 May 2020 12:04:24 -0400
+Received: by mail-wm1-f67.google.com with SMTP id j198so315105wmj.0;
+ Tue, 26 May 2020 09:04:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=aejmtGAVwrEf4TFhu6yPwg4dq99qmOFZ2tjTMfJwwB4=;
- b=cn09GDdwTtX5I1lZNTbR6QBVEflFCfjz47gN7i7CGw3qtaho1wxEoiV9xbLHE/QSmj
- LKhU0c5LvrlLMQDKCuVc04B/y3Hrapz3WL3mSXJUqUY91THgDgrhEE+h3QT/VeFsN4LX
- 5NjBu9/Xh9f+1q79AyduDF96hv960jl9rKhugD6bGiH+xD0kDNx/QtKBdRPYGxEWrvpz
- t5XXMuJQlGQPpTUA8Ums8eVc9zt4KngrsYhTZvF6JCj25tHtklIFUZtLAMpQM4O/iGJa
- 6ezlUQm1yeU5fr6SqKDhOS2CA2GN2QQ3ElP2zZKlmthI23Pt6/n2rGKVHwWX7MOE2P3h
- +iSg==
-X-Gm-Message-State: AOAM532Q1Ji31TPULhoiwBo668M2TCCZstJBkotyWkSYo7Fg7CDs0gcp
- N1z3HU6wDsIMXl5xUW8Sr8I=
-X-Google-Smtp-Source: ABdhPJySorQQU/qBa8tB5jIgkUjxHe2oNBvTHdWHAP6xu/59Kxca55joaQ34s+gI4U5j/LGflOJwGg==
-X-Received: by 2002:a1c:bc0a:: with SMTP id m10mr1929893wmf.173.1590508758988; 
- Tue, 26 May 2020 08:59:18 -0700 (PDT)
+ bh=Oup9OvPZI88PbTh2vNNYQeJPSoFJ13JYSMC/2Zn3D2A=;
+ b=D1bnNi78U0zyuaD1DJT402FuCG3lVDTNG+5MrDEbVdPzSixLbqvclV0gRbUY2Xdyuc
+ ont0FyUuGXwOaRWSYHySrwuhYTQdh2mUEMEd5KtCG8WVKuTkJC9K+L7+WRNGZrIzEvhY
+ Nr/wglgv2+iM5M4vyh5YzwILpCnbXESbfv4w6Q5jxn9e/5CKCYOfSyk0hYb3x/lHDrl2
+ Fb3VcUffYD54cGxvbdCTJx39bZ4qrYvbABpQAUHI3HLk+9VjZPeVj1NsbrCL3wcFzMbn
+ duvvQK6zPT5lpZLDwXfGOEEqF/caf3pWw2znPPj+3BDNelH8DuCmLeBtuHn+ijV4qqRR
+ 8yNQ==
+X-Gm-Message-State: AOAM532rKpYtTY2bHoTv7NlK193xtnL3hlFaH3tVsBZ1cEjX7mUGf+IG
+ 1wKRH3UygKSAbsPXow2koDQ=
+X-Google-Smtp-Source: ABdhPJwfC0XTrCqh+pacFLPv1HhD/AFHhQ5ZLofqCK5i9DglRcJRZ97iuYIEmQQEdRYPbOYAZEoBrA==
+X-Received: by 2002:a7b:c046:: with SMTP id u6mr1918554wmc.57.1590509060427;
+ Tue, 26 May 2020 09:04:20 -0700 (PDT)
 Received: from thl530 (x590feeb5.dyn.telefonica.de. [89.15.238.181])
- by smtp.gmail.com with ESMTPSA id z12sm296194wrg.9.2020.05.26.08.59.17
+ by smtp.gmail.com with ESMTPSA id s7sm261900wrr.60.2020.05.26.09.04.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 08:59:18 -0700 (PDT)
-Date: Tue, 26 May 2020 17:59:14 +0200
+ Tue, 26 May 2020 09:04:19 -0700 (PDT)
+Date: Tue, 26 May 2020 18:04:16 +0200
 From: Thomas Huth <huth@tuxfamily.org>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Jason Wang
  <jasowang@redhat.com>
-Subject: Re: [PATCH v3 1/2] hw/m68k/mcf5206: Reduce m5206_mbar_read/write()
- offset arg to 16-bit
-Message-ID: <20200526175914.7e3ed350@thl530>
-In-Reply-To: <20200526094052.1723-2-f4bug@amsat.org>
+Subject: Re: [PATCH v3 2/2] hw/m68k/mcf52xx: Replace hw_error() by
+ qemu_log_mask()
+Message-ID: <20200526180416.4f151f81@thl530>
+In-Reply-To: <20200526094052.1723-3-f4bug@amsat.org>
 References: <20200526094052.1723-1-f4bug@amsat.org>
- <20200526094052.1723-2-f4bug@amsat.org>
+ <20200526094052.1723-3-f4bug@amsat.org>
 X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.128.68; envelope-from=th.huth@gmail.com;
- helo=mail-wm1-f68.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 11:59:19
+Received-SPF: pass client-ip=209.85.128.67; envelope-from=th.huth@gmail.com;
+ helo=mail-wm1-f67.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 12:04:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -15
 X-Spam_score: -1.6
@@ -70,60 +70,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 15:59:24 -0000
+X-List-Received-Date: Tue, 26 May 2020 16:04:25 -0000
 
-Am Tue, 26 May 2020 11:40:51 +0200
+Am Tue, 26 May 2020 11:40:52 +0200
 schrieb Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>:
 
-> All calls to m5206_mbar_read/m5206_mbar_write are used with
-> 'offset =3D hwaddr & 0x3ff', so we are sure the offset fits
-> in 16-bit.
+> hw_error() calls exit(). This a bit overkill when we can log
+> the accesses as unimplemented or guest error.
 >=20
-> Suggested-by: Thomas Huth <thuth@redhat.com>
+> When fuzzing the devices, we don't want the whole process to
+> exit. Replace some hw_error() calls by qemu_log_mask().
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> v3: Use PRIx16
-> ---
->  hw/m68k/mcf5206.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-> index b155dd8170..187291e1f6 100644
-> --- a/hw/m68k/mcf5206.c
-> +++ b/hw/m68k/mcf5206.c
-> @@ -273,7 +273,7 @@ static void m5206_mbar_reset(m5206_mbar_state *s)
->  }
-> =20
->  static uint64_t m5206_mbar_read(m5206_mbar_state *s,
-> -                                uint64_t offset, unsigned size)
-> +                                uint16_t offset, unsigned size)
->  {
->      if (offset >=3D 0x100 && offset < 0x120) {
->          return m5206_timer_read(s->timer[0], offset - 0x100);
-> @@ -306,11 +306,11 @@ static uint64_t
-> m5206_mbar_read(m5206_mbar_state *s, case 0x170: return s->uivr[0];
->      case 0x1b0: return s->uivr[1];
->      }
-> -    hw_error("Bad MBAR read offset 0x%x", (int)offset);
-> +    hw_error("Bad MBAR read offset 0x%"PRIx16, offset);
->      return 0;
->  }
-> =20
-> -static void m5206_mbar_write(m5206_mbar_state *s, uint32_t offset,
-> +static void m5206_mbar_write(m5206_mbar_state *s, uint16_t offset,
->                               uint64_t value, unsigned size)
->  {
->      if (offset >=3D 0x100 && offset < 0x120) {
-> @@ -360,7 +360,7 @@ static void m5206_mbar_write(m5206_mbar_state *s,
-> uint32_t offset, s->uivr[1] =3D value;
+[...]
+> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+> index b84c152ce3..108623b4ad 100644
+> --- a/hw/m68k/mcf5208.c
+> +++ b/hw/m68k/mcf5208.c
+> @@ -9,10 +9,10 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/units.h"
+>  #include "qemu/error-report.h"
+> +#include "qemu/log.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/m68k/mcf.h"
+>  #include "hw/m68k/mcf_fec.h"
+> @@ -111,8 +111,9 @@ static void m5208_timer_write(void *opaque,
+> hwaddr offset, case 4:
 >          break;
 >      default:
-> -        hw_error("Bad MBAR write offset 0x%x", (int)offset);
-> +        hw_error("Bad MBAR write offset 0x%"PRIx16, offset);
->          break;
->      }
->  }
+> -        hw_error("m5208_timer_write: Bad offset 0x%x\n",
+> (int)offset);
+> -        break;
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" PRIx64
+> "\n",
 
+That likely should be HWADDR_PRIX, too? ... could be fixed up while
+applying the patch.
+
+With that:
 Reviewed-by: Thomas Huth <huth@tuxfamily.org>
 
+
+> +                      __func__, offset);
+> +        return;
+>      }
+>      m5208_timer_update(s);
+>  }
+> @@ -136,7 +137,8 @@ static uint64_t m5208_timer_read(void *opaque,
+> hwaddr addr, case 4:
+>          return ptimer_get_count(s->timer);
+>      default:
+> -        hw_error("m5208_timer_read: Bad offset 0x%x\n", (int)addr);
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
+> HWADDR_PRIX "\n",
+> +                      __func__, addr);
+>          return 0;
+>      }
+>  }
+> @@ -164,7 +166,8 @@ static uint64_t m5208_sys_read(void *opaque,
+> hwaddr addr, return 0;
+> =20
+>      default:
+> -        hw_error("m5208_sys_read: Bad offset 0x%x\n", (int)addr);
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"
+> HWADDR_PRIX "\n",
+> +                      __func__, addr);
+>          return 0;
+>      }
+>  }
+> @@ -172,7 +175,8 @@ static uint64_t m5208_sys_read(void *opaque,
+> hwaddr addr, static void m5208_sys_write(void *opaque, hwaddr addr,
+>                              uint64_t value, unsigned size)
+>  {
+> -    hw_error("m5208_sys_write: Bad offset 0x%x\n", (int)addr);
+> +    qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX
+> "\n",
+> +                  __func__, addr);
+>  }
 
