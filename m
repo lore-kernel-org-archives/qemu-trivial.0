@@ -1,90 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdWEI-0005am-KP
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 05:50:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57342)
+	id 1jdX7m-0007Jz-J7
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 06:47:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdWEH-0005ad-Rv; Tue, 26 May 2020 05:50:37 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:38974)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdWEG-0006uA-VV; Tue, 26 May 2020 05:50:37 -0400
-Received: by mail-ej1-x641.google.com with SMTP id nr22so6758327ejb.6;
- Tue, 26 May 2020 02:50:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=osMxfOAZGK1ldmxSaFEoNdUdGLmkh5WsFbCrvMUrxC4=;
- b=fehhkiyJArNikKnmQ5xTRpPC9x4XgbYzN6jOkJ4GUpDBbdhjGUfF3P8vKfb5/7zruk
- qtkIlFRNs6d8AMWgROD8cxTIy2Neilsw7jRkhzp3wYgFswVe8XVUDD/CQk3M00lauwVc
- iQqrIz7eQJrlGSPXc4pL6FKJRu+ANrbVsw4Ap8fYvqcfWzomH2KezA8EwC5qIDpELYK1
- rmzgFzk97U/Tdsr4Ngz9SoDg804d1LRsEbNNI8JP5rPsy+7jrnn0ZHIA/t8bwNUG7DYD
- df5n8t5lXzTKrGtt8MPL5RV0xSMRAUhLdN8M3IpKEuYVPIkjcV0z7e5Ku+QNkWFjXhKN
- FtEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=osMxfOAZGK1ldmxSaFEoNdUdGLmkh5WsFbCrvMUrxC4=;
- b=QJMNtM78R+yPj97UV7v91xJAXjF6JECiF1nefNyd9eGqm+za2s5DOEJVM91gpJKPJr
- rDKJV75nQRso3FpKTMJWd1TDwP/TF1/Qd0ojdZCw3zUcJCijLM9TBLXwAfIXhqFYLRz4
- 6FrM9jHceWqdKPfPlj9D2caN6VhTFIHdfVk58vkLRjCdSHF5wXfe1VxbwRWtv1OOgV4H
- 9utvTwZvgF3oQ8N6saKz/7DC58tK5aMb63lqxDf/1kDTwzLU3mwBPLitZq8wFW++XynO
- lrCL33JtRHhVbL9uaR+5S/AKHAdw6eycOiL35/P2TSE+4udzq+qLUm8v2T1awmRUQGq3
- wvZQ==
-X-Gm-Message-State: AOAM533zj0y4aInY8wo7mTjfJBEd7taStEBsjV+vG2D92g1gLcf2ZcwA
- ji7HmGdL3JSv+eP7MMmXe7c=
-X-Google-Smtp-Source: ABdhPJzRfTvPBDJnvghPTEoH41/+dd2eXxAdjfTcG4SI6WZKZK6Tc/t5qCxulI0F1ZkE1JJ88oYLGQ==
-X-Received: by 2002:a17:906:a44f:: with SMTP id
- cb15mr344938ejb.219.1590486635086; 
- Tue, 26 May 2020 02:50:35 -0700 (PDT)
-Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id m27sm17741869eji.45.2020.05.26.02.50.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2020 02:50:34 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/7] hw/sparc/leon3: Few fixes and disable HelenOS test
-To: Fred Konrad <konrad@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-devel@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Jiri Gaisler <jiri@gaisler.se>,
- Richard Henderson <rth@twiddle.net>
-References: <20200331105048.27989-1-f4bug@amsat.org>
- <81737d76-06c6-4c83-1287-b0d14db4ce2f@amsat.org>
- <989bf2f5-0e23-f9c3-e9e1-0bd8c03f3231@adacore.com>
- <1b7a4c63-5a31-6efe-d807-7092e3ee0ffb@amsat.org>
- <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
- <23588fda-b95b-45a9-b788-e846d26a3bc3@amsat.org>
- <7f673b61-7565-f79a-0ec6-043c44d1df77@amsat.org>
- <08b73f34-4cab-1133-e5e5-5b1e9fc7b5d0@adacore.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <344c9260-e448-feea-3b37-7860dd09cd8a@amsat.org>
-Date: Tue, 26 May 2020 11:50:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdX7l-0007GS-BL
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 06:47:57 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51508
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdX7k-0002Co-Jn
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 06:47:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590490075;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9ElR8/TiWTLU4MenHCo/KuQT+CrmA8r6BBjyiu48rJs=;
+ b=SCFN2GvzDjhCH9VDdhJNDAr1DC+7g/EYd1mE/+ZTZmAt9+/xhl7QXHrmY+h31EUcmR0o8T
+ 0DdTmgJydI5UT6kpVG9xKrdEvdZkY7OSvgxcZX2/PwBq8oXuKfcWXN0TDJPmZruO/7FWjP
+ MIWdUkwt22ykaDQvyNIu8M0mp+Zd5gQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-372-isFpXgsrP2287zNLfysvtg-1; Tue, 26 May 2020 06:47:52 -0400
+X-MC-Unique: isFpXgsrP2287zNLfysvtg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 986AF19057A6;
+ Tue, 26 May 2020 10:47:50 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
+ [10.36.113.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2376B60C47;
+ Tue, 26 May 2020 10:47:50 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 3810F16E2C; Tue, 26 May 2020 12:47:48 +0200 (CEST)
+Date: Tue, 26 May 2020 12:47:48 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-devel@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
+Subject: Re: [PATCH 11/14] hw/display/vmware_vga: Let the PCI device own its
+ I/O MemoryRegion
+Message-ID: <20200526104748.wayie5aovk5omz3t@sirius.home.kraxel.org>
+References: <20200526062252.19852-1-f4bug@amsat.org>
+ <20200526062252.19852-12-f4bug@amsat.org>
+ <20200526080123.ul5r4abphqfi7lkq@sirius.home.kraxel.org>
+ <4a6478f2-6b70-40df-093f-e81d2437bfa7@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <08b73f34-4cab-1133-e5e5-5b1e9fc7b5d0@adacore.com>
+In-Reply-To: <4a6478f2-6b70-40df-093f-e81d2437bfa7@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 01:19:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,118 +82,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 09:50:38 -0000
+X-List-Received-Date: Tue, 26 May 2020 10:47:57 -0000
 
-On 5/25/20 1:02 PM, Fred Konrad wrote:
-> Sorry Philippe I missed that.
+On Tue, May 26, 2020 at 10:16:19AM +0200, Philippe Mathieu-Daudé wrote:
+> On 5/26/20 10:01 AM, Gerd Hoffmann wrote:
+> > On Tue, May 26, 2020 at 08:22:49AM +0200, Philippe Mathieu-DaudÃƒÆ’Ã‚Â© wrote:
+> >> To avoid the orphan I/O memory region being added in the /unattached
+> >> QOM container, register the PCI device as its owner.
+> >>
+> >> Signed-off-by: Philippe Mathieu-DaudÃƒÆ’Ã‚Â© <f4bug@amsat.org>
+> >> ---
+> >> RFC: This might break migration
+> > 
+> > --verbose please.  This doesn't touch the live migration data stream?
 > 
-> Would be happy to do a PR if needed but:
->   * I never did that.
->   * Looking at https://wiki.qemu.org/Contribute/SubmitAPullRequest, I
-> don't have
->     the signed GPG key either.
-
-Thanks Fred for following this series.
-
-I am not insisting for you to do the pull request, I was waiting for
-Artyom (sparc32) and Mark (sparc64) who usually handle the pull requests.
-
-Artyom seems busy lately.
-
-Mark, do you plan to send a hw/sparc* pull request soon? Do you prefer I
-ask to trivial@ for this series?
-
-FYI there is another sparc32 candidate patch:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg701850.html
-
-Regards,
-
-Phil.
-
+> Oops, this is an I/O region... I was confused by this warning form Peter:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg681970.html
 > 
-> Cheers,
-> Fred
-> 
-> Le 5/23/20 à 7:26 PM, Philippe Mathieu-Daudé a écrit :
->> ping?
->>
->> On 5/11/20 9:03 AM, Philippe Mathieu-Daudé wrote:
->>> On 4/14/20 12:00 PM, KONRAD Frederic wrote:
->>>> Le 4/13/20 à 11:07 PM, Philippe Mathieu-Daudé a écrit :
->>>>> [Cc'ing Peter]
->>>>>
->>>>> On 4/13/20 12:12 PM, KONRAD Frederic wrote:
->>>>>> Le 4/11/20 à 7:30 PM, Philippe Mathieu-Daudé a écrit :
->>>>>>> On 3/31/20 12:50 PM, Philippe Mathieu-Daudé wrote:
->>>>>>>> Philippe Mathieu-Daudé (7):
->>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to AHB PnP
->>>>>>>>        registers
->>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Fix AHB PnP 8-bit accesses
->>>>>>>
->>>>>>> Ping ^^^ for 5.0?
->>>>>>
->>>>>> Hi Philippe,
->>>>>>
->>>>>> You already have my rb tag for those one, and IMHO they should be
->>>>>> good
->>>>>> candidate
->>>>>> for 5.0 (if it's not too late).
->>>>>
->>>>> Yes, thanks for the reviews. I see Mark Cave-Ayland merged this file
->>>>> first, but you are listed as maintainer :) I was hoping you could
->>>>> send a
->>>>> pull request.
->>>>
->>>> Yes that's usually Mark who take the patches, sorry I didn't get it.
->>>
->>> No worries. As there are other sparc64 patches on the list, maybe Mark
->>> will prepare a pull request now.
->>>
->>>>
->>>>>
->>>>> $ scripts/get_maintainer.pl -f hw/misc/grlib_ahb_apb_pnp.c
->>>>> Fabien Chouteau <chouteau@adacore.com> (maintainer:Leon3)
->>>>> KONRAD Frederic <frederic.konrad@adacore.com> (maintainer:Leon3)
->>>>> qemu-devel@nongnu.org (open list:All patches CC here)
->>>>>
->>>>
->>>>> This is a bug but not 'security critical', so it might wait 5.1 and go
->>>>> via qemu-trivial tree.
->>>>
->>>> Well let's do that then if you're ok.
->>>
->>> OK, then ping? :)
->>>
->>>>
->>>> Best Regards,
->>>> Fred
->>>>
->>>>>
->>>>> Regards,
->>>>>
->>>>> Phil.
->>>>>
->>>>>>
->>>>>> Cheers,
->>>>>> Fred
->>>>>>
->>>>>>>
->>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Add trace events on read accesses
->>>>>>>>      hw/timer/grlib_gptimer: Display frequency in decimal
->>>>>>>>      target/sparc/int32_helper: Remove DEBUG_PCALL definition
->>>>>>>>      target/sparc/int32_helper: Extract and use excp_name_str()
->>>>>>>>
->>>>>>>>     hw/misc/grlib_ahb_apb_pnp.c             | 24
->>>>>>>> ++++++++++++++++++++++--
->>>>>>>>     target/sparc/int32_helper.c             | 23
->>>>>>>> ++++++++++++-----------
->>>>>>>>     hw/misc/trace-events                    |  4 ++++
->>>>>>>>     hw/timer/trace-events                   |  2 +-
->>>>>>>>     tests/acceptance/machine_sparc_leon3.py |  4 ++++
->>>>>>>>     5 files changed, 43 insertions(+), 14 deletions(-)
->>>>>>>>
->>>>>>
->>>>
->>>
-> 
+> But it is restricted to RAM regions, so this patch is harmless.
+
+Yes, for ram regions this is a problem, this is why vga has
+global_vmstate.  No problem for io.  Series looks fine then.
+
+take care,
+  Gerd
+
 
