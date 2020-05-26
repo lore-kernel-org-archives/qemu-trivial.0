@@ -1,76 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdcj1-0002jc-6P
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:46:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45672)
+	id 1jdcjc-0003aW-OA
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:47:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdciz-0002g7-HZ; Tue, 26 May 2020 12:46:45 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42054)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcjZ-0003Uj-TZ; Tue, 26 May 2020 12:47:21 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:37492)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdciy-0005hv-M7; Tue, 26 May 2020 12:46:45 -0400
-Received: by mail-ed1-x544.google.com with SMTP id k19so18231787edv.9;
- Tue, 26 May 2020 09:46:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcjY-00069K-FW; Tue, 26 May 2020 12:47:21 -0400
+Received: by mail-il1-x143.google.com with SMTP id r2so9945188ila.4;
+ Tue, 26 May 2020 09:47:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5dc+q+V0lscs6cXnzEkH5M+IYF1zKZogiJC+dn3t85w=;
- b=GFDaXguavyRv45sHK3kwXd6gWaCQ24YuhbUn0za1/qb9MdXDAEUe3kHLhVhU1GV/9Q
- HziPyj9k3iYI7QaeXfrz7hUCr+QmpyoGx3wGFSbPkQrr/wi34nOHTHNryEEHLh/ZwUV+
- +F6e6Lms+OhsKoB3YqVC0tSk+Y0T/XeFWnZImwuckdr13zS9ipXioc6BmVQBdipCJhIa
- XuSmjjiR/PJDDBKw2Q9bUaEU3xlgv9kPsS4WpGtgPGErCoylF777dan7uWMDuXjixivO
- MC3BGcc5L0lTQJNJ1Y5+04g0o0mlauN8obCQO7Wj3HN5cStgy6FjKb3CE1oo3lYIpuJ5
- tfHw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=US/6pi8OtL/tZoq7LUrwfxAw/HJhGUy2KOFK+AJwJY0=;
+ b=p828qJp1PNv27RqFu1RwVggVVqpacLEuw/lKMbQd1CL4tB8R8ryd3T7o1O8X5e1RBI
+ omBXyriaK2xOdZF+NYC0vscjxestICNIhAChN/AXtUz9g6ViFvDeARzpjI60+pf43V0S
+ Nmj7WblBIrhJ4kZn6eWE/gV4JPWx3J1asYwjJcf5abmbGyP580rb1upWMPTrjTd0wrVq
+ ruHsFdGoPt8ZBoQPGP7zvKFBKxGAOkBgqOC838Nhpn2zZPyINYEib5Xam5SvOYcaAikc
+ q1HZatM4NqR1mdVOZS8Vqa1ICysa0ftxkO7QDghAA5Przydkj/7KqS+FnTf7ldFDNlMl
+ UvAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5dc+q+V0lscs6cXnzEkH5M+IYF1zKZogiJC+dn3t85w=;
- b=S3Ct8PbcMvYza44zY18gEk+pHeAdj1xBTWtSuXfDRdCF+iKB9/cZ+GnUCK0WqOiRGp
- MWvkWACch7rXfNXBsNPNRwngzbdMGoam0apntouFpku3Xyl4brgAg7zqEOziOm27pfuK
- X3oZAnu0AfR/E44BmeKXE+VfcxAy+PrckPiCXgAD4TsfC62CjnWadNE91a7O0qnOgr9n
- hWjbcHqpB3ESDgsJ3lAdeycegBHmmdTWU/Dj83Oek9JeDZLJF8a+7NijDHwvBpC/9/Mk
- xw3LKayvexFvBjOcE1ltDs0PV7/+8S64W24/qj+yHmQrB8o9QIlUNQ96LTYKS1uW6Rj6
- ZJXg==
-X-Gm-Message-State: AOAM530LlGQaJle6WxuHLULFsbyzqjb7BGJz/19x37lzZ4e6MoPPHvQv
- qTkekufV0M22FDz6xD7D0GhgBjCWqAg=
-X-Google-Smtp-Source: ABdhPJykay5hDSLsoJOR17vA7AzJ//AEN7BDDFIRx/mc6nuLklAmvNQynP9/gxQlByzVdDPkXU508g==
-X-Received: by 2002:a05:6402:c95:: with SMTP id
- cm21mr20907665edb.81.1590511602757; 
- Tue, 26 May 2020 09:46:42 -0700 (PDT)
-Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id dr19sm370475ejc.122.2020.05.26.09.46.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2020 09:46:42 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
- in macros
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
-References: <20200510203457.10546-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
-Date: Tue, 26 May 2020 18:46:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=US/6pi8OtL/tZoq7LUrwfxAw/HJhGUy2KOFK+AJwJY0=;
+ b=hS7vOsGOgY/uhP+RgeQ4aIA2M+jmSxjxO4opEfYIOfsAY814Km+MlFXH0nvAuuZKKU
+ Hf0SorPREonwTIMTu+o5qhdf6Dv3zCtOP7/RlRixNm6fpHpKSMYki3fNqjWW7Ev8vlsL
+ UNriZ+QczJEjAMkjkNMEy2ezyrjxqx5Kd1e6dDUsGhcU/NHJmTlgIj3uFbOz7vu4qjfg
+ 9L8/KKa5/dWdawwmSe+83ChDKAJ+7TrLvMxPklPneH3Rd0A1BH+D4FeSHayaNI/9lguk
+ NUhf/an4qafTumEWq+UV22t+/LJSq/cioPyFQuFuomRCNczEd+fn+FW8u5f+95DlFMuS
+ lV2w==
+X-Gm-Message-State: AOAM532QK4NlR7azKowbkWGWiSIkllbDTPgx9gJMVKQqOytAiP/c+aAY
+ jbknP3CsFZ7+Wh9a1SGW1FeN5KX9Sc7sRU4fu38=
+X-Google-Smtp-Source: ABdhPJykVOmpJRtoRxrqWUlBSe3yceU0HCLXUa7JW88QWl6Q1q0umRDzFTpSLRCs51S6c+XG2dmUpHpOczmLP+qCkfI=
+X-Received: by 2002:a92:de02:: with SMTP id x2mr2048228ilm.267.1590511638212; 
+ Tue, 26 May 2020 09:47:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200510203457.10546-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
+References: <20200525034459.28535-1-f4bug@amsat.org>
+ <20200525034459.28535-3-f4bug@amsat.org>
+In-Reply-To: <20200525034459.28535-3-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 26 May 2020 09:38:18 -0700
+Message-ID: <CAKmqyKNAf4KKdGM=_s5AWa4-G6YYH2CLOnTd-E0cvQtVa6+sCA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/display/dpcd: Fix memory region size
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -85,80 +77,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 16:46:46 -0000
+X-List-Received-Date: Tue, 26 May 2020 16:47:22 -0000
 
-ping?
+On Sun, May 24, 2020 at 8:48 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> The memory region size is 512K.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-On 5/10/20 10:34 PM, Philippe Mathieu-Daudé wrote:
-> One can name a local variable holding a value as 'v', but it
-> currently clashes with the registerfields macros. To save others
-> to debug the same mistake, prefix the macro's local variables
-> with an underscore.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
->  1 file changed, 20 insertions(+), 20 deletions(-)
-> 
-> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-> index 0407edb7ec..93fa4a84c2 100644
-> --- a/include/hw/registerfields.h
-> +++ b/include/hw/registerfields.h
-> @@ -66,35 +66,35 @@
->  #define FIELD_DP8(storage, reg, field, val) ({                            \
->      struct {                                                              \
->          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> -    } v = { .v = val };                                                   \
-> -    uint8_t d;                                                            \
-> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> -    d; })
-> +    } _v = { .v = val };                                                  \
-> +    uint8_t _d;                                                           \
-> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-> +    _d; })
->  #define FIELD_DP16(storage, reg, field, val) ({                           \
->      struct {                                                              \
->          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> -    } v = { .v = val };                                                   \
-> -    uint16_t d;                                                           \
-> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> -    d; })
-> +    } _v = { .v = val };                                                  \
-> +    uint16_t _d;                                                          \
-> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-> +    _d; })
->  #define FIELD_DP32(storage, reg, field, val) ({                           \
->      struct {                                                              \
->          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> -    } v = { .v = val };                                                   \
-> -    uint32_t d;                                                           \
-> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> -    d; })
-> +    } _v = { .v = val };                                                  \
-> +    uint32_t _d;                                                          \
-> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-> +    _d; })
->  #define FIELD_DP64(storage, reg, field, val) ({                           \
->      struct {                                                              \
->          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
-> -    } v = { .v = val };                                                   \
-> -    uint64_t d;                                                           \
-> -    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
-> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
-> -    d; })
-> +    } _v = { .v = val };                                                  \
-> +    uint64_t _d;                                                          \
-> +    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
-> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
-> +    _d; })
->  
->  /* Deposit a field to array of registers.  */
->  #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
-> 
+>  hw/display/dpcd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
+> index 170545c605..0c1b7b35fb 100644
+> --- a/hw/display/dpcd.c
+> +++ b/hw/display/dpcd.c
+> @@ -1,5 +1,5 @@
+>  /*
+> - * dpcd.c
+> + * Xilinx Display Port Control Data
+>   *
+>   *  Copyright (C) 2015 : GreenSocs Ltd
+>   *      http://www.greensocs.com/ , email: info@greensocs.com
+> @@ -137,7 +137,7 @@ static void dpcd_init(Object *obj)
+>  {
+>      DPCDState *s =3D DPCD(obj);
+>
+> -    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x7FFF=
+F);
+> +    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x8000=
+0);
+>      aux_init_mmio(AUX_SLAVE(obj), &s->iomem);
+>  }
+>
+> --
+> 2.21.3
+>
+>
 
