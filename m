@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdZ7Q-0000pP-2X
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 08:55:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41990)
+	id 1jdZ7R-0000sE-AA
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 08:55:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jdU1b-0007oe-Fg; Tue, 26 May 2020 03:29:23 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:43669)
+ id 1jdUcW-0004CT-3S
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 04:07:32 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:33013)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jdU1a-0006Ar-Ed; Tue, 26 May 2020 03:29:23 -0400
-Received: by mail-ed1-x542.google.com with SMTP id g9so16774917edw.10;
- Tue, 26 May 2020 00:29:21 -0700 (PDT)
+ id 1jdUcV-0004zG-7L
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 04:07:31 -0400
+Received: by mail-ed1-x532.google.com with SMTP id e10so16884465edq.0
+ for <qemu-trivial@nongnu.org>; Tue, 26 May 2020 01:07:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dR+EizNvfj9caOiPGhJAmpnFn4HgCsOvZzwglCD9HNw=;
- b=dVSnhq9msDkouNMoSoqwUZjkNd6X9d0+ItxiM4lHBle4tcfWre/DdJe4V3fH8/Tned
- K/0pFAtbeWuesq4gIBfRQuHiTuPrjPF+bx/2L9JBHAvj0Ye+zjJBrHcHFO7LVl7hvpB8
- oFwMxri1PzSLVA5RpwRagcusgjwkYLUZH64gLkxbJQ0oiUTO/751JfVfckad0jMbIU0a
- +fLFPGZ/evZLWLCekpNxrXSukiy+sc5KxpslNzOfeh55ZD3jANMMryfnLI0f3UIECdT9
- Qy6OwLYEzyhLPCdaG6HFtz/452JDBt3eBGI39Kw+QXgdpitxkWQrjgxRrnM0tMlPfGeZ
- LLDA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=zmHmUW6Zux4OBp2xftPhiYTtSm2HAz1ZlJz1KMYu5EM=;
+ b=ZhD73hPDWmb6Z2x4KjqVDl9oehvieI7mCfZqJaXlXSQR+CWb5kcpKyt6jkNe0xcVpj
+ 9W6FU7phi13DS3I/rxLxI5tnj68nGpa4FQ/31pwTzeT4DiZJ6dM+LkdPg4UNa3JcI+JU
+ qzZcaglthXnD8syK5rN0RwnWP7l/rxNW2m3NI2rA+fBWgpqpQSWKopowrX/kQ4qG4kqE
+ q9sJJZxivs4EN8nQWB0pC7brfcD7TtAZ8zeUkFCfa1JbtrNB3xXECfptmhtVMEqnV1EZ
+ eb8C8STpvNTtvIxagWQYTn8gn8fFpPLPXtUVPJ54pf2Snk1Xp6hvxSwDa+yxX9ZODRjt
+ eAwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dR+EizNvfj9caOiPGhJAmpnFn4HgCsOvZzwglCD9HNw=;
- b=OSrkyj/NfkfIMmIdEzUFC398GCTpj8dn8TapF6yLL93Zkd1ew9gGVkc+l1db8flops
- UgdjbtZ9nwLijOqeEQc0xUCcCCkJQC4s4sUjc4v+2uJnBJe//qAvz3nHBKFpPV93KAhb
- qBSUlz4X3KYz4uAv6zqaCINUJJCUyr6/zUVYht8YSeYKq0a/Zgw7WJleqVMVLgolJONa
- 4vy+NjJvMfwH+TYOKfHCZuODmbSam13hLesoSjxbA2dOqnzteckRB2VVciVSVMadjpqf
- 63/fJy3a5JBZoUVbR87KAf0gA2fNAGcBTf4R8N3G7hk6d/HwpitdQbBqJFPgOVdOpW5M
- xWsg==
-X-Gm-Message-State: AOAM533guXoxmDuhDeTEfYj1doE9yJVzmvFkAXPE9fMlHL2i+D4EnNPd
- M/2zKeKAnOgqdHTAuNjTbCNR6aDFTrmLFu/ZrMc=
-X-Google-Smtp-Source: ABdhPJz+mLsFe26sLmYuyHYSu54BslNDu3uZ0K8WDMtDD5lRgl5d/0Kt5yUThGuTM+IJ+g488VOaWDa4dOEw2F8GtVI=
-X-Received: by 2002:a05:6402:17e6:: with SMTP id
- t6mr1952122edy.243.1590478160100; 
- Tue, 26 May 2020 00:29:20 -0700 (PDT)
+ :message-id:subject:to;
+ bh=zmHmUW6Zux4OBp2xftPhiYTtSm2HAz1ZlJz1KMYu5EM=;
+ b=out8t9qRVXG/PyGrhS33bf/+GTRfU1hE6msN71J67TkuALSE8SIrDivuzCiIpyImsL
+ U5yqYeeOV27FG3uAMU2RABFChOkbi55abZRws/ddG3mVq3WhE/0U/giQcKjUtJIc80pc
+ MrjDNmTQgx49Na8gLmm4z7bmmRCzNG212qQqtfL8YPSC5Qdpi5a9fq7c4ZuCL3gSahfv
+ gThIy7G/xf8rf2Vq/udI9SvIsYLUUPB03L28sksaDPdoKZq+JzFUcW96KaiBiv2WZhWF
+ QnKKNM7NjvCf5/RTnd1J7PqNbbVf1NnBJB57yhWpb/TeVoh0at16C+SUhSw4mFXOLUQF
+ cDzw==
+X-Gm-Message-State: AOAM533yylLh8Mlj5oYgLZV3KuZqPrLTfXeAMaDDLfZglc/EOfUX/DrG
+ rtSbmzLSyeJmC7KHlo33sANDM/mEH5MQ00IFPLYIwfwS
+X-Google-Smtp-Source: ABdhPJynpUcRfE8Gv1jga46OH24Xyr7OJv7WJt96H0uuJPSyxIaxYn4+at+Y541LptvM0VQVy/lUTUzZH5ooxtpDCqY=
+X-Received: by 2002:a05:6402:31ad:: with SMTP id
+ dj13mr19199120edb.232.1590480449256; 
+ Tue, 26 May 2020 01:07:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqwMsmoYwNtkrvAEG_j_-8L=+PYcXSz--1Qg622szArkRQ@mail.gmail.com>
- <f9ebb603-0a0e-8775-8405-dd8de2493a3f@redhat.com>
-In-Reply-To: <f9ebb603-0a0e-8775-8405-dd8de2493a3f@redhat.com>
+References: <CA+XhMqyZ9yZjckTcYinCOYqb4ybE6z9vmgcJzue1WEGuZ0NTWA@mail.gmail.com>
+ <4e0f6d35-8aa0-b81d-0902-00b76f44b571@redhat.com>
+ <CA+XhMqx-Oz_OzyjEaRn0q6s8PiRvuTBQO=JF3WA_UP+0N-FW+Q@mail.gmail.com>
+In-Reply-To: <CA+XhMqx-Oz_OzyjEaRn0q6s8PiRvuTBQO=JF3WA_UP+0N-FW+Q@mail.gmail.com>
 From: David CARLIER <devnexen@gmail.com>
-Date: Tue, 26 May 2020 08:29:09 +0100
-Message-ID: <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
-Subject: Re: [PATCH 1/1] util/oslib: Returns real thread identifier on FreeBSD
- and NetBSD
-To: Thomas Huth <thuth@redhat.com>, pbonzini@readhat.com,
- qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, bauerchen@tencent.com, 
- Kamil Rytarowski <kamil@netbsd.org>, Ed Maste <emaste@freebsd.org>,
- Li-Wen Hsu <lwhsu@freebsd.org>
+Date: Tue, 26 May 2020 09:07:18 +0100
+Message-ID: <CA+XhMqynizbcnL=Vrkk8BpN-8t=rYdNXk-O8EvwF1ctwTi88qw@mail.gmail.com>
+Subject: Fwd: [PATCH 1/1] util/getauxval: Porting to FreeBSD getauxval feature
+To: qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x532.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -76,129 +74,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 07:29:23 -0000
+X-List-Received-Date: Tue, 26 May 2020 08:07:32 -0000
 
-From 792fbcd9114f43bd80fd1ef5b25cd9935a536f9f Mon Sep 17 00:00:00 2001
+---------- Forwarded message ---------
+From: David CARLIER <devnexen@gmail.com>
+Date: Tue, 26 May 2020 at 08:37
+Subject: Re: [PATCH 1/1] util/getauxval: Porting to FreeBSD getauxval feature
+To: Thomas Huth <thuth@redhat.com>
+Cc: <qemu-devel@nongnu.org>, <armbru@redhat.com>
+
+
+From 316cbdea0434a523c78d3f18fe7e6697577e4aae Mon Sep 17 00:00:00 2001
 From: David Carlier <devnexen@gmail.com>
-Date: Tue, 26 May 2020 08:25:26 +0100
-Subject: [PATCH] util/oslib: Returns the real thread identifier on FreeBSD and
- NetBSD
+Date: Tue, 26 May 2020 08:33:12 +0100
+Subject: [PATCH] util/getauxval: Porting to FreeBSD the getauxval feature
 
-getpid is good enough in a mono thread context, however
- thr_self/_lwp_self reflects the real current thread identifier
- from a given process.
+FreeBSD has a similar API for auxiliary vector.
+
+Signed-off-by: David Carlier <devnexen@gmail.com>
 ---
- util/oslib-posix.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ configure        | 5 +++++
+ util/getauxval.c | 6 ++++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 062236a1ab..916f1be224 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -48,11 +48,13 @@
- #ifdef __FreeBSD__
- #include <sys/sysctl.h>
- #include <sys/user.h>
-+#include <sys/thr.h>
- #include <libutil.h>
- #endif
+diff --git a/configure b/configure
+index 2fc05c4465..2c93867080 100755
+--- a/configure
++++ b/configure
+@@ -5824,7 +5824,12 @@ getauxval=no
+ cat > $TMPC << EOF
+ #include <sys/auxv.h>
+ int main(void) {
++#if defined(__FreeBSD__)
++  unsigned long a = 0;
++  return elf_aux_info(AT_HWCAP, &a, sizeof(a)) == 0;
++#else
+   return getauxval(AT_HWCAP) == 0;
++#endif
+ }
+ EOF
+ if compile_prog "" "" ; then
+diff --git a/util/getauxval.c b/util/getauxval.c
+index 36afdfb9e6..373ed3899f 100644
+--- a/util/getauxval.c
++++ b/util/getauxval.c
+@@ -33,7 +33,13 @@
 
- #ifdef __NetBSD__
- #include <sys/sysctl.h>
-+#include <lwp.h>
- #endif
-
- #include "qemu/mmap-alloc.h"
-@@ -84,6 +86,13 @@ int qemu_get_thread_id(void)
+ unsigned long qemu_getauxval(unsigned long key)
  {
- #if defined(__linux__)
-     return syscall(SYS_gettid);
++#if defined(__linux__)
+     return getauxval(key);
 +#elif defined(__FreeBSD__)
-+    /* thread id is up to INT_MAX */
-+    long tid;
-+    thr_self(&tid);
-+    return (int)tid;
-+#elif defined(__NetBSD__)
-+    return _lwp_self();
- #else
-     return getpid();
- #endif
--- 
++    unsigned long aux = 0;
++    elf_aux_info(key, &aux, sizeof(aux));
++    return aux;
++#endif
+ }
+ #elif defined(__linux__)
+ #include "elf.h"
+--
 2.27.0.rc0
 
-On Tue, 26 May 2020 at 06:40, Thomas Huth <thuth@redhat.com> wrote:
+On Tue, 26 May 2020 at 08:21, Thomas Huth <thuth@redhat.com> wrote:
 >
-> On 23/05/2020 09.23, David CARLIER wrote:
-> > Hi this is my first contribution hope it s useful . Regards.
->
->  Hi!
->
-> Thanks for your contribution. Some hints for getting your patch included:
->
-> - Please make sure to CC: the corresponding maintainers, otherwise your
-> patch might get lost in the high traffic of the mailing list. See the
-> MAINTAINERS file for more information.
->
-> - For simple patches like this one, it might also be helpful to CC:
-> qemu-trivial@nongnu.org so that the patch could get picked up via the
-> trivial queue
->
-> > From ca7fcd85e0453f7173ce73732905463bc259ee32 Mon Sep 17 00:00:00 2001
+> On 24/05/2020 14.09, David CARLIER wrote:
+> > Hi here porting qemu_getauxval to FreeBSD. Thanks. Regards.
+> >
+> > From 5be5e56a59631b28ed7b738d251dda252ba9b03e Mon Sep 17 00:00:00 2001
 > > From: David Carlier <devnexen@gmail.com>
-> > Date: Sat, 23 May 2020 08:17:51 +0100
-> > Subject: [PATCH] util/oslib: returns real thread identifier on FreeBSD and
-> >  NetBSD
->
-> The body of the mail should only contain a proper patch description, not
-> these head lines anymore, so that the patch can directly applied via
-> "git am". Please also add a proper description, e.g. saying what's the
-> effect of your patch. Is it just a cosmetic thing? Does it fix a real
-> bug that you've hit?
->
+> > Date: Sun, 24 May 2020 13:03:32 +0100
+> > Subject: [PATCH] util/getauxval: FreeBSD has a similar auxilary vector API
+> >
 > > Signed-off-by: David Carlier <devnexen@gmail.com>
 > > ---
-> >  util/oslib-posix.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
+> >  configure        | 6 ++++++
+> >  util/getauxval.c | 6 ++++++
+> >  2 files changed, 12 insertions(+)
 > >
-> > diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> > index 062236a1ab..4d28dfd8f5 100644
-> > --- a/util/oslib-posix.c
-> > +++ b/util/oslib-posix.c
-> > @@ -48,11 +48,13 @@
-> >  #ifdef __FreeBSD__
-> >  #include <sys/sysctl.h>
-> >  #include <sys/user.h>
-> > +#include <sys/thr.h>
-> >  #include <libutil.h>
-> >  #endif
-> >
-> >  #ifdef __NetBSD__
-> >  #include <sys/sysctl.h>
-> > +#include <lwp.h>
-> >  #endif
-> >
-> >  #include "qemu/mmap-alloc.h"
-> > @@ -84,6 +86,13 @@ int qemu_get_thread_id(void)
-> >  {
-> >  #if defined(__linux__)
-> >      return syscall(SYS_gettid);
+> > diff --git a/configure b/configure
+> > index 2fc05c4465..545fd2364f 100755
+> > --- a/configure
+> > +++ b/configure
+> > @@ -5824,7 +5824,13 @@ getauxval=no
+> >  cat > $TMPC << EOF
+> >  #include <sys/auxv.h>
+> >  int main(void) {
+> > +#if defined(__linux__)
+> >    return getauxval(AT_HWCAP) == 0;
 > > +#elif defined(__FreeBSD__)
-> > +    // thread id is up to INT_MAX
+> > +  unsigned long a = 0;
+> > +  return elf_aux_info(AT_HWCAP, &a, sizeof(a)) == 0;
+> > +#endif
+> > +  return 1;
+> >  }
+> >  EOF
+> >  if compile_prog "" "" ; then
 >
-> QEMU coding style only used /* ... */ comments, see the CODING_STYLE.rst
-> file.
+> That configure check looks wrong. On other systems (i.e. non-Linux and
+> non-FreeBSD), this code snippet will now compile successfully and thus
+> the configure script sets getauxval=yes. I'd suggest you change it this
+> way instead:
 >
-> > +    long tid;
-> > +    thr_self(&tid);
-> > +    return (int)tid;
-> > +#elif defined(__NetBSD__)
-> > +    return _lwp_self();
-> >  #else
-> >      return getpid();
-> >  #endif
-> >
+>  int main(void) {
+> +#if defined(__FreeBSD__)
+> +  unsigned long a = 0;
+> +  return elf_aux_info(AT_HWCAP, &a, sizeof(a)) == 0;
+> +#else
+>    return getauxval(AT_HWCAP) == 0;
+> +#endif
+>  }
 >
->  HTH,
->   Thomas
+> ... so that it still fails to compile by default on other systems.
+>
+>  Thomas
 >
 
