@@ -1,89 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdaSj-0000zu-Rb
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 10:21:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55298)
+	id 1jdbzC-0000fI-0Y
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 11:59:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kamil@netbsd.org>)
- id 1jdZSQ-0006Fm-HS; Tue, 26 May 2020 09:17:26 -0400
-Received: from mail.netbsd.org ([199.233.217.200]:60308)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kamil@netbsd.org>)
- id 1jdZSP-0003Ez-7Y; Tue, 26 May 2020 09:17:26 -0400
-Received: from [IPv6:::1] (localhost [127.0.0.1])
- by mail.netbsd.org (Postfix) with ESMTP id 11E5E84C8B;
- Tue, 26 May 2020 13:17:18 +0000 (UTC)
-Subject: Re: [PATCH 1/1] util/oslib: Returns real thread identifier on FreeBSD
- and NetBSD
-To: David CARLIER <devnexen@gmail.com>, Thomas Huth <thuth@redhat.com>,
- pbonzini@readhat.com, qemu-trivial@nongnu.org
-Cc: Kamil Rytarowski <kamil@netbsd.org>, qemu-devel@nongnu.org,
- bauerchen@tencent.com, Li-Wen Hsu <lwhsu@freebsd.org>
-References: <CA+XhMqwMsmoYwNtkrvAEG_j_-8L=+PYcXSz--1Qg622szArkRQ@mail.gmail.com>
- <f9ebb603-0a0e-8775-8405-dd8de2493a3f@redhat.com>
- <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
-From: Kamil Rytarowski <kamil@netbsd.org>
-Autocrypt: addr=kamil@netbsd.org; keydata=
- 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
-Message-ID: <5b53af7c-72bd-f096-1763-353a8f9596e9@netbsd.org>
-Date: Tue, 26 May 2020 15:15:49 +0200
-User-Agent: Mozilla/5.0 (X11; NetBSD amd64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jdbz9-0000cW-Jx; Tue, 26 May 2020 11:59:23 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:50476)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jdbz7-000473-4D; Tue, 26 May 2020 11:59:23 -0400
+Received: by mail-wm1-f68.google.com with SMTP id v19so65631wmj.0;
+ Tue, 26 May 2020 08:59:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=aejmtGAVwrEf4TFhu6yPwg4dq99qmOFZ2tjTMfJwwB4=;
+ b=cn09GDdwTtX5I1lZNTbR6QBVEflFCfjz47gN7i7CGw3qtaho1wxEoiV9xbLHE/QSmj
+ LKhU0c5LvrlLMQDKCuVc04B/y3Hrapz3WL3mSXJUqUY91THgDgrhEE+h3QT/VeFsN4LX
+ 5NjBu9/Xh9f+1q79AyduDF96hv960jl9rKhugD6bGiH+xD0kDNx/QtKBdRPYGxEWrvpz
+ t5XXMuJQlGQPpTUA8Ums8eVc9zt4KngrsYhTZvF6JCj25tHtklIFUZtLAMpQM4O/iGJa
+ 6ezlUQm1yeU5fr6SqKDhOS2CA2GN2QQ3ElP2zZKlmthI23Pt6/n2rGKVHwWX7MOE2P3h
+ +iSg==
+X-Gm-Message-State: AOAM532Q1Ji31TPULhoiwBo668M2TCCZstJBkotyWkSYo7Fg7CDs0gcp
+ N1z3HU6wDsIMXl5xUW8Sr8I=
+X-Google-Smtp-Source: ABdhPJySorQQU/qBa8tB5jIgkUjxHe2oNBvTHdWHAP6xu/59Kxca55joaQ34s+gI4U5j/LGflOJwGg==
+X-Received: by 2002:a1c:bc0a:: with SMTP id m10mr1929893wmf.173.1590508758988; 
+ Tue, 26 May 2020 08:59:18 -0700 (PDT)
+Received: from thl530 (x590feeb5.dyn.telefonica.de. [89.15.238.181])
+ by smtp.gmail.com with ESMTPSA id z12sm296194wrg.9.2020.05.26.08.59.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2020 08:59:18 -0700 (PDT)
+Date: Tue, 26 May 2020 17:59:14 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Jason Wang
+ <jasowang@redhat.com>
+Subject: Re: [PATCH v3 1/2] hw/m68k/mcf5206: Reduce m5206_mbar_read/write()
+ offset arg to 16-bit
+Message-ID: <20200526175914.7e3ed350@thl530>
+In-Reply-To: <20200526094052.1723-2-f4bug@amsat.org>
+References: <20200526094052.1723-1-f4bug@amsat.org>
+ <20200526094052.1723-2-f4bug@amsat.org>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=199.233.217.200; envelope-from=kamil@netbsd.org;
- helo=mail.netbsd.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 07:57:51
-X-ACL-Warn: Detected OS   = ???
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.128.68; envelope-from=th.huth@gmail.com;
+ helo=mail-wm1-f68.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 11:59:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 26 May 2020 10:21:48 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,56 +70,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 13:17:26 -0000
+X-List-Received-Date: Tue, 26 May 2020 15:59:24 -0000
 
-Reviewed-by: Kamil Rytarowski <kamil@netbsd.org>
+Am Tue, 26 May 2020 11:40:51 +0200
+schrieb Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>:
 
-On 26.05.2020 09:29, David CARLIER wrote:
-> From 792fbcd9114f43bd80fd1ef5b25cd9935a536f9f Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Tue, 26 May 2020 08:25:26 +0100
-> Subject: [PATCH] util/oslib: Returns the real thread identifier on FreeBSD and
->  NetBSD
-> 
-> getpid is good enough in a mono thread context, however
->  thr_self/_lwp_self reflects the real current thread identifier
->  from a given process.
+> All calls to m5206_mbar_read/m5206_mbar_write are used with
+> 'offset =3D hwaddr & 0x3ff', so we are sure the offset fits
+> in 16-bit.
+>=20
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  util/oslib-posix.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index 062236a1ab..916f1be224 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -48,11 +48,13 @@
->  #ifdef __FreeBSD__
->  #include <sys/sysctl.h>
->  #include <sys/user.h>
-> +#include <sys/thr.h>
->  #include <libutil.h>
->  #endif
-> 
->  #ifdef __NetBSD__
->  #include <sys/sysctl.h>
-> +#include <lwp.h>
->  #endif
-> 
->  #include "qemu/mmap-alloc.h"
-> @@ -84,6 +86,13 @@ int qemu_get_thread_id(void)
+> v3: Use PRIx16
+> ---
+>  hw/m68k/mcf5206.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
+> index b155dd8170..187291e1f6 100644
+> --- a/hw/m68k/mcf5206.c
+> +++ b/hw/m68k/mcf5206.c
+> @@ -273,7 +273,7 @@ static void m5206_mbar_reset(m5206_mbar_state *s)
+>  }
+> =20
+>  static uint64_t m5206_mbar_read(m5206_mbar_state *s,
+> -                                uint64_t offset, unsigned size)
+> +                                uint16_t offset, unsigned size)
 >  {
->  #if defined(__linux__)
->      return syscall(SYS_gettid);
-> +#elif defined(__FreeBSD__)
-> +    /* thread id is up to INT_MAX */
-> +    long tid;
-> +    thr_self(&tid);
-> +    return (int)tid;
-> +#elif defined(__NetBSD__)
-> +    return _lwp_self();
->  #else
->      return getpid();
->  #endif
-> 
+>      if (offset >=3D 0x100 && offset < 0x120) {
+>          return m5206_timer_read(s->timer[0], offset - 0x100);
+> @@ -306,11 +306,11 @@ static uint64_t
+> m5206_mbar_read(m5206_mbar_state *s, case 0x170: return s->uivr[0];
+>      case 0x1b0: return s->uivr[1];
+>      }
+> -    hw_error("Bad MBAR read offset 0x%x", (int)offset);
+> +    hw_error("Bad MBAR read offset 0x%"PRIx16, offset);
+>      return 0;
+>  }
+> =20
+> -static void m5206_mbar_write(m5206_mbar_state *s, uint32_t offset,
+> +static void m5206_mbar_write(m5206_mbar_state *s, uint16_t offset,
+>                               uint64_t value, unsigned size)
+>  {
+>      if (offset >=3D 0x100 && offset < 0x120) {
+> @@ -360,7 +360,7 @@ static void m5206_mbar_write(m5206_mbar_state *s,
+> uint32_t offset, s->uivr[1] =3D value;
+>          break;
+>      default:
+> -        hw_error("Bad MBAR write offset 0x%x", (int)offset);
+> +        hw_error("Bad MBAR write offset 0x%"PRIx16, offset);
+>          break;
+>      }
+>  }
+
+Reviewed-by: Thomas Huth <huth@tuxfamily.org>
 
 
