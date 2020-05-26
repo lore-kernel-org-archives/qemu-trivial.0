@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdcsJ-0001z0-PM
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 12:56:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55962)
+	id 1jddQu-0002Vy-9H
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 13:32:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcsH-0001sO-CW; Tue, 26 May 2020 12:56:21 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:40337)
+ id 1jddQr-0002U2-MR; Tue, 26 May 2020 13:32:05 -0400
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:36484)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcsF-0003Rg-TL; Tue, 26 May 2020 12:56:20 -0400
-Received: by mail-io1-xd42.google.com with SMTP id q8so21391954iow.7;
- Tue, 26 May 2020 09:56:18 -0700 (PDT)
+ id 1jddQp-00010i-TV; Tue, 26 May 2020 13:32:05 -0400
+Received: by mail-qk1-x742.google.com with SMTP id 205so8323936qkg.3;
+ Tue, 26 May 2020 10:31:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=UaBvgKQcklPNmrmRbw60e70SnGLomqQFDLLUcqlmqwg=;
- b=F0OzhjBeoSAlxYqugpvac9k0zNVfyJZ1+3/CYaJEVtBbSgjsGVRRLvrH8FgshLGCmr
- 0oE8uGPMa7FjtyJ8goFoJK/ADORdxT33xC/hGaM1NRWXUe1UojPQ59ntBf1ulh1ussrI
- 7kV5PN5BAkuwiBYXbLYbsTslkvfGdxPixpfHnLceOep3+3eYM4UrxAAWFxkhiMjwUP+b
- elaDCe0x3KCuLmXaa+vbtfzcylUez01b+dkDqy4DO8vVJxzkCTxlBRLmZyJsk9gi19pZ
- BSDqxasz/jwly/cUkhyzpixf2hki172FQg9UAXUCuhm4OwAL8An5/K4OUBqS8g5PP87+
- ai2A==
+ bh=PN6K5e1tyvrYhrCtBaGYgmQsUJa63MJXQBwAz/mTpnA=;
+ b=KfkMh/xFWIimZxCOVVkpGTvqaonAkkcOHs+oK7834EsMXUPFiCjnOUnZs4UP4jhTGE
+ nzvCl9pPaap2Wv6hNo66ox1hLn+9Xmh23ZCDzDvRZDZAGMdjHIfQbKh4VdBDhn1LVac3
+ d5ZOsSjOL9JIfrrvbzP8A0jFJP+dsaSJtURPYCtGdnQBhuiY8JCDObVfjyqsRHTsTlUq
+ ypGog6Pfb6wFxjMKNCHhyb+ShF1248l0ywoGbrQkkq6phhAZ6F30pJh0zMgS34MjXIml
+ joSsw99vi3JybQc5JOR5L2KRP8ASs+fRBU2rNUh8G0NyIKdAbEfq7K5Jb6IWf/YSiuBr
+ Lqnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=UaBvgKQcklPNmrmRbw60e70SnGLomqQFDLLUcqlmqwg=;
- b=mm3vSih8hzgV3hkcrw8r8I95hLYjIZastE0Ehyxuh+SvlC1zNTaKsR4C8WMRGZ194L
- an2oDdqk/BxcWzZLuC6wTxARxNVbTes3VMlEeuevzDSvA9RFW9hqYa69F6B6v/HsRRD0
- wMkGwov0dmYFfKaIQ5GESRgERwgPWZiWjAj61FcHErKmAt7EIL9qlh1Ck97MY6Opn2IL
- 9YEyzLxwD1gu9FSgzRaIaoZ0nLyVJDsiQdy/9hSSNZm9xuOFTrR+ehTESMjsaIJUBgMy
- RHvKH/bcLU9qa2VF8RqzTE8vJU92kqYfhoWaCSMqZ63J7Xrzl9gIOgruLwGESnmuK0Tn
- VCSw==
-X-Gm-Message-State: AOAM533wGrSoeYX4GMyF8o2lT+N969naT8uYUVDbJ/LiAsvdBDfQOsfL
- AATweeA7q+afSp4w2xa8c12OSfr1gyGvgGjkU5U=
-X-Google-Smtp-Source: ABdhPJwauc72nYuI1fguaPlvR/qVplpcX5/5/cBD5QvewjmiroqtkB8FWuqfHsW14F5AzmF+sTXJc68jK7EOeRLlXuk=
-X-Received: by 2002:a02:6543:: with SMTP id u64mr1986792jab.26.1590512176396; 
- Tue, 26 May 2020 09:56:16 -0700 (PDT)
+ bh=PN6K5e1tyvrYhrCtBaGYgmQsUJa63MJXQBwAz/mTpnA=;
+ b=N0gOQnDo9m25VKRMo4LZ68S1jFPx2rqmtNB0urDJfok7UmNyK0GBBfebQ8wdhzoyte
+ xYCN8ZHgBrCjS+YuBuvP8CZlOm24Ga14GuYt3cFOjYuKPJtiWXk1aLB4syvGf0kkKEDn
+ iJA5k+hRNm4cKq9bESJ6431KwdYlO2dnn0+KWKfZiNWkKKlrNu4qPbyxsOAq8Jrd/Eyf
+ 5dB5uIBnTMr5CFIfMTRF9s46JWAPmnH9gBACuTfXJ8gYHQrUN847HwBioj+QXXJTY+WK
+ Z/HlldxQyNu0if1N0/smOro0sN/OVi79FvdMksSAbCi4qD+7Q2+3qM1R8GX+kQULcV8X
+ rJJQ==
+X-Gm-Message-State: AOAM530cU2k7bND0TvnJyGzXjqApQBNSyFCI8+jBhv3A4080zXkFW/jg
+ 5xOAOCv+HrQKtH01kDwXIcaJWveHVQEHv25eR/I=
+X-Google-Smtp-Source: ABdhPJxdI/1eBoBFFXQiAA55TlaOXRIFWZVxubtUpZ/hFSBOz2VuGJ2XoBND3j1Ebn0PFWERTx+6mcWuPbMnzUdHG7s=
+X-Received: by 2002:a37:96c4:: with SMTP id y187mr2573316qkd.126.1590514316837; 
+ Tue, 26 May 2020 10:31:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-4-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-4-f4bug@amsat.org>
+ <20200526062252.19852-8-f4bug@amsat.org>
+In-Reply-To: <20200526062252.19852-8-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:47:15 -0700
-Message-ID: <CAKmqyKPzfVkCiQTa2a9kaT0a-ZVR6=LSmW-A29e=O2NkMXhwjg@mail.gmail.com>
-Subject: Re: [PATCH 03/14] hw/display/cirrus_vga: Convert debug printf() to
- trace event
+Date: Tue, 26 May 2020 10:22:57 -0700
+Message-ID: <CAKmqyKNdWM5hwv0aK3tjFh6LSXdgZrUud-idSBp=mhapkkgO-A@mail.gmail.com>
+Subject: Re: [PATCH 07/14] hw/display/dpcd: Fix memory region size
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Gerd Hoffmann <kraxel@redhat.com>, 
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
@@ -57,8 +56,8 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
+ envelope-from=alistair23@gmail.com; helo=mail-qk1-x742.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -81,10 +80,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 16:56:22 -0000
+X-List-Received-Date: Tue, 26 May 2020 17:32:07 -0000
 
-On Mon, May 25, 2020 at 11:25 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Mon, May 25, 2020 at 11:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg> wrote:
+>
+> The memory region size is 512K.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -93,42 +94,31 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/display/cirrus_vga.c | 4 +---
->  hw/display/trace-events | 1 +
->  2 files changed, 2 insertions(+), 3 deletions(-)
+>  hw/display/dpcd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-> index 1f29731ffe..33ccdde000 100644
-> --- a/hw/display/cirrus_vga.c
-> +++ b/hw/display/cirrus_vga.c
-> @@ -1512,9 +1512,7 @@ static int cirrus_vga_read_gr(CirrusVGAState * s, u=
-nsigned reg_index)
->  static void
->  cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_valu=
-e)
+> diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
+> index 170545c605..0c1b7b35fb 100644
+> --- a/hw/display/dpcd.c
+> +++ b/hw/display/dpcd.c
+> @@ -1,5 +1,5 @@
+>  /*
+> - * dpcd.c
+> + * Xilinx Display Port Control Data
+>   *
+>   *  Copyright (C) 2015 : GreenSocs Ltd
+>   *      http://www.greensocs.com/ , email: info@greensocs.com
+> @@ -137,7 +137,7 @@ static void dpcd_init(Object *obj)
 >  {
-> -#if defined(DEBUG_BITBLT) && 0
-> -    printf("gr%02x: %02x\n", reg_index, reg_value);
-> -#endif
-> +    trace_vga_cirrus_write_gr(reg_index, reg_value);
->      switch (reg_index) {
->      case 0x00:                 // Standard VGA, BGCOLOR 0x000000ff
->         s->vga.gr[reg_index] =3D reg_value & gr_mask[reg_index];
-> diff --git a/hw/display/trace-events b/hw/display/trace-events
-> index 47b2b168ae..c3043e4ced 100644
-> --- a/hw/display/trace-events
-> +++ b/hw/display/trace-events
-> @@ -133,6 +133,7 @@ vga_vbe_write(uint32_t index, uint32_t val) "index 0x=
-%x, val 0x%x"
->  vga_cirrus_read_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
->  vga_cirrus_write_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
->  vga_cirrus_write_blt(uint32_t offset, uint32_t val) "offset 0x%x, val 0x=
-%x"
-> +vga_cirrus_write_gr(uint8_t index, uint8_t val) "GR addr 0x%02x, val 0x%=
-02x"
+>      DPCDState *s =3D DPCD(obj);
 >
->  # sii9022.c
->  sii9022_read_reg(uint8_t addr, uint8_t val) "addr 0x%02x, val 0x%02x"
+> -    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x7FFF=
+F);
+> +    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x8000=
+0);
+>      aux_init_mmio(AUX_SLAVE(obj), &s->iomem);
+>  }
+>
 > --
 > 2.21.3
 >
