@@ -1,81 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdqZq-0004eg-FU
-	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 03:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44428)
+	id 1jdy2b-0002GJ-2b
+	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 11:32:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdqZp-0004eV-DV; Wed, 27 May 2020 03:34:13 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52954)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdqZo-00008g-Io; Wed, 27 May 2020 03:34:13 -0400
-Received: by mail-wm1-x341.google.com with SMTP id r9so2058751wmh.2;
- Wed, 27 May 2020 00:34:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=HayDOPIbH9zCrw7A7S1WZCdFRGhQuFsovnn0qGB3c+s=;
- b=SAic9lNaD0N7YWyr01oEM2vI6GpGL6XI3eVSzbL94DdTo8h8sktnIlTZdrmbrxHaKv
- ET/SRmOLAD/GVLDp0dmognrhBtzr6FsjpKCYoUXSk1ydYd/ggJTDBAPdOdyPH4TFmQ7R
- GzSzPRv7fvZ3uXDKTaxm7vykH+lhNJzI8KF1huQTXDpb5WqeORQk3w2pZX3DKAbDcmtC
- HB3bYZoEi6VgETOo+dQXjGxg5cRQwawL9KRszQcMmNfO17yVS8MdOlS5tT/W8WOnscqB
- IpUbKgEU/UUfITb+XaXb8zWKZKj8Ff1Byse3R0gREyBfJtgxt7leEQOisS20C8d1WF1q
- c3LQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HayDOPIbH9zCrw7A7S1WZCdFRGhQuFsovnn0qGB3c+s=;
- b=llk4SzD+vCFx8P8bKhPhTBCUlFnc3opNb5oXeRvauYFbk81zLM2FAOLvxMXAX/rlCL
- iOTFMxqwT0wwU80/a28+lfzOEnQPqwSyMJ4nFcm8CQxDsPz/pxNYVgi1rVgwkOvH/kaD
- p0Bj3z1vbVKCGqtLa9pwBRExbyzGRhvWP5qSoJa9T4nZqvwzZAQRntwpkMgGggDdao9U
- gKyiahxUr3m8lV5DSjukR48FGLcbxlvdaBUgbulBJUjq4G0ll3AOEjRF6PgcnNlx+/m6
- vi+BILPtdwQa2Fv05/GDw+BXu88Fn4jPXdoX9Y78FHM9HC9x8XGStubxXDMy58BpL3Ih
- L2Tg==
-X-Gm-Message-State: AOAM533YTfxlzNs9KSmOQrC5wcCEDvYaGHwfsX4rnXVgtYPfqwNVHhb2
- 6dxWa1Q746JGnYJi8k/7Lwh6Iv26
-X-Google-Smtp-Source: ABdhPJz58Hi5rlQF/dH17u+V4ZAWsEawI9zI4v2/C0X23Aw9SkZk9A0bOCb23lTBKdGkxIKTaxVfzQ==
-X-Received: by 2002:a1c:b7d5:: with SMTP id h204mr3126162wmf.39.1590564850174; 
- Wed, 27 May 2020 00:34:10 -0700 (PDT)
-Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id l17sm1877446wmi.3.2020.05.27.00.34.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2020 00:34:09 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
- in macros
-To: Alistair Francis <alistair23@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-References: <20200510203457.10546-1-f4bug@amsat.org>
- <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
- <CAKmqyKOXjNTgUtvwBnm-=fY-i8zX=k23TkoWSM=3WuWAHioXAQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <23ff7662-6dd9-1bee-6004-c89aaa7308dd@amsat.org>
-Date: Wed, 27 May 2020 09:34:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <CAKmqyKOXjNTgUtvwBnm-=fY-i8zX=k23TkoWSM=3WuWAHioXAQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jdy2Y-0002G7-As
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:32:23 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60001
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jdy2O-0005M4-Cp
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:32:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590593527;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=10oSkb4PvvTP/yJmiLzUgvPVndG7S5+ZQgWeY4ntTpQ=;
+ b=aya0q2GK6ZvC8fBLMhyfU/Tgdu3L7rILCAXg1QzZQ0yFLt1xHaflq+uTLgmHnOvbFsJqmr
+ gthrIuuDxC6XCVHCLTgg71Z9eTnoiSMz1k8j8y1xYRyAuoBjDUwBF2ZwpkihvjssbprAhb
+ QjLFCtTIxS7Gs4mzQOnLyXTdIXERI50=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-332-dWYvHCFBO1aIosjubPFWwQ-1; Wed, 27 May 2020 11:32:05 -0400
+X-MC-Unique: dWYvHCFBO1aIosjubPFWwQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6A25D461;
+ Wed, 27 May 2020 15:32:03 +0000 (UTC)
+Received: from thuth.com (ovpn-112-170.ams2.redhat.com [10.36.112.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 836CE1A8F1;
+ Wed, 27 May 2020 15:31:55 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] hw/pci: Fix crash when running QEMU with "-nic model=rocker"
+Date: Wed, 27 May 2020 17:31:52 +0200
+Message-Id: <20200527153152.9211-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:49:35
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,100 +67,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 May 2020 07:34:13 -0000
+X-List-Received-Date: Wed, 27 May 2020 15:32:23 -0000
 
-Hi Alistair,
+QEMU currently aborts when being started with "-nic model=rocker" or with
+"-net nic,model=rocker". This happens because the "rocker" device is not
+a normal NIC but a switch, which has different properties. Thus we should
+only consider real NIC devices for "-nic" and "-net". These devices can
+be identified by the "netdev" property, so check for this property before
+adding the device to the list.
 
-On 5/27/20 12:49 AM, Alistair Francis wrote:
-> On Tue, May 26, 2020 at 9:50 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> ping?
-> 
-> I'll send a PR with this.
+Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+Fixes: 52310c3fa7dc854d ("net: allow using any PCI NICs in -net or -nic")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/pci/pci.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-Well, this was only a "friendly ping", there is no hurry, I can wait for
-the next qemu-trivial pull request.
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 70c66965f5..46214f8287 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -1887,7 +1887,18 @@ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
+         if (test_bit(DEVICE_CATEGORY_NETWORK, dc->categories) &&
+             dc->user_creatable) {
+             const char *name = object_class_get_name(list->data);
+-            g_ptr_array_add(pci_nic_models, (gpointer)name);
++            /*
++             * A network device might also be something else than a NIC, see
++             * e.g. the "rocker" device. Thus we have to look for the "netdev"
++             * property, too. Unfortunately, some devices like virtio-net only
++             * create this property during instance_init, so we have to create
++             * a temporary instance here to be able to check it.
++             */
++            Object *obj = object_new_with_class(OBJECT_CLASS(dc));
++            if (object_property_find(obj, "netdev", NULL)) {
++                g_ptr_array_add(pci_nic_models, (gpointer)name);
++            }
++            object_unref(obj);
+         }
+         next = list->next;
+         g_slist_free_1(list);
+-- 
+2.18.1
 
-Thanks!
-
-Phil.
-
-> 
-> Alistair
-> 
->>
->> On 5/10/20 10:34 PM, Philippe Mathieu-Daudé wrote:
->>> One can name a local variable holding a value as 'v', but it
->>> currently clashes with the registerfields macros. To save others
->>> to debug the same mistake, prefix the macro's local variables
->>> with an underscore.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
->>>  1 file changed, 20 insertions(+), 20 deletions(-)
->>>
->>> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
->>> index 0407edb7ec..93fa4a84c2 100644
->>> --- a/include/hw/registerfields.h
->>> +++ b/include/hw/registerfields.h
->>> @@ -66,35 +66,35 @@
->>>  #define FIELD_DP8(storage, reg, field, val) ({                            \
->>>      struct {                                                              \
->>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
->>> -    } v = { .v = val };                                                   \
->>> -    uint8_t d;                                                            \
->>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
->>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
->>> -    d; })
->>> +    } _v = { .v = val };                                                  \
->>> +    uint8_t _d;                                                           \
->>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
->>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
->>> +    _d; })
->>>  #define FIELD_DP16(storage, reg, field, val) ({                           \
->>>      struct {                                                              \
->>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
->>> -    } v = { .v = val };                                                   \
->>> -    uint16_t d;                                                           \
->>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
->>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
->>> -    d; })
->>> +    } _v = { .v = val };                                                  \
->>> +    uint16_t _d;                                                          \
->>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
->>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
->>> +    _d; })
->>>  #define FIELD_DP32(storage, reg, field, val) ({                           \
->>>      struct {                                                              \
->>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
->>> -    } v = { .v = val };                                                   \
->>> -    uint32_t d;                                                           \
->>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
->>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
->>> -    d; })
->>> +    } _v = { .v = val };                                                  \
->>> +    uint32_t _d;                                                          \
->>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
->>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
->>> +    _d; })
->>>  #define FIELD_DP64(storage, reg, field, val) ({                           \
->>>      struct {                                                              \
->>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
->>> -    } v = { .v = val };                                                   \
->>> -    uint64_t d;                                                           \
->>> -    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
->>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
->>> -    d; })
->>> +    } _v = { .v = val };                                                  \
->>> +    uint64_t _d;                                                          \
->>> +    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
->>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
->>> +    _d; })
->>>
->>>  /* Deposit a field to array of registers.  */
->>>  #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
->>>
->>
-> 
 
