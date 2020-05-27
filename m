@@ -1,90 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdy5W-0004I6-7W
-	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 11:35:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50774)
+	id 1jdyPV-0004pn-WE
+	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 11:56:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jdy5U-0004HT-D4
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:35:24 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29713
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdyPU-0004nZ-Id
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:56:04 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44054
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jdy5T-000698-Jm
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:35:24 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdyPS-0007hI-9n
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:56:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590593722;
+ s=mimecast20190719; t=1590594960;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=z9bSfFjS0Nj2cluGha6pXYmnl6bsGUryxzjLZtvPQsY=;
- b=K2qHqPVxA5TE41BzGyaI6ulBEqtvBh1DEOc0sb+y6bZCgiW7728uzNvNNQ09Wp0I6Efrug
- JDZndSan8L5syDsH+7MdPgxXCa7g4d0eSXI+kqyT8h1B3IMKStsQpPjaKgO+D7ZGLX0fYt
- R9fSmbOHKIKWqJPDEuUnxKtTQSdySIk=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-221-lZhJDVkYO5Gzezf3q2fkxQ-1; Wed, 27 May 2020 11:35:18 -0400
-X-MC-Unique: lZhJDVkYO5Gzezf3q2fkxQ-1
-Received: by mail-ed1-f70.google.com with SMTP id dh6so2426189edb.1
- for <qemu-trivial@nongnu.org>; Wed, 27 May 2020 08:35:18 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=YdePEd4ybfyY7U2+FqOlke5L5yf8ZLMowP5ujKzP0WI=;
+ b=EC2fKd8FUtbduNX1okCzNMyfa1OVEfm69C0F3o73Ow3oA+Vuf/JpqrM73rQUNH5/wRLa84
+ 9Jc73JNNFWSElFKIUVEiE/JtjMhPJpf4uFkCRIrVO/i4QxV1zpGDlHRFs96UJJcJ3oXWgS
+ o8Lt8za9hLS4+1Gb1lhhbUQxR/ojZoQ=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-159-ihYuwqjuOcChIY5gkuZaXA-1; Wed, 27 May 2020 11:55:59 -0400
+X-MC-Unique: ihYuwqjuOcChIY5gkuZaXA-1
+Received: by mail-ed1-f71.google.com with SMTP id c10so10214491edw.17
+ for <qemu-trivial@nongnu.org>; Wed, 27 May 2020 08:55:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=z9bSfFjS0Nj2cluGha6pXYmnl6bsGUryxzjLZtvPQsY=;
- b=F/7M7vXdxaWcjC3sJS/5u7eeuGhLf5D818feSEQ+5YRmcU+vYVYTJb2SjJymIPpj+Z
- OwMVF4lIDiULM+Hr8KBS7mmyUOcWVhCn1WehMos4SlHH0l1RgKwf0/f3fcnbDzLw6vYL
- PtUX/9Q9Xztr9YEPq0J1hML8z41soqa189iaiNlciF3Dsc4lxhKHaO8wgxD0Ns6rRSvy
- X1UwbU6L9Rabc8dOGNEBzAnB18xN23ERJc9msXC6tpb6ChcXzj3dclWF9HhSNoUQKigC
- 9yndcU5uYBTunTUA6uT+TyQUbU9ba5eCuqIBv08gKZd4Jesy023G1ukKdble2a1Ns8Wi
- 2TTg==
-X-Gm-Message-State: AOAM533bGev7dk/cIsadZj4tr0UXONh52FdRR0QkVPhPmocSgUeeDiPQ
- nLux4F0LvPs4lxRDiTK+BkSFoPY3HyZjn6AIZ1fJy1gmVZ9+nuHeFbUFYtbNgeitBIbVZtexI+R
- LR1MtXPZ+QEc1Nzafow==
-X-Received: by 2002:a17:906:13ca:: with SMTP id
- g10mr6603611ejc.433.1590593717409; 
- Wed, 27 May 2020 08:35:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw2CTdnfZ3TsiTNtarlNs2KreCjUkPLU+/AiFWblSE+mOkaWC2wlKoExcP9Bp9sHxkOfvJjQ==
-X-Received: by 2002:a17:906:13ca:: with SMTP id
- g10mr6603588ejc.433.1590593717115; 
- Wed, 27 May 2020 08:35:17 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:3c1c:ffba:c624:29b8?
- ([2001:b07:6468:f312:3c1c:ffba:c624:29b8])
- by smtp.gmail.com with ESMTPSA id s8sm2447405edj.64.2020.05.27.08.35.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2020 08:35:16 -0700 (PDT)
-Subject: Re: [PATCH] hw/pci: Fix crash when running QEMU with "-nic
- model=rocker"
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-References: <20200527153152.9211-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <85cf7423-47e8-898a-c1da-e527adcaaa6b@redhat.com>
-Date: Wed, 27 May 2020 17:35:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ bh=YdePEd4ybfyY7U2+FqOlke5L5yf8ZLMowP5ujKzP0WI=;
+ b=JwanLawsQOnl0akslnMn047SDHkVnOPqFk6j+HcqzyCBra/DckpbzhrJYJJ0xfpCdp
+ IxFUrUAJchdXTdPtk/T3lW+8eQbUW/TchFFdfdq6I/xcQP2TwAqJw2R7VC6J5/sNgvZ1
+ kwHwHOUKihjkky0ygTtxKxAKXH1MKNUpRig1Y3OZ+0HxJiB23995N+6urCT2Ms5K4mDj
+ SISvxCJ12QtT5Jtj95k/GvbjMIBp+VKRWp1fT40eQR6vDWeD0SWPnKoHSFIKf3Zdjs8s
+ UBJlf91DOVOxuCTZ5/5d4w/5h7RTeTTbldmjRrAz4Y7V8Oan/L8zeu4x9KBbxdWnAwqP
+ Tu0g==
+X-Gm-Message-State: AOAM5300qmcixQizvfOJ6RMDtFyn3FE0hzwPo8REQlzE8AnLxX0FR3PN
+ +HB/8ndlWawB3JA102eG1XqwlwYU9BRdH5iTvgldiQMaWgGW7dlpMFRNezbN28OIP39zX0Ko7pm
+ evHBjFCWxlBnn+egNRg==
+X-Received: by 2002:a17:906:410a:: with SMTP id
+ j10mr6530643ejk.378.1590594957874; 
+ Wed, 27 May 2020 08:55:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwBGdK4EJtBkeOhyS+VANinAUc/7ASWpLH8aEoWX0wolUEL5Btx8kwCDOLQc3uLP64e48b8Xg==
+X-Received: by 2002:a17:906:410a:: with SMTP id
+ j10mr6530632ejk.378.1590594957632; 
+ Wed, 27 May 2020 08:55:57 -0700 (PDT)
+Received: from x1w.redhat.com (71.red-88-21-204.staticip.rima-tde.net.
+ [88.21.204.71])
+ by smtp.gmail.com with ESMTPSA id y19sm2194116edq.54.2020.05.27.08.55.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 May 2020 08:55:57 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Alex Williamson <alex.williamson@redhat.com>, Peter Xu <peterx@redhat.com>,
+ qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2] hw/vfio/common: Trace in which mode an IOMMU is opened
+Date: Wed, 27 May 2020 17:55:55 +0200
+Message-Id: <20200527155555.6833-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200527153152.9211-1-thuth@redhat.com>
-Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 01:25:42
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:45:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,49 +90,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 May 2020 15:35:25 -0000
+X-List-Received-Date: Wed, 27 May 2020 15:56:04 -0000
 
-On 27/05/20 17:31, Thomas Huth wrote:
-> QEMU currently aborts when being started with "-nic model=rocker" or with
-> "-net nic,model=rocker". This happens because the "rocker" device is not
-> a normal NIC but a switch, which has different properties. Thus we should
-> only consider real NIC devices for "-nic" and "-net". These devices can
-> be identified by the "netdev" property, so check for this property before
-> adding the device to the list.
-> 
-> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-> Fixes: 52310c3fa7dc854d ("net: allow using any PCI NICs in -net or -nic")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/pci/pci.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 70c66965f5..46214f8287 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -1887,7 +1887,18 @@ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
->          if (test_bit(DEVICE_CATEGORY_NETWORK, dc->categories) &&
->              dc->user_creatable) {
->              const char *name = object_class_get_name(list->data);
-> -            g_ptr_array_add(pci_nic_models, (gpointer)name);
-> +            /*
-> +             * A network device might also be something else than a NIC, see
-> +             * e.g. the "rocker" device. Thus we have to look for the "netdev"
-> +             * property, too. Unfortunately, some devices like virtio-net only
-> +             * create this property during instance_init, so we have to create
-> +             * a temporary instance here to be able to check it.
-> +             */
-> +            Object *obj = object_new_with_class(OBJECT_CLASS(dc));
-> +            if (object_property_find(obj, "netdev", NULL)) {
-> +                g_ptr_array_add(pci_nic_models, (gpointer)name);
-> +            }
-> +            object_unref(obj);
->          }
->          next = list->next;
->          g_slist_free_1(list);
-> 
+One might want to check which IOMMU version the host kernel
+provide. Add a trace event to see in which mode we opened
+our container.
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+v2: Only display string description (Eric)
+
+Supersedes: <20200526173542.28710-1-philmd@redhat.com>
+---
+ hw/vfio/common.c     | 19 ++++++++++++++-----
+ hw/vfio/trace-events |  1 +
+ 2 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 0b3593b3c0..f24450472e 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -1157,15 +1157,24 @@ static void vfio_put_address_space(VFIOAddressSpace *space)
+ static int vfio_get_iommu_type(VFIOContainer *container,
+                                Error **errp)
+ {
+-    int iommu_types[] = { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
+-                          VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOMMU };
++    static const struct {
++        int type;
++        const char *name;
++    } iommu[] = {
++        {VFIO_TYPE1v2_IOMMU, "Type1 (v2)"},
++        {VFIO_TYPE1_IOMMU, "Type1 (v1)"},
++        {VFIO_SPAPR_TCE_v2_IOMMU, "sPAPR TCE (v2)"},
++        {VFIO_SPAPR_TCE_IOMMU, "sPAPR TCE (v1)"}
++    };
+     int i;
+ 
+-    for (i = 0; i < ARRAY_SIZE(iommu_types); i++) {
+-        if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i])) {
+-            return iommu_types[i];
++    for (i = 0; i < ARRAY_SIZE(iommu); i++) {
++        if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu[i].type)) {
++            trace_vfio_get_iommu_type(iommu[i].name);
++            return iommu[i].type;
+         }
+     }
++    trace_vfio_get_iommu_type("Not available or not supported");
+     error_setg(errp, "No available IOMMU models");
+     return -EINVAL;
+ }
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index b1ef55a33f..d3f1e48618 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -115,6 +115,7 @@ vfio_region_sparse_mmap_header(const char *name, int index, int nr_areas) "Devic
+ vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned long end) "sparse entry %d [0x%lx - 0x%lx]"
+ vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t subtype) "%s index %d, %08x/%0x8"
+ vfio_dma_unmap_overflow_workaround(void) ""
++vfio_get_iommu_type(const char *type) "IOMMU type: %s"
+ 
+ # platform.c
+ vfio_platform_base_device_init(char *name, int groupid) "%s belongs to group #%d"
+-- 
+2.21.3
 
 
