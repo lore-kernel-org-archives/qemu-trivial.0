@@ -1,73 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdyPV-0004pn-WE
-	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 11:56:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54280)
+	id 1jdyXq-0006z1-AO
+	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 12:04:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdyPU-0004nZ-Id
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:56:04 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44054
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jdyXp-0006yl-Da
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 12:04:41 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:24754
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdyPS-0007hI-9n
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 11:56:03 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jdyXo-0003rN-3L
+ for qemu-trivial@nongnu.org; Wed, 27 May 2020 12:04:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590594960;
+ s=mimecast20190719; t=1590595478;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=YdePEd4ybfyY7U2+FqOlke5L5yf8ZLMowP5ujKzP0WI=;
- b=EC2fKd8FUtbduNX1okCzNMyfa1OVEfm69C0F3o73Ow3oA+Vuf/JpqrM73rQUNH5/wRLa84
- 9Jc73JNNFWSElFKIUVEiE/JtjMhPJpf4uFkCRIrVO/i4QxV1zpGDlHRFs96UJJcJ3oXWgS
- o8Lt8za9hLS4+1Gb1lhhbUQxR/ojZoQ=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-ihYuwqjuOcChIY5gkuZaXA-1; Wed, 27 May 2020 11:55:59 -0400
-X-MC-Unique: ihYuwqjuOcChIY5gkuZaXA-1
-Received: by mail-ed1-f71.google.com with SMTP id c10so10214491edw.17
- for <qemu-trivial@nongnu.org>; Wed, 27 May 2020 08:55:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YdePEd4ybfyY7U2+FqOlke5L5yf8ZLMowP5ujKzP0WI=;
- b=JwanLawsQOnl0akslnMn047SDHkVnOPqFk6j+HcqzyCBra/DckpbzhrJYJJ0xfpCdp
- IxFUrUAJchdXTdPtk/T3lW+8eQbUW/TchFFdfdq6I/xcQP2TwAqJw2R7VC6J5/sNgvZ1
- kwHwHOUKihjkky0ygTtxKxAKXH1MKNUpRig1Y3OZ+0HxJiB23995N+6urCT2Ms5K4mDj
- SISvxCJ12QtT5Jtj95k/GvbjMIBp+VKRWp1fT40eQR6vDWeD0SWPnKoHSFIKf3Zdjs8s
- UBJlf91DOVOxuCTZ5/5d4w/5h7RTeTTbldmjRrAz4Y7V8Oan/L8zeu4x9KBbxdWnAwqP
- Tu0g==
-X-Gm-Message-State: AOAM5300qmcixQizvfOJ6RMDtFyn3FE0hzwPo8REQlzE8AnLxX0FR3PN
- +HB/8ndlWawB3JA102eG1XqwlwYU9BRdH5iTvgldiQMaWgGW7dlpMFRNezbN28OIP39zX0Ko7pm
- evHBjFCWxlBnn+egNRg==
-X-Received: by 2002:a17:906:410a:: with SMTP id
- j10mr6530643ejk.378.1590594957874; 
- Wed, 27 May 2020 08:55:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBGdK4EJtBkeOhyS+VANinAUc/7ASWpLH8aEoWX0wolUEL5Btx8kwCDOLQc3uLP64e48b8Xg==
-X-Received: by 2002:a17:906:410a:: with SMTP id
- j10mr6530632ejk.378.1590594957632; 
- Wed, 27 May 2020 08:55:57 -0700 (PDT)
-Received: from x1w.redhat.com (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id y19sm2194116edq.54.2020.05.27.08.55.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 08:55:57 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Alex Williamson <alex.williamson@redhat.com>, Peter Xu <peterx@redhat.com>,
- qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2] hw/vfio/common: Trace in which mode an IOMMU is opened
-Date: Wed, 27 May 2020 17:55:55 +0200
-Message-Id: <20200527155555.6833-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hXsOpc+LwdaqTTLwjl0My7FDo7HqGubUkmkQxSsTZRI=;
+ b=QbW23dottD4aRd+iOx2RKZIlcDQfXlsktU3Nn4OKNmeFIO4qNDOJVFWu0VILq/nE9+DvDg
+ 33QNsGFHaidHlEy3NyMBI7c23CT5HmvBIxgToRStMdqjD1Nuty3QTpNCug8MwoX+lQV4nU
+ PH/HFp3ydEbTPusidxweHMpQV24JyHI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-409-faAs_DmMNLm1Z8Bw9tdC6Q-1; Wed, 27 May 2020 12:04:36 -0400
+X-MC-Unique: faAs_DmMNLm1Z8Bw9tdC6Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A657318A0732;
+ Wed, 27 May 2020 16:04:35 +0000 (UTC)
+Received: from gondolin (ovpn-114-205.ams2.redhat.com [10.36.114.205])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 27F691001925;
+ Wed, 27 May 2020 16:04:25 +0000 (UTC)
+Date: Wed, 27 May 2020 18:04:23 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+ Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org, Eric Auger
+ <eric.auger@redhat.com>
+Subject: Re: [PATCH v2] hw/vfio/common: Trace in which mode an IOMMU is opened
+Message-ID: <20200527180423.7f226442.cohuck@redhat.com>
+In-Reply-To: <20200527155555.6833-1-philmd@redhat.com>
+References: <20200527155555.6833-1-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=cohuck@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:45:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -90,70 +73,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 May 2020 15:56:04 -0000
+X-List-Received-Date: Wed, 27 May 2020 16:04:41 -0000
 
-One might want to check which IOMMU version the host kernel
-provide. Add a trace event to see in which mode we opened
-our container.
+On Wed, 27 May 2020 17:55:55 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-v2: Only display string description (Eric)
+> One might want to check which IOMMU version the host kernel
+> provide. Add a trace event to see in which mode we opened
+> our container.
+>=20
+> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: Only display string description (Eric)
 
-Supersedes: <20200526173542.28710-1-philmd@redhat.com>
----
- hw/vfio/common.c     | 19 ++++++++++++++-----
- hw/vfio/trace-events |  1 +
- 2 files changed, 15 insertions(+), 5 deletions(-)
+Also fine with me.
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 0b3593b3c0..f24450472e 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1157,15 +1157,24 @@ static void vfio_put_address_space(VFIOAddressSpace *space)
- static int vfio_get_iommu_type(VFIOContainer *container,
-                                Error **errp)
- {
--    int iommu_types[] = { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
--                          VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOMMU };
-+    static const struct {
-+        int type;
-+        const char *name;
-+    } iommu[] = {
-+        {VFIO_TYPE1v2_IOMMU, "Type1 (v2)"},
-+        {VFIO_TYPE1_IOMMU, "Type1 (v1)"},
-+        {VFIO_SPAPR_TCE_v2_IOMMU, "sPAPR TCE (v2)"},
-+        {VFIO_SPAPR_TCE_IOMMU, "sPAPR TCE (v1)"}
-+    };
-     int i;
- 
--    for (i = 0; i < ARRAY_SIZE(iommu_types); i++) {
--        if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i])) {
--            return iommu_types[i];
-+    for (i = 0; i < ARRAY_SIZE(iommu); i++) {
-+        if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu[i].type)) {
-+            trace_vfio_get_iommu_type(iommu[i].name);
-+            return iommu[i].type;
-         }
-     }
-+    trace_vfio_get_iommu_type("Not available or not supported");
-     error_setg(errp, "No available IOMMU models");
-     return -EINVAL;
- }
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index b1ef55a33f..d3f1e48618 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -115,6 +115,7 @@ vfio_region_sparse_mmap_header(const char *name, int index, int nr_areas) "Devic
- vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned long end) "sparse entry %d [0x%lx - 0x%lx]"
- vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t subtype) "%s index %d, %08x/%0x8"
- vfio_dma_unmap_overflow_workaround(void) ""
-+vfio_get_iommu_type(const char *type) "IOMMU type: %s"
- 
- # platform.c
- vfio_platform_base_device_init(char *name, int groupid) "%s belongs to group #%d"
--- 
-2.21.3
+>=20
+> Supersedes: <20200526173542.28710-1-philmd@redhat.com>
+> ---
+>  hw/vfio/common.c     | 19 ++++++++++++++-----
+>  hw/vfio/trace-events |  1 +
+>  2 files changed, 15 insertions(+), 5 deletions(-)
 
 
