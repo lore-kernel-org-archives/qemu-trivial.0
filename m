@@ -1,54 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jditZ-00056j-BW
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 19:22:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34792)
+	id 1jdmGt-0006ls-B4
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2020 22:58:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jditX-00056Y-Kr; Tue, 26 May 2020 19:22:03 -0400
-Resent-Date: Tue, 26 May 2020 19:22:03 -0400
-Resent-Message-Id: <E1jditX-00056Y-Kr@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21732)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdmGs-0006ld-CZ
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 22:58:22 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:58804
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jditV-0005KP-Sa; Tue, 26 May 2020 19:22:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1590535313; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=jFv9uNDUiHEU3QaTM7yo4Yp0k0rLl+kIVuXFmskPqinYO0IQqUckBbHfop60lqy6si4j9OIg6yksiVW4mbY8ikzQwCKyQs0Y1yv+AAcpv3MkikXnivb7jQMicvzmhhIAgYObAx159EYgQYaopsWJmyAACb6CrkjTGmSUQyoGyXE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1590535313;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=d8DeGr2CnG78yWuvBKjczgDPzkoAN+OOg9+FLkCDQcg=; 
- b=ObNi3W0AAc+ZmD93hhy47hm976Fn5H/9/yfdRrHrueZThHX4hpOWtgoOWB18ih/lFJxhm7mQuz4aN6K5lLaCMLVma1SkUpuPkJipbFj3JbFbqFxXtdmYDW/IubPxVebTHpbDGbzQiL2gN/AOn00F0DoXFWshIJCyukaSOBtbVUY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 159053531055082.80740704803623;
- Tue, 26 May 2020 16:21:50 -0700 (PDT)
-Message-ID: <159053530937.12401.10203156196787167758@45ef0f9c86ae>
-In-Reply-To: <20200526185132.1652355-1-eblake@redhat.com>
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jdmGq-0006Md-T5
+ for qemu-trivial@nongnu.org; Tue, 26 May 2020 22:58:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590548298;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5PPWpK4OLGyZzI0ktRVuW6UUh8pb3Uq3JvRMMj+bY8U=;
+ b=eSd4l/r++gnZO6cWx8B5TG66/GukUwSwfX2WrlMaX9Txy49vBWn94vSAiyhFJs8P2JHQOE
+ Xkuy9MxFeSApeOdh2MXoeYMgGPIn6GBcq1Ru3uj/UGW5cv9dMR9R6nIOH0UIvPLkXabPKb
+ xTwWqh/MVz2hrifjDR34WFwcZ9e9ZGo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-322-c-yd-CHoNJ2FNPGSkqnIEg-1; Tue, 26 May 2020 22:58:13 -0400
+X-MC-Unique: c-yd-CHoNJ2FNPGSkqnIEg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 37B99107B0E1;
+ Wed, 27 May 2020 02:58:12 +0000 (UTC)
+Received: from [10.3.112.88] (ovpn-112-88.phx2.redhat.com [10.3.112.88])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D986419D7B;
+ Wed, 27 May 2020 02:58:11 +0000 (UTC)
 Subject: Re: [PATCH] or1k: Fix compilation hiccup
-Reply-To: <qemu-devel@nongnu.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, shorne@gmail.com, proljc@gmail.com
+References: <159053530937.12401.10203156196787167758@45ef0f9c86ae>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <196f3bd3-b1e2-972c-7c74-281b3bf0d155@redhat.com>
+Date: Tue, 26 May 2020 21:58:11 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: eblake@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, shorne@gmail.com,
- proljc@gmail.com
-Date: Tue, 26 May 2020 16:21:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 19:21:59
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+In-Reply-To: <159053530937.12401.10203156196787167758@45ef0f9c86ae>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 22:58:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,30 +74,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2020 23:22:04 -0000
+X-List-Received-Date: Wed, 27 May 2020 02:58:22 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyNjE4NTEzMi4xNjUy
-MzU1LTEtZWJsYWtlQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2
-ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBp
-bmZvcm1hdGlvbjoKCk1lc3NhZ2UtaWQ6IDIwMjAwNTI2MTg1MTMyLjE2NTIzNTUtMS1lYmxha2VA
-cmVkaGF0LmNvbQpTdWJqZWN0OiBbUEFUQ0hdIG9yMWs6IEZpeCBjb21waWxhdGlvbiBoaWNjdXAK
-VHlwZTogc2VyaWVzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCBy
-ZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRp
-ZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0
-IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2tw
-YXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKU3dpdGNo
-ZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwpkOTZkMmZiIG9yMWs6IEZpeCBjb21waWxhdGlvbiBo
-aWNjdXAKCj09PSBPVVRQVVQgQkVHSU4gPT09CkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5k
-IHRoYXQgJyonIChjdHg6V3hWKQojMzM6IEZJTEU6IGh3L29wZW5yaXNjL29wZW5yaXNjX3NpbS5j
-OjEzMjoKKyAgICBxZW11X2lycSAqY3B1X2lycXNbMl0gPSB7fTsKICAgICAgICAgICAgICBeCgp0
-b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDggbGluZXMgY2hlY2tlZAoKQ29tbWl0IGQ5NmQy
-ZmJiYzVkYiAob3IxazogRml4IGNvbXBpbGF0aW9uIGhpY2N1cCkgaGFzIHN0eWxlIHByb2JsZW1z
-LCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRp
-dmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlO
-VEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29k
-ZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xv
-Z3MvMjAyMDA1MjYxODUxMzIuMTY1MjM1NS0xLWVibGFrZUByZWRoYXQuY29tL3Rlc3RpbmcuY2hl
-Y2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkg
-YnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRi
-YWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 5/26/20 6:21 PM, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20200526185132.1652355-1-eblake@redhat.com/
+> 
+> 
+> 
+> Hi,
+> 
+> This series seems to have some coding style problems. See output below for
+> more information:
+> 
+
+> === OUTPUT BEGIN ===
+> ERROR: spaces required around that '*' (ctx:WxV)
+> #33: FILE: hw/openrisc/openrisc_sim.c:132:
+> +    qemu_irq *cpu_irqs[2] = {};
+>                ^
+> 
+> total: 1 errors, 0 warnings, 8 lines checked
+> 
+> Commit d96d2fbbc5db (or1k: Fix compilation hiccup) has style problems, please review.  If any of these errors
+> are false positives report them to the maintainer, see
+> CHECKPATCH in MAINTAINERS.
+
+False positive, due to 'qemu_irq' not following the normal naming 
+conventions for typedefs.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
 
