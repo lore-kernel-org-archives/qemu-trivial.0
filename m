@@ -1,108 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jdqTs-0008Pz-VI
-	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 03:28:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42792)
+	id 1jdqZq-0004eg-FU
+	for mharc-qemu-trivial@gnu.org; Wed, 27 May 2020 03:34:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdqTq-0008NP-O7
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 03:28:02 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:31196
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jdqTo-0003TF-VZ
- for qemu-trivial@nongnu.org; Wed, 27 May 2020 03:28:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590564479;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Z2/c0Aqc+jPAz37cBdOdNxUgJnmWJgrosIaFchyc4EY=;
- b=Jn0NMqyY7vRlxdATIQpoS+XvPCXThei7jqe1ybisPAx78V80mVNb8YnjS5m9C7BJruC+wD
- +I0QlHECnponhiRSml3582K0W3QAZ1/Gzaqhddb8HH3Tbr+i0FBtyC5DeL8Gu8yPeSLIP4
- 5fA+xlY5IKI9fIkpyoscL9y7vQRViBg=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-KZw4ox1QNsGoitH1b9DiPA-1; Wed, 27 May 2020 03:27:56 -0400
-X-MC-Unique: KZw4ox1QNsGoitH1b9DiPA-1
-Received: by mail-wr1-f71.google.com with SMTP id l1so7187888wrc.8
- for <qemu-trivial@nongnu.org>; Wed, 27 May 2020 00:27:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdqZp-0004eV-DV; Wed, 27 May 2020 03:34:13 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52954)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jdqZo-00008g-Io; Wed, 27 May 2020 03:34:13 -0400
+Received: by mail-wm1-x341.google.com with SMTP id r9so2058751wmh.2;
+ Wed, 27 May 2020 00:34:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=HayDOPIbH9zCrw7A7S1WZCdFRGhQuFsovnn0qGB3c+s=;
+ b=SAic9lNaD0N7YWyr01oEM2vI6GpGL6XI3eVSzbL94DdTo8h8sktnIlTZdrmbrxHaKv
+ ET/SRmOLAD/GVLDp0dmognrhBtzr6FsjpKCYoUXSk1ydYd/ggJTDBAPdOdyPH4TFmQ7R
+ GzSzPRv7fvZ3uXDKTaxm7vykH+lhNJzI8KF1huQTXDpb5WqeORQk3w2pZX3DKAbDcmtC
+ HB3bYZoEi6VgETOo+dQXjGxg5cRQwawL9KRszQcMmNfO17yVS8MdOlS5tT/W8WOnscqB
+ IpUbKgEU/UUfITb+XaXb8zWKZKj8Ff1Byse3R0gREyBfJtgxt7leEQOisS20C8d1WF1q
+ c3LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=Z2/c0Aqc+jPAz37cBdOdNxUgJnmWJgrosIaFchyc4EY=;
- b=gmnfYjL/l7foXFMOsGLwhhPix/msy+chc2t3I0WwoB0aYww4xFO9A6svHsA8U0bf4P
- g+jzBthbSy9b8WK4MEl/lk2OUhq3ZuyFmEg9/nG/PDNi0L11YlN4MiAd2ZQkF0bGTuYW
- OYrrOZcriRxdzX/CjXCxWUIIGB3wsaZ4JQQjtbOMTh2v434xZQgE+yytJAUqUl6lpxDf
- PYqZfU2K8eTU7fKOQqA+Uy0glNaTA8h3hwxHsDry9QQw3W+der9RpvkwywbAMt6hRVLk
- Htspb37+MnDnYXyjuaSAv7Fd6yqcfT6N9GVbfF3qpT4XGY2TESHcjUs7P2oXE4VYefcK
- 1f5A==
-X-Gm-Message-State: AOAM531C+6yMgWFu7penkKxWuCGThS4kvcLHMzJi9MS3fhG41skqvEM8
- 3/2JXFewWfCWCqjp98eUsveFkMNbGVPbOsNAgiN6F3FY+/5G/fW5sUOXcM+tU1SGg80s0RkOWtO
- +jDUi42KuVc+W1ZNodA==
-X-Received: by 2002:adf:f512:: with SMTP id q18mr25332602wro.38.1590564475072; 
- Wed, 27 May 2020 00:27:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxv00IBPjCoazyPRwkEKCJmHmxHEMZNtLkSzuQlakVZMDfuy4O0kWegqGxIfTNEJwjObNwZRg==
-X-Received: by 2002:adf:f512:: with SMTP id q18mr25332581wro.38.1590564474749; 
- Wed, 27 May 2020 00:27:54 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HayDOPIbH9zCrw7A7S1WZCdFRGhQuFsovnn0qGB3c+s=;
+ b=llk4SzD+vCFx8P8bKhPhTBCUlFnc3opNb5oXeRvauYFbk81zLM2FAOLvxMXAX/rlCL
+ iOTFMxqwT0wwU80/a28+lfzOEnQPqwSyMJ4nFcm8CQxDsPz/pxNYVgi1rVgwkOvH/kaD
+ p0Bj3z1vbVKCGqtLa9pwBRExbyzGRhvWP5qSoJa9T4nZqvwzZAQRntwpkMgGggDdao9U
+ gKyiahxUr3m8lV5DSjukR48FGLcbxlvdaBUgbulBJUjq4G0ll3AOEjRF6PgcnNlx+/m6
+ vi+BILPtdwQa2Fv05/GDw+BXu88Fn4jPXdoX9Y78FHM9HC9x8XGStubxXDMy58BpL3Ih
+ L2Tg==
+X-Gm-Message-State: AOAM533YTfxlzNs9KSmOQrC5wcCEDvYaGHwfsX4rnXVgtYPfqwNVHhb2
+ 6dxWa1Q746JGnYJi8k/7Lwh6Iv26
+X-Google-Smtp-Source: ABdhPJz58Hi5rlQF/dH17u+V4ZAWsEawI9zI4v2/C0X23Aw9SkZk9A0bOCb23lTBKdGkxIKTaxVfzQ==
+X-Received: by 2002:a1c:b7d5:: with SMTP id h204mr3126162wmf.39.1590564850174; 
+ Wed, 27 May 2020 00:34:10 -0700 (PDT)
 Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id o10sm1950572wrq.40.2020.05.27.00.27.53
+ by smtp.gmail.com with ESMTPSA id l17sm1877446wmi.3.2020.05.27.00.34.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2020 00:27:54 -0700 (PDT)
-Subject: Re: [PATCH] or1k: Fix compilation hiccup
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Jia Liu <proljc@gmail.com>, Bug 1874073 <1874073@bugs.launchpad.net>,
- Martin Liska <mliska@suse.cz>, Peter Maydell <peter.maydell@linaro.org>
-References: <20200526185132.1652355-1-eblake@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <e6f9b1b0-2c57-4089-4907-053a553e4180@redhat.com>
-Date: Wed, 27 May 2020 09:27:52 +0200
+ Wed, 27 May 2020 00:34:09 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] hw/registerfields: Prefix local variables with underscore
+ in macros
+To: Alistair Francis <alistair23@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+References: <20200510203457.10546-1-f4bug@amsat.org>
+ <7bdb49c1-5396-0bf4-5f83-3849910e5d68@amsat.org>
+ <CAKmqyKOXjNTgUtvwBnm-=fY-i8zX=k23TkoWSM=3WuWAHioXAQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <23ff7662-6dd9-1bee-6004-c89aaa7308dd@amsat.org>
+Date: Wed, 27 May 2020 09:34:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200526185132.1652355-1-eblake@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAKmqyKOXjNTgUtvwBnm-=fY-i8zX=k23TkoWSM=3WuWAHioXAQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 01:25:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,48 +88,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 May 2020 07:28:03 -0000
+X-List-Received-Date: Wed, 27 May 2020 07:34:13 -0000
 
-On 5/26/20 8:51 PM, Eric Blake wrote:
-> On my Fedora 32 machine, gcc 10.1.1 at -O2 (the default for a bare
-> './configure') has a false-positive complaint:
-> 
->   CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-> /home/eblake/qemu/hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
-> /home/eblake/qemu/hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->    87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
->       |                                  ~~~~~~~~^~~
-> 
-> Initializing both pointers of cpu_irqs[] to NULL is sufficient to shut
-> up the compiler, even though they are definitely assigned in
-> openrisc_sim_init() prior to the inlined call to
-> openrisc_sim_ompic_init() containing the line in question.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->  hw/openrisc/openrisc_sim.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-> index d08ce6181199..95011a8015b4 100644
-> --- a/hw/openrisc/openrisc_sim.c
-> +++ b/hw/openrisc/openrisc_sim.c
-> @@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
->      const char *kernel_filename = machine->kernel_filename;
->      OpenRISCCPU *cpu = NULL;
->      MemoryRegion *ram;
-> -    qemu_irq *cpu_irqs[2];
-> +    qemu_irq *cpu_irqs[2] = {};
+Hi Alistair,
 
-Ah I now remembered why this warning sound familiar:
-https://bugs.launchpad.net/qemu/+bug/1874073
-
-Peter suggested a different fix, I tested it, and was expecting Martin
-Liska to post an updated patch.
-
->      qemu_irq serial_irq;
->      int n;
->      unsigned int smp_cpus = machine->smp.cpus;
+On 5/27/20 12:49 AM, Alistair Francis wrote:
+> On Tue, May 26, 2020 at 9:50 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> ping?
 > 
+> I'll send a PR with this.
 
+Well, this was only a "friendly ping", there is no hurry, I can wait for
+the next qemu-trivial pull request.
+
+Thanks!
+
+Phil.
+
+> 
+> Alistair
+> 
+>>
+>> On 5/10/20 10:34 PM, Philippe Mathieu-Daudé wrote:
+>>> One can name a local variable holding a value as 'v', but it
+>>> currently clashes with the registerfields macros. To save others
+>>> to debug the same mistake, prefix the macro's local variables
+>>> with an underscore.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  include/hw/registerfields.h | 40 ++++++++++++++++++-------------------
+>>>  1 file changed, 20 insertions(+), 20 deletions(-)
+>>>
+>>> diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+>>> index 0407edb7ec..93fa4a84c2 100644
+>>> --- a/include/hw/registerfields.h
+>>> +++ b/include/hw/registerfields.h
+>>> @@ -66,35 +66,35 @@
+>>>  #define FIELD_DP8(storage, reg, field, val) ({                            \
+>>>      struct {                                                              \
+>>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+>>> -    } v = { .v = val };                                                   \
+>>> -    uint8_t d;                                                            \
+>>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+>>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+>>> -    d; })
+>>> +    } _v = { .v = val };                                                  \
+>>> +    uint8_t _d;                                                           \
+>>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+>>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+>>> +    _d; })
+>>>  #define FIELD_DP16(storage, reg, field, val) ({                           \
+>>>      struct {                                                              \
+>>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+>>> -    } v = { .v = val };                                                   \
+>>> -    uint16_t d;                                                           \
+>>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+>>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+>>> -    d; })
+>>> +    } _v = { .v = val };                                                  \
+>>> +    uint16_t _d;                                                          \
+>>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+>>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+>>> +    _d; })
+>>>  #define FIELD_DP32(storage, reg, field, val) ({                           \
+>>>      struct {                                                              \
+>>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+>>> -    } v = { .v = val };                                                   \
+>>> -    uint32_t d;                                                           \
+>>> -    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+>>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+>>> -    d; })
+>>> +    } _v = { .v = val };                                                  \
+>>> +    uint32_t _d;                                                          \
+>>> +    _d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+>>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+>>> +    _d; })
+>>>  #define FIELD_DP64(storage, reg, field, val) ({                           \
+>>>      struct {                                                              \
+>>>          unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+>>> -    } v = { .v = val };                                                   \
+>>> -    uint64_t d;                                                           \
+>>> -    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+>>> -                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+>>> -    d; })
+>>> +    } _v = { .v = val };                                                  \
+>>> +    uint64_t _d;                                                          \
+>>> +    _d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+>>> +                  R_ ## reg ## _ ## field ## _LENGTH, _v.v);              \
+>>> +    _d; })
+>>>
+>>>  /* Deposit a field to array of registers.  */
+>>>  #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
+>>>
+>>
+> 
 
