@@ -1,65 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jei3Y-0002IN-HA
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 12:40:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34038)
+	id 1jeiHL-0003Hb-TB
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 12:54:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jei3W-0002Gm-PG
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:40:26 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:41863)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jeiHK-0003HM-0N; Fri, 29 May 2020 12:54:42 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51338)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jei3V-0006RI-JO
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:40:26 -0400
-Received: by mail-ot1-x343.google.com with SMTP id r24so2395726ota.8
- for <qemu-trivial@nongnu.org>; Fri, 29 May 2020 09:40:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e2M+Wwc1mwNcFUeT6IxqoZrHvnQq+IKdo92Er62pcuk=;
- b=pMXlqQYPoyYb9P2/PmnjktbAv3+6X18oT/KBbIEiV44vscLU5L9+/05LuitKVnwpR/
- bus4ppqjC9U3Gk7lOyJ8yYb8NP7LKov+ItzKAf3j6XnjfRqNAEI5oNnqu11LjUXxIT14
- v7spxgtGLbbUsfWfcl8Q5qs6hdPdY3VnZ6d085nR3zEuG8c87AK3LBeZJzfuPgKMgq8n
- tTBdQAogLF48aHRLGwoOeEYwDDxSS3z5LY2fJSxjmuc8kXD+ULJr+sL3cQ0NGJWNxCmk
- VZPyg7tFepeWjbkcJdcZGPPYRx7NqBglf0FaFkTHdWf2NrBQmBwRVVEjwNzLZiQRWX8K
- +Kig==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jeiHJ-0002D4-An; Fri, 29 May 2020 12:54:41 -0400
+Received: by mail-wm1-x344.google.com with SMTP id u13so4222329wml.1;
+ Fri, 29 May 2020 09:54:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+ivlxg/9+L3ywVTltPTiy1/JEXPqEKb3PlIN18vRHq8=;
+ b=seTKob3dpRodmMIR8pF5r7fR55PaCsnfR2UfBwUaQqusJNxyD9cUutEK9517Wt5O1y
+ 7O32EH+miwAYBICRroX2krEf06uOtvMlsv8PVg0SIHtFEEzQMcivMnqU3PmMgsx3gkev
+ OoSfZLxVkDRCpHfNUjwzmfWqfmXABh6+sGbM06TIiEwI9rl1tuGNftCZBSNlAbWI8vPa
+ ORHce+damNatZiafN2ajdc7U7IArRWst4VMws3VWHmbHvZ1fK8njx1LltxcdMXk3To1k
+ +cmXHERzb8XRat4aF/QUypfotBn/F/bA5Yx4znx2OHnedl+CjJlkTuEduIFQo3c3LcjQ
+ Mu0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=e2M+Wwc1mwNcFUeT6IxqoZrHvnQq+IKdo92Er62pcuk=;
- b=h6PG25Vbs2v16hkRyVZ2QxdB0e7t0hV6P3woGCy7v9WG52TVY/J52sBcn/PPbLq9ps
- CR8e0LEovtRKMtMpW5puFXW85IgVIIfyPHwdhRklpWNLY0QHB+Hda7RxRjw5eMyB7ekw
- uk4dyUtevGRECc/Xe6pMgc5Mw4srPkMsv0kY6D5uq0ec7A2BVMeyyQpZMUaWBYuKZMs5
- vp0WrIC7T8cItD/QWsfNgrF+tlas6LmLauxmZMwZTZWuIDbz6FYHO/+i+/yQ9DDdabSn
- 4eEWGGoWIKxymNCZ/045e4cCZPlhI35n9Kfg0h8LTiqE+yGkICfcgv0glWnxaKbUmSoY
- 0rzg==
-X-Gm-Message-State: AOAM5331mxu98678uVliWfQyhJ5TWhrUGLzf6SRvle8sGa5G3t4niLQ1
- c0nWLfaeOoGeOsGreQaLvfmt7sLyfqLxCt+ppu87/g==
-X-Google-Smtp-Source: ABdhPJw3zc5/KFIzARFhwhChrf9sDj1hVSANgCxST19qoKXhHWvlmm3kznuLQa/YoBMCeRBGzNYZQAK6nZlKT0nmF04=
-X-Received: by 2002:a9d:3623:: with SMTP id w32mr6691253otb.91.1590770424218; 
- Fri, 29 May 2020 09:40:24 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=+ivlxg/9+L3ywVTltPTiy1/JEXPqEKb3PlIN18vRHq8=;
+ b=pc2S7ybi6zqI9VYbptzuGh0hLaNcn6TQPRJP+uqyMtOI8VYrqST5sUnaLPPV3hxyr0
+ EdUjdUdylEnX3B5odci4NPmdukzi6ZvIoFvamDmmhM3fWhHhl1bT2QT9HSnjgIsT71Ll
+ HUH7s8Ak5pN8H3I0utOFI4Y40KL2tWnpbRSSmgiIq+c8OgcJeJVa2Fcqrk5K7ShewMUz
+ f4ThEbfJEHSklO2TE9bx/3fhWyOsyUtkhp5OY1kUepAnmzYsixdiO+0BOzB/iPPqSpKA
+ MkSYIVS85gFs6qhjhafvh5Abv6Tfz/UjcYleC0EpfJZqDiWAwL6gAH4lxf/94by02Lan
+ ODxg==
+X-Gm-Message-State: AOAM532xaUIzN4GFW3eQ6GJPAwsSFUxc9i1O+rR0tksEAxPXV7+EUgg7
+ qscYWq//CWNnVwUrLcO0icpUkIiT
+X-Google-Smtp-Source: ABdhPJyzoIVwp5JOk8FKRwu6YqT+11VeQwRGo7C7BmSMNVIK8Mh5KuNZOZlDXxC6sPQ9Wz0b9shQKw==
+X-Received: by 2002:a1c:3905:: with SMTP id g5mr9322502wma.75.1590771278262;
+ Fri, 29 May 2020 09:54:38 -0700 (PDT)
+Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.43])
+ by smtp.gmail.com with ESMTPSA id v24sm13801wmh.45.2020.05.29.09.54.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 May 2020 09:54:37 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] hw/display/cirrus_vga: Fix code mis-indentation
+Date: Fri, 29 May 2020 18:54:36 +0200
+Message-Id: <20200529165436.23573-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200526185132.1652355-1-eblake@redhat.com>
- <m1d06msod9.fsf@redhat.com>
-In-Reply-To: <m1d06msod9.fsf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 29 May 2020 17:40:13 +0100
-Message-ID: <CAFEAcA9Huery0AeUFsLVrcK4bUGibg1f-m8gMuMiJgnr+Hj7CA@mail.gmail.com>
-Subject: Re: [PATCH] or1k: Fix compilation hiccup
-To: Christophe de Dinechin <dinechin@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Stafford Horne <shorne@gmail.com>, Jia Liu <proljc@gmail.com>, 
- QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -74,30 +81,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2020 16:40:27 -0000
+X-List-Received-Date: Fri, 29 May 2020 16:54:42 -0000
 
-On Fri, 29 May 2020 at 17:23, Christophe de Dinechin
-<dinechin@redhat.com> wrote:
-> On 2020-05-26 at 20:51 CEST, Eric Blake wrote...
-> > diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-> > index d08ce6181199..95011a8015b4 100644
-> > --- a/hw/openrisc/openrisc_sim.c
-> > +++ b/hw/openrisc/openrisc_sim.c
-> > @@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
-> >      const char *kernel_filename = machine->kernel_filename;
-> >      OpenRISCCPU *cpu = NULL;
-> >      MemoryRegion *ram;
-> > -    qemu_irq *cpu_irqs[2];
-> > +    qemu_irq *cpu_irqs[2] = {};
->
-> Why is the value [2] correct here? The loop that initializes loops over
-> machine->smp.cpus. Is it always less than 2 on this machine?
+While replacing fprintf() by qemu_log_mask() in commit
+2b55f4d3504, we incorrectly used a 'tab = 4 spaces'
+alignment, leading to misindented new code. Fix now.
 
-Yes: openrisc_sim_machine_init() sets mc->max_cpus = 2.
-My suggestion of adding an assert() is essentially telling the
-compiler that indeed smp_cpus must always be in the range [1,2],
-which we can tell but it can't.
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/display/cirrus_vga.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index 92c197cdde..212d6f5e61 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -1032,9 +1032,9 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
+         } else {
+ 	    if (s->cirrus_blt_mode & CIRRUS_BLTMODE_TRANSPARENTCOMP) {
+ 		if (s->cirrus_blt_pixelwidth > 2) {
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "cirrus: src transparent without colorexpand "
+-                          "must be 8bpp or 16bpp\n");
++                    qemu_log_mask(LOG_GUEST_ERROR,
++                                  "cirrus: src transparent without colorexpand "
++                                  "must be 8bpp or 16bpp\n");
+ 		    goto bitblt_ignore;
+ 		}
+ 		if (s->cirrus_blt_mode & CIRRUS_BLTMODE_BACKWARDS) {
+-- 
+2.21.3
+
 
