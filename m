@@ -1,75 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jeiHL-0003Hb-TB
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 12:54:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36634)
+	id 1jeluB-0002wQ-QF
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 16:47:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jeiHK-0003HM-0N; Fri, 29 May 2020 12:54:42 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51338)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jeiHJ-0002D4-An; Fri, 29 May 2020 12:54:41 -0400
-Received: by mail-wm1-x344.google.com with SMTP id u13so4222329wml.1;
- Fri, 29 May 2020 09:54:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+ivlxg/9+L3ywVTltPTiy1/JEXPqEKb3PlIN18vRHq8=;
- b=seTKob3dpRodmMIR8pF5r7fR55PaCsnfR2UfBwUaQqusJNxyD9cUutEK9517Wt5O1y
- 7O32EH+miwAYBICRroX2krEf06uOtvMlsv8PVg0SIHtFEEzQMcivMnqU3PmMgsx3gkev
- OoSfZLxVkDRCpHfNUjwzmfWqfmXABh6+sGbM06TIiEwI9rl1tuGNftCZBSNlAbWI8vPa
- ORHce+damNatZiafN2ajdc7U7IArRWst4VMws3VWHmbHvZ1fK8njx1LltxcdMXk3To1k
- +cmXHERzb8XRat4aF/QUypfotBn/F/bA5Yx4znx2OHnedl+CjJlkTuEduIFQo3c3LcjQ
- Mu0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=+ivlxg/9+L3ywVTltPTiy1/JEXPqEKb3PlIN18vRHq8=;
- b=pc2S7ybi6zqI9VYbptzuGh0hLaNcn6TQPRJP+uqyMtOI8VYrqST5sUnaLPPV3hxyr0
- EdUjdUdylEnX3B5odci4NPmdukzi6ZvIoFvamDmmhM3fWhHhl1bT2QT9HSnjgIsT71Ll
- HUH7s8Ak5pN8H3I0utOFI4Y40KL2tWnpbRSSmgiIq+c8OgcJeJVa2Fcqrk5K7ShewMUz
- f4ThEbfJEHSklO2TE9bx/3fhWyOsyUtkhp5OY1kUepAnmzYsixdiO+0BOzB/iPPqSpKA
- MkSYIVS85gFs6qhjhafvh5Abv6Tfz/UjcYleC0EpfJZqDiWAwL6gAH4lxf/94by02Lan
- ODxg==
-X-Gm-Message-State: AOAM532xaUIzN4GFW3eQ6GJPAwsSFUxc9i1O+rR0tksEAxPXV7+EUgg7
- qscYWq//CWNnVwUrLcO0icpUkIiT
-X-Google-Smtp-Source: ABdhPJyzoIVwp5JOk8FKRwu6YqT+11VeQwRGo7C7BmSMNVIK8Mh5KuNZOZlDXxC6sPQ9Wz0b9shQKw==
-X-Received: by 2002:a1c:3905:: with SMTP id g5mr9322502wma.75.1590771278262;
- Fri, 29 May 2020 09:54:38 -0700 (PDT)
-Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id v24sm13801wmh.45.2020.05.29.09.54.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2020 09:54:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] hw/display/cirrus_vga: Fix code mis-indentation
-Date: Fri, 29 May 2020 18:54:36 +0200
-Message-Id: <20200529165436.23573-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jehmA-0002ed-2I
+ for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:22:30 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:40328
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jehm6-0005OX-LF
+ for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:22:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590769343;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6LiA7IcTgcwXaLS54JAhevAXGEaouaGh4rapnm2otjE=;
+ b=jKoN1AvM5W4CPn3I7Ks0Fjgmc07IK+wSXa1rD5MKBw80JbkwomCD+mrKiuqb+vOktCtXMK
+ bmdaOxAuiA5SxZpKk2EiXLJTMBP7JZfXz3BBj7zwJcqR2GayjRSvym+Gv59jGh3cSvv9El
+ cQQnbwNZTbxKUCqM508XWHqyMnXG2OE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-492-IhMZgKo8P2CG_A5usDDPnA-1; Fri, 29 May 2020 12:22:22 -0400
+X-MC-Unique: IhMZgKo8P2CG_A5usDDPnA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0F3D1902EA0;
+ Fri, 29 May 2020 16:22:20 +0000 (UTC)
+Received: from ptitpuce (ovpn-113-93.ams2.redhat.com [10.36.113.93])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5EB555D9EF;
+ Fri, 29 May 2020 16:22:03 +0000 (UTC)
+References: <20200526185132.1652355-1-eblake@redhat.com>
+User-agent: mu4e 1.3.9; emacs 26.2
+From: Christophe de Dinechin <dinechin@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Jia Liu <proljc@gmail.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH] or1k: Fix compilation hiccup
+In-reply-to: <20200526185132.1652355-1-eblake@redhat.com>
+Date: Fri, 29 May 2020 18:21:54 +0200
+Message-ID: <m1d06msod9.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=dinechin@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/29 03:05:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 29 May 2020 16:47:03 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,36 +75,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2020 16:54:42 -0000
+X-List-Received-Date: Fri, 29 May 2020 16:22:30 -0000
 
-While replacing fprintf() by qemu_log_mask() in commit
-2b55f4d3504, we incorrectly used a 'tab = 4 spaces'
-alignment, leading to misindented new code. Fix now.
 
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/cirrus_vga.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On 2020-05-26 at 20:51 CEST, Eric Blake wrote...
+> On my Fedora 32 machine, gcc 10.1.1 at -O2 (the default for a bare
+> './configure') has a false-positive complaint:
+>
+>   CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
+> /home/eblake/qemu/hw/openrisc/openrisc_sim.c: In function =E2=80=98openri=
+sc_sim_init=E2=80=99:
+> /home/eblake/qemu/hw/openrisc/openrisc_sim.c:87:42: error: =E2=80=98cpu_i=
+rqs[0]=E2=80=99 may be used uninitialized in this function [-Werror=3Dmaybe=
+-uninitialized]
+>    87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
+>       |                                  ~~~~~~~~^~~
+>
+> Initializing both pointers of cpu_irqs[] to NULL is sufficient to shut
+> up the compiler, even though they are definitely assigned in
+> openrisc_sim_init() prior to the inlined call to
+> openrisc_sim_ompic_init() containing the line in question.
+>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  hw/openrisc/openrisc_sim.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
+> index d08ce6181199..95011a8015b4 100644
+> --- a/hw/openrisc/openrisc_sim.c
+> +++ b/hw/openrisc/openrisc_sim.c
+> @@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
+>      const char *kernel_filename =3D machine->kernel_filename;
+>      OpenRISCCPU *cpu =3D NULL;
+>      MemoryRegion *ram;
+> -    qemu_irq *cpu_irqs[2];
+> +    qemu_irq *cpu_irqs[2] =3D {};
 
-diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-index 92c197cdde..212d6f5e61 100644
---- a/hw/display/cirrus_vga.c
-+++ b/hw/display/cirrus_vga.c
-@@ -1032,9 +1032,9 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
-         } else {
- 	    if (s->cirrus_blt_mode & CIRRUS_BLTMODE_TRANSPARENTCOMP) {
- 		if (s->cirrus_blt_pixelwidth > 2) {
--            qemu_log_mask(LOG_GUEST_ERROR,
--                          "cirrus: src transparent without colorexpand "
--                          "must be 8bpp or 16bpp\n");
-+                    qemu_log_mask(LOG_GUEST_ERROR,
-+                                  "cirrus: src transparent without colorexpand "
-+                                  "must be 8bpp or 16bpp\n");
- 		    goto bitblt_ignore;
- 		}
- 		if (s->cirrus_blt_mode & CIRRUS_BLTMODE_BACKWARDS) {
--- 
-2.21.3
+Why is the value [2] correct here? The loop that initializes loops over
+machine->smp.cpus. Is it always less than 2 on this machine?
+
+
+>      qemu_irq serial_irq;
+>      int n;
+>      unsigned int smp_cpus =3D machine->smp.cpus;
+
+
+--
+Cheers,
+Christophe de Dinechin (IRC c3d)
 
 
