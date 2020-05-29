@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jeeg9-0006UC-E5
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 09:04:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37188)
+	id 1jef10-0007TK-5G
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 09:25:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jeeg7-0006Tl-A5
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 09:04:03 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:41241)
+ id 1jef0w-0007OR-LM
+ for qemu-trivial@nongnu.org; Fri, 29 May 2020 09:25:35 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:33735)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jeeg6-0002EZ-2e
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 09:04:02 -0400
-Received: by mail-oi1-x243.google.com with SMTP id 23so2455069oiq.8
- for <qemu-trivial@nongnu.org>; Fri, 29 May 2020 06:04:01 -0700 (PDT)
+ id 1jef0u-0004YZ-53
+ for qemu-trivial@nongnu.org; Fri, 29 May 2020 09:25:34 -0400
+Received: by mail-oi1-x241.google.com with SMTP id r67so2565700oih.0
+ for <qemu-trivial@nongnu.org>; Fri, 29 May 2020 06:25:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iC5m7M0pMiRfhlYPJA7LJN22SuRDWQ/dAo6Ln1ruTyo=;
- b=w8IbJiPg/KmlmEW0ot5jPvBi55SiLra+fXU08XVvdTQPFM86Ovgqg3siEs6b53Cnu8
- xOomPEFEL+H33MaqbLNyUVlfk69T6mNqQ2badjpORCwjbY1MNm16U5P7OhGF50k2MoHj
- uC5onHQwmCOA6Kiiv7Z8qlUUClLyfJ0MbdHX6W+sPQfJugBWRqzdZ72B+GrW5uSDaMgL
- SRu1qt6qQlcAz5Xy19NfbvYjtQeISg2kUyKJGEq15kjOtAC8lX0ZoyT19qFwTOHW/0G5
- CUWdD58xnkW/gsKCzIM3HQ5fOkbvKDXZkreC8QDKpJ4l/OKmstuu8s+MCPeHDsnUdA40
- h6mQ==
+ :cc:content-transfer-encoding;
+ bh=btgoFOOyR201ip2U5xlh75C3/9fSQsab6c8vWsLd7P4=;
+ b=NuxkKdvNH3Ml2auKBoV2zLyLN4/FqjwIxufUiCdgDGEfKfw1XxGczx+UQ5NwEJsxeE
+ 080lEVkgPxa8r6xPQIPBv/15lS9xI7jrfQuaonvVKcS4w08BRhLfcmFiBLsePbcxxq0l
+ KAaledeB98PniOyge4mrugyabLS+CsfOzBSstYIqmpuAiKTNhXaRACNtgnsocoxE3pFX
+ ES9aL7yDEnRy9Mhr91q5F7A6YNkOa8q55CXD3VUlEvqTRZFL14qpx7QAYImAjqrslaDS
+ er4APZSqstq91l1sYNCb4flgPVtbqAhVHidDFk0l6UIdLpqVO7UbUHEl3S3ZU0bTrEpF
+ IrzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iC5m7M0pMiRfhlYPJA7LJN22SuRDWQ/dAo6Ln1ruTyo=;
- b=Y0Gkk6whkWG5Tgkc0y7GE+FBIIA9okyqYF8PKMz8QKhBPUF1ITYgeAuxm97QqEQEy9
- 1pU6V8XGWzmmlUbZNidL9jxKsbd1WU0Odm+xQzExUoKs1JgrnWBv5dKx9ED6uenDtEPA
- Y/ZC+bIm9lHfFssAvIhJE6SmdSQjdqakD19siKUSqWUT/dDOLkMV+Wj1FH6yohiaMJsF
- 3EQMnKKa1DQMmsyyLdrCCq1YkMqb15ExaNhHwfcgNE53hVlxGQ8vA+e2IXKNNEHdIEhT
- brfz3aEXokhjZw97RQBswtGnr77OsFe8Se/I1D79fT4wEM67GGtdqgQ7Y0vMpab83vK8
- MF9g==
-X-Gm-Message-State: AOAM531jPuWsqfcgg83PZCo/zAKph1/OTlQYEaEbZqz79B9MjJewj3E/
- EAtdOkDwJ2wW6PEKipMUBubHMoXARFOjTw2O2hN/7Q==
-X-Google-Smtp-Source: ABdhPJxwk9JDts+7nF2avf2lzAsAKmlrMBDYBXqIA8prIS1XtXIDeKcMsjQiKRBSHB5TiTF4GrMaVFLuBZMSVybuYLo=
-X-Received: by 2002:aca:ed16:: with SMTP id l22mr5378325oih.146.1590757440595; 
- Fri, 29 May 2020 06:04:00 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=btgoFOOyR201ip2U5xlh75C3/9fSQsab6c8vWsLd7P4=;
+ b=idyU/AtBQ6xJhscABTT8M4kfqer6zQb9VpyV7IIqoq3Xwmd22mQuOHaH4eWQ20ltjv
+ 1huCqBcUAiHIzvqeYCnAkAGybhVLh4Z0rTr53c8htOGF8r1eJQNinJYwxhciN8LySERB
+ WXvQ5xDEWKj1r672n9wxd50TTPnHb6k03nARWac9WrT7Z/iYMLxeCkka4a3HH1nGhbzP
+ QhyNGYxNsx2hc+1ncgQu0jj2cVT+mrsrBpzRTDBpuA0iAoQB58B8qYjaAapatQ8iZ1kX
+ CCwUDa3y+jxLU3A9B/ktZOvqmA/i4cnzeW8lQiEJ8ufV0iWIAgxrVqkqEid9aow9kf/1
+ dskA==
+X-Gm-Message-State: AOAM530kLordFYfzk1sMoijbNOr8j/MaRQjcdMoD9lTMDOYlthccbZDT
+ w9vfxTNLviJI1ZoV9qGsCMJ9p/xMql9GoVtN4IIj9g==
+X-Google-Smtp-Source: ABdhPJyFDGnahpefq/nXKHHefxEqrMbkGExjes8U78WuR2TTIIrotl+5zK4kjQ2dPoBlm7LmCljTorr/dxdLjCk6Sks=
+X-Received: by 2002:a54:469a:: with SMTP id k26mr5702300oic.163.1590758730883; 
+ Fri, 29 May 2020 06:25:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAFEAcA8FFc_Vf-UQO9f_3qoXiCJf9N1uWh7qB-WXrEWTzKBu8Q@mail.gmail.com>
- <20200522115036.31516-1-e.mikitas@gmail.com>
-In-Reply-To: <20200522115036.31516-1-e.mikitas@gmail.com>
+References: <20200525114123.21317-1-f4bug@amsat.org>
+In-Reply-To: <20200525114123.21317-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 29 May 2020 14:03:49 +0100
-Message-ID: <CAFEAcA8uRypZhccZ=ce6u28ii8ZBE1qEKC7OnmJfCLM351pD2g@mail.gmail.com>
-Subject: Re: [PATCH 0/2] hw/ssi/imx_spi: 2 Fixes to flush txfifo function in
- imx_spi
-To: Eden Mikitas <e.mikitas@gmail.com>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Jean-Christophe DUBOIS <jcd@tribudubois.net>, 
- Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Fri, 29 May 2020 14:25:20 +0100
+Message-ID: <CAFEAcA_iW32pJHnAOC0J5P3JTh=4yS6rzpSZ7a2tn0_uhsrD8g@mail.gmail.com>
+Subject: Re: [PATCH 0/2] hw/arm/pxa2xx: Logging cleanups
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Andrzej Zaborowski <balrogg@gmail.com>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -76,20 +75,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2020 13:04:03 -0000
+X-List-Received-Date: Fri, 29 May 2020 13:25:35 -0000
 
-On Fri, 22 May 2020 at 12:50, Eden Mikitas <e.mikitas@gmail.com> wrote:
+On Mon, 25 May 2020 at 12:41, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
+> Last pair of trivial logging cleanup patches
+> from last week-end.
 >
-> This patch series contains 2 fixes to the imx_spi_flush_txfifo function.
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   hw/input/pxa2xx_keypad: Replace hw_error() by qemu_log_mask()
+>   hw/arm/pxa2xx: Replace printf() call by qemu_log_mask()
 >
-> The first fix prevents a case in which calling imx_spi_flush_txfifo while the
-> controller is configured (by the guest driver) to use a burst length that isn't
-> a multiple of 8 will cause an infinite loop.
->
-> The second fix makes the spi controller compatible with slaves + guest drivers
-> that expect to make transaction larger than 8 bits by removing an unnecessary
-> cast.
+>  hw/arm/pxa2xx.c          | 66 +++++++++++++++++++++++++++++-----------
+>  hw/display/pxa2xx_lcd.c  | 26 ++++++++--------
+>  hw/input/pxa2xx_keypad.c | 10 ++++--
+>  3 files changed, 70 insertions(+), 32 deletions(-)
 
 
 
