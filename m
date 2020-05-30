@@ -1,71 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jexi3-00026J-Mf
-	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2020 05:23:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49010)
+	id 1jf4lY-0006Eh-Gg
+	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2020 12:55:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jexi2-00021f-0z; Sat, 30 May 2020 05:23:18 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37880)
+ id 1jf4lT-0006Br-Fh; Sat, 30 May 2020 12:55:19 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:39420)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jexi1-00074d-BE; Sat, 30 May 2020 05:23:17 -0400
-Received: by mail-wm1-x341.google.com with SMTP id f5so6496785wmh.2;
- Sat, 30 May 2020 02:23:16 -0700 (PDT)
+ id 1jf4lS-0003na-GM; Sat, 30 May 2020 12:55:18 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id t18so7265979wru.6;
+ Sat, 30 May 2020 09:55:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RyB5laGZqcuqh7DkQBAguo9SE2App1lOHf/woViMpfs=;
- b=lz04JjqD7Lqv1Vfd9A2mVmwF02navKfjGKq8Rv9ZaWoSoc/BzdZnF3TxOguDWlPZ5E
- G9Lt2d2UvPR0ieKmAYkN4cfXoShCRVpmQW/B2nglXKXv3r4MQFp+9S5QC1PM3v0oxzS1
- 69tQTfOv6cOEKtI6qywhjeUr99vnD9t4PUjH0fHGMk4agNyWgtBg420rRz+EpWsv+pk/
- A/j6nbe0Vzr1nE4o+wuvG2kZNQ6QeJFJrmUN6w/iPRGOe5enUKGztqhd3IXhpZDmQNID
- hF7xx0ZLB7aQCDNYm4BbQzV8aAz3EsaaBcolcmYYHlqrMrXe1F2DH0hyhgOklv7SFrdo
- nnkA==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=V0Xhe941PXhd+YmAF+P/Etq6ib8J1T6jb9BBpOw9xBM=;
+ b=OhtK0yQpMAoG+K4WCpfvRzB5hkeDvnQ195wPeJNM3IbPnDlVHtXpzGnqxXVbuGUMmG
+ NVhrZZPnn3idhkw/Z0G4t63FZ77h9aZD9nQ3eD3FRlcae20luHoUqrYeKAzZcLS5xNsi
+ WW365n5nGaDWRdY/Xk6yThFZ4gTOplOgfk5oMTmCidw4PQxFOIwArnaaJH46hBm1L3ho
+ Pt23WnPNa9y1qpFn5MUB5WhePREoG4RJNbP6jkenQnp1G1WPObO3dR4ZsLoNWD0ab/C7
+ k1uAluMG47qEOWzbj1XZK5xNj70zaWL1AOw3tP3LMMnBgjPQqF5gna7C7plcXK7EC0hS
+ ox+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=RyB5laGZqcuqh7DkQBAguo9SE2App1lOHf/woViMpfs=;
- b=RYtYVg6H4hJN7vQ+7udquHUf+j9tDU1ZZrYLvsh0Yq1x5lIYvqE1O9WTq6cU7g2s48
- 3c10WLDI76FNx/iQTVSOHn/W7ELMlsbeRCLFB3FUUfl9swLmvK6tDgCp3QvVPiQ3X4Av
- AeYgWOiKxxiwLxEZRRFlcBD0df7GNAMTlpfx8bD7kfADmSYMKYwF9ijPuZFBi5lg57wA
- 0XfyrWuHgei6SoTdyhBpqJow+inSm2+3yQB0fk0cJsII3AQEgCIy1NrhKtkNiWHI9Bpy
- A9tuUUtZyBuqku/ciyymC8pL3CJtc5BfAc9e4TCJUy2ub+8eKy3br157bgTDB2wKMUtT
- PwkA==
-X-Gm-Message-State: AOAM530fMqWCQSwlduHYXAiWnpdkU2eeoZwEZYABTfFrBwtqtCtJ8IlD
- ERFO+GQj3DYmImcBac7F8ivH683t
-X-Google-Smtp-Source: ABdhPJyix5Qby6MEN91R2dhbegH44Eww60AxIjww16Grua/Kj+pdYpSL63TrUSGpzNB3LACyTZhyig==
-X-Received: by 2002:a1c:acc8:: with SMTP id
- v191mr13160900wme.154.1590830595534; 
- Sat, 30 May 2020 02:23:15 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=V0Xhe941PXhd+YmAF+P/Etq6ib8J1T6jb9BBpOw9xBM=;
+ b=cjDTUPnNzQrQsnMPdenXxzFGqybqgEMdGj48ef+S4Qw8gFDmoNRf0Ab1lLdjKgkXuh
+ SQN9bGtcBZGgblm8R7zqF/LVIbOQkgi7CLYVf/pb6Un2sUFaRXj3ERXZsb3emLFxUxo6
+ zyzYqxdUrr1PWe5vmq3zuXKnDNMDVNy12jy8SgohXLZ4T8qQNhKKIn2+OtObhGHoRYSB
+ 7isf4zwuxz2rOWNYem24ccRQojabeNUIFR2e02pcDRPBf3RCdt9xq7/b6g2KSgM04cis
+ g/xGRWEeccCgIcZUBPztM0sLD1+MkyOyQbu7q309c4hNwyVL2UtVFez3EDAbptAPZa0c
+ vQVg==
+X-Gm-Message-State: AOAM532i+PHkWMehsY5iSlrLv9LwA5Ke2PU18tV4bq3etWUvdGrLB1C8
+ oMzChP9kvSjQ6LZ+mi6EqsWQhf3b
+X-Google-Smtp-Source: ABdhPJyhtn+gO++CuwViX9wv1wp6tIR7KZeGuQVVISb0E1vuv88ZDl50Y9nn+if832BMdP/m/nPWSw==
+X-Received: by 2002:adf:fb92:: with SMTP id a18mr8207362wrr.263.1590857714851; 
+ Sat, 30 May 2020 09:55:14 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id h1sm3195237wme.42.2020.05.30.02.23.14
+ by smtp.gmail.com with ESMTPSA id i3sm14540684wrm.83.2020.05.30.09.55.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 May 2020 02:23:15 -0700 (PDT)
+ Sat, 30 May 2020 09:55:13 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Fam Zheng <fam@euphon.net>, Magnus Damm <magnus.damm@gmail.com>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
+Cc: Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 5/5] .travis.yml: Test SH4 QEMU advent calendar image
-Date: Sat, 30 May 2020 11:23:06 +0200
-Message-Id: <20200530092306.26628-6-f4bug@amsat.org>
+Subject: [PATCH] migration/vmstate: Remove unnecessary MemoryRegion forward
+ declaration
+Date: Sat, 30 May 2020 18:55:12 +0200
+Message-Id: <20200530165512.15225-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200530092306.26628-1-f4bug@amsat.org>
-References: <20200530092306.26628-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -88,37 +82,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 May 2020 09:23:18 -0000
+X-List-Received-Date: Sat, 30 May 2020 16:55:23 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+"migration/vmstate.h" only uses pointer to MemoryRegion, which
+is already forward declared in "qemu/typedefs.h".
 
-Now that we can select the second serial console in the acceptance tests
-(see commit 746f244d9720 "Allow to use other serial consoles than default"),
-we can also test the sh4 image from the QEMU advent calendar 2018.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200515164337.4899-1-thuth@redhat.com>
-[PMD: Split tests/acceptance/boot_linux_console.py in previous commit]
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- .travis.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+CI: https://travis-ci.org/github/philmd/qemu/builds/692879495
+---
+ include/migration/vmstate.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/.travis.yml b/.travis.yml
-index 564be50a3c..e2003565d8 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -293,7 +293,7 @@ jobs:
-     - name: "GCC check-acceptance"
-       dist: bionic
-       env:
--        - CONFIG="--enable-tools --target-list=aarch64-softmmu,alpha-softmmu,arm-softmmu,m68k-softmmu,microblaze-softmmu,mips-softmmu,mips64el-softmmu,nios2-softmmu,or1k-softmmu,ppc-softmmu,ppc64-softmmu,s390x-softmmu,sparc-softmmu,x86_64-softmmu,xtensa-softmmu"
-+        - CONFIG="--enable-tools --target-list=aarch64-softmmu,alpha-softmmu,arm-softmmu,m68k-softmmu,microblaze-softmmu,mips-softmmu,mips64el-softmmu,nios2-softmmu,or1k-softmmu,ppc-softmmu,ppc64-softmmu,s390x-softmmu,sh4-softmmu,sparc-softmmu,x86_64-softmmu,xtensa-softmmu"
-         - TEST_CMD="make check-acceptance"
-         - CACHE_NAME="${TRAVIS_BRANCH}-linux-gcc-acceptance"
-       after_script:
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 30667631bc..eafa39f560 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1199,7 +1199,6 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+ void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
+                         void *opaque);
+ 
+-struct MemoryRegion;
+ void vmstate_register_ram(struct MemoryRegion *memory, DeviceState *dev);
+ void vmstate_unregister_ram(struct MemoryRegion *memory, DeviceState *dev);
+ void vmstate_register_ram_global(struct MemoryRegion *memory);
 -- 
 2.21.3
 
