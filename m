@@ -1,69 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jeluB-0002wQ-QF
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2020 16:47:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57610)
+	id 1jewgd-0003oU-0x
+	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2020 04:17:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40934)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jehmA-0002ed-2I
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:22:30 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:40328
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jehm6-0005OX-LF
- for qemu-trivial@nongnu.org; Fri, 29 May 2020 12:22:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590769343;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6LiA7IcTgcwXaLS54JAhevAXGEaouaGh4rapnm2otjE=;
- b=jKoN1AvM5W4CPn3I7Ks0Fjgmc07IK+wSXa1rD5MKBw80JbkwomCD+mrKiuqb+vOktCtXMK
- bmdaOxAuiA5SxZpKk2EiXLJTMBP7JZfXz3BBj7zwJcqR2GayjRSvym+Gv59jGh3cSvv9El
- cQQnbwNZTbxKUCqM508XWHqyMnXG2OE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-492-IhMZgKo8P2CG_A5usDDPnA-1; Fri, 29 May 2020 12:22:22 -0400
-X-MC-Unique: IhMZgKo8P2CG_A5usDDPnA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0F3D1902EA0;
- Fri, 29 May 2020 16:22:20 +0000 (UTC)
-Received: from ptitpuce (ovpn-113-93.ams2.redhat.com [10.36.113.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5EB555D9EF;
- Fri, 29 May 2020 16:22:03 +0000 (UTC)
-References: <20200526185132.1652355-1-eblake@redhat.com>
-User-agent: mu4e 1.3.9; emacs 26.2
-From: Christophe de Dinechin <dinechin@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Jia Liu <proljc@gmail.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH] or1k: Fix compilation hiccup
-In-reply-to: <20200526185132.1652355-1-eblake@redhat.com>
-Date: Fri, 29 May 2020 18:21:54 +0200
-Message-ID: <m1d06msod9.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1jewgb-0003lW-GG; Sat, 30 May 2020 04:17:45 -0400
+Received: from mail-eopbgr10132.outbound.protection.outlook.com
+ ([40.107.1.132]:29001 helo=EUR02-HE1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1jewgY-0008Sm-On; Sat, 30 May 2020 04:17:43 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DDuv82R4UBFow2UWh+Pw5acSNgaXKWOk9er2k2y3+gydCoTTJkZRpFuH9hZVdCumlvglhgWJ+T1cDc80FbAJquZoJFwi4AefE9hnBHFVrPcYa+kEruemGNruFVYfRs8YwI2T9xlQRHSqt9pxZpg05+ASBmS8dZbhRPTBbazTtqCvwPSiN8WAFYfPvEqLSrR1wgx4uZSDBdj+HiVQuXO+1Z/WYP8A27ic5wL6a23HwIMB/kuBThbSx/gRlwgsMANmlLKUw5TLN/L0OnuVd+KfRKeItVkvkyy8GKUiBKyccl2w48FpqPrk8KjESV8Rz/bf10kifx4/L9/bRsywHO8KbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=orIXvvjRyhmMGZbyc13KHCZytvYwH8/p/9yILsDVd0I=;
+ b=UtnXY0AOhXZS6owoW+zy0xCLkseNhbtVwba6cUeaCDlnKytZZHCnSb6FlZl3rJyoGKtLX0JVOkhZuWEX1Ge3kqzRd0z0cJGmuco0muS8qIUHrRpCSZV+nPPMrTr625uChKXLwV4fI9EJ37xrmT8hrl5yt1XIc9mSKWdkwwlqjQDUgkKvQlw8BFft6N0wrx8Pr8wkBf3wAfH79kuA/10AfIhmEKiF6DCwWyOGvaUvS3szrpehDy1xJwgJc40yRCAtxCyPMOv78w23mxCDQ8AZkVEaNZBynSmN0e2TfPQkzG5QcYw5D4zgbmuzKrt+XhEIS+9f4hTLZa6f/5ZqXB27fg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=orIXvvjRyhmMGZbyc13KHCZytvYwH8/p/9yILsDVd0I=;
+ b=mqlgJM2NqK5hpApLzNT87eNX4mAu47YeySsCkrOdC9NR2g2uchCNvOw7gSB24L7hD8kMXMM8kBOG+/H+VtoFN/xYqQzOnSMEaUOW3GdnafwZF05LcB5A8aaXfbDX+jbXT6mjnD1InA7nnK371GgMZtcSKwf+yeKsQLfZv2SF4pw=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=none action=none header.from=virtuozzo.com;
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com (2603:10a6:20b:dc::15)
+ by AM7PR08MB5381.eurprd08.prod.outlook.com (2603:10a6:20b:105::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.19; Sat, 30 May
+ 2020 08:17:37 +0000
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::a408:2f0f:bc6c:d312]) by AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::a408:2f0f:bc6c:d312%4]) with mapi id 15.20.3045.022; Sat, 30 May 2020
+ 08:17:37 +0000
+Subject: Re: [PATCH] qemu-img: Fix doc typo for 'bitmap' subcommand
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: jsnow@redhat.com, qemu-block@nongnu.org, qemu-trivial@nongnu.org
+References: <20200529144527.1943527-1-eblake@redhat.com>
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-ID: <9abea376-32e0-c483-f965-ddab9aa9cc50@virtuozzo.com>
+Date: Sat, 30 May 2020 11:17:35 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.1
+In-Reply-To: <20200529144527.1943527-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: AM0PR05CA0092.eurprd05.prod.outlook.com
+ (2603:10a6:208:136::32) To AM7PR08MB5494.eurprd08.prod.outlook.com
+ (2603:10a6:20b:dc::15)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=dinechin@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/29 03:05:19
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.100.2] (185.215.60.134) by
+ AM0PR05CA0092.eurprd05.prod.outlook.com (2603:10a6:208:136::32) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.17 via Frontend
+ Transport; Sat, 30 May 2020 08:17:36 +0000
+X-Originating-IP: [185.215.60.134]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3b4219fa-a8d9-480e-9c0a-08d80471e9a4
+X-MS-TrafficTypeDiagnostic: AM7PR08MB5381:
+X-Microsoft-Antispam-PRVS: <AM7PR08MB5381988FB4D49F076CDF3217C18C0@AM7PR08MB5381.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2449;
+X-Forefront-PRVS: 041963B986
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: xoS1G6u84xmvOcqUdb0B6bW1047WMf3y+oejKqHUURjvnrnEb6gkOaWlV8qQjKEB7zabVzJ0yXDwbCODV/xcOqrU2iN8jeAlfA/dCLYQnqGNS3XvZqmK34kWr7rreo3iaV9Zy/eHGaQPNW30cylPc1tyXgxnnI0draldRJ1FYxsiuekpYDguhaFdtdgo2qYByy9mKRJ3pvNR/zQEQpYDNnOxxEUJAV7r1NOeqdR5e+7YmehC1Fw3hkaIW4U22dzOTkPcs5b3AXWDmZ7RM9fvHWl0ZyHwxbRi/dp2rbIwZ7e2qwjN4/BGFub5L+F0eJiJzMUmfLNgHlFaL7IkbKzlLi/ORfE051I2UpN8IP69/ezmwY+lnOWHNG1tuNfTbVHk
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM7PR08MB5494.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(376002)(346002)(136003)(39840400004)(366004)(396003)(5660300002)(478600001)(36756003)(8676002)(2616005)(16526019)(66946007)(66476007)(956004)(31686004)(2906002)(26005)(16576012)(558084003)(4326008)(186003)(52116002)(316002)(8936002)(86362001)(31696002)(66556008)(6486002)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: EfB2YFLQW9CnG0jo8zLIbzh1aNeLCSkcmeM+F2wImFOUDdwS/cAuxNnaToylJcJ4S/Z9zqPUjump4fbXX3bA1MaoO+iQLlQ05D7SrWaPl62NlefxFDLMw9iXBZfQAnwm0+MAQfHp0fpNTcpsVS1JP2O5E3L3yP1rv5VZBUMONHQHBFdqECzABKaR5IC2G6zGvDVjxaAMd+sVdYgaAxCQmbvhrTdVullKB7DdMy0/5z4AD23Y8JGFFiR2TY+ug66CG3fhtG9Pf9Fzt/kCD5N2Bkl6KUUPWx2PSx9LvOl6sGOECfgv5X9bFhGjw0KpE8R5eiMtwfS1n1nbHU6igX2jS9LAtQwudT7SwhIyL3S3VptjRY0DPt9OEd5cwnuDAbCB7xIn9RKTBl4So5Ea0KC+NJ8SutoTf8T6vH+KOWfPDCGxYswmRaOlNQL33BcpevIYFosJl5E4Yv+gFTrdtRFTxLqjiDTFS2gIwlFkbzgInkpB1yWMtjzP03k38KD6N00L
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3b4219fa-a8d9-480e-9c0a-08d80471e9a4
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 May 2020 08:17:37.2407 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: bap6hr+LXFOaQmyHMwiF4V5ZNHtYMxw73WDaNoCtc7EV+jupr3u5fv5uygehTzrn0v8KKSTorQYOs0RtnCgmuKTOytgGrnNkCpkTizHnZEo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR08MB5381
+Received-SPF: pass client-ip=40.107.1.132;
+ envelope-from=vsementsov@virtuozzo.com;
+ helo=EUR02-HE1-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/30 04:17:37
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 29 May 2020 16:47:03 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,54 +108,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2020 16:22:30 -0000
+X-List-Received-Date: Sat, 30 May 2020 08:17:45 -0000
 
-
-On 2020-05-26 at 20:51 CEST, Eric Blake wrote...
-> On my Fedora 32 machine, gcc 10.1.1 at -O2 (the default for a bare
-> './configure') has a false-positive complaint:
->
->   CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-> /home/eblake/qemu/hw/openrisc/openrisc_sim.c: In function =E2=80=98openri=
-sc_sim_init=E2=80=99:
-> /home/eblake/qemu/hw/openrisc/openrisc_sim.c:87:42: error: =E2=80=98cpu_i=
-rqs[0]=E2=80=99 may be used uninitialized in this function [-Werror=3Dmaybe=
--uninitialized]
->    87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
->       |                                  ~~~~~~~~^~~
->
-> Initializing both pointers of cpu_irqs[] to NULL is sufficient to shut
-> up the compiler, even though they are definitely assigned in
-> openrisc_sim_init() prior to the inlined call to
-> openrisc_sim_ompic_init() containing the line in question.
->
+29.05.2020 17:45, Eric Blake wrote:
+> Prefer a consistent naming for the --merge argument.
+> 
+> Fixes: 3b51ab4bf
 > Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->  hw/openrisc/openrisc_sim.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-> index d08ce6181199..95011a8015b4 100644
-> --- a/hw/openrisc/openrisc_sim.c
-> +++ b/hw/openrisc/openrisc_sim.c
-> @@ -129,7 +129,7 @@ static void openrisc_sim_init(MachineState *machine)
->      const char *kernel_filename =3D machine->kernel_filename;
->      OpenRISCCPU *cpu =3D NULL;
->      MemoryRegion *ram;
-> -    qemu_irq *cpu_irqs[2];
-> +    qemu_irq *cpu_irqs[2] =3D {};
 
-Why is the value [2] correct here? The loop that initializes loops over
-machine->smp.cpus. Is it always less than 2 on this machine?
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 
 
->      qemu_irq serial_irq;
->      int n;
->      unsigned int smp_cpus =3D machine->smp.cpus;
-
-
---
-Cheers,
-Christophe de Dinechin (IRC c3d)
-
+-- 
+Best regards,
+Vladimir
 
