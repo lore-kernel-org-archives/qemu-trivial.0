@@ -1,75 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jf4lY-0006Eh-Gg
-	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2020 12:55:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52136)
+	id 1jf5UL-0001t5-GV
+	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2020 13:41:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jf4lT-0006Br-Fh; Sat, 30 May 2020 12:55:19 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:39420)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jf4lS-0003na-GM; Sat, 30 May 2020 12:55:18 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id t18so7265979wru.6;
- Sat, 30 May 2020 09:55:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=V0Xhe941PXhd+YmAF+P/Etq6ib8J1T6jb9BBpOw9xBM=;
- b=OhtK0yQpMAoG+K4WCpfvRzB5hkeDvnQ195wPeJNM3IbPnDlVHtXpzGnqxXVbuGUMmG
- NVhrZZPnn3idhkw/Z0G4t63FZ77h9aZD9nQ3eD3FRlcae20luHoUqrYeKAzZcLS5xNsi
- WW365n5nGaDWRdY/Xk6yThFZ4gTOplOgfk5oMTmCidw4PQxFOIwArnaaJH46hBm1L3ho
- Pt23WnPNa9y1qpFn5MUB5WhePREoG4RJNbP6jkenQnp1G1WPObO3dR4ZsLoNWD0ab/C7
- k1uAluMG47qEOWzbj1XZK5xNj70zaWL1AOw3tP3LMMnBgjPQqF5gna7C7plcXK7EC0hS
- ox+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=V0Xhe941PXhd+YmAF+P/Etq6ib8J1T6jb9BBpOw9xBM=;
- b=cjDTUPnNzQrQsnMPdenXxzFGqybqgEMdGj48ef+S4Qw8gFDmoNRf0Ab1lLdjKgkXuh
- SQN9bGtcBZGgblm8R7zqF/LVIbOQkgi7CLYVf/pb6Un2sUFaRXj3ERXZsb3emLFxUxo6
- zyzYqxdUrr1PWe5vmq3zuXKnDNMDVNy12jy8SgohXLZ4T8qQNhKKIn2+OtObhGHoRYSB
- 7isf4zwuxz2rOWNYem24ccRQojabeNUIFR2e02pcDRPBf3RCdt9xq7/b6g2KSgM04cis
- g/xGRWEeccCgIcZUBPztM0sLD1+MkyOyQbu7q309c4hNwyVL2UtVFez3EDAbptAPZa0c
- vQVg==
-X-Gm-Message-State: AOAM532i+PHkWMehsY5iSlrLv9LwA5Ke2PU18tV4bq3etWUvdGrLB1C8
- oMzChP9kvSjQ6LZ+mi6EqsWQhf3b
-X-Google-Smtp-Source: ABdhPJyhtn+gO++CuwViX9wv1wp6tIR7KZeGuQVVISb0E1vuv88ZDl50Y9nn+if832BMdP/m/nPWSw==
-X-Received: by 2002:adf:fb92:: with SMTP id a18mr8207362wrr.263.1590857714851; 
- Sat, 30 May 2020 09:55:14 -0700 (PDT)
-Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id i3sm14540684wrm.83.2020.05.30.09.55.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 May 2020 09:55:13 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] migration/vmstate: Remove unnecessary MemoryRegion forward
- declaration
-Date: Sat, 30 May 2020 18:55:12 +0200
-Message-Id: <20200530165512.15225-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jf5UK-0001ss-7l
+ for qemu-trivial@nongnu.org; Sat, 30 May 2020 13:41:40 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55009
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jf5UH-0007C9-GG
+ for qemu-trivial@nongnu.org; Sat, 30 May 2020 13:41:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590860495;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=C8+O4jKfZw2x6/nZ3z91acMOF/azKglpza49Rye/lx0=;
+ b=NJP+lnIqIy2oBkpAB15sggmeeA2viRrdK/ZINEmrOd9cSyZF9RHgThXhqJuhIwUSVmNKki
+ cBCE9GowEQFgaVeTrLa3g5mvIBFPPQP25+mzj3ml6uvsk93MF13sWuWFpgf2dpcob1SuwA
+ Gc2pcD+Chvc3r4E7D0N+yDQhBaI/kxo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-500-lF9vksptM72L1wPVfZYQ8A-1; Sat, 30 May 2020 13:41:34 -0400
+X-MC-Unique: lF9vksptM72L1wPVfZYQ8A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D293880B700;
+ Sat, 30 May 2020 17:41:32 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-47.ams2.redhat.com [10.36.112.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0ADF710013C1;
+ Sat, 30 May 2020 17:41:28 +0000 (UTC)
+Subject: Re: [PATCH] hw/display/cirrus_vga: Fix code mis-indentation
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20200529165436.23573-1-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <17c858f1-dbd0-42b9-f2fa-22954133891a@redhat.com>
+Date: Sat, 30 May 2020 19:41:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200529165436.23573-1-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/30 12:03:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,31 +76,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 May 2020 16:55:23 -0000
+X-List-Received-Date: Sat, 30 May 2020 17:41:40 -0000
 
-"migration/vmstate.h" only uses pointer to MemoryRegion, which
-is already forward declared in "qemu/typedefs.h".
+On 29/05/2020 18.54, Philippe Mathieu-Daudé wrote:
+> While replacing fprintf() by qemu_log_mask() in commit
+> 2b55f4d3504, we incorrectly used a 'tab = 4 spaces'
+> alignment, leading to misindented new code. Fix now.
+> 
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/display/cirrus_vga.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index 92c197cdde..212d6f5e61 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
+> @@ -1032,9 +1032,9 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
+>          } else {
+>  	    if (s->cirrus_blt_mode & CIRRUS_BLTMODE_TRANSPARENTCOMP) {
+>  		if (s->cirrus_blt_pixelwidth > 2) {
+> -            qemu_log_mask(LOG_GUEST_ERROR,
+> -                          "cirrus: src transparent without colorexpand "
+> -                          "must be 8bpp or 16bpp\n");
+> +                    qemu_log_mask(LOG_GUEST_ERROR,
+> +                                  "cirrus: src transparent without colorexpand "
+> +                                  "must be 8bpp or 16bpp\n");
+>  		    goto bitblt_ignore;
+>  		}
+>  		if (s->cirrus_blt_mode & CIRRUS_BLTMODE_BACKWARDS) {
+> 
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-CI: https://travis-ci.org/github/philmd/qemu/builds/692879495
----
- include/migration/vmstate.h | 1 -
- 1 file changed, 1 deletion(-)
+I think it would be better to fix the TABs in the whole surounding area,
+too. Or maybe even in the whole file. Otherwise this problem will happen
+soon again...
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 30667631bc..eafa39f560 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -1199,7 +1199,6 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
- void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
-                         void *opaque);
- 
--struct MemoryRegion;
- void vmstate_register_ram(struct MemoryRegion *memory, DeviceState *dev);
- void vmstate_unregister_ram(struct MemoryRegion *memory, DeviceState *dev);
- void vmstate_register_ram_global(struct MemoryRegion *memory);
--- 
-2.21.3
+ Thomas
 
 
