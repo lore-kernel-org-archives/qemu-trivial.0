@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfRvC-0004TI-AF
+	id 1jfRvC-0004Tv-GV
 	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 13:38:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34140)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRuo-0004An-93; Sun, 31 May 2020 13:38:30 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51069)
+ id 1jfRuo-0004As-DB; Sun, 31 May 2020 13:38:30 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40474)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRun-0004Fa-FC; Sun, 31 May 2020 13:38:29 -0400
-Received: by mail-wm1-x343.google.com with SMTP id v19so8627119wmj.0;
- Sun, 31 May 2020 10:38:23 -0700 (PDT)
+ id 1jfRun-0004Fs-Fr; Sun, 31 May 2020 13:38:30 -0400
+Received: by mail-wm1-x344.google.com with SMTP id r15so9106216wmh.5;
+ Sun, 31 May 2020 10:38:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KsQ1BQRlJKLRUJr0jZUSVevT0fbQ9tRG4Kdv5xJn5Tg=;
- b=OvvgLC/+ddLEdgOqG9BGzOSTBcy0qN+18q9JC4/GfG3Fv91qKjhOlaWmQsPxLKfIYF
- mfaemWp0HiASJbUQUtd6QuGfRI62byfE90yIS3vCqYnsVS75yNstLw/2gw3sfw3FYXEW
- dBxgPuXkmZioeuXxlU6fZo2HcwQ/Gs8sqkvr9BuK4zsXEaFMMySi/8Cu6OqTnjoSf/SC
- sAkQG0K6/+6kfk7BDu6pdCiZg999VMnGuU5pmOk+21AWQNPNvyp6a5rTtQ9EXGp+4LkB
- kchQAzw2OdcC4MBliuOIAPwp+otTA1rZeh4VWsDHXsUsgu/jx/jTiApCJFkIF93rtgw6
- xZFA==
+ bh=iYvFEgksB/BdazMa4Cs2c4jhXMbkN0WXaFJS9CHNgVo=;
+ b=mLOiMHew1qF2hGdISfFnUSQy6ouAsSbwhEJxg/OGYSPf9xv1xTbVr8mBMRqJHP0j55
+ yBAV5qmG/+djftEUqMiPwGr4Bh3GmX3ZVamOeBJXaKaDNXOaK/dz/G5T07RNwS0DFgrY
+ c6bALnWU6nCvGXRvmEhcQH90po/UBDda62lpMh8uL/oBuNFtkrZ/+WZD/xRTxEPgKh8w
+ YobGHA9manrtqDfq5TIha9eaxMdsJWURJqAn1SCZ+ZvWMz1ywD46nuh/+b1NyAbjDy7+
+ GWlf7/+f8s9uLntj5m+01uzRU7k+D/zt9t5VXEvBWhKQ9MlGmJn6WzbC/VlmhCnqS0u0
+ g/ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=KsQ1BQRlJKLRUJr0jZUSVevT0fbQ9tRG4Kdv5xJn5Tg=;
- b=qCQXqtZ39t8b51ADs3u5bORmW2WTIQv+UcikvRUG+DbZ6zkXFuqN8aZkrmBTCEmIOq
- Es2pi2LhdoOsrB6gsjytlNKkjU6vpKsxdZOCpzwC1bV3JbfC6ek6TUM1QFKUC5vNljg3
- KcrBMWGfgEmFYaHAeUPX8eMhKMb3fq/3kfHOWhj1sQqOBUo8cpQGnZLeq5LE5d2fREzv
- 8Y+oGne8EHKi++lWchkDunY/Yz/oH+0LXtgJD2MwCUMK/7xNex6o2kBsk907bEJbsDdM
- eFrhO8ck9ojTCOcD0Uf217FQhV83aNurqj4Q9+ziL38mNtKgzeVyr+EamkTQJSJnmKOw
- +S8w==
-X-Gm-Message-State: AOAM531h7ov0ZiEFdNmrbXJU0/lurzpHIJaE18yS26bFsGEGh+PzxZj9
- Y5dAllPqCGIY1AtqiVZKh7wC3EkO
-X-Google-Smtp-Source: ABdhPJzeybcJCTXmZjvw+0M7Jmw3AwmGdkeKINOR50NTyuWnxoCKp8N0SHbRKuVp2dnjlfQ5FAFP8A==
-X-Received: by 2002:a1c:808d:: with SMTP id b135mr17521127wmd.94.1590946702340; 
- Sun, 31 May 2020 10:38:22 -0700 (PDT)
+ bh=iYvFEgksB/BdazMa4Cs2c4jhXMbkN0WXaFJS9CHNgVo=;
+ b=GIqEE6VSJVDHFKaIqWl6zYhXNW3evJEIKNysFoHKGaIcFSfBsHMsCjNCALd7L0Hrq0
+ SoVay5vEOnzTm9bjVoa6/K87IIM+ozri7YJBmbTKansAdgMK/opZ0rrru7ikiVXf6d14
+ Kjz+F3b/tqf5yxq19c3RhepU7Mqt2luzrm8CJWXSuaV0irSaqcpt4Q6D20a4TvsjdSR3
+ W336Lrm7armB6Mh2Hha5CAIfHYpAZ3nq8ctM0TWGFA61sLfhUEkXNyaoNWGajNqjq51c
+ 1JvnnFOkgJAX33S9ZP5jNHN0RN93xuMDVzod/O42mNlOOYujlvhtL/DYvB5HeoihvZNC
+ 7woA==
+X-Gm-Message-State: AOAM533RaHWBf6iLBbz/EKv9R9F2YL47+wvoWuP1C4iEQfdl6vx2UtSv
+ m5M4O/ErAHnyXoMtA99xNAyH/L6p
+X-Google-Smtp-Source: ABdhPJwhb/IFbThB/tKVOWT/s2NPGR4HDMLpVaDysxOxobXYSvPIAsMTEGuw+7HN9OrZnw/sT/Aqyw==
+X-Received: by 2002:a1c:4d0c:: with SMTP id o12mr18594700wmh.181.1590946706678; 
+ Sun, 31 May 2020 10:38:26 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.21
+ by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:38:21 -0700 (PDT)
+ Sun, 31 May 2020 10:38:26 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -59,10 +59,9 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Anthony Perard <anthony.perard@citrix.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/8] hw/pci/pci_bridge: Correct pci_bridge_io memory region
- size
-Date: Sun, 31 May 2020 19:38:09 +0200
-Message-Id: <20200531173814.8734-4-f4bug@amsat.org>
+Subject: [PATCH 6/8] hw/hppa/dino: Use the IEC binary prefix definitions
+Date: Sun, 31 May 2020 19:38:12 +0200
+Message-Id: <20200531173814.8734-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
 References: <20200531173814.8734-1-f4bug@amsat.org>
@@ -70,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -96,56 +95,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 31 May 2020 17:38:31 -0000
 
-memory_region_set_size() handle the 16 Exabytes limit by
-special-casing the UINT64_MAX value. This is not a problem
-for the 32-bit maximum, 4 GiB.
-By using the UINT32_MAX value, the pci_bridge_io MemoryRegion
-ends up missing 1 byte:
-
-  (qemu) info mtree
-  memory-region: pci_bridge_io
-    0000000000000000-00000000fffffffe (prio 0, i/o): pci_bridge_io
-      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
-      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
-      00000000000001ce-00000000000001d1 (prio 0, i/o): vbe
-      0000000000000378-000000000000037f (prio 0, i/o): parallel
-      00000000000003b4-00000000000003b5 (prio 0, i/o): vga
-      ...
-
-Fix by using the correct value. We now have:
-
-  memory-region: pci_bridge_io
-    0000000000000000-00000000ffffffff (prio 0, i/o): pci_bridge_io
-      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
-      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
-      ...
+IEC binary prefixes ease code review: the unit is explicit.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci/pci_bridge.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/hppa/dino.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index 97967d12eb..3ba3203f72 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -30,6 +30,7 @@
-  */
+diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
+index 2b1b38c58a..7290f23962 100644
+--- a/hw/hppa/dino.c
++++ b/hw/hppa/dino.c
+@@ -542,7 +542,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
+                                 &s->parent_obj.data_mem);
  
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_bus.h"
- #include "qemu/module.h"
-@@ -381,7 +382,7 @@ void pci_bridge_initfn(PCIDevice *dev, const char *typename)
-     memory_region_init(&br->address_space_mem, OBJECT(br), "pci_bridge_pci", UINT64_MAX);
-     sec_bus->address_space_io = &br->address_space_io;
-     memory_region_init(&br->address_space_io, OBJECT(br), "pci_bridge_io",
--                       UINT32_MAX);
-+                       4 * GiB);
-     br->windows = pci_bridge_region_init(br);
-     QLIST_INIT(&sec_bus->child);
-     QLIST_INSERT_HEAD(&parent->child, sec_bus, sibling);
+     /* Dino PCI bus memory.  */
+-    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 1ull << 32);
++    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 4 * GiB);
+ 
+     b = pci_register_root_bus(dev, "pci", dino_set_irq, dino_pci_map_irq, s,
+                               &s->pci_mem, get_system_io(),
+@@ -561,7 +561,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
+     }
+ 
+     /* Set up PCI view of memory: Bus master address space.  */
+-    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 1ull << 32);
++    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 4 * GiB);
+     memory_region_init_alias(&s->bm_ram_alias, OBJECT(s),
+                              "bm-system", addr_space, 0,
+                              0xf0000000 + DINO_MEM_CHUNK_SIZE);
 -- 
 2.21.3
 
