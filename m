@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfRv9-0004RY-FG
-	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 13:38:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34144)
+	id 1jfRvC-0004TI-AF
+	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 13:38:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRuo-0004Aw-G7; Sun, 31 May 2020 13:38:30 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34242)
+ id 1jfRuo-0004An-93; Sun, 31 May 2020 13:38:30 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51069)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRun-0004Fo-Gr; Sun, 31 May 2020 13:38:30 -0400
-Received: by mail-wr1-x442.google.com with SMTP id r7so9246001wro.1;
- Sun, 31 May 2020 10:38:26 -0700 (PDT)
+ id 1jfRun-0004Fa-FC; Sun, 31 May 2020 13:38:29 -0400
+Received: by mail-wm1-x343.google.com with SMTP id v19so8627119wmj.0;
+ Sun, 31 May 2020 10:38:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=R9h6TBijqwhWtCdWuge0QqjjfhcYOfthGpKadm9tGxU=;
- b=clCSszb1FCsID9L9t4vBQapFKkE9cKOSakgm1eGvx1xsWw2JAQNwLPoaGyVtpO42pe
- kBKp/gPUmWIa/w5oOdIrRSY8p4p3XayTg3tMrrOmZmC34eM3rOnIEYRVnlpbvTCc6+Vo
- HEPQNWcpPsZAYdMebzBYVG/m9y9BWrVBmpNxm2yP1xXyoU3t8PWsCPYU5BKwTMzBj1HS
- BPino4U2lYhzNDvluhBK5euxZu9633dvESJdHU8nk0XGJtc8X7A2ua3EJZKg1u4SPdX2
- 0Jc2etnb43hAo2TU2bhSL1ZDKnP3BXxfNBGozVyquRrYoWn4Hz++GY3WW7gghPDFdniU
- m7Qw==
+ bh=KsQ1BQRlJKLRUJr0jZUSVevT0fbQ9tRG4Kdv5xJn5Tg=;
+ b=OvvgLC/+ddLEdgOqG9BGzOSTBcy0qN+18q9JC4/GfG3Fv91qKjhOlaWmQsPxLKfIYF
+ mfaemWp0HiASJbUQUtd6QuGfRI62byfE90yIS3vCqYnsVS75yNstLw/2gw3sfw3FYXEW
+ dBxgPuXkmZioeuXxlU6fZo2HcwQ/Gs8sqkvr9BuK4zsXEaFMMySi/8Cu6OqTnjoSf/SC
+ sAkQG0K6/+6kfk7BDu6pdCiZg999VMnGuU5pmOk+21AWQNPNvyp6a5rTtQ9EXGp+4LkB
+ kchQAzw2OdcC4MBliuOIAPwp+otTA1rZeh4VWsDHXsUsgu/jx/jTiApCJFkIF93rtgw6
+ xZFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=R9h6TBijqwhWtCdWuge0QqjjfhcYOfthGpKadm9tGxU=;
- b=DL9Vg8UBJUIIycFexCh3n72oBTd8H0kqjnR44VTg8EjMpVPouLKacDd+Zr/LPsOIBz
- 51xpWrV8+bYyXtO7v0pDr0SThNWXN8ak0YVYE0m81padwDvE9IlBpQWy0XDSya+XReGw
- mZild/4Fk4AAPXeR3RnbR6pazrzeCSVJJYXSsnIGgA1eDhbm55/Cw1yfOPdaiUn+Ekjl
- uY0wo1WPsMDRtVKBh0F1xdT/esOrc9Ibn8GHXOtiU4sXt7v7P9SYjU4OpApB01ubPWSk
- pmC9Ftz+pCyDbOSUPwc9DZrOmyX7OGgC0ByX7Hfjt6jZMaYQyv9xTZ2R+vJXHe7tTMZ7
- uaWA==
-X-Gm-Message-State: AOAM532if7r4pXid0WnrkVpGz7DmF79aahT+3EDeGD9qnOC7p7SRHSYs
- F3+P2DOgHXhgOocFfo6clz0Wk9bD
-X-Google-Smtp-Source: ABdhPJytdErKTCE9Dfb5cKXCrSruxfcAtIRvlaMsZNBz3NN+Eo12ujY//8NvCs6N5Z61jtTmgTyVVg==
-X-Received: by 2002:adf:f512:: with SMTP id q18mr19634939wro.38.1590946705256; 
- Sun, 31 May 2020 10:38:25 -0700 (PDT)
+ bh=KsQ1BQRlJKLRUJr0jZUSVevT0fbQ9tRG4Kdv5xJn5Tg=;
+ b=qCQXqtZ39t8b51ADs3u5bORmW2WTIQv+UcikvRUG+DbZ6zkXFuqN8aZkrmBTCEmIOq
+ Es2pi2LhdoOsrB6gsjytlNKkjU6vpKsxdZOCpzwC1bV3JbfC6ek6TUM1QFKUC5vNljg3
+ KcrBMWGfgEmFYaHAeUPX8eMhKMb3fq/3kfHOWhj1sQqOBUo8cpQGnZLeq5LE5d2fREzv
+ 8Y+oGne8EHKi++lWchkDunY/Yz/oH+0LXtgJD2MwCUMK/7xNex6o2kBsk907bEJbsDdM
+ eFrhO8ck9ojTCOcD0Uf217FQhV83aNurqj4Q9+ziL38mNtKgzeVyr+EamkTQJSJnmKOw
+ +S8w==
+X-Gm-Message-State: AOAM531h7ov0ZiEFdNmrbXJU0/lurzpHIJaE18yS26bFsGEGh+PzxZj9
+ Y5dAllPqCGIY1AtqiVZKh7wC3EkO
+X-Google-Smtp-Source: ABdhPJzeybcJCTXmZjvw+0M7Jmw3AwmGdkeKINOR50NTyuWnxoCKp8N0SHbRKuVp2dnjlfQ5FAFP8A==
+X-Received: by 2002:a1c:808d:: with SMTP id b135mr17521127wmd.94.1590946702340; 
+ Sun, 31 May 2020 10:38:22 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.24
+ by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:38:24 -0700 (PDT)
+ Sun, 31 May 2020 10:38:21 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -59,9 +59,10 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Anthony Perard <anthony.perard@citrix.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 5/8] hw/pci-host: Use the IEC binary prefix definitions
-Date: Sun, 31 May 2020 19:38:11 +0200
-Message-Id: <20200531173814.8734-6-f4bug@amsat.org>
+Subject: [PATCH 3/8] hw/pci/pci_bridge: Correct pci_bridge_io memory region
+ size
+Date: Sun, 31 May 2020 19:38:09 +0200
+Message-Id: <20200531173814.8734-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
 References: <20200531173814.8734-1-f4bug@amsat.org>
@@ -69,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -95,72 +96,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 31 May 2020 17:38:31 -0000
 
-IEC binary prefixes ease code review: the unit is explicit.
+memory_region_set_size() handle the 16 Exabytes limit by
+special-casing the UINT64_MAX value. This is not a problem
+for the 32-bit maximum, 4 GiB.
+By using the UINT32_MAX value, the pci_bridge_io MemoryRegion
+ends up missing 1 byte:
+
+  (qemu) info mtree
+  memory-region: pci_bridge_io
+    0000000000000000-00000000fffffffe (prio 0, i/o): pci_bridge_io
+      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
+      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
+      00000000000001ce-00000000000001d1 (prio 0, i/o): vbe
+      0000000000000378-000000000000037f (prio 0, i/o): parallel
+      00000000000003b4-00000000000003b5 (prio 0, i/o): vga
+      ...
+
+Fix by using the correct value. We now have:
+
+  memory-region: pci_bridge_io
+    0000000000000000-00000000ffffffff (prio 0, i/o): pci_bridge_io
+      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
+      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
+      ...
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci-host/i440fx.c    | 3 ++-
- hw/pci-host/q35.c       | 2 +-
- hw/pci-host/versatile.c | 5 +++--
- 3 files changed, 6 insertions(+), 4 deletions(-)
+ hw/pci/pci_bridge.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-index 0adbd77553..aefb416c8f 100644
---- a/hw/pci-host/i440fx.c
-+++ b/hw/pci-host/i440fx.c
-@@ -23,6 +23,7 @@
+diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
+index 97967d12eb..3ba3203f72 100644
+--- a/hw/pci/pci_bridge.c
++++ b/hw/pci/pci_bridge.c
+@@ -30,6 +30,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qemu/range.h"
- #include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
-@@ -301,7 +302,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
-     memory_region_set_enabled(&f->smram_region, true);
- 
-     /* smram, as seen by SMM CPUs */
--    memory_region_init(&f->smram, OBJECT(d), "smram", 1ull << 32);
-+    memory_region_init(&f->smram, OBJECT(d), "smram", 4 * GiB);
-     memory_region_set_enabled(&f->smram, true);
-     memory_region_init_alias(&f->low_smram, OBJECT(d), "smram-low",
-                              f->ram_memory, 0xa0000, 0x20000);
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 352aeecfa7..b788f17b2c 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -589,7 +589,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
-     memory_region_set_enabled(&mch->open_high_smram, false);
- 
-     /* smram, as seen by SMM CPUs */
--    memory_region_init(&mch->smram, OBJECT(mch), "smram", 1ull << 32);
-+    memory_region_init(&mch->smram, OBJECT(mch), "smram", 4 * GiB);
-     memory_region_set_enabled(&mch->smram, true);
-     memory_region_init_alias(&mch->low_smram, OBJECT(mch), "smram-low",
-                              mch->ram_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index cfb9a78ea6..8ddfb8772a 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "hw/irq.h"
-@@ -399,8 +400,8 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
-     pci_map_irq_fn mapfn;
-     int i;
- 
--    memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 1ULL << 32);
--    memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 1ULL << 32);
-+    memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 4 * GiB);
-+    memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 4 * GiB);
- 
-     pci_root_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), dev, "pci",
-                              &s->pci_mem_space, &s->pci_io_space,
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pci_bus.h"
+ #include "qemu/module.h"
+@@ -381,7 +382,7 @@ void pci_bridge_initfn(PCIDevice *dev, const char *typename)
+     memory_region_init(&br->address_space_mem, OBJECT(br), "pci_bridge_pci", UINT64_MAX);
+     sec_bus->address_space_io = &br->address_space_io;
+     memory_region_init(&br->address_space_io, OBJECT(br), "pci_bridge_io",
+-                       UINT32_MAX);
++                       4 * GiB);
+     br->windows = pci_bridge_region_init(br);
+     QLIST_INIT(&sec_bus->child);
+     QLIST_INSERT_HEAD(&parent->child, sec_bus, sibling);
 -- 
 2.21.3
 
