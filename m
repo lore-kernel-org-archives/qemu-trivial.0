@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfRus-0004FK-B5
-	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 13:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34132)
+	id 1jfRv3-0004NZ-Da
+	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 13:38:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRun-0004AJ-P9; Sun, 31 May 2020 13:38:29 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35624)
+ id 1jfRup-0004CV-BP; Sun, 31 May 2020 13:38:33 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33223)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRug-0004FE-3A; Sun, 31 May 2020 13:38:29 -0400
-Received: by mail-wm1-x343.google.com with SMTP id q25so217634wmj.0;
- Sun, 31 May 2020 10:38:20 -0700 (PDT)
+ id 1jfRuo-0004G7-Ir; Sun, 31 May 2020 13:38:30 -0400
+Received: by mail-wm1-x343.google.com with SMTP id j198so10509957wmj.0;
+ Sun, 31 May 2020 10:38:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9Mxl/dNTcRwhkGe3G4jYrG/McOP5BFcH0HXoztP9CuE=;
- b=KN9foiNw1uNODlYLGsqkaiPFpDICcY39hhwQ0vwdyo0AGdI9BbCHCSkh+p4J9h4Laq
- DuJIwu3OpLHu4sHXUICkVbKQmAQmO+D8yyfjCtpGxkzofi4Igvfw3BC01Z7/GOK9kSfa
- /CHzYk/dCYbs+astQL+vk6kJZJNm3vCHZDeZsshhM7YKE/GswD1u2po1Hu0sHnTWODaV
- aw+XELKTPKtS86NcCcXXbY9Yd54eTLdGu3rk0hKXJbOXEaV87ip22Lyy/G35mPcBAnhe
- e4EhgrNgwMPPUSeRGMOLlO+3sZx1yyfRCuxcn0pMT9nWhIm8j0WbNSdQCQD9WVWhr+7/
- mH+Q==
+ bh=nx6i+AHtHhOPOYC0ludmYEcyPCtH+R6fArfoXhgX/80=;
+ b=ecRtJ9+dMcz6HFcCrjMA79m2NLL9pLTe3YlR6u/5U8B/pDwEZnHkpthloUcJD9mdeX
+ z4NzrruZHIQ5BDed7AH8zcr/JzgBoZ1wQmFBvCf0zqPlH2VDi3PlRQEl/z3dTDw8CP0R
+ VEh2hNdQFoGTa0ucGgNoDbeocX77DmNTTR7f1AuNpakZHtfsid+pCIBY0so133aao2cN
+ b+i37OA+ThO+bxJeMeXuuwDMmwuLCLkIY+kfFnePWYnEWyGruAmEtPG2VehLleFSgTQF
+ GNo4UF310Aboap3C76RpTvPD64wZq/2auDdcnjb13FWLdoOod69RR73rZOQlRY4ZML6K
+ vZmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=9Mxl/dNTcRwhkGe3G4jYrG/McOP5BFcH0HXoztP9CuE=;
- b=T5U6i1oITdBY0nV2yaloG4HwpNqbcW8rgGCQTwZ0Gnzi/hazL6v2Sep/TQGmCPT+KC
- svx/iV68xqx/cl2eZG+alo1C6nAHY9dAnBbyPjA46HaS+q0GJYEodSW4zyoakJKgd6tG
- 0E98/xXsZIppGAh4E3NDKJ5LdZ06wLq9HarkH8WqpBMPvbgoG/U5FLW/0pYiAYVml3W9
- sulJWdB4j/uDMnmxeauNp5aT0WKiWxIqhLlj5ksF+nGFxzQjsd1lJb30xQKMokh72p2w
- SX+JqJzLYiWx0SbV/lBiubTV2c4hfye0y1nXwhor/y9VmlvgciZeRq1DwS7NDHcTG2JA
- pk5Q==
-X-Gm-Message-State: AOAM532uC0yNt6xwalknb7wC/LXiLhSrvmzbJf2fWTF40PIf1UvdFWm4
- /Lhzgts5QchmhARx9yqiSmh9Jcug
-X-Google-Smtp-Source: ABdhPJzXMrBZtqieig0y6kV4ABn1VIpJ1TZsTStlJMWpP9ZXmgSjXn+WbGAkxI3zyZ0yWA3NhOCtng==
-X-Received: by 2002:a1c:5606:: with SMTP id k6mr19052387wmb.10.1590946699366; 
- Sun, 31 May 2020 10:38:19 -0700 (PDT)
+ bh=nx6i+AHtHhOPOYC0ludmYEcyPCtH+R6fArfoXhgX/80=;
+ b=XSMgWox6hoVu9S4yXtAk5SJre4jJzi/4ERPAu2rmLHnbIwnvvb7xZSslaNLGdBQNIo
+ HtgkObwZ0kSOajHg1HRbCDaR2o3+oUTJp+ZgdIFYX4VEFH9Ae+3J1vfF1k9FFYOullux
+ 1gNR2p8vHE1ERaUPkf9Ji6Eoa9KmJt97woF4hyZKPzpMFSUmzEfTHP5SOtmMx9Ujqnii
+ yCtSqkjqaq8vVLBAM9g6ZRju3QEzNxN3fOifYzThmX532vPDgwGek8N8YBA1nzIajrgQ
+ P3ZQhRfoIKKbQGjd/AQJq1nTQet/K0LFxUjta7Htz/ftgVQIsSYQXuv+ZMzSAN5TMI9Q
+ sn1w==
+X-Gm-Message-State: AOAM532n3Vra+8Shyun1KHsiHCcwFJ7vYgGzL2rDeZ9ks7PQw3v3obUw
+ mD5pBP9sIs3ogASRzr06URZmyYX4
+X-Google-Smtp-Source: ABdhPJwrR3vwdIenjSppjEGj76X18jhrVpnPd8ljKzuiMJUGDNuZXGPyuZJVIrkrS466Afme7Vb7pg==
+X-Received: by 2002:a1c:39c1:: with SMTP id g184mr17816585wma.9.1590946708068; 
+ Sun, 31 May 2020 10:38:28 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.18
+ by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:38:18 -0700 (PDT)
+ Sun, 31 May 2020 10:38:27 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -59,9 +59,9 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Anthony Perard <anthony.perard@citrix.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 1/8] hw/arm/aspeed: Correct DRAM container region size
-Date: Sun, 31 May 2020 19:38:07 +0200
-Message-Id: <20200531173814.8734-2-f4bug@amsat.org>
+Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
+Date: Sun, 31 May 2020 19:38:13 +0200
+Message-Id: <20200531173814.8734-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
 References: <20200531173814.8734-1-f4bug@amsat.org>
@@ -93,47 +93,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 May 2020 17:38:30 -0000
+X-List-Received-Date: Sun, 31 May 2020 17:38:34 -0000
 
-memory_region_set_size() handle the 16 Exabytes limit by
-special-casing the UINT64_MAX value. This is not a problem
-for the 32-bit maximum, 4 GiB.
-By using the UINT32_MAX value, the aspeed-ram-container
-MemoryRegion ends up missing 1 byte:
-
- $ qemu-system-arm -M ast2600-evb -S -monitor stdio
- (qemu) info mtree
-
-  address-space: aspeed.fmc-ast2600-dma-dram
-    0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
-      0000000080000000-00000000bfffffff (prio 0, ram): ram
-      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
-
-Fix by using the correct value. We now have:
-
-  address-space: aspeed.fmc-ast2600-dma-dram
-    0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
-      0000000080000000-00000000bfffffff (prio 0, ram): ram
-      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+IEC binary prefixes ease code review: the unit is explicit.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i386/xen/xen-hvm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 2c23297edf..62344ac6a3 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
-     bmc = g_new0(AspeedBoardState, 1);
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 82ece6b9e7..679d74e6a3 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -9,6 +9,7 @@
+  */
  
-     memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
--                       UINT32_MAX);
-+                       4 * GiB);
-     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
  
-     object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
+ #include "cpu.h"
+ #include "hw/pci/pci.h"
+@@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+          * Xen does not allocate the memory continuously, it keeps a
+          * hole of the size computed above or passed in.
+          */
+-        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
++        block_len = 4 * GiB + x86ms->above_4g_mem_size;
+     }
+     memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+                            &error_fatal);
 -- 
 2.21.3
 
