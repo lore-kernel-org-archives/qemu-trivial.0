@@ -1,76 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfTwy-0002xh-5k
-	for mharc-qemu-trivial@gnu.org; Sun, 31 May 2020 15:48:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46906)
+	id 1jfft0-0002PD-61
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 04:33:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jfTww-0002xC-HG
- for qemu-trivial@nongnu.org; Sun, 31 May 2020 15:48:50 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:43108)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jffsy-0002MT-Ak; Mon, 01 Jun 2020 04:33:32 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jfTwv-0006hN-Jc
- for qemu-trivial@nongnu.org; Sun, 31 May 2020 15:48:50 -0400
-Received: by mail-oi1-x244.google.com with SMTP id i22so7246559oik.10
- for <qemu-trivial@nongnu.org>; Sun, 31 May 2020 12:48:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ILaa0c1UMVCHaphm0DdLpskuHaCCEchvE3UnkzWKwTU=;
- b=gh/yOzBvDIyuIfovF4HlMlYod16q8wUChDeH3hG7Vg+iTSHsq68cyaZOlaiNPIf9US
- ygkjSaJT2vmqdUJQIEGlL8gV2MtXWHco1mZIOuO5KiIKQs3G5nr+4EVe214ZZXeEv7t2
- BrAvP75A4QrCdtXWHeTAoOJNw5pvGzbuC2G/kLi877DgbTs+y3Xd2yQqelINQ+/4seCD
- JnV4TjmGBJgF8NzHohYqz7Kn6m0rIYAsc00stNMZ+W0zNNKTer3Nbo9C6s5802r+PVaz
- RvSVWI8S5dnalEPSFqzdJ82hUjtjWbzfyTWqx+oNh8fIgRphvyytYus3c9E04tDW/7Xd
- ywBQ==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jffsw-0003W2-HZ; Mon, 01 Jun 2020 04:33:31 -0400
+Received: by mail-wm1-x344.google.com with SMTP id q25so1546302wmj.0;
+ Mon, 01 Jun 2020 01:33:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
+ b=qpAUJ/XnT4mWsnqFMatowAbLLFJq43367/cBpfL/d3ZzTAp/DFEljArpThGY9+x18V
+ mEWL8q9LN1y/Kzo+yPVP9NuX/kfEdhcwtUoUfgf7soF39oOD56i779EDikiWNdymrWiX
+ iGGtrBcC2jcRqrRl9ppZVn/1WCbmq4vVN9DSxtAyiWa1+q4pxj6qRzoay8n+SQrsR0yw
+ xppjqFmvZcRSAqBhzHi3l+z0IJbui5cI7X5kxEJ1zcyLOImgzgUXu2H10/7ZMwXcJ4zi
+ f2UOMruKHQPpVSt0R+Z8WeJyW7oZywqw1PT6JFEm2PiEbYoqydIw6Ah5rnt5mxbRKRnd
+ TU3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ILaa0c1UMVCHaphm0DdLpskuHaCCEchvE3UnkzWKwTU=;
- b=Wv+u2FVxOMgu+C7JnStvBF7l3z27hydYFSlafZ26wjP0T1MYCzLJnXzfmhe6NXkqEx
- eXtCz0RotlsrzB+EI7gQ6BRZ34oeNWdWcw8mdD84FMxzDm3wbtubkGepJDGOyhwvoDG9
- Ldbit84oY3PFfso6zT8Uh06b55XyE+smarT1CfeY2PT2JujFlF1Z/CHG+Mk0rflBEwy/
- PWNJbKdAR43zSpbuqHSUxpHgmhhxsGD7lzOQenD3GzSs+rInUDj3J7RU2qFKDc1tLoYz
- Mga1KBTYPlJ9Ck7ouyQxDSWMPS/SJx4Gttn7zUK7BOcZOPfwGtkqPnnzBOJZJIPfxR/K
- eR/w==
-X-Gm-Message-State: AOAM5305SZaBdtNAOpXPPu6Dqo1xgeL7Ez6kjTEybSk5SPOglVwix6iS
- 5iw0SvhK+5Nf2L2B/TwQD3yWrZ50at9qG+euMfQ+iw==
-X-Google-Smtp-Source: ABdhPJxKeNN10qTHbz3+NODuq1ECUVF+14p38NKGTSU2wB+Fz1ZTvl0ES71h3qOGWCxhFj3oAr/7710lgqqoniYFZ4Q=
-X-Received: by 2002:aca:5451:: with SMTP id i78mr7136005oib.48.1590954528355; 
- Sun, 31 May 2020 12:48:48 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
+ b=mKWTxht0naIZmYrTy6iWKMksJcqbkbUX6/urX9cRaGvWRUM1BItDVSN5pW0lo7dnEp
+ 7EIC0Y2hQkdBKv9fwoZftis7kCuFydjGzZPYqy/rceng1Z1SItD/dkQCQpXC9nzttrr9
+ 2GgEF+1gHD0A89Hn7fe7m3DwoqC2OVSkHVXZHbtV5UUGkRVpHgvYbstHxEO9b8rGdMUG
+ HQm+Q5wWEpUm8RDo3OuiVLH2uI9CbTwOXizt2dUiNt4OWKWKxlXdD5ldp+X/f61zyPHq
+ My2OtHxtMDnHb4HIF2cDpW+QHB1bt79ebDiG7ofDkmaHwqHlmgeihBvHqpD/Za+nEVfm
+ /rUQ==
+X-Gm-Message-State: AOAM531NVTHFSYAgQ59pTPBk3xTzt9TNH0K37JPNw3bd2NVvCYQuJLGM
+ fGGqnWEzlqtOCnGKW7G2+qM=
+X-Google-Smtp-Source: ABdhPJxCUGyTLCx6nC4rkNK06m7YbI0ofoKV10ACf5rgyiIrixi/EROQbo/YLaDXpnfOfoBnf+b5TA==
+X-Received: by 2002:a1c:62d6:: with SMTP id w205mr19510946wmb.97.1591000407855; 
+ Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
+Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.43])
+ by smtp.gmail.com with ESMTPSA id l17sm11837037wmi.16.2020.06.01.01.33.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
+ definitions
+To: paul@xen.org, qemu-devel@nongnu.org
+Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
+ 'Stefano Stabellini' <sstabellini@kernel.org>,
+ 'Eduardo Habkost' <ehabkost@redhat.com>,
+ "'Michael S. Tsirkin'" <mst@redhat.com>, 'Andrew Jeffery' <andrew@aj.id.au>,
+ 'Helge Deller' <deller@gmx.de>, 'Joel Stanley' <joel@jms.id.au>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?=27Herv=c3=a9_Poussineau=27?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?=27C=c3=a9dric_Le_Goater=27?= <clg@kaod.org>,
+ 'Marcel Apfelbaum' <marcel.apfelbaum@gmail.com>,
+ 'Paolo Bonzini' <pbonzini@redhat.com>,
+ 'Anthony Perard' <anthony.perard@citrix.com>,
+ xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
+ 'Richard Henderson' <rth@twiddle.net>
 References: <20200531173814.8734-1-f4bug@amsat.org>
-In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 31 May 2020 20:48:37 +0100
-Message-ID: <CAFEAcA95OLKmG1xNVjAg_KPt3hfN4vT5wvZ6SJbcKk5zdYO_Gg@mail.gmail.com>
-Subject: Re: [PATCH 0/8] hw: Fix some incomplete memory region size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
- Helge Deller <deller@gmx.de>, 
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Paul Durrant <paul@xen.org>, 
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Stefano Stabellini <sstabellini@kernel.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- qemu-arm <qemu-arm@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Anthony Perard <anthony.perard@citrix.com>, qemu-ppc <qemu-ppc@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x244.google.com
+ <20200531173814.8734-8-f4bug@amsat.org>
+ <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <63327be6-10c1-6a8c-b4ed-cbbd085a35a8@amsat.org>
+Date: Mon, 1 Jun 2020 10:33:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -85,38 +98,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 May 2020 19:48:50 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 08:33:32 -0000
 
-On Sun, 31 May 2020 at 18:38, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> memory_region_set_size() handle the 16 Exabytes limit by
-> special-casing the UINT64_MAX value.
-> This is not a problem for the 32-bit maximum, 4 GiB, but
-> in some places we incorrectly use UINT32_MAX instead of
-> 4 GiB, and end up missing 1 byte in the memory region.
->
-> This series fixes the cases I encountered.
-> Also included few patches while reviewing, I replaced some
-> magic values by the IEC binary prefix equivalent.
->
-> Regards,
->
-> Phil.
->
-> Philippe Mathieu-Daud=C3=A9 (8):
->   hw/arm/aspeed: Correct DRAM container region size
->   hw/pci-host/prep: Correct RAVEN bus bridge memory region size
->   hw/pci/pci_bridge: Correct pci_bridge_io memory region size
->   hw/pci/pci_bridge: Use the IEC binary prefix definitions
->   hw/pci-host: Use the IEC binary prefix definitions
->   hw/hppa/dino: Use the IEC binary prefix definitions
->   hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
->   target/i386/cpu: Use the IEC binary prefix definitions
+On 6/1/20 9:26 AM, Paul Durrant wrote:
+>> -----Original Message-----
+>> From: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> On Behalf Of Philippe Mathieu-Daudé
+>> Sent: 31 May 2020 18:38
+>> To: qemu-devel@nongnu.org
+>> Cc: Andrew Jeffery <andrew@aj.id.au>; Helge Deller <deller@gmx.de>; Peter Maydell
+>> <peter.maydell@linaro.org>; Richard Henderson <rth@twiddle.net>; Eduardo Habkost
+>> <ehabkost@redhat.com>; Paul Durrant <paul@xen.org>; Hervé Poussineau <hpoussin@reactos.org>; Marcel
+>> Apfelbaum <marcel.apfelbaum@gmail.com>; xen-devel@lists.xenproject.org; Paolo Bonzini
+>> <pbonzini@redhat.com>; Stefano Stabellini <sstabellini@kernel.org>; Cédric Le Goater <clg@kaod.org>;
+>> qemu-trivial@nongnu.org; Joel Stanley <joel@jms.id.au>; qemu-arm@nongnu.org; Michael S. Tsirkin
+>> <mst@redhat.com>; Anthony Perard <anthony.perard@citrix.com>; qemu-ppc@nongnu.org; Philippe Mathieu-
+>> Daudé <f4bug@amsat.org>
+>> Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
+>>
+>> IEC binary prefixes ease code review: the unit is explicit.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/i386/xen/xen-hvm.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+>> index 82ece6b9e7..679d74e6a3 100644
+>> --- a/hw/i386/xen/xen-hvm.c
+>> +++ b/hw/i386/xen/xen-hvm.c
+>> @@ -9,6 +9,7 @@
+>>   */
+>>
+>>  #include "qemu/osdep.h"
+>> +#include "qemu/units.h"
+>>
+>>  #include "cpu.h"
+>>  #include "hw/pci/pci.h"
+>> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+>>           * Xen does not allocate the memory continuously, it keeps a
+>>           * hole of the size computed above or passed in.
+>>           */
+>> -        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
+>> +        block_len = 4 * GiB + x86ms->above_4g_mem_size;
+> 
+> Not strictly necessary but could we retain the brackets please?
 
-whole series:
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Sure.
 
-thanks
--- PMM
+Laurent, if this can go via your trivial@ tree, can you do the change or
+you rather I resend the whole series?
+
+> 
+>   Paul
+> 
+>>      }
+>>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+>>                             &error_fatal);
+>> --
+>> 2.21.3
+> 
+> 
+> 
 
