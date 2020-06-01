@@ -1,77 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfgbL-00076M-9B
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 05:19:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58406)
+	id 1jfgrI-0003C9-4R
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 05:35:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <konrad@adacore.com>)
- id 1jfgbK-00076A-Me
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:19:22 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:34305)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <konrad@adacore.com>)
- id 1jfgbJ-0004fK-Mc
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:19:22 -0400
-Received: by mail-wm1-x343.google.com with SMTP id u26so11615483wmn.1
- for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 02:19:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5A3StrLl1dugDkCzgdqXK3MO8PHx1QxhbwM4zOMgvP8=;
- b=wAMdrB+NqsWe0uA5j7m4jfKSMcbBH/8n2YXpsci84G54wBefuh8AqKn7s3XK5vkuS3
- SKA2dY6X9RQ07jKAiqkeuLiMrmKlMfwZSla/PS8e4K4bm05NwpnROjib4JZ2dFcV+7is
- unwqkoW/WDgW/QDij63eNvDEI/sIm8RRzkbIwrc44RIqMnKNjwow24ouKXWv9uN5z1ub
- Zl25IxjGBjzOBpGCXV6wn9qAwTk8t1ek5esvSLDidrCH2wp91I+/+kwCOzJ0awv/K/5U
- NZs5b7avXpzW97RE+EmF/1Cz3U7boVuJ8vNjysyJDdTINmsi77CcQeDcCT/aYaDNjntN
- iTLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5A3StrLl1dugDkCzgdqXK3MO8PHx1QxhbwM4zOMgvP8=;
- b=brIaa+04oZ3TGU3krG9kvuxSoQLsXoqPIr7sJUqU6HU8Xr6ChyWvxkUhNCHRY5ZYwb
- 5b471NWWuLgz3Zikhlzbhf0xe6TIfLd7UwxhArJboEbgYt6f8QERP+yY+2psZV8NwVUz
- XI25CD2OoVnizX8W80O6P1R5xJyo65Ex8gpqOILyN6M6hz9THajGjMsVPaitL+4oyixE
- RiUaK0L/XfXu9P4rb68KW2L8QoqGWfr8shIrg7pL4oB38+DbIy/hTTheTEJBSbXNg/wO
- 6n444MZkOoUZvhRFx4P3vC7ew8a7zeqdsaGKmeNljwrRdMNL5iPtMLAnvIQgJ94ZyFfg
- AP7A==
-X-Gm-Message-State: AOAM531o1K2oGMuttA5IwAx1ufDg184xDwoEggqdmtQY4v99Y/C6RC5V
- Y2oIzgWaGgQHdzVKNiV6WU5bNYdoYoZYCQ==
-X-Google-Smtp-Source: ABdhPJyPUfn+RpmKJFi7Z3XWoUqHB0Vm9Vrzmo5fZAhqns6JFrL5NySbLFfOn0eF4ALNbQuoVGFWUA==
-X-Received: by 2002:a1c:c1:: with SMTP id 184mr15063270wma.74.1591003159449;
- Mon, 01 Jun 2020 02:19:19 -0700 (PDT)
-Received: from linux.home ([2a01:cb19:867e:2100:7eef:23e0:9210:3e8])
- by smtp.gmail.com with ESMTPSA id v2sm20084173wrn.21.2020.06.01.02.19.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 02:19:18 -0700 (PDT)
-Subject: Re: [PATCH] semihosting: remove the pthread include which seems unused
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- alex.bennee@linaro.org
-Cc: frederic.konrad@adacore.com, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1589806958-23511-1-git-send-email-frederic.konrad@adacore.com>
- <5ab6f370-6725-1cdb-1b82-24a58cb7642e@redhat.com>
-From: Fred Konrad <konrad@adacore.com>
-Message-ID: <dfd77414-83e8-755f-1386-13188b968aef@adacore.com>
-Date: Mon, 1 Jun 2020 11:19:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.1
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jfgrG-0003BN-FT
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:35:50 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:36639
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jfgrF-00078l-4j
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:35:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591004148;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CtRe7JqBaNd3Ht3Qr5uxXiDTrRL/AI6jyVQFWO/kqhk=;
+ b=RvyIw/5vO3ZzdtQXHw6f2VJgqhzy2bN1699kTADz5CdQnotGnHCsV3K+j8n40R5SjESSIf
+ QIFPigV6J/ciyg5pknHw3O8htTqFLqFi03mBgfuj15c1IdM7dHxSFMRTMBcEaCgmwcenIR
+ dXax+sE77b4Is33mptVpyNMbUHJLxII=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-240-SNhj150DN7mvikHMHZIj7Q-1; Mon, 01 Jun 2020 05:35:44 -0400
+X-MC-Unique: SNhj150DN7mvikHMHZIj7Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 777DB108594D;
+ Mon,  1 Jun 2020 09:35:43 +0000 (UTC)
+Received: from work-vm (ovpn-113-144.ams2.redhat.com [10.36.113.144])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A8795D9C9;
+ Mon,  1 Jun 2020 09:35:42 +0000 (UTC)
+Date: Mon, 1 Jun 2020 10:35:39 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] migration/vmstate: Remove unnecessary MemoryRegion
+ forward declaration
+Message-ID: <20200601093539.GD2743@work-vm>
+References: <20200530165512.15225-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <5ab6f370-6725-1cdb-1b82-24a58cb7642e@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
+In-Reply-To: <20200530165512.15225-1-f4bug@amsat.org>
+User-Agent: Mutt/1.13.4 (2020-02-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=konrad@adacore.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 05:35:47
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, T_HK_NAME_DR=0.01, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,43 +76,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 09:19:22 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 09:35:50 -0000
 
-
-
-Le 5/18/20 à 3:50 PM, Philippe Mathieu-Daudé a écrit :
-> On 5/18/20 3:02 PM, konrad@adacore.com wrote:
->> From: KONRAD Frederic <frederic.konrad@adacore.com>
->>
->> This have been introduced by:
->>    8de702cb677c8381fb702cae252d6b69aa4c653b
->>
->> It doesn't seem to be used so remove it.
->>
->> Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
->> ---
->>   hw/semihosting/console.c | 1 -
->>   1 file changed, 1 deletion(-)
->>
->> diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
->> index 6346bd7..22e7827 100644
->> --- a/hw/semihosting/console.c
->> +++ b/hw/semihosting/console.c
->> @@ -23,7 +23,6 @@
->>   #include "exec/exec-all.h"
->>   #include "qemu/log.h"
->>   #include "chardev/char.h"
->> -#include <pthread.h>
->>   #include "chardev/char-fe.h"
->>   #include "sysemu/sysemu.h"
->>   #include "qemu/main-loop.h"
->>
+* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
+> "migration/vmstate.h" only uses pointer to MemoryRegion, which
+> is already forward declared in "qemu/typedefs.h".
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> CI: https://travis-ci.org/github/philmd/qemu/builds/692879495
+> ---
+>  include/migration/vmstate.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
+> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+> index 30667631bc..eafa39f560 100644
+> --- a/include/migration/vmstate.h
+> +++ b/include/migration/vmstate.h
+> @@ -1199,7 +1199,6 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+>  void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
+>                          void *opaque);
+>  
+> -struct MemoryRegion;
+>  void vmstate_register_ram(struct MemoryRegion *memory, DeviceState *dev);
+>  void vmstate_unregister_ram(struct MemoryRegion *memory, DeviceState *dev);
+>  void vmstate_register_ram_global(struct MemoryRegion *memory);
 
-Thanks for the review, Philippe.  Can this go through qemu-trivial?
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
-Regards,
-Fred
+and queued.
+
+> -- 
+> 2.21.3
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
 
