@@ -1,79 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfgTT-0001uk-S5
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 05:11:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57578)
+	id 1jfgbL-00076M-9B
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 05:19:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfgTS-0001uD-GU; Mon, 01 Jun 2020 05:11:14 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38019)
+ (Exim 4.90_1) (envelope-from <konrad@adacore.com>)
+ id 1jfgbK-00076A-Me
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:19:22 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:34305)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfgTQ-0002ml-Uu; Mon, 01 Jun 2020 05:11:14 -0400
-Received: by mail-wm1-x344.google.com with SMTP id f185so10580484wmf.3;
- Mon, 01 Jun 2020 02:11:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <konrad@adacore.com>)
+ id 1jfgbJ-0004fK-Mc
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 05:19:22 -0400
+Received: by mail-wm1-x343.google.com with SMTP id u26so11615483wmn.1
+ for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 02:19:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=adacore-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0NHKCC2ZM3RNLuaUKMH/VgdKQS0ppaSfMzXAY8OLTr8=;
- b=lsK8JgwRzqjmiFc/npOdne9N3JOVIeQV1tRNu896E/tOTK3dx6kwcpuwsLhD3p0KdW
- HISfTdZoaUeTDEmuKh9qVWvHHPFAYyXZR5wxEIt1WOEj91VukYsGfddCEeH+SReqZofO
- 7cU6PAZLsoc413fj91VFMix0wQ/7hgAKwHeFdoep5rNrRMGDx1OVvfP9yZYcTM6+Wy5M
- NdRYyDglOUHcDzBUQZ5I8kRCz+vhLdsC7o/3qYgqXXUoHhmoSY39lvKg4h1IVNt0IGtU
- 0RuxWXFkRWcIXryzo29KrDo8+Zt5HNzd9+mkJ9L4vu+Eqec0trYuVKTn+wT32A3Z8z2n
- t18Q==
+ bh=5A3StrLl1dugDkCzgdqXK3MO8PHx1QxhbwM4zOMgvP8=;
+ b=wAMdrB+NqsWe0uA5j7m4jfKSMcbBH/8n2YXpsci84G54wBefuh8AqKn7s3XK5vkuS3
+ SKA2dY6X9RQ07jKAiqkeuLiMrmKlMfwZSla/PS8e4K4bm05NwpnROjib4JZ2dFcV+7is
+ unwqkoW/WDgW/QDij63eNvDEI/sIm8RRzkbIwrc44RIqMnKNjwow24ouKXWv9uN5z1ub
+ Zl25IxjGBjzOBpGCXV6wn9qAwTk8t1ek5esvSLDidrCH2wp91I+/+kwCOzJ0awv/K/5U
+ NZs5b7avXpzW97RE+EmF/1Cz3U7boVuJ8vNjysyJDdTINmsi77CcQeDcCT/aYaDNjntN
+ iTLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0NHKCC2ZM3RNLuaUKMH/VgdKQS0ppaSfMzXAY8OLTr8=;
- b=SICpBZYBrIZDTA4rGu/Mf9XAYb/Spx/fOY9HED3MrHalU8tnS/kHlwdP3EhONBl7Aw
- 84H4qjpmJefZxwgAzz9ksGB7GMZ2RFDsP2FFUdyB1kFWH+GybKD/OZmFvq/TT9X9pFme
- g6hrI5oXTL3ugyQ1ZWDR7L2rb7YnAkurXz4Gdn7MlhqMB8CiWiuLz16/Ap0phwxzBpkr
- yYPOI8wYZTwasLHQ3++yDycEUjaoJaVd6XMqO1vFxIVmH/R8gQ3jL1AVWWneNVeUCs+T
- i5QKql9vG4lw52VR6ivjVIFGg8ETPirAT/WhBK1lDagfxMRXgdhbNNxvCchkmtEY6EVB
- Dqjw==
-X-Gm-Message-State: AOAM533PzlzFqxdHMX7rOV+2/KesHdRikMQXUccblR7l81AiwGR626v9
- skt9AWGK9/MvNNRyO45Q3Ms=
-X-Google-Smtp-Source: ABdhPJwEhNjZcBQDCJd7jvZrEijY8LbCG2LoH6Eo5LbKMKrpUHsLH3gXTz2bSd2d6R+U4eVsom9OAw==
-X-Received: by 2002:a1c:6042:: with SMTP id u63mr20463260wmb.65.1591002671026; 
- Mon, 01 Jun 2020 02:11:11 -0700 (PDT)
-Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id 37sm20848156wrk.61.2020.06.01.02.11.09
+ bh=5A3StrLl1dugDkCzgdqXK3MO8PHx1QxhbwM4zOMgvP8=;
+ b=brIaa+04oZ3TGU3krG9kvuxSoQLsXoqPIr7sJUqU6HU8Xr6ChyWvxkUhNCHRY5ZYwb
+ 5b471NWWuLgz3Zikhlzbhf0xe6TIfLd7UwxhArJboEbgYt6f8QERP+yY+2psZV8NwVUz
+ XI25CD2OoVnizX8W80O6P1R5xJyo65Ex8gpqOILyN6M6hz9THajGjMsVPaitL+4oyixE
+ RiUaK0L/XfXu9P4rb68KW2L8QoqGWfr8shIrg7pL4oB38+DbIy/hTTheTEJBSbXNg/wO
+ 6n444MZkOoUZvhRFx4P3vC7ew8a7zeqdsaGKmeNljwrRdMNL5iPtMLAnvIQgJ94ZyFfg
+ AP7A==
+X-Gm-Message-State: AOAM531o1K2oGMuttA5IwAx1ufDg184xDwoEggqdmtQY4v99Y/C6RC5V
+ Y2oIzgWaGgQHdzVKNiV6WU5bNYdoYoZYCQ==
+X-Google-Smtp-Source: ABdhPJyPUfn+RpmKJFi7Z3XWoUqHB0Vm9Vrzmo5fZAhqns6JFrL5NySbLFfOn0eF4ALNbQuoVGFWUA==
+X-Received: by 2002:a1c:c1:: with SMTP id 184mr15063270wma.74.1591003159449;
+ Mon, 01 Jun 2020 02:19:19 -0700 (PDT)
+Received: from linux.home ([2a01:cb19:867e:2100:7eef:23e0:9210:3e8])
+ by smtp.gmail.com with ESMTPSA id v2sm20084173wrn.21.2020.06.01.02.19.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 02:11:10 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/5] hw/sh4: current patch queue
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Fam Zheng <fam@euphon.net>, Magnus Damm <magnus.damm@gmail.com>,
- qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
-References: <20200530092306.26628-1-f4bug@amsat.org>
- <87eer0v25c.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8279188f-f6a7-4d0e-50d9-de1c66619e50@amsat.org>
-Date: Mon, 1 Jun 2020 11:11:09 +0200
+ Mon, 01 Jun 2020 02:19:18 -0700 (PDT)
+Subject: Re: [PATCH] semihosting: remove the pthread include which seems unused
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ alex.bennee@linaro.org
+Cc: frederic.konrad@adacore.com, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1589806958-23511-1-git-send-email-frederic.konrad@adacore.com>
+ <5ab6f370-6725-1cdb-1b82-24a58cb7642e@redhat.com>
+From: Fred Konrad <konrad@adacore.com>
+Message-ID: <dfd77414-83e8-755f-1386-13188b968aef@adacore.com>
+Date: Mon, 1 Jun 2020 11:19:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.8.1
 MIME-Version: 1.0
-In-Reply-To: <87eer0v25c.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <5ab6f370-6725-1cdb-1b82-24a58cb7642e@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=konrad@adacore.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,56 +84,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 09:11:14 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 09:19:22 -0000
 
-On 5/31/20 12:18 PM, Alex Bennée wrote:
-> 
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> 
->> Hi,
->>
->> As there is no SH4 active maintainer, I gathered various
->> patches in a single series, in case someone is willing to
->> apply them.
-> 
-> I'm sure you you could put yourself down as an "Odd Fixes" maintainer
-> and put together a PR if you want?
 
-  Odd Fixes: It has a maintainer but they don't have time to do
-             much other than throw the odd patch in.
 
-OK 'Odd Fixes' matches what I can offer as a hobbyist.
-I'm happy to help avoiding this code to bitrot, as long as I don't get
-the same pressure imposed on other targets.
-After all this Renesas hardware has a lot in common with the RX I've
-been looking at recently.
+Le 5/18/20 à 3:50 PM, Philippe Mathieu-Daudé a écrit :
+> On 5/18/20 3:02 PM, konrad@adacore.com wrote:
+>> From: KONRAD Frederic <frederic.konrad@adacore.com>
+>>
+>> This have been introduced by:
+>>    8de702cb677c8381fb702cae252d6b69aa4c653b
+>>
+>> It doesn't seem to be used so remove it.
+>>
+>> Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
+>> ---
+>>   hw/semihosting/console.c | 1 -
+>>   1 file changed, 1 deletion(-)
+>>
+>> diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
+>> index 6346bd7..22e7827 100644
+>> --- a/hw/semihosting/console.c
+>> +++ b/hw/semihosting/console.c
+>> @@ -23,7 +23,6 @@
+>>   #include "exec/exec-all.h"
+>>   #include "qemu/log.h"
+>>   #include "chardev/char.h"
+>> -#include <pthread.h>
+>>   #include "chardev/char-fe.h"
+>>   #include "sysemu/sysemu.h"
+>>   #include "qemu/main-loop.h"
+>>
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
 
-> 
->>
->> CI report:
->> https://travis-ci.org/github/philmd/qemu/builds/692828388
->>
->> Regards,
->>
->> Phil.
->>
->> Philippe Mathieu-Daudé (3):
->>   hw/sh4: Use MemoryRegion typedef
->>   hw/sh4: Extract timer definitions to 'hw/timer/tmu012.h'
->>   hw/timer/sh_timer: Remove unused 'qemu/timer.h' include
->>
->> Thomas Huth (2):
->>   tests/acceptance: Add boot tests for sh4 QEMU advent calendar image
->>   .travis.yml: Test SH4 QEMU advent calendar image
->>
->>  include/hw/sh4/sh.h                    | 12 +-----------
->>  include/hw/timer/tmu012.h              | 23 +++++++++++++++++++++++
->>  hw/sh4/sh7750.c                        |  1 +
->>  hw/timer/sh_timer.c                    |  3 ++-
->>  .travis.yml                            |  2 +-
->>  tests/acceptance/boot_linux_console.py | 13 +++++++++++--
->>  6 files changed, 39 insertions(+), 15 deletions(-)
->>  create mode 100644 include/hw/timer/tmu012.h
-> 
-> 
+Thanks for the review, Philippe.  Can this go through qemu-trivial?
+
+Regards,
+Fred
 
