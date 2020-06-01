@@ -1,85 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jflRr-0002w8-Lc
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 10:29:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38634)
+	id 1jfmJ0-0000Ce-WC
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 11:24:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jflRj-0002dS-8m; Mon, 01 Jun 2020 10:29:48 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:39524)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1jfmIy-0000A8-RI; Mon, 01 Jun 2020 11:24:48 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:42659)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jflRi-0002dB-F8; Mon, 01 Jun 2020 10:29:46 -0400
-Received: by mail-wr1-x442.google.com with SMTP id t18so52114wru.6;
- Mon, 01 Jun 2020 07:29:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1jfmIv-0008Nt-5d; Mon, 01 Jun 2020 11:24:48 -0400
+Received: by mail-ej1-x643.google.com with SMTP id k11so9561974ejr.9;
+ Mon, 01 Jun 2020 08:24:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SXUn2QQFzfY6E+figfmQGRv5xI8cdi2Y+xrdtsaM+Sw=;
- b=MeXAw86ml412WTe/fsbzOJTWxjk+Rldv3qgzlTd0jJQsOtea9XegxhBH/8V5pQOVnP
- fXogzJSZ+hjZIrhND/m9A/vKYTfmeAue9Qox3ZjWrudLmjNTRT6YUl7fSOC4OPEIlXJx
- RDxRfuk+01gSofzmvWqhy4bmcEJtYSyOoEDLf9Vz3tGnb4sbwtp/IvgM0YmiX9BnMdy+
- m3rwE3Ca/xJv9Yp5SGAtoLPnH78Dt0QnoGznahyxH5L6k+XnfS/yXI1RBRVSkde7GJaA
- PWlTD9aL49q5TbVDMJrh3zuTWmQZ57Gq2f36LyP3VNPOpbvIdY6Grm5OwshvQp3Xu/wS
- nDTQ==
+ h=from:reply-to:to:cc:references:in-reply-to:subject:date:message-id
+ :mime-version:content-transfer-encoding:content-language
+ :thread-index; bh=sxANU6nbFPCt0EhXkd5ZBvlOX0EDFxgYbGWL2UQmxw8=;
+ b=aT3meGZ0q2O+/DvzNa1eI9jDNeDtfDBNnfp+nIxVOlgm3PenOJbYLI7lnI2kRdwtqT
+ 2ozqN1dNVccR2WJJWJedL5075rx7h3jHQRj9PMCuXauiit5mWhoj/ANlWEOEUYsLa5um
+ 3q4/399Wca9qZR3JnB1/RuLF56gFuzJfx5BSxpZdN4QqFlIYwhqHimJjYuKpjQnGfpGx
+ 7qqRQ4b653H3zZcHr8GfNddHEKlaxu/i6fLVM1xLE1O5w3ptajY8S1E8PT/SCxMJLWRj
+ LN6mvLaPxW2x3yIW7IML7S4HnFdVOzNJ8gGp1+/Tznw+ys1adjB4yMdRIaZ4kEMGceWh
+ 0U8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=SXUn2QQFzfY6E+figfmQGRv5xI8cdi2Y+xrdtsaM+Sw=;
- b=o1lvAHGXI/KlN6lJg4Wo5aCt80igXiMp90Yoz1AAn01plAnwL4eWoiPR3plAmw069g
- SudOd/k0XynBfNyrl0ySFAWHekNIR39jva2h6+8N9ZY6xU8ERkf+1hpywvG9SIkWBFe+
- 4P26weToUpcGMUyOQjHhHRBSTHy0vd1Brhk0c2yUngNyD3w6AW1pnFfTURQgVLxgK9ja
- 60U/KXCt8z+RTy9U6P08Lb2No4Is/60j9n1vULQh1SG7DoxIruzMptFuS4e2TbfNFrKF
- gDN0zYTEo6WKXZOCGe5gpxdJt05jGZkzONnyxItcXiE46ToYhXVH33KQapmFy+3wBukU
- dNbg==
-X-Gm-Message-State: AOAM531+Swbmundp9XEzSJLq/5zkcyL2rc4Rl9Sdh9rhKbMhChARw52Y
- 2Ite7MNMxoDAievtgkoFBMyw0+RR
-X-Google-Smtp-Source: ABdhPJxGfoEw6g2vJ9OfpCjaYwWCmMl8Ah+Lnpp6R9LdwbX3+s5BYxOV3Vc5ZpcNzQGowCfzq7ym7w==
-X-Received: by 2002:adf:fe8d:: with SMTP id l13mr21567252wrr.282.1591021783964; 
- Mon, 01 Jun 2020 07:29:43 -0700 (PDT)
-Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id u12sm6824954wrq.90.2020.06.01.07.29.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Jun 2020 07:29:43 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Helge Deller <deller@gmx.de>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paul Durrant <paul@xen.org>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
- definitions
-Date: Mon,  1 Jun 2020 16:29:29 +0200
-Message-Id: <20200601142930.29408-8-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200601142930.29408-1-f4bug@amsat.org>
+ h=x-gm-message-state:from:reply-to:to:cc:references:in-reply-to
+ :subject:date:message-id:mime-version:content-transfer-encoding
+ :content-language:thread-index;
+ bh=sxANU6nbFPCt0EhXkd5ZBvlOX0EDFxgYbGWL2UQmxw8=;
+ b=Jefg6hypXpgchgrht3RvNJ/Cvia251Uv98FrLBJhVf+WIVHsSydYS8bdlUyxHuUJ6o
+ GovXRlUj3eq2fKDc5QOYl//B5SxaGRL/FvvNE0wrk06pxSKhbslKBibVD8fouMhQbeXb
+ 8OhWYCdcag52tuBlD0ki1jlwXa03v4bnM0qMxQRz96Oi7+JateGlnOgjWX41+vss0jsR
+ yz0j49vA65GvITO4j4O7qMJyMgNW2szVAvVZZ4h/MjpNWbjxPpCswFyNHvcKJFUKMZ2P
+ Od3jQFdq7O0spqeN0IjOgV9POOQUghqNGtTty2w20QJlP+OUWkRTtm0XVlgyVIayUSxv
+ WXLA==
+X-Gm-Message-State: AOAM531P4piAw5UwZoTUWWKP+obIFCApb7yBTbXga+bTdmd23a+QwkiC
+ nA3XrPlXNyI5HMeQOJ0MXkE=
+X-Google-Smtp-Source: ABdhPJz3eqjQudnsfEu5d5rwNc6qwUF/relN+aNRv0mT/kprvgtDTD/IPYh5uBXdHE8psgE0CfQOaA==
+X-Received: by 2002:a17:907:9484:: with SMTP id
+ dm4mr21098613ejc.56.1591025082794; 
+ Mon, 01 Jun 2020 08:24:42 -0700 (PDT)
+Received: from CBGR90WXYV0 (54-240-197-236.amazon.com. [54.240.197.236])
+ by smtp.gmail.com with ESMTPSA id b21sm9163015ejz.28.2020.06.01.08.24.41
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 01 Jun 2020 08:24:42 -0700 (PDT)
+From: Paul Durrant <xadimgnik@gmail.com>
+X-Google-Original-From: "Paul Durrant" <paul@xen.org>
+Reply-To: <paul@xen.org>
+To: =?utf-8?Q?'Philippe_Mathieu-Daud=C3=A9'?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+Cc: <xen-devel@lists.xenproject.org>,
+ "'Anthony Perard'" <anthony.perard@citrix.com>,
+ "'Paolo Bonzini'" <pbonzini@redhat.com>,
+ =?utf-8?Q?'Herv=C3=A9_Poussineau'?= <hpoussin@reactos.org>,
+ "'Helge Deller'" <deller@gmx.de>, <qemu-arm@nongnu.org>,
+ "'Marcel Apfelbaum'" <marcel.apfelbaum@gmail.com>,
+ "'Stefano Stabellini'" <sstabellini@kernel.org>,
+ "'Michael S. Tsirkin'" <mst@redhat.com>,
+ "'Eduardo Habkost'" <ehabkost@redhat.com>,
+ "'Andrew Jeffery'" <andrew@aj.id.au>, <qemu-trivial@nongnu.org>,
+ "'Peter Maydell'" <peter.maydell@linaro.org>,
+ "'Joel Stanley'" <joel@jms.id.au>,
+ =?utf-8?Q?'C=C3=A9dric_Le_Goater'?= <clg@kaod.org>, <qemu-ppc@nongnu.org>,
+ "'Richard Henderson'" <rth@twiddle.net>
 References: <20200601142930.29408-1-f4bug@amsat.org>
+ <20200601142930.29408-8-f4bug@amsat.org>
+In-Reply-To: <20200601142930.29408-8-f4bug@amsat.org>
+Subject: RE: [PATCH v2 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
+ definitions
+Date: Mon, 1 Jun 2020 16:24:40 +0100
+Message-ID: <001601d63828$c5b132a0$511397e0$@xen.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Microsoft Outlook 16.0
+Content-Language: en-gb
+Thread-Index: AQF4w9KWcHxvvYD3VioCudSt4ChIBAL7l7qKqWbtDxA=
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=xadimgnik@gmail.com; helo=mail-ej1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -94,38 +99,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 14:29:50 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 15:24:49 -0000
 
-IEC binary prefixes ease code review: the unit is explicit.
+> -----Original Message-----
+> From: Philippe Mathieu-Daud=C3=A9 <philippe.mathieu.daude@gmail.com> =
+On Behalf Of Philippe Mathieu-Daud=C3=A9
+> Sent: 01 June 2020 15:29
+> To: qemu-devel@nongnu.org
+> Cc: xen-devel@lists.xenproject.org; Anthony Perard =
+<anthony.perard@citrix.com>; Paolo Bonzini
+> <pbonzini@redhat.com>; Herv=C3=A9 Poussineau <hpoussin@reactos.org>; =
+Helge Deller <deller@gmx.de>; qemu-
+> arm@nongnu.org; Marcel Apfelbaum <marcel.apfelbaum@gmail.com>; Stefano =
+Stabellini
+> <sstabellini@kernel.org>; Michael S. Tsirkin <mst@redhat.com>; Eduardo =
+Habkost <ehabkost@redhat.com>;
+> Paul Durrant <paul@xen.org>; Andrew Jeffery <andrew@aj.id.au>; =
+qemu-trivial@nongnu.org; Peter Maydell
+> <peter.maydell@linaro.org>; Joel Stanley <joel@jms.id.au>; C=C3=A9dric =
+Le Goater <clg@kaod.org>; qemu-
+> ppc@nongnu.org; Richard Henderson <rth@twiddle.net>; Philippe =
+Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Subject: [PATCH v2 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix =
+definitions
+>=20
+> IEC binary prefixes ease code review: the unit is explicit.
+>=20
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/i386/xen/xen-hvm.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Reviewed-by: Paul Durrant <paul@xen.org>
 
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index 82ece6b9e7..94fe5d65e9 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -9,6 +9,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- 
- #include "cpu.h"
- #include "hw/pci/pci.h"
-@@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
-          * Xen does not allocate the memory continuously, it keeps a
-          * hole of the size computed above or passed in.
-          */
--        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
-+        block_len = (4 * GiB) + x86ms->above_4g_mem_size;
-     }
-     memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
-                            &error_fatal);
--- 
-2.21.3
+> ---
+>  hw/i386/xen/xen-hvm.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+> index 82ece6b9e7..94fe5d65e9 100644
+> --- a/hw/i386/xen/xen-hvm.c
+> +++ b/hw/i386/xen/xen-hvm.c
+> @@ -9,6 +9,7 @@
+>   */
+>=20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>=20
+>  #include "cpu.h"
+>  #include "hw/pci/pci.h"
+> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+>           * Xen does not allocate the memory continuously, it keeps a
+>           * hole of the size computed above or passed in.
+>           */
+> -        block_len =3D (1ULL << 32) + x86ms->above_4g_mem_size;
+> +        block_len =3D (4 * GiB) + x86ms->above_4g_mem_size;
+>      }
+>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+>                             &error_fatal);
+> --
+> 2.21.3
+
 
 
