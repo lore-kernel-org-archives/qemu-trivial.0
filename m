@@ -1,76 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfft0-0002PD-61
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 04:33:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53472)
+	id 1jfgTT-0001uk-S5
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 05:11:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jffsy-0002MT-Ak; Mon, 01 Jun 2020 04:33:32 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34926)
+ id 1jfgTS-0001uD-GU; Mon, 01 Jun 2020 05:11:14 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38019)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jffsw-0003W2-HZ; Mon, 01 Jun 2020 04:33:31 -0400
-Received: by mail-wm1-x344.google.com with SMTP id q25so1546302wmj.0;
- Mon, 01 Jun 2020 01:33:29 -0700 (PDT)
+ id 1jfgTQ-0002ml-Uu; Mon, 01 Jun 2020 05:11:14 -0400
+Received: by mail-wm1-x344.google.com with SMTP id f185so10580484wmf.3;
+ Mon, 01 Jun 2020 02:11:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
- b=qpAUJ/XnT4mWsnqFMatowAbLLFJq43367/cBpfL/d3ZzTAp/DFEljArpThGY9+x18V
- mEWL8q9LN1y/Kzo+yPVP9NuX/kfEdhcwtUoUfgf7soF39oOD56i779EDikiWNdymrWiX
- iGGtrBcC2jcRqrRl9ppZVn/1WCbmq4vVN9DSxtAyiWa1+q4pxj6qRzoay8n+SQrsR0yw
- xppjqFmvZcRSAqBhzHi3l+z0IJbui5cI7X5kxEJ1zcyLOImgzgUXu2H10/7ZMwXcJ4zi
- f2UOMruKHQPpVSt0R+Z8WeJyW7oZywqw1PT6JFEm2PiEbYoqydIw6Ah5rnt5mxbRKRnd
- TU3w==
+ bh=0NHKCC2ZM3RNLuaUKMH/VgdKQS0ppaSfMzXAY8OLTr8=;
+ b=lsK8JgwRzqjmiFc/npOdne9N3JOVIeQV1tRNu896E/tOTK3dx6kwcpuwsLhD3p0KdW
+ HISfTdZoaUeTDEmuKh9qVWvHHPFAYyXZR5wxEIt1WOEj91VukYsGfddCEeH+SReqZofO
+ 7cU6PAZLsoc413fj91VFMix0wQ/7hgAKwHeFdoep5rNrRMGDx1OVvfP9yZYcTM6+Wy5M
+ NdRYyDglOUHcDzBUQZ5I8kRCz+vhLdsC7o/3qYgqXXUoHhmoSY39lvKg4h1IVNt0IGtU
+ 0RuxWXFkRWcIXryzo29KrDo8+Zt5HNzd9+mkJ9L4vu+Eqec0trYuVKTn+wT32A3Z8z2n
+ t18Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
- b=mKWTxht0naIZmYrTy6iWKMksJcqbkbUX6/urX9cRaGvWRUM1BItDVSN5pW0lo7dnEp
- 7EIC0Y2hQkdBKv9fwoZftis7kCuFydjGzZPYqy/rceng1Z1SItD/dkQCQpXC9nzttrr9
- 2GgEF+1gHD0A89Hn7fe7m3DwoqC2OVSkHVXZHbtV5UUGkRVpHgvYbstHxEO9b8rGdMUG
- HQm+Q5wWEpUm8RDo3OuiVLH2uI9CbTwOXizt2dUiNt4OWKWKxlXdD5ldp+X/f61zyPHq
- My2OtHxtMDnHb4HIF2cDpW+QHB1bt79ebDiG7ofDkmaHwqHlmgeihBvHqpD/Za+nEVfm
- /rUQ==
-X-Gm-Message-State: AOAM531NVTHFSYAgQ59pTPBk3xTzt9TNH0K37JPNw3bd2NVvCYQuJLGM
- fGGqnWEzlqtOCnGKW7G2+qM=
-X-Google-Smtp-Source: ABdhPJxCUGyTLCx6nC4rkNK06m7YbI0ofoKV10ACf5rgyiIrixi/EROQbo/YLaDXpnfOfoBnf+b5TA==
-X-Received: by 2002:a1c:62d6:: with SMTP id w205mr19510946wmb.97.1591000407855; 
- Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
+ bh=0NHKCC2ZM3RNLuaUKMH/VgdKQS0ppaSfMzXAY8OLTr8=;
+ b=SICpBZYBrIZDTA4rGu/Mf9XAYb/Spx/fOY9HED3MrHalU8tnS/kHlwdP3EhONBl7Aw
+ 84H4qjpmJefZxwgAzz9ksGB7GMZ2RFDsP2FFUdyB1kFWH+GybKD/OZmFvq/TT9X9pFme
+ g6hrI5oXTL3ugyQ1ZWDR7L2rb7YnAkurXz4Gdn7MlhqMB8CiWiuLz16/Ap0phwxzBpkr
+ yYPOI8wYZTwasLHQ3++yDycEUjaoJaVd6XMqO1vFxIVmH/R8gQ3jL1AVWWneNVeUCs+T
+ i5QKql9vG4lw52VR6ivjVIFGg8ETPirAT/WhBK1lDagfxMRXgdhbNNxvCchkmtEY6EVB
+ Dqjw==
+X-Gm-Message-State: AOAM533PzlzFqxdHMX7rOV+2/KesHdRikMQXUccblR7l81AiwGR626v9
+ skt9AWGK9/MvNNRyO45Q3Ms=
+X-Google-Smtp-Source: ABdhPJwEhNjZcBQDCJd7jvZrEijY8LbCG2LoH6Eo5LbKMKrpUHsLH3gXTz2bSd2d6R+U4eVsom9OAw==
+X-Received: by 2002:a1c:6042:: with SMTP id u63mr20463260wmb.65.1591002671026; 
+ Mon, 01 Jun 2020 02:11:11 -0700 (PDT)
 Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l17sm11837037wmi.16.2020.06.01.01.33.26
+ by smtp.gmail.com with ESMTPSA id 37sm20848156wrk.61.2020.06.01.02.11.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
+ Mon, 01 Jun 2020 02:11:10 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
- definitions
-To: paul@xen.org, qemu-devel@nongnu.org
-Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
- 'Stefano Stabellini' <sstabellini@kernel.org>,
- 'Eduardo Habkost' <ehabkost@redhat.com>,
- "'Michael S. Tsirkin'" <mst@redhat.com>, 'Andrew Jeffery' <andrew@aj.id.au>,
- 'Helge Deller' <deller@gmx.de>, 'Joel Stanley' <joel@jms.id.au>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?=27Herv=c3=a9_Poussineau=27?= <hpoussin@reactos.org>,
- =?UTF-8?Q?=27C=c3=a9dric_Le_Goater=27?= <clg@kaod.org>,
- 'Marcel Apfelbaum' <marcel.apfelbaum@gmail.com>,
- 'Paolo Bonzini' <pbonzini@redhat.com>,
- 'Anthony Perard' <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- 'Richard Henderson' <rth@twiddle.net>
-References: <20200531173814.8734-1-f4bug@amsat.org>
- <20200531173814.8734-8-f4bug@amsat.org>
- <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
+Subject: Re: [PATCH 0/5] hw/sh4: current patch queue
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Fam Zheng <fam@euphon.net>, Magnus Damm <magnus.damm@gmail.com>,
+ qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>
+References: <20200530092306.26628-1-f4bug@amsat.org>
+ <87eer0v25c.fsf@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <63327be6-10c1-6a8c-b4ed-cbbd085a35a8@amsat.org>
-Date: Mon, 1 Jun 2020 10:33:25 +0200
+Message-ID: <8279188f-f6a7-4d0e-50d9-de1c66619e50@amsat.org>
+Date: Mon, 1 Jun 2020 11:11:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
+In-Reply-To: <87eer0v25c.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -98,65 +87,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 08:33:32 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 09:11:14 -0000
 
-On 6/1/20 9:26 AM, Paul Durrant wrote:
->> -----Original Message-----
->> From: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> On Behalf Of Philippe Mathieu-Daudé
->> Sent: 31 May 2020 18:38
->> To: qemu-devel@nongnu.org
->> Cc: Andrew Jeffery <andrew@aj.id.au>; Helge Deller <deller@gmx.de>; Peter Maydell
->> <peter.maydell@linaro.org>; Richard Henderson <rth@twiddle.net>; Eduardo Habkost
->> <ehabkost@redhat.com>; Paul Durrant <paul@xen.org>; Hervé Poussineau <hpoussin@reactos.org>; Marcel
->> Apfelbaum <marcel.apfelbaum@gmail.com>; xen-devel@lists.xenproject.org; Paolo Bonzini
->> <pbonzini@redhat.com>; Stefano Stabellini <sstabellini@kernel.org>; Cédric Le Goater <clg@kaod.org>;
->> qemu-trivial@nongnu.org; Joel Stanley <joel@jms.id.au>; qemu-arm@nongnu.org; Michael S. Tsirkin
->> <mst@redhat.com>; Anthony Perard <anthony.perard@citrix.com>; qemu-ppc@nongnu.org; Philippe Mathieu-
->> Daudé <f4bug@amsat.org>
->> Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
->>
->> IEC binary prefixes ease code review: the unit is explicit.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  hw/i386/xen/xen-hvm.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
->> index 82ece6b9e7..679d74e6a3 100644
->> --- a/hw/i386/xen/xen-hvm.c
->> +++ b/hw/i386/xen/xen-hvm.c
->> @@ -9,6 +9,7 @@
->>   */
->>
->>  #include "qemu/osdep.h"
->> +#include "qemu/units.h"
->>
->>  #include "cpu.h"
->>  #include "hw/pci/pci.h"
->> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
->>           * Xen does not allocate the memory continuously, it keeps a
->>           * hole of the size computed above or passed in.
->>           */
->> -        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
->> +        block_len = 4 * GiB + x86ms->above_4g_mem_size;
+On 5/31/20 12:18 PM, Alex Bennée wrote:
 > 
-> Not strictly necessary but could we retain the brackets please?
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
+> 
+>> Hi,
+>>
+>> As there is no SH4 active maintainer, I gathered various
+>> patches in a single series, in case someone is willing to
+>> apply them.
+> 
+> I'm sure you you could put yourself down as an "Odd Fixes" maintainer
+> and put together a PR if you want?
 
-Sure.
+  Odd Fixes: It has a maintainer but they don't have time to do
+             much other than throw the odd patch in.
 
-Laurent, if this can go via your trivial@ tree, can you do the change or
-you rather I resend the whole series?
+OK 'Odd Fixes' matches what I can offer as a hobbyist.
+I'm happy to help avoiding this code to bitrot, as long as I don't get
+the same pressure imposed on other targets.
+After all this Renesas hardware has a lot in common with the RX I've
+been looking at recently.
 
 > 
->   Paul
-> 
->>      }
->>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
->>                             &error_fatal);
->> --
->> 2.21.3
-> 
+>>
+>> CI report:
+>> https://travis-ci.org/github/philmd/qemu/builds/692828388
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>> Philippe Mathieu-Daudé (3):
+>>   hw/sh4: Use MemoryRegion typedef
+>>   hw/sh4: Extract timer definitions to 'hw/timer/tmu012.h'
+>>   hw/timer/sh_timer: Remove unused 'qemu/timer.h' include
+>>
+>> Thomas Huth (2):
+>>   tests/acceptance: Add boot tests for sh4 QEMU advent calendar image
+>>   .travis.yml: Test SH4 QEMU advent calendar image
+>>
+>>  include/hw/sh4/sh.h                    | 12 +-----------
+>>  include/hw/timer/tmu012.h              | 23 +++++++++++++++++++++++
+>>  hw/sh4/sh7750.c                        |  1 +
+>>  hw/timer/sh_timer.c                    |  3 ++-
+>>  .travis.yml                            |  2 +-
+>>  tests/acceptance/boot_linux_console.py | 13 +++++++++++--
+>>  6 files changed, 39 insertions(+), 15 deletions(-)
+>>  create mode 100644 include/hw/timer/tmu012.h
 > 
 > 
 
