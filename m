@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jflRi-0002cS-Qg
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 10:29:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38592)
+	id 1jflRp-0002pV-Jp
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 10:29:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jflRc-0002R0-J4; Mon, 01 Jun 2020 10:29:40 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54604)
+ id 1jflRl-0002fv-2W; Mon, 01 Jun 2020 10:29:49 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34245)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jflRb-0002bA-Qv; Mon, 01 Jun 2020 10:29:40 -0400
-Received: by mail-wm1-x342.google.com with SMTP id g10so3263528wmh.4;
- Mon, 01 Jun 2020 07:29:38 -0700 (PDT)
+ id 1jflRj-0002dW-Sq; Mon, 01 Jun 2020 10:29:48 -0400
+Received: by mail-wm1-x341.google.com with SMTP id u26so136174wmn.1;
+ Mon, 01 Jun 2020 07:29:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mxI9GbbijxDixix+zf0tcfiMCEcCufTLAytrxKWhnaw=;
- b=McijkDfUDfkGD5lMdNQ+M+R1KyklnbVnSE2xHGQXgc1FoZJoCchot8LzXFDjcv6KOM
- NfDZQCYHBzFyP55Su7iZS69grQCQSVbwDOPJ+fB1HbziyodXwYIRjrKQJxgmPT4ArVpq
- rm9Pu0LT63ray48uF1rziqp7IZcfFUNMkYG9A+LsNcigRtirUvuwvV444Ky81hpelupC
- +5N9EyRxBaOoygPIaPo+byEWNWCAKP5TJYnc3C0AUoXQLnUV2+IO/kOm471D5FNX4dGS
- PXeofGbkbTz3KyYJzwzy8JhQSJZBOmbcV67oJceaEhbsL8Eabp6qKyVKz5B+XRC8hlPA
- RKhg==
+ bh=BWyCSlaGZ5iGWtDERp092wuI7W/yJ6Q5PNPhUdRKhqE=;
+ b=YYdDUqhdLC78jQgiEyQ97vcy07tygmsEfX05PhXA32BxLX4Qe9twTWzZmVHR3RVHIY
+ +iIyt1j0gFZqOFSr605qHbE2POl+jt9MJdfiedY4UGCiWC/djzHGT4gJjI3nG74wfkyf
+ E/2/Kkh958INFuor/mhxBoXRwW4pFSd1w3zYBCgs8YkNUZoMLPAcfgJcNIx2hjDevr1L
+ kgbcUNCBqqQhZlc+JNsd85h9B66dOpEA3+cInY/WOBNWG0Lc1Pa92lK7g4BUtZ4aaTKV
+ mwP8Slp3c6cYpbvlWHqG1VDHdhtDUaTiWEO7Y4qycQdTKuVs8LtVl4dH8Jffj0657DSq
+ Qi1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=mxI9GbbijxDixix+zf0tcfiMCEcCufTLAytrxKWhnaw=;
- b=e/9XmhvpgjnjiQCe5Fa7xr99TVpJOJoq9acw705zHr+klrySd7q++ZqDnI8+Aigxxc
- Epxd2Cl/f2xlm2cSd17CYpD2kN+g/NoRL0K+xstuB8XjdgwPgB6FzQoK7hkqJYXzHHvn
- hGpUoXJwckLQr/QFMABf7YyEYEF5XmcUd3Z6Wzg0MCv3Ue14ON8ARZZ3CUlJrziuFO7f
- HCJXoPh46sC6YgGE4JoRwvgrEhGwRmhhx5lMDAxk/CJn+JwksHBOlClAVD2BuwGofUQe
- jcWVIKE2cl4LxCQb8si/UxkD1ETBL9+LHYP1NvzDgOAw1fZWGkMRPzLF0hichnLucB6r
- Oywg==
-X-Gm-Message-State: AOAM531+XOGBPqGUzgrdzlR1UiWeNxtzalidXRoKc5/OwiZ8U0AZMb8O
- dez161Dha9QUn7ed+TblCEiaSmK9
-X-Google-Smtp-Source: ABdhPJy45MyMB35sU56T7YLu7WldCE4HuCq6HN3F6gvzbGobgbl/tu9cwCNmdjlgEG1zdLyU9Mx++g==
-X-Received: by 2002:a7b:c248:: with SMTP id b8mr20855219wmj.2.1591021777436;
- Mon, 01 Jun 2020 07:29:37 -0700 (PDT)
+ bh=BWyCSlaGZ5iGWtDERp092wuI7W/yJ6Q5PNPhUdRKhqE=;
+ b=cB4/c0CrO7q6kHmLGYi8tJXSrP0i9vohvRCE+IjysKM9zHEwhhlTWzmWDTPTpTHs3G
+ 6THIrn0MuMtnZBa0rfzvcoEfZcSeM5QyEsA86dLt+hMF62CktGST5+k+D8FpQE8vc+s1
+ qYlVuT6D164J+BMrfchGd3b++j0uYA9gVh/yP7FyRK4Q6BSnYw/R7lN5WD+51SlwIk7o
+ s1STDRitbBvcWKKcq/c2/UlDm/BWuxFbQ/omhQGbvQ1rdr0IN45rEX2x4uNWKUZf8EU9
+ 5EG0lPcfvrU1h+oUVzl5uK8m1kXhIPQuj7FNcBl1fQ0Csi12YAEU/6viPUKiyh9bjqbn
+ IfWQ==
+X-Gm-Message-State: AOAM533F6MLUH0hhtXl3GdwjMWYPJeN6EBj1X9K+YSwlqmmarsHmo1nc
+ DiGJxZCA5M6aw07CIl6fYkDk60Dw
+X-Google-Smtp-Source: ABdhPJwzKaKvNJHEQ9IyYhEt4dQ3EvLLXvUAscQJQxiSIYHiAQMssMIh3EDSb2IIdm7moUjOASs4pA==
+X-Received: by 2002:a1c:b656:: with SMTP id g83mr23163858wmf.151.1591021785290; 
+ Mon, 01 Jun 2020 07:29:45 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id u12sm6824954wrq.90.2020.06.01.07.29.36
+ by smtp.gmail.com with ESMTPSA id u12sm6824954wrq.90.2020.06.01.07.29.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Jun 2020 07:29:36 -0700 (PDT)
+ Mon, 01 Jun 2020 07:29:44 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -59,10 +59,9 @@ Cc: xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
  Richard Henderson <rth@twiddle.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 3/8] hw/pci/pci_bridge: Correct pci_bridge_io memory region
- size
-Date: Mon,  1 Jun 2020 16:29:25 +0200
-Message-Id: <20200601142930.29408-4-f4bug@amsat.org>
+Subject: [PATCH v2 8/8] target/i386/cpu: Use the IEC binary prefix definitions
+Date: Mon,  1 Jun 2020 16:29:30 +0200
+Message-Id: <20200601142930.29408-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200601142930.29408-1-f4bug@amsat.org>
 References: <20200601142930.29408-1-f4bug@amsat.org>
@@ -70,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -94,59 +93,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 14:29:42 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 14:29:50 -0000
 
-memory_region_set_size() handle the 16 Exabytes limit by
-special-casing the UINT64_MAX value. This is not a problem
-for the 32-bit maximum, 4 GiB.
-By using the UINT32_MAX value, the pci_bridge_io MemoryRegion
-ends up missing 1 byte:
-
-  (qemu) info mtree
-  memory-region: pci_bridge_io
-    0000000000000000-00000000fffffffe (prio 0, i/o): pci_bridge_io
-      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
-      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
-      00000000000001ce-00000000000001d1 (prio 0, i/o): vbe
-      0000000000000378-000000000000037f (prio 0, i/o): parallel
-      00000000000003b4-00000000000003b5 (prio 0, i/o): vga
-      ...
-
-Fix by using the correct value. We now have:
-
-  memory-region: pci_bridge_io
-    0000000000000000-00000000ffffffff (prio 0, i/o): pci_bridge_io
-      0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
-      0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
-      ...
+IEC binary prefixes ease code review: the unit is explicit.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci/pci_bridge.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/i386/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index 97967d12eb..3ba3203f72 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -30,6 +30,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_bus.h"
- #include "qemu/module.h"
-@@ -381,7 +382,7 @@ void pci_bridge_initfn(PCIDevice *dev, const char *typename)
-     memory_region_init(&br->address_space_mem, OBJECT(br), "pci_bridge_pci", UINT64_MAX);
-     sec_bus->address_space_io = &br->address_space_io;
-     memory_region_init(&br->address_space_io, OBJECT(br), "pci_bridge_io",
--                       UINT32_MAX);
-+                       4 * GiB);
-     br->windows = pci_bridge_region_init(br);
-     QLIST_INIT(&sec_bus->child);
-     QLIST_INSERT_HEAD(&parent->child, sec_bus, sibling);
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 3733d9a279..33ce4861fb 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -6159,7 +6159,7 @@ static void x86_cpu_machine_done(Notifier *n, void *unused)
+     if (smram) {
+         cpu->smram = g_new(MemoryRegion, 1);
+         memory_region_init_alias(cpu->smram, OBJECT(cpu), "smram",
+-                                 smram, 0, 1ull << 32);
++                                 smram, 0, 4 * GiB);
+         memory_region_set_enabled(cpu->smram, true);
+         memory_region_add_subregion_overlap(cpu->cpu_as_root, 0, cpu->smram, 1);
+     }
 -- 
 2.21.3
 
