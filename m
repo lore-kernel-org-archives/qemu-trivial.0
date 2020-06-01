@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jftz9-0002Lf-LU
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 19:36:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47094)
+	id 1jftzl-0002os-C2
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 19:37:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jftz7-0002Gr-D1
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 19:36:49 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:37654)
+ id 1jftzj-0002kH-Dy
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 19:37:27 -0400
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:53476)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jftz6-0005nL-2D
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 19:36:48 -0400
-Received: by mail-pf1-x443.google.com with SMTP id a4so4170279pfo.4
- for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 16:36:47 -0700 (PDT)
+ id 1jftzh-00066J-GY
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 19:37:27 -0400
+Received: by mail-pj1-x1043.google.com with SMTP id i12so492073pju.3
+ for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 16:37:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=utp8UPhvpVOjKQDHheJJZxOdw9rN2rKIwvixqFfY6I0=;
- b=xTG7Mc8Ke+P7C8o56JElmLFbH18twbQfttKAc5G/dIXmkm2onWlNspWFfvusLOTgLg
- pTRDJq/tgRyR7y8JuLP6CZFE2Egd7bg09ZKOeD396awq3y3Wt4q7J+Liinm2BBOuvUrx
- PPw+rh9aMrrdNIj2zKTtH0aArySoR9V7wv0LwGc+yun4GQvO89nczwsvBnve0Xlf9HLH
- 7jA8bUorURzKagLbFYICNCER7T+CBwhJkzcywpFi0y9NCCGAjDZRm5Uhst8GI6Mk+SKq
- qe0DI8YoF1wc321Lg2a7uLv3QwcS6piwxXYRRqVkl86ZgCgMmu7bDWT6NTv4v2CVRdQd
- XsRg==
+ bh=PlBT1B/hjs0RZ4Sv/xaBn5v/munjW/EVMnZ0HWetFtY=;
+ b=h0ouO/8u5iRqZlDoPrAMhkSSqFRTrfSwQdo19a4i9ahzvmGjW0r6DS5w0CXaMbbJtL
+ /So9QK85DTtEQdWnTr0axxftFQZvGnF2jLt5EJ82ylkw5vJgvgWrdemTxnGl2T/EDVPy
+ tkR6x9ZtBtuv7G7WnqinFAypKDbsLrHF/El7N5SmOAmTwcd1ObkvDQR+XLnQz3/9dSLv
+ 0ZcCXDtQJwZmlIpqQUJaKcsDiDMKHRBkg+3uD47Izs61TD3fhbbFgPUiS3tX1lMruyO8
+ oXK1ML5f8Zah4SLGKt/6mY+IX6klJBO8Hynj6yjeHoSrie0ul9t9XWocNqYuw8RjfcaO
+ h/iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=utp8UPhvpVOjKQDHheJJZxOdw9rN2rKIwvixqFfY6I0=;
- b=cUI0lF/4AAj/Kplx+1PF4nYVm14TKnZHP6uVry1t2c33jRuRaHICwWrzymJFy/oYUU
- 2jT8VqRQmSIPnC1kAquw4RcuVHzwTphPl6Idt7+ijaqwqbsd4rhg9gmgc81/EQlSB8st
- 8ZRYI2bl8cf/earFNb40Wzjzv5rdzSDqJ+lfuDuL6VQRkqlVQYNHKjyWuw9nv2ll8mM5
- r9vi3DbnACeDTLl69SrUT7eYhGbbP7aZ+ydHVvfS5tbamWc+QkF/cFKRfpmeVtt/Iva+
- m7AP8mNzYvcQ1HCmzKougxC1DJlRjKFLF5tHqRQFGCw7BdrliVzkz7owSIVbehxyceS8
- YkMQ==
-X-Gm-Message-State: AOAM530lkIen9rRklLEmBK3GJcu8hbIo2qczuXGXF/IjrINYKo7nMB6i
- h+IBcUWBr3ifEjAmCDucZFBq9w==
-X-Google-Smtp-Source: ABdhPJylPCz6NJ8Nv/4CwG5eFZALKyaW9WbeoXC1cmJzPEV4oHq3Rbd3WXYgkQZHOnN28B1WNZx0MQ==
-X-Received: by 2002:aa7:8c53:: with SMTP id e19mr22646004pfd.264.1591054606599; 
- Mon, 01 Jun 2020 16:36:46 -0700 (PDT)
+ bh=PlBT1B/hjs0RZ4Sv/xaBn5v/munjW/EVMnZ0HWetFtY=;
+ b=GFrzwN8ePQmJfDeMZLO1GBGZ5PRkiT7A6SLMjGOxjFoKW/8RvBLQKqIMfr1s9fc4Zm
+ /cXGlxLOsci4ypjkrw0zxUE3qgtGi2IWmsobbb5FxO8raOLx13F1vhHnqlOmielpsuM6
+ S2lI8Augd6tvKk4g9wpchKpgr/g+Md0RbbxEOjGQ1JnVinCnvB076GSpbw3/t8ShC0H5
+ q+HRK/FltuOI9n8XZtSLmnHtn8vHl9W20B01aczzhM8OBzmJ8yievgovtGr772Yzgxzi
+ EsqqXAPtPJz9w97BFz346VNYSE3h4t/Bea3/2nzItDF0iz476CScmtZfvooQSEWUufLm
+ i7DQ==
+X-Gm-Message-State: AOAM533gqkIIVYvsWsnYCc7vpR2C6xwxCgx52GRR7usCMT+YQWFdqrYp
+ vb1GF70Jq04DqAgViQFXW2Sw7A==
+X-Google-Smtp-Source: ABdhPJzzzU+9Uf4BtnV7qNbKvl+iUuKO6qwD6miyTuur8YHPtfQ7XV0BnKoxEbCJaOSgLcuxhYk+Pw==
+X-Received: by 2002:a17:902:710b:: with SMTP id
+ a11mr6593788pll.156.1591054644135; 
+ Mon, 01 Jun 2020 16:37:24 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id k7sm452101pga.87.2020.06.01.16.36.45
+ by smtp.gmail.com with ESMTPSA id l187sm400253pfl.218.2020.06.01.16.37.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 16:36:45 -0700 (PDT)
-Subject: Re: [PATCH v2 5/8] hw/pci-host: Use the IEC binary prefix definitions
+ Mon, 01 Jun 2020 16:37:23 -0700 (PDT)
+Subject: Re: [PATCH v2 6/8] hw/hppa/dino: Use the IEC binary prefix definitions
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -59,19 +60,19 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>, qemu-ppc@nongnu.org,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 References: <20200601142930.29408-1-f4bug@amsat.org>
- <20200601142930.29408-6-f4bug@amsat.org>
+ <20200601142930.29408-7-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <2aa683fc-ff9d-17ed-a35f-f177bb5c9e77@linaro.org>
-Date: Mon, 1 Jun 2020 16:36:43 -0700
+Message-ID: <57783e28-09e5-8545-7a90-e52ad0dac9d8@linaro.org>
+Date: Mon, 1 Jun 2020 16:37:20 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601142930.29408-6-f4bug@amsat.org>
+In-Reply-To: <20200601142930.29408-7-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -93,7 +94,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2020 23:36:49 -0000
+X-List-Received-Date: Mon, 01 Jun 2020 23:37:27 -0000
 
 On 6/1/20 7:29 AM, Philippe Mathieu-Daudé wrote:
 > IEC binary prefixes ease code review: the unit is explicit.
@@ -101,10 +102,8 @@ On 6/1/20 7:29 AM, Philippe Mathieu-Daudé wrote:
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/pci-host/i440fx.c    | 3 ++-
->  hw/pci-host/q35.c       | 2 +-
->  hw/pci-host/versatile.c | 5 +++--
->  3 files changed, 6 insertions(+), 4 deletions(-)
+>  hw/hppa/dino.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
