@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jfuPn-0007pw-CQ
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 20:04:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51386)
+	id 1jfuR1-0000IW-Oj
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2020 20:05:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jfuPm-0007pj-C8
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 20:04:22 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33450)
+ id 1jfuR0-0000HI-FM
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 20:05:38 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:36769)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jfuPl-0000Iv-2n
- for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 20:04:21 -0400
-Received: by mail-pg1-x541.google.com with SMTP id s10so4236506pgm.0
- for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 17:04:20 -0700 (PDT)
+ id 1jfuQy-0001OY-Va
+ for qemu-trivial@nongnu.org; Mon, 01 Jun 2020 20:05:38 -0400
+Received: by mail-pl1-x641.google.com with SMTP id bg4so593061plb.3
+ for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2020 17:05:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=j1M9zAXPkWvYRdEpExwmerllx1EZ1fUYeIdq+MamthA=;
- b=R7LNRGYfz8TBcBXqZd5awvoIF46r+vMjBuP6TAqhtagPnUz4LDtsmvJNVXCcABvKaH
- Oyq8ScgtN/UA6xmjdZjdqES4E3R0fterS90KuyGZeijZX0YIHB4Y9vKxpbXik0Ewho8T
- XQ0hCmhEUFnY2g+5JXqE9PG6bMttRt2xDZG0I7DEZL9ajA9u5vgsNk+FUF2/et1nkmaA
- upcVrk1nFAkt8j3T3KE9J25J/K2P6XvXzHBe36KvHxv2ALoqALh9KhqOVP4n3tIifNLz
- EBa5dufcobzW/rDUq8k6hD1bb9zGdOAUgzKC8GHAxnoLiVF065QP911P8ven2xpVo67q
- vqMA==
+ bh=USC0QeRyJ21r34DHkvDccmYpIyA+yP7p3StBtTBk/0U=;
+ b=qmmSlgAFgFH23unbu7Dvyqs0D0w1Mswa08bFbkNRh2SYN0K8XafA3hoBHrxlfzmh4o
+ e6DGlkKTUb6Ib9qJqhI+ipfkVuYa4aMB+psUrL2Fx1y83M2N0mHyOQPU+zV5a6Svan+O
+ 6G4m6F4Es25m0Vaffcae4pleIaoPgCRSRsYPHcEW+mdxxSgcZTQ1CT1gPTtnnh0AbYqJ
+ he9b1J3rn8VSQTpZ4aZoSf0HRz0K2BAc4C/pxTTKFW8wiAsXQia2yJmu815E5DryKKl0
+ wBwzGEViwoq7A1g2o4N7Ra+5xsdeXJrNYX+is/eTN5HjRdIqVAV4GCpfcQuxgfPQ4Jc4
+ A+jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=j1M9zAXPkWvYRdEpExwmerllx1EZ1fUYeIdq+MamthA=;
- b=tWh8NaUshWV7Jy9dXxggF0y574KIDy7lElUKBeRA63KTlwbs826f74h9zvVYs2dDNn
- AvCv80NBa85RpIkiaPRwVfPQbjuR2vXom0nQKkHRzPzE1vnwhYe2n/GctdFkJB09/tzA
- OirLNEpxQVamC/olvgfwLoOLqaIshsG0XaMCQcxVSvt03CIxmUiV+CacexrsU0L0NipX
- MZ5rZYDsdvTVH4zq0LRsmh7H3aDYThIrES9XHPnJPMCNv30OwQ1RI0ie794HTcEnImKc
- KuIZmxbHpjJ11FkpE9dJpucxPRwSC7l9ztgD4Niez9D3OPSo3GdUv47DTycOmLmiI/y9
- 5KSA==
-X-Gm-Message-State: AOAM533cFcqz35Fux35jCh2GCfmJ3XSJuCm98vyF76b7TVmoS0MAkPfR
- lM3KAmbSBik4tF8z1waC6eK4OQ==
-X-Google-Smtp-Source: ABdhPJxv/zHbNONk0k5E8rAvIDQQ0qTNyEAT7T2sBSnhBEHMpCIZ0Y+KlPjG3WKgUx2bM+CNV+qFkQ==
-X-Received: by 2002:a63:e60a:: with SMTP id g10mr22166792pgh.210.1591056258962; 
- Mon, 01 Jun 2020 17:04:18 -0700 (PDT)
+ bh=USC0QeRyJ21r34DHkvDccmYpIyA+yP7p3StBtTBk/0U=;
+ b=CvqjMLPtds1tvaDgzB2FhTEU1oBZ8XkUphH8OUy91NJ7HH0081ShKTOowibhgh+HKU
+ u8tcvFoc7JYi0aaK6taCNUwWgFOrfwfwWDD23qs76UiK/xX4baFAczAfYL2laNY2LyYT
+ wcPcdIPb81In3WXhg+rE+gQ6T58r/Yyr0ssdgwfhTb2Hv19KCwUB7DRc6oUrJTlkXV95
+ W7YK8V7DKhG/UC9Z/bbFwIU4VydkLLrTrngFwYWxk+HKPS6GBi/7KipAdf4cmGznZqjj
+ Z8Db6B5HjXeRFZ0aNJKv1P7ZZNlZX759kZFYr0Tcsfk4H5rrw7kDX2NZxmMHIMJ7NBAS
+ ld5w==
+X-Gm-Message-State: AOAM533mFWB4o3kHny5VkVcu7rhWWdI2WHN9yZB3636DnTkJx8Qsqz3B
+ 6LHkUNegogM1RzI5S/+K9HlCyA==
+X-Google-Smtp-Source: ABdhPJyGBcn6STEXlFR7PGOcCoKij32jGYPMcZp+PVbPjfk0IUjltI1fK/jL8nNxRODF1X8ZZ+QVog==
+X-Received: by 2002:a17:90a:31c:: with SMTP id 28mr2314407pje.2.1591056334264; 
+ Mon, 01 Jun 2020 17:05:34 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h7sm492258pgg.17.2020.06.01.17.04.17
+ by smtp.gmail.com with ESMTPSA id r31sm525338pjg.2.2020.06.01.17.05.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 17:04:18 -0700 (PDT)
-Subject: Re: [PATCH v2 1/3] exec/memory: Remove unused MemoryRegionMmio type
+ Mon, 01 Jun 2020 17:05:33 -0700 (PDT)
+Subject: Re: [PATCH v2 2/3] hw/usb: Move device-specific declarations to new
+ 'hcd-musb.h' header
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 References: <20200601141536.15192-1-f4bug@amsat.org>
- <20200601141536.15192-2-f4bug@amsat.org>
+ <20200601141536.15192-3-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8cf677b5-75b8-a0ed-7951-44c75d9f102e@linaro.org>
-Date: Mon, 1 Jun 2020 17:04:16 -0700
+Message-ID: <74967516-96d3-d113-c38c-bd0f770f4270@linaro.org>
+Date: Mon, 1 Jun 2020 17:05:31 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601141536.15192-2-f4bug@amsat.org>
+In-Reply-To: <20200601141536.15192-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -85,18 +86,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2020 00:04:22 -0000
+X-List-Received-Date: Tue, 02 Jun 2020 00:05:38 -0000
 
 On 6/1/20 7:15 AM, Philippe Mathieu-Daudé wrote:
-> Since commit 62a0db942dec ('memory: Remove old_mmio accessors')
-> this structure is unused. Remove it.
+> Move the declarations for the MUSB-HDRC USB2.0 OTG compliant core
+> into a separate header.
 > 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  include/exec/memory.h | 6 ------
->  1 file changed, 6 deletions(-)
+>  include/hw/usb.h          | 30 -------------------------
+>  include/hw/usb/hcd-musb.h | 46 +++++++++++++++++++++++++++++++++++++++
+>  hw/usb/hcd-musb.c         |  1 +
+>  hw/usb/tusb6010.c         |  1 +
+>  4 files changed, 48 insertions(+), 30 deletions(-)
+>  create mode 100644 include/hw/usb/hcd-musb.h
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
