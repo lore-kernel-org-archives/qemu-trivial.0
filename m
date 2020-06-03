@@ -1,66 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgLlW-0001nF-Oe
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:16:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52716)
+	id 1jgMQs-0000Fa-PJ
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:59:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgLlV-0001mw-KW; Wed, 03 Jun 2020 01:16:37 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:56224)
+ id 1jgMQq-0000D5-Ut; Wed, 03 Jun 2020 01:59:20 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43673)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgLlU-0000lv-UY; Wed, 03 Jun 2020 01:16:37 -0400
-Received: by mail-wm1-x343.google.com with SMTP id c71so543324wmd.5;
- Tue, 02 Jun 2020 22:16:36 -0700 (PDT)
+ id 1jgMQq-0000gE-9u; Wed, 03 Jun 2020 01:59:20 -0400
+Received: by mail-wr1-x444.google.com with SMTP id l10so918689wrr.10;
+ Tue, 02 Jun 2020 22:59:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Muqzcfi0chH/Y7Tor0GgBKAK3xF2W5UhW3gXe8RB6yo=;
- b=vbpWWuUp8cTmzDxijOVO6HiDqFDbSBroDHTgBp/oZFUOisRGIl9HfXHmkGqF2cnGI6
- 2ciBbWuDpAeMScW6tOCmp1VczC09LVuPqyAQh5gDJRQNU6eeCwhR2SfHJBE1yKziT4s/
- 6zlhbmfWjKR6bGnv9ic/QDtIHY0OiMCAsz2NaBbEJShRKbbZ5LFWbQqg1U1CEj9uqEOD
- fsx4XmV7LKkJ1M3wpCnD/VPcEJZBDTXlmdipxxTAjtNKMppUiwvu8rS0xKTdGaanHmvO
- KTz13gj/WWjghkpCvCD5+7i7z1MFn5fjvqG44dvqfkYE3nhd9F56tCv1x0yvqUfVeiD+
- TdTQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9HBR/Yl1f5/zHKx9ZNXQfOsKlTY6daAsStel41gZZFk=;
+ b=RzWUjqOUEXnsK4HzlRZdB0K+M/5ufQ9GJIMKzC4cvUfGAozonyEutkVzUJYHdJ4Hdr
+ oxbFiGD0gK6x1eSDAMkaK5y/DerQXbyUTtJz2QcXH9kx/vwwva0LS7ztfo7sHhn1Yqh6
+ 5ym3Qprvn2ddyWp1FBSLmptdQWkCt9verluEnM6S8opwmZPawNxGB2y6w4P6pr0J63Si
+ C3l3zQm/Vns8nNhxRaVZPbb7W0Rkw96JQY0MElE5RIGnTp4HAVKp5tAn9zv0evoczQ8Y
+ 6yRZAzyjpj4+Y9+dG+ryjFrS2RELKgisuaQlo+CkBc5Y4CUtNVHEQp16Us6eDBf4AiDt
+ W9aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Muqzcfi0chH/Y7Tor0GgBKAK3xF2W5UhW3gXe8RB6yo=;
- b=cMVzzxCqH0ne3nAMPcm75E/nCxfnupJxxF3pfpOwtJHfw2rD2SSs0zk1icEfWcSNzY
- C1Y813lGR/vaVXfm6vaUIoa26fht3AmTYcW+Mz9JounnnPX5sRdZCb1hEhaoNfRamDE4
- q/1tLA0jkyJaXG5ie4XbDbMEbXhX8hJGaC33s/JmlmJ2nHsAQDaH+nkqB6V50kLeyL1/
- kfRtgkBgIWwg0MAwzomc5uS87vSEvFtMNuzbbMW4GwmHZvTHpdKEKMziW4ofjPq0qGLE
- 5WAQbRFV63PA9ToAH889JUZxOlzTQbJXXOA4mxd5PTDNSmJKbCrhKK2mWAuojo3zHzAs
- QLWw==
-X-Gm-Message-State: AOAM532ve4b5BM2yY7zXbvSixu1LlcADPatTjmnJfY07P7oe8GrOmPB2
- 85eLmUt6NRzb4So+S5ZloDI=
-X-Google-Smtp-Source: ABdhPJwN7yfF4vvn6CBrhFy7v+BFkCFfr9N7le+mjwoCpofUuhhHm71UAP/CIRMK1veFf6GIKAru9A==
-X-Received: by 2002:a1c:25c3:: with SMTP id l186mr7001395wml.103.1591161395165; 
- Tue, 02 Jun 2020 22:16:35 -0700 (PDT)
-Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id 5sm1814108wrr.5.2020.06.02.22.16.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Jun 2020 22:16:34 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=9HBR/Yl1f5/zHKx9ZNXQfOsKlTY6daAsStel41gZZFk=;
+ b=iPwAXlmqDW3PyKQ70fjyIiSaYcFRVefbLihX7YB/r8pyxZST8ijxhBRrR8ezdIzuLe
+ G4sGUDnQTwxrWW1Hy3rcVqOiYZ/80LrL7fjEmr9UFak750sqyzJ3GvxrWkLdh5RG65sn
+ zNUUj45/0H7IZAQK1C4rTpTP8ky1k0QaGZXpqQQgANbXTLWVR8v35zFsUxHINEbNay3C
+ eU0lIcEsOi0cBhDMGHJ1UjK9/Adq4QMkOK7FN4+3hJim7RhAKUCbWWp6W+8EMA4ZCr/G
+ Ph9yrRCH5nQZd3egwVn7SHTO9iTI2MDEVSsrzY5CtBEHtZcemR0ecRtPbLvQhCmj3lP8
+ 82BA==
+X-Gm-Message-State: AOAM5331+imc0AwT6iPlziBTakDYnP/F9WRY5wzl605UBDlF5lQmuJbh
+ Oa0P8odQZw0awkAyXCF29OdRrZdt
+X-Google-Smtp-Source: ABdhPJxq/h9gWfldR/TPZYWY8sGc2O9OnZo5UDiIMtZy5eHnL+7cCuIcxhpDFu8+oq1GoJaHPYKmTg==
+X-Received: by 2002:adf:e544:: with SMTP id z4mr11757175wrm.317.1591163957652; 
+ Tue, 02 Jun 2020 22:59:17 -0700 (PDT)
+Received: from localhost.localdomain
+ (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id 5sm2006291wrr.5.2020.06.02.22.59.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2020 22:59:17 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/isa/apm: Convert debug printf()s to trace events
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200524164806.12658-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c79a9dd3-fd68-ea43-90c0-ad2b9cb87c22@amsat.org>
-Date: Wed, 3 Jun 2020 07:16:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Seth Kintigh <skintigh@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v3] hw/adc/stm32f2xx_adc: Correct memory region size and
+ access size
+Date: Wed,  3 Jun 2020 07:59:15 +0200
+Message-Id: <20200603055915.17678-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200524164806.12658-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -83,71 +84,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2020 05:16:37 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 05:59:21 -0000
 
-ping for review?
+The ADC region size is 256B, split as:
+ - [0x00 - 0x4f] defined
+ - [0x50 - 0xff] reserved
 
-On 5/24/20 6:48 PM, Philippe Mathieu-Daudé wrote:
-> Convert APM_DPRINTF() to trace events and remove ifdef'ry.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/isa/apm.c        | 15 +++++----------
->  hw/isa/trace-events |  4 ++++
->  2 files changed, 9 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/isa/apm.c b/hw/isa/apm.c
-> index 6300b1ba7a..bce266b957 100644
-> --- a/hw/isa/apm.c
-> +++ b/hw/isa/apm.c
-> @@ -24,14 +24,8 @@
->  #include "hw/isa/apm.h"
->  #include "hw/pci/pci.h"
->  #include "migration/vmstate.h"
-> +#include "trace.h"
->  
-> -//#define DEBUG
-> -
-> -#ifdef DEBUG
-> -# define APM_DPRINTF(format, ...)       printf(format, ## __VA_ARGS__)
-> -#else
-> -# define APM_DPRINTF(format, ...)       do { } while (0)
-> -#endif
->  
->  /* fixed I/O location */
->  #define APM_STS_IOPORT  0xb3
-> @@ -41,8 +35,8 @@ static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
->  {
->      APMState *apm = opaque;
->      addr &= 1;
-> -    APM_DPRINTF("apm_ioport_writeb addr=0x%" HWADDR_PRIx
-> -                " val=0x%02" PRIx64 "\n", addr, val);
-> +
-> +    trace_apm_io_write(addr, val);
->      if (addr == 0) {
->          apm->apmc = val;
->  
-> @@ -65,7 +59,8 @@ static uint64_t apm_ioport_readb(void *opaque, hwaddr addr, unsigned size)
->      } else {
->          val = apm->apms;
->      }
-> -    APM_DPRINTF("apm_ioport_readb addr=0x%" HWADDR_PRIx " val=0x%02x\n", addr, val);
-> +    trace_apm_io_read(addr, val);
-> +
->      return val;
->  }
->  
-> diff --git a/hw/isa/trace-events b/hw/isa/trace-events
-> index 202f8938e7..3544c6213c 100644
-> --- a/hw/isa/trace-events
-> +++ b/hw/isa/trace-events
-> @@ -9,3 +9,7 @@ superio_create_ide(int id, uint16_t base, unsigned int irq) "id=%d, base 0x%03x,
->  # pc87312.c
->  pc87312_io_read(uint32_t addr, uint32_t val) "read addr=0x%x val=0x%x"
->  pc87312_io_write(uint32_t addr, uint32_t val) "write addr=0x%x val=0x%x"
-> +
-> +# apm.c
-> +apm_io_read(uint8_t addr, uint8_t val) "read addr=0x%x val=0x%02x"
-> +apm_io_write(uint8_t addr, uint8_t val) "write addr=0x%x val=0x%02x"
-> 
+All registers are 32-bit (thus when the datasheet mentions the
+last defined register is 0x4c, it means its address range is
+0x4c .. 0x4f.
+
+This model implementation is also 32-bit. Set MemoryRegionOps
+'impl' fields.
+
+See:
+  'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
+
+Reported-by: Seth Kintigh <skintigh@gmail.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/adc/stm32f2xx_adc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
+index 4f9d485ecf..01a0b14e69 100644
+--- a/hw/adc/stm32f2xx_adc.c
++++ b/hw/adc/stm32f2xx_adc.c
+@@ -246,6 +246,8 @@ static const MemoryRegionOps stm32f2xx_adc_ops = {
+     .read = stm32f2xx_adc_read,
+     .write = stm32f2xx_adc_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
+ };
+ 
+ static const VMStateDescription vmstate_stm32f2xx_adc = {
+@@ -278,7 +280,7 @@ static void stm32f2xx_adc_init(Object *obj)
+     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
+ 
+     memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
+-                          TYPE_STM32F2XX_ADC, 0xFF);
++                          TYPE_STM32F2XX_ADC, 0x100);
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+ }
+ 
+-- 
+2.21.3
+
 
