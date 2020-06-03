@@ -1,72 +1,113 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgB16-0007Vk-05
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2020 13:48:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46280)
+	id 1jgLZv-0002yD-R8
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:04:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jgB13-0007S3-St
- for qemu-trivial@nongnu.org; Tue, 02 Jun 2020 13:47:57 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55547
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLZu-0002xg-70
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:04:38 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45444
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jgB12-0007wA-DT
- for qemu-trivial@nongnu.org; Tue, 02 Jun 2020 13:47:57 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLZs-0006yw-IA
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:04:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591120075;
+ s=mimecast20190719; t=1591160674;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lcqRSlfpGDzdPYN9CPBQPIGREYWSJrW0y6VlPUX4QII=;
- b=Q3I9Iml0amd9nT9QK7dU25kB3DAH/Uuaq52WWg1i4S8xdfatD9xmbDMv9MLyjwh/71SGCH
- AI6aQzd1Vx7y2+EV1F9TrU6g8zXpTrXJ/qAW2ce0GENkemxY1iwshFk0HjxnsFpYC9GAK6
- U7ui53KtaUQRUJ3wf+61k9EquCWiuJ4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-Rsg_7ECJPf2SLYOChAxEuA-1; Tue, 02 Jun 2020 13:47:53 -0400
-X-MC-Unique: Rsg_7ECJPf2SLYOChAxEuA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E470E800053;
- Tue,  2 Jun 2020 17:47:51 +0000 (UTC)
-Received: from [10.3.113.22] (ovpn-113-22.phx2.redhat.com [10.3.113.22])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1C90478EF6;
- Tue,  2 Jun 2020 17:47:51 +0000 (UTC)
-Subject: Re: [PATCH 1/2] hax: Fix setting of FD_CLOEXEC
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, peter.maydell@linaro.org, 
- Wenchao Wang <wenchao.wang@intel.com>, Colin Xu <colin.xu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- "open list:X86 HAXM CPUs" <haxm-team@intel.com>
-References: <20200420175309.75894-1-eblake@redhat.com>
- <20200420175309.75894-2-eblake@redhat.com>
- <20200420220733.GH4952@habkost.net>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <91447317-58f1-3022-6d9d-0cfbae887b6b@redhat.com>
-Date: Tue, 2 Jun 2020 12:47:50 -0500
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Fsc7l/HLVwthw3zdCUfo6CryjCG4GjtzYedjBKe7z5E=;
+ b=MqMr8WW+7ibY1iBrzWrhD2nr2Mxz8GtxcBgwWOi8sVZzJagNwSWOrxhsjs6O4TjKmrH9XD
+ 5o4WE4708YOEnuvMVtyPzHID9rO5lmLXo9UaLS8eR9xgkL+jXbNl01Jd+fSWw7PK15IcCW
+ 0zMlMWYRyTc/UnYGMZxC7GOFwRzBo+k=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-392-9z4M86-CMzyH80X0-VezJw-1; Wed, 03 Jun 2020 01:04:30 -0400
+X-MC-Unique: 9z4M86-CMzyH80X0-VezJw-1
+Received: by mail-wm1-f72.google.com with SMTP id b65so414205wmb.5
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jun 2020 22:04:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Fsc7l/HLVwthw3zdCUfo6CryjCG4GjtzYedjBKe7z5E=;
+ b=m/DNKVDDmCV/efpj8TWDEXXPY2GmjXC5OYFz+gCLb4op1lQwTkbkU0AKX3Sb4MT6jL
+ D2SJ4aBCGm5FQjeHWErQIkvsKP6LyZMkQeUbbx3uMjRmtFBouMRJj+4L3wE62BxRr8eJ
+ TMBHq7Baxds17i2ge0tNUEriYAjiexD0pVeHBOl3prRXmgbYldI2OlYiayuCfaZA6NTi
+ fxDZmWzxTsLhDdU3e+JoBqBjxuxSUuzq8ScaBrtJeQS0EkuvvVYukPyZV8NS0eotTHzZ
+ QvUd1L6KGG9QXHw/yOZmEIe0GaTEklUNSVc/RntjNvMk709/JtfFNbeij7nczV2Os5SO
+ P/ZA==
+X-Gm-Message-State: AOAM531Pw0BUW7G/jHb15ZuSXXShHFPIuj0o8iRH/qcP60cdvZAXvJJW
+ BEfGCWwFZF+LF2MSoeQ6Joz6SESfGWDTVVxTIrLSs9O3K8xtWWnuGaOJo4uxxAr+7EKAdILoRP6
+ vdp02CCqAwq3dvYmIug==
+X-Received: by 2002:a05:6000:1104:: with SMTP id
+ z4mr28744768wrw.272.1591160669154; 
+ Tue, 02 Jun 2020 22:04:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAUwR/BO07GjJYalKT7BNcDwKcWw4gKo0UFwe2mJcyXiwdkUNQbHl50NmsrN7tmiOfWxTJlg==
+X-Received: by 2002:a05:6000:1104:: with SMTP id
+ z4mr28744747wrw.272.1591160668875; 
+ Tue, 02 Jun 2020 22:04:28 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id p16sm1649665wru.27.2020.06.02.22.04.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Jun 2020 22:04:28 -0700 (PDT)
+Subject: Re: [PATCH] hw/i386/vmport: Drop superfluous parenthesis around
+ function typedef
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20200505142836.16903-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <303faba8-851f-a0da-4df3-0d57ffd1ff14@redhat.com>
+Date: Wed, 3 Jun 2020 07:04:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200420220733.GH4952@habkost.net>
+In-Reply-To: <20200505142836.16903-1-philmd@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=eblake@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 23:49:17
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 01:04:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,24 +120,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2020 17:47:58 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 05:04:38 -0000
 
-On 4/20/20 5:07 PM, Eduardo Habkost wrote:
-> On Mon, Apr 20, 2020 at 12:53:07PM -0500, Eric Blake wrote:
->> Blindly setting FD_CLOEXEC without a read-modify-write will
->> inadvertently clear any other intentionally-set bits, such as a
->> proposed new bit for designating a fd that must behave in 32-bit mode.
->> Use our wrapper function instead of an incorrect hand-rolled version.
->>
->> Signed-off-by: Eric Blake <eblake@redhat.com>
+On 5/5/20 4:28 PM, Philippe Mathieu-Daudé wrote:
+> Drop superfluous parenthesis around VMPortReadFunc typedef
+> (added in d67f679d99, missed to remove when moved in e595112985).
 > 
-> Thanks, queued for 5.1.
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/i386/vmport.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/i386/vmport.h b/hw/i386/vmport.h
+> index 47eda7a22b..a6624e3045 100644
+> --- a/hw/i386/vmport.h
+> +++ b/hw/i386/vmport.h
+> @@ -27,7 +27,7 @@
+>  
+>  #define TYPE_VMPORT "vmport"
+>  
+> -typedef uint32_t (VMPortReadFunc)(void *opaque, uint32_t address);
+> +typedef uint32_t VMPortReadFunc(void *opaque, uint32_t address);
+>  
+>  void vmport_register(unsigned char command, VMPortReadFunc *func, void *opaque);
+>  
+> 
 
-Ping - I still don't see this upstream.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+ping?
 
 
