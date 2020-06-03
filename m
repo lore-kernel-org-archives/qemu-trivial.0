@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgU59-0004oX-U4
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 10:09:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58418)
+	id 1jgUHx-00073L-R4
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 10:22:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chmeeedalf@gmail.com>)
- id 1jgU58-0004mf-3m; Wed, 03 Jun 2020 10:09:26 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:42600)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jgUHv-00070W-Vy; Wed, 03 Jun 2020 10:22:40 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:38645)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chmeeedalf@gmail.com>)
- id 1jgU57-0007og-9c; Wed, 03 Jun 2020 10:09:25 -0400
-Received: by mail-il1-x142.google.com with SMTP id 18so2586119iln.9;
- Wed, 03 Jun 2020 07:09:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jgUHv-00021M-10; Wed, 03 Jun 2020 10:22:39 -0400
+Received: by mail-ej1-x644.google.com with SMTP id a25so2374528ejg.5;
+ Wed, 03 Jun 2020 07:22:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=8ERd7pPWfhRkjffTKffryj1PaQqKf6favNu1AKnJBBY=;
- b=WPO9qid2wK/IbyEAGgx2GT5Kw6bx/2OkkBUH3Oih484IeirKH6zIHYEEHOEEP2sZvj
- 6jzXC52VqxhiycW5/1W+rN2A8e0ijmXoIYs3dXtiwCnE+m0iS1zY+cUPGEAqJ6kDOB6Q
- 6MBLCgiUu9z4Ux/WnH8Pz5RAmZ7Ap86ONMAR5D/trJIRSWuga1iTt4tSVsdclT21lwcp
- lYbGed5j6gL5GEFi5z2/rhnM26O3j0OlicpkwLqKdiJCp+u15xc9jtckd6sdw+g2BlOb
- 7Ye5W7+TZCNSLi1cIsf6Elj0sQe5p71xcJHqT5JEiVlWsMaoFe1/KbWyuWgpMfVYOTJs
- 1dRw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=vZs6T4gKUdpKHq6e98AQK4tjpLsS5bx0e3ffjLhxytY=;
+ b=MMzv+WPK3kdonkrk4iqO3JqbStvij8qAU1p6vUEjS52Yv6iqZAKYDMbDw+2K6FvbhM
+ po6etBd2RpxytewfLAQyjQgvCScHoFHWyCgrEKAQK7aTLFQNGJAZT2pg4PEqTLe+TQFf
+ PP8pqMSyGKcs2cw+ON5iyS/WyWNkBVMBT0U+sSph9q2rdczl9Z9OnV9n53893VhWdVVD
+ 926lamcJQ+JMieAUl9VsK3ZAQfudmeoGu442ucXZGRNTiQ29L0JQIe/GgTpRiptHL2HL
+ duSozj+/GevwpCdES/fp1mEBs1gCv5jy1bK8MjkUEjRGCHiXwXBL3dqfTbXrSWRNPGXO
+ c9PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8ERd7pPWfhRkjffTKffryj1PaQqKf6favNu1AKnJBBY=;
- b=ldPA/O2iF2SW/kqsGpXK0muH/SfiBdmUnQ8pOcx1/Y6/4V3HDM06YMmKfUr4XlfPAT
- eXGbeHWQ3UB7wrEVCoGJn2Iuq8OJTQd7fxoAgq8cYzG/q5a/09ZO3FqoNwfBDgKqmWCI
- KK2JlJH+iKftpzCkYh9wVO1ANXcyRma26eGuq7GaNb/Qz2P9JJwSG972Xb7itYR8ax5t
- cFWYHIWKsP7Ws8yQNu7ikcg5aBd9K83I3TejpSOjImy2Ok8Ix96k0AMwYyZNR9UIH0DC
- 2EbQNzwXrrdeJhny7Mi2Q72LL+nSiBcqIiocLnJmwhuWj86PVEGcWfIkTUIGwuxb71Xl
- JM4g==
-X-Gm-Message-State: AOAM531jBPGFP0IXS1RVz+u46m59Zq7V4aE+5HK1gswu2Cf+Hj3QK6uK
- IR66X4w5THcdWDzmwjmKERI=
-X-Google-Smtp-Source: ABdhPJwsFDDhsB3kCmAQWrUMOYi2iDtFn2LFlJY7+FUUQSM4Yjolj3FudkorwzCEVGnrZnTASIdlQQ==
-X-Received: by 2002:a92:de41:: with SMTP id e1mr3879238ilr.199.1591193362572; 
- Wed, 03 Jun 2020 07:09:22 -0700 (PDT)
-Received: from titan.knownspace (173-19-125-130.client.mchsi.com.
- [173.19.125.130])
- by smtp.gmail.com with ESMTPSA id g21sm1026714ioc.14.2020.06.03.07.09.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Jun 2020 07:09:22 -0700 (PDT)
-Date: Wed, 3 Jun 2020 09:09:21 -0500
-From: Justin Hibbits <chmeeedalf@gmail.com>
-To: Philippe =?UTF-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: David CARLIER <devnexen@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, pbonzini@redhat.com, John Arbuckle
- <programmingkidx@gmail.com>, Mikhail Gusarov <dottedmag@dottedmag.net>,
- Izik Eidus <izik@veertu.com>, Roman Bolshakov <r.bolshakov@yadro.com>
-Subject: Re: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation
- for MacOS
-Message-ID: <20200603090921.64351a28@titan.knownspace>
-In-Reply-To: <76587685-fa03-6dd6-5ca3-caeaf3c7504b@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=vZs6T4gKUdpKHq6e98AQK4tjpLsS5bx0e3ffjLhxytY=;
+ b=KIASkk3aGOoLPDfFi+S3YRLcJIOlCiRYMizafyiYnuxuFWHndmoUwZpwuDq4Gtt1KI
+ ZuCne9VwOxbgPktCx3y25TUqrqVU6ZhdgYvF26rNyC112KKgdRwN3qdsyUXXZHBlrPDh
+ McFLQSmm0nWh3xr9lhj7qUkDZ4iYs0cha9PFCD7UL5dYTu3GxphF2yU6UoVxaPBbZ4/E
+ at2h0YJVNimFXvpz60JN5hgxPRUBwcHMcs1ouoR8ZRM9ML6HKhvutsvwHx2saW3/FQSx
+ OcjRHX59t1w6RXvAHpjsGRZQx5b+Ml9ND0kDjbRQ5/Pbcz6Cc+Ir7KLbCymgn5deu/qz
+ Mc5Q==
+X-Gm-Message-State: AOAM5300DhqY11bTSafpYM4jG0TNzJfqsiZEjtanfOABEJELnp7QNvO2
+ XeAT3VBS/yii6f1yaa2rbAppYlL4ToC6kPRlc4Q=
+X-Google-Smtp-Source: ABdhPJwYK2YZMy91WaPELAHZmL9qJ0sM3gbx2wfU8rNAonF48uoJIUgZg0WGPaOOYF5SCocxV/mYjWoWsXNYfh+6+B4=
+X-Received: by 2002:a17:906:ac3:: with SMTP id
+ z3mr21074842ejf.311.1591194157007; 
+ Wed, 03 Jun 2020 07:22:37 -0700 (PDT)
+MIME-Version: 1.0
 References: <CA+XhMqwH6btbKFD0Ei47e+QHN2eBPG5H2PTS92MAje2Tij4Y=A@mail.gmail.com>
  <76587685-fa03-6dd6-5ca3-caeaf3c7504b@redhat.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; powerpc64-portbld-freebsd13.0)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20200603090921.64351a28@titan.knownspace>
+In-Reply-To: <20200603090921.64351a28@titan.knownspace>
+From: David CARLIER <devnexen@gmail.com>
+Date: Wed, 3 Jun 2020 15:22:26 +0100
+Message-ID: <CA+XhMqw2ORNvkN=C+LdvMxDvrX2i25FW-9wXias6Mbu0wGjBrg@mail.gmail.com>
+Subject: Re: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for
+ MacOS
+To: Justin Hibbits <chmeeedalf@gmail.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, John Arbuckle <programmingkidx@gmail.com>,
+ Mikhail Gusarov <dottedmag@dottedmag.net>, Izik Eidus <izik@veertu.com>, 
+ Roman Bolshakov <r.bolshakov@yadro.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=chmeeedalf@gmail.com; helo=mail-il1-x142.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=devnexen@gmail.com; helo=mail-ej1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -81,68 +78,119 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2020 14:09:26 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 14:22:40 -0000
 
-On Wed, 3 Jun 2020 08:08:42 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+Good point even tough the libproc api is here in this form since quite a ti=
+me.
 
-> Cc'ing more developers.
->=20
-> On 5/26/20 10:40 PM, David CARLIER wrote:
-> > From b24a6702beb2a4e2a9c1c03b69c6d1dd07d4cf08 Mon Sep 17 00:00:00
-> > 2001 From: David Carlier <devnexen@gmail.com>
-> > Date: Tue, 26 May 2020 21:35:27 +0100
-> > Subject: [PATCH] util/oslib: current process full path resolution
-> > on MacOS
-> >=20
-> > Using existing libproc to fill the path.
-> >=20
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
-> > ---
-> >  util/oslib-posix.c | 13 +++++++++++++
-> >  1 file changed, 13 insertions(+)
-> >=20
-> > diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> > index 062236a1ab..96f0405ee6 100644
-> > --- a/util/oslib-posix.c
-> > +++ b/util/oslib-posix.c
-> > @@ -55,6 +55,10 @@
-> >  #include <sys/sysctl.h>
-> >  #endif
-> >=20
-> > +#ifdef __APPLE__
-> > +#include <libproc.h>
-> > +#endif
-> > +
-> >  #include "qemu/mmap-alloc.h"
-> >=20
-> >  #ifdef CONFIG_DEBUG_STACK_USAGE
-> > @@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
-> >              p =3D buf;
-> >          }
-> >      }
-> > +#elif defined(__APPLE__)
-> > +    {
-> > +        uint32_t len;
-> > +        len =3D proc_pidpath(getpid(), buf, sizeof(buf) - 1);
-> > +        if (len > 0) {
-> > +            buf[len] =3D 0;
-> > +            p =3D buf;
-> > +        }
-> > +    }
-> >  #endif
-> >      /* If we don't have any way of figuring out the actual
-> > executable location then try argv[0].  */
-> >  =20
->=20
+From d23bf60961ee036f8298794f879d1b8b9bd717dc Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Tue, 26 May 2020 21:35:27 +0100
+Subject: [PATCH] util/oslib: current process full path resolution on MacOS
 
-Apologies, I don't have context for this.  Why was I CC'd on this?
+Using existing libproc to fill the path.
 
-Does proc_pidpath() not NUL-terminate its written string?  And, given
-from my quick google search, it looks like this function is private and
-subject to change, so can you guarantee that the returned length is the
-*written* length, not the full string length?  If not, you could be
-overwriting other arbitrary data.
+Signed-off-by: David Carlier <devnexen@gmail.com>
+---
+ util/oslib-posix.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-- Justin
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 062236a1ab..9dd1e1a18b 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -55,6 +55,10 @@
+ #include <sys/sysctl.h>
+ #endif
+
++#ifdef __APPLE__
++#include <libproc.h>
++#endif
++
+ #include "qemu/mmap-alloc.h"
+
+ #ifdef CONFIG_DEBUG_STACK_USAGE
+@@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
+             p =3D buf;
+         }
+     }
++#elif defined(__APPLE__)
++    {
++        int len;
++        len =3D proc_pidpath(getpid(), buf, sizeof(buf) - 1);
++        if (len <=3D 0) {
++            return;
++        }
++        p =3D buf;
++    }
+ #endif
+     /* If we don't have any way of figuring out the actual executable
+        location then try argv[0].  */
+--=20
+2.26.2
+
+On Wed, 3 Jun 2020 at 15:09, Justin Hibbits <chmeeedalf@gmail.com> wrote:
+>
+> On Wed, 3 Jun 2020 08:08:42 +0200
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+>
+> > Cc'ing more developers.
+> >
+> > On 5/26/20 10:40 PM, David CARLIER wrote:
+> > > From b24a6702beb2a4e2a9c1c03b69c6d1dd07d4cf08 Mon Sep 17 00:00:00
+> > > 2001 From: David Carlier <devnexen@gmail.com>
+> > > Date: Tue, 26 May 2020 21:35:27 +0100
+> > > Subject: [PATCH] util/oslib: current process full path resolution
+> > > on MacOS
+> > >
+> > > Using existing libproc to fill the path.
+> > >
+> > > Signed-off-by: David Carlier <devnexen@gmail.com>
+> > > ---
+> > >  util/oslib-posix.c | 13 +++++++++++++
+> > >  1 file changed, 13 insertions(+)
+> > >
+> > > diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+> > > index 062236a1ab..96f0405ee6 100644
+> > > --- a/util/oslib-posix.c
+> > > +++ b/util/oslib-posix.c
+> > > @@ -55,6 +55,10 @@
+> > >  #include <sys/sysctl.h>
+> > >  #endif
+> > >
+> > > +#ifdef __APPLE__
+> > > +#include <libproc.h>
+> > > +#endif
+> > > +
+> > >  #include "qemu/mmap-alloc.h"
+> > >
+> > >  #ifdef CONFIG_DEBUG_STACK_USAGE
+> > > @@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
+> > >              p =3D buf;
+> > >          }
+> > >      }
+> > > +#elif defined(__APPLE__)
+> > > +    {
+> > > +        uint32_t len;
+> > > +        len =3D proc_pidpath(getpid(), buf, sizeof(buf) - 1);
+> > > +        if (len > 0) {
+> > > +            buf[len] =3D 0;
+> > > +            p =3D buf;
+> > > +        }
+> > > +    }
+> > >  #endif
+> > >      /* If we don't have any way of figuring out the actual
+> > > executable location then try argv[0].  */
+> > >
+> >
+>
+> Apologies, I don't have context for this.  Why was I CC'd on this?
+>
+> Does proc_pidpath() not NUL-terminate its written string?  And, given
+> from my quick google search, it looks like this function is private and
+> subject to change, so can you guarantee that the returned length is the
+> *written* length, not the full string length?  If not, you could be
+> overwriting other arbitrary data.
+>
+> - Justin
 
