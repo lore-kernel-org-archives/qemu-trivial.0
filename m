@@ -1,67 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgLZv-0002yD-R8
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:04:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51724)
+	id 1jgLbb-0004WD-BY
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:06:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLZu-0002xg-70
- for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:04:38 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45444
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLbZ-0004Tz-K6
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:06:21 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52078
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLZs-0006yw-IA
- for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:04:37 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLbY-0007FI-V1
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:06:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591160674;
+ s=mimecast20190719; t=1591160779;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Fsc7l/HLVwthw3zdCUfo6CryjCG4GjtzYedjBKe7z5E=;
- b=MqMr8WW+7ibY1iBrzWrhD2nr2Mxz8GtxcBgwWOi8sVZzJagNwSWOrxhsjs6O4TjKmrH9XD
- 5o4WE4708YOEnuvMVtyPzHID9rO5lmLXo9UaLS8eR9xgkL+jXbNl01Jd+fSWw7PK15IcCW
- 0zMlMWYRyTc/UnYGMZxC7GOFwRzBo+k=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-392-9z4M86-CMzyH80X0-VezJw-1; Wed, 03 Jun 2020 01:04:30 -0400
-X-MC-Unique: 9z4M86-CMzyH80X0-VezJw-1
-Received: by mail-wm1-f72.google.com with SMTP id b65so414205wmb.5
- for <qemu-trivial@nongnu.org>; Tue, 02 Jun 2020 22:04:30 -0700 (PDT)
+ bh=vHCnmTHhUO6Ty+LJKao770znh8X+NBqjpuCl1/GoNcY=;
+ b=gAURGdpv0YXmI+kSlN08prSWCyII4hAjG2Z5/tUVhjNAT5UDmv4wlad/X9gKkdjH13w80T
+ mHv6ppq1dGl3tnN79V86UKTfe+rZ4JvxoBG0LlJsi8/Ocb+O6jkmP94hTr/Ap4VqmMCnAa
+ uwtAluCco7cEXO19RsxKici0/xJsqNs=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-404-je29acX_N-CfCQPedGJ2wQ-1; Wed, 03 Jun 2020 01:06:17 -0400
+X-MC-Unique: je29acX_N-CfCQPedGJ2wQ-1
+Received: by mail-wr1-f69.google.com with SMTP id p9so583277wrx.10
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jun 2020 22:06:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Fsc7l/HLVwthw3zdCUfo6CryjCG4GjtzYedjBKe7z5E=;
- b=m/DNKVDDmCV/efpj8TWDEXXPY2GmjXC5OYFz+gCLb4op1lQwTkbkU0AKX3Sb4MT6jL
- D2SJ4aBCGm5FQjeHWErQIkvsKP6LyZMkQeUbbx3uMjRmtFBouMRJj+4L3wE62BxRr8eJ
- TMBHq7Baxds17i2ge0tNUEriYAjiexD0pVeHBOl3prRXmgbYldI2OlYiayuCfaZA6NTi
- fxDZmWzxTsLhDdU3e+JoBqBjxuxSUuzq8ScaBrtJeQS0EkuvvVYukPyZV8NS0eotTHzZ
- QvUd1L6KGG9QXHw/yOZmEIe0GaTEklUNSVc/RntjNvMk709/JtfFNbeij7nczV2Os5SO
- P/ZA==
-X-Gm-Message-State: AOAM531Pw0BUW7G/jHb15ZuSXXShHFPIuj0o8iRH/qcP60cdvZAXvJJW
- BEfGCWwFZF+LF2MSoeQ6Joz6SESfGWDTVVxTIrLSs9O3K8xtWWnuGaOJo4uxxAr+7EKAdILoRP6
- vdp02CCqAwq3dvYmIug==
-X-Received: by 2002:a05:6000:1104:: with SMTP id
- z4mr28744768wrw.272.1591160669154; 
- Tue, 02 Jun 2020 22:04:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxAUwR/BO07GjJYalKT7BNcDwKcWw4gKo0UFwe2mJcyXiwdkUNQbHl50NmsrN7tmiOfWxTJlg==
-X-Received: by 2002:a05:6000:1104:: with SMTP id
- z4mr28744747wrw.272.1591160668875; 
- Tue, 02 Jun 2020 22:04:28 -0700 (PDT)
+ bh=vHCnmTHhUO6Ty+LJKao770znh8X+NBqjpuCl1/GoNcY=;
+ b=h8czJN5HqgCpHFFnb1TzzqLkcXam/hCANSu14g2/MzP629sFYEVgv1iTCBBVuduaX2
+ tO8mrrFviQGt2Pl75ZRzGFwO9rGQcc0hO6/mw30XJYrFt0B8APdzbFd9Mnnvu0Y0skmr
+ LphZ301eq8ynPUtvYbcw3x3boA4NcC9GMrqrDUrpij424kvPzph0ZBVbs53qIwuP8xIo
+ OKAXYpp2Do18UO/h2YcwWMzyBMlFHlvrZsNlAm1/hu2CxwWq4rO57yEp7L+jL7wPypqI
+ eAKN39fOZfZAqI8I7SomfTOiDj5AqU+HD5OjgICy51zcFUYQ8PlpDyVirIqYRz0BC9D0
+ rWsA==
+X-Gm-Message-State: AOAM533BRkE2Q+wJ57snnol610dpBqYJrGB+FBPT/8r1269cYvTqEeIl
+ rnHrdrIDqGKjuh4Owz3CYOej6zDNjxIAmQNQgCWUH8WZcjrY9z14Pgb0JxmX+a+hrYwqJxKrOoq
+ A7x+R7D5+JDTYs0cVTA==
+X-Received: by 2002:a5d:518b:: with SMTP id k11mr31722475wrv.58.1591160776595; 
+ Tue, 02 Jun 2020 22:06:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxNtJomm93d+A1c8knffSgNQYZZ7Wic9F6MBszuJIJPwOFAe+amMmLpCK+5cSms0ZGossiUuA==
+X-Received: by 2002:a5d:518b:: with SMTP id k11mr31722459wrv.58.1591160776387; 
+ Tue, 02 Jun 2020 22:06:16 -0700 (PDT)
 Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
  [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id p16sm1649665wru.27.2020.06.02.22.04.27
+ by smtp.gmail.com with ESMTPSA id a3sm1386341wrp.91.2020.06.02.22.06.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Jun 2020 22:04:28 -0700 (PDT)
-Subject: Re: [PATCH] hw/i386/vmport: Drop superfluous parenthesis around
- function typedef
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200505142836.16903-1-philmd@redhat.com>
+ Tue, 02 Jun 2020 22:06:15 -0700 (PDT)
+Subject: Re: [PATCH] net: Do not include a newline in the id of -nic devices
+To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
+References: <20200518074352.23125-1-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -86,17 +80,17 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <303faba8-851f-a0da-4df3-0d57ffd1ff14@redhat.com>
-Date: Wed, 3 Jun 2020 07:04:26 +0200
+Message-ID: <db954c99-53f8-bc6c-3dd5-23928c52e31a@redhat.com>
+Date: Wed, 3 Jun 2020 07:06:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200505142836.16903-1-philmd@redhat.com>
+In-Reply-To: <20200518074352.23125-1-thuth@redhat.com>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 01:04:34
@@ -106,8 +100,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,30 +114,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2020 05:04:38 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 05:06:21 -0000
 
-On 5/5/20 4:28 PM, Philippe Mathieu-Daudé wrote:
-> Drop superfluous parenthesis around VMPortReadFunc typedef
-> (added in d67f679d99, missed to remove when moved in e595112985).
+On 5/18/20 9:43 AM, Thomas Huth wrote:
+> The '\n' sneaked in by accident here, an "id" string should really
+> not contain a newline character at the end.
 > 
-> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Fixes: 78cd6f7bf6b ('net: Add a new convenience option "--nic" ...')
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/i386/vmport.h | 2 +-
+>  net/net.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/i386/vmport.h b/hw/i386/vmport.h
-> index 47eda7a22b..a6624e3045 100644
-> --- a/hw/i386/vmport.h
-> +++ b/hw/i386/vmport.h
-> @@ -27,7 +27,7 @@
->  
->  #define TYPE_VMPORT "vmport"
->  
-> -typedef uint32_t (VMPortReadFunc)(void *opaque, uint32_t address);
-> +typedef uint32_t VMPortReadFunc(void *opaque, uint32_t address);
->  
->  void vmport_register(unsigned char command, VMPortReadFunc *func, void *opaque);
+> diff --git a/net/net.c b/net/net.c
+> index 38778e831d..cbeeeadff8 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -1506,7 +1506,7 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+>      /* Create an ID if the user did not specify one */
+>      nd_id = g_strdup(qemu_opts_id(opts));
+>      if (!nd_id) {
+> -        nd_id = g_strdup_printf("__org.qemu.nic%i\n", idx);
+> +        nd_id = g_strdup_printf("__org.qemu.nic%i", idx);
+>          qemu_opts_set_id(opts, nd_id);
+>      }
 >  
 > 
 
