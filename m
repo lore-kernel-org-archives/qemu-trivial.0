@@ -1,76 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgVwr-0004kq-KO
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 12:09:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45326)
+	id 1jgW3T-0001Kw-7Z
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 12:15:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chmeeedalf@gmail.com>)
- id 1jgVwq-0004ke-RA; Wed, 03 Jun 2020 12:09:00 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:45551)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jgW3R-0001K2-Jy
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 12:15:49 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42164)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chmeeedalf@gmail.com>)
- id 1jgVwp-0002NS-VF; Wed, 03 Jun 2020 12:09:00 -0400
-Received: by mail-io1-xd42.google.com with SMTP id y5so2836099iob.12;
- Wed, 03 Jun 2020 09:08:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/NXu/ihROj2eWZnXpU7QuqhGoESBH43VRMVMSBP30V0=;
- b=U4paOWkosy/2heC0Fv8LKiJlpTp3QlMQQ2rNT49e7cwWOs/jyGeoWR67/5aIvW/9Wd
- KN0CpLNy9zwYB3R72678rnMSBo4D6FjDX8csPn4DBrHWjlBAAT+9KoV8XGL1WtKlKf0n
- 3or8bwvRVVWy27Ish28jCoDGC3etPQtv+2JNGJP631zrWxAEXQ0B63BfV3QwQYmYngKR
- jdL/D1Wu24qiDXDm+kGs06bowVTOsHfFWuQg+DOCB0YD5X2rnL/+1UY2Ja6ZXIMbFPGL
- HV9AcQ8dBmb4Vatlp2gmYZOmP951mHMgqeTTKJuju3nzLJQdwWqU7AjVqMR8g5zh8zX+
- tSnQ==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jgW3M-0004FU-Cy
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 12:15:49 -0400
+Received: by mail-pl1-x643.google.com with SMTP id x11so972784plv.9
+ for <qemu-trivial@nongnu.org>; Wed, 03 Jun 2020 09:15:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wMcvYkurwjHiH49izWq+rhG4nDgnT4Ab4MOL7kCO9fw=;
+ b=BTwtB6r425RUixSVS+wj2ixhYu/5ZCqnj8esyqpSzCjPio2UPmWlUqCr0L3qc2GVnS
+ ZyXAsRzBHjgHkLFFuu43ZinT0qmBymO1J9+zbaZAWkLmM4pGhMFrXwyp0dnkGNlfQ3nP
+ XxHsPvCcMFf9Fic2Sb7ocX+2dRGjwm93zlJ1MJzmKvhJceiSV5nNT4V24N95lsuw6qh7
+ m87jdxnjcL8qo1LoTiJOQsoxTkCCaBkZy6Ig4K0pQz+Wy2YIVk5DCY41lPa/uXdd4e/i
+ vQELnKEx/7O+masEfFo7GmSALZ5SXr2yNekCDOmcV/o+4yxZ6ab1zM0hHTDbbyL7d0mx
+ /66g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/NXu/ihROj2eWZnXpU7QuqhGoESBH43VRMVMSBP30V0=;
- b=mlMMTYpwLG5fEHPKF5LLfNYb0T9U3I948Ae+FMRWzwIRHLvnu3717xSx49Aq1mGpfV
- bDyJcVJmmUH5nkw1G2wkHydtwTkStb0P03JVk0q0F2VVYm6I/TmIy0NSFlE+sSq5zK6v
- 8sZ1iwDGg+rYIy3EYJqwVZY7aZn0qTQwaOuoxToa/yo+Mixd9o77ADej4b0EiP3udK8/
- fOcv51uxPceiYmeBmLh/VcWphQnv4yewJol9l45A3SqmAhOGMlIBNdeam3twFDcI9A+M
- HWGYmV/kM+vs8LocPqPsu2WBf1LQgke/dEb9susZEfhoxiu0N0Mhb7L1DlE4MWvJ4hkt
- xl0w==
-X-Gm-Message-State: AOAM531ujUmZE7cajG27g0nz4FKgWRYXZ7vkHpQkWVip6vnM6t1TEtAK
- kGJf0CLt7U9ZovueE4thuh4=
-X-Google-Smtp-Source: ABdhPJxE1zjSF4PXOj8ieiwIjTt2w2cXL6y42wyiWQpjr//zojANjiWc9CAjYPkt1EunemGx71S/pg==
-X-Received: by 2002:a05:6602:224a:: with SMTP id
- o10mr431309ioo.90.1591200538419; 
- Wed, 03 Jun 2020 09:08:58 -0700 (PDT)
-Received: from titan.knownspace (173-19-125-130.client.mchsi.com.
- [173.19.125.130])
- by smtp.gmail.com with ESMTPSA id h14sm3173ilo.10.2020.06.03.09.08.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Jun 2020 09:08:58 -0700 (PDT)
-Date: Wed, 3 Jun 2020 11:08:54 -0500
-From: Justin Hibbits <chmeeedalf@gmail.com>
-To: Philippe =?UTF-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: David CARLIER <devnexen@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, pbonzini@redhat.com, John Arbuckle
- <programmingkidx@gmail.com>, Mikhail Gusarov <dottedmag@dottedmag.net>,
- Izik Eidus <izik@veertu.com>, Roman Bolshakov <r.bolshakov@yadro.com>
-Subject: Re: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation
- for MacOS
-Message-ID: <20200603110854.76776717@titan.knownspace>
-In-Reply-To: <4e3b6904-5dfe-0608-88e9-2e051265fcd2@redhat.com>
-References: <CA+XhMqwH6btbKFD0Ei47e+QHN2eBPG5H2PTS92MAje2Tij4Y=A@mail.gmail.com>
- <76587685-fa03-6dd6-5ca3-caeaf3c7504b@redhat.com>
- <20200603090921.64351a28@titan.knownspace>
- <4e3b6904-5dfe-0608-88e9-2e051265fcd2@redhat.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; powerpc64-portbld-freebsd13.0)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wMcvYkurwjHiH49izWq+rhG4nDgnT4Ab4MOL7kCO9fw=;
+ b=q4wDC7n6HVdlNWsGDGNHvo+tfg7fbIqfyEpTikwQPZvf4at1yKQ84XHmr6wTEzYR6l
+ kWFItBVdeKFV+0nKwuO9zWwS01znC4f0TuKRbegUsshwrYoPucz0uzTcXyIhsuMVAQEA
+ ceBDKn0m15w+8afdbQoF1r8Eh1MrI+PFtuu9EYBQxVb3gYGmjLwEYlZt/TzqZdKRprnX
+ dYsodaU7UiZEkN+iSBo8BSLWuyOS/ggEVQOMsojuG2eYayjm2wgYkn4QS9LIPCIapUEr
+ 5ai4+3lImw2LjpcMxCgdpYtZvqbQvkCkv1RIzAtsyI/asKcAsVF3C5dVrm3o/DbTkCDJ
+ nwDQ==
+X-Gm-Message-State: AOAM531UKgfatLVEf2k1ffeRmIWzD9VkhIgbzfYcRYiqd5aQTGlpAirj
+ XBl4/IdTuZ5MRkPH5UkgInrfrg==
+X-Google-Smtp-Source: ABdhPJz4T295iZqiwAesz6IXs74a4O+6tG9bH43s1uPzDntK5UHzsfQ0mpihgZc4aj2YZ20h8JoQOQ==
+X-Received: by 2002:a17:902:b414:: with SMTP id
+ x20mr622571plr.32.1591200942666; 
+ Wed, 03 Jun 2020 09:15:42 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id gm11sm2899198pjb.9.2020.06.03.09.15.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Jun 2020 09:15:41 -0700 (PDT)
+Subject: Re: [PATCH 1/3] target/unicore32: Remove unused headers
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>
+References: <20200603123754.19059-1-f4bug@amsat.org>
+ <20200603123754.19059-2-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b7a23b71-165a-5048-7038-f845402db154@linaro.org>
+Date: Wed, 3 Jun 2020 09:15:40 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=chmeeedalf@gmail.com; helo=mail-io1-xd42.google.com
+In-Reply-To: <20200603123754.19059-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -85,71 +86,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2020 16:09:01 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 16:15:49 -0000
 
-On Wed, 3 Jun 2020 16:36:27 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On 6/3/20 5:37 AM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  target/unicore32/helper.c | 2 --
+>  1 file changed, 2 deletions(-)
 
-> On 6/3/20 4:09 PM, Justin Hibbits wrote:
-> > On Wed, 3 Jun 2020 08:08:42 +0200
-> > Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
-> >  =20
-> >> Cc'ing more developers.
-> >>
-> >> On 5/26/20 10:40 PM, David CARLIER wrote: =20
-> >>> From b24a6702beb2a4e2a9c1c03b69c6d1dd07d4cf08 Mon Sep 17 00:00:00
-> >>> 2001 From: David Carlier <devnexen@gmail.com>
-> >>> Date: Tue, 26 May 2020 21:35:27 +0100
-> >>> Subject: [PATCH] util/oslib: current process full path resolution
-> >>> on MacOS
-> >>>
-> >>> Using existing libproc to fill the path.
-> >>>
-> >>> Signed-off-by: David Carlier <devnexen@gmail.com>
-> >>> ---
-> >>>  util/oslib-posix.c | 13 +++++++++++++
-> >>>  1 file changed, 13 insertions(+)
-> >>>
-> >>> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> >>> index 062236a1ab..96f0405ee6 100644
-> >>> --- a/util/oslib-posix.c
-> >>> +++ b/util/oslib-posix.c
-> >>> @@ -55,6 +55,10 @@
-> >>>  #include <sys/sysctl.h>
-> >>>  #endif
-> >>>
-> >>> +#ifdef __APPLE__
-> >>> +#include <libproc.h>
-> >>> +#endif
-> >>> +
-> >>>  #include "qemu/mmap-alloc.h"
-> >>>
-> >>>  #ifdef CONFIG_DEBUG_STACK_USAGE
-> >>> @@ -366,6 +370,15 @@ void qemu_init_exec_dir(const char *argv0)
-> >>>              p =3D buf;
-> >>>          }
-> >>>      }
-> >>> +#elif defined(__APPLE__)
-> >>> +    {
-> >>> +        uint32_t len;
-> >>> +        len =3D proc_pidpath(getpid(), buf, sizeof(buf) - 1);
-> >>> +        if (len > 0) {
-> >>> +            buf[len] =3D 0;
-> >>> +            p =3D buf;
-> >>> +        }
-> >>> +    }
-> >>>  #endif
-> >>>      /* If we don't have any way of figuring out the actual
-> >>> executable location then try argv[0].  */
-> >>>    =20
-> >> =20
-> >=20
-> > Apologies, I don't have context for this.  Why was I CC'd on this? =20
->=20
-> I did after finding this patch of yours:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg639033.html
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Ah, okay, thanks.  I haven't contributed much to qemu, so was curious.
-
-- Justin
+r~
 
