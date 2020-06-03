@@ -1,76 +1,111 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgLc8-0005EQ-SJ
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:06:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51876)
+	id 1jgLhG-0000G4-HS
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2020 01:12:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgLc7-0005CT-6T; Wed, 03 Jun 2020 01:06:55 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:39833)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgLc5-0007Iw-8q; Wed, 03 Jun 2020 01:06:54 -0400
-Received: by mail-wm1-x334.google.com with SMTP id k26so557621wmi.4;
- Tue, 02 Jun 2020 22:06:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bdgiK1WTnW8StDTPRcwjrZ9J0we35lDohHcS4+aaIII=;
- b=S+643GlTKr1Qzkf1gz9CKmRRVGJYyX9CNghAHFHIFkT1b9US0xSobbtrrkPdF4LKig
- NzA0mBX9N5xXw9A6hmldoXD1247RzE1XfYCSLabM+5mDKbtcQXtYyThFcCIQajPiXEnc
- 3rr7CDVg5etHi0kfVWP3YRscqSi3LP/T8oPdQA0f+EZALgaNCPSUGLThAJ2qAKnL+vjk
- 1rxhW/uOaEM0XLKTZ3wXxRRM5q97L+tRUwA39zY2BbVnatuGtOkhbe1vbKk+ecc+AlYs
- rr+LjOs7MkWJgOUgVyVktSgaWfmkkC+3ZuJcMrpGk35TyAprEN1rbcooMwDOnEMMnb4R
- vmhg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLhE-0000Fq-U8
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:12:12 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34605
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgLhE-0008C1-3a
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2020 01:12:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591161131;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=YzcpkdU6gmgtNSWUA1+uSr6y1uotxKrX7rUTKU9u3nw=;
+ b=Re82C88iqHmuD5XxaJ44ZpVySCYdPmwt8hqrJP+1P9QV071wTcuAbV7M21IhMHF2siZuUQ
+ sRzeQ2rwa8MRN0bWwLkLAvkqljltY0gQkPzBbIkkLacwBtE0l5RKGF8COkDd2ynlc7Q28B
+ CA6yOyigOKG6BvV2N5rV9afXr04GNKY=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-467-BjbNx1I5MSKCM6gIu4cJ4g-1; Wed, 03 Jun 2020 01:12:09 -0400
+X-MC-Unique: BjbNx1I5MSKCM6gIu4cJ4g-1
+Received: by mail-wr1-f71.google.com with SMTP id w4so588885wrl.13
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jun 2020 22:12:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bdgiK1WTnW8StDTPRcwjrZ9J0we35lDohHcS4+aaIII=;
- b=nowVSwWPHb/eUOX7Xy4Krnmvn+jXK+4xfgE+SqL+Ux0bC5of/YF5CbMi/i0wEFnhJ+
- 37f/Y2EoGS57z4pu7UI9VgBjvFIatc/ws0p00hsN+8FUi8X9+ePTC4edOJZQBAF7+Ofj
- SV3U+q/5HaMfUEqgzATFD5Znzx1oNyK5pPXBd98vOcy20HWaX1o/p35Mrz9WwLwZp14q
- cKMp9kA4IVnEQDjKAR/rZ0FJQrtbPCM5Te4IiWvItfuDuuCDKaaZzLMEeglltm784FY6
- kTL48LDIXb/DUjfhEtgwsny27CeRZhn7OnKwobIuRmaE/gmh5K8bzh3l8BthoplvKWM/
- rYTg==
-X-Gm-Message-State: AOAM533VeYDGx+V/XtEh9h4DsG10sQZC/IipO48gsFh950AegMxYIJnp
- 7vXTEy6xnHs9Jp2mzgrgn/Dd6BW+
-X-Google-Smtp-Source: ABdhPJy5OMELDmTTitMLjoYUJUjWI1/gbYPR1yuFWTPXsZaaaNGRaLYdmYpm2eKYa/NjXCFT5m2dfQ==
-X-Received: by 2002:a1c:2e4d:: with SMTP id u74mr7232001wmu.145.1591160811304; 
- Tue, 02 Jun 2020 22:06:51 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=YzcpkdU6gmgtNSWUA1+uSr6y1uotxKrX7rUTKU9u3nw=;
+ b=cj6bA9vkO8RmzZliRkXhu3hvdEkrbMHWZ0VW+fkfhDAhtgKh2dpmzOuLyV+c0ZdjtS
+ iTK2vQO7+vrbrz/TZkdfC+BM3ohthVV1XXDL6bEDoefXGgtY8LtI2hW4a5D+pII855Wu
+ ClfOCyyby4wRBDVTnis+d4k1b838QiAuppmVTVa/4dpJgLrAemUTIQgZq3KGHONQWHLo
+ L7GnJqSy+X09vijj4bzleiwE9yzzm2bksg0h1n98GuyZ3lEwI7Q/DSgWNnpPAqrnvTj+
+ /8pcG2xVUByQZJci4TSUGF6SBuGoKKOaH1KjfX+obUA2r667GSnygpye4k6Z6Or3FbCb
+ CtaQ==
+X-Gm-Message-State: AOAM532oUcXyP5cxngLTITqF3ZOairPxwPjBo+6rfvs8LwbXHx4AZqvL
+ ZbvAKlBKn0Vj4bo85DFkhD4y3P+GcKSMP9BYa0k3AKGBfIf23DfptZ/5+Q+aKK0TsLxnhz/zTUI
+ GI9XZvNndmvUfc6eXNQ==
+X-Received: by 2002:a1c:7e43:: with SMTP id z64mr6735071wmc.72.1591161128498; 
+ Tue, 02 Jun 2020 22:12:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxhXRa6XzzImOqYzSeI+aTMd0LKtOSN8nZ+KHiQ1cImcJMNXUhjLnnW8cMfuJwZ3f3YPnTpjA==
+X-Received: by 2002:a1c:7e43:: with SMTP id z64mr6735062wmc.72.1591161128313; 
+ Tue, 02 Jun 2020 22:12:08 -0700 (PDT)
 Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
  [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id b19sm2841313wmj.0.2020.06.02.22.06.50
+ by smtp.gmail.com with ESMTPSA id j190sm1154460wmb.33.2020.06.02.22.12.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Jun 2020 22:06:50 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] .mailmap: Update Fred Konrad email address
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Frederic Konrad <konrad@adacore.com>
-References: <20200518103920.10699-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <79e305ce-2442-16f1-559d-b776d42c4e8d@amsat.org>
-Date: Wed, 3 Jun 2020 07:06:50 +0200
+ Tue, 02 Jun 2020 22:12:07 -0700 (PDT)
+Subject: Re: [PATCH 1/1] util/oslib: Returns real thread identifier on FreeBSD
+ and NetBSD
+To: David CARLIER <devnexen@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ pbonzini@readhat.com, qemu-trivial@nongnu.org
+Cc: Kamil Rytarowski <kamil@netbsd.org>, Ed Maste <emaste@freebsd.org>,
+ qemu-devel@nongnu.org, bauerchen@tencent.com, Li-Wen Hsu <lwhsu@freebsd.org>
+References: <CA+XhMqwMsmoYwNtkrvAEG_j_-8L=+PYcXSz--1Qg622szArkRQ@mail.gmail.com>
+ <f9ebb603-0a0e-8775-8405-dd8de2493a3f@redhat.com>
+ <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <ee2dcfe2-66f0-63f4-33a0-e5731e5d9d08@redhat.com>
+Date: Wed, 3 Jun 2020 07:12:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200518103920.10699-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 01:12:11
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,29 +118,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2020 05:06:55 -0000
+X-List-Received-Date: Wed, 03 Jun 2020 05:12:13 -0000
 
 ping?
 
-On 5/18/20 12:39 PM, Philippe Mathieu-Daudé wrote:
-> Update Fred Konrad email address to avoid emails bouncing.
+On 5/26/20 9:29 AM, David CARLIER wrote:
+> From 792fbcd9114f43bd80fd1ef5b25cd9935a536f9f Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Tue, 26 May 2020 08:25:26 +0100
+> Subject: [PATCH] util/oslib: Returns the real thread identifier on FreeBSD and
+>  NetBSD
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> getpid is good enough in a mono thread context, however
+>  thr_self/_lwp_self reflects the real current thread identifier
+>  from a given process.
 > ---
->  .mailmap | 1 +
->  1 file changed, 1 insertion(+)
+>  util/oslib-posix.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
-> diff --git a/.mailmap b/.mailmap
-> index 6412067bde..4c7f4b7d03 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -44,6 +44,7 @@ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markovic@imgte
->  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <amarkovic@wavecomp.com>
->  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
->  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
-> +Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
->  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
->  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
->  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+> index 062236a1ab..916f1be224 100644
+> --- a/util/oslib-posix.c
+> +++ b/util/oslib-posix.c
+> @@ -48,11 +48,13 @@
+>  #ifdef __FreeBSD__
+>  #include <sys/sysctl.h>
+>  #include <sys/user.h>
+> +#include <sys/thr.h>
+>  #include <libutil.h>
+>  #endif
 > 
+>  #ifdef __NetBSD__
+>  #include <sys/sysctl.h>
+> +#include <lwp.h>
+>  #endif
+> 
+>  #include "qemu/mmap-alloc.h"
+> @@ -84,6 +86,13 @@ int qemu_get_thread_id(void)
+>  {
+>  #if defined(__linux__)
+>      return syscall(SYS_gettid);
+> +#elif defined(__FreeBSD__)
+> +    /* thread id is up to INT_MAX */
+> +    long tid;
+> +    thr_self(&tid);
+> +    return (int)tid;
+> +#elif defined(__NetBSD__)
+> +    return _lwp_self();
+>  #else
+>      return getpid();
+>  #endif
+> 
+
 
