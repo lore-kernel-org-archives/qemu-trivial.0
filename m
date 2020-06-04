@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jgi7S-0008Qb-Dj
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2020 01:08:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59870)
+	id 1jgsdi-0001Dr-Pw
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2020 12:22:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jgi7Q-0008P5-Qx
- for qemu-trivial@nongnu.org; Thu, 04 Jun 2020 01:08:44 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:56609
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jgsdh-0001D4-8P
+ for qemu-trivial@nongnu.org; Thu, 04 Jun 2020 12:22:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30195
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jgi7O-0006kn-Dg
- for qemu-trivial@nongnu.org; Thu, 04 Jun 2020 01:08:44 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jgsdf-0007fk-VQ
+ for qemu-trivial@nongnu.org; Thu, 04 Jun 2020 12:22:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591247320;
+ s=mimecast20190719; t=1591287763;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=AAT/3DkxiA810/k7HKKMHk0gwR78nIGOmSRQWpJzYng=;
- b=ErsdFdhZdn3fvy8ToE4HzXXriyfJh+6SwSvH/jABeI1GuE0BTyLAKgzfxZMaLZZqcLBcZZ
- 3TZgL8p4DOgu7XMDiuFLJ+mnpyTkKmgZTKMEWZOZo9mMRSvulWiHZfy7Hl5aXyoyIxcjja
- ToiXxTjvzC8qxcgCh9D5vILjFtR2z04=
+ in-reply-to:in-reply-to:references:references;
+ bh=bkaBPgmzr0lMeHWUMJ62vNGfJWQwC8Xb5vQegkVuEtw=;
+ b=YpAIp2gD+NwvFB/xLvfcfGNs5xbU1mSbOGgR5D4ZL+TE916u666ZezULcVXa1cVGCSQUvv
+ CyoFj+csLHOFOW3Ya5l6BqeGttTGfoMb46BjkWJ0+8DOt/aHvJRylvI2RA1N/2HacK0d9c
+ 2z78ySGInUY/L9OhahYMB/TGQZBpOPg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448-xWya0B4uNIyn27PMc2YZeQ-1; Thu, 04 Jun 2020 01:08:36 -0400
-X-MC-Unique: xWya0B4uNIyn27PMc2YZeQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-280-CTZPl-nEOxycqWmNfUDJDg-1; Thu, 04 Jun 2020 12:22:35 -0400
+X-MC-Unique: CTZPl-nEOxycqWmNfUDJDg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D66D106BF97;
- Thu,  4 Jun 2020 05:08:35 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-105.ams2.redhat.com [10.36.112.105])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 75D9F78F0F;
- Thu,  4 Jun 2020 05:08:34 +0000 (UTC)
-Subject: Re: [PATCH] configure: Disable -Wtautological-type-limit-compare
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: eblake@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200604034513.75103-1-richard.henderson@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <962eb77e-4e9c-e680-645c-2705d9dff7b7@redhat.com>
-Date: Thu, 4 Jun 2020 07:08:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC3A51005510;
+ Thu,  4 Jun 2020 16:22:29 +0000 (UTC)
+Received: from [10.3.113.22] (ovpn-113-22.phx2.redhat.com [10.3.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D27C60C47;
+ Thu,  4 Jun 2020 16:22:29 +0000 (UTC)
+Subject: Re: [PATCH 1/2] lockable: use QLNULL for a null lockable
+To: Joe Slater <joe.slater@windriver.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
+References: <20200603224903.26268-1-joe.slater@windriver.com>
+ <20200603224903.26268-2-joe.slater@windriver.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <dba303d1-5e24-d9e6-7e61-dacbb486c7c0@redhat.com>
+Date: Thu, 4 Jun 2020 11:22:28 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200604034513.75103-1-richard.henderson@linaro.org>
+In-Reply-To: <20200603224903.26268-2-joe.slater@windriver.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 01:08:38
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=eblake@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 12:22:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,35 +75,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jun 2020 05:08:45 -0000
+X-List-Received-Date: Thu, 04 Jun 2020 16:22:45 -0000
 
-On 04/06/2020 05.45, Richard Henderson wrote:
-> Clang 10 enables this by default with -Wtype-limit.
+On 6/3/20 5:49 PM, Joe Slater wrote:
+> Allows us to build with -Og and optimizations that
+> do not clean up dead-code.
 > 
-> All of the instances flagged by this Werror so far have been
-> cases in which we really do want the compiler to optimize away
-> the test completely.  Disabling the warning will avoid having
-> to add ifdefs to work around this.
+> Signed-off-by: Joe Slater <joe.slater@windriver.com>
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> to be squished
+> 
+> Signed-off-by: Joe Slater <joe.slater@windriver.com>
+
+These last two lines can be elided (looks like a rebase mishap).
+
 > ---
->  configure | 2 ++
->  1 file changed, 2 insertions(+)
+>   block/block-backend.c          | 4 ++--
+>   block/block-copy.c             | 2 +-
+>   block/mirror.c                 | 5 +++--
+>   fsdev/qemu-fsdev-throttle.c    | 6 +++---
+>   hw/9pfs/9p.c                   | 2 +-
+>   include/qemu/lockable.h        | 3 +++
+>   util/qemu-co-shared-resource.c | 2 +-
+>   7 files changed, 14 insertions(+), 10 deletions(-)
 > 
-> diff --git a/configure b/configure
-> index f087d2bcd1..693f01327f 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2009,6 +2009,8 @@ gcc_flags="-Wno-missing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
->  gcc_flags="-Wendif-labels -Wno-shift-negative-value $gcc_flags"
->  gcc_flags="-Wno-initializer-overrides -Wexpansion-to-defined $gcc_flags"
->  gcc_flags="-Wno-string-plus-int -Wno-typedef-redefinition $gcc_flags"
-> +gcc_flags="$gcc_flags -Wno-tautological-type-limit-compare"
-> +
->  # Note that we do not add -Werror to gcc_flags here, because that would
->  # enable it for all configure tests. If a configure test failed due
->  # to -Werror this would just silently disable some features,
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+If you use scripts/git.orderfile, your diff would show with the .h 
+changes first, which are arguably the meat of this patch.
+
+> +++ b/block/mirror.c
+> @@ -28,6 +28,7 @@
+>   #define MAX_IO_BYTES (1 << 20) /* 1 Mb */
+>   #define DEFAULT_MIRROR_BUF_SIZE (MAX_IN_FLIGHT * MAX_IO_BYTES)
+>   
+> +
+>   /* The mirroring buffer is a list of granularity-sized chunks.
+>    * Free chunks are organized in a list.
+>    */
+
+This hunk looks spurious.
+
+
+> +++ b/include/qemu/lockable.h
+> @@ -24,6 +24,9 @@ struct QemuLockable {
+>       QemuLockUnlockFunc *unlock;
+>   };
+>   
+> +#define QLNULL ((QemuLockable *)0)
+
+Why not ((QemuLocakable *)NULL) ?
+Why no comments why this type-safe NULL is useful?
+
+> +
+> +
+>   /* This function gives an error if an invalid, non-NULL pointer type is passed
+>    * to QEMU_MAKE_LOCKABLE.  For optimized builds, we can rely on dead-code elimination
+>    * from the compiler, and give the errors already at link time.
+> diff --git a/util/qemu-co-shared-resource.c b/util/qemu-co-shared-resource.c
+> index 1c83cd9..7423ea4 100644
+> --- a/util/qemu-co-shared-resource.c
+> +++ b/util/qemu-co-shared-resource.c
+> @@ -64,7 +64,7 @@ void coroutine_fn co_get_from_shres(SharedResource *s, uint64_t n)
+>   {
+>       assert(n <= s->total);
+>       while (!co_try_get_from_shres(s, n)) {
+> -        qemu_co_queue_wait(&s->queue, NULL);
+> +        qemu_co_queue_wait(&s->queue, QLNULL);
+
+It looks like your macro is added to give the compiler some type-safety, 
+but it is not obvious how it matters from just the commit message, 
+without also looking at patch 2/2.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
