@@ -1,74 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jhF9L-0007RB-Ic
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2020 12:24:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36428)
+	id 1jhFLx-00014L-RP
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2020 12:37:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jhF9I-0007Qp-S6; Fri, 05 Jun 2020 12:24:53 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:38013)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jhF9H-0004DT-Vj; Fri, 05 Jun 2020 12:24:52 -0400
-Received: by mail-ed1-x542.google.com with SMTP id c35so7940071edf.5;
- Fri, 05 Jun 2020 09:24:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IALAckFyq3HFVGOZWWV2ma1W2lw+akLCsk2z4st9pxs=;
- b=VN6owu5cmx+zWH0wEDKfuIUQLWECkD22fdMzqkvXqgorwcakdpb8MgYpsbOHVOg6FQ
- 55mEWe7YJd2ND73WEai5SJP7JR/0d7+sTHAGueOPRAfwWk3ant3PRRb8Ir2AKdNJkVAW
- M46sRYaNwMbsXVuljXw3ihTO8eWVt9IZCNIo2LgxfZO6kgo5bGrkfQGnGbEAeZAq5rPR
- N+kyvY3HseSofZUPd6WJydWz/2Q1P71m9vTcPn6+fIf6hRhSkkgcrD/V2leBE/EwOHcK
- h3Y6p7/aOxiRpjg34C5EeUs3wh9zhPYA/3S/Pq6xspCSk1+M3A8YTJdFXtaJ5qx4fIb6
- iAyg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jhFLw-00012Y-HK
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 12:37:56 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:55497
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jhFLv-0007Rr-2X
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 12:37:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591375073;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=98qgKBh5fH8KCi85m1CSGYKJMMXRY6XnMEUwXUwkDZ0=;
+ b=WEF2buCRaP8cEp0GLSzjkly7lgwaQxIzUUonLvqsQWeJ9PjPpNAgVYHiecFyV5TFMMja+X
+ VFkwPlFvPC1cOb42f30iyQtVuUNiar7YHX93tgwbeN6i3aYpjiXf03MnoQlWvcaLfulfT/
+ Ep+FH1Y+j73M6iFahy1sDRU215dycVE=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-TcJPMRZMNlG_LxMxwUcIGA-1; Fri, 05 Jun 2020 12:37:51 -0400
+X-MC-Unique: TcJPMRZMNlG_LxMxwUcIGA-1
+Received: by mail-wm1-f72.google.com with SMTP id s15so3189339wmc.8
+ for <qemu-trivial@nongnu.org>; Fri, 05 Jun 2020 09:37:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IALAckFyq3HFVGOZWWV2ma1W2lw+akLCsk2z4st9pxs=;
- b=Y4YqyG/DoFPsywHPzBNWaV9qN4rEeP+nhvWkN7muDfl2VZqfMqI+PFkjq6cIcPctWG
- iu4nVxQW0INdS3imWJWC2730Nhq7nyakTnaP1b5jb/S/60BAxj1uYLZljlnbR3nJDgQT
- kMUS1oY26VjEDMr9U4aISgAmQE+0ZWJdtzhbvSTxYmRcE6y+WE9EfgL/JPWq8Rylngln
- 01JO+731Re4iRh16NUzXCf9l7Nk63sebZFg145dM6jRHMqTmruxk5y4xQlVINzTHFyLV
- mHNmbndbgrU+PUSJ7Ijnf+8QN/F/8+mkkY9dRN/DO9h6d+KEbPy7cKgVWmVyG/rH+ZXu
- 7gXA==
-X-Gm-Message-State: AOAM531wpslTfO6A7izUkKpiU71dTDmNKj3hcfeKFowOWf0hC2jMzTCZ
- qHWzKsbvcuXNdux6Khle9TQj0zy96egwdoVcXO8=
-X-Google-Smtp-Source: ABdhPJy3f9igV439Q+pdX9A5jmh5oa8cQSyshI9Ej21blKxx4qvCUy1Fy4SmlGWgwzlwxIJLo6oqtcBQTfCYrJJkC64=
-X-Received: by 2002:a05:6402:1750:: with SMTP id
- v16mr10399102edx.137.1591374289500; 
- Fri, 05 Jun 2020 09:24:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=98qgKBh5fH8KCi85m1CSGYKJMMXRY6XnMEUwXUwkDZ0=;
+ b=f8Szkl4GYaZ5MWbqPcUhcxVhK5sZFTsQ3KyZex+qNzCs4IJljqf0dEKfQUEmV0LqKT
+ nwdz6r+tTNnkGyiJfFjPGmDJIE5NRy3LAndqXLxgi4iRXg0Q2dt2HaygN4/OelbW0+13
+ xJs9CjJ63Ein4KpS7he0yK6MStcvplDFGxygg55Jhnvx45RBfcn5D5leBGACArbAO0P5
+ mi0zSq7vrd3swXtMvuvvfAarqw4Ml+yAF3xY599eS1S/CcI8nQRU29DBHJj4ce/wyYR8
+ /C6Sf9YVsGZ6NSS8NBU2bZujK81nDVV2ngpn+9s4iiVAoZO1wH8U+54pOQcgIIk9pwgS
+ Wggw==
+X-Gm-Message-State: AOAM5319SJFlENdsDrlGNoFQFc1h38rS5xHqVMVoOx7w7cUgoPcSd59T
+ SuIT6Q3TcHhyycW9iqrAjtFK09eMRFen8EpOBJyrWha0rh/kZBgvy0MFRNW+Y/I81C5L4a3/HEu
+ zrzpIhENEwJoruec1oA==
+X-Received: by 2002:adf:dccc:: with SMTP id x12mr10235516wrm.72.1591375070782; 
+ Fri, 05 Jun 2020 09:37:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVt/qITuRNR0feGAJAg9/RgrY4AX3krhPw+YgNYv8ISRguIx4xpEJDEuK+i0Gv009+AUWqZw==
+X-Received: by 2002:adf:dccc:: with SMTP id x12mr10235496wrm.72.1591375070604; 
+ Fri, 05 Jun 2020 09:37:50 -0700 (PDT)
+Received: from localhost.localdomain
+ (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id s132sm12444779wmf.12.2020.06.05.09.37.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Jun 2020 09:37:50 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] MAINTAINERS: Cover pip requirements.txt
+Date: Fri,  5 Jun 2020 18:37:48 +0200
+Message-Id: <20200605163748.15345-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <CA+XhMqwMsmoYwNtkrvAEG_j_-8L=+PYcXSz--1Qg622szArkRQ@mail.gmail.com>
- <f9ebb603-0a0e-8775-8405-dd8de2493a3f@redhat.com>
- <CA+XhMqx6_mWvb-5Z2Mbtw3V-q-WkZPnOF10VK=iLwSwUGnOJAQ@mail.gmail.com>
- <ee2dcfe2-66f0-63f4-33a0-e5731e5d9d08@redhat.com>
- <CA+XhMqxsgsLVZDUTiXT8RPZ_K9B1sYitRSDNEWitSS7vV5uEWA@mail.gmail.com>
- <CAKBkRUxb6XiWhL7aHKDewXW+WUi5Q5wyKRYrcDuVtoo3_k0YwA@mail.gmail.com>
-In-Reply-To: <CAKBkRUxb6XiWhL7aHKDewXW+WUi5Q5wyKRYrcDuVtoo3_k0YwA@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 5 Jun 2020 17:24:38 +0100
-Message-ID: <CA+XhMqyPuZu-MM4V8bqNy2Ed-8gchRnZnAr=fhUjCY7SGVj-Jw@mail.gmail.com>
-Subject: Re: [PATCH 1/1] util/oslib: Returns real thread identifier on FreeBSD
- and NetBSD
-To: Li-Wen Hsu <lwhsu@freebsd.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, pbonzini@readhat.com, qemu-trivial@nongnu.org, 
- Kamil Rytarowski <kamil@netbsd.org>, Ed Maste <emaste@freebsd.org>, 
- qemu-devel <qemu-devel@nongnu.org>, bauerchen@tencent.com, 
- Edward Tomasz Napierala <trasz@freebsd.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/05 03:35:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,139 +88,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jun 2020 16:24:53 -0000
+X-List-Received-Date: Fri, 05 Jun 2020 16:37:56 -0000
 
-From 5f0b74a75906a9a043ce4874e7f09dedcad7e6e7 Mon Sep 17 00:00:00 2001
-From: David Carlier <devnexen@gmail.com>
-Date: Fri, 5 Jun 2020 17:18:25 +0100
-Subject: [PATCH] util/oslib: Returns real thread identifier on FreeBSD,
- OpenBSD and NetBSD
+Add an entry in 'Python scripts' to cover the requirements.txt
+file added in commit 213137217a6 (this file contains a list of
+Python packages used by our test suite).
 
-getpid is good enough in a mono thread context,
-however thr_self/getthrid/_lwp_self reflects
-the real current thread identifier.
-
-Reviewed-By: Kamil Rytarowski <kamil@netbsd.org>
-Reviewed-By: Edward Tomasz Napierala <trasz@FreeBSD.org>
-Signed-off-by: David Carlier <devnexen@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- util/oslib-posix.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 062236a1ab..7864a7768c 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -48,11 +48,17 @@
- #ifdef __FreeBSD__
- #include <sys/sysctl.h>
- #include <sys/user.h>
-+#include <sys/thr.h>
- #include <libutil.h>
- #endif
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3e7d9cb0a5..fc4148fba3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2219,6 +2219,7 @@ S: Odd fixes
+ F: python/qemu/*py
+ F: scripts/*.py
+ F: tests/*.py
++F: tests/requirements.txt
+ 
+ Benchmark util
+ M: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+-- 
+2.21.3
 
-+#ifdef __OpenBSD__
-+#include <unistd.h>
-+#endif
-+
- #ifdef __NetBSD__
- #include <sys/sysctl.h>
-+#include <lwp.h>
- #endif
-
- #include "qemu/mmap-alloc.h"
-@@ -84,6 +90,15 @@ int qemu_get_thread_id(void)
- {
- #if defined(__linux__)
-     return syscall(SYS_gettid);
-+#elif defined(__FreeBSD__)
-+    /* thread id is up to INT_MAX */
-+    long tid;
-+    thr_self(&tid);
-+    return (int)tid;
-+#elif defined(__OpenBSD__)
-+    return getthrid();
-+#elif defined(__NetBSD__)
-+    return _lwp_self();
- #else
-     return getpid();
- #endif
---=20
-2.27.0
-
-On Wed, 3 Jun 2020 at 16:07, Li-Wen Hsu <lwhsu@freebsd.org> wrote:
->
-> Sorry that I am not familiar with this part so I asked others to help
-> review (the FreeBSD related code).  It's good and please append:
->
-> Reviewed-by: Edward Tomasz Napierala <trasz@FreeBSD.org>
->
-> Thanks!
->
-> On Wed, Jun 3, 2020 at 2:14 PM David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > Sorry it landed in the spam.
-> >
-> > It does make things more accurate, thus a bit more than cosmetic, as
-> > stated in the commit message, thr_self/_lwp_self represents the
-> > current thread id in multi thread context.
-> >
-> > For OpenBSD it is syscall(SYS_getthrid) I believe
-> > https://man.openbsd.org/getthrid.2
-> >
-> > On Wed, 3 Jun 2020 at 06:12, Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com> wrote:
-> > >
-> > > ping?
-> > >
-> > > On 5/26/20 9:29 AM, David CARLIER wrote:
-> > > > From 792fbcd9114f43bd80fd1ef5b25cd9935a536f9f Mon Sep 17 00:00:00 2=
-001
-> > > > From: David Carlier <devnexen@gmail.com>
-> > > > Date: Tue, 26 May 2020 08:25:26 +0100
-> > > > Subject: [PATCH] util/oslib: Returns the real thread identifier on =
-FreeBSD and
-> > > >  NetBSD
-> > > >
-> > > > getpid is good enough in a mono thread context, however
-> > > >  thr_self/_lwp_self reflects the real current thread identifier
-> > > >  from a given process.
-> > > > ---
-> > > >  util/oslib-posix.c | 9 +++++++++
-> > > >  1 file changed, 9 insertions(+)
-> > > >
-> > > > diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> > > > index 062236a1ab..916f1be224 100644
-> > > > --- a/util/oslib-posix.c
-> > > > +++ b/util/oslib-posix.c
-> > > > @@ -48,11 +48,13 @@
-> > > >  #ifdef __FreeBSD__
-> > > >  #include <sys/sysctl.h>
-> > > >  #include <sys/user.h>
-> > > > +#include <sys/thr.h>
-> > > >  #include <libutil.h>
-> > > >  #endif
-> > > >
-> > > >  #ifdef __NetBSD__
-> > > >  #include <sys/sysctl.h>
-> > > > +#include <lwp.h>
-> > > >  #endif
-> > > >
-> > > >  #include "qemu/mmap-alloc.h"
-> > > > @@ -84,6 +86,13 @@ int qemu_get_thread_id(void)
-> > > >  {
-> > > >  #if defined(__linux__)
-> > > >      return syscall(SYS_gettid);
-> > > > +#elif defined(__FreeBSD__)
-> > > > +    /* thread id is up to INT_MAX */
-> > > > +    long tid;
-> > > > +    thr_self(&tid);
-> > > > +    return (int)tid;
-> > > > +#elif defined(__NetBSD__)
-> > > > +    return _lwp_self();
-> > > >  #else
-> > > >      return getpid();
-> > > >  #endif
-> > > >
-> > >
 
