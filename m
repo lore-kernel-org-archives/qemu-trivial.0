@@ -1,70 +1,110 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jhCPk-0001FE-4k
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2020 09:29:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40372)
+	id 1jhDIg-0000d3-4M
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2020 10:26:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhCPi-0001DO-VE
- for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 09:29:38 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:42813)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhCPg-00057l-Md
- for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 09:29:38 -0400
-Received: by mail-ot1-x342.google.com with SMTP id o7so7578172oti.9
- for <qemu-trivial@nongnu.org>; Fri, 05 Jun 2020 06:29:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=MjBx5mbcnQFgKZnmd+gPc0Sz7vAMpyCVxxcFHrl1+vA=;
- b=irCiZYGwlllOeb6+VEa8m03LTwSiYd5ydYRors8B/kb0ReMA5drC8vBLvJJunGEYIU
- TM9gauJg/OIaEWaGLRukEb6jybUSrgIB9PgnzkrWkREUkE8TMPAyBaFUeHj0Z/SEcMEI
- LwP8CPMLdwnBJtQtc2nExy8vUrlfqfc13MTlvGxRDsTVyJBpwmgAS0z105GqxzlMnjBW
- piol1QUGWgibpz63eEhPU5rrFkB36k/W832DYi3M81tsFsEClMna0epGdmFeFVL87mLQ
- yS+cfAP7Jdxe5XRpOqMcf2L8Q8Doh1BhKThn04U8u6sbTrxwC/TEzbNX95tO7QMPZHyo
- 1s6A==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jhDId-0000Wo-9g
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 10:26:23 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46856
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jhDIc-0001Ai-F7
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2020 10:26:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591367181;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=27WuZTL7NnEN3Ju65h/8x51tlzjKghgjHXh6xlX5Hlk=;
+ b=Z/rqXRv+hvMgXVXmrvJ0UYLbln8/pWpqq1Hy6NGvPmCaI+9AldZRAQoFOFHOGqNArEgBxc
+ TLuBX5YYHeK5YNpubC9Zmo0yWyAKiyaj0d1DTy/NRHvWUiRFztlPCoHRaKnfNrtXgZmex6
+ R+N6twYuV83HWgG38VsB2oEjn2jh+/U=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-431-ZsAgABIQPz6qUifYVAvezg-1; Fri, 05 Jun 2020 10:26:19 -0400
+X-MC-Unique: ZsAgABIQPz6qUifYVAvezg-1
+Received: by mail-wr1-f71.google.com with SMTP id l1so3830236wrc.8
+ for <qemu-trivial@nongnu.org>; Fri, 05 Jun 2020 07:26:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=MjBx5mbcnQFgKZnmd+gPc0Sz7vAMpyCVxxcFHrl1+vA=;
- b=jbF0aq/FA6SwJNncwD/XseHMYuqYK8TlrnEr4e+LbUWxXVpSqJZzw4O0/DFgtUdMKx
- Mj2zsmcrUcDJJ7V99cp/3ehI5Pu2fKZX1iaFKIBBHZlrbn9eUPLwIJO6QBqk/zgWOF+D
- WFb1oVqIoOmxMs3FHR9jJ3b08AtN8VzGaAjNeUP1R+BMF5C+lByHf5ymCafSka6QQdAX
- g95RP2tW+Tq8RFym46iOT9UowKvh2fshKpw58wyzY7JZ3sz+y1VaGrRKUMiPmRl9Iir6
- NZ2aNCEjTgr6Y4XQAvB4yeg+IFYVT8M1JSSCoFtmy2XvoqrOtXzge1Nc0i8r0expqyKy
- iDDQ==
-X-Gm-Message-State: AOAM532R+hSu+NcdKKsccwyXE1Qlwg8kARjw8WT+bjSXJG+r2H9fVyOW
- 5KxIH301fbtnxdZceGY1+A51tLxP+RjW7Hs8y0/YZA==
-X-Google-Smtp-Source: ABdhPJyEoglVWqZSwsHTkP0EWdHkvs8OEXCpE1E62uXongN86V6iQAdKayr+FFCaQHhNm4lfUW261qRbBXFVZLLmzjk=
-X-Received: by 2002:a9d:b82:: with SMTP id 2mr7256440oth.221.1591363775642;
- Fri, 05 Jun 2020 06:29:35 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=27WuZTL7NnEN3Ju65h/8x51tlzjKghgjHXh6xlX5Hlk=;
+ b=DT9wEoRaZTDSPl6eHSLAKAV21CMLntqG3k0z3rntSWtjXphqRusOl3jn4jVR2CP7M7
+ YwogQZm4E+CKinTSlj+MlezCLf1ZsGD+yAzHfkmcF3h023zkSw03EuXMa0fGsMCU36O4
+ pbpryBdtS2UWSGlg2JzyqqFVzNI/WwRk8Dd2qVMQgo+UA5D8tBIYvVkNbu7NT8kdw/KM
+ oxzUvb/CRVl3oOGY2s/yNogxkX2rJzkHd6q0OxOx+Rew7zDXJME+QdEqED4jeMXFSJjA
+ dBsXSVjcPCy2GN4A2dY1YhC5M77BonQrStzyIzQiITjcYSIvb7/dAprbkASszJdBPYkB
+ IbjQ==
+X-Gm-Message-State: AOAM533hsK0lKZHDU46jyan/udjPRBKVA5iK75saw2BkfdF/8SOq9Xo2
+ 54VS3s9i8/VPB6jKHy+iRj8yf5HVOiSurMOiQ1iEPLc0CjoVAIssguR7tXpGxwZEQEWNACh8h6r
+ sieeaj3syRwBOstQfAQ==
+X-Received: by 2002:a1c:b7d5:: with SMTP id h204mr2996687wmf.100.1591367178608; 
+ Fri, 05 Jun 2020 07:26:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxBTvZBjzTXTNsAhVcGitLE+Q2HKSRV9rLyCR3N98yTMzpgIGG5c0HcLFR447V7Bsuem/eJw==
+X-Received: by 2002:a1c:b7d5:: with SMTP id h204mr2996650wmf.100.1591367178243; 
+ Fri, 05 Jun 2020 07:26:18 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id y14sm1269531wma.25.2020.06.05.07.26.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Jun 2020 07:26:17 -0700 (PDT)
+Subject: Re: [PATCH] block: Remove trailing newline in format used by
+ error_report API
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
+References: <20200228123637.15160-1-philmd@redhat.com>
+ <8736auipnb.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <fd516cf1-72bc-63db-84f0-d2f2c5cbad7a@redhat.com>
+Date: Fri, 5 Jun 2020 16:26:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200603055915.17678-1-f4bug@amsat.org>
-In-Reply-To: <20200603055915.17678-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jun 2020 14:29:24 +0100
-Message-ID: <CAFEAcA_SZ=Byk8_-GURDEWP+WuaJXwYF9rz1b+4XwPi8GSf9wA@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/adc/stm32f2xx_adc: Correct memory region size and
- access size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>, 
- Seth Kintigh <skintigh@gmail.com>, Alistair Francis <alistair.francis@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <8736auipnb.fsf@dusky.pond.sub.org>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/05 03:07:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,32 +117,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jun 2020 13:29:39 -0000
+X-List-Received-Date: Fri, 05 Jun 2020 14:26:23 -0000
 
-On Wed, 3 Jun 2020 at 06:59, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> The ADC region size is 256B, split as:
->  - [0x00 - 0x4f] defined
->  - [0x50 - 0xff] reserved
->
-> All registers are 32-bit (thus when the datasheet mentions the
-> last defined register is 0x4c, it means its address range is
-> 0x4c .. 0x4f.
->
-> This model implementation is also 32-bit. Set MemoryRegionOps
-> 'impl' fields.
->
-> See:
->   'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
->
-> Reported-by: Seth Kintigh <skintigh@gmail.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 2/28/20 6:32 PM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> The error_report API doesn't want trailing newline characters.
+>> Remove it, to avoid and error when moving the code around:
+>>
+>>   ERROR: Error messages should not contain newlines
+> 
+> Commit 312fd5f2909 has a Coccinelle script.  It should be committed and
+> re-run.
+> 
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  block.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/block.c b/block.c
+>> index 1bdb9c679d..e466d15914 100644
+>> --- a/block.c
+>> +++ b/block.c
+>> @@ -5994,7 +5994,7 @@ void bdrv_img_create(const char *filename, const char *fmt,
+>            bs = bdrv_open(full_backing, NULL, backing_options, back_flags,
+>                           &local_err);
+>            g_free(full_backing);
+>            if (!bs && size != -1) {
+>>              /* Couldn't open BS, but we have a size, so it's nonfatal */
+>>              warn_reportf_err(local_err,
+>>                              "Could not verify backing image. "
+>> -                            "This may become an error in future versions.\n");
+>> +                            "This may become an error in future versions.");
+>>              local_err = NULL;
+>>          } else if (!bs) {
+>>              /* Couldn't open bs, do not have size */
+> 
+> warn_reportf_err() is a convenience function to error_prepend(),
+> warn_report() and free @local_err.
 
+OK now I see.
 
+Why warn_reportf_err() doesn't take a 'Error **err' instead, to set err
+to NULL after freeing *err?
 
-Applied to target-arm.next, thanks.
+> 
+> When @local_err holds a message like "pants on fire", the code before
+> the patch prints something like
+> 
+>     qemu-system-x86_64: warning: Could not verify backing image. This may become an error in future versions.
+>     pants on fire
+> 
+> The patch "improves" it to
+> 
+>     qemu-system-x86_64: warning: Could not verify backing image. This may become an error in future versions.pants on fire
+> 
+> General advice: this misuse of warn_reportf_err() is an excusable
+> mistake, but when you *test* the error path, you can't *not* see that
+> the actual message is crap.  Test your errors!
+> 
+> Actual improvement:
+> 
+>                warn_reportf_err(local_err, "Could not verify backing image: ");
+>                error_printf("This may become an error in future versions.\n");
+> 
+> This should print
+> 
+>     qemu-system-x86_64: warning: Could not verify backing image: pants on fire
+>     This may become an error in future versions.
+> 
 
--- PMM
 
