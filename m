@@ -1,72 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jhSqX-0000Mr-Ka
-	for mharc-qemu-trivial@gnu.org; Sat, 06 Jun 2020 03:02:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39134)
+	id 1jhcsO-0000kl-FW
+	for mharc-qemu-trivial@gnu.org; Sat, 06 Jun 2020 13:45:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50810)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jhSqV-0000Lh-Gk; Sat, 06 Jun 2020 03:02:23 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36477)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jhcsN-0000kP-8k
+ for qemu-trivial@nongnu.org; Sat, 06 Jun 2020 13:44:59 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:51816)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jhSqU-0005qH-HV; Sat, 06 Jun 2020 03:02:23 -0400
-Received: by mail-wm1-x343.google.com with SMTP id d128so11138876wmc.1;
- Sat, 06 Jun 2020 00:02:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BvQnCtw0bk2oJaedpu6uFfPlSYmlAJJT7ebYcWgdZY0=;
- b=r1zHY7lpGd8nhcV6l6DvZK2UOQWCZQ+U21WlNEonDPRbvC3byrBVLB1lj9tBbG8V8P
- d5TjX42cS8b7cyIAa0z9bmJNGg93qyRMf44zM1d0dLwvVBQE9p67DDpybzdqRdiKL7/r
- ntDKUCKAVQybAzM9E1QCSXnH84J4Pkb1zQRyBie//lZ11gCh9zkg/u/kCoNmybOACg8z
- Uu65zCfHXCQ01hltTRQcHjCX9vJxcsvRgs54IbXD+voo9v/okWXbDBzQFwUeN5itygxK
- 1ywnqWiDi3hn0GUtzrfMaxvNEm6yZx1AzdkgSV/2kUVHhTZkfOE0h3SiJqGvquHQXDt2
- xGEQ==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jhcsL-0001m6-BQ
+ for qemu-trivial@nongnu.org; Sat, 06 Jun 2020 13:44:58 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id ga6so3988501pjb.1
+ for <qemu-trivial@nongnu.org>; Sat, 06 Jun 2020 10:44:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=VI9oT2ndwF7VvgZj9Umnd1iY2byWKqjgY7WtOrfd8SM=;
+ b=dC38inu6DapJjYyPEYYMhvIRlba+XNVwBYB7O4orysqz7SyqXY+3i97y52yJAGUD5N
+ imqT+O2lGa7Yug/NEyypkQuOqfazk7dQ7yfmRI9+CfFqxITdJUWbJtzkE7kbNJWmvRD2
+ neYkAEVmo+sou/rw2w/p/xCOCgUf0d0oN7b5ePa/jXPPtJ8sw8eh3J/kE6pDwKus+Ful
+ oY3PiyMfm7QR5a/JB1NayBQecj1/J31Huo1WHmR7+6IvEpgjcufy/bS/vD2TvpE5DqfK
+ vTiduw6N9xvVnTpm/+K8JkNd18I9PehpyyC4q9IMi0C/7YxnlXPq5+PtT1dldlsqlsUV
+ 7eNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=BvQnCtw0bk2oJaedpu6uFfPlSYmlAJJT7ebYcWgdZY0=;
- b=rm8rvy6Pq0ARzYW5SCY3h7/DyhQypHdceQ6sa0bIXIgKkmXyOTUK9NWNT4jy/pfjJm
- ftlG6T5g69eaONB+WopKbKoCupmZhIe1l0pm0D1ekCcYF7YOHHjxassi/FWoHBeRYZFM
- SnLi5Be+xNbpowPR6L/Z5L6yiWb0lUagxohitVmsBNIHV8WPIlogwxoqiez0IvtrEP9g
- g6WUnvseAV4Q6Gsy+un+5i3Riseoat6hMEnnboMbwGrXsotgR3MT4VXsChkWTnMmyd6C
- /JMK8eKlWFdGtExpWbHbW8LqIz22Nahmk89CAJP2EAX8gFtqTPNZvHpDjNCYFCeRB4vC
- nAgw==
-X-Gm-Message-State: AOAM531bgd7pCzB1hxYOPnKSTJ4eQLcjccsCUThC6Y7w45QU8QYC15rL
- ACsgHEUR11gtUHVuBgbbVJLXUAfe
-X-Google-Smtp-Source: ABdhPJya5W1uzSme10bEYz5PpTRaOqHVPoc+IPcs9GfarQSQ9v23n36xl/mzmdlGMoeWqfs9SYycKQ==
-X-Received: by 2002:a1c:24c6:: with SMTP id k189mr6539985wmk.9.1591426939095; 
- Sat, 06 Jun 2020 00:02:19 -0700 (PDT)
-Received: from localhost.localdomain
- (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id p7sm14826180wro.26.2020.06.06.00.02.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Jun 2020 00:02:18 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fred Konrad <konrad@adacore.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of debug
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VI9oT2ndwF7VvgZj9Umnd1iY2byWKqjgY7WtOrfd8SM=;
+ b=qxLMgwuuD3RNWTEHwMbDO0ifc5wOJ6oBXiX98Agc86sypndYZyfPi7ZtE9ydfLHKTv
+ TR4WFegCE5s8ALejblV/QgEY+q4LflCSh/idtYJDxx+/ZoNl+x6xrc59b0ciMZM7ypJr
+ g9Xq/tXK52z3gJPgIKbJkfOjydq6D3b0bATHL14p2cneSvfGVWyl4n94dNzotQZ4FbOD
+ 66pPpajkUMuKVfcYa2R+G1CmxIvrkm7HzlgqNtLpJnU+PoMoC3L/kGPvSaVuGzHGrN+/
+ N4Lt7iyrP9y/Tuye8JlY5t3OIlqdiq2MQ9jz16IPckgs/9EcCUuurNCADAf+qBm5vBvp
+ G2eA==
+X-Gm-Message-State: AOAM532y6DwZYKPPhJXAy1Yt9GZqzyk/72RLKqRav6BGMcxq4vxFT/7j
+ jlKGr4MSznmp0yJC3MmwVpWErw==
+X-Google-Smtp-Source: ABdhPJyKroqHqXa4OrfFLCy7G8jYmn3XdAf3MK+XgYdYyOqHBFyKcXETnCQsgw/BZFZQkzeFYMHZGg==
+X-Received: by 2002:a17:90a:6f04:: with SMTP id
+ d4mr8324880pjk.134.1591465495624; 
+ Sat, 06 Jun 2020 10:44:55 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id r1sm2377268pgb.37.2020.06.06.10.44.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 06 Jun 2020 10:44:54 -0700 (PDT)
+Subject: Re: [PATCH] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of debug
  printf
-Date: Sat,  6 Jun 2020 09:02:16 +0200
-Message-Id: <20200606070216.30952-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Fred Konrad <konrad@adacore.com>
+References: <20200606070216.30952-1-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <94fe679f-b96c-92cb-e839-d9e68e03346c@linaro.org>
+Date: Sat, 6 Jun 2020 10:44:52 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200606070216.30952-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -81,29 +84,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 06 Jun 2020 07:02:23 -0000
+X-List-Received-Date: Sat, 06 Jun 2020 17:44:59 -0000
 
-Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
+On 6/6/20 12:02 AM, Philippe Mathieu-Daudé wrote:
+> Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/misc/auxbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/auxbus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index f8e7b97971..06aabf20c5 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
-         }
-         break;
-     default:
--        DPRINTF("Not implemented!\n");
-+        qemu_log_mask(LOG_UNIMP, "AUX cmd=%u not implemented\n", cmd);
-         return AUX_NACK;
-     }
- 
--- 
-2.21.3
-
+r~
 
