@@ -1,87 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiKI4-0002mb-W5
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 12:06:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38608)
+	id 1jiKK8-0005qS-Uo
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 12:08:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKI3-0002jz-0m
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 12:06:23 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:54720
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKI2-0000Fp-2z
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 12:06:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591632381;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=IQ2Zwmt+Uey5o0Uah3Zvdno8y42e5J5YjRZjcD6UUkc=;
- b=gVF8ZjhxKYcSP/3EwW+uoAirFjxhYKfmkrQVfMCjlNEGHdc3SvOxFhtJK2Ir19KElsMUtT
- FgcBaYz9encpYBDBLzzzQvSbwYnP2BLs7ikYeG4maQB5qHUJ36f5XvTZYivpgRrV9H6V2A
- NFHUSSGHN7hLeXjLa2LinFEV1CKOkNE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-249-zn0nTvn9Pq29XUsEsBsz5w-1; Mon, 08 Jun 2020 12:06:15 -0400
-X-MC-Unique: zn0nTvn9Pq29XUsEsBsz5w-1
-Received: by mail-wr1-f69.google.com with SMTP id a4so7343441wrp.5
- for <qemu-trivial@nongnu.org>; Mon, 08 Jun 2020 09:06:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IQ2Zwmt+Uey5o0Uah3Zvdno8y42e5J5YjRZjcD6UUkc=;
- b=XY4OxDigJoOIaDffvnsqHZT8fgALEJOULZYxal/XzaLZae1nlyZeoubRWHErDobZ/5
- iIdX+AftDazl86SxpJ4ucNJmoQgwEfLFjcdZ1WSk6CH9/3C1AFuUvFxNCgE9qrIymDCn
- HrSHVlPFyG+SKorean6jGs1N4tgp6xzvJuHeG8aYHNS4qAjmhtbMqZj/hBlybBT5uCEh
- K/v2LA01D8/Tl4hwZXzGant1TUlk9WDkMB6cW+GUidWiP6N6aUqomblkXp1zmo9KZ8IL
- FlQnuF+xJBXjEClTHD5tympfEkwVL5tigcOtkML5rW71FAN3s9jnvVPoMCFGIXkoRz4/
- zH3Q==
-X-Gm-Message-State: AOAM532b7QwYY816TnBlgQBzDXJs9hdBM2H8Ll099vdlTfjrF7wJ2WCk
- njOHOC/ZFhoTB47hA2kM1u/D5mRX21zKQRhcpfRDR8pshINkjyBymDwJSLTmw63vzf9mOpSeiIh
- NnJ5YavhLpQFznZK8+g==
-X-Received: by 2002:a05:6000:1104:: with SMTP id
- z4mr24024561wrw.272.1591632374444; 
- Mon, 08 Jun 2020 09:06:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPKGJLisyMOH/ojvihDYa0lan6gnwMhb7yaO/6lsrH3bKYJhiQTZOhUJwlTONMDJsyX94C8g==
-X-Received: by 2002:a05:6000:1104:: with SMTP id
- z4mr24024548wrw.272.1591632374222; 
- Mon, 08 Jun 2020 09:06:14 -0700 (PDT)
-Received: from localhost.localdomain
- (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id j4sm48617wma.7.2020.06.08.09.06.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2020 09:06:13 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org, =?UTF-8?q?Martin=20Li=C5=A1ka?= <mliska@suse.cz>,
- Eric Blake <eblake@redhat.com>
-Cc: Christophe de Dinechin <dinechin@redhat.com>,
- Stafford Horne <shorne@gmail.com>, qemu-trivial@nongnu.org,
- 1874073@bugs.launchpad.net, Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Jia Liu <proljc@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2] hw/openrisc/openrisc_sim: Add assertion to silence GCC
- warning
-Date: Mon,  8 Jun 2020 18:06:11 +0200
-Message-Id: <20200608160611.16966-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jiKK5-0005oJ-Eq; Mon, 08 Jun 2020 12:08:29 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:45220
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jiKK3-0000iZ-37; Mon, 08 Jun 2020 12:08:28 -0400
+Received: from host109-147-121-67.range109-147.btcentralplus.com
+ ([109.147.121.67] helo=[192.168.1.65])
+ by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1jiKJx-0006DU-2C; Mon, 08 Jun 2020 17:08:27 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Fred Konrad <konrad@adacore.com>, Jiri Gaisler <jiri@gaisler.se>,
+ Richard Henderson <rth@twiddle.net>
+References: <20200331105048.27989-1-f4bug@amsat.org>
+ <81737d76-06c6-4c83-1287-b0d14db4ce2f@amsat.org>
+ <989bf2f5-0e23-f9c3-e9e1-0bd8c03f3231@adacore.com>
+ <1b7a4c63-5a31-6efe-d807-7092e3ee0ffb@amsat.org>
+ <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
+ <23588fda-b95b-45a9-b788-e846d26a3bc3@amsat.org>
+ <7f673b61-7565-f79a-0ec6-043c44d1df77@amsat.org>
+ <08b73f34-4cab-1133-e5e5-5b1e9fc7b5d0@adacore.com>
+ <344c9260-e448-feea-3b37-7860dd09cd8a@amsat.org>
+ <56e92e1c-6f89-5359-53bc-57c529743d5e@amsat.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+ OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+Message-ID: <50daac46-54e2-8af0-37a8-f380f0a1cfb7@ilande.co.uk>
+Date: Mon, 8 Jun 2020 17:08:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+In-Reply-To: <56e92e1c-6f89-5359-53bc-57c529743d5e@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 05:40:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-SA-Exim-Connect-IP: 109.147.121.67
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 0/7] hw/sparc/leon3: Few fixes and disable HelenOS test
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,50 +95,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jun 2020 16:06:24 -0000
+X-List-Received-Date: Mon, 08 Jun 2020 16:08:29 -0000
 
-When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
+On 08/06/2020 16:20, Philippe Mathieu-Daudé wrote:
 
-    CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-  hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
-  hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-     87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
-        |                                  ~~~~~~~~^~~
+> On 5/26/20 11:50 AM, Philippe Mathieu-Daudé wrote:
+>> On 5/25/20 1:02 PM, Fred Konrad wrote:
+>>> Sorry Philippe I missed that.
+>>>
+>>> Would be happy to do a PR if needed but:
+>>>   * I never did that.
+>>>   * Looking at https://wiki.qemu.org/Contribute/SubmitAPullRequest, I
+>>> don't have
+>>>     the signed GPG key either.
+>>
+>> Thanks Fred for following this series.
+>>
+>> I am not insisting for you to do the pull request, I was waiting for
+>> Artyom (sparc32) and Mark (sparc64) who usually handle the pull requests.
+>>
+>> Artyom seems busy lately.
+> 
+> Artyom, if you agree I can send a pullreq with this series and the
+> empty_slot one.
+> 
+>>
+>> Mark, do you plan to send a hw/sparc* pull request soon? Do you prefer I
+>> ask to trivial@ for this series?
+>>
+>> FYI there is another sparc32 candidate patch:
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg701850.html
 
-While humans can tell smp_cpus will always be in the [1, 2] range,
-(openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
-can't.
+Apologies, it looks as if this one slipped under my radar. I don't have any SPARC
+patches queued at the moment, so if you have a series prepared with both these
+patches then I'm happy for you to include them. The bits of time I have had to work
+on QEMU this cycle have been spent looking at the QOM patches and some ADB fixes I
+hope to finish soon...
 
-Add an assertion to give the compiler a hint there's no use of
-uninitialized data.
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
-Reported-by: Martin Liška <mliska@suse.cz>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-v2: Fixed typo in subject (eblake)
-Supersedes: <20200608071409.17024-1-philmd@redhat.com>
----
- hw/openrisc/openrisc_sim.c | 1 +
- 1 file changed, 1 insertion(+)
+ATB,
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index d08ce61811..02f5259e5e 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -134,6 +134,7 @@ static void openrisc_sim_init(MachineState *machine)
-     int n;
-     unsigned int smp_cpus = machine->smp.cpus;
- 
-+    assert(smp_cpus >= 1 && smp_cpus <= 2);
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = OPENRISC_CPU(cpu_create(machine->cpu_type));
-         if (cpu == NULL) {
--- 
-2.21.3
-
+Mark.
 
