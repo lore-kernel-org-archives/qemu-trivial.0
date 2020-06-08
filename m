@@ -1,69 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jhovL-0002yG-BI
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Jun 2020 02:36:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52220)
+	id 1ji9f5-0008FI-Sd
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 00:45:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jhovJ-0002y4-Lt
- for qemu-trivial@nongnu.org; Sun, 07 Jun 2020 02:36:49 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39626
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ji9f4-0008Dw-1K
+ for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 00:45:26 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:24822
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jhovJ-0000rp-1y
- for qemu-trivial@nongnu.org; Sun, 07 Jun 2020 02:36:49 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ji9f2-0006gt-Qh
+ for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 00:45:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591511807;
+ s=mimecast20190719; t=1591591523;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=GoqZp33SoDzxHaygSqHAERwmYa1Skf5Y3XRwhGBnKIo=;
- b=UKTgnGtUKHsBwU/72+1PD6tnN59jSeuaF01TbrsFr9vOvcxesur4kJYtHNEy6GX/zyU0XP
- PYYgLR+eSIUomNywY8QMPibHcObzqF6sVxYU5uLpOg3s0ZdWtfyJIRV9qAdf1k3GdYG3Mh
- JCwlvLz6mynPKQM/ZtM9xWpR4LE4cT8=
+ in-reply-to:in-reply-to:references:references;
+ bh=TkO2tRryEFxdXSnxqcENl8+gD+uKgVegX4b04hw8ruU=;
+ b=PrdVEW9NIvVm2FmulBbp2CBp7Q7wFCXcg9YeXmzp8mJ1JSmZbS3YhJrSL9NY9lj25sYY0F
+ /I9iripecHw0DoFqGSAtFZHchzNL+Z+WuWsxku4NOdUl/ACwlek4/+Ni8jmX1kevHULFcK
+ l4EMGZt//6yrdpGBc483lujVhmE6MCs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-284-vEzg4er7Mw6vUMzYb8PV4Q-1; Sun, 07 Jun 2020 02:36:44 -0400
-X-MC-Unique: vEzg4er7Mw6vUMzYb8PV4Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-429--NBwdgztPB29M2aboikFaQ-1; Mon, 08 Jun 2020 00:45:21 -0400
+X-MC-Unique: -NBwdgztPB29M2aboikFaQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19AF78015CB;
- Sun,  7 Jun 2020 06:36:43 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-22.ams2.redhat.com [10.36.112.22])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id F00807CCEB;
- Sun,  7 Jun 2020 06:36:41 +0000 (UTC)
-Subject: Re: [PATCH] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of debug
- printf
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fred Konrad <konrad@adacore.com>
-References: <20200606070216.30952-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <393bd3e9-e242-24f1-57cd-a89481369826@redhat.com>
-Date: Sun, 7 Jun 2020 08:36:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53302464;
+ Mon,  8 Jun 2020 04:45:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0AF665C1D6;
+ Mon,  8 Jun 2020 04:45:19 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7B01E11386A6; Mon,  8 Jun 2020 06:45:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Subject: Re: [PATCH] block: Remove trailing newline in format used by
+ error_report API
+References: <20200228123637.15160-1-philmd@redhat.com>
+ <8736auipnb.fsf@dusky.pond.sub.org>
+ <fd516cf1-72bc-63db-84f0-d2f2c5cbad7a@redhat.com>
+Date: Mon, 08 Jun 2020 06:45:18 +0200
+In-Reply-To: <fd516cf1-72bc-63db-84f0-d2f2c5cbad7a@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 5 Jun 2020 16:26:16
+ +0200")
+Message-ID: <874krmyxlt.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200606070216.30952-1-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/07 02:36:46
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 00:45:23
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,31 +81,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Jun 2020 06:36:49 -0000
+X-List-Received-Date: Mon, 08 Jun 2020 04:45:26 -0000
 
-On 06/06/2020 09.02, Philippe Mathieu-Daudé wrote:
-> Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/misc/auxbus.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-> index f8e7b97971..06aabf20c5 100644
-> --- a/hw/misc/auxbus.c
-> +++ b/hw/misc/auxbus.c
-> @@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
->          }
->          break;
->      default:
-> -        DPRINTF("Not implemented!\n");
-> +        qemu_log_mask(LOG_UNIMP, "AUX cmd=%u not implemented\n", cmd);
->          return AUX_NACK;
->      }
->  
-> 
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+[...]
+> Why warn_reportf_err() doesn't take a 'Error **err' instead, to set err
+> to NULL after freeing *err?
+
+Why doesn't free() take a void ** argument, to set the pointer to null
+after freeing what it points to?  Why doesn't close() take an int *
+argument?
+
+[...]
 
 
