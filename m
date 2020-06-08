@@ -1,114 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiJZf-0000Cl-Lp
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 11:20:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33262)
+	id 1jiJmM-0007qo-6Y
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 11:33:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jiJZe-0000BJ-Om; Mon, 08 Jun 2020 11:20:30 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:54308)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jiJZd-0007qo-KS; Mon, 08 Jun 2020 11:20:30 -0400
-Received: by mail-wm1-x341.google.com with SMTP id g10so15710619wmh.4;
- Mon, 08 Jun 2020 08:20:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=K3m9FTYd02yNNr/jFG5PbwI3xA4ItGt31NqWxJ0DS/Y=;
- b=U+uM3gyIiI+PXyIBnlgM8J/E9zxp1rlZ83tT5cHLPhhl6Bz/VeCVuKE2ZwGidpkUzE
- 0PKZmmfdQ2kza7xZOL9Mkj9GXn1s5A1+24RhROX8Ok5e9U8NyzzPgQB99XWFkc7Lv5Ja
- 1bFnmtsyRFOJwXed9gQHMVXL2SpwmOksCG88oD5vAe1K1d42zGiNfOifeeLiP2x/7t8D
- HV6j9f4BT9hhiPXS4VckfCQTOrUvc7mkGVu5YUElp6Zq2U2jZJ0RdFXdULSBTWIBt4CO
- FZJQlh2lAi8JWHosuxgslRAzb8a5+N9jGzkTRqk3j/k8SUvYQFicsNhvVIVM7GDgLmSW
- 30ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=K3m9FTYd02yNNr/jFG5PbwI3xA4ItGt31NqWxJ0DS/Y=;
- b=ncxeDxIJ6uQQUdsdPPipYbIzcS180YF+LJbv84ZViueMYCK1SM1r/EChRgF9r7RJLZ
- YSn2tRa5CPzR5I8wSAwfqnNWenOapNB/UvDNQi2JRG61khXsmP9BWCWyY1puuJoIsm7o
- 8iHWnAFlrDftjWePnk4HZmYA1vEGKCFbCqQDQ9FVVGNi48HN8/ywepcUsMJIVTSIYHOY
- SGACtzIpM3Qzz5xcF502Ju2eVK9BmLIcLyZ/kICAM6QfSXD/zm+2J37YitW4oT5Q+s7D
- 04Tl56xzR81QM520u51cKf7pq3PDH6CObZ4N7X2e6qdL2LugeXWnAbk7wEDYUHhAP2oq
- WHeQ==
-X-Gm-Message-State: AOAM532dFhF64UpUthQ8cmGoD4M5ISTY9P14X/Kgz0fJIiI69lujS7vs
- LT++RrB8/WvIGz4u2xQFjvk=
-X-Google-Smtp-Source: ABdhPJwqtgQPGVEo4qgWag43FsmuGnOYhMN+IEijIZSt7fc4CReJSEn4y4dXV7m/OIfAsFFp2ZhO8g==
-X-Received: by 2002:a7b:c0c5:: with SMTP id s5mr15881891wmh.166.1591629627349; 
- Mon, 08 Jun 2020 08:20:27 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id v28sm34707wra.77.2020.06.08.08.20.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jun 2020 08:20:26 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/7] hw/sparc/leon3: Few fixes and disable HelenOS test
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Fred Konrad <konrad@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jiJmK-0007pH-P8
+ for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 11:33:36 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40697
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jiJmJ-00021q-U4
+ for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 11:33:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591630415;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oxWQ4bhEfnQYH5cmCr4iZSh4Wrs0FK3XYt4YmOQiIF8=;
+ b=jFwBoDrCqiiUiLTRIn5QsUMytVMTsG1KOYg3gOG1fZt1A1AdZ5hb7Y1EwkQfBIzoo/6Dsh
+ Qli6PoyIrkipCidswzzAKnB+0S6wckOLGli9P+zYLTO8GrLmkaEQe1PtoOUj2qsjJYhalj
+ Vo2b+pXHUGs3TQnek7M34Lgh0Uqn3rw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-209-mFA6yMqTMYmE-5BbQyBlwA-1; Mon, 08 Jun 2020 11:33:30 -0400
+X-MC-Unique: mFA6yMqTMYmE-5BbQyBlwA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A982E108BD0C;
+ Mon,  8 Jun 2020 15:33:28 +0000 (UTC)
+Received: from [10.3.113.22] (ovpn-113-22.phx2.redhat.com [10.3.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1EAEC891E6;
+ Mon,  8 Jun 2020 15:33:25 +0000 (UTC)
+Subject: Re: [PATCH] hw/openrisc/openrisc_sim: Add assertion to silent GCC
+ warning
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Martin_Li=c5=a1ka?= <mliska@suse.cz>
+Cc: Stafford Horne <shorne@gmail.com>, qemu-trivial@nongnu.org,
+ Christophe de Dinechin <dinechin@redhat.com>, 1874073@bugs.launchpad.net,
  Peter Maydell <peter.maydell@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>, Jiri Gaisler <jiri@gaisler.se>,
- Richard Henderson <rth@twiddle.net>
-References: <20200331105048.27989-1-f4bug@amsat.org>
- <81737d76-06c6-4c83-1287-b0d14db4ce2f@amsat.org>
- <989bf2f5-0e23-f9c3-e9e1-0bd8c03f3231@adacore.com>
- <1b7a4c63-5a31-6efe-d807-7092e3ee0ffb@amsat.org>
- <230dbf6b-120a-f1f0-d48d-9fa4a04e05cd@adacore.com>
- <23588fda-b95b-45a9-b788-e846d26a3bc3@amsat.org>
- <7f673b61-7565-f79a-0ec6-043c44d1df77@amsat.org>
- <08b73f34-4cab-1133-e5e5-5b1e9fc7b5d0@adacore.com>
- <344c9260-e448-feea-3b37-7860dd09cd8a@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <56e92e1c-6f89-5359-53bc-57c529743d5e@amsat.org>
-Date: Mon, 8 Jun 2020 17:20:25 +0200
+ Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Jia Liu <proljc@gmail.com>
+References: <20200608071409.17024-1-philmd@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <95f1d638-3921-ffdf-8f07-2f077d1d0cc9@redhat.com>
+Date: Mon, 8 Jun 2020 10:33:24 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <344c9260-e448-feea-3b37-7860dd09cd8a@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200608071409.17024-1-philmd@redhat.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=eblake@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 05:40:56
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,124 +80,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jun 2020 15:20:31 -0000
+X-List-Received-Date: Mon, 08 Jun 2020 15:33:37 -0000
 
-On 5/26/20 11:50 AM, Philippe Mathieu-Daudé wrote:
-> On 5/25/20 1:02 PM, Fred Konrad wrote:
->> Sorry Philippe I missed that.
->>
->> Would be happy to do a PR if needed but:
->>   * I never did that.
->>   * Looking at https://wiki.qemu.org/Contribute/SubmitAPullRequest, I
->> don't have
->>     the signed GPG key either.
-> 
-> Thanks Fred for following this series.
-> 
-> I am not insisting for you to do the pull request, I was waiting for
-> Artyom (sparc32) and Mark (sparc64) who usually handle the pull requests.
-> 
-> Artyom seems busy lately.
+On 6/8/20 2:14 AM, Philippe Mathieu-Daudé wrote:
+> When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
 
-Artyom, if you agree I can send a pullreq with this series and the
-empty_slot one.
+In the subject: s/silent/silence/
 
 > 
-> Mark, do you plan to send a hw/sparc* pull request soon? Do you prefer I
-> ask to trivial@ for this series?
+>      CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
+>    hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
+>    hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>       87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
+>          |                                  ~~~~~~~~^~~
 > 
-> FYI there is another sparc32 candidate patch:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg701850.html
+> While humans can tell smp_cpus will always be in the [1, 2] range,
+> (openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
+> can't.
 > 
-> Regards,
+> Add an assertion to give the compiler a hint there's no use of
+> uninitialized data.
 > 
-> Phil.
-> 
->>
->> Cheers,
->> Fred
->>
->> Le 5/23/20 à 7:26 PM, Philippe Mathieu-Daudé a écrit :
->>> ping?
->>>
->>> On 5/11/20 9:03 AM, Philippe Mathieu-Daudé wrote:
->>>> On 4/14/20 12:00 PM, KONRAD Frederic wrote:
->>>>> Le 4/13/20 à 11:07 PM, Philippe Mathieu-Daudé a écrit :
->>>>>> [Cc'ing Peter]
->>>>>>
->>>>>> On 4/13/20 12:12 PM, KONRAD Frederic wrote:
->>>>>>> Le 4/11/20 à 7:30 PM, Philippe Mathieu-Daudé a écrit :
->>>>>>>> On 3/31/20 12:50 PM, Philippe Mathieu-Daudé wrote:
->>>>>>>>> Philippe Mathieu-Daudé (7):
->>>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to AHB PnP
->>>>>>>>>        registers
->>>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Fix AHB PnP 8-bit accesses
->>>>>>>>
->>>>>>>> Ping ^^^ for 5.0?
->>>>>>>
->>>>>>> Hi Philippe,
->>>>>>>
->>>>>>> You already have my rb tag for those one, and IMHO they should be
->>>>>>> good
->>>>>>> candidate
->>>>>>> for 5.0 (if it's not too late).
->>>>>>
->>>>>> Yes, thanks for the reviews. I see Mark Cave-Ayland merged this file
->>>>>> first, but you are listed as maintainer :) I was hoping you could
->>>>>> send a
->>>>>> pull request.
->>>>>
->>>>> Yes that's usually Mark who take the patches, sorry I didn't get it.
->>>>
->>>> No worries. As there are other sparc64 patches on the list, maybe Mark
->>>> will prepare a pull request now.
->>>>
->>>>>
->>>>>>
->>>>>> $ scripts/get_maintainer.pl -f hw/misc/grlib_ahb_apb_pnp.c
->>>>>> Fabien Chouteau <chouteau@adacore.com> (maintainer:Leon3)
->>>>>> KONRAD Frederic <frederic.konrad@adacore.com> (maintainer:Leon3)
->>>>>> qemu-devel@nongnu.org (open list:All patches CC here)
->>>>>>
->>>>>
->>>>>> This is a bug but not 'security critical', so it might wait 5.1 and go
->>>>>> via qemu-trivial tree.
->>>>>
->>>>> Well let's do that then if you're ok.
->>>>
->>>> OK, then ping? :)
->>>>
->>>>>
->>>>> Best Regards,
->>>>> Fred
->>>>>
->>>>>>
->>>>>> Regards,
->>>>>>
->>>>>> Phil.
->>>>>>
->>>>>>>
->>>>>>> Cheers,
->>>>>>> Fred
->>>>>>>
->>>>>>>>
->>>>>>>>>      hw/misc/grlib_ahb_apb_pnp: Add trace events on read accesses
->>>>>>>>>      hw/timer/grlib_gptimer: Display frequency in decimal
->>>>>>>>>      target/sparc/int32_helper: Remove DEBUG_PCALL definition
->>>>>>>>>      target/sparc/int32_helper: Extract and use excp_name_str()
->>>>>>>>>
->>>>>>>>>     hw/misc/grlib_ahb_apb_pnp.c             | 24
->>>>>>>>> ++++++++++++++++++++++--
->>>>>>>>>     target/sparc/int32_helper.c             | 23
->>>>>>>>> ++++++++++++-----------
->>>>>>>>>     hw/misc/trace-events                    |  4 ++++
->>>>>>>>>     hw/timer/trace-events                   |  2 +-
->>>>>>>>>     tests/acceptance/machine_sparc_leon3.py |  4 ++++
->>>>>>>>>     5 files changed, 43 insertions(+), 14 deletions(-)
->>>>>>>>>
->>>>>>>
->>>>>
->>>>
->>
-> 
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
+> Reported-by: Martin Liška <mliska@suse.cz>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>   hw/openrisc/openrisc_sim.c | 1 +
+>   1 file changed, 1 insertion(+)
+
+Tested-by: Eric Blake <eblake@redhat.com>
+
+With the typo fixed,
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
 
