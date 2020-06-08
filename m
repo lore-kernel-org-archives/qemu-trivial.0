@@ -1,85 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiDfv-0005GF-9n
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 05:02:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45444)
+	id 1jiDsC-000862-5g
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 05:15:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jiDfZ-0005D3-0a; Mon, 08 Jun 2020 05:02:19 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:54577)
+ id 1jiDsA-00084X-1P; Mon, 08 Jun 2020 05:15:14 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:38056)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jiDfM-0004Jr-97; Mon, 08 Jun 2020 05:02:11 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id g10so14532037wmh.4;
- Mon, 08 Jun 2020 02:01:59 -0700 (PDT)
+ id 1jiDs8-0006YC-TD; Mon, 08 Jun 2020 05:15:13 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id e1so16554213wrt.5;
+ Mon, 08 Jun 2020 02:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=GIhXAw4hO0rsp7xfE0WleKuNym34yW50KXceAXKBDO8=;
- b=XCsP5t7PplE4AfM4ph0HUK5+LxEY6Rf+e8VFW6aXOCgB4uiC+BHMzkisHNAhaFa2TT
- 5NURvdEfPw9FZG0L/GIZyFEmX2N+mfAqgziWBdspsXvN2Uu8RnjPP0JR2tW6cQY7WdhB
- TE6PlLp1fvmn6Xola+IzbYF1hUV0GbIKRivk3iWg9xBYz2IqiYR3s5agM0Kw1jfMQBqB
- 5sH8pt4jCGJxs5tVtsW35v9WSZ8mcxWz8wrl0qE9Fd75xQiTu5W980I5qgqlsc6cwtwc
- R8tObq643cGBTDis9rPKyGHAPKXgC2CfqJJT10RIFRe4YqiJRdS/5+bwnXLLPuACTraQ
- tedw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7oosCVOZu8AF2EF+mXOQD7SMhC2RNTaEpyJI9zoWqf4=;
+ b=KW/kKWMGt/Af8X1DnrdvHG2F8STqogeM+rLOUKtDde07rdKujR2dKmmTmPchqbAVca
+ OOd2S3T7KKkQDweXACmOreFRyD7XWKtKCbgO6HWMgXJWhWVkL94PCR6cEbPAYNVswpHA
+ MQ9UUz+Q4va2/Kny9xMa3cgseoXnesnYpqcFwotgbD4KIQb98sAvZjDTJTBNVFq6upe9
+ QfhXXhamGbo14D9oXRS3JUlZNkabPff56QvyDJmlmNA5DGwIXe8W/PhzMrRH1dfRUaK3
+ DPJXDyBPhOvZDLHvX+h5mWqq3NiNJzBx7e12dRk02j+9hs7tXP0ASljQ/4gdOIeuEM9P
+ o0iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=GIhXAw4hO0rsp7xfE0WleKuNym34yW50KXceAXKBDO8=;
- b=ML0XLsS+frClN8w0WePvuBKkJJenyr611IBNSMHTS97NdLyB1nsZC9dIAmKZVnCP5F
- /muZZWbQ6WNhVnaVoKes2mTAHXtSLTnsQHJ4NZUaX4bT8WmPjYDNb/mF+yZ8LrKDDB9N
- eXSDgNQNAmVsH4qWmlB6Wb75/EtPHZePIA5E3nQgoSTFqsoVtfaZtNt0HAElnoV97sUS
- 6ruAeHYmeSIViSkxZOGDKyQz5vCVBkVoLBA+JcOOtnOAepWVXjEBDK9UhArDroS8ovFO
- i8exsMxsMW7AP9H31khu0CYgY8klMDdUuaUYQlR91EvDtrWYjf/3iBJtYBKz72lbFF23
- yplg==
-X-Gm-Message-State: AOAM532QfMP+A8kU+rtMBc2DeCyPoy7C2t01rEMZtp345d3Y+FPp0k/N
- DYgZzsu1EW86gsUmN7d2+ztHHrv0
-X-Google-Smtp-Source: ABdhPJxtaFetxfOC/b45Gy5OTKd0LbHmNacR4nsHMVQ7kfizV/AFJeBXBU86otpLUygmf52SC/ZAow==
-X-Received: by 2002:a05:600c:2284:: with SMTP id
- 4mr14780685wmf.57.1591606918366; 
- Mon, 08 Jun 2020 02:01:58 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=7oosCVOZu8AF2EF+mXOQD7SMhC2RNTaEpyJI9zoWqf4=;
+ b=LHW0W448HjNqjWqU1oVNsbSIjsLygrqn4uL9GWF8Tpg01C1IXdXiUESsEUSdwkY0cN
+ 1pjkh09saOh8XLhDBlgRMGtYDNNLD1xNvtRjomWYY3y3lu8M2rM2TFgYEl5lFBTp3MtA
+ I/JGLNPbjHe7vTeIZHX6EkR1nB2J+308ObOisioSPxCFuLUJvNOxZ+94obwY0ke7DyIx
+ S3+XScmnxI1bZUX0nq38ALJx3qK54BuesnduRrvyfyHoic3AAiJ6AxP2IJq7bIiaSN6s
+ mU6xHQk1mO5PJ/eYLp7d+vDwL4vwW6Mxr+EmtzF/60/41jFXp5KMD+2lpdIEmassiQjC
+ nk6Q==
+X-Gm-Message-State: AOAM532T2tsayAYECeH+GlEZXltTuwdasOaWEOhd36gc4JOc/c1NfdUN
+ aH3/dwKIPeCqUP70OCUJueXcOFK+
+X-Google-Smtp-Source: ABdhPJyLPReKnCHrP8Ba9ymDXDbkdbTNBmGckRzMoB11sI2v2YWfsbYHZz5Ygr1T1B6MaRP3S1RV6Q==
+X-Received: by 2002:adf:b60b:: with SMTP id f11mr22458943wre.7.1591607710351; 
+ Mon, 08 Jun 2020 02:15:10 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id t8sm22192989wro.56.2020.06.08.02.01.57
+ by smtp.gmail.com with ESMTPSA id c5sm18258653wma.20.2020.06.08.02.15.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2020 02:01:57 -0700 (PDT)
+ Mon, 08 Jun 2020 02:15:09 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
- Fam Zheng <fam@euphon.net>, Michael Tokarev <mjt@tls.msk.ru>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Aurelien Jarno <aurelien@aurel32.net>,
+Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+ Max Filippov <jcmvbkbc@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 7/8] tests/acceptance: Add boot tests for sh4 QEMU advent
- calendar image
-Date: Mon,  8 Jun 2020 11:01:41 +0200
-Message-Id: <20200608090142.6793-8-f4bug@amsat.org>
+Subject: [PATCH 0/2] hw/net/opencores_eth: Trivial patches
+Date: Mon,  8 Jun 2020 11:15:06 +0200
+Message-Id: <20200608091508.19838-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200608090142.6793-1-f4bug@amsat.org>
-References: <20200608090142.6793-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,59 +81,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jun 2020 09:02:26 -0000
+X-List-Received-Date: Mon, 08 Jun 2020 09:15:14 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+Remove unnecessary mask, use #define instead of magic.
 
-Now that we can select the second serial console in the acceptance tests
-(see commit 746f244d9720 "Allow to use other serial consoles than default"),
-we can also test the sh4 image from the QEMU advent calendar 2018.
+Philippe Mathieu-Daudé (2):
+  hw/net/opencores_eth: Use definitions instead of magic values
+  hw/net/opencores_eth: Remove unnecessary address masking
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200515164337.4899-1-thuth@redhat.com>
-[PMD: Split .travis.yml change in separate patch]
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- tests/acceptance/boot_linux_console.py | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ hw/net/opencores_eth.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 12725d4529..d4fb2bce82 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -827,12 +827,12 @@ def test_m68k_q800(self):
-         console_pattern = 'No filesystem could mount root'
-         self.wait_for_console_pattern(console_pattern)
- 
--    def do_test_advcal_2018(self, day, tar_hash, kernel_name):
-+    def do_test_advcal_2018(self, day, tar_hash, kernel_name, console=0):
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day' + day + '.tar.xz')
-         file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-         archive.extract(file_path, self.workdir)
--        self.vm.set_console()
-+        self.vm.set_console(console_index=console)
-         self.vm.add_args('-kernel',
-                          self.workdir + '/day' + day + '/' + kernel_name)
-         self.vm.launch()
-@@ -906,6 +906,15 @@ def test_ppc_mac99(self):
-         self.vm.add_args('-M', 'graphics=off')
-         self.do_test_advcal_2018('15', tar_hash, 'invaders.elf')
- 
-+    def test_sh4_r2d(self):
-+        """
-+        :avocado: tags=arch:sh4
-+        :avocado: tags=machine:r2d
-+        """
-+        tar_hash = 'fe06a4fd8ccbf2e27928d64472939d47829d4c7e'
-+        self.vm.add_args('-append', 'console=ttySC1')
-+        self.do_test_advcal_2018('09', tar_hash, 'zImage', console=1)
-+
-     def test_sparc_ss20(self):
-         """
-         :avocado: tags=arch:sparc
 -- 
 2.21.3
 
