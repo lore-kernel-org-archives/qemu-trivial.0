@@ -1,71 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiC1b-0008DU-8A
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 03:16:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36800)
+	id 1jiDfD-0004lp-6a
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2020 05:01:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jiC1Y-0008Co-MK
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 03:16:49 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46210
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jiC1W-0005Gy-Um
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2020 03:16:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591600605;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=nP5v02778V22e6nNXCbdvJ5komRcz2Rci71qhSX1ViI=;
- b=fW/b1PjOy5jm2aiqk0SXando1lB/Gn3NcMFI+WyFELtas3lO4GGV8othLt88zmHb2rFjwv
- QDGpyKTiv5mI39fMi+USmrYp8ouWVa0amSZxtfy09buWIp3BsP+akVuyvtRrxzoPFVW08V
- k6WRE6hJwCOWWRs5PBm0Z42If7hoGLE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-456-1AN6fqd-Oi-tvWc5hnbUsA-1; Mon, 08 Jun 2020 03:16:41 -0400
-X-MC-Unique: 1AN6fqd-Oi-tvWc5hnbUsA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5A5EDEC1A1;
- Mon,  8 Jun 2020 07:16:40 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-119.ams2.redhat.com [10.36.112.119])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 383BE5C1BD;
- Mon,  8 Jun 2020 07:16:35 +0000 (UTC)
-Subject: Re: [PATCH] hw/openrisc/openrisc_sim: Add assertion to silent GCC
- warning
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Martin_Li=c5=a1ka?= <mliska@suse.cz>,
- Eric Blake <eblake@redhat.com>
-Cc: Stafford Horne <shorne@gmail.com>, qemu-trivial@nongnu.org,
- Christophe de Dinechin <dinechin@redhat.com>, 1874073@bugs.launchpad.net,
- Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Jia Liu <proljc@gmail.com>
-References: <20200608071409.17024-1-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <976e5ec8-6cf5-bd45-c5ac-b02fed57598a@redhat.com>
-Date: Mon, 8 Jun 2020 09:16:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiDfA-0004kr-Rj; Mon, 08 Jun 2020 05:01:48 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33555)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiDfA-0004Hk-0d; Mon, 08 Jun 2020 05:01:48 -0400
+Received: by mail-wr1-x442.google.com with SMTP id l11so16512839wru.0;
+ Mon, 08 Jun 2020 02:01:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p4fj+vZlsEne7bVXCC/b05m9A2rDYGSKfEhInSqyp8s=;
+ b=M12w5rsDCEDQxUlsm21y/wDFfNaqL4eEokSUam4FNfAKvg7wMAZYF9xSCpX0aqWo7/
+ GdrI15KYJ3OuKgKLZ0g+KutFs5UARbWMdhrAifzA3vvRr3Wo8lYUOI6H3GgygHlL0JBg
+ 9+EnpKNOCS6f40ogsZjvpQh9VzbXU/wBsXCJ5Aj5QU8+MX1wGuH8l9Y04arFXInc2cSS
+ JceWiqqFFAz0bthDxzpdbdeeh4Y7lxXIquQTK7K4z03FDgQoy4sSX9bWgvjz91qxBa2o
+ Oohvy3+feYbmM6DZGwDj++7gBKhg5vejh5RfG3wAb97XF3M6T/hef67mA4etJiZI9D52
+ bFZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=p4fj+vZlsEne7bVXCC/b05m9A2rDYGSKfEhInSqyp8s=;
+ b=AcQIVTafzcunUlR4WOI56JmfjBQ4LiiyYbpWZmtjD4keGldyiZxHshQ1DMvCzZxOC+
+ xfLfRmPMRKHffO0SWlTf/TM8l84rkBf8cxZ0nkeHaLDD8ZUwe72i5RW7bkH/hr9UsI9R
+ A2xmJrz0dn1jc4TvGHrV0EX0XUGtMm96/ZTlL6Ckk+p0oD6LfYWjA2W0RpfMJEcxgrF8
+ 0g7wzq/wvmtvoJg4mjP/jiKKni5TWbrXSlav4IyVhLgucNWnAHdEGOMwoVvmKVt1gC0c
+ rICGLyav+QCQY6k+qLDwRz2080GZlp9aRMf8PVtTpm7Sza8BAKms3vOV1gNhNg7Fb3KJ
+ qI5A==
+X-Gm-Message-State: AOAM530aGOt4kCOVG7WGjq6/7x1z4EUiuadLznuzU5Ok2vAC2UiE701d
+ JPnktcbDuRZ/garXUYgV2aB7YJTT
+X-Google-Smtp-Source: ABdhPJziVOVbkkaSfFvvm2I4Lzp2+5sugmAgbrD+EvvTElZbb1QzZW/PfnmSmmjaO/APzHscyzU/1g==
+X-Received: by 2002:a5d:538e:: with SMTP id d14mr22115929wrv.174.1591606905595; 
+ Mon, 08 Jun 2020 02:01:45 -0700 (PDT)
+Received: from localhost.localdomain
+ (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id t8sm22192989wro.56.2020.06.08.02.01.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jun 2020 02:01:44 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
+ Fam Zheng <fam@euphon.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v2 0/8] sh4: Mark it orphan in MAINTAINERS & trivial fixes
+Date: Mon,  8 Jun 2020 11:01:34 +0200
+Message-Id: <20200608090142.6793-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200608071409.17024-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 01:20:45
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -80,46 +89,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jun 2020 07:16:49 -0000
+X-List-Received-Date: Mon, 08 Jun 2020 09:01:49 -0000
 
-On 08/06/2020 09.14, Philippe Mathieu-Daudé wrote:
-> When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
-> 
->     CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
->   hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
->   hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->      87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
->         |                                  ~~~~~~~~^~~
-> 
-> While humans can tell smp_cpus will always be in the [1, 2] range,
-> (openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
-> can't.
-> 
-> Add an assertion to give the compiler a hint there's no use of
-> uninitialized data.
-> 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
-> Reported-by: Martin Liška <mliska@suse.cz>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/openrisc/openrisc_sim.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-> index d08ce61811..02f5259e5e 100644
-> --- a/hw/openrisc/openrisc_sim.c
-> +++ b/hw/openrisc/openrisc_sim.c
-> @@ -134,6 +134,7 @@ static void openrisc_sim_init(MachineState *machine)
->      int n;
->      unsigned int smp_cpus = machine->smp.cpus;
->  
-> +    assert(smp_cpus >= 1 && smp_cpus <= 2);
->      for (n = 0; n < smp_cpus; n++) {
->          cpu = OPENRISC_CPU(cpu_create(machine->cpu_type));
->          if (cpu == NULL) {
-> 
+Hi,
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+This series clarifies the situation of the SH4 TCG target
+and hardware (there are no active maintainers). From here
+it should be easier for volunteers to step it.
+
+Maybe patches 7 & 8 can go via acceptance-next queue, and
+the rest via qemu-trivial@?
+
+Regards,
+
+Phil.
+
+CI report:
+https://travis-ci.org/github/philmd/qemu/builds/692828388
+
+Supersedes: <20200530092306.26628-1-f4bug@amsat.org>
+Supersedes: <20200601092057.10555-1-f4bug@amsat.org>
+
+Philippe Mathieu-Daudé (6):
+  MAINTAINERS: Mark SH4 hardware orphan
+  MAINTAINERS: Mark SH4 based R2D & Shix machines orphan
+  MAINTAINERS: Mark SH4 TCG target orphan
+  hw/sh4: Use MemoryRegion typedef
+  hw/sh4: Extract timer definitions to 'hw/timer/tmu012.h'
+  hw/timer/sh_timer: Remove unused 'qemu/timer.h' include
+
+Thomas Huth (2):
+  tests/acceptance: Add boot tests for sh4 QEMU advent calendar image
+  .travis.yml: Test SH4 QEMU advent calendar image
+
+ include/hw/sh4/sh.h                    | 12 +-----------
+ include/hw/timer/tmu012.h              | 23 +++++++++++++++++++++++
+ hw/sh4/sh7750.c                        |  1 +
+ hw/timer/sh_timer.c                    |  3 ++-
+ .travis.yml                            |  2 +-
+ MAINTAINERS                            | 18 ++++++++++++------
+ tests/acceptance/boot_linux_console.py | 13 +++++++++++--
+ 7 files changed, 51 insertions(+), 21 deletions(-)
+ create mode 100644 include/hw/timer/tmu012.h
+
+-- 
+2.21.3
 
 
