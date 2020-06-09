@@ -1,22 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jii0h-0004s9-T4
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 13:26:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54192)
+	id 1jii48-0001qU-Rx
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 13:29:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii0g-0004o4-2Q; Tue, 09 Jun 2020 13:26:02 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:40265)
+ id 1jii47-0001mc-6L; Tue, 09 Jun 2020 13:29:35 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:47189)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii0f-0002y2-1L; Tue, 09 Jun 2020 13:26:01 -0400
+ id 1jii46-0003Wt-28; Tue, 09 Jun 2020 13:29:34 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MUl4z-1jZbL02AYD-00QjmD; Tue, 09 Jun 2020 19:25:55 +0200
-Subject: Re: [PATCH] qemu-img: Fix doc typo for 'bitmap' subcommand
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, vsementsov@virtuozzo.com, jsnow@redhat.com,
- qemu-block@nongnu.org
-References: <20200529144527.1943527-1-eblake@redhat.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MCsgS-1jrXkK0xc0-008tas; Tue, 09 Jun 2020 19:29:08 +0200
+Subject: Re: [PATCH v2 1/8] hw/arm/aspeed: Correct DRAM container region size
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Helge Deller <deller@gmx.de>, Paul Durrant <paul@xen.org>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ Richard Henderson <rth@twiddle.net>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+References: <20200601142930.29408-1-f4bug@amsat.org>
+ <20200601142930.29408-2-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,41 +72,41 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <11d6990d-71aa-5495-217d-f0806c39a811@vivier.eu>
-Date: Tue, 9 Jun 2020 19:25:54 +0200
+Message-ID: <7a9dae30-bb50-f3cc-3806-eaa98d6ec866@vivier.eu>
+Date: Tue, 9 Jun 2020 19:29:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200529144527.1943527-1-eblake@redhat.com>
+In-Reply-To: <20200601142930.29408-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:eESDsXXbtitpSFvAHFX5Jpn+5sznkW2vdK3H6CmpHePAuCYntMB
- 3D6SxuvJCgS6Wz+5Ksnehzd4M3DstEg0d54+gAvalYoieZr5IbFNcQLJ7pdBKt38TAzZMmX
- sjJM74SqgF9BgfUamh+p5K5ie/pfO3B2M/9UnO74QzaaUffIKm4oj+sWCD3m0AIbqefw79s
- wLR3sNcS7QjI4p6ZEIQwA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:74+CmZhgS94=:xQQu/ao5H/aMRIU+xMzBWr
- zONYgfUrtGw341SD1AXD36WUV9NmM4aiOwCca0BAdgsotLTvy/Ky/d04VxyCLMC3SRjJdn/Cv
- XDbLO/AgPtuVFbufI3ic+NlGDJXakZ8zfYy32WMpsFkvmOrP8IuVicPfl09igNriDUdOK7aAN
- 06otSjLIcDYfomSZGvb70Hh/wtGxMXZnq+o0YsYWIp3VQ1YBiwRzqBMKiHva8/O/o5CVs4cu7
- VUkcHYm79GCB0Bn/h2k0sIUSfkmgTUUhbWkqRN/Y06SYBTOvvGct083bs8AZqJnIp9DezmKD5
- WrMfO5dYvtXSL3ho3ToA8dSmRsGgACKLNf813xABlvgQ6/H7qedvpwVlB5qF4phM0TaPyleTB
- JQRA2XlxspxzjBCldpMnz/LHxUucXDIEWU6KAlclu9pidXYj8nc1TlUXM3GIURO/rWiolKcH6
- OH5CUZOT7PtdyslplWQarPalFNbubeiAjuVes+Xk3LzEq/u6oDrvEZqnPBmFrzUKAed/Rgh3+
- zm4rFnJZ4yBcT1PwKKXqJqM1UwhyXbXdE1ZZqZVaEZ9lXBOHHoDBDi/Ffg2KdveXjWNJktB50
- +ze8fC1D3U9JBUS55G4cu1NgUx/uAw2tnPnyT2nifsMZxeZIZvhnO95jSpFMVgFvk3ddF0jDC
- 10qarRm0pSKdDm+l7PoIfH/5wCIHwuuIm+OvxwnJQ9lcu/7WPewQsz7/9uuyeWLqGyEmZjOki
- IUi8loyDMRfMNiHLlh2dmJ5MIxiDaCMroMVU/cZCBc3y0GK0EtD67P8FZ9i9ZmLExznoTRLOa
- Ji3He+GdFu7q9xXWxyZTCbpm1gBESiqVjbCNC2HUMSCf5+eMWD2jSzjeR77J2S/Y9OUBSwm
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IQ1R2+W1xcofpjLKnHoQc1zpzlvROpmk9GiFBZ16z8fVF2OKjf5
+ yYih0NjA8uDqyiWcn06cOU3bQ7PIjPUT7Dz+NDsnGMn4H6NBc713S2MO3vvOZcqtKkNXCUW
+ 1zwwuGkXTzMtsuPmxZqOBIPqP+cCgcNbq1OudAa+xfTiOvMSsWTIWF5VqFVauFuct+6R8Vd
+ hxf7zpZhU7hZ+pOgiSnrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CJwt+zB6upI=:26cXy6uCAs2DDGt8+kZhBS
+ hkMO3KuFvCWlTqllFDZl4GcdoZr2/9H1PaZ17wsNzTJzyf36CLBL7dgzkLfFvW6uO7aRj+V2z
+ RjAqOZs4D1LIQZdng9CwVgFMz9qPEmBh8LHEDqokteWQ6Rl0TIscpXlIwDROxt/FuuDqvz3hL
+ EDLfaw02eyuq0BQ+yFbxE3+MCcJC/HhIB86kg7hmH1F6J4rRv5ao7xGPwyrhmeNaLE5b6xVqf
+ Un+kRoRxWXpN/OPZjRTKzf1W6ZcZWXU+uyYlcXJ78W770wrl/Ak0A0p8rQFNNQRoDb3eI8MVI
+ uVy0wTdyuqMj1Oh7VVW8AFVDJ5qHt3zVPuvNU9jdo8RPueDg/+f0uDYOCHInNq6QKNHRJLjvf
+ MaAkV0kdizygMwBpYfJYD8gRR4jS+AYCBkqnlPBsCWYcfaIefLvSYJkngvJmD8/TRbU8p1bTS
+ YvRdqpJjUc7Bdj+KPqfOUTuvwvZ9mSsv87LtcEg4o2M39NQHgWo3XmUgOHKdx2+ZrUvuGUw8F
+ KWeWMAVh9NkJemrN8VUxzn+2pPX+BAStwtsz3tHBw//KJrOcG8BK1WtBkYp0CP+5jvjCJLRDw
+ TThQt0VcSu32RTqJ08K2ucL6RuXg7oyj26IMc6nS/mCbawD8SMpHa2+TEOuxX/BOhe0HMMknH
+ ZqIhO7xtA/+aa7cjhF4otYFC4b/wHJ5Hs+K5E+4QACd7xNJA6R0DJpbPSyaWCnEuWLpVIDtWF
+ hYWA4Boa5PVDKh3MG5rqCdG5FglfPL7JVBDmgZF9I89GmQCihVHO+JQ/6lL36HzTU4vNwbLNm
+ T/hesKtFX2HuKbPeAiyyyn+sEHy2MDzW9RIo1GdJBc8af56Z8t4dxZkmxhYa2w3rRCld97F
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 12:55:24
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:15:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,39 +119,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 17:26:02 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 17:29:35 -0000
 
-Le 29/05/2020 à 16:45, Eric Blake a écrit :
-> Prefer a consistent naming for the --merge argument.
+Le 01/06/2020 à 16:29, Philippe Mathieu-Daudé a écrit :
+> memory_region_set_size() handle the 16 Exabytes limit by
+> special-casing the UINT64_MAX value. This is not a problem
+> for the 32-bit maximum, 4 GiB.
+> By using the UINT32_MAX value, the aspeed-ram-container
+> MemoryRegion ends up missing 1 byte:
 > 
-> Fixes: 3b51ab4bf
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+>  $ qemu-system-arm -M ast2600-evb -S -monitor stdio
+>  (qemu) info mtree
+> 
+>   address-space: aspeed.fmc-ast2600-dma-dram
+>     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
+>       0000000080000000-00000000bfffffff (prio 0, ram): ram
+>       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+> 
+> Fix by using the correct value. We now have:
+> 
+>   address-space: aspeed.fmc-ast2600-dma-dram
+>     0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
+>       0000000080000000-00000000bfffffff (prio 0, ram): ram
+>       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
-> 
-> I'm happy for this to go in through my bitmaps queue or through the
-> trivial tree, whichever picks it up first.
-> 
->  docs/tools/qemu-img.rst | 2 +-
+>  hw/arm/aspeed.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
-> index 69cd9a30373a..7f0737488ade 100644
-> --- a/docs/tools/qemu-img.rst
-> +++ b/docs/tools/qemu-img.rst
-> @@ -300,7 +300,7 @@ Command description:
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 2c23297edf..62344ac6a3 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
+>      bmc = g_new0(AspeedBoardState, 1);
+>  
+>      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+> -                       UINT32_MAX);
+> +                       4 * GiB);
+>      memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+>  
+>      object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
 > 
->    ``--disable`` to change *BITMAP* to stop recording future edits.
-> 
-> -  ``--merge`` to merge the contents of *SOURCE_BITMAP* into *BITMAP*.
-> +  ``--merge`` to merge the contents of the *SOURCE* bitmap into *BITMAP*.
-> 
->    Additional options include ``-g`` which sets a non-default
->    *GRANULARITY* for ``--add``, and ``-b`` and ``-F`` which select an
-> 
-
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
