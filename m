@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jihGN-0001YP-Jr
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 12:38:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48508)
+	id 1jihT4-0003MV-QB
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 12:51:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jihGL-0001VD-TH; Tue, 09 Jun 2020 12:38:09 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:38215)
+ id 1jihT2-0003HT-EG; Tue, 09 Jun 2020 12:51:16 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:52783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jihGK-0002my-Ld; Tue, 09 Jun 2020 12:38:09 -0400
+ id 1jihT0-0005da-NR; Tue, 09 Jun 2020 12:51:15 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MLAF0-1jQc951aRm-00ICEv; Tue, 09 Jun 2020 18:38:01 +0200
-Subject: Re: [PATCH v2] Fix parameter type in vhost migration log path
-To: Raphael Norwitz <raphael.s.norwitz@gmail.com>, eblake@redhat.com,
- mst@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <CAFubqFtqNZw=Y-ar3N=3zTQi6LkKg_G-7W7OOHHbE7Y1fV7HAQ@mail.gmail.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MpUEO-1jAOpd3CAu-00puBV; Tue, 09 Jun 2020 18:51:09 +0200
+Subject: Re: [PATCH] net: Do not include a newline in the id of -nic devices
+To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
+References: <20200518074352.23125-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,41 +60,41 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f63cec8d-80b3-cbd4-15e7-24a9ed0dfdea@vivier.eu>
-Date: Tue, 9 Jun 2020 18:38:00 +0200
+Message-ID: <149a6716-f5ea-831d-e3a0-733c322f7482@vivier.eu>
+Date: Tue, 9 Jun 2020 18:51:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFubqFtqNZw=Y-ar3N=3zTQi6LkKg_G-7W7OOHHbE7Y1fV7HAQ@mail.gmail.com>
+In-Reply-To: <20200518074352.23125-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IOE1BB0kmUXW2jrj/n3xHLQK8PdnOGdcM94Pfx7OiitTSbwWiQN
- pmYJkx5PsA3FEATPa+Zu7OTjdVY8mn5ARY83PralA1LA02JkTiImNphtWimhiNUd/Ehjyb7
- lhMGyP1RV6N5js3YTZN1X8baGOoBIDNONNLEoHBqyL/p/RMW4DmZdpl9KAGasmMwyRlMxrZ
- w2gB1FUhBv9sNFZ2e2Q/g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3W7vRih2VPs=:vIfh7h4pixWKFLTtJoZety
- wBU488wUWRY6LS12TU6xauaGQzfWBVG0BB08JKmqy0PDs9F3AMu5jBthF4J0ks2Zr64902PwB
- CR0aTmPICice3sXW7gLN/6mCyqcDGXCd8UCxhmDjdC6g040VVZaW+rZVMszwMndnoyvPucmlm
- 8Xjrnosd6J5Dc1Lt8/T5N3C2BWE0kX43QdAa/P/NuLKCglR8R7GD5eEVmQEBX0jV0SJJbCxFS
- ekxEaESoWSTRzQ+ChC492X3sNL8YGiTTq2+uwHLxUSYHFLuNERSSk4XmuicUDvlcj3ZgRpvNA
- KKLOJeaEiGko6jUI9vaBM8X2l4MpVNkgoRvAyq8LYKETO17ThNeADZONn9gJ/IBmsL6qvnxbt
- 0IXbKLH3ZvO+RCylfpx9XlSQspg0rx7bOrqFSdsEUXaKxZC29MQkAL95Y4Ov2gmoVx4I8Haua
- NOsJJxO32TsH0yoz37RsLHSOvGttJnWYtW8iPsS3I/miRwe2XfWUK6u9r1WVdj6pXFFAb0t1N
- leIz4okMlpsIWqJn8ogrxSbOVHuv1zWehuaPFPjFcxh4Pm7E0WpXYUct74UKWCohRe7Q/vn5s
- EZhSU1KoF5EGvqgMdzD7Qvu+vfPTZdyyw0AdQFb5HhHLvDbL3lNnbmsICRf6LbDfHkI7J75os
- nkAL3pWtVj8pLKqd8x9tpOb3lJJGzFduuoKUTrvUUBbj4aduPJcrR5TEN1fxKQchfG3ye7TJr
- ItscDr+6Kyd5W21/jnte1Chh1Yuz8kt4MoJSSd+K5mUeG2T9UoZlIOxdoiqcuinI7fjkXxvzX
- ZSsAjYBucndpJR0Md9BzrRkKHzz4G9mITsxFo6J65toRt9gLt97014eDIKlfwmMVTvSL0rl
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:X6vE5zD6C2w1Froi7jzuOl1uhMZ7Azl8G5nsEm4VEbeufi7hEic
+ 6xXOj8AnlzueAXQ6y5h+WccotCQ9hsTNHKDj1LjdkaJNDZubWVExuxuKLA3IG4nrwSqacaZ
+ embSI39zNZv6l2PtU8uYq2Jo79SW0NLhwdcJMLUvGV1HpJN6HDlp+3Dx4pF4nDZ6oZ7amHE
+ 9OKTNRq+9DB1M23hiw/7Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Qq7b/7qgXNg=:Oj6iKpqvANguio6AQFazQk
+ j0sC/uQ+PoUtosAr6p7O//HdRzwGbcUp40xrRP2hII+LC1VqbBzLjOG1hDZiWjxNR+Z/td6FK
+ oGUNK8JiUe5xIYKTxTMAmho4Ktic6Id4gK4PbUr7Fs9lcHI1Vt6xmsiJKynuo7Xt1E1SQJfqa
+ Yu9spZaBKprda1zhoJ3tmn/tBOLhKbW40h+6iGrQkUIW5GFIdLb3yrj+q+GPMFchMyC9LopT8
+ 6hQ5hKB4bkkiDQN6m46tIXZZrGnC93mfxQ7tqgeI60e60Eo0anO/m+oku8HNnnVbjQ7muiwdY
+ LZlSnmj+NH75Y25hxy0hYusuIVAYr8cucC6cWPtMCpJ+jnI/HUzWrYJIMzZkCxNjrpkj4igEk
+ rn+je81pUTE2G9fLikC8l8vGlLxz+nWJKn8fdyH6Tnx8svi0YiKvYXXZrw3cwWBGTdUR5xOYz
+ hB4dffMoECGm3b2DRrvMo4849jzQZBAGwCecgSX9csxVu127rEXNgV48G/x49Q3vj5rbOihDO
+ pRAJAvY/6yvnZ9Vwu9/pJjqeiXMglxijoVbxMNf6Heaj+YzqJywGlxBPGaywQ+sg9+iHA3hJc
+ rIkRbasw2f4b9wuaxzWdue2ENnGDtyHlbP7R4l7ixejKJYT3E9HFGeFHB8SbM34xcZWjCR/1V
+ RRR1UisvcvAzEPakJMOOkLETxflHjuh5nLNR7yAsDrYu4H++Y02nvskdDobk5w7PINfQN51ox
+ f0OtQLf13QoEPqnwfQlDBf5X/1PwgATCW7dzZhVXJng89h+YvYFIi40nX0/MhDg4LTownyTIY
+ 8X2Snm1C1RU/dQlJp9On3xGU/cbwBCfFrwkRZkrmsH/+f5eNl3U+nRl+hXlPbpiuk07VbxV
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 12:38:05
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 12:51:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_MSPIKE_H2=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,41 +107,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 16:38:10 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 16:51:17 -0000
 
-Le 07/05/2020 à 23:37, Raphael Norwitz a écrit :
-> The ‘enable’ parameter to the vhost_migraion_log() function is given as
-> an int, but "true"/"false" values are passed in wherever it is invoked.
-> Inside the function itself it is only ever compared with bool values.
-> Therefore the parameter value itself should be changed to bool.
+Le 18/05/2020 à 09:43, Thomas Huth a écrit :
+> The '\n' sneaked in by accident here, an "id" string should really
+> not contain a newline character at the end.
 > 
-> Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+> Fixes: 78cd6f7bf6b ('net: Add a new convenience option "--nic" ...')
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/virtio/vhost.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  net/net.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> index aff98a0..aa06a36 100644
-> --- a/hw/virtio/vhost.c
-> +++ b/hw/virtio/vhost.c
-> @@ -809,12 +809,12 @@ err_features:
->      return r;
->  }
-> 
-> -static int vhost_migration_log(MemoryListener *listener, int enable)
-> +static int vhost_migration_log(MemoryListener *listener, bool enable)
->  {
->      struct vhost_dev *dev = container_of(listener, struct vhost_dev,
->                                           memory_listener);
->      int r;
-> -    if (!!enable == dev->log_enabled) {
-> +    if (enable == dev->log_enabled) {
->          return 0;
+> diff --git a/net/net.c b/net/net.c
+> index 38778e831d..cbeeeadff8 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -1506,7 +1506,7 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+>      /* Create an ID if the user did not specify one */
+>      nd_id = g_strdup(qemu_opts_id(opts));
+>      if (!nd_id) {
+> -        nd_id = g_strdup_printf("__org.qemu.nic%i\n", idx);
+> +        nd_id = g_strdup_printf("__org.qemu.nic%i", idx);
+>          qemu_opts_set_id(opts, nd_id);
 >      }
->      if (!dev->started) {
-> --
-> 1.8.3.1
+>  
 > 
+
 
 Applied to my trivial-patches branch.
 
