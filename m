@@ -1,79 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiZpb-00056T-5p
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 04:42:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48264)
+	id 1jiaJM-0005Sx-Qn
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 05:12:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jiZpY-00055W-Gp
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2020 04:42:00 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59946
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jiZpW-0002RA-CQ
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2020 04:41:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591692117;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sgk0RnSjsl5gYIfNLKz93g33rVvrsEliE96cWKZ2dcg=;
- b=gSZks3yUDMJW7myxcuKjWQvIsmtqt1mE0Ncz9vs/aAa+mHNNy7RiClmPLVU3mGKCJP0whz
- pEHakrJBx6iZxRw+pXOJIEbjim69zH+B6iVRE4QbtwlXVeyDup6QJspKLnKI/PQDBwwbtl
- 9kRHExyfoojTJ68EiQtWE7RfJ6sxo9A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-37-gvy1-JhXOFyhlmV1fhhHYA-1; Tue, 09 Jun 2020 04:41:53 -0400
-X-MC-Unique: gvy1-JhXOFyhlmV1fhhHYA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0EE651009441;
- Tue,  9 Jun 2020 08:41:50 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E98460CD0;
- Tue,  9 Jun 2020 08:41:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 1EE9411386A6; Tue,  9 Jun 2020 10:41:48 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org,  Magnus Damm <magnus.damm@gmail.com>,  Fam Zheng
- <fam@euphon.net>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-trivial@nongnu.org,  Michael Tokarev <mjt@tls.msk.ru>,  Richard
- Henderson <richard.henderson@linaro.org>,  Laurent Vivier
- <laurent@vivier.eu>,  Markus Armbruster <armbru@redhat.com>,  Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Aurelien Jarno
- <aurelien@aurel32.net>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>,  Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiaJK-0005Sk-Ki; Tue, 09 Jun 2020 05:12:46 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42282)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiaJJ-0007Qa-PM; Tue, 09 Jun 2020 05:12:46 -0400
+Received: by mail-wr1-x441.google.com with SMTP id p5so20382420wrw.9;
+ Tue, 09 Jun 2020 02:12:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=d23IEvDyNJeGG9inUY3xsvKbsfaVGHwFj/TO+66H8wk=;
+ b=lMRj/3HSb6VNC8YRp2xPainJVMALaSCd8p2+jirbf2MTaaoPc5LDn6w5lGmvUzU5Xc
+ J/9yZKp6va6y7WFL4C3JDVfaoFSp2xSzY+BxCmtGdBn59TL4vAKSKls/4HDy/x4eYbIk
+ umL+w5jb6gex4ehpFUSJORfU1SGw/4Z5Lu/mW964WRe9Zq4CzbszTCg/qSWdkbOAz8Pp
+ mMRo1kc/gJc63iNyK8JNJPwwWAz12T8/Nlz2/xhHtzmGoi9o4NDSkCMQ6Jt+zlVW40uM
+ 4hJdHbJPoHCmJE8bmwz1Hl6ayEv9780tID/lWr4fRA2ljV9yTt1vvIApI26OljMSIKi7
+ SsBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=d23IEvDyNJeGG9inUY3xsvKbsfaVGHwFj/TO+66H8wk=;
+ b=nKshkKijuwZ+z6ZEIBk5bFAgoeVJMK41U4vjBmKKIlIJfBz69mxC9hhpR9stHgEDbJ
+ G9Xirl+cdbcq/QyCSvDQuO2n+zdm37ckVtP6ISwyf+DgNEET2Es8Z8ukqD/7Fr2OIxUv
+ XG7ETUL42Ajzk93Dz4s0s52onySUICsGbBk5K1jTTP5UhY48vlFq0wJiCAU84yHaXL5z
+ 8rgzs+g5LcIlOQpqZQt1NM5lS7DWPRhc6mhUJaxA6DgMK+M/OKWHdvs5Mpp3wylQoPxQ
+ wnZG2aNvKVBzQED237pwffy+wytaWiBU7Rk0W0NSS2VHIswhhmONzz4GrYGSVOP668dK
+ S3hQ==
+X-Gm-Message-State: AOAM530ROTTok1Ian3UYvQNlT/v5XnLPzQDXP3Ahr7v1PJGOJhOlVOqX
+ xgdNJQVUbt0vOA0I1sgYE+M=
+X-Google-Smtp-Source: ABdhPJw8wfL2QPmW5qtQn3STC69pn/KUc3O8x5xJLLuGXy7vSRjEZA3uZbzH2xokaWr/kF/GTdoNnw==
+X-Received: by 2002:adf:df91:: with SMTP id z17mr3242135wrl.273.1591693963642; 
+ Tue, 09 Jun 2020 02:12:43 -0700 (PDT)
+Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id z16sm2564996wrm.70.2020.06.09.02.12.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jun 2020 02:12:43 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH v2 2/8] MAINTAINERS: Mark SH4 based R2D & Shix machines
  orphan
+To: Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Fam Zheng <fam@euphon.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>
 References: <20200608090142.6793-1-f4bug@amsat.org>
  <20200608090142.6793-3-f4bug@amsat.org>
  <8f97580c-bf25-dd83-e23e-dcea1e6ce6b7@redhat.com>
-Date: Tue, 09 Jun 2020 10:41:48 +0200
-In-Reply-To: <8f97580c-bf25-dd83-e23e-dcea1e6ce6b7@redhat.com> (Thomas Huth's
- message of "Mon, 8 Jun 2020 11:48:12 +0200")
-Message-ID: <875zc0skab.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <875zc0skab.fsf@dusky.pond.sub.org>
+ <CANqRtoRwWksb8zngFqJnJg-gNs5_M_NoFZ1Y=A8mHK0NfCFBCg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e55ba7d1-6617-ed1b-e9a2-a564bd490709@amsat.org>
+Date: Tue, 9 Jun 2020 11:12:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CANqRtoRwWksb8zngFqJnJg-gNs5_M_NoFZ1Y=A8mHK0NfCFBCg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 01:38:49
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,54 +95,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 08:42:00 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 09:12:46 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+Hi Magnus,
 
-> On 08/06/2020 11.01, Philippe Mathieu-Daud=C3=A9 wrote:
->> Last commit from Magnus Damm is fc8e320ef583, which date is
->> Fri Nov 13 2009.  As nobody else seems to care about the patches
->> posted [*] related to the R2D and Shix machines, mark them orphan.
->>=20
->> Many thanks to Magnus for his substantial contributions to QEMU,
->> and for introducing these SH4 based machine!
+On 6/9/20 10:59 AM, Magnus Damm wrote:
+> Hi Markus and Thomas,
+> 
+> On Tue, Jun 9, 2020 at 5:41 PM Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> Thomas Huth <thuth@redhat.com> writes:
+>>
+>>> On 08/06/2020 11.01, Philippe Mathieu-Daudé wrote:
+>>>> Last commit from Magnus Damm is fc8e320ef583, which date is
+>>>> Fri Nov 13 2009.  As nobody else seems to care about the patches
+>>>> posted [*] related to the R2D and Shix machines, mark them orphan.
+>>>>
+>>>> Many thanks to Magnus for his substantial contributions to QEMU,
+>>>> and for introducing these SH4 based machine!
+>>
+>> s/machine/machines/
+>>
+>>>>
+>>>> [*] https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08519.html
+>>>>
+>>>> Cc: Magnus Damm <magnus.damm@gmail.com>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>> ---
+>>>>  MAINTAINERS | 5 +++--
+>>>>  1 file changed, 3 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>>> index 49d90c70de..a012d9b74e 100644
+>>>> --- a/MAINTAINERS
+>>>> +++ b/MAINTAINERS
+>>>> @@ -1250,14 +1250,15 @@ SH4 Machines
+>>>>  ------------
+>>>>  R2D
+>>>>  M: Magnus Damm <magnus.damm@gmail.com>
+>>>> -S: Maintained
+>>>> +S: Orphan
+>>>>  F: hw/sh4/r2d.c
+>>>>  F: hw/intc/sh_intc.c
+>>>>  F: hw/timer/sh_timer.c
+>>>> +F: include/hw/sh4/sh_intc.h
+>>>>
+>>>>  Shix
+>>>>  M: Magnus Damm <magnus.damm@gmail.com>
+>>>> -S: Odd Fixes
+>>>> +S: Orphan
+>>>>  F: hw/sh4/shix.c
+>>>
+>>> Having both, an "M:" entry and "S: Orphan" in a section sounds weird.
+>>> Magnus, are you still interested in these sections? If not, I think the
+>>> "M:" line should be removed...?
+>>
+>> Concur.  Of course, let's give Magnus a chance to chime in.
+> 
+> Thanks guys! I'm interested but don't have so much time available to
+> commit to this I'm afraid. In particular I'm keen on trying to keep
+> R2D around since I happen to have a physical machine setup in my
+> remote access rack. SH4 with FPU used to have alright gcc + binutils
+> toolchain and glibc support once while other SuperH SoCs lacked some
+> portions. So keeping SH4 (sh775x) around would be nice IMO.
 
-s/machine/machines/
+Great news!
 
->>=20
->> [*] https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08519.html
->>=20
->> Cc: Magnus Damm <magnus.damm@gmail.com>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>  MAINTAINERS | 5 +++--
->>  1 file changed, 3 insertions(+), 2 deletions(-)
->>=20
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 49d90c70de..a012d9b74e 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -1250,14 +1250,15 @@ SH4 Machines
->>  ------------
->>  R2D
->>  M: Magnus Damm <magnus.damm@gmail.com>
->> -S: Maintained
->> +S: Orphan
->>  F: hw/sh4/r2d.c
->>  F: hw/intc/sh_intc.c
->>  F: hw/timer/sh_timer.c
->> +F: include/hw/sh4/sh_intc.h
->> =20
->>  Shix
->>  M: Magnus Damm <magnus.damm@gmail.com>
->> -S: Odd Fixes
->> +S: Orphan
->>  F: hw/sh4/shix.c
->
-> Having both, an "M:" entry and "S: Orphan" in a section sounds weird.
-> Magnus, are you still interested in these sections? If not, I think the
-> "M:" line should be removed...?
+FYI Yoshinori Sato did a great job on updating the Renesas
+hardware, see:
+https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08584.html
 
-Concur.  Of course, let's give Magnus a chance to chime in.
+He might be able to help with the UART/TIMER peripherals used by the
+R2D, see a suggestion to add a 'Renesas hardware' entry:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg708478.html
 
+If Yoshinori accept the suggestion to add a Renesas hardware entry, do
+you agree to be listed as there too? Maybe with a 'R:' tag for
+designated reviewer instead of maintainer.
+
+So I'll respin this series with these changes:
+
+R2D: S: 'Maintained' -> 'Odd Fixes'
+
+So contributors don't wait for you to take the patches, and they can go
+via qemu-trivial.
+
+And Shix -> No maintainer, S: 'Obsolete'.
+
+The TCG backend stay orphan.
+
+Regards,
+
+Phil.
+
+> 
+> Cheers,
+> 
+> / magnus
+> 
 
