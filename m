@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jihh7-0008E8-Vl
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 13:05:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52046)
+	id 1jihqB-0006TG-3H
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 13:15:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jihh6-0008B1-8Q; Tue, 09 Jun 2020 13:05:48 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:39139)
+ id 1jihq8-0006PI-P2; Tue, 09 Jun 2020 13:15:08 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:51873)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jihh5-00081y-2n; Tue, 09 Jun 2020 13:05:47 -0400
+ id 1jihq7-0000uK-AX; Tue, 09 Jun 2020 13:15:08 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N4z2a-1izRI02cgm-010txN; Tue, 09 Jun 2020 19:05:40 +0200
-Subject: Re: [PATCH] hw/isa/apm: Convert debug printf()s to trace events
+ 1MAwPZ-1jp4ZT4693-00BI1S; Tue, 09 Jun 2020 19:15:03 +0200
+Subject: Re: [PATCH] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of debug
+ printf
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200524164806.12658-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Fred Konrad <konrad@adacore.com>
+References: <20200606070216.30952-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -61,35 +61,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e0882e71-cc55-83be-930c-91cb384f0b73@vivier.eu>
-Date: Tue, 9 Jun 2020 19:05:39 +0200
+Message-ID: <94267378-df63-6318-2d43-ff5c809445e8@vivier.eu>
+Date: Tue, 9 Jun 2020 19:15:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200524164806.12658-1-f4bug@amsat.org>
+In-Reply-To: <20200606070216.30952-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LDQFKOAakAeOFdWIfS1aIDzXHiSh/ib1cqIABlblitv1bgUxkwq
- mkZstG5WYs1MC7TcpYhd86O9D6P48OoNmcbqaJX0LRcynmu+3TT4T6zhni4LEJufjmhs73+
- ja0Wr4oTV84e98XOB0lhBhrT5doRhOJ9cnIP3EoAkgC7hXbYWKDqAuoppOjGh3HvaB63FKY
- Io9tnHbmXW69usuB31LUg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:t4pmpHB1TXI=:FVJcwqBs678SPy5ixKg2rp
- iak1l3UnISpGvT/ocdh/c1+Ag8au/ucsDXfL95bBLw6LXcFxWA8knQDbBBLUgWTjeWFjwTOAe
- jlWGk5P7KkKeT1SneQ9Hlnpsk5vi9Hecr3CnRSppHMJe6ajYWxLj3gc3M0+H+l/jZyVugU270
- xljVccifRvXTs54uCUGdUh3sjqYoDxqu6Q5b5UgQgnykh7dmoZUs9ad9hLhBe/nyJ0rIJ0cxY
- qJRrApUXb6IoCLgaVgnb2YmNRIW9GG98+ta/dEnn6y+f9pS6Z5tUXyKd5voXE9F50EJ/10qLZ
- CJeofYF66q6RFhBBAp8oYwVC1NgmKebgACTPXOlXnC96wlDHz2pZwFGjCgYR8baAVTzVQXAmK
- E6GE66orDJ/zIV9EH6Yfh5RRwxNeEUUqtJlTaMZwTsi8gw0CLBJ7BmSOwRqbQSpmCcT3y+ChY
- nJe0b4g4zpuvqEJwBO05aU9SL5eZk5MzI8m3sR6LbhAI2F9j5apljkapF0ZvsNnu/aBzBfQPp
- h14/Zll4uiB6LQ4agex85qiQLKssm7DzH32DOs2B+Pu5JwBuJBssBJdkb/GoW5JKbODBG56lZ
- UcZkY5RUbLRKqeitqY73SsPMZ8ezqDwp7+pgxL4QY0/xX3J5/IYF4nhEPjoG2JwhGU18g6bOw
- WHG3tGb0pbW19CghRlP+9iio084jaztwXAqFv3F/Hh1Fzt9/EqsPEV8kWdlpHgDmgTGAed9iW
- YNdx/cPHy4NJtLvorMP8delMpQw6wuIt2kSfwuHUGldRo9Y8PV9bFkT2T2QWCrn9e9/rF2IpB
- Nwszxj94pFUavs/C2tPkz++zgVSknN1AZ3vaWTrebA9DnYydiiMzb2FWdU38ZNcCHAe5FzM
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:2DGS6JVeKuzdyoLHlIuh4reQOmix5Yq65dFPw8s/nlzvw/k79im
+ gi4uVYESVYidF7G9pSKHJ7pcN5ymfEF4lpq1qvvW48a/V9OKQdqx+TWy3T/8DctDlgp7VkK
+ wyKdqb46fh4vvEytD+YVVeUln6d5tO+mmg6EF1MjqVhjRi2YZFY0wcSvmYeM/KBr3yRLz/n
+ a6fFAJhENMVofrOmdS8gQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4oyQVjYWKEw=:9oJlC89RLnLI4fdadZnrsq
+ drCI0JiGw6iwczxbnMWVO4YNxmLu59SBxo3hwiCvWjadDGnYo+WYaqsxUYaccAyFbJczhLkvV
+ exoV1xi7AZ/HVFhugWxDKGh2IQSRYo46kpQOvn0/M03loX2sd25V9eSbP6RMxhrIz0bzqqWID
+ HNN1Vk9dabZ1o4dZ8oujTSK2ibn/NhigZYOXa4QZ1+yxtx+LxEY5SZ87bIZ9CQyX4VAxw3u3r
+ 3E1d8O1xjf6ToVyQku90fbdRBhyiWMqcU2x9ywDFzfjeiyDVlxasdP5Ce24nFyKIM3vYt00eP
+ pwVTCxXyOSlehVOnCimR0DNbcFuPk/N5fTaFm7niMGeqcJz3R0Y45hmJvCHBzIrhsWzV5rt/2
+ 69xR5kT2XuwMQqWrUlsWRH8xTh0bgUz/q2YRIJpi2vBGlvqsglk9dwJF0kutLJlAe/79Flf8o
+ /zc/buH73BU7hy3FwdrW8Flxfpg9qVJOY3Dusd/Ao95+pJ3VfFI91yypqyMJ1CluFQJCIJCIo
+ sCqLkt+Lz3DX/Y+PUG/wJJybSW0yHyuzsyaHWy7WZFXOs3gyAjCM+qN4/ChyqIhDz10Npfrg7
+ wWaqeMK/wMZQGg8jNWd7O3OLVaYHlKuBocnJK9UMqqWO3fhL4aYc8z1UxGz6cI84gH832z3de
+ a2N1p2s9190ez9cwRTfxcpkBwYohqr/X8o0pLJ+9NswfYSLkgaBXnOdoRfAOAdF+3ZupNmesd
+ k1F5dj1Qjz+fHboMHyOaKdrYy8nQUOPcmrddeDwhfDISu1nDWOBQkJk+3OuDYJozQUx5nsCpg
+ xvwYaCbO2WhBBMpeg6ZDk3Yy1/y+lAWD4gRqVjuxE9y6nb0JPiF6fHkfDUdrb2YIuRanFYy
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 12:55:24
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:15:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -108,75 +108,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 17:05:48 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 17:15:09 -0000
 
-Le 24/05/2020 à 18:48, Philippe Mathieu-Daudé a écrit :
-> Convert APM_DPRINTF() to trace events and remove ifdef'ry.
+Le 06/06/2020 à 09:02, Philippe Mathieu-Daudé a écrit :
+> Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/isa/apm.c        | 15 +++++----------
->  hw/isa/trace-events |  4 ++++
->  2 files changed, 9 insertions(+), 10 deletions(-)
+>  hw/misc/auxbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/isa/apm.c b/hw/isa/apm.c
-> index 6300b1ba7a..bce266b957 100644
-> --- a/hw/isa/apm.c
-> +++ b/hw/isa/apm.c
-> @@ -24,14 +24,8 @@
->  #include "hw/isa/apm.h"
->  #include "hw/pci/pci.h"
->  #include "migration/vmstate.h"
-> +#include "trace.h"
->  
-> -//#define DEBUG
-> -
-> -#ifdef DEBUG
-> -# define APM_DPRINTF(format, ...)       printf(format, ## __VA_ARGS__)
-> -#else
-> -# define APM_DPRINTF(format, ...)       do { } while (0)
-> -#endif
->  
->  /* fixed I/O location */
->  #define APM_STS_IOPORT  0xb3
-> @@ -41,8 +35,8 @@ static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
->  {
->      APMState *apm = opaque;
->      addr &= 1;
-> -    APM_DPRINTF("apm_ioport_writeb addr=0x%" HWADDR_PRIx
-> -                " val=0x%02" PRIx64 "\n", addr, val);
-> +
-> +    trace_apm_io_write(addr, val);
->      if (addr == 0) {
->          apm->apmc = val;
->  
-> @@ -65,7 +59,8 @@ static uint64_t apm_ioport_readb(void *opaque, hwaddr addr, unsigned size)
->      } else {
->          val = apm->apms;
+> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> index f8e7b97971..06aabf20c5 100644
+> --- a/hw/misc/auxbus.c
+> +++ b/hw/misc/auxbus.c
+> @@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+>          }
+>          break;
+>      default:
+> -        DPRINTF("Not implemented!\n");
+> +        qemu_log_mask(LOG_UNIMP, "AUX cmd=%u not implemented\n", cmd);
+>          return AUX_NACK;
 >      }
-> -    APM_DPRINTF("apm_ioport_readb addr=0x%" HWADDR_PRIx " val=0x%02x\n", addr, val);
-> +    trace_apm_io_read(addr, val);
-> +
->      return val;
->  }
 >  
-> diff --git a/hw/isa/trace-events b/hw/isa/trace-events
-> index 202f8938e7..3544c6213c 100644
-> --- a/hw/isa/trace-events
-> +++ b/hw/isa/trace-events
-> @@ -9,3 +9,7 @@ superio_create_ide(int id, uint16_t base, unsigned int irq) "id=%d, base 0x%03x,
->  # pc87312.c
->  pc87312_io_read(uint32_t addr, uint32_t val) "read addr=0x%x val=0x%x"
->  pc87312_io_write(uint32_t addr, uint32_t val) "write addr=0x%x val=0x%x"
-> +
-> +# apm.c
-> +apm_io_read(uint8_t addr, uint8_t val) "read addr=0x%x val=0x%02x"
-> +apm_io_write(uint8_t addr, uint8_t val) "write addr=0x%x val=0x%02x"
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
