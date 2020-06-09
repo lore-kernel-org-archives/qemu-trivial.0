@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jil4u-0003lI-UA
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 16:42:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35206)
+	id 1jilBV-0007XA-2k
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 16:49:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shorne@gmail.com>)
- id 1jil4t-0003kx-0Q; Tue, 09 Jun 2020 16:42:35 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42332)
+ id 1jilBT-0007WU-Bv; Tue, 09 Jun 2020 16:49:23 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:42376)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shorne@gmail.com>)
- id 1jil4r-0003Ov-T0; Tue, 09 Jun 2020 16:42:34 -0400
-Received: by mail-pg1-x543.google.com with SMTP id e9so10786803pgo.9;
- Tue, 09 Jun 2020 13:42:32 -0700 (PDT)
+ id 1jilBR-0004sf-Ut; Tue, 09 Jun 2020 16:49:22 -0400
+Received: by mail-pg1-x542.google.com with SMTP id e9so10793908pgo.9;
+ Tue, 09 Jun 2020 13:49:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to;
- bh=qfV30FoU58k2ttUY1GTYXDCX1rA6FSBjaL/WxZ3FFEQ=;
- b=oL5DnZYqLr3yT60S2mJ1i9sHg5ZOr8B8ZCQGMnWzG349skxnnk9xmq3rQRdN8qVmN8
- BFkPIcUh3U8sz/5aedU0a7Nit/vd3QVKXJE++LEyORDeQdyP/RfBqCgUwpaFtX1hLgT7
- Nq5eq1eHOCNO+Xinqu9pbz36Qb7/1mN2crBA3CyPs6BP/artR9og0O8JSJ9xw0M30QsS
- kCidHmhCmGa6pwA6n+7AvNwqW/4i+EWesyd8ocUU0zO7cdMzqX/5pOnbPwt8IuZoMv8G
- lZ2l8qsoPY4uXj7wCrofEc1U23ddVIhZLhjUMThqxxxd4LzxRIg0gjYHm5sMS9xoZIR5
- BjEQ==
+ bh=FcCCIxPi0rfzfio0dJA3RiNtAB5zNv6sBUrp5/zVaYU=;
+ b=PdRrEGUgWQABSmOvqQGwAWmWAJdEs9xYZhF1Ogdr1yZxitAJbK7Ai+1L6xLF5YWp+m
+ /Eh31ELcdxpaDf2REsRd+wjeZku2F6TemlJzcaWJnAk2YdmsqYQK3awrUOs4lQheXVi+
+ ncMuJUojxoGDosB+BwS/eNX9w24zCuJP/1fI3XZjRIKEf9hAnnMtGyU+TEkx3OGU9zlW
+ LzoskgFL76zdfXvVRD22d55L8NoVVqsOdoHsR8+Bnu5d8JMWKhBG18FQTYqVmEQHxbUj
+ mD5lcy7/WWFVkjGFWGT5Pdf3Ewl0PCt30iKadrbLwqG1GRTQxQKdqBs9hvVBZ6WIzrmc
+ 3yhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=qfV30FoU58k2ttUY1GTYXDCX1rA6FSBjaL/WxZ3FFEQ=;
- b=Q8tz2AHb1F7v4t3MDpIP02+bS6X5SttXOd4AcnNcXEfdUnFU+VTj7n8z0lRCVvLL6X
- rkmHYthipnRuyOkmEIY1OjQYyhTMng4aMKuZm62A/8KaOzduLEMiWHv5ZER4pWeUqLoh
- gQtaVoktGMQjtCgDlcI+UtJ4Ru1aTtVsiYyKkbXBGNc2g1ifxVmDuMGmQ44F3jPJAzwJ
- m8j9jnwljNag3hlnvZdDFabwukfSvcxqQUdPai5Flx/GX11K4n7dI5z4UERkKI1Jadhk
- Kk/Lp9FwZkI9YzU7RljORt8V8BtX7bCqe1UCbhTVbUCUozl/06LamxQKqnIvXk85NMFN
- iCLQ==
-X-Gm-Message-State: AOAM532oREHRtU2t50zswhOzwgBjgnIEbMBej22SJVu0jLJ48A9KDosM
- i/znlB8XJdpHBFjFLHsMFUs=
-X-Google-Smtp-Source: ABdhPJxUHNuNwn9kWW8Zj2xH6GoUpFQokoiMmziPQrQ2nw1nXKQ/HbFMnhdDNJsFlhofETfRmoXf7A==
-X-Received: by 2002:a63:4b0a:: with SMTP id y10mr25993855pga.57.1591735351296; 
- Tue, 09 Jun 2020 13:42:31 -0700 (PDT)
+ bh=FcCCIxPi0rfzfio0dJA3RiNtAB5zNv6sBUrp5/zVaYU=;
+ b=WXjZ5tZITruDFpVZTbRTtUlYIQ50KvnhfS+c/soqwtde7A/JmnGAprtoktXdfJiQ+g
+ GsJfyt1FYeXyypFvnH4wqDIEq2yeWq9JvvM7NnhlBE/N3Gw78WHmOKxMNu8PvTUm+cRl
+ WIBIjukTK/Nnx4bw0BghBd3f7p/i3wMMaon89Saifs/SkHbP/8mZD9J2iwwjYYAOeF18
+ Y4yWGWuzdjE0H7kxoxKkHfRzVgiYeIqrqqO2I/Q3JA+xo7vzW09y9Nc9UJH4O77ZJGdv
+ Y93JlWIhSU7lQDN9dSMO84zY4qUaCOb+ktFWJlbVsLNNECEb8mbS2HCxn4cRGUUowPkE
+ BkYA==
+X-Gm-Message-State: AOAM531ZoeTCdl66bB4IQX2arlX5nAN3SorFUYulNSXJv5s2OgGahrvP
+ O/P9GspX4x+lGt9ELn8aV3c=
+X-Google-Smtp-Source: ABdhPJwmP28tOIkgVPHVncMBE7E4T0r0pVW4wK38Qsn4juaIAzIh//E09lvfb+ca3EsMNWPL7uggLg==
+X-Received: by 2002:aa7:8b56:: with SMTP id i22mr26825292pfd.63.1591735760064; 
+ Tue, 09 Jun 2020 13:49:20 -0700 (PDT)
 Received: from localhost (g228.115-65-196.ppp.wakwak.ne.jp. [115.65.196.228])
  by smtp.gmail.com with ESMTPSA id
- i19sm3378843pjz.4.2020.06.09.13.42.29
+ l23sm9096977pgc.55.2020.06.09.13.49.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2020 13:42:30 -0700 (PDT)
-Date: Wed, 10 Jun 2020 05:42:27 +0900
+ Tue, 09 Jun 2020 13:49:19 -0700 (PDT)
+Date: Wed, 10 Jun 2020 05:49:17 +0900
 From: Stafford Horne <shorne@gmail.com>
 To: Eric Blake <eblake@redhat.com>
 Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
@@ -54,16 +54,17 @@ Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Jia Liu <proljc@gmail.com>
 Subject: Re: [PATCH] hw/openrisc/openrisc_sim: Add assertion to silent GCC
  warning
-Message-ID: <20200609204227.GI75760@lianli.shorne-pla.net>
+Message-ID: <20200609204917.GJ75760@lianli.shorne-pla.net>
 References: <20200608071409.17024-1-philmd@redhat.com>
  <95f1d638-3921-ffdf-8f07-2f077d1d0cc9@redhat.com>
+ <20200609204227.GI75760@lianli.shorne-pla.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <95f1d638-3921-ffdf-8f07-2f077d1d0cc9@redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=shorne@gmail.com; helo=mail-pg1-x543.google.com
+In-Reply-To: <20200609204227.GI75760@lianli.shorne-pla.net>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=shorne@gmail.com; helo=mail-pg1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -85,46 +86,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 20:42:35 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 20:49:23 -0000
 
-On Mon, Jun 08, 2020 at 10:33:24AM -0500, Eric Blake wrote:
-> On 6/8/20 2:14 AM, Philippe Mathieu-Daudé wrote:
-> > When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
-> 
-> In the subject: s/silent/silence/
-> 
+On Wed, Jun 10, 2020 at 05:42:27AM +0900, Stafford Horne wrote:
+> On Mon, Jun 08, 2020 at 10:33:24AM -0500, Eric Blake wrote:
+> > On 6/8/20 2:14 AM, Philippe Mathieu-Daudé wrote:
+> > > When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
 > > 
-> >      CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-> >    hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
-> >    hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-> >       87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
-> >          |                                  ~~~~~~~~^~~
+> > In the subject: s/silent/silence/
 > > 
-> > While humans can tell smp_cpus will always be in the [1, 2] range,
-> > (openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
-> > can't.
+> > > 
+> > >      CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
+> > >    hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
+> > >    hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+> > >       87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
+> > >          |                                  ~~~~~~~~^~~
+> > > 
+> > > While humans can tell smp_cpus will always be in the [1, 2] range,
+> > > (openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
+> > > can't.
+> > > 
+> > > Add an assertion to give the compiler a hint there's no use of
+> > > uninitialized data.
+> > > 
+> > > Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
+> > > Reported-by: Martin Liška <mliska@suse.cz>
+> > > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> > > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> > > ---
+> > >   hw/openrisc/openrisc_sim.c | 1 +
+> > >   1 file changed, 1 insertion(+)
 > > 
-> > Add an assertion to give the compiler a hint there's no use of
-> > uninitialized data.
+> > Tested-by: Eric Blake <eblake@redhat.com>
 > > 
-> > Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
-> > Reported-by: Martin Liška <mliska@suse.cz>
-> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> > ---
-> >   hw/openrisc/openrisc_sim.c | 1 +
-> >   1 file changed, 1 insertion(+)
+> > With the typo fixed,
+> > Reviewed-by: Eric Blake <eblake@redhat.com>
 > 
-> Tested-by: Eric Blake <eblake@redhat.com>
+> Acked-by: Stafford Horne <shorne@gmail.com>
 > 
-> With the typo fixed,
-> Reviewed-by: Eric Blake <eblake@redhat.com>
+> I see there are now two patches for this, I kind of like this assert fix.
+> 
+> Shall I queue it for OpenRISC pulling?  Or can someone else pick this up?
 
-Acked-by: Stafford Horne <shorne@gmail.com>
-
-I see there are now two patches for this, I kind of like this assert fix.
-
-Shall I queue it for OpenRISC pulling?  Or can someone else pick this up?
+Hello,
+Sorry, I see v2 of this patch has already been picked up.
 
 -Stafford
 
