@@ -1,109 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jiVsO-0002n0-DK
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 00:28:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52132)
+	id 1jiXra-0001LR-6n
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jun 2020 02:35:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiVsM-0002mh-RH
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2020 00:28:38 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48365
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiVsL-0002xc-6A
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2020 00:28:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591676914;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=LPElhX49VV3BV76W6MaqdEyY1VjWKaWxymyj/UGcFZ4=;
- b=Ld+hk5kLOKN8v6MIcJH5Mv0c3jqROUg001smnIIHIJy3KT/BuKzZgsxh985VgslzEvVR93
- QhveItOk79lviL/R1Ne42DVLGQnBpATIvE8uKYxUIRzi0F7Obkp8WEB/6kfyXpXlLIYZds
- tYzq8udbdsJ5eIrR0yyQZENK1lBYtV4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-498-6fikjNn-Nx6GPSkJNAppEA-1; Tue, 09 Jun 2020 00:28:31 -0400
-X-MC-Unique: 6fikjNn-Nx6GPSkJNAppEA-1
-Received: by mail-wr1-f72.google.com with SMTP id j16so8001036wre.22
- for <qemu-trivial@nongnu.org>; Mon, 08 Jun 2020 21:28:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=LPElhX49VV3BV76W6MaqdEyY1VjWKaWxymyj/UGcFZ4=;
- b=hsR/CzM9JXTBZX9MkiMPTZgzg1f5kCG8B7wEjrj3euDlTE0Uon4jXMLCOxrNyQfO0Q
- 5AgNsVW0nM9/+Aja5t9/Hyt6vP7wdaOlHPMuA/dMJRY5ySYwlSODqy+mU4uySzafZV5y
- u+ie53OQl1/59yAfpeP7rnGMS621unUQuH9GjnkKVTktX5ZA1fPhwL6zuhY2PKd3i240
- NS49LsAYgpy/U4i51/NhNuje8RTUNaLdnJzL0c02RxSHXcNal4wd4h9lnLI3qv9iMxP7
- ZZ3u/b6f9LkScenifncAnJ4FUpD9cCH2TTaB9bTinFPz7InT5KYfMnEQDhMafeFOJjru
- b8EQ==
-X-Gm-Message-State: AOAM5318gKTu4FYvdJR6ypWSUAseuaxCt/KuGNHWd/0zoca+mfMNIDh6
- dromg5XAMFrjPnv2N1Oncjn+U6xn+FhGhUKEXaKwySbRnaIdn3AVp44F0UEqytaNF8xlzTW8pkS
- av3QpCTP+Gvq0ulgrUQ==
-X-Received: by 2002:a5d:6884:: with SMTP id h4mr2366790wru.198.1591676909917; 
- Mon, 08 Jun 2020 21:28:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzL6yGlYLq5uVkf26nsZMVqRUocmhTXo8Iql5QWkouQ6r3gmy11UnKNx6hS1AV4IwB+9HEdNQ==
-X-Received: by 2002:a5d:6884:: with SMTP id h4mr2366776wru.198.1591676909711; 
- Mon, 08 Jun 2020 21:28:29 -0700 (PDT)
-Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id d24sm1441410wmb.45.2020.06.08.21.28.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jun 2020 21:28:29 -0700 (PDT)
-Subject: Re: [PATCH] Makefile: Install qemu-[qmp/ga]-ref.* into the directory
- "interop"
-To: Yi Wang <wang.yi59@zte.com.cn>, qemu-devel@nongnu.org
-Cc: Liao Pingfang <liao.pingfang@zte.com.cn>, wang.liang82@zte.com.cn,
- xue.zhihong@zte.com.cn, QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <1591663670-47712-1-git-send-email-wang.yi59@zte.com.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <94e456a8-0b4f-e1fd-7baa-8f81f36c6872@redhat.com>
-Date: Tue, 9 Jun 2020 06:28:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <aurelien@aurel32.net>)
+ id 1jiXrY-0001L3-9N; Tue, 09 Jun 2020 02:35:56 -0400
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:40950)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <aurelien@aurel32.net>)
+ id 1jiXrW-00072A-Ee; Tue, 09 Jun 2020 02:35:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
+ ; s=202004.hall;
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:Reply-To:
+ Subject:Content-ID:Content-Description:X-Debbugs-Cc;
+ bh=ZYeN1174DU6nu8ldXp7sQyil3UP1tHo3cBAZCoAvu6k=; b=VdoinhVddl6E3OBfgp+UQdSoHg
+ YDBIMb1r6bCuj2SwOo1wu/JgsDnQJcdhrHVsLSIacbovZSmvIGOfa+6AmsxGojYc6JmijF60HW9TS
+ P1GPPbyGDVdsRZzlsPQ17uEr0KEaZAQafOPGsnInnVWOLnQHtD2AxfZx7ba+XUDUtNUSBY2pPEAZM
+ bVEUNgDU7dtFqIrOJIsMwwMc90wzyhjxwh0VHnsiRPvy1LMgiEKKx4E8g4bpKaBwPN7RuUHWyUmcq
+ eq0fvhY0/PEZjK9PNt68wMPqux8FOiUsOWyWzNjmaXA90j4J2+KQH2Qku2uF5XEp3jHs0pA9mD+J9
+ V/Hh1GAg==;
+Received: from [2a01:e35:2fdd:a4e1:fe91:fc89:bc43:b814] (helo=ohm.rr44.fr)
+ by hall.aurel32.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <aurelien@aurel32.net>)
+ id 1jiXr4-000077-1t; Tue, 09 Jun 2020 08:35:26 +0200
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.93)
+ (envelope-from <aurelien@aurel32.net>)
+ id 1jiXr3-001ZCh-15; Tue, 09 Jun 2020 08:35:25 +0200
+Date: Tue, 9 Jun 2020 08:35:25 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Philippe =?iso-8859-15?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Philippe =?iso-8859-15?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Markus Armbruster <armbru@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Michael Tokarev <mjt@tls.msk.ru>, Magnus Damm <magnus.damm@gmail.com>,
+ Alex =?iso-8859-15?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Subject: Re: [PATCH v2 3/8] MAINTAINERS: Mark SH4 TCG target orphan
+Message-ID: <20200609063525.GA373396@aurel32.net>
+References: <20200608090142.6793-1-f4bug@amsat.org>
+ <20200608090142.6793-4-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <1591663670-47712-1-git-send-email-wang.yi59@zte.com.cn>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 00:28:34
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset=iso-8859-15
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200608090142.6793-4-f4bug@amsat.org>
+User-Agent: Mutt/1.13.2 (2019-12-18)
+Received-SPF: none client-ip=2001:bc8:30d7:100::1;
+ envelope-from=aurelien@aurel32.net; helo=hall.aurel32.net
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,75 +72,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jun 2020 04:28:39 -0000
+X-List-Received-Date: Tue, 09 Jun 2020 06:35:56 -0000
 
-On 6/9/20 2:47 AM, Yi Wang wrote:
-> From: Liao Pingfang <liao.pingfang@zte.com.cn>
-> 
-> We need install qemu-[qmp/ga]-ref.* files into the subdirectory of qemu docs: interop.
-> 
-> If we visit the following address and click the link to qemu-qmp-ref.html:
-> https://www.qemu.org/docs/master/interop/bitmaps.html#basic-qmp-usage
-> 
-> It will report following error:
-> "
-> Not Found
-> The requested URL /docs/master/interop/qemu-qmp-ref.html was not found on this server.
-> "
-> 
-
-Fixes: d59157ea058b5 ('docs: create interop/ subdirectory')
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
+On 2020-06-08 11:01, Philippe Mathieu-Daud=E9 wrote:
+> Aurelien Jarno expressed his desire to orphan the SH4 target [*]:
+>=20
+>   I don't mind being [...] removed from there.
+>   I do not really have time to work on that.
+>=20
+> Mark the SH4 TCG target orphan.
+>=20
+> Many thanks to Aurelien for his substantial contributions to QEMU,
+> and for maintaining the SH4 TCG target for various years!
+>=20
+> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg708400.html
+>=20
+> Message-Id: <20200601214125.GA1924990@aurel32.net>
+> Acked-by: Aurelien Jarno <aurelien@aurel32.net>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
->  Makefile           | 10 ++++++----
->  docs/index.html.in |  4 ++--
->  2 files changed, 8 insertions(+), 6 deletions(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 40e4f76..49dbe7a 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -879,8 +879,9 @@ install-sphinxdocs: sphinxdocs
->  install-doc: $(DOCS) install-sphinxdocs
->  	$(INSTALL_DIR) "$(DESTDIR)$(qemu_docdir)"
->  	$(INSTALL_DATA) $(MANUAL_BUILDDIR)/index.html "$(DESTDIR)$(qemu_docdir)"
-> -	$(INSTALL_DATA) docs/interop/qemu-qmp-ref.html "$(DESTDIR)$(qemu_docdir)"
-> -	$(INSTALL_DATA) docs/interop/qemu-qmp-ref.txt "$(DESTDIR)$(qemu_docdir)"
-> +	$(INSTALL_DIR) "$(DESTDIR)$(qemu_docdir)/interop"
-> +	$(INSTALL_DATA) docs/interop/qemu-qmp-ref.html "$(DESTDIR)$(qemu_docdir)/interop"
-> +	$(INSTALL_DATA) docs/interop/qemu-qmp-ref.txt "$(DESTDIR)$(qemu_docdir)/interop"
->  ifdef CONFIG_POSIX
->  	$(INSTALL_DIR) "$(DESTDIR)$(mandir)/man1"
->  	$(INSTALL_DATA) $(MANUAL_BUILDDIR)/system/qemu.1 "$(DESTDIR)$(mandir)/man1"
-> @@ -898,8 +899,9 @@ ifdef CONFIG_TRACE_SYSTEMTAP
->  endif
->  ifneq (,$(findstring qemu-ga,$(TOOLS)))
->  	$(INSTALL_DATA) $(MANUAL_BUILDDIR)/interop/qemu-ga.8 "$(DESTDIR)$(mandir)/man8"
-> -	$(INSTALL_DATA) docs/interop/qemu-ga-ref.html "$(DESTDIR)$(qemu_docdir)"
-> -	$(INSTALL_DATA) docs/interop/qemu-ga-ref.txt "$(DESTDIR)$(qemu_docdir)"
-> +	$(INSTALL_DIR) "$(DESTDIR)$(qemu_docdir)/interop"
-> +	$(INSTALL_DATA) docs/interop/qemu-ga-ref.html "$(DESTDIR)$(qemu_docdir)/interop"
-> +	$(INSTALL_DATA) docs/interop/qemu-ga-ref.txt "$(DESTDIR)$(qemu_docdir)/interop"
->  	$(INSTALL_DATA) docs/interop/qemu-ga-ref.7 "$(DESTDIR)$(mandir)/man7"
->  endif
->  endif
-> diff --git a/docs/index.html.in b/docs/index.html.in
-> index e9a1603..6736fa4 100644
-> --- a/docs/index.html.in
-> +++ b/docs/index.html.in
-> @@ -12,8 +12,8 @@
->              <li><a href="tools/index.html">Tools Guide</a></li>
->              <li><a href="interop/index.html">System Emulation Management and Interoperability Guide</a></li>
->              <li><a href="specs/index.html">System Emulation Guest Hardware Specifications</a></li>
-> -            <li><a href="qemu-qmp-ref.html">QMP Reference Manual</a></li>
-> -            <li><a href="qemu-ga-ref.html">Guest Agent Protocol Reference</a></li>
-> +            <li><a href="interop/qemu-qmp-ref.html">QMP Reference Manual</a></li>
-> +            <li><a href="interop/qemu-ga-ref.html">Guest Agent Protocol Reference</a></li>
->          </ul>
->      </body>
->  </html>
-> 
+>  MAINTAINERS | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index a012d9b74e..cd65bce72b 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -296,8 +296,7 @@ F: tests/tcg/s390x/
+>  L: qemu-s390x@nongnu.org
+> =20
+>  SH4 TCG CPUs
+> -M: Aurelien Jarno <aurelien@aurel32.net>
+> -S: Odd Fixes
+> +S: Orphan
+>  F: target/sh4/
+>  F: disas/sh4.c
 
+Acked-by: Aurelien Jarno <aurelien@aurel32.net>
+
+--=20
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
