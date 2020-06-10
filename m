@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj8uS-0005tk-74
+	id 1jj8uS-0005uJ-DQ
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 18:09:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39844)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jj8uO-0005jh-6D; Wed, 10 Jun 2020 18:09:20 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:38409)
+ id 1jj8uP-0005mg-HE; Wed, 10 Jun 2020 18:09:21 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43642)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jj8uN-0008Hh-AV; Wed, 10 Jun 2020 18:09:19 -0400
-Received: by mail-wm1-x335.google.com with SMTP id f185so3243559wmf.3;
- Wed, 10 Jun 2020 15:09:06 -0700 (PDT)
+ id 1jj8uO-0008Hs-Np; Wed, 10 Jun 2020 18:09:21 -0400
+Received: by mail-wr1-x442.google.com with SMTP id l10so4027320wrr.10;
+ Wed, 10 Jun 2020 15:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XzOFucgxtfjR38oZ5MkUD0v5mG7X6NnkIWKTAPmldmc=;
- b=vK8HR0j+mopCPYdl1iaWXUF4aMDb2tdwRbayiDhOOVyOQnvLNpjDtWS72NHRedT1lx
- EWY+ye3hAh1ceV6hc/PkpD+OTjqXVovfMVv7j7qMS1Y3TWFKfyj8ao81iJ+YImVmL8xe
- sC2v8LNA39iD0OED/0kIv27p7Z6I6XfyjRv97N8iGgTbI5deN07092Kx39hZYoScuH/6
- DAobJwkxHzw3aN8noimc+BYerUbguyCgjSobmh9qUlcsPMKw7kdOvESD1P3zaLh/f7FF
- hMBtKem7vnz9migTJ7+8H8FdJ5LI381JFWkjb0dywOqMsXjPrp7z3QBuI/ntsedulr9S
- YQGg==
+ bh=B90u68HWanE8Ef/dq5GEfdfCsFqZeY71gyQo1Aa7Eho=;
+ b=ivRNWkvY/CYg1r4+YE57MTF7jA6Debgfens3DLYERfxKda/1RWtGHBw0Ba9TLk2Fdf
+ CFcAxqH5/EkF6RoF5OdVo7wclMmVgEKgJxxclNmlv3myFtepMnjF9YKZWvOE2DDWrfHb
+ CIzyzJQmSmrcKzy7OVC03ObujXiD5OpwkBKq/kZZrF8eBNcgF6vCHJfsv+ZI15FYXPSt
+ eL+k+oa7cvemhQYsFJTr6mVGV+Xe8FQu8oQu4+q6Z0UfrTHGnrZV/eGYlpjSm9Zx+Gf0
+ EFP3iesTRXDdjhTkZ0gAIaQImCif1OsXxpM0Z65JmA1/IjRSGjtpdyxs9jnA+bhTFO3v
+ PJTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=XzOFucgxtfjR38oZ5MkUD0v5mG7X6NnkIWKTAPmldmc=;
- b=HRZqzcXQGDBwwK/ucjf+AOgptHHFMbn+kdxAX7kzj7CV6W4aMUKvg73vxy3LIoaMkz
- x9p3DUo9YAvGKcSvlizKIApcXDR6yrzXqE3+r1ih6eBUvMjytf3dep+ZLDFieoF5yciz
- Kt8aBvMtQybP5Rn8aZdRBPxhoN/FxQ3rMlpIVn7XkWCS12Hx2/tXbxW8lfsWeoPZnhDw
- XkWT5Z6bMUkOBb7cfEHrLeGFF0o8vRAwHaLOt4k8cIMghE7VLtYP/td3+HmavI2VOTKm
- 8arWupK33KXdLh6EwqzPpAb2yjqGjA4RZFKhEFTGjxAuj2qkUSibgPjdwnrU2VskkF0W
- B92Q==
-X-Gm-Message-State: AOAM531lYRn1Uh22XQ5D2UE/0tglSS4JkCuv3swgq7910ytdh1wD9QsX
- wd7LpFhKWX4aHTW35n6ieQF3FtKX
-X-Google-Smtp-Source: ABdhPJwiMZgP5l+GgMCL4OUAb0wnFhaaJT08CBIZI4gIeXyYwhmto98FgYcIwcA8RHqb4fXyL+D8/g==
-X-Received: by 2002:a7b:cb91:: with SMTP id m17mr5292334wmi.126.1591826944907; 
- Wed, 10 Jun 2020 15:09:04 -0700 (PDT)
+ bh=B90u68HWanE8Ef/dq5GEfdfCsFqZeY71gyQo1Aa7Eho=;
+ b=rkbZG00kKfNCq1DJN5DoCrXIDUHdYvdUr3KWzEA8Z7CZttcO3Tlh93qE50aa/F/jwj
+ kreC/68VgAZslyhdH5QmO0W6TZnscoDuk2mUxKSKPDsgJBWZKEXw86ltTHY5d4PmVr2b
+ h66Yk1gcz+J1rv4hebMVuOsfzoIQSAvjmI8mWGdwNzGPmS/XkeiXW0xSp+vfp5ldszte
+ sWEl75cqI1i3nDfoxwOEuKAiN0+nr1qq9Qc/Ni6iYM/VfFEHMOU3ngGaK4yEQQuNWecK
+ +yl4bCx9OS0m6K8A3axhIyXeZDqxIPGDlWR56sb4KfgB3418c8EAXT2wGhB7QG4cZdQD
+ CS1Q==
+X-Gm-Message-State: AOAM533EywxJeGDUw4B8Cg3ICl2iUOSbYZJJ59agpniXa2IEW9jMRDFy
+ ZqX6/NLkD6P57RZw3muEUETp+GqD
+X-Google-Smtp-Source: ABdhPJzvKAg7UyXWh512AU932j5Nbpey0MOgBcSYCOTqSCInBdBdHBq5BQGY1LuEYwbEcHMHUMaj/Q==
+X-Received: by 2002:a5d:69cb:: with SMTP id s11mr5952217wrw.91.1591826946587; 
+ Wed, 10 Jun 2020 15:09:06 -0700 (PDT)
 Received: from x1w.redhat.com (181.red-88-10-103.dynamicip.rima-tde.net.
  [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id 40sm1819354wrc.15.2020.06.10.15.09.03
+ by smtp.gmail.com with ESMTPSA id 40sm1819354wrc.15.2020.06.10.15.09.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jun 2020 15:09:04 -0700 (PDT)
+ Wed, 10 Jun 2020 15:09:05 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,11 +54,11 @@ Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 06/11] MAINTAINERS: Add Yoshinori Sato as maintainer of
- Renesas peripherals
-Date: Thu, 11 Jun 2020 00:08:48 +0200
-Message-Id: <20200610220853.8558-7-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 07/11] hw/sh4: Use MemoryRegion typedef
+Date: Thu, 11 Jun 2020 00:08:49 +0200
+Message-Id: <20200610220853.8558-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200610220853.8558-1-f4bug@amsat.org>
 References: <20200610220853.8558-1-f4bug@amsat.org>
@@ -66,8 +66,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -76,7 +76,7 @@ X-Spam_bar: /
 X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,39 +89,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 22:09:20 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 22:09:22 -0000
 
-Renesas peripherals are common to SH4/RX based MCUs. Their
-datasheets share common sections. It makes sense to maintain
-them altogether.
+Use the MemoryRegion type defined in "qemu/typedefs.h",
+to keep the repository style consistent.
 
-Yoshinori Sato volonteered to maintain them [*].
-
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg710928.html
-
-Cc: Magnus Damm <magnus.damm@gmail.com>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Suggested-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- MAINTAINERS | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/sh4/sh.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0398634179..967ca378fb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1953,8 +1953,8 @@ F: include/hw/*/*xive*
- F: docs/*/*xive*
+diff --git a/include/hw/sh4/sh.h b/include/hw/sh4/sh.h
+index 767a2df7e2..fe773cb01d 100644
+--- a/include/hw/sh4/sh.h
++++ b/include/hw/sh4/sh.h
+@@ -10,9 +10,8 @@
  
- Renesas peripherals
--M: Magnus Damm <magnus.damm@gmail.com>
--S: Odd Fixes
-+M: Yoshinori Sato <ysato@users.sourceforge.jp>
-+S: Maintained
- F: hw/char/sh_serial.c
- F: hw/timer/sh_timer.c
- F: include/hw/sh4/sh.h
+ /* sh7750.c */
+ struct SH7750State;
+-struct MemoryRegion;
+ 
+-struct SH7750State *sh7750_init(SuperHCPU *cpu, struct MemoryRegion *sysmem);
++struct SH7750State *sh7750_init(SuperHCPU *cpu, MemoryRegion *sysmem);
+ 
+ typedef struct {
+     /* The callback will be triggered if any of the designated lines change */
+@@ -32,7 +31,7 @@ int sh7750_register_io_device(struct SH7750State *s,
+ #define TMU012_FEAT_TOCR   (1 << 0)
+ #define TMU012_FEAT_3CHAN  (1 << 1)
+ #define TMU012_FEAT_EXTCLK (1 << 2)
+-void tmu012_init(struct MemoryRegion *sysmem, hwaddr base,
++void tmu012_init(MemoryRegion *sysmem, hwaddr base,
+                  int feat, uint32_t freq,
+ 		 qemu_irq ch0_irq, qemu_irq ch1_irq,
+ 		 qemu_irq ch2_irq0, qemu_irq ch2_irq1);
 -- 
 2.21.3
 
