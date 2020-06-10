@@ -1,72 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj1RT-00010X-3Q
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 10:10:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45602)
+	id 1jj7m9-00050w-UP
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 16:56:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jj1RS-00010M-7h
- for qemu-trivial@nongnu.org; Wed, 10 Jun 2020 10:10:58 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:45125
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jj1RR-0002H9-8e
- for qemu-trivial@nongnu.org; Wed, 10 Jun 2020 10:10:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591798255;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=phthIbgSkiymNcUN8w0aZ9SlQ7+pFpY+Od4p28l49tg=;
- b=dCbHVr7+Hhys/d99V+Vq0qkKYFj+O9plPby8bZeQT37xnAdZ1ID/2e9JnmqhFCqWPdpl9J
- ddiQk3GItzl7E+bxPnsC8mhFzKKwncT8CbfjhvI82wH3JY8ZxY4gDqoad+kcu/BGICFtkl
- Gy8/aTwIYqxKttCcjUtiRoqMknzBvvw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-378-9hWD8v4NPwio5uQAprQVfA-1; Wed, 10 Jun 2020 10:10:49 -0400
-X-MC-Unique: 9hWD8v4NPwio5uQAprQVfA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5AC2C80B73A;
- Wed, 10 Jun 2020 14:10:48 +0000 (UTC)
-Received: from thuth.remote.csb (unknown [10.40.192.19])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 296067DFF5;
- Wed, 10 Jun 2020 14:10:36 +0000 (UTC)
-Subject: Re: [PATCH] hw/vfio/pci-quirks: Fix broken legacy IGD passthrough
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jj7m8-00050f-SV; Wed, 10 Jun 2020 16:56:44 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33894)
+ by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jj7m7-0002uS-My; Wed, 10 Jun 2020 16:56:44 -0400
+Received: by mail-wr1-x442.google.com with SMTP id r7so3892541wro.1;
+ Wed, 10 Jun 2020 13:56:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZR2bnJR/HapCFNBpf3uilKNOhwhTOCFsp2GKeX72c6A=;
+ b=cbdKPsL4Md1lOvLguwb1F/tH7do9dMhuixG55lg+BupLuUeLLdGzw/mVaIVxahIEEZ
+ c1vgBqzpcqoojNHe2jG8lpDjoQ0VkySxeMil11rzwD++O3UX0t5WzOenpsLxpigRy2Fh
+ 3v51mmM8efZQHE+4gauts0TZ4bIPkPFWDTrliwj2HxNiBd7ZbRoIi8pyYauC7juJWzzH
+ 55+4CHnS0+zeB0k81mnJ/qHg2+NGNc3h0M7Pgx0hv4mgjralu52ppZa5576HhTH3BQT2
+ rvMRBbkzGIYTqOJPUkCT+kMlLh39S1zfKv32A5MXF5eQqxhyJ1Kt1MfVEu5AbMnpK5O1
+ dITA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZR2bnJR/HapCFNBpf3uilKNOhwhTOCFsp2GKeX72c6A=;
+ b=QaFx1x6oVFbndTYfSHJVX+XDKz7A1X3eA9Xpy4hk57YHkWG6pEMMkN649Xg7x/fPEb
+ q7OFIJxo2d7YYOXjYHFk6nHNv/das5D1No8nqNFC6ohIbOOrPWICONACYl+sxj5cZ3Ia
+ 0NsfHx5PeBwMRavwOVMyNsbYb86M4NrYxLsp/4HNnM13ipMeJISFbbnAy8kbZYrb+Fo2
+ W+oY/PItAPSZifT2dnBbYLWmqerYyWoipSaqbMH6TigejcxW+LpcILFyJOBRfNGZD7x9
+ iwI+JhFpmT3XrwMV7YaYrl1voD2edCYjye+06ROpIl6b486xcQlgluipFLZSVnZA8nIh
+ 7Q7g==
+X-Gm-Message-State: AOAM532Mtij4t3HNF9jhHQX5pAiV3IwJPpyDl38sTsDOWAHhykcwm8w/
+ lhBIMxwRLrmjPtK3qmvOZBQ=
+X-Google-Smtp-Source: ABdhPJzMMQqjJaFmREIybuBSeT4DII3vxrVihq+8jivmnL1mHfu0jMu8os1OiOPhXi34YrZKXDB6LQ==
+X-Received: by 2002:adf:fac2:: with SMTP id a2mr5653733wrs.304.1591822589545; 
+ Wed, 10 Jun 2020 13:56:29 -0700 (PDT)
+Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id b8sm1476370wrs.36.2020.06.10.13.56.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jun 2020 13:56:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 1/8] MAINTAINERS: Mark SH4 hardware orphan
+To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
+ Thomas Huth <thuth@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-stable@nongnu.org
-References: <20200610035102.20192-1-thuth@redhat.com>
- <706060db-46c4-2dee-d746-eba24e6b137d@redhat.com>
- <a8195883-fb78-0cc1-5e15-e100dcb807de@redhat.com>
- <c5be50d5-5158-ddcc-8de0-bc6c3cfce12a@vivier.eu>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <c2809e06-5353-ca2d-e195-55c5a3e0dbac@redhat.com>
-Date: Wed, 10 Jun 2020 16:10:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+References: <20200608090142.6793-1-f4bug@amsat.org>
+ <20200608090142.6793-2-f4bug@amsat.org>
+ <CAHiYmc5UUaSKB6Ee0ds_hj0FBTzt0iLxzNWySt0mcZ9dvtZNyA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <377d3dfd-fa04-24b9-04fd-f2ed431820c5@amsat.org>
+Date: Wed, 10 Jun 2020 22:56:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <c5be50d5-5158-ddcc-8de0-bc6c3cfce12a@vivier.eu>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAHiYmc5UUaSKB6Ee0ds_hj0FBTzt0iLxzNWySt0mcZ9dvtZNyA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 23:51:15
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,43 +93,274 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 14:10:58 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 20:56:45 -0000
 
-On 10/06/2020 15.16, Laurent Vivier wrote:
-> Le 10/06/2020 à 09:50, Thomas Huth a écrit :
->> On 10/06/2020 09.31, Philippe Mathieu-Daudé wrote:
->>> On 6/10/20 5:51 AM, Thomas Huth wrote:
->>>> The #ifdef CONFIG_VFIO_IGD in pci-quirks.c is not working since the
->>>> required header config-devices.h is not included, so that the legacy
->>>> IGD passthrough is currently broken. Let's include the right header
->>>> to fix this issue.
->>>>
->>>> Buglink: https://bugs.launchpad.net/qemu/+bug/1882784
->>>> Fixes: 29d62771c81d8fd244a67c14a1d968c268d3fb19
->>>>        ("hw/vfio: Move the IGD quirk code to a separate file")
->>>
->>> What about shorter tag?
->>>
->>> Fixes: 29d62771c81 ("vfio: Move the IGD quirk code to a separate file")
+On 6/10/20 1:08 PM, Aleksandar Markovic wrote:
+> пон, 8. јун 2020. у 11:05 Philippe Mathieu-Daudé <f4bug@amsat.org> је
+> написао/ла:
 >>
->> I always forget whether to use the short or the long version for
->> "Fixes:" ... this can hopefully be fixed (if necessary) when the patch
->> gets picked up.
+>> Aurelien Jarno expressed his desire to orphan the SH4 hardware [*]:
+>>
+>>   I don't mind being [...] removed from there.
+>>   I do not really have time to work on that.
+>>
+>> Mark the SH4 emulated hardware orphan.
+>>
+>> Many thanks to Aurelien for his substantial contributions to QEMU,
+>> and for maintaining the SH4 hardware for various years!
+>>
+>> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg708400.html
+>>
+>> Message-Id: <20200601214125.GA1924990@aurel32.net>
+>> Acked-by: Aurelien Jarno <aurelien@aurel32.net>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
 > 
-> you can add in your ~/.gitconfig
+> The basic idea of the patch (as read from the title and the commit
+> message) is good and positive.
 > 
-> [alias]
->         showfix = log -1 --format=fixes
-> [pretty]
->         fixes = Fixes: %h (\"%s\")%nCc: %ae
+> The problem is that the patch does something different than the commit
+> message says - pretending that it just orphans something. Which is not
+> good. Actually, very clumsy and bad.
 > 
-> and then:
-> 
-> $ git showfix 29d62771c81d8fd244a67c14a1d968c268d3fb19
-> Fixes: 29d62771c81d ("hw/vfio: Move the IGD quirk code to a separate file")
+> It creates a whole new subsection in MAINTAINERS file (not said in the
+> commit message), without any consistency with the current organization
+> in the file. That new subsection looks completely misplaced, living
+> with "TCG CPUs" neighbours.
 
-That's nice, thanks! I've put it now in my gitconfig :-)
+I guess you misread the patch context, pasting it again:
 
- Thomas
+-->8--
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6e7890ce82..49d90c70de 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -299,9 +299,7 @@ SH4 TCG CPUs
+ M: Aurelien Jarno <aurelien@aurel32.net>
+ S: Odd Fixes
+ F: target/sh4/
+-F: hw/sh4/
+ F: disas/sh4.c
+-F: include/hw/sh4/
 
+ SPARC TCG CPUs
+ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+@@ -1948,6 +1946,14 @@ F: hw/*/*xive*
+ F: include/hw/*/*xive*
+ F: docs/*/*xive*
+
++SH4 Hardware
++S: Orphan
++F: hw/sh4/
++F: hw/char/sh_serial.c
++F: hw/intc/sh_intc.c
++F: hw/timer/sh_timer.c
++F: include/hw/sh4/
++
+ Subsystems
+ ----------
+ Audio
+---
+
+Pasting with more context and lines numbered:
+
+ 283 RENESAS RX CPUs
+ 284 M: Yoshinori Sato <ysato@users.sourceforge.jp>
+ 285 S: Maintained
+ 286 F: target/rx/
+ 287
+ 288 S390 TCG CPUs
+ 289 M: Richard Henderson <rth@twiddle.net>
+ 290 M: David Hildenbrand <david@redhat.com>
+ 291 S: Maintained
+ 292 F: target/s390x/
+ 293 F: hw/s390x/
+ 294 F: disas/s390.c
+ 295 F: tests/tcg/s390x/
+ 296 L: qemu-s390x@nongnu.org
+ 297
+ 298 SH4 TCG CPUs
+ 299 M: Aurelien Jarno <aurelien@aurel32.net>
+ 300 S: Odd Fixes
+ 301 F: target/sh4/
+ 302 F: disas/sh4.c
+
+^ This part is the TCG frontend.
+
+ 303
+ 304 SPARC TCG CPUs
+ 305 M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+ 306 M: Artyom Tarasenko <atar4qemu@gmail.com>
+ 307 S: Maintained
+ 308 F: target/sparc/
+ 309 F: hw/sparc/
+ 310 F: hw/sparc64/
+ 311 F: include/hw/sparc/sparc64.h
+ 312 F: disas/sparc.c
+ 313
+ 314 UniCore32 TCG CPUs
+ 315 M: Guan Xuetao <gxt@mprc.pku.edu.cn>
+ 316 S: Maintained
+ 317 F: target/unicore32/
+ 318 F: hw/unicore32/
+ 319 F: include/hw/unicore32/
+ ...
+
+1240 RISC-V Machines
+1241 ---------------
+1242 OpenTitan
+1243 M: Alistair Francis <Alistair.Francis@wdc.com>
+1244 L: qemu-riscv@nongnu.org
+1245 S: Supported
+1246 F: hw/riscv/opentitan.c
+1247 F: include/hw/riscv/opentitan.h
+1248
+1249 SH4 Machines
+1250 ------------
+1251 R2D
+1252 M: Magnus Damm <magnus.damm@gmail.com>
+1253 S: Maintained
+1254 F: hw/sh4/r2d.c
+1255 F: hw/intc/sh_intc.c
+1256 F: hw/timer/sh_timer.c
+
+^ a SH4-based machine
+
+1257
+1258 Shix
+1259 M: Magnus Damm <magnus.damm@gmail.com>
+1260 S: Odd Fixes
+1261 F: hw/sh4/shix.c
+1262
+1263 SPARC Machines
+1264 --------------
+1265 Sun4m
+1266 M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+1267 S: Maintained
+1268 F: hw/sparc/sun4m.c
+1269 F: hw/sparc/sun4m_iommu.c
+....
+
+1455 Devices
+1456 -------
+1457 EDU
+1458 M: Jiri Slaby <jslaby@suse.cz>
+1459 S: Maintained
+1460 F: hw/misc/edu.c
+1461
+1462 IDE
+1463 M: John Snow <jsnow@redhat.com>
+1464 L: qemu-block@nongnu.org
+1465 S: Supported
+1466 F: include/hw/ide.h
+1467 F: include/hw/ide/
+1468 F: hw/ide/
+....
+
+1919 PIIX4 South Bridge (i82371AB)
+1920 M: Hervé Poussineau <hpoussin@reactos.org>
+1921 M: Philippe Mathieu-Daudé <f4bug@amsat.org>
+1922 S: Maintained
+1923 F: hw/isa/piix4.c
+1924 F: include/hw/southbridge/piix.h
+1925
+1926 Firmware configuration (fw_cfg)
+1927 M: Philippe Mathieu-Daudé <philmd@redhat.com>
+1928 R: Laszlo Ersek <lersek@redhat.com>
+1929 R: Gerd Hoffmann <kraxel@redhat.com>
+1930 S: Supported
+1931 F: docs/specs/fw_cfg.txt
+1932 F: hw/nvram/fw_cfg.c
+1933 F: stubs/fw_cfg.c
+1934 F: include/hw/nvram/fw_cfg.h
+1935 F: include/standard-headers/linux/qemu_fw_cfg.h
+1936 F: tests/qtest/libqos/fw_cfg.c
+1937 F: tests/qtest/fw_cfg-test.c
+1938 T: git https://github.com/philmd/qemu.git fw_cfg-next
+1939
+1940 XIVE
+1941 M: David Gibson <david@gibson.dropbear.id.au>
+1942 M: Cédric Le Goater <clg@kaod.org>
+1943 L: qemu-ppc@nongnu.org
+1944 S: Supported
+1945 F: hw/*/*xive*
+1946 F: include/hw/*/*xive*
+1947 F: docs/*/*xive*
+1948
+1949 SH4 Hardware
+1950 S: Orphan
+1951 F: hw/sh4/
+1952 F: hw/char/sh_serial.c
+1953 F: hw/intc/sh_intc.c
+1954 F: hw/timer/sh_timer.c
+1955 F: include/hw/sh4/
+
+^ The section is placed under the "Devices" category.
+
+1956
+1957 Subsystems
+1958 ----------
+1959 Audio
+1960 M: Gerd Hoffmann <kraxel@redhat.com>
+1961 S: Maintained
+1962 F: audio/
+....
+
+Where do you think this entry should be placed?
+
+> On top of that, it creates a new
+> precedent, leaving many unanswered questions, like: Should other
+> targets follow the same pattern?
+> 
+> I personally think that creating a new subsection is just a code
+> churn, waste of everybody's time on unimportant things.
+> 
+> Wouldn't it be simpler that you just changed statuses of all Aurelien
+> sh4 sections to "Orphaned", as he already said he approves, and leave
+> sh4 sections reorganization to a future maintainer?
+> 
+> If you really want to reorganize sh4 sections, these changes should be
+> in a separate patch. "Orphaning" patch should contain only changes of
+> statuses.
+> 
+> Regards,
+> Aleksandar
+> 
+>>  MAINTAINERS | 10 ++++++++--
+>>  1 file changed, 8 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 6e7890ce82..49d90c70de 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -299,9 +299,7 @@ SH4 TCG CPUs
+>>  M: Aurelien Jarno <aurelien@aurel32.net>
+>>  S: Odd Fixes
+>>  F: target/sh4/
+>> -F: hw/sh4/
+>>  F: disas/sh4.c
+>> -F: include/hw/sh4/
+>>
+>>  SPARC TCG CPUs
+>>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>> @@ -1948,6 +1946,14 @@ F: hw/*/*xive*
+>>  F: include/hw/*/*xive*
+>>  F: docs/*/*xive*
+>>
+>> +SH4 Hardware
+>> +S: Orphan
+>> +F: hw/sh4/
+>> +F: hw/char/sh_serial.c
+>> +F: hw/intc/sh_intc.c
+>> +F: hw/timer/sh_timer.c
+>> +F: include/hw/sh4/
+>> +
+>>  Subsystems
+>>  ----------
+>>  Audio
+>> --
+>> 2.21.3
+>>
+>>
+> 
 
