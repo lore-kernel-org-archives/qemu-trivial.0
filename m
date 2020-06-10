@@ -1,50 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Uw-0007uu-2R
+	id 1jj0Uw-0007vN-JN
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45154)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ur-0007l7-0Y; Wed, 10 Jun 2020 09:10:25 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:46185)
+ id 1jj0Ur-0007m9-Mq; Wed, 10 Jun 2020 09:10:25 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:37667)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Up-0003cY-4z; Wed, 10 Jun 2020 09:10:24 -0400
+ id 1jj0Up-0003d4-9a; Wed, 10 Jun 2020 09:10:25 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M6lxe-1jrEUa0Fag-008JRU; Wed, 10 Jun 2020 15:10:14 +0200
+ id 1N6KML-1iq5PX05ST-016hql; Wed, 10 Jun 2020 15:10:18 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- Raphael Norwitz <raphael.s.norwitz@gmail.com>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- Eric Blake <eblake@redhat.com>
-Subject: [PULL v2 01/16] Fix parameter type in vhost migration log path
-Date: Wed, 10 Jun 2020 15:09:56 +0200
-Message-Id: <20200610131011.1941209-2-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: [PULL v2 07/16] qemu-img: Fix doc typo for 'bitmap' subcommand
+Date: Wed, 10 Jun 2020 15:10:02 +0200
+Message-Id: <20200610131011.1941209-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GC4QxVhoyRWPc2opmiANzOPcwFOhSvLfhoXfjQFiQAGmI5kg1fh
- ip2rXH5dOtjWESF9Z8A+xvyBu6sGdUETpHpTFL/RLAjZxhKnNnV1rHEBPkjLW9FarwC0Ze0
- osAGfGPjkmHPW9a1oYsUlqincWHaoSL/qs08z8FTFDdagrN/C2fa6cV0isCPITize/5JRNo
- eZDIIeoUSt35+5MvL+X9A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/2BlOD/8RX0=:fiowDzPcbOKbIEeEYSVbNC
- eh66wg1Kpbpw92XQUGaHM3ByigAp7IPE3QCbPvLikJNZvrhbS6wbHcV/4MCVJYMix3/sHhgRl
- g/3KMh+gsf+c5H00Mv+VDuY07cE8eOxHIFR4p/Um3RyHZdvcdNy0aYsIuBhUthDuHNES3K/C2
- CXCfD3SO2Ogy6OOyYAb8nMUGltp3BBeCZwBNASeIfC4EQwoN6beb6FBOxpqGC4Vvk2TDV6Q4d
- XoSEA6AG1sPASRGw7K1dBmJsL7rNfy/UdaU2GBqullNepBA1rDkvZHqcz4w1HToD09HIha9Qe
- WtPrz3uRVZx1SHX8wA8ty69qM3nnSyX5Mo/uOGBRRcqkCM2x1Jw59g8BnolZvkLeKo/u9++92
- mFhiK6PPc7viYnAvx7pE/LsFtkZuqUCdsLFwpNt9zJfkwvv4UAZHcN2wG0DcaSivUxX+xRuXo
- WFSDtf7o6nnO5TqgZ51zxGRUqvuAqvUvc3ZHarJoCmO5j0FIJoIaklUQC2JhWFxjwKDQYGui7
- QruQXVbgeFoGitL76NimV0q2DQ1Knza+8jnvRQEhF2V3FxZq0AwPAzbnhv3QDKQs+0uD88ZsA
- k8Y3v0l/KZyRufkvYuW4IEvAvrjHPxI40v2uFuTwrrDY8G4Xa2H6aG/h+kInt6u69co1bympg
- AkUTvsMbW9EVyX+7yOKDBXYUYs6UFQe6prIx/TM6NPNvBAHsKDlgj1acopL2dT2dkIbGEy3QA
- E4j6TFcESqoJ/629RkhsLa7ZzLlEE/7Am2hfv64/AdI/u04WXzkSxLz2AdCNHD2QGO1MI6ip5
- k4d63rreD73W2SececyC6/MWysHgbRsdyV/SOmibp4hlif4qZdIBIzI0kq7bIyWzCwovQ7m
+X-Provags-ID: V03:K1:fK8iv6C1HwdqQhd/VkgelztgmZ7yxCQwoDAv43kmXHdv0sWRPjY
+ RA9JL+I2c0a7jdxDQbdasICULdQk1X8tMYW2Z5oX35UEEqwWRXrkCP9mVE2fR1khinotDux
+ ps0FXEvEvCGoGixiHt9vUJk3E3qRnfjhIHzc3OKHvhBihPP5dPhujaE/4QHlEhNqEAoNmml
+ sYBnb+gHwOci0/goFiP3w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:YbtXtnlVb9Q=:zP3khABMS+VslhTTURfDky
+ atM1nzYWYeKVpKdsZpV1tKWIuj31z8an7nfJWQuUOjm3F4iVA8Wi3YH6D9olXG2KsASRKkR5p
+ 2Ql6kVXa/MoQy2M/Q8uo6yw8UpmFz/IVAjKfxA7XxTUd3vIvsamXg1jzncU1+Z1SmGcD6hof3
+ tFf76ViH1PlFOlCKrV0DuC+Mn++eIuhEfa8LaARRE5PrbB252gQv2oCbYe3zAtgbeGpg/wtAy
+ EJlprAJ8ViCJJ2h8NPRwmw+SiwT6LQ4h4xOGU8/neaG4AfdF+HxjGfd/6H6FmT94+8CaIh63L
+ sih1GKIuO5vp6XDqccI2fFimsCHR8HXK9PB7ChzBB7xed5pLkHVKuaMqxsCxHGI5/DX1ryvmo
+ hRreQB5knWlOIu/fjfmz0kRpmDr/iyjsyks55B88eUbFt87tw4GGEkucKBN5vcYwphc7Q9uRv
+ HYUWzIJ8ajxjkV7zm43HxqAbWDIm3bL4uw2R0XQaFTrUDC2beXeapUzBEOm/69cHKq+5i8Fj0
+ WcUFamYzoDaelnXawFDMfXNujhsA9lVDyWeITkepseqNMV+F5xqEKSKaqaZpYv9lfni+X7cea
+ 8ZfFYIFV9GCoAWqcaAYaeD7+fHyqaEU8ooGaZ2zpTxM3zX9NctwVoabgX8GLe/kP2kVqySGp1
+ 2FY17rq1amQCkw5ZAwWEy9xhy4F8ic7mfDL+QGMRk3qEKIRmySVoIfDsv4Qzz+aGpQB5qmkfK
+ qbw73A7WU4uRShNvHUarNP29xPqzR3wFtapLWzN1EhgdbXPc1/eek5GMXxNxwNulu8rqRwbV8
+ Wfwh9iqZeCKCr93loMqvegER/O7ZQfdVZy7OrI+WIbcZFXzPceNh8YwhvDZ6HfNByQRD5+T
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
@@ -66,42 +63,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:25 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:26 -0000
 
-From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
+From: Eric Blake <eblake@redhat.com>
 
-The ‘enable’ parameter to the vhost_migration_log() function is given as
-an int, but "true"/"false" values are passed in wherever it is invoked.
-Inside the function itself it is only ever compared with bool values.
-Therefore the parameter value itself should be changed to bool.
+Prefer a consistent naming for the --merge argument.
 
-Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Message-Id: <CAFubqFtqNZw=Y-ar3N=3zTQi6LkKg_G-7W7OOHHbE7Y1fV7HAQ@mail.gmail.com>
+Fixes: 3b51ab4bf
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-Id: <20200529144527.1943527-1-eblake@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/virtio/vhost.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ docs/tools/qemu-img.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index aff98a0ede56..aa06a3691919 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -809,12 +809,12 @@ err_features:
-     return r;
- }
+diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
+index 69cd9a30373a..7f0737488ade 100644
+--- a/docs/tools/qemu-img.rst
++++ b/docs/tools/qemu-img.rst
+@@ -300,7 +300,7 @@ Command description:
  
--static int vhost_migration_log(MemoryListener *listener, int enable)
-+static int vhost_migration_log(MemoryListener *listener, bool enable)
- {
-     struct vhost_dev *dev = container_of(listener, struct vhost_dev,
-                                          memory_listener);
-     int r;
--    if (!!enable == dev->log_enabled) {
-+    if (enable == dev->log_enabled) {
-         return 0;
-     }
-     if (!dev->started) {
+   ``--disable`` to change *BITMAP* to stop recording future edits.
+ 
+-  ``--merge`` to merge the contents of *SOURCE_BITMAP* into *BITMAP*.
++  ``--merge`` to merge the contents of the *SOURCE* bitmap into *BITMAP*.
+ 
+   Additional options include ``-g`` which sets a non-default
+   *GRANULARITY* for ``--add``, and ``-b`` and ``-F`` which select an
 -- 
 2.26.2
 
