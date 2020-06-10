@@ -1,48 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Uo-0007hD-8a
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45108)
+	id 1jj0Up-0007ik-M1
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ul-0007f6-KA; Wed, 10 Jun 2020 09:10:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:50445)
+ id 1jj0Um-0007fp-HN; Wed, 10 Jun 2020 09:10:20 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:41555)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Uk-0003XU-EL; Wed, 10 Jun 2020 09:10:19 -0400
+ id 1jj0Ul-0003YD-F5; Wed, 10 Jun 2020 09:10:20 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mw9Lw-1it6lF1Vsy-00s8b8; Wed, 10 Jun 2020 15:10:13 +0200
+ id 1MhDEo-1jEbLx1VsA-00eLLE; Wed, 10 Jun 2020 15:10:15 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL v2 00/16] Trivial branch for 5.1 patches
-Date: Wed, 10 Jun 2020 15:09:55 +0200
-Message-Id: <20200610131011.1941209-1-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>
+Subject: [PULL v2 03/16] .mailmap: Update Fred Konrad email address
+Date: Wed, 10 Jun 2020 15:09:58 +0200
+Message-Id: <20200610131011.1941209-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
+References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:HeTxU4aFpAXH1FbAg4OVCtd1XgyX0JfG5z82ZY2r87Hdkm6Q133
- uHba02HHxaAELdS7+roi/QTcz+C8r1IcEl//S+OaNiDFqhfNfbfEgegFiURqel5EhqANF0U
- 5cftHcQ7poKdaNoobFCbx66fPHP+F3edvqCU4iV1q7Xot2gdW+Ygeo8Ep1PxVwD/RBiIVPE
- NVMe5loz4sHkYTnBnunPg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mGWbMxUzaRY=:oqjEl0bFLTOE5JoEJtiWqJ
- T/HkCGIfIBmCwfs5RieW1EtcEtnWtcgMhZHIjwxwvlZnRapy/cY1IEqmkQt+BuoJscQioWXE5
- u5nYogPqTj5XVyVaY3Vv6lte+OvXnc/jZTVhSW2zldH4z+SttdCZl/9IBVBRiOfqjRUvcSpEd
- 0/jsCU4sttBdo6rTL7xq1JFkkRGMLHpuH6eZqOWbo18vgOJxMtn/0ABBSOslqER8IoJQFjOIf
- nHk0LYbX9SJpRRgmiPtsXhWlypXufOD09kqX8rq4e9N+YdnkI7iuDU97B+gdHdchcq0YA9Mkw
- R7O9J8ii22YoB+SWvMZM+P0O8aC+fgUbzetbM3on0IX1oHVsyT+PDG8LJ4l+ukKwPBnIuO+Cp
- Rpw+Vmf+FfBjnwiXKmVz2mNbqppIefgqepnz8SwE2OTywFqfp4iFvRaPkNWgDNHI5wO2s62qY
- SbVVPWGtAP7ppLKv590e6BBtSBYEGbMAWgTCtwy33GygPgUPxSFWD0FEgcc6jvfqWtTcVvD5Z
- QW7+PwD05uTQKbNygvDZFGUvn0Q4UdYqzAqbj76RndCGUPWtmy8AvFqWRi9S33FtnNnHFy54z
- EVcBGTxSPG7EPC2A9RwWjhCl5cmliRSJAcEW84x6/DY7JE+MbWSBjXstu1pQ+8cL26sHrojpX
- 1WIapqZWSnjhYEMktKg8zPSn9HRJ75Vyx/RqXpMnlDbjTHMKxhTguWunDy5RrSUehIPF4EXY7
- GfHRfBok9CbWYPVrw4g//tjFvChRCcAP3NEW91KBBdRaOptmHoznnlhpFiPGO538AkM9Jic06
- 9WvL00veDx9+4YdbvynyA7rv05LSq3iRQzhq3p/CjOCrJmfFSLKkMsorgcY9jGqxYVE4X94
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:aTIGPe841mZtN90PlWEZkR07pjm50oT/zey3EVHP5vYBhRPOEsU
+ B5Jb7F6qliljDSDhaaCXMBUcZMiMDjdmqHa2seQrEe5eBJ6y2yAmz51c8cmx/+61ENbptGb
+ t7AIgQRU97Fc8bWiJhqMcyufBWMFDgznqLNMweB76I2z3ONTynrNNu+TyWDsfKkmL9mGQ0Y
+ bLEg1pJDUbvuDyFSptfng==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GqaU1epEMdM=:W4SbNrzNS8DoGB5kvXPcy1
+ M/Kx5eQNcOaGLj4AlaLj+xJtxTOB1H2OIfhuzMrf6dakWPjNvhpjs9p1D7Y6/FyRV2Ju/B570
+ PAqjpY56TyL/ksscj9E2Ynfig4K2zUx/fVqB+Rj6HPM2rAlyJztMlZWOtH8jUgJPk0uXoUliW
+ JoXG72+aeh1vjUz8Gln//gQr1piZx3dM5uQAJ0Io9SNN5Geax9+5JlHt6NFMUd73HjhmsYtAd
+ KwAbrUnUKLLmqfiqgh2frlXYCmhZpNDAPFuf0xl5xGApZOB2Hfl41cfK+Cchl9oG3icmrQ2dU
+ oUBe0cJpdcjeOoUi6DAyJOLYLzeG4blKYTxh1Nav9sspN96Kb8pGzzDeaJ3y77qH8rlSmBMA3
+ BL5MPVAJSq8fCvBI6HBZd2hrYXuFPJxh+gft7xSUzJl534890pLsUuCAnmMLAuFiDXNPEkx7/
+ TJG0M0sql4qCdtD27xEFudtAVn66SlXeQ0U/sNu9CMMYNN+uqcufJr/bfO79daoKEqHSz+Mf9
+ dqApPYdwRklI4ZeE0pKBlbZvXNrDmDmAhqERiDSTAKSwgXiBgDcuGCaXShvp8ghiR3xtnMj7v
+ j6QYLkRgZs60hZBisrlVQ2F99MdBa2WqZdHXt1ZPvevJwL9qjzUGlVs7pCDfK20g615yycnY4
+ +c96n4Cua451/DfgRutEdvKZg1BkTUnPpxyDdpTE+MVLEF7AqAwKxd06ncpIhbjurnBQvD3xM
+ RXdIyhsi/n3ugI0kKZNu7NCeGK6VK2sTJ19URvDFAU5jaiLAYJqcva/mxB1xyZA9RHqrUG7fZ
+ //Fx0dQWRFyaPAuD1E4T6c7XKsPxDzWUkxhfeJVu0LqVdbb9l9TS0W0pP+3hvhxnBTGFcSn
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:15
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -61,86 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:20 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:21 -0000
 
-The following changes since commit 49ee11555262a256afec592dfed7c5902d5eefd2=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-5.1-pul=
-l-=3D=0D
-request' into staging (2020-06-08 11:04:57 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.1-pull-request=
-=0D
-=0D
-for you to fetch changes up to fe18e6eecdd45d3dff0c8968cbb07c5e02fbe4c8:=0D
-=0D
-  semihosting: remove the pthread include which seems unused (2020-06-10 11=
-:2=3D=0D
-9:44 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial branch pull request 20200610=0D
-=0D
-Convert DPRINTF() to traces or qemu_logs=0D
-Use IEC binary prefix definitions=0D
-Use qemu_semihosting_log_out() in target/unicore32=0D
-Some code and doc cleanup=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Eric Blake (1):=0D
-  qemu-img: Fix doc typo for 'bitmap' subcommand=0D
-=0D
-KONRAD Frederic (1):=0D
-  semihosting: remove the pthread include which seems unused=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (12):=0D
-  .mailmap: Update Fred Konrad email address=0D
-  hw/unicore32/puv3: Use qemu_log_mask(ERROR) instead of debug printf()=0D
-  hw/isa/apm: Convert debug printf()s to trace events=0D
-  hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of debug printf=0D
-  hw/arm/aspeed: Correct DRAM container region size=0D
-  hw/hppa/dino: Use the IEC binary prefix definitions=0D
-  hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions=0D
-  target/i386/cpu: Use the IEC binary prefix definitions=0D
-  target/unicore32: Remove unused headers=0D
-  target/unicore32: Replace DPRINTF() by qemu_log_mask(GUEST_ERROR)=0D
-  target/unicore32: Prefer qemu_semihosting_log_out() over curses=0D
-  hw/openrisc/openrisc_sim: Add assertion to silence GCC warning=0D
-=0D
-Raphael Norwitz (1):=0D
-  Fix parameter type in vhost migration log path=0D
-=0D
-Thomas Huth (1):=0D
-  net: Do not include a newline in the id of -nic devices=0D
-=0D
- .mailmap                              |  1 +=0D
- default-configs/unicore32-softmmu.mak |  1 +=0D
- docs/tools/qemu-img.rst               |  2 +-=0D
- hw/arm/aspeed.c                       |  2 +-=0D
- hw/dma/puv3_dma.c                     |  9 +++-=0D
- hw/gpio/puv3_gpio.c                   | 15 ++++--=0D
- hw/hppa/dino.c                        |  4 +-=0D
- hw/i386/xen/xen-hvm.c                 |  3 +-=0D
- hw/intc/puv3_intc.c                   |  9 +++-=0D
- hw/isa/apm.c                          | 15 ++----=0D
- hw/isa/trace-events                   |  4 ++=0D
- hw/misc/auxbus.c                      |  2 +-=0D
- hw/misc/puv3_pm.c                     |  9 +++-=0D
- hw/openrisc/openrisc_sim.c            |  1 +=0D
- hw/semihosting/console.c              |  1 -=0D
- hw/timer/puv3_ost.c                   |  9 +++-=0D
- hw/unicore32/puv3.c                   |  2 -=0D
- hw/virtio/vhost.c                     |  4 +-=0D
- net/net.c                             |  2 +-=0D
- target/i386/cpu.c                     |  2 +-=0D
- target/unicore32/helper.c             | 70 +++++----------------------=0D
- 21 files changed, 74 insertions(+), 93 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Update Fred Konrad email address to avoid emails bouncing.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-Id: <20200518103920.10699-1-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.mailmap b/.mailmap
+index e3628c7a6613..d6bd1b2fec02 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -45,6 +45,7 @@ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <amarkovic@wavecomp.com>
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <arikalo@wavecomp.com>
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <aleksandar.rikalo@rt-rk.com>
+ Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
++Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+ James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+ Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+-- 
+2.26.2
+
 
