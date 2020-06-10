@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Uw-0007vN-JN
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45164)
+	id 1jj0Ux-0007xX-3R
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ur-0007m9-Mq; Wed, 10 Jun 2020 09:10:25 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:37667)
+ id 1jj0Us-0007mr-1f; Wed, 10 Jun 2020 09:10:26 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:55147)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Up-0003d4-9a; Wed, 10 Jun 2020 09:10:25 -0400
+ id 1jj0Uq-0003f8-Sq; Wed, 10 Jun 2020 09:10:25 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N6KML-1iq5PX05ST-016hql; Wed, 10 Jun 2020 15:10:18 +0200
+ id 1MCsLo-1jaF3J1PaC-008nvu; Wed, 10 Jun 2020 15:10:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Subject: [PULL v2 07/16] qemu-img: Fix doc typo for 'bitmap' subcommand
-Date: Wed, 10 Jun 2020 15:10:02 +0200
-Message-Id: <20200610131011.1941209-8-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL v2 06/16] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of
+ debug printf
+Date: Wed, 10 Jun 2020 15:10:01 +0200
+Message-Id: <20200610131011.1941209-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fK8iv6C1HwdqQhd/VkgelztgmZ7yxCQwoDAv43kmXHdv0sWRPjY
- RA9JL+I2c0a7jdxDQbdasICULdQk1X8tMYW2Z5oX35UEEqwWRXrkCP9mVE2fR1khinotDux
- ps0FXEvEvCGoGixiHt9vUJk3E3qRnfjhIHzc3OKHvhBihPP5dPhujaE/4QHlEhNqEAoNmml
- sYBnb+gHwOci0/goFiP3w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YbtXtnlVb9Q=:zP3khABMS+VslhTTURfDky
- atM1nzYWYeKVpKdsZpV1tKWIuj31z8an7nfJWQuUOjm3F4iVA8Wi3YH6D9olXG2KsASRKkR5p
- 2Ql6kVXa/MoQy2M/Q8uo6yw8UpmFz/IVAjKfxA7XxTUd3vIvsamXg1jzncU1+Z1SmGcD6hof3
- tFf76ViH1PlFOlCKrV0DuC+Mn++eIuhEfa8LaARRE5PrbB252gQv2oCbYe3zAtgbeGpg/wtAy
- EJlprAJ8ViCJJ2h8NPRwmw+SiwT6LQ4h4xOGU8/neaG4AfdF+HxjGfd/6H6FmT94+8CaIh63L
- sih1GKIuO5vp6XDqccI2fFimsCHR8HXK9PB7ChzBB7xed5pLkHVKuaMqxsCxHGI5/DX1ryvmo
- hRreQB5knWlOIu/fjfmz0kRpmDr/iyjsyks55B88eUbFt87tw4GGEkucKBN5vcYwphc7Q9uRv
- HYUWzIJ8ajxjkV7zm43HxqAbWDIm3bL4uw2R0XQaFTrUDC2beXeapUzBEOm/69cHKq+5i8Fj0
- WcUFamYzoDaelnXawFDMfXNujhsA9lVDyWeITkepseqNMV+F5xqEKSKaqaZpYv9lfni+X7cea
- 8ZfFYIFV9GCoAWqcaAYaeD7+fHyqaEU8ooGaZ2zpTxM3zX9NctwVoabgX8GLe/kP2kVqySGp1
- 2FY17rq1amQCkw5ZAwWEy9xhy4F8ic7mfDL+QGMRk3qEKIRmySVoIfDsv4Qzz+aGpQB5qmkfK
- qbw73A7WU4uRShNvHUarNP29xPqzR3wFtapLWzN1EhgdbXPc1/eek5GMXxNxwNulu8rqRwbV8
- Wfwh9iqZeCKCr93loMqvegER/O7ZQfdVZy7OrI+WIbcZFXzPceNh8YwhvDZ6HfNByQRD5+T
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:f6tXZMwZDUbgrvEjnrqNSAxGAjaPzbZV3Tk/jRVBuao3Axji1JW
+ iMcdgfLsBJQn0KoAx/EV2dKJIUc2GRqsaO4VDvLDJInZYsMkXlN4ZEfPiNeSSEavMfRP+io
+ BTHcMLFyZjwApHoxVHGBrGX6vsjL8KPLT8uo9FmRPNil6K43vnmtfNVSmxq/E2gtyF0131s
+ 3pZtqv2KCoqAqEeAciDuA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:95eZisdeyBY=:83FmCVHX5OnDe1rohRwect
+ 2FTdWFWRbPFFZ9zEdLuVdCTBCNJpsQxZrbK+oiCx/pRjQbQK+YcnqCdiOM62+nXBuQOVzcL8t
+ NZ9B/keYw8nmaqoeI3e/MyBxFoF1x8qsbw2milId6RmT09qasAAZ5B1znMUE1y9vRGmdBgEBA
+ AmwgtqEAvj4pOmIatd6a/Q1B0n2U9BWTqEwOFvb3Y0dDT4Q0aXlVgMJKq0n9P7Op6SycayPtl
+ fNbecJec7WMbrrQoIW7BXrj/EXguHdLF1fZ4HTjZdVyQjJqsdlLKXduJNGWrnAGKQwPuhaj/7
+ 6Q3lVGlZupYS5uKIHFrIM8WeUm6PCK7Ec5AZR5R+u8TEB8do52S1RHk5pqNjwf8agfxErT9P/
+ KU2uzPj4/vQXjSJDvqzEsRIZwiHt+q4xEHA+DZrmPd3aUGnefgmSS6YfOi5kPo2QU1bTDkytr
+ 1Di95RjFa0Tp5BqIGbInIEdEPiYrrCOOQkb0V+xsZOzBAx4rfBh7FEJTsjz7PjplL7EuwP9yB
+ g6kbfcw3yurhnuQh9M7Z5xeakAxCLB4ThPKu0GLthrwR88jE51Gj0ra3T1RVLkDSARm8DIcxa
+ w9nO9UAwYkY/m3mG5OTZVsJoZjXnLCv3va3KpSywGky0vqLLACwQFAIqfJgrIK1U8GSEEh2De
+ 30oZZTaPdB6zlNzY8dMr8HBZ8WndugaImUtkpQ82QwOCDqs61bbqI5UHXJ/+vQNQVl/Da5Zi2
+ oznqZX3CicSGA6UaW3GZwmdUYHBNmoEux0Ingq5+d0Zj5+JaHzhUe6YKbfcXmoDTrh/xPuDON
+ FZTKMJfNDff29JOcrmzqy7+brJFXSMTEfapg9tHoLDCYPw8wl24LqIYhpA6xOhoqxZjc7dY
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:23
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -65,32 +69,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Jun 2020 13:10:26 -0000
 
-From: Eric Blake <eblake@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Prefer a consistent naming for the --merge argument.
+Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
 
-Fixes: 3b51ab4bf
-Signed-off-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Message-Id: <20200529144527.1943527-1-eblake@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20200606070216.30952-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/tools/qemu-img.rst | 2 +-
+ hw/misc/auxbus.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
-index 69cd9a30373a..7f0737488ade 100644
---- a/docs/tools/qemu-img.rst
-+++ b/docs/tools/qemu-img.rst
-@@ -300,7 +300,7 @@ Command description:
+diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+index f8e7b9797125..06aabf20c59c 100644
+--- a/hw/misc/auxbus.c
++++ b/hw/misc/auxbus.c
+@@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+         }
+         break;
+     default:
+-        DPRINTF("Not implemented!\n");
++        qemu_log_mask(LOG_UNIMP, "AUX cmd=%u not implemented\n", cmd);
+         return AUX_NACK;
+     }
  
-   ``--disable`` to change *BITMAP* to stop recording future edits.
- 
--  ``--merge`` to merge the contents of *SOURCE_BITMAP* into *BITMAP*.
-+  ``--merge`` to merge the contents of the *SOURCE* bitmap into *BITMAP*.
- 
-   Additional options include ``-g`` which sets a non-default
-   *GRANULARITY* for ``--add``, and ``-b`` and ``-F`` which select an
 -- 
 2.26.2
 
