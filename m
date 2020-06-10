@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Ux-0007yz-EP
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45156)
+	id 1jj0V0-00083f-Qy
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ur-0007lP-9U; Wed, 10 Jun 2020 09:10:25 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:43219)
+ id 1jj0Ut-0007ox-5u; Wed, 10 Jun 2020 09:10:27 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:60575)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Up-0003cU-68; Wed, 10 Jun 2020 09:10:24 -0400
+ id 1jj0Ur-0003gG-W3; Wed, 10 Jun 2020 09:10:26 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MZkxj-1jOsnc1wZT-00WoKz; Wed, 10 Jun 2020 15:10:19 +0200
+ id 1MZkxj-1jOsnZ13xf-00WoKz; Wed, 10 Jun 2020 15:10:22 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL v2 09/16] hw/hppa/dino: Use the IEC binary prefix definitions
-Date: Wed, 10 Jun 2020 15:10:04 +0200
-Message-Id: <20200610131011.1941209-10-laurent@vivier.eu>
+Subject: [PULL v2 13/16] target/unicore32: Replace DPRINTF() by
+ qemu_log_mask(GUEST_ERROR)
+Date: Wed, 10 Jun 2020 15:10:08 +0200
+Message-Id: <20200610131011.1941209-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZJcuuVvZMn4vd9WaxvKpzIGlpcH+8rkPeaVxzY+wL56wQ5SnrCV
- 8nsiZ9XpxJWmulsBA6wbojcB0wLerOd2JYBRjvBsolUqcExn5b+u+rGKTG2ut+84W4vqARR
- wvrMVnIj8D4x+VvmdgCqkklPQ0GlVC5dKAQzkgFWJjAjG1vM4HXRY+o4+Ns9ikDrzttMjTa
- RVpKQ1+vcYat/GTfClYeA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JS5sxbSkzn4=:hw/NgN8XCkcbu9zBQ39147
- Of+PRjGZZRJju14sMc59M8qd91EtnE8n9o+asBzRl+/VoM849ivnQk79V3OQ4Uvn0928rOYqc
- S8pi15XRpu30aZEQMLePw2niARh8zUoe3jZH+dSIJm/W/eurwXP0gwQIyiBYubl6w01ngRr8B
- Eq2jYHTHaaXaKumC4t9qO1kfH5nRFTZ4nWw92rxBfk96uKE3UmfaQsGS2iPLCaRbJSELV5o8M
- 5kAJ//Xwv6vnK8Ip242X4jxJgBBw4dLhU+a4hLfUyvYPNRwrUehcKijKERXkmk5x/X4/qeAvf
- O/gdCIOOJsrlF2sqImje+lfbP/Hjl31J7QgXqmfX3JEKKrPlL+L/9LUebKdvynTwK7WalKQ5l
- Em1QQNzvSZOFNptCjpU6h0btgnnShTQlxjMKpfmYrG+dwD4K3s2JdZL+huCLCF9fWoGiEl+gq
- v8GQiM/UY5kxp/uMtzlsfarFM+ijvJ1/vYhM3kgjJ5x9NZjvYlgG95pUW9XXDGyjOhh7XQU8p
- oyjZiQZeFQ8CKjINl/P/JD4syFlr8qFhxpmEJVKJ9EXkkFNVH22t5bfuUxmAcL6gso9gr5dDb
- 4zC0a68Mh+u+sFx9UNt2GIiFLqObRjeeXoHaltqW4hDfspb+EuZ+6xjqlpbbg7nSd3+QGrMCI
- AE1BMKtVQ8TiUAL8Fj+xhhb1Vvfuya9gS4JSRRSO8Cb/ZCXNi84QAMwZzq9RL1zxQUnBjltIm
- Ud8QtgLJxcDs3SRaqOj8+hzcQ2llifdQiQzQkdk1WriYHvziLR1dvifPKIJBFyrrcRlwU7OMH
- E7SYUM+Mf6CZJ6rJezubFhaSWHXU2maZSw4IugAGKlRjeVtjkUFEh3qY7ZDEyhIoq5VeMkQ
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:9HfJrvfO+i3nrbxBCmnsBWWUGVvBPEiDsT6jc51M9j0dYoRioSV
+ wbheNYm6h88m2fHXRE5tcAeFNXJglFSKVcqc47mJeuXM2x6p9G5ZIY03kTbOE+XbN3SsR0Q
+ +8aTi7oc0qnVaX9TJ4bzJi5Tdo4eJXITW50UwiTkKp9kdQr6DXPbttl8mwZ8RsKVPgg1dSG
+ gMltdRkAEkJm7WDn3ybiQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:R3QjNgjxlbI=:XPfO0DPGtJSmkOpd0xfsXf
+ 1nmYZOqXdEzjXuIHf6X7AOl52UM3GEMgHLmqeuIsJ1aMghV7CgIuKCXR7UBDZ9rh/C8fYzkTn
+ Kd1dRBV/OjUuQUXC6zSlHWMAjvKFnfn1aB/iDU8v8ivG5cI9ugubGn/k5iI8S7CJbspR+OuFM
+ oGjg/fOTsHVqVzAJpNjo6F6k5NVYGsrMIIJI5bDHujU33ePLleYbkgqQDlHNn557qkPcxR5mS
+ 3wTUHLhkFAC6UrfSotgBj5MeX/OJM7081ncRwkedj9dNbcpwctwQyBaeoMPDnYy6wpOzUVEN4
+ hvZPmLEmoC5GjNSPyxe28uVgfl+hbye6BupYJlEWe+4PGoGCY/d5KN+hWYqySSdewLklhdrVi
+ IFYuP64gZTKxe2NRFLq3gLQRa/iTFoiO7qHMwgvgv9l5p7JV5dMx93vGm/szxqN+4P907KH9O
+ vM5pCk6+AwgB2dE9AchuRhNWWFJZQqDa80DDugnZjGV+VGn7qiqDUJ+s8S4t2IrgOZ7L/Gz/2
+ 0JXuMq6wlajWp89EhyFUcleGqYKS9WrEdsCmYlV08nJKD2E2RVt3bodpqni/so4NyFs8ZjRhx
+ EQ7ZpuXxcPc13R2fhsTREQSCbAxdZO+S0ReXfq3pV1LmMXm1smXFFkDc2MlREpxQGVPXW6nnd
+ kfS/ruErvXURnXg7yQ3E/Rb84I/EzkUqUjN+0+KwKoLp62DvIv/hxQJPwplq+wRRKp/bUpgfW
+ OKtQqNcZTQz3J0RnAH8ovueeTRoYl8/JUCk6VokU47IzErkAUSOglgJ4UJ5ZRqDNwpb1Isa7g
+ 9ZHSP7yTrGsxySz4LMgRfbZGYA18lkvEEPgcb/049Zpqet9wJpDa5RQ6x8C/o+pIVR0JyNy
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:24
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -66,43 +66,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:25 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:27 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-IEC binary prefixes ease code review: the unit is explicit.
+Replace disabled DPRINTF() by qemu_log_mask(GUEST_ERROR).
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200601142930.29408-7-f4bug@amsat.org>
+Message-Id: <20200603123754.19059-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/hppa/dino.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/unicore32/helper.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-index 2b1b38c58abc..7290f23962ce 100644
---- a/hw/hppa/dino.c
-+++ b/hw/hppa/dino.c
-@@ -542,7 +542,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
-                                 &s->parent_obj.data_mem);
+diff --git a/target/unicore32/helper.c b/target/unicore32/helper.c
+index 53292ae311c1..00371a7da660 100644
+--- a/target/unicore32/helper.c
++++ b/target/unicore32/helper.c
+@@ -10,6 +10,7 @@
+  */
  
-     /* Dino PCI bus memory.  */
--    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 1ull << 32);
-+    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 4 * GiB);
- 
-     b = pci_register_root_bus(dev, "pci", dino_set_irq, dino_pci_map_irq, s,
-                               &s->pci_mem, get_system_io(),
-@@ -561,7 +561,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
+@@ -106,8 +107,9 @@ void helper_cp0_set(CPUUniCore32State *env, uint32_t val, uint32_t creg,
      }
+     return;
+ unrecognized:
+-    DPRINTF("Wrong register (%d) or wrong operation (%d) in cp0_set!\n",
+-            creg, cop);
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "Wrong register (%d) or wrong operation (%d) in cp0_set!\n",
++                  creg, cop);
+ }
  
-     /* Set up PCI view of memory: Bus master address space.  */
--    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 1ull << 32);
-+    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 4 * GiB);
-     memory_region_init_alias(&s->bm_ram_alias, OBJECT(s),
-                              "bm-system", addr_space, 0,
-                              0xf0000000 + DINO_MEM_CHUNK_SIZE);
+ uint32_t helper_cp0_get(CPUUniCore32State *env, uint32_t creg, uint32_t cop)
+@@ -153,8 +155,9 @@ uint32_t helper_cp0_get(CPUUniCore32State *env, uint32_t creg, uint32_t cop)
+         }
+         break;
+     }
+-    DPRINTF("Wrong register (%d) or wrong operation (%d) in cp0_set!\n",
+-            creg, cop);
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "Wrong register (%d) or wrong operation (%d) in cp0_set!\n",
++                  creg, cop);
+     return 0;
+ }
+ 
 -- 
 2.26.2
 
