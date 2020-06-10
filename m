@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Ut-0007pE-Aw
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45146)
+	id 1jj0Uw-0007uu-2R
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Uq-0007kG-Dh; Wed, 10 Jun 2020 09:10:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:56225)
+ id 1jj0Ur-0007l7-0Y; Wed, 10 Jun 2020 09:10:25 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:46185)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Up-0003cP-3r; Wed, 10 Jun 2020 09:10:23 -0400
+ id 1jj0Up-0003cY-4z; Wed, 10 Jun 2020 09:10:24 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MEmAV-1jhdZJ3B8t-00GFv7; Wed, 10 Jun 2020 15:10:18 +0200
+ id 1M6lxe-1jrEUa0Fag-008JRU; Wed, 10 Jun 2020 15:10:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL v2 08/16] hw/arm/aspeed: Correct DRAM container region size
-Date: Wed, 10 Jun 2020 15:10:03 +0200
-Message-Id: <20200610131011.1941209-9-laurent@vivier.eu>
+ Raphael Norwitz <raphael.s.norwitz@gmail.com>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ Eric Blake <eblake@redhat.com>
+Subject: [PULL v2 01/16] Fix parameter type in vhost migration log path
+Date: Wed, 10 Jun 2020 15:09:56 +0200
+Message-Id: <20200610131011.1941209-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:aoyblYvsxNs/VaIf9aNl95oG04olgSvD6l6khwnqzdMTlTYHqgl
- UEjXCX7l3XJ8HnTryfuiHK4bEvKYLzVnym1o4R3pnSYwxikSQ1ZcsLub42RkWfNCbPVzjw5
- WuzMReXW+1b3qZVeCQAIemzMZDJsrNWVfV6TznKkdYh41E+3Fw92dFf/AtewYlXtDqBriCr
- 3Iha14j7AFGtkpaePrgnQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ga1Vdo8ob8c=:yfGYd7nSifPd9m5FG0rh8R
- ZvbTK/rLHlBMX6QP+IvJ6BInveyYoGgz2IFmBjkghgXu6sL0dUa5jpSLpVT1c4Nedf74goC6C
- u6WSnY9ia2KDStyJrGX8N7bMa8vJjQJqgKxlLlPji8PgrmCESYrqk9Sk7El4KMX+1vCDaz7lE
- VrHTFS/u6ROjH0MTmR7+ixIaJZmKhSaQiojBpTf1to9CQuKC0CfvPTnrhZf8QWcERtVuRl6UN
- 9kwg7mt3W50uiEcrdm+unUtcnsqXFdYgGTDawul7kaRrbr50BzDcWAUUw63rWBzBXL3MGZRp5
- 5CM5xdhggoMtRacCcOQOsxAnR6i/oE1dfiZD31yXbjTpSfvvoNGflaWME4N+EZQ+yjop78gZ7
- FB/SFVFT6fsjddZyYNMmB84cU9N7JQCblbWjNPR1xp58pwegXdwCSsHXF3rtLGnowlis5dyzS
- wGvlOFrdLCvn/s6cTc9c/d9RV/VNCUt/f6Wn8NOiAGn9yg0uns8moHZj6bUto/8bSMPhzuAh4
- le8UeDZEt1vKnrNYHvXNgmpeO2zS3VYOC+AOCnv9RA0hrnQHDkezVfJgfWfJqMIeaDnbBtXoO
- 58xxAOytoNK6WAyncz0wB/QQ/Ba0w4z1Nmk93/ma9DnzWCTMYvR/hoWbF9NGGCsvzoFN/sDwf
- 7T/c/vU3k1avy9tMBBfXZBv42QQZVQHOhoPQAqENHFr7T+TBdMqKpb+RzxeVMk0gU4D9LzqbH
- PdME4exr7IFscO78Ywit/QdbPo24BVfXsxJLyPuHGWKmGaG7uo9353h6UmRvagZrhqeJnHwte
- VNdzCODUyXRGfXFpgnEihUgdEyI9u7zBe+/wDMggHVkLmucYYjWVsyIcQoNZS+0+EyS2rZ6
+X-Provags-ID: V03:K1:GC4QxVhoyRWPc2opmiANzOPcwFOhSvLfhoXfjQFiQAGmI5kg1fh
+ ip2rXH5dOtjWESF9Z8A+xvyBu6sGdUETpHpTFL/RLAjZxhKnNnV1rHEBPkjLW9FarwC0Ze0
+ osAGfGPjkmHPW9a1oYsUlqincWHaoSL/qs08z8FTFDdagrN/C2fa6cV0isCPITize/5JRNo
+ eZDIIeoUSt35+5MvL+X9A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/2BlOD/8RX0=:fiowDzPcbOKbIEeEYSVbNC
+ eh66wg1Kpbpw92XQUGaHM3ByigAp7IPE3QCbPvLikJNZvrhbS6wbHcV/4MCVJYMix3/sHhgRl
+ g/3KMh+gsf+c5H00Mv+VDuY07cE8eOxHIFR4p/Um3RyHZdvcdNy0aYsIuBhUthDuHNES3K/C2
+ CXCfD3SO2Ogy6OOyYAb8nMUGltp3BBeCZwBNASeIfC4EQwoN6beb6FBOxpqGC4Vvk2TDV6Q4d
+ XoSEA6AG1sPASRGw7K1dBmJsL7rNfy/UdaU2GBqullNepBA1rDkvZHqcz4w1HToD09HIha9Qe
+ WtPrz3uRVZx1SHX8wA8ty69qM3nnSyX5Mo/uOGBRRcqkCM2x1Jw59g8BnolZvkLeKo/u9++92
+ mFhiK6PPc7viYnAvx7pE/LsFtkZuqUCdsLFwpNt9zJfkwvv4UAZHcN2wG0DcaSivUxX+xRuXo
+ WFSDtf7o6nnO5TqgZ51zxGRUqvuAqvUvc3ZHarJoCmO5j0FIJoIaklUQC2JhWFxjwKDQYGui7
+ QruQXVbgeFoGitL76NimV0q2DQ1Knza+8jnvRQEhF2V3FxZq0AwPAzbnhv3QDKQs+0uD88ZsA
+ k8Y3v0l/KZyRufkvYuW4IEvAvrjHPxI40v2uFuTwrrDY8G4Xa2H6aG/h+kInt6u69co1bympg
+ AkUTvsMbW9EVyX+7yOKDBXYUYs6UFQe6prIx/TM6NPNvBAHsKDlgj1acopL2dT2dkIbGEy3QA
+ E4j6TFcESqoJ/629RkhsLa7ZzLlEE/7Am2hfv64/AdI/u04WXzkSxLz2AdCNHD2QGO1MI6ip5
+ k4d63rreD73W2SececyC6/MWysHgbRsdyV/SOmibp4hlif4qZdIBIzI0kq7bIyWzCwovQ7m
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
@@ -69,52 +68,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Jun 2020 13:10:25 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
 
-memory_region_set_size() handle the 16 Exabytes limit by
-special-casing the UINT64_MAX value. This is not a problem
-for the 32-bit maximum, 4 GiB.
-By using the UINT32_MAX value, the aspeed-ram-container
-MemoryRegion ends up missing 1 byte:
+The ‘enable’ parameter to the vhost_migration_log() function is given as
+an int, but "true"/"false" values are passed in wherever it is invoked.
+Inside the function itself it is only ever compared with bool values.
+Therefore the parameter value itself should be changed to bool.
 
- $ qemu-system-arm -M ast2600-evb -S -monitor stdio
- (qemu) info mtree
-
-  address-space: aspeed.fmc-ast2600-dma-dram
-    0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
-      0000000080000000-00000000bfffffff (prio 0, ram): ram
-      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
-
-Fix by using the correct value. We now have:
-
-  address-space: aspeed.fmc-ast2600-dma-dram
-    0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
-      0000000080000000-00000000bfffffff (prio 0, ram): ram
-      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200601142930.29408-2-f4bug@amsat.org>
+Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Message-Id: <CAFubqFtqNZw=Y-ar3N=3zTQi6LkKg_G-7W7OOHHbE7Y1fV7HAQ@mail.gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/virtio/vhost.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 2c23297edf07..62344ac6a3a2 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
-     bmc = g_new0(AspeedBoardState, 1);
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index aff98a0ede56..aa06a3691919 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -809,12 +809,12 @@ err_features:
+     return r;
+ }
  
-     memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
--                       UINT32_MAX);
-+                       4 * GiB);
-     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
- 
-     object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
+-static int vhost_migration_log(MemoryListener *listener, int enable)
++static int vhost_migration_log(MemoryListener *listener, bool enable)
+ {
+     struct vhost_dev *dev = container_of(listener, struct vhost_dev,
+                                          memory_listener);
+     int r;
+-    if (!!enable == dev->log_enabled) {
++    if (enable == dev->log_enabled) {
+         return 0;
+     }
+     if (!dev->started) {
 -- 
 2.26.2
 
