@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0V5-00085s-HY
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45188)
+	id 1jj0V9-00087u-R5
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ut-0007qf-Qn; Wed, 10 Jun 2020 09:10:27 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:45539)
+ id 1jj0Uv-0007tu-2H; Wed, 10 Jun 2020 09:10:29 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:43593)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Us-0003gq-HS; Wed, 10 Jun 2020 09:10:27 -0400
+ id 1jj0Uq-0003fA-SH; Wed, 10 Jun 2020 09:10:28 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MIdW9-1jg0D53fAz-00EahL; Wed, 10 Jun 2020 15:10:23 +0200
+ id 1MNbtD-1jYjdW08gF-00P9u5; Wed, 10 Jun 2020 15:10:21 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL v2 14/16] target/unicore32: Prefer qemu_semihosting_log_out()
- over curses
-Date: Wed, 10 Jun 2020 15:10:09 +0200
-Message-Id: <20200610131011.1941209-15-laurent@vivier.eu>
+Subject: [PULL v2 11/16] target/i386/cpu: Use the IEC binary prefix definitions
+Date: Wed, 10 Jun 2020 15:10:06 +0200
+Message-Id: <20200610131011.1941209-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nujbTLVeKt9LpZQbtZRxvpwXyfbarq8r5Bk1K42Ndq6YN0OacSQ
- RM56+kdZz5ysrbbSarasKGjY3EURD0bJo4Mz7hLzRHGQWNdyDGCLlx1Ocoa3hcs0OQ+B6n+
- GXaSjO4a31/Yz+hUunQI2HM/axggTOjV3spR0vhJMZhCon2SHBQMfWw3oXq6W0tCSYf99WZ
- maom1MPm1jNzid/hHLUxQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:31TZV5x5tDg=:XrbprX7eZQeHeu4ew2uE2e
- NiKAqgGKP87b+jo8vIHXujuIXGkAEH6HZkkkdr/4VexALoV8uU9BA0T2eaIpTtQFg+6NbJeQQ
- ssE+kug7hMqlS/P85p+Y8SYoTKmCuWf7TDzS81qHp8AB2yUVRsLviXUhsQbI4ncGolyRM+iDx
- FESoMm7n9tw9ylLTCTNUi5cbZ7/HycYTENnVqgrwTdddoPIhaz79Y6jj0tiyNmpjMFUWtotAB
- Na8azqLuZLq15zd//b5471kN5k9PwXQSPAUI8oNnOE400tQZwKTc/nmp5HyyatrzwaUT/jCNd
- VwAYB4s2Jd3p/iE0goxtStM794sKKc0hj5APO0TH0ZnhqPObkaf9o5tCnJXXP8xkZo0gcr4k9
- 8VTGpjWMGJSgHk/YBi3MHfQhXlnpqR46TCcdcXE5GNY3rb2KcM0L9tzv+GLQou7gbd7zHlIDu
- l/TU6pOjaLqZoFd+hjZ5kjI42h8Ityz0mg4hTTMzzZ0C6Mi5XEe0ZTAiKPad/7q5DKTdIhdgN
- pePwzIntf3XoDgCbQr+VDhJD3C20e1HkylQ4SYTqD2RArHbG8IwhkbUrjLupmgLKG9LO31pP5
- ocl4vMCoCSfNGpidenuZxRPwIiQc1e5R7GByKe8TfhFdHdjyIDPFt7D+D6OP+1G7yxmNHzSrP
- /0alf45SSeZbnNybSHQSkEsXQ5GN23f3O2+5L/4iEKHIOaIYSf43NQCUg+T6vMn343mTnLw8l
- fRG2ict5eA8JYdLNIsf4VpvS6CJNaeILE40A4nFyN6+Byv5lpkGQBmJfCXsdn3i6Bgnn/lG0z
- oB/fciBqwR38r9NsTCv58/6ulBoJKPqVRpHiRofMIg82ubJ06k=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:e6pNGKrZWZ3XWvCcug3ufm/XcEAN3JxTE4YulSlBdjBGInHKD7P
+ 8RG2mFa7x7rkNi32v3TUmQwZQAh8kuBq0LTxlOSZU+D7BqYUg72Q2/Q15glmrQgkRvsu20B
+ 8SNFU/QjZALKw32gkVISRkLI+fUEkRPTF5EEiKxG3F8YfMKaIROARMYRYYT8MuBZDfKNv7r
+ W/SihU0Jfqb9WtAx4jVDw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:S5j0pdZnetU=:efiwghLxEfLhyUpTEtenyG
+ os4RZcDi+sKn04oiYBBEY5IfBp4fOGxiN5hOLXl5nIoibKkhZq+BV2BZQTC+iZgknuNH8gkLq
+ wbRfwv16MF7bTFOJ932oj9kwp3prj+q6qG2DDYkoTK7+kzq4U6NmFTcDM0s60tB/huYOlFtGG
+ XD6Ah9ekk8jFvJHeinDyWfCLbmAQsGbbmyssim/yOiw9hj7WHC/zZ5Ow1LXJcZ0LmuVFBDCR3
+ 3/vfLuC7OcgBF5IG1nummaboCPOMpj7t9yiMUADuqWkImS1hRmS9y9fbVTqf8tJ6oB7kyPfBF
+ VqgG34Ew9iv1879ELILblaYMxUg3UDONcH8PK4PwEtF42YGum+d8C90HzbfPIZTXdoMs+n6TM
+ CWJfX4Ecx4UESeY51DdbDmzkw2s0WXntE5X43wvvEfe680/YwoJ5i3J6JUod1DoHzUsQu8TcS
+ wCwHVS4LdijbRfqoDs37EM6ZbGWCNq9Zx0iKMTA/1Z7zIb/LzpZw3ToY4UuauZ4Hw14dNP07V
+ XTUWrm5huYSQV7mklcBB3jYv2EfXhdklbftF145H2sW421KCs8Bk2ors7VRFyZxyxrvTpSirX
+ WGttVNXlXCh/WyfDctM/2LxggNPQxjYzwh0ggajZoLv1pa1R8fvbx4kU/rkTzm9oXzDfI5tlL
+ E9QSptVL+bn/PafWmVgruA1Czo99TUYwhySrglo3089XKplU4dbOYoAS9ziw1hIAq5ARzFL2W
+ ex+eaguJYsvO57OvNwkHrHNOLL8ZpafD8m+o+VZ9LBAkWkXCzFacGhywQmWSGVUOs9GDeOK9w
+ 99+HEOpvOC6h6//Coq5KMwrUJ+cmyPWS6UjCyibIVlF83LcNy92EJGGcuFh2haZT8uJu7EO
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:20
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:23
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -66,108 +66,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:28 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:30 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Use the common API for semihosting logging.
+IEC binary prefixes ease code review: the unit is explicit.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200603123754.19059-4-f4bug@amsat.org>
+Message-Id: <20200601142930.29408-9-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- default-configs/unicore32-softmmu.mak |  1 +
- target/unicore32/helper.c             | 57 +++------------------------
- 2 files changed, 6 insertions(+), 52 deletions(-)
+ target/i386/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/default-configs/unicore32-softmmu.mak b/default-configs/unicore32-softmmu.mak
-index 0bfce48c6da7..899288e3d715 100644
---- a/default-configs/unicore32-softmmu.mak
-+++ b/default-configs/unicore32-softmmu.mak
-@@ -3,3 +3,4 @@
- # Boards:
- #
- CONFIG_PUV3=y
-+CONFIG_SEMIHOSTING=y
-diff --git a/target/unicore32/helper.c b/target/unicore32/helper.c
-index 00371a7da660..54c26871feab 100644
---- a/target/unicore32/helper.c
-+++ b/target/unicore32/helper.c
-@@ -14,9 +14,7 @@
- #include "cpu.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
--#ifndef CONFIG_USER_ONLY
--#include "ui/console.h"
--#endif
-+#include "hw/semihosting/console.h"
- 
- #undef DEBUG_UC32
- 
-@@ -161,58 +159,13 @@ uint32_t helper_cp0_get(CPUUniCore32State *env, uint32_t creg, uint32_t cop)
-     return 0;
- }
- 
--#ifdef CONFIG_CURSES
--
--/* KEY_EVENT is defined in wincon.h and in curses.h. Avoid redefinition. */
--#undef KEY_EVENT
--#include <curses.h>
--#undef KEY_EVENT
--
--/*
-- * FIXME:
-- *     1. curses windows will be blank when switching back
-- *     2. backspace is not handled yet
-- */
--static void putc_on_screen(unsigned char ch)
-+void helper_cp1_putc(target_ulong regval)
- {
--    static WINDOW *localwin;
--    static int init;
--
--    if (!init) {
--        /* Assume 80 * 30 screen to minimize the implementation */
--        localwin = newwin(30, 80, 0, 0);
--        scrollok(localwin, TRUE);
--        init = TRUE;
--    }
-+    const char c = regval;
- 
--    if (isprint(ch)) {
--        wprintw(localwin, "%c", ch);
--    } else {
--        switch (ch) {
--        case '\n':
--            wprintw(localwin, "%c", ch);
--            break;
--        case '\r':
--            /* If '\r' is put before '\n', the curses window will destroy the
--             * last print line. And meanwhile, '\n' implifies '\r' inside. */
--            break;
--        default: /* Not handled, so just print it hex code */
--            wprintw(localwin, "-- 0x%x --", ch);
--        }
--    }
--
--    wrefresh(localwin);
--}
--#else
--#define putc_on_screen(c)               do { } while (0)
--#endif
--
--void helper_cp1_putc(target_ulong x)
--{
--    putc_on_screen((unsigned char)x);   /* Output to screen */
--    DPRINTF("%c", x);                   /* Output to stdout */
-+    qemu_semihosting_log_out(&c, sizeof(c));
- }
--#endif
-+#endif /* !CONFIG_USER_ONLY */
- 
- bool uc32_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index ba05da3f2e7f..02065e35d435 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -6159,7 +6159,7 @@ static void x86_cpu_machine_done(Notifier *n, void *unused)
+     if (smram) {
+         cpu->smram = g_new(MemoryRegion, 1);
+         memory_region_init_alias(cpu->smram, OBJECT(cpu), "smram",
+-                                 smram, 0, 1ull << 32);
++                                 smram, 0, 4 * GiB);
+         memory_region_set_enabled(cpu->smram, true);
+         memory_region_add_subregion_overlap(cpu->cpu_as_root, 0, cpu->smram, 1);
+     }
 -- 
 2.26.2
 
