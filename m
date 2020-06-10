@@ -1,113 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jixfP-0006Tj-7X
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 06:09:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54872)
+	id 1jiyam-0001fS-Eh
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 07:08:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jixfN-0006QD-87
- for qemu-trivial@nongnu.org; Wed, 10 Jun 2020 06:09:05 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:22886
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jixfL-00070z-CR
- for qemu-trivial@nongnu.org; Wed, 10 Jun 2020 06:09:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591783742;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=hE9Oaz24ilg7T4209xNV9IatGJG7l+0xJeWoG28nb1E=;
- b=YCQ0FRALfcFdkYiSOJf+okG/e89YL2TeC2Y7XCAQ5I+XTAqsVIpDFrqitTiKCNTijFPB2l
- A96I/zo5bs7P8MqPW9vL6EuP1qsWy+fwt43HjubWFLklP7PErP0gu6u4URbttAEmKBjoqj
- yskeRQMvuS+ZJxF9P42VqXyNZMWLp9Y=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-6-nd2mRG3YMM2pp9K_JSt2pw-1; Wed, 10 Jun 2020 06:08:58 -0400
-X-MC-Unique: nd2mRG3YMM2pp9K_JSt2pw-1
-Received: by mail-wm1-f69.google.com with SMTP id 11so283282wmj.6
- for <qemu-trivial@nongnu.org>; Wed, 10 Jun 2020 03:08:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jiyak-0001fD-TR; Wed, 10 Jun 2020 07:08:22 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37939)
+ by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jiyak-0001fU-1X; Wed, 10 Jun 2020 07:08:22 -0400
+Received: by mail-wm1-x343.google.com with SMTP id f185so1427815wmf.3;
+ Wed, 10 Jun 2020 04:08:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=SO8xwsqAc9ZgB1fur2HM0vFHynwzylFI5vm83ftmqrA=;
+ b=UHneHVmwkAb9/Jc6ucNX0n75OllKeoRpLXP5MUl9a8KTlGsZrGd0LHEG3GTAG9VnXM
+ NoydpZq0bx9GodfMF1U3HU7gDkvi0JnYp53I2ubqFwneaBtK3s62tWruTV3izLCfzpP/
+ fQhckSiXpqAOsYsKX7cskgmiWPEEHIw1/T6z4clD/dDzOzdEZ9xAOwt9eWO5QamoLWW6
+ 1UtQJAjB/Dd2RL0ygO8h3wxeer7HUYMSFrNBxKQbm0XyyH5POBgryHzLeKdg1YlvUWjj
+ Ske9lBWn3t2YjXoF+WcOqka5JuGsoVbeoRobNK9y3IxNNo9xUx7rfJHEAQuyriyhgfI5
+ euVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=hE9Oaz24ilg7T4209xNV9IatGJG7l+0xJeWoG28nb1E=;
- b=OjCewnGRI8Qh8+80ePi2xZX2/Mp0n0eHAbKYLWscoSAgFmRhF5qWbGq5u+JHsPsJpe
- QF+kW2UoyIGXz/eoW0I1WypXPXZZMRQkIvCIKeeEm3aSJgszggXdJ/kcCSBBckE1V8QF
- 33TAsDRtxRAWB5UXKM3I37jxVEOwZf3vvF9fsAKrvPyl3136blK+8Sx/G5mYTg5sVR1b
- JP7sHByiO18JMdxMJWdXABOwuq463loOqsDP0L391XissY6tO08b8UD+Gq7xGu1d5mzJ
- CJnMLbq55j91kxQwB6ENyUlwpoVE5X4mck2mUz6X5FovF3DTjKOlLHSlZPd37XsD0ZRA
- uzVg==
-X-Gm-Message-State: AOAM530hF4E8wUgE7wRtE7etdHOuY4tb2SoVFX2eQ1RH8LsYWHxwb6B0
- vZcNoXeVTMIlZYNbYLBIgmxzhXxS/kngxVkB7s5k27uI/zYx4tXnYKN7UuT0F5HETNsagQpDWsr
- V8/k9LhghvsnGq3Ax1w==
-X-Received: by 2002:adf:9544:: with SMTP id 62mr2745807wrs.32.1591783736773;
- Wed, 10 Jun 2020 03:08:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrsMtsRim5X/cGvZUX1UMfrqUDitqZ5vttqzCnfXftpeZa1hg/C4qf2zwuY8fO0E74o1f8Wg==
-X-Received: by 2002:adf:9544:: with SMTP id 62mr2745779wrs.32.1591783736494;
- Wed, 10 Jun 2020 03:08:56 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id z25sm6296656wmf.10.2020.06.10.03.08.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Jun 2020 03:08:55 -0700 (PDT)
-Subject: Re: [PATCH] hw/vfio/pci-quirks: Fix broken legacy IGD passthrough
-To: Thomas Huth <thuth@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
-References: <20200610035102.20192-1-thuth@redhat.com>
- <706060db-46c4-2dee-d746-eba24e6b137d@redhat.com>
- <a8195883-fb78-0cc1-5e15-e100dcb807de@redhat.com>
- <fd82556f-297d-6634-1bb2-37c4da415a50@redhat.com>
- <c3f40a57-e511-6b31-1a13-01acb38b0843@redhat.com>
- <4bdc918a-a59c-a877-680a-2925c09fc736@redhat.com>
- <04979308-3a35-4e40-35c7-836a36e47143@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <b771f418-64da-7922-923f-ae8cb62ce938@redhat.com>
-Date: Wed, 10 Jun 2020 12:08:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=SO8xwsqAc9ZgB1fur2HM0vFHynwzylFI5vm83ftmqrA=;
+ b=XDEnD2LgmCzGW2Q0yxYckp/T59y2A7liVHd+1zA/r416uV6YOkefVz/eeuHvXsmfoC
+ p7AQe+/u6qYHl6tYB3reCbj4ZFjPhyFlg43pToqpvJUiEmTGCGJLOEZTC+daDk7j9xq+
+ YWtGGmtPlpVI2SuAnd22vGH6yL5frNfLhCsDrY+fwMPi8R0YArhqvZUN5/aq/u2qwCSg
+ 69foFH6eURNcLTcyzlr1FDfSSmStYSXABdPt6RLm01WejZl69sUMLi7mR2cVr+BxbD9c
+ PzJtvYJyVmHbzt3cMZwyVG3Xtki3TefaRAHW+TA8jpgUCGdLPvhtK521aDHGtHeI19Be
+ Le8Q==
+X-Gm-Message-State: AOAM531/huKCaF6TgPYWF+T8YPLXY2/ay7fNR/KZPXidOF7AMOK0Pqjz
+ TItC6tm/ulcWyjwt7+4MK6rbOfbAJejPuK5ED24=
+X-Google-Smtp-Source: ABdhPJxwYYBIdv2yJV7yZ9qwoDqhpDRkZrpx61tU4Bp0UBiLm1pmv/B0AWiTPt1Li98nuq6ekx4ncyMcv9YLHzJ0ZB0=
+X-Received: by 2002:a05:600c:22c1:: with SMTP id
+ 1mr2817537wmg.50.1591787300462; 
+ Wed, 10 Jun 2020 04:08:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <04979308-3a35-4e40-35c7-836a36e47143@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 23:51:15
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200608090142.6793-1-f4bug@amsat.org>
+ <20200608090142.6793-2-f4bug@amsat.org>
+In-Reply-To: <20200608090142.6793-2-f4bug@amsat.org>
+From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Date: Wed, 10 Jun 2020 13:08:07 +0200
+Message-ID: <CAHiYmc5UUaSKB6Ee0ds_hj0FBTzt0iLxzNWySt0mcZ9dvtZNyA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] MAINTAINERS: Mark SH4 hardware orphan
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>, 
+ Thomas Huth <thuth@redhat.com>, Magnus Damm <magnus.damm@gmail.com>, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org, 
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,72 +82,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 10:09:05 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 11:08:23 -0000
 
-On 6/10/20 11:03 AM, Thomas Huth wrote:
-> On 10/06/2020 10.25, Philippe Mathieu-Daudé wrote:
->> On 6/10/20 9:59 AM, Thomas Huth wrote:
->>> On 10/06/2020 09.53, Philippe Mathieu-Daudé wrote:
->>>> On 6/10/20 9:50 AM, Thomas Huth wrote:
->>>>> On 10/06/2020 09.31, Philippe Mathieu-Daudé wrote:
->>>>>> On 6/10/20 5:51 AM, Thomas Huth wrote:
->>>>>>> The #ifdef CONFIG_VFIO_IGD in pci-quirks.c is not working since the
->>>>>>> required header config-devices.h is not included, so that the legacy
->>>>>>> IGD passthrough is currently broken. Let's include the right header
->>>>>>> to fix this issue.
->>>>>>>
->>>>>>> Buglink: https://bugs.launchpad.net/qemu/+bug/1882784
->>>>>>> Fixes: 29d62771c81d8fd244a67c14a1d968c268d3fb19
->>>>>>>        ("hw/vfio: Move the IGD quirk code to a separate file")
->>>>>>
->>>>>> What about shorter tag?
->>>>>>
->>>>>> Fixes: 29d62771c81 ("vfio: Move the IGD quirk code to a separate file")
->>>>>
->>>>> I always forget whether to use the short or the long version for
->>>>> "Fixes:" ... this can hopefully be fixed (if necessary) when the patch
->>>>> gets picked up.
->>>>>
->>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>>>>> ---
->>>>>>>  hw/vfio/pci-quirks.c | 1 +
->>>>>>>  1 file changed, 1 insertion(+)
->>>>>>>
->>>>>>> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
->>>>>>> index f2155ddb1d..3158390db1 100644
->>>>>>> --- a/hw/vfio/pci-quirks.c
->>>>>>> +++ b/hw/vfio/pci-quirks.c
->>>>>>> @@ -11,6 +11,7 @@
->>>>>>>   */
->>>>>>>  
->>>>>>>  #include "qemu/osdep.h"
->>>>>>> +#include "config-devices.h"
->>>>>>
->>>>>> I've been wondering how we can avoid that mistake in the
->>>>>> future, but can find anything beside human review.
->>>>>
->>>>> I think in the long term, we should include config-devices.h in osdep.h,
->>>>> just like config-host.h and config-target.h is already included there.
->>>>> Everything else is just too confusing. But then we should also add a
->>>>> mechanism to poison the switches from config-devices.h in common code...
->>>>
->>>> We only need it for the files under hw/, right?
->>>
->>> qtest.c in the main directory includes it, too.
->>
->> hw/ and qtests could include "hw/hw.h" instead of affecting all the
->> codebase via "qemu/osdep.h".
-> 
-> I don't think that's a good idea - in that case, you have to make sure
-> to include hw/hw.h everywhere again, so you don't gain that much
-> compared to including config-devices.h directly everywhere. osdep.h is
-> our header that has to be included everywhere, so if we want to make
-> sure that these defines are available everywhere, we have to include it
-> from osdep.h.
-> Apart from that, hw/hw.h just contains one more prototype - which likely
-> should be renamed to cpu_hw_error() and moved to a cpu header instead,
-> so that we can finally delete hw/hw.h completely.
+=D0=BF=D0=BE=D0=BD, 8. =D1=98=D1=83=D0=BD 2020. =D1=83 11:05 Philippe Mathi=
+eu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> Aurelien Jarno expressed his desire to orphan the SH4 hardware [*]:
+>
+>   I don't mind being [...] removed from there.
+>   I do not really have time to work on that.
+>
+> Mark the SH4 emulated hardware orphan.
+>
+> Many thanks to Aurelien for his substantial contributions to QEMU,
+> and for maintaining the SH4 hardware for various years!
+>
+> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg708400.html
+>
+> Message-Id: <20200601214125.GA1924990@aurel32.net>
+> Acked-by: Aurelien Jarno <aurelien@aurel32.net>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
 
-Yes, this discussion implied the "hw/hw.h" cleanup talked elsewhere is done.
+The basic idea of the patch (as read from the title and the commit
+message) is good and positive.
 
+The problem is that the patch does something different than the commit
+message says - pretending that it just orphans something. Which is not
+good. Actually, very clumsy and bad.
+
+It creates a whole new subsection in MAINTAINERS file (not said in the
+commit message), without any consistency with the current organization
+in the file. That new subsection looks completely misplaced, living
+with "TCG CPUs" neighbours. On top of that, it creates a new
+precedent, leaving many unanswered questions, like: Should other
+targets follow the same pattern?
+
+I personally think that creating a new subsection is just a code
+churn, waste of everybody's time on unimportant things.
+
+Wouldn't it be simpler that you just changed statuses of all Aurelien
+sh4 sections to "Orphaned", as he already said he approves, and leave
+sh4 sections reorganization to a future maintainer?
+
+If you really want to reorganize sh4 sections, these changes should be
+in a separate patch. "Orphaning" patch should contain only changes of
+statuses.
+
+Regards,
+Aleksandar
+
+>  MAINTAINERS | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 6e7890ce82..49d90c70de 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -299,9 +299,7 @@ SH4 TCG CPUs
+>  M: Aurelien Jarno <aurelien@aurel32.net>
+>  S: Odd Fixes
+>  F: target/sh4/
+> -F: hw/sh4/
+>  F: disas/sh4.c
+> -F: include/hw/sh4/
+>
+>  SPARC TCG CPUs
+>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> @@ -1948,6 +1946,14 @@ F: hw/*/*xive*
+>  F: include/hw/*/*xive*
+>  F: docs/*/*xive*
+>
+> +SH4 Hardware
+> +S: Orphan
+> +F: hw/sh4/
+> +F: hw/char/sh_serial.c
+> +F: hw/intc/sh_intc.c
+> +F: hw/timer/sh_timer.c
+> +F: include/hw/sh4/
+> +
+>  Subsystems
+>  ----------
+>  Audio
+> --
+> 2.21.3
+>
+>
 
