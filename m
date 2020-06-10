@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0Ux-0007xX-3R
+	id 1jj0Ux-0007yz-EP
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45166)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Us-0007mr-1f; Wed, 10 Jun 2020 09:10:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:55147)
+ id 1jj0Ur-0007lP-9U; Wed, 10 Jun 2020 09:10:25 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:43219)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Uq-0003f8-Sq; Wed, 10 Jun 2020 09:10:25 -0400
+ id 1jj0Up-0003cU-68; Wed, 10 Jun 2020 09:10:24 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MCsLo-1jaF3J1PaC-008nvu; Wed, 10 Jun 2020 15:10:17 +0200
+ id 1MZkxj-1jOsnc1wZT-00WoKz; Wed, 10 Jun 2020 15:10:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL v2 06/16] hw/misc/auxbus: Use qemu_log_mask(UNIMP) instead of
- debug printf
-Date: Wed, 10 Jun 2020 15:10:01 +0200
-Message-Id: <20200610131011.1941209-7-laurent@vivier.eu>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL v2 09/16] hw/hppa/dino: Use the IEC binary prefix definitions
+Date: Wed, 10 Jun 2020 15:10:04 +0200
+Message-Id: <20200610131011.1941209-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:f6tXZMwZDUbgrvEjnrqNSAxGAjaPzbZV3Tk/jRVBuao3Axji1JW
- iMcdgfLsBJQn0KoAx/EV2dKJIUc2GRqsaO4VDvLDJInZYsMkXlN4ZEfPiNeSSEavMfRP+io
- BTHcMLFyZjwApHoxVHGBrGX6vsjL8KPLT8uo9FmRPNil6K43vnmtfNVSmxq/E2gtyF0131s
- 3pZtqv2KCoqAqEeAciDuA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:95eZisdeyBY=:83FmCVHX5OnDe1rohRwect
- 2FTdWFWRbPFFZ9zEdLuVdCTBCNJpsQxZrbK+oiCx/pRjQbQK+YcnqCdiOM62+nXBuQOVzcL8t
- NZ9B/keYw8nmaqoeI3e/MyBxFoF1x8qsbw2milId6RmT09qasAAZ5B1znMUE1y9vRGmdBgEBA
- AmwgtqEAvj4pOmIatd6a/Q1B0n2U9BWTqEwOFvb3Y0dDT4Q0aXlVgMJKq0n9P7Op6SycayPtl
- fNbecJec7WMbrrQoIW7BXrj/EXguHdLF1fZ4HTjZdVyQjJqsdlLKXduJNGWrnAGKQwPuhaj/7
- 6Q3lVGlZupYS5uKIHFrIM8WeUm6PCK7Ec5AZR5R+u8TEB8do52S1RHk5pqNjwf8agfxErT9P/
- KU2uzPj4/vQXjSJDvqzEsRIZwiHt+q4xEHA+DZrmPd3aUGnefgmSS6YfOi5kPo2QU1bTDkytr
- 1Di95RjFa0Tp5BqIGbInIEdEPiYrrCOOQkb0V+xsZOzBAx4rfBh7FEJTsjz7PjplL7EuwP9yB
- g6kbfcw3yurhnuQh9M7Z5xeakAxCLB4ThPKu0GLthrwR88jE51Gj0ra3T1RVLkDSARm8DIcxa
- w9nO9UAwYkY/m3mG5OTZVsJoZjXnLCv3va3KpSywGky0vqLLACwQFAIqfJgrIK1U8GSEEh2De
- 30oZZTaPdB6zlNzY8dMr8HBZ8WndugaImUtkpQ82QwOCDqs61bbqI5UHXJ/+vQNQVl/Da5Zi2
- oznqZX3CicSGA6UaW3GZwmdUYHBNmoEux0Ingq5+d0Zj5+JaHzhUe6YKbfcXmoDTrh/xPuDON
- FZTKMJfNDff29JOcrmzqy7+brJFXSMTEfapg9tHoLDCYPw8wl24LqIYhpA6xOhoqxZjc7dY
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZJcuuVvZMn4vd9WaxvKpzIGlpcH+8rkPeaVxzY+wL56wQ5SnrCV
+ 8nsiZ9XpxJWmulsBA6wbojcB0wLerOd2JYBRjvBsolUqcExn5b+u+rGKTG2ut+84W4vqARR
+ wvrMVnIj8D4x+VvmdgCqkklPQ0GlVC5dKAQzkgFWJjAjG1vM4HXRY+o4+Ns9ikDrzttMjTa
+ RVpKQ1+vcYat/GTfClYeA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JS5sxbSkzn4=:hw/NgN8XCkcbu9zBQ39147
+ Of+PRjGZZRJju14sMc59M8qd91EtnE8n9o+asBzRl+/VoM849ivnQk79V3OQ4Uvn0928rOYqc
+ S8pi15XRpu30aZEQMLePw2niARh8zUoe3jZH+dSIJm/W/eurwXP0gwQIyiBYubl6w01ngRr8B
+ Eq2jYHTHaaXaKumC4t9qO1kfH5nRFTZ4nWw92rxBfk96uKE3UmfaQsGS2iPLCaRbJSELV5o8M
+ 5kAJ//Xwv6vnK8Ip242X4jxJgBBw4dLhU+a4hLfUyvYPNRwrUehcKijKERXkmk5x/X4/qeAvf
+ O/gdCIOOJsrlF2sqImje+lfbP/Hjl31J7QgXqmfX3JEKKrPlL+L/9LUebKdvynTwK7WalKQ5l
+ Em1QQNzvSZOFNptCjpU6h0btgnnShTQlxjMKpfmYrG+dwD4K3s2JdZL+huCLCF9fWoGiEl+gq
+ v8GQiM/UY5kxp/uMtzlsfarFM+ijvJ1/vYhM3kgjJ5x9NZjvYlgG95pUW9XXDGyjOhh7XQU8p
+ oyjZiQZeFQ8CKjINl/P/JD4syFlr8qFhxpmEJVKJ9EXkkFNVH22t5bfuUxmAcL6gso9gr5dDb
+ 4zC0a68Mh+u+sFx9UNt2GIiFLqObRjeeXoHaltqW4hDfspb+EuZ+6xjqlpbbg7nSd3+QGrMCI
+ AE1BMKtVQ8TiUAL8Fj+xhhb1Vvfuya9gS4JSRRSO8Cb/ZCXNi84QAMwZzq9RL1zxQUnBjltIm
+ Ud8QtgLJxcDs3SRaqOj8+hzcQ2llifdQiQzQkdk1WriYHvziLR1dvifPKIJBFyrrcRlwU7OMH
+ E7SYUM+Mf6CZJ6rJezubFhaSWHXU2maZSw4IugAGKlRjeVtjkUFEh3qY7ZDEyhIoq5VeMkQ
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:23
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:17
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -67,34 +66,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:26 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:25 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Replace a deprecated DPRINTF() call by qemu_log_mask(LOG_UNIMP).
+IEC binary prefixes ease code review: the unit is explicit.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20200606070216.30952-1-f4bug@amsat.org>
+Message-Id: <20200601142930.29408-7-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/misc/auxbus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/hppa/dino.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index f8e7b9797125..06aabf20c59c 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -196,7 +196,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
-         }
-         break;
-     default:
--        DPRINTF("Not implemented!\n");
-+        qemu_log_mask(LOG_UNIMP, "AUX cmd=%u not implemented\n", cmd);
-         return AUX_NACK;
+diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
+index 2b1b38c58abc..7290f23962ce 100644
+--- a/hw/hppa/dino.c
++++ b/hw/hppa/dino.c
+@@ -542,7 +542,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
+                                 &s->parent_obj.data_mem);
+ 
+     /* Dino PCI bus memory.  */
+-    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 1ull << 32);
++    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 4 * GiB);
+ 
+     b = pci_register_root_bus(dev, "pci", dino_set_irq, dino_pci_map_irq, s,
+                               &s->pci_mem, get_system_io(),
+@@ -561,7 +561,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
      }
  
+     /* Set up PCI view of memory: Bus master address space.  */
+-    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 1ull << 32);
++    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 4 * GiB);
+     memory_region_init_alias(&s->bm_ram_alias, OBJECT(s),
+                              "bm-system", addr_space, 0,
+                              0xf0000000 + DINO_MEM_CHUNK_SIZE);
 -- 
 2.26.2
 
