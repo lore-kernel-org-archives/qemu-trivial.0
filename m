@@ -1,77 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jizki-0006fI-7K
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 08:22:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48910)
+	id 1jj074-0000Uf-A0
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 08:45:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jizke-0006cV-Ca; Wed, 10 Jun 2020 08:22:41 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33669)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jizkc-0008Iu-Mw; Wed, 10 Jun 2020 08:22:40 -0400
-Received: by mail-wr1-x443.google.com with SMTP id l11so2055885wru.0;
- Wed, 10 Jun 2020 05:22:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=H0sdQdgQplvvjh9X7YgkX6cmx596uRFI9hwBtgM9XZc=;
- b=UbusDdVvDckuEbxbbVPg2hXX52AH1pryr+x4fmO6aBYMQKq4mpwu/txUw40p/jnviM
- /71ljl3xPZf8TVQr2cVfhZT5qgwVMN/gA4aBtalINx+sqR4rfgWIUXea6apBWZAg4miD
- DG+FlUayRlQbLhzVRYYS/9TBjuGXw727kS6L8I+TL089RItglFb1Lhsw5cwYEFO1wEeo
- PINQVlr/OFiVV9VtNmwVrkNbjO2pMeYN0uHO9fxukM5zeRbkeqFkOZzRqPEqtMEhl6T4
- JH7f5Uxgwv8oTb9s4zjdVpXa42ApNHsmgE8CTYnrheGghFRAelmjU7AyzX15voVxwopI
- UR+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=H0sdQdgQplvvjh9X7YgkX6cmx596uRFI9hwBtgM9XZc=;
- b=ET6mB+feWtj6w4myUOFTkiGbIwkF+e7CwZX90Vlu+cxNhuqAFUt5uleHy0dLurauU5
- s8Pa8cKFNXy7uxzeDdoD+UePWYGHz8Kux5o+Njy3qskulrQ3QC5kd1mmb4veBrwwzRAV
- ru5rJuT62l0D+63AkiDSwltBmv5wlEpAEs7uJqqdZXN2caicejkJR/SgUWDLHxpdqSKI
- 1eNw51ck9cxohivWlCLTxTHYr2GzR9uSmmmRiCw/mwT9+C0Yb1Et3aaMSnlwQyQf+Sm/
- obDR8mtrO56b9e98sSRuA7dhrARj/9Gz/2O4vKoGS8opwc5Zo+6Oi/swOY5ffvICUBDj
- +M0A==
-X-Gm-Message-State: AOAM5308/sMeUdmMs9AX8pjPHNpJnkjvXQxjC8W4jytg9d50bPHiEH7g
- Tnk6CAFC2CfROke+YkB4KEZzjopJcpzBCMCD9xA=
-X-Google-Smtp-Source: ABdhPJw5XJDUN0EUy/lP6gp2osGvlB1+QxzTe7gril4Kt7/0HrGWngH803gkS0e9B6ndLIO8Y12f16VHheO3fHoqAQY=
-X-Received: by 2002:a5d:54c7:: with SMTP id x7mr3397771wrv.162.1591791757094; 
- Wed, 10 Jun 2020 05:22:37 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
+ id 1jixT7-0005F6-U0; Wed, 10 Jun 2020 05:56:25 -0400
+Received: from mail03.asahi-net.or.jp ([202.224.55.15]:51595)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <ysato@users.sourceforge.jp>)
+ id 1jixT6-0004Uj-OI; Wed, 10 Jun 2020 05:56:25 -0400
+Received: from sakura.ysato.name (ik1-413-38519.vs.sakura.ne.jp
+ [153.127.30.23]) (Authenticated sender: PQ4Y-STU)
+ by mail03.asahi-net.or.jp (Postfix) with ESMTPA id 833F2EE71E;
+ Wed, 10 Jun 2020 18:56:19 +0900 (JST)
+Received: from yo-satoh-debian.ysato.ml (v046088.dynamic.ppp.asahi-net.or.jp
+ [124.155.46.88])
+ by sakura.ysato.name (Postfix) with ESMTPSA id 69A021C0816;
+ Wed, 10 Jun 2020 18:56:18 +0900 (JST)
+Date: Wed, 10 Jun 2020 18:56:17 +0900
+Message-ID: <87sgf3megu.wl-ysato@users.sourceforge.jp>
+From: Yoshinori Sato <ysato@users.sourceforge.jp>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Magnus Damm <magnus.damm@gmail.com>,	Markus Armbruster
+ <armbru@redhat.com>,	Fam Zheng <fam@euphon.net>,	Thomas Huth
+ <thuth@redhat.com>,	qemu-trivial@nongnu.org,	Richard Henderson
+ <richard.henderson@linaro.org>,	Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@redhat.com>,	Michael Tokarev <mjt@tls.msk.ru>,	QEMU Developers
+ <qemu-devel@nongnu.org>,	Laurent Vivier <laurent@vivier.eu>,	Aleksandar
+ Markovic <aleksandar.m.mail@gmail.com>,	Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>,	Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH v2 2/8] MAINTAINERS: Mark SH4 based R2D & Shix machines
+ orphan
+In-Reply-To: <e55ba7d1-6617-ed1b-e9a2-a564bd490709@amsat.org>
 References: <20200608090142.6793-1-f4bug@amsat.org>
- <20200608090142.6793-2-f4bug@amsat.org>
- <CAHiYmc5UUaSKB6Ee0ds_hj0FBTzt0iLxzNWySt0mcZ9dvtZNyA@mail.gmail.com>
- <2503a468-d343-b40a-bf4e-628f3e8f56e3@amsat.org>
-In-Reply-To: <2503a468-d343-b40a-bf4e-628f3e8f56e3@amsat.org>
-From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Date: Wed, 10 Jun 2020 14:22:23 +0200
-Message-ID: <CAHiYmc4Bu2QEGkdcDGf0YJzsp2sWDHKoLWH+Pzf_icQXv6XC6Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/8] MAINTAINERS: Mark SH4 hardware orphan
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>, 
- Thomas Huth <thuth@redhat.com>, Magnus Damm <magnus.damm@gmail.com>, 
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org, 
- Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+ <20200608090142.6793-3-f4bug@amsat.org>
+ <8f97580c-bf25-dd83-e23e-dcea1e6ce6b7@redhat.com>
+ <875zc0skab.fsf@dusky.pond.sub.org>
+ <CANqRtoRwWksb8zngFqJnJg-gNs5_M_NoFZ1Y=A8mHK0NfCFBCg@mail.gmail.com>
+ <e55ba7d1-6617-ed1b-e9a2-a564bd490709@amsat.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL/10.8 EasyPG/1.0.0 Emacs/26
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: softfail client-ip=202.224.55.15;
+ envelope-from=ysato@users.sourceforge.jp; helo=mail03.asahi-net.or.jp
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 05:56:22
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_BL=0.01, RCVD_IN_MSPIKE_L3=0.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 10 Jun 2020 08:45:49 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,190 +67,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 12:22:42 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 09:56:26 -0000
 
-=D1=81=D1=80=D0=B5, 10. =D1=98=D1=83=D0=BD 2020. =D1=83 14:06 Philippe Math=
-ieu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=D0=B5
-=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->
-> On 6/10/20 1:08 PM, Aleksandar Markovic wrote:
-> > =D0=BF=D0=BE=D0=BD, 8. =D1=98=D1=83=D0=BD 2020. =D1=83 11:05 Philippe M=
-athieu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=D0=B5
-> > =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+On Tue, 09 Jun 2020 18:12:42 +0900,
+Philippe Mathieu-Daud=E9 wrote:
+>=20
+> Hi Magnus,
+>=20
+> On 6/9/20 10:59 AM, Magnus Damm wrote:
+> > Hi Markus and Thomas,
+> >=20
+> > On Tue, Jun 9, 2020 at 5:41 PM Markus Armbruster <armbru@redhat.com> wr=
+ote:
 > >>
-> >> Aurelien Jarno expressed his desire to orphan the SH4 hardware [*]:
+> >> Thomas Huth <thuth@redhat.com> writes:
 > >>
-> >>   I don't mind being [...] removed from there.
-> >>   I do not really have time to work on that.
+> >>> On 08/06/2020 11.01, Philippe Mathieu-Daud=E9 wrote:
+> >>>> Last commit from Magnus Damm is fc8e320ef583, which date is
+> >>>> Fri Nov 13 2009.  As nobody else seems to care about the patches
+> >>>> posted [*] related to the R2D and Shix machines, mark them orphan.
+> >>>>
+> >>>> Many thanks to Magnus for his substantial contributions to QEMU,
+> >>>> and for introducing these SH4 based machine!
 > >>
-> >> Mark the SH4 emulated hardware orphan.
+> >> s/machine/machines/
 > >>
-> >> Many thanks to Aurelien for his substantial contributions to QEMU,
-> >> and for maintaining the SH4 hardware for various years!
+> >>>>
+> >>>> [*] https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08519.h=
+tml
+> >>>>
+> >>>> Cc: Magnus Damm <magnus.damm@gmail.com>
+> >>>> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> >>>> ---
+> >>>>  MAINTAINERS | 5 +++--
+> >>>>  1 file changed, 3 insertions(+), 2 deletions(-)
+> >>>>
+> >>>> diff --git a/MAINTAINERS b/MAINTAINERS
+> >>>> index 49d90c70de..a012d9b74e 100644
+> >>>> --- a/MAINTAINERS
+> >>>> +++ b/MAINTAINERS
+> >>>> @@ -1250,14 +1250,15 @@ SH4 Machines
+> >>>>  ------------
+> >>>>  R2D
+> >>>>  M: Magnus Damm <magnus.damm@gmail.com>
+> >>>> -S: Maintained
+> >>>> +S: Orphan
+> >>>>  F: hw/sh4/r2d.c
+> >>>>  F: hw/intc/sh_intc.c
+> >>>>  F: hw/timer/sh_timer.c
+> >>>> +F: include/hw/sh4/sh_intc.h
+> >>>>
+> >>>>  Shix
+> >>>>  M: Magnus Damm <magnus.damm@gmail.com>
+> >>>> -S: Odd Fixes
+> >>>> +S: Orphan
+> >>>>  F: hw/sh4/shix.c
+> >>>
+> >>> Having both, an "M:" entry and "S: Orphan" in a section sounds weird.
+> >>> Magnus, are you still interested in these sections? If not, I think t=
+he
+> >>> "M:" line should be removed...?
 > >>
-> >> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg708400.html
-> >>
-> >> Message-Id: <20200601214125.GA1924990@aurel32.net>
-> >> Acked-by: Aurelien Jarno <aurelien@aurel32.net>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >> ---
-> >
-> > The basic idea of the patch (as read from the title and the commit
-> > message) is good and positive.
-> >
-> > The problem is that the patch does something different than the commit
-> > message says - pretending that it just orphans something. Which is not
-> > good. Actually, very clumsy and bad.
->
-> I can improve my English (actually I am trying, I started to take
-> lessons 2 years ago). Remember it is not easy for non native English
-> speaker to elaborate non-technical topics.
-> As a side note, it is also hard sometimes to understand contributors who
-> uses a very advanced English level with fancy words, as we have to take
-> the time to translate to understand. Even if we learn new word, this is
-> not often the best use of our time.
->
-> > It creates a whole new subsection in MAINTAINERS file (not said in the
-> > commit message), without any consistency with the current organization
-> > in the file. That new subsection looks completely misplaced, living
-> > with "TCG CPUs" neighbours. On top of that, it creates a new
-> > precedent, leaving many unanswered questions, like: Should other
-> > targets follow the same pattern?
->
-> If you look at git-log history, you'll see at the beginning there
-> were not much separations in directories. Everything was altogether.
-> Adding a new machine meant add the TCG emulation code and the hardware.
-> The contributor adding TCG emulation was doing the harder work,
-> usually doing it for a particular machine (hardware). Then other
-> contributors could add other machines, and were maintaining only
-> their machines. See commit b6f97c14f59 importing the short
-> MAINTAINERS from SVN. It was already split in 3 broad categories:
-> - TCG cores
-> - Machines / Hardware
-> - Subsystems (the rest)
->
-> In October 2010 (fd5d5c566af0) Anthony Liguori rewrote MAINTAINERS
-> using Linux style tags.
->
-> In January 2011 (42f5a7e9367) Aurelien Jarno clarified the
-> difference between the TCG host part (backend, under the tcg/
-> directory) VS the target part (frontend, under target/).
->
-> Then the project grew, and eventually in May 2012 Paolo Bonzini
-> started to clean, by moving files into "subsystem" directories
-> (see 5e8861a0361..c353f261946). In March 2013 he followed by
-> splitting various hardware files from the hw/ directory
-> (see 0d09e41a51a..47b43a1f414).
->
-> In November 2013 (f05b328c9d8) Stefan Hajnoczi clarified the
-> importance of the 'block' subsystem (later completed in
-> commit e7c6e631b1 in April 2015).
->
-> 2015 still, Paolo keeps cleaning (c17652ee409 cover the
-> TCG backend disassembler, 062710000db introduce Peter
-> Maydell for the ARM hardware).
->
-> In October 2018 Thomas Huth added the target/ folder
-> (commit fcf5ef2ab).
->
-> Recently last year (6347e1f1cc7) Markus Armbruster tried
-> to better describe the TCG frontend ("Overall TCG CPUs")
-> and backend ("TCG target") differences.
->
->
-> So while the difference between TCG emulation (or other
-> accelerators, KVM, ...) versus the hardware emulation is
-> not perfect, there is a separation (and the community
-> failed at clarifying it).
->
-> You can see when you were introduced as maintainer for the
-> MIPS target (commit c92023bfd) you were also added as
-> maintainer of the MIPSSIM and Fuloong 2E machines.
->
-> In commit 485cd9820 you volunteered to maintain the Malta
-> machine, so I believe you have a good understanding about
-> the difference between target code and hardware code.
->
-> >
-> > I personally think that creating a new subsection is just a code
-> > churn, waste of everybody's time on unimportant things.
->
-> Eh... I read that after spending 1h writing the previous
-> paragraph. Yes, you are right.
->
-> >
-> > Wouldn't it be simpler that you just changed statuses of all Aurelien
-> > sh4 sections to "Orphaned", as he already said he approves, and leave
-> > sh4 sections reorganization to a future maintainer?
-> >
-> > If you really want to reorganize sh4 sections, these changes should be
-> > in a separate patch. "Orphaning" patch should contain only changes of
-> > statuses.
->
-> Good idea! Maybe if you send a patch to show me how to do it, it
-> will be easier to understand what you mean.
->
-> Thanks for also caring about the SH4 hardware, the code was
-> prone to bitrot and needed maintainer to look after it.
->
-
-Thank you very much for the analysis above, Philippe.
-
-I think the whole thing is blown out of proportions, possibly to a
-great degree by my fault.
-
-Again, I think it is this simple: Yoshimori has the best conditions
-among us for maintaining rx and sh4, he needs it, he wants it - and we
-just give it to him.
-
-Nothing more and nothing less.
-
-Regards,
-Aleksandar
-
+> >> Concur.  Of course, let's give Magnus a chance to chime in.
+> >=20
+> > Thanks guys! I'm interested but don't have so much time available to
+> > commit to this I'm afraid. In particular I'm keen on trying to keep
+> > R2D around since I happen to have a physical machine setup in my
+> > remote access rack. SH4 with FPU used to have alright gcc + binutils
+> > toolchain and glibc support once while other SuperH SoCs lacked some
+> > portions. So keeping SH4 (sh775x) around would be nice IMO.
+>=20
+> Great news!
+>=20
+> FYI Yoshinori Sato did a great job on updating the Renesas
+> hardware, see:
+> https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08584.html
+>=20
+> He might be able to help with the UART/TIMER peripherals used by the
+> R2D, see a suggestion to add a 'Renesas hardware' entry:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg708478.html
+>=20
+> If Yoshinori accept the suggestion to add a Renesas hardware entry, do
+> you agree to be listed as there too? Maybe with a 'R:' tag for
+> designated reviewer instead of maintainer.
+>=20
+> So I'll respin this series with these changes:
+>=20
+> R2D: S: 'Maintained' -> 'Odd Fixes'
+>=20
+> So contributors don't wait for you to take the patches, and they can go
+> via qemu-trivial.
+>=20
+> And Shix -> No maintainer, S: 'Obsolete'.
+>=20
+> The TCG backend stay orphan.
+>=20
 > Regards,
->
+>=20
 > Phil.
->
-> >
-> > Regards,
-> > Aleksandar
-> >
-> >>  MAINTAINERS | 10 ++++++++--
-> >>  1 file changed, 8 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/MAINTAINERS b/MAINTAINERS
-> >> index 6e7890ce82..49d90c70de 100644
-> >> --- a/MAINTAINERS
-> >> +++ b/MAINTAINERS
-> >> @@ -299,9 +299,7 @@ SH4 TCG CPUs
-> >>  M: Aurelien Jarno <aurelien@aurel32.net>
-> >>  S: Odd Fixes
-> >>  F: target/sh4/
-> >> -F: hw/sh4/
-> >>  F: disas/sh4.c
-> >> -F: include/hw/sh4/
-> >>
-> >>  SPARC TCG CPUs
-> >>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> >> @@ -1948,6 +1946,14 @@ F: hw/*/*xive*
-> >>  F: include/hw/*/*xive*
-> >>  F: docs/*/*xive*
-> >>
-> >> +SH4 Hardware
-> >> +S: Orphan
-> >> +F: hw/sh4/
-> >> +F: hw/char/sh_serial.c
-> >> +F: hw/intc/sh_intc.c
-> >> +F: hw/timer/sh_timer.c
-> >> +F: include/hw/sh4/
-> >> +
-> >>  Subsystems
-> >>  ----------
-> >>  Audio
-> >> --
-> >> 2.21.3
-> >>
-> >>
-> >
+>=20
+> >=20
+> > Cheers,
+> >=20
+> > / magnus
+> >=20
+>=20
+
+OK.
+I also need sh4, so I will perform maintenance.
+
+--=20
+Yosinori Sato
 
