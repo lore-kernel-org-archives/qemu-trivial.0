@@ -1,57 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jj0VC-0008EO-S2
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45254)
+	id 1jj0VD-0008F2-4f
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jun 2020 09:10:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Uy-00081B-QI; Wed, 10 Jun 2020 09:10:32 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:56849)
+ id 1jj0Uw-0007vx-Oj; Wed, 10 Jun 2020 09:10:30 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:42261)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jj0Ux-0003iZ-GY; Wed, 10 Jun 2020 09:10:32 -0400
+ id 1jj0Ur-0003gU-W3; Wed, 10 Jun 2020 09:10:30 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N5mOZ-1iqdNM3MqZ-017G53; Wed, 10 Jun 2020 15:10:24 +0200
+ id 1M7JvQ-1jqgWe1TJM-007lDC; Wed, 10 Jun 2020 15:10:20 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Martin=20Li=C5=A1ka?= <mliska@suse.cz>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stafford Horne <shorne@gmail.com>
-Subject: [PULL v2 15/16] hw/openrisc/openrisc_sim: Add assertion to silence
- GCC warning
-Date: Wed, 10 Jun 2020 15:10:10 +0200
-Message-Id: <20200610131011.1941209-16-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL v2 10/16] hw/i386/xen/xen-hvm: Use the IEC binary prefix
+ definitions
+Date: Wed, 10 Jun 2020 15:10:05 +0200
+Message-Id: <20200610131011.1941209-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200610131011.1941209-1-laurent@vivier.eu>
 References: <20200610131011.1941209-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8hggNOYDOPfXdValh0/LtwKsrJvnZ4EGWVtbAUwp4s8OL/Fywjr
- XM8ycjFTSCPGAN2lT70Si/9ZKlNzKz4q/t6UAuSq8IoixVgFpI9l3zb6Yv9nxbTdu7T4cw9
- /QZ1kAQqEZfpoOKWn01BZtV70gNxTqFmEySF5H27YRkrwHpsP+mRxvZNVJrXZMiZtsk4SxM
- INW3G9NIAo32IrI1A2ngw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZQZSn2q+FiE=:utUpGYNOY2gkjdSNwg1Qdr
- SuHTxbDfUhNJeHTex7w5KiKoeXtrpaPqRVRZxxYoqK+CR8u0z6oBT5s8HuuwpL7Q8LUb6sVun
- yb3JTSV3ixfDOLK2slgywpc4e9A1tPCd5uZk4Ht/WE7FqZLlyqtfZWDVOeY8vpogUciuTk7v8
- Wyl67YSXn2k3WxM2A8ejAHGyhsSR5kXnHWLADJ5IsifLok4RX8LHC8onEvFUqxaUxh777UmIj
- HcAshB5/pfmTKejbNJmuQPSwPEyaXW0VnfZnO7MvHubSvZAIbsaLTjzL77xx5Qpr/DDgu5e62
- 29O6pLA2RNzpm7ryrA/M1WeVFoVxXMZYffHXSznimV8LjI4kfg2d3M2X1P+3ehMtbWP6SiaW1
- A38ePOtiKNCNPT5RMsczmXftCkYndT0oGoFlNLyLOsSDomjDvjXBLrswwwbfLSIwhkttN/I4W
- YSHFocH4FCyYnnJbSH1Ie9EYhW3qJ3emBbY/pibenvOadoiq5qLjxFbdV50ML/1VXuj4vjwG6
- SSxBmNaH6I6QgXdx12+IsNlmqgk3xXK1Yl8ev9OJL2W/3W2LS6jYZPJ40njrQIPT9+fZwLKJm
- SRX/xLKfpdH+RiW0juQmdyLCg4AMDa8TG3JwopX/76KKZ+NYNY24DU47SbD8OoopC+zrx/lrC
- R+rhM4+Xso7/tS7w70Y24poBpfks/gCILThahOZdEk/50OCQJpqqA6sHUPTFy0hu2qgsoI5la
- fT1Ou/xEV521eoAxXP/3FvgXPd5JzCt7fa6FtcWpFei2fMR4iLOTb7PRVunH6IaFEqS5nn3SL
- EkCvG2eciz2EfVaNkyfzeM4eDpHMcFu0Qu4npbjWfiOb+BCJ84XOmQfy3D1jhzdSsjC1CgV
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IEDhWYW0eQduXnGN0tnW7BZO0Q+G0Yju7m2j6zdh416rKnGbwdZ
+ ukI6dP2lbLLC8C2M/C8QSJvFq7tWCGMgZyIjPXy1kj7qQ7gfaO1MzjmttTeU9kEv7jvWL4C
+ XC26sCiRAGHTdviQMkyxcMliHP1rfLcjH35q2L6EahyBFSyt5wk65t2Zb1ut1t5ZlUyM2M/
+ z3YJzhlcnHBfpT8MWWbxw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pKpmjdCHzV4=:EJ8YnXEuVca/8RsOmqNtG1
+ UY/3dZwXsZZA7QBiBcbGAkbhsIYpJrl8U0MtZv5c1+Llnp8zFH40ZLSxIr+IfRKBgNgdhGYau
+ 1RUudGneSMkiLchGB4mOPHOJX8O0agjS1T8X2OqfXKctqGM9BgNFHY6E+nT/uqDuxKwLdVoUx
+ nwJ1WYqGrfLvjRl3BYADsIg9y8YWR5YjPjQ7Fa8V1AzbZHAm1EqL77VZZ1Fg9vs1qL7F9TwYb
+ fiVVZBG90V/qm8TukXrvrNDnZ60TeJMcteOIUW35wV/6lUdkteDHbhgf3H03W/Ie7yES26oGV
+ 7HCmjaFwyWSZ189c3A0HnXFzmDOmAzyVRJb5zCeeMiwtsQVhJgphpisZFkb3MoDHLndvDeEw4
+ S68HrKzOtPRYUg2QrH9/VVa+T3VfPCKRilsez+OWWtOOuetH6Aq5zNUWGFcFl8G+TiGP3iIp6
+ K+QkrRKTTYcNIL5KN20Jx3REdne1wrjaWdhUhY8ihT35g1NxRZoDrLLfKacGofp2ReUctSv97
+ 733SQe3a0SY2V/OFYi3gDnlEjkYz1mfsXjZenFplwbIAm1iNyyJgt/1y0LxRO3ne7HQAb1oYD
+ W6w8ry7xeQdwaP62WPilt1TN088yTVwWorukIhaqI3mgUHCOZ+ciS1NhxS/dVL9vZXwOZ8qi2
+ 1XmAlTOsLgJXIP77l2ZpezjNt+eKMyn8m2Q+BB37pCtZ5TItq6pd5dcVnOeSCz18ym8V6TYi0
+ +aBrQveygEV13avz1/olHgoS3cTl0+z4cFpz9D9K8fWegRj3IH3wcAgAT/bKohpx7doaG9HzP
+ J9o1AIHO/3dI6OzJL1m1B9+GyGVOUrgh+PcGh3JPoLEgqOKtyhQ2XSJvQiKF/4hCfXOwUew
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 08:14:00
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 09:10:15
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -70,52 +67,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jun 2020 13:10:33 -0000
+X-List-Received-Date: Wed, 10 Jun 2020 13:10:31 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-When compiling with GCC 10 (Fedora 32) using CFLAGS=-O2 we get:
+IEC binary prefixes ease code review: the unit is explicit.
 
-    CC      or1k-softmmu/hw/openrisc/openrisc_sim.o
-  hw/openrisc/openrisc_sim.c: In function ‘openrisc_sim_init’:
-  hw/openrisc/openrisc_sim.c:87:42: error: ‘cpu_irqs[0]’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-     87 |         sysbus_connect_irq(s, i, cpu_irqs[i][irq_pin]);
-        |                                  ~~~~~~~~^~~
-
-While humans can tell smp_cpus will always be in the [1, 2] range,
-(openrisc_sim_machine_init sets mc->max_cpus = 2), the compiler
-can't.
-
-Add an assertion to give the compiler a hint there's no use of
-uninitialized data.
-
-Buglink: https://bugs.launchpad.net/qemu/+bug/1874073
-Reported-by: Martin Liška <mliska@suse.cz>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Paul Durrant <paul@xen.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Stafford Horne <shorne@gmail.com>
-Message-Id: <20200608160611.16966-1-philmd@redhat.com>
+Message-Id: <20200601142930.29408-8-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/openrisc/openrisc_sim.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/i386/xen/xen-hvm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index d08ce6181199..02f5259e5e33 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -134,6 +134,7 @@ static void openrisc_sim_init(MachineState *machine)
-     int n;
-     unsigned int smp_cpus = machine->smp.cpus;
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 82ece6b9e739..94fe5d65e9fd 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -9,6 +9,7 @@
+  */
  
-+    assert(smp_cpus >= 1 && smp_cpus <= 2);
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = OPENRISC_CPU(cpu_create(machine->cpu_type));
-         if (cpu == NULL) {
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ 
+ #include "cpu.h"
+ #include "hw/pci/pci.h"
+@@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+          * Xen does not allocate the memory continuously, it keeps a
+          * hole of the size computed above or passed in.
+          */
+-        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
++        block_len = (4 * GiB) + x86ms->above_4g_mem_size;
+     }
+     memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+                            &error_fatal);
 -- 
 2.26.2
 
