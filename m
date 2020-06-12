@@ -1,88 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jjgFt-0006Iv-Dt
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2020 05:45:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48722)
+	id 1jjhQ5-0002ei-3A
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2020 07:00:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jjgFr-0006Ik-Sf
- for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 05:45:43 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49524
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jjgFp-0007Pd-CF
- for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 05:45:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591955140;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ozsvLs5qelBHfjKOA5cneiBnDKaNpMO/sFFObBQ6CrA=;
- b=WiSXwXHBJi9I74KASOICEK75rb4wmqX+4IQjTcg9DOOa5259vZPMvEo08RtnvICbsJxmdC
- xlYZWohdU6gP3S1/PpDvMSa1kk2792E619+JaKx+Q+ng88i+a+Mz9X/GNVaaAjWb43KtmG
- llVgALhL2uy29FKT5S74aU0pyhmQcfI=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-161-HDi_Ymm2P8mk7qb_dTmtPg-1; Fri, 12 Jun 2020 05:45:33 -0400
-X-MC-Unique: HDi_Ymm2P8mk7qb_dTmtPg-1
-Received: by mail-wr1-f71.google.com with SMTP id s17so3683354wrt.7
- for <qemu-trivial@nongnu.org>; Fri, 12 Jun 2020 02:45:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ozsvLs5qelBHfjKOA5cneiBnDKaNpMO/sFFObBQ6CrA=;
- b=Gs0uglSXqCMNxDfap2K3ARfTFKX0yXnQFQ72oj6gwgjyQXB1rm/jnMOeJOjqnkszir
- yroE+sdGnAV/lvMahNaMtWtKfx6sibI/FXZ/1qUML0VwmN6GyiytPujyrsP+yRoV/oUV
- G/eRwnfLb5CCJM3+gjEc9A+Z0OWkucRdJAeQTL/PgTSzSNRXixOiHbDjPmLnh5iScNou
- qCxb6xS1vU0PW7ugBVs7S+axIw6lR6cV2CICb35OGsxEVX/M9x4A1CfUb/3dAwTG6+ho
- g34dDafjXAv/mKaRoaOrlAiNzlVEpBBx9BnoLIwA/DcUDxoVBU7+Cs6BMjGGWx2r/ozz
- OmOA==
-X-Gm-Message-State: AOAM533msPfPbscYBlGoupzdndEgsw8cb/8NkwjV3A98rvdjjXUtwoeq
- EnQ44vL5oDiDiSKLQi0xxrVXwfe5MONWILleklAogczliLfkHuL0oLXOTWTdNqZtYvw0sMP8Tmd
- ZtjDhDY8Sz4AclzZggQ==
-X-Received: by 2002:a1c:b703:: with SMTP id h3mr12043999wmf.81.1591955131912; 
- Fri, 12 Jun 2020 02:45:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3RggoPXO8D5hpvlqlUJUXusgBrmdvxQ8YSvCtG/KA1hzoieOF6vMD/lv5Spx4NZyOUTn8/w==
-X-Received: by 2002:a1c:b703:: with SMTP id h3mr12043977wmf.81.1591955131654; 
- Fri, 12 Jun 2020 02:45:31 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:29ed:810e:962c:aa0d?
- ([2001:b07:6468:f312:29ed:810e:962c:aa0d])
- by smtp.gmail.com with ESMTPSA id s8sm9168414wrm.96.2020.06.12.02.45.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jun 2020 02:45:31 -0700 (PDT)
-Subject: Re: [PATCH 1/1] util/getauxval: Porting to FreeBSD getauxval feature
-To: David CARLIER <devnexen@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
- Thomas Huth <thuth@redhat.com>
-References: <CA+XhMqwHSBd_TSFqipO6bn=hVSV8+Mdm3y=_i6gQoGBxRsjS0g@mail.gmail.com>
- <e7df4877-7700-ea36-ceb0-3bf84fec8df8@vivier.eu>
- <CA+XhMqxTU6PUSQBpbA9VrS1QZfqgrCAKUCtUF-x2aF=fCMTDOw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0c53d8c5-1298-8017-e2ea-ff4119fae830@redhat.com>
-Date: Fri, 12 Jun 2020 11:45:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1jjhQ3-0002aU-Gc; Fri, 12 Jun 2020 07:00:19 -0400
+Received: from mta-02.yadro.com ([89.207.88.252]:39562 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1jjhQ1-0003Aa-Qx; Fri, 12 Jun 2020 07:00:19 -0400
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id A645A4C8B7;
+ Fri, 12 Jun 2020 11:00:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ content-type:content-type:content-transfer-encoding:mime-version
+ :x-mailer:message-id:date:date:subject:subject:from:from
+ :received:received:received; s=mta-01; t=1591959614; x=
+ 1593774015; bh=VnZrnnHp/G0hergrKRdKADdXl6fJ9zRjEpV9JMCBjDU=; b=f
+ dun0IE6a/ugjT6a8bWWq4oJH3vVFK2o6a7EdOb0VoYINigvz/T7Usty32SPwc/Yn
+ 1Ct7HJMu/gcxEdrVm7ASSNRkowQLznZnc33GItE7wUSGxpApnaDRY9WL/aC/3e1x
+ xnhIFdGWkjSqgGCdTmYqYJatMS6EvCke2kzxoyOqb0=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2meOEhcDzAX5; Fri, 12 Jun 2020 14:00:14 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
+ [172.17.10.102])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 4EC674C8A1;
+ Fri, 12 Jun 2020 14:00:14 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
+ (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 12
+ Jun 2020 14:00:14 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: <qemu-trivial@nongnu.org>
+CC: Roman Bolshakov <r.bolshakov@yadro.com>, Kevin Wolf <kwolf@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: [PATCH] .gitignore: Ignore storage-daemon files
+Date: Fri, 12 Jun 2020 13:58:31 +0300
+Message-ID: <20200612105830.17082-1-r.bolshakov@yadro.com>
+X-Mailer: git-send-email 2.26.1
 MIME-Version: 1.0
-In-Reply-To: <CA+XhMqxTU6PUSQBpbA9VrS1QZfqgrCAKUCtUF-x2aF=fCMTDOw@mail.gmail.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 03:11:46
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-02.corp.yadro.com (172.17.10.102)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 07:00:15
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,46 +70,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jun 2020 09:45:44 -0000
+X-List-Received-Date: Fri, 12 Jun 2020 11:00:19 -0000
 
-On 12/06/20 10:46, David CARLIER wrote:
-> From d7f9d40777d1ed7c9450b0be4f957da2993dfc72 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Fri, 12 Jun 2020 09:39:17 +0100
-> Subject: [PATCH] util/getauxval: Porting to FreeBSD getauxval feature
-> 
-> FreeBSD has a similar API for auxiliary vector.
-> 
-> Signed-off-by: David Carlier <devnexen@gmail.com>
-> ---
->  util/getauxval.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/util/getauxval.c b/util/getauxval.c
-> index 36afdfb9e6..b124107d61 100644
-> --- a/util/getauxval.c
-> +++ b/util/getauxval.c
-> @@ -98,6 +98,16 @@ unsigned long qemu_getauxval(unsigned long type)
->      return 0;
->  }
-> 
-> +#elif defined(__FreeBSD__)
-> +#include <sys/auxv.h>
-> +
-> +unsigned long qemu_getauxval(unsigned long type)
-> +{
-> +    unsigned long aux = 0;
-> +    elf_aux_info(type, &aux, sizeof(aux));
-> +    return aux;
-> +}
-> +
->  #else
-> 
->  unsigned long qemu_getauxval(unsigned long type)
-> 
+The files are generated.
 
-Queued, thanks.
+Fixes: 2af282ec51a ("qemu-storage-daemon: Add --monitor option")
+Cc: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+---
+ .gitignore | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-Paolo
+diff --git a/.gitignore b/.gitignore
+index 0c5af83aa7..90acb4347d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -34,18 +34,18 @@
+ /qapi/qapi-builtin-types.[ch]
+ /qapi/qapi-builtin-visit.[ch]
+ /qapi/qapi-commands-*.[ch]
+-/qapi/qapi-commands.[ch]
+-/qapi/qapi-emit-events.[ch]
++**/qapi/qapi-commands.[ch]
++**/qapi/qapi-emit-events.[ch]
+ /qapi/qapi-events-*.[ch]
+-/qapi/qapi-events.[ch]
+-/qapi/qapi-init-commands.[ch]
+-/qapi/qapi-introspect.[ch]
++**/qapi/qapi-events.[ch]
++**/qapi/qapi-init-commands.[ch]
++**/qapi/qapi-introspect.[ch]
+ /qapi/qapi-types-*.[ch]
+-/qapi/qapi-types.[ch]
++**/qapi/qapi-types.[ch]
+ /qapi/qapi-visit-*.[ch]
+ !/qapi/qapi-visit-core.c
+-/qapi/qapi-visit.[ch]
+-/qapi/qapi-doc.texi
++**/qapi/qapi-visit.[ch]
++**/qapi/qapi-doc.texi
+ /qemu-edid
+ /qemu-img
+ /qemu-nbd
+@@ -59,6 +59,7 @@
+ /qemu-keymap
+ /qemu-monitor.texi
+ /qemu-monitor-info.texi
++/qemu-storage-daemon
+ /qemu-version.h
+ /qemu-version.h.tmp
+ /module_block.h
+-- 
+2.26.1
 
 
