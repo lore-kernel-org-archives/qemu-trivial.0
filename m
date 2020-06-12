@@ -1,63 +1,108 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jjhQ5-0002ei-3A
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2020 07:00:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49842)
+	id 1jjjlv-0005YD-2P
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2020 09:31:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1jjhQ3-0002aU-Gc; Fri, 12 Jun 2020 07:00:19 -0400
-Received: from mta-02.yadro.com ([89.207.88.252]:39562 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1jjhQ1-0003Aa-Qx; Fri, 12 Jun 2020 07:00:19 -0400
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id A645A4C8B7;
- Fri, 12 Jun 2020 11:00:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- content-type:content-type:content-transfer-encoding:mime-version
- :x-mailer:message-id:date:date:subject:subject:from:from
- :received:received:received; s=mta-01; t=1591959614; x=
- 1593774015; bh=VnZrnnHp/G0hergrKRdKADdXl6fJ9zRjEpV9JMCBjDU=; b=f
- dun0IE6a/ugjT6a8bWWq4oJH3vVFK2o6a7EdOb0VoYINigvz/T7Usty32SPwc/Yn
- 1Ct7HJMu/gcxEdrVm7ASSNRkowQLznZnc33GItE7wUSGxpApnaDRY9WL/aC/3e1x
- xnhIFdGWkjSqgGCdTmYqYJatMS6EvCke2kzxoyOqb0=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2meOEhcDzAX5; Fri, 12 Jun 2020 14:00:14 +0300 (MSK)
-Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
- [172.17.10.102])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 4EC674C8A1;
- Fri, 12 Jun 2020 14:00:14 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
- (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 12
- Jun 2020 14:00:14 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: <qemu-trivial@nongnu.org>
-CC: Roman Bolshakov <r.bolshakov@yadro.com>, Kevin Wolf <kwolf@redhat.com>,
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjjlq-0005WW-8z
+ for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 09:31:01 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:56113
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjjln-0003Y6-Nq
+ for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 09:30:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591968654;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=teRKqjh/dPu2cClbbEJpLtQ/iufZd7M3Suji0paTUww=;
+ b=RV87th60MCSDrYZClepvJQzAFfjfINXl3+6gnZ2/E+n9XkiG5ApoieaywbJbXT0zZ9pVcm
+ 08nG0WRD9nw86IPjOiVzrerEPZQMLxCdrbmPNY2Z7Zbfxs64oJUfRnZYJkiu/5giIs1Nmm
+ Tpq9LzgQUXA81y+xv+0gHC3R71KSmY0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-440-npZxp0dYNEm_wrsrvTGTNw-1; Fri, 12 Jun 2020 09:30:52 -0400
+X-MC-Unique: npZxp0dYNEm_wrsrvTGTNw-1
+Received: by mail-wm1-f69.google.com with SMTP id q7so1953809wmj.9
+ for <qemu-trivial@nongnu.org>; Fri, 12 Jun 2020 06:30:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=teRKqjh/dPu2cClbbEJpLtQ/iufZd7M3Suji0paTUww=;
+ b=gB6dOn6LiGoS84AwSexT+jltH7O62wTkL1EBQKqBKHsdXb9um4i5hPWP08CETeeT1n
+ P2/8W1HiSxpaxbTZS2DUEKh79pQkXrqB0jPFL1aZFWxATSi55zdXmhJJQXh0ARqChnaf
+ ICbY3LS62MUaQ6JO3IBA1sgJSq+lj+vJ5GAmsGSUAk433taADT6L70LqlRUlHEH6sRvs
+ 2DWQeaLKaD48ITMYX3ZHUWFrMGWBK4Al497mZuv+CqBw7SFGM/Wa+OYPOR3wlM7yRzXd
+ QoEUNl8TYZT10o+KSrZI0NBwg1G0vkOkKyJSGP1m8euZzeA9MWbD3w4EN4ptlVpbJnF0
+ cDOQ==
+X-Gm-Message-State: AOAM533d0lUphREvolUIMm28okQIpZChAl+PysAUa865QqVv0S4KjJSk
+ bfneDuJuNodHLUcYsc7XpdWF/Z0jIclZXqiE7GUEe96fIcqrTMR4BL1FVQBcMssdO06U3KHnuaw
+ l/I1NURCed5MpNS1JmA==
+X-Received: by 2002:a5d:4484:: with SMTP id j4mr14694618wrq.325.1591968651400; 
+ Fri, 12 Jun 2020 06:30:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz7VbPrXSUJVbHmzBfMwCmzc9ONcoEmfExtvPK7Y38J080KPoMRl3Neqg17kPLFa00SXPmCww==
+X-Received: by 2002:a5d:4484:: with SMTP id j4mr14694583wrq.325.1591968651134; 
+ Fri, 12 Jun 2020 06:30:51 -0700 (PDT)
+Received: from [192.168.1.40] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id d5sm10728700wrb.14.2020.06.12.06.30.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Jun 2020 06:30:50 -0700 (PDT)
+Subject: Re: [PATCH] .gitignore: Ignore storage-daemon files
+To: Roman Bolshakov <r.bolshakov@yadro.com>,
+ Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH] .gitignore: Ignore storage-daemon files
-Date: Fri, 12 Jun 2020 13:58:31 +0300
-Message-ID: <20200612105830.17082-1-r.bolshakov@yadro.com>
-X-Mailer: git-send-email 2.26.1
+References: <20200612105830.17082-1-r.bolshakov@yadro.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <b87e42b4-6436-672e-24b8-7b650002625e@redhat.com>
+Date: Fri, 12 Jun 2020 15:30:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200612105830.17082-1-r.bolshakov@yadro.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-02.corp.yadro.com (172.17.10.102)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 07:00:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 09:30:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,57 +115,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jun 2020 11:00:19 -0000
+X-List-Received-Date: Fri, 12 Jun 2020 13:31:01 -0000
 
-The files are generated.
++Markus (qapi)
 
-Fixes: 2af282ec51a ("qemu-storage-daemon: Add --monitor option")
-Cc: Kevin Wolf <kwolf@redhat.com>
-Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
----
- .gitignore | 17 +++++++++--------
- 1 file changed, 9 insertions(+), 8 deletions(-)
+On 6/12/20 12:58 PM, Roman Bolshakov wrote:
+> The files are generated.
+> 
+> Fixes: 2af282ec51a ("qemu-storage-daemon: Add --monitor option")
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> ---
+>  .gitignore | 17 +++++++++--------
+>  1 file changed, 9 insertions(+), 8 deletions(-)
+> 
+> diff --git a/.gitignore b/.gitignore
+> index 0c5af83aa7..90acb4347d 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -34,18 +34,18 @@
+>  /qapi/qapi-builtin-types.[ch]
+>  /qapi/qapi-builtin-visit.[ch]
+>  /qapi/qapi-commands-*.[ch]
+> -/qapi/qapi-commands.[ch]
+> -/qapi/qapi-emit-events.[ch]
+> +**/qapi/qapi-commands.[ch]
+> +**/qapi/qapi-emit-events.[ch]
+>  /qapi/qapi-events-*.[ch]
+> -/qapi/qapi-events.[ch]
+> -/qapi/qapi-init-commands.[ch]
+> -/qapi/qapi-introspect.[ch]
+> +**/qapi/qapi-events.[ch]
+> +**/qapi/qapi-init-commands.[ch]
+> +**/qapi/qapi-introspect.[ch]
+>  /qapi/qapi-types-*.[ch]
+> -/qapi/qapi-types.[ch]
+> +**/qapi/qapi-types.[ch]
+>  /qapi/qapi-visit-*.[ch]
+>  !/qapi/qapi-visit-core.c
+> -/qapi/qapi-visit.[ch]
+> -/qapi/qapi-doc.texi
+> +**/qapi/qapi-visit.[ch]
+> +**/qapi/qapi-doc.texi
+>  /qemu-edid
+>  /qemu-img
+>  /qemu-nbd
+> @@ -59,6 +59,7 @@
+>  /qemu-keymap
+>  /qemu-monitor.texi
+>  /qemu-monitor-info.texi
+> +/qemu-storage-daemon
+>  /qemu-version.h
+>  /qemu-version.h.tmp
+>  /module_block.h
+> 
 
-diff --git a/.gitignore b/.gitignore
-index 0c5af83aa7..90acb4347d 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -34,18 +34,18 @@
- /qapi/qapi-builtin-types.[ch]
- /qapi/qapi-builtin-visit.[ch]
- /qapi/qapi-commands-*.[ch]
--/qapi/qapi-commands.[ch]
--/qapi/qapi-emit-events.[ch]
-+**/qapi/qapi-commands.[ch]
-+**/qapi/qapi-emit-events.[ch]
- /qapi/qapi-events-*.[ch]
--/qapi/qapi-events.[ch]
--/qapi/qapi-init-commands.[ch]
--/qapi/qapi-introspect.[ch]
-+**/qapi/qapi-events.[ch]
-+**/qapi/qapi-init-commands.[ch]
-+**/qapi/qapi-introspect.[ch]
- /qapi/qapi-types-*.[ch]
--/qapi/qapi-types.[ch]
-+**/qapi/qapi-types.[ch]
- /qapi/qapi-visit-*.[ch]
- !/qapi/qapi-visit-core.c
--/qapi/qapi-visit.[ch]
--/qapi/qapi-doc.texi
-+**/qapi/qapi-visit.[ch]
-+**/qapi/qapi-doc.texi
- /qemu-edid
- /qemu-img
- /qemu-nbd
-@@ -59,6 +59,7 @@
- /qemu-keymap
- /qemu-monitor.texi
- /qemu-monitor-info.texi
-+/qemu-storage-daemon
- /qemu-version.h
- /qemu-version.h.tmp
- /module_block.h
--- 
-2.26.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
