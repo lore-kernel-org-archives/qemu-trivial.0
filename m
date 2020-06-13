@@ -1,111 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jjlf9-0003m9-2h
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2020 11:32:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45028)
+	id 1jk923-0006LM-CH
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Jun 2020 12:29:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjlf6-0003d0-31
- for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 11:32:08 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40665
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjlf3-0001cs-B9
- for qemu-trivial@nongnu.org; Fri, 12 Jun 2020 11:32:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591975924;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=3osd5WlW7miNG8N8FWeXMnBZHNUKfbDc6xHPXlvH0Zg=;
- b=F7FeTYAIGIEED6SyX4UkN45JPgozto0f13SJ/h5NHN3Dy4cRTyr+VaLCuflxiuZ9FQgTX9
- 4wtzAJp5u//CUfVztG0OWwfDTIQ4ZMrR1lpwX4gtjCaM/NluNIxYEXiN2ziPyvgf9hKHAE
- 3CWIkXTDGlPw1ZoV3VSOUVpJSZMOxLM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-411-jEfRunHuMAOlICIOf5ZNjw-1; Fri, 12 Jun 2020 11:31:58 -0400
-X-MC-Unique: jEfRunHuMAOlICIOf5ZNjw-1
-Received: by mail-wr1-f69.google.com with SMTP id t5so4010729wro.20
- for <qemu-trivial@nongnu.org>; Fri, 12 Jun 2020 08:31:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1jk921-0006L9-RB; Sat, 13 Jun 2020 12:29:21 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:33661)
+ by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1jk920-00072H-03; Sat, 13 Jun 2020 12:29:21 -0400
+Received: by mail-ej1-x642.google.com with SMTP id n24so13139421ejd.0;
+ Sat, 13 Jun 2020 09:29:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uatsu9mHhKIA6c1jG2JglrXLJNvoevvsx4EjKK88bwk=;
+ b=Lud70OFlbpOekQ/1akd3CXKPJz0G5qaa6+lTl014vN0sY29e1Jl+KxqzIR6nAsV99j
+ QE9Sd33TmnaShKIzarYqHWuI2UaTRZzaKcHseKb/2sKFmhn4ctYvVZOs97W+PPdj9sRh
+ 751jTrWNng0j3i/cPobbqKEE+W1+D+DNt3DCQ9t9i43QnCNuwJHSFC/lmzG7+9pueIzO
+ 9t8RE1RzQx/YdSM7QtFmCyTgnXUBQM13d84EsZqLGnbn/qukCebkHeSSGmvj4Zfr1SUD
+ 71S5dUvffqMtZgqMz9ioi40Q4i9FZOruW15Pa1e/sD7O17TSgK11YEYAZi3xfzhIN/gJ
+ y8mQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=3osd5WlW7miNG8N8FWeXMnBZHNUKfbDc6xHPXlvH0Zg=;
- b=RjUa/rZ7sLqLoYTjdhSTYMK4Y8knXCljT4DDz+S9mtT00hlWTIiDaxI5Pw2mYUDuRC
- X51QSCFs7cNQTgfrbE16WQmqc4RoGZyo7exXEdvyxynr57HKflQHD2GATRv0px1EC4EL
- l7yG0nc4YUVlnveq4SLrc/kxZVCsiNDosLwlxm92ovGcMdrgEzePUekV6Sm3R0w7BTup
- XfztnivdJTr6TjLSvWLid+gZ+mGU0ZRqAqMEmbQMXgBh7/EGeYgp3HU6R0v+bhXiPOtK
- evs0gI+kmzQgjvbC//a/wXdcMzM5r8R3JWCd4wcv8K1bvG5Z24EYo3eETwnfSObnkzlE
- azAA==
-X-Gm-Message-State: AOAM531nRkUNNK9lsKpcp8y8Dqhj/lib5wvJOo+tZFOS3UoBo28mTYOf
- UG0KIoaatVdrqEOjegRPih2sd+hkfF6+QDS01aYDKcWI+hz71mksBdWz/CTy4qjXQZElhUMVMhL
- i4KNnW9elZzOQxfxMFA==
-X-Received: by 2002:a5d:4841:: with SMTP id n1mr16266716wrs.64.1591975917823; 
- Fri, 12 Jun 2020 08:31:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxqh0+HGv3aEYe0ELqsW6SaB7z1dpbwxEhjXYd37Qy/f18i+s6qknINqd7XHEDYZx4c1zOYw==
-X-Received: by 2002:a5d:4841:: with SMTP id n1mr16266698wrs.64.1591975917558; 
- Fri, 12 Jun 2020 08:31:57 -0700 (PDT)
-Received: from [192.168.1.40] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id x205sm9007342wmx.21.2020.06.12.08.31.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jun 2020 08:31:57 -0700 (PDT)
-Subject: Re: [PATCH] hw/nios2: Update interrupt request when CR_STATUS_PIE
- disabled
-To: "Wu, Wentong" <wentong.wu@intel.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "marex@denx.de" <marex@denx.de>, "thuth@redhat.com" <thuth@redhat.com>,
- "crwulff@gmail.com" <crwulff@gmail.com>
-References: <20200611081319.1864-1-wentong.wu@intel.com>
- <DM5PR11MB1833DA1D82CD4DEAF8DE514F8D810@DM5PR11MB1833.namprd11.prod.outlook.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <b1396e1a-ed01-2ea4-1ad1-359911d28a31@redhat.com>
-Date: Fri, 12 Jun 2020 17:31:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uatsu9mHhKIA6c1jG2JglrXLJNvoevvsx4EjKK88bwk=;
+ b=fEewMO5kdGhI7cAXM2zMnDK7EWWaTrMlKvccpI71MKrWFTdVp74KX2vRtPb/kvfsBZ
+ dnopumEzBvVcAi1jujVvDobTLZINkUJfxkKiMXMq3nfpDdXOZXRodtu6na9L0VtlpVSr
+ 923oeN8CBTzqB8+xfzjGnNPfxq9INtStjoxdthwlVu2s/b29x6gR3L8uXJWX4qzYEPbL
+ i3nEzY8R77V6Cqmbeuja/8QIz3tOlIoJo1Frr2SkW9dANECUdM5R6/O5IUX0K7TFFOG6
+ 3qxergfxlFCrMaYSfL5C3OjQ2kNjmmmHCI4C3l3ZxE1tGhYEet5wRS2v6Xihx4pFDkQh
+ zT+A==
+X-Gm-Message-State: AOAM530BjraqA23PmnF0TPImkmvDt1wv4sWPgwVBCA3DAZ+N5vw1SsnZ
+ dZSoFjgEwkkDiJpNJX2OoPNovF5LCAeafepbLws=
+X-Google-Smtp-Source: ABdhPJwV2lTazTeL2QN3zm0QY0DkgwcDT7DZSBX1j5XGsGa+0miKCrWJDajQ/YdPnYcg39R3yu6/jyexYhWs9ZnCpKU=
+X-Received: by 2002:a17:906:e47:: with SMTP id
+ q7mr18293279eji.279.1592065748002; 
+ Sat, 13 Jun 2020 09:29:08 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <DM5PR11MB1833DA1D82CD4DEAF8DE514F8D810@DM5PR11MB1833.namprd11.prod.outlook.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 08:07:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20191008082815.8267-1-thuth@redhat.com>
+ <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
+ <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+ <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Sat, 13 Jun 2020 18:28:55 +0200
+Message-ID: <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=aleksandar.m.mail@gmail.com; helo=mail-ej1-x642.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,62 +77,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jun 2020 15:32:09 -0000
+X-List-Received-Date: Sat, 13 Jun 2020 16:29:22 -0000
 
-Hi,
+On Tue, Oct 8, 2019 at 2:41 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 8 Oct 2019 at 13:37, Thomas Huth <thuth@redhat.com> wrote:
+> >
+> > On 08/10/2019 14.18, Aleksandar Markovic wrote:
+> > > If I remember well, QAPI-related c files are generated while doing
+> > > 'make'. If that is true, these files should be deleted by 'make clean',
+> > > shouldn't they?
+> >
+> > I think that's a philosophical question. Should "make clean" delete all
+> > files that have been generated by a Makefile (i.e. not by "configure"),
+> > or rather mainly the binary files?
+>
+> https://www.gnu.org/software/automake/manual/html_node/Clean.html
+>
+> The autoconf manual suggests some heuristics:
+>  - If make built it, and it is commonly something that one would want
+>    to rebuild (for instance, a .o file), then mostlyclean should delete it.
+>  - Otherwise, if make built it, then clean should delete it.
+>  - If configure built it, then distclean should delete it.
+>  - If the maintainer built it (for instance, a .info file), then
+>    maintainer-clean should delete it. However maintainer-clean should
+>    not delete anything that needs to exist in order to run
+> './configure && make'.
+>
 
-On 6/12/20 3:43 PM, Wu, Wentong wrote:
-> Hi,
-> Can any body help review this patch ? Thanks in advance!
+Thomas, can we reincarnate this patch? It needs only fairly simple
+corrections, as said by Peter above. It would be nice to have at least
+one release of QEMU with clean clean and distclean.
 
-You just sent this patch yesterday... Please give reviewers more time.
-
-See:
-https://wiki.qemu.org/Contribute/SubmitAPatch#Participating_in_Code_Review
-In particular:
-https://wiki.qemu.org/Contribute/SubmitAPatch#If_your_patch_seems_to_have_been_ignored
-
-> 
-> BR
-> 
-> -----Original Message-----
-> From: Wu, Wentong <wentong.wu@intel.com> 
-> Sent: Thursday, June 11, 2020 4:13 PM
-> To: qemu-devel@nongnu.org
-> Cc: qemu-trivial@nongnu.org; crwulff@gmail.com; marex@denx.de; thuth@redhat.com; Wu, Wentong <wentong.wu@intel.com>
-> Subject: [PATCH] hw/nios2: Update interrupt request when CR_STATUS_PIE disabled
-> 
-> Update interrupt request when external interupt pends for STATUS_PIE disabled. Otherwise on icount enabled nios2 target there will be cpu abort when guest code changes state register with wrctl instruction.
-
-It'd help if you provide more information, what code where you testing,
-how you ran QEMU, enough for reviewers to reproduce the issue you had
-and test if your patch indeed resolves the issue you described.
-
-Regards,
-
-Phil.
-
-> 
-> Signed-off-by: Wentong Wu <wentong.wu@intel.com>
-> ---
->  hw/nios2/cpu_pic.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/nios2/cpu_pic.c b/hw/nios2/cpu_pic.c index 1c1989d5..2abc8fa8 100644
-> --- a/hw/nios2/cpu_pic.c
-> +++ b/hw/nios2/cpu_pic.c
-> @@ -42,6 +42,8 @@ static void nios2_pic_cpu_handler(void *opaque, int irq, int level)
->          } else if (!level) {
->              env->irq_pending = 0;
->              cpu_reset_interrupt(cs, type);
-> +        } else {
-> +            cs->interrupt_request |= type;
->          }
->      } else {
->          if (level) {
-> --
-> 2.21.3
-> 
-> 
-
+Yours,
+Aleksandar
+> Not all of that applies for QEMU, but it seems like a reasonable
+> set of ideas.
+>
+> thanks
+> -- PMM
 
