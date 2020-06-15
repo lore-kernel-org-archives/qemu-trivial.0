@@ -1,65 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jkuZD-0002uA-7N
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 15:14:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42642)
+	id 1jkv43-0005Pu-Iv
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 15:46:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jkuZB-0002r6-S6; Mon, 15 Jun 2020 15:14:45 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:33428)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jkuZA-0002Nn-7h; Mon, 15 Jun 2020 15:14:45 -0400
-Received: by mail-ej1-x642.google.com with SMTP id n24so18692541ejd.0;
- Mon, 15 Jun 2020 12:14:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/PZIkwcwhzhRlZneTkXlf5lYswFN8eMJy20kuMcHczQ=;
- b=N6pGZGjMLmUd8/7oYFH71fWWfLS242QkfYDwYOvXgZcDNDivjTEnzQ7Yu7dxZobn/u
- h1LHoPMGVAXhDA0FQYncQB6o5QuXLcJ+TY40PoXahYWrEnnRu3ykANuUXWHpqNx3Fouo
- Io37MJNqMiEGJ3UYUMoKmXvIooNRcMtZHjKIARPu7eR9kE2+OREZZKOT926UXFBLPQ3Y
- 9ke/LdGnInMO7S5wzbfAZ4quIOl3W0/nOZ9q6PjaZ7Cw+NAdRuA6Jz2CPR4TGKG4GLxa
- B8rgwwtQovauan0SXjA65SX2cK882iXtZGMvzERw7+bTtCDUbviBriEIY09nxRWZPDBH
- cMPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/PZIkwcwhzhRlZneTkXlf5lYswFN8eMJy20kuMcHczQ=;
- b=qxCgio2otgdgjetnqfzG23ZmTMNdEIKsIkH3GspMpbUCPvfhXYQ2afSgMgfm0CbSva
- w72OygljhdB8MZZkIQx1T3sqN06x8Q2JrwVO/OragrLd/Nbz/+1JCdsjncTwkTmTL32P
- 9ScOieABz8RZuKZ1vWDcKdMEfS49Gk+D7qMuOTl9CnQ2XjCuT7eNKNJk7eNR0ei+7dN1
- tiLAUt3SeOqFPanmFr0dWUCIiIqUBQto+5SDgQ1uzfSpH/BZ6ln6sbMjlpOv8mLEii88
- UzR7UCMvUGfS2k0STh+kigC2WH9HCL/kJeI3/4nK8NPIjoOH3h/9be51ltlXUmWguf4a
- rDHQ==
-X-Gm-Message-State: AOAM5320eHVWYfCdo0e3ZVZbp2jVX+SD9VeJjrD/OvqHFv4oiumKTEFC
- Qqqx+RunrKyIYprc4ymn/Rqrw4OgsdTnB4DHgHEnxj40g0Wshw==
-X-Google-Smtp-Source: ABdhPJyDiEuHYyBUunRhB6tFTqeb9Bbr6c8MrjsAVdZdQiAaNg7APqQmo0IKLa23truTii9VAe3jWuWIWVJC2vcBAT0=
-X-Received: by 2002:a17:907:35c2:: with SMTP id
- ap2mr25570720ejc.530.1592248482466; 
- Mon, 15 Jun 2020 12:14:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jkv42-0005OS-SF
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 15:46:38 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:43133
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jkv40-0007n6-Nx
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 15:46:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592250395;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bj7Iu9xUZE2bPUWgFA3C7WbxdD/CaBi7Ejb9ZCJY0go=;
+ b=aCTqCoA19SkRmeHrzy6fdRc5ltJY2Y59PzxdrdIGyggHYFcu1MATkHFqkIg3mpkrxMopEh
+ oyi2HS3MHw1suXLt3MBqPBYJwXy/I7ZKQbK5YIIMgPO+UuuIzAiITb+X308x814sIXAtxv
+ b1j/gQjFzNcqiJt0EJVA5vw2FUMeONk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-324-Pt-adq1NPQ6zPWJSo2aYsg-1; Mon, 15 Jun 2020 15:46:31 -0400
+X-MC-Unique: Pt-adq1NPQ6zPWJSo2aYsg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1442B10AEA01;
+ Mon, 15 Jun 2020 19:46:30 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 74D9F60BEC;
+ Mon, 15 Jun 2020 19:46:26 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E39001138648; Mon, 15 Jun 2020 21:46:17 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>,  Aleksandar Markovic
+ <aleksandar.m.mail@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-trivial\@nongnu.org" <qemu-trivial@nongnu.org>,  =?utf-8?Q?Marc-An?=
+ =?utf-8?Q?dr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ "qemu-devel\@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+References: <20191008082815.8267-1-thuth@redhat.com>
+ <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
+ <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+ <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
+ <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
+ <770c89b9-44d1-0982-34ff-1830911ac413@redhat.com>
+ <89c5b73f-2294-b58a-85e0-5ed64926fb0c@redhat.com>
+Date: Mon, 15 Jun 2020 21:46:17 +0200
+In-Reply-To: <89c5b73f-2294-b58a-85e0-5ed64926fb0c@redhat.com> (Paolo
+ Bonzini's message of "Mon, 15 Jun 2020 09:13:43 +0200")
+Message-ID: <87d0605cza.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <CA+XhMqyzW=ah4Q=OCE9KP6DYpiQN18oQpVWjqFCvzQfH3MvQFA@mail.gmail.com>
- <CAFEAcA_e_0rFWGU2VtN3270sUhssHwe0eEgqb-U2Qq-HQKGLWA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_e_0rFWGU2VtN3270sUhssHwe0eEgqb-U2Qq-HQKGLWA@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Mon, 15 Jun 2020 20:14:31 +0100
-Message-ID: <CA+XhMqwe5ro+hw9=rVHuXb+7PhbCuU6jEOi=UOJzXu44E1Q8Cw@mail.gmail.com>
-Subject: Re: [PATCH v3] util/oslib-posix: : qemu_init_exec_dir implementation
- for Mac
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 15:33:00
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,62 +86,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jun 2020 19:14:46 -0000
+X-List-Received-Date: Mon, 15 Jun 2020 19:46:39 -0000
 
-With this basic program
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-#include <mach-o/dyld.h>
-#include <stdio.h>
+> On 15/06/20 07:17, Thomas Huth wrote:
+>> That depends ... Marc-Andr=C3=A9, Paolo, what's the status of the meson =
+patch
+>> series? Do you think it will be merged for the next release already? If
+>> so, it does not make much sense to respin my distclean patch. Otherwise
+>> I could do another iteration...
+>
+> I prefer to aim for 5.2, making it the very first series merged there
+> and forcing everyone else to rebase.
 
-int main(void)
-{
-char buf[4096];
-uint32_t bufsize = sizeof(buf);
-_NSGetExecutablePath(buf, &bufsize);
-printf("%s\n", buf);
-return 0;
-}
+Makes sense to me.
 
-I get
+I wish I had the time for supporting this effort with more review, but
+who am I kidding.
 
-Davids-MacBook-Pro-2:Contribs dcarlier$ ./a.out
-/Users/dcarlier/Contribs/./a.out
-
-The cast was to avoid possible warning with pedantic compile flags if used.
-
-On Mon, 15 Jun 2020 at 20:05, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Mon, 15 Jun 2020 at 18:06, David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > From dfa1e900dd950f4d3fca17fbf5d3dfb5725c83fa Mon Sep 17 00:00:00 2001
-> > From: David Carlier <devnexen@gmail.com>
-> > Date: Tue, 26 May 2020 21:35:27 +0100
-> > Subject: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for Mac
-> >
-> > Using dyld API to get the full path of the current process.
-> >
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
->
-> > +#elif defined(__APPLE__)
-> > +    {
-> > +        uint32_t len = (uint32_t)sizeof(buf);
->
-> Why do we need the cast?
->
-> > +        if (_NSGetExecutablePath(buf, &len) == 0) {
-> > +            buf[len - 1] = 0;
-> > +            p = buf;
-> > +        }
-> > +    }
->
-> What does this return if you start QEMU with a relative
-> path (eg "./qemu-system-x86_64") ?  The documentation
-> suggests that you need to call realpath() to resolve that kind
-> of relative path.
->
-> Did you try the test I suggested with checking that this
-> actually does return something different from argv[0] ?
->
-> thanks
-> -- PMM
 
