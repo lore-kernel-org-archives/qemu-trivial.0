@@ -1,70 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jk923-0006LM-CH
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Jun 2020 12:29:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52220)
+	id 1jkhV8-0005s3-PG
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 01:17:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1jk921-0006L9-RB; Sat, 13 Jun 2020 12:29:21 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:33661)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1jk920-00072H-03; Sat, 13 Jun 2020 12:29:21 -0400
-Received: by mail-ej1-x642.google.com with SMTP id n24so13139421ejd.0;
- Sat, 13 Jun 2020 09:29:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uatsu9mHhKIA6c1jG2JglrXLJNvoevvsx4EjKK88bwk=;
- b=Lud70OFlbpOekQ/1akd3CXKPJz0G5qaa6+lTl014vN0sY29e1Jl+KxqzIR6nAsV99j
- QE9Sd33TmnaShKIzarYqHWuI2UaTRZzaKcHseKb/2sKFmhn4ctYvVZOs97W+PPdj9sRh
- 751jTrWNng0j3i/cPobbqKEE+W1+D+DNt3DCQ9t9i43QnCNuwJHSFC/lmzG7+9pueIzO
- 9t8RE1RzQx/YdSM7QtFmCyTgnXUBQM13d84EsZqLGnbn/qukCebkHeSSGmvj4Zfr1SUD
- 71S5dUvffqMtZgqMz9ioi40Q4i9FZOruW15Pa1e/sD7O17TSgK11YEYAZi3xfzhIN/gJ
- y8mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uatsu9mHhKIA6c1jG2JglrXLJNvoevvsx4EjKK88bwk=;
- b=fEewMO5kdGhI7cAXM2zMnDK7EWWaTrMlKvccpI71MKrWFTdVp74KX2vRtPb/kvfsBZ
- dnopumEzBvVcAi1jujVvDobTLZINkUJfxkKiMXMq3nfpDdXOZXRodtu6na9L0VtlpVSr
- 923oeN8CBTzqB8+xfzjGnNPfxq9INtStjoxdthwlVu2s/b29x6gR3L8uXJWX4qzYEPbL
- i3nEzY8R77V6Cqmbeuja/8QIz3tOlIoJo1Frr2SkW9dANECUdM5R6/O5IUX0K7TFFOG6
- 3qxergfxlFCrMaYSfL5C3OjQ2kNjmmmHCI4C3l3ZxE1tGhYEet5wRS2v6Xihx4pFDkQh
- zT+A==
-X-Gm-Message-State: AOAM530BjraqA23PmnF0TPImkmvDt1wv4sWPgwVBCA3DAZ+N5vw1SsnZ
- dZSoFjgEwkkDiJpNJX2OoPNovF5LCAeafepbLws=
-X-Google-Smtp-Source: ABdhPJwV2lTazTeL2QN3zm0QY0DkgwcDT7DZSBX1j5XGsGa+0miKCrWJDajQ/YdPnYcg39R3yu6/jyexYhWs9ZnCpKU=
-X-Received: by 2002:a17:906:e47:: with SMTP id
- q7mr18293279eji.279.1592065748002; 
- Sat, 13 Jun 2020 09:29:08 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkhV7-0005rd-JQ
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 01:17:41 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37502
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkhV3-0007yd-Mw
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 01:17:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592198256;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=P75QsGVo7uZ4+AvkQjhhjK0qNa1sQ/H5N3Y7+Tmh0zs=;
+ b=TPgiyNIW0cnxf1ryQofTmtK2xLKKB6lRB+kajNn/Eb5c1RiAVslyLvS2sxX0VIyaExLxNo
+ RimkbfvB7DVXmfnRQsNNZ6UvNGxaiobEhHdZfd02PXOFE2K3E3/3dZrK1HerT22dV17CMC
+ YPb29l8IE4xD7YpiRvbkIVojj9nwJYI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-109-o2c0Z24HPqqw0Xyg1lHYsg-1; Mon, 15 Jun 2020 01:17:32 -0400
+X-MC-Unique: o2c0Z24HPqqw0Xyg1lHYsg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BFB191009456;
+ Mon, 15 Jun 2020 05:17:31 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-111.ams2.redhat.com [10.36.112.111])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 056FA100238C;
+ Mon, 15 Jun 2020 05:17:26 +0000 (UTC)
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
 References: <20191008082815.8267-1-thuth@redhat.com>
  <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
  <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
  <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Sat, 13 Jun 2020 18:28:55 +0200
-Message-ID: <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
-Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
- 'distclean' (and 'clean')
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=aleksandar.m.mail@gmail.com; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <770c89b9-44d1-0982-34ff-1830911ac413@redhat.com>
+Date: Mon, 15 Jun 2020 07:17:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:17:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,43 +83,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Jun 2020 16:29:22 -0000
+X-List-Received-Date: Mon, 15 Jun 2020 05:17:41 -0000
 
-On Tue, Oct 8, 2019 at 2:41 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 8 Oct 2019 at 13:37, Thomas Huth <thuth@redhat.com> wrote:
-> >
-> > On 08/10/2019 14.18, Aleksandar Markovic wrote:
-> > > If I remember well, QAPI-related c files are generated while doing
-> > > 'make'. If that is true, these files should be deleted by 'make clean',
-> > > shouldn't they?
-> >
-> > I think that's a philosophical question. Should "make clean" delete all
-> > files that have been generated by a Makefile (i.e. not by "configure"),
-> > or rather mainly the binary files?
->
-> https://www.gnu.org/software/automake/manual/html_node/Clean.html
->
-> The autoconf manual suggests some heuristics:
->  - If make built it, and it is commonly something that one would want
->    to rebuild (for instance, a .o file), then mostlyclean should delete it.
->  - Otherwise, if make built it, then clean should delete it.
->  - If configure built it, then distclean should delete it.
->  - If the maintainer built it (for instance, a .info file), then
->    maintainer-clean should delete it. However maintainer-clean should
->    not delete anything that needs to exist in order to run
-> './configure && make'.
->
+On 13/06/2020 18.28, Aleksandar Markovic wrote:
+> On Tue, Oct 8, 2019 at 2:41 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>>
+>> On Tue, 8 Oct 2019 at 13:37, Thomas Huth <thuth@redhat.com> wrote:
+>>>
+>>> On 08/10/2019 14.18, Aleksandar Markovic wrote:
+>>>> If I remember well, QAPI-related c files are generated while doing
+>>>> 'make'. If that is true, these files should be deleted by 'make clean',
+>>>> shouldn't they?
+>>>
+>>> I think that's a philosophical question. Should "make clean" delete all
+>>> files that have been generated by a Makefile (i.e. not by "configure"),
+>>> or rather mainly the binary files?
+>>
+>> https://www.gnu.org/software/automake/manual/html_node/Clean.html
+>>
+>> The autoconf manual suggests some heuristics:
+>>  - If make built it, and it is commonly something that one would want
+>>    to rebuild (for instance, a .o file), then mostlyclean should delete it.
+>>  - Otherwise, if make built it, then clean should delete it.
+>>  - If configure built it, then distclean should delete it.
+>>  - If the maintainer built it (for instance, a .info file), then
+>>    maintainer-clean should delete it. However maintainer-clean should
+>>    not delete anything that needs to exist in order to run
+>> './configure && make'.
+>>
+> 
+> Thomas, can we reincarnate this patch? It needs only fairly simple
+> corrections, as said by Peter above. It would be nice to have at least
+> one release of QEMU with clean clean and distclean.
 
-Thomas, can we reincarnate this patch? It needs only fairly simple
-corrections, as said by Peter above. It would be nice to have at least
-one release of QEMU with clean clean and distclean.
+That depends ... Marc-André, Paolo, what's the status of the meson patch
+series? Do you think it will be merged for the next release already? If
+so, it does not make much sense to respin my distclean patch. Otherwise
+I could do another iteration...
 
-Yours,
-Aleksandar
-> Not all of that applies for QEMU, but it seems like a reasonable
-> set of ideas.
->
-> thanks
-> -- PMM
+ Thomas
+
 
