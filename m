@@ -1,64 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jkuI0-0002jP-Ug
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 14:57:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39268)
+	id 1jkuQl-0005WD-OI
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 15:06:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkuI0-0002jH-4C
- for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 14:57:00 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44415)
+ id 1jkuQj-0005U7-Ru
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 15:06:01 -0400
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:35545)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkuHy-000827-Hh
- for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 14:56:59 -0400
-Received: by mail-oi1-x243.google.com with SMTP id x202so16856211oix.11
- for <qemu-trivial@nongnu.org>; Mon, 15 Jun 2020 11:56:57 -0700 (PDT)
+ id 1jkuQg-00014u-Sz
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 15:06:01 -0400
+Received: by mail-oo1-xc42.google.com with SMTP id e12so3588317oou.2
+ for <qemu-trivial@nongnu.org>; Mon, 15 Jun 2020 12:05:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YmH3hG6EhBsqqMd07CDLXlRsVvhPUNVt2A0ZzdgHAJc=;
- b=xP/q58UYbKL4/L+gCAQeH92j7Fjd2Z8c+sVT1Bmd5w9uMlaxC8CNsbqgrkLIIF2DA4
- fyPvKccena1j4PHpkTld9ELWWHaWvOuX8s3wYAGe9OfTo9QU9J4MMWkuOq4KsiAd461X
- VzcNcnLkns+5cmeGnLf3wwHJPS7DmT70PfLzGtFEGjwfx4C3bHPbVfipFLIHU2uI9xwE
- vEEb13R8Acv9mhW+ehC39DeJffjI2TGrXCWhIsfDbmLEaxdXJnltph+SCFjAkVEk4XQr
- XYWXMyyJ9FpdEzr4SPTum/MA6Jk9uZyBSJJqCWSnsLI5yBQ6g7LrQK4RsPogu7z/GplQ
- f4HQ==
+ :cc; bh=ZAdswY5amJWhmX3F06zGanzSHKfw/TKNeBtcyCLxD1E=;
+ b=urf/oB7fdLbwEphFndqtgnPZmxj4DkMdKuZMOzEGNpSWC/jy/+Hlp5Q/WXzQaN84Vw
+ fOn7jPN+Iym4tL0y/pAcFrgn7irOOf2vRdKqIQhz/gPyFS4K9m5UTggqHT317p+u4Qzh
+ tyu/HA5XG5uar/yEUKPm22V18As7BMiGFw885vsg+OOi/lNtVzlESmV0VufCibLQpCA5
+ iaC1a5xg/KMaagzLD0N0uRklgsuqosvcxW/S99fZF5bXjmcILTWnmWvz1oxh2aT15KCx
+ iO6ShPN97T4AIoxP0pScbe/pHqrrheeSmvoRcxU+Ihet8iUq0k6xUI851BBKdnNBP2OY
+ cUrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=YmH3hG6EhBsqqMd07CDLXlRsVvhPUNVt2A0ZzdgHAJc=;
- b=NRD5zN1/qOjIehWCIvk/7PHVJxgGgMTTqZuSUYgl7hmEd8I9O5NSZrHroAv2tY7C0r
- y/MfLUt84Ta+sREt3i3Cz2XPpDET9gID2qvdK8WGe6zu5CLM+i1chzupFMpAcYTCc282
- U22YwDjaRvqnwg/EC0d1OGKXijCTtuNovrQfFjyqkyi/hEzB0rqDVNQN5ji3bsjsJ495
- NCqfBabAHwYOh7aKc4aDPWzk4f+RSetUJyS9pBx2dn1crmoryb0eiU1yIOKjl3EvFp3D
- DLNlpBU1th0lmti1QIgttLWla+zE4eQbJ7Y8W0ftJlPTCgBIlcc2n5xjBvx9MiUtT0yZ
- Guew==
-X-Gm-Message-State: AOAM530Im2rBwJjk3VjGH5hvNLcTOJVAkjcyiT8v1kTmFHVxOckQOHhE
- JwMd7KOZ+SkbYZNQzYMyWKD83dnpTXq0BsjSbFVynQ==
-X-Google-Smtp-Source: ABdhPJxDgpB7+j8lGobSHHjCxnLlnPu80vI3Q4VugAVJDY9ap06eXyTvSwMVd1NAeUjsKxsBNcgkWJqu7cXvFuxNzRw=
-X-Received: by 2002:aca:568c:: with SMTP id k134mr619824oib.48.1592247417050; 
- Mon, 15 Jun 2020 11:56:57 -0700 (PDT)
+ bh=ZAdswY5amJWhmX3F06zGanzSHKfw/TKNeBtcyCLxD1E=;
+ b=pB1LhAJYvzLaKeMRf2f7dYrJxtiRFtcaD8nne/RhRE9Yh9z8VvlrTIHDexnpd0qDrc
+ O8m3SE4GEJT3HHJxejvbG0jrGpuatAIZ4df7T4hLbrErjj5GO6t3mLqjpgg96P9sZNTZ
+ BhxZpv/hHu/lJCfpJLd2eXk8uwfZ8B4wEup6KRGcxVDYMMZsmAcREsoK2rd4GEqAHOL9
+ 5Qzap67FZKzbkbDBwF0uGOgfxH9mjPUUVqJkbG5RF+sbvaBm02bl52QrEfiQjYKbizIu
+ cRf1f3IWU8EtV+PIUP+b99zxJO4Td2u8ZCnFnjX8krGZBc864oT24AAK4nrXs9OSSmPN
+ j/hQ==
+X-Gm-Message-State: AOAM530Juz3Bm6TiepPrmpVEYXklp3+zJGOWDJZzsu0XxRxXExNdbjf7
+ Y8wOxbfMDdcke53cE6MJTtA4nL9JXggFShW1UWl9zA==
+X-Google-Smtp-Source: ABdhPJxnresFssK/GQ94zsxaMyZR/UWBtmzAps05iao8afGypdsCFwGFVIWCl3EA9ETgzjqvLf1XDqJji8m+aSAeAt8=
+X-Received: by 2002:a4a:9528:: with SMTP id m37mr22302181ooi.85.1592247957594; 
+ Mon, 15 Jun 2020 12:05:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <1591663670-47712-1-git-send-email-wang.yi59@zte.com.cn>
- <94e456a8-0b4f-e1fd-7baa-8f81f36c6872@redhat.com>
- <31290c21-01bb-e191-a166-1595f4fc8549@redhat.com>
- <CAFEAcA-D440Z4-cPdmpMXJcfkxjrHTOvwO2PG5BhyXMzRCQN+w@mail.gmail.com>
- <eb11ce18-f1db-1d60-6b8e-3b0ba6ce6993@redhat.com>
-In-Reply-To: <eb11ce18-f1db-1d60-6b8e-3b0ba6ce6993@redhat.com>
+References: <CA+XhMqyzW=ah4Q=OCE9KP6DYpiQN18oQpVWjqFCvzQfH3MvQFA@mail.gmail.com>
+In-Reply-To: <CA+XhMqyzW=ah4Q=OCE9KP6DYpiQN18oQpVWjqFCvzQfH3MvQFA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jun 2020 19:56:45 +0100
-Message-ID: <CAFEAcA_kfs-Par3fA0x3=m+X5ZXNCfj6TrLZFPWUxgrcTODS3g@mail.gmail.com>
-Subject: Re: [PATCH] Makefile: Install qemu-[qmp/ga]-ref.* into the directory
- "interop"
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Yi Wang <wang.yi59@zte.com.cn>, QEMU Developers <qemu-devel@nongnu.org>,
- xue.zhihong@zte.com.cn, 
- QEMU Trivial <qemu-trivial@nongnu.org>, wang.liang82@zte.com.cn, 
- Liao Pingfang <liao.pingfang@zte.com.cn>
+Date: Mon, 15 Jun 2020 20:05:46 +0100
+Message-ID: <CAFEAcA_e_0rFWGU2VtN3270sUhssHwe0eEgqb-U2Qq-HQKGLWA@mail.gmail.com>
+Subject: Re: [PATCH v3] util/oslib-posix: : qemu_init_exec_dir implementation
+ for Mac
+To: David CARLIER <devnexen@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -80,24 +72,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jun 2020 18:57:00 -0000
+X-List-Received-Date: Mon, 15 Jun 2020 19:06:02 -0000
 
-On Mon, 15 Jun 2020 at 18:00, Paolo Bonzini <pbonzini@redhat.com> wrote:
+On Mon, 15 Jun 2020 at 18:06, David CARLIER <devnexen@gmail.com> wrote:
 >
-> On 15/06/20 18:32, Peter Maydell wrote:
-> >> Queued, thanks.
-> > I guess this works, but it's kind of odd because it's installing
-> > a non-Sphinx document into the Sphinx manual directory.
-> >
-> > I'm hoping we'll be able to land the conversion of the qapigen
-> > stuff to rst this cycle, which will make this change moot;
-> > so I suppose it's the most expedient fix for the moment.
+> From dfa1e900dd950f4d3fca17fbf5d3dfb5725c83fa Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Tue, 26 May 2020 21:35:27 +0100
+> Subject: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for Mac
 >
-> I can keep the patch in the queue and not submit it unless really necessary.
+> Using dyld API to get the full path of the current process.
+>
+> Signed-off-by: David Carlier <devnexen@gmail.com>
 
-Probably better to apply it; the conversion patchset is pretty
-big and is going to need at least one more round of review.
-And this fix won't be a big deal to fix up the conflict for.
+> +#elif defined(__APPLE__)
+> +    {
+> +        uint32_t len = (uint32_t)sizeof(buf);
+
+Why do we need the cast?
+
+> +        if (_NSGetExecutablePath(buf, &len) == 0) {
+> +            buf[len - 1] = 0;
+> +            p = buf;
+> +        }
+> +    }
+
+What does this return if you start QEMU with a relative
+path (eg "./qemu-system-x86_64") ?  The documentation
+suggests that you need to call realpath() to resolve that kind
+of relative path.
+
+Did you try the test I suggested with checking that this
+actually does return something different from argv[0] ?
 
 thanks
 -- PMM
