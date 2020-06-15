@@ -1,72 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jkjnc-0006By-RS
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 03:44:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52830)
+	id 1jkjpB-00071H-Ck
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2020 03:46:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1jki0H-0006yw-V1; Mon, 15 Jun 2020 01:49:53 -0400
-Received: from mga18.intel.com ([134.134.136.126]:23157)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1jki0F-0005FY-EC; Mon, 15 Jun 2020 01:49:53 -0400
-IronPort-SDR: Lon/Qx6K280LoTLpquXM1WZhD969bd8Mm7peBL6KItlUQp7yDfrprp+3uWl23gySvycpyFmMFW
- CNcxCvIB35UA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2020 22:49:46 -0700
-IronPort-SDR: dmcfz1mZsXNTPefAopYM3verYlYevgc1nB5RIBmQhNzHya+IIsWfqZkw9PZOgHUzJqEvNe4UjA
- iu+tAk1ZBAgA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,514,1583222400"; d="scan'208";a="420249100"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
- by orsmga004.jf.intel.com with ESMTP; 14 Jun 2020 22:49:46 -0700
-Received: from shsmsx602.ccr.corp.intel.com (10.109.6.142) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sun, 14 Jun 2020 22:49:45 -0700
-Received: from shsmsx605.ccr.corp.intel.com (10.109.6.215) by
- SHSMSX602.ccr.corp.intel.com (10.109.6.142) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 15 Jun 2020 13:49:43 +0800
-Received: from shsmsx605.ccr.corp.intel.com ([10.109.6.215]) by
- SHSMSX605.ccr.corp.intel.com ([10.109.6.215]) with mapi id 15.01.1713.004;
- Mon, 15 Jun 2020 13:49:43 +0800
-From: "Zhang, Chen" <chen.zhang@intel.com>
-To: Like Xu <like.xu@linux.intel.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: Li Zhijian <lizhijian@cn.fujitsu.com>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-Subject: RE: [PATCH 2/2] migration/colo/net: fix typo in the COLO Proxy module
-Thread-Topic: [PATCH 2/2] migration/colo/net: fix typo in the COLO Proxy module
-Thread-Index: AQHWQihBve3pwZ2T20ysG5Vw22gV5ajZGA5Q
-Date: Mon, 15 Jun 2020 05:49:43 +0000
-Message-ID: <35f6da2075854e79b2cc8d8cc9ecfc62@intel.com>
-References: <20200614084510.7917-1-like.xu@linux.intel.com>
- <20200614084510.7917-2-like.xu@linux.intel.com>
-In-Reply-To: <20200614084510.7917-2-like.xu@linux.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.36]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkjpA-00070G-C6
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 03:46:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24522
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkjp8-000819-NR
+ for qemu-trivial@nongnu.org; Mon, 15 Jun 2020 03:46:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592207190;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=YTksqmLz2hyIGuCxM0o7pJrO8M7woYo400HpiU8R8w0=;
+ b=chFjj57/zaRknDgPqJ0nRSB9PnOPoWA5hAZ2/ewvHdrF+BiwPgIpPdNxjvzE84KOsKmAYM
+ 4NWnTuf16Vh0Y21rprzrNVU2KXU3uIOf7PbWm6kxhM7spmZeKFZY+Pg31W/ODJKZp8/hDi
+ kHjOKrp1nLt9OVxyD0upEIn+VDfgVok=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-468-vlEMd_zANrGFaDcgZb_cWA-1; Mon, 15 Jun 2020 03:46:23 -0400
+X-MC-Unique: vlEMd_zANrGFaDcgZb_cWA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 414E6BFCB;
+ Mon, 15 Jun 2020 07:46:22 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-111.ams2.redhat.com [10.36.112.111])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B42CD1001E91;
+ Mon, 15 Jun 2020 07:46:17 +0000 (UTC)
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <20191008082815.8267-1-thuth@redhat.com>
+ <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
+ <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+ <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
+ <CAL1e-=ijjbTG19NHnsDrcJdb7kajBdcndMT8JXymqC6UViiitQ@mail.gmail.com>
+ <770c89b9-44d1-0982-34ff-1830911ac413@redhat.com>
+ <89c5b73f-2294-b58a-85e0-5ed64926fb0c@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <39b7e711-be6f-d6d3-5cad-49052970d804@redhat.com>
+Date: Mon, 15 Jun 2020 09:46:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=134.134.136.126;
- envelope-from=chen.zhang@intel.com; helo=mga18.intel.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:49:46
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+In-Reply-To: <89c5b73f-2294-b58a-85e0-5ed64926fb0c@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/14 22:37:26
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 15 Jun 2020 03:44:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,85 +85,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jun 2020 05:49:54 -0000
+X-List-Received-Date: Mon, 15 Jun 2020 07:46:32 -0000
 
+On 15/06/2020 09.13, Paolo Bonzini wrote:
+> On 15/06/20 07:17, Thomas Huth wrote:
+>> That depends ... Marc-André, Paolo, what's the status of the meson patch
+>> series? Do you think it will be merged for the next release already? If
+>> so, it does not make much sense to respin my distclean patch. Otherwise
+>> I could do another iteration...
+> 
+> I prefer to aim for 5.2, making it the very first series merged there
+> and forcing everyone else to rebase.
 
+Ok, so I think it's likely really not worth the effort to respin this
+rather cosmetic patch just for one single release.
 
-> -----Original Message-----
-> From: Like Xu <like.xu@linux.intel.com>
-> Sent: Sunday, June 14, 2020 4:45 PM
-> To: qemu-devel@nongnu.org
-> Cc: Like Xu <like.xu@linux.intel.com>; Zhang, Chen <chen.zhang@intel.com>=
-;
-> Li Zhijian <lizhijian@cn.fujitsu.com>
-> Subject: [PATCH 2/2] migration/colo/net: fix typo in the COLO Proxy modul=
-e
->=20
-> Cc: Zhang Chen <chen.zhang@intel.com>
-> Cc: Li Zhijian <lizhijian@cn.fujitsu.com>
-> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+Aleksandar, I won't work on this patch anymore, but if it is still
+important for you, feel free to take the patch and send an updated version.
 
-
-Looks good to me.
-By the way, add CC qemu-trivial@nongnu.org
-Reviewed-by: Zhang Chen <chen.zhang@intel.com>
-
-Thanks
-Zhang Chen
-
-> ---
->  docs/colo-proxy.txt | 4 ++--
->  net/colo-compare.c  | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt index
-> fa1cef0278..0bbd6f720a 100644
-> --- a/docs/colo-proxy.txt
-> +++ b/docs/colo-proxy.txt
-> @@ -21,7 +21,7 @@ and filter-rewriter compose the COLO-proxy.
->  =3D=3D Architecture =3D=3D
->=20
->  COLO-Proxy is based on qemu netfilter and it's a plugin for qemu netfilt=
-er -
-> (except colo-compare). It keep Secondary VM connect normally to
-> +(except colo-compare). It keeps Secondary VM connect normally to
->  client and compare packets sent by PVM with sent by SVM.
->  If the packet difference, notify COLO-frame to do checkpoint and send  a=
-ll
-> primary packet has queued. Otherwise just send the queued primary @@ -
-> 94,7 +94,7 @@ Redirect Server Filter --> COLO-Compare  COLO-compare
-> receive primary guest packet then  waiting secondary redirect packet to
-> compare it.
->  If packet same,send queued primary packet and clear -queued secondary
-> packet, Otherwise send primary packet
-> +queued secondary packet, otherwise send primary packet
->  and do checkpoint.
->=20
->  COLO-Compare --> Another Redirector Filter diff --git a/net/colo-compare=
-.c
-> b/net/colo-compare.c index c07e7c1c09..3efc61c777 100644
-> --- a/net/colo-compare.c
-> +++ b/net/colo-compare.c
-> @@ -658,7 +658,7 @@ static void colo_compare_packet(CompareState *s,
-> Connection *conn,
->              g_queue_remove(&conn->secondary_list, result->data);
->          } else {
->              /*
-> -             * If one packet arrive late, the secondary_list or
-> +             * If one packet arrives late, the secondary_list or
->               * primary_list will be empty, so we can't compare it
->               * until next comparison. If the packets in the list are
->               * timeout, it will trigger a checkpoint request.
-> @@ -1296,7 +1296,7 @@ static void colo_compare_finalize(Object *obj)
->          }
->      }
->=20
-> -    /* Release all unhandled packets after compare thead exited */
-> +    /* Release all unhandled packets after compare thread exited */
->      g_queue_foreach(&s->conn_list, colo_flush_packets, s);
->=20
->      g_queue_clear(&s->conn_list);
-> --
-> 2.21.3
+ Thomas
 
 
