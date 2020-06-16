@@ -1,70 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlDgp-0007rE-GX
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 11:39:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49002)
+	id 1jlDxC-0006o6-0j
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 11:56:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlDgo-0007pK-0a
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:39:54 -0400
-Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:42652)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlDgk-0007jr-5J
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:39:53 -0400
-Received: by mail-oo1-xc42.google.com with SMTP id 127so1869991ooc.9
- for <qemu-trivial@nongnu.org>; Tue, 16 Jun 2020 08:39:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=HQjhk2kW5iuW9MHP9wBoBAZ1jJ2lH2MO8EKv2KNe6zo=;
- b=w0szmhycnCTpx7bWpj/ia6KqpVs5mfvgZamu0MBn6YwR+5MXnbbBCWbjFkru57++nL
- LGsGJaKJDIpryHMwD2v5DnwCPTXdqHD4ONybd64QdHlIjJzDVMxV6H/k6pv8Xl8YwQen
- Sguv5STI+I9zym0SJvTwJZA1LpNPOV0ke3KZ+W3eh97sNgv3qhEGHDDIo2Xb+zH9zwec
- 228NoM1jb+3jgGhqZNyuSMaebN4Wdp9cvtBaBige8Q6pT8FnEahqNZb2S4pJw1riXWPq
- bDrZb+EXp/C9us9JdjkBgp+EMroDk+Q/ogZU8Gxnr1jrSzhCAhrvHHVlZ3BUS42ApkmE
- iiow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=HQjhk2kW5iuW9MHP9wBoBAZ1jJ2lH2MO8EKv2KNe6zo=;
- b=bDPcvQrU/mr/lCSbRRP458LYwhxmNaPlpoT5eM4PBM4A1Is2K926knaUryZtN7Un3B
- fvR6avXQHDK2wIkgClmC7zZOl7bxFnCk8wlib7PCHaiHq+UDkj4aWKTQGjmzBVvGblXf
- 04BnhmNBhKuQ7TqOdHYDShyVrUbxgw5LObIFOstD69JtsGDcrofFElLFtftna4EUW9ES
- nNYC0ZuyVGe3bDAw6an9hqFjotcDYq64skom+2abjiV3B+nY3NuQPObIX39z8QeyQ9+E
- 9NbYNFdtkXdUvQ88zRIpm06hgtBESpPF3GRLoxa2/+UnG6Yj6/3MHsIK4uNuY6I8lqBe
- jLIg==
-X-Gm-Message-State: AOAM533zZ5g3SNnpOEEVVc4HQgFO3s+rtvEF/A+E0IghEvFm0Hv9UfNj
- trPVkJ/wLK1z7DCG8SaXo5J2OBhqDJQb1ByRrKTYbw==
-X-Google-Smtp-Source: ABdhPJzsZimVol6g4a0CgVucJ3ETZVhGAa8y+gifdoWy0VsgFXdxXY02Yeub5i/+Cz/Up4d/rZJCGMb5kSuN8Kf1mEk=
-X-Received: by 2002:a4a:9528:: with SMTP id m37mr2840833ooi.85.1592321988743; 
- Tue, 16 Jun 2020 08:39:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlDxA-0006mf-Dc
+ for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:56:48 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59220
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlDx9-0002YM-0b
+ for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:56:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592323005;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=JIyg3EBxGYmTPSXBLsOxceR7zhjqF6+5bfR9qsn8RZg=;
+ b=h7JN9X3lEoCE/MShm78XYuaczXmg6cR5PO+JzCrKyGEpY/C4uINVDA+aWXT1UF+IUqqMxk
+ NPogLpy7fUB7bgVOsD+D2+atuRVwDuf+c4aR8w5Qsvh6r5x8fQYwKKcBp6by0eVE2atK5P
+ VbN38/jWY91eiBQv1+Z3eJiZ5+bnX+I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-457-g-mnKC7-NueKcgZ5o-SiuA-1; Tue, 16 Jun 2020 11:56:42 -0400
+X-MC-Unique: g-mnKC7-NueKcgZ5o-SiuA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3EE91100A8F1;
+ Tue, 16 Jun 2020 15:56:38 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-114-128.ams2.redhat.com [10.36.114.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A62E2768AE;
+ Tue, 16 Jun 2020 15:56:31 +0000 (UTC)
+Subject: Re: [PATCH v4 1/7] MAINTAINERS: Cover 'hw/sh4/sh_intc.h' with the R2D
+ machine
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <20200611114317.13044-1-f4bug@amsat.org>
+ <20200611114317.13044-2-f4bug@amsat.org>
+ <bb388c24-092c-28f5-2a78-daee14ed5731@redhat.com>
+ <94575412-81ae-25e1-b9ad-b12317da815b@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <bd8d3086-8fe7-958f-a54e-95d69f399627@redhat.com>
+Date: Tue, 16 Jun 2020 17:56:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20200611081319.1864-1-wentong.wu@intel.com>
-In-Reply-To: <20200611081319.1864-1-wentong.wu@intel.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jun 2020 16:39:37 +0100
-Message-ID: <CAFEAcA_oQ7X9COCPnoarrKfGtXD4CVKs7MAjWq-i_8yc5jTtDA@mail.gmail.com>
-Subject: Re: [PATCH] hw/nios2: Update interrupt request when CR_STATUS_PIE
- disabled
-To: wentongw <wentong.wu@intel.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Marek Vasut <marex@denx.de>, Thomas Huth <thuth@redhat.com>,
- Chris Wulff <crwulff@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
- envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <94575412-81ae-25e1-b9ad-b12317da815b@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/16 02:46:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,89 +83,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jun 2020 15:39:54 -0000
+X-List-Received-Date: Tue, 16 Jun 2020 15:56:49 -0000
 
-On Thu, 11 Jun 2020 at 01:23, wentongw <wentong.wu@intel.com> wrote:
->
-> Update interrupt request when external interupt pends for STATUS_PIE
-> disabled. Otherwise on icount enabled nios2 target there will be cpu
-> abort when guest code changes state register with wrctl instruction.
->
-> Signed-off-by: Wentong Wu <wentong.wu@intel.com>
-> ---
->  hw/nios2/cpu_pic.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/nios2/cpu_pic.c b/hw/nios2/cpu_pic.c
-> index 1c1989d5..2abc8fa8 100644
-> --- a/hw/nios2/cpu_pic.c
-> +++ b/hw/nios2/cpu_pic.c
-> @@ -42,6 +42,8 @@ static void nios2_pic_cpu_handler(void *opaque, int irq=
-, int level)
->          } else if (!level) {
->              env->irq_pending =3D 0;
->              cpu_reset_interrupt(cs, type);
-> +        } else {
-> +            cs->interrupt_request |=3D type;
->          }
+On 16/06/2020 16.49, Philippe Mathieu-Daudé wrote:
+> On 6/16/20 3:34 PM, Thomas Huth wrote:
+>> On 11/06/2020 13.43, Philippe Mathieu-Daudé wrote:
+>>> Commit 81527b94ad added hw/intc/sh_intc.c, complete by
+>>> adding its corresponding header.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  MAINTAINERS | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index 13711aafe8..87ceca7ff1 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -1257,6 +1257,7 @@ S: Maintained
+>>>  F: hw/sh4/r2d.c
+>>>  F: hw/intc/sh_intc.c
+>>>  F: hw/timer/sh_timer.c
+>>> +F: include/hw/sh4/sh_intc.h
+>>>  
+>>>  Shix
+>>>  M: Yoshinori Sato <ysato@users.sourceforge.jp>
+>>
+>> Hmm, sh_intc.h is used by sh7750_init() in sh7750.c ... and that
+>> function is used by both, r2d and shix machines ... so should that maybe
+>> rather be part of both machines or a generic entry?
+> 
+> I'll add it to both machines. The maintainers can reorder
+> the sections later.
+> 
+> Thanks for the review!
 
-Thanks for the clarification in your other email about the
-issue you're trying to address:
+Ok, with that change:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> I=E2=80=99m running icount mode on qemu_nios2 with customized platform
-> but cpu abort happened(qemu: fatal: Raised interrupt while not
-> in I/O function) when guest code changes state register with wrctl
-> instruction add some debug code finding that it=E2=80=99s caused by the
-> interrupt_request mismatch.
-
-I don't think the change you've made is the correct fix.
-Setting cs->interrupt_request like this is pretty much
-the same thing that calling cpu_interrupt() does, so
-what your patch is doing is essentially "ignore the
-status.PIE bit and always deliver interrupts", which isn't
-how the hardware behaves.
-
-The assertion you've run into is saying "some instruction caused us
-to take an interrupt, but it wasn't marked up to indicate that it
-might cause a side effect". (This only matters in icount mode, where
-we insist that we never get unexpected sideeffects like this.) If
-the guest writes to status.PIE to unmask interrupts that's the kind
-of thing that will cause an interrupt to be taken, so the problem
-really here is that the nios2 translate.c code hasn't indicated
-that this insn can do this.
-
-The right fix here will be that target/nios2/translate.c
-needs to do this:
-    if (tb_cflags(s->base.tb) & CF_USE_ICOUNT) {
-        gen_io_start();
-    }
-before generating code for an insn like this one, and then
-    if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
-        gen_io_end();
-    }
-after it. (Compare the xtensa target which does a similar
-kind of thing for its interrupt handling.)
-For wrctl to STATUS it should I think also end the TB,
-because we want to actually take any pending interrupt
-now, not in a few instructions time when the next branch
-comes along.
-
-The fact that the current nios2 code has no calls to
-gen_io_start() in it at all (apart from one in boilerplate
-code) suggests to me that this target is simply broken
-for use with -icount at the moment. There may well be
-other bugs of a similar kind where particular insns that
-cause interrupts or touch devices (any equivalent to the
-x86 in/out insns, for instance) also need to be marked up
-as IO.
-
-(Beyond that, the way that nios2_check_interrupts() works
-looks weird; in an ideal world it would be rewritten to
-work in a way that's more in line with how we'd write that
-kind of code today. It should be possible to get it to work with
-icount without getting into that kind of refactoring/rework,
-though.)
-
-thanks
--- PMM
 
