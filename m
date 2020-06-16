@@ -1,76 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlDxC-0006o6-0j
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 11:56:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54028)
+	id 1jlEB7-000698-FS
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 12:11:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlDxA-0006mf-Dc
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:56:48 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59220
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlDx9-0002YM-0b
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 11:56:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592323005;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=JIyg3EBxGYmTPSXBLsOxceR7zhjqF6+5bfR9qsn8RZg=;
- b=h7JN9X3lEoCE/MShm78XYuaczXmg6cR5PO+JzCrKyGEpY/C4uINVDA+aWXT1UF+IUqqMxk
- NPogLpy7fUB7bgVOsD+D2+atuRVwDuf+c4aR8w5Qsvh6r5x8fQYwKKcBp6by0eVE2atK5P
- VbN38/jWY91eiBQv1+Z3eJiZ5+bnX+I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-457-g-mnKC7-NueKcgZ5o-SiuA-1; Tue, 16 Jun 2020 11:56:42 -0400
-X-MC-Unique: g-mnKC7-NueKcgZ5o-SiuA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3EE91100A8F1;
- Tue, 16 Jun 2020 15:56:38 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-114-128.ams2.redhat.com [10.36.114.128])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A62E2768AE;
- Tue, 16 Jun 2020 15:56:31 +0000 (UTC)
-Subject: Re: [PATCH v4 1/7] MAINTAINERS: Cover 'hw/sh4/sh_intc.h' with the R2D
- machine
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20200611114317.13044-1-f4bug@amsat.org>
- <20200611114317.13044-2-f4bug@amsat.org>
- <bb388c24-092c-28f5-2a78-daee14ed5731@redhat.com>
- <94575412-81ae-25e1-b9ad-b12317da815b@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <bd8d3086-8fe7-958f-a54e-95d69f399627@redhat.com>
-Date: Tue, 16 Jun 2020 17:56:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jlEB5-00064L-Di; Tue, 16 Jun 2020 12:11:11 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:35157)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jlEB3-00056Z-J6; Tue, 16 Jun 2020 12:11:11 -0400
+Received: by mail-ed1-x542.google.com with SMTP id e12so14700804eds.2;
+ Tue, 16 Jun 2020 09:11:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=tQGTgMA17a4o6iebS1HxA6AgY6W7CBwK/BaZI98DayA=;
+ b=E83cMfY3rnxAqY8XBmXPvAc/fvzBgSODYggbL92DfEvs+SWHT/sJEJP1IXC19cc5mX
+ d324qLCxN8Bw8fmPlBxUeY9wvqi7TKYb/MGDCZEIcOOVN9pdE9oay0EfA0HLFumgb92d
+ BBKtYxYEqgYq7N4PIgCFye7pzm6EIpEsl8qqY3NrQMHUZQx9BJkmZ1PWtt2zDWlepW0O
+ RmlWaXKcVz3OIK2as1rLgwmLJ9jwNEEmhb4jbfEAyCKY8JRbJRsQmqeCXHZ5DfBswDm7
+ pmd2YRTCk3V0vlz6uQAKK+cbfLp4d/lVjK4+TxkYnrivf047zlWzt6AN6nDyO9HP67ZS
+ i0Xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=tQGTgMA17a4o6iebS1HxA6AgY6W7CBwK/BaZI98DayA=;
+ b=XCW7K/JDpp/+X4ZKyyEnmS94BNXWmB+L/8qQJ+ySP5XLo6Q/aq++HI4KIlR5q5DyLM
+ UTsmDuOALHAPMzqOK3BWYYEBhxaE/fhYXXhrm3yLZUbMl4W419bXlnia38HcABqbO+NE
+ ruz7zigBNsXAzWp/urAz2Wn8uTcqNh4XUJYffaIzV6Th4WKhbIRh/cqu5fcTWhh09ZHb
+ F7xlUANURqjhavcIyUiAmZPSgy5QqStqErcK5I//PFKl2wNS0KZV6X50krNZQq2kG+Wz
+ rHjOh3cvAiaMyvYYZYeDKgxila3SraoUYFgRRKDwfCabLQoAA8ZMIlZwKmPVag+p1iCz
+ YYqw==
+X-Gm-Message-State: AOAM530v5dU6AQFV7OT30syVpcf5I+8OyIlJpXc9hhqnXJG6rjO3WnEZ
+ AbA2I9ld1D7LwDfwJTxF+xZ/hcd5sGda+Cg1PSm/GK7d49Q=
+X-Google-Smtp-Source: ABdhPJySHc2+PvED6EqeGjumwLlo+9qhCqZBo0PfV3LbE/jNelL7nSvuH9N72v0ShxcS0+hcscOwFfUVc2EfavjjwN4=
+X-Received: by 2002:aa7:da14:: with SMTP id r20mr3309742eds.7.1592323867344;
+ Tue, 16 Jun 2020 09:11:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <94575412-81ae-25e1-b9ad-b12317da815b@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/16 02:46:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+From: David CARLIER <devnexen@gmail.com>
+Date: Tue, 16 Jun 2020 17:10:56 +0100
+Message-ID: <CA+XhMqx6VjRhT6xBzJ-UYs7cPDXVK=PNdfNVdad3Tqhe43P=Ew@mail.gmail.com>
+Subject: [PATCH V4] util/oslib-posix : qemu_init_exec_dir implementation for
+ Mac
+To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x542.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,42 +66,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jun 2020 15:56:49 -0000
+X-List-Received-Date: Tue, 16 Jun 2020 16:11:11 -0000
 
-On 16/06/2020 16.49, Philippe Mathieu-Daudé wrote:
-> On 6/16/20 3:34 PM, Thomas Huth wrote:
->> On 11/06/2020 13.43, Philippe Mathieu-Daudé wrote:
->>> Commit 81527b94ad added hw/intc/sh_intc.c, complete by
->>> adding its corresponding header.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  MAINTAINERS | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/MAINTAINERS b/MAINTAINERS
->>> index 13711aafe8..87ceca7ff1 100644
->>> --- a/MAINTAINERS
->>> +++ b/MAINTAINERS
->>> @@ -1257,6 +1257,7 @@ S: Maintained
->>>  F: hw/sh4/r2d.c
->>>  F: hw/intc/sh_intc.c
->>>  F: hw/timer/sh_timer.c
->>> +F: include/hw/sh4/sh_intc.h
->>>  
->>>  Shix
->>>  M: Yoshinori Sato <ysato@users.sourceforge.jp>
->>
->> Hmm, sh_intc.h is used by sh7750_init() in sh7750.c ... and that
->> function is used by both, r2d and shix machines ... so should that maybe
->> rather be part of both machines or a generic entry?
-> 
-> I'll add it to both machines. The maintainers can reorder
-> the sections later.
-> 
-> Thanks for the review!
+From 7eef8b803cdb0e7148fdf894d2992052695c1ff8 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Tue, 26 May 2020 21:35:27 +0100
+Subject: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for Mac
 
-Ok, with that change:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Using dyld API to get the full path of the current process.
 
+Signed-off-by: David Carlier <devnexen@gmail.com>
+---
+ util/oslib-posix.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 916f1be224..3612c2c80e 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -57,6 +57,10 @@
+ #include <lwp.h>
+ #endif
+
++#ifdef __APPLE__
++#include <mach-o/dyld.h>
++#endif
++
+ #include "qemu/mmap-alloc.h"
+
+ #ifdef CONFIG_DEBUG_STACK_USAGE
+@@ -375,6 +379,16 @@ void qemu_init_exec_dir(const char *argv0)
+             p = buf;
+         }
+     }
++#elif defined(__APPLE__)
++    {
++        uint32_t len = sizeof(buf);
++        if (_NSGetExecutablePath(buf, &len) == 0) {
++     char fpath[PATH_MAX];
++            buf[len - 1] = 0;
++      realpath(buf, fpath);
++            p = fpath;
++        }
++    }
+ #endif
+     /* If we don't have any way of figuring out the actual executable
+        location then try argv[0].  */
+-- 
+2.27.0
 
