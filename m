@@ -1,68 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jl7hR-0000RP-Ml
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 05:16:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41390)
+	id 1jlBjP-0000pU-2R
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2020 09:34:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jl7hP-0000Pt-BA
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 05:16:07 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:42801)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jl7hN-0005DL-Is
- for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 05:16:07 -0400
-Received: by mail-ot1-x344.google.com with SMTP id t6so15377516otk.9
- for <qemu-trivial@nongnu.org>; Tue, 16 Jun 2020 02:16:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zZPMf8RR8JuwRmnqCoyl18LA5rP4v6lj0UyBV+pUOOw=;
- b=XtDOFccHOndnKmlboi5cwKXntuQeUKYOU8T5tEfwNAe9v3IZtrR/20iB1QD40MK3CF
- ai4ggrkCSoq5olubP9YTDpi3X8LVPTIyHHsg9SVa01qC72uzeZ0o5YQ/k3B3Mbk08Ji4
- jHL5vI2sf9ilHuZUESklXj6vrLpLH0lRkP/qh1L3oUL0zyuePTt6kJ/01tqahhM1i0wL
- ek71mIPf6FlNBYYMU1lqzqzpApu5W/NURNsfBm8FGEOg2g99lsnHzflt9bwqjCTY5Ifa
- L1VrN92IK6dxr3ieA6f8zVTd/+leZI+NmgTGLZeOm13DNo5wr5/1FMCg57XwViYoQ82F
- 7c6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zZPMf8RR8JuwRmnqCoyl18LA5rP4v6lj0UyBV+pUOOw=;
- b=tlcPii2i6nZNKn4eEfXchWRDZ7buDycwDQjqA23KZOsiitDibbi49NLHxxDe1AQqVo
- vYyqnjHu5Tt6bem9Ue52ndlh3/f60a5JiZlnpJ5K8kssb9/gwQWeUfh8le2079KVQLEk
- jOhwUeUSGpRQHehNh1GOSctDtoDwUyZIUKf1l87TifUzB9kLuWP1Df7T7K+wi/sOk8Yl
- PD3GTKJ5YYBBIqarD7WLVFjP2xu7rOobJRgPN+qcLcD+KfrMZsKcOCy1egZ0Tor9N9pW
- WV7o50Eiwbwbc+Tz/Qhf5TzKziuKNUPt4bRrQKQvzO749oP/NoF+lpT8mx1CtbcjMLSa
- mhjw==
-X-Gm-Message-State: AOAM533rdhtMjZVgvAUvlRUJfLbGweCQPoNya9wFx2Oz40KHfywpdRt6
- cxOJI729wbhDPuYMBEGzmPJd9JB1Ei8sS0ANTXv2bg==
-X-Google-Smtp-Source: ABdhPJwa9Kx20/cGAqx6+IsXynN+ASoshQK1szCh5uDl3CYP7aOo/pSlNfcPTOcXjvWeDb9SXu1/idvu5h36LNOKDTQ=
-X-Received: by 2002:a05:6830:8d:: with SMTP id
- a13mr1630762oto.91.1592298963711; 
- Tue, 16 Jun 2020 02:16:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlBjM-0000np-C1
+ for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 09:34:24 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26110
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlBjK-0007ur-MR
+ for qemu-trivial@nongnu.org; Tue, 16 Jun 2020 09:34:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592314461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=v4lfiPT02mODVhaVAGSmH93xCOfGOBkxdn0UU5vH5M4=;
+ b=J9UgKx32kP/MGLSj/HZUg1KujcTKD918uxRVDjq9IEtxGlYfbkyZLKmKOfJu22+y57PioZ
+ LfEgdiBCSesAZdgeTCIcHVZXRpUbCs8mY1ZsuZo9OfBfeL/XMj+Z3IWeo2uZdOLhbX0W+F
+ EwlNZjginJAlnF+cX5++2S8MHLiXJMk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-423-N9gvPoBUO3OX7dVTj72MOw-1; Tue, 16 Jun 2020 09:34:19 -0400
+X-MC-Unique: N9gvPoBUO3OX7dVTj72MOw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1AF1B134C2;
+ Tue, 16 Jun 2020 13:34:18 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-114-128.ams2.redhat.com [10.36.114.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5434D7930D;
+ Tue, 16 Jun 2020 13:34:15 +0000 (UTC)
+Subject: Re: [PATCH v4 1/7] MAINTAINERS: Cover 'hw/sh4/sh_intc.h' with the R2D
+ machine
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20200611114317.13044-1-f4bug@amsat.org>
+ <20200611114317.13044-2-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <bb388c24-092c-28f5-2a78-daee14ed5731@redhat.com>
+Date: Tue, 16 Jun 2020 15:34:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <CA+XhMqyzW=ah4Q=OCE9KP6DYpiQN18oQpVWjqFCvzQfH3MvQFA@mail.gmail.com>
- <CAFEAcA_e_0rFWGU2VtN3270sUhssHwe0eEgqb-U2Qq-HQKGLWA@mail.gmail.com>
- <CA+XhMqwe5ro+hw9=rVHuXb+7PhbCuU6jEOi=UOJzXu44E1Q8Cw@mail.gmail.com>
-In-Reply-To: <CA+XhMqwe5ro+hw9=rVHuXb+7PhbCuU6jEOi=UOJzXu44E1Q8Cw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jun 2020 10:15:52 +0100
-Message-ID: <CAFEAcA82aXcvLGhEd0uRVLkroBjqS+4bEo-BXj7R6s+TN38chA@mail.gmail.com>
-Subject: Re: [PATCH v3] util/oslib-posix: : qemu_init_exec_dir implementation
- for Mac
-To: David CARLIER <devnexen@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200611114317.13044-2-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/16 02:46:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,50 +81,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jun 2020 09:16:07 -0000
+X-List-Received-Date: Tue, 16 Jun 2020 13:34:24 -0000
 
-On Mon, 15 Jun 2020 at 20:14, David CARLIER <devnexen@gmail.com> wrote:
->
-> With this basic program
->
-> #include <mach-o/dyld.h>
-> #include <stdio.h>
->
-> int main(void)
-> {
-> char buf[4096];
-> uint32_t bufsize = sizeof(buf);
-> _NSGetExecutablePath(buf, &bufsize);
-> printf("%s\n", buf);
-> return 0;
-> }
->
-> I get
->
-> Davids-MacBook-Pro-2:Contribs dcarlier$ ./a.out
-> /Users/dcarlier/Contribs/./a.out
+On 11/06/2020 13.43, Philippe Mathieu-Daudé wrote:
+> Commit 81527b94ad added hw/intc/sh_intc.c, complete by
+> adding its corresponding header.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 13711aafe8..87ceca7ff1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1257,6 +1257,7 @@ S: Maintained
+>  F: hw/sh4/r2d.c
+>  F: hw/intc/sh_intc.c
+>  F: hw/timer/sh_timer.c
+> +F: include/hw/sh4/sh_intc.h
+>  
+>  Shix
+>  M: Yoshinori Sato <ysato@users.sourceforge.jp>
 
-Hmm. I think we should run that through realpath() just
-to get rid of the /./ in that. This is similar to how
-Chromium uses it (though it uses a different API for
-doing the absolutifying):
-https://chromium.googlesource.com/chromium/src/base/+/master/base_paths_mac.mm#41
+Hmm, sh_intc.h is used by sh7750_init() in sh7750.c ... and that
+function is used by both, r2d and shix machines ... so should that maybe
+rather be part of both machines or a generic entry?
 
-Thanks for the test program, I used it a minor variation of
-it to confirm that this does do the right thing even when
-argv[0] has been passed as a different string:
+ Thomas
 
-$ (exec -a foo /tmp/zz9)
-_NSGetExecutablePath: /tmp/zz9
-argv[0]: foo
 
-So _NSGetExecutablePath() is definitely the thing to use here.
-
-> The cast was to avoid possible warning with pedantic compile flags if used.
-
-We don't compile with -pedantic, so you don't need to guard
-against using it.
-
-thanks
--- PMM
 
