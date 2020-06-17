@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlcG8-0005Ps-Pb
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2020 13:54:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36954)
+	id 1jleCy-0005qD-Jo
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2020 15:58:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1jlcG6-0005Ib-QF; Wed, 17 Jun 2020 13:53:58 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:54196)
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1jleCw-0005po-IQ; Wed, 17 Jun 2020 15:58:50 -0400
+Received: from mailout05.t-online.de ([194.25.134.82]:40226)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1jlcG3-0000OC-7h; Wed, 17 Jun 2020 13:53:58 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 27670746333;
- Wed, 17 Jun 2020 19:53:50 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 01879745702; Wed, 17 Jun 2020 19:53:50 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id F3D1F7456F8;
- Wed, 17 Jun 2020 19:53:49 +0200 (CEST)
-Date: Wed, 17 Jun 2020 19:53:49 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
-cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>, 
- qemu-devel@nongnu.org
-Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
-In-Reply-To: <87k105wvhr.fsf@linaro.org>
-Message-ID: <alpine.BSF.2.22.395.2006171945230.14527@zero.eik.bme.hu>
-References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
- <87k105wvhr.fsf@linaro.org>
-User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1jleCu-0005Uc-IE; Wed, 17 Jun 2020 15:58:50 -0400
+Received: from fwd11.aul.t-online.de (fwd11.aul.t-online.de [172.20.27.152])
+ by mailout05.t-online.de (Postfix) with SMTP id 98105426FDF3;
+ Wed, 17 Jun 2020 21:58:44 +0200 (CEST)
+Received: from [192.168.211.200]
+ (GW0OeuZYYhVJX6APqGAH57Z6mFV5Y88xGIuzmj3YOPpydkzSB1AtvQxfsdlG93rgyL@[46.86.62.83])
+ by fwd11.t-online.de
+ with (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384 encrypted)
+ esmtp id 1jleCp-32LOts0; Wed, 17 Jun 2020 21:58:43 +0200
+From: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>
+Subject: Re: [PATCH] hw/audio/gus: Fix registers 32-bit access
+To: Allan Peramaki <aperamak@pp1.inet.fi>, kraxel@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20200615201757.16868-1-aperamak@pp1.inet.fi>
+Message-ID: <a41528cf-1743-e580-8ec5-32614f4b655f@t-online.de>
+Date: Wed, 17 Jun 2020 21:58:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- BOUNDARY="3866299591-2062769975-1592416073=:14527"
-Content-ID: <alpine.BSF.2.22.395.2006171947570.14527@zero.eik.bme.hu>
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 13:53:50
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200615201757.16868-1-aperamak@pp1.inet.fi>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-ID: GW0OeuZYYhVJX6APqGAH57Z6mFV5Y88xGIuzmj3YOPpydkzSB1AtvQxfsdlG93rgyL
+X-TOI-EXPURGATEID: 150726::1592423923-000007DF-BE142479/0/0 CLEAN NORMAL
+X-TOI-MSGID: 62dc9bd8-9c10-4fe5-9751-44224bdfc2e2
+Received-SPF: none client-ip=194.25.134.82; envelope-from=vr_qemu@t-online.de;
+ helo=mailout05.t-online.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 15:58:44
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,103 +56,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jun 2020 17:53:59 -0000
+X-List-Received-Date: Wed, 17 Jun 2020 19:58:50 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-2062769975-1592416073=:14527
-Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 8BIT
-Content-ID: <alpine.BSF.2.22.395.2006171947571.14527@zero.eik.bme.hu>
-
-On Wed, 17 Jun 2020, Alex Bennée wrote:
-> Did this patch get separated from a larger series (2/2)?
-
-No sorry, just used format-patch for two unrelated patches and forgot to 
-remove this. This patch is standalone and Philippe pointed out the other 
-one labelled 1/2 is not needed as there's already a similar patch queued.
-
->> Add a backend that is the same as the log backend but omits the
->> process id and timestamp so logs are easier to read and diff-able.
+> Fix audio on software that accesses DRAM above 64k via register peek/poke
+> and some cases when more than 16 voices are used.
 >
-> I'd argue for this to be the behaviour of plain log (given it's mixing
-> with other log output). If not then maybe plainlog would be the default
-> log type if nothing is passed to configure?
-
-I'd like if the default log backend was not adding timestamps and random 
-numbers to log messages for easier digesting and diffing but the current 
-log backend does that and maybe there are people who like that default so 
-instead of making them need to change their ways I'm proposing this 
-backend that those who like plain logs can use instead. That's a less 
-disruptive change than changing the default log backend but if others want 
-that I'm fine with that too.
-
-Regards,
-BALATON Zoltan
-
->> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->> ---
->>  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++++
->>  1 file changed, 48 insertions(+)
->>  create mode 100644 scripts/tracetool/backend/plainlog.py
->>
->> diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetool/backend/plainlog.py
->> new file mode 100644
->> index 0000000000..40bbfa6d76
->> --- /dev/null
->> +++ b/scripts/tracetool/backend/plainlog.py
->> @@ -0,0 +1,48 @@
->> +# -*- coding: utf-8 -*-
->> +
->> +"""
->> +Stderr built-in backend, plain log without proc ID and time.
->> +"""
->> +
->> +__author__     = "Lluís Vilanova <vilanova@ac.upc.edu>"
->> +__copyright__  = "Copyright 2012-2017, Lluís Vilanova <vilanova@ac.upc.edu>"
->> +__license__    = "GPL version 2 or (at your option) any later version"
->> +
->> +__maintainer__ = "Stefan Hajnoczi"
->> +__email__      = "stefanha@linux.vnet.ibm.com"
->> +
->> +
->> +from tracetool import out
->> +
->> +
->> +PUBLIC = True
->> +
->> +
->> +def generate_h_begin(events, group):
->> +    out('#include "qemu/log-for-trace.h"',
->> +        '')
->> +
->> +
->> +def generate_h(event, group):
->> +    argnames = ", ".join(event.args.names())
->> +    if len(event.args) > 0:
->> +        argnames = ", " + argnames
->> +
->> +    if "vcpu" in event.properties:
->> +        # already checked on the generic format code
->> +        cond = "true"
->> +    else:
->> +        cond = "trace_event_get_state(%s)" % ("TRACE_" + event.name.upper())
->> +
->> +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
->> +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
->> +        '    }',
->> +        cond=cond,
->> +        name=event.name,
->> +        fmt=event.fmt.rstrip("\n"),
->> +        argnames=argnames)
->> +
->> +
->> +def generate_h_backend_dstate(event, group):
->> +    out('    trace_event_get_state_dynamic_by_id(%(event_id)s) || \\',
->> +        event_id="TRACE_" + event.name.upper())
+> Fixes: 135f5ae1974c ("audio: GUSsample is int16_t")
+> Signed-off-by: Allan Peramaki <aperamak@pp1.inet.fi>
+> ---
+>  hw/audio/gusemu_hal.c   | 6 +++---
+>  hw/audio/gusemu_mixer.c | 8 ++++----
+>  2 files changed, 7 insertions(+), 7 deletions(-)
 >
->
->
---3866299591-2062769975-1592416073=:14527--
+> diff --git a/hw/audio/gusemu_hal.c b/hw/audio/gusemu_hal.c
+> index ae40ca341c..e35e941926 100644
+> --- a/hw/audio/gusemu_hal.c
+> +++ b/hw/audio/gusemu_hal.c
+> @@ -30,9 +30,9 @@
+>  #include "gustate.h"
+>  #include "gusemu.h"
+>  
+> -#define GUSregb(position) (*            (gusptr+(position)))
+> -#define GUSregw(position) (*(uint16_t *) (gusptr+(position)))
+> -#define GUSregd(position) (*(uint16_t *)(gusptr+(position)))
+> +#define GUSregb(position) (*(gusptr + (position)))
+> +#define GUSregw(position) (*(uint16_t *)(gusptr + (position)))
+> +#define GUSregd(position) (*(uint32_t *)(gusptr + (position)))
+>  
+>  /* size given in bytes */
+>  unsigned int gus_read(GUSEmuState * state, int port, int size)
+> diff --git a/hw/audio/gusemu_mixer.c b/hw/audio/gusemu_mixer.c
+> index 00b9861b92..3b39254518 100644
+> --- a/hw/audio/gusemu_mixer.c
+> +++ b/hw/audio/gusemu_mixer.c
+> @@ -26,11 +26,11 @@
+>  #include "gusemu.h"
+>  #include "gustate.h"
+>  
+> -#define GUSregb(position)  (*            (gusptr+(position)))
+> -#define GUSregw(position)  (*(uint16_t *) (gusptr+(position)))
+> -#define GUSregd(position)  (*(uint16_t *)(gusptr+(position)))
+> +#define GUSregb(position)  (*(gusptr + (position)))
+> +#define GUSregw(position)  (*(uint16_t *)(gusptr + (position)))
+> +#define GUSregd(position)  (*(uint32_t *)(gusptr + (position)))
+>  
+> -#define GUSvoice(position) (*(uint16_t *)(voiceptr+(position)))
+> +#define GUSvoice(position) (*(uint16_t *)(voiceptr + (position)))
+>  
+>  /* samples are always 16bit stereo (4 bytes each, first right then left interleaved) */
+>  void gus_mixvoices(GUSEmuState * state, unsigned int playback_freq, unsigned int numsamples,
+
+With this patch I can hear the sound effects of DOOM Shareware in a FreeDOS 1.2 guest with a GUS audio device.
+
+Reviewed-by: Volker RÃ¼melin <vr_qemu@t-online.de>
 
