@@ -1,75 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlaBc-0007xz-3y
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2020 11:41:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58044)
+	id 1jlcG8-0005Ps-Pb
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2020 13:54:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jlaBZ-0007vk-Ub
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2020 11:41:09 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35937)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jlaBY-00041b-39
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2020 11:41:09 -0400
-Received: by mail-wr1-x442.google.com with SMTP id q11so2855948wrp.3
- for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2020 08:41:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=F7NF3Qz7EcZtMdOkJZ/CPrOuBVQUVt9qN+hm3bnLr24=;
- b=hxFUF7OVg9dP+i9a6ECrBJ1MagdKt0XN9jxCUcpdJpD0ySnvoXWYHTtoNAOEg7FjLp
- Xmkmp6KiEcuhBomPzWBEJCSm6uWlYR1G50vTRTjML68uB1XTuRDOZFxgZ2Se43DyUM9k
- WFODEELwaT6Cer40jZxSNU+iY2gUG8yJ8ebYhTdqX6ZqGUEqDo9yPRs7oD2HvazM9u5g
- Ywm1P6V8gb9AGJGZccMMjyzX+K6W+aTfP2ZE+b3MpfdjvwfbuQM7YelGqR23DzqgI/Ga
- WYhv5ImlW+oehpey8v4ONBynt5uJS9tCvTgvW0M4gdX874cGmimBGAErBXu13jL7ORJJ
- /g0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=F7NF3Qz7EcZtMdOkJZ/CPrOuBVQUVt9qN+hm3bnLr24=;
- b=Kk/PYCCN7xALWzfN0HJ4MvAHToauNEG9ONb5Pgbbwg8vFtOFKr6aoWUdiW3CpBPRjH
- R6NLtrLz7W+aWpe8/8xBhHk1dlXWLwHubxlVPT0H7T26TV69R9DbJYgBDQtnvXqZgTu6
- loqeoKJM5GsA/lTv1OBgOXhpKLtrjde4iyG0f2/4Srwh41nGa+MDGu7PV1cI+WzgwJ3e
- ISu3xbWLXicXNxTzep5ZcoiHRt5uQQgL4Oy8pK66ibltzndxXHTBKDHToK9pSBL0tmB1
- n448mlW6ZZ/8GfCBL0GCaznbwCnx71Iznsf0pA29iodN9m/TlpWfMhs1LaTNMKoJUxfd
- vJ7w==
-X-Gm-Message-State: AOAM533A8P4mmzcvZvYTA2fhFTY/Uhyi43Tn1kXMifJVCOSf0edr5JMi
- AFz9U8EzugENrBiI8UopsszkvA==
-X-Google-Smtp-Source: ABdhPJx58+3Gmar3NaDTpVb3em+JTLgLWDpFj4o8maHhHKZWDkfqxEdsN5KaPYu2nZLf42FNbZDGgg==
-X-Received: by 2002:adf:fb92:: with SMTP id a18mr9259485wrr.263.1592408466569; 
- Wed, 17 Jun 2020 08:41:06 -0700 (PDT)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id v20sm2306611wrb.51.2020.06.17.08.41.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 08:41:05 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 9B1A11FF7E;
- Wed, 17 Jun 2020 16:41:04 +0100 (BST)
-References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
-User-agent: mu4e 1.5.3; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jlcG6-0005Ib-QF; Wed, 17 Jun 2020 13:53:58 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:54196)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jlcG3-0000OC-7h; Wed, 17 Jun 2020 13:53:58 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 27670746333;
+ Wed, 17 Jun 2020 19:53:50 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 01879745702; Wed, 17 Jun 2020 19:53:50 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id F3D1F7456F8;
+ Wed, 17 Jun 2020 19:53:49 +0200 (CEST)
+Date: Wed, 17 Jun 2020 19:53:49 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
+cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>, 
  qemu-devel@nongnu.org
 Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
-In-reply-to: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
-Date: Wed, 17 Jun 2020 16:41:04 +0100
-Message-ID: <87k105wvhr.fsf@linaro.org>
+In-Reply-To: <87k105wvhr.fsf@linaro.org>
+Message-ID: <alpine.BSF.2.22.395.2006171945230.14527@zero.eik.bme.hu>
+References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
+ <87k105wvhr.fsf@linaro.org>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: multipart/mixed;
+ BOUNDARY="3866299591-2062769975-1592416073=:14527"
+Content-ID: <alpine.BSF.2.22.395.2006171947570.14527@zero.eik.bme.hu>
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 13:53:50
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,86 +54,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jun 2020 15:41:10 -0000
+X-List-Received-Date: Wed, 17 Jun 2020 17:53:59 -0000
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
+--3866299591-2062769975-1592416073=:14527
+Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 8BIT
+Content-ID: <alpine.BSF.2.22.395.2006171947571.14527@zero.eik.bme.hu>
 
-Did this patch get separated from a larger series (2/2)?
+On Wed, 17 Jun 2020, Alex Bennée wrote:
+> Did this patch get separated from a larger series (2/2)?
 
-> Add a backend that is the same as the log backend but omits the
-> process id and timestamp so logs are easier to read and diff-able.
+No sorry, just used format-patch for two unrelated patches and forgot to 
+remove this. This patch is standalone and Philippe pointed out the other 
+one labelled 1/2 is not needed as there's already a similar patch queued.
 
-I'd argue for this to be the behaviour of plain log (given it's mixing
-with other log output). If not then maybe plainlog would be the default
-log type if nothing is passed to configure?
-
+>> Add a backend that is the same as the log backend but omits the
+>> process id and timestamp so logs are easier to read and diff-able.
 >
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->  create mode 100644 scripts/tracetool/backend/plainlog.py
+> I'd argue for this to be the behaviour of plain log (given it's mixing
+> with other log output). If not then maybe plainlog would be the default
+> log type if nothing is passed to configure?
+
+I'd like if the default log backend was not adding timestamps and random 
+numbers to log messages for easier digesting and diffing but the current 
+log backend does that and maybe there are people who like that default so 
+instead of making them need to change their ways I'm proposing this 
+backend that those who like plain logs can use instead. That's a less 
+disruptive change than changing the default log backend but if others want 
+that I'm fine with that too.
+
+Regards,
+BALATON Zoltan
+
+>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>> ---
+>>  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++++
+>>  1 file changed, 48 insertions(+)
+>>  create mode 100644 scripts/tracetool/backend/plainlog.py
+>>
+>> diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetool/backend/plainlog.py
+>> new file mode 100644
+>> index 0000000000..40bbfa6d76
+>> --- /dev/null
+>> +++ b/scripts/tracetool/backend/plainlog.py
+>> @@ -0,0 +1,48 @@
+>> +# -*- coding: utf-8 -*-
+>> +
+>> +"""
+>> +Stderr built-in backend, plain log without proc ID and time.
+>> +"""
+>> +
+>> +__author__     = "Lluís Vilanova <vilanova@ac.upc.edu>"
+>> +__copyright__  = "Copyright 2012-2017, Lluís Vilanova <vilanova@ac.upc.edu>"
+>> +__license__    = "GPL version 2 or (at your option) any later version"
+>> +
+>> +__maintainer__ = "Stefan Hajnoczi"
+>> +__email__      = "stefanha@linux.vnet.ibm.com"
+>> +
+>> +
+>> +from tracetool import out
+>> +
+>> +
+>> +PUBLIC = True
+>> +
+>> +
+>> +def generate_h_begin(events, group):
+>> +    out('#include "qemu/log-for-trace.h"',
+>> +        '')
+>> +
+>> +
+>> +def generate_h(event, group):
+>> +    argnames = ", ".join(event.args.names())
+>> +    if len(event.args) > 0:
+>> +        argnames = ", " + argnames
+>> +
+>> +    if "vcpu" in event.properties:
+>> +        # already checked on the generic format code
+>> +        cond = "true"
+>> +    else:
+>> +        cond = "trace_event_get_state(%s)" % ("TRACE_" + event.name.upper())
+>> +
+>> +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
+>> +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
+>> +        '    }',
+>> +        cond=cond,
+>> +        name=event.name,
+>> +        fmt=event.fmt.rstrip("\n"),
+>> +        argnames=argnames)
+>> +
+>> +
+>> +def generate_h_backend_dstate(event, group):
+>> +    out('    trace_event_get_state_dynamic_by_id(%(event_id)s) || \\',
+>> +        event_id="TRACE_" + event.name.upper())
 >
-> diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetool/ba=
-ckend/plainlog.py
-> new file mode 100644
-> index 0000000000..40bbfa6d76
-> --- /dev/null
-> +++ b/scripts/tracetool/backend/plainlog.py
-> @@ -0,0 +1,48 @@
-> +# -*- coding: utf-8 -*-
-> +
-> +"""
-> +Stderr built-in backend, plain log without proc ID and time.
-> +"""
-> +
-> +__author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
-> +__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
-c.upc.edu>"
-> +__license__    =3D "GPL version 2 or (at your option) any later version"
-> +
-> +__maintainer__ =3D "Stefan Hajnoczi"
-> +__email__      =3D "stefanha@linux.vnet.ibm.com"
-> +
-> +
-> +from tracetool import out
-> +
-> +
-> +PUBLIC =3D True
-> +
-> +
-> +def generate_h_begin(events, group):
-> +    out('#include "qemu/log-for-trace.h"',
-> +        '')
-> +
-> +
-> +def generate_h(event, group):
-> +    argnames =3D ", ".join(event.args.names())
-> +    if len(event.args) > 0:
-> +        argnames =3D ", " + argnames
-> +
-> +    if "vcpu" in event.properties:
-> +        # already checked on the generic format code
-> +        cond =3D "true"
-> +    else:
-> +        cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
-per())
-> +
-> +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
-> +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
-> +        '    }',
-> +        cond=3Dcond,
-> +        name=3Devent.name,
-> +        fmt=3Devent.fmt.rstrip("\n"),
-> +        argnames=3Dargnames)
-> +
-> +
-> +def generate_h_backend_dstate(event, group):
-> +    out('    trace_event_get_state_dynamic_by_id(%(event_id)s) || \\',
-> +        event_id=3D"TRACE_" + event.name.upper())
-
-
---=20
-Alex Benn=C3=A9e
+>
+>
+--3866299591-2062769975-1592416073=:14527--
 
