@@ -1,113 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlrtI-0006Uj-OT
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 06:35:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44572)
+	id 1jlwZg-0006Ui-DF
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 11:35:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jlrtH-0006TU-2s
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 06:35:27 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40706
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1jlwZc-0006SS-2R
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 11:35:28 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:36417
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jlrtB-0007XI-Vh
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 06:35:26 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1jlwZZ-0007by-G8
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 11:35:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592476520;
+ s=mimecast20190719; t=1592494524;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=F9m5YQV0nHEOpjjyDseH18Zq49wNJQGWE9XMFCMqdLg=;
- b=NVSy1dONzpfZ57EBGDM97CKr5m8GuQjypFdpMUv/LqmkbPZDvL9SD+vFK1mkG6FwRhStp0
- lwJ76VXSxeoM14nnVrypgD9Q5aTpnOQro+Gv8DBKgTy90UUDI4X1+DDba7voIV9Y+v41dd
- KkHq2VygmX3RYHtXCAdm8K8y5gnOTVc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-326-_4_4NZsZP9GgMhFzqRDf6w-1; Thu, 18 Jun 2020 06:35:19 -0400
-X-MC-Unique: _4_4NZsZP9GgMhFzqRDf6w-1
-Received: by mail-wm1-f71.google.com with SMTP id h25so3028448wmb.0
- for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 03:35:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=F9m5YQV0nHEOpjjyDseH18Zq49wNJQGWE9XMFCMqdLg=;
- b=iENY857XTyqQukVJkGri85odQixtD1aOKmCLPEzqahc3KYBfwMYoWPklltVNLrDFY4
- F11dcAomVyga/E3dOG4HbyVDq40XoAxKexZDFv5CZSg6AaCs3/NFlk5/ghs3/n8PhuTP
- 2TJRtGGYh74YjTcWYaoaye9+Sr03olcVdiQrbJFfEPBcxawVZLtj8vhOZZNrHYKfZwMX
- IQmwjs/U5No5Cn4gjxjhHKcnXsAI7hbhWr3MQsRw19Iu6BTEURzFPTDl8P5irqANf62f
- U7y1E8r7ymITtpGqmf+3gsKXIu8mKVekuvD45d8KKmBzG3kfGLV7nNYwMpzquqlyiEzo
- DwIw==
-X-Gm-Message-State: AOAM530R+x2/51WEPO0hdzaontIrV2ZQ5lK2HiuiJB1mi1HPhWRnjID0
- iH7eHmGToME7epACpY5WBH4BwjsESjomKx3UXNeqcNtXlH4cXvg579W3Z9v8UlN3KzoTAbrO5Vw
- J9lUpo/fiHRU0jHdGhQ==
-X-Received: by 2002:a05:600c:4146:: with SMTP id
- h6mr3378042wmm.172.1592476517702; 
- Thu, 18 Jun 2020 03:35:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9TTouuQZRtFR1WUR29js+cSf2/esXXi4p+uoD9l+gqBn/Tof1hbyC6F2JQBmhQWeTMsSNSg==
-X-Received: by 2002:a05:600c:4146:: with SMTP id
- h6mr3378024wmm.172.1592476517486; 
- Thu, 18 Jun 2020 03:35:17 -0700 (PDT)
-Received: from [192.168.1.38] (93.red-83-59-160.dynamicip.rima-tde.net.
- [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id r1sm2148447wrn.29.2020.06.18.03.35.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Jun 2020 03:35:16 -0700 (PDT)
-Subject: Re: [PATCH] hw/audio/gus: Fix registers 32-bit access
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Allan Peramaki <aperamak@pp1.inet.fi>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20200615201757.16868-1-aperamak@pp1.inet.fi>
- <CAFEAcA-eKboVf3uk4iY_A9_uQ=HnGyic4fzbzJhv1gH2V+TMVw@mail.gmail.com>
- <fdb9eabf-2663-f2e4-6b40-2455261eaa46@redhat.com>
- <CAFEAcA9sCJ6wKdra+EBFOJfOaZbtOE0DND6S6rh5jgrDqLG57Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <eae2ce28-693a-b838-37ea-b8a58a581bb8@redhat.com>
-Date: Thu, 18 Jun 2020 12:35:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ in-reply-to:in-reply-to:references:references;
+ bh=ttfQhqAJ59sT4RarvibgBtYM0IyzQZUtgmArPyKa6q4=;
+ b=SrbD/gySGBr7pw85aFMgnH6bUeM8gR0qVvx/7MieL6d+d59IU/2aSbWFzzneVZnqqmvtz6
+ V0WYAilHulOeZR1UB0UQ1Ds/uwl99wXo+Od6fo2l5SuVsHR4cNPrMolkXmvdH4BOiLndii
+ VOCHoaz3Q2gctF3gMfi+9SpT0gg3DrI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-227-_5JReB47PlGEE02BNutWhA-1; Thu, 18 Jun 2020 11:35:20 -0400
+X-MC-Unique: _5JReB47PlGEE02BNutWhA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3205310CE782;
+ Thu, 18 Jun 2020 15:35:19 +0000 (UTC)
+Received: from localhost (ovpn-113-212.ams2.redhat.com [10.36.113.212])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D526F1E2267;
+ Thu, 18 Jun 2020 15:35:17 +0000 (UTC)
+Date: Thu, 18 Jun 2020 16:35:16 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
+Message-ID: <20200618153516.GE1956319@stefanha-x1.localdomain>
+References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
+ <20200618073124.GA1956319@stefanha-x1.localdomain>
+ <20200618090741.GC671599@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9sCJ6wKdra+EBFOJfOaZbtOE0DND6S6rh5jgrDqLG57Q@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <20200618090741.GC671599@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="pY3vCvL1qV+PayAL"
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=stefanha@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/18 01:21:16
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/18 01:47:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,33 +75,120 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 10:35:27 -0000
+X-List-Received-Date: Thu, 18 Jun 2020 15:35:28 -0000
 
-On 6/18/20 12:23 PM, Peter Maydell wrote:
-> On Thu, 18 Jun 2020 at 11:22, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> On 6/17/20 10:23 PM, Peter Maydell wrote:
->>> On Mon, 15 Jun 2020 at 22:23, Allan Peramaki <aperamak@pp1.inet.fi> wrote:
->>>>
->>>> Fix audio on software that accesses DRAM above 64k via register peek/poke
->>>> and some cases when more than 16 voices are used.
->>>>
->>>> Fixes: 135f5ae1974c ("audio: GUSsample is int16_t")
->>>> Signed-off-by: Allan Peramaki <aperamak@pp1.inet.fi>
->>>
->>> This patch is quite difficult to read because it mixes some
->>> whitespace only changes with some actual changes of
->>> behaviour.
->>
->> In such cases the author might add a comment in the commit
->> description "this patch is easier to review with git-diff -w"
->> or other options.
->>
->> Allan, can we get the patch with only the changed lines?
-> 
-> Is it worth the effort of a respin at this point?
-> 
+--pY3vCvL1qV+PayAL
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I'll give it a try to see if it takes me less than 2min.
+On Thu, Jun 18, 2020 at 10:07:41AM +0100, Daniel P. Berrang=E9 wrote:
+> On Thu, Jun 18, 2020 at 08:31:24AM +0100, Stefan Hajnoczi wrote:
+> > On Wed, Jun 17, 2020 at 03:36:29PM +0200, BALATON Zoltan wrote:
+> > > Add a backend that is the same as the log backend but omits the
+> > > process id and timestamp so logs are easier to read and diff-able.
+> > >=20
+> > > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> > > ---
+> > >  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++=
+++
+> > >  1 file changed, 48 insertions(+)
+> > >  create mode 100644 scripts/tracetool/backend/plainlog.py
+> > >=20
+> > > diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetoo=
+l/backend/plainlog.py
+> > > new file mode 100644
+> > > index 0000000000..40bbfa6d76
+> > > --- /dev/null
+> > > +++ b/scripts/tracetool/backend/plainlog.py
+> > > @@ -0,0 +1,48 @@
+> > > +# -*- coding: utf-8 -*-
+> > > +
+> > > +"""
+> > > +Stderr built-in backend, plain log without proc ID and time.
+> > > +"""
+> > > +
+> > > +__author__     =3D "Llu????s Vilanova <vilanova@ac.upc.edu>"
+> > > +__copyright__  =3D "Copyright 2012-2017, Llu????s Vilanova <vilanova=
+@ac.upc.edu>"
+> >=20
+> > There is a Unicode issue here, Llu=EDs' name is not printed correctly.
+> >=20
+> > > +__license__    =3D "GPL version 2 or (at your option) any later vers=
+ion"
+> > > +
+> > > +__maintainer__ =3D "Stefan Hajnoczi"
+> > > +__email__      =3D "stefanha@linux.vnet.ibm.com"
+> > > +
+> > > +
+> > > +from tracetool import out
+> > > +
+> > > +
+> > > +PUBLIC =3D True
+> > > +
+> > > +
+> > > +def generate_h_begin(events, group):
+> > > +    out('#include "qemu/log-for-trace.h"',
+> > > +        '')
+> > > +
+> > > +
+> > > +def generate_h(event, group):
+> > > +    argnames =3D ", ".join(event.args.names())
+> > > +    if len(event.args) > 0:
+> > > +        argnames =3D ", " + argnames
+> > > +
+> > > +    if "vcpu" in event.properties:
+> > > +        # already checked on the generic format code
+> > > +        cond =3D "true"
+> > > +    else:
+> > > +        cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.nam=
+e.upper())
+> > > +
+> > > +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
+> > > +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
+> > > +        '    }',
+> > > +        cond=3Dcond,
+> > > +        name=3Devent.name,
+> > > +        fmt=3Devent.fmt.rstrip("\n"),
+> > > +        argnames=3Dargnames)
+> >=20
+> > It is not necessary to introduce a new backend. There could be an optio=
+n
+> > that controls whether or not the timestamp/tid is printed. For example,
+> > -trace timestamp=3Doff or maybe the timestmap/tid can be integrated int=
+o
+> > qemu_log() itself so that it's used more consistently and a -d timestam=
+p
+> > option enables it.
+>=20
+> QEMU already has a "-msg timestamp=3Don|off" option that controls whether
+> error reports on stderr get a timestamp. I think it is probably reasonabl=
+e
+> for this existing option to apply to anything QEMU prints to stdout/err,
+> and thus we could wire it up for qemu_log().
+
+I thought about that but the features are somewhat unrelated.
+
+If we unify them, how about making the timestamp/tid apply to *all*
+qemu_log() output, not just tracing?
+
+Stefan
+
+--pY3vCvL1qV+PayAL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl7ribQACgkQnKSrs4Gr
+c8g4cQf/VYK88ehewD7DAsjXVw8yKpuzMYol1yA4u6pJWh0qhUqpD05/p6W66kzG
+POD8hIDNMaY9C9gKFSX7yWr25NAV/ZAZin6R4WxVRYE+VQImw9pV386MhP/m1GuX
+t/lc9S1GRZ3X1drfG5n3Pd0PmxyrSh1KCidhyTKCWY3u/mEsVtONqRqgHbR66x6k
+aaGhY+uq7k7AtS76Bz4QG+bRQjvMayu1pXVw+uSY/XwJW1pBXdLGr8IDjVcnkwPk
+gp68i7dgSV2dzCVsWGnw6OadotFrF/nDA89D0tkKdI8bYCcMA4SckI4ttWMq3WW5
+oV39IpLpmCnI2fGhGxPCIk+UVm02FA==
+=8tsd
+-----END PGP SIGNATURE-----
+
+--pY3vCvL1qV+PayAL--
 
 
