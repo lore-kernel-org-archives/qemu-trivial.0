@@ -1,73 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlwhf-0007lG-Gy
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 11:43:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33784)
+	id 1jlyNv-00077N-Om
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 13:31:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jlwhe-0007ix-7d
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 11:43:46 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33444
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jlwhc-0000ul-FF
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 11:43:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592495023;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5zrIqMX8xTE/RgeCFBWMQyxbDigu9jXkKkXY6EJS5Rw=;
- b=Fmk+K+1ccQPKDpsIv1Z6J6gFH/DN73n7fRkeBSX2AAiZNcyZ0n43fyY8XWN5oAFeheiIUU
- 3faGksevUHMLaHcllqgr9Nsi7e6Dyy0Sg/pZSm/5cN0TS2tWd0JClQ+69Do9MnVJNtTSRk
- v5Rc8eUCePPsl+SRBhwakKChEjAmnm0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-318-6HmVXCqMPgWqyDC2JetvOw-1; Thu, 18 Jun 2020 11:43:31 -0400
-X-MC-Unique: 6HmVXCqMPgWqyDC2JetvOw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94652107ACCA;
- Thu, 18 Jun 2020 15:43:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E7AF5C1D0;
- Thu, 18 Jun 2020 15:43:26 +0000 (UTC)
-Date: Thu, 18 Jun 2020 16:43:23 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
-Message-ID: <20200618154323.GK671599@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
- <20200618073124.GA1956319@stefanha-x1.localdomain>
- <20200618090741.GC671599@redhat.com>
- <20200618153516.GE1956319@stefanha-x1.localdomain>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlyNu-00075y-Nj
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 13:31:30 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45760)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlyNs-000659-Ng
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 13:31:30 -0400
+Received: by mail-oi1-x241.google.com with SMTP id p70so5788977oic.12
+ for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 10:31:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RYo/8dEkQPbznU3Hgsd/Q+vVlaDQBNLUYuA7Gg5b94o=;
+ b=BctRJGFsemWIdjZOarhzxgAQNoZ56ipMhjy0chZV7rJykt1ISVj6oPbk2HiKIKhb3P
+ KUUwIJjdbr6G52UGdmqdgZroszUa6q3liPQIDa6Obb6ij2Ta6/g9mTQKZvbxVkD0KevP
+ xshQzoMT4hFj+D6UN4Dmg8JpRoVVaYO9soi9IGaEdlCEXaR/pfe6slX7Xxv1wUiQ3M5l
+ awqPwVt09vgYvTzaX1ZTaKMV6CACT4KooqR93sbijCCjZM7eU4oi6hx603Zmqd62WHR+
+ rwGfcXfxGvSDlonm2SBlGrwtlmu1qhGEo0spBBMw985eARCEMFBsEI46c+ImAUykxr7u
+ QznQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RYo/8dEkQPbznU3Hgsd/Q+vVlaDQBNLUYuA7Gg5b94o=;
+ b=R0aYx1/fdutuvg8faGzaPliQ23L2ea1OZjCDH3OLtSYA24kqnQSW0YHAjpGPIY+M6o
+ C9hHMTRppWgWGS+JSPo/nKAjiAkst35Ce+xaWD35q8y3OTcRkeRu9Awk4lGZS3s5VJyb
+ eFT85wKliG4ifh3N7mVNAc0VBFJTRJzLR7XBo35E1xRd4sRvonk3rqgbV8RJc61epv6r
+ qYo8Ost+DuYrk2Yjf8UL7hneoRpT4pAb5aqwHJqs8azTqy9OPs/jk1sThie2X7z4TR2A
+ El97JIX0ve2Zn6fab+TBQzMzPemEpcuqQ105Bluk6bw6FuiUwdRLBzPHGn8zzuD/gXdy
+ QsfA==
+X-Gm-Message-State: AOAM532SKL0Ol9/hk/cMJIX8DwL/H/JXzH/PYmfiMcipeFg5nWwnVzdz
+ oN6v6pJFnhhwhrAex69IqPaqr9cAjyZ3sgEsPvjp9w==
+X-Google-Smtp-Source: ABdhPJxjogvK7Xqv7n/JQlHZVniXRZtSqVeee/nHU76UYb7t7+qdfkUZ+stKmPitV5/41knz4YR9222cPeVWTsWQ5Kc=
+X-Received: by 2002:aca:568c:: with SMTP id k134mr3713036oib.48.1592501487423; 
+ Thu, 18 Jun 2020 10:31:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200618153516.GE1956319@stefanha-x1.localdomain>
-User-Agent: Mutt/1.14.0 (2020-05-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=berrange@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/18 01:21:16
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+References: <20200618114129.5636-1-wentong.wu@intel.com>
+In-Reply-To: <20200618114129.5636-1-wentong.wu@intel.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 18 Jun 2020 18:31:16 +0100
+Message-ID: <CAFEAcA9-HH44cXohDGAVeidN48n8LgDEkhbnmcnqKVTsEN=hOg@mail.gmail.com>
+Subject: Re: [PATCH] target/nios2: Use gen_io_start/end around wrctl
+ instruction.
+To: wentongw <wentong.wu@intel.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,106 +74,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 15:43:46 -0000
+X-List-Received-Date: Thu, 18 Jun 2020 17:31:31 -0000
 
-On Thu, Jun 18, 2020 at 04:35:16PM +0100, Stefan Hajnoczi wrote:
-> On Thu, Jun 18, 2020 at 10:07:41AM +0100, Daniel P. Berrangé wrote:
-> > On Thu, Jun 18, 2020 at 08:31:24AM +0100, Stefan Hajnoczi wrote:
-> > > On Wed, Jun 17, 2020 at 03:36:29PM +0200, BALATON Zoltan wrote:
-> > > > Add a backend that is the same as the log backend but omits the
-> > > > process id and timestamp so logs are easier to read and diff-able.
-> > > > 
-> > > > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> > > > ---
-> > > >  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++++
-> > > >  1 file changed, 48 insertions(+)
-> > > >  create mode 100644 scripts/tracetool/backend/plainlog.py
-> > > > 
-> > > > diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetool/backend/plainlog.py
-> > > > new file mode 100644
-> > > > index 0000000000..40bbfa6d76
-> > > > --- /dev/null
-> > > > +++ b/scripts/tracetool/backend/plainlog.py
-> > > > @@ -0,0 +1,48 @@
-> > > > +# -*- coding: utf-8 -*-
-> > > > +
-> > > > +"""
-> > > > +Stderr built-in backend, plain log without proc ID and time.
-> > > > +"""
-> > > > +
-> > > > +__author__     = "Llu????s Vilanova <vilanova@ac.upc.edu>"
-> > > > +__copyright__  = "Copyright 2012-2017, Llu????s Vilanova <vilanova@ac.upc.edu>"
-> > > 
-> > > There is a Unicode issue here, Lluís' name is not printed correctly.
-> > > 
-> > > > +__license__    = "GPL version 2 or (at your option) any later version"
-> > > > +
-> > > > +__maintainer__ = "Stefan Hajnoczi"
-> > > > +__email__      = "stefanha@linux.vnet.ibm.com"
-> > > > +
-> > > > +
-> > > > +from tracetool import out
-> > > > +
-> > > > +
-> > > > +PUBLIC = True
-> > > > +
-> > > > +
-> > > > +def generate_h_begin(events, group):
-> > > > +    out('#include "qemu/log-for-trace.h"',
-> > > > +        '')
-> > > > +
-> > > > +
-> > > > +def generate_h(event, group):
-> > > > +    argnames = ", ".join(event.args.names())
-> > > > +    if len(event.args) > 0:
-> > > > +        argnames = ", " + argnames
-> > > > +
-> > > > +    if "vcpu" in event.properties:
-> > > > +        # already checked on the generic format code
-> > > > +        cond = "true"
-> > > > +    else:
-> > > > +        cond = "trace_event_get_state(%s)" % ("TRACE_" + event.name.upper())
-> > > > +
-> > > > +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
-> > > > +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
-> > > > +        '    }',
-> > > > +        cond=cond,
-> > > > +        name=event.name,
-> > > > +        fmt=event.fmt.rstrip("\n"),
-> > > > +        argnames=argnames)
-> > > 
-> > > It is not necessary to introduce a new backend. There could be an option
-> > > that controls whether or not the timestamp/tid is printed. For example,
-> > > -trace timestamp=off or maybe the timestmap/tid can be integrated into
-> > > qemu_log() itself so that it's used more consistently and a -d timestamp
-> > > option enables it.
-> > 
-> > QEMU already has a "-msg timestamp=on|off" option that controls whether
-> > error reports on stderr get a timestamp. I think it is probably reasonable
-> > for this existing option to apply to anything QEMU prints to stdout/err,
-> > and thus we could wire it up for qemu_log().
-> 
-> I thought about that but the features are somewhat unrelated.
-> 
-> If we unify them, how about making the timestamp/tid apply to *all*
-> qemu_log() output, not just tracing?
+On Thu, 18 Jun 2020 at 04:50, wentongw <wentong.wu@intel.com> wrote:
+>
+> From: Wentong Wu <wentong.wu@intel.com>
+>
+> wrctl instruction on nios2 target will cause checking cpu interrupt,
+> but tcg_handle_interrupt() will call cpu_abort() if the CPU gets an
+> interrupt while it's not in a 'can do IO' state, so around wrctl
+> instruction add gen_io_start/end.
+>
+> Signed-off-by: Wentong Wu <wentong.wu@intel.com>
+> ---
+>  target/nios2/translate.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+> index e17656e6..deaefcaf 100644
+> --- a/target/nios2/translate.c
+> +++ b/target/nios2/translate.c
+> @@ -32,6 +32,7 @@
+>  #include "exec/cpu_ldst.h"
+>  #include "exec/translator.h"
+>  #include "qemu/qemu-print.h"
+> +#include "exec/gen-icount.h"
+>
+>  /* is_jmp field values */
+>  #define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
+> @@ -518,7 +519,13 @@ static void wrctl(DisasContext *dc, uint32_t code, uint32_t flags)
+>      /* If interrupts were enabled using WRCTL, trigger them. */
+>  #if !defined(CONFIG_USER_ONLY)
+>      if ((instr.imm5 + CR_BASE) == CR_STATUS) {
+> +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
+> +            gen_io_start();
+> +        }
+>          gen_helper_check_interrupts(dc->cpu_env);
+> +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
+> +            gen_io_end();
+> +        }
 
-That's exactly what I intended.
+You also need to end the TB, which we should do whether
+we're using icount or not. This is awkward because nios2 has
+not correctly implemented the DISAS_UPDATE that is the right
+way to do that. So you'll need some preliminary patches:
 
-Essentially if QEMU is going to add timestamps to things it writes to
-stdout/err, then it should do that universally for all parts of the code
-base that use stdio. This means error_report(), qemu_log(), and any
-other places that are relevant wrt stdio.
+Patch 1: Implement and use DISAS_NORETURN
+ + the current places in t_gen_helper_raise_exception() and
+   gen_exception() that set dc->is_jmp = DISAS_UPDATE
+   should instead set it to DISAS_NORETURN. (This is because
+   they both call gen_helper_raise_exception() and at runtime
+   execution will never return from that helper call.)
+ + In gen_intermediate_code(), in the "switch (dc->is_jmp)"
+   you need a new "case DISAS_NORETURN:" which goes with
+   DISAS_TB_JUMP as another kind of "nothing more to generate".
 
-Having separate timestamp on/off switches for each feature is not
-desirable.
+Patch 2: Make DISAS_UPDATE write PC back to CPU state
+ + Move the "case DISAS_UPDATE:" from being like DISAS_JUMP
+   up so it does the same thing as DISAS_NEXT (ie explicitly
+   writes the PC back into the cpu state before doing a
+   tcg_gen_exit_tb()). This is OK because patch 1 removed
+   the only two previous users of it, so we don't break
+   anything by bringing its semantics into line with how
+   most targets use it.
 
+Patch 3: this patch to use gen_io_start/end
+ + You can now put "dc->is_jmp = DISAS_UPDATE;" inside the
+   "is this a CR_STATUS write" if() block, which should
+   cause the wrctl to always end the TB.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+thanks
+-- PMM
 
