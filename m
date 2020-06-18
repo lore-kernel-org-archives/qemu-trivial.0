@@ -1,56 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlmcU-0006I7-2Z
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 00:57:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39048)
+	id 1jlmeg-00040f-N8
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 01:00:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlmcS-0006CS-4S
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 00:57:44 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:27383
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlmee-0003uE-9x
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 01:00:00 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:44525
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlmcP-0007tH-Rx
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 00:57:43 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jlmec-00083B-Hh
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 00:59:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592456260;
+ s=mimecast20190719; t=1592456397;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=Np898EeVpvVvEiKw2Rp3dLcHzXexmvQhMwXlOH+B6q4=;
- b=QsuC5ylEyx0Pc2Hw6Lk0jXLy8TIWkpOv80L7E4MNHn38sD+Ob+SD8YD7s6BtDDX06peS45
- GkKVYYLeBCvWaFc6po05G5IR0T+TwdhUKOJIKSqbYYhcCqGjsCyeQWtt8In34QUFDDCgK5
- U0pv0hVnl2K/EFoL+iBBPXPF4yokAkw=
+ bh=S+DyOews2WknL4XyeiMjP1z5pOYyG1OpuEv+DTKCIt0=;
+ b=jJsXpdaexkQ6vKph80jxZQDG347bJv4FmyWpH5rddu14OxWYhJtY8ByqRlD33JLshjB1Ns
+ ANJZ4lxRGonAw4EgtLoGijPCexQrAzGlxy6QTattVP0H2trKkk2uOX22iA2yugNShGCzO7
+ SKFbMyi1kLo2oUBZI6re9MyZKsrMmC4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-75--YRWwxlXPeGnRc707FNWRw-1; Thu, 18 Jun 2020 00:57:14 -0400
-X-MC-Unique: -YRWwxlXPeGnRc707FNWRw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-413-FnI4KrUxPfen6E3Svtb_fg-1; Thu, 18 Jun 2020 00:59:56 -0400
+X-MC-Unique: FnI4KrUxPfen6E3Svtb_fg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C6A2E8018A7;
- Thu, 18 Jun 2020 04:57:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E06018035D7;
+ Thu, 18 Jun 2020 04:59:54 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-4.ams2.redhat.com [10.36.112.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B5B4A60BF4;
- Thu, 18 Jun 2020 04:57:08 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2EC197CACE;
+ Thu, 18 Jun 2020 04:59:49 +0000 (UTC)
 Subject: Re: [PATCH] hw/audio/gus: Fix registers 32-bit access
-To: Allan Peramaki <aperamak@pp1.inet.fi>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+To: Allan Peramaki <aperamak@pp1.inet.fi>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, qemu-stable@nongnu.org
 References: <20200615201757.16868-1-aperamak@pp1.inet.fi>
- <CAFEAcA-eKboVf3uk4iY_A9_uQ=HnGyic4fzbzJhv1gH2V+TMVw@mail.gmail.com>
- <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <5c118336-0452-5429-1ad9-1e2c982c6d92@redhat.com>
-Date: Thu, 18 Jun 2020 06:57:07 +0200
+Message-ID: <35ef8753-2469-387b-faef-ebf972081a05@redhat.com>
+Date: Thu, 18 Jun 2020 06:59:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
+In-Reply-To: <20200615201757.16868-1-aperamak@pp1.inet.fi>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
@@ -78,26 +74,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 04:57:44 -0000
+X-List-Received-Date: Thu, 18 Jun 2020 05:00:00 -0000
 
-On 18/06/2020 00.25, Allan Peramaki wrote:
-> On 17/06/2020 23:23, Peter Maydell wrote:
->>
->> This patch is quite difficult to read because it mixes some
->> whitespace only changes with some actual changes of
->> behaviour.
+On 15/06/2020 22.17, Allan Peramaki wrote:
+> Fix audio on software that accesses DRAM above 64k via register peek/poke
+> and some cases when more than 16 voices are used.
 > 
-> Sorry about that. I had to put some whitespace in the two lines I
-> modified because of checkpatch.pl, but then the nearby lines would have
-> had inconsistent style if left unmodified.
+> Fixes: 135f5ae1974c ("audio: GUSsample is int16_t")
+> Signed-off-by: Allan Peramaki <aperamak@pp1.inet.fi>
+> ---
+>  hw/audio/gusemu_hal.c   | 6 +++---
+>  hw/audio/gusemu_mixer.c | 8 ++++----
+>  2 files changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/audio/gusemu_hal.c b/hw/audio/gusemu_hal.c
+> index ae40ca341c..e35e941926 100644
+> --- a/hw/audio/gusemu_hal.c
+> +++ b/hw/audio/gusemu_hal.c
+> @@ -30,9 +30,9 @@
+>  #include "gustate.h"
+>  #include "gusemu.h"
+>  
+> -#define GUSregb(position) (*            (gusptr+(position)))
+> -#define GUSregw(position) (*(uint16_t *) (gusptr+(position)))
+> -#define GUSregd(position) (*(uint16_t *)(gusptr+(position)))
+> +#define GUSregb(position) (*(gusptr + (position)))
+> +#define GUSregw(position) (*(uint16_t *)(gusptr + (position)))
+> +#define GUSregd(position) (*(uint32_t *)(gusptr + (position)))
+>  
+>  /* size given in bytes */
+>  unsigned int gus_read(GUSEmuState * state, int port, int size)
+> diff --git a/hw/audio/gusemu_mixer.c b/hw/audio/gusemu_mixer.c
+> index 00b9861b92..3b39254518 100644
+> --- a/hw/audio/gusemu_mixer.c
+> +++ b/hw/audio/gusemu_mixer.c
+> @@ -26,11 +26,11 @@
+>  #include "gusemu.h"
+>  #include "gustate.h"
+>  
+> -#define GUSregb(position)  (*            (gusptr+(position)))
+> -#define GUSregw(position)  (*(uint16_t *) (gusptr+(position)))
+> -#define GUSregd(position)  (*(uint16_t *)(gusptr+(position)))
+> +#define GUSregb(position)  (*(gusptr + (position)))
+> +#define GUSregw(position)  (*(uint16_t *)(gusptr + (position)))
+> +#define GUSregd(position)  (*(uint32_t *)(gusptr + (position)))
+>  
+> -#define GUSvoice(position) (*(uint16_t *)(voiceptr+(position)))
+> +#define GUSvoice(position) (*(uint16_t *)(voiceptr + (position)))
+>  
+>  /* samples are always 16bit stereo (4 bytes each, first right then left interleaved) */
+>  void gus_mixvoices(GUSEmuState * state, unsigned int playback_freq, unsigned int numsamples,
+> 
 
- Hi Allan!
+This might be a good candidate for the stable branches, too (now on the
+CC: list).
 
-Makes perfect sense, but for the review, it might have been helpful if
-you'd put this information in the commit message.
-
-Anyway, the change looks correct to me, so:
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+ Thomas
 
 
