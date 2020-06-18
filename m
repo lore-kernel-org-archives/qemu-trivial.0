@@ -1,55 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlqca-0002Ha-QN
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 05:14:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43986)
+	id 1jlrZX-0001Px-U4
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 06:15:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlqcZ-0002Gk-7w
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:14:07 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36631)
+ id 1jlrZW-0001Pj-UF
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 06:15:02 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35837)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlqcX-0000ND-Hs
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:14:06 -0400
-Received: by mail-oi1-x242.google.com with SMTP id a137so4445497oii.3
- for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 02:14:05 -0700 (PDT)
+ id 1jlrZU-00034b-TT
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 06:15:02 -0400
+Received: by mail-oi1-x242.google.com with SMTP id k4so4595492oik.2
+ for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 03:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MKQfGqhD+JTdrYQIG7Z7vR4kXfnefAbzMu1XSkQrlu8=;
- b=l5IdrC3VErnffIzCszP/zPBt7izfzrbiKKppvPdhyq9P6BWd+7fNoN46l8H8JJk+ps
- he9b/Ss9+/o0XNDxuoSyc8+2wtWdn18ZCnZH9PsBgqxY4b/adSKt6zpqu7wUdCnqFVNu
- RR+ebj2y46UoWtVFeAQUsTtxMU5KryGJ6CkX+/MClYvTLQdiN6x7i4/cgyOqgqJfv8F5
- 6j3CewR/rZflZBpPF4Z2M5nCKE4fbcBBh6m6b+V5A0fypR7MHL+dWpix1zbjBVSXVOyf
- Y8FKnqAoYdD/hkslXSOxhfAj6/EL7WqXsPmJ7bKZdG6eoVdk6qt4ggxb+BU7tv+3V9a9
- eBZA==
+ :cc; bh=ZOgCWDaVqeVjNhGXS/D2YamsCh0AISfE46WA7zq9rFY=;
+ b=E+qd+c9CuRmwf9YrCglD4MqWPWNCqMi5Fh+NF/y1/ceW6zDu+qOquD371uRdMEi2GR
+ 4sH+MMYtRIey1bfr0wRpnHL7VcWsR7iq3v9OKIklnog52FpI1I78NBaqY4xIWIifH8bV
+ WgCKzvIJH1oVaE9oJLsrmEEoibcAwbgPz0AvSESHiQQmlqLAZLZOV2e1kkk1F3UqFZAr
+ wpxXtTCgpaSFzwss5/264+0PXfJJpXBariX7mTbjQ8KFG+jQMsLbq1bfmvbLY0MGZfxz
+ kUGGSPKbxQ1qliX8YK4ScCyAuWMPvuUrcPQLYbq+PUgFVYCYhFy+0lbsnQPREzw8BdzE
+ qSLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=MKQfGqhD+JTdrYQIG7Z7vR4kXfnefAbzMu1XSkQrlu8=;
- b=aWVbMwMAGPLE2gY91O307oPOVK8a0Gj1iHKfGVgnOrhr/g1QGAO6/lUoRZRDrz2Vj4
- a84ACIoRAyDsG7YVxF18kWhP/wPk9O6UdeQtKifBuEO4IIeDH83TF6IB1jigJ7Sgkj+2
- jT+odd+lTs/wdiW1wunKFdHdztOgb37zpc+ZBDlXbFq5khAatJOR3F4lmAVmCK7rzq+C
- O3ohHUD4MACZDnvA9b/izaPvBsG7qE0vvi0pEiLYld4PEASKAOIndqLJc+z512r092jx
- 8o73DrWhWYqVY/G6nx7q6HUBcovh+zZ4ixtaLIER6NXYeCRzbcESLqwvLfvGZ72FM6QZ
- OXzQ==
-X-Gm-Message-State: AOAM531/Z3GSMXL29WokPz8XN5d9+oiFcapAQyd8Ww5INKRJ0fprovpE
- vMX+BN6ifO0Ez1uOIebF9/vR9bbzzZw/PvSwZM2Rgg==
-X-Google-Smtp-Source: ABdhPJxRvpjWIOiAEfLcXIkW8HsAmf02rz5qSopnpXm5MxkHSWWVL+R/sz7KndE9BzuBdFtH4xKv6UNVz1xRMqVGQtQ=
-X-Received: by 2002:aca:568c:: with SMTP id k134mr1993334oib.48.1592471644284; 
- Thu, 18 Jun 2020 02:14:04 -0700 (PDT)
+ bh=ZOgCWDaVqeVjNhGXS/D2YamsCh0AISfE46WA7zq9rFY=;
+ b=N/8zPMBPMjALE8iL91gF9qqFFADMHudosflviQNrUDZlVYDqapldC8pRqPhSJGa2vt
+ fYoHkk5v310lGNlmdlrygS8V1wQarP4QfmZOL8GbRCsOD/z6Uy+17fHkonF0CyUhxpsm
+ ljQxkI0kFrNRc8TRBP/SGisY1RcSdAxdbf2lNoHwps2BfR0d8ZluhzW2o5MdoqF0ZofA
+ /ZaXoobjHBRrOe5ZFGv8SksWG4v8NYkpAs8rvV1US2bMb7lKUMPFO4a9QqHBZH3Jb+V7
+ b91iev88lGbJG76EpmNvD4jNYk4OhMrQWUuQZXfsw4HGtxWkzSFs61vFDnuX2PumLeir
+ Qiaw==
+X-Gm-Message-State: AOAM5333blQAG6Z870DN/we0cLJNDCxPlLL55sb5wSuwCsG+MvZsvNa5
+ p6xODmT+pPR9y04REEbaNTlqmgUiE7DQ+OLjY+iRKA==
+X-Google-Smtp-Source: ABdhPJxq0CN9euPc5XzcZnA4xsAI06ZCYJYuJlYW9PMiKmXGuq3nIr/ggugEJlXCJlNaRw7X5qKOXagCJpmyixCJu7Y=
+X-Received: by 2002:aca:1a07:: with SMTP id a7mr2219930oia.163.1592475299610; 
+ Thu, 18 Jun 2020 03:14:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200615201757.16868-1-aperamak@pp1.inet.fi>
- <CAFEAcA-eKboVf3uk4iY_A9_uQ=HnGyic4fzbzJhv1gH2V+TMVw@mail.gmail.com>
- <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
-In-Reply-To: <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
+References: <CA+XhMqxwC10XHVs4Z-JfE0-WLAU3ztDuU9QKVi31mjr59HWCxg@mail.gmail.com>
+In-Reply-To: <CA+XhMqxwC10XHVs4Z-JfE0-WLAU3ztDuU9QKVi31mjr59HWCxg@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Jun 2020 10:13:53 +0100
-Message-ID: <CAFEAcA8HRnwsRsOS1xWgKz=_XCuRq4CdF9g881Bqh3REbFHmCg@mail.gmail.com>
-Subject: Re: [PATCH] hw/audio/gus: Fix registers 32-bit access
-To: Allan Peramaki <aperamak@pp1.inet.fi>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+Date: Thu, 18 Jun 2020 11:14:48 +0100
+Message-ID: <CAFEAcA--iXsUZcKKriV7=1w5f3vC68PL8_GPG9ygLEfj6RWjjQ@mail.gmail.com>
+Subject: Re: [PATCH V5] util/oslib-posix : qemu_init_exec_dir implementation
+ for Mac
+To: David CARLIER <devnexen@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
  envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
@@ -74,34 +72,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 09:14:07 -0000
+X-List-Received-Date: Thu, 18 Jun 2020 10:15:03 -0000
 
-On Wed, 17 Jun 2020 at 23:26, Allan Peramaki <aperamak@pp1.inet.fi> wrote:
+On Tue, 16 Jun 2020 at 19:40, David CARLIER <devnexen@gmail.com> wrote:
 >
-> On 17/06/2020 23:23, Peter Maydell wrote:
-> >
-> > This patch is quite difficult to read because it mixes some
-> > whitespace only changes with some actual changes of
-> > behaviour.
+> From 3025a0ce3fdf7d3559fc35a52c659f635f5c750c Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Tue, 26 May 2020 21:35:27 +0100
+> Subject: [PATCH] util/oslib-posix : qemu_init_exec_dir implementation for Mac
 >
-> Sorry about that. I had to put some whitespace in the two lines I
-> modified because of checkpatch.pl, but then the nearby lines would have
-> had inconsistent style if left unmodified. On the other hand, QEMU wiki
-> said it is ok to fix style issues in the immediate area.
-
-Thanks for the explanation.
-
-Yeah, we usually allow that (largely with the goal of "make
-the changes that keep checkpatch from complaining about a patch").
-I think the changes here just ended up a bit more lost in the
-style fixes than they would for some cases (eg if the style
-fixup is just "add braces to an if"). One approach if the
-style-fixups swamp the actual content is to split into two,
-so patch 1 is purely style fixups and patch 2 the bugfix
-(or the other way round); but it's certainly not worth rerolling
-this patch just for that.
+> Using dyld API to get the full path of the current process.
+>
+> Signed-off-by: David Carlier <devnexen@gmail.com>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+Thanks for working through the code review process with us.
+Since we don't have anything else OSX relevant at the moment
+I'll put this into the tree via my target-arm branch just
+for convenience's sake (should make it in within a week or so).
+
+thanks
 -- PMM
 
