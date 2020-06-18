@@ -1,69 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jlqWf-0007db-Oa
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 05:08:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41478)
+	id 1jlqca-0002Ha-QN
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 05:14:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jlqWe-0007dS-NK
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:08:00 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:35265
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jlqWc-0007XM-Qj
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:08:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592471278;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7PjcsTXgEpCzfHvcxlXI32mgAbc/s2cRpOZloAsQV0w=;
- b=YDDS0VZxFhbKRD4TJPOjfZ9rnxwFBznxV139EI4A2xj4cmM1IHZDOmnx7lQku+xO/Z1jt/
- ShstOcElIla0AC3pXg0AOBR+M9UAsMzLM5Y5MTdOI8Rf+DR1LptSnK6frBeejSJtBjWdwD
- PJIxtEnJvEQmEUoYPu06ZHvCoGkdvzg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-VYe5Otp3N2ezOXRGdvRBag-1; Thu, 18 Jun 2020 05:07:50 -0400
-X-MC-Unique: VYe5Otp3N2ezOXRGdvRBag-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF3D7100CCC2;
- Thu, 18 Jun 2020 09:07:48 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 51CED60CD0;
- Thu, 18 Jun 2020 09:07:44 +0000 (UTC)
-Date: Thu, 18 Jun 2020 10:07:41 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
-Message-ID: <20200618090741.GC671599@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
- <20200618073124.GA1956319@stefanha-x1.localdomain>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlqcZ-0002Gk-7w
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:14:07 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36631)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlqcX-0000ND-Hs
+ for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 05:14:06 -0400
+Received: by mail-oi1-x242.google.com with SMTP id a137so4445497oii.3
+ for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 02:14:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MKQfGqhD+JTdrYQIG7Z7vR4kXfnefAbzMu1XSkQrlu8=;
+ b=l5IdrC3VErnffIzCszP/zPBt7izfzrbiKKppvPdhyq9P6BWd+7fNoN46l8H8JJk+ps
+ he9b/Ss9+/o0XNDxuoSyc8+2wtWdn18ZCnZH9PsBgqxY4b/adSKt6zpqu7wUdCnqFVNu
+ RR+ebj2y46UoWtVFeAQUsTtxMU5KryGJ6CkX+/MClYvTLQdiN6x7i4/cgyOqgqJfv8F5
+ 6j3CewR/rZflZBpPF4Z2M5nCKE4fbcBBh6m6b+V5A0fypR7MHL+dWpix1zbjBVSXVOyf
+ Y8FKnqAoYdD/hkslXSOxhfAj6/EL7WqXsPmJ7bKZdG6eoVdk6qt4ggxb+BU7tv+3V9a9
+ eBZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MKQfGqhD+JTdrYQIG7Z7vR4kXfnefAbzMu1XSkQrlu8=;
+ b=aWVbMwMAGPLE2gY91O307oPOVK8a0Gj1iHKfGVgnOrhr/g1QGAO6/lUoRZRDrz2Vj4
+ a84ACIoRAyDsG7YVxF18kWhP/wPk9O6UdeQtKifBuEO4IIeDH83TF6IB1jigJ7Sgkj+2
+ jT+odd+lTs/wdiW1wunKFdHdztOgb37zpc+ZBDlXbFq5khAatJOR3F4lmAVmCK7rzq+C
+ O3ohHUD4MACZDnvA9b/izaPvBsG7qE0vvi0pEiLYld4PEASKAOIndqLJc+z512r092jx
+ 8o73DrWhWYqVY/G6nx7q6HUBcovh+zZ4ixtaLIER6NXYeCRzbcESLqwvLfvGZ72FM6QZ
+ OXzQ==
+X-Gm-Message-State: AOAM531/Z3GSMXL29WokPz8XN5d9+oiFcapAQyd8Ww5INKRJ0fprovpE
+ vMX+BN6ifO0Ez1uOIebF9/vR9bbzzZw/PvSwZM2Rgg==
+X-Google-Smtp-Source: ABdhPJxRvpjWIOiAEfLcXIkW8HsAmf02rz5qSopnpXm5MxkHSWWVL+R/sz7KndE9BzuBdFtH4xKv6UNVz1xRMqVGQtQ=
+X-Received: by 2002:aca:568c:: with SMTP id k134mr1993334oib.48.1592471644284; 
+ Thu, 18 Jun 2020 02:14:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200618073124.GA1956319@stefanha-x1.localdomain>
-User-Agent: Mutt/1.14.0 (2020-05-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/18 01:32:18
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+References: <20200615201757.16868-1-aperamak@pp1.inet.fi>
+ <CAFEAcA-eKboVf3uk4iY_A9_uQ=HnGyic4fzbzJhv1gH2V+TMVw@mail.gmail.com>
+ <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
+In-Reply-To: <87e628f4-6c0e-c4a2-daba-57cb1e508b77@pp1.inet.fi>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 18 Jun 2020 10:13:53 +0100
+Message-ID: <CAFEAcA8HRnwsRsOS1xWgKz=_XCuRq4CdF9g881Bqh3REbFHmCg@mail.gmail.com>
+Subject: Re: [PATCH] hw/audio/gus: Fix registers 32-bit access
+To: Allan Peramaki <aperamak@pp1.inet.fi>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,88 +74,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 09:08:00 -0000
+X-List-Received-Date: Thu, 18 Jun 2020 09:14:07 -0000
 
-On Thu, Jun 18, 2020 at 08:31:24AM +0100, Stefan Hajnoczi wrote:
-> On Wed, Jun 17, 2020 at 03:36:29PM +0200, BALATON Zoltan wrote:
-> > Add a backend that is the same as the log backend but omits the
-> > process id and timestamp so logs are easier to read and diff-able.
-> > 
-> > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> > ---
-> >  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++++++++
-> >  1 file changed, 48 insertions(+)
-> >  create mode 100644 scripts/tracetool/backend/plainlog.py
-> > 
-> > diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/tracetool/backend/plainlog.py
-> > new file mode 100644
-> > index 0000000000..40bbfa6d76
-> > --- /dev/null
-> > +++ b/scripts/tracetool/backend/plainlog.py
-> > @@ -0,0 +1,48 @@
-> > +# -*- coding: utf-8 -*-
-> > +
-> > +"""
-> > +Stderr built-in backend, plain log without proc ID and time.
-> > +"""
-> > +
-> > +__author__     = "Llu????s Vilanova <vilanova@ac.upc.edu>"
-> > +__copyright__  = "Copyright 2012-2017, Llu????s Vilanova <vilanova@ac.upc.edu>"
-> 
-> There is a Unicode issue here, Lluís' name is not printed correctly.
-> 
-> > +__license__    = "GPL version 2 or (at your option) any later version"
-> > +
-> > +__maintainer__ = "Stefan Hajnoczi"
-> > +__email__      = "stefanha@linux.vnet.ibm.com"
-> > +
-> > +
-> > +from tracetool import out
-> > +
-> > +
-> > +PUBLIC = True
-> > +
-> > +
-> > +def generate_h_begin(events, group):
-> > +    out('#include "qemu/log-for-trace.h"',
-> > +        '')
-> > +
-> > +
-> > +def generate_h(event, group):
-> > +    argnames = ", ".join(event.args.names())
-> > +    if len(event.args) > 0:
-> > +        argnames = ", " + argnames
-> > +
-> > +    if "vcpu" in event.properties:
-> > +        # already checked on the generic format code
-> > +        cond = "true"
-> > +    else:
-> > +        cond = "trace_event_get_state(%s)" % ("TRACE_" + event.name.upper())
-> > +
-> > +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
-> > +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s);',
-> > +        '    }',
-> > +        cond=cond,
-> > +        name=event.name,
-> > +        fmt=event.fmt.rstrip("\n"),
-> > +        argnames=argnames)
-> 
-> It is not necessary to introduce a new backend. There could be an option
-> that controls whether or not the timestamp/tid is printed. For example,
-> -trace timestamp=off or maybe the timestmap/tid can be integrated into
-> qemu_log() itself so that it's used more consistently and a -d timestamp
-> option enables it.
+On Wed, 17 Jun 2020 at 23:26, Allan Peramaki <aperamak@pp1.inet.fi> wrote:
+>
+> On 17/06/2020 23:23, Peter Maydell wrote:
+> >
+> > This patch is quite difficult to read because it mixes some
+> > whitespace only changes with some actual changes of
+> > behaviour.
+>
+> Sorry about that. I had to put some whitespace in the two lines I
+> modified because of checkpatch.pl, but then the nearby lines would have
+> had inconsistent style if left unmodified. On the other hand, QEMU wiki
+> said it is ok to fix style issues in the immediate area.
 
-QEMU already has a "-msg timestamp=on|off" option that controls whether
-error reports on stderr get a timestamp. I think it is probably reasonable
-for this existing option to apply to anything QEMU prints to stdout/err,
-and thus we could wire it up for qemu_log().
+Thanks for the explanation.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Yeah, we usually allow that (largely with the goal of "make
+the changes that keep checkpatch from complaining about a patch").
+I think the changes here just ended up a bit more lost in the
+style fixes than they would for some cases (eg if the style
+fixup is just "add braces to an if"). One approach if the
+style-fixups swamp the actual content is to split into two,
+so patch 1 is purely style fixups and patch 2 the bugfix
+(or the other way round); but it's certainly not worth rerolling
+this patch just for that.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+-- PMM
 
