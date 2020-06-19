@@ -1,66 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jm4EY-0000Yd-Ob
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2020 19:46:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43608)
+	id 1jmGKf-0002FS-PB
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jun 2020 08:41:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jm4EX-0000UV-1i
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 19:46:13 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:53705)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jmGKe-0002Dg-6s
+ for qemu-trivial@nongnu.org; Fri, 19 Jun 2020 08:41:20 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41206)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jm4EU-0003rn-Ma
- for qemu-trivial@nongnu.org; Thu, 18 Jun 2020 19:46:12 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id i12so3299995pju.3
- for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2020 16:46:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jmGKc-0005P5-FD
+ for qemu-trivial@nongnu.org; Fri, 19 Jun 2020 08:41:19 -0400
+Received: by mail-ot1-x344.google.com with SMTP id k15so7149379otp.8
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jun 2020 05:41:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:cc:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=uLtkQnH7DuuSCEmEDthGipcO+ld6NjQx6IMKmRnCHbI=;
- b=IL+yCckYvyuMAMKhWiMCibrIY6t8miA1xyXS+tAcib1gwFiCuDiBvMSskJBU6n/X/P
- VWijBzePU4ZNYN0WHLCMR0R+Q6+v0m/ybSg7p9XF2B/0TSkjKSwbIFXXPMw1Tq3Xxw0H
- +2bUR8VGRxDal1iqDLIyH+D67A+gp2nb64uIipd1M9yAQwEIEnGWSd9WeisndqHIzsnA
- NrfmvGnxxQS8PGeOk/wmg1SQrdBNZnjKBZWC6SbdIdymA90p/AaMq6Ny1TzetiZJHqs1
- v1sX8n3q1j9OwWQu2YDPwIVx1AnW8F0pzyckmq3NNA2NHh8DGaeV8Ec8r7YhZme0n0UW
- AbAA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8FgOloYroh81hNXQQf34Zmg1+3Jofiehb+dLqymRoUY=;
+ b=O/zdCdgSLJt7ZNMitSI02DaND9GeqR7Q3ZuusmJVSY2VFbx4e8fVPdd9Di6FjNJlbj
+ HFfTn7ZSsa7PnVwzwhZuLGgCYTSK8/D7ATYIxhQx6ohHbJQGf7sDI6OCtuyKLf/FQJSo
+ 93zrlQiTrJn5fcSB7KLOIYqZ6zQQg/BNyw7YnJDWt1CDprQa+ceLrrup6J52w+4cQQ1x
+ 1NUna8eSbBfdWvN7gk6vpNQH+rLUDiLPJT+YYpaTCMr70X3Dpn1s7YwYJSRl/dKTtTU2
+ BsJLtlYSDo6ZCtmHzUsQw5YvC20MhVFdj0pO1Bb2LEjFqp/veBB63seYy/19pOd4d7Y9
+ Uzow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:cc:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=uLtkQnH7DuuSCEmEDthGipcO+ld6NjQx6IMKmRnCHbI=;
- b=bL/XFzyyDZZQYKkz6s2dTQPeF68TdTcaX/X1AunSxjox4Vse/8J1yf89jNnZvqZ1Gn
- tWYAfPNTAWx//YVtc2UU2KxFRjUH6eVHSGATSgmGyN22/z1JZIu4Tg51TIZ86/bNBqlw
- 4DFm38pfLvtDT6+uNA0n4NSo8IGFRn+dZnrnmc64tYmWBzgRQ+0GDZcLYQlGHMSwr0QW
- iWrOR2v9dsC1Zmen+MtSsUBpCM3yHtxmiVDWqDtp6jobS2t1klRl9uqeUUkQ9qf41w1G
- N6hqdSI925rhUcHbSn987VZr171UtqNTqkCtbXGevVh9a0ILehtvO3AuzbLgkQwjcAQ8
- sg7A==
-X-Gm-Message-State: AOAM533JgkUFrqAhy0Cs+orsCfVoOBZKkT2IjFTJOVFoC04Y+Sluq3if
- iPdwHXyrDK1vt61xLAYPYi65wxntZCw=
-X-Google-Smtp-Source: ABdhPJz5BgbxrlKRruXF84WW+rQTnYajbeoq0L2XkYTfAAZTVxynePGofR7VreypzULQNdCWXP0mLA==
-X-Received: by 2002:a17:902:222:: with SMTP id 31mr5813587plc.67.1592523968754; 
- Thu, 18 Jun 2020 16:46:08 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id f29sm3649440pgf.63.2020.06.18.16.46.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Jun 2020 16:46:08 -0700 (PDT)
-Subject: Re: [PATCH 5/6] fix the prototype of muls64/mulu64
-To: Lijun Pan <ljp@linux.ibm.com>, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-References: <20200613042029.22321-1-ljp@linux.ibm.com>
- <20200613042029.22321-6-ljp@linux.ibm.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-trivial <qemu-trivial@nongnu.org>
-Message-ID: <e9e01473-251e-51ec-8f72-72ddd1a9ab2e@linaro.org>
-Date: Thu, 18 Jun 2020 16:46:06 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8FgOloYroh81hNXQQf34Zmg1+3Jofiehb+dLqymRoUY=;
+ b=POH04h7R/ptElkNLwPjlW5SiJdve08cUOI0BzG6J2t/TG8S6xfPoFR2ZYfQjE/QbMw
+ r9DsBwpqhS/gKp9oQ1IC0mwDAOLS0M9NlIu6OFXOTlZwFU9K+hoDgxCkbUwZWuAiC/5x
+ kZfUPdYhym+djn7xHCdF0LZP0YKTMdAzvKSaU4d96evgyQqJ+o9x4RpzBOWKgG4RD7pg
+ 4Wpm05Q7FZWGVORQoQL6+Ox7MbWkTkaVouKRSwhqlZu64bak6OfLeVwRiM48st8q7f+6
+ FIptz3tSeMoLJ6IMu6dy51FojEDYE72B9gv1hEECHy/1myQYsPx5bM665DQq/r+WnsmR
+ h6Yw==
+X-Gm-Message-State: AOAM530oAi81udqQL56ergG3rpaFLbd0MKw/gM46NCxgYEQjj5RGGtYu
+ Z2CcjncFmL5NipALF54Z8WIuD423HffFPvb1juRbbw==
+X-Google-Smtp-Source: ABdhPJyfNUeY8MWsrQVmvWsMzjHZGnOSRvocsxg6bndRuz3PJ2+PuvbQPN51tjl147eA5bGPdtW64Y5NlYF4uUaPPwE=
+X-Received: by 2002:a05:6830:8d:: with SMTP id
+ a13mr2787032oto.91.1592570477338; 
+ Fri, 19 Jun 2020 05:41:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200613042029.22321-6-ljp@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+References: <20200618114129.5636-1-wentong.wu@intel.com>
+ <CAFEAcA9-HH44cXohDGAVeidN48n8LgDEkhbnmcnqKVTsEN=hOg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9-HH44cXohDGAVeidN48n8LgDEkhbnmcnqKVTsEN=hOg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Jun 2020 13:41:06 +0100
+Message-ID: <CAFEAcA_FQy+hMkGf-gkgm=AEBk3HS1R0WT0maQ83fHw6M0WPRw@mail.gmail.com>
+Subject: Re: [PATCH] target/nios2: Use gen_io_start/end around wrctl
+ instruction.
+To: wentongw <wentong.wu@intel.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -82,20 +76,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2020 23:46:13 -0000
+X-List-Received-Date: Fri, 19 Jun 2020 12:41:20 -0000
 
-On 6/12/20 9:20 PM, Lijun Pan wrote:
-> The prototypes of muls64/mulu64 in host-utils.h should match the
-> definitions in host-utils.c
-> 
-> Signed-off-by: Lijun Pan <ljp@linux.ibm.com>
-> ---
->  include/qemu/host-utils.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Thu, 18 Jun 2020 at 18:31, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 18 Jun 2020 at 04:50, wentongw <wentong.wu@intel.com> wrote:
+> >
+> > From: Wentong Wu <wentong.wu@intel.com>
+> >
+> > wrctl instruction on nios2 target will cause checking cpu interrupt,
+> > but tcg_handle_interrupt() will call cpu_abort() if the CPU gets an
+> > interrupt while it's not in a 'can do IO' state, so around wrctl
+> > instruction add gen_io_start/end.
+> >
+> > Signed-off-by: Wentong Wu <wentong.wu@intel.com>
+> > ---
+> >  target/nios2/translate.c | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> >
+> > diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+> > index e17656e6..deaefcaf 100644
+> > --- a/target/nios2/translate.c
+> > +++ b/target/nios2/translate.c
+> > @@ -32,6 +32,7 @@
+> >  #include "exec/cpu_ldst.h"
+> >  #include "exec/translator.h"
+> >  #include "qemu/qemu-print.h"
+> > +#include "exec/gen-icount.h"
+> >
+> >  /* is_jmp field values */
+> >  #define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
+> > @@ -518,7 +519,13 @@ static void wrctl(DisasContext *dc, uint32_t code, uint32_t flags)
+> >      /* If interrupts were enabled using WRCTL, trigger them. */
+> >  #if !defined(CONFIG_USER_ONLY)
+> >      if ((instr.imm5 + CR_BASE) == CR_STATUS) {
+> > +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
+> > +            gen_io_start();
+> > +        }
+> >          gen_helper_check_interrupts(dc->cpu_env);
+> > +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
+> > +            gen_io_end();
+> > +        }
+>
+> You also need to end the TB, which we should do whether
+> we're using icount or not. This is awkward because nios2 has
+> not correctly implemented the DISAS_UPDATE that is the right
+> way to do that.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-CC: qemu-trivial.
+After some further discussion with other maintainers abotu
+the gen_io_start/gen_io_end semantics, it turns out that
+I was wrong about the need for gen_io_end -- if you are
+going to end the TB after the I/O instruction (which you are
+in this case) then you do not need the gen_io_end() call,
+it is handled automatically for you by common code. So
+you can drop that bit from the next version of this patch.
 
+Sorry for the confusion.
 
-r~
+thanks
+-- PMM
 
