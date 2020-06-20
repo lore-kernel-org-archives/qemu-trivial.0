@@ -1,60 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jmGKf-0002FS-PB
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jun 2020 08:41:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36002)
+	id 1jmhUw-0007jn-Mw
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Jun 2020 13:41:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jmGKe-0002Dg-6s
- for qemu-trivial@nongnu.org; Fri, 19 Jun 2020 08:41:20 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41206)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jmhUv-0007jg-Qu
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2020 13:41:45 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:42941)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jmGKc-0005P5-FD
- for qemu-trivial@nongnu.org; Fri, 19 Jun 2020 08:41:19 -0400
-Received: by mail-ot1-x344.google.com with SMTP id k15so7149379otp.8
- for <qemu-trivial@nongnu.org>; Fri, 19 Jun 2020 05:41:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jmhUu-0006ft-6W
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2020 13:41:45 -0400
+Received: by mail-pf1-x442.google.com with SMTP id b5so6112280pfp.9
+ for <qemu-trivial@nongnu.org>; Sat, 20 Jun 2020 10:41:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8FgOloYroh81hNXQQf34Zmg1+3Jofiehb+dLqymRoUY=;
- b=O/zdCdgSLJt7ZNMitSI02DaND9GeqR7Q3ZuusmJVSY2VFbx4e8fVPdd9Di6FjNJlbj
- HFfTn7ZSsa7PnVwzwhZuLGgCYTSK8/D7ATYIxhQx6ohHbJQGf7sDI6OCtuyKLf/FQJSo
- 93zrlQiTrJn5fcSB7KLOIYqZ6zQQg/BNyw7YnJDWt1CDprQa+ceLrrup6J52w+4cQQ1x
- 1NUna8eSbBfdWvN7gk6vpNQH+rLUDiLPJT+YYpaTCMr70X3Dpn1s7YwYJSRl/dKTtTU2
- BsJLtlYSDo6ZCtmHzUsQw5YvC20MhVFdj0pO1Bb2LEjFqp/veBB63seYy/19pOd4d7Y9
- Uzow==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6wXKkdIPwitC7Ac3XbMWhpghghhITlklPMIrHwCSjEg=;
+ b=oPjrwBjX8EH5Qo9fBaaD4SOpb6M6vBbgsXm5OD0PaIgFv/fBO08MW1DwhMQHKBl0IS
+ OErZEvlrC4gZxEXf/0rz21ayr/1QffEf5NdaMftaJYZEst9T40aK3zH4n9geuMZnbL9j
+ suwNgVDSLj3WI/id2O2UVbNfkbnJoxB3lGAbghINe2cgn2Ldabi1vjAygD8tkpYND6oO
+ +Cqs16hvJWtHUiZfHwmiE4ylz9K1rpVqc8YC38dAbGyCAUgtpzHT26Elyjs3Zok1DUVl
+ W0TsMJHQ7IEaXA1hyW1c14c/f/QQbKP5z7YHpcbShLhVuzFGMr0u8SETeiUG7X5tISFH
+ ewMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8FgOloYroh81hNXQQf34Zmg1+3Jofiehb+dLqymRoUY=;
- b=POH04h7R/ptElkNLwPjlW5SiJdve08cUOI0BzG6J2t/TG8S6xfPoFR2ZYfQjE/QbMw
- r9DsBwpqhS/gKp9oQ1IC0mwDAOLS0M9NlIu6OFXOTlZwFU9K+hoDgxCkbUwZWuAiC/5x
- kZfUPdYhym+djn7xHCdF0LZP0YKTMdAzvKSaU4d96evgyQqJ+o9x4RpzBOWKgG4RD7pg
- 4Wpm05Q7FZWGVORQoQL6+Ox7MbWkTkaVouKRSwhqlZu64bak6OfLeVwRiM48st8q7f+6
- FIptz3tSeMoLJ6IMu6dy51FojEDYE72B9gv1hEECHy/1myQYsPx5bM665DQq/r+WnsmR
- h6Yw==
-X-Gm-Message-State: AOAM530oAi81udqQL56ergG3rpaFLbd0MKw/gM46NCxgYEQjj5RGGtYu
- Z2CcjncFmL5NipALF54Z8WIuD423HffFPvb1juRbbw==
-X-Google-Smtp-Source: ABdhPJyfNUeY8MWsrQVmvWsMzjHZGnOSRvocsxg6bndRuz3PJ2+PuvbQPN51tjl147eA5bGPdtW64Y5NlYF4uUaPPwE=
-X-Received: by 2002:a05:6830:8d:: with SMTP id
- a13mr2787032oto.91.1592570477338; 
- Fri, 19 Jun 2020 05:41:17 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6wXKkdIPwitC7Ac3XbMWhpghghhITlklPMIrHwCSjEg=;
+ b=prxw9SnNKQSpFUptFnRf15/QCXtAgtDCOtRZhTUg9rwCnpE5wT6PLjane4MKZSOrUv
+ G0UMWDtRBT+akgVoohTPSsw2eOX9xCwzhKNI/c16aHdszHOVGN33Nc+Ap3262KlYt4Vr
+ wEhAQQFPFAYUi7gZ7WohsCbwWHnGX5zo1v3eYN9a1WVOvOPcLFCOVpAacbPGZf9IN6xf
+ n0JGHEmQCShQ5+pOA8gmQ3HcKCwUbV8JEJjWU93MV2JPb6VnDBG9sTDgJ4VdRnu6F5tL
+ ye+LmkWQSjcsOTT/4RXoxZVI+VTEVI5kq5rV12YIaWYtQ63ya8y9OuB27B+1idLazdzT
+ YvNQ==
+X-Gm-Message-State: AOAM533UiBNc2+VM38M6EpZqwBUhkH0Uu5lSwzak2Qzh2KSZruPuvRTR
+ rjKdAGmUUHnkg9GqtdnjwTpkyQ==
+X-Google-Smtp-Source: ABdhPJy4+drdtiKYXX6CQkQ9bD4/XhkTyNYTeRiRF88JbgVysqSKatIqt8fTMeMGw9K7+kw323DODA==
+X-Received: by 2002:a63:9247:: with SMTP id s7mr7377074pgn.355.1592674902597; 
+ Sat, 20 Jun 2020 10:41:42 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id a7sm8738009pjd.2.2020.06.20.10.41.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 20 Jun 2020 10:41:41 -0700 (PDT)
+Subject: Re: [PATCH v4 2/7] MAINTAINERS: Add an entry for common Renesas
+ peripherals
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20200611114317.13044-1-f4bug@amsat.org>
+ <20200611114317.13044-3-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ac279de2-56b8-5e39-ef3f-3f26f1e0029d@linaro.org>
+Date: Sat, 20 Jun 2020 10:41:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-References: <20200618114129.5636-1-wentong.wu@intel.com>
- <CAFEAcA9-HH44cXohDGAVeidN48n8LgDEkhbnmcnqKVTsEN=hOg@mail.gmail.com>
-In-Reply-To: <CAFEAcA9-HH44cXohDGAVeidN48n8LgDEkhbnmcnqKVTsEN=hOg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Jun 2020 13:41:06 +0100
-Message-ID: <CAFEAcA_FQy+hMkGf-gkgm=AEBk3HS1R0WT0maQ83fHw6M0WPRw@mail.gmail.com>
-Subject: Re: [PATCH] target/nios2: Use gen_io_start/end around wrctl
- instruction.
-To: wentongw <wentong.wu@intel.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+In-Reply-To: <20200611114317.13044-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -76,63 +88,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jun 2020 12:41:20 -0000
+X-List-Received-Date: Sat, 20 Jun 2020 17:41:46 -0000
 
-On Thu, 18 Jun 2020 at 18:31, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Thu, 18 Jun 2020 at 04:50, wentongw <wentong.wu@intel.com> wrote:
-> >
-> > From: Wentong Wu <wentong.wu@intel.com>
-> >
-> > wrctl instruction on nios2 target will cause checking cpu interrupt,
-> > but tcg_handle_interrupt() will call cpu_abort() if the CPU gets an
-> > interrupt while it's not in a 'can do IO' state, so around wrctl
-> > instruction add gen_io_start/end.
-> >
-> > Signed-off-by: Wentong Wu <wentong.wu@intel.com>
-> > ---
-> >  target/nios2/translate.c | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> >
-> > diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-> > index e17656e6..deaefcaf 100644
-> > --- a/target/nios2/translate.c
-> > +++ b/target/nios2/translate.c
-> > @@ -32,6 +32,7 @@
-> >  #include "exec/cpu_ldst.h"
-> >  #include "exec/translator.h"
-> >  #include "qemu/qemu-print.h"
-> > +#include "exec/gen-icount.h"
-> >
-> >  /* is_jmp field values */
-> >  #define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-> > @@ -518,7 +519,13 @@ static void wrctl(DisasContext *dc, uint32_t code, uint32_t flags)
-> >      /* If interrupts were enabled using WRCTL, trigger them. */
-> >  #if !defined(CONFIG_USER_ONLY)
-> >      if ((instr.imm5 + CR_BASE) == CR_STATUS) {
-> > +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
-> > +            gen_io_start();
-> > +        }
-> >          gen_helper_check_interrupts(dc->cpu_env);
-> > +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
-> > +            gen_io_end();
-> > +        }
->
-> You also need to end the TB, which we should do whether
-> we're using icount or not. This is awkward because nios2 has
-> not correctly implemented the DISAS_UPDATE that is the right
-> way to do that.
+On 6/11/20 4:43 AM, Philippe Mathieu-Daudé wrote:
+> Renesas peripherals are common to SH4/RX based MCUs. Their
+> datasheets share common sections. It makes sense to maintain
+> them altogether.
+> Add the uncovered UART SCI peripheral.
+> The current names are misleading (see the 'sh_' prefix).
+> In another series we will remove these peripherals with
+> the 'renesas_' prefix. Out of the scope of this change in
+> MAINTAINERS.
+> 
+> Cc: Magnus Damm <magnus.damm@gmail.com>
+> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
 
-After some further discussion with other maintainers abotu
-the gen_io_start/gen_io_end semantics, it turns out that
-I was wrong about the need for gen_io_end -- if you are
-going to end the TB after the I/O instruction (which you are
-in this case) then you do not need the gen_io_end() call,
-it is handled automatically for you by common code. So
-you can drop that bit from the next version of this patch.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Sorry for the confusion.
 
-thanks
--- PMM
+r~
 
