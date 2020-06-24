@@ -1,102 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jo2Gg-0004ul-Ip
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2020 06:04:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44240)
+	id 1jo3A3-0005Xj-AV
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2020 07:01:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jo2Ge-0004qe-MY
- for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 06:04:32 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54279
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jo3A1-0005Ua-LL
+ for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 07:01:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55585
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jo2Gc-0004ac-Gp
- for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 06:04:32 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jo39y-0005fE-Ei
+ for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 07:01:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592993069;
+ s=mimecast20190719; t=1592996501;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DrlLKbmx0SnzBtD9RdfOsTeO6TB+WXsuU6tuMoJeYkU=;
- b=Q/78Pne3wjyqSnfJNyBU4+X0eNywwKINtnH6f7LgBNQR/aYbVy76MmiVABTQPP/UFWXfi3
- lgSX8Eq2qURnpUc30XzaLmgBoiWkarNpc+hxu3QtKov3hE0syhlvxXD5XKZrMOKd5x0oOA
- 9JtgVCjbuHFRq59CKbvDOBM1Sa9DGXU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-111-niQMs2XKM2CyqklqAeMe5g-1; Wed, 24 Jun 2020 06:04:28 -0400
-X-MC-Unique: niQMs2XKM2CyqklqAeMe5g-1
-Received: by mail-wm1-f69.google.com with SMTP id c66so2169025wma.8
- for <qemu-trivial@nongnu.org>; Wed, 24 Jun 2020 03:04:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=DrlLKbmx0SnzBtD9RdfOsTeO6TB+WXsuU6tuMoJeYkU=;
- b=nzDe9MCql2c1ClDHfob/qGjBrzj+r75aQfwmuQNBYeVBFbEZ8xzMldUVA/ic59d3n2
- oxH9c9ESwOhAlEwxS5IX4VEppJ+xPdOgJ8Q2Sk5LC0iN+D+kxnXaH8rGZMa9EVVO7gmE
- vpnhC4ryfqvjPvi143GH3WTCuG81q6Qqa6F6DuLbWUeCiQEi9Q3gOD08Q0GfrcIbFhuP
- S0L5dXVhHd8uPPQNY3vLVRHMspm0w4sydcM1h4kZK51nx2KyXpIHMnVuEe6oxzr9PRbn
- oYzGtcHRei+V5U4etua1d/GlcEKykHkipUK25g13tl7XS/3dsSO0An6pl5V27eQgd4z9
- YMIQ==
-X-Gm-Message-State: AOAM530NIGCtPEx/oCypOtUaBGWFzkswKIQXaz6f95L7OxQYzUDSx3ba
- /oKIdQJbewfiAVFEWUbx56vjJHcnulVCrwq+B02IfunCSy/cGluXALtMjLyAKsLxBEDbhWS07FA
- qBbSSr87WWCgq2PdObA==
-X-Received: by 2002:a1c:1984:: with SMTP id 126mr27376564wmz.147.1592993067254; 
- Wed, 24 Jun 2020 03:04:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlVOPmttgWPw9spC6LPocJyrnWkQBwuo9Z7V8xyGKgsNe6Qt5HyDEYHqaWo2U8egvU3QNmFw==
-X-Received: by 2002:a1c:1984:: with SMTP id 126mr27376547wmz.147.1592993067072; 
- Wed, 24 Jun 2020 03:04:27 -0700 (PDT)
-Received: from [192.168.1.40] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id v20sm27001002wrb.51.2020.06.24.03.04.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jun 2020 03:04:26 -0700 (PDT)
-Subject: Re: [PATCH] MAINTAINERS: Cover pip requirements.txt
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20200605163748.15345-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <d15e1a9a-4cf1-356b-bf51-bda47a2840e2@redhat.com>
-Date: Wed, 24 Jun 2020 12:04:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ in-reply-to:in-reply-to:references:references;
+ bh=KqlQzb/uEcHnBTtzd02eVzWV96pr+C0dJc6GQbPM9v4=;
+ b=QCoXHfn9dJR7uC9CluWdSc4clQ+J73sbOX2ySWxGX+Bwo7ZgYVxHLY9CGkHBnqQq/vC437
+ 8VAYXgk+UbvcxKaMdwyEV/1zqVGgicr0x69vgIyKGWftxHDsLjcsx+OZu+PHur5rp9fGba
+ q3CJLJ6CCc8A3JSyheeV1R3WFmXA6dU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-448-q7EMX8LsN3G2uoE78kMyyg-1; Wed, 24 Jun 2020 07:01:36 -0400
+X-MC-Unique: q7EMX8LsN3G2uoE78kMyyg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 01248804001;
+ Wed, 24 Jun 2020 11:01:35 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-114-35.ams2.redhat.com [10.36.114.35])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 725197FD07;
+ Wed, 24 Jun 2020 11:01:24 +0000 (UTC)
+Subject: Re: [PATCH] hw/core/null-machine: Do not initialize unused chardev
+ backends
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200624105611.1049-1-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <bd458cb8-e005-0ea9-bbaf-bcb541bfdc89@redhat.com>
+Date: Wed, 24 Jun 2020 13:01:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200605163748.15345-1-philmd@redhat.com>
+In-Reply-To: <20200624105611.1049-1-f4bug@amsat.org>
 Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 01:59:40
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 03:27:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -117,32 +80,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2020 10:04:33 -0000
+X-List-Received-Date: Wed, 24 Jun 2020 11:01:46 -0000
 
-Cleber are you OK with this?
-
-On 6/5/20 6:37 PM, Philippe Mathieu-Daudé wrote:
-> Add an entry in 'Python scripts' to cover the requirements.txt
-> file added in commit 213137217a6 (this file contains a list of
-> Python packages used by our test suite).
+On 24/06/2020 12.56, Philippe Mathieu-Daudé wrote:
+> The MachineClass uses an inverted logic (inherited from the
+> PC machines [*]) to create the chardev backends for the default
+> devices (see commits 998bbd74b9d..aa40fc9c964 and ac33f8fad14).
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> As the none-machine doesn't have any hardware device, it is
+> pointless to initialize chardev backends. Fix by setting the
+> 'no_defaults' bits in its MachineClass.
+> 
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
+>   hw/core/null-machine.c | 5 +++++
+>   1 file changed, 5 insertions(+)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 3e7d9cb0a5..fc4148fba3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2219,6 +2219,7 @@ S: Odd fixes
->  F: python/qemu/*py
->  F: scripts/*.py
->  F: tests/*.py
-> +F: tests/requirements.txt
->  
->  Benchmark util
->  M: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
+> index cb47d9d4f8..7e693523d7 100644
+> --- a/hw/core/null-machine.c
+> +++ b/hw/core/null-machine.c
+> @@ -50,6 +50,11 @@ static void machine_none_machine_init(MachineClass *mc)
+>       mc->max_cpus = 1;
+>       mc->default_ram_size = 0;
+>       mc->default_ram_id = "ram";
+> +    mc->no_serial = 1;
+> +    mc->no_parallel = 1;
+> +    mc->no_floppy = 1;
+> +    mc->no_cdrom = 1;
+> +    mc->no_sdcard = 1;
+>   }
+>   
+>   DEFINE_MACHINE("none", machine_none_machine_init)
 > 
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
