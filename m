@@ -1,74 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jnkDQ-0008Pz-8P
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2020 10:48:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60460)
+	id 1jo0rQ-00068R-8P
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2020 04:34:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jnkDP-0008PR-Ma; Tue, 23 Jun 2020 10:47:59 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53551)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jnkDN-0005PP-VA; Tue, 23 Jun 2020 10:47:59 -0400
-Received: by mail-wm1-x344.google.com with SMTP id j18so3236152wmi.3;
- Tue, 23 Jun 2020 07:47:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=nHH/5HcJjGJrbqd+zi6VW/xh2OGjZUFq9HtreqvbFjE=;
- b=j88sNPcvKbsKR66W5xYiI3S/L1nE4Fsfg0V7zivseJ4toP3aHhJmq16CV8J+X5QJvi
- 7t1w7z3+Vvl+PdGRLiF3E0PQjD4O1JLh65f2mCHSTwlelWUNu0hS8uzBUPPnCXqshYuT
- K+a6m40zTbZLr2tgNVtxDXP1CsX6yFn4FawIl6F41vISUaVx/4fQ+0NzDbkcQgffc3M1
- 8knaAJE4Lyt2OWJ906bSH71BS/p/jjZQsTiy3f4eeCuzt7y4nkWxlN2F6hT38ui6BxfQ
- /SqmSKhDR8zGrJ1SExvAzHi8ZgZ0sXQnLsIQ2czvXrSV7l8wdWRGSgC6SpKCIFHWQmFS
- bmBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=nHH/5HcJjGJrbqd+zi6VW/xh2OGjZUFq9HtreqvbFjE=;
- b=bt8o0T5MM0gG1E+tZuG736tWHXviHOcrG0AxWUi29QN1ImWj0nA73fohd1JF+oOqSd
- 4t23wDh6wor63qQX0f+aqbsf491RvDF48ItkF3wCjdHWGVj3evY0WEVUi3w7bz67jK44
- SLjNLJU7Gt670SIh/nvxFQofqWq7KxL4fR0nsxjlbZVuvYxWYHYoNiRYDpNbnI33uuo9
- pgVh8XbGVszpvMhi2znwAp5kTGWHRVV3Qq+48o9dx7KMRSlZMkcLSiG0t9pChMR3P4q1
- /scGo+3K1WeMWwa1AKpXwckMDYiGuHG39TxbDV85pyLt3NlJIighSdCRRR8X+Um05fhF
- tjaQ==
-X-Gm-Message-State: AOAM530GrDFPArnZM1doEzf+kSagJ5Zpwcd4gS1dUIwHqPE6wnOSLWC5
- gJLbd1uNaBf0gTqMN6Oz2WQ=
-X-Google-Smtp-Source: ABdhPJwVuMWH18T8+Vr8EoiJNUY1m6sdb2K808sRWdv9zmrwmOiOsOcxsTaS52nP+PeAH4xw5/PUQQ==
-X-Received: by 2002:a1c:b007:: with SMTP id z7mr2252440wme.37.1592923676000;
- Tue, 23 Jun 2020 07:47:56 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id z1sm14432596wru.30.2020.06.23.07.47.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 07:47:54 -0700 (PDT)
-Date: Tue, 23 Jun 2020 15:47:53 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH 2/2] scripts/tracetool: Add plainlog backend
-Message-ID: <20200623144753.GR36568@stefanha-x1.localdomain>
-References: <20200617134505.9D06E7482D3@zero.eik.bme.hu>
- <20200618073124.GA1956319@stefanha-x1.localdomain>
- <20200618090741.GC671599@redhat.com>
- <20200618153516.GE1956319@stefanha-x1.localdomain>
- <20200618154323.GK671599@redhat.com>
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jo0rO-00066d-GU
+ for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 04:34:22 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:23325
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jo0rM-00086d-R5
+ for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 04:34:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592987659;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=LzNuYAfPq4hETAZ2n6TDmArzhP5CG1xLHaZKSwZLe+I=;
+ b=SOdTDff3504Tc5wgyHgPWBSIYM+vBOVae4V+VLAGvfGyewICoydRtJDzVVkF3ZJpRvNC1p
+ L0FnZZHaS+r+c4agvoLfx+fOR3vePxZCC98w+dCAbFBht30jmVahsHGqeDVFckkwKwIuim
+ ITrCSIQhvK5Yf9L3L65ghZ5tsEyEgUE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-320-U_C4V7IWMHmYwRCO8Hm0GQ-1; Wed, 24 Jun 2020 04:34:18 -0400
+X-MC-Unique: U_C4V7IWMHmYwRCO8Hm0GQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF16410059A0;
+ Wed, 24 Jun 2020 08:34:16 +0000 (UTC)
+Received: from turbo.com (ovpn-112-91.ams2.redhat.com [10.36.112.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id ED2125C3E7;
+ Wed, 24 Jun 2020 08:34:10 +0000 (UTC)
+From: Christophe de Dinechin <dinechin@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH] trivial: Remove extra character in configure help
+Date: Wed, 24 Jun 2020 10:33:37 +0200
+Message-Id: <20200624083337.912846-1-dinechin@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="X35wERi4JU/f1kly"
-Content-Disposition: inline
-In-Reply-To: <20200618154323.GK671599@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=stefanha@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=dinechin@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 00:34:35
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,141 +70,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2020 14:47:59 -0000
+X-List-Received-Date: Wed, 24 Jun 2020 08:34:22 -0000
 
+Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---X35wERi4JU/f1kly
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/configure b/configure
+index ba88fd1824..c7a6a5adfe 100755
+--- a/configure
++++ b/configure
+@@ -1787,7 +1787,7 @@ Advanced options (experts only):
+   --block-drv-ro-whitelist=L
+                            set block driver read-only whitelist
+                            (affects only QEMU, not qemu-img)
+-  --enable-trace-backends=B Set trace backend
++  --enable-trace-backends= Set trace backend
+                            Available backends: $trace_backend_list
+   --with-trace-file=NAME   Full PATH,NAME of file to store traces
+                            Default:trace-<pid>
+-- 
+2.26.2
 
-On Thu, Jun 18, 2020 at 04:43:23PM +0100, Daniel P. Berrang=E9 wrote:
-> On Thu, Jun 18, 2020 at 04:35:16PM +0100, Stefan Hajnoczi wrote:
-> > On Thu, Jun 18, 2020 at 10:07:41AM +0100, Daniel P. Berrang=E9 wrote:
-> > > On Thu, Jun 18, 2020 at 08:31:24AM +0100, Stefan Hajnoczi wrote:
-> > > > On Wed, Jun 17, 2020 at 03:36:29PM +0200, BALATON Zoltan wrote:
-> > > > > Add a backend that is the same as the log backend but omits the
-> > > > > process id and timestamp so logs are easier to read and diff-able.
-> > > > >=20
-> > > > > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> > > > > ---
-> > > > >  scripts/tracetool/backend/plainlog.py | 48 +++++++++++++++++++++=
-++++++
-> > > > >  1 file changed, 48 insertions(+)
-> > > > >  create mode 100644 scripts/tracetool/backend/plainlog.py
-> > > > >=20
-> > > > > diff --git a/scripts/tracetool/backend/plainlog.py b/scripts/trac=
-etool/backend/plainlog.py
-> > > > > new file mode 100644
-> > > > > index 0000000000..40bbfa6d76
-> > > > > --- /dev/null
-> > > > > +++ b/scripts/tracetool/backend/plainlog.py
-> > > > > @@ -0,0 +1,48 @@
-> > > > > +# -*- coding: utf-8 -*-
-> > > > > +
-> > > > > +"""
-> > > > > +Stderr built-in backend, plain log without proc ID and time.
-> > > > > +"""
-> > > > > +
-> > > > > +__author__     =3D "Llu????s Vilanova <vilanova@ac.upc.edu>"
-> > > > > +__copyright__  =3D "Copyright 2012-2017, Llu????s Vilanova <vila=
-nova@ac.upc.edu>"
-> > > >=20
-> > > > There is a Unicode issue here, Llu=EDs' name is not printed correct=
-ly.
-> > > >=20
-> > > > > +__license__    =3D "GPL version 2 or (at your option) any later =
-version"
-> > > > > +
-> > > > > +__maintainer__ =3D "Stefan Hajnoczi"
-> > > > > +__email__      =3D "stefanha@linux.vnet.ibm.com"
-> > > > > +
-> > > > > +
-> > > > > +from tracetool import out
-> > > > > +
-> > > > > +
-> > > > > +PUBLIC =3D True
-> > > > > +
-> > > > > +
-> > > > > +def generate_h_begin(events, group):
-> > > > > +    out('#include "qemu/log-for-trace.h"',
-> > > > > +        '')
-> > > > > +
-> > > > > +
-> > > > > +def generate_h(event, group):
-> > > > > +    argnames =3D ", ".join(event.args.names())
-> > > > > +    if len(event.args) > 0:
-> > > > > +        argnames =3D ", " + argnames
-> > > > > +
-> > > > > +    if "vcpu" in event.properties:
-> > > > > +        # already checked on the generic format code
-> > > > > +        cond =3D "true"
-> > > > > +    else:
-> > > > > +        cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event=
-=2Ename.upper())
-> > > > > +
-> > > > > +    out('    if (%(cond)s && qemu_loglevel_mask(LOG_TRACE)) {',
-> > > > > +        '        qemu_log("%(name)s " %(fmt)s "\\n" %(argnames)s=
-);',
-> > > > > +        '    }',
-> > > > > +        cond=3Dcond,
-> > > > > +        name=3Devent.name,
-> > > > > +        fmt=3Devent.fmt.rstrip("\n"),
-> > > > > +        argnames=3Dargnames)
-> > > >=20
-> > > > It is not necessary to introduce a new backend. There could be an o=
-ption
-> > > > that controls whether or not the timestamp/tid is printed. For exam=
-ple,
-> > > > -trace timestamp=3Doff or maybe the timestmap/tid can be integrated=
- into
-> > > > qemu_log() itself so that it's used more consistently and a -d time=
-stamp
-> > > > option enables it.
-> > >=20
-> > > QEMU already has a "-msg timestamp=3Don|off" option that controls whe=
-ther
-> > > error reports on stderr get a timestamp. I think it is probably reaso=
-nable
-> > > for this existing option to apply to anything QEMU prints to stdout/e=
-rr,
-> > > and thus we could wire it up for qemu_log().
-> >=20
-> > I thought about that but the features are somewhat unrelated.
-> >=20
-> > If we unify them, how about making the timestamp/tid apply to *all*
-> > qemu_log() output, not just tracing?
->=20
-> That's exactly what I intended.
->=20
-> Essentially if QEMU is going to add timestamps to things it writes to
-> stdout/err, then it should do that universally for all parts of the code
-> base that use stdio. This means error_report(), qemu_log(), and any
-> other places that are relevant wrt stdio.
->=20
-> Having separate timestamp on/off switches for each feature is not
-> desirable.
-
-Okay. I'll take a look at this tomorrow.
-
-Thanks!
-
-Stefan
-
---X35wERi4JU/f1kly
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl7yFhkACgkQnKSrs4Gr
-c8jScwf/Vwuncu8SvXwB9876y2Tr01ig5w19YjLirNu7pfu4TXkeIrp9sdUZ2v7v
-HYCMqMFOXVLWp6wr6kySGUDFLyIQiLBEVkoCP+XTDT4dlnnS8E6QQICVjxlIxI2X
-UEYZkT06G5XT+ICcVDgEq0KidEaqtZhFLJipd33d/9mHVvwNM6HCrm3shKmWR2CB
-J6PHLaVDk+4YjHcRMI0uF9D16HAX00qljYPqjbVJNdpihCc3JDQy1sCbREugR8kp
-/PiJE1M/htwZYNZO+2ik7eEL2Rf5gfuabxQdNJdxvifgMfSGjSNDYJCEyP5Jyd5m
-rf1nwb5aJKHCridtaj4l7WRa+aGCGQ==
-=8swd
------END PGP SIGNATURE-----
-
---X35wERi4JU/f1kly--
 
