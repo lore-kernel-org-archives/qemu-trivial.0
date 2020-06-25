@@ -1,62 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1joYH6-0002lQ-0X
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2020 16:15:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33410)
+	id 1joZEB-00059H-8y
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2020 17:16:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48756)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1joYH4-0002lA-K0
- for qemu-trivial@nongnu.org; Thu, 25 Jun 2020 16:15:06 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42831)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1joZE9-00056Z-Fx; Thu, 25 Jun 2020 17:16:09 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:38223)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1joYH2-0000nk-9z
- for qemu-trivial@nongnu.org; Thu, 25 Jun 2020 16:15:06 -0400
-Received: by mail-ot1-x343.google.com with SMTP id t6so6486834otk.9
- for <qemu-trivial@nongnu.org>; Thu, 25 Jun 2020 13:15:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=M3sfa9UB0nyQvlAY8Xm9cS8h6o6s1/TOY4XM/KOtTZM=;
- b=y7p6LH4NaZlX2U96oBq+Bqj2OGZIGLZMuyIQAfNDKjlSWF97Wd5A3OOipQBXnZQEdN
- eN6Uh7/7OdJ3TCvmoNotKWE6edZTdtKrLOKteEIbNQ2y+byWYeaC3CZjOCyv96JHtYB/
- pcvSCyFpeSDQccWxlrsukqFPilYnesGDTnFHuS2HnVWau6MMhmQh9ulow4WSladt2AqS
- +K2ccCCoLfV31kXhy4UtJdQynBA+fMNNx45JfNdFdlh7+7FK4nBrrqwhE1KdpduTXynA
- Dtg+iJgd7JYI1V8gfWX6c5MilQNrjIkn/4vtJ3IRvGSu97c6yatGE4ISz57RgHzIFlZn
- mYdg==
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1joZE7-0000Pz-IA; Thu, 25 Jun 2020 17:16:09 -0400
+Received: by mail-ej1-x644.google.com with SMTP id w16so7366737ejj.5;
+ Thu, 25 Jun 2020 14:16:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=PGwvlMhQlyiU8D8zbHhsbWvAGjd7KedoFdvGmMz3WK8=;
+ b=sQavn8WSHSXXbCg6zrFGe9HqZExsdthc6Korf7ediogwCntmGGwGeaJE1r0G4gv8vV
+ e8W3PC0T7MYLgBaRy6S4GsHWVmfLwx/Fj8NiwliKh0D4VRsn6Xnk1L3hG8QSI2ez5uKF
+ Z/wLanDnpj83pxSBk8PC7cijVRaDwX34+yeWnjiutAYHF1wYGMc4wR027UEIU6kPuxCW
+ QIhUBSh5lHeE+7ihnZTADwNrBfDfJnnRjfCvEW4SttW1BD9RAQUT0NO5XZTtEGW2Ezz3
+ 7tY95e5Y1re5yd+bwdzBVxuyuTT8Cc7dxaAbqYvEeeJvxrAermKzp1HXZw9yYO2bONkN
+ HHdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=M3sfa9UB0nyQvlAY8Xm9cS8h6o6s1/TOY4XM/KOtTZM=;
- b=ZA9agIbjz4Z0ppYymc7cV9JeEXA0wvEGTAuXTdPAMYYGqsPM6PxaSwpENIWgJ8a7pq
- y9fabOXYDql+b+k9hVV88c//W25cxniWsHf6YW0IIukJdvhOw4x/w5mgxX0KuQP6pzps
- AN2F31YFkurpf0SckNy2madJu7qcPA/tVC5A4SMqhxwOI1vzQGaueXhd8dWCQWu7JWSv
- 5ytGsiYA5D0UgyNErB8CWgaa/Nb2mFgWdYL6GNQbnfckpnV5ZcPXgRN91tM/KGIPCOg9
- Zn3XUyQkTe6tmXusOUxfMxFsZ8CtYgXIRjmzqNoh0lLeI2vs0iKzZasEhvmMoPq+AKrQ
- mnfw==
-X-Gm-Message-State: AOAM531bRSyvQwXIrw2OcQxPFd7irQtwfNrBa7o/hzfabMNU5X3Swigt
- 3XgX1ZwiM4uiDaLv5CqUbcnneu7P1UgEJaSPBPagrA==
-X-Google-Smtp-Source: ABdhPJz7V5h+G9SoUAAB2XjWzkw9nfhMNM25o+8yqpSXglJ3/ZXmgsFkfuizGfPz4lo7EdAVxypIMPP1emJhaQZn28U=
-X-Received: by 2002:a9d:67d6:: with SMTP id c22mr27111673otn.221.1593116102477; 
- Thu, 25 Jun 2020 13:15:02 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=PGwvlMhQlyiU8D8zbHhsbWvAGjd7KedoFdvGmMz3WK8=;
+ b=YDXWJh87UTFSh4wLPkRRtKLtPpuarSU4peGhOg/VkXVF0mkYIIjssKjZuT4Xmud3hw
+ a3+XlxQaiht6RpA6wwcB1ciEeui5YEfsD6RVInwguVib+6Psi9ddv8CzuMW4fFq/lcLC
+ FULBFTSZ+9kmS5MEAwoQVbHIIjJ6WEyCkNx9Hdg+/3+7XqLJLm3muzogZwm9aZbl3pQn
+ u1EIv6qKAANEY3xx6EA4+FXcdj6q4M1rJEG5ctpNNVfdPI36RJ4B6epE35Rm7F9lcGiM
+ 3e84EQijy6hHCse/zs67mmsBlF77sM8Ovzg4T8bDH5Ig6KtFgZ5UGr3WH0N9s5fxY9Uk
+ XVcg==
+X-Gm-Message-State: AOAM530AljEp1rBMIfIRwluHgPox6CcVkldFGsqI2p6DUVrBNUanXVhK
+ j6YzuB6748/5EdG4u+C3ZnRtYQkJgHQ6/1JtTzdD1zBFanE=
+X-Google-Smtp-Source: ABdhPJzTnmxl/MFTonCTTzeyMyfScl3DL2LTfUEcOs6jd7FG0Bh5QzwDDh6tKwt/gr3yjFavthXOiEcp3fE4nkWQOfw=
+X-Received: by 2002:a17:907:35c2:: with SMTP id
+ ap2mr29548096ejc.530.1593119765282; 
+ Thu, 25 Jun 2020 14:16:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqyTLP5_Jf=t8OCsMifrme0DgimM8-D=Y0RRR+779052Bg@mail.gmail.com>
-In-Reply-To: <CA+XhMqyTLP5_Jf=t8OCsMifrme0DgimM8-D=Y0RRR+779052Bg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2020 21:14:50 +0100
-Message-ID: <CAFEAcA_hSMxAFj5yNcmBKicgmbE-rSr8ih0j-z8KbjnxDmby4A@mail.gmail.com>
-Subject: Re: build: haiky system build fix
-To: David CARLIER <devnexen@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+From: David CARLIER <devnexen@gmail.com>
+Date: Thu, 25 Jun 2020 22:15:54 +0100
+Message-ID: <CA+XhMqy_bAnWm3cByobn+4LkVoAEZk3DU2=kWBcdB4m1b2Cd0g@mail.gmail.com>
+Subject: [PATCH v2] build: Haiku build fix
+To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=devnexen@gmail.com; helo=mail-ej1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -71,189 +66,227 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jun 2020 20:15:06 -0000
+X-List-Received-Date: Thu, 25 Jun 2020 21:16:09 -0000
 
-On Thu, 25 Jun 2020 at 19:37, David CARLIER <devnexen@gmail.com> wrote:
->
-> From 25adbdcdc17ef51a41759f16576901338ed8a469 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Thu, 25 Jun 2020 19:32:42 +0000
-> Subject: [PATCH] build: haiku system build fix
->
-> Most of missing features resides in the bsd library.
-> Also defining constant equivalence.
->
-> Signed-off-by: David Carlier <devnexen@gmail.com>
-> --
+From f249bb9dc67a5d96b55e8b7faef3887c39a6de2c Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Thu, 25 Jun 2020 19:32:42 +0000
+Subject: [PATCH] build: haiku system build fix
 
-Hi; thanks for this patch. I have some review comments
-below, mostly relating to better ways to implement
-the compatibility fixes.
+Most of missing features resides in the bsd library.
+Also defining constant equivalence.
 
-> diff --git a/os-posix.c b/os-posix.c
-> index 3cd52e1e70..ca07b7702d 100644
-> --- a/os-posix.c
-> +++ b/os-posix.c
-> @@ -42,6 +42,8 @@
->  #include <sys/prctl.h>
->  #endif
->
-> +#include <sys/mman.h>
+Signed-off-by: David Carlier <devnexen@gmail.com>
+---
+ configure            | 34 ++++++++++++++++++++++++++++++++--
+ include/qemu/bswap.h |  2 ++
+ include/qemu/osdep.h |  4 ++++
+ os-posix.c           |  4 ++++
+ util/Makefile.objs   |  2 +-
+ util/compatfd.c      |  2 ++
+ util/main-loop.c     |  1 +
+ util/oslib-posix.c   | 20 ++++++++++++++++++++
+ util/qemu-openpty.c  |  2 +-
+ 9 files changed, 67 insertions(+), 4 deletions(-)
 
-I think this either should not be necessary, or if it's
-fixing something the fix should be elsewhere. For
-POSIX-compatible host OSes, sys/mman.h is included
-via include/sysemu/os-posix.h which in turn is pulled in
-by include/qemu/osdep.h, which is always included by every
-C file in QEMU. I think looking at configure that Haiku
-host builds should set CONFIG_POSIX, so I would expect
-that sys/mman.h has already been included here.
+diff --git a/configure b/configure
+index ba88fd1824..43baeadf31 100755
+--- a/configure
++++ b/configure
+@@ -901,8 +901,8 @@ SunOS)
+ ;;
+ Haiku)
+   haiku="yes"
+-  QEMU_CFLAGS="-DB_USE_POSITIVE_POSIX_ERRORS $QEMU_CFLAGS"
+-  LIBS="-lposix_error_mapper -lnetwork $LIBS"
++  QEMU_CFLAGS="-DB_USE_POSITIVE_POSIX_ERRORS -D_BSD_SOURCE $QEMU_CFLAGS"
++  LIBS="-lposix_error_mapper -lnetwork -lbsd $LIBS"
+ ;;
+ Linux)
+   audio_drv_list="try-pa oss"
+@@ -2373,6 +2373,30 @@ else
+   l2tpv3=no
+ fi
 
-> +
->  /*
->   * Must set all three of these at once.
->   * Legal combinations are              unset   by name   by uid
-> @@ -339,10 +341,12 @@ int os_mlock(void)
->  {
->      int ret = 0;
->
-> +#if !defined(__HAIKU__)
->      ret = mlockall(MCL_CURRENT | MCL_FUTURE);
->      if (ret < 0) {
->          error_report("mlockall: %s", strerror(errno));
->      }
->
-> +#endif
++cat > $TMPC <<EOF
++#include <pty.h>
++int main(int argc, char *argv[]) {
++    return 0;
++}
++EOF
++if compile_prog "" "" ; then
++  pty_h=yes
++else
++  pty_h=no
++fi
++
++cat > $TMPC <<EOF
++#include <sys/mman.h>
++int main(int argc, char *argv[]) {
++    return mlockall(MCL_FUTURE);
++}
++EOF
++if compile_prog "" "" ; then
++  have_mlockall=yes
++else
++  have_mlockall=no
++fi
++
+ #########################################
+ # vhost interdependencies and host support
 
-If Haiku doesn't support an mlockall() equivalent, then the
-correct implementation of os_mlock() for it is to return
--ENOSYS -- compare the Win32 stub version in
-include/sysemu/os-win32.h.
+@@ -7758,6 +7782,12 @@ fi
+ if test "$sheepdog" = "yes" ; then
+   echo "CONFIG_SHEEPDOG=y" >> $config_host_mak
+ fi
++if test "$pty_h" = "yes" ; then
++  echo "CONFIG_PTY=y" >> $config_host_mak
++fi
++if test "$have_mlockall" = "yes" ; then
++  echo "CONFIG_MLOCKALL=y" >> $config_host_mak
++fi
+ if test "$fuzzing" = "yes" ; then
+   if test "$have_fuzzer" = "yes"; then
+     FUZZ_LDFLAGS=" -fsanitize=address,fuzzer"
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index 2a9f3fe783..1d3e4c24e4 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -8,6 +8,8 @@
+ # include <machine/bswap.h>
+ #elif defined(__FreeBSD__)
+ # include <sys/endian.h>
++#elif defined(__HAIKU__)
++# include <endian.h>
+ #elif defined(CONFIG_BYTESWAP_H)
+ # include <byteswap.h>
 
-Also, in general we prefer configure to do feature tests,
-rather than for the source code to have OS-specific ifdefs.
-So here you'd want a configure test for "does the system
-provide mlockall()?", and then the implementation would
-be guarded with CONFIG_MLOCKALL.
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index ff7c17b857..da970cf654 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -388,6 +388,10 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+ #define HAVE_CHARDEV_PARPORT 1
+ #endif
 
->      return ret;
->  }
-> diff --git a/util/compatfd.c b/util/compatfd.c
-> index c296f55d14..ee47dd8089 100644
-> --- a/util/compatfd.c
-> +++ b/util/compatfd.c
-> @@ -16,7 +16,9 @@
->  #include "qemu/osdep.h"
->  #include "qemu/thread.h"
->
-> +#if defined(CONFIG_SIGNALFD)
->  #include <sys/syscall.h>
-> +#endif
->
->  struct sigfd_compat_info
->  {
-> diff --git a/util/drm.c b/util/drm.c
-> index a23ff24538..8540578c09 100644
-> --- a/util/drm.c
-> +++ b/util/drm.c
-> @@ -38,9 +38,11 @@ int qemu_drm_rendernode_open(const char *rendernode)
->
->      fd = -1;
->      while ((e = readdir(dir))) {
-> +#if !defined(__HAIKU__)
->          if (e->d_type != DT_CHR) {
->              continue;
->          }
-> +#endif
++#if defined(__HAIKU__)
++#define SIGIO SIGPOLL
++#endif
++
+ #if defined(CONFIG_LINUX)
+ #ifndef BUS_MCEERR_AR
+ #define BUS_MCEERR_AR 4
+diff --git a/os-posix.c b/os-posix.c
+index 3cd52e1e70..c95468c218 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -337,6 +337,7 @@ bool is_daemonized(void)
 
-Does Haiku really provide /dev/dri ? If not then rather than
-making this code which can't be used on this host OS compile
-it would probably be better to just arrange that it doesn't
-get compiled. I suspect that the answer here is that the
-$(CONFIG_POSIX) guard on compiling drm.o in util/Makefile.objs
-should really be a $(CONFIG_LINUX).
+ int os_mlock(void)
+ {
++#if defined(CONFIG_MLOCKALL)
+     int ret = 0;
 
->
->          if (strncmp(e->d_name, "renderD", 7)) {
->              continue;
-> diff --git a/util/main-loop.c b/util/main-loop.c
-> index eda63fe4e0..1ce3081ced 100644
-> --- a/util/main-loop.c
-> +++ b/util/main-loop.c
-> @@ -85,6 +85,9 @@ static int qemu_signal_init(Error **errp)
->       * by sigwait() in the signal thread. Otherwise, the cpu thread will
->       * not catch it reliably.
->       */
-> +#ifndef SIGIO
-> +#define SIGIO SIGPOLL
-> +#endif
+     ret = mlockall(MCL_CURRENT | MCL_FUTURE);
+@@ -345,4 +346,7 @@ int os_mlock(void)
+     }
 
-If Haiku's SIGPOLL really behaves like Linux's SIGIO then
-include/qemu/osdep.h is the best place to put this kind
-of fixup, so that all files get the benefit of it.
+     return ret;
++#else
++    return ENOSYS;
++#endif
+ }
+diff --git a/util/Makefile.objs b/util/Makefile.objs
+index cc5e37177a..faebc13fac 100644
+--- a/util/Makefile.objs
++++ b/util/Makefile.objs
+@@ -39,7 +39,7 @@ util-obj-y += qsp.o
+ util-obj-y += range.o
+ util-obj-y += stats64.o
+ util-obj-y += systemd.o
+-util-obj-$(CONFIG_POSIX) += drm.o
++util-obj-$(CONFIG_LINUX) += drm.o
+ util-obj-y += guest-random.o
+ util-obj-$(CONFIG_GIO) += dbus.o
+ dbus.o-cflags = $(GIO_CFLAGS)
+diff --git a/util/compatfd.c b/util/compatfd.c
+index c296f55d14..ee47dd8089 100644
+--- a/util/compatfd.c
++++ b/util/compatfd.c
+@@ -16,7 +16,9 @@
+ #include "qemu/osdep.h"
+ #include "qemu/thread.h"
 
->      sigemptyset(&set);
->      sigaddset(&set, SIG_IPI);
->      sigaddset(&set, SIGIO);
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index 39ddc77c85..a18d90a68a 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -38,7 +38,12 @@
->  #include "qemu/sockets.h"
->  #include "qemu/thread.h"
->  #include <libgen.h>
-> +#if !defined(__HAIKU__)
->  #include <sys/signal.h>
-> +#else
-> +#include <kernel/image.h>
-> +#include <signal.h>
-> +#endif
->  #include "qemu/cutils.h"
->
->  #ifdef CONFIG_LINUX
-> @@ -390,6 +395,21 @@ void qemu_init_exec_dir(const char *argv0)
->              }
->          }
->      }
-> +#elif defined(__HAIKU__)
-> +    {
-> +        image_info ii;
-> +        int32_t c = 0;
-> +
-> +    *buf = '\0';
-> +    while (get_next_image_info(0, &c, &ii) == B_OK) {
-> +            if (ii.type == B_APP_IMAGE) {
-> +                strncpy(buf, ii.name, sizeof(buf));
-> +            buf[sizeof(buf) - 1] = '\0';
-> +        p = buf;
-> +                break;
-> +            }
-> +        }
++#if defined(CONFIG_SIGNALFD)
+ #include <sys/syscall.h>
++#endif
 
-Your indentation here has got messed up.
+ struct sigfd_compat_info
+ {
+diff --git a/util/main-loop.c b/util/main-loop.c
+index eda63fe4e0..43a4bd30c1 100644
+--- a/util/main-loop.c
++++ b/util/main-loop.c
+@@ -85,6 +85,7 @@ static int qemu_signal_init(Error **errp)
+      * by sigwait() in the signal thread. Otherwise, the cpu thread will
+      * not catch it reliably.
+      */
++
+     sigemptyset(&set);
+     sigaddset(&set, SIG_IPI);
+     sigaddset(&set, SIGIO);
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 39ddc77c85..fdb5907a31 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -38,7 +38,12 @@
+ #include "qemu/sockets.h"
+ #include "qemu/thread.h"
+ #include <libgen.h>
++#if !defined(__HAIKU__)
+ #include <sys/signal.h>
++#else
++#include <kernel/image.h>
++#include <signal.h>
++#endif
+ #include "qemu/cutils.h"
 
-> +    }
->  #endif
->      /* If we don't have any way of figuring out the actual executable
->         location then try argv[0].  */
-> diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
-> index 2e8b43bdf5..c29fc2cbf9 100644
-> --- a/util/qemu-openpty.c
-> +++ b/util/qemu-openpty.c
-> @@ -35,7 +35,7 @@
->  #include "qemu/osdep.h"
->  #include "qemu-common.h"
->
-> -#if defined(__GLIBC__)
-> +#if defined(__GLIBC__) || defined(__HAIKU__)
->  # include <pty.h>
->  #elif defined CONFIG_BSD
->  # include <termios.h>
+ #ifdef CONFIG_LINUX
+@@ -390,6 +395,21 @@ void qemu_init_exec_dir(const char *argv0)
+             }
+         }
+     }
++#elif defined(__HAIKU__)
++    {
++        image_info ii;
++        int32_t c = 0;
++
++        *buf = '\0';
++        while (get_next_image_info(0, &c, &ii) == B_OK) {
++            if (ii.type == B_APP_IMAGE) {
++                strncpy(buf, ii.name, sizeof(buf));
++                buf[sizeof(buf) - 1] = '\0';
++                p = buf;
++                break;
++            }
++        }
++    }
+ #endif
+     /* If we don't have any way of figuring out the actual executable
+        location then try argv[0].  */
+diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
+index 2e8b43bdf5..9d8ad6905e 100644
+--- a/util/qemu-openpty.c
++++ b/util/qemu-openpty.c
+@@ -35,7 +35,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
 
-This would be neater if we dropped the GLIBC/HAIKU check
-in favour of a configure "is openpty() in pty.h?" test.
-
-thanks
--- PMM
+-#if defined(__GLIBC__)
++#if defined CONFIG_PTY
+ # include <pty.h>
+ #elif defined CONFIG_BSD
+ # include <termios.h>
+-- 
+2.26.0
 
