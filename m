@@ -1,74 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jo3A3-0005Xj-AV
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2020 07:01:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59868)
+	id 1joUfA-0006ua-6X
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2020 12:23:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jo3A1-0005Ua-LL
- for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 07:01:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55585
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jo39y-0005fE-Ei
- for qemu-trivial@nongnu.org; Wed, 24 Jun 2020 07:01:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592996501;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KqlQzb/uEcHnBTtzd02eVzWV96pr+C0dJc6GQbPM9v4=;
- b=QCoXHfn9dJR7uC9CluWdSc4clQ+J73sbOX2ySWxGX+Bwo7ZgYVxHLY9CGkHBnqQq/vC437
- 8VAYXgk+UbvcxKaMdwyEV/1zqVGgicr0x69vgIyKGWftxHDsLjcsx+OZu+PHur5rp9fGba
- q3CJLJ6CCc8A3JSyheeV1R3WFmXA6dU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448-q7EMX8LsN3G2uoE78kMyyg-1; Wed, 24 Jun 2020 07:01:36 -0400
-X-MC-Unique: q7EMX8LsN3G2uoE78kMyyg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 01248804001;
- Wed, 24 Jun 2020 11:01:35 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-114-35.ams2.redhat.com [10.36.114.35])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 725197FD07;
- Wed, 24 Jun 2020 11:01:24 +0000 (UTC)
-Subject: Re: [PATCH] hw/core/null-machine: Do not initialize unused chardev
- backends
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200624105611.1049-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <bd458cb8-e005-0ea9-bbaf-bcb541bfdc89@redhat.com>
-Date: Wed, 24 Jun 2020 13:01:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <menno.lageman@oracle.com>)
+ id 1joUBc-0000Yn-Gn; Thu, 25 Jun 2020 11:53:12 -0400
+Received: from userp2120.oracle.com ([156.151.31.85]:50554)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <menno.lageman@oracle.com>)
+ id 1joUBa-0004N8-5i; Thu, 25 Jun 2020 11:53:11 -0400
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05PFfrID121320;
+ Thu, 25 Jun 2020 15:53:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=corp-2020-01-29; bh=WWD+yA/away82IUzcaJaQRVcStH3zZHe3kgzmO7fxWQ=;
+ b=yQCcrXmXbovIB8V7GPP5DtNAdJ26A7hDtaZGE5PoZk4q4yK3v+1vHkJF0wbEClxAYtnQ
+ yl5sO5bc/MesZLzryhcjfrA3cJd6iWZIflwQGDKoJU+xOedbWDPJyPSkh52keTGflvPY
+ qfevAZj7tOP+gmPtN+xovVc8WwNd5Bzx/pWcbRniadTjO/Zb9FKr1iAEQJ0s+i0Hzmcz
+ 65V4zUEJIXDZKakQQICWL5dIokfVLKh3GVU26LZVee0gkvePOHUc5LGP5CeJum2DqILN
+ acRN2MfBnz71hatByCPyeJNUea7ugEZd2//stAqvXZRN50xZs2K8TSZiRyWSgIImNmsY Yw== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 31uustsb65-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 25 Jun 2020 15:53:05 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05PFcH0G086511;
+ Thu, 25 Jun 2020 15:53:04 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 31uur97m6f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 25 Jun 2020 15:53:04 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05PFr3GB018108;
+ Thu, 25 Jun 2020 15:53:04 GMT
+Received: from maximegalon.us.oracle.com (/10.175.52.78)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 25 Jun 2020 15:53:03 +0000
+From: Menno Lageman <menno.lageman@oracle.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] intel_iommu: "aw-bits" error message still refers to
+ "x-aw-bits"
+Date: Thu, 25 Jun 2020 17:52:58 +0200
+Message-Id: <20200625155258.1452425-1-menno.lageman@oracle.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200624105611.1049-1-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 03:27:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9663
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 malwarescore=0
+ suspectscore=1 mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006250101
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9663
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ mlxlogscore=999
+ cotscore=-2147483648 adultscore=0 bulkscore=0 spamscore=0 phishscore=0
+ suspectscore=1 priorityscore=1501 lowpriorityscore=0 clxscore=1011
+ impostorscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2006250101
+Received-SPF: pass client-ip=156.151.31.85;
+ envelope-from=menno.lageman@oracle.com; helo=userp2120.oracle.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/25 11:53:05
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -63
+X-Spam_score: -6.4
+X-Spam_bar: ------
+X-Spam_report: (-6.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 25 Jun 2020 12:23:38 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,41 +87,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2020 11:01:46 -0000
+X-List-Received-Date: Thu, 25 Jun 2020 15:53:12 -0000
 
-On 24/06/2020 12.56, Philippe Mathieu-Daudé wrote:
-> The MachineClass uses an inverted logic (inherited from the
-> PC machines [*]) to create the chardev backends for the default
-> devices (see commits 998bbd74b9d..aa40fc9c964 and ac33f8fad14).
-> 
-> As the none-machine doesn't have any hardware device, it is
-> pointless to initialize chardev backends. Fix by setting the
-> 'no_defaults' bits in its MachineClass.
-> 
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   hw/core/null-machine.c | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
-> index cb47d9d4f8..7e693523d7 100644
-> --- a/hw/core/null-machine.c
-> +++ b/hw/core/null-machine.c
-> @@ -50,6 +50,11 @@ static void machine_none_machine_init(MachineClass *mc)
->       mc->max_cpus = 1;
->       mc->default_ram_size = 0;
->       mc->default_ram_id = "ram";
-> +    mc->no_serial = 1;
-> +    mc->no_parallel = 1;
-> +    mc->no_floppy = 1;
-> +    mc->no_cdrom = 1;
-> +    mc->no_sdcard = 1;
->   }
->   
->   DEFINE_MACHINE("none", machine_none_machine_init)
-> 
+Commit 4b49b586c4 ('intel_iommu: remove "x-" prefix for "aw-bits"')
+removed the "x-" prefix but but didn't update the error message
+accordingly.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Menno Lageman <menno.lageman@oracle.com>
+---
+ hw/i386/intel_iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index df7ad254ac15..c56398e99177 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -3758,7 +3758,7 @@ static bool vtd_decide_config(IntelIOMMUState *s, Error **errp)
+     /* Currently only address widths supported are 39 and 48 bits */
+     if ((s->aw_bits != VTD_HOST_AW_39BIT) &&
+         (s->aw_bits != VTD_HOST_AW_48BIT)) {
+-        error_setg(errp, "Supported values for x-aw-bits are: %d, %d",
++        error_setg(errp, "Supported values for aw-bits are: %d, %d",
+                    VTD_HOST_AW_39BIT, VTD_HOST_AW_48BIT);
+         return false;
+     }
+-- 
+2.26.2
 
 
