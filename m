@@ -1,57 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jolHI-00014o-Ft
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 06:08:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35472)
+	id 1jom20-0002fK-Rs
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 06:56:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jolHG-000122-Rv; Fri, 26 Jun 2020 06:08:10 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:34901)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jom1z-0002ex-Oc
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 06:56:27 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:43460)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jolHF-0005uM-BR; Fri, 26 Jun 2020 06:08:10 -0400
-Received: by mail-ed1-x534.google.com with SMTP id e15so6480974edr.2;
- Fri, 26 Jun 2020 03:08:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=rX57mMIvQKzA8vdxqEO9lhOZZcsX/HGJMLpi1/ra/CU=;
- b=VKFd9LqIbGI8DNwYmQOgzLAIcQhqZCVO2iYiOo66kPXNlwjMavySnAk+Y3IspVG6Ms
- 6TQKxJFTnZXEnbVvNuYCelmmNauwcRwxSJ9EE6vozbJoEkcZKZM0fCHoD7MT8oXFarRV
- 3BBl4bD1AsqdTImljyLa2EqMaQ7EjbPXY8kBKH7td6KTOB5w5sXyMm8SWyDnd65Rya7D
- /JdieGQ9Eg0wbUDi9LGblW7s1nfMjSCVOgsdjLvCA0OQRh4M1hPzV3qlIJL7bH2FFRGF
- rpd25g93Axxj1oUBVr83wPp3/RLH2fgRV3OMZEQwn85OMgFxFZ4D950hPjmvqnpsGNLb
- h6QQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jom1y-00051J-39
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 06:56:27 -0400
+Received: by mail-ot1-x341.google.com with SMTP id u23so8180082otq.10
+ for <qemu-trivial@nongnu.org>; Fri, 26 Jun 2020 03:56:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=GcN+xma/RH65dKjl4Y/G1oiEhVnv0kx5nhRgddP9QJQ=;
+ b=Nhny+Q4wDkvTi/J7YYeGp6Wb+YYBxV5F/+sRGoXbK2Aqp/zChlG8XiUaoRhQIIWW7f
+ PMIIGbpNZSTukFlKTA1HF140J9aux/XNk5BGY9J7XJjXtciq8DtMKHT4zGlvD/SufHkN
+ jImMua1n6tyN5cC1tN3aQZwbEwfJVQcISaUsdI+0p4Crt97zlPAvkrUdkVeShnbHgJNp
+ UqAYnV7Tam+CGipnCCsKg5beskyaAGBgNijBfjpYYPjKfdElZXZ5L20SMJapfapUXWwx
+ 9Jr5sUNtixhnaFbwmCPNJmifE1ZUHy1FmcG10QSyMXoDtv07nBYf4kGlEw251PXAncsL
+ tYdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=rX57mMIvQKzA8vdxqEO9lhOZZcsX/HGJMLpi1/ra/CU=;
- b=aaywXwpMLqmUWiFgNA0odQIn/jd+WeT4m8yWeAaq07vTK8Xx8mVdL3yRF/lsfgECvy
- IZjF0OdS2JjqxZ+WSz236LGm46iVn9v2UmLt0Ry1iSsfK5zZV+3J2kIa7Z71+xt/r6BR
- 0vvzN0gDXsAaVZpQZX2trcexgBZp4FLPUVUG34Q1DFQn5zBRM6h+vq/V7PrCcbYF5hWy
- 55O3NW5NbZfKzxrfa+LYq7hKeOl3HkCC4ErpCpBoPKLFQQRHgdHzpNhcKnlxCkK5Opmk
- oglII0asK5ui0Iscm+L1YY+aeW2iQBUKE18QDiA1jdQ9ZKlCK3tA4K5WFFhUlitpEXE7
- 7nXQ==
-X-Gm-Message-State: AOAM531HWZV+ql+jN9SxN7yT6UmVZKCehZ10aVci2SsPsVi5oCWsU5wl
- TC0UNq+tNHRssy/5zIvHqKXpHFncX2gc13mThEAHX/ys
-X-Google-Smtp-Source: ABdhPJyCn9EokLBUkTMiVMaMesePbnAXOX0Q9+2VyFm4JA82aN+hSkG6wq5c4sPEDaBuhyP6+jBap4VoGDDML0ww0Bk=
-X-Received: by 2002:a05:6402:1597:: with SMTP id
- c23mr2419416edv.243.1593166087521; 
- Fri, 26 Jun 2020 03:08:07 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=GcN+xma/RH65dKjl4Y/G1oiEhVnv0kx5nhRgddP9QJQ=;
+ b=X3+gqRYOhpUtYyMhiZ2UN0OAICd8ZG4kdaIVy+ayq+Pcw5sXL0sYxtxskeOXkxuw3l
+ EcAkjH0L/M37Qkd/8SWJYEubo4Y94Ixnt9qrL6m5wH1YQqztM3dxgbHpXjfDGdBd7di2
+ 9Bjz2QZn4jJ9jvYTcUVhGRoLZC6Kuz6M/YsryPTwek1J7SxJoAvRtAfifsM9CKuww2pI
+ 38k332l7z3WYVG0Ar6LpQ0jDtPsxOIiLZiwNtUYxzMib5Uc8eMPVcE0RM8yHXDE6cWnn
+ WvmgjFFZsbqQcPLVGZ9IJJgqtr936FLIakLPrjKGvwNzYfDCyztlkGAXH1pXPu8ot4Dl
+ NIVg==
+X-Gm-Message-State: AOAM530iUGN17rGmZ4tLVi6vficSulnRExdIAhEqXiYKdBEnSarJCilG
+ xSM/3T8mkJuGqoRadSAnr6Ft/o8kqDgAIuZ40kmbmw==
+X-Google-Smtp-Source: ABdhPJz5wR2yx8DJZsNJMObqXzgRwQqOInXmVQkRp+sB1SUSyhCi6h2HeYZM4VDpea1qJornUHFYvN4L0Jw99OTBi5Q=
+X-Received: by 2002:a4a:ba17:: with SMTP id b23mr451498oop.69.1593168984925;
+ Fri, 26 Jun 2020 03:56:24 -0700 (PDT)
 MIME-Version: 1.0
-From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 11:07:57 +0100
-Message-ID: <CA+XhMqwft10MnY5nOc7L+q59kOY3BAejjrOS09R5QD2H7AH-Cg@mail.gmail.com>
-Subject: [PATCH 5/5] haiku build fix
-To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+References: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+In-Reply-To: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jun 2020 11:56:14 +0100
+Message-ID: <CAFEAcA8H9E+us8u_0KLeqFN0Ygq9kBonjOXAxXXyT1+bw9pWQg@mail.gmail.com>
+Subject: Re: [PATCH 1/5] haiku build fix
+To: David CARLIER <devnexen@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -66,60 +71,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 10:08:11 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 10:56:28 -0000
 
-From 68d4d4312eccd212b4d2484e09425816ebd2346a Mon Sep 17 00:00:00 2001
-From: David Carlier <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 11:01:54 +0000
-Subject: [PATCH 5/5] Last chunk of build fix
+On Fri, 26 Jun 2020 at 11:08, David CARLIER <devnexen@gmail.com> wrote:
+>
+> From 4d0933384d2bfcd0fc8c4c06eed2d07f3f1b7f8b Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Fri, 26 Jun 2020 10:35:40 +0000
+> Subject: [PATCH 1/5] Haiku build fix enabling BSD symbols.
+>
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>  configure | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Signed-off-by: David Carlier <devnexen@gmail.com>
----
- include/qemu/bswap.h | 2 ++
- util/Makefile.objs   | 2 +-
- util/compatfd.c      | 2 ++
- 3 files changed, 5 insertions(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-index 2a9f3fe783..1d3e4c24e4 100644
---- a/include/qemu/bswap.h
-+++ b/include/qemu/bswap.h
-@@ -8,6 +8,8 @@
- # include <machine/bswap.h>
- #elif defined(__FreeBSD__)
- # include <sys/endian.h>
-+#elif defined(__HAIKU__)
-+# include <endian.h>
- #elif defined(CONFIG_BYTESWAP_H)
- # include <byteswap.h>
-
-diff --git a/util/Makefile.objs b/util/Makefile.objs
-index cc5e37177a..faebc13fac 100644
---- a/util/Makefile.objs
-+++ b/util/Makefile.objs
-@@ -39,7 +39,7 @@ util-obj-y += qsp.o
- util-obj-y += range.o
- util-obj-y += stats64.o
- util-obj-y += systemd.o
--util-obj-$(CONFIG_POSIX) += drm.o
-+util-obj-$(CONFIG_LINUX) += drm.o
- util-obj-y += guest-random.o
- util-obj-$(CONFIG_GIO) += dbus.o
- dbus.o-cflags = $(GIO_CFLAGS)
-diff --git a/util/compatfd.c b/util/compatfd.c
-index c296f55d14..ee47dd8089 100644
---- a/util/compatfd.c
-+++ b/util/compatfd.c
-@@ -16,7 +16,9 @@
- #include "qemu/osdep.h"
- #include "qemu/thread.h"
-
-+#if defined(CONFIG_SIGNALFD)
- #include <sys/syscall.h>
-+#endif
-
- struct sigfd_compat_info
- {
---
-2.26.0
+thanks
+-- PMM
 
