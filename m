@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jopGn-0006oK-Th
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:23:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49144)
+	id 1jopNv-0003vb-2h
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:31:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopGm-0006k5-J8
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:23:56 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41043
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopNr-0003so-LL
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:31:16 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27801
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopGk-0000A0-SE
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:23:56 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopNp-0004S3-6t
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:31:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593181433;
+ s=mimecast20190719; t=1593181870;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ImguQWNduFBjj+jIU8BPe58ZnlvyjcVO8neGDoaC1H4=;
- b=FxBCntuMu9COHZ1qpKObsIgBT/rtfIgf61c+rvn2b1MSRwGyiVgFQaFDyv/vugROWc9AGJ
- l4GkTCJMkH5e6OOtDThY+Ybef4sZ8C1Hf6b3LB7uSbZtyk/nGhG9l9B4Ma/5XUiuH/p1iz
- JAWmTHPdGXoifq5AIVSzKLge4gNONe4=
+ bh=Mdj6WkRabNOg+n11I5GylXjjrZ5g0Ru2RakJCt3hczE=;
+ b=OpCMcwob/rtt0AKI3VMDDu5QKFfHfURH2mbV5P+qOMWbmDddvzsbslN2mBgcIL7koqtJex
+ rgYNc+LgPQbJriC/5s5P365oFZLyyGza7cXdq2CGgt8XdmiN4pWgKljDJ5/OCcDxZZ8N4b
+ oxWl0d3lIwo6G2WdBR/nwQAiMCYYuf4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-281-hhT_GzldMGSPSuM95syOfw-1; Fri, 26 Jun 2020 10:23:48 -0400
-X-MC-Unique: hhT_GzldMGSPSuM95syOfw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-263-drMKyH_hNp2BkYUV5U98xA-1; Fri, 26 Jun 2020 10:31:06 -0400
+X-MC-Unique: drMKyH_hNp2BkYUV5U98xA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 137D7107ACCA;
- Fri, 26 Jun 2020 14:23:47 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F0B5107ACCA;
+ Fri, 26 Jun 2020 14:31:05 +0000 (UTC)
 Received: from [10.3.114.107] (ovpn-114-107.phx2.redhat.com [10.3.114.107])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C65F45C557;
- Fri, 26 Jun 2020 14:23:46 +0000 (UTC)
-Subject: Re: [PATCH 1/5] haiku build fix
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1EF237FEBE;
+ Fri, 26 Jun 2020 14:31:05 +0000 (UTC)
+Subject: Re: [PATCH 5/5] haiku build fix
 To: David CARLIER <devnexen@gmail.com>, QEMU Trivial
  <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-References: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+References: <CA+XhMqxcvPwakFCC2Qy-S3FZ1NdVJ2rojsZGg5S7KK-feZ-BnA@mail.gmail.com>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <41b51d53-f196-be76-ee7e-ca943f6a3764@redhat.com>
-Date: Fri, 26 Jun 2020 09:23:46 -0500
+Message-ID: <2dc07aa4-ed63-182f-06e2-a0b33453cb31@redhat.com>
+Date: Fri, 26 Jun 2020 09:31:04 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+In-Reply-To: <CA+XhMqxcvPwakFCC2Qy-S3FZ1NdVJ2rojsZGg5S7KK-feZ-BnA@mail.gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
@@ -74,27 +74,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 14:23:56 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 14:31:16 -0000
 
-On 6/26/20 5:07 AM, David CARLIER wrote:
->>From 4d0933384d2bfcd0fc8c4c06eed2d07f3f1b7f8b Mon Sep 17 00:00:00 2001
+On 6/26/20 7:54 AM, David CARLIER wrote:
+>>From 6fa7a4108236f513201192654e07c7044a3d7e58 Mon Sep 17 00:00:00 2001
 > From: David Carlier <devnexen@gmail.com>
-> Date: Fri, 26 Jun 2020 10:35:40 +0000
-> Subject: [PATCH 1/5] Haiku build fix enabling BSD symbols.
-> 
-> Signed-off-by: David Carlier <devnexen@gmail.com>
-> ---
->   configure | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> Date: Fri, 26 Jun 2020 13:51:37 +0000
+> Subject: [PATCH 3/3] qemu_init_exec_dir Haiku implementation
 
-meta-comment: when sending a series, it's best to send a 0/5 cover 
-letter with the rest of the messages in-reply-to the cover.  This way, 
-it's easier to track the related messages when viewing in a mail reader 
-that groups by threads.
-
-More patch submission hints, including how to make 'git send-email' 
-automatically create a cover letter when needed, at:
-https://wiki.qemu.org/Contribute/SubmitAPatch
+meta-comment: the original subject line says 5/5, while this line says 
+3/3, which adds to the confusion of which patches are actually doing 
+what, as well as which iteration of the patches we are on.  Also, the 
+original subject line "haiku build fix" has been repeated for multiple 
+distinct emails; better is to have the subject line come from the patch 
+itself (the contents of this line would have been better as the overall 
+patch subject).
 
 -- 
 Eric Blake, Principal Software Engineer
