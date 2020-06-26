@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jos7b-0001L2-2T
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:26:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42952)
+	id 1josAv-0003tM-My
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:30:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jos7a-0001Ks-Ag
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:26:38 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:53292
- helo=us-smtp-delivery-1.mimecast.com)
+ id 1josAu-0003t9-Id
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:30:04 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54637
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jos7Y-0000A3-Gm
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:26:38 -0400
+ id 1josAs-0004Sn-AP
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:30:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593192395;
+ s=mimecast20190719; t=1593192601;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=esyB4+t3qsym6DQCSbOYMNLRb563kKgivJQJD+9VGgA=;
- b=YY6P57dLFTLdI8sqJs7LirJAKkVS6LkRtApwMk5+T1KGTJ50IfHlVFEYQxgRYG9NcKTY9E
- KhDm86JjH9K83CHQ7K9TGpy6rWGTmxlphI+CYahM+FWRfYnmy4T4yyFwp+GaKD0UmdCjNH
- 1+mk/052xEo8U4BhuBJfXyJaw2ZiCLw=
+ bh=Yl1QQu7TNqKXYZN/uWYOu3rwQn+c3wwjdxGQLh+EI8w=;
+ b=QPPNGBE51yoet/EXWhTSrXSI4CjvEClST2qZsp52ZsD2ZimNWN6nIICrnzubQ44Hqll8Sd
+ /cCX+KvQEJuS0VXy2IUH0YWFcDpaYt/FdAHCchjeF9hSEXC46ylymSrMGkyPlYWcZkOJfF
+ RFfOQ8pPTxhWkkM7sJCyk/HhtMjPJo0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-93-j68kDxbnPlCJQKilRQL8OA-1; Fri, 26 Jun 2020 13:26:33 -0400
-X-MC-Unique: j68kDxbnPlCJQKilRQL8OA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-229-yxtyuzrxNCSpLjifQzk3dA-1; Fri, 26 Jun 2020 13:29:57 -0400
+X-MC-Unique: yxtyuzrxNCSpLjifQzk3dA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 266BB193F560;
- Fri, 26 Jun 2020 17:26:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F4C2193F560;
+ Fri, 26 Jun 2020 17:29:56 +0000 (UTC)
 Received: from redhat.com (unknown [10.36.110.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0391E19C4F;
- Fri, 26 Jun 2020 17:26:17 +0000 (UTC)
-Date: Fri, 26 Jun 2020 18:26:13 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E9EC25D9CC;
+ Fri, 26 Jun 2020 17:29:43 +0000 (UTC)
+Date: Fri, 26 Jun 2020 18:29:40 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Christophe de Dinechin <dinechin@redhat.com>
 Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
@@ -45,25 +45,23 @@ Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 08/10] build: Add SPICE_CFLAGS and SPICE_LIBS to relevant
- files
-Message-ID: <20200626172613.GN1028934@redhat.com>
+Subject: Re: [PATCH 10/10] REMOVE: Instrumentation to show the module
+ functions being replaced
+Message-ID: <20200626172940.GO1028934@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-9-dinechin@redhat.com>
+ <20200626164307.3327380-11-dinechin@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200626164307.3327380-9-dinechin@redhat.com>
+In-Reply-To: <20200626164307.3327380-11-dinechin@redhat.com>
 User-Agent: Mutt/1.14.0 (2020-05-02)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 03:23:21
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -84,81 +82,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 17:26:38 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 17:30:04 -0000
 
-On Fri, Jun 26, 2020 at 06:43:05PM +0200, Christophe de Dinechin wrote:
-> Instead of adding the spice build flags to the top-level build
-> options, add them where they are necessary. This is a step to move the
-> burden of linking with spice libraries away from the top-level qemu.
-> 
+
+
+On Fri, Jun 26, 2020 at 06:43:07PM +0200, Christophe de Dinechin wrote:
 > Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
 > ---
->  configure                |  4 ++--
->  hw/display/Makefile.objs |  1 +
->  hw/i386/Makefile.objs    |  1 +
->  monitor/Makefile.objs    |  3 +++
->  softmmu/Makefile.objs    |  2 +-
->  stubs/Makefile.objs      |  2 +-
->  ui/Makefile.objs         |  4 ++--
->  util/module.c            | 13 +++++++++++--
->  8 files changed, 22 insertions(+), 8 deletions(-)
-
-> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-> index f32b9e47a3..1df8bb3814 100644
-> --- a/stubs/Makefile.objs
-> +++ b/stubs/Makefile.objs
-> @@ -19,10 +19,10 @@ stub-obj-y += replay.o
->  stub-obj-y += runstate-check.o
->  stub-obj-$(CONFIG_SOFTMMU) += semihost.o
->  stub-obj-y += set-fd-handler.o
-> -stub-obj-y += vmgenid.o
->  stub-obj-y += sysbus.o
->  stub-obj-y += tpm.o
->  stub-obj-y += trace-control.o
-> +stub-obj-y += vmgenid.o
->  stub-obj-y += vmstate.o
->  stub-obj-$(CONFIG_SOFTMMU) += win32-kbd-hook.o
->
-
-This looks unrelated to this series.
-
-
-
-> diff --git a/util/module.c b/util/module.c
-> index 2fa93561fe..29b4806520 100644
-> --- a/util/module.c
-> +++ b/util/module.c
-> @@ -22,11 +22,11 @@
->  #ifdef CONFIG_MODULE_UPGRADES
->  #include "qemu-version.h"
->  #endif
-> -#ifdef CONFIG_TRACE_RECORDER
->  #include "trace/recorder.h"
-> -#endif
+>  include/qemu/module.h | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/include/qemu/module.h b/include/qemu/module.h
+> index 1922a0293c..8d6e10ba81 100644
+> --- a/include/qemu/module.h
+> +++ b/include/qemu/module.h
+> @@ -14,10 +14,13 @@
+>  #ifndef QEMU_MODULE_H
+>  #define QEMU_MODULE_H
 >  
+> +#include "trace/recorder.h"
 >  
-> +RECORDER(modules, 16, "QEMU load modules");
+>  #define DSO_STAMP_FUN         glue(qemu_stamp, CONFIG_STAMP)
+>  #define DSO_STAMP_FUN_STR     stringify(DSO_STAMP_FUN)
+>  
+> +RECORDER_DECLARE(modules);
 > +
->  typedef struct ModuleEntry
->  {
->      void (*init)(void);
-> @@ -85,6 +85,15 @@ void register_dso_module_init(void (*fn)(void), module_init_type type)
->  {
->      ModuleEntry *e;
->  
-> +#ifdef CONFIG_TRACE_RECORDER
-> +    static const char *name[] = {
-> +        "MIGRATION", "BLOCK", "OPTS", "QOM",
-> +        "TRACE", "XEN_BACKEND", "LIBQOS", "FUZZ_TARGET",
-> +        "MAX"
-> +    };
-> +#endif
-> +    record(modules, "Register DSO module init %p type %u %+s",
-> +           fn, type, name[type]);
->      init_lists();
+>  #ifdef BUILD_DSO
+>  void DSO_STAMP_FUN(void);
+>  /* This is a dummy symbol to identify a loaded DSO as a QEMU module, so we can
+> @@ -55,6 +58,7 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
+>      static void __attribute__((constructor)) Name##_register(void)      \
+>      {                                                                   \
+>          Name = Name##_implementation;                                   \
+> +        record(modules, "Setting " #Name " to %p", Name);               \
+>      }                                                                   \
+>      Ret Name##_implementation Args
+>  #else /* !CONFIG_MODULES */
 
-This looks unrelated too, but in general debugging should go via QEMU's
-standard trace backends.
+Contrary to the commit $SUBJECT, I think you should keep this, not remove
+it. It should use QEMU's trace backend though.
 
 Regards,
 Daniel
