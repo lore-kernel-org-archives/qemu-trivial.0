@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jos1u-0005Ka-4J
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:20:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40868)
+	id 1jos4X-0008GQ-LB
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:23:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jos1s-0005KM-77
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:20:44 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23368
+ id 1jos4V-0008EZ-V6
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:23:27 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:22241
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1jos1p-00055U-8u
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:20:43 -0400
+ id 1jos4U-0006f9-1z
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:23:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593192039;
+ s=mimecast20190719; t=1593192205;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=QuqGjggvsmfPwxe68Fb1bistREg++TFgtdlbLZ6NECg=;
- b=EXHBvgF0VURpCKfZurpggfLNoM5oECJSurDYXHNvZNO5k3wZKyvfVtBr8L60dn6dMCc/cX
- 0p1dlLtE1Qr7kRECpDoPQeUx8YZ05xyui09K/UR5Qbai2gYVyiD5yI49vKI1raOOGbCssR
- mjhP+EDFqqVK7jYlvm2xGzxhPdjmwyQ=
+ bh=Ybar/Tn1pDoD+UCne3nngn7lJ+TgwJmIczkU21x5N94=;
+ b=TOm2ljnBX/jzh2CJU/7rR7kyAsESZ/qnpjAvlrw02pzG8vpTn0ymN930pWVwpOlyjh+n25
+ U3BBzs7Zv/9sKyfCJ0n4b9I+TmuQ7y0rLn8ipC/MsOsJ2aX3EUvvbVvn392bDkiBcokqSN
+ A6VsnN76/C7wROiA8blZpzI4Z5xKy2g=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-473-XBahe6BZMlCH9FP3yV4cwA-1; Fri, 26 Jun 2020 13:20:23 -0400
-X-MC-Unique: XBahe6BZMlCH9FP3yV4cwA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-14-IzWI2cMaMyuRjpgIq5BqwA-1; Fri, 26 Jun 2020 13:23:21 -0400
+X-MC-Unique: IzWI2cMaMyuRjpgIq5BqwA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48695804003;
- Fri, 26 Jun 2020 17:20:22 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D064A108597A;
+ Fri, 26 Jun 2020 17:23:19 +0000 (UTC)
 Received: from redhat.com (unknown [10.36.110.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D193517D68;
- Fri, 26 Jun 2020 17:20:06 +0000 (UTC)
-Date: Fri, 26 Jun 2020 18:20:03 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C22D65C1B2;
+ Fri, 26 Jun 2020 17:23:03 +0000 (UTC)
+Date: Fri, 26 Jun 2020 18:23:00 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Christophe de Dinechin <dinechin@redhat.com>
 Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
@@ -45,23 +45,25 @@ Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 04/10] spice: Move all the spice-related code in
- spice-app.so
-Message-ID: <20200626172003.GL1028934@redhat.com>
+Subject: Re: [PATCH 05/10] build: Avoid build failure when building drivers
+ as modules
+Message-ID: <20200626172300.GM1028934@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-5-dinechin@redhat.com>
+ <20200626164307.3327380-6-dinechin@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200626164307.3327380-5-dinechin@redhat.com>
+In-Reply-To: <20200626164307.3327380-6-dinechin@redhat.com>
 User-Agent: Mutt/1.14.0 (2020-05-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=berrange@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:55:55
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -82,75 +84,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 17:20:44 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 17:23:28 -0000
 
-On Fri, Jun 26, 2020 at 06:43:01PM +0200, Christophe de Dinechin wrote:
-> If we want to build spice as a separately loadable module, we need to
-> put all the spice code in one loadable module, because the build
-> system does not know how to deal with dependencies yet.
-> 
+On Fri, Jun 26, 2020 at 06:43:02PM +0200, Christophe de Dinechin wrote:
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
 > ---
->  audio/Makefile.objs   | 2 +-
->  chardev/Makefile.objs | 3 +--
->  ui/Makefile.objs      | 8 ++++----
->  3 files changed, 6 insertions(+), 7 deletions(-)
+>  Makefile.objs    | 1 +
+>  Makefile.target  | 7 +++++++
+>  hw/Makefile.objs | 1 +
+>  3 files changed, 9 insertions(+)
 > 
-> diff --git a/audio/Makefile.objs b/audio/Makefile.objs
-> index b4a4c11f31..298c895ff5 100644
-> --- a/audio/Makefile.objs
-> +++ b/audio/Makefile.objs
-> @@ -1,5 +1,5 @@
->  common-obj-y = audio.o audio_legacy.o noaudio.o wavaudio.o mixeng.o
-> -common-obj-$(CONFIG_SPICE) += spiceaudio.o
-> +spice-app.mo-objs += ../audio/spiceaudio.o
-
-Explicitly showing paths in the variables doesn't look right. The
-make recipes are supposed to automatically expand bare file names
-to add the right path. This is usually dealt with by a call to
-the "unnest-vars" function.
-
->  common-obj-$(CONFIG_AUDIO_COREAUDIO) += coreaudio.o
->  common-obj-$(CONFIG_AUDIO_DSOUND) += dsoundaudio.o
->  common-obj-$(CONFIG_AUDIO_WIN_INT) += audio_win_int.o
-> diff --git a/chardev/Makefile.objs b/chardev/Makefile.objs
-> index fc9910d4f2..955fac0cf9 100644
-> --- a/chardev/Makefile.objs
-> +++ b/chardev/Makefile.objs
-> @@ -22,5 +22,4 @@ common-obj-$(CONFIG_BRLAPI) += baum.o
->  baum.o-cflags := $(SDL_CFLAGS)
->  baum.o-libs := $(BRLAPI_LIBS)
+> diff --git a/Makefile.objs b/Makefile.objs
+> index e38768c8d5..6703353493 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -86,6 +86,7 @@ endif # CONFIG_SOFTMMU
+>  # Target-independent parts used in system and user emulation
+>  common-obj-y += cpus-common.o
+>  common-obj-y += hw/
+> +common-obj-m += hw/
+>  common-obj-y += qom/
+>  common-obj-y += disas/
 >  
-> -common-obj-$(CONFIG_SPICE) += spice.mo
-> -spice.mo-objs := spice.o
-> +spice-app.mo-objs += ../chardev/spice.o
-> diff --git a/ui/Makefile.objs b/ui/Makefile.objs
-> index 504b196479..1ab515e23d 100644
-> --- a/ui/Makefile.objs
-> +++ b/ui/Makefile.objs
-> @@ -11,7 +11,6 @@ common-obj-y += keymaps.o console.o cursor.o qemu-pixman.o
->  common-obj-y += input.o input-keymap.o input-legacy.o kbd-state.o
->  common-obj-y += input-barrier.o
->  common-obj-$(CONFIG_LINUX) += input-linux.o
-> -common-obj-$(CONFIG_SPICE) += spice-core.o spice-input.o spice-display.o
->  common-obj-$(CONFIG_COCOA) += cocoa.o
->  common-obj-$(CONFIG_VNC) += $(vnc-obj-y)
->  common-obj-$(call lnot,$(CONFIG_VNC)) += vnc-stubs.o
-> @@ -53,10 +52,11 @@ curses.mo-objs := curses.o
->  curses.mo-cflags := $(CURSES_CFLAGS) $(ICONV_CFLAGS)
->  curses.mo-libs := $(CURSES_LIBS) $(ICONV_LIBS)
+> diff --git a/Makefile.target b/Makefile.target
+> index 8ed1eba95b..3f3b5ee058 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -179,6 +179,13 @@ endif # CONFIG_SOFTMMU
+>  dummy := $(call unnest-vars,,obj-y)
+>  all-obj-y := $(obj-y)
 >  
-> -ifeq ($(CONFIG_GIO)$(CONFIG_SPICE),yy)
-> -common-obj-$(if $(CONFIG_MODULES),m,y) += spice-app.mo
-> +common-obj-$(CONFIG_SPICE) += spice-app.mo
-> +spice-app.mo-objs += spice-core.o spice-input.o spice-display.o
-> +ifeq ($(CONFIG_GIO)$(CONFIG_SPICE),ym)
-> +spice-app.mo-objs += spice-app.o
+> +#
+> +# common-obj-m has some crap here, probably as side effect from
+> +# filling obj-y.  Clear it.  Fixes suspicious dependency errors when
+> +# building devices as modules.
+> +#
+> +common-obj-m :=
+
+This comment doesn't fill me with confidence - makes it feel like there's
+some more important root cause that needs addressing instead.
+
+>  include $(SRC_PATH)/Makefile.objs
+>  dummy := $(call unnest-vars,.., \
+>                 authz-obj-y \
+> diff --git a/hw/Makefile.objs b/hw/Makefile.objs
+> index 4cbe5e4e57..d6d387b74b 100644
+> --- a/hw/Makefile.objs
+> +++ b/hw/Makefile.objs
+> @@ -43,4 +43,5 @@ devices-dirs-y += smbios/
 >  endif
-> -spice-app.mo-objs := spice-app.o
->  spice-app.mo-cflags := $(GIO_CFLAGS)
->  spice-app.mo-libs := $(GIO_LIBS)
 >  
+>  common-obj-y += $(devices-dirs-y)
+> +common-obj-m := display/
+>  obj-y += $(devices-dirs-y)
 > -- 
 > 2.26.2
 > 
