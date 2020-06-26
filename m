@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jonsb-0007un-FF
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 08:54:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50794)
+	id 1jonyR-0006yc-Fu
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 09:00:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jonsZ-0007rF-GQ; Fri, 26 Jun 2020 08:54:51 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:38213)
+ id 1jonyM-0006x8-4Q; Fri, 26 Jun 2020 09:00:53 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:38265)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jonsX-0000dK-VC; Fri, 26 Jun 2020 08:54:51 -0400
-Received: by mail-ed1-x542.google.com with SMTP id cy7so6827406edb.5;
- Fri, 26 Jun 2020 05:54:49 -0700 (PDT)
+ id 1jonyK-0002zW-1F; Fri, 26 Jun 2020 09:00:49 -0400
+Received: by mail-ed1-x543.google.com with SMTP id cy7so6846207edb.5;
+ Fri, 26 Jun 2020 06:00:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:from:date:message-id:subject:to;
- bh=XA6nzqvVSiJXdseQ/eelzB9rYtYWuwUACPaHWj97sq4=;
- b=YlMO2GEVHo5SmbpimH9qVDzHPlCsDUZfAIpPKVEVktiI5VlnlHfuJUCg9pQxexgzeN
- U2SDo1RWgyRS7TODv/Tp5LjgyydOmfewlV3iWAMd8gMhCQ1jzdSdsSUbJkxIF/qtGUTZ
- ApW/w5BqwmwXmRoZyWGdaCQdPPmKcUvjhuRra274ePeRcDZAV7DNMfqCbyCKM/bLCDtn
- SRooN6JzygxnnmVtNlXWF6JoYtX2puIJhymeAI+9xZfrR9MKxsHcdcSnwM+tFJZc51Xa
- t0bMh5Cl1sTgsnpDQsIJN2BvJDV0d3++/KGlc0unA3buf9u0FwoyA71AVj8AVQK9Hwhc
- Z2qg==
+ bh=RuzXvA/aTpuOPYIFxer48+fv+OoNhJtBmY1ds60T/Kg=;
+ b=PQ/gXbFPCOvm2cQi1ZP2scGUreT66L11xkr54x0/yZ/VgwO8KcNkRTon+Vx6O6sDKM
+ 8BuxTpbhdqlUmGbOU/Ez1kh1i8xAF8k54u7U24z1A1QRFjfCZqug1DfcoOLftt5sslQg
+ olMXVw2hZU10CcLDPoIU81qLvx0ZyigDz3BAHT+MHozWMbtjFJFsQ0tBdFnLeRgH5kXR
+ otHOQY5xBi0B7Il/Lpt4hjY02R3xMnNnLyFUbShAFXg8GvPj4wX9BX3ZVTrKSzZ6/DI8
+ GGUOIsUd8cm5t2IUbAtknumvivKQp2M7esnPtwm89whqcSVNZk+aI4khePqEBnkoj85b
+ iHjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=XA6nzqvVSiJXdseQ/eelzB9rYtYWuwUACPaHWj97sq4=;
- b=tOa9/oPha9pBLS8WFxccAaVG85CHnVa2/qmDzhpaemDzZdolZyYyhx+S1qBNRGhYjN
- y0C0gbZrwvMm6r/z5kTS63vZOFtQN4fVod+mWfAhQZI6KurnxWtunoQqypAVJDSuA+NZ
- 3tHVLxE2v5rHjY16JTl0kLVzMSuih8i778gYPtmrSqGT320FzCxHneLR+dPHb4A8aL3N
- 3bRZezKfMCfkn9h5zwoxVs751q2LOXTHebzs2hSzy41YiZTIGLvFHkIEqo8NrFWgdVcD
- ERJV7TDFY6GdXzFlvdiGrooEg6F3VBT3TOVeZ2KA9k96UN798bQ+SL+tBbJnG0BiEcSi
- qRvw==
-X-Gm-Message-State: AOAM531jHPURHMqd0Sc/fOPrHVrYJcEmW1KAmVUBHtyCsZIvrJdqnAB+
- wXouWtvtC+3vt+GUvnP1wnysj5S9ctwyQYlsqY3X4gfRFG4=
-X-Google-Smtp-Source: ABdhPJx7YnjhTfBL0wd0/aWL60JvfJLs5Z4zIC8wS0IOgD8R98baEvYWqqG3f+meg5AY/TYLP6kTb9ElQDWFWFMMBw0=
-X-Received: by 2002:aa7:d792:: with SMTP id s18mr3264100edq.7.1593176087947;
- Fri, 26 Jun 2020 05:54:47 -0700 (PDT)
+ bh=RuzXvA/aTpuOPYIFxer48+fv+OoNhJtBmY1ds60T/Kg=;
+ b=DRf4Ab66MCikxZh9oYiULFL4Y6wgybkkeYJNSZ+H7uAU2c8D6c349O/3OXUwglTbyK
+ BD7UqYYRPWmo9TRd0iLGk0XAwxkh61niySg/3xtTnHF5rpwnBeuDLPluqsj1dDJ7/4yo
+ LAp5EfLZFAycodegl4aOcmapil2GfN61PJbUFbnetaBiLy90GJqDQny+TfNi3INlU4qB
+ Rveh4caW89wbJrYXdNjlFS6GyKRx3R8CzVJHK9D8/CLxCfq7qB48zfeijKMRKTxTID4g
+ 1KfI8ZoB8inXgJAwU+2HV3mRttFEnLYiBlYuPNYcf1fBja9cKHhWHX69BrRi5z5mlGKQ
+ fjvw==
+X-Gm-Message-State: AOAM532mQDYVhj7hG0fzC1rKeKN12erE7AqMAGQD0JZ171Y8+AUdhd26
+ MO+25ReRMgqcEijVFZdCxa502ChRqay+6ZTpHS4qSVPeRsg=
+X-Google-Smtp-Source: ABdhPJwYljeaXbFNmnPmEvBjSV5o8KokL2U6ZIar6QgvszEVsN2ag93tuE9Ch9u9ASOSpbdXrBS1i+QCpjh1zTBsVt8=
+X-Received: by 2002:aa7:d297:: with SMTP id w23mr3077415edq.49.1593176445455; 
+ Fri, 26 Jun 2020 06:00:45 -0700 (PDT)
 MIME-Version: 1.0
 From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 13:54:37 +0100
-Message-ID: <CA+XhMqxcvPwakFCC2Qy-S3FZ1NdVJ2rojsZGg5S7KK-feZ-BnA@mail.gmail.com>
-Subject: [PATCH 5/5] haiku build fix
+Date: Fri, 26 Jun 2020 14:00:34 +0100
+Message-ID: <CA+XhMqwDLw2BJ9Cf0kEyUW+J+rTPOOvebRPPkBSiWdD50wct5Q@mail.gmail.com>
+Subject: [PATCH 1/3] haiku build fix second batch
 To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -65,55 +65,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 12:54:51 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 13:00:53 -0000
 
-From 6fa7a4108236f513201192654e07c7044a3d7e58 Mon Sep 17 00:00:00 2001
+From 95ef79ddff73eebd1f1bec6673c2c68209fab107 Mon Sep 17 00:00:00 2001
 From: David Carlier <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 13:51:37 +0000
-Subject: [PATCH 3/3] qemu_init_exec_dir Haiku implementation
+Date: Fri, 26 Jun 2020 13:56:14 +0000
+Subject: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros build
+ failure.
 
 Signed-off-by: David Carlier <devnexen@gmail.com>
 ---
- util/oslib-posix.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ include/qemu/bswap.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 7ad9195c44..459e3f8093 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -60,6 +60,10 @@
- #include <mach-o/dyld.h>
- #endif
-
-+#ifdef __HAIKU__
-+#include <kernel/image.h>
-+#endif
-+
- #include "qemu/mmap-alloc.h"
-
- #ifdef CONFIG_DEBUG_STACK_USAGE
-@@ -389,6 +393,21 @@ void qemu_init_exec_dir(const char *argv0)
-             }
-         }
-     }
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index 2a9f3fe783..1d3e4c24e4 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -8,6 +8,8 @@
+ # include <machine/bswap.h>
+ #elif defined(__FreeBSD__)
+ # include <sys/endian.h>
 +#elif defined(__HAIKU__)
-+    {
-+    image_info ii;
-+    int32_t c = 0;
-+
-+    *buf = '\0';
-+    while (get_next_image_info(0, &c, &ii) == B_OK) {
-+            if (ii.type == B_APP_IMAGE) {
-+                strncpy(buf, ii.name, sizeof(buf));
-+        buf[sizeof(buf) - 1] = 0;
-+        p = buf;
-+        break;
-+            }
-+        }
-+    }
- #endif
-     /* If we don't have any way of figuring out the actual executable
-        location then try argv[0].  */
++# include <endian.h>
+ #elif defined(CONFIG_BYTESWAP_H)
+ # include <byteswap.h>
+
 -- 
 2.26.0
 
