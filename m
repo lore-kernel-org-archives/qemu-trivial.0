@@ -1,64 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jop3y-0007fC-0i
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:10:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45506)
+	id 1jopGn-0006oK-Th
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:23:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jop3w-0007c9-IO; Fri, 26 Jun 2020 10:10:40 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:39827)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jop3u-0008Kc-Ot; Fri, 26 Jun 2020 10:10:40 -0400
-Received: by mail-ej1-x643.google.com with SMTP id w6so9521504ejq.6;
- Fri, 26 Jun 2020 07:10:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BS4NyKw/eQjqIQeqjru8JtNN/x9B5olCUCO3H2/Mp0Q=;
- b=GULjc3skOq1ZIuQwdyKXSzSeJw47OONkx5GbV4cR7KOWeOooITTgmZIZ6RS3PLpamL
- h01foO+AviDszvBHXx7KOHV9c/v+0nG2raqpEjoSf3U3Q+CeS8RJYi5rQiZEURsbBD79
- J0H1lGF/ijDR8gCXLQ4lYETdwQTE+lq7N3d05is06OOBeC6lB8iJRVfRBD2C3eJvpNsO
- DL0KFZhhnrv94K3NTvhzHMXmGe6fztgS16ePWRTQ//0ozpAcRjCkyODFWu9jfRx+bpB1
- MApsQjTaURV/GP3aPNWDzOgM6OLNbJ9I7w5DRZhsn+izRl1luN2a474Wv0/U/p4QNY2t
- eb7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BS4NyKw/eQjqIQeqjru8JtNN/x9B5olCUCO3H2/Mp0Q=;
- b=eft07aWUXAzzz/qT+4P8Hmey+LVYz6sdlKwtjhLUpYrpoDxIN5XcX5I4Pi34rZ2ZX1
- UFEtkynUiEAdWdMtCScnhs41kzLeLNxYLzGbZ4sCqipLC/7WUwUz9aq5idqOrm3s5WuF
- mspFOi3pifEtkWP1aNw4MDSS2uyl8+R9UVOG+hWJvH4TVVxCHlXyX1geciQ7l6bbTn4p
- 4xK5Ufhyn+srUfJbQJAVrHD0E2t56Mu4iZjpyvMiLjJcmuw09E9Qt3dnC0mz/C8H6kzl
- prETO3yBQvUoil8bv1f3KiGPNbBo3DvDF23iurA9cjHfbhLdRK2PnYZxYmeNmZ5XTA+B
- AMkw==
-X-Gm-Message-State: AOAM532qzf2md9/sqHdW4vywOwjje099nRIqtjKpJmmLeIhtpmpNUafq
- +wLnb8t+cg7FLJO5UBUs6kQvzNV5lFYuHDJjhEu1dLy3oyQ=
-X-Google-Smtp-Source: ABdhPJyqqO4GmWR8KbGPwNvvfU4D0Xjz9orezcSlVXInER7rw0lEqGlS2pd1z9GfRfGBxMcn38BHRTTrPe+StQCdU3c=
-X-Received: by 2002:a17:906:5203:: with SMTP id
- g3mr2645113ejm.58.1593180636936; 
- Fri, 26 Jun 2020 07:10:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopGm-0006k5-J8
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:23:56 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41043
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jopGk-0000A0-SE
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:23:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593181433;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ImguQWNduFBjj+jIU8BPe58ZnlvyjcVO8neGDoaC1H4=;
+ b=FxBCntuMu9COHZ1qpKObsIgBT/rtfIgf61c+rvn2b1MSRwGyiVgFQaFDyv/vugROWc9AGJ
+ l4GkTCJMkH5e6OOtDThY+Ybef4sZ8C1Hf6b3LB7uSbZtyk/nGhG9l9B4Ma/5XUiuH/p1iz
+ JAWmTHPdGXoifq5AIVSzKLge4gNONe4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281-hhT_GzldMGSPSuM95syOfw-1; Fri, 26 Jun 2020 10:23:48 -0400
+X-MC-Unique: hhT_GzldMGSPSuM95syOfw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 137D7107ACCA;
+ Fri, 26 Jun 2020 14:23:47 +0000 (UTC)
+Received: from [10.3.114.107] (ovpn-114-107.phx2.redhat.com [10.3.114.107])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C65F45C557;
+ Fri, 26 Jun 2020 14:23:46 +0000 (UTC)
+Subject: Re: [PATCH 1/5] haiku build fix
+To: David CARLIER <devnexen@gmail.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+References: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <41b51d53-f196-be76-ee7e-ca943f6a3764@redhat.com>
+Date: Fri, 26 Jun 2020 09:23:46 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <CA+XhMqwDLw2BJ9Cf0kEyUW+J+rTPOOvebRPPkBSiWdD50wct5Q@mail.gmail.com>
- <CAFEAcA8mpiPcwgz9-7c0GgSWz2hujzegOBvHn5qasCBtuyG8ww@mail.gmail.com>
-In-Reply-To: <CAFEAcA8mpiPcwgz9-7c0GgSWz2hujzegOBvHn5qasCBtuyG8ww@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 15:10:26 +0100
-Message-ID: <CA+XhMqwyRmQ7Dtawm4tMEMRJ9EEfxep8WC6qSRCEC_WyUptG-g@mail.gmail.com>
-Subject: Re: [PATCH 1/3] haiku build fix second batch
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <CA+XhMqyDzenX2BiR7CnvZc-J91wWCX8ra==T_=WCe3xq3-n2hQ@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=eblake@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,35 +74,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 14:10:40 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 14:23:56 -0000
 
-I sent again minux the ones already approved.
+On 6/26/20 5:07 AM, David CARLIER wrote:
+>>From 4d0933384d2bfcd0fc8c4c06eed2d07f3f1b7f8b Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Fri, 26 Jun 2020 10:35:40 +0000
+> Subject: [PATCH 1/5] Haiku build fix enabling BSD symbols.
+> 
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>   configure | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Fri, 26 Jun 2020 at 14:39, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 26 Jun 2020 at 14:02, David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > From 95ef79ddff73eebd1f1bec6673c2c68209fab107 Mon Sep 17 00:00:00 2001
-> > From: David Carlier <devnexen@gmail.com>
-> > Date: Fri, 26 Jun 2020 13:56:14 +0000
-> > Subject: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros build
-> >  failure.
-> >
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
->
-> I'm afraid I'm now confused about which is the right version
-> of the various patches you've sent to the list. Our
-> https://wiki.qemu.org/Contribute/SubmitAPatch
-> documentation asks:
->  * Include a meaningful cover letter
->  * When resending patches add a version tag
->  * even if you only change one patch, you resend the entire series
->    and mark it as "v2"
->
-> Please could you send the whole set of patches you'd like
-> applied, with the subject header including "[PATCH v2]" and
-> with a cover letter email that describes the whole series?
->
-> thanks
-> -- PMM
+meta-comment: when sending a series, it's best to send a 0/5 cover 
+letter with the rest of the messages in-reply-to the cover.  This way, 
+it's easier to track the related messages when viewing in a mail reader 
+that groups by threads.
+
+More patch submission hints, including how to make 'git send-email' 
+automatically create a cover letter when needed, at:
+https://wiki.qemu.org/Contribute/SubmitAPatch
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
 
