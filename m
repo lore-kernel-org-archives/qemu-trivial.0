@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1joovr-0003OY-2B
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:02:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42704)
+	id 1joowo-0004al-If
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:03:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1joovp-0003NQ-Vk; Fri, 26 Jun 2020 10:02:17 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:46165)
+ id 1joowm-0004X1-EV; Fri, 26 Jun 2020 10:03:16 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:39106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1joovk-0003T9-LN; Fri, 26 Jun 2020 10:02:17 -0400
-Received: by mail-ed1-x542.google.com with SMTP id dm19so769987edb.13;
- Fri, 26 Jun 2020 07:02:11 -0700 (PDT)
+ id 1joowk-0003xh-TL; Fri, 26 Jun 2020 10:03:16 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id d18so1375677edv.6;
+ Fri, 26 Jun 2020 07:03:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:from:date:message-id:subject:to;
- bh=Sk4jPNPZZZQEXgb8aF5QfKzPGN3qP8PnnMdQeGvFFTU=;
- b=ZPayi8MtEppC+1aB1oPYIXmeYcYcnB9oKV74CIZXTQbrq1o4eRJaRlXBwLFFCY61Jj
- +7yg557iC1xkUwubFB6ji/btXJR90c3ylSl5lisuC4AXQfBGb6edNIhJE0+k36Sto/KC
- OKKo3l2S8ZNTFDIi7j9awtAbtha3lvc9rYnD3KB1WUz5hZ1pn4pIuFiRTkxftY5vQCdd
- 0Cl2KDa3JXHlxHgJeBUOgXR6+Wrojfdg+gNqgtDvnbp778liCoE3cvFw6Ustp0H6Ze3h
- yQ9Uh9OJLXWC5RGR/SUpcZeAVNBmm/w15TF72PIZ5g0ngWZMvKpu6kENYq01mmgx3eex
- iTVg==
+ bh=gkoQ7wKEqYIgyzpfrFvA5qo0YC+QngQ6l2mRgEwy8/M=;
+ b=ShYhlJNxBUj5aFljVu9xwGiJ3hi3g0W8gHYqmQUBTwkCI5TW9MptYdd2I6QYqH+ukp
+ zzisTUKZX118MIVP1VjPyOIqwKbJNlu2irkzbqm7jAk3kbo8EHpuWj9NHYEwa+wexvoY
+ +nfYJnyOM2TJi+qAtSxWnc9c+BkmN0s2H8HKcmxokOg/TnpnCprJZO/8gkUG7zv+EGgk
+ CUqTH2CktFeCHIEje1HqFoi8t94w6wJNfGNJaR0yafqiCOrTchdHs7+g/Pn8RN/vwiTt
+ sq20xwH1j6boc6LFRYfV/OnsMP/bqAZblAy3SAHPIJhSQdJVb1CdoWgZBXkD26btix/D
+ 3Asw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=Sk4jPNPZZZQEXgb8aF5QfKzPGN3qP8PnnMdQeGvFFTU=;
- b=JuWt9ekPeBwPgrcVINNO7SnFRxNGLuZIH5t7F97f+4tH0eq866EMNVnkTx2MZppIrv
- JhKy7pslf5dNAiY8PfoxMMY5h297lqv6/p8WHRqBTIXpk4dGQTz5MK7mtYACtiNTbv7T
- PBisV+dkNB6rkLeFXp6z9U/5QSoFmi6zMuXr3mMXSaZ/3McYadOrSvWaDnMZyncgS4IN
- ngJAEGR0wGYJLVNKyqyOscKjNP6XiVjHKVKwC6+hXHxTu1WdNoYRRYTwG9gtFCZBZJLX
- YihLQSmswhKSMM/6u1yjgLKVHgX+9ttYdI41oMVcEf/CBB/YF80cSmq7blYRqrGfO0tL
- QHEg==
-X-Gm-Message-State: AOAM533THMm0ULGCGmvXE+kMIa0fZuhoXhnDqoyllRkfntzAJtEopYtT
- kdUPyYq3EfS2uf0JjXPGViXRaANkM55zv6RDixdulsRYxPZCDg==
-X-Google-Smtp-Source: ABdhPJx5FlwKxaqa0AfRsJPr1OaULD567mNbq6Pzs+KwqW7iTimIGlfy4QDOhmpdRyPA62Js4j/3UOttBgLKuMVgps0=
-X-Received: by 2002:aa7:d792:: with SMTP id s18mr3580645edq.7.1593180125760;
- Fri, 26 Jun 2020 07:02:05 -0700 (PDT)
+ bh=gkoQ7wKEqYIgyzpfrFvA5qo0YC+QngQ6l2mRgEwy8/M=;
+ b=paE17ELw746aRqz0RJdmSWq94n3QStZF4idCV2aGydUJChN3ht/dmesvCH1HcnowOt
+ S2z4hZqVxcEd6iTagbUD9YcsV1RfD2ybvFhovrc5TH0k5gNrP9vp1comoPeq38iDwXlE
+ +xZmgK+7vRYItDtKLM/GjZAigqqdhJlMz48EReX2KDrQY2thLV1MOpL1XvMrDLGOaSX4
+ VAPk5ekdK38AQL5Cizer1yh0R62B1hEFyb9x72avPnRJGfyLZCjJgcSt6blu0RXoMhQm
+ silxNh/3ixqy9EBhpfJnutKWVIddSB3JVvTPQBjukPpX6ipFApi5wOvueMqpM+aa1PqO
+ QcnQ==
+X-Gm-Message-State: AOAM532mLi1scFx3JHKMFsKb33/DHJWOJelcGXRIPfVQLshnjpvfMEEa
+ ba2JGjklwNgElTacTB9UpGKsNusq6JBllDu1d1n8JOAn6z1d8g==
+X-Google-Smtp-Source: ABdhPJwGsdeLQDdnnzCB2xswnyc+30sR/haetUsD2Abfm+DrsHvj3kWvzjpfy5fSIlrji2ksuXa7XdGaKFsv6wgMgM8=
+X-Received: by 2002:a50:9a82:: with SMTP id p2mr3456498edb.130.1593180193043; 
+ Fri, 26 Jun 2020 07:03:13 -0700 (PDT)
 MIME-Version: 1.0
 From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 15:01:55 +0100
-Message-ID: <CA+XhMqxZKmaR6hdq3B5OBq=z3ah2SGEETOZQph7OWQxHrixKKQ@mail.gmail.com>
-Subject: [PATCH 1/3] : haiku check sys signal.h presence
+Date: Fri, 26 Jun 2020 15:03:02 +0100
+Message-ID: <CA+XhMqzMSoD6Y6FVLk1MC6JgL-+GXWXBBe=gJiKAtLa8sW1LdA@mail.gmail.com>
+Subject: [PATCH 2/3] define SIGIO for haiku
 To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x52d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -65,84 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 14:02:18 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 14:03:16 -0000
 
-From a4dfa918e6eea7a5ccc4375d83d1f0162e3bb122 Mon Sep 17 00:00:00 2001
+From d36aba6190152c626f668fef3704ee6b61bfc323 Mon Sep 17 00:00:00 2001
 From: David Carlier <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 13:43:59 +0000
-Subject: [PATCH 1/3] check sys/signal.h presence
+Date: Fri, 26 Jun 2020 13:45:04 +0000
+Subject: [PATCH 2/3] define SIGIO for haiku
 
 Signed-off-by: David Carlier <devnexen@gmail.com>
 ---
- configure                   | 8 ++++++++
- hw/xen/xen-legacy-backend.c | 1 -
- include/qemu/osdep.h        | 2 +-
- util/oslib-posix.c          | 1 -
- 4 files changed, 9 insertions(+), 3 deletions(-)
+ include/qemu/osdep.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/configure b/configure
-index ba88fd1824..5101fd79fd 100755
---- a/configure
-+++ b/configure
-@@ -3181,6 +3181,11 @@ if ! check_include "ifaddrs.h" ; then
-   have_ifaddrs_h=no
- fi
-
-+have_sys_signal_h=no
-+if check_include "sys/signal.h" ; then
-+  have_sys_signal_h=yes
-+fi
-+
- ##########################################
- # VTE probe
-
-@@ -7286,6 +7291,9 @@ fi
- if test "$have_broken_size_max" = "yes" ; then
-     echo "HAVE_BROKEN_SIZE_MAX=y" >> $config_host_mak
- fi
-+if test "$have_sys_signal_h" = "yes" ; then
-+    echo "CONFIG_SYS_SIGNAL=y" >> $config_host_mak
-+fi
-
- # Work around a system header bug with some kernel/XFS header
- # versions where they both try to define 'struct fsxattr':
-diff --git a/hw/xen/xen-legacy-backend.c b/hw/xen/xen-legacy-backend.c
-index 2335ee2e65..92f08fca29 100644
---- a/hw/xen/xen-legacy-backend.c
-+++ b/hw/xen/xen-legacy-backend.c
-@@ -23,7 +23,6 @@
-  */
-
- #include "qemu/osdep.h"
--#include <sys/signal.h>
-
- #include "hw/sysbus.h"
- #include "hw/boards.h"
 diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index ff7c17b857..f88fe23936 100644
+index f88fe23936..860bb3c16c 100644
 --- a/include/qemu/osdep.h
 +++ b/include/qemu/osdep.h
-@@ -104,7 +104,7 @@ extern int daemon(int, int);
- #include <setjmp.h>
- #include <signal.h>
-
--#ifdef __OpenBSD__
-+#ifdef CONFIG_SYS_SIGNAL
- #include <sys/signal.h>
+@@ -388,6 +388,10 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+ #define HAVE_CHARDEV_PARPORT 1
  #endif
 
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 39ddc77c85..7ad9195c44 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -38,7 +38,6 @@
- #include "qemu/sockets.h"
- #include "qemu/thread.h"
- #include <libgen.h>
--#include <sys/signal.h>
- #include "qemu/cutils.h"
-
- #ifdef CONFIG_LINUX
++#if defined(__HAIKU__)
++#define SIGIO SIGPOLL
++#endif
++
+ #if defined(CONFIG_LINUX)
+ #ifndef BUS_MCEERR_AR
+ #define BUS_MCEERR_AR 4
 -- 
 2.26.0
 
