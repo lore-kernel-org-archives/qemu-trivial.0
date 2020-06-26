@@ -1,65 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jorT9-0000DJ-Kj
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 12:44:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58564)
+	id 1jos1u-0005Ka-4J
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:20:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jorT7-00006j-9H
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 12:44:49 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51972
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jos1s-0005KM-77
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:20:44 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23368
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jorT5-0007MD-Mx
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 12:44:48 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jos1p-00055U-8u
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:20:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593189887;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=THjSHFXW5OWYQXUjbOgTZCQR9lPztYkWqZ/Y57Uc3s8=;
- b=dX69hQChXEt65zZ0vqtfRdSlPyvvNFa6ofNeVs7zGbOT5K237omFHoKiR+vqim7e+jO57j
- tOUwiDKjPMTq+uF/3HzSszhM0DhBhWtcBr4lSvlEoJaR/ThtYskhn6f5CALW5ijGWIgaG+
- jttEvqaxVARfnodAUXbexGMuqcML/Vg=
+ s=mimecast20190719; t=1593192039;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=QuqGjggvsmfPwxe68Fb1bistREg++TFgtdlbLZ6NECg=;
+ b=EXHBvgF0VURpCKfZurpggfLNoM5oECJSurDYXHNvZNO5k3wZKyvfVtBr8L60dn6dMCc/cX
+ 0p1dlLtE1Qr7kRECpDoPQeUx8YZ05xyui09K/UR5Qbai2gYVyiD5yI49vKI1raOOGbCssR
+ mjhP+EDFqqVK7jYlvm2xGzxhPdjmwyQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-259-p7x5DZ_xPSSBFUlrg42wsg-1; Fri, 26 Jun 2020 12:44:45 -0400
-X-MC-Unique: p7x5DZ_xPSSBFUlrg42wsg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-473-XBahe6BZMlCH9FP3yV4cwA-1; Fri, 26 Jun 2020 13:20:23 -0400
+X-MC-Unique: XBahe6BZMlCH9FP3yV4cwA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 03AFA805EEF;
- Fri, 26 Jun 2020 16:44:44 +0000 (UTC)
-Received: from turbo.com (ovpn-112-91.ams2.redhat.com [10.36.112.91])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6FA1D1757A;
- Fri, 26 Jun 2020 16:44:15 +0000 (UTC)
-From: Christophe de Dinechin <dinechin@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Richard Henderson <rth@twiddle.net>, Gerd Hoffmann <kraxel@redhat.com>,
- Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH 10/10] REMOVE: Instrumentation to show the module functions
- being replaced
-Date: Fri, 26 Jun 2020 18:43:07 +0200
-Message-Id: <20200626164307.3327380-11-dinechin@redhat.com>
-In-Reply-To: <20200626164307.3327380-1-dinechin@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48695804003;
+ Fri, 26 Jun 2020 17:20:22 +0000 (UTC)
+Received: from redhat.com (unknown [10.36.110.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D193517D68;
+ Fri, 26 Jun 2020 17:20:06 +0000 (UTC)
+Date: Fri, 26 Jun 2020 18:20:03 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Christophe de Dinechin <dinechin@redhat.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH 04/10] spice: Move all the spice-related code in
+ spice-app.so
+Message-ID: <20200626172003.GL1028934@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20200626164307.3327380-1-dinechin@redhat.com>
+ <20200626164307.3327380-5-dinechin@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20200626164307.3327380-5-dinechin@redhat.com>
+User-Agent: Mutt/1.14.0 (2020-05-02)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=dinechin@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 03:23:21
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -67,7 +69,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,40 +82,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 16:44:49 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 17:20:44 -0000
 
-Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
----
- include/qemu/module.h | 4 ++++
- 1 file changed, 4 insertions(+)
+On Fri, Jun 26, 2020 at 06:43:01PM +0200, Christophe de Dinechin wrote:
+> If we want to build spice as a separately loadable module, we need to
+> put all the spice code in one loadable module, because the build
+> system does not know how to deal with dependencies yet.
+> 
+> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+> ---
+>  audio/Makefile.objs   | 2 +-
+>  chardev/Makefile.objs | 3 +--
+>  ui/Makefile.objs      | 8 ++++----
+>  3 files changed, 6 insertions(+), 7 deletions(-)
+> 
+> diff --git a/audio/Makefile.objs b/audio/Makefile.objs
+> index b4a4c11f31..298c895ff5 100644
+> --- a/audio/Makefile.objs
+> +++ b/audio/Makefile.objs
+> @@ -1,5 +1,5 @@
+>  common-obj-y = audio.o audio_legacy.o noaudio.o wavaudio.o mixeng.o
+> -common-obj-$(CONFIG_SPICE) += spiceaudio.o
+> +spice-app.mo-objs += ../audio/spiceaudio.o
 
-diff --git a/include/qemu/module.h b/include/qemu/module.h
-index 1922a0293c..8d6e10ba81 100644
---- a/include/qemu/module.h
-+++ b/include/qemu/module.h
-@@ -14,10 +14,13 @@
- #ifndef QEMU_MODULE_H
- #define QEMU_MODULE_H
- 
-+#include "trace/recorder.h"
- 
- #define DSO_STAMP_FUN         glue(qemu_stamp, CONFIG_STAMP)
- #define DSO_STAMP_FUN_STR     stringify(DSO_STAMP_FUN)
- 
-+RECORDER_DECLARE(modules);
-+
- #ifdef BUILD_DSO
- void DSO_STAMP_FUN(void);
- /* This is a dummy symbol to identify a loaded DSO as a QEMU module, so we can
-@@ -55,6 +58,7 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
-     static void __attribute__((constructor)) Name##_register(void)      \
-     {                                                                   \
-         Name = Name##_implementation;                                   \
-+        record(modules, "Setting " #Name " to %p", Name);               \
-     }                                                                   \
-     Ret Name##_implementation Args
- #else /* !CONFIG_MODULES */
+Explicitly showing paths in the variables doesn't look right. The
+make recipes are supposed to automatically expand bare file names
+to add the right path. This is usually dealt with by a call to
+the "unnest-vars" function.
+
+>  common-obj-$(CONFIG_AUDIO_COREAUDIO) += coreaudio.o
+>  common-obj-$(CONFIG_AUDIO_DSOUND) += dsoundaudio.o
+>  common-obj-$(CONFIG_AUDIO_WIN_INT) += audio_win_int.o
+> diff --git a/chardev/Makefile.objs b/chardev/Makefile.objs
+> index fc9910d4f2..955fac0cf9 100644
+> --- a/chardev/Makefile.objs
+> +++ b/chardev/Makefile.objs
+> @@ -22,5 +22,4 @@ common-obj-$(CONFIG_BRLAPI) += baum.o
+>  baum.o-cflags := $(SDL_CFLAGS)
+>  baum.o-libs := $(BRLAPI_LIBS)
+>  
+> -common-obj-$(CONFIG_SPICE) += spice.mo
+> -spice.mo-objs := spice.o
+> +spice-app.mo-objs += ../chardev/spice.o
+> diff --git a/ui/Makefile.objs b/ui/Makefile.objs
+> index 504b196479..1ab515e23d 100644
+> --- a/ui/Makefile.objs
+> +++ b/ui/Makefile.objs
+> @@ -11,7 +11,6 @@ common-obj-y += keymaps.o console.o cursor.o qemu-pixman.o
+>  common-obj-y += input.o input-keymap.o input-legacy.o kbd-state.o
+>  common-obj-y += input-barrier.o
+>  common-obj-$(CONFIG_LINUX) += input-linux.o
+> -common-obj-$(CONFIG_SPICE) += spice-core.o spice-input.o spice-display.o
+>  common-obj-$(CONFIG_COCOA) += cocoa.o
+>  common-obj-$(CONFIG_VNC) += $(vnc-obj-y)
+>  common-obj-$(call lnot,$(CONFIG_VNC)) += vnc-stubs.o
+> @@ -53,10 +52,11 @@ curses.mo-objs := curses.o
+>  curses.mo-cflags := $(CURSES_CFLAGS) $(ICONV_CFLAGS)
+>  curses.mo-libs := $(CURSES_LIBS) $(ICONV_LIBS)
+>  
+> -ifeq ($(CONFIG_GIO)$(CONFIG_SPICE),yy)
+> -common-obj-$(if $(CONFIG_MODULES),m,y) += spice-app.mo
+> +common-obj-$(CONFIG_SPICE) += spice-app.mo
+> +spice-app.mo-objs += spice-core.o spice-input.o spice-display.o
+> +ifeq ($(CONFIG_GIO)$(CONFIG_SPICE),ym)
+> +spice-app.mo-objs += spice-app.o
+>  endif
+> -spice-app.mo-objs := spice-app.o
+>  spice-app.mo-cflags := $(GIO_CFLAGS)
+>  spice-app.mo-libs := $(GIO_LIBS)
+>  
+> -- 
+> 2.26.2
+> 
+> 
+
+Regards,
+Daniel
 -- 
-2.26.2
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
