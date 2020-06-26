@@ -1,58 +1,108 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jop1R-0003T8-NA
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:08:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44542)
+	id 1jop23-0004Mg-86
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 10:08:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jop1Q-0003RK-Jm; Fri, 26 Jun 2020 10:08:04 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:40350)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jop1P-0006do-1E; Fri, 26 Jun 2020 10:08:04 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id b15so7035828edy.7;
- Fri, 26 Jun 2020 07:08:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=+LJEOKxiY+rlBRL2d3e3qAL3DIgyLYq2ScPrVfPLxJo=;
- b=ME2Ad7TtdCSp9tpf7w8d8rLlGHTJQoy/is31JVgxKFnHHRwvMiELarwxMo2OXnTLXf
- hr4Y9iNqjAD76YU0rOrHjWGjHgeqdP/FwhK3DR45984IAuicJvyAPXlbJx4UM/y58scl
- G8qWJlTY6gBBrYgO9Jg0eLKz7U4uNf4WN1w02HzUrkQxT94kKIe22/r4Yv2MCu0akfAP
- V/ut0A0ztcfwjv3y6ijp28vOPslgSXsmqm7CSW4EdHTwIFelb3U2D4CoMZVCATeYwd3l
- epHTqFtaOcgWpsr1f/MaLZvXsR7OgJ2cvk6qJmKicxaYP6Wn/3py38Tg8sUZpYSM9UWD
- tmnA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jop21-0004IM-Cp
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:08:41 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25322
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jop1z-0006sm-32
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 10:08:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593180518;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=vEMG0/wcB2O7zv991ojSZZn6omyF904By/r+ZV6+Zz8=;
+ b=FwTNgtOxsBQjxw6dNGNSMhIP3bg5j4Se6PFdYeyLIzcNBMHdd2ZYhsH5/j3x4f7v4M9EmJ
+ pXMaifOfKudiyownJLh9KkzHiKAYJNlmN1z9/m+kVcEjFizrXSC8YutbCG230drNqZ5/si
+ 0OIG91l4ifjRc3FLrOT5CR1kGnySvPc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-9--1j9eGc2NrWjY44TcDry9Q-1; Fri, 26 Jun 2020 10:08:36 -0400
+X-MC-Unique: -1j9eGc2NrWjY44TcDry9Q-1
+Received: by mail-wr1-f71.google.com with SMTP id i5so9727040wra.9
+ for <qemu-trivial@nongnu.org>; Fri, 26 Jun 2020 07:08:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=+LJEOKxiY+rlBRL2d3e3qAL3DIgyLYq2ScPrVfPLxJo=;
- b=ucRQumbrJMqSQJECeazqLdgMWHPmoSEcUDDW4kP71LLPnBxYNAtzWlLJVAULHDZTXz
- loPclRctqhQZNAwwytZ4x3YdGq9xE9E+NooxpH7BTDeB/wkif+EUxJI9EnHte032TNJC
- u0zNJ2Oq9VTk6I6erIQVaBrrz4Bwr6nqX+kOE5Qu5v7GS4XJOV36jEw72ab59FVau+is
- pnV+JIP1W7WF+Uxk31mROFuLl9YOk8Fin0pwWpI0bYleY+/+Ar+rL2tqEcgtZmvq7U+i
- sRET/PA8pcKMq+9GYQTOBgXqHpCY6URbgVm5xhjn4bHbFNl+B+Lq5dQTMcIeIjtBucu6
- bkIg==
-X-Gm-Message-State: AOAM530J4hfjDh3d7yYxm8UCazBx2SPT6S96pcrMWuGyX2YJXBbzQJYd
- 7GwyJvpAhLqiNx1PFfC49DeHrOsupvC970JxIPX4QDWXul/L7A==
-X-Google-Smtp-Source: ABdhPJx8ZhIR9EERhjSVxJOvPFoQl/HAG5/Bc6/eeXf3JTF+zX8lGf8D3baTE/7EXFz05DRiDUWLB5Bx9qzeIdCBVlU=
-X-Received: by 2002:a50:cf05:: with SMTP id c5mr3702130edk.232.1593180480937; 
- Fri, 26 Jun 2020 07:08:00 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=vEMG0/wcB2O7zv991ojSZZn6omyF904By/r+ZV6+Zz8=;
+ b=VdiJOOrnf2ndi3xn5J/urQ7II/mGwE0BajfmE0xMkkhaqo6TPbjHB1QQ8ORkFHww71
+ uTHnB0Jks4klIBcAAhhL63qupF/xWre7NmzuDFyLW1q77nRsnepW2eIeaipZ7pPuQ+mM
+ J3NYkakts2PLCEqx1sQqhJhbJqOnSJqT4NhVSxFuzbAVx8ih8U2YG5t4vIPkXgynmBvd
+ /+AXzDjkY8pP+iEQgDZzaVLFWtGgjPWjNMuUPeJrjQ7M75pPIPWGJxYWP4ih7Na0Ct8Y
+ PylAWgRJHbSau8rhdbwHF5USjSQECzxqnqGUwiLawvdv/FcN3iiOBcq8WiXdnBcCOHEV
+ YH0g==
+X-Gm-Message-State: AOAM533UY0rLmp1PB3UbIkejwceuUV9bb56WMNiONQc9nSOLDGigW1Fi
+ CILakle2JqOA+8LY3PdpK7THP6MlbNJzbJFB3ECLTzd8p3U5AhVPl97813YthLhdQgtY2Mkc4Fw
+ mbhQz0N3FJzE6TGQV6A==
+X-Received: by 2002:a5d:4b45:: with SMTP id w5mr3817892wrs.4.1593180515074;
+ Fri, 26 Jun 2020 07:08:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKrTgs+S8bSNruFPN1HAEEgyKYSe9YGg77MEF0t1N6eAWc2KWeDX+D+cN9CxLnHa5CBeZlXA==
+X-Received: by 2002:a5d:4b45:: with SMTP id w5mr3817883wrs.4.1593180514911;
+ Fri, 26 Jun 2020 07:08:34 -0700 (PDT)
+Received: from [192.168.1.37] (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id p17sm16971872wma.47.2020.06.26.07.08.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Jun 2020 07:08:34 -0700 (PDT)
+Subject: Re: [PATCH 2/3] define SIGIO for haiku
+To: David CARLIER <devnexen@gmail.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+References: <CA+XhMqzMSoD6Y6FVLk1MC6JgL-+GXWXBBe=gJiKAtLa8sW1LdA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <51bd8e50-0621-2a43-ce99-2a4cf8931905@redhat.com>
+Date: Fri, 26 Jun 2020 16:08:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 15:07:50 +0100
-Message-ID: <CA+XhMqxWiXK=7TbbdKFDMe_Jeh--Z6fcckQn7y=vg+NQ_Pbo7w@mail.gmail.com>
-Subject: [PATCH 2/3] drm build ignored for Haiku.
-To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=devnexen@gmail.com; helo=mail-ed1-x52f.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <CA+XhMqzMSoD6Y6FVLk1MC6JgL-+GXWXBBe=gJiKAtLa8sW1LdA@mail.gmail.com>
+Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,31 +115,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 14:08:04 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 14:08:41 -0000
 
-From 338a25285d945c891eb4fa34a18cb45b8b05dbb1 Mon Sep 17 00:00:00 2001
-From: David Carlier <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 13:57:08 +0000
-Subject: [PATCH 2/3] drm build ignored for Haiku.
+Maybe "Define SIGIO on Haiku OS" as patch subject...
 
-Signed-off-by: David Carlier <devnexen@gmail.com>
----
- util/Makefile.objs | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 6/26/20 4:03 PM, David CARLIER wrote:
+> From d36aba6190152c626f668fef3704ee6b61bfc323 Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Fri, 26 Jun 2020 13:45:04 +0000
+> Subject: [PATCH 2/3] define SIGIO for haiku
+> 
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>  include/qemu/osdep.h | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index f88fe23936..860bb3c16c 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -388,6 +388,10 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+>  #define HAVE_CHARDEV_PARPORT 1
+>  #endif
+> 
+> +#if defined(__HAIKU__)
 
-diff --git a/util/Makefile.objs b/util/Makefile.objs
-index cc5e37177a..faebc13fac 100644
---- a/util/Makefile.objs
-+++ b/util/Makefile.objs
-@@ -39,7 +39,7 @@ util-obj-y += qsp.o
- util-obj-y += range.o
- util-obj-y += stats64.o
- util-obj-y += systemd.o
--util-obj-$(CONFIG_POSIX) += drm.o
-+util-obj-$(CONFIG_LINUX) += drm.o
- util-obj-y += guest-random.o
- util-obj-$(CONFIG_GIO) += dbus.o
- dbus.o-cflags = $(GIO_CFLAGS)
--- 
-2.26.0
+Maybe safer as:
+
+   #if defined(__HAIKU__) && !defined(SIGIO)
+
+> +#define SIGIO SIGPOLL
+> +#endif
+> +
+>  #if defined(CONFIG_LINUX)
+>  #ifndef BUS_MCEERR_AR
+>  #define BUS_MCEERR_AR 4
+> 
+
+Preferably with the suggested changes:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 
