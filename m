@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jonyw-0007lE-85
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 09:01:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52376)
+	id 1jonzK-0008PQ-8K
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 09:01:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jonyu-0007hx-KB; Fri, 26 Jun 2020 09:01:24 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:33233)
+ id 1jonzI-0008MB-IA; Fri, 26 Jun 2020 09:01:48 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:36858)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jonyt-00039W-0X; Fri, 26 Jun 2020 09:01:24 -0400
-Received: by mail-ej1-x630.google.com with SMTP id n24so9303898ejd.0;
- Fri, 26 Jun 2020 06:01:22 -0700 (PDT)
+ id 1jonzG-0003JG-P4; Fri, 26 Jun 2020 09:01:48 -0400
+Received: by mail-ed1-x544.google.com with SMTP id dg28so6858355edb.3;
+ Fri, 26 Jun 2020 06:01:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:from:date:message-id:subject:to;
- bh=+LJEOKxiY+rlBRL2d3e3qAL3DIgyLYq2ScPrVfPLxJo=;
- b=uOXe8qXMHZQ21L9po3+BdE2Y47zrStBsGOQx+L54KSSQAhEOpKN1/k0dO4PV40KFV5
- LMCURlskPinWthfkkN829JBVoG5d7FE61+6THoedFTyFqa3npqJpHVbGsAORnK1GKqwP
- czJFbjsSacY0Aa8X3mA24uevoeV9dtN1RP34blHOsQ4ZNgf17C7lDQ/z1sKgdmNEFmlY
- JXrKMqoctWrdtgI+1BtfHSzLiF8D4FOZRRMABtrWls9JNUm6ZaysrlEtmU0pj08nB9Ar
- 4JsoG9jmnVFacdXv91f1/fbFL+dake8ELPYh5kszlM6K/Rey8IkRqanOd6CJvdomZh0P
- LwsA==
+ bh=x+ueAwuuCoBhWE4SweeoDogBc0rLsINh3QqIieHvwp4=;
+ b=JcO+ii/1+CWaULQZ2KI0lI19Lb3DI42/E5HZJn2kD2weVN8PlUMwyHnRj1dJFGWy0e
+ kxIIjGAvpmZsIi7qa58OzpAaq8HlEjpq7rZflPArQUYE8E08XvlXr1GDciudNG5Anv1D
+ zlFKKkmEIYYO+B40qPaC5EVJP1AYWR5GVPEFKTzoRVCJq24SRMdeE9vzlPkXFfEND9Zz
+ 6ytDibyz8r+SssA11b6BfwpscEaaF7oxZJMPexxXtllyGHxbfyWm3SB+h6NB6qpTHK+y
+ DmuQVcGMXWxCCFSMVZFyiAdmVQLOD2rSMhl+8lEUPU742gFRpYi2gpmAxtI0UKFt6fiq
+ fsqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=+LJEOKxiY+rlBRL2d3e3qAL3DIgyLYq2ScPrVfPLxJo=;
- b=ND5UtVBZNRp3UL9/Lzuu5BGU7netZwMsTd14f9z2bAPHn/HIwVcY1dsirakD0JqlxY
- ZWXUBwM0fl3ZlS8XzIfTQ9iYtsCSHEW+aAzfFyWXwhOr+dUnVe3yiSt+YOJEpnA0BVYT
- 0DItmwah8tPffdYer5JEJnIXxYNKpnHZMKvkbzQrB4ysQ0mOIwIlROPOSgdJG5skC/ws
- HjlkBd+QnbLOahirFvSYgCqxmLhF7x53DRJs0MZer5ZiaJ/Hj2A7ETBWEtboWFpuGZiv
- OX05h475ErBiZPiuQGAIgtIyFpmncCTwQUXFC7YZF6HdM9iQ8whbUzj3LeumweR/WMD1
- H9NQ==
-X-Gm-Message-State: AOAM532DzFn8N3e6GOjOr3oAlXmgjqiQ2qocg95zcj5oA+Dzd8qQUaFz
- 9dvodm+HQcFt0ycV5LkQGDFcRh10Fn0crSwy3xVOGT9pyyw=
-X-Google-Smtp-Source: ABdhPJxyBB4OIBdix2LVzyE0xwd+oNkLzUuX93NUsK6/SxFzyHwc8s98zgfaJrLrl9qgDCfD+6VQDog2U4w1tSUKd0U=
-X-Received: by 2002:a17:906:58c:: with SMTP id
- 12mr2326552ejn.311.1593176480386; 
- Fri, 26 Jun 2020 06:01:20 -0700 (PDT)
+ bh=x+ueAwuuCoBhWE4SweeoDogBc0rLsINh3QqIieHvwp4=;
+ b=DYouJ0RvS+YtEoj9/8aX2xXywHFBfNA+ymski+EUs2JuOYksW4tUCTjVsuhELgsXqM
+ ND3lK2mFZKUZa2ODxDg7LKgkZmAP/feOxzRxQJ909uRI8TDHgXMUyteohu2YgS6CfK3q
+ jiunWqfjMQ5aRy61cLfdXMdciNyY0kp3jVYiyhWXXsZ46a5X7bxfHta7z9oRXFY79074
+ PEsnYJcoHJ6PaVZZZ/EI+LR2W/j+jmWHc5oVyykKAcbZYX9nwz9azvvInLXXaspvb+rX
+ /EaWyEGeB4yQWu2LNGnTbQ7ozpKx4jfrGtAkhjill8Fv7Q0GnlGCREhOcotOJz1/5z6g
+ 5N7A==
+X-Gm-Message-State: AOAM532cxSuSNnhljNf7HgWF+n1eBToyvVJ3tI66fP/geGZBqcG0oBef
+ ISths9WWozomcD3nIBXqK9ZpPz9bHHY6eakG/1tZvpVYZ8I=
+X-Google-Smtp-Source: ABdhPJy+M2N9BrkiZlV7swDsVS8lr+foMdrRj87zqll0xgJJ6C3k5biHUlV4OF1DhIKDmM0vzIOa9y1wDtnuMg8vn0U=
+X-Received: by 2002:a50:9a82:: with SMTP id p2mr3170066edb.130.1593176504825; 
+ Fri, 26 Jun 2020 06:01:44 -0700 (PDT)
 MIME-Version: 1.0
 From: David CARLIER <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 14:01:09 +0100
-Message-ID: <CA+XhMqzAifFuy81abDt=2ijd_O9BGgCLyDPsKoytdWbrM3KmWA@mail.gmail.com>
-Subject: [PATCH 2/3] haiku build fix second batch
+Date: Fri, 26 Jun 2020 14:01:34 +0100
+Message-ID: <CA+XhMqwEHEEmw+8tnRM8r-Ds4fLKpTBxAqbxVtjr2JZEJdMf4w@mail.gmail.com>
+Subject: [PATCH 3/3] haiku build fix
 To: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -66,31 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 13:01:24 -0000
+X-List-Received-Date: Fri, 26 Jun 2020 13:01:49 -0000
 
-From 338a25285d945c891eb4fa34a18cb45b8b05dbb1 Mon Sep 17 00:00:00 2001
+From a548479cab82200d9df33a70f24aeebb00eb70ad Mon Sep 17 00:00:00 2001
 From: David Carlier <devnexen@gmail.com>
-Date: Fri, 26 Jun 2020 13:57:08 +0000
-Subject: [PATCH 2/3] drm build ignored for Haiku.
+Date: Fri, 26 Jun 2020 13:58:34 +0000
+Subject: [PATCH 3/3] syscall skipped for haiku used only in qemu_signalfd
+ anyway
 
 Signed-off-by: David Carlier <devnexen@gmail.com>
 ---
- util/Makefile.objs | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ util/compatfd.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/util/Makefile.objs b/util/Makefile.objs
-index cc5e37177a..faebc13fac 100644
---- a/util/Makefile.objs
-+++ b/util/Makefile.objs
-@@ -39,7 +39,7 @@ util-obj-y += qsp.o
- util-obj-y += range.o
- util-obj-y += stats64.o
- util-obj-y += systemd.o
--util-obj-$(CONFIG_POSIX) += drm.o
-+util-obj-$(CONFIG_LINUX) += drm.o
- util-obj-y += guest-random.o
- util-obj-$(CONFIG_GIO) += dbus.o
- dbus.o-cflags = $(GIO_CFLAGS)
+diff --git a/util/compatfd.c b/util/compatfd.c
+index c296f55d14..ee47dd8089 100644
+--- a/util/compatfd.c
++++ b/util/compatfd.c
+@@ -16,7 +16,9 @@
+ #include "qemu/osdep.h"
+ #include "qemu/thread.h"
+
++#if defined(CONFIG_SIGNALFD)
+ #include <sys/syscall.h>
++#endif
+
+ struct sigfd_compat_info
+ {
 -- 
 2.26.0
 
