@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jq3Aj-0000Dr-Dn
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 19:26:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52500)
+	id 1jq3LP-0002k8-Mt
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 19:37:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jq3Ah-0000Dj-Qd
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 19:26:43 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54599
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jq3LO-0002iw-MT
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 19:37:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43683
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jq3Af-0005uA-8W
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 19:26:43 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jq3LM-0007T9-PK
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 19:37:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593473199;
+ s=mimecast20190719; t=1593473863;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=wRBxNXZQd5hzfCPOwFk94wS55sAADrerShYncLtA0LM=;
- b=WNyW7gda99o7vfDmp4OtIsUUxI6L8xJKnGpS+oROcei3Y56VCxjIX0g6I2w2I2LDZrvO0e
- srQ1PAT+5vCw6mNsMuUcDSxZu4MqSzCtsWY9V5FMKOzR0Jw1uQu08XFppjChjRBlsIKeLI
- NekaIdTAo72dBRsRvY480CgaxLMRVfA=
+ bh=+7YVkM+g1PjLiO5lx7gcTQSp4mjpYCEhp8f+Ll6Wfvs=;
+ b=iZNUeSSroC/UyM0GbTn+LS3VFq4jGjwPVopTUvyk1FQIyOmPUM0rkDpYd8eEkU9XMtsdav
+ p7uBjlW50nQ3zmimVR/7C3JHTqYjy8L9DypVaVAGcRAVlyAvDLMp3/bstKFf2Q0BS6fDbe
+ yX4KPrTIskck6FGI1iM0guEfQ3hcpNE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-495-H0kQoUphPQqmVS67fJ4SHQ-1; Mon, 29 Jun 2020 19:26:33 -0400
-X-MC-Unique: H0kQoUphPQqmVS67fJ4SHQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-42-281jkQKfMuCZCDnmprHCeA-1; Mon, 29 Jun 2020 19:37:39 -0400
+X-MC-Unique: 281jkQKfMuCZCDnmprHCeA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2738D1800D42;
- Mon, 29 Jun 2020 23:26:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 337AEEC1A2;
+ Mon, 29 Jun 2020 23:37:38 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-41.ams2.redhat.com
  [10.36.112.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5868F7BEA3;
- Mon, 29 Jun 2020 23:26:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 893B85C1B2;
+ Mon, 29 Jun 2020 23:37:29 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 1786059CC; Tue, 30 Jun 2020 01:26:22 +0200 (CEST)
-Date: Tue, 30 Jun 2020 01:26:22 +0200
+ id 9D1A059CC; Tue, 30 Jun 2020 01:37:27 +0200 (CEST)
+Date: Tue, 30 Jun 2020 01:37:27 +0200
 From: Gerd Hoffmann <kraxel@redhat.com>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Christophe de Dinechin <dinechin@redhat.com>, qemu-devel@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+To: Christophe de Dinechin <dinechin@redhat.com>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 05/10] build: Avoid build failure when building drivers
- as modules
-Message-ID: <20200629232622.jnop64vnugp3wexa@sirius.home.kraxel.org>
+ Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Richard Henderson <rth@twiddle.net>, Cleber Rosa <crosa@redhat.com>
+Subject: Re: [PATCH 04/10] spice: Move all the spice-related code in
+ spice-app.so
+Message-ID: <20200629233727.muu4zifbzovnhsq5@sirius.home.kraxel.org>
 References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-6-dinechin@redhat.com>
- <20200626172300.GM1028934@redhat.com>
+ <20200626164307.3327380-5-dinechin@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200626172300.GM1028934@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20200626164307.3327380-5-dinechin@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 19:26:39
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 19:00:37
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -82,32 +82,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jun 2020 23:26:44 -0000
+X-List-Received-Date: Mon, 29 Jun 2020 23:37:46 -0000
 
   Hi,
 
-> > +#
-> > +# common-obj-m has some crap here, probably as side effect from
-> > +# filling obj-y.  Clear it.  Fixes suspicious dependency errors when
-> > +# building devices as modules.
-> > +#
-> > +common-obj-m :=
-> 
-> This comment doesn't fill me with confidence - makes it feel like there's
-> some more important root cause that needs addressing instead.
+>  common-obj-y = audio.o audio_legacy.o noaudio.o wavaudio.o mixeng.o
+> -common-obj-$(CONFIG_SPICE) += spiceaudio.o
+> +spice-app.mo-objs += ../audio/spiceaudio.o
 
-It's my fault, see also
-  https://patchwork.ozlabs.org/project/qemu-devel/patch/20200624131045.14512-5-kraxel@redhat.com/
+Hmm.  audio/audio.c will try to load audio-${backend}.so when you run
+qemu -audiodev ${backend}, so I suspect this is not going to work ...
 
-I think the underlying problem is that the functions building *-m
-variables do not properly handle per-target objects.  Which has no bad
-side effects as long as we never recurse into hw/, but if we want build
-devices as modules we have to ...
-
-Unless we want build per-target code as module the above should do the
-trick I think.
-
-Better suggestions are welcome of course.
+I guess we should better try to tackle modules depending on modules
+problem.  Given that g_module_open() doesn't support a custom shared
+object search path I suspect we can't simply link audio-spice.so against
+ui-spice-core.so and let the dynamic linker handle this for us.
+Probably qemu needs a list of dependencies it'll check on module load
+...
 
 take care,
   Gerd
