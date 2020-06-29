@@ -1,74 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1josGl-0006XK-IE
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jun 2020 13:36:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45748)
+	id 1jpoyd-0003Dz-EF
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 04:17:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50398)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1josGk-0006X3-I0
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:36:06 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:57368
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1josGh-0001sJ-68
- for qemu-trivial@nongnu.org; Fri, 26 Jun 2020 13:36:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593192962;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=89Exa60zlaf8K+mkEb/WEfzK+dHzN4QIV7FfVM9UBeU=;
- b=XFy4bNyfdwD4CaUBtqBzEKdVB905k1A131pJLTeygkFlRwE1KuwwXrB8LFvdCrdY29YnPn
- qQkdiVZnLnUFO1RJyFcWB/YWNxV6BJ7ldgECz13Zdk4Sofr37FKutkKbaaEIuXx+0ELo1E
- fHoIFWA0si3/AZcT6P7DMClDtWv9u1w=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-336-MnehnZpwPFWuwF0b5bt3fg-1; Fri, 26 Jun 2020 13:35:58 -0400
-X-MC-Unique: MnehnZpwPFWuwF0b5bt3fg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E446F1902EA1;
- Fri, 26 Jun 2020 17:35:56 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.110.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3C9EF768DA;
- Fri, 26 Jun 2020 17:35:41 +0000 (UTC)
-Date: Fri, 26 Jun 2020 18:35:38 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Christophe de Dinechin <dinechin@redhat.com>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 09/10] spice: Put spice functions in a separate load module
-Message-ID: <20200626173538.GP1028934@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-10-dinechin@redhat.com>
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jpoyc-0003Dl-B8; Mon, 29 Jun 2020 04:17:18 -0400
+Received: from mga01.intel.com ([192.55.52.88]:2726)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jpoyZ-0002Ss-Fu; Mon, 29 Jun 2020 04:17:17 -0400
+IronPort-SDR: FD6CFyMecUErarYho3pSK5snzFwxnYIMnFsykeHH4mfuxdIp69kAduyQtb6Od2x8cBdbSO9bR+
+ 9q9Z35VY16fw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9666"; a="163940205"
+X-IronPort-AV: E=Sophos;i="5.75,294,1589266800"; d="scan'208";a="163940205"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jun 2020 01:17:08 -0700
+IronPort-SDR: 4N6khl6kmnJnWFvKf8CpLSEbQ434rGbJmXE0gIv+GItN86wGtY2ugQE5yWhoK2F4hYydYvQq8t
+ mdASY0lh0bTA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,294,1589266800"; d="scan'208";a="480702354"
+Received: from unknown (HELO localhost.localdomain.sh.intel.com)
+ ([10.239.153.142])
+ by fmsmga005.fm.intel.com with ESMTP; 29 Jun 2020 01:17:06 -0700
+From: Wentong Wu <wentong.wu@intel.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, crwulff@gmail.com, marex@denx.de,
+ peter.maydell@linaro.org, Wentong Wu <wentong.wu@intel.com>
+Subject: [PATCH 1/3] target/nios2: add DISAS_NORETURN case for nothing more to
+ generate
+Date: Mon, 29 Jun 2020 12:05:33 -0400
+Message-Id: <20200629160535.3910-1-wentong.wu@intel.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200626164307.3327380-10-dinechin@redhat.com>
-User-Agent: Mutt/1.14.0 (2020-05-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=berrange@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:55:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=192.55.52.88; envelope-from=wentong.wu@intel.com;
+ helo=mga01.intel.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 04:17:09
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DATE_IN_FUTURE_06_12=1.947,
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,238 +58,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jun 2020 17:36:06 -0000
+X-List-Received-Date: Mon, 29 Jun 2020 08:17:18 -0000
 
-On Fri, Jun 26, 2020 at 06:43:06PM +0200, Christophe de Dinechin wrote:
-> Use the MODIFACE and MODIMPL macros to to redirect the highest-level
-> qemu_spice functions into the spice-app.so load module when SPICE is
-> compiled as a module.
-> 
-> With these changes, the following shared libraries are no longer
-> necessary in the top-level qemu binary:
-> 
->  	libspice-server.so.1 => /lib64/libspice-server.so.1 (HEX)
->  	libopus.so.0 => /lib64/libopus.so.0 (HEX)
->  	liblz4.so.1 => /lib64/liblz4.so.1 (HEX)
->  	libgstapp-1.0.so.0 => /lib64/libgstapp-1.0.so.0 (HEX)
->  	libgstvideo-1.0.so.0 => /lib64/libgstvideo-1.0.so.0 (HEX)
->  	libgstbase-1.0.so.0 => /lib64/libgstbase-1.0.so.0 (HEX)
->  	libgstreamer-1.0.so.0 => /lib64/libgstreamer-1.0.so.0 (HEX)
->  	libssl.so.1.1 => /lib64/libssl.so.1.1 (HEX)
->  	liborc-0.4.so.0 => /lib64/liborc-0.4.so.0 (HEX)
-> 
-> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
-> ---
->  include/ui/qemu-spice.h | 24 +++++++++++++++---------
->  monitor/hmp-cmds.c      |  6 ++++++
->  softmmu/vl.c            |  1 +
->  ui/spice-core.c         | 31 +++++++++++++++++++++----------
->  ui/spice-display.c      |  2 +-
->  5 files changed, 44 insertions(+), 20 deletions(-)
-> 
-> diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
-> index 8c23dfe717..0f7e139da5 100644
-> --- a/include/ui/qemu-spice.h
-> +++ b/include/ui/qemu-spice.h
-> @@ -24,22 +24,28 @@
->  
->  #include <spice.h>
->  #include "qemu/config-file.h"
-> +#include "qemu/module.h"
->  
-> -extern int using_spice;
-> +#define using_spice     (qemu_is_using_spice())
->  
-> -void qemu_spice_init(void);
-> +MODIFACE(bool, qemu_is_using_spice,(void));
-> +MODIFACE(void, qemu_start_using_spice, (void));
-> +MODIFACE(void, qemu_spice_init, (void));
->  void qemu_spice_input_init(void);
->  void qemu_spice_audio_init(void);
-> -void qemu_spice_display_init(void);
-> -int qemu_spice_display_add_client(int csock, int skipauth, int tls);
-> +MODIFACE(void, qemu_spice_display_init, (void));
-> +MODIFACE(int, qemu_spice_display_add_client, (int csock, int skipauth, int tls));
->  int qemu_spice_add_interface(SpiceBaseInstance *sin);
->  bool qemu_spice_have_display_interface(QemuConsole *con);
->  int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *con);
-> -int qemu_spice_set_passwd(const char *passwd,
-> -                          bool fail_if_connected, bool disconnect_if_connected);
-> -int qemu_spice_set_pw_expire(time_t expires);
-> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
-> -                            const char *subject);
-> +MODIFACE(int, qemu_spice_set_passwd, (const char *passwd,
-> +                                      bool fail_if_connected,
-> +                                      bool disconnect_if_connected));
-> +MODIFACE(int, qemu_spice_set_pw_expire,(time_t expires));
-> +MODIFACE(int, qemu_spice_migrate_info,(const char *hostname,
-> +                                       int port, int tls_port,
-> +                                       const char *subject));
-> +MODIFACE(struct SpiceInfo *,qemu_spice_query, (Error **errp));
+Add DISAS_NORETURN case for nothing more to generate because at runtime
+execution will never return from some helper call. And at the same time
+replace DISAS_UPDATE in t_gen_helper_raise_exception and gen_exception
+with the newly added DISAS_NORETURN.
 
-This macro usage looks kind of unpleasant and its hard to understand
-just what is going on, especially why some methods are changed but
-others are not.
+Signed-off-by: Wentong Wu <wentong.wu@intel.com>
+---
+ target/nios2/translate.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-IIUC, the goal is to turn all these into weak symbols so they don't
-need to be resolved immediately at startup, and instead have an
-impl of them provided dynamically at runtime.
-
-If so the more normal approach would be to have a struct defining
-a set of callbacks, that can be registered. Or if there's a natural
-fit with QOM, then a QOM interface that can then have a QOM object
-impl registered as a singleton.
-
->  #if !defined(SPICE_SERVER_VERSION) || (SPICE_SERVER_VERSION < 0xc06)
->  #define SPICE_NEEDS_SET_MM_TIME 1
-> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-> index 2b0b58a336..6bd9c52658 100644
-> --- a/monitor/hmp-cmds.c
-> +++ b/monitor/hmp-cmds.c
-> @@ -56,6 +56,7 @@
->  #include "migration/misc.h"
->  
->  #ifdef CONFIG_SPICE
-> +#include "ui/qemu-spice.h"
->  #include <spice/enums.h>
->  #endif
->  
-> @@ -573,6 +574,11 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
->  #endif
->  
->  #ifdef CONFIG_SPICE
-> +SpiceInfo *qmp_query_spice(Error **errp)
-> +{
-> +    return qemu_spice_query(errp);
-> +}
-> +
->  void hmp_info_spice(Monitor *mon, const QDict *qdict)
->  {
->      SpiceChannelList *chan;
-> diff --git a/softmmu/vl.c b/softmmu/vl.c
-> index 3e15ee2435..c94b4fa49b 100644
-> --- a/softmmu/vl.c
-> +++ b/softmmu/vl.c
-> @@ -22,6 +22,7 @@
->   * THE SOFTWARE.
->   */
->  
-> +#define MODULE_STUBS
->  #include "qemu/osdep.h"
->  #include "qemu-common.h"
->  #include "qemu/units.h"
-> diff --git a/ui/spice-core.c b/ui/spice-core.c
-> index ecc2ec2c55..dbc1886b77 100644
-> --- a/ui/spice-core.c
-> +++ b/ui/spice-core.c
-> @@ -48,7 +48,7 @@ static time_t auth_expires = TIME_MAX;
->  static int spice_migration_completed;
->  static int spice_display_is_running;
->  static int spice_have_target_host;
-> -int using_spice = 0;
-> +static int is_using_spice = 0;
->  
->  static QemuThread me;
->  
-> @@ -503,7 +503,7 @@ static QemuOptsList qemu_spice_opts = {
->      },
->  };
->  
-> -SpiceInfo *qmp_query_spice(Error **errp)
-> +MODIMPL(SpiceInfo *,qemu_spice_query,(Error **errp))
->  {
->      QemuOpts *opts = QTAILQ_FIRST(&qemu_spice_opts.head);
->      int port, tls_port;
-> @@ -579,8 +579,9 @@ static void migration_state_notifier(Notifier *notifier, void *data)
->      }
->  }
->  
-> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
-> -                            const char *subject)
-> +MODIMPL(int, qemu_spice_migrate_info, (const char *hostname,
-> +                                       int port, int tls_port,
-> +                                       const char *subject))
->  {
->      int ret;
->  
-> @@ -634,7 +635,17 @@ static void vm_change_state_handler(void *opaque, int running,
->      }
->  }
->  
-> -void qemu_spice_init(void)
-> +MODIMPL(bool, qemu_is_using_spice, (void))
-> +{
-> +    return is_using_spice;
-> +}
-> +
-> +MODIMPL(void, qemu_start_using_spice, (void))
-> +{
-> +    is_using_spice = 1;
-> +}
-> +
-> +MODIMPL(void, qemu_spice_init, (void))
->  {
->      QemuOpts *opts = QTAILQ_FIRST(&qemu_spice_opts.head);
->      const char *password, *str, *x509_dir, *addr,
-> @@ -796,7 +807,7 @@ void qemu_spice_init(void)
->          error_report("failed to initialize spice server");
->          exit(1);
->      };
-> -    using_spice = 1;
-> +    qemu_start_using_spice();
->  
->      migration_state.notify = migration_state_notifier;
->      add_migration_state_change_notifier(&migration_state);
-> @@ -945,8 +956,8 @@ static int qemu_spice_set_ticket(bool fail_if_conn, bool disconnect_if_conn)
->                                     fail_if_conn, disconnect_if_conn);
->  }
->  
-> -int qemu_spice_set_passwd(const char *passwd,
-> -                          bool fail_if_conn, bool disconnect_if_conn)
-> +MODIMPL(int, qemu_spice_set_passwd,(const char *passwd,
-> +                                    bool fail_if_conn, bool disconnect_if_conn))
->  {
->      if (strcmp(auth, "spice") != 0) {
->          return -1;
-> @@ -957,13 +968,13 @@ int qemu_spice_set_passwd(const char *passwd,
->      return qemu_spice_set_ticket(fail_if_conn, disconnect_if_conn);
->  }
->  
-> -int qemu_spice_set_pw_expire(time_t expires)
-> +MODIMPL(int, qemu_spice_set_pw_expire, (time_t expires))
->  {
->      auth_expires = expires;
->      return qemu_spice_set_ticket(false, false);
->  }
->  
-> -int qemu_spice_display_add_client(int csock, int skipauth, int tls)
-> +MODIMPL(int, qemu_spice_display_add_client, (int csock, int skipauth, int tls))
->  {
->      if (tls) {
->          return spice_server_add_ssl_client(spice_server, csock, skipauth);
-> diff --git a/ui/spice-display.c b/ui/spice-display.c
-> index 19632fdf6c..90529695fe 100644
-> --- a/ui/spice-display.c
-> +++ b/ui/spice-display.c
-> @@ -1164,7 +1164,7 @@ static void qemu_spice_display_init_one(QemuConsole *con)
->      register_displaychangelistener(&ssd->dcl);
->  }
->  
-> -void qemu_spice_display_init(void)
-> +MODIMPL(void, qemu_spice_display_init,(void))
->  {
->      QemuOptsList *olist = qemu_find_opts("spice");
->      QemuOpts *opts = QTAILQ_FIRST(&olist->head);
-> -- 
-> 2.26.2
-> 
-> 
-
-Regards,
-Daniel
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index e17656e6..b052be85 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -149,7 +149,7 @@ static void t_gen_helper_raise_exception(DisasContext *dc,
+     tcg_gen_movi_tl(dc->cpu_R[R_PC], dc->pc);
+     gen_helper_raise_exception(dc->cpu_env, tmp);
+     tcg_temp_free_i32(tmp);
+-    dc->is_jmp = DISAS_UPDATE;
++    dc->is_jmp = DISAS_NORETURN;
+ }
+ 
+ static bool use_goto_tb(DisasContext *dc, uint32_t dest)
+@@ -802,7 +802,7 @@ static void gen_exception(DisasContext *dc, uint32_t excp)
+     tcg_gen_movi_tl(cpu_R[R_PC], dc->pc);
+     gen_helper_raise_exception(cpu_env, tmp);
+     tcg_temp_free_i32(tmp);
+-    dc->is_jmp = DISAS_UPDATE;
++    dc->is_jmp = DISAS_NORETURN;
+ }
+ 
+ /* generate intermediate code for basic block 'tb'.  */
+@@ -877,6 +877,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
+         tcg_gen_exit_tb(NULL, 0);
+         break;
+ 
++    case DISAS_NORETURN:
+     case DISAS_TB_JUMP:
+         /* nothing more to generate */
+         break;
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.21.3
 
 
