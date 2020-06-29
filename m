@@ -1,69 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jptg9-0007gQ-TG
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 09:18:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54348)
+	id 1jpxRu-0006vG-Ir
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 13:20:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37750)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jptg8-0007gA-VR; Mon, 29 Jun 2020 09:18:32 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35306)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1jptg6-0005Hu-Tn; Mon, 29 Jun 2020 09:18:32 -0400
-Received: by mail-wm1-x342.google.com with SMTP id l2so14603307wmf.0;
- Mon, 29 Jun 2020 06:18:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=iRWo28FuxDyc/zoNbZIPsjj0FPD5HGUwpJ3gF2bSzYg=;
- b=Bd737WipyHOipl98g6ti15NF1H4d+RQmoBBIwZrxoVK1Rrw4coKoiUpB4YI9DffGwu
- Cimpo08xNRoL7yThvXLMs7uY0cuvjSY6ord8n/OvbpB/m4Q5seR2b3GpZvsognedFQJ2
- TX1VSr8Pmi1wsbgnm2G0dq4g/+x3XcXV7pD7DqysLhYKl+ZWud5tpagjniJxT1ACyJY3
- EGsJi7yF+o0HGD5LzlM/O697HFd+fxUap/yneKTSJlxIhnf2A1Dgh6lUu2Nr3JwH6h8T
- T+j8yDZIhyK7en+qzROjxyDP/38ufwA+RcRPU/lZ8TPVuzBYEWCVIM7G673oBSKgeHrh
- LHVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=iRWo28FuxDyc/zoNbZIPsjj0FPD5HGUwpJ3gF2bSzYg=;
- b=iPoM3DWIg4iYz8gUSFO4spFG2nEzEEMsmPN/esZu7vW6DmsE4pJ7TKCSACPBWhl+cy
- mAcc1dxz/qRTIre86g+ZIBnILYdNrFdOrkvgNrxS7luZ4tb9kpJ228H69odWveJuVpLF
- +9LG/+oXz/pbYys0fO9l4/0kbL2rALoP83OenYuQG3vaI0pJty+WRWieIlJTnkkd7yTe
- D651+Y34DVv/sugn7Dk4tnKcsr+vf/tb192Y3xCy/iCISQ66XvIUOHKDB0R1Z40zXqiS
- 2st+JpboYDyWwjMShKpi17aHzY3+Wbt/FgCoGwlyaQ0yauD7eS3NnJypGoeoXCQC7IRt
- nZrw==
-X-Gm-Message-State: AOAM530vic3Vkn5e1mDOREx63IMBOUPQseqq0Z62tcfDX3sm9qT8DY26
- k8lAr9l7+qDj3sHTFtXkRnc=
-X-Google-Smtp-Source: ABdhPJxkC0DepoYrKHPZC9xKUp1yDHeI+uvEyZioA7+tlR3Rb6S200oANdDjJ8ZON1VDImSytpf8ng==
-X-Received: by 2002:a1c:1d04:: with SMTP id d4mr17586195wmd.156.1593436708935; 
- Mon, 29 Jun 2020 06:18:28 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id v20sm50050020wrb.51.2020.06.29.06.18.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 06:18:28 -0700 (PDT)
-Date: Mon, 29 Jun 2020 14:18:26 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: David CARLIER <devnexen@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 0/3] following up haiku build fix
-Message-ID: <20200629131826.GM31392@stefanha-x1.localdomain>
-References: <CA+XhMqxLQoYmsrocFOM4zwaNX9FhfcAb0EamrvQL6XouB+vDOg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jpxRs-0006ur-V9
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:20:05 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46920
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jpxRp-0005I6-TF
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:20:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593451200;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DcXS2X0y/Q/T+/52yT84Ed4B2ufl8Vyvf+SOIInqpoo=;
+ b=gp57YXXzyUCOqomJtYvIRwHrlx9w1/JGNwNSPlzFzAz6JQ8BFv0/xAwQLMYgoSpp5uCryP
+ tY52enq9s+KPq3u5+TNfJzWbMziIQX7NBgmN0Z+3YRx0ryrrNIUa1OnVnaGnBSu46IBYQ8
+ nVH52DHbQS8deDxCPQGIDMluxMBicg8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-188-xLkzZKJHMV-SguNC1KowWQ-1; Mon, 29 Jun 2020 13:19:56 -0400
+X-MC-Unique: xLkzZKJHMV-SguNC1KowWQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3711F107ACF4;
+ Mon, 29 Jun 2020 17:19:55 +0000 (UTC)
+Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8850B5BAEC;
+ Mon, 29 Jun 2020 17:19:43 +0000 (UTC)
+References: <20200626164307.3327380-1-dinechin@redhat.com>
+ <20200626164307.3327380-10-dinechin@redhat.com>
+ <20200626173538.GP1028934@redhat.com>
+User-agent: mu4e 1.5.2; emacs 26.3
+From: Christophe de Dinechin <dinechin@redhat.com>
+To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org, Cleber Rosa
+ <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier
+ <laurent@vivier.eu>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Gerd
+ Hoffmann <kraxel@redhat.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH 09/10] spice: Put spice functions in a separate load module
+In-reply-to: <20200626173538.GP1028934@redhat.com>
+Date: Mon, 29 Jun 2020 19:19:41 +0200
+Message-ID: <lyo8p1dc2a.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="Kc9HNjpzOXVc7FFU"
-Content-Disposition: inline
-In-Reply-To: <CA+XhMqxLQoYmsrocFOM4zwaNX9FhfcAb0EamrvQL6XouB+vDOg@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=stefanha@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=dinechin@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 01:10:03
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,65 +81,335 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jun 2020 13:18:33 -0000
+X-List-Received-Date: Mon, 29 Jun 2020 17:20:05 -0000
 
 
---Kc9HNjpzOXVc7FFU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2020-06-26 at 19:35 CEST, Daniel P. Berrang=C3=A9 wrote...
+> On Fri, Jun 26, 2020 at 06:43:06PM +0200, Christophe de Dinechin wrote:
+>> Use the MODIFACE and MODIMPL macros to to redirect the highest-level
+>> qemu_spice functions into the spice-app.so load module when SPICE is
+>> compiled as a module.
+>>
+>> With these changes, the following shared libraries are no longer
+>> necessary in the top-level qemu binary:
+>>
+>>  =09libspice-server.so.1 =3D> /lib64/libspice-server.so.1 (HEX)
+>>  =09libopus.so.0 =3D> /lib64/libopus.so.0 (HEX)
+>>  =09liblz4.so.1 =3D> /lib64/liblz4.so.1 (HEX)
+>>  =09libgstapp-1.0.so.0 =3D> /lib64/libgstapp-1.0.so.0 (HEX)
+>>  =09libgstvideo-1.0.so.0 =3D> /lib64/libgstvideo-1.0.so.0 (HEX)
+>>  =09libgstbase-1.0.so.0 =3D> /lib64/libgstbase-1.0.so.0 (HEX)
+>>  =09libgstreamer-1.0.so.0 =3D> /lib64/libgstreamer-1.0.so.0 (HEX)
+>>  =09libssl.so.1.1 =3D> /lib64/libssl.so.1.1 (HEX)
+>>  =09liborc-0.4.so.0 =3D> /lib64/liborc-0.4.so.0 (HEX)
+>>
+>> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+>> ---
+>>  include/ui/qemu-spice.h | 24 +++++++++++++++---------
+>>  monitor/hmp-cmds.c      |  6 ++++++
+>>  softmmu/vl.c            |  1 +
+>>  ui/spice-core.c         | 31 +++++++++++++++++++++----------
+>>  ui/spice-display.c      |  2 +-
+>>  5 files changed, 44 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
+>> index 8c23dfe717..0f7e139da5 100644
+>> --- a/include/ui/qemu-spice.h
+>> +++ b/include/ui/qemu-spice.h
+>> @@ -24,22 +24,28 @@
+>>
+>>  #include <spice.h>
+>>  #include "qemu/config-file.h"
+>> +#include "qemu/module.h"
+>>
+>> -extern int using_spice;
+>> +#define using_spice     (qemu_is_using_spice())
+>>
+>> -void qemu_spice_init(void);
+>> +MODIFACE(bool, qemu_is_using_spice,(void));
+>> +MODIFACE(void, qemu_start_using_spice, (void));
+>> +MODIFACE(void, qemu_spice_init, (void));
+>>  void qemu_spice_input_init(void);
+>>  void qemu_spice_audio_init(void);
+>> -void qemu_spice_display_init(void);
+>> -int qemu_spice_display_add_client(int csock, int skipauth, int tls);
+>> +MODIFACE(void, qemu_spice_display_init, (void));
+>> +MODIFACE(int, qemu_spice_display_add_client, (int csock, int skipauth, =
+int tls));
+>>  int qemu_spice_add_interface(SpiceBaseInstance *sin);
+>>  bool qemu_spice_have_display_interface(QemuConsole *con);
+>>  int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *c=
+on);
+>> -int qemu_spice_set_passwd(const char *passwd,
+>> -                          bool fail_if_connected, bool disconnect_if_co=
+nnected);
+>> -int qemu_spice_set_pw_expire(time_t expires);
+>> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_por=
+t,
+>> -                            const char *subject);
+>> +MODIFACE(int, qemu_spice_set_passwd, (const char *passwd,
+>> +                                      bool fail_if_connected,
+>> +                                      bool disconnect_if_connected));
+>> +MODIFACE(int, qemu_spice_set_pw_expire,(time_t expires));
+>> +MODIFACE(int, qemu_spice_migrate_info,(const char *hostname,
+>> +                                       int port, int tls_port,
+>> +                                       const char *subject));
+>> +MODIFACE(struct SpiceInfo *,qemu_spice_query, (Error **errp));
+>
+> This macro usage looks kind of unpleasant and its hard to understand
+> just what is going on, especially why some methods are changed but
+> others are not.
 
-On Fri, Jun 26, 2020 at 03:00:57PM +0100, David CARLIER wrote:
-> From 6fa7a4108236f513201192654e07c7044a3d7e58 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Fri, 26 Jun 2020 14:48:28 +0000
-> Subject: [PATCH 0/3] following up haiku build fix
->=20
-> David Carlier (3):
->   check sys/signal.h presence
->   define SIGIO for haiku
->   qemu_init_exec_dir Haiku implementation
->=20
->  configure                   |  8 ++++++++
->  hw/xen/xen-legacy-backend.c |  1 -
->  include/qemu/osdep.h        |  6 +++++-
->  util/oslib-posix.c          | 20 +++++++++++++++++++-
->  4 files changed, 32 insertions(+), 3 deletions(-)
+The functions that are changed are the module interface between qemu and th=
+e
+DSO. For example, qemu_spice_init is called from vl.c, i.e. the main binary=
+,
+but qemu_spice_audio_init is called from ui/spice-core.c and
+ui/spice-input.c, which are both in the DSO after the commit.
 
-Please send multi-patch series as an email thread. Using email threads
-make it easier for humans to apply all emails, mark them as read, or
-delete them in mail clients. Continuous integration scripts may also
-rely on email threading to identify patch series.
+The existing function-based interface in qemu-spice.h was not really
+carefully designed for modularization, so this list was determined by
+following the initialization path. It may not be the smallest possible cut.
+It may be neat to add a patch to reorder functions based on whether they ar=
+e
+inside the DSO or exported from it.
 
-A patch series email thread looks like this:
+As for the macro syntax, I see it as somewhat transient. I wanted to propos=
+e
+a working and scalable mechanism before adding some nice syntactic sugar
+tooling to it. I expect the syntax to turn into something like:
 
- [PATCH 0/N] Cover letter
-   +-- [PATCH 1/N] First patch
-   +-- [PATCH 2/N] Second patch
-   ...
-   +-- [PATCH N/N] Last patch
+MODIFACE void  qemu_spice_display_init (void);
+MODIIMPL void  qemu_spice_display_init (void) { ... }
 
-The In-Reply-To and References email headers control threading. See the
-git-send-email(1) --thread option (it's enabled by default so either
-your gitconfig or command-line have disabled it).
+But it feels a bit too early to do that. I prefer to experiment with a
+simple macro for now.
 
-Thanks,
-Stefan
+>
+> IIUC, the goal is to turn all these into weak symbols so they don't
+> need to be resolved immediately at startup, and instead have an
+> impl of them provided dynamically at runtime.
 
---Kc9HNjpzOXVc7FFU
-Content-Type: application/pgp-signature; name="signature.asc"
+My very first approach was indeed to use weak symbols, but then I learned
+that ld.so no longer deals with weak symbols, apparently for security
+reasons. See LD_DYNAMIC_WEAK in ld.so(8).
 
------BEGIN PGP SIGNATURE-----
+>
+> If so the more normal approach would be to have a struct defining
+> a set of callbacks, that can be registered. Or if there's a natural
+> fit with QOM, then a QOM interface that can then have a QOM object
+> impl registered as a singleton.
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl756iIACgkQnKSrs4Gr
-c8hFfwf+Pk0AiGlSKbMfRKpCa/ERJ66EAaMzElZxq2yVCnnybAuGsr0Ke6JuQPmY
-tmsYVWFTdoA+hbCCJuvphLc7V7cKFOgsfxQZeOlnzGin1DAKliaSmJh4/iEWubpo
-7WtHukTB3aXftZVf/XIlDdEOl2YCGBkBFRksJiLCaUWN2bQES+5/Zd4CCzDXiI0d
-0gG22UWmrgVCuDjby3CZSIxa+xI5qdrLPFaT2s3xQObJA36jhxDU+ZjX36SKEo7D
-QHcfRAulxbnkK5OOEJ5C3BBWSMr3fpWfeNWYmnA5A890PJR5B0dP/XwGxQq6QgKu
-oCLXeEaluDGjHIhc1L7IhQPzQoTpQw==
-=UxzI
------END PGP SIGNATURE-----
+That was my second attempt (after the weak symbols). I cleaned it up a bit
+and put it here: https://github.com/c3d/qemu/commits/spice-vtable.
 
---Kc9HNjpzOXVc7FFU--
+What made me switch to the approach in this series is the following
+considerations:
+
+- A vtable is useful if there can be multiple values for a method, e.g. to
+  implement inheritance, or if you have multiple instances. This is not the
+  case here.
+
+- A vtable adds one level of indirection, which does not seem to be
+  particularly useful or helpful for this particular use case.
+
+- Overloading QOM for that purpose looked more confusing than anything else=
+.
+  It looked like I was mixing unrelated concepts. Maybe that's just me.
+
+- The required change with a vtable ends up being more extensive. Instead o=
+f
+  changing a single line to put an entry point in a DSO, you need to create
+  the vtable, add functions to it, add a register function, etc. I was
+  looking for an easier and more scalable way.
+
+- In particular, with a vtable, you cannot take advantage of the syntactic
+  trick I used here, which is that foo(x) is a shortcut for (*foo)(x).
+  So for a vtable, you need to manually write wrappers.
+
+This could be automated, of course, but so far I did not find any clear
+benefit, and many drawbacks to using the vtable approach. As a quantitative
+comparison point, the commit that does this same connection using the vtabl=
+e
+approach is:
+
+ include/ui/qemu-spice.h | 104 ++++++++++++++++++++++++++++++++++++++++++++=
+++++++++++++++++++++++++-----
+ monitor/hmp-cmds.c      |   6 +++++
+ softmmu/vl.c            |  10 +++++++
+ ui/spice-core.c         |  38 ++++++++++++++++++++++++---
+ 4 files changed, 148 insertions(+), 10 deletions(-)
+
+as opposed to what is presented in this series:
+
+ include/ui/qemu-spice.h | 24 +++++++++++++++---------
+ monitor/hmp-cmds.c      |  6 ++++++
+ softmmu/vl.c            |  1 +
+ ui/spice-core.c         | 31 +++++++++++++++++++++----------
+ ui/spice-display.c      |  2 +-
+ 5 files changed, 44 insertions(+), 20 deletions(-)
+
+
+>
+>>  #if !defined(SPICE_SERVER_VERSION) || (SPICE_SERVER_VERSION < 0xc06)
+>>  #define SPICE_NEEDS_SET_MM_TIME 1
+>> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+>> index 2b0b58a336..6bd9c52658 100644
+>> --- a/monitor/hmp-cmds.c
+>> +++ b/monitor/hmp-cmds.c
+>> @@ -56,6 +56,7 @@
+>>  #include "migration/misc.h"
+>>
+>>  #ifdef CONFIG_SPICE
+>> +#include "ui/qemu-spice.h"
+>>  #include <spice/enums.h>
+>>  #endif
+>>
+>> @@ -573,6 +574,11 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
+>>  #endif
+>>
+>>  #ifdef CONFIG_SPICE
+>> +SpiceInfo *qmp_query_spice(Error **errp)
+>> +{
+>> +    return qemu_spice_query(errp);
+>> +}
+>> +
+>>  void hmp_info_spice(Monitor *mon, const QDict *qdict)
+>>  {
+>>      SpiceChannelList *chan;
+>> diff --git a/softmmu/vl.c b/softmmu/vl.c
+>> index 3e15ee2435..c94b4fa49b 100644
+>> --- a/softmmu/vl.c
+>> +++ b/softmmu/vl.c
+>> @@ -22,6 +22,7 @@
+>>   * THE SOFTWARE.
+>>   */
+>>
+>> +#define MODULE_STUBS
+>>  #include "qemu/osdep.h"
+>>  #include "qemu-common.h"
+>>  #include "qemu/units.h"
+>> diff --git a/ui/spice-core.c b/ui/spice-core.c
+>> index ecc2ec2c55..dbc1886b77 100644
+>> --- a/ui/spice-core.c
+>> +++ b/ui/spice-core.c
+>> @@ -48,7 +48,7 @@ static time_t auth_expires =3D TIME_MAX;
+>>  static int spice_migration_completed;
+>>  static int spice_display_is_running;
+>>  static int spice_have_target_host;
+>> -int using_spice =3D 0;
+>> +static int is_using_spice =3D 0;
+>>
+>>  static QemuThread me;
+>>
+>> @@ -503,7 +503,7 @@ static QemuOptsList qemu_spice_opts =3D {
+>>      },
+>>  };
+>>
+>> -SpiceInfo *qmp_query_spice(Error **errp)
+>> +MODIMPL(SpiceInfo *,qemu_spice_query,(Error **errp))
+>>  {
+>>      QemuOpts *opts =3D QTAILQ_FIRST(&qemu_spice_opts.head);
+>>      int port, tls_port;
+>> @@ -579,8 +579,9 @@ static void migration_state_notifier(Notifier *notif=
+ier, void *data)
+>>      }
+>>  }
+>>
+>> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_por=
+t,
+>> -                            const char *subject)
+>> +MODIMPL(int, qemu_spice_migrate_info, (const char *hostname,
+>> +                                       int port, int tls_port,
+>> +                                       const char *subject))
+>>  {
+>>      int ret;
+>>
+>> @@ -634,7 +635,17 @@ static void vm_change_state_handler(void *opaque, i=
+nt running,
+>>      }
+>>  }
+>>
+>> -void qemu_spice_init(void)
+>> +MODIMPL(bool, qemu_is_using_spice, (void))
+>> +{
+>> +    return is_using_spice;
+>> +}
+>> +
+>> +MODIMPL(void, qemu_start_using_spice, (void))
+>> +{
+>> +    is_using_spice =3D 1;
+>> +}
+>> +
+>> +MODIMPL(void, qemu_spice_init, (void))
+>>  {
+>>      QemuOpts *opts =3D QTAILQ_FIRST(&qemu_spice_opts.head);
+>>      const char *password, *str, *x509_dir, *addr,
+>> @@ -796,7 +807,7 @@ void qemu_spice_init(void)
+>>          error_report("failed to initialize spice server");
+>>          exit(1);
+>>      };
+>> -    using_spice =3D 1;
+>> +    qemu_start_using_spice();
+>>
+>>      migration_state.notify =3D migration_state_notifier;
+>>      add_migration_state_change_notifier(&migration_state);
+>> @@ -945,8 +956,8 @@ static int qemu_spice_set_ticket(bool fail_if_conn, =
+bool disconnect_if_conn)
+>>                                     fail_if_conn, disconnect_if_conn);
+>>  }
+>>
+>> -int qemu_spice_set_passwd(const char *passwd,
+>> -                          bool fail_if_conn, bool disconnect_if_conn)
+>> +MODIMPL(int, qemu_spice_set_passwd,(const char *passwd,
+>> +                                    bool fail_if_conn, bool disconnect_=
+if_conn))
+>>  {
+>>      if (strcmp(auth, "spice") !=3D 0) {
+>>          return -1;
+>> @@ -957,13 +968,13 @@ int qemu_spice_set_passwd(const char *passwd,
+>>      return qemu_spice_set_ticket(fail_if_conn, disconnect_if_conn);
+>>  }
+>>
+>> -int qemu_spice_set_pw_expire(time_t expires)
+>> +MODIMPL(int, qemu_spice_set_pw_expire, (time_t expires))
+>>  {
+>>      auth_expires =3D expires;
+>>      return qemu_spice_set_ticket(false, false);
+>>  }
+>>
+>> -int qemu_spice_display_add_client(int csock, int skipauth, int tls)
+>> +MODIMPL(int, qemu_spice_display_add_client, (int csock, int skipauth, i=
+nt tls))
+>>  {
+>>      if (tls) {
+>>          return spice_server_add_ssl_client(spice_server, csock, skipaut=
+h);
+>> diff --git a/ui/spice-display.c b/ui/spice-display.c
+>> index 19632fdf6c..90529695fe 100644
+>> --- a/ui/spice-display.c
+>> +++ b/ui/spice-display.c
+>> @@ -1164,7 +1164,7 @@ static void qemu_spice_display_init_one(QemuConsol=
+e *con)
+>>      register_displaychangelistener(&ssd->dcl);
+>>  }
+>>
+>> -void qemu_spice_display_init(void)
+>> +MODIMPL(void, qemu_spice_display_init,(void))
+>>  {
+>>      QemuOptsList *olist =3D qemu_find_opts("spice");
+>>      QemuOpts *opts =3D QTAILQ_FIRST(&olist->head);
+>> --
+>> 2.26.2
+>>
+>>
+>
+> Regards,
+> Daniel
+
+
+--
+Cheers,
+Christophe de Dinechin (IRC c3d)
+
 
