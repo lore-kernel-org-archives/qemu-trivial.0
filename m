@@ -1,76 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jpqib-0007QE-1G
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 06:08:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55538)
+	id 1jpqnK-0005J1-Ef
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 06:13:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jpqiZ-0007OB-Te
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 06:08:51 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34802)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1jpqiW-0005eO-V5
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 06:08:51 -0400
-Received: by mail-wr1-x443.google.com with SMTP id f7so12931419wrw.1
- for <qemu-trivial@nongnu.org>; Mon, 29 Jun 2020 03:08:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=s0Cr7cpNk+Q6SRN257PXKSNt9ZQQcco5k4Bs94Hjc1o=;
- b=A1XqwAkVvuZS+rcJ8kjH/DP6rxbr0V3K3j4UL3TYpSCs4ehFynUaPZmBI3i+/ZnX27
- s8GKx2r6CAkjR+X4Xxo8XezpdupRPfu8kbbE5FOneqm41US5Tvt4kRI97SwFu5sdhE7r
- DqUq+EwF2hjHuwxBvHSEhpARToF6yCLZiXm0YUibb7o51Ae1K6Ot60RrqnxME0MuCMZf
- dhM+bHUjmlTGed/eWqd3jq56limrWBan0e58hQtxoREo8tmeMQ2DSMCxNvNkmvX0b728
- TZsmNkckkTA2hYtx1WzI9+IsIEKIQwUY/2vYyToGD6c/jOh46GjhRHE/CIvXdtV0KKo1
- L/kQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=s0Cr7cpNk+Q6SRN257PXKSNt9ZQQcco5k4Bs94Hjc1o=;
- b=mtG54KlaQc/Aj/5fqejRqPd1t+bZLuMQg4zOLGWn96asGAVtOr8TH+v2Kp+yNCv5f/
- Rog+KORK9mCsX6hNx7cA+ROXNZbkk8uDtB0Zg9yu0Quex7yYfj8SW/JfZzfWXZfFLis7
- 2sUoN8SJV5RvJ7b2etqYvJ9MvcnerrrwuA/iz7CVhfzD37yIawX3fBXYUi8dLXzRAk6j
- UZgzbWYlB9gDCAOHOMn6/iqsnfLm/EO849WGfwqwK7nln7cYF3Tdav/Pfd10M+va+oHr
- 6SvbIA/WbCPM0FDTIG4RgKfCOY+QPvSJhhl517x9+6lxo1EpgZS3P0QRUYQpebP9T1Hq
- /TyQ==
-X-Gm-Message-State: AOAM5317g4nGEOSMhty7eUzjIkgLRogXPdwWnDCxeUTWV1OqEovMszQb
- bkmcxI1VNjwwYHiYNiaI/YW0EA==
-X-Google-Smtp-Source: ABdhPJz6KS7z6Kh9QP/Qev61b/baXXREE1TfM89rI+PMMiKaOHbc6jvfshmvqqBCWHL+K+vN/bI4bw==
-X-Received: by 2002:a5d:4611:: with SMTP id t17mr15482350wrq.243.1593425326718; 
- Mon, 29 Jun 2020 03:08:46 -0700 (PDT)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id l18sm25072941wrt.59.2020.06.29.03.08.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 03:08:44 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 321351FF7E;
- Mon, 29 Jun 2020 11:08:44 +0100 (BST)
-References: <20200629094934.2081180-1-dinechin@redhat.com>
-User-agent: mu4e 1.5.3; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Christophe de Dinechin <dinechin@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Michael
- Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] trivial: Respect alphabetical order of .o files in
- Makefile.objs
-In-reply-to: <20200629094934.2081180-1-dinechin@redhat.com>
-Date: Mon, 29 Jun 2020 11:08:43 +0100
-Message-ID: <87sgeerxp0.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1jpqnG-0005Hp-MQ; Mon, 29 Jun 2020 06:13:43 -0400
+Received: from mx2.suse.de ([195.135.220.15]:50024)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1jpqnE-0006Ox-Gk; Mon, 29 Jun 2020 06:13:42 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id E0EE7AEFE;
+ Mon, 29 Jun 2020 10:13:38 +0000 (UTC)
+Subject: Re: [PATCH 01/10] modules: Provide macros making it easier to
+ identify module exports
+To: Christophe de Dinechin <dinechin@redhat.com>, qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-trivial@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+References: <20200626164307.3327380-1-dinechin@redhat.com>
+ <20200626164307.3327380-2-dinechin@redhat.com>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <2fff081b-273a-45c4-9117-a16eceb66c66@suse.de>
+Date: Mon, 29 Jun 2020 12:13:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
+In-Reply-To: <20200626164307.3327380-2-dinechin@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/28 22:46:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x (no timestamps) [generic]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -84,38 +57,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jun 2020 10:08:52 -0000
+X-List-Received-Date: Mon, 29 Jun 2020 10:13:43 -0000
 
+Hello Christophe,
 
-Christophe de Dinechin <dinechin@redhat.com> writes:
-
-> The vmgenid.o is the only file that is not in alphabetical order.
->
+On 6/26/20 6:42 PM, Christophe de Dinechin wrote:
+> In order to facilitate the move of large chunks of functionality to
+> load modules, it is simpler to create a wrapper with the same name
+> that simply relays the implementation. For efficiency, this is
+> typically done using inline functions in the header for the
+> corresponding functionality. In that case, we rename the actual
+> implementation by appending _implementation to its name. This makes it
+> easier to select which function you want to put a breakpoint on.
+> 
 > Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
 > ---
->  stubs/Makefile.objs | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-> index f32b9e47a3..1df8bb3814 100644
-> --- a/stubs/Makefile.objs
-> +++ b/stubs/Makefile.objs
-> @@ -19,10 +19,10 @@ stub-obj-y +=3D replay.o
->  stub-obj-y +=3D runstate-check.o
->  stub-obj-$(CONFIG_SOFTMMU) +=3D semihost.o
->  stub-obj-y +=3D set-fd-handler.o
-> -stub-obj-y +=3D vmgenid.o
->  stub-obj-y +=3D sysbus.o
->  stub-obj-y +=3D tpm.o
->  stub-obj-y +=3D trace-control.o
-> +stub-obj-y +=3D vmgenid.o
->  stub-obj-y +=3D vmstate.o
->  stub-obj-$(CONFIG_SOFTMMU) +=3D win32-kbd-hook.o
+>  include/qemu/module.h | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+> 
+> diff --git a/include/qemu/module.h b/include/qemu/module.h
+> index 011ae1ae76..1922a0293c 100644
+> --- a/include/qemu/module.h
+> +++ b/include/qemu/module.h
+> @@ -39,6 +39,30 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
+>  }
+>  #endif
+>  
+> +#ifdef CONFIG_MODULES
+> +/* Identify which functions are replaced by a callback stub */
+> +#ifdef MODULE_STUBS
+> +#define MODIFACE(Ret,Name,Args)                                         \
+> +    Ret (*Name)Args;                                                    \
+> +    extern Ret Name##_implementation Args
+> +#else /* !MODULE_STUBS */
+> +#define MODIFACE(Ret,Name,Args)                                         \
+> +    extern Ret (*Name)Args;                                             \
+> +    extern Ret Name##_implementation Args
+> +#endif /* MODULE_STUBS */
+> +
+> +#define MODIMPL(Ret,Name,Args)                                          \
+> +    static void __attribute__((constructor)) Name##_register(void)      \
+> +    {                                                                   \
+> +        Name = Name##_implementation;                                   \
+> +    }                                                                   \
+> +    Ret Name##_implementation Args
+> +#else /* !CONFIG_MODULES */
+> +/* When not using a module, such functions are called directly */
+> +#define MODIFACE(Ret,Name,Args)         Ret Name Args
+> +#define MODIMPL(Ret,Name,Args)          Ret Name Args
+> +#endif /* CONFIG_MODULES */
+> +
+>  typedef enum {
+>      MODULE_INIT_MIGRATION,
+>      MODULE_INIT_BLOCK,
+> 
+
+Just as background, I am interested in all modules-related work, because of my long term plan to have target-specific modules as well:
+
+ https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg04628.html
+
+I am not 100% clear on what is the goal and expected usage of this preprocessor code, despite the commit message,
+maybe you could clarify a bit with more verbosity?
+
+Additionally if you happen to be interested, maybe you know already or could think about what this could mean for target-specific modules,
+which will require some improvements to the modules "subsystem"(?) as well.
+
+In my experimentation I didn't have to do this preprocessor work, instead I had to fine tune a bit the makefile support (rules.mak and makefiles)
+to be able to accomodate for (even large) modules in target/ as well.
+
+Thanks!
+
+CLaudio
 
 
---=20
-Alex Benn=C3=A9e
+
+
 
