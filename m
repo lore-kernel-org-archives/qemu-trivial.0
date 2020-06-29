@@ -1,66 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jpxRu-0006vG-Ir
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 13:20:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37750)
+	id 1jpxck-0003WG-R6
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2020 13:31:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jpxRs-0006ur-V9
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:20:05 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46920
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jpxcj-0003Vs-1i
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:31:17 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:38642
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jpxRp-0005I6-TF
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:20:04 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jpxcf-0007ZE-Tn
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2020 13:31:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593451200;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1593451872;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DcXS2X0y/Q/T+/52yT84Ed4B2ufl8Vyvf+SOIInqpoo=;
- b=gp57YXXzyUCOqomJtYvIRwHrlx9w1/JGNwNSPlzFzAz6JQ8BFv0/xAwQLMYgoSpp5uCryP
- tY52enq9s+KPq3u5+TNfJzWbMziIQX7NBgmN0Z+3YRx0ryrrNIUa1OnVnaGnBSu46IBYQ8
- nVH52DHbQS8deDxCPQGIDMluxMBicg8=
+ bh=U95fsWvuFH3nvjOtH6i5Acn/ftLxkk5GUpVBfXQ6Taw=;
+ b=KhW7K3AkS3WQ3ApgfCffIAMyy0gz+HaxY/QISphjSnDOze/h9n8eFCt/CrhbS7Mq7qdXYn
+ AZi3bF1cnbBex9Ve2Z4qAeEQqUng2SWB0KKPT3/1wxl65p3VlSI8bNYFmgUSqRxWiur/W3
+ e0wiJjoviS5hQtcUroQ+QwPDFQtpde8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-188-xLkzZKJHMV-SguNC1KowWQ-1; Mon, 29 Jun 2020 13:19:56 -0400
-X-MC-Unique: xLkzZKJHMV-SguNC1KowWQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-190-tv6huNt8P9uK4JpQPd5gCg-1; Mon, 29 Jun 2020 13:30:57 -0400
+X-MC-Unique: tv6huNt8P9uK4JpQPd5gCg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3711F107ACF4;
- Mon, 29 Jun 2020 17:19:55 +0000 (UTC)
-Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8850B5BAEC;
- Mon, 29 Jun 2020 17:19:43 +0000 (UTC)
-References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-10-dinechin@redhat.com>
- <20200626173538.GP1028934@redhat.com>
-User-agent: mu4e 1.5.2; emacs 26.3
-From: Christophe de Dinechin <dinechin@redhat.com>
-To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>, "Michael
- S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org, Cleber Rosa
- <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier
- <laurent@vivier.eu>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Gerd
- Hoffmann <kraxel@redhat.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5EED51005512;
+ Mon, 29 Jun 2020 17:30:56 +0000 (UTC)
+Received: from redhat.com (unknown [10.36.110.60])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 06EF51002393;
+ Mon, 29 Jun 2020 17:30:38 +0000 (UTC)
+Date: Mon, 29 Jun 2020 18:30:35 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Christophe de Dinechin <dinechin@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Subject: Re: [PATCH 09/10] spice: Put spice functions in a separate load module
-In-reply-to: <20200626173538.GP1028934@redhat.com>
-Date: Mon, 29 Jun 2020 19:19:41 +0200
-Message-ID: <lyo8p1dc2a.fsf@redhat.com>
+Message-ID: <20200629173035.GA1298906@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20200626164307.3327380-1-dinechin@redhat.com>
+ <20200626164307.3327380-10-dinechin@redhat.com>
+ <20200626173538.GP1028934@redhat.com> <lyo8p1dc2a.fsf@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <lyo8p1dc2a.fsf@redhat.com>
+User-Agent: Mutt/1.14.3 (2020-06-14)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=dinechin@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 01:10:03
+Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 01:06:01
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -81,335 +85,177 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jun 2020 17:20:05 -0000
+X-List-Received-Date: Mon, 29 Jun 2020 17:31:17 -0000
 
+On Mon, Jun 29, 2020 at 07:19:41PM +0200, Christophe de Dinechin wrote:
+> 
+> On 2020-06-26 at 19:35 CEST, Daniel P. Berrangé wrote...
+> > On Fri, Jun 26, 2020 at 06:43:06PM +0200, Christophe de Dinechin wrote:
+> >> Use the MODIFACE and MODIMPL macros to to redirect the highest-level
+> >> qemu_spice functions into the spice-app.so load module when SPICE is
+> >> compiled as a module.
+> >>
+> >> With these changes, the following shared libraries are no longer
+> >> necessary in the top-level qemu binary:
+> >>
+> >>  	libspice-server.so.1 => /lib64/libspice-server.so.1 (HEX)
+> >>  	libopus.so.0 => /lib64/libopus.so.0 (HEX)
+> >>  	liblz4.so.1 => /lib64/liblz4.so.1 (HEX)
+> >>  	libgstapp-1.0.so.0 => /lib64/libgstapp-1.0.so.0 (HEX)
+> >>  	libgstvideo-1.0.so.0 => /lib64/libgstvideo-1.0.so.0 (HEX)
+> >>  	libgstbase-1.0.so.0 => /lib64/libgstbase-1.0.so.0 (HEX)
+> >>  	libgstreamer-1.0.so.0 => /lib64/libgstreamer-1.0.so.0 (HEX)
+> >>  	libssl.so.1.1 => /lib64/libssl.so.1.1 (HEX)
+> >>  	liborc-0.4.so.0 => /lib64/liborc-0.4.so.0 (HEX)
+> >>
+> >> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+> >> ---
+> >>  include/ui/qemu-spice.h | 24 +++++++++++++++---------
+> >>  monitor/hmp-cmds.c      |  6 ++++++
+> >>  softmmu/vl.c            |  1 +
+> >>  ui/spice-core.c         | 31 +++++++++++++++++++++----------
+> >>  ui/spice-display.c      |  2 +-
+> >>  5 files changed, 44 insertions(+), 20 deletions(-)
+> >>
+> >> diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
+> >> index 8c23dfe717..0f7e139da5 100644
+> >> --- a/include/ui/qemu-spice.h
+> >> +++ b/include/ui/qemu-spice.h
+> >> @@ -24,22 +24,28 @@
+> >>
+> >>  #include <spice.h>
+> >>  #include "qemu/config-file.h"
+> >> +#include "qemu/module.h"
+> >>
+> >> -extern int using_spice;
+> >> +#define using_spice     (qemu_is_using_spice())
+> >>
+> >> -void qemu_spice_init(void);
+> >> +MODIFACE(bool, qemu_is_using_spice,(void));
+> >> +MODIFACE(void, qemu_start_using_spice, (void));
+> >> +MODIFACE(void, qemu_spice_init, (void));
+> >>  void qemu_spice_input_init(void);
+> >>  void qemu_spice_audio_init(void);
+> >> -void qemu_spice_display_init(void);
+> >> -int qemu_spice_display_add_client(int csock, int skipauth, int tls);
+> >> +MODIFACE(void, qemu_spice_display_init, (void));
+> >> +MODIFACE(int, qemu_spice_display_add_client, (int csock, int skipauth, int tls));
+> >>  int qemu_spice_add_interface(SpiceBaseInstance *sin);
+> >>  bool qemu_spice_have_display_interface(QemuConsole *con);
+> >>  int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *con);
+> >> -int qemu_spice_set_passwd(const char *passwd,
+> >> -                          bool fail_if_connected, bool disconnect_if_connected);
+> >> -int qemu_spice_set_pw_expire(time_t expires);
+> >> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
+> >> -                            const char *subject);
+> >> +MODIFACE(int, qemu_spice_set_passwd, (const char *passwd,
+> >> +                                      bool fail_if_connected,
+> >> +                                      bool disconnect_if_connected));
+> >> +MODIFACE(int, qemu_spice_set_pw_expire,(time_t expires));
+> >> +MODIFACE(int, qemu_spice_migrate_info,(const char *hostname,
+> >> +                                       int port, int tls_port,
+> >> +                                       const char *subject));
+> >> +MODIFACE(struct SpiceInfo *,qemu_spice_query, (Error **errp));
+> >
+> > This macro usage looks kind of unpleasant and its hard to understand
+> > just what is going on, especially why some methods are changed but
+> > others are not.
+> 
+> The functions that are changed are the module interface between qemu and the
+> DSO. For example, qemu_spice_init is called from vl.c, i.e. the main binary,
+> but qemu_spice_audio_init is called from ui/spice-core.c and
+> ui/spice-input.c, which are both in the DSO after the commit.
+> 
+> The existing function-based interface in qemu-spice.h was not really
+> carefully designed for modularization, so this list was determined by
+> following the initialization path. It may not be the smallest possible cut.
+> It may be neat to add a patch to reorder functions based on whether they are
+> inside the DSO or exported from it.
+> 
+> As for the macro syntax, I see it as somewhat transient. I wanted to propose
+> a working and scalable mechanism before adding some nice syntactic sugar
+> tooling to it. I expect the syntax to turn into something like:
+> 
+> MODIFACE void  qemu_spice_display_init (void);
+> MODIIMPL void  qemu_spice_display_init (void) { ... }
+> 
+> But it feels a bit too early to do that. I prefer to experiment with a
+> simple macro for now.
+> 
+> >
+> > IIUC, the goal is to turn all these into weak symbols so they don't
+> > need to be resolved immediately at startup, and instead have an
+> > impl of them provided dynamically at runtime.
+> 
+> My very first approach was indeed to use weak symbols, but then I learned
+> that ld.so no longer deals with weak symbols, apparently for security
+> reasons. See LD_DYNAMIC_WEAK in ld.so(8).
+> 
+> >
+> > If so the more normal approach would be to have a struct defining
+> > a set of callbacks, that can be registered. Or if there's a natural
+> > fit with QOM, then a QOM interface that can then have a QOM object
+> > impl registered as a singleton.
+> 
+> That was my second attempt (after the weak symbols). I cleaned it up a bit
+> and put it here: https://github.com/c3d/qemu/commits/spice-vtable.
+> 
+> What made me switch to the approach in this series is the following
+> considerations:
+> 
+> - A vtable is useful if there can be multiple values for a method, e.g. to
+>   implement inheritance, or if you have multiple instances. This is not the
+>   case here.
 
-On 2020-06-26 at 19:35 CEST, Daniel P. Berrang=C3=A9 wrote...
-> On Fri, Jun 26, 2020 at 06:43:06PM +0200, Christophe de Dinechin wrote:
->> Use the MODIFACE and MODIMPL macros to to redirect the highest-level
->> qemu_spice functions into the spice-app.so load module when SPICE is
->> compiled as a module.
->>
->> With these changes, the following shared libraries are no longer
->> necessary in the top-level qemu binary:
->>
->>  =09libspice-server.so.1 =3D> /lib64/libspice-server.so.1 (HEX)
->>  =09libopus.so.0 =3D> /lib64/libopus.so.0 (HEX)
->>  =09liblz4.so.1 =3D> /lib64/liblz4.so.1 (HEX)
->>  =09libgstapp-1.0.so.0 =3D> /lib64/libgstapp-1.0.so.0 (HEX)
->>  =09libgstvideo-1.0.so.0 =3D> /lib64/libgstvideo-1.0.so.0 (HEX)
->>  =09libgstbase-1.0.so.0 =3D> /lib64/libgstbase-1.0.so.0 (HEX)
->>  =09libgstreamer-1.0.so.0 =3D> /lib64/libgstreamer-1.0.so.0 (HEX)
->>  =09libssl.so.1.1 =3D> /lib64/libssl.so.1.1 (HEX)
->>  =09liborc-0.4.so.0 =3D> /lib64/liborc-0.4.so.0 (HEX)
->>
->> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
->> ---
->>  include/ui/qemu-spice.h | 24 +++++++++++++++---------
->>  monitor/hmp-cmds.c      |  6 ++++++
->>  softmmu/vl.c            |  1 +
->>  ui/spice-core.c         | 31 +++++++++++++++++++++----------
->>  ui/spice-display.c      |  2 +-
->>  5 files changed, 44 insertions(+), 20 deletions(-)
->>
->> diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
->> index 8c23dfe717..0f7e139da5 100644
->> --- a/include/ui/qemu-spice.h
->> +++ b/include/ui/qemu-spice.h
->> @@ -24,22 +24,28 @@
->>
->>  #include <spice.h>
->>  #include "qemu/config-file.h"
->> +#include "qemu/module.h"
->>
->> -extern int using_spice;
->> +#define using_spice     (qemu_is_using_spice())
->>
->> -void qemu_spice_init(void);
->> +MODIFACE(bool, qemu_is_using_spice,(void));
->> +MODIFACE(void, qemu_start_using_spice, (void));
->> +MODIFACE(void, qemu_spice_init, (void));
->>  void qemu_spice_input_init(void);
->>  void qemu_spice_audio_init(void);
->> -void qemu_spice_display_init(void);
->> -int qemu_spice_display_add_client(int csock, int skipauth, int tls);
->> +MODIFACE(void, qemu_spice_display_init, (void));
->> +MODIFACE(int, qemu_spice_display_add_client, (int csock, int skipauth, =
-int tls));
->>  int qemu_spice_add_interface(SpiceBaseInstance *sin);
->>  bool qemu_spice_have_display_interface(QemuConsole *con);
->>  int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *c=
-on);
->> -int qemu_spice_set_passwd(const char *passwd,
->> -                          bool fail_if_connected, bool disconnect_if_co=
-nnected);
->> -int qemu_spice_set_pw_expire(time_t expires);
->> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_por=
-t,
->> -                            const char *subject);
->> +MODIFACE(int, qemu_spice_set_passwd, (const char *passwd,
->> +                                      bool fail_if_connected,
->> +                                      bool disconnect_if_connected));
->> +MODIFACE(int, qemu_spice_set_pw_expire,(time_t expires));
->> +MODIFACE(int, qemu_spice_migrate_info,(const char *hostname,
->> +                                       int port, int tls_port,
->> +                                       const char *subject));
->> +MODIFACE(struct SpiceInfo *,qemu_spice_query, (Error **errp));
->
-> This macro usage looks kind of unpleasant and its hard to understand
-> just what is going on, especially why some methods are changed but
-> others are not.
+IMHO a vtable is fine for singleton objects. It is a generic way to
+remove tight coupling between caller(s) and an implementation. Just
+having 1 implementation doesn't invalidate the model.
 
-The functions that are changed are the module interface between qemu and th=
-e
-DSO. For example, qemu_spice_init is called from vl.c, i.e. the main binary=
-,
-but qemu_spice_audio_init is called from ui/spice-core.c and
-ui/spice-input.c, which are both in the DSO after the commit.
+> - A vtable adds one level of indirection, which does not seem to be
+>   particularly useful or helpful for this particular use case.
+> 
+> - Overloading QOM for that purpose looked more confusing than anything else.
+>   It looked like I was mixing unrelated concepts. Maybe that's just me.
+> 
+> - The required change with a vtable ends up being more extensive. Instead of
+>   changing a single line to put an entry point in a DSO, you need to create
+>   the vtable, add functions to it, add a register function, etc. I was
+>   looking for an easier and more scalable way.
+> 
+> - In particular, with a vtable, you cannot take advantage of the syntactic
+>   trick I used here, which is that foo(x) is a shortcut for (*foo)(x).
+>   So for a vtable, you need to manually write wrappers.
+> 
+> This could be automated, of course, but so far I did not find any clear
+> benefit, and many drawbacks to using the vtable approach. As a quantitative
+> comparison point, the commit that does this same connection using the vtable
+> approach is:
+> 
+>  include/ui/qemu-spice.h | 104 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+>  monitor/hmp-cmds.c      |   6 +++++
+>  softmmu/vl.c            |  10 +++++++
+>  ui/spice-core.c         |  38 ++++++++++++++++++++++++---
+>  4 files changed, 148 insertions(+), 10 deletions(-)
+> 
+> as opposed to what is presented in this series:
+> 
+>  include/ui/qemu-spice.h | 24 +++++++++++++++---------
+>  monitor/hmp-cmds.c      |  6 ++++++
+>  softmmu/vl.c            |  1 +
+>  ui/spice-core.c         | 31 +++++++++++++++++++++----------
+>  ui/spice-display.c      |  2 +-
+>  5 files changed, 44 insertions(+), 20 deletions(-)
 
-The existing function-based interface in qemu-spice.h was not really
-carefully designed for modularization, so this list was determined by
-following the initialization path. It may not be the smallest possible cut.
-It may be neat to add a patch to reorder functions based on whether they ar=
-e
-inside the DSO or exported from it.
+I much prefer the code in the vtable patch version. The larger number of
+lines of code doesn't bother me, because the code is really simple and
+clear to read. IOW I prefer the clarity of the longer code, over the
+shorter code with magic hidden behind it.
 
-As for the macro syntax, I see it as somewhat transient. I wanted to propos=
-e
-a working and scalable mechanism before adding some nice syntactic sugar
-tooling to it. I expect the syntax to turn into something like:
-
-MODIFACE void  qemu_spice_display_init (void);
-MODIIMPL void  qemu_spice_display_init (void) { ... }
-
-But it feels a bit too early to do that. I prefer to experiment with a
-simple macro for now.
-
->
-> IIUC, the goal is to turn all these into weak symbols so they don't
-> need to be resolved immediately at startup, and instead have an
-> impl of them provided dynamically at runtime.
-
-My very first approach was indeed to use weak symbols, but then I learned
-that ld.so no longer deals with weak symbols, apparently for security
-reasons. See LD_DYNAMIC_WEAK in ld.so(8).
-
->
-> If so the more normal approach would be to have a struct defining
-> a set of callbacks, that can be registered. Or if there's a natural
-> fit with QOM, then a QOM interface that can then have a QOM object
-> impl registered as a singleton.
-
-That was my second attempt (after the weak symbols). I cleaned it up a bit
-and put it here: https://github.com/c3d/qemu/commits/spice-vtable.
-
-What made me switch to the approach in this series is the following
-considerations:
-
-- A vtable is useful if there can be multiple values for a method, e.g. to
-  implement inheritance, or if you have multiple instances. This is not the
-  case here.
-
-- A vtable adds one level of indirection, which does not seem to be
-  particularly useful or helpful for this particular use case.
-
-- Overloading QOM for that purpose looked more confusing than anything else=
-.
-  It looked like I was mixing unrelated concepts. Maybe that's just me.
-
-- The required change with a vtable ends up being more extensive. Instead o=
-f
-  changing a single line to put an entry point in a DSO, you need to create
-  the vtable, add functions to it, add a register function, etc. I was
-  looking for an easier and more scalable way.
-
-- In particular, with a vtable, you cannot take advantage of the syntactic
-  trick I used here, which is that foo(x) is a shortcut for (*foo)(x).
-  So for a vtable, you need to manually write wrappers.
-
-This could be automated, of course, but so far I did not find any clear
-benefit, and many drawbacks to using the vtable approach. As a quantitative
-comparison point, the commit that does this same connection using the vtabl=
-e
-approach is:
-
- include/ui/qemu-spice.h | 104 ++++++++++++++++++++++++++++++++++++++++++++=
-++++++++++++++++++++++++-----
- monitor/hmp-cmds.c      |   6 +++++
- softmmu/vl.c            |  10 +++++++
- ui/spice-core.c         |  38 ++++++++++++++++++++++++---
- 4 files changed, 148 insertions(+), 10 deletions(-)
-
-as opposed to what is presented in this series:
-
- include/ui/qemu-spice.h | 24 +++++++++++++++---------
- monitor/hmp-cmds.c      |  6 ++++++
- softmmu/vl.c            |  1 +
- ui/spice-core.c         | 31 +++++++++++++++++++++----------
- ui/spice-display.c      |  2 +-
- 5 files changed, 44 insertions(+), 20 deletions(-)
-
-
->
->>  #if !defined(SPICE_SERVER_VERSION) || (SPICE_SERVER_VERSION < 0xc06)
->>  #define SPICE_NEEDS_SET_MM_TIME 1
->> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
->> index 2b0b58a336..6bd9c52658 100644
->> --- a/monitor/hmp-cmds.c
->> +++ b/monitor/hmp-cmds.c
->> @@ -56,6 +56,7 @@
->>  #include "migration/misc.h"
->>
->>  #ifdef CONFIG_SPICE
->> +#include "ui/qemu-spice.h"
->>  #include <spice/enums.h>
->>  #endif
->>
->> @@ -573,6 +574,11 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
->>  #endif
->>
->>  #ifdef CONFIG_SPICE
->> +SpiceInfo *qmp_query_spice(Error **errp)
->> +{
->> +    return qemu_spice_query(errp);
->> +}
->> +
->>  void hmp_info_spice(Monitor *mon, const QDict *qdict)
->>  {
->>      SpiceChannelList *chan;
->> diff --git a/softmmu/vl.c b/softmmu/vl.c
->> index 3e15ee2435..c94b4fa49b 100644
->> --- a/softmmu/vl.c
->> +++ b/softmmu/vl.c
->> @@ -22,6 +22,7 @@
->>   * THE SOFTWARE.
->>   */
->>
->> +#define MODULE_STUBS
->>  #include "qemu/osdep.h"
->>  #include "qemu-common.h"
->>  #include "qemu/units.h"
->> diff --git a/ui/spice-core.c b/ui/spice-core.c
->> index ecc2ec2c55..dbc1886b77 100644
->> --- a/ui/spice-core.c
->> +++ b/ui/spice-core.c
->> @@ -48,7 +48,7 @@ static time_t auth_expires =3D TIME_MAX;
->>  static int spice_migration_completed;
->>  static int spice_display_is_running;
->>  static int spice_have_target_host;
->> -int using_spice =3D 0;
->> +static int is_using_spice =3D 0;
->>
->>  static QemuThread me;
->>
->> @@ -503,7 +503,7 @@ static QemuOptsList qemu_spice_opts =3D {
->>      },
->>  };
->>
->> -SpiceInfo *qmp_query_spice(Error **errp)
->> +MODIMPL(SpiceInfo *,qemu_spice_query,(Error **errp))
->>  {
->>      QemuOpts *opts =3D QTAILQ_FIRST(&qemu_spice_opts.head);
->>      int port, tls_port;
->> @@ -579,8 +579,9 @@ static void migration_state_notifier(Notifier *notif=
-ier, void *data)
->>      }
->>  }
->>
->> -int qemu_spice_migrate_info(const char *hostname, int port, int tls_por=
-t,
->> -                            const char *subject)
->> +MODIMPL(int, qemu_spice_migrate_info, (const char *hostname,
->> +                                       int port, int tls_port,
->> +                                       const char *subject))
->>  {
->>      int ret;
->>
->> @@ -634,7 +635,17 @@ static void vm_change_state_handler(void *opaque, i=
-nt running,
->>      }
->>  }
->>
->> -void qemu_spice_init(void)
->> +MODIMPL(bool, qemu_is_using_spice, (void))
->> +{
->> +    return is_using_spice;
->> +}
->> +
->> +MODIMPL(void, qemu_start_using_spice, (void))
->> +{
->> +    is_using_spice =3D 1;
->> +}
->> +
->> +MODIMPL(void, qemu_spice_init, (void))
->>  {
->>      QemuOpts *opts =3D QTAILQ_FIRST(&qemu_spice_opts.head);
->>      const char *password, *str, *x509_dir, *addr,
->> @@ -796,7 +807,7 @@ void qemu_spice_init(void)
->>          error_report("failed to initialize spice server");
->>          exit(1);
->>      };
->> -    using_spice =3D 1;
->> +    qemu_start_using_spice();
->>
->>      migration_state.notify =3D migration_state_notifier;
->>      add_migration_state_change_notifier(&migration_state);
->> @@ -945,8 +956,8 @@ static int qemu_spice_set_ticket(bool fail_if_conn, =
-bool disconnect_if_conn)
->>                                     fail_if_conn, disconnect_if_conn);
->>  }
->>
->> -int qemu_spice_set_passwd(const char *passwd,
->> -                          bool fail_if_conn, bool disconnect_if_conn)
->> +MODIMPL(int, qemu_spice_set_passwd,(const char *passwd,
->> +                                    bool fail_if_conn, bool disconnect_=
-if_conn))
->>  {
->>      if (strcmp(auth, "spice") !=3D 0) {
->>          return -1;
->> @@ -957,13 +968,13 @@ int qemu_spice_set_passwd(const char *passwd,
->>      return qemu_spice_set_ticket(fail_if_conn, disconnect_if_conn);
->>  }
->>
->> -int qemu_spice_set_pw_expire(time_t expires)
->> +MODIMPL(int, qemu_spice_set_pw_expire, (time_t expires))
->>  {
->>      auth_expires =3D expires;
->>      return qemu_spice_set_ticket(false, false);
->>  }
->>
->> -int qemu_spice_display_add_client(int csock, int skipauth, int tls)
->> +MODIMPL(int, qemu_spice_display_add_client, (int csock, int skipauth, i=
-nt tls))
->>  {
->>      if (tls) {
->>          return spice_server_add_ssl_client(spice_server, csock, skipaut=
-h);
->> diff --git a/ui/spice-display.c b/ui/spice-display.c
->> index 19632fdf6c..90529695fe 100644
->> --- a/ui/spice-display.c
->> +++ b/ui/spice-display.c
->> @@ -1164,7 +1164,7 @@ static void qemu_spice_display_init_one(QemuConsol=
-e *con)
->>      register_displaychangelistener(&ssd->dcl);
->>  }
->>
->> -void qemu_spice_display_init(void)
->> +MODIMPL(void, qemu_spice_display_init,(void))
->>  {
->>      QemuOptsList *olist =3D qemu_find_opts("spice");
->>      QemuOpts *opts =3D QTAILQ_FIRST(&olist->head);
->> --
->> 2.26.2
->>
->>
->
-> Regards,
-> Daniel
-
-
---
-Cheers,
-Christophe de Dinechin (IRC c3d)
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
