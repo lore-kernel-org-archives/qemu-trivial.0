@@ -1,71 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqJWI-0003ke-EW
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 12:54:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34678)
+	id 1jqMNm-00089W-OM
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 15:57:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqJWG-0003jZ-5u
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 12:54:04 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24866
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqJWE-0000LJ-L3
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 12:54:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593536041;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=vJSruWLVjaaC73UPwEY++g4X186kLY1YJk3gSfzrbSc=;
- b=Vp00+r/TpfJwS8Tdn1aU5Nd3JXx9Z/fnochZUl00VHzSDqfTMV80TeZpMeybE0Tzo9hXuB
- V05asWgiJzSX40qJqQSBxfJxUT/6H3Ud5TY3kIFRaCE6U8DGZIFXJiZxSEK88MOa9FSyKL
- OJoGQyrasnSxmecy7vax2YAtT91JYTE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-TmSaAU2mNz-Byg2juoJzaQ-1; Tue, 30 Jun 2020 12:53:59 -0400
-X-MC-Unique: TmSaAU2mNz-Byg2juoJzaQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 984D08F4E8;
- Tue, 30 Jun 2020 16:53:57 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
- [10.36.112.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 32D5B7BEDE;
- Tue, 30 Jun 2020 16:53:57 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 0C1EC17444; Tue, 30 Jun 2020 18:53:56 +0200 (CEST)
-Date: Tue, 30 Jun 2020 18:53:56 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, David CARLIER <devnexen@gmail.com>,
- qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [PATC 7/9] Skipping drm build, unsupported
-Message-ID: <20200630165356.2ka2ltwmrfjb5msn@sirius.home.kraxel.org>
-References: <CA+XhMqzjjrfxXeSENBQuHzTe4TRMWV5GOdqPkD3bo17T3ufR1A@mail.gmail.com>
- <1058ccbd-b4bb-9413-abc5-ae89076a58e1@redhat.com>
- <20200630082301.6vybzwmg4pviuwob@sirius.home.kraxel.org>
- <CAFEAcA8jkzf8+d5AyAVH2HJ544TyHsM4xP5tpWsKiJbJtWMjKw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqMNl-00089E-MA; Tue, 30 Jun 2020 15:57:29 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37191)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqMNk-00044T-Bz; Tue, 30 Jun 2020 15:57:29 -0400
+Received: by mail-wr1-x443.google.com with SMTP id a6so21339355wrm.4;
+ Tue, 30 Jun 2020 12:57:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=znF0WQWyIqwGCAno4Um3q4Y6c7tQfMSvObuszrCzcOU=;
+ b=sw1oCa8SAfWJs9iSCnQUnUQZKHwn876FsUAU4nArXdfW0HkiH6dox8D8o3JWX37o+i
+ fkVCeT07dEaXy+meKOojYfKuUds5e9ujbwiwbN1kEWQxEJfWCBuYNKVJ+cmGjDI5uZbW
+ zkD2LC/+SYukrxbnm2NZN+tkVsZ3lSOB65SnUVHcHMzDiGh46fxWyMXBKTaAIxB3nDUH
+ +0HHh6KhJU7CAgz0veDkgYsuhcbmp1crlx4O0c5vu5eUgm35m7xmvN3+JeOyR2icaoOe
+ +8F8qwAvRtU4riz7KrEo0d2j+aJuqwXAVjT7AaNm8RWOFs8QzM9w8Du+WsYTrq/4QFb8
+ bDtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=znF0WQWyIqwGCAno4Um3q4Y6c7tQfMSvObuszrCzcOU=;
+ b=DzfYXOiMJ3XkeXOBd/h2qE4hla+V7lmF1TPl8k1AfeP+LvnEtI31dCefj855BbQ2ih
+ gPzigMXBEgeiobk7itrwt4+uLyFxqAJUJw7wSIwCSO7G+sdoLapvFvoAyBNSBmYPk0GS
+ RtMoMKbH8eYeN8w78KoKf3oQ0na/hzc40X9M2ulfssOq6HYa1tXcJfgdoFNe52yueAwO
+ Ia0D7D4NDtSqqLyqZLGmCZEQbC8ROEcSQqsvPaLjPQDsqzzNK4WtE8D1hvY1MSoWIBpJ
+ TlDEuQohVNbKjsGnktUtlwOlJXkOna83LasI0y4sU/p8nQ9tszRWohUavKNr9LNGlh9q
+ TIQA==
+X-Gm-Message-State: AOAM531NlW3XXhT+zBHlZEFCwXtk14lYp2ht+Bazfz9k1PDKte5Finr2
+ QT3OHrFtTFIYBG6iQVlfbxvkdBHiMuM=
+X-Google-Smtp-Source: ABdhPJzb3MpPAdJyF/SEYmSS/22YsA7VmQtQy6nPUF0HNtsU+BgZd1+PqK1h9S9haLMKL/v3pKo/kg==
+X-Received: by 2002:adf:edc6:: with SMTP id v6mr23308804wro.413.1593547045495; 
+ Tue, 30 Jun 2020 12:57:25 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id k11sm5172979wrd.23.2020.06.30.12.57.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jun 2020 12:57:24 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org, Yunqiang Su <ysu@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Laurent Vivier <laurent@vivier.eu>, Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v3 0/5] hw/mips/malta: Add the 'malta-strict' machine,
+ matching Malta hardware
+Date: Tue, 30 Jun 2020 21:57:18 +0200
+Message-Id: <20200630195723.1359-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8jkzf8+d5AyAVH2HJ544TyHsM4xP5tpWsKiJbJtWMjKw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 03:55:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,26 +85,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 16:54:04 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 19:57:30 -0000
 
-> > > > -util-obj-$(CONFIG_POSIX) += drm.o
-> > > > +util-obj-$(CONFIG_LINUX) += drm.o
-> >
-> > Can't see anything linux-specific there.  Also note that FreeBSD (and
-> > possibly other *BSDs too) have drm support.  So CONFIG_POSIX looks
-> > correct to me.
-> 
-> This change was my suggestion; I assumed that "open /dev/dri/whatever"
-> was Linux-specific. The specific thing that doesn't work on
-> Haiku, or on Solaris for that matter, is that the code uses
-> DT_CHR, which isn't in POSIX but is a Linux-and-BSDism.
+Hi,
 
-Ah, that is the problem.  Yes, DT_CHR is an non-posix optimization which
-allows to get the file type directly, without another round-trip to the
-kernel.  If that isn't available you can stat() the file and check
-((st_mode & S_IFMT) == S_IFCHR) instead.
+This series add a new 'malta-strict' machine, that aims to properly
+model the real hardware (which is not what the current 'malta'
+machine models).
 
-take care,
-  Gerd
+Since v2:
+- Initialize missing malta_machine_types::class_size
+- Remove RFC patch that confuses Aleksandar
+- Added examples of 'malta-strict' use
+
+$ git backport-diff -u v2
+Key:
+[----] : patches are identical
+[####] : number of functional differences between upstream/downstream patch
+[down] : patch is downstream-only
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+
+001/5:[----] [--] 'hw/mips/malta: Trivial code movement'
+002/5:[----] [--] 'hw/mips/malta: Register the machine as a TypeInfo'
+003/5:[0001] [FC] 'hw/mips/malta: Introduce MaltaMachineClass::max_ramsize'
+004/5:[----] [--] 'hw/mips/malta: Introduce the 'malta-strict' machine'
+005/5:[----] [--] 'hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes'
+
+Philippe Mathieu-Daudé (5):
+  hw/mips/malta: Trivial code movement
+  hw/mips/malta: Register the machine as a TypeInfo
+  hw/mips/malta: Introduce MaltaMachineClass::max_ramsize
+  hw/mips/malta: Introduce the 'malta-strict' machine
+  hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes
+
+ hw/mips/malta.c | 105 +++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 91 insertions(+), 14 deletions(-)
+
+-- 
+2.21.3
 
 
