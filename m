@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqGU7-0001Yd-Gx
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 09:39:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35074)
+	id 1jqGcu-0001OH-E6
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 09:48:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGTy-0001IZ-Ri
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:39:30 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56050
+ id 1jqGcs-0001J3-48
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:48:42 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31090
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGTx-0006Ka-04
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:39:30 -0400
+ id 1jqGcq-0008CI-20
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:48:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593524367;
+ s=mimecast20190719; t=1593524919;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=BshmLbkCegvWQdOrab3Q23b6T16SbqzgLcrY5ZDWofo=;
- b=DdqgVEzykTpaOfoGLRQxl1Gz7f5+xWJzOzaB22kvG3EMOem9I3g4YBjEe6csD7cRcgloR0
- fPyhbIPe82TCrBhDNxQk0+UxDK8CT1yiHCigbqR8vvVec3s5ppN+V+aR3d1Qv1W684wSP7
- Vd8E1U0t09PQpoNOhqXhfj3/0JULEV0=
+ bh=1kDF33SkBIMxX+TfeNkB1aYwsB9NxRjpAPfkp9doQcs=;
+ b=cQt75OYTIvtBHK0STqqgFlBWhE/POhb0gW0fxSAOFFHUkIXByN55VyLiQax9G/zYfFt3f7
+ sImFxbYPevRcfY0oWEyRS85h7Q3gDc24DTRZ7hzhBnF/OSmgugluVI9yYoJ9+Fo0kkvwsf
+ eOJZKUT5MHxvIyF49sEGhOiwg+I+FS4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-322-fxhnA3w1Mg6DgPEn1ZgnZw-1; Tue, 30 Jun 2020 09:39:24 -0400
-X-MC-Unique: fxhnA3w1Mg6DgPEn1ZgnZw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-306-faW0U_rtMHeV6m4_6I5SJQ-1; Tue, 30 Jun 2020 09:48:34 -0400
+X-MC-Unique: faW0U_rtMHeV6m4_6I5SJQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB03C800D5C;
- Tue, 30 Jun 2020 13:39:22 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45E0A80183C;
+ Tue, 30 Jun 2020 13:48:33 +0000 (UTC)
 Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 252647FE9C;
- Tue, 30 Jun 2020 13:39:11 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 86A647166E;
+ Tue, 30 Jun 2020 13:48:22 +0000 (UTC)
 References: <20200626164307.3327380-1-dinechin@redhat.com>
  <20200626164307.3327380-2-dinechin@redhat.com>
- <20200630052756-mutt-send-email-mst@kernel.org>
+ <2fff081b-273a-45c4-9117-a16eceb66c66@suse.de>
 User-agent: mu4e 1.5.2; emacs 26.3
 From: Christophe de Dinechin <dinechin@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, =?utf-8?Q?Mar?=
- =?utf-8?Q?c-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Laurent
- Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>, Gerd
- Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>
+To: Claudio Fontana <cfontana@suse.de>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-trivial@nongnu.org, Michael Tokarev
+ <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, "Dr. David Alan
+ Gilbert" <dgilbert@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Gerd
+ Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>, =?utf-8?Q?M?=
+ =?utf-8?Q?arc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Richard
+ Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
 Subject: Re: [PATCH 01/10] modules: Provide macros making it easier to
  identify module exports
-In-reply-to: <20200630052756-mutt-send-email-mst@kernel.org>
-Date: Tue, 30 Jun 2020 15:39:10 +0200
-Message-ID: <lybll0d669.fsf@redhat.com>
+In-reply-to: <2fff081b-273a-45c4-9117-a16eceb66c66@suse.de>
+Date: Tue, 30 Jun 2020 15:48:21 +0200
+Message-ID: <ly8sg4d5qy.fsf@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dinechin@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -69,7 +69,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,11 +82,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 13:39:31 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 13:48:42 -0000
 
 
-On 2020-06-30 at 11:38 CEST, Michael S. Tsirkin wrote...
-> On Fri, Jun 26, 2020 at 06:42:58PM +0200, Christophe de Dinechin wrote:
+On 2020-06-29 at 12:13 CEST, Claudio Fontana wrote...
+> Hello Christophe,
+>
+> On 6/26/20 6:42 PM, Christophe de Dinechin wrote:
 >> In order to facilitate the move of large chunks of functionality to
 >> load modules, it is simpler to create a wrapper with the same name
 >> that simply relays the implementation. For efficiency, this is
@@ -135,27 +137,59 @@ On 2020-06-30 at 11:38 CEST, Michael S. Tsirkin wrote...
 >>  typedef enum {
 >>      MODULE_INIT_MIGRATION,
 >>      MODULE_INIT_BLOCK,
+>>
 >
-> Hmm that's quite a bit of overhead for each call across modules.
+> Just as background, I am interested in all modules-related work, because of my long term plan to have target-specific modules as well:
+>
+>  https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg04628.html
+>
+> I am not 100% clear on what is the goal and expected usage of this
+> preprocessor code, despite the commit message, maybe you could clarify a
+> bit with more verbosity?
 
-Do you mean runtime overhead, i.e. the difference between
-foo(x) and (*foo)(x)?
+Well, so far, the preference seems to be to go through a more verbose
+approach with an explicit table of functions.
 
+What the preprocessor code did was:
 
-> Can't code patching be used somehow?
+- If you build without modules, nothing changes, you get a direct call
 
-I've considered it, but this seems like a bit of a hammer for half a dozen
-calls that are mostly init, so not performance sensitive.
+- If you build with modules:
 
-In the old times, ld.so used to do that for you. All you had to do was to
-mark one symbol as weak. Apparently for security reasons, that feature was
-dropped several years ago. At least, that put call patching where it
-belonged, i.e. in the loader.
+ + In the DSO, foo is replaced with foo_implementation
+ + Elsewhere, foo is replaced with a function pointer also called foo.
+ + The implementation adds constructor code that sets foo to point to foo_implementation
+
 
 >
+> Additionally if you happen to be interested, maybe you know already or
+> could think about what this could mean for target-specific modules, which
+> will require some improvements to the modules "subsystem"(?) as well.
+
+So far, I've only integrated Gerd's workaround for target-specific
+modules. Some additional mechanics is needed to name target-specific
+modules, e.g. put them in some target directory.
+
 >
->> --
->> 2.26.2
+> In my experimentation I didn't have to do this preprocessor work, instead
+> I had to fine tune a bit the makefile support (rules.mak and makefiles) to
+> be able to accomodate for (even large) modules in target/ as well.
+
+It's probably because the modules you were dealing with already had the
+required indirection and module_init calls, i.e. they were only invoked
+using QOM already.
+
+The mechanism I was proposing is to quickly add the indirection for
+qemu functionality that does not have such indirect calls yet.
+
+The consensus so far seems to be that the syntax I proposed is not nice, and
+that it's better to make it more explicit through a table and indirect
+calls, even if that means changing the call sites.
+
+>
+> Thanks!
+>
+> CLaudio
 
 
 --
