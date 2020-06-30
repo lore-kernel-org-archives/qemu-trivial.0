@@ -1,80 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqMNt-0008QM-Qx
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 15:57:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53422)
+	id 1jqODi-0007Ne-Fs
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 17:55:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqMNr-0008LM-Vq; Tue, 30 Jun 2020 15:57:36 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37191)
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jqODh-0007LX-00; Tue, 30 Jun 2020 17:55:13 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43463)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqMNq-00045P-DE; Tue, 30 Jun 2020 15:57:35 -0400
-Received: by mail-wr1-x441.google.com with SMTP id a6so21339600wrm.4;
- Tue, 30 Jun 2020 12:57:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jqODf-0006eO-9k; Tue, 30 Jun 2020 17:55:12 -0400
+Received: by mail-wr1-x441.google.com with SMTP id j4so19198425wrp.10;
+ Tue, 30 Jun 2020 14:55:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nCLgw9mQp+ua1T7qd5IhM0F5v0NpMBrPaJh73a54bRE=;
- b=AEs0BuyEXZ9RJeamwrF5xxzbXzcrkKyRkUalsvgurBeAWQoxrkqvz8hIy8DlYw/MCF
- /XPuqmSk9nw18tRL3jOcTFRF1YBrScSyrlbSxbIkadbLdC6sOzX0mJqXRvEqjymudgSi
- GyGloSYJqKL8A1m+vWlAjZl4NbdJuJ0nhcqfekPZylbLQJ8BLyBsZCRFGKrrH6YUkZ4b
- VzzF9O4pCCAI9J1dICuZ3iztv6lMtUW1uELzG1g40muQhu+ZUk1OpzAtrkCqzPfASjBV
- sRU63pCLIKW8oz2dnFOFC+Q/dSjhXaMdyqcRwPGs1p+n/R70t3HbaJ20WYo0OPUa+jh2
- Y0kw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=I6CDGJL8XjgO7LAGyyB4NDAKVqim4HeLk2kRAk4UpVU=;
+ b=sKrMPWydGAVKsAjkdnoq9PYl5XZr6XNNjzvLkPJmxrop6ZBhbVhlM77MowB/6dcdYW
+ sLuncYfUKjf3q+86MDn7G1AkNASrYnwWCDcSpXQO2eaU8M65vBB9d4OXL3ILpfvPHbQD
+ +rN6jrJwK+nZIBQrybJ6lfXJyEozjzxLtbAX1wEcPoC4jm5kZWgbo2WtuLcjw6+nESEd
+ Xj9SqNQIzvdxUieCd56H82j8K4SoOlq0vywYZvXZ0UXCAxsiDidnWcQMec79az/5gbKt
+ nIzcX++A9cpiFeJr/yohGsOxZ9zrVI/C+Wgx7j3F0QQmqzJVSQzQhCJ4EqSuKKVJq72q
+ tTvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=nCLgw9mQp+ua1T7qd5IhM0F5v0NpMBrPaJh73a54bRE=;
- b=tCK+FMlcTsdyfKga4CmOpEukNvutiLEB5wpid7gXWhRc8447rk9S+Cj82nyekZ+IDg
- JyV2P79JmvpQZolZKRoe1ylsTq823MmrYBPiPTVGVxkA/FRAF/nqMLU4YZiexdmcb2mT
- k4fst7G3X4RO84uMSn1Wf8c9OpA44YAGFo597+0x9k2SNnMv7OpIOcGmnO7c8ukkhAuM
- TNr1zZnVVcmFbR86BpeQnP3XY+12GOAc7eh/+vQS9CwU+LbzP3XbMkR51LrMkORCDucM
- ZRh7CEUN2DdiFFDdAWC+Dgcx/vg9AAcZorv1ErGQA+9DRynqiasooHy90fdmcZLV5b1Q
- L4mA==
-X-Gm-Message-State: AOAM532ea7wThQQwe/4F7utf07KIQj+rq43x+gVi9s/35BSDvLRmke5d
- XvL1PeGwqNtnI1SSrMjmk0oh+1FSfLk=
-X-Google-Smtp-Source: ABdhPJwXCQTVM8a4o8RulKkr4VZJe/q3S+ws33vjOgb3Fjsn7A8QuR5r8Acv6p4/8OpiigMUK17R1w==
-X-Received: by 2002:adf:aad3:: with SMTP id i19mr23380514wrc.359.1593547051296; 
- Tue, 30 Jun 2020 12:57:31 -0700 (PDT)
-Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id k11sm5172979wrd.23.2020.06.30.12.57.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2020 12:57:30 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Yunqiang Su <ysu@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Laurent Vivier <laurent@vivier.eu>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 5/5] hw/mips/malta: Verify malta-strict machine uses
- correct DIMM sizes
-Date: Tue, 30 Jun 2020 21:57:23 +0200
-Message-Id: <20200630195723.1359-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200630195723.1359-1-f4bug@amsat.org>
-References: <20200630195723.1359-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=I6CDGJL8XjgO7LAGyyB4NDAKVqim4HeLk2kRAk4UpVU=;
+ b=sk9bz7y/3wmFvuFXDa9ExaR9LMbPJeXf4uDgHZKWRyo5NYVA4RtlQQfszHg1TCoZId
+ F0Ufymk1N8eu/qxVQ5rM5npJ7+SJNr9n45wX2GjGtx/cNaWOz06DfH1OY3ldAnhhC7hT
+ YjQa9YoDJmqzcJE0IgB++kbfUrk2Wnk+cpxygqqDk5LSbbUvK1unfnlx493r9UWf+QeJ
+ o7xqd4VCfCgV3HMCVyXyRHhhAQMxHkWGhndPuhrmRqgnkmjwKsS4EvYBqaOAXSKOymXs
+ 8UVsIU8ij2vHY5OzUnCoG6RukK8AD3QKtiGPeMr/zyezDDvCinr8B9GA6A4AqNRMPAOZ
+ pf3g==
+X-Gm-Message-State: AOAM530/TLX2McaquLkLm13cf5J5RccdJdz0UhfTV0QJQe3rHWeg+PoP
+ 0eNX65RyTdHruyVt8XK2MMfMKD3auLLNfyw/Vm0=
+X-Google-Smtp-Source: ABdhPJy2fH3go2ND/pH3qegkPKvP5V0oaBJ9DkPS9xkODsBTc6WnD67P10bvNvvMQR+YtzTckkrEPsnzEu7Xv7VR268=
+X-Received: by 2002:a5d:6907:: with SMTP id t7mr23475654wru.329.1593554107954; 
+ Tue, 30 Jun 2020 14:55:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+References: <20200630195723.1359-1-f4bug@amsat.org>
+In-Reply-To: <20200630195723.1359-1-f4bug@amsat.org>
+From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Date: Tue, 30 Jun 2020 23:54:55 +0200
+Message-ID: <CAHiYmc6d3Q2A237qVqp6s0MagXqgy11aX9r_LuJsGkoJxRhfQw@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] hw/mips/malta: Add the 'malta-strict' machine,
+ matching Malta hardware
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Yunqiang Su <ysu@wavecomp.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+ qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Igor Mammedov <imammedo@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+ envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,73 +77,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 19:57:36 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 21:55:13 -0000
 
-The machine has 4 DIMM slots. Each DIMM must be a power of 2.
-Add a check the total RAM is a good combination of DIMMs.
+As, in a very clear way, evidenced from the previous versions of this
+series, this series real goal was not not to create some new
+"malta-strict" machine, but to prepare path to creation of some
+imagined "malta-unleashed" machine which will, to the contrary of
+proclaimed goal, create a machine that could never exist in reality.
+That is why I can't accept this series.
 
-Example when asking a combination not power of 2:
+Regards,
+Aleksandar
 
-  $ qemu-system-mips -M malta-strict -bios /dev/null -m 252
-  qemu-system-mips: RAM size must be the combination of 4 powers of 2
 
-Working example (as 100 = 64 + 32 + 2 + 2):
-
-  $ qemu-system-mips -M malta-strict -monitor stdio -S -bios /dev/null -m 100
-  QEMU 5.0.50 monitor - type 'help' for more information
-  (qemu) info mtree
-  address-space: memory
-    0000000000000000-ffffffffffffffff (prio 0, i/o): system
-      0000000000000000-00000000063fffff (prio 0, ram): alias mips_malta_low_preio.ram @mips_malta.ram 0000000000000000-00000000063fffff
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/mips/malta.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index ac4a618751..17f5833a94 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -71,6 +71,8 @@
- 
- #define MAX_IDE_BUS         2
- 
-+#define DIMM_SLOTS_COUNT    4
-+
- #define TYPE_MALTA_MACHINE       MACHINE_TYPE_NAME("malta-base")
- #define MALTA_MACHINE_CLASS(klass) \
-      OBJECT_CLASS_CHECK(MaltaMachineClass, (klass), TYPE_MALTA_MACHINE)
-@@ -82,6 +84,7 @@ typedef struct MaltaMachineClass {
-     MachineClass parent_obj;
-     /* Public */
-     ram_addr_t max_ramsize;
-+    bool verify_dimm_sizes;
- } MaltaMachineClass;
- 
- typedef struct {
-@@ -1260,6 +1263,12 @@ void mips_malta_init(MachineState *machine)
-     /* create CPU */
-     mips_create_cpu(machine, s, &cbus_irq, &i8259_irq);
- 
-+    if (mmc->verify_dimm_sizes && ctpop64(ram_size) > DIMM_SLOTS_COUNT) {
-+        error_report("RAM size must be the combination of %d powers of 2",
-+                     DIMM_SLOTS_COUNT);
-+        exit(1);
-+    }
-+
-     /*
-      * The GT-64120A north bridge accepts at most 256 MiB per SCS for
-      * address decoding, so we have a maximum of 1 GiB. We deliberately
-@@ -1493,6 +1502,7 @@ static void malta_machine_strict_class_init(ObjectClass *oc, void *data)
- #endif
-     mc->default_ram_size = 32 * MiB;
-     mmc->max_ramsize = 256 * MiB; /* 32 MByte PC100 SDRAM DIMMs x 4 slots */
-+    mmc->verify_dimm_sizes = true;
- };
- 
- static const TypeInfo malta_machine_types[] = {
--- 
-2.21.3
-
+=D1=83=D1=82=D0=BE, 30. =D1=98=D1=83=D0=BD 2020. =D1=83 21:58 Philippe Math=
+ieu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> Hi,
+>
+> This series add a new 'malta-strict' machine, that aims to properly
+> model the real hardware (which is not what the current 'malta'
+> machine models).
+>
+> Since v2:
+> - Initialize missing malta_machine_types::class_size
+> - Remove RFC patch that confuses Aleksandar
+> - Added examples of 'malta-strict' use
+>
+> $ git backport-diff -u v2
+> Key:
+> [----] : patches are identical
+> [####] : number of functional differences between upstream/downstream pat=
+ch
+> [down] : patch is downstream-only
+> The flags [FC] indicate (F)unctional and (C)ontextual differences, respec=
+tively
+>
+> 001/5:[----] [--] 'hw/mips/malta: Trivial code movement'
+> 002/5:[----] [--] 'hw/mips/malta: Register the machine as a TypeInfo'
+> 003/5:[0001] [FC] 'hw/mips/malta: Introduce MaltaMachineClass::max_ramsiz=
+e'
+> 004/5:[----] [--] 'hw/mips/malta: Introduce the 'malta-strict' machine'
+> 005/5:[----] [--] 'hw/mips/malta: Verify malta-strict machine uses correc=
+t DIMM sizes'
+>
+> Philippe Mathieu-Daud=C3=A9 (5):
+>   hw/mips/malta: Trivial code movement
+>   hw/mips/malta: Register the machine as a TypeInfo
+>   hw/mips/malta: Introduce MaltaMachineClass::max_ramsize
+>   hw/mips/malta: Introduce the 'malta-strict' machine
+>   hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes
+>
+>  hw/mips/malta.c | 105 +++++++++++++++++++++++++++++++++++++++++-------
+>  1 file changed, 91 insertions(+), 14 deletions(-)
+>
+> --
+> 2.21.3
+>
+>
 
