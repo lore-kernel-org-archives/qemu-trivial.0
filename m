@@ -1,81 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqHcr-0000ON-1D
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 10:52:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57462)
+	id 1jqIUr-0006eO-TN
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 11:48:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqHcp-0000Nh-1T; Tue, 30 Jun 2020 10:52:43 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:35243)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqHcn-0002TN-L3; Tue, 30 Jun 2020 10:52:42 -0400
-Received: by mail-ej1-x644.google.com with SMTP id rk21so20967361ejb.2;
- Tue, 30 Jun 2020 07:52:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
- b=Itp09bPnnE+v0QZj7CqVxLdfeoIdNB18dIzkFW+fquQUkVr4y9bCRdInMqHprcouzs
- 58Uk30JXnoEpgtiCq8zldQbrsXAGGf00a5GBPTXkRvt3kJmbUM2Wc9m6qm+2AK3N0uCp
- JF0AXD4wx4LvFbGFkeGAHD5zBiHEoy320fzPglBK2FaRLgs+6t2EnMHyv+ZDfWNwTrD1
- Lm+Xg9PhXY08mFDRLHDvJviOzaHwGPm4RWrDLhJ3KWe9B4v6LrJZpohEpEaPaSChsy6P
- vdhe3iwaDN6LDcymWDSheBQloe2L0tVIB9reITQskXZ6E42hX7rPFSZLNty/xfAB73vn
- 4pSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
- b=ehgvnfj93GRa8JyvhBwPXm8pBWSlpx2ZvcbfFsMcnxb5jjf507xdf34Ql+VO2OaQw5
- F5ZWqPBhrV8RHF5q43A/8VmeX6RUbKA6nWUA9JRQHs8IU4mPgrcFYJxbYPV+mnT/zkvP
- lJBr+hEHjXvi9CdL/3OzDfcADbefTNWDZ47ThxdyfVquV/6YKLK/zCwHropoDZnG7+X5
- vSioN3owo+27qttjW7n2CijGMcuhqW1Wd1dbHGAzxoMww7HEC1dyHCqrVCwmQneWX1fL
- /H6l+dAIS+SHxuhKfmSAEd3e6a/7BmoUfO3aEw2saPdiodlkpJtAPcdJ4hH/xrslVr41
- UoJA==
-X-Gm-Message-State: AOAM532kv8yRk7OrrplBiYI2xZfhGnpuG4R4i2lPtuY8J2tg1dK9dfZB
- h0e2xNvYghSU7boFeO0jAIBNYxtm1dQ=
-X-Google-Smtp-Source: ABdhPJwzklpD4/ZaV2FA7KY678EJmrW0ES5j3FR4K1U4OAM9BvgdsDfvwkbsjhq47NL9yKGRmqVUNg==
-X-Received: by 2002:a17:906:35cd:: with SMTP id
- p13mr18575164ejb.172.1593528759703; 
- Tue, 30 Jun 2020 07:52:39 -0700 (PDT)
-Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id p9sm2144569ejd.50.2020.06.30.07.52.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2020 07:52:39 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Aurelien Jarno <aurelien@aurel32.net>, Yunqiang Su <ysu@wavecomp.com>,
- qemu-devel@nongnu.org
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PATCH v2 1/6] hw/mips/malta: Trivial code movement
-Date: Tue, 30 Jun 2020 16:52:31 +0200
-Message-Id: <20200630145236.27529-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200630145236.27529-1-f4bug@amsat.org>
-References: <20200630145236.27529-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqIUq-0006cI-7i
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 11:48:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31236
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqIUo-000564-AH
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 11:48:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593532109;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pZdqAzsWwawS+olvAAUNItPD6bp8kPtVOSiNxAkxq7Q=;
+ b=A4uumEOxsu1c0fPSMef/b/ykoQUJTPfgU+vC23o9Zt9YLwLfaHLQ0HxuI49OigZKvMZZL5
+ FwPUVBHVPVloFXeDiry0bX2FN8T3QInyvb3QwmZF4YrbJXhRJf7dDYHPeWe1oq2wEQEiZs
+ DXBt6H0A2svPI7Vk6Lmst6xixtR/Ge0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-90-KfH9Re9sNV-YYVC_Z2Bl-A-1; Tue, 30 Jun 2020 11:48:28 -0400
+X-MC-Unique: KfH9Re9sNV-YYVC_Z2Bl-A-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 00FF3EC1A6;
+ Tue, 30 Jun 2020 15:48:27 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-41.ams2.redhat.com
+ [10.36.112.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A33E99CFF1;
+ Tue, 30 Jun 2020 15:48:26 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 7247617444; Tue, 30 Jun 2020 17:48:25 +0200 (CEST)
+Date: Tue, 30 Jun 2020 17:48:25 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: David CARLIER <devnexen@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>
+Subject: Re: [PATC 7/9] Skipping drm build, unsupported
+Message-ID: <20200630154825.k7ut6m3trfhwlmas@sirius.home.kraxel.org>
+References: <CA+XhMqzjjrfxXeSENBQuHzTe4TRMWV5GOdqPkD3bo17T3ufR1A@mail.gmail.com>
+ <1058ccbd-b4bb-9413-abc5-ae89076a58e1@redhat.com>
+ <20200630082301.6vybzwmg4pviuwob@sirius.home.kraxel.org>
+ <a482bd09-28c8-7de7-de06-dba60d1c8160@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <a482bd09-28c8-7de7-de06-dba60d1c8160@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 03:55:26
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,45 +81,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 14:52:43 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 15:48:32 -0000
 
-Trivial code movement to make the next patch easier to review.
+On Tue, Jun 30, 2020 at 10:46:59AM +0200, Philippe Mathieu-Daudé wrote:
+> On 6/30/20 10:23 AM, Gerd Hoffmann wrote:
+> > On Tue, Jun 30, 2020 at 08:44:24AM +0200, Philippe Mathieu-DaudÃ© wrote:
+> >> +Gerd
+> >>
+> >> On 6/29/20 11:48 PM, David CARLIER wrote:
+> >>> From 157a0374093371719de42e99364352d64190f52a Mon Sep 17 00:00:00 2001
+> >>> From: David Carlier <devnexen@gmail.com>
+> >>> Date: Mon, 29 Jun 2020 22:20:06 +0000
+> >>> Subject: [PATCH 7/9] Skipping drm build, unsupported.
+> > 
+> > --verbose please.
+> 
+> David has difficulties understanding how to send patches,
+> so you missed the cover/context. This is for the Haiku OS
+> which apparently is POSIX.1-2001 compatible.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/mips/malta.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+That doesn't explain why he thinks this patch is needed.
+It should build just fine on Haiku ...
 
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index d95926a89c..5b371c1e34 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1426,6 +1426,13 @@ static const TypeInfo mips_malta_device = {
-     .instance_size = sizeof(MaltaState),
- };
- 
-+static void mips_malta_register_types(void)
-+{
-+    type_register_static(&mips_malta_device);
-+}
-+
-+type_init(mips_malta_register_types)
-+
- static void mips_malta_machine_init(MachineClass *mc)
- {
-     mc->desc = "MIPS Malta Core LV";
-@@ -1442,10 +1449,3 @@ static void mips_malta_machine_init(MachineClass *mc)
- }
- 
- DEFINE_MACHINE("malta", mips_malta_machine_init)
--
--static void mips_malta_register_types(void)
--{
--    type_register_static(&mips_malta_device);
--}
--
--type_init(mips_malta_register_types)
--- 
-2.21.3
+take care,
+  Gerd
 
 
