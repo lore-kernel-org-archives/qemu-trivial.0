@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqGcu-0001OH-E6
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 09:48:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37616)
+	id 1jqGmc-000685-GZ
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 09:58:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGcs-0001J3-48
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:48:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31090
+ id 1jqGmb-00067n-5w
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:58:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43272
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGcq-0008CI-20
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:48:41 -0400
+ id 1jqGmY-0001fy-N3
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:58:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593524919;
+ s=mimecast20190719; t=1593525521;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=1kDF33SkBIMxX+TfeNkB1aYwsB9NxRjpAPfkp9doQcs=;
- b=cQt75OYTIvtBHK0STqqgFlBWhE/POhb0gW0fxSAOFFHUkIXByN55VyLiQax9G/zYfFt3f7
- sImFxbYPevRcfY0oWEyRS85h7Q3gDc24DTRZ7hzhBnF/OSmgugluVI9yYoJ9+Fo0kkvwsf
- eOJZKUT5MHxvIyF49sEGhOiwg+I+FS4=
+ bh=ppzTCUceLqN6uA98HIW5i9rjPNyCKh8MPq6R3QBzDSU=;
+ b=gVeLfodUaaymp9CSHOBNIQ3mN8WiYoYpTMwAUF8DTUs/V15By0KUmVoAa/0k3lpwuqibfr
+ hB2+DEiRp7jZg3qMtULpIKY9gnyoXgTpO10BR+U+s91c6miBD1Bxx2bhFJ5JJcqBoinVkK
+ JaaU24eTiEPOMBDeuINZjlxTXk6yCKg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-306-faW0U_rtMHeV6m4_6I5SJQ-1; Tue, 30 Jun 2020 09:48:34 -0400
-X-MC-Unique: faW0U_rtMHeV6m4_6I5SJQ-1
+ us-mta-98-mKmQ8yixN0CpQJBJjC7leA-1; Tue, 30 Jun 2020 09:58:39 -0400
+X-MC-Unique: mKmQ8yixN0CpQJBJjC7leA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45E0A80183C;
- Tue, 30 Jun 2020 13:48:33 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FAAE107B467;
+ Tue, 30 Jun 2020 13:56:34 +0000 (UTC)
 Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 86A647166E;
- Tue, 30 Jun 2020 13:48:22 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BBBA174182;
+ Tue, 30 Jun 2020 13:56:14 +0000 (UTC)
 References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-2-dinechin@redhat.com>
- <2fff081b-273a-45c4-9117-a16eceb66c66@suse.de>
+ <20200626164307.3327380-9-dinechin@redhat.com>
+ <20200629230843.b4s7rajxw5qfp3ei@sirius.home.kraxel.org>
 User-agent: mu4e 1.5.2; emacs 26.3
 From: Christophe de Dinechin <dinechin@redhat.com>
-To: Claudio Fontana <cfontana@suse.de>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-trivial@nongnu.org, Michael Tokarev
- <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, "Dr. David Alan
- Gilbert" <dgilbert@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Gerd
- Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>, =?utf-8?Q?M?=
- =?utf-8?Q?arc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Richard
- Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
-Subject: Re: [PATCH 01/10] modules: Provide macros making it easier to
- identify module exports
-In-reply-to: <2fff081b-273a-45c4-9117-a16eceb66c66@suse.de>
-Date: Tue, 30 Jun 2020 15:48:21 +0200
-Message-ID: <ly8sg4d5qy.fsf@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, =?utf-8?Q?Mar?=
+ =?utf-8?Q?c-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Laurent
+ Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, Michael
+ Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org, Richard Henderson
+ <rth@twiddle.net>, Cleber Rosa <crosa@redhat.com>
+Subject: Re: [PATCH 08/10] build: Add SPICE_CFLAGS and SPICE_LIBS to relevant
+ files
+In-reply-to: <20200629230843.b4s7rajxw5qfp3ei@sirius.home.kraxel.org>
+Date: Tue, 30 Jun 2020 15:56:12 +0200
+Message-ID: <ly5zb8d5dv.fsf@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
@@ -82,114 +82,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 13:48:42 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 13:58:45 -0000
 
 
-On 2020-06-29 at 12:13 CEST, Claudio Fontana wrote...
-> Hello Christophe,
+On 2020-06-30 at 01:08 CEST, Gerd Hoffmann wrote...
+>   Hi,
 >
-> On 6/26/20 6:42 PM, Christophe de Dinechin wrote:
->> In order to facilitate the move of large chunks of functionality to
->> load modules, it is simpler to create a wrapper with the same name
->> that simply relays the implementation. For efficiency, this is
->> typically done using inline functions in the header for the
->> corresponding functionality. In that case, we rename the actual
->> implementation by appending _implementation to its name. This makes it
->> easier to select which function you want to put a breakpoint on.
->>
->> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
->> ---
->>  include/qemu/module.h | 24 ++++++++++++++++++++++++
->>  1 file changed, 24 insertions(+)
->>
->> diff --git a/include/qemu/module.h b/include/qemu/module.h
->> index 011ae1ae76..1922a0293c 100644
->> --- a/include/qemu/module.h
->> +++ b/include/qemu/module.h
->> @@ -39,6 +39,30 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
->>  }
+>>  obj-$(CONFIG_PC) += pc.o pc_sysfw.o
+>> +pc.o-cflags += $(SPICE_CFLAGS)
+>
+> Hmm, looks strange.  Why does pc.c need spice?
+
+It includes ui/qemu-spice.h, and I did not check why.
+Turns out this is not needed. So I'll remove it.
+
+>
+>> +qmp-cmds.o-cflags += $(SPICE_CFLAGS)
+>> +hmp-cmds.o-cflags += $(SPICE_CFLAGS)
+>
+> spice monitor commands need this I guess?
+
+Yes.
+
+>
+>> +misc.o-cflags += $(SPICE_CFLAGS)
+>
+> Why this?
+
+qemu_using_spice and qemu_spice_migrate_info
+
+>
+>> +vl.o-cflags := $(GPROF_CFLAGS) $(SDL_CFLAGS) $(SPICE_CFLAGS)
+>
+> spice init probably
+
+Yes.
+.
+>
+>> -stub-obj-y += vmgenid.o
+>>  stub-obj-y += sysbus.o
+>>  stub-obj-y += tpm.o
+>>  stub-obj-y += trace-control.o
+>> +stub-obj-y += vmgenid.o
+>
+> Huh?
+
+I sent it separately as a trivial patch. Wrong alphabetical order, and where
+that change was placed was causing a conflict on each rebase with a spice.c
+stub I had at some point "at the right spot" ;-)
+
+>
+>> -spice-app.mo-cflags := $(GIO_CFLAGS)
+>> -spice-app.mo-libs := $(GIO_LIBS)
+>> +spice-app.mo-cflags := $(GIO_CFLAGS) $(SPICE_CFLAGS)
+>> +spice-app.mo-libs := $(GIO_LIBS) $(SPICE_LIBS)
+>
+> Good.
+>
+>> --- a/util/module.c
+>> +++ b/util/module.c
+>> @@ -22,11 +22,11 @@
+>>  #ifdef CONFIG_MODULE_UPGRADES
+>>  #include "qemu-version.h"
 >>  #endif
+>> -#ifdef CONFIG_TRACE_RECORDER
+>>  #include "trace/recorder.h"
+>> -#endif
 >>
->> +#ifdef CONFIG_MODULES
->> +/* Identify which functions are replaced by a callback stub */
->> +#ifdef MODULE_STUBS
->> +#define MODIFACE(Ret,Name,Args)                                         \
->> +    Ret (*Name)Args;                                                    \
->> +    extern Ret Name##_implementation Args
->> +#else /* !MODULE_STUBS */
->> +#define MODIFACE(Ret,Name,Args)                                         \
->> +    extern Ret (*Name)Args;                                             \
->> +    extern Ret Name##_implementation Args
->> +#endif /* MODULE_STUBS */
->> +
->> +#define MODIMPL(Ret,Name,Args)                                          \
->> +    static void __attribute__((constructor)) Name##_register(void)      \
->> +    {                                                                   \
->> +        Name = Name##_implementation;                                   \
->> +    }                                                                   \
->> +    Ret Name##_implementation Args
->> +#else /* !CONFIG_MODULES */
->> +/* When not using a module, such functions are called directly */
->> +#define MODIFACE(Ret,Name,Args)         Ret Name Args
->> +#define MODIMPL(Ret,Name,Args)          Ret Name Args
->> +#endif /* CONFIG_MODULES */
->> +
->>  typedef enum {
->>      MODULE_INIT_MIGRATION,
->>      MODULE_INIT_BLOCK,
 >>
+>> +RECORDER(modules, 16, "QEMU load modules");
+>> +
+>>  typedef struct ModuleEntry
+>>  {
+>>      void (*init)(void);
+>> @@ -85,6 +85,15 @@ void register_dso_module_init(void (*fn)(void), module_init_type type)
+>>  {
+>>      ModuleEntry *e;
+>>
+>> +#ifdef CONFIG_TRACE_RECORDER
+>> +    static const char *name[] = {
+>> +        "MIGRATION", "BLOCK", "OPTS", "QOM",
+>> +        "TRACE", "XEN_BACKEND", "LIBQOS", "FUZZ_TARGET",
+>> +        "MAX"
+>> +    };
+>> +#endif
+>> +    record(modules, "Register DSO module init %p type %u %+s",
+>> +           fn, type, name[type]);
+>>      init_lists();
+>>
+>>      e = g_malloc0(sizeof(*e));
 >
-> Just as background, I am interested in all modules-related work, because of my long term plan to have target-specific modules as well:
+> Unrelated change.
 >
->  https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg04628.html
->
-> I am not 100% clear on what is the goal and expected usage of this
-> preprocessor code, despite the commit message, maybe you could clarify a
-> bit with more verbosity?
+> (the recorder stuff should probably integrate with qemu trace support,
+> so you can record any trace point qemu has, but that'll be another patch
+> series ...)
 
-Well, so far, the preference seems to be to go through a more verbose
-approach with an explicit table of functions.
-
-What the preprocessor code did was:
-
-- If you build without modules, nothing changes, you get a direct call
-
-- If you build with modules:
-
- + In the DSO, foo is replaced with foo_implementation
- + Elsewhere, foo is replaced with a function pointer also called foo.
- + The implementation adds constructor code that sets foo to point to foo_implementation
-
-
->
-> Additionally if you happen to be interested, maybe you know already or
-> could think about what this could mean for target-specific modules, which
-> will require some improvements to the modules "subsystem"(?) as well.
-
-So far, I've only integrated Gerd's workaround for target-specific
-modules. Some additional mechanics is needed to name target-specific
-modules, e.g. put them in some target directory.
+I sent it separately, and fixed the leftover patch.
 
 >
-> In my experimentation I didn't have to do this preprocessor work, instead
-> I had to fine tune a bit the makefile support (rules.mak and makefiles) to
-> be able to accomodate for (even large) modules in target/ as well.
-
-It's probably because the modules you were dealing with already had the
-required indirection and module_init calls, i.e. they were only invoked
-using QOM already.
-
-The mechanism I was proposing is to quickly add the indirection for
-qemu functionality that does not have such indirect calls yet.
-
-The consensus so far seems to be that the syntax I proposed is not nice, and
-that it's better to make it more explicit through a table and indirect
-calls, even if that means changing the call sites.
-
->
-> Thanks!
->
-> CLaudio
+> take care,
+>   Gerd
 
 
 --
