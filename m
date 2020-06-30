@@ -1,57 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqB75-0003pB-Oo
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 03:55:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51478)
+	id 1jqBOX-0001Os-Ci
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 04:13:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jqB73-0003of-Td
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 03:55:30 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48042
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jqB71-0000HC-Oi
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 03:55:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593503726;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=QhpHK0hz/1qqZ+0A9UexLkg2JaOeD1v6ot/WkgFYu+0=;
- b=cYJ7oTAKNIOLLhF8xakyxwI8V3HZ4WaIxS/eu9UVtZqwtAlmgsxMqsx7jTj9IF/e00joIX
- VbfV1kcX35amS3bxBOA7hTLbwxMu6+ctEPAQaLXNgtu5gCCFyv1BVOZjwTDpBufMEKEYiB
- XgUYjYmNeIlZcTMLu2LhGXO8oqefGGQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-ai_9jPmSPdyjPqqqMmKtcQ-1; Tue, 30 Jun 2020 03:55:24 -0400
-X-MC-Unique: ai_9jPmSPdyjPqqqMmKtcQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3CD7193F565;
- Tue, 30 Jun 2020 07:55:23 +0000 (UTC)
-Received: from thuth.com (ovpn-112-46.ams2.redhat.com [10.36.112.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9D6347166E;
- Tue, 30 Jun 2020 07:55:22 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] hw/net/can: Add missing fallthrough statements
-Date: Tue, 30 Jun 2020 09:55:20 +0200
-Message-Id: <20200630075520.29825-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 03:55:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqBOW-0001NG-65; Tue, 30 Jun 2020 04:13:32 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:38310)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqBOU-0003BF-Py; Tue, 30 Jun 2020 04:13:31 -0400
+Received: by mail-ed1-x544.google.com with SMTP id n2so6285008edr.5;
+ Tue, 30 Jun 2020 01:13:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
+ b=m+1MJilz9DbWkTO/wHwclBjONPINORK+EgrYzLtZnj52Vd1sh1DptDFYfx8UsvacMV
+ +s6mtDL833+mfqWno+VnZJksQZnxUsNrde+u2mEbxLkSwjK6bVqWp1CsbSsF+AcBvDKu
+ 6NYoBie51jZW8cXfLUpBXCWGYEdqnlJTa2GE4DWqocSUBjtlWRN5sYhDRF/R/4FuFZdj
+ nkijdZ/DIZUouw6NdylKy4nvevJ93Ocndz8aUrGCJq1VLcXE6IpVbTNxpB7g6yoNdCCH
+ 67R/YlQ+tPV6iV+5IbLRc48htnGYF2hkMl/MEy6KknQdoNeQGLP5FKpvJEZCQyhp6Jcz
+ 5iEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
+ b=NXt7qnd5sj1SVUqp+rfe0WHotrFlDxuBgxmgp3QGk0DwfzzfuQ8e0Q6w9G1x7MA2Yq
+ OzsiqgRi5LiR90ttgXYcakKR2Twn71RnmFhqBrsHZfqwbyZ0b6dloDSvVE99AvDH4seF
+ L+6zVZ4XS4NxX3d8RYdBEl3G9gjJ2u4IgE8N6UxEuXriFoyl4qQC9pG2sT7KVxxRex5w
+ CyDgyyvxkP2Q18IXDbImSjjRNMsmHF/3drWCx7TPuyOaiWSd9xmIEN9s8KDU22VxTvey
+ ne8Ns/Tv2vEBN5fB+PjIVrngNuAhrJaMLHIKLUlEPdZHeeR9WcXC4vFZaKdvR118j+MM
+ oifg==
+X-Gm-Message-State: AOAM533Yr1SfpkiYokJFmCdtzX7kXJmWCEo3hQWI+RcOUqr+FITIyEVm
+ Fg80ynuw+AZL0hBxA9uA1xI=
+X-Google-Smtp-Source: ABdhPJzM7ppcEeKlZ9RjMLKultQPdB56lqYgjj0W+MxQwF8TV9IcEx/0Aen4hemdvQL/YCM4KD29Nw==
+X-Received: by 2002:a50:d753:: with SMTP id i19mr22507794edj.9.1593504805954; 
+ Tue, 30 Jun 2020 01:13:25 -0700 (PDT)
+Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id z1sm1425948ejb.41.2020.06.30.01.13.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jun 2020 01:13:25 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Yunqiang Su <ysu@wavecomp.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH 1/7] hw/mips/malta: Trivial code movement
+Date: Tue, 30 Jun 2020 10:13:16 +0200
+Message-Id: <20200630081322.19146-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200630081322.19146-1-f4bug@amsat.org>
+References: <20200630081322.19146-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,39 +87,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 07:55:30 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 08:13:32 -0000
 
-Add fallthrough annotations to be able to compile the code without
-warnings when using -Wimplicit-fallthrough in our CFLAGS. Looking
-at the code, it seems like the fallthrough is indeed intended here,
-so the comments should be appropriate.
+Trivial code movement to make the next patch easier to review.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/net/can/can_sja1000.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/mips/malta.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-index ea915a023a..299932998a 100644
---- a/hw/net/can/can_sja1000.c
-+++ b/hw/net/can/can_sja1000.c
-@@ -523,6 +523,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
-             break;
-         case 16: /* RX frame information addr16-28. */
-             s->status_pel |= (1 << 5); /* Set transmit status. */
-+            /* fallthrough */
-         case 17 ... 28:
-             if (s->mode & 0x01) { /* Reset mode */
-                 if (addr < 24) {
-@@ -620,6 +621,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
-             break;
-         case 10:
-             s->status_bas |= (1 << 5); /* Set transmit status. */
-+            /* fallthrough */
-         case 11 ... 19:
-             if ((s->control & 0x01) == 0) { /* Operation mode */
-                 s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
+diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+index d95926a89c..5b371c1e34 100644
+--- a/hw/mips/malta.c
++++ b/hw/mips/malta.c
+@@ -1426,6 +1426,13 @@ static const TypeInfo mips_malta_device = {
+     .instance_size = sizeof(MaltaState),
+ };
+ 
++static void mips_malta_register_types(void)
++{
++    type_register_static(&mips_malta_device);
++}
++
++type_init(mips_malta_register_types)
++
+ static void mips_malta_machine_init(MachineClass *mc)
+ {
+     mc->desc = "MIPS Malta Core LV";
+@@ -1442,10 +1449,3 @@ static void mips_malta_machine_init(MachineClass *mc)
+ }
+ 
+ DEFINE_MACHINE("malta", mips_malta_machine_init)
+-
+-static void mips_malta_register_types(void)
+-{
+-    type_register_static(&mips_malta_device);
+-}
+-
+-type_init(mips_malta_register_types)
 -- 
-2.18.1
+2.21.3
 
 
