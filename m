@@ -1,79 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqCiS-00018S-F9
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 05:38:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50468)
+	id 1jqFhI-0007W1-MU
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 08:49:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqCiQ-00014e-Im
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 05:38:10 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58326
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jqFhH-0007Vn-LO
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 08:49:11 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54880
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqCiO-0000LL-Q7
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 05:38:10 -0400
+ (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
+ id 1jqFhG-0006Ye-5L
+ for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 08:49:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593509888;
+ s=mimecast20190719; t=1593521349;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Y1B5g62jYcl2eWVnkJSKnP3HvvRTUAof1OANE3HOJ3I=;
- b=WKFI5Y0TuyDZYfcj90pHhPQf3gbI2LfPUcfD2Jm6F7alLQ3XgW74E3ZxR0Q54wIim6F3P4
- 0uhfpebP1vdzXYq4HVj/7Q3kkDlOXmQ6ArNmR6gZn3XkapQ/a6H/7ShZesZ7+9/cQAzLt5
- //D6xHsLKVRelGztHzcs1gmmr5oYhTY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-7fiaJ1LYPwG9bJfTs_iJbA-1; Tue, 30 Jun 2020 05:38:06 -0400
-X-MC-Unique: 7fiaJ1LYPwG9bJfTs_iJbA-1
-Received: by mail-wm1-f72.google.com with SMTP id z11so20613214wmg.5
- for <qemu-trivial@nongnu.org>; Tue, 30 Jun 2020 02:38:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Y1B5g62jYcl2eWVnkJSKnP3HvvRTUAof1OANE3HOJ3I=;
- b=IiKBRuj4P+jqgVp86A2B9KEBSe96xptCxegdWMXgMcGYF6z6yniIdpjIGd51+/EgwF
- 9p6I/7vtApo8nvqj0VMVExXcBDiONCLkFNpRR79yi4VnWEGNmTG4BOPbVNsBQQBSW/SI
- faNuGRe2gzWkO2ka/2kckJ8D7APNMSUhSBW9KCoF42zJBgModCW4qi2FcaRPXQgIdtS+
- RbvbdsIJLJB2TEg2isjYHLcYKQJ+E38HBkqRdnHHjQjaAYsI5F+D2ZbC/kuO/KJTqttS
- tdjqZJ74HiK1dS2DBu218mOsvn6W4fhT3ppjvLIx5/OaskqkfY0TgyuJNlML6+ljGZfp
- goMw==
-X-Gm-Message-State: AOAM532NzsAo06tegzCwRn7wC9O9ck0mJzS19sACwPkV+FMqzLavRtjh
- JL9Y5+GY/jILbU8rEWcR/04ncT9xB5J109xhQDBvdPT4LYtWDOAb4ojfbzH2mi8tC2BNn5lhLck
- XpwV6cs4REjJvlONM9A==
-X-Received: by 2002:a1c:2905:: with SMTP id p5mr7467215wmp.91.1593509885518;
- Tue, 30 Jun 2020 02:38:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNmnNNae5rQGhonjaryUJrjkLdjRtKA1CLJ6rMXOta4zKnaEmfpkfM82EHnvghaVy/huTURw==
-X-Received: by 2002:a1c:2905:: with SMTP id p5mr7467179wmp.91.1593509885297;
- Tue, 30 Jun 2020 02:38:05 -0700 (PDT)
-Received: from redhat.com (bzq-79-182-31-92.red.bezeqint.net. [79.182.31.92])
- by smtp.gmail.com with ESMTPSA id
- z2sm3084365wmc.2.2020.06.30.02.38.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jun 2020 02:38:04 -0700 (PDT)
-Date: Tue, 30 Jun 2020 05:38:01 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Christophe de Dinechin <dinechin@redhat.com>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- Gerd Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>
-Subject: Re: [PATCH 01/10] modules: Provide macros making it easier to
- identify module exports
-Message-ID: <20200630052756-mutt-send-email-mst@kernel.org>
+ bh=G1epzNqfey4HCQTXVg4w9gtCn9c6aKwADG6OIFahxMs=;
+ b=MCIX46vYf3myCkR7igWKzHvTAWTDwKcXssjH14NRRBrxbXeFkPPwiF9sajJy6QRxzVh/M6
+ /e5p+CUaOGCJ27trgN4bM5a/wvfmBs67/gU5QtlIXDiHPtC2AhApthWkWsIY48LXpp3psY
+ sC7LuYQpu3roQLbKTaawItGM99ZfK0E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-279-JtSUvhOZPzGvd5CYZpaMhw-1; Tue, 30 Jun 2020 08:49:07 -0400
+X-MC-Unique: JtSUvhOZPzGvd5CYZpaMhw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D12F8EC1A3;
+ Tue, 30 Jun 2020 12:49:05 +0000 (UTC)
+Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E24637BEA0;
+ Tue, 30 Jun 2020 12:48:54 +0000 (UTC)
 References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-2-dinechin@redhat.com>
+ <20200626164307.3327380-11-dinechin@redhat.com>
+ <20200626172940.GO1028934@redhat.com>
+User-agent: mu4e 1.5.2; emacs 26.3
+From: Christophe de Dinechin <dinechin@redhat.com>
+To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org, Cleber Rosa
+ <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier
+ <laurent@vivier.eu>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Gerd
+ Hoffmann <kraxel@redhat.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH 10/10] REMOVE: Instrumentation to show the module
+ functions being replaced
+In-reply-to: <20200626172940.GO1028934@redhat.com>
+Date: Tue, 30 Jun 2020 14:48:53 +0200
+Message-ID: <lylfk4d8i2.fsf@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200626164307.3327380-2-dinechin@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dinechin@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=dinechin@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 02:00:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -96,63 +84,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 09:38:10 -0000
-
-On Fri, Jun 26, 2020 at 06:42:58PM +0200, Christophe de Dinechin wrote:
-> In order to facilitate the move of large chunks of functionality to
-> load modules, it is simpler to create a wrapper with the same name
-> that simply relays the implementation. For efficiency, this is
-> typically done using inline functions in the header for the
-> corresponding functionality. In that case, we rename the actual
-> implementation by appending _implementation to its name. This makes it
-> easier to select which function you want to put a breakpoint on.
-> 
-> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
-> ---
->  include/qemu/module.h | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
-> 
-> diff --git a/include/qemu/module.h b/include/qemu/module.h
-> index 011ae1ae76..1922a0293c 100644
-> --- a/include/qemu/module.h
-> +++ b/include/qemu/module.h
-> @@ -39,6 +39,30 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
->  }
->  #endif
->  
-> +#ifdef CONFIG_MODULES
-> +/* Identify which functions are replaced by a callback stub */
-> +#ifdef MODULE_STUBS
-> +#define MODIFACE(Ret,Name,Args)                                         \
-> +    Ret (*Name)Args;                                                    \
-> +    extern Ret Name##_implementation Args
-> +#else /* !MODULE_STUBS */
-> +#define MODIFACE(Ret,Name,Args)                                         \
-> +    extern Ret (*Name)Args;                                             \
-> +    extern Ret Name##_implementation Args
-> +#endif /* MODULE_STUBS */
-> +
-> +#define MODIMPL(Ret,Name,Args)                                          \
-> +    static void __attribute__((constructor)) Name##_register(void)      \
-> +    {                                                                   \
-> +        Name = Name##_implementation;                                   \
-> +    }                                                                   \
-> +    Ret Name##_implementation Args
-> +#else /* !CONFIG_MODULES */
-> +/* When not using a module, such functions are called directly */
-> +#define MODIFACE(Ret,Name,Args)         Ret Name Args
-> +#define MODIMPL(Ret,Name,Args)          Ret Name Args
-> +#endif /* CONFIG_MODULES */
-> +
->  typedef enum {
->      MODULE_INIT_MIGRATION,
->      MODULE_INIT_BLOCK,
-
-Hmm that's quite a bit of overhead for each call across modules.
-Can't code patching be used somehow?
+X-List-Received-Date: Tue, 30 Jun 2020 12:49:11 -0000
 
 
-> -- 
-> 2.26.2
+On 2020-06-26 at 19:29 CEST, Daniel P. Berrang=C3=A9 wrote...
+> On Fri, Jun 26, 2020 at 06:43:07PM +0200, Christophe de Dinechin wrote:
+>> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+>> ---
+>>  include/qemu/module.h | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/include/qemu/module.h b/include/qemu/module.h
+>> index 1922a0293c..8d6e10ba81 100644
+>> --- a/include/qemu/module.h
+>> +++ b/include/qemu/module.h
+>> @@ -14,10 +14,13 @@
+>>  #ifndef QEMU_MODULE_H
+>>  #define QEMU_MODULE_H
+>>
+>> +#include "trace/recorder.h"
+>>
+>>  #define DSO_STAMP_FUN         glue(qemu_stamp, CONFIG_STAMP)
+>>  #define DSO_STAMP_FUN_STR     stringify(DSO_STAMP_FUN)
+>>
+>> +RECORDER_DECLARE(modules);
+>> +
+>>  #ifdef BUILD_DSO
+>>  void DSO_STAMP_FUN(void);
+>>  /* This is a dummy symbol to identify a loaded DSO as a QEMU module, so=
+ we can
+>> @@ -55,6 +58,7 @@ static void __attribute__((constructor)) do_qemu_init_=
+ ## function(void)    \
+>>      static void __attribute__((constructor)) Name##_register(void)     =
+ \
+>>      {                                                                  =
+ \
+>>          Name =3D Name##_implementation;                                =
+   \
+>> +        record(modules, "Setting " #Name " to %p", Name);              =
+ \
+>>      }                                                                  =
+ \
+>>      Ret Name##_implementation Args
+>>  #else /* !CONFIG_MODULES */
+>
+> Contrary to the commit $SUBJECT, I think you should keep this, not remove
+> it. It should use QEMU's trace backend though.
+
+OK. Will add a trace backend version in next iteration.
+
+>
+> Regards,
+> Daniel
+
+
+--
+Cheers,
+Christophe de Dinechin (IRC c3d)
 
 
