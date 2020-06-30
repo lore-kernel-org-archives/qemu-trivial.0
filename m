@@ -1,74 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqGmc-000685-GZ
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 09:58:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41204)
+	id 1jqHcr-0000ON-1D
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 10:52:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGmb-00067n-5w
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:58:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43272
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dinechin@redhat.com>)
- id 1jqGmY-0001fy-N3
- for qemu-trivial@nongnu.org; Tue, 30 Jun 2020 09:58:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593525521;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ppzTCUceLqN6uA98HIW5i9rjPNyCKh8MPq6R3QBzDSU=;
- b=gVeLfodUaaymp9CSHOBNIQ3mN8WiYoYpTMwAUF8DTUs/V15By0KUmVoAa/0k3lpwuqibfr
- hB2+DEiRp7jZg3qMtULpIKY9gnyoXgTpO10BR+U+s91c6miBD1Bxx2bhFJ5JJcqBoinVkK
- JaaU24eTiEPOMBDeuINZjlxTXk6yCKg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-98-mKmQ8yixN0CpQJBJjC7leA-1; Tue, 30 Jun 2020 09:58:39 -0400
-X-MC-Unique: mKmQ8yixN0CpQJBJjC7leA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FAAE107B467;
- Tue, 30 Jun 2020 13:56:34 +0000 (UTC)
-Received: from titinator (ovpn-114-115.ams2.redhat.com [10.36.114.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BBBA174182;
- Tue, 30 Jun 2020 13:56:14 +0000 (UTC)
-References: <20200626164307.3327380-1-dinechin@redhat.com>
- <20200626164307.3327380-9-dinechin@redhat.com>
- <20200629230843.b4s7rajxw5qfp3ei@sirius.home.kraxel.org>
-User-agent: mu4e 1.5.2; emacs 26.3
-From: Christophe de Dinechin <dinechin@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, =?utf-8?Q?Mar?=
- =?utf-8?Q?c-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Laurent
- Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, Michael
- Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org, Richard Henderson
- <rth@twiddle.net>, Cleber Rosa <crosa@redhat.com>
-Subject: Re: [PATCH 08/10] build: Add SPICE_CFLAGS and SPICE_LIBS to relevant
- files
-In-reply-to: <20200629230843.b4s7rajxw5qfp3ei@sirius.home.kraxel.org>
-Date: Tue, 30 Jun 2020 15:56:12 +0200
-Message-ID: <ly5zb8d5dv.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqHcp-0000Nh-1T; Tue, 30 Jun 2020 10:52:43 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:35243)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqHcn-0002TN-L3; Tue, 30 Jun 2020 10:52:42 -0400
+Received: by mail-ej1-x644.google.com with SMTP id rk21so20967361ejb.2;
+ Tue, 30 Jun 2020 07:52:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
+ b=Itp09bPnnE+v0QZj7CqVxLdfeoIdNB18dIzkFW+fquQUkVr4y9bCRdInMqHprcouzs
+ 58Uk30JXnoEpgtiCq8zldQbrsXAGGf00a5GBPTXkRvt3kJmbUM2Wc9m6qm+2AK3N0uCp
+ JF0AXD4wx4LvFbGFkeGAHD5zBiHEoy320fzPglBK2FaRLgs+6t2EnMHyv+ZDfWNwTrD1
+ Lm+Xg9PhXY08mFDRLHDvJviOzaHwGPm4RWrDLhJ3KWe9B4v6LrJZpohEpEaPaSChsy6P
+ vdhe3iwaDN6LDcymWDSheBQloe2L0tVIB9reITQskXZ6E42hX7rPFSZLNty/xfAB73vn
+ 4pSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=U3siTkfLjVJQEaCMkrInYfzFvhXImBmDXKhPhC0qsnI=;
+ b=ehgvnfj93GRa8JyvhBwPXm8pBWSlpx2ZvcbfFsMcnxb5jjf507xdf34Ql+VO2OaQw5
+ F5ZWqPBhrV8RHF5q43A/8VmeX6RUbKA6nWUA9JRQHs8IU4mPgrcFYJxbYPV+mnT/zkvP
+ lJBr+hEHjXvi9CdL/3OzDfcADbefTNWDZ47ThxdyfVquV/6YKLK/zCwHropoDZnG7+X5
+ vSioN3owo+27qttjW7n2CijGMcuhqW1Wd1dbHGAzxoMww7HEC1dyHCqrVCwmQneWX1fL
+ /H6l+dAIS+SHxuhKfmSAEd3e6a/7BmoUfO3aEw2saPdiodlkpJtAPcdJ4hH/xrslVr41
+ UoJA==
+X-Gm-Message-State: AOAM532kv8yRk7OrrplBiYI2xZfhGnpuG4R4i2lPtuY8J2tg1dK9dfZB
+ h0e2xNvYghSU7boFeO0jAIBNYxtm1dQ=
+X-Google-Smtp-Source: ABdhPJwzklpD4/ZaV2FA7KY678EJmrW0ES5j3FR4K1U4OAM9BvgdsDfvwkbsjhq47NL9yKGRmqVUNg==
+X-Received: by 2002:a17:906:35cd:: with SMTP id
+ p13mr18575164ejb.172.1593528759703; 
+ Tue, 30 Jun 2020 07:52:39 -0700 (PDT)
+Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id p9sm2144569ejd.50.2020.06.30.07.52.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jun 2020 07:52:39 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Aurelien Jarno <aurelien@aurel32.net>, Yunqiang Su <ysu@wavecomp.com>,
+ qemu-devel@nongnu.org
+Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH v2 1/6] hw/mips/malta: Trivial code movement
+Date: Tue, 30 Jun 2020 16:52:31 +0200
+Message-Id: <20200630145236.27529-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200630145236.27529-1-f4bug@amsat.org>
+References: <20200630145236.27529-1-f4bug@amsat.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dinechin@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=dinechin@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 03:55:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,111 +89,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 13:58:45 -0000
+X-List-Received-Date: Tue, 30 Jun 2020 14:52:43 -0000
 
+Trivial code movement to make the next patch easier to review.
 
-On 2020-06-30 at 01:08 CEST, Gerd Hoffmann wrote...
->   Hi,
->
->>  obj-$(CONFIG_PC) += pc.o pc_sysfw.o
->> +pc.o-cflags += $(SPICE_CFLAGS)
->
-> Hmm, looks strange.  Why does pc.c need spice?
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/mips/malta.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-It includes ui/qemu-spice.h, and I did not check why.
-Turns out this is not needed. So I'll remove it.
-
->
->> +qmp-cmds.o-cflags += $(SPICE_CFLAGS)
->> +hmp-cmds.o-cflags += $(SPICE_CFLAGS)
->
-> spice monitor commands need this I guess?
-
-Yes.
-
->
->> +misc.o-cflags += $(SPICE_CFLAGS)
->
-> Why this?
-
-qemu_using_spice and qemu_spice_migrate_info
-
->
->> +vl.o-cflags := $(GPROF_CFLAGS) $(SDL_CFLAGS) $(SPICE_CFLAGS)
->
-> spice init probably
-
-Yes.
-.
->
->> -stub-obj-y += vmgenid.o
->>  stub-obj-y += sysbus.o
->>  stub-obj-y += tpm.o
->>  stub-obj-y += trace-control.o
->> +stub-obj-y += vmgenid.o
->
-> Huh?
-
-I sent it separately as a trivial patch. Wrong alphabetical order, and where
-that change was placed was causing a conflict on each rebase with a spice.c
-stub I had at some point "at the right spot" ;-)
-
->
->> -spice-app.mo-cflags := $(GIO_CFLAGS)
->> -spice-app.mo-libs := $(GIO_LIBS)
->> +spice-app.mo-cflags := $(GIO_CFLAGS) $(SPICE_CFLAGS)
->> +spice-app.mo-libs := $(GIO_LIBS) $(SPICE_LIBS)
->
-> Good.
->
->> --- a/util/module.c
->> +++ b/util/module.c
->> @@ -22,11 +22,11 @@
->>  #ifdef CONFIG_MODULE_UPGRADES
->>  #include "qemu-version.h"
->>  #endif
->> -#ifdef CONFIG_TRACE_RECORDER
->>  #include "trace/recorder.h"
->> -#endif
->>
->>
->> +RECORDER(modules, 16, "QEMU load modules");
->> +
->>  typedef struct ModuleEntry
->>  {
->>      void (*init)(void);
->> @@ -85,6 +85,15 @@ void register_dso_module_init(void (*fn)(void), module_init_type type)
->>  {
->>      ModuleEntry *e;
->>
->> +#ifdef CONFIG_TRACE_RECORDER
->> +    static const char *name[] = {
->> +        "MIGRATION", "BLOCK", "OPTS", "QOM",
->> +        "TRACE", "XEN_BACKEND", "LIBQOS", "FUZZ_TARGET",
->> +        "MAX"
->> +    };
->> +#endif
->> +    record(modules, "Register DSO module init %p type %u %+s",
->> +           fn, type, name[type]);
->>      init_lists();
->>
->>      e = g_malloc0(sizeof(*e));
->
-> Unrelated change.
->
-> (the recorder stuff should probably integrate with qemu trace support,
-> so you can record any trace point qemu has, but that'll be another patch
-> series ...)
-
-I sent it separately, and fixed the leftover patch.
-
->
-> take care,
->   Gerd
-
-
---
-Cheers,
-Christophe de Dinechin (IRC c3d)
+diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+index d95926a89c..5b371c1e34 100644
+--- a/hw/mips/malta.c
++++ b/hw/mips/malta.c
+@@ -1426,6 +1426,13 @@ static const TypeInfo mips_malta_device = {
+     .instance_size = sizeof(MaltaState),
+ };
+ 
++static void mips_malta_register_types(void)
++{
++    type_register_static(&mips_malta_device);
++}
++
++type_init(mips_malta_register_types)
++
+ static void mips_malta_machine_init(MachineClass *mc)
+ {
+     mc->desc = "MIPS Malta Core LV";
+@@ -1442,10 +1449,3 @@ static void mips_malta_machine_init(MachineClass *mc)
+ }
+ 
+ DEFINE_MACHINE("malta", mips_malta_machine_init)
+-
+-static void mips_malta_register_types(void)
+-{
+-    type_register_static(&mips_malta_device);
+-}
+-
+-type_init(mips_malta_register_types)
+-- 
+2.21.3
 
 
