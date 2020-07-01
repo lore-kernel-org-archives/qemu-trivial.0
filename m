@@ -1,110 +1,131 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqTu9-0004PI-5u
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 23:59:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48046)
+	id 1jqcky-0003NB-BC
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2020 09:26:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50134)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
- id 1jqRfB-0005GA-LK; Tue, 30 Jun 2020 21:35:49 -0400
-Received: from relay4.mymailcheap.com ([137.74.80.154]:54897)
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jqckv-0003MJ-T1; Wed, 01 Jul 2020 09:26:30 -0400
+Received: from mga05.intel.com ([192.55.52.43]:15993)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
- id 1jqRf7-0007BE-Q3; Tue, 30 Jun 2020 21:35:48 -0400
-Received: from filter2.mymailcheap.com (filter2.mymailcheap.com
- [91.134.140.82])
- by relay4.mymailcheap.com (Postfix) with ESMTPS id B3E103F162;
- Wed,  1 Jul 2020 03:35:40 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by filter2.mymailcheap.com (Postfix) with ESMTP id 7FE072A4F0;
- Wed,  1 Jul 2020 03:35:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mymailcheap.com;
- s=default; t=1593567340;
- bh=EsOtnPFIFUTfzXmgBgIiBrtab6Je6TZbFyzHIjsjksM=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=dUBTq/q8mRre6fqHHvUqdOO2oQRoipfi0ws2gpJ9spO+Ov3x1RdSFCDNkcU15pZ8q
- FuxqwHKjGFsH8IXF3AyN3bj9f8jbgM7EuCeCwNIQ2o1ml/pE4BiTtRBijNiy7vX9sn
- Wu8wcMsLeS4c5RAQ1alyA9bbp2dOl/s+Q57V2NaM=
-X-Virus-Scanned: Debian amavisd-new at filter2.mymailcheap.com
-Received: from filter2.mymailcheap.com ([127.0.0.1])
- by localhost (filter2.mymailcheap.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zOIMtpCif1h8; Wed,  1 Jul 2020 03:35:38 +0200 (CEST)
-Received: from mail20.mymailcheap.com (mail20.mymailcheap.com [51.83.111.147])
- (using TLSv1.2 with cipher ADH-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by filter2.mymailcheap.com (Postfix) with ESMTPS;
- Wed,  1 Jul 2020 03:35:38 +0200 (CEST)
-Received: from [213.133.102.83] (ml.mymailcheap.com [213.133.102.83])
- by mail20.mymailcheap.com (Postfix) with ESMTP id B7F6040849;
- Wed,  1 Jul 2020 01:35:36 +0000 (UTC)
-Authentication-Results: mail20.mymailcheap.com; dkim=pass (1024-bit key;
- unprotected) header.d=flygoat.com header.i=@flygoat.com header.b="NeSsyz6b"; 
- dkim-atps=neutral
-AI-Spam-Status: Not processed
-Received: from [0.0.0.0] (ec2-18-163-238-147.ap-east-1.compute.amazonaws.com
- [18.163.238.147])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by mail20.mymailcheap.com (Postfix) with ESMTPSA id 9BF4D40849;
- Wed,  1 Jul 2020 01:35:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=flygoat.com;
- s=default; t=1593567332;
- bh=EsOtnPFIFUTfzXmgBgIiBrtab6Je6TZbFyzHIjsjksM=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=NeSsyz6bQXEkrWAx0uBdQQcvTyu2V6g1cwWbRJ7GXLvlk/V5DHupSO1cUuY4bBTHH
- JVgouenZlk2jOXF1hDZpUZo22IG5HHACNoRwN5Ut+6Vjm2Ql3uhAf1MQDsViGkGzqI
- 23a/MBjvo7xGrJzTnIuX9qVUs0XmI1GlFfrT/jTM=
-Subject: Re: [PATCH v3 0/5] hw/mips/malta: Add the 'malta-strict' machine,
- matching Malta hardware
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Yunqiang Su <ysu@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Laurent Vivier <laurent@vivier.eu>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20200630195723.1359-1-f4bug@amsat.org>
-From: Jiaxun Yang <jiaxun.yang@flygoat.com>
-Message-ID: <ae19b1ce-fee9-aec8-633a-88ba155608f8@flygoat.com>
-Date: Wed, 1 Jul 2020 09:35:21 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jqckt-0000wi-94; Wed, 01 Jul 2020 09:26:29 -0400
+IronPort-SDR: I4V2uwMSuZTkSfN0p557olerPvI9EfJ8dJTkgR6+u996ul2+GI+wIeox8m5AybJc8KCMNKpweO
+ Ek7oaa6Da4tw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9668"; a="231433704"
+X-IronPort-AV: E=Sophos;i="5.75,300,1589266800"; d="scan'208";a="231433704"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2020 06:26:21 -0700
+IronPort-SDR: Y7bxvnOClHdxC4tTaEUP0l/SBz9XPlQe89tEto0xI4MEaImG0l0JjOunwPr15epKnXCyLGvoWt
+ NumJP4e3GkjA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,300,1589266800"; d="scan'208";a="312689649"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga008.jf.intel.com with ESMTP; 01 Jul 2020 06:26:20 -0700
+Received: from fmsmsx606.amr.corp.intel.com (10.18.126.86) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 1 Jul 2020 06:26:20 -0700
+Received: from fmsmsx153.amr.corp.intel.com (10.18.125.6) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Wed, 1 Jul 2020 06:26:20 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ FMSMSX153.amr.corp.intel.com (10.18.125.6) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 1 Jul 2020 06:26:18 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.168)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Wed, 1 Jul 2020 06:26:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ar5HyXyR5yT0HOijUw8IiVogaPPloF86j6gF0lBaw2JRTSUvYm4oOuvOJvf3KKZt+v21J0kwc9VepswTDt715UgCMTJ6fA57t92RTK4DQ2ei7lie922oHQ7TEGjoOUrmQeekc+2x7QQw5sj05Kh+ZavxHjblgPwPlAaDfi2/DBQvcGRk3ii+FiU4ICq7qVsY0ENp4q7HB1SQ3/fm4TVGzPeXjQP0tG44E4OXebx2HsFLY35N4beeDS/mXKTZX0vx72gaoAJiINVm4GVA2yXkfkbp0ePItfQPqmFuNG4IKJ5VN0wT7y37fmQ+9kWOb7qUExaIjNlHdXnw/mctICfC3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VNFkWNM1azEOqCX9/+rI2tcrvNA/LyR5KHcRKvQOXf4=;
+ b=dUnPZdwi3USrH/ld9/8pDxBEAFAZgEr1eVKeTuBQv5kXPchWkqIkJ7Rkd/6t6171uNB7rHM78ZNME/9A/4HA7rHHVJojdBLIdMnKLa59MgXYkH1k7ZNBE67778L8OF/L9yaQkXYhGFwSf8Fh+JfiLVVUEoxhmYCqEeuz5T2vgzkvsv0ye+2DDKu9ImAMesyQvMVFwBbFmV9jfOPGUFfvn8MQ6oA7VkdQ/U2ugOSstFPvK83JAOHp9Oz/TRCQ9QGntTgQXpXqRG4hR2gqYsOFNI1tQT1GfmCEIKSue73RPvzDQzwr3u9p0jH7JevudOXPdB5W0T37rNLVVXpPDIx2ew==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VNFkWNM1azEOqCX9/+rI2tcrvNA/LyR5KHcRKvQOXf4=;
+ b=ICr4qxUEAO6o3qzBMZ+qcmtE6uktlPAAewiLiIr1Z10UJxXBufpSWPllM2dE1ZQOtrpAHDG9RsqSpVH59woZfDER7QliCpWT066hKuCKIRsZ1JnSorAYbJnzUDPQrsUGRDbdsj16nlySuer7Dq5Y7t9zC2DlhVroIFLpW7YadGU=
+Received: from DM5PR11MB1833.namprd11.prod.outlook.com (2603:10b6:3:110::12)
+ by DM6PR11MB4425.namprd11.prod.outlook.com (2603:10b6:5:1d9::31) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.20; Wed, 1 Jul
+ 2020 13:26:15 +0000
+Received: from DM5PR11MB1833.namprd11.prod.outlook.com
+ ([fe80::4ce3:6680:7257:7c74]) by DM5PR11MB1833.namprd11.prod.outlook.com
+ ([fe80::4ce3:6680:7257:7c74%6]) with mapi id 15.20.3131.028; Wed, 1 Jul 2020
+ 13:26:15 +0000
+From: "Wu, Wentong" <wentong.wu@intel.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl
+ instruction
+Thread-Topic: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl
+ instruction
+Thread-Index: AQHWTe3BOsAD/7AE8EK8jau5tLLWZajyuYYQ
+Date: Wed, 1 Jul 2020 13:26:15 +0000
+Message-ID: <DM5PR11MB18335DC92550D442DE78DCFB8D6C0@DM5PR11MB1833.namprd11.prod.outlook.com>
+References: <20200629160535.3910-1-wentong.wu@intel.com>
+ <20200629160535.3910-3-wentong.wu@intel.com>
+In-Reply-To: <20200629160535.3910-3-wentong.wu@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.2.0.6
+dlp-product: dlpe-windows
+authentication-results: nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [192.198.147.202]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: da6e3005-c523-43ca-caf4-08d81dc2548a
+x-ms-traffictypediagnostic: DM6PR11MB4425:
+x-microsoft-antispam-prvs: <DM6PR11MB4425C0FF0CC6D9CDB3643D378D6C0@DM6PR11MB4425.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 04519BA941
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qzkuVC0ZHxZr1H6Y1Td5VokYhVvVp0JCOsRhEsRUIOnjobbLiHDGuBHafReRbi9c6OawZYjd+kKZpdh9WP7ZfdUml7qsxW2WJdvfstq+oH5sYCVEfrb3IOvkO/pj4T1y+gLUA2NAbujDOfliVQddorPcJZhv5GtIRmxpSLjvOPbsbnwtPsyyeF0tkRrBk8WFGsDl89FJ8+Uz/g8K3EU9OmpiKJu8LE+rhzHt8Hsbua3pOwAp/bClRBuGcYW580MXOeUHKxqZIDU6h/3GVaP5ZNFMesnfXlh9+io473r6IHGnpjhNe4EQchRSChKE0awkWYzdXe8zR8021uEJ1ZxnaQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM5PR11MB1833.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(136003)(366004)(376002)(396003)(39860400002)(346002)(76116006)(110136005)(316002)(478600001)(33656002)(52536014)(2906002)(8936002)(6506007)(5660300002)(66946007)(71200400001)(4326008)(7696005)(26005)(186003)(66476007)(64756008)(55016002)(8676002)(66556008)(66446008)(83380400001)(9686003)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: RyfnT1rvN8z8inqX7JgDgDL3Pxt/FCfEt3Opn3OFPdGL0oRy904RKtvF10MH09fUZut/iqWPKkANhPTeMwQQxkPJKgd7Zohwo7ClDBrIA+XBhZILowP8sOdjzmNAWX6O8XLXNmBqyBYndLFc4yXNxI0IGRQp4s6J2mClAj5YWhwAQMhUJBtymzU9YYQ003jjApNdH+8Xz4XfItUj0ElRjaQzJ3RZR0OjbbjCbjBZvjAtabyLx8hccq07MyyYzF5FzlJVgD++/izkzl221MwdhMmix/nqukrsymJktyK6AsSSOFlCgBDlrNwzi4guHS3AmSxJmpovWW2XpdWAYHIxeEezorbWBoYcqBP8a1WETSJxMNpZKOP407Sev5OifoWywXeGu8O5YHSehdDwGGOcv/Pd2YvlqJXaLcPfo2ySSOOUyfu+BZJJz5YR4dxTTnGWBsHAUv6bC6qU0bKUEOnup5YaFrw2kRE5JJTEeFk6Dt68j8rNJrFVaFwgabH6VY0W
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20200630195723.1359-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: B7F6040849
-X-Spamd-Result: default: False [1.40 / 10.00]; RCVD_VIA_SMTP_AUTH(0.00)[];
- ARC_NA(0.00)[]; R_DKIM_ALLOW(0.00)[flygoat.com:s=default];
- MID_RHS_MATCH_FROM(0.00)[]; FROM_HAS_DN(0.00)[];
- TO_DN_SOME(0.00)[]; FREEMAIL_ENVRCPT(0.00)[gmail.com];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; TAGGED_RCPT(0.00)[];
- MIME_GOOD(-0.10)[text/plain]; R_SPF_SOFTFAIL(0.00)[~all];
- HFILTER_HELO_BAREIP(3.00)[213.133.102.83,1];
- ML_SERVERS(-3.10)[213.133.102.83];
- DKIM_TRACE(0.00)[flygoat.com:+];
- DMARC_POLICY_ALLOW(0.00)[flygoat.com,none];
- RCPT_COUNT_SEVEN(0.00)[10];
- RCVD_IN_DNSWL_NONE(0.00)[213.133.102.83:from];
- DMARC_POLICY_ALLOW_WITH_FAILURES(0.00)[];
- RCVD_NO_TLS_LAST(0.10)[]; FROM_EQ_ENVFROM(0.00)[];
- MIME_TRACE(0.00)[0:+];
- ASN(0.00)[asn:24940, ipnet:213.133.96.0/19, country:DE];
- FREEMAIL_CC(0.00)[gmail.com,syrmia.com,vivier.eu,redhat.com,nongnu.org];
- SUSPICIOUS_RECIPS(1.50)[]; RCVD_COUNT_TWO(0.00)[2]
-X-Rspamd-Server: mail20.mymailcheap.com
-Received-SPF: pass client-ip=137.74.80.154;
- envelope-from=jiaxun.yang@flygoat.com; helo=relay4.mymailcheap.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 21:35:41
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR11MB1833.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: da6e3005-c523-43ca-caf4-08d81dc2548a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2020 13:26:15.1388 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8oICWJ5ZegwDC7Xs38655r/KNT1MHAIoWW6Yu9040t7Ec8MxsZUS51evZh2cfFdDIzXlAxYsdfcCnPki+J8Txg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4425
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=192.55.52.43; envelope-from=wentong.wu@intel.com;
+ helo=mga05.intel.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/01 09:26:22
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 30 Jun 2020 23:59:24 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,73 +137,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jul 2020 01:35:50 -0000
+X-List-Received-Date: Wed, 01 Jul 2020 13:26:30 -0000
 
-
-在 2020/7/1 3:57, Philippe Mathieu-Daudé 写道:
-> Hi,
->
-> This series add a new 'malta-strict' machine, that aims to properly
-> model the real hardware (which is not what the current 'malta'
-> machine models).
-
-
-Just putting my random words here as things had became really tense..
-
-My orginal proposal was served to some occational case.
-
-Yunqiang said sometimes he will run memory intensives task in QEMU, and 
-found 2G memory limitation had became the bottle neck of these usage. At 
-that time I was trying to learn how QEMU work, so I made that patch to 
-convinient him. Also submited it to upstream as I think it can 
-convinient others as well.
-
-I was thinking the fundmental reason of QEMU's extistence is to make 
-people's life easier. With QEMU, one can test OS/application without own 
-actaul hardware or limited by unreasonable hardware design. That's why I 
-was trying to upstream that change.
-
-If we're looking for accurate hardware emulator, probably we should ask 
-for RTL code from manufactures and run it in iverilog.
-
-Anyway, as a hobbist, I'm really graceful to what have done by 
-Alexsandar in maintaining QEMU/MIPS. The future of MIPS is really 
-unclear due to commerical reasons. I just don't want to see MIPS being 
-threw away by the community as soon as the business collapse.
+Hi,
+Could you please take a look the new patch?
 
 Thanks
 
+> -----Original Message-----
+> Subject: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl instruct=
+ion
+> wrctl instruction on nios2 target will cause checking cpu interrupt but t=
+cg_handle_interrupt() will call cpu_abort() if the CPU gets an interrupt wh=
+ile it's not in 'can do IO'
+> state, so add gen_io_start around wrctl instruction. Also at the same tim=
+e, end the onging TB with DISAS_UPDATE.
 
-~Jiaxun
+> Signed-off-by: Wentong Wu <wentong.wu@intel.com>
+> ---
+> target/nios2/translate.c | 5 +++++
+> 1 file changed, 5 insertions(+)
+>
+> diff --git a/target/nios2/translate.c b/target/nios2/translate.c index 83=
+c10eb2..51347ada 100644
+> --- a/target/nios2/translate.c
+> +++ b/target/nios2/translate.c
+> @@ -32,6 +32,7 @@
+> #include "exec/cpu_ldst.h"
+> #include "exec/translator.h"
+> #include "qemu/qemu-print.h"
+> +#include "exec/gen-icount.h"
+=20
+>  /* is_jmp field values */
+> #define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically =
+*/
+> @@ -518,7 +519,11 @@ static void wrctl(DisasContext *dc, uint32_t code, u=
+int32_t flags)
+>     /* If interrupts were enabled using WRCTL, trigger them. */  #if !def=
+ined(CONFIG_USER_ONLY)
+>    if ((instr.imm5 + CR_BASE) =3D=3D CR_STATUS) {
+> +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
+> +            gen_io_start();
+> +        }
+>          gen_helper_check_interrupts(dc->cpu_env);
+> +        dc->is_jmp =3D DISAS_UPDATE;
+>    }
+> #endif
+> }
+> --
+> 2.21.3
 
-
->
-> Since v2:
-> - Initialize missing malta_machine_types::class_size
-> - Remove RFC patch that confuses Aleksandar
-> - Added examples of 'malta-strict' use
->
-> $ git backport-diff -u v2
-> Key:
-> [----] : patches are identical
-> [####] : number of functional differences between upstream/downstream patch
-> [down] : patch is downstream-only
-> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
->
-> 001/5:[----] [--] 'hw/mips/malta: Trivial code movement'
-> 002/5:[----] [--] 'hw/mips/malta: Register the machine as a TypeInfo'
-> 003/5:[0001] [FC] 'hw/mips/malta: Introduce MaltaMachineClass::max_ramsize'
-> 004/5:[----] [--] 'hw/mips/malta: Introduce the 'malta-strict' machine'
-> 005/5:[----] [--] 'hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes'
->
-> Philippe Mathieu-Daudé (5):
->    hw/mips/malta: Trivial code movement
->    hw/mips/malta: Register the machine as a TypeInfo
->    hw/mips/malta: Introduce MaltaMachineClass::max_ramsize
->    hw/mips/malta: Introduce the 'malta-strict' machine
->    hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes
->
->   hw/mips/malta.c | 105 +++++++++++++++++++++++++++++++++++++++++-------
->   1 file changed, 91 insertions(+), 14 deletions(-)
->
 
