@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqdYA-0004dq-He
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2020 10:17:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36118)
+	id 1jqeSV-0004g2-0l
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2020 11:15:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jqdY8-0004aM-GB
- for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 10:17:20 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55158
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqeST-0004dF-28
+ for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 11:15:33 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55556
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jqdY2-0000p5-K6
- for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 10:17:20 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqeSQ-0002tK-SD
+ for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 11:15:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593613033;
+ s=mimecast20190719; t=1593616530;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=j+CFcFn1h/y7gWygLKNgtZPwE9tfsBRjkTlSxlKkrx8=;
- b=MW/EKEYxOKeLO99zHp86xCHEr0BP8yQPtQJ9IyDYLjzX73r7QI+tHn8yXiyaH7SQvMmrrg
- y8CQsnP+8cz/CTdFe33gjPEGt6vyK+4cxAEiC0KBsiM3V85dLRzyhr6tZRVeEV6yRCGTxX
- 55GfCgT3xFULyxJp2WyFElBjmcyUmqA=
+ bh=Tl2XnPJhS4+sRYXg4BsVbGG87M/IQqFEuKR51vK0lWY=;
+ b=iN2ZAaqhf+QSt/QgtngZMlJPXdU+Rk5k2hZ9Jt6rZQIZG0R3bGWb52mXnPDxK1FgEarcN5
+ AEjg6cm1SSbbvabVYahNUzuGDJwj6N6Na3n1lRYsNL1/n4XqSNf5+9w4Sa3JkUcrHjT2WE
+ R+GAYZQnM9PUz5RWVTcfqwae7CVWge8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-160-g1oS7VTIMyWFnIfIUVM8TA-1; Wed, 01 Jul 2020 10:17:06 -0400
-X-MC-Unique: g1oS7VTIMyWFnIfIUVM8TA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-332-DwMczyXOPxyt0U8eAXwVXw-1; Wed, 01 Jul 2020 11:15:28 -0400
+X-MC-Unique: DwMczyXOPxyt0U8eAXwVXw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 38BE885B673;
- Wed,  1 Jul 2020 14:17:03 +0000 (UTC)
-Received: from [10.3.114.107] (ovpn-114-107.phx2.redhat.com [10.3.114.107])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B488C1057FD7;
- Wed,  1 Jul 2020 14:16:34 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 171FD18FE86F;
+ Wed,  1 Jul 2020 15:15:27 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
+ [10.36.112.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B289773FCF;
+ Wed,  1 Jul 2020 15:15:26 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 9BC1A16E16; Wed,  1 Jul 2020 17:15:24 +0200 (CEST)
+Date: Wed, 1 Jul 2020 17:15:24 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, David CARLIER <devnexen@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [PATC 7/9] Skipping drm build, unsupported
-To: Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, David CARLIER
- <devnexen@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
+Message-ID: <20200701151524.wogl4ihbdevgf4bt@sirius.home.kraxel.org>
 References: <CA+XhMqzjjrfxXeSENBQuHzTe4TRMWV5GOdqPkD3bo17T3ufR1A@mail.gmail.com>
  <1058ccbd-b4bb-9413-abc5-ae89076a58e1@redhat.com>
  <20200630082301.6vybzwmg4pviuwob@sirius.home.kraxel.org>
  <CAFEAcA8jkzf8+d5AyAVH2HJ544TyHsM4xP5tpWsKiJbJtWMjKw@mail.gmail.com>
  <20200630165356.2ka2ltwmrfjb5msn@sirius.home.kraxel.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <3eb3c266-1a83-9f40-4760-1ab2578ae5d6@redhat.com>
-Date: Wed, 1 Jul 2020 09:16:34 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ <3eb3c266-1a83-9f40-4760-1ab2578ae5d6@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200630165356.2ka2ltwmrfjb5msn@sirius.home.kraxel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <3eb3c266-1a83-9f40-4760-1ab2578ae5d6@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=eblake@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
  helo=us-smtp-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 22:25:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -82,37 +82,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jul 2020 14:17:20 -0000
+X-List-Received-Date: Wed, 01 Jul 2020 15:15:33 -0000
 
-On 6/30/20 11:53 AM, Gerd Hoffmann wrote:
->>>>> -util-obj-$(CONFIG_POSIX) += drm.o
->>>>> +util-obj-$(CONFIG_LINUX) += drm.o
->>>
->>> Can't see anything linux-specific there.  Also note that FreeBSD (and
->>> possibly other *BSDs too) have drm support.  So CONFIG_POSIX looks
->>> correct to me.
->>
->> This change was my suggestion; I assumed that "open /dev/dri/whatever"
->> was Linux-specific. The specific thing that doesn't work on
->> Haiku, or on Solaris for that matter, is that the code uses
->> DT_CHR, which isn't in POSIX but is a Linux-and-BSDism.
+> > Ah, that is the problem.  Yes, DT_CHR is an non-posix optimization which
+> > allows to get the file type directly, without another round-trip to the
+> > kernel.  If that isn't available you can stat() the file and check
+> > ((st_mode & S_IFMT) == S_IFCHR) instead.
 > 
-> Ah, that is the problem.  Yes, DT_CHR is an non-posix optimization which
-> allows to get the file type directly, without another round-trip to the
-> kernel.  If that isn't available you can stat() the file and check
-> ((st_mode & S_IFMT) == S_IFCHR) instead.
+> Even when d_type and DT_CHR is available, there are filesystems where the
+> Linux kernel reports d_type of DT_UNKNOWN, and where you are best having
+> that code also falling back to an fstat().
 
-Even when d_type and DT_CHR is available, there are filesystems where 
-the Linux kernel reports d_type of DT_UNKNOWN, and where you are best 
-having that code also falling back to an fstat().  In short, any 
-portable code that uses d_type should have fallback code for DT_UNKNOWN, 
-at which point porting to systems without d_type is as easy as writing 
-an accessor macro that returns d_type when it exists and DT_UNKNOWN 
-where it doesn't.
+Given this isn't perforance critical at all it is probably simplest to
+avoid non-portable d_type altogether and just to the fstat
+unconditionally.
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+David, does that work for haiku?
+
+take care,
+  Gerd
+
+diff --git a/util/drm.c b/util/drm.c
+index a23ff2453826..a1d3520d00f2 100644
+--- a/util/drm.c
++++ b/util/drm.c
+@@ -24,6 +24,7 @@ int qemu_drm_rendernode_open(const char *rendernode)
+ {
+     DIR *dir;
+     struct dirent *e;
++    struct stat st;
+     int r, fd;
+     char *p;
+ 
+@@ -38,10 +39,6 @@ int qemu_drm_rendernode_open(const char *rendernode)
+ 
+     fd = -1;
+     while ((e = readdir(dir))) {
+-        if (e->d_type != DT_CHR) {
+-            continue;
+-        }
+-
+         if (strncmp(e->d_name, "renderD", 7)) {
+             continue;
+         }
+@@ -53,6 +50,12 @@ int qemu_drm_rendernode_open(const char *rendernode)
+             g_free(p);
+             continue;
+         }
++        fstat(r, &st);
++        if ((st.st_mode & S_IFMT) != S_IFCHR) {
++            close(r);
++            g_free(p);
++            continue;
++        }
+         fd = r;
+         g_free(p);
+         break;
 
 
