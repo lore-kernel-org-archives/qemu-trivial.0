@@ -1,75 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqeSV-0004g2-0l
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2020 11:15:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52656)
+	id 1jqeyf-000591-U7
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2020 11:48:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqeST-0004dF-28
- for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 11:15:33 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55556
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jqeSQ-0002tK-SD
- for qemu-trivial@nongnu.org; Wed, 01 Jul 2020 11:15:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593616530;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Tl2XnPJhS4+sRYXg4BsVbGG87M/IQqFEuKR51vK0lWY=;
- b=iN2ZAaqhf+QSt/QgtngZMlJPXdU+Rk5k2hZ9Jt6rZQIZG0R3bGWb52mXnPDxK1FgEarcN5
- AEjg6cm1SSbbvabVYahNUzuGDJwj6N6Na3n1lRYsNL1/n4XqSNf5+9w4Sa3JkUcrHjT2WE
- R+GAYZQnM9PUz5RWVTcfqwae7CVWge8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-332-DwMczyXOPxyt0U8eAXwVXw-1; Wed, 01 Jul 2020 11:15:28 -0400
-X-MC-Unique: DwMczyXOPxyt0U8eAXwVXw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 171FD18FE86F;
- Wed,  1 Jul 2020 15:15:27 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
- [10.36.112.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B289773FCF;
- Wed,  1 Jul 2020 15:15:26 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 9BC1A16E16; Wed,  1 Jul 2020 17:15:24 +0200 (CEST)
-Date: Wed, 1 Jul 2020 17:15:24 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, David CARLIER <devnexen@gmail.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [PATC 7/9] Skipping drm build, unsupported
-Message-ID: <20200701151524.wogl4ihbdevgf4bt@sirius.home.kraxel.org>
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jqeye-00057q-P9; Wed, 01 Jul 2020 11:48:48 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:45811)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jqeyd-000134-2R; Wed, 01 Jul 2020 11:48:48 -0400
+Received: by mail-ed1-x543.google.com with SMTP id d16so13706301edz.12;
+ Wed, 01 Jul 2020 08:48:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Q32RtG8V4Fr7hL0mqz3/MDCOgImuHN+TvsIF9UXXCuw=;
+ b=mRlEE+XfRxXkKvkOMwPsWMK1LTjn2lf0rj9ZM/UkpIa/hWeDRanpR/Z+w1Sl9UlOf5
+ Q9PSS4oKVw+E+DZr7MUBAB3yR6f5MtJvLvrhsrQNaP7nHdOQlOampvOracA/IQgs3F/B
+ 3r3fkJyfqSTzhAsreirGu0yKntxYMwCS1Ey34R09stY60QohUy1fpYNqijOHTKRypn+d
+ aYCXV7pNU5CsCyOWcuX0hO7wxoJFDDFM89sGmaRId8frG4XLTjWgL/8ntCOQv//wW1V3
+ y88V6Siv1nZE0Iro5qyBvOhvQmL9FS3vXw/Fx5qx3QRlOFH+O4DJn8LfYPgnM97Z8uwE
+ Mw3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Q32RtG8V4Fr7hL0mqz3/MDCOgImuHN+TvsIF9UXXCuw=;
+ b=pfapwJU0g3glSxJrYoBgkO4civehayWp+Tbula55NzQIkrtOh8EM/kwzX/F/pCf9Mp
+ +HXSJw4qxj5O1m2tS2wMH8U6rx7j2mtfiSDpgwqNRdKYCK8HGjdhfIhnBH717Lb0IjDE
+ t3iT9C1Sdr5ruLebIEoyzWzYimPXIfSBNQyGOauOv12lXTT4HEuH2LN+tYu1qTzsxnKJ
+ 61h4O2AlBAM2x3Q9m+yNVY7ShQEps16DiWUdiVomcYgXWVQWpZSP3D5OFVgA2l6UZRTJ
+ fKHorwTnVLbrwgYPqpMvpOFbUXMKJT1jyJoIOmOo+9tLXtcYfDE0j4TE4I6SdCZp947j
+ TFVg==
+X-Gm-Message-State: AOAM5318H2CL+DM4YbtTI+EQnRdMIRSTGSbjjS5b0ZFgV2w9CspBQnxG
+ D9vo0tARYKymEGtpBedH7xYTIy6UC+t+Nq/4zIc=
+X-Google-Smtp-Source: ABdhPJyDBmkTZGBa0+XnBB8A6PSv7vQCtHQqkM0xCb6T9oaG4qgg0rl+arH9ujTVlIoH5/xhAdSAhwiHxvGQHbUuYq8=
+X-Received: by 2002:a05:6402:354:: with SMTP id
+ r20mr29656490edw.32.1593618524681; 
+ Wed, 01 Jul 2020 08:48:44 -0700 (PDT)
+MIME-Version: 1.0
 References: <CA+XhMqzjjrfxXeSENBQuHzTe4TRMWV5GOdqPkD3bo17T3ufR1A@mail.gmail.com>
  <1058ccbd-b4bb-9413-abc5-ae89076a58e1@redhat.com>
  <20200630082301.6vybzwmg4pviuwob@sirius.home.kraxel.org>
  <CAFEAcA8jkzf8+d5AyAVH2HJ544TyHsM4xP5tpWsKiJbJtWMjKw@mail.gmail.com>
  <20200630165356.2ka2ltwmrfjb5msn@sirius.home.kraxel.org>
  <3eb3c266-1a83-9f40-4760-1ab2578ae5d6@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <3eb3c266-1a83-9f40-4760-1ab2578ae5d6@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 22:25:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ <20200701151524.wogl4ihbdevgf4bt@sirius.home.kraxel.org>
+In-Reply-To: <20200701151524.wogl4ihbdevgf4bt@sirius.home.kraxel.org>
+From: David CARLIER <devnexen@gmail.com>
+Date: Wed, 1 Jul 2020 16:48:33 +0100
+Message-ID: <CA+XhMqxUL9vaEycf52umx8aE_PBd0A3hOUVXEBSNFd=ePR8x7Q@mail.gmail.com>
+Subject: Re: [PATC 7/9] Skipping drm build, unsupported
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x543.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,61 +79,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jul 2020 15:15:33 -0000
+X-List-Received-Date: Wed, 01 Jul 2020 15:48:49 -0000
 
-> > Ah, that is the problem.  Yes, DT_CHR is an non-posix optimization which
-> > allows to get the file type directly, without another round-trip to the
-> > kernel.  If that isn't available you can stat() the file and check
-> > ((st_mode & S_IFMT) == S_IFCHR) instead.
-> 
-> Even when d_type and DT_CHR is available, there are filesystems where the
-> Linux kernel reports d_type of DT_UNKNOWN, and where you are best having
-> that code also falling back to an fstat().
+Yes it does. Regards.
 
-Given this isn't perforance critical at all it is probably simplest to
-avoid non-portable d_type altogether and just to the fstat
-unconditionally.
-
-David, does that work for haiku?
-
-take care,
-  Gerd
-
-diff --git a/util/drm.c b/util/drm.c
-index a23ff2453826..a1d3520d00f2 100644
---- a/util/drm.c
-+++ b/util/drm.c
-@@ -24,6 +24,7 @@ int qemu_drm_rendernode_open(const char *rendernode)
- {
-     DIR *dir;
-     struct dirent *e;
-+    struct stat st;
-     int r, fd;
-     char *p;
- 
-@@ -38,10 +39,6 @@ int qemu_drm_rendernode_open(const char *rendernode)
- 
-     fd = -1;
-     while ((e = readdir(dir))) {
--        if (e->d_type != DT_CHR) {
--            continue;
--        }
--
-         if (strncmp(e->d_name, "renderD", 7)) {
-             continue;
-         }
-@@ -53,6 +50,12 @@ int qemu_drm_rendernode_open(const char *rendernode)
-             g_free(p);
-             continue;
-         }
-+        fstat(r, &st);
-+        if ((st.st_mode & S_IFMT) != S_IFCHR) {
-+            close(r);
-+            g_free(p);
-+            continue;
-+        }
-         fd = r;
-         g_free(p);
-         break;
-
+On Wed, 1 Jul 2020 at 16:15, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>
+> > > Ah, that is the problem.  Yes, DT_CHR is an non-posix optimization which
+> > > allows to get the file type directly, without another round-trip to the
+> > > kernel.  If that isn't available you can stat() the file and check
+> > > ((st_mode & S_IFMT) == S_IFCHR) instead.
+> >
+> > Even when d_type and DT_CHR is available, there are filesystems where the
+> > Linux kernel reports d_type of DT_UNKNOWN, and where you are best having
+> > that code also falling back to an fstat().
+>
+> Given this isn't perforance critical at all it is probably simplest to
+> avoid non-portable d_type altogether and just to the fstat
+> unconditionally.
+>
+> David, does that work for haiku?
+>
+> take care,
+>   Gerd
+>
+> diff --git a/util/drm.c b/util/drm.c
+> index a23ff2453826..a1d3520d00f2 100644
+> --- a/util/drm.c
+> +++ b/util/drm.c
+> @@ -24,6 +24,7 @@ int qemu_drm_rendernode_open(const char *rendernode)
+>  {
+>      DIR *dir;
+>      struct dirent *e;
+> +    struct stat st;
+>      int r, fd;
+>      char *p;
+>
+> @@ -38,10 +39,6 @@ int qemu_drm_rendernode_open(const char *rendernode)
+>
+>      fd = -1;
+>      while ((e = readdir(dir))) {
+> -        if (e->d_type != DT_CHR) {
+> -            continue;
+> -        }
+> -
+>          if (strncmp(e->d_name, "renderD", 7)) {
+>              continue;
+>          }
+> @@ -53,6 +50,12 @@ int qemu_drm_rendernode_open(const char *rendernode)
+>              g_free(p);
+>              continue;
+>          }
+> +        fstat(r, &st);
+> +        if ((st.st_mode & S_IFMT) != S_IFCHR) {
+> +            close(r);
+> +            g_free(p);
+> +            continue;
+> +        }
+>          fd = r;
+>          g_free(p);
+>          break;
+>
 
