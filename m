@@ -1,70 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jqODi-0007Ne-Fs
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 17:55:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55018)
+	id 1jqRJk-0007iv-OX
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2020 21:13:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jqODh-0007LX-00; Tue, 30 Jun 2020 17:55:13 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43463)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jqODf-0006eO-9k; Tue, 30 Jun 2020 17:55:12 -0400
-Received: by mail-wr1-x441.google.com with SMTP id j4so19198425wrp.10;
- Tue, 30 Jun 2020 14:55:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=I6CDGJL8XjgO7LAGyyB4NDAKVqim4HeLk2kRAk4UpVU=;
- b=sKrMPWydGAVKsAjkdnoq9PYl5XZr6XNNjzvLkPJmxrop6ZBhbVhlM77MowB/6dcdYW
- sLuncYfUKjf3q+86MDn7G1AkNASrYnwWCDcSpXQO2eaU8M65vBB9d4OXL3ILpfvPHbQD
- +rN6jrJwK+nZIBQrybJ6lfXJyEozjzxLtbAX1wEcPoC4jm5kZWgbo2WtuLcjw6+nESEd
- Xj9SqNQIzvdxUieCd56H82j8K4SoOlq0vywYZvXZ0UXCAxsiDidnWcQMec79az/5gbKt
- nIzcX++A9cpiFeJr/yohGsOxZ9zrVI/C+Wgx7j3F0QQmqzJVSQzQhCJ4EqSuKKVJq72q
- tTvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=I6CDGJL8XjgO7LAGyyB4NDAKVqim4HeLk2kRAk4UpVU=;
- b=sk9bz7y/3wmFvuFXDa9ExaR9LMbPJeXf4uDgHZKWRyo5NYVA4RtlQQfszHg1TCoZId
- F0Ufymk1N8eu/qxVQ5rM5npJ7+SJNr9n45wX2GjGtx/cNaWOz06DfH1OY3ldAnhhC7hT
- YjQa9YoDJmqzcJE0IgB++kbfUrk2Wnk+cpxygqqDk5LSbbUvK1unfnlx493r9UWf+QeJ
- o7xqd4VCfCgV3HMCVyXyRHhhAQMxHkWGhndPuhrmRqgnkmjwKsS4EvYBqaOAXSKOymXs
- 8UVsIU8ij2vHY5OzUnCoG6RukK8AD3QKtiGPeMr/zyezDDvCinr8B9GA6A4AqNRMPAOZ
- pf3g==
-X-Gm-Message-State: AOAM530/TLX2McaquLkLm13cf5J5RccdJdz0UhfTV0QJQe3rHWeg+PoP
- 0eNX65RyTdHruyVt8XK2MMfMKD3auLLNfyw/Vm0=
-X-Google-Smtp-Source: ABdhPJy2fH3go2ND/pH3qegkPKvP5V0oaBJ9DkPS9xkODsBTc6WnD67P10bvNvvMQR+YtzTckkrEPsnzEu7Xv7VR268=
-X-Received: by 2002:a5d:6907:: with SMTP id t7mr23475654wru.329.1593554107954; 
- Tue, 30 Jun 2020 14:55:07 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200630195723.1359-1-f4bug@amsat.org>
-In-Reply-To: <20200630195723.1359-1-f4bug@amsat.org>
-From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Date: Tue, 30 Jun 2020 23:54:55 +0200
-Message-ID: <CAHiYmc6d3Q2A237qVqp6s0MagXqgy11aX9r_LuJsGkoJxRhfQw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jqRJi-0007ii-Rz; Tue, 30 Jun 2020 21:13:38 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:30814)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jqRJf-0003pT-Ve; Tue, 30 Jun 2020 21:13:38 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id DAB2A746331;
+ Wed,  1 Jul 2020 03:13:31 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4BB7774594E; Wed,  1 Jul 2020 03:13:31 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4A260745712;
+ Wed,  1 Jul 2020 03:13:31 +0200 (CEST)
+Date: Wed, 1 Jul 2020 03:13:31 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>, 
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org, 
+ Yunqiang Su <ysu@wavecomp.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Igor Mammedov <imammedo@redhat.com>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>
 Subject: Re: [PATCH v3 0/5] hw/mips/malta: Add the 'malta-strict' machine,
  matching Malta hardware
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Yunqiang Su <ysu@wavecomp.com>, 
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
- qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Igor Mammedov <imammedo@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wr1-x441.google.com
+In-Reply-To: <CAHiYmc6d3Q2A237qVqp6s0MagXqgy11aX9r_LuJsGkoJxRhfQw@mail.gmail.com>
+Message-ID: <alpine.BSF.2.22.395.2007010248270.96257@zero.eik.bme.hu>
+References: <20200630195723.1359-1-f4bug@amsat.org>
+ <CAHiYmc6d3Q2A237qVqp6s0MagXqgy11aX9r_LuJsGkoJxRhfQw@mail.gmail.com>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-490760158-1593566011=:96257"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,63 +59,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2020 21:55:13 -0000
+X-List-Received-Date: Wed, 01 Jul 2020 01:13:39 -0000
 
-As, in a very clear way, evidenced from the previous versions of this
-series, this series real goal was not not to create some new
-"malta-strict" machine, but to prepare path to creation of some
-imagined "malta-unleashed" machine which will, to the contrary of
-proclaimed goal, create a machine that could never exist in reality.
-That is why I can't accept this series.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-490760158-1593566011=:96257
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Tue, 30 Jun 2020, Aleksandar Markovic wrote:
+> As, in a very clear way, evidenced from the previous versions of this
+> series, this series real goal was not not to create some new
+> "malta-strict" machine, but to prepare path to creation of some
+> imagined "malta-unleashed" machine which will, to the contrary of
+> proclaimed goal, create a machine that could never exist in reality.
+> That is why I can't accept this series.
+
+I don't really want to be included in this discussion so please exclude me 
+from any replies, I can read replies on the list but don't want my mailbox 
+flooded with this thread. I could (and probably should) stay out of it but 
+maybe can offer some outsider view and share a suggestion.
+
+I haven't followed all this thread but if your problem with it is that 
+something called malta should emulate that machine and not something 
+non-existent "malta-unleashed" then how about introducing a new machine 
+called virt which is a purely virtual machine? Arm has such a machine and 
+is recommended to be used for those who just want a generic Linux machine 
+without emulating any particular hardware. See here in docs:
+
+https://wiki.qemu.org/Documentation/Platforms/ARM#Guidelines_for_choosing_a_QEMU_machine
+
+I think Philippe was probably trying to do something like that with this 
+series which is clearly not forbidden by any QEMU policy as evidenced by 
+arm virt so maybe it's only a disagreement about how this should be named.
+
+Keep malta to be modeling the Malta machine and add a new one called virt 
+which can be a copy of the current malta initially just to start from 
+somewhere (as arm was using versatilepb as mentioned above) but then the 
+directions these machines will be developed further could be different: 
+Malta would be developed to faithfully model the Malta machine, running 
+its firmware, etc. while virt could allow having more RAM or virtio 
+devices not available on real hardware. Why is that not acceptable?
 
 Regards,
-Aleksandar
+BALATON Zoltan
 
-
-=D1=83=D1=82=D0=BE, 30. =D1=98=D1=83=D0=BD 2020. =D1=83 21:58 Philippe Math=
-ieu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=D0=B5
-=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->
-> Hi,
->
-> This series add a new 'malta-strict' machine, that aims to properly
-> model the real hardware (which is not what the current 'malta'
-> machine models).
->
-> Since v2:
-> - Initialize missing malta_machine_types::class_size
-> - Remove RFC patch that confuses Aleksandar
-> - Added examples of 'malta-strict' use
->
-> $ git backport-diff -u v2
-> Key:
-> [----] : patches are identical
-> [####] : number of functional differences between upstream/downstream pat=
-ch
-> [down] : patch is downstream-only
-> The flags [FC] indicate (F)unctional and (C)ontextual differences, respec=
-tively
->
-> 001/5:[----] [--] 'hw/mips/malta: Trivial code movement'
-> 002/5:[----] [--] 'hw/mips/malta: Register the machine as a TypeInfo'
-> 003/5:[0001] [FC] 'hw/mips/malta: Introduce MaltaMachineClass::max_ramsiz=
-e'
-> 004/5:[----] [--] 'hw/mips/malta: Introduce the 'malta-strict' machine'
-> 005/5:[----] [--] 'hw/mips/malta: Verify malta-strict machine uses correc=
-t DIMM sizes'
->
-> Philippe Mathieu-Daud=C3=A9 (5):
->   hw/mips/malta: Trivial code movement
->   hw/mips/malta: Register the machine as a TypeInfo
->   hw/mips/malta: Introduce MaltaMachineClass::max_ramsize
->   hw/mips/malta: Introduce the 'malta-strict' machine
->   hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes
->
->  hw/mips/malta.c | 105 +++++++++++++++++++++++++++++++++++++++++-------
->  1 file changed, 91 insertions(+), 14 deletions(-)
->
-> --
-> 2.21.3
+> Regards,
+> Aleksandar
 >
 >
+> уто, 30. јун 2020. у 21:58 Philippe Mathieu-Daudé <f4bug@amsat.org> је
+> написао/ла:
+>>
+>> Hi,
+>>
+>> This series add a new 'malta-strict' machine, that aims to properly
+>> model the real hardware (which is not what the current 'malta'
+>> machine models).
+>>
+>> Since v2:
+>> - Initialize missing malta_machine_types::class_size
+>> - Remove RFC patch that confuses Aleksandar
+>> - Added examples of 'malta-strict' use
+>>
+>> $ git backport-diff -u v2
+>> Key:
+>> [----] : patches are identical
+>> [####] : number of functional differences between upstream/downstream patch
+>> [down] : patch is downstream-only
+>> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+>>
+>> 001/5:[----] [--] 'hw/mips/malta: Trivial code movement'
+>> 002/5:[----] [--] 'hw/mips/malta: Register the machine as a TypeInfo'
+>> 003/5:[0001] [FC] 'hw/mips/malta: Introduce MaltaMachineClass::max_ramsize'
+>> 004/5:[----] [--] 'hw/mips/malta: Introduce the 'malta-strict' machine'
+>> 005/5:[----] [--] 'hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes'
+>>
+>> Philippe Mathieu-Daudé (5):
+>>   hw/mips/malta: Trivial code movement
+>>   hw/mips/malta: Register the machine as a TypeInfo
+>>   hw/mips/malta: Introduce MaltaMachineClass::max_ramsize
+>>   hw/mips/malta: Introduce the 'malta-strict' machine
+>>   hw/mips/malta: Verify malta-strict machine uses correct DIMM sizes
+>>
+>>  hw/mips/malta.c | 105 +++++++++++++++++++++++++++++++++++++++++-------
+>>  1 file changed, 91 insertions(+), 14 deletions(-)
+>>
+>> --
+>> 2.21.3
+>>
+>>
+>
+>
+--3866299591-490760158-1593566011=:96257--
 
