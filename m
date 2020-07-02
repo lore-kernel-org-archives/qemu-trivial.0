@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3Aq-0004Pk-1g
+	id 1jr3Aq-0004QK-8Y
 	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:39:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49562)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3Ab-00041I-IO; Thu, 02 Jul 2020 13:38:45 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:44521)
+ id 1jr3Ad-00044A-Mj; Thu, 02 Jul 2020 13:38:47 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:37012)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AX-0007Pl-Sy; Thu, 02 Jul 2020 13:38:45 -0400
-Received: by mail-ed1-x542.google.com with SMTP id by13so14968392edb.11;
- Thu, 02 Jul 2020 10:38:40 -0700 (PDT)
+ id 1jr3Ab-0007QN-JK; Thu, 02 Jul 2020 13:38:47 -0400
+Received: by mail-ej1-x636.google.com with SMTP id lx13so12069029ejb.4;
+ Thu, 02 Jul 2020 10:38:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=48yCxchPLYjLZkO39SOQxJyD4cijxC1/mOpXB9e1+y4=;
- b=qPzkEK85sBjqcC3I5uZpipsPAxgb3hJKK7XpR54xnXTLUkn+K5R9bxQRHIzJ3uaFYB
- fxVuqaOzKo5NfTdBuIpxYhYBiuaiu5H4ohWw8S4VuzI+2uuMKzg/XQpOyY6OD44SYPNk
- V/ys/Kvwh/rvYQ21JjRaeUeFCSAXhQdNnnnbml5F2Q8O35mrpf/6kr53FRJUCBK2bQ+J
- BAzAZAUdw4pJfuNiqxI/oG9vj+GZVX1FzncwnbSuvXie/evNmC11Iqu6sdEbTf3iM8wP
- lDdLmm+TPX6Uc3TpPnY1JL3DvaBrCLgf+p6X3aG1SM33zUCSBNsa7pRRFVJ0Q3JPVRWW
- /NJQ==
+ bh=knUh4HEooElhUu5Dw46r9l2QMh5qR/82JNmpOIww/Xs=;
+ b=BuAM8iRlr+oOANYEqH3tyluudB8wPhPMfWaU9vGZicM1AZhLsSIFk/kcDvFODl60Xr
+ M2AFhKgCYBJTZrAUZBkrPdtUQ5fQVAWxNw2q6vPFrfM8ceGBTiI078E9d9xdZYzc8BuX
+ U+GTiWS3NGlsOvvxn7NWr2/mQL+qsHoSUpUeScrUiiv/WzBZXc6UzyrCbuqRmeUqE7d7
+ U20R47Pbf0282w4Gb/gW7o5Fh/JT/yFVnUTSuhP4MSWNwX1Jyn+eeZSf1tJueKPaW/Cj
+ rY57VfpPk/xUnKgzH8A6n7ue6wSPZOwwNj418ykiMrdcBVrOLnYQmrMN4+6zGhgOLe/M
+ ylIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=48yCxchPLYjLZkO39SOQxJyD4cijxC1/mOpXB9e1+y4=;
- b=Yvio2fGq6np3mY0UUauflFQVkdVaSQhrgAQiRkmW2QPa1YMUE2TqgU+4T8vgDa5OQj
- JIELuf5xRYseEZUDIAjNu4MgKUsk/VHIT2Pl/P78lq6XWORyqnq+X7D0XzEl6yOI2YIZ
- OdMMoE/M6h2nNwKg7yhWjsbF060XH66hLq61ig/t1IFMY9zuMPaFGN4Psr5Gfx/FC+sw
- WgICfZzJQ6O3I5GGGVIRX6diloJxtb5r2qx7iAMxJX4RigbRP+4PJzdynkOUfsq8mcod
- VCaFHCYFvU403I9IkTsYBVIfNCeVF46ah95ITsO/RAfURpIr40z5GmpPrfpIHinsKaiD
- gGIw==
-X-Gm-Message-State: AOAM5323v+5ctI+S7Wx3xgubBuWYNZVywiEbKNVRBdbBFFXXJXQP5Ka0
- 17K+TDjAKoXZWXslU/kb3wpOmpfkkb0=
-X-Google-Smtp-Source: ABdhPJwYMPW9lnYOZvMZdnbSvz+g6B+yPYhdJWvh/sgpo2MHJ7rXmIyBwHFN8PGYplipwgD/Wg9QJA==
-X-Received: by 2002:a05:6402:1597:: with SMTP id
- c23mr34570324edv.243.1593711519165; 
- Thu, 02 Jul 2020 10:38:39 -0700 (PDT)
+ bh=knUh4HEooElhUu5Dw46r9l2QMh5qR/82JNmpOIww/Xs=;
+ b=EvAWEtefJSEtQ5/BzDYaKDLy58z/EDH/iLvEdVkXYUvjgklOMuo3MDFx7VBeDHFEAC
+ O4ucpPO6Y41xV/rousP2HVMg6V0dPlh2Elu0CfbL1hKlOTjJ03CQ+0VCjZEsa/jU3fKk
+ 55zHKglp+dHiBeD0sM0YxDaXnogWQP9MMko2tNnn+9F+VQhljhv2JgpnZDpbt9me4YFz
+ x2rX04T1ZRQysSuUiCcMSlOjCU8Zq7JG7CTdXrGwevJahSswtUi5g7+dRGWogpOAbF/k
+ hQNWQwuUTYpwg00559ik7oUzsg+u+jYXyKVbv1W4hN386kItWCets/GPHBec+GJ4KvOp
+ CgLw==
+X-Gm-Message-State: AOAM530QgroGPNR5bJtLnfIbWS6XhiCmfPXzj51+WCG0ggEruJjXtrnF
+ dQkX891kQUA2Q5pV7GxTyD77dfs9Ieo=
+X-Google-Smtp-Source: ABdhPJwQyp302U+ZAW2rWyA9rL93UqZtSu7S587zaNoauPXIqLwcmgSa/X+XNSXIHBhQSy7o5QJXSQ==
+X-Received: by 2002:a17:906:f752:: with SMTP id
+ jp18mr28275062ejb.538.1593711522470; 
+ Thu, 02 Jul 2020 10:38:42 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.38
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:38 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <rth@twiddle.net>, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 16/19] .mailmap: Display correct email address for Richard
- Henderson
-Date: Thu,  2 Jul 2020 19:38:15 +0200
-Message-Id: <20200702173818.14651-17-f4bug@amsat.org>
+ Ying Fang <fangying1@huawei.com>, Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH v3 19/19] .mailmap: Display Ying Fang name correctly
+Date: Thu,  2 Jul 2020 19:38:18 +0200
+Message-Id: <20200702173818.14651-20-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -61,8 +60,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x636.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -84,14 +83,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:47 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 17:38:48 -0000
 
-Fix Richard Henderson email address in the following commit:
+Correctly display Ying Fang name in the following commit:
 
-  $ git log --author=rth@anchor.twiddle.home --oneline
-  7c5a90dd41 target-alpha: Fix gdb access to fpcr and unique.
+  $ git log --author=fangying1@huawei.com
+  commit 9e6f8d8aab3afe6d704054e3fd850bcba5aa20f7
+  Author: fangying <fangying1@huawei.com>
+  Date:   Tue Jun 16 10:32:29 2020 +0100
+  ...
+  Signed-off-by: Ying Fang <fangying1@huawei.com>
 
-Cc: Richard Henderson <rth@twiddle.net>
+Cc: Ying Fang <fangying1@huawei.com>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
@@ -99,17 +102,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/.mailmap b/.mailmap
-index 2fa882d239..b06baa094e 100644
+index f5ca5aa37e..4352030af5 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -150,6 +150,7 @@ Prasad J Pandit <ppandit@redhat.com>
- Qiao Nuohan <qiaonuohan@cn.fujitsu.com>
- Reimar Döffinger <Reimar.Doeffinger@gmx.de>
- Remy Noel <remy.noel@blade-group.com>
-+Richard Henderson <rth@twiddle.net> <rth@anchor.twiddle.home>
- Roger Pau Monné <roger.pau@citrix.com>
- Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
- Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
+@@ -177,6 +177,7 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
+ Xinhua Cao <caoxinhua@huawei.com>
+ Xiong Zhang <xiong.y.zhang@intel.com>
+ Yin Yin <yin.yin@cs2c.com.cn>
++Ying Fang <fangying1@huawei.com>
+ Yu-Chen Lin <npes87184@gmail.com>
+ Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
+ YunQiang Su <syq@debian.org>
 -- 
 2.21.3
 
