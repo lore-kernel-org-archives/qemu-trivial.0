@@ -1,77 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3Aq-0004R3-GT
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:39:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49606)
+	id 1jr3gU-0005t1-Bn
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 14:11:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58414)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3Ad-000447-GV; Thu, 02 Jul 2020 13:38:47 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:38581)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3Aa-0007QB-3a; Thu, 02 Jul 2020 13:38:46 -0400
-Received: by mail-ed1-x542.google.com with SMTP id n2so15810660edr.5;
- Thu, 02 Jul 2020 10:38:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xGMBUKmbOHM91wM5NSBe4GbwryQGSgV9I5NHAM4u6j4=;
- b=ajA0khJlrtKyh/ciXYcO/A+HBSIxkuK4fVilr/2oozC8Bqwom7lXukl9/hcfrCi2n2
- 3tmW3XdRfTN1vqb8Pl/1nwNFe/aIDYGehm3F+WyJeh9pxziqXSn8SxTNwKAgYFttk7cg
- 5ZQsV1ITy+LrUjVWM/gat9ZygMOVBps3573MXx4tpMPegRc7y3iLvco81iKdA15uM0V9
- IIBFCbFDSNkTyvzEGXQttSiSGLb8+u7JOqotPR27surKl19QW0KV8BU9ZuOM84J3N/bN
- 8Idx//S6+ADiyL9Ji0F5cjS5bRJONeacnJZz5gntZxn3yX9HEkE6hV5QDu8mglB1/g5B
- V7IA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=xGMBUKmbOHM91wM5NSBe4GbwryQGSgV9I5NHAM4u6j4=;
- b=udK0foiSF+Si5zre5n3fhWzqPPjt3+7dkXmUZJQNlpFxgOzBZ+Wyr0sVifC0wcz0QF
- cA184aqErtCUM8G1KjOpbERDgG6WhZ4bAZWDmrTZN1RupdKTYhfizAmGnI7iFtnhW8k7
- ldj4U12wzsba8TeQfbUocJXCDAKk+CQ10ebmNDUvb56Gae0iO3u2W7Wi76mcziGYMr7r
- hhC1GFQUboCcwvBiXlx5lex6Qw0FODVHnEpJ25aHOr9wYGm8LZtQ0PQbnOZkl6r/sRg+
- hW3woEAps9U2PxARuHgyZeNDeN4kdQs14WX6eLoqBm8D012CL+O4CDgDoTYOwYOGanXp
- wQSg==
-X-Gm-Message-State: AOAM5319M1waki5tjoTSJiIyMf4j5NMMKwXv+1gUFhLE10DXLEZAfips
- i8tIY/WPkZIyrEw1mRNO8AEQ1XoiYks=
-X-Google-Smtp-Source: ABdhPJyt4R5MFRveV5qHEJpsce49Qczmkcw15XOMhCiDC9L3MuBAzG8q1z2SCwFopE+FReVNoIuppg==
-X-Received: by 2002:a05:6402:203a:: with SMTP id
- ay26mr24737685edb.276.1593711521381; 
- Thu, 02 Jul 2020 10:38:41 -0700 (PDT)
-Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:40 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Stefan Weil <sw@weilnetz.de>, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 18/19] .mailmap: Display correct email address for Stefan
- Weil
-Date: Thu,  2 Jul 2020 19:38:17 +0200
-Message-Id: <20200702173818.14651-19-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jr3gR-0005sL-W3; Thu, 02 Jul 2020 14:11:40 -0400
+Resent-Date: Thu, 02 Jul 2020 14:11:39 -0400
+Resent-Message-Id: <E1jr3gR-0005sL-W3@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21328)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jr3gO-0006R3-EI; Thu, 02 Jul 2020 14:11:39 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1593713490; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=XPvtCXBvNYfQA1uXGLg/w6nntBo45bQiANsXIsbKthWz6kepvR+GmkyVO/BXQ8AnizVEpSDpJOE4Mp+TWtcClBExLQ8fpnZ7qfzeqfq+TZHF4kpXMBl1hiNk3yjCXTOcMvePBwISZvrhsEBan3Hc4rHd1WmAf7HvFrY9YcGT7Kg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1593713490;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=R20PCf4v3h0MoaU7hoQ/D/7Ua2YZ7bc/NkV7xA7AxX0=; 
+ b=GuUU+a2OJZOKypAyouXoVEOn/Cx3R+PPx9X7VA0WE4qvLbSJA5+nQmn9IOv0FkCPBYm57wUYrxsDX0SDm+BP6oroyIKlIDfT2jp+S9FHZrnJQMilNJ4IJS2imhri74XU9lL1vDM8X9h6JyejfRTLHOZmyBkytNJhGdPy6u8CIAI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1593713489446354.0498403225233;
+ Thu, 2 Jul 2020 11:11:29 -0700 (PDT)
+Message-ID: <159371348834.6440.15747631286416621479@d1fd068a5071>
+Subject: Re: [PATCH v3 00/19] mailmap: Add more entries to sanitize 'git log'
+ output
+Reply-To: <qemu-devel@nongnu.org>
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
-References: <20200702173818.14651-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, f4bug@amsat.org
+Date: Thu, 2 Jul 2020 11:11:29 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 11:58:58
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,50 +62,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:48 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 18:11:40 -0000
 
-Fix Stefan Weil email address in the following commit:
-
-  $ git log --author='stefan@kiwi.(none)' --oneline
-  f880defbb0 block/vpc: Fix size calculation
-
-Also unify his email in the following commits:
-
-  $ git log --author='weil@mail.berlios.de' --oneline | head
-  9e4dd565b4 vnc: Limit r/w access to size of allocated memory
-  657c166f8e qemu-iotests: README: Fix spelling
-  3b5fe6e60c qemu-iotests: add support for vdi format "static" option
-  c83f64d498 qemu-iotests: fix pattern for write test
-  7ef6d3dc39 block/vvfat: Remove unused code
-  ce137829e7 block/vvfat: Fix potential memory leaks and other memory errors
-  5354d08312 Fix mismatching allocation and deallocation
-  7f6f0ae5b9 tcg: Add some assertions
-  c0ad3001bf tcg: Add forward declarations for local functions
-  840f58617b tcg: Don't declare TCG_TARGET_REG_BITS in tcg-target.h
-  ...
-
-Cc: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- .mailmap | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/.mailmap b/.mailmap
-index 67f7d5caf2..f5ca5aa37e 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -156,6 +156,9 @@ Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
- Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
- Sochin Jiang <sochin.jiang@huawei.com>
- Stefan Berger <stefanb@linux.ibm.com> <Stefan Berger stefanb@linux.vnet.ibm.com>
-+Stefan Weil <sw@weilnetz.de> <stefan@kiwi.(none)>
-+Stefan Weil <sw@weilnetz.de> <stefan@weilnetz.de>
-+Stefan Weil <sw@weilnetz.de> <weil@mail.berlios.de>
- Takashi Yoshii <takasi-y@ops.dti.ne.jp>
- Thomas Huth <thuth@redhat.com>
- Thomas Knych <thomaswk@google.com>
--- 
-2.21.3
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDcwMjE3MzgxOC4xNDY1
+MS0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVpbGQgdGVz
+dCBvbiBGcmVlQlNEIGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93LgoKPT09IFRF
+U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0IHdpbGwgYmUg
+aW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50aW5nIHRvIGEg
+Y29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJiYXNlIgojIGJy
+YW5jaAppZiBxZW11LXN5c3RlbS14ODZfNjQgLS1oZWxwID4vZGV2L251bGwgMj4mMTsgdGhlbgog
+IFFFTVU9cWVtdS1zeXN0ZW0teDg2XzY0CmVsaWYgL3Vzci9saWJleGVjL3FlbXUta3ZtIC0taGVs
+cCA+L2Rldi9udWxsIDI+JjE7IHRoZW4KICBRRU1VPS91c3IvbGliZXhlYy9xZW11LWt2bQplbHNl
+CiAgZXhpdCAxCmZpCm1ha2Ugdm0tYnVpbGQtZnJlZWJzZCBKPTIxIFFFTVU9JFFFTVUKZXhpdCAw
+Cj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
+Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNzAyMTczODE4LjE0NjUxLTEtZjRidWdAYW1z
+YXQub3JnL3Rlc3RpbmcuRnJlZUJTRC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
+IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
+c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
