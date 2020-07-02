@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3Ao-0004KZ-9a
+	id 1jr3Ao-0004M6-Qu
 	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49560)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3Ab-00041H-IW; Thu, 02 Jul 2020 13:38:45 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:40820)
+ id 1jr3Ac-00043D-HO; Thu, 02 Jul 2020 13:38:47 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:38226)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AW-0007Ko-2J; Thu, 02 Jul 2020 13:38:45 -0400
-Received: by mail-ej1-x642.google.com with SMTP id o18so26302485eje.7;
- Thu, 02 Jul 2020 10:38:36 -0700 (PDT)
+ id 1jr3AY-0007Q3-5J; Thu, 02 Jul 2020 13:38:46 -0400
+Received: by mail-ed1-x533.google.com with SMTP id n2so15810569edr.5;
+ Thu, 02 Jul 2020 10:38:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=aVFVOYAWhfYwzaeEi5hkCDaqCIjx9itvhl/E4hU5bvk=;
- b=XMDevag3Nro7fvdWUxDH946LaIkvStze+3tmq0btTGkE3C4n8R6AUsniy5bIlntLrZ
- JO86tzENXqTz7X2v+YEqC2GQxyhR9Q/Ut+Ur3yt+S58o59uKn75s52ei5p0VtwptPtTH
- bZBxFetzw1paBa0IdXisbdNnrkr3EuYqIdAt+5S2WfRcpm3+GNGHEre4IZAWHB+Snas3
- mhL7v1lQO50zDh7i2hTbSq9tJ8Zbm2pzKBD6X7M3sCwfEAjmZSXuZmYbAeyn5MAatyJ3
- xEHf9zYnd0RxI8+YoceoTfBpo9oxoZw1nDUHgh4VMAxGAPeK8oE49WHWS68B+fvfAvq/
- 8pFg==
+ bh=6O1epUu6iAZ3kh0hRgn8zHID1usD/zp4yuJGkIMs5lQ=;
+ b=lMQFU9pB7gc8lw8bRwTtN9ja+jQj4sYgL6EQ/k8iOXk6qHPYknZPhWgU83AHCGaaSH
+ dl7TzhrHqFp8lFGxpnSbkYLcICLbBg1phYROvOMh4uFxwmI5tIVausRAx1Ki+JNSluIu
+ epb1KuoEHEz45v0jO1ElqFRVbE6wNaXDjkZrlKzQ5Rj6g8YR6lAOjHRAuLNkN0ZXIcIm
+ k/+9k4yLEdeMov3PhIKUT9jDlJfEYeyWKuBKZ07MG6fX5LAoDrfutyzLjJtesxib+VFs
+ /SnjbkVGDssKDRnxsKr2+1LkQc4mpOVUpoyO3dNs4mtuH9+P81SnQeQvDsVX2zfeUn4J
+ rIQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=aVFVOYAWhfYwzaeEi5hkCDaqCIjx9itvhl/E4hU5bvk=;
- b=c40LpXv3NRPiA3+dxyxCS/04c0DwjEDKeBTRr/2gsnSUmYmw22WAg1Mn/Klw0VaehT
- PlKD/tiEIohx85IKqok6jreQYJLlvj1kNJVSGXHlS4X7K2IK/vXomdMCaeZ6wO6wDi1f
- nInM75zlVxNP9ziTOAGmwDO835Xc98HxyBJUwwD7PG1fJ1U3yuA20undlUse9UY1d0wV
- M3tg4akQOb8/ogFKBaTTVXOuCFwE7nKH1X4mfAeKvurEJVNgkNSl+EBiBAa4K5EV4K/o
- lAlWa6QH5vkA9Sox6gx2lW9qZbt+kYh5TbT1+RBbyppLnRg/53mPd4xg6U9fjfDbw6ok
- Vn8Q==
-X-Gm-Message-State: AOAM530c2/blJTZgnzCxNTKUxejyXHQs33ibBkdqIkZ9ft0/zw693LQs
- f/mGH3JVNB9jz7hliFW/JN2dEr3owM0=
-X-Google-Smtp-Source: ABdhPJxAIvRwguxam70Vx3HLr8viLUkLrfrxvc2V7IqMBFHWjSljqR20Ihkm13nTJB64C0FJ9eciHA==
-X-Received: by 2002:a17:907:9c6:: with SMTP id
- bx6mr28574049ejc.43.1593711515547; 
- Thu, 02 Jul 2020 10:38:35 -0700 (PDT)
+ bh=6O1epUu6iAZ3kh0hRgn8zHID1usD/zp4yuJGkIMs5lQ=;
+ b=RxzoEmitDVhk3o4R4MgYU8KltmMk2+XQ1AGVh8r2t2r+XY5OZNXs3S2jXnNC/A4XRB
+ 2evBvOIIoa1GAzl2cs2GbUlEuWSZ3Y8DUm8IvKlAAUTxNGDj1R7VnL6K+TgEtmHMyMB/
+ VvAHLNYMT+/gKJMh9Tbgl2GdPit6ej1nOOyyxXAFdh3PwUHl3Dbk5O6Qvz2BqKoNCiKv
+ 3dOmvpcNUdiBPplmqrTOl3QgA5AqIsnVmqYrdzjyZEd5K2bxJ4EOPwcRlAZe5o7ms2Ry
+ RFhYPe2bS2tcBsq0wp2Nng5OGgJVsRV1a49r6PRczJFdei1IN6CES9VvUq8pJSSnuLA4
+ ytag==
+X-Gm-Message-State: AOAM531/ZDxctTDPJtT5DiA7AGh88olKxZ2w2481BVxlZooG9oUA1I0v
+ RLec/g89ma3RNJbmlrk+ve1VgQ9nsFw=
+X-Google-Smtp-Source: ABdhPJxYdulDrDzFtHt+HC/GlwB9qBvYZdMZek1nauP12lORAicrQcsxY+PPF2xZK79Sto3WNzz9Dw==
+X-Received: by 2002:aa7:d283:: with SMTP id w3mr17098563edq.76.1593711520223; 
+ Thu, 02 Jul 2020 10:38:40 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.34
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:35 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:39 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
  Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 13/19] .mailmap: Display correct email address for Michael
- S. Tsirkin
-Date: Thu,  2 Jul 2020 19:38:12 +0200
-Message-Id: <20200702173818.14651-14-f4bug@amsat.org>
+Subject: [PATCH v3 17/19] .mailmap: Display correct email address for Stefan
+ Berger
+Date: Thu,  2 Jul 2020 19:38:16 +0200
+Message-Id: <20200702173818.14651-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -62,8 +61,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x533.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -87,21 +86,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 02 Jul 2020 17:38:47 -0000
 
-Fix Michael S. Tsirkin email address in the following commits:
+Fix Stefan Berger email address in the following commit:
 
-  $ git log --committer='mst@robin.(none)' --oneline
-  572992eefa msix: Switch msix_uninit to return void
-  5a2c202981 msix: Allow full specification of MSIX layout
-  d35e428c84 msix: Split PBA into it's own MemoryRegion
-  2cf62ad742 msix: Note endian TODO item
-  eebcb0a76a msix: Move msix_mmio_read
-  b2357c484d virtio: Convert to msix_init_exclusive_bar() interface
-  1116b53921 ivshmem: Convert to msix_init_exclusive_bar() interface
-  53f949254a msix: Add simple BAR allocation MSIX setup functions
-  118f2c2b48 msix: fix PCIDevice naming inconsistency
-  393a98924e msix: drop unused msix_bar_size, require valid bar_size
+  $ git log --author='Stefan Berger stefanb@linux.vnet.ibm.com' --oneline
+  4a42fa0ee2 acpi: Update TPM2 ACPI table to more recent specs
 
-Cc: Michael S. Tsirkin <mst@redhat.com>
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
@@ -109,17 +99,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/.mailmap b/.mailmap
-index 3219bb5d4f..eaed43a178 100644
+index b06baa094e..67f7d5caf2 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -130,6 +130,7 @@ Marc Marí <markmb@redhat.com>
- Marek Dolata <mkdolata@us.ibm.com>
- Michael Avdienko <whitearchey@gmail.com>
- Michael S. Tsirkin <mst@redhat.com>
-+Michael S. Tsirkin <mst@redhat.com> <mst@robin.(none)>
- Munkyu Im <munkyu.im@samsung.com>
- Nicholas Bellinger <nab@linux-iscsi.org>
- Nicholas Thomas <nick@bytemark.co.uk>
+@@ -155,6 +155,7 @@ Roger Pau Monné <roger.pau@citrix.com>
+ Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
+ Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
+ Sochin Jiang <sochin.jiang@huawei.com>
++Stefan Berger <stefanb@linux.ibm.com> <Stefan Berger stefanb@linux.vnet.ibm.com>
+ Takashi Yoshii <takasi-y@ops.dti.ne.jp>
+ Thomas Huth <thuth@redhat.com>
+ Thomas Knych <thomaswk@google.com>
 -- 
 2.21.3
 
