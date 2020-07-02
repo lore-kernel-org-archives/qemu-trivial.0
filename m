@@ -1,59 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3An-0004Hp-B0
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49478)
+	id 1jr3Ao-0004KZ-9a
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AV-0003xg-Tf; Thu, 02 Jul 2020 13:38:41 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:32971)
+ id 1jr3Ab-00041H-IW; Thu, 02 Jul 2020 13:38:45 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:40820)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AR-0007KE-Fp; Thu, 02 Jul 2020 13:38:37 -0400
-Received: by mail-ej1-x630.google.com with SMTP id n26so16789745ejx.0;
- Thu, 02 Jul 2020 10:38:34 -0700 (PDT)
+ id 1jr3AW-0007Ko-2J; Thu, 02 Jul 2020 13:38:45 -0400
+Received: by mail-ej1-x642.google.com with SMTP id o18so26302485eje.7;
+ Thu, 02 Jul 2020 10:38:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AKg0voXZ64/Pok3jOijrDQeL9nahXXS43ecQ7LVwOZ4=;
- b=aydsHEdA9TkO9FyNZ9lnF9Std0U3bZ83arw197YB3KzZ63j36NYbD1HQKWljeWUkL+
- K/R+RZ5JaJvFbtL1JYxy5/57mQTh4VhPPrmVfd+wPBqKlRVSZbSjuUdmmKXxSDesnol4
- Jr9hkCLe2dURILWx3F/9r9fUmOsetbDzFRbSjj7z7yT0DggM9eZhNpxG7tM506l+lKSQ
- Lf6tntWlJ9jK7UiyDPs2ER+iQZESSJnIbpf9bCImS3J3diDcmzJmn9ywKv/GOBxQ0OEl
- CVRw1bEcMm+fo5rbLE5Y58BGWb0DLtM20kqBXmNPPpk66U5MTWT36rzUA5Bg1Mm1Bmjl
- UGgw==
+ bh=aVFVOYAWhfYwzaeEi5hkCDaqCIjx9itvhl/E4hU5bvk=;
+ b=XMDevag3Nro7fvdWUxDH946LaIkvStze+3tmq0btTGkE3C4n8R6AUsniy5bIlntLrZ
+ JO86tzENXqTz7X2v+YEqC2GQxyhR9Q/Ut+Ur3yt+S58o59uKn75s52ei5p0VtwptPtTH
+ bZBxFetzw1paBa0IdXisbdNnrkr3EuYqIdAt+5S2WfRcpm3+GNGHEre4IZAWHB+Snas3
+ mhL7v1lQO50zDh7i2hTbSq9tJ8Zbm2pzKBD6X7M3sCwfEAjmZSXuZmYbAeyn5MAatyJ3
+ xEHf9zYnd0RxI8+YoceoTfBpo9oxoZw1nDUHgh4VMAxGAPeK8oE49WHWS68B+fvfAvq/
+ 8pFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=AKg0voXZ64/Pok3jOijrDQeL9nahXXS43ecQ7LVwOZ4=;
- b=unZmCxYvI4/yguYoVXjLs+vo/pXQ5I7IZbiqXUqXWTWqa+ja2qIldeW8HrxantdPvi
- LcEBiTOLvzVX69RfrPVqcfHxVARpO2MRFudG0phiZvHlZ+K3BWqSrluzOR4iLI0bsSit
- rI7utwOQIbFoQWdnA/Q4GkzrTitrUzLPq3l5osxrBdMhOmiQeKpcURfk2hJoJvdlOuyc
- po3UDICt/BdEd3uUKlDIvJCUMcmLlyx9Fp22seHsX0z5CS8A+IGqea3XZf6UKQTEUjzx
- bKqQQwKIJrckvWUW/0Y8kIBwkURXPT7PGuP8XCh90EXrI+N5k9CXi4QKoDnVZqoZIMwN
- mIdQ==
-X-Gm-Message-State: AOAM532p0xRWMxw3u/Bkpz+qhKaKnTeWbmMoKkLpIvFDZGanijki1jzG
- deP33jjRSy2UH8pgfG4NKtEpj0fiT5g=
-X-Google-Smtp-Source: ABdhPJzX+L8rBnYo2koic36vpil+J4mu/+iR9A2CvOHskZOwAYF6jsQS0VzHZikerHY3NfBVL97HZA==
-X-Received: by 2002:a17:906:7017:: with SMTP id
- n23mr12669488ejj.262.1593711513282; 
- Thu, 02 Jul 2020 10:38:33 -0700 (PDT)
+ bh=aVFVOYAWhfYwzaeEi5hkCDaqCIjx9itvhl/E4hU5bvk=;
+ b=c40LpXv3NRPiA3+dxyxCS/04c0DwjEDKeBTRr/2gsnSUmYmw22WAg1Mn/Klw0VaehT
+ PlKD/tiEIohx85IKqok6jreQYJLlvj1kNJVSGXHlS4X7K2IK/vXomdMCaeZ6wO6wDi1f
+ nInM75zlVxNP9ziTOAGmwDO835Xc98HxyBJUwwD7PG1fJ1U3yuA20undlUse9UY1d0wV
+ M3tg4akQOb8/ogFKBaTTVXOuCFwE7nKH1X4mfAeKvurEJVNgkNSl+EBiBAa4K5EV4K/o
+ lAlWa6QH5vkA9Sox6gx2lW9qZbt+kYh5TbT1+RBbyppLnRg/53mPd4xg6U9fjfDbw6ok
+ Vn8Q==
+X-Gm-Message-State: AOAM530c2/blJTZgnzCxNTKUxejyXHQs33ibBkdqIkZ9ft0/zw693LQs
+ f/mGH3JVNB9jz7hliFW/JN2dEr3owM0=
+X-Google-Smtp-Source: ABdhPJxAIvRwguxam70Vx3HLr8viLUkLrfrxvc2V7IqMBFHWjSljqR20Ihkm13nTJB64C0FJ9eciHA==
+X-Received: by 2002:a17:907:9c6:: with SMTP id
+ bx6mr28574049ejc.43.1593711515547; 
+ Thu, 02 Jul 2020 10:38:35 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.32
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:32 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:35 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Lili Huang <huanglili.huang@huawei.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
  Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 11/19] .mailmap: Display Lili Huang name correctly
-Date: Thu,  2 Jul 2020 19:38:10 +0200
-Message-Id: <20200702173818.14651-12-f4bug@amsat.org>
+Subject: [PATCH v3 13/19] .mailmap: Display correct email address for Michael
+ S. Tsirkin
+Date: Thu,  2 Jul 2020 19:38:12 +0200
+Message-Id: <20200702173818.14651-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -61,8 +62,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -84,15 +85,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:43 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 17:38:47 -0000
 
-Correctly display Lili Huang name in the following commits:
+Fix Michael S. Tsirkin email address in the following commits:
 
-  $ git log --committer=huanglili.huang@huawei.com --oneline
-  76349f5ba8 bootdevice: add check in restore_boot_order()
-  f05f47bb5f bootdevice: check boot order argument validation before vm running
+  $ git log --committer='mst@robin.(none)' --oneline
+  572992eefa msix: Switch msix_uninit to return void
+  5a2c202981 msix: Allow full specification of MSIX layout
+  d35e428c84 msix: Split PBA into it's own MemoryRegion
+  2cf62ad742 msix: Note endian TODO item
+  eebcb0a76a msix: Move msix_mmio_read
+  b2357c484d virtio: Convert to msix_init_exclusive_bar() interface
+  1116b53921 ivshmem: Convert to msix_init_exclusive_bar() interface
+  53f949254a msix: Add simple BAR allocation MSIX setup functions
+  118f2c2b48 msix: fix PCIDevice naming inconsistency
+  393a98924e msix: drop unused msix_bar_size, require valid bar_size
 
-Cc: Lili Huang <huanglili.huang@huawei.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
@@ -100,17 +109,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/.mailmap b/.mailmap
-index 70a9848cfe..efb012f357 100644
+index 3219bb5d4f..eaed43a178 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -112,6 +112,7 @@ Jun Li <junmuzi@gmail.com>
- Laurent Vivier <Laurent@lvivier.info>
- Leandro Lupori <leandro.lupori@gmail.com>
- Li Guang <lig.fnst@cn.fujitsu.com>
-+Lili Huang <huanglili.huang@huawei.com>
- Liming Wang <walimisdev@gmail.com>
- linzhecheng <linzc@zju.edu.cn>
- Liran Schour <lirans@il.ibm.com>
+@@ -130,6 +130,7 @@ Marc Marí <markmb@redhat.com>
+ Marek Dolata <mkdolata@us.ibm.com>
+ Michael Avdienko <whitearchey@gmail.com>
+ Michael S. Tsirkin <mst@redhat.com>
++Michael S. Tsirkin <mst@redhat.com> <mst@robin.(none)>
+ Munkyu Im <munkyu.im@samsung.com>
+ Nicholas Bellinger <nab@linux-iscsi.org>
+ Nicholas Thomas <nick@bytemark.co.uk>
 -- 
 2.21.3
 
