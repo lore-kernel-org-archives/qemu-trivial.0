@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3AR-0003uw-PO
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49370)
+	id 1jr3AZ-0003zb-UG
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AK-0003qg-QI; Thu, 02 Jul 2020 13:38:29 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:35675)
+ id 1jr3AR-0003u3-DD; Thu, 02 Jul 2020 13:38:35 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:43151)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AI-0007AV-Un; Thu, 02 Jul 2020 13:38:28 -0400
-Received: by mail-ej1-x641.google.com with SMTP id rk21so30749892ejb.2;
- Thu, 02 Jul 2020 10:38:26 -0700 (PDT)
+ id 1jr3AO-0007Fy-0k; Thu, 02 Jul 2020 13:38:33 -0400
+Received: by mail-ej1-x642.google.com with SMTP id l12so30696224ejn.10;
+ Thu, 02 Jul 2020 10:38:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=uWQtmlnUnO1TU3kRM0oAvddbkP0WvBi3XDQ6Wp9rAws=;
- b=d3u1U/+Gjl0EarJuK9Th5Pd8m2Xp+FGbzzjlbfT6JunGPLtkjsrditKrA2Gw4SOOtt
- lp/7Zyq14K47PNGtv5mqgA82jKC0RXjH2Lvj1oLdK8TbWFjQiM6IiqKY7x7KFYC9hC5w
- RXhuE6052AwPl0wlYFEOWgc8lAl2nufV9HMjuPrDQth5bGfBJllm6co60+yqxWaD+3cw
- jVKCqksK/V0GRXahG5gRsd0BkS9VVg4URxmH4QCpHOAWo7XyaYWxnCJMgCHs50a/vRFR
- a6s1Rm1GeNa2X8WIRwm5GCPQluWkDwaHATmE0t/wEaigYjFs8fro3lbU3DgmiWi4V6dV
- 1iBQ==
+ bh=WNmiqtIARIvtYdLd1badA4yDSJvLXn9cgd4xpxOhhEg=;
+ b=k1IwIpG/wfYkwBuH8CaC04pqI0EYSadR5f4cF3SGqB9t+57K+Tn6YgZjcNSyOVvWv4
+ 5JA+5OO+sqwLLeLAaIpTrbPf41CEdcznOtpLwaFRSS3ez8VjQqjZTDo5op/NW7Qbcbrf
+ 0ItZ9LNAWrKwL27ZJsqqmjdOJEIsTKMDb5vHIOTHL9VEltx75s3hFAEVWIniY6Y0O10M
+ CD6IBvChcK5/qRPuqZXSuFrAlZg0RrS/B4RhCodxFVqoEFvHBWN18/E0z4oJRC3WhXOo
+ rdpJSKBXVpPVoxZnKY1HXHiweWvfd9X9ymBuNkfkqkRGZEe4A3fOHrvXHi2rh6OTbc8U
+ 938g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=uWQtmlnUnO1TU3kRM0oAvddbkP0WvBi3XDQ6Wp9rAws=;
- b=f1faa6u0OOnUInDdcPUWQp0U6MtYKB7vg97nBUhnQ0XtvQhbAdp1hV0xIaK9iIwgXq
- bTkes4GikxVfU1tv928caplZZflscn+bObnsZzUykyg6QcpmhS7UK7vl+wvaU4uggLdR
- Mg36zOcH5wcz80yJuOdzrLcnS6kvvsuMxkvw9ioPcPHlLk7EdB4LukA9HpyVQH7olInm
- I/LwUdos+tgiUA0Cb20ynaqIHgqSFyY1k0rFywEDsqaKP3WTmVN7k0ujJtTTwWvdwo7u
- CJWxTWwlsJbzx1FRU5I79UuOEr6qEhey81qhTMdNlgHXQexFIamJWhf4YbE5EbXqt3Hx
- +wWw==
-X-Gm-Message-State: AOAM53123G7PX3catULQUU7ieWcTtgM1H4Zed8xtwMMh+DFcV6kiswnV
- dycu9auz7og+3n1vuTD0IeuDArF3JwE=
-X-Google-Smtp-Source: ABdhPJxwFXdySPBUv4435aePn4Ghj+9JoD1QvdFMXq1ax0VmVAHYzpFuji4zlef2EvVdFHLKav5f5w==
-X-Received: by 2002:a17:907:2170:: with SMTP id
- rl16mr29984514ejb.422.1593711504962; 
- Thu, 02 Jul 2020 10:38:24 -0700 (PDT)
+ bh=WNmiqtIARIvtYdLd1badA4yDSJvLXn9cgd4xpxOhhEg=;
+ b=joSiJ3vzjMKD9jTXkQ8dTZ4Na5+SUYwr604q+tyqUCXaRvn30b7DCbfo8mdQJ+U+zt
+ OXam+hXaePcZ3CT4R32pp0j0ivlLlHiibnZcrYqhVT2mU4VJKDOownJr630Q8U9HbCFR
+ a9rYj155diFhR+D0DKJL2sYzmRH2Y09zhB8rbaxAJzoi3KMj6W8ZJIwqa1u9MLzgEC8R
+ CmqYr6dUFzPefaHCDPEOXfnaOmGorVc3omrwSCtKnzslNCakJPXpqUOxLzn5gxxS17Ba
+ uA2pWR7XtxpBU62TzKfyIiXPhDrI0OFfmz3ejKQn9pOQZ7uTVaH2LY70HTJFMca1DhyJ
+ GnAw==
+X-Gm-Message-State: AOAM5300FBtGW/mcjiwoQZqzEFdGxHJKqp2AMna1/vr+UBYYbD4XPQfT
+ wCgPAhb1q58/zkUxaBFFDvtezUtStnI=
+X-Google-Smtp-Source: ABdhPJwTlnfvaXphszEPeNvJdtAI4LkrRNfcalTXqGvBDbzIP6zAd4zk3zDRoelfbZPJw6imjML+zg==
+X-Received: by 2002:a17:907:426c:: with SMTP id
+ nx20mr28107530ejb.548.1593711509960; 
+ Thu, 02 Jul 2020 10:38:29 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.24
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:24 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:29 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Arei Gonglei <arei.gonglei@huawei.com>,
+ Hiroyuki Obinata <hiroyuki.obinata@gmail.com>,
  Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 04/19] .mailmap: Display correct email address for Arei
- Gonglei
-Date: Thu,  2 Jul 2020 19:38:03 +0200
-Message-Id: <20200702173818.14651-5-f4bug@amsat.org>
+Subject: [PATCH v3 08/19] .mailmap: Display Hiroyuki Obinata name correctly
+Date: Thu,  2 Jul 2020 19:38:07 +0200
+Message-Id: <20200702173818.14651-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -62,8 +61,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -85,45 +84,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:30 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 17:38:36 -0000
 
-Fix Arei Gonglei email address in the following commits:
+Correctly display Hiroyuki Obinata name in the following commit:
 
-  $ git log --committer='<root@ceth6.(none)>' --oneline
-  ddcd55316f bootdevice: add Error **errp argument for QEMUBootSetHandler
-  3b08098b40 bootdevice: add validate check for qemu_boot_set()
-  f1839938b0 bootdevice: add Error **errp argument for qemu_boot_set()
-  703008e81a bootdevice: add Error **errp argument for validate_bootdevices()
-  9816833d3b bootdevice: move code about bootorder from vl.c to bootdevice.c
+ $ git log --author=hiroyuki.obinata@gmail.com --oneline
+ f480f6e8c5 remove unnecessary ifdef TARGET_RISCV64
 
-Cc: Arei Gonglei <arei.gonglei@huawei.com>
+Cc: Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- .mailmap | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/.mailmap b/.mailmap
-index a539ae8222..dbf674066f 100644
+index ce0d62b60d..4e9e54368d 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -65,6 +65,8 @@ Alexey Gerasimenko <x1917x@gmail.com>
- Alex Ivanov <void@aleksoft.net>
- Andreas Färber <afaerber@suse.de>
- Andreas Färber <andreas.faerber@web.de>
-+Arei Gonglei <arei.gonglei@huawei.com>
-+Arei Gonglei <arei.gonglei@huawei.com> <root@ceth6.(none)>
- Bandan Das <bsd@redhat.com>
- Benjamin MARSILI <mlspirat42@gmail.com>
- Benoît Canet <benoit.canet@gmail.com>
-@@ -90,7 +92,6 @@ Fernando Luis Vázquez Cao <fernando_b1@lab.ntt.co.jp>
- Fernando Luis Vázquez Cao <fernando@oss.ntt.co.jp>
- Gautham R. Shenoy <ego@in.ibm.com>
- Gautham R. Shenoy <ego@linux.vnet.ibm.com>
--Gonglei (Arei) <arei.gonglei@huawei.com>
+@@ -98,6 +98,7 @@ Gautham R. Shenoy <ego@linux.vnet.ibm.com>
  Guang Wang <wang.guang55@zte.com.cn>
  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
  Hervé Poussineau <hpoussin@reactos.org>
++Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
+ Jakub Jermář <jakub@jermar.eu>
+ Jakub Jermář <jakub.jermar@kernkonzept.com>
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 -- 
 2.21.3
 
