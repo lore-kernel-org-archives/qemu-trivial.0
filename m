@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3Ak-0004CW-Jv
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49402)
+	id 1jr3Al-0004E1-3C
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AN-0003s5-U0; Thu, 02 Jul 2020 13:38:35 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:45586)
+ id 1jr3AV-0003xb-T1; Thu, 02 Jul 2020 13:38:41 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:44328)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AL-0007Db-SI; Thu, 02 Jul 2020 13:38:31 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id a1so30708789ejg.12;
- Thu, 02 Jul 2020 10:38:28 -0700 (PDT)
+ id 1jr3AS-0007KQ-7G; Thu, 02 Jul 2020 13:38:37 -0400
+Received: by mail-ej1-x641.google.com with SMTP id ga4so30675152ejb.11;
+ Thu, 02 Jul 2020 10:38:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OypgoG/QLuK2sFiqZjxGaVD1WtdhJ5ElhJHDw5WL8n0=;
- b=pFz0hzlKIoHAUDS71csbAb20ApCn1GIsGv+K9hANTvWPFue0P6CLAR72KH8xPfNonI
- nEwUOHrffXpbz8XFXPIzeZduu0HH4LS5gUn2ttDe5S7SNjT8WwMPju/RKhKpx6i0H310
- J2etMpdtnBWSv1zexXaPVgUBn+oRQe75DQ2VNFd8l1fUvJLS7dw3wnVVHSjgKd+Kqp/P
- g/W9BXwTlqVTQFJTbu+ycOPj/LLnAlimpTaimnFqKcKAAKP2qLYd7Vize02iavpuzi/g
- lcIbuzExTN+mXG9xM9MccXCeIZj+H+hSYhY//o9M06UHFc/Xm+pOBJRztkCVwMu/gkIr
- HFJw==
+ bh=M55xFY/xPWPb5Bgb/SELLfC8q8usUuWnemTLrpeqLdo=;
+ b=H4t/HNiiNiuzXLByuoqsaQPEEeBJBVlSVOQTpRxid+Jo+7pRKJ/UyFdpsKdAHOFxql
+ 5ejvzWvT/qvJLE43NeepDCWh8Bb4YzhxQeRUvinhaQ9BXieX3iHVvHy9GFwfiTbzAxvL
+ 2vUlaxZTzSLzhGyxbesYPyEfXPTEgigisfxsa4naRinL6xGJAADKMI/pFqnho9jDjq4r
+ wczgowid1liXbonOCPiCTveYA7KYtccoUavwlTFHT/isnAChpjGWENG40HhPPzYAETSd
+ DyZ8NglZNwb3GkDG9SUyvwnrfwOrMWMpajBqR3MAntnn0PU2Omt1x6bi55yKVlvoIBST
+ 8Syg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=OypgoG/QLuK2sFiqZjxGaVD1WtdhJ5ElhJHDw5WL8n0=;
- b=QLlHitxSeUe6KzLinfnC2Qnk5L0NljXuizCrDgRWsIF+W+UFZUCIqh6VclxBk9pdhf
- BTgNSwao7HGAK+DjvgEQCX2l45tFZ5BdKAkZgb/C/pGojqGu4+teC6Ijnyal6U2CAIPP
- 585wTF2HJ433IwffXVbo0j35MKzFkPk06HVOcm8cghPE9ZzbB19W1k3+sGoMNqKaFxI0
- 7UbrnQ0/jErzEG/9bDORuBNrXZhJaWgSUNxux0CZCjJnw98rnxqG1uAXXw2b8GiU5bsE
- IGBSwYU1DIy6WaWeoE336tZPsFy8UNXcxSVkCFP5TNFBjS/cjloEW1aeMrewE35YEDmd
- +r9g==
-X-Gm-Message-State: AOAM532wQ/ta70uvTfZR/39SOcabwwKzrLesxuvyiXWcZM6eL5RVZ44G
- nsPzVlQszfFYcnumDaLBfi6ac9OrPBc=
-X-Google-Smtp-Source: ABdhPJxvTw3ObMrutoMVNesL+6YKPbxyXZIj71ll9vdq9lNr+k8gFBxOll7UHxC4RMZtSkdZfsZQdA==
-X-Received: by 2002:a17:906:fb99:: with SMTP id
- lr25mr28490130ejb.49.1593711507422; 
- Thu, 02 Jul 2020 10:38:27 -0700 (PDT)
+ bh=M55xFY/xPWPb5Bgb/SELLfC8q8usUuWnemTLrpeqLdo=;
+ b=hXH+VQ9JDidOyFM2Vo1ows5EVhLnOP3VlezJQt8hNOo8ymF78gECvKZKIo0MnjzmvG
+ re+Gt3nIq3mteqNLvdrLvS6+uvytsSRim+FVGQyHus1PNUrovp1Ttz7qO6Dv015rRY6E
+ w7L9Z9ZNbwKgWtw6FBIaT5d228kdbiHrcATWNV1zIgwsIoVhMG5wqJXhIyefEeMs0VmZ
+ JSeLxTPFsQZerfRK6wca7u0qjjSOwn8UIKieRt4yIWGNiM3ItgKGQcDs7sz6exxZKz/3
+ kE8gbIF/ESpq4QSKlEPmtjFhP4kaF7ZpsshvDqbOxIVdU/Y1IyEg3vDqSslIGYvcoXzb
+ ZCgg==
+X-Gm-Message-State: AOAM531A4aDTFUt86Qysx/65/QccXsZObmDBZHrBiI0FC3Vw99FacjzH
+ zC/7Ab4+hiasqw/+KlkuJEGCOQx5DQw=
+X-Google-Smtp-Source: ABdhPJy947x6x2pxdBTXd4U1fo6YSzpN7EuTQrminVSwI4WUNd434OjeMKAamPRgonT83KwSfD9vag==
+X-Received: by 2002:a17:906:46cd:: with SMTP id
+ k13mr27898132ejs.312.1593711514431; 
+ Thu, 02 Jul 2020 10:38:34 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.26
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:26 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:33 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Christoph Hellwig <hch@lst.de>, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 06/19] .mailmap: Display correct email address for
- Christoph Hellwig
-Date: Thu,  2 Jul 2020 19:38:05 +0200
-Message-Id: <20200702173818.14651-7-f4bug@amsat.org>
+ Marek Dolata <mkdolata@us.ibm.com>
+Subject: [PATCH v3 12/19] .mailmap: Display Marek Dolata name properly
+Date: Thu,  2 Jul 2020 19:38:11 +0200
+Message-Id: <20200702173818.14651-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -61,8 +60,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -84,32 +83,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:35 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 17:38:43 -0000
 
-Fix Christoph Hellwig email address in the following commit:
+Properly display Marek Dolata name in the following commit:
 
-  $ git log --author='hch@lst.de <hch@lst.de>' --oneline
-  37d5ddd6f4 virtio-blk: revert serial number support
+  $ git log --author=mkdolata@us.ibm.com
+  commit 5a07192a042e60ce7415279a48aff8a932829f55
+  Author: mkdolata@us.ibm.com <mkdolata@us.ibm.com>
+  ...
+  Signed-off-by: Marek Dolata <mkdolata@us.ibm.com>
 
-Cc: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Cc: Marek Dolata <mkdolata@us.ibm.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
  .mailmap | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/.mailmap b/.mailmap
-index 1d444e4fce..8c8bbcf2e0 100644
+index efb012f357..3219bb5d4f 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -85,6 +85,7 @@ Chen Gang <gang.chen.5i5j@gmail.com>
- Chen Gang <gang.chen@sunrus.com.cn>
- Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
- Christophe Lyon <christophe.lyon@st.com>
-+Christoph Hellwig <hch@lst.de>
- Collin L. Walling <walling@linux.ibm.com>
- Daniel P. Berrangé <berrange@redhat.com>
- Eduardo Otubo <otubo@redhat.com>
+@@ -127,6 +127,7 @@ Luc Michel <luc.michel@git.antfield.fr>
+ Luc Michel <luc.michel@greensocs.com>
+ Marc Marí <marc.mari.barcelo@gmail.com>
+ Marc Marí <markmb@redhat.com>
++Marek Dolata <mkdolata@us.ibm.com>
+ Michael Avdienko <whitearchey@gmail.com>
+ Michael S. Tsirkin <mst@redhat.com>
+ Munkyu Im <munkyu.im@samsung.com>
 -- 
 2.21.3
 
