@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jr3AZ-0003zb-UG
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49426)
+	id 1jr3Ab-000427-Ts
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2020 13:38:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AR-0003u3-DD; Thu, 02 Jul 2020 13:38:35 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:43151)
+ id 1jr3AJ-0003pm-TA; Thu, 02 Jul 2020 13:38:28 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:34033)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jr3AO-0007Fy-0k; Thu, 02 Jul 2020 13:38:33 -0400
-Received: by mail-ej1-x642.google.com with SMTP id l12so30696224ejn.10;
- Thu, 02 Jul 2020 10:38:31 -0700 (PDT)
+ id 1jr3AG-00077P-L6; Thu, 02 Jul 2020 13:38:27 -0400
+Received: by mail-ej1-x630.google.com with SMTP id y10so30710221eje.1;
+ Thu, 02 Jul 2020 10:38:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WNmiqtIARIvtYdLd1badA4yDSJvLXn9cgd4xpxOhhEg=;
- b=k1IwIpG/wfYkwBuH8CaC04pqI0EYSadR5f4cF3SGqB9t+57K+Tn6YgZjcNSyOVvWv4
- 5JA+5OO+sqwLLeLAaIpTrbPf41CEdcznOtpLwaFRSS3ez8VjQqjZTDo5op/NW7Qbcbrf
- 0ItZ9LNAWrKwL27ZJsqqmjdOJEIsTKMDb5vHIOTHL9VEltx75s3hFAEVWIniY6Y0O10M
- CD6IBvChcK5/qRPuqZXSuFrAlZg0RrS/B4RhCodxFVqoEFvHBWN18/E0z4oJRC3WhXOo
- rdpJSKBXVpPVoxZnKY1HXHiweWvfd9X9ymBuNkfkqkRGZEe4A3fOHrvXHi2rh6OTbc8U
- 938g==
+ bh=NbDpYQtpN2i4s7h0UV7Panm1xJtD5WgUzdK+4fpnuUU=;
+ b=vQt6ybBr9wWLh0WiWpOA8evDletDnH3VlTyovTUmMU1FadZlYI60vWEbTrC0ix0j3w
+ 4fNDAyJYUAtcU64O03PoEAvuxIf+Lge3pC061Cy6bSCCUkQqLqB/hSi7mK+VopsbHBPm
+ OpKflPSr+wwQ94Luk+emM1yAc1GsfXicEhN4FPN/lw570RYq0dhTtqvdeJOD9X6xccMr
+ P6HpL55rqG5Nn+TR1IQWvvC3XgM27EdBsQ3TgpCRYeai9JU941OB36cz8kwAR6hDZp96
+ l23ic3w3eLIEOn/ZeeIs0+iSjv/iwZqTDdm5bKSrTElLCxzvXY2cVa21lbnmOQn6Kac+
+ lS/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=WNmiqtIARIvtYdLd1badA4yDSJvLXn9cgd4xpxOhhEg=;
- b=joSiJ3vzjMKD9jTXkQ8dTZ4Na5+SUYwr604q+tyqUCXaRvn30b7DCbfo8mdQJ+U+zt
- OXam+hXaePcZ3CT4R32pp0j0ivlLlHiibnZcrYqhVT2mU4VJKDOownJr630Q8U9HbCFR
- a9rYj155diFhR+D0DKJL2sYzmRH2Y09zhB8rbaxAJzoi3KMj6W8ZJIwqa1u9MLzgEC8R
- CmqYr6dUFzPefaHCDPEOXfnaOmGorVc3omrwSCtKnzslNCakJPXpqUOxLzn5gxxS17Ba
- uA2pWR7XtxpBU62TzKfyIiXPhDrI0OFfmz3ejKQn9pOQZ7uTVaH2LY70HTJFMca1DhyJ
- GnAw==
-X-Gm-Message-State: AOAM5300FBtGW/mcjiwoQZqzEFdGxHJKqp2AMna1/vr+UBYYbD4XPQfT
- wCgPAhb1q58/zkUxaBFFDvtezUtStnI=
-X-Google-Smtp-Source: ABdhPJwTlnfvaXphszEPeNvJdtAI4LkrRNfcalTXqGvBDbzIP6zAd4zk3zDRoelfbZPJw6imjML+zg==
-X-Received: by 2002:a17:907:426c:: with SMTP id
- nx20mr28107530ejb.548.1593711509960; 
- Thu, 02 Jul 2020 10:38:29 -0700 (PDT)
+ bh=NbDpYQtpN2i4s7h0UV7Panm1xJtD5WgUzdK+4fpnuUU=;
+ b=RGiTCcbxln5mtevgrEehVkrNZF9FWwVJXZ1BfDBnJxziW96BwvD6YBZU/TaQ7T9O63
+ yJRfMuNIOaLnmNOKQ5bc0wp9CSoGRLyuTE7Jsz/BkDz0FOf3iaVs7jpPb6hK5ZaTKPcN
+ bntYfhMbmZ4S4yu+3/OEDklb8MUZqob9LJdNlU7JBdrA4d4uVBVX1jgFq6/KlkXwsSuH
+ c6Dr8kL0KQ53xVDLQsS0M13MkgLKFXbiaxeHiSgSJGdJjnzTYdFd5t3aGrvGEe3is+xF
+ dGTehycaZIhhJZnWZFMeapcpq3bMDOwfKNe/UR5nETmPl5McyiYu8UXFCeTF5HbzOq+t
+ xNrQ==
+X-Gm-Message-State: AOAM533wcj1QB66N3G80A8qB4zf8Tc2K04Jyv68wLDzTFDTY3rzjMwMb
+ QijDUHVR48UKQN9J+c5jVKptSEAyJ2Q=
+X-Google-Smtp-Source: ABdhPJxlTHwNmSEqGlUaTml+1CgMmw4TbxU+tGBdCjMNjR+ymRPMlu3W6AIEpZiNcq7rl/4xD9v7Hw==
+X-Received: by 2002:a17:906:8316:: with SMTP id
+ j22mr27870192ejx.97.1593711502558; 
+ Thu, 02 Jul 2020 10:38:22 -0700 (PDT)
 Received: from x1w.redhat.com (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.29
+ by smtp.gmail.com with ESMTPSA id w20sm5710344eds.21.2020.07.02.10.38.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 10:38:29 -0700 (PDT)
+ Thu, 02 Jul 2020 10:38:22 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Hiroyuki Obinata <hiroyuki.obinata@gmail.com>,
- Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v3 08/19] .mailmap: Display Hiroyuki Obinata name correctly
-Date: Thu,  2 Jul 2020 19:38:07 +0200
-Message-Id: <20200702173818.14651-9-f4bug@amsat.org>
+ Paul Burton <paulburton@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 02/19] .mailmap: Update Paul Burton email address
+Date: Thu,  2 Jul 2020 19:38:01 +0200
+Message-Id: <20200702173818.14651-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200702173818.14651-1-f4bug@amsat.org>
 References: <20200702173818.14651-1-f4bug@amsat.org>
@@ -61,8 +60,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x630.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -84,32 +83,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2020 17:38:36 -0000
+X-List-Received-Date: Thu, 02 Jul 2020 17:38:28 -0000
 
-Correctly display Hiroyuki Obinata name in the following commit:
+Update Paul Burton email address to avoid emails bouncing.
 
- $ git log --author=hiroyuki.obinata@gmail.com --oneline
- f480f6e8c5 remove unnecessary ifdef TARGET_RISCV64
-
-Cc: Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Cc: Paul Burton <paulburton@kernel.org>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- .mailmap | 1 +
- 1 file changed, 1 insertion(+)
+ .mailmap | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/.mailmap b/.mailmap
-index ce0d62b60d..4e9e54368d 100644
+index e46e6c7302..b1e4cd97ad 100644
 --- a/.mailmap
 +++ b/.mailmap
-@@ -98,6 +98,7 @@ Gautham R. Shenoy <ego@linux.vnet.ibm.com>
- Guang Wang <wang.guang55@zte.com.cn>
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>
- Hervé Poussineau <hpoussin@reactos.org>
-+Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
- Jakub Jermář <jakub@jermar.eu>
- Jakub Jermář <jakub.jermar@kernkonzept.com>
- Jean-Christophe Dubois <jcd@tribudubois.net>
+@@ -50,9 +50,10 @@ Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+ Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+ James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+ Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+-Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+-Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+-Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
++Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
++Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
++Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
++Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
+ Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+ Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
 -- 
 2.21.3
 
