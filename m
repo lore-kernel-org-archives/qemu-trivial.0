@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrM7Q-0004vX-Il
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:52:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53806)
+	id 1jrM7h-0005Yy-0t
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:53:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM7O-0004pS-AU
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:42 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38849)
+ id 1jrM7f-0005Wv-Sw
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:59 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45557)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM7L-0000tb-R5
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:41 -0400
-Received: by mail-ot1-x341.google.com with SMTP id t18so13928929otq.5
- for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:39 -0700 (PDT)
+ id 1jrM7e-0000wU-Bl
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:59 -0400
+Received: by mail-ot1-x341.google.com with SMTP id h1so4555907otq.12
+ for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QrnTEd+QEvPrsXhOfKMJN36kN5dABOeyqo4GoYHhfog=;
- b=PL2jWyzBT0zYogzk15TB9sjj+IZCLD2ZgbzefED4yt/SFgFlTYSsAN+yiX15/7PRCQ
- 3d1iSxLoVJfVxtqfw5S3c0nrVmwBcdgVC2hh6svVbjl/QUAFnu4Tyrbgx87jASVDf0Nu
- ED7ikGKRuWiFI5iPM9xc3LGNqjCd0sWQ8+0k5Mp8cSPQKpmSlYiI+tSublXwAaHFUgIc
- +bh1IXrvo08XQhglqQAVGYUQOnXUcWA+4CWzOc1lHSxQHtef7tZ2qtErArchZo2oeIzk
- ZtAXEJe0kREoVd++KQd7aH3LPfUn0MfdUNx98Zu1ceAzZ4HY6A0WPqGnucuWWwmRdtXT
- K8hA==
+ :cc; bh=Wpc26K4vIHW7s7G0jjwpwG5GXL2DZyAsm9Rh8wYBjkg=;
+ b=OWuXsgZ6qUv8VQXPhEX+8AscWWs5PL3NntUQhLvZ4GuEpjGOlb63s6YYatjndc0M5N
+ RK8Rgl7z2B3gzV3ukQIsrOUFGEgVepOfl2cGlWifOW1VoCBaCnDmQSRU50JZrHALoc25
+ 2LYg1kuvjKDYl/B2wqRLBLlrneLQCTrFcuHLpIEl7zpYJzeOP1d49F3yLu3kSWMRvZRm
+ iBQ5LvK0iwgRj+iMGubkwDccQtuSL85idPCrN6sak8u7F0cQ/Y6V3m1c4B3W/z5qgUy9
+ eD/Mnlun6Qa1EWxwAQC+y8h55BW8ge5ougjtX3qW3IOJtMtdLXL/0AozsKh7l6hXMZ0+
+ M01g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QrnTEd+QEvPrsXhOfKMJN36kN5dABOeyqo4GoYHhfog=;
- b=DxDDrLQ3UsTE0qm1riAal7QTM3YwRX15F5XMBnOuDFzJLGZMKSSL1AAEMK+KWdKkrt
- eatVE0FveKj8C7fKRjRIacX3qL024Z+gtoA2QUlDyAxEheXCsxFHeFQk7Mrt2CoOHlO5
- e3VFOZPOu5fKP2bmmpLeXzRZID6QJnW0S5uB8ytX3atSD5MLV2DGqEGhKI+R0QrVsfCj
- HbdtcTvoUde6dNLKHFN6GK+8TLgLguW55wxoL2WMTdZNGr5GQquVDG02JpcNU4gOn60f
- xI+BCN5Be85T3hdZr15NjKSpXF7I81PUc+kosaheIf5EyGWdAF46hCdrPcI5r3E3eTVS
- cGNw==
-X-Gm-Message-State: AOAM5314gk+CCsh0hiPR3ojuW9j/6YatbnV8S/SVwo8nWPnbEpr68CQQ
- 7exISq+zzv9QcRLy8Rz3Odrg0SKKY6NXHAHllCJIQknd9wA=
-X-Google-Smtp-Source: ABdhPJxKv8zYmfFwXf8EJkVGU0PJLDe/BfhqZfozllUQiXiobusUmeJJhiowynu0MZNu8UTya9GkBouqvthTK6c3BNY=
-X-Received: by 2002:a05:6830:10ce:: with SMTP id
- z14mr23290967oto.135.1593784358577; 
- Fri, 03 Jul 2020 06:52:38 -0700 (PDT)
+ bh=Wpc26K4vIHW7s7G0jjwpwG5GXL2DZyAsm9Rh8wYBjkg=;
+ b=l1I7qAjhISgzre7Gqxt7HMJ5hn1npDTA+C7RK9EPkXMw3i/TPbO28tduKPPHQtZaYG
+ Zzr5MqVgE6tlGSokb3MmPOkZXegdb0gukuY5Wq7rn1tbGTplbuUs9SLrotdribCD8kIz
+ Ltjc+L08uIkp0CwTncOqJX1KLhPrR+ATgLi6qSeS7tJ3ftWXecygA4u0Et+JNfr+4G8u
+ VbSeaoVfK2w5A9QxLNUL6wU9S+6Tdmabqpu5ORlIJVnGC49wFhqTyzu3oQQYto9x9ntk
+ 0vt54bsqqkvgKDWpilfccSgeS8+qOrT3PrBk8x8xwmp/BXw4WOg7as85xcc/0wOj/zia
+ EHag==
+X-Gm-Message-State: AOAM530qmiZMKmXqd5zTiLUx+AnY9p4fBrdLBuJy9TlaslpZ2nnx+ght
+ f4P9DLHLy8AtE6NuAfSl5Nf5UHTnSLX8rvrUFymKFQ==
+X-Google-Smtp-Source: ABdhPJznsJBmGYE4zSd/XdE2aIPEEd/jodkGDBzTkq1kv3V+w+EKHhDpkc5o834osixtxkFltZcEcJepCtzAW9MYyc0=
+X-Received: by 2002:a05:6830:1bd3:: with SMTP id
+ v19mr28478686ota.91.1593784377356; 
+ Fri, 03 Jul 2020 06:52:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqzZaXorKXQKXRNue9bhbrE3iawtM6EHNUVjGOuSayuvAw@mail.gmail.com>
-In-Reply-To: <CA+XhMqzZaXorKXQKXRNue9bhbrE3iawtM6EHNUVjGOuSayuvAw@mail.gmail.com>
+References: <CA+XhMqzmb0K5HaOBNy31rNU0F0O4kq+B6eeYCUXiJJE6ENDsYw@mail.gmail.com>
+In-Reply-To: <CA+XhMqzmb0K5HaOBNy31rNU0F0O4kq+B6eeYCUXiJJE6ENDsYw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2020 14:52:26 +0100
-Message-ID: <CAFEAcA-xqdBJS+yd5AYbhqzZEd7ZxfqpDQpXAcXE3pdZrMDVyA@mail.gmail.com>
-Subject: Re: [PATCH 8/9] Skipping sys/syscall.h inclusion as only used in
- qemu_signalfd anyway
+Date: Fri, 3 Jul 2020 14:52:46 +0100
+Message-ID: <CAFEAcA_O0NZgjz=q8cG-wL6ZNMS6rt2kO5VwTr_KLMsh1v6BJg@mail.gmail.com>
+Subject: Re: [PATCH 9/9] Implementing qemu_init_exec_dir.
 To: David CARLIER <devnexen@gmail.com>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
@@ -73,20 +72,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 13:52:42 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 13:53:00 -0000
 
-On Tue, 30 Jun 2020 at 01:49, David CARLIER <devnexen@gmail.com> wrote:
+On Tue, 30 Jun 2020 at 01:46, David CARLIER <devnexen@gmail.com> wrote:
 >
-> From b821b7e9bbf1f327058ee858a92c7a7ee6740e63 Mon Sep 17 00:00:00 2001
+> From fcdb25804af98329b52a04e7a4e5191135aac4f6 Mon Sep 17 00:00:00 2001
 > From: David Carlier <devnexen@gmail.com>
-> Date: Mon, 29 Jun 2020 22:20:39 +0000
-> Subject: [PATCH 8/9] Skipping sys/syscall.h inclusion as only used in
->  qemu_signalfd anyway.
+> Date: Mon, 29 Jun 2020 22:36:03 +0000
+> Subject: [PATCH 9/9] Implementing qemu_init_exec_dir.
 >
 > Signed-off-by: David Carlier <devnexen@gmail.com>
 > ---
->  util/compatfd.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  util/oslib-posix.c | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
