@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrM6q-0003Mb-TJ
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:52:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53604)
+	id 1jrM79-000460-3N
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:52:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM6o-0003HT-PF
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:06 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41038)
+ id 1jrM78-00042a-0X
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:26 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35000)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM6n-0000HI-5y
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:06 -0400
-Received: by mail-oi1-x242.google.com with SMTP id y22so13947570oie.8
- for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:04 -0700 (PDT)
+ id 1jrM76-0000Ww-Cf
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:25 -0400
+Received: by mail-ot1-x343.google.com with SMTP id d4so26763809otk.2
+ for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/Zg4UaLRNsQxpF3+LRuH3eHHCTSLdGm80tI92zWvhdk=;
- b=aVMVFWSL03y4QZugioqAliSJKlOl/uapAJXCTjfmTQSzJ2UyYV1yAdgJDkojq7aylj
- nQK5tYsZIAPA4Y0kLzCQWBup+2njzbIj7Bsyt3UDSdkZJnxAwf02hDIvA1eqSDoaYmB0
- B2ciuOtNtcOCAuhCpo+eeixsgFtYC6dap9b8ePSwBNYkiNHGPagdjFSS5H594Ih41zhY
- VKmt1UepyFGDwPVRNCwZIdXpqQSMZusqtYBxdhdKGG3BnoAyuGLeS8vksVX4z+EzmXWh
- WXb/xcOtaVblKkBZjA5q7ZTcqPJd/air4/g1zw8a9CbuvfdaKS+aSNapJG7zgVTAP36n
- +s5w==
+ :cc; bh=XPJsWCIrHF39xH7oRa7xgSt2AymTiJs4Z8j99EMpnQ0=;
+ b=mf78nj9pNLBxKEUJID7pVG5rzyJXGQNeYgN7zncKhFnWb4O4AXQQxIJeLtBqhTnIHP
+ 66ueDgP0/WZMYnfoFJNSlM7Q8L+cIhC1lyl2dK9ILI9s3riEsOEs94REWdQkg9EsqWse
+ Gozr5YfCDRmTrOPHta3SvwRqg5Y47bT/yUDCTzGYhQnx/qRBQRbskarC4ZCQeOcWZ6LJ
+ DJEQOxYycNLL+oROI3XfSvMbhuDemkIAnv+y0TYWYV3+Pf9itlpveoqrhGgfiYx7sq75
+ IXagF2nue9hL4zSUzaTgEJiOqXQ5u7IbBPYITTFodSc3GkbI4pTWhbAnYDM54arYAtQi
+ FmKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=/Zg4UaLRNsQxpF3+LRuH3eHHCTSLdGm80tI92zWvhdk=;
- b=tvpMgUxBRme8SuFV42q1oxlyF6pkZiFlGdwOR5wAA9G7O052Lhwbwfnal9g4e7niCk
- 6d3CDwNu36NrOdUw8aty8khKboIIiilKW1jB84K/dEp/3/n5TQZxU7tSzUUabV4CdGwA
- V0tsKbZjlK/LPFP6unUUHiVg6PWos8h+uv7COMWodZhsi0hKx3lffjWbwK5qODtzjiCv
- 8yqnpmaaJ3W3nyJREpbPUV0obG7anYswFHQSu1PWDqCsLPRGqBz2eSRNrHpkXztzv/1a
- gIvD3AdF+3XT5U9fs64DXu4NtqAQr4gWlSBTjCTWBpsHElMykiACdfPiIPW6dCeosu/J
- Vyfg==
-X-Gm-Message-State: AOAM5311MeZ1WS86RXmD4jiUU1kGcjXhClB/fA762BRCGtB1JzanZjln
- FUrOl916NbPUtWsTldSDQgvbyn3nmdLPATVwY+Ihyq1E15M=
-X-Google-Smtp-Source: ABdhPJyWY99WUs5pLqoCEAGBC6Yg11BTQVfQnDWRftWcFEgdXaQApPDhLXlnz/oaFNS/Tg9Q/lZXtGnFjGrkxOa8Fzg=
-X-Received: by 2002:aca:1706:: with SMTP id j6mr588271oii.146.1593784324148;
- Fri, 03 Jul 2020 06:52:04 -0700 (PDT)
+ bh=XPJsWCIrHF39xH7oRa7xgSt2AymTiJs4Z8j99EMpnQ0=;
+ b=oCZw7VRYyknT8mZioE8aKePrPhOsxkqPKBSAucZ049e9uxJkkW+Lb5IkzQFDyK8xxN
+ 3CPcPAUWWBNH/jJQw6N+CAQCoajQi3AIyw7KRol309HW0D2jyMFxOniCXF/K7CAWwC7l
+ /QHWQCwEDfYwaIhkoYba1fZ0OemgClcyixcWnVQ2qKYtgq1XcxwBqNcT13PAsUOLAGPf
+ /1mFRW6aCkgnIxdF4HwwP+J5olEZpWsFXpfx5CXLwXB5uDGOIem4Ir1+9tbIkXGt61WA
+ II0Y4eO6TPtbgKSW/o0E4BUVZ8HFZigoX6usR6zJa+u6sRC5A+mcpk7Lq/8jQyHJkuEi
+ iodA==
+X-Gm-Message-State: AOAM532oogWZJdhPWvPks4yK9K3GCcauPEvPJ1SBCXF77gnz9Os5IJLc
+ WVJQKBYwA8GKb4Owwz1UmeGRWc5/i1ao9L3LRGPP6Q==
+X-Google-Smtp-Source: ABdhPJx7qZ23Xx6FbBpO/xw7CRu/6RTm7/Pj62z6RrHrWU0Acvksq18+vZuTz3idktWpDnGQCXSQs/HmqGYYVlA0z1w=
+X-Received: by 2002:a9d:7303:: with SMTP id e3mr24570302otk.221.1593784343129; 
+ Fri, 03 Jul 2020 06:52:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqyoDM3EZwvP353aMAELYZ85RF_4vsOw0A=HD1_rSgfrDA@mail.gmail.com>
-In-Reply-To: <CA+XhMqyoDM3EZwvP353aMAELYZ85RF_4vsOw0A=HD1_rSgfrDA@mail.gmail.com>
+References: <CA+XhMqy6B_mtdwCYDAw0ZRAsmKROMw4hbw8pRznj9yPH2TwtPA@mail.gmail.com>
+In-Reply-To: <CA+XhMqy6B_mtdwCYDAw0ZRAsmKROMw4hbw8pRznj9yPH2TwtPA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2020 14:51:53 +0100
-Message-ID: <CAFEAcA_d8YYbb+T0iWci8ukRS=TA1gGf4Ky8T717hWnbP1jJUg@mail.gmail.com>
-Subject: Re: [PATCH 5/9] Define SIGIO constant with SIGPOLL equivalence
+Date: Fri, 3 Jul 2020 14:52:12 +0100
+Message-ID: <CAFEAcA98566jHbGuWWFO+bpQMmOTrkYZmBoB9KWSWzz2aT_O2w@mail.gmail.com>
+Subject: Re: [PATCH 6/9] Including endian.h for bswap operations
 To: David CARLIER <devnexen@gmail.com>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -71,32 +71,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 13:52:07 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 13:52:26 -0000
 
-On Tue, 30 Jun 2020 at 01:47, David CARLIER <devnexen@gmail.com> wrote:
+On Tue, 30 Jun 2020 at 01:46, David CARLIER <devnexen@gmail.com> wrote:
 >
-> From 93c001e7da19c76a73a687dc6584bc31385a2693 Mon Sep 17 00:00:00 2001
+> From 2f65cab41a8f4508532b3893815f222bf2293463 Mon Sep 17 00:00:00 2001
 > From: David Carlier <devnexen@gmail.com>
-> Date: Mon, 29 Jun 2020 22:18:32 +0000
-> Subject: [PATCH 5/9] Define SIGIO constant with SIGPOLL equivalence,
+> Date: Mon, 29 Jun 2020 22:19:34 +0000
+> Subject: [PATCH 6/9] Including endian.h for bswap operations.
 >
 > Signed-off-by: David Carlier <devnexen@gmail.com>
 > ---
->  include/qemu/osdep.h | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-> index 6e0cf9132d..e090ead826 100644
-> --- a/include/qemu/osdep.h
-> +++ b/include/qemu/osdep.h
-> @@ -425,6 +425,10 @@ void qemu_anon_ram_free(void *ptr, size_t size);
->  #define HAVE_CHARDEV_PARPORT 1
->  #endif
->
-> +#if defined(__HAIKU__)
-> +#define SIGIO SIGPOLL
-> +#endif
-> +
+>  include/qemu/bswap.h | 2 ++
+>  1 file changed, 2 insertions(+)8
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
