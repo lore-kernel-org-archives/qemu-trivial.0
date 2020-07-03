@@ -1,79 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrQlA-0002u4-9F
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 14:50:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47952)
+	id 1jrRpL-0003KQ-MZ
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 15:58:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrQl6-0002oS-Ok; Fri, 03 Jul 2020 14:50:01 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45253)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrQl5-0007dC-4r; Fri, 03 Jul 2020 14:50:00 -0400
-Received: by mail-wr1-x441.google.com with SMTP id s10so33695708wrw.12;
- Fri, 03 Jul 2020 11:49:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=y9ApWH9gz4M4qZvGxoP6zo+vP+3Z0/10bVmtSoKgmDA=;
- b=WGG4HmeKWLz+kxxqc8rPXhCqT+QP+vqOXsU5ZHY/LfEs9GDrQGYtqRObnqqIy5D+Ds
- 3BG5FVWk3TTLApEXgACm0rFLTDfJ8d+jjRCFmGjEcShsMriWW8b+aYMWn8rlhgwwNwsJ
- wfSmJ0WTVGjYiQZoylYvUQF+jRloEQQw1iFl9PLe9TESvpNTDtlJCvOURdruz5sXX+jd
- zw+l0OfkTT1/4bNuPuP1YAEAd3SlBoawtbBukiQDSyaYGOI0jxL4KgxLVZuH6kVGlXkG
- p56mtIGkJxObAymfysJexA6eg2xFrd3bGkrF6UAK2qxDkO6a54cNgXj2FI6NsoGWaOb4
- fkjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=y9ApWH9gz4M4qZvGxoP6zo+vP+3Z0/10bVmtSoKgmDA=;
- b=HHbBgGxqdYCmkCV0gNAyuwCb/valDS2ZvJHAHilV3Gfdtkw9OoMZ3BT+QU6yecgzPq
- w4loAIRBmqsOE3vhhcwbRsQ9VYGYUzwaOkXk/OT5wu5bWxC6wWj9HcJDvBriILKCfqfb
- pCc78I6ttfB6f3B/Fj5eS7XLECgbsA0CTFEqmwJaEP9vwAbi0pEWjlWPtzZ8oCtrA0bS
- kGqGs4H9w10DTn5O+rcCSrhjMTU90iVq5mYC2wWXPdEwz52JePXx6rurwm3ok9ZUSW8e
- QRKCb28+bSJob30NsPjUUQwaCsUsfrOL8UBLbxvBunknHs6VCdqFSVHh/AbW42Xery/a
- NBGg==
-X-Gm-Message-State: AOAM531eBHxrS5CYR02/2IXhdSsLETCfEQk2JUfL523bcTEjrhG0UIYo
- KX+cS39eCcZURoIHGPl4wd19fu3mwj0=
-X-Google-Smtp-Source: ABdhPJzmjsXnWHN2++nWfTCBU5nNVneetlT9YQ4EefGjogysbLJLzzBYrEtz6UC01KQOi42GQIc7YA==
-X-Received: by 2002:adf:edd0:: with SMTP id v16mr37371559wro.214.1593802196812; 
- Fri, 03 Jul 2020 11:49:56 -0700 (PDT)
-Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x11sm13778369wmc.26.2020.07.03.11.49.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 11:49:56 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded string
-Date: Fri,  3 Jul 2020 20:49:52 +0200
-Message-Id: <20200703184952.4918-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200703184952.4918-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jrRpJ-0003JU-9j; Fri, 03 Jul 2020 15:58:25 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:59118)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jrRpG-0005zQ-KM; Fri, 03 Jul 2020 15:58:24 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id DCD0B74632B;
+ Fri,  3 Jul 2020 21:58:08 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id B42BD746307; Fri,  3 Jul 2020 21:58:08 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id B2A5B74594E;
+ Fri,  3 Jul 2020 21:58:08 +0200 (CEST)
+Date: Fri, 3 Jul 2020 21:58:08 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-trivial@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, 
+ qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>, 
+ David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded
+ string
+In-Reply-To: <20200703184952.4918-3-f4bug@amsat.org>
+Message-ID: <alpine.BSF.2.22.395.2007032149250.12670@zero.eik.bme.hu>
 References: <20200703184952.4918-1-f4bug@amsat.org>
+ <20200703184952.4918-3-f4bug@amsat.org>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Content-Type: multipart/mixed;
+ boundary="3866299591-665798566-1593806288=:12670"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,61 +57,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 18:50:02 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 19:58:25 -0000
 
-By using the TYPE_* definitions for devices, we can:
-- quickly find where devices are used with 'git-grep'
-- easily rename a non-user-creatable device (one-line change).
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/sm501.c | 3 ++-
- hw/ppc/sam460ex.c  | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+--3866299591-665798566-1593806288=:12670
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 9cccc68c35..c122a4eca5 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -36,6 +36,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/i2c/i2c.h"
- #include "hw/display/i2c-ddc.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "qemu/range.h"
- #include "ui/pixel_ops.h"
- #include "qemu/bswap.h"
-@@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->state.mmio_region);
- 
-     /* bridge to usb host emulation module */
--    usb_dev = qdev_new("sysbus-ohci");
-+    usb_dev = qdev_new(TYPE_SYSBUS_OHCI);
-     qdev_prop_set_uint32(usb_dev, "num-ports", 2);
-     qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 1a106a68de..593436937a 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -35,6 +35,7 @@
- #include "hw/char/serial.h"
- #include "hw/i2c/ppc4xx_i2c.h"
- #include "hw/i2c/smbus_eeprom.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "hw/usb/hcd-ehci.h"
- #include "hw/ppc/fdt.h"
- #include "hw/qdev-properties.h"
-@@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
- 
-     /* USB */
-     sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
--    dev = qdev_new("sysbus-ohci");
-+    dev = qdev_new(TYPE_SYSBUS_OHCI);
-     qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
-     qdev_prop_set_uint32(dev, "num-ports", 6);
-     sbdev = SYS_BUS_DEVICE(dev);
--- 
-2.21.3
+On Fri, 3 Jul 2020, Philippe Mathieu-Daudé wrote:
+> By using the TYPE_* definitions for devices, we can:
+> - quickly find where devices are used with 'git-grep'
 
+You could just as well grep for the type name but it's true if some files 
+use name and others the constant then you need to grep for both.
+
+> - easily rename a non-user-creatable device (one-line change).
+
+But most devices are user creatable and thus their name is part of the CLI 
+so inlikely to change due to preserving backward compatibility of command 
+lines. So usefulness of this change seems limited to me.
+
+But my problem with it is not the above. It's that hcd-ohci.h is not in 
+include but in hw/usb so it's internal to the implementation of the device 
+model and defines things that users of the device should not need, 
+therefore they should not include this header. So if you want to use the 
+defined constant then that should be split off to some public header 
+instead of including hw/usb/hcd-ohci.h. Maybe we need a new header for 
+these TYPE_* constants similar to qemu/typedefs.h?
+
+Regards,
+BALATON Zoltan
+
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> hw/display/sm501.c | 3 ++-
+> hw/ppc/sam460ex.c  | 3 ++-
+> 2 files changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 9cccc68c35..c122a4eca5 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -36,6 +36,7 @@
+> #include "hw/qdev-properties.h"
+> #include "hw/i2c/i2c.h"
+> #include "hw/display/i2c-ddc.h"
+> +#include "hw/usb/hcd-ohci.h"
+> #include "qemu/range.h"
+> #include "ui/pixel_ops.h"
+> #include "qemu/bswap.h"
+> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+>     sysbus_init_mmio(sbd, &s->state.mmio_region);
+>
+>     /* bridge to usb host emulation module */
+> -    usb_dev = qdev_new("sysbus-ohci");
+> +    usb_dev = qdev_new(TYPE_SYSBUS_OHCI);
+>     qdev_prop_set_uint32(usb_dev, "num-ports", 2);
+>     qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
+>     sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index 1a106a68de..593436937a 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -35,6 +35,7 @@
+> #include "hw/char/serial.h"
+> #include "hw/i2c/ppc4xx_i2c.h"
+> #include "hw/i2c/smbus_eeprom.h"
+> +#include "hw/usb/hcd-ohci.h"
+> #include "hw/usb/hcd-ehci.h"
+> #include "hw/ppc/fdt.h"
+> #include "hw/qdev-properties.h"
+> @@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
+>
+>     /* USB */
+>     sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
+> -    dev = qdev_new("sysbus-ohci");
+> +    dev = qdev_new(TYPE_SYSBUS_OHCI);
+>     qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
+>     qdev_prop_set_uint32(dev, "num-ports", 6);
+>     sbdev = SYS_BUS_DEVICE(dev);
+>
+--3866299591-665798566-1593806288=:12670--
 
