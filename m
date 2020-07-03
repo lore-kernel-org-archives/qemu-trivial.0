@@ -1,59 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrOic-0000dD-8e
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 12:39:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36188)
+	id 1jrPOU-0000GW-9I
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 13:22:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
- id 1jrOM1-0007WT-8n; Fri, 03 Jul 2020 12:15:57 -0400
-Received: from ppsw-32.csi.cam.ac.uk ([131.111.8.132]:60496)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
- id 1jrOLu-0003ph-UO; Fri, 03 Jul 2020 12:15:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=cam.ac.uk; 
- s=20180806.ppsw;
- h=Sender:Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=nyUs57KD+/rwm24QCMUWSjfEn7hQD64IT/vc42otKB0=; b=icqvb5JCSpE+tTHqPm34NenHOC
- d1GdrtDFU3ovsUxWP1PiFogrqIz1kvvsef5qnxSz8Dn5I117B7x0cVQhowyOQwzNfFvylxPzR1H4h
- 2qxGTF6aXGIMxy2UgByfH1WJlfVbU0K0Q6u9gl4gi/UBkbm/ydUGMkrJa3dhR9vLFPWw=;
-X-Cam-AntiVirus: no malware found
-X-Cam-ScannerInfo: http://help.uis.cam.ac.uk/email-scanner-virus
-Received: from host86-181-137-242.range86-181.btcentralplus.com
- ([86.181.137.242]:53505 helo=Alexs-MBP-10.home)
- by ppsw-32.csi.cam.ac.uk (smtp.hermes.cam.ac.uk [131.111.8.156]:587)
- with esmtpsa (LOGIN:alr48) (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128)
- id 1jrOLo-000TRi-2l (Exim 4.92.3)
- (return-path <alr48@hermes.cam.ac.uk>); Fri, 03 Jul 2020 17:15:44 +0100
-From: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Cc: qemu-trivial@nongnu.org,
- Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- qemu-devel@nongnu.org (open list:All patches CC here)
-Subject: [PATCH] Fix MIPS add.s after 1ace099f2acb952eaaef0ba7725879949a7e4406
-Date: Fri,  3 Jul 2020 17:15:15 +0100
-Message-Id: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
-X-Mailer: git-send-email 2.27.0
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1jrPOS-0000EP-Bu
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 13:22:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50672
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1jrPOQ-0003zq-PE
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 13:22:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593796949;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=z99jpI8h1TeJZSnRuiI8KpXSTQSOZGJfNPacK3k9QBE=;
+ b=eJ3aVrfb4Yhu+WUtdpSlTivppC5xuQKqHWFzjjR4/dvhXCIgEcq9Tw1FCgdpChu8cYZmCW
+ bWVM9IjinK7GkG699zsYr7ky/i0/F/MTplAEJv/uk8GJ7Rh/00Sx3OlzXV+vcI6LNWA6AZ
+ 4Ixmv7GJeRwBOShECtvGotatJw0BAzI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-82-F3uU-X6ePdCSzdBHirEDyw-1; Fri, 03 Jul 2020 13:22:28 -0400
+X-MC-Unique: F3uU-X6ePdCSzdBHirEDyw-1
+Received: by mail-wm1-f71.google.com with SMTP id e15so35709802wme.8
+ for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 10:22:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=z99jpI8h1TeJZSnRuiI8KpXSTQSOZGJfNPacK3k9QBE=;
+ b=VrWDvNYlgmCA2iRGhJJ2CCsYyDTbUCmwQwOYVrHAgy9SfVOlX9z3KNE5rGxctGKtSH
+ HnKFiVq596aaY5QwDWC0MHVUtSUMmnbfrtxJu9rGx1w9WIkTdeDdg/0TB9zmQUmT3Oxc
+ PcdkRq6zhay7yaARXfSDrRXacR+IxYbtPIFhIDr8gFtQjJRXqsM303AN4f9dwH8oRwbM
+ 3LsUhzK2awkLbuds9oCInEC8AiTwFeSNhB2XCjegASE2YBZJTKuxvhNttdvhgWAZbyIh
+ xExa5dPj7ccS9wD/90DJGUQZc3g09tR/Yps1fALBjoZSJTHYd60WuInHHeT376wIKAWc
+ 4CMw==
+X-Gm-Message-State: AOAM5328ijGRmKOje57IYT1vJRexureZwPdQNihQU8iiQOgLtGXPP3I1
+ QpwGeLzjejcz0KUfAydWelVvYRTHBzgsMwrznYjfQxIJWV8V47ulM5dYS0julQsKbBxUmBTopEQ
+ dZZSkojbe4McJU3eh6w==
+X-Received: by 2002:adf:e60e:: with SMTP id p14mr36741693wrm.31.1593796946828; 
+ Fri, 03 Jul 2020 10:22:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztnhdhWTBsEffENrF56voW8iZyR/Jh/QXytJxfAW2gbVNT1ubjaShau6FgX3Rqtr4bUsTEvw==
+X-Received: by 2002:adf:e60e:: with SMTP id p14mr36741674wrm.31.1593796946638; 
+ Fri, 03 Jul 2020 10:22:26 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:5cf9:fc14:deb7:51fc?
+ ([2001:b07:6468:f312:5cf9:fc14:deb7:51fc])
+ by smtp.gmail.com with ESMTPSA id y7sm14510793wrt.11.2020.07.03.10.22.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Jul 2020 10:22:26 -0700 (PDT)
+Subject: Re: [PATCH] softmmu/vl: Remove the check for colons in -accel
+ parameters
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>
+References: <20200618074001.13642-1-thuth@redhat.com>
+ <1a135eb1-8ea6-80f2-85d7-40c8da92c1d1@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <264c1ba9-4b05-1559-f5f7-63e3b4f98ea6@redhat.com>
+Date: Fri, 3 Jul 2020 19:22:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <1a135eb1-8ea6-80f2-85d7-40c8da92c1d1@redhat.com>
+Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Sender: "A.L. Richardson" <alr48@hermes.cam.ac.uk>
-Received-SPF: pass client-ip=131.111.8.132;
- envelope-from=alr48@hermes.cam.ac.uk; helo=ppsw-32.csi.cam.ac.uk
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 12:15:45
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 03:38:32
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 03 Jul 2020 12:39:17 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,32 +97,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 16:15:57 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 17:22:32 -0000
 
-After merging latest QEMU upstream into our CHERI fork, I noticed that
-some of the FPU tests in our MIPS baremetal testsuite
-(https://github.com/CTSRD-CHERI/cheritest) started failing. It turns out
-this commit accidentally changed add.s into a subtract.
+On 03/07/20 07:34, Thomas Huth wrote:
+> On 18/06/2020 09.40, Thomas Huth wrote:
+>> The new -accel option does not accept colons in the parameters anymore
+>> (since it does not convert the parameters to -machine accel=...
+>> parameters
+>> anymore). Thus we can now remove the check for colons in -accel:
+>>
+>> $ qemu-system-x86_64 -accel kvm:tcg
+>> qemu-system-x86_64: -accel kvm:tcg: invalid accelerator kvm:tcg
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>   softmmu/vl.c | 5 -----
+>>   1 file changed, 5 deletions(-)
+>>
+>> diff --git a/softmmu/vl.c b/softmmu/vl.c
+>> index f669c06ede..273acfcf6b 100644
+>> --- a/softmmu/vl.c
+>> +++ b/softmmu/vl.c
+>> @@ -3485,11 +3485,6 @@ void qemu_init(int argc, char **argv, char **envp)
+>>                       g_slist_free(accel_list);
+>>                       exit(0);
+>>                   }
+>> -                if (optarg && strchr(optarg, ':')) {
+>> -                    error_report("Don't use ':' with -accel, "
+>> -                                 "use -M accel=... for now instead");
+>> -                    exit(1);
+>> -                }
+>>                   break;
+>>               case QEMU_OPTION_usb:
+>>                   olist = qemu_find_opts("machine");
+>>
+> 
+> Ping?
+> 
+>  Thomas
+> 
 
-Signed-off-by: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
----
- target/mips/fpu_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Queued, thanks.
 
-diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
-index 7a3a61cab3..56beda49d8 100644
---- a/target/mips/fpu_helper.c
-+++ b/target/mips/fpu_helper.c
-@@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(CPUMIPSState *env,
- {
-     uint32_t wt2;
- 
--    wt2 = float32_sub(fst0, fst1, &env->active_fpu.fp_status);
-+    wt2 = float32_add(fst0, fst1, &env->active_fpu.fp_status);
-     update_fcr31(env, GETPC());
-     return wt2;
- }
--- 
-2.27.0
+Paolo
 
 
