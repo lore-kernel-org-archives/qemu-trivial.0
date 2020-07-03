@@ -1,69 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrOdT-0007BP-F1
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 12:33:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41112)
+	id 1jrOic-0000dD-8e
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 12:39:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jrOdR-00075j-DZ; Fri, 03 Jul 2020 12:33:57 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40580)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jrOdP-0008By-Eh; Fri, 03 Jul 2020 12:33:57 -0400
-Received: by mail-wr1-x444.google.com with SMTP id f2so5390567wrp.7;
- Fri, 03 Jul 2020 09:33:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=lwqrshE3SFgIfBQJgR5LS5fQjVpk8NcYgjwEADsQE0U=;
- b=d8MnYZT7ptWEI23tkG77EZkEvym+tWSAQl3/hDB1P10EYgvOaHcfmi9447/LqIQmYu
- Octadlz+hZKqwEQ/Ti3L1fVnb9PungU24UaRGFCfo/v7+nq6U++uR6Jac9VI11KZMAZV
- 56N2SCiPGJRJUvR4Ql2MG0SLNdxKrZ2vEHpZTZCbsQJSnlLVXeQZMF3mtvwFaJMrurMY
- JYcSi9P2CYJtCtsDSImBvy6sdJPs+adBEbsaIon6yAs8xPDwmdoEqnRO9E5ObONfsN6r
- 5fzeAO2paKctv/b/n6NNWet8zYXoWizKQVXFQokbO37Y8KKJMgt/r2VO6CSfLZGHYeLQ
- 4rTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=lwqrshE3SFgIfBQJgR5LS5fQjVpk8NcYgjwEADsQE0U=;
- b=pMBBRH7ByAWWa2zk/1GQFaV+6coVYXoafYsw6sGdk86KlNZd4DtDvbvjsm72smuNyp
- +Ad6sG4E36oAOLIW7zaSBLpunbBs2ORBFM/0j1JGIJStjCn5Ck5q+sbJoKbTnCUWOG37
- oCO4+groBXj5Q4yYrse7MuIP1CZU73/zJKnEi5lBsVYVVOm5MO6rDkH9frj4l8OCEkck
- msdnbf5+DA1LxUiZd9GcxlVxribCUR3dR4Hi/NY5Q+BKrNOuXseOTAGjjDsBVl05OxOy
- OPdU+fHPnAJZnQ9HbdfFksMr095Qvot4QslVXg0TwmjmQodr2EzOmXkw3d8DETv+nOhc
- ALgg==
-X-Gm-Message-State: AOAM530USVfQ7+dytbcgaitpsnc5l27LD+HEp7XkMOFjtOvEC74EPHKk
- BPBO6EqAHBlF3a9iBJLiVsi7TXRHTtZ3P8bFnjQ=
-X-Google-Smtp-Source: ABdhPJy3RBBCXtAO2oORlOkHTGNm3dLRoK2AIAa1SoiYGPFQWkGs+Ct04ycITPL8FKhmHvijW3lfcKWTqcA6e897utA=
-X-Received: by 2002:adf:8462:: with SMTP id 89mr36952781wrf.420.1593794032963; 
- Fri, 03 Jul 2020 09:33:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
+ id 1jrOM1-0007WT-8n; Fri, 03 Jul 2020 12:15:57 -0400
+Received: from ppsw-32.csi.cam.ac.uk ([131.111.8.132]:60496)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
+ id 1jrOLu-0003ph-UO; Fri, 03 Jul 2020 12:15:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=cam.ac.uk; 
+ s=20180806.ppsw;
+ h=Sender:Content-Transfer-Encoding:MIME-Version:Message-Id:
+ Date:Subject:Cc:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=nyUs57KD+/rwm24QCMUWSjfEn7hQD64IT/vc42otKB0=; b=icqvb5JCSpE+tTHqPm34NenHOC
+ d1GdrtDFU3ovsUxWP1PiFogrqIz1kvvsef5qnxSz8Dn5I117B7x0cVQhowyOQwzNfFvylxPzR1H4h
+ 2qxGTF6aXGIMxy2UgByfH1WJlfVbU0K0Q6u9gl4gi/UBkbm/ydUGMkrJa3dhR9vLFPWw=;
+X-Cam-AntiVirus: no malware found
+X-Cam-ScannerInfo: http://help.uis.cam.ac.uk/email-scanner-virus
+Received: from host86-181-137-242.range86-181.btcentralplus.com
+ ([86.181.137.242]:53505 helo=Alexs-MBP-10.home)
+ by ppsw-32.csi.cam.ac.uk (smtp.hermes.cam.ac.uk [131.111.8.156]:587)
+ with esmtpsa (LOGIN:alr48) (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128)
+ id 1jrOLo-000TRi-2l (Exim 4.92.3)
+ (return-path <alr48@hermes.cam.ac.uk>); Fri, 03 Jul 2020 17:15:44 +0100
+From: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
+To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+ Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ qemu-devel@nongnu.org (open list:All patches CC here)
+Subject: [PATCH] Fix MIPS add.s after 1ace099f2acb952eaaef0ba7725879949a7e4406
+Date: Fri,  3 Jul 2020 17:15:15 +0100
+Message-Id: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Received: by 2002:a1c:b407:0:0:0:0:0 with HTTP;
- Fri, 3 Jul 2020 09:33:52 -0700 (PDT)
-In-Reply-To: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
-References: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
-From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Date: Fri, 3 Jul 2020 18:33:52 +0200
-Message-ID: <CAHiYmc7xgHJcqqCtym-xV+7_Vtze+=NjFw83Cn2DRDACNvLk+w@mail.gmail.com>
-Subject: Re: [PATCH] Fix MIPS add.s after
- 1ace099f2acb952eaaef0ba7725879949a7e4406
-To: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000002e164505a98c179e"
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=aleksandar.qemu.devel@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Sender: "A.L. Richardson" <alr48@hermes.cam.ac.uk>
+Received-SPF: pass client-ip=131.111.8.132;
+ envelope-from=alr48@hermes.cam.ac.uk; helo=ppsw-32.csi.cam.ac.uk
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 12:15:45
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 03 Jul 2020 12:39:17 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,101 +65,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 16:33:57 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 16:15:57 -0000
 
---0000000000002e164505a98c179e
-Content-Type: text/plain; charset="UTF-8"
+After merging latest QEMU upstream into our CHERI fork, I noticed that
+some of the FPU tests in our MIPS baremetal testsuite
+(https://github.com/CTSRD-CHERI/cheritest) started failing. It turns out
+this commit accidentally changed add.s into a subtract.
 
-On Friday, July 3, 2020, Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
-wrote:
+Signed-off-by: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
+---
+ target/mips/fpu_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> After merging latest QEMU upstream into our CHERI fork, I noticed that
-> some of the FPU tests in our MIPS baremetal testsuite
-> (https://github.com/CTSRD-CHERI/cheritest) started failing. It turns out
-> this commit accidentally changed add.s into a subtract.
->
->
-Alex, all you said sounds very probable to me. I currently don't have any
-dev system, at hand, but as soon as I get it, I will confirm/disconfirm
-(but again, most likely confirm) this problem, and than we'll give you
-green lifght for your patch.
+diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
+index 7a3a61cab3..56beda49d8 100644
+--- a/target/mips/fpu_helper.c
++++ b/target/mips/fpu_helper.c
+@@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(CPUMIPSState *env,
+ {
+     uint32_t wt2;
+ 
+-    wt2 = float32_sub(fst0, fst1, &env->active_fpu.fp_status);
++    wt2 = float32_add(fst0, fst1, &env->active_fpu.fp_status);
+     update_fcr31(env, GETPC());
+     return wt2;
+ }
+-- 
+2.27.0
 
-Yours,
-Aleksandar
-
-
-
-
-> Signed-off-by: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
-> ---
->  target/mips/fpu_helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
-> index 7a3a61cab3..56beda49d8 100644
-> --- a/target/mips/fpu_helper.c
-> +++ b/target/mips/fpu_helper.c
-> @@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(CPUMIPSState *env,
->  {
->      uint32_t wt2;
->
-> -    wt2 = float32_sub(fst0, fst1, &env->active_fpu.fp_status);
-> +    wt2 = float32_add(fst0, fst1, &env->active_fpu.fp_status);
->      update_fcr31(env, GETPC());
->      return wt2;
->  }
-> --
-> 2.27.0
->
->
-
---0000000000002e164505a98c179e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<br><br>On Friday, July 3, 2020, Alex Richardson &lt;<a href=3D"mailto:Alex=
-ander.Richardson@cl.cam.ac.uk">Alexander.Richardson@cl.cam.ac.uk</a>&gt; wr=
-ote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
--left:1px #ccc solid;padding-left:1ex">After merging latest QEMU upstream i=
-nto our CHERI fork, I noticed that<br>
-some of the FPU tests in our MIPS baremetal testsuite<br>
-(<a href=3D"https://github.com/CTSRD-CHERI/cheritest" target=3D"_blank">htt=
-ps://github.com/CTSRD-<wbr>CHERI/cheritest</a>) started failing. It turns o=
-ut<br>
-this commit accidentally changed add.s into a subtract.<br>
-<br></blockquote><div><br></div><div>Alex, all you said sounds very probabl=
-e to me. I currently don&#39;t have any dev system, at hand, but as soon as=
- I get it, I will confirm/disconfirm (but again, most likely confirm) this =
-problem, and than we&#39;ll give you green lifght for your patch.</div><div=
-><br></div><div>Yours,</div><div>Aleksandar</div><div><br></div><div><br></=
-div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 =
-0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-Signed-off-by: Alex Richardson &lt;<a href=3D"mailto:Alexander.Richardson@c=
-l.cam.ac.uk">Alexander.Richardson@cl.cam.<wbr>ac.uk</a>&gt;<br>
----<br>
-=C2=A0target/mips/fpu_helper.c | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c<br>
-index 7a3a61cab3..56beda49d8 100644<br>
---- a/target/mips/fpu_helper.c<br>
-+++ b/target/mips/fpu_helper.c<br>
-@@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(<wbr>CPUMIPSState *env,<b=
-r>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0uint32_t wt2;<br>
-<br>
--=C2=A0 =C2=A0 wt2 =3D float32_sub(fst0, fst1, &amp;env-&gt;active_fpu.fp_s=
-tatus);<br>
-+=C2=A0 =C2=A0 wt2 =3D float32_add(fst0, fst1, &amp;env-&gt;active_fpu.fp_s=
-tatus);<br>
-=C2=A0 =C2=A0 =C2=A0update_fcr31(env, GETPC());<br>
-=C2=A0 =C2=A0 =C2=A0return wt2;<br>
-=C2=A0}<br>
--- <br>
-2.27.0<br>
-<br>
-</blockquote>
-
---0000000000002e164505a98c179e--
 
