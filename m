@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrM62-0001qY-0g
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:51:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53314)
+	id 1jrM6T-0002Xe-AV
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:51:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53486)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM60-0001p9-Mj
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:51:16 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:37078)
+ id 1jrM6S-0002Vm-7y
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:51:44 -0400
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:45185)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM5y-00008F-01
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:51:16 -0400
-Received: by mail-oi1-x242.google.com with SMTP id 12so20047271oir.4
- for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:51:13 -0700 (PDT)
+ id 1jrM6Q-0000Bn-OL
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:51:43 -0400
+Received: by mail-oo1-xc42.google.com with SMTP id v188so894051ooa.12
+ for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:51:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1laTjOxvsyel3DgT9gokiMsrS2tuuAdMfjCDLNi3/z4=;
- b=aGsexenihmwvsdIieMzsQiF/AJKgTMgkWiFm7LlFtNaJGmgv7LJO6aP/LS4TKRxpYM
- V2KFqJwxgGDG+hj0zz6NDSbKMpRyS68+/UHJmnrrIpfaTyCFjOIL9TAojnJHoU9hN+4R
- 25rLjM27x2IFlyAi9Qmgvmris2OI3a9VsmKWhW2Lk/f3lbFwuDdE6jzAT1kHjLpSPJP/
- fYbK14Ne4Hnw19rrVXjADchvENxIaUkJ2MIiWhpqpBptCYSES+ln0isrLYpU18JnHxna
- KgfedTGaKaYjOWeiMFvehH7uWr17LoJvfXbpmdhBl5+5Xyo4vHwKxjEtycbWYQFVyY5/
- e/xw==
+ :cc; bh=MepMru1D/YzxkLb8PygMuGCrjLYZWIayt5cr0f568H8=;
+ b=Eiag0zTBE7cpOlvQwPP1wlqH/nJvE860KgI7Qvwy3oOSwmCnv0g/jHFHNIfCotvG02
+ oo40uCwywc1u23IvObbezda7CqxlRfesRRrV80Fc5cyvjUWVCX733dZcwLzscPgH9HQ3
+ m7ZYk17+3a8IIAAGV0kcYXEBa1kMBwmXJMRPLX5EOpDAWansDbqL0DOp70DxoZ4+nVcU
+ 4QxmggfY3YbBZ47+vWrcCv8VKi+xOchADhIYGhUC1cMCV9lgR0g79sgo17MZhjXd4gJP
+ M6aHz6G/1WwXndqCX/vqNuwl7SwpA5p4+rjCMfYKPL/okHt01RvtX3/0Ppvci1erUM04
+ U6ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=1laTjOxvsyel3DgT9gokiMsrS2tuuAdMfjCDLNi3/z4=;
- b=ktlEv536At5UGwt0jfPFyiB4OLK2I1qnI3pLmA//dPTibbBru/MjeNLitJJs3Z/4KL
- x9sDUVa5JFSqjRgnWs9uDzn5mQWKLk59S2iQcsmUds9fZjHAyL4b+zAEPhCf0iNLnU5k
- mrc/MQA+5O5KzydelR2pYbQ8NNVX9RHJimAarRGQHXO1J+gaxAfH7jQlm1vlNfBOhwU8
- 7UFSJAx2CoKgwAwQ2GYeshYbwWcjacMdzcuq8rhtFrgkVwcRaqHEwSYUHDroB0vP9g71
- DbCz1yj/0LsC7EbGr1WOYil3EuheeWhWiuvxhNBU7+HH1M9h4o0cu6FlDc4tkXP0/Vgg
- cuYw==
-X-Gm-Message-State: AOAM530OzOSzSD87F3M3p89Us+vuNBIFwFq0stDtJQz6ZsuyxcG2BJh/
- vDPjbpQmPf/OJlOftw3YQCggUbF6YdQqctZRBcyJ9w==
-X-Google-Smtp-Source: ABdhPJzVSOI76LYrrC5jYW3uGhxjIGYl3x7owFqVPZMVZ4tLNB1QJPTY7WG3wacOBOp4V/Vd2a73ZO7v+FBuk3rDS2M=
-X-Received: by 2002:aca:2819:: with SMTP id 25mr21197531oix.48.1593784272914; 
- Fri, 03 Jul 2020 06:51:12 -0700 (PDT)
+ bh=MepMru1D/YzxkLb8PygMuGCrjLYZWIayt5cr0f568H8=;
+ b=D80f9h4FWbacnwoO4ugE8Uy4gjv/uny5nn4NszStIpfhSZynE6GC3psjL5oE1pg0Y3
+ md9Azr6QDHKK8rVF1UFZauGJzK21hJ+r42fyyRlCOj1mAceTvL28nAFdn0fJNIHsbKsA
+ Sgcg+ik6w7piVwfMfV7f+N9PrWqsK2uQXqyJ3f0pMZOdJ4yTRQcMvqMZagvh4tgSCfil
+ CGBOlXahmktW7XYnefjPi2m+2y8tCVsYdIuzreycvh7Xc6h7g8EBppyG8wKcAIVhy49P
+ iIwlGMvt09NAXFkSqaDWUt2s/7XcMTKXLoSQO/oE+Ukk5MfXWTXi0reXBoc4IGJzOJot
+ u6ug==
+X-Gm-Message-State: AOAM531TdLJy0X5efEflGqB9NsFh7tA2LYphsSDcaRipr8GYAglbWAty
+ 6vCCJDzwuxfKZYG64bmrrCTK1ZelBLDcH+28gRU9sw==
+X-Google-Smtp-Source: ABdhPJz6P3hDD/Jv0VznMIYmst/45TfzXqmMJVCvH5SfRtuWzNifw3TYD+S03wq+ekS47qi3e8rQTX7OlLO3s51xpY8=
+X-Received: by 2002:a4a:9653:: with SMTP id r19mr9262711ooi.85.1593784301704; 
+ Fri, 03 Jul 2020 06:51:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqwUHwc-FPgP-YfKPz5CL8BKSQY+0qTJ5uBRhfu22jsh1g@mail.gmail.com>
-In-Reply-To: <CA+XhMqwUHwc-FPgP-YfKPz5CL8BKSQY+0qTJ5uBRhfu22jsh1g@mail.gmail.com>
+References: <CA+XhMqztrEOU5KQQ91qkNMrXZOxfnKQDFhC_UiJP8MkoyVoquw@mail.gmail.com>
+In-Reply-To: <CA+XhMqztrEOU5KQQ91qkNMrXZOxfnKQDFhC_UiJP8MkoyVoquw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2020 14:51:01 +0100
-Message-ID: <CAFEAcA-nUw4=KbhxSTehpOEvPF6fF+WYRHMkXhQcnoBatt-65A@mail.gmail.com>
-Subject: Re: [PATCH 2/9] Enabling *pty api
+Date: Fri, 3 Jul 2020 14:51:30 +0100
+Message-ID: <CAFEAcA9X12n5XE1Jx9rgHLUt_hE6Tgc2QcsyDxAcow4zSjxZJw@mail.gmail.com>
+Subject: Re: [PATCH 4/9] Checking sys/signal.h presence.
 To: David CARLIER <devnexen@gmail.com>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -71,14 +71,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 13:51:16 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 13:51:44 -0000
 
 On Tue, 30 Jun 2020 at 01:46, David CARLIER <devnexen@gmail.com> wrote:
 >
-> From 8b205a027dacad08ce9187474d9490667904a4e2 Mon Sep 17 00:00:00 2001
+> From 9d43c8cd1611d0347db9066b1df1dc34431b2028 Mon Sep 17 00:00:00 2001
 > From: David Carlier <devnexen@gmail.com>
-> Date: Mon, 29 Jun 2020 22:14:53 +0000
-> Subject: [PATCH 2/9] Enabling *pty api
+> Date: Mon, 29 Jun 2020 22:17:53 +0000
+> Subject: [PATCH 4/9] Checking sys/signal.h presence.
 >
 > Signed-off-by: David Carlier <devnexen@gmail.com>
 
