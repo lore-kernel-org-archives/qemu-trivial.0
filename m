@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrM79-000460-3N
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:52:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53730)
+	id 1jrM7Q-0004vX-Il
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2020 09:52:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM78-00042a-0X
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:26 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35000)
+ id 1jrM7O-0004pS-AU
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:42 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38849)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrM76-0000Ww-Cf
- for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:25 -0400
-Received: by mail-ot1-x343.google.com with SMTP id d4so26763809otk.2
- for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:23 -0700 (PDT)
+ id 1jrM7L-0000tb-R5
+ for qemu-trivial@nongnu.org; Fri, 03 Jul 2020 09:52:41 -0400
+Received: by mail-ot1-x341.google.com with SMTP id t18so13928929otq.5
+ for <qemu-trivial@nongnu.org>; Fri, 03 Jul 2020 06:52:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XPJsWCIrHF39xH7oRa7xgSt2AymTiJs4Z8j99EMpnQ0=;
- b=mf78nj9pNLBxKEUJID7pVG5rzyJXGQNeYgN7zncKhFnWb4O4AXQQxIJeLtBqhTnIHP
- 66ueDgP0/WZMYnfoFJNSlM7Q8L+cIhC1lyl2dK9ILI9s3riEsOEs94REWdQkg9EsqWse
- Gozr5YfCDRmTrOPHta3SvwRqg5Y47bT/yUDCTzGYhQnx/qRBQRbskarC4ZCQeOcWZ6LJ
- DJEQOxYycNLL+oROI3XfSvMbhuDemkIAnv+y0TYWYV3+Pf9itlpveoqrhGgfiYx7sq75
- IXagF2nue9hL4zSUzaTgEJiOqXQ5u7IbBPYITTFodSc3GkbI4pTWhbAnYDM54arYAtQi
- FmKA==
+ :cc; bh=QrnTEd+QEvPrsXhOfKMJN36kN5dABOeyqo4GoYHhfog=;
+ b=PL2jWyzBT0zYogzk15TB9sjj+IZCLD2ZgbzefED4yt/SFgFlTYSsAN+yiX15/7PRCQ
+ 3d1iSxLoVJfVxtqfw5S3c0nrVmwBcdgVC2hh6svVbjl/QUAFnu4Tyrbgx87jASVDf0Nu
+ ED7ikGKRuWiFI5iPM9xc3LGNqjCd0sWQ8+0k5Mp8cSPQKpmSlYiI+tSublXwAaHFUgIc
+ +bh1IXrvo08XQhglqQAVGYUQOnXUcWA+4CWzOc1lHSxQHtef7tZ2qtErArchZo2oeIzk
+ ZtAXEJe0kREoVd++KQd7aH3LPfUn0MfdUNx98Zu1ceAzZ4HY6A0WPqGnucuWWwmRdtXT
+ K8hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=XPJsWCIrHF39xH7oRa7xgSt2AymTiJs4Z8j99EMpnQ0=;
- b=oCZw7VRYyknT8mZioE8aKePrPhOsxkqPKBSAucZ049e9uxJkkW+Lb5IkzQFDyK8xxN
- 3CPcPAUWWBNH/jJQw6N+CAQCoajQi3AIyw7KRol309HW0D2jyMFxOniCXF/K7CAWwC7l
- /QHWQCwEDfYwaIhkoYba1fZ0OemgClcyixcWnVQ2qKYtgq1XcxwBqNcT13PAsUOLAGPf
- /1mFRW6aCkgnIxdF4HwwP+J5olEZpWsFXpfx5CXLwXB5uDGOIem4Ir1+9tbIkXGt61WA
- II0Y4eO6TPtbgKSW/o0E4BUVZ8HFZigoX6usR6zJa+u6sRC5A+mcpk7Lq/8jQyHJkuEi
- iodA==
-X-Gm-Message-State: AOAM532oogWZJdhPWvPks4yK9K3GCcauPEvPJ1SBCXF77gnz9Os5IJLc
- WVJQKBYwA8GKb4Owwz1UmeGRWc5/i1ao9L3LRGPP6Q==
-X-Google-Smtp-Source: ABdhPJx7qZ23Xx6FbBpO/xw7CRu/6RTm7/Pj62z6RrHrWU0Acvksq18+vZuTz3idktWpDnGQCXSQs/HmqGYYVlA0z1w=
-X-Received: by 2002:a9d:7303:: with SMTP id e3mr24570302otk.221.1593784343129; 
- Fri, 03 Jul 2020 06:52:23 -0700 (PDT)
+ bh=QrnTEd+QEvPrsXhOfKMJN36kN5dABOeyqo4GoYHhfog=;
+ b=DxDDrLQ3UsTE0qm1riAal7QTM3YwRX15F5XMBnOuDFzJLGZMKSSL1AAEMK+KWdKkrt
+ eatVE0FveKj8C7fKRjRIacX3qL024Z+gtoA2QUlDyAxEheXCsxFHeFQk7Mrt2CoOHlO5
+ e3VFOZPOu5fKP2bmmpLeXzRZID6QJnW0S5uB8ytX3atSD5MLV2DGqEGhKI+R0QrVsfCj
+ HbdtcTvoUde6dNLKHFN6GK+8TLgLguW55wxoL2WMTdZNGr5GQquVDG02JpcNU4gOn60f
+ xI+BCN5Be85T3hdZr15NjKSpXF7I81PUc+kosaheIf5EyGWdAF46hCdrPcI5r3E3eTVS
+ cGNw==
+X-Gm-Message-State: AOAM5314gk+CCsh0hiPR3ojuW9j/6YatbnV8S/SVwo8nWPnbEpr68CQQ
+ 7exISq+zzv9QcRLy8Rz3Odrg0SKKY6NXHAHllCJIQknd9wA=
+X-Google-Smtp-Source: ABdhPJxKv8zYmfFwXf8EJkVGU0PJLDe/BfhqZfozllUQiXiobusUmeJJhiowynu0MZNu8UTya9GkBouqvthTK6c3BNY=
+X-Received: by 2002:a05:6830:10ce:: with SMTP id
+ z14mr23290967oto.135.1593784358577; 
+ Fri, 03 Jul 2020 06:52:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqy6B_mtdwCYDAw0ZRAsmKROMw4hbw8pRznj9yPH2TwtPA@mail.gmail.com>
-In-Reply-To: <CA+XhMqy6B_mtdwCYDAw0ZRAsmKROMw4hbw8pRznj9yPH2TwtPA@mail.gmail.com>
+References: <CA+XhMqzZaXorKXQKXRNue9bhbrE3iawtM6EHNUVjGOuSayuvAw@mail.gmail.com>
+In-Reply-To: <CA+XhMqzZaXorKXQKXRNue9bhbrE3iawtM6EHNUVjGOuSayuvAw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2020 14:52:12 +0100
-Message-ID: <CAFEAcA98566jHbGuWWFO+bpQMmOTrkYZmBoB9KWSWzz2aT_O2w@mail.gmail.com>
-Subject: Re: [PATCH 6/9] Including endian.h for bswap operations
+Date: Fri, 3 Jul 2020 14:52:26 +0100
+Message-ID: <CAFEAcA-xqdBJS+yd5AYbhqzZEd7ZxfqpDQpXAcXE3pdZrMDVyA@mail.gmail.com>
+Subject: Re: [PATCH 8/9] Skipping sys/syscall.h inclusion as only used in
+ qemu_signalfd anyway
 To: David CARLIER <devnexen@gmail.com>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -71,19 +73,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2020 13:52:26 -0000
+X-List-Received-Date: Fri, 03 Jul 2020 13:52:42 -0000
 
-On Tue, 30 Jun 2020 at 01:46, David CARLIER <devnexen@gmail.com> wrote:
+On Tue, 30 Jun 2020 at 01:49, David CARLIER <devnexen@gmail.com> wrote:
 >
-> From 2f65cab41a8f4508532b3893815f222bf2293463 Mon Sep 17 00:00:00 2001
+> From b821b7e9bbf1f327058ee858a92c7a7ee6740e63 Mon Sep 17 00:00:00 2001
 > From: David Carlier <devnexen@gmail.com>
-> Date: Mon, 29 Jun 2020 22:19:34 +0000
-> Subject: [PATCH 6/9] Including endian.h for bswap operations.
+> Date: Mon, 29 Jun 2020 22:20:39 +0000
+> Subject: [PATCH 8/9] Skipping sys/syscall.h inclusion as only used in
+>  qemu_signalfd anyway.
 >
 > Signed-off-by: David Carlier <devnexen@gmail.com>
 > ---
->  include/qemu/bswap.h | 2 ++
->  1 file changed, 2 insertions(+)8
+>  util/compatfd.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
