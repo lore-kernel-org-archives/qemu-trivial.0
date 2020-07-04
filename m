@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrkmF-00054m-E1
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Jul 2020 12:12:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47614)
+	id 1jrlJh-0008SY-0C
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Jul 2020 12:47:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkmE-000535-2T
- for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:12:30 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28054
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrlJf-0008S5-EM
+ for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:47:03 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:53138
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkmC-00074q-Hl
- for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:12:29 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrlJd-00075m-HB
+ for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:47:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593879148;
+ s=mimecast20190719; t=1593881220;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=I6EbQC+4n7BnvuTnV5GlBDgAKh3ptuniVuwiQ4k+Rhw=;
- b=EkAvqqIP4OuuCEkV6m+XQ2GjyUGTlouPz3GjycGLLiFELjHObEp85ZWpz+ADOj0UCXLuVb
- o23uNmMRxaHlUdoLaS3M6mAc9P8KRexAS3JMkoAWk1bS13r8iyoax/Vd1lQYH0GAakMlii
- 7Ou43Jey2jUMzkMIYwu5mKVlN/e2gAM=
+ bh=tUnP0Wk+S20UiKNkYK+bT8ylXVFKHlZoWY6QjHpV6JA=;
+ b=cOBJe5lXbwQPlnnQ4gRx8bEoSEOw3si6YlnLPefr81le4vHXWkvDWK6iEcFhmbSgdLmx6o
+ uVF/D/zoGtJ93X0pFtIQTrsjoA38q+Lh+SvxJqxmnYFUnOIcUuEBnwJhrHlHgqJgPRK0sz
+ dG1kKTnVOU7NUsnN6MXjLd4Qlb7y/EQ=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-507-6_43E0P0NuWPPmg5J2Q4_Q-1; Sat, 04 Jul 2020 12:12:23 -0400
-X-MC-Unique: 6_43E0P0NuWPPmg5J2Q4_Q-1
-Received: by mail-wr1-f69.google.com with SMTP id d11so18599012wrw.12
- for <qemu-trivial@nongnu.org>; Sat, 04 Jul 2020 09:12:23 -0700 (PDT)
+ us-mta-280-Q30Mge68MyC9pHuWt3JFRw-1; Sat, 04 Jul 2020 12:46:57 -0400
+X-MC-Unique: Q30Mge68MyC9pHuWt3JFRw-1
+Received: by mail-wr1-f69.google.com with SMTP id j16so30808221wrw.3
+ for <qemu-trivial@nongnu.org>; Sat, 04 Jul 2020 09:46:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=I6EbQC+4n7BnvuTnV5GlBDgAKh3ptuniVuwiQ4k+Rhw=;
- b=pmhFUtD7JXmCF4868VL6O4GAXQgyGaSMVrrf9qQ7c79pbqqqBYYI4/mhNVrkQgcCI8
- TCb/x7Xw5HoVIZwljqjmaIikbw06cA4npwUVd1AFqNcMvaRiC86ZMDK4zZIZp/56xI+C
- caCKhjGpGRp+FmJKXp18at5NudOIry4L/Vw/xY7gscYkevQy5wGzOTRwwhaqezTqIcJN
- aHWKhhjtzU9wVMc6xzpPceKH6oYAoCDD8gNjv7zu4iqF3mbsoggyzT8zLCsiAKgFRfYJ
- dkhN8ggymBCzUiRrdLm6KWv0OgODCdg5hL9lRvY+JXaY8o9xDqzIzrvdFxzKWjjzRpO5
- VUqw==
-X-Gm-Message-State: AOAM533Wzii8Bs46bMPzkkQ840lNlyLZxvA9P1pSqlxorng+ZopPNoX+
- kLRnW2frBk2xHv+7qemKx2BhEFJpJ2uv3tte25z+vgTsc0tYFeWZ4NQE+rwV0dlXOzII9nkohwV
- e+Ja8vAl0LsapQF8eMA==
-X-Received: by 2002:a1c:7916:: with SMTP id l22mr33184244wme.115.1593879142275; 
- Sat, 04 Jul 2020 09:12:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGjfcpK1SRBF+cFHobNnuRej3sQFqvXBR49U7wkqAbY2PSfUFTAgP02yO/wQnvKIlLRepIxA==
-X-Received: by 2002:a1c:7916:: with SMTP id l22mr33184231wme.115.1593879142087; 
- Sat, 04 Jul 2020 09:12:22 -0700 (PDT)
+ bh=tUnP0Wk+S20UiKNkYK+bT8ylXVFKHlZoWY6QjHpV6JA=;
+ b=OyuPZ3Lx71wnz2FySlTIySgHXqW9A1p0hykvNen+9txmNSKpMpBi+sm+VbBNvez/vb
+ 7oIOjX5NjFESn/UiK+E8bxAtOVSbSip94KZnQtGSlrRqiL7+Yp8qZiwY8bwEaEsllzr/
+ sqDD/93R7KZW9VFDBZnNuaRTHc8ew7zQLdlti50s08Srv6BdRGrWOv0dnCDkJ1m6T2rc
+ FIT9ITZB+6KW8En6/bLdSJFMTypySAmwDJlK4N6GZ4tTaEcAvinDBpWk6AxtkSiidgEp
+ zUvLCd3UVWeBk7hfxZ2ZvLC5qgVlv+Iu3Me9koorngWQvwJrHUOdhWKRjTRkeeoIzzBj
+ LvUA==
+X-Gm-Message-State: AOAM532D3pMYVsXs242EhudZujQJI/fFcJx0wj6peWiW2UMy89KSv3xu
+ osmrhkBbXB5rxTNA4FAuKt3egD2iUgOV47qpgditvSzfimXOsGd5QxPboTms7LZRZku0Mo8kVA2
+ d8pMS1IZfKeNB0D7Opg==
+X-Received: by 2002:a1c:f00a:: with SMTP id a10mr43252782wmb.61.1593881215970; 
+ Sat, 04 Jul 2020 09:46:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBdTCRNZgA4yWRcw+aa8QhvXOHUS820A8U8jU6jBOUOUlk9dey3abvuI4X2mFVLHBXwwncdg==
+X-Received: by 2002:a1c:f00a:: with SMTP id a10mr43252759wmb.61.1593881215700; 
+ Sat, 04 Jul 2020 09:46:55 -0700 (PDT)
 Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id z25sm16089866wmk.28.2020.07.04.09.12.21
+ by smtp.gmail.com with ESMTPSA id v18sm18334219wrv.49.2020.07.04.09.46.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Jul 2020 09:12:21 -0700 (PDT)
-Subject: Re: [PATCH] MAINTAINERS: Update Radoslaw Biernacki email address
-To: Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
- qemu-arm <qemu-arm@nongnu.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200512170704.9290-1-rad@semihalf.com>
+ Sat, 04 Jul 2020 09:46:54 -0700 (PDT)
+Subject: Re: [PATCH v2] util/qemu-option: Document the get_opt_value() function
+To: qemu-devel@nongnu.org
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200629070858.19850-1-philmd@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -81,22 +82,22 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <80ccdde4-77db-4e83-f711-6a7c389c31bf@redhat.com>
-Date: Sat, 4 Jul 2020 18:12:20 +0200
+Message-ID: <6f29f849-ca31-86b7-6b97-f0dbe8c5b52e@redhat.com>
+Date: Sat, 4 Jul 2020 18:46:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200512170704.9290-1-rad@semihalf.com>
+In-Reply-To: <20200629070858.19850-1-philmd@redhat.com>
 Content-Language: en-US
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/04 11:39:14
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/04 11:39:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -117,45 +118,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Jul 2020 16:12:30 -0000
+X-List-Received-Date: Sat, 04 Jul 2020 16:47:03 -0000
 
-Cc'ing qemu-trivial...
+Cc'ing qemu-trivial.
 
-On 5/12/20 7:07 PM, Radoslaw Biernacki wrote:
-> My Linaro account is no longer active and stop forwarding emails to me.
-> Changing it to my current employer domain.
+On 6/29/20 9:08 AM, Philippe Mathieu-Daudé wrote:
+> Coverity noticed commit 950c4e6c94 introduced a dereference before
+> null check in get_opt_value (CID1391003):
 > 
-> Signed-off-by: Radoslaw Biernacki <rad@semihalf.com>
+>   In get_opt_value: All paths that lead to this null pointer
+>   comparison already dereference the pointer earlier (CWE-476)
+> 
+> We fixed this in commit 6e3ad3f0e31, but relaxed the check in commit
+> 0c2f6e7ee99 because "No callers of get_opt_value() pass in a NULL
+> for the 'value' parameter".
+> 
+> Since this function is publicly exposed, it risks new users to do
+> the same error again. Avoid that documenting the 'value' argument
+> must not be NULL.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  .mailmap    | 1 +
->  MAINTAINERS | 2 +-
->  2 files changed, 2 insertions(+), 1 deletion(-)
+> v2: Drop confuse comment (Damien Hedde)
+> ---
+>  include/qemu/option.h | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
-> diff --git a/.mailmap b/.mailmap
-> index 6412067bde..668da447e3 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -46,6 +46,7 @@ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
->  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
->  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
->  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
-> +Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
->  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
->  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
->  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1f84e3ae2c..a9d6893036 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -799,7 +799,7 @@ F: include/hw/misc/imx6_*.h
->  F: include/hw/ssi/imx_spi.h
+> diff --git a/include/qemu/option.h b/include/qemu/option.h
+> index eb4097889d..ac50d25774 100644
+> --- a/include/qemu/option.h
+> +++ b/include/qemu/option.h
+> @@ -28,6 +28,19 @@
 >  
->  SBSA-REF
-> -M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-> +M: Radoslaw Biernacki <rad@semihalf.com>
->  M: Peter Maydell <peter.maydell@linaro.org>
->  R: Leif Lindholm <leif@nuviainc.com>
->  L: qemu-arm@nongnu.org
+>  #include "qemu/queue.h"
+>  
+> +/**
+> + * get_opt_value
+> + * @p: a pointer to the option name, delimited by commas
+> + * @value: a non-NULL pointer that will received the delimited options
+> + *
+> + * The @value char pointer will be allocated and filled with
+> + * the delimited options.
+> + *
+> + * Returns the position of the comma delimiter/zero byte after the
+> + * option name in @p.
+> + * The memory pointer in @value must be released with a call to g_free()
+> + * when no longer required.
+> + */
+>  const char *get_opt_value(const char *p, char **value);
+>  
+>  void parse_option_size(const char *name, const char *value,
 > 
 
 
