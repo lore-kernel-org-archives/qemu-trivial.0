@@ -1,79 +1,109 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jrg93-00021V-E1
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Jul 2020 07:15:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50304)
+	id 1jrkmF-00054m-E1
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Jul 2020 12:12:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrg92-0001zK-3p; Sat, 04 Jul 2020 07:15:44 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35193)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrg90-0001Lp-K1; Sat, 04 Jul 2020 07:15:43 -0400
-Received: by mail-wr1-x444.google.com with SMTP id z2so13128887wrp.2;
- Sat, 04 Jul 2020 04:15:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DxHG1Nn2j8/G2flMc0wwa8Ea9DC1rh/+fzTn6MURWWI=;
- b=FIRWzGW2I+KJ9KMMgH/Nqc7FYnwf5lV3ZC+Lea3ZYnTHF+D/axkYuOZo+i24xCaPrF
- QezPdH05902vwQD6S4BCet+lMUSFZqDDQV5VaBKQ40grFwbyl2Ahh7nHzTZbPfhLKkR+
- QvS3Pnr5oTsQAa0XpMZVRNyrYUi07go5Ub85bExoRd52fbSxw1TCTu5GW/ZkQjC7vHYq
- JpxAocWWz55hlDk3WEfmUpu+AB/IHyqRpyHAWd5QDXwk9eLZTAXCG65AhKNFg3dnN7PO
- uOBgM952ipCagJ3mbmg5kLa3Iw5ZgUQKxADaPFfiYEZ3VJaxILYLMRPoPbOboCozpnrE
- KYBQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkmE-000535-2T
+ for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:12:30 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28054
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkmC-00074q-Hl
+ for qemu-trivial@nongnu.org; Sat, 04 Jul 2020 12:12:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593879148;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=I6EbQC+4n7BnvuTnV5GlBDgAKh3ptuniVuwiQ4k+Rhw=;
+ b=EkAvqqIP4OuuCEkV6m+XQ2GjyUGTlouPz3GjycGLLiFELjHObEp85ZWpz+ADOj0UCXLuVb
+ o23uNmMRxaHlUdoLaS3M6mAc9P8KRexAS3JMkoAWk1bS13r8iyoax/Vd1lQYH0GAakMlii
+ 7Ou43Jey2jUMzkMIYwu5mKVlN/e2gAM=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-507-6_43E0P0NuWPPmg5J2Q4_Q-1; Sat, 04 Jul 2020 12:12:23 -0400
+X-MC-Unique: 6_43E0P0NuWPPmg5J2Q4_Q-1
+Received: by mail-wr1-f69.google.com with SMTP id d11so18599012wrw.12
+ for <qemu-trivial@nongnu.org>; Sat, 04 Jul 2020 09:12:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DxHG1Nn2j8/G2flMc0wwa8Ea9DC1rh/+fzTn6MURWWI=;
- b=MkITKdqBaH9HNFniboIjHpLknhAJydOnc1jpyV/ulBrq964df5NKt6Wom5MbS2Otfm
- a7ydqPRKjBshtchFMHJkguyBtz7r9CR+vazKuNcb85mS4/vVShUMrg9G7GbnLquIYxXO
- +AEEDz038BbYnSeh6PGgH7gBQmQqD6LpLvLUbrA8ZTxZzQ1ktRzPu4e5GpMl/FYJMES5
- C4T8tx0jOsD4ORS8KW7yKxgmIGUo/tLaG83nAiTr1Q8WRTo666NtXkVt7bb5nSP8C+9H
- 51kOEuZFnJiL6rYiKisMbhCHgdL1R4W9VOjXffrJucZb6/mhM9aMoAoJ64+ndXJ8iYlt
- xxCw==
-X-Gm-Message-State: AOAM5330pLIWHU0kJe+zqb4BRpZTlykXD5EDbNgjr6QY2ANH9BZlCsWV
- D0g5snxT0UwW+yTx6RK8Oqk=
-X-Google-Smtp-Source: ABdhPJwZ79wCFp8gNa5EGDstTYrZ4o4ZE8Nwy8ALntrtdY45s0WTz3G29VfuBqQ/F3GgrEHqBFA6qg==
-X-Received: by 2002:a5d:408c:: with SMTP id o12mr40437247wrp.412.1593861340211; 
- Sat, 04 Jul 2020 04:15:40 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=I6EbQC+4n7BnvuTnV5GlBDgAKh3ptuniVuwiQ4k+Rhw=;
+ b=pmhFUtD7JXmCF4868VL6O4GAXQgyGaSMVrrf9qQ7c79pbqqqBYYI4/mhNVrkQgcCI8
+ TCb/x7Xw5HoVIZwljqjmaIikbw06cA4npwUVd1AFqNcMvaRiC86ZMDK4zZIZp/56xI+C
+ caCKhjGpGRp+FmJKXp18at5NudOIry4L/Vw/xY7gscYkevQy5wGzOTRwwhaqezTqIcJN
+ aHWKhhjtzU9wVMc6xzpPceKH6oYAoCDD8gNjv7zu4iqF3mbsoggyzT8zLCsiAKgFRfYJ
+ dkhN8ggymBCzUiRrdLm6KWv0OgODCdg5hL9lRvY+JXaY8o9xDqzIzrvdFxzKWjjzRpO5
+ VUqw==
+X-Gm-Message-State: AOAM533Wzii8Bs46bMPzkkQ840lNlyLZxvA9P1pSqlxorng+ZopPNoX+
+ kLRnW2frBk2xHv+7qemKx2BhEFJpJ2uv3tte25z+vgTsc0tYFeWZ4NQE+rwV0dlXOzII9nkohwV
+ e+Ja8vAl0LsapQF8eMA==
+X-Received: by 2002:a1c:7916:: with SMTP id l22mr33184244wme.115.1593879142275; 
+ Sat, 04 Jul 2020 09:12:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGjfcpK1SRBF+cFHobNnuRej3sQFqvXBR49U7wkqAbY2PSfUFTAgP02yO/wQnvKIlLRepIxA==
+X-Received: by 2002:a1c:7916:: with SMTP id l22mr33184231wme.115.1593879142087; 
+ Sat, 04 Jul 2020 09:12:22 -0700 (PDT)
 Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id h2sm16570247wrw.62.2020.07.04.04.15.39
+ by smtp.gmail.com with ESMTPSA id z25sm16089866wmk.28.2020.07.04.09.12.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Jul 2020 04:15:39 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v3 14/19] .mailmap: Display correct email address for
- Michael Tokarev
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20200702173818.14651-1-f4bug@amsat.org>
- <20200702173818.14651-15-f4bug@amsat.org>
- <dc28e476-a39e-b300-6810-2ed08f3540e9@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5cd68597-7e80-7eff-0f64-98ec5d4d535c@amsat.org>
-Date: Sat, 4 Jul 2020 13:15:38 +0200
+ Sat, 04 Jul 2020 09:12:21 -0700 (PDT)
+Subject: Re: [PATCH] MAINTAINERS: Update Radoslaw Biernacki email address
+To: Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
+ qemu-arm <qemu-arm@nongnu.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200512170704.9290-1-rad@semihalf.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <80ccdde4-77db-4e83-f711-6a7c389c31bf@redhat.com>
+Date: Sat, 4 Jul 2020 18:12:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <dc28e476-a39e-b300-6810-2ed08f3540e9@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200512170704.9290-1-rad@semihalf.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/04 11:39:14
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,33 +117,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Jul 2020 11:15:44 -0000
+X-List-Received-Date: Sat, 04 Jul 2020 16:12:30 -0000
 
-+Alex/Laurent
+Cc'ing qemu-trivial...
 
-On 7/2/20 8:45 PM, Michael Tokarev wrote:
-> 02.07.2020 20:38, Philippe Mathieu-Daudé wrote:
->> Fix Michael Tokarev email address in the following commits:
->>
->>   $ git log --committer=mjt@gandalf --oneline
+On 5/12/20 7:07 PM, Radoslaw Biernacki wrote:
+> My Linaro account is no longer active and stop forwarding emails to me.
+> Changing it to my current employer domain.
 > 
-> Heh. It was a misconfiguration on my part which I haven't noticed
-> for quite some time.  Dunno if it's worth the effort to fix that
-> now, since all the commits are old (in 2016), and all are trivial.
+> Signed-off-by: Radoslaw Biernacki <rad@semihalf.com>
+> ---
+>  .mailmap    | 1 +
+>  MAINTAINERS | 2 +-
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/.mailmap b/.mailmap
+> index 6412067bde..668da447e3 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -46,6 +46,7 @@ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
+>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+> +Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1f84e3ae2c..a9d6893036 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -799,7 +799,7 @@ F: include/hw/misc/imx6_*.h
+>  F: include/hw/ssi/imx_spi.h
+>  
+>  SBSA-REF
+> -M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+> +M: Radoslaw Biernacki <rad@semihalf.com>
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  R: Leif Lindholm <leif@nuviainc.com>
+>  L: qemu-arm@nongnu.org
+> 
 
-So this all started when Alex added the contrib/gitdm/ scripts,
-I noted various encoding discrepancy. Alex merged the first patch
-directly as commit 1fed8f0044 ("mailmap: Add many entries to
-improve 'git shortlog' statistics"), then Markus asked me to
-justify each alias fixed with a commit with a combination of
-(broken author email + good S-o-b tag). Then Markus gave his
-R-b tag, but Alex was busy so I asked it could go via the trivial
-tree. Laurent said OK but I had to split in 1 patch per person,
-and each person should Ack his own line.
-With this v3 I complied with all previous reviews, but I guess
-I failed at explaining why/how this started. As this is an
-amazing use of my time, I wanted to get over it, maybe too
-quickly. So now I'll respin a v4 with more detailed explanation,
-suggesting each person to either Ack/Nack each patch, then give
-up.
 
