@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1js89l-00012K-GU
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 13:10:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35020)
+	id 1js9C7-000303-CG
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 14:16:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1js89k-00011m-De
- for qemu-trivial@nongnu.org; Sun, 05 Jul 2020 13:10:20 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41911)
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1js9C5-0002zI-M4; Sun, 05 Jul 2020 14:16:49 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:39155)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1js89i-00072t-HL
- for qemu-trivial@nongnu.org; Sun, 05 Jul 2020 13:10:20 -0400
-Received: by mail-ot1-x342.google.com with SMTP id a21so6738643otq.8
- for <qemu-trivial@nongnu.org>; Sun, 05 Jul 2020 10:10:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1js9C4-0003KT-9G; Sun, 05 Jul 2020 14:16:49 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id b92so16025265pjc.4;
+ Sun, 05 Jul 2020 11:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5ZQRbT758TX2gxOlkJidQdi2GmVVmVYR4ms97Buz708=;
- b=cHa8D6B9W/dAZ1YoX4vO0Kw5a4hl9+Lnm5gBG7egJDeOp1gq666D7Byz4fgjIdHv/e
- nJHuJY7gKle0I+cSq3oBAymVvSQrXdUrwsmNCfrJ4jaUcbzrEWV2sXJsQzyKOtvs2/Ok
- 02wqs9r4B+86yIgHfdz775BCi8QP0049oGcfQyPzY/U1d8vFFCygiiQxYpXOMT6bk3eA
- 34absVQNOJaUkhTZGoKlKVo86zx5mzxxab3ObmIuh9AGrzR6E6toHfFpibdBLuYQEFKr
- uQzW1Ex7y+LR0IHALbBC3P0lGzd2Od+X7f5mH0v+oO6t5dDAmVRfka91gWYiSjA1AD3g
- v4aw==
+ :cc; bh=vzwXKwBxzMlfQOfpm981coONyXr9PQ6P2V2Qm8gfRoI=;
+ b=fSWiZTFqoTFCNo1uejRPO6gY/DMUIc0LgWA4QJYi4qEyT4pqlgqWpa6U60DMWlbraD
+ xDdJlUG+sQdIxn4tChskQGNVVqToIOJWLNdWvyxMMTq6w5H5x2g7SZA6CgsG4pq2KzLQ
+ U9JT/Hze3meujLQtqA5Dm1tftVwszrRMM5y9D/DX5m9NajahWjOtTbGpIoiF2BP75Cq6
+ W5CdCLzo6tlJcD7X6ld3zCXrYQTghT0ybwvO2BqqtUcZWjig0lF6wGNWQUOnADO8e70q
+ UA/ILs/H8KaRH2/SkieTcH+dBGJX/WX/J/yW6hrVCy6lmanLKJzXD+C7x0gBf7osSyJc
+ pRlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=5ZQRbT758TX2gxOlkJidQdi2GmVVmVYR4ms97Buz708=;
- b=acGQMygD77kc4S1kpZ3jf7xq8p+QGAYjlxAITr+IYkelhGfihjmWTvloysnEextKE6
- aQWlTqHcD32AjziljO1bPsCUO/gBWrvntYn4gdECt7kHMt8Imd9mzdf4vxuzv9mQcjGD
- xemXPBfwtvEp3Xj5KzLtS7+vvtUHGdUVg2ogWGX5TpGQl3sIS7e1Z0OHSbxk9q8b22HJ
- +jmIO4/hdc76zMd+NwbpBWzMgvQqWcH8sVblwnrbgiPOhOCnQu1CU0dUDQH9OGJOuHDb
- H7+lq9rlntRfx0tzbHt9ic7/W5k4UFHMsj7Di9tLXsBY9vK37cquvK7kdiADcTt3S6Tc
- Qf6g==
-X-Gm-Message-State: AOAM531Q8HH1vNqITnIOCu17lyKjt92+qt923AfuIPmdgr1nm4IIHj3H
- VB2CNf2A81oxuDA1QNTwMfkZD9viQZYjEXtQ+/tdKQ==
-X-Google-Smtp-Source: ABdhPJzrJODtJsCWs6wfu+Re0oghWaghNIS+jPK4C5pft8NSsjBesGkl020U2jaHFmy0gKEPLQiv2TBqoHEtFXJbSSU=
-X-Received: by 2002:a05:6830:10ce:: with SMTP id
- z14mr30932395oto.135.1593969017498; 
- Sun, 05 Jul 2020 10:10:17 -0700 (PDT)
+ bh=vzwXKwBxzMlfQOfpm981coONyXr9PQ6P2V2Qm8gfRoI=;
+ b=XxwrnCz1uuZWhMXEvJ4kRDfwJGEcR+OYgf9CciYxtoKppCpMqoig/SY0Uojcy9I8oX
+ CBw4Ry5+jnrhLbDBHFPPohXD36De2KJfeOPVRolokxB2dRqN4dJdBoWtaU5s857E5xH0
+ 3Lgv6ouJxxeBz/5DZzAtWeHDpl7RegSiC6O/x4E8P7tB+ATivxCZHfM7wvadxMypYysG
+ Wb2pGhjpBn2OZ0cBOMsWz+qFUfYayiGxSD1VYBktQX76/N97R7sy4qV262omiHhqpqos
+ ICiJbDHWfl7XSaw0r8xIch16OXio8KUtudSY16ej7Yya20rbLimsMHhgMDkomF37cFxZ
+ fUzw==
+X-Gm-Message-State: AOAM532K3HpURYYsajgcYA6d3o6z1Bq6gCw6Qv6ZcAcjKb/OQOdyGoE+
+ LrLuafMGVnEN4Uwq/zYujyN4ojdEHq0STzdgh+0=
+X-Google-Smtp-Source: ABdhPJwp0YshKfHrboJI+dbiYHih4Fj+ess4NkMwddohSRmrXCMLjxW4gKo9lrk+B3OdrWJNyAVpBfyqhQ1tcEq5IV0=
+X-Received: by 2002:a17:902:b694:: with SMTP id
+ c20mr37838996pls.123.1593973006134; 
+ Sun, 05 Jul 2020 11:16:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200629160535.3910-1-wentong.wu@intel.com>
  <20200629160535.3910-3-wentong.wu@intel.com>
-In-Reply-To: <20200629160535.3910-3-wentong.wu@intel.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 5 Jul 2020 18:10:06 +0100
-Message-ID: <CAFEAcA-1eFyMNkqg-c3dTZv7HjVRUPbwcbZht5HV1mwgzrMcBQ@mail.gmail.com>
+ <3260735e-05ab-2d42-f7e4-914ad804f543@linaro.org>
+ <CAFEAcA_+e7hrA5GRGb=gv3GxJRL77ARP34vyudRbiqhdsNVKwg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_+e7hrA5GRGb=gv3GxJRL77ARP34vyudRbiqhdsNVKwg@mail.gmail.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Sun, 5 Jul 2020 11:16:34 -0700
+Message-ID: <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
 Subject: Re: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl
  instruction
-To: Wentong Wu <wentong.wu@intel.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>, 
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
+ Marek Vasut <marex@denx.de>, Wentong Wu <wentong.wu@intel.com>, 
+ QEMU Developers <qemu-devel@nongnu.org>, Chris Wulff <crwulff@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=jcmvbkbc@gmail.com; helo=mail-pj1-x1042.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -76,52 +78,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jul 2020 17:10:20 -0000
+X-List-Received-Date: Sun, 05 Jul 2020 18:16:49 -0000
 
-On Mon, 29 Jun 2020 at 09:17, Wentong Wu <wentong.wu@intel.com> wrote:
+On Sun, Jul 5, 2020 at 10:09 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Thu, 2 Jul 2020 at 19:53, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+> > This isn't right.  Not so much the gen_io_start portion, but the entire
+> > existence of helper_check_interrupt.
 >
-> wrctl instruction on nios2 target will cause checking cpu
-> interrupt but tcg_handle_interrupt() will call cpu_abort()
-> if the CPU gets an interrupt while it's not in 'can do IO'
-> state, so add gen_io_start around wrctl instruction. Also
-> at the same time, end the onging TB with DISAS_UPDATE.
->
-> Signed-off-by: Wentong Wu <wentong.wu@intel.com>
-> ---
->  target/nios2/translate.c | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-> index 83c10eb2..51347ada 100644
-> --- a/target/nios2/translate.c
-> +++ b/target/nios2/translate.c
-> @@ -32,6 +32,7 @@
->  #include "exec/cpu_ldst.h"
->  #include "exec/translator.h"
->  #include "qemu/qemu-print.h"
-> +#include "exec/gen-icount.h"
->
->  /* is_jmp field values */
->  #define DISAS_JUMP    DISAS_TARGET_0 /* only pc was modified dynamically */
-> @@ -518,7 +519,11 @@ static void wrctl(DisasContext *dc, uint32_t code, uint32_t flags)
->      /* If interrupts were enabled using WRCTL, trigger them. */
->  #if !defined(CONFIG_USER_ONLY)
->      if ((instr.imm5 + CR_BASE) == CR_STATUS) {
-> +        if (tb_cflags(dc->tb) & CF_USE_ICOUNT) {
-> +            gen_io_start();
-> +        }
->          gen_helper_check_interrupts(dc->cpu_env);
-> +        dc->is_jmp = DISAS_UPDATE;
->      }
->  #endif
->  }
+> I agree that it looks bogus (xtensa has a similar helper as well, incidentally),
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I think there was a reason for it. According to Richard
 
-though as Richard notes ideally the interrupt handling code here should
-be rewritten because the check_interrupts helper is a very weird way
-to implement things.
+> The correct way to acknowledge interrupts after changing an interrupt mask bit
+> is to exit the TB back to the cpu main loop.
 
-thanks
--- PMM
+But if I do this change for Xtensa I get a bunch of test_interrupt failures
+that indicate that the interrupt that should have been taken wasn't taken.
+FTR here's the change that I tested, did I miss something?
+
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index fdf47642e6f1..85e8d65f169d 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -631,18 +631,10 @@ static int gen_postprocess(DisasContext *dc, int slot)
+ {
+     uint32_t op_flags = dc->op_flags;
+
+-#ifndef CONFIG_USER_ONLY
+-    if (op_flags & XTENSA_OP_CHECK_INTERRUPTS) {
+-        if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
+-            gen_io_start();
+-        }
+-        gen_helper_check_interrupts(cpu_env);
+-    }
+-#endif
+     if (op_flags & XTENSA_OP_SYNC_REGISTER_WINDOW) {
+         gen_helper_sync_windowbase(cpu_env);
+     }
+-    if (op_flags & XTENSA_OP_EXIT_TB_M1) {
++    if (op_flags & (XTENSA_OP_EXIT_TB_M1 | XTENSA_OP_CHECK_INTERRUPTS)) {
+         slot = -1;
+     }
+     return slot;
+@@ -1175,7 +1167,7 @@ static void disas_xtensa_insn(CPUXtensaState
+*env, DisasContext *dc)
+     if (dc->base.is_jmp == DISAS_NEXT) {
+         gen_postprocess(dc, 0);
+         dc->op_flags = 0;
+-        if (op_flags & XTENSA_OP_EXIT_TB_M1) {
++        if (op_flags & (XTENSA_OP_EXIT_TB_M1 | XTENSA_OP_CHECK_INTERRUPTS)) {
+             /* Change in mmu index, memory mapping or tb->flags; exit tb */
+             gen_jumpi_check_loop_end(dc, -1);
+         } else if (op_flags & XTENSA_OP_EXIT_TB_0) {
+
+
+-- 
+Thanks.
+-- Max
 
