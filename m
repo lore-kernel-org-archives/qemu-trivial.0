@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1js9C7-000303-CG
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 14:16:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45908)
+	id 1jsBeT-0007We-Pd
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 16:54:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1js9C5-0002zI-M4; Sun, 05 Jul 2020 14:16:49 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:39155)
+ id 1jsBeQ-0007WL-8b; Sun, 05 Jul 2020 16:54:14 -0400
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:38254)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1js9C4-0003KT-9G; Sun, 05 Jul 2020 14:16:49 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id b92so16025265pjc.4;
- Sun, 05 Jul 2020 11:16:47 -0700 (PDT)
+ id 1jsBeO-0001Yb-QD; Sun, 05 Jul 2020 16:54:13 -0400
+Received: by mail-pj1-x1043.google.com with SMTP id k5so6531980pjg.3;
+ Sun, 05 Jul 2020 13:54:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vzwXKwBxzMlfQOfpm981coONyXr9PQ6P2V2Qm8gfRoI=;
- b=fSWiZTFqoTFCNo1uejRPO6gY/DMUIc0LgWA4QJYi4qEyT4pqlgqWpa6U60DMWlbraD
- xDdJlUG+sQdIxn4tChskQGNVVqToIOJWLNdWvyxMMTq6w5H5x2g7SZA6CgsG4pq2KzLQ
- U9JT/Hze3meujLQtqA5Dm1tftVwszrRMM5y9D/DX5m9NajahWjOtTbGpIoiF2BP75Cq6
- W5CdCLzo6tlJcD7X6ld3zCXrYQTghT0ybwvO2BqqtUcZWjig0lF6wGNWQUOnADO8e70q
- UA/ILs/H8KaRH2/SkieTcH+dBGJX/WX/J/yW6hrVCy6lmanLKJzXD+C7x0gBf7osSyJc
- pRlQ==
+ :cc; bh=Vc/HBrgID2IsA3qadurmoqsX6c2eBRLY7r2F4iMCf3s=;
+ b=uqNwEpUSeEUZGVi51/V9GifUKUpplX6pZF6FIk9ijhpZBnGV0kSWkY9/mZr6u2fSHc
+ xYVZCqxqvejmCV9TbmH46DeGqhtMKvPzCsDfoXPcDTMzBmYZjkhzWr7OM4o+QgmCOlwB
+ 4U9I7h1Sn1SEfI2+0W5ayrFSZtaKBXb7fJ51wZY60Y2NgWZcK4T3gOLgiI6yYbP7Jtmq
+ 9Rdf35MlNOO/yCGdVd2UkEzMLOslkoM/sD9hOSJd8nyocBbNCdzt3f6iQ0lCPyYN+LOc
+ 0ymWogWcbWoWJEYqXajU3dpLS3z48jtVddLRZYq52Zo8d2zbVXKtSIGvu1Zi71Py3NXh
+ H8ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=vzwXKwBxzMlfQOfpm981coONyXr9PQ6P2V2Qm8gfRoI=;
- b=XxwrnCz1uuZWhMXEvJ4kRDfwJGEcR+OYgf9CciYxtoKppCpMqoig/SY0Uojcy9I8oX
- CBw4Ry5+jnrhLbDBHFPPohXD36De2KJfeOPVRolokxB2dRqN4dJdBoWtaU5s857E5xH0
- 3Lgv6ouJxxeBz/5DZzAtWeHDpl7RegSiC6O/x4E8P7tB+ATivxCZHfM7wvadxMypYysG
- Wb2pGhjpBn2OZ0cBOMsWz+qFUfYayiGxSD1VYBktQX76/N97R7sy4qV262omiHhqpqos
- ICiJbDHWfl7XSaw0r8xIch16OXio8KUtudSY16ej7Yya20rbLimsMHhgMDkomF37cFxZ
- fUzw==
-X-Gm-Message-State: AOAM532K3HpURYYsajgcYA6d3o6z1Bq6gCw6Qv6ZcAcjKb/OQOdyGoE+
- LrLuafMGVnEN4Uwq/zYujyN4ojdEHq0STzdgh+0=
-X-Google-Smtp-Source: ABdhPJwp0YshKfHrboJI+dbiYHih4Fj+ess4NkMwddohSRmrXCMLjxW4gKo9lrk+B3OdrWJNyAVpBfyqhQ1tcEq5IV0=
+ bh=Vc/HBrgID2IsA3qadurmoqsX6c2eBRLY7r2F4iMCf3s=;
+ b=SbG1kqWjtD4DinASIDIShqFrMfoB8jdQWIclFdKIw9WNx6ULu5h6DGEKVqd1wuaCym
+ 0Xi2rNQHtrrQ2B8LEaF6i/SHc22pouQqB+c1F0b03WUjVgZoVlySqnmg89ndQudlN6tD
+ A/iCcE4VUCMwi7KMgq6UEGdb1LDiPjIm9nXyQ9bo+J4JW9GrtGL/yCw+RY92Po6njddR
+ skOZm6o24QVFauovEx6JWe/hPqVov0yzY4QkvN4ARSsxADRV1ZKFaGbCU5epuSaQR3lz
+ LlrNmurlHOJSd620Sa2/52075GpEzLEhHUDXQ+mBDg5+aw457lfqTC+jGexr8hTSQfK8
+ cjrw==
+X-Gm-Message-State: AOAM530lsAFmFG9PnQBoIXAxvncDL4NRKoT3yHDUPrO9XzWTOppUdfF4
+ YAJwxAsyP7TwFJp66f+fBKJk8EmV2af8pIa9zIQ=
+X-Google-Smtp-Source: ABdhPJytteY4dHGHW3TQFV1zMy/0pQ96RrHIWNbpVQztA58X1KG2s9EDNzZiaS+jsXACR6FVgrYgHqahqwRASTUM0fs=
 X-Received: by 2002:a17:902:b694:: with SMTP id
- c20mr37838996pls.123.1593973006134; 
- Sun, 05 Jul 2020 11:16:46 -0700 (PDT)
+ c20mr38184926pls.123.1593982450781; 
+ Sun, 05 Jul 2020 13:54:10 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200629160535.3910-1-wentong.wu@intel.com>
  <20200629160535.3910-3-wentong.wu@intel.com>
  <3260735e-05ab-2d42-f7e4-914ad804f543@linaro.org>
  <CAFEAcA_+e7hrA5GRGb=gv3GxJRL77ARP34vyudRbiqhdsNVKwg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_+e7hrA5GRGb=gv3GxJRL77ARP34vyudRbiqhdsNVKwg@mail.gmail.com>
+ <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
+In-Reply-To: <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
 From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Sun, 5 Jul 2020 11:16:34 -0700
-Message-ID: <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
+Date: Sun, 5 Jul 2020 13:53:59 -0700
+Message-ID: <CAMo8Bf+Fk32dYH6GV6Z6OWLsnpJy4Sw_ny+8yviQc6MjGD+mRw@mail.gmail.com>
 Subject: Re: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl
  instruction
 To: Peter Maydell <peter.maydell@linaro.org>
@@ -54,8 +55,8 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Marek Vasut <marex@denx.de>, Wentong Wu <wentong.wu@intel.com>, 
  QEMU Developers <qemu-devel@nongnu.org>, Chris Wulff <crwulff@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-pj1-x1042.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
+ envelope-from=jcmvbkbc@gmail.com; helo=mail-pj1-x1043.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -5
@@ -78,60 +79,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jul 2020 18:16:49 -0000
+X-List-Received-Date: Sun, 05 Jul 2020 20:54:15 -0000
 
-On Sun, Jul 5, 2020 at 10:09 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Thu, 2 Jul 2020 at 19:53, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> > This isn't right.  Not so much the gen_io_start portion, but the entire
-> > existence of helper_check_interrupt.
->
-> I agree that it looks bogus (xtensa has a similar helper as well, incidentally),
+On Sun, Jul 5, 2020 at 11:16 AM Max Filippov <jcmvbkbc@gmail.com> wrote:
+> On Sun, Jul 5, 2020 at 10:09 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+> > On Thu, 2 Jul 2020 at 19:53, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> > > This isn't right.  Not so much the gen_io_start portion, but the entire
+> > > existence of helper_check_interrupt.
+> > I agree that it looks bogus (xtensa has a similar helper as well, incidentally),
+> I think there was a reason for it.
 
-I think there was a reason for it. According to Richard
-
-> The correct way to acknowledge interrupts after changing an interrupt mask bit
-> is to exit the TB back to the cpu main loop.
-
-But if I do this change for Xtensa I get a bunch of test_interrupt failures
-that indicate that the interrupt that should have been taken wasn't taken.
-FTR here's the change that I tested, did I miss something?
-
-diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-index fdf47642e6f1..85e8d65f169d 100644
---- a/target/xtensa/translate.c
-+++ b/target/xtensa/translate.c
-@@ -631,18 +631,10 @@ static int gen_postprocess(DisasContext *dc, int slot)
- {
-     uint32_t op_flags = dc->op_flags;
-
--#ifndef CONFIG_USER_ONLY
--    if (op_flags & XTENSA_OP_CHECK_INTERRUPTS) {
--        if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
--            gen_io_start();
--        }
--        gen_helper_check_interrupts(cpu_env);
--    }
--#endif
-     if (op_flags & XTENSA_OP_SYNC_REGISTER_WINDOW) {
-         gen_helper_sync_windowbase(cpu_env);
-     }
--    if (op_flags & XTENSA_OP_EXIT_TB_M1) {
-+    if (op_flags & (XTENSA_OP_EXIT_TB_M1 | XTENSA_OP_CHECK_INTERRUPTS)) {
-         slot = -1;
-     }
-     return slot;
-@@ -1175,7 +1167,7 @@ static void disas_xtensa_insn(CPUXtensaState
-*env, DisasContext *dc)
-     if (dc->base.is_jmp == DISAS_NEXT) {
-         gen_postprocess(dc, 0);
-         dc->op_flags = 0;
--        if (op_flags & XTENSA_OP_EXIT_TB_M1) {
-+        if (op_flags & (XTENSA_OP_EXIT_TB_M1 | XTENSA_OP_CHECK_INTERRUPTS)) {
-             /* Change in mmu index, memory mapping or tb->flags; exit tb */
-             gen_jumpi_check_loop_end(dc, -1);
-         } else if (op_flags & XTENSA_OP_EXIT_TB_0) {
-
+...and the reason is that this helper calls cpu_[re]set_interrupt
+to update CPU_INTERRUPT_HARD, which makes exit to the
+main CPU loop do something to handle IRQ.
+Maybe 'check_interrupt' is not a good name for that, but the
+action taken there seems right to me.
 
 -- 
 Thanks.
