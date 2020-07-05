@@ -1,72 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsBeT-0007We-Pd
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 16:54:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51630)
+	id 1jsCGu-00033t-CU
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jul 2020 17:34:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1jsBeQ-0007WL-8b; Sun, 05 Jul 2020 16:54:14 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:38254)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jsCGs-0002zt-GD; Sun, 05 Jul 2020 17:33:58 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:36621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1jsBeO-0001Yb-QD; Sun, 05 Jul 2020 16:54:13 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id k5so6531980pjg.3;
- Sun, 05 Jul 2020 13:54:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jsCGq-0000IY-Vh; Sun, 05 Jul 2020 17:33:58 -0400
+Received: by mail-wr1-x441.google.com with SMTP id k6so38848194wrn.3;
+ Sun, 05 Jul 2020 14:33:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Vc/HBrgID2IsA3qadurmoqsX6c2eBRLY7r2F4iMCf3s=;
- b=uqNwEpUSeEUZGVi51/V9GifUKUpplX6pZF6FIk9ijhpZBnGV0kSWkY9/mZr6u2fSHc
- xYVZCqxqvejmCV9TbmH46DeGqhtMKvPzCsDfoXPcDTMzBmYZjkhzWr7OM4o+QgmCOlwB
- 4U9I7h1Sn1SEfI2+0W5ayrFSZtaKBXb7fJ51wZY60Y2NgWZcK4T3gOLgiI6yYbP7Jtmq
- 9Rdf35MlNOO/yCGdVd2UkEzMLOslkoM/sD9hOSJd8nyocBbNCdzt3f6iQ0lCPyYN+LOc
- 0ymWogWcbWoWJEYqXajU3dpLS3z48jtVddLRZYq52Zo8d2zbVXKtSIGvu1Zi71Py3NXh
- H8ow==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=oD/cGHO1L2dAn/REvhfoEaPbyPpriZqt2u/rZ5Swncw=;
+ b=uZbrG0upqwK3mUIngWRAVUFF4ItbAbuk1A482M5tDHPkTbvR1WXpeglvT9oTyj+ot0
+ 6xUJr7PkYEuksjuwGgEk3goArg6wpvtds7ojui30+wFXN8gQjsDJnpC4H2UTNJDwbHs0
+ CRC3WXqQeoLfdFq1QakokGi2yfq4WQ4sS+TPD2ThHqPDziiCY5vaUZYGT45OcB8of02t
+ vGghpHjObeET10D5ElLPZbyNiLdvBNhTF3uCelUkbCeFbIcGrf7+nKul9ZJW72eXK+Eh
+ OORyldv9k1s/3IzUa+Y0zjX1dJiO4mwx0WrVx8vq6oFY9Bn+/IF8XFJiwDQy0tLnQo+a
+ XnJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Vc/HBrgID2IsA3qadurmoqsX6c2eBRLY7r2F4iMCf3s=;
- b=SbG1kqWjtD4DinASIDIShqFrMfoB8jdQWIclFdKIw9WNx6ULu5h6DGEKVqd1wuaCym
- 0Xi2rNQHtrrQ2B8LEaF6i/SHc22pouQqB+c1F0b03WUjVgZoVlySqnmg89ndQudlN6tD
- A/iCcE4VUCMwi7KMgq6UEGdb1LDiPjIm9nXyQ9bo+J4JW9GrtGL/yCw+RY92Po6njddR
- skOZm6o24QVFauovEx6JWe/hPqVov0yzY4QkvN4ARSsxADRV1ZKFaGbCU5epuSaQR3lz
- LlrNmurlHOJSd620Sa2/52075GpEzLEhHUDXQ+mBDg5+aw457lfqTC+jGexr8hTSQfK8
- cjrw==
-X-Gm-Message-State: AOAM530lsAFmFG9PnQBoIXAxvncDL4NRKoT3yHDUPrO9XzWTOppUdfF4
- YAJwxAsyP7TwFJp66f+fBKJk8EmV2af8pIa9zIQ=
-X-Google-Smtp-Source: ABdhPJytteY4dHGHW3TQFV1zMy/0pQ96RrHIWNbpVQztA58X1KG2s9EDNzZiaS+jsXACR6FVgrYgHqahqwRASTUM0fs=
-X-Received: by 2002:a17:902:b694:: with SMTP id
- c20mr38184926pls.123.1593982450781; 
- Sun, 05 Jul 2020 13:54:10 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=oD/cGHO1L2dAn/REvhfoEaPbyPpriZqt2u/rZ5Swncw=;
+ b=eZUGeDRleASf/fTjf/N9jTvW2OPgcOmn8v/UjOUU0n4+FcA+BMPYYio/NKHMXV7CTK
+ 1UTEoZj4mOORRG7JgmVsO+dHyPcND/tmgdkSJjc4nMxV3Gbga32o81jGjrwLbNm5YjN5
+ so46OBEqcnXK03bhZ/FhB9j2mPLV6lPGSxnvGdGTp9Iiy7flDNqtLfAFksNP/THLGc4K
+ zPXGIaQbHsYR02PMUploBu32EuyloVmoXj43CHatyhPA/fKodny5raeZm0gDFf3SOAKU
+ 5QyttYiCB8xLbOKxd0KbjNIhdaPCjx/YY5ebnN1YbBH2S65rb+9F+XGY3Y26cGs8+40B
+ 7ryw==
+X-Gm-Message-State: AOAM530840yCSmIYSQRODe9v1Widp/F6czckxacpxixN3MEArdnww5Nr
+ 2xAGoA4z2iD5W5En77Ns5F+ipe/KfCg=
+X-Google-Smtp-Source: ABdhPJxW3H3QaZKRhUXxfBycSJeowkGmct/xn/sYD8NPFEXJrFgfGoy6wr3mf6MgNG49MkmlvpKoSA==
+X-Received: by 2002:a05:6000:10c4:: with SMTP id
+ b4mr43015163wrx.50.1593984834860; 
+ Sun, 05 Jul 2020 14:33:54 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id y77sm11244453wmd.36.2020.07.05.14.33.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 Jul 2020 14:33:54 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Andrzej Zaborowski <balrogg@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH 2/2] hw/sd/pxa2xx_mmci: Trivial simplification
+Date: Sun,  5 Jul 2020 23:33:50 +0200
+Message-Id: <20200705213350.24725-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200705213350.24725-1-f4bug@amsat.org>
+References: <20200705213350.24725-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200629160535.3910-1-wentong.wu@intel.com>
- <20200629160535.3910-3-wentong.wu@intel.com>
- <3260735e-05ab-2d42-f7e4-914ad804f543@linaro.org>
- <CAFEAcA_+e7hrA5GRGb=gv3GxJRL77ARP34vyudRbiqhdsNVKwg@mail.gmail.com>
- <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
-In-Reply-To: <CAMo8BfLVDEFCXWNffVJaRb31UOTPO1iXNz5StexoKvWqQYzg6g@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Sun, 5 Jul 2020 13:53:59 -0700
-Message-ID: <CAMo8Bf+Fk32dYH6GV6Z6OWLsnpJy4Sw_ny+8yviQc6MjGD+mRw@mail.gmail.com>
-Subject: Re: [PATCH 3/3] target/nios2: Use gen_io_start around wrctl
- instruction
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Marek Vasut <marex@denx.de>, Wentong Wu <wentong.wu@intel.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, Chris Wulff <crwulff@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-pj1-x1043.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -5
-X-Spam_score: -0.6
+X-Spam_score_int: 0
+X-Spam_score: 0.0
 X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,24 +86,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jul 2020 20:54:15 -0000
+X-List-Received-Date: Sun, 05 Jul 2020 21:33:59 -0000
 
-On Sun, Jul 5, 2020 at 11:16 AM Max Filippov <jcmvbkbc@gmail.com> wrote:
-> On Sun, Jul 5, 2020 at 10:09 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > On Thu, 2 Jul 2020 at 19:53, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> > > This isn't right.  Not so much the gen_io_start portion, but the entire
-> > > existence of helper_check_interrupt.
-> > I agree that it looks bogus (xtensa has a similar helper as well, incidentally),
-> I think there was a reason for it.
+Avoid declaring PXA2xxMMCIState local variable, return it directly.
 
-...and the reason is that this helper calls cpu_[re]set_interrupt
-to update CPU_INTERRUPT_HARD, which makes exit to the
-main CPU loop do something to handle IRQ.
-Maybe 'check_interrupt' is not a good name for that, but the
-action taken there seems right to me.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/sd/pxa2xx_mmci.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 9482b9212d..2996a2ef17 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -480,10 +480,8 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+ {
+     DeviceState *dev;
+     SysBusDevice *sbd;
+-    PXA2xxMMCIState *s;
+ 
+     dev = qdev_new(TYPE_PXA2XX_MMCI);
+-    s = PXA2XX_MMCI(dev);
+     sbd = SYS_BUS_DEVICE(dev);
+     sysbus_mmio_map(sbd, 0, base);
+     sysbus_connect_irq(sbd, 0, irq);
+@@ -491,7 +489,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+     sysbus_realize_and_unref(sbd, &error_fatal);
+ 
+-    return s;
++    return PXA2XX_MMCI(dev);
+ }
+ 
+ static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
 -- 
-Thanks.
--- Max
+2.21.3
+
 
