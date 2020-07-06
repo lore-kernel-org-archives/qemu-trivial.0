@@ -1,66 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsOHP-0003Pw-G7
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 06:23:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58272)
+	id 1jsQaT-0006XZ-1w
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 08:51:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
- id 1jsOHN-0003O5-Qe; Mon, 06 Jul 2020 06:23:17 -0400
-Received: from ppsw-32.csi.cam.ac.uk ([131.111.8.132]:37740)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alr48@hermes.cam.ac.uk>)
- id 1jsOHL-00073c-26; Mon, 06 Jul 2020 06:23:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=cam.ac.uk; 
- s=20180806.ppsw;
- h=Sender:Content-Transfer-Encoding:Content-Type:Cc:To:
- Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=CV14eKLNAeAzlJkwjnWkbyhiRKz8m9XvLDvFxgC1l98=; b=QwLS5Mh87UKJ7BAEKqcLgPxKyM
- O0YUcZVSFtkAU+wvikQrL2WEUHwU+KcTIkmFQr2DuUKSLNDDQOjbim4FJK5RHIpRzBw6f8Eb48aTr
- ywH1+JvcqH+GoOKqMAY7Dlqqnky+mIT1P0IM60j2t+Sa2If02QzJlmPIyf4uorHZJFR4=;
-X-Cam-AntiVirus: no malware found
-X-Cam-ScannerInfo: http://help.uis.cam.ac.uk/email-scanner-virus
-Received: from mail-io1-f41.google.com ([209.85.166.41]:36110)
- by ppsw-32.csi.cam.ac.uk (smtp.hermes.cam.ac.uk [131.111.8.156]:587)
- with esmtpsa (PLAIN:alr48) (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128)
- id 1jsOHF-000F7J-35 (Exim 4.94)
- (return-path <alr48@hermes.cam.ac.uk>); Mon, 06 Jul 2020 11:23:10 +0100
-Received: by mail-io1-f41.google.com with SMTP id y2so38749522ioy.3;
- Mon, 06 Jul 2020 03:23:09 -0700 (PDT)
-X-Gm-Message-State: AOAM530Dr4jtze/PORklJOEh3+olUSMGiPrpnyM/xHE0JRI70YUbg++I
- JdV3Oy/GVa73mJ7GUgfJYNjEPNJoGGma0M6InPk=
-X-Google-Smtp-Source: ABdhPJwiCTOCipz0b/eeOxADDgjJiu37q8JnZVwmCTdKGpiauFCW9uDp+r1ODGUiBE8Yl1Hp/oNiYxv6tVHJybP5D9I=
-X-Received: by 2002:a5e:cb42:: with SMTP id h2mr24283572iok.43.1594030988870; 
- Mon, 06 Jul 2020 03:23:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jsQaS-0006XL-2C
+ for qemu-trivial@nongnu.org; Mon, 06 Jul 2020 08:51:08 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:58668
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1jsQaM-0005MX-GH
+ for qemu-trivial@nongnu.org; Mon, 06 Jul 2020 08:51:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594039861;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=B2V6sLlr56ArBAbGlzHM8dummsy6684FuhpC4doiVac=;
+ b=D5wE0k31QFC0NCrngjgBo2zhkk6BmU17Xrouu5uRKCSeT59af0BZKw6Pq6C8P0xwJ5WPIb
+ TWYYT24D7PDbSU+r5SKwekXMXYCRNZZ2HhV0BBDdaCRLypkPivf35SLkxJ7Mq/zkTA4KSV
+ RgQpvLt2FhJyapNOF1ZkjpnM6QGAFxM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-431-Jim0tnW3NDKA5pDHUpbW1A-1; Mon, 06 Jul 2020 08:50:59 -0400
+X-MC-Unique: Jim0tnW3NDKA5pDHUpbW1A-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C692804018;
+ Mon,  6 Jul 2020 12:50:58 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.36.110.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BD98771665;
+ Mon,  6 Jul 2020 12:50:56 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH] scripts: improve message when TAP based tests fail
+Date: Mon,  6 Jul 2020 13:50:54 +0100
+Message-Id: <20200706125054.2619012-1-berrange@redhat.com>
 MIME-Version: 1.0
-References: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
- <013da4b5-be9e-aeae-5e88-82188a26d4bf@amsat.org>
-In-Reply-To: <013da4b5-be9e-aeae-5e88-82188a26d4bf@amsat.org>
-From: Alexander Richardson <Alexander.Richardson@cl.cam.ac.uk>
-Date: Mon, 6 Jul 2020 11:22:51 +0100
-X-Gmail-Original-Message-ID: <CAEeofcjJjAffMTg+cj5Y+HUZ9+bfkKMtKQRXMdk6FQgm-45KWQ@mail.gmail.com>
-Message-ID: <CAEeofcjJjAffMTg+cj5Y+HUZ9+bfkKMtKQRXMdk6FQgm-45KWQ@mail.gmail.com>
-Subject: Re: [PATCH] Fix MIPS add.s after
- 1ace099f2acb952eaaef0ba7725879949a7e4406
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-trivial@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Sender: "A.L. Richardson" <alr48@hermes.cam.ac.uk>
-Received-SPF: pass client-ip=131.111.8.132;
- envelope-from=alr48@hermes.cam.ac.uk; helo=ppsw-32.csi.cam.ac.uk
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 06:23:10
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 01:52:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,59 +73,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jul 2020 10:23:18 -0000
+X-List-Received-Date: Mon, 06 Jul 2020 12:51:08 -0000
 
-Hi Philippe,
+If one of the qtests fails, the TAP driver prints out a message like:
 
-On Fri, 3 Jul 2020 at 19:40, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> Hi Alex,
->
-> On 7/3/20 6:15 PM, Alex Richardson wrote:
-> > After merging latest QEMU upstream into our CHERI fork, I noticed that
-> > some of the FPU tests in our MIPS baremetal testsuite
->
-> I understand by baremetal your soft core implementation running on
-> a FPGA, right?
->
-By baremetal I mean small test binaries running without a host OS.
-The test suite was originally written for the CHERI FPGAs, but it also
-supports various MIPS simulators, our executable formal model written
-in sail and our fork of QEMU (https://github.com/CTSRD-CHERI/qemu).
-Unfortunately it cannot be run with upstream QEMU as it requires a
-special MTC0 instruction to dump register values in a textual format
-to the logfile.
+  ERROR - too few tests run (expected 3, got 1)
 
-> > (https://github.com/CTSRD-CHERI/cheritest) started failing. It turns ou=
-t
-> > this commit accidentally changed add.s into a subtract.
->
-> Fixes: 1ace099f2a ("target/mips: fpu: Demacro ADD.<D|S|PS>")
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> Thanks for your quick fix!
->
-> Phil.
->
-> > Signed-off-by: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
-> > ---
-> >  target/mips/fpu_helper.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
-> > index 7a3a61cab3..56beda49d8 100644
-> > --- a/target/mips/fpu_helper.c
-> > +++ b/target/mips/fpu_helper.c
-> > @@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(CPUMIPSState *env,
-> >  {
-> >      uint32_t wt2;
-> >
-> > -    wt2 =3D float32_sub(fst0, fst1, &env->active_fpu.fp_status);
-> > +    wt2 =3D float32_add(fst0, fst1, &env->active_fpu.fp_status);
-> >      update_fcr31(env, GETPC());
-> >      return wt2;
-> >  }
-> >
->
+which fails to tell you which test program failed. This is a critical
+ommission when many tests are running in parallel as their output is
+interleaved. The improved message is:
+
+  ERROR endianness-test - too few tests run (expected 3, got 1)
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ scripts/tap-driver.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/tap-driver.pl b/scripts/tap-driver.pl
+index 6621a5cd67..b1d3880c50 100755
+--- a/scripts/tap-driver.pl
++++ b/scripts/tap-driver.pl
+@@ -217,7 +217,7 @@ sub report ($;$)
+ 
+ sub testsuite_error ($)
+ {
+-  report "ERROR", "- $_[0]";
++  report "ERROR", "$test_name - $_[0]";
+ }
+ 
+ sub handle_tap_result ($)
+-- 
+2.26.2
+
 
