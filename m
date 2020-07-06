@@ -1,22 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsU65-0003DX-Sk
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 12:36:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55458)
+	id 1jsUFA-0000aG-Nh
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 12:45:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsU64-00039V-8Y; Mon, 06 Jul 2020 12:36:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:47433)
+ id 1jsUF8-0000Uc-Bd; Mon, 06 Jul 2020 12:45:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:44483)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsU62-0001zy-Id; Mon, 06 Jul 2020 12:35:59 -0400
+ id 1jsUF6-0003d8-DW; Mon, 06 Jul 2020 12:45:22 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
  (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N17l4-1ktq4z2PyE-012X33; Mon, 06 Jul 2020 18:35:51 +0200
-Subject: Re: [PATCH] hw/net/can: Add missing fallthrough statements
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>
-References: <20200630075520.29825-1-thuth@redhat.com>
+ 1McpaE-1kRH5t0kuw-00Zxbu; Mon, 06 Jul 2020 18:45:15 +0200
+Subject: Re: [PATCH v3 01/19] .mailmap: Update Alexander Graf email address
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@csgraf.de>
+References: <20200702173818.14651-1-f4bug@amsat.org>
+ <20200702173818.14651-2-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,36 +61,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
-Date: Mon, 6 Jul 2020 18:35:50 +0200
+Message-ID: <e1efb460-c8df-20a7-889d-fea03ecc03f7@vivier.eu>
+Date: Mon, 6 Jul 2020 18:45:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200630075520.29825-1-thuth@redhat.com>
+In-Reply-To: <20200702173818.14651-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jXWLpoNiP8XdDuyrpn+/lo32fw84jO/KlTHj5BIn4nTenQB8uwm
- kQ09PVVPNWdE/JiL+zNVLaMwGnTcjamvS6dUwkd0xMsjnn9/ONViUJzDI4sdkmbLw66QmHR
- 6JsxJwZq9B/rbHT98Y0UT3jOqhHpdcnuaIYZ20AMFJ2ooSwjNX80VL2TvZj6kCgZdd0ZdUY
- kwD9CMa/ysgvKz8UZsS+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zM7F6PlzWFE=:oFFf+UBpTU+tw8X2YiG2Ww
- 8r8e1huqD6QnWZSklKfDVG+DL54t8TMGP1sLfr3MVMQ7UbEaDchs0ZFN+DiiZmp1DSw1BBClL
- p8q0ITzbJX331Z9OdewzrjRS4rFGJkDDG1i4tSoKebnUUmZW/TFniH2o14vDVtTGtjzLrdZRn
- f96wpTFVYBrtNkFLXKLzdIoAbhBXcRTDtLaCnghUCMi5mdHYDRUs8SjimqX5mMY9zkVMXsTrp
- MPKFOJgVZTKdsEPlN84UXgvrgsYJ4zmHM5qnyFx82GZ2cYtyHOfll7A8C/rDiOLVzTf/X+Tu2
- 3xDqBQhnC6M/Dm0Lv6+PuYCyGNCigY/wu0RVDHoUsezyv3LIQkjfxq2/6OU6eP8Awq2io6hZw
- fTvGDy3pmcY2EvMsDLqpsaOIRl15W733BV2UuBKaMch0Dvez4H2gs+k86BPsMfXrUUQRFlyPb
- O6g9/ubzdzjLY03ZMn+1UcXlNgLr9s6GevfKHdFqoA3IxdBOqePWIyuT8CE49i/XTMpU8qW1z
- f6Sj8jP8Fx82i9c5d3r5VLim/8lDkj/dJl/ucFqHddGJ+0E+42N5IQrkRZyB8DIpMZsJ+F482
- 6asqNbMK1D0FOG+B4tyIfIOgatg6nQ3swAsavYOrBp6L7Lu8XmdtyD1OKUGQIIx9U49t94ZrY
- mQS4CsVt/MUirc4TGa+N3qtpRc27afr8yDOL85ye5G32fMHDAMXPA0rrsNORl8pv1M5xrZ9Jx
- 0Yz5mP6RHf5Id/msc8NF6Rfl0QiXviBID8T7owjkaNv/4RKbXki1Q2iuzULjyBfSHbmGhE6bh
- U95IxCJ0PWt9sPLpmvTweflAsNDH9wNNIDGIxvCy5Sh03St5IUKpbZ7EYeuFQnVZ9AJJ04J
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZW7cfN8CeU6ru72a0mWvssCfu7LwtbYT+5aUplEsQ6O6UMSMhGE
+ H8ejbAtoN09GBKuIrZBfIu0os1d7C+/WmGKPbVpXtTePXYVBczNl02COEHDCVe/oNrENXJ/
+ h4BOzmfTu+EDkPqa/rZyu3oxA7moPUlc+ZTWkoXRNZqCHuIUki+9iFTumlweqz7n4RjzThA
+ VCgRozZvGHMnTkYo8q5bg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4GDxYXnd0aE=:wABA1uGX8susVSmyPcHznn
+ LPuC9AxmeLBUZ32lgExXdDBzrl4USoma5EPYAdFbfHgr75wSx2PI2/bOJVO83bVFjDS36tFir
+ wYWdrN4dDkIOvgBksA3mhFHL8PMeLHUV8HFlDZRgZ97lqC/kwNs/CPcmZ6omkFWQ3q2XgJyWa
+ Mdb7ctueudPru/m0C5F5NU2fmYGR+AG+zPgTyopbMktxh39ZWVjn2oNxyGhOQrS3ybOZqiGAK
+ 45JtlKoZFFYjBb/rD5VuGGbYU8+Ll3Ds3uB+pzArC2ukNvMD1h7hBPI9UMvRvA4NcpaEqILNE
+ jXBQ+KyQkjzf9+GlGIf2pYPrO4qpFmLbN1GT6Im9hIPZd3tJBISxTVRbznOwP1Q8+ZqcdOA68
+ EXo/BApFlRBQ0z+Iwow5UPsxJanTtJ82/xy2qz066VvjHWApuMrYvTTwrEV3/HiXLKXCCgix6
+ XFPN164mx9WisW7GdBF/JnWWyEUS0/R70kJTMlRd9DIUPf+JbYn2+c5vmJpku4hBXxC2MYSsf
+ VHimnCIcmMaw9UNy3trdQ/S4X4huFC7AMLO3P40DvEnqe7nN2NDpnVpM3AUL1ZE5xOx+rXa2+
+ No4pjEJznJDSKuqN0+SDNK9Z+OUuxnNMpX0FahKJ9jxgDY8UbRJgi1kAW+g2BrC6gzkB2iqif
+ urgC9dHvKb90LUblsFgQ93mYmskDjKAXzo/HIloTbuf39rw9HkLAUtJxXFZYm1YTZLJGfNgzF
+ k4WJ8boJf1gvClNvI+XfVp4yE/jGD2OG0trgT1vO3Lzn8NajCfROc5f/G/J31fsoqiJC7Azjr
+ Sd1dqdZg8PT6OaKZDYkF6y0RO+pHFkW8f6+B2Yx5RbKIhM80SGnT2ZkSssDdw9bOKMZlT5N
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:31:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:45:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -107,42 +108,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jul 2020 16:36:00 -0000
+X-List-Received-Date: Mon, 06 Jul 2020 16:45:22 -0000
 
-Le 30/06/2020 à 09:55, Thomas Huth a écrit :
-> Add fallthrough annotations to be able to compile the code without
-> warnings when using -Wimplicit-fallthrough in our CFLAGS. Looking
-> at the code, it seems like the fallthrough is indeed intended here,
-> so the comments should be appropriate.
+Le 02/07/2020 à 19:38, Philippe Mathieu-Daudé a écrit :
+> Update Alexander Graf email address to avoid emails bouncing.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Suggested-by: Alexander Graf <agraf@csgraf.de>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/net/can/can_sja1000.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  .mailmap | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-> index ea915a023a..299932998a 100644
-> --- a/hw/net/can/can_sja1000.c
-> +++ b/hw/net/can/can_sja1000.c
-> @@ -523,6 +523,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
->              break;
->          case 16: /* RX frame information addr16-28. */
->              s->status_pel |= (1 << 5); /* Set transmit status. */
-> +            /* fallthrough */
->          case 17 ... 28:
->              if (s->mode & 0x01) { /* Reset mode */
->                  if (addr < 24) {
-> @@ -620,6 +621,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
->              break;
->          case 10:
->              s->status_bas |= (1 << 5); /* Set transmit status. */
-> +            /* fallthrough */
->          case 11 ... 19:
->              if ((s->control & 0x01) == 0) { /* Operation mode */
->                  s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
+> diff --git a/.mailmap b/.mailmap
+> index 926cac6bb8..e46e6c7302 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -44,6 +44,7 @@ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markovic@imgte
+>  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <amarkovic@wavecomp.com>
+>  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <arikalo@wavecomp.com>
+>  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <aleksandar.rikalo@rt-rk.com>
+> +Alexander Graf <agraf@csgraf.de> <agraf@suse.de>
+>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
+>  Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
 > 
 
-cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+Applied to my trivial-patches-for-5.1 branch.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Thanks,
+Laurent
 
