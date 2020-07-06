@@ -1,22 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsTxD-0001hw-6I
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 12:26:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53296)
+	id 1jsU1X-0006lP-SG
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 12:31:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsTxB-0001hD-J0; Mon, 06 Jul 2020 12:26:49 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:59629)
+ id 1jsU1W-0006lF-L0; Mon, 06 Jul 2020 12:31:18 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:37665)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsTx9-0008Ka-BZ; Mon, 06 Jul 2020 12:26:49 -0400
+ id 1jsU1U-0000sr-SF; Mon, 06 Jul 2020 12:31:18 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M7ehh-1jzu4211wL-00835C; Mon, 06 Jul 2020 18:26:39 +0200
-Subject: Re: [PATCH] intel_iommu: "aw-bits" error message still refers to
- "x-aw-bits"
-To: Menno Lageman <menno.lageman@oracle.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20200625155258.1452425-1-menno.lageman@oracle.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M7Jj2-1k0B7r1OJg-007nlC; Mon, 06 Jul 2020 18:31:11 +0200
+Subject: Re: [PATCH] trivial: Respect alphabetical order of .o files in
+ Makefile.objs
+To: Christophe de Dinechin <dinechin@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+References: <20200629094934.2081180-1-dinechin@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,36 +61,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b28ad290-0f91-de6c-26a7-c154a57e8526@vivier.eu>
-Date: Mon, 6 Jul 2020 18:26:38 +0200
+Message-ID: <93d672ff-4fe4-8621-f389-49b4e3716be1@vivier.eu>
+Date: Mon, 6 Jul 2020 18:31:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200625155258.1452425-1-menno.lageman@oracle.com>
+In-Reply-To: <20200629094934.2081180-1-dinechin@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uYNoQ4oJOYsErGj8PeJG5dm+w7Dht4NOYp+mAEE8f4GC9E79rWG
- hyVB21vPkvd1Nkk+lEVdGULdM8MQH46jz6tC2RoOFkL7zIf3XLYcTQLudZOq7utFGu2kTGy
- x5wiUClpukW/dX1PIY/0txfzIj1iEzlg0Aihpj/uAC9g5769l53J+5Y0+duElJ5/KQmYEPn
- t/RJf1vlz7ce0hTTIgjZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:fmuhg6S8+iE=:9FtF97G82U1d3bpltxBMcz
- IZjKu8EPMjmsjqtx/hCaQuGUyuxmjt/0F1tRirompLPBLMIHZTqAetrR5LcGbXpRgryp/Jx27
- hYhGZ5w12DdgZ9j1PsLuoAg1YUcG5Pgke60WKUv/B1OJFS/u3piEH7PJWpAOaeLXtn/iatD1s
- s5f2VzOB7l6uWJnhm58YxwJwQ8Y2xiRGh+TkiDCoeeAjZDTuK6b/MEhId5sc7FHZ1BBE0Al8r
- ZJynp/CH6TPHdZnxDgNUwR6ZDlv+3U0kB2KasP3/AWhs9a+0RbfSj+s4lpap56prHTznvEviV
- NVhWpVfgXF1o9YHnyA+uzRNCV54w6MKDI2Xl42Fz+CAQaFotW4/aMLSXQ7gZ3APxcu8mugs/R
- VXBKGaW0yx1vk2VCzGtFBv1WwJE8t7V2UlNRlcEZz+jz7RXhLDEGNaJI11yBc2D0CmYWNm9rK
- xC2EtRJa6Ix6MDNnsb8iGYCIp+wFW5h+/5fgfQ6FA+HAq5l0TNudrGwm9eyrVQ2Me9ZRlkrZG
- +4PHMhDbE7X/7n+g3xq95agjUbcgmJi+YUvEpI1QVHS9Vw2oXh5E5oMCse5IASVFZdxDilWpC
- 93z12jkPCjpRliQU6hRlPqiMYe7knXVJFAv+wDMRnpv3LJXOYFWZ3JBiItFyqP/Kt0mOw2V/b
- L8B/aLj1enRa0A9TbDAHVX8XLWEd213hgeH+AVDM/E2zQ3B/aMlLgRW8SobR8+28DzdyDAojR
- TFinOgJ58liuW1C974L5AlvsMrQbHo2c0E/EMDW4dbOd0CPiBYeaoujgJgplLdjVDaAXy0rPO
- yHfjiCD95DAr21WTnmWHuDczpA+ON0tOTh+pDVCpuj6IVEwL4VML26kpUDQUm24/2LTOR2A
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:zoWg6bqAfs3p8OhYXm3fQMCffQPs1dpaEBr3X3GMqSRjvUWJjG3
+ uuBQQ3UtNfwTgdYAA/p+0IZ79W4sjVAL8i72OX9TwzvUyHKPV7HU9yoidGl3ZLkMMtzCDes
+ EEX/6aT4RSeL3Yut+4qCwz6QwQW8jpTl6rMoRMYZ3SXOfHzhDdzJWVBfnyzaj3aCEFDqLiz
+ Va9TeMxDXojd9cCVeLsrg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1wnZIIEXGZM=:snEAkU5mqXrIN0cNS0BTso
+ luOyXKpYYMTPEvCR4eFqlWTUhzAPyxswciRbYKji/u82otcmP6LdfNJfsyfJwAw3oPOTDYNZI
+ 1t2g6gUylw9SmxFD+KbKkUbZh3mrQZzNzNezRYmewNH8vqVKs8QbuAC+Hk4T4KkU7cS0Or/uS
+ IcvNvwJlguZ3KFBIEuIR7K3H6/BXzMPe3deHWFlqKCK0O93GwYxUaV3byEs1IFmTb5rNbhfIE
+ 6eMXq7mg3LwbBj4RC/exhRIIxrhZfl0Sk09qqwFSlq+SdAJbRi2CUCInRY0s+4141AXZxLXPz
+ s3tW0Ex9Cc6A1WI8Ts1dQlrtX9idISPeD6sCbqfTaeDrFng4vDa4vzzT8omefvgedM+4WZd6W
+ 3dVe4tGT1WYZ68WndrTCLQAx5Ov40gfu8JQmZbOxlkaND5P1FHwy0Z6pOp6994psA/ex8ASSe
+ l0/wjVmnggoZBP04Cxnv6ThyQE2sosXWYECSDxj5YuEqtJkarEoMvYFjvb3gnw67X1sPuMFYz
+ iuNy7gkFfbtZU3KhpI6FLBuh8gHalg3j8fZq1dwGDyAFLvVS/HeJSF78x0Hyh6Oh3sr24u9cv
+ ksudXc4BAokSS5x+aKnbpVtLf45Asts07ynQ5t4BXzF7RlbWXDFh6wYmgfXeeY27kZ5SuUlQX
+ IcEkjpXaCx5MGgIyY7bcYHNffTXPjeYinVr3ydIvN1pFWinH8Z47zybZBeLUV+Kx6TH13KVvH
+ 2Qw0by+BY12SkD9XwMcrKhudU+DEoW3v9ZrSWppAVVmt+EeTN/+CVrFYdIb0t53OzehGqyh3H
+ FW+5pTGo+7iJLLaWnoqLANtZY/tfb2Jwa7sosGULU+1KqIQz++kg77BfHtOSXJM+OtMRJS1
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 11:54:43
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:31:15
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -107,32 +108,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jul 2020 16:26:49 -0000
+X-List-Received-Date: Mon, 06 Jul 2020 16:31:18 -0000
 
-Le 25/06/2020 à 17:52, Menno Lageman a écrit :
-> Commit 4b49b586c4 ('intel_iommu: remove "x-" prefix for "aw-bits"')
-> removed the "x-" prefix but but didn't update the error message
-> accordingly.
+Le 29/06/2020 à 11:49, Christophe de Dinechin a écrit :
+> The vmgenid.o is the only file that is not in alphabetical order.
 > 
-> Signed-off-by: Menno Lageman <menno.lageman@oracle.com>
+> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
 > ---
->  hw/i386/intel_iommu.c | 2 +-
+>  stubs/Makefile.objs | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index df7ad254ac15..c56398e99177 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -3758,7 +3758,7 @@ static bool vtd_decide_config(IntelIOMMUState *s, Error **errp)
->      /* Currently only address widths supported are 39 and 48 bits */
->      if ((s->aw_bits != VTD_HOST_AW_39BIT) &&
->          (s->aw_bits != VTD_HOST_AW_48BIT)) {
-> -        error_setg(errp, "Supported values for x-aw-bits are: %d, %d",
-> +        error_setg(errp, "Supported values for aw-bits are: %d, %d",
->                     VTD_HOST_AW_39BIT, VTD_HOST_AW_48BIT);
->          return false;
->      }
+> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+> index f32b9e47a3..1df8bb3814 100644
+> --- a/stubs/Makefile.objs
+> +++ b/stubs/Makefile.objs
+> @@ -19,10 +19,10 @@ stub-obj-y += replay.o
+>  stub-obj-y += runstate-check.o
+>  stub-obj-$(CONFIG_SOFTMMU) += semihost.o
+>  stub-obj-y += set-fd-handler.o
+> -stub-obj-y += vmgenid.o
+>  stub-obj-y += sysbus.o
+>  stub-obj-y += tpm.o
+>  stub-obj-y += trace-control.o
+> +stub-obj-y += vmgenid.o
+>  stub-obj-y += vmstate.o
+>  stub-obj-$(CONFIG_SOFTMMU) += win32-kbd-hook.o
+>  
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches-for-5.1 branch.
+
+Thanks,
+Laurent
 
