@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsUY9-000063-3B
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 13:05:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33912)
+	id 1jsUbx-0000Xt-M1
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2020 13:08:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsUY6-0008RZ-W7; Mon, 06 Jul 2020 13:04:59 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:56503)
+ id 1jsUbv-0000Se-LO; Mon, 06 Jul 2020 13:08:55 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:43935)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsUY5-0006y8-4a; Mon, 06 Jul 2020 13:04:58 -0400
+ id 1jsUbt-0007Wq-Ph; Mon, 06 Jul 2020 13:08:55 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M58vU-1jtb0f1Vy8-001ATT; Mon, 06 Jul 2020 19:04:49 +0200
-Subject: Re: [PATCH] net/tap-solaris.c: Include qemu-common.h for TFR macro
-To: Michele Denber <denber@mindspring.com>, Thomas Huth <thuth@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-References: <20200704092317.12943-1-peter.maydell@linaro.org>
- <c247fc94-f8f7-efe1-017f-fc1c03fee811@redhat.com>
- <5F00C6D6.8010001@mindspring.com>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MVrXh-1kJgfw17YL-00RppO; Mon, 06 Jul 2020 19:08:45 +0200
+Subject: Re: [PATCH 2/2] hw/sd/pxa2xx_mmci: Trivial simplification
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Trivial patches" <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
+References: <20200705213350.24725-1-f4bug@amsat.org>
+ <20200705213350.24725-3-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,36 +64,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <239dfc36-404f-3439-3f1e-5d8750d31f5b@vivier.eu>
-Date: Mon, 6 Jul 2020 19:04:48 +0200
+Message-ID: <c711e521-9810-051c-685a-4dc9ebb0e762@vivier.eu>
+Date: Mon, 6 Jul 2020 19:08:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <5F00C6D6.8010001@mindspring.com>
+In-Reply-To: <20200705213350.24725-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xhA1Ng56Q5KT+QSG8CDOkYFxyUYQZD6ZLBTwj3XnBU98OraeHKy
- I0oP8nQ3Ov8yLlDLV87LqGH7TQvpCxWmSsz+ljyOavB/y0JGneAlgV+aTBrQ3v89RY03Yp0
- NcQQGs3ByEBMZRxkea++vYJuYLtDmuCdDreh1xaJj3feu1mUZujaBVI0xMEannZcurNHFpm
- kSMf+QWmf/CqH3YBHWCdA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:U6E4iiTQ5NY=:Ro9bbPJ8hOTLs/7DcNIFTs
- p4fynjthnP+Z2mlBfV+rFk0JvybaU1HLRhK6hG29XmoWZMqmKubUrpx2eqxZFaxt1qk+ajESY
- r7jLiCY7gZW4xAr+/Eg9I8Q8HGguVz+NaCoWtcFqw86KbuPnzxA7FmPdjqgVwc1JOhQQ5rkgT
- sJQaTTp+Hjw7wvZWZ2ANPfLomQQNXEz+LIpRFnsAx5HUnolUt1dR6SD8x/VrMlg8G7JnpfSug
- fKmzQ5WnM9lB4gfEZYO4e/7BczIFBHai8wbbAg1jxVx+BA5K1m1ENEcYjIfMDI43QjjkWBZqP
- q5+jCDAYcwblj5PbTDRK0qCZlasvubLrGc0wT5f9UcCKcXSSLCx66VHPs6GahehA+sbwWVGSr
- KZ+d8GKR+SAZR8pFTkIm7iE+Ytye9LpuRzV2LT1CdlNIN8NqXS82Wjxq0TFpWR0/nW7mKJvhi
- rGWXQFPoW0UU2kag1BbQZuUB+D85kE+tjD5DluilEFwMls/MwybH45q/j03jWfH5JLK/4EoS0
- Ebrf55rzKKZJypJYU/l9XLsTtF8Ivge/YnamMZP7QQo2q1gkh5JYs8LKw1S2dCJ0a8jHWO7P2
- h4Ro/tGdOYH7mVG4oS8jcoO7sYSePlvrgbFMinRK4EWLDmYWJBCufqmt8XtRJIK6y4UZxNYKM
- F++VIPF/5UQ8b6e1BkeSKAZAwMBY9zwZ5XXpiDaHMwdQPriBDar2TFnNLVx+JRW7NUGAKaetc
- QubeFOkCuFmsT2tumJKAOeVEa3Dr1d/moSn1wPjt39EN6M1d4txljlhVbN7FOpeKaXe51rP9a
- 1GXmsa8PZwFz5L9x5uEJ5TdthviGxWyvhugTMwQdqITl4zIMxXUHS9QevbF9rZaV9oGL8+U
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:LN1cSYce+q3esnVBtfcXPwIY85FVC+jrhwOLtVmGU7ZVe8rZUzF
+ wntzhU38qx54l6bXjk/munWVe1bF+Xfpy73dSerAR3eRaLa3YDDvDny6a1EuoWHra5HGKLj
+ rkO4PfY4P5DiEfgFH67V1zPJSG+6Seidko7auLQFHeEhwkg8NAKeO+Ayss+Prrgi925bxl8
+ ExOX5LNcG2Fph5c8q+LCA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1kQ3JPU3D8k=:Mf05seMfgZbAUswsuo745s
+ RF1q5dqWQ214116pe/5QHCeJbss2hFmn8NkKtiA6KkDpnOy7x5Pq7qQ6WWjCc5lL0nkA9zZQt
+ y7RC/Z3nyrST1UbkhgYSAOTpxI4XLkrKI802iuWrmlVfWgXeQhOP5R/1Y0r/RhSx8bK1Yv3kO
+ SMyetxRCqf9h6WeT2NcXcAKnkQGwhIlZx77p1chaSuf7UiEBz2qZCv026uNNB5qQn7orzZEv2
+ cdr4H8i1c8DjGYgxW/woQZgm/mJTYB1bou7exjsQXuriF5ewfJzR3Kkw+BItqyQONbPWMn7xt
+ 5xp8QtoGSwppwd4X8yplHrBCowXYkBq+lAuVShvUMvyyT0YiLIxP1splb1IWp3AtGcrLi+ZCr
+ i345hKRBq4kBtVjsUMjTo+tu0cUTmrz82mFOBLgls7QEDE0PFVLSSJOlaADWC7wcoMTBf/M0J
+ 1BvAPtiC6GstKq6Sc/rxXvyLBbyU+WMo0jUFnAWz0lSrHgasrb1qg6kyCuyQK7cUL2WDVSj5V
+ isNND3urkZXZtz3vpJBMtJLaxcu1DEImpSifgaw2oq7iGmtGHD5rj15cZcnzIli3tG6DvHPD8
+ F41Z6/ybEzw3+RelD990+lLQfMWyKdyDptLms4/wjYEib2Pu9I3cHZiYpAzCuSEh0+a4dCKiP
+ I7/Tdfr/0xLdVPAPvnbiPKJ8O+zmI4oC5Wp6IbxfdccwY8x9Ab32Vt0wZhl0458Y3iD3e2Wl5
+ idfu2tlglil3pPDY1y0Wbi9qt2n4o7xhSnkvcSOjug6UysiQ2/yabgYN79oasYZe96brS9rur
+ +ZmaqNiBI5LUX2HJLh/x+2TgSLbTuKLUdlaYwkr552ssjZ+CDmgoVIALy0V3gOVqVeOqwvA
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:24:48
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:31:15
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
@@ -111,49 +111,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jul 2020 17:04:59 -0000
+X-List-Received-Date: Mon, 06 Jul 2020 17:08:56 -0000
 
-Le 04/07/2020 à 20:13, Michele Denber a écrit :
-> On 07/04/20 13:11, Thomas Huth wrote:
->> On 04/07/2020 11.23, Peter Maydell wrote:
->>> In commit a8d2532645cf5ce4 we cleaned up usage of the qemu-common.h header
->>> so that it was always included from .c files and never from other .h files.
->>> We missed adding it to net/tap-solaris.c (which previously was pulling it
->>> in via tap-int.h), which broke building on Solaris hosts.
->>>
->>> Fixes: a8d2532645cf5ce4
->>> Reported-by: Michele Denber <denber@mindspring.com>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>> Untested: Michele, could you give this a try?
->>> ---
->>>  net/tap-solaris.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/net/tap-solaris.c b/net/tap-solaris.c
->>> index 4725d2314ee..d03165c57c9 100644
->>> --- a/net/tap-solaris.c
->>> +++ b/net/tap-solaris.c
->>> @@ -27,6 +27,7 @@
->>>  #include "tap_int.h"
->>>  #include "qemu/ctype.h"
->>>  #include "qemu/cutils.h"
->>> +#include "qemu-common.h"
->>>  
->>>  #include <sys/ethernet.h>
->>>  #include <sys/sockio.h>
->>>
-> I can confirm that this works in Solaris 11.4:
+Le 05/07/2020 à 23:33, Philippe Mathieu-Daudé a écrit :
+> Avoid declaring PXA2xxMMCIState local variable, return it directly.
 > 
-> root@hemlock:~/qemu-5.0.0# gpatch -p1 < tap-solaris.patch.diff
-> patching file net/tap-solaris.c
-> root@hemlock:~/qemu-5.0.0#
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/sd/pxa2xx_mmci.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+> index 9482b9212d..2996a2ef17 100644
+> --- a/hw/sd/pxa2xx_mmci.c
+> +++ b/hw/sd/pxa2xx_mmci.c
+> @@ -480,10 +480,8 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *sbd;
+> -    PXA2xxMMCIState *s;
+>  
+>      dev = qdev_new(TYPE_PXA2XX_MMCI);
+> -    s = PXA2XX_MMCI(dev);
+>      sbd = SYS_BUS_DEVICE(dev);
+>      sysbus_mmio_map(sbd, 0, base);
+>      sysbus_connect_irq(sbd, 0, irq);
+> @@ -491,7 +489,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+>      qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+>      sysbus_realize_and_unref(sbd, &error_fatal);
+>  
+> -    return s;
+> +    return PXA2XX_MMCI(dev);
+>  }
+>  
+>  static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
+> 
 
-Do you mean building on Solaris hosts works well now?
-
-In this case, you can add a "Tested-by:" tag.
-
-Thanks,
-Laurent
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
