@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jsh0e-0004y3-3k
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jul 2020 02:23:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34252)
+	id 1jsiVV-00008Z-Lr
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jul 2020 03:59:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsh0c-0004xY-Ej; Tue, 07 Jul 2020 02:23:14 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40463)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1jsiVT-00006S-PQ
+ for qemu-trivial@nongnu.org; Tue, 07 Jul 2020 03:59:11 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33789)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsh0a-0005Ok-Ul; Tue, 07 Jul 2020 02:23:14 -0400
-Received: by mail-wm1-x342.google.com with SMTP id f139so45216907wmf.5;
- Mon, 06 Jul 2020 23:23:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jwMl8vysdrK8IlFWcENFsp/LshAOHF4ix0mG4WX1FoI=;
- b=h/nFjY+3cMz5v0FC7Wl/iJvg9upeYg31vHY8BAweZkbsTwXo18oJSQAUjEMjoemOgr
- BNwZeKZsMM9OrYltPAALvomjxCP9OAm6YH6XO9kQmi2CncgLyQlHVqMhzObNp9ccpeKy
- WgecPR8B5DlMywtBK0AKTPXSPSF6KrDxVj5MECoj06ruxADOZEAe2WF4gfZRew4Kprb6
- CT7Zd0u5Wj1tNCYrMvE1CMIybMb+qYUh8e9iPQ6leTxOxjZobw1UWCbYnuC0bUWWOcpT
- 9vuhDBSDg+uaysbPRetQn+Lx51JHaTa8qTobr/vH8Eu7h3OOY5KYFG2oeDXccwUXFce+
- LH3A==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1jsiVD-0003W6-Vj
+ for qemu-trivial@nongnu.org; Tue, 07 Jul 2020 03:59:11 -0400
+Received: by mail-wm1-x344.google.com with SMTP id a6so1157052wmm.0
+ for <qemu-trivial@nongnu.org>; Tue, 07 Jul 2020 00:58:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=jvLidYTk3Gwk+8RiJSnhs2zD4i65Sr1+CzDXLCD0Iuw=;
+ b=e/NaAKLgASeagYNbsRUxfqFMmbFFxUkHfgwH7Wzx0jtqYahcwYXZBmS9gZ8SMbZpfr
+ 6NHHlFjyZgd0DU4nPgG+o5CCVBbdOQQrpA1H0m2fo4LAJJLnwJtuW9vZee6jOtPvaIPP
+ 72TI7zFCeq3mIQyfFndbYwTm8j877mG9wp0nOuwsFQRQpmHlCjy9dSxQMgNUKZRXmgQn
+ xyBYjg0vIpu3n9I1D/6a2YkzJy7+yphCLH255EbaCs7O1eppDt9087I2StmsNpBOUqgu
+ 3hiNFW4SZXPJ/VQYj2OQD8DvB0+r99ZY4Xuu22ct5XS86PRoCvNWMj8MBch1O+LIPLih
+ EXGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=jwMl8vysdrK8IlFWcENFsp/LshAOHF4ix0mG4WX1FoI=;
- b=aU80Vs12I6c/8tAbg+AVN0Pg8w7RDHEAa9kwy8POzvnh8D+7QHvNK/JRxsTRPC2zXO
- 7i9YDx8rppwFU8AYhcvkZMbTHW4ojF+Z+xxp/5LswhZmnZuPeZAI8jW4M+NXrS3QokL5
- gb6fw+1lX42lTjGX0Nk0qfrIjBzm6DHjiKsnSpnF0CYU0/zqnMrbHpgKzPJNftbc0mWP
- 3ZCZ6MvHWK4GYBK7mmHIkKqHjT5RwmmfVdYy993gXmIMBo0IkWql4cLMSSk8BOzU1NUl
- R1lXgSMSVcklmUbdZGkVMAt77zjUPuC1i2VjvkQTsqPUc/B8fLpLLfT81hj8zU7cuaPI
- pKCA==
-X-Gm-Message-State: AOAM5318qN+Dlzq9JeOLbBZqaUnr8xrJxcupx+9aX0l4hMIV6ya6EOUa
- TuHnM3oT0EuQmyb+g4HKydZ6pj/k
-X-Google-Smtp-Source: ABdhPJxXKIBW5/HB3CX8UMeQLWohmsIAXJY1Wtr7eAeqCJ+fk4bgMdATH4PNIl0tPYm0C3l3LKRXww==
-X-Received: by 2002:a7b:cf10:: with SMTP id l16mr2504643wmg.93.1594102990653; 
- Mon, 06 Jul 2020 23:23:10 -0700 (PDT)
-Received: from localhost.localdomain
- (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id m10sm26864645wru.4.2020.07.06.23.23.09
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=jvLidYTk3Gwk+8RiJSnhs2zD4i65Sr1+CzDXLCD0Iuw=;
+ b=E6/3AsrtIqi6Qrl+22SOUlcysiQ+x/pzZOEyyYYBw2qzWcAwTTR54XVP7+aSiYFHI9
+ xOXsxlifBFR1ClLB8JTUqr59teiDRU9e3QtYEtlnXHxOvfsLwbQZ+5ouK4SrgTHiSvvW
+ p4+Er3VzywRnu+l8e2BOxPPGOZj2j89p6K5SBTJw8pm6g9qTcHFPduD2Njvsly5Gdgft
+ aIPgAizk7qDAJNRphM3rXBJq/IhfZdk6awLQ49GfKL1kNhHaaru1jImokuKIuqE93BZG
+ qCJx2PsExoeaWFzNCf403rFwaNdHqiVspL9tGs9VyM7nUnnT9NPzoEoA4n5QIx4oaN55
+ A7kg==
+X-Gm-Message-State: AOAM5336A3vjMREQc/8hV9NzCqPi9co2JgCYw/kvp++8BIcRyJ4crbVH
+ v4S5wJkjIgSw3nFhe9NAmoimow==
+X-Google-Smtp-Source: ABdhPJwUf05BWVZzcEaK7gfjY0YSZFrV14V1pOsZH9K4oyBR8phLwfcu66PjErfnaZwnAK3pcswi+A==
+X-Received: by 2002:a7b:cbcb:: with SMTP id n11mr2673332wmi.99.1594108733976; 
+ Tue, 07 Jul 2020 00:58:53 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id u20sm2219170wmm.15.2020.07.07.00.58.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jul 2020 23:23:10 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/register: Document register_init_block @memory_size
-Date: Tue,  7 Jul 2020 08:23:08 +0200
-Message-Id: <20200707062308.4531-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ Tue, 07 Jul 2020 00:58:53 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 5EE921FF7E;
+ Tue,  7 Jul 2020 08:58:52 +0100 (BST)
+References: <20200601171609.1665397-1-arilou@gmail.com>
+User-agent: mu4e 1.5.4; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Jon Doron <arilou@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [v1] docs: Add to gdbstub documentation the PhyMemMode
+In-reply-to: <20200601171609.1665397-1-arilou@gmail.com>
+Date: Tue, 07 Jul 2020 08:58:52 +0100
+Message-ID: <87fta3pxhf.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,29 +80,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jul 2020 06:23:14 -0000
+X-List-Received-Date: Tue, 07 Jul 2020 07:59:12 -0000
 
-Document the 'memory_size' argument of register_init_block().
 
-Fixes: a74229597e ("register: Add block initialise helper")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/register.h | 1 +
- 1 file changed, 1 insertion(+)
+Jon Doron <arilou@gmail.com> writes:
 
-diff --git a/include/hw/register.h b/include/hw/register.h
-index 5d2c565ae0..fdac5e69b5 100644
---- a/include/hw/register.h
-+++ b/include/hw/register.h
-@@ -181,6 +181,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr, unsigned size);
-  * @data: Array to use for register data, must already be allocated
-  * @ops: Memory region ops to access registers.
-  * @debug enabled: turn on/off verbose debug information
-+ * @memory_size: Size of the memory region
-  * returns: A structure containing all of the registers and an initialized
-  *          memory region (r_array->mem) the caller should add to a container.
-  */
--- 
-2.21.3
+> The PhyMemMode gdb extension command was missing from the gdb.rst
+> document.
+>
+> Signed-off-by: Jon Doron <arilou@gmail.com>
 
+Queued to docs/next, thanks.
+
+> ---
+>  docs/system/gdb.rst | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+>
+> diff --git a/docs/system/gdb.rst b/docs/system/gdb.rst
+> index a40145fcf8..abda961e2b 100644
+> --- a/docs/system/gdb.rst
+> +++ b/docs/system/gdb.rst
+> @@ -87,3 +87,23 @@ three commands you can query and set the single step b=
+ehavior:
+>        (gdb) maintenance packet Qqemu.sstep=3D0x5
+>        sending: "qemu.sstep=3D0x5"
+>        received: "OK"
+> +
+> +
+> +Another feature that QEMU gdbstub provides is to toggle the memory GDB
+> +works with, by default GDB will show the current process memory respecti=
+ng
+> +the virtual address translation.
+> +
+> +If you want to examine/change the physical memory you can set the gdbstub
+> +to work with the physical memory rather with the virtual one.
+> +
+> +The memory mode can be checked by sending the following command:
+> +
+> +``maintenance packet qqemu.PhyMemMode``
+> +    This will return either 0 or 1, 1 indicates you are currently in the
+> +    physical memory mode.
+> +
+> +``maintenance packet Qqemu.PhyMemMode:1``
+> +    This will change the memory mode to physical memory.
+> +
+> +``maintenance packet Qqemu.PhyMemMode:0``
+> +    This will change it back to normal memory mode.
+
+
+--=20
+Alex Benn=C3=A9e
 
