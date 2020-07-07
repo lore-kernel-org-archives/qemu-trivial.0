@@ -1,59 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jslDu-0001fJ-TJ
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jul 2020 06:53:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36358)
+	id 1jspRR-0005gm-Pz
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jul 2020 11:23:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jslDs-0001Zf-V9; Tue, 07 Jul 2020 06:53:12 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:35931)
+ (Exim 4.90_1) (envelope-from <denber@mindspring.com>)
+ id 1jspRP-0005cK-NK; Tue, 07 Jul 2020 11:23:28 -0400
+Received: from elasmtp-galgo.atl.sa.earthlink.net ([209.86.89.61]:34792)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jslDr-0000Oe-0a; Tue, 07 Jul 2020 06:53:12 -0400
-Received: from localhost.localdomain ([82.252.135.106]) by
- mrelayeu.kundenserver.de (mreue011 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N4hex-1ksBVg0OZD-011lpN; Tue, 07 Jul 2020 12:53:03 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
- Michele Denber <denber@mindspring.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 7/7] net/tap-solaris.c: Include qemu-common.h for TFR macro
-Date: Tue,  7 Jul 2020 12:52:55 +0200
-Message-Id: <20200707105255.362318-8-laurent@vivier.eu>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200707105255.362318-1-laurent@vivier.eu>
-References: <20200707105255.362318-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <denber@mindspring.com>)
+ id 1jspRM-0006iC-IE; Tue, 07 Jul 2020 11:23:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mindspring.com;
+ s=dk12062016; t=1594135404; bh=uHzcXWkanjDGXsdATJqbJLqiQPlekOd/41+y
+ 2sw7x5g=; h=Received:Message-ID:Date:From:User-Agent:MIME-Version:
+ To:CC:Subject:References:In-Reply-To:Content-Type:
+ Content-Transfer-Encoding:X-ELNK-Trace:X-Originating-IP; b=UdnePe6
+ uB8B9hxIBFglzalpokPQ5UA4sFYiE7C48uZb8U2yHi9T4k9jP3DkPuqX0gZoz/ZDDH1
+ 8opVRFad0wyJJnSKl78sXPIs8GnoiaeNm3xqUwGJwQyXgPtry3Chk5kfYOifDMm+wSv
+ EC8TRzHZwYf0QaW1GtEq07+abXbWD9KZAcwlf9udh+9CRX7oAQRihKPfhk/g1xRDK83
+ m+R1OFF2k7t7yclUfyRHCTxwXIS1J52CgzdWQLVyn9OoUmRn8J9v6GGhiQ6IopWRiPa
+ U8Czlq+RCGJSK814JfZ6UUv18M2br9Tdcf76WukE5n/NkLUCWNgRXgOTRSNA16iFWuA
+ ==
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws;
+ s=dk12062016; d=mindspring.com;
+ b=oGTvd0i65KMvBW35t7eaUxRrYJyXBscfdNJ7df3aFaDXlYCRXkCCS+bdJyKQXk9FE7xFExq5xrbQxj9EESoNf/QsIygDaatbUsr2uaeaAOa3RkzVMmgAvhEvtVzbyVZJwFxisuTBWTeMZ8+kChNZmR/l37HpC62CS7MMW6nE+12QhGotpeVT4huZEI5Pm7yHUGFIcpI74b5l1eE9PF45DENnROUBlnio4Dfw3s4oG3qetUgTegV8q7p7oQyaCTrNs1PdScajBH4pgILk5Ssa4CwB49FREiCbHz95MvU7EghmH5OHxu7hvxrX7kxMQ3Uxw4I+3fKvFqMKVlwcTGyWYQ==;
+ h=Received:Message-ID:Date:From:User-Agent:MIME-Version:To:CC:Subject:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:X-ELNK-Trace:X-Originating-IP;
+Received: from [8.9.81.230] (helo=[192.168.0.78])
+ by elasmtp-galgo.atl.sa.earthlink.net with esmtpa (Exim 4)
+ (envelope-from <denber@mindspring.com>)
+ id 1jspRF-0002b6-H7; Tue, 07 Jul 2020 11:23:17 -0400
+Message-ID: <5F049364.7050002@mindspring.com>
+Date: Tue, 07 Jul 2020 11:23:16 -0400
+From: Michele Denber <denber@mindspring.com>
+User-Agent: Mozilla/5.0 (X11; SunOS sun4v;
+ rv:10.0.7) Gecko/20121005 Thunderbird/10.0.7
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+To: Laurent Vivier <laurent@vivier.eu>
+CC: Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Jason Wang <jasowang@redhat.com>,
+ qemu-devel@nongnu.org, =?UTF-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
+ <f4bug@amsat.org>
+Subject: Re: [PATCH] net/tap-solaris.c: Include qemu-common.h for TFR macro
+References: <20200704092317.12943-1-peter.maydell@linaro.org>
+ <c247fc94-f8f7-efe1-017f-fc1c03fee811@redhat.com>
+ <5F00C6D6.8010001@mindspring.com>
+ <239dfc36-404f-3439-3f1e-5d8750d31f5b@vivier.eu>
+In-Reply-To: <239dfc36-404f-3439-3f1e-5d8750d31f5b@vivier.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lsRt7/FDAVdg+rzVdalhBL4jkta7hx0JrP73WaU+PKuu6Nq6MBa
- u/kxnjrMocfQW8Jr5EIKb0+xxu7Cti7wwjaHClyW3QSs3Jh9pmQJmpcadhFmoqMJk9n9C2e
- Fbkgdx6LaQ8Eh9S2VgG2Br9qxrjQphEs/ERxa1OqRrSqkuUsdjn02XPG+YQXkGNPSAeqR3f
- dyApxhKO1mkH22LHENGiQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:axkjWxxnXMk=:gDdfTvdCOqIur1DLuvw/4b
- F9eEd7SOfkTd0yC9W9Ivo4g6+rG2Hoz/sRAvwOTUEMpxnllrcdM6j7GEOEZ51sgDjEc8+dESD
- Y5GdGZFl9qswIwI8MK04FRCbhkwu+tR8CszlyXr6AuMubBQNYUVoE+NG6KUkXeIXf1AtqxIR6
- TQ5NI/HMt09XFcdIkHfXHhWNK8Q2GqX1AaarU2m2rPbsxGwHAmhVoOKG/3Yy1uptpDOlugCSh
- MQeFwRnTeCVQiq+ho0VzBTfhr0XGDCaQn4gC1Hfu9WSu6tHJm9nrXlHU4lEtYW1UuebAMWQ/n
- ol7DTJUW9QMCNj1/DBaZz6ffcB02T8gCNSWYtd0+nXkZVJtYSZlnBSJ0Z6sQ2+g4tyU33tNGq
- phLZ2Jvx8/8C4bstD4eGthOrfqpNc6BhFz2NOU/f3iRCF0qHW/vUj4MqmrPxz6dPv3DWtCc1W
- tOJ50P2cQUEwqPUrFsliS1p2c3Q37d5Lz/hIhg4v+JKYVnx2LFS+3NOK5lswyjDALyw82hUBh
- W6/fjtkFOFX0+ChpZO4ifDvD+p4ujpqMVIUij+A9ux6LEyIIWzV4AnQEAGK7K0r1p31Tp1eae
- QbqK0w+d1QqEZiOfvhTjR2AbKtC3Bhu0x//UAGgPIV++rb7mgC9D8e/cImcT3e8PRNBeGki1i
- UvxUugbu09Ff0RNThivwgPTxCbkWJumPVobvTEjpWoq/fYFoLWScWuTxCu2oNP2stH+PAbQ2g
- cL2SjOl1N7Td7+yTaeAvfD/qrYSas3IkbHejW+g/1whM4u6VRK8PFOpZryaWko5ay+4LWv3RH
- jzhBY3n9KuHr896f0I07DB0ogwuhAqZPXC+AEIcz554SE75YWKo4sL9qzVn4RCxo3kLCN+y
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 06:53:03
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-ELNK-Trace: 17a948d2f1835c375e89bb4777695beb24867385ea7beca5f98d7afda05fd72219fb38001a926c67350badd9bab72f9c350badd9bab72f9c350badd9bab72f9c
+X-Originating-IP: 8.9.81.230
+Received-SPF: pass client-ip=209.86.89.61; envelope-from=denber@mindspring.com;
+ helo=elasmtp-galgo.atl.sa.earthlink.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 11:23:19
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,40 +73,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jul 2020 10:53:13 -0000
+X-List-Received-Date: Tue, 07 Jul 2020 15:23:28 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
 
-In commit a8d2532645cf5ce4 we cleaned up usage of the qemu-common.h header
-so that it was always included from .c files and never from other .h files.
-We missed adding it to net/tap-solaris.c (which previously was pulling it
-in via tap-int.h), which broke building on Solaris hosts.
 
-Fixes: a8d2532645cf5ce4
-Reported-by: Michele Denber <denber@mindspring.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Michele Denber <denber@mindspring.com>
-Message-Id: <20200704092317.12943-1-peter.maydell@linaro.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- net/tap-solaris.c | 1 +
- 1 file changed, 1 insertion(+)
+On 07/06/20 13:04, Laurent Vivier wrote:
+> Le 04/07/2020 à 20:13, Michele Denber a écrit :
+>> On 07/04/20 13:11, Thomas Huth wrote:
+>>> On 04/07/2020 11.23, Peter Maydell wrote:
+>>>> In commit a8d2532645cf5ce4 we cleaned up usage of the qemu-common.h header
+>>>> so that it was always included from .c files and never from other .h files.
+>>>> We missed adding it to net/tap-solaris.c (which previously was pulling it
+>>>> in via tap-int.h), which broke building on Solaris hosts.
+>>>>
+>>>> Fixes: a8d2532645cf5ce4
+>>>> Reported-by: Michele Denber<denber@mindspring.com>
+>>>> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+>>>> ---
+>>>> Untested: Michele, could you give this a try?
+>>>> ---
+>>>>   net/tap-solaris.c | 1 +
+>>>>   1 file changed, 1 insertion(+)
+>>>>
+>>>> diff --git a/net/tap-solaris.c b/net/tap-solaris.c
+>>>> index 4725d2314ee..d03165c57c9 100644
+>>>> --- a/net/tap-solaris.c
+>>>> +++ b/net/tap-solaris.c
+>>>> @@ -27,6 +27,7 @@
+>>>>   #include "tap_int.h"
+>>>>   #include "qemu/ctype.h"
+>>>>   #include "qemu/cutils.h"
+>>>> +#include "qemu-common.h"
+>>>>
+>>>>   #include<sys/ethernet.h>
+>>>>   #include<sys/sockio.h>
+>>>>
+>> I can confirm that this works in Solaris 11.4:
+>>
+>> root@hemlock:~/qemu-5.0.0# gpatch -p1<  tap-solaris.patch.diff
+>> patching file net/tap-solaris.c
+>> root@hemlock:~/qemu-5.0.0#
+> Do you mean building on Solaris hosts works well now?
+In that message I meant that the tap-solaris patch worked.  However, 
+yes, I have now successfully built all of QEMU 5.0 on Solaris 11.4 SPARC.
+>
+> In this case, you can add a "Tested-by:" tag.
+I'd be glad to but how do I do that?
 
-diff --git a/net/tap-solaris.c b/net/tap-solaris.c
-index 4725d2314eef..d03165c57c9f 100644
---- a/net/tap-solaris.c
-+++ b/net/tap-solaris.c
-@@ -27,6 +27,7 @@
- #include "tap_int.h"
- #include "qemu/ctype.h"
- #include "qemu/cutils.h"
-+#include "qemu-common.h"
- 
- #include <sys/ethernet.h>
- #include <sys/sockio.h>
--- 
-2.26.2
+             - Michele
 
 
