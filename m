@@ -1,78 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jtHmD-0007MU-7h
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jul 2020 17:38:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37310)
+	id 1jtKw2-0006wN-IB
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jul 2020 21:01:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jtHmA-0007I4-Iv
- for qemu-trivial@nongnu.org; Wed, 08 Jul 2020 17:38:46 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21467
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jtKvx-0006v6-Qi
+ for qemu-trivial@nongnu.org; Wed, 08 Jul 2020 21:01:06 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43109
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jtHm8-0003S2-5m
- for qemu-trivial@nongnu.org; Wed, 08 Jul 2020 17:38:45 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jtKvv-0003qx-79
+ for qemu-trivial@nongnu.org; Wed, 08 Jul 2020 21:01:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594244323;
+ s=mimecast20190719; t=1594256462;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=b0Ma7ijg3Nvpwxwl5uTE3a13so6FxTARUYgVyjWwO9k=;
- b=BnF8wetis5V+1zJK5wQ66Fz/r6okzMIImkk3ykyNEsRb2nvv+QnHbma0d5hnSBoZtyBiku
- /dCZRgEs9O/md1oZlRNDrib/VFbcBVBl1utgJwU0smSudH3NfZAx7ZOXl/eFz2LzChi5WC
- OdQ4Ek1mT6TxgWEMqm0sKRwNtSCAqV8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-13-c8RB8PIRPHWe7giavN5e4A-1; Wed, 08 Jul 2020 06:37:49 -0400
-X-MC-Unique: c8RB8PIRPHWe7giavN5e4A-1
-Received: by mail-wr1-f70.google.com with SMTP id o12so51387053wrj.23
- for <qemu-trivial@nongnu.org>; Wed, 08 Jul 2020 03:37:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=b0Ma7ijg3Nvpwxwl5uTE3a13so6FxTARUYgVyjWwO9k=;
- b=OFUJ72P6dPLOwmLj4zL1Mwuz79m5crPgV//uL31btCxh+V4kUbZqNgVs2VzK9emmCX
- bYo7XqH8Jdr5Xla0TOMPOP2xTeV2l3qIt6fQbOBXx4TPZSs590eEQSyOpT4ILaQ3lUM1
- 9Uk7KOa48EfC3UeZkG2BDp+jgNOHdt6OjBCRhqmKlZoxVyleADdJgH+nYem2W9sF6eRi
- khfrypmC7ic+2XO3Rgu8tcXezV/b3nGyeVJnQeNh3pK7CtH1x66ISeLUXzfybZaQcLSN
- vCXZeDmZj+crKDgYQ0zgTkPvz8KOOE/TgIiRae8qljwlpteOwk6BwcPgCa7oxhGG/dty
- kWaw==
-X-Gm-Message-State: AOAM532s8Y6QnvdzbLbSdDceViT0J6Eq6j35hRuhHSqXIbhRLgWgI38W
- Ek6Yy66Aa0tyIY1EOukxgWcRv5k29r9kKCQjDue10jX7jjTbnw+DVbVO0uQMR3ZKDYKec3099qr
- 7zNK5a6HEeHZjnsO8rA==
-X-Received: by 2002:a1c:7fd7:: with SMTP id a206mr8578684wmd.104.1594204668469; 
- Wed, 08 Jul 2020 03:37:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbpeZoGStBwww98/41W96R4yDpqf+YUwDklw7WGwqzqdlbIblYxjnu3Tise3Dv1+JK3pUKmw==
-X-Received: by 2002:a1c:7fd7:: with SMTP id a206mr8578659wmd.104.1594204668216; 
- Wed, 08 Jul 2020 03:37:48 -0700 (PDT)
-Received: from redhat.com (bzq-79-182-31-92.red.bezeqint.net. [79.182.31.92])
- by smtp.gmail.com with ESMTPSA id
- 133sm5923591wme.5.2020.07.08.03.37.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jul 2020 03:37:47 -0700 (PDT)
-Date: Wed, 8 Jul 2020 06:37:44 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Laszlo Ersek <lersek@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Kashyap Chamarthy <kchamart@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH v2] MAINTAINERS: Cover the firmware JSON schema
-Message-ID: <20200708063659-mutt-send-email-mst@kernel.org>
-References: <20200703183450.32398-1-philmd@redhat.com>
- <20200708024434-mutt-send-email-mst@kernel.org>
- <3dafd514-f66c-96c5-3217-86ef990dda1b@redhat.com>
+ bh=smbKjRsU5i3KhKg3QbXzYi2KAz29ytP0Ea1NEY02NP8=;
+ b=YAAGcmDWuVrJowkMtV3D5IYbN+aKY2j7sVY1vDMSIVI/FGTjf/FgFc220jHKGgxlaz0nRm
+ h7+TUQ6VsaWMK1OuFQp015gJZ5scbyq3bh/TWBqZyhBDD2V2pItVthSKdq6dJcE6iJCsjG
+ ICIL7js3qii6wvkpB1MPprhYX3AJfsI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-Pw-148vnOlaI8JRnwwDe1w-1; Wed, 08 Jul 2020 00:57:53 -0400
+X-MC-Unique: Pw-148vnOlaI8JRnwwDe1w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C50A11005510;
+ Wed,  8 Jul 2020 04:57:48 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 676E271678;
+ Wed,  8 Jul 2020 04:57:34 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B747E1132FD2; Wed,  8 Jul 2020 06:57:32 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Christophe de Dinechin <dinechin@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,  Max Filippov
+ <jcmvbkbc@gmail.com>,  Gerd Hoffmann <kraxel@redhat.com>,  "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,  Max Reitz <mreitz@redhat.com>,
+ Marek Vasut <marex@denx.de>,  Stefano Stabellini
+ <sstabellini@kernel.org>,  qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org,  Paul Durrant <paul@xen.org>,  Magnus Damm
+ <magnus.damm@gmail.com>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
+ <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Richard Henderson <rth@twiddle.net>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,  Alistair Francis
+ <alistair@alistair23.me>,  Eduardo Habkost <ehabkost@redhat.com>,  Michael
+ Tokarev <mjt@tls.msk.ru>,  Riku Voipio <riku.voipio@iki.fi>,  Peter Lieven
+ <pl@kamp.de>,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Roman
+ Bolshakov <r.bolshakov@yadro.com>,  qemu-arm@nongnu.org,  Peter Chubb
+ <peter.chubb@nicta.com.au>,  Ronnie Sahlberg <ronniesahlberg@gmail.com>,
+ xen-devel@lists.xenproject.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ David Gibson <david@gibson.dropbear.id.au>,  Kevin Wolf
+ <kwolf@redhat.com>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,  Chris Wulff
+ <crwulff@gmail.com>,  Laurent Vivier <laurent@vivier.eu>,  Jean-Christophe
+ Dubois <jcd@tribudubois.net>,  qemu-ppc@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH] trivial: Remove trailing whitespaces
+References: <20200706162300.1084753-1-dinechin@redhat.com>
+ <20200707102510.GF2649462@redhat.com>
+Date: Wed, 08 Jul 2020 06:57:32 +0200
+In-Reply-To: <20200707102510.GF2649462@redhat.com> ("Daniel P. =?utf-8?Q?B?=
+ =?utf-8?Q?errang=C3=A9=22's?=
+ message of "Tue, 7 Jul 2020 11:25:10 +0100")
+Message-ID: <878sfu4n9f.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <3dafd514-f66c-96c5-3217-86ef990dda1b@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=mst@redhat.com;
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
  helo=us-smtp-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 17:25:11
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -82,7 +93,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,70 +106,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jul 2020 21:38:47 -0000
+X-List-Received-Date: Thu, 09 Jul 2020 01:01:07 -0000
 
-On Wed, Jul 08, 2020 at 10:57:31AM +0200, Philippe Mathieu-Daudé wrote:
-> +qemu-trivial
-> 
-> On 7/8/20 8:45 AM, Michael S. Tsirkin wrote:
-> > On Fri, Jul 03, 2020 at 08:34:50PM +0200, Philippe Mathieu-DaudÃƒÂ© wrote:
-> >> Add an entry to cover firmware.json (see commit 3a0adfc9bf:
-> >> schema that describes the different uses and properties of
-> >> virtual machine firmware).
-> >>
-> >> Cc: Laszlo Ersek <lersek@redhat.com>
-> >> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> >> Cc: Michael S. Tsirkin <mst@redhat.com>
-> >> Cc: Kashyap Chamarthy <kchamart@redhat.com>
-> >> Cc: Daniel P. Berrange <berrange@redhat.com>
-> >> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> >> Signed-off-by: Philippe Mathieu-DaudÃƒÂ© <philmd@redhat.com>
-> > 
-> > 
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> Thanks Michael. If you plan to do a pull request, can you
-> include this patch please? (modulo the weird UTF8 mojibakes)
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-I'll try, hopefully utf8 will be fine when I do.
+> On Mon, Jul 06, 2020 at 06:23:00PM +0200, Christophe de Dinechin wrote:
+>> There are a number of unnecessary trailing whitespaces that have
+>> accumulated over time in the source code. They cause stray changes
+>> in patches if you use tools that automatically remove them.
+>>=20
+>> Tested by doing a `git diff -w` after the change.
+>>=20
+>> This could probably be turned into a pre-commit hook.
 
-> Else it can simply go via the trivial tree.
-> 
-> > 
-> >> ---
-> >> Since RFC v1:
-> >> - Added Daniel & Kashyap as reviewer
-> >> - Added myself as co-maintainer with Laszlo
-> >>
-> >> Based on a comment from Laszlo:
-> >> https://www.mail-archive.com/qemu-devel@nongnu.org/msg604925.html
-> >> Background info from Kashyap:
-> >> https://lists.nongnu.org/archive/html/qemu-devel/2018-03/msg01978.html
-> >> ---
-> >>  MAINTAINERS | 8 ++++++++
-> >>  1 file changed, 8 insertions(+)
-> >>
-> >> diff --git a/MAINTAINERS b/MAINTAINERS
-> >> index dec252f38b..64bcea658d 100644
-> >> --- a/MAINTAINERS
-> >> +++ b/MAINTAINERS
-> >> @@ -2601,6 +2601,14 @@ F: include/hw/i2c/smbus_master.h
-> >>  F: include/hw/i2c/smbus_slave.h
-> >>  F: include/hw/i2c/smbus_eeprom.h
-> >>  
-> >> +Firmware schema specifications
-> >> +M: Laszlo Ersek <lersek@redhat.com>
-> >> +M: Philippe Mathieu-DaudÃƒÂ© <philmd@redhat.com>
-> >> +R: Daniel P. Berrange <berrange@redhat.com>
-> >> +R: Kashyap Chamarthy <kchamart@redhat.com>
-> >> +S: Maintained
-> >> +F: docs/interop/firmware.json
-> >> +
-> >>  EDK2 Firmware
-> >>  M: Laszlo Ersek <lersek@redhat.com>
-> >>  M: Philippe Mathieu-DaudÃƒÂ© <philmd@redhat.com>
-> >> -- 
-> >> 2.21.3
-> > 
+See .git/hooks/pre-commit.sample.
+
+Expected test output is prone to flunk the whitespace test.  One
+solution is to strip trailing whitespace from test output.
+
+> scripts/checkpatch.pl ought to be made to check it.
+>
+>>=20
+>> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
+>> ---
+[...]
+>>  78 files changed, 440 insertions(+), 440 deletions(-)
+>
+> The cleanup is a good idea, however, I think it is probably better to
+> split the patch approx into subsystems. That will make it much easier
+> to cherry-pick for people doing backports.
+
+I doubt that's worth the trouble.
+
+Acked-by: Markus Armbruster <armbru@redhat.com>
 
 
