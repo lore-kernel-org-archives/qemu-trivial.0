@@ -1,91 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jtTK1-0000HW-MS
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jul 2020 05:58:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50908)
+	id 1jtWlV-0006RL-B0
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jul 2020 09:39:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jtTK0-0000G7-Mc
- for qemu-trivial@nongnu.org; Thu, 09 Jul 2020 05:58:28 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:53022
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jtTJy-0004N7-VP
- for qemu-trivial@nongnu.org; Thu, 09 Jul 2020 05:58:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594288702;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TsiVhAjIKg+FB5XMXfehrSKXHq3EBQMHfqa05YX+yN0=;
- b=chZFchR8LajSMf7y7tx4aadd64flsz0zkuU4SDgETvxtUnLDanPCSlHrELJM3KVyIKBtg5
- R9HBpmo7OD1HWDGbJQdliqiilEIAgNRoIJ2eEmilgi47a7oRQT470jqUlDiIPTOkKSF6sG
- 0xxZF7SO16azMvoBQced+hvg/y/GRGo=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-460-aq19k5PGPEidtSnTNRvrew-1; Thu, 09 Jul 2020 05:58:19 -0400
-X-MC-Unique: aq19k5PGPEidtSnTNRvrew-1
-Received: by mail-wm1-f70.google.com with SMTP id z11so1783041wmg.5
- for <qemu-trivial@nongnu.org>; Thu, 09 Jul 2020 02:58:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtWlU-0006RA-3n; Thu, 09 Jul 2020 09:39:04 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:56028)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtWlS-0004R3-EC; Thu, 09 Jul 2020 09:39:03 -0400
+Received: by mail-wm1-x341.google.com with SMTP id g75so1835333wme.5;
+ Thu, 09 Jul 2020 06:39:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=IMAkJsQQS63Q07JJMyqhaX6Y/9enYz61VenxRjMy40c=;
+ b=GwITJ2Chbft3/qxp5OL2M0q4asDG0nPH42mL2uvWLSoh9xhWA/sD2lh0+WmbI+Kpbm
+ OcxTuN1JIxqOu1Kg5ruXD5Es854msFPJH8dLUbt6/kM4XMwa72ehURnSNzMnTnQMzr+W
+ Oku7dVDdxZxvp2sIgD0yzIr8q2nTtBDqR3CJ/1Qo1BZ2Wcdb6Izsp99HKMH6y2im+mW0
+ d49ubplfCshZwmNIQXikFUUqjPEdzuAcaFydYSBmCQpVQA2UQor2NS3glgBQ25QSKCHf
+ HVflyRmFGjOlT4qZLdCeNBJPg7BMrJgCwBS50zyG1KSP4Zxrp/adaJza5fx/A1RjDxOf
+ GTXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=TsiVhAjIKg+FB5XMXfehrSKXHq3EBQMHfqa05YX+yN0=;
- b=Hi+HzQYjw96f7m9SuOfLD2U1HHJAUruJq1ymZeNrA3baiwGqO7gxBuu4EDWjvVUVuU
- AN5otcDHOwFvtJ8x7MJSvM2n37gGYDdaWQ7jMFrCypribg7dfj85h4Fsk1/CTTEB0kEm
- rc0E6jAv7mLTwOF+kHdZQ6c0wys40oGKE2r7jgjxiDTI9Qu6bG4U+JYXD9WeaJOsEwhO
- B4IUpRAPapFds5SswkXqUe6JnWLk/jVugyR24gJCXtnEelN451ofuh/DjGpWRi2wzpjf
- SNzLN2NRXA2F+4WWF8kqVevgjipD5yGYQf24HnabOMuK2c+G8peoyYsEs/XPi7/NtKf0
- hn6A==
-X-Gm-Message-State: AOAM531y3y7w3UDuIArGFBFe8iVwSlxFhrB2w/CbWc42Wqnq9ozDfK3F
- +BG3GRHyD89gPYdHM7/g3oLzQlFSPqz+i16upXC60FBi+JiIXcFfVTqWuqYILI1+/X44sIioebz
- nIfrFhQs8NipPKX2HoA==
-X-Received: by 2002:adf:e40e:: with SMTP id g14mr67805501wrm.271.1594288697658; 
- Thu, 09 Jul 2020 02:58:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOy6v8BQ8JbEsJF5dXlATGTZUDurHSE9tmMnzGFWkzd6nkiVy4AHLvq41egKvGd5AUGDaEPw==
-X-Received: by 2002:adf:e40e:: with SMTP id g14mr67805475wrm.271.1594288697336; 
- Thu, 09 Jul 2020 02:58:17 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:9541:9439:cb0f:89c?
- ([2001:b07:6468:f312:9541:9439:cb0f:89c])
- by smtp.gmail.com with ESMTPSA id y6sm4212596wmy.0.2020.07.09.02.58.16
+ bh=IMAkJsQQS63Q07JJMyqhaX6Y/9enYz61VenxRjMy40c=;
+ b=ehMianQI8pkKr5yPlsukCWjA/tAk5kJM1F8lsLc3J6jiigLuppFvpfd5UWQ2g8CM5N
+ zc9r/rbyBtY4YOdcqdKdsBV3YztwcslH2KEoueqk8iMbl1XcYkdJHbv5kg34uZaKfpiS
+ pu4gALhE+vTYoUeRfVrBAZazLzoXogYn314OOFnBG1xRS4JVla5wNAtXAXFq4hCftTbk
+ Q7lZIKJ6YnUAsCelOQ4jIzEruwV7avgqoZbx4A2xtRo1GOo0Bshcpc8A7riDIrgmyxhb
+ Ul87dhqhysPuUFLSqdyca+szfv7u9bjLnTqLVzsrcoqQqueiUzwIFzbkGZB5CKZr+X45
+ OJng==
+X-Gm-Message-State: AOAM531mr0vJbgF7N2KfJcaHWnQ/g1QGPNVV5ya33s1svkQ9tk1AdjXT
+ lCgcBFWYxNqE4afHcd757XwUdNUTV8E=
+X-Google-Smtp-Source: ABdhPJxXPjk99ZIrLW7Z3jxWnHgoT2fh0qmhvHStHHXIUx6XPzr/uzLcMAV3FnCq7NXSRfG9WHSrwQ==
+X-Received: by 2002:a1c:2e58:: with SMTP id u85mr6597wmu.123.1594301940287;
+ Thu, 09 Jul 2020 06:39:00 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id q7sm5973238wrs.27.2020.07.09.06.38.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Jul 2020 02:58:16 -0700 (PDT)
-Subject: Re: [PATCH] Remove the CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE switch
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Eduardo Habkost <ehabkost@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Eric Blake <eblake@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20200709053456.4900-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <27814bf4-a370-f8c0-4820-37c027b46b03@redhat.com>
-Date: Thu, 9 Jul 2020 11:58:15 +0200
+ Thu, 09 Jul 2020 06:38:59 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] Fix MIPS add.s after
+ 1ace099f2acb952eaaef0ba7725879949a7e4406
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20200703161515.25966-1-Alexander.Richardson@cl.cam.ac.uk>
+ <CAL1e-=huJ8hLCb7gG=cZ6bXcqMOUSA17NHpnCEED18MR4mKXhw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7449e90a-7d04-5a4c-d301-21a46242a1a6@amsat.org>
+Date: Thu, 9 Jul 2020 15:38:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200709053456.4900-1-thuth@redhat.com>
-Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAL1e-=huJ8hLCb7gG=cZ6bXcqMOUSA17NHpnCEED18MR4mKXhw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/09 04:20:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,191 +89,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jul 2020 09:58:28 -0000
+X-List-Received-Date: Thu, 09 Jul 2020 13:39:04 -0000
 
-On 09/07/20 07:34, Thomas Huth wrote:
-> GCC supports "#pragma GCC diagnostic" since version 4.6, and
-> Clang seems to support it, too, since its early versions 3.x.
-> That means that our minimum required compiler versions all support
-> this pragma already and we can remove the test from configure and
-> all the related #ifdefs in the code.
+Hi Aleksandar,
+
+On 7/7/20 6:26 PM, Aleksandar Markovic wrote:
+> On Fri, Jul 3, 2020 at 6:33 PM Alex Richardson
+> <Alexander.Richardson@cl.cam.ac.uk> wrote:
+>>
+>> After merging latest QEMU upstream into our CHERI fork, I noticed that
+>> some of the FPU tests in our MIPS baremetal testsuite
+>> (https://github.com/CTSRD-CHERI/cheritest) started failing. It turns out
+>> this commit accidentally changed add.s into a subtract.
+>>
+>> Signed-off-by: Alex Richardson <Alexander.Richardson@cl.cam.ac.uk>
+>> ---
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  configure                 | 29 -----------------------------
->  include/ui/gtk.h          |  4 ----
->  include/ui/qemu-pixman.h  |  4 ----
->  scripts/decodetree.py     | 12 ++++--------
->  ui/gtk.c                  |  4 ----
->  util/coroutine-ucontext.c |  4 ----
->  6 files changed, 4 insertions(+), 53 deletions(-)
+> Applied to MIPS + TCG Continuous Benchmarking queue.
 
-Cc: qemu-trivial@nongnu.org
+If you don't mind I'll include this patch for the mips pull request I
+plan to send before hard freeze (on the list). I'm keeping your S-o-b.
 
-Looks good, thanks!
-
-Paolo
-
-> diff --git a/configure b/configure
-> index ee6c3c6792..fbf119bbc0 100755
-> --- a/configure
-> +++ b/configure
-> @@ -5703,31 +5703,6 @@ if compile_prog "" "" ; then
->      linux_magic_h=yes
->  fi
->  
-> -########################################
-> -# check whether we can disable warning option with a pragma (this is needed
-> -# to silence warnings in the headers of some versions of external libraries).
-> -# This test has to be compiled with -Werror as otherwise an unknown pragma is
-> -# only a warning.
-> -#
-> -# If we can't selectively disable warning in the code, disable -Werror so that
-> -# the build doesn't fail anyway.
-> -
-> -pragma_disable_unused_but_set=no
-> -cat > $TMPC << EOF
-> -#pragma GCC diagnostic push
-> -#pragma GCC diagnostic ignored "-Wstrict-prototypes"
-> -#pragma GCC diagnostic pop
-> -
-> -int main(void) {
-> -    return 0;
-> -}
-> -EOF
-> -if compile_prog "-Werror" "" ; then
-> -    pragma_diagnostic_available=yes
-> -else
-> -    werror=no
-> -fi
-> -
->  ########################################
->  # check if we have valgrind/valgrind.h
->  
-> @@ -7661,10 +7636,6 @@ if test "$linux_magic_h" = "yes" ; then
->    echo "CONFIG_LINUX_MAGIC_H=y" >> $config_host_mak
->  fi
->  
-> -if test "$pragma_diagnostic_available" = "yes" ; then
-> -  echo "CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE=y" >> $config_host_mak
-> -fi
-> -
->  if test "$valgrind_h" = "yes" ; then
->    echo "CONFIG_VALGRIND_H=y" >> $config_host_mak
->  fi
-> diff --git a/include/ui/gtk.h b/include/ui/gtk.h
-> index d1b230848a..eaeb450f91 100644
-> --- a/include/ui/gtk.h
-> +++ b/include/ui/gtk.h
-> @@ -1,15 +1,11 @@
->  #ifndef UI_GTK_H
->  #define UI_GTK_H
->  
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  /* Work around an -Wstrict-prototypes warning in GTK headers */
->  #pragma GCC diagnostic push
->  #pragma GCC diagnostic ignored "-Wstrict-prototypes"
-> -#endif
->  #include <gtk/gtk.h>
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  #pragma GCC diagnostic pop
-> -#endif
->  
->  #include <gdk/gdkkeysyms.h>
->  
-> diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
-> index 3b7cf70157..87737a6f16 100644
-> --- a/include/ui/qemu-pixman.h
-> +++ b/include/ui/qemu-pixman.h
-> @@ -7,14 +7,10 @@
->  #define QEMU_PIXMAN_H
->  
->  /* pixman-0.16.0 headers have a redundant declaration */
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  #pragma GCC diagnostic push
->  #pragma GCC diagnostic ignored "-Wredundant-decls"
-> -#endif
->  #include <pixman.h>
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  #pragma GCC diagnostic pop
-> -#endif
->  
->  /*
->   * pixman image formats are defined to be native endian,
-> diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-> index 530d41ca62..694757b6c2 100755
-> --- a/scripts/decodetree.py
-> +++ b/scripts/decodetree.py
-> @@ -1327,12 +1327,10 @@ def main():
->      # but we can't tell which ones.  Prevent issues from the compiler by
->      # suppressing redundant declaration warnings.
->      if anyextern:
-> -        output("#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE\n",
-> -               "# pragma GCC diagnostic push\n",
-> -               "# pragma GCC diagnostic ignored \"-Wredundant-decls\"\n",
-> -               "# ifdef __clang__\n"
-> +        output("#pragma GCC diagnostic push\n",
-> +               "#pragma GCC diagnostic ignored \"-Wredundant-decls\"\n",
-> +               "#ifdef __clang__\n"
->                 "#  pragma GCC diagnostic ignored \"-Wtypedef-redefinition\"\n",
-> -               "# endif\n",
->                 "#endif\n\n")
->  
->      out_pats = {}
-> @@ -1347,9 +1345,7 @@ def main():
->      output('\n')
->  
->      if anyextern:
-> -        output("#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE\n",
-> -               "# pragma GCC diagnostic pop\n",
-> -               "#endif\n\n")
-> +        output("#pragma GCC diagnostic pop\n\n")
->  
->      for n in sorted(formats.keys()):
->          f = formats[n]
-> diff --git a/ui/gtk.c b/ui/gtk.c
-> index d4b49bd7da..b0cc08ad6d 100644
-> --- a/ui/gtk.c
-> +++ b/ui/gtk.c
-> @@ -1996,14 +1996,10 @@ static GSList *gd_vc_gfx_init(GtkDisplayState *s, VirtualConsole *vc,
->               * proper replacement (native opengl support) is only
->               * available in 3.16+.  Silence the warning if possible.
->               */
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  #pragma GCC diagnostic push
->  #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-> -#endif
->              gtk_widget_set_double_buffered(vc->gfx.drawing_area, FALSE);
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
->  #pragma GCC diagnostic pop
-> -#endif
->              vc->gfx.dcl.ops = &dcl_egl_ops;
->          }
->      } else
-> diff --git a/util/coroutine-ucontext.c b/util/coroutine-ucontext.c
-> index f0b66320e1..a4e6446ed9 100644
-> --- a/util/coroutine-ucontext.c
-> +++ b/util/coroutine-ucontext.c
-> @@ -237,19 +237,15 @@ Coroutine *qemu_coroutine_new(void)
->  }
->  
->  #ifdef CONFIG_VALGRIND_H
-> -#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && !defined(__clang__)
->  /* Work around an unused variable in the valgrind.h macro... */
->  #pragma GCC diagnostic push
->  #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
-> -#endif
->  static inline void valgrind_stack_deregister(CoroutineUContext *co)
->  {
->      VALGRIND_STACK_DEREGISTER(co->valgrind_stack_id);
->  }
-> -#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && !defined(__clang__)
->  #pragma GCC diagnostic pop
->  #endif
-> -#endif
->  
->  void qemu_coroutine_delete(Coroutine *co_)
->  {
+> 
+>>  target/mips/fpu_helper.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
+>> index 7a3a61cab3..56beda49d8 100644
+>> --- a/target/mips/fpu_helper.c
+>> +++ b/target/mips/fpu_helper.c
+>> @@ -1221,7 +1221,7 @@ uint32_t helper_float_add_s(CPUMIPSState *env,
+>>  {
+>>      uint32_t wt2;
+>>
+>> -    wt2 = float32_sub(fst0, fst1, &env->active_fpu.fp_status);
+>> +    wt2 = float32_add(fst0, fst1, &env->active_fpu.fp_status);
+>>      update_fcr31(env, GETPC());
+>>      return wt2;
+>>  }
+>> --
+>> 2.27.0
+>>
+>>
 > 
 
 
