@@ -1,63 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jtpWK-0005Um-Vd
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 05:40:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48354)
+	id 1jtpgr-00038j-VT
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 05:51:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jtpWJ-0005UT-Jd
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2020 05:40:39 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:30299
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1jtpWH-0005uS-2Z
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2020 05:40:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594374035;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zbsAehH5+P7R9qu9oGq+H9orZQd7S2ufuoDC+RoHI5o=;
- b=acrQfzizdXqV1A+Vqw1Ua54rW6cmjGTZZO6Sj3169YSdfCwMtLQU7nOvlp8R4pJA7kutmJ
- GZeVxDVVcd6DL8JO7hVGUCWXaKBh6ijv1pp5vcbhNbLhlq6xtpKzjT4Rkg/99fP4WNUT/x
- QSDxa6nfFFaV3Hy5rt4zuCXvGmxBVeE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-w0BkHcYIPdq5am3E2sN5Sg-1; Fri, 10 Jul 2020 05:40:31 -0400
-X-MC-Unique: w0BkHcYIPdq5am3E2sN5Sg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9EDCF1080;
- Fri, 10 Jul 2020 09:40:30 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-114-57.ams2.redhat.com [10.36.114.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D0425BAC3;
- Fri, 10 Jul 2020 09:40:27 +0000 (UTC)
-Date: Fri, 10 Jul 2020 11:40:26 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Zhenyu Ye <yezhenyu2@huawei.com>
-Cc: qemu-devel@nongnu.org, armbru@redhat.com, mreitz@redhat.com,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, xiexiangyou@huawei.com
-Subject: Re: [PATCH v1] qmp: don't hold ctx lock while querying blockstats
-Message-ID: <20200710094026.GC6641@linux.fritz.box>
-References: <20200710085400.343-1-yezhenyu2@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtpgp-00035u-QW; Fri, 10 Jul 2020 05:51:31 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51396)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtpgo-00076B-Ck; Fri, 10 Jul 2020 05:51:31 -0400
+Received: by mail-wm1-x341.google.com with SMTP id 22so5466562wmg.1;
+ Fri, 10 Jul 2020 02:51:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=kUb43I6NVsZfyoypkRi2RaPQxrWf7k6QCnIyz9rIGb8=;
+ b=FzN7l0ex1wYVU06w+J6mGNKZP2Ge5dO/gs0tlR0l9oNTbLwwIhAzCvsSNRFlao8yQd
+ ZghnIeDxawAwfLG63kxpGJTjo1kKYHDcacL/XVvs3j+E0uZxolLcnjAgUuwHtmwSAmG6
+ IB2S5xb+6vFbhkMkCCmb1hnrvWaA4CV9OXejCXjvBqBxe4vmkv2bpe12M8Am4oqQv7H/
+ iplsVMJIGzFMrDKamEg1iCYcAV7mEnYHTfla3/iLbY4EsYvtiE0357WPZgOuOd4ljNNB
+ sYPUeQo72wljpMCeW03rQbBv0E1w7tDQIITS0NTqREy3S6exWUkW/OC5u1sK4NOqkAY5
+ KFBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=kUb43I6NVsZfyoypkRi2RaPQxrWf7k6QCnIyz9rIGb8=;
+ b=tlZw7C8UAVVGboBKQ/Z/4661K5LX7LUpqBXnD0vdikGW82xYhyWrYiN4hek5eMhhfo
+ v0s1FkMipnY6/NLIzf9TDQlYGR+b8JzlwhKID/1m9VnYiIrpBUxPWg/z6DmfjkGaxf/W
+ TponCvw90mv9+xQlL8uAvOKL55m4jjPlQB7/A6IewnZhiCdbXlF0Ga7TRYqcWMg2WQ0m
+ cPZ5kt3r+t0/qZncCEeytxE6pHD2OdPZbU2bMfRIEmZfvFy66jq63MrzNyFUPWrqGUfB
+ 6rJRTu1QyAIElUJJrW+yKOiWj5B2UNdVLMTbxATQVf7/pro2HIxiRX0GEhJhiia7Nk8a
+ R0Hw==
+X-Gm-Message-State: AOAM530DvqiGmaWaSX26lXLs5nvRFu+BvOUPRyBf2h3RgUS4iSi/R4Sn
+ U9goPfYD3eiAq1X7GQ0ynwR7tOX0sCs=
+X-Google-Smtp-Source: ABdhPJyvRm5uxD/BFfztU1XuKhGRe8fB7c3K2DooHVwPKO4eBHp0wXkN53t5EOSuFOocxyRXZ5yZ9w==
+X-Received: by 2002:a7b:cb47:: with SMTP id v7mr4141260wmj.57.1594374688091;
+ Fri, 10 Jul 2020 02:51:28 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id g14sm10117685wrw.83.2020.07.10.02.51.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2020 02:51:27 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] hw/register: Document register_init_block @memory_size
+To: Laurent Vivier <laurent@vivier.eu>, Alistair Francis <alistair23@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+References: <20200707062308.4531-1-f4bug@amsat.org>
+ <772cb98e-865c-0c75-ffa2-60773a6df2dd@vivier.eu>
+ <CAKmqyKOebG+=vFMXoNKA+4A__hq5srKV6oGa1TOcmiaLYUgTww@mail.gmail.com>
+ <444a1458-6de4-b963-9d8b-914ae6c50033@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <fc37f085-b94d-18aa-9d1f-a4c5a873456e@amsat.org>
+Date: Fri, 10 Jul 2020 11:51:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200710085400.343-1-yezhenyu2@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/09 22:08:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <444a1458-6de4-b963-9d8b-914ae6c50033@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,32 +87,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2020 09:40:39 -0000
+X-List-Received-Date: Fri, 10 Jul 2020 09:51:32 -0000
 
-Am 10.07.2020 um 10:54 hat Zhenyu Ye geschrieben:
-> Because the QMP command runs in the main thread, and changes
-> to the aio context of iothread will only be executed in the
-> main thread (they will not be in parallel), so there is no
-> need a lock protection while querying blockstats.
+On 7/9/20 10:17 PM, Laurent Vivier wrote:
+> Le 09/07/2020 à 19:19, Alistair Francis a écrit :
+>> On Wed, Jul 8, 2020 at 5:43 AM Laurent Vivier <laurent@vivier.eu> wrote:
+>>>
+>>> Le 07/07/2020 à 08:23, Philippe Mathieu-Daudé a écrit :
+>>>> Document the 'memory_size' argument of register_init_block().
+>>>>
+>>>> Fixes: a74229597e ("register: Add block initialise helper")
+>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>> ---
+>>>>  include/hw/register.h | 1 +
+>>>>  1 file changed, 1 insertion(+)
+>>>>
+>>>> diff --git a/include/hw/register.h b/include/hw/register.h
+>>>> index 5d2c565ae0..fdac5e69b5 100644
+>>>> --- a/include/hw/register.h
+>>>> +++ b/include/hw/register.h
+>>>> @@ -181,6 +181,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr, unsigned size);
+>>>>   * @data: Array to use for register data, must already be allocated
+>>>>   * @ops: Memory region ops to access registers.
+>>>>   * @debug enabled: turn on/off verbose debug information
+>>>> + * @memory_size: Size of the memory region
+>>>>   * returns: A structure containing all of the registers and an initialized
+>>>>   *          memory region (r_array->mem) the caller should add to a container.
+>>>>   */
+>>>>
+>>>
+>>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>>
+>> Can this go via the trivial tree?
+>>
 > 
-> If we hold the lock here, while the I/O pressure is high in
-> vm and the I/O returns slowly, the main thread will be stuck
-> until the lock is released, which will affect the vcpu operation
-> and finall cause the vm to be stuck.
-> 
-> Signed-off-by: Zhenyu Ye <yezhenyu2@huawei.com>
+> Yes, I will try to do a PR before the hard freeze.
 
-Are you saying that you think qmp_query_blockstats() runs in the
-iothread? This is not true, it runs in the main thread.
-
-This makes dropping the lock wrong, and even dropping it shouldn't make
-a difference for other things that should run in the main thread because
-the main thread is still busy executing the QMP command.
-
-Am I missing something?
-
-(Also, a change like this is most definitely *not* trivial.)
-
-Kevin
-
+No rush, if there is nothing else in your queue
+you can safely keep this for 5.2 ;)
 
