@@ -1,59 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jtmwX-0007C7-ME
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 02:55:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39238)
+	id 1jtpJX-0006iI-QI
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 05:27:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jtmwW-0007By-Le
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2020 02:55:32 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:44293
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jtpJV-0006hR-NF; Fri, 10 Jul 2020 05:27:25 -0400
+Resent-Date: Fri, 10 Jul 2020 05:27:25 -0400
+Resent-Message-Id: <E1jtpJV-0006hR-NF@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21780)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jtmwU-00026U-Le
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2020 02:55:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594364130;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=dtkTGLlrL7utWqk1B9ekfPUSEt/hltKmp8Zu5f5/dlo=;
- b=bBqkn0DhYv9ezmH2t5IQ+Zs6csUj4aUt5y8XgrN9b29+xYmsZ3qHS+ri7CPFKXXW3qvrGL
- BpHZxfYdVe0Yhd48h2btLm+mYVfwtSMYrD4/uPCpdZSjx1halSUKTvY5gtqHPVFpbdEvTE
- EmVjO9QiIUAN54w866OSPc6VBo5WsQA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-484-r5gXUP60Oqya8jMLjjWZxA-1; Fri, 10 Jul 2020 02:55:27 -0400
-X-MC-Unique: r5gXUP60Oqya8jMLjjWZxA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8DE01100CC84;
- Fri, 10 Jul 2020 06:55:26 +0000 (UTC)
-Received: from thuth.com (ovpn-112-68.ams2.redhat.com [10.36.112.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 704046106A;
- Fri, 10 Jul 2020 06:55:22 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] docs/qdev-device-use: Clean up the sentences related to
- -usbdevice
-Date: Fri, 10 Jul 2020 08:55:20 +0200
-Message-Id: <20200710065520.24784-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/09 22:08:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jtpJT-0004D4-Ff; Fri, 10 Jul 2020 05:27:25 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1594373229; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=LvZnGjAVmd8+J3xCI02mvqGmZt/MPchRZQnJQCjpa2K7sS7NiGPy4go4mJzY2UcTUkSPsLSdb9woV4gsddLwopjk/smhFNNA0l3y8GLY1U+ujBVKGZSQzI8Pm6YcmLCuPbbaPbE4HVgV4r6V1g01LxpeMNYOilwpVBf2OTpb3AA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1594373229;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=k26YPtV0Im12e5217dQB6bZGq8m4XW9iz3sC4icrJ8Y=; 
+ b=A29BQzOWVs2hobnlvSOdStUWea1urFuyASpRtlho5UJ1rO+GAX/cMgU9MfBPOA6ZbXFnXlOGr3HHPDck+Ro97FIkaUUw9ULUa8YxpSRg+wc9Tvz2aykDnTlOvYGLMQ3fSTlPfd1NwOo/aO2ruO5wQ4lMR2ws09wKHwadQ5m88q4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1594373226299815.9690776399015;
+ Fri, 10 Jul 2020 02:27:06 -0700 (PDT)
+Subject: Re: [PATCH v1] qmp: don't hold ctx lock while querying blockstats
+Message-ID: <159437322467.26758.12812585450561154108@07a7f0d89f7d>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20200710085400.343-1-yezhenyu2@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: yezhenyu2@huawei.com
+Cc: qemu-devel@nongnu.org, kwolf@redhat.com, qemu-block@nongnu.org,
+ yezhenyu2@huawei.com, qemu-trivial@nongnu.org, armbru@redhat.com,
+ xiexiangyou@huawei.com, mreitz@redhat.com
+Date: Fri, 10 Jul 2020 02:27:06 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 05:27:18
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,88 +63,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2020 06:55:32 -0000
+X-List-Received-Date: Fri, 10 Jul 2020 09:27:26 -0000
 
-Most of the -usbdevice paramaters have been removed already. Update
-the doc accordingly.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/qdev-device-use.txt | 28 +++-------------------------
- 1 file changed, 3 insertions(+), 25 deletions(-)
-
-diff --git a/docs/qdev-device-use.txt b/docs/qdev-device-use.txt
-index 4bbbcf561f..f8d0d2fe29 100644
---- a/docs/qdev-device-use.txt
-+++ b/docs/qdev-device-use.txt
-@@ -125,12 +125,7 @@ The -device argument differs in detail for each type of drive:
- 
- * if=pflash, if=mtd, if=sd, if=xen are not yet available with -device
- 
--For USB devices, the old way is actually different:
--
--    -usbdevice disk:format=FMT:FILENAME
--
--Provides much less control than -drive's OPTS...  The new way fixes
--that:
-+For USB storage devices, you can use something like:
- 
-     -device usb-storage,drive=DRIVE-ID,removable=RMB
- 
-@@ -177,8 +172,6 @@ The appropriate DEVNAME depends on the machine type.  For type "pc":
- 
-   This lets you control I/O ports and IRQs.
- 
--* -usbdevice serial::chardev becomes -device usb-serial,chardev=dev.
--
- * -usbdevice braille doesn't support LEGACY-CHARDEV syntax.  It always
-   uses "braille".  With -device, this useful default is gone, so you
-   have to use something like
-@@ -238,10 +231,6 @@ The old way to define the guest part looks like this:
- 
-     -net nic,netdev=NET-ID,macaddr=MACADDR,model=MODEL,name=ID,addr=STR,vectors=V
- 
--Except for USB it looks like this:
--
--    -usbdevice net:netdev=NET-ID,macaddr=MACADDR,name=ID
--
- The new way is -device:
- 
-     -device DEVNAME,netdev=NET-ID,mac=MACADDR,DEV-OPTS...
-@@ -336,12 +325,7 @@ The new way is -device DEVNAME,DEV-OPTS...  Details depend on DRIVER:
- * mouse           -device usb-mouse
- * tablet          -device usb-tablet
- * wacom-tablet    -device usb-wacom-tablet
--* host:...        See "Host Device Assignment"
--* disk:...        See "Block Devices"
--* serial:...      See "Character Devices"
- * braille         See "Character Devices"
--* net:...         See "Network Devices"
--* bt:...          not yet available with -device
- 
- === Watchdog Devices ===
- 
-@@ -358,17 +342,11 @@ and host USB devices.  PCI devices can only be assigned with -device:
- 
-     -device vfio-pci,host=ADDR,id=ID
- 
--The old way to assign a host USB device is
--
--    -usbdevice host:auto:BUS.ADDR:VID:PRID
--
--where any of BUS, ADDR, VID, PRID can be the wildcard *.
--
--The new way is
-+To assign a host USB device use:
- 
-     -device usb-host,hostbus=BUS,hostaddr=ADDR,vendorid=VID,productid=PRID
- 
--Omitted options match anything, just like the old way's wildcard.
-+Omitted options match anything.
- 
- === Default Devices ===
- 
--- 
-2.18.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDcxMDA4NTQwMC4zNDMt
+MS15ZXpoZW55dTJAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRv
+Y2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNv
+bW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxs
+ZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJ
+UFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5F
+VFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9
+MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpOb3QgcnVuOiAyNTkKRmFpbHVy
+ZXM6IDE5MgpGYWlsZWQgMSBvZiAxMTkgaW90ZXN0cwptYWtlOiAqKiogW2NoZWNrLXRlc3RzL2No
+ZWNrLWJsb2NrLnNoXSBFcnJvciAxClRyYWNlYmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToK
+ICBGaWxlICIuL3Rlc3RzL2RvY2tlci9kb2NrZXIucHkiLCBsaW5lIDY2OSwgaW4gPG1vZHVsZT4K
+ICAgIHN5cy5leGl0KG1haW4oKSkKLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0
+Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRv
+JywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51
+dWlkPWMwODY2NTRjOGI0MzRkZTI5YWIzMDM4NzA1ODUzNWJhJywgJy11JywgJzEwMDEnLCAnLS1z
+ZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VU
+X0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScs
+ICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNI
+RV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUt
+ZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3
+LXRlc3Rlci10bXAtMHh2NmI0Yjkvc3JjL2RvY2tlci1zcmMuMjAyMC0wNy0xMC0wNS4xMS4zNi4x
+ODY1MDovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUv
+cnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmls
+dGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9YzA4NjY1NGM4YjQzNGRl
+MjlhYjMwMzg3MDU4NTM1YmEKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2Vb
+MV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtMHh2NmI0
+Yjkvc3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAy
+CgpyZWFsICAgIDE1bTI5LjcxNXMKdXNlciAgICAwbTkuMzIxcwoKClRoZSBmdWxsIGxvZyBpcyBh
+dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA3MTAwODU0MDAuMzQzLTEt
+eWV6aGVueXUyQGh1YXdlaS5jb20vdGVzdGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1t
+ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
+cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
+ZGV2ZWxAcmVkaGF0LmNvbQ==
 
