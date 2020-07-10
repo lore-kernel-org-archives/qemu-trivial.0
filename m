@@ -1,81 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jtpgr-00038j-VT
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 05:51:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50774)
+	id 1jttJi-0000zx-VU
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 09:43:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpgp-00035u-QW; Fri, 10 Jul 2020 05:51:31 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51396)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpgo-00076B-Ck; Fri, 10 Jul 2020 05:51:31 -0400
-Received: by mail-wm1-x341.google.com with SMTP id 22so5466562wmg.1;
- Fri, 10 Jul 2020 02:51:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kUb43I6NVsZfyoypkRi2RaPQxrWf7k6QCnIyz9rIGb8=;
- b=FzN7l0ex1wYVU06w+J6mGNKZP2Ge5dO/gs0tlR0l9oNTbLwwIhAzCvsSNRFlao8yQd
- ZghnIeDxawAwfLG63kxpGJTjo1kKYHDcacL/XVvs3j+E0uZxolLcnjAgUuwHtmwSAmG6
- IB2S5xb+6vFbhkMkCCmb1hnrvWaA4CV9OXejCXjvBqBxe4vmkv2bpe12M8Am4oqQv7H/
- iplsVMJIGzFMrDKamEg1iCYcAV7mEnYHTfla3/iLbY4EsYvtiE0357WPZgOuOd4ljNNB
- sYPUeQo72wljpMCeW03rQbBv0E1w7tDQIITS0NTqREy3S6exWUkW/OC5u1sK4NOqkAY5
- KFBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kUb43I6NVsZfyoypkRi2RaPQxrWf7k6QCnIyz9rIGb8=;
- b=tlZw7C8UAVVGboBKQ/Z/4661K5LX7LUpqBXnD0vdikGW82xYhyWrYiN4hek5eMhhfo
- v0s1FkMipnY6/NLIzf9TDQlYGR+b8JzlwhKID/1m9VnYiIrpBUxPWg/z6DmfjkGaxf/W
- TponCvw90mv9+xQlL8uAvOKL55m4jjPlQB7/A6IewnZhiCdbXlF0Ga7TRYqcWMg2WQ0m
- cPZ5kt3r+t0/qZncCEeytxE6pHD2OdPZbU2bMfRIEmZfvFy66jq63MrzNyFUPWrqGUfB
- 6rJRTu1QyAIElUJJrW+yKOiWj5B2UNdVLMTbxATQVf7/pro2HIxiRX0GEhJhiia7Nk8a
- R0Hw==
-X-Gm-Message-State: AOAM530DvqiGmaWaSX26lXLs5nvRFu+BvOUPRyBf2h3RgUS4iSi/R4Sn
- U9goPfYD3eiAq1X7GQ0ynwR7tOX0sCs=
-X-Google-Smtp-Source: ABdhPJyvRm5uxD/BFfztU1XuKhGRe8fB7c3K2DooHVwPKO4eBHp0wXkN53t5EOSuFOocxyRXZ5yZ9w==
-X-Received: by 2002:a7b:cb47:: with SMTP id v7mr4141260wmj.57.1594374688091;
- Fri, 10 Jul 2020 02:51:28 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id g14sm10117685wrw.83.2020.07.10.02.51.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2020 02:51:27 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/register: Document register_init_block @memory_size
-To: Laurent Vivier <laurent@vivier.eu>, Alistair Francis <alistair23@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-References: <20200707062308.4531-1-f4bug@amsat.org>
- <772cb98e-865c-0c75-ffa2-60773a6df2dd@vivier.eu>
- <CAKmqyKOebG+=vFMXoNKA+4A__hq5srKV6oGa1TOcmiaLYUgTww@mail.gmail.com>
- <444a1458-6de4-b963-9d8b-914ae6c50033@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fc37f085-b94d-18aa-9d1f-a4c5a873456e@amsat.org>
-Date: Fri, 10 Jul 2020 11:51:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <yezhenyu2@huawei.com>)
+ id 1jtonb-0008Q1-Oq; Fri, 10 Jul 2020 04:54:27 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3718 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yezhenyu2@huawei.com>)
+ id 1jtonZ-0008B1-I4; Fri, 10 Jul 2020 04:54:27 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id A981EC9A05AA6EA97629;
+ Fri, 10 Jul 2020 16:54:16 +0800 (CST)
+Received: from DESKTOP-KKJBAGG.china.huawei.com (10.174.186.75) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 10 Jul 2020 16:54:06 +0800
+From: Zhenyu Ye <yezhenyu2@huawei.com>
+To: <qemu-devel@nongnu.org>
+CC: <yezhenyu2@huawei.com>, <armbru@redhat.com>, <kwolf@redhat.com>,
+ <mreitz@redhat.com>, <qemu-block@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <xiexiangyou@huawei.com>
+Subject: [PATCH v1] qmp: don't hold ctx lock while querying blockstats
+Date: Fri, 10 Jul 2020 16:54:00 +0800
+Message-ID: <20200710085400.343-1-yezhenyu2@huawei.com>
+X-Mailer: git-send-email 2.22.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <444a1458-6de4-b963-9d8b-914ae6c50033@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.186.75]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=yezhenyu2@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 04:54:17
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 10 Jul 2020 09:43:54 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,42 +52,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2020 09:51:32 -0000
+X-List-Received-Date: Fri, 10 Jul 2020 08:54:28 -0000
 
-On 7/9/20 10:17 PM, Laurent Vivier wrote:
-> Le 09/07/2020 à 19:19, Alistair Francis a écrit :
->> On Wed, Jul 8, 2020 at 5:43 AM Laurent Vivier <laurent@vivier.eu> wrote:
->>>
->>> Le 07/07/2020 à 08:23, Philippe Mathieu-Daudé a écrit :
->>>> Document the 'memory_size' argument of register_init_block().
->>>>
->>>> Fixes: a74229597e ("register: Add block initialise helper")
->>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>> ---
->>>>  include/hw/register.h | 1 +
->>>>  1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/include/hw/register.h b/include/hw/register.h
->>>> index 5d2c565ae0..fdac5e69b5 100644
->>>> --- a/include/hw/register.h
->>>> +++ b/include/hw/register.h
->>>> @@ -181,6 +181,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr, unsigned size);
->>>>   * @data: Array to use for register data, must already be allocated
->>>>   * @ops: Memory region ops to access registers.
->>>>   * @debug enabled: turn on/off verbose debug information
->>>> + * @memory_size: Size of the memory region
->>>>   * returns: A structure containing all of the registers and an initialized
->>>>   *          memory region (r_array->mem) the caller should add to a container.
->>>>   */
->>>>
->>>
->>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->>
->> Can this go via the trivial tree?
->>
-> 
-> Yes, I will try to do a PR before the hard freeze.
+Because the QMP command runs in the main thread, and changes
+to the aio context of iothread will only be executed in the
+main thread (they will not be in parallel), so there is no
+need a lock protection while querying blockstats.
 
-No rush, if there is nothing else in your queue
-you can safely keep this for 5.2 ;)
+If we hold the lock here, while the I/O pressure is high in
+vm and the I/O returns slowly, the main thread will be stuck
+until the lock is released, which will affect the vcpu operation
+and finall cause the vm to be stuck.
+
+Signed-off-by: Zhenyu Ye <yezhenyu2@huawei.com>
+---
+ block/qapi.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/block/qapi.c b/block/qapi.c
+index afd9f3b4a7..fa56bc145d 100644
+--- a/block/qapi.c
++++ b/block/qapi.c
+@@ -609,11 +609,8 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
+     if (has_query_nodes && query_nodes) {
+         for (bs = bdrv_next_node(NULL); bs; bs = bdrv_next_node(bs)) {
+             BlockStatsList *info = g_malloc0(sizeof(*info));
+-            AioContext *ctx = bdrv_get_aio_context(bs);
+ 
+-            aio_context_acquire(ctx);
+             info->value = bdrv_query_bds_stats(bs, false);
+-            aio_context_release(ctx);
+ 
+             *p_next = info;
+             p_next = &info->next;
+@@ -621,7 +618,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
+     } else {
+         for (blk = blk_all_next(NULL); blk; blk = blk_all_next(blk)) {
+             BlockStatsList *info;
+-            AioContext *ctx = blk_get_aio_context(blk);
+             BlockStats *s;
+             char *qdev;
+ 
+@@ -629,7 +625,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
+                 continue;
+             }
+ 
+-            aio_context_acquire(ctx);
+             s = bdrv_query_bds_stats(blk_bs(blk), true);
+             s->has_device = true;
+             s->device = g_strdup(blk_name(blk));
+@@ -643,7 +638,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
+             }
+ 
+             bdrv_query_blk_stats(s->stats, blk);
+-            aio_context_release(ctx);
+ 
+             info = g_malloc0(sizeof(*info));
+             info->value = s;
+-- 
+2.19.1
+
+
 
