@@ -1,46 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jttJi-0000zx-VU
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 09:43:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36886)
+	id 1jtvEJ-0005JO-1R
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2020 11:46:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34558)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yezhenyu2@huawei.com>)
- id 1jtonb-0008Q1-Oq; Fri, 10 Jul 2020 04:54:27 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3718 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jtvEH-0005HC-Kq; Fri, 10 Jul 2020 11:46:25 -0400
+Received: from mga02.intel.com ([134.134.136.20]:55304)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yezhenyu2@huawei.com>)
- id 1jtonZ-0008B1-I4; Fri, 10 Jul 2020 04:54:27 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id A981EC9A05AA6EA97629;
- Fri, 10 Jul 2020 16:54:16 +0800 (CST)
-Received: from DESKTOP-KKJBAGG.china.huawei.com (10.174.186.75) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 10 Jul 2020 16:54:06 +0800
-From: Zhenyu Ye <yezhenyu2@huawei.com>
-To: <qemu-devel@nongnu.org>
-CC: <yezhenyu2@huawei.com>, <armbru@redhat.com>, <kwolf@redhat.com>,
- <mreitz@redhat.com>, <qemu-block@nongnu.org>, <qemu-trivial@nongnu.org>,
- <xiexiangyou@huawei.com>
-Subject: [PATCH v1] qmp: don't hold ctx lock while querying blockstats
-Date: Fri, 10 Jul 2020 16:54:00 +0800
-Message-ID: <20200710085400.343-1-yezhenyu2@huawei.com>
-X-Mailer: git-send-email 2.22.0.windows.1
+ (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
+ id 1jtvEF-0008Ol-3u; Fri, 10 Jul 2020 11:46:25 -0400
+IronPort-SDR: hYf2wDwxyQpMFXtr/4W3h4rdVafDz+IwuD1sNbFN0LTIDS9lWUCe62j7ngyfLiU+837vhg1Ehw
+ b0/cmD9CYLgA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9678"; a="136427517"
+X-IronPort-AV: E=Sophos;i="5.75,336,1589266800"; d="scan'208";a="136427517"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2020 08:46:19 -0700
+IronPort-SDR: gHwNG1r9OK42eLBQcVH6hasSGyfPMRx8u8NWkWsfVX3/MBdEEHguCNCzG3IB4/Yi8C4yAUeBTa
+ Fd/SyE00rqqQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,336,1589266800"; d="scan'208";a="484686336"
+Received: from unknown (HELO localhost.localdomain.sh.intel.com)
+ ([10.239.153.142])
+ by fmsmga005.fm.intel.com with ESMTP; 10 Jul 2020 08:46:18 -0700
+From: Wentong Wu <wentong.wu@intel.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: qemu-trivial@nongnu.org, crwulff@gmail.com, marex@denx.de,
+ Wentong Wu <wentong.wu@intel.com>
+Subject: [PATCH v2 2/4] target/nios2: in line the semantics of DISAS_UPDATE
+ with other targets
+Date: Fri, 10 Jul 2020 19:34:31 -0400
+Message-Id: <20200710233433.19729-2-wentong.wu@intel.com>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200710233433.19729-1-wentong.wu@intel.com>
+References: <20200710233433.19729-1-wentong.wu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.186.75]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=yezhenyu2@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 04:54:17
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=134.134.136.20; envelope-from=wentong.wu@intel.com;
+ helo=mga02.intel.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 11:46:16
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DATE_IN_FUTURE_06_12=1.947,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Jul 2020 09:43:54 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,65 +61,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2020 08:54:28 -0000
+X-List-Received-Date: Fri, 10 Jul 2020 15:46:25 -0000
 
-Because the QMP command runs in the main thread, and changes
-to the aio context of iothread will only be executed in the
-main thread (they will not be in parallel), so there is no
-need a lock protection while querying blockstats.
+In line the semantics of DISAS_UPDATE on nios2 target with other targets
+which is to explicitly write the PC back into the cpu state before doing
+a tcg_gen_exit_tb().
 
-If we hold the lock here, while the I/O pressure is high in
-vm and the I/O returns slowly, the main thread will be stuck
-until the lock is released, which will affect the vcpu operation
-and finall cause the vm to be stuck.
-
-Signed-off-by: Zhenyu Ye <yezhenyu2@huawei.com>
+Signed-off-by: Wentong Wu <wentong.wu@intel.com>
 ---
- block/qapi.c | 6 ------
- 1 file changed, 6 deletions(-)
+ target/nios2/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/block/qapi.c b/block/qapi.c
-index afd9f3b4a7..fa56bc145d 100644
---- a/block/qapi.c
-+++ b/block/qapi.c
-@@ -609,11 +609,8 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
-     if (has_query_nodes && query_nodes) {
-         for (bs = bdrv_next_node(NULL); bs; bs = bdrv_next_node(bs)) {
-             BlockStatsList *info = g_malloc0(sizeof(*info));
--            AioContext *ctx = bdrv_get_aio_context(bs);
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index b052be85..83c10eb2 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -865,6 +865,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
+     /* Indicate where the next block should start */
+     switch (dc->is_jmp) {
+     case DISAS_NEXT:
++    case DISAS_UPDATE:
+         /* Save the current PC back into the CPU register */
+         tcg_gen_movi_tl(cpu_R[R_PC], dc->pc);
+         tcg_gen_exit_tb(NULL, 0);
+@@ -872,7 +873,6 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
  
--            aio_context_acquire(ctx);
-             info->value = bdrv_query_bds_stats(bs, false);
--            aio_context_release(ctx);
- 
-             *p_next = info;
-             p_next = &info->next;
-@@ -621,7 +618,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
-     } else {
-         for (blk = blk_all_next(NULL); blk; blk = blk_all_next(blk)) {
-             BlockStatsList *info;
--            AioContext *ctx = blk_get_aio_context(blk);
-             BlockStats *s;
-             char *qdev;
- 
-@@ -629,7 +625,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
-                 continue;
-             }
- 
--            aio_context_acquire(ctx);
-             s = bdrv_query_bds_stats(blk_bs(blk), true);
-             s->has_device = true;
-             s->device = g_strdup(blk_name(blk));
-@@ -643,7 +638,6 @@ BlockStatsList *qmp_query_blockstats(bool has_query_nodes,
-             }
- 
-             bdrv_query_blk_stats(s->stats, blk);
--            aio_context_release(ctx);
- 
-             info = g_malloc0(sizeof(*info));
-             info->value = s;
+     default:
+     case DISAS_JUMP:
+-    case DISAS_UPDATE:
+         /* The jump will already have updated the PC register */
+         tcg_gen_exit_tb(NULL, 0);
+         break;
 -- 
-2.19.1
-
+2.21.3
 
 
