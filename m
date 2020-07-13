@@ -1,124 +1,107 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1judkm-0006sc-3Q
-	for mharc-qemu-trivial@gnu.org; Sun, 12 Jul 2020 11:18:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33792)
+	id 1juuKD-0006ea-1A
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 05:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
- id 1judkj-0006sN-Uc; Sun, 12 Jul 2020 11:18:54 -0400
-Received: from mga05.intel.com ([192.55.52.43]:2631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wentong.wu@intel.com>)
- id 1judkh-0006ha-0L; Sun, 12 Jul 2020 11:18:53 -0400
-IronPort-SDR: xs2i8uEmFEwI3O1D9b5J3QLbhSJmz2JdH9wEtettuZEEHY+AjDhLHGNUiYrAHedq24XYBPj/aS
- KgxVIBwxzMuw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9680"; a="233364227"
-X-IronPort-AV: E=Sophos;i="5.75,344,1589266800"; d="scan'208";a="233364227"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jul 2020 08:18:45 -0700
-IronPort-SDR: dQIiCWBqfovboFwhSfqBNLYsq90zqURWFhpwCd/L/EuZI4dcX1k9bujd5NfxIQVbXo5hKmeYg/
- Kz4QJ5vBNY0w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,344,1589266800"; d="scan'208";a="389972749"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga001.fm.intel.com with ESMTP; 12 Jul 2020 08:18:44 -0700
-Received: from FMSMSX109.amr.corp.intel.com (10.18.116.9) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sun, 12 Jul 2020 08:18:41 -0700
-Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
- fmsmsx109.amr.corp.intel.com (10.18.116.9) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sun, 12 Jul 2020 08:18:40 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.169)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Sun, 12 Jul 2020 08:18:40 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZYLwqyDg98T0vQ1NV+TuIMxry6PvGlKoK7VMGc4CjLA0WJpk5LJLBU0HuwV+q2iWxeq94ltkfUwBEHgXZXPXTdM99+NbUIrOj6PmAU2F1O7xy3MqSfENUMoiI9MSikNaUUuhisGvoYBRlzelUKmjHYaWJAYVUqiUrsA5RTqsrlXXDsvsY8LCJomCAC70u1ybt3UvaYCeNW3ivMm47nQDGU7LbfMzsEi5R6AbXL3cWLkYj9s44zvQjTAhW4IYt/7fq14CKZNfWl63xc/eAm8g6kX4DG7zY4z2FXFlcpGKO3jQ8U9wFO0vgMG1Gxh/9yfITcXAqHlFKFcDhNhCq0RpBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=710SgNskQh5VLJo3kctnMwqUGbkLMjClZnTtk63etB4=;
- b=SOflKpYnqN5vMLfwB8wUrCY/h06+x/saDrHx0zp4+TsfRQonQCFR5Rx5FlrYkb/a0iN0n7wEf6i5vzAbJ1QBjmsrEE3YpKikh393BbRepGQHzPQHnVdTFwlK4+b9H76WNZw408pwbpd6qBpnELIbCN2bSKjra0RyxrIOGJVdRcT0QeNNgsTuKwMQbB0glx6l4CTRTfVN7B9zSO6PqbzjGeGUwCELrs0OfVSuJvvw/T2BTwSWTdqbulO1wCOTSm+i6OBr/+aus6Rs3Hh1/IRS7TlaayZRO8JiVoL7Q8I9z1j+xjohtOC80wH0tXK6zzdZXVtoOyPg28Bhav1pDXhOPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=710SgNskQh5VLJo3kctnMwqUGbkLMjClZnTtk63etB4=;
- b=unxHnlRAla/67kwlC7rlRuXQAiEbrzu2HEu+v2HNNHml8Hh2IgymnFEvHpvFKAUadY9zdCxgtkJWInMZLMFOzwSZMDTiCT6k/+fwh+PQjK4t+UsVbYqGIQxtwU03gFCRKIKUcATstxTmd1gbQEACoTOh6KYhhEl7FoXP0J+xQEQ=
-Received: from DM5PR11MB1833.namprd11.prod.outlook.com (2603:10b6:3:110::12)
- by DM5PR11MB1497.namprd11.prod.outlook.com (2603:10b6:4:c::9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3174.21; Sun, 12 Jul 2020 15:18:38 +0000
-Received: from DM5PR11MB1833.namprd11.prod.outlook.com
- ([fe80::4ce3:6680:7257:7c74]) by DM5PR11MB1833.namprd11.prod.outlook.com
- ([fe80::4ce3:6680:7257:7c74%6]) with mapi id 15.20.3174.025; Sun, 12 Jul 2020
- 15:18:38 +0000
-From: "Wu, Wentong" <wentong.wu@intel.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Chris Wulff <crwulff@gmail.com>, Marek Vasut
- <marex@denx.de>
-Subject: RE: [PATCH v2 1/4] target/nios2: add DISAS_NORETURN case for nothing
- more to generate
-Thread-Topic: [PATCH v2 1/4] target/nios2: add DISAS_NORETURN case for nothing
- more to generate
-Thread-Index: AQHWVtFJcXtr6siA1E2uzooVXgBR0KkCumyAgAFWEhA=
-Date: Sun, 12 Jul 2020 15:18:38 +0000
-Message-ID: <DM5PR11MB18332E2147DF63FE3FE2E34E8D630@DM5PR11MB1833.namprd11.prod.outlook.com>
-References: <20200710233433.19729-1-wentong.wu@intel.com>
- <CAFEAcA9BfSCUi_LyCkvT7+V1cfhWgbUe2X9du0j-KnUf2bswnw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9BfSCUi_LyCkvT7+V1cfhWgbUe2X9du0j-KnUf2bswnw@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-reaction: no-action
-dlp-version: 11.2.0.6
-dlp-product: dlpe-windows
-authentication-results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [192.198.147.213]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 77e714b5-01c8-4009-7f53-08d82676da97
-x-ms-traffictypediagnostic: DM5PR11MB1497:
-x-microsoft-antispam-prvs: <DM5PR11MB1497B7DFA89822FCE45667AB8D630@DM5PR11MB1497.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1247;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: kb9/kZC9wHwONsGWKxFknth28ul7qdHU2U+hBi9eWM7n3KddwGPok1uHfuNPW3DxNv2/+YuQSY007fZu8gaXjGlNK8jrRR66F+W+0DRUzsz26uDXNX3y0xfE7qlnlJXgsCQSf1p50GoPidRTt+V/t8N6njI/KJNWEC9JoLrnJOOnmKa4RinlhtL4po1/ayhU/7fKIP35kw4up2ZTPZFe2sLTGAbp9Rn8MXeTq++3d0y48tMCVrrvtmzsBTI6owghpwggCvkFLP9gnkOykjF/h8QFpe++aeuFUoIbXHGuWk69gxtPXaRn7yMBVbnQojBs0CNtzCD+ACAOux6AOa4CUMuwdCC3zJzz+OLouGuq0cnmCn1z1v2/BfteS/9QiFi22QEMsXP24V/EzaX3M7Z8fQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR11MB1833.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(136003)(346002)(376002)(39860400002)(366004)(71200400001)(7696005)(6916009)(52536014)(5660300002)(33656002)(316002)(55016002)(83380400001)(8936002)(8676002)(4326008)(966005)(478600001)(54906003)(86362001)(76116006)(9686003)(26005)(66946007)(186003)(64756008)(2906002)(6506007)(66556008)(66446008)(53546011)(66476007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: DPJkoY+04056Hh9sj+l86cSixp/0KdDKuQXUwc7H1Rcr1KRmIV6zPF6c7Sr6188GLA5uB+/5B66fJ9OHC6b9bC8/KL4UmlJq9c/s49cBXWG1TfN+2439j3KKL8RR01SMD+UC/gImUYCOo87U+esOu//VxFI8apxxL8VztElXgRl4EBiK0px5lurnNQiEjfY43doxLAScwfrFo4cNly2FBAPKn9+lJErReIairJuW1BZzcxLvIwrIv1Nn/fC6gQ3se0d42gu3yB+KgInQCrfsmQMoZ5M/mZwqkbJHqDMSp2U2ROgipt0c/XMQFIWtJo9aMMq+hzarwNB7u1XOismpc/nAg/ygexJVbVmrj0YKpz9tWAeN4fJ1JZwK9mysoKJL8d0CaDskv3g12ENHX/i/ND/jFj7SPcIZWpe/f98OoZpmJiUjPzVVGWacfbUQiCNR4iO69Dq4D11lHDg+YLavAsdnx0ie7mrUL8VjrnRkwr+n6OUxjXwJWoAgm2sOkD5o
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1juuKB-0006bX-AR
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:00:35 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43042
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1juuK8-0002vP-0C
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:00:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594630830;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=bHaICCKOU/TxtVVNqMc29Q4jcoJsXcHbohOtzvJ4wEQ=;
+ b=LHV4MRO71tWgtaGPoU9QE+quwU8SFOw95GP//1y4u2XWbR6PrlqUy2FWrfAo823B9n9phW
+ shrJW2CIJiqZMBJsAHKbuRezWe78esjWtyonMV64e15naJspQK8vH/WZfcBEfbH80ulc2z
+ xGBzHMJ4ix3EmtJyHA8beqVmvZULVoM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-168-1GuD8cEVOKyeshXXsiisWw-1; Mon, 13 Jul 2020 05:00:27 -0400
+X-MC-Unique: 1GuD8cEVOKyeshXXsiisWw-1
+Received: by mail-wm1-f71.google.com with SMTP id c81so17947432wmd.2
+ for <qemu-trivial@nongnu.org>; Mon, 13 Jul 2020 02:00:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=bHaICCKOU/TxtVVNqMc29Q4jcoJsXcHbohOtzvJ4wEQ=;
+ b=W1osHvJucSA1G3kxY8Llj2WfrqQWH3SXcoydk0hnUYgK6Z2o3x8P3af4zbZkcilGOU
+ 6PKe/xSRWrk675JxGpexGw4y6yZNi8jLnOd+2q3kIAjokT3buUGLv3O9plJUV5ZW46FR
+ 2k6yGietNIY+B4LOVv+g+WXIPRgl06AMA5TmooVEBrPk7FjFvAD4nEsmbRq65UOmu+uI
+ T1nbFHxHHxCIOb1Ql9eK8gEgguk61ZxlNisMLzxLX9asD0WQ5PY4onqwlNoUtQ6vhTvk
+ 79M8czFqHC+SDJ7ZGP8ZmMYmQ5+G7fyhufmIWU5Z23joyU+dJBthSdbfl+2KBIjpfpiI
+ V/fA==
+X-Gm-Message-State: AOAM53173KPO+j1Vtln6kUc4kcvAu6llq0MEq2wkmVcd3P8n7GfzcX2l
+ R7kUtR4TXIRywKZDe53eR1k3pMI2fqB3PGjrNUouVKd7yYuMwPPrvdraNUSGgIUCSVSY48/rKRq
+ GPtrbjkFkfecluaDevQ==
+X-Received: by 2002:adf:de8d:: with SMTP id w13mr77261635wrl.129.1594630825785; 
+ Mon, 13 Jul 2020 02:00:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx27tG3sic85OHjYb6VlvNUycjATl7Hcn8UbvFR8v/LwvMUvY3S4F9Wr+u1U8i3pw7k5gnjgw==
+X-Received: by 2002:adf:de8d:: with SMTP id w13mr77261617wrl.129.1594630825552; 
+ Mon, 13 Jul 2020 02:00:25 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id k126sm23315304wme.17.2020.07.13.02.00.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jul 2020 02:00:25 -0700 (PDT)
+Subject: Re: [PATCH 1/1] configure: fix incorrect have_keyring check
+To: Alexey Kirillov <lekiravi@yandex-team.ru>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, yc-core@yandex-team.ru,
+ David Edmondson <david.edmondson@oracle.com>
+References: <20200713085528.5608-1-lekiravi@yandex-team.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <ad2b3d6a-701a-e867-5d79-5c19ba2a3985@redhat.com>
+Date: Mon, 13 Jul 2020 11:00:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR11MB1833.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 77e714b5-01c8-4009-7f53-08d82676da97
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jul 2020 15:18:38.7443 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rrDxH2FYtWt/bVU8VgHDmjMPb567jrOr09xciRkqgPJ8uM52s9/cezLVPyjOzA3O48uzO0d+e8CE1Enon/A8jA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1497
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.55.52.43; envelope-from=wentong.wu@intel.com;
- helo=mga05.intel.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/12 11:18:46
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+In-Reply-To: <20200713085528.5608-1-lekiravi@yandex-team.ru>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 01:36:29
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -131,42 +114,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 Jul 2020 15:18:54 -0000
+X-List-Received-Date: Mon, 13 Jul 2020 09:00:35 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRl
-ci5tYXlkZWxsQGxpbmFyby5vcmc+IA0KPiBTZW50OiBTdW5kYXksIEp1bHkgMTIsIDIwMjAgMjo1
-MCBBTQ0KPiBUbzogV3UsIFdlbnRvbmcgPHdlbnRvbmcud3VAaW50ZWwuY29tPg0KPiBDYzogUUVN
-VSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBRRU1VIFRyaXZpYWwgPHFlbXUt
-dHJpdmlhbEBub25nbnUub3JnPjsgQ2hyaXMgV3VsZmYgPGNyd3VsZmZAZ21haWwuY29tPjsgTWFy
-ZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMS80XSB0
-YXJnZXQvbmlvczI6IGFkZCBESVNBU19OT1JFVFVSTiBjYXNlIGZvciBub3RoaW5nIG1vcmUgdG8g
-Z2VuZXJhdGUNCj4gDQo+IE9uIEZyaSwgMTAgSnVsIDIwMjAgYXQgMTY6NDYsIFdlbnRvbmcgV3Ug
-PHdlbnRvbmcud3VAaW50ZWwuY29tPiB3cm90ZToNCj4gPg0KPiA+IEFkZCBESVNBU19OT1JFVFVS
-TiBjYXNlIGZvciBub3RoaW5nIG1vcmUgdG8gZ2VuZXJhdGUgYmVjYXVzZSBhdCANCj4gPiBydW50
-aW1lIGV4ZWN1dGlvbiB3aWxsIG5ldmVyIHJldHVybiBmcm9tIHNvbWUgaGVscGVyIGNhbGwuIEFu
-ZCBhdCB0aGUgDQo+ID4gc2FtZSB0aW1lIHJlcGxhY2UgRElTQVNfVVBEQVRFIGluIHRfZ2VuX2hl
-bHBlcl9yYWlzZV9leGNlcHRpb24gYW5kIA0KPiA+IGdlbl9leGNlcHRpb24gd2l0aCB0aGUgbmV3
-bHkgYWRkZWQgRElTQVNfTk9SRVRVUk4uDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBXZW50b25n
-IFd1IDx3ZW50b25nLnd1QGludGVsLmNvbT4NCj4gDQo+IEhpOyBJJ20gZ29pbmcgdG8gcGljayB0
-aGVzZSB1cCBhbmQgZ2V0IHRoZW0gaW50byBtYXN0ZXIuDQo+IA0KPiBBIGNvdXBsZSBvZiBub3Rl
-cyBiZWxvdyBmb3IgaWYgeW91IHBsYW4gdG8gc3VibWl0IG1vcmUgcGF0Y2hlcyB0byBRRU1VIGlu
-IGZ1dHVyZTogdGhlc2UgYXJlIHJlYWxseSBqdXN0IG1pbm9yIHdvcmtmbG93IHRoaW5ncywgYnV0
-IHRoZXkgZG8gaGVscCBtYWtlIG91ciBsaXZlcyBlYXNpZXIgaW4gZ2V0dGluZyBjb2RlIHN1Ym1p
-c3Npb25zIGludG8gdGhlIHRyZWUuDQoNClRoYW5rcyBQZXRlciwgSSB3aWxsIGZvbGxvdyB0aGUg
-cHJvY2VzcyB0byBzdWJtaXQgbW9yZSBwYXRjaGVzIHRvIFFFTVUgcHJvamVjdCwgYW5kIEkgcmVh
-bGx5IGxlYXJuIGEgbG90ISBUaGFua3MNCg0KPiBJZiBwZW9wbGUgcHJvdmlkZSB5b3Ugd2l0aCBh
-IFJldmlld2VkLWJ5OiB0YWcgZm9yIGEgcGF0Y2gsIGFuZCB5b3UgZG9uJ3QgY2hhbmdlIGl0IHdo
-ZW4geW91IHNlbmQgb3V0IGFuIHVwZGF0ZWQgdmVyc2lvbiwgaXQncyBoZWxwZnVsIGlmIHlvdSBp
-bmNsdWRlIHRoYXQgdGFnIGluIHRoZSBjb21taXQgbWVzc2FnZSBvZiB0aGUgcmV2aXNlZCB2ZXJz
-aW9uIHlvdSBzZW5kIG91dC4gVGhpcyBzYXZlcyBwZW9wbGUgaGF2aW5nIHRvIHJlbWVtYmVyIHdo
-ZXRoZXIgdGhleSdkIHJldmlld2VkIHNvbWV0aGluZyBvciBub3QsIGFuZCBtZWFucyB0aGF0IHdo
-ZW4gYXBwbHlpbmcgSSBkb24ndCBoYXZlIHRvIGdvIGJhY2sgYW5kIGxvb2sgYXQgb2xkIHZlcnNp
-b25zIHRvIHNlZSB3aG8gcmV2aWV3ZWQgd2hhdC4NCj4NCj4gUGF0Y2ggc2VyaWVzIGFyZSBtdWNo
-IGVhc2llciBmb3Igb3VyIHRvb2xpbmcgdG8gZGVhbCB3aXRoIGlmIHlvdSBzZW5kIHRoZW0gb3V0
-IHdpdGggYSBjb3ZlciBsZXR0ZXIgZW1haWwgKGEgMC9uIGVtYWlsIHdoaWNoIGFsbCB0aGUgb3Ro
-ZXIgZW1haWxzIGFyZSBmb2xsb3d1cHMgdG87IGdpdCBmb3JtYXQtcGF0Y2ggaGFzIGEgJy0tY292
-ZXItbGV0dGVyJyBvcHRpb24gd2hpY2ggd2lsbCBkbyB0aGUgcmlnaHQgdGhpbmcgaGVyZSkuDQo+
-IA0KPiBXZSBkb2N1bWVudCB0aGlzIGtpbmQgb2Ygd29ya2Zsb3cgc3R1ZmYgaGVyZToNCj4gaHR0
-cHM6Ly93aWtpLnFlbXUub3JnL0NvbnRyaWJ1dGUvU3VibWl0QVBhdGNoDQo+DQo+IHRoYW5rcw0K
-PiAtLSBQTU0NCg==
+Hi Alexey,
+
+On 7/13/20 10:55 AM, Alexey Kirillov wrote:
+> In some shells, we can't use == sign (as example, in dash).
+> 
+> Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index 31e2ddbf28..f65914f98f 100755
+> --- a/configure
+> +++ b/configure
+> @@ -6486,7 +6486,7 @@ EOF
+>  fi
+>  if test "$secret_keyring" != "no"
+>  then
+> -    if test "$have_keyring" == "yes"
+> +    if test "$have_keyring" = "yes"
+>      then
+>  	secret_keyring=yes
+>      else
+> 
+
+Thanks, but David already sent the same fix:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg713765.html
+
+It should be merged in today or tomorrow via Alex Bennée tree.
+
 
