@@ -1,65 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1juyEX-00038n-Pd
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 09:11:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51278)
+	id 1jv793-0004p6-8Y
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 18:41:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lekiravi@yandex-team.ru>)
- id 1juuFs-0003Jq-90; Mon, 13 Jul 2020 04:56:08 -0400
-Received: from forwardcorp1o.mail.yandex.net ([95.108.205.193]:57128)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lekiravi@yandex-team.ru>)
- id 1juuFo-0002Pf-7s; Mon, 13 Jul 2020 04:56:06 -0400
-Received: from sas1-ec30c78b6c5b.qloud-c.yandex.net
- (sas1-ec30c78b6c5b.qloud-c.yandex.net
- [IPv6:2a02:6b8:c14:2704:0:640:ec30:c78b])
- by forwardcorp1o.mail.yandex.net (Yandex) with ESMTP id CED142E14D8;
- Mon, 13 Jul 2020 11:55:57 +0300 (MSK)
-Received: from sas1-9998cec34266.qloud-c.yandex.net
- (sas1-9998cec34266.qloud-c.yandex.net [2a02:6b8:c14:3a0e:0:640:9998:cec3])
- by sas1-ec30c78b6c5b.qloud-c.yandex.net (mxbackcorp/Yandex) with ESMTP id
- hkkE5fbXGW-tvs8lLHk; Mon, 13 Jul 2020 11:55:57 +0300
-Precedence: bulk
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; 
- t=1594630557; bh=aHjgfp0mBn7IWNKm/Ay5CV7aDQ30MJz/9mRhB0ljBHI=;
- h=Message-Id:Date:Subject:To:From:Cc;
- b=ZL0m7DJfNKbva2cPMVbVyq8+fRjBK2N4qyeZd+9Z1oR1aCjUtP8qNh6Y5veWU4sj6
- Z40c/Rofo6NGx0xviX9j1+nXHTIs9kM7gVhnLJBaxK1jQXBocPcj6vNG2CzrC48uYc
- 8+nPg/tIuslVe81XAyO+cX/YTziQoJb7gv1vS88A=
-Authentication-Results: sas1-ec30c78b6c5b.qloud-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-Received: from dynamic-vpn.dhcp.yndx.net (dynamic-vpn.dhcp.yndx.net
- [2a02:6b8:b081:1226::1:10])
- by sas1-9998cec34266.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id
- mhmbOxMXo1-tukelUQu; Mon, 13 Jul 2020 11:55:56 +0300
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (Client certificate not present)
-From: Alexey Kirillov <lekiravi@yandex-team.ru>
-To: 
-Cc: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org,
-	yc-core@yandex-team.ru
-Subject: [PATCH 1/1] configure: fix incorrect have_keyring check
-Date: Mon, 13 Jul 2020 11:55:28 +0300
-Message-Id: <20200713085528.5608-1-lekiravi@yandex-team.ru>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1jv6f6-0006Kc-09; Mon, 13 Jul 2020 18:11:00 -0400
+Received: from relay.felk.cvut.cz ([2001:718:2:1611:0:1:0:70]:42446)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1jv6f3-0002OP-LT; Mon, 13 Jul 2020 18:10:59 -0400
+Received: from cmp.felk.cvut.cz (haar.felk.cvut.cz [147.32.84.19])
+ by relay.felk.cvut.cz (8.15.2/8.15.2) with ESMTP id 06DM9u8j052207;
+ Tue, 14 Jul 2020 00:09:56 +0200 (CEST)
+ (envelope-from pisa@cmp.felk.cvut.cz)
+Received: from haar.felk.cvut.cz (localhost [127.0.0.1])
+ by cmp.felk.cvut.cz (8.14.0/8.12.3/SuSE Linux 0.6) with ESMTP id
+ 06DM9tSm028537; Tue, 14 Jul 2020 00:09:55 +0200
+Received: (from pisa@localhost)
+ by haar.felk.cvut.cz (8.14.0/8.13.7/Submit) id 06DM9tnX028534;
+ Tue, 14 Jul 2020 00:09:55 +0200
+X-Authentication-Warning: haar.felk.cvut.cz: pisa set sender to
+ pisa@cmp.felk.cvut.cz using -f
+From: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+To: Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH] hw/net/can: Add missing fallthrough statements
+Date: Tue, 14 Jul 2020 00:09:55 +0200
+User-Agent: KMail/1.9.10
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Oliver Hartkopp <socketcan@hartkopp.net>,
+ Ondrej Ille <ondrej.ille@gmail.com>,
+ Jan =?utf-8?q?Charv=C3=A1t?= <charvj10@fel.cvut.cz>
+References: <20200630075520.29825-1-thuth@redhat.com>
+ <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
+In-Reply-To: <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=95.108.205.193;
- envelope-from=lekiravi@yandex-team.ru; helo=forwardcorp1o.mail.yandex.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 04:55:58
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: Text/Plain;
+  charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Message-Id: <202007140009.55103.pisa@cmp.felk.cvut.cz>
+X-FELK-MailScanner-Information: 
+X-MailScanner-ID: 06DM9u8j052207
+X-FELK-MailScanner: Found to be clean
+X-FELK-MailScanner-SpamCheck: not spam, SpamAssassin (not cached,
+ score=-0.414, required 6, autolearn=not spam, BAYES_00 -0.50,
+ KHOP_HELO_FCRDNS 0.09, NICE_REPLY_A -0.00, SPF_HELO_NONE 0.00,
+ SPF_NONE 0.00)
+X-FELK-MailScanner-From: pisa@cmp.felk.cvut.cz
+X-FELK-MailScanner-Watermark: 1595283001.22094@OTc5TJqEOH+ilhRIaQSWIw
+Received-SPF: none client-ip=2001:718:2:1611:0:1:0:70;
+ envelope-from=pisa@cmp.felk.cvut.cz; helo=relay.felk.cvut.cz
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 18:10:52
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 13 Jul 2020 09:10:59 -0400
+X-Mailman-Approved-At: Mon, 13 Jul 2020 18:41:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
+Precedence: list
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -68,29 +73,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jul 2020 08:56:08 -0000
+X-List-Received-Date: Mon, 13 Jul 2020 22:11:00 -0000
 
-In some shells, we can't use == sign (as example, in dash).
+Hello Laurent and others,
 
-Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Monday 06 of July 2020 18:35:50 Laurent Vivier wrote:
+> Le 30/06/2020 =C3=A0 09:55, Thomas Huth a =C3=A9crit=C2=A0:
+> > Add fallthrough annotations to be able to compile the code without
+> > warnings when using -Wimplicit-fallthrough in our CFLAGS. Looking
+> > at the code, it seems like the fallthrough is indeed intended here,
+> > so the comments should be appropriate.
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  hw/net/can/can_sja1000.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+> > index ea915a023a..299932998a 100644
+> > --- a/hw/net/can/can_sja1000.c
+> > +++ b/hw/net/can/can_sja1000.c
+> > @@ -523,6 +523,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
+> > addr, uint64_t val, break;
+> >          case 16: /* RX frame information addr16-28. */
+> >              s->status_pel |=3D (1 << 5); /* Set transmit status. */
+> > +            /* fallthrough */
+> >          case 17 ... 28:
+> >              if (s->mode & 0x01) { /* Reset mode */
+> >                  if (addr < 24) {
+> > @@ -620,6 +621,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
+> > addr, uint64_t val, break;
+> >          case 10:
+> >              s->status_bas |=3D (1 << 5); /* Set transmit status. */
+> > +            /* fallthrough */
+> >          case 11 ... 19:
+> >              if ((s->control & 0x01) =3D=3D 0) { /* Operation mode */
+> >                  s->tx_buff[addr - 10] =3D val; /* Store to TX buffer
+> > directly. */
+>
+> cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-diff --git a/configure b/configure
-index 31e2ddbf28..f65914f98f 100755
---- a/configure
-+++ b/configure
-@@ -6486,7 +6486,7 @@ EOF
- fi
- if test "$secret_keyring" != "no"
- then
--    if test "$have_keyring" == "yes"
-+    if test "$have_keyring" = "yes"
-     then
- 	secret_keyring=yes
-     else
--- 
-2.25.1
+The fallthrough is intentional for sure but I have gone
+through datasheet and checked why the status bit is set
+there and my conclusion is that to mimic real HW the status
+bit should not be set there. In the fact, it should be set
+and immediately (in a future delayed) reset after SJA_CMR
+transmit request write. This would mimic real hardware
+more closely. May it be I send patch in future when more
+of our developed CAN support is added to QEMU. The status
+bit behavior has no influence on actual Linux SJA1000 driver
+anyway.
+
+So for now, I confirm that adding  /* fallthrough */ is correct
+step forward.
+
+Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+
+By the way, we have prepared CAN FD support for QEMU,
+the CAN core update and device model to emulate
+our open-source/design/hardware CTU CAN FD IP core
+
+  https://gitlab.fel.cvut.cz/canbus/ctucanfd_ip_core
+
+QEMU emulation
+
+  https://gitlab.fel.cvut.cz/canbus/qemu-canbus/-/commits/charvj10-canfd
+
+I hope to find time to add patch to document CAN support to CAN FD
+extension and send whole series this week. Stay tuned, please.
+
+Best wishes,
+=20
+                Pavel
+
+=2D-=20
+
+                Pavel Pisa
+    phone:      +420 603531357
+    e-mail:     pisa@cmp.felk.cvut.cz
+    Department of Control Engineering FEE CVUT
+    Karlovo namesti 13, 121 35, Prague 2
+    university: http://dce.fel.cvut.cz/
+    personal:   http://cmp.felk.cvut.cz/~pisa
+    projects:   https://www.openhub.net/accounts/ppisa
+    CAN related:http://canbus.pages.fel.cvut.cz/
 
 
