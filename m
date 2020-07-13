@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1juutR-00040l-5k
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 05:37:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60634)
+	id 1juuuR-0005va-UP
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 05:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1juutP-0003xu-KT
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:36:59 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:47912
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1juuuO-0005tW-V6
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:38:00 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52707
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1juutN-0007bu-Tk
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:36:59 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1juuuN-0007lP-4m
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2020 05:38:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594633017;
+ s=mimecast20190719; t=1594633078;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=dEbd4VsrKVGIM/9BhMWknzMy6iWi3aCS5Jaseoo8y4Y=;
- b=S9yklKRmDfJgsk7deVxSQeY7SIxKh9vcviniu7+cOuV+JhBHy2b5LWWunJ95P+4agWgE/0
- +zyyhiGSusULqlerlfXSwC4AYX/0WUUUD5vZRnBHsab8RSMJu+Fk+O3eZqujOsumCtprAN
- 9bf53g7KpT3pUUABg5Q694FLJ/RCwE4=
+ bh=v86aU8XqbHXcIIzLG8TLy8tG8wHXKvW11QApg3NyroY=;
+ b=hNrH+j0qNsGz+2Zzahd79JAFxc0+cHoFF9ymgVm3tE535vZ/z0WtyNdmWigkw8J8ZuOsR9
+ Q8H6nd4jVg3McdhlrltE6cU6WB11t804YYulztdogm0+Mofoh0aB3PjqgTGoxM1z06Vxv2
+ pMADBa3nNKBgY2jWVH8tMTaCJakK0F0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-447-flmphAZdOEKW0CSC8J_dvA-1; Mon, 13 Jul 2020 05:36:53 -0400
-X-MC-Unique: flmphAZdOEKW0CSC8J_dvA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-60-HRvFzwjXN-aOzmuJXagTWQ-1; Mon, 13 Jul 2020 05:37:54 -0400
+X-MC-Unique: HRvFzwjXN-aOzmuJXagTWQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 41F161902EA1;
- Mon, 13 Jul 2020 09:36:52 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3C14D107ACCA;
+ Mon, 13 Jul 2020 09:37:53 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-125.ams2.redhat.com [10.36.112.125])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 99DC960BEC;
- Mon, 13 Jul 2020 09:36:50 +0000 (UTC)
-Subject: Re: [PATCH 08/12] block/vmdk: Remove superfluous breaks
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B58E227CC6;
+ Mon, 13 Jul 2020 09:37:51 +0000 (UTC)
+Subject: Re: [PATCH 09/12] hw: Remove superfluous breaks
 To: Yi Wang <wang.yi59@zte.com.cn>, qemu-devel@nongnu.org
 Cc: Liao Pingfang <liao.pingfang@zte.com.cn>, wang.liang82@zte.com.cn,
- xue.zhihong@zte.com.cn, Qemu-block <qemu-block@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1594631107-36574-1-git-send-email-wang.yi59@zte.com.cn>
+ xue.zhihong@zte.com.cn, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1594631126-36631-1-git-send-email-wang.yi59@zte.com.cn>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <ea32b527-7d78-1c7a-a2a2-30ffa2a9e528@redhat.com>
-Date: Mon, 13 Jul 2020 11:36:48 +0200
+Message-ID: <728da22b-18db-cec9-1cb8-b17202a62846@redhat.com>
+Date: Mon, 13 Jul 2020 11:37:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <1594631107-36574-1-git-send-email-wang.yi59@zte.com.cn>
+In-Reply-To: <1594631126-36631-1-git-send-email-wang.yi59@zte.com.cn>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 02:19:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 03:20:22
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -63,7 +64,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jul 2020 09:36:59 -0000
+X-List-Received-Date: Mon, 13 Jul 2020 09:38:01 -0000
 
 On 13/07/2020 11.05, Yi Wang wrote:
 > From: Liao Pingfang <liao.pingfang@zte.com.cn>
@@ -87,28 +88,183 @@ On 13/07/2020 11.05, Yi Wang wrote:
 > Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
 > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  block/vmdk.c | 3 ---
->  1 file changed, 3 deletions(-)
+>  hw/block/pflash_cfi01.c     |  1 -
+>  hw/display/cirrus_vga.c     |  1 -
+>  hw/display/qxl-logger.c     |  2 --
+>  hw/gpio/max7310.c           |  3 ---
+>  hw/i386/intel_iommu.c       |  1 -
+>  hw/input/pxa2xx_keypad.c    | 10 ----------
+>  hw/intc/armv7m_nvic.c       |  1 -
+>  hw/net/lan9118.c            |  2 --
+>  hw/usb/ccid-card-emulated.c |  1 -
+>  9 files changed, 22 deletions(-)
 > 
-> diff --git a/block/vmdk.c b/block/vmdk.c
-> index 28cec50..8f222e3 100644
-> --- a/block/vmdk.c
-> +++ b/block/vmdk.c
-> @@ -1053,14 +1053,11 @@ static int vmdk_open_sparse(BlockDriverState *bs, BdrvChild *file, int flags,
->      switch (magic) {
->          case VMDK3_MAGIC:
->              return vmdk_open_vmfs_sparse(bs, file, flags, errp);
+> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+> index 8ab1d66..f0fcd63 100644
+> --- a/hw/block/pflash_cfi01.c
+> +++ b/hw/block/pflash_cfi01.c
+> @@ -213,7 +213,6 @@ static uint32_t pflash_devid_query(PFlashCFI01 *pfl, hwaddr offset)
+>      default:
+>          trace_pflash_device_info(offset);
+>          return 0;
+> -        break;
+>      }
+>      /* Replicate responses for each device in bank. */
+>      if (pfl->device_width < pfl->bank_width) {
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index 212d6f5..02d9ed0 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
+> @@ -1637,7 +1637,6 @@ static int cirrus_vga_read_cr(CirrusVGAState * s, unsigned reg_index)
+>  	return s->vga.cr[s->vga.cr_index];
+>      case 0x26:			// Attribute Controller Index Readback (R)
+>  	return s->vga.ar_index & 0x3f;
+> -	break;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "cirrus: inport cr_index 0x%02x\n", reg_index);
+> diff --git a/hw/display/qxl-logger.c b/hw/display/qxl-logger.c
+> index 2ec6d8f..c15175b 100644
+> --- a/hw/display/qxl-logger.c
+> +++ b/hw/display/qxl-logger.c
+> @@ -161,7 +161,6 @@ static int qxl_log_cmd_draw(PCIQXLDevice *qxl, QXLDrawable *draw, int group_id)
+>      switch (draw->type) {
+>      case QXL_DRAW_COPY:
+>          return qxl_log_cmd_draw_copy(qxl, &draw->u.copy, group_id);
+> -        break;
+>      }
+>      return 0;
+>  }
+> @@ -180,7 +179,6 @@ static int qxl_log_cmd_draw_compat(PCIQXLDevice *qxl, QXLCompatDrawable *draw,
+>      switch (draw->type) {
+>      case QXL_DRAW_COPY:
+>          return qxl_log_cmd_draw_copy(qxl, &draw->u.copy, group_id);
+> -        break;
+>      }
+>      return 0;
+>  }
+> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+> index bebb403..4f78774 100644
+> --- a/hw/gpio/max7310.c
+> +++ b/hw/gpio/max7310.c
+> @@ -51,11 +51,9 @@ static uint8_t max7310_rx(I2CSlave *i2c)
+>      switch (s->command) {
+>      case 0x00:	/* Input port */
+>          return s->level ^ s->polarity;
+> -        break;
+>  
+>      case 0x01:	/* Output port */
+>          return s->level & ~s->direction;
+> -        break;
+>  
+>      case 0x02:	/* Polarity inversion */
+>          return s->polarity;
+> @@ -65,7 +63,6 @@ static uint8_t max7310_rx(I2CSlave *i2c)
+>  
+>      case 0x04:	/* Timeout */
+>          return s->status;
+> -        break;
+>  
+>      case 0xff:	/* Reserved */
+>          return 0xff;
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index c56398e..7b390ca 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -3163,7 +3163,6 @@ static int vtd_irte_get(IntelIOMMUState *iommu, uint16_t index,
+>                                index, entry->irte.sid_vtype);
+>              /* Take this as verification failure. */
+>              return -VTD_FR_IR_SID_ERR;
 > -            break;
->          case VMDK4_MAGIC:
->              return vmdk_open_vmdk4(bs, file, flags, options, errp);
+>          }
+>      }
+>  
+> diff --git a/hw/input/pxa2xx_keypad.c b/hw/input/pxa2xx_keypad.c
+> index 62aa6f6..7f2f739 100644
+> --- a/hw/input/pxa2xx_keypad.c
+> +++ b/hw/input/pxa2xx_keypad.c
+> @@ -192,10 +192,8 @@ static uint64_t pxa2xx_keypad_read(void *opaque, hwaddr offset,
+>              s->kpc &= ~(KPC_DI);
+>          qemu_irq_lower(s->irq);
+>          return tmp;
+> -        break;
+>      case KPDK:
+>          return s->kpdk;
+> -        break;
+>      case KPREC:
+>          tmp = s->kprec;
+>          if(tmp & KPREC_OF1)
+> @@ -207,31 +205,23 @@ static uint64_t pxa2xx_keypad_read(void *opaque, hwaddr offset,
+>          if(tmp & KPREC_UF0)
+>              s->kprec &= ~(KPREC_UF0);
+>          return tmp;
+> -        break;
+>      case KPMK:
+>          tmp = s->kpmk;
+>          if(tmp & KPMK_MKP)
+>              s->kpmk &= ~(KPMK_MKP);
+>          return tmp;
+> -        break;
+>      case KPAS:
+>          return s->kpas;
+> -        break;
+>      case KPASMKP0:
+>          return s->kpasmkp[0];
+> -        break;
+>      case KPASMKP1:
+>          return s->kpasmkp[1];
+> -        break;
+>      case KPASMKP2:
+>          return s->kpasmkp[2];
+> -        break;
+>      case KPASMKP3:
+>          return s->kpasmkp[3];
+> -        break;
+>      case KPKDI:
+>          return s->kpkdi;
+> -        break;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 3c4b6e6..720ac97 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -1275,7 +1275,6 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+>      case 0xd90: /* MPU_TYPE */
+>          /* Unified MPU; if the MPU is not present this value is zero */
+>          return cpu->pmsav7_dregion << 8;
+> -        break;
+>      case 0xd94: /* MPU_CTRL */
+>          return cpu->env.v7m.mpu_ctrl[attrs.secure];
+>      case 0xd98: /* MPU_RNR */
+> diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+> index 8e2a432..e35f00f 100644
+> --- a/hw/net/lan9118.c
+> +++ b/hw/net/lan9118.c
+> @@ -931,10 +931,8 @@ static uint32_t do_mac_read(lan9118_state *s, int reg)
+>                 | (s->conf.macaddr.a[2] << 16) | (s->conf.macaddr.a[3] << 24);
+>      case MAC_HASHH:
+>          return s->mac_hashh;
+> -        break;
+>      case MAC_HASHL:
+>          return s->mac_hashl;
+> -        break;
+>      case MAC_MII_ACC:
+>          return s->mac_mii_acc;
+>      case MAC_MII_DATA:
+> diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+> index 7d6105e..0f1afd6 100644
+> --- a/hw/usb/ccid-card-emulated.c
+> +++ b/hw/usb/ccid-card-emulated.c
+> @@ -350,7 +350,6 @@ static void *event_thread(void *arg)
+>          case VEVENT_LAST: /* quit */
+>              vevent_delete(event);
+>              return NULL;
 > -            break;
 >          default:
->              error_setg(errp, "Image not in VMDK format");
->              return -EINVAL;
-> -            break;
->      }
->  }
->  
+>              break;
+>          }
 > 
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
