@@ -1,67 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jv793-0004p6-8Y
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jul 2020 18:41:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54908)
+	id 1jvGk8-0000J9-GL
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 04:56:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
- id 1jv6f6-0006Kc-09; Mon, 13 Jul 2020 18:11:00 -0400
-Received: from relay.felk.cvut.cz ([2001:718:2:1611:0:1:0:70]:42446)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pisa@cmp.felk.cvut.cz>)
- id 1jv6f3-0002OP-LT; Mon, 13 Jul 2020 18:10:59 -0400
-Received: from cmp.felk.cvut.cz (haar.felk.cvut.cz [147.32.84.19])
- by relay.felk.cvut.cz (8.15.2/8.15.2) with ESMTP id 06DM9u8j052207;
- Tue, 14 Jul 2020 00:09:56 +0200 (CEST)
- (envelope-from pisa@cmp.felk.cvut.cz)
-Received: from haar.felk.cvut.cz (localhost [127.0.0.1])
- by cmp.felk.cvut.cz (8.14.0/8.12.3/SuSE Linux 0.6) with ESMTP id
- 06DM9tSm028537; Tue, 14 Jul 2020 00:09:55 +0200
-Received: (from pisa@localhost)
- by haar.felk.cvut.cz (8.14.0/8.13.7/Submit) id 06DM9tnX028534;
- Tue, 14 Jul 2020 00:09:55 +0200
-X-Authentication-Warning: haar.felk.cvut.cz: pisa set sender to
- pisa@cmp.felk.cvut.cz using -f
-From: Pavel Pisa <pisa@cmp.felk.cvut.cz>
-To: Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH] hw/net/can: Add missing fallthrough statements
-Date: Tue, 14 Jul 2020 00:09:55 +0200
-User-Agent: KMail/1.9.10
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Ondrej Ille <ondrej.ille@gmail.com>,
- Jan =?utf-8?q?Charv=C3=A1t?= <charvj10@fel.cvut.cz>
-References: <20200630075520.29825-1-thuth@redhat.com>
- <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
-In-Reply-To: <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
-X-KMail-QuotePrefix: > 
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvGk7-0000I4-H9
+ for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 04:56:51 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27410
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvGk5-0004u6-MP
+ for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 04:56:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594717008;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=LSdHcmvYmsAtymoblKX0gh0LcxDypuqG+SLuvDvfd08=;
+ b=Dow2FcyFt8NwU/r/p4+33fhdLjLN45RXILKSY4preLiIrDB8MliuM4V97+uTCShdbVN4KV
+ bdYU0Ze2Tn+nSaY2UgRmj0AhtVkvFe2J+xkI9dfoGfSYMBffSqK+Ph7OUYORFjyrxo4MXr
+ XNVbkFjeC7rHJ/nRpJyxCyDbsW5H8Pw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-72-v61fjEOvPG6HZVnTYlT4Vg-1; Tue, 14 Jul 2020 04:56:47 -0400
+X-MC-Unique: v61fjEOvPG6HZVnTYlT4Vg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B6D6800685;
+ Tue, 14 Jul 2020 08:56:46 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A20DC724D4;
+ Tue, 14 Jul 2020 08:56:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3048E1267F16; Tue, 14 Jul 2020 10:56:41 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH] docs/qdev-device-use: Clean up the sentences related to
+ -usbdevice
+References: <20200710065520.24784-1-thuth@redhat.com>
+Date: Tue, 14 Jul 2020 10:56:41 +0200
+In-Reply-To: <20200710065520.24784-1-thuth@redhat.com> (Thomas Huth's message
+ of "Fri, 10 Jul 2020 08:55:20 +0200")
+Message-ID: <87r1te79va.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Message-Id: <202007140009.55103.pisa@cmp.felk.cvut.cz>
-X-FELK-MailScanner-Information: 
-X-MailScanner-ID: 06DM9u8j052207
-X-FELK-MailScanner: Found to be clean
-X-FELK-MailScanner-SpamCheck: not spam, SpamAssassin (not cached,
- score=-0.414, required 6, autolearn=not spam, BAYES_00 -0.50,
- KHOP_HELO_FCRDNS 0.09, NICE_REPLY_A -0.00, SPF_HELO_NONE 0.00,
- SPF_NONE 0.00)
-X-FELK-MailScanner-From: pisa@cmp.felk.cvut.cz
-X-FELK-MailScanner-Watermark: 1595283001.22094@OTc5TJqEOH+ilhRIaQSWIw
-Received-SPF: none client-ip=2001:718:2:1611:0:1:0:70;
- envelope-from=pisa@cmp.felk.cvut.cz; helo=relay.felk.cvut.cz
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 18:10:52
-X-ACL-Warn: Detected OS   = ???
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/14 01:42:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 13 Jul 2020 18:41:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,91 +77,192 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jul 2020 22:11:00 -0000
+X-List-Received-Date: Tue, 14 Jul 2020 08:56:51 -0000
 
-Hello Laurent and others,
+Thomas Huth <thuth@redhat.com> writes:
 
-On Monday 06 of July 2020 18:35:50 Laurent Vivier wrote:
-> Le 30/06/2020 =C3=A0 09:55, Thomas Huth a =C3=A9crit=C2=A0:
-> > Add fallthrough annotations to be able to compile the code without
-> > warnings when using -Wimplicit-fallthrough in our CFLAGS. Looking
-> > at the code, it seems like the fallthrough is indeed intended here,
-> > so the comments should be appropriate.
-> >
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  hw/net/can/can_sja1000.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-> > index ea915a023a..299932998a 100644
-> > --- a/hw/net/can/can_sja1000.c
-> > +++ b/hw/net/can/can_sja1000.c
-> > @@ -523,6 +523,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
-> > addr, uint64_t val, break;
-> >          case 16: /* RX frame information addr16-28. */
-> >              s->status_pel |=3D (1 << 5); /* Set transmit status. */
-> > +            /* fallthrough */
-> >          case 17 ... 28:
-> >              if (s->mode & 0x01) { /* Reset mode */
-> >                  if (addr < 24) {
-> > @@ -620,6 +621,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
-> > addr, uint64_t val, break;
-> >          case 10:
-> >              s->status_bas |=3D (1 << 5); /* Set transmit status. */
-> > +            /* fallthrough */
-> >          case 11 ... 19:
-> >              if ((s->control & 0x01) =3D=3D 0) { /* Operation mode */
-> >                  s->tx_buff[addr - 10] =3D val; /* Store to TX buffer
-> > directly. */
+> Most of the -usbdevice paramaters have been removed already. Update
+> the doc accordingly.
 >
-> cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  docs/qdev-device-use.txt | 28 +++-------------------------
+>  1 file changed, 3 insertions(+), 25 deletions(-)
 >
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> diff --git a/docs/qdev-device-use.txt b/docs/qdev-device-use.txt
+> index 4bbbcf561f..f8d0d2fe29 100644
+> --- a/docs/qdev-device-use.txt
+> +++ b/docs/qdev-device-use.txt
+> @@ -125,12 +125,7 @@ The -device argument differs in detail for each
+> type of drive:
 
-The fallthrough is intentional for sure but I have gone
-through datasheet and checked why the status bit is set
-there and my conclusion is that to mimic real HW the status
-bit should not be set there. In the fact, it should be set
-and immediately (in a future delayed) reset after SJA_CMR
-transmit request write. This would mimic real hardware
-more closely. May it be I send patch in future when more
-of our developed CAN support is added to QEMU. The status
-bit behavior has no influence on actual Linux SJA1000 driver
-anyway.
+Additional context:
 
-So for now, I confirm that adding  /* fallthrough */ is correct
-step forward.
+   The various old ways to define drives all boil down to the common form
 
-Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+       -drive if=TYPE,bus=BUS,unit=UNIT,OPTS...
 
-By the way, we have prepared CAN FD support for QEMU,
-the CAN core update and device model to emulate
-our open-source/design/hardware CTU CAN FD IP core
+   TYPE, BUS and UNIT identify the controller device, which of its buses
+   to use, and the drive's address on that bus.  Details depend on TYPE.
+[...]
+>  
+>  * if=pflash, if=mtd, if=sd, if=xen are not yet available with -device
+>  
+> -For USB devices, the old way is actually different:
+> -
+> -    -usbdevice disk:format=FMT:FILENAME
+> -
+> -Provides much less control than -drive's OPTS...  The new way fixes
+> -that:
+> +For USB storage devices, you can use something like:
+>  
+>      -device usb-storage,drive=DRIVE-ID,removable=RMB
+>  
 
-  https://gitlab.fel.cvut.cz/canbus/ctucanfd_ip_core
+Losing "the old way is actually different" makes "The various old ways
+to define drives all boil down to the common form" apply to USB.
+Misleading.
 
-QEMU emulation
+We could choose to keep information on the old way, like this:
 
-  https://gitlab.fel.cvut.cz/canbus/qemu-canbus/-/commits/charvj10-canfd
+   For USB devices, the old way was actually different:
 
-I hope to find time to add patch to document CAN support to CAN FD
-extension and send whole series this week. Stay tuned, please.
+       -usbdevice disk:format=FMT:FILENAME
 
-Best wishes,
-=20
-                Pavel
+   "Was" because "disk:" is gone since v2.12.0.
 
-=2D-=20
+   The old way provided much less control than -drive's OPTS...  The new
+   way fixes that:
 
-                Pavel Pisa
-    phone:      +420 603531357
-    e-mail:     pisa@cmp.felk.cvut.cz
-    Department of Control Engineering FEE CVUT
-    Karlovo namesti 13, 121 35, Prague 2
-    university: http://dce.fel.cvut.cz/
-    personal:   http://cmp.felk.cvut.cz/~pisa
-    projects:   https://www.openhub.net/accounts/ppisa
-    CAN related:http://canbus.pages.fel.cvut.cz/
+       -device usb-storage,drive=DRIVE-ID,removable=RMB
+
+If we prefer not to, then perhaps:
+
+   For USB devices, the old way was actually different, and is long
+   gone.  The new way looks like
+
+       -device usb-storage,drive=DRIVE-ID,removable=RMB
+
+> @@ -177,8 +172,6 @@ The appropriate DEVNAME depends on the machine type.  For type "pc":
+>  
+>    This lets you control I/O ports and IRQs.
+>  
+> -* -usbdevice serial::chardev becomes -device usb-serial,chardev=dev.
+> -
+
+If we choose to keep information on old ways, we could
+
+   * -usbdevice serial::chardev is gone since v2.12.0.  It became
+     -device usb-serial,chardev=dev.
+
+Else:
+
+   * Use -device usb-serial,chardev=dev for USB serial devices.  The old
+     way is long gone.
+
+>  * -usbdevice braille doesn't support LEGACY-CHARDEV syntax.  It always
+>    uses "braille".  With -device, this useful default is gone, so you
+>    have to use something like
+> @@ -238,10 +231,6 @@ The old way to define the guest part looks like this:
+
+Additional context:
+
+   === Network Devices ===
+
+   Host and guest part of network devices have always been separate.
+
+   The old way to define the guest part looks like this:
+>  
+>      -net nic,netdev=NET-ID,macaddr=MACADDR,model=MODEL,name=ID,addr=STR,vectors=V
+>  
+> -Except for USB it looks like this:
+> -
+> -    -usbdevice net:netdev=NET-ID,macaddr=MACADDR,name=ID
+> -
+>  The new way is -device:
+>  
+>      -device DEVNAME,netdev=NET-ID,mac=MACADDR,DEV-OPTS...
+
+As for block devices, this now reads as if USB was the same as all the
+others, which is misleading.
+
+If keep, then perhaps:
+
+   Except for USB it looked like this:
+
+       -usbdevice net:netdev=NET-ID,macaddr=MACADDR,name=ID
+
+   "Looked" because "net:" is gone since v2.12.0.
+
+If not:
+
+   For USB devices, the old way was actually different, and is long
+   gone.
+
+> @@ -336,12 +325,7 @@ The new way is -device DEVNAME,DEV-OPTS...  Details depend on DRIVER:
+>  * mouse           -device usb-mouse
+>  * tablet          -device usb-tablet
+>  * wacom-tablet    -device usb-wacom-tablet
+> -* host:...        See "Host Device Assignment"
+> -* disk:...        See "Block Devices"
+> -* serial:...      See "Character Devices"
+>  * braille         See "Character Devices"
+> -* net:...         See "Network Devices"
+> -* bt:...          not yet available with -device
+>  
+>  === Watchdog Devices ===
+>  
+> @@ -358,17 +342,11 @@ and host USB devices.  PCI devices can only be assigned with -device:
+
+More context:
+
+   === Host Device Assignment ===
+
+   QEMU supports assigning host PCI devices (qemu-kvm only at this time)
+   and host USB devices.  PCI devices can only be assigned with -device:
+>  
+>      -device vfio-pci,host=ADDR,id=ID
+>  
+> -The old way to assign a host USB device is
+> -
+> -    -usbdevice host:auto:BUS.ADDR:VID:PRID
+> -
+> -where any of BUS, ADDR, VID, PRID can be the wildcard *.
+> -
+> -The new way is
+> +To assign a host USB device use:
+>  
+>      -device usb-host,hostbus=BUS,hostaddr=ADDR,vendorid=VID,productid=PRID
+>  
+> -Omitted options match anything, just like the old way's wildcard.
+> +Omitted options match anything.
+
+   QEMU supports assigning host PCI devices (qemu-kvm only at this time)
+   and host USB devices.  They can only be assigned with -device.
+
+   PCI:
+
+       -device vfio-pci,host=ADDR,id=ID
+
+   USB:
+
+       -device usb-host,hostbus=BUS,hostaddr=ADDR,vendorid=VID,productid=PRID
+
+   Omitted options match anything.
+
+If keep, add something like
+
+   The old way to assign a USB host device
+
+       -usbdevice host:auto:BUS.ADDR:VID:PRID
+
+   was removed in v2.12.0.  Any of BUS, ADDR, VID, PRID could be the
+   wildcard *.
+
+>  
+>  === Default Devices ===
+
+Since v2.12.0 was more than two years ago, keeping information on the
+old way may be no longer useful.
 
 
