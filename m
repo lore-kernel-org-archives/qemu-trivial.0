@@ -1,76 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvLMl-0007lV-7D
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 09:53:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33776)
+	id 1jvQqa-00014E-Kv
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 15:44:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jvLMj-0007k0-Nr
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:53:01 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:37181)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jvQqY-00011V-Am; Tue, 14 Jul 2020 15:44:10 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:39478)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jvLMi-0002tP-AZ
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:53:01 -0400
-Received: by mail-pg1-x543.google.com with SMTP id d4so7629177pgk.4
- for <qemu-trivial@nongnu.org>; Tue, 14 Jul 2020 06:52:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vwfkHH4kfa6qoa98JVkW6baA7c5gJwqwJP3BBo6e/kg=;
- b=nweXCsxoHGEQzmSBSMuaUzvTm1YJqHfwNtklajfKfyVS99rwBa0hCAc+bp/6NNAkw1
- Pyaud+CW1a1DaFnt2/TCP/kYzNFQ0LBDJTCL4dA9TXXkZWfI3cc1dbB5Xi8KsezOJ/RD
- ER+nypQMYkbpXAAuaKwLQVwF0uEyXFm8rYsx2jLUWFFcdbAUBkMGY6B2k3hAwm483OFW
- j4nuGZvM70MoTEs1TWgRP/7g41w+WIPEzlsj7nuO7/yTXQNQtXLPVVDFmx8HE7ccl7j5
- ogKqxp/a3P0qvNdr7hbeyRsGz9JQiWphTYyQrxY4vsgEEM57NPCi6sT750wC+79LHQ4a
- HhWA==
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jvQqW-0000W4-Rq; Tue, 14 Jul 2020 15:44:10 -0400
+Received: by mail-ed1-x541.google.com with SMTP id d18so19150277edv.6;
+ Tue, 14 Jul 2020 12:44:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=zCdZu/DdWBzf+eU9SOeiPxUe+cDs7+crVc5jMBJ3Cs0=;
+ b=meN6JdkMVECqwmUEBEF97P6bGUn4o7b2irrjqqKyrZUHmiE4lSfplZpZMHkcYjuhhY
+ H1qWUCKsc3uDMLwzCJlke7CXtuBV0OF2sA+Cl53w+hwavMx6MJH20q4gmac9xn31KMjE
+ 2vQvYuTK7RY7/kgSQaHuxDOpyRdRtn52nmnBO4rZEYnzASBkFhvE31Eyt7MV0Nh2dX4o
+ A5KcZAcSebur2WOMDYwfzbvwETJdv63LIaYS3G/2H7EAd3f/FJi610GXwILakJMBuliG
+ 0ziVp/RPH4wW3D/mKuHkSG2Sd+p7C5hKjGvOZ5tJBucGX117MRyBjVQjYC3XDhOolVdS
+ Pjkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vwfkHH4kfa6qoa98JVkW6baA7c5gJwqwJP3BBo6e/kg=;
- b=cxKgqtCTz5OmtR0o8vMvmyXASf56n/Gl8SYxEdIryjAYoMpoMA/90ZllGCzHSG/V0W
- eFbif7yNCpVNgmBzFeV7zs7aMeRG+J6K3GGyWeyOL3gqcDQtisBNy8eRjWKorNPOd26v
- xuCw8uaedZLmJ8/cL7r33J00m/YYtl71AP/D/LeRUYVe2ZqMjxA5tXOVu7PrZuJHkWkl
- wI1KcyZzU4PoQfCgaWQcYqzJDOBSuiiec5ThVkWq/PtFLGpxJlxQetvwNGWTpJUaKp9o
- FGILuH2/gZKYiOzkPVOpxkJfruAZHms1YxHtLl0PEJT4gZJihqJAhbSwU8a8zW56N/1L
- gzsA==
-X-Gm-Message-State: AOAM532Qpr+TFtCFKlPVCcFA/EzXX693sH8oG+PBC7fevwL1bl9emKbK
- 4vl4gL/2/2v+HZ6vjpBPL9p0I8u6R3c=
-X-Google-Smtp-Source: ABdhPJxVdRSYXR/kMGoOfC/25LUC17b0DzDG0M9F8uAQueZ3FMLomNseT+eS2Eu2UcYNKHQ3LiL55A==
-X-Received: by 2002:a05:6a00:78a:: with SMTP id
- g10mr4536227pfu.0.1594734778774; 
- Tue, 14 Jul 2020 06:52:58 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h15sm17826208pfo.192.2020.07.14.06.52.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2020 06:52:58 -0700 (PDT)
-Subject: Re: [PATCH] target/cris: Remove superfluous breaks
-To: Yi Wang <wang.yi59@zte.com.cn>, qemu-devel@nongnu.org
-Cc: Liao Pingfang <liao.pingfang@zte.com.cn>, wang.liang82@zte.com.cn,
- xue.zhihong@zte.com.cn, qemu-trivial <qemu-trivial@nongnu.org>
-References: <1594600455-23439-1-git-send-email-wang.yi59@zte.com.cn>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6314e8a7-05b7-3119-c607-e8413d047d87@linaro.org>
-Date: Tue, 14 Jul 2020 06:52:56 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=zCdZu/DdWBzf+eU9SOeiPxUe+cDs7+crVc5jMBJ3Cs0=;
+ b=QWz5jADiptOMscXZ51caJOJ8ypL4cW6w6Q+XFdzp4CkhuDvyzgEvqBt6Vg1DonIUsx
+ ZS4KJFAwsaZ5g8H7ozqBab0P+oaChObXhw5D9e3odevO9KZ1oWVQHbpEcAgGHU3qCXii
+ FycSBkaIIiVmC73kXY01yINdYr1sn9f4DI4o0wEIcR+JnXG9ufyizQH1qqDZ14ZQNyzQ
+ uqZ1yOF3iNBoZWBkvdZ8x4gUG88kv/X1LpU47jECG7akaTxjdMR86yw0nAwTP3XxruwB
+ En38t23nDtM2RKHwj6a6zhOdpqWxNYnlpJb5MQ8dlHjBJYd0+rM5SZhwSrZPBgnLQAXG
+ BPyw==
+X-Gm-Message-State: AOAM5338x5OLeGjJrRfvXht3gzE9iRO1GKnWpcCG7BKiTbbptS8E8jkC
+ f2t2d69PgFxND2g7Rz6bXXH28euf0N4nnxSJWuZ4z2DQ7s4=
+X-Google-Smtp-Source: ABdhPJwBT8qfAy3CndbvOIqF08fzQi+jYPeRrvuDflhKUDXiDMwGnKa5mgh2C3ubN6WAH4N/7iLAKhA0Rn28sTF/ZV4=
+X-Received: by 2002:a05:6402:354:: with SMTP id
+ r20mr6524594edw.32.1594755846117; 
+ Tue, 14 Jul 2020 12:44:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1594600455-23439-1-git-send-email-wang.yi59@zte.com.cn>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
+From: David CARLIER <devnexen@gmail.com>
+Date: Tue, 14 Jul 2020 20:43:55 +0100
+Message-ID: <CA+XhMqwMKk1eCNg-T15KRAa_e1-r0cmZ49f-135sppTFWpTerQ@mail.gmail.com>
+Subject: [PATCH v1] util: OpenBSD build fix
+To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,22 +66,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jul 2020 13:53:02 -0000
+X-List-Received-Date: Tue, 14 Jul 2020 19:44:10 -0000
 
-On 7/12/20 5:34 PM, Yi Wang wrote:
-> From: Liao Pingfang <liao.pingfang@zte.com.cn>
-> 
-> Remove superfluous breaks, as there is a "return" before them.
-> 
-> Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
-> ---
->  target/cris/translate.c         | 7 +++----
->  target/cris/translate_v10.inc.c | 2 --
->  2 files changed, 3 insertions(+), 6 deletions(-)
+From e2103b86b031ab74ff4c8dd0a3944cb488c9333e Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Tue, 14 Jul 2020 21:34:59 +0100
+Subject: [PATCH] util: OpenBSD build fix.
 
-Cc: qemu-trivial
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+thread id implementation, using getthrid syscall.
+qemu_exec_dir implementation as beast as we can as
+path is not always possible to resolve this on this platform.
 
+Signed-off-by: David Carlier <devnexen@gmail.com>
+---
+ util/oslib-posix.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-r~
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 72907d4d7f..4a0cce15b4 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -56,6 +56,10 @@
+ #include <lwp.h>
+ #endif
+
++#ifdef __OpenBSD__
++#include <sys/sysctl.h>
++#endif
++
+ #ifdef __APPLE__
+ #include <mach-o/dyld.h>
+ #endif
+@@ -100,6 +104,8 @@ int qemu_get_thread_id(void)
+     return (int)tid;
+ #elif defined(__NetBSD__)
+     return _lwp_self();
++#elif defined(__OpenBSD__)
++    return getthrid();
+ #else
+     return getpid();
+ #endif
+@@ -408,6 +414,23 @@ void qemu_init_exec_dir(const char *argv0)
+             }
+         }
+     }
++#elif defined(__OpenBSD__)
++    {
++
++        char **args;
++        size_t len;
++        int mib[4] = {CTL_KERN, KERN_PROC_ARGS, getpid(), KERN_PROC_ARGV};
++
++        *buf = 0;
++        if (!sysctl(mib, ARRAY_SIZE(mib), NULL, &len, NULL, 0)) {
++            args = malloc(len);
++            if (!sysctl(mib, ARRAY_SIZE(mib), args, &len, NULL, 0)) {
++                p = realpath(*args, buf);
++            }
++
++            free(args);
++        }
++    }
+ #endif
+     /* If we don't have any way of figuring out the actual executable
+        location then try argv[0].  */
+-- 
+2.27.0
 
