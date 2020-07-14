@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvLMM-0007Hr-0v
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 09:52:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33676)
+	id 1jvLMl-0007lV-7D
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 09:53:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jvLMK-0007Ga-GB
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:52:36 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:39869)
+ id 1jvLMj-0007k0-Nr
+ for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:53:01 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:37181)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jvLMJ-0002qo-6H
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:52:36 -0400
-Received: by mail-pl1-x641.google.com with SMTP id b9so7055015plx.6
- for <qemu-trivial@nongnu.org>; Tue, 14 Jul 2020 06:52:34 -0700 (PDT)
+ id 1jvLMi-0002tP-AZ
+ for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 09:53:01 -0400
+Received: by mail-pg1-x543.google.com with SMTP id d4so7629177pgk.4
+ for <qemu-trivial@nongnu.org>; Tue, 14 Jul 2020 06:52:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=uzqNYC8yCkHcda0vOTzyDPkKP1e9rdP24oC6OtiqKzY=;
- b=JHVbyzFmz8y8B1odjR1lKwZkFzmrXI5fOKdBvOn7F6OIEgS24zlpZeUHVctTr/nF+M
- JU2fVtTc67jId45aqHcv+3J83jk9b7yxA28cPxEpJ3qHWnUZ/aSeM4ii335khmydexGq
- X9tpDQ1z+ZgsEC2m9QHPNMhgxSrvdTgecMcO/AaCfNVUIQCK8Dm2p6p+1L4S7KjkLHUt
- OwmYLllpjZzI/Y59p5Eewx27gmqZbf9PBZfuRFYhsmiN+eNUNlBYAA0DhC56AOPMphgt
- pU4abe6F36iT8A0QN18yCLt4VKRfF0IFcIlEXvf+k1b6G1OdEyueuSdDBcebNy1YReBb
- VBXg==
+ bh=vwfkHH4kfa6qoa98JVkW6baA7c5gJwqwJP3BBo6e/kg=;
+ b=nweXCsxoHGEQzmSBSMuaUzvTm1YJqHfwNtklajfKfyVS99rwBa0hCAc+bp/6NNAkw1
+ Pyaud+CW1a1DaFnt2/TCP/kYzNFQ0LBDJTCL4dA9TXXkZWfI3cc1dbB5Xi8KsezOJ/RD
+ ER+nypQMYkbpXAAuaKwLQVwF0uEyXFm8rYsx2jLUWFFcdbAUBkMGY6B2k3hAwm483OFW
+ j4nuGZvM70MoTEs1TWgRP/7g41w+WIPEzlsj7nuO7/yTXQNQtXLPVVDFmx8HE7ccl7j5
+ ogKqxp/a3P0qvNdr7hbeyRsGz9JQiWphTYyQrxY4vsgEEM57NPCi6sT750wC+79LHQ4a
+ HhWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=uzqNYC8yCkHcda0vOTzyDPkKP1e9rdP24oC6OtiqKzY=;
- b=YExfm+M6m7CC41Qh4nmjOGGVVR/1jNpODqyrp+pDyhLkh7A927MBVQ1xlsq5M7ogQI
- LO5z3FOGNrbFJdy9zx5c18oT2N49cnrolHhZYp93OuR0cAGP8h9KF5a70xhMDNkJcf7Y
- g7fsfkYXCZ2ZYkSUe+BdDUNXQU5Eia4KdB7QPTfHo/kjgkgNFvQQvpfUoWWx8XKRN9uZ
- +EFV6NzgUJARF+lfrZ7vCsh2yMI9MM8wPC0bclazg4T6nOwuhowoceCCVwTbue7kxLn7
- s9LBmvRiro55t1bxKJ1yNOkhv3EvLGgXZjpJ2jnmCybTOuGHTqVamVGLfrCo20MMg3o1
- tL3A==
-X-Gm-Message-State: AOAM532lO8QLfqGhLyOrRteZad2lN5ijx6kMcE2G2cEMrzsR/29wn2F6
- FRcpDSZ0jHNt177XofnIcAL0wAnJ4x8=
-X-Google-Smtp-Source: ABdhPJy7B2MR8wMvT+7P/8kezXbajLaZeSDTcqi8Uw8VeN8T3hoZxQ8zgu1zuyFOuNWp/G1XGfsWGg==
-X-Received: by 2002:a17:90a:c915:: with SMTP id
- v21mr4792889pjt.48.1594734753627; 
- Tue, 14 Jul 2020 06:52:33 -0700 (PDT)
+ bh=vwfkHH4kfa6qoa98JVkW6baA7c5gJwqwJP3BBo6e/kg=;
+ b=cxKgqtCTz5OmtR0o8vMvmyXASf56n/Gl8SYxEdIryjAYoMpoMA/90ZllGCzHSG/V0W
+ eFbif7yNCpVNgmBzFeV7zs7aMeRG+J6K3GGyWeyOL3gqcDQtisBNy8eRjWKorNPOd26v
+ xuCw8uaedZLmJ8/cL7r33J00m/YYtl71AP/D/LeRUYVe2ZqMjxA5tXOVu7PrZuJHkWkl
+ wI1KcyZzU4PoQfCgaWQcYqzJDOBSuiiec5ThVkWq/PtFLGpxJlxQetvwNGWTpJUaKp9o
+ FGILuH2/gZKYiOzkPVOpxkJfruAZHms1YxHtLl0PEJT4gZJihqJAhbSwU8a8zW56N/1L
+ gzsA==
+X-Gm-Message-State: AOAM532Qpr+TFtCFKlPVCcFA/EzXX693sH8oG+PBC7fevwL1bl9emKbK
+ 4vl4gL/2/2v+HZ6vjpBPL9p0I8u6R3c=
+X-Google-Smtp-Source: ABdhPJxVdRSYXR/kMGoOfC/25LUC17b0DzDG0M9F8uAQueZ3FMLomNseT+eS2Eu2UcYNKHQ3LiL55A==
+X-Received: by 2002:a05:6a00:78a:: with SMTP id
+ g10mr4536227pfu.0.1594734778774; 
+ Tue, 14 Jul 2020 06:52:58 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id m17sm18156236pfo.182.2020.07.14.06.52.32
+ by smtp.gmail.com with ESMTPSA id h15sm17826208pfo.192.2020.07.14.06.52.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2020 06:52:32 -0700 (PDT)
-Subject: Re: [PATCH] target/sh4: Remove superfluous breaks
+ Tue, 14 Jul 2020 06:52:58 -0700 (PDT)
+Subject: Re: [PATCH] target/cris: Remove superfluous breaks
 To: Yi Wang <wang.yi59@zte.com.cn>, qemu-devel@nongnu.org
 Cc: Liao Pingfang <liao.pingfang@zte.com.cn>, wang.liang82@zte.com.cn,
  xue.zhihong@zte.com.cn, qemu-trivial <qemu-trivial@nongnu.org>
-References: <1594600452-23383-1-git-send-email-wang.yi59@zte.com.cn>
+References: <1594600455-23439-1-git-send-email-wang.yi59@zte.com.cn>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <3718ca42-47aa-3383-d34a-490195dc003c@linaro.org>
-Date: Tue, 14 Jul 2020 06:52:30 -0700
+Message-ID: <6314e8a7-05b7-3119-c607-e8413d047d87@linaro.org>
+Date: Tue, 14 Jul 2020 06:52:56 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <1594600452-23383-1-git-send-email-wang.yi59@zte.com.cn>
+In-Reply-To: <1594600455-23439-1-git-send-email-wang.yi59@zte.com.cn>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -83,7 +83,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jul 2020 13:52:36 -0000
+X-List-Received-Date: Tue, 14 Jul 2020 13:53:02 -0000
 
 On 7/12/20 5:34 PM, Yi Wang wrote:
 > From: Liao Pingfang <liao.pingfang@zte.com.cn>
@@ -92,8 +92,9 @@ On 7/12/20 5:34 PM, Yi Wang wrote:
 > 
 > Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
 > ---
->  target/sh4/translate.c | 3 ---
->  1 file changed, 3 deletions(-)
+>  target/cris/translate.c         | 7 +++----
+>  target/cris/translate_v10.inc.c | 2 --
+>  2 files changed, 3 insertions(+), 6 deletions(-)
 
 Cc: qemu-trivial
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
