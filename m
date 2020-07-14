@@ -1,62 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvRvA-00015r-Ui
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 16:53:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47220)
+	id 1jvSSC-0003Pd-KY
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 17:27:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jvRv9-00015K-MH
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 16:52:59 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:41039)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jvSSB-0003PP-Gj; Tue, 14 Jul 2020 17:27:07 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:36687)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jvRv8-0003E0-0Q
- for qemu-trivial@nongnu.org; Tue, 14 Jul 2020 16:52:59 -0400
-Received: by mail-oi1-x241.google.com with SMTP id y22so51775oie.8
- for <qemu-trivial@nongnu.org>; Tue, 14 Jul 2020 13:52:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h3OqVDua9rI0LQfK4/qcIuTZ9e9E4RGmXdKfFSMaRcE=;
- b=YsRPp4iDG3rI8ta+MSGKFVeANfDSBRdJnHSwWjUkF3kBKraLwX4yj7up26UiPFGnTm
- j8f/SC8AZfj3dbiraryqNfu3NcyYhg3ABDRCfcQv2YPR65GlRAAIBcRyYw1UKaiNwLKv
- ORNxruNnBZJcXvnjrr4tk1oGLFVfmXTPWt5MjFHeAvBnIWLcCow/v9dcBOfjcUVvs/mo
- NT8Yx/ssygrAUWWBnPd1WqsoFnn64GAXqYj3O/k+E254cm6e4BCTYGfDz09gCdf17+2U
- axczQfmnFm6iKB7i4tNmadr3tNsZCkRZk0fEaY7F9DissR3MPxILEJXryCzhMbtK8EeC
- Xa6g==
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1jvSSA-0000Un-16; Tue, 14 Jul 2020 17:27:07 -0400
+Received: by mail-ej1-x641.google.com with SMTP id dr13so39105ejc.3;
+ Tue, 14 Jul 2020 14:27:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=nfbgl3ybXzgF5TE75BwsG3yyqCmTUfySLxIqtRQ4guY=;
+ b=ga3/8b9xvbSJz1IJNGHKkGZ0LHfBK0nrzGB1xIoOh08rrm2s8s2LVS15vl9buzX61f
+ +gh+pshsvWc9029AJY3Bvk7kkWNcPtASfQvDJ+CUsE8NfqKMI7CHhPus1UOr1IFurU9k
+ y/t8+yi83ZAR7HxEs8kvvn+AyOjlXF4b6gEz5qGZlaMkGUNPvSI1YkPxHz9UvfdutsmM
+ iLZlhXH0/BBaxZWwoj+Q9ycJJu14BUo8Bigt3RdOR3CBvTnwft74iCn5PK72VlyvBVuM
+ yFb1bkwgbesDhpu/AiYnyLPTXJv4mnRBtJyAy0ll9uf82Rw5sxrTSQE6RAmqt/W3URss
+ nNnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=h3OqVDua9rI0LQfK4/qcIuTZ9e9E4RGmXdKfFSMaRcE=;
- b=CgFrwW4A0ZPQkU2M9cyIpkmBTQ+Ye2WodJJfeK0yqzI+3ZSRCTjWUJ9bGhJrDaBOS6
- uF8VIOI3XYJ0FLgMX+/cBd+BkVu4EqZ1evrHJHWL+MinyQ1zBf7snOjffwVW6CI1lNxr
- yDUlrW6QgwqFf2atOw8VK719pbU5Uwrcyp0wHVbMNBdbxuTAtsZba/wKyA6My0iqczO9
- gxI1EX7rpF6OgZ97vDdy6Qm5oX4bq36GCcgxzyg0WCQ0Vu2xR+/zy/ycq0u9ZOKIVtzL
- Es9tPaXKEuCHFIu4bTns5erYnsa9gaaOifn3Q9xy8pD12wdLyfuVSAMIfCwx8hPt0r0X
- nrLg==
-X-Gm-Message-State: AOAM530fQK0L8HEkoa12eumwFA0lwvd2Qrquc/QGQP+SdaKxLXL+uomd
- mPsiNE80B8vgg6ZmqVSFCvReoYndX923vOweX0sR6w==
-X-Google-Smtp-Source: ABdhPJx6m0pGpSdKNwnQbtxIPVY1bDCRv8ueQzCzcTGzFdATp8wJF1ai0eBt70k11MUoy4sCWL+ud2Dtar/iODQxhMc=
-X-Received: by 2002:aca:1706:: with SMTP id j6mr5049615oii.146.1594759976512; 
- Tue, 14 Jul 2020 13:52:56 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=nfbgl3ybXzgF5TE75BwsG3yyqCmTUfySLxIqtRQ4guY=;
+ b=QPjh4uBvg/pDhVs/rFyuklNXB0Ksjl2vogf3SnGbbIuv6FGW6+X5ABR9iQKRyFIx8C
+ e5xjfLkLs9R+Pnc9+ZDEqeSlj0Dm8tSozPxrYFLcj0GVSFvhkkf7WDdmuIK8xLZqOG8R
+ g9zfwzKgIzvR8EAaELbgNjjgVOkfHpoK23mQG589PQ8dZTvh0zLoBdihPqVfwS+namYq
+ RP8DpVlTnJ43fPex8EKpnoVyG9yE18UUSMLTFJnFMhXiPJARYBjjWhZ9+BPZLIioB2by
+ /Qf0oFT5q08jXKJscOyZPQo3sbFWxk0A16+a2CTc/X4bD/unhVQ10uBEigxiWU/H3Bqj
+ 1bxA==
+X-Gm-Message-State: AOAM5320x02WtMhb4IX33U5ZAlnumBZ11Zs8jDfk7L2300br7rJGlVO/
+ 4XNTKCApvSNhJE7Ky5wyybkTmPfLZ9gAPG/xEm5km0Mfzx4=
+X-Google-Smtp-Source: ABdhPJxvOcM3aXH7YPwXZ+UirgRnl3/Vx3h9h5u1/EGAv4YuHFDR2LBG9J7dg+QwhW2K1VoZ7nH50w0Dh58NFcwAE0M=
+X-Received: by 2002:a17:906:c78f:: with SMTP id
+ cw15mr6228036ejb.58.1594762023662; 
+ Tue, 14 Jul 2020 14:27:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+XhMqwMKk1eCNg-T15KRAa_e1-r0cmZ49f-135sppTFWpTerQ@mail.gmail.com>
-In-Reply-To: <CA+XhMqwMKk1eCNg-T15KRAa_e1-r0cmZ49f-135sppTFWpTerQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Jul 2020 21:52:45 +0100
-Message-ID: <CAFEAcA-N2BnE25+kXCmZV_KBJk6H3=De7eV0B-d+Qrjd=t5hzQ@mail.gmail.com>
-Subject: Re: [PATCH v1] util: OpenBSD build fix
-To: David CARLIER <devnexen@gmail.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+From: David CARLIER <devnexen@gmail.com>
+Date: Tue, 14 Jul 2020 22:26:52 +0100
+Message-ID: <CA+XhMqxD6gQDBaj8tX0CMEj3si7qYKsM8u1km47e_-U7MC37Pg@mail.gmail.com>
+Subject: [PATCH] util: qemu_get_thread_id for OpenBSD
+To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=devnexen@gmail.com; helo=mail-ej1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -71,90 +66,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jul 2020 20:52:59 -0000
+X-List-Received-Date: Tue, 14 Jul 2020 21:27:07 -0000
 
-On Tue, 14 Jul 2020 at 20:45, David CARLIER <devnexen@gmail.com> wrote:
->
-> From e2103b86b031ab74ff4c8dd0a3944cb488c9333e Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Tue, 14 Jul 2020 21:34:59 +0100
-> Subject: [PATCH] util: OpenBSD build fix.
->
-> thread id implementation, using getthrid syscall.
-> qemu_exec_dir implementation as beast as we can as
-> path is not always possible to resolve this on this platform.
+From 9c7f54c67d40fae0174ba795fbaad829cd59c264 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Tue, 14 Jul 2020 23:23:55 +0100
+Subject: [PATCH] util: qemu_get_thread_id implementation for OpenBSD.
 
-Hi; thanks for the patch.
+ussage of getthrid syscall.
 
-These look like two separate changes, so they should be
-in separate patches, please.
+Signed-off-by: David Carlier <devnexen@gmail.com>
+---
+ util/oslib-posix.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-It would be useful to have a comment in the code documenting
-what the limitations of the OpenBSD call are, and when
-it's better than just using realpath() on the argv[0]
-that we already have. (ie, in which cases is the argv[0]
-which we get back via KERN_PROC_ARGV something other than
-the argv[0] that was passed to the process?)
-
-> Signed-off-by: David Carlier <devnexen@gmail.com>
-> ---
->  util/oslib-posix.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
->
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index 72907d4d7f..4a0cce15b4 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -56,6 +56,10 @@
->  #include <lwp.h>
->  #endif
->
-> +#ifdef __OpenBSD__
-> +#include <sys/sysctl.h>
-> +#endif
-> +
->  #ifdef __APPLE__
->  #include <mach-o/dyld.h>
->  #endif
-> @@ -100,6 +104,8 @@ int qemu_get_thread_id(void)
->      return (int)tid;
->  #elif defined(__NetBSD__)
->      return _lwp_self();
-> +#elif defined(__OpenBSD__)
-> +    return getthrid();
->  #else
->      return getpid();
->  #endif
-> @@ -408,6 +414,23 @@ void qemu_init_exec_dir(const char *argv0)
->              }
->          }
->      }
-> +#elif defined(__OpenBSD__)
-> +    {
-> +
-> +        char **args;
-> +        size_t len;
-> +        int mib[4] = {CTL_KERN, KERN_PROC_ARGS, getpid(), KERN_PROC_ARGV};
-> +
-> +        *buf = 0;
-> +        if (!sysctl(mib, ARRAY_SIZE(mib), NULL, &len, NULL, 0)) {
-> +            args = malloc(len);
-
-If you want to use malloc() you need to check the return value.
-But better to use g_malloc(), which can't return a failure value.
-
-> +            if (!sysctl(mib, ARRAY_SIZE(mib), args, &len, NULL, 0)) {
-> +                p = realpath(*args, buf);
-> +            }
-> +
-> +            free(args);
-> +        }
-> +    }
->  #endif
->      /* If we don't have any way of figuring out the actual executable
->         location then try argv[0].  */
-> --
-
-thanks
--- PMM
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 72907d4d7f..b4f7de83c8 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -100,6 +100,8 @@ int qemu_get_thread_id(void)
+     return (int)tid;
+ #elif defined(__NetBSD__)
+     return _lwp_self();
++#elif defined(__OpenBSD__)
++    return getthrid();
+ #else
+     return getpid();
+ #endif
+-- 
+2.27.0
 
