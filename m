@@ -1,58 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvSSC-0003Pd-KY
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2020 17:27:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60140)
+	id 1jvZR4-0000J7-A8
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Jul 2020 00:54:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jvSSB-0003PP-Gj; Tue, 14 Jul 2020 17:27:07 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:36687)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jvSSA-0000Un-16; Tue, 14 Jul 2020 17:27:07 -0400
-Received: by mail-ej1-x641.google.com with SMTP id dr13so39105ejc.3;
- Tue, 14 Jul 2020 14:27:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=nfbgl3ybXzgF5TE75BwsG3yyqCmTUfySLxIqtRQ4guY=;
- b=ga3/8b9xvbSJz1IJNGHKkGZ0LHfBK0nrzGB1xIoOh08rrm2s8s2LVS15vl9buzX61f
- +gh+pshsvWc9029AJY3Bvk7kkWNcPtASfQvDJ+CUsE8NfqKMI7CHhPus1UOr1IFurU9k
- y/t8+yi83ZAR7HxEs8kvvn+AyOjlXF4b6gEz5qGZlaMkGUNPvSI1YkPxHz9UvfdutsmM
- iLZlhXH0/BBaxZWwoj+Q9ycJJu14BUo8Bigt3RdOR3CBvTnwft74iCn5PK72VlyvBVuM
- yFb1bkwgbesDhpu/AiYnyLPTXJv4mnRBtJyAy0ll9uf82Rw5sxrTSQE6RAmqt/W3URss
- nNnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=nfbgl3ybXzgF5TE75BwsG3yyqCmTUfySLxIqtRQ4guY=;
- b=QPjh4uBvg/pDhVs/rFyuklNXB0Ksjl2vogf3SnGbbIuv6FGW6+X5ABR9iQKRyFIx8C
- e5xjfLkLs9R+Pnc9+ZDEqeSlj0Dm8tSozPxrYFLcj0GVSFvhkkf7WDdmuIK8xLZqOG8R
- g9zfwzKgIzvR8EAaELbgNjjgVOkfHpoK23mQG589PQ8dZTvh0zLoBdihPqVfwS+namYq
- RP8DpVlTnJ43fPex8EKpnoVyG9yE18UUSMLTFJnFMhXiPJARYBjjWhZ9+BPZLIioB2by
- /Qf0oFT5q08jXKJscOyZPQo3sbFWxk0A16+a2CTc/X4bD/unhVQ10uBEigxiWU/H3Bqj
- 1bxA==
-X-Gm-Message-State: AOAM5320x02WtMhb4IX33U5ZAlnumBZ11Zs8jDfk7L2300br7rJGlVO/
- 4XNTKCApvSNhJE7Ky5wyybkTmPfLZ9gAPG/xEm5km0Mfzx4=
-X-Google-Smtp-Source: ABdhPJxvOcM3aXH7YPwXZ+UirgRnl3/Vx3h9h5u1/EGAv4YuHFDR2LBG9J7dg+QwhW2K1VoZ7nH50w0Dh58NFcwAE0M=
-X-Received: by 2002:a17:906:c78f:: with SMTP id
- cw15mr6228036ejb.58.1594762023662; 
- Tue, 14 Jul 2020 14:27:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jvZR2-0000IN-JF
+ for qemu-trivial@nongnu.org; Wed, 15 Jul 2020 00:54:24 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:58911
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jvZQz-0003rR-QB
+ for qemu-trivial@nongnu.org; Wed, 15 Jul 2020 00:54:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594788860;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=IkXZsj5AjOINiQ3WcXtIExtpNGyoG9aaz7Ha4Ebh978=;
+ b=FOXfWNrNXj/nwP9ngS82T4ul06xv3DWpv6N+iUT1TWB+9z7hW1AV6scNqA6/s2NR7lCmT+
+ B8rmuzk/lhn5ub+qptxNQtnsiJukfHSgsDK3ZbU4K70wvJ2p3nwYXh1V4Tt3L+IGXwbwzr
+ FKnB7qNdMrctkkVz1+n2q2YqNhcof6Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-359-29fIy2KoOXSC0xZyUAMOdA-1; Wed, 15 Jul 2020 00:54:18 -0400
+X-MC-Unique: 29fIy2KoOXSC0xZyUAMOdA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C1051800D42;
+ Wed, 15 Jul 2020 04:54:17 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-26.ams2.redhat.com [10.36.112.26])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 416A260E1C;
+ Wed, 15 Jul 2020 04:54:16 +0000 (UTC)
+Subject: Re: [PATCH] util: qemu_get_thread_id for OpenBSD
+To: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Brad Smith <brad@comstyle.com>
+References: <CA+XhMqxD6gQDBaj8tX0CMEj3si7qYKsM8u1km47e_-U7MC37Pg@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <631dad16-66cd-3f7b-90bc-969c52d29aa1@redhat.com>
+Date: Wed, 15 Jul 2020 06:54:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-From: David CARLIER <devnexen@gmail.com>
-Date: Tue, 14 Jul 2020 22:26:52 +0100
-Message-ID: <CA+XhMqxD6gQDBaj8tX0CMEj3si7qYKsM8u1km47e_-U7MC37Pg@mail.gmail.com>
-Subject: [PATCH] util: qemu_get_thread_id for OpenBSD
-To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x641.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <CA+XhMqxD6gQDBaj8tX0CMEj3si7qYKsM8u1km47e_-U7MC37Pg@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 00:54:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,33 +74,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jul 2020 21:27:07 -0000
+X-List-Received-Date: Wed, 15 Jul 2020 04:54:24 -0000
 
-From 9c7f54c67d40fae0174ba795fbaad829cd59c264 Mon Sep 17 00:00:00 2001
-From: David Carlier <devnexen@gmail.com>
-Date: Tue, 14 Jul 2020 23:23:55 +0100
-Subject: [PATCH] util: qemu_get_thread_id implementation for OpenBSD.
+On 14/07/2020 23.26, David CARLIER wrote:
+> From 9c7f54c67d40fae0174ba795fbaad829cd59c264 Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Tue, 14 Jul 2020 23:23:55 +0100
+> Subject: [PATCH] util: qemu_get_thread_id implementation for OpenBSD.
+> 
+> ussage of getthrid syscall.
+> 
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>  util/oslib-posix.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+> index 72907d4d7f..b4f7de83c8 100644
+> --- a/util/oslib-posix.c
+> +++ b/util/oslib-posix.c
+> @@ -100,6 +100,8 @@ int qemu_get_thread_id(void)
+>      return (int)tid;
+>  #elif defined(__NetBSD__)
+>      return _lwp_self();
+> +#elif defined(__OpenBSD__)
+> +    return getthrid();
+>  #else
+>      return getpid();
+>  #endif
+> 
 
-ussage of getthrid syscall.
+ Brad,
 
-Signed-off-by: David Carlier <devnexen@gmail.com>
----
- util/oslib-posix.c | 2 ++
- 1 file changed, 2 insertions(+)
+since you're listed as OpenBSD maintainer, could you please review above
+patch?
 
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 72907d4d7f..b4f7de83c8 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -100,6 +100,8 @@ int qemu_get_thread_id(void)
-     return (int)tid;
- #elif defined(__NetBSD__)
-     return _lwp_self();
-+#elif defined(__OpenBSD__)
-+    return getthrid();
- #else
-     return getpid();
- #endif
--- 
-2.27.0
+ Thanks,
+  Thomas
+
 
