@@ -1,77 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvyOU-0003xO-S3
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 03:33:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40634)
+	id 1jw12U-0004zw-LY
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 06:22:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jvyOT-0003ux-1B
- for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 03:33:25 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:58264
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jvyOQ-0008LS-5F
- for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 03:33:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594884800;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hQapggv2ZpDbOuefqhJPUM9GuRgISpJ2vvuWQpgvqfI=;
- b=ibFiya5Be/nr/uarEbetlBF7l8MweUw5xvCHNgaBa57/OLXXwazhPVj0T2LZcxPCxs8hkY
- 7+IIx6sFrRSiiNSk0aqhNRQs3OQx+IW/61olLaz2XGFC54PpnjcFjY+QRo60lolB+2XGPa
- Ky0uddqafZojdbxlxiIxUi4TdFane3w=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-488-iPKJWTTUPY-5f96rPYA3pQ-1; Thu, 16 Jul 2020 03:33:19 -0400
-X-MC-Unique: iPKJWTTUPY-5f96rPYA3pQ-1
-Received: by mail-ot1-f70.google.com with SMTP id x12so2271289oto.19
- for <qemu-trivial@nongnu.org>; Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ddstreet@canonical.com>)
+ id 1jw12T-0004zb-D3
+ for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 06:22:53 -0400
+Received: from youngberry.canonical.com ([91.189.89.112]:37310)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_CBC_SHA1:128)
+ (Exim 4.90_1) (envelope-from <ddstreet@canonical.com>)
+ id 1jw12R-0006f7-DW
+ for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 06:22:53 -0400
+Received: from mail-qk1-f199.google.com ([209.85.222.199])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <ddstreet@canonical.com>) id 1jw12P-0004aF-FP
+ for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 10:22:49 +0000
+Received: by mail-qk1-f199.google.com with SMTP id 13so3453996qks.11
+ for <qemu-trivial@nongnu.org>; Thu, 16 Jul 2020 03:22:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hQapggv2ZpDbOuefqhJPUM9GuRgISpJ2vvuWQpgvqfI=;
- b=Ma+CFspyrq4qXiwJ1P8YLhjvvrC50JJ9DbUTbLkMr0Yoz0RvpV1CdTPqqsBlkvuL0o
- KtVtyxca4XPWvK+5/qtRVi8CY2l7ha5V1bbCz2BoQStLydkDKyZFeEy7qO/3zz2JZIet
- NC5p8UinDfh+uzM0F9MomvioioN9Z6jKnwrurKxsHohX7WVevp9VqeeI3pn4s+b6AYZQ
- FVDmR4q47GqcbbCb30amHJIZk0mrBz+obgF1xdAMkgeDDvvcfjWY6pNuu6zXDKnt0dVT
- wEloYnsMGruEDuTDtF/ox9Ixm0P/Un2cHByC77eZCctxY0WF/AOf8vnds3AbT5eLcI+N
- +btA==
-X-Gm-Message-State: AOAM533+2xQ4lvmrzJqfeVEKlSifgAQb5CeX0amXYUQeyXqMsYJabKYq
- gs3PsHoGVgwhc0DJ1sb4gMzJcSWKXiNOF2X6V1+ZhSZMo3uPlJ6oqdwVjJzpFyU83u12sfDb4GP
- 1Y6Jyp6QBs+DtlxE6vIN/Ry6MatiW4DbOsA==
-X-Received: by 2002:a9d:12f7:: with SMTP id g110mr3359920otg.79.1594884798345; 
- Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzUj2qKc/xiSXiAiUwxgVOgCf8L6ZkT/2GClY5rkaPDAo9ZsPdU2Ge5PvPsEW7r9yV1tLM0bLMsVjO4K5puCwE=
-X-Received: by 2002:a9d:12f7:: with SMTP id g110mr3359901otg.79.1594884798071; 
- Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=I7joy9bFHepjfFjjIT9o76ElHhG9W+jtL8mEGvGgYHA=;
+ b=mT37P2dkUlQO7qbwR/XF3mUP309MczVk6Qy8BmRyA4DP3EhFLWxkhpkVNlw2ZSMlLV
+ Zh9en+duakItqKE7+dlB9XhXvjcw/4o8iDTacMDv6+Swqldh5zVkjGhd4JX6lETyZFly
+ 4cGR2bbVZFeQ2XbIIGshHStXnN1iSQkXo/uGclv2bOoxhATRpowP54lLWB9/iMcAP7Gy
+ vXMO9dnh+U8Onw4QsjduCiQHoObA0deJulC6QhwnlCCr5v36aD1RRJ3pgquH5/znKwtA
+ eKXTuJrHxrbZaXfoLpN2hSWMtOOHvcjxE21/9FH46DyaOrTRHZUjvI4s0Q9rX+6DGinC
+ 5UuQ==
+X-Gm-Message-State: AOAM531WsaVky47r0l+S3ismTfyRAs6uDroWn3dL8Z/qzJVvE4TotbL0
+ OSdbNc/Ob8NiF+6MdV31mkVu2MVtPzhSd0Ha5shKTNzhhnQp1fzBx2hVs7jj3x5zh27AHWbFw0c
+ /3E6RxeKfhgFs3sSbsIrpMYVY5iyJt2klFB0=
+X-Received: by 2002:a37:4185:: with SMTP id o127mr3193926qka.478.1594894967632; 
+ Thu, 16 Jul 2020 03:22:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRM1cOqJQj+oMK0G1pHuFqakTu4mbWeR65zkozg4CCd/5MirQ+tKHbLwtqfMRg+6xDzk0G3g==
+X-Received: by 2002:a37:4185:: with SMTP id o127mr3193902qka.478.1594894967111; 
+ Thu, 16 Jul 2020 03:22:47 -0700 (PDT)
+Received: from thorin.shire (45-27-90-188.lightspeed.rlghnc.sbcglobal.net.
+ [45.27.90.188])
+ by smtp.gmail.com with ESMTPSA id 15sm6078600qkm.93.2020.07.16.03.22.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Jul 2020 03:22:46 -0700 (PDT)
+From: Dan Streetman <ddstreet@canonical.com>
+To: qemu-trivial@nongnu.org
+Cc: Dan Streetman <ddstreet@canonical.com>,
+ Christian Ehrhardt <christian.ehrhardt@canonical.com>,
+ Rafael David Tinoco <rafael.tinoco@canonical.com>
+Subject: [PATCH v2] configure: actually disable 'git_update' mode with
+ --disable-git-update
+Date: Thu, 16 Jul 2020 06:22:13 -0400
+Message-Id: <20200716102213.2931209-1-ddstreet@canonical.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200715205013.2367760-1-ddstreet@canonical.com>
+References: <20200715205013.2367760-1-ddstreet@canonical.com>
 MIME-Version: 1.0
-References: <20200716055655.24507-1-thuth@redhat.com>
- <ec2ae831-d666-3d0c-a8f3-0e16e2ffd3d1@amsat.org>
-In-Reply-To: <ec2ae831-d666-3d0c-a8f3-0e16e2ffd3d1@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 16 Jul 2020 09:33:07 +0200
-Message-ID: <CAP+75-U-wp3zyLqyWh8xTd-No1gMMqLW8sSgAibYpNWWSC293g@mail.gmail.com>
-Subject: Re: [PATCH] configure: Fix for running with --enable-werror on macOS
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/16 01:59:11
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=91.189.89.112;
+ envelope-from=ddstreet@canonical.com; helo=youngberry.canonical.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/16 06:22:49
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,63 +78,149 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jul 2020 07:33:25 -0000
+X-List-Received-Date: Thu, 16 Jul 2020 10:22:53 -0000
 
-On Thu, Jul 16, 2020 at 9:32 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> On 7/16/20 7:56 AM, Thomas Huth wrote:
-> > The configure script currently refuses to succeed when run on macOS
-> > with --enable-werror:
-> >
-> >  ERROR: configure test passed without -Werror but failed with -Werror.
-> >
-> > The information in config.log indicates:
-> >
-> >  config-temp/qemu-conf.c:3:55: error: control reaches end of non-void
-> >  function [-Werror,-Wreturn-type]
-> >  static void *f(void *p) { pthread_setname_np("QEMU"); }
-> >                                                       ^
-> > And indeed, the return statement is missing here.
->
-> I have a similar commit dated "2019-07-13 17:13:51" that fixes that too,
-> because I had problem with a CI (cirrus?). I remember there was a
-> discussion about it, as I can't find on the list, I suppose it was
-> discussed on IRC.
-> I don't remember the outcome, it was negative or the patch was
-> incomplete. I'm happy if it get fixed, so:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+The --disable-git-update configure param sets git_update=no, but
+some later checks only look for the .git dir. This changes the
+--enable-git-update to set git_update=yes but also fail if it
+does not find a .git dir. Then all the later checks for the .git
+dir can just be changed to a check for $git_update = "yes".
 
-Oops the other one:
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Also update the Makefile to skip the 'git_update' checks if it has
+been disabled.
 
->
-> >
-> > Fixes: 479a57475e ("util: Implement debug-threads for macOS")
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  Note: There is another issue with --enable-werror on macOS, with the
-> >        atomic64, which I haven't quite figured out yet, so compiling
-> >        with --enable-werror is still not working there.
-> >
-> >  configure | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/configure b/configure
-> > index b751c853f5..e93836aaae 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -4198,7 +4198,7 @@ pthread_setname_np_wo_tid=3Dno
-> >  cat > $TMPC << EOF
-> >  #include <pthread.h>
-> >
-> > -static void *f(void *p) { pthread_setname_np("QEMU"); }
-> > +static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
-> >  int main(void)
-> >  {
-> >      pthread_t thread;
-> >
->
->
+This is needed because downstream packagers, e.g. Debian, Ubuntu, etc,
+also keep the source code in git, but do not want to enable the
+'git_update' mode; with the current code, that's not possible even
+if the downstream package specifies --disable-git-update.
+
+Signed-off-by: Dan Streetman <ddstreet@canonical.com>
+---
+Changes in v2:
+ - change GIT_UPDATE default to "" if no .git found
+ - change Makefile to skip git update checks if GIT_UPDATE=no
+
+ Makefile  | 15 +++++++++------
+ configure | 21 +++++++++++++--------
+ 2 files changed, 22 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 32345c610e..9bcd3f9af4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,6 +25,8 @@ git-submodule-update:
+ 
+ .PHONY: git-submodule-update
+ 
++# If --disable-git-update specified, skip these git checks
++ifneq (no,$(GIT_UPDATE))
+ git_module_status := $(shell \
+   cd '$(SRC_PATH)' && \
+   GIT="$(GIT)" ./scripts/git-submodule.sh status $(GIT_SUBMODULES); \
+@@ -32,7 +34,12 @@ git_module_status := $(shell \
+ )
+ 
+ ifeq (1,$(git_module_status))
+-ifeq (no,$(GIT_UPDATE))
++ifeq (yes,$(GIT_UPDATE))
++git-submodule-update:
++	$(call quiet-command, \
++          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
++          "GIT","$(GIT_SUBMODULES)")
++else
+ git-submodule-update:
+ 	$(call quiet-command, \
+             echo && \
+@@ -41,11 +48,7 @@ git-submodule-update:
+             echo "from the source directory checkout $(SRC_PATH)" && \
+             echo && \
+             exit 1)
+-else
+-git-submodule-update:
+-	$(call quiet-command, \
+-          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
+-          "GIT","$(GIT_SUBMODULES)")
++endif
+ endif
+ endif
+ 
+diff --git a/configure b/configure
+index b751c853f5..eefda62210 100755
+--- a/configure
++++ b/configure
+@@ -318,7 +318,7 @@ then
+     git_submodules="$git_submodules tests/fp/berkeley-testfloat-3"
+     git_submodules="$git_submodules tests/fp/berkeley-softfloat-3"
+ else
+-    git_update=no
++    git_update=""
+     git_submodules=""
+ 
+     if ! test -f "$source_path/ui/keycodemapdb/README"
+@@ -1603,7 +1603,12 @@ for opt do
+   ;;
+   --with-git=*) git="$optarg"
+   ;;
+-  --enable-git-update) git_update=yes
++  --enable-git-update)
++      git_update=yes
++      if test ! -e "$source_path/.git"; then
++          echo "ERROR: cannot --enable-git-update without .git"
++          exit 1
++      fi
+   ;;
+   --disable-git-update) git_update=no
+   ;;
+@@ -2017,7 +2022,7 @@ fi
+ # Consult white-list to determine whether to enable werror
+ # by default.  Only enable by default for git builds
+ if test -z "$werror" ; then
+-    if test -e "$source_path/.git" && \
++    if test "$git_update" = "yes" && \
+         { test "$linux" = "yes" || test "$mingw32" = "yes"; }; then
+         werror="yes"
+     else
+@@ -4418,10 +4423,10 @@ EOF
+     fdt=system
+   else
+       # have GIT checkout, so activate dtc submodule
+-      if test -e "${source_path}/.git" ; then
++      if test "$git_update" = "yes" ; then
+           git_submodules="${git_submodules} dtc"
+       fi
+-      if test -d "${source_path}/dtc/libfdt" || test -e "${source_path}/.git" ; then
++      if test -d "${source_path}/dtc/libfdt" || test "$git_update" = "yes" ; then
+           fdt=git
+           mkdir -p dtc
+           if [ "$pwd_is_source_path" != "y" ] ; then
+@@ -5391,7 +5396,7 @@ case "$capstone" in
+   "" | yes)
+     if $pkg_config capstone; then
+       capstone=system
+-    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
++    elif test "$git_update" = "yes" ; then
+       capstone=git
+     elif test -e "${source_path}/capstone/Makefile" ; then
+       capstone=internal
+@@ -6447,7 +6452,7 @@ case "$slirp" in
+   "" | yes)
+     if $pkg_config slirp; then
+       slirp=system
+-    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
++    elif test "$git_update" = "yes" ; then
+       slirp=git
+     elif test -e "${source_path}/slirp/Makefile" ; then
+       slirp=internal
+@@ -6809,7 +6814,7 @@ if test "$cpu" = "s390x" ; then
+     roms="$roms s390-ccw"
+     # SLOF is required for building the s390-ccw firmware on s390x,
+     # since it is using the libnet code from SLOF for network booting.
+-    if test -e "${source_path}/.git" ; then
++    if test "$git_update" = "yes" ; then
+       git_submodules="${git_submodules} roms/SLOF"
+     fi
+   fi
+-- 
+2.25.1
 
 
