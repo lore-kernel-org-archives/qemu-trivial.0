@@ -1,60 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvwtJ-0006UW-Jx
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 01:57:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46866)
+	id 1jvxoW-0004Ad-6q
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 02:56:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jvwtH-0006PI-I4
- for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 01:57:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44862
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jvwtE-0000Of-W9
- for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 01:57:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594879023;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=qy1awPH/MCCgirWvJrYoJ8OYOu/U9msSfaqyM5IX5po=;
- b=ROis712GH4L/PEnZRb1Up7CQAFBRILYsBLG0m7IpnOp/oyev0HwvOgcEgeWCsEyymp3lcu
- 88gWsPjRpytwXIbVLuJKCQMSaOoPXO8BP405+E/4LylNKZDYKNsOChUAl2FF4S/X1EZdBd
- 4edddJkk0N0ToCps/4mBKQbMylrg2l8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-46-BNgs00wkMBiuwgYKVJj_sg-1; Thu, 16 Jul 2020 01:57:01 -0400
-X-MC-Unique: BNgs00wkMBiuwgYKVJj_sg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0956418A1DED;
- Thu, 16 Jul 2020 05:57:00 +0000 (UTC)
-Received: from thuth.com (ovpn-112-234.ams2.redhat.com [10.36.112.234])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ED87B2B6DC;
- Thu, 16 Jul 2020 05:56:58 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jvxoV-00049r-I1; Thu, 16 Jul 2020 02:56:15 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54910)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jvxoT-0002BJ-Of; Thu, 16 Jul 2020 02:56:15 -0400
+Received: by mail-wm1-x344.google.com with SMTP id o8so8889525wmh.4;
+ Wed, 15 Jul 2020 23:56:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=1nhHol+OeuolxLn8zd2+EjxiDEScjQpLpAy15xU6n64=;
+ b=IW/TmqZkZ3rxIaSTnLs4ALfjQiu9tvpFXgTydRBWIOhSwtwb8ngq06PCxbeu3Pk6Yq
+ bocvnyi1WM1OpTqXoJHhPy08ER+V2N+d7+CCRd6JANqj06bNknvbQ5p49vncjcLktI65
+ 3FmkRmPd3RrafCvsREeAZxrVrNJMW/Adf3O0TEkIqPK3kJe3DkV41/r6PjsFqV4bPvlO
+ KFMe2EAMX77NNvdhV6Gzw9/Q5jsApHileqVL8ZJ1TYLcLlyLU2CrkBPN4ktYBBkRiJc9
+ gjbqOhla7jypJKIT+zN6OtyA23aQ9nHPSKTHsIC8yg50rp8XPn8owwRS+GeCaAjphTi2
+ ZDdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1nhHol+OeuolxLn8zd2+EjxiDEScjQpLpAy15xU6n64=;
+ b=pfJYzRS0+B1D/E2ucRwItwSQvs+zHx6I604TxtyRzyLmuijadC9JHfzWIKOQY69bRR
+ D7/m6MKeaZVQ79iS5q4GlXD9o19kwFAFX3kC9FPYfljYKe7ZiUTfVwjsewY9lhxOeTii
+ /e6wu8EwwClTyHp/xe6aGYDhmIi4VPfHxbWxPRnFky9WJaNtetjo07/SpHe1OGzIHGkb
+ CjMHeyfg2NRNt3lKiSqXVgqoVV7NnEmcoOhhKYQabB644JYozlQCzitbbbpO+xZaYLWW
+ krplR1879OcgAe00xRWma9938Z/GQnEaDa8GzG1FJAfzdhdbYOs3JIabghzkLDMt4+FB
+ wNgA==
+X-Gm-Message-State: AOAM532pA0Xo27xVKDAg+kbWDMHG3yS20T8lbkv2vF7iB1LS+dPiUCo1
+ rX/8obkwK574spAGYmrDeG0=
+X-Google-Smtp-Source: ABdhPJxnTCBQlRJsz9QH0vjxbnxvOjqFmzMxXiOg1U2Kxi7opSujRAgod4JjlUv3COUg8I2NFB2Ohg==
+X-Received: by 2002:a1c:a7c4:: with SMTP id q187mr2931537wme.0.1594882571868; 
+ Wed, 15 Jul 2020 23:56:11 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id g13sm7623107wro.84.2020.07.15.23.56.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Jul 2020 23:56:11 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2] .mailmap: Update Paul Burton email address
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] configure: Fix for running with --enable-werror on macOS
-Date: Thu, 16 Jul 2020 07:56:55 +0200
-Message-Id: <20200716055655.24507-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 19:36:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Paul Burton <paulburton@kernel.org>
+References: <20200707022544.24925-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
+Date: Thu, 16 Jul 2020 08:56:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <20200707022544.24925-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,45 +84,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jul 2020 05:57:07 -0000
+X-List-Received-Date: Thu, 16 Jul 2020 06:56:15 -0000
 
-The configure script currently refuses to succeed when run on macOS
-with --enable-werror:
+Hi Paul,
 
- ERROR: configure test passed without -Werror but failed with -Werror.
+Do you mind Acking this patch? QEMU's get_maintainer.pl
+still selects pburton@wavecomp.com for various of your
+contributions and wavesemi.com (where wavecomp.com seems
+redirected) keeps sending "The recipient email address is
+incorrect or does not exist in this domain."
 
-The information in config.log indicates:
+In case you don't want to receive any more emails from the
+QEMU mailing list, you can Nack this patch, so I'll have a
+good reason to insist with the alternative to have a
+'ignore .mailmap', suggested here:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg717757.html
 
- config-temp/qemu-conf.c:3:55: error: control reaches end of non-void
- function [-Werror,-Wreturn-type]
- static void *f(void *p) { pthread_setname_np("QEMU"); }
-                                                      ^
-And indeed, the return statement is missing here.
-
-Fixes: 479a57475e ("util: Implement debug-threads for macOS")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- Note: There is another issue with --enable-werror on macOS, with the
-       atomic64, which I haven't quite figured out yet, so compiling
-       with --enable-werror is still not working there.
-
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/configure b/configure
-index b751c853f5..e93836aaae 100755
---- a/configure
-+++ b/configure
-@@ -4198,7 +4198,7 @@ pthread_setname_np_wo_tid=no
- cat > $TMPC << EOF
- #include <pthread.h>
- 
--static void *f(void *p) { pthread_setname_np("QEMU"); }
-+static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
- int main(void)
- {
-     pthread_t thread;
--- 
-2.18.1
-
+On 7/7/20 4:25 AM, Philippe Mathieu-Daudé wrote:
+> Following the Linux kernel equivalent patch posted on
+> linux-mips@vger.kernel.org [*], update Paul Burton email
+> address to avoid emails bouncing.
+> 
+> [*] 'MAINTAINERS: Use @kernel.org address for Paul Burton'
+> https://lore.kernel.org/patchwork/patch/1140341/
+> 
+> Cc: Paul Burton <paulburton@kernel.org>
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  .mailmap | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/.mailmap b/.mailmap
+> index 926cac6bb8..fe4c561338 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -49,9 +49,10 @@ Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+> -Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+> -Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+> -Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> +Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
+> +Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
+> +Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
+> +Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
+>  Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+>  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+>  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+> 
 
