@@ -1,75 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jvyNN-0002k3-1e
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 03:32:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40252)
+	id 1jvyOU-0003xO-S3
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jul 2020 03:33:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvyNK-0002id-RQ; Thu, 16 Jul 2020 03:32:14 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37602)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvyNJ-0008Aw-C0; Thu, 16 Jul 2020 03:32:14 -0400
-Received: by mail-wm1-x343.google.com with SMTP id o2so10287912wmh.2;
- Thu, 16 Jul 2020 00:32:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zrl55Vs1w7yuOJkV/JCwUC6s7VmY9n9j6fSAy6veEug=;
- b=oGD7lJTiKfn1nl09TN3B3Iktq18iyzG6vnINEloikRbEFvKYE4zqTcqEiSB5pZoIy1
- HyL40IYTWuJTNd4/VmZqaCKkIJQ+NXJaI3iaZF6afe0QU+stIlJuYQa80Ih6uTGDkv4G
- 8lvkYQAJc/TQUHgs8tQXqe4n/h03gHVDAAg2VoBbubc5aaXCdLDq1guk1E7AfsoGFIoO
- XzJX/T1xp8aatZg1kSBAGDE/cJmsTYnpzZClcde9pSyQW5igZoew7BBDGzDWB6EVSYTn
- FOfthbtX4XiPm03OxvHdNqiIqwYtTdw8cbjcSL38qMk5QW6tX2D54OiDeeIo2u+wF5fV
- c/oA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jvyOT-0003ux-1B
+ for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 03:33:25 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:58264
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jvyOQ-0008LS-5F
+ for qemu-trivial@nongnu.org; Thu, 16 Jul 2020 03:33:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594884800;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hQapggv2ZpDbOuefqhJPUM9GuRgISpJ2vvuWQpgvqfI=;
+ b=ibFiya5Be/nr/uarEbetlBF7l8MweUw5xvCHNgaBa57/OLXXwazhPVj0T2LZcxPCxs8hkY
+ 7+IIx6sFrRSiiNSk0aqhNRQs3OQx+IW/61olLaz2XGFC54PpnjcFjY+QRo60lolB+2XGPa
+ Ky0uddqafZojdbxlxiIxUi4TdFane3w=
+Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
+ [209.85.210.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-iPKJWTTUPY-5f96rPYA3pQ-1; Thu, 16 Jul 2020 03:33:19 -0400
+X-MC-Unique: iPKJWTTUPY-5f96rPYA3pQ-1
+Received: by mail-ot1-f70.google.com with SMTP id x12so2271289oto.19
+ for <qemu-trivial@nongnu.org>; Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zrl55Vs1w7yuOJkV/JCwUC6s7VmY9n9j6fSAy6veEug=;
- b=S7mNbw4sS3xcrRAzCXkuF2LNXlbhObNdeB9qYav/9ygdbk/D6+ZnE5ed0o2qr+6XCx
- UXkykaDMbeJAq6mfFSWPghyGTCxyutbyyqcBhcMpffiRLtRXUcjpDX53wNhZGN6ykd7f
- cfMS640Foob4zgqsa+Z8Vu19EafmhODKX+Zi7y0224qX0CB8CtTiHD+j1ZWsIxBbVh0L
- d98YCsJtVrzqYYdRTYTMbsUzLsCgUwc/k5vlv8ZsNDv78/6gzb9VMU3OFWpzu7pPJmSc
- Iq5bK0zcyyVqCTiVRNcL4RP6KH38tJHj7pxs8rr84G9uQF0ggal+4u2ZfZ79EYpwOZrg
- TrVA==
-X-Gm-Message-State: AOAM530xpF1NGq4I/bkR0DxIyLyB8Y2ci7xlDZwddKxNVab5iH9MdozE
- fMGG+7vu0A4jJlkNVDuECNM=
-X-Google-Smtp-Source: ABdhPJwPZxgcisuLoiWgLwSomqQgRrkRt0etIsN85OB+05jzDQGbrzGx8AGWYDsE+hxX8SDEHZbOBw==
-X-Received: by 2002:a1c:4987:: with SMTP id w129mr3057113wma.9.1594884731273; 
- Thu, 16 Jul 2020 00:32:11 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id g14sm7460798wrm.93.2020.07.16.00.32.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jul 2020 00:32:10 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] configure: Fix for running with --enable-werror on macOS
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20200716055655.24507-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ec2ae831-d666-3d0c-a8f3-0e16e2ffd3d1@amsat.org>
-Date: Thu, 16 Jul 2020 09:32:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=hQapggv2ZpDbOuefqhJPUM9GuRgISpJ2vvuWQpgvqfI=;
+ b=Ma+CFspyrq4qXiwJ1P8YLhjvvrC50JJ9DbUTbLkMr0Yoz0RvpV1CdTPqqsBlkvuL0o
+ KtVtyxca4XPWvK+5/qtRVi8CY2l7ha5V1bbCz2BoQStLydkDKyZFeEy7qO/3zz2JZIet
+ NC5p8UinDfh+uzM0F9MomvioioN9Z6jKnwrurKxsHohX7WVevp9VqeeI3pn4s+b6AYZQ
+ FVDmR4q47GqcbbCb30amHJIZk0mrBz+obgF1xdAMkgeDDvvcfjWY6pNuu6zXDKnt0dVT
+ wEloYnsMGruEDuTDtF/ox9Ixm0P/Un2cHByC77eZCctxY0WF/AOf8vnds3AbT5eLcI+N
+ +btA==
+X-Gm-Message-State: AOAM533+2xQ4lvmrzJqfeVEKlSifgAQb5CeX0amXYUQeyXqMsYJabKYq
+ gs3PsHoGVgwhc0DJ1sb4gMzJcSWKXiNOF2X6V1+ZhSZMo3uPlJ6oqdwVjJzpFyU83u12sfDb4GP
+ 1Y6Jyp6QBs+DtlxE6vIN/Ry6MatiW4DbOsA==
+X-Received: by 2002:a9d:12f7:: with SMTP id g110mr3359920otg.79.1594884798345; 
+ Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUj2qKc/xiSXiAiUwxgVOgCf8L6ZkT/2GClY5rkaPDAo9ZsPdU2Ge5PvPsEW7r9yV1tLM0bLMsVjO4K5puCwE=
+X-Received: by 2002:a9d:12f7:: with SMTP id g110mr3359901otg.79.1594884798071; 
+ Thu, 16 Jul 2020 00:33:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200716055655.24507-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20200716055655.24507-1-thuth@redhat.com>
+ <ec2ae831-d666-3d0c-a8f3-0e16e2ffd3d1@amsat.org>
+In-Reply-To: <ec2ae831-d666-3d0c-a8f3-0e16e2ffd3d1@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Thu, 16 Jul 2020 09:33:07 +0200
+Message-ID: <CAP+75-U-wp3zyLqyWh8xTd-No1gMMqLW8sSgAibYpNWWSC293g@mail.gmail.com>
+Subject: Re: [PATCH] configure: Fix for running with --enable-werror on macOS
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/16 01:59:11
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,54 +84,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jul 2020 07:32:15 -0000
+X-List-Received-Date: Thu, 16 Jul 2020 07:33:25 -0000
 
-On 7/16/20 7:56 AM, Thomas Huth wrote:
-> The configure script currently refuses to succeed when run on macOS
-> with --enable-werror:
-> 
->  ERROR: configure test passed without -Werror but failed with -Werror.
-> 
-> The information in config.log indicates:
-> 
->  config-temp/qemu-conf.c:3:55: error: control reaches end of non-void
->  function [-Werror,-Wreturn-type]
->  static void *f(void *p) { pthread_setname_np("QEMU"); }
->                                                       ^
-> And indeed, the return statement is missing here.
+On Thu, Jul 16, 2020 at 9:32 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 7/16/20 7:56 AM, Thomas Huth wrote:
+> > The configure script currently refuses to succeed when run on macOS
+> > with --enable-werror:
+> >
+> >  ERROR: configure test passed without -Werror but failed with -Werror.
+> >
+> > The information in config.log indicates:
+> >
+> >  config-temp/qemu-conf.c:3:55: error: control reaches end of non-void
+> >  function [-Werror,-Wreturn-type]
+> >  static void *f(void *p) { pthread_setname_np("QEMU"); }
+> >                                                       ^
+> > And indeed, the return statement is missing here.
+>
+> I have a similar commit dated "2019-07-13 17:13:51" that fixes that too,
+> because I had problem with a CI (cirrus?). I remember there was a
+> discussion about it, as I can't find on the list, I suppose it was
+> discussed on IRC.
+> I don't remember the outcome, it was negative or the patch was
+> incomplete. I'm happy if it get fixed, so:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-I have a similar commit dated "2019-07-13 17:13:51" that fixes that too,
-because I had problem with a CI (cirrus?). I remember there was a
-discussion about it, as I can't find on the list, I suppose it was
-discussed on IRC.
-I don't remember the outcome, it was negative or the patch was
-incomplete. I'm happy if it get fixed, so:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Oops the other one:
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-> 
-> Fixes: 479a57475e ("util: Implement debug-threads for macOS")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Note: There is another issue with --enable-werror on macOS, with the
->        atomic64, which I haven't quite figured out yet, so compiling
->        with --enable-werror is still not working there.
-> 
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/configure b/configure
-> index b751c853f5..e93836aaae 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4198,7 +4198,7 @@ pthread_setname_np_wo_tid=no
->  cat > $TMPC << EOF
->  #include <pthread.h>
->  
-> -static void *f(void *p) { pthread_setname_np("QEMU"); }
-> +static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
->  int main(void)
->  {
->      pthread_t thread;
-> 
+>
+> >
+> > Fixes: 479a57475e ("util: Implement debug-threads for macOS")
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  Note: There is another issue with --enable-werror on macOS, with the
+> >        atomic64, which I haven't quite figured out yet, so compiling
+> >        with --enable-werror is still not working there.
+> >
+> >  configure | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/configure b/configure
+> > index b751c853f5..e93836aaae 100755
+> > --- a/configure
+> > +++ b/configure
+> > @@ -4198,7 +4198,7 @@ pthread_setname_np_wo_tid=3Dno
+> >  cat > $TMPC << EOF
+> >  #include <pthread.h>
+> >
+> > -static void *f(void *p) { pthread_setname_np("QEMU"); }
+> > +static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
+> >  int main(void)
+> >  {
+> >      pthread_t thread;
+> >
+>
+>
 
 
