@@ -1,67 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jwogW-0000sp-LR
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Jul 2020 11:23:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39546)
+	id 1jwrVV-0000bB-5s
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Jul 2020 14:24:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jwogU-0000sZ-W0; Sat, 18 Jul 2020 11:23:31 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:37203)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jwrVU-0000b1-BE; Sat, 18 Jul 2020 14:24:20 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54103)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1jwogT-0001YR-Co; Sat, 18 Jul 2020 11:23:30 -0400
-Received: by mail-ej1-x641.google.com with SMTP id lx13so13910835ejb.4;
- Sat, 18 Jul 2020 08:23:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jwrVS-0003xK-Pd; Sat, 18 Jul 2020 14:24:20 -0400
+Received: by mail-wm1-x343.google.com with SMTP id j18so18667390wmi.3;
+ Sat, 18 Jul 2020 11:24:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=F5Oo4QoL7isQPRP2CO/3Qz1kPuTDuOwqdsQHLJ14pOs=;
- b=TSIYTu4cR1/0w/Fzzu0PBiVDXTENCVyjKjGbntKbuRy8nU783Yr3TPMe7gYD9yqofj
- IOiedLv2Gu+Lv5olJJM/DxFk/i3k/hXgF0aftiSF6JPdStL6V9dtjOZ5x0xD0+eOOf+a
- oruJSLPu4/2bq71qGnQa8KZiA54yAFCvJMjkM6tCwmMzk83I4DGS/8cfyzntGUUUaTLc
- EuprQsoS050FBwJ55ehYPy0wcP1R59oeeNHKfjQ32gNPD/xh3SDZOHs05Tbr5HXck9nJ
- iwFynO7HRBTGUK7RvElaBdRRXz2n2Hcxk3ywle31wVqIYUuS9x4U3fX0C4Ks1gbzd5VU
- IE0Q==
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=xARqaXKB2Qtak1vPgx/2jadVXbJ4xuOgNkSdM52BZ8U=;
+ b=FYd6l2Vm/HbhgrR1z166TdRU5mMfOrhuQWzsQUl7VNH6lJmNICMCCQAEn500u48OLz
+ uBsdVwk4CSNMW9KUCRTQvjP79fBe4WJzEYEDxxWCjTfvRlkZGoty2hGEDrhg+HkaE83v
+ 1zHWuc2ywBpUZLaY3vDhGIEysdxEcyr2eg5y6T5Dn3auPnoZvBHQIA5SHDWN+Mg/Zngn
+ dcxN9YYl1NRbn//2tj1Tw4xGwSlYxplAGQr8c4ykCZOdyJUodk/JSImLW6pfiF9fMxTg
+ l93TXow/bXYnCqyHqIB1huCkqY1FggTf5kXuNjz0GVhg/f5EnQhuOmiHQIKRzb9yvdx+
+ AdjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=F5Oo4QoL7isQPRP2CO/3Qz1kPuTDuOwqdsQHLJ14pOs=;
- b=QtVGoy8FxDCC9z02npZpUQziT4YWYtN3NvmNGvDdAEakEpwQkYjPznahPHr4RCCoFk
- C8kEUSwJjLntUBV5TM8w48F4Qe27/c+0V+kHqUr0bd6Pa5eh4eW4EVhDYrhwgfLnLycj
- 6m00z7I4yl5pdoUyZaP4FnSpMeqLNwovu+tK74hBV5bHmX3Mh8TVPwJSuEMT2HikzQMt
- Y9kpNnsU2SKStk0oGaxIA5O2uIhbHFITa1uHT72rFzVuxANuXOmlkFdNAcqM98GpwOC4
- KAP35Ss50SrcRnUqcpi/EZcEatPQfdBFaGVYZ9Gb1G9XwWMfIhUVdHqarqq5PvUH4z9F
- zTrQ==
-X-Gm-Message-State: AOAM530KxKZCGFKbQUIrDygbZrAcVeACM/WUTyb4+xRFV9lHIbPaW3Wx
- 70R2h+LnHNTXN/ZIodonueMAugNtFSPDrllT6iQ=
-X-Google-Smtp-Source: ABdhPJxakUueOZP62zuhmyUSrTI8Y5gcniQ8VKSm964qAknNlL8IqGxL2pqW6m1lTMBdkIH/RKz/1tJTP0tdzfcro4I=
-X-Received: by 2002:a17:906:57c5:: with SMTP id
- u5mr12794349ejr.311.1595085807555; 
- Sat, 18 Jul 2020 08:23:27 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xARqaXKB2Qtak1vPgx/2jadVXbJ4xuOgNkSdM52BZ8U=;
+ b=eL9uhs3J9IuozNmZ3B52eH+MpB/bpvUqCuRqBSwvgksuxiPrLTFEavp21KhLsaghCV
+ IXLYJILLsQeALNPLgkzU0jmb22lWc8F7uLlPPof6GU5V618JnSC9Q4EprxtiURE9Qpiw
+ Y5wUMahHeoKAkVs9mQnj6X2obiXCnJBrBNNwHKt7YQV4uTGQtEGwsQpFOIKSnvjE2TQs
+ IUK8ADNsT8rTOzKZPLTacPhCEmAVQxOiUk6q8FFCXVPq4HIHx89Sxvx1K7467a4hJy42
+ SIRMoG1e2KmRznMDF8zsEIZS4aThZUG2mGNHcCCBzeUsfvKVXZEItR53qtdgYybg8TQ9
+ pnlA==
+X-Gm-Message-State: AOAM530irWC1r3s6quLKLkcl0ZzmZhc+QZ4bUV+TAx4G6KcAMlmaqzw/
+ UPJ8IN77F/t+1a2g2YXHCzNvd44mn0w=
+X-Google-Smtp-Source: ABdhPJyX7LRwb3NSHoRwP+6VbZOnShP8e/b/e/m1Zmo1M5Ac5qTE3sQUoTeuViCLy/xfI3PK9yrWug==
+X-Received: by 2002:a1c:5f41:: with SMTP id t62mr14272112wmb.53.1595096655985; 
+ Sat, 18 Jul 2020 11:24:15 -0700 (PDT)
+Received: from [192.168.1.43] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id c136sm21957093wmd.10.2020.07.18.11.24.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 18 Jul 2020 11:24:15 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 0/3] configure: fix forSunOS based systems
+To: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <76137228-71ce-910d-289b-77a0c0e1369a@amsat.org>
+Date: Sat, 18 Jul 2020 20:24:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <CA+XhMqwtUrSpCqNGEETBijewzvmpno8OAX_PKSShDP_gUQ-3VQ@mail.gmail.com>
- <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Sat, 18 Jul 2020 16:23:16 +0100
-Message-ID: <CA+XhMqwxEB7XpEqdxnqmwaTtMsD-qSu0pvPuXwMz1MssNV-Fiw@mail.gmail.com>
-Subject: Re: [PATCH 2/3] exec: posix_madvise usage on SunOS.
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x641.google.com
+In-Reply-To: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,89 +82,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Jul 2020 15:23:31 -0000
+X-List-Received-Date: Sat, 18 Jul 2020 18:24:20 -0000
 
-It probably does not indeed (maybe Solaris madvise does not provide
-but memcntl ?), I was just trying to fix the build only :-)
+Hi David,
 
-On Sat, 18 Jul 2020 at 15:15, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sat, 18 Jul 2020 at 14:21, David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > From a9e3cced279ae55a59847ba232f7828bc2479367 Mon Sep 17 00:00:00 2001
-> > From: David Carlier <devnexen@gmail.com>
-> > Date: Sat, 18 Jul 2020 13:29:44 +0100
-> > Subject: [PATCH 2/3] exec: posix_madvise usage on SunOS.
-> >
-> > with _XOPEN_SOURCE set, the older mman.h API based on caddr_t handling
-> > is not accessible thus using posix_madvise here.
-> >
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
-> > ---
-> >  exec.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> >
-> > diff --git a/exec.c b/exec.c
-> > index 6f381f98e2..0466a75b89 100644
-> > --- a/exec.c
-> > +++ b/exec.c
-> > @@ -3964,7 +3964,15 @@ int ram_block_discard_range(RAMBlock *rb,
-> > uint64_t start, size_t length)
-> >               * fallocate'd away).
-> >               */
-> >  #if defined(CONFIG_MADVISE)
-> > +#if !defined(CONFIG_SOLARIS)
-> >              ret =  madvise(host_startaddr, length, MADV_DONTNEED);
-> > +#else
-> > +        /*
-> > +         * mmap and its caddr_t based api is not accessible
-> > +         * with _XOPEN_SOURCE set on illumos
-> > +         */
-> > +            ret =  posix_madvise(host_startaddr, length, POSIX_MADV_DONTNEED);
-> > +#endif
->
-> Hi. I'm not sure this patch will do the right thing, because
-> I don't think that Solaris's POSIX_MADV_DONTNEED provides
-> the semantics that this QEMU function says it needs. The
-> comment at the top of the function says:
->
->  * Unmap pages of memory from start to start+length such that
->  * they a) read as 0, b) Trigger whatever fault mechanism
->  * the OS provides for postcopy.
->  * The pages must be unmapped by the end of the function.
->
-> (Aside: the use of 'unmap' in this comment is a bit confusing,
-> because it clearly doesn't mean 'unmap' if it wants read-as-0.
-> And the reference to faults on postcopy is incomprehensible
-> to me: if memory is read-as-0 it isn't going to fault.)
->
-> Linux's madvise(MADV_DONTNEED) does guarantee us this
-> read-as-zero behaviour. (It's a silly API choice that Linux
-> put this behaviour behind madvise, which is supposed to be
-> merely advisory, but that's how it is.) The Solaris
-> posix_madvise() manpage says it is merely advisory and
-> doesn't affect the behaviour of accesses to the memory.
->
-> If posix_madvise() behaviour was OK in this function, the
-> right way to fix this would be to use qemu_madvise()
-> instead, which already provides this "if host has
-> madvise(), use it, otherwise use posix_madvise()" logic.
-> But I suspect that the direct madvise() here is deliberate.
->
-> Side note: not sure the current code is correct for the
-> BSDs either -- they have madvise() but don't provide
-> Linux's really-read-as-zero guarantee for MADV_DONTNEED.
-> So we should probably be doing something else there, and
-> whatever that something-else is is probably also what
-> Solaris wants.
->
-> We use ram_block_discard_range() only in migration and
-> in virtio-balloon and virtio-mem; I've cc'd some people
-> who hopefully understand what the requirements on this
-> function are and might have a view on what the not-Linux
-> implementation should look like. (David Gilbert: git
-> blame says you wrote this code :-))
->
-> thanks
-> -- PMM
+Your git-sendemail seems broken... Usually 0/N is for the cover
+letter, patches are 1/N to N/N. Also patches are sent as replies
+to the cover (as a thread). In your series all patches are posted
+as new thread...
+
+On 7/18/20 3:19 PM, David CARLIER wrote:
+> From 63a3c9639d708a796abd958607aa6376fc9b99f2 Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Sat, 18 Jul 2020 13:27:52 +0100
+> Subject: [PATCH 1/3] configure: fix for SunOS based systems.
+> 
+> local directive make the configure fails on these systems.
+> 
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index e93836aaae..5d100eba72 100755
+> --- a/configure
+> +++ b/configure
+> @@ -59,7 +59,7 @@ error_exit() {
+>  do_compiler() {
+>      # Run the compiler, capturing its output to the log. First argument
+>      # is compiler binary to execute.
+> -    local compiler="$1"
+> +    compiler="$1"
+>      shift
+>      if test -n "$BASH_VERSION"; then eval '
+>          echo >>config.log "
+> 
+
 
