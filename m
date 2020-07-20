@@ -1,56 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxV2a-0005eU-Vf
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 08:37:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50928)
+	id 1jxZW9-0005Vt-Da
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 13:23:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jxV2Y-0005dT-2W; Mon, 20 Jul 2020 08:37:06 -0400
-Resent-Date: Mon, 20 Jul 2020 08:37:06 -0400
-Resent-Message-Id: <E1jxV2Y-0005dT-2W@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jxV2V-0004Wj-ID; Mon, 20 Jul 2020 08:37:05 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1595248601; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=L1Y6rqaiV22B4JOeADSQJ5/R37hFlDbO3NY9OcaYQiuyUpEOfnYW3Wzog98kJA4eGTpixOeTi+fgbvIG3q6ag+hJdrGrlxd4SWDWJe8u+Ybx1BRx0Xg3SlQdpj1mh0axx54n+iXpwZnP2h1G2El+fk4MpTc0ulWdIC0kMgb1Gos=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1595248601;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=9CvOgWVHMRYDaFXBAAQtYqBCOFIkE/MVou0F8vmtu14=; 
- b=Xd7N2CcZOTRuvDSOO4E/RXvB49rmhER28MCKSIx2y0iHTFZpIfmSFwq4805E8hqXC8FyQnQDkkef/UVMV2kBtqVmuq/LGv3pWeWgaYx2xT7kZUQXtC+AYRBXI1KaiBMhjcMBP9sJaHudYQm8Wz2rHWxhQn94q+PMKGp2mRAYFhI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1595248597795941.7141939993164;
- Mon, 20 Jul 2020 05:36:37 -0700 (PDT)
-Subject: Re: [PATCH] qdev: Document qdev_prop_set_drive_err() return value
-Message-ID: <159524859714.24.12201517760312862970@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200720121659.31886-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxZW7-0005TY-A3; Mon, 20 Jul 2020 13:23:55 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:38617)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxZW5-0003pF-CH; Mon, 20 Jul 2020 13:23:54 -0400
+Received: by mail-wr1-x431.google.com with SMTP id a14so3783767wra.5;
+ Mon, 20 Jul 2020 10:23:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RPtr2B1YzHyMjWgtik1s/pvOZlnzirJaX2W4j3uurgc=;
+ b=DArq+U/983gz+oG39ecUzWe2TB62v60pCUm21zDXOAqNS7cJLbgcO3Ba848pNZS/xn
+ Ay9Ei9NlNt72PqletDe75JFsh2eMz1fnQOnxzeqt4Lh4gyMufovyPB0vU86eM/nb69XX
+ 8v5JVKO7mORADvFNrLj6bZRbLY28HRU0hS7iOflDBBXKpBhqxtMPbIrYtC31Q7+2GPqP
+ jKDmeRJbv2mdafWR5cakihixgLgn1eKksSRD6ma8akPlJOjs8bJB6mJZLHSRfgnATDXb
+ 5ADCpLB9sztXZRkICavxEpnhPUvqZIsh6eSJ04VSFYDr2G4fJLVDlgdtRh84lLvheKCA
+ c/1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=RPtr2B1YzHyMjWgtik1s/pvOZlnzirJaX2W4j3uurgc=;
+ b=eronPVPKHHbKAfTqEoAbSmURucakBJNzxSJF2QEYZoP6bUyzgDcrZ0NOYnF4eDUuX4
+ UQNFvfxpYx1skzxspIsMWJsGfuYHIxBfIllN/OfLXe0OcKQRHsvzL/v5hvA9GMgCx6Vp
+ gqzvrwd/McBn2T99ilCZcfG8EC6gd2N+T+rA+EZdNydRZfFsEM1xsORsftO4VvxMgdeM
+ QByoOmJI4b5iZGFnZr9bmBthCo1RM6ci9rjah+LLPuwCnxAzqHQ9YeU5B/Y88KjyqS8P
+ D/ONyEkrmzK5SAB7pXW9wyavzU4xpuFSfcTOHEAyVaEdQAv/Yj22R2iWyoCUO9hYGT2W
+ 9nQA==
+X-Gm-Message-State: AOAM532WDEQ5ZJOUr+X+RhMAZ2Jj2xm39HwCbshLsJOpur/BloDItJWJ
+ ouzC1jaFcqs07mtJ/pza6jM7LNG/CqU=
+X-Google-Smtp-Source: ABdhPJyRbDcW7cUblcHV/47tvCjYZs89GDI0/B8l6WSVnKMvL9mBgcQ/YQFSEU98rztlzAD2ysMyqw==
+X-Received: by 2002:adf:f082:: with SMTP id n2mr24379697wro.326.1595265830433; 
+ Mon, 20 Jul 2020 10:23:50 -0700 (PDT)
+Received: from localhost.localdomain
+ (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id w12sm36994698wrm.79.2020.07.20.10.23.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jul 2020 10:23:49 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH-for-5.1] hw/isa/isa-superio: Fix IDE controller realization
+Date: Mon, 20 Jul 2020 19:23:48 +0200
+Message-Id: <20200720172348.23465-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Cc: qemu-devel@nongnu.org, berrange@redhat.com, ehabkost@redhat.com,
- qemu-trivial@nongnu.org, f4bug@amsat.org, armbru@redhat.com,
- pbonzini@redhat.com
-Date: Mon, 20 Jul 2020 05:36:37 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 08:36:57
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,21 +80,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2020 12:37:06 -0000
+X-List-Received-Date: Mon, 20 Jul 2020 17:23:55 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDcyMDEyMTY1OS4zMTg4
-Ni0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVpbGQgdGVz
-dCBvbiBGcmVlQlNEIGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93LgoKPT09IFRF
-U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0IHdpbGwgYmUg
-aW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50aW5nIHRvIGEg
-Y29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJiYXNlIgojIGJy
-YW5jaAppZiBxZW11LXN5c3RlbS14ODZfNjQgLS1oZWxwID4vZGV2L251bGwgMj4mMTsgdGhlbgog
-IFFFTVU9cWVtdS1zeXN0ZW0teDg2XzY0CmVsaWYgL3Vzci9saWJleGVjL3FlbXUta3ZtIC0taGVs
-cCA+L2Rldi9udWxsIDI+JjE7IHRoZW4KICBRRU1VPS91c3IvbGliZXhlYy9xZW11LWt2bQplbHNl
-CiAgZXhpdCAxCmZpCm1ha2Ugdm0tYnVpbGQtZnJlZWJzZCBKPTIxIFFFTVU9JFFFTVUKZXhpdCAw
-Cj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
-Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNzIwMTIxNjU5LjMxODg2LTEtZjRidWdAYW1z
-YXQub3JnL3Rlc3RpbmcuRnJlZUJTRC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
-IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
-c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+When realizing a Super I/O with IDE controller [*], we get:
+
+  qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+  Aborted (core dumped)
+
+This is because the device is already realized when we try to
+add the QOM property to the parent. Fix by realizing *after*
+adding the QOM relationship.
+
+[*] Set ISASuperIOClass::ide.count = N with N not zero
+
+Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/isa/isa-superio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+index e2e47d8fd9..179c185695 100644
+--- a/hw/isa/isa-superio.c
++++ b/hw/isa/isa-superio.c
+@@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+         if (k->ide.get_irq) {
+             qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
+         }
+-        isa_realize_and_unref(isa, bus, &error_fatal);
+         object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
++        isa_realize_and_unref(isa, bus, &error_fatal);
+         sio->ide = isa;
+         trace_superio_create_ide(0,
+                                  k->ide.get_iobase ?
+-- 
+2.21.3
+
 
