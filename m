@@ -1,54 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxD21-0007e3-LL
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Jul 2020 13:23:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39340)
+	id 1jxR6f-0007kp-2f
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 04:25:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <michael@walle.cc>)
- id 1jxD20-0007ds-IM; Sun, 19 Jul 2020 13:23:20 -0400
-Received: from ssl.serverraum.org ([176.9.125.105]:38731)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <michael@walle.cc>)
- id 1jxD1v-0001CP-6i; Sun, 19 Jul 2020 13:23:20 -0400
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id 1ECCF22FEC;
- Sun, 19 Jul 2020 19:23:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1595179387;
+ (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
+ id 1jxR6d-0007iv-RF
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 04:25:03 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51075
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
+ id 1jxR6c-0001gQ-CX
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 04:25:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595233501;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KCGpOGQSsqWIS5LRWHyZRDrmJoK+XBUPU2nHA4wyJlg=;
- b=nlktJ/OhlXZvlSq4rWtbDH4O9e6pENfLbkSm9DXdc+cstb/wu4ABRo7PyP4x1G9OcHGrat
- NStap5oK6dlmlSiH7F+Nw4qVJITStegFF/0O6NPd5iVMc2RCi25/hEuhTAusQPGXlrIYXH
- RYB9tUY/dFhSegEhTmotnqFhCRtEJhc=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Sun, 19 Jul 2020 19:23:06 +0200
-From: Michael Walle <michael@walle.cc>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ bh=49GZ6We9Ef+Cwest0ZEcgIIXf9t8GN+9skXH3jVyZe8=;
+ b=FoHZSOFpPR2dTFoGYManCsSJL+66rYhFU9jVxvpZLAmDpvFtpJFTDH/DRg9u512w2frQv3
+ EC5KiLtNHlAmThpCfL2f2MgVPEmJGpLZSVJc1ya9nhGgg/thS/an2z7PWyuM54wcQ5WZKr
+ vIDFFJqtBIIEddaFAQbR9J33bwzb12E=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-27-F9g7SqQeOD20qfL2i_Hr5w-1; Mon, 20 Jul 2020 04:24:57 -0400
+X-MC-Unique: F9g7SqQeOD20qfL2i_Hr5w-1
+Received: by mail-wm1-f71.google.com with SMTP id y204so13998804wmd.2
+ for <qemu-trivial@nongnu.org>; Mon, 20 Jul 2020 01:24:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=49GZ6We9Ef+Cwest0ZEcgIIXf9t8GN+9skXH3jVyZe8=;
+ b=FdBh4X0cfUjgmFjfknr8tB32uTFk7AJ8HZIxdZLaYTKvi09ZA+d9fCOOaFgbzMlMDK
+ 8zoy1KFR7UpJg/t+vwmUQ/3K5qhn42AtxqnfqdDit7cpOYdRTlx3Y7OraVDEJpfwgg8M
+ p3o44rI6xdmNGAFvwhTvEEu3Z+XRIDpxC54QMYVuhs5BbH0g9T+jDCcoXzl7rKQEcXjb
+ mkgErRdbWyzJV3JhVZMlpiTBtoG9AWdNcZrqSQShTn+cxSbk2kJNca3rbO8EA7TGzN8r
+ Uo3NJr6gZ6mt0WhDEfzCqt8Udh+JzHCisx2UBopuBO9YQYz4ulQIInBpX6cT2bhVIOyl
+ 2gDQ==
+X-Gm-Message-State: AOAM532WxRoqcyTQ60gMEYq9mKFySO2x96g1fRv1vRHCLToeDLN0Xqa2
+ BVCbhBmyLgwfPP8HSTSniu22jCHn5uCrvBr6a/iPWHHVewnPbnhoM1yCfdxy4PIiUWqn7xE0158
+ NZI8wHracog91aJ3K/Q==
+X-Received: by 2002:a5d:4e81:: with SMTP id e1mr20169856wru.22.1595233495368; 
+ Mon, 20 Jul 2020 01:24:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwp0aRrUKNx8xfrtCs5OgdEeWEa75/VyhKvlZqt3XMwqfltiapnxqe+w6yjy9Le8Z88lX79zw==
+X-Received: by 2002:a5d:4e81:: with SMTP id e1mr20169830wru.22.1595233495124; 
+ Mon, 20 Jul 2020 01:24:55 -0700 (PDT)
+Received: from steredhat ([5.180.207.22])
+ by smtp.gmail.com with ESMTPSA id j16sm32466556wrt.7.2020.07.20.01.24.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jul 2020 01:24:54 -0700 (PDT)
+Date: Mon, 20 Jul 2020 10:24:37 +0200
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Kenta Ishiguro <kentaishiguro@slowstart.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH-for-5.1] hw/misc/milkymist-pfpu: Fix pFPU region size
-In-Reply-To: <20200718093705.7271-1-f4bug@amsat.org>
-References: <20200718093705.7271-1-f4bug@amsat.org>
-User-Agent: Roundcube Webmail/1.4.7
-Message-ID: <b0eb3028f61e6eaaf9c1f4aedefeaa20@walle.cc>
-X-Sender: michael@walle.cc
-Received-SPF: pass client-ip=176.9.125.105; envelope-from=michael@walle.cc;
- helo=ssl.serverraum.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/19 13:23:08
+Subject: Re: [PATCH] hw/i386/kvm/ioapic.c: fix typo in error message
+Message-ID: <20200720082437.sbuylue5l5co4yyu@steredhat>
+References: <20200717123514.15406-1-kentaishiguro@slowstart.org>
+MIME-Version: 1.0
+In-Reply-To: <20200717123514.15406-1-kentaishiguro@slowstart.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=sgarzare@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 03:17:01
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,41 +88,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Jul 2020 17:23:20 -0000
+X-List-Received-Date: Mon, 20 Jul 2020 08:25:04 -0000
 
-Hi Philippe,
++Cc qemu-trivial@nongnu.org
 
-Am 2020-07-18 11:37, schrieb Philippe Mathieu-Daudé:
-> The last microcode word (address 0x6000.6ffc) is not reachable.
-> Correct the programmable FPU I/O size (which is 4 KiB) to be
-> able to use all the microcode area.
+On Fri, Jul 17, 2020 at 09:35:14PM +0900, Kenta Ishiguro wrote:
+> Fix a typo in an error message for KVM_SET_IRQCHIP ioctl:
+> "KVM_GET_IRQCHIP" should be "KVM_SET_IRQCHIP".
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Kenta Ishiguro <kentaishiguro@slowstart.org>
 > ---
->  hw/misc/milkymist-pfpu.c | 2 +-
+>  hw/i386/kvm/ioapic.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/misc/milkymist-pfpu.c b/hw/misc/milkymist-pfpu.c
-> index 516825e83d..4fbe3e8971 100644
-> --- a/hw/misc/milkymist-pfpu.c
-> +++ b/hw/misc/milkymist-pfpu.c
-> @@ -507,7 +507,7 @@ static void milkymist_pfpu_realize(DeviceState
-> *dev, Error **errp)
->      sysbus_init_irq(sbd, &s->irq);
-> 
->      memory_region_init_io(&s->regs_region, OBJECT(dev), 
-> &pfpu_mmio_ops, s,
-> -            "milkymist-pfpu", MICROCODE_END * 4);
-> +                          "milkymist-pfpu", 0x1000);
-
-Could you use one of the MICROCODE_ macros instead? maybe 
-(MICROCODE_WORDS * 2)?
-
-With that fixed:
-Reviewed-by: Michael Walle <michael@walle.cc>
-
--michael
-
->      sysbus_init_mmio(sbd, &s->regs_region);
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index 4ba8e47251..c5528df942 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -97,7 +97,7 @@ static void kvm_ioapic_put(IOAPICCommonState *s)
+>  
+>      ret = kvm_vm_ioctl(kvm_state, KVM_SET_IRQCHIP, &chip);
+>      if (ret < 0) {
+> -        fprintf(stderr, "KVM_GET_IRQCHIP failed: %s\n", strerror(ret));
+> +        fprintf(stderr, "KVM_SET_IRQCHIP failed: %s\n", strerror(ret));
+>          abort();
+>      }
 >  }
+> -- 
+> 2.17.1
+> 
+> 
+
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+
 
