@@ -1,67 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxbEC-0005ND-UU
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 15:13:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45446)
+	id 1jxbf8-0006dj-Pa
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 15:41:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jxbEA-0005KR-W1
- for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:13:31 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23801
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jxbE9-0002Hr-5D
- for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:13:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595272408;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=6u9s9wn88PVbUIM3a37ZCZ1nVXwP0BvlwR9fyqOkofg=;
- b=RgBirmi4QQquDnSThSWtfwfrTFsOOMpIB1/BzYEy8fFMu9cqe8AezR+AsoYVUL/8fsm1Qd
- FiDLdK+rahEsiqkGdECpJot2b3Iy6X4taSqBXXrXA1nHKufysQqtSsA4waI72GgwjqMdaX
- xZdU+auHqlZVe6aOBWOY1MLAnG9lS40=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-Ctypq_c9ODGO346ohjPxQQ-1; Mon, 20 Jul 2020 15:13:26 -0400
-X-MC-Unique: Ctypq_c9ODGO346ohjPxQQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6880F8014D4;
- Mon, 20 Jul 2020 19:13:25 +0000 (UTC)
-Received: from work-vm (ovpn-114-140.ams2.redhat.com [10.36.114.140])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 32A286FDD1;
- Mon, 20 Jul 2020 19:13:21 +0000 (UTC)
-Date: Mon, 20 Jul 2020 20:13:18 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, dhildenb@redhat.com
-Cc: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH 2/3] exec: posix_madvise usage on SunOS.
-Message-ID: <20200720191318.GM2642@work-vm>
-References: <CA+XhMqwtUrSpCqNGEETBijewzvmpno8OAX_PKSShDP_gUQ-3VQ@mail.gmail.com>
- <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jxbf6-0006by-9L
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:41:20 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:36830)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jxbf4-000678-K7
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:41:19 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id p3so10796418pgh.3
+ for <qemu-trivial@nongnu.org>; Mon, 20 Jul 2020 12:41:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=r4sGXluqaQYpHz2gJjWcC8JR1QPkpaZ+jeOR6K+cGJE=;
+ b=JJZVDo4Qd6agZQUomlVsTZvHv9Cq8eZz1tr853twMMzoZj8SjsebQ/rq44GHObEcqC
+ CDoZ5QejU6j7psxFZDoQfXLxrBAeMnSa9rFIBgar7z4DszUKYFQHkm7sWq5m3nYPQgXu
+ 00dTPOHlM0fHgEKMvnZVDTgS1qNFYPaaBAxL6pDVWhenWAZxAG13Grd9/4ddS044jipj
+ 5ZHv9uKdmxm9EVAohQMfRIqIip36e62zhYd3zU6XrxAhGM07DPCbXT2qymvgoN3EJJbw
+ jBFESCCZwd12eNCE9owINMkRvK+TUDC9PUjLUJwHEp329q79luO6LgBbOzjf8M0cxqQa
+ kQWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=r4sGXluqaQYpHz2gJjWcC8JR1QPkpaZ+jeOR6K+cGJE=;
+ b=swzOishcIZeOmrWZhvpefzEs0J6t3rJbDjfGtdgFsLyeOStVWAGKsuFjF6Jrj/HUQ8
+ PtXCCrR9cFj2+zo4c2HkUD+5u9dyDflx3HPRSgbqxqQDpGdAqfGJX4wOGRasiML9qZPW
+ OzCMN55JsrivKk/6ZcGO7WiMQudQTeidSdt3YrYqK6wZ5GxnfmPbfeEx9V0VC1VKn3mX
+ d0wYI6eKzKdjuNLeu39fsntRBWhPjb0ltxO4c4+w4q4+BhdWUFL+u2PZht6RAJakuizo
+ oUps+RQdTxnhG1226OtACJ8H8TNM/cJPN23VzZlzZRUSp1fmkvYoniuWOyKUOZawuQPK
+ acYQ==
+X-Gm-Message-State: AOAM530d4O3fvVvrDSHElghJx5Z0EXzZQlCCGGZ/PGqbv1t1XswxPv1A
+ O0f+Gv9XTM48rAfFe5HInJDcuA==
+X-Google-Smtp-Source: ABdhPJx62rwAP40lM8vcRXnDNdmuoC7Qtyayn5vSLnWPVJB4bY2dGZQsThWIYmoSebKu66GCqikIVg==
+X-Received: by 2002:a62:fcca:: with SMTP id
+ e193mr21532902pfh.307.1595274076862; 
+ Mon, 20 Jul 2020 12:41:16 -0700 (PDT)
+Received: from [192.168.1.11] (216-160-65-90.tukw.qwest.net. [216.160.65.90])
+ by smtp.gmail.com with ESMTPSA id
+ 17sm377442pjl.30.2020.07.20.12.41.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Jul 2020 12:41:16 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1] hw/isa/isa-superio: Fix IDE controller realization
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200720172348.23465-1-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <28b40409-5094-137e-a1e3-60dd502633e3@linaro.org>
+Date: Mon, 20 Jul 2020 12:41:14 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
-User-Agent: Mutt/1.14.5 (2020-06-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 02:11:17
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+In-Reply-To: <20200720172348.23465-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,116 +85,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2020 19:13:31 -0000
+X-List-Received-Date: Mon, 20 Jul 2020 19:41:21 -0000
 
-(Copies in Dave Hildenbrand)
-
-* Peter Maydell (peter.maydell@linaro.org) wrote:
-> On Sat, 18 Jul 2020 at 14:21, David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > From a9e3cced279ae55a59847ba232f7828bc2479367 Mon Sep 17 00:00:00 2001
-> > From: David Carlier <devnexen@gmail.com>
-> > Date: Sat, 18 Jul 2020 13:29:44 +0100
-> > Subject: [PATCH 2/3] exec: posix_madvise usage on SunOS.
-> >
-> > with _XOPEN_SOURCE set, the older mman.h API based on caddr_t handling
-> > is not accessible thus using posix_madvise here.
-> >
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
-> > ---
-> >  exec.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> >
-> > diff --git a/exec.c b/exec.c
-> > index 6f381f98e2..0466a75b89 100644
-> > --- a/exec.c
-> > +++ b/exec.c
-> > @@ -3964,7 +3964,15 @@ int ram_block_discard_range(RAMBlock *rb,
-> > uint64_t start, size_t length)
-> >               * fallocate'd away).
-> >               */
-> >  #if defined(CONFIG_MADVISE)
-> > +#if !defined(CONFIG_SOLARIS)
-> >              ret =  madvise(host_startaddr, length, MADV_DONTNEED);
-> > +#else
-> > +        /*
-> > +         * mmap and its caddr_t based api is not accessible
-> > +         * with _XOPEN_SOURCE set on illumos
-> > +         */
-> > +            ret =  posix_madvise(host_startaddr, length, POSIX_MADV_DONTNEED);
-> > +#endif
+On 7/20/20 10:23 AM, Philippe Mathieu-Daudé wrote:
+> When realizing a Super I/O with IDE controller [*], we get:
 > 
-> Hi. I'm not sure this patch will do the right thing, because
-> I don't think that Solaris's POSIX_MADV_DONTNEED provides
-> the semantics that this QEMU function says it needs. The
-> comment at the top of the function says:
+>   qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+>   Aborted (core dumped)
 > 
->  * Unmap pages of memory from start to start+length such that
->  * they a) read as 0, b) Trigger whatever fault mechanism
->  * the OS provides for postcopy.
->  * The pages must be unmapped by the end of the function.
-
-This code has moved around a bit over it's life; joining the case
-needed by balloon and the case needed by postcopy.
-
-> (Aside: the use of 'unmap' in this comment is a bit confusing,
-> because it clearly doesn't mean 'unmap' if it wants read-as-0.
-> And the reference to faults on postcopy is incomprehensible
-> to me: if memory is read-as-0 it isn't going to fault.)
-
-I think because internally to Linux the behaviour is the same;
-this causes the mapping to disappear from the TLB so it faults;
-normally when reading the kernel resolves the fault and puts
-a read-as-zero page there, except if userfault was enabled
-for postcopy, in which case it gives us a kick and we service it.
-
-> Linux's madvise(MADV_DONTNEED) does guarantee us this
-> read-as-zero behaviour. (It's a silly API choice that Linux
-> put this behaviour behind madvise, which is supposed to be
-> merely advisory, but that's how it is.)
-
-Yes, I don't think there's any equivalent to madvise
-that guarantees anything.
-
-> The Solaris
-> posix_madvise() manpage says it is merely advisory and
-> doesn't affect the behaviour of accesses to the memory.
+> This is because the device is already realized when we try to
+> add the QOM property to the parent. Fix by realizing *after*
+> adding the QOM relationship.
 > 
-> If posix_madvise() behaviour was OK in this function, the
-> right way to fix this would be to use qemu_madvise()
-> instead, which already provides this "if host has
-> madvise(), use it, otherwise use posix_madvise()" logic.
-> But I suspect that the direct madvise() here is deliberate.
-
-Yes, but I can't remember the semantics fully - I think it was because
-we needed the guarantee at this point (and even Linux's
-posix madvise did something different??)
-
-I've got a note saying we didn't want to use
-qemu_madvise because we wanted to be sure we didn't get
-posix_madvise.
-
-> Side note: not sure the current code is correct for the
-> BSDs either -- they have madvise() but don't provide
-> Linux's really-read-as-zero guarantee for MADV_DONTNEED.
-> So we should probably be doing something else there, and
-> whatever that something-else is is probably also what
-> Solaris wants.
+> [*] Set ISASuperIOClass::ide.count = N with N not zero
 > 
-> We use ram_block_discard_range() only in migration and
-> in virtio-balloon and virtio-mem; I've cc'd some people
-> who hopefully understand what the requirements on this
-> function are and might have a view on what the not-Linux
-> implementation should look like. (David Gilbert: git
-> blame says you wrote this code :-))
+> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/isa/isa-superio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Dave
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> 
-> thanks
-> -- PMM
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+r~
 
