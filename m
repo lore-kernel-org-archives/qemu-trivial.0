@@ -1,75 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxZus-0005FM-Cx
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 13:49:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53522)
+	id 1jxbEC-0005ND-UU
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 15:13:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxZuq-0005CX-KT; Mon, 20 Jul 2020 13:49:28 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxZup-0007CJ-5K; Mon, 20 Jul 2020 13:49:28 -0400
-Received: by mail-wm1-x343.google.com with SMTP id f18so352937wml.3;
- Mon, 20 Jul 2020 10:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=AJn3EPMi5risgGeTitpR29/MpANRfQ+7uGn+a0i6Wus=;
- b=Q4RTsxLN6g0PDldAw7wr5DsTEVWvSL0nKJfQR9YaShBb+pcOBGCF8P947cruP3TKp6
- WpVTKsjeG4ENa5chLgqwP6WGPjMkvirEdPaFNKbwm2h/0ipYqOpoeoZOA7e4ThFeof9c
- +2IMQd4FilhQKr8LpnYeDcbmoRnt0S057dRSX8ocuZ6PaMEdl9sIpieg/iqoDqnn4K4v
- KU2UX84+mV3MeyaaX/iFVqt6HR2URjQy431GUnaAYgVRxBLjnnIkPfPNl64Ms05RS3x0
- v8pzT1IbTYhejZiT+gPK/bNajYLZpitmSgAIMdDfszuPwNnt2A1zKxEJZnrRegZf+YNQ
- wB2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=AJn3EPMi5risgGeTitpR29/MpANRfQ+7uGn+a0i6Wus=;
- b=tbFKEOBuDrSLq5Xf6TnV9Txt99JWsktDVgMaBUN5ooPNLjIRP+H5/1bJiKfUeFZOGw
- fVMSKiD+sxDikfSgNUNHS2gTUMq5M36kVx9S12ZRi4Hxtb4C+87lMxYhLZzqef2R6nIg
- NYp0DUd0wOve/dlkj0TQeAaXN3EypR4GBGLkwjleblNrQg/B7ZTRjbnXd9RKFqkYN2y1
- maku0EZNN7zU6Thbdk35fCEYKX4h9jgz2xsu5uqa/t1e7UEHdPbql5V9zaIgk5tLn+Mx
- jd3N+IX6RNJH/U4QBMHkAt3wWViy+m8I77h608M2B4cY+BfXcnpxV6xVdxoUjksYrnh8
- CJJw==
-X-Gm-Message-State: AOAM531Y+t4tDLgMUQzfjcw7aKd//EVmdb4R+r1EqjD8tOkGBqb2Aln6
- 4sg9uyk4+xb1/rUjb7ucp6SQBoqEQO0=
-X-Google-Smtp-Source: ABdhPJzkQfBPXvhxzeQ4hsl2516LL3cvxqkiDlnPrz2HOPs7lueicNRnm3l29GxfVeY49PMb/EhSvg==
-X-Received: by 2002:a1c:3245:: with SMTP id y66mr420514wmy.64.1595267364821;
- Mon, 20 Jul 2020 10:49:24 -0700 (PDT)
-Received: from localhost.localdomain
- (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id z8sm271183wmg.39.2020.07.20.10.49.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jul 2020 10:49:23 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.1 v2] hw/misc/aspeed_sdmc: Fix incorrect memory size
-Date: Mon, 20 Jul 2020 19:49:22 +0200
-Message-Id: <20200720174922.16303-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jxbEA-0005KR-W1
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:13:31 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23801
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jxbE9-0002Hr-5D
+ for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 15:13:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595272408;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=6u9s9wn88PVbUIM3a37ZCZ1nVXwP0BvlwR9fyqOkofg=;
+ b=RgBirmi4QQquDnSThSWtfwfrTFsOOMpIB1/BzYEy8fFMu9cqe8AezR+AsoYVUL/8fsm1Qd
+ FiDLdK+rahEsiqkGdECpJot2b3Iy6X4taSqBXXrXA1nHKufysQqtSsA4waI72GgwjqMdaX
+ xZdU+auHqlZVe6aOBWOY1MLAnG9lS40=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-310-Ctypq_c9ODGO346ohjPxQQ-1; Mon, 20 Jul 2020 15:13:26 -0400
+X-MC-Unique: Ctypq_c9ODGO346ohjPxQQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6880F8014D4;
+ Mon, 20 Jul 2020 19:13:25 +0000 (UTC)
+Received: from work-vm (ovpn-114-140.ams2.redhat.com [10.36.114.140])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 32A286FDD1;
+ Mon, 20 Jul 2020 19:13:21 +0000 (UTC)
+Date: Mon, 20 Jul 2020 20:13:18 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, dhildenb@redhat.com
+Cc: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH 2/3] exec: posix_madvise usage on SunOS.
+Message-ID: <20200720191318.GM2642@work-vm>
+References: <CA+XhMqwtUrSpCqNGEETBijewzvmpno8OAX_PKSShDP_gUQ-3VQ@mail.gmail.com>
+ <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
+User-Agent: Mutt/1.14.5 (2020-06-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 02:11:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,72 +75,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2020 17:49:29 -0000
+X-List-Received-Date: Mon, 20 Jul 2020 19:13:31 -0000
 
-The SDRAM Memory Controller has a 32-bit address bus, thus
-supports up to 4 GiB of DRAM. There is a signed to unsigned
-conversion error with the AST2600 maximum memory size:
+(Copies in Dave Hildenbrand)
 
-  (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
-                         = 0xffffffff40000000
-                         = 16 EiB - 2 GiB
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On Sat, 18 Jul 2020 at 14:21, David CARLIER <devnexen@gmail.com> wrote:
+> >
+> > From a9e3cced279ae55a59847ba232f7828bc2479367 Mon Sep 17 00:00:00 2001
+> > From: David Carlier <devnexen@gmail.com>
+> > Date: Sat, 18 Jul 2020 13:29:44 +0100
+> > Subject: [PATCH 2/3] exec: posix_madvise usage on SunOS.
+> >
+> > with _XOPEN_SOURCE set, the older mman.h API based on caddr_t handling
+> > is not accessible thus using posix_madvise here.
+> >
+> > Signed-off-by: David Carlier <devnexen@gmail.com>
+> > ---
+> >  exec.c | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
+> >
+> > diff --git a/exec.c b/exec.c
+> > index 6f381f98e2..0466a75b89 100644
+> > --- a/exec.c
+> > +++ b/exec.c
+> > @@ -3964,7 +3964,15 @@ int ram_block_discard_range(RAMBlock *rb,
+> > uint64_t start, size_t length)
+> >               * fallocate'd away).
+> >               */
+> >  #if defined(CONFIG_MADVISE)
+> > +#if !defined(CONFIG_SOLARIS)
+> >              ret =  madvise(host_startaddr, length, MADV_DONTNEED);
+> > +#else
+> > +        /*
+> > +         * mmap and its caddr_t based api is not accessible
+> > +         * with _XOPEN_SOURCE set on illumos
+> > +         */
+> > +            ret =  posix_madvise(host_startaddr, length, POSIX_MADV_DONTNEED);
+> > +#endif
+> 
+> Hi. I'm not sure this patch will do the right thing, because
+> I don't think that Solaris's POSIX_MADV_DONTNEED provides
+> the semantics that this QEMU function says it needs. The
+> comment at the top of the function says:
+> 
+>  * Unmap pages of memory from start to start+length such that
+>  * they a) read as 0, b) Trigger whatever fault mechanism
+>  * the OS provides for postcopy.
+>  * The pages must be unmapped by the end of the function.
 
-Fix by using the IEC suffixes which are usually safer, and add
-an assertion check to verify the memory is valid. This would have
-catched this bug:
+This code has moved around a bit over it's life; joining the case
+needed by balloon and the case needed by postcopy.
 
-  $ qemu-system-arm -M ast2600-evb
-  qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assertion `asc->max_ram_size < 4 * GiB' failed.
-  Aborted (core dumped)
+> (Aside: the use of 'unmap' in this comment is a bit confusing,
+> because it clearly doesn't mean 'unmap' if it wants read-as-0.
+> And the reference to faults on postcopy is incomprehensible
+> to me: if memory is read-as-0 it isn't going to fault.)
 
-Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: Assert (Cédric)
----
- hw/misc/aspeed_sdmc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+I think because internally to Linux the behaviour is the same;
+this causes the mapping to disappear from the TLB so it faults;
+normally when reading the kernel resolves the fault and puts
+a read-as-zero page there, except if userfault was enabled
+for postcopy, in which case it gives us a kick and we service it.
 
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 0737d8de81..855848b7d2 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -255,6 +255,7 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
-     AspeedSDMCState *s = ASPEED_SDMC(dev);
-     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
- 
-+    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
-     s->max_ram_size = asc->max_ram_size;
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-@@ -341,7 +342,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2400 SDRAM Memory Controller";
--    asc->max_ram_size = 512 << 20;
-+    asc->max_ram_size = 512 * MiB;
-     asc->compute_conf = aspeed_2400_sdmc_compute_conf;
-     asc->write = aspeed_2400_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2400_ram_sizes;
-@@ -408,7 +409,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2500 SDRAM Memory Controller";
--    asc->max_ram_size = 1024 << 20;
-+    asc->max_ram_size = 1 * GiB;
-     asc->compute_conf = aspeed_2500_sdmc_compute_conf;
-     asc->write = aspeed_2500_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2500_ram_sizes;
-@@ -485,7 +486,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2600 SDRAM Memory Controller";
--    asc->max_ram_size = 2048 << 20;
-+    asc->max_ram_size = 2 * GiB;
-     asc->compute_conf = aspeed_2600_sdmc_compute_conf;
-     asc->write = aspeed_2600_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2600_ram_sizes;
--- 
-2.21.3
+> Linux's madvise(MADV_DONTNEED) does guarantee us this
+> read-as-zero behaviour. (It's a silly API choice that Linux
+> put this behaviour behind madvise, which is supposed to be
+> merely advisory, but that's how it is.)
+
+Yes, I don't think there's any equivalent to madvise
+that guarantees anything.
+
+> The Solaris
+> posix_madvise() manpage says it is merely advisory and
+> doesn't affect the behaviour of accesses to the memory.
+> 
+> If posix_madvise() behaviour was OK in this function, the
+> right way to fix this would be to use qemu_madvise()
+> instead, which already provides this "if host has
+> madvise(), use it, otherwise use posix_madvise()" logic.
+> But I suspect that the direct madvise() here is deliberate.
+
+Yes, but I can't remember the semantics fully - I think it was because
+we needed the guarantee at this point (and even Linux's
+posix madvise did something different??)
+
+I've got a note saying we didn't want to use
+qemu_madvise because we wanted to be sure we didn't get
+posix_madvise.
+
+> Side note: not sure the current code is correct for the
+> BSDs either -- they have madvise() but don't provide
+> Linux's really-read-as-zero guarantee for MADV_DONTNEED.
+> So we should probably be doing something else there, and
+> whatever that something-else is is probably also what
+> Solaris wants.
+> 
+> We use ram_block_discard_range() only in migration and
+> in virtio-balloon and virtio-mem; I've cc'd some people
+> who hopefully understand what the requirements on this
+> function are and might have a view on what the not-Linux
+> implementation should look like. (David Gilbert: git
+> blame says you wrote this code :-))
+
+Dave
+
+> 
+> thanks
+> -- PMM
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
