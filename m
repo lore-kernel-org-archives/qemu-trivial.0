@@ -1,118 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxnYK-0003c7-Gl
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 04:23:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38076)
+	id 1jxniJ-00016F-QK
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 04:33:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jxnYI-0003Z6-LZ
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:23:06 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29831
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxniI-000162-PL
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:33:26 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52110
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jxnYE-0006LM-TR
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:23:06 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxniG-00082H-Pe
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:33:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595319754;
+ s=mimecast20190719; t=1595320404;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=g91Rxa083C1GwMKbigO+LsF/QYIvVbbQ2FOEA7Px1ks=;
- b=FAXkDEA2JQjBJUOXsDolCTAKiOSgW9rpWl0ag/Gt9CicQ8wz5oIqvKB8gPU+4ownP34e7g
- iRBO3zAWCe9IX+olaRbHTH7P1l91XKF/4sSa38cNDMZWdZ3L6vrzbM8YaKJD91em+TdTvn
- rWYTScz8FeP8+diZNyjRxCbVLd2iz40=
+ in-reply-to:in-reply-to:references:references;
+ bh=F3HOz6ox4WfgXzS8uNt+aJRIXq6V4kbf7PA5S7YE9Rg=;
+ b=Yfiv1PVWtkwdZJNGsUijdfQtJhtd2WLhqaYQ7VIA3kYOZtbWXyjbohLAwe16MdimjboHr+
+ 4TUPuLwbziea+zmR5KwFUQIdDIvK4/cZIeX7nkQUWpW2EybJM0Vz7rWJIFxcRnW9++LGBu
+ S/dToCkPU+fpuKCtt0aMYlDv0waMejk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-48-_v3HQlHXO_O6V_L7DJy4ig-1; Tue, 21 Jul 2020 04:22:32 -0400
-X-MC-Unique: _v3HQlHXO_O6V_L7DJy4ig-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-479-CzUVAQmtPcCXAiTuxbxXpg-1; Tue, 21 Jul 2020 04:33:21 -0400
+X-MC-Unique: CzUVAQmtPcCXAiTuxbxXpg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 652F880183C;
- Tue, 21 Jul 2020 08:22:31 +0000 (UTC)
-Received: from [10.36.113.158] (ovpn-113-158.ams2.redhat.com [10.36.113.158])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 890B05C1BD;
- Tue, 21 Jul 2020 08:22:26 +0000 (UTC)
-Subject: Re: [PATCH 2/3] exec: posix_madvise usage on SunOS.
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, dhildenb@redhat.com
-Cc: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <CA+XhMqwtUrSpCqNGEETBijewzvmpno8OAX_PKSShDP_gUQ-3VQ@mail.gmail.com>
- <CAFEAcA96mh_4EkKz31HgzfPOEQvhta8VTcvMV=An8Us0+x=NfQ@mail.gmail.com>
- <20200720191318.GM2642@work-vm>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- mQINBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
- dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
- QZLQMzNE74ap+GDK0wnacPQFpcG1AE9RMq3aeErY5tujekBS32jfC/7AnH7I0v1v1TbbK3Gp
- XNeiN4QroO+5qaSr0ID2sz5jtBLRb15RMre27E1ImpaIv2Jw8NJgW0k/D1RyKCwaTsgRdwuK
- Kx/Y91XuSBdz0uOyU/S8kM1+ag0wvsGlpBVxRR/xw/E8M7TEwuCZQArqqTCmkG6HGcXFT0V9
- PXFNNgV5jXMQRwU0O/ztJIQqsE5LsUomE//bLwzj9IVsaQpKDqW6TAPjcdBDPLHvriq7kGjt
- WhVhdl0qEYB8lkBEU7V2Yb+SYhmhpDrti9Fq1EsmhiHSkxJcGREoMK/63r9WLZYI3+4W2rAc
- UucZa4OT27U5ZISjNg3Ev0rxU5UH2/pT4wJCfxwocmqaRr6UYmrtZmND89X0KigoFD/XSeVv
- jwBRNjPAubK9/k5NoRrYqztM9W6sJqrH8+UWZ1Idd/DdmogJh0gNC0+N42Za9yBRURfIdKSb
- B3JfpUqcWwE7vUaYrHG1nw54pLUoPG6sAA7Mehl3nd4pZUALHwARAQABtCREYXZpZCBIaWxk
- ZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT6JAlgEEwEIAEICGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAhkBFiEEG9nKrXNcTDpGDfzKTd4Q9wD/g1oFAl8Ox4kFCRKpKXgACgkQTd4Q
- 9wD/g1oHcA//a6Tj7SBNjFNM1iNhWUo1lxAja0lpSodSnB2g4FCZ4R61SBR4l/psBL73xktp
- rDHrx4aSpwkRP6Epu6mLvhlfjmkRG4OynJ5HG1gfv7RJJfnUdUM1z5kdS8JBrOhMJS2c/gPf
- wv1TGRq2XdMPnfY2o0CxRqpcLkx4vBODvJGl2mQyJF/gPepdDfcT8/PY9BJ7FL6Hrq1gnAo4
- 3Iv9qV0JiT2wmZciNyYQhmA1V6dyTRiQ4YAc31zOo2IM+xisPzeSHgw3ONY/XhYvfZ9r7W1l
- pNQdc2G+o4Di9NPFHQQhDw3YTRR1opJaTlRDzxYxzU6ZnUUBghxt9cwUWTpfCktkMZiPSDGd
- KgQBjnweV2jw9UOTxjb4LXqDjmSNkjDdQUOU69jGMUXgihvo4zhYcMX8F5gWdRtMR7DzW/YE
- BgVcyxNkMIXoY1aYj6npHYiNQesQlqjU6azjbH70/SXKM5tNRplgW8TNprMDuntdvV9wNkFs
- 9TyM02V5aWxFfI42+aivc4KEw69SE9KXwC7FSf5wXzuTot97N9Phj/Z3+jx443jo2NR34XgF
- 89cct7wJMjOF7bBefo0fPPZQuIma0Zym71cP61OP/i11ahNye6HGKfxGCOcs5wW9kRQEk8P9
- M/k2wt3mt/fCQnuP/mWutNPt95w9wSsUyATLmtNrwccz63W5Ag0EVcufkQEQAOfX3n0g0fZz
- Bgm/S2zF/kxQKCEKP8ID+Vz8sy2GpDvveBq4H2Y34XWsT1zLJdvqPI4af4ZSMxuerWjXbVWb
- T6d4odQIG0fKx4F8NccDqbgHeZRNajXeeJ3R7gAzvWvQNLz4piHrO/B4tf8svmRBL0ZB5P5A
- 2uhdwLU3NZuK22zpNn4is87BPWF8HhY0L5fafgDMOqnf4guJVJPYNPhUFzXUbPqOKOkL8ojk
- CXxkOFHAbjstSK5Ca3fKquY3rdX3DNo+EL7FvAiw1mUtS+5GeYE+RMnDCsVFm/C7kY8c2d0G
- NWkB9pJM5+mnIoFNxy7YBcldYATVeOHoY4LyaUWNnAvFYWp08dHWfZo9WCiJMuTfgtH9tc75
- 7QanMVdPt6fDK8UUXIBLQ2TWr/sQKE9xtFuEmoQGlE1l6bGaDnnMLcYu+Asp3kDT0w4zYGsx
- 5r6XQVRH4+5N6eHZiaeYtFOujp5n+pjBaQK7wUUjDilPQ5QMzIuCL4YjVoylWiBNknvQWBXS
- lQCWmavOT9sttGQXdPCC5ynI+1ymZC1ORZKANLnRAb0NH/UCzcsstw2TAkFnMEbo9Zu9w7Kv
- AxBQXWeXhJI9XQssfrf4Gusdqx8nPEpfOqCtbbwJMATbHyqLt7/oz/5deGuwxgb65pWIzufa
- N7eop7uh+6bezi+rugUI+w6DABEBAAGJAjwEGAEIACYCGwwWIQQb2cqtc1xMOkYN/MpN3hD3
- AP+DWgUCXw7HsgUJEqkpoQAKCRBN3hD3AP+DWrrpD/4qS3dyVRxDcDHIlmguXjC1Q5tZTwNB
- boaBTPHSy/Nksu0eY7x6HfQJ3xajVH32Ms6t1trDQmPx2iP5+7iDsb7OKAb5eOS8h+BEBDeq
- 3ecsQDv0fFJOA9ag5O3LLNk+3x3q7e0uo06XMaY7UHS341ozXUUI7wC7iKfoUTv03iO9El5f
- XpNMx/YrIMduZ2+nd9Di7o5+KIwlb2mAB9sTNHdMrXesX8eBL6T9b+MZJk+mZuPxKNVfEQMQ
- a5SxUEADIPQTPNvBewdeI80yeOCrN+Zzwy/Mrx9EPeu59Y5vSJOx/z6OUImD/GhX7Xvkt3kq
- Er5KTrJz3++B6SH9pum9PuoE/k+nntJkNMmQpR4MCBaV/J9gIOPGodDKnjdng+mXliF3Ptu6
- 3oxc2RCyGzTlxyMwuc2U5Q7KtUNTdDe8T0uE+9b8BLMVQDDfJjqY0VVqSUwImzTDLX9S4g/8
- kC4HRcclk8hpyhY2jKGluZO0awwTIMgVEzmTyBphDg/Gx7dZU1Xf8HFuE+UZ5UDHDTnwgv7E
- th6RC9+WrhDNspZ9fJjKWRbveQgUFCpe1sa77LAw+XFrKmBHXp9ZVIe90RMe2tRL06BGiRZr
- jPrnvUsUUsjRoRNJjKKA/REq+sAnhkNPPZ/NNMjaZ5b8Tovi8C0tmxiCHaQYqj7G2rgnT0kt
- WNyWQQ==
-Organization: Red Hat GmbH
-Message-ID: <7b38e1a1-12a2-0158-45ab-8e5d7e287f2f@redhat.com>
-Date: Tue, 21 Jul 2020 10:22:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE05E1009629;
+ Tue, 21 Jul 2020 08:33:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E5DB60BF4;
+ Tue, 21 Jul 2020 08:33:17 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2C65D111CA27; Tue, 21 Jul 2020 10:33:16 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Gerd
+ Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH-for-5.1] hw/nvram/fw_cfg: Let fw_cfg_add_from_generator()
+ return boolean value
+References: <20200720123521.8135-1-philmd@redhat.com>
+ <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com>
+Date: Tue, 21 Jul 2020 10:33:16 +0200
+In-Reply-To: <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com> (Laszlo Ersek's
+ message of "Mon, 20 Jul 2020 23:57:42 +0200")
+Message-ID: <87r1t59sj7.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200720191318.GM2642@work-vm>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=david@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 01:30:29
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 03:39:19
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,133 +80,214 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jul 2020 08:23:06 -0000
+X-List-Received-Date: Tue, 21 Jul 2020 08:33:27 -0000
 
-On 20.07.20 21:13, Dr. David Alan Gilbert wrote:
-> (Copies in Dave Hildenbrand)
-> 
-> * Peter Maydell (peter.maydell@linaro.org) wrote:
->> On Sat, 18 Jul 2020 at 14:21, David CARLIER <devnexen@gmail.com> wrote:
->>>
->>> From a9e3cced279ae55a59847ba232f7828bc2479367 Mon Sep 17 00:00:00 2001
->>> From: David Carlier <devnexen@gmail.com>
->>> Date: Sat, 18 Jul 2020 13:29:44 +0100
->>> Subject: [PATCH 2/3] exec: posix_madvise usage on SunOS.
->>>
->>> with _XOPEN_SOURCE set, the older mman.h API based on caddr_t handling
->>> is not accessible thus using posix_madvise here.
->>>
->>> Signed-off-by: David Carlier <devnexen@gmail.com>
->>> ---
->>>  exec.c | 8 ++++++++
->>>  1 file changed, 8 insertions(+)
->>>
->>> diff --git a/exec.c b/exec.c
->>> index 6f381f98e2..0466a75b89 100644
->>> --- a/exec.c
->>> +++ b/exec.c
->>> @@ -3964,7 +3964,15 @@ int ram_block_discard_range(RAMBlock *rb,
->>> uint64_t start, size_t length)
->>>               * fallocate'd away).
->>>               */
->>>  #if defined(CONFIG_MADVISE)
->>> +#if !defined(CONFIG_SOLARIS)
->>>              ret =  madvise(host_startaddr, length, MADV_DONTNEED);
->>> +#else
->>> +        /*
->>> +         * mmap and its caddr_t based api is not accessible
->>> +         * with _XOPEN_SOURCE set on illumos
->>> +         */
->>> +            ret =  posix_madvise(host_startaddr, length, POSIX_MADV_DONTNEED);
->>> +#endif
->>
->> Hi. I'm not sure this patch will do the right thing, because
->> I don't think that Solaris's POSIX_MADV_DONTNEED provides
->> the semantics that this QEMU function says it needs. The
->> comment at the top of the function says:
->>
->>  * Unmap pages of memory from start to start+length such that
->>  * they a) read as 0, b) Trigger whatever fault mechanism
->>  * the OS provides for postcopy.
->>  * The pages must be unmapped by the end of the function.
-> 
-> This code has moved around a bit over it's life; joining the case
-> needed by balloon and the case needed by postcopy.
-> 
->> (Aside: the use of 'unmap' in this comment is a bit confusing,
->> because it clearly doesn't mean 'unmap' if it wants read-as-0.
->> And the reference to faults on postcopy is incomprehensible
->> to me: if memory is read-as-0 it isn't going to fault.)
-> 
-> I think because internally to Linux the behaviour is the same;
-> this causes the mapping to disappear from the TLB so it faults;
-> normally when reading the kernel resolves the fault and puts
-> a read-as-zero page there, except if userfault was enabled
-> for postcopy, in which case it gives us a kick and we service it.
-> 
->> Linux's madvise(MADV_DONTNEED) does guarantee us this
->> read-as-zero behaviour. (It's a silly API choice that Linux
->> put this behaviour behind madvise, which is supposed to be
->> merely advisory, but that's how it is.)
-> 
-> Yes, I don't think there's any equivalent to madvise
-> that guarantees anything.
-> 
->> The Solaris
->> posix_madvise() manpage says it is merely advisory and
->> doesn't affect the behaviour of accesses to the memory.
->>
->> If posix_madvise() behaviour was OK in this function, the
->> right way to fix this would be to use qemu_madvise()
->> instead, which already provides this "if host has
->> madvise(), use it, otherwise use posix_madvise()" logic.
->> But I suspect that the direct madvise() here is deliberate.
-> 
-> Yes, but I can't remember the semantics fully - I think it was because
-> we needed the guarantee at this point (and even Linux's
-> posix madvise did something different??)
-> 
-> I've got a note saying we didn't want to use
-> qemu_madvise because we wanted to be sure we didn't get
-> posix_madvise.
-> 
->> Side note: not sure the current code is correct for the
->> BSDs either -- they have madvise() but don't provide
->> Linux's really-read-as-zero guarantee for MADV_DONTNEED.
->> So we should probably be doing something else there, and
->> whatever that something-else is is probably also what
->> Solaris wants.
->>
->> We use ram_block_discard_range() only in migration and
->> in virtio-balloon and virtio-mem; I've cc'd some people
->> who hopefully understand what the requirements on this
->> function are and might have a view on what the not-Linux
->> implementation should look like. (David Gilbert: git
->> blame says you wrote this code :-))
+Laszlo Ersek <lersek@redhat.com> writes:
 
-virtio-mem depends on Linux (hw/virtio/Kconfig). I guess
-userfaultfd/postcopy is also not relevant in the context of SunOS. So
-what remains is virtio-balloon.
+> On 07/20/20 14:35, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Commits b6d7e9b66f..a43770df5d simplified the error propagation.
+>> Similarly to commit 6fd5bef10b "qom: Make functions taking Error**
+>> return bool, not void", let fw_cfg_add_from_generator() return a
+>> boolean value, not void.
+>> This allow to simplify parse_fw_cfg() and fixes the error handling
+>> issue reported by Coverity (CID 1430396):
+>>=20
+>>   In parse_fw_cfg():
+>>=20
+>>     Variable assigned once to a constant guards dead code.
+>>=20
+>>     Local variable local_err is assigned only once, to a constant
+>>     value, making it effectively constant throughout its scope.
+>>     If this is not the intent, examine the logic to see if there
+>>     is a missing assignment that would make local_err not remain
+>>     constant.
 
-virito-balloon ideally wants to discard the actual mapped pages to free
-up memory. When memory is re-accessed, a fresh page is faulted in (->
-zero-page under Linux). Now, we already have other cases where it looks
-like "the balloon works" but it really doesn't. One example is using
-vfio+virtio-balloon under Linux - inflating the balloon is simply a NOP,
-no memory is actually discarded.
+It's the call of fw_cfg_add_from_generator():
 
-I agree that POSIX_MADV_DONTNEED is not a proper match - different
-guarantees. If SunOS cannot implement ram_block_discard_range() as
-documented, we should disable it.
+        Error *local_err =3D NULL;
 
-I would suggest using ram_block_discard_disable(true) when under SunOS
-early during QEMU startup. In addition, we might want to return directly
-in ram_block_dicard_range(). We might also want to make virito-balloon
-depend on !SubOS.
+        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
+        if (local_err) {
+            error_propagate(errp, local_err);
+            return -1;
+        }
+        return 0;
 
--- 
-Thanks,
+If it fails, parse_fw_cfg() sets an error and returns 0, which is wrong.
+Harmless, because the only caller passes &error_fatal.
 
-David / dhildenb
+Please work this impact assessment into the commit message.
+
+>>=20
+>> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+>> Fixes: Coverity CID 1430396: 'Constant' variable guards dead code (DEADC=
+ODE)
+>> Fixes: 6552d87c48 ("softmmu/vl: Let -fw_cfg option take a 'gen_id' argum=
+ent")
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>  include/hw/nvram/fw_cfg.h |  4 +++-
+>>  hw/nvram/fw_cfg.c         | 10 ++++++----
+>>  softmmu/vl.c              |  6 +-----
+>>  3 files changed, 10 insertions(+), 10 deletions(-)
+>>=20
+>> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+>> index 11feae3177..d90857f092 100644
+>> --- a/include/hw/nvram/fw_cfg.h
+>> +++ b/include/hw/nvram/fw_cfg.h
+>> @@ -302,8 +302,10 @@ void *fw_cfg_modify_file(FWCfgState *s, const char =
+*filename, void *data,
+>>   * will be used; also, a new entry will be added to the file directory
+>>   * structure residing at key value FW_CFG_FILE_DIR, containing the item=
+ name,
+>>   * data size, and assigned selector key value.
+>> + *
+>> + * Returns: %true on success, %false on error.
+>>   */
+>> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+>> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+>>                                 const char *gen_id, Error **errp);
+>> =20
+>>  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+>> index 3b1811d3bf..c88aec4341 100644
+>> --- a/hw/nvram/fw_cfg.c
+>> +++ b/hw/nvram/fw_cfg.c
+>> @@ -1032,7 +1032,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char=
+ *filename,
+>>      return NULL;
+>>  }
+>> =20
+>> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+>> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+>>                                 const char *gen_id, Error **errp)
+>>  {
+>>      ERRP_GUARD();
+>> @@ -1044,20 +1044,22 @@ void fw_cfg_add_from_generator(FWCfgState *s, co=
+nst char *filename,
+>>      obj =3D object_resolve_path_component(object_get_objects_root(), ge=
+n_id);
+>>      if (!obj) {
+>>          error_setg(errp, "Cannot find object ID '%s'", gen_id);
+>> -        return;
+>> +        return false;
+>>      }
+>>      if (!object_dynamic_cast(obj, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE)=
+) {
+>>          error_setg(errp, "Object ID '%s' is not a '%s' subclass",
+>>                     gen_id, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE);
+>> -        return;
+>> +        return false;
+>>      }
+>>      klass =3D FW_CFG_DATA_GENERATOR_GET_CLASS(obj);
+>>      array =3D klass->get_data(obj, errp);
+>>      if (*errp) {
+>> -        return;
+>> +        return false;
+>>      }
+>>      size =3D array->len;
+>>      fw_cfg_add_file(s, filename, g_byte_array_free(array, TRUE), size);
+>> +
+>> +    return true;
+>>  }
+>> =20
+>>  static void fw_cfg_machine_reset(void *opaque)
+>> diff --git a/softmmu/vl.c b/softmmu/vl.c
+>> index f476ef89ed..3416241557 100644
+>> --- a/softmmu/vl.c
+>> +++ b/softmmu/vl.c
+>> @@ -2070,11 +2070,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *o=
+pts, Error **errp)
+>>          size =3D strlen(str); /* NUL terminator NOT included in fw_cfg =
+blob */
+>>          buf =3D g_memdup(str, size);
+>>      } else if (nonempty_str(gen_id)) {
+>> -        Error *local_err =3D NULL;
+>> -
+>> -        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
+>> -        if (local_err) {
+>> -            error_propagate(errp, local_err);
+>> +        if (!fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp)) {
+>>              return -1;
+>>          }
+>>          return 0;
+
+The minimally invasive fix would be this one-liner:
+
+    diff --git a/softmmu/vl.c b/softmmu/vl.c
+    index f476ef89ed..46718c1eea 100644
+    --- a/softmmu/vl.c
+    +++ b/softmmu/vl.c
+    @@ -2072,7 +2072,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *o=
+pts, Error **errp)
+         } else if (nonempty_str(gen_id)) {
+             Error *local_err =3D NULL;
+
+    -        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
+    +        fw_cfg_add_from_generator(fw_cfg, name, gen_id, &local_err);
+             if (local_err) {
+                 error_propagate(errp, local_err);
+                 return -1;
+
+I like yours better.  We have a long tail of functions taking the
+conventional Error **errp parameter to convert from returning void to
+bool.
+
+> The retvals seem OK, but I have no idea if this plays nicely with the
+> new ERRP_GUARD (which I'm just noticing in fw_cfg_add_from_generator()).
+
+Return values don't interfere with ERRP_GUARD().
+
+Below the hood, ERRP_GUARD() replaces problematic values of @errp by a
+pointer to a local variable that is automatically propagated to the
+original value.  Why is that useful?  From error.h's big comment:
+
+ * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+ * - It must not be dereferenced, because it may be null.
+ * - It should not be passed to error_prepend() or
+ *   error_append_hint(), because that doesn't work with &error_fatal.
+ * ERRP_GUARD() lifts these restrictions.
+
+fw_cfg_add_from_generator() dereferences @errp to check for failure of
+klass->get_data().
+
+If ->get_data() returns null on error and non-null on success, we could
+simplify:
+
+  diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+  index 3b1811d3bf..dfa1f2012a 100644
+  --- a/hw/nvram/fw_cfg.c
+  +++ b/hw/nvram/fw_cfg.c
+  @@ -1035,7 +1035,6 @@ void *fw_cfg_modify_file(FWCfgState *s, const char =
+*filename,
+   void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+                                  const char *gen_id, Error **errp)
+   {
+  -    ERRP_GUARD();
+       FWCfgDataGeneratorClass *klass;
+       GByteArray *array;
+       Object *obj;
+  @@ -1053,7 +1052,7 @@ void fw_cfg_add_from_generator(FWCfgState *s, const=
+ char *filename,
+       }
+       klass =3D FW_CFG_DATA_GENERATOR_GET_CLASS(obj);
+       array =3D klass->get_data(obj, errp);
+  -    if (*errp) {
+  +    if (!array) {
+           return;
+       }
+       size =3D array->len;
+
+Clearer now?
+
+> FWIW
+>
+> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+>
+> Thanks
+> Laszlo
+
+Preferably with an improved commit message:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
