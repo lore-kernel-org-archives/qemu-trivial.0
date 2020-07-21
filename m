@@ -1,73 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxniJ-00016F-QK
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 04:33:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
+	id 1jxnuo-0001Nx-EM
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 04:46:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxniI-000162-PL
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:33:26 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52110
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxniG-00082H-Pe
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:33:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595320404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=F3HOz6ox4WfgXzS8uNt+aJRIXq6V4kbf7PA5S7YE9Rg=;
- b=Yfiv1PVWtkwdZJNGsUijdfQtJhtd2WLhqaYQ7VIA3kYOZtbWXyjbohLAwe16MdimjboHr+
- 4TUPuLwbziea+zmR5KwFUQIdDIvK4/cZIeX7nkQUWpW2EybJM0Vz7rWJIFxcRnW9++LGBu
- S/dToCkPU+fpuKCtt0aMYlDv0waMejk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-479-CzUVAQmtPcCXAiTuxbxXpg-1; Tue, 21 Jul 2020 04:33:21 -0400
-X-MC-Unique: CzUVAQmtPcCXAiTuxbxXpg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE05E1009629;
- Tue, 21 Jul 2020 08:33:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E5DB60BF4;
- Tue, 21 Jul 2020 08:33:17 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2C65D111CA27; Tue, 21 Jul 2020 10:33:16 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Gerd
- Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH-for-5.1] hw/nvram/fw_cfg: Let fw_cfg_add_from_generator()
- return boolean value
-References: <20200720123521.8135-1-philmd@redhat.com>
- <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com>
-Date: Tue, 21 Jul 2020 10:33:16 +0200
-In-Reply-To: <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com> (Laszlo Ersek's
- message of "Mon, 20 Jul 2020 23:57:42 +0200")
-Message-ID: <87r1t59sj7.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxnum-0001ND-MK; Tue, 21 Jul 2020 04:46:20 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:46401)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxnuk-000238-U0; Tue, 21 Jul 2020 04:46:20 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id r12so20254079wrj.13;
+ Tue, 21 Jul 2020 01:46:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=c+JpR+G3QSC03q3FNhA3hK64fihmyt6mvJum4S1jYIA=;
+ b=syz2rBGXNULb7TJUZWa9zgIvWydmRUtV1iPVg9/j9aoZRe3f5AjXlcP6KVNmetHcx8
+ 6pxUQLKx3OZGIiHpDQbIf020ePgoVOz5Crk+JpxcVRRc4E0+k4P8xOTLSPJK/JbKleO4
+ BzNSgtSHlQXmQ7kzB4EMZHbTmqCGQC+UJI07vyqWJtuxEW+bTei41M+Ca4mEEPFz2ptJ
+ WaoZVGuyIYevfoouQuTtExweTjLDw5VMyUOquCMkCIvXXOkjbQZVGj1EVPQPMqY1O8xN
+ kj/HpfzNkIAJDfxWQ2fEs+cOVIFdPu856vFl7A7H4hgz5dYDdos7AoLsNOnpmO1M3npl
+ UhDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=c+JpR+G3QSC03q3FNhA3hK64fihmyt6mvJum4S1jYIA=;
+ b=kVD00eifwV1yetW+FQN/Wq2pSqAwAXGAKzlCLwXhIkVA7FymwV9KL+vT/M1N2MRzPD
+ 40yBOEemUUsWwJzBwvC63ieOt/Q5oVx6TyNWsyj0DhOTHVhJhThYCdVixPwGxyYdCHAa
+ g7z+XnEiWxXkhXmFfxeyQ7uvoZTk8duujyfFRctavBR60gJ5h5VT48lX2RRvHWwzdRGO
+ NX2HiPFD+XOA7SicM5rTl9yYGBOAEG01FTfDsw41+OV3CG+IChd6tK3dCAhFOvxxT4kN
+ t1ODwiCIvBsSUgD/T+f7frV5g15RqBIUa+Jg8yJR9xR/SW+UU3EkH0kzGhzlFWCEHgmG
+ R2QA==
+X-Gm-Message-State: AOAM532bqzRH3KVzbmd6mjc0ITRIEt5lipbYox4GqwImHOGULzr+/W+H
+ 7/oT6cEsz07O0pfH7+w6hXCUNj9SMEc=
+X-Google-Smtp-Source: ABdhPJyB5mzvHuxaJPNDsamt8Uam3TW8W2ycF3X8zrmQPCCXQp9o3AX0LcokVG9dyN9Qdq38OwCEXg==
+X-Received: by 2002:a05:6000:1006:: with SMTP id
+ a6mr24412192wrx.332.1595321176871; 
+ Tue, 21 Jul 2020 01:46:16 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id 31sm18647500wrj.94.2020.07.21.01.46.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Jul 2020 01:46:16 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH-for-5.1] hw/isa/isa-superio: Fix IDE controller realization
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200720172348.23465-1-f4bug@amsat.org>
+ <87zh7t9tda.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c0c7fd3d-fa14-df6f-ecb9-44a7a2a783e6@amsat.org>
+Date: Tue, 21 Jul 2020 10:46:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <87zh7t9tda.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 03:39:19
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,214 +85,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jul 2020 08:33:27 -0000
+X-List-Received-Date: Tue, 21 Jul 2020 08:46:21 -0000
 
-Laszlo Ersek <lersek@redhat.com> writes:
+On 7/21/20 10:15 AM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
+> 
+>> When realizing a Super I/O with IDE controller [*], we get:
+>>
+>>   qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+>>   Aborted (core dumped)
+>>
+>> This is because the device is already realized when we try to
+>> add the QOM property to the parent. Fix by realizing *after*
+>> adding the QOM relationship.
+>>
+>> [*] Set ISASuperIOClass::ide.count = N with N not zero
+> 
+> Is this a latent bug, or can it bite in master?  If the latter, can you
+> show how to reproduce?
 
-> On 07/20/20 14:35, Philippe Mathieu-Daud=C3=A9 wrote:
->> Commits b6d7e9b66f..a43770df5d simplified the error propagation.
->> Similarly to commit 6fd5bef10b "qom: Make functions taking Error**
->> return bool, not void", let fw_cfg_add_from_generator() return a
->> boolean value, not void.
->> This allow to simplify parse_fw_cfg() and fixes the error handling
->> issue reported by Coverity (CID 1430396):
->>=20
->>   In parse_fw_cfg():
->>=20
->>     Variable assigned once to a constant guards dead code.
->>=20
->>     Local variable local_err is assigned only once, to a constant
->>     value, making it effectively constant throughout its scope.
->>     If this is not the intent, examine the logic to see if there
->>     is a missing assignment that would make local_err not remain
->>     constant.
+Latent bug for master:
 
-It's the call of fw_cfg_add_from_generator():
+$ git grep ide.count
+hw/isa/isa-superio.c:149:    if (k->ide.count && (!k->ide.is_enabled ||
+k->ide.is_enabled(sio, 0))) {
+hw/isa/isa-superio.c:197:    sc->ide.count = 0;
+hw/isa/smc37c669-superio.c:100:    sc->ide.count = 0;
+hw/isa/vt82c686.c:529:    sc->ide.count = 0;
 
-        Error *local_err =3D NULL;
+I hit it rebasing undergoing series for 5.2 and testing them.
 
-        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
-        if (local_err) {
-            error_propagate(errp, local_err);
-            return -1;
-        }
-        return 0;
-
-If it fails, parse_fw_cfg() sets an error and returns 0, which is wrong.
-Harmless, because the only caller passes &error_fatal.
-
-Please work this impact assessment into the commit message.
-
->>=20
->> Reported-by: Peter Maydell <peter.maydell@linaro.org>
->> Fixes: Coverity CID 1430396: 'Constant' variable guards dead code (DEADC=
-ODE)
->> Fixes: 6552d87c48 ("softmmu/vl: Let -fw_cfg option take a 'gen_id' argum=
-ent")
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> 
+>> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  include/hw/nvram/fw_cfg.h |  4 +++-
->>  hw/nvram/fw_cfg.c         | 10 ++++++----
->>  softmmu/vl.c              |  6 +-----
->>  3 files changed, 10 insertions(+), 10 deletions(-)
->>=20
->> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
->> index 11feae3177..d90857f092 100644
->> --- a/include/hw/nvram/fw_cfg.h
->> +++ b/include/hw/nvram/fw_cfg.h
->> @@ -302,8 +302,10 @@ void *fw_cfg_modify_file(FWCfgState *s, const char =
-*filename, void *data,
->>   * will be used; also, a new entry will be added to the file directory
->>   * structure residing at key value FW_CFG_FILE_DIR, containing the item=
- name,
->>   * data size, and assigned selector key value.
->> + *
->> + * Returns: %true on success, %false on error.
->>   */
->> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->>                                 const char *gen_id, Error **errp);
->> =20
->>  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index 3b1811d3bf..c88aec4341 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -1032,7 +1032,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char=
- *filename,
->>      return NULL;
->>  }
->> =20
->> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->>                                 const char *gen_id, Error **errp)
->>  {
->>      ERRP_GUARD();
->> @@ -1044,20 +1044,22 @@ void fw_cfg_add_from_generator(FWCfgState *s, co=
-nst char *filename,
->>      obj =3D object_resolve_path_component(object_get_objects_root(), ge=
-n_id);
->>      if (!obj) {
->>          error_setg(errp, "Cannot find object ID '%s'", gen_id);
->> -        return;
->> +        return false;
->>      }
->>      if (!object_dynamic_cast(obj, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE)=
-) {
->>          error_setg(errp, "Object ID '%s' is not a '%s' subclass",
->>                     gen_id, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE);
->> -        return;
->> +        return false;
->>      }
->>      klass =3D FW_CFG_DATA_GENERATOR_GET_CLASS(obj);
->>      array =3D klass->get_data(obj, errp);
->>      if (*errp) {
->> -        return;
->> +        return false;
->>      }
->>      size =3D array->len;
->>      fw_cfg_add_file(s, filename, g_byte_array_free(array, TRUE), size);
->> +
->> +    return true;
->>  }
->> =20
->>  static void fw_cfg_machine_reset(void *opaque)
->> diff --git a/softmmu/vl.c b/softmmu/vl.c
->> index f476ef89ed..3416241557 100644
->> --- a/softmmu/vl.c
->> +++ b/softmmu/vl.c
->> @@ -2070,11 +2070,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *o=
-pts, Error **errp)
->>          size =3D strlen(str); /* NUL terminator NOT included in fw_cfg =
-blob */
->>          buf =3D g_memdup(str, size);
->>      } else if (nonempty_str(gen_id)) {
->> -        Error *local_err =3D NULL;
->> -
->> -        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
->> -        if (local_err) {
->> -            error_propagate(errp, local_err);
->> +        if (!fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp)) {
->>              return -1;
+>>  hw/isa/isa-superio.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+>> index e2e47d8fd9..179c185695 100644
+>> --- a/hw/isa/isa-superio.c
+>> +++ b/hw/isa/isa-superio.c
+>> @@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+>>          if (k->ide.get_irq) {
+>>              qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
 >>          }
->>          return 0;
-
-The minimally invasive fix would be this one-liner:
-
-    diff --git a/softmmu/vl.c b/softmmu/vl.c
-    index f476ef89ed..46718c1eea 100644
-    --- a/softmmu/vl.c
-    +++ b/softmmu/vl.c
-    @@ -2072,7 +2072,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *o=
-pts, Error **errp)
-         } else if (nonempty_str(gen_id)) {
-             Error *local_err =3D NULL;
-
-    -        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
-    +        fw_cfg_add_from_generator(fw_cfg, name, gen_id, &local_err);
-             if (local_err) {
-                 error_propagate(errp, local_err);
-                 return -1;
-
-I like yours better.  We have a long tail of functions taking the
-conventional Error **errp parameter to convert from returning void to
-bool.
-
-> The retvals seem OK, but I have no idea if this plays nicely with the
-> new ERRP_GUARD (which I'm just noticing in fw_cfg_add_from_generator()).
-
-Return values don't interfere with ERRP_GUARD().
-
-Below the hood, ERRP_GUARD() replaces problematic values of @errp by a
-pointer to a local variable that is automatically propagated to the
-original value.  Why is that useful?  From error.h's big comment:
-
- * Without ERRP_GUARD(), use of the @errp parameter is restricted:
- * - It must not be dereferenced, because it may be null.
- * - It should not be passed to error_prepend() or
- *   error_append_hint(), because that doesn't work with &error_fatal.
- * ERRP_GUARD() lifts these restrictions.
-
-fw_cfg_add_from_generator() dereferences @errp to check for failure of
-klass->get_data().
-
-If ->get_data() returns null on error and non-null on success, we could
-simplify:
-
-  diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-  index 3b1811d3bf..dfa1f2012a 100644
-  --- a/hw/nvram/fw_cfg.c
-  +++ b/hw/nvram/fw_cfg.c
-  @@ -1035,7 +1035,6 @@ void *fw_cfg_modify_file(FWCfgState *s, const char =
-*filename,
-   void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
-                                  const char *gen_id, Error **errp)
-   {
-  -    ERRP_GUARD();
-       FWCfgDataGeneratorClass *klass;
-       GByteArray *array;
-       Object *obj;
-  @@ -1053,7 +1052,7 @@ void fw_cfg_add_from_generator(FWCfgState *s, const=
- char *filename,
-       }
-       klass =3D FW_CFG_DATA_GENERATOR_GET_CLASS(obj);
-       array =3D klass->get_data(obj, errp);
-  -    if (*errp) {
-  +    if (!array) {
-           return;
-       }
-       size =3D array->len;
-
-Clearer now?
-
-> FWIW
->
-> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
->
-> Thanks
-> Laszlo
-
-Preferably with an improved commit message:
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
+>> -        isa_realize_and_unref(isa, bus, &error_fatal);
+>>          object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
+>> +        isa_realize_and_unref(isa, bus, &error_fatal);
+>>          sio->ide = isa;
+>>          trace_superio_create_ide(0,
+>>                                   k->ide.get_iobase ?
+> 
+> 
 
