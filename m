@@ -1,70 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxdnJ-0007HP-5x
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2020 17:57:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55828)
+	id 1jxm7n-0008ND-02
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 02:51:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jxdnH-0007HI-U9
- for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 17:57:55 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53263
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jxdnG-0007bE-7J
- for qemu-trivial@nongnu.org; Mon, 20 Jul 2020 17:57:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595282272;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PTCaevgJZ+uxVPg1fCYyf2baBa4sYBZ1vIMs2xB3c1s=;
- b=FWZhH67/j/FSNcO5HuR1L8o51opMk8uDvCh8i3Y2gQZ1S+yX0p2WzYhaqA6jWFqEGaRJV0
- VWJnCXm1W/p+fJZQDRSGAn9Bh+GttSurnhjs8sEz+yJoM6amHItTksPrX5NSNfhq213C/9
- yBMP6iqgTVHwNTSx4z0lXWr2G4fJknQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-ZD8LjLLpNeWthaBa-jLAmg-1; Mon, 20 Jul 2020 17:57:49 -0400
-X-MC-Unique: ZD8LjLLpNeWthaBa-jLAmg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C67618C63C0;
- Mon, 20 Jul 2020 21:57:48 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-115-27.ams2.redhat.com
- [10.36.115.27])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 87CDF5FC31;
- Mon, 20 Jul 2020 21:57:43 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1] hw/nvram/fw_cfg: Let fw_cfg_add_from_generator()
- return boolean value
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7k-0008Kv-KW
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 02:51:36 -0400
+Received: from 20.mo5.mail-out.ovh.net ([91.121.55.239]:47375)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7i-0007f6-JW
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 02:51:36 -0400
+Received: from player694.ha.ovh.net (unknown [10.110.103.199])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id ED84B28DE1B
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2020 08:51:31 +0200 (CEST)
+Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
+ (Authenticated sender: clg@kaod.org)
+ by player694.ha.ovh.net (Postfix) with ESMTPSA id B90871471E195;
+ Tue, 21 Jul 2020 06:51:22 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002408a3cb3-f1ee-4236-b3ef-49371bc1dfc0,622D537D4FED1CEB9E006CC2F7D967EDAF2A62E4)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH-for-5.1 v2] hw/misc/aspeed_sdmc: Fix incorrect memory size
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20200720123521.8135-1-philmd@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com>
-Date: Mon, 20 Jul 2020 23:57:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Firefox/52.0 Thunderbird/52.9.1
+Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-trivial@nongnu.org
+References: <20200720174922.16303-1-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6c2c3fc2-c552-c767-647b-000bdfefd942@kaod.org>
+Date: Tue, 21 Jul 2020 08:51:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200720123521.8135-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200720174922.16303-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=lersek@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 17:57:50
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+X-Ovh-Tracer-Id: 10408663167716527083
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrgeehgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpjeekrddvtddvrddufedvrddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=91.121.55.239; envelope-from=clg@kaod.org;
+ helo=20.mo5.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 02:51:32
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,118 +62,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2020 21:57:56 -0000
+X-List-Received-Date: Tue, 21 Jul 2020 06:51:36 -0000
 
-On 07/20/20 14:35, Philippe Mathieu-Daudé wrote:
-> Commits b6d7e9b66f..a43770df5d simplified the error propagation.
-> Similarly to commit 6fd5bef10b "qom: Make functions taking Error**
-> return bool, not void", let fw_cfg_add_from_generator() return a
-> boolean value, not void.
-> This allow to simplify parse_fw_cfg() and fixes the error handling
-> issue reported by Coverity (CID 1430396):
+On 7/20/20 7:49 PM, Philippe Mathieu-Daudé wrote:
+> The SDRAM Memory Controller has a 32-bit address bus, thus
+> supports up to 4 GiB of DRAM. There is a signed to unsigned
+> conversion error with the AST2600 maximum memory size:
 > 
->   In parse_fw_cfg():
+>   (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
+>                          = 0xffffffff40000000
+>                          = 16 EiB - 2 GiB
 > 
->     Variable assigned once to a constant guards dead code.
+> Fix by using the IEC suffixes which are usually safer, and add
+> an assertion check to verify the memory is valid. This would have
+> catched this bug:
 > 
->     Local variable local_err is assigned only once, to a constant
->     value, making it effectively constant throughout its scope.
->     If this is not the intent, examine the logic to see if there
->     is a missing assignment that would make local_err not remain
->     constant.
+>   $ qemu-system-arm -M ast2600-evb
+>   qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assertion `asc->max_ram_size < 4 * GiB' failed.
+>   Aborted (core dumped)
 > 
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Fixes: Coverity CID 1430396: 'Constant' variable guards dead code (DEADCODE)
-> Fixes: 6552d87c48 ("softmmu/vl: Let -fw_cfg option take a 'gen_id' argument")
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
 > ---
->  include/hw/nvram/fw_cfg.h |  4 +++-
->  hw/nvram/fw_cfg.c         | 10 ++++++----
->  softmmu/vl.c              |  6 +-----
->  3 files changed, 10 insertions(+), 10 deletions(-)
+> v2: Assert (Cédric)
+> ---
+>  hw/misc/aspeed_sdmc.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> index 11feae3177..d90857f092 100644
-> --- a/include/hw/nvram/fw_cfg.h
-> +++ b/include/hw/nvram/fw_cfg.h
-> @@ -302,8 +302,10 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename, void *data,
->   * will be used; also, a new entry will be added to the file directory
->   * structure residing at key value FW_CFG_FILE_DIR, containing the item name,
->   * data size, and assigned selector key value.
-> + *
-> + * Returns: %true on success, %false on error.
->   */
-> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
-> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->                                 const char *gen_id, Error **errp);
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 0737d8de81..855848b7d2 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -255,6 +255,7 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+>      AspeedSDMCState *s = ASPEED_SDMC(dev);
+>      AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
 >  
->  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 3b1811d3bf..c88aec4341 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -1032,7 +1032,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
->      return NULL;
->  }
+> +    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
+>      s->max_ram_size = asc->max_ram_size;
 >  
-> -void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
-> +bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->                                 const char *gen_id, Error **errp)
->  {
->      ERRP_GUARD();
-> @@ -1044,20 +1044,22 @@ void fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
->      obj = object_resolve_path_component(object_get_objects_root(), gen_id);
->      if (!obj) {
->          error_setg(errp, "Cannot find object ID '%s'", gen_id);
-> -        return;
-> +        return false;
->      }
->      if (!object_dynamic_cast(obj, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE)) {
->          error_setg(errp, "Object ID '%s' is not a '%s' subclass",
->                     gen_id, TYPE_FW_CFG_DATA_GENERATOR_INTERFACE);
-> -        return;
-> +        return false;
->      }
->      klass = FW_CFG_DATA_GENERATOR_GET_CLASS(obj);
->      array = klass->get_data(obj, errp);
->      if (*errp) {
-> -        return;
-> +        return false;
->      }
->      size = array->len;
->      fw_cfg_add_file(s, filename, g_byte_array_free(array, TRUE), size);
-> +
-> +    return true;
->  }
+>      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+> @@ -341,7 +342,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
 >  
->  static void fw_cfg_machine_reset(void *opaque)
-> diff --git a/softmmu/vl.c b/softmmu/vl.c
-> index f476ef89ed..3416241557 100644
-> --- a/softmmu/vl.c
-> +++ b/softmmu/vl.c
-> @@ -2070,11 +2070,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
->          size = strlen(str); /* NUL terminator NOT included in fw_cfg blob */
->          buf = g_memdup(str, size);
->      } else if (nonempty_str(gen_id)) {
-> -        Error *local_err = NULL;
-> -
-> -        fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp);
-> -        if (local_err) {
-> -            error_propagate(errp, local_err);
-> +        if (!fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp)) {
->              return -1;
->          }
->          return 0;
+>      dc->desc = "ASPEED 2400 SDRAM Memory Controller";
+> -    asc->max_ram_size = 512 << 20;
+> +    asc->max_ram_size = 512 * MiB;
+>      asc->compute_conf = aspeed_2400_sdmc_compute_conf;
+>      asc->write = aspeed_2400_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2400_ram_sizes;
+> @@ -408,7 +409,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+>  
+>      dc->desc = "ASPEED 2500 SDRAM Memory Controller";
+> -    asc->max_ram_size = 1024 << 20;
+> +    asc->max_ram_size = 1 * GiB;
+>      asc->compute_conf = aspeed_2500_sdmc_compute_conf;
+>      asc->write = aspeed_2500_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2500_ram_sizes;
+> @@ -485,7 +486,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+>  
+>      dc->desc = "ASPEED 2600 SDRAM Memory Controller";
+> -    asc->max_ram_size = 2048 << 20;
+> +    asc->max_ram_size = 2 * GiB;
+>      asc->compute_conf = aspeed_2600_sdmc_compute_conf;
+>      asc->write = aspeed_2600_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2600_ram_sizes;
 > 
-
-The retvals seem OK, but I have no idea if this plays nicely with the
-new ERRP_GUARD (which I'm just noticing in fw_cfg_add_from_generator()).
-
-FWIW
-
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-
-Thanks
-Laszlo
 
 
