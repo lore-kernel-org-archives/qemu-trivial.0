@@ -1,55 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jxm7n-0008ND-02
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 02:51:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60806)
+	id 1jxnQq-0007IT-FJ
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jul 2020 04:15:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7k-0008Kv-KW
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 02:51:36 -0400
-Received: from 20.mo5.mail-out.ovh.net ([91.121.55.239]:47375)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7i-0007f6-JW
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 02:51:36 -0400
-Received: from player694.ha.ovh.net (unknown [10.110.103.199])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id ED84B28DE1B
- for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2020 08:51:31 +0200 (CEST)
-Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
- (Authenticated sender: clg@kaod.org)
- by player694.ha.ovh.net (Postfix) with ESMTPSA id B90871471E195;
- Tue, 21 Jul 2020 06:51:22 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002408a3cb3-f1ee-4236-b3ef-49371bc1dfc0,622D537D4FED1CEB9E006CC2F7D967EDAF2A62E4)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH-for-5.1 v2] hw/misc/aspeed_sdmc: Fix incorrect memory size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- qemu-trivial@nongnu.org
-References: <20200720174922.16303-1-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <6c2c3fc2-c552-c767-647b-000bdfefd942@kaod.org>
-Date: Tue, 21 Jul 2020 08:51:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxnQo-0007Fn-Pz
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:15:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31775
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxnQn-00054n-4v
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2020 04:15:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595319320;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yB2lHZjP9aBy2jDhXfVT/IcBm55wqqKHNuvHg857ees=;
+ b=ht8duJ9a8/qZwwTlTf+H325TXzHjXEkFm3Ipthm1Id55C0i7MTPfHUYNKNr+C98t4a9DXR
+ hDePpaNZm74somEw+IIpR7tt4dDg7vDQaTpfckfn0611bJH9+yuHeAkKBFBFvC7zsR46dh
+ A1LQdXTn0lXSqNmgLp0AOCTWxlag6Ww=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-94-ONGM8ilROQagTnOoAmUnIg-1; Tue, 21 Jul 2020 04:15:18 -0400
+X-MC-Unique: ONGM8ilROQagTnOoAmUnIg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94F6480183C;
+ Tue, 21 Jul 2020 08:15:17 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A7E3778535;
+ Tue, 21 Jul 2020 08:15:14 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 61E52111CA27; Tue, 21 Jul 2020 10:15:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH-for-5.1] hw/isa/isa-superio: Fix IDE controller realization
+References: <20200720172348.23465-1-f4bug@amsat.org>
+Date: Tue, 21 Jul 2020 10:15:13 +0200
+In-Reply-To: <20200720172348.23465-1-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 20 Jul 2020 19:23:48
+ +0200")
+Message-ID: <87zh7t9tda.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200720174922.16303-1-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10408663167716527083
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrgeehgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpjeekrddvtddvrddufedvrddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=91.121.55.239; envelope-from=clg@kaod.org;
- helo=20.mo5.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 02:51:32
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 01:30:29
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,75 +79,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jul 2020 06:51:36 -0000
+X-List-Received-Date: Tue, 21 Jul 2020 08:15:23 -0000
 
-On 7/20/20 7:49 PM, Philippe Mathieu-Daudé wrote:
-> The SDRAM Memory Controller has a 32-bit address bus, thus
-> supports up to 4 GiB of DRAM. There is a signed to unsigned
-> conversion error with the AST2600 maximum memory size:
-> 
->   (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
->                          = 0xffffffff40000000
->                          = 16 EiB - 2 GiB
-> 
-> Fix by using the IEC suffixes which are usually safer, and add
-> an assertion check to verify the memory is valid. This would have
-> catched this bug:
-> 
->   $ qemu-system-arm -M ast2600-evb
->   qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assertion `asc->max_ram_size < 4 * GiB' failed.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> When realizing a Super I/O with IDE controller [*], we get:
+>
+>   qom/object.c:1684: object_property_try_add_child: Assertion `!child->pa=
+rent' failed.
 >   Aborted (core dumped)
-> 
-> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>
+> This is because the device is already realized when we try to
+> add the QOM property to the parent. Fix by realizing *after*
+> adding the QOM relationship.
+>
+> [*] Set ISASuperIOClass::ide.count =3D N with N not zero
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Is this a latent bug, or can it bite in master?  If the latter, can you
+show how to reproduce?
 
+> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
-> v2: Assert (Cédric)
-> ---
->  hw/misc/aspeed_sdmc.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 0737d8de81..855848b7d2 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -255,6 +255,7 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
->      AspeedSDMCState *s = ASPEED_SDMC(dev);
->      AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
->  
-> +    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
->      s->max_ram_size = asc->max_ram_size;
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-> @@ -341,7 +342,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2400 SDRAM Memory Controller";
-> -    asc->max_ram_size = 512 << 20;
-> +    asc->max_ram_size = 512 * MiB;
->      asc->compute_conf = aspeed_2400_sdmc_compute_conf;
->      asc->write = aspeed_2400_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2400_ram_sizes;
-> @@ -408,7 +409,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2500 SDRAM Memory Controller";
-> -    asc->max_ram_size = 1024 << 20;
-> +    asc->max_ram_size = 1 * GiB;
->      asc->compute_conf = aspeed_2500_sdmc_compute_conf;
->      asc->write = aspeed_2500_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2500_ram_sizes;
-> @@ -485,7 +486,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2600 SDRAM Memory Controller";
-> -    asc->max_ram_size = 2048 << 20;
-> +    asc->max_ram_size = 2 * GiB;
->      asc->compute_conf = aspeed_2600_sdmc_compute_conf;
->      asc->write = aspeed_2600_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2600_ram_sizes;
-> 
+>  hw/isa/isa-superio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+> index e2e47d8fd9..179c185695 100644
+> --- a/hw/isa/isa-superio.c
+> +++ b/hw/isa/isa-superio.c
+> @@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Err=
+or **errp)
+>          if (k->ide.get_irq) {
+>              qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
+>          }
+> -        isa_realize_and_unref(isa, bus, &error_fatal);
+>          object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
+> +        isa_realize_and_unref(isa, bus, &error_fatal);
+>          sio->ide =3D isa;
+>          trace_superio_create_ide(0,
+>                                   k->ide.get_iobase ?
 
 
