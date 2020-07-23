@@ -1,71 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jyVqF-0007Or-K8
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2020 03:40:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38440)
+	id 1jyYyr-0005cu-0A
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2020 07:01:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <duboisj@gmail.com>)
- id 1jyTsI-0002u9-RD; Thu, 23 Jul 2020 01:34:34 -0400
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:36178)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <duboisj@gmail.com>)
- id 1jyTsH-0000d9-8D; Thu, 23 Jul 2020 01:34:34 -0400
-Received: by mail-il1-x143.google.com with SMTP id x9so3345524ila.3;
- Wed, 22 Jul 2020 22:34:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1jdFZxnvJl+4lSdNbUF2yM8Kzsb7kVvm+ARBjj3c0GI=;
- b=p24LNxy8mV2KA9rU9MT24vyA9dKe0qDh4uA78DlYBiet3dbDHv8TvvVv3Ft8FGuEwU
- lY21oYDmmPcZcFNfsofUVON1k0Me4rtUBXZik3zHZJBY27Ze8ddRKLV/D+hTQk6Np4Cw
- p9l7uWkyQzi3lgHjgKTuTRjOJBNe3aNkHurbE0VFHUZBSK9R4QQ9XZv/ofyvBKS7jsvI
- Fs1P40TSTWVpAQrHZSkNYpM11KwO+VQg7fDETwxUIjBbv2EA3y3CSV4S/ycdM+gJhr/a
- C390QNQeF5IkjJN4HgWAgRaDUUQRMTHNhqc89P4B2tun+mmhiJzUqM4/2gYKM+ljQ/ED
- Nkqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1jdFZxnvJl+4lSdNbUF2yM8Kzsb7kVvm+ARBjj3c0GI=;
- b=dt0NEfn4cxHXfaYNAc3YK1uwArpwJ9gKkd3s2v0Ls6xhc/A1bDlnOQSBBhAC0N+2Uf
- tAX21rcmk8w1oClPxNoK69fZ9uvZ05CKMXd0dvzlJ52LMyt51R4u45PcuxzCELXh04f6
- m+9zVZ/PLp/WfR1PXVJaNXrLzwZ5YxlfL98s+m6KX9aXg5w3ZS3fPOGzE6lDNtIqeFX9
- oiCr8+M2JEO75ETb2799iH6kv6O4leNrnulKuBa3qkNKFopQAf1vj/k1l5Uk2O9MV5Xw
- 08xnL3MFBL4+1J8uSZzDwKq/WR6qRQ5c+pX8443xC/6kJrPljRfOydplU8pHO7+QrZWc
- kWLA==
-X-Gm-Message-State: AOAM530OxN5pLsbni6B3m2Z/TRJavFB0Od24fZPNM7W1/rdVE5525gcT
- h1jK3HJt+f4/591Wzd/Ep6jT2Q8JBQMKQw==
-X-Google-Smtp-Source: ABdhPJwp+uIFENshSNHHIPFno/rqcet/DZG0HPKFkK36HMRP/3IbCcQalucR2AaJwr96ZmeTlq/ZHw==
-X-Received: by 2002:a92:bb84:: with SMTP id x4mr3509822ilk.177.1595482470940; 
- Wed, 22 Jul 2020 22:34:30 -0700 (PDT)
-Received: from localhost.localdomain (50-93-248-134.fttp.usinternet.com.
- [50.93.248.134])
- by smtp.gmail.com with ESMTPSA id d16sm832634ill.47.2020.07.22.22.34.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jul 2020 22:34:30 -0700 (PDT)
-From: Josh DuBois <duboisj@gmail.com>
-X-Google-Original-From: Josh DuBois <josh@joshdubois.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Josh DuBois <josh@joshdubois.com>
-Subject: [PATCH] trace/simple: Allow enabling simple traces from command line
-Date: Thu, 23 Jul 2020 00:33:59 -0500
-Message-Id: <20200723053359.256928-1-josh@joshdubois.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jyYyp-0005bB-6h
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 07:01:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27212
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jyYyn-0003Qq-1J
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 07:01:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595502096;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BeRLzb3kM21cmSt2NvxtYtfxkV7kdyTWjSpmfd0rO00=;
+ b=MQpFeSziI5is8/DrGV1E9g04Cj26++YOea1P4viCmtshkhgFesTwXKNycMvjEn8Zzr3/4J
+ TToQ3KBqpmAKUp1L3sIHSd3TlxRSDMchSaM0qRaWJUmSgCxxVXW3fMJQ85RbLE2CJbI6bP
+ gUkZsH2Mvylz3E2PmrxQ/RPDyUR0S3k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-514-hAmsf40XNzSwOFMyXJ5ywQ-1; Thu, 23 Jul 2020 07:01:25 -0400
+X-MC-Unique: hAmsf40XNzSwOFMyXJ5ywQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 79294106B24F;
+ Thu, 23 Jul 2020 11:01:24 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-52.ams2.redhat.com
+ [10.36.114.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AFDBF8BED5;
+ Thu, 23 Jul 2020 11:01:19 +0000 (UTC)
+Subject: Re: [PATCH-for-5.1] hw/nvram/fw_cfg: Let fw_cfg_add_from_generator()
+ return boolean value
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <20200720123521.8135-1-philmd@redhat.com>
+ <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com>
+ <87r1t59sj7.fsf@dusky.pond.sub.org>
+ <b7bdbf46-b410-3ff7-4536-86b2886dc201@redhat.com>
+ <875zaeptqo.fsf@dusky.pond.sub.org>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <ef6a2a6d-ba81-5ad0-eab0-6686eaf427cb@redhat.com>
+Date: Thu, 23 Jul 2020 13:01:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Firefox/52.0 Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=duboisj@gmail.com; helo=mail-il1-x143.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <875zaeptqo.fsf@dusky.pond.sub.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=lersek@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/23 06:04:25
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 23 Jul 2020 03:40:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,34 +84,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jul 2020 05:34:35 -0000
+X-List-Received-Date: Thu, 23 Jul 2020 11:01:39 -0000
 
-The simple trace backend is enabled / disabled with a call
-to st_set_trace_file_enabled().  When initializing tracing
-from the command-line, this must be enabled on startup.
-(Prior to db25d56c014aa1a9, command-line initialization of
-simple trace worked because every call to st_set_trace_file
-enabled tracing.)
++Igor, and question below
 
-Fixes: db25d56c014aa1a96319c663e0a60346a223b31e
-Signed-off-by: Josh DuBois <josh@joshdubois.com>
----
- trace/control.c | 1 +
- 1 file changed, 1 insertion(+)
+On 07/23/20 09:37, Markus Armbruster wrote:
 
-diff --git a/trace/control.c b/trace/control.c
-index 2ffe000818..6558b5c906 100644
---- a/trace/control.c
-+++ b/trace/control.c
-@@ -225,6 +225,7 @@ void trace_init_file(const char *file)
- {
- #ifdef CONFIG_TRACE_SIMPLE
-     st_set_trace_file(file);
-+    st_set_trace_file_enabled(true);
- #elif defined CONFIG_TRACE_LOG
-     /*
-      * If both the simple and the log backends are enabled, "--trace file"
--- 
-2.25.1
+> You must use ERRP_GUARD() in functions that dereference their @errp
+> parameter (so that works even when the argument is null) or pass it to
+> error_prepend() or error_append_hint() (so they get reached even when
+> the argumentis &error_fatal).
+>
+> You should use Use ERRP_GUARD() to avoid clumsy error propagation.
+>
+> You should not use ERRP_GUARD() when propagation is not actually
+> needed.
+
+Thank you for the explanation. :)
+
+Two patches from a series (work in progress) that I'd like to raise:
+
+- [PATCH 2/6] x86: cphp: prevent guest crash on CPU hotplug when broadcast SMI is in use
+  http://mid.mail-archive.com/20200720141610.574308-3-imammedo@redhat.com
+  https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05852.html
+
+- [PATCH 3/6] x86: cpuhp: refuse cpu hot-unplug request earlier if not supported
+  http://mid.mail-archive.com/20200720141610.574308-4-imammedo@redhat.com
+  https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05851.html
+
+Both of these call error_append_hint(errp, ...). I think these functions
+are never called against "error_fatal" (they are reached in "device_add"
+and "device_del" monitor commands). But just for consistency with the
+new rules, should these functions -- ich9_pm_device_pre_plug_cb() and
+ich9_pm_device_unplug_request_cb() -- adopt ERRP_GUARD() in those
+patches?
+
+(If the answer is "yes", then could you please state that right under
+those patches, so the feedback is easier for Igor to collect?
+
+Plus I think commit e3fe3988d78 should be mentioned frequently, because
+it's really helpful, and at least I wouldn't have remembered to check
+"include/qapi/error.h" for the new rules; mea culpa :/)
+
+Thanks!
+Laszlo
 
 
