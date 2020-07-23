@@ -1,69 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jyYyr-0005cu-0A
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2020 07:01:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56386)
+	id 1jybBB-0007iK-H4
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2020 09:22:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jyYyp-0005bB-6h
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 07:01:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27212
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jybBA-0007gt-8R
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 09:22:32 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:23688
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jyYyn-0003Qq-1J
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 07:01:38 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jybB7-0004UZ-Lu
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2020 09:22:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595502096;
+ s=mimecast20190719; t=1595510548;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BeRLzb3kM21cmSt2NvxtYtfxkV7kdyTWjSpmfd0rO00=;
- b=MQpFeSziI5is8/DrGV1E9g04Cj26++YOea1P4viCmtshkhgFesTwXKNycMvjEn8Zzr3/4J
- TToQ3KBqpmAKUp1L3sIHSd3TlxRSDMchSaM0qRaWJUmSgCxxVXW3fMJQ85RbLE2CJbI6bP
- gUkZsH2Mvylz3E2PmrxQ/RPDyUR0S3k=
+ to:to:cc:cc:content-type:content-type;
+ bh=vZt8rkdK5Jjjjo08PqG1pwyj2txCcJYqMQPuleccBJ8=;
+ b=Jb9M50BQNGBULwcpbPH6zWhaZ9gNk5FiatYwBhqqexu4wPd3WOOK6X2TUQZQ3p+uCJhQpZ
+ a8fXHyBM+VY1pKXzAL1a72va24DwvQwZTnA1x/RczGIbKWSLPyIEzq20AfqdSbzSaAntsy
+ Te0C/7Tzcl52qK2nBOPu+tu+4vYqpP4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-514-hAmsf40XNzSwOFMyXJ5ywQ-1; Thu, 23 Jul 2020 07:01:25 -0400
-X-MC-Unique: hAmsf40XNzSwOFMyXJ5ywQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-270-TuWPSK0YPNSGUQr_DwSkfg-1; Thu, 23 Jul 2020 09:22:25 -0400
+X-MC-Unique: TuWPSK0YPNSGUQr_DwSkfg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 79294106B24F;
- Thu, 23 Jul 2020 11:01:24 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-52.ams2.redhat.com
- [10.36.114.52])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AFDBF8BED5;
- Thu, 23 Jul 2020 11:01:19 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1] hw/nvram/fw_cfg: Let fw_cfg_add_from_generator()
- return boolean value
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200720123521.8135-1-philmd@redhat.com>
- <34e8619f-4301-d746-fe3f-c340040c22c1@redhat.com>
- <87r1t59sj7.fsf@dusky.pond.sub.org>
- <b7bdbf46-b410-3ff7-4536-86b2886dc201@redhat.com>
- <875zaeptqo.fsf@dusky.pond.sub.org>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <ef6a2a6d-ba81-5ad0-eab0-6686eaf427cb@redhat.com>
-Date: Thu, 23 Jul 2020 13:01:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Firefox/52.0 Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <875zaeptqo.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5176E91B;
+ Thu, 23 Jul 2020 13:22:23 +0000 (UTC)
+Received: from thuth.com (ovpn-112-87.ams2.redhat.com [10.36.112.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2B26019D7C;
+ Thu, 23 Jul 2020 13:22:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/unicore32: Remove CURSES stuff from the Makefile.objs
+Date: Thu, 23 Jul 2020 15:22:19 +0200
+Message-Id: <20200723132219.2956-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=lersek@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/23 06:04:25
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/23 02:33:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -71,7 +53,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,49 +66,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jul 2020 11:01:39 -0000
+X-List-Received-Date: Thu, 23 Jul 2020 13:22:32 -0000
 
-+Igor, and question below
+The dependency on curses has been removed in commit c7a856b42e403e2b
+("target/unicore32: Prefer qemu_semihosting_log_out() over curses").
+So we can remove the related lines in the Makefile now, too.
 
-On 07/23/20 09:37, Markus Armbruster wrote:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ target/unicore32/Makefile.objs | 4 ----
+ 1 file changed, 4 deletions(-)
 
-> You must use ERRP_GUARD() in functions that dereference their @errp
-> parameter (so that works even when the argument is null) or pass it to
-> error_prepend() or error_append_hint() (so they get reached even when
-> the argumentis &error_fatal).
->
-> You should use Use ERRP_GUARD() to avoid clumsy error propagation.
->
-> You should not use ERRP_GUARD() when propagation is not actually
-> needed.
-
-Thank you for the explanation. :)
-
-Two patches from a series (work in progress) that I'd like to raise:
-
-- [PATCH 2/6] x86: cphp: prevent guest crash on CPU hotplug when broadcast SMI is in use
-  http://mid.mail-archive.com/20200720141610.574308-3-imammedo@redhat.com
-  https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05852.html
-
-- [PATCH 3/6] x86: cpuhp: refuse cpu hot-unplug request earlier if not supported
-  http://mid.mail-archive.com/20200720141610.574308-4-imammedo@redhat.com
-  https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05851.html
-
-Both of these call error_append_hint(errp, ...). I think these functions
-are never called against "error_fatal" (they are reached in "device_add"
-and "device_del" monitor commands). But just for consistency with the
-new rules, should these functions -- ich9_pm_device_pre_plug_cb() and
-ich9_pm_device_unplug_request_cb() -- adopt ERRP_GUARD() in those
-patches?
-
-(If the answer is "yes", then could you please state that right under
-those patches, so the feedback is easier for Igor to collect?
-
-Plus I think commit e3fe3988d78 should be mentioned frequently, because
-it's really helpful, and at least I wouldn't have remembered to check
-"include/qapi/error.h" for the new rules; mea culpa :/)
-
-Thanks!
-Laszlo
+diff --git a/target/unicore32/Makefile.objs b/target/unicore32/Makefile.objs
+index 35d8bf530d..6b41b1e9ef 100644
+--- a/target/unicore32/Makefile.objs
++++ b/target/unicore32/Makefile.objs
+@@ -2,7 +2,3 @@ obj-y += translate.o op_helper.o helper.o cpu.o
+ obj-y += ucf64_helper.o
+ 
+ obj-$(CONFIG_SOFTMMU) += softmmu.o
+-
+-# Huh? Uses curses directly instead of using ui/console.h interfaces ...
+-helper.o-cflags := $(CURSES_CFLAGS)
+-helper.o-libs := $(CURSES_LIBS)
+-- 
+2.18.1
 
 
