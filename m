@@ -1,70 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jyxcG-0003Qh-13
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2020 09:20:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42274)
+	id 1jz0wV-0008Lj-DW
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2020 12:53:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jyxcF-0003Qa-1r
- for qemu-trivial@nongnu.org; Fri, 24 Jul 2020 09:19:59 -0400
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:46309)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jz0wT-0008Jm-SI; Fri, 24 Jul 2020 12:53:05 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:39371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jyxcD-0008JN-G2
- for qemu-trivial@nongnu.org; Fri, 24 Jul 2020 09:19:58 -0400
-Received: by mail-ot1-x335.google.com with SMTP id n24so6916066otr.13
- for <qemu-trivial@nongnu.org>; Fri, 24 Jul 2020 06:19:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=jTEf1o++WaVJfH5RXYmaRp2hBzAR3Y42Mk52reBi4WA=;
- b=YFZnEp7/W2ybtHY5mYiOP77ckpKkeOvV24exIgBLSWYQ1qi+05rPNOUOEWQvaIq/h6
- 0HcGDkdEIxEVRS/IJgdnO1v2vsOE1VXMmBXrl+TrWiAX1Vc1eZO7Ec/I6k1EG+VmJldf
- vXaBz0gKSqob+H5eLh3r9TDm+o3p+rEGIOBVtKiX3RWZJuHwW+9KCisK5dZ003nocBnX
- UWhmSG9WtNrzbkgE+xe1cXTBnsxseS1pPpC3xXPr59XxKHe8vCnhVQuysIOsBJqG6oht
- s4aPZ7hknS/XpDFuKnkYBKhLLix58PGosMYbK+SftlEEYPWM35dzyNAH10bq7oQezgB5
- xZFg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jz0wS-00049r-Cz; Fri, 24 Jul 2020 12:53:05 -0400
+Received: by mail-wr1-x443.google.com with SMTP id q5so8910362wru.6;
+ Fri, 24 Jul 2020 09:53:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bAVTZOupnGMYvubPUriAuW0Htk+wYR8jr99gkQhkeZA=;
+ b=Ks9OfA5yYhMuqBEwuQJIgcb76xljJ97YRKE5QHWCMk1A9a6iDPXNxHcFcFaIp91JpU
+ pRwOMXwWDO82mfkkLfsFhVIvlyPPqY8992bUco4RCL+DBsJFxGdFP0N5lDR9dMOhOMv4
+ fB7PNIMcnpD0o9Cg276zg7dN7mxKVym3qWjYGUWaeJbuV8+SbrAFU59E/ESA5K70+/TU
+ eV+iqEqZUaW8Q0D7nCTpWjgxvVWkAK4bcnposnZQgQgmHOymHr4pQi0oAKmnG85CHfkv
+ 4HaDZ2I7MuzvH6XI8BGypZAhkorhbL5jQ006MMPsrkXYrfUvg0/Q2NaGAixqMTEjtyow
+ 3Jcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=jTEf1o++WaVJfH5RXYmaRp2hBzAR3Y42Mk52reBi4WA=;
- b=cDyHgBmLwIzFLB3ra+tRxybFXSWSirtpXQYBYO2d5U+FzCsaELQZ1aUqEXLTS7kDaL
- lMbtZvxL5J8RjUrC4LSpWUz9pVKnxw0pnD/9wLNQG7ygl4NsPV0sa7VgSPhZmTmuS4xt
- GUoLzb1r+hiH7puhu6eoQvBbp+Loa9b9OhtwhScHgCz+gsiGrSk9H1teZ6pDbRyJLeDu
- 5hq8QqNH6pYLPOkVxzeBGR5a8BhjhvYtA1DkBxMG+4k/DVJNZf/PH2t4IZAnAzKRXzul
- e7jfZ6Jz0IJeexL1I95ziEPfdWuWDAESn84MRUKzw7UvxizaqRxvfZy6airi4PLEpNkY
- iktQ==
-X-Gm-Message-State: AOAM532IOXCBwE9bs5x3PFwgfCIrDPWEqIx6cUMmMeif6fwbwsj0DOri
- 815h19oMSG2PbuVzptJlahLgtwzhEFYgOoM0lYG0sw==
-X-Google-Smtp-Source: ABdhPJyM9eLqy2fs/eTDUfDNPXA7asIAcsJIFHdNItKNLOei76J2z4NNzo1Ekh5f++WB65Edzj5vjj96X6hWeD8U+Hk=
-X-Received: by 2002:a05:6830:1bd3:: with SMTP id
- v19mr8710838ota.91.1595596796072; 
- Fri, 24 Jul 2020 06:19:56 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=bAVTZOupnGMYvubPUriAuW0Htk+wYR8jr99gkQhkeZA=;
+ b=audPu2FObcdWDYuj0cspJVON26/a5vXo6l7XohB/hURc8khRHfh8ecoHQ6seDIlROt
+ ymZuDFM6XKYtNs7BML96qtUmVSaGz2TW8Yn1qMGHBsJ8gnOYWbmPnlg6H0t+XWcWe+Ls
+ t2O56SuZxf5v/CQ7MDP4q8N2fbIYMjUUS2qcq8kWEiUEVF9BvBmYL8h/rQTEfDG5MjSa
+ R0qzeXbQN2wb1oE6JNdQRgEkz03XCrcgSKoAXG6pB9c+ri47DmUs4JzIVOt2sRGxgXAW
+ R0VZc4DQzYEOPKTJSqJbelQ8cSHEK11FxHlzAUzXR+9nbd5C1PdEA9xSkYD7v4oMOvgN
+ CWKw==
+X-Gm-Message-State: AOAM533zDGX2SAqvgSt91qTkj4N4Ggydi2l9AiMZtQa3fbeVTtB3yNaw
+ z0Fj01IsZeown6QGM5c5Yu5ToZwI
+X-Google-Smtp-Source: ABdhPJwpWcNJatZcmykOrr2S+Cevrs3GdkZx71id3d3Akx1uXNZibqLXRvQzeM6CZEmZRaxKQvHeuA==
+X-Received: by 2002:adf:e704:: with SMTP id c4mr10200699wrm.81.1595609582252; 
+ Fri, 24 Jul 2020 09:53:02 -0700 (PDT)
+Received: from localhost.localdomain (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id t3sm2164830wre.41.2020.07.24.09.53.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Jul 2020 09:53:01 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH-for-5.2] default-configs: Remove ACPI_CPU_HOTPLUG from MIPS
+ machines
+Date: Fri, 24 Jul 2020 18:52:59 +0200
+Message-Id: <20200724165259.19939-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200721124250.8601-1-f4bug@amsat.org>
-In-Reply-To: <20200721124250.8601-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jul 2020 14:19:45 +0100
-Message-ID: <CAFEAcA-VSRCR4fFwLkWhOcPtivQJOCM_LEbUafvsW-62Cb15bw@mail.gmail.com>
-Subject: Re: [PATCH-for-5.1 v3] hw/misc/aspeed_sdmc: Fix incorrect memory size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- qemu-arm <qemu-arm@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x335.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,36 +85,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jul 2020 13:19:59 -0000
+X-List-Received-Date: Fri, 24 Jul 2020 16:53:06 -0000
 
-On Tue, 21 Jul 2020 at 13:42, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> The SDRAM Memory Controller has a 32-bit address bus, thus
-> supports up to 4 GiB of DRAM. There is a signed to unsigned
-> conversion error with the AST2600 maximum memory size:
->
->   (uint64_t)(2048 << 20) =3D (uint64_t)(-2147483648)
->                          =3D 0xffffffff40000000
->                          =3D 16 EiB - 2 GiB
->
-> Fix by using the IEC suffixes which are usually safer, and add
-> an assertion check to verify the memory is valid. This would have
-> caught this bug:
->
->   $ qemu-system-arm -M ast2600-evb
->   qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assert=
-ion `asc->max_ram_size < 4 * GiB' failed.
->   Aborted (core dumped)
->
-> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> --
+No MIPS machine uses the ACPI cpu-hotplug feature
+(QEMU implementation is X86 specific).
 
+Fixes: 135a67a692 ("ACPI: split CONFIG_ACPI into 4 pieces")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ default-configs/mips-softmmu-common.mak | 1 -
+ 1 file changed, 1 deletion(-)
 
+diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
+index da29c6c0b2..e9c208da3d 100644
+--- a/default-configs/mips-softmmu-common.mak
++++ b/default-configs/mips-softmmu-common.mak
+@@ -21,7 +21,6 @@ CONFIG_ACPI=y
+ CONFIG_ACPI_X86=y
+ CONFIG_ACPI_MEMORY_HOTPLUG=y
+ CONFIG_ACPI_NVDIMM=y
+-CONFIG_ACPI_CPU_HOTPLUG=y
+ CONFIG_APM=y
+ CONFIG_I8257=y
+ CONFIG_PIIX4=y
+-- 
+2.21.3
 
-Applied to target-arm.next, thanks.
-
--- PMM
 
