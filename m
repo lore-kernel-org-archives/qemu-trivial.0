@@ -1,47 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jyuQz-0007jZ-G3
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2020 05:56:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36744)
+	id 1jyxcG-0003Qh-13
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2020 09:20:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1jyuQx-0007hA-6S; Fri, 24 Jul 2020 05:56:07 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51641)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1jyuQu-0003iH-Sw; Fri, 24 Jul 2020 05:56:06 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8C03F4071A;
- Fri, 24 Jul 2020 12:55:53 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
- by tsrv.corpit.ru (Postfix) with ESMTP id 5C66A93;
- Fri, 24 Jul 2020 12:55:54 +0300 (MSK)
-Subject: Re: [PATCH v2] configure: actually disable 'git_update' mode with
- --disable-git-update
-To: Dan Streetman <ddstreet@canonical.com>, qemu-trivial@nongnu.org
-Cc: Rafael David Tinoco <rafael.tinoco@canonical.com>,
- Christian Ehrhardt <christian.ehrhardt@canonical.com>, qemu-devel@nongnu.org
-References: <20200715205013.2367760-1-ddstreet@canonical.com>
- <20200716102213.2931209-1-ddstreet@canonical.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <e55fea6e-e403-166f-e693-9e73ae29e5cc@msgid.tls.msk.ru>
-Date: Fri, 24 Jul 2020 12:55:53 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jyxcF-0003Qa-1r
+ for qemu-trivial@nongnu.org; Fri, 24 Jul 2020 09:19:59 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:46309)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jyxcD-0008JN-G2
+ for qemu-trivial@nongnu.org; Fri, 24 Jul 2020 09:19:58 -0400
+Received: by mail-ot1-x335.google.com with SMTP id n24so6916066otr.13
+ for <qemu-trivial@nongnu.org>; Fri, 24 Jul 2020 06:19:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=jTEf1o++WaVJfH5RXYmaRp2hBzAR3Y42Mk52reBi4WA=;
+ b=YFZnEp7/W2ybtHY5mYiOP77ckpKkeOvV24exIgBLSWYQ1qi+05rPNOUOEWQvaIq/h6
+ 0HcGDkdEIxEVRS/IJgdnO1v2vsOE1VXMmBXrl+TrWiAX1Vc1eZO7Ec/I6k1EG+VmJldf
+ vXaBz0gKSqob+H5eLh3r9TDm+o3p+rEGIOBVtKiX3RWZJuHwW+9KCisK5dZ003nocBnX
+ UWhmSG9WtNrzbkgE+xe1cXTBnsxseS1pPpC3xXPr59XxKHe8vCnhVQuysIOsBJqG6oht
+ s4aPZ7hknS/XpDFuKnkYBKhLLix58PGosMYbK+SftlEEYPWM35dzyNAH10bq7oQezgB5
+ xZFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=jTEf1o++WaVJfH5RXYmaRp2hBzAR3Y42Mk52reBi4WA=;
+ b=cDyHgBmLwIzFLB3ra+tRxybFXSWSirtpXQYBYO2d5U+FzCsaELQZ1aUqEXLTS7kDaL
+ lMbtZvxL5J8RjUrC4LSpWUz9pVKnxw0pnD/9wLNQG7ygl4NsPV0sa7VgSPhZmTmuS4xt
+ GUoLzb1r+hiH7puhu6eoQvBbp+Loa9b9OhtwhScHgCz+gsiGrSk9H1teZ6pDbRyJLeDu
+ 5hq8QqNH6pYLPOkVxzeBGR5a8BhjhvYtA1DkBxMG+4k/DVJNZf/PH2t4IZAnAzKRXzul
+ e7jfZ6Jz0IJeexL1I95ziEPfdWuWDAESn84MRUKzw7UvxizaqRxvfZy6airi4PLEpNkY
+ iktQ==
+X-Gm-Message-State: AOAM532IOXCBwE9bs5x3PFwgfCIrDPWEqIx6cUMmMeif6fwbwsj0DOri
+ 815h19oMSG2PbuVzptJlahLgtwzhEFYgOoM0lYG0sw==
+X-Google-Smtp-Source: ABdhPJyM9eLqy2fs/eTDUfDNPXA7asIAcsJIFHdNItKNLOei76J2z4NNzo1Ekh5f++WB65Edzj5vjj96X6hWeD8U+Hk=
+X-Received: by 2002:a05:6830:1bd3:: with SMTP id
+ v19mr8710838ota.91.1595596796072; 
+ Fri, 24 Jul 2020 06:19:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200716102213.2931209-1-ddstreet@canonical.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/24 05:55:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+References: <20200721124250.8601-1-f4bug@amsat.org>
+In-Reply-To: <20200721124250.8601-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jul 2020 14:19:45 +0100
+Message-ID: <CAFEAcA-VSRCR4fFwLkWhOcPtivQJOCM_LEbUafvsW-62Cb15bw@mail.gmail.com>
+Subject: Re: [PATCH-for-5.1 v3] hw/misc/aspeed_sdmc: Fix incorrect memory size
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ qemu-arm <qemu-arm@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x335.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,158 +77,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jul 2020 09:56:07 -0000
+X-List-Received-Date: Fri, 24 Jul 2020 13:19:59 -0000
 
-Hi!
+On Tue, 21 Jul 2020 at 13:42, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> The SDRAM Memory Controller has a 32-bit address bus, thus
+> supports up to 4 GiB of DRAM. There is a signed to unsigned
+> conversion error with the AST2600 maximum memory size:
+>
+>   (uint64_t)(2048 << 20) =3D (uint64_t)(-2147483648)
+>                          =3D 0xffffffff40000000
+>                          =3D 16 EiB - 2 GiB
+>
+> Fix by using the IEC suffixes which are usually safer, and add
+> an assertion check to verify the memory is valid. This would have
+> caught this bug:
+>
+>   $ qemu-system-arm -M ast2600-evb
+>   qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assert=
+ion `asc->max_ram_size < 4 * GiB' failed.
+>   Aborted (core dumped)
+>
+> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> --
 
-Dan, can you please resend this with To: qemu-devel@, maybe Cc: qemu-trivial@?
-It isn't exactly trivial and it needs some review from the developers.
 
-Thanks,
 
-/mjt
+Applied to target-arm.next, thanks.
 
-16.07.2020 13:22, Dan Streetman wrote:
-> The --disable-git-update configure param sets git_update=no, but
-> some later checks only look for the .git dir. This changes the
-> --enable-git-update to set git_update=yes but also fail if it
-> does not find a .git dir. Then all the later checks for the .git
-> dir can just be changed to a check for $git_update = "yes".
-> 
-> Also update the Makefile to skip the 'git_update' checks if it has
-> been disabled.
-> 
-> This is needed because downstream packagers, e.g. Debian, Ubuntu, etc,
-> also keep the source code in git, but do not want to enable the
-> 'git_update' mode; with the current code, that's not possible even
-> if the downstream package specifies --disable-git-update.
-> 
-> Signed-off-by: Dan Streetman <ddstreet@canonical.com>
-> ---
-> Changes in v2:
->  - change GIT_UPDATE default to "" if no .git found
->  - change Makefile to skip git update checks if GIT_UPDATE=no
-> 
->  Makefile  | 15 +++++++++------
->  configure | 21 +++++++++++++--------
->  2 files changed, 22 insertions(+), 14 deletions(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 32345c610e..9bcd3f9af4 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -25,6 +25,8 @@ git-submodule-update:
->  
->  .PHONY: git-submodule-update
->  
-> +# If --disable-git-update specified, skip these git checks
-> +ifneq (no,$(GIT_UPDATE))
->  git_module_status := $(shell \
->    cd '$(SRC_PATH)' && \
->    GIT="$(GIT)" ./scripts/git-submodule.sh status $(GIT_SUBMODULES); \
-> @@ -32,7 +34,12 @@ git_module_status := $(shell \
->  )
->  
->  ifeq (1,$(git_module_status))
-> -ifeq (no,$(GIT_UPDATE))
-> +ifeq (yes,$(GIT_UPDATE))
-> +git-submodule-update:
-> +	$(call quiet-command, \
-> +          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
-> +          "GIT","$(GIT_SUBMODULES)")
-> +else
->  git-submodule-update:
->  	$(call quiet-command, \
->              echo && \
-> @@ -41,11 +48,7 @@ git-submodule-update:
->              echo "from the source directory checkout $(SRC_PATH)" && \
->              echo && \
->              exit 1)
-> -else
-> -git-submodule-update:
-> -	$(call quiet-command, \
-> -          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
-> -          "GIT","$(GIT_SUBMODULES)")
-> +endif
->  endif
->  endif
->  
-> diff --git a/configure b/configure
-> index b751c853f5..eefda62210 100755
-> --- a/configure
-> +++ b/configure
-> @@ -318,7 +318,7 @@ then
->      git_submodules="$git_submodules tests/fp/berkeley-testfloat-3"
->      git_submodules="$git_submodules tests/fp/berkeley-softfloat-3"
->  else
-> -    git_update=no
-> +    git_update=""
->      git_submodules=""
->  
->      if ! test -f "$source_path/ui/keycodemapdb/README"
-> @@ -1603,7 +1603,12 @@ for opt do
->    ;;
->    --with-git=*) git="$optarg"
->    ;;
-> -  --enable-git-update) git_update=yes
-> +  --enable-git-update)
-> +      git_update=yes
-> +      if test ! -e "$source_path/.git"; then
-> +          echo "ERROR: cannot --enable-git-update without .git"
-> +          exit 1
-> +      fi
->    ;;
->    --disable-git-update) git_update=no
->    ;;
-> @@ -2017,7 +2022,7 @@ fi
->  # Consult white-list to determine whether to enable werror
->  # by default.  Only enable by default for git builds
->  if test -z "$werror" ; then
-> -    if test -e "$source_path/.git" && \
-> +    if test "$git_update" = "yes" && \
->          { test "$linux" = "yes" || test "$mingw32" = "yes"; }; then
->          werror="yes"
->      else
-> @@ -4418,10 +4423,10 @@ EOF
->      fdt=system
->    else
->        # have GIT checkout, so activate dtc submodule
-> -      if test -e "${source_path}/.git" ; then
-> +      if test "$git_update" = "yes" ; then
->            git_submodules="${git_submodules} dtc"
->        fi
-> -      if test -d "${source_path}/dtc/libfdt" || test -e "${source_path}/.git" ; then
-> +      if test -d "${source_path}/dtc/libfdt" || test "$git_update" = "yes" ; then
->            fdt=git
->            mkdir -p dtc
->            if [ "$pwd_is_source_path" != "y" ] ; then
-> @@ -5391,7 +5396,7 @@ case "$capstone" in
->    "" | yes)
->      if $pkg_config capstone; then
->        capstone=system
-> -    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-> +    elif test "$git_update" = "yes" ; then
->        capstone=git
->      elif test -e "${source_path}/capstone/Makefile" ; then
->        capstone=internal
-> @@ -6447,7 +6452,7 @@ case "$slirp" in
->    "" | yes)
->      if $pkg_config slirp; then
->        slirp=system
-> -    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-> +    elif test "$git_update" = "yes" ; then
->        slirp=git
->      elif test -e "${source_path}/slirp/Makefile" ; then
->        slirp=internal
-> @@ -6809,7 +6814,7 @@ if test "$cpu" = "s390x" ; then
->      roms="$roms s390-ccw"
->      # SLOF is required for building the s390-ccw firmware on s390x,
->      # since it is using the libnet code from SLOF for network booting.
-> -    if test -e "${source_path}/.git" ; then
-> +    if test "$git_update" = "yes" ; then
->        git_submodules="${git_submodules} roms/SLOF"
->      fi
->    fi
-> 
-
+-- PMM
 
