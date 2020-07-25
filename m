@@ -1,79 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jz0wV-0008Lj-DW
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2020 12:53:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59060)
+	id 1jzKd1-000525-QM
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Jul 2020 09:54:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jz0wT-0008Jm-SI; Fri, 24 Jul 2020 12:53:05 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:39371)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jz0wS-00049r-Cz; Fri, 24 Jul 2020 12:53:05 -0400
-Received: by mail-wr1-x443.google.com with SMTP id q5so8910362wru.6;
- Fri, 24 Jul 2020 09:53:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bAVTZOupnGMYvubPUriAuW0Htk+wYR8jr99gkQhkeZA=;
- b=Ks9OfA5yYhMuqBEwuQJIgcb76xljJ97YRKE5QHWCMk1A9a6iDPXNxHcFcFaIp91JpU
- pRwOMXwWDO82mfkkLfsFhVIvlyPPqY8992bUco4RCL+DBsJFxGdFP0N5lDR9dMOhOMv4
- fB7PNIMcnpD0o9Cg276zg7dN7mxKVym3qWjYGUWaeJbuV8+SbrAFU59E/ESA5K70+/TU
- eV+iqEqZUaW8Q0D7nCTpWjgxvVWkAK4bcnposnZQgQgmHOymHr4pQi0oAKmnG85CHfkv
- 4HaDZ2I7MuzvH6XI8BGypZAhkorhbL5jQ006MMPsrkXYrfUvg0/Q2NaGAixqMTEjtyow
- 3Jcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=bAVTZOupnGMYvubPUriAuW0Htk+wYR8jr99gkQhkeZA=;
- b=audPu2FObcdWDYuj0cspJVON26/a5vXo6l7XohB/hURc8khRHfh8ecoHQ6seDIlROt
- ymZuDFM6XKYtNs7BML96qtUmVSaGz2TW8Yn1qMGHBsJ8gnOYWbmPnlg6H0t+XWcWe+Ls
- t2O56SuZxf5v/CQ7MDP4q8N2fbIYMjUUS2qcq8kWEiUEVF9BvBmYL8h/rQTEfDG5MjSa
- R0qzeXbQN2wb1oE6JNdQRgEkz03XCrcgSKoAXG6pB9c+ri47DmUs4JzIVOt2sRGxgXAW
- R0VZc4DQzYEOPKTJSqJbelQ8cSHEK11FxHlzAUzXR+9nbd5C1PdEA9xSkYD7v4oMOvgN
- CWKw==
-X-Gm-Message-State: AOAM533zDGX2SAqvgSt91qTkj4N4Ggydi2l9AiMZtQa3fbeVTtB3yNaw
- z0Fj01IsZeown6QGM5c5Yu5ToZwI
-X-Google-Smtp-Source: ABdhPJwpWcNJatZcmykOrr2S+Cevrs3GdkZx71id3d3Akx1uXNZibqLXRvQzeM6CZEmZRaxKQvHeuA==
-X-Received: by 2002:adf:e704:: with SMTP id c4mr10200699wrm.81.1595609582252; 
- Fri, 24 Jul 2020 09:53:02 -0700 (PDT)
-Received: from localhost.localdomain (214.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.214])
- by smtp.gmail.com with ESMTPSA id t3sm2164830wre.41.2020.07.24.09.53.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jul 2020 09:53:01 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.2] default-configs: Remove ACPI_CPU_HOTPLUG from MIPS
- machines
-Date: Fri, 24 Jul 2020 18:52:59 +0200
-Message-Id: <20200724165259.19939-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <gxt@pku.edu.cn>)
+ id 1jz8XF-0008Vn-4O; Fri, 24 Jul 2020 20:59:33 -0400
+Received: from mx21.pku.edu.cn ([162.105.129.184]:51785 helo=pku.edu.cn)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <gxt@pku.edu.cn>)
+ id 1jz8XA-0004EW-1B; Fri, 24 Jul 2020 20:59:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pku.edu.cn; s=dkim; h=Received:Date:From:To:Cc:Subject:
+ In-Reply-To:References:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID; bh=u+sOaml5GCjq5xFIWyWNy53Vb1BRFM3TGbmJ
+ y3yTKUU=; b=FWnh+8GXxZGTLx6xEGOGRpDk0DKDHM5rNphwby8Sp8LJfl6Y9bad
+ RTUhRmDOy35b4VqLiR4oaFDNNAuFnHxdsn0q0ttBNefdEkzh2vM0FR7GqNCYB9x2
+ WTOswTK0wsO55on+xzjYIeOOaw9GEZL7N+Gw0mq142WeCRbkZv0REj4=
+Received: by ajax-webmail-mailfront03 (Coremail) ; Sat, 25 Jul 2020 08:59:13
+ +0800 (GMT+08:00)
+X-Originating-IP: [10.1.22.182]
+Date: Sat, 25 Jul 2020 08:59:13 +0800 (GMT+08:00)
+X-CM-HeaderCharset: UTF-8
+From: "Guan Xuetao" <gxt@pku.edu.cn>
+To: "thomas huth" <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, 
+ =?UTF-8?Q?philippe_mathieu-daud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-trivial@nongnu.org, 
+ "richard henderson" <richard.henderson@linaro.org>
+Subject: Re: [PATCH] target/unicore32: Remove CURSES stuff from the
+ Makefile.objs
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.10 build 20190906(84e8bf8f)
+ Copyright (c) 2002-2020 www.mailtech.cn  pku.edu.cn
+In-Reply-To: <20200723132219.2956-1-thuth@redhat.com>
+References: <20200723132219.2956-1-thuth@redhat.com>
+Content-Transfer-Encoding: base64
 Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+MIME-Version: 1.0
+Message-ID: <73be33e7.54667.173837b29db.Coremail.gxt@pku.edu.cn>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: 84FpogC3O3zhgxtf3qzwAQ--.44632W
+X-CM-SenderInfo: qqqqliixuslio6sn3hxhgxhubq/1tbiAQIHBysxYCIIpAANs6
+X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
+ CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
+ daVFxhVjvjDU=
+Received-SPF: pass client-ip=162.105.129.184; envelope-from=gxt@pku.edu.cn;
+ helo=pku.edu.cn
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/24 20:59:18
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 25 Jul 2020 09:54:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,30 +67,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jul 2020 16:53:06 -0000
+X-List-Received-Date: Sat, 25 Jul 2020 00:59:34 -0000
 
-No MIPS machine uses the ACPI cpu-hotplug feature
-(QEMU implementation is X86 specific).
-
-Fixes: 135a67a692 ("ACPI: split CONFIG_ACPI into 4 pieces")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- default-configs/mips-softmmu-common.mak | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
-index da29c6c0b2..e9c208da3d 100644
---- a/default-configs/mips-softmmu-common.mak
-+++ b/default-configs/mips-softmmu-common.mak
-@@ -21,7 +21,6 @@ CONFIG_ACPI=y
- CONFIG_ACPI_X86=y
- CONFIG_ACPI_MEMORY_HOTPLUG=y
- CONFIG_ACPI_NVDIMM=y
--CONFIG_ACPI_CPU_HOTPLUG=y
- CONFIG_APM=y
- CONFIG_I8257=y
- CONFIG_PIIX4=y
--- 
-2.21.3
-
+VGhhdCdzIE9LIGZvciB1bmljb3JlMzIgdGFyZ2V0LgoKQWNrZWQtYnk6IEd1YW4gWHVldGFvIDxn
+eHRAcGt1LmVkdS5jbj4KCgo+IC0tLS0t5Y6f5aeL6YKu5Lu2LS0tLS0KPiDlj5Hku7bkuro6ICJU
+aG9tYXMgSHV0aCIgPHRodXRoQHJlZGhhdC5jb20+Cj4g5Y+R6YCB5pe26Ze0OiAyMDIwLTA3LTIz
+IDIxOjIyOjE5ICjmmJ/mnJ/lm5spCj4g5pS25Lu25Lq6OiAiR3VhbiBYdWV0YW8iIDxneHRAbXBy
+Yy5wa3UuZWR1LmNuPiwgcWVtdS1kZXZlbEBub25nbnUub3JnCj4g5oqE6YCBOiAiUGhpbGlwcGUg
+TWF0aGlldS1EYXVkw6kiIDxmNGJ1Z0BhbXNhdC5vcmc+LCBxZW11LXRyaXZpYWxAbm9uZ251Lm9y
+ZywgIlJpY2hhcmQgSGVuZGVyc29uIiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz4KPiDk
+uLvpopg6IFtQQVRDSF0gdGFyZ2V0L3VuaWNvcmUzMjogUmVtb3ZlIENVUlNFUyBzdHVmZiBmcm9t
+IHRoZSBNYWtlZmlsZS5vYmpzCj4gCj4gVGhlIGRlcGVuZGVuY3kgb24gY3Vyc2VzIGhhcyBiZWVu
+IHJlbW92ZWQgaW4gY29tbWl0IGM3YTg1NmI0MmU0MDNlMmIKPiAoInRhcmdldC91bmljb3JlMzI6
+IFByZWZlciBxZW11X3NlbWlob3N0aW5nX2xvZ19vdXQoKSBvdmVyIGN1cnNlcyIpLgo+IFNvIHdl
+IGNhbiByZW1vdmUgdGhlIHJlbGF0ZWQgbGluZXMgaW4gdGhlIE1ha2VmaWxlIG5vdywgdG9vLgo+
+IAo+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBIdXRoIDx0aHV0aEByZWRoYXQuY29tPgo+IC0tLQo+
+ICB0YXJnZXQvdW5pY29yZTMyL01ha2VmaWxlLm9ianMgfCA0IC0tLS0KPiAgMSBmaWxlIGNoYW5n
+ZWQsIDQgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL3RhcmdldC91bmljb3JlMzIvTWFr
+ZWZpbGUub2JqcyBiL3RhcmdldC91bmljb3JlMzIvTWFrZWZpbGUub2Jqcwo+IGluZGV4IDM1ZDhi
+ZjUzMGQuLjZiNDFiMWU5ZWYgMTAwNjQ0Cj4gLS0tIGEvdGFyZ2V0L3VuaWNvcmUzMi9NYWtlZmls
+ZS5vYmpzCj4gKysrIGIvdGFyZ2V0L3VuaWNvcmUzMi9NYWtlZmlsZS5vYmpzCj4gQEAgLTIsNyAr
+MiwzIEBAIG9iai15ICs9IHRyYW5zbGF0ZS5vIG9wX2hlbHBlci5vIGhlbHBlci5vIGNwdS5vCj4g
+IG9iai15ICs9IHVjZjY0X2hlbHBlci5vCj4gIAo+ICBvYmotJChDT05GSUdfU09GVE1NVSkgKz0g
+c29mdG1tdS5vCj4gLQo+IC0jIEh1aD8gVXNlcyBjdXJzZXMgZGlyZWN0bHkgaW5zdGVhZCBvZiB1
+c2luZyB1aS9jb25zb2xlLmggaW50ZXJmYWNlcyAuLi4KPiAtaGVscGVyLm8tY2ZsYWdzIDo9ICQo
+Q1VSU0VTX0NGTEFHUykKPiAtaGVscGVyLm8tbGlicyA6PSAkKENVUlNFU19MSUJTKQo+IC0tIAo+
+IDIuMTguMQo=
 
