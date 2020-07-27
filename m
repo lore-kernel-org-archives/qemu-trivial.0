@@ -1,61 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jzKd1-000525-QM
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Jul 2020 09:54:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36180)
+	id 1jzvxo-0007OI-Ra
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 01:46:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gxt@pku.edu.cn>)
- id 1jz8XF-0008Vn-4O; Fri, 24 Jul 2020 20:59:33 -0400
-Received: from mx21.pku.edu.cn ([162.105.129.184]:51785 helo=pku.edu.cn)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gxt@pku.edu.cn>)
- id 1jz8XA-0004EW-1B; Fri, 24 Jul 2020 20:59:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pku.edu.cn; s=dkim; h=Received:Date:From:To:Cc:Subject:
- In-Reply-To:References:Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID; bh=u+sOaml5GCjq5xFIWyWNy53Vb1BRFM3TGbmJ
- y3yTKUU=; b=FWnh+8GXxZGTLx6xEGOGRpDk0DKDHM5rNphwby8Sp8LJfl6Y9bad
- RTUhRmDOy35b4VqLiR4oaFDNNAuFnHxdsn0q0ttBNefdEkzh2vM0FR7GqNCYB9x2
- WTOswTK0wsO55on+xzjYIeOOaw9GEZL7N+Gw0mq142WeCRbkZv0REj4=
-Received: by ajax-webmail-mailfront03 (Coremail) ; Sat, 25 Jul 2020 08:59:13
- +0800 (GMT+08:00)
-X-Originating-IP: [10.1.22.182]
-Date: Sat, 25 Jul 2020 08:59:13 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Guan Xuetao" <gxt@pku.edu.cn>
-To: "thomas huth" <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, 
- =?UTF-8?Q?philippe_mathieu-daud=C3=A9?= <f4bug@amsat.org>, 
- qemu-trivial@nongnu.org, 
- "richard henderson" <richard.henderson@linaro.org>
-Subject: Re: [PATCH] target/unicore32: Remove CURSES stuff from the
- Makefile.objs
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.10 build 20190906(84e8bf8f)
- Copyright (c) 2002-2020 www.mailtech.cn  pku.edu.cn
-In-Reply-To: <20200723132219.2956-1-thuth@redhat.com>
-References: <20200723132219.2956-1-thuth@redhat.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jzvxn-0007O8-ST
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 01:46:15 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:30283
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jzvxm-0006lK-HS
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 01:46:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595828773;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=Eptem89ZkdnZqEqSQLVjZe7xH7w35ZWuqn3Z9TsZH4Q=;
+ b=U4l/g7YSs62zJkL+pUDS+7NQMmfn8Re7HCQsko6x/o8GIHwp14TU3OPHQHq0RSocIU2jc9
+ 5VUiMW1TI6aSJmdUd4VlVbnDkF1NYm2kxqxfRgUy6RINZxz1Zt3bPgCB+cZ9ekT1M+Q8rN
+ BQ9tpOacdE/QMbfqqTzNDVsC/gXU1G8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-212-E783xLubNkuoqWQqqRiNGA-1; Mon, 27 Jul 2020 01:46:11 -0400
+X-MC-Unique: E783xLubNkuoqWQqqRiNGA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 285651005504;
+ Mon, 27 Jul 2020 05:46:10 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-156.ams2.redhat.com [10.36.112.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B613310013D0;
+ Mon, 27 Jul 2020 05:46:01 +0000 (UTC)
+Subject: Re: [PATCH] qemu-options.hx: Fix typo for netdev documentation
+To: Tianjia Zhang <tianjia.zhang@linux.alibaba.com>, qemu-devel@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200727045925.29375-1-tianjia.zhang@linux.alibaba.com>
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
+ kraxel@redhat.com
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <d7eab1b6-4e30-2d23-7bec-0afedaeb60d4@redhat.com>
+Date: Mon, 27 Jul 2020 07:46:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Message-ID: <73be33e7.54667.173837b29db.Coremail.gxt@pku.edu.cn>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: 84FpogC3O3zhgxtf3qzwAQ--.44632W
-X-CM-SenderInfo: qqqqliixuslio6sn3hxhgxhubq/1tbiAQIHBysxYCIIpAANs6
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
- CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
- daVFxhVjvjDU=
-Received-SPF: pass client-ip=162.105.129.184; envelope-from=gxt@pku.edu.cn;
- helo=pku.edu.cn
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/24 20:59:18
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20200727045925.29375-1-tianjia.zhang@linux.alibaba.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 01:46:13
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 25 Jul 2020 09:54:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,30 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Jul 2020 00:59:34 -0000
+X-List-Received-Date: Mon, 27 Jul 2020 05:46:16 -0000
 
-VGhhdCdzIE9LIGZvciB1bmljb3JlMzIgdGFyZ2V0LgoKQWNrZWQtYnk6IEd1YW4gWHVldGFvIDxn
-eHRAcGt1LmVkdS5jbj4KCgo+IC0tLS0t5Y6f5aeL6YKu5Lu2LS0tLS0KPiDlj5Hku7bkuro6ICJU
-aG9tYXMgSHV0aCIgPHRodXRoQHJlZGhhdC5jb20+Cj4g5Y+R6YCB5pe26Ze0OiAyMDIwLTA3LTIz
-IDIxOjIyOjE5ICjmmJ/mnJ/lm5spCj4g5pS25Lu25Lq6OiAiR3VhbiBYdWV0YW8iIDxneHRAbXBy
-Yy5wa3UuZWR1LmNuPiwgcWVtdS1kZXZlbEBub25nbnUub3JnCj4g5oqE6YCBOiAiUGhpbGlwcGUg
-TWF0aGlldS1EYXVkw6kiIDxmNGJ1Z0BhbXNhdC5vcmc+LCBxZW11LXRyaXZpYWxAbm9uZ251Lm9y
-ZywgIlJpY2hhcmQgSGVuZGVyc29uIiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz4KPiDk
-uLvpopg6IFtQQVRDSF0gdGFyZ2V0L3VuaWNvcmUzMjogUmVtb3ZlIENVUlNFUyBzdHVmZiBmcm9t
-IHRoZSBNYWtlZmlsZS5vYmpzCj4gCj4gVGhlIGRlcGVuZGVuY3kgb24gY3Vyc2VzIGhhcyBiZWVu
-IHJlbW92ZWQgaW4gY29tbWl0IGM3YTg1NmI0MmU0MDNlMmIKPiAoInRhcmdldC91bmljb3JlMzI6
-IFByZWZlciBxZW11X3NlbWlob3N0aW5nX2xvZ19vdXQoKSBvdmVyIGN1cnNlcyIpLgo+IFNvIHdl
-IGNhbiByZW1vdmUgdGhlIHJlbGF0ZWQgbGluZXMgaW4gdGhlIE1ha2VmaWxlIG5vdywgdG9vLgo+
-IAo+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBIdXRoIDx0aHV0aEByZWRoYXQuY29tPgo+IC0tLQo+
-ICB0YXJnZXQvdW5pY29yZTMyL01ha2VmaWxlLm9ianMgfCA0IC0tLS0KPiAgMSBmaWxlIGNoYW5n
-ZWQsIDQgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL3RhcmdldC91bmljb3JlMzIvTWFr
-ZWZpbGUub2JqcyBiL3RhcmdldC91bmljb3JlMzIvTWFrZWZpbGUub2Jqcwo+IGluZGV4IDM1ZDhi
-ZjUzMGQuLjZiNDFiMWU5ZWYgMTAwNjQ0Cj4gLS0tIGEvdGFyZ2V0L3VuaWNvcmUzMi9NYWtlZmls
-ZS5vYmpzCj4gKysrIGIvdGFyZ2V0L3VuaWNvcmUzMi9NYWtlZmlsZS5vYmpzCj4gQEAgLTIsNyAr
-MiwzIEBAIG9iai15ICs9IHRyYW5zbGF0ZS5vIG9wX2hlbHBlci5vIGhlbHBlci5vIGNwdS5vCj4g
-IG9iai15ICs9IHVjZjY0X2hlbHBlci5vCj4gIAo+ICBvYmotJChDT05GSUdfU09GVE1NVSkgKz0g
-c29mdG1tdS5vCj4gLQo+IC0jIEh1aD8gVXNlcyBjdXJzZXMgZGlyZWN0bHkgaW5zdGVhZCBvZiB1
-c2luZyB1aS9jb25zb2xlLmggaW50ZXJmYWNlcyAuLi4KPiAtaGVscGVyLm8tY2ZsYWdzIDo9ICQo
-Q1VSU0VTX0NGTEFHUykKPiAtaGVscGVyLm8tbGlicyA6PSAkKENVUlNFU19MSUJTKQo+IC0tIAo+
-IDIuMTguMQo=
+On 27/07/2020 06.59, Tianjia Zhang wrote:
+> This patch fixes the netdev document description typo in qemu-option.hx.
+> 
+> Signed-off-by: Tianjia Zhang <tianjia.zhang@linux.alibaba.com>
+> ---
+>  qemu-options.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 708583b4ce..92556ed96d 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -2684,7 +2684,7 @@ SRST
+>      disable script execution.
+>  
+>      If running QEMU as an unprivileged user, use the network helper
+> -    helper to configure the TAP interface and attach it to the bridge.
+> +    to configure the TAP interface and attach it to the bridge.
+>      The default network helper executable is
+>      ``/path/to/qemu-bridge-helper`` and the default bridge device is
+>      ``br0``.
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
