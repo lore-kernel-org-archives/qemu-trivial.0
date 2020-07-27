@@ -1,73 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1jzza3-0000bw-A6
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 05:37:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36552)
+	id 1k03l4-0007Pa-L1
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 10:05:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lekiravi@yandex-team.ru>)
- id 1jzza1-0000b2-HX; Mon, 27 Jul 2020 05:37:57 -0400
-Received: from forwardcorp1p.mail.yandex.net ([77.88.29.217]:58864)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lekiravi@yandex-team.ru>)
- id 1jzzZw-0004tE-Lb; Mon, 27 Jul 2020 05:37:55 -0400
-Received: from sas1-ec30c78b6c5b.qloud-c.yandex.net
- (sas1-ec30c78b6c5b.qloud-c.yandex.net
- [IPv6:2a02:6b8:c14:2704:0:640:ec30:c78b])
- by forwardcorp1p.mail.yandex.net (Yandex) with ESMTP id 9C0822E03DE;
- Mon, 27 Jul 2020 12:37:45 +0300 (MSK)
-Received: from unknown (unknown [::1])
- by sas1-ec30c78b6c5b.qloud-c.yandex.net (mxbackcorp/Yandex) with ESMTP id
- FjdIJzHK3x-bisGKls0; Mon, 27 Jul 2020 12:37:45 +0300
-Precedence: bulk
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; 
- t=1595842665; bh=q5MWxIcL48YB8moBBMMGRDn3VyRqxTGYPodQbOE6RQg=;
- h=Subject:In-Reply-To:Cc:Date:References:To:From:Message-Id;
- b=tgL1M7W7sw/03Qg2W/+ttcYiuCTOPicaMhogX39hREB0cedSEHsPd0jIA4pFMlYyF
- QbFGKkXuFWXztxxy924E2fQ4fWjx5LMAhbhTAcyGFcZzJ1arWhAjQudf5XxDciweOV
- Km6PmyF46SXKXML9rKTgn6LTwiATnkL74sBmgfCs=
-Authentication-Results: sas1-ec30c78b6c5b.qloud-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-X-Yandex-Sender-Uid: 1120000000161690
-X-Yandex-Avir: 1
-Received: from iva8-d077482f1536.qloud-c.yandex.net
- (iva8-d077482f1536.qloud-c.yandex.net [2a02:6b8:c0c:2f26:0:640:d077:482f])
- by iva8-00026c0e2ab1.qloud-c.yandex.net with LMTP id QbEFIe8hr4-GJhjGQDt
- for <lekiravi@yandex-team.ru>; Mon, 27 Jul 2020 12:37:34 +0300
-Received: by iva8-edafde7c849c.qloud-c.yandex.net with HTTP;
- Mon, 27 Jul 2020 12:37:34 +0300
-From: =?utf-8?B?0JDQu9C10LrRgdC10Lkg0JrQuNGA0LjQu9C70L7Qsg==?=
- <lekiravi@yandex-team.ru>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Cleber Rosa <crosa@redhat.com>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "yc-core@yandex-team.ru" <yc-core@yandex-team.ru>
-In-Reply-To: <f365e96e-3e83-ede6-3db5-2e02eb03adaa@redhat.com>
-References: <20200715152135.20287-1-lekiravi@yandex-team.ru>
- <f365e96e-3e83-ede6-3db5-2e02eb03adaa@redhat.com>
-Subject: Re: [PATCH 1/1] analyze-migration.py: fix read_migration_debug_json()
- return type
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k03l2-0007O0-VE
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:05:36 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:30476
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k03l1-0005eI-9U
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:05:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595858734;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=rImtNr/P7oOyjiUw87bm4Cuj5xrJhLGoRjppvfWNwng=;
+ b=KEv73PklVfBkqTORWUSkwucw5F3J2MhJmin+d8wOV1SE/rOAX1LrmJBjl3u04O2bKndMOs
+ LHIjOobE3jiE5sakGKra+XG6iRpMNzMIKcG1bKXLiDTqqSAtI/wmK8vGjmcbTev0gS5H73
+ dnjyu4mP2y2SjAfwnvJycdy7iOqzVTc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-166-8w8s5OurMWa7QP0KM9GBlg-1; Mon, 27 Jul 2020 10:05:32 -0400
+X-MC-Unique: 8w8s5OurMWa7QP0KM9GBlg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 344B31005504;
+ Mon, 27 Jul 2020 14:05:31 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-156.ams2.redhat.com [10.36.112.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41C7671D0C;
+ Mon, 27 Jul 2020 14:05:30 +0000 (UTC)
+Subject: Re: [PATCH 0/3] configure: fix forSunOS based systems
+To: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>
+References: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Eric Blake <eblake@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <5ac1126a-2144-b94f-d892-0834e13727f7@redhat.com>
+Date: Mon, 27 Jul 2020 16:05:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Mon, 27 Jul 2020 12:37:44 +0300
-Message-Id: <318531595842403@mail.yandex-team.ru>
-Content-Transfer-Encoding: base64
-Content-Type: text/html; charset=utf-8
-Received-SPF: pass client-ip=77.88.29.217;
- envelope-from=lekiravi@yandex-team.ru; helo=forwardcorp1p.mail.yandex.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 05:37:46
+In-Reply-To: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 01:46:13
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- HTML_MIME_NO_HTML_TAG=0.377, MIME_HTML_ONLY=0.1, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
+Precedence: list
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -76,30 +74,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jul 2020 09:37:58 -0000
+X-List-Received-Date: Mon, 27 Jul 2020 14:05:37 -0000
 
-PGRpdj5QaW5nPC9kaXY+PGRpdj7CoDwvZGl2PjxkaXY+MTUuMDcuMjAyMCwgMTk6MDYsICJQaGls
-aXBwZSBNYXRoaWV1LURhdWTDqSIgJmx0O3BoaWxtZEByZWRoYXQuY29tJmd0Ozo8L2Rpdj48Ymxv
-Y2txdW90ZT48cD5DYydpbmcgRWR1YXJkby9DbGViZXIuPGJyIC8+PGJyIC8+T24gNy8xNS8yMCA1
-OjIxIFBNLCBBbGV4ZXkgS2lyaWxsb3Ygd3JvdGU6PC9wPjxibG9ja3F1b3RlPsKgU2luY2Ugd2Ug
-dXNlIHJlc3VsdCBvZiByZWFkX21pZ3JhdGlvbl9kZWJ1Z19qc29uKCkgYXMgSlNPTiBmb3JtYXR0
-ZWQgc3RyaW5nLDxiciAvPsKgd2UgbXVzdCBwcm92aWRlIHByb3BlciB0eXBlLiBCZWZvcmUgUHl0
-aG9uIDMuNiBqc29uLmxvYWRzKCkgbWV0aG9kPGJyIC8+wqBzdXBwb3J0IG9ubHkgc3RyIHR5cGVk
-IGlucHV0LjxiciAvPsKgPGJyIC8+wqBTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkgS2lyaWxsb3YgJmx0
-OzxhIGhyZWY9Im1haWx0bzpsZWtpcmF2aUB5YW5kZXgtdGVhbS5ydSI+bGVraXJhdmlAeWFuZGV4
-LXRlYW0ucnU8L2E+Jmd0OzxiciAvPsKgLS0tPGJyIC8+wqDCoHNjcmlwdHMvYW5hbHl6ZS1taWdy
-YXRpb24ucHkgfCAyICstPGJyIC8+wqDCoDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwg
-MSBkZWxldGlvbigtKTxiciAvPsKgPGJyIC8+wqBkaWZmIC0tZ2l0IGEvc2NyaXB0cy9hbmFseXpl
-LW1pZ3JhdGlvbi5weSBiL3NjcmlwdHMvYW5hbHl6ZS1taWdyYXRpb24ucHk8YnIgLz7CoGluZGV4
-IDk1ODM4Y2JmZjMuLmM1ZjA2NDgyY2YgMTAwNzU1PGJyIC8+wqAtLS0gYS9zY3JpcHRzL2FuYWx5
-emUtbWlncmF0aW9uLnB5PGJyIC8+wqArKysgYi9zY3JpcHRzL2FuYWx5emUtbWlncmF0aW9uLnB5
-PGJyIC8+wqBAQCAtOTcsNyArOTcsNyBAQCBjbGFzcyBNaWdyYXRpb25GaWxlKG9iamVjdCk6PGJy
-IC8+wqDCoMKgwqDCoMKgwqDCoMKgwqAjIFNlZWsgYmFjayB0byB3aGVyZSB3ZSB3ZXJlIGF0IHRo
-ZSBiZWdpbm5pbmc8YnIgLz7CoMKgwqDCoMKgwqDCoMKgwqDCoHNlbGYuZmlsZS5zZWVrKGVudHJ5
-cG9zLCAwKTxiciAvPsKgwqA8YnIgLz7CoC0gcmV0dXJuIGRhdGFbanNvbnBvczpqc29ucG9zICsg
-anNvbmxlbl08YnIgLz7CoCsgcmV0dXJuIGRhdGFbanNvbnBvczpqc29ucG9zICsganNvbmxlbl0u
-ZGVjb2RlKCJ1dGYtOCIpPGJyIC8+wqDCoDxiciAvPsKgwqDCoMKgwqDCoGRlZiBjbG9zZShzZWxm
-KTo8YnIgLz7CoMKgwqDCoMKgwqDCoMKgwqDCoHNlbGYuZmlsZS5jbG9zZSgpPGJyIC8+wqA8L2Js
-b2NrcXVvdGU+PHA+wqA8L3A+PC9ibG9ja3F1b3RlPjxkaXY+wqA8L2Rpdj48ZGl2PsKgPC9kaXY+
-PGRpdj4tLcKgPC9kaXY+PGRpdj5BbGV4ZXkgS2lyaWxsb3Y8L2Rpdj48ZGl2PsKgPC9kaXY+
+ Hi David,
+
+On 18/07/2020 15.19, David CARLIER wrote:
+> From 63a3c9639d708a796abd958607aa6376fc9b99f2 Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Sat, 18 Jul 2020 13:27:52 +0100
+
+These headers --^ should not be part of the e-mail body (otherwise they
+will be part of the patch description if this patch gets picked up with
+"git am").
+
+> Subject: [PATCH 1/3] configure: fix for SunOS based systems.
+> 
+> local directive make the configure fails on these systems.
+> 
+> Signed-off-by: David Carlier <devnexen@gmail.com>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index e93836aaae..5d100eba72 100755
+> --- a/configure
+> +++ b/configure
+> @@ -59,7 +59,7 @@ error_exit() {
+>  do_compiler() {
+>      # Run the compiler, capturing its output to the log. First argument
+>      # is compiler binary to execute.
+> -    local compiler="$1"
+> +    compiler="$1"
+>      shift
+>      if test -n "$BASH_VERSION"; then eval '
+>          echo >>config.log "
+> 
+
+We're not using $compiler anywhere else outside of this function in the
+configure script, so I think this should be ok.
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
