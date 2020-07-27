@@ -1,67 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k03l4-0007Pa-L1
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 10:05:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43778)
+	id 1k04Kv-0002I2-KE
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 10:42:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k03l2-0007O0-VE
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:05:36 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:30476
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1k04Ku-0002EE-1x
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:42:40 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:22776
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k03l1-0005eI-9U
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:05:36 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1k04Ks-0002do-DS
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 10:42:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595858734;
+ s=mimecast20190719; t=1595860957;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=rImtNr/P7oOyjiUw87bm4Cuj5xrJhLGoRjppvfWNwng=;
- b=KEv73PklVfBkqTORWUSkwucw5F3J2MhJmin+d8wOV1SE/rOAX1LrmJBjl3u04O2bKndMOs
- LHIjOobE3jiE5sakGKra+XG6iRpMNzMIKcG1bKXLiDTqqSAtI/wmK8vGjmcbTev0gS5H73
- dnjyu4mP2y2SjAfwnvJycdy7iOqzVTc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-166-8w8s5OurMWa7QP0KM9GBlg-1; Mon, 27 Jul 2020 10:05:32 -0400
-X-MC-Unique: 8w8s5OurMWa7QP0KM9GBlg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 344B31005504;
- Mon, 27 Jul 2020 14:05:31 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-156.ams2.redhat.com [10.36.112.156])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 41C7671D0C;
- Mon, 27 Jul 2020 14:05:30 +0000 (UTC)
-Subject: Re: [PATCH 0/3] configure: fix forSunOS based systems
-To: David CARLIER <devnexen@gmail.com>, qemu-devel <qemu-devel@nongnu.org>
-References: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Eric Blake <eblake@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <5ac1126a-2144-b94f-d892-0834e13727f7@redhat.com>
-Date: Mon, 27 Jul 2020 16:05:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ in-reply-to:in-reply-to:references:references;
+ bh=LgUcK7AW317W7xaK4NEWuXJcDMIWeZWvFDqzfYiDQR8=;
+ b=AIES2OwjG6HvteJhbCvyKeh+4iNfx2J76CGVq9VyCazW9Tr6DiKilKxftAXQqa1CwOc688
+ u+tYTMRKYBskoocD2BuLhi4TRk21IEuSRK7nICNMWzaHnhmAtJ9GQ9q7JSsMk/JDKQSnhy
+ CQPDasouF6Du/LRYG6we6XWeX7vDtRY=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-347-hh3EHNQBOlmqCLN4sEyW6w-1; Mon, 27 Jul 2020 10:42:35 -0400
+X-MC-Unique: hh3EHNQBOlmqCLN4sEyW6w-1
+Received: by mail-wr1-f69.google.com with SMTP id 5so3992650wrc.17
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2020 07:42:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LgUcK7AW317W7xaK4NEWuXJcDMIWeZWvFDqzfYiDQR8=;
+ b=uoDKzRtIyON3l0tvF3zRyqZZwE6a1RGMcSeQ8Ijlsqo5xM7LGfgnN9gyOm00wNs2LY
+ zcwa3hsMtHh05LVDM4z/Bew76OzP6lbg80mDUKon/04qfGE4wJKQO2jwp811qpgmNqN2
+ /rD5HDGxO11c4aUeUVo+BB77oVWXRhk5r2bm+9udmRDHZu4Gz2LrdBmdES3nLg3A6S7v
+ +NtigNubicZm206ywFtIQWUatR7OQNnNj3IYdc0ENRwDY4Ny06OW5c6iteiJeFYBCbPh
+ AU7LCHXcWRLToUc3DFRw/c5hAA56t/ENnR1EAfdn51vBhZXFmr0E6cuvaQfwZzQ24l6F
+ t31Q==
+X-Gm-Message-State: AOAM530GB6YLwo+46mRiP2UeLvf7BJRvvDtGnlqBqqEHuzR47lvzVKrl
+ ZLIekQqYyi0040nH3bYZRD7ilwgqFvljmyr89SnLhBZKi+BZj6S1sXHzlN7OvQyw8MVCyK8dtJ0
+ xse5R9rIfEdWQnOLaZg==
+X-Received: by 2002:a5d:4bc8:: with SMTP id l8mr20234226wrt.159.1595860954434; 
+ Mon, 27 Jul 2020 07:42:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdCHtsjjLhqfdsbFH0iueUNGuEBnzdaP2I/FSOdNFxlctFz0hhNlwC0VYuC1vcsNKoBysuvg==
+X-Received: by 2002:a5d:4bc8:: with SMTP id l8mr20234212wrt.159.1595860954221; 
+ Mon, 27 Jul 2020 07:42:34 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:4502:3ee3:2bae:c612?
+ ([2001:b07:6468:f312:4502:3ee3:2bae:c612])
+ by smtp.gmail.com with ESMTPSA id i9sm18451892wmb.11.2020.07.27.07.42.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jul 2020 07:42:33 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1 v2] hw/isa/isa-superio: Fix IDE controller
+ realization
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+References: <20200721124516.9602-1-f4bug@amsat.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <1309c64b-3cdd-9512-0d8b-8467b54291f3@redhat.com>
+Date: Mon, 27 Jul 2020 16:42:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <CA+XhMqy95D8X-QvBcEfL=a-Rkgy6aJtheskkqZwQkreru+T_Wg@mail.gmail.com>
+In-Reply-To: <20200721124516.9602-1-f4bug@amsat.org>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 01:46:13
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 03:37:14
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,46 +95,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jul 2020 14:05:37 -0000
+X-List-Received-Date: Mon, 27 Jul 2020 14:42:40 -0000
 
- Hi David,
-
-On 18/07/2020 15.19, David CARLIER wrote:
-> From 63a3c9639d708a796abd958607aa6376fc9b99f2 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Sat, 18 Jul 2020 13:27:52 +0100
-
-These headers --^ should not be part of the e-mail body (otherwise they
-will be part of the patch description if this patch gets picked up with
-"git am").
-
-> Subject: [PATCH 1/3] configure: fix for SunOS based systems.
+On 21/07/20 14:45, Philippe Mathieu-Daudé wrote:
+> When realizing a Super I/O with IDE controller [*], we get:
 > 
-> local directive make the configure fails on these systems.
+>   qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+>   Aborted (core dumped)
 > 
-> Signed-off-by: David Carlier <devnexen@gmail.com>
+> This is because the device is already realized when we try to
+> add the QOM property to the parent. Fix by realizing *after*
+> adding the QOM relationship.
+> 
+> [*] Set ISASuperIOClass::ide.count = N with N not zero
+>     (no such thing currently exists; the bug is latent)
+> 
+> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  configure | 2 +-
+> v2: Reword bug is latent (Markus)
+> ---
+>  hw/isa/isa-superio.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/configure b/configure
-> index e93836aaae..5d100eba72 100755
-> --- a/configure
-> +++ b/configure
-> @@ -59,7 +59,7 @@ error_exit() {
->  do_compiler() {
->      # Run the compiler, capturing its output to the log. First argument
->      # is compiler binary to execute.
-> -    local compiler="$1"
-> +    compiler="$1"
->      shift
->      if test -n "$BASH_VERSION"; then eval '
->          echo >>config.log "
+> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+> index e2e47d8fd9..179c185695 100644
+> --- a/hw/isa/isa-superio.c
+> +++ b/hw/isa/isa-superio.c
+> @@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+>          if (k->ide.get_irq) {
+>              qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
+>          }
+> -        isa_realize_and_unref(isa, bus, &error_fatal);
+>          object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
+> +        isa_realize_and_unref(isa, bus, &error_fatal);
+>          sio->ide = isa;
+>          trace_superio_create_ide(0,
+>                                   k->ide.get_iobase ?
 > 
 
-We're not using $compiler anywhere else outside of this function in the
-configure script, so I think this should be ok.
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
 
