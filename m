@@ -1,101 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k0C8c-0002rc-Ar
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 19:02:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50190)
+	id 1k0Gjh-00041a-Ss
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2020 23:57:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matthieu.bucchianeri@leostella.com>)
- id 1k072y-0008Me-Sc
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 13:36:20 -0400
-Received: from mail-bn3usg02on0138.outbound.protection.office365.us
- ([23.103.208.138]:22992 helo=USG02-BN3-obe.outbound.protection.office365.us)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1k0Gjb-0003z4-9z; Mon, 27 Jul 2020 23:57:02 -0400
+Received: from ozlabs.org ([203.11.71.1]:37655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matthieu.bucchianeri@leostella.com>)
- id 1k072w-0004yK-NA
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2020 13:36:20 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector5401; d=microsoft.com; cv=none;
- b=UUEwkb025S7c3me37iZu4B9JBjBAYIqzasstZwH/yhnLlF6l1X22wJArmljSsninvlVHCHMHD1SU107xGZYtWTKqEypMNdZimGLimDSAv6do1P7xLoxM/2+vzzuVPaMXeS78D4Ae3rwRnd39OV/Ct4H0KeTH8y8Hr8uYTEHnUlqBZrgyrl5MeRno++IJwPXUc/SC1AI4krvAitBc3lFYYPPn89oVu1PMUDAKrYxPv6SIeSr95CQDufNTOoghOwJNFh4Zl6EEGCEM0LrEcdFu363aIs4zjWYyhQ/8iBIuxcpjxMnnUrfKWGZyNYASFHO5Sl+QeXZl0BJ1oN0lWLR3Bg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector5401;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9AyYcZeJhffJgimBV7FM3XZGQE4rq4cFhk14/tBV2Mk=;
- b=aDRray4QxlzHDERdmHSL0C8Ey5uJNeHiom3ZzYtY4vcg+flI1aAvrbjvo1dzRvYuplvCKWA4/InpqaA5Zn0sZiw/h7mZAuaDq2qzQiqxmiNLPVg5jY9WXjBvN+vJiucE8S4G7KzbEoTzeUM0mhoCM+NnkKYNK6luCgCoudyR8EbFeOKPRrGd5QHuc7CEppTtn/V6zninpmoiQQNFGZZe/hfSyJUMQfHk3W2rkIukEVnhbSXr1xikgz2fy/ZfIItxq7tc+Ic+bQVextsJmE3KVW4cHBa764MJV+mFH++rHXfWZqd7aSLmNY9WMjXIM4rcYuPFaV2wi6JtG6SWQ54zmg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=leostella.com; dmarc=pass action=none
- header.from=leostella.com; dkim=pass header.d=leostella.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=leostella.onmicrosoft.com; s=selector1-leostella-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9AyYcZeJhffJgimBV7FM3XZGQE4rq4cFhk14/tBV2Mk=;
- b=pvB56WjomJ5AGKbDDDNc7KUKyTbS93O48mWGLf7hQ9F6da3luQpu5yfKA3tgw55RLdTJijwuB62NK4C9yAFcBmmFh30ky0KqoEjcty/5PeUsk6WqiNPyUkm/e02TQwIYxXlUP+7vOmWiHbfsl0gAsu2hYzqjVfFFUjKJXpEF1J8=
-Authentication-Results: nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=none action=none header.from=leostella.com;
-Received: from SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM (2001:489a:200:41c::10)
- by SN5P110MB0480.NAMP110.PROD.OUTLOOK.COM (2001:489a:200:41b::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3216.28; Mon, 27 Jul
- 2020 17:21:33 +0000
-Received: from SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM
- ([fe80::d0e1:84ad:f42:f6f2]) by SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM
- ([fe80::d0e1:84ad:f42:f6f2%5]) with mapi id 15.20.3216.031; Mon, 27 Jul 2020
- 17:21:33 +0000
-From: Matthieu Bucchianeri <matthieu.bucchianeri@leostella.com>
-To: qemu-devel@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: david@gibson.dropbear.id.au,
- Matthieu Bucchianeri <matthieu.bucchianeri@leostella.com>
-Subject: [PATCH] target/ppc: Fix TCG leak with the evmwsmiaa instruction
-Date: Mon, 27 Jul 2020 10:21:14 -0700
-Message-Id: <20200727172114.31415-1-matthieu.bucchianeri@leostella.com>
-X-Mailer: git-send-email 2.17.1
-Content-Type: text/plain; charset="utf-8"
-X-ClientProxiedBy: CY1P110CA0062.NAMP110.PROD.OUTLOOK.COM
- (2001:489a:200:400::32) To SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM
- (2001:489a:200:41c::10)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1k0GjY-0000Dv-3H; Mon, 27 Jul 2020 23:56:59 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4BG2t340T4z9sTj; Tue, 28 Jul 2020 13:56:43 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1595908603;
+ bh=b6lu/0ypHEVBmluZT8612BLl5QBgm+3oW25w7SQcjMk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hA4xpDc0ge8kE/A1uOWvvD47J0fZjghSKSw4PrNPwrHQe7hxwfOvI7nFCTVYGvHjb
+ q4BZFTPI3zXOkd//ZM+LHFa9+++2WkU978B7LD0QjTzjq+7rbMp4EoyHIVEuBNVIMj
+ zOmclJ4uLZ1gs+bebasA7fC2V4B5KsU21b6u/YWs=
+Date: Tue, 28 Jul 2020 13:53:06 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Matthieu Bucchianeri <matthieu.bucchianeri@leostella.com>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] target/ppc: Fix TCG leak with the evmwsmiaa instruction
+Message-ID: <20200728035306.GH84173@umbus.fritz.box>
+References: <20200727172114.31415-1-matthieu.bucchianeri@leostella.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from bd1.leostella.local (2601:601:f01:e820:349c:f32e:2333:ec4c) by
- CY1P110CA0062.NAMP110.PROD.OUTLOOK.COM (2001:489a:200:400::32) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3216.28 via Frontend Transport; Mon, 27 Jul 2020 17:21:32 +0000
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [2601:601:f01:e820:349c:f32e:2333:ec4c]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 86702bd1-c70f-4ce5-2552-08d832518257
-X-MS-TrafficTypeDiagnostic: SN5P110MB0480:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN5P110MB0480313F52CE83330063D15D84720@SN5P110MB0480.NAMP110.PROD.OUTLOOK.COM>
-Content-Transfer-Encoding: quoted-printable
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(346002)(366004)(508600001)(8936002)(6486002)(5660300002)(44832011)(107886003)(86362001)(186003)(4326008)(16526019)(36756003)(2906002)(6512007)(1076003)(2616005)(83380400001)(52116002)(8676002)(66946007)(6666004)(66556008)(6506007)(66476007);
- DIR:OUT; SFP:1102; 
-X-OriginatorOrg: leostella.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 86702bd1-c70f-4ce5-2552-08d832518257
-X-MS-Exchange-CrossTenant-AuthSource: SN5P110MB0543.NAMP110.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2020 17:21:33.5923 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: dbc51146-ab26-404b-9c4b-cce4f3331cc5
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN5P110MB0480
-Received-SPF: pass client-ip=23.103.208.138;
- envelope-from=matthieu.bucchianeri@leostella.com;
- helo=USG02-BN3-obe.outbound.protection.office365.us
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 13:36:16
-X-ACL-Warn: Detected OS   = Windows 7 or 8 [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="fmEUq8M7S0s+Fl0V"
+Content-Disposition: inline
+In-Reply-To: <20200727172114.31415-1-matthieu.bucchianeri@leostella.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 23:56:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -9
+X-Spam_score: -1.0
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 27 Jul 2020 19:02:28 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,60 +53,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jul 2020 17:36:21 -0000
+X-List-Received-Date: Tue, 28 Jul 2020 03:57:03 -0000
 
-Fix double-call to tcg_temp_new_i64(), where a temp is allocated both at
-declaration time and further down the implementation of gen_evmwsmiaa().
 
-Note that gen_evmwsmia() and gen_evmwsmiaa() are still not implemented
-correctly, as they invoke gen_evmwsmi() which may return early, but the
-return is not propagated. This will be fixed in my patch for bug #1888918.
+--fmEUq8M7S0s+Fl0V
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Matthieu Bucchianeri <matthieu.bucchianeri@leostella.com>
----
- target/ppc/translate/spe-impl.inc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Mon, Jul 27, 2020 at 10:21:14AM -0700, Matthieu Bucchianeri wrote:
+> Fix double-call to tcg_temp_new_i64(), where a temp is allocated both at
+> declaration time and further down the implementation of gen_evmwsmiaa().
+>=20
+> Note that gen_evmwsmia() and gen_evmwsmiaa() are still not implemented
+> correctly, as they invoke gen_evmwsmi() which may return early, but the
+> return is not propagated. This will be fixed in my patch for bug #1888918.
+>=20
+> Signed-off-by: Matthieu Bucchianeri
+> <matthieu.bucchianeri@leostella.com>
 
-diff --git a/target/ppc/translate/spe-impl.inc.c b/target/ppc/translate/spe=
--impl.inc.c
-index 36b4d5654d..42a0d1cffb 100644
---- a/target/ppc/translate/spe-impl.inc.c
-+++ b/target/ppc/translate/spe-impl.inc.c
-@@ -528,14 +528,14 @@ static inline void gen_evmwsmia(DisasContext *ctx)
+Applied to ppc-for-5.1.  Note that since this isn't a regression, it's
+not entirely clear it's a good candidate for 5.1 this late in the
+freeze.  There's a possibility it will get punted to 5.2, therefore,
+but for now I'm staging it for 5.1.
 
-     tcg_temp_free_i64(tmp);
- }
+> ---
+>  target/ppc/translate/spe-impl.inc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/target/ppc/translate/spe-impl.inc.c b/target/ppc/translate/s=
+pe-impl.inc.c
+> index 36b4d5654d..42a0d1cffb 100644
+> --- a/target/ppc/translate/spe-impl.inc.c
+> +++ b/target/ppc/translate/spe-impl.inc.c
+> @@ -528,14 +528,14 @@ static inline void gen_evmwsmia(DisasContext *ctx)
+>=20
+>      tcg_temp_free_i64(tmp);
+>  }
+>=20
+>  static inline void gen_evmwsmiaa(DisasContext *ctx)
+>  {
+> -    TCGv_i64 acc =3D tcg_temp_new_i64();
+> -    TCGv_i64 tmp =3D tcg_temp_new_i64();
+> +    TCGv_i64 acc;
+> +    TCGv_i64 tmp;
+>=20
+>      gen_evmwsmi(ctx);           /* rD :=3D rA * rB */
+>=20
+>      acc =3D tcg_temp_new_i64();
+>      tmp =3D tcg_temp_new_i64();
+>=20
 
- static inline void gen_evmwsmiaa(DisasContext *ctx)
- {
--    TCGv_i64 acc =3D tcg_temp_new_i64();
--    TCGv_i64 tmp =3D tcg_temp_new_i64();
-+    TCGv_i64 acc;
-+    TCGv_i64 tmp;
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-     gen_evmwsmi(ctx);           /* rD :=3D rA * rB */
+--fmEUq8M7S0s+Fl0V
+Content-Type: application/pgp-signature; name="signature.asc"
 
-     acc =3D tcg_temp_new_i64();
-     tmp =3D tcg_temp_new_i64();
+-----BEGIN PGP SIGNATURE-----
 
---
-2.17.1
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8foR8ACgkQbDjKyiDZ
+s5KzNw/8Cb9B5+eP5Atb74hpaWBmW79ZKk0k39rNRMnlDYzxjx+BB/UzPQeXc5Ny
+2PdPyoxskkOXgQ5eHLj0Ht7/O1/7/HcLXBqV793PSedsRtAAm7m21BK5pu3WulpI
+FJFTdHsocFzj5MNF6LzrDg+8QNnJwxDsCiyVX6GHYMHYFu0RHmXGfy5pj1/6kquz
+pjX+w37K3r/hQIYAC6eCUMJB+7k61m3E3qw00TuadCfRhcCWHAMRAVyqUy5zca/H
+3FBzRCGncFDHUvBlfLOS/BMt9buBHjWk94g21K6WJnzkQ6Ozokf2bEFotzUZzB4M
+eHPZJ1pSg41c6kIPlgehV78+5x7UnfxNkPFLuvR1sbOLi7vYLHGBCdccIHCytilO
+8kiMa6XiNpXlFJi9XY7el5qLI7Jv4TUTa1HFz8laF6ot6f1mPFaSXPNI9W+I+FHQ
+4z2JPoi1/xTKV+nPPSTPvSBLbhNYQuFBj/jAd0jXsdeFqVWZoOF0/YPhnGg8Mzdd
+HyyRHAMSQUwrQkYQwAXY+Iqgv0oXKV3BM5n8YIivnRAdEbCCQUWjgIgFPsh1Bg3F
+54aRDvEs/AnckX9xi5CNbmu6aA2c9LchVZeKIsmFL90anGm3MY3/FRqq4lP8WgiG
+Vn/4fb2ICk2blkTSXQ1VpCX+bKd4QZSSb9CItaTBNlLIDT335EY=
+=FfQA
+-----END PGP SIGNATURE-----
 
-LeoStella, LLC
-A joint venture of Thales Alenia Space and Spaceflight Industries
-
-12501 E Marginal Way S =E2=80=A2 Tukwila, WA 98168
-
-Proprietary Document: This document may contain trade secrets or otherwise =
-proprietary and confidential information owned by LeoStella LLC. It is inte=
-nded only for the individual addressee and may not be copied, distributed, =
-or otherwise disclosed without LeoStella LLC express prior written authoriz=
-ation.
-Export Controlled: This document may contain technical data whose export is=
- restricted by the Arms Export Control Act (Title 22, U.S.C., Sec 2751 et s=
-eq.) or the Export Administration Act of 1979, as amended, Title 50,U.S.C.,=
- app 2401 et seq. Violation of these export laws are subject to severe crim=
-inal penalties. Recipient shall not export, re-export, or otherwise transfe=
-r or share this document to any foreign person (as defined by U.S. export l=
-aws) without advance written authorization from LeoStella LLC.
+--fmEUq8M7S0s+Fl0V--
 
