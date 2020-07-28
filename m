@@ -1,68 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k0Mtg-0000gB-Bg
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jul 2020 06:31:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51814)
+	id 1k0R7U-00049R-LO
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jul 2020 11:02:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k0Mte-0000dm-Do
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 06:31:46 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:22860
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k0Mtb-0001xp-C8
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 06:31:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595932302;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=M1AqVBYUcZ4HxALsQVI6C8fn34KO/f/b/o1SspF3z5E=;
- b=YC/Ohf1xfGNdkruDiO6PLYIky1DR84CFTEQRe10wKSMGyL3QTNaHxnOg4+RJ+dyHWEEQwD
- deqriG+8owVgIyEseRVtz/TX8TgaJGW+38huM0tKNpsRUv8sVUJxu0PQuLFndMJSEvg1jq
- Pk0k9JWK+5EXDrCc7H43/wl4lmMdUnY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-268-J9p_2fa2NAmxAf85468BQg-1; Tue, 28 Jul 2020 06:31:40 -0400
-X-MC-Unique: J9p_2fa2NAmxAf85468BQg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 220AE186A82C;
- Tue, 28 Jul 2020 10:31:39 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-161.ams2.redhat.com [10.36.112.161])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D83F5726BA;
- Tue, 28 Jul 2020 10:31:37 +0000 (UTC)
-Subject: Re: [PATCH] virtio-ccw-input: fix description
-To: Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>
-Cc: qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200728102820.273598-1-cohuck@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <e07fb1d5-0b41-f498-cfe3-40358fb00786@redhat.com>
-Date: Tue, 28 Jul 2020 12:31:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k0R7T-000493-EE
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 11:02:19 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37856)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k0R7R-0006Hf-NJ
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 11:02:19 -0400
+Received: by mail-oi1-x243.google.com with SMTP id 12so17735351oir.4
+ for <qemu-trivial@nongnu.org>; Tue, 28 Jul 2020 08:02:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sTlza4Av+fjTMBRgPOAc9Q/orGf6ADMDhCa1XX1AjRM=;
+ b=cbb5LC3IL/CA0zARdZ+qyIf9FGvX4/E0IeI0GPFS/EkQoGMOSAggJRV5suHfY0PDMf
+ Jkul5tD2Y4vQZVfOoO2ppk49To0DWbCzpQ1wQ1xWPQA0iM/o3s/dTAAxoTFJc6WTmlzO
+ OvX06gbRMgVIEWDTY8kZ15O59oomQFQB5tEzT26/gaJ3htPMXPW1Togt8W0k8enIU5ki
+ t3Wc0mpC+JF9Cf0ma2cI68+XDD77LdPzwVUBuQwXKTxRD8zyyvFZK+s4/IEOcIRKcVeA
+ PKQO2aZbIGmn/NelmrnK2mxflSeiKo37J8KD+gKV/FACw9N6XbHy3tZUpcuqKAbOAQwp
+ EF9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sTlza4Av+fjTMBRgPOAc9Q/orGf6ADMDhCa1XX1AjRM=;
+ b=ER2B2DR0oqQPeYF7OVG2I0ATPjiXtEwODLXf0okM58ptrqrkwS0umfqxp773Vg+TJJ
+ j7QQ+QaeS7V1UdYuQyDTc+Skxv6GJK5rySgDd88LxLUQvLzaGp+sHSMsrezBsSj5Khvc
+ vcl72kOlHCL/kHnNwO9Ee1V0tWglXgY+FVS5Dlrnd5pm/GWOaaR/o5jmNgAIYtpJsqWD
+ tQneg71qpO5ONyoL+W4+QnaHivGWjBwT+47YhYuMj2CwmOYJQZLzqYgxJWM7n+xu92lC
+ zVUIQTV9wE8wKp3hnXHDdjBHGgeVPekTXTE/qqNpGC23zZeRJ9wzGI41n1L4F+xsjXlo
+ Vo3w==
+X-Gm-Message-State: AOAM530jsvVfoAo9Y4eHb96AHDFn1dsEYlNwOqQMekoQ+OMD3OBFskWw
+ IHzObAfof6qi86dvg9+/ottdABYUNgM3Jb89+CAQqw==
+X-Google-Smtp-Source: ABdhPJygJ6841spn951OS7vwcvUHmy7XVpAnSXgDmkwvG8SC9KZsX8N+htWzeRNkxw710LdqUSJWZd4aWR01gZSNHyk=
+X-Received: by 2002:aca:4a96:: with SMTP id x144mr3806485oia.163.1595948536217; 
+ Tue, 28 Jul 2020 08:02:16 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200728102820.273598-1-cohuck@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 06:02:02
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200716154114.10838-1-peter.maydell@linaro.org>
+In-Reply-To: <20200716154114.10838-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Jul 2020 16:02:05 +0100
+Message-ID: <CAFEAcA9k7uN8VWoDCfevfLeQ9En3kEwZyz=4mHOSWB8eyzBFaQ@mail.gmail.com>
+Subject: Re: [PATCH] osdep.h: Add doc comment for qemu_get_thread_id()
+To: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,29 +73,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jul 2020 10:31:46 -0000
+X-List-Received-Date: Tue, 28 Jul 2020 15:02:19 -0000
 
-On 28/07/2020 12.28, Cornelia Huck wrote:
-> Fix a copy/paste error.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Ping? I've cc'd a few new people who might have a view on the
+"should the QMP documentation define what a thread-id is?"
+question below the --- fold...
+
+On Thu, 16 Jul 2020 at 16:41, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Add a documentation comment for qemu_get_thread_id(): since this
+> is rather host-OS-specific it's useful if people writing the
+> implementation and people thinking of using the function know
+> what the purpose and limitations are.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/s390x/virtio-ccw-input.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/s390x/virtio-ccw-input.c b/hw/s390x/virtio-ccw-input.c
-> index 5601e25deed8..83136fbba15c 100644
-> --- a/hw/s390x/virtio-ccw-input.c
-> +++ b/hw/s390x/virtio-ccw-input.c
-> @@ -1,5 +1,5 @@
->  /*
-> - * virtio ccw scsi implementation
-> + * virtio ccw input implementation
->   *
->   * Copyright 2012, 2015 IBM Corp.
->   *
-> 
+> Based on conversation with Dan on IRC, and prompted by the recent
+> patch to add OpenBSD support.
+>
+> Q: should we document exactly what the thread-id value is for
+> each host platform in the QMP documentation ? Somebody writing
+> a management layer app should ideally not have to grovel through
+> the application to figure out what they should do with the
+> integer value they get back from query-cpus...
+>
+>  include/qemu/osdep.h | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 4841b5c6b5f..8279f72e5ed 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -515,6 +515,20 @@ bool qemu_has_ofd_lock(void);
+>
+>  bool qemu_write_pidfile(const char *pidfile, Error **errp);
+>
+> +/**
+> + * qemu_get_thread_id: Return OS-specific ID of current thread
+> + *
+> + * This function returns an OS-specific identifier of the
+> + * current thread. This will be used for the "thread-id" field in
+> + * the response to the QMP query-cpus and query-iothreads commands.
+> + * The intention is that a VM management layer application can then
+> + * use it to tie specific QEMU vCPU and IO threads to specific host
+> + * CPUs using whatever the host OS's CPU affinity setting API is.
+> + * New implementations of this function for new host OSes should
+> + * return the most sensible integer ID that works for that purpose.
+> + *
+> + * This function should not be used for anything else inside QEMU.
+> + */
+>  int qemu_get_thread_id(void);
+>
+>  #ifndef CONFIG_IOVEC
+> --
+> 2.20.1
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+thanks
+-- PMM
 
