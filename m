@@ -1,67 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k0RTk-00036P-G2
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jul 2020 11:25:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46282)
+	id 1k0lmA-00042b-Qy
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jul 2020 09:05:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k0RTi-00036B-UJ
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 11:25:18 -0400
-Received: from mail-oo1-xc43.google.com ([2607:f8b0:4864:20::c43]:43866)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1k0lm9-00040e-53; Wed, 29 Jul 2020 09:05:41 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43376)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k0RTg-00020O-Rl
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2020 11:25:18 -0400
-Received: by mail-oo1-xc43.google.com with SMTP id z10so1011341ooi.10
- for <qemu-trivial@nongnu.org>; Tue, 28 Jul 2020 08:25:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=puUEZluVTYddP3iAs7PLgPzAU7pxv47sI3hjBMoxUv8=;
- b=J4rRI+QMf76qHd3H6GI+kt2upGMAvBMVJdXWU8LUx+qeFbLD2PkbguMQBvPgyMrEqw
- 9PsY5/z7NlpI1VHJ2BGuCCMSFehCuLyYycghpU4XYehXr1mGwpJLU3sD9PsvVqntCiqi
- fhnlxeqUiTc3M5ngKabaD/TnocsjVyRbFecWDYK9B6T9Zo9gRHGenq8uQINPUdgRdCf9
- QmisLKOPplx/oBAunhDOOwKWGtc+3HGBGmTzeLPFQ80tPolyP9KqvuLMqhzdciEs7+cL
- gnyAHN2JUWwDy5JpiPHg0ZwayYOZrwN2/9a320KrNQL6yfRJJsheuDB0wMlQif9mVdME
- KY6w==
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1k0lm7-0006FI-EW; Wed, 29 Jul 2020 09:05:40 -0400
+Received: by mail-wr1-x442.google.com with SMTP id a15so21560836wrh.10;
+ Wed, 29 Jul 2020 06:05:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=DTO40fdW7o1GwYYDAdV5m6TuDnv9KZFM1VjVJXBxTkE=;
+ b=JPHRLQ4/tAG47Zeffu7fcCEKG/1iFCdkvr76J3IsqzuKcWi4E2FNj03W/Aas9eE6bv
+ Jy6cmQqjPu1UO1o0nr5pyTCN/uwB9bCza7y1bkfnYKGi5gOIDb/fyNzroOhJdZjQIri7
+ zw8P3W7g5rrOY0dY7rl477VOq0wFTA3vD6YNSasVfvoEVj+pzRlqDauojsowDfBqjaR9
+ HKNCXUJsIskdLK/WkPWkJHkuHGnlfBnYOvfirXFDOiPnbf8qkuVDpSCUtZaE3CeuUVBo
+ iAGh6NlOZtLcUGsVt5gTN0c+zXOiZxaBbolXGJSY8I6+94M78iRhjek4jC+EA6xkiMd6
+ Nixg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=puUEZluVTYddP3iAs7PLgPzAU7pxv47sI3hjBMoxUv8=;
- b=e7a/AR0tpYxJBxuVwaEQ0C5Q7Qid4Hi4PXnxXRKZpIdVYZrBJSJhNP6JtOSv6syTED
- /TBsWhZ/gwvH1dv2sQJI5RYFB1kqO+EjFN7WZjupGahqQPvI1Z8bPAkPLRxG1w8dyOsk
- C2jyBsShXSR5Y35t2Kn/K5Cug6XjO5/VW3VHun9zQLToKLtwcUY5OM0/GzGh1dgfnzrN
- Do2uDWQpi5NRnIxC0BM2cNaTKLNVDloxKEyYkxVqDuAiN0xI2nYCUGEjMGdJnqaKugrO
- UxaIpHU7PcTfuF3MGdZrRBvzniyNXnmb9IRSQfZG63HYBZo65DXPTRwP8c/N4frsc5ik
- g0ZQ==
-X-Gm-Message-State: AOAM530ai5+XFhqLU/nuc6pDjpR+rDaxwP2VbUfXEYaKDVY8RpeDIDsg
- 8jmsYXw7nUKoFRpfn7KZ3u+P5ZVy+acb6KJxLvBGhQ==
-X-Google-Smtp-Source: ABdhPJxYWgWJXeffKQqCgsclnAvhnZJrJ9o0j8ZncEfUgq+jOHU/rhvrJgmx1bUFusDffTUA3ACHFNhsOt9sQYshYbo=
-X-Received: by 2002:a4a:4949:: with SMTP id z70mr22371460ooa.85.1595949915447; 
- Tue, 28 Jul 2020 08:25:15 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=DTO40fdW7o1GwYYDAdV5m6TuDnv9KZFM1VjVJXBxTkE=;
+ b=oQScKFYLEy9Cu04DAG8ZqdvtNBGKh1gNSkf4s7+Zi4vRuuozrHP/qF0NS7UbeO8Im6
+ dTivotAC0e7/VKtc0+QuQccgkoQMNRtJSaHmDNa5Y0MVS1ayGiqfjEbysUV9v7jGpM6B
+ fTFFrYJV4EUQXSkRyR89RC+ToGvHkqS/mW3AI2V0IAz6gDdXgDcPZFEXIq8L/IL0pj22
+ SpOccgDVS7mNOIWI5sbRJNdjSxcSk6vWVTlOS/gAXKk3o+OA3ZYV0pSSz9T00S5R8XCZ
+ 1FLW9jYwvNViAwdIYevv4H7hXIEMO2YkSV8e78/XGMv8jtF5vXGqFwVPfNz91Gp2ctpS
+ pguw==
+X-Gm-Message-State: AOAM531TUAsFfNPGkjDpCJ2peWKWERpZ4lTDQUJOfQWnclPmiTYlP+Rw
+ JQd3UTPPoPDoCfQ0ZYQmgdE=
+X-Google-Smtp-Source: ABdhPJyvi9Ka3KIscpWqhUckB8IgCE7FGu1eX98eD2iGREW3OHFuXF8OsF0VSxOfin8REczWeXUoyw==
+X-Received: by 2002:adf:c108:: with SMTP id r8mr30669908wre.41.1596027937588; 
+ Wed, 29 Jul 2020 06:05:37 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id s19sm6536871wrb.54.2020.07.29.06.05.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Jul 2020 06:05:36 -0700 (PDT)
+Date: Wed, 29 Jul 2020 14:05:35 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Josh DuBois <duboisj@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Josh DuBois <josh@joshdubois.com>
+Subject: Re: [PATCH] trace/simple: Allow enabling simple traces from command
+ line
+Message-ID: <20200729130535.GI37763@stefanha-x1.localdomain>
+References: <20200723053359.256928-1-josh@joshdubois.com>
 MIME-Version: 1.0
-References: <20200716154114.10838-1-peter.maydell@linaro.org>
- <0f8b8fea-2bd0-7616-292b-8fb0f87cec75@redhat.com>
-In-Reply-To: <0f8b8fea-2bd0-7616-292b-8fb0f87cec75@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Jul 2020 16:25:04 +0100
-Message-ID: <CAFEAcA9ukzKGiaV6Tazu8Aezn39v81DKQik1b=jEy=NLnau05w@mail.gmail.com>
-Subject: Re: [PATCH] osdep.h: Add doc comment for qemu_get_thread_id()
-To: Eric Blake <eblake@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c43;
- envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc43.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="8/UBlNHSEJa6utmr"
+Content-Disposition: inline
+In-Reply-To: <20200723053359.256928-1-josh@joshdubois.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=stefanha@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,64 +78,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jul 2020 15:25:19 -0000
+X-List-Received-Date: Wed, 29 Jul 2020 13:05:41 -0000
 
-On Tue, 28 Jul 2020 at 16:17, Eric Blake <eblake@redhat.com> wrote:
->
-> On 7/16/20 10:41 AM, Peter Maydell wrote:
-> > Add a documentation comment for qemu_get_thread_id(): since this
-> > is rather host-OS-specific it's useful if people writing the
-> > implementation and people thinking of using the function know
-> > what the purpose and limitations are.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> > Based on conversation with Dan on IRC, and prompted by the recent
-> > patch to add OpenBSD support.
-> >
-> > Q: should we document exactly what the thread-id value is for
-> > each host platform in the QMP documentation ? Somebody writing
-> > a management layer app should ideally not have to grovel through
-> > the application to figure out what they should do with the
-> > integer value they get back from query-cpus...
-> >
-> >   include/qemu/osdep.h | 14 ++++++++++++++
-> >   1 file changed, 14 insertions(+)
->
-> Do we need a counterpart change...
->
-> >
-> > diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-> > index 4841b5c6b5f..8279f72e5ed 100644
-> > --- a/include/qemu/osdep.h
-> > +++ b/include/qemu/osdep.h
-> > @@ -515,6 +515,20 @@ bool qemu_has_ofd_lock(void);
-> >
-> >   bool qemu_write_pidfile(const char *pidfile, Error **errp);
-> >
-> > +/**
-> > + * qemu_get_thread_id: Return OS-specific ID of current thread
-> > + *
-> > + * This function returns an OS-specific identifier of the
-> > + * current thread. This will be used for the "thread-id" field in
-> > + * the response to the QMP query-cpus and query-iothreads commands.
->
-> ...to the qapi definition of query-cpus and query-iothreads?
 
-Well, that was my question above. Currently the QAPI documentation
-says absolutely nothing about what the thread-id values mean
-for any host OS (beyond "ID of the underlying host thread"), which
-means that any management layer application needs to look in the
-implementation to find out what they actually are...
+--8/UBlNHSEJa6utmr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Improving the QAPI docs would probably be something like:
- * add a list of host OSes and semantics to the doc comment
-   for CpuInfoFast
- * add cross-references to that definition from everywhere
-   else in QAPI that uses a thread-id/thread_id
- * add a comment in the C file to say "if you're adding another
-   OS ifdef here please update the QAPI doc comment"
+On Thu, Jul 23, 2020 at 12:33:59AM -0500, Josh DuBois wrote:
+> The simple trace backend is enabled / disabled with a call
+> to st_set_trace_file_enabled().  When initializing tracing
+> from the command-line, this must be enabled on startup.
+> (Prior to db25d56c014aa1a9, command-line initialization of
+> simple trace worked because every call to st_set_trace_file
+> enabled tracing.)
+>=20
+> Fixes: db25d56c014aa1a96319c663e0a60346a223b31e
+> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+> ---
+>  trace/control.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-thanks
--- PMM
+Thanks, applied to my tracing tree:
+https://github.com/stefanha/qemu/commits/tracing
+
+Stefan
+
+--8/UBlNHSEJa6utmr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl8hdB8ACgkQnKSrs4Gr
+c8g8gwgAuj6ssPoPgFWZJRabKA/Em82RP0LWZ8VcPwPV78khfgxy6PZt7zVRArSG
+XKsWFemEkElQXIUQntbOwfQqceOJxrSO7zkeQiiMBRqa4v9bqam7XLXeRV2QQmn8
+4zgRSp++iQThjufEPotHS6ReFMhPNq52bXBSe4cHt9lnzHGGAQ2VnP5uJM5db2pn
+nzj8zxfJrKO8z0Vt0lTSLqKFmIuZfyjDsUa7NZ8ctpVt6zZmD6/JJ5F+HUB/mC1b
+H4SJ6eD4glsVCzbHpLRFnHXA/EEcknRKLYaHaREAt5HCZEFz11/xJRSLiWqa5EqP
+eBY8JT/St9BO9NLSWCP+/fx87k+mDw==
+=TAF2
+-----END PGP SIGNATURE-----
+
+--8/UBlNHSEJa6utmr--
 
