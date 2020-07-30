@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k16pr-00061R-5v
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2020 07:34:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37166)
+	id 1k1ADA-0002Zj-R0
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2020 11:11:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1k16pp-00061H-Tr
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 07:34:53 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30857
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k1AD9-0002YU-QZ
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 11:11:11 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25275
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1k16pn-0006IX-DA
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 07:34:53 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k1AD7-0005FP-FB
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 11:11:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596108889;
+ s=mimecast20190719; t=1596121868;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=C2iao+OtF2uyUjodfO1r2tJ0kY0g0jWcJHNcogVwvLk=;
- b=HOZvdP5SkBI/UYWpy9tzJ4lkHXb87de3Sz3scDb3tmiUIb9ySJHe/1gIbP3TPH0Dy8PEx6
- LVZM0tENfpPuE/JeF45P+pUx9kFv1KN5SKOpcv5bmLw3m42n0U+kOkXNiOoiSqe9xTzWEB
- kJxAZLdo9bFZ8mCDxEM/qooUXo5cb4M=
+ bh=hCK/tBx/pEN3xVJ+/dFaojg6ii0gFp7E1boM0G1oYiU=;
+ b=HFF6XIgY+QYq+j/CHsWx0KWmgddI25WNoVLvOcZqRyeDUcyPTals/NTS2TyUH4bTuQ2sXb
+ Fkj7u0fKGD2OFz5njxFq1lajejb30cP5VbE3XfwRUrn1Wi3Gz7oiqxUorrw/nLldYvto/d
+ em1wBrP8F2gggytuqzYEggTO5d3DHAk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-221-9MvbS-ZeNNGDUaAMgKZ_6Q-1; Thu, 30 Jul 2020 07:34:47 -0400
-X-MC-Unique: 9MvbS-ZeNNGDUaAMgKZ_6Q-1
+ us-mta-288-goXgiGSHPqK3HbrFcJwjYA-1; Thu, 30 Jul 2020 11:11:01 -0400
+X-MC-Unique: goXgiGSHPqK3HbrFcJwjYA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA3B718C63C1;
- Thu, 30 Jul 2020 11:34:45 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.35])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B655A19D7B;
- Thu, 30 Jul 2020 11:34:43 +0000 (UTC)
-Date: Thu, 30 Jul 2020 13:34:41 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-trivial@nongnu.org, Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>
-Subject: Re: [PATCH-for-5.2] default-configs: Remove ACPI_CPU_HOTPLUG from
- MIPS machines
-Message-ID: <20200730133441.39257618@redhat.com>
-In-Reply-To: <20200724165259.19939-1-f4bug@amsat.org>
-References: <20200724165259.19939-1-f4bug@amsat.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0B6DF102C7E9;
+ Thu, 30 Jul 2020 15:11:00 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CF9391992D;
+ Thu, 30 Jul 2020 15:10:59 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6CC101132FD2; Thu, 30 Jul 2020 17:10:58 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eric Blake <eblake@redhat.com>,  QEMU Trivial <qemu-trivial@nongnu.org>,
+ Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  QEMU
+ Developers <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] osdep.h: Add doc comment for qemu_get_thread_id()
+References: <20200716154114.10838-1-peter.maydell@linaro.org>
+ <0f8b8fea-2bd0-7616-292b-8fb0f87cec75@redhat.com>
+ <CAFEAcA9ukzKGiaV6Tazu8Aezn39v81DKQik1b=jEy=NLnau05w@mail.gmail.com>
+Date: Thu, 30 Jul 2020 17:10:58 +0200
+In-Reply-To: <CAFEAcA9ukzKGiaV6Tazu8Aezn39v81DKQik1b=jEy=NLnau05w@mail.gmail.com>
+ (Peter Maydell's message of "Tue, 28 Jul 2020 16:25:04 +0100")
+Message-ID: <87k0ylvy0t.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:51:24
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:41:52
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -64,7 +64,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,38 +77,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jul 2020 11:34:54 -0000
+X-List-Received-Date: Thu, 30 Jul 2020 15:11:12 -0000
 
-On Fri, 24 Jul 2020 18:52:59 +0200
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> No MIPS machine uses the ACPI cpu-hotplug feature
-> (QEMU implementation is X86 specific).
+> On Tue, 28 Jul 2020 at 16:17, Eric Blake <eblake@redhat.com> wrote:
+>>
+>> On 7/16/20 10:41 AM, Peter Maydell wrote:
+>> > Add a documentation comment for qemu_get_thread_id(): since this
+>> > is rather host-OS-specific it's useful if people writing the
+>> > implementation and people thinking of using the function know
+>> > what the purpose and limitations are.
+>> >
+>> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> > ---
+>> > Based on conversation with Dan on IRC, and prompted by the recent
+>> > patch to add OpenBSD support.
+>> >
+>> > Q: should we document exactly what the thread-id value is for
+>> > each host platform in the QMP documentation ? Somebody writing
+>> > a management layer app should ideally not have to grovel through
+>> > the application to figure out what they should do with the
+>> > integer value they get back from query-cpus...
+>> >
+>> >   include/qemu/osdep.h | 14 ++++++++++++++
+>> >   1 file changed, 14 insertions(+)
+>>
+>> Do we need a counterpart change...
+>>
+>> >
+>> > diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+>> > index 4841b5c6b5f..8279f72e5ed 100644
+>> > --- a/include/qemu/osdep.h
+>> > +++ b/include/qemu/osdep.h
+>> > @@ -515,6 +515,20 @@ bool qemu_has_ofd_lock(void);
+>> >
+>> >   bool qemu_write_pidfile(const char *pidfile, Error **errp);
+>> >
+>> > +/**
+>> > + * qemu_get_thread_id: Return OS-specific ID of current thread
+>> > + *
+>> > + * This function returns an OS-specific identifier of the
+>> > + * current thread. This will be used for the "thread-id" field in
+>> > + * the response to the QMP query-cpus and query-iothreads commands.
+>>
+>> ...to the qapi definition of query-cpus and query-iothreads?
+>
+> Well, that was my question above. Currently the QAPI documentation
+> says absolutely nothing about what the thread-id values mean
+> for any host OS (beyond "ID of the underlying host thread"), which
+> means that any management layer application needs to look in the
+> implementation to find out what they actually are...
 
-if I recall correctly we were building it to satisfy symbol dependencies
-due to hw/acpi/piix4.c being shared between x86 and mips.
+... which they will have to do to actually use it for the purpose we
+have in mind, namely:
 
-It no longer the case?
+>> > + * The intention is that a VM management layer application can then
+>> > + * use it to tie specific QEMU vCPU and IO threads to specific host
+>> > + * CPUs using whatever the host OS's CPU affinity setting API is.
+>> > + * New implementations of this function for new host OSes should
+>> > + * return the most sensible integer ID that works for that purpose.
+>> > + *
+>> > + * This function should not be used for anything else inside QEMU.
+>> > + */
 
+Do they?
 
-> Fixes: 135a67a692 ("ACPI: split CONFIG_ACPI into 4 pieces")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  default-configs/mips-softmmu-common.mak | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mi=
-ps-softmmu-common.mak
-> index da29c6c0b2..e9c208da3d 100644
-> --- a/default-configs/mips-softmmu-common.mak
-> +++ b/default-configs/mips-softmmu-common.mak
-> @@ -21,7 +21,6 @@ CONFIG_ACPI=3Dy
->  CONFIG_ACPI_X86=3Dy
->  CONFIG_ACPI_MEMORY_HOTPLUG=3Dy
->  CONFIG_ACPI_NVDIMM=3Dy
-> -CONFIG_ACPI_CPU_HOTPLUG=3Dy
->  CONFIG_APM=3Dy
->  CONFIG_I8257=3Dy
->  CONFIG_PIIX4=3Dy
+> Improving the QAPI docs would probably be something like:
+>  * add a list of host OSes and semantics to the doc comment
+>    for CpuInfoFast
+>  * add cross-references to that definition from everywhere
+>    else in QAPI that uses a thread-id/thread_id
+>  * add a comment in the C file to say "if you're adding another
+>    OS ifdef here please update the QAPI doc comment"
+
+If they do, then this sounds like a plan.
+
+By the way, the #else case smells:
+
+    #else
+        return getpid();
+    #endif
+
+The PID is quite unlikely to be "an OS-specific identifier of the
+current thread".  Shouldn't we fail instead of lie when we don't know
+how to compute the truth?
 
 
