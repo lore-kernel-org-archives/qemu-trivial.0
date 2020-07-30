@@ -1,79 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k1Bbm-0004L7-L3
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2020 12:40:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42016)
+	id 1k1J5k-0002Lx-Q1
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2020 20:40:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1k1Bbl-0004Ko-Pm
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 12:40:41 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28130
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1k1Bbi-0004zS-9K
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 12:40:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596127236;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pgc/fJs8eXhr8X4qXczjyff12t2FQa3Z2DmuoTMW/Kk=;
- b=MSeAPPqzUOV7gtaRxADWHKVbiwKSAZFszUwsqD73KTAsddldxKTzPEr74W/JYwZuRm5giU
- fUOwjm6mJrcRFYp2FSWmLvguSijN5+n4PeLK73DnVKoJI6YXRtmUGfEBUVy/DDX8azAwbb
- BqC0Mlk4VVlr55/Z3lgK3+eEkBBjRQU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-479-MJYViyPONXmqKyDlMGGOwA-1; Thu, 30 Jul 2020 12:40:28 -0400
-X-MC-Unique: MJYViyPONXmqKyDlMGGOwA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8186B57;
- Thu, 30 Jul 2020 16:40:27 +0000 (UTC)
-Received: from redhat.com (ovpn-114-181.ams2.redhat.com [10.36.114.181])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 211451992D;
- Thu, 30 Jul 2020 16:40:25 +0000 (UTC)
-Date: Thu, 30 Jul 2020 17:40:23 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] osdep.h: Add doc comment for qemu_get_thread_id()
-Message-ID: <20200730164023.GQ3477223@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200716154114.10838-1-peter.maydell@linaro.org>
- <0f8b8fea-2bd0-7616-292b-8fb0f87cec75@redhat.com>
- <CAFEAcA9ukzKGiaV6Tazu8Aezn39v81DKQik1b=jEy=NLnau05w@mail.gmail.com>
- <87k0ylvy0t.fsf@dusky.pond.sub.org>
- <CAFEAcA-AYJ64HE698TMRS6cV=u4ig6S6TU2xufns7fCVbcQXrg@mail.gmail.com>
- <20200730155939.GP3477223@redhat.com>
- <4d2cba04-04d8-9b82-562f-acb84b6010d2@redhat.com>
+ (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
+ id 1k1HVX-0008Ku-7f
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 18:58:39 -0400
+Received: from atl4mhfb03.myregisteredsite.com ([209.17.115.119]:57760)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
+ id 1k1HVV-0006fK-2v
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 18:58:38 -0400
+Received: from jax4mhob18.registeredsite.com (jax4mhob18.registeredsite.com
+ [64.69.218.106])
+ by atl4mhfb03.myregisteredsite.com (8.14.4/8.14.4) with ESMTP id
+ 06UMpDkD028679
+ for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2020 18:51:15 -0400
+Received: from mailpod.hostingplatform.com ([10.30.71.113])
+ by jax4mhob18.registeredsite.com (8.14.4/8.14.4) with ESMTP id 06UMoARr163412
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL)
+ for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2020 18:50:11 -0400
+Received: (qmail 9079 invoked by uid 0); 30 Jul 2020 22:50:10 -0000
+X-TCPREMOTEIP: 50.93.248.134
+X-Authenticated-UID: josh@joshdubois.com
+Received: from unknown (HELO ?192.168.1.105?)
+ (josh@joshdubois.com@50.93.248.134)
+ by 0 with ESMTPA; 30 Jul 2020 22:50:10 -0000
+Subject: Re: [PATCH] trace/simple: Allow enabling simple traces from command
+ line
+To: Stefan Hajnoczi <stefanha@gmail.com>, Josh DuBois <duboisj@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20200723053359.256928-1-josh@joshdubois.com>
+ <20200729130535.GI37763@stefanha-x1.localdomain>
+From: Josh DuBois <josh@joshdubois.com>
+Message-ID: <e08651bd-f775-eb85-817c-44d27ff072dc@joshdubois.com>
+Date: Thu, 30 Jul 2020 17:50:09 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <4d2cba04-04d8-9b82-562f-acb84b6010d2@redhat.com>
-User-Agent: Mutt/1.14.5 (2020-06-23)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200729130535.GI37763@stefanha-x1.localdomain>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=berrange@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:59:04
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Received-SPF: neutral client-ip=209.17.115.119;
+ envelope-from=josh@joshdubois.com; helo=atl4mhfb03.myregisteredsite.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 18:51:15
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 30 Jul 2020 20:40:06 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,55 +64,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jul 2020 16:40:42 -0000
+X-List-Received-Date: Thu, 30 Jul 2020 22:58:39 -0000
 
-On Thu, Jul 30, 2020 at 11:24:51AM -0500, Eric Blake wrote:
-> On 7/30/20 10:59 AM, Daniel P. BerrangÃ© wrote:
-> 
-> > > Well, I suspect that management-layer code currently has
-> > > gone for "assume we're always running on Linux" and was
-> > > written by people who knew they were getting a Linux tid...
-> > 
-> > Yes, on the libvirt side, the functionality that relies on thread_is is
-> > only compiled on Linux. If someone wants to use it on other OS, they'll
-> > have to provide an impl using their platforms equivalent of
-> > sched_setaffinity and friends since none of this stuff is standardized
-> > across OS.
-> > 
-> > 
-> > > > The PID is quite unlikely to be "an OS-specific identifier of the
-> > > > current thread".  Shouldn't we fail instead of lie when we don't know
-> > > > how to compute the truth?
-> > > 
-> > > Yeah, I think the default codepath is pretty bogus too. Should
-> > > the QMP functions have a mechanism for saying "we don't know
-> > > a thread-id on this platform" ?
-> > 
-> > Thread_id should be optional and thus not filled in if we
-> > can't provide a sensible value. Unfortunately we made it
-> > mandatory in QMP.
-> 
-> Normally, converting a mandatory output value to optional is a
-> back-compatibility risk (we could break apps that depended on it being
-> present).  But if the only apps that depended on it being present are
-> compiled on Linux, where the member will actually be present, I think that
-> changing the schema to make it optional for non-Linux platforms won't be a
-> back-compatibility nightmare (but we will have to be careful in our
-> documentation).
+Well, this is a bit embarrassing.  The patch below simply re-introduced 
+the bug which the Fixes: line was trying to fix in the first place.
 
-FWIW, libvirt treats it as mandatory for query-iothreads, but optional
-for query-cpus because it was missing in some older QEMU versions
-entirely.
+I.e, :
 
-Libvirt explicitly only supports macOS, Linux and FreeBSD, so if those
-platforms all report a value, libvirt won't care if you make it optional
-and omit it for other platforms.
+- with my patch (just committed as 
+1b7157be3a8c4300fc8044d40f4b2e64a152a1b4) applied, a QEMU built with 
+simple tracing will always produce a trace-<pid> file, regardless of 
+whether traces were asked for.
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+- after db25d56c014aa1a96319c663e0a60346a223b31e, which my patch was 
+supposed to "fix," QEMU will not produce a trace file unless asked, I 
+believe, via the monitor.  Enabling traces is, near as I can tell, 
+simply impossible via the command-line in that case.
 
+- prior to db25d56c014aa1a96319c663e0a60346a223b31e, just like today, 
+QEMU built with simple tracing will always produce a trace-<pid> file, 
+regardless of whether the user asks for traces at runtime.
+
+I'm sorry for the mess.  Having stepped in it already, I'm  open to 
+trying to track it down and fix it properly.  I imagine perhaps few 
+people truly care, since traces require a special build and are probably 
+only being done by developers anyway.  (And the original message for 
+db25d56c014aa1a96319c663e0a60346a223b31e said it had been "broken" for 
+an unknown period of time).
+
+I'm brand new around here so I'll leave it to others whether it's better 
+to revert and have traces impossible to enable from the cli (as I say, I 
+think they're only possible from the monitor prior to my "fix" ) or to 
+leave it be.
+
+If I resubmit, I'll try to test a little more next time.  I just wanted 
+my traces to work. ;)
+
+On 7/29/20 8:05 AM, Stefan Hajnoczi wrote:
+> On Thu, Jul 23, 2020 at 12:33:59AM -0500, Josh DuBois wrote:
+>> The simple trace backend is enabled / disabled with a call
+>> to st_set_trace_file_enabled().  When initializing tracing
+>> from the command-line, this must be enabled on startup.
+>> (Prior to db25d56c014aa1a9, command-line initialization of
+>> simple trace worked because every call to st_set_trace_file
+>> enabled tracing.)
+>>
+>> Fixes: db25d56c014aa1a96319c663e0a60346a223b31e
+>> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+>> ---
+>>   trace/control.c | 1 +
+>>   1 file changed, 1 insertion(+)
+> Thanks, applied to my tracing tree:
+> https://github.com/stefanha/qemu/commits/tracing
+>
+> Stefan
 
