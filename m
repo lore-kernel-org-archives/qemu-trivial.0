@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k0sEI-0006De-Ix
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jul 2020 15:59:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55912)
+	id 1k16pr-00061R-5v
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2020 07:34:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddstreet@canonical.com>)
- id 1k0sED-0006Cy-J1
- for qemu-trivial@nongnu.org; Wed, 29 Jul 2020 15:59:08 -0400
-Received: from youngberry.canonical.com ([91.189.89.112]:35825)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_CBC_SHA1:128)
- (Exim 4.90_1) (envelope-from <ddstreet@canonical.com>)
- id 1k0sEA-0008DJ-Id
- for qemu-trivial@nongnu.org; Wed, 29 Jul 2020 15:59:05 -0400
-Received: from mail-qt1-f199.google.com ([209.85.160.199])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <ddstreet@canonical.com>) id 1k0sE7-0007ec-OR
- for qemu-trivial@nongnu.org; Wed, 29 Jul 2020 19:58:59 +0000
-Received: by mail-qt1-f199.google.com with SMTP id m88so16799949qtd.15
- for <qemu-trivial@nongnu.org>; Wed, 29 Jul 2020 12:58:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gyjQICibhkZQco24n3WahdlnpEV13yXaCmThCw6DPiY=;
- b=RtJBwrLItd16CxNjaHn4c7/UDL9Nw5gh3tZPfb2hpwPONFpBmaVjYgpEq4T9UrKJRl
- ZHLq5FoKdJ5wEHE9K3/tTMIgxhaKXvCcjyA0ZZn1pNmga0fyWsO6ZI4kVleH6qBihEbM
- t5V+jiSg+XjRUvqO1lToQoK+NlQJRZq6zr0vzXdNvEsNAaItc01Qje6U1ZhVIbqFGxhm
- Irs4YEIuoOrb08elXiqMY8HUcec8WKKVhdlIvtVSciQO3E1jgjAEEdfxrM/B/xpTcSxA
- VyZJXqwkeBSwHZCniEpVKcEgiJSTfQmrevP0PaH4Wbqr5AaF9omZM3k2cxcc8AniUe/W
- UENA==
-X-Gm-Message-State: AOAM533qCku9X2CEayuw2AwjFeGHNXJaAcxsUO3zpLQLe0LmAGTn/5GW
- g5Is2cjbt8wYSV7BcXHJ2Nz7flNcBS3OsgcRa5xRlrGXH0yuMmVtm5pyFMUHA0RVgCT0BzjwN6Q
- OSsBPcESP9166IA5jxyoeZVvC/Ed4NNO2080=
-X-Received: by 2002:ac8:729a:: with SMTP id v26mr35578qto.362.1596052738689;
- Wed, 29 Jul 2020 12:58:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsFmxNCStm67ivSTUuSKuEMIF7hq6akYjjzkQT4lMEkwvI1VWU5PSRI6iSrBfYd6VBYYiwbQ==
-X-Received: by 2002:ac8:729a:: with SMTP id v26mr35561qto.362.1596052738312;
- Wed, 29 Jul 2020 12:58:58 -0700 (PDT)
-Received: from thorin.shire (45-27-90-188.lightspeed.rlghnc.sbcglobal.net.
- [45.27.90.188])
- by smtp.gmail.com with ESMTPSA id x67sm2428199qke.136.2020.07.29.12.58.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2020 12:58:57 -0700 (PDT)
-From: Dan Streetman <ddstreet@canonical.com>
-To: qemu-devel@nongnu.org
-Cc: Dan Streetman <ddstreet@canonical.com>, qemu-trivial@nongnu.org,
- Rafael David Tinoco <rafael.tinoco@canonical.com>,
- Christian Ehrhardt <christian.ehrhardt@canonical.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH] configure: actually disable 'git_update' mode with
- --disable-git-update
-Date: Wed, 29 Jul 2020 15:58:29 -0400
-Message-Id: <20200729195829.1335082-1-ddstreet@canonical.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <e55fea6e-e403-166f-e693-9e73ae29e5cc@msgid.tls.msk.ru>
-References: <e55fea6e-e403-166f-e693-9e73ae29e5cc@msgid.tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k16pp-00061H-Tr
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 07:34:53 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30857
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k16pn-0006IX-DA
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2020 07:34:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596108889;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=C2iao+OtF2uyUjodfO1r2tJ0kY0g0jWcJHNcogVwvLk=;
+ b=HOZvdP5SkBI/UYWpy9tzJ4lkHXb87de3Sz3scDb3tmiUIb9ySJHe/1gIbP3TPH0Dy8PEx6
+ LVZM0tENfpPuE/JeF45P+pUx9kFv1KN5SKOpcv5bmLw3m42n0U+kOkXNiOoiSqe9xTzWEB
+ kJxAZLdo9bFZ8mCDxEM/qooUXo5cb4M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-9MvbS-ZeNNGDUaAMgKZ_6Q-1; Thu, 30 Jul 2020 07:34:47 -0400
+X-MC-Unique: 9MvbS-ZeNNGDUaAMgKZ_6Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA3B718C63C1;
+ Thu, 30 Jul 2020 11:34:45 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.35])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B655A19D7B;
+ Thu, 30 Jul 2020 11:34:43 +0000 (UTC)
+Date: Thu, 30 Jul 2020 13:34:41 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-trivial@nongnu.org, Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>
+Subject: Re: [PATCH-for-5.2] default-configs: Remove ACPI_CPU_HOTPLUG from
+ MIPS machines
+Message-ID: <20200730133441.39257618@redhat.com>
+In-Reply-To: <20200724165259.19939-1-f4bug@amsat.org>
+References: <20200724165259.19939-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=91.189.89.112;
- envelope-from=ddstreet@canonical.com; helo=youngberry.canonical.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/29 15:59:00
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:51:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,148 +77,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jul 2020 19:59:09 -0000
+X-List-Received-Date: Thu, 30 Jul 2020 11:34:54 -0000
 
-The --disable-git-update configure param sets git_update=no, but
-some later checks only look for the .git dir. This changes the
---enable-git-update to set git_update=yes but also fail if it
-does not find a .git dir. Then all the later checks for the .git
-dir can just be changed to a check for $git_update = "yes".
+On Fri, 24 Jul 2020 18:52:59 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-Also update the Makefile to skip the 'git_update' checks if it has
-been disabled.
+> No MIPS machine uses the ACPI cpu-hotplug feature
+> (QEMU implementation is X86 specific).
 
-This is needed because downstream packagers, e.g. Debian, Ubuntu, etc,
-also keep the source code in git, but do not want to enable the
-'git_update' mode; with the current code, that's not possible even
-if the downstream package specifies --disable-git-update.
+if I recall correctly we were building it to satisfy symbol dependencies
+due to hw/acpi/piix4.c being shared between x86 and mips.
 
-Signed-off-by: Dan Streetman <ddstreet@canonical.com>
----
-Note this is a rebased resend of a previous email to qemu-trivial:
-https://lists.nongnu.org/archive/html/qemu-trivial/2020-07/msg00180.html
+It no longer the case?
 
- Makefile  | 15 +++++++++------
- configure | 21 +++++++++++++--------
- 2 files changed, 22 insertions(+), 14 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index c2120d8d48..42550ae086 100644
---- a/Makefile
-+++ b/Makefile
-@@ -25,6 +25,8 @@ git-submodule-update:
- 
- .PHONY: git-submodule-update
- 
-+# If --disable-git-update specified, skip these git checks
-+ifneq (no,$(GIT_UPDATE))
- git_module_status := $(shell \
-   cd '$(SRC_PATH)' && \
-   GIT="$(GIT)" ./scripts/git-submodule.sh status $(GIT_SUBMODULES); \
-@@ -32,7 +34,12 @@ git_module_status := $(shell \
- )
- 
- ifeq (1,$(git_module_status))
--ifeq (no,$(GIT_UPDATE))
-+ifeq (yes,$(GIT_UPDATE))
-+git-submodule-update:
-+	$(call quiet-command, \
-+          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
-+          "GIT","$(GIT_SUBMODULES)")
-+else
- git-submodule-update:
- 	$(call quiet-command, \
-             echo && \
-@@ -41,11 +48,7 @@ git-submodule-update:
-             echo "from the source directory checkout $(SRC_PATH)" && \
-             echo && \
-             exit 1)
--else
--git-submodule-update:
--	$(call quiet-command, \
--          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
--          "GIT","$(GIT_SUBMODULES)")
-+endif
- endif
- endif
- 
-diff --git a/configure b/configure
-index 2acc4d1465..e7a241e971 100755
---- a/configure
-+++ b/configure
-@@ -318,7 +318,7 @@ then
-     git_submodules="$git_submodules tests/fp/berkeley-testfloat-3"
-     git_submodules="$git_submodules tests/fp/berkeley-softfloat-3"
- else
--    git_update=no
-+    git_update=""
-     git_submodules=""
- 
-     if ! test -f "$source_path/ui/keycodemapdb/README"
-@@ -1598,7 +1598,12 @@ for opt do
-   ;;
-   --with-git=*) git="$optarg"
-   ;;
--  --enable-git-update) git_update=yes
-+  --enable-git-update)
-+      git_update=yes
-+      if test ! -e "$source_path/.git"; then
-+          echo "ERROR: cannot --enable-git-update without .git"
-+          exit 1
-+      fi
-   ;;
-   --disable-git-update) git_update=no
-   ;;
-@@ -2011,7 +2016,7 @@ fi
- # Consult white-list to determine whether to enable werror
- # by default.  Only enable by default for git builds
- if test -z "$werror" ; then
--    if test -e "$source_path/.git" && \
-+    if test "$git_update" = "yes" && \
-         { test "$linux" = "yes" || test "$mingw32" = "yes"; }; then
-         werror="yes"
-     else
-@@ -4412,10 +4417,10 @@ EOF
-     fdt=system
-   else
-       # have GIT checkout, so activate dtc submodule
--      if test -e "${source_path}/.git" ; then
-+      if test "$git_update" = "yes" ; then
-           git_submodules="${git_submodules} dtc"
-       fi
--      if test -d "${source_path}/dtc/libfdt" || test -e "${source_path}/.git" ; then
-+      if test -d "${source_path}/dtc/libfdt" || test "$git_update" = "yes" ; then
-           fdt=git
-           mkdir -p dtc
-           if [ "$pwd_is_source_path" != "y" ] ; then
-@@ -5385,7 +5390,7 @@ case "$capstone" in
-   "" | yes)
-     if $pkg_config capstone; then
-       capstone=system
--    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-+    elif test "$git_update" = "yes" ; then
-       capstone=git
-     elif test -e "${source_path}/capstone/Makefile" ; then
-       capstone=internal
-@@ -6414,7 +6419,7 @@ case "$slirp" in
-   "" | yes)
-     if $pkg_config slirp; then
-       slirp=system
--    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-+    elif test "$git_update" = "yes" ; then
-       slirp=git
-     elif test -e "${source_path}/slirp/Makefile" ; then
-       slirp=internal
-@@ -6776,7 +6781,7 @@ if test "$cpu" = "s390x" ; then
-     roms="$roms s390-ccw"
-     # SLOF is required for building the s390-ccw firmware on s390x,
-     # since it is using the libnet code from SLOF for network booting.
--    if test -e "${source_path}/.git" ; then
-+    if test "$git_update" = "yes" ; then
-       git_submodules="${git_submodules} roms/SLOF"
-     fi
-   fi
--- 
-2.25.1
+> Fixes: 135a67a692 ("ACPI: split CONFIG_ACPI into 4 pieces")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  default-configs/mips-softmmu-common.mak | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mi=
+ps-softmmu-common.mak
+> index da29c6c0b2..e9c208da3d 100644
+> --- a/default-configs/mips-softmmu-common.mak
+> +++ b/default-configs/mips-softmmu-common.mak
+> @@ -21,7 +21,6 @@ CONFIG_ACPI=3Dy
+>  CONFIG_ACPI_X86=3Dy
+>  CONFIG_ACPI_MEMORY_HOTPLUG=3Dy
+>  CONFIG_ACPI_NVDIMM=3Dy
+> -CONFIG_ACPI_CPU_HOTPLUG=3Dy
+>  CONFIG_APM=3Dy
+>  CONFIG_I8257=3Dy
+>  CONFIG_PIIX4=3Dy
 
 
