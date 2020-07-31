@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k1Pih-0008M2-UH
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Jul 2020 03:44:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50670)
+	id 1k1VNC-0004DX-IH
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Jul 2020 09:46:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k1Pih-0008Ln-3O
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2020 03:44:47 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37547
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1k1VNA-0004Cu-Fd
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2020 09:46:56 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38215
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k1Pie-0008IP-AG
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2020 03:44:46 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1k1VN8-0002Et-1j
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2020 09:46:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596181482;
+ s=mimecast20190719; t=1596203212;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1UdoygK3os5o72+8NFLQ+SCSJV9B0RM5JrZKIjlH2/c=;
- b=IH/XTwIfuENgtdXpFdRFDVwA3+nNy7Yjb7+5mkoWRY4ruR88sjC3fIGU7x4lYreMU48zI4
- g8D+wjJI6lAtcoSXIko6ACk6SHZV4Uv/HDV5ao67RFQLlgrRgc9nx/zkuoHXFcrHO6hROZ
- hxTHOTxddQ1oQkwj+zoK2u0NfiO+xJE=
+ bh=FKGR5FsMX/sDWugDb5Atfb1RE5Cjh67rKMOizGy++SM=;
+ b=Y19BiLWuSjMhJoczXz5GMyYF/s0+kcEm8IyCUQ0ANDSkaWUOKy0wR7AqVFrpDMTNcOjaWG
+ yus+/XLL0KrNunIqMDoJCyMRRDTGC4tTY4gYW/CdqxOwVe6Krsrq7pNnnK4+jElOI8poeC
+ JvtBt9akTxAYkH0BK3xFIC9trnhKMRw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-500-i5U6w9nNMwagjtd9X6eCfw-1; Fri, 31 Jul 2020 03:44:40 -0400
-X-MC-Unique: i5U6w9nNMwagjtd9X6eCfw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-221-tAIlcM1RPQe2E2q5tU0PEQ-1; Fri, 31 Jul 2020 09:46:48 -0400
+X-MC-Unique: tAIlcM1RPQe2E2q5tU0PEQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 54F30100CCC5;
- Fri, 31 Jul 2020 07:44:39 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E85D35DA75;
- Fri, 31 Jul 2020 07:44:38 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 678151132FD2; Fri, 31 Jul 2020 09:44:37 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Peter
- Maydell <peter.maydell@linaro.org>,  QEMU Trivial
- <qemu-trivial@nongnu.org>,  QEMU Developers <qemu-devel@nongnu.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4CD4B800470;
+ Fri, 31 Jul 2020 13:46:47 +0000 (UTC)
+Received: from [10.3.113.226] (ovpn-113-226.phx2.redhat.com [10.3.113.226])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DA8A074F4A;
+ Fri, 31 Jul 2020 13:46:46 +0000 (UTC)
 Subject: Re: [PATCH] osdep.h: Add doc comment for qemu_get_thread_id()
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 References: <20200716154114.10838-1-peter.maydell@linaro.org>
  <0f8b8fea-2bd0-7616-292b-8fb0f87cec75@redhat.com>
  <CAFEAcA9ukzKGiaV6Tazu8Aezn39v81DKQik1b=jEy=NLnau05w@mail.gmail.com>
@@ -49,20 +46,24 @@ References: <20200716154114.10838-1-peter.maydell@linaro.org>
  <CAFEAcA-AYJ64HE698TMRS6cV=u4ig6S6TU2xufns7fCVbcQXrg@mail.gmail.com>
  <20200730155939.GP3477223@redhat.com>
  <4d2cba04-04d8-9b82-562f-acb84b6010d2@redhat.com>
-Date: Fri, 31 Jul 2020 09:44:37 +0200
-In-Reply-To: <4d2cba04-04d8-9b82-562f-acb84b6010d2@redhat.com> (Eric Blake's
- message of "Thu, 30 Jul 2020 11:24:51 -0500")
-Message-ID: <87pn8ct9ga.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <87pn8ct9ga.fsf@dusky.pond.sub.org>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <53b70f7f-1777-64e5-d80f-6af3d6c1252d@redhat.com>
+Date: Fri, 31 Jul 2020 08:46:40 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <87pn8ct9ga.fsf@dusky.pond.sub.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=eblake@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/31 03:06:50
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/31 04:39:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -70,7 +71,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,58 +84,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Jul 2020 07:44:47 -0000
+X-List-Received-Date: Fri, 31 Jul 2020 13:46:56 -0000
 
-Eric Blake <eblake@redhat.com> writes:
+On 7/31/20 2:44 AM, Markus Armbruster wrote:
 
-> On 7/30/20 10:59 AM, Daniel P. Berrang=C3=A9 wrote:
->
->>> Well, I suspect that management-layer code currently has
->>> gone for "assume we're always running on Linux" and was
->>> written by people who knew they were getting a Linux tid...
+>>> Thread_id should be optional and thus not filled in if we
+>>> can't provide a sensible value. Unfortunately we made it
+>>> mandatory in QMP.
 >>
->> Yes, on the libvirt side, the functionality that relies on thread_is is
->> only compiled on Linux. If someone wants to use it on other OS, they'll
->> have to provide an impl using their platforms equivalent of
->> sched_setaffinity and friends since none of this stuff is standardized
->> across OS.
->>
->>
->>>> The PID is quite unlikely to be "an OS-specific identifier of the
->>>> current thread".  Shouldn't we fail instead of lie when we don't know
->>>> how to compute the truth?
->>>
->>> Yeah, I think the default codepath is pretty bogus too. Should
->>> the QMP functions have a mechanism for saying "we don't know
->>> a thread-id on this platform" ?
->>
->> Thread_id should be optional and thus not filled in if we
->> can't provide a sensible value. Unfortunately we made it
->> mandatory in QMP.
->
-> Normally, converting a mandatory output value to optional is a
-> back-compatibility risk (we could break apps that depended on it being
-> present).  But if the only apps that depended on it being present are
-> compiled on Linux, where the member will actually be present, I think
-> that changing the schema to make it optional for non-Linux platforms
-> won't be a back-compatibility nightmare (but we will have to be
-> careful in our documentation).
+>> Normally, converting a mandatory output value to optional is a
+>> back-compatibility risk (we could break apps that depended on it being
+>> present).  But if the only apps that depended on it being present are
+>> compiled on Linux, where the member will actually be present, I think
+>> that changing the schema to make it optional for non-Linux platforms
+>> won't be a back-compatibility nightmare (but we will have to be
+>> careful in our documentation).
+> 
+> Options for systems where don't know how to compute a system-wide thread
+> ID:
+> 
+> 0. Return a bogus value: the PID.  This is the status quo.
+> 
+> 1. Return a more obviously bogus value: -1.  Semantic compatibility
+>     break.  Should be harmless, because a QMP client relying on the
+>     thread-id being the PID would be insane.
+> 
+> 2. Make thread-id optional, present iff we can compute a value.
+> 
+>     This is what we should have done, but we didn't, and now it's a
+>     syntactic compatibility break.  Matters only if it actually breaks
+>     QMP clients.  We believe the one we know shouldn't break.
+> 
+> Preferences?
 
-Options for systems where don't know how to compute a system-wide thread
-ID:
+I'm in favor of 2, but can easily live with 1 if we decide to be that 
+much more conservative.  Tooling that can't handle a missing value is 
+not going to fare any better with a value that is unusable because it is 
+-1, but the important point is that I don't think we have a scenario 
+with such tooling depending on the value (the tools that DO depend on 
+the value are built on platforms where the value is usable).
 
-0. Return a bogus value: the PID.  This is the status quo.
-
-1. Return a more obviously bogus value: -1.  Semantic compatibility
-   break.  Should be harmless, because a QMP client relying on the
-   thread-id being the PID would be insane.
-
-2. Make thread-id optional, present iff we can compute a value.
-
-   This is what we should have done, but we didn't, and now it's a
-   syntactic compatibility break.  Matters only if it actually breaks
-   QMP clients.  We believe the one we know shouldn't break.
-
-Preferences?
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
