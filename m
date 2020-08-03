@@ -1,72 +1,106 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k2WSC-0001e8-7Z
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 05:08:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33570)
+	id 1k2Xts-0005fD-Fd
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 06:41:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k2WSA-0001XL-5K
- for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 05:08:18 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48621
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k2Xtr-0005ey-6W
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 06:40:59 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:42211
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k2WS6-0003GV-LI
- for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 05:08:17 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k2Xto-00009v-Pg
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 06:40:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596445692;
+ s=mimecast20190719; t=1596451255;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lfec+xwTu7KrIb4hCgBIsmzKJRTtU4FfH+EPTDE2JOw=;
- b=RSiwQBKWcahtgtw+whV4UdLUESPXuLAotv2rRhOk+Ps6AUtFcv9/8nVL6caNn9U5hDsMUq
- J6rnRVaIGXbDY2lJBaSroXG4MsYjvYPA5M/shomdbp9QhT9dbk2r6I+72Efuf0yee0ETKV
- QDuxu787wNRp8Vt/gyKC+7MmjuSMWLo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-180-inIUWHx9PVWZlTX2bHSGhA-1; Mon, 03 Aug 2020 05:08:11 -0400
-X-MC-Unique: inIUWHx9PVWZlTX2bHSGhA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8D89101C8A9;
- Mon,  3 Aug 2020 09:08:09 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8BF581001B2C;
- Mon,  3 Aug 2020 09:08:09 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 217761132FD2; Mon,  3 Aug 2020 11:08:08 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Josh DuBois <josh@joshdubois.com>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>, Josh DuBois <duboisj@gmail.com>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] trace/simple: Allow enabling simple traces from command
- line
-References: <20200723053359.256928-1-josh@joshdubois.com>
- <20200729130535.GI37763@stefanha-x1.localdomain>
- <e08651bd-f775-eb85-817c-44d27ff072dc@joshdubois.com>
-Date: Mon, 03 Aug 2020 11:08:08 +0200
-In-Reply-To: <e08651bd-f775-eb85-817c-44d27ff072dc@joshdubois.com> (Josh
- DuBois's message of "Thu, 30 Jul 2020 17:50:09 -0500")
-Message-ID: <87h7tkm70n.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=PeebLyrtgcCSb/7QihtGi620myhbHVKajsU0CKZTXN4=;
+ b=jPMlqwbC7CkZK8VshVfFi5hGaVAaZe/y/srKIEyUDMFxo/uflP+LxK66hSUevWEV7Mj1yQ
+ gpRtXykCKG/OrOKzcJiIQvGJduc0ncxaD69FWG+E5NBnTGaWBjFLje2vMWq5PVrfZS6XvM
+ B69aTr3JtexJefkEiHfUnZ9VX2VL5kw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-244-yebBWvBGPMikYSakjv_TaQ-1; Mon, 03 Aug 2020 06:40:53 -0400
+X-MC-Unique: yebBWvBGPMikYSakjv_TaQ-1
+Received: by mail-wr1-f70.google.com with SMTP id m7so11474533wrb.20
+ for <qemu-trivial@nongnu.org>; Mon, 03 Aug 2020 03:40:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=PeebLyrtgcCSb/7QihtGi620myhbHVKajsU0CKZTXN4=;
+ b=eKKdxyAHLW4A76KlSmNnJpKZsciT1+HxrlNkRxdg/VNu/T8dxdEF8dv4iJ+jRzJ9WD
+ c0E+ptdxr+JjxdTRKyZrgGamLgqbQAG/Eov2FJoLxtx6nn+sBg6leEh4f/q6y6rHY0Iy
+ Oa1/DFWcbxYfzHnd8GU2q84lUfP4dzf2Ye0O6my9Kji015+n+Q70wvpU7O8Vp32zHN43
+ d9gRcIQWcVPYRVp1ejf6eZwpB8NERH6YBUHpPdrnvWl1yGusW2QG0S7m88mgVF/yFPCZ
+ POCSGARFuKyrIgUxA8pltH5dZ4XSYyF9tvcqrCi9tUxyB8wCZT6e5x+VDwhoJ65Ap6bG
+ bY0A==
+X-Gm-Message-State: AOAM533O4j08qZQYbHYsgypM0fdTGpI06EfFH3OY+dd4jI4K4G4lAG4n
+ l94wAYMDosXiBGSLShmXUE+ysNDGE2ECKZaTix81fTXCW5cCKOSY9cTo7odOKzzPJ4d4Tddq4YM
+ ULDazqnFRfjjvRg7PjQ==
+X-Received: by 2002:adf:9ed4:: with SMTP id b20mr14628324wrf.206.1596451252073; 
+ Mon, 03 Aug 2020 03:40:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJye60xoX9EEeqHCd6vgQlCT/pQUHdQWEUHYYihljv/wCbuKZ2hWsoYvohzGDBlDYhe4Qy1eBA==
+X-Received: by 2002:adf:9ed4:: with SMTP id b20mr14628309wrf.206.1596451251854; 
+ Mon, 03 Aug 2020 03:40:51 -0700 (PDT)
+Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id i9sm23355211wmb.11.2020.08.03.03.40.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Aug 2020 03:40:51 -0700 (PDT)
+Subject: Re: [PATCH] tests/Makefile: test-replication needs CONFIG_POSIX
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200803070554.21655-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <d32638fa-d01c-09cf-d919-5304f30338b8@redhat.com>
+Date: Mon, 3 Aug 2020 12:40:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20200803070554.21655-1-thuth@redhat.com>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 02:56:11
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 01:24:44
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,60 +113,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Aug 2020 09:08:18 -0000
+X-List-Received-Date: Mon, 03 Aug 2020 10:40:59 -0000
 
-Josh DuBois <josh@joshdubois.com> writes:
+On 8/3/20 9:05 AM, Thomas Huth wrote:
+> test-replication uses sigaction() and friends which are only available
+> on posix-like systems.
 
-> Well, this is a bit embarrassing.=C3=82=C2=A0 The patch below simply
-> re-introduced the bug which the Fixes: line was trying to fix in the
-> first place.
->
-> I.e, :
->
-> - with my patch (just committed as
-> 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4) applied, a QEMU built with
-> simple tracing will always produce a trace-<pid> file, regardless of
-> whether traces were asked for.
->
-> - after db25d56c014aa1a96319c663e0a60346a223b31e, which my patch was
-> supposed to "fix," QEMU will not produce a trace file unless asked, I
-> believe, via the monitor.=C3=82=C2=A0 Enabling traces is, near as I can t=
-ell,
-> simply impossible via the command-line in that case.
->
-> - prior to db25d56c014aa1a96319c663e0a60346a223b31e, just like today,
-> QEMU built with simple tracing will always produce a trace-<pid> file,
-> regardless of whether the user asks for traces at runtime.
+"POSIX-like" (acronym)
 
-When you send a patch with a Fixes: tag, consider cc'ing people involved
-in the commit being fixed.  I might have spotted the regression.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> I'm sorry for the mess.=C3=82=C2=A0 Having stepped in it already, I'm=C3=
-=82=C2=A0 open to
-> trying to track it down and fix it properly.=C3=82=C2=A0 I imagine perhap=
-s few
-> people truly care, since traces require a special build and are
-> probably only being done by developers anyway.=C3=82=C2=A0 (And the origi=
-nal
-> message for db25d56c014aa1a96319c663e0a60346a223b31e said it had been
-> "broken" for an unknown period of time).
->
-> I'm brand new around here so I'll leave it to others whether it's
-> better to revert and have traces impossible to enable from the cli (as
-> I say, I think they're only possible from the monitor prior to my
-> "fix" ) or to leave it be.
->
-> If I resubmit, I'll try to test a little more next time.=C3=82=C2=A0 I ju=
-st
-> wanted my traces to work. ;)
-
-I missed the CLI issue.  I just wanted my directories not littered with
-trace files ;)
-
-Stefan, what shall we do for 5.1?
-
-If we keep littering, the annoyance will make me drop the trace backend
-"simple" from my build tests.  I might even remember to put it back when
-the fix arrives.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/Makefile.include | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 1e5ca3b585..430119db74 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -155,11 +155,13 @@ check-unit-$(CONFIG_BLOCK)  += tests/test-crypto-afsplit$(EXESUF)
+>  check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_QEMU_PRIVATE_XTS)) += tests/test-crypto-xts$(EXESUF)
+>  check-unit-$(CONFIG_BLOCK)  += tests/test-crypto-block$(EXESUF)
+>  check-unit-y += tests/test-logging$(EXESUF)
+> -check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_REPLICATION)) += tests/test-replication$(EXESUF)
+>  check-unit-$(CONFIG_SOFTMMU) += tests/test-bufferiszero$(EXESUF)
+>  check-unit-y += tests/test-uuid$(EXESUF)
+>  check-unit-y += tests/ptimer-test$(EXESUF)
+>  check-unit-y += tests/test-qapi-util$(EXESUF)
+> +ifeq ($(CONFIG_BLOCK)$(CONFIG_REPLICATION)$(CONFIG_POSIX),yyy)
+> +check-unit-y += tests/test-replication$(EXESUF)
+> +endif
+>  
+>  check-block-$(call land,$(CONFIG_POSIX),$(CONFIG_SOFTMMU)) += tests/check-block.sh
+>  
+> 
 
 
