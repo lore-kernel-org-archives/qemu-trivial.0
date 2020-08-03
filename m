@@ -1,53 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k2fz2-0005ct-Up
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 15:18:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35870)
+	id 1k2hqG-0000Ry-Vk
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 17:17:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k2fz0-0005bK-PY
- for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 15:18:50 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:43720
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1k2hqF-0000RW-Kw
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 17:17:55 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57522
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k2fyy-0001dT-IO
- for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 15:18:50 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1k2hqC-0000HN-H1
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 17:17:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596482326;
+ s=mimecast20190719; t=1596489471;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=+yt9QATeEJ5XHntrTPRR+DuhRTJE/vmVnKFUZskr0l8=;
- b=Fe1COTu64Srs9iWwv6LD6t1W/Sb7t9OMnAr0HYBGpOkcFITToPeK9nidJL6pKXzu+ifXCh
- W43eOvYPoVhs0x6biLsSoICnBf5KBIOdsdh2Ow+2Cq5iF95IOl+W2ZZhpj9VUbktPvCj37
- zynsdwGHMtjDl3gWTr6BUb6RBt0JIpM=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JhNbX1rwyg9SDg+0/mnuwCwa0UWGR9OTtOZycijJrSY=;
+ b=Ypc8ZAc8npaMuUwFjFhLlE8phK/AHSYJK39sDto8e8c3JXxh73U5zBC0xMtFrp1p515Q/b
+ M7zjmkeB4Ip0fAWMeYwvkZfwtFS/baqYYkmmthJDT9cbwsmcRgNXjjhoHICR8DBhGvSghm
+ PZlTPg8R8eLYSoGhGUDwUUlC5BEiEkk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-69-laGjP1v_MgWW-xNvXJ2W3g-1; Mon, 03 Aug 2020 15:18:42 -0400
-X-MC-Unique: laGjP1v_MgWW-xNvXJ2W3g-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-143-nAECjHcfPKq6BQ6tfhACXw-1; Mon, 03 Aug 2020 17:17:49 -0400
+X-MC-Unique: nAECjHcfPKq6BQ6tfhACXw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5A171902EA0;
- Mon,  3 Aug 2020 19:18:41 +0000 (UTC)
-Received: from thuth.com (ovpn-112-54.ams2.redhat.com [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AF6068A19B;
- Mon,  3 Aug 2020 19:18:40 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org,
-	pbonzini@redhat.com
-Subject: [PATCH] Get rid of the libqemustub.a remainders
-Date: Mon,  3 Aug 2020 21:18:38 +0200
-Message-Id: <20200803191838.14016-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1FB2100A62A;
+ Mon,  3 Aug 2020 21:17:45 +0000 (UTC)
+Received: from ibm-p8-OVS-01-fsp.mgmt.pnr.lab.eng.rdu2.redhat.com (unknown
+ [10.10.115.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 34EB560BF4;
+ Mon,  3 Aug 2020 21:17:45 +0000 (UTC)
+Subject: Re: [PATCH-for-5.2] stubs/cmos: Use correct include
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-block@nongnu.org
+References: <20200724084315.1606-1-f4bug@amsat.org>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <509ad9eb-e59d-990a-2076-66e6ba17a24a@redhat.com>
+Date: Mon, 3 Aug 2020 17:17:44 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20200724084315.1606-1-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 02:37:52
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 02:09:19
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -68,60 +76,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Aug 2020 19:18:51 -0000
+X-List-Received-Date: Mon, 03 Aug 2020 21:17:55 -0000
 
-libqemustub.a has been removed in commit ebedb37c8d ("Makefile: Remove
-libqemustub.a"). Some remainders have been missed. Remove them now.
+On 7/24/20 4:43 AM, Philippe Mathieu-Daudé wrote:
+> cmos_get_fd_drive_type() is declared in "hw/block/fdc.h".
+> This currently works because "hw/i386/pc.h" happens to
+> include it. Simplify including the correct header.
+> 
+> Fixes: 2055dbc1c9 ("acpi: move aml builder code for floppy device")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- Makefile                                | 2 +-
- scripts/coverity-scan/run-coverity-scan | 3 ---
- tests/test-util-sockets.c               | 3 ++-
- 3 files changed, 3 insertions(+), 5 deletions(-)
+Reviewed-by: John Snow <jsnow@redhat.com>
 
-diff --git a/Makefile b/Makefile
-index c2120d8d48..13dd708c4a 100644
---- a/Makefile
-+++ b/Makefile
-@@ -726,7 +726,7 @@ virtiofsd$(EXESUF): $(virtiofsd-obj-y) libvhost-user.a $(COMMON_LDADDS)
- 	$(call LINK, $^)
- endif
- 
--vhost-user-gpu$(EXESUF): $(vhost-user-gpu-obj-y) $(libvhost-user-obj-y) libqemuutil.a libqemustub.a
-+vhost-user-gpu$(EXESUF): $(vhost-user-gpu-obj-y) $(libvhost-user-obj-y) libqemuutil.a
- 	$(call LINK, $^)
- 
- ifdef CONFIG_VHOST_USER_INPUT
-diff --git a/scripts/coverity-scan/run-coverity-scan b/scripts/coverity-scan/run-coverity-scan
-index 03a791dec9..6eefb4b558 100755
---- a/scripts/coverity-scan/run-coverity-scan
-+++ b/scripts/coverity-scan/run-coverity-scan
-@@ -403,9 +403,6 @@ echo "Configuring..."
-     --enable-mpath --enable-libxml2 --enable-glusterfs \
-     --enable-virtfs --enable-zstd
- 
--echo "Making libqemustub.a..."
--make libqemustub.a
--
- echo "Running cov-build..."
- rm -rf cov-int
- mkdir cov-int
-diff --git a/tests/test-util-sockets.c b/tests/test-util-sockets.c
-index 2ca1e99f17..261dc48c03 100644
---- a/tests/test-util-sockets.c
-+++ b/tests/test-util-sockets.c
-@@ -64,7 +64,8 @@ int monitor_get_fd(Monitor *mon, const char *fdname, Error **errp)
-     return dup(mon_fd);
- }
- 
--/* Syms in libqemustub.a are discarded at .o file granularity.
-+/*
-+ * Syms of stubs in libqemuutil.a are discarded at .o file granularity.
-  * To replace monitor_get_fd() we must ensure everything in
-  * stubs/monitor.c is defined, to make sure monitor.o is discarded
-  * otherwise we get duplicate syms at link time.
--- 
-2.18.1
+> ---
+>   stubs/cmos.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/stubs/cmos.c b/stubs/cmos.c
+> index 416cbe4055..3fdbae2c69 100644
+> --- a/stubs/cmos.c
+> +++ b/stubs/cmos.c
+> @@ -1,5 +1,5 @@
+>   #include "qemu/osdep.h"
+> -#include "hw/i386/pc.h"
+> +#include "hw/block/fdc.h"
+>   
+>   int cmos_get_fd_drive_type(FloppyDriveType fd0)
+>   {
+> 
 
 
