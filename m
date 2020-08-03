@@ -1,81 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k2dka-00083r-2G
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 12:55:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53896)
+	id 1k2fz2-0005ct-Up
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2020 15:18:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2dkY-00082p-51; Mon, 03 Aug 2020 12:55:46 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33358)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2dkW-0000YP-5V; Mon, 03 Aug 2020 12:55:45 -0400
-Received: by mail-wr1-x443.google.com with SMTP id f18so34880235wrs.0;
- Mon, 03 Aug 2020 09:55:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OdU3OIPc/dC2w8YYahqTvKhi6bDWVIDrEhuH8xNTago=;
- b=o17p05i6RbpQZsILA7t7zJZh1ijEj+4rgUefAFUGirVxpWQk0mBJhzP8BDGg3pmCQv
- U0vmhCkqv1cFPaZmV+g1LoM8gdGpwvXM7VjyeXN8SZzFrn70ZiE+uWYfDplk7gCd2zZp
- luPOLJLZ6vSELd6XRLrTg41pdQe7cySOdk5ZWGsuDOG2LbtcVLTHhhkZY+My2PAOr29P
- A+zXlM2UC07J9+rg2DQRX0FxZq/paVfX67gwQdxjxyTI3abyr+LQ+moWaFjlyB0cXF+B
- 4Q7Gj94uq4/iVHvYrTK3dgGNpTelbWxIFh69hJN8bfUy7Jg2KcbHMrEma2w494IS9GuD
- YhCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OdU3OIPc/dC2w8YYahqTvKhi6bDWVIDrEhuH8xNTago=;
- b=P5azHF4740B1sP38ZDdzSBkMb/r39n8gI6Q2xrFpvcVCCYYQvBQT0sJfufp0Mmpohd
- roXsJz21E0K4yusos4Q8eFEZHnPQGx3ZgYntZ1dtlc0A8WiDWNnlRdI60Ej6oEWOIOcC
- RKj+2NNGgWx8uADI8aih3dzEXIMmmFuU5IREIouZiOSa1Zjh14zjM/kVp4GU5ix3898j
- /+ULG3hVnr1Aa4udQH7K+KfYjx09jiGPvODr3C3rraQ8ITwiJz6WNbQ7gXEpECDAe5A7
- /2s//O/ItzMh3hsm45Ua+ZK/Mq4B1wyZHOc56P9T71N+gq/PW7ODwZj2HJ1GMaB1b6lm
- mm/w==
-X-Gm-Message-State: AOAM531SMWegj+HX3kXBY1vK8dm5SVhEHvXbV0jOL4I8SjJPvePNfDDV
- +uhMTEphP3nHRV8ej9VBsBc=
-X-Google-Smtp-Source: ABdhPJzlSpQU+LhdaiD3jYPY5g+skO4rjhiGuCwcUcCqn4ByIfUSs0BK/zPDdTs+Xaya3ghBIyJVhA==
-X-Received: by 2002:adf:82f6:: with SMTP id 109mr17395503wrc.25.1596473742077; 
- Mon, 03 Aug 2020 09:55:42 -0700 (PDT)
-Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.214])
- by smtp.gmail.com with ESMTPSA id p6sm327446wmg.0.2020.08.03.09.55.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Aug 2020 09:55:41 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH-for-5.2] default-configs: Remove ACPI_CPU_HOTPLUG from
- MIPS machines
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-References: <20200724165259.19939-1-f4bug@amsat.org>
- <20200730133441.39257618@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b93b9ca8-eb7a-4d9e-87c2-6d9d61872639@amsat.org>
-Date: Mon, 3 Aug 2020 18:55:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200730133441.39257618@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k2fz0-0005bK-PY
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 15:18:50 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:43720
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k2fyy-0001dT-IO
+ for qemu-trivial@nongnu.org; Mon, 03 Aug 2020 15:18:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596482326;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=+yt9QATeEJ5XHntrTPRR+DuhRTJE/vmVnKFUZskr0l8=;
+ b=Fe1COTu64Srs9iWwv6LD6t1W/Sb7t9OMnAr0HYBGpOkcFITToPeK9nidJL6pKXzu+ifXCh
+ W43eOvYPoVhs0x6biLsSoICnBf5KBIOdsdh2Ow+2Cq5iF95IOl+W2ZZhpj9VUbktPvCj37
+ zynsdwGHMtjDl3gWTr6BUb6RBt0JIpM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-69-laGjP1v_MgWW-xNvXJ2W3g-1; Mon, 03 Aug 2020 15:18:42 -0400
+X-MC-Unique: laGjP1v_MgWW-xNvXJ2W3g-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5A171902EA0;
+ Mon,  3 Aug 2020 19:18:41 +0000 (UTC)
+Received: from thuth.com (ovpn-112-54.ams2.redhat.com [10.36.112.54])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AF6068A19B;
+ Mon,  3 Aug 2020 19:18:40 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
+Subject: [PATCH] Get rid of the libqemustub.a remainders
+Date: Mon,  3 Aug 2020 21:18:38 +0200
+Message-Id: <20200803191838.14016-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 02:37:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,42 +68,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Aug 2020 16:55:46 -0000
+X-List-Received-Date: Mon, 03 Aug 2020 19:18:51 -0000
 
-On 7/30/20 1:34 PM, Igor Mammedov wrote:
-> On Fri, 24 Jul 2020 18:52:59 +0200
-> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> 
->> No MIPS machine uses the ACPI cpu-hotplug feature
->> (QEMU implementation is X86 specific).
-> 
-> if I recall correctly we were building it to satisfy symbol dependencies
-> due to hw/acpi/piix4.c being shared between x86 and mips.
-> 
-> It no longer the case?
+libqemustub.a has been removed in commit ebedb37c8d ("Makefile: Remove
+libqemustub.a"). Some remainders have been missed. Remove them now.
 
-Unfortunately you are right, it is still the case :(
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ Makefile                                | 2 +-
+ scripts/coverity-scan/run-coverity-scan | 3 ---
+ tests/test-util-sockets.c               | 3 ++-
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
-> 
-> 
->> Fixes: 135a67a692 ("ACPI: split CONFIG_ACPI into 4 pieces")
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  default-configs/mips-softmmu-common.mak | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
->> index da29c6c0b2..e9c208da3d 100644
->> --- a/default-configs/mips-softmmu-common.mak
->> +++ b/default-configs/mips-softmmu-common.mak
->> @@ -21,7 +21,6 @@ CONFIG_ACPI=y
->>  CONFIG_ACPI_X86=y
->>  CONFIG_ACPI_MEMORY_HOTPLUG=y
->>  CONFIG_ACPI_NVDIMM=y
->> -CONFIG_ACPI_CPU_HOTPLUG=y
->>  CONFIG_APM=y
->>  CONFIG_I8257=y
->>  CONFIG_PIIX4=y
-> 
-> 
+diff --git a/Makefile b/Makefile
+index c2120d8d48..13dd708c4a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -726,7 +726,7 @@ virtiofsd$(EXESUF): $(virtiofsd-obj-y) libvhost-user.a $(COMMON_LDADDS)
+ 	$(call LINK, $^)
+ endif
+ 
+-vhost-user-gpu$(EXESUF): $(vhost-user-gpu-obj-y) $(libvhost-user-obj-y) libqemuutil.a libqemustub.a
++vhost-user-gpu$(EXESUF): $(vhost-user-gpu-obj-y) $(libvhost-user-obj-y) libqemuutil.a
+ 	$(call LINK, $^)
+ 
+ ifdef CONFIG_VHOST_USER_INPUT
+diff --git a/scripts/coverity-scan/run-coverity-scan b/scripts/coverity-scan/run-coverity-scan
+index 03a791dec9..6eefb4b558 100755
+--- a/scripts/coverity-scan/run-coverity-scan
++++ b/scripts/coverity-scan/run-coverity-scan
+@@ -403,9 +403,6 @@ echo "Configuring..."
+     --enable-mpath --enable-libxml2 --enable-glusterfs \
+     --enable-virtfs --enable-zstd
+ 
+-echo "Making libqemustub.a..."
+-make libqemustub.a
+-
+ echo "Running cov-build..."
+ rm -rf cov-int
+ mkdir cov-int
+diff --git a/tests/test-util-sockets.c b/tests/test-util-sockets.c
+index 2ca1e99f17..261dc48c03 100644
+--- a/tests/test-util-sockets.c
++++ b/tests/test-util-sockets.c
+@@ -64,7 +64,8 @@ int monitor_get_fd(Monitor *mon, const char *fdname, Error **errp)
+     return dup(mon_fd);
+ }
+ 
+-/* Syms in libqemustub.a are discarded at .o file granularity.
++/*
++ * Syms of stubs in libqemuutil.a are discarded at .o file granularity.
+  * To replace monitor_get_fd() we must ensure everything in
+  * stubs/monitor.c is defined, to make sure monitor.o is discarded
+  * otherwise we get duplicate syms at link time.
+-- 
+2.18.1
+
 
