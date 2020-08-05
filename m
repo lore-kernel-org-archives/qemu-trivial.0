@@ -1,52 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k30wE-00063J-I2
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2020 13:41:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44420)
+	id 1k3BCc-000486-TT
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Aug 2020 00:38:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
- id 1k30wC-00062q-R6
- for qemu-trivial@nongnu.org; Tue, 04 Aug 2020 13:41:20 -0400
-Received: from jax4mhob24.registeredsite.com ([64.69.218.112]:33598)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
- id 1k30wA-0002of-IL
- for qemu-trivial@nongnu.org; Tue, 04 Aug 2020 13:41:20 -0400
-Received: from mailpod.hostingplatform.com ([10.30.71.113])
- by jax4mhob24.registeredsite.com (8.14.4/8.14.4) with ESMTP id 074HfDkn155470
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL)
- for <qemu-trivial@nongnu.org>; Tue, 4 Aug 2020 13:41:15 -0400
-Received: (qmail 6687 invoked by uid 0); 4 Aug 2020 17:41:13 -0000
-X-TCPREMOTEIP: 50.93.248.134
-X-Authenticated-UID: josh@joshdubois.com
-Received: from unknown (HELO ?192.168.1.5?) (josh@joshdubois.com@50.93.248.134)
- by 0 with ESMTPA; 4 Aug 2020 17:41:13 -0000
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
-Subject: Re: [PATCH] trace/simple: Allow enabling simple traces from command
- line
-From: Josh DuBois <josh@joshdubois.com>
-In-Reply-To: <87h7tkm70n.fsf@dusky.pond.sub.org>
-Date: Tue, 4 Aug 2020 12:41:12 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k3BCb-00047V-PL
+ for qemu-trivial@nongnu.org; Wed, 05 Aug 2020 00:38:57 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:54768
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1k3BCZ-0004aO-51
+ for qemu-trivial@nongnu.org; Wed, 05 Aug 2020 00:38:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596602333;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1+IRZUt9cyEPbb+e6AQbzApEJa7HEzjTUNgCD2l6vKc=;
+ b=JIKmz1MortKc1C20x3kCnQeWiLJzhPM5+wxmC9egZb9CZAKn6U0yT1cA1ejXacdtYcPDe7
+ hgSVIW1azZUiJiZWMzwkbh8EheaKpcz3uCz17tmw0Xpuy8kIXCKTjByMh71l8p+idFUQ27
+ iLNcHl4EiD5YU3lH55NYdlReUnS8WdM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-464-mir_klMQPvqwG-loa6_w6g-1; Wed, 05 Aug 2020 00:38:52 -0400
+X-MC-Unique: mir_klMQPvqwG-loa6_w6g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 88B06100960F;
+ Wed,  5 Aug 2020 04:38:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2A1E471765;
+ Wed,  5 Aug 2020 04:38:50 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B4B851141D60; Wed,  5 Aug 2020 06:38:48 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Josh DuBois <josh@joshdubois.com>
 Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
  Josh DuBois <duboisj@gmail.com>, qemu-devel@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <A86BEB45-4022-4D7C-936C-5CDCC580EBF8@joshdubois.com>
+Subject: Re: [PATCH] trace/simple: Allow enabling simple traces from command
+ line
 References: <20200723053359.256928-1-josh@joshdubois.com>
  <20200729130535.GI37763@stefanha-x1.localdomain>
  <e08651bd-f775-eb85-817c-44d27ff072dc@joshdubois.com>
  <87h7tkm70n.fsf@dusky.pond.sub.org>
-To: Markus Armbruster <armbru@redhat.com>
-X-Mailer: Apple Mail (2.3608.80.23.2.2)
-Received-SPF: neutral client-ip=64.69.218.112;
- envelope-from=josh@joshdubois.com; helo=jax4mhob24.registeredsite.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/04 13:41:16
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+ <A86BEB45-4022-4D7C-936C-5CDCC580EBF8@joshdubois.com>
+Date: Wed, 05 Aug 2020 06:38:48 +0200
+In-Reply-To: <A86BEB45-4022-4D7C-936C-5CDCC580EBF8@joshdubois.com> (Josh
+ DuBois's message of "Tue, 4 Aug 2020 12:41:12 -0500")
+Message-ID: <87h7th7llz.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/05 00:09:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,45 +79,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2020 17:41:21 -0000
+X-List-Received-Date: Wed, 05 Aug 2020 04:38:58 -0000
 
-On Aug 3, 2020, at 4:08 AM, Markus Armbruster <armbru@redhat.com> wrote:
->=20
->>=20
->> - prior to db25d56c014aa1a96319c663e0a60346a223b31e, just like today,
->> QEMU built with simple tracing will always produce a trace-<pid> =
-file,
->> regardless of whether the user asks for traces at runtime.
->=20
-> When you send a patch with a Fixes: tag, consider cc'ing people =
-involved
-> in the commit being fixed.  I might have spotted the regression.
+Josh DuBois <josh@joshdubois.com> writes:
 
-Sure, this makes sense. =20
+> On Aug 3, 2020, at 4:08 AM, Markus Armbruster <armbru@redhat.com> wrote:
+>> 
+>>> 
+>>> - prior to db25d56c014aa1a96319c663e0a60346a223b31e, just like today,
+>>> QEMU built with simple tracing will always produce a trace-<pid> file,
+>>> regardless of whether the user asks for traces at runtime.
+>> 
+>> When you send a patch with a Fixes: tag, consider cc'ing people involved
+>> in the commit being fixed.  I might have spotted the regression.
+>
+> Sure, this makes sense.  
+>
+>> I missed the CLI issue.  I just wanted my directories not littered with
+>> trace files ;)
+>> 
+>> Stefan, what shall we do for 5.1?
+>> 
+>> If we keep littering, the annoyance will make me drop the trace backend
+>> "simple" from my build tests.  I might even remember to put it back when
+>> the fix arrives.
+>
+> I haven't seen another response, but I just noticed a 'last call' for 5.1.  If this means something is going to get excluded from regular build tests, that seems important - I for one have no objection to simply reverting this - 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 <-- my "fix."
 
-> I missed the CLI issue.  I just wanted my directories not littered =
-with
-> trace files ;)
->=20
-> Stefan, what shall we do for 5.1?
->=20
-> If we keep littering, the annoyance will make me drop the trace =
-backend
-> "simple" from my build tests.  I might even remember to put it back =
-when
-> the fix arrives.
+These are just my local build test.  Our CI is not affected.
 
-I haven't seen another response, but I just noticed a 'last call' for =
-5.1.  If this means something is going to get excluded from regular =
-build tests, that seems important - I for one have no objection to =
-simply reverting this - 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 <-- my =
-"fix."
+Reverting is up to Stefan.
 
-I will try to send a better fix along sometime soonish, but I probably =
-won't get to that before 5.1.  If the nuisance of the trace-<pid> files =
-is causing real-world problems for someone actually doing regular =
-development, that seems more important than the command line issue, to =
-me.  Just my $0.02.
+> I will try to send a better fix along sometime soonish, but I probably won't get to that before 5.1.  If the nuisance of the trace-<pid> files is causing real-world problems for someone actually doing regular development, that seems more important than the command line issue, to me.  Just my $0.02.
+>
+> Cheers, and sorry if your build dirs do end up littered again.
 
-Cheers, and sorry if your build dirs do end up littered again.=
+Sorry for breaking your use case, and looking forward to your fix for
+your fix!
+
 
