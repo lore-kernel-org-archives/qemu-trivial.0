@@ -1,79 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3fed-0007tH-Iy
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:09:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45638)
+	id 1k3fkn-0004h7-Gt
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:16:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3feb-0007nx-Ny; Thu, 06 Aug 2020 09:09:53 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37498)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3fea-0007oe-88; Thu, 06 Aug 2020 09:09:53 -0400
-Received: by mail-wr1-x443.google.com with SMTP id y3so43951378wrl.4;
- Thu, 06 Aug 2020 06:09:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Z1eB1yLGjmQeAviyyU8a06QWYwG1jvRDYYTpvqI4k5k=;
- b=fS0DO8oPVH0SCuBPmNIuSTPPFOHGXqmwuX0BC+2BinK+b4Sawg4p+H9/p/YveWyX//
- E9d+tpGX97ir/AkCz9v90IP4QbRu8oAwvxfvi6s1HkfnHPzIBsA9+Fo5F3bytAecMsGw
- h2aIa6E6Q4JoaUvIgLD/XbeG9fwluWULUtTKSHJpKH+E8VzRK6kKaUlLoal7Loo98ua3
- tqVJt3luv3XVCgKf+j4/eDWmozVJgs+qVxp9Psa0i9Jr+ux0aic9H8BcBDhOHiP9ptdY
- gBVZ2trYcl8E2u4Kw0JvhzVH9iX3vpq3FK0QRV+AYFqj0dwiEbn7YjuKnktlES+pn7RL
- Lghg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Z1eB1yLGjmQeAviyyU8a06QWYwG1jvRDYYTpvqI4k5k=;
- b=BVQQJFGxzvXMT54BY/8nrXfXVG/9C20zhS2DeGSeK36SCL78r0fBEZLYCOkQnHwW4z
- Y9/R1M08D9584z8czzImhh3mEJCKQs5xyFtVDTBFJ8Akf9TG8hl+HaqzpV/PYn3QUBkd
- 1yvfy0NIRpnOHvsxIKn/yVXsWkW+ZLVtH7VEj9TdaF1hxdhbT8bK8l8EbHaPbaK8Ut2Q
- m1zZkm6PY+OJ2r9QXeQYxtFhmKXXFLv4FginM1fVWavmuRnSLasNPj5oIcM649VNwhyc
- yAxzRNdybXjFBJVgvd+d+Taeu424h9qP+pzzIEza7ALZZHLHgm+j2V8Hs1O0kXVALbKd
- 6brg==
-X-Gm-Message-State: AOAM531TLa8djqRep5jpgVUzrmR3b0ZpO0UBTCiwdXsNRwDIVOTdomy/
- GYtPYQcqvQj0kc664g9XwUTOTWWs
-X-Google-Smtp-Source: ABdhPJyus1Ku4md8coyBMsaRK0fqn7RBKMj+qarsgZbIhpf7ZMCno/VuPsJLO9jrjLjtY9Kp8AMAZA==
-X-Received: by 2002:adf:efcc:: with SMTP id i12mr7590787wrp.308.1596719390198; 
- Thu, 06 Aug 2020 06:09:50 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id w2sm7092799wre.5.2020.08.06.06.09.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2020 06:09:49 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.2 2/2] hw/core/sysbus: Assert memory region index is in
- range
-Date: Thu,  6 Aug 2020 15:09:45 +0200
-Message-Id: <20200806130945.21629-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200806130945.21629-1-f4bug@amsat.org>
-References: <20200806130945.21629-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1k3cKc-0005Am-6U; Thu, 06 Aug 2020 05:37:02 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:41088 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1k3cKa-0007WK-4P; Thu, 06 Aug 2020 05:37:01 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 47DD27A2981179D8D588;
+ Thu,  6 Aug 2020 17:36:51 +0800 (CST)
+Received: from localhost.localdomain (10.175.101.6) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 6 Aug 2020 17:36:45 +0800
+From: Peng Liang <liangpeng10@huawei.com>
+To: <qemu-trivial@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <zhang.zhanghailiang@huawei.com>, Peng Liang
+ <liangpeng10@huawei.com>
+Subject: [PATCH 3/5] log: Add more details to virtio_report in virtqueue_pop
+Date: Thu, 6 Aug 2020 17:37:18 +0800
+Message-ID: <20200806093720.2355692-4-liangpeng10@huawei.com>
+X-Mailer: git-send-email 2.18.4
+In-Reply-To: <20200806093720.2355692-1-liangpeng10@huawei.com>
+References: <20200806093720.2355692-1-liangpeng10@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=liangpeng10@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 03:36:23
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 06 Aug 2020 09:16:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,30 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 13:09:54 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 09:37:02 -0000
 
-Devices incorrectly modelled might use invalid index while
-calling sysbus_mmio_get_region(), leading to OOB access.
-Help developers by asserting the index is in range.
+Add virtio device name and virtqueue info to virtio_report in
+virtqueue_pop so that we can find out which device's virtqueue is
+broken.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Peng Liang <liangpeng10@huawei.com>
 ---
- hw/core/sysbus.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/virtio/virtio.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 77ab351ce1..294f90b7de 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -199,6 +199,7 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index f3568f5267..6b35bed1d7 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -1439,7 +1439,9 @@ static void *virtqueue_split_pop(VirtQueue *vq, size_t sz)
+     max = vq->vring.num;
  
- MemoryRegion *sysbus_mmio_get_region(SysBusDevice *dev, int n)
- {
-+    assert(n >= 0 && n < QDEV_MAX_MMIO);
-     return dev->mmio[n].memory;
- }
+     if (vq->inuse >= vq->vring.num) {
+-        virtio_error(vdev, "Virtqueue size exceeded");
++        virtio_error(vdev, "Virtio device %s vq->inuse=%d vq->vring.num=%d, "
++                     "virtqueue size exceeded",
++                     vdev->name, vq->inuse, vq->vring.num);
+         goto done;
+     }
  
 -- 
-2.21.3
+2.18.4
 
 
