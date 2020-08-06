@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3fec-0007pe-DE
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:09:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45628)
+	id 1k3fed-0007tH-Iy
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:09:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3fea-0007n5-HK; Thu, 06 Aug 2020 09:09:52 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45925)
+ id 1k3feb-0007nx-Ny; Thu, 06 Aug 2020 09:09:53 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37498)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3feZ-0007oW-48; Thu, 06 Aug 2020 09:09:52 -0400
-Received: by mail-wr1-x431.google.com with SMTP id z18so40380813wrm.12;
- Thu, 06 Aug 2020 06:09:50 -0700 (PDT)
+ id 1k3fea-0007oe-88; Thu, 06 Aug 2020 09:09:53 -0400
+Received: by mail-wr1-x443.google.com with SMTP id y3so43951378wrl.4;
+ Thu, 06 Aug 2020 06:09:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=aZaaBObzjbQRAqFN3X3TVgwXNHIqW64X7jNO99AsFHw=;
- b=GFWUQsqKpfcZy1UQ3GVTBNKhdClOKS9LzphkSqGx4Ar3xdWF0L3ecjlU6Nc1tx7dE3
- zgHGT9vEZD8xb8ABLfnhW28RgCJJOZrbL6lUIHGWJInLXoOhkpBFdkXQxVeHitor/cF2
- cTXYlWoTfuY+ee1HwPzhyrkjqBs162IpN4hCJt4DeqMQYSbt6w8i5QaEtGwiXqBFAE/Y
- JSUFjd9gtfvF75RWP11dw7J/QZkTqY0HFo473PU+RCq8EHoJVc1UgIks7oI3LyhxZmnr
- FDwzunUUc8aHem45dhHJWpXWQG5Vt8VEvS8Y8kCuPS/I7Lh7s7aeuCCayct5Cxib5rXY
- j+Vw==
+ bh=Z1eB1yLGjmQeAviyyU8a06QWYwG1jvRDYYTpvqI4k5k=;
+ b=fS0DO8oPVH0SCuBPmNIuSTPPFOHGXqmwuX0BC+2BinK+b4Sawg4p+H9/p/YveWyX//
+ E9d+tpGX97ir/AkCz9v90IP4QbRu8oAwvxfvi6s1HkfnHPzIBsA9+Fo5F3bytAecMsGw
+ h2aIa6E6Q4JoaUvIgLD/XbeG9fwluWULUtTKSHJpKH+E8VzRK6kKaUlLoal7Loo98ua3
+ tqVJt3luv3XVCgKf+j4/eDWmozVJgs+qVxp9Psa0i9Jr+ux0aic9H8BcBDhOHiP9ptdY
+ gBVZ2trYcl8E2u4Kw0JvhzVH9iX3vpq3FK0QRV+AYFqj0dwiEbn7YjuKnktlES+pn7RL
+ Lghg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=aZaaBObzjbQRAqFN3X3TVgwXNHIqW64X7jNO99AsFHw=;
- b=A9v+W2lE82UzYQOW8+1e8TBwaqf4gLnrjnuzlTWg6sJn6hg5N7XZGFPfLO7O9Xb/a+
- f/BwoUSpb3Km32IZ8D0L/T/W8eGH7DmNKIdxluqDPZqgeJGGsHcxt2YSyaB0nv1eayQl
- k6IMIP/CGe/nfq4BuQljgYAaa7aqbue+hUelojWWucMr1J+oCJ5XZG2FN8KGkLBl2YHi
- p5C0Au10eVrCJvpxZs+GcEiXKYDt2XoggPcRhIDhDQks8drz4du0hs+iVIyXAVpYJCFF
- PDT/2wk/JVmrfBQQkwf47xefwqbVVASzPs1SNbenh3mN/4uCiwImlzIx/IqYZEWobVDN
- +vtA==
-X-Gm-Message-State: AOAM53095t/kGuFMG+YTTIZ5yPny7ZA/N+izeCh6m+y5wwGYweGYvhRv
- Jxjl/UlJOwoh9XMrYSNfWVcEqXNs
-X-Google-Smtp-Source: ABdhPJzFZn+6CgmeEdpQ1cqO8rTZa5qgZmPRosXwkQVGoJJeiV8EzIF0T6sCpDrzQunsC7lmgtoeSA==
-X-Received: by 2002:adf:f806:: with SMTP id s6mr7643302wrp.252.1596719389027; 
- Thu, 06 Aug 2020 06:09:49 -0700 (PDT)
+ bh=Z1eB1yLGjmQeAviyyU8a06QWYwG1jvRDYYTpvqI4k5k=;
+ b=BVQQJFGxzvXMT54BY/8nrXfXVG/9C20zhS2DeGSeK36SCL78r0fBEZLYCOkQnHwW4z
+ Y9/R1M08D9584z8czzImhh3mEJCKQs5xyFtVDTBFJ8Akf9TG8hl+HaqzpV/PYn3QUBkd
+ 1yvfy0NIRpnOHvsxIKn/yVXsWkW+ZLVtH7VEj9TdaF1hxdhbT8bK8l8EbHaPbaK8Ut2Q
+ m1zZkm6PY+OJ2r9QXeQYxtFhmKXXFLv4FginM1fVWavmuRnSLasNPj5oIcM649VNwhyc
+ yAxzRNdybXjFBJVgvd+d+Taeu424h9qP+pzzIEza7ALZZHLHgm+j2V8Hs1O0kXVALbKd
+ 6brg==
+X-Gm-Message-State: AOAM531TLa8djqRep5jpgVUzrmR3b0ZpO0UBTCiwdXsNRwDIVOTdomy/
+ GYtPYQcqvQj0kc664g9XwUTOTWWs
+X-Google-Smtp-Source: ABdhPJyus1Ku4md8coyBMsaRK0fqn7RBKMj+qarsgZbIhpf7ZMCno/VuPsJLO9jrjLjtY9Kp8AMAZA==
+X-Received: by 2002:adf:efcc:: with SMTP id i12mr7590787wrp.308.1596719390198; 
+ Thu, 06 Aug 2020 06:09:50 -0700 (PDT)
 Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id w2sm7092799wre.5.2020.08.06.06.09.47
+ by smtp.gmail.com with ESMTPSA id w2sm7092799wre.5.2020.08.06.06.09.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2020 06:09:48 -0700 (PDT)
+ Thu, 06 Aug 2020 06:09:49 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -51,9 +51,10 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  Eduardo Habkost <ehabkost@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.2 1/2] hw/core/sysbus: Fix a typo
-Date: Thu,  6 Aug 2020 15:09:44 +0200
-Message-Id: <20200806130945.21629-2-f4bug@amsat.org>
+Subject: [PATCH-for-5.2 2/2] hw/core/sysbus: Assert memory region index is in
+ range
+Date: Thu,  6 Aug 2020 15:09:45 +0200
+Message-Id: <20200806130945.21629-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200806130945.21629-1-f4bug@amsat.org>
 References: <20200806130945.21629-1-f4bug@amsat.org>
@@ -61,8 +62,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -84,26 +85,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 13:09:52 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 13:09:54 -0000
+
+Devices incorrectly modelled might use invalid index while
+calling sysbus_mmio_get_region(), leading to OOB access.
+Help developers by asserting the index is in range.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/sysbus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/core/sysbus.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 70239b7e7d..77ab351ce1 100644
+index 77ab351ce1..294f90b7de 100644
 --- a/hw/core/sysbus.c
 +++ b/hw/core/sysbus.c
-@@ -64,7 +64,7 @@ void foreach_dynamic_sysbus_device(FindSysbusDeviceFunc *func, void *opaque)
-         .opaque = opaque,
-     };
+@@ -199,6 +199,7 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
  
--    /* Loop through all sysbus devices that were spawened outside the machine */
-+    /* Loop through all sysbus devices that were spawned outside the machine */
-     container = container_get(qdev_get_machine(), "/peripheral");
-     find_sysbus_device(container, &find);
-     container = container_get(qdev_get_machine(), "/peripheral-anon");
+ MemoryRegion *sysbus_mmio_get_region(SysBusDevice *dev, int n)
+ {
++    assert(n >= 0 && n < QDEV_MAX_MMIO);
+     return dev->mmio[n].memory;
+ }
+ 
 -- 
 2.21.3
 
