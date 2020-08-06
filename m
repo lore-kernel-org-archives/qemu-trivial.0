@@ -1,46 +1,103 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3fkq-0004og-RF
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:16:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52392)
+	id 1k3gI0-0007G9-IT
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:50:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKe-0005BM-1M; Thu, 06 Aug 2020 05:37:04 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:41184 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKb-0007Wa-W2; Thu, 06 Aug 2020 05:37:03 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 575B5283BBFFE51F18CF;
- Thu,  6 Aug 2020 17:36:56 +0800 (CST)
-Received: from localhost.localdomain (10.175.101.6) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 6 Aug 2020 17:36:50 +0800
-From: Peng Liang <liangpeng10@huawei.com>
-To: <qemu-trivial@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <zhang.zhanghailiang@huawei.com>, Peng Liang
- <liangpeng10@huawei.com>
-Subject: [PATCH 5/5] log: Add logs during qemu start
-Date: Thu, 6 Aug 2020 17:37:20 +0800
-Message-ID: <20200806093720.2355692-6-liangpeng10@huawei.com>
-X-Mailer: git-send-email 2.18.4
-In-Reply-To: <20200806093720.2355692-1-liangpeng10@huawei.com>
-References: <20200806093720.2355692-1-liangpeng10@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k3gHz-0007Ep-Jv; Thu, 06 Aug 2020 09:50:35 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51456)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k3gHx-0004Xp-Q3; Thu, 06 Aug 2020 09:50:35 -0400
+Received: by mail-wm1-x344.google.com with SMTP id p14so8914167wmg.1;
+ Thu, 06 Aug 2020 06:50:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LjB1ffki1ZRnWjsIwS0CS222qFqaOro+d2rusU7hmhA=;
+ b=KpqQGr+nFCi3kPPJH6uDQhpqdRx8FbBb71DJ4yeHYo/BEJLy4WXJRy9e6HqhaC/Co4
+ DuXdhtPFR7+sVuljIc9LytDOixPDBW0exeM7MIaax2sFhhlxYnABvZ4QLftBd7TVKZZQ
+ 9JXzn4bGIX/2xJGGMw0sFi+W4YRsidcJwj1qP0eS8bknVfhwPI/rX6v94SPAzacOLMwh
+ BEoxFc4rLCDr1rvPFQfADyO69NiEcg8ChEwACgt7trvnPWe/ZC/v3KzObYRAf2HmBt2d
+ 3mNg28F4mfmG93P4JITPSqTqfZZ8QsE5LeLIM83Q8wg4+clqYDKYOl+wQUtrVIWmzGEn
+ hthQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=LjB1ffki1ZRnWjsIwS0CS222qFqaOro+d2rusU7hmhA=;
+ b=X8Uu0ylVTlRprpgNKX0FMQG/Pg1enJhwAI2ujrc6YMykrqtj/77DH5wnYc4CZw99pB
+ Lb+OmfJsZI9hsy4L9JaY7LC0GLajLa6WeZx4IgR9CvcYIuUjh0Rj4SC9y/LKpXTLqA3q
+ dfKXG90nCePM59+AENSq9KsCxqmEyXa1KXFomZ6kMRHwFQlH4GUFFWjbefW2ot+fuIBs
+ lv9C9hKZ5DI+KFe+7iHNhVUqrn5B3+bpAnQ0EwG+HxDxQJ+MpC5sphHd/rKkyBmaM1og
+ iBmTSqm0Hjjg28oSHtzUZfSpGz2sbwXT8eoWznp6zg1YJU2UvwtvXGHvFRv8EhdMr1++
+ 4AvA==
+X-Gm-Message-State: AOAM530brERnbGGf/DKmnYqBoTbzCf7FJZv9sDFQH/SZyNNIgR3V+6X1
+ WDGcbPRNRaG5rRZI+8LDeYk=
+X-Google-Smtp-Source: ABdhPJw1h1CD8ZIQbMM0VBgdLyJuJBZFykWuzLyyp1bIkMZvKSIkoluvh0xoHL9y8w3WPbpUkLaS4Q==
+X-Received: by 2002:a1c:ba83:: with SMTP id k125mr8198237wmf.160.1596721831581; 
+ Thu, 06 Aug 2020 06:50:31 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id w1sm6712094wmc.18.2020.08.06.06.50.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Aug 2020 06:50:30 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2] .mailmap: Update Paul Burton email address
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Paul Burton <paulburton@kernel.org>
+References: <20200707022544.24925-1-f4bug@amsat.org>
+ <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <932a272b-bc80-f6e4-d51e-32e2222f540c@amsat.org>
+Date: Thu, 6 Aug 2020 15:50:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=liangpeng10@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 03:36:23
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 06 Aug 2020 09:16:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,66 +109,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 09:37:04 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 13:50:35 -0000
 
-Add logs during qemu start.
+ping, as I'm still receiving "The recipient email address is
+incorrect or does not exist in this domain." from wavecomp.com...
 
-Signed-off-by: Peng Liang <liangpeng10@huawei.com>
----
- blockdev.c         | 2 ++
- softmmu/vl.c       | 2 ++
- util/oslib-posix.c | 3 +--
- 3 files changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/blockdev.c b/blockdev.c
-index 3848a9c8ab..8e3ab8a9b2 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -1001,6 +1001,8 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInterfaceType block_default_type,
-         qdict_put_str(bs_opts, "rerror", rerror);
-     }
- 
-+    info_report("blockdev init(%s).", filename ? filename : "");
-+
-     /* Actual block device init: Functionality shared with blockdev-add */
-     blk = blockdev_init(filename, bs_opts, errp);
-     bs_opts = NULL;
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index a9f06111b3..493518de66 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -1070,6 +1070,8 @@ static void configure_blockdev(BlockdevOptionsQueue *bdo_queue,
-         exit(0);
-     }
- 
-+    info_report("Finish drive init.");
-+
-     default_drive(default_cdrom, snapshot, machine_class->block_default_type, 2,
-                   CDROM_OPTS);
-     default_drive(default_floppy, snapshot, IF_FLOPPY, 0, FD_OPTS);
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index ad8001a4ad..87c1c8569e 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -66,9 +66,7 @@
- 
- #include "qemu/mmap-alloc.h"
- 
--#ifdef CONFIG_DEBUG_STACK_USAGE
- #include "qemu/error-report.h"
--#endif
- 
- #define MAX_MEM_PREALLOC_THREAD_COUNT 16
- 
-@@ -558,6 +556,7 @@ static bool touch_all_pages(char *area, size_t hpagesize, size_t numpages,
-     g_free(memset_thread);
-     memset_thread = NULL;
- 
-+    info_report("Finish touching all pages.");
-     return memset_thread_failed;
- }
- 
--- 
-2.18.4
-
+On 7/16/20 8:56 AM, Philippe Mathieu-Daudé wrote:
+> Hi Paul,
+> 
+> Do you mind Acking this patch? QEMU's get_maintainer.pl
+> still selects pburton@wavecomp.com for various of your
+> contributions and wavesemi.com (where wavecomp.com seems
+> redirected) keeps sending "The recipient email address is
+> incorrect or does not exist in this domain."
+> 
+> In case you don't want to receive any more emails from the
+> QEMU mailing list, you can Nack this patch, so I'll have a
+> good reason to insist with the alternative to have a
+> 'ignore .mailmap', suggested here:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg717757.html
+> 
+> On 7/7/20 4:25 AM, Philippe Mathieu-Daudé wrote:
+>> Following the Linux kernel equivalent patch posted on
+>> linux-mips@vger.kernel.org [*], update Paul Burton email
+>> address to avoid emails bouncing.
+>>
+>> [*] 'MAINTAINERS: Use @kernel.org address for Paul Burton'
+>> https://lore.kernel.org/patchwork/patch/1140341/
+>>
+>> Cc: Paul Burton <paulburton@kernel.org>
+>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  .mailmap | 7 ++++---
+>>  1 file changed, 4 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/.mailmap b/.mailmap
+>> index 926cac6bb8..fe4c561338 100644
+>> --- a/.mailmap
+>> +++ b/.mailmap
+>> @@ -49,9 +49,10 @@ Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+>>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+>>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+>> -Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>> -Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>> -Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+>> +Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
+>> +Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
+>> +Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
+>> +Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
+>>  Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+>>  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+>>  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+>>
+> 
 
