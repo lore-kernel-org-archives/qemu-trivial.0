@@ -1,102 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3gI0-0007G9-IT
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:50:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54926)
+	id 1k3gPr-0003Md-NN
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:58:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3gHz-0007Ep-Jv; Thu, 06 Aug 2020 09:50:35 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51456)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3gHx-0004Xp-Q3; Thu, 06 Aug 2020 09:50:35 -0400
-Received: by mail-wm1-x344.google.com with SMTP id p14so8914167wmg.1;
- Thu, 06 Aug 2020 06:50:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LjB1ffki1ZRnWjsIwS0CS222qFqaOro+d2rusU7hmhA=;
- b=KpqQGr+nFCi3kPPJH6uDQhpqdRx8FbBb71DJ4yeHYo/BEJLy4WXJRy9e6HqhaC/Co4
- DuXdhtPFR7+sVuljIc9LytDOixPDBW0exeM7MIaax2sFhhlxYnABvZ4QLftBd7TVKZZQ
- 9JXzn4bGIX/2xJGGMw0sFi+W4YRsidcJwj1qP0eS8bknVfhwPI/rX6v94SPAzacOLMwh
- BEoxFc4rLCDr1rvPFQfADyO69NiEcg8ChEwACgt7trvnPWe/ZC/v3KzObYRAf2HmBt2d
- 3mNg28F4mfmG93P4JITPSqTqfZZ8QsE5LeLIM83Q8wg4+clqYDKYOl+wQUtrVIWmzGEn
- hthQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k3gPq-0003M3-5T
+ for qemu-trivial@nongnu.org; Thu, 06 Aug 2020 09:58:42 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:59959
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k3gPo-0005aK-4e
+ for qemu-trivial@nongnu.org; Thu, 06 Aug 2020 09:58:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596722318;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=cepDETQUo+jJLvqnzAfamax3Xlpb/zYuUECWLtj0je8=;
+ b=KL9sCULUDN2vnipdnOINf3zzNYu4eNWbno+EfRCuBh234Ll3PxDzWbA523kX1JY776FIYG
+ gmVzS+JClVfwphFtXtZJjUlrI6ICH2QA+FcrmwG9E7ZnMEUfhLeq8otcZoXJQHW0UIh0JL
+ aZ+PQ3CnhN70QTonvHMb9ZjzmK0XnJg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-pS3VUhmhNVWMsnsSx3NT7g-1; Thu, 06 Aug 2020 09:58:36 -0400
+X-MC-Unique: pS3VUhmhNVWMsnsSx3NT7g-1
+Received: by mail-wr1-f69.google.com with SMTP id 5so14769501wrc.17
+ for <qemu-trivial@nongnu.org>; Thu, 06 Aug 2020 06:58:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=LjB1ffki1ZRnWjsIwS0CS222qFqaOro+d2rusU7hmhA=;
- b=X8Uu0ylVTlRprpgNKX0FMQG/Pg1enJhwAI2ujrc6YMykrqtj/77DH5wnYc4CZw99pB
- Lb+OmfJsZI9hsy4L9JaY7LC0GLajLa6WeZx4IgR9CvcYIuUjh0Rj4SC9y/LKpXTLqA3q
- dfKXG90nCePM59+AENSq9KsCxqmEyXa1KXFomZ6kMRHwFQlH4GUFFWjbefW2ot+fuIBs
- lv9C9hKZ5DI+KFe+7iHNhVUqrn5B3+bpAnQ0EwG+HxDxQJ+MpC5sphHd/rKkyBmaM1og
- iBmTSqm0Hjjg28oSHtzUZfSpGz2sbwXT8eoWznp6zg1YJU2UvwtvXGHvFRv8EhdMr1++
- 4AvA==
-X-Gm-Message-State: AOAM530brERnbGGf/DKmnYqBoTbzCf7FJZv9sDFQH/SZyNNIgR3V+6X1
- WDGcbPRNRaG5rRZI+8LDeYk=
-X-Google-Smtp-Source: ABdhPJw1h1CD8ZIQbMM0VBgdLyJuJBZFykWuzLyyp1bIkMZvKSIkoluvh0xoHL9y8w3WPbpUkLaS4Q==
-X-Received: by 2002:a1c:ba83:: with SMTP id k125mr8198237wmf.160.1596721831581; 
- Thu, 06 Aug 2020 06:50:31 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cepDETQUo+jJLvqnzAfamax3Xlpb/zYuUECWLtj0je8=;
+ b=HhwVwE8xsaD+2Omaap/NprWXVfiKQTl20tjBTUtfxiTxoj3vAR1XcvCT693zYA85NP
+ bbhKjxG87WgFV4G/uIBO4vtGFVFwjT8LeZHC835H3dkRxdnMlw431DKERXBctWUnPRb5
+ bXuIqWaa+/tOJ0+9lOkc8PuGLCS25Ej4ViwObUexvFD2tm1bbWmFnFG+ItSTI8G3iG9W
+ /aWgcUxJqxRaFO8ouyKr9qqs8XwLemElpjQl9wPpPNlCxkKnjiyayDnsY9bZJ69bRlzB
+ WGcWQacpxzyAcQqeJF4oePAWnxbd9+pPAUHEAYtoKDJtZM9DC31a5KTCgplQvU51wKWT
+ eGuQ==
+X-Gm-Message-State: AOAM533Qh27+dRXkYJNPx6tep3pziE7wtz2PA+Q99flqDIy/Rbz0gkQW
+ tBjrGgvT6kNOHXjfLAABGFqFgu62Gr+hfC7Dz5688waQS1s/nfJRO3wZgOhVjM1spCUPkC9tZRI
+ OsvlfTArEGX3+ykzr5g==
+X-Received: by 2002:a1c:a78a:: with SMTP id q132mr8011585wme.27.1596722315219; 
+ Thu, 06 Aug 2020 06:58:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9oRQGKeLAuOtaRv/DDBw/3hZKYQxZX/HqoqmzccjeYp8xXjwqcYCpS6RO+sdjl6VDEQqfDA==
+X-Received: by 2002:a1c:a78a:: with SMTP id q132mr8011568wme.27.1596722314984; 
+ Thu, 06 Aug 2020 06:58:34 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id w1sm6712094wmc.18.2020.08.06.06.50.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Aug 2020 06:50:30 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2] .mailmap: Update Paul Burton email address
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+ by smtp.gmail.com with ESMTPSA id x2sm7093978wrg.73.2020.08.06.06.58.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Aug 2020 06:58:34 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Paul Burton <paulburton@kernel.org>
-References: <20200707022544.24925-1-f4bug@amsat.org>
- <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <932a272b-bc80-f6e4-d51e-32e2222f540c@amsat.org>
-Date: Thu, 6 Aug 2020 15:50:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH-for-5.2] Revert "mailmap: Update philmd email address"
+Date: Thu,  6 Aug 2020 15:58:32 +0200
+Message-Id: <20200806135832.2319-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 00:07:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,59 +88,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 13:50:35 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 13:58:42 -0000
 
-ping, as I'm still receiving "The recipient email address is
-incorrect or does not exist in this domain." from wavecomp.com...
+This mailmap entry does not work as I expected. I am receiving
+emails related to my hobbyist contributions in my work mailbox
+and I get distracted :) Remove the entry to keep things separated.
 
-On 7/16/20 8:56 AM, Philippe Mathieu-Daudé wrote:
-> Hi Paul,
-> 
-> Do you mind Acking this patch? QEMU's get_maintainer.pl
-> still selects pburton@wavecomp.com for various of your
-> contributions and wavesemi.com (where wavecomp.com seems
-> redirected) keeps sending "The recipient email address is
-> incorrect or does not exist in this domain."
-> 
-> In case you don't want to receive any more emails from the
-> QEMU mailing list, you can Nack this patch, so I'll have a
-> good reason to insist with the alternative to have a
-> 'ignore .mailmap', suggested here:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg717757.html
-> 
-> On 7/7/20 4:25 AM, Philippe Mathieu-Daudé wrote:
->> Following the Linux kernel equivalent patch posted on
->> linux-mips@vger.kernel.org [*], update Paul Burton email
->> address to avoid emails bouncing.
->>
->> [*] 'MAINTAINERS: Use @kernel.org address for Paul Burton'
->> https://lore.kernel.org/patchwork/patch/1140341/
->>
->> Cc: Paul Burton <paulburton@kernel.org>
->> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  .mailmap | 7 ++++---
->>  1 file changed, 4 insertions(+), 3 deletions(-)
->>
->> diff --git a/.mailmap b/.mailmap
->> index 926cac6bb8..fe4c561338 100644
->> --- a/.mailmap
->> +++ b/.mailmap
->> @@ -49,9 +49,10 @@ Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
->>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
->>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
->>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
->> -Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
->> -Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
->> -Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
->> +Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
->> +Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
->> +Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
->> +Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
->>  Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
->>  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
->>  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
->>
-> 
+This reverts commit 289371239153b24cb7bd96b6948c6b40b4627a9b.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ .mailmap | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/.mailmap b/.mailmap
+index 81c2ce0937..2d97a14af3 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -54,7 +54,6 @@ Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+ Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+-Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+ Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+ 
+-- 
+2.21.3
+
 
