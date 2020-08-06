@@ -1,37 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3fkn-0004hv-U1
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:16:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52390)
+	id 1k3fkq-0004nR-By
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:16:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKd-0005BJ-Rz; Thu, 06 Aug 2020 05:37:03 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:41182 helo=huawei.com)
+ id 1k3cKd-0005B5-Du; Thu, 06 Aug 2020 05:37:03 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4229 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKb-0007WY-W8; Thu, 06 Aug 2020 05:37:03 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 538FFD02B17AFD7DA90E;
- Thu,  6 Aug 2020 17:36:56 +0800 (CST)
+ id 1k3cKa-0007WF-8e; Thu, 06 Aug 2020 05:37:03 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 30D4CDAD1A6B884FFD1C;
+ Thu,  6 Aug 2020 17:36:46 +0800 (CST)
 Received: from localhost.localdomain (10.175.101.6) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 6 Aug 2020 17:36:47 +0800
+ 14.3.487.0; Thu, 6 Aug 2020 17:36:35 +0800
 From: Peng Liang <liangpeng10@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, <zhang.zhanghailiang@huawei.com>, Peng Liang
  <liangpeng10@huawei.com>
-Subject: [PATCH 4/5] log: Add log at boot & cpu init for aarch64
-Date: Thu, 6 Aug 2020 17:37:19 +0800
-Message-ID: <20200806093720.2355692-5-liangpeng10@huawei.com>
+Subject: [PATCH 0/5] log: Add logs for some modules
+Date: Thu, 6 Aug 2020 17:37:15 +0800
+Message-ID: <20200806093720.2355692-1-liangpeng10@huawei.com>
 X-Mailer: git-send-email 2.18.4
-In-Reply-To: <20200806093720.2355692-1-liangpeng10@huawei.com>
-References: <20200806093720.2355692-1-liangpeng10@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
+Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=liangpeng10@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 03:36:23
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 02:58:22
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -52,49 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 09:37:04 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 09:37:03 -0000
 
-Add log at boot & cpu init for aarch64.
+This path serial add some logs for some modeuls to make it easier to debug.
 
-Signed-off-by: Peng Liang <liangpeng10@huawei.com>
----
- hw/arm/boot.c | 2 ++
- hw/arm/virt.c | 2 ++
- 2 files changed, 4 insertions(+)
+Peng Liang (5):
+  log: Add logs for vm start and destroy
+  log: Add log for each modules
+  log: Add more details to virtio_report in virtqueue_pop
+  log: Add log at boot & cpu init for aarch64
+  log: Add logs during qemu start
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 3e9816af80..a2d5787807 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -1292,6 +1292,8 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-      * doesn't support secure.
-      */
-     assert(!(info->secure_board_setup && kvm_enabled()));
-+    info_report("load the kernel");
-+
-     info->kernel_filename = ms->kernel_filename;
-     info->kernel_cmdline = ms->kernel_cmdline;
-     info->initrd_filename = ms->initrd_filename;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ecfee362a1..ae2fb7a14d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -820,6 +820,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
- {
-     VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
- 
-+    info_report("send powerdown to vm.");
-     if (s->acpi_dev) {
-         acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-     } else {
-@@ -1780,6 +1781,7 @@ static void machvirt_init(MachineState *machine)
-     }
- 
-     create_fdt(vms);
-+    info_report("cpu init start");
- 
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
-     for (n = 0; n < possible_cpus->len; n++) {
+ accel/kvm/kvm-all.c         |  5 ++++-
+ blockdev.c                  |  2 ++
+ hw/acpi/core.c              |  3 +++
+ hw/arm/boot.c               |  2 ++
+ hw/arm/virt.c               |  2 ++
+ hw/core/reset.c             |  2 ++
+ hw/pci/pci.c                |  1 +
+ hw/usb/host-libusb.c        |  5 +++++
+ hw/virtio/virtio-pci.c      |  2 ++
+ hw/virtio/virtio-scsi-pci.c |  3 +++
+ hw/virtio/virtio.c          | 17 ++++++++++++++---
+ monitor/monitor.c           |  9 +++++++++
+ monitor/qmp-cmds.c          |  2 ++
+ os-posix.c                  |  1 +
+ qapi/qmp-dispatch.c         | 17 +++++++++++++++++
+ qdev-monitor.c              |  6 ++++++
+ softmmu/vl.c                | 10 ++++++++++
+ util/oslib-posix.c          |  3 +--
+ 18 files changed, 86 insertions(+), 6 deletions(-)
+
 -- 
 2.18.4
 
