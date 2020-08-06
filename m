@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3fkn-0004hR-N3
+	id 1k3fkn-0004hv-U1
 	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:16:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52360)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52390)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKc-0005As-IX; Thu, 06 Aug 2020 05:37:02 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:41098 helo=huawei.com)
+ id 1k3cKd-0005BJ-Rz; Thu, 06 Aug 2020 05:37:03 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:41182 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k3cKa-0007WL-5v; Thu, 06 Aug 2020 05:37:02 -0400
+ id 1k3cKb-0007WY-W8; Thu, 06 Aug 2020 05:37:03 -0400
 Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4BC14C9C85E425E67E81;
- Thu,  6 Aug 2020 17:36:51 +0800 (CST)
+ by Forcepoint Email with ESMTP id 538FFD02B17AFD7DA90E;
+ Thu,  6 Aug 2020 17:36:56 +0800 (CST)
 Received: from localhost.localdomain (10.175.101.6) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 6 Aug 2020 17:36:41 +0800
+ 14.3.487.0; Thu, 6 Aug 2020 17:36:47 +0800
 From: Peng Liang <liangpeng10@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, <zhang.zhanghailiang@huawei.com>, Peng Liang
  <liangpeng10@huawei.com>
-Subject: [PATCH 1/5] log: Add logs for vm start and destroy
-Date: Thu, 6 Aug 2020 17:37:16 +0800
-Message-ID: <20200806093720.2355692-2-liangpeng10@huawei.com>
+Subject: [PATCH 4/5] log: Add log at boot & cpu init for aarch64
+Date: Thu, 6 Aug 2020 17:37:19 +0800
+Message-ID: <20200806093720.2355692-5-liangpeng10@huawei.com>
 X-Mailer: git-send-email 2.18.4
 In-Reply-To: <20200806093720.2355692-1-liangpeng10@huawei.com>
 References: <20200806093720.2355692-1-liangpeng10@huawei.com>
@@ -52,122 +52,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 09:37:02 -0000
+X-List-Received-Date: Thu, 06 Aug 2020 09:37:04 -0000
 
-Add logs for vm start and destroy.
+Add log at boot & cpu init for aarch64.
 
 Signed-off-by: Peng Liang <liangpeng10@huawei.com>
 ---
- hw/acpi/core.c  | 3 +++
- hw/core/reset.c | 2 ++
- softmmu/vl.c    | 8 ++++++++
- 3 files changed, 13 insertions(+)
+ hw/arm/boot.c | 2 ++
+ hw/arm/virt.c | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-index ac06db3450..0a24f018cf 100644
---- a/hw/acpi/core.c
-+++ b/hw/acpi/core.c
-@@ -560,13 +560,16 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
-         uint16_t sus_typ = (val >> 10) & 7;
-         switch(sus_typ) {
-         case 0: /* soft power off */
-+            info_report("VM will be soft power off");
-             qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-             break;
-         case 1:
-+            info_report("VM will be suspend state");
-             qemu_system_suspend_request();
-             break;
-         default:
-             if (sus_typ == ar->pm1.cnt.s4_val) { /* S4 request */
-+                info_report("VM will be S4 state");
-                 qapi_event_send_suspend_disk();
-                 qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-             }
-diff --git a/hw/core/reset.c b/hw/core/reset.c
-index 9c477f2bf5..bd583c77ac 100644
---- a/hw/core/reset.c
-+++ b/hw/core/reset.c
-@@ -26,6 +26,7 @@
- #include "qemu/osdep.h"
- #include "qemu/queue.h"
- #include "sysemu/reset.h"
-+#include "qemu/error-report.h"
- 
- /* reset/shutdown handler */
- 
-@@ -64,6 +65,7 @@ void qemu_devices_reset(void)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 3e9816af80..a2d5787807 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -1292,6 +1292,8 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
+      * doesn't support secure.
+      */
+     assert(!(info->secure_board_setup && kvm_enabled()));
++    info_report("load the kernel");
++
+     info->kernel_filename = ms->kernel_filename;
+     info->kernel_cmdline = ms->kernel_cmdline;
+     info->initrd_filename = ms->initrd_filename;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ecfee362a1..ae2fb7a14d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -820,6 +820,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
  {
-     QEMUResetEntry *re, *nre;
+     VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
  
-+    info_report("reset all devices");
-     /* reset all devices */
-     QTAILQ_FOREACH_SAFE(re, &reset_handlers, entry, nre) {
-         re->func(re->opaque);
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 4eb9d1f7fd..a9f06111b3 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -1657,9 +1657,11 @@ static bool main_loop_should_exit(void)
-     }
-     if (qemu_powerdown_requested()) {
-         qemu_system_powerdown();
-+        info_report("domain is power down by outside operation");
-     }
-     if (qemu_vmstop_requested(&r)) {
-         vm_stop(r);
-+        info_report("domain is stopped by outside operation");
-     }
-     return false;
- }
-@@ -1669,6 +1671,7 @@ void qemu_main_loop(void)
- #ifdef CONFIG_PROFILER
-     int64_t ti;
- #endif
-+    info_report("qemu enter main_loop");
-     while (!main_loop_should_exit()) {
- #ifdef CONFIG_PROFILER
-         ti = profile_getclock();
-@@ -2941,6 +2944,7 @@ void qemu_init(int argc, char **argv, char **envp)
- 
-     autostart = 1;
- 
-+    info_report("qemu pid is %d, options parsing start", getpid());
-     /* first pass of option parsing */
-     optind = 1;
-     while (optind < argc) {
-@@ -3154,6 +3158,7 @@ void qemu_init(int argc, char **argv, char **envp)
-                 exit(0);
-                 break;
-             case QEMU_OPTION_m:
-+                info_report("memory options parse start");
-                 opts = qemu_opts_parse_noisily(qemu_find_opts("memory"),
-                                                optarg, true);
-                 if (!opts) {
-@@ -4152,6 +4157,7 @@ void qemu_init(int argc, char **argv, char **envp)
-     current_machine->maxram_size = maxram_size;
-     current_machine->ram_slots = ram_slots;
- 
-+    info_report("configure accelerator %s start", machine_class->name);
-     /*
-      * Note: uses machine properties such as kernel-irqchip, must run
-      * after machine_set_property().
-@@ -4300,6 +4306,7 @@ void qemu_init(int argc, char **argv, char **envp)
-     replay_checkpoint(CHECKPOINT_INIT);
-     qdev_machine_init();
- 
-+    info_report("machine init start");
-     current_machine->boot_order = boot_order;
- 
-     /* parse features once if machine provides default cpu_type */
-@@ -4379,6 +4386,7 @@ void qemu_init(int argc, char **argv, char **envp)
-             exit(1);
++    info_report("send powerdown to vm.");
+     if (s->acpi_dev) {
+         acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
+     } else {
+@@ -1780,6 +1781,7 @@ static void machvirt_init(MachineState *machine)
      }
  
-+    info_report("device init start");
-     /* init generic devices */
-     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_DEVICE);
-     qemu_opts_foreach(qemu_find_opts("device"),
+     create_fdt(vms);
++    info_report("cpu init start");
+ 
+     possible_cpus = mc->possible_cpu_arch_ids(machine);
+     for (n = 0; n < possible_cpus->len; n++) {
 -- 
 2.18.4
 
