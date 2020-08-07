@@ -1,75 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k3gR2-0004N6-V2
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2020 09:59:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57252)
+	id 1k3zTq-00025c-AW
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Aug 2020 06:20:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3gR2-0004Mx-B4; Thu, 06 Aug 2020 09:59:56 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36001)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k3gR0-0005e4-W2; Thu, 06 Aug 2020 09:59:56 -0400
-Received: by mail-wr1-x430.google.com with SMTP id 88so44075620wrh.3;
- Thu, 06 Aug 2020 06:59:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=MTSUUlOpj4xpO1gZOSJB9I5hMOIw0BjlgQX4+Z19ZEY=;
- b=Fz4cIVIbowcvzmNimlMUPF8FGnbIIIKMW9p4kSaBc+M2zKgUKq7FW+K9UqvAfdodzh
- nK6M0QFhZLF10DQyIqMRpsntc5FxFC/tSL1ab1rykq/4SywTnBktq7V0a9/tdCsWCnde
- IeSmrW9fZpc21xhCzWm4YUghORDUnOPYV/hBGepcZ3lGQL+uDRUUDAK8SgmgkcdBPZbK
- GNxXckKSA9U4N+yLtr1CeQyIAEifRgF7dWTrGBsA8HvknjxDaucW1AK/gM0nkKbTDX3x
- kUrDBh5/lgWHU/uq9h6xnqKmBoXqhxB3yQlJKb0kWbFDn9kCMerCUOf50s+len6UqV01
- qJgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MTSUUlOpj4xpO1gZOSJB9I5hMOIw0BjlgQX4+Z19ZEY=;
- b=Jrbom01FlLz1E7UAF9YuB/0XhkaUX0QYhWhL8qVk8GOZ/5apiNJe/D8NcbhE7bFmns
- pg7xUqcMA6sT5CsLk8wXyI59V9dePYv2vaZLdQhrkx4iRxvuN+WlJUcOkrSUHFeBme1H
- RvnhELjJ6TCW4dx5SjTWJDkZxW0whtFchuwmRfVHMoIrwVP/PGzuVlOtREyxWljeHQno
- 47MCsTT15pkLfw5cKOEN/U8iLKFhF1I33guSQ7GXxYxnndc2ECvu5GM9lrrvUA20zjcS
- ChSPUhKsl/ohAefCAufqeYsLa6kOojGI3k3QIruRL5YcoHl1OL+4Fmkl9jN7TV/cPvGs
- Pfgw==
-X-Gm-Message-State: AOAM531Qtkh0SBUlD7bOlBolQDDMr9qSO3m9lUXAeyoebLhugmaEFC/g
- 8IcGEQHb5z/cy+PyqMngssZkRnP4
-X-Google-Smtp-Source: ABdhPJxRy/B0UX2UC+3Jl1sw8HKAnb7vfyMx5tGdfv2cCt972zwSwh5ZR7vIEHo+YEwycUWP0fcyHg==
-X-Received: by 2002:a5d:610a:: with SMTP id v10mr7426243wrt.8.1596722392644;
- Thu, 06 Aug 2020 06:59:52 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id g188sm7492178wma.5.2020.08.06.06.59.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Aug 2020 06:59:52 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH-for-5.2] Revert "mailmap: Update philmd email address"
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1k3zTo-00024Y-UR
+ for qemu-trivial@nongnu.org; Fri, 07 Aug 2020 06:20:04 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:58455
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1k3zTm-0008R8-Kq
+ for qemu-trivial@nongnu.org; Fri, 07 Aug 2020 06:20:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596795601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=U3jgB8f4t32FScXD2bE8GEWWu2d3d9v8tTQoHldZkrQ=;
+ b=gMawRPc4K5VUBTVnvuOIAKAou9NzLgBTQ8tuysVrB0VFu9yNvsAyQnCY5B3Y/96ehF4nbK
+ 9nMfZRGb/NboOlSxMigzMBJ0j/5RQBM8BdhA4BiPbA3pXr6M00enWzGdKILWThoVm8BSDt
+ aFQVypyzMjXN0VSOlhzMQ8C8Jr+5GEo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-457-2gtjRhr1NM2ZFTLL0Oeu5w-1; Fri, 07 Aug 2020 06:17:41 -0400
+X-MC-Unique: 2gtjRhr1NM2ZFTLL0Oeu5w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92B2E102C7ED;
+ Fri,  7 Aug 2020 10:17:40 +0000 (UTC)
+Received: from hansolo.redhat.com (ovpn-13-81.pek2.redhat.com [10.72.13.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D1FFF2DE77;
+ Fri,  7 Aug 2020 10:17:38 +0000 (UTC)
+From: Han Han <hhan@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20200806135832.2319-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <bb226ab5-f76f-2e8c-71e9-94799583ac75@amsat.org>
-Date: Thu, 6 Aug 2020 15:59:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Cc: qemu-trivial@nongnu.org,
+	laurent@vivier.eu,
+	Han Han <hhan@redhat.com>
+Subject: [PATCH] docs: Fix broken links
+Date: Fri,  7 Aug 2020 18:17:36 +0800
+Message-Id: <20200807101736.3544506-1-hhan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200806135832.2319-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hhan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=hhan@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/07 02:21:37
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,36 +72,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Aug 2020 13:59:56 -0000
+X-List-Received-Date: Fri, 07 Aug 2020 10:20:05 -0000
 
-On 8/6/20 3:58 PM, Philippe Mathieu-Daudé wrote:
-> This mailmap entry does not work as I expected. I am receiving
-> emails related to my hobbyist contributions in my work mailbox
-> and I get distracted :) Remove the entry to keep things separated.
-> 
-> This reverts commit 289371239153b24cb7bd96b6948c6b40b4627a9b.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Han Han <hhan@redhat.com>
+---
+ docs/amd-memory-encryption.txt | 4 ++--
+ docs/pvrdma.txt                | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-FWIW to respect the stricter .mailmap rules:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> ---
->  .mailmap | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/.mailmap b/.mailmap
-> index 81c2ce0937..2d97a14af3 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -54,7 +54,6 @@ Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
->  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
->  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
->  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
-> -Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
->  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
->  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
->  
-> 
+diff --git a/docs/amd-memory-encryption.txt b/docs/amd-memory-encryption.txt
+index 43bf3ee6a5..80b8eb00e9 100644
+--- a/docs/amd-memory-encryption.txt
++++ b/docs/amd-memory-encryption.txt
+@@ -95,10 +95,10 @@ References
+ -----------------
+ 
+ AMD Memory Encryption whitepaper:
+-http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
++https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
+ 
+ Secure Encrypted Virtualization Key Management:
+-[1] http://support.amd.com/TechDocs/55766_SEV-KM API_Specification.pdf
++[1] http://developer.amd.com/wordpress/media/2017/11/55766_SEV-KM-API_Specification.pdf
+ 
+ KVM Forum slides:
+ http://www.linux-kvm.org/images/7/74/02x08A-Thomas_Lendacky-AMDs_Virtualizatoin_Memory_Encryption_Technology.pdf
+diff --git a/docs/pvrdma.txt b/docs/pvrdma.txt
+index 0f0dd8a7e5..5c122fe818 100644
+--- a/docs/pvrdma.txt
++++ b/docs/pvrdma.txt
+@@ -18,7 +18,7 @@ over-commit and, even if not implemented yet, migration support will be
+ possible with some HW assistance.
+ 
+ A project presentation accompany this document:
+-- http://events.linuxfoundation.org/sites/events/files/slides/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
++- https://blog.linuxplumbersconf.org/2017/ocw/system/presentations/4730/original/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
+ 
+ 
+ 
+-- 
+2.27.0
 
 
