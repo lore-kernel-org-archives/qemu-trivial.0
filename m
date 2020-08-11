@@ -1,70 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k4lWZ-0003yY-Ll
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Aug 2020 09:38:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44922)
+	id 1k5W1G-00060O-6J
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Aug 2020 11:16:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paulburton89@gmail.com>)
- id 1k4ewm-00035v-MA; Sun, 09 Aug 2020 02:36:45 -0400
-Received: from mail-oi1-f193.google.com ([209.85.167.193]:45756)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paulburton89@gmail.com>)
- id 1k4ewk-0000pS-TN; Sun, 09 Aug 2020 02:36:44 -0400
-Received: by mail-oi1-f193.google.com with SMTP id o21so5989282oie.12;
- Sat, 08 Aug 2020 23:36:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k5W1E-0005xd-MG
+ for qemu-trivial@nongnu.org; Tue, 11 Aug 2020 11:16:52 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48616
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k5W1C-0000bC-5a
+ for qemu-trivial@nongnu.org; Tue, 11 Aug 2020 11:16:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597159008;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KfV6MlMMv/Z9hpG/beg9L0P5B3H+p/ZNuociKVfN5U4=;
+ b=e95Slw22TDTHoZ5eBEVSFeLvO7DBpF3hE0k0Cmywy84lwY5Kl5+cH0vTBj6ESEQXqwuLiw
+ 6eKdI3k/l6dsy8n2m/IjOF7BqlBi2BZuLSAPEOpwxugKgaye/gnhKhwfbju/lusO+as8I9
+ rHTcVIQYRfd8qghgCpwBow36xD//Rv4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-508-8TuQSeFrNB-iZnO-LwegMg-1; Tue, 11 Aug 2020 11:16:47 -0400
+X-MC-Unique: 8TuQSeFrNB-iZnO-LwegMg-1
+Received: by mail-wm1-f72.google.com with SMTP id z10so913996wmi.8
+ for <qemu-trivial@nongnu.org>; Tue, 11 Aug 2020 08:16:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=o8oOH1CAijstfPClf55haIpg1h2dcOqUJrPHuZ9nxtg=;
- b=sjYSpgyRH6PgAlDMG1frb19W4pCG8X6Tu0tng7armCfIuvt8da8KPZAsJGu/gQ/T61
- TY77JJDEFlLJw3MTu5cQgBS5VMiBlX45bgaE2wOmRm8/0YDrOJA8kfBfvAD3QhnbJL63
- 5rqrIYMn7YAvz34WID/at9Gr07TyTdJHa9NKKprMzGBlT6HxM9u8+HRXLmAV1eS+Hah+
- QCAHJC3QPQy7BHis8+4z1Di07dm8caU7EjDhqf2RI0cX28CujSUHns1B2kMbkOOXOAD5
- 3YujwNBv7qQcweAGJ16wghb8JH2ef3X3+PfRoI+HHQz9MFDc0Ryyyj1BOxvjk5yeVtlW
- crUA==
-X-Gm-Message-State: AOAM530iGJKFBWdEhnsZRn+Jn4zUqsgrDJGW2SCmXznfMCNoA8sfAiWR
- /WpHiE31HIq/ZvXgdVbSDHlR02QB5yJEZg==
-X-Google-Smtp-Source: ABdhPJw2z+GXCU4Wy3iwdltSfBOJAphb7viuejwtwKwrXT/cTmjc12BlsY5UQXyputhZ/MV4AunMEQ==
-X-Received: by 2002:aca:d68a:: with SMTP id n132mr17474914oig.16.1596955000397; 
- Sat, 08 Aug 2020 23:36:40 -0700 (PDT)
-Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com.
- [209.85.210.48])
- by smtp.gmail.com with ESMTPSA id p189sm1369031oia.18.2020.08.08.23.36.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 08 Aug 2020 23:36:40 -0700 (PDT)
-Received: by mail-ot1-f48.google.com with SMTP id c4so4825282otf.12;
- Sat, 08 Aug 2020 23:36:39 -0700 (PDT)
-X-Received: by 2002:a9d:1b62:: with SMTP id l89mr7850057otl.145.1596954999610; 
- Sat, 08 Aug 2020 23:36:39 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KfV6MlMMv/Z9hpG/beg9L0P5B3H+p/ZNuociKVfN5U4=;
+ b=Lked3doFQhBTmD2Cagc1LvJ2lKEZLReRWnBkbUBMpeLSC7VYxBLLnBTyY9j9XqJ00i
+ O+XkhyT366UoJBmhC3eGlnbO+DbHfJnn4KfFs17/XK63xlL1yDistHtOrrVYTnoxv5kV
+ uYak9xBdmMgMOrfdpSAlfPvzviyerCeSTWk6aNBxjdJUReMhx5bPYohvAwSlZ8Yjb9X3
+ mpnYvXjNQ8EgGlCfw3RAxnvAhSW7tn83Is1gQC09IcHON7KTN+h8ZVOfwdmclMWr1kPs
+ bxW2DIh3rGVvugP+aUBJV1jzpsCkLEvjf/OG/0oq5lEsuSznTVgbtJY3x4ehudNgL9HG
+ xX5g==
+X-Gm-Message-State: AOAM531pkV4hZ3ZkYlSokLNPXBfm/xKlt4vCHQWG7oo8zBzPQ5p7z0ZD
+ kgB+UN3JkVhsBk5pGBx4f3e3hcLpdn1PT82l61CqGvF7xrbHUHs9We6P5j88HO1v7CGzaVc9v1R
+ JPs1iVz+p2GpbWrKg0w==
+X-Received: by 2002:a1c:984d:: with SMTP id a74mr4689815wme.140.1597159005646; 
+ Tue, 11 Aug 2020 08:16:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUKhJwRU8DQJUdvJ23weH1I+VDGDrybtGCUxRVV0jgtqCCmvTHGp09ka1aY3aEln2ZhbCpQg==
+X-Received: by 2002:a1c:984d:: with SMTP id a74mr4689800wme.140.1597159005451; 
+ Tue, 11 Aug 2020 08:16:45 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id b2sm5550421wmj.47.2020.08.11.08.16.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Aug 2020 08:16:44 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH-for-5.2 0/3] trivial: Remove 'and and' in descriptions
+Date: Tue, 11 Aug 2020 17:16:40 +0200
+Message-Id: <20200811151643.21293-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200707022544.24925-1-f4bug@amsat.org>
- <19b2c623-7c8e-fd93-290f-86498b85caf5@amsat.org>
- <932a272b-bc80-f6e4-d51e-32e2222f540c@amsat.org>
-In-Reply-To: <932a272b-bc80-f6e4-d51e-32e2222f540c@amsat.org>
-From: Paul Burton <paulburton@kernel.org>
-Date: Sat, 8 Aug 2020 23:35:28 -0700
-X-Gmail-Original-Message-ID: <CAG0y8xk6qEzTXup7jJojmLK9n4KWTCq_z9FULeyyru7Ux3iM_Q@mail.gmail.com>
-Message-ID: <CAG0y8xk6qEzTXup7jJojmLK9n4KWTCq_z9FULeyyru7Ux3iM_Q@mail.gmail.com>
-Subject: Re: [PATCH v2] .mailmap: Update Paul Burton email address
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.167.193;
- envelope-from=paulburton89@gmail.com; helo=mail-oi1-f193.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/09 02:36:41
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 06:40:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 09 Aug 2020 09:38:06 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,38 +90,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Aug 2020 06:36:46 -0000
+X-List-Received-Date: Tue, 11 Aug 2020 15:16:53 -0000
 
-Hi Philippe,
+Remove duplicated 'and' in comments.
 
-On Thu, Aug 6, 2020 at 6:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
-> ping, as I'm still receiving "The recipient email address is
-> incorrect or does not exist in this domain." from wavecomp.com...
->
-> On 7/16/20 8:56 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Hi Paul,
-> >
-> > Do you mind Acking this patch? QEMU's get_maintainer.pl
-> > still selects pburton@wavecomp.com for various of your
-> > contributions and wavesemi.com (where wavecomp.com seems
-> > redirected) keeps sending "The recipient email address is
-> > incorrect or does not exist in this domain."
+Philippe Mathieu-Daudé (3):
+  hw/i2c: Fix typo in description
+  util/qemu-timer: Fix typo in description
+  util/vfio-helpers: Fix typo in description
 
-Sure, sorry for the delay:
+ include/hw/i2c/i2c.h | 2 +-
+ util/qemu-timer.c    | 2 +-
+ util/vfio-helpers.c  | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-  Acked-by: Paul Burton <paulburton@kernel.org>
+-- 
+2.21.3
 
-> > In case you don't want to receive any more emails from the
-> > QEMU mailing list, you can Nack this patch, so I'll have a
-> > good reason to insist with the alternative to have a
-> > 'ignore .mailmap', suggested here:
-> > https://www.mail-archive.com/qemu-devel@nongnu.org/msg717757.html
-
-I'm happy to continue receiving mail, though right now realistically I
-don't have the time to do much with it. Perhaps that might change in
-the future.
-
-Thanks,
-    Paul
 
