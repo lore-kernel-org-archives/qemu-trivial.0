@@ -1,66 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k5rWQ-00035Z-8q
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 10:14:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33652)
+	id 1k5rXn-0005L8-Jg
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 10:15:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1k5rWN-00033r-0O
- for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 10:14:27 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40716)
+ id 1k5rXi-0005Ii-MJ
+ for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 10:15:51 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53423)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1k5rWK-0001Sb-CJ
- for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 10:14:26 -0400
-Received: by mail-wr1-x443.google.com with SMTP id l2so2182675wrc.7
- for <qemu-trivial@nongnu.org>; Wed, 12 Aug 2020 07:14:23 -0700 (PDT)
+ id 1k5rXg-0001rT-W8
+ for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 10:15:50 -0400
+Received: by mail-wm1-x344.google.com with SMTP id g8so1921776wmk.3
+ for <qemu-trivial@nongnu.org>; Wed, 12 Aug 2020 07:15:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=references:user-agent:from:to:cc:subject:in-reply-to:date
  :message-id:mime-version:content-transfer-encoding;
- bh=Y9PJZPxuFj03Tta6HauHoX9FGhAG+P1HJCTgWdBdjjQ=;
- b=Op5UsonmdqDprCSrKvcAHZIyQLFdXRFLv84fIfF7czaoKTBZjcRKqLoENpgiqBz4oN
- 2rKLMg1C2C9i77INg+sbRCwJxMOElg6d/7IeAnnqec/hkqq+X5oGI8biJEuamz08AA0P
- eFI+q2UvpxP+2/iPXWfOnrLXZrnX0PYcFlrLR4kS3ZacGChl9r90dbrnhzPBqGrv5f7B
- HWuSn597/z8PP3f85PXcftRhLzYBkJd62byiXvu7zTlv5KxMZnsg3KIFy6EvA/iDL/XH
- ilG43MyYuIV89blHz633QMt6SYv8M00AOkWYEMBDDAtzJS/0Zm26LELtG6oJWP9vaRdU
- JTdA==
+ bh=icRLnGV3YL50+5AjSjMAxhtAvXTSbCOpbMHrDDg5Hlc=;
+ b=Ykx7MKtzD2rnumU3qIbcpRARArQob0mnRLRK3lKZ7VsapDPOcGY88qqsSDvphnwUUG
+ sFPFUiSJDv9kYDAlobEYH2RV3xemziamCRB49qVjulVWvo6kNVFKd5zyFu9i06mWvBoC
+ IxmAreX2d1QmXayrvDL2wpTOZvaUfFL51hSoA8gs1Ngx/cxAEKg+Zx7EJouuTT41Ogs/
+ EvukgBHFEaaMijveYiCoS7YLu7ke5XbZXvNOumrlfxTiI69WB+a6oNOPxiZZLoHRk2qx
+ USre0DA+jbjrqL44G3+5dHz6wCQUJg5vhwbWyDw5URPdn7gBup0nh9DaNSgPcS6zJM8s
+ dUfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:references:user-agent:from:to:cc:subject
  :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=Y9PJZPxuFj03Tta6HauHoX9FGhAG+P1HJCTgWdBdjjQ=;
- b=Oo6i9nuENuW/M3JIkGyNIdH2ziCISYqeVpL3jfwOFiZO/cslkQvpkxJVoz1o8E1MkZ
- AgMFldX+wamGFImF6A5lhYZWAZRNXx8tlpF56gr4Bj89/b0kU4F9VWrAE8NSHDECW0pT
- OC7bDFP65W1NGP2370nmAXd+tqZh/zivuFQZ2R1AK40Cg2donHg3SO2HLAFuO7gNmL9n
- bN0o7nbUJU90FMDcjKTFizO9Qg8Tn2TWsl5bIyFszI3r7Z2deXsScDL1dcevcBJb8u33
- M0xJt3LJPOR9Tkqu06VjCrtqHcCxwuCHNcg2pFUcl8rRNGV7vbdjvmOdEQLPq1JTOUBz
- DMvw==
-X-Gm-Message-State: AOAM5319rEbLki8fptM8aYV/lsgDG2dDqD2ARNO9u2wbDsHu0kEba9qz
- KDnVquvjWsG4ZU2a4Vhq2T9H8rIqmZU=
-X-Google-Smtp-Source: ABdhPJxvqC7bSp0oZq5KRVftVrIzy+cYSgrRe/k+fC8tXVmsgq4dUdsXTvEzrOBpnZhtzMxEX1O/6w==
-X-Received: by 2002:a5d:55c9:: with SMTP id i9mr32978475wrw.31.1597241662825; 
- Wed, 12 Aug 2020 07:14:22 -0700 (PDT)
+ bh=icRLnGV3YL50+5AjSjMAxhtAvXTSbCOpbMHrDDg5Hlc=;
+ b=hIQty1eov/4sHmJPZy/dbS+fnWx1lgpifAsRn/sccgjnvitOBtl6u20etrhHkAwvJu
+ AdCsLOHL/SE/T/9PxvB2qOpmWTwhxxXMqTunNyqJL7TTlD/KAXTSJW/D6GqIfXXtbxxu
+ 1lFHDJhCHXw9Dr1C/CO7hqCZQDdQXtrgrKdpHS+xt+1mmpzWkKYqYyYfkmUKd3mmlntd
+ aJBDayhiFSoKxYgKh6d8KE4BrrDD90jvSDfROk9GYMGZnkIrYIHbEbiiYy4folQEUG5J
+ 2n76w42NlhRiH5RnF7BtDdVLyuFYFZWed+n8RO8SkIZ+RzOKzxuhgHeKrFjNIv5oLJi3
+ oEag==
+X-Gm-Message-State: AOAM530IQfrF8EPkOWNSbo7jBWYvnQEE2XLtTbSH6KGAcvH7CpzrnO8M
+ dCKTZOECSdzikHPJXEoFAHHplA==
+X-Google-Smtp-Source: ABdhPJw0wIAZmyNr11sirpBgEH1L+D0rQv6a6bQ6Ivc9i8t03uL4tYjfd86TgXZTCFUpky00KIaHYA==
+X-Received: by 2002:a7b:c4c8:: with SMTP id g8mr9382wmk.108.1597241747359;
+ Wed, 12 Aug 2020 07:15:47 -0700 (PDT)
 Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id l11sm3810944wme.11.2020.08.12.07.14.21
+ by smtp.gmail.com with ESMTPSA id e4sm4505298wru.55.2020.08.12.07.15.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2020 07:14:21 -0700 (PDT)
+ Wed, 12 Aug 2020 07:15:46 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id F12081FF7E;
- Wed, 12 Aug 2020 15:14:20 +0100 (BST)
+ by zen.linaroharston (Postfix) with ESMTP id 749551FF7E;
+ Wed, 12 Aug 2020 15:15:45 +0100 (BST)
 References: <20200812101500.2066-1-zhaolichang@huawei.com>
- <20200812101500.2066-6-zhaolichang@huawei.com>
+ <20200812101500.2066-7-zhaolichang@huawei.com>
 User-agent: mu4e 1.5.5; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: zhaolichang <zhaolichang@huawei.com>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 05/10] util/: fix some comment spelling errors
-In-reply-to: <20200812101500.2066-6-zhaolichang@huawei.com>
-Date: Wed, 12 Aug 2020 15:14:20 +0100
-Message-ID: <878sek0x4z.fsf@linaro.org>
+Subject: Re: [PATCH RFC 06/10] linux-user/: fix some comment spelling errors
+In-reply-to: <20200812101500.2066-7-zhaolichang@huawei.com>
+Date: Wed, 12 Aug 2020 15:15:45 +0100
+Message-ID: <875z9o0x2m.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -10
@@ -82,14 +82,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Aug 2020 14:14:27 -0000
+X-List-Received-Date: Wed, 12 Aug 2020 14:15:52 -0000
 
 
 zhaolichang <zhaolichang@huawei.com> writes:
 
 > I found that there are many spelling errors in the comments of qemu,
 > so I used the spellcheck tool to check the spelling errors
-> and finally found some spelling errors in the util folder.
+> and finally found some spelling errors in the linux-user folder.
 >
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 
