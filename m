@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k5r02-00041D-Ou
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 09:41:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53076)
+	id 1k5r02-00041s-W5
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 09:41:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5noS-0007yR-5q; Wed, 12 Aug 2020 06:16:52 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:44036 helo=huawei.com)
+ id 1k5nog-00089P-7h; Wed, 12 Aug 2020 06:17:09 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59148 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5noP-00031Q-Ni; Wed, 12 Aug 2020 06:16:51 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 38C6F53817313C88D668;
- Wed, 12 Aug 2020 18:16:46 +0800 (CST)
-Received: from localhost (10.174.187.253) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
- 18:16:38 +0800
+ id 1k5noa-00032R-PZ; Wed, 12 Aug 2020 06:17:05 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id E56497CACFB2AD4CC14F;
+ Wed, 12 Aug 2020 18:16:55 +0800 (CST)
+Received: from localhost (10.174.187.253) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
+ 18:16:49 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 02/10] migration/: fix some comment spelling errors
-Date: Wed, 12 Aug 2020 18:14:52 +0800
-Message-ID: <20200812101500.2066-3-zhaolichang@huawei.com>
+Subject: [PATCH RFC 06/10] linux-user/: fix some comment spelling errors
+Date: Wed, 12 Aug 2020 18:14:56 +0800
+Message-ID: <20200812101500.2066-7-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200812101500.2066-1-zhaolichang@huawei.com>
 References: <20200812101500.2066-1-zhaolichang@huawei.com>
@@ -29,9 +29,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.253]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
+Received-SPF: pass client-ip=45.249.212.35;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 06:16:46
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 06:15:29
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -40,7 +40,7 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 12 Aug 2020 09:40:59 -0400
+X-Mailman-Approved-At: Wed, 12 Aug 2020 09:41:00 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,218 +52,127 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Aug 2020 10:16:52 -0000
+X-List-Received-Date: Wed, 12 Aug 2020 10:17:12 -0000
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the migration folder.
+and finally found some spelling errors in the linux-user folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 ---
- migration/colo-failover.c |  2 +-
- migration/colo.c          |  2 +-
- migration/multifd.c       |  4 ++--
- migration/postcopy-ram.c  |  4 ++--
- migration/postcopy-ram.h  |  2 +-
- migration/ram.c           | 10 +++++-----
- migration/rdma.c          |  8 ++++----
- migration/savevm.c        |  4 ++--
- 8 files changed, 18 insertions(+), 18 deletions(-)
+ linux-user/aarch64/signal.c              | 2 +-
+ linux-user/cris/target_syscall.h         | 4 ++--
+ linux-user/flat.h                        | 2 +-
+ linux-user/flatload.c                    | 4 ++--
+ linux-user/host/ppc64/safe-syscall.inc.S | 2 +-
+ linux-user/syscall.c                     | 4 ++--
+ 6 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/migration/colo-failover.c b/migration/colo-failover.c
-index e9ca0b4..b717edc 100644
---- a/migration/colo-failover.c
-+++ b/migration/colo-failover.c
-@@ -46,7 +46,7 @@ void failover_request_active(Error **errp)
- {
-    if (failover_set_state(FAILOVER_STATUS_NONE,
-         FAILOVER_STATUS_REQUIRE) != FAILOVER_STATUS_NONE) {
--        error_setg(errp, "COLO failover is already actived");
-+        error_setg(errp, "COLO failover is already activated");
-         return;
-     }
-     failover_bh = qemu_bh_new(colo_failover_bh, NULL);
-diff --git a/migration/colo.c b/migration/colo.c
-index ea7d1e9..80788d4 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -632,7 +632,7 @@ out:
-     /*
-      * It is safe to unregister notifier after failover finished.
-      * Besides, colo_delay_timer and colo_checkpoint_sem can't be
--     * released befor unregister notifier, or there will be use-after-free
-+     * released before unregister notifier, or there will be use-after-free
-      * error.
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index cd521ee..d50c1ae 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -78,7 +78,7 @@ struct target_sve_context {
+     struct target_aarch64_ctx head;
+     uint16_t vl;
+     uint16_t reserved[3];
+-    /* The actual SVE data immediately follows.  It is layed out
++    /* The actual SVE data immediately follows.  It is laid out
+      * according to TARGET_SVE_SIG_{Z,P}REG_OFFSET, based off of
+      * the original struct pointer.
       */
-     colo_compare_unregister_notifier(&packets_compare_notifier);
-diff --git a/migration/multifd.c b/migration/multifd.c
-index d044120..b4a3ca2 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -731,7 +731,7 @@ static void multifd_new_send_channel_async(QIOTask *task, gpointer opaque)
-         qemu_sem_post(&p->sem_sync);
-         /*
-          * Although multifd_send_thread is not created, but main migration
--         * thread neet to judge whether it is running, so we need to mark
-+         * thread need to judge whether it is running, so we need to mark
-          * its status.
-          */
-         p->quit = true;
-@@ -1042,7 +1042,7 @@ bool multifd_recv_all_channels_created(void)
+diff --git a/linux-user/cris/target_syscall.h b/linux-user/cris/target_syscall.h
+index 29d6900..c7ae89d 100644
+--- a/linux-user/cris/target_syscall.h
++++ b/linux-user/cris/target_syscall.h
+@@ -4,7 +4,7 @@
+ #define UNAME_MACHINE "cris"
+ #define UNAME_MINIMUM_RELEASE "2.6.32"
  
- /*
-  * Try to receive all multifd channels to get ready for the migration.
-- * - Return true and do not set @errp when correctly receving all channels;
-+ * - Return true and do not set @errp when correctly receiving all channels;
-  * - Return false and do not set @errp when correctly receiving the current one;
-  * - Return false and set @errp when failing to receive the current channel.
+-/* pt_regs not only specifices the format in the user-struct during
++/* pt_regs not only specifies the format in the user-struct during
+  * ptrace but is also the frame format used in the kernel prologue/epilogues
+  * themselves
   */
-diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-index 1bb22f2..baf094b 100644
---- a/migration/postcopy-ram.c
-+++ b/migration/postcopy-ram.c
-@@ -237,7 +237,7 @@ release_ufd:
-  * request_ufd_features: this function should be called only once on a newly
-  * opened ufd, subsequent calls will lead to error.
-  *
-- * Returns: true on succes
-+ * Returns: true on success
-  *
-  * @ufd: fd obtained from userfaultfd syscall
-  * @features: bit mask see UFFD_API_FEATURES
-@@ -807,7 +807,7 @@ static void mark_postcopy_blocktime_end(uintptr_t addr)
+@@ -32,7 +32,7 @@ struct target_pt_regs {
+         unsigned long spc;
+         unsigned long ccs;
+         unsigned long srp;
+-        unsigned long erp; /* This is actually the debugged process' PC */
++        unsigned long erp; /* This is actually the debugged process's PC */
+         /* For debugging purposes; saved only when needed. */
+         unsigned long exs;
+         unsigned long eda;
+diff --git a/linux-user/flat.h b/linux-user/flat.h
+index 1e44b33..ed518e2 100644
+--- a/linux-user/flat.h
++++ b/linux-user/flat.h
+@@ -43,7 +43,7 @@ struct flat_hdr {
+ 	abi_ulong reloc_count;  /* Number of relocation records */
+ 	abi_ulong flags;
+ 	abi_ulong build_date;   /* When the program/library was built */
+-	abi_ulong filler[5];    /* Reservered, set to zero */
++	abi_ulong filler[5];    /* Reserved, set to zero */
+ };
  
-     low_time_offset = get_low_time_offset(dc);
-     /* lookup cpu, to clear it,
--     * that algorithm looks straighforward, but it's not
-+     * that algorithm looks straightforward, but it's not
-      * optimal, more optimal algorithm is keeping tree or hash
-      * where key is address value is a list of  */
-     for (i = 0; i < smp_cpus; i++) {
-diff --git a/migration/postcopy-ram.h b/migration/postcopy-ram.h
-index 9941feb..6d2b3cf 100644
---- a/migration/postcopy-ram.h
-+++ b/migration/postcopy-ram.h
-@@ -161,7 +161,7 @@ struct PostCopyFD {
-  */
- void postcopy_register_shared_ufd(struct PostCopyFD *pcfd);
- void postcopy_unregister_shared_ufd(struct PostCopyFD *pcfd);
--/* Call each of the shared 'waker's registerd telling them of
-+/* Call each of the shared 'waker's registered telling them of
-  * availability of a block.
-  */
- int postcopy_notify_shared_wake(RAMBlock *rb, uint64_t offset);
-diff --git a/migration/ram.c b/migration/ram.c
-index 76d4fee..c5f36ae 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -256,7 +256,7 @@ int64_t ramblock_recv_bitmap_send(QEMUFile *file,
+ #define FLAT_FLAG_RAM    0x0001 /* load program entirely into RAM */
+diff --git a/linux-user/flatload.c b/linux-user/flatload.c
+index 8fb448f..14d2999 100644
+--- a/linux-user/flatload.c
++++ b/linux-user/flatload.c
+@@ -442,7 +442,7 @@ static int load_flat_file(struct linux_binprm * bprm,
+     indx_len = (indx_len + 15) & ~(abi_ulong)15;
+ 
      /*
-      * Always use little endian when sending the bitmap. This is
-      * required that when source and destination VMs are not using the
--     * same endianess. (Note: big endian won't work.)
-+     * same endianness. (Note: big endian won't work.)
+-     * Alloate the address space.
++     * Allocate the address space.
       */
-     bitmap_to_le(le_bitmap, block->receivedmap, nbits);
+     probe_guest_base(bprm->filename, 0,
+                      text_len + data_len + extra + indx_len);
+@@ -794,7 +794,7 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
+ #error here
+     for (i = MAX_SHARED_LIBS-1; i>0; i--) {
+             if (libinfo[i].loaded) {
+-                    /* Push previos first to call address */
++                    /* Push previous first to call address */
+                     --sp;
+                     if (put_user_ual(start_addr, sp))
+                         return -EFAULT;
+diff --git a/linux-user/host/ppc64/safe-syscall.inc.S b/linux-user/host/ppc64/safe-syscall.inc.S
+index 8ed73a5..8751331 100644
+--- a/linux-user/host/ppc64/safe-syscall.inc.S
++++ b/linux-user/host/ppc64/safe-syscall.inc.S
+@@ -84,7 +84,7 @@ safe_syscall_end:
  
-@@ -275,7 +275,7 @@ int64_t ramblock_recv_bitmap_send(QEMUFile *file,
-     qemu_put_buffer(file, (const uint8_t *)le_bitmap, size);
-     /*
-      * Mark as an end, in case the middle part is screwed up due to
--     * some "misterious" reason.
-+     * some "mysterious" reason.
-      */
-     qemu_put_be64(file, RAMBLOCK_RECV_BITMAP_ENDING);
-     qemu_fflush(file);
-@@ -718,7 +718,7 @@ static int save_xbzrle_page(RAMState *rs, uint8_t **current_data,
-     /*
-      * Reaching here means the page has hit the xbzrle cache, no matter what
-      * encoding result it is (normal encoding, overflow or skipping the page),
--     * count the page as encoded. This is used to caculate the encoding rate.
-+     * count the page as encoded. This is used to calculate the encoding rate.
-      *
-      * Example: 2 pages (8KB) being encoded, first page encoding generates 2KB,
-      * 2nd page turns out to be skipped (i.e. no new bytes written to the
-@@ -3705,7 +3705,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block)
+ 	/* code path when we didn't execute the syscall */
+ 0:	addi	3, 0, -TARGET_ERESTARTSYS
+-	ld 14, 16(1) /* restore r14 to its orginal value */
++	ld 14, 16(1) /* restore r14 to its original value */
+ 	blr
+ 	.cfi_endproc
  
-     /*
-      * Note: see comments in ramblock_recv_bitmap_send() on why we
--     * need the endianess convertion, and the paddings.
-+     * need the endianness conversion, and the paddings.
-      */
-     local_size = ROUND_UP(local_size, 8);
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 945fc25..373ec26 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -477,7 +477,7 @@ _syscall4(int, sys_prlimit64, pid_t, pid, int, resource,
  
-@@ -3743,7 +3743,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block)
-     }
  
-     /*
--     * Endianess convertion. We are during postcopy (though paused).
-+     * Endianness conversion. We are during postcopy (though paused).
-      * The dirty bitmap won't change. We can directly modify it.
-      */
-     bitmap_from_le(block->bmap, le_bitmap, nbits);
-diff --git a/migration/rdma.c b/migration/rdma.c
-index bea6532..c399c86 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -1510,7 +1510,7 @@ static int qemu_rdma_wait_comp_channel(RDMAContext *rdma)
-     } else {
-         /* This is the source side, we're in a separate thread
-          * or destination prior to migration_fd_process_incoming()
--         * after postcopy, the destination also in a seprate thread.
-+         * after postcopy, the destination also in a separate thread.
-          * we can't yield; so we have to poll the fd.
-          * But we need to be able to handle 'cancel' or an error
-          * without hanging forever.
-@@ -2267,7 +2267,7 @@ static inline int qemu_rdma_buffer_mergable(RDMAContext *rdma,
-  *    chunk, then start a new chunk and flush() the old chunk.
-  * 3. To keep the hardware busy, we also group chunks into batches
-  *    and only require that a batch gets acknowledged in the completion
-- *    qeueue instead of each individual chunk.
-+ *    queue instead of each individual chunk.
-  */
- static int qemu_rdma_write(QEMUFile *f, RDMAContext *rdma,
-                            uint64_t block_offset, uint64_t offset,
-@@ -3149,7 +3149,7 @@ static size_t qemu_rdma_save_page(QEMUFile *f, void *opaque,
-     if (size > 0) {
-         /*
-          * Add this page to the current 'chunk'. If the chunk
--         * is full, or the page doen't belong to the current chunk,
-+         * is full, or the page doesn't belong to the current chunk,
-          * an actual RDMA write will occur and a new chunk will be formed.
-          */
-         ret = qemu_rdma_write(f, rdma, block_offset, offset, size);
-@@ -4102,7 +4102,7 @@ void rdma_start_outgoing_migration(void *opaque,
-         goto err;
-     }
+ #if defined(TARGET_NR_timer_create)
+-/* Maxiumum of 32 active POSIX timers allowed at any one time. */
++/* Maximum of 32 active POSIX timers allowed at any one time. */
+ static timer_t g_posix_timers[32] = { 0, } ;
  
--    /* RDMA postcopy need a seprate queue pair for return path */
-+    /* RDMA postcopy need a separate queue pair for return path */
-     if (migrate_postcopy()) {
-         rdma_return_path = qemu_rdma_data_init(host_port, errp);
+ static inline int next_free_host_timer(void)
+@@ -7768,7 +7768,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+     switch(num) {
+     case TARGET_NR_exit:
+         /* In old applications this may be used to implement _exit(2).
+-           However in threaded applictions it is used for thread termination,
++           However in threaded applications it is used for thread termination,
+            and _exit_group is used for application termination.
+            Do thread termination if we have more then one thread.  */
  
-diff --git a/migration/savevm.c b/migration/savevm.c
-index a843d20..62a4f04 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2795,7 +2795,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
- 
-     if (!has_live) {
-         /* live default to true so old version of Xen tool stack can have a
--         * successfull live migration */
-+         * successful live migration */
-         live = true;
-     }
- 
-@@ -2818,7 +2818,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
-          * "xen-save-devices-state" and in case of migration failure, libxl
-          * would call "cont".
-          * So call bdrv_inactivate_all (release locks) here to let the other
--         * side of the migration take controle of the images.
-+         * side of the migration take control of the images.
-          */
-         if (live && !saved_vm_running) {
-             ret = bdrv_inactivate_all();
 -- 
 2.26.2.windows.1
 
