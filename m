@@ -1,37 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k5r03-000441-P0
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 09:41:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53150)
+	id 1k5r05-000474-10
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 09:41:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5noh-00089U-5y; Wed, 12 Aug 2020 06:17:09 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4177 helo=huawei.com)
+ id 1k5nnM-0007j2-70; Wed, 12 Aug 2020 06:15:44 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:56816 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5noc-00032P-0K; Wed, 12 Aug 2020 06:17:06 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 803421DFF6DA16B62990;
- Wed, 12 Aug 2020 18:16:55 +0800 (CST)
-Received: from localhost (10.174.187.253) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
- 18:16:45 +0800
+ id 1k5nnJ-0002py-VL; Wed, 12 Aug 2020 06:15:43 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 73D8A765E23514832B4E;
+ Wed, 12 Aug 2020 18:15:28 +0800 (CST)
+Received: from localhost (10.174.187.253) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
+ 18:15:20 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 04/10] scripts/: fix some comment spelling errors
-Date: Wed, 12 Aug 2020 18:14:54 +0800
-Message-ID: <20200812101500.2066-5-zhaolichang@huawei.com>
+Subject: [PATCH RFC 00/10] fix some comment spelling errors
+Date: Wed, 12 Aug 2020 18:14:50 +0800
+Message-ID: <20200812101500.2066-1-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
-In-Reply-To: <20200812101500.2066-1-zhaolichang@huawei.com>
-References: <20200812101500.2066-1-zhaolichang@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.253]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
+Received-SPF: pass client-ip=45.249.212.35;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 06:16:54
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 06:15:29
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -40,7 +38,7 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 12 Aug 2020 09:41:00 -0400
+X-Mailman-Approved-At: Wed, 12 Aug 2020 09:40:59 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,105 +50,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Aug 2020 10:17:12 -0000
+X-List-Received-Date: Wed, 12 Aug 2020 10:15:44 -0000
 
-I found that there are many spelling errors in the comments of qemu,
-so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the scripts folder.
+I found that there are many spelling errors in the comments of qemu,=0D
+so I used the spellcheck tool to check the spelling errors, this series fix=
+ed this=0D
+spelling errors.
 
-Signed-off-by: zhaolichang <zhaolichang@huawei.com>
----
- scripts/checkpatch.pl          | 2 +-
- scripts/clean-header-guards.pl | 2 +-
- scripts/decodetree.py          | 6 +++---
- scripts/oss-fuzz/build.sh      | 2 +-
- scripts/tracetool/__init__.py  | 2 +-
- 5 files changed, 7 insertions(+), 7 deletions(-)
+zhaolichang (10):
+  qemu/: fix some comment spelling errors
+  migration/: fix some comment spelling errors
+  docs/: fix some comment spelling errors
+  scripts/: fix some comment spelling errors
+  util/: fix some comment spelling errors
+  linux-user/: fix some comment spelling errors
+  block/: fix some comment spelling errors
+  disas/: fix some comment spelling errors
+  qapi/: fix some comment spelling errors
+  contrib/: fix some comment spelling errors
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index bd3faa1..5091089 100644
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1870,7 +1870,7 @@ sub process {
- 			substr($s, 0, length($c), '');
- 
- 			# Make sure we remove the line prefixes as we have
--			# none on the first line, and are going to readd them
-+			# none on the first line, and are going to re-add them
- 			# where necessary.
- 			$s =~ s/\n./\n/gs;
- 
-diff --git a/scripts/clean-header-guards.pl b/scripts/clean-header-guards.pl
-index f47d673..a668025 100644
---- a/scripts/clean-header-guards.pl
-+++ b/scripts/clean-header-guards.pl
-@@ -19,7 +19,7 @@
- # Does the following:
- # - Header files without a recognizable header guard are skipped.
- # - Clean up any untidy header guards in-place.  Warn if the cleanup
--#   renames guard symbols, and explain how to find occurences of these
-+#   renames guard symbols, and explain how to find occurrences of these
- #   symbols that may have to be updated manually.
- # - Warn about duplicate header guard symbols.  To make full use of
- #   this warning, you should clean up *all* headers in one run.
-diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-index 694757b..b136977 100644
---- a/scripts/decodetree.py
-+++ b/scripts/decodetree.py
-@@ -88,7 +88,7 @@ def str_indent(c):
- 
- 
- def str_fields(fields):
--    """Return a string uniquely identifing FIELDS"""
-+    """Return a string uniquely identifying FIELDS"""
-     r = ''
-     for n in sorted(fields.keys()):
-         r += '_' + n
-@@ -806,7 +806,7 @@ def parse_generic(lineno, parent_pat, name, toks):
-     arg = None
-     fmt = None
-     for t in toks:
--        # '&Foo' gives a format an explcit argument set.
-+        # '&Foo' gives a format an explicit argument set.
-         if t[0] == '&':
-             tt = t[1:]
-             if arg:
-@@ -895,7 +895,7 @@ def parse_generic(lineno, parent_pat, name, toks):
-     elif not (is_format and width == 0) and width != insnwidth:
-         error(lineno, 'definition has {0} bits'.format(width))
- 
--    # Do not check for fields overlaping fields; one valid usage
-+    # Do not check for fields overlapping fields; one valid usage
-     # is to be able to duplicate fields via import.
-     fieldmask = 0
-     for f in flds.values():
-diff --git a/scripts/oss-fuzz/build.sh b/scripts/oss-fuzz/build.sh
-index a07b302..7587766 100644
---- a/scripts/oss-fuzz/build.sh
-+++ b/scripts/oss-fuzz/build.sh
-@@ -73,7 +73,7 @@ mkdir -p "$DEST_DIR/lib/"  # Copy the shared libraries here
- if ! make CONFIG_FUZZ=y CFLAGS="$LIB_FUZZING_ENGINE" "-j$(nproc)" \
-     i386-softmmu/fuzz; then
-     fatal "Build failed. Please specify a compiler with fuzzing support"\
--          "using the \$CC and \$CXX environemnt variables, or specify a"\
-+          "using the \$CC and \$CXX environment variables, or specify a"\
-           "\$LIB_FUZZING_ENGINE compatible with your compiler"\
-           "\nFor example: CC=clang CXX=clang++ $0"
- fi
-diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-index 3ccfa1e..3ee54be 100644
---- a/scripts/tracetool/__init__.py
-+++ b/scripts/tracetool/__init__.py
-@@ -34,7 +34,7 @@ def error(*lines):
- def out(*lines, **kwargs):
-     """Write a set of output lines.
- 
--    You can use kwargs as a shorthand for mapping variables when formating all
-+    You can use kwargs as a shorthand for mapping variables when formatting all
-     the strings in lines.
-     """
-     lines = [ l % kwargs for l in lines ]
--- 
+ Changelog                                 |  2 +-
+ accel/tcg/user-exec.c                     |  2 +-
+ audio/audio.c                             |  2 +-
+ block.c                                   |  2 +-
+ block/block-copy.c                        |  2 +-
+ block/linux-aio.c                         |  2 +-
+ block/mirror.c                            |  2 +-
+ block/vhdx.c                              |  2 +-
+ block/vhdx.h                              |  4 ++--
+ configure                                 |  2 +-
+ contrib/gitdm/filetypes.txt               |  6 +++---
+ contrib/ivshmem-client/ivshmem-client.h   |  2 +-
+ contrib/libvhost-user/libvhost-user.c     |  4 ++--
+ contrib/libvhost-user/libvhost-user.h     |  2 +-
+ disas/hppa.c                              |  2 +-
+ disas/libvixl/vixl/a64/constants-a64.h    |  2 +-
+ disas/libvixl/vixl/a64/decoder-a64.h      |  2 +-
+ disas/libvixl/vixl/a64/instructions-a64.h |  2 +-
+ disas/libvixl/vixl/globals.h              |  2 +-
+ disas/m68k.c                              |  8 ++++----
+ disas/ppc.c                               |  2 +-
+ docs/COLO-FT.txt                          |  6 +++---
+ docs/devel/blkdebug.txt                   |  2 +-
+ docs/devel/migration.rst                  |  2 +-
+ docs/devel/testing.rst                    |  2 +-
+ docs/devel/tracing.txt                    |  2 +-
+ docs/interop/bitmaps.rst                  |  2 +-
+ docs/interop/dbus.rst                     |  4 ++--
+ docs/interop/nbd.txt                      |  2 +-
+ docs/interop/vhost-user-gpu.rst           |  2 +-
+ docs/interop/vhost-user.rst               |  4 ++--
+ docs/rdma.txt                             |  2 +-
+ docs/specs/ppc-spapr-hotplug.txt          |  4 ++--
+ docs/specs/ppc-spapr-xive.rst             |  4 ++--
+ docs/system/arm/aspeed.rst                |  2 +-
+ docs/system/deprecated.rst                |  8 ++++----
+ docs/system/target-avr.rst                |  4 ++--
+ docs/tools/virtiofsd.rst                  |  2 +-
+ fsdev/virtfs-proxy-helper.c               |  2 +-
+ gdbstub.c                                 |  2 +-
+ hmp-commands.hx                           |  2 +-
+ libdecnumber/decNumber.c                  |  2 +-
+ linux-user/aarch64/signal.c               |  2 +-
+ linux-user/cris/target_syscall.h          |  4 ++--
+ linux-user/flat.h                         |  2 +-
+ linux-user/flatload.c                     |  4 ++--
+ linux-user/host/ppc64/safe-syscall.inc.S  |  2 +-
+ linux-user/syscall.c                      |  4 ++--
+ migration/colo-failover.c                 |  2 +-
+ migration/colo.c                          |  2 +-
+ migration/multifd.c                       |  4 ++--
+ migration/postcopy-ram.c                  |  4 ++--
+ migration/postcopy-ram.h                  |  2 +-
+ migration/ram.c                           | 10 +++++-----
+ migration/rdma.c                          |  8 ++++----
+ migration/savevm.c                        |  4 ++--
+ qapi/block-core.json                      |  4 ++--
+ qapi/crypto.json                          |  4 ++--
+ qemu-img.c                                |  2 +-
+ qobject/qdict.c                           |  2 +-
+ rules.mak                                 |  2 +-
+ scripts/checkpatch.pl                     |  2 +-
+ scripts/clean-header-guards.pl            |  2 +-
+ scripts/decodetree.py                     |  6 +++---
+ scripts/oss-fuzz/build.sh                 |  2 +-
+ scripts/tracetool/__init__.py             |  2 +-
+ scsi/pr-manager-helper.c                  |  2 +-
+ util/osdep.c                              |  2 +-
+ util/qemu-progress.c                      |  2 +-
+ util/qemu-sockets.c                       |  2 +-
+ util/qemu-thread-win32.c                  |  2 +-
+ util/qht.c                                |  2 +-
+ util/trace-events                         |  2 +-
+ 73 files changed, 107 insertions(+), 107 deletions(-)
+
+--=20
 2.26.2.windows.1
 
 
