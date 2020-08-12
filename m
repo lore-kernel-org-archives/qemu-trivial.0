@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k5r02-00041s-W5
+	id 1k5r03-00042T-7N
 	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 09:41:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53144)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5nog-00089P-7h; Wed, 12 Aug 2020 06:17:09 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59148 helo=huawei.com)
+ id 1k5nom-0008AL-Cp; Wed, 12 Aug 2020 06:17:12 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59358 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1k5noa-00032R-PZ; Wed, 12 Aug 2020 06:17:05 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id E56497CACFB2AD4CC14F;
- Wed, 12 Aug 2020 18:16:55 +0800 (CST)
-Received: from localhost (10.174.187.253) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
- 18:16:49 +0800
+ id 1k5noi-00033N-MA; Wed, 12 Aug 2020 06:17:12 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id D46B86527C038D38EFE7;
+ Wed, 12 Aug 2020 18:17:04 +0800 (CST)
+Received: from localhost (10.174.187.253) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Wed, 12 Aug 2020
+ 18:16:54 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 06/10] linux-user/: fix some comment spelling errors
-Date: Wed, 12 Aug 2020 18:14:56 +0800
-Message-ID: <20200812101500.2066-7-zhaolichang@huawei.com>
+Subject: [PATCH RFC 08/10] disas/: fix some comment spelling errors
+Date: Wed, 12 Aug 2020 18:14:58 +0800
+Message-ID: <20200812101500.2066-9-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200812101500.2066-1-zhaolichang@huawei.com>
 References: <20200812101500.2066-1-zhaolichang@huawei.com>
@@ -52,127 +52,141 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Aug 2020 10:17:12 -0000
+X-List-Received-Date: Wed, 12 Aug 2020 10:17:13 -0000
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the linux-user folder.
+and finally found some spelling errors in the disas folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 ---
- linux-user/aarch64/signal.c              | 2 +-
- linux-user/cris/target_syscall.h         | 4 ++--
- linux-user/flat.h                        | 2 +-
- linux-user/flatload.c                    | 4 ++--
- linux-user/host/ppc64/safe-syscall.inc.S | 2 +-
- linux-user/syscall.c                     | 4 ++--
- 6 files changed, 9 insertions(+), 9 deletions(-)
+ disas/hppa.c                              | 2 +-
+ disas/libvixl/vixl/a64/constants-a64.h    | 2 +-
+ disas/libvixl/vixl/a64/decoder-a64.h      | 2 +-
+ disas/libvixl/vixl/a64/instructions-a64.h | 2 +-
+ disas/libvixl/vixl/globals.h              | 2 +-
+ disas/m68k.c                              | 8 ++++----
+ disas/ppc.c                               | 2 +-
+ 7 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index cd521ee..d50c1ae 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -78,7 +78,7 @@ struct target_sve_context {
-     struct target_aarch64_ctx head;
-     uint16_t vl;
-     uint16_t reserved[3];
--    /* The actual SVE data immediately follows.  It is layed out
-+    /* The actual SVE data immediately follows.  It is laid out
-      * according to TARGET_SVE_SIG_{Z,P}REG_OFFSET, based off of
-      * the original struct pointer.
-      */
-diff --git a/linux-user/cris/target_syscall.h b/linux-user/cris/target_syscall.h
-index 29d6900..c7ae89d 100644
---- a/linux-user/cris/target_syscall.h
-+++ b/linux-user/cris/target_syscall.h
-@@ -4,7 +4,7 @@
- #define UNAME_MACHINE "cris"
- #define UNAME_MINIMUM_RELEASE "2.6.32"
+diff --git a/disas/hppa.c b/disas/hppa.c
+index 2dbd1fc..dcf9a47 100644
+--- a/disas/hppa.c
++++ b/disas/hppa.c
+@@ -2021,7 +2021,7 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
+ 			fput_fp_reg (GET_FIELD (insn, 6, 10), info);
+ 		      break;
  
--/* pt_regs not only specifices the format in the user-struct during
-+/* pt_regs not only specifies the format in the user-struct during
-  * ptrace but is also the frame format used in the kernel prologue/epilogues
-  * themselves
-  */
-@@ -32,7 +32,7 @@ struct target_pt_regs {
-         unsigned long spc;
-         unsigned long ccs;
-         unsigned long srp;
--        unsigned long erp; /* This is actually the debugged process' PC */
-+        unsigned long erp; /* This is actually the debugged process's PC */
-         /* For debugging purposes; saved only when needed. */
-         unsigned long exs;
-         unsigned long eda;
-diff --git a/linux-user/flat.h b/linux-user/flat.h
-index 1e44b33..ed518e2 100644
---- a/linux-user/flat.h
-+++ b/linux-user/flat.h
-@@ -43,7 +43,7 @@ struct flat_hdr {
- 	abi_ulong reloc_count;  /* Number of relocation records */
- 	abi_ulong flags;
- 	abi_ulong build_date;   /* When the program/library was built */
--	abi_ulong filler[5];    /* Reservered, set to zero */
-+	abi_ulong filler[5];    /* Reserved, set to zero */
- };
+-		      /* 'fA' will not generate a space before the regsiter
++		      /* 'fA' will not generate a space before the register
+ 			 name.  Normally that is fine.  Except that it
+ 			 causes problems with xmpyu which has no FP format
+ 			 completer.  */
+diff --git a/disas/libvixl/vixl/a64/constants-a64.h b/disas/libvixl/vixl/a64/constants-a64.h
+index 2caa73a..88af5fe 100644
+--- a/disas/libvixl/vixl/a64/constants-a64.h
++++ b/disas/libvixl/vixl/a64/constants-a64.h
+@@ -71,7 +71,7 @@ V_(ImmDPShift, 15, 10, Bits)                                                   \
+ V_(ImmAddSub, 21, 10, Bits)                                                    \
+ V_(ShiftAddSub, 23, 22, Bits)                                                  \
+                                                                                \
+-/* Add/substract extend */                                                     \
++/* Add/subtract extend */                                                      \
+ V_(ImmExtendShift, 12, 10, Bits)                                               \
+ V_(ExtendMode, 15, 13, Bits)                                                   \
+                                                                                \
+diff --git a/disas/libvixl/vixl/a64/decoder-a64.h b/disas/libvixl/vixl/a64/decoder-a64.h
+index b3f04f6..045e2a7 100644
+--- a/disas/libvixl/vixl/a64/decoder-a64.h
++++ b/disas/libvixl/vixl/a64/decoder-a64.h
+@@ -215,7 +215,7 @@ class Decoder {
+   // On entry, instruction bits 27:24 = 0x0.
+   void DecodePCRelAddressing(const Instruction* instr);
  
- #define FLAT_FLAG_RAM    0x0001 /* load program entirely into RAM */
-diff --git a/linux-user/flatload.c b/linux-user/flatload.c
-index 8fb448f..14d2999 100644
---- a/linux-user/flatload.c
-+++ b/linux-user/flatload.c
-@@ -442,7 +442,7 @@ static int load_flat_file(struct linux_binprm * bprm,
-     indx_len = (indx_len + 15) & ~(abi_ulong)15;
+-  // Decode the add/subtract immediate instruction, and call the correspoding
++  // Decode the add/subtract immediate instruction, and call the corresponding
+   // visitors.
+   // On entry, instruction bits 27:24 = 0x1.
+   void DecodeAddSubImmediate(const Instruction* instr);
+diff --git a/disas/libvixl/vixl/a64/instructions-a64.h b/disas/libvixl/vixl/a64/instructions-a64.h
+index 7e0dbae..0496a15 100644
+--- a/disas/libvixl/vixl/a64/instructions-a64.h
++++ b/disas/libvixl/vixl/a64/instructions-a64.h
+@@ -504,7 +504,7 @@ class NEONFormatDecoder {
+   };
  
-     /*
--     * Alloate the address space.
-+     * Allocate the address space.
-      */
-     probe_guest_base(bprm->filename, 0,
-                      text_len + data_len + extra + indx_len);
-@@ -794,7 +794,7 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
- #error here
-     for (i = MAX_SHARED_LIBS-1; i>0; i--) {
-             if (libinfo[i].loaded) {
--                    /* Push previos first to call address */
-+                    /* Push previous first to call address */
-                     --sp;
-                     if (put_user_ual(start_addr, sp))
-                         return -EFAULT;
-diff --git a/linux-user/host/ppc64/safe-syscall.inc.S b/linux-user/host/ppc64/safe-syscall.inc.S
-index 8ed73a5..8751331 100644
---- a/linux-user/host/ppc64/safe-syscall.inc.S
-+++ b/linux-user/host/ppc64/safe-syscall.inc.S
-@@ -84,7 +84,7 @@ safe_syscall_end:
+   // Construct a format decoder with increasingly specific format maps for each
+-  // subsitution. If no format map is specified, the default is the integer
++  // substitution. If no format map is specified, the default is the integer
+   // format map.
+   explicit NEONFormatDecoder(const Instruction* instr) {
+     instrbits_ = instr->InstructionBits();
+diff --git a/disas/libvixl/vixl/globals.h b/disas/libvixl/vixl/globals.h
+index 61dc9f7..9ae6f7a 100644
+--- a/disas/libvixl/vixl/globals.h
++++ b/disas/libvixl/vixl/globals.h
+@@ -77,7 +77,7 @@ const int MBytes = 1024 * KBytes;
+ #endif
+ // This is not as powerful as template based assertions, but it is simple.
+ // It assumes that the descriptions are unique. If this starts being a problem,
+-// we can switch to a different implemention.
++// we can switch to a different implementation.
+ #define VIXL_CONCAT(a, b) a##b
+ #define VIXL_STATIC_ASSERT_LINE(line, condition) \
+   typedef char VIXL_CONCAT(STATIC_ASSERT_LINE_, line)[(condition) ? 1 : -1] \
+diff --git a/disas/m68k.c b/disas/m68k.c
+index 863409c..aefaecf 100644
+--- a/disas/m68k.c
++++ b/disas/m68k.c
+@@ -70,7 +70,7 @@ struct floatformat
+   unsigned int exp_start;
+   unsigned int exp_len;
+   /* Bias added to a "true" exponent to form the biased exponent.  It
+-     is intentionally signed as, otherwize, -exp_bias can turn into a
++     is intentionally signed as, otherwise, -exp_bias can turn into a
+      very large number (e.g., given the exp_bias of 0x3fff and a 64
+      bit long, the equation (long)(1 - exp_bias) evaluates to
+      4294950914) instead of -16382).  */
+@@ -479,7 +479,7 @@ struct m68k_opcode_alias
+       and remaining 3 bits of register shifted 9 bits in first word.
+       Indicate upper/lower in 1 bit shifted 7 bits in second word.
+       Use with `R' or `u' format.
+-   n  `m' withouth upper/lower indication. (For M[S]ACx; 4 bits split
++   n  `m' without upper/lower indication. (For M[S]ACx; 4 bits split
+       with MSB shifted 6 bits in first word and remaining 3 bits of
+       register shifted 9 bits in first word.  No upper/lower
+       indication is done.)  Use with `R' or `u' format.
+@@ -854,7 +854,7 @@ fetch_arg (unsigned char *buffer,
  
- 	/* code path when we didn't execute the syscall */
- 0:	addi	3, 0, -TARGET_ERESTARTSYS
--	ld 14, 16(1) /* restore r14 to its orginal value */
-+	ld 14, 16(1) /* restore r14 to its original value */
- 	blr
- 	.cfi_endproc
+ /* Check if an EA is valid for a particular code.  This is required
+    for the EMAC instructions since the type of source address determines
+-   if it is a EMAC-load instruciton if the EA is mode 2-5, otherwise it
++   if it is a EMAC-load instruction if the EA is mode 2-5, otherwise it
+    is a non-load EMAC instruction and the bits mean register Ry.
+    A similar case exists for the movem instructions where the register
+    mask is interpreted differently for different EAs.  */
+@@ -1080,7 +1080,7 @@ print_indexed (int basereg,
  
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 945fc25..373ec26 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -477,7 +477,7 @@ _syscall4(int, sys_prlimit64, pid_t, pid, int, resource,
+ /* Returns number of bytes "eaten" by the operand, or
+    return -1 if an invalid operand was found, or -2 if
+-   an opcode tabe error was found.
++   an opcode table error was found.
+    ADDR is the pc for this arg to be relative to.  */
  
- 
- #if defined(TARGET_NR_timer_create)
--/* Maxiumum of 32 active POSIX timers allowed at any one time. */
-+/* Maximum of 32 active POSIX timers allowed at any one time. */
- static timer_t g_posix_timers[32] = { 0, } ;
- 
- static inline int next_free_host_timer(void)
-@@ -7768,7 +7768,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-     switch(num) {
-     case TARGET_NR_exit:
-         /* In old applications this may be used to implement _exit(2).
--           However in threaded applictions it is used for thread termination,
-+           However in threaded applications it is used for thread termination,
-            and _exit_group is used for application termination.
-            Do thread termination if we have more then one thread.  */
- 
+ static int
+diff --git a/disas/ppc.c b/disas/ppc.c
+index 63e97cf..02be878 100644
+--- a/disas/ppc.c
++++ b/disas/ppc.c
+@@ -5226,7 +5226,7 @@ operand_value_powerpc (const struct powerpc_operand *operand,
+       if ((operand->flags & PPC_OPERAND_SIGNED) != 0)
+ 	{
+ 	  /* BITM is always some number of zeros followed by some
+-	     number of ones, followed by some numer of zeros.  */
++	     number of ones, followed by some number of zeros.  */
+ 	  unsigned long top = operand->bitm;
+ 	  /* top & -top gives the rightmost 1 bit, so this
+ 	     fills in any trailing zeros.  */
 -- 
 2.26.2.windows.1
 
