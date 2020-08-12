@@ -1,59 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k5t44-0007L3-Jm
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 11:53:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60600)
+	id 1k5uqu-0005w8-K7
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Aug 2020 13:47:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1k5t42-0007Kl-TB; Wed, 12 Aug 2020 11:53:18 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:33256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k5uqt-0005uD-4B
+ for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 13:47:51 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:43755)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1k5t3z-00062e-IZ; Wed, 12 Aug 2020 11:53:18 -0400
-Received: by mail-wr1-f67.google.com with SMTP id p20so2537998wrf.0;
- Wed, 12 Aug 2020 08:53:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k5uqq-0004Zt-HS
+ for qemu-trivial@nongnu.org; Wed, 12 Aug 2020 13:47:50 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id d19so1411534pgl.10
+ for <qemu-trivial@nongnu.org>; Wed, 12 Aug 2020 10:47:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6jyCXEH3KtStyC/TRsaVzmnk+vwxZUBaQN/5RDvT1yw=;
+ b=THUqzpLTMAAbl8EcfhkdTlevdFFLVAG+eU9OEaAW+mVD/3ZPKPLSbP0HAWWO7jfdW6
+ gYihvQjOQdyXl3YXjqEysQnZDL16ZNehC6T3PiSQH6fCtdoF/Kz67vBuiiqXOckXXD/p
+ haiVR6Fomnxa+KarzWIO0JJk0gCowE0Q6N3NqfiFxc82/yMaGNnef0e6oZCB11xaKW+p
+ QIIb/3A5GJjJQSqQ3oGTDEHLqHiAYG4QC0te065tpLAvzUZfpMjL0gTUQJXEJFJrhXri
+ qFmvcWYINe0E5qdPCYvX9NITnbahvLtS3RPjZie9J9PzdCLgM/p/RFHwuLWvYAiERA8f
+ 5Bpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=nMDBJ4z8t6kInHEJCqXELzn78TzjorTmxQyL7f9oSRA=;
- b=Vf1kFyxFZM/YgVvwqzFXazByWqorAOAbm/dLCY8ZAAXoVGD7t8Ozhrlm1nLHr0ghFi
- NJJ+KpibvT/rWd/BGS0AAq/r9bG/xy96ZVgkrX/iAwE3ldX3OXfINEAAaJ9skITk8UtF
- J7NGKQ8PK1actOM5x675Z/CIuCM90eBntQI6IDiBeZmafcSetilLtQVN0lM8duQ+njnC
- DqQ0460VMDNKbelnFC/khrGMBZnZDVa3+9MFEV3V2cSb67F5joHts/toQqcENyGH2vQG
- kgZNpjwR1iXW+IH9rV6SGk9CFJK7aBk7iplLWE9PIXFZNhpLUG2t2nQ5ceWs/ldmHE22
- wq4w==
-X-Gm-Message-State: AOAM5329m3xBqTuW4R9gVorY6tHpTksGt0cY+PBWwuIsDTxjMB7EH5a3
- bnPqjHcN8z4jxP/KQMabuCt7e3HppgA=
-X-Google-Smtp-Source: ABdhPJwaakqdDC2tKW6WtYfvMkBeTekK48fdySqIDztgv82Bkvwxm1qMz4KX7gqPW02ChOPdcfRuhA==
-X-Received: by 2002:a5d:68cf:: with SMTP id p15mr288932wrw.148.1597247592316; 
- Wed, 12 Aug 2020 08:53:12 -0700 (PDT)
-Received: from localhost.localdomain ([46.114.148.4])
- by smtp.gmail.com with ESMTPSA id h10sm4776478wro.57.2020.08.12.08.53.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2020 08:53:11 -0700 (PDT)
-From: Thomas Huth <huth@tuxfamily.org>
-To: qemu-devel@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Sarah Harris <S.E.Harris@kent.ac.uk>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
- MAINTAINERS
-Date: Wed, 12 Aug 2020 17:53:04 +0200
-Message-Id: <20200812155304.18016-1-huth@tuxfamily.org>
-X-Mailer: git-send-email 2.26.2
+ bh=6jyCXEH3KtStyC/TRsaVzmnk+vwxZUBaQN/5RDvT1yw=;
+ b=hInLleKXZRPChRjiBUSf3pTgSVYVZSxH5l6KJeUGuie2vT5uR/UWdKMLTgsmp4DwTn
+ b9aA2Bv2sQ/H7mSQNDXpyryvY0CrqYW2qjvqxa8EzWakEa3mXpt0KRBmpAM/yTHFYhIU
+ M3IpNzZaE4kSOoLDZkvEfdUygVi4dYnJySqKRPixEg1pB83PKwk9vvkXHNVNrrgwHoR4
+ fwqUi3OCGyqAp6O3S5wg4ivOzIgnq58sSQcRS/FH3jXv2tYVXhk4jBwfLy5g1Bk3vMJc
+ Jtns7GqP91HKZ96dMaR9NmmoSLVQUK6qTGWZcHMlIyPtNNr/J9fff0o/bYphCMgt4goF
+ 2nTA==
+X-Gm-Message-State: AOAM532GEIzvePScgabLJ+cH9K4onihRHGxFX5J6nVV8IGKGLB76mZyf
+ PbRaYpLB5ccIcccpfQXx3gJw8g==
+X-Google-Smtp-Source: ABdhPJyQlRXRQ0wJ7Fl5g9RzH54qYBK+npDR1PnkbljaWMMqMSkOYDItt1SFwsi+yRpS1mISF3n+aw==
+X-Received: by 2002:a62:cfc1:: with SMTP id b184mr592065pfg.262.1597254467134; 
+ Wed, 12 Aug 2020 10:47:47 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id 27sm2766771pgk.89.2020.08.12.10.47.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Aug 2020 10:47:46 -0700 (PDT)
+Subject: Re: [PATCH-for-5.2 1/2] hw/core/sysbus: Fix a typo
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20200806130945.21629-1-f4bug@amsat.org>
+ <20200806130945.21629-2-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ce7d3f88-6ddd-f100-a021-75dce942b0b6@linaro.org>
+Date: Wed, 12 Aug 2020 10:47:44 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20200806130945.21629-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.221.67; envelope-from=th.huth@gmail.com;
- helo=mail-wr1-f67.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 11:53:13
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,87 +86,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Aug 2020 15:53:19 -0000
+X-List-Received-Date: Wed, 12 Aug 2020 17:47:51 -0000
 
-The examples look nicer when using "::" code blocks.
-Also mention that "-d in_asm" only outputs instructions that have not
-been translated by the JIT layer yet.
-And while we're at it, also add the AVR doc file to the MAINTAINERS file.
+On 8/6/20 6:09 AM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/core/sysbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Thomas Huth <huth@tuxfamily.org>
----
- MAINTAINERS                |  1 +
- docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
- 2 files changed, 30 insertions(+), 18 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0886eb3d2b..5b21962bc6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -171,6 +171,7 @@ AVR TCG CPUs
- M: Michael Rolnik <mrolnik@gmail.com>
- R: Sarah Harris <S.E.Harris@kent.ac.uk>
- S: Maintained
-+F: docs/system/target-avr.rst
- F: gdb-xml/avr-cpu.xml
- F: target/avr/
- F: tests/acceptance/machine_avr6.py
-diff --git a/docs/system/target-avr.rst b/docs/system/target-avr.rst
-index dc99afc895..1410031f5e 100644
---- a/docs/system/target-avr.rst
-+++ b/docs/system/target-avr.rst
-@@ -17,21 +17,32 @@ https://github.com/seharris/qemu-avr-tests/blob/master/free-rtos/Demo/AVR_ATMega
- Following are examples of possible usages, assuming demo.elf is compiled for
- AVR cpu
- 
-- - Continuous non interrupted execution:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf``
--
-- - Continuous non interrupted execution with serial output into telnet window:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -serial
--   tcp::5678,server,nowait -nographic``
--   and then in another shell
--   ``telnet localhost 5678``
--
-- - Debugging wit GDB debugger:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -s -S``
--   and then in another shell
--   ``avr-gdb demo.elf``
--   and then within GDB shell
--   ``target remote :1234``
--
-- - Print out executed instructions:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm``
-+- Continuous non interrupted execution::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf
-+
-+- Continuous non interrupted execution with serial output into telnet window::
-+
-+   qemu-system-avr -M mega2560 -bios demo.elf -nographic \
-+                   -serial tcp::5678,server,nowait 
-+
-+  and then in another shell::
-+
-+   telnet localhost 5678
-+
-+- Debugging wit GDB debugger::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf -s -S
-+
-+  and then in another shell::
-+
-+   avr-gdb demo.elf
-+
-+  and then within GDB shell::
-+
-+   target remote :1234
-+
-+- Print out executed instructions (that have not been translated by the JIT
-+  compiler yet)::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm
--- 
-2.26.2
-
+r~
 
