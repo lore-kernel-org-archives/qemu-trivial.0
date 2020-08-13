@@ -1,72 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6GZb-0002ta-Ia
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 12:59:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35442)
+	id 1k6HI5-000784-Qp
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 13:45:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1k6GZZ-0002sE-Le
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 12:59:25 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46051
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1k6GZW-0004zu-T3
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 12:59:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597337961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2WWLij4JbEML1tdctaOE5u3kQuiDemA1l/3RNN7EtJk=;
- b=DOX4P9WRt//3DxwhDhSbQfgZiIBWq2ht0Smf3c+JhnMieT3ckKrZAKjMRanDMY6v+miokP
- KEp/IeRQGh6f4kao4BqyVTM6/0bRMDlafqVvcdcbRAkEJY//PSMvqxGiJ9u44I1oDpuNUX
- Cdjtypybf9gibnkeC9V/Aa3nWlmHxEA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-sqwXXLa_P9aa57AXN6JHSg-1; Thu, 13 Aug 2020 12:59:19 -0400
-X-MC-Unique: sqwXXLa_P9aa57AXN6JHSg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CC2C1005E5D;
- Thu, 13 Aug 2020 16:59:18 +0000 (UTC)
-Received: from x1.home (ovpn-112-71.phx2.redhat.com [10.3.112.71])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C6E0A19C78;
- Thu, 13 Aug 2020 16:59:12 +0000 (UTC)
-Date: Thu, 13 Aug 2020 10:59:11 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
- <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 07/11] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-Message-ID: <20200813105911.2312adb5@x1.home>
-In-Reply-To: <20200813073712.4001404-8-kuhn.chenqun@huawei.com>
-References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
- <20200813073712.4001404-8-kuhn.chenqun@huawei.com>
-Organization: Red Hat
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1k6HI3-00077q-Nr; Thu, 13 Aug 2020 13:45:23 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46342)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1k6HHv-0001aV-JR; Thu, 13 Aug 2020 13:45:23 -0400
+Received: by mail-ot1-x344.google.com with SMTP id v6so5437744ota.13;
+ Thu, 13 Aug 2020 10:45:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=c2U0W6xs4+RlY5Ev034LKwq7JLsCY7DpPGjM9pL9G+U=;
+ b=B/hMO9/FhIz/8cmm+1RURJwB85SfM9krz9orfUaHQquuSC4gfL1GgVOpCqVGl7St7m
+ 7x+jZeO0ePPirc0R2IE2D+f2yduJchjRmm/JvxfubKSOEXZEV9Tr0rmX5DiYrMLmOoCI
+ huZKl2aCDK6sLxDkuBe+oXvNUum27usu1cMTPNK+x4uo0FvgH0QrOZLkN1l10aEPjPmq
+ lDfC2y/pcvYJj3+g4jaiZoZnqLDTZrzi4YrvGREi4aNFJmdFBQqURN9QxDSqWim5+g1V
+ h014QuQZurD2YiVqC52BvNW2F85eAaJCjmGxCrhq2H0jR3Ay7whcUdQZJugvbtfGIVPb
+ 0ofw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=c2U0W6xs4+RlY5Ev034LKwq7JLsCY7DpPGjM9pL9G+U=;
+ b=KY8cTnQUuGvs/F5EbfxsQH48sd0HXtyn+wnFWzFWaL4goByFjCsBLFdpqQi0Wy4Lvg
+ +ooToHNalTPV6aAX5o1wl94OxH5hFbx+pKKUkNhaPVBGpfdebTx83nUGYpgAQ7Zx3IxI
+ rJS4zjFcn8653tVmMYaNwSRk0shoDT9psY3wszji8oz2+Yb7OdUladVSD9MdTcQiQGK7
+ su5JRvBNoFxGIyO64f0Xry2/F07uNt+iNrAUMWeRmhOjk5BtWxhVRGA22nLa6TupuunT
+ YP2ZecXVdVCRDeq2tBgy8iDHzg6VzD8UsFwKRQZhWS9sqc0aKlxhyW1QBmDrdmoWNJ2V
+ qQQg==
+X-Gm-Message-State: AOAM533EXV0XDuHryXfcz4oBwN4rQ8tQgK8C8n0VLvXc5ZOP5nDuIIFI
+ f3bSAi1PoMZ44L6jbfYUc3ofM1Xx7iKR38Eh2/U=
+X-Google-Smtp-Source: ABdhPJxp+2SxjPjaYH3c8BkGBompCNIWzL1DtyhKC0SQAZW8W1mPKrdBlEcH/uowWepk+3GR866ewG5ZL1WbYauYJdQ=
+X-Received: by 2002:a9d:5914:: with SMTP id t20mr5132611oth.337.1597340713617; 
+ Thu, 13 Aug 2020 10:45:13 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=alex.williamson@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:45:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-6-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200813073712.4001404-6-kuhn.chenqun@huawei.com>
+From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
+Date: Thu, 13 Aug 2020 12:44:57 -0500
+Message-ID: <CAFubqFs4hm0mQpDbnNFpYWV3PEy68m9XEs1y7gJiS5ObYUxK=A@mail.gmail.com>
+Subject: Re: [PATCH 05/11] hw/virtio/vhost-user:Remove dead assignment in
+ scrub_shadow_regions()
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ zhang.zhanghailiang@huawei.com, "Michael S. Tsirkin" <mst@redhat.com>,
+ pannengyuan@huawei.com, Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ Euler Robot <euler.robot@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=raphael.s.norwitz@gmail.com; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,50 +74,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 16:59:25 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 17:45:24 -0000
 
-On Thu, 13 Aug 2020 15:37:08 +0800
-Chen Qun <kuhn.chenqun@huawei.com> wrote:
-
+On Thu, Aug 13, 2020 at 2:39 AM Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
 > Clang static code analyzer show warning:
-> hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
->         ret = event_notifier_test_and_clear(intp->interrupt);
->         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
+> hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
+>         mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>         ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Eric Auger <eric.auger@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
 > ---
->  hw/vfio/platform.c | 2 +-
+>  hw/virtio/vhost-user.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index ac2cefc9b1..869ed2c39d 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
->          trace_vfio_intp_interrupt_set_pending(intp->pin);
->          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
->                               intp, pqnext);
-> -        ret = event_notifier_test_and_clear(intp->interrupt);
-> +        event_notifier_test_and_clear(intp->interrupt);
->          return;
->      }
+>
+> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+> index d7e2423762..9c5b4f7fbc 100644
+> --- a/hw/virtio/vhost-user.c
+> +++ b/hw/virtio/vhost-user.c
+> @@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
+>       */
+>      for (i = 0; i < dev->mem->nregions; i++) {
+>          reg = &dev->mem->regions[i];
+> -        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
 
-Testing that an event is pending in our notifier is generally a
-prerequisite to doing anything in the interrupt handler, I don't
-understand why we're just consuming it and ignoring the return value.
-The above is in the delayed handling branch of the function, but the
-normal non-delayed path would only go on to error_report() if the
-notifier is not pending and then inject an interrupt anyway.  This all
-seems rather suspicious and it's a unique pattern among the vfio
-callers of this function.  Is there a more fundamental bug that this
-function should perform this test once and return without doing
-anything if it's called spuriously, ie. without a notifier pending?
-Thanks,
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
 
-Alex
-
+> +        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>          if (fd > 0) {
+>              ++fd_num;
+>          }
+> --
+> 2.23.0
+>
+>
 
