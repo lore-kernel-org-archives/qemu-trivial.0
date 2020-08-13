@@ -1,75 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k69Uj-000338-8e
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 05:25:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36330)
+	id 1k6Epx-0004bl-NF
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 11:08:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33790)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k69Uh-00032T-Ch
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 05:25:55 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24553
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k6Epu-0004at-BQ; Thu, 13 Aug 2020 11:08:10 -0400
+Resent-Date: Thu, 13 Aug 2020 11:08:10 -0400
+Resent-Message-Id: <E1k6Epu-0004at-BQ@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21720)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k69Uf-0007Ag-Gw
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 05:25:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597310752;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kEXhygaAWt1d0DDxMWg97iK96Wh3TGtzlS66BvoHDqk=;
- b=jGSHW6mx/OcYOVG31gh6DiJin2hde1y3MRdytiQAkbrffnel6Zhug8BQhX+OOWyid4pZL8
- k66qq+8wtg3juTnAUBUDycfsmVT2599KTCQTMkk7DHOTjSO+bqZOHEvJ8yaBqXjids58Ay
- KmRqSkzjaTj6pNa4iakiMi4dvjZiBTc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-488-0M0UNxqSP4-3VFj8oh_93g-1; Thu, 13 Aug 2020 05:25:50 -0400
-X-MC-Unique: 0M0UNxqSP4-3VFj8oh_93g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 923671800D41;
- Thu, 13 Aug 2020 09:25:49 +0000 (UTC)
-Received: from [10.36.113.93] (ovpn-113-93.ams2.redhat.com [10.36.113.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BA1E5D759;
- Thu, 13 Aug 2020 09:25:43 +0000 (UTC)
-Subject: Re: [PATCH 07/11] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, pannengyuan@huawei.com,
- Alex Williamson <alex.williamson@redhat.com>,
- Euler Robot <euler.robot@huawei.com>
-References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
- <20200813073712.4001404-8-kuhn.chenqun@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <c0e9ec22-eca7-f7d7-790b-19c09755b871@redhat.com>
-Date: Thu, 13 Aug 2020 11:25:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k6Epq-0007bQ-PY; Thu, 13 Aug 2020 11:08:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1597331275; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=WQD4Av4eqmQlxwDUtp24dE7JV//NANAYk+geBDNcGZsGgP3CvIGpmzxnQ9uDEM2bVGi9tLin7f2oe7uysLu7rDpdkXwMfrC++UhgwX8yI6/D3PLx13uepAkcS+zNH0TE64EVFaxMsAxBXlEiTXh4fIxSvAqkz+mLBTeR9U9oStI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1597331275;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=KNIXA/fWIYH5IxhzwKMlvafo8F6klOtjCaF4eWrrf1o=; 
+ b=h/csD8W2EsRnW3B7yVH1POc/9vtDOtTXNvU6UiNS0FCSu9rxbQdXhitDctia/JAtfVA4aoYG6FvCVDC9uQax71zPfQY8+vHr16TUy3Dw31cF+mT/OxLPhH8UAfptOvR9hIvuz8elBcREl3xUPDilUEhh5qssv0LgAFBdbALw0wA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1597331270483557.0210603655494;
+ Thu, 13 Aug 2020 08:07:50 -0700 (PDT)
+Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
+ MAINTAINERS
+Message-ID: <159733126931.15736.4125159469500224021@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20200812155304.18016-1-huth@tuxfamily.org>
 MIME-Version: 1.0
-In-Reply-To: <20200813073712.4001404-8-kuhn.chenqun@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:44:21
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: huth@tuxfamily.org
+Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, f4bug@amsat.org,
+ qemu-trivial@nongnu.org, S.E.Harris@kent.ac.uk
+Date: Thu, 13 Aug 2020 08:07:50 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 10:17:15
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,44 +63,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 09:25:55 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 15:08:11 -0000
 
-Hi,
-
-On 8/13/20 9:37 AM, Chen Qun wrote:
-> Clang static code analyzer show warning:
-> hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
->         ret = event_notifier_test_and_clear(intp->interrupt);
->         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-
-> ---
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/vfio/platform.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index ac2cefc9b1..869ed2c39d 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
->          trace_vfio_intp_interrupt_set_pending(intp->pin);
->          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
->                               intp, pqnext);
-> -        ret = event_notifier_test_and_clear(intp->interrupt);
-> +        event_notifier_test_and_clear(intp->interrupt);
->          return;
->      }
->  
-> 
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxMjE1NTMwNC4xODAx
+Ni0xLWh1dGhAdHV4ZmFtaWx5Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZl
+IHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGlu
+Zm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAwODEyMTU1MzA0LjE4MDE2
+LTEtaHV0aEB0dXhmYW1pbHkub3JnClN1YmplY3Q6IFtQQVRDSF0gZG9jcy9zeXN0ZW0vdGFyZ2V0
+LWF2cjogSW1wcm92ZSB0aGUgQVZSIGRvY3MgYW5kIGFkZCB0byBNQUlOVEFJTkVSUwoKPT09IFRF
+U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2
+L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
+LmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBi
+YXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAn
+dGVzdCcKMjJmYmY4YiBkb2NzL3N5c3RlbS90YXJnZXQtYXZyOiBJbXByb3ZlIHRoZSBBVlIgZG9j
+cyBhbmQgYWRkIHRvIE1BSU5UQUlORVJTCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogdHJh
+aWxpbmcgd2hpdGVzcGFjZQojNTc6IEZJTEU6IGRvY3Mvc3lzdGVtL3RhcmdldC1hdnIucnN0OjI3
+OgorICAgICAgICAgICAgICAgICAgIC1zZXJpYWwgdGNwOjo1Njc4LHNlcnZlcixub3dhaXQgJAoK
+dG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1NCBsaW5lcyBjaGVja2VkCgpDb21taXQgMjJm
+YmY4YmU5OTE5IChkb2NzL3N5c3RlbS90YXJnZXQtYXZyOiBJbXByb3ZlIHRoZSBBVlIgZG9jcyBh
+bmQgYWRkIHRvIE1BSU5UQUlORVJTKSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcu
+ICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0g
+dG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo9PT0gT1VU
+UFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwg
+bG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDgxMjE1NTMw
+NC4xODAxNi0xLWh1dGhAdHV4ZmFtaWx5Lm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVz
+c2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBz
+Oi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRl
+dmVsQHJlZGhhdC5jb20=
 
