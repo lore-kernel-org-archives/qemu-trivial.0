@@ -1,56 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6Epx-0004bl-NF
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 11:08:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33790)
+	id 1k6G0S-0006WQ-2Q
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 12:23:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k6Epu-0004at-BQ; Thu, 13 Aug 2020 11:08:10 -0400
-Resent-Date: Thu, 13 Aug 2020 11:08:10 -0400
-Resent-Message-Id: <E1k6Epu-0004at-BQ@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21720)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k6Epq-0007bQ-PY; Thu, 13 Aug 2020 11:08:10 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1597331275; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=WQD4Av4eqmQlxwDUtp24dE7JV//NANAYk+geBDNcGZsGgP3CvIGpmzxnQ9uDEM2bVGi9tLin7f2oe7uysLu7rDpdkXwMfrC++UhgwX8yI6/D3PLx13uepAkcS+zNH0TE64EVFaxMsAxBXlEiTXh4fIxSvAqkz+mLBTeR9U9oStI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1597331275;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=KNIXA/fWIYH5IxhzwKMlvafo8F6klOtjCaF4eWrrf1o=; 
- b=h/csD8W2EsRnW3B7yVH1POc/9vtDOtTXNvU6UiNS0FCSu9rxbQdXhitDctia/JAtfVA4aoYG6FvCVDC9uQax71zPfQY8+vHr16TUy3Dw31cF+mT/OxLPhH8UAfptOvR9hIvuz8elBcREl3xUPDilUEhh5qssv0LgAFBdbALw0wA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1597331270483557.0210603655494;
- Thu, 13 Aug 2020 08:07:50 -0700 (PDT)
-Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
- MAINTAINERS
-Message-ID: <159733126931.15736.4125159469500224021@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200812155304.18016-1-huth@tuxfamily.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k6G0Q-0006Tt-Bo
+ for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 12:23:06 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:38414)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k6G0O-0000Ug-Pz
+ for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 12:23:06 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id ep8so2991057pjb.3
+ for <qemu-trivial@nongnu.org>; Thu, 13 Aug 2020 09:23:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=58H6ZzsrhOuoVWULktITFqhwXRDdPK96sRu8lerSH/w=;
+ b=Pt7DE+PSdyPpI+EO4jBxEQwYanYQhIfMRksX7elRZadyZk+oF4PQQAT+Efb6X0+Ugp
+ IzcTqOYuuuPSABxrl82tYAiUd7b773LxYZ0EHLB6wdiFDVi5NDrwz6WLLhR6W7v3yWq+
+ cyY1/SIYj8KvWw1wgyRH8WXkRuSwAlsbAbcqgDnwWFK2IRQeoZPK8aMxTU++VGjjLR0S
+ wRAi5i1c0i54rCPkq+T6MU9m21g5DW5kUVYBEaOsRoOJbvXcP+oW40+fTyRKj3lJrRVw
+ YwVyOnJarkP557rYaBcxjkQ0HgdgxBeXPMlJFgKJZFBR8m6h6oWTZ2R7PqnZHHg0Gt9c
+ 31IA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=58H6ZzsrhOuoVWULktITFqhwXRDdPK96sRu8lerSH/w=;
+ b=fFCqjvK/UfUf8l3vtHrTbbT1jzDr7lxqEVo90p469J3S1I3XNc3fCoH4DJnkmGN5FP
+ MYW/wPMXANlHY1PE/TpQO9LFDzN6504AlhIehvB6SHi9X3vzWH6vCFlVi0DEgAxLAGZ+
+ rQiapwSgJK5vXsZ9E6z4qdVQyC3+IoKEtiL3lUqO9uG18AuAc4yEC9yM9a0LyGD8yUND
+ CZXZR/ywWr3XHgx5d1QmEtUUxajn7C3vYMcUNYJvC8dy4JWa/Lwovowpof5dk0x4xeV5
+ dYT7/ZFdwmGATQrEeM0C0LphOwmIMM9EtJHJdmW6fxuCcj8MOIjCc7Rgu+a2SUFcb5wk
+ vJ8g==
+X-Gm-Message-State: AOAM533eGB/QSTcFcTQ7OeZ5XFLyFOOf4hz/qeTAzBXM0jVWf92VSGX1
+ eK4XMB20c4vMfON0sHe6icGO2g==
+X-Google-Smtp-Source: ABdhPJwcd6cmTdWOZCkIoXlDPiKqljkbV6QLuOQLeCeGgigAlImGDwe4SImhP5RUgqyxCPTkIGYBCg==
+X-Received: by 2002:a17:90a:bb81:: with SMTP id
+ v1mr5670699pjr.168.1597335782597; 
+ Thu, 13 Aug 2020 09:23:02 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id x28sm6618410pfq.141.2020.08.13.09.23.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Aug 2020 09:23:01 -0700 (PDT)
+Subject: Re: [PATCH 08/11] tcg/optimize: Remove redundant statement in
+ tcg_optimize()
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: pannengyuan@huawei.com, zhang.zhanghailiang@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Richard Henderson <rth@twiddle.net>
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-9-kuhn.chenqun@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <800035ed-a522-a974-1c1d-437efe7ff25b@linaro.org>
+Date: Thu, 13 Aug 2020 09:22:59 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: huth@tuxfamily.org
-Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, f4bug@amsat.org,
- qemu-trivial@nongnu.org, S.E.Harris@kent.ac.uk
-Date: Thu, 13 Aug 2020 08:07:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 10:17:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200813073712.4001404-9-kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,32 +86,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 15:08:11 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 16:23:06 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxMjE1NTMwNC4xODAx
-Ni0xLWh1dGhAdHV4ZmFtaWx5Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZl
-IHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGlu
-Zm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAwODEyMTU1MzA0LjE4MDE2
-LTEtaHV0aEB0dXhmYW1pbHkub3JnClN1YmplY3Q6IFtQQVRDSF0gZG9jcy9zeXN0ZW0vdGFyZ2V0
-LWF2cjogSW1wcm92ZSB0aGUgQVZSIGRvY3MgYW5kIGFkZCB0byBNQUlOVEFJTkVSUwoKPT09IFRF
-U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2
-L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0
-IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
-LmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBi
-YXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAn
-dGVzdCcKMjJmYmY4YiBkb2NzL3N5c3RlbS90YXJnZXQtYXZyOiBJbXByb3ZlIHRoZSBBVlIgZG9j
-cyBhbmQgYWRkIHRvIE1BSU5UQUlORVJTCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogdHJh
-aWxpbmcgd2hpdGVzcGFjZQojNTc6IEZJTEU6IGRvY3Mvc3lzdGVtL3RhcmdldC1hdnIucnN0OjI3
-OgorICAgICAgICAgICAgICAgICAgIC1zZXJpYWwgdGNwOjo1Njc4LHNlcnZlcixub3dhaXQgJAoK
-dG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1NCBsaW5lcyBjaGVja2VkCgpDb21taXQgMjJm
-YmY4YmU5OTE5IChkb2NzL3N5c3RlbS90YXJnZXQtYXZyOiBJbXByb3ZlIHRoZSBBVlIgZG9jcyBh
-bmQgYWRkIHRvIE1BSU5UQUlORVJTKSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcu
-ICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0g
-dG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo9PT0gT1VU
-UFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwg
-bG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDgxMjE1NTMw
-NC4xODAxNi0xLWh1dGhAdHV4ZmFtaWx5Lm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVz
-c2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBz
-Oi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRl
-dmVsQHJlZGhhdC5jb20=
+On 8/13/20 12:37 AM, Chen Qun wrote:
+> Clang static code analyzer show warning:
+> tcg/optimize.c:1267:17: warning: Value stored to 'nb_iargs' is never read
+>                 nb_iargs = 2;
+>                 ^          ~
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Richard Henderson <rth@twiddle.net>
+> ---
+>  tcg/optimize.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/tcg/optimize.c b/tcg/optimize.c
+> index 53aa8e5329..d5bea37290 100644
+> --- a/tcg/optimize.c
+> +++ b/tcg/optimize.c
+> @@ -1264,7 +1264,6 @@ void tcg_optimize(TCGContext *s)
+>                  op->opc = opc = (opc == INDEX_op_movcond_i32
+>                                   ? INDEX_op_setcond_i32
+>                                   : INDEX_op_setcond_i64);
+> -                nb_iargs = 2;
+>              }
+>              goto do_default;
+
+I prefer not to make this change.
+
+nb_iargs is the cached value that corresponds to opc, which we have just
+changed.  If we later make a change at "do_default" that uses nb_iargs, failure
+to update the value here will be a very hard bug to find.
+
+I am happy to let the compiler remove this as dead code itself.
+
+
+r~
 
