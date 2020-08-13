@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k67pD-00009v-59
+	id 1k67pD-0000Bd-JK
 	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 03:38:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40800)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67p6-0008JN-F6; Thu, 13 Aug 2020 03:38:52 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:33700 helo=huawei.com)
+ id 1k67p7-0008N1-OE; Thu, 13 Aug 2020 03:38:53 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4237 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67p1-0001n3-Tu; Thu, 13 Aug 2020 03:38:52 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3CFC488750FE0B924AD5;
- Thu, 13 Aug 2020 15:38:42 +0800 (CST)
+ id 1k67p5-0001nl-QW; Thu, 13 Aug 2020 03:38:53 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 263586F60A2EFA597018;
+ Thu, 13 Aug 2020 15:38:47 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 13 Aug 2020
- 15:38:34 +0800
+ 15:38:40 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, Raphael Norwitz <raphael.norwitz@nutanix.com>
-Subject: [PATCH 05/11] hw/virtio/vhost-user:Remove dead assignment in
- scrub_shadow_regions()
-Date: Thu, 13 Aug 2020 15:37:06 +0800
-Message-ID: <20200813073712.4001404-6-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Gerd
+ Hoffmann" <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH 09/11] usb/bus: Remove dead assignment in usb_get_fw_dev_path()
+Date: Thu, 13 Aug 2020 15:37:10 +0800
+Message-ID: <20200813073712.4001404-10-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
 References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
@@ -32,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
+Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:38:34
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:38:37
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -54,35 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 07:38:52 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 07:38:54 -0000
 
 Clang static code analyzer show warning:
-hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
-        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-        ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+qemu/hw/usb/bus.c:615:13: warning: Value stored to 'pos' is never read
+            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
 ---
- hw/virtio/vhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/usb/bus.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
-index d7e2423762..9c5b4f7fbc 100644
---- a/hw/virtio/vhost-user.c
-+++ b/hw/virtio/vhost-user.c
-@@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
-      */
-     for (i = 0; i < dev->mem->nregions; i++) {
-         reg = &dev->mem->regions[i];
--        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-+        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-         if (fd > 0) {
-             ++fd_num;
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+index b17bda3b29..77d3f7ddb8 100644
+--- a/hw/usb/bus.c
++++ b/hw/usb/bus.c
+@@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
+             in++;
+         } else {
+             /* the device itself */
+-            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+-                            qdev_fw_name(qdev), nr);
++            snprintf(fw_path + pos, fw_len - pos, "%s@%lx",qdev_fw_name(qdev),
++                     nr);
+             break;
          }
+     }
 -- 
 2.23.0
 
