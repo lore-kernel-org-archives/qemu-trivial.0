@@ -1,79 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6Ikv-0001p9-K1
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 15:19:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48546)
+	id 1k6KE2-0007en-TQ
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 16:53:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k6Iku-0001nc-8q
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 15:19:16 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32101
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k6Iks-0006Bf-PL
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 15:19:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597346353;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9CBt2Iwb2TXIK6XFd0KLuM1IefDxbodeUzdYsuAM4Kk=;
- b=IQEawG1OHJ+p94eLT2Rk3x6bzHJUEvC71yMTWDaypvODzJJifvD9a3R60KG1i4KXzpXu1J
- FbumKppXRe7gvagAAQD7trXIZY1BMtcDOTPUb5BbAGaudKP7f+SdSD1hjB7uzcDhxRx7la
- FaBVj7831cu5g47rWv0y1MzpiQ9JVF8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-85-fQ3lLi2UPO6OeQA0CSDxsQ-1; Thu, 13 Aug 2020 15:19:10 -0400
-X-MC-Unique: fQ3lLi2UPO6OeQA0CSDxsQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A38FE1DDE1;
- Thu, 13 Aug 2020 19:19:08 +0000 (UTC)
-Received: from [10.36.113.93] (ovpn-113-93.ams2.redhat.com [10.36.113.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D10FD6FDB3;
- Thu, 13 Aug 2020 19:19:00 +0000 (UTC)
-Subject: Re: [PATCH 07/11] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-To: Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Chen Qun <kuhn.chenqun@huawei.com>, zhang.zhanghailiang@huawei.com,
- qemu-trivial@nongnu.org, pannengyuan@huawei.com, qemu-devel@nongnu.org,
- Euler Robot <euler.robot@huawei.com>
-References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
- <20200813073712.4001404-8-kuhn.chenqun@huawei.com>
- <20200813105911.2312adb5@x1.home>
- <681519bf-92ca-6247-490a-e9193b0bd385@redhat.com>
- <20200813131530.09ad0a4c@x1.home>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8e096d15-1700-f399-045d-1ba73eb6c1c1@redhat.com>
-Date: Thu, 13 Aug 2020 21:18:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <mrolnik@gmail.com>)
+ id 1k6JAH-0006jO-30; Thu, 13 Aug 2020 15:45:29 -0400
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:40325)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mrolnik@gmail.com>)
+ id 1k6JAF-0000fa-FR; Thu, 13 Aug 2020 15:45:28 -0400
+Received: by mail-qk1-x742.google.com with SMTP id 62so6273602qkj.7;
+ Thu, 13 Aug 2020 12:45:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pNtNfajHiWjonfTsQFh+T69gMqes4UiFF7HcjJUaAz0=;
+ b=d5LnnTksnNRn4zyIbTdUyctAiO9wDp0T7CBrltZM4BIdIWxQrgc+WXWwk/G4AE5oP0
+ LyIXqLsiSy5l9VxEVtzuKXxBGyEaXx5Ahge8XwF9n3Bb/Sr3TSttOKe44GDL9w02pgRf
+ WswxNER6sVR7Ukcm3oVQibwTZEBUg/50IZ2rpELhMeigsPEnkKvBdLYZXihd5GVyhuUt
+ +gCtEABQ2hR/Juwg0wELBxBlI3JHFrJd7HN0eUgSXbBh/3TxRf8OEleDaU1eXqZVb3YV
+ G5a7bQlqRp49cKSORgukcUEpCah956wj4rXsq68jMBptDGusGluxlZ+V1QRTarcuAQV5
+ gYNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pNtNfajHiWjonfTsQFh+T69gMqes4UiFF7HcjJUaAz0=;
+ b=Qu+ScHk69lqs/QiQVFtCHzkDwGxu3BUNvHg9Cc/SyoEYtfuz3hfQj2uD7ueWDVUC5D
+ EvDYuUtYcEb1k5G3Ep1LUWwqvdqCgmq5F/eFtgVYkHySc8H0TsHLf7qBfxnRJXRk7m40
+ b2eR940v/RWtH+N9AZpkhpmAkvTCiDC62YlKuGo2+JF3UkR80tfy9w+Tpheyu5gO8plW
+ Dj6B/vrvJC/ueVk5e0Ild5JluoMXsblIsTbsp8yTc8wvwb5Wwu1Lr9AJZAvhiI3e2gW2
+ 0UwRhyHwdS/ZYkvwYOC5w6Y/+2aABcIe363GA/UNXjXkakLvw2GdvARvDGuFmG4DZXuO
+ SlwQ==
+X-Gm-Message-State: AOAM5328OtxtR8vehp8YbTRHUZIT00xREjdr078Q5QGgR9+U1FR3ywpy
+ AkJGyOFbPNv1wENlkQ159XgN4CHAn3VMNRg4i0Y=
+X-Google-Smtp-Source: ABdhPJxtfeHl0scMjSabIAkFZUr/GzyrxXUr6uzbGsGEGMXkykQj62s37067E1Byc68OqYFvequhl/fQSD0svFAxz4w=
+X-Received: by 2002:a37:9f94:: with SMTP id i142mr6164196qke.310.1597347925149; 
+ Thu, 13 Aug 2020 12:45:25 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200813131530.09ad0a4c@x1.home>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 02:03:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200812155304.18016-1-huth@tuxfamily.org>
+ <7ae16b1c-50a2-3cd8-dfda-e3dd76f5cd7a@linaro.org>
+In-Reply-To: <7ae16b1c-50a2-3cd8-dfda-e3dd76f5cd7a@linaro.org>
+From: Michael Rolnik <mrolnik@gmail.com>
+Date: Thu, 13 Aug 2020 22:44:38 +0300
+Message-ID: <CAK4993hK6OUtG=PapUy8cLSAb8a1yv9KKyG0nNWmLCzY3e5bWA@mail.gmail.com>
+Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
+ MAINTAINERS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Thomas Huth <huth@tuxfamily.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>
+Content-Type: multipart/alternative; boundary="000000000000a98e1105acc78b4a"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
+ envelope-from=mrolnik@gmail.com; helo=mail-qk1-x742.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 13 Aug 2020 16:53:26 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,89 +74,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 19:19:16 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 19:45:29 -0000
 
-Hi Alex,
+--000000000000a98e1105acc78b4a
+Content-Type: text/plain; charset="UTF-8"
 
-On 8/13/20 9:15 PM, Alex Williamson wrote:
-> On Thu, 13 Aug 2020 20:02:45 +0200
-> Auger Eric <eric.auger@redhat.com> wrote:
-> 
->> Hi Alex,
->>
->> On 8/13/20 6:59 PM, Alex Williamson wrote:
->>> On Thu, 13 Aug 2020 15:37:08 +0800
->>> Chen Qun <kuhn.chenqun@huawei.com> wrote:
->>>   
->>>> Clang static code analyzer show warning:
->>>> hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
->>>>         ret = event_notifier_test_and_clear(intp->interrupt);
->>>>         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>>>
->>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>>> ---
->>>> Cc: Alex Williamson <alex.williamson@redhat.com>
->>>> Cc: Eric Auger <eric.auger@redhat.com>
->>>> ---
->>>>  hw/vfio/platform.c | 2 +-
->>>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
->>>> index ac2cefc9b1..869ed2c39d 100644
->>>> --- a/hw/vfio/platform.c
->>>> +++ b/hw/vfio/platform.c
->>>> @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
->>>>          trace_vfio_intp_interrupt_set_pending(intp->pin);
->>>>          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
->>>>                               intp, pqnext);
->>>> -        ret = event_notifier_test_and_clear(intp->interrupt);
->>>> +        event_notifier_test_and_clear(intp->interrupt);
->>>>          return;
->>>>      }  
->>>
->>> Testing that an event is pending in our notifier is generally a
->>> prerequisite to doing anything in the interrupt handler, I don't
->>> understand why we're just consuming it and ignoring the return value.
->>> The above is in the delayed handling branch of the function, but the
->>> normal non-delayed path would only go on to error_report() if the
->>> notifier is not pending and then inject an interrupt anyway.  This all
->>> seems rather suspicious and it's a unique pattern among the vfio
->>> callers of this function.  Is there a more fundamental bug that this
->>> function should perform this test once and return without doing
->>> anything if it's called spuriously, ie. without a notifier pending?
->>> Thanks,  
->>
->> Hum that's correct that other VFIO call sites do the check. My
->> understanding was that this could not fail in this case as, if we
->> entered the handler there was something to be cleared. In which
->> situation can this fail?
-> 
-> I'm not sure what the right answer is, I see examples either way
-> looking outside of vfio code.  On one hand, maybe we never get called
-> spuriously, on the other if it's the callee's responsibility to drain
-> events from the fd and we have it readily accessible whether there were
-> any events pending, why would we inject an interrupt if the result that
-> we have in hand shows no pending events?  The overhead of returning
-> based on that result is minuscule.
+Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
 
-I agree
-> 
-> qemu_set_fd_handler() is a wrapper for aio_set_fd_handler().  Stefan is
-> a possible defacto maintainer of some of the aio code.  Stefan, do you
-> have thoughts on whether callbacks from event notifier fds should
-> consider spurious events?  Thanks,
+On Thu, Aug 13, 2020 at 7:50 PM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-Indeed I saw that for instance block/nvme.c nvme_handle_event is not
-checking the result.
+> On 8/12/20 8:53 AM, Thomas Huth wrote:
+> > The examples look nicer when using "::" code blocks.
+> > Also mention that "-d in_asm" only outputs instructions that have not
+> > been translated by the JIT layer yet.
+> > And while we're at it, also add the AVR doc file to the MAINTAINERS file.
+> >
+> > Signed-off-by: Thomas Huth <huth@tuxfamily.org>
+> > ---
+> >  MAINTAINERS                |  1 +
+> >  docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
+> >  2 files changed, 30 insertions(+), 18 deletions(-)
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+> r~
+>
 
-Let's wait for Stefan's answer ...
 
-Thanks
+-- 
+Best Regards,
+Michael Rolnik
 
-Eric
-> 
-> Alex
-> 
+--000000000000a98e1105acc78b4a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr">Reviewed-by: Michael Rolnik &lt;<a href=3D"mailto:mrolnik@=
+gmail.com">mrolnik@gmail.com</a>&gt;<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Aug 13, 2020 at 7:50 PM Ric=
+hard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.=
+henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">On 8/12/20 8:53 AM, Thomas Huth wrote:<br>
+&gt; The examples look nicer when using &quot;::&quot; code blocks.<br>
+&gt; Also mention that &quot;-d in_asm&quot; only outputs instructions that=
+ have not<br>
+&gt; been translated by the JIT layer yet.<br>
+&gt; And while we&#39;re at it, also add the AVR doc file to the MAINTAINER=
+S file.<br>
+&gt; <br>
+&gt; Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:huth@tuxfamily.org" t=
+arget=3D"_blank">huth@tuxfamily.org</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 1 +<br>
+&gt;=C2=A0 docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------=
+------<br>
+&gt;=C2=A0 2 files changed, 30 insertions(+), 18 deletions(-)<br>
+<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+<br>
+r~<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature">Best Regards,<br>Michael Rolnik</div>
+
+--000000000000a98e1105acc78b4a--
 
