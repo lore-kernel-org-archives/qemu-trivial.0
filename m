@@ -1,28 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k67pD-0000Bd-JK
+	id 1k67pD-0000CM-Ql
 	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 03:38:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40824)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67p7-0008N1-OE; Thu, 13 Aug 2020 03:38:53 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4237 helo=huawei.com)
+ id 1k67p6-0008KK-Qe; Thu, 13 Aug 2020 03:38:52 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33550 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67p5-0001nl-QW; Thu, 13 Aug 2020 03:38:53 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 263586F60A2EFA597018;
- Thu, 13 Aug 2020 15:38:47 +0800 (CST)
+ id 1k67p1-0001lJ-3S; Thu, 13 Aug 2020 03:38:52 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id DD39D8BFA7CA37F59BD0;
+ Thu, 13 Aug 2020 15:38:31 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 13 Aug 2020
- 15:38:40 +0800
+ 15:38:25 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Gerd
- Hoffmann" <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH 09/11] usb/bus: Remove dead assignment in usb_get_fw_dev_path()
-Date: Thu, 13 Aug 2020 15:37:10 +0800
-Message-ID: <20200813073712.4001404-10-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ <qemu-arm@nongnu.org>
+Subject: [PATCH 01/11] hw/arm/virt-acpi-build:Remove dead assignment in
+ build_madt()
+Date: Thu, 13 Aug 2020 15:37:02 +0800
+Message-ID: <20200813073712.4001404-2-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
 References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
@@ -31,9 +34,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.32;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:38:37
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:38:34
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -53,36 +56,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 07:38:54 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 07:38:53 -0000
 
 Clang static code analyzer show warning:
-qemu/hw/usb/bus.c:615:13: warning: Value stored to 'pos' is never read
-            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
+    madt = acpi_data_push(table_data, sizeof *madt);
+    ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org
 ---
- hw/usb/bus.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index b17bda3b29..77d3f7ddb8 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
-             in++;
-         } else {
-             /* the device itself */
--            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
--                            qdev_fw_name(qdev), nr);
-+            snprintf(fw_path + pos, fw_len - pos, "%s@%lx",qdev_fw_name(qdev),
-+                     nr);
-             break;
-         }
-     }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 91f0df7b13..f830f9b779 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     int madt_start = table_data->len;
+     const MemMapEntry *memmap = vms->memmap;
+     const int *irqmap = vms->irqmap;
+-    AcpiMultipleApicTable *madt;
+     AcpiMadtGenericDistributor *gicd;
+     AcpiMadtGenericMsiFrame *gic_msi;
+     int i;
+ 
+-    madt = acpi_data_push(table_data, sizeof *madt);
++    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+ 
+     gicd = acpi_data_push(table_data, sizeof *gicd);
+     gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
 -- 
 2.23.0
 
