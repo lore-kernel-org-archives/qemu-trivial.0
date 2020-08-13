@@ -1,113 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k68Rk-0005PE-N3
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 04:18:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50102)
+	id 1k68mZ-0002rl-Qt
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 04:40:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k68Ri-0005Nm-TX
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 04:18:46 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:22995
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k68mX-0002np-Dn; Thu, 13 Aug 2020 04:40:17 -0400
+Resent-Date: Thu, 13 Aug 2020 04:40:17 -0400
+Resent-Message-Id: <E1k68mX-0002np-Dn@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21330)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k68Rg-00074r-MS
- for qemu-trivial@nongnu.org; Thu, 13 Aug 2020 04:18:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597306723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=64EOP+5qWYpMVzxdiPvLinsnda3NNizayfxVcF+snuo=;
- b=eF5b9cZotgj33OKo3fjKC7kYXdh3iku4q+6PmS2vUl7IDY3J5ImuMVrz9U76JS5+ocFK5k
- LqfQyS1RrIOuANo7VQ2HnEO8PA5KHs9Gwmp5WScLBW2wUEUq3cOhdkJwOA6JQqYP8zZxpK
- 9w0e3rdToTMXj/UsA4HxirkbxrjK/74=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-560-MfZ6-ogRONqthzjmjyEeTQ-1; Thu, 13 Aug 2020 04:18:42 -0400
-X-MC-Unique: MfZ6-ogRONqthzjmjyEeTQ-1
-Received: by mail-wm1-f72.google.com with SMTP id z1so1914208wmf.9
- for <qemu-trivial@nongnu.org>; Thu, 13 Aug 2020 01:18:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=64EOP+5qWYpMVzxdiPvLinsnda3NNizayfxVcF+snuo=;
- b=jFzvGPM4EN5cN2EqX/cu7GyL3/ylj1C14nw9GmcV8AZpbDJ7SKt9jI+T3xGXpwpnxm
- lErupC5fozlaTh6q3F91oaVQBf8MF+Pxry7P0NqYVsp5Nct4QG4HNkagoOJV56x/DTpz
- nQTzBs2/SgDM//m5FRqLCASKLVCR6B/t2/9pIX4De0oIRA2/83nzYaiD0IpaMjvBKIzH
- BGBhZUpCz18miYX97pVoAxDdEdiDMmPS52Zn9XBwupV37/MQ/XniF9dy9s/AAi29vF/2
- 6AV7mOZ1HfPv5eavjB2Ov+vajLM5nl20HjlVfUZNMQTIDROr1AFWjlAtqYL/4/77vME3
- wJlg==
-X-Gm-Message-State: AOAM531u3F03I6/SYIGif11Hu1qTuUyBXgCB9zehWiYnlvh3hT3VKWkb
- hVxjn++xnND+zVE6D0a9AI/4c9RO6CFMAGGjqVQrGF1Atkgu96IBvoFi3ia4+vZDJIvrYreouIV
- B87ifqeMPx7gR+3wbVQ==
-X-Received: by 2002:a1c:2b04:: with SMTP id r4mr3117124wmr.76.1597306721102;
- Thu, 13 Aug 2020 01:18:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsfCmMGfXrncrhKttepLHjDagG43xknwVHZvaUFo0zkJqvZa5WzF5FEmKPKc8gFRWGQKo6GQ==
-X-Received: by 2002:a1c:2b04:: with SMTP id r4mr3117103wmr.76.1597306720889;
- Thu, 13 Aug 2020 01:18:40 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 126sm8644922wme.42.2020.08.13.01.18.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Aug 2020 01:18:40 -0700 (PDT)
-Subject: Re: [PATCH 06/11] hw/net/virtio-net:Remove redundant statement in
- virtio_net_rsc_tcp_ctrl_check()
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, pannengyuan@huawei.com,
- Euler Robot <euler.robot@huawei.com>
-References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
- <20200813073712.4001404-7-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <7bdc8bcd-75ef-7dd2-6894-004b19f20ee1@redhat.com>
-Date: Thu, 13 Aug 2020 10:18:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k68mU-00017j-Gq; Thu, 13 Aug 2020 04:40:17 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1597307983; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=E5LHpT5k/XTRrTPBfjRElFbBSWZc8ctjr6JD8fIoEwa6xRZXAQ68TP2JCNyZnEsENH+UqNm7D3aDVIFYSSOO7g0eZ3opxxBcih1Zfbjk30LkeR+93iD02g9NE9CWehWQUJHWHnBmkzuh/Mxvk3XD/ccadYKhjcmymxlU4cyeMl4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1597307983;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=lOLEa2licrTsMyIh0pDxRDKRxf3x3kTbiH3M6T3VrwY=; 
+ b=mf4+wm5KA6J93ZGx1KoUiwNNvOCSBUBH7JLIlWZWFhmZBFVkPWMM5TgXGDFQPglsA2wVkU4j5X39WWQhP21kOG7QV2WcIfrq7OIy52wRcQtgG3dy4kag/Afsw8R3hj1owbnSedIz9ni4o3XcZOI/tQycBe3ir9pNc9yss9Vdypo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1597307978627633.6176012084727;
+ Thu, 13 Aug 2020 01:39:38 -0700 (PDT)
+Subject: Re: [PATCH 00/11] trivial patchs for static code analyzer fixes
+Message-ID: <159730797733.15736.10346594019308505914@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200813073712.4001404-7-kuhn.chenqun@huawei.com>
-Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:44:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: kuhn.chenqun@huawei.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kuhn.chenqun@huawei.com,
+ pannengyuan@huawei.com, zhang.zhanghailiang@huawei.com
+Date: Thu, 13 Aug 2020 01:39:38 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 04:40:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,40 +62,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 08:18:47 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 08:40:17 -0000
 
-On 8/13/20 9:37 AM, Chen Qun wrote:
-> Clang static code analyzer show warning:
-> hw/net/virtio-net.c:2077:5: warning: Value stored to 'tcp_flag' is never read
->     tcp_flag &= VIRTIO_NET_TCP_FLAG;
->     ^           ~~~~~~~~~~~~~~~~~~~
-> 
-> The 'VIRTIO_NET_TCP_FLAG' is '0x3F'. The last ‘tcp_flag’ assignment statement is
->  the same as that of the first two statements.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> ---
->  hw/net/virtio-net.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index a1fe9e9285..cb0d27084c 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -2075,7 +2075,6 @@ static int virtio_net_rsc_tcp_ctrl_check(VirtioNetRscChain *chain,
->      tcp_flag = htons(tcp->th_offset_flags);
->      tcp_hdr = (tcp_flag & VIRTIO_NET_TCP_HDR_LENGTH) >> 10;
->      tcp_flag &= VIRTIO_NET_TCP_FLAG;
-> -    tcp_flag = htons(tcp->th_offset_flags) & 0x3F;
->      if (tcp_flag & TH_SYN) {
->          chain->stat.tcp_syn++;
->          return RSC_BYPASS;
-> 
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxMzA3MzcxMi40MDAx
+NDA0LTEta3Vobi5jaGVucXVuQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMg
+dG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IK
+bW9yZSBpbmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMDgxMzA3Mzcx
+Mi40MDAxNDA0LTEta3Vobi5jaGVucXVuQGh1YXdlaS5jb20KU3ViamVjdDogW1BBVENIIDAwLzEx
+XSB0cml2aWFsIHBhdGNocyBmb3Igc3RhdGljIGNvZGUgYW5hbHl6ZXIgZml4ZXMKCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
+dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
+b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
+bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
+ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRj
+aGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMjAwODEzMDcz
+NzEyLjQwMDE0MDQtMS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSAtPiBwYXRjaGV3LzIwMjAwODEz
+MDczNzEyLjQwMDE0MDQtMS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbQpTd2l0Y2hlZCB0byBhIG5l
+dyBicmFuY2ggJ3Rlc3QnCjRmNzM3MjcgaHcvZGlzcGxheS92Z2E6UmVtb3ZlIHJlZHVuZGFudCBz
+dGF0ZW1lbnQgaW4gdmdhX2RyYXdfZ3JhcGhpYygpCmE1MDFkMzkgaHcvaW50YzogUmVtb3ZlIHJl
+ZHVuZGFudCBzdGF0ZW1lbnQgaW4gZXh5bm9zNDIxMF9jb21iaW5lcl9yZWFkKCkKMDg0ZWJkOCB1
+c2IvYnVzOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGluIHVzYl9nZXRfZndfZGV2X3BhdGgoKQo1
+YjI2ZDZhIHRjZy9vcHRpbWl6ZTogUmVtb3ZlIHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4gdGNnX29w
+dGltaXplKCkKZTYyOGEyMiB2ZmlvL3BsYXRmb3JtOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGlu
+IHZmaW9faW50cF9pbnRlcnJ1cHQoKQo1NjVlZmMxIGh3L25ldC92aXJ0aW8tbmV0OlJlbW92ZSBy
+ZWR1bmRhbnQgc3RhdGVtZW50IGluIHZpcnRpb19uZXRfcnNjX3RjcF9jdHJsX2NoZWNrKCkKN2I2
+NWFjNCBody92aXJ0aW8vdmhvc3QtdXNlcjpSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGluIHNjcnVi
+X3NoYWRvd19yZWdpb25zKCkKMmRkNzE4YyB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6UmVtb3Zl
+IHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4gZGlzYXNfc2ltZF90d29fcmVnX21pc2NfZnAxNigpCjQ3
+ODMzZGYgdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0OlJlbW92ZSBkZWFkIGFzc2lnbm1lbnQgaW4g
+aGFuZGxlX3NjYWxhcl9zaW1kX3NobGkoKQplMWJiNmMzIGh3L2FybS9vbWFwMTpSZW1vdmUgcmVk
+dW5kYW50IHN0YXRlbWVudCBpbiBvbWFwX2Nsa2RzcF9yZWFkKCkKMzlhN2Q4ZiBody9hcm0vdmly
+dC1hY3BpLWJ1aWxkOlJlbW92ZSBkZWFkIGFzc2lnbm1lbnQgaW4gYnVpbGRfbWFkdCgpCgo9PT0g
+T1VUUFVUIEJFR0lOID09PQoxLzExIENoZWNraW5nIGNvbW1pdCAzOWE3ZDhmMmQ2MmQgKGh3L2Fy
+bS92aXJ0LWFjcGktYnVpbGQ6UmVtb3ZlIGRlYWQgYXNzaWdubWVudCBpbiBidWlsZF9tYWR0KCkp
+CjIvMTEgQ2hlY2tpbmcgY29tbWl0IGUxYmI2YzNlMTc4YyAoaHcvYXJtL29tYXAxOlJlbW92ZSBy
+ZWR1bmRhbnQgc3RhdGVtZW50IGluIG9tYXBfY2xrZHNwX3JlYWQoKSkKMy8xMSBDaGVja2luZyBj
+b21taXQgNDc4MzNkZjkzNWE2ICh0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6UmVtb3ZlIGRlYWQg
+YXNzaWdubWVudCBpbiBoYW5kbGVfc2NhbGFyX3NpbWRfc2hsaSgpKQo0LzExIENoZWNraW5nIGNv
+bW1pdCAyZGQ3MThjYzE5MjYgKHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NDpSZW1vdmUgcmVkdW5k
+YW50IHN0YXRlbWVudCBpbiBkaXNhc19zaW1kX3R3b19yZWdfbWlzY19mcDE2KCkpCjUvMTEgQ2hl
+Y2tpbmcgY29tbWl0IDdiNjVhYzRjY2I5ZCAoaHcvdmlydGlvL3Zob3N0LXVzZXI6UmVtb3ZlIGRl
+YWQgYXNzaWdubWVudCBpbiBzY3J1Yl9zaGFkb3dfcmVnaW9ucygpKQo2LzExIENoZWNraW5nIGNv
+bW1pdCA1NjVlZmMxMmVjMmEgKGh3L25ldC92aXJ0aW8tbmV0OlJlbW92ZSByZWR1bmRhbnQgc3Rh
+dGVtZW50IGluIHZpcnRpb19uZXRfcnNjX3RjcF9jdHJsX2NoZWNrKCkpCjcvMTEgQ2hlY2tpbmcg
+Y29tbWl0IGU2MjhhMjIzNmU5NSAodmZpby9wbGF0Zm9ybTogUmVtb3ZlIGRlYWQgYXNzaWdubWVu
+dCBpbiB2ZmlvX2ludHBfaW50ZXJydXB0KCkpCjgvMTEgQ2hlY2tpbmcgY29tbWl0IDViMjZkNmFm
+NzViZCAodGNnL29wdGltaXplOiBSZW1vdmUgcmVkdW5kYW50IHN0YXRlbWVudCBpbiB0Y2dfb3B0
+aW1pemUoKSkKOS8xMSBDaGVja2luZyBjb21taXQgMDg0ZWJkODc4Y2U2ICh1c2IvYnVzOiBSZW1v
+dmUgZGVhZCBhc3NpZ25tZW50IGluIHVzYl9nZXRfZndfZGV2X3BhdGgoKSkKRVJST1I6IHNwYWNl
+IHJlcXVpcmVkIGFmdGVyIHRoYXQgJywnIChjdHg6VnhWKQojMjU6IEZJTEU6IGh3L3VzYi9idXMu
+Yzo2MTU6CisgICAgICAgICAgICBzbnByaW50Zihmd19wYXRoICsgcG9zLCBmd19sZW4gLSBwb3Ms
+ICIlc0AlbHgiLHFkZXZfZndfbmFtZShxZGV2KSwKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgp0b3RhbDogMSBlcnJvcnMsIDAgd2Fy
+bmluZ3MsIDEwIGxpbmVzIGNoZWNrZWQKClBhdGNoIDkvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBw
+bGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVz
+IHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJ
+TkVSUy4KCjEwLzExIENoZWNraW5nIGNvbW1pdCBhNTAxZDM5YzcyZTYgKGh3L2ludGM6IFJlbW92
+ZSByZWR1bmRhbnQgc3RhdGVtZW50IGluIGV4eW5vczQyMTBfY29tYmluZXJfcmVhZCgpKQoxMS8x
+MSBDaGVja2luZyBjb21taXQgNGY3MzcyN2ViMTlkIChody9kaXNwbGF5L3ZnYTpSZW1vdmUgcmVk
+dW5kYW50IHN0YXRlbWVudCBpbiB2Z2FfZHJhd19ncmFwaGljKCkpCj09PSBPVVRQVVQgRU5EID09
+PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZh
+aWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwODEzMDczNzEyLjQwMDE0MDQt
+MS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2Fn
+ZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8v
+cGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVs
+QHJlZGhhdC5jb20=
 
