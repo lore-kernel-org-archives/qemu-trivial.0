@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k68mZ-0002rl-Qt
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 04:40:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54496)
+	id 1k69B5-0001yz-1Q
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 05:05:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k68mX-0002np-Dn; Thu, 13 Aug 2020 04:40:17 -0400
-Resent-Date: Thu, 13 Aug 2020 04:40:17 -0400
-Resent-Message-Id: <E1k68mX-0002np-Dn@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21330)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k68mU-00017j-Gq; Thu, 13 Aug 2020 04:40:17 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1597307983; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=E5LHpT5k/XTRrTPBfjRElFbBSWZc8ctjr6JD8fIoEwa6xRZXAQ68TP2JCNyZnEsENH+UqNm7D3aDVIFYSSOO7g0eZ3opxxBcih1Zfbjk30LkeR+93iD02g9NE9CWehWQUJHWHnBmkzuh/Mxvk3XD/ccadYKhjcmymxlU4cyeMl4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1597307983;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=lOLEa2licrTsMyIh0pDxRDKRxf3x3kTbiH3M6T3VrwY=; 
- b=mf4+wm5KA6J93ZGx1KoUiwNNvOCSBUBH7JLIlWZWFhmZBFVkPWMM5TgXGDFQPglsA2wVkU4j5X39WWQhP21kOG7QV2WcIfrq7OIy52wRcQtgG3dy4kag/Afsw8R3hj1owbnSedIz9ni4o3XcZOI/tQycBe3ir9pNc9yss9Vdypo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1597307978627633.6176012084727;
- Thu, 13 Aug 2020 01:39:38 -0700 (PDT)
-Subject: Re: [PATCH 00/11] trivial patchs for static code analyzer fixes
-Message-ID: <159730797733.15736.10346594019308505914@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1k69B3-0001yI-62; Thu, 13 Aug 2020 05:05:37 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2094 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1k69B0-0004Ce-CI; Thu, 13 Aug 2020 05:05:36 -0400
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 21A0373400E79736B731;
+ Thu, 13 Aug 2020 17:05:24 +0800 (CST)
+Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
+ DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Thu, 13 Aug 2020 17:05:22 +0800
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.170]) by
+ dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0487.000;
+ Thu, 13 Aug 2020 17:05:15 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: Pannengyuan <pannengyuan@huawei.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, Euler Robot <euler.robot@huawei.com>, Gerd
+ Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: RE: [PATCH 09/11] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
+Thread-Topic: [PATCH 09/11] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
+Thread-Index: AQHWcUTHhXDTZfvtm0WvjC1m5FN5Fak1vs4w
+Date: Thu, 13 Aug 2020 09:05:15 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B8A08D8@dggemm511-mbx.china.huawei.com>
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-10-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200813073712.4001404-10-kuhn.chenqun@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.50]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: kuhn.chenqun@huawei.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kuhn.chenqun@huawei.com,
- pannengyuan@huawei.com, zhang.zhanghailiang@huawei.com
-Date: Thu, 13 Aug 2020 01:39:38 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 04:40:08
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 05:05:25
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,69 +65,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 08:40:17 -0000
+X-List-Received-Date: Thu, 13 Aug 2020 09:05:37 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxMzA3MzcxMi40MDAx
-NDA0LTEta3Vobi5jaGVucXVuQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMg
-dG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IK
-bW9yZSBpbmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMDgxMzA3Mzcx
-Mi40MDAxNDA0LTEta3Vobi5jaGVucXVuQGh1YXdlaS5jb20KU3ViamVjdDogW1BBVENIIDAwLzEx
-XSB0cml2aWFsIHBhdGNocyBmb3Igc3RhdGljIGNvZGUgYW5hbHl6ZXIgZml4ZXMKCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
-dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
-b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
-bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
-ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRj
-aGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMjAwODEzMDcz
-NzEyLjQwMDE0MDQtMS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSAtPiBwYXRjaGV3LzIwMjAwODEz
-MDczNzEyLjQwMDE0MDQtMS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbQpTd2l0Y2hlZCB0byBhIG5l
-dyBicmFuY2ggJ3Rlc3QnCjRmNzM3MjcgaHcvZGlzcGxheS92Z2E6UmVtb3ZlIHJlZHVuZGFudCBz
-dGF0ZW1lbnQgaW4gdmdhX2RyYXdfZ3JhcGhpYygpCmE1MDFkMzkgaHcvaW50YzogUmVtb3ZlIHJl
-ZHVuZGFudCBzdGF0ZW1lbnQgaW4gZXh5bm9zNDIxMF9jb21iaW5lcl9yZWFkKCkKMDg0ZWJkOCB1
-c2IvYnVzOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGluIHVzYl9nZXRfZndfZGV2X3BhdGgoKQo1
-YjI2ZDZhIHRjZy9vcHRpbWl6ZTogUmVtb3ZlIHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4gdGNnX29w
-dGltaXplKCkKZTYyOGEyMiB2ZmlvL3BsYXRmb3JtOiBSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGlu
-IHZmaW9faW50cF9pbnRlcnJ1cHQoKQo1NjVlZmMxIGh3L25ldC92aXJ0aW8tbmV0OlJlbW92ZSBy
-ZWR1bmRhbnQgc3RhdGVtZW50IGluIHZpcnRpb19uZXRfcnNjX3RjcF9jdHJsX2NoZWNrKCkKN2I2
-NWFjNCBody92aXJ0aW8vdmhvc3QtdXNlcjpSZW1vdmUgZGVhZCBhc3NpZ25tZW50IGluIHNjcnVi
-X3NoYWRvd19yZWdpb25zKCkKMmRkNzE4YyB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6UmVtb3Zl
-IHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4gZGlzYXNfc2ltZF90d29fcmVnX21pc2NfZnAxNigpCjQ3
-ODMzZGYgdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0OlJlbW92ZSBkZWFkIGFzc2lnbm1lbnQgaW4g
-aGFuZGxlX3NjYWxhcl9zaW1kX3NobGkoKQplMWJiNmMzIGh3L2FybS9vbWFwMTpSZW1vdmUgcmVk
-dW5kYW50IHN0YXRlbWVudCBpbiBvbWFwX2Nsa2RzcF9yZWFkKCkKMzlhN2Q4ZiBody9hcm0vdmly
-dC1hY3BpLWJ1aWxkOlJlbW92ZSBkZWFkIGFzc2lnbm1lbnQgaW4gYnVpbGRfbWFkdCgpCgo9PT0g
-T1VUUFVUIEJFR0lOID09PQoxLzExIENoZWNraW5nIGNvbW1pdCAzOWE3ZDhmMmQ2MmQgKGh3L2Fy
-bS92aXJ0LWFjcGktYnVpbGQ6UmVtb3ZlIGRlYWQgYXNzaWdubWVudCBpbiBidWlsZF9tYWR0KCkp
-CjIvMTEgQ2hlY2tpbmcgY29tbWl0IGUxYmI2YzNlMTc4YyAoaHcvYXJtL29tYXAxOlJlbW92ZSBy
-ZWR1bmRhbnQgc3RhdGVtZW50IGluIG9tYXBfY2xrZHNwX3JlYWQoKSkKMy8xMSBDaGVja2luZyBj
-b21taXQgNDc4MzNkZjkzNWE2ICh0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQ6UmVtb3ZlIGRlYWQg
-YXNzaWdubWVudCBpbiBoYW5kbGVfc2NhbGFyX3NpbWRfc2hsaSgpKQo0LzExIENoZWNraW5nIGNv
-bW1pdCAyZGQ3MThjYzE5MjYgKHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NDpSZW1vdmUgcmVkdW5k
-YW50IHN0YXRlbWVudCBpbiBkaXNhc19zaW1kX3R3b19yZWdfbWlzY19mcDE2KCkpCjUvMTEgQ2hl
-Y2tpbmcgY29tbWl0IDdiNjVhYzRjY2I5ZCAoaHcvdmlydGlvL3Zob3N0LXVzZXI6UmVtb3ZlIGRl
-YWQgYXNzaWdubWVudCBpbiBzY3J1Yl9zaGFkb3dfcmVnaW9ucygpKQo2LzExIENoZWNraW5nIGNv
-bW1pdCA1NjVlZmMxMmVjMmEgKGh3L25ldC92aXJ0aW8tbmV0OlJlbW92ZSByZWR1bmRhbnQgc3Rh
-dGVtZW50IGluIHZpcnRpb19uZXRfcnNjX3RjcF9jdHJsX2NoZWNrKCkpCjcvMTEgQ2hlY2tpbmcg
-Y29tbWl0IGU2MjhhMjIzNmU5NSAodmZpby9wbGF0Zm9ybTogUmVtb3ZlIGRlYWQgYXNzaWdubWVu
-dCBpbiB2ZmlvX2ludHBfaW50ZXJydXB0KCkpCjgvMTEgQ2hlY2tpbmcgY29tbWl0IDViMjZkNmFm
-NzViZCAodGNnL29wdGltaXplOiBSZW1vdmUgcmVkdW5kYW50IHN0YXRlbWVudCBpbiB0Y2dfb3B0
-aW1pemUoKSkKOS8xMSBDaGVja2luZyBjb21taXQgMDg0ZWJkODc4Y2U2ICh1c2IvYnVzOiBSZW1v
-dmUgZGVhZCBhc3NpZ25tZW50IGluIHVzYl9nZXRfZndfZGV2X3BhdGgoKSkKRVJST1I6IHNwYWNl
-IHJlcXVpcmVkIGFmdGVyIHRoYXQgJywnIChjdHg6VnhWKQojMjU6IEZJTEU6IGh3L3VzYi9idXMu
-Yzo2MTU6CisgICAgICAgICAgICBzbnByaW50Zihmd19wYXRoICsgcG9zLCBmd19sZW4gLSBwb3Ms
-ICIlc0AlbHgiLHFkZXZfZndfbmFtZShxZGV2KSwKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgp0b3RhbDogMSBlcnJvcnMsIDAgd2Fy
-bmluZ3MsIDEwIGxpbmVzIGNoZWNrZWQKClBhdGNoIDkvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBw
-bGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVz
-IHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJ
-TkVSUy4KCjEwLzExIENoZWNraW5nIGNvbW1pdCBhNTAxZDM5YzcyZTYgKGh3L2ludGM6IFJlbW92
-ZSByZWR1bmRhbnQgc3RhdGVtZW50IGluIGV4eW5vczQyMTBfY29tYmluZXJfcmVhZCgpKQoxMS8x
-MSBDaGVja2luZyBjb21taXQgNGY3MzcyN2ViMTlkIChody9kaXNwbGF5L3ZnYTpSZW1vdmUgcmVk
-dW5kYW50IHN0YXRlbWVudCBpbiB2Z2FfZHJhd19ncmFwaGljKCkpCj09PSBPVVRQVVQgRU5EID09
-PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZh
-aWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwODEzMDczNzEyLjQwMDE0MDQt
-MS1rdWhuLmNoZW5xdW5AaHVhd2VpLmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2Fn
-ZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8v
-cGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVs
-QHJlZGhhdC5jb20=
+>  hw/usb/bus.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/usb/bus.c b/hw/usb/bus.c index b17bda3b29..77d3f7ddb8
+> 100644
+> --- a/hw/usb/bus.c
+> +++ b/hw/usb/bus.c
+> @@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
+>              in++;
+>          } else {
+>              /* the device itself */
+> -            pos +=3D snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+> -                            qdev_fw_name(qdev), nr);
+> +            snprintf(fw_path + pos, fw_len - pos,
+> "%s@%lx",qdev_fw_name(qdev),
+Sorry, a space is missing here. I will add it later in V2.
+
+Thanks.
+> +                     nr);
+>              break;
+>          }
+>      }
+> --
+> 2.23.0
+
 
