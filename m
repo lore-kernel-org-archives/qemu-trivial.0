@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k67pG-0000JE-9B
+	id 1k67pG-0000KU-Ld
 	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 03:39:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40858)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67pC-00008k-NW; Thu, 13 Aug 2020 03:38:58 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4179 helo=huawei.com)
+ id 1k67pC-00007i-Al; Thu, 13 Aug 2020 03:38:58 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4180 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1k67pA-0001pE-Q3; Thu, 13 Aug 2020 03:38:58 -0400
+ id 1k67pA-0001p6-CZ; Thu, 13 Aug 2020 03:38:57 -0400
 Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 34DAAEBDE788029AA109;
+ by Forcepoint Email with ESMTP id 30AA6CA9D1453178205B;
  Thu, 13 Aug 2020 15:38:52 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 13 Aug 2020
- 15:38:43 +0800
+ 15:38:42 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Gerd
- Hoffmann" <kraxel@redhat.com>
-Subject: [PATCH 11/11] hw/display/vga:Remove redundant statement in
- vga_draw_graphic()
-Date: Thu, 13 Aug 2020 15:37:12 +0800
-Message-ID: <20200813073712.4001404-12-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
+ Mitsyanko" <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 10/11] hw/intc: Remove redundant statement in
+ exynos4210_combiner_read()
+Date: Thu, 13 Aug 2020 15:37:11 +0800
+Message-ID: <20200813073712.4001404-11-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
 References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
@@ -57,30 +57,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 X-List-Received-Date: Thu, 13 Aug 2020 07:38:59 -0000
 
 Clang static code analyzer show warning:
-hw/display/vga.c:1677:9: warning: Value stored to 'update' is never read
-        update = full_update;
-        ^        ~~~~~~~~~~~
+hw/intc/exynos4210_combiner.c:231:9: warning: Value stored to 'val' is never read
+        val = s->reg_set[offset >> 2];
+
+The default value of 'val' is '0', so we can break the 'default' branch and return 'val'.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/vga.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/intc/exynos4210_combiner.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 061fd9ab8f..836ad50c7b 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -1674,7 +1674,6 @@ static void vga_draw_graphic(VGACommonState *s, int full_update)
-         if (!(s->cr[VGA_CRTC_MODE] & 2)) {
-             addr = (addr & ~0x8000) | ((y1 & 2) << 14);
+diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
+index b8561e4180..e2e745bbaa 100644
+--- a/hw/intc/exynos4210_combiner.c
++++ b/hw/intc/exynos4210_combiner.c
+@@ -228,8 +228,7 @@ exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
+             hw_error("exynos4210.combiner: overflow of reg_set by 0x"
+                     TARGET_FMT_plx "offset\n", offset);
          }
--        update = full_update;
-         page0 = addr & s->vbe_size_mask;
-         page1 = (addr + bwidth - 1) & s->vbe_size_mask;
-         if (full_update) {
+-        val = s->reg_set[offset >> 2];
+-        return 0;
++        break;
+     }
+     return val;
+ }
 -- 
 2.23.0
 
