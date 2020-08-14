@@ -1,75 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6Zmi-0002EE-UH
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 09:30:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50072)
+	id 1k6bRQ-0005kE-4O
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 11:16:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6Zmg-0002Cv-Ma; Fri, 14 Aug 2020 09:30:14 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50649)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1k6bRO-0005eY-03; Fri, 14 Aug 2020 11:16:22 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:46366)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6Zmd-0001DY-UR; Fri, 14 Aug 2020 09:30:14 -0400
-Received: by mail-wm1-x342.google.com with SMTP id c80so7493458wme.0;
- Fri, 14 Aug 2020 06:30:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1k6bRM-0008PZ-32; Fri, 14 Aug 2020 11:16:21 -0400
+Received: by mail-il1-x142.google.com with SMTP id c6so8688535ilo.13;
+ Fri, 14 Aug 2020 08:16:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+WN5+x/S52yPuJmxO8+ZTxpwug077ztvG/3BJTOgOtQ=;
- b=u3Pg4IoZRdTabEyPnFwUFrjkW18lkd9OvNH4S65UX57GRl2JJVQ7/wrjE1ASlJm3LR
- QHpopIwG8USNPwNLlfDAm/53eTXGSQJD77W/+q8FqsUE+0yVlPrBC8l35PeyYRn/MDWy
- kwVHcwElnxrZO/PIGtF2bQm27lMCn/NCbZ+YJn33yLVoFzqncjpU/EMNXJgAHkTSQpBJ
- kGJXh5NjaD0gKX23Bq//UOv9b1BG6LPq5auDNGNRDrUbVxK8x7sVrJmDZUQeeMA7SGyB
- 7Yx76Qc5jlms5IUUFHjXZfUPtU/Nr0Gs7o4yeqg7NkGUUb91wdw8dwBHZ+HGve11/0te
- ohxw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=xtt73A/X2cf9b6MoJt/wCCC2aLBtUWrgTkG2A7fVThY=;
+ b=sEV/yKY5jwRsO9e8gzS+Lr6CCwqhW5gDQV8UyI4edo10Xvmze2YvC9yFxuq+6IxjMw
+ c6kRpBXxaWdE6Gi7arExCOWZpPY5ZUCI5SxJ5hsbVbl4h1TlzfzCChvGK+xWaH+xMdtz
+ vW0oBRVuUQOUAiCY0QZPwER4sIOM8p55uc/nrsx6166xHedtDna9Nz71d1SsWCic0uVB
+ jnBeqycZWrfSwVZYnPc6R+xIWXUFZII72mSA8STPWT7mRvKw7YxUsdf9pHE7G+tgaR1j
+ fzj7co7uAYwoqq7jANztHgubXh5zMbXNCeh0KiNiQgBEJUjiYf46k3Tp/Vh8vG6lMCPu
+ hHew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=+WN5+x/S52yPuJmxO8+ZTxpwug077ztvG/3BJTOgOtQ=;
- b=plVJj51As/Eqtepn/8OVY247zPObN3BFmFClz7wblbTmH71JZUzjyQ2Dglc/rrKBBE
- sqVFf9Q6n6IHEBSge5mMdzGIK3BVPr3dP32Hbzp4XwwuvL1NhAzzETo+iI0h70puWkJO
- l5/HkRXSqIJ/llMZ28GYk4kcQVBTgw5pkaq8cjQjAPuT0gCx61vXEu1mSN01ALZbVwyb
- 0mpxIELYqwJ3oT8Xo2UxT/XGKW6zViyYiSPNpLBIE/e3hCELU+X8F6P/KjM1WLyQMeOw
- usJMyMMqp+UTuytuKOcq/KgDj4fwvx/m0NOPypW0snkt4ZG3Zm5HZ62pkAJXfHc88mNO
- VGMQ==
-X-Gm-Message-State: AOAM532lanCKKo0mFkTn1j+iIlZ61jodOOiSu+S32arFcZmfhZHXCC0o
- xcngQ9OoAyX3q9tVFCBn9oW4//BhZT4=
-X-Google-Smtp-Source: ABdhPJxkmQ4gixIw9LePIBH+v7mf1/iTJIn5q6ONVI8iOMZILkAc0jcyfl0zWd0PO0AOs9SWsN6Jtw==
-X-Received: by 2002:a1c:4e0d:: with SMTP id g13mr2542782wmh.177.1597411809547; 
- Fri, 14 Aug 2020 06:30:09 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id j4sm14708003wmi.48.2020.08.14.06.30.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Aug 2020 06:30:08 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/net/xilinx_axienet: Remove unused code
-Date: Fri, 14 Aug 2020 15:30:07 +0200
-Message-Id: <20200814133007.16850-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xtt73A/X2cf9b6MoJt/wCCC2aLBtUWrgTkG2A7fVThY=;
+ b=tWmR98Yt6nJIKQmroPfjow2rQJ0dCaiYXiJJlcP9cd8FSS8tvW4/egKx1OazJGCNAj
+ T+ZYIsXy8AC+DWMVUp8N9E/zdpAAWBCbFoZkOlqGwLDpe35QVWqrEA5B50kCVmrKBVXT
+ vY/W5yyf9ZMYa6k4UOm2WXrtfkePFGeG5RLsMBKcCLwygEEZtvxkd4u9KK4Cjv0/VN83
+ jpsvANZsz/LRijCwVE5Bq2Ojla1IhamTXVAYyxRfLLdAwwCZvOd0tCEV2iTqICwJcVSz
+ 8J3gOIVGBzth9n3v8mkriZHWd9RNgX72ouWGQ6eHue0/Qz/lxys7mzABSbPvMcRTASwM
+ DaAQ==
+X-Gm-Message-State: AOAM531/kgTckAwRbgDoYnrPRuoFpnKJoriix0h+/3f4lOI/E6Pfa1a5
+ ujEj9Hyh2LQAIKb6nIRKF2qSVlPUCaadl1vfRYM=
+X-Google-Smtp-Source: ABdhPJwZbYCGfxH5de72bUmxp7hKi84tnBoyvlLeQTOL8qFn2d7gKUaq2i4fMLMBFJVIByyLFUg6jVAD61fbg8eeDD0=
+X-Received: by 2002:a05:6e02:ef3:: with SMTP id
+ j19mr3067780ilk.227.1597418177525; 
+ Fri, 14 Aug 2020 08:16:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+References: <20200814133007.16850-1-f4bug@amsat.org>
+In-Reply-To: <20200814133007.16850-1-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 14 Aug 2020 08:05:48 -0700
+Message-ID: <CAKmqyKPxRQWNSq9N=5d=VhD7Lt=eKds-Fs=3J=-Gz4rRF=0vdw@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/xilinx_axienet: Remove unused code
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,58 +77,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Aug 2020 13:30:15 -0000
+X-List-Received-Date: Fri, 14 Aug 2020 15:16:22 -0000
 
-Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
-definition is unused.  Remove unused code.
+On Fri, Aug 14, 2020 at 6:30 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
+> definition is unused.  Remove unused code.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/net/xilinx_axienet.c | 23 -----------------------
- 1 file changed, 23 deletions(-)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 1e48eb70c9..2e89f236b4 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -54,7 +54,6 @@
-      TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
- 
- /* Advertisement control register. */
--#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
- #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  */
- #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex */
- #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex */
-@@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
- }
- 
- struct MDIOBus {
--    /* bus.  */
--    int mdc;
--    int mdio;
--
--    /* decoder.  */
--    enum {
--        PREAMBLE,
--        SOF,
--        OPC,
--        ADDR,
--        REQ,
--        TURNAROUND,
--        DATA
--    } state;
--    unsigned int drive;
--
--    unsigned int cnt;
--    unsigned int addr;
--    unsigned int opc;
--    unsigned int req;
--    unsigned int data;
--
-     struct PHY *devs[32];
- };
- 
--- 
-2.21.3
+Alistair
 
+> ---
+>  hw/net/xilinx_axienet.c | 23 -----------------------
+>  1 file changed, 23 deletions(-)
+>
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 1e48eb70c9..2e89f236b4 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -54,7 +54,6 @@
+>       TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
+>
+>  /* Advertisement control register. */
+> -#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  *=
+/
+>  #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  *=
+/
+>  #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex *=
+/
+>  #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex *=
+/
+> @@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
+>  }
+>
+>  struct MDIOBus {
+> -    /* bus.  */
+> -    int mdc;
+> -    int mdio;
+> -
+> -    /* decoder.  */
+> -    enum {
+> -        PREAMBLE,
+> -        SOF,
+> -        OPC,
+> -        ADDR,
+> -        REQ,
+> -        TURNAROUND,
+> -        DATA
+> -    } state;
+> -    unsigned int drive;
+> -
+> -    unsigned int cnt;
+> -    unsigned int addr;
+> -    unsigned int opc;
+> -    unsigned int req;
+> -    unsigned int data;
+> -
+>      struct PHY *devs[32];
+>  };
+>
+> --
+> 2.21.3
+>
+>
 
