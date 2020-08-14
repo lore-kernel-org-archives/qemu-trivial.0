@@ -1,68 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6KE2-0007en-TQ
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Aug 2020 16:53:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53970)
+	id 1k6V4z-0003Pk-Uy
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 04:28:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrolnik@gmail.com>)
- id 1k6JAH-0006jO-30; Thu, 13 Aug 2020 15:45:29 -0400
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:40325)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k6V4x-0003NR-N7; Fri, 14 Aug 2020 04:28:47 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:39339)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mrolnik@gmail.com>)
- id 1k6JAF-0000fa-FR; Thu, 13 Aug 2020 15:45:28 -0400
-Received: by mail-qk1-x742.google.com with SMTP id 62so6273602qkj.7;
- Thu, 13 Aug 2020 12:45:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k6V4w-0004LR-6y; Fri, 14 Aug 2020 04:28:47 -0400
+Received: by mail-wm1-x342.google.com with SMTP id g75so7219055wme.4;
+ Fri, 14 Aug 2020 01:28:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pNtNfajHiWjonfTsQFh+T69gMqes4UiFF7HcjJUaAz0=;
- b=d5LnnTksnNRn4zyIbTdUyctAiO9wDp0T7CBrltZM4BIdIWxQrgc+WXWwk/G4AE5oP0
- LyIXqLsiSy5l9VxEVtzuKXxBGyEaXx5Ahge8XwF9n3Bb/Sr3TSttOKe44GDL9w02pgRf
- WswxNER6sVR7Ukcm3oVQibwTZEBUg/50IZ2rpELhMeigsPEnkKvBdLYZXihd5GVyhuUt
- +gCtEABQ2hR/Juwg0wELBxBlI3JHFrJd7HN0eUgSXbBh/3TxRf8OEleDaU1eXqZVb3YV
- G5a7bQlqRp49cKSORgukcUEpCah956wj4rXsq68jMBptDGusGluxlZ+V1QRTarcuAQV5
- gYNg==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dpT3D+sYkIVsipFBLZ+lF49M42Q6Xpp0CzqtCad4hvY=;
+ b=HURiifkYLGP4IH0ClQ+QpdJFa4o0xGyD4PiP5isO6ANkHiabFznBq6mw2oQM/KelVq
+ ULP44LeIUi78TztuPVD8qBu7mwaEEc5NQ9Eei/tQ4gypVqVdEcLC8/313eDZqYvUh8YU
+ IDBpFokmkWioq+yN9R317RWJciGDNPVsKEmQHT+wNg11wUSxzaN+BGwE/QK6CFm2e/p+
+ duMYT3C6tUWF5OaVB+BPoAXYDwAcE4UmfpUxGh98D0VQFDZQFh+lof3fdep2Yd7WLBo8
+ df/rLbEXxFfaLazsLQfhbwB9kWItSDPMx+zPq7PBepDV4tLBOIBJMLaKmoYOtAyDbHLo
+ rvfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pNtNfajHiWjonfTsQFh+T69gMqes4UiFF7HcjJUaAz0=;
- b=Qu+ScHk69lqs/QiQVFtCHzkDwGxu3BUNvHg9Cc/SyoEYtfuz3hfQj2uD7ueWDVUC5D
- EvDYuUtYcEb1k5G3Ep1LUWwqvdqCgmq5F/eFtgVYkHySc8H0TsHLf7qBfxnRJXRk7m40
- b2eR940v/RWtH+N9AZpkhpmAkvTCiDC62YlKuGo2+JF3UkR80tfy9w+Tpheyu5gO8plW
- Dj6B/vrvJC/ueVk5e0Ild5JluoMXsblIsTbsp8yTc8wvwb5Wwu1Lr9AJZAvhiI3e2gW2
- 0UwRhyHwdS/ZYkvwYOC5w6Y/+2aABcIe363GA/UNXjXkakLvw2GdvARvDGuFmG4DZXuO
- SlwQ==
-X-Gm-Message-State: AOAM5328OtxtR8vehp8YbTRHUZIT00xREjdr078Q5QGgR9+U1FR3ywpy
- AkJGyOFbPNv1wENlkQ159XgN4CHAn3VMNRg4i0Y=
-X-Google-Smtp-Source: ABdhPJxtfeHl0scMjSabIAkFZUr/GzyrxXUr6uzbGsGEGMXkykQj62s37067E1Byc68OqYFvequhl/fQSD0svFAxz4w=
-X-Received: by 2002:a37:9f94:: with SMTP id i142mr6164196qke.310.1597347925149; 
- Thu, 13 Aug 2020 12:45:25 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=dpT3D+sYkIVsipFBLZ+lF49M42Q6Xpp0CzqtCad4hvY=;
+ b=i1NK/wRCIQKM86cAeWxj6rYq8WcZA+bivYMKkw8HvxsFNi7pGSsQw0X23Vsh1jOS86
+ b/554bxTVKYzUZAgSMcU2hQwIUVm/1UIW4AVfoCPhcXExWQgSjXI03RNyIfCWVmlEInX
+ mjF278kGvx2Aa90XnMu2G+UgD+VRN9VWSCmKm+Ev0USZyeU+s3ueG0JtUgwSSVANN88O
+ FyOR77n7gmw/P+6zJxC39C+rTqUkdU5m/jqAluFXtEPNPnBngduJZiNwy2o++krd9yQ8
+ jqjUB8uY5LJ2MyXRHycLcOzPNS4zaZrzMNKTN4ns1S+ACIxs4Ms8sRQWPQc+aXyvg4tX
+ F6pw==
+X-Gm-Message-State: AOAM532xrCrfx87/41H2uf5oz6d1wsqBavg4QvnbyemFNJ2/lrs80NqM
+ 1uTxD4LDgLKP/bPEEuvJc/hUP1h4CkU=
+X-Google-Smtp-Source: ABdhPJxca8hfCYE2YUshLao7MnDMCSit06uYnTPlO0Zq8PSoO+QIMf40WBTnXpGPZHB3LSNAAHTQgQ==
+X-Received: by 2002:a1c:cc05:: with SMTP id h5mr1460999wmb.129.1597393723783; 
+ Fri, 14 Aug 2020 01:28:43 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id d14sm14668107wre.44.2020.08.14.01.28.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Aug 2020 01:28:42 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-block@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Max Reitz <mreitz@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/7] block: Use definitions instead of magic values
+Date: Fri, 14 Aug 2020 10:28:34 +0200
+Message-Id: <20200814082841.27000-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200812155304.18016-1-huth@tuxfamily.org>
- <7ae16b1c-50a2-3cd8-dfda-e3dd76f5cd7a@linaro.org>
-In-Reply-To: <7ae16b1c-50a2-3cd8-dfda-e3dd76f5cd7a@linaro.org>
-From: Michael Rolnik <mrolnik@gmail.com>
-Date: Thu, 13 Aug 2020 22:44:38 +0300
-Message-ID: <CAK4993hK6OUtG=PapUy8cLSAb8a1yv9KKyG0nNWmLCzY3e5bWA@mail.gmail.com>
-Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
- MAINTAINERS
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Thomas Huth <huth@tuxfamily.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>
-Content-Type: multipart/alternative; boundary="000000000000a98e1105acc78b4a"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
- envelope-from=mrolnik@gmail.com; helo=mail-qk1-x742.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 13 Aug 2020 16:53:26 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,71 +83,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Aug 2020 19:45:29 -0000
+X-List-Received-Date: Fri, 14 Aug 2020 08:28:48 -0000
 
---000000000000a98e1105acc78b4a
-Content-Type: text/plain; charset="UTF-8"
+Trivial block patches:
+- Fix a typo
+- Replace '1 << 30' by '1 * GiB' in null-co
+- Replace 512 by BDRV_SECTOR_SIZE when appropriate.
 
-Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
+Philippe Mathieu-Daudé (7):
+  block/null: Make more explicit the driver default size is 1GiB
+  hw/ide/core: Trivial typo fix
+  hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
+  hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE
+  hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE
+  hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
+  hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE
 
-On Thu, Aug 13, 2020 at 7:50 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
-
-> On 8/12/20 8:53 AM, Thomas Huth wrote:
-> > The examples look nicer when using "::" code blocks.
-> > Also mention that "-d in_asm" only outputs instructions that have not
-> > been translated by the JIT layer yet.
-> > And while we're at it, also add the AVR doc file to the MAINTAINERS file.
-> >
-> > Signed-off-by: Thomas Huth <huth@tuxfamily.org>
-> > ---
-> >  MAINTAINERS                |  1 +
-> >  docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
-> >  2 files changed, 30 insertions(+), 18 deletions(-)
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->
-> r~
->
-
+ block/null.c        |  4 +++-
+ hw/ide/ahci.c       |  5 +++--
+ hw/ide/atapi.c      |  8 ++++----
+ hw/ide/core.c       | 25 +++++++++++++------------
+ hw/ide/pci.c        |  2 +-
+ hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
+ 6 files changed, 47 insertions(+), 41 deletions(-)
 
 -- 
-Best Regards,
-Michael Rolnik
+2.21.3
 
---000000000000a98e1105acc78b4a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Reviewed-by: Michael Rolnik &lt;<a href=3D"mailto:mrolnik@=
-gmail.com">mrolnik@gmail.com</a>&gt;<br></div><br><div class=3D"gmail_quote=
-"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Aug 13, 2020 at 7:50 PM Ric=
-hard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.=
-henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">On 8/12/20 8:53 AM, Thomas Huth wrote:<br>
-&gt; The examples look nicer when using &quot;::&quot; code blocks.<br>
-&gt; Also mention that &quot;-d in_asm&quot; only outputs instructions that=
- have not<br>
-&gt; been translated by the JIT layer yet.<br>
-&gt; And while we&#39;re at it, also add the AVR doc file to the MAINTAINER=
-S file.<br>
-&gt; <br>
-&gt; Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:huth@tuxfamily.org" t=
-arget=3D"_blank">huth@tuxfamily.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------=
-------<br>
-&gt;=C2=A0 2 files changed, 30 insertions(+), 18 deletions(-)<br>
-<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
-<br>
-r~<br>
-</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
- class=3D"gmail_signature">Best Regards,<br>Michael Rolnik</div>
-
---000000000000a98e1105acc78b4a--
 
