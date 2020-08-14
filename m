@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6d2Z-0004qs-8L
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 12:58:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51512)
+	id 1k6d2j-00059t-FT
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 12:59:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6d2X-0004nY-Gn
- for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:58:49 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:52902)
+ id 1k6d2i-00057Q-6v
+ for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:59:00 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35382)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6d2V-0004hF-KL
- for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:58:49 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id kr4so4687836pjb.2
- for <qemu-trivial@nongnu.org>; Fri, 14 Aug 2020 09:58:47 -0700 (PDT)
+ id 1k6d2e-0004hr-Gf
+ for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:58:59 -0400
+Received: by mail-pg1-x542.google.com with SMTP id o5so4822174pgb.2
+ for <qemu-trivial@nongnu.org>; Fri, 14 Aug 2020 09:58:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2+7vjmmDLcLRpLinGwtu+OK3I1ZrJBg18a9aUp5XYoo=;
- b=e3SGt27ymXgIAz/Yimue85GdB5A9sEDagfcXPYFssr6efhLSHy3m/cpXY2dKkeoJKN
- zo+PW8atWBjASEHuXCFmtWNcDU4sWPPNtIkz322fhMwivLAr8XawtoFkiAUp9klAJMsi
- ejRYrT7oLFUD5ItMw8e3Kf/V8rnAyOZ2Q4iQHrZGI3/NSt8nbqqnSEtfezjdkyvRsn8F
- oM62YPRJHw50Rc589A0AXHgTLskl2ewEw4Q50f6EHc5ZGBSNukqREDpayJhldzxishw4
- /4xavrHSi5kPTn/mGzTu9Vl/SK6vL/qTeYnJh99T6l/gFL68kLexvYtWe8o7V/ngW5rM
- 8xpQ==
+ bh=SGEvOD8Sdst9ffAcqV6LmcnUv1ddRcdN8gMCw99PDzw=;
+ b=Q1a+vwpAONyi/CqsphmqSMRg1+dL+hte9B9+XycNvBHX3uZHFqLsQu3gX22WmFbRoT
+ jbPd/hsbCZKS7PqP+xkFG9fVS7A9okJL4q7ilMFBu3r2TK2AwRjOpzNkYrcJunwax4D2
+ F2OauWlTt0R+4Wb8u7HcQDiwgdwvYvbq2akNFbs4S2doEhODsUoJxA3gBffbqFt/a2Yu
+ w5+QeQqFrmnXef+LbkM7DgcdYxPG29hoLFDhKoNKJ2Osp3pFm59HFl7rKm5FbKwudgKJ
+ 2sYNTjDwleI6SGfLGilzoGHz+SbmTO3o0SuhHDWXVXTw7Agu4OTVCo/WllhQc3D8jva/
+ xCzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=2+7vjmmDLcLRpLinGwtu+OK3I1ZrJBg18a9aUp5XYoo=;
- b=oXwEfmFBMgOV5nqyys4trVbABvJxmoESKvMhdnFpZOnXXRa8EQwmemZJtayUkWoXGc
- cqfyAUxo1YWF6CenABP+X5mLa2h24Q5D0PMUhMhDzXkK90sXgCfQrlMdwgMhKOyocdbh
- Y9WvQCMty36RgzWMUIJto7X7lJxeLu4fzu4U565+DSEZ7gsT0f/xjIe1l94BjRWxtSDJ
- tmpjVTTrn5stdIs8s+aKqLqUjRXAwJCjCckd43MlvoXJm+WKvpMfb7cz8jeOXkwsi1Rb
- WV87zpF+tOXdTJIQrGrFGqlkEQxhYszrYbOnUvgGnvdFdEoeIiIevrqzlxQZ71SdLX90
- R7Sg==
-X-Gm-Message-State: AOAM533uNT43CgufZnUUlFhNf0TWT+YquZ9qz7kcNsWodtvjKFBmrzIO
- TjbYuoNV3T5wm1EGh4Pgg05JWA==
-X-Google-Smtp-Source: ABdhPJy8vDJFmTUOyvWh+QTZvjJ8Aj8fGiFlGNstlD1v2DWt7rrrl3JUVsIUZY5gWFluPEzAWf5fxw==
-X-Received: by 2002:a17:90a:6903:: with SMTP id
- r3mr2969831pjj.65.1597424326248; 
- Fri, 14 Aug 2020 09:58:46 -0700 (PDT)
+ bh=SGEvOD8Sdst9ffAcqV6LmcnUv1ddRcdN8gMCw99PDzw=;
+ b=fnMt4dvevTEOQ013pPY54CHzQgC4tx5wuLtEOppP2jA3xRB8UyZkvHw27lCk6g2ZFe
+ ieA1KzBW0UydF3Ml3llCHq6mlrw8EAs74jnOwWKIEQP24JTXPA/IsQx+pmZVRL1CDnd9
+ oFFVlM3DPsLU9K9d0mlJg/MtpdhJQuXs90IJcrq2G6geUASov6qk2rETHjU7xdv7wm3T
+ 87hi8R46YLZ9GQXWczZAnPDpBx5RgGxMu9ZtDyxYbeR/ccd2UH+hOuZWnMhPD9aW9Ex7
+ JEmL9c7xPBvx8Pv4/LsflGM0vPx+X2uJHbTZ8j+DxDCRWdM+Cwaracu2zpm+QgEJNwFe
+ JOIw==
+X-Gm-Message-State: AOAM53197bOHeIQul+74zIJfIwI4khIj681wTboEg8+6bmQrhJHLE5bu
+ UVWiTXMg1uhEdcT6JhrjRWjhHg==
+X-Google-Smtp-Source: ABdhPJxTMAQvdU04RcPD3gFOD5hzq3rOJqs0V7KIq7BXMx7Pqht4PHtAVrZpMTev1vxU668RT9f20A==
+X-Received: by 2002:a63:571c:: with SMTP id l28mr2454923pgb.168.1597424335308; 
+ Fri, 14 Aug 2020 09:58:55 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id cc23sm8440084pjb.48.2020.08.14.09.58.45
+ by smtp.gmail.com with ESMTPSA id 196sm10149127pfc.178.2020.08.14.09.58.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2020 09:58:45 -0700 (PDT)
-Subject: Re: [PATCH 3/7] hw/ide/core: Replace magic '512' value by
+ Fri, 14 Aug 2020 09:58:54 -0700 (PDT)
+Subject: Re: [PATCH 4/7] hw/ide/ahci: Replace magic '512' value by
  BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
@@ -55,19 +54,19 @@ Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
  Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  John Snow <jsnow@redhat.com>
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-4-f4bug@amsat.org>
+ <20200814082841.27000-5-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9db78d8e-0fc6-4ec7-a1f9-73c6d8d02639@linaro.org>
-Date: Fri, 14 Aug 2020 09:58:43 -0700
+Message-ID: <13250cf6-516c-2e05-a6ae-15e40dc97181@linaro.org>
+Date: Fri, 14 Aug 2020 09:58:52 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200814082841.27000-4-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-5-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -89,15 +88,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Aug 2020 16:58:49 -0000
+X-List-Received-Date: Fri, 14 Aug 2020 16:59:00 -0000
 
 On 8/14/20 1:28 AM, Philippe Mathieu-Daudé wrote:
 > Use self-explicit definitions instead of magic '512' value.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/ide/core.c | 23 ++++++++++++-----------
->  1 file changed, 12 insertions(+), 11 deletions(-)
+>  hw/ide/ahci.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
