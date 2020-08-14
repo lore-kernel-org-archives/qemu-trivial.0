@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6d2j-00059t-FT
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 12:59:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51582)
+	id 1k6d41-0007NB-DB
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Aug 2020 13:00:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6d2i-00057Q-6v
- for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:59:00 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35382)
+ id 1k6d3z-0007IT-I6
+ for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 13:00:19 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:38922)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6d2e-0004hr-Gf
- for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 12:58:59 -0400
-Received: by mail-pg1-x542.google.com with SMTP id o5so4822174pgb.2
- for <qemu-trivial@nongnu.org>; Fri, 14 Aug 2020 09:58:56 -0700 (PDT)
+ id 1k6d3u-0004rZ-7T
+ for qemu-trivial@nongnu.org; Fri, 14 Aug 2020 13:00:19 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id f9so4658356pju.4
+ for <qemu-trivial@nongnu.org>; Fri, 14 Aug 2020 10:00:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=SGEvOD8Sdst9ffAcqV6LmcnUv1ddRcdN8gMCw99PDzw=;
- b=Q1a+vwpAONyi/CqsphmqSMRg1+dL+hte9B9+XycNvBHX3uZHFqLsQu3gX22WmFbRoT
- jbPd/hsbCZKS7PqP+xkFG9fVS7A9okJL4q7ilMFBu3r2TK2AwRjOpzNkYrcJunwax4D2
- F2OauWlTt0R+4Wb8u7HcQDiwgdwvYvbq2akNFbs4S2doEhODsUoJxA3gBffbqFt/a2Yu
- w5+QeQqFrmnXef+LbkM7DgcdYxPG29hoLFDhKoNKJ2Osp3pFm59HFl7rKm5FbKwudgKJ
- 2sYNTjDwleI6SGfLGilzoGHz+SbmTO3o0SuhHDWXVXTw7Agu4OTVCo/WllhQc3D8jva/
- xCzw==
+ bh=SEZRGmz5DA37H8I/I1TOST9jVFE0tezXKIjWAhPxFP4=;
+ b=EBtClZrjG7uPc675BcIaduezGxAMWJ/5+7F6nqimeZchgrwRN5bV4fhVpNtTq92fuU
+ OKdF8cEUzZdKkYUMm8nXs1XB9rRvK67HNpUuiZp69LLOAo8IXUjq2/5mSpVMXMNWYTMS
+ zALJbyGB/+p6SCqwtBWIWNl4J0LL7Z7mU7uMMI2SebGuQ2d6yVBM5d66S/DKv+rSKZmk
+ 4Rh7a/g9uvOqXTnhH+OgGmn4LVB5famLvDEzdLMh/XseH4sYkKwOirHO3HwwgB9pYOTE
+ KUc1Av9g68CFvyjFeA3dZ8CsyMV5OQr2s8MAdeGxqdDhSBBfN6P0izEMlRaUMs0or/0g
+ VQaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=SGEvOD8Sdst9ffAcqV6LmcnUv1ddRcdN8gMCw99PDzw=;
- b=fnMt4dvevTEOQ013pPY54CHzQgC4tx5wuLtEOppP2jA3xRB8UyZkvHw27lCk6g2ZFe
- ieA1KzBW0UydF3Ml3llCHq6mlrw8EAs74jnOwWKIEQP24JTXPA/IsQx+pmZVRL1CDnd9
- oFFVlM3DPsLU9K9d0mlJg/MtpdhJQuXs90IJcrq2G6geUASov6qk2rETHjU7xdv7wm3T
- 87hi8R46YLZ9GQXWczZAnPDpBx5RgGxMu9ZtDyxYbeR/ccd2UH+hOuZWnMhPD9aW9Ex7
- JEmL9c7xPBvx8Pv4/LsflGM0vPx+X2uJHbTZ8j+DxDCRWdM+Cwaracu2zpm+QgEJNwFe
- JOIw==
-X-Gm-Message-State: AOAM53197bOHeIQul+74zIJfIwI4khIj681wTboEg8+6bmQrhJHLE5bu
- UVWiTXMg1uhEdcT6JhrjRWjhHg==
-X-Google-Smtp-Source: ABdhPJxTMAQvdU04RcPD3gFOD5hzq3rOJqs0V7KIq7BXMx7Pqht4PHtAVrZpMTev1vxU668RT9f20A==
-X-Received: by 2002:a63:571c:: with SMTP id l28mr2454923pgb.168.1597424335308; 
- Fri, 14 Aug 2020 09:58:55 -0700 (PDT)
+ bh=SEZRGmz5DA37H8I/I1TOST9jVFE0tezXKIjWAhPxFP4=;
+ b=XEdSrkpU8wnRUO01zT/Cr7gI3iJNJj3jo21xQ2MKhQWBCqPTuQ6S35TVD/yAiDjZtg
+ fTKT0Z6Z0eCWuj+4NwcDBrYrZsB2LAp0HBrv/v9x7CyiFWjO9mMPBNb5qb4dg2h9Y12Q
+ afKcF/Y0Kx4iRNGAck8vLGN0bc2fztyLEFn7IMAZAhEhctpbNtFfF/R5231FT8wVS+rI
+ Md5+fxzcEKw8AqTDSSKNCb9F43SDluE6Q5FmNRB9BjjT9hmBBQs+ViiDmUxNyWTAFbY6
+ M5oSaVE2AUj9DMGQG7bvWDpga0+fGJ4qfBnwlP4MygmTMB75EgQzkuz44RoS7UxmMbUA
+ 9Jrw==
+X-Gm-Message-State: AOAM532Q4sTRM6MlilcXt9c+kjlaBxPuLaZaA1YawxqKsrKJLrJrorlO
+ LV1r7hAofdOemeMq/CkRkbuw/A==
+X-Google-Smtp-Source: ABdhPJzJVLTWERQ/VK6UZ5hRxLWe/pTv3DRGdqypJIvtsCBna2Ftehmo6BkMg6mor7tpAOUDDgH8XQ==
+X-Received: by 2002:a17:902:bc82:: with SMTP id
+ bb2mr2693281plb.103.1597424412889; 
+ Fri, 14 Aug 2020 10:00:12 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id 196sm10149127pfc.178.2020.08.14.09.58.54
+ by smtp.gmail.com with ESMTPSA id g8sm9987043pfo.132.2020.08.14.10.00.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2020 09:58:54 -0700 (PDT)
-Subject: Re: [PATCH 4/7] hw/ide/ahci: Replace magic '512' value by
+ Fri, 14 Aug 2020 10:00:12 -0700 (PDT)
+Subject: Re: [PATCH 5/7] hw/ide/atapi: Replace magic '512' value by
  BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
@@ -54,19 +55,19 @@ Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
  Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  John Snow <jsnow@redhat.com>
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-5-f4bug@amsat.org>
+ <20200814082841.27000-6-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <13250cf6-516c-2e05-a6ae-15e40dc97181@linaro.org>
-Date: Fri, 14 Aug 2020 09:58:52 -0700
+Message-ID: <22f4a10e-c90b-7d80-bac5-4b181283d610@linaro.org>
+Date: Fri, 14 Aug 2020 10:00:10 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200814082841.27000-5-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-6-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -88,18 +89,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Aug 2020 16:59:00 -0000
+X-List-Received-Date: Fri, 14 Aug 2020 17:00:20 -0000
 
 On 8/14/20 1:28 AM, Philippe Mathieu-Daudé wrote:
 > Use self-explicit definitions instead of magic '512' value.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/ide/ahci.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  hw/ide/atapi.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-r~
 
+> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+> index 17a9d635d8..14a2b0bb2f 100644
+> --- a/hw/ide/atapi.c
+> +++ b/hw/ide/atapi.c
+> @@ -824,9 +824,9 @@ static void cmd_get_configuration(IDEState *s, uint8_t *buf)
+>       *
+>       *      Only a problem if the feature/profiles grow.
+>       */
+> -    if (max_len > 512) {
+> +    if (max_len > BDRV_SECTOR_SIZE) {
+>          /* XXX: assume 1 sector */
+> -        max_len = 512;
+> +        max_len = BDRV_SECTOR_SIZE;
+>      }
+>  
+>      memset(buf, 0, max_len);
+> @@ -1186,8 +1186,8 @@ static void cmd_read_dvd_structure(IDEState *s, uint8_t* buf)
+>          }
+>      }
+>  
+> -    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * 512 + 4 ?
+> -           IDE_DMA_BUF_SECTORS * 512 + 4 : max_len);
+> +    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 ?
+> +           IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 : max_len);
+
+If you're queuing other cleanups, both of these places could usefully use MIN().
+
+
+r~
 
