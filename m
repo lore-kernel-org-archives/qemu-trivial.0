@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6yoo-0007P6-8C
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 12:14:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57982)
+	id 1k6z4v-0006Kj-Na
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 12:30:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6yom-0007LG-2y; Sat, 15 Aug 2020 12:14:04 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:39441)
+ id 1k6z4o-0006Jv-FW; Sat, 15 Aug 2020 12:30:40 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34027)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6yok-00035A-E5; Sat, 15 Aug 2020 12:14:03 -0400
-Received: by mail-oi1-x243.google.com with SMTP id a24so10951019oia.6;
- Sat, 15 Aug 2020 09:14:01 -0700 (PDT)
+ id 1k6z4n-0005QG-0Y; Sat, 15 Aug 2020 12:30:38 -0400
+Received: by mail-oi1-x243.google.com with SMTP id z22so11001101oid.1;
+ Sat, 15 Aug 2020 09:30:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Rz1Bn0O+S+J/XTgmJoZptTZ3JFxX1OXOQheVdd25VFs=;
- b=pcUN0Sg6NBjaTaKCgFvA9WG5Z8FEGQX1O6t8VvlA/NL3tkse9IQ58KU8QtU2VkeRSP
- n5yzzoct7THb6hi95SJPdA0WTehr/my7TQRaa29Xg19rIcnWSKR8qDr0YGKBMSju5xgC
- QjIBACZJhzsgQGD7/j+8Mj1QGVORQUR83PW3BFbwcfgRy3FW6raDAvFm2/rsDnesq/Gd
- LoTVGAhk4b7p4nfkBp0TkMCPTGZaen1NNKaKCkOVX1QPIIJNlGFr8+FQ38vP40fa+0bj
- T5KKWwPyfilwoy6CvatB4AZ3y9hxP7iJq+YgLb3tWsvIXKIzc588JTGgka3e7yvuKSC5
- a6xw==
+ bh=So1m/CQpgJE8oIUdFCwbc+hiP/OZYh6ibudoP8u5D9I=;
+ b=UCzJqenvC+PgihmW1jn6ZoUS+ogucGCeKLg+x81tH0jL0qC6EqA8ivq9uziN2udh0b
+ 5XxC/dzAMEZJoxjig06BqDGHkkXpZVJGGz1fsp5w6jovVIULRNZjCXx2AjdebqQF/Wcy
+ pHaPzUmxC2FuK1ORzbxaok12YPLUxEV/LZ3c4dR7pvfbF9KtArBNEyU6LxCbFv9sfQ+f
+ 6KObcQSsfSQclDzN4TRbFIpfsIBlBYlBUUu98SCXWW2PuerLX6uRa/VN6DGEAl6p6tKd
+ J/gU0f9rrOQz5mJbjZe23Xoi8TMEDkwdi6M0DlRAqguDrRYK6//QbOe8K6SeFNZdgvI5
+ plAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Rz1Bn0O+S+J/XTgmJoZptTZ3JFxX1OXOQheVdd25VFs=;
- b=Ma/M8FoUN+EScc0xwnhk3Px7Ee/zrlH12uZSkre3kUghtfHVqLE+mn0lkDfQ29T1Y+
- RefCfiM8p4vjg/In/tNMi1Os+xANbRU3rm9qwmwhBEwQV2RbdusPY3Io2GRqxo+2VO+7
- koudrJk5/J5E+PJ20SQJg0oyjAeG8/8d2ElrRZNgwsNS1i9kO1bOiC3IGM3eJiwOiiE+
- UAvSLLCMSZjuw6hAp/yOq/GkBrPCJ5dbmbCGwRFFYVbxfICkSQgF41fee0JQ553jLq3Z
- V0cf5sja3Nw8E2cndo4NMd96wbmzlF2gORNbdaH2VnNMF3T6gwQtJWBJNGQRBnxo19VG
- 8VhA==
-X-Gm-Message-State: AOAM530Odpm/cYYJsnHFFzfrPFz9lyIVKyPX6R4a8EV1F7ScR4zIgvKK
- VQswLL5X94attQCeej6OzTCC8pOYMlMDQDt/QHyo6OrGajA=
-X-Google-Smtp-Source: ABdhPJwmL9ilK3QZaYsWyYrWqFp5AGOB3zk4LrA+Cp4YB6D9betCEHIByOJ5fafzbCLSNdoYoVsJDClKk05FnrYXCIQ=
-X-Received: by 2002:aca:fd46:: with SMTP id b67mr3333039oii.150.1597461623940; 
- Fri, 14 Aug 2020 20:20:23 -0700 (PDT)
+ bh=So1m/CQpgJE8oIUdFCwbc+hiP/OZYh6ibudoP8u5D9I=;
+ b=ndoW8PWM2oO+AkFystAoWYe2ffp0jBelTOd+Zuxu8A1mvka52Njf3AMYp5awz7s0zp
+ RfhPwylIO6NhI+Qp6fPbkGrZHDamPwTXB6hDuyqZhwgHubZbmoa3T6qwsCr0LsQeMl1T
+ 0p7z2axAzU0pVtBsSb0OCukpLPMklXOa+3mIgCe3HRxmD4YbcZsSZ3zz2Iu81CsR3uLq
+ kMXDbsjeH2Yllx6i2WRAqDu9jf+GMjFPigvnpuYPrYZpHmgxvb+IXhD/UsrTEHk1qvhY
+ BnyNQMhq0Z7C+tqzo/AjsiyVeROwCnmkICKG5+a6nAWVmln0Wx53lTW6+Qle/BhKjMqc
+ Le8A==
+X-Gm-Message-State: AOAM532LPpq1yaRVleJPIHjypS8eymZ/leDgUuM6jsxKPaGrHAoz3qH+
+ Z7wZUbrC5enS+camFeXPmtKx4t7/+aPtT7Ou5R59gaf/Z2I=
+X-Google-Smtp-Source: ABdhPJw3AL7SLiktmxetz4Dbdwi/r9N1u9uNuROjELQO+raN1Bas6l4dEgbeDsbqXuHBwaWeUJhlYp5OEOFjp37lt54=
+X-Received: by 2002:aca:c0c1:: with SMTP id q184mr3589966oif.56.1597461748500; 
+ Fri, 14 Aug 2020 20:22:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-4-f4bug@amsat.org>
-In-Reply-To: <20200814082841.27000-4-f4bug@amsat.org>
+ <20200814082841.27000-5-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-5-f4bug@amsat.org>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Sat, 15 Aug 2020 11:19:48 +0800
-Message-ID: <CAKXe6SJ-OvymYFD5d3R_Nq-tP5PQ0ScnU66UgVVfypgyNZx1uw@mail.gmail.com>
-Subject: Re: [PATCH 3/7] hw/ide/core: Replace magic '512' value by
+Date: Sat, 15 Aug 2020 11:21:52 +0800
+Message-ID: <CAKXe6SKa0H7umV+=2p_Sq_6m1HOAQsHO9hNxKgUOKa--LZt9RQ@mail.gmail.com>
+Subject: Re: [PATCH 4/7] hw/ide/ahci: Replace magic '512' value by
  BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
@@ -78,7 +78,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Aug 2020 16:14:04 -0000
+X-List-Received-Date: Sat, 15 Aug 2020 16:30:43 -0000
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
 =8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:31=E5=86=99=E9=81=93=
@@ -91,118 +91,36 @@ Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
->  hw/ide/core.c | 23 ++++++++++++-----------
->  1 file changed, 12 insertions(+), 11 deletions(-)
+>  hw/ide/ahci.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index f76f7e5234..bcb2aa85fc 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -121,7 +121,7 @@ static void ide_identify(IDEState *s)
->      put_le16(p + 0, 0x0040);
->      put_le16(p + 1, s->cylinders);
->      put_le16(p + 3, s->heads);
-> -    put_le16(p + 4, 512 * s->sectors); /* XXX: retired, remove ? */
-> +    put_le16(p + 4, BDRV_SECTOR_SIZE * s->sectors); /* XXX: retired, rem=
-ove ? */
->      put_le16(p + 5, 512); /* XXX: retired, remove ? */
->      put_le16(p + 6, s->sectors);
->      padstr((char *)(p + 10), s->drive_serial_str, 20); /* serial number =
-*/
-> @@ -864,7 +864,7 @@ static void ide_dma_cb(void *opaque, int ret)
->          }
+> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+> index 009120f88b..b696c6291a 100644
+> --- a/hw/ide/ahci.c
+> +++ b/hw/ide/ahci.c
+> @@ -1151,7 +1151,7 @@ static void process_ncq_command(AHCIState *s, int p=
+ort, uint8_t *cmd_fis,
+>      if (!ncq_tfs->sector_count) {
+>          ncq_tfs->sector_count =3D 0x10000;
 >      }
+> -    size =3D ncq_tfs->sector_count * 512;
+> +    size =3D ncq_tfs->sector_count * BDRV_SECTOR_SIZE;
+>      ahci_populate_sglist(ad, &ncq_tfs->sglist, ncq_tfs->cmdh, size, 0);
 >
-> -    if (s->io_buffer_size > s->nsector * 512) {
-> +    if (s->io_buffer_size > s->nsector * BDRV_SECTOR_SIZE) {
->          /*
->           * The PRDs were longer than needed for this request.
->           * The Active bit must remain set after the request completes.
-> @@ -877,7 +877,7 @@ static void ide_dma_cb(void *opaque, int ret)
->
->      sector_num =3D ide_get_sector(s);
->      if (n > 0) {
-> -        assert(n * 512 =3D=3D s->sg.size);
-> +        assert(n * BDRV_SECTOR_SIZE =3D=3D s->sg.size);
->          dma_buf_commit(s, s->sg.size);
->          sector_num +=3D n;
->          ide_set_sector(s, sector_num);
-> @@ -894,17 +894,17 @@ static void ide_dma_cb(void *opaque, int ret)
->      /* launch next transfer */
->      n =3D s->nsector;
->      s->io_buffer_index =3D 0;
-> -    s->io_buffer_size =3D n * 512;
-> +    s->io_buffer_size =3D n * BDRV_SECTOR_SIZE;
->      prep_size =3D s->bus->dma->ops->prepare_buf(s->bus->dma, s->io_buffe=
-r_size);
->      /* prepare_buf() must succeed and respect the limit */
-> -    assert(prep_size >=3D 0 && prep_size <=3D n * 512);
-> +    assert(prep_size >=3D 0 && prep_size <=3D n * BDRV_SECTOR_SIZE);
->
->      /*
->       * Now prep_size stores the number of bytes in the sglist, and
->       * s->io_buffer_size stores the number of bytes described by the PRD=
-s.
->       */
->
-> -    if (prep_size < n * 512) {
-> +    if (prep_size < n * BDRV_SECTOR_SIZE) {
->          /*
->           * The PRDs are too short for this request. Error condition!
->           * Reset the Active bit and don't raise the interrupt.
-> @@ -1412,7 +1412,8 @@ static bool cmd_identify(IDEState *s, uint8_t cmd)
->              ide_cfata_identify(s);
->          }
->          s->status =3D READY_STAT | SEEK_STAT;
-> -        ide_transfer_start(s, s->io_buffer, 512, ide_transfer_stop);
-> +        ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE,
-> +                           ide_transfer_stop);
->          ide_set_irq(s->bus);
->          return false;
->      } else {
-> @@ -1482,7 +1483,7 @@ static bool cmd_write_multiple(IDEState *s, uint8_t=
- cmd)
->      n =3D MIN(s->nsector, s->req_nb_sectors);
->
->      s->status =3D SEEK_STAT | READY_STAT;
-> -    ide_transfer_start(s, s->io_buffer, 512 * n, ide_sector_write);
-> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE * n, ide_sector=
-_write);
->
->      s->media_changed =3D 1;
->
-> @@ -1524,7 +1525,7 @@ static bool cmd_write_pio(IDEState *s, uint8_t cmd)
->
->      s->req_nb_sectors =3D 1;
->      s->status =3D SEEK_STAT | READY_STAT;
-> -    ide_transfer_start(s, s->io_buffer, 512, ide_sector_write);
-> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE, ide_sector_wri=
-te);
->
->      s->media_changed =3D 1;
->
-> @@ -1678,7 +1679,7 @@ static bool cmd_identify_packet(IDEState *s, uint8_=
-t cmd)
->  {
->      ide_atapi_identify(s);
->      s->status =3D READY_STAT | SEEK_STAT;
-> -    ide_transfer_start(s, s->io_buffer, 512, ide_transfer_stop);
-> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE, ide_transfer_s=
-top);
->      ide_set_irq(s->bus);
->      return false;
->  }
-> @@ -2559,7 +2560,7 @@ static void ide_init1(IDEBus *bus, int unit)
->      s->unit =3D unit;
->      s->drive_serial =3D drive_serial++;
->      /* we need at least 2k alignment for accessing CDROMs using O_DIRECT=
- */
-> -    s->io_buffer_total_len =3D IDE_DMA_BUF_SECTORS*512 + 4;
-> +    s->io_buffer_total_len =3D IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + =
-4;
->      s->io_buffer =3D qemu_memalign(2048, s->io_buffer_total_len);
->      memset(s->io_buffer, 0, s->io_buffer_total_len);
->
+>      if (ncq_tfs->sglist.size < size) {
+> @@ -1703,7 +1703,8 @@ static int ahci_state_post_load(void *opaque, int v=
+ersion_id)
+>                  return -1;
+>              }
+>              ahci_populate_sglist(ncq_tfs->drive, &ncq_tfs->sglist,
+> -                                 ncq_tfs->cmdh, ncq_tfs->sector_count * =
+512,
+> +                                 ncq_tfs->cmdh,
+> +                                 ncq_tfs->sector_count * BDRV_SECTOR_SIZ=
+E,
+>                                   0);
+>              if (ncq_tfs->sector_count !=3D ncq_tfs->sglist.size >> 9) {
+>                  return -1;
 > --
 > 2.21.3
 >
