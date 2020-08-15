@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6zCU-0002e1-3j
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 12:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35824)
+	id 1k6zKR-0002Cl-5L
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 12:46:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6zCS-0002dF-6s; Sat, 15 Aug 2020 12:38:32 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:34642)
+ id 1k6zKP-00029l-Ki; Sat, 15 Aug 2020 12:46:45 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:43255)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6zCQ-0006LN-PH; Sat, 15 Aug 2020 12:38:31 -0400
-Received: by mail-ot1-x343.google.com with SMTP id k12so10119384otr.1;
- Sat, 15 Aug 2020 09:38:29 -0700 (PDT)
+ id 1k6zKO-0007Pz-5K; Sat, 15 Aug 2020 12:46:45 -0400
+Received: by mail-oi1-x244.google.com with SMTP id l84so10993842oig.10;
+ Sat, 15 Aug 2020 09:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=6x8ZgXFNj8hCFkssNg2uV681vQahkWv9jYTpIedwZ/4=;
- b=cZvvyjSg6bNTpoyEYxGlFZonbx3JpNsomRoxGxNk+xTecYhnsan+d6bxSmOjm/N2NJ
- htjTsibb5ft3xQ1rW3mhnM/WzL6818jTzRtGwXNHm7PixNjF+jx9tzSmI/jUq689Swl1
- Z11mxhvX6FzLOmL67OXYpvXS41G8/v0n3AC7V8AKldKIWe6dkj7PV8r/EzZ09zykW0jV
- 4eM2Jj34RzWM/5wRY1MNDj32fXU0Jzq/3goY3YRBR4z96thRjvVAc+bZv5isYEJZewq3
- cOhcKsbIPpq6iK2ggevtw2F2Xga9oE9IeA0YR0SZcJ18J2KgTi6BiNlKgEVkqLnb/QLn
- tx5g==
+ bh=yFwLmxJnp3jOYVVvDIrDmut0VUohVTnthkzH21KEIkk=;
+ b=HBQer5BVwfux9u196xt8sNQtKViz/PInG8YS5j/JvmGEv/AVvltpOcwa9eKSDvCv4g
+ qtb0nZyPEb4wCpvzqTNeOf12owr9PIK1Yze8k6VDaF8lH4MxsEtvQTGQU3LK/uivNrS7
+ sXrV78TEiAbWmACTgdAtBwlxGp+a9YZ8ezyTou9oIzsSCMZhISc8rSHC/aSyM74XHgef
+ 4jxC/s464+PObf35+hndDKMkf8qJyDg6dc1Z/myKs6HL9fU03pHqoSBVwGnRjMBM9ZJB
+ YR5xJHWy4eYpqsJD/ua+pmBU+0E0NvIOANEWSQvvkXrGcbOruSJq3gK2zh3taxMJgJA+
+ /etg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=6x8ZgXFNj8hCFkssNg2uV681vQahkWv9jYTpIedwZ/4=;
- b=JgwA0kpRDrei/ZLdw5+gPAyl4xb7g3ny+CSw6kvEV4Oz35fmWeY2mikGdyrvGVe1QW
- NdyF4e4qs6NtWBnjljjnL51qaHLFYk8Qor08Gg+Sj6jdhSld4reG1gGxh8C/uCSzFpOg
- +67VyL/6m5g8rhcqnxcdjqvRU8BR8tDltTNcEOs5HM84Oehq8NJlxdYh0nxawE05+TH8
- bRFmr7dcz8zHAySiulgU6jYJ2ir3SIS8nKF1VE2rdGMru1+ez0MWocGAEE0VNh8prJH3
- lfwoxGE5hnARs5SMp74kt52QWwTyK+K0k1dGBR0BNmrWULTCXn1jrwuH+vlOD1Hpu7t/
- 00VQ==
-X-Gm-Message-State: AOAM531c5wAkK829qDAHORuF34D1GgUrYTfYsdMHnn6J0X1flHcvMChP
- 48X6hzatbHPMQ8KM9BB/MIOWWTgRfU80wzDcZCNnpsa8nFw=
-X-Google-Smtp-Source: ABdhPJwCPpQrHBOZbhwDh8t1l9RqMOcHwwSk2FqJjeLb0Mmy4cOOR6a3c8GH8s3VAIltZnm1rT9UTlkAKlTchq1ZMOk=
-X-Received: by 2002:a9d:2926:: with SMTP id d35mr3843883otb.181.1597461350344; 
- Fri, 14 Aug 2020 20:15:50 -0700 (PDT)
+ bh=yFwLmxJnp3jOYVVvDIrDmut0VUohVTnthkzH21KEIkk=;
+ b=Xg5r6+0huWWnDZB6DDeo0jt0jLQ1yTxJEHdR2WH9owS5pT/D3G45LWRbAzHrcr1wyO
+ ipqLMZkA10lY9UxLMELhgrp3H74YJFbGw7L0cScL+J/IbNm1UrSOp76LVv86Z+DIGpga
+ Z/ES3C/2aeS3WYb9/MNC2X7YgYyBLUriwSrVSq4I0UGHT+zfiyVjGncmQoKfhZ+hZjHG
+ Vpw9Ojeyoiaipe/OOJn8lqhVfONu7ECXzYAqpV9T5Xv53M/2brT7BhjZ+qvafJw3WK/T
+ fovb0RRPkTnygKlJNeqFD5HiwST7yCq7CsVUU/xS2JHssjUvHytt1lqfpdZQuyNsbzlb
+ xYAg==
+X-Gm-Message-State: AOAM532uCWvAfXBuD/8Pq2xBCkbYeBuDSs7pd+wAcQ0J7HeL8/0RYcto
+ 2RRwPvHAtnEgxyps6und1UWdfUfl4FuFHmvF3WIkAgOO34c=
+X-Google-Smtp-Source: ABdhPJzzuYVetT4+ZXhwBckUjnr0zqO2Fan7+qwCeZLvdzBqJLb6ag3pJK87esozpa6kAB+Apk0RpxIPbQ+4TVtYzx0=
+X-Received: by 2002:aca:fd46:: with SMTP id b67mr3337749oii.150.1597461832007; 
+ Fri, 14 Aug 2020 20:23:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-2-f4bug@amsat.org>
-In-Reply-To: <20200814082841.27000-2-f4bug@amsat.org>
+ <20200814082841.27000-7-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-7-f4bug@amsat.org>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Sat, 15 Aug 2020 11:15:14 +0800
-Message-ID: <CAKXe6S+X0ALv9RFOHs+gzYeWX_u2x3qMA3Y+jiMxA+1Rm3cD3A@mail.gmail.com>
-Subject: Re: [PATCH 1/7] block/null: Make more explicit the driver default
- size is 1GiB
+Date: Sat, 15 Aug 2020 11:23:16 +0800
+Message-ID: <CAKXe6SJ_EhUOEOaX4SH6c0o8nHZc79PYzBXDyFihbRvtMs=w=Q@mail.gmail.com>
+Subject: Re: [PATCH 6/7] hw/ide/pci: Replace magic '512' value by
+ BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
  Kevin Wolf <kwolf@redhat.com>, 
@@ -55,8 +55,8 @@ Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
+ envelope-from=liq3ea@gmail.com; helo=mail-oi1-x244.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -10
@@ -78,54 +78,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Aug 2020 16:38:32 -0000
+X-List-Received-Date: Sat, 15 Aug 2020 16:46:46 -0000
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
-=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:29=E5=86=99=E9=81=93=
+=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:33=E5=86=99=E9=81=93=
 =EF=BC=9A
 >
-> As it is not obvious the default size for the null block driver
-> is 1 GiB, replace the obfuscated '1 << 30' magic value by a
-> definition using IEC binary prefixes.
+> Use self-explicit definitions instead of magic '512' value.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
->  block/null.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  hw/ide/pci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/block/null.c b/block/null.c
-> index 15e1d56746..8354def367 100644
-> --- a/block/null.c
-> +++ b/block/null.c
-> @@ -11,6 +11,7 @@
->   */
+> diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+> index 5e85c4ad17..b50091b615 100644
+> --- a/hw/ide/pci.c
+> +++ b/hw/ide/pci.c
+> @@ -138,7 +138,7 @@ static int32_t bmdma_prepare_buf(const IDEDMA *dma, i=
+nt32_t limit)
+>      int l, len;
 >
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qapi/qmp/qdict.h"
->  #include "qapi/qmp/qstring.h"
-> @@ -21,6 +22,7 @@
->
->  #define NULL_OPT_LATENCY "latency-ns"
->  #define NULL_OPT_ZEROES  "read-zeroes"
-> +#define NULL_OPT_SIZE    (1 * GiB)
->
->  typedef struct {
->      int64_t length;
-> @@ -86,7 +88,7 @@ static int null_file_open(BlockDriverState *bs, QDict *=
-options, int flags,
->      opts =3D qemu_opts_create(&runtime_opts, NULL, 0, &error_abort);
->      qemu_opts_absorb_qdict(opts, options, &error_abort);
->      s->length =3D
-> -        qemu_opt_get_size(opts, BLOCK_OPT_SIZE, 1 << 30);
-> +        qemu_opt_get_size(opts, BLOCK_OPT_SIZE, NULL_OPT_SIZE);
->      s->latency_ns =3D
->          qemu_opt_get_number(opts, NULL_OPT_LATENCY, 0);
->      if (s->latency_ns < 0) {
+>      pci_dma_sglist_init(&s->sg, pci_dev,
+> -                        s->nsector / (BMDMA_PAGE_SIZE / 512) + 1);
+> +                        s->nsector / (BMDMA_PAGE_SIZE / BDRV_SECTOR_SIZE=
+) + 1);
+>      s->io_buffer_size =3D 0;
+>      for(;;) {
+>          if (bm->cur_prd_len =3D=3D 0) {
 > --
 > 2.21.3
 >
