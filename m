@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6yP3-0003F4-9e
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 11:47:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48136)
+	id 1k6yoo-0007P6-8C
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 12:14:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6yP1-0003BW-I4; Sat, 15 Aug 2020 11:47:27 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36522)
+ id 1k6yom-0007LG-2y; Sat, 15 Aug 2020 12:14:04 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:39441)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6yOz-0007ZW-SM; Sat, 15 Aug 2020 11:47:27 -0400
-Received: by mail-oi1-x242.google.com with SMTP id l204so10899710oib.3;
- Sat, 15 Aug 2020 08:47:24 -0700 (PDT)
+ id 1k6yok-00035A-E5; Sat, 15 Aug 2020 12:14:03 -0400
+Received: by mail-oi1-x243.google.com with SMTP id a24so10951019oia.6;
+ Sat, 15 Aug 2020 09:14:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=7Jnq2PjERJLs/GO9/4baZQ//w2zkwIz0zzZeTVJKRcU=;
- b=TUogl15Ihu9IJh05cXZppSTXCvVb63Ib0zuv3MFKpFp7YWgBFDSoPALaKUmC8v+c4d
- /qlXqwJ8nb0xfoLza982lNCf8aS23WRotVIZVj0/OkN+P5rUsFpxeE6+2h8UflXeidZ5
- IVDuiyhzZzw8gxGOcg4md9YlrZ7lOBY26C/RvSi+Ij9lvW752uoYvK0mRS/QGS1wFera
- ecLS7Z63xneyVPtIptSeCqUR/HB52ZjRZQTFZVvFvkzHLsN/C8yfZuOcR1uJNZm7FR2G
- 9VpGtmK/LoTA2gSGxlznanvOhKur16z2E1nplFNaxpNlN96a3Kq1j983ZhVQfRYYKdWc
- sUgw==
+ bh=Rz1Bn0O+S+J/XTgmJoZptTZ3JFxX1OXOQheVdd25VFs=;
+ b=pcUN0Sg6NBjaTaKCgFvA9WG5Z8FEGQX1O6t8VvlA/NL3tkse9IQ58KU8QtU2VkeRSP
+ n5yzzoct7THb6hi95SJPdA0WTehr/my7TQRaa29Xg19rIcnWSKR8qDr0YGKBMSju5xgC
+ QjIBACZJhzsgQGD7/j+8Mj1QGVORQUR83PW3BFbwcfgRy3FW6raDAvFm2/rsDnesq/Gd
+ LoTVGAhk4b7p4nfkBp0TkMCPTGZaen1NNKaKCkOVX1QPIIJNlGFr8+FQ38vP40fa+0bj
+ T5KKWwPyfilwoy6CvatB4AZ3y9hxP7iJq+YgLb3tWsvIXKIzc588JTGgka3e7yvuKSC5
+ a6xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=7Jnq2PjERJLs/GO9/4baZQ//w2zkwIz0zzZeTVJKRcU=;
- b=HGVow6aGhHjZm+WUd7fKkgOj8jn/28mHk0wtHx4LdVFUg7AkbkbVQoSzCC3e8h8loH
- wc3duyGufZ3I8H19S4emEljPVhXOHYrPbulfn+1teNH9NY2+JzUxGaUT0/vwfUMlOPnq
- XfhSU7zQ/iErkwsuW1HKeo9JKpXTdx5G9LLwEPaXHVbDAj3lkL8zoSJO3LoOxUWZ+BKh
- nSCco46tn+8XcfWF3WqItO/VUuxEJmjhmTCOgjdiiPS+4qKdhM204m1+v7a3MLwHzri3
- HIZk139mU0Dusj1OxPfvz8kI8mFamDD3bNQkSSC9EPLuUZTMb1n0wkJdlHjvukkHwght
- 8Edw==
-X-Gm-Message-State: AOAM532PvWMRes6tHQqwHXFtcazlD6wxoGsUwMr4ui1nGwBix2RgAPQB
- gFkThXxjCrfT+BeXcYm7BcaZ3rbaIUhtNehf7g0pVbk25h8=
-X-Google-Smtp-Source: ABdhPJyBm61wARtWHsmce0n7gjQyDw+KSNq/H2UHw3rm6ix30D9v0MkrG8zIRVMjR/J/EbGzA/63Hdscld+CfhiRSi8=
-X-Received: by 2002:aca:1117:: with SMTP id 23mr3486076oir.97.1597461878912;
- Fri, 14 Aug 2020 20:24:38 -0700 (PDT)
+ bh=Rz1Bn0O+S+J/XTgmJoZptTZ3JFxX1OXOQheVdd25VFs=;
+ b=Ma/M8FoUN+EScc0xwnhk3Px7Ee/zrlH12uZSkre3kUghtfHVqLE+mn0lkDfQ29T1Y+
+ RefCfiM8p4vjg/In/tNMi1Os+xANbRU3rm9qwmwhBEwQV2RbdusPY3Io2GRqxo+2VO+7
+ koudrJk5/J5E+PJ20SQJg0oyjAeG8/8d2ElrRZNgwsNS1i9kO1bOiC3IGM3eJiwOiiE+
+ UAvSLLCMSZjuw6hAp/yOq/GkBrPCJ5dbmbCGwRFFYVbxfICkSQgF41fee0JQ553jLq3Z
+ V0cf5sja3Nw8E2cndo4NMd96wbmzlF2gORNbdaH2VnNMF3T6gwQtJWBJNGQRBnxo19VG
+ 8VhA==
+X-Gm-Message-State: AOAM530Odpm/cYYJsnHFFzfrPFz9lyIVKyPX6R4a8EV1F7ScR4zIgvKK
+ VQswLL5X94attQCeej6OzTCC8pOYMlMDQDt/QHyo6OrGajA=
+X-Google-Smtp-Source: ABdhPJwmL9ilK3QZaYsWyYrWqFp5AGOB3zk4LrA+Cp4YB6D9betCEHIByOJ5fafzbCLSNdoYoVsJDClKk05FnrYXCIQ=
+X-Received: by 2002:aca:fd46:: with SMTP id b67mr3333039oii.150.1597461623940; 
+ Fri, 14 Aug 2020 20:20:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-8-f4bug@amsat.org>
-In-Reply-To: <20200814082841.27000-8-f4bug@amsat.org>
+ <20200814082841.27000-4-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-4-f4bug@amsat.org>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Sat, 15 Aug 2020 11:24:02 +0800
-Message-ID: <CAKXe6SKLqZ6HRFLENFkZCX3kkWUPQVD=OH0cqY7iwo77876azw@mail.gmail.com>
-Subject: Re: [PATCH 7/7] hw/scsi/scsi-disk: Replace magic '512' value by
+Date: Sat, 15 Aug 2020 11:19:48 +0800
+Message-ID: <CAKXe6SJ-OvymYFD5d3R_Nq-tP5PQ0ScnU66UgVVfypgyNZx1uw@mail.gmail.com>
+Subject: Re: [PATCH 3/7] hw/ide/core: Replace magic '512' value by
  BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
@@ -55,8 +55,8 @@ Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=liq3ea@gmail.com; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=liq3ea@gmail.com; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -10
@@ -78,10 +78,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Aug 2020 15:47:28 -0000
+X-List-Received-Date: Sat, 15 Aug 2020 16:14:04 -0000
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
-=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:34=E5=86=99=E9=81=93=
+=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:31=E5=86=99=E9=81=93=
 =EF=BC=9A
 >
 > Use self-explicit definitions instead of magic '512' value.
@@ -91,179 +91,118 @@ Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
->  hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
->  1 file changed, 23 insertions(+), 21 deletions(-)
+>  hw/ide/core.c | 23 ++++++++++++-----------
+>  1 file changed, 12 insertions(+), 11 deletions(-)
 >
-> diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-> index 8ce68a9dd6..7612035a4e 100644
-> --- a/hw/scsi/scsi-disk.c
-> +++ b/hw/scsi/scsi-disk.c
-> @@ -71,7 +71,7 @@ typedef struct SCSIDiskClass {
->
->  typedef struct SCSIDiskReq {
->      SCSIRequest req;
-> -    /* Both sector and sector_count are in terms of qemu 512 byte blocks=
-.  */
-> +    /* Both sector and sector_count are in terms of BDRV_SECTOR_SIZE byt=
-es.  */
->      uint64_t sector;
->      uint32_t sector_count;
->      uint32_t buflen;
-> @@ -141,7 +141,7 @@ static void scsi_init_iovec(SCSIDiskReq *r, size_t si=
-ze)
->          r->buflen =3D size;
->          r->iov.iov_base =3D blk_blockalign(s->qdev.conf.blk, r->buflen);
->      }
-> -    r->iov.iov_len =3D MIN(r->sector_count * 512, r->buflen);
-> +    r->iov.iov_len =3D MIN(r->sector_count * BDRV_SECTOR_SIZE, r->buflen=
-);
->      qemu_iovec_init_external(&r->qiov, &r->iov, 1);
->  }
->
-> @@ -311,7 +311,7 @@ static void scsi_read_complete_noio(SCSIDiskReq *r, i=
-nt ret)
->          goto done;
+> diff --git a/hw/ide/core.c b/hw/ide/core.c
+> index f76f7e5234..bcb2aa85fc 100644
+> --- a/hw/ide/core.c
+> +++ b/hw/ide/core.c
+> @@ -121,7 +121,7 @@ static void ide_identify(IDEState *s)
+>      put_le16(p + 0, 0x0040);
+>      put_le16(p + 1, s->cylinders);
+>      put_le16(p + 3, s->heads);
+> -    put_le16(p + 4, 512 * s->sectors); /* XXX: retired, remove ? */
+> +    put_le16(p + 4, BDRV_SECTOR_SIZE * s->sectors); /* XXX: retired, rem=
+ove ? */
+>      put_le16(p + 5, 512); /* XXX: retired, remove ? */
+>      put_le16(p + 6, s->sectors);
+>      padstr((char *)(p + 10), s->drive_serial_str, 20); /* serial number =
+*/
+> @@ -864,7 +864,7 @@ static void ide_dma_cb(void *opaque, int ret)
+>          }
 >      }
 >
-> -    n =3D r->qiov.size / 512;
-> +    n =3D r->qiov.size / BDRV_SECTOR_SIZE;
->      r->sector +=3D n;
->      r->sector_count -=3D n;
->      scsi_req_data(&r->req, r->qiov.size);
-> @@ -505,7 +505,7 @@ static void scsi_write_complete_noio(SCSIDiskReq *r, =
-int ret)
->          goto done;
->      }
+> -    if (s->io_buffer_size > s->nsector * 512) {
+> +    if (s->io_buffer_size > s->nsector * BDRV_SECTOR_SIZE) {
+>          /*
+>           * The PRDs were longer than needed for this request.
+>           * The Active bit must remain set after the request completes.
+> @@ -877,7 +877,7 @@ static void ide_dma_cb(void *opaque, int ret)
 >
-> -    n =3D r->qiov.size / 512;
-> +    n =3D r->qiov.size / BDRV_SECTOR_SIZE;
->      r->sector +=3D n;
->      r->sector_count -=3D n;
->      if (r->sector_count =3D=3D 0) {
-> @@ -1284,7 +1284,7 @@ static int scsi_disk_emulate_mode_sense(SCSIDiskReq=
- *r, uint8_t *outbuf)
->          } else { /* MODE_SENSE_10 */
->              outbuf[7] =3D 8; /* Block descriptor length  */
->          }
-> -        nb_sectors /=3D (s->qdev.blocksize / 512);
-> +        nb_sectors /=3D (s->qdev.blocksize / BDRV_SECTOR_SIZE);
->          if (nb_sectors > 0xffffff) {
->              nb_sectors =3D 0;
->          }
-> @@ -1342,7 +1342,7 @@ static int scsi_disk_emulate_read_toc(SCSIRequest *=
-req, uint8_t *outbuf)
->      start_track =3D req->cmd.buf[6];
->      blk_get_geometry(s->qdev.conf.blk, &nb_sectors);
->      trace_scsi_disk_emulate_read_toc(start_track, format, msf >> 1);
-> -    nb_sectors /=3D s->qdev.blocksize / 512;
-> +    nb_sectors /=3D s->qdev.blocksize / BDRV_SECTOR_SIZE;
->      switch (format) {
->      case 0:
->          toclen =3D cdrom_read_toc(nb_sectors, outbuf, msf, start_track);
-> @@ -1738,9 +1738,10 @@ static void scsi_write_same_complete(void *opaque,=
- int ret)
+>      sector_num =3D ide_get_sector(s);
+>      if (n > 0) {
+> -        assert(n * 512 =3D=3D s->sg.size);
+> +        assert(n * BDRV_SECTOR_SIZE =3D=3D s->sg.size);
+>          dma_buf_commit(s, s->sg.size);
+>          sector_num +=3D n;
+>          ide_set_sector(s, sector_num);
+> @@ -894,17 +894,17 @@ static void ide_dma_cb(void *opaque, int ret)
+>      /* launch next transfer */
+>      n =3D s->nsector;
+>      s->io_buffer_index =3D 0;
+> -    s->io_buffer_size =3D n * 512;
+> +    s->io_buffer_size =3D n * BDRV_SECTOR_SIZE;
+>      prep_size =3D s->bus->dma->ops->prepare_buf(s->bus->dma, s->io_buffe=
+r_size);
+>      /* prepare_buf() must succeed and respect the limit */
+> -    assert(prep_size >=3D 0 && prep_size <=3D n * 512);
+> +    assert(prep_size >=3D 0 && prep_size <=3D n * BDRV_SECTOR_SIZE);
 >
->      block_acct_done(blk_get_stats(s->qdev.conf.blk), &r->acct);
+>      /*
+>       * Now prep_size stores the number of bytes in the sglist, and
+>       * s->io_buffer_size stores the number of bytes described by the PRD=
+s.
+>       */
 >
-> -    data->nb_sectors -=3D data->iov.iov_len / 512;
-> -    data->sector +=3D data->iov.iov_len / 512;
-> -    data->iov.iov_len =3D MIN(data->nb_sectors * 512, data->iov.iov_len)=
-;
-> +    data->nb_sectors -=3D data->iov.iov_len / BDRV_SECTOR_SIZE;
-> +    data->sector +=3D data->iov.iov_len / BDRV_SECTOR_SIZE;
-> +    data->iov.iov_len =3D MIN(data->nb_sectors * BDRV_SECTOR_SIZE,
-> +                            data->iov.iov_len);
->      if (data->iov.iov_len) {
->          block_acct_start(blk_get_stats(s->qdev.conf.blk), &r->acct,
->                           data->iov.iov_len, BLOCK_ACCT_WRITE);
-> @@ -1805,9 +1806,10 @@ static void scsi_disk_emulate_write_same(SCSIDiskR=
-eq *r, uint8_t *inbuf)
->
->      data =3D g_new0(WriteSameCBData, 1);
->      data->r =3D r;
-> -    data->sector =3D r->req.cmd.lba * (s->qdev.blocksize / 512);
-> -    data->nb_sectors =3D nb_sectors * (s->qdev.blocksize / 512);
-> -    data->iov.iov_len =3D MIN(data->nb_sectors * 512, SCSI_WRITE_SAME_MA=
-X);
-> +    data->sector =3D r->req.cmd.lba * (s->qdev.blocksize / BDRV_SECTOR_S=
-IZE);
-> +    data->nb_sectors =3D nb_sectors * (s->qdev.blocksize / BDRV_SECTOR_S=
-IZE);
-> +    data->iov.iov_len =3D MIN(data->nb_sectors * BDRV_SECTOR_SIZE,
-> +                            SCSI_WRITE_SAME_MAX);
->      data->iov.iov_base =3D buf =3D blk_blockalign(s->qdev.conf.blk,
->                                                data->iov.iov_len);
->      qemu_iovec_init_external(&data->qiov, &data->iov, 1);
-> @@ -1980,7 +1982,7 @@ static int32_t scsi_disk_emulate_command(SCSIReques=
-t *req, uint8_t *buf)
->          if ((req->cmd.buf[8] & 1) =3D=3D 0 && req->cmd.lba) {
->              goto illegal_request;
+> -    if (prep_size < n * 512) {
+> +    if (prep_size < n * BDRV_SECTOR_SIZE) {
+>          /*
+>           * The PRDs are too short for this request. Error condition!
+>           * Reset the Active bit and don't raise the interrupt.
+> @@ -1412,7 +1412,8 @@ static bool cmd_identify(IDEState *s, uint8_t cmd)
+>              ide_cfata_identify(s);
 >          }
-> -        nb_sectors /=3D s->qdev.blocksize / 512;
-> +        nb_sectors /=3D s->qdev.blocksize / BDRV_SECTOR_SIZE;
->          /* Returned value is the address of the last sector.  */
->          nb_sectors--;
->          /* Remember the new size for read/write sanity checking. */
-> @@ -2049,7 +2051,7 @@ static int32_t scsi_disk_emulate_command(SCSIReques=
-t *req, uint8_t *buf)
->              if ((req->cmd.buf[14] & 1) =3D=3D 0 && req->cmd.lba) {
->                  goto illegal_request;
->              }
-> -            nb_sectors /=3D s->qdev.blocksize / 512;
-> +            nb_sectors /=3D s->qdev.blocksize / BDRV_SECTOR_SIZE;
->              /* Returned value is the address of the last sector.  */
->              nb_sectors--;
->              /* Remember the new size for read/write sanity checking. */
-> @@ -2180,8 +2182,8 @@ static int32_t scsi_disk_dma_command(SCSIRequest *r=
-eq, uint8_t *buf)
->          if (!check_lba_range(s, r->req.cmd.lba, len)) {
->              goto illegal_lba;
->          }
-> -        r->sector =3D r->req.cmd.lba * (s->qdev.blocksize / 512);
-> -        r->sector_count =3D len * (s->qdev.blocksize / 512);
-> +        r->sector =3D r->req.cmd.lba * (s->qdev.blocksize / BDRV_SECTOR_=
-SIZE);
-> +        r->sector_count =3D len * (s->qdev.blocksize / BDRV_SECTOR_SIZE)=
-;
->          break;
->      case WRITE_6:
->      case WRITE_10:
-> @@ -2211,8 +2213,8 @@ static int32_t scsi_disk_dma_command(SCSIRequest *r=
-eq, uint8_t *buf)
->          if (!check_lba_range(s, r->req.cmd.lba, len)) {
->              goto illegal_lba;
->          }
-> -        r->sector =3D r->req.cmd.lba * (s->qdev.blocksize / 512);
-> -        r->sector_count =3D len * (s->qdev.blocksize / 512);
-> +        r->sector =3D r->req.cmd.lba * (s->qdev.blocksize / BDRV_SECTOR_=
-SIZE);
-> +        r->sector_count =3D len * (s->qdev.blocksize / BDRV_SECTOR_SIZE)=
-;
->          break;
->      default:
->          abort();
-> @@ -2229,9 +2231,9 @@ static int32_t scsi_disk_dma_command(SCSIRequest *r=
-eq, uint8_t *buf)
->      }
->      assert(r->iov.iov_len =3D=3D 0);
->      if (r->req.cmd.mode =3D=3D SCSI_XFER_TO_DEV) {
-> -        return -r->sector_count * 512;
-> +        return -r->sector_count * BDRV_SECTOR_SIZE;
+>          s->status =3D READY_STAT | SEEK_STAT;
+> -        ide_transfer_start(s, s->io_buffer, 512, ide_transfer_stop);
+> +        ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE,
+> +                           ide_transfer_stop);
+>          ide_set_irq(s->bus);
+>          return false;
 >      } else {
-> -        return r->sector_count * 512;
-> +        return r->sector_count * BDRV_SECTOR_SIZE;
->      }
+> @@ -1482,7 +1483,7 @@ static bool cmd_write_multiple(IDEState *s, uint8_t=
+ cmd)
+>      n =3D MIN(s->nsector, s->req_nb_sectors);
+>
+>      s->status =3D SEEK_STAT | READY_STAT;
+> -    ide_transfer_start(s, s->io_buffer, 512 * n, ide_sector_write);
+> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE * n, ide_sector=
+_write);
+>
+>      s->media_changed =3D 1;
+>
+> @@ -1524,7 +1525,7 @@ static bool cmd_write_pio(IDEState *s, uint8_t cmd)
+>
+>      s->req_nb_sectors =3D 1;
+>      s->status =3D SEEK_STAT | READY_STAT;
+> -    ide_transfer_start(s, s->io_buffer, 512, ide_sector_write);
+> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE, ide_sector_wri=
+te);
+>
+>      s->media_changed =3D 1;
+>
+> @@ -1678,7 +1679,7 @@ static bool cmd_identify_packet(IDEState *s, uint8_=
+t cmd)
+>  {
+>      ide_atapi_identify(s);
+>      s->status =3D READY_STAT | SEEK_STAT;
+> -    ide_transfer_start(s, s->io_buffer, 512, ide_transfer_stop);
+> +    ide_transfer_start(s, s->io_buffer, BDRV_SECTOR_SIZE, ide_transfer_s=
+top);
+>      ide_set_irq(s->bus);
+>      return false;
 >  }
+> @@ -2559,7 +2560,7 @@ static void ide_init1(IDEBus *bus, int unit)
+>      s->unit =3D unit;
+>      s->drive_serial =3D drive_serial++;
+>      /* we need at least 2k alignment for accessing CDROMs using O_DIRECT=
+ */
+> -    s->io_buffer_total_len =3D IDE_DMA_BUF_SECTORS*512 + 4;
+> +    s->io_buffer_total_len =3D IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + =
+4;
+>      s->io_buffer =3D qemu_memalign(2048, s->io_buffer_total_len);
+>      memset(s->io_buffer, 0, s->io_buffer_total_len);
 >
-> @@ -2243,7 +2245,7 @@ static void scsi_disk_reset(DeviceState *dev)
->      scsi_device_purge_requests(&s->qdev, SENSE_CODE(RESET));
->
->      blk_get_geometry(s->qdev.conf.blk, &nb_sectors);
-> -    nb_sectors /=3D s->qdev.blocksize / 512;
-> +    nb_sectors /=3D s->qdev.blocksize / BDRV_SECTOR_SIZE;
->      if (nb_sectors) {
->          nb_sectors--;
->      }
 > --
 > 2.21.3
 >
