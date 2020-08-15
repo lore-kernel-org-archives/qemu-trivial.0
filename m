@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k6xZO-0002tG-N1
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 10:54:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39882)
+	id 1k6yDc-0004mI-A7
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Aug 2020 11:35:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6xZM-0002qa-Uy; Sat, 15 Aug 2020 10:54:04 -0400
-Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:38156)
+ id 1k6yDa-0004ia-Em; Sat, 15 Aug 2020 11:35:38 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39369)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1k6xZI-000441-TN; Sat, 15 Aug 2020 10:54:04 -0400
-Received: by mail-yb1-xb41.google.com with SMTP id e187so6855402ybc.5;
- Sat, 15 Aug 2020 07:53:58 -0700 (PDT)
+ id 1k6yDY-0005Kb-Oe; Sat, 15 Aug 2020 11:35:38 -0400
+Received: by mail-ot1-x343.google.com with SMTP id z18so9987662otk.6;
+ Sat, 15 Aug 2020 08:35:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ph1qXpLEHaugcS/5DVgu0940+oCbwQDK8vKa8i0QDgQ=;
- b=G7UBnZ/c+7XhrFQWE8Qmw+PNZyd+kBE10XvThUWUum15NBowNkJUvRM+KL54K5gdRk
- XNtxJSEVguCxJC2whQdkLqleG/UH+ER5MOE6MzfEtViKf6V3He/onzV/Re/Bhum48+8o
- FhIDb/H5Oi860UNuiXLVVlDDbOyRjsMWf9ixc+wCFvxfIt4B+3jFKWjN9+zpP/1rdyqM
- /HsjhO99gF8ZGlc/lDphiM7GplbOgkSf56qzeepSLpYf6tOPthLjpyf8Gw5Iya8OFJIp
- TQeiGhxV6JZ2P33KoLmhCz6MZNYOvZCEIXW2dzp8aGX8FZsIUf53B2OFDft0d0lB+HMb
- q2OA==
+ bh=amruQQ/323bR7IWKQu1N2p2X9VkYie5hsW91okNherU=;
+ b=gmqaEzVBne/ZqOAqhtSAhi0JT+z4VlTsXuhhrZkIileC/SRAdoShdgNwqG+ZARp9zl
+ 1QJiF6IeZ38WmgTPQuHvvRHeo5InLutbsZM3XIqnYLhp2lbvTXFo03uy6EuvE2Ddlzxe
+ l56wbRMLJm2bv4Fue9Jj645Ph19kCVwz35m3Tkmf0SfWEiByR1Fo2y1e6B3fjf0HX+tC
+ hmon9uIXMeoPI7vhDOIoOWVnfOG6VVSX4jqD3swZQW2L7uqFMr3mAa0asCl5OGYLF8iB
+ rXxVyCqeejgl5QzETXU+UyOo6KRTcQforVnLY61/bsZOuK6aDPASDwLALZkx6lzxxBeX
+ pUJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ph1qXpLEHaugcS/5DVgu0940+oCbwQDK8vKa8i0QDgQ=;
- b=l1sRGSPj3bwXqZowtnPtMNcDqIyerg4z2SugKe/AT9JyicMGIBx6cGpLzpMy6lL9tb
- BO/vPyb5ynTE6ZgcYb3jF2qMCj7ca1Hqgm+k7eeyX3Oo27XhjyHBeAMNTfRKI5Cb0M4C
- yJEXc1VMoaSVgZ2bimCuW7UVItuR21XlmZJW19mLM6wVBwDQa7OxiEvsJw6FBltpsGtj
- ZAEooG/6Bcj55p9kRJ+JGwT1XuyD9kcGbhK1Xgsc5m7sWhDMN2OI1DFau2mrmaHyWUbU
- 2vys0/by0PszvHElONe4dXVV+T1PfCH9HDIm5F6ERg7Sn5joJt8yyDYgTvm/x7vKlAKe
- 0laA==
-X-Gm-Message-State: AOAM5303pOooIBziG7vgZHlE50B0ByC/yTMDsD7imjHUZwOYv0PuZ7Ev
- nA/8CY3oB1mV8NMTGktFhcCC6yXx+bNMBFJH1RE2aen7c+s=
-X-Google-Smtp-Source: ABdhPJwoj1rR9msfNlcqc4A2fLL1mCbYcn+xXPAQNhIDf50R6sKODI7cF4s1PBk8JrLY+wldiwRqjAW+hkzqmlT5drs=
-X-Received: by 2002:a9d:2926:: with SMTP id d35mr3850216otb.181.1597461563114; 
- Fri, 14 Aug 2020 20:19:23 -0700 (PDT)
+ bh=amruQQ/323bR7IWKQu1N2p2X9VkYie5hsW91okNherU=;
+ b=QLAzhIqgSlgcqd7JnhlKLgxdV3AD1grWB5+Mx0kCTPpwR0Ve/CqpWXeiRde5O7IX+3
+ wibfoELIx+YdSJ/npAXyz9FaSHBha+Vjo07cTOBFqztcztJeHMWiJJGaG0xVdD1WTqIs
+ eR6+NuYQkbEMWXNDwmd1747TtAsCsujNq+cDUc01/sP/bZyE5tDqt3htph5RpUMD1iOL
+ vp20lqfeK7wpr9ad6M9KJKhg3Vm7tFC8ZP3SfNUfoRJIQNyjLIzaTeVghx0GdRrgnuxc
+ iKaBaLSmGBo+Jt7gufspuWXmrGYLNShzOgnCX59vB1fdqXXYXZNCTU+zJWFwYSnzQ2+Y
+ K2ng==
+X-Gm-Message-State: AOAM532Eu7TNGd2bepvLLSYxss7+t06l706yDiz8PCwALajvz6gYdWRu
+ exLKdZR/3a7YsBg9UwoQpfrRbp5H/tccMTSrlEo08INlfOk=
+X-Google-Smtp-Source: ABdhPJyTnwYAzNoCfUZk0vQ8w01vse0v6ZtmNf70Y8pUm2yU79Lq6eVJc+QZty2XbvKeHaWiiCYuiuuR0IV4wbgcWxw=
+X-Received: by 2002:a9d:748e:: with SMTP id t14mr3890934otk.333.1597461813117; 
+ Fri, 14 Aug 2020 20:23:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-3-f4bug@amsat.org>
-In-Reply-To: <20200814082841.27000-3-f4bug@amsat.org>
+ <20200814082841.27000-6-f4bug@amsat.org>
+In-Reply-To: <20200814082841.27000-6-f4bug@amsat.org>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Sat, 15 Aug 2020 11:18:46 +0800
-Message-ID: <CAKXe6S+dDg4KHu-7B=b4kpAvqE6b9MjAKgu9qZerqQ5Go6ZiUQ@mail.gmail.com>
-Subject: Re: [PATCH 2/7] hw/ide/core: Trivial typo fix
+Date: Sat, 15 Aug 2020 11:22:57 +0800
+Message-ID: <CAKXe6SK5au1C0dXOu0VEYW1wn17Vtk9iuU2UeRA8Y7_cu1Dt-g@mail.gmail.com>
+Subject: Re: [PATCH 5/7] hw/ide/atapi: Replace magic '512' value by
+ BDRV_SECTOR_SIZE
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
  Kevin Wolf <kwolf@redhat.com>, 
@@ -54,14 +55,14 @@ Cc: Qemu Developers <qemu-devel@nongnu.org>, Fam Zheng <fam@euphon.net>,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b41;
- envelope-from=liq3ea@gmail.com; helo=mail-yb1-xb41.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
@@ -77,33 +78,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Aug 2020 14:54:05 -0000
+X-List-Received-Date: Sat, 15 Aug 2020 15:35:39 -0000
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B48=E6=9C=
-=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:29=E5=86=99=E9=81=93=
+=8814=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=884:30=E5=86=99=E9=81=93=
 =EF=BC=9A
+>
+> Use self-explicit definitions instead of magic '512' value.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
->  hw/ide/core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/ide/atapi.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index d997a78e47..f76f7e5234 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -709,7 +709,7 @@ void ide_cancel_dma_sync(IDEState *s)
->      /*
->       * We can't cancel Scatter Gather DMA in the middle of the
->       * operation or a partial (not full) DMA transfer would reach
-> -     * the storage so we wait for completion instead (we beahve
-> +     * the storage so we wait for completion instead (we behave
->       * like if the DMA was completed by the time the guest trying
->       * to cancel dma with bmdma_cmd_writeb with BM_CMD_START not
->       * set).
+> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+> index 17a9d635d8..14a2b0bb2f 100644
+> --- a/hw/ide/atapi.c
+> +++ b/hw/ide/atapi.c
+> @@ -824,9 +824,9 @@ static void cmd_get_configuration(IDEState *s, uint8_=
+t *buf)
+>       *
+>       *      Only a problem if the feature/profiles grow.
+>       */
+> -    if (max_len > 512) {
+> +    if (max_len > BDRV_SECTOR_SIZE) {
+>          /* XXX: assume 1 sector */
+> -        max_len =3D 512;
+> +        max_len =3D BDRV_SECTOR_SIZE;
+>      }
+>
+>      memset(buf, 0, max_len);
+> @@ -1186,8 +1186,8 @@ static void cmd_read_dvd_structure(IDEState *s, uin=
+t8_t* buf)
+>          }
+>      }
+>
+> -    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * 512 + 4 ?
+> -           IDE_DMA_BUF_SECTORS * 512 + 4 : max_len);
+> +    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 =
+?
+> +           IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 : max_len);
+>
+>      switch (format) {
+>          case 0x00 ... 0x7f:
 > --
 > 2.21.3
 >
