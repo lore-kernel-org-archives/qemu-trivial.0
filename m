@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k7czJ-0005Cf-M2
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Aug 2020 07:07:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48300)
+	id 1k7d2G-0006ot-As
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Aug 2020 07:10:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1k7czI-0005Bt-3S
- for qemu-trivial@nongnu.org; Mon, 17 Aug 2020 07:07:36 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:47268
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1k7d2D-0006mo-GS
+ for qemu-trivial@nongnu.org; Mon, 17 Aug 2020 07:10:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29716
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1k7czF-0005BP-F6
- for qemu-trivial@nongnu.org; Mon, 17 Aug 2020 07:07:35 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1k7d2A-0005T6-Ut
+ for qemu-trivial@nongnu.org; Mon, 17 Aug 2020 07:10:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597662452;
+ s=mimecast20190719; t=1597662633;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vWNLeWtBdfttgPdK8jKkYNuZArciDdyNEnsWcmsngnQ=;
- b=Xqnuur0rz3q60+woHABsEquaXQJuxzyMEvV6yimCqNYwlz4fJn4WZTTC+hWQJpcsKpq87l
- OL2iEVnS2BpOXYxPYCIqnB7dX1uGkXLVq+ocb6RSaeZBEPG81NB+XrEmNdXP8G9B0evVVX
- GmKz8GXTyWkbZii4aVfqdd06zPn/7UU=
+ bh=49KYqj2aj1Ufxyuv9P97JWbr0Ib15TsUEdzGgcyh2/o=;
+ b=Rqr9QRjTtXwYZPtzNeMt/lIhE55Wwbln3l2yP/thnpqgAmuVgeQ+mkFtiuweapW8qb7QBE
+ gP2l5gf9j9HhrhPcO9uR8BQGZzwvoXt7Jh30FD2O3Qkn23NWdGKFlxRZT0CQOZ9x2C5yHt
+ zm4MMjp23yN+pWaHxj6QUxrA+gwUeNw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-394-3s4NMAgnPNmdVO54v_e28g-1; Mon, 17 Aug 2020 07:07:30 -0400
-X-MC-Unique: 3s4NMAgnPNmdVO54v_e28g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-119-NT3dYcISNhimy24ocLRVKQ-1; Mon, 17 Aug 2020 07:10:29 -0400
+X-MC-Unique: NT3dYcISNhimy24ocLRVKQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 25F713FF8;
- Mon, 17 Aug 2020 11:07:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 29B3A801AC3;
+ Mon, 17 Aug 2020 11:10:28 +0000 (UTC)
 Received: from linux.fritz.box (ovpn-112-160.ams2.redhat.com [10.36.112.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 234AC19D7D;
- Mon, 17 Aug 2020 11:07:26 +0000 (UTC)
-Date: Mon, 17 Aug 2020 13:07:25 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 19E71784A2;
+ Mon, 17 Aug 2020 11:10:25 +0000 (UTC)
+Date: Mon, 17 Aug 2020 13:10:24 +0200
 From: Kevin Wolf <kwolf@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>,
@@ -41,14 +41,13 @@ Cc: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>,
  qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Max Reitz <mreitz@redhat.com>
-Subject: Re: [PATCH 1/7] block/null: Make more explicit the driver default
- size is 1GiB
-Message-ID: <20200817110725.GE11402@linux.fritz.box>
+Subject: Re: [PATCH 2/7] hw/ide/core: Trivial typo fix
+Message-ID: <20200817111024.GF11402@linux.fritz.box>
 References: <20200814082841.27000-1-f4bug@amsat.org>
- <20200814082841.27000-2-f4bug@amsat.org>
+ <20200814082841.27000-3-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200814082841.27000-2-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20200814082841.27000-3-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
 X-Mimecast-Spam-Score: 0.001
@@ -56,17 +55,17 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/17 05:03:47
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/17 00:24:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,41 +78,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Aug 2020 11:07:36 -0000
+X-List-Received-Date: Mon, 17 Aug 2020 11:10:39 -0000
 
 Am 14.08.2020 um 10:28 hat Philippe Mathieu-Daudé geschrieben:
-> As it is not obvious the default size for the null block driver
-> is 1 GiB, replace the obfuscated '1 << 30' magic value by a
-> definition using IEC binary prefixes.
-> 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  block/null.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/block/null.c b/block/null.c
-> index 15e1d56746..8354def367 100644
-> --- a/block/null.c
-> +++ b/block/null.c
-> @@ -11,6 +11,7 @@
->   */
->  
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qapi/qmp/qdict.h"
->  #include "qapi/qmp/qstring.h"
-> @@ -21,6 +22,7 @@
->  
->  #define NULL_OPT_LATENCY "latency-ns"
->  #define NULL_OPT_ZEROES  "read-zeroes"
-> +#define NULL_OPT_SIZE    (1 * GiB)
 
-Let's use a different naming schema for option names and option default
-values, and an empty line between the definition for both. The way this
-patch has it, it looks like another option name until you look at the
-actual value.
-
-Kevin
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
 
