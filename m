@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k82l0-0006gG-FQ
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Aug 2020 10:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40628)
+	id 1k82l3-0006ns-8B
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Aug 2020 10:38:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k82ky-0006ac-A2; Tue, 18 Aug 2020 10:38:32 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42142)
+ id 1k82l0-0006h6-Ng; Tue, 18 Aug 2020 10:38:34 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37226)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k82kw-0002yt-MT; Tue, 18 Aug 2020 10:38:31 -0400
-Received: by mail-wr1-x443.google.com with SMTP id r4so18476509wrx.9;
- Tue, 18 Aug 2020 07:38:29 -0700 (PDT)
+ id 1k82ky-0002z5-V1; Tue, 18 Aug 2020 10:38:34 -0400
+Received: by mail-wm1-x343.google.com with SMTP id k8so17248198wma.2;
+ Tue, 18 Aug 2020 07:38:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y9Bd2jpxuNuhoVUEDpWdgjoBSmiOW5VBx9T24Qn6sLM=;
- b=jKtq+lEWGxa6CIR/mPKPYdLGwbZidu0flZWPy7qLJk9n7SjrqM1bI6WZxqLKyQPDF0
- g55DA8zhSYDjgzeZa5bpjGj5ga66Bl24MfhkKd3yPzruL0EgeyE2QJiRN0S/CBKikuv6
- 8NQF3DLbntnsjOhMGVS4ibpo2kuWgYwrBBixJXp3f6z3fiI9e6AdUMod4Apw31Usly42
- PeXsminY8X8kns9qjBWU0G3jJ6i6rvaO91+D10qA4UebeOvFfOIOsQoJ9vKcmJfo0r8P
- pHFRkuDUVgB4ipOiRj/aTrdL+FN6FOBPJpu6Zp7AvSu7i552W3/nex0iOZLfA+5rXJdL
- JJag==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=G/uCLWaQ9/GC6p92u4AC2/fMAZX9rQveSBzhpBtS05w=;
+ b=VpCm3KD8qjtSjgc0szFsLzm2liuitP2rGzNRyHCDmQMvvBjHOq98rif2bpQI377kRt
+ 6WxnFngKIFULlLXjkr05raic3JBRI2RXFI/J5C/jAWLmNu38aQEb5dLczfAmTOFqmt9s
+ d1DNRgGgyaeROUhoN8/CXSzUoGAqhxijh/1nKa+NzjB3hiUr5D63JG8JM7WfyalZIYbF
+ AmhaByNf6BiznD99ISkxmexhCBumANSsCsucJJyHqJHDr2H93kv0G+LdNKON2Bp4cO9s
+ nDcMqqsNFbeVgfxsCGON09bXnSlQ/KF0aa0cTH+dkABNr4epW2sABCg8fHg0qTjbS2Yn
+ eMlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=y9Bd2jpxuNuhoVUEDpWdgjoBSmiOW5VBx9T24Qn6sLM=;
- b=emN4GLDoqAeSL/0J6HYotnfViISW+/JXJBdUe4/zd5G0rVvcwdrbP5C8r5QxFQDhbM
- KlrMpesyeM6355bMyz4iAZZJIY10QMkree+P7nWXgpTxqbOttfYmcjm760ukx8jTjQwv
- CzDDKlkLGBDxytAQ1IE+yBer4iesNWwbIK38OQFVwfdFuWHYZn9gAtq9R23jY4nQvhJB
- XYKKJ24atq+HOrdF7IdGH4mK4fn5N4AUGxg7QyuxGT3bFuQD//e97nzQorgGCHe3zlFk
- p85tFTOpWzoKW2VTDL7OCNTT7VM8pBqXtrjvwZGKBo1v30zoB4Uvth251PkXxlnprFoi
- ABTg==
-X-Gm-Message-State: AOAM531m8jxbfxESB9lwQwux2YhkZPSIFBPL4TEskwg3umLMXo/dsjsB
- vgP7JyerHcUkqRbGR9lS1dQAymlBZuM=
-X-Google-Smtp-Source: ABdhPJzUgHxXWUZv2OmnIyqs8mG3Z96ND21xUYkcBkhXK83eryol/GvcJtISmFNav/c1hFPU1okrIg==
-X-Received: by 2002:adf:e504:: with SMTP id j4mr21050257wrm.205.1597761507948; 
- Tue, 18 Aug 2020 07:38:27 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=G/uCLWaQ9/GC6p92u4AC2/fMAZX9rQveSBzhpBtS05w=;
+ b=Wi0g54HVMhNVoD/7vvNmpv1cHJX3usJ+ZqDf2lU/iRfT8O880F1jXIGWH7B6AodjAd
+ taekXWMZF7QcptXsTDHeTxcZ971GSlP/FlmBz4UiWYwA9b8Xj33AyKR4b/7JUWQbLqVm
+ n2X6V5OXba4chgvpIMCUzkv5uWphYRZKNqfYCDPKXHLS35WU8tMGE0J9cqwKP75Z6kjY
+ 1zWqRygcBJTmNk4CTat6TsqNWqrR3xaSBjMeYM/oz1RJykGcQiWC6kUsgnAebFRHirrT
+ L/KoqqP4/lRJbj374jU091UoYetYRW/WkE5AvCR6fyhxiAMsYm+2b0ybCWkjijZIXLq+
+ Ut2w==
+X-Gm-Message-State: AOAM531adJnnCk//5Y6xAp2CnjW+E9T2G5lAe7ajBAtnx+kEXdCXn+/q
+ abXhuwUaiXZmLJbHnb/oRq6A4Ioc8RA=
+X-Google-Smtp-Source: ABdhPJxBdZMHsQ13wn4Jn4/vvkn9clMjwCUoscXSZQhed/ngWCJJ1shX8Y4YY5mUcoNpkpBa6BsNOA==
+X-Received: by 2002:a1c:f416:: with SMTP id z22mr250551wma.62.1597761509689;
+ Tue, 18 Aug 2020 07:38:29 -0700 (PDT)
 Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id z8sm139177wmf.42.2020.08.18.07.38.26
+ by smtp.gmail.com with ESMTPSA id z8sm139177wmf.42.2020.08.18.07.38.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Aug 2020 07:38:27 -0700 (PDT)
+ Tue, 18 Aug 2020 07:38:28 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -50,16 +50,19 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 0/2] hw/core: Make qdev_pass_gpios/sysbus_pass_irq arguments
+Subject: [PATCH 1/2] hw/core/qdev: Make qdev_pass_gpios() arguments
  self-describing
-Date: Tue, 18 Aug 2020 16:38:23 +0200
-Message-Id: <20200818143825.691110-1-f4bug@amsat.org>
+Date: Tue, 18 Aug 2020 16:38:24 +0200
+Message-Id: <20200818143825.691110-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200818143825.691110-1-f4bug@amsat.org>
+References: <20200818143825.691110-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -81,27 +84,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Aug 2020 14:38:33 -0000
+X-List-Received-Date: Tue, 18 Aug 2020 14:38:35 -0000
 
-Simply rename qdev_pass_gpios() and sysbus_pass_irq() arguments using
-self-describing names, to make the direction the GPIO/IRQ lines are
-passed obvious.
+Make the direction qdev_pass_gpios() pass the GPIOs more obvious
+by renaming its arguments as 'from_dev' and 'to_container'.
 
-Note, currently each function arguments are inverted :)
-
-- qdev_pass_gpios: (from -> to)
-- sysbus_pass_irq: (to -> from)
-
-Philippe Mathieu-Daudé (2):
-  hw/core/qdev: Make qdev_pass_gpios() arguments self-describing
-  hw/core/sysbus: Make sysbus_pass_irq() arguments self-describing
-
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
  include/hw/qdev-core.h | 10 +++++-----
- include/hw/sysbus.h    |  7 ++++++-
  hw/core/qdev.c         | 14 +++++++-------
- hw/core/sysbus.c       |  5 ++---
- 4 files changed, 20 insertions(+), 16 deletions(-)
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index ea3f73a282d..c72d4db2d26 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -643,8 +643,8 @@ static inline void qdev_init_gpio_in_named(DeviceState *dev,
+ 
+ /**
+  * qdev_pass_gpios: create GPIO lines on container which pass through to device
+- * @dev: Device which has GPIO lines
+- * @container: Container device which needs to expose them
++ * @from_dev: Device which has GPIO lines
++ * @to_container: Container device which needs to expose them
+  * @name: Name of GPIO array to pass through (NULL for the anonymous GPIO array)
+  *
+  * In QEMU, complicated devices like SoCs are often modelled with a
+@@ -653,14 +653,14 @@ static inline void qdev_init_gpio_in_named(DeviceState *dev,
+  * to create GPIO arrays on itself which simply pass through to a GPIO
+  * array of one of its internal devices.
+  *
+- * If @dev has both input and output GPIOs named @name then both will
++ * If @from_dev has both input and output GPIOs named @name then both will
+  * be passed through. It is not possible to pass a subset of the array
+  * with this function.
+  *
+- * To users of the container device, the GPIO array created on @container
++ * To users of the container device, the GPIO array created on @to_container
+  * behaves exactly like any other.
+  */
+-void qdev_pass_gpios(DeviceState *dev, DeviceState *container,
++void qdev_pass_gpios(DeviceState *from_dev, DeviceState *to_container,
+                      const char *name);
+ 
+ BusState *qdev_get_parent_bus(DeviceState *dev);
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 96772a15bd5..79cbd990114 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -576,30 +576,30 @@ void qdev_connect_gpio_out(DeviceState * dev, int n, qemu_irq pin)
+     qdev_connect_gpio_out_named(dev, NULL, n, pin);
+ }
+ 
+-void qdev_pass_gpios(DeviceState *dev, DeviceState *container,
++void qdev_pass_gpios(DeviceState *from_dev, DeviceState *to_container,
+                      const char *name)
+ {
+     int i;
+-    NamedGPIOList *ngl = qdev_get_named_gpio_list(dev, name);
++    NamedGPIOList *ngl = qdev_get_named_gpio_list(from_dev, name);
+ 
+     for (i = 0; i < ngl->num_in; i++) {
+         const char *nm = ngl->name ? ngl->name : "unnamed-gpio-in";
+         char *propname = g_strdup_printf("%s[%d]", nm, i);
+ 
+-        object_property_add_alias(OBJECT(container), propname,
+-                                  OBJECT(dev), propname);
++        object_property_add_alias(OBJECT(to_container), propname,
++                                  OBJECT(from_dev), propname);
+         g_free(propname);
+     }
+     for (i = 0; i < ngl->num_out; i++) {
+         const char *nm = ngl->name ? ngl->name : "unnamed-gpio-out";
+         char *propname = g_strdup_printf("%s[%d]", nm, i);
+ 
+-        object_property_add_alias(OBJECT(container), propname,
+-                                  OBJECT(dev), propname);
++        object_property_add_alias(OBJECT(to_container), propname,
++                                  OBJECT(from_dev), propname);
+         g_free(propname);
+     }
+     QLIST_REMOVE(ngl, node);
+-    QLIST_INSERT_HEAD(&container->gpios, ngl, node);
++    QLIST_INSERT_HEAD(&to_container->gpios, ngl, node);
+ }
+ 
+ BusState *qdev_get_child_bus(DeviceState *dev, const char *name)
 -- 
 2.26.2
 
