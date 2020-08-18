@@ -1,73 +1,110 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k7fks-0000E3-76
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Aug 2020 10:04:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60352)
+	id 1k7pQf-00037e-BK
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Aug 2020 20:24:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1k7fkp-000091-US; Mon, 17 Aug 2020 10:04:51 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:40705)
+ (Exim 4.90_1) (envelope-from <rth7680@gmail.com>)
+ id 1k7pQd-00037F-6p; Mon, 17 Aug 2020 20:24:39 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33667)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1k7fko-0001o7-Ki; Mon, 17 Aug 2020 10:04:51 -0400
-Received: by mail-lf1-x141.google.com with SMTP id m15so8424262lfp.7;
- Mon, 17 Aug 2020 07:04:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <rth7680@gmail.com>)
+ id 1k7pQb-0002Eu-HX; Mon, 17 Aug 2020 20:24:38 -0400
+Received: by mail-pg1-x541.google.com with SMTP id o13so8926294pgf.0;
+ Mon, 17 Aug 2020 17:24:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=N+rLV/pWq3xQfAoGrL1v7pEpSGtwzgoBoIc3nou5BHY=;
- b=A7t0BmXnX8T9MseHJmWpvczP/H3qP19J/giAhcg3xWzXblelPftzEoh7nwJLPM7oi1
- ezkuzT6QD6/lBSP3Hnv4z6L0CoiomkHX3PjT1XJsQb6+pLU6OwT0FqTy0+SC9EN8AREB
- xO3vGQELKI/PUkNn+QEPnWtRQ0eDR6u8f3wEs/h0TVbKFlMPoIc+1ULJqANVxqNSdOQj
- D2zEBXQtgK+DXZTuXLg0K2NpC/IYj7RuMmnu31yn4Z+GKh/APtG/3cBSZPTegVpEFGu0
- ysf5Yf8p4Z/qYaVBNnFYcLF+Au+38RdcBeQVlTewE1t4CqAgewSM1MCxywMdpPOnZI2m
- TS3A==
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ase5rRBUbnbuHrlRhQDaafwg3DgMFwynlle6JLSY124=;
+ b=aGUgvyUG8YIA5cEinsogjthct0fkP1hd8SaY/dPJ+LW8kpcDpOC0rOn+gOLiorUps3
+ URAfBj28ifl/KWbWv+eT0T0ggzAKpuSkuaHM3D1wZQsqksWbSoWwCSS9rKOHOasWg50L
+ x8HIeTLgRC6uniqkCS2mrUBxJ5+cxakeC9UJ2raxDoEja0g2m3vh5kYqYo0V3vDQROcC
+ ypu3OCEjvWrZmkn2upXq+R7YUTBgmZOdVdkcNv3R70iQxV8Tqq2YyvbDxxoDcXwsJ1Qj
+ 8LdZoIBOxDNmNUr4zZl/PEJ9kBqnqOoGq5jmBVNIE+MuT0dsAJYBj0S4/YezytvXkL9V
+ FLYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=N+rLV/pWq3xQfAoGrL1v7pEpSGtwzgoBoIc3nou5BHY=;
- b=RTL9hah1thHQXNUYaGKFfvUZY4PWCBTMCxo8Cgh6PAKW8JsxJmDcu7v/sAtr3/ab4H
- yMFolCfYFeeg6ZJZfUG5PuIC3Lol1WueDAr6/uUuhq4sO3T5X8YEs3mOIPx8XIQLDmxw
- HgAUiWvNARvrVwEFDzZz1zxfdOHwfWiIgFQ9hq8LB/mlpl5spZIms9PO3QFbVTl/SCz6
- UR7Vye6MzIBpd8PQ2OomuvYtXaMkc+RERTWFDlXatMHmmVQLTWdrHpHNtqf7Limil4M3
- iYfzlwQgXrTWBZOUOasToDpfAjF/dM4HIQe77BZ1uMSnzVW7dYI+wXr/cBPDKDhfZGy6
- tLVg==
-X-Gm-Message-State: AOAM530+MbzctdkFWjP/g727AWUx3+SGBdAkcnMmE7ysHRw9TDcxa1B9
- 6kOF6efkdrYtuDmrDP4Qp5s=
-X-Google-Smtp-Source: ABdhPJzGPRyR4Y6sJpSC9ECCkHUz/eNuZOFZxxad7brrgvkFxV7Y/6v3mHp+dryA7auirFYsJhPo7w==
-X-Received: by 2002:a19:6b0e:: with SMTP id d14mr7452029lfa.103.1597673088134; 
- Mon, 17 Aug 2020 07:04:48 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id h7sm5055641ljc.75.2020.08.17.07.04.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 07:04:47 -0700 (PDT)
-Date: Mon, 17 Aug 2020 16:04:46 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH] hw/net/xilinx_axienet: Remove unused code
-Message-ID: <20200817140446.GC2954729@toto>
-References: <20200814133007.16850-1-f4bug@amsat.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=ase5rRBUbnbuHrlRhQDaafwg3DgMFwynlle6JLSY124=;
+ b=eIpDDYnusnRhyFiUuO16wDRSQRp8BAt0OjBqNz9a7ggsfaCNXHqxkm6faffS1nW9QF
+ yNpScxkAFX9NucUBkLwzQPs4Isfz/EE+cUEym8p+sKJPmtTMBHcZRI9974csXLXbQI6i
+ AvjGKuMamJ/ymAYnKy5gS4nxNb717upxT7n9Pmof4Ou/W3c/IrNd0DjmvYhM8l7qedR6
+ 9KMVySU4uRSRiRG9V7YC0yIIMjHws/k5DOGfh7iHfPFRUhIyRxm1AvN/uisGu91ZKaTT
+ Rq7pI0jly9Kui7+K9T+wD8fm2wk8y1ALWY4JCrEAz5wMS+zkzdXt9auD/Pw2K8DXAtqm
+ OnUg==
+X-Gm-Message-State: AOAM532t46+Tf4NnLB4yiB4Eto5/lZ/Sz1iOOcIP5LVUjaUpRpsd4K52
+ wj/0+fRRrRFYYsAH9Q62l7E=
+X-Google-Smtp-Source: ABdhPJxzElF/cX8QSp8x2Qf4Hi06uS4qTrqgOc2f6UlwwB21amj5UJaY3p7+/EF1OFnWAWPZyTgbQg==
+X-Received: by 2002:aa7:9493:: with SMTP id z19mr13344132pfk.190.1597710274289; 
+ Mon, 17 Aug 2020 17:24:34 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.googlemail.com with ESMTPSA id
+ u14sm21891238pfm.103.2020.08.17.17.24.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Aug 2020 17:24:32 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH 08/11] tcg/optimize: Remove redundant statement in
+ tcg_optimize()
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Cc: Pannengyuan <pannengyuan@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-9-kuhn.chenqun@huawei.com>
+ <800035ed-a522-a974-1c1d-437efe7ff25b@linaro.org>
+ <7412CDE03601674DA8197E2EBD8937E83B8B60E4@dggemm531-mbx.china.huawei.com>
+From: Richard Henderson <rth@twiddle.net>
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+ mQENBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+ n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+ rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+ Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+ n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+ AAG0I1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+iQFYBBMBAgBCAhsDBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAIZARYhBJyxjdr46EmtKvwWpK0ScMxN0CebBQJdweUY
+ BQkP1h/pAAoJEK0ScMxN0CebqDsH/0YyfnXk+Dc++H37VCEKgRet2i1ATFzxRnifkvmdxha0
+ V+PVptQ2fwSe+w3KxoFecD8W75nysmUjrU/FicW9yU5YRlGONPZjruG02/KzmhA5PzWJdYO3
+ i/t0qRayvWIcX2qA/flsXEbmb/BbAFM05LQIdcOu74eiBFe5CBCOWBDJeneE1urIE0hSYxoh
+ nCcG60ULrNj13ohZ4zAEluoY32qIo7/OPWmtR88cPrEbZT8k+RqgZbsotzaPT1/RlL74fL8k
+ ofYfTgKAFH7eEy6fF2nzDp2GThVn+3sA62xtpSXUf/X1m75B40KOcq1EQbHypNTmBc1wt13e
+ ibhPNEVX2am5AQ0EUa4sLwEIALITHfH3gciRNfQIe7awDTDvn6H3C6gDyCAnv5LiuLTLZiyK
+ NZp3lNO3rPowyKrGT2RIDlumlqPgdeHzqEEX91YK0yk2vdFvwU04rJ4D+qRgdUPoeICLD1zo
+ PwOv2FaY6Tf8dKYas1RHF5QU5yQNey8j7IYYoE2yGPn2PtBmvtmK4iLataUEvx0U385Zr+jf
+ HscqwTiToryeDC8Io/9BsMvAssE5Yf5URS2nJ7LFOvc4njsQJPF1i9egBXaIloqv7p2hVCKJ
+ Hl5UWIxitQ9QQIl6iU4LCpz8mVYTXwv48IAVpbUf7+ak9V9Kk3jCeQnlxCJBUHjUhoIzinbS
+ JHPHtkkAEQEAAYkBPAQYAQIAJgIbDBYhBJyxjdr46EmtKvwWpK0ScMxN0CebBQJdweVIBQkP
+ 1iAZAAoJEK0ScMxN0CebGHUH/RtouOlWl6To97tQsTJUq/2YwmRpFOsvV0/zCX4fKBGAbeZi
+ VaELSt2+3UEErA+n8HwbQmjJ6IrdhA9GustOpOyCcbLVSMwql/OlAwBtDzCcC8dTU4zcuY2a
+ rGG2A8i5krU85G9r1wowVcWZBsdmW7/dKiNoadLQiig4bHNiSaV4ograas5efyEjqTxiY+yG
+ hzPw5DK2kbp2co8iDF1vW0LWPeLFBinCgItcI9LvgHWaB3rwjOfvNpMn5m64SoQYHB8wbnid
+ erAjOzkBzmqnfS1tAUr8mtESStEwrEmNv0ZoA6S0Wt+c9pyTr+BpG4OFlhj7ZI+Eh7zOrr33
+ q9OBIdA=
+Message-ID: <5d0a7f5c-1291-6330-9aad-bdea5b59a707@twiddle.net>
+Date: Mon, 17 Aug 2020 17:24:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200814133007.16850-1-f4bug@amsat.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::141;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x141.google.com
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B8B60E4@dggemm531-mbx.china.huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=rth7680@gmail.com; helo=mail-pg1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FSL_HELO_FAKE=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: 3
+X-Spam_score: 0.3
+X-Spam_bar: /
+X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,63 +117,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Aug 2020 14:04:52 -0000
+X-List-Received-Date: Tue, 18 Aug 2020 00:24:39 -0000
 
-On Fri, Aug 14, 2020 at 03:30:07PM +0200, Philippe Mathieu-Daudé wrote:
-> Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
-> definition is unused.  Remove unused code.
+On 8/17/20 6:04 AM, Chenqun (kuhn) wrote:
+> Other branches(eg:' CASE_OP_32_64(brcond)') have changed the opc value too. Do we need to assign a value to nb_iargs for it?
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+In those cases nb_iargs does not change.
 
 
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/net/xilinx_axienet.c | 23 -----------------------
->  1 file changed, 23 deletions(-)
-> 
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 1e48eb70c9..2e89f236b4 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -54,7 +54,6 @@
->       TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
->  
->  /* Advertisement control register. */
-> -#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
->  #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  */
->  #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex */
->  #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex */
-> @@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
->  }
->  
->  struct MDIOBus {
-> -    /* bus.  */
-> -    int mdc;
-> -    int mdio;
-> -
-> -    /* decoder.  */
-> -    enum {
-> -        PREAMBLE,
-> -        SOF,
-> -        OPC,
-> -        ADDR,
-> -        REQ,
-> -        TURNAROUND,
-> -        DATA
-> -    } state;
-> -    unsigned int drive;
-> -
-> -    unsigned int cnt;
-> -    unsigned int addr;
-> -    unsigned int opc;
-> -    unsigned int req;
-> -    unsigned int data;
-> -
->      struct PHY *devs[32];
->  };
->  
-> -- 
-> 2.21.3
-> 
+r~
 
