@@ -1,77 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k82l3-0006ol-Ii
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Aug 2020 10:38:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40652)
+	id 1k8Lvb-0001ZK-Q0
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Aug 2020 07:06:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k82l0-0006hR-Ra; Tue, 18 Aug 2020 10:38:34 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35158)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k82kz-0002z7-4W; Tue, 18 Aug 2020 10:38:34 -0400
-Received: by mail-wm1-x344.google.com with SMTP id 184so17254393wmb.0;
- Tue, 18 Aug 2020 07:38:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=HBZVH8DbVP87G8OaAytsCzNyqaW3XTQSsMrdJGsu7lU=;
- b=DAG1SOSgzbawLFIyLqQg+HKeKRdOSXKBIsnafrvB5VE82XeY1NItAkJ07Db8Wd72xX
- 8KHbBHMYAepStJUVH1AeAgu20ULsvWl8Jg4pj2vmlzIDsH/QqxlqHm/xqj1unu2Yz6sS
- c9cT+HHq2DdOXNe3vhrGgY727CsPe2qXgZgiigibSDPHS0LxiwSlMiOaNqNKr/IeOY57
- Q8rbvNGWTub4diRI3oKJ2HAx39FA5LFGqifAQjvGG1Xqy6bMSr57OB7O4zEE6A4Oi29a
- CGkikf8OxYLhKWm6puKoiiGTp9Ch1VNPQCAKVJtRN8swgTOkzM8q+30uMNjf8nyNzuOp
- aUJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=HBZVH8DbVP87G8OaAytsCzNyqaW3XTQSsMrdJGsu7lU=;
- b=gxcdXkpW2DVQbV30fEachprr/eaDWG00cxG3ualsZ78Hjdw28qpmCB2lpDqOgAnk5+
- +jgNtT494CnLQ/wFKtyrfpXGn7F73W6hIwY/BiSxw3fqW1ahUZOIJF+6uHROdMGPPAjV
- XzaQ4a8QihTQTmgIbGsPEOZ3dAFWuqRGCoem0Kb6Brho/YEf3ZwqNS+0Tz71B6tGXLA3
- UfHRtvEvaTMkQPTZcpYAR9sERRKVAXMuAs422IBSXF+nzLJFBRnE5pKfYMFw5fgPp05F
- XHXOFMThupis66PlFwqH4EVslK6EnX2KFraJZ/hdPmL2SUnw3bDl4qBWkwsbWlHbqhTQ
- E9jQ==
-X-Gm-Message-State: AOAM533ivht/dUYmK6pVrAS/Zxv75rdqpdIV5aXe0OAj7bXrDd3g6y5N
- 9jIPPWzzTPCiOR0kuA3l20B9smVlNBU=
-X-Google-Smtp-Source: ABdhPJzeATk3WZykFmKe/Kx+k1ecCKzD6QnmiAlprd2fKDp2brjhbVf69J6rHzTFJzQVDBO3GwP9kA==
-X-Received: by 2002:a1c:b787:: with SMTP id h129mr220955wmf.93.1597761510886; 
- Tue, 18 Aug 2020 07:38:30 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id z8sm139177wmf.42.2020.08.18.07.38.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Aug 2020 07:38:30 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/2] hw/core/sysbus: Make sysbus_pass_irq() arguments
- self-describing
-Date: Tue, 18 Aug 2020 16:38:25 +0200
-Message-Id: <20200818143825.691110-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200818143825.691110-1-f4bug@amsat.org>
-References: <20200818143825.691110-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k8Lva-0001Xn-Eb
+ for qemu-trivial@nongnu.org; Wed, 19 Aug 2020 07:06:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60254)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k8LvX-0006aW-Ll
+ for qemu-trivial@nongnu.org; Wed, 19 Aug 2020 07:06:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597835202;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=awSgDr+zzbPKf8mSaJKIeRgyTzSxIEzRCTWBG0eezQk=;
+ b=ff4BKk+h2H4hZ+HW/sHDXSqBNSKvw5VYmZN4zydoR/sHLrNmX6JSIYqfwKVEAZt8FacFRp
+ WofiZ4yD7vSaNWvWLzLMissAoL4S3vhXYS5bqyvG6VJuMhwInnORaC/vYFBOBfPvaVKxP0
+ zkHswiOa+WWZdttaWARRl4ZDHpOw/Aw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-46-GVdjY_SnPPOzUY5tzpXC0w-1; Wed, 19 Aug 2020 07:06:38 -0400
+X-MC-Unique: GVdjY_SnPPOzUY5tzpXC0w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3BD0881F02B;
+ Wed, 19 Aug 2020 11:06:37 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 80EDB7BE8F;
+ Wed, 19 Aug 2020 11:06:30 +0000 (UTC)
+Date: Wed, 19 Aug 2020 13:06:28 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com, "Michael S.
+ Tsirkin" <mst@redhat.com>, pannengyuan@huawei.com, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, Euler Robot
+ <euler.robot@huawei.com>
+Subject: Re: [PATCH 01/11] hw/arm/virt-acpi-build:Remove dead assignment in
+ build_madt()
+Message-ID: <20200819130628.2c2018db@redhat.com>
+In-Reply-To: <20200813073712.4001404-2-kuhn.chenqun@huawei.com>
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-2-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 06:57:45
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,53 +79,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Aug 2020 14:38:35 -0000
+X-List-Received-Date: Wed, 19 Aug 2020 11:06:46 -0000
 
-Make the direction sysbus_pass_irq() pass the GPIOs more obvious
-by renaming its arguments as 'from_dev' and 'to_dev'.
+On Thu, 13 Aug 2020 15:37:02 +0800
+Chen Qun <kuhn.chenqun@huawei.com> wrote:
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/sysbus.h | 7 ++++++-
- hw/core/sysbus.c    | 5 ++---
- 2 files changed, 8 insertions(+), 4 deletions(-)
+> Clang static code analyzer show warning:
+> hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
+>     madt = acpi_data_push(table_data, sizeof *madt);
+>     ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index da9f85c58ce..65de6f6b062 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -73,7 +73,12 @@ typedef void FindSysbusDeviceFunc(SysBusDevice *sbdev, void *opaque);
- void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory);
- MemoryRegion *sysbus_mmio_get_region(SysBusDevice *dev, int n);
- void sysbus_init_irq(SysBusDevice *dev, qemu_irq *p);
--void sysbus_pass_irq(SysBusDevice *dev, SysBusDevice *target);
-+/**
-+ * sysbus_pass_irq: Pass through IRQ/GPIO lines from one to another device
-+ * @to_dev: Device which needs to expose IRQ/GPIO lines
-+ * @from_dev: Device which has the IRQ/GPIO lines
-+ */
-+void sysbus_pass_irq(SysBusDevice *to_dev, SysBusDevice *from_dev);
- void sysbus_init_ioports(SysBusDevice *dev, uint32_t ioport, uint32_t size);
- 
- 
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 70239b7e7d0..bc23a66b5c5 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -181,10 +181,9 @@ void sysbus_init_irq(SysBusDevice *dev, qemu_irq *p)
-     qdev_init_gpio_out_named(DEVICE(dev), p, SYSBUS_DEVICE_GPIO_IRQ, 1);
- }
- 
--/* Pass IRQs from a target device.  */
--void sysbus_pass_irq(SysBusDevice *dev, SysBusDevice *target)
-+void sysbus_pass_irq(SysBusDevice *to_dev, SysBusDevice *from_dev)
- {
--    qdev_pass_gpios(DEVICE(target), DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ);
-+    qdev_pass_gpios(DEVICE(from_dev), DEVICE(to_dev), SYSBUS_DEVICE_GPIO_IRQ);
- }
- 
- void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
--- 
-2.26.2
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: qemu-arm@nongnu.org
+> ---
+>  hw/arm/virt-acpi-build.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 91f0df7b13..f830f9b779 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      int madt_start = table_data->len;
+>      const MemMapEntry *memmap = vms->memmap;
+>      const int *irqmap = vms->irqmap;
+> -    AcpiMultipleApicTable *madt;
+>      AcpiMadtGenericDistributor *gicd;
+>      AcpiMadtGenericMsiFrame *gic_msi;
+>      int i;
+>  
+> -    madt = acpi_data_push(table_data, sizeof *madt);
+> +    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+>  
+>      gicd = acpi_data_push(table_data, sizeof *gicd);
+>      gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
 
 
