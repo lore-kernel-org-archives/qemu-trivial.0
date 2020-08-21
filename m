@@ -1,57 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k90yY-0004pM-NJ
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Aug 2020 02:56:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45826)
+	id 1k98cL-0002AN-FG
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Aug 2020 11:06:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k90yX-0004p9-Ak
- for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 02:56:33 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20096
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k98cK-00028c-HX
+ for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 11:06:08 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:57006
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k90yV-0002zq-48
- for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 02:56:32 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k98cG-0003Ov-IT
+ for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 11:06:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597992990;
+ s=mimecast20190719; t=1598022363;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eplYnJPmrBJeua4GuNUO+w+oSFMM2xUFoSfOU+C1uJY=;
- b=gcGJy2FP3LL1lG6hF3ahW5WIK0NlynfAvIcHh45Gv2rWIjlUZ01k7fAe7YQ9Uz5RIb+1uX
- PNydN4zP5EmhFmd26080qdik5fhEgUFH/eP+nRJ3tUHdUGfTWD8gKk3QTd660Q5Dbj38Ur
- DJjOQATPCcm1/c8W6zgzNis3MFD9Ivk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-uzojvARaN7iF9EjTX1FXkA-1; Fri, 21 Aug 2020 02:56:26 -0400
-X-MC-Unique: uzojvARaN7iF9EjTX1FXkA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFC24107464D;
- Fri, 21 Aug 2020 06:56:25 +0000 (UTC)
-Received: from gondolin (ovpn-113-4.ams2.redhat.com [10.36.113.4])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BA15119C78;
- Fri, 21 Aug 2020 06:56:21 +0000 (UTC)
-Date: Fri, 21 Aug 2020 08:56:19 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Stefan Hajnoczi
- <stefanha@redhat.com>
-Subject: Re: [PATCH] util/vfio-helpers: Unify trace-events size format
-Message-ID: <20200821085619.030d496f.cohuck@redhat.com>
-In-Reply-To: <20200820171006.1140228-1-philmd@redhat.com>
-References: <20200820171006.1140228-1-philmd@redhat.com>
-Organization: Red Hat GmbH
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Qus6fiddFzAKKm0LdJubRUv/SENFgdRTO2lacblbVgc=;
+ b=PpqWQr0LJ3NFBpm5xv3f4qZnP+lL3fQ9IZzRDfQO4PWdU88A/wtGJEqFCM+p5cFUPwY8yr
+ qbxpWUBPD/D69Wr3ESsHKGhv/5mkIuFCe5SNrez0zLfeZ4fausytW1G2i8AorLtd4Uhgxn
+ nHXxK7e6aC96c/wSO0QRCKxgOk9ATUI=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-280-w5JLZTrnOb-dWXoTcowN6Q-1; Fri, 21 Aug 2020 11:06:00 -0400
+X-MC-Unique: w5JLZTrnOb-dWXoTcowN6Q-1
+Received: by mail-wr1-f70.google.com with SMTP id o10so625814wrs.21
+ for <qemu-trivial@nongnu.org>; Fri, 21 Aug 2020 08:06:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Qus6fiddFzAKKm0LdJubRUv/SENFgdRTO2lacblbVgc=;
+ b=Uk/54KceOal5ej5oj32yLX92oM/ZbTmSKul4/mpd+KVLJ7bhLxCaohoWvY/l1OF0eW
+ 3Z10BkSkHdME32pt5wLMNSbalgtvHsgg9emynyb6HxLnJGjxfMs92nN4fco59arBBzVX
+ 4NPXUhXBZpyomRvRJCw0bsDIUivCB8Lxcp4ki5QiwVigAtNIyAGwT74uQ8amsIi3Oze1
+ FriX1VlJbhufLiWL/GVB3WruqNtUUFrSF3fEwbpYgx1wTE7ZxebuQoVBl1lEK/URw9YO
+ 36qCvbE9PIQwkIxTBA8dAs2Y5G4rP+N+GaNCDE6I0Pz25V9k3SCcMVVzyGgI1FbpwMFk
+ BqLQ==
+X-Gm-Message-State: AOAM533iL0Wn7lo/VxMcSeeJLGd7eLXK4VgMm/IR71APoIiXMokhEG4V
+ ehSFSq6cmSgewltGL5W59tvE4jhyFBjFC6Rigj5izkT1cHQ/fl5nDgzn5c/KhykRPlyKahVdyXA
+ /OWSWrd8eYepxUN3LGQ==
+X-Received: by 2002:a1c:23c4:: with SMTP id j187mr3708863wmj.58.1598022359416; 
+ Fri, 21 Aug 2020 08:05:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtOrtIyy/ch39NtBFYQ11yTa5712V4QHzKIOANQmUltIP7zbq/a25ZK3Jie0IzTwPxQTIfIQ==
+X-Received: by 2002:a1c:23c4:: with SMTP id j187mr3708832wmj.58.1598022359028; 
+ Fri, 21 Aug 2020 08:05:59 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id v8sm2728914wrm.53.2020.08.21.08.05.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Aug 2020 08:05:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] meson: Fix --disable-tools --enable-system builds
+Date: Fri, 21 Aug 2020 17:05:56 +0200
+Message-Id: <20200821150556.1235625-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=cohuck@redhat.com;
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
  helo=us-smtp-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 23:41:39
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -61,7 +76,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,41 +89,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Aug 2020 06:56:33 -0000
+X-List-Received-Date: Fri, 21 Aug 2020 15:06:08 -0000
 
-On Thu, 20 Aug 2020 19:10:06 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+Fixes:
 
-> Some 'qemu_vfio_*' trace events sizes are displayed using
-> decimal notation, other using hexadecimal notation:
->=20
->   qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4=
-000000
->   qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 te=
-mporary 0 iova (nil)
->   qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
->   qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 6710886=
-4 index 4 iova 0x114000
->   qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864=
- iova 0x114000
->=20
-> As it is hard to follow, unify using hexadecimal for all sizes:
->=20
->   qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4=
-000000
->   qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 t=
-emporary 0 iova (nil)
->   qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
->   qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x40000=
-00 index 4 iova 0x114000
->   qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x400000=
-0 iova 0x114000
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  util/trace-events | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+ $ ../configure --disable-tools --disable-user
+ ../tests/qemu-iotests/meson.build:7:0: ERROR: Unknown variable "qemu_block_tools".
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 808f50b07ef..e76f8f6d084 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1062,12 +1062,13 @@ if 'CONFIG_GUEST_AGENT' in config_host
+   subdir('qga')
+ endif
+ 
++qemu_block_tools = []
+ if have_tools
+   qemu_img = executable('qemu-img', [files('qemu-img.c'), hxdep],
+              dependencies: [authz, block, crypto, io, qom, qemuutil], install: true)
+   qemu_io = executable('qemu-io', files('qemu-io.c'),
+              dependencies: [block, qemuutil], install: true)
+-  qemu_block_tools = [qemu_img, qemu_io]
++  qemu_block_tools += [qemu_img, qemu_io]
+   if targetos == 'linux' or targetos == 'sunos' or targetos.endswith('bsd')
+     qemu_nbd = executable('qemu-nbd', files('qemu-nbd.c'),
+                dependencies: [block, qemuutil], install: true)
+-- 
+2.26.2
 
 
