@@ -1,73 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k8o4v-0002Ge-51
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Aug 2020 13:10:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38914)
+	id 1k90yY-0004pM-NJ
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Aug 2020 02:56:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k8o4t-0002GS-I1
- for qemu-trivial@nongnu.org; Thu, 20 Aug 2020 13:10:15 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31626
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k90yX-0004p9-Ak
+ for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 02:56:33 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20096
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k8o4r-0007jN-5t
- for qemu-trivial@nongnu.org; Thu, 20 Aug 2020 13:10:14 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k90yV-0002zq-48
+ for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 02:56:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597943412;
+ s=mimecast20190719; t=1597992990;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=89jXPVPv2kkdtYzqNRsIdICSTxnn4TeU97yfa4KTTPA=;
- b=JJfeGLNG49TUVFhalql7q9fRJKgC/xjmWKb/D3cun4XQKo/UCQO/uJTviPXEsqEAYrijpz
- qgK2e/4j+WaSEAyPKgg/V0boUJGd5NHlknpOaeKDAmgPQaybOJuah++l4j48p+z36T2V0j
- G74s9bwWiuiYu6+SQv7kNII7rADY4Fk=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-291-qOyxirfKNiGwZAI8E5Y0aw-1; Thu, 20 Aug 2020 13:10:10 -0400
-X-MC-Unique: qOyxirfKNiGwZAI8E5Y0aw-1
-Received: by mail-wr1-f71.google.com with SMTP id o10so864260wrs.21
- for <qemu-trivial@nongnu.org>; Thu, 20 Aug 2020 10:10:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=89jXPVPv2kkdtYzqNRsIdICSTxnn4TeU97yfa4KTTPA=;
- b=lKsxYWHs0dFFS2YaZ6wU5KqmWYq+ge+xJH7WLLngCbTJq1rXP9krcWXkzAo/c8VCF/
- sbyEewn1m3ZG0wb9bkFA4ciZOt3aJmqSQNDc0L4YoQU9cbbtWbkuesxESZ1ZkUwiqe9d
- O344lW1n/Bx4XhswkbOhLwu4gSC089uh3Ftsddwuk9ymPlPkAyplP93s8FecdhPSretp
- VyD7Krdm9YEMMtnt+PsK5cIhfkVQc1X40tyISa4eMHatbA0JQNK3fWjng4hqO+LVAlKH
- Um/chwV0UPaaavoWf6LvL4l3ol5NYzKeAOHfk8H5dobz79MVWZmXYCk5SnpQm3EOrS91
- B6vQ==
-X-Gm-Message-State: AOAM531ISGYlMQnqKcp0VV3ZCzmMjEmXYbmRq4C5bLGihygZP28niC0N
- StmQy6/0YQDtSQ89HGkvGQiI/bcVHuxYmfQ3IdWvzZZYrRK28vOd5CaSTdKmoqvEThj4RQpVQEL
- 4G88pSDhy4Sy9PKOIlQ==
-X-Received: by 2002:a7b:c15a:: with SMTP id z26mr4322653wmi.35.1597943408657; 
- Thu, 20 Aug 2020 10:10:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6vkc/ENYEyyhE4ftbqk24JUQ0Qp4VGz2Q3SbBQ6VwkezIHv1bpIW0ANwviU60jSvBcGDRdg==
-X-Received: by 2002:a7b:c15a:: with SMTP id z26mr4322630wmi.35.1597943408390; 
- Thu, 20 Aug 2020 10:10:08 -0700 (PDT)
-Received: from x1w.redhat.com (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id k204sm5658211wma.21.2020.08.20.10.10.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2020 10:10:07 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] util/vfio-helpers: Unify trace-events size format
-Date: Thu, 20 Aug 2020 19:10:06 +0200
-Message-Id: <20200820171006.1140228-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eplYnJPmrBJeua4GuNUO+w+oSFMM2xUFoSfOU+C1uJY=;
+ b=gcGJy2FP3LL1lG6hF3ahW5WIK0NlynfAvIcHh45Gv2rWIjlUZ01k7fAe7YQ9Uz5RIb+1uX
+ PNydN4zP5EmhFmd26080qdik5fhEgUFH/eP+nRJ3tUHdUGfTWD8gKk3QTd660Q5Dbj38Ur
+ DJjOQATPCcm1/c8W6zgzNis3MFD9Ivk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-294-uzojvARaN7iF9EjTX1FXkA-1; Fri, 21 Aug 2020 02:56:26 -0400
+X-MC-Unique: uzojvARaN7iF9EjTX1FXkA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFC24107464D;
+ Fri, 21 Aug 2020 06:56:25 +0000 (UTC)
+Received: from gondolin (ovpn-113-4.ams2.redhat.com [10.36.113.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BA15119C78;
+ Fri, 21 Aug 2020 06:56:21 +0000 (UTC)
+Date: Fri, 21 Aug 2020 08:56:19 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Stefan Hajnoczi
+ <stefanha@redhat.com>
+Subject: Re: [PATCH] util/vfio-helpers: Unify trace-events size format
+Message-ID: <20200821085619.030d496f.cohuck@redhat.com>
+In-Reply-To: <20200820171006.1140228-1-philmd@redhat.com>
+References: <20200820171006.1140228-1-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
 X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 20:12:44
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 23:41:39
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -88,46 +74,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Aug 2020 17:10:15 -0000
+X-List-Received-Date: Fri, 21 Aug 2020 06:56:33 -0000
 
-Some 'qemu_vfio_*' trace events sizes are displayed using
-decimal notation, other using hexadecimal notation:
+On Thu, 20 Aug 2020 19:10:06 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-  qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4000000
-  qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 temporary 0 iova (nil)
-  qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
-  qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 index 4 iova 0x114000
-  qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 iova 0x114000
+> Some 'qemu_vfio_*' trace events sizes are displayed using
+> decimal notation, other using hexadecimal notation:
+>=20
+>   qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4=
+000000
+>   qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 te=
+mporary 0 iova (nil)
+>   qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
+>   qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 6710886=
+4 index 4 iova 0x114000
+>   qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864=
+ iova 0x114000
+>=20
+> As it is hard to follow, unify using hexadecimal for all sizes:
+>=20
+>   qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4=
+000000
+>   qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 t=
+emporary 0 iova (nil)
+>   qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
+>   qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x40000=
+00 index 4 iova 0x114000
+>   qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x400000=
+0 iova 0x114000
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  util/trace-events | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-As it is hard to follow, unify using hexadecimal for all sizes:
-
-  qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000
-  qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 temporary 0 iova (nil)
-  qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
-  qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 index 4 iova 0x114000
-  qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 iova 0x114000
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- util/trace-events | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/util/trace-events b/util/trace-events
-index 0ce42822eba..d9a0b4f8c63 100644
---- a/util/trace-events
-+++ b/util/trace-events
-@@ -79,7 +79,7 @@ qemu_vfio_dma_reset_temporary(void *s) "s %p"
- qemu_vfio_ram_block_added(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
- qemu_vfio_ram_block_removed(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
- qemu_vfio_find_mapping(void *s, void *p) "s %p host %p"
--qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size %zu index %d iova 0x%"PRIx64
--qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size %zu iova 0x%"PRIx64
--qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size %zu temporary %d iova %p"
-+qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size 0x%zx index %d iova 0x%"PRIx64
-+qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size 0x%zx iova 0x%"PRIx64
-+qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size 0x%zx temporary %d iova %p"
- qemu_vfio_dma_unmap(void *s, void *host) "s %p host %p"
--- 
-2.26.2
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
 
