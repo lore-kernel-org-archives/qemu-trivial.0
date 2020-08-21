@@ -1,109 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k99hJ-0000DH-DT
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Aug 2020 12:15:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56886)
+	id 1k9Ar3-0001A6-TS
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Aug 2020 13:29:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k99hI-0000CN-Na
- for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 12:15:20 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48238
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k99hG-0004r8-30
- for qemu-trivial@nongnu.org; Fri, 21 Aug 2020 12:15:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598026517;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=eUgoO24hS+D6zjzqUvY62NzTgMyiy1iDv24lMut+jR4=;
- b=dL3LSmpFFgv3SOxal+2Hb99QdM0hSJixy+xBmGc48qyjVhMTXRhVjtshkr4J9qjy2sL1Km
- 6Irqggy7ZUKYS3lIsUQchxUfLG4Kf0gYKaKtPR+I75f3vHYdoluCnpjnvd3lNsBOrsBxVt
- qE6DhJXmzblfWkWHzYB8GTzEiR2Q6xQ=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-111-lpSC96YENXGZJ2bJPZryEg-1; Fri, 21 Aug 2020 12:15:15 -0400
-X-MC-Unique: lpSC96YENXGZJ2bJPZryEg-1
-Received: by mail-wr1-f69.google.com with SMTP id g3so561722wrx.1
- for <qemu-trivial@nongnu.org>; Fri, 21 Aug 2020 09:15:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k9Ar0-0000zD-5G; Fri, 21 Aug 2020 13:29:26 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36655)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k9Aqy-00019C-Kx; Fri, 21 Aug 2020 13:29:25 -0400
+Received: by mail-wr1-x430.google.com with SMTP id 88so2660981wrh.3;
+ Fri, 21 Aug 2020 10:29:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=xUpjhtTxpzUTDOloVL0txBsx/e4JrhuPXdmZU+sQCYU=;
+ b=ItaX6zxwiYGbYVQZh+rDu7WGLAUUqU648AnuWIat1pItXko/TB3zJtO45hVTbMqeD8
+ C36idWBjhnKjLkct9P/sxhdZxPbBPnJCThFY41Q0GeQyvFbtYW1Cy4xG5yjE7csP8NST
+ B73KWwgGWwyL2JwLXTMEoyecCd8o0Qc26QHFdXZ1opJuEMdY2RtSG3V7aYYisXhCPFA5
+ FuAViNbuEynGO2QTT2AtE844XlHgqLY30t1vl/2KBQzA3jUKrYlKnirx3/JlnATTcCWB
+ JgbSNpGSnMavorjHg9TOeu8a0V5pGqOjFEnWOoVwS9vTRXmMu3Fz1mzUOjTsKX3aaoZ7
+ SuUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=eUgoO24hS+D6zjzqUvY62NzTgMyiy1iDv24lMut+jR4=;
- b=Q9DqI6FogK6CCWkQs38UiS5qa/8E7iZJJEoP1PHmbRVp6h1qpugwuO1iOG1TZiVrF3
- uZA3OKaBVReEaOUmkOnW4s54ktIJsgsX3gGjaCcVPzkOGTgP2QrUY9y4e5/PT2aciXFx
- Rx8XoMB+dU9QSCb5d4Me1PDN2AV34ePp8azuTFgO0JAllq1OVi0HuPviiwSfmaUSqnLI
- AITU3+iBARQI4ImLIk/GqIBLgcATvvfnb7BNfg61SFNe14JYpqOb3uw/cB2M+utLw/a+
- CHcJx2RuxnfKxSkIEmwkIyghTvrI8a9QyiJ2NCyK1Adn3HliV3FKFDx3VcyaxS139jLo
- QIlw==
-X-Gm-Message-State: AOAM533q2HEw4zl7H3JSuJH0aWbOb7ocGGJbkclB7+AZAnZLsrI0OaPF
- MipTgpbSA4zZ9utXBNhrQc0o7bIkq1GPr3ghXPPUkdviVRkUm8RjlV382pdx9TkJ/ZQIByg+ktx
- UTC6GnQDW4dkycnQn4Q==
-X-Received: by 2002:a1c:770c:: with SMTP id t12mr4188577wmi.65.1598026514239; 
- Fri, 21 Aug 2020 09:15:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGIehxxQAFYL6xRhiI7wrpmMdYq9F8CjQ+bKqniyTq0imgfHPr+lDccWiiCVSg6czwPAmkSQ==
-X-Received: by 2002:a1c:770c:: with SMTP id t12mr4188562wmi.65.1598026514078; 
- Fri, 21 Aug 2020 09:15:14 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=xUpjhtTxpzUTDOloVL0txBsx/e4JrhuPXdmZU+sQCYU=;
+ b=r6Q1zvJ0n12hwWiBHu4T2lHwRPKr8LyzN+rMPoJDNuT7y8DBCGOYczYJUup5PvUG+g
+ jdA1RD3qRQIoVnK7LbciRa973Cenp3vWvx6HTGpeWttaRfVnlxKTz5sYXD9sszi7hGsU
+ Vv/w5qwjjeRI5mJg75hi1KxDWfKPocfMJ8Dt03hCs5KSj0JDlDtt2jDZ6JKq8zA2bdBa
+ YdYVNru7jTXMe7CQtEDq7gXSwz6Z7Dgp4ftjdh6ZuPVIeGMVGjNdh/HCCOyQ/3BUjiTv
+ geJU/YQ3nXxBL7mJV9B70T9qgMStnwfJ4OJYw/AUhp1MxYztwuShvzHACVepzwr/NCnx
+ Xp+g==
+X-Gm-Message-State: AOAM532JRJMN88mwukrHJsbt113PJQtSYlzlleZu0EC/yoxZlwFgqfNw
+ D38sOqM4Kdy2yS4XcNslQrbKJBEIwTg=
+X-Google-Smtp-Source: ABdhPJzMzy4VWt6szX+Hhwqj5xqFQEB7hSgYPD3BQiIeWy/mPcHKzVZHbU80nfp3sq8gC8doIqezYQ==
+X-Received: by 2002:adf:90d1:: with SMTP id i75mr3489277wri.278.1598030962138; 
+ Fri, 21 Aug 2020 10:29:22 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id h5sm3296731wrt.31.2020.08.21.09.15.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2020 09:15:13 -0700 (PDT)
-Subject: Re: [PATCH] configure: Silence shift warning in version_ge()
+ by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Aug 2020 10:29:21 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>
-References: <20200821151416.1240494-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <a70425ae-734e-325f-8a06-72b3829d8b37@redhat.com>
-Date: Fri, 21 Aug 2020 18:15:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+Cc: qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Michael Walle <michael@walle.cc>, Andrzej Zaborowski <balrogg@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PULL 02/23] hw/sd/pxa2xx_mmci: Trivial simplification
+Date: Fri, 21 Aug 2020 19:28:55 +0200
+Message-Id: <20200821172916.1260954-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200821172916.1260954-1-f4bug@amsat.org>
+References: <20200821172916.1260954-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200821151416.1240494-1-philmd@redhat.com>
-Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 04:55:47
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,38 +87,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Aug 2020 16:15:21 -0000
+X-List-Received-Date: Fri, 21 Aug 2020 17:29:27 -0000
 
-On 8/21/20 5:14 PM, Philippe Mathieu-Daudé wrote:
-> As we might expect less than 2 argument, only shift again
-> if there is arguments to shift.
-> 
-> This fixes:
-> 
->     ../configure: line 232: shift: shift count out of range
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/configure b/configure
-> index 4e5fe332110..cf044ad2d25 100755
-> --- a/configure
-> +++ b/configure
-> @@ -229,7 +229,7 @@ version_ge () {
->          set x $local_ver1
->          local_first=${2-0}
->          # shift 2 does nothing if there are less than 2 arguments
-> -        shift; shift
-> +        shift || shift
+Avoid declaring PXA2xxMMCIState local variable, return it directly.
 
-As Stefano noted, this does not work as intended, so please discard
-this invalid patch.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20200705213350.24725-3-f4bug@amsat.org>
+---
+ hw/sd/pxa2xx_mmci.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
->          local_ver1=$*
->          set x $local_ver2
->          # the second argument finished, the first must be greater or equal
-> 
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 9482b9212dd..2996a2ef177 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -480,10 +480,8 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+ {
+     DeviceState *dev;
+     SysBusDevice *sbd;
+-    PXA2xxMMCIState *s;
+ 
+     dev = qdev_new(TYPE_PXA2XX_MMCI);
+-    s = PXA2XX_MMCI(dev);
+     sbd = SYS_BUS_DEVICE(dev);
+     sysbus_mmio_map(sbd, 0, base);
+     sysbus_connect_irq(sbd, 0, irq);
+@@ -491,7 +489,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+     sysbus_realize_and_unref(sbd, &error_fatal);
+ 
+-    return s;
++    return PXA2XX_MMCI(dev);
+ }
+ 
+ static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
+-- 
+2.26.2
 
 
