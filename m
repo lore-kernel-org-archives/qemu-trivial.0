@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1k9Zej-0000kC-6o
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Aug 2020 15:58:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34624)
+	id 1k9Zi8-0003jX-SD
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Aug 2020 16:01:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Zei-0000iq-10; Sat, 22 Aug 2020 15:58:24 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33946)
+ id 1k9Zi7-0003hv-Ay; Sat, 22 Aug 2020 16:01:55 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:41527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Zeg-00024q-Dv; Sat, 22 Aug 2020 15:58:23 -0400
-Received: by mail-wr1-x443.google.com with SMTP id f7so4995645wrw.1;
- Sat, 22 Aug 2020 12:58:21 -0700 (PDT)
+ id 1k9Zi5-0002UY-UJ; Sat, 22 Aug 2020 16:01:55 -0400
+Received: by mail-wr1-x441.google.com with SMTP id r2so4962665wrs.8;
+ Sat, 22 Aug 2020 13:01:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tIBDWNK6TWdcG1u2mCgK/iXYWceh6T573WlPVffrgaA=;
- b=tiTATWJpxNFNahIUBBrjuWg9d6o3/DEyKq4BThSQmUGnhKcXfTCawfr5PqskaTWviQ
- 4goalTEqFtKVcic6UBdJAoiag+wFgZ+wYp0fkeVJfUWYnTFxa+LfsOntCBo0vMZGjIE4
- aCIo0VyIRkU0vNPFhBfke3cY+9XIFIXUzCpixNmpYml11jOPsihJ894yZ91mkyNINCa2
- d2rnNlZQiktQ6Lr6hhbf6QnjrSd5dbN2xIED93KYVu/EvEXCLNvq4RFPXKeudMHGnxYk
- alJfk1+PtwYyeBFO0vzkXQvDVnTAypuWUPZemlzRKSlddfXMfz6W/gqZrcRM7s6wXJwH
- V9Mw==
+ bh=IPbzWS1Lf8WQ58PA0cE2M9IiJQnSkZctlSfQKGn0nxQ=;
+ b=FEj97eSMC8VwZc6V4eeV/ZdtXckmGKG6DMmL8Wh/z8MHs9afkNmdH7hxp0bRB0vhr+
+ pCZ6uUxNOpYziWhYiL+juHS1BjUNghXpft/5wx3KEUuXWSD/C3+qDc8Zzqbsom5FTGSh
+ AJpztgdu1IEFJR/OKo4fxiZEIURHJqbTpENPFaIrqs851FoXZM33AP5Xp48Dg/EJKVyG
+ YY0E9Ro7dGkxvAaQoye9x61awOew0jJ6kpyrfMg0giAgAcbs6YHQYeIVmUXRRVSXCbxJ
+ oJprB9/0sG9wcD80vWT4bWTQcZrb/dNKet5WP3/CW+b4XkuGZw+XO09g4fCMJ4i4laHv
+ guNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=tIBDWNK6TWdcG1u2mCgK/iXYWceh6T573WlPVffrgaA=;
- b=VVY7jTnDjZBdmiuWZjx07vP46IsmpKfjngRwk5HX4muFbxFDdW+XqxHmNs0PePPwnl
- 7vWasXjL8EimUh2n4/ThTf1VgwdSN+1COSo1FKmcfdpZhxl1r3LJU58VSDmNOB0olass
- 3CO9HJ13PKS80PqSRbPTqRUMXZAAcZBvckiQBkgk6XzGDn301FmKr4WaOSyDCkmjq9o9
- ORIJCEsqbn/bkBqJFyknhJD/6+LGxRo6rSi+LD9ZqxgDAFg9Wh7cypHfdFbWi/9uvIjj
- pXHLhQBZztbYuT5bz4RWUUenddWJDMADzxpGNvwOuT97AUwD1zMo1/QUtjRoXML0H0OJ
- qrJg==
-X-Gm-Message-State: AOAM533nirSnEUyc3TBE9gcoRs3lFX92kM6fTc0d7Zl4qDNS2HuIHQrc
- THICmbQCiBhs/KaXX+s1gJ5hJeQsvro=
-X-Google-Smtp-Source: ABdhPJxp+2vz+zwNk35mxraZgcj7pNIeU/kX2ERts110gQAL538wL/2IUx8rcL1j4ac9HBihF15HkA==
-X-Received: by 2002:a5d:6a4e:: with SMTP id t14mr8336003wrw.135.1598126299743; 
- Sat, 22 Aug 2020 12:58:19 -0700 (PDT)
+ bh=IPbzWS1Lf8WQ58PA0cE2M9IiJQnSkZctlSfQKGn0nxQ=;
+ b=QLLTt4NHjFZzT4TdEvsFhW63Ztovw7WqoSS69fKUg9pvE1r0J8vom4raSTX8z0eiYp
+ NWEkeC3CTStM2lrvK5EOcVn48WjqxVzDxe216nh48PjUZLfDmLJ6SB2UEHAMKCXzfs9p
+ dbfytBBt8K+F5a2+32wugtxP1mxqUtE+/vtypkHpQf2bunIbtUgugvLAKbvIMbpNac/b
+ DVP/QjCmuzgjtkIlWlXswIVaQxJaXPdMXrQNIeEUHq1UMgcSquoAuZTVW60cwbLV4vuo
+ sbPcUU4KNyrGSWpWlIicxeqaohx0JHIRAa4ieHc50wI3WmdKGNgPDpYew0CiR6VG+ntR
+ QjAQ==
+X-Gm-Message-State: AOAM533s79F+Gf6GiP8FY4zyLLpgR750HLzHf6XQSfztmzrqD4B1G8fB
+ GmJ8XI/wFkCqj61H+gQO1ZgX9wxIXdk=
+X-Google-Smtp-Source: ABdhPJx93Oq12ViR6ZQ1t0JiLUSF5pu9uu4pDY7y1nW2QcP/Q/98Ivh1llJgc6U3Ch+PU1h1qq0wYw==
+X-Received: by 2002:adf:c552:: with SMTP id s18mr7882642wrf.209.1598126511989; 
+ Sat, 22 Aug 2020 13:01:51 -0700 (PDT)
 Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id m14sm13358261wrx.76.2020.08.22.12.58.18
+ by smtp.gmail.com with ESMTPSA id 5sm1988039wmg.32.2020.08.22.13.01.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 22 Aug 2020 12:58:18 -0700 (PDT)
+ Sat, 22 Aug 2020 13:01:51 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH-for-5.2] stubs/cmos: Use correct include
+Subject: Re: [PATCH-for-5.2 0/2] hw/core/sysbus: Trivial cleanup patches
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-block@nongnu.org
-References: <20200724084315.1606-1-f4bug@amsat.org>
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20200806130945.21629-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <22d468f8-20d7-7b39-5b55-3ac6a7b315e9@amsat.org>
-Date: Sat, 22 Aug 2020 21:58:17 +0200
+Message-ID: <11f9df38-3bd8-3360-a13d-b91fcc7cb86a@amsat.org>
+Date: Sat, 22 Aug 2020 22:01:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200724084315.1606-1-f4bug@amsat.org>
+In-Reply-To: <20200806130945.21629-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -83,31 +85,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Aug 2020 19:58:24 -0000
+X-List-Received-Date: Sat, 22 Aug 2020 20:01:55 -0000
+
+On 8/6/20 3:09 PM, Philippe Mathieu-Daudé wrote:
+> Fix a typo and assert sysbus_mmio_get_region() is called
+> with correct index.
+> 
+> Philippe Mathieu-Daudé (2):
+>   hw/core/sysbus: Fix a typo
+>   hw/core/sysbus: Assert memory region index is in range
+> 
+>  hw/core/sysbus.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
 
 ping?
-
-On 7/24/20 10:43 AM, Philippe Mathieu-Daudé wrote:
-> cmos_get_fd_drive_type() is declared in "hw/block/fdc.h".
-> This currently works because "hw/i386/pc.h" happens to
-> include it. Simplify including the correct header.
-> 
-> Fixes: 2055dbc1c9 ("acpi: move aml builder code for floppy device")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  stubs/cmos.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/stubs/cmos.c b/stubs/cmos.c
-> index 416cbe4055..3fdbae2c69 100644
-> --- a/stubs/cmos.c
-> +++ b/stubs/cmos.c
-> @@ -1,5 +1,5 @@
->  #include "qemu/osdep.h"
-> -#include "hw/i386/pc.h"
-> +#include "hw/block/fdc.h"
->  
->  int cmos_get_fd_drive_type(FloppyDriveType fd0)
->  {
-> 
 
