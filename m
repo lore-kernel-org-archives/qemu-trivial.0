@@ -1,68 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kABUO-0004mG-7m
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 08:22:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
+	id 1kABXc-0005y3-Kf
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 08:25:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABUL-0004li-Kc
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:22:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58267)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABXa-0005w8-FZ
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:25:34 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:36868
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABUK-0000oU-3u
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:22:13 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABXY-0001Kt-Aa
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:25:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598271730;
+ s=mimecast20190719; t=1598271931;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=pcbRWMMKcjIs1Jv/XBSeaV/DmhisrRwyReviTzI4lKs=;
- b=PsebHZL92jlTzFq8VsVvMpQ81psPN1X/q8BuOPwO6un4THcya5Nw/VEvd1+6Ibqsce2wO4
- abIIInt8jowDbcSlWl/KitaJS0LuWlkJcYXfLw/MZVsvtrg5RzAqBwpQbjAlCa8guouThP
- 4LpjZaOAFl0Gbxeguc2fvmMpE2vUWnU=
+ bh=a6PcnCsw1Sv0DdUdqJSYK+7GoPI37rFufmu6OzDBodM=;
+ b=PetLy1D7FsDEfWTOefWRORWjE3h/pXt0NTo4ohu6HnLZQX2vUjGOIRkdkhaCWMJvN9TKHd
+ 3oPMYLXIMNxaYGYCbCE6mdbScPUjeT7GO4SINHUC0a9kwjtn3ZY6z+K74ZUYWLE7yV/9fP
+ J+hmNZIxzNc84HgjS0x19JvmWdDl/cg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-236-adioZiDBO6WtavFu7hHC6Q-1; Mon, 24 Aug 2020 08:22:08 -0400
-X-MC-Unique: adioZiDBO6WtavFu7hHC6Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-129-wbbFEOoiPEqHsrRdR35xLg-1; Mon, 24 Aug 2020 08:25:29 -0400
+X-MC-Unique: wbbFEOoiPEqHsrRdR35xLg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F3CB801AC9;
- Mon, 24 Aug 2020 12:22:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 390A580732F;
+ Mon, 24 Aug 2020 12:25:28 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-74.ams2.redhat.com
  [10.36.112.74])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 53209197E5;
- Mon, 24 Aug 2020 12:22:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BB7119C58;
+ Mon, 24 Aug 2020 12:25:28 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 85E7E1138648; Mon, 24 Aug 2020 14:22:05 +0200 (CEST)
+ id B16641138648; Mon, 24 Aug 2020 14:25:26 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: zhaolichang <zhaolichang@huawei.com>
 Cc: <qemu-trivial@nongnu.org>,  qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 00/10] fix some comment spelling errors
+Subject: Re: [PATCH RFC 09/10] qapi/: fix some comment spelling errors
 References: <20200812101500.2066-1-zhaolichang@huawei.com>
-Date: Mon, 24 Aug 2020 14:22:05 +0200
-In-Reply-To: <20200812101500.2066-1-zhaolichang@huawei.com>
- (zhaolichang@huawei.com's message of "Wed, 12 Aug 2020 18:14:50
+ <20200812101500.2066-10-zhaolichang@huawei.com>
+Date: Mon, 24 Aug 2020 14:25:26 +0200
+In-Reply-To: <20200812101500.2066-10-zhaolichang@huawei.com>
+ (zhaolichang@huawei.com's message of "Wed, 12 Aug 2020 18:14:59
  +0800")
-Message-ID: <87tuwsqln6.fsf@dusky.pond.sub.org>
+Message-ID: <87pn7gqlhl.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 06:48:00
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 05:21:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,14 +77,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Aug 2020 12:22:13 -0000
+X-List-Received-Date: Mon, 24 Aug 2020 12:25:34 -0000
 
 zhaolichang <zhaolichang@huawei.com> writes:
 
 > I found that there are many spelling errors in the comments of qemu,
-> so I used the spellcheck tool to check the spelling errors, this series fixed this
-> spelling errors.
+> so I used the spellcheck tool to check the spelling errors
+> and finally found some spelling errors in the qapi folder.
 
-What's the reason for "RFC"?
+I'd omit this sentence.  Same for the other patches.
+
+> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
