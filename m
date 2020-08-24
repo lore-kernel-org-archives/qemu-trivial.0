@@ -1,82 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kA5sy-0001WT-Of
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 02:23:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33760)
+	id 1kABUO-0004mG-7m
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 08:22:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kA5sx-0001WD-Cu
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 02:23:15 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57113
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABUL-0004li-Kc
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:22:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58267)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kA5su-0006LH-Bo
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 02:23:14 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kABUK-0000oU-3u
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 08:22:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598250190;
+ s=mimecast20190719; t=1598271730;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Y1k+gsSrw1hOot6VIt+qKOyFUuI0gIp9KEQNdnhu2oM=;
- b=YsJd5691JgITOZ8xtWhyWtfD9C32SewglYFCpAt/SyMOxWfl9See5l9XMa04pde9/ffC58
- dtrXOOxpKByvRCdAszcv+Nsgv7vHHwQB02ppTnOaHkaI0WjeOfp8B8LNBzDlIVo1XRc6Mp
- TiG8IE0r9fni8NVezV4gR8GDS3RPwtM=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-399-XWm0avOSNfWlxAofrqoYLw-1; Mon, 24 Aug 2020 02:23:08 -0400
-X-MC-Unique: XWm0avOSNfWlxAofrqoYLw-1
-Received: by mail-ej1-f71.google.com with SMTP id kt27so3384841ejb.22
- for <qemu-trivial@nongnu.org>; Sun, 23 Aug 2020 23:23:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Y1k+gsSrw1hOot6VIt+qKOyFUuI0gIp9KEQNdnhu2oM=;
- b=j6vT8OkRAXatnjgPTfvDwt7cYfOrJ2pwLczElq8JDk+xDcB49quZHHqhAgkgE/kIYd
- a5HSGsMypS/UHcasMQbFo0zMXSTQWJprKWFp51fnHnLM/mp9d4dI22yjCx4ocekpZcvP
- 29D1s5jMcUYH1T3bq2HDc/35mDO3xiZAp5VBeGXJL4Xjip1MIBegTNRxeWgBn93sIW4w
- yVB98GO54RK17qjpr1rsyOn1kJGQqYL8lTKLnBRtCD1dzvNffdf3q7LjCh1Su+3UjnBa
- 6Bi149PrxY5nUVTyffWr8Uburs+65iIiDAq9OeSd9BEE9+6lWeWfrjcOXyu4XTfnldaJ
- mTjQ==
-X-Gm-Message-State: AOAM531hD2ZOSVT3q72Y8XRu55Sr5K7kk15UWwWC3ruLYRuDo0TSG5PG
- THFvWGjgEEiqa/7xZXKxKbUw0LMpo3c/ERuWtijQYgmvOpYxGExgvSRp4mECRCMyp6Aso7MT52g
- eOUASzjoTOq9bS4Htj9HzYRui5ljph32EpA==
-X-Received: by 2002:a17:906:3390:: with SMTP id
- v16mr4032702eja.106.1598250186992; 
- Sun, 23 Aug 2020 23:23:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdD2rlZDaAmfGVB1H7RCyjbcgOunkTsO3FxF4+iPh203vIaiPIj1h36Sn8RT4XFgNvndcCa4NOOiq3JEB0snQ=
-X-Received: by 2002:a17:906:3390:: with SMTP id
- v16mr4032687eja.106.1598250186768; 
- Sun, 23 Aug 2020 23:23:06 -0700 (PDT)
+ bh=pcbRWMMKcjIs1Jv/XBSeaV/DmhisrRwyReviTzI4lKs=;
+ b=PsebHZL92jlTzFq8VsVvMpQ81psPN1X/q8BuOPwO6un4THcya5Nw/VEvd1+6Ibqsce2wO4
+ abIIInt8jowDbcSlWl/KitaJS0LuWlkJcYXfLw/MZVsvtrg5RzAqBwpQbjAlCa8guouThP
+ 4LpjZaOAFl0Gbxeguc2fvmMpE2vUWnU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-236-adioZiDBO6WtavFu7hHC6Q-1; Mon, 24 Aug 2020 08:22:08 -0400
+X-MC-Unique: adioZiDBO6WtavFu7hHC6Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F3CB801AC9;
+ Mon, 24 Aug 2020 12:22:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-74.ams2.redhat.com
+ [10.36.112.74])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 53209197E5;
+ Mon, 24 Aug 2020 12:22:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 85E7E1138648; Mon, 24 Aug 2020 14:22:05 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: zhaolichang <zhaolichang@huawei.com>
+Cc: <qemu-trivial@nongnu.org>,  qemu-devel@nongnu.org
+Subject: Re: [PATCH RFC 00/10] fix some comment spelling errors
+References: <20200812101500.2066-1-zhaolichang@huawei.com>
+Date: Mon, 24 Aug 2020 14:22:05 +0200
+In-Reply-To: <20200812101500.2066-1-zhaolichang@huawei.com>
+ (zhaolichang@huawei.com's message of "Wed, 12 Aug 2020 18:14:50
+ +0800")
+Message-ID: <87tuwsqln6.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <20200821160752.1254102-1-philmd@redhat.com>
- <20200821160752.1254102-2-philmd@redhat.com>
- <20200824052336.gt7ycmo7wf6q5e2m@sirius.home.kraxel.org>
-In-Reply-To: <20200824052336.gt7ycmo7wf6q5e2m@sirius.home.kraxel.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 24 Aug 2020 08:22:54 +0200
-Message-ID: <CABgObfYjPOZaEXCxu-8eKaNDAW=xhD+z8SwS2eJ+5wMamb629g@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] meson: convert pc-bios/keymaps/Makefile
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000a516ae05ad999e7c"
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 02:23:10
+Content-Type: text/plain
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 06:48:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,76 +75,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Aug 2020 06:23:15 -0000
+X-List-Received-Date: Mon, 24 Aug 2020 12:22:13 -0000
 
---000000000000a516ae05ad999e7c
-Content-Type: text/plain; charset="UTF-8"
+zhaolichang <zhaolichang@huawei.com> writes:
 
-I think it should just add build_by_default: false with a comment
-explaining why.
+> I found that there are many spelling errors in the comments of qemu,
+> so I used the spellcheck tool to check the spelling errors, this series fixed this
+> spelling errors.
 
-Paolo
-
-Il lun 24 ago 2020, 07:23 Gerd Hoffmann <kraxel@redhat.com> ha scritto:
-
-> > --- a/pc-bios/meson.build
-> > +++ b/pc-bios/meson.build
-> > @@ -25,3 +25,4 @@ if 'DECOMPRESS_EDK2_BLOBS' in config_host
-> >  endif
-> >
-> >  subdir('descriptors')
-> > +subdir('keymaps')
->
-> Hmm, this hooks up the keymaps update to the default build.
-> Not a good plan.  The output is not static, but defaults on
-> the libxkbcommon version you have installed.  So I end up with
-> a dirty tree now after each build.
->
-> I guess we should either return to the traditional behavior of not
-> building keymaps by default and have a "make keymaps" or similar for
-> keymap updates.  Or write the generated maps to the build tree not
-> the source tree.
->
-> take care,
->   Gerd
->
->
-
---000000000000a516ae05ad999e7c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">I think it should just add build_by_default: false with a=
- comment explaining why.<div dir=3D"auto"><br></div><div dir=3D"auto">Paolo=
-</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
-attr">Il lun 24 ago 2020, 07:23 Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@=
-redhat.com">kraxel@redhat.com</a>&gt; ha scritto:<br></div><blockquote clas=
-s=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pad=
-ding-left:1ex">&gt; --- a/pc-bios/meson.build<br>
-&gt; +++ b/pc-bios/meson.build<br>
-&gt; @@ -25,3 +25,4 @@ if &#39;DECOMPRESS_EDK2_BLOBS&#39; in config_host<br=
->
-&gt;=C2=A0 endif<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 subdir(&#39;descriptors&#39;)<br>
-&gt; +subdir(&#39;keymaps&#39;)<br>
-<br>
-Hmm, this hooks up the keymaps update to the default build.<br>
-Not a good plan.=C2=A0 The output is not static, but defaults on<br>
-the libxkbcommon version you have installed.=C2=A0 So I end up with<br>
-a dirty tree now after each build.<br>
-<br>
-I guess we should either return to the traditional behavior of not<br>
-building keymaps by default and have a &quot;make keymaps&quot; or similar =
-for<br>
-keymap updates.=C2=A0 Or write the generated maps to the build tree not<br>
-the source tree.<br>
-<br>
-take care,<br>
-=C2=A0 Gerd<br>
-<br>
-</blockquote></div>
-
---000000000000a516ae05ad999e7c--
+What's the reason for "RFC"?
 
 
