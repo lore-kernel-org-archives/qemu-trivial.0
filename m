@@ -1,69 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kA4xR-0003Ba-3v
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 01:23:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51836)
+	id 1kA5sy-0001WT-Of
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 02:23:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kA4xP-0003BB-3b
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 01:23:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46471)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kA5sx-0001WD-Cu
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 02:23:15 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57113
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kA4xM-000090-VA
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 01:23:46 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kA5su-0006LH-Bo
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 02:23:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598246623;
+ s=mimecast20190719; t=1598250190;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=BaF8NZECiIkufdHbMrsVKZVMDg4OKC++D7VVshCbCTk=;
- b=JB5LpkNQtTg2v3K7CtFu492pJ1lWfbMBrxsYdTuGgYkJy4wincpnuHEDU8t5Uo1uj09t0/
- MLunpHf4N4uoWrG37s2vZxxBigqxJiEdB0HnFm4dPe6zMx4uhGEpIpKZfY4HGDaUnYe3a9
- MjYPg0F4MOPkHa1hoDD6KF23wC2h++s=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-573-KR37XZI_PzO7RIAnDoxSkg-1; Mon, 24 Aug 2020 01:23:41 -0400
-X-MC-Unique: KR37XZI_PzO7RIAnDoxSkg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5429B10059A4;
- Mon, 24 Aug 2020 05:23:40 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-195.ams2.redhat.com
- [10.36.112.195])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 29CE07E69B;
- Mon, 24 Aug 2020 05:23:37 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 311ED17538; Mon, 24 Aug 2020 07:23:36 +0200 (CEST)
-Date: Mon, 24 Aug 2020 07:23:36 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH v3 1/2] meson: convert pc-bios/keymaps/Makefile
-Message-ID: <20200824052336.gt7ycmo7wf6q5e2m@sirius.home.kraxel.org>
+ bh=Y1k+gsSrw1hOot6VIt+qKOyFUuI0gIp9KEQNdnhu2oM=;
+ b=YsJd5691JgITOZ8xtWhyWtfD9C32SewglYFCpAt/SyMOxWfl9See5l9XMa04pde9/ffC58
+ dtrXOOxpKByvRCdAszcv+Nsgv7vHHwQB02ppTnOaHkaI0WjeOfp8B8LNBzDlIVo1XRc6Mp
+ TiG8IE0r9fni8NVezV4gR8GDS3RPwtM=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-399-XWm0avOSNfWlxAofrqoYLw-1; Mon, 24 Aug 2020 02:23:08 -0400
+X-MC-Unique: XWm0avOSNfWlxAofrqoYLw-1
+Received: by mail-ej1-f71.google.com with SMTP id kt27so3384841ejb.22
+ for <qemu-trivial@nongnu.org>; Sun, 23 Aug 2020 23:23:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Y1k+gsSrw1hOot6VIt+qKOyFUuI0gIp9KEQNdnhu2oM=;
+ b=j6vT8OkRAXatnjgPTfvDwt7cYfOrJ2pwLczElq8JDk+xDcB49quZHHqhAgkgE/kIYd
+ a5HSGsMypS/UHcasMQbFo0zMXSTQWJprKWFp51fnHnLM/mp9d4dI22yjCx4ocekpZcvP
+ 29D1s5jMcUYH1T3bq2HDc/35mDO3xiZAp5VBeGXJL4Xjip1MIBegTNRxeWgBn93sIW4w
+ yVB98GO54RK17qjpr1rsyOn1kJGQqYL8lTKLnBRtCD1dzvNffdf3q7LjCh1Su+3UjnBa
+ 6Bi149PrxY5nUVTyffWr8Uburs+65iIiDAq9OeSd9BEE9+6lWeWfrjcOXyu4XTfnldaJ
+ mTjQ==
+X-Gm-Message-State: AOAM531hD2ZOSVT3q72Y8XRu55Sr5K7kk15UWwWC3ruLYRuDo0TSG5PG
+ THFvWGjgEEiqa/7xZXKxKbUw0LMpo3c/ERuWtijQYgmvOpYxGExgvSRp4mECRCMyp6Aso7MT52g
+ eOUASzjoTOq9bS4Htj9HzYRui5ljph32EpA==
+X-Received: by 2002:a17:906:3390:: with SMTP id
+ v16mr4032702eja.106.1598250186992; 
+ Sun, 23 Aug 2020 23:23:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdD2rlZDaAmfGVB1H7RCyjbcgOunkTsO3FxF4+iPh203vIaiPIj1h36Sn8RT4XFgNvndcCa4NOOiq3JEB0snQ=
+X-Received: by 2002:a17:906:3390:: with SMTP id
+ v16mr4032687eja.106.1598250186768; 
+ Sun, 23 Aug 2020 23:23:06 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200821160752.1254102-1-philmd@redhat.com>
  <20200821160752.1254102-2-philmd@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <20200821160752.1254102-2-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+ <20200824052336.gt7ycmo7wf6q5e2m@sirius.home.kraxel.org>
+In-Reply-To: <20200824052336.gt7ycmo7wf6q5e2m@sirius.home.kraxel.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 24 Aug 2020 08:22:54 +0200
+Message-ID: <CABgObfYjPOZaEXCxu-8eKaNDAW=xhD+z8SwS2eJ+5wMamb629g@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] meson: convert pc-bios/keymaps/Makefile
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 01:23:43
+Content-Type: multipart/alternative; boundary="000000000000a516ae05ad999e7c"
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 02:23:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,27 +89,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Aug 2020 05:23:47 -0000
+X-List-Received-Date: Mon, 24 Aug 2020 06:23:15 -0000
 
-> --- a/pc-bios/meson.build
-> +++ b/pc-bios/meson.build
-> @@ -25,3 +25,4 @@ if 'DECOMPRESS_EDK2_BLOBS' in config_host
->  endif
->  
->  subdir('descriptors')
-> +subdir('keymaps')
+--000000000000a516ae05ad999e7c
+Content-Type: text/plain; charset="UTF-8"
 
-Hmm, this hooks up the keymaps update to the default build.
-Not a good plan.  The output is not static, but defaults on
-the libxkbcommon version you have installed.  So I end up with
-a dirty tree now after each build.
+I think it should just add build_by_default: false with a comment
+explaining why.
 
-I guess we should either return to the traditional behavior of not
-building keymaps by default and have a "make keymaps" or similar for
-keymap updates.  Or write the generated maps to the build tree not
-the source tree.
+Paolo
 
-take care,
-  Gerd
+Il lun 24 ago 2020, 07:23 Gerd Hoffmann <kraxel@redhat.com> ha scritto:
+
+> > --- a/pc-bios/meson.build
+> > +++ b/pc-bios/meson.build
+> > @@ -25,3 +25,4 @@ if 'DECOMPRESS_EDK2_BLOBS' in config_host
+> >  endif
+> >
+> >  subdir('descriptors')
+> > +subdir('keymaps')
+>
+> Hmm, this hooks up the keymaps update to the default build.
+> Not a good plan.  The output is not static, but defaults on
+> the libxkbcommon version you have installed.  So I end up with
+> a dirty tree now after each build.
+>
+> I guess we should either return to the traditional behavior of not
+> building keymaps by default and have a "make keymaps" or similar for
+> keymap updates.  Or write the generated maps to the build tree not
+> the source tree.
+>
+> take care,
+>   Gerd
+>
+>
+
+--000000000000a516ae05ad999e7c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">I think it should just add build_by_default: false with a=
+ comment explaining why.<div dir=3D"auto"><br></div><div dir=3D"auto">Paolo=
+</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">Il lun 24 ago 2020, 07:23 Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@=
+redhat.com">kraxel@redhat.com</a>&gt; ha scritto:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pad=
+ding-left:1ex">&gt; --- a/pc-bios/meson.build<br>
+&gt; +++ b/pc-bios/meson.build<br>
+&gt; @@ -25,3 +25,4 @@ if &#39;DECOMPRESS_EDK2_BLOBS&#39; in config_host<br=
+>
+&gt;=C2=A0 endif<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 subdir(&#39;descriptors&#39;)<br>
+&gt; +subdir(&#39;keymaps&#39;)<br>
+<br>
+Hmm, this hooks up the keymaps update to the default build.<br>
+Not a good plan.=C2=A0 The output is not static, but defaults on<br>
+the libxkbcommon version you have installed.=C2=A0 So I end up with<br>
+a dirty tree now after each build.<br>
+<br>
+I guess we should either return to the traditional behavior of not<br>
+building keymaps by default and have a &quot;make keymaps&quot; or similar =
+for<br>
+keymap updates.=C2=A0 Or write the generated maps to the build tree not<br>
+the source tree.<br>
+<br>
+take care,<br>
+=C2=A0 Gerd<br>
+<br>
+</blockquote></div>
+
+--000000000000a516ae05ad999e7c--
 
 
