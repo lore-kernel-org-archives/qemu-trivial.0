@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kADXW-0006Vr-Gf
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 10:33:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44876)
+	id 1kADyQ-00062a-41
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Aug 2020 11:01:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kADXU-0006RX-K6
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 10:33:36 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:59478
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kADXS-0003V2-3c
- for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 10:33:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598279613;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FlmQUhs2c6SvKBOxR3BiIdGHFakglNGy1Xso9J+a3a0=;
- b=AUh8NeaQmDu5G5AG/NWfD7Pa3bifDup28o5M7HsdOGQuYAQcb6z3vMIouUzTjL90fIe7S/
- JIn8Lnx78VDkEYr7hGMd8v8IYig0ErxboY0gavG5EvFVXrc+hZdwymEZFzWCu3JKNuruHL
- d4a7MaGUE7FEnEbf6jL+cH3HX9q9YyQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-188-Pn46juQANJy691iZMNtwmA-1; Mon, 24 Aug 2020 10:33:30 -0400
-X-MC-Unique: Pn46juQANJy691iZMNtwmA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A20D110ABDA6;
- Mon, 24 Aug 2020 14:33:29 +0000 (UTC)
-Received: from [10.3.112.126] (ovpn-112-126.phx2.redhat.com [10.3.112.126])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4EEC260BF1;
- Mon, 24 Aug 2020 14:33:29 +0000 (UTC)
-Subject: Re: [PATCH RFC 01/10] qemu/: fix some comment spelling errors
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- zhaolichang <zhaolichang@huawei.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20200812101500.2066-1-zhaolichang@huawei.com>
- <20200812101500.2066-2-zhaolichang@huawei.com> <87eeoc0x7i.fsf@linaro.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <750785b2-c912-489c-f0f0-ad9f2d5801a2@redhat.com>
-Date: Mon, 24 Aug 2020 09:33:28 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kADyO-00060r-KU
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 11:01:24 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:43960)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kADyM-0008Cb-CD
+ for qemu-trivial@nongnu.org; Mon, 24 Aug 2020 11:01:24 -0400
+Received: by mail-ej1-x641.google.com with SMTP id m22so12302045eje.10
+ for <qemu-trivial@nongnu.org>; Mon, 24 Aug 2020 08:01:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=5QQZFfKmiN4x/jvCiWb3vKnwE+Dwwj/ayaYHLvhSp2M=;
+ b=XsCySBueoXC1+4WtqMIxuoGYkAxZuj6zayjJ3AbVLvqp2ejEF7cAdvxOjYzgsUyJri
+ KraneBi/vnKNvINB45o6BnKZBXa5AT9eh40/5otVbDKd9nn5HfwLZCsZVyCM8zkjBTj3
+ Xq/cOErKovXIm6KNLRdB69spHJmaGPXfXUYWUuw/Y8N53j2YDLsehHRaVnxY4fo8zxo4
+ lW0S3GIKtpHnuF0p79I8v5Fz5O3OrBihZkwychKLx1POulC7M9CCENG3FBxqTMz57Y6P
+ AwSbb6hH/0eLrjTThhPwSGrWVrGFBKyBR9JfrIHijN3YrUm+nDgXcw6HKDAwnEd/phB6
+ DR2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=5QQZFfKmiN4x/jvCiWb3vKnwE+Dwwj/ayaYHLvhSp2M=;
+ b=ghy5Aq937TNhhZWIl4WDmps2+NbbWaBB4ECxL7TJCyXs+BuJV2Fn3bKaXX5M71fSOX
+ VRwthdFWtmbNGeqsNagTPbqJVUW3CpnEKlBWimkaxxNuDZn9wQIP1LhJkeQupUyOOam/
+ I8Iq+R4jAPncOuBP+QFNgzz/R0OZuxswceUt/LaV/81j9uIbp+hZC7M1G3iun8EgCluN
+ UukR7DLzI9uxpAXUvYNrLkdVCTwbRID2tLklvrYK1PFkSlNe2BPYX4RXR8eei3kYZQyN
+ PejD74HyoHyxIH03MEaCOed/NFlOJhvDZHZbsRS16onQXQx11kyEgZtZCbBodyfp4xdS
+ 4+KA==
+X-Gm-Message-State: AOAM533q1QgVNcHkr429AB/lz7S5wPWCsDx+G/s6Wp0T9NMvyIYCWxsM
+ Gxm3BfP1MknmLDinlPbjmvN0E2VXXkf9FGpjhGTfzA==
+X-Google-Smtp-Source: ABdhPJxcDjtDEzYUye6x3Dmzg9ujqCZ3q1JWqsI1T/KJO2NJFYT7C0yQKEAOoevS9VYORj54vtxQ75ponhqtDc2LUgA=
+X-Received: by 2002:a17:906:59b:: with SMTP id 27mr6296618ejn.56.1598281280785; 
+ Mon, 24 Aug 2020 08:01:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87eeoc0x7i.fsf@linaro.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 03:41:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.25, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+References: <20200812190206.31595-1-f4bug@amsat.org>
+ <1ccf070b-7abd-ebfd-2788-92a81b4fc8fe@amsat.org>
+In-Reply-To: <1ccf070b-7abd-ebfd-2788-92a81b4fc8fe@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Aug 2020 16:01:09 +0100
+Message-ID: <CAFEAcA-nLLM3dqC=71JSfu9+8=xsnpfavD0Wk4Lkuf+EOytgQA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] hw/misc/unimp: Improve how offset/value are
+ displayed
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,48 +77,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Aug 2020 14:33:37 -0000
+X-List-Received-Date: Mon, 24 Aug 2020 15:01:25 -0000
 
-On 8/12/20 9:12 AM, Alex Bennée wrote:
-> 
-> zhaolichang <zhaolichang@huawei.com> writes:
-> 
->> I found that there are many spelling errors in the comments of qemu,
->> so I used the spellcheck tool to check the spelling errors
->> and finally found some spelling errors in the folder.
->>
->> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
->> ---
-> <snip>
-> 
->> diff --git a/gdbstub.c b/gdbstub.c
->> index f3a318c..bbe66b5 100644
->> --- a/gdbstub.c
->> +++ b/gdbstub.c
->> @@ -698,7 +698,7 @@ static uint32_t gdb_get_cpu_pid(CPUState *cpu)
->>   {
->>       /* TODO: In user mode, we should use the task state PID */
->>       if (cpu->cluster_index == UNASSIGNED_CLUSTER_INDEX) {
->> -        /* Return the default process' PID */
->> +        /* Return the default process's PID */
-> 
-> Hmm I thought this was correct usage as s's -> s' but apparently that is
-> only a given rule for possessive plural nouns (processes' PIDs) -
-> although apparently it is possible to have singular nouns in plural
-> forms so what do I know :-/
+On Sat, 22 Aug 2020 at 21:02, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> On 8/12/20 9:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > This series aims to ease looking at the '-d unimp' output reported
+> > by the UnimplementedDevice.
+> >
+> > - read/write accesses are now aligned
+> > - the value format width uses the access size
+> > - the offset (address) uses the size of the memory region it belongs
+> >
+> > Series fully reviewed.
+>
+> ping?
 
-Yes, this is one case where s's is valid.  But if it bothers you, you 
-can always rewrite to:
+What tree were you expecting these to go in via? Probably worth
+being specific about who you're pinging in this kind of case ;-)
 
-/* Return the PID of the default process */
-
-> 
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+-- PMM
 
