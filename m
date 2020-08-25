@@ -1,72 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAaRC-0004DG-Bc
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 11:00:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52866)
+	id 1kAaRI-0004Nq-Jd
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 11:00:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kAaRA-00048G-EI
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 11:00:36 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:21328
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kAaR7-00020Z-CO
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 11:00:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598367632;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2vh3TjLMbbAFmHKortYMReuJyieyqECv34e7lvS9cng=;
- b=J5TAIzQcC8XW646BWrSFvD3gRrfqZMOlJDVVjotiQzo8wrru1WGA1xxULB6xNS68+NckxZ
- JsIwmTogTf1sWAT7hqP709Dy301lfJ8/USnXgqyor1rRqxbUwUYpMpWJqFQzFJQtNshgXi
- y01eCVh7uMEGEntIrhJycSWOoUuy6Uw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-30-3PWSuheCOy22U6fLiyi2Fg-1; Tue, 25 Aug 2020 11:00:28 -0400
-X-MC-Unique: 3PWSuheCOy22U6fLiyi2Fg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C0541015CA3;
- Tue, 25 Aug 2020 15:00:27 +0000 (UTC)
-Received: from localhost (ovpn-113-101.ams2.redhat.com [10.36.113.101])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8E37619C4F;
- Tue, 25 Aug 2020 15:00:21 +0000 (UTC)
-Date: Tue, 25 Aug 2020 16:00:19 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pannengyuan@huawei.com,
- zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>,
- Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v2 07/10] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-Message-ID: <20200825150019.GD7124@stefanha-x1.localdomain>
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-8-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kAaRF-0004Jv-Q5
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 11:00:42 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:38123)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kAaRC-000235-KH
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 11:00:41 -0400
+Received: by mail-ej1-x641.google.com with SMTP id oz20so12025477ejb.5
+ for <qemu-trivial@nongnu.org>; Tue, 25 Aug 2020 08:00:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=DZv6l2y4Im94jThe8MYkcyapTxnKKIFy0pG30tVki40=;
+ b=Pg4oxCndn3BxzjiqGPz8t+N90exxH4CfLjFo3AAZ6IiqM0fZVrDdf/FFCe3naXwlN1
+ ZGtGPsPyJBDFtznwXak0Dx2BFriNYIQJhE+YnAI0sWy8tbCdjxLB8tH8sW7sfLDsL8Ps
+ mpY2Uz/6IHFq7eHCdsYxJ4hHxzRt9Fluhgg8IJqMdKJ8yRpQByHIM/SegtqM24602gox
+ co5w9In3g5SGfZ12fBqEGHF8lyqWsuQJ6ySWraNbifqWs1SiKzIGfLBpEza4RcYe4Kqg
+ Ks0QYyqMGqrSGwi1xpDFoucldDsBNsdDKEi4wlKLo2usm2u15aymELUNT/USriUhuTkI
+ NOVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=DZv6l2y4Im94jThe8MYkcyapTxnKKIFy0pG30tVki40=;
+ b=a5SZECVRQe03HUbXbyv7OfeVTCMiC1dj+0ikeyBQvzcYeMpx+lqhiFM7JhhksxDHrX
+ HGkFzUOYEtj4I4q3tpjIg7FM4lhNLBzAIrKjjHLz9LS1aD6Q7UiaqINhGyTBidjfjnIz
+ X0QU8UjVEOBCiKAweTKhISR3VYqGqXw56ZJBYoRmxmVzzYaIZgK/kz8+/VxVsGrf1kuL
+ +JrpKsTezKtWRGzr8t6siNIk6GhBmuyAvzp3QGt45ryWeW8uxN0Dn9YWGUqtCFCZCVZP
+ FQL580941zd+2Tg8imO2HlNc/odTOjYIuI9/USbpFeH72n31WhR1K6LTc5mdKOid4vsU
+ eTLw==
+X-Gm-Message-State: AOAM5320xf+hY2euHXmgUsJCSbzE0KZ7ekGO9K1qwRubHrkmSEO91Jz5
+ MbkzfDrC+7QmBt7tEgMo0I+bITyFVXgz9fkyAa3Y1Q==
+X-Google-Smtp-Source: ABdhPJwt8CTSQh7s4Hr9Qbm6HmWiwWcpBue2Nxy4fjAr8edOquCLxIlc5EBkjqppa/SBWjNIjX1T6J5gwpMU85gG/80=
+X-Received: by 2002:a17:907:2066:: with SMTP id
+ qp6mr1910135ejb.85.1598367636153; 
+ Tue, 25 Aug 2020 08:00:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200825112447.126308-8-kuhn.chenqun@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="AkbCVLjbJ9qUtAXD"
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:35:36
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200818143825.691110-1-f4bug@amsat.org>
+ <20200818143825.691110-2-f4bug@amsat.org>
+In-Reply-To: <20200818143825.691110-2-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Aug 2020 16:00:24 +0100
+Message-ID: <CAFEAcA-HKWvLWJ8MPigAni8jHwg5qu6kEq1=TgXVMvo5oeTeLg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/core/qdev: Make qdev_pass_gpios() arguments
+ self-describing
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,47 +79,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 15:00:36 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 15:00:42 -0000
 
---AkbCVLjbJ9qUtAXD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Aug 25, 2020 at 07:24:44PM +0800, Chen Qun wrote:
-> Clang static code analyzer show warning:
-> hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
->         ret =3D event_notifier_test_and_clear(intp->interrupt);
->         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+On Tue, 18 Aug 2020 at 15:38, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> Make the direction qdev_pass_gpios() pass the GPIOs more obvious
+> by renaming its arguments as 'from_dev' and 'to_container'.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Eric Auger <eric.auger@redhat.com>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  hw/vfio/platform.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/hw/qdev-core.h | 10 +++++-----
+>  hw/core/qdev.c         | 14 +++++++-------
+>  2 files changed, 12 insertions(+), 12 deletions(-)
+>
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index ea3f73a282d..c72d4db2d26 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -643,8 +643,8 @@ static inline void qdev_init_gpio_in_named(DeviceStat=
+e *dev,
+>
+>  /**
+>   * qdev_pass_gpios: create GPIO lines on container which pass through to=
+ device
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+In the line above we say that the pass through is from the container
+to the device...
 
---AkbCVLjbJ9qUtAXD
-Content-Type: application/pgp-signature; name="signature.asc"
+> - * @dev: Device which has GPIO lines
+> - * @container: Container device which needs to expose them
+> + * @from_dev: Device which has GPIO lines
+> + * @to_container: Container device which needs to expose them
 
------BEGIN PGP SIGNATURE-----
+...but here we say that it is from the device to the container.
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9FJ4MACgkQnKSrs4Gr
-c8gKqQf/dUJ8GNdZi+1Aehsiz90/HWV6+uPjX1KGs6xizzVnOPcqRZjTX/5x47T9
-cWtGluNXfamItFMHHIvCIHVbe757Bj0MNjiJ6qJBO+gCHRFC2ghB6qQvsLlIanyp
-13gl9NgBPuHaT5W3+APJ1dlCvtkd9s5xgFzYU47l9JS6Sc+ERXyD+iwVYn2Fl3Mj
-cjhiC8Bx5VAcisM+1PyQIoYJV0ukg5Ju3CSdmOyXlKrg8sj78w2/N+LGeXGo8rYD
-+6FO2ykF3FUV1WfTcEGL3Qr4LQhC/BWnPoHe1dJg22xXU2h6CtMi7k+cSGC/Q1aJ
-+jquilZZYSr7cX+SaHSbCMeZ/HJykw==
-=KDwh
------END PGP SIGNATURE-----
+You could make an argument for either convention of from/to,
+but we should be consistent. The most useful part of the name
+is the part we already have, because 'dev' vs 'container'
+is unambiguous, whereas 'to' vs 'from' depends on your
+point of view and doesn't really help in working out which
+way round the arguments should go.
 
---AkbCVLjbJ9qUtAXD--
-
+thanks
+-- PMM
 
