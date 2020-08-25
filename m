@@ -1,52 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kARzM-0002dr-6V
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 01:59:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60814)
+	id 1kAS3u-0005iH-9t
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 02:04:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
- id 1kARzL-0002dL-23; Tue, 25 Aug 2020 01:59:19 -0400
-Received: from oxygen.pond.sub.org ([2a01:4f8:13b:3ad0:1::3]:58420)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
- id 1kARzJ-0000QT-Du; Tue, 25 Aug 2020 01:59:18 -0400
-Received: from blackfin.pond.sub.org
- (p200300d36f1be000dacb8afffee0c842.dip0.t-ipconnect.de
- [IPv6:2003:d3:6f1b:e000:dacb:8aff:fee0:c842])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (Client did not present a certificate)
- by oxygen.pond.sub.org (Postfix) with ESMTPSA id 23C812191B;
- Tue, 25 Aug 2020 07:59:10 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kAS3t-0005hk-5Y
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 02:04:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51806)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kAS3r-0000tb-CW
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 02:04:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598335438;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hileqYC8/RVBiqefMX381AkDKqA/jyGsHB4ewOii3gM=;
+ b=D1Mh2Zb1WSwfs25WbQug29IBpUYaBcfhz4phuo5NWEfmXcW5GdCb6SocPxU0NzY7uJCJ0k
+ XtUpElIwI3Eq2uJLKZg51RDpl3YdZKVCM/d+8IyJKnHNv7qTjvk4WiPnc2KPNL4bv4WntV
+ psRjd01BbGeDfyOso59vtHIGjVBXlgc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-131-mo40i8j7P02XhM-NjT_GzQ-1; Tue, 25 Aug 2020 02:03:55 -0400
+X-MC-Unique: mo40i8j7P02XhM-NjT_GzQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1683F801AEA;
+ Tue, 25 Aug 2020 06:03:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-74.ams2.redhat.com
+ [10.36.112.74])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DA346100239B;
+ Tue, 25 Aug 2020 06:03:53 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BE32E112D737; Tue, 25 Aug 2020 07:59:07 +0200 (CEST)
+ id 5CD34112D737; Tue, 25 Aug 2020 08:03:52 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
-To: Li Qiang <liq3ea@gmail.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
- zxq_yx_007@163.com,  marcandre lureau <marcandre.lureau@redhat.com>,  Li
- Qiang <liq3ea@163.com>,  Qemu Developers <qemu-devel@nongnu.org>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests: fix a memory in test_socket_unix_abstract_good
-In-Reply-To: <CAKXe6SJ0+qvRQaKxirq=j9jAaKAdjXZzxVoMTbcQg_W=RcGz8g@mail.gmail.com>
- (Li Qiang's message of "Fri, 14 Aug 2020 00:32:30 +0800")
-References: <20200603161409.54682-1-liq3ea@163.com>
- <CAKXe6SJ-HNK-ZKYcGCGsiUmYi_MVGrVmSvric2OjK5m2q=TBjg@mail.gmail.com>
- <20200624105644.GG774096@redhat.com>
- <CAKXe6SJ0+qvRQaKxirq=j9jAaKAdjXZzxVoMTbcQg_W=RcGz8g@mail.gmail.com>
+To: Rohit Shinde <rohit.shinde12194@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mdroth@linux.vnet.ibm.com
+Subject: Re: [PATCH v5] qapi/opts-visitor: Added missing fallthrough
+ annotations
+References: <20200818105021.4998-1-rohit.shinde12194@gmail.com>
+Date: Tue, 25 Aug 2020 08:03:52 +0200
+In-Reply-To: <20200818105021.4998-1-rohit.shinde12194@gmail.com> (Rohit
+ Shinde's message of "Tue, 18 Aug 2020 06:50:21 -0400")
+Message-ID: <87o8mzjm7r.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-Date: Tue, 25 Aug 2020 07:59:07 +0200
-Message-ID: <87v9h7jmfo.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-Received-SPF: pass client-ip=2a01:4f8:13b:3ad0:1::3;
- envelope-from=armbru@pond.sub.org; helo=oxygen.pond.sub.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 02:03:58
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,12 +75,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 05:59:19 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 06:04:01 -0000
 
-Li Qiang <liq3ea@gmail.com> writes:
+Rohit Shinde <rohit.shinde12194@gmail.com> writes:
 
-> Hi Daniel,
-> It seems this patch still not in the upstream.
+> Added fallthrough comment on line 270 to prevent the compiler from
+> throwing an error while compiling with the -Wimplicit-fallthrough flag
 
-Cc: qemu-trivial, hope this helps.
+None of the compilers I know warns there.  Which one are you using?
+
+Commit message style tip: use the imperative mood
+https://chris.beams.io/posts/git-commit/#imperative
+
+> Signed-off-by: Rohit Shinde <rohit.shinde12194@gmail.com>
+> ---
+>  qapi/opts-visitor.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
+> index 7781c23a42..3422ff265e 100644
+> --- a/qapi/opts-visitor.c
+> +++ b/qapi/opts-visitor.c
+> @@ -266,6 +266,7 @@ opts_next_list(Visitor *v, GenericList *tail, size_t size)
+>          }
+>          ov->list_mode = LM_IN_PROGRESS;
+>          /* range has been completed, fall through in order to pop option */
+> +        /* fallthrough */
+>  
+>      case LM_IN_PROGRESS: {
+>          const QemuOpt *opt;
+
 
