@@ -1,72 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAReY-0003LZ-79
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 01:37:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57838)
+	id 1kARzM-0002dr-6V
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 01:59:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kAReW-0003Ij-PG
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 01:37:48 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:46611
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kAReV-0006dN-92
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 01:37:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598333866;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zJ1cECmJ/JmCrluwFMDruUt/n/7CSmugjWI/Nst2LPM=;
- b=dKARNXtZUKTTLnyFRUvfQvS3oJkCKw4lsA5dUHmSHTsSnuY3oVcU9XaLp4DdLXSBdc/3Z7
- K3ebCCh0vqceuLr2NSVQmbgqS2BVLWGDmEqTgoAgeijIrE1t0u+bfFGd11/8AKsOpgBcb0
- Vp+DunM5AYSddPWxwlwSPFC+aoYydh4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-4WSk8uWUNVCrsT6KoeJpew-1; Tue, 25 Aug 2020 01:37:42 -0400
-X-MC-Unique: 4WSk8uWUNVCrsT6KoeJpew-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6242980F04E;
- Tue, 25 Aug 2020 05:37:41 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-152.ams2.redhat.com [10.36.112.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E16105D9CA;
- Tue, 25 Aug 2020 05:37:39 +0000 (UTC)
-Subject: Re: [PATCH] configure: default to PIE disabled on Windows platforms
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Howard Spoelstra <hsp.cat7@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200824163109.96938-1-berrange@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <8fd5c67c-7bcf-e0d0-bc13-17d0b7e0124d@redhat.com>
-Date: Tue, 25 Aug 2020 07:37:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
+ id 1kARzL-0002dL-23; Tue, 25 Aug 2020 01:59:19 -0400
+Received: from oxygen.pond.sub.org ([2a01:4f8:13b:3ad0:1::3]:58420)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
+ id 1kARzJ-0000QT-Du; Tue, 25 Aug 2020 01:59:18 -0400
+Received: from blackfin.pond.sub.org
+ (p200300d36f1be000dacb8afffee0c842.dip0.t-ipconnect.de
+ [IPv6:2003:d3:6f1b:e000:dacb:8aff:fee0:c842])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by oxygen.pond.sub.org (Postfix) with ESMTPSA id 23C812191B;
+ Tue, 25 Aug 2020 07:59:10 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BE32E112D737; Tue, 25 Aug 2020 07:59:07 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Li Qiang <liq3ea@gmail.com>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
+ zxq_yx_007@163.com,  marcandre lureau <marcandre.lureau@redhat.com>,  Li
+ Qiang <liq3ea@163.com>,  Qemu Developers <qemu-devel@nongnu.org>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] tests: fix a memory in test_socket_unix_abstract_good
+In-Reply-To: <CAKXe6SJ0+qvRQaKxirq=j9jAaKAdjXZzxVoMTbcQg_W=RcGz8g@mail.gmail.com>
+ (Li Qiang's message of "Fri, 14 Aug 2020 00:32:30 +0800")
+References: <20200603161409.54682-1-liq3ea@163.com>
+ <CAKXe6SJ-HNK-ZKYcGCGsiUmYi_MVGrVmSvric2OjK5m2q=TBjg@mail.gmail.com>
+ <20200624105644.GG774096@redhat.com>
+ <CAKXe6SJ0+qvRQaKxirq=j9jAaKAdjXZzxVoMTbcQg_W=RcGz8g@mail.gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+Date: Tue, 25 Aug 2020 07:59:07 +0200
+Message-ID: <87v9h7jmfo.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <20200824163109.96938-1-berrange@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:36:47
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.25, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=2a01:4f8:13b:3ad0:1::3;
+ envelope-from=armbru@pond.sub.org; helo=oxygen.pond.sub.org
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,42 +59,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 05:37:49 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 05:59:19 -0000
 
-On 24/08/2020 18.31, Daniel P. Berrangé wrote:
-> If Windows EXE files are built with -pie/-fpie they will fail to
-> launch. Historically QEMU defaulted to disabling PIE for Windows,
-> but this setting was accidentally lost when the configure summary
-> text was removed in
-> 
->    commit f9332757898a764d85e19d339ec421236e885b68
->    Author: Paolo Bonzini <pbonzini@redhat.com>
->    Date:   Mon Feb 3 13:28:38 2020 +0100
-> 
->      meson: move summary to meson.build
-> 
->      Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> 
-> Fixes: f9332757898a764d85e19d339ec421236e885b68
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   configure | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/configure b/configure
-> index 67832e3bab..b6f3b6e191 100755
-> --- a/configure
-> +++ b/configure
-> @@ -857,6 +857,7 @@ MINGW32*)
->       audio_drv_list=""
->     fi
->     supported_os="yes"
-> +  pie="no"
->   ;;
->   GNU/kFreeBSD)
->     bsd="yes"
-> 
+Li Qiang <liq3ea@gmail.com> writes:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Hi Daniel,
+> It seems this patch still not in the upstream.
 
+Cc: qemu-trivial, hope this helps.
 
