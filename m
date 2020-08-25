@@ -1,31 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAX5n-0000SY-JR
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46674)
+	id 1kAX5p-0000Ug-8B
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5l-0000RJ-OQ; Tue, 25 Aug 2020 07:26:17 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:40252 helo=huawei.com)
+ id 1kAX5l-0000Rj-WC; Tue, 25 Aug 2020 07:26:18 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40422 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5h-0006eS-Pq; Tue, 25 Aug 2020 07:26:16 -0400
+ id 1kAX5i-0006ep-N4; Tue, 25 Aug 2020 07:26:17 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id ED39C389DB8B26FF8B60;
- Tue, 25 Aug 2020 19:26:03 +0800 (CST)
+ by Forcepoint Email with ESMTP id 0B615915459BF62E97A5;
+ Tue, 25 Aug 2020 19:26:09 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Tue, 25 Aug 2020
- 19:25:54 +0800
+ 19:26:01 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>
-Subject: [PATCH v2 00/10] trivial patchs for static code analyzer fixes
-Date: Tue, 25 Aug 2020 19:24:37 +0800
-Message-ID: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Raphael
+ Norwitz" <raphael.norwitz@nutanix.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v2 05/10] hw/virtio/vhost-user:Remove dead assignment in
+ scrub_shadow_regions()
+Date: Tue, 25 Aug 2020 19:24:42 +0800
+Message-ID: <20200825112447.126308-6-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.35;
@@ -52,46 +56,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 25 Aug 2020 11:26:18 -0000
 
-Hi All,
-   This series fix trivial warnings reported by the Clang static code analyzer.
+Clang static code analyzer show warning:
+hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
+        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+        ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since v1:
-- Patch1: Addressed Igor Mammedov review comment.
-- Patch5：Addressed Raphael Norwitz review comment.
-- Patch6: Addressed Philippe Mathieu-Daudé review comment.
-- Patch7: Addressed Eric Auger review comment.
-- Patch8: drop the patch "tcg/optimize:** " follow Richard Henderson comment.
-- Patch9->Patch8: The patch code format is modified because spaces are missing.
-- Patch11->Patch10: Addressed Gerd Hoffmann review comment.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+---
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+---
+ hw/virtio/vhost-user.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks.
-
-Chen Qun (10):
-  hw/arm/virt-acpi-build:Remove dead assignment in build_madt()
-  hw/arm/omap1:Remove redundant statement in omap_clkdsp_read()
-  target/arm/translate-a64:Remove dead assignment in
-    handle_scalar_simd_shli()
-  target/arm/translate-a64:Remove redundant statement in
-    disas_simd_two_reg_misc_fp16()
-  hw/virtio/vhost-user:Remove dead assignment in scrub_shadow_regions()
-  hw/net/virtio-net:Remove redundant statement in
-    virtio_net_rsc_tcp_ctrl_check()
-  vfio/platform: Remove dead assignment in vfio_intp_interrupt()
-  usb/bus: Remove dead assignment in usb_get_fw_dev_path()
-  hw/intc: Remove redundant statement in exynos4210_combiner_read()
-  hw/display/vga:Remove redundant statement in vga_draw_graphic()
-
- hw/arm/omap1.c                | 1 -
- hw/arm/virt-acpi-build.c      | 3 +--
- hw/display/vga.c              | 1 -
- hw/intc/exynos4210_combiner.c | 3 +--
- hw/net/virtio-net.c           | 1 -
- hw/usb/bus.c                  | 4 ++--
- hw/vfio/platform.c            | 2 +-
- hw/virtio/vhost-user.c        | 2 +-
- target/arm/translate-a64.c    | 7 ++-----
- 9 files changed, 8 insertions(+), 16 deletions(-)
-
+diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+index d7e2423762..9c5b4f7fbc 100644
+--- a/hw/virtio/vhost-user.c
++++ b/hw/virtio/vhost-user.c
+@@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
+      */
+     for (i = 0; i < dev->mem->nregions; i++) {
+         reg = &dev->mem->regions[i];
+-        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
++        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+         if (fd > 0) {
+             ++fd_num;
+         }
 -- 
 2.23.0
 
