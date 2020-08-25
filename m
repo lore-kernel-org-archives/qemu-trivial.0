@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAYAs-0006Qp-II
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 08:35:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34920)
+	id 1kAYD8-0007g5-TT
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 08:37:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35502)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kAYAp-0006Ns-JX
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 08:35:35 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:33656)
+ id 1kAYD7-0007fm-Uc
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 08:37:57 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:45292)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kAYAl-0006nj-HE
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 08:35:35 -0400
-Received: by mail-ej1-x643.google.com with SMTP id a21so329937ejp.0
- for <qemu-trivial@nongnu.org>; Tue, 25 Aug 2020 05:35:30 -0700 (PDT)
+ id 1kAYD6-00074A-Cw
+ for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 08:37:57 -0400
+Received: by mail-ej1-x643.google.com with SMTP id si26so16315355ejb.12
+ for <qemu-trivial@nongnu.org>; Tue, 25 Aug 2020 05:37:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8A737/DKrYh9uyX44xcwujC6YeU+OC0xxDzLI1ANFW0=;
- b=S5vv8DGtFwBS03ICqE0tEHu2hRoK3m/gELrFRePiSnEDauLQIVmv04uAxjoDWOq730
- S9jpYcZ2Dx4Qd+YMRu5XL0LfVhfPV7Xt3EGtAsg26iDgh2lG/oBj7jURtmdZVhLSbO0B
- FvVgGQZamN7ck+S7xFwvlKsyrhF4yzY2SEfRhVmmfk7voHJGaI1HxYwQ4WE+ESUnsDo7
- nfo4VzngueORoQ2ErbPUGOqNNqePBDishFUYQ7bV84MLLc5EmozsEpCqXdCQp8yQ/jcL
- Pc61w3ZSEA8y6oZkCQ3kU3SF+jRpg6Dzb2BAHPHgSYqrwl7rAzgaQuH9nURvMl5CLaHx
- +n7A==
+ :cc; bh=XYEs0SeKjvZ6gq7eyQ0Q6adsfDtSQvq1sxT/mG0sLzw=;
+ b=X+DaCrsqja5m9fWQnE4MNpa1HveQpJ9hpUJSeWohnwCHfDtM+Q+Jb7nXUBO5FMawTR
+ LaPxtOg6geE6Ow4cgO1TlsxrXE9ylAVZ9GvcVFrnWupr1280brdjKdtlSEAnapJagUCt
+ v8CBa9oriWC+BGH9+Aw9TNrFu4oFmlgcMUDb8EmwxYMl7kfzxWQ6omqMKkGhFnyhW+EU
+ TlPxDaheHuFqfDkwfY8RTDi8idARjCiPB2l4AlUE2GjfyRpxG2TRz695dMcLdEijcB8K
+ UHHTwD4NXtAphhp0D4qBLivlUjaJMWfw/c/3+bAfsaeOOisTd2aI3Vs6sZ4FKxgE995o
+ 8/Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=8A737/DKrYh9uyX44xcwujC6YeU+OC0xxDzLI1ANFW0=;
- b=ljy3M01qCMRz0zCU+UCyP3XoiwauZfTHh7LedFNc0EBXMbJKI106i3bn2JfYM9mZCi
- vogRjzGZvSSvYU8ilcVbthRmuK4dOHGMcOOn7/nDjXBltclZy1yqyUvFsc0Dqc5+pGpz
- /WhIQSibPSlEo3syTQvEKxNivlwqCPg/+zn/yhkXJRK8gapnCMKv1kWqQLE2rVIS4clf
- RSeuEEj4xR6ZDeCLZE2uqk+AMkyiW1ZjeKIxJP8yW5Id66CExImXENJE/Dmf6tt8La3M
- YNTWDt2JTWuH7mBwjRNS3o/mmXtlKIS6T88nMVkGcAPre6AUW000re/x4dDX0lfbZXEH
- lYhQ==
-X-Gm-Message-State: AOAM531jpzdMJdpGxRN73h1/1cbbXmKAGCrBKhX/6dUmAaCzLTg06b6m
- 6qzcflm2InhL316ekm8X1OExX0u08hbt+8zCeRnFHQ==
-X-Google-Smtp-Source: ABdhPJy9O3f1G/JlOAisG5F/m2zoBzsTWdbBFmfi+CqUEmjHJtK5KAHiatDDUChwfJfBXfsDYdY3+Z/4BWefSE5A9CA=
-X-Received: by 2002:a17:906:2b0b:: with SMTP id
- a11mr696161ejg.250.1598358929313; 
- Tue, 25 Aug 2020 05:35:29 -0700 (PDT)
+ bh=XYEs0SeKjvZ6gq7eyQ0Q6adsfDtSQvq1sxT/mG0sLzw=;
+ b=VefQNFA42YSO4IFtm3uaXTZ32EirGBNHKKBazyTgPeyeczCJjxnUhe0TYEj4Ofsh+w
+ sWpQHgAz9+fLnq20Pba5lzNmUeKCxHPY4WX5LIYPzSPcfVhoWYLyQ+M7OKCvJ4xx+MxV
+ PFPWUcOFouqIX+Teijnyggn4KKOX78y6OIHXz29X4IJje4kViA55IyT9lIpzYydCc535
+ Z/rT86UfntY2lgbLm6KgbvLRlXXDFBYjks6eSJp3XpbFFcek76wjLgOSv6q0E3BClt2h
+ IHTG6yAw7B1KZK7TlWQ5PTtqXfCcwHa5uEo7dkPfwekaRPQFEClwLz2v+EEurNjp98+C
+ mK5Q==
+X-Gm-Message-State: AOAM5312/94r6nlycCvQPj/WwgKlUmoPKT+v5ZI+uIvtvvjd+nYUUaV4
+ Kjzp9UY9/gQrK0ON1OI4LaKc/LWEAuqXwVG4PjXw1w==
+X-Google-Smtp-Source: ABdhPJwTOCVcymmwr7UFsaiwkiwkN8WdxU7n+QajkSjWT8+0nhNR/CybIlny3nLIkfZrV6rEvtQVCGANpMDGSCGkfFQ=
+X-Received: by 2002:a17:906:f28b:: with SMTP id
+ gu11mr9998004ejb.407.1598359075171; 
+ Tue, 25 Aug 2020 05:37:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200825112447.126308-3-kuhn.chenqun@huawei.com>
+ <20200825112447.126308-4-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200825112447.126308-4-kuhn.chenqun@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Aug 2020 13:35:17 +0100
-Message-ID: <CAFEAcA-MJZp5RVvg=tM45kz+=pZ6t8gm-zdkLLzC9C59QVCoDw@mail.gmail.com>
-Subject: Re: [PATCH v2 02/10] hw/arm/omap1:Remove redundant statement in
- omap_clkdsp_read()
+Date: Tue, 25 Aug 2020 13:37:44 +0100
+Message-ID: <CAFEAcA9mbQmGRNqJC7FmV8gBi3XOuMmYRVhWmczZPTuTW9tfVw@mail.gmail.com>
+Subject: Re: [PATCH v2 03/10] target/arm/translate-a64:Remove dead assignment
+ in handle_scalar_simd_shli()
 To: Chen Qun <kuhn.chenqun@huawei.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>, 
@@ -65,7 +65,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,20 +78,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 12:35:35 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 12:37:58 -0000
 
 On Tue, 25 Aug 2020 at 12:26, Chen Qun <kuhn.chenqun@huawei.com> wrote:
 >
 > Clang static code analyzer show warning:
-> hw/arm/omap1.c:1760:15: warning: Value stored to 'cpu' during its
-> initialization is never read
->     CPUState *cpu = CPU(s->cpu);
->               ^~~   ~~~~~~~~~~~
+> target/arm/translate-a64.c:8635:14: warning: Value stored to 'tcg_rn' during its
+>  initialization is never read
+>     TCGv_i64 tcg_rn = new_tmp_a64(s);
+>              ^~~~~~   ~~~~~~~~~~~~~~
+> target/arm/translate-a64.c:8636:14: warning: Value stored to 'tcg_rd' during its
+>  initialization is never read
+>     TCGv_i64 tcg_rd = new_tmp_a64(s);
+>              ^~~~~~   ~~~~~~~~~~~~~~
 >
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
+> There is a memory leak for the variable new_tmp_a64 "s".
 
+There is not, because TCG temps allocated via new_tmp_a64()
+are all freed via free_tmp_a64() at the end of disas_a64_insn().
+
+> We should delete the assignment.
+
+But yes, the assignments are unused and should be deleted.
+
+If you fix the commit message, then
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
