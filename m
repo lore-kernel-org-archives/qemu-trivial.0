@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAX5p-0000Ug-8B
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46682)
+	id 1kAX5q-0000WQ-Ea
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5l-0000Rj-WC; Tue, 25 Aug 2020 07:26:18 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:40422 helo=huawei.com)
+ id 1kAX5n-0000Sh-MV; Tue, 25 Aug 2020 07:26:19 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40250 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5i-0006ep-N4; Tue, 25 Aug 2020 07:26:17 -0400
+ id 1kAX5k-0006eT-E3; Tue, 25 Aug 2020 07:26:19 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 0B615915459BF62E97A5;
- Tue, 25 Aug 2020 19:26:09 +0800 (CST)
+ by Forcepoint Email with ESMTP id 013F08B673E9EFCE32DD;
+ Tue, 25 Aug 2020 19:26:04 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Tue, 25 Aug 2020
- 19:26:01 +0800
+ 19:25:55 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Raphael
- Norwitz" <raphael.norwitz@nutanix.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v2 05/10] hw/virtio/vhost-user:Remove dead assignment in
- scrub_shadow_regions()
-Date: Tue, 25 Aug 2020 19:24:42 +0800
-Message-ID: <20200825112447.126308-6-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
+ Mammedov" <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, <qemu-arm@nongnu.org>
+Subject: [PATCH v2 01/10] hw/arm/virt-acpi-build:Remove dead assignment in
+ build_madt()
+Date: Tue, 25 Aug 2020 19:24:38 +0800
+Message-ID: <20200825112447.126308-2-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
@@ -54,36 +56,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 11:26:18 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 11:26:20 -0000
 
 Clang static code analyzer show warning:
-hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
-        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-        ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
+    madt = acpi_data_push(table_data, sizeof *madt);
+    ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org
 ---
- hw/virtio/vhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/virt-acpi-build.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
-index d7e2423762..9c5b4f7fbc 100644
---- a/hw/virtio/vhost-user.c
-+++ b/hw/virtio/vhost-user.c
-@@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
-      */
-     for (i = 0; i < dev->mem->nregions; i++) {
-         reg = &dev->mem->regions[i];
--        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-+        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-         if (fd > 0) {
-             ++fd_num;
-         }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 91f0df7b13..f830f9b779 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     int madt_start = table_data->len;
+     const MemMapEntry *memmap = vms->memmap;
+     const int *irqmap = vms->irqmap;
+-    AcpiMultipleApicTable *madt;
+     AcpiMadtGenericDistributor *gicd;
+     AcpiMadtGenericMsiFrame *gic_msi;
+     int i;
+ 
+-    madt = acpi_data_push(table_data, sizeof *madt);
++    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+ 
+     gicd = acpi_data_push(table_data, sizeof *gicd);
+     gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
 -- 
 2.23.0
 
