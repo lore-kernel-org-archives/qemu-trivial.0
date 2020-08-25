@@ -1,79 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kATrA-0008A0-9p
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 03:59:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53502)
+	id 1kAX5n-0000SY-JR
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kATr7-00087H-Ry
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 03:58:57 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37446
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kATr6-00057G-3F
- for qemu-trivial@nongnu.org; Tue, 25 Aug 2020 03:58:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598342335;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=VfI1iInsF4fpYyIAsw8lT0nmsxB8+o3ItleabtMEUL0=;
- b=b8i0rS527JAYKplIN3yUNJ5tHa8x/wZXT3WixZmM8mdDb9BTtZt6RVzgJiFyfPQAVc4siX
- U/wViNRGvxam6IoU6e7mWd/de1g0QqM2gElrrrfT16P7AmrNeCjyn+jTUUexpe0GdQN0BS
- scAQeY+ibsHiqZzvabYgtWWUEmMxDPs=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-501-1C2x6oihNZmOQCcjVA2jHQ-1; Tue, 25 Aug 2020 03:58:53 -0400
-X-MC-Unique: 1C2x6oihNZmOQCcjVA2jHQ-1
-Received: by mail-ej1-f72.google.com with SMTP id e15so5027341ejk.10
- for <qemu-trivial@nongnu.org>; Tue, 25 Aug 2020 00:58:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VfI1iInsF4fpYyIAsw8lT0nmsxB8+o3ItleabtMEUL0=;
- b=L+Sy1jfPvv/J7idHr1+DnV3r6kvIi7ltLXsbnY6BTrYsTSBaalxcHhhmGvZ62YCMYX
- nscVVEaK7x3+GVPhPtgilxi+TuP1I6TWBr1S3qS8k+qAb9O2GNw6Wh1+l4vp8CVsksCN
- zszXyUupJMEANZJSECdaVYHLPvI9Ik8Ow3E3XdnvU4kCwVW2HnAk36m9g3o5fz7rPCvF
- ef76T4khq3jY3aF9cfNaVJTcWBCqIfdKZaxfNNiYSjBT1KzYrPopext2sGGnUDBvCmcL
- 41DbG76RhyBEaAp++ZBRfgFMSy5VPkLR+KZA0d9MM1XVba9lPlrBzdDPswa6Mo+vchVc
- 94rQ==
-X-Gm-Message-State: AOAM533uumF5813/ZAEanHfwdyroSNvP0lMhOyHiUh4TV+rgN4GQNvU/
- ZXoV/tTjRR5JqIkWtkEBPZ0L0U9jVCTw4SQZcywbFKrPlmtJEZAMN1zc7gXo+a1d634L74sd+7K
- GDVc9tTJtnR186K9Zisapsi7MrtW27JSmLg==
-X-Received: by 2002:a17:906:57d9:: with SMTP id
- u25mr8445971ejr.543.1598342331924; 
- Tue, 25 Aug 2020 00:58:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwugtsy1HGtwH9S0OURTisocsMt2s3JJsU1t24kcmdw0ril0pqzvMhZ3AnHiMTahR005wbOeZppJFJNnIYkGUQ=
-X-Received: by 2002:a17:906:57d9:: with SMTP id
- u25mr8445958ejr.543.1598342331714; 
- Tue, 25 Aug 2020 00:58:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kAX5l-0000RJ-OQ; Tue, 25 Aug 2020 07:26:17 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40252 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kAX5h-0006eS-Pq; Tue, 25 Aug 2020 07:26:16 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id ED39C389DB8B26FF8B60;
+ Tue, 25 Aug 2020 19:26:03 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Tue, 25 Aug 2020
+ 19:25:54 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH v2 00/10] trivial patchs for static code analyzer fixes
+Date: Tue, 25 Aug 2020 19:24:37 +0800
+Message-ID: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20200823102617.32358-1-thuth@redhat.com>
-In-Reply-To: <20200823102617.32358-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 25 Aug 2020 09:58:40 +0200
-Message-ID: <CABgObfYPWnfmAnfeqeTg=9K=-kVOWMzUSaPWej9OTjmWC9p6Xw@mail.gmail.com>
-Subject: Re: [PATCH] scripts/qemu-version.sh: Add missing space before ']'
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0.0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000e958bb05adaf12ac"
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:37:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 07:26:04
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,84 +50,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 07:58:58 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 11:26:18 -0000
 
---000000000000e958bb05adaf12ac
-Content-Type: text/plain; charset="UTF-8"
+Hi All,
+   This series fix trivial warnings reported by the Clang static code analyzer.
 
-Queued, thanks.
+Since v1:
+- Patch1: Addressed Igor Mammedov review comment.
+- Patch5：Addressed Raphael Norwitz review comment.
+- Patch6: Addressed Philippe Mathieu-Daudé review comment.
+- Patch7: Addressed Eric Auger review comment.
+- Patch8: drop the patch "tcg/optimize:** " follow Richard Henderson comment.
+- Patch9->Patch8: The patch code format is modified because spaces are missing.
+- Patch11->Patch10: Addressed Gerd Hoffmann review comment.
 
-Paolo
+Thanks.
 
-Il dom 23 ago 2020, 12:26 Thomas Huth <thuth@redhat.com> ha scritto:
+Chen Qun (10):
+  hw/arm/virt-acpi-build:Remove dead assignment in build_madt()
+  hw/arm/omap1:Remove redundant statement in omap_clkdsp_read()
+  target/arm/translate-a64:Remove dead assignment in
+    handle_scalar_simd_shli()
+  target/arm/translate-a64:Remove redundant statement in
+    disas_simd_two_reg_misc_fp16()
+  hw/virtio/vhost-user:Remove dead assignment in scrub_shadow_regions()
+  hw/net/virtio-net:Remove redundant statement in
+    virtio_net_rsc_tcp_ctrl_check()
+  vfio/platform: Remove dead assignment in vfio_intp_interrupt()
+  usb/bus: Remove dead assignment in usb_get_fw_dev_path()
+  hw/intc: Remove redundant statement in exynos4210_combiner_read()
+  hw/display/vga:Remove redundant statement in vga_draw_graphic()
 
-> When configure has been run with --with-pkgversion=xyz, the shell complains
-> about a missing ']' in this script.
->
-> Fixes: 2c273f32d3 ("meson: generate qemu-version.h")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  scripts/qemu-version.sh | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/scripts/qemu-version.sh b/scripts/qemu-version.sh
-> index 4847385e42..03128c56a2 100755
-> --- a/scripts/qemu-version.sh
-> +++ b/scripts/qemu-version.sh
-> @@ -6,7 +6,7 @@ dir="$1"
->  pkgversion="$2"
->  version="$3"
->
-> -if [ -z "$pkgversion"]; then
-> +if [ -z "$pkgversion" ]; then
->      cd "$dir"
->      if [ -e .git ]; then
->          pkgversion=$(git describe --match 'v*' --dirty | echo "")
-> --
-> 2.18.2
->
->
+ hw/arm/omap1.c                | 1 -
+ hw/arm/virt-acpi-build.c      | 3 +--
+ hw/display/vga.c              | 1 -
+ hw/intc/exynos4210_combiner.c | 3 +--
+ hw/net/virtio-net.c           | 1 -
+ hw/usb/bus.c                  | 4 ++--
+ hw/vfio/platform.c            | 2 +-
+ hw/virtio/vhost-user.c        | 2 +-
+ target/arm/translate-a64.c    | 7 ++-----
+ 9 files changed, 8 insertions(+), 16 deletions(-)
 
---000000000000e958bb05adaf12ac
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><span style=3D"font-family:sans-serif">Queued, thanks.</s=
-pan><div dir=3D"auto" style=3D"font-family:sans-serif"><br></div><div dir=
-=3D"auto" style=3D"font-family:sans-serif">Paolo</div></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Il dom 23 ago 2020, =
-12:26 Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com<=
-/a>&gt; ha scritto:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">When configure =
-has been run with --with-pkgversion=3Dxyz, the shell complains<br>
-about a missing &#39;]&#39; in this script.<br>
-<br>
-Fixes: 2c273f32d3 (&quot;meson: generate qemu-version.h&quot;)<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank" rel=3D"noreferrer">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0scripts/qemu-version.sh | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/scripts/qemu-version.sh b/scripts/qemu-version.sh<br>
-index 4847385e42..03128c56a2 100755<br>
---- a/scripts/qemu-version.sh<br>
-+++ b/scripts/qemu-version.sh<br>
-@@ -6,7 +6,7 @@ dir=3D&quot;$1&quot;<br>
-=C2=A0pkgversion=3D&quot;$2&quot;<br>
-=C2=A0version=3D&quot;$3&quot;<br>
-<br>
--if [ -z &quot;$pkgversion&quot;]; then<br>
-+if [ -z &quot;$pkgversion&quot; ]; then<br>
-=C2=A0 =C2=A0 =C2=A0cd &quot;$dir&quot;<br>
-=C2=A0 =C2=A0 =C2=A0if [ -e .git ]; then<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pkgversion=3D$(git describe --match &#39;=
-v*&#39; --dirty | echo &quot;&quot;)<br>
--- <br>
-2.18.2<br>
-<br>
-</blockquote></div>
-
---000000000000e958bb05adaf12ac--
+-- 
+2.23.0
 
 
