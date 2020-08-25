@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAX5x-0000ng-8E
+	id 1kAX5x-0000oO-EC
 	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46810)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5r-0000YW-Cw; Tue, 25 Aug 2020 07:26:24 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:40744 helo=huawei.com)
+ id 1kAX5r-0000Yb-QV; Tue, 25 Aug 2020 07:26:24 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40746 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5o-0006hn-Jb; Tue, 25 Aug 2020 07:26:23 -0400
+ id 1kAX5o-0006ho-JI; Tue, 25 Aug 2020 07:26:23 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 1B66CBD3252C62C6A808;
+ by Forcepoint Email with ESMTP id 206286B484CC497F101D;
  Tue, 25 Aug 2020 19:26:14 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Tue, 25 Aug 2020
- 19:26:05 +0800
+ 19:26:06 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Eric Auger
- <eric.auger@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
- "Stefan Hajnoczi" <stefanha@redhat.com>
-Subject: [PATCH v2 07/10] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-Date: Tue, 25 Aug 2020 19:24:44 +0800
-Message-ID: <20200825112447.126308-8-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Gerd
+ Hoffmann" <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH v2 08/10] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
+Date: Tue, 25 Aug 2020 19:24:45 +0800
+Message-ID: <20200825112447.126308-9-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
@@ -58,34 +57,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 X-List-Received-Date: Tue, 25 Aug 2020 11:26:24 -0000
 
 Clang static code analyzer show warning:
-hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
-        ret = event_notifier_test_and_clear(intp->interrupt);
-        ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+qemu/hw/usb/bus.c:615:13: warning: Value stored to 'pos' is never read
+            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
-Cc: Alex Williamson <alex.williamson@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
 ---
- hw/vfio/platform.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/usb/bus.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-index ac2cefc9b1..869ed2c39d 100644
---- a/hw/vfio/platform.c
-+++ b/hw/vfio/platform.c
-@@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
-         trace_vfio_intp_interrupt_set_pending(intp->pin);
-         QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
-                              intp, pqnext);
--        ret = event_notifier_test_and_clear(intp->interrupt);
-+        event_notifier_test_and_clear(intp->interrupt);
-         return;
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+index b17bda3b29..7bab0499ad 100644
+--- a/hw/usb/bus.c
++++ b/hw/usb/bus.c
+@@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
+             in++;
+         } else {
+             /* the device itself */
+-            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+-                            qdev_fw_name(qdev), nr);
++            snprintf(fw_path + pos, fw_len - pos, "%s@%lx", qdev_fw_name(qdev),
++                     nr);
+             break;
+         }
      }
- 
 -- 
 2.23.0
 
