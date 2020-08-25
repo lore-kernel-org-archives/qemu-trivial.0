@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAX5t-0000bL-H8
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46704)
+	id 1kAX5u-0000ep-Hg
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 07:26:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5n-0000SQ-DW; Tue, 25 Aug 2020 07:26:19 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4266 helo=huawei.com)
+ id 1kAX5q-0000Vq-2s; Tue, 25 Aug 2020 07:26:22 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:40248 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAX5k-0006f0-Aw; Tue, 25 Aug 2020 07:26:19 -0400
+ id 1kAX5k-0006eR-FU; Tue, 25 Aug 2020 07:26:21 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3D20EAFCC1F1C16209A2;
- Tue, 25 Aug 2020 19:26:09 +0800 (CST)
+ by Forcepoint Email with ESMTP id F0D982BDE2BAB82EB41A;
+ Tue, 25 Aug 2020 19:26:03 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Tue, 25 Aug 2020
- 19:25:59 +0800
+ 19:25:57 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
  <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Peter
  Maydell" <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v2 03/10] target/arm/translate-a64:Remove dead assignment in
- handle_scalar_simd_shli()
-Date: Tue, 25 Aug 2020 19:24:40 +0800
-Message-ID: <20200825112447.126308-4-kuhn.chenqun@huawei.com>
+Subject: [PATCH v2 02/10] hw/arm/omap1:Remove redundant statement in
+ omap_clkdsp_read()
+Date: Tue, 25 Aug 2020 19:24:39 +0800
+Message-ID: <20200825112447.126308-3-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
@@ -32,9 +32,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.35;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 07:26:10
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 07:26:04
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -54,20 +54,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2020 11:26:19 -0000
+X-List-Received-Date: Tue, 25 Aug 2020 11:26:22 -0000
 
 Clang static code analyzer show warning:
-target/arm/translate-a64.c:8635:14: warning: Value stored to 'tcg_rn' during its
- initialization is never read
-    TCGv_i64 tcg_rn = new_tmp_a64(s);
-             ^~~~~~   ~~~~~~~~~~~~~~
-target/arm/translate-a64.c:8636:14: warning: Value stored to 'tcg_rd' during its
- initialization is never read
-    TCGv_i64 tcg_rd = new_tmp_a64(s);
-             ^~~~~~   ~~~~~~~~~~~~~~
-
-There is a memory leak for the variable new_tmp_a64 "s".
-We should delete the assignment.
+hw/arm/omap1.c:1760:15: warning: Value stored to 'cpu' during its
+initialization is never read
+    CPUState *cpu = CPU(s->cpu);
+              ^~~   ~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
@@ -75,24 +68,21 @@ Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 ---
- target/arm/translate-a64.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/omap1.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 534c3ff5f3..c83bb85e4e 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -8632,8 +8632,8 @@ static void handle_scalar_simd_shli(DisasContext *s, bool insert,
-     int size = 32 - clz32(immh) - 1;
-     int immhb = immh << 3 | immb;
-     int shift = immhb - (8 << size);
--    TCGv_i64 tcg_rn = new_tmp_a64(s);
--    TCGv_i64 tcg_rd = new_tmp_a64(s);
-+    TCGv_i64 tcg_rn;
-+    TCGv_i64 tcg_rd;
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 6ba0df6b6d..02c0f66431 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -1774,7 +1774,6 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
+         return s->clkm.dsp_rstct2;
  
-     if (!extract32(immh, 3, 1)) {
-         unallocated_encoding(s);
+     case 0x18:	/* DSP_SYSST */
+-        cpu = CPU(s->cpu);
+         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
+                 (cpu->halted << 6);      /* Quite useless... */
+     }
 -- 
 2.23.0
 
