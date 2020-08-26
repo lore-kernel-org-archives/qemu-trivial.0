@@ -1,58 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAlOu-0006JV-W0
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 22:43:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52816)
+	id 1kAq8R-0007C9-7Q
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 03:46:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAlOs-0006Id-Pw; Tue, 25 Aug 2020 22:42:58 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2533 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kAq8P-0007BQ-1I; Wed, 26 Aug 2020 03:46:17 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:36688 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAlOq-00033w-9R; Tue, 25 Aug 2020 22:42:58 -0400
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id D6A79902BBDB066998AC;
- Wed, 26 Aug 2020 10:42:45 +0800 (CST)
-Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Wed, 26 Aug 2020 10:42:45 +0800
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.141]) by
- dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0487.000;
- Wed, 26 Aug 2020 10:42:37 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Pannengyuan <pannengyuan@huawei.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, qemu-arm <qemu-arm@nongnu.org>
-Subject: RE: [PATCH v2 03/10] target/arm/translate-a64:Remove dead
- assignment in handle_scalar_simd_shli()
-Thread-Topic: [PATCH v2 03/10] target/arm/translate-a64:Remove dead
- assignment in handle_scalar_simd_shli()
-Thread-Index: AQHWetKHlCk5CuE1o0+ZVVgokc3Y46lIPU0AgAFxfxA=
-Date: Wed, 26 Aug 2020 02:42:37 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B8E2491@dggemm511-mbx.china.huawei.com>
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-4-kuhn.chenqun@huawei.com>
- <CAFEAcA9mbQmGRNqJC7FmV8gBi3XOuMmYRVhWmczZPTuTW9tfVw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9mbQmGRNqJC7FmV8gBi3XOuMmYRVhWmczZPTuTW9tfVw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kAq8L-0001yI-VT; Wed, 26 Aug 2020 03:46:16 -0400
+Received: from dggemi402-hub.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id C822CAE7569B9C251715;
+ Wed, 26 Aug 2020 15:45:55 +0800 (CST)
+Received: from DGGEMI522-MBS.china.huawei.com ([169.254.8.252]) by
+ dggemi402-hub.china.huawei.com ([10.3.17.135]) with mapi id 14.03.0487.000;
+ Wed, 26 Aug 2020 15:45:45 +0800
+From: zhaolichang <zhaolichang@huawei.com>
+To: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, zhaolichang
+ <zhaolichang@huawei.com>
+Subject: [PATCH V2 00/10] fix some comment spelling errors
+Thread-Topic: [PATCH V2 00/10] fix some comment spelling errors
+Thread-Index: AdZ7eypUuDdQqiDNTZmThLwrkpsqxA==
+Date: Wed, 26 Aug 2020 07:45:44 +0000
+Message-ID: <640CDEE67BE2784FAE298BB2517210E48AC38C@dggemi522-mbs.china.huawei.com>
 Accept-Language: en-US
 Content-Language: zh-CN
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.50]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-originating-ip: [10.174.186.227]
+Content-Type: multipart/alternative;
+ boundary="_000_640CDEE67BE2784FAE298BB2517210E48AC38Cdggemi522mbschina_"
 MIME-Version: 1.0
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 22:42:46
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=zhaolichang@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 03:45:56
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,21 +55,447 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 02:42:59 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 07:46:17 -0000
 
-PiBPbiBUdWUsIDI1IEF1ZyAyMDIwIGF0IDEyOjI2LCBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1
-YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gQ2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hv
-dyB3YXJuaW5nOg0KPiA+IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5jOjg2MzU6MTQ6IHdhcm5p
-bmc6IFZhbHVlIHN0b3JlZCB0byAndGNnX3JuJw0KPiA+IGR1cmluZyBpdHMgIGluaXRpYWxpemF0
-aW9uIGlzIG5ldmVyIHJlYWQNCj4gPiAgICAgVENHdl9pNjQgdGNnX3JuID0gbmV3X3RtcF9hNjQo
-cyk7DQo+ID4gICAgICAgICAgICAgIF5+fn5+fiAgIH5+fn5+fn5+fn5+fn5+DQo+ID4gdGFyZ2V0
-L2FybS90cmFuc2xhdGUtYTY0LmM6ODYzNjoxNDogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICd0
-Y2dfcmQnDQo+ID4gZHVyaW5nIGl0cyAgaW5pdGlhbGl6YXRpb24gaXMgbmV2ZXIgcmVhZA0KPiA+
-ICAgICBUQ0d2X2k2NCB0Y2dfcmQgPSBuZXdfdG1wX2E2NChzKTsNCj4gPiAgICAgICAgICAgICAg
-Xn5+fn5+ICAgfn5+fn5+fn5+fn5+fn4NCj4gPg0KPiA+IFRoZXJlIGlzIGEgbWVtb3J5IGxlYWsg
-Zm9yIHRoZSB2YXJpYWJsZSBuZXdfdG1wX2E2NCAicyIuDQo+IA0KPiBUaGVyZSBpcyBub3QsIGJl
-Y2F1c2UgVENHIHRlbXBzIGFsbG9jYXRlZCB2aWEgbmV3X3RtcF9hNjQoKSBhcmUgYWxsIGZyZWVk
-IHZpYQ0KPiBmcmVlX3RtcF9hNjQoKSBhdCB0aGUgZW5kIG9mIGRpc2FzX2E2NF9pbnNuKCkuDQo+
-IA0KT0ssIEknbGwgZGVsZXRlIHRoYXQgZGVzY3JpcHRpb24gbGF0ZXIuDQoNClRoYW5rcywNCkNo
-ZW5RdW4NCg==
+--_000_640CDEE67BE2784FAE298BB2517210E48AC38Cdggemi522mbschina_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+I found that there are many spelling errors in the comments of qemu,
+so I used the spellcheck tool to check the spelling errors, this series fix=
+ed this
+spelling errors.
+
+v1 -> v2:
+  address Peter Maydell's comments
+  address Alex Benn=E9e's comments
+  add reviewed-by for patch 1,2,3,4,5,6,9,10
+
+zhaolichang (10):
+  contrib/: fix some comment spelling errors
+  disas/: fix some comment spelling errors
+  block/: fix some comment spelling errors
+  linux-user/: fix some comment spelling errors
+  util/: fix some comment spelling errors
+  scripts/: fix some comment spelling errors
+  docs/: fix some comment spelling errors
+  migration/: fix some comment spelling errors
+  qemu/: fix some comment spelling errors
+
+Changelog                                |  2 +-
+accel/tcg/user-exec.c                    |  2 +-
+audio/audio.c                            |  2 +-
+block.c                                  |  2 +-
+block/block-copy.c                       |  2 +-
+block/linux-aio.c                        |  2 +-
+block/mirror.c                           |  2 +-
+block/vhdx.c                             |  2 +-
+block/vhdx.h                             |  4 ++--
+configure                                |  2 +-
+contrib/gitdm/filetypes.txt              |  6 +++---
+contrib/ivshmem-client/ivshmem-client.h  |  2 +-
+contrib/libvhost-user/libvhost-user.c    |  4 ++--
+contrib/libvhost-user/libvhost-user.h    |  2 +-
+disas/hppa.c                             |  2 +-
+disas/m68k.c                             |  8 ++++----
+disas/ppc.c                              |  2 +-
+docs/COLO-FT.txt                         |  6 +++---
+docs/devel/blkdebug.txt                  |  2 +-
+docs/devel/migration.rst                 |  2 +-
+docs/devel/testing.rst                   |  2 +-
+docs/devel/tracing.txt                   |  2 +-
+docs/interop/bitmaps.rst                 |  2 +-
+docs/interop/dbus.rst                    |  4 ++--
+docs/interop/nbd.txt                     |  2 +-
+docs/interop/vhost-user-gpu.rst          |  2 +-
+docs/interop/vhost-user.rst              |  4 ++--
+docs/rdma.txt                            |  2 +-
+docs/specs/ppc-spapr-hotplug.txt         |  4 ++--
+docs/specs/ppc-spapr-xive.rst            |  4 ++--
+docs/system/arm/aspeed.rst               |  2 +-
+docs/system/deprecated.rst               |  8 ++++----
+docs/system/target-avr.rst               |  4 ++--
+docs/tools/virtiofsd.rst                 |  2 +-
+fsdev/virtfs-proxy-helper.c              |  2 +-
+hmp-commands.hx                          |  2 +-
+libdecnumber/decNumber.c                 |  2 +-
+linux-user/aarch64/signal.c              |  2 +-
+linux-user/cris/target_syscall.h         |  4 ++--
+linux-user/flat.h                        |  2 +-
+linux-user/flatload.c                    |  4 ++--
+linux-user/host/ppc64/safe-syscall.inc.S |  2 +-
+linux-user/syscall.c                     |  4 ++--
+migration/colo-failover.c                |  2 +-
+migration/colo.c                         |  2 +-
+migration/multifd.c                      |  4 ++--
+migration/postcopy-ram.c                 |  4 ++--
+migration/postcopy-ram.h                 |  2 +-
+migration/ram.c                          | 10 +++++-----
+migration/rdma.c                         |  8 ++++----
+migration/savevm.c                       |  4 ++--
+qapi/block-core.json                     |  4 ++--
+qapi/crypto.json                         |  4 ++--
+qemu-img.c                               |  2 +-
+qobject/qdict.c                          |  2 +-
+scripts/checkpatch.pl                    |  2 +-
+scripts/clean-header-guards.pl           |  2 +-
+scripts/decodetree.py                    |  6 +++---
+scripts/oss-fuzz/build.sh                |  2 +-
+scripts/tracetool/__init__.py            |  2 +-
+scsi/pr-manager-helper.c                 |  2 +-
+util/osdep.c                             |  2 +-
+util/qemu-progress.c                     |  2 +-
+util/qemu-sockets.c                      |  2 +-
+util/qemu-thread-win32.c                 |  2 +-
+util/qht.c                               |  2 +-
+util/trace-events                        |  2 +-
+67 files changed, 101 insertions(+), 101 deletions(-)
+
+--
+2.26.2.windows.1
+
+
+--_000_640CDEE67BE2784FAE298BB2517210E48AC38Cdggemi522mbschina_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+/* Page Definitions */
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"text-justi=
+fy-trim:punctuation">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US">I found that there are many spe=
+lling errors in the comments of qemu,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">so I used the spellcheck tool t=
+o check the spelling errors, this series fixed this<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">spelling errors.<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">v1 -&gt; v2:<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; address Peter Maydell's =
+comments<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; address Alex Benn=E9e's =
+comments<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; add reviewed-by for patc=
+h 1,2,3,4,5,6,9,10<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">zhaolichang (10):<o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; contrib/: fix some comme=
+nt spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; disas/: fix some comment=
+ spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; block/: fix some comment=
+ spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; linux-user/: fix some co=
+mment spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; util/: fix some comment =
+spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; scripts/: fix some comme=
+nt spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; docs/: fix some comment =
+spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; migration/: fix some com=
+ment spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; qemu/: fix some comment =
+spelling errors<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Changelog&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">accel/tcg/user-exec.c&nbsp;&nbs=
+p; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">audio/audio.c&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbs=
+p; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block.c&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block/block-copy.c&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block/linux-aio.c&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block/mirror.c&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; 2 =
+&#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block/vhdx.c&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">block/vhdx.h&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">configure&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">contrib/gitdm/filetypes.txt&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 6 &#43;&#43;&#43;---<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">contrib/ivshmem-client/ivshmem-=
+client.h &nbsp;|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">contrib/libvhost-user/libvhost-=
+user.c&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">contrib/libvhost-user/libvhost-=
+user.h&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/hppa.c&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/m68k.c&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 8 &#43;&#43;&#43;&#43;----<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/ppc.c&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp; | &nbsp;2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/COLO-FT.txt&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 6 &#43;&#43;=
+&#43;---<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/devel/blkdebug.txt&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/devel/migration.rst&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/devel/testing.rst&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/devel/tracing.txt&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/interop/bitmaps.rst&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/interop/dbus.rst&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/interop/nbd.txt&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/interop/vhost-user-gpu.rst=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p=
+></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/interop/vhost-user.rst&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/rdma.txt&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbs=
+p; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/specs/ppc-spapr-hotplug.tx=
+t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/specs/ppc-spapr-xive.rst&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 =
+&#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/system/arm/aspeed.rst&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/system/deprecated.rst&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp; |&nbsp; 8 &#43;&#43;&#43;&#43;----<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/system/target-avr.rst&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">docs/tools/virtiofsd.rst&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">fsdev/virtfs-proxy-helper.c&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">hmp-commands.hx&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;=
+-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">libdecnumber/decNumber.c&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/aarch64/signal.c&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/cris/target_syscall.=
+h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/flat.h&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/flatload.c&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/host/ppc64/safe-sysc=
+all.inc.S |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">linux-user/syscall.c&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/colo-failover.c&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/colo.c&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p=
+></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/multifd.c&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/postcopy-ram.c&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/postcopy-ram.h&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/ram.c&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 10 &#43;&#43;=
+&#43;&#43;&#43;-----<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/rdma.c&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 8 &#43;&#43;=
+&#43;&#43;----<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">migration/savevm.c&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o=
+:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">qapi/block-core.json&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;--<o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">qapi/crypto.json&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 4 &#43;&#43;=
+--<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">qemu-img.c&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">qobject/qdict.c&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;=
+-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scripts/checkpatch.pl&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scripts/clean-header-guards.pl&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;=
+-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scripts/decodetree.py&nbsp; &nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; 6 &#43;&#43;&#43;---<o:p></o:p></span=
+></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scripts/oss-fuzz/build.sh&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scripts/tracetool/__init__.py&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 =
+&#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">scsi/pr-manager-helper.c&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/osdep.c&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/qemu-progress.c&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/qemu-sockets.c&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/qemu-thread-win32.c&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/qht.c&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">util/trace-events&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 2 &#43;-<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">67 files changed, 101 insertion=
+s(&#43;), 101 deletions(-)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-- <o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">2.26.2.windows.1<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_640CDEE67BE2784FAE298BB2517210E48AC38Cdggemi522mbschina_--
 
