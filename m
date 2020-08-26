@@ -1,61 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAsAW-0000op-Cm
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 05:56:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58154)
+	id 1kAsTV-00039b-Uu
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 06:16:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kAsAU-0000nu-PA; Wed, 26 Aug 2020 05:56:34 -0400
-Received: from mail-ej1-f68.google.com ([209.85.218.68]:38375)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kAsTS-00031l-5D; Wed, 26 Aug 2020 06:16:10 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39939)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kAsAT-0002N5-8s; Wed, 26 Aug 2020 05:56:34 -0400
-Received: by mail-ej1-f68.google.com with SMTP id oz20so1996895ejb.5;
- Wed, 26 Aug 2020 02:56:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kAsTQ-0004zT-8S; Wed, 26 Aug 2020 06:16:09 -0400
+Received: by mail-ot1-x343.google.com with SMTP id e23so269789otk.7;
+ Wed, 26 Aug 2020 03:15:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=B8xG5RlJvyOHoSk0yY3k6K12U3qnr4Bcj+P1T+wfO6A=;
+ b=Jjwl6MIdGlmSHVbzgI302POMFKYzFQQCPgkn6TPESfWjTbS0v4slr180W+Btkhpxtw
+ WDmoAKxdMrZ8gQu+43OBx/xqhuoI2kH4YKcIKu0MG+Yy1hNNlacz4YGwXgU7lTJIfpwb
+ wN4SdQWNleMGxUfcK8+HXGSc4TuboK8uXMdEz2f1cHfVrAmsiGvPYcAXyjo4QZRzc/Jy
+ I1jss8JWx3qxvMmFUi9Rr7vtH/fmyh4XRvmABBJrU58rNjsgR10Biy3p2OCX+LRaw+9w
+ vmnTKtCWID+vzFTtXpLkt0YuIvOeccgmC/G6GgrcWfEOW2gDy5kWPJ0rEWG/D0pAcMBO
+ +68w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QogLeTiJSH91/XLvwYpaEPZR9ebbjm3EmXEb+RErmVk=;
- b=dUdJPqqDcxCulL5tv940r42dLXBeifItUvw0f3o+BqyOoWNBTITe94vZe3Tr8RFUz7
- B7hfiLgu7vMJL/BnVmZU+QGzbmRsIx+02JK2RGa0bD1qqSr9orLLozXiVDB+yUiX6rVJ
- q0e/kEouZ4qMtOPCbU7DvbCpAuybD4q7mECAuBiLW4x3i8Qm7MkaUmW9soUNaqh0dcpJ
- y8SFDhjIdfbq2KhiK6BIFOHVtmIGOoO+YOgd6VoubOKGGpGHqtVC8XrJNR+axIkF+b7X
- /yYMz/NQLcyR4R/kmdFcdWxavOB6xnp4WdABOlXOlsaGmoJciPe5KijzYgEfXJq/vxmi
- +rNw==
-X-Gm-Message-State: AOAM531Y59ncmaxjoGnfeeSEYUh1SyaghKduVtAEF/MRlibroKaD1yB1
- q33KsFOagtMk3xcjZhOzrv2pgTpsnO/IVjfSFPMglNyX
-X-Google-Smtp-Source: ABdhPJxNINtEJAf4j6rukBgrUkqZQ7hwRS8uYJzT039eY3VcBuffk3SA2ZtHlXwRIzTYTo8ufj93C6zJcqDrELo2610=
-X-Received: by 2002:a17:906:7715:: with SMTP id
- q21mr14509856ejm.251.1598435791763; 
- Wed, 26 Aug 2020 02:56:31 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=B8xG5RlJvyOHoSk0yY3k6K12U3qnr4Bcj+P1T+wfO6A=;
+ b=jv0KIDuY4jyIIzQXNKe3T4Thp0jTeOf1kTm2DNaXzxBKgzbAM2ZTeqcNmm9kHCF4xz
+ 1oJ/GXa+JhJ0NuW7DTEd/QFiZx5avIXd2jqMDuS3kdsFYFnKPFGFbRHMuBpL33XfzSq5
+ kk3cJxVghlf4iiTCtf3n+JOa65G2eEaJoauoeo1DgFPq1r278uW7qcf5lCImBTJVKMlr
+ ZwemnPstIWnpCGYrFGMdtv3f/oU8wtY64y8LrTk86sD1xpnJuV9QYnC7IJ1FYqOLCp/y
+ 49xTpZoHwhlhiabA5//v1K86rKcxsghcEe+17mnd71jWZAi5+LuQCd7rvJJX22FUzt7c
+ /guw==
+X-Gm-Message-State: AOAM530MaOFlyEL7fe+IiosOCm1NS5EZI8VH+UkBcXgPkYHukXNeE1IX
+ D1+4PAOO1bd5D+HwT+qXuXCyXlHbkquzixzrpfI=
+X-Google-Smtp-Source: ABdhPJz8oYkkGpVcqh0wvp/7ZXpCNAZU/exTnnvPQ/YFPtK2pa0/lEsN2zdAaMf01VrKylTWgnIdl01X0F6P3hDQ9EI=
+X-Received: by 2002:a9d:788:: with SMTP id 8mr2771347oto.181.1598436958078;
+ Wed, 26 Aug 2020 03:15:58 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200812190206.31595-1-f4bug@amsat.org>
- <1ccf070b-7abd-ebfd-2788-92a81b4fc8fe@amsat.org>
- <CAFEAcA-nLLM3dqC=71JSfu9+8=xsnpfavD0Wk4Lkuf+EOytgQA@mail.gmail.com>
- <CAAdtpL6_dxhkoBS2hK8O_8Qj9s-MAtRnrBOTQZyTAEkW5Xwz1A@mail.gmail.com>
-In-Reply-To: <CAAdtpL6_dxhkoBS2hK8O_8Qj9s-MAtRnrBOTQZyTAEkW5Xwz1A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Wed, 26 Aug 2020 11:56:19 +0200
-Message-ID: <CAAdtpL7KqYxb0WsW2-jvjBSCSHEgeSBLaf=PkFKr7Q6QAE_EqA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] hw/misc/unimp: Improve how offset/value are
- displayed
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000907bff05adc4d56b"
-Received-SPF: pass client-ip=209.85.218.68;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f68.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 05:56:31
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+ <20200825112447.126308-8-kuhn.chenqun@huawei.com>
+ <CAKXe6S+BBKztHmBG0TLRTJH6bDntyz4=mWpgccctaZgYWn_TdA@mail.gmail.com>
+ <7412CDE03601674DA8197E2EBD8937E83B8E23ED@dggemm511-mbx.china.huawei.com>
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B8E23ED@dggemm511-mbx.china.huawei.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Wed, 26 Aug 2020 18:14:59 +0800
+Message-ID: <CAKXe6SJFM44vxgY+YDtv9sL1pb1ekmT_L0sDQ1a6iV1diSoeDQ@mail.gmail.com>
+Subject: Re: [PATCH v2 07/10] vfio/platform: Remove dead assignment in
+ vfio_intp_interrupt()
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ Pannengyuan <pannengyuan@huawei.com>, Eric Auger <eric.auger@redhat.com>, 
+ Alex Williamson <alex.williamson@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, 
+ Euler Robot <euler.robot@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,105 +81,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 09:56:35 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 10:16:10 -0000
 
---000000000000907bff05adc4d56b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le mer. 26 ao=C3=BBt 2020 11:54, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> a
-=C3=A9crit :
-
-> Hi Peter,
+Chenqun (kuhn) <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8826=
+=E6=97=A5=E5=91=A8=E4=B8=89 =E4=B8=8A=E5=8D=889:47=E5=86=99=E9=81=93=EF=BC=
+=9A
 >
-> Le lun. 24 ao=C3=BBt 2020 17:01, Peter Maydell <peter.maydell@linaro.org>=
- a
-> =C3=A9crit :
 >
->> On Sat, 22 Aug 2020 at 21:02, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
->> wrote:
->> >
->> > On 8/12/20 9:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> > > This series aims to ease looking at the '-d unimp' output reported
->> > > by the UnimplementedDevice.
->> > >
->> > > - read/write accesses are now aligned
->> > > - the value format width uses the access size
->> > > - the offset (address) uses the size of the memory region it belongs
->> > >
->> > > Series fully reviewed.
->> >
->> > ping?
->>
->> What tree were you expecting these to go in via? Probably worth
->> being specific about who you're pinging in this kind of case ;-)
->>
+> > > Clang static code analyzer show warning:
+> > > hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never rea=
+d
+> > >         ret =3D event_notifier_test_and_clear(intp->interrupt);
+> > >         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > >
+> > > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> > > Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> > > ---
+> > > Cc: Alex Williamson <alex.williamson@redhat.com>
+> > > Cc: Eric Auger <eric.auger@redhat.com>
+> > > Cc: Stefan Hajnoczi <stefanha@redhat.com>
+> > > ---
+> > >  hw/vfio/platform.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c index
+> > > ac2cefc9b1..869ed2c39d 100644
+> > > --- a/hw/vfio/platform.c
+> > > +++ b/hw/vfio/platform.c
+> > > @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
+> > >          trace_vfio_intp_interrupt_set_pending(intp->pin);
+> > >          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
+> > >                               intp, pqnext);
+> > > -        ret =3D event_notifier_test_and_clear(intp->interrupt);
+> >
+> > Shouldn't we check the 'ret' like the other place in this function?
 >
-> Ok understood for the next time. In this case you are listed as maintaine=
-r
-> :) Maybe you can Ack the series and then I'll ask to merge it via the
-> trivial or misc trees.
+> Hi, Li Qiang,
 >
+> Eric=E3=80=81Alex=E3=80=81Stefan has already discussed this point in the =
+V1 version.
+> https://patchwork.kernel.org/patch/11711897/
 
-I just realized qemu-trivial was correctly cc'ed.
+Ok I see, then
 
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+
+Thanks,
+Li Qiang
 
 >
->> -- PMM
->>
->
-
---000000000000907bff05adc4d56b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
-"gmail_attr">Le mer. 26 ao=C3=BBt 2020 11:54, Philippe Mathieu-Daud=C3=A9 &=
-lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; a =C3=A9crit=
-=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"auto">Hi Peter,=
-=C2=A0<div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_a=
-ttr">Le lun. 24 ao=C3=BBt 2020 17:01, Peter Maydell &lt;<a href=3D"mailto:p=
-eter.maydell@linaro.org" target=3D"_blank" rel=3D"noreferrer">peter.maydell=
-@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
-1ex">On Sat, 22 Aug 2020 at 21:02, Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:f4bug@amsat.org" rel=3D"noreferrer noreferrer" target=3D"_blank"=
->f4bug@amsat.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On 8/12/20 9:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt; &gt; This series aims to ease looking at the &#39;-d unimp&#39; output=
- reported<br>
-&gt; &gt; by the UnimplementedDevice.<br>
-&gt; &gt;<br>
-&gt; &gt; - read/write accesses are now aligned<br>
-&gt; &gt; - the value format width uses the access size<br>
-&gt; &gt; - the offset (address) uses the size of the memory region it belo=
-ngs<br>
-&gt; &gt;<br>
-&gt; &gt; Series fully reviewed.<br>
-&gt;<br>
-&gt; ping?<br>
-<br>
-What tree were you expecting these to go in via? Probably worth<br>
-being specific about who you&#39;re pinging in this kind of case ;-)<br></b=
-lockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">Ok unde=
-rstood for the next time. In this case you are listed as maintainer :) Mayb=
-e you can Ack the series and then I&#39;ll ask to merge it via the trivial =
-or misc trees.</div></div></blockquote></div></div><div dir=3D"auto"><br></=
-div><div dir=3D"auto">I just realized qemu-trivial was correctly cc&#39;ed.=
-</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quo=
-te"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
-t:1px #ccc solid;padding-left:1ex"><div dir=3D"auto"><div dir=3D"auto"><br>=
-</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gma=
-il_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-lef=
-t:1ex">
-<br>
--- PMM<br>
-</blockquote></div></div></div>
-</blockquote></div></div></div>
-
---000000000000907bff05adc4d56b--
+> Thanks.
 
