@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAqA4-0002QL-RN
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 03:48:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53738)
+	id 1kAqAU-00032m-1u
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 03:48:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kAqA2-0002LM-Ni; Wed, 26 Aug 2020 03:47:58 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2104 helo=huawei.com)
+ id 1kAqAS-0002yt-EV; Wed, 26 Aug 2020 03:48:24 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2927 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kAq9z-00028W-Uw; Wed, 26 Aug 2020 03:47:58 -0400
-Received: from dggemi403-hub.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 250DE44ED93AE378A15A;
- Wed, 26 Aug 2020 15:47:53 +0800 (CST)
+ id 1kAqAP-00029D-Pd; Wed, 26 Aug 2020 03:48:24 -0400
+Received: from dggemi402-hub.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id F07332A389C98D44DB1F;
+ Wed, 26 Aug 2020 15:48:17 +0800 (CST)
 Received: from DGGEMI522-MBS.china.huawei.com ([169.254.8.252]) by
- dggemi403-hub.china.huawei.com ([10.3.17.136]) with mapi id 14.03.0487.000;
- Wed, 26 Aug 2020 15:47:44 +0800
+ dggemi402-hub.china.huawei.com ([10.3.17.135]) with mapi id 14.03.0487.000;
+ Wed, 26 Aug 2020 15:48:09 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, zhaolichang
  <zhaolichang@huawei.com>
-Subject: [PATCH V2 07/10] block/: fix some comment spelling errors
-Thread-Topic: [PATCH V2 07/10] block/: fix some comment spelling errors
-Thread-Index: AdZ7fE1rIxaMRRSdTo6XVvpZzb5RsA==
-Date: Wed, 26 Aug 2020 07:47:45 +0000
-Message-ID: <640CDEE67BE2784FAE298BB2517210E48AC401@dggemi522-mbs.china.huawei.com>
+Subject: [PATCH V2 08/10] disas/: fix some comment spelling errors
+Thread-Topic: [PATCH V2 08/10] disas/: fix some comment spelling errors
+Thread-Index: AdZ7fHEkBA11lOjFQXKj/DOJbVxiRg==
+Date: Wed, 26 Aug 2020 07:48:09 +0000
+Message-ID: <640CDEE67BE2784FAE298BB2517210E48AC415@dggemi522-mbs.china.huawei.com>
 Accept-Language: en-US
 Content-Language: zh-CN
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.174.186.227]
 Content-Type: multipart/alternative;
- boundary="_000_640CDEE67BE2784FAE298BB2517210E48AC401dggemi522mbschina_"
+ boundary="_000_640CDEE67BE2784FAE298BB2517210E48AC415dggemi522mbschina_"
 MIME-Version: 1.0
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
+Received-SPF: pass client-ip=45.249.212.187;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 03:47:14
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 03:46:04
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,124 +55,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 07:47:59 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 07:48:24 -0000
 
---_000_640CDEE67BE2784FAE298BB2517210E48AC401dggemi522mbschina_
+--_000_640CDEE67BE2784FAE298BB2517210E48AC415dggemi522mbschina_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the block folder.
+and finally found some spelling errors in the disas folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 ---
-block/block-copy.c | 2 +-
-block/linux-aio.c  | 2 +-
-block/mirror.c     | 2 +-
-block/vhdx.c       | 2 +-
-block/vhdx.h       | 4 ++--
-5 files changed, 6 insertions(+), 6 deletions(-)
+disas/hppa.c | 2 +-
+disas/m68k.c | 8 ++++----
+disas/ppc.c  | 2 +-
+3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/block/block-copy.c b/block/block-copy.c
-index a30b9097ef..d648306ce5 100644
---- a/block/block-copy.c
-+++ b/block/block-copy.c
-@@ -321,7 +321,7 @@ static coroutine_fn int block_copy_task_run(AioTaskPool=
- *pool,
-  * Do copy of cluster-aligned chunk. Requested region is allowed to exceed
-  * s->len only to cover last cluster when s->len is not aligned to cluster=
-s.
-  *
-- * No sync here: nor bitmap neighter intersecting requests handling, only =
-copy.
-+ * No sync here: neither bitmap nor intersecting requests handling, only c=
-opy.
-  *
-  * Returns 0 on success.
-  */
-diff --git a/block/linux-aio.c b/block/linux-aio.c
-index 3c0527c2bf..772ff860ea 100644
---- a/block/linux-aio.c
-+++ b/block/linux-aio.c
-@@ -222,7 +222,7 @@ static void qemu_laio_process_completions(LinuxAioState=
- *s)
+diff --git a/disas/hppa.c b/disas/hppa.c
+index 2dbd1fc445..dcf9a47f34 100644
+--- a/disas/hppa.c
++++ b/disas/hppa.c
+@@ -2021,7 +2021,7 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *i=
+nfo)
+                            fput_fp_reg (GET_FIELD (insn, 6, 10), info);
+                         break;
 
-     /* If we are nested we have to notify the level above that we are done
-      * by setting event_max to zero, upper level will then jump out of it'=
-s
--     * own `for` loop.  If we are the last all counters droped to zero. */
-+     * own `for` loop.  If we are the last all counters dropped to zero. *=
-/
-     s->event_max =3D 0;
-     s->event_idx =3D 0;
-}
-diff --git a/block/mirror.c b/block/mirror.c
-index e8e8844afc..22d574167e 100644
---- a/block/mirror.c
-+++ b/block/mirror.c
-@@ -478,7 +478,7 @@ static uint64_t coroutine_fn mirror_iteration(MirrorBlo=
-ckJob *s)
+-                       /* 'fA' will not generate a space before the regsit=
+er
++                      /* 'fA' will not generate a space before the registe=
+r
+                            name.  Normally that is fine.  Except that it
+                            causes problems with xmpyu which has no FP form=
+at
+                            completer.  */
+diff --git a/disas/m68k.c b/disas/m68k.c
+index 863409c67c..aefaecfbd6 100644
+--- a/disas/m68k.c
++++ b/disas/m68k.c
+@@ -70,7 +70,7 @@ struct floatformat
+   unsigned int exp_start;
+   unsigned int exp_len;
+   /* Bias added to a "true" exponent to form the biased exponent.  It
+-     is intentionally signed as, otherwize, -exp_bias can turn into a
++     is intentionally signed as, otherwise, -exp_bias can turn into a
+      very large number (e.g., given the exp_bias of 0x3fff and a 64
+      bit long, the equation (long)(1 - exp_bias) evaluates to
+      4294950914) instead of -16382).  */
+@@ -479,7 +479,7 @@ struct m68k_opcode_alias
+       and remaining 3 bits of register shifted 9 bits in first word.
+       Indicate upper/lower in 1 bit shifted 7 bits in second word.
+       Use with `R' or `u' format.
+-   n  `m' withouth upper/lower indication. (For M[S]ACx; 4 bits split
++   n  `m' without upper/lower indication. (For M[S]ACx; 4 bits split
+       with MSB shifted 6 bits in first word and remaining 3 bits of
+       register shifted 9 bits in first word.  No upper/lower
+       indication is done.)  Use with `R' or `u' format.
+@@ -854,7 +854,7 @@ fetch_arg (unsigned char *buffer,
 
-     job_pause_point(&s->common.job);
+/* Check if an EA is valid for a particular code.  This is required
+    for the EMAC instructions since the type of source address determines
+-   if it is a EMAC-load instruciton if the EA is mode 2-5, otherwise it
++   if it is a EMAC-load instruction if the EA is mode 2-5, otherwise it
+   is a non-load EMAC instruction and the bits mean register Ry.
+    A similar case exists for the movem instructions where the register
+    mask is interpreted differently for different EAs.  */
+@@ -1080,7 +1080,7 @@ print_indexed (int basereg,
 
--    /* Find the number of consective dirty chunks following the first dirt=
-y
-+    /* Find the number of consecutive dirty chunks following the first dir=
-ty
-      * one, and wait for in flight requests in them. */
-     bdrv_dirty_bitmap_lock(s->dirty_bitmap);
-     while (nb_chunks * s->granularity < s->buf_size) {
-diff --git a/block/vhdx.c b/block/vhdx.c
-index 791eb90263..84eedee83f 100644
---- a/block/vhdx.c
-+++ b/block/vhdx.c
-@@ -1073,7 +1073,7 @@ static int vhdx_open(BlockDriverState *bs, QDict *opt=
-ions, int flags,
-         goto fail;
-     }
+/* Returns number of bytes "eaten" by the operand, or
+    return -1 if an invalid operand was found, or -2 if
+-   an opcode tabe error was found.
++   an opcode table error was found.
+    ADDR is the pc for this arg to be relative to.  */
 
--    /* endian convert populated BAT field entires */
-+    /* endian convert populated BAT field entries */
-     for (i =3D 0; i < s->bat_entries; i++) {
-         s->bat[i] =3D le64_to_cpu(s->bat[i]);
-     }
-diff --git a/block/vhdx.h b/block/vhdx.h
-index 0b74924cee..e385e484b4 100644
---- a/block/vhdx.h
-+++ b/block/vhdx.h
-@@ -212,7 +212,7 @@ typedef struct QEMU_PACKED VHDXLogDataSector {
-     uint32_t    sequence_high;          /* 4 MSB of 8 byte sequence_number=
- */
-     uint8_t     data[4084];             /* raw data, bytes 8-4091 (inclusi=
-ve).
-                                            see the data descriptor field f=
-or the
--                                           other mising bytes */
-+                                           other missing bytes */
-     uint32_t    sequence_low;           /* 4 LSB of 8 byte sequence_number=
- */
-} VHDXLogDataSector;
-
-@@ -257,7 +257,7 @@ typedef struct QEMU_PACKED VHDXMetadataTableHeader {
-
-#define VHDX_META_FLAGS_IS_USER         0x01    /* max 1024 entries */
-#define VHDX_META_FLAGS_IS_VIRTUAL_DISK 0x02    /* virtual disk metadata if=
- set,
--                                                   otherwise file metdata =
-*/
-+                                                   otherwise file metadata=
- */
-#define VHDX_META_FLAGS_IS_REQUIRED     0x04    /* parse must understand th=
-is
-                                                    entry to open the file =
-*/
-typedef struct QEMU_PACKED VHDXMetadataTableEntry {
+static int
+diff --git a/disas/ppc.c b/disas/ppc.c
+index 63e97cfe1d..02be878198 100644
+--- a/disas/ppc.c
++++ b/disas/ppc.c
+@@ -5226,7 +5226,7 @@ operand_value_powerpc (const struct powerpc_operand *=
+operand,
+       if ((operand->flags & PPC_OPERAND_SIGNED) !=3D 0)
+         {
+           /* BITM is always some number of zeros followed by some
+-             number of ones, followed by some numer of zeros.  */
++            number of ones, followed by some number of zeros.  */
+           unsigned long top =3D operand->bitm;
+           /* top & -top gives the rightmost 1 bit, so this
+              fills in any trailing zeros.  */
 --
 2.26.2.windows.1
 
 
---_000_640CDEE67BE2784FAE298BB2517210E48AC401dggemi522mbschina_
+--_000_640CDEE67BE2784FAE298BB2517210E48AC415dggemi522mbschina_
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -190,8 +165,8 @@ xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
 	{font-family:SimSun;
 	panose-1:2 1 6 0 3 1 1 1 1 1;}
 @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
 @font-face
 	{font-family:Calibri;
 	panose-1:2 15 5 2 2 2 4 3 2 4;}
@@ -243,202 +218,184 @@ lling errors in the comments of qemu,<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">so I used the spellcheck tool t=
 o check the spelling errors<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">and finally found some spelling=
- errors in the block folder.<o:p></o:p></span></p>
+ errors in the disas folder.<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">Signed-off-by: zhaolichang &lt;=
 zhaolichang@huawei.com&gt;<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">---<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">block/block-copy.c | 2 &#43;-<o=
-:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">block/linux-aio.c&nbsp; | 2 &#4=
-3;-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">block/mirror.c&nbsp;&nbsp;&nbsp=
-;&nbsp; | 2 &#43;-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">block/vhdx.c&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp; | 2 &#43;-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">block/vhdx.h&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp; | 4 &#43;&#43;--<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">5 files changed, 6 insertions(&=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/hppa.c | 2 &#43;-<o:p></o=
+:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/m68k.c | 8 &#43;&#43;&#43=
+;&#43;----<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">disas/ppc.c&nbsp; | 2 &#43;-<o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">3 files changed, 6 insertions(&=
 #43;), 6 deletions(-)<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/block/block-copy.c=
- b/block/block-copy.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">index a30b9097ef..d648306ce5 10=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/disas/hppa.c b/dis=
+as/hppa.c<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">index 2dbd1fc445..dcf9a47f34 10=
 0644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/block/block-copy.c<o:p></=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/disas/hppa.c<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/disas/hppa.c<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -2021,7 &#43;2021,7 @@ print=
+_insn_hppa (bfd_vma memaddr, disassemble_info *info)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fput_fp_reg (GET_F=
+IELD (insn, 6, 10), info);<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp; /* 'fA' will not generate a space before the regsite=
+r<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp; /* 'fA' will not generate a space before the register<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name.&nbsp; Normal=
+ly that is fine.&nbsp; Except that it<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; causes problems wi=
+th xmpyu which has no FP format<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; completer.&nbsp; *=
+/<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/disas/m68k.c b/dis=
+as/m68k.c<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">index 863409c67c..aefaecfbd6 10=
+0644<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/disas/m68k.c<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/disas/m68k.c<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -70,7 &#43;70,7 @@ struct fl=
+oatformat<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp; unsigned int exp_s=
+tart;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp; unsigned int exp_l=
+en;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp; /* Bias added to a=
+ &quot;true&quot; exponent to form the biased exponent.&nbsp; It<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp; is in=
+tentionally signed as, otherwize, -exp_bias can turn into a<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp; i=
+s intentionally signed as, otherwise, -exp_bias can turn into a<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+very large number (e.g., given the exp_bias of 0x3fff and a 64<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+bit long, the equation (long)(1 - exp_bias) evaluates to<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+4294950914) instead of -16382).&nbsp; */<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -479,7 &#43;479,7 @@ struct =
+m68k_opcode_alias<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; and remaining 3 bits of register shifted 9 bits in first word.<o:p></=
 o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/block/block-c=
-opy.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -321,7 &#43;321,7 @@ static =
-coroutine_fn int block_copy_task_run(AioTaskPool *pool,<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; * Do copy of cluster-ali=
-gned chunk. Requested region is allowed to exceed<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; * s-&gt;len only to cove=
-r last cluster when s-&gt;len is not aligned to clusters.<o:p></o:p></span>=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; Indicate upper/lower in 1 bit shifted 7 bits in second word.<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; Use with `R' or `u' format.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp; n&nbsp; `m' witho=
+uth upper/lower indication. (For M[S]ACx; 4 bits split<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp; n&nbsp; `m' w=
+ithout upper/lower indication. (For M[S]ACx; 4 bits split<o:p></o:p></span>=
 </p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; *<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">- * No sync here: nor bitmap ne=
-ighter intersecting requests handling, only copy.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43; * No sync here: neither b=
-itmap nor intersecting requests handling, only copy.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; *<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; * Returns 0 on success.<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/block/linux-aio.c =
-b/block/linux-aio.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">index 3c0527c2bf..772ff860ea 10=
-0644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/block/linux-aio.c<o:p></o=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; with MSB shifted 6 bits in first word and remaining 3 bits of<o:p></o=
 :p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/block/linux-a=
-io.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -222,7 &#43;222,7 @@ static =
-void qemu_laio_process_completions(LinuxAioState *s)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; /* If =
-we are nested we have to notify the level above that we are done<o:p></o:p>=
-</span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-* by setting event_max to zero, upper level will then jump out of it's<o:p>=
-</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp; * own=
- `for` loop.&nbsp; If we are the last all counters droped to zero. */<o:p><=
-/o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp; *=
- own `for` loop.&nbsp; If we are the last all counters dropped to zero. */<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; s-&gt;=
-event_max =3D 0;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; s-&gt;=
-event_idx =3D 0;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">}<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/block/mirror.c b/b=
-lock/mirror.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">index e8e8844afc..22d574167e 10=
-0644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/block/mirror.c<o:p></o:p>=
-</span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/block/mirror.=
-c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -478,7 &#43;478,7 @@ static =
-uint64_t coroutine_fn mirror_iteration(MirrorBlockJob *s)<o:p></o:p></span>=
-</p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; job_pa=
-use_point(&amp;s-&gt;common.job);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp; /* Find the=
- number of consective dirty chunks following the first dirty<o:p></o:p></sp=
-an></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp; /* Find=
- the number of consecutive dirty chunks following the first dirty<o:p></o:p=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; register shifted 9 bits in first word.&nbsp; No upper/lower<o:p></o:p=
 ></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-* one, and wait for in flight requests in them. */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; bdrv_d=
-irty_bitmap_lock(s-&gt;dirty_bitmap);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; while =
-(nb_chunks * s-&gt;granularity &lt; s-&gt;buf_size) {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/block/vhdx.c b/blo=
-ck/vhdx.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">index 791eb90263..84eedee83f 10=
-0644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/block/vhdx.c<o:p></o:p></=
-span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/block/vhdx.c<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -1073,7 &#43;1073,7 @@ stati=
-c int vhdx_open(BlockDriverState *bs, QDict *options, int flags,<o:p></o:p>=
-</span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp; goto fail;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; }<o:p>=
-</o:p></span></p>
+nbsp; indication is done.)&nbsp; Use with `R' or `u' format.<o:p></o:p></sp=
+an></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -854,7 &#43;854,7 @@ fetch_a=
+rg (unsigned char *buffer,<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp; /* endian c=
-onvert populated BAT field entires */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp; /* endi=
-an convert populated BAT field entries */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; for (i=
- =3D 0; i &lt; s-&gt;bat_entries; i&#43;&#43;) {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp; s-&gt;bat[i] =3D le64_to_cpu(s-&gt;bat[i]);<o:p></o:p></s=
-pan></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; }<o:p>=
-</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/block/vhdx.h b/blo=
-ck/vhdx.h<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">index 0b74924cee..e385e484b4 10=
-0644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/block/vhdx.h<o:p></o:p></=
-span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/block/vhdx.h<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -212,7 &#43;212,7 @@ typedef=
- struct QEMU_PACKED VHDXLogDataSector {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp; &nbsp;&nbsp;&nbsp;uint32=
-_t&nbsp;&nbsp;&nbsp; sequence_high;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; /* 4 MSB of 8 byte sequence_number */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; uint8_=
-t&nbsp;&nbsp;&nbsp;&nbsp; data[4084];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* raw data, bytes 8-4091 (inclusive).<o=
-:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p; see the data descriptor field for the<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ot=
-her mising bytes */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-; other missing bytes */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; uint32=
-_t&nbsp;&nbsp;&nbsp; sequence_low;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp; /* 4 LSB of 8 byte sequence_number */<o:p></o:p></span>=
+<p class=3D"MsoNormal"><span lang=3D"EN-US">/* Check if an EA is valid for =
+a particular code.&nbsp; This is required<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; for the EMAC=
+ instructions since the type of source address determines<o:p></o:p></span>=
 </p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">} VHDXLogDataSector;<o:p></o:p>=
-</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp; if it is a EMAC-l=
+oad instruciton if the EA is mode 2-5, otherwise it<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp; if it is a EM=
+AC-load instruction if the EA is mode 2-5, otherwise it<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp; is a non-load EMAC=
+ instruction and the bits mean register Ry.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; A similar ca=
+se exists for the movem instructions where the register<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; mask is inte=
+rpreted differently for different EAs.&nbsp; */<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -1080,7 &#43;1080,7 @@ print=
+_indexed (int basereg,<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -257,7 &#43;257,7 @@ typedef=
- struct QEMU_PACKED VHDXMetadataTableHeader {<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">/* Returns number of bytes &quo=
+t;eaten&quot; by the operand, or<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; return -1 if=
+ an invalid operand was found, or -2 if<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp; an opcode tabe er=
+ror was found.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp; an opcode tab=
+le error was found.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; ADDR is the =
+pc for this arg to be relative to.&nbsp; */<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">#define VHDX_META_FLAGS_IS_USER=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x01&nbsp;&nbsp;&nbsp; /* =
-max 1024 entries */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">#define VHDX_META_FLAGS_IS_VIRT=
-UAL_DISK 0x02&nbsp;&nbsp;&nbsp; /* virtual disk metadata if set,<o:p></o:p>=
-</span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; otherwise file metdata */<o:p=
-></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; otherwise file metadata *=
-/<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">#define VHDX_META_FLAGS_IS_REQU=
-IRED&nbsp;&nbsp;&nbsp;&nbsp; 0x04&nbsp;&nbsp;&nbsp; /* parse must understan=
-d this<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">static int<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/disas/ppc.c b/disa=
+s/ppc.c<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">index 63e97cfe1d..02be878198 10=
+0644<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/disas/ppc.c<o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&#43;&#43; b/disas/ppc.c<o=
+:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -5226,7 &#43;5226,7 @@ opera=
+nd_value_powerpc (const struct powerpc_operand *operand,<o:p></o:p></span><=
+/p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entry to open the file *=
-/<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">typedef struct QEMU_PACKED VHDX=
-MetadataTableEntry {<o:p></o:p></span></p>
+nbsp; if ((operand-&gt;flags &amp; PPC_OPERAND_SIGNED) !=3D 0)<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; {<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; &nbsp; /* BITM is always some number of zeros followed by=
+ some<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; number of ones, followed by some nume=
+r of zeros.&nbsp; */<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; number of ones, followed by some number=
+ of zeros.&nbsp; */<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; &nbsp; unsigned long top =3D operand-&gt;bitm;<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; &nbsp; /* top &amp; -top gives the rightmost 1 bit, so th=
+is<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; fills in any trailing zeros.&nbs=
+p; */<o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">-- <o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span lang=3D"EN-US">2.26.2.windows.1<o:p></o:p></sp=
 an></p>
@@ -447,5 +404,5 @@ an></p>
 </body>
 </html>
 
---_000_640CDEE67BE2784FAE298BB2517210E48AC401dggemi522mbschina_--
+--_000_640CDEE67BE2784FAE298BB2517210E48AC415dggemi522mbschina_--
 
