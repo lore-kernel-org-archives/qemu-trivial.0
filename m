@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAkDz-0001P4-F3
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 21:27:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37658)
+	id 1kAkMN-0005Kr-VZ
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 21:36:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAkDx-0001OG-Uv; Tue, 25 Aug 2020 21:27:37 -0400
-Received: from mail-oo1-xc43.google.com ([2607:f8b0:4864:20::c43]:44319)
+ id 1kAkML-0005JJ-5P; Tue, 25 Aug 2020 21:36:18 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42490)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAkDw-000115-Hb; Tue, 25 Aug 2020 21:27:37 -0400
-Received: by mail-oo1-xc43.google.com with SMTP id g1so75891oop.11;
- Tue, 25 Aug 2020 18:27:35 -0700 (PDT)
+ id 1kAkMJ-0001vM-9l; Tue, 25 Aug 2020 21:36:16 -0400
+Received: by mail-ot1-x343.google.com with SMTP id o8so235912otp.9;
+ Tue, 25 Aug 2020 18:36:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=/Kn6Jr1NLsjJ2ty3jP1i3N2SUnZYCWFTZxXXEsKURHc=;
- b=c2v+j0vhCFEARrc62vmUptbxP6jBtNbaQOStS+wAb2pRBAQ8yHGmIOuF1n+2qktRN1
- 6Jja1VhcAuLEaoGeQwD/F5d5T7I8TJl7nsJTKNrHYOlVcHn8/SvPe8caKkXbvfgAks0V
- HCqrg8EY3s6DKZpBxyKD5qwCB/QpbiV53cCYpy3GtUTeg11/j2TERgPc7UAZn1IeZOz4
- W79HFJ5E7jBbbkXfzKunDSJsBgpVPW05+mYfRjroF+U/FvHU9Zfkv4LRylmOvG0oVfo9
- kS8u8CMejV8cjuEjY6HhEUjzPUeBq2Gopr4F8tUVtSCH+61OJ8xMiPB65H2IiTfrUGMs
- Dgjw==
+ bh=iXS1oBUU229UiWdEGq5NH5JG/0Kua23SJq32uPoLw6s=;
+ b=fxao+wmbvLT607E8Er4OQFKb2kiDKJlfgze6Fg4Nw/qiQ3U6pkVX4culrMQL+9FIko
+ TbwbuEGnrRbzl3a4w7qyA1iGbmH1EuErGp65zkn9vg3oHDofIryvoIwm7prqDSjwWfq5
+ K7kTsE0z+yWWASqntmV8iVuVYzpdlYiHmRTOwciU81923NZ+fHvcK9Zq1Xt52OE5cjT9
+ 2cAWeUiPukknWmCGBSGhNckKGyBzSzMViIpBNrkPE4KcXF1X+3FV74T8xiKswIV/WpmV
+ VRZqpaa/Dnqt5ZFVFd/VAB3RJE/6i3YkfuzZRmVrj4d8j/ujOnnP5ZPNTNSTYyxxZT2g
+ x1eA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=/Kn6Jr1NLsjJ2ty3jP1i3N2SUnZYCWFTZxXXEsKURHc=;
- b=RZsmGzmTbBdPwWO230Z5YgE1BJrdlK2DRkIKcZKb2Px8SXQ25JR4NfkaaXBb/xUcK5
- 8fq3GJ3oln+Rg3ZKpqIjroXahRsiR0yv5MhXvYb9R5fAZL0ex9+A3Iix8tOTZrObKSZd
- CuMolYrxOKisxRkCOXk64FeNtuzHRFts8kMwZm/yG3+t8pFxzTPw1JF1TBtLnCLZWWTn
- u8ZoJqsCiso/3IfqPHXCz8Rd5R3Rym6e4p9Y+1Uc9302Adw3FxUKfuXBfIj2FnXlRpGh
- rBkYYwSI8LZ0If1pTDl4euj6L7tdTlXm8uVnOoo84V3b+NAilI/pyBJWiv7RQDID3iQL
- WqAA==
-X-Gm-Message-State: AOAM531CPDrzwjtlcLaGgdFw1d08LiuBnpx4VN51Gl5NPkK0M3XwqZtb
- jMZo0vVaZzC2N2H3uaYhxuG2yF//+jWHYM9tYh4=
-X-Google-Smtp-Source: ABdhPJy/sZZ/zFISgmwP/Zp8mgA3pstcT6Sd6rkZiON6BqNZJdtTqO9XZOdGfR/rfTz13rMKVid3x9CDwJk6C0qMPwc=
-X-Received: by 2002:a4a:be0c:: with SMTP id l12mr8940671oop.22.1598405254793; 
- Tue, 25 Aug 2020 18:27:34 -0700 (PDT)
+ bh=iXS1oBUU229UiWdEGq5NH5JG/0Kua23SJq32uPoLw6s=;
+ b=X9glatJCnPt31U13kv+6EcyPuafClYtz5JaRJ2hNUJ8p4urM/+DPrmqiGmGtPRspem
+ 63Pre7diaY+KRzLmXaz4l/jWbPsNOQcHTkKTAuI/jg2saRNNMFBBhJxj185CH384RHhD
+ o/iloiGwYwjxY0fF9uimqfaiM16lxic3b3/h0f8WDWISWH/k3dVoLphWsoiEOEqWScqd
+ Jdt+Vyv9cpFsgumHpkXxYSLp6joCTnv2Qv6YHdZYB2+SR1w10mXKqQSzlhdDPnVgKmBm
+ yBpZ9wlrcf17HjQlcqgbi5yMUrW75wfvM2OQd7YtzUvRyralRacYpNWCFc5zzkaucOsV
+ E2IA==
+X-Gm-Message-State: AOAM533zEAF48co8X4+dw/Y0lDwSglSpF27bmixZJB6TFyblvp4JIRxl
+ ad/NS3DRtYrG2bpp4krh1VnOCqXSAP4OlwPBPx0=
+X-Google-Smtp-Source: ABdhPJylEFh7e+AXcA5//0KAkWMLUpDFycVUQBsmKg/DZGJrRbVEhczvsI+O6umqHs8x7KS3tAyPe0F2A4gRYri7xtI=
+X-Received: by 2002:a9d:7c92:: with SMTP id q18mr5889267otn.333.1598405772684; 
+ Tue, 25 Aug 2020 18:36:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200825112447.126308-3-kuhn.chenqun@huawei.com>
+ <20200825112447.126308-7-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200825112447.126308-7-kuhn.chenqun@huawei.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Wed, 26 Aug 2020 09:26:58 +0800
-Message-ID: <CAKXe6SJapcZVnSPznGw_+DkLRv9awtXKNz1hB308s_F_yCz5kQ@mail.gmail.com>
-Subject: Re: [PATCH v2 02/10] hw/arm/omap1:Remove redundant statement in
- omap_clkdsp_read()
+Date: Wed, 26 Aug 2020 09:35:35 +0800
+Message-ID: <CAKXe6SLZi0-ZEdX90b+kmTSdOF5JN4wbKevVg3=nUqbJumrkZA@mail.gmail.com>
+Subject: Re: [PATCH v2 06/10] hw/net/virtio-net:Remove redundant statement in
+ virtio_net_rsc_tcp_ctrl_check()
 To: Chen Qun <kuhn.chenqun@huawei.com>
 Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- Pan Nengyuan <pannengyuan@huawei.com>, qemu-arm@nongnu.org, 
- Euler Robot <euler.robot@huawei.com>
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Jason Wang <jasowang@redhat.com>, Pan Nengyuan <pannengyuan@huawei.com>, 
+ Euler Robot <euler.robot@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c43;
- envelope-from=liq3ea@gmail.com; helo=mail-oo1-xc43.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -77,42 +78,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 01:27:38 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 01:36:18 -0000
 
 Chen Qun <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8825=E6=97=
-=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=887:30=E5=86=99=E9=81=93=EF=BC=9A
+=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=887:32=E5=86=99=E9=81=93=EF=BC=9A
 >
 > Clang static code analyzer show warning:
-> hw/arm/omap1.c:1760:15: warning: Value stored to 'cpu' during its
-> initialization is never read
->     CPUState *cpu =3D CPU(s->cpu);
->               ^~~   ~~~~~~~~~~~
+> hw/net/virtio-net.c:2077:5: warning: Value stored to 'tcp_flag' is never =
+read
+>     tcp_flag &=3D VIRTIO_NET_TCP_FLAG;
+>     ^           ~~~~~~~~~~~~~~~~~~~
+>
+> The 'VIRTIO_NET_TCP_FLAG' is '0x3F'. The last =E2=80=98tcp_flag=E2=80=99 =
+assignment statement is
+>  the same as that of the first two statements.
 >
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
 > ---
->  hw/arm/omap1.c | 1 -
+>  hw/net/virtio-net.c | 1 -
 >  1 file changed, 1 deletion(-)
 >
-> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-> index 6ba0df6b6d..02c0f66431 100644
-> --- a/hw/arm/omap1.c
-> +++ b/hw/arm/omap1.c
-> @@ -1774,7 +1774,6 @@ static uint64_t omap_clkdsp_read(void *opaque, hwad=
-dr addr,
->          return s->clkm.dsp_rstct2;
->
->      case 0x18: /* DSP_SYSST */
-> -        cpu =3D CPU(s->cpu);
->          return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
->                  (cpu->halted << 6);      /* Quite useless... */
->      }
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index a1fe9e9285..cb0d27084c 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -2075,7 +2075,6 @@ static int virtio_net_rsc_tcp_ctrl_check(VirtioNetR=
+scChain *chain,
+>      tcp_flag =3D htons(tcp->th_offset_flags);
+>      tcp_hdr =3D (tcp_flag & VIRTIO_NET_TCP_HDR_LENGTH) >> 10;
+>      tcp_flag &=3D VIRTIO_NET_TCP_FLAG;
+> -    tcp_flag =3D htons(tcp->th_offset_flags) & 0x3F;
+>      if (tcp_flag & TH_SYN) {
+>          chain->stat.tcp_syn++;
+>          return RSC_BYPASS;
 > --
 > 2.23.0
 >
