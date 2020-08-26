@@ -1,65 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAsTV-00039b-Uu
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 06:16:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34288)
+	id 1kAsb5-0004Ht-Vh
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 06:24:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAsTS-00031l-5D; Wed, 26 Aug 2020 06:16:10 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39939)
+ id 1kAsb4-0004FR-6N; Wed, 26 Aug 2020 06:24:02 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:35056)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAsTQ-0004zT-8S; Wed, 26 Aug 2020 06:16:09 -0400
-Received: by mail-ot1-x343.google.com with SMTP id e23so269789otk.7;
- Wed, 26 Aug 2020 03:15:58 -0700 (PDT)
+ id 1kAsb2-00060u-CU; Wed, 26 Aug 2020 06:24:01 -0400
+Received: by mail-il1-x144.google.com with SMTP id q14so1307191ilm.2;
+ Wed, 26 Aug 2020 03:23:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=B8xG5RlJvyOHoSk0yY3k6K12U3qnr4Bcj+P1T+wfO6A=;
- b=Jjwl6MIdGlmSHVbzgI302POMFKYzFQQCPgkn6TPESfWjTbS0v4slr180W+Btkhpxtw
- WDmoAKxdMrZ8gQu+43OBx/xqhuoI2kH4YKcIKu0MG+Yy1hNNlacz4YGwXgU7lTJIfpwb
- wN4SdQWNleMGxUfcK8+HXGSc4TuboK8uXMdEz2f1cHfVrAmsiGvPYcAXyjo4QZRzc/Jy
- I1jss8JWx3qxvMmFUi9Rr7vtH/fmyh4XRvmABBJrU58rNjsgR10Biy3p2OCX+LRaw+9w
- vmnTKtCWID+vzFTtXpLkt0YuIvOeccgmC/G6GgrcWfEOW2gDy5kWPJ0rEWG/D0pAcMBO
- +68w==
+ bh=PB8IdSQthDFHnfSEt9ULBNmBbLStF5rUjYOe2duw9AU=;
+ b=vdrbL/M7QRSEk0/T68EkVB4E3yBKBav2YNP7BeBxEhJbqbrzjxCfD8iDQJuJOCRxzU
+ fQXmO1JcNcaXShuRXNZ9kBXpN4aZC5cG9E/w/OoJGNw3/QdjpfPtekP85pzyyNn2Fh53
+ gtGKNHpUIifoUs9Ms6Cm+NqyAKxyVuCn7k/XNfxtC4lQpxvVbvSFIMRROgHKha6MFIGQ
+ vEYfgH5y6fjnM4s518ftuDK/DYut8Z/rK0e7wGkOYiB3Jg7wCxDDb5HgtulW8r9IE02K
+ RkVjvL7lO3iG+ZiIoPdOUcxNbkoRY51RM8YXc+Eu4kmUkLGKcAYW18NJhp6ENaw/oNhz
+ VUMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=B8xG5RlJvyOHoSk0yY3k6K12U3qnr4Bcj+P1T+wfO6A=;
- b=jv0KIDuY4jyIIzQXNKe3T4Thp0jTeOf1kTm2DNaXzxBKgzbAM2ZTeqcNmm9kHCF4xz
- 1oJ/GXa+JhJ0NuW7DTEd/QFiZx5avIXd2jqMDuS3kdsFYFnKPFGFbRHMuBpL33XfzSq5
- kk3cJxVghlf4iiTCtf3n+JOa65G2eEaJoauoeo1DgFPq1r278uW7qcf5lCImBTJVKMlr
- ZwemnPstIWnpCGYrFGMdtv3f/oU8wtY64y8LrTk86sD1xpnJuV9QYnC7IJ1FYqOLCp/y
- 49xTpZoHwhlhiabA5//v1K86rKcxsghcEe+17mnd71jWZAi5+LuQCd7rvJJX22FUzt7c
- /guw==
-X-Gm-Message-State: AOAM530MaOFlyEL7fe+IiosOCm1NS5EZI8VH+UkBcXgPkYHukXNeE1IX
- D1+4PAOO1bd5D+HwT+qXuXCyXlHbkquzixzrpfI=
-X-Google-Smtp-Source: ABdhPJz8oYkkGpVcqh0wvp/7ZXpCNAZU/exTnnvPQ/YFPtK2pa0/lEsN2zdAaMf01VrKylTWgnIdl01X0F6P3hDQ9EI=
-X-Received: by 2002:a9d:788:: with SMTP id 8mr2771347oto.181.1598436958078;
- Wed, 26 Aug 2020 03:15:58 -0700 (PDT)
+ bh=PB8IdSQthDFHnfSEt9ULBNmBbLStF5rUjYOe2duw9AU=;
+ b=A/5rYSihgeaXqx5/Uzg4j9Bs/BRE2bXzTyJQepusPp2vT8f56bD7M6M2Mc59H29jCR
+ o1cZoRjifNJBlUo1eqsvJjLem8xdtOI2kCMGQcaRzk9B1ivTplCHaNLTcXqO2xBjcYPn
+ rEOG09PkzwkGhEUA8MYZPNcxYsvj7tMmQ1ugQQ7kjRpCIrgksEB7VERwch2H7kIElIDa
+ V5YxznJFIOJZ/xnkVERzo3+HMcv4EpuFnTCA8tBHlsmwW1b+Gn8G2G9+mcyg5grWzrC/
+ dKaUc9XOq7B1EeqYJ604tPyws0SDReBKRvVW3t2MrZHjHX7flQa3g3ySvLFYYT8ErhNM
+ YuRw==
+X-Gm-Message-State: AOAM530ah4iYQbuE8hwN5FLT+Anfp71sovoyVzeisy6YMnFhxghsEPGT
+ cvpdKeCMr0NbTqSN6Zh66Rn4XHAFcukjBAAnO5M=
+X-Google-Smtp-Source: ABdhPJweCfoT7jw2qjL5pTWWTai3b9P6iqkni/Z8q7NgisOtArLvOiTLAwkBOHRrKZIfUIe5X67Q0C5xB37ruQupGW0=
+X-Received: by 2002:a92:6901:: with SMTP id e1mr12597012ilc.209.1598437438960; 
+ Wed, 26 Aug 2020 03:23:58 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-8-kuhn.chenqun@huawei.com>
- <CAKXe6S+BBKztHmBG0TLRTJH6bDntyz4=mWpgccctaZgYWn_TdA@mail.gmail.com>
- <7412CDE03601674DA8197E2EBD8937E83B8E23ED@dggemm511-mbx.china.huawei.com>
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B8E23ED@dggemm511-mbx.china.huawei.com>
+ <20200825112447.126308-6-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200825112447.126308-6-kuhn.chenqun@huawei.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Wed, 26 Aug 2020 18:14:59 +0800
-Message-ID: <CAKXe6SJFM44vxgY+YDtv9sL1pb1ekmT_L0sDQ1a6iV1diSoeDQ@mail.gmail.com>
-Subject: Re: [PATCH v2 07/10] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- Pannengyuan <pannengyuan@huawei.com>, Eric Auger <eric.auger@redhat.com>, 
- Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, 
+Date: Wed, 26 Aug 2020 18:23:23 +0800
+Message-ID: <CAKXe6SKE_8GedHJEejDzx4L2ViT2kdZCo-uiuRdFh9+3AD_EOQ@mail.gmail.com>
+Subject: Re: [PATCH v2 05/10] hw/virtio/vhost-user:Remove dead assignment in
+ scrub_shadow_regions()
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Pan Nengyuan <pannengyuan@huawei.com>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>, 
  Euler Robot <euler.robot@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
+ envelope-from=liq3ea@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -81,55 +78,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 10:16:10 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 10:24:02 -0000
 
-Chenqun (kuhn) <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8826=
-=E6=97=A5=E5=91=A8=E4=B8=89 =E4=B8=8A=E5=8D=889:47=E5=86=99=E9=81=93=EF=BC=
-=9A
+Chen Qun <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8825=E6=97=
+=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=887:28=E5=86=99=E9=81=93=EF=BC=9A
 >
+> Clang static code analyzer show warning:
+> hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
+>         mr =3D vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>         ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 >
-> > > Clang static code analyzer show warning:
-> > > hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never rea=
-d
-> > >         ret =3D event_notifier_test_and_clear(intp->interrupt);
-> > >         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> > >
-> > > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> > > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> > > ---
-> > > Cc: Alex Williamson <alex.williamson@redhat.com>
-> > > Cc: Eric Auger <eric.auger@redhat.com>
-> > > Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> > > ---
-> > >  hw/vfio/platform.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c index
-> > > ac2cefc9b1..869ed2c39d 100644
-> > > --- a/hw/vfio/platform.c
-> > > +++ b/hw/vfio/platform.c
-> > > @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
-> > >          trace_vfio_intp_interrupt_set_pending(intp->pin);
-> > >          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
-> > >                               intp, pqnext);
-> > > -        ret =3D event_notifier_test_and_clear(intp->interrupt);
-> >
-> > Shouldn't we check the 'ret' like the other place in this function?
->
-> Hi, Li Qiang,
->
-> Eric=E3=80=81Alex=E3=80=81Stefan has already discussed this point in the =
-V1 version.
-> https://patchwork.kernel.org/patch/11711897/
-
-Ok I see, then
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
 
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-Thanks,
-Li Qiang
-
+> ---
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+> ---
+>  hw/virtio/vhost-user.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Thanks.
+> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+> index d7e2423762..9c5b4f7fbc 100644
+> --- a/hw/virtio/vhost-user.c
+> +++ b/hw/virtio/vhost-user.c
+> @@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *de=
+v,
+>       */
+>      for (i =3D 0; i < dev->mem->nregions; i++) {
+>          reg =3D &dev->mem->regions[i];
+> -        mr =3D vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd)=
+;
+> +        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>          if (fd > 0) {
+>              ++fd_num;
+>          }
+> --
+> 2.23.0
+>
+>
 
