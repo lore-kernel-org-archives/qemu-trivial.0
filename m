@@ -1,68 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAkeI-0002bS-HC
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 21:54:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43196)
+	id 1kAkjJ-0005mj-Lp
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2020 22:00:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAkeG-0002bA-F2; Tue, 25 Aug 2020 21:54:48 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34369)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAkeE-0004Em-OF; Tue, 25 Aug 2020 21:54:48 -0400
-Received: by mail-oi1-x243.google.com with SMTP id z22so198278oid.1;
- Tue, 25 Aug 2020 18:54:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=aPLE8Qfnk+g9L/ojTdv32kO/sfWmMpScTrsW46d+wrA=;
- b=nwvC26YhiBM54/wzWu5FKk5mozafZw9s/8cXw+L1Rgj1GqIl5b0S3mlQizNspy7qDN
- lUCOm4zHN3Rx8dBzLT435m8EKzkQqwoF8NQX7hoLS4h1SpQTUFhRdex/KfBJ2bDXwB7V
- hQw7Muw6/LQhpKRz6MDMaSdyYob8id86FM9TWej3mzza84UHFSt5NPa3CZnFjvFCEJuX
- x43dp4Zub6AZbcfUjrJbbbBvZ42xQai0CSlVUFQh66rykedmqz8i/eziyEwRhmKD3Upf
- WmqXMcKd/NFHYwM3kaFcPk2kFA0trsIe26a9B1h/MMxmQK8hhx3jq2NNcisPJBr6+wB6
- 9vCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=aPLE8Qfnk+g9L/ojTdv32kO/sfWmMpScTrsW46d+wrA=;
- b=ezejlhDQonvU23Up7XRBLfNSXnJKTS17dcnINdkA5qod38pBNn3Os+Y5WeGc26kiXm
- a3OFJRchhu+qmc5UoYobIMVb4SLQuKLiIsekgiFHyUBBTrapDSS0IGFL4MpsQVJHDyBf
- 4/eoI1ExgA5Zrg6VzBTy4ZhG4XQ0U3IQn/ZgvUP7RbFgrdi8F2R63UTq2LdJRS4smk3P
- RNGPrZLD0AIiX3nuio+izvBMFWSNdmbyDYRwPsXUJsiEbPCRCz6v1/QLCiZbgWb41hh8
- jNOQWPhL6H/3fyQDSEag35/Dyzi6uf3/4lJ0hInJWvLEmiHPzDWEoW17TO5U2YfyzJN/
- ejjw==
-X-Gm-Message-State: AOAM530Gse1f+V3H451i76IYkhyBGB/hOw07NUL0coTX2RVuKBsQefmk
- x6ktrvKJJReJNXV8+akv66eYR+sFm6A7HL0/PUA=
-X-Google-Smtp-Source: ABdhPJwDh6uaIYs/FvyEG8EjfS0FLDz06QCSKJGVsMvnfPeXMHIV7bEv8PH3S2mxUkcILAl9dIOsX298XcXzUxUz/CM=
-X-Received: by 2002:aca:c0c1:: with SMTP id q184mr2818045oif.56.1598406885123; 
- Tue, 25 Aug 2020 18:54:45 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-11-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200825112447.126308-11-kuhn.chenqun@huawei.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Wed, 26 Aug 2020 09:54:09 +0800
-Message-ID: <CAKXe6SL60EqjnpjOjM7meHex0bqYnbaGS+UTTLp0VduRWtzK=A@mail.gmail.com>
-Subject: Re: [PATCH v2 10/10] hw/display/vga:Remove redundant statement in
- vga_draw_graphic()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Gerd Hoffmann <kraxel@redhat.com>, Pan Nengyuan <pannengyuan@huawei.com>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kAkjH-0005ld-NF; Tue, 25 Aug 2020 21:59:59 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2925 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kAkjF-0004tH-PJ; Tue, 25 Aug 2020 21:59:59 -0400
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 376F280CCBEB04E669E6;
+ Wed, 26 Aug 2020 09:59:51 +0800 (CST)
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.141]) by
+ DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0487.000;
+ Wed, 26 Aug 2020 09:59:40 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Markus Armbruster <armbru@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ Pannengyuan <pannengyuan@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Euler Robot <euler.robot@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
+Subject: RE: [PATCH v2 08/10] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
+Thread-Topic: [PATCH v2 08/10] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
+Thread-Index: AQHWeu2YfCXkdyEFi0CUe/xr9r5XdalJoXrg
+Date: Wed, 26 Aug 2020 01:59:40 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B8E2416@dggemm511-mbx.china.huawei.com>
+References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+ <20200825112447.126308-9-kuhn.chenqun@huawei.com>
+ <87r1rudc1y.fsf@dusky.pond.sub.org>
+In-Reply-To: <87r1rudc1y.fsf@dusky.pond.sub.org>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.50]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=liq3ea@gmail.com; helo=mail-oi1-x243.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 21:47:13
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,43 +63,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 01:54:48 -0000
+X-List-Received-Date: Wed, 26 Aug 2020 02:00:00 -0000
 
-Chen Qun <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8825=E6=97=
-=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=887:33=E5=86=99=E9=81=93=EF=BC=9A
->
-> Clang static code analyzer show warning:
-> hw/display/vga.c:1677:9: warning: Value stored to 'update' is never read
->         update =3D full_update;
->         ^        ~~~~~~~~~~~
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+> >  hw/usb/bus.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/usb/bus.c b/hw/usb/bus.c index b17bda3b29..7bab0499ad
+> > 100644
+> > --- a/hw/usb/bus.c
+> > +++ b/hw/usb/bus.c
+> > @@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState
+> > *qdev)
+>            if (in[0] =3D=3D '.') {
+>                /* some hub between root port and device */
+>                pos +=3D snprintf(fw_path + pos, fw_len - pos, "hub@%lx/",
+> nr);
+> >              in++;
+> >          } else {
+> >              /* the device itself */
+> > -            pos +=3D snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+> > -                            qdev_fw_name(qdev), nr);
+> > +            snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+> qdev_fw_name(qdev),
+> > +                     nr);
+> >              break;
+> >          }
+> >      }
+>=20
+> I'd prefer to keep the line break where it is:
+>=20
+>             snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+>                      qdev_fw_name(qdev), nr);
+>=20
+> The patch is safe, so
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>=20
+> The loss of symmetry betwen the two arms of the if is a bit sad.  Up to G=
+erd.
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+If symmetry looks better. I should change it later.
 
-> ---
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  hw/display/vga.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/hw/display/vga.c b/hw/display/vga.c
-> index 061fd9ab8f..836ad50c7b 100644
-> --- a/hw/display/vga.c
-> +++ b/hw/display/vga.c
-> @@ -1674,7 +1674,6 @@ static void vga_draw_graphic(VGACommonState *s, int=
- full_update)
->          if (!(s->cr[VGA_CRTC_MODE] & 2)) {
->              addr =3D (addr & ~0x8000) | ((y1 & 2) << 14);
->          }
-> -        update =3D full_update;
->          page0 =3D addr & s->vbe_size_mask;
->          page1 =3D (addr + bwidth - 1) & s->vbe_size_mask;
->          if (full_update) {
-> --
-> 2.23.0
->
->
+Thanks,
+Chen Qun
 
