@@ -1,69 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kAsb5-0004Ht-Vh
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 06:24:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36644)
+	id 1kB6D4-0005ZG-L6
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2020 20:56:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAsb4-0004FR-6N; Wed, 26 Aug 2020 06:24:02 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:35056)
+ (Exim 4.90_1) (envelope-from <rohit.shinde12194@gmail.com>)
+ id 1kB6D1-0005Vl-VU; Wed, 26 Aug 2020 20:56:07 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:42772)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kAsb2-00060u-CU; Wed, 26 Aug 2020 06:24:01 -0400
-Received: by mail-il1-x144.google.com with SMTP id q14so1307191ilm.2;
- Wed, 26 Aug 2020 03:23:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <rohit.shinde12194@gmail.com>)
+ id 1kB6D0-0002a3-3V; Wed, 26 Aug 2020 20:56:07 -0400
+Received: by mail-pg1-x541.google.com with SMTP id g1so2102997pgm.9;
+ Wed, 26 Aug 2020 17:56:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=PB8IdSQthDFHnfSEt9ULBNmBbLStF5rUjYOe2duw9AU=;
- b=vdrbL/M7QRSEk0/T68EkVB4E3yBKBav2YNP7BeBxEhJbqbrzjxCfD8iDQJuJOCRxzU
- fQXmO1JcNcaXShuRXNZ9kBXpN4aZC5cG9E/w/OoJGNw3/QdjpfPtekP85pzyyNn2Fh53
- gtGKNHpUIifoUs9Ms6Cm+NqyAKxyVuCn7k/XNfxtC4lQpxvVbvSFIMRROgHKha6MFIGQ
- vEYfgH5y6fjnM4s518ftuDK/DYut8Z/rK0e7wGkOYiB3Jg7wCxDDb5HgtulW8r9IE02K
- RkVjvL7lO3iG+ZiIoPdOUcxNbkoRY51RM8YXc+Eu4kmUkLGKcAYW18NJhp6ENaw/oNhz
- VUMQ==
+ :cc; bh=5HcANXCkjFKsVhJ6CG//mHdkllQgS0m6ShWR7+kuyeg=;
+ b=sHdXdo27+KMNrWLiC6fzNnT3kc6Jxjv4qMogNeaaa/5ww8SiDo+osjd2njnlRBbo50
+ x7/9iWWNCV1mSZFUZ7nvq91LGhwa9QHqrEvuN1NNeHcMS+G6wGeHCz1pVxjcQth4v2Ab
+ WwbwEJArFqXkanI/wylU6AsIBmrbqCv5uKiZGeFM4ZaUWVi60Q+1SE3NMEkb54vQLKuq
+ WMT3kOx91ecEKarY25Oez1M6/DQDmlXv0EdsGphwU4zmNSBKSGqoG2frIFbSRJOQ6QNH
+ bhAqqolYfDby9Q0p3IHl/DXs7wPiJzrgWqodR5SZRj3V+rrXxOorwrHbHe70hbgUJ0Pq
+ 84UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=PB8IdSQthDFHnfSEt9ULBNmBbLStF5rUjYOe2duw9AU=;
- b=A/5rYSihgeaXqx5/Uzg4j9Bs/BRE2bXzTyJQepusPp2vT8f56bD7M6M2Mc59H29jCR
- o1cZoRjifNJBlUo1eqsvJjLem8xdtOI2kCMGQcaRzk9B1ivTplCHaNLTcXqO2xBjcYPn
- rEOG09PkzwkGhEUA8MYZPNcxYsvj7tMmQ1ugQQ7kjRpCIrgksEB7VERwch2H7kIElIDa
- V5YxznJFIOJZ/xnkVERzo3+HMcv4EpuFnTCA8tBHlsmwW1b+Gn8G2G9+mcyg5grWzrC/
- dKaUc9XOq7B1EeqYJ604tPyws0SDReBKRvVW3t2MrZHjHX7flQa3g3ySvLFYYT8ErhNM
- YuRw==
-X-Gm-Message-State: AOAM530ah4iYQbuE8hwN5FLT+Anfp71sovoyVzeisy6YMnFhxghsEPGT
- cvpdKeCMr0NbTqSN6Zh66Rn4XHAFcukjBAAnO5M=
-X-Google-Smtp-Source: ABdhPJweCfoT7jw2qjL5pTWWTai3b9P6iqkni/Z8q7NgisOtArLvOiTLAwkBOHRrKZIfUIe5X67Q0C5xB37ruQupGW0=
-X-Received: by 2002:a92:6901:: with SMTP id e1mr12597012ilc.209.1598437438960; 
- Wed, 26 Aug 2020 03:23:58 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=5HcANXCkjFKsVhJ6CG//mHdkllQgS0m6ShWR7+kuyeg=;
+ b=aPF5zDa76YP5IApZEE6Ebbe7BPLlbHbO8PlqkGeoRE5Nx8ijNOjrnOizyB+8gHf79M
+ ypP7KW8C9eSr4fstqczLGBlzMKA0O1ndZDX+f7jCpDPCLmdZgWOLqQ+Mv7HSiDxr/W+S
+ ILNLXR4jInFZ8KqGAxqxzgG3erstVyGu3l4j8anVNAw3wmllc2xEIijEYKFi8LaNIK0E
+ gUs1ggDqHyK8yF0fM4vc2eL48ZP7SRI3JxLZ6I0I8DlxuIJDTr4sbVg3myHu1/7BkW3E
+ 7+2IF87qCo4NzWJAB+BBlWox6Bqb99DwLoh+aJ4v6BOIZIXbtsjoe8itw8bPLAJa4y6S
+ 24Xg==
+X-Gm-Message-State: AOAM530r8TeQ49Mt+Jum0gqMqyS9U1rDIgvMezXM3vUQHIna6UnyfwTF
+ kcDUbV+cjlJPGfcvlGJSd8VZBxlIB7UvofLyfQY=
+X-Google-Smtp-Source: ABdhPJzUxFcAkE3hlx8DcHXjp0+JJXi3L4thbJdjakby1MIqNfHKaBR1Id3StuHklBC301U7ODAidqgOrwHqbAfvheo=
+X-Received: by 2002:a17:902:fe0f:: with SMTP id
+ g15mr11820803plj.204.1598489763988; 
+ Wed, 26 Aug 2020 17:56:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-6-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200825112447.126308-6-kuhn.chenqun@huawei.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Wed, 26 Aug 2020 18:23:23 +0800
-Message-ID: <CAKXe6SKE_8GedHJEejDzx4L2ViT2kdZCo-uiuRdFh9+3AD_EOQ@mail.gmail.com>
-Subject: Re: [PATCH v2 05/10] hw/virtio/vhost-user:Remove dead assignment in
- scrub_shadow_regions()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Pan Nengyuan <pannengyuan@huawei.com>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>, 
- Euler Robot <euler.robot@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=liq3ea@gmail.com; helo=mail-il1-x144.google.com
+References: <20200818105021.4998-1-rohit.shinde12194@gmail.com>
+ <87o8mzjm7r.fsf@dusky.pond.sub.org>
+In-Reply-To: <87o8mzjm7r.fsf@dusky.pond.sub.org>
+From: Rohit Shinde <rohit.shinde12194@gmail.com>
+Date: Wed, 26 Aug 2020 20:55:53 -0400
+Message-ID: <CA+Ai=tD2QK9+GaXQoQWzKTPY-uZhLSCBeLUfz95eCiHv0v2i+A@mail.gmail.com>
+Subject: Re: [PATCH v5] qapi/opts-visitor: Added missing fallthrough
+ annotations
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mdroth@linux.vnet.ibm.com
+Content-Type: multipart/alternative; boundary="0000000000008f476405add16608"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=rohit.shinde12194@gmail.com; helo=mail-pg1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -78,46 +73,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2020 10:24:02 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 00:56:08 -0000
 
-Chen Qun <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8825=E6=97=
-=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=887:28=E5=86=99=E9=81=93=EF=BC=9A
->
-> Clang static code analyzer show warning:
-> hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
->         mr =3D vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
->         ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+--0000000000008f476405add16608
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+I am just compiling with cflag set to -Wimplicit-fallthrough. I am using
+gcc.
 
-> ---
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
-> ---
->  hw/virtio/vhost-user.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Tue, Aug 25, 2020 at 2:03 AM Markus Armbruster <armbru@redhat.com> wrote:
+
+> Rohit Shinde <rohit.shinde12194@gmail.com> writes:
 >
-> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
-> index d7e2423762..9c5b4f7fbc 100644
-> --- a/hw/virtio/vhost-user.c
-> +++ b/hw/virtio/vhost-user.c
-> @@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *de=
-v,
->       */
->      for (i =3D 0; i < dev->mem->nregions; i++) {
->          reg =3D &dev->mem->regions[i];
-> -        mr =3D vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd)=
-;
-> +        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
->          if (fd > 0) {
->              ++fd_num;
->          }
-> --
-> 2.23.0
+> > Added fallthrough comment on line 270 to prevent the compiler from
+> > throwing an error while compiling with the -Wimplicit-fallthrough flag
+>
+> None of the compilers I know warns there.  Which one are you using?
+>
+> Commit message style tip: use the imperative mood
+> https://chris.beams.io/posts/git-commit/#imperative
+>
+> > Signed-off-by: Rohit Shinde <rohit.shinde12194@gmail.com>
+> > ---
+> >  qapi/opts-visitor.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
+> > index 7781c23a42..3422ff265e 100644
+> > --- a/qapi/opts-visitor.c
+> > +++ b/qapi/opts-visitor.c
+> > @@ -266,6 +266,7 @@ opts_next_list(Visitor *v, GenericList *tail, size_t
+> size)
+> >          }
+> >          ov->list_mode = LM_IN_PROGRESS;
+> >          /* range has been completed, fall through in order to pop
+> option */
+> > +        /* fallthrough */
+> >
+> >      case LM_IN_PROGRESS: {
+> >          const QemuOpt *opt;
 >
 >
+
+--0000000000008f476405add16608
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I am just compiling with cflag set to -Wimplicit-fallthrou=
+gh. I am using gcc.</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cl=
+ass=3D"gmail_attr">On Tue, Aug 25, 2020 at 2:03 AM Markus Armbruster &lt;<a=
+ href=3D"mailto:armbru@redhat.com">armbru@redhat.com</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">Rohit Shinde &lt;<a hre=
+f=3D"mailto:rohit.shinde12194@gmail.com" target=3D"_blank">rohit.shinde1219=
+4@gmail.com</a>&gt; writes:<br>
+<br>
+&gt; Added fallthrough comment on line 270 to prevent the compiler from<br>
+&gt; throwing an error while compiling with the -Wimplicit-fallthrough flag=
+<br>
+<br>
+None of the compilers I know warns there.=C2=A0 Which one are you using?<br=
+>
+<br>
+Commit message style tip: use the imperative mood<br>
+<a href=3D"https://chris.beams.io/posts/git-commit/#imperative" rel=3D"nore=
+ferrer" target=3D"_blank">https://chris.beams.io/posts/git-commit/#imperati=
+ve</a><br>
+<br>
+&gt; Signed-off-by: Rohit Shinde &lt;<a href=3D"mailto:rohit.shinde12194@gm=
+ail.com" target=3D"_blank">rohit.shinde12194@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 qapi/opts-visitor.c | 1 +<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+)<br>
+&gt;<br>
+&gt; diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c<br>
+&gt; index 7781c23a42..3422ff265e 100644<br>
+&gt; --- a/qapi/opts-visitor.c<br>
+&gt; +++ b/qapi/opts-visitor.c<br>
+&gt; @@ -266,6 +266,7 @@ opts_next_list(Visitor *v, GenericList *tail, size=
+_t size)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ov-&gt;list_mode =3D LM_IN_PROGRESS;=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* range has been completed, fall th=
+rough in order to pop option */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fallthrough */<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 case LM_IN_PROGRESS: {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 const QemuOpt *opt;<br>
+<br>
+</blockquote></div>
+
+--0000000000008f476405add16608--
 
