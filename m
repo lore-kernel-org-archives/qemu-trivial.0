@@ -1,70 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kBB6z-0004O4-82
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 02:10:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45722)
+	id 1kBBuN-00035d-8X
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 03:01:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kBB6y-0004Lv-0Z
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2020 02:10:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28622)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kBB6v-0004z7-FN
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2020 02:10:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598508607;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ipkAN57+4Q0PnF2HH+GzeujjzxOt6yJAXxN4OVv4LPI=;
- b=VZJJmNDlHqN1CGgUU9VxP9qsyR599nbdfNKlaRSxfKU0QQq9tCyrrIMjbKTh/MbIIinSft
- zMIIA3VFCytluuiLrP6GmYvd7GhwrZmH760Zc93areqb8uJjfLjkb22v+0enMEpHEg+A3C
- MNcfqb5r8Nt3N+sFBfyny6nCJIqqHzA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-149-4cm4h2_DMoWPdnbb8m5zjg-1; Thu, 27 Aug 2020 02:10:05 -0400
-X-MC-Unique: 4cm4h2_DMoWPdnbb8m5zjg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 44A72801AF9;
- Thu, 27 Aug 2020 06:10:04 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-74.ams2.redhat.com
- [10.36.112.74])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EEA291992F;
- Thu, 27 Aug 2020 06:10:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 67A5E112D737; Thu, 27 Aug 2020 08:10:02 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Rohit Shinde <rohit.shinde12194@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, mdroth@linux.vnet.ibm.com
-Subject: Re: [PATCH v5] qapi/opts-visitor: Added missing fallthrough
- annotations
-References: <20200818105021.4998-1-rohit.shinde12194@gmail.com>
- <87o8mzjm7r.fsf@dusky.pond.sub.org>
- <CA+Ai=tD2QK9+GaXQoQWzKTPY-uZhLSCBeLUfz95eCiHv0v2i+A@mail.gmail.com>
-Date: Thu, 27 Aug 2020 08:10:02 +0200
-In-Reply-To: <CA+Ai=tD2QK9+GaXQoQWzKTPY-uZhLSCBeLUfz95eCiHv0v2i+A@mail.gmail.com>
- (Rohit Shinde's message of "Wed, 26 Aug 2020 20:55:53 -0400")
-Message-ID: <87r1rsoc05.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kBBuL-00035O-CH; Thu, 27 Aug 2020 03:01:13 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:47832 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kBBuH-0002m2-Oq; Thu, 27 Aug 2020 03:01:13 -0400
+Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id 6506E1FDF67428F7D126;
+ Thu, 27 Aug 2020 15:00:56 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Thu, 27 Aug 2020 15:00:56 +0800
+Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.141]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0487.000;
+ Thu, 27 Aug 2020 15:00:47 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Pannengyuan <pannengyuan@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>
+Subject: RE: [PATCH v2 09/10] hw/intc: Remove redundant statement in
+ exynos4210_combiner_read()
+Thread-Topic: [PATCH v2 09/10] hw/intc: Remove redundant statement in
+ exynos4210_combiner_read()
+Thread-Index: AQHWetKNgmqjr7ls9UKOtUz3l3Xb5qlIPmkAgAM/MOA=
+Date: Thu, 27 Aug 2020 07:00:46 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B8E58BD@dggemm511-mbx.china.huawei.com>
+References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
+ <20200825112447.126308-10-kuhn.chenqun@huawei.com>
+ <CAFEAcA_SLjM28bHH8WxBdHAFdLgE6zgqNAj9EpOVp77WL-iqKg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_SLjM28bHH8WxBdHAFdLgE6zgqNAj9EpOVp77WL-iqKg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.50]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:10:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 03:00:57
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,20 +65,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2020 06:10:12 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 07:01:13 -0000
 
-Rohit Shinde <rohit.shinde12194@gmail.com> writes:
-
-> I am just compiling with cflag set to -Wimplicit-fallthrough. I am using
-> gcc.
-
--Wimplicit-fallthrough is the same as -Wimplicit-fallthrough=3.  Our
--code is not prepared for that.  What should work is
---Wimplicit-fallthrough=2.
-
-If you have patches to make the entire tree compile with
--Wimplicit-fallthrough=3, we can talk.  You'd have to test them on all
-supported hosts, and with a sufficient range of configurations to ensure
-they are not breaking builds.
-
+PiBTdWJqZWN0OiBSZTogW1BBVENIIHYyIDA5LzEwXSBody9pbnRjOiBSZW1vdmUgcmVkdW5kYW50
+IHN0YXRlbWVudCBpbg0KPiBleHlub3M0MjEwX2NvbWJpbmVyX3JlYWQoKQ0KPiANCj4gT24gVHVl
+LCAyNSBBdWcgMjAyMCBhdCAxMjoyNiwgQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29t
+PiB3cm90ZToNCj4gPg0KPiA+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2Fybmlu
+ZzoNCj4gPiBody9pbnRjL2V4eW5vczQyMTBfY29tYmluZXIuYzoyMzE6OTogd2FybmluZzogVmFs
+dWUgc3RvcmVkIHRvICd2YWwnIGlzIG5ldmVyDQo+IHJlYWQNCj4gPiAgICAgICAgIHZhbCA9IHMt
+PnJlZ19zZXRbb2Zmc2V0ID4+IDJdOw0KPiA+DQo+ID4gVGhlIGRlZmF1bHQgdmFsdWUgb2YgJ3Zh
+bCcgaXMgJzAnLCBzbyB3ZSBjYW4gYnJlYWsgdGhlICdkZWZhdWx0JyBicmFuY2ggYW5kIHJldHVy
+bg0KPiAndmFsJy4NCj4gPg0KPiA+IFJlcG9ydGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9i
+b3RAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVu
+QGh1YXdlaS5jb20+DQo+ID4gLS0tDQo+ID4gQ2M6IElnb3IgTWl0c3lhbmtvIDxpLm1pdHN5YW5r
+b0BnbWFpbC5jb20+DQo+ID4gQ2M6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJv
+Lm9yZz4NCj4gPiAtLS0NCj4gPiAgaHcvaW50Yy9leHlub3M0MjEwX2NvbWJpbmVyLmMgfCAzICst
+LQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDIgZGVsZXRpb25zKC0pDQo+
+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvaW50Yy9leHlub3M0MjEwX2NvbWJpbmVyLmMNCj4gPiBi
+L2h3L2ludGMvZXh5bm9zNDIxMF9jb21iaW5lci5jIGluZGV4IGI4NTYxZTQxODAuLmUyZTc0NWJi
+YWEgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvaW50Yy9leHlub3M0MjEwX2NvbWJpbmVyLmMNCj4gPiAr
+KysgYi9ody9pbnRjL2V4eW5vczQyMTBfY29tYmluZXIuYw0KPiA+IEBAIC0yMjgsOCArMjI4LDcg
+QEAgZXh5bm9zNDIxMF9jb21iaW5lcl9yZWFkKHZvaWQgKm9wYXF1ZSwgaHdhZGRyDQo+IG9mZnNl
+dCwgdW5zaWduZWQgc2l6ZSkNCj4gPiAgICAgICAgICAgICAgaHdfZXJyb3IoImV4eW5vczQyMTAu
+Y29tYmluZXI6IG92ZXJmbG93IG9mIHJlZ19zZXQgYnkgMHgiDQo+ID4gICAgICAgICAgICAgICAg
+ICAgICAgVEFSR0VUX0ZNVF9wbHggIm9mZnNldFxuIiwgb2Zmc2V0KTsNCj4gPiAgICAgICAgICB9
+DQo+ID4gLSAgICAgICAgdmFsID0gcy0+cmVnX3NldFtvZmZzZXQgPj4gMl07DQo+ID4gLSAgICAg
+ICAgcmV0dXJuIDA7DQo+ID4gKyAgICAgICAgYnJlYWs7DQo+ID4gICAgICB9DQo+ID4gICAgICBy
+ZXR1cm4gdmFsOw0KPiA+ICB9DQo+IA0KPiBUaGUgY29kZSBhcyBpdCBzdGFuZHMgaXMgZGVmaW5p
+dGVseSB3cm9uZywgYnV0IEknbSBub3Qgc3VyZSB0aGlzIGlzIHRoZSBjb3JyZWN0IGZpeC4NCj4g
+U3VyZWx5IHRoZSBpbnRlbnRpb24gbXVzdCBoYXZlIGJlZW4gdG8gcmV0dXJuIHRoZSBhY3R1YWwg
+cmVnaXN0ZXIgdmFsdWUgZnJvbQ0KPiB0aGUgcmVnX3NldFtdIGFycmF5LCBub3QgdG8gcmV0dXJu
+IDAgPw0KPiANCj4gSSBzdXNwZWN0IHRoZSBjb3JyZWN0IGZpeCBoZXJlIGlzIHNpbXBseSB0byBk
+ZWxldGUgdGhlICJyZXR1cm4gMCIgbGluZSBhbmQgbGVhdmUNCj4gdGhlIGFzc2lnbm1lbnQgdG8g
+dmFsIGFzIGl0IGlzLg0KDQpIaSBQZXRlciwNCiAgSSB0aGluayB5b3UncmUgcmlnaHQuDQoNCj4g
+SWRlYWxseSB5b3Ugc2hvdWxkIGNoZWNrIHRoZSBoL3cgZGF0YXNoZWV0IHRvIGNvbmZpcm0uDQog
+SSBjaGVja2VkIHRoZSBFeHlub3MgNDIxMCBkYXRhc2hlZXQgYW5kIGZvdW5kIHRoYXQgJ0ludGVy
+cnVwdCBDb21iaW5lciBPcGVyYXRpb24nIGhhZCBvbmx5IGZpdmUgdHlwZXMgb2YgcmVnaXN0ZXJz
+Lg0KDQpSZWdpc3RlciAgICAgICAgICAgICBEZXNjcmlwdGlvbiAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBUeXBlDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpJ
+RVNSKDAvMS8yLzMpICAgSW50ZXJydXB0IEVuYWJsZSBTZXQgUmVnaXN0ZXIgZm9yIEdyb3VwICgw
+fjMvIDQgfjcvIDh+IDExLyAxMn4gMTUpICAgICAgICAgUlcNCklFQ1IoMC8xLzIvMykgICBJbnRl
+cnJ1cHQgRW5hYmxlIENsZWFyIFJlZ2lzdGVyIGZvciBHcm91cCAoMH4zLyA0IH43LyA4fiAxMS8g
+MTJ+IDE1KSAgICAgICBSVw0KSVNUUigwLzEvMi8zKSAgIEludGVycnVwdCBTdGF0dXMgUmVnaXN0
+ZXIgZm9yIEdyb3VwICgwfjMvIDQgfjcvIDh+IDExLyAxMn4gMTUpICAgICAgICAgICAgIFINCklN
+U1IoMC8xLzIvMykgIEludGVycnVwdCBNYXNrZWQgU3RhdHVzIFJlZ2lzdGVyIGZvciBHcm91cCgw
+fjMvIDQgfjcvIDh+IDExLyAxMn4gMTUpICAgICAgIFINCkNJUFNSMCAgICAgICAgQ29tYmluZWQg
+SW50ZXJydXB0IFBlbmRpbmcgU3RhdHVzMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBSDQoNClRoZSBleHlub3M0MjEwX2NvbWJpbmVyX3dyaXRlKCkgZnVuY3Rpb24gaGFzIHdyaXRl
+IG9wZXJhdGlvbnMgZm9yIElFU1IgYW5kIElFQ1IuDQpUaGUgQ0lQU1IsIElTVFIsIGFuZCBJTVNS
+IHJlYWQgb3BlcmF0aW9ucyBhcmUgc3BlY2lmaWVkIGluIHRoZSBleHlub3M0MjEwX2NvbWJpbmVy
+X3JlYWQoKSBmdW5jdGlvbi4NCg0KU28sIFRoaXMgJ2RlZmF1bHQnIGJyYW5jaCBpbiBleHlub3M0
+MjEwX2NvbWJpbmVyX3JlYWQoKSBmdW5jdGlvbiByZWFkIG9wZXJhdGlvbiBpcyBvbmx5IGZvciBJ
+RVNSIGFuZCBJRUNSLg0KDQpBbmQsIGluIHRoZSBleHlub3M0MjEwX2NvbWJpbmVyX3dyaXRlIGZ1
+bmN0aW9uLCB0aGUgZGVmYXVsdCBhc3NpZ25tZW50IHN0YXRlbWVudCBmb3IgSUVTUiBhbmQgSUVD
+UiBpcyAiIHMtPnJlZ19zZXRbb2Zmc2V0ID4+IDJdID0gdmFsOyIuDQpUaGVyZWZvcmUsIGlmIHdl
+IHJlYWQgdGhlIHR3byByZWdpc3RlcihJRVNSIGFuZCBJRUNSKSB2YWx1ZXMsIHdlIGNhbiBkaXJl
+Y3RseSB1c2UgdGhpcyBhc3NpZ25tZW50IHN0YXRlbWVudCAidmFsID0gcy0+cmVnX3NldFtvZmZz
+ZXQgPj4gMl07Ii4NCg0KUGxlYXNlIGNvbmZpcm0gdGhhdCBpZiB0aGVyZSBpcyBubyBwcm9ibGVt
+LCBJIHdpbGwgbW9kaWZ5IGl0IGluIGxhdGVyIHZlcnNpb24uDQoNClRoYW5rcywNCkNoZW4gUXVu
+DQoNCg0KDQoNCg==
 
