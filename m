@@ -1,73 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kBEDN-0006et-Kj
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 05:29:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58398)
+	id 1kBFhv-00047x-RL
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:04:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBEDL-0006aW-OG
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2020 05:28:59 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:35752)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBEDJ-000428-36
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2020 05:28:59 -0400
-Received: by mail-ej1-x642.google.com with SMTP id a26so6749311ejc.2
- for <qemu-trivial@nongnu.org>; Thu, 27 Aug 2020 02:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lNKyWQVmt7GlUFWHoZTwmyRNJK2j89UAb8nPiiUG4IE=;
- b=noNzADQDPVadXawjYSe5fCn2sn+gbSUutTNtls9utIQ8+0mnQee2MJAT6N2nt8QcA/
- bp0rwSKoeQNSBFA76EQzURfFMdnjsHHXKW7vfN5P1iP3F272SNpARzb8JXN2dl+GTfom
- xShxvoKl7Och+vstOo+OnvnedZFwt47uEggDuTAkkVRAYT0Xd3y3apUI0lzYLAvrS6DB
- z1bss0+M65MZ3l0Qrmya8jzCNDSDyNQZSxH3Tc0+MVKkmlxycMaDtZhRRAYuIZ8ca7Or
- 8BNTuUu79X0xswikQdzdMakT+33fGggjoN8e4ujtwl6E5P/KGZ6ELutXEcdYzVTExXZZ
- M9+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lNKyWQVmt7GlUFWHoZTwmyRNJK2j89UAb8nPiiUG4IE=;
- b=Tpry6YhRKTrz9tFp4Nw3AMB1xr6hR9/hkvnfNFQmBH052ev5nULMx2XxDl+GU1CRs6
- lXnDt9y5eseTqp5RGQmv9YmeqGkupFLNY4fBzI21tjSX2XEwI1MXLooo6rlgoBwrWq77
- Xnxa933QlbBaU7b1URtxqNklOsGYW4/2vrAsGHIgBYXF1LPAbdl/4FCrHYVJ5IPcJHwy
- Q1kjeMShpmKYL2lJNSLnemf87wUBuWCoc1nKD7CxGnUNx8f5i9aUU3WcyKWV1fAvChrj
- +wctO5BmsjdDZ1j0yu9j2Ze+/yOUFatwI3xM1wnbQ+ehBAC7Yd1Y7i6W132IGO8BeEJX
- PWug==
-X-Gm-Message-State: AOAM533nnW5y9Ns3WW+ipT4+ytZHoFaJObabz5W7lBH/YXv9sqIJUwXT
- xdzIkU2Jd1qa2m7WSnFckcjqWB8FuNmqYCzNR4XOnQ==
-X-Google-Smtp-Source: ABdhPJwMqiizVrdloQm+Nzhr9AVWDNwQZEGlWjrIKB2LZj0N2vYUuyPx8PQj4alBYvlGEWVuZqB8C9vLsDoz9TOJ+dA=
-X-Received: by 2002:a17:907:2066:: with SMTP id
- qp6mr10748116ejb.85.1598520535238; 
- Thu, 27 Aug 2020 02:28:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kBFhu-00047f-CE; Thu, 27 Aug 2020 07:04:38 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4277 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kBFhs-0007XT-2O; Thu, 27 Aug 2020 07:04:38 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id DF135EA6F33DC9342383;
+ Thu, 27 Aug 2020 19:04:25 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 27 Aug 2020
+ 19:04:19 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH v3 00/10] trivial patchs for static code analyzer fixes
+Date: Thu, 27 Aug 2020 19:03:01 +0800
+Message-ID: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-10-kuhn.chenqun@huawei.com>
- <CAFEAcA_SLjM28bHH8WxBdHAFdLgE6zgqNAj9EpOVp77WL-iqKg@mail.gmail.com>
- <7412CDE03601674DA8197E2EBD8937E83B8E58BD@dggemm511-mbx.china.huawei.com>
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B8E58BD@dggemm511-mbx.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Aug 2020 10:28:44 +0100
-Message-ID: <CAFEAcA-MU2tginRvDOUk8+sEQiDm3ZxNZ2sb-vsw4jFaomHa7Q@mail.gmail.com>
-Subject: Re: [PATCH v2 09/10] hw/intc: Remove redundant statement in
- exynos4210_combiner_read()
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Pannengyuan <pannengyuan@huawei.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:09:23
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,30 +50,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2020 09:29:00 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 11:04:38 -0000
 
-On Thu, 27 Aug 2020 at 08:01, Chenqun (kuhn) <kuhn.chenqun@huawei.com> wrote:
->
-> > Subject: Re: [PATCH v2 09/10] hw/intc: Remove redundant statement in
-> > exynos4210_combiner_read()
+Since v2:
+- Patch1: Addressed Li Qiang review comment.
+- Patch2: Addressed Peter Maydell and Li Qiang review comment.
+- Patch3：Delete memleak commit message, and Addressed Peter Maydell
+  review comment.
+- Patch4: Addressed Peter Maydell review comment.
+- Patch6: Addressed Li Qiang review comment.
+- Patch7: Addressed Stefan Hajnoczi and Li Qiang review comment.
+- Patch8: Addressed Markus Armbruster review comment.
+- Patch9: Change default return value in exynos4210_combiner_read().
 
-> > The code as it stands is definitely wrong, but I'm not sure this is the correct fix.
-> > Surely the intention must have been to return the actual register value from
-> > the reg_set[] array, not to return 0 ?
-> >
-> > I suspect the correct fix here is simply to delete the "return 0" line and leave
-> > the assignment to val as it is.
->
-> Hi Peter,
->   I think you're right.
->
-> > Ideally you should check the h/w datasheet to confirm.
->  I checked the Exynos 4210 datasheet and found that 'Interrupt Combiner Operation' had only five types of registers.
+Chen Qun (10):
+  hw/arm/virt-acpi-build:Remove dead assignment in build_madt()
+  hw/arm/omap1:Remove redundant statement in omap_clkdsp_read()
+  target/arm/translate-a64:Remove dead assignment in
+    handle_scalar_simd_shli()
+  target/arm/translate-a64:Remove redundant statement in
+    disas_simd_two_reg_misc_fp16()
+  hw/virtio/vhost-user:Remove dead assignment in scrub_shadow_regions()
+  hw/net/virtio-net:Remove redundant statement in
+    virtio_net_rsc_tcp_ctrl_check()
+  vfio/platform: Remove dead assignment in vfio_intp_interrupt()
+  usb/bus: Remove dead assignment in usb_get_fw_dev_path()
+  hw/intc: fix default registers value in exynos4210_combiner_read()
+  hw/display/vga:Remove redundant statement in vga_draw_graphic()
 
-> Please confirm that if there is no problem, I will modify it in later version.
+ hw/arm/omap1.c                | 1 -
+ hw/arm/virt-acpi-build.c      | 3 +--
+ hw/display/vga.c              | 1 -
+ hw/intc/exynos4210_combiner.c | 1 -
+ hw/net/virtio-net.c           | 1 -
+ hw/usb/bus.c                  | 4 ++--
+ hw/vfio/platform.c            | 2 +-
+ hw/virtio/vhost-user.c        | 2 +-
+ target/arm/translate-a64.c    | 7 ++-----
+ 9 files changed, 7 insertions(+), 15 deletions(-)
 
-Thanks for checking the datasheet -- I agree and we should keep
-the "val = s->reg_set[offset >> 2];" and only delete the "return 0".
+-- 
+2.23.0
 
--- PMM
 
