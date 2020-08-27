@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kBFiI-0004gU-GW
+	id 1kBFiI-0004h9-Np
 	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:05:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51042)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFi9-0004T1-HM; Thu, 27 Aug 2020 07:04:54 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4714 helo=huawei.com)
+ id 1kBFiC-0004YR-ES; Thu, 27 Aug 2020 07:04:56 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4715 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFi7-0007Ya-Ns; Thu, 27 Aug 2020 07:04:53 -0400
+ id 1kBFiA-0007ZL-Jm; Thu, 27 Aug 2020 07:04:56 -0400
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id B3F4B7A128B3CE8B252E;
- Thu, 27 Aug 2020 19:04:46 +0800 (CST)
+ by Forcepoint Email with ESMTP id 3F8E0423732E145726B2;
+ Thu, 27 Aug 2020 19:04:51 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 27 Aug 2020
- 19:04:37 +0800
+ 19:04:44 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Peter
- Maydell" <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v3 03/10] target/arm/translate-a64:Remove dead assignment in
- handle_scalar_simd_shli()
-Date: Thu, 27 Aug 2020 19:03:04 +0800
-Message-ID: <20200827110311.164316-4-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Eric Auger
+ <eric.auger@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, Li Qiang
+ <liq3ea@gmail.com>, Alex Williamson <alex.williamson@redhat.com>
+Subject: [PATCH v3 07/10] vfio/platform: Remove dead assignment in
+ vfio_intp_interrupt()
+Date: Thu, 27 Aug 2020 19:03:08 +0800
+Message-ID: <20200827110311.164316-8-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
@@ -54,46 +55,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2020 11:04:55 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 11:04:57 -0000
 
 Clang static code analyzer show warning:
-target/arm/translate-a64.c:8635:14: warning: Value stored to 'tcg_rn' during its
- initialization is never read
-    TCGv_i64 tcg_rn = new_tmp_a64(s);
-             ^~~~~~   ~~~~~~~~~~~~~~
-target/arm/translate-a64.c:8636:14: warning: Value stored to 'tcg_rd' during its
- initialization is never read
-    TCGv_i64 tcg_rd = new_tmp_a64(s);
-             ^~~~~~   ~~~~~~~~~~~~~~
+hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
+        ret = event_notifier_test_and_clear(intp->interrupt);
+        ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 ---
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-
-v2->v3:According to Peter's review, the variable 's' does not have a memleak,
-so deleted the description about memleak.
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- target/arm/translate-a64.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/vfio/platform.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 534c3ff5f3..c83bb85e4e 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -8632,8 +8632,8 @@ static void handle_scalar_simd_shli(DisasContext *s, bool insert,
-     int size = 32 - clz32(immh) - 1;
-     int immhb = immh << 3 | immb;
-     int shift = immhb - (8 << size);
--    TCGv_i64 tcg_rn = new_tmp_a64(s);
--    TCGv_i64 tcg_rd = new_tmp_a64(s);
-+    TCGv_i64 tcg_rn;
-+    TCGv_i64 tcg_rd;
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index ac2cefc9b1..869ed2c39d 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
+         trace_vfio_intp_interrupt_set_pending(intp->pin);
+         QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
+                              intp, pqnext);
+-        ret = event_notifier_test_and_clear(intp->interrupt);
++        event_notifier_test_and_clear(intp->interrupt);
+         return;
+     }
  
-     if (!extract32(immh, 3, 1)) {
-         unallocated_encoding(s);
 -- 
 2.23.0
 
