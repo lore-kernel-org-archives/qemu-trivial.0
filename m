@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kBFiR-0004px-CS
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:05:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51150)
+	id 1kBFiT-0004ub-P5
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:05:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFiJ-0004iC-35; Thu, 27 Aug 2020 07:05:06 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4664 helo=huawei.com)
+ id 1kBFiF-0004bF-0U; Thu, 27 Aug 2020 07:04:59 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4716 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFiG-0007aG-OG; Thu, 27 Aug 2020 07:05:02 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 5D581C9810B99A41AAEB;
- Thu, 27 Aug 2020 19:04:56 +0800 (CST)
+ id 1kBFiA-0007ZO-L0; Thu, 27 Aug 2020 07:04:58 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 4482742FB23E5C05DAF2;
+ Thu, 27 Aug 2020 19:04:51 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 27 Aug 2020
- 19:04:49 +0800
+ 19:04:41 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Gerd
- Hoffmann" <kraxel@redhat.com>, Li Qiang <liq3ea@gmail.com>
-Subject: [PATCH v3 10/10] hw/display/vga:Remove redundant statement in
- vga_draw_graphic()
-Date: Thu, 27 Aug 2020 19:03:11 +0800
-Message-ID: <20200827110311.164316-11-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Raphael
+ Norwitz" <raphael.norwitz@nutanix.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v3 05/10] hw/virtio/vhost-user:Remove dead assignment in
+ scrub_shadow_regions()
+Date: Thu, 27 Aug 2020 19:03:06 +0800
+Message-ID: <20200827110311.164316-6-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
@@ -32,9 +32,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
+Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:12:47
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:09:23
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -54,35 +54,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2020 11:05:09 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 11:05:00 -0000
 
 Clang static code analyzer show warning:
-hw/display/vga.c:1677:9: warning: Value stored to 'update' is never read
-        update = full_update;
-        ^        ~~~~~~~~~~~
+hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
+        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+        ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
 ---
- hw/display/vga.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/virtio/vhost-user.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 061fd9ab8f..836ad50c7b 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -1674,7 +1674,6 @@ static void vga_draw_graphic(VGACommonState *s, int full_update)
-         if (!(s->cr[VGA_CRTC_MODE] & 2)) {
-             addr = (addr & ~0x8000) | ((y1 & 2) << 14);
+diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+index d7e2423762..9c5b4f7fbc 100644
+--- a/hw/virtio/vhost-user.c
++++ b/hw/virtio/vhost-user.c
+@@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
+      */
+     for (i = 0; i < dev->mem->nregions; i++) {
+         reg = &dev->mem->regions[i];
+-        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
++        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+         if (fd > 0) {
+             ++fd_num;
          }
--        update = full_update;
-         page0 = addr & s->vbe_size_mask;
-         page1 = (addr + bwidth - 1) & s->vbe_size_mask;
-         if (full_update) {
 -- 
 2.23.0
 
