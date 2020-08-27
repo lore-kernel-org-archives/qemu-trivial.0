@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kBFiB-0004VT-7l
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:04:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51014)
+	id 1kBFiD-0004a3-MX
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2020 07:04:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFi7-0004QV-Fr; Thu, 27 Aug 2020 07:04:51 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4278 helo=huawei.com)
+ id 1kBFi8-0004S0-IU; Thu, 27 Aug 2020 07:04:52 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:55878 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kBFi5-0007YX-Mo; Thu, 27 Aug 2020 07:04:51 -0400
+ id 1kBFi6-0007YW-MO; Thu, 27 Aug 2020 07:04:52 -0400
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id AAF88638985D7F1FDEBD;
- Thu, 27 Aug 2020 19:04:46 +0800 (CST)
+ by Forcepoint Email with ESMTP id 7A12B32A161703756873;
+ Thu, 27 Aug 2020 19:04:45 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 27 Aug 2020
- 19:04:39 +0800
+ 19:04:24 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Peter
- Maydell" <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v3 04/10] target/arm/translate-a64:Remove redundant statement
- in disas_simd_two_reg_misc_fp16()
-Date: Thu, 27 Aug 2020 19:03:05 +0800
-Message-ID: <20200827110311.164316-5-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
+ Mammedov" <imammedo@redhat.com>, Li Qiang <liq3ea@gmail.com>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, <qemu-arm@nongnu.org>
+Subject: [PATCH v3 01/10] hw/arm/virt-acpi-build:Remove dead assignment in
+ build_madt()
+Date: Thu, 27 Aug 2020 19:03:02 +0800
+Message-ID: <20200827110311.164316-2-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
@@ -32,9 +34,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.35;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:09:23
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 05:22:41
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -54,40 +56,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2020 11:04:52 -0000
+X-List-Received-Date: Thu, 27 Aug 2020 11:04:53 -0000
 
 Clang static code analyzer show warning:
-target/arm/translate-a64.c:13007:5: warning: Value stored to 'rd' is never read
-    rd = extract32(insn, 0, 5);
-    ^    ~~~~~~~~~~~~~~~~~~~~~
-target/arm/translate-a64.c:13008:5: warning: Value stored to 'rn' is never read
-    rn = extract32(insn, 5, 5);
-    ^    ~~~~~~~~~~~~~~~~~~~~~
+hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
+    madt = acpi_data_push(table_data, sizeof *madt);
+    ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 ---
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
 Cc: qemu-arm@nongnu.org
 ---
- target/arm/translate-a64.c | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/arm/virt-acpi-build.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index c83bb85e4e..47cce160d8 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -13016,9 +13016,6 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
-     fpop = deposit32(opcode, 5, 1, a);
-     fpop = deposit32(fpop, 6, 1, u);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 91f0df7b13..f830f9b779 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     int madt_start = table_data->len;
+     const MemMapEntry *memmap = vms->memmap;
+     const int *irqmap = vms->irqmap;
+-    AcpiMultipleApicTable *madt;
+     AcpiMadtGenericDistributor *gicd;
+     AcpiMadtGenericMsiFrame *gic_msi;
+     int i;
  
--    rd = extract32(insn, 0, 5);
--    rn = extract32(insn, 5, 5);
--
-     switch (fpop) {
-     case 0x1d: /* SCVTF */
-     case 0x5d: /* UCVTF */
+-    madt = acpi_data_push(table_data, sizeof *madt);
++    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+ 
+     gicd = acpi_data_push(table_data, sizeof *gicd);
+     gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
 -- 
 2.23.0
 
