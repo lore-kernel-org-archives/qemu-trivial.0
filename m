@@ -1,101 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kCnpf-0003HY-QG
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Aug 2020 13:43:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56742)
+	id 1kCrCy-0003MW-LN
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Aug 2020 17:19:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kCnpe-0003HE-0Z; Mon, 31 Aug 2020 13:43:02 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:33631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kCnpc-0000np-8G; Mon, 31 Aug 2020 13:43:01 -0400
-Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MjSDU-1ktG7y2Mgs-00kxJ2; Mon, 31 Aug 2020 19:42:52 +0200
-Subject: Re: [PATCH] hw/register: Document register_init_block @memory_size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
-References: <20200707062308.4531-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <b9f49023-a053-cbee-62be-f57ad28fa142@vivier.eu>
-Date: Mon, 31 Aug 2020 19:42:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kCrCv-0003Jw-Rg; Mon, 31 Aug 2020 17:19:18 -0400
+Received: from mail-qk1-f193.google.com ([209.85.222.193]:34507)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kCrCu-0001Vb-Ar; Mon, 31 Aug 2020 17:19:17 -0400
+Received: by mail-qk1-f193.google.com with SMTP id w186so7631028qkd.1;
+ Mon, 31 Aug 2020 14:19:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UnOhsdclhNGw6uOGPI/gGfLGWUI4yxWuQ7GxNhBiXXY=;
+ b=OthKF68Qoz2N9jqnZrklL9ziytcoVRkIoMBVjE4xr8euND0rJ7sjA3Q/iV9avHabnZ
+ 8VG1WBdeOyDAqgFv44chG74oywNFBWSgi0KhZo3egXtXZbGmyjmI//mTngCXxPhUE1M7
+ G82GXeW1csECoZnCNrY149saPoWa41sNUTXPfnP8Bp2qZBMkaNyGJDTnN9hJfWQovkiS
+ ZvsK/gIG3RPaPv0d1oPhk+/aKbv+kTqFJNslRuIFrnhe2a02p9Ar7UWFgJLk0Vdae6iu
+ T4gpr0/7rgUw25GP0WyrxYs7FxEuAWMok+CwRlh6eLGSpRwDXNYLBvUaXjetwzkDRqpC
+ 6eEg==
+X-Gm-Message-State: AOAM533y6XvmxzTZNEHiOYEQFWvrBodeVEKKBJpEXlWum4dAC8BOuI7v
+ 4ByDNu2FbI7se8aGdanszn+of+nA9KlkJ3JqRT0=
+X-Google-Smtp-Source: ABdhPJxfa32tuC+xChS76Fw4Z0e72GsfsVgVnV/mr69cDCnsNgNsq0L1/+2yKzvHGOPR0EUSxSbhlnAA6MKhw/gPK/o=
+X-Received: by 2002:a37:498e:: with SMTP id w136mr2794711qka.187.1598908755128; 
+ Mon, 31 Aug 2020 14:19:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200707062308.4531-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HDrh5F6+mhvVWi8tyH0DhT5qwO0JIz4m7PMqErvQ41nYt8q2hlB
- RvbX3O//tMVN/Rthr9DcXqiX9zHGJ4JJ9VWf06uEDCqjgLTNA57G2Kew1iQjVjFKyZNZulO
- klHUo1qO+QO3aB99qlPaFRWdAkkgDZGxopybjcMakm15tdO4ehxYdzSkx2VwrR5vvuV6JQ7
- 59En9HMccXCoCzGqCZbWQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Bx6sb7OJHFI=:uze4XOkk0JcE+GSCkjDBcX
- BYBRpOyxe9pmZubgMgiaU6vWp/Qt/H2saXxD3azax1GsARHjfSfoH2Ob4nPwdoUzoCjh3wRZM
- KwyYh7U4hprVfQY0yox7f8BNiHPwPd6VRCTl41BBq11DDkFPfgT8UGL5YpW5GcKPr/Styra6M
- 0OCGE9E4/gDZRT3mCXj0T6Wfuzdfo4di/bJPJK0Mw2AVWs5ZCRlNIwdK4x0cHNyvbJ9Ld+0b/
- VkFiUXESo0pxwfesRNFRLpPNocefijvKKFYACkPVqQQK4dw6ju7HUKWKJqUwCQbo3yzB8gLH1
- etnV+pavCcmLDCixYcsDJS+Nj8KlsLfnurBrAUo9r9XfuDN/Mg1+ENesPStsnHQdBEFfcAb8H
- hLh2V7Z0y+9wbEIqPIS5xs4mdmimAV3H/Xj3LaVRjCvbqZwXcjIn9XR/xU8ZYVgOC1FEeFT8L
- 9U2riUWGUGLpid08BPC70WVJ7z1PLDbyOLA9y8TM2G70VbG4bCqn/VsoENfGQzbpudAoCjB3+
- Eh8/H3FQise1KYbA2gsIOVvT4NVAG8guqdr2olnyY2PJvV04PsruMcxCPF3sq7DwvTmPjO4DP
- j+fMFOorAG6RF4BLCWcOepHMrk7kitunHma4svgoYTsRdRoVvHUZ5ONFi6BBqRjF2tnbHUhba
- UPQW7AqAq1msTxoFMsGcSYJA5IijCISfBdsc+95UdJAINceMGuBwoG5cFrUcEAfweDmlxUVNG
- L0wIBD8y23QjPdVH2HsBfLVYVk/Xjg2nIIPViwPXaceOFLEAOHi16kKpvfBndpWJXggPfT2/+
- L+Mut1S6EtZRSo6kPUBpkRJ6EGuhPCeKx2W1Ih+ia7jY+KyDtirOihkGp2+BfYeUlx67Ngi
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 13:42:57
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.13,
+References: <20200827175520.32355-1-sw@weilnetz.de>
+In-Reply-To: <20200827175520.32355-1-sw@weilnetz.de>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 31 Aug 2020 21:59:53 +0200
+Message-ID: <CAAdtpL5VS8P2uhgToFHH=y58ZKK44UVVRHj71g7NgriN6O-1Fg@mail.gmail.com>
+Subject: Re: [PATCH] main-loop: Fix comment
+To: Stefan Weil <sw@weilnetz.de>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000060b5f105ae32f490"
+Received-SPF: pass client-ip=209.85.222.193;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-qk1-f193.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 17:16:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,33 +61,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Aug 2020 17:43:02 -0000
+X-List-Received-Date: Mon, 31 Aug 2020 21:19:18 -0000
 
-Le 07/07/2020 à 08:23, Philippe Mathieu-Daudé a écrit :
-> Document the 'memory_size' argument of register_init_block().
-> 
-> Fixes: a74229597e ("register: Add block initialise helper")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/register.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/hw/register.h b/include/hw/register.h
-> index 5d2c565ae0..fdac5e69b5 100644
-> --- a/include/hw/register.h
-> +++ b/include/hw/register.h
-> @@ -181,6 +181,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr, unsigned size);
->   * @data: Array to use for register data, must already be allocated
->   * @ops: Memory region ops to access registers.
->   * @debug enabled: turn on/off verbose debug information
-> + * @memory_size: Size of the memory region
->   * returns: A structure containing all of the registers and an initialized
->   *          memory region (r_array->mem) the caller should add to a container.
->   */
-> 
+--00000000000060b5f105ae32f490
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Applied to my trivial-patches branch.
+Le jeu. 27 ao=C3=BBt 2020 19:55, Stefan Weil <sw@weilnetz.de> a =C3=A9crit =
+:
 
-Thanks,
-Laurent
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+---
+>  include/qemu/main-loop.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+> index 8e98613656..d6892fd208 100644
+> --- a/include/qemu/main-loop.h
+> +++ b/include/qemu/main-loop.h
+> @@ -52,7 +52,7 @@ int qemu_init_main_loop(Error **errp);
+>   * repeatedly calls main_loop_wait(false).
+>   *
+>   * Main loop services include file descriptor callbacks, bottom halves
+> - * and timers (defined in qemu-timer.h).  Bottom halves are similar to
+> timers
+> + * and timers (defined in qemu/timer.h).  Bottom halves are similar to
+> timers
+>   * that execute immediately, but have a lower overhead and scheduling th=
+em
+>   * is wait-free, thread-safe and signal-safe.
+>   *
+> --
+> 2.28.0
+>
+>
+
+--00000000000060b5f105ae32f490
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Le jeu. 27 ao=C3=BBt 2020 19:55, Stefan Weil &lt;<a hr=
+ef=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt; a =C3=A9crit=C2=A0:<br>=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
+eft:1px #ccc solid;padding-left:1ex">Signed-off-by: Stefan Weil &lt;<a href=
+=3D"mailto:sw@weilnetz.de" target=3D"_blank" rel=3D"noreferrer">sw@weilnetz=
+.de</a>&gt;<br></blockquote></div></div><div dir=3D"auto"><br></div><div di=
+r=3D"auto"><span style=3D"font-family:sans-serif;font-size:13.696px">Review=
+ed-by: Philippe Mathieu-Daud=C3=A9 &lt;</span><a href=3D"mailto:f4bug@amsat=
+.org" style=3D"text-decoration:none;color:rgb(66,133,244);font-family:sans-=
+serif;font-size:13.696px">f4bug@amsat.org</a><span style=3D"font-family:san=
+s-serif;font-size:13.696px">&gt;</span><br></div><div dir=3D"auto"><br></di=
+v><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
+x">
+---<br>
+=C2=A0include/qemu/main-loop.h | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h<br>
+index 8e98613656..d6892fd208 100644<br>
+--- a/include/qemu/main-loop.h<br>
++++ b/include/qemu/main-loop.h<br>
+@@ -52,7 +52,7 @@ int qemu_init_main_loop(Error **errp);<br>
+=C2=A0 * repeatedly calls main_loop_wait(false).<br>
+=C2=A0 *<br>
+=C2=A0 * Main loop services include file descriptor callbacks, bottom halve=
+s<br>
+- * and timers (defined in qemu-timer.h).=C2=A0 Bottom halves are similar t=
+o timers<br>
++ * and timers (defined in qemu/timer.h).=C2=A0 Bottom halves are similar t=
+o timers<br>
+=C2=A0 * that execute immediately, but have a lower overhead and scheduling=
+ them<br>
+=C2=A0 * is wait-free, thread-safe and signal-safe.<br>
+=C2=A0 *<br>
+-- <br>
+2.28.0<br>
+<br></blockquote></div></div></div>
+
+--00000000000060b5f105ae32f490--
 
