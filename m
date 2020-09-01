@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD33E-0001Vc-N2
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:58:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45032)
+	id 1kD34e-0005Lu-VL
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:59:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD33D-0001Re-AE; Tue, 01 Sep 2020 05:58:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:47069)
+ id 1kD34d-0005KP-Ia; Tue, 01 Sep 2020 05:59:31 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:53063)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD33B-0004FJ-Dj; Tue, 01 Sep 2020 05:58:02 -0400
+ id 1kD34b-0004T6-Mb; Tue, 01 Sep 2020 05:59:31 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MoNu2-1kxOLy2VU8-00op6x; Tue, 01 Sep 2020 11:57:54 +0200
-Subject: Re: [PATCH v3 04/10] target/arm/translate-a64:Remove redundant
- statement in disas_simd_two_reg_misc_fp16()
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MTRIg-1k131S21lM-00TjQv; Tue, 01 Sep 2020 11:59:14 +0200
+Subject: Re: [PATCH v3 05/10] hw/virtio/vhost-user:Remove dead assignment in
+ scrub_shadow_regions()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com, 
- pannengyuan@huawei.com, qemu-arm@nongnu.org,
+Cc: zhang.zhanghailiang@huawei.com, "Michael S. Tsirkin" <mst@redhat.com>,
+ pannengyuan@huawei.com, Raphael Norwitz <raphael.norwitz@nutanix.com>,
  Euler Robot <euler.robot@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
- <20200827110311.164316-5-kuhn.chenqun@huawei.com>
+ <20200827110311.164316-6-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b4135c25-4158-ebe8-4199-b2b9669c5209@vivier.eu>
-Date: Tue, 1 Sep 2020 11:57:53 +0200
+Message-ID: <ef4df6da-ce4d-a834-7fa2-9b070e85d045@vivier.eu>
+Date: Tue, 1 Sep 2020 11:59:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200827110311.164316-5-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200827110311.164316-6-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HijNUrbLIJSVgO0hHbHN0j4hlj6U5z/NaZPZcc58Jx8wIFdyT3r
- DA+aFjjdWDzfiOTSHfqnzs2rKfJ42Yhmuxn9/EFkSs/XivaL1oS8W5TA2CkvGCLcZcYkjAx
- 3pOx4bJ68LNNtz0m4yYSge6CdT1tJmJIEY1fgwk9awI4ZEj86KSFsGcOtbAz+J56PbCGkKw
- W1I4ORoZd2XhnGEBthP+Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zpQCU3r4ZNU=:tT1t7s6AWT0AYqx/QKgVRW
- 3KeT8qLQYYOZCzjumloy9R1+phhOpnDEC7VaIOAdjRTWwtsEivMRopdblWx/Q0NcJcLasWaGg
- Q/9lmGbaizfvR6xE2G/C+FXPHUlxWHMy5YCwgW0iyNaHWbDQn97na5PvxxyRefQfAQIQssjdz
- 9pMi2JTmhEVI5oxb8PM7Z2YC4vh+wZAY8ND2s76NzFB9jWR5MtsgMAhasVe2+/0/+0qw7iZD3
- kv+8HIcegfQDZ4a8JfDGcdmfjHG1UDUiYDyZfVT4QTEPewp2E7v87Fx8DA+Iy2wMJR+oCBWCn
- 3w4u8IFt+9rOA0DfvMVNkyP0m2/q7SuDGXL/AGOwofS2SsZGr9F9/8oRa442EMjTMY+MweEar
- NA9R69vT5To5E2Vh2uzl4hZLBXWdgf4OITQwoz8k9g9v1fmgRj6WzHVWdpwf1zW88a1l/Qr35
- QygDqULlWQHRhUFHnV5f2zsfiLYgseZcnoYQf6jZV1qJTuOaSqFVi/SFnZFaaHGlOhuzmusN8
- yAqxVryasGFzTRphndD43lRb0S9aZAvdWKalWXYtaiZ1GhIVeybMn8KJJZh8/hL3EtmiCrSa9
- NXVrLDjP7DP/RiT5W95StncaEUYz87jevyjxRq/9XPRl1wETHapdIGUxOx41Dslj1RN/bWL2z
- /FreOZmYrrDA+DSF45vcBIE7BalCIPP5D9gilWrBe1XChTTI9PUFqlhoXxzx90vObZdVDzbHN
- kUBvpLhljXJ+T+B9g3OV4pi7jAn+7ANqJ8ffq7kWgCIyCbKBfgZHw0D0fZyU1vbzgL66ouW/a
- X87/DXsmGeYi5UOJUG9UmLewvfSWZRb1DEoesj+JFW+jjmOCcRSHQxS/tU9of5pnqMnis/g
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ds7Uu46sB+KomZkRFrjwYOzMweJAWscMYLm26l5u5gznVYAVFNH
+ y0Ws6qzFnZwNZw9dom72DyNkuVSGhqpkYIkaImPp8Rprb+LAYyMwSG7SI8jJW6N0MgLA1Co
+ dIlj8/44WEsqp1N1UvxMiJmeLlDKUkTJm21oD1ilSAqVq1f4F8TEiuJjE/1LiP/1Q/TF03d
+ D8hnNmmnQwCkC4lESwJlQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qqibe/VkjZE=:4L0DNvWE89Yy4WbRwyo/r5
+ idw7rZvpMhM1sgz/hmKV0gT96ENMp2XTC0eyMkxtaIzGo2BNNtpuE7WBSEGjC5Gq2Hdg3byyk
+ /Jwe1fbe6g8sDide5Nbbpw3ERPpjn0eYswC76m5KGlOfcj2mYLfNCMCDrxmcB6pBfceByd9Wu
+ O1HPROfzrxzxeH+Bk7xvW16545rlIaBNu5L0XhoWoTof6P3aFUzDd3zvtu91aH8+iLxFxrnqx
+ 6+e0dYFvW0OjlfV5CSNyhU/zcJxmv9QuIbbQkg0slMey0dAO6xCr2EJA6FMTrAdBfuIM+tBzJ
+ k0V4wBFBx2yZtXf4t5E8GP8k2Yo535B2cCEqDroSiQb++6bAljuWVDCKM7QLosa8Li+0ipTX8
+ OmNKI1qwEv6Pbwc3oN0xAaddXdB4FvydQurMh3JQGATDfjm18j9SBnQ+HtG8pLftRIdsLcybS
+ Lib0CGIURJ+S3aDRgocYK1Fmug5RHwDAg4Fe1QrkiXSd69tuede+aMl3nKAVlfFib6HVWFzPV
+ o74EMWGkvsTE/TBSKq2i+EXs/BJSgtdt1U0wpDYA+0JwAzGP3SefSV0LrMAT0mOgGDlWlUeFS
+ cBRifkBZ7SeiDZgPGh5JHc0Ds8pdi3oK70C7DIXNRG/251Ey9Uja1kCHDmwR6yaovE1KRY79+
+ YptHxHN+kISSh+TcgNXjhqy6gt4I/t92kwno1CVeV0hutzUCeiXHuES1geGehsLOEn1sAOpUL
+ MEbnN/ndw6volZoCplxLTR6t4zQRYQBl22n1ZqulTtWYeWhhH8cEwsrkVv1c+CrntLr1Vmc9C
+ rzFFhNdeGoiotlley3J+zyN4RJ/yYOJc/88tVQm9GXuPItswwv9Uh1znhUYdTRfOJ71/GcU
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:47:22
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:59:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -112,41 +112,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:58:03 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:59:31 -0000
 
 Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> target/arm/translate-a64.c:13007:5: warning: Value stored to 'rd' is never read
->     rd = extract32(insn, 0, 5);
->     ^    ~~~~~~~~~~~~~~~~~~~~~
-> target/arm/translate-a64.c:13008:5: warning: Value stored to 'rn' is never read
->     rn = extract32(insn, 5, 5);
->     ^    ~~~~~~~~~~~~~~~~~~~~~
+> hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
+>         mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>         ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
 > ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
 > ---
->  target/arm/translate-a64.c | 3 ---
->  1 file changed, 3 deletions(-)
+>  hw/virtio/vhost-user.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index c83bb85e4e..47cce160d8 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -13016,9 +13016,6 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
->      fpop = deposit32(opcode, 5, 1, a);
->      fpop = deposit32(fpop, 6, 1, u);
->  
-> -    rd = extract32(insn, 0, 5);
-> -    rn = extract32(insn, 5, 5);
-> -
->      switch (fpop) {
->      case 0x1d: /* SCVTF */
->      case 0x5d: /* UCVTF */
+> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+> index d7e2423762..9c5b4f7fbc 100644
+> --- a/hw/virtio/vhost-user.c
+> +++ b/hw/virtio/vhost-user.c
+> @@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
+>       */
+>      for (i = 0; i < dev->mem->nregions; i++) {
+>          reg = &dev->mem->regions[i];
+> -        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+> +        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
+>          if (fd > 0) {
+>              ++fd_num;
+>          }
 > 
 
 Applied to my trivial-patches branch.
