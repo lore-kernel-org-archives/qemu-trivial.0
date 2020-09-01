@@ -1,25 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2a3-0003we-3N
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:27:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38182)
+	id 1kD2bq-0006ZI-Sn
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:29:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2a1-0003u4-49; Tue, 01 Sep 2020 05:27:53 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:56433)
+ id 1kD2bp-0006Wc-0U; Tue, 01 Sep 2020 05:29:45 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:54607)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2Zz-0000Ot-Ay; Tue, 01 Sep 2020 05:27:52 -0400
+ id 1kD2bn-0000XU-A7; Tue, 01 Sep 2020 05:29:44 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N6bsG-1keDgR14jG-0182Jm; Tue, 01 Sep 2020 11:27:33 +0200
-Subject: Re: [PATCH 0/7] block: Use definitions instead of magic values
+ 1MHX3X-1kQX7f2fuD-00DbpI; Tue, 01 Sep 2020 11:29:34 +0200
+Subject: Re: [PATCH] hw/net/xilinx_axienet: Remove unused code
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20200814082841.27000-1-f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20200814133007.16850-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
-Date: Tue, 1 Sep 2020 11:27:29 +0200
+Message-ID: <5c956447-cacc-49f4-6eea-353cf962bf75@vivier.eu>
+Date: Tue, 1 Sep 2020 11:29:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200814082841.27000-1-f4bug@amsat.org>
+In-Reply-To: <20200814133007.16850-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uBjerWWhZWgGSVDS4OhqFnDa+CGQa4pZJbTOVEXjGapqa03volP
- veRTr3xOr+b2qTLJepGU1NLsBIqwQGa6GmTgGABJGM5a2O8WlxDEcxP1a0A2kCro4dueScz
- Cr5bioNZQg9c9iqzZRueD10D84A1NQ1MFJVgrUtdoG2Em42E1l+LeD80+uxeKOOAJJRQsdv
- PW0I0TGYY9O8PCFreLjrw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:MsSHszpiIHc=:45yR1aVIv+HZw7jes9WAjm
- n69LVdaSDoPwd3n9TevVTlKfakmswRtn6OTiy9jtl51CajEX+lPJpp7FQDlMUGiJs3WASV9i5
- gIwmJk5l8hURZuNsRtTiclsLi9b+q4ZCx4YQBB/FpBeWQbRdXGWuI7xN67kgu1BepagMKeYVH
- 8IU2TZ69iPH9HZ2MDLmxQmJLrGnVJ7tzRHy5eE5Nhqv8Z+Qn3/nH4vWI72uqXa+ch3RG4R+De
- f4T4LaXem1kg+u7EaA1hwUvOrp/eTDmZchAqVI88LLv+Mi7mRezQNdswe6C2yxEKGvx3R5xjY
- AeZNyJq2d8qk9NXv7bswmF7U84uwKYtowqTWF4UlvaDW3UUI/QqF41OliDaCX8yY3u/Azlx8r
- JKBNezS2RwaaYqTq8D/KENaz5m37aTdbdyQMjMVYeW7YyKLN6zIAimx7f4CX73iMFIaPGlpoj
- ksjHQ3uh5epOJZM3kVYO8Sox5wB/zydDdOf5hJYTh9Y9QM9xKMCYAR1918QwPoyUil/Am2+u/
- MZCrnXLYP0Bf1zGiGTAPUuT/Nm2CTqsWmuciIAKve2OncvOjl7WyakcQCtSmAPqy8CbG/52U7
- 5BriGerzYKOujBFXgSq+ohewp8Wo1O2AUJaLk8Df6y+bk9K/g2RcAhvr3cG9FQrm+nJHTDXIw
- 4njtU1KWwzLsUrLBhEWZriVhOJ0Sa+NdssF8IGp/sywIsgZV5DiH6otOfMJ3py94XKaXTMFbs
- xaDW58ISmA5Kvd+sOIV/WUHuqigiHPbMGJMBtIIUHFDfiP9h+2WA+BemMzuvZ4qsxuUxbkoir
- 26TAVSKs/7ln7Hmmc/BM2XBaRVcd59zzG0ZL2LpfmqiSuCyjcrnEKRwwJlMVJaZfmF/AAwG
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:au9EBG+dZWST5gYmy5WYLudAXOt/MI4DUKGUIatfuLBlyyGwu6S
+ QPL13zyiSBP9ekoib1a6JUuOAkVOcVTW0hP54TQQrtBPIBjYasYQE0KqkmdVm2VibgteItC
+ b++dQci2yEgqFD0aVcRZurGiC2uuzzWKxxVM7hmOOk9GKWZ2mA3o+/7VmIoD1A44SeAyPNf
+ iPMkBeFjwvZirOuRyzfnw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZnPYnWm8fYQ=:CXf6vhECw+ijNKzteokOW2
+ ct5lTpL5HKdgGTfvkL8xaMFh6zgnEsoUye1knui3p5fFHp0E1U5t+Z5PyR2JlvseduO31p0v8
+ l2nCbSMY31iYG67OQrSaQHCJiyImDvsFtDJUotqMPJ7EbWBh9NFJwUmyGrUBmUQgGWFIA6Qpn
+ 55SAv67fCPDEXRv7PZLqYa+Y6LOlhjx8pNZRoWP+hjBC6MVm08rHIZ+nqw5QS7st3dRr4rlRC
+ OOID7mBsbsmkXBPgMIEoqTqJLU9ZpOFtxXrpxQr1EWcYJ057nWoVeOppSW/zqvEtbpRvgUmC6
+ HX7fGNcDfSxiiLc3X9o3eseC4bGYXTY5oHyqwTJ3eM4h8+7oZG+kl3gwpKtW6wvs9M6Dj96Ev
+ QfILn7Wcu684lAab8gw7qPWZrSV7WyGdKJ06QvLPN5UKAe3shLfgSL5G/q69p4OFW0/473dXN
+ WOGCqG0qbYS8DK+SQC3U8OGQ6cZHCHOCy92Em8GxrjistW8aYxYHDWcYC3QRwLSXny6/nAJcn
+ 36/J5sBpRWO/ZJzAo/tpUxFlMYkKBuPqjKYyc1UFw21gJXnLcR/3WcSTzQdUdUtALka9n3lxh
+ qi59j6R7uzVio3Rddj9JCmJ/plQvB/0mt++KqR2aFh5fVjHO8GbJg1XOTKQ750cOVgdMsEBFc
+ O866O/cfzd0t47EeP0tq9BEXYyQu4Z/VKjUD7A2qDr+IVi66lqPyEui27EHpCwywHI0pmD81Q
+ n7TlUx20OkrKmbgOMxYH5FcdSQqC8hSEcU7C5hwWsxv4VE05SuEtDkF7VSQ9+DiHin0yZeLUN
+ L6Q4BVzVeV8TXZUBK2hAGg+lfaqYB75pUy4ecdvLkp2SVx+bGrLGiUhWs3wFChS9+nOlf31
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:06:41
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -111,39 +110,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:27:53 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:29:45 -0000
 
-Le 14/08/2020 à 10:28, Philippe Mathieu-Daudé a écrit :
-> Trivial block patches:
-> - Fix a typo
-> - Replace '1 << 30' by '1 * GiB' in null-co
-> - Replace 512 by BDRV_SECTOR_SIZE when appropriate.
+Le 14/08/2020 à 15:30, Philippe Mathieu-Daudé a écrit :
+> Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
+> definition is unused.  Remove unused code.
 > 
-> Philippe Mathieu-Daudé (7):
->   block/null: Make more explicit the driver default size is 1GiB
->   hw/ide/core: Trivial typo fix
->   hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
->   hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE
->   hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE
->   hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
->   hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/net/xilinx_axienet.c | 23 -----------------------
+>  1 file changed, 23 deletions(-)
 > 
->  block/null.c        |  4 +++-
->  hw/ide/ahci.c       |  5 +++--
->  hw/ide/atapi.c      |  8 ++++----
->  hw/ide/core.c       | 25 +++++++++++++------------
->  hw/ide/pci.c        |  2 +-
->  hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
->  6 files changed, 47 insertions(+), 41 deletions(-)
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 1e48eb70c9..2e89f236b4 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -54,7 +54,6 @@
+>       TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
+>  
+>  /* Advertisement control register. */
+> -#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
+>  #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  */
+>  #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex */
+>  #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex */
+> @@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
+>  }
+>  
+>  struct MDIOBus {
+> -    /* bus.  */
+> -    int mdc;
+> -    int mdio;
+> -
+> -    /* decoder.  */
+> -    enum {
+> -        PREAMBLE,
+> -        SOF,
+> -        OPC,
+> -        ADDR,
+> -        REQ,
+> -        TURNAROUND,
+> -        DATA
+> -    } state;
+> -    unsigned int drive;
+> -
+> -    unsigned int cnt;
+> -    unsigned int addr;
+> -    unsigned int opc;
+> -    unsigned int req;
+> -    unsigned int data;
+> -
+>      struct PHY *devs[32];
+>  };
+>  
 > 
 
 Applied to my trivial-patches branch.
 
-Except the following ones that have comment from Kevin:
-
-[PATCH 1/7] block/null: Make more explicit the driver default size is 1GiB
-[PATCH 3/7] hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
-
 Thanks,
 Laurent
+
 
