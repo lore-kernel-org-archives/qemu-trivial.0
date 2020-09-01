@@ -1,80 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6lD-0001mj-PR
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 09:55:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50514)
+	id 1kD6xI-0002Ox-Gr
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:08:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD6lB-0001hu-Ty; Tue, 01 Sep 2020 09:55:41 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:40704)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD6lA-0001iY-7m; Tue, 01 Sep 2020 09:55:41 -0400
-Received: by mail-wm1-x343.google.com with SMTP id v4so1243414wmj.5;
- Tue, 01 Sep 2020 06:55:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yYj87MKllDEVc9OuExPdXbUKOlq8/L2fn2QYZMR3YcM=;
- b=mjFSQNT17rmCxkZb8+rNH+MnVqQLcrgPvCl3jsha8w3SCSZpY1dwUqqB6pP25n/8f/
- 4k/HDhOUBFD3xDEMS1V5tpSwPCLj7+bZY/yNxRsqpcwTt71I05qK5q96BCChPm6fvyod
- L57pQnbYtxojbDwcpiy3XAUyRrEzVoZgwaCCf7aeYB5YU80wWcUZuc4ue2glCxsOBAjV
- oGp3qpP7tJd7p8i+iMQBYIQgJR30ITxaAFVW7+vkdMA1+teXpyRKgBGYCXc58GaDKeRV
- ri9fz5CI+Ngk/xz5JI2RvbqnTtQTB7uDoTdshniH5jYPJj7frpH3z1XaYJkNTs964CnM
- Obww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yYj87MKllDEVc9OuExPdXbUKOlq8/L2fn2QYZMR3YcM=;
- b=GmjLSDPUjosTDQmpej5htRXn5cLOycffw/4Nr3rVJiWx8SajWKzQDHvKbTzPVYnmPm
- BAHdN3AO1J56t7SBga/PemVi8qNZlewBeG6D3bQyv60VCsZlv2kd6emy05TKcBdebKa9
- Sd2SgSIVXFLmQ2NM5lYwKN06zTNU4ktCsBH2xLHSH29LUZ8a43vsbFedaoBhr9JlCdft
- AAvVDhEQ/fbQfzjZaI2ZJjjM9mYAywFQROKxhqqsX+Ggs0cC47I3O6NJOR8Jf5OFtT1G
- C6YcEfcgYZtSHNDdLxNVA8r3PLzht2BK92qipGEiXi86/oxhg7s6AHgy2RCvwIDjCBTF
- 1M5Q==
-X-Gm-Message-State: AOAM531TsN9aZw6ECbo6o/nax4U8Db/XONgPX/07H8CfGZNGsvcR8Hxj
- jk3Sl3fg0DKZLRTADap4BdQ=
-X-Google-Smtp-Source: ABdhPJyxkYSdPuGkUeLF4BiMRf2NIC5TaeTCrIXR4OnV/GZmFHy2KEQp7NVe6pQ90WNGk0tGQ9vigw==
-X-Received: by 2002:a1c:2646:: with SMTP id m67mr1890817wmm.177.1598968537867; 
- Tue, 01 Sep 2020 06:55:37 -0700 (PDT)
-Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id q12sm2325018wrn.94.2020.09.01.06.55.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Sep 2020 06:55:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/7] block: Use definitions instead of magic values
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20200814082841.27000-1-f4bug@amsat.org>
- <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6bb8b9a1-10fb-bb62-f895-f3d7164339de@amsat.org>
-Date: Tue, 1 Sep 2020 15:55:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kD6xG-0002LS-8T; Tue, 01 Sep 2020 10:08:10 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:39311)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kD6xE-0003JX-5l; Tue, 01 Sep 2020 10:08:09 -0400
+Received: from localhost.localdomain ([82.252.135.186]) by
+ mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MVNEv-1k2tnu1dFn-00SNhy; Tue, 01 Sep 2020 16:08:05 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 00/44] Trivial branch for 5.2 patches
+Date: Tue,  1 Sep 2020 16:07:19 +0200
+Message-Id: <20200901140803.888852-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-2.13,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:RGIc3sa/JWZM2qYzwVzNYZXg3mVeOjNlwqq7dImU4JceEnhREzE
+ Ei73g6gun4QIjXajw5HyucZxbzHqJRly+VudDHo4+aEMlLznlNjHHT1aDH5S0KWFLGPzipZ
+ +CG4NZUD4rtBdxHR0z96Aa2rniycbawr9xfJBwrAeevmV4WYpNi8eCk4IskwDyjBEdWiYTh
+ CF778yPbgrVhSi67amLww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9G35pnsnk74=:09QCe16KISBF2cOQTidD0m
+ pYk9cEdkiSX7GQ/8wgsFJX31BEELGUZRb8OfIJ2nL0DWf1LrDxuQYKKcZTcMcohfrPJX5p0E4
+ tYICaE4qm3Isu0olphbPB8/xi38dffCPv/I58Lcj1SwOAgHUx8x4WzuboOXVUDF7XhOEL8/s/
+ 4TSeitbRgdb5QSpgObCMcOZ7kpI2HCsJS6vco631XdEsnXCk1FsYYSemRj5C20j6RuG83xsI6
+ q9++Pa2NJuSiVp0jK2nbB1g71DlRJTSfW+YKkwGZZgLqjijQ72coHbM+loEHrKRs4E4c3pvEY
+ uYm6sRiFs3n07Iz4KnqFIqXzmshDsYLAdCN7lBm2HegDTOY/68BuDyw5crf5/5l641oRQ6X7G
+ h8iCykmU0o/gOMmGrKOMGUYgdEGCZY8e+/dKtuCcSzD7wqHW/1XziRGDojhwuMMmDa0uS8d17
+ 6yFzgIQOR1PAJToo7q4zPS7XrrvJ433Uw9QYqTOdVAGp9VcldnS3yTzj8bzUWxue93w9YiSPj
+ hTPpphdprhySM0Et1Rh1054Acte7Q+fAC1DJZ/j5109JmeR4MTpykuZyazHLb3riKOAujZhGX
+ ERzRKqhg7oeBiA02QN2OhfOhUeIUJOJBMUcegGhjWKQ/ZxTaFa+RuTD+/wYJ+4ONNkA8wei9y
+ KhSuYmMY6QmEmFv78j3pcz9GeHS0oRIpYfGUWTvzXiG/t3K0h4IFKmLvbTbr4v6ZduwFScq6y
+ bCA+gQa3/iDGt/17rhYfRr9Vd8lpolRD2SwW1C3kWZE6Q205oIDAcBmeDHTHzb+mIH7fiLNT2
+ F7RvMTw1KipZjZaocSdjnuAHdlFi7NHiVB5TRQ9dr2RRboQov6BUHbblkjmjbxcGpoN5rZY
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:08:06
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,41 +62,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 13:55:42 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:08:10 -0000
 
-On 9/1/20 11:27 AM, Laurent Vivier wrote:
-> Le 14/08/2020 à 10:28, Philippe Mathieu-Daudé a écrit :
->> Trivial block patches:
->> - Fix a typo
->> - Replace '1 << 30' by '1 * GiB' in null-co
->> - Replace 512 by BDRV_SECTOR_SIZE when appropriate.
->>
->> Philippe Mathieu-Daudé (7):
->>   block/null: Make more explicit the driver default size is 1GiB
->>   hw/ide/core: Trivial typo fix
->>   hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
->>   hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE
->>   hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE
->>   hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
->>   hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE
->>
->>  block/null.c        |  4 +++-
->>  hw/ide/ahci.c       |  5 +++--
->>  hw/ide/atapi.c      |  8 ++++----
->>  hw/ide/core.c       | 25 +++++++++++++------------
->>  hw/ide/pci.c        |  2 +-
->>  hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
->>  6 files changed, 47 insertions(+), 41 deletions(-)
->>
-> 
-> Applied to my trivial-patches branch.
-> 
-> Except the following ones that have comment from Kevin:
-> 
-> [PATCH 1/7] block/null: Make more explicit the driver default size is 1GiB
-> [PATCH 3/7] hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
-
-Thanks!
-
-Phil.
+The following changes since commit 39335fab59e11cfda9b7cf63929825db2dd3a3e0=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-5.2-pul=
+l-=3D=0D
+request' into staging (2020-08-28 22:30:11 +0100)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request=
+=0D
+=0D
+for you to fetch changes up to 1eef4ba6be30f8b95c8cda1bcb50a176d680a34d:=0D
+=0D
+  docs/system: Fix grammar in documentation (2020-09-01 12:09:30 +0200)=0D
+=0D
+----------------------------------------------------------------=0D
+Pull request trivial patches 20200901=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Chen Qun (10):=0D
+  hw/arm/virt-acpi-build:Remove dead assignment in build_madt()=0D
+  hw/arm/omap1:Remove redundant statement in omap_clkdsp_read()=0D
+  target/arm/translate-a64:Remove dead assignment in=0D
+    handle_scalar_simd_shli()=0D
+  target/arm/translate-a64:Remove redundant statement in=0D
+    disas_simd_two_reg_misc_fp16()=0D
+  hw/virtio/vhost-user:Remove dead assignment in scrub_shadow_regions()=0D
+  hw/net/virtio-net:Remove redundant statement in=0D
+    virtio_net_rsc_tcp_ctrl_check()=0D
+  vfio/platform: Remove dead assignment in vfio_intp_interrupt()=0D
+  usb/bus: Remove dead assignment in usb_get_fw_dev_path()=0D
+  hw/intc: fix default registers value in exynos4210_combiner_read()=0D
+  hw/display/vga:Remove redundant statement in vga_draw_graphic()=0D
+=0D
+Greg Kurz (1):=0D
+  mailmap: Add entry for Greg Kurz=0D
+=0D
+Han Han (1):=0D
+  docs: Fix broken links=0D
+=0D
+Kenta Ishiguro (1):=0D
+  hw/i386/kvm/ioapic.c: fix typo in error message=0D
+=0D
+Liao Pingfang (8):=0D
+  target/arm/kvm: Remove superfluous break=0D
+  target/ppc: Remove superfluous breaks=0D
+  scsi: Remove superfluous breaks=0D
+  vnc: Remove the superfluous break=0D
+  block/vmdk: Remove superfluous breaks=0D
+  hw: Remove superfluous breaks=0D
+  target/sh4: Remove superfluous breaks=0D
+  target/cris: Remove superfluous breaks=0D
+=0D
+Mike Gelfand (1):=0D
+  linux-user: Add strace support for printing OFD fcntl operations=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (17):=0D
+  hw/register: Document register_init_block @memory_size=0D
+  hw/isa/isa-superio: Fix IDE controller realization=0D
+  stubs/cmos: Use correct include=0D
+  hw/core/sysbus: Fix a typo=0D
+  hw/core/sysbus: Assert memory region index is in range=0D
+  Revert "mailmap: Update philmd email address"=0D
+  .mailmap: Update Paul Burton email address=0D
+  hw/i2c: Fix typo in description=0D
+  util/qemu-timer: Fix typo in description=0D
+  util/vfio-helpers: Fix typo in description=0D
+  hw/ide/core: Trivial typo fix=0D
+  hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE=0D
+  hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE=0D
+  hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE=0D
+  hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE=0D
+  hw/net/xilinx_axienet: Remove unused code=0D
+  util/vfio-helpers: Unify trace-events size format=0D
+=0D
+Stefan Weil (2):=0D
+  main-loop: Fix comment=0D
+  docs/system: Fix grammar in documentation=0D
+=0D
+Thomas Huth (2):=0D
+  hw/net/can: Add missing fallthrough statements=0D
+  docs/system/target-avr: Improve the AVR docs and add to MAINTAINERS=0D
+=0D
+Tianjia Zhang (1):=0D
+  qemu-options.hx: Fix typo for netdev documentation=0D
+=0D
+ .mailmap                        |  9 ++++---=0D
+ MAINTAINERS                     |  1 +=0D
+ block/vmdk.c                    |  3 ---=0D
+ docs/amd-memory-encryption.txt  |  4 +--=0D
+ docs/pvrdma.txt                 |  2 +-=0D
+ docs/system/build-platforms.rst |  6 ++---=0D
+ docs/system/target-avr.rst      | 47 ++++++++++++++++++++-------------=0D
+ hw/arm/omap1.c                  |  1 -=0D
+ hw/arm/virt-acpi-build.c        |  3 +--=0D
+ hw/block/pflash_cfi01.c         |  1 -=0D
+ hw/core/sysbus.c                |  3 ++-=0D
+ hw/display/cirrus_vga.c         |  1 -=0D
+ hw/display/qxl-logger.c         |  2 --=0D
+ hw/display/vga.c                |  1 -=0D
+ hw/gpio/max7310.c               |  3 ---=0D
+ hw/i386/intel_iommu.c           |  1 -=0D
+ hw/i386/kvm/ioapic.c            |  2 +-=0D
+ hw/ide/ahci.c                   |  5 ++--=0D
+ hw/ide/atapi.c                  |  8 +++---=0D
+ hw/ide/core.c                   |  2 +-=0D
+ hw/ide/pci.c                    |  2 +-=0D
+ hw/input/pxa2xx_keypad.c        | 10 -------=0D
+ hw/intc/armv7m_nvic.c           |  1 -=0D
+ hw/intc/exynos4210_combiner.c   |  1 -=0D
+ hw/isa/isa-superio.c            |  2 +-=0D
+ hw/net/can/can_sja1000.c        |  2 ++=0D
+ hw/net/lan9118.c                |  2 --=0D
+ hw/net/virtio-net.c             |  1 -=0D
+ hw/net/xilinx_axienet.c         | 23 ----------------=0D
+ hw/scsi/scsi-disk.c             | 44 +++++++++++++++---------------=0D
+ hw/usb/bus.c                    |  4 +--=0D
+ hw/usb/ccid-card-emulated.c     |  1 -=0D
+ hw/vfio/platform.c              |  2 +-=0D
+ hw/virtio/vhost-user.c          |  2 +-=0D
+ include/hw/i2c/i2c.h            |  2 +-=0D
+ include/hw/register.h           |  1 +=0D
+ include/qemu/main-loop.h        |  2 +-=0D
+ linux-user/strace.c             | 12 +++++++++=0D
+ qemu-options.hx                 |  2 +-=0D
+ scsi/utils.c                    |  4 ---=0D
+ stubs/cmos.c                    |  2 +-=0D
+ target/arm/kvm64.c              |  1 -=0D
+ target/arm/translate-a64.c      |  7 ++---=0D
+ target/cris/translate.c         |  7 +++--=0D
+ target/cris/translate_v10.c.inc |  2 --=0D
+ target/ppc/misc_helper.c        |  5 ----=0D
+ target/sh4/translate.c          |  3 ---=0D
+ ui/vnc-enc-tight.c              |  1 -=0D
+ util/qemu-timer.c               |  2 +-=0D
+ util/trace-events               |  6 ++---=0D
+ util/vfio-helpers.c             |  4 +--=0D
+ 51 files changed, 112 insertions(+), 153 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D
 
