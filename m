@@ -1,71 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD4ay-0004bj-Ti
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 07:37:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43448)
+	id 1kD6lD-0001mj-PR
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 09:55:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
- id 1kD4ax-0004Z6-75; Tue, 01 Sep 2020 07:36:59 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:37445)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD6lB-0001hu-Ty; Tue, 01 Sep 2020 09:55:41 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:40704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
- id 1kD4av-0000jU-Ds; Tue, 01 Sep 2020 07:36:58 -0400
-Received: by mail-lf1-x142.google.com with SMTP id z19so316127lfr.4;
- Tue, 01 Sep 2020 04:36:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD6lA-0001iY-7m; Tue, 01 Sep 2020 09:55:41 -0400
+Received: by mail-wm1-x343.google.com with SMTP id v4so1243414wmj.5;
+ Tue, 01 Sep 2020 06:55:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
- b=tXmGWzZ9QhqdYs+6Jf7SiZdQ0484pFkix+AdCywb75wBw5WE+eG6RYO4Gbei3KzXgo
- N9sRy3NY8a+HfcUF0f7DNAHIIuwwtzr899y9HuirklPEFdKwgXYdJAtN0ZHDZZrfglA2
- DkbmspzCvrKIGcuzDPB5UIRB+xED4vKLqS/QbbZxPobvTNrYgMU5uCJzinjCLb0y6ayM
- i/mlVKFILY9uR4Ma4cMkkfvpOxyNiPdQg5pOrd9w9++XED3k1iNDo7SEuai7icw3IW8v
- B57uOz3KuZPLGBN0/t6W393F37Rw/CR4cYfmfkqIZPTAw1zmIEeiGJn9RynatYiCoJtv
- 4MRA==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yYj87MKllDEVc9OuExPdXbUKOlq8/L2fn2QYZMR3YcM=;
+ b=mjFSQNT17rmCxkZb8+rNH+MnVqQLcrgPvCl3jsha8w3SCSZpY1dwUqqB6pP25n/8f/
+ 4k/HDhOUBFD3xDEMS1V5tpSwPCLj7+bZY/yNxRsqpcwTt71I05qK5q96BCChPm6fvyod
+ L57pQnbYtxojbDwcpiy3XAUyRrEzVoZgwaCCf7aeYB5YU80wWcUZuc4ue2glCxsOBAjV
+ oGp3qpP7tJd7p8i+iMQBYIQgJR30ITxaAFVW7+vkdMA1+teXpyRKgBGYCXc58GaDKeRV
+ ri9fz5CI+Ngk/xz5JI2RvbqnTtQTB7uDoTdshniH5jYPJj7frpH3z1XaYJkNTs964CnM
+ Obww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
- b=dlhpTa88G2j3F9Q8+Gg8mf5OjlgU5xA3Of6o7jKKrxHfcbw3PpGb2KmoiAHKkvGbyT
- TSLB1PvEjU4/eEV8m9Mm0yOiVtSEGSJj4kIE0XBiApNRYOHYJHPLpxg+jjVjCLY9s1o9
- L/YVajV9iyeRidz9FTD5MhsNHkZnI2HhLXR6EyF0bArFRFyrSNisTci3lsME5fhQ7GHS
- 2HwldO6EMQrOyNmmCapUi6IbrIZsTCnyl0/mEsczS0ZEsGs/XOppYwAomdhBbJEBQnix
- rTOSiI11gjS4EyvVHV5xWAz/1Qt5g8m0WmoD5qYX/NQeQKceMr7NWiqddrTrOXeCek2H
- TYAQ==
-X-Gm-Message-State: AOAM5332HTARxKHbcmKypxw9ELd2NqHYer/msIRvcvadDIej4H1Zjm8z
- zxWP39IJGsTeGcLuPJ0FyqWKctQ1LJ7XoCBpq5Y=
-X-Google-Smtp-Source: ABdhPJwRHa62/8JGjcpHcEYxLhYPuZRvdTLxC+AUAHqeQJjZCeAwqP3+yEhB29+lzbxMkfB09uhJlYtKaR06rAAagwI=
-X-Received: by 2002:ac2:4576:: with SMTP id k22mr383115lfm.55.1598960212793;
- Tue, 01 Sep 2020 04:36:52 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yYj87MKllDEVc9OuExPdXbUKOlq8/L2fn2QYZMR3YcM=;
+ b=GmjLSDPUjosTDQmpej5htRXn5cLOycffw/4Nr3rVJiWx8SajWKzQDHvKbTzPVYnmPm
+ BAHdN3AO1J56t7SBga/PemVi8qNZlewBeG6D3bQyv60VCsZlv2kd6emy05TKcBdebKa9
+ Sd2SgSIVXFLmQ2NM5lYwKN06zTNU4ktCsBH2xLHSH29LUZ8a43vsbFedaoBhr9JlCdft
+ AAvVDhEQ/fbQfzjZaI2ZJjjM9mYAywFQROKxhqqsX+Ggs0cC47I3O6NJOR8Jf5OFtT1G
+ C6YcEfcgYZtSHNDdLxNVA8r3PLzht2BK92qipGEiXi86/oxhg7s6AHgy2RCvwIDjCBTF
+ 1M5Q==
+X-Gm-Message-State: AOAM531TsN9aZw6ECbo6o/nax4U8Db/XONgPX/07H8CfGZNGsvcR8Hxj
+ jk3Sl3fg0DKZLRTADap4BdQ=
+X-Google-Smtp-Source: ABdhPJyxkYSdPuGkUeLF4BiMRf2NIC5TaeTCrIXR4OnV/GZmFHy2KEQp7NVe6pQ90WNGk0tGQ9vigw==
+X-Received: by 2002:a1c:2646:: with SMTP id m67mr1890817wmm.177.1598968537867; 
+ Tue, 01 Sep 2020 06:55:37 -0700 (PDT)
+Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id q12sm2325018wrn.94.2020.09.01.06.55.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Sep 2020 06:55:37 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 0/7] block: Use definitions instead of magic values
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
+References: <20200814082841.27000-1-f4bug@amsat.org>
+ <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6bb8b9a1-10fb-bb62-f895-f3d7164339de@amsat.org>
+Date: Tue, 1 Sep 2020 15:55:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-3-f4bug@amsat.org>
-In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
-From: chen huacai <zltjiangshi@gmail.com>
-Date: Tue, 1 Sep 2020 19:36:41 +0800
-Message-ID: <CABDp7VpVpyAyQVBadt088qPZirdNDZ6nrSJAVVN8pv2-aAKeZQ@mail.gmail.com>
-Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
- an assert()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-level <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, 
- Huacai Chen <chenhc@lemote.com>, Aurelien Jarno <aurelien@aurel32.net>, 
- David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::142;
- envelope-from=zltjiangshi@gmail.com; helo=mail-lf1-x142.google.com
+In-Reply-To: <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-2.13,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -80,46 +87,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 11:36:59 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 13:55:42 -0000
 
-Reviewed-by: Huacai Chen <chenhc@lemote.com>
+On 9/1/20 11:27 AM, Laurent Vivier wrote:
+> Le 14/08/2020 à 10:28, Philippe Mathieu-Daudé a écrit :
+>> Trivial block patches:
+>> - Fix a typo
+>> - Replace '1 << 30' by '1 * GiB' in null-co
+>> - Replace 512 by BDRV_SECTOR_SIZE when appropriate.
+>>
+>> Philippe Mathieu-Daudé (7):
+>>   block/null: Make more explicit the driver default size is 1GiB
+>>   hw/ide/core: Trivial typo fix
+>>   hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
+>>   hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE
+>>   hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE
+>>   hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
+>>   hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE
+>>
+>>  block/null.c        |  4 +++-
+>>  hw/ide/ahci.c       |  5 +++--
+>>  hw/ide/atapi.c      |  8 ++++----
+>>  hw/ide/core.c       | 25 +++++++++++++------------
+>>  hw/ide/pci.c        |  2 +-
+>>  hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
+>>  6 files changed, 47 insertions(+), 41 deletions(-)
+>>
+> 
+> Applied to my trivial-patches branch.
+> 
+> Except the following ones that have comment from Kevin:
+> 
+> [PATCH 1/7] block/null: Make more explicit the driver default size is 1GiB
+> [PATCH 3/7] hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
 
-On Tue, Sep 1, 2020 at 6:41 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> Displaying "vt82c686b_init error" doesn't give any hint about why
-> this call failed. As this message targets developers and not users,
-> replace the pointless error message by a call to assert() which
-> will provide more useful information.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/mips/fuloong2e.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-> index 8ca31e5162c..f28609976bf 100644
-> --- a/hw/mips/fuloong2e.c
-> +++ b/hw/mips/fuloong2e.c
-> @@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_b=
-us, int slot, qemu_irq intc,
->      PCIDevice *dev;
->
->      isa_bus =3D vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
-> -    if (!isa_bus) {
-> -        fprintf(stderr, "vt82c686b_init error\n");
-> -        exit(1);
-> -    }
-> +    assert(isa_bus);
->      *p_isa_bus =3D isa_bus;
->      /* Interrupt controller */
->      /* The 8259 -> IP5  */
-> --
-> 2.26.2
->
->
+Thanks!
 
-
---=20
-Huacai Chen
+Phil.
 
