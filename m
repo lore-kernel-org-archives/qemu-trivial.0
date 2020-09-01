@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zY-000678-UF
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55410)
+	id 1kD6za-0006Ae-3k
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zP-0005fA-TX; Tue, 01 Sep 2020 10:10:23 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:44969)
+ id 1kD6zQ-0005hX-IS; Tue, 01 Sep 2020 10:10:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:52125)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zN-0003uP-Op; Tue, 01 Sep 2020 10:10:23 -0400
+ id 1kD6zN-0003uX-Un; Tue, 01 Sep 2020 10:10:24 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MEVBa-1kNaK03rti-00Fxjj; Tue, 01 Sep 2020 16:10:19 +0200
+ id 1MYvTs-1k8f0I2cWe-00UsG5; Tue, 01 Sep 2020 16:10:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Mike Gelfand <mikedld@mikedld.com>
-Subject: [PULL 32/44] linux-user: Add strace support for printing OFD fcntl
- operations
-Date: Tue,  1 Sep 2020 16:09:42 +0200
-Message-Id: <20200901140954.889743-33-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Li Qiang <liq3ea@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 26/44] hw/ide/ahci: Replace magic '512' value by
+ BDRV_SECTOR_SIZE
+Date: Tue,  1 Sep 2020 16:09:36 +0200
+Message-Id: <20200901140954.889743-27-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:o3ur6JqCZo4qSN9nasD1Ujj6N0dcSAJWVFOYwBK7k0Z2J5rk7FK
- l/XuWxcgHOQT2gicVeubPtUNGwnDjVdUur2Ru2Tc05FnW2djSsz/9I+YUMR8X6Sy/UV5P6P
- qp6eHNNgEO3c4dFsuvSqrjseJrcYJZQt4EX3V6CsCmzqlnrhc8WOj8glrL3kK08Ao4SsWDX
- gax1A0f3X9dkFHK5D0jyg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Qu1gcnBW3yM=:c2k70dmoJ8wgiwGMUehr7I
- BnlfXaPy+eB0InYKHm1GOOk7420F5TwO+v5dw7rupS6rsxCqUwmPp029OL0T/aJd14AlQr+/g
- oqa/QowMsUJgpUkcUWfN1L4PoJAiU7LFC4LBDeqexCCM128k+n6LV2v+r4GcZFbBH0+362oGV
- zS1wtfiRs4Q7fqhaS3r8ZhI/KHSSTPw6faWpswr3hp56TmyiQgt7+h/OwMVTFb+r1eAlbt1uL
- XccFO8EKtJzT1U8KzkocG8IRki3U09lsRpfXoQv08UMD8IiOHdH5W0ZBNfbr6lB0k2+XGlE3N
- 6NULtDovtOmsKXWQZbc/ciVbpNiyrWi6LpkodN0pH093AvAhdX0cnLrs+1579xJG0DffINm2Z
- Bh6poE1cFd/R8XYDp7hXIHm/rDbKjl47WkIZs3++RkGxksL8JXxCvab8nGd/aG+BKgRcX2LiS
- U10OmD9kgJuXM55NxitUiUnTcqrmbpnGnsoMkYUm06DHvhgTBG01AZ4axYtcj8pM+J0E4PdMf
- 8MMs++aH7ZN6jTck53e+K1vHE7E1XksBX67MH+yiyX3Ba8tcZ3qOiTNEu+LtPGXEpIeYXeQ1F
- aLIx7TYxYgoHAYbjXazL42UcvrDer/OqGygzn+yRcs1lNChBPbIK1YKPPm8Ervz5a3keFlsBy
- 3kn5nroVloIS9F0W/MYnjxSHvCTsmyvWBVDWVrBQZ7BmngJKG5flu/3kOPXXcvMDjPng3P58+
- ARLDpTrBczOEYwuCjf2Vyf6uUkiCd6/Gp4zPy/sviBfqRTchV6lT9gPVUvllSNhPfy6CqR7Cy
- L5rykaFLhu9RCnjW/8KZ+DIhdU/V00vH15Qi5xWt643rVK6sursTq/p2vO9TP6E/cKbR/6M
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:xxDhq+TV0IfhP9YC17vf1ffp70QmhzJ+LSLjKKD9ZRHGqPWKsWI
+ dfMp6LQG9bu0HuMAOhgCjrfL4jmvrzdVCMHJCKzHMrTMO8pTnrj0JUXGDPhqy9RjENZYxDk
+ ZeqE0vMA+F9m07Q7KsL1ucznABmEKRh3aBMiRuLFOzEjexUZQCJaH95fnYrNdju4X0N+bqu
+ ml90btsCLsq6qiwbXix/w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:D8jVz6yqPOU=:xLlTOrRID3d6tMfvRLF1Mp
+ M7hjRbUmlidApPd0IsDWxMTLXVM1V8yTNCkMIZh9mUa3yLQPpK7T8zbEoUWvGMJN5H8NO5XCN
+ CInWGHTtdKkKGeV9dCT8grtgUPLntUJuPCttFshMnLjgPOH0UqL7UvTVXca9GWb4na2+s0ANl
+ rH5PV23JuqZSkCIcxhcHR3CD42/GHyzUb+dKdMFVXkBIJWS6Y01OB+9n7MhpT0pmKc3ICetvn
+ rSzQac05LCNWWxdawI0uJtQBeMjTVSmkM5sdaQi8Bo37OepCT2llLZVLqfr0wW6XUyE1sy+v/
+ byj5SxvFZOYX9bPF3LhmfYWK9+VMv62e3MW0xfKToZMFRVgkbZ+aZl1i0sv2OSxejO51fcQjY
+ FKddVNk1MLTNRz8Wh4cfXC0yTxExLqYSbG9t14XeoGnDfx53dc0Kph4m3Fl4BjB5N51A+zAw1
+ 1e983eLJBN2ORK4UQVMqKCwj4q/+XWwRrxZVdkp2iR/AdQ+b7hXeCY2ZC5iIBgIx6k+T/3zSu
+ Fvrq/96h/cYNpzuiJV8N/8Ovdhdp4YYEZtDOIGGagXsQuMkOROIvdkl0mHlKwfF2mc8xijNRb
+ BnKu7JiOE5OENTWSiNHHPAy7k7RNDLf4Aj9+PLdowls3PZMyeDckmBI2lg7ZbU0IMCsF+zkUu
+ ssOaLBYXD2cnXa2LwS+xqQCk9QGsupLJEikydcjCufwJ0zkoGjhb5JOkKK4UzNbZobPQRt1ES
+ 5eLDYu21KGZMdqjcq3rzeZ5Us6QrHVbDgy0/s8qPQkClJqlEjGjniD4LD3Z/cVZzRCkcXee1m
+ xgZeNSXjowMALY5VkOXiXqVMydB4KVX1ZAeZfCmN7oUThp/afhMt8VqLdiYN4q92jeYInAy
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,41 +68,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:24 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:25 -0000
 
-From: Mike Gelfand <mikedld@mikedld.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Mike Gelfand <mikedld@mikedld.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20200830092242.31506-1-mikedld@mikedld.com>
+Use self-explicit definitions instead of magic '512' value.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20200814082841.27000-5-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- linux-user/strace.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ hw/ide/ahci.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/linux-user/strace.c b/linux-user/strace.c
-index 4f77b0cf76eb..11fea14fba2e 100644
---- a/linux-user/strace.c
-+++ b/linux-user/strace.c
-@@ -2056,6 +2056,18 @@ print_fcntl(void *cpu_env, const struct syscallname *name,
-         print_pointer(arg2, 1);
-         break;
- #endif
-+    case TARGET_F_OFD_GETLK:
-+        qemu_log("F_OFD_GETLK,");
-+        print_pointer(arg2, 1);
-+        break;
-+    case TARGET_F_OFD_SETLK:
-+        qemu_log("F_OFD_SETLK,");
-+        print_pointer(arg2, 1);
-+        break;
-+    case TARGET_F_OFD_SETLKW:
-+        qemu_log("F_OFD_SETLKW,");
-+        print_pointer(arg2, 1);
-+        break;
-     case TARGET_F_SETLEASE:
-         qemu_log("F_SETLEASE,");
-         print_raw_param(TARGET_ABI_FMT_ld, arg2, 0);
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 009120f88b78..b696c6291a38 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1151,7 +1151,7 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
+     if (!ncq_tfs->sector_count) {
+         ncq_tfs->sector_count = 0x10000;
+     }
+-    size = ncq_tfs->sector_count * 512;
++    size = ncq_tfs->sector_count * BDRV_SECTOR_SIZE;
+     ahci_populate_sglist(ad, &ncq_tfs->sglist, ncq_tfs->cmdh, size, 0);
+ 
+     if (ncq_tfs->sglist.size < size) {
+@@ -1703,7 +1703,8 @@ static int ahci_state_post_load(void *opaque, int version_id)
+                 return -1;
+             }
+             ahci_populate_sglist(ncq_tfs->drive, &ncq_tfs->sglist,
+-                                 ncq_tfs->cmdh, ncq_tfs->sector_count * 512,
++                                 ncq_tfs->cmdh,
++                                 ncq_tfs->sector_count * BDRV_SECTOR_SIZE,
+                                  0);
+             if (ncq_tfs->sector_count != ncq_tfs->sglist.size >> 9) {
+                 return -1;
 -- 
 2.26.2
 
