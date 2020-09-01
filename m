@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zd-0006J9-1B
+	id 1kD6zd-0006Ju-7q
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55452)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zR-0005jW-9W; Tue, 01 Sep 2020 10:10:25 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:57419)
+ id 1kD6zS-0005mA-8o; Tue, 01 Sep 2020 10:10:26 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:37339)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zO-0003ut-3A; Tue, 01 Sep 2020 10:10:24 -0400
+ id 1kD6zO-0003wY-Od; Tue, 01 Sep 2020 10:10:25 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MuluN-1kUVHQ4BVr-00rsoo; Tue, 01 Sep 2020 16:10:16 +0200
+ id 1MoNy4-1kxTNF3wSW-00okWT; Tue, 01 Sep 2020 16:10:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Li Qiang <liq3ea@gmail.com>,
+ Kevin Wolf <kwolf@redhat.com>, Li Qiang <liq3ea@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PULL 28/44] hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
-Date: Tue,  1 Sep 2020 16:09:38 +0200
-Message-Id: <20200901140954.889743-29-laurent@vivier.eu>
+Subject: [PULL 25/44] hw/ide/core: Trivial typo fix
+Date: Tue,  1 Sep 2020 16:09:35 +0200
+Message-Id: <20200901140954.889743-26-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bTgl6P/Ee+6znIidnx6ahoDV8qX8jOCR51ZVN3cq8jLGLm1bL/4
- 2Q6GsgZd1K+bSzlc1wt0bdU0Ek8ieKjHBRyxkwu9YvLE2HyyzOvyo12c0hRQnFdr0GBEqLL
- IDxikjRmln9enzwX2Yi7yhuDvEmZefmv7nsRBkiR2grkNFkMUHekX7sXZRgSKL87y19j3E/
- VOPkDffIJIlHnp72Iln+A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tg9Os5e/Y28=:hkidTrcs+hBv1EBwiT3E8G
- 0Ncaz796ymjoBOrgk5r/H2B77OBq40wdquxm0a7QGA15t+ZJyR2qVpHR9PAzq8EJ4ZtOJYiuq
- +Nyb/7uHyj9htE7o7t3/eU8r74/C9dNTw11hVohkSNUndih00cvbJ64Go+XoQBr30/vdaFm48
- xjsR94QgVTEtBwHrqy/E+4uRWfr3qQ7MvEq1rMlpDFG0P8oPBjlZVd92sUX/JgClfzihUu2zP
- I06fEHO3KJixOI9KDoDZcIQlZCwOrOFsIjXAkbsMUL0RtKb4f9oIVRtlvCApVGhoSSQwjH+33
- wQbCriH9bKA2v9WBMeP8WEjpU03yeT0ORTEL6vJXsflLGh2DFKMXXrOozg1OaZZDCCyD83oEB
- 8Qjtp+cvfTxz5VsicEOxFn1v/z3bKAW+0fRmZpNaSMBo4PUdfiAsHf2xJBR/YiW3EjOusrpO7
- Leb5PxUwQTCRo+KAfwtlLlVfFftsdpuLyu/5sVuDh3hRlEXcWgE4Yb2Id/D9o1ndhYtjP+BlE
- zOpMwQeFeg7RbsuTZonDLPsJdtuReVxq4N2h9b8hm4PZLX89dhlU/oMJJycvCIE74AHESXEtq
- JsEPQqZQoh4mgUNgsByNW7rBfWsKOz5cjr1tYoOt+D0m185Vcs8qD+g5FLEnuOdf08yOYZo8o
- WfBmRaEZy0+iZV+SaHup4344TR2F4/vzZ7OBcyH+Ox3wp/rhNWWOP6ZeOhPb/qcsVGesaZxjA
- K6zgD/GfR26ounsHeHx9uDJyGioDnGgRmCdAlFEFXV6qKOs1VvSofN0rwO+eXaxuSVoTzZb9Q
- niizjZdMwWgIl/WCnJa+IU1OufAf2vnXA1BkIbdLZPlDhh2oeYMQLCOLBB38tbqa8TNCJDt
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Pyw0ZMEU7SgQFHutlITOWvz+cr+9whX18HAoSlliGteLCv9PN8T
+ kbvHU2RKMwLZPzhmEOwgSOnOHU6yk11YBWl2nIo3al5XL5Y6FsBdZyc658kIsPxZDYGWJsS
+ R2j8kZcjBul7QUZDUSEX171jbO2/M5+ccFx4CA1TGmBEhq9XgEl3FUebAO5LL78005OGONG
+ qy2XHqpzgqC0DvzBKqngA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oMPzd5tmRqc=:lByhKLSp9ibkziAngfx7Cp
+ CJ7cJsOaPyLZZyB+fhYAU9MoVcV0Tsr60IMyl8wgjrAK/mvuTfgt8znOfVKw19lf7c3L8Kl/Z
+ HUwFQdxKnd7ZC3od4nQWoELw8WV4gAdXdT7aomkotP23LFhO0oTzXErQysLvC3uuTDJbYw4nI
+ VPz9Oq2xI0p8dt0smOehiwD/iuzUYMTF47zBLu3enH9qJZxfLsUM7ly+vxu0OZs4ftX9iYhXw
+ 5Fog0/YQtt3TvATmdARBA3bBTfjNsRERDDertulSDQC6qKknB+1BdkMmzdojBLwYknMkTuESe
+ NOJsTjhaDUi7B7g3CkWxv/OIQQj2rYbYRPxgPGjVOT3nhu3eA4VCF8fXkzMRl+SuBt/ntIKRp
+ lbJ0eKcnqg1gN3xYpQBeZnJv1MCdF+OORbILg9hp47souZygH1D29kp/yd5D93rfcl289ZdAl
+ TjFVWl3b2I4QCyG7v8xOYvZBfQI7cJZkpIwXz3a4QS21NdaYWOt6mRpnqwty2KJLlC7+Sifrs
+ FffHTXGjH76881GSSm3uvZmga/gHsfRBkXgkfeOhNuFldNOwJcA+AuaLkgV7Hsi+bfGZgmcB7
+ oVLIiF/iLGJ02eqPKXaprUJrsB79y9lDx3S+IQGz5yUmBhS99bMT02AG+0GuqmjxNNHjY/ioN
+ WR8fB4B+PWxK9fpoGm1JogAkEe0SOOO3Wo1lp9ixv3BKWSCM5SpkgoKZo8EKwc6eewciBwZ3X
+ UutV8ulSs3T51Ag8J57PNBw2Pc93z8VEmLEjudZXYS3WyLPZIXZ+yw+cHJhs3QQX2FbeDv3S5
+ qElKGz6ZlYHS7Lm3Tf95ujoI0k/QxCB05BxJLRQ8WfRRu4YfnSm03AZgwpfE1fmb8DmdA+a
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:03
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -71,31 +71,30 @@ X-List-Received-Date: Tue, 01 Sep 2020 14:10:26 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Use self-explicit definitions instead of magic '512' value.
-
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20200814082841.27000-7-f4bug@amsat.org>
+Message-Id: <20200814082841.27000-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/ide/pci.c | 2 +-
+ hw/ide/core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-index 5e85c4ad17e0..b50091b615cb 100644
---- a/hw/ide/pci.c
-+++ b/hw/ide/pci.c
-@@ -138,7 +138,7 @@ static int32_t bmdma_prepare_buf(const IDEDMA *dma, int32_t limit)
-     int l, len;
- 
-     pci_dma_sglist_init(&s->sg, pci_dev,
--                        s->nsector / (BMDMA_PAGE_SIZE / 512) + 1);
-+                        s->nsector / (BMDMA_PAGE_SIZE / BDRV_SECTOR_SIZE) + 1);
-     s->io_buffer_size = 0;
-     for(;;) {
-         if (bm->cur_prd_len == 0) {
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index d997a78e47fe..f76f7e5234bc 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -709,7 +709,7 @@ void ide_cancel_dma_sync(IDEState *s)
+     /*
+      * We can't cancel Scatter Gather DMA in the middle of the
+      * operation or a partial (not full) DMA transfer would reach
+-     * the storage so we wait for completion instead (we beahve
++     * the storage so we wait for completion instead (we behave
+      * like if the DMA was completed by the time the guest trying
+      * to cancel dma with bmdma_cmd_writeb with BM_CMD_START not
+      * set).
 -- 
 2.26.2
 
