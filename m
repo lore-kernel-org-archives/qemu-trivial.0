@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zf-0006RC-KH
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55616)
+	id 1kD6zg-0006Ta-BQ
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zZ-00068F-B5; Tue, 01 Sep 2020 10:10:33 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:50851)
+ id 1kD6za-0006B3-8A; Tue, 01 Sep 2020 10:10:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:39751)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zW-0003zy-UZ; Tue, 01 Sep 2020 10:10:32 -0400
+ id 1kD6zY-00040U-CR; Tue, 01 Sep 2020 10:10:33 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MNbtD-1jxMK82hqd-00P8ha; Tue, 01 Sep 2020 16:10:19 +0200
+ id 1MWAaw-1k5uuj3tyk-00Xd95; Tue, 01 Sep 2020 16:10:24 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, Li Qiang <liq3ea@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PULL 33/44] hw/arm/virt-acpi-build:Remove dead assignment in
- build_madt()
-Date: Tue,  1 Sep 2020 16:09:43 +0200
-Message-Id: <20200901140954.889743-34-laurent@vivier.eu>
+ Eric Auger <eric.auger@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>
+Subject: [PULL 39/44] vfio/platform: Remove dead assignment in
+ vfio_intp_interrupt()
+Date: Tue,  1 Sep 2020 16:09:49 +0200
+Message-Id: <20200901140954.889743-40-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oQPZDAL/Uc7IBntevT0HPBD1FgetWCj+mEEhbF4GaLWE73Ma14e
- YC5dcrZibK7QRywuVad+oaVSniXSvdILlwhqDM6cl1LMGL+r2AHrVf9GJL1wy7Bp5JIeXyu
- yVcEvn8uute6p59xF3hDcdo4AODoMqYDTeSu5t4xilrl95u/a32Lk4FzFbiVmPnddfdyqxv
- VGvzQGj/K+PRP8eDDKn2g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AwjkbcbUPc4=:MMEFqkK3+JnoHhEcHFlzpK
- yNFJWPYv/ZizOOGcrntedaJoa2ZwJ5lfYvtg4+aDAhdJLj0pEvuWqc9JUNfAbVhiaUHIyLXst
- xout0blgGI177XH3FucHTd+Jg4bh9tkIhflMYfQR8NHAvwJhE5NPhVThz4poRTXeTzLPt2y53
- UueksoYujOeEyFBI8/GFvBx/2880ggFo6AYXvBIw/33P/ws8LathJrs/2E9LmNjIj00O/LM0d
- 8IAzk9YWEjOZea+Z+z2oYyjdYnJKwvL413uUHS9Aa9TRQN+t+7+2l8CLpWK2UhyCIM5ncKwbu
- nWi9fbVEkBOLPFS4wzbOrrhHVCrkPbu4iMz/XnTwDWjNXV+WebRg9tc5YzLoOu6ev/AQI3O2e
- sTN9Q6oNeQ1EFkHmB2X3lAgTZQsQkO2liWTqt8om7vTro9V4/8DAVK+l4hDayGzCltMtMjKlE
- MAJB6HNBbBN68LVw9ryEQGV6pWOVwcOu7udqgbhH+7biDiIRQpphDjopu91x1FgkvtPybQ85f
- TW7lRIoHaOdTZ4d0W4nEOe2ftls5w08bDrvKgzNHSmbKGFUHpIh6Kywlu0PmOBusQmEYcK2NV
- PM+4oF5vFgKG5duQvsYniE/1IUMIM2EGjX0B0nVsMrvgocTqdSq5rBqYadCpJaQo8x0iHxNtf
- mDU7DiWuNWZfjU03Rq3ZE7146h9W+2Bj200IbXzH9OOsVGzasbwlReesuwOFTZ2zY8+z8No43
- e4eWUactkOlJQT7yg5L+EqDuVlNVtL1c6FxMEJLoSmMDCKyZsGpUZNJH2cHohawhgZ7IqTJsj
- m+DgmbrRnH9Lv352kYZQBF9GxGI9KsF1GFVoPEOKevWA2jjgU1rbkB8gJgfI9ddUuB+N/Hl
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:lsDR0dEHCtExKSd9N3oIN428thZ82nBF4fKg8HBPzQNzaeOTCIY
+ 7Bs0o+KvIhLj5toScUInS9nf7Aez3cWSEI6dPi2r4HpR68D28Zq1zXbCn8jhFFkKFKVX2iP
+ NWuGBRINpnAdiONWZf/i/dj7KkcoZ/LHchSm6y1vAcdg9gMI/Ufc1hHRjLu042SOEx0l60E
+ SPjxYrZqSM0+GkZRpyhtQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Jdfz80TC3Hk=:UQy0koX5hT1Lb8VX/HsC5e
+ kqORgrLW6dYbqBg8lvU9dChVvVnfVrLYrIiE3BGp/m+5DJk7e6+pqWUldwOvAeMPnjhZ1nBRa
+ T1w6mF+tB0B2ytkPys5Gs5aIDnSJChFDxj7AHV/IjgDMHgKDoRWaBOOdtlNgEDfa3k27tMtdi
+ 2VUdySM1x6u84yYuHar96QcxUp5kWOhKGspoKDYYC9ZCwl2L9XmTrLq5OduTULz/7askIhs/4
+ +Z/q1lX6a+2eIPPw7Wb1UzfAPavxdtAcuRVg5qnUxFd2FCtkons/o3tKm/x0gk4U4b+I47poO
+ zTGRqzbk1VqVONaeDj0XpJrOAZzQBMNfEV3X8w148usu59AX8c8ZBrhvsGIkocag7PZGo76lG
+ vpuZIbJh2ssNzMzsrV0neO/IJqIGVUjDq19JdlJL9t3jmWkZ5PlaBY+Ct1tdJ8EHgfArO7C8l
+ LFO51FIUP4c0lYhe4tyv8nkvQ0R0EdjWAK5sMVFPear70M8lqzw4TfczgzoJS2UfGZmwrFaKa
+ uft+a0SucrfSrAkcqIg8GrNv/5O/+se2bQSM98lp7JHdFkmwN72CNtiK/sKEszfSaoHLFXqR0
+ P3zCub+IRdNdVueXaSzHLVV/xWfcwv5qf4vFsRfo/ixLIZzyctSnXt3gMEAY6+mA2r5ek5l3S
+ moPUpY4d96s6/ZPiKeoxf36c0eUlhWZ5K8BXbjnUsWuGkkWzWgnhnD1CmJ5Vv3Sq2pfX5Vg5S
+ nhAdh3Ku5rk2wEoblZ/pTheJZmzuBTbOmal1B6qNvpWJzunoJKUD6JNxrB8a03I3m4N5L7+gh
+ j+18nEtBL3xh2nady720Pc8CFmDGY1Z6HYmMWMINTZKQfgXkvnvgVoN+yB1i52hienGdyBs
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -66,44 +66,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:34 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:35 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
-    madt = acpi_data_push(table_data, sizeof *madt);
-    ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
+        ret = event_notifier_test_and_clear(intp->interrupt);
+        ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20200827110311.164316-2-kuhn.chenqun@huawei.com>
+Message-Id: <20200827110311.164316-8-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/virt-acpi-build.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/vfio/platform.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 0a482ff6f734..9efd7a388150 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     int madt_start = table_data->len;
-     const MemMapEntry *memmap = vms->memmap;
-     const int *irqmap = vms->irqmap;
--    AcpiMultipleApicTable *madt;
-     AcpiMadtGenericDistributor *gicd;
-     AcpiMadtGenericMsiFrame *gic_msi;
-     int i;
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index ac2cefc9b184..869ed2c39dcd 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
+         trace_vfio_intp_interrupt_set_pending(intp->pin);
+         QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
+                              intp, pqnext);
+-        ret = event_notifier_test_and_clear(intp->interrupt);
++        event_notifier_test_and_clear(intp->interrupt);
+         return;
+     }
  
--    madt = acpi_data_push(table_data, sizeof *madt);
-+    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
- 
-     gicd = acpi_data_push(table_data, sizeof *gicd);
-     gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
 -- 
 2.26.2
 
