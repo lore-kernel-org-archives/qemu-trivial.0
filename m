@@ -1,77 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD89J-0003mZ-Ql
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 11:24:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49808)
+	id 1kD8ZO-000144-GT
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 11:51:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD89H-0003i0-Tw; Tue, 01 Sep 2020 11:24:39 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:53027)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kD8ZN-00013B-Qq
+ for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 11:51:37 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:42821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD89G-000734-8G; Tue, 01 Sep 2020 11:24:39 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id q9so1571635wmj.2;
- Tue, 01 Sep 2020 08:24:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6CDUTU1D+7Ao3iWeCaQFsPzGscbCBBSxZK330pNOH+c=;
- b=co89W7Olc02pGyV1Epaiscfzch8qtL9BJ1+0kFvG9MUOTAuVdcA0JbBWWFUKph8km8
- ZIjz8qxRx99FKwca1yytAwwWdCWGXsiDhclaTMZgsPc86r46YWpg8ihUHITkVFYHvWsa
- NZawQUDMJaasbZ8xzutGFiTps7s/SGv520Y8h0CMzTqPM2UzR/pGGthSJvIObpZxbkX2
- nzGf2HGoHmIQJMx/R7FLvrZ5RuKu8x3z37gC1HUo6lw7lF16uQh+rD0BdTQh3bICdbzk
- zL9DOHbt19twpZFK1fQT/kv+39W5NjtE2vYK3BIHTkr6ni+VxhWN7qolF26zQcDv/hYf
- 1pBg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kD8ZM-0002n8-3V
+ for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 11:51:37 -0400
+Received: by mail-ed1-x541.google.com with SMTP id l63so1930787edl.9
+ for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2020 08:51:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=/3r0V5XaWzpq03UXQxRhWPAEfoInKgh4VrLacrOfRHk=;
+ b=y2FoEqnTpKJ8yZ6xQbESB03fyV4FpWOkpiXvUxfH9A2HnDGKr/Q9mrWG+TTBPWS9aK
+ Tt5Q1ZVhKxYG7qqqgR3XMEU95d6rZxmzmf30M6BWVB7GJQA68SaG0qqbR+MYnxHAvAhb
+ GbEgA2w/EMXKNZrNlHb+Qh/WkcQLXGBPJENxkPLlQ06IRsq7hHM4Os4YcfhjGNwfbcAI
+ j/4O2UGeI86G45RqcHBb6i9ETm6eCjTEx0MJbqZeCPAJrJj7SIu49EeSZ3F+ilH3VpSE
+ sjeXkd3zsXHtsMMGwGmUa/jhJ2/B65N39MoDZa2clraA9qthsZTVj3/Nv0NHSIOnWvGG
+ cEXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6CDUTU1D+7Ao3iWeCaQFsPzGscbCBBSxZK330pNOH+c=;
- b=ptMcmfjFyI0z8teYCjCQ2XjyzNjCQWt24xhRpjazpc4CYqb1tuuIH7Xbg4jewXXVE0
- LlQvrKcYjLpxokoRzqwDldco71p4ZtDkDoiE7fWuUX3ClELAvs9bT47LPLVNIFapHPAH
- Crn3kXe2EsYcaUFjqhjA0cldEckDxVGr6izqIniveGFALX/27KfT/mtymhig7B06Te2y
- OuAQLUeFQDFvxkdT2e9cUeBRKxOlCBTuTrrkZZTxMjv+wqnyd0TCqvTid4Yi+lOctuGB
- w8q+5l8YNB+wquTdrjAEYDCVNIXSncmD8ZTEUHnrfiT1UutSmdV/DcxDb4OhfOpvWdW0
- 45JA==
-X-Gm-Message-State: AOAM533cUmUPNp8e0wu50rVGTIu+GBERPPzb7X5J4Akqy05XE/0hS0Sj
- KhRd7XZ3123UdCx6XlYdvm4r4yAa2Ow=
-X-Google-Smtp-Source: ABdhPJzl4q4KcAgNKCq/vOoP96C1+mz2VkxQyIzR+lT/5vOdrI2TPlcVib4k92kEPJINWUNf1bzn9Q==
-X-Received: by 2002:a1c:4303:: with SMTP id q3mr2250298wma.158.1598973876003; 
- Tue, 01 Sep 2020 08:24:36 -0700 (PDT)
-Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id v12sm2905740wri.47.2020.09.01.08.24.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Sep 2020 08:24:35 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH-for-5.1] hw/misc/milkymist-pfpu: Fix pFPU region size
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, Michael Walle <michael@walle.cc>,
- qemu-devel@nongnu.org
-References: <20200718093705.7271-1-f4bug@amsat.org>
- <b0eb3028f61e6eaaf9c1f4aedefeaa20@walle.cc>
- <1819668f-4747-0cb7-69c0-e167af71e8ba@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <86a4c1c1-04b2-6a36-47ec-0cd0fba699df@amsat.org>
-Date: Tue, 1 Sep 2020 17:24:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=/3r0V5XaWzpq03UXQxRhWPAEfoInKgh4VrLacrOfRHk=;
+ b=uJuVthWuNcf6e68821qSpistoiBj1Uw1OJBbuTsG2h7xz3XUYpjeyXXI3racHsDWrp
+ EakfWqp707QWbA3ABlUlsceifEfgHFrxMtoA6Tiw93XF59RA9aiDn4dbIk2qHXRRfVwI
+ 4r1auBTNSn0yTZABaDElvnukecLQ0bdjdtgV1WYbmz9tqeZ1m35X2CdtycsrMhdLXE8r
+ vDW2qV4gUDxE/lT46TSRCuBO8koiiDz/E6Vc6ACKR21vlE4sJKKpCNC5vEx3eljd9O6Z
+ CkF7losVtPAmDvktUj8MPgAdLhhveqq2J706nFc54f5aH+odjFAwHpML9N7D5XBIfZXr
+ KlyA==
+X-Gm-Message-State: AOAM5304pbSELqHQtUV5suInyANy818cn46qgEueRR/0MsU75J8SnXgj
+ ZS012/dEYGjM2NC4/0uvUQpXi7zVCPgDNJv2JU7Nag==
+X-Google-Smtp-Source: ABdhPJwNfFpSHwO1xiJbcqKIqWq8tcKjeBQs9PJeYoxt7WHzXpjVw8/7yjcLcZedTErCJYNQogfmw1ctnMcsD5D97JA=
+X-Received: by 2002:aa7:d596:: with SMTP id r22mr2344387edq.204.1598975494113; 
+ Tue, 01 Sep 2020 08:51:34 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1819668f-4747-0cb7-69c0-e167af71e8ba@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+References: <20200901140803.888852-1-laurent@vivier.eu>
+ <c63cde35-2959-f119-5c22-fccdf23a23d7@vivier.eu>
+In-Reply-To: <c63cde35-2959-f119-5c22-fccdf23a23d7@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 1 Sep 2020 16:51:20 +0100
+Message-ID: <CAFEAcA-OMRhuZFZO3S4-g7BCX0BQVvqaivSN6E5WXCxeoo_eAg@mail.gmail.com>
+Subject: Re: [PULL 00/44] Trivial branch for 5.2 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-2.13,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -86,52 +75,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 15:24:40 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 15:51:38 -0000
 
-On 9/1/20 8:57 AM, Laurent Vivier wrote:
-> Le 19/07/2020 à 19:23, Michael Walle a écrit :
->> Hi Philippe,
->>
->> Am 2020-07-18 11:37, schrieb Philippe Mathieu-Daudé:
->>> The last microcode word (address 0x6000.6ffc) is not reachable.
->>> Correct the programmable FPU I/O size (which is 4 KiB) to be
->>> able to use all the microcode area.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/misc/milkymist-pfpu.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/misc/milkymist-pfpu.c b/hw/misc/milkymist-pfpu.c
->>> index 516825e83d..4fbe3e8971 100644
->>> --- a/hw/misc/milkymist-pfpu.c
->>> +++ b/hw/misc/milkymist-pfpu.c
->>> @@ -507,7 +507,7 @@ static void milkymist_pfpu_realize(DeviceState
->>> *dev, Error **errp)
->>>      sysbus_init_irq(sbd, &s->irq);
->>>
->>>      memory_region_init_io(&s->regs_region, OBJECT(dev),
->>> &pfpu_mmio_ops, s,
->>> -            "milkymist-pfpu", MICROCODE_END * 4);
->>> +                          "milkymist-pfpu", 0x1000);
->>
->> Could you use one of the MICROCODE_ macros instead? maybe
->> (MICROCODE_WORDS * 2)?
->>
->> With that fixed:
->> Reviewed-by: Michael Walle <michael@walle.cc>
->>
-> 
-> Philippe,
-> 
-> do you plan to repost with the change suggested by Michael?
+On Tue, 1 Sep 2020 at 15:42, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Le 01/09/2020 =C3=A0 16:07, Laurent Vivier a =C3=A9crit :
+> > The following changes since commit 39335fab59e11cfda9b7cf63929825db2dd3=
+a3e0:
+> >
+> >   Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-5.2=
+-pull-=3D
+> > request' into staging (2020-08-28 22:30:11 +0100)
+> >
+> > are available in the Git repository at:
+> >
+> >   git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-req=
+uest
+> >
+> > for you to fetch changes up to 1eef4ba6be30f8b95c8cda1bcb50a176d680a34d=
+:
+> >
+> >   docs/system: Fix grammar in documentation (2020-09-01 12:09:30 +0200)
 
-Unfortunately I won't :( I spent 3h trying to do that, then found
-myself rewriting half of the pfpu because this is not that easy, and
-this code is now scheduled for deprecation. Not worth my time :(
+> Please ignore this PR, it failed after the first patch.
+>
+> The second attempt is the one to take (same name, no versioning but
+> completed).
 
-> 
-> Thanks,
-> Laurent
-> 
+The two are identical from my point of view because they refer
+to the same tag (and even the same commit hash in this case).
+The merge process doesn't care about the emails that go to the
+list: those are just for others' information and the historical
+record.
+
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
+for any user-visible changes.
+
+-- PMM
 
