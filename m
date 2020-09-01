@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zR-0005it-2H
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55258)
+	id 1kD6zT-0005sy-W0
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zL-0005S8-81; Tue, 01 Sep 2020 10:10:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:35911)
+ id 1kD6zM-0005Wo-Od; Tue, 01 Sep 2020 10:10:20 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:57591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zH-0003nk-2p; Tue, 01 Sep 2020 10:10:18 -0400
+ id 1kD6zH-0003oG-DA; Tue, 01 Sep 2020 10:10:20 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MlwBf-1kv0OQ3GUt-00iypq; Tue, 01 Sep 2020 16:10:09 +0200
+ id 1MCKO2-1kLORI2ayQ-009N6N; Tue, 01 Sep 2020 16:09:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Paul Burton <paulburton@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 19/44] .mailmap: Update Paul Burton email address
-Date: Tue,  1 Sep 2020 16:09:29 +0200
-Message-Id: <20200901140954.889743-20-laurent@vivier.eu>
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 02/44] target/arm/kvm: Remove superfluous break
+Date: Tue,  1 Sep 2020 16:09:12 +0200
+Message-Id: <20200901140954.889743-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:g8Ho16oUxUbOqmfmigPDkiytVMUWXcCfrpPunxSV76MaDLvpp+S
- sRFosgigpHiyzxSd93VOHWobCOuk+WEI+hzz0HAzrEDVVUfi7js1r3OTXynH9/pt5c5fnV6
- a14TDsFfisVo6VhXBZoTxnBMtUjvceH+etwGQh6rXEuJzxSq+ojyX5NauXXFXrfBcNtbFLr
- 4MnGH7J4Y7IrLm14zWuQQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QNr4C/M9WYU=:ouBpm/ttmPOKg0yBmeS+Tg
- zmCzi5FZBWCoe5+sDhGurxz10RxViJHHJY0XI8Sg4kz2Je3xHZosuUwIVcQuJv7lnPizwXX+4
- C+QgreV8Izj6V9yLVkcfW+iDiVhOPMsUsKgLarHNq8vHP178EAfAjA8D2HrjBn+i4zH9E19IM
- wpLBf649Lxk1MWU+kEDnyO49gDUarrkOxSH3QUkRBvpqIypaC86MMKE+rErspg3lItefUdxDo
- jSwHabuB3u48zdo/kjAX+v/eGkJGiICqnFXjrgV0f+nmMUEf4utWOognOo5Gb5/5dw8WmjaB7
- lsdKIWS5cEuPQA7f+XRV01tIEEb+1tfj1Hdx5/JkwPhqWRgDTDXbyE13kFeYWvag2ZubN3r7o
- /kNU2LjmHblfTUCzHzRxjAN3bE/mYLp07oJQi5/QbqZR5o8a+nsSuRd93THyLobOuy8zIIX6p
- Ncp6zN9YBui9zE9sgW6Xv271kpevtev6IgkO03yO9liUbcsj0T56/NRhOFRrpZXKcB6+G7prP
- EsdNkwcLsCcoS2pNjeVFLiEXfRqs/hDGwQRn9ELjX7AzwOs2hfMPElXODmOJfnvB9kvV9kIgZ
- FBd+o/prOqsfDGsN6G0Rtf21yuZeJoaBHmSZZ1yfA9/fStJZxWJFhHZknbegUbAf8Lzfdtxi9
- RoUVnWDDsU8zAyRRi/u2Tkb8WCCIOa6dlr0TQru/8KZKmj0yXLQPnBYEyrQcXD7+wABDzdzs5
- CkC9ALrzkyr8LWv1cIcD2paReV+xgjaA87cjIv1pS7SOsElvBcBynxLAc44gxoQzJxgGtRtkT
- TO1holQX2nwSWVyEWmHyudjm7/xjM3uLiLh34cTxV35mSBpGr5S7xsJJxBzJ09c6FjAq8ji
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:F0TpCvtnRA9SHKBw7Olb3gWaYAHJBjSIK780eap44uZXKk+wDi3
+ TdPVdfQdMD6Sh2IUdNtTAV6990MRO8msMTwK/MZOew6q+PX/L80+lHK4RYzC+AvMQavhD3O
+ 99wJsMEnA+aoouiW+0ruI01HzUV47leT1QVDxPLdFKsb813MJjPae5lrhpYF1pJLqETamUL
+ p2rDrqu2z5wdnp67ShhnQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WSNz6tpE9yg=:wFk62DoJrKqasw67S4CXm3
+ wZDfYZA4UlBtYP2aLE+gy14F4Yp5CpsgCzkWmR3jFSwsZnjFp5YTvNE5lgHIGNnnLCoaUxOtj
+ M9CGa93cvs2SF/biIerdrweIkQa/WNwNM5fVWjfO62gweH7fbAc5vXnHE5+Zl4Bfy13Pk8ZrB
+ lhFJrYMLJ6UjmL38RYq8zczDIKYpXNaivsGwFgBTYAF+zBrjiEHE7ZiS8jIB8BPz13kiIXhKg
+ 1dNrTbmKojeXL4Q92ygPxHw1s0D4P1x2MlOnATWvW73Mv2dSTjc0GWPHTAz/phK23T82SR+En
+ v6xbqLirch/RIrIkIoiKZspoI2bWSghrAcZizrhKH4BHr7PxfAsr6Ezui3HbZYGUl1I7myP84
+ E5DL+45hTgMf+pLLAg3OzgTcrEyy3P29OmG25b5isn1a/3duyyALb5/vxOqZO97XhWRyR9CVX
+ /yZknDlsIvNjUPNXIzVDAWLgyg2/2vNJnX21d8CQW+C4lYIt4HL9TuJCZcCp5ujW4BvE1vJg+
+ rwavfATUpyor5ihQ0iLNQ/1dms6Aiqpy7k8ckt2nhfEWysbdBy2RbhmcbL26EVvNZAcddmUXt
+ XNGIyrTvLkzutWD0XMjIr56vU/IHYzC/8WE4F/gUij2GoqXuvHDmNZJv8F4m8n8bAJ7qfVX6b
+ tPurIw1g2GVSJi/xzy5agJum6oQrV5MIbg0dGrD9++lSDMZ4cLDyK2PlaNMgj30JAciWfwNTP
+ 6J+Ig0DMt9yiDEwzILrU4uxcnC7OSFrV6vayxhEMs69eU1fHPDLTVXCDnMOpth5SF579tsXPU
+ t/rWrDr2A9PH39+uuN2BnYzdc9KErRhC3IbGMBaUc5yMIKYMUe09EhWr4kuc68MSnI2Torp
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -65,45 +66,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:20 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:21 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Liao Pingfang <liao.pingfang@zte.com.cn>
 
-Following the Linux kernel equivalent patch posted on
-linux-mips@vger.kernel.org [*], update Paul Burton email
-address to avoid emails bouncing.
+Remove superfluous break.
 
-[*] 'MAINTAINERS: Use @kernel.org address for Paul Burton'
-https://lore.kernel.org/patchwork/patch/1140341/
-
-Cc: Paul Burton <paulburton@kernel.org>
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Paul Burton <paulburton@kernel.org>
-Message-Id: <20200707022544.24925-1-f4bug@amsat.org>
+Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
+Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <1594630986-36148-1-git-send-email-wang.yi59@zte.com.cn>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- .mailmap | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ target/arm/kvm64.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/.mailmap b/.mailmap
-index 2d97a14af3c6..4f40d1cc6e1b 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -51,9 +51,10 @@ Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
- James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
- Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
- Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
--Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
--Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
--Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
-+Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
-+Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
-+Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
-+Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
- Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
- Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
- 
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 116923790550..ef1e96028500 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -330,7 +330,6 @@ int kvm_arch_remove_hw_breakpoint(target_ulong addr,
+     switch (type) {
+     case GDB_BREAKPOINT_HW:
+         return delete_hw_breakpoint(addr);
+-        break;
+     case GDB_WATCHPOINT_READ:
+     case GDB_WATCHPOINT_WRITE:
+     case GDB_WATCHPOINT_ACCESS:
 -- 
 2.26.2
 
