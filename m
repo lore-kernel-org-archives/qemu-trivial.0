@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD0Jx-0002k0-HJ
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:03:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52674)
+	id 1kD0Rt-0007OD-79
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:11:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0Jv-0002h0-6L; Tue, 01 Sep 2020 03:03:07 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:49003)
+ id 1kD0Rr-0007Lr-6H; Tue, 01 Sep 2020 03:11:19 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:34375)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0Jt-0005tN-Dy; Tue, 01 Sep 2020 03:03:06 -0400
+ id 1kD0Rp-0006tJ-Cs; Tue, 01 Sep 2020 03:11:18 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MvsR7-1kTZlU2TMF-00suGO; Tue, 01 Sep 2020 09:02:59 +0200
-Subject: Re: [PATCH-for-5.1 v2] hw/isa/isa-superio: Fix IDE controller
- realization
+ 1MAfMc-1kJa1m2vM0-00B4P0; Tue, 01 Sep 2020 09:11:10 +0200
+Subject: Re: [PATCH-for-5.2] stubs/cmos: Use correct include
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200721124516.9602-1-f4bug@amsat.org>
+ qemu-block@nongnu.org
+References: <20200724084315.1606-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,32 +61,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3d71c7f7-a66e-3db6-4389-77c27f9cd8f9@vivier.eu>
-Date: Tue, 1 Sep 2020 09:02:58 +0200
+Message-ID: <6fa8841a-3569-4de9-563c-a27afe60c06f@vivier.eu>
+Date: Tue, 1 Sep 2020 09:11:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200721124516.9602-1-f4bug@amsat.org>
+In-Reply-To: <20200724084315.1606-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xVe8z7cPlqslH11V9yhJQ69j8Z2NpwFsMS6wzi3t/92lE94wZqJ
- 3bJtQAQGEZymsp9slwPPLFS9qki7GFXBO4vl989LeyO8ZVfz0eChcz69NdmgwUjfLVfGTfM
- /XJW/l04TcwQtll6b+yCCcEb2MwqndrrhhIUTWDELf5b3DmTdxmyxXgfs/l8+eivY5KXMsD
- Vm3gc+ZjAAjERWQHgSDBg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Q4iKYGb8gYE=:T4OIkfR1omeTprm8XzuYyM
- Y9r8BjicBVnRgFAPDwo0IE4gV+6PP0YrecWVehZlEsbqbZWpbyu5rFSBkWbiaAMRhe6r79YEF
- YnAab0SgW/IY0VqPu1LEiiMedx+4YjPiWxI1MOFuGcgx+nB6gvoXQMN6jCCMebjfcm/wjXTcD
- VpCHgoz0EmGLV6owlH5cWjyUKfL0otSBotyFQPLYY1/a0kK4BOHYeGfYn2NfivJNtgJ0fcc+Q
- RaWLit/O49+GGMw2e/+bpd77X/BUuDTlt/uLlT9dYuj5HWdC39aRGcBc4P9IURpV8cXt2CfgO
- fGdwrtCgRD8LLSpGIwMfLtaG4HMpFgeUsq4eqQG262UYq04MvBhnwiL2ASq/1Rx1YgXmRAU2B
- CjlXkE1ZDx/KHCVRaVoS8qz7PYTK7unncZ3PrnXbWPlKfLEzYbV7OIO19FApWM+C1G0vQTUo8
- /1iLiGgMgbHHcGYxiGl+rjDzjesDdWKsFYXyJrwrOnaImlBDaZfqKH3O5DJtafnrx3saZRCIg
- +tz8KnW/Ro90IvM6I/k2WtYVhdQNxdwiafvPBMEAU7tRq3ptjxPbJ6vdvXZA2tWXl9d6OykaU
- ygH6rJDBjSq6CUn7RlLiwbgFRPi5UxSpv0irfotcPCHhndgZxd9ybK95X8aCODi4oFBNcq8dw
- yxZn6KlBlNGBMDwuB5vqNT6JIlkDdUr/ZAbjy51lT329nOu2CuxMFBB8vWHKRQ0gnHSHHyLv3
- VtGLsrxh6lOuqIloLSBpIqyBroSDr+lfXfr/QymiRh53c1DVP2zGZ+NmTYpvxPrb8SAqfbSXu
- +AQV9fcVypvhk8zl1CPiFAXsXV6IJhMCPspqM7YKcPaj4G51Q4E1RA+qhRklXzYjbGICCGi
+X-Provags-ID: V03:K1:bpe74hZez+nn1vI+EWpnyh7ptxXmj7CVBG111jOK2NwH0KZNNmp
+ /oXra6CwPhvJrcERO4bPyQt36/W/D+nwul001sNsNnD5mw9K231apyGkzU518zIU+yDw2A+
+ PH8RK5cKIqI2PxHls8d7d1jqIZgsFDqc402oy99lBQi5ZlO1ll5Ej4qxT17MZQsdxlowaos
+ RR2lpy9+J54kHxby09gAA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5mSVhC34deM=:aXlV6iS7sX6CcJMOkp/U8K
+ UjTc2mJz5679ccYQ0F4MCl6CJ+XYTl22l090XZSEspnCTZghcSG/7ll84D5o4UJG6gFneFYw/
+ rUUmeOT4Sutql8K7KLtjm47R+1ECaX9QeTzPD08W3FXWUhYEt/BoAj5jEYIu9Z/fGwBwtFEFL
+ Pw7OCLToh+4Vewn4UnG2sVCoC8zQLrRvk6ae5E3zzvHf3BuiqZ1OMmc0E9dyY0rdZ3gTZKHRm
+ JSOnjYM1UpIc5zNmHo+JRAKmDFBzQ9/JpMwBMPx7v4p/PQD0RIMgj9st3reuRbplNiKHXWO7S
+ XehHFqf1ilP3fbiLDcnFB1m5vPvvFYOlEzXPChaEVIP07EhlnirmD/LBvTj8VeEq9DbGQOVYS
+ eaw6/IXKYejXJk2Ub12BE9COCm7j3g2lPGni/JTVCwLRff4J/BmrjVDrUqD6e0nMApUicY8UB
+ 4vg9MIHWvJEhpwOoj3oZx5xfdUnlLunv/Vp9iLTakmbPS1jloVl6KOmXT+izZPlKyDu4lJpbV
+ vuqlj+p0fLYvt3KWdAPwTprqC/yY1fz9cwgIiHqPnjyWVzci9AGxhcPZyZgjcnoh2p5FMeyh7
+ eLw35OO3RMuYd/AfRcw3zu62AHtwvINo8oAi5idEWhOWaF+7O5XynME6pbgvqIyRAFJxUsGWr
+ gomFUKTBLR1w4/SfQtLUwjJtc8RmHCe9Ca5B50ZLjf4G89jTl7lkgnc74SII0jeVdaOy1kCfa
+ PLsAfDOpZI14c7+IddHOXaECDPOe+6L9fMNhWQLh81gEbtowP8QY6+DxHKJFIFd71zWXoMsNO
+ IBKXPkKEntU8ejzi8JxeQ+aQwLTXUv9UTYCzi6NjdPw+Vh0QCBNKCOnlz/HK48pGwLKBw+G
 Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 03:03:03
@@ -110,44 +109,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 07:03:07 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 07:11:19 -0000
 
-Le 21/07/2020 à 14:45, Philippe Mathieu-Daudé a écrit :
-> When realizing a Super I/O with IDE controller [*], we get:
+Le 24/07/2020 à 10:43, Philippe Mathieu-Daudé a écrit :
+> cmos_get_fd_drive_type() is declared in "hw/block/fdc.h".
+> This currently works because "hw/i386/pc.h" happens to
+> include it. Simplify including the correct header.
 > 
->   qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
->   Aborted (core dumped)
-> 
-> This is because the device is already realized when we try to
-> add the QOM property to the parent. Fix by realizing *after*
-> adding the QOM relationship.
-> 
-> [*] Set ISASuperIOClass::ide.count = N with N not zero
->     (no such thing currently exists; the bug is latent)
-> 
-> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Fixes: 2055dbc1c9 ("acpi: move aml builder code for floppy device")
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
-> v2: Reword bug is latent (Markus)
-> ---
->  hw/isa/isa-superio.c | 2 +-
+>  stubs/cmos.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
-> index e2e47d8fd9..179c185695 100644
-> --- a/hw/isa/isa-superio.c
-> +++ b/hw/isa/isa-superio.c
-> @@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
->          if (k->ide.get_irq) {
->              qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
->          }
-> -        isa_realize_and_unref(isa, bus, &error_fatal);
->          object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
-> +        isa_realize_and_unref(isa, bus, &error_fatal);
->          sio->ide = isa;
->          trace_superio_create_ide(0,
->                                   k->ide.get_iobase ?
+> diff --git a/stubs/cmos.c b/stubs/cmos.c
+> index 416cbe4055..3fdbae2c69 100644
+> --- a/stubs/cmos.c
+> +++ b/stubs/cmos.c
+> @@ -1,5 +1,5 @@
+>  #include "qemu/osdep.h"
+> -#include "hw/i386/pc.h"
+> +#include "hw/block/fdc.h"
+>  
+>  int cmos_get_fd_drive_type(FloppyDriveType fd0)
+>  {
 > 
 
 Applied to my trivial-patches branch.
