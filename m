@@ -1,21 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD0HS-0000e7-6b
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:00:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52162)
+	id 1kD0Jx-0002k0-HJ
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:03:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0HQ-0000dK-Vi; Tue, 01 Sep 2020 03:00:33 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:46367)
+ id 1kD0Jv-0002h0-6L; Tue, 01 Sep 2020 03:03:07 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:49003)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0HP-0005Zj-9w; Tue, 01 Sep 2020 03:00:32 -0400
+ id 1kD0Jt-0005tN-Dy; Tue, 01 Sep 2020 03:03:06 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MpDa5-1kwCTD1YkR-00qkXW; Tue, 01 Sep 2020 09:00:28 +0200
-Subject: Re: [PATCH] hw/i386/kvm/ioapic.c: fix typo in error message
-To: Kenta Ishiguro <kentaishiguro@slowstart.org>, qemu-devel@nongnu.org
-References: <20200717123514.15406-1-kentaishiguro@slowstart.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MvsR7-1kTZlU2TMF-00suGO; Tue, 01 Sep 2020 09:02:59 +0200
+Subject: Re: [PATCH-for-5.1 v2] hw/isa/isa-superio: Fix IDE controller
+ realization
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200721124516.9602-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -59,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7716b971-669b-f055-480a-9243a2c4f6c4@vivier.eu>
-Date: Tue, 1 Sep 2020 09:00:27 +0200
+Message-ID: <3d71c7f7-a66e-3db6-4389-77c27f9cd8f9@vivier.eu>
+Date: Tue, 1 Sep 2020 09:02:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200717123514.15406-1-kentaishiguro@slowstart.org>
+In-Reply-To: <20200721124516.9602-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:unr5s9rEz27JJ6IFffiKbU4VXrCY8M6Tz7Sxc3XXIbTKBxS6MmM
- UByeHJVNS1s1mOtde9NIg3OpbYTJluZ3sODS0c4BYeMep1uq9U7eN3ObbwTwtZxzZRzQcUV
- 29dz3dpf5R9ZQWw7hYR5ooUTubemedIwoKxQju6r3+XJ/1KQGOEt/meZYzbEyPQS+b3uRBF
- t1xTKDOs9DbnNr6F2nGfA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8EJU/jFSqGA=:7f85uotPniuwrO0TfYFSu3
- IWU4fWxTU14fKfhq5eMJeLromtDa1NccEWNdFRUOdbU8u0VhcZd2y00eCRCpYNAxyI4iLG+aM
- DnEPKTpPtf/qtofrdKbIPkbgcD8uUY2uw3RwERAHxRZLhxIcRaeDO31HS28bbUNFhXUJ9qJ5v
- E8nW9IPIqzDbMKLNjYBnJzvWrU59vLk+5kpnuQul7DLgYcXM7zFyKxxBDuucGjzoiZVCe0A5Z
- xqhhG2xG8PL4/b6v/VYhwm8Cb1sAuZo64At+sVAVpFtoQYeQe6/9k17An4BLO7zfKQC62En2z
- e7njw6p+S0fd19/a7eSCLbHUvB4d0UhDjet2Ftgt3O+Seh3N9eWsf0QsDUegLVIrmSZ9bupww
- JnVMYADx3BdWNAYT1iyWF4v2TPsDJ9vze0fIbE9tg8c1k7QUck+p8GuEXkJ8Sct55UptMEQb2
- SsJWoLYdrjiV7azkiDAKiXNHIQ6G9tyx0w4jV8JEouJRIirdWR32IdHQmEsqZ4zalPB23GLW8
- Jq5kYUHZAp/lCQfeAd7AEm4RwPzREaAW1wzw8IYx0JATDodHLNm3KIJ/f0TteoIugQfubG+5H
- nSQdRi+xuMOOjN620S2pLwqUqa1MnTttkYHBKtEfX/FoujiBxdqD1GPU4neU0qBJP0mUnqpw+
- NOyaVjWQzgFwZqzNBkDOpeDEi6QQwoZjZoltt1mPMl0QV4UdOeCAW2isnnHvugCp5q48r/UZc
- PNFp1gNJw/rrc49KcMgVTp4a65cpsfrtCJwWX/ejwdTe0bbMkSBRqzi4c+o4WEvSODYAwRQcZ
- ektyckurL35R2ZCjKw5kfq8VRirgDJVTpDeyJwbW87waQV5o8wghm08LhmR/KuNknvNOOZ6
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:xVe8z7cPlqslH11V9yhJQ69j8Z2NpwFsMS6wzi3t/92lE94wZqJ
+ 3bJtQAQGEZymsp9slwPPLFS9qki7GFXBO4vl989LeyO8ZVfz0eChcz69NdmgwUjfLVfGTfM
+ /XJW/l04TcwQtll6b+yCCcEb2MwqndrrhhIUTWDELf5b3DmTdxmyxXgfs/l8+eivY5KXMsD
+ Vm3gc+ZjAAjERWQHgSDBg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Q4iKYGb8gYE=:T4OIkfR1omeTprm8XzuYyM
+ Y9r8BjicBVnRgFAPDwo0IE4gV+6PP0YrecWVehZlEsbqbZWpbyu5rFSBkWbiaAMRhe6r79YEF
+ YnAab0SgW/IY0VqPu1LEiiMedx+4YjPiWxI1MOFuGcgx+nB6gvoXQMN6jCCMebjfcm/wjXTcD
+ VpCHgoz0EmGLV6owlH5cWjyUKfL0otSBotyFQPLYY1/a0kK4BOHYeGfYn2NfivJNtgJ0fcc+Q
+ RaWLit/O49+GGMw2e/+bpd77X/BUuDTlt/uLlT9dYuj5HWdC39aRGcBc4P9IURpV8cXt2CfgO
+ fGdwrtCgRD8LLSpGIwMfLtaG4HMpFgeUsq4eqQG262UYq04MvBhnwiL2ASq/1Rx1YgXmRAU2B
+ CjlXkE1ZDx/KHCVRaVoS8qz7PYTK7unncZ3PrnXbWPlKfLEzYbV7OIO19FApWM+C1G0vQTUo8
+ /1iLiGgMgbHHcGYxiGl+rjDzjesDdWKsFYXyJrwrOnaImlBDaZfqKH3O5DJtafnrx3saZRCIg
+ +tz8KnW/Ro90IvM6I/k2WtYVhdQNxdwiafvPBMEAU7tRq3ptjxPbJ6vdvXZA2tWXl9d6OykaU
+ ygH6rJDBjSq6CUn7RlLiwbgFRPi5UxSpv0irfotcPCHhndgZxd9ybK95X8aCODi4oFBNcq8dw
+ yxZn6KlBlNGBMDwuB5vqNT6JIlkDdUr/ZAbjy51lT329nOu2CuxMFBB8vWHKRQ0gnHSHHyLv3
+ VtGLsrxh6lOuqIloLSBpIqyBroSDr+lfXfr/QymiRh53c1DVP2zGZ+NmTYpvxPrb8SAqfbSXu
+ +AQV9fcVypvhk8zl1CPiFAXsXV6IJhMCPspqM7YKcPaj4G51Q4E1RA+qhRklXzYjbGICCGi
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 03:00:29
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 03:03:03
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -107,30 +110,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 07:00:33 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 07:03:07 -0000
 
-Le 17/07/2020 à 14:35, Kenta Ishiguro a écrit :
-> Fix a typo in an error message for KVM_SET_IRQCHIP ioctl:
-> "KVM_GET_IRQCHIP" should be "KVM_SET_IRQCHIP".
+Le 21/07/2020 à 14:45, Philippe Mathieu-Daudé a écrit :
+> When realizing a Super I/O with IDE controller [*], we get:
 > 
-> Signed-off-by: Kenta Ishiguro <kentaishiguro@slowstart.org>
+>   qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+>   Aborted (core dumped)
+> 
+> This is because the device is already realized when we try to
+> add the QOM property to the parent. Fix by realizing *after*
+> adding the QOM relationship.
+> 
+> [*] Set ISASuperIOClass::ide.count = N with N not zero
+>     (no such thing currently exists; the bug is latent)
+> 
+> Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/i386/kvm/ioapic.c | 2 +-
+> v2: Reword bug is latent (Markus)
+> ---
+>  hw/isa/isa-superio.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-> index 4ba8e47251..c5528df942 100644
-> --- a/hw/i386/kvm/ioapic.c
-> +++ b/hw/i386/kvm/ioapic.c
-> @@ -97,7 +97,7 @@ static void kvm_ioapic_put(IOAPICCommonState *s)
->  
->      ret = kvm_vm_ioctl(kvm_state, KVM_SET_IRQCHIP, &chip);
->      if (ret < 0) {
-> -        fprintf(stderr, "KVM_GET_IRQCHIP failed: %s\n", strerror(ret));
-> +        fprintf(stderr, "KVM_SET_IRQCHIP failed: %s\n", strerror(ret));
->          abort();
->      }
->  }
+> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+> index e2e47d8fd9..179c185695 100644
+> --- a/hw/isa/isa-superio.c
+> +++ b/hw/isa/isa-superio.c
+> @@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+>          if (k->ide.get_irq) {
+>              qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
+>          }
+> -        isa_realize_and_unref(isa, bus, &error_fatal);
+>          object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
+> +        isa_realize_and_unref(isa, bus, &error_fatal);
+>          sio->ide = isa;
+>          trace_superio_create_ide(0,
+>                                   k->ide.get_iobase ?
 > 
 
 Applied to my trivial-patches branch.
