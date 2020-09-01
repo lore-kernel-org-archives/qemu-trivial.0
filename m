@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2hs-0004Yt-48
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:36:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39868)
+	id 1kD2sy-0007Ti-8q
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:47:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2hr-0004Y9-4B; Tue, 01 Sep 2020 05:35:59 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:40917)
+ id 1kD2sw-0007P6-8n; Tue, 01 Sep 2020 05:47:26 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:48147)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2hp-0001QX-4z; Tue, 01 Sep 2020 05:35:58 -0400
+ id 1kD2su-0002hu-8t; Tue, 01 Sep 2020 05:47:25 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MlfCm-1kufBC2cfi-00infU; Tue, 01 Sep 2020 11:35:52 +0200
-Subject: Re: [PATCH] util/vfio-helpers: Unify trace-events size format
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-References: <20200820171006.1140228-1-philmd@redhat.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MJW18-1jtJ6f1Mb2-00Jp7u; Tue, 01 Sep 2020 11:47:21 +0200
+Subject: Re: [PATCH] linux-user: Add strace support for printing OFD fcntl
+ operations
+To: Mike Gelfand <mikedld@mikedld.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200830092242.31506-1-mikedld@mikedld.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b7a06f98-bda7-ef84-a159-dd134a1c1fe5@vivier.eu>
-Date: Tue, 1 Sep 2020 11:35:51 +0200
+Message-ID: <1e2e300c-73e3-18ae-0bf3-5a65ac05673e@vivier.eu>
+Date: Tue, 1 Sep 2020 11:47:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200820171006.1140228-1-philmd@redhat.com>
+In-Reply-To: <20200830092242.31506-1-mikedld@mikedld.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1mCQt0OEMGc5N76i4DsvDKFnia4pPyAkFIelw54tLtnZDK+bvJc
- 7DIq3fkEfzP7nRUCDzILxeoe/ffi2hAqVApgTrTKkJMfhJgucb78WUkmyQ1TU4kpJNq4WFJ
- xgoQhw6MO3dedRyOO9gThczT/6ehz48IuGMkjyPIINRNKSZT7USLtsh6cTSUSwp3i5zVney
- Pz3/ZoDDtMD1uZZt57cGA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:C9EJ2BzRe44=:x4VpAtkmCihxG5Na6fsfGM
- K9oLKME9MDSzP32ZBLxqK7JCWsMO9ttMMMrMeZTp5Z9dT/YofJzKY9iZiiIZK2acDGWUYfb0j
- IDwXbSZNKI4xgH3TJFBL/nf5n98vlZWOQT97ZGj4haQRA4GOnddER5XMvL7QtgyDk8zBPIYJk
- euPi1WoynaIps+hfbuA4vlRNZFFdXOtByxGxOcKBBHQKBIc1TQAVSce3saK+XfiTrM2cN0FTU
- stKJKjQTkrN0hxFe9YmvUPLSMVsesqqEl4LxXfUnlccnqwyEv3xzhtq1TxHU2rGyfBQhNTlIs
- LiPombp9GHsQ0jOCkrmfXc4Ql8F9iXMoIV4mA1uoz2tOqpx3whPJDDGg7k3EqdGiEj6kO/jLQ
- BHb6fFc79gCpDM7OtMLFbVLrhJu6AUW57aY39C4BckY6MbZDNGAF95bD8i+amBWigNqOVCDuc
- S3t/9mTIIUqs/Ro3sji8gokJSBpTffAJ7tiQww6sTfVKmR/uU8NS85F30tML9aXgrZHAiBlhz
- zTaTLfWegZY9KSTR1YMlGAGcF9EGsNpSRp0buPh28FDoZpQ2EHpY6ovZNPa8YFoUQoGs52ECe
- yrjttoBiH+Mu30FMuBIzHVWtppfOiCYUi+CAZOu9zSSxSjLE40AHVEC5NL9NLkfOoivL0aRUB
- p8GzRI2NBjRTPh4GuSqUZfq1hek1objpS4F9XBHxGwuZ19Nmp2ok4MyLIAF/gsEhXSHINZ2Qr
- bsL2h1KVkEgXXCKKVgOsF3Dcfr/UYtakcaKGVh2ivbhXfr28T6sZ7PTf3s6H9dfmfP84ehVg+
- R6MHfZPKwdT1y2G7hRRQiYbqrAbzQKV7KOtpCSdB+VR8CTJK/hfkILj9nbEhkIZ5MBKciUC
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:cljSet4TbINxjrSQGI6B3lAS+4dCPrfULPLgpW5eWgKwxy2Z0Pw
+ VgYC3ww+X4HDCGetP72Gi9iTSXQY+Jz4ZYYlVlpr51n0BUFzTPSTKG3dB7cZbQ50ffcvTw0
+ jzvSomqz8ej1rg6bOLeEkMxDJAtda9HeTXCc78IiyD3j/RJHpC8AEqYc5r9p+VtKFOU6l/N
+ vfFNl0Pc3yDp3oDVXmRVQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tgvlesofVuY=:Zoo1KJIXIo5kUMRzAiIYJv
+ tnqruZrp7xVNYPVFj5NkltBb+ZolNdq+B9MBm4+WPuR1GbcXKAisgU1i2BfN/9faINWvjRUZd
+ z0LJXTUz425ifAmgVfPDds3HkFH/4Q2tIV9bLJ0zq5hjDhujba8uDlaxMfQeo/5b8v7t0Pgw7
+ UJzbVZdExvpyzabRnK91HDk0ipIpqyh885N7vJOJBqkgsA7TiDoIuwBUiIas9oztMfd8Lj3FU
+ 2/FcyPKYKk+savJW5nEpzyA6VSVVM0C8hdKD+YNDYBoRjBkELhcI50LyNVGZF1kLSN5uihwfq
+ fo7imZcTZB9DhsppN7BjchG5pnnRTL/fAndR2AinOau8adIQY5NCsTgA5VpjTeMBKZ9C+/k+/
+ NI/CTKrmjbZuVFdcWUux/9HI0TmWNQTJfKWvXiYuK8va2N8RlvszpnbSVgERDbWQ2Kxr2VGOn
+ AwK5aDCWMAML2mvJrZrvOeGiJiQis8ADIgj7unG3BbpB9o+6lI6nwFOAVKi7/oW9AK6HOuGCA
+ iHRN7gZUT5q+nTh6USM16HtGz1SPDuaKkJqJtI14qONjoqUJxRUr1CHsNtknY+EFY+GgLQohp
+ L5P4Z9u0HLkDOOe6Kdgv0lHAAX0GA8mGmlrpkxN17jMao2ullFLdGLOQ+XiJAgngiI3Mh8FCh
+ g/M0E3jlaTONf1jA6Lr/98617MbDalPfe1DgWaLN0gZTXXQ8aZsHMZaWnJMXpCl7h2JomwD2q
+ yMIhmkE+bu9PSH3pQNca2aJHu+v1pLnIZmbPpffvdT+hVqdQojKTXYT+BfbWuVfZVwqTZ4H/j
+ GVc+IdU1PXXGPX4IOh696s3IW8Y1Lgb1E2UZGgUg27ufe9O+vAjFyR8/U/axKJh1ep/9hqB
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:47:22
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -108,46 +108,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:35:59 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:47:26 -0000
 
-Le 20/08/2020 à 19:10, Philippe Mathieu-Daudé a écrit :
-> Some 'qemu_vfio_*' trace events sizes are displayed using
-> decimal notation, other using hexadecimal notation:
-> 
->   qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4000000
->   qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 temporary 0 iova (nil)
->   qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
->   qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 index 4 iova 0x114000
->   qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 iova 0x114000
-> 
-> As it is hard to follow, unify using hexadecimal for all sizes:
-> 
->   qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000
->   qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 temporary 0 iova (nil)
->   qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
->   qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 index 4 iova 0x114000
->   qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 iova 0x114000
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Le 30/08/2020 à 11:22, Mike Gelfand a écrit :
+> Signed-off-by: Mike Gelfand <mikedld@mikedld.com>
 > ---
->  util/trace-events | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  linux-user/strace.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> diff --git a/util/trace-events b/util/trace-events
-> index 0ce42822eba..d9a0b4f8c63 100644
-> --- a/util/trace-events
-> +++ b/util/trace-events
-> @@ -79,7 +79,7 @@ qemu_vfio_dma_reset_temporary(void *s) "s %p"
->  qemu_vfio_ram_block_added(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
->  qemu_vfio_ram_block_removed(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
->  qemu_vfio_find_mapping(void *s, void *p) "s %p host %p"
-> -qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size %zu index %d iova 0x%"PRIx64
-> -qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size %zu iova 0x%"PRIx64
-> -qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size %zu temporary %d iova %p"
-> +qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size 0x%zx index %d iova 0x%"PRIx64
-> +qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size 0x%zx iova 0x%"PRIx64
-> +qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size 0x%zx temporary %d iova %p"
->  qemu_vfio_dma_unmap(void *s, void *host) "s %p host %p"
+> diff --git a/linux-user/strace.c b/linux-user/strace.c
+> index 4f77b0cf76..11fea14fba 100644
+> --- a/linux-user/strace.c
+> +++ b/linux-user/strace.c
+> @@ -2056,6 +2056,18 @@ print_fcntl(void *cpu_env, const struct syscallname *name,
+>          print_pointer(arg2, 1);
+>          break;
+>  #endif
+> +    case TARGET_F_OFD_GETLK:
+> +        qemu_log("F_OFD_GETLK,");
+> +        print_pointer(arg2, 1);
+> +        break;
+> +    case TARGET_F_OFD_SETLK:
+> +        qemu_log("F_OFD_SETLK,");
+> +        print_pointer(arg2, 1);
+> +        break;
+> +    case TARGET_F_OFD_SETLKW:
+> +        qemu_log("F_OFD_SETLKW,");
+> +        print_pointer(arg2, 1);
+> +        break;
+>      case TARGET_F_SETLEASE:
+>          qemu_log("F_SETLEASE,");
+>          print_raw_param(TARGET_ABI_FMT_ld, arg2, 0);
 > 
 
 Applied to my trivial-patches branch.
