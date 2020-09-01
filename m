@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zm-0006mx-O3
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55594)
+	id 1kD6zn-0006pP-Gf
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zY-000666-Id; Tue, 01 Sep 2020 10:10:32 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:59677)
+ id 1kD6za-0006Bx-Jt; Tue, 01 Sep 2020 10:10:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:40129)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zW-0003zt-NN; Tue, 01 Sep 2020 10:10:32 -0400
+ id 1kD6zY-00040c-IA; Tue, 01 Sep 2020 10:10:34 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N6bsM-1ke9Gf1l1C-0183pD; Tue, 01 Sep 2020 16:10:27 +0200
+ id 1MrhLw-1kyYlR2DMy-00ndWr; Tue, 01 Sep 2020 16:10:25 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 44/44] docs/system: Fix grammar in documentation
-Date: Tue,  1 Sep 2020 16:09:54 +0200
-Message-Id: <20200901140954.889743-45-laurent@vivier.eu>
+ Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 41/44] hw/intc: fix default registers value in
+ exynos4210_combiner_read()
+Date: Tue,  1 Sep 2020 16:09:51 +0200
+Message-Id: <20200901140954.889743-42-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7L1YI38AnTxw8KGs1szZB3nJpEddnBvc3/Yy/tk98nSmivRkKzW
- NRoBAe7hIrdpBwO+0keWhvVKogCZ+DZgks69Z3HwLyfRsnb24YFwgXtjmnaugxw55T+ehI5
- n/g/zyXHbXBMxZdsq02QMeL48tqzottUReKPFoWzikYJP+d/VRoVaXdh8i/D5VVomxykPCM
- eZfKSgOrJCChuoicfHcpg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TzroLXl3Brg=:lKGWd3nt6vvRvdwA8n39sO
- NKrZbk0uwYSGDwWnlXnQQkMatoDj0eY7Ulvrfk/3RkqkxaG/qCW8oL9RSl7KuGvJ368FKaBv1
- qbW56xSi5dn/z1BZOkHyGpU5KgD9yaR7NH3tnuK1uh1TpnYDIlVCUvcEt0epUWp9cWzTRnp7C
- MVmg5GpgZF/WTXXiXxV3Hv5kBpTmRRiKPWoudE7vvkXmTf7gjH5QRoh//hLlaxyvySVd6Ynim
- RhaW2NtUPoQ60FKbvMlQiCIRUMmYomsgZT4KTvrNXfHM2+6QlC3RFky9ICwoWNWvcVH9xMaT3
- oNVl6D2R+q8jw9SYSrAfxC6k9TAT5SruQfXmSJ5uwfbqs3YxbHTIQlt0w5kCb+BTKt5CLph4C
- nonabsvy8PLJN8xHnlF+wJ7COr4t3Mk/lcXn8RG3hvyCrRtpP/LQmzYFVw7h3XGWy+x5LkmsR
- X2wlsSDMRLpe0FAa/SgsFZp5yC6UGDnGknlykeItkmehHtJW+CoWwYl3AFXjJ4W5O3EUdXxZm
- po0qD8aCkbMM+VRXxLSuAqtM1UzPouIxxWO96RMxghIUwTXLJYeAleuE+fQvFPfSa5r7PT9J5
- rlundj79jXJFLxDEcZwClO4B4qvxLMy9OkJ/olZql9BFiuvmyOjDiZEkSD7J6n3YU8apQnPm3
- fXUc1vojz5OTA6IO9tssfNeFTo7ZAYVAgYh7bJq9jQ34CQ6KmoD3/53uuyohqsM376LBIymab
- Ze2iOl6Azp7mJ7/oxI3iKCUQf9WXOsiw8CwFwq8iH0d5sHFAzUT7o4zq+fUMUijmow1RSBeZh
- s6paYKCkLi6asfuGxvAO4+4qElJekS/DphaUECOji9PPmj+unI93cITnb/zn/eWT/l1oqi6
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:HV333Pu56tdjA+Fq+Yyh+2C6PRpyef9rXpWQpiOOskLJS+eG3ss
+ yqhpAtMASB4K5xTEX+CsKrUUSR4BxjZqRl9FCk2rZQCr4HIDu8xS/dSCz/oKXL+M2WXSWpC
+ dOfV82UT/Sdu0AeCRKoGCBafMrWSJPc+R/WV7bk59Uxd41ShRQqIhymul3DgPOikNtbdfOK
+ 3jX/0YZNw3SDrpqGQSF3g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ha64hrP9JQs=:iaPbmguc0rMKmiCNFs7rUD
+ svrXyQ1mLix2iXZpT22HNJfA7Vtpg/f+UuEms5LvTC10yV2NayahpvEfx6NZKUozC8uB2ibjN
+ Wj8+pxkwAC/XNqUDBUELiPHbwDb7/k1rL1cs3UXyc89C+vpNhqAumzScpk8kffpDSgU0BAPpZ
+ 0GZ4ImjEQXk+pTZe8p0qrYzAxaIo45fo207pQodN0oaOJkbf8nNivDg4c5b+82p8NgaHNXTuC
+ e1yzRb5ibJFGzWoL8hFLASFOVNR5W0P+zCW2IBRvO9WnZeVAQUs5BBhST7CP4D9eTNj9NU2af
+ eiyTSlTDdg+cu8jrA240nmhIl36KyWjPuzaEwIFYRuOYAeFhpJ4RNaTM0VLDrvWEBayTRP3/7
+ KIFvycg20M80NwT26fru3rFT08rguN1fCCwbmotCYDSvjgGW2AmyQiIu2Cit8L4/eQk3ZS6GI
+ 4iqSucn+M7JtTupaWfcBPAukJIjkwG5WkAlveV6WK5CTBOaRgLJDhEu+Gg1HeexDoMfbbKGEh
+ hhtD6x6/vbi04xAa9Ro5BWSyFJCkKeEUNL537PQ+7zPz98GmUdW20W4I77qb1B/41rkRq6NCE
+ fl8eyGO+Pt2BHRwFwxiX4oLQ3X6zk5tj1zb1mOeymAQXBT+HCP32ejVcDZYbspAlOZK7eL5ek
+ Fc3wFiTnb889/W3/f68aUeLqtb7m9aoAAxTDsV1ZwSkiLa3MdcP+NAxKOqT8Mu4bbHc7B+s7R
+ fsyt5zrajHjrJxPDVhDjCVIQDnxkBtaMz/DaYokn0q02XOu4vRbmgFoDRNnmv8Zkt0cWaukL9
+ ogbkf2fv0rrf3q9iZ2MsRZri0O0hbwq4/f/z5iOxPOJtv5GcQ3TxKyqgmBdm7VIGRyBW+l4
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:03
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -65,45 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:34 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:35 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Clang static code analyzer show warning:
+hw/intc/exynos4210_combiner.c:231:9: warning: Value stored to 'val' is never read
+        val = s->reg_set[offset >> 2];
+
+The default register return value should be return 'val'.
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200827173051.31050-1-sw@weilnetz.de>
+Message-Id: <20200827110311.164316-10-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/system/build-platforms.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/intc/exynos4210_combiner.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/docs/system/build-platforms.rst b/docs/system/build-platforms.rst
-index c2b92a96987c..9734eba2f180 100644
---- a/docs/system/build-platforms.rst
-+++ b/docs/system/build-platforms.rst
-@@ -57,12 +57,12 @@ macOS
- -----
- 
- The project supports building with the two most recent versions of
--macOS, with the current homebrew package set available.
-+macOS, with the current Homebrew package set available.
- 
- FreeBSD
- -------
- 
--The project aims to support the all the versions which are not end of
-+The project aims to support all versions which are not end of
- life.
- 
- NetBSD
-@@ -75,5 +75,5 @@ new major version is released.
- OpenBSD
- -------
- 
--The project aims to support the all the versions which are not end of
-+The project aims to support all versions which are not end of
- life.
+diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
+index b8561e418037..59dd27fb16e5 100644
+--- a/hw/intc/exynos4210_combiner.c
++++ b/hw/intc/exynos4210_combiner.c
+@@ -229,7 +229,6 @@ exynos4210_combiner_read(void *opaque, hwaddr offset, unsigned size)
+                     TARGET_FMT_plx "offset\n", offset);
+         }
+         val = s->reg_set[offset >> 2];
+-        return 0;
+     }
+     return val;
+ }
 -- 
 2.26.2
 
