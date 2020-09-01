@@ -1,21 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD0ll-0006Jl-Pc
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:31:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60270)
+	id 1kD2Fb-0000Vi-VY
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:06:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0lk-0006Gt-23; Tue, 01 Sep 2020 03:31:52 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:58353)
+ id 1kD2FZ-0000V0-SS; Tue, 01 Sep 2020 05:06:45 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:55889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0lh-0001KK-UI; Tue, 01 Sep 2020 03:31:51 -0400
+ id 1kD2FX-0005uq-S5; Tue, 01 Sep 2020 05:06:45 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MCbR7-1kM3RS3cF1-009hyx; Tue, 01 Sep 2020 09:31:46 +0200
-Subject: Re: [PATCH] docs: Fix broken links
-To: Han Han <hhan@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20200807101736.3544506-1-hhan@redhat.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N8G6I-1ki5lN3ywC-014CHB; Tue, 01 Sep 2020 11:06:38 +0200
+Subject: Re: [PATCH v2] .mailmap: Update Paul Burton email address
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Paul Burton <paulburton@kernel.org>
+References: <20200707022544.24925-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -59,35 +61,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <d1db6563-763b-dfea-65c1-033b1a9c5d3e@vivier.eu>
-Date: Tue, 1 Sep 2020 09:31:44 +0200
+Message-ID: <71ed9a48-bfe4-f4be-168e-577357f5c1af@vivier.eu>
+Date: Tue, 1 Sep 2020 11:06:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200807101736.3544506-1-hhan@redhat.com>
+In-Reply-To: <20200707022544.24925-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AF0Xctm7HmGO0lIoJwgW3iQJaA0tKNnbr/DC8TTCa6hoS+6FrJy
- D6a4XMeAf00NSdVqJuo9ee0WJaeDlAKXdF/6xduYBzDZS7s9VAfKy0Twmwu93ZLhRxTWiS3
- 7LOVnDYKCOnUmxZXkBhG/2qbsK70irqUerrAyD8homiuUhsYBAw0fqyA20CY1EYrzbullgh
- Vfwe6j4DCfPScFl2HHaYw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lwq9R20wlHo=:+3JwcTJIFdeW8RpBkgiZdr
- 4+W9UKRNGovUvNWsYiWzTFOykg86PUslEYIiiUlSErjwm19kFN4kiXg4LHutVzHp0Fk+/Wacf
- dSEobMJRu+wwClLnHy9g3LBUrXUKlo9cjjzvVdFagbXst8Lzu8WGT2aELBSSiVJqhjuY5tT0Q
- z3mGT5tmJTfP4arklVVzem68vLP/h7jbM5sVx2HhcwwTiASXRBbtQQ2+dpbjIY5yhcncDMFFE
- qDvglGdQSkWsrUomZQYB1CJN0qYQfYCnEbsHLoCUXeGHpt69xoeAy6irM/tCQ4ctW5A4G4L3d
- pl/2ZKLOvJuvFk7ilR+uVp8JX5UzBNCZ9iP88QF/CCkLgzNvnQU8nHMa3Vxu9zHvadjXfbVOu
- He6s9ioiw7HlqV58dc84sUoq29pyXUDSwS9BcdnC1y7Izuirb7sKGVSFMHZJWWFKFosq67GGy
- U5h/rcL3nn9jgxzVF3vQGnAYZKIfplou9hzvK/rjLaMG8CuvieaykPe8bqO3ex6IKw37JsJmk
- UOUyYAgKihVRwU5Sd9LfNUfdvNNWYnYgLH2lg6fYVHqNxl6tWsluAal3O0WOJlmUlcQ2lpE2O
- AQ03V4HOnkq/6Z04YqmWwBXd61l1zZYbs/Y72ZpbgUNzwVYnCwvO/JmVeLxd6BR6sCohuCeEy
- gtZNYDzBDjnflUD5R7aHeFi94Gsncrr9pqCloyXloSpMKkf0rr+ieq0enBzjC53ty+iGu8J70
- FDeaW5zKyPiCrTp9rHG07PeBnyJt61lY1FQRbSq7a1RFJRyPFaEryj2d++q/qK6xrgZQEkg+W
- Pr2fba2h4HHwTfHTzyI6FSZOFb0RrNBSyFroVkGGRo2VyYMmHXTOF5vS+aiLwOhp2tIyDAM
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:oVd+hZ1JxybCxLXDOofW+d0sK6a4mMDtnAzH1rrhVLmVbSiP+h9
+ ZXK3GyJQVtfExQpIzK7dzeHXRbzvuwhqbf9SDnlBU8Y/WnUBzxCcAU5EVmSsqwKBcrrZ1un
+ hxP7gqPAEFr8OnKkfHaSCn4L7s4SapS59YJ5ydGIC5e8ne4uqf5JgBZaDWWV8YaL2wvQYfn
+ UUx9Z5d2DVXquvlWL20rA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:YqHEciCt17Q=:dm+dGx19d75JhlXMZ/ZWGg
+ ZvavO50U7NoTw2yufzNiI97jSCXGrhOzQBVwVpS8fYEN8vGu1qKQK0o6lVKZY3nqe0v1mPxj7
+ wlHmfP58XPMMzNXimUn/2JonSLIj9n4LcA+mQBWsuSKymCLnejsyj6eSNsQbcyYWHw+bcPeQC
+ SENKvWuGT/g1JMqOMrygkjfzCaKfboRVgxBOYrguNTJGeEDSZ3lnTmW8mv2Tc4QtnmlQylciy
+ nr1zoVpzoekKvqbJ5Xv8Y8L5nbRMJtWThXaHUjxSxei8iPUw16xXRB/WPlDsfljo17eQUpeCT
+ 4ygjH5DTs+vquVUCr18PX38a7Dm7ZQqMlmokt6jEbbyhxE0fXOSfcMQOYmnwQqJwCV3MGNqxG
+ Q3QSwm3uqtjNxrUCX3u8uGGE7w4aLnzFzXu0Ccpgde0/f//i/dQxphPvhlPoJuIFtP7j3w6sr
+ eGK5KP/kEP13DeTtaL7X/rr+BOlKDpQxRcFG1X8oZVjKs4DTELIO2/PsXkRRJ54tsTZCI1aEe
+ Woa39fFd2rHaniSliPXVYZzUXSs+V8yWtYHwyOsG/hZI6PtjAJU6UXjJ4+4GNzM37ek/80IEe
+ mA1ztApAQCtdntSLvt2QlYYtTnOQ3Zj7eRFBlOvQVN+di0S0kQg93n4TFMJalJSkY5Iz1Kkmr
+ pW8IlSodAayjLlbXf86a2LauG00mKKH301KpQ5iZxNq1erJ5/20GXAg8uuKxp99SQ1LpXfQOq
+ XDLV32O/NTRsbTNnfmJP+YNInYEziNbqK7hyo9EgbI1afd2+yM39jkuXuIout6FN4gGVsUsUn
+ pJRvxeyXx02aebjCuITkby9rOLIfWuDg5d7pJiASDqDpRPG5Zk/I8mITcMxYMH4uZN3XhIV
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:34:36
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:06:41
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -107,45 +109,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 07:31:52 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:06:46 -0000
 
-Le 07/08/2020 à 12:17, Han Han a écrit :
-> Signed-off-by: Han Han <hhan@redhat.com>
-> ---
->  docs/amd-memory-encryption.txt | 4 ++--
->  docs/pvrdma.txt                | 2 +-
->  2 files changed, 3 insertions(+), 3 deletions(-)
+Le 07/07/2020 à 04:25, Philippe Mathieu-Daudé a écrit :
+> Following the Linux kernel equivalent patch posted on
+> linux-mips@vger.kernel.org [*], update Paul Burton email
+> address to avoid emails bouncing.
 > 
-> diff --git a/docs/amd-memory-encryption.txt b/docs/amd-memory-encryption.txt
-> index 43bf3ee6a5..80b8eb00e9 100644
-> --- a/docs/amd-memory-encryption.txt
-> +++ b/docs/amd-memory-encryption.txt
-> @@ -95,10 +95,10 @@ References
->  -----------------
->  
->  AMD Memory Encryption whitepaper:
-> -http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
-> +https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
->  
->  Secure Encrypted Virtualization Key Management:
-> -[1] http://support.amd.com/TechDocs/55766_SEV-KM API_Specification.pdf
-> +[1] http://developer.amd.com/wordpress/media/2017/11/55766_SEV-KM-API_Specification.pdf
->  
->  KVM Forum slides:
->  http://www.linux-kvm.org/images/7/74/02x08A-Thomas_Lendacky-AMDs_Virtualizatoin_Memory_Encryption_Technology.pdf
-> diff --git a/docs/pvrdma.txt b/docs/pvrdma.txt
-> index 0f0dd8a7e5..5c122fe818 100644
-> --- a/docs/pvrdma.txt
-> +++ b/docs/pvrdma.txt
-> @@ -18,7 +18,7 @@ over-commit and, even if not implemented yet, migration support will be
->  possible with some HW assistance.
->  
->  A project presentation accompany this document:
-> -- http://events.linuxfoundation.org/sites/events/files/slides/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
-> +- https://blog.linuxplumbersconf.org/2017/ocw/system/presentations/4730/original/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
->  
->  
->  
+> [*] 'MAINTAINERS: Use @kernel.org address for Paul Burton'
+> https://lore.kernel.org/patchwork/patch/1140341/
+> 
+> Cc: Paul Burton <paulburton@kernel.org>
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  .mailmap | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/.mailmap b/.mailmap
+> index 926cac6bb8..fe4c561338 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -49,9 +49,10 @@ Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+> -Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+> -Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+> -Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> +Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>
+> +Paul Burton <paulburton@kernel.org> <paul.burton@imgtec.com>
+> +Paul Burton <paulburton@kernel.org> <paul@archlinuxmips.org>
+> +Paul Burton <paulburton@kernel.org> <pburton@wavecomp.com>
+>  Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+>  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+>  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
 > 
 
 Applied to my trivial-patches branch.
