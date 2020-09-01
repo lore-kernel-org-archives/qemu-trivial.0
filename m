@@ -1,23 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2IP-000207-H7
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:09:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32960)
+	id 1kD2M0-0006r3-6d
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:13:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2IN-0001yk-Io; Tue, 01 Sep 2020 05:09:39 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:41441)
+ id 1kD2Ly-0006ny-OE; Tue, 01 Sep 2020 05:13:22 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:35889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2IK-0006Q3-AL; Tue, 01 Sep 2020 05:09:39 -0400
+ id 1kD2Lw-00071V-CM; Tue, 01 Sep 2020 05:13:22 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MnItm-1ku6Ht2r7k-00jLXA; Tue, 01 Sep 2020 11:09:29 +0200
-Subject: Re: [PATCH-for-5.2 0/3] trivial: Remove 'and and' in descriptions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200811151643.21293-1-philmd@redhat.com>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MGQax-1kNF5M3GCj-00GtTt; Tue, 01 Sep 2020 11:13:17 +0200
+Subject: Re: [PATCH] mailmap: Add entry for Greg Kurz
+To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <159724665142.75339.817685642171828648.stgit@bahia.lan>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -61,35 +59,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <405eed2f-66a6-27d9-8b2b-dbfa25dffe8a@vivier.eu>
-Date: Tue, 1 Sep 2020 11:09:27 +0200
+Message-ID: <fbb4f46a-5949-03f6-f263-f996cf808b6f@vivier.eu>
+Date: Tue, 1 Sep 2020 11:13:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200811151643.21293-1-philmd@redhat.com>
+In-Reply-To: <159724665142.75339.817685642171828648.stgit@bahia.lan>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oplqoK/AYSJ4pooj3UmF6kmt+iFzcJZ7uMg+lsF939SfTxuiCtG
- iStJzVkvnD/87qxZwT+u3xvcKDeanfoJOHZildJiOww3oEslKehLXqoqCSyBgfebwIo/bti
- 1uM8v+JdREPjSHSBHx+DS33Mg+s79LZ3JURxWYyjVwuq1BKUxq69YWD/HPJpB4iW7g2rTy5
- V2J9Tur7jsrZBvgtcYD5Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3crdWgnLaXg=:cShKkrhZz2GMQasFF5D6JE
- dyKj4DvlVxC5BpGz91QDQu1Bl+i5zhnqImkXYwoSxrql4yvOobUel0GAcPRQk7JNK2byKbhd+
- Kj13FYidIkWF12Wvn9840n+JyQQRrf+mNt8CgKVKMzqo0vHj+bdzHschVbEQUHZKschRu7JpP
- Jmg5Ji/GRLBiTdcoc02FuU9IDBrdbBhRaa5x1nU8EeyzgrCJSnUz+t+t2GU7wmiQLWOZiQPAO
- HgzxhHg+G94eM6s1V6JhihqUC0Y4NTwRexv1EnfTFiNxQ5n59AWKCWmokMksRrVBhrICK1cG+
- 2aoVq4ap/VT6dfSBQj67fLNyUDK9ciIrQb3TQj3oJwTwiguHFdXZcN1wLyzvWALVAIy+VzSNe
- fNv6DMZ316mfvtNOwshNI+Q8m/EP+YiEVTDPE7ki0w68i3daAF8IS77n1zNdbAY/2KMVx+HJM
- UYBJYxHoXYjlB99mJ4qx1ABhYEHwktYTP40CHAGPdJ3UenpoqGPjoqOob8IeRtGJz4FSIvaFS
- vL7yY5+qjrSCgwwahk5442jEKt30cz7GeHtbTQys9haxmAOkmWue9f100Uhzy7ioInUJmAfOL
- Xec3nivUT9oX0ppagCCbnWJq30LtrAKLomFVreLEuxjyjaDVf96QEYFqDM4JL7Jl/s812N+F8
- H/4WFdsMgDmKMTGGQaQg1IYTp2pfTDZRDManHJwT+O38u9Yz2ejzG/wUaDvWhFjyAJnGJjUm9
- pi2m3PqgEnp+BqDyRl0HbSRBLWQnIsQuJNnHCtyiFr7SkcqntAHzOWsF6uzFjLa8NcH7f0iyR
- X3Un6oyjob9cH3korFnwLCfSFKU9xd27spymo2V4Q9XHuw+Tru5/2gjTCfrYHcDIWwedtzx
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:TlGoOFBW29Wyg8xzYf6o6sjH1HgjMQHZhP1k4qprgIWcSrI1+oj
+ 9wLp+SOArLPVa5PrDj2hp9rPrHKjEYoljYWMsSsW+OTre1/5rl+cz2WQ1MxNX7YL+TmInN5
+ lkjXk8VEYWK/Wm9MiLN8IUQeRA0fqAGQP4e4YtxQW2d15LdVsUwYA0EtZvs3J0pyn0/4oPG
+ FtPljdqNNhFd2sxIYyj/g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OwKhnpLLFWU=:eg09/ApyU4IVosniMlfzNT
+ +PzyjM1ISrdSu0ywaVsMZon6KjEZoerP0AkmhQwWFCLMsLhQRAGs8uhstSHE88qSiZj8jsm45
+ l+xGTYaCG5S3G1diksiZ+Cp+7+clmRhgg6SvGQ5TGFpNpzUd2bpL9CNGAnKRsh7qQw4RcCqP4
+ FQbNNtIKB8uSWJDQhrNZ480ca0VHXj9qo6j0oJejrPXNoN9OeEpPRBU7quIqi61xRN/4N2DBm
+ yutNgFSP8T2Q9MnVm50kkqMyfFMV1fZesXQQHnr8m/m3tjYvlKynAdUv/Re5p/f2XVnEmkYxP
+ ebNyU9bSuAR8Aa3gFle61G4bxFWvNGk92dR0LPlKHiS3/pLBNEj059BSg6hzhvWCfnII1aLAG
+ FdODuEXX4BTwaDein+3U7F+yOF75DbylkEngJwy6JetmKRjo3kZQd3ftdUAYhk6lqj9JUHfZ3
+ SUn8IMUdGqFyVjfbDZTaim/+WQncDdndcbgrkTVBuMhV7uxKZmBIv9E+kd8HrDGisEMG6DHQ4
+ v01stPYEC6ZJoBsKhNQd3hYog6VOqxxXE27k0OnPX+5aRwyS8pVYyUN+ZjIXLMD/LeRllh6Rs
+ jWf7MiweVxJxc4uvTdowubbPCCdGFmuabwUWwfCzRBPPZAupET3uaVDuDOAUWk5sJFQd4TPqm
+ OiXUO4+6zsDLsKjq6zY8/lJk/KmaAwbHMeasZieqHiVbm4VqbO4p5jUFaYZLObNhdYE11TRbg
+ etrJMAcRRFRUnfC0Cs1xUlTE/LZrGvOzvwgaUcngcL8mkvC9HsZ0D8yY7AeRXD+N0Bq4+wYhm
+ Ix68r3mUEKoNi2TeUV2etDGcpHmCAaBlwvO6erBuVjt2A0XHVv+QXnlWGKM8+xHpTfQNNPR
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:34:36
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -109,24 +107,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:09:39 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:13:23 -0000
 
-Le 11/08/2020 à 17:16, Philippe Mathieu-Daudé a écrit :
-> Remove duplicated 'and' in comments.
+Le 12/08/2020 à 17:37, Greg Kurz a écrit :
+> I had stopped using gkurz@linux.vnet.ibm.com a while back already but
+> this email address was shutdown last June when I quit IBM. It's about
+> time to map it to groug@kaod.org.
 > 
-> Philippe Mathieu-Daudé (3):
->   hw/i2c: Fix typo in description
->   util/qemu-timer: Fix typo in description
->   util/vfio-helpers: Fix typo in description
+> Signed-off-by: Greg Kurz <groug@kaod.org>
+> ---
+>  .mailmap |    1 +
+>  1 file changed, 1 insertion(+)
 > 
->  include/hw/i2c/i2c.h | 2 +-
->  util/qemu-timer.c    | 2 +-
->  util/vfio-helpers.c  | 4 ++--
->  3 files changed, 4 insertions(+), 4 deletions(-)
+> diff --git a/.mailmap b/.mailmap
+> index 81c2ce09370c..896e2d195d86 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -48,6 +48,7 @@ Alexander Graf <agraf@csgraf.de> <agraf@suse.de>
+>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
+>  Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
+>  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
+> +Greg Kurz <groug@kaod.org> <gkurz@linux.vnet.ibm.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+>  Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+> 
+> 
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
