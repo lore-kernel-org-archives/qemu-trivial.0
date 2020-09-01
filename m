@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zl-0006j4-HB
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55498)
+	id 1kD6zm-0006kc-0B
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zT-0005t4-W2; Tue, 01 Sep 2020 10:10:28 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:35029)
+ id 1kD6zW-0005zg-KR; Tue, 01 Sep 2020 10:10:30 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:34829)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zP-0003wz-Do; Tue, 01 Sep 2020 10:10:27 -0400
+ id 1kD6zU-0003z9-MP; Tue, 01 Sep 2020 10:10:30 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MfpGL-1koumZ1XwH-00gG4y; Tue, 01 Sep 2020 16:10:18 +0200
+ id 1MXY2Z-1k55ZD1aOd-00Z03W; Tue, 01 Sep 2020 16:10:20 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Li Qiang <liq3ea@gmail.com>
-Subject: [PULL 31/44] util/vfio-helpers: Unify trace-events size format
-Date: Tue,  1 Sep 2020 16:09:41 +0200
-Message-Id: <20200901140954.889743-32-laurent@vivier.eu>
+ Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Li Qiang <liq3ea@gmail.com>
+Subject: [PULL 34/44] hw/arm/omap1:Remove redundant statement in
+ omap_clkdsp_read()
+Date: Tue,  1 Sep 2020 16:09:44 +0200
+Message-Id: <20200901140954.889743-35-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XuDq3Ce03C4SUF81OPoY07f5QjJcTQ80clUd/CiCZW6dkdn9M1t
- t28F1yue3em7V5+lwnmMaaP/8vvLgaGnvgL0xQK/GQRa4X5BSUNtaBDVAX5Nlfu1XL70b6a
- Id7K2XjkYY2OBPjWLv/Kn17yPO/FKQ8VWD1M7qVZDeeP18NpkycAoqzp3KKFtIi4duIDuZa
- k99g0rwplU2ylAk3xg6hQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zV4iK8yvxQA=:7Bv9M84nlan6nC8ZVf8vzP
- aXztW8fTMT++TnPBcl7qUle3ptDAzn7xQp5rHhgDVO0jK+NfRCmFqBBcgKEkChchepqRcvl0d
- OM43ixiO/+T3GpRB+aZFHAXHru9O8MRWzDYpJ64CdpBZ5SLjINldpBLBWE+l/kYi8ZhBUdaLx
- 8mKBnYP0AhVXVDV/UwrZTwGCWsooNRRozPmoORNkTr4/bcs9cMHYeq2M1IqF2a0aQl2XkIYVH
- vp82kAgz41GieCZFcC2QDkenTenjSVMwbkBIIM6eedXXNlHR/fYTLr5MaLWgtUB20C+XUwnJm
- spDQQvcGfPAxD094SzwYyooIYJwl73Upk7SF4ebvBuBVHT4ztKysNWjr+0tBZDTCSnoJ5j6fb
- nHC1F4eIJTuQUCW001SG16JmVHGMcEECaZ7eyqsJbsZQKUjGMAgyYE/+m+SmQxQo8JJA6N507
- xZ+wQZra+G8VRXWvj3JlKn9j5GLlqNmu/x+Km9Pwo6hhK16+vqJo//RbkNEp4MIDHNM4AKQ1q
- qt6HrejWPCXMhbX6bFa3LrQ5MEoDyzVnnZVckWJeX+QVCIofYHyxmGh4RHOlhels3uYd0NixT
- CbVyC6d5iG1Fu8hOjUoDuVdxRoN56CigHTrxicSbo/dQDryg5fjClUBfsmTOXhJL2as3MRt8X
- JiKnKw427ZnT9D/5yM6RTJnE924gOmZqkArgksv13PhCm+yMTM6Ax8LWTvYpxv/T3FrnuqqMg
- 1wo6GqhhfScSiaP9KzgkuDn91Lp5rlCmz5C/afMMWAs9aooNQTuuIE120N9uyLrwInVSe7lZ9
- N384fUfFSx+lLatYzdSqo3eQcuXfkgmRdlGE8Ik5DY4fjkSHwK2+pp18jlHML8mOlTBcFKa
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:MRDOMqanYQOUngXE/hWOxXm+U7mswvnyvT8rtz9CyUxC1N2ozry
+ KfjHahMaJgHAyX5J6SrY5ItcL0K9bDEBJRN4fwbwGav5t0/TJxkb0k25YxFX7rtOSWI6m/9
+ PkgiZ9Up9AKkJWG/xd0yR31MHsEMR3pXZ+L4rTaN0ElPJHhYI2IRIP6IlrZRr/mEK8A9XFj
+ ibTiV8CUvO+CzegyGQdHA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fLx71k1tseU=:p6PnZOAwUO/dqWc5UmRyxV
+ TBo7N6Oq5VAOUDLFslM4001DNVLaATdWZmcdizFTWhBQdaUfN4H2ZWWEzDJ3GhjD0ku2y41Gk
+ 9JjEnXUJ3hzGdz5Jkw+1SpNKSRFQ9uDD4A+wMmCtdZ4XjmEXvlQFHWH52w7Mqk35DyCrcWXlD
+ dDBJYjd1HLLTcgqRZa7spswoXkaYHZGeEkbwkweKTwtMX/7fLUi4ZPCn2sOXnDP1IUpRXN7sg
+ E67z8J0liIeKAiy+8H7f/a1wzl26hxBkypNqP6pXm1nCx5n3yU1GHmy7nkOcZzi7YJ5Nl/B6l
+ LgpR1tSE+/pgmarhTrUVI+KJ/UX3sgduNjBJHmIot2Rq7JwaR20cl3kRlFz1y0/M1GhoGm/fE
+ DIKEvUrLKDZpszFchyaRXCWmY2VfQ6Jr0c5b5FRlb7tSVOFzTAzqloYZe5pvzvIh26+WxFfDW
+ 9EmWOF+D6fgwsvqAJIHnroIyUK4roCcb4gZxIZb4vNZfWPH7TJYUaZ9wHBdNjs5y5eQv1CTAa
+ /tEEhlaj0auWxXSevkgblIhdswwJps92QxEFg2zmmcV/sz1X253e1ZIZ3tm5jzdnhBre5vivF
+ 7d1yt0UHH2QVNivbD55CpOtnP2cuYqQd60mlkwA6F7Ibh8q2VwrUjixdJdQjIHKFQMS1F0LcX
+ blJlnl79uDEFSpf8+SczWrx6+cH9bgTvO62QvZRz7xL2glE5U1DYqoTYhS5UhaNMbLJKdubzI
+ oA44A+aN3Dxgh0/pUiGlXmhcQdBs6PPx7fh+K80y35dWa4/GjuQ6qZkN7G1Fx+f7kZ+lRr/v4
+ 4C6hcOPqMJBoJo8POaU9C+YR3jnZCRYkKkkHRPyhhbYSp2PNWTh9jNoAUNd8qWD9T38eIqY
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -65,51 +65,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:28 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:32 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Some 'qemu_vfio_*' trace events sizes are displayed using
-decimal notation, other using hexadecimal notation:
+Clang static code analyzer show warning:
+hw/arm/omap1.c:1760:15: warning: Value stored to 'cpu' during its
+initialization is never read
+    CPUState *cpu = CPU(s->cpu);
+              ^~~   ~~~~~~~~~~~
 
-  qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4000000
-  qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 temporary 0 iova (nil)
-  qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
-  qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 index 4 iova 0x114000
-  qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 iova 0x114000
-
-As it is hard to follow, unify using hexadecimal for all sizes:
-
-  qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000
-  qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 temporary 0 iova (nil)
-  qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
-  qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 index 4 iova 0x114000
-  qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 iova 0x114000
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Message-Id: <20200820171006.1140228-1-philmd@redhat.com>
+Message-Id: <20200827110311.164316-3-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/trace-events | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/omap1.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/util/trace-events b/util/trace-events
-index 0ce42822eba9..d9a0b4f8c63a 100644
---- a/util/trace-events
-+++ b/util/trace-events
-@@ -79,7 +79,7 @@ qemu_vfio_dma_reset_temporary(void *s) "s %p"
- qemu_vfio_ram_block_added(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
- qemu_vfio_ram_block_removed(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
- qemu_vfio_find_mapping(void *s, void *p) "s %p host %p"
--qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size %zu index %d iova 0x%"PRIx64
--qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size %zu iova 0x%"PRIx64
--qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size %zu temporary %d iova %p"
-+qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size 0x%zx index %d iova 0x%"PRIx64
-+qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size 0x%zx iova 0x%"PRIx64
-+qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size 0x%zx temporary %d iova %p"
- qemu_vfio_dma_unmap(void *s, void *host) "s %p host %p"
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 6ba0df6b6d09..02c0f66431b9 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -1774,7 +1774,6 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
+         return s->clkm.dsp_rstct2;
+ 
+     case 0x18:	/* DSP_SYSST */
+-        cpu = CPU(s->cpu);
+         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
+                 (cpu->halted << 6);      /* Quite useless... */
+     }
 -- 
 2.26.2
 
