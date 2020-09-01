@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zX-00062g-KV
+	id 1kD6zX-00063h-Rh
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55364)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zO-0005bm-Jy; Tue, 01 Sep 2020 10:10:22 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:34691)
+ id 1kD6zP-0005dD-4m; Tue, 01 Sep 2020 10:10:23 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:38033)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zJ-0003q1-D6; Tue, 01 Sep 2020 10:10:22 -0400
+ id 1kD6zK-0003qW-43; Tue, 01 Sep 2020 10:10:22 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MO9qz-1jxuYe0rxx-00Oajk; Tue, 01 Sep 2020 16:10:13 +0200
+ id 1MVeDs-1k3Apo3JLQ-00RaTR; Tue, 01 Sep 2020 16:10:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Thomas Huth <huth@tuxfamily.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>
-Subject: [PULL 24/44] docs/system/target-avr: Improve the AVR docs and add to
- MAINTAINERS
-Date: Tue,  1 Sep 2020 16:09:34 +0200
-Message-Id: <20200901140954.889743-25-laurent@vivier.eu>
+ Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>
+Subject: [PULL 05/44] vnc: Remove the superfluous break
+Date: Tue,  1 Sep 2020 16:09:15 +0200
+Message-Id: <20200901140954.889743-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZE42EJ6lYk1XVAUwqnV+LgGkzDrF5g9Ly3o1vyWJimPTCjldwak
- iJHMQZrCkahow97Y6AyWM+yiRPLBlYDynHsFP/w6/VPH1brAdXBU+I0luWw2Qo+61V63VE/
- MTpDNbc11aydduTmcmZZiHfEdf1uLltgX+n2xH47ju7q8S2FjLnP553wlZW2g0KSKl7L1Lq
- v3nAsVgSTR/RNh3+EfGqg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8Jck6vwPhoE=:aV8pTtyIC3Fjp9TYUWZ8up
- Whet0dcX+K+smqDbdey9NOSvOvNy3XFBiTjrhNhcAetJ2KVYkQZkgagjnYRphEK3J8MYo6gmu
- ZpLd3xLyAfg+rqpaBVRoz1lxLaFuJFpeUycp/czE4emRwQqgvOI2c/SuxdkAI3j48APZA50aS
- DlIE8VLVA7RZilP3W6PYeQh6wu7KNCOLMRCuKvXhQY617oiHk9wkmcD+qDF3j6dXBHWAso9Ef
- 44TA3xgIIOfmui9yaiwlMwM2vDwz5LZzmhwfUqpryjsDO/aUnOqZRix/Nm7W2EJ1bbHCloMDm
- V+VA7jj/tLEos56UkIaeYnlJWXIBYKCXhfrOR3fMUUsIIzP2BztHA7/D94RkDdZAhdqrokxjW
- zVpT5eZynuRTRuXo7DnkBhkJPdmKhhBeF16Ln83ekbn5G34Q6fCyNjWlf6kNKpTJx5akUofED
- I5sP7BEQNlLGuRlox+FoN96pN75YlUco6wMvKC3OLbmHegqKIVPPAWgmZgg3EOQYJo5iwxSj/
- So+R0pW9ZRR1g70zYWx9saP2v2TnhgnGhITXnmiaWgFJ7G/dCBnpKNEOw0aF/h/9oboYezcJK
- Hpziw9NabLWCTw1e7YggoTZK1O4xScshuLulabfgQlyVF3AIgC34wJpPvC4qm+y6EOvP38+Ji
- yzh3W9RyuaQn5Ux9Gb/doU4ZJ47Q4Vb/GmCElMcXEh38g80fQOzdyqEnnCm5g9yr4L+czLoa3
- attttfAYF/cnvFIfxIiq1vBFbW0P/9rgQ0i5q4BwK5iXgdJkZUEUNHr2PLi0XPyU6FjzQ3/PL
- x02rEhbqb9Q/s7r9x8z3DbCkjoO/4ycJskAsYmTT8KAxuTC0NPHC+qVHwX3ibqJyHvOl8yQ
+X-Provags-ID: V03:K1:Pdv3G5Oqe3F2hu2/7gXBOoL5WAz0XamQawEsYgcNF5YJP/+Ca2e
+ uOh/8pgWD95l4+aXRbKkcS2L8wlzNnsLkCqOQeXPQPezwSpu4Fbx1AgRX+3PDidXqnLTjz1
+ /o8JqoRu+huLR2afrbh8O9XGvEjdXRTWwQGM2oSLGfKdTN40dy1hRjGpsuIJka2ncQaQcFF
+ yTeU3ySy+s0gU/0nxSI1A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NBEvsUduZJk=:wiYh741gjlNi3HyZ5q/vZX
+ tKaY8C/UQgnh7K67xFxkgIYsuxcOFkLirpNbGpKiJZierlUpL2V7QGuUsuS0IjcgsnCSoHzDK
+ 6kd0XGKB7VVNDXsjlOMjTnJd4Phdaw/V/CwBd9CtCa09gojNJP6CJ85fU5lpoG8LWfJm1qSyG
+ xedyQA2PGl16zp1QtQ+Dc+vdbi5hUanQwpESSWcE2BRLTNyL41PnLjKaO8eEVk0fmRUq5qdtj
+ K6TDAfW+pJ72N5zDdqcuE4WnJl579jBWTyHwCoUleZ4Xo2QaJE9DbODCdFGWI3enB9FuRwQYF
+ Y8TBLKqDgceLBgdH+e03TiZLvdTYZTECrJBcgomVUYX3soCTnauwmVSkf7w8ZSs6j0OqLWT1K
+ Ym0vpEZfkFa8avOFq/cEcu6QmBpLpzHSfivy74zWeYZxrNNoF1oWByF7sUu4NzUz+U9TYrtSg
+ +JMu4Qy8rF9uwFhst9e2JH4Pa7ET37oGMxRFu/+Cy55qRi/DqrqCkBbjhju0C1GOrXkZbjKyV
+ iPA1eMMHOFBA7DJ+x+Vk6lkVcAgbkG0YIfTznUGw852ROmLehJMcZIAPWoPZor+rWlh8N2Ra+
+ cw44jaFID4795kyL/rgkiJ1Vt7fmovn1wme34yTKYzBOk4KLPAKRtf1SMXkDwuvaryqKizC/d
+ qcXFtja/xcYUOxYHUrmXf/6uVPUaBz3K6LQ033doMwm4ZAQSJD9KXZGtJPT4ml/fZHs59d9oc
+ J72D41vKp3k3NzStFsB7eXP+iVBcpj2E0ImfgfeIxYrTj92x5iqWWkr8B9pBmKYHQudovRnX0
+ RqXZQsTTRjmMA/RZLrbUR4hhzFmob3Czp2yxvYPK2so7fkLA/wjiWEk512hmeJzIzrl9Mlw
 Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:09:57
@@ -68,90 +68,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 01 Sep 2020 14:10:23 -0000
 
-From: Thomas Huth <huth@tuxfamily.org>
+From: Liao Pingfang <liao.pingfang@zte.com.cn>
 
-The examples look nicer when using "::" code blocks.
-Also mention that "-d in_asm" only outputs instructions that have not
-been translated by the JIT layer yet.
-And while we're at it, also add the AVR doc file to the MAINTAINERS file.
+Remove the superfluous break, as there is a "return" before.
 
-Signed-off-by: Thomas Huth <huth@tuxfamily.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
-Message-Id: <20200812155304.18016-1-huth@tuxfamily.org>
+Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>a
+Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Message-Id: <1594631086-36509-1-git-send-email-wang.yi59@zte.com.cn>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS                |  1 +
- docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
- 2 files changed, 30 insertions(+), 18 deletions(-)
+ ui/vnc-enc-tight.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 5a22c8be4296..b5ba553ee01a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -171,6 +171,7 @@ AVR TCG CPUs
- M: Michael Rolnik <mrolnik@gmail.com>
- R: Sarah Harris <S.E.Harris@kent.ac.uk>
- S: Maintained
-+F: docs/system/target-avr.rst
- F: gdb-xml/avr-cpu.xml
- F: target/avr/
- F: tests/acceptance/machine_avr6.py
-diff --git a/docs/system/target-avr.rst b/docs/system/target-avr.rst
-index dc99afc895d0..eb5c513cce09 100644
---- a/docs/system/target-avr.rst
-+++ b/docs/system/target-avr.rst
-@@ -17,21 +17,32 @@ https://github.com/seharris/qemu-avr-tests/blob/master/free-rtos/Demo/AVR_ATMega
- Following are examples of possible usages, assuming demo.elf is compiled for
- AVR cpu
- 
-- - Continuous non interrupted execution:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf``
--
-- - Continuous non interrupted execution with serial output into telnet window:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -serial
--   tcp::5678,server,nowait -nographic``
--   and then in another shell
--   ``telnet localhost 5678``
--
-- - Debugging wit GDB debugger:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -s -S``
--   and then in another shell
--   ``avr-gdb demo.elf``
--   and then within GDB shell
--   ``target remote :1234``
--
-- - Print out executed instructions:
--   ``qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm``
-+- Continuous non interrupted execution::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf
-+
-+- Continuous non interrupted execution with serial output into telnet window::
-+
-+   qemu-system-avr -M mega2560 -bios demo.elf -nographic \
-+                   -serial tcp::5678,server,nowait
-+
-+  and then in another shell::
-+
-+   telnet localhost 5678
-+
-+- Debugging wit GDB debugger::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf -s -S
-+
-+  and then in another shell::
-+
-+   avr-gdb demo.elf
-+
-+  and then within GDB shell::
-+
-+   target remote :1234
-+
-+- Print out executed instructions (that have not been translated by the JIT
-+  compiler yet)::
-+
-+   qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm
+diff --git a/ui/vnc-enc-tight.c b/ui/vnc-enc-tight.c
+index 1e0851826a84..cebd35841a92 100644
+--- a/ui/vnc-enc-tight.c
++++ b/ui/vnc-enc-tight.c
+@@ -1125,7 +1125,6 @@ static int send_palette_rect(VncState *vs, int x, int y,
+     }
+     default:
+         return -1; /* No palette for 8bits colors */
+-        break;
+     }
+     bytes = w * h;
+     vs->tight->tight.offset = bytes;
 -- 
 2.26.2
 
