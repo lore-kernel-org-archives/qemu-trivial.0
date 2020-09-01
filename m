@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zO-0005bE-FW
+	id 1kD6zO-0005c1-O7
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55208)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zJ-0005Ok-TX; Tue, 01 Sep 2020 10:10:17 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:47201)
+ id 1kD6zK-0005Ra-Vq; Tue, 01 Sep 2020 10:10:19 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:60169)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zE-0003lu-C5; Tue, 01 Sep 2020 10:10:17 -0400
+ id 1kD6zF-0003mn-Ri; Tue, 01 Sep 2020 10:10:18 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MGQaz-1kNJB93WBh-00GmgK; Tue, 01 Sep 2020 16:10:03 +0200
+ id 1MN5W9-1jucEO0eqD-00J61w; Tue, 01 Sep 2020 16:10:09 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 08/44] target/sh4: Remove superfluous breaks
-Date: Tue,  1 Sep 2020 16:09:18 +0200
-Message-Id: <20200901140954.889743-9-laurent@vivier.eu>
+ Han Han <hhan@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 18/44] docs: Fix broken links
+Date: Tue,  1 Sep 2020 16:09:28 +0200
+Message-Id: <20200901140954.889743-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Mcik9TkeaKMGYqCdcFrXhfx40gE1qlW7PBlZrqP4zLUPcyVZChD
- 13lly84avryWHAnP6r2HXf23Vj9QwmaZwbXjcdLujdMtBEOONUNeOv1mfGXO6Xaujy7S+Yp
- V1wBXrgbndhh0Tr95doz0VYWZku5zv9v17j3+3HEyiWGHB1uHkfRc2VA0E7q5llY/qYDjH+
- WJCfPtfftNBNch+mjBRYg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Kb4Txv76HBI=:fO/W8IRpcaTuf6XW8+J3wI
- u0wuLJYEWvURKE1Xa+Pf66/A9b+NQ0tCbMtoSkR8yP9qwstunYkw9SaEHi7mj5wyuBtoftExF
- tD6bTBoSEanWiahEXYMk4X2MaxbeHK0VmjL59hPjqAAN6m4V6gXVHSeeMzCucE5D5lJDwUjn0
- dBR2qcvETPfEWeB3IdnAnO/QR8jnoobe624jnfGCfsWb/+M0TADuI03XUgMAZ9718pG+39QrI
- XDmw9T+vH0ZC+asYfpUT3X/0i7UnCeiBAVMrHM+WQOHYWGkICWDA4oafXGFqAHrARGMO7uY+I
- HBddrBHguFlYqZUewWOo3btcMaB1HhfQM4D89cRs/F5m5FHsg222r7GbXZ3TIlrbt/U3JtTCC
- 3UtFJDyVNVfxXrOz9HSstVAuCqfJHhj90n1GjgoNDMYJ7BQGSEexk18km5OIXjUu2UNmyo/DB
- Rs5V8+G10MJS+F6x4LAlqGqRs6dJB6AloOpHaY2CEysDN2qe7lP0whSfh9ItVp52PO2Y8zB09
- 55L+fhhAwqG97LxGsOuHbuvM6+0drTZhXv8l7v3+ruqkqBlXHMFACZi195UHSemEBJSQBDBCX
- S9m/P3wYXAecPXzrwIDutBPtCo+JeafrkSNyVyyCex33pqFpQLm4IFVRs/Tk+qXl+aPWHkDid
- rAov4aLWwEIeYgx8e4lRL9Jy0S6SFspE0M1fl3/fQ/SW4sVOOwTZLvdh2yaosHd+W9y44p9Qb
- B8ITVVL/89IRvPYgRfg8/59jaAY8PzAdQY5nuolL4dem0R0uYTvoOmkuucTr1igoyWwxTtfvA
- NYplVdTEkoyk9cYS2uu2JK44nt91C8ewqJgoy1yn3QiG23bsfUUtEJMhtcCvm8GM8Qh8SUD
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:+vZfMsL2aeP5mDvhJCgG1EfxnPH9cPYAmsuNrE9+KP2my/6K2fO
+ FmuOAtwmmGS8nxABOv1RxMy7Sx9h/AP6vqtX97xiwTLzWyA8nQRu8+MuPcjlZYGzM6Zr2dm
+ VkbUmn1zPiEA71qspNIWwsLj8BKYvZbiFdKJXYAwa9MDVfcgCOiW66frgDhd1PK52AiYxu9
+ uWBnU1z5gCPahU3p3zr/A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:VUFn8QefwbM=:/koVAmFzYVRyvHSS6/a05G
+ IpmJov7MDilOR1BOV9KAO33wXzfm5brFXptu4tqLJ7ZJlvpYPmjPzzqdEeIUrDKLXn8stDZKO
+ Gdoqu8gUf+wWjVDj1vDnre9h1Vio9AjVb3N4PIhE9SXe9QKeFQJ4PcSQSbp6LCbq4KgAd1Kw7
+ 1BxSiYvT9Y1EyruZMHPElJbpBxW4v5XHGHeJdzzjESWomYxgvtnRK2FD76U06iNYpNebv4l6X
+ 9U24t2v+T0nzIP5KDqHghksYSeP9j4fTtmA0nAvprqAhHgo0m9TJVkUntGSAYVngGcvh6DVay
+ AbzQ8F8GkND7Q8gnXfPsSgi6dAeKs7IqZWjx92n5CISQvrI7kDkmWhHeAYpco2x0rakAmEl6F
+ JrsAVyxG7D9kFfC023wTZlV/z0EbJlpigoX9h5Nb74k70fHlE5/7HzhbFHaWkFKEbctuBWbaw
+ J2zeTiBYjSX/TPlNJwVEW78nUlDZtM5veg9gwlIbhV0tht44XDlCkk4Vn4gsLQFXxOTOCLx5Q
+ tA7MDS6EhMW0BLceVVE5EKPnOFXwQ3vE1jQuWYOSVzmcJpOdq8ncp3kP/ivABhLZ7csh/kYMf
+ Q84sAFJIW/Y7eZXcLpeomKbAht89LrmPjjm142BIvVz6BNh5o/wRTCUmqHWvTvG/cWwioBuZu
+ SRFN5LLfV/4qzlPC1fWDqOEpjrHLYf61KVMRkIWUkfw9mjd5eip+VtjRcCyxn6Sa6TWRER/C/
+ FAoK6AMMGdqajpnsgGgkTdEECvdjfXluOMuH7xRvCFoDOy85bEksXseSdp9FiBKNVqLIatLGA
+ BKpcfcb8pCQ1VQULIXrUGHS7FU5a+T099j3tbPHQm3Yoyt7arUJrGI2sdO6T9us6J/vDKjl
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -66,50 +65,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:18 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:19 -0000
 
-From: Liao Pingfang <liao.pingfang@zte.com.cn>
+From: Han Han <hhan@redhat.com>
 
-Remove superfluous breaks, as there is a "return" before them.
-
-Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
-Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1594631142-36745-1-git-send-email-wang.yi59@zte.com.cn>
+Signed-off-by: Han Han <hhan@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200807101736.3544506-1-hhan@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/sh4/translate.c | 3 ---
- 1 file changed, 3 deletions(-)
+ docs/amd-memory-encryption.txt | 4 ++--
+ docs/pvrdma.txt                | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index 6192d83e8c66..60c863d9e1b0 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -1542,7 +1542,6 @@ static void _decode_opc(DisasContext * ctx)
-         tcg_gen_qemu_ld_i32(REG(0), REG(B11_8), ctx->memidx,
-                             MO_TEUL | MO_UNALN);
-         return;
--        break;
-     case 0x40e9:                /* movua.l @Rm+,R0 */
-         CHECK_SH4A
-         /* Load non-boundary-aligned data */
-@@ -1550,7 +1549,6 @@ static void _decode_opc(DisasContext * ctx)
-                             MO_TEUL | MO_UNALN);
-         tcg_gen_addi_i32(REG(B11_8), REG(B11_8), 4);
-         return;
--        break;
-     case 0x0029:		/* movt Rn */
-         tcg_gen_mov_i32(REG(B11_8), cpu_sr_t);
- 	return;
-@@ -1638,7 +1636,6 @@ static void _decode_opc(DisasContext * ctx)
-         CHECK_SH4A
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
-         return;
--        break;
-     case 0x4024:		/* rotcl Rn */
- 	{
- 	    TCGv tmp = tcg_temp_new();
+diff --git a/docs/amd-memory-encryption.txt b/docs/amd-memory-encryption.txt
+index 43bf3ee6a5a9..80b8eb00e980 100644
+--- a/docs/amd-memory-encryption.txt
++++ b/docs/amd-memory-encryption.txt
+@@ -95,10 +95,10 @@ References
+ -----------------
+ 
+ AMD Memory Encryption whitepaper:
+-http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
++https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
+ 
+ Secure Encrypted Virtualization Key Management:
+-[1] http://support.amd.com/TechDocs/55766_SEV-KM API_Specification.pdf
++[1] http://developer.amd.com/wordpress/media/2017/11/55766_SEV-KM-API_Specification.pdf
+ 
+ KVM Forum slides:
+ http://www.linux-kvm.org/images/7/74/02x08A-Thomas_Lendacky-AMDs_Virtualizatoin_Memory_Encryption_Technology.pdf
+diff --git a/docs/pvrdma.txt b/docs/pvrdma.txt
+index 0f0dd8a7e562..5c122fe81813 100644
+--- a/docs/pvrdma.txt
++++ b/docs/pvrdma.txt
+@@ -18,7 +18,7 @@ over-commit and, even if not implemented yet, migration support will be
+ possible with some HW assistance.
+ 
+ A project presentation accompany this document:
+-- http://events.linuxfoundation.org/sites/events/files/slides/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
++- https://blog.linuxplumbersconf.org/2017/ocw/system/presentations/4730/original/lpc-2017-pvrdma-marcel-apfelbaum-yuval-shaia.pdf
+ 
+ 
+ 
 -- 
 2.26.2
 
