@@ -1,26 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD0il-00019B-QC
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59360)
+	id 1kD0ki-0004l7-05
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:30:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0ij-00014X-T3; Tue, 01 Sep 2020 03:28:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:41085)
+ id 1kD0kg-0004i3-Ar; Tue, 01 Sep 2020 03:30:46 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:32789)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0ih-0000im-7K; Tue, 01 Sep 2020 03:28:45 -0400
+ id 1kD0ke-0001B9-8H; Tue, 01 Sep 2020 03:30:46 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MY6P5-1k4uef3Ft7-00YOMA; Tue, 01 Sep 2020 09:28:36 +0200
-Subject: Re: [PATCH-for-5.2 2/2] hw/core/sysbus: Assert memory region index is
- in range
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MkIEJ-1ksLyT0HUX-00kiTW; Tue, 01 Sep 2020 09:30:40 +0200
+Subject: Re: [PATCH-for-5.2] Revert "mailmap: Update philmd email address"
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200806130945.21629-1-f4bug@amsat.org>
- <20200806130945.21629-3-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org
+References: <20200806135832.2319-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <a522533c-480a-e397-d4d7-45b3fda90b2b@vivier.eu>
-Date: Tue, 1 Sep 2020 09:28:35 +0200
+Message-ID: <697a8fe1-bdb6-740e-e070-2046c5ccf61e@vivier.eu>
+Date: Tue, 1 Sep 2020 09:30:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200806130945.21629-3-f4bug@amsat.org>
+In-Reply-To: <20200806135832.2319-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/GDhTQoXUG5J+EqpB0OOemzXWrZOd9CbrDdHfmjeaxgXNY8FhOT
- O/u6t1WwCbxY7db015iS3nhIH314b6wrNOcd9kd8laNiJvby3CItnh6p+8CRgVONXfn1ZM8
- MD4oQRzS8HRAwVxZ/KDJ1xQTqlV+xGWSErDFiICDYKeI+xazViXrd0FXGPJdlJHv6m4Y4g9
- /83w3AGqETY68C1SuzfmA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:a++M/nlXQFs=:CPDnZzygwUDoIir5FS2Ugo
- z9d0J8HnRYoF68GiQQgXxhdIztBl3wWIzlT8hg4iES1ZkssfhW9oxwcr/tZoKUxZ5SdJuMQF1
- AY8YWdxnp4MNBCEV/qiv7dWbvWMldle8oRmzgFraqksp4I80Rr8Cj4oWPdV/O2jgTwYgMu94n
- nghB6vR+sTuESzhkrfqaWIq+35h4RvgidOIUSENfyxCwoX57AfVI2xURZLoUfHjvZ4OJDCreL
- tlwehKAeE2aGnNjIUmc9khnmbPQKrBvYN/mysN37L7GP2QHYy+PxiOG4VYBiletWn/l5+iGHS
- +TEdnu4uy7d7kHv+NxTW6KblV2nQP3LhyArpHNpBD6W/62qbnsgY4mAUmmJ4lFsBuWL0Yl3kr
- NkL+E8jiddQIA8NdpGJXgpQAPJwrphSU6ItRctjQv6S5g1MJucwzCBTCbl+6xJsQKUe+MTF+V
- OAxKJlXOx586GdhfYzs/21blgnLxRB1HtnZQGpmFdLIPOC+CTHtt+v6WMwUOZg7ZLeIvMGLd8
- EK4ZVTXjU9JvsHH1Gu2qgdyh4fdbVYOYIeD5foMb9aSYL2CnuFDK8mkPdJQogIQ+YPFX3A10H
- 6E3osIkyE4q/OTocRqYGlMVF9vFfRWcuoukFpCHYY1VTJhOMmzauppGkWUFTHEDri3k6jwqvl
- 5NXdZgL7KYj5w9ejDda5E+SJZSJrucH9P3yfv4mFxPmRzRzUT9GB/YFLMPGwMBQ4qlymLurGG
- fimbPSxDbqjdUig2e8ukE2ychgcuPXvaUXJLOytTIresB3hBGcYL8oXjcqNjbKbDn9hxUC+wO
- ASn4MJnx5ZPvq/zkPp8n0vs5lbs3K0ppAHFpxKdBAx8flzy7I5QrRzXMUfeEEmLpl4ar7Zx
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:L/RPMdz+S0P7sk7TyaQTSTDQGHZ1J5MoFq/wY60DbaaAoH4/LdT
+ a6z3ZLTpodhF/mpCt29SXy2+gXCM/YL/NaKSVNaCE6pYYzsPX51sjTptvKAUtkyDGZgXhS8
+ H18BvygqJS0rgT6+JEucu7AjOdH2qbTFLbTGrHubYJZV/ju0ck+Qi8EVKQQztK3qaNWQcuu
+ 6AamTQmqvFQvpQNPnyzAQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:A35gAoQxUr4=:qvtCR+g5XjVRxV9+DIZckC
+ ppZWlx3bx8km8yZB22nAwF0+cXK1mYdS57DbJuLk8OJy+rrSmdJQ4pBoi6VE529UPME+VeBg/
+ TC4VKJuft3t1SY6HhuRzaQyimZ1NBnjcoWzFizM96Z0OLuqLSN0R23bBSN/cKKgeFqMqKR6Pj
+ jt1FaHnkamt+aBBxrymxjm7p9zYWQFHYbYJnIF9H8Ot8tnwLoueO0LXQArW6KKwTw0exPejt4
+ +och3xaQbn3lw08oCGOdS6wJrIDda5if5jtJj4S1qANhgR5hmDQx2560pcFXBN98rN21jj+BP
+ hzJmL0Uz7+wRb2JthGdIm+A5L31FmULgEAJdOqv9JYa5czrXh3LhnIGM5f22A1Vy2xeL9zaeH
+ M2DrgdpFHpPNTfegS0ePihD5lz+FkzAi7xv/eURTG5aQZHImgPnqL7nn5rxC1dZpAqTBU6rpH
+ qyo3VCS7twOmFykm7ApjzMGA9Oe2wF+ysknahzE45hLXkKVfYevZ5BWeSHJN5tlcW1ZAilXiA
+ y3lZKm98mTtOxHsy2uclBB86e1rvMJsD3BGu5MNwMBbU980LU4Iicj3CB2gFcJ6ryfcKsvSHu
+ 6xN5moBNPD9Tc17MARBJjV0CA+y698SUp42ZKgMiMRBXSOdam6cMrG5QP9n/bTZeZ4ksSPyo6
+ wDp7TpU6F9/vlGXXRiCl3QZDlLVjReo9xSCYYRfJ1RFMP+R4mDW6Fm1uXw9JXMzgNt2idVXzs
+ kFuJp8+59giFArt3oZ/NRk+1MzsiFsqW+MSj+AUZl/T0T2l53OhkKMEIQ2RKNiWXaBr+NJiYG
+ 9WoKGtkwCzYMKlF3JcroCzKpDD8UxO0Ykvd4fNLXe16/+kDHiUO8qxJyYNBSpY0vY2k4qP4
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 03:19:14
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:34:36
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -112,29 +108,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 07:28:46 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 07:30:46 -0000
 
-Le 06/08/2020 à 15:09, Philippe Mathieu-Daudé a écrit :
-> Devices incorrectly modelled might use invalid index while
-> calling sysbus_mmio_get_region(), leading to OOB access.
-> Help developers by asserting the index is in range.
+Le 06/08/2020 à 15:58, Philippe Mathieu-Daudé a écrit :
+> This mailmap entry does not work as I expected. I am receiving
+> emails related to my hobbyist contributions in my work mailbox
+> and I get distracted :) Remove the entry to keep things separated.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> This reverts commit 289371239153b24cb7bd96b6948c6b40b4627a9b.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/core/sysbus.c | 1 +
->  1 file changed, 1 insertion(+)
+>  .mailmap | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-> index 77ab351ce1..294f90b7de 100644
-> --- a/hw/core/sysbus.c
-> +++ b/hw/core/sysbus.c
-> @@ -199,6 +199,7 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
->  
->  MemoryRegion *sysbus_mmio_get_region(SysBusDevice *dev, int n)
->  {
-> +    assert(n >= 0 && n < QDEV_MAX_MMIO);
->      return dev->mmio[n].memory;
->  }
+> diff --git a/.mailmap b/.mailmap
+> index 81c2ce0937..2d97a14af3 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -54,7 +54,6 @@ Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> -Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+>  Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+>  Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
 >  
 > 
 
