@@ -1,26 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD34e-0005Lu-VL
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:59:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45392)
+	id 1kD35h-0007eK-4V
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 06:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD34d-0005KP-Ia; Tue, 01 Sep 2020 05:59:31 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:53063)
+ id 1kD35f-0007ae-GC; Tue, 01 Sep 2020 06:00:35 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:60041)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD34b-0004T6-Mb; Tue, 01 Sep 2020 05:59:31 -0400
+ id 1kD35b-0004lK-Ke; Tue, 01 Sep 2020 06:00:35 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MTRIg-1k131S21lM-00TjQv; Tue, 01 Sep 2020 11:59:14 +0200
-Subject: Re: [PATCH v3 05/10] hw/virtio/vhost-user:Remove dead assignment in
- scrub_shadow_regions()
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MkYsS-1krMRU2wSE-00m3MR; Tue, 01 Sep 2020 12:00:22 +0200
+Subject: Re: [PATCH v3 06/10] hw/net/virtio-net:Remove redundant statement in
+ virtio_net_rsc_tcp_ctrl_check()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: zhang.zhanghailiang@huawei.com, "Michael S. Tsirkin" <mst@redhat.com>,
- pannengyuan@huawei.com, Raphael Norwitz <raphael.norwitz@nutanix.com>,
- Euler Robot <euler.robot@huawei.com>
+ pannengyuan@huawei.com, Jason Wang <jasowang@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, Euler Robot <euler.robot@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
- <20200827110311.164316-6-kuhn.chenqun@huawei.com>
+ <20200827110311.164316-7-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +65,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <ef4df6da-ce4d-a834-7fa2-9b070e85d045@vivier.eu>
-Date: Tue, 1 Sep 2020 11:59:12 +0200
+Message-ID: <290e1a37-46c3-b282-2cd6-5fecbcc4b64f@vivier.eu>
+Date: Tue, 1 Sep 2020 12:00:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200827110311.164316-6-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200827110311.164316-7-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ds7Uu46sB+KomZkRFrjwYOzMweJAWscMYLm26l5u5gznVYAVFNH
- y0Ws6qzFnZwNZw9dom72DyNkuVSGhqpkYIkaImPp8Rprb+LAYyMwSG7SI8jJW6N0MgLA1Co
- dIlj8/44WEsqp1N1UvxMiJmeLlDKUkTJm21oD1ilSAqVq1f4F8TEiuJjE/1LiP/1Q/TF03d
- D8hnNmmnQwCkC4lESwJlQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qqibe/VkjZE=:4L0DNvWE89Yy4WbRwyo/r5
- idw7rZvpMhM1sgz/hmKV0gT96ENMp2XTC0eyMkxtaIzGo2BNNtpuE7WBSEGjC5Gq2Hdg3byyk
- /Jwe1fbe6g8sDide5Nbbpw3ERPpjn0eYswC76m5KGlOfcj2mYLfNCMCDrxmcB6pBfceByd9Wu
- O1HPROfzrxzxeH+Bk7xvW16545rlIaBNu5L0XhoWoTof6P3aFUzDd3zvtu91aH8+iLxFxrnqx
- 6+e0dYFvW0OjlfV5CSNyhU/zcJxmv9QuIbbQkg0slMey0dAO6xCr2EJA6FMTrAdBfuIM+tBzJ
- k0V4wBFBx2yZtXf4t5E8GP8k2Yo535B2cCEqDroSiQb++6bAljuWVDCKM7QLosa8Li+0ipTX8
- OmNKI1qwEv6Pbwc3oN0xAaddXdB4FvydQurMh3JQGATDfjm18j9SBnQ+HtG8pLftRIdsLcybS
- Lib0CGIURJ+S3aDRgocYK1Fmug5RHwDAg4Fe1QrkiXSd69tuede+aMl3nKAVlfFib6HVWFzPV
- o74EMWGkvsTE/TBSKq2i+EXs/BJSgtdt1U0wpDYA+0JwAzGP3SefSV0LrMAT0mOgGDlWlUeFS
- cBRifkBZ7SeiDZgPGh5JHc0Ds8pdi3oK70C7DIXNRG/251Ey9Uja1kCHDmwR6yaovE1KRY79+
- YptHxHN+kISSh+TcgNXjhqy6gt4I/t92kwno1CVeV0hutzUCeiXHuES1geGehsLOEn1sAOpUL
- MEbnN/ndw6volZoCplxLTR6t4zQRYQBl22n1ZqulTtWYeWhhH8cEwsrkVv1c+CrntLr1Vmc9C
- rzFFhNdeGoiotlley3J+zyN4RJ/yYOJc/88tVQm9GXuPItswwv9Uh1znhUYdTRfOJ71/GcU
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:OuVLr3SD5gwnOEv9orT+8BHbDOAIHkfKN93LqDYh0LW20CVhHu/
+ Xu0AOcFAfGNUeS2q8O71U9qe/3+XNaVjO1KOI5Z13VC5LMvK2VGa8Ovz4/5SU9og1F8D4uI
+ GZQrdC1+Yyuf02KWaUB9sjL8xoLU3t8H7f4a92dGxIPX7zoKUl7nk6f4zPDPIDPV/HrvZt0
+ V5Cws1I5TsLv/o+mT5e7Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8OI62L09uuU=:SsyI8NqGA7Qc7OXCT417TI
+ ZaOXbnrFoYOG0VeCrm4Dz77C1l76qFUi2EdxI0JGFR5BcbV6HMmZH12Myy0n772R+d2hskSBd
+ b4bKyUY2DhDgn+gnEcB9yGmaqDwJTaxfVnRO2fMDC9cfecTnZSY8eUxvXpiLnf/P25mUoGp0a
+ VGroVXj/TJW33FtmvGG9Pk8FiFDrNteFIhnJJDRiKvcXfAWfDi02U0KZZxXhC1AaXJLAOlgZT
+ RtnbzzPkPtpUQAvHaI9AYbEERQsG77/sQmj5Ypvk+bp2LvPWVSVjQRomHzRtX+JMg6Jkxt0T4
+ 9ShZj3W5dwuBXjr4LViqd1mEUVvK3M2TtmO6fd02/UyDq78l9M/yc2g2O0VG5abpeLiX0cXWH
+ PqewFCTTZV/MSBjsJ/DEdO+B4y5QXm0ts6jUTLqzy26yolLbVOoN88M+EcSRXQfvIfcwrFK4K
+ reUMP3dOScshO7hwsKTFkbRuP1Himl9tTmI1zeOWndN81+QzbGV1an7COrILV9pASL9sF9c66
+ V2c45StlUTr/maHlwubVPs/ZMT1iR8su+pKRr/KW1t1rg6XGaxEOKBAA4CcfSsrZlWjN5RcBg
+ arhNDiSl5vC0h/n++lrJvq58OGW8gi6s1ElU8wBXtKlqd8Ggp/h1imRO5GawPHXxaJOhvTtol
+ w1YYUeb7OUrIE8PomIlTj20t9L6lpCtRbJKtq4RfAIOxaVRDwecabjlqSAv0dngsGu8NRbreu
+ X+IrgTcZYG6iXoK6tVlSVunIDS+lRHF3jz9opgzsTYghRq7hnSv+xvZd3rpJ4999QgyomxWxL
+ pE5/D2hm6eEe2MT6Blwi9/x+qI2g7nmNU9AuNWFumNispCz3SJZh2LJV593y33Rh7k1avx+
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:59:28
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:47:22
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -112,37 +113,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:59:31 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 10:00:35 -0000
 
 Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> hw/virtio/vhost-user.c:606:9: warning: Value stored to 'mr' is never read
->         mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
->         ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/net/virtio-net.c:2077:5: warning: Value stored to 'tcp_flag' is never read
+>     tcp_flag &= VIRTIO_NET_TCP_FLAG;
+>     ^           ~~~~~~~~~~~~~~~~~~~
+> 
+> The 'VIRTIO_NET_TCP_FLAG' is '0x3F'. The last ‘tcp_flag’ assignment statement is
+>  the same as that of the first two statements.
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Li Qiang <liq3ea@gmail.com>
 > ---
 > Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+> Cc: Jason Wang <jasowang@redhat.com>
 > ---
->  hw/virtio/vhost-user.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/net/virtio-net.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
-> index d7e2423762..9c5b4f7fbc 100644
-> --- a/hw/virtio/vhost-user.c
-> +++ b/hw/virtio/vhost-user.c
-> @@ -603,7 +603,7 @@ static void scrub_shadow_regions(struct vhost_dev *dev,
->       */
->      for (i = 0; i < dev->mem->nregions; i++) {
->          reg = &dev->mem->regions[i];
-> -        mr = vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
-> +        vhost_user_get_mr_data(reg->userspace_addr, &offset, &fd);
->          if (fd > 0) {
->              ++fd_num;
->          }
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index a1fe9e9285..cb0d27084c 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -2075,7 +2075,6 @@ static int virtio_net_rsc_tcp_ctrl_check(VirtioNetRscChain *chain,
+>      tcp_flag = htons(tcp->th_offset_flags);
+>      tcp_hdr = (tcp_flag & VIRTIO_NET_TCP_HDR_LENGTH) >> 10;
+>      tcp_flag &= VIRTIO_NET_TCP_FLAG;
+> -    tcp_flag = htons(tcp->th_offset_flags) & 0x3F;
+>      if (tcp_flag & TH_SYN) {
+>          chain->stat.tcp_syn++;
+>          return RSC_BYPASS;
 > 
 
 Applied to my trivial-patches branch.
