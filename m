@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zK-0005Pr-B9
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55102)
+	id 1kD6zO-0005aa-69
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zH-0005HP-5K; Tue, 01 Sep 2020 10:10:15 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:37343)
+ id 1kD6zI-0005LE-Ih; Tue, 01 Sep 2020 10:10:16 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:45563)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zD-0003l6-Mw; Tue, 01 Sep 2020 10:10:14 -0400
+ id 1kD6zD-0003l8-Nd; Tue, 01 Sep 2020 10:10:16 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M7auL-1kETUO2Mij-0081Fw; Tue, 01 Sep 2020 16:10:05 +0200
+ id 1Mbj3e-1kibFR45Es-00dFHH; Tue, 01 Sep 2020 16:10:08 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 12/44] hw/isa/isa-superio: Fix IDE controller realization
-Date: Tue,  1 Sep 2020 16:09:22 +0200
-Message-Id: <20200901140954.889743-13-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 16/44] hw/core/sysbus: Assert memory region index is in range
+Date: Tue,  1 Sep 2020 16:09:26 +0200
+Message-Id: <20200901140954.889743-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xbZu9qGgfijSoHkTjzR/3GFFaiU2ozU8OfWqHkB/F82rpNxfY3r
- 8btq3ZvjhH58kl0ahDfKx/7gF9mv5RwFxXe5vAIMrC9wvvP1Rxpg3M+avnBfQ3sHNvhUmBH
- ynrydryGHd4HpsrIdkTGAN/HHEz3UZ8wS9x+gqEtesVVZfR02oMpsRHsBsOdaijJikq37FY
- 3mZToT7lDRqBJPfTiR/mg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3+WNcWVgOzk=:bzePoUoElpVzHn3vxvadwl
- bJ46a7KYnhU/F8nek9T/W1JfdIqp4IVt8/XOUrtfIPtgD2U4HnInfAXHAa6n2B+j2BuPiZ64X
- 5daLrV6igaJvZ/rLAYqSx4/w0HqV/JarxNec0Vk48RnejktzXXuqAYWWWhB4BL8vONu3kHGcc
- jY5HBTeOHzRiwQrKXCnonoJlXkvM0In02ZwhwE3QihMBxz/G9hMVAHoHUrm87UCKPmtNC3zT8
- zGLO6jSIcMHOQQdQjM+G/tCMO+3D2vCk7YUNq7nun9Dc9GR065P5fndHgB8srypKQ6tnk63Bz
- NM5GWXvMNicljm9aad2wVIz1Zz8yzJ94t7ewQ4r472y5xYP4vIWpudskg5uM5DP0xi4oHTzIB
- uhmwMpKJL7BDlxWO2ZPY1FYmjkhoBp/EdlIST5d9x6GNQFQ5O8Hj4grHJBQSPBP0kT83Q4sTn
- JJYpyOLbVBPtS/TTJjJtR/qWbdmAmxaddGKrn8BSLilv67gjGjlO28oTh31KRxRtEnf19Rquj
- YvsIxgkhuAzEdf/cknB49KHmIyCT+AtSS+4aJ08hSZ+gPU9YjDFBKWrIX84fSCxs5hIiTGdsP
- BPElEqye59YY5a2fhLno07gXhpF0RkZrlosJybRBAWy08fhEiZs/p5EAYWZ+O87xpFz2o/lIj
- OOyN2H1Q6YBCJHmnkYe9UGK4AHAllq3rrD122yBNxl9AtcQknvAKILIFs99yBmG3kqkH4W4+v
- jHPvL8XazWVk2VMhux84PLEVzSRvMAuqXHBUqseusUZAyqlc+rtJE8y8lqqWxjEqheIN8/+Je
- HEM56Cr5hNn0byzP5l9vvvX3UpC9swrgUVFjegq+Yx2Wb8+0XdcgJ+EGT6UmHAW4+NPG2gG
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:149LN1V/RMSGZ8p3pJ/g9b9ZhYU537JP7fHyZGEDMZOFqj9ZGZ/
+ NctFfN+D2CtKOCvqfsb6x+/jGSsSsf15zaFQMH8Z0NY+clSRG0h2Q6+c/3hwpeTBMf6LjB3
+ +6VWnccFR5Han2e3XSF7Id6ODDD51ax+YPSa/pdHysfXLKqq+dKOX7D9LVv9RPMPuf3p9vz
+ afSR0JEFsYxlENbZwx9UA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:duVrdT9jwb4=:rbpIf78QnKAO72HMFuhKyw
+ ELHTYNbCZRDaj+GOgZXTvf2WM68/E8Ji6ZfOb9CkeiTIXTacOROXFnCbS1lM8J7W20m+T2X9e
+ FLIrBqy5o7Sb7duxutPZ5eeL6NCQQG4HII+zifxLwK6iJSHyneMF+1CfKtcBTMyNNik9rDnGo
+ sabj52V0Eg4QXf7c5RFVw1u8g5q77bThUWn93lRtX8wxDq6o+iAutV1lw/9l9o6F5foVD0ZDn
+ 45N30B3mV3p8f219MbHXww4o+T9n7xtiDq0s/qi55ssMweCJSe2ebgVN6bAEb7SxKLEssZF0J
+ 6f5PG6x9oTJZcPxmGuE4Lz6eS8VcSsMqFFfgGKdScV42RkqLA7tUqPeCoYbfYyfYUQtRWEA68
+ hfNmaLOse7bpmWE9jXt/puQZXf1PPxJIS4PdLb52lFS5uuTLFV9L8Nw7KEyxDAGArPPPxqbEQ
+ ak4bPLlLITQoWpHTZykM5yQN6zrTyiLHpDwCGEOqNLH2AQjw8bQWSp1fc29xWPUcIyZeqoygv
+ gHWNsgBaeXh/Wr3QQp0diR8Snc56fhLv9iS6u95XgjXTTH9z7QgusyA2FB3NUQmoofPJxrdXJ
+ j2EKPcrJT5u1l+p5G8ZUsdo39IGvXgXtwQblonuXpvuIZUaDFBB3Ia/IvKlYLbcOLrId0nc9V
+ kgU8gCoKP3YHifc0yMuDrtJMdMvcl5u47R3UdlyTlr44SphMA9jEiCx8w/X3vO8dXJMnEYkxE
+ xZeoKPKCi3KNw1xGxxujUwW5eb2lATxHLH87dRxye3YuzEGH/KdY49qMQ9aO4J5Q6EOxGC4dW
+ jktD3AfNHtRx9CTX2Pj2vclUYDHElx/i3Z91rhVt4uAeqBdWs9YncUoNjUygXOJSfPtEPHO
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -65,46 +65,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:15 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:17 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-When realizing a Super I/O with IDE controller [*], we get:
+Devices incorrectly modelled might use invalid index while
+calling sysbus_mmio_get_region(), leading to OOB access.
+Help developers by asserting the index is in range.
 
-  qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
-  Aborted (core dumped)
-
-This is because the device is already realized when we try to
-add the QOM property to the parent. Fix by realizing *after*
-adding the QOM relationship.
-
-[*] Set ISASuperIOClass::ide.count = N with N not zero
-    (no such thing currently exists; the bug is latent)
-
-Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20200721124516.9602-1-f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200806130945.21629-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/isa/isa-superio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/core/sysbus.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
-index e2e47d8fd99a..179c1856956b 100644
---- a/hw/isa/isa-superio.c
-+++ b/hw/isa/isa-superio.c
-@@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
-         if (k->ide.get_irq) {
-             qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
-         }
--        isa_realize_and_unref(isa, bus, &error_fatal);
-         object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
-+        isa_realize_and_unref(isa, bus, &error_fatal);
-         sio->ide = isa;
-         trace_superio_create_ide(0,
-                                  k->ide.get_iobase ?
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 77ab351ce1a8..294f90b7deef 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -199,6 +199,7 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
+ 
+ MemoryRegion *sysbus_mmio_get_region(SysBusDevice *dev, int n)
+ {
++    assert(n >= 0 && n < QDEV_MAX_MMIO);
+     return dev->mmio[n].memory;
+ }
+ 
 -- 
 2.26.2
 
