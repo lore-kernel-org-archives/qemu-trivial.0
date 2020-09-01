@@ -1,27 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD38K-0003c8-VG
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 06:03:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46578)
+	id 1kD39x-0007N8-Dc
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 06:05:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD38J-0003YF-8g; Tue, 01 Sep 2020 06:03:19 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:47005)
+ id 1kD39v-0007J0-MT; Tue, 01 Sep 2020 06:04:59 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:38165)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD38F-0004zV-Qw; Tue, 01 Sep 2020 06:03:18 -0400
+ id 1kD39t-0005AM-MT; Tue, 01 Sep 2020 06:04:59 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MK3a4-1jretS48Hm-00LUDr; Tue, 01 Sep 2020 12:03:05 +0200
-Subject: Re: [PATCH v3 07/10] vfio/platform: Remove dead assignment in
- vfio_intp_interrupt()
+ 1Mzz2e-1kXaJq2ynO-00x34Z; Tue, 01 Sep 2020 12:04:48 +0200
+Subject: Re: [PATCH v3 08/10] usb/bus: Remove dead assignment in
+ usb_get_fw_dev_path()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, Li Qiang <liq3ea@gmail.com>,
- pannengyuan@huawei.com, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Euler Robot <euler.robot@huawei.com>
+Cc: zhang.zhanghailiang@huawei.com, pannengyuan@huawei.com,
+ Markus Armbruster <armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Euler Robot <euler.robot@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
- <20200827110311.164316-8-kuhn.chenqun@huawei.com>
+ <20200827110311.164316-9-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,32 +64,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <53786935-5695-4e1b-a8e4-e7ae5ca5b616@vivier.eu>
-Date: Tue, 1 Sep 2020 12:03:02 +0200
+Message-ID: <febed4c6-9fe1-6c7f-da3f-8437656b1132@vivier.eu>
+Date: Tue, 1 Sep 2020 12:04:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200827110311.164316-8-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200827110311.164316-9-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uqieTAQNDs50CLq3ZLEjfQeX9NosyJROJ+/shco887RHcqBaaAJ
- p5ExoItOTUikC6tN6zOw7mXwk/p8vWcTPmp7BduyQmEcrUOygT59+vdeS36fhGFZ0AFsmVR
- /pJeUwISc15ca7Cu3I+eO/fu7U19K7YidO+qwF4ESxmd2HCxDMOcpVKNkAwcwL89e1Y6Hke
- zlETs5v0lMswgfxNyQfig==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hVkDWTjahPA=:8dADmCXOlwlBIxSRpeOGx3
- NfU+dQm9Fs6xtvoxSj6MTaG2GKq/cJiw0JezbPFK5uQugaOLmQJLnFpuJZ8/BiXEwp2o/7nYZ
- XGob4y8QWkitxYycGe9ATZuvSzAxC+x0IRS9wwHbN2x5y7O2fXGZ9RWbqo2u/lXhpwE1PV1gT
- apZUh+sSjvsrTIaoiV+/4yMGv9jAYUKJuIV2PjOw90KyNLGPKmxOqoOG+2ZLb4/ftSZmC0tWv
- cu1fY8BZG+RSa1zRO5488mbj1CEv6Gz70swEv/irwP3nC+f2MnwD/V0tJBY1B1f1XGms7ZRUJ
- x2Jp4xGZn1nY5HKuMBtIWwRAne0kpTGbH2uXEHPHAPEyO9EeKarZgpCVn7KvSfF8wTOzsC/U/
- QMs229joUwuesI0zTC9O0plbPfcVXQMcSC9qcZtU7nEtkqwg6TL2rJ9490R1FOqa0Q4dBsKK4
- 8Dw9McYkEWjabgkZZJAkFa5CdVT49hzy2HIpwFOOjVvqi83D1YQgV1+bx585BNPMDh+XYcoLL
- BYufM0rdiMXiEMP4OPUBDvdBfHuhoMqAgR58gu9cdDV5qp1mJx8456fu7G3ENRaKOSL9EOEkc
- t1cprGm40LN2Xe0vL5AoOCCBe+11sRssw+FoW4rwpgzxzZ+LMykwiqzcNEm/tW3LUpJTWRfAz
- Lxy50n8x6Y+8A24c5/qs95Vw3xb2uWj3YmiMTj1MzllKHynhgEH+IYMeZZLPExmhEbyyT8YeB
- nHNckWS6/wk1IwfOKSShtAM1RvVqPj/3GmbfuWZe0onqdIluOyuz6xVhaGq+tEU1rgt6Y5G+D
- NPeXaHjm1jx6axNnXpMTcLXbAWnZk55foqOQoE07N19QvhihOBqzMgsO2ODpuTvUPEtm/gV
+X-Provags-ID: V03:K1:iM9bShvqYoETd0r64PiicV8OqiiQOb6NzRVQYhSUHLzLH8or8Hr
+ C43SOoRNvFfSpZbdkL04IevsPfRkHvBdaLFvYGPjB0pH6hUGQggbUWfWydpeSEnyIN36I5a
+ XZZfHjyiMOFQfCE3TLP8hy3RNJ0/94RJjZqJlQTilh4hfGv1jgIUDn1glDa3JhusicLCk/Z
+ Nb1BNZtrzanLFi4LblqrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:904L66kZorw=:gpjpUEqQ+Kl8U7TGklpoc/
+ 6rLkMcOiI7jQKBNN1NaLktYQ1xZOCv65n7qBinb3eC/CFMNRrFIIH1syNb89xHHR2nBWYWfCO
+ trTKpGtWyhtFGAP1bdkEZtAaywQ1AaErVOawVMQhrLyXZEM69GYDqO3xFgUtiIbZPz5VB6rX/
+ 5Gh0ONe9rQc+ZsoV00br260hMtj8aWPg6T60/Bpo3UjivhIfNJfQ2HxehkCh6x3CyewX1oouu
+ aVOIa55TdD/hLckTk4oDYOSrOiQGHAGHsw9Q0NNKlSslcLMp7ll8SIfgoSD5C2OwXUZyUHcdm
+ 4gcAog/z0qtKS625lB+f/zUzH7X09vv2+1E8tko3lWPghKN+MeRgF3JV37w7+hmiPK2MnBeEP
+ yRX8gtVjVwGd/9xfZ9G21Cj0M+VLPwL/gb2EX4XaXBKKRFiMtuXX0b8kpcstOPiiaS12gdtzh
+ Ycmq+pIAq5qFKrpLuvf9n/RvL1EHI/WrFYTmNBhrK8aDzGQB/Gg6jMniaUe4ec9ymi4frE2O7
+ 4N4LVBc/Uf/U7NxpvsgI6v+xA0vThPyAjQlKW1Gib+JYwO60DHQ6UfM93HHFNcb/CtNEkMM2E
+ 5OvfT0PBxaLUogSvdpz37uRjVz95RhaA9WE5OdAy0iUNQDwohy0pTlQXEHxwwEASNVY9i0m9a
+ SRExnkRfhmQDAzcRo3elCQSZ7Ifv7A5m9+QbdilfF0ABuUU+qzbaX+o3LsoBtCvXBhBIdjhZ/
+ NXwiqhUygxVcRIM2lZ7T4x4jW9gxQYK+0kZdV3RZyTOsUE5JANBBYb2sF+1b7M7FbdjU3H7OE
+ DBR+1EkQ3hY2P17xRJ4Yh6Jn8DtALccZ8lO1uM54RBxjIDTAt7GYjWL5+1gDU2Aw6y71mxw
 Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:34:36
@@ -113,40 +112,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 10:03:19 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 10:05:00 -0000
 
 Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> hw/vfio/platform.c:239:9: warning: Value stored to 'ret' is never read
->         ret = event_notifier_test_and_clear(intp->interrupt);
->         ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> qemu/hw/usb/bus.c:615:13: warning: Value stored to 'pos' is never read
+>             pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reviewed-by: Li Qiang <liq3ea@gmail.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 > ---
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Eric Auger <eric.auger@redhat.com>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  hw/vfio/platform.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
 > 
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index ac2cefc9b1..869ed2c39d 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -236,7 +236,7 @@ static void vfio_intp_interrupt(VFIOINTp *intp)
->          trace_vfio_intp_interrupt_set_pending(intp->pin);
->          QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
->                               intp, pqnext);
-> -        ret = event_notifier_test_and_clear(intp->interrupt);
-> +        event_notifier_test_and_clear(intp->interrupt);
->          return;
+> v2->v3: The format of the snprintf statement is modified(Base on Markus review).
+> ---
+>  hw/usb/bus.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+> index b17bda3b29..2b11041451 100644
+> --- a/hw/usb/bus.c
+> +++ b/hw/usb/bus.c
+> @@ -612,8 +612,8 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
+>              in++;
+>          } else {
+>              /* the device itself */
+> -            pos += snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+> -                            qdev_fw_name(qdev), nr);
+> +            snprintf(fw_path + pos, fw_len - pos, "%s@%lx",
+> +                     qdev_fw_name(qdev), nr);
+>              break;
+>          }
 >      }
->  
 > 
 
 Applied to my trivial-patches branch.
