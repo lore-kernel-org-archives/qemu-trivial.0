@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zW-0005yX-7y
+	id 1kD6zW-0005zD-FG
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55280)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zM-0005V6-5C; Tue, 01 Sep 2020 10:10:20 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:41591)
+ id 1kD6zM-0005W2-FI; Tue, 01 Sep 2020 10:10:20 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:58905)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zH-0003np-4x; Tue, 01 Sep 2020 10:10:19 -0400
+ id 1kD6zH-0003ob-PW; Tue, 01 Sep 2020 10:10:20 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MplPh-1kwe1l2Won-00q7Qu; Tue, 01 Sep 2020 16:10:08 +0200
+ id 1N6bsM-1ke9Gu2gpC-0183pD; Tue, 01 Sep 2020 16:10:10 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 17/44] Revert "mailmap: Update philmd email address"
-Date: Tue,  1 Sep 2020 16:09:27 +0200
-Message-Id: <20200901140954.889743-18-laurent@vivier.eu>
+ Corey Minyard <cminyard@mvista.com>, Li Qiang <liq3ea@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 20/44] hw/i2c: Fix typo in description
+Date: Tue,  1 Sep 2020 16:09:30 +0200
+Message-Id: <20200901140954.889743-21-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ChtALlJkZgJpiF96Cn17CCN5tia8WPa0gmyMFO9vzh2KNErH/3p
- 1MWld+uKMHrIzYVOqrquGvgScUiCphJcVEUEN1ed8XjHDNoYpteyKh3UTDeQFQhdX7HD8kJ
- O2u4eBI+JASfBmNnL+mWqflMsnSIuf7EB1pMDXo5WwKwORZpXFiGEeB067wnSmlFSUMwa0y
- IE3UEB9IBiMqrJsaGIjew==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hyd1NQj9Bdk=:evSdRF+5+e+oaDyNbJ4FPJ
- z8dEhxaPiSPs8Bwb8llDbJzL7F5FseE9L2OMUKBvo8J/4rFA2d7uS73x3tO1MWgYaMr2Fxf/w
- aZAMUjbnj9I1P1hcnExjhfn3TZjkra0oHN7HHcV+REC7iOximSq52s9D52jnxTum62tZTp0U0
- /lnk/iJAT2E81i8guN8Wwirko+UIkMQkt2N4vAQEIpLqVb2THINDsR3K57/clT3wg3zBICR6c
- okk327mZD69DOUfsXGFMwuQbPmc5NMssVvkWStr5/Wyw5gomJxsAxR/gYVYWffoayELB7Wl+j
- BpynW1LRe2F1bDnF9XFcwOd+GlgJL+tPybwUO6GuujmYg18xysSQBPeh2TKzOaZR+J0DXmsNr
- golo44nfkUWZH9IvKwiaVwHk8UBgpBzIOkjEDraycfozj/J6PEuqw/ZQ4QtjO/HszIURq4Ahg
- inDIk4NVLcAkbFrLuPHNVtZ3qDxaZlcoWg4E4p0OfAxy0QMDbmPViA41W3Hvdr/vOIEc/V8Vz
- qoiObjCJf1CO+NkNylVUeviKcZr2XRw2DVK7eJoE5fTS5TOC3LQCli0Z+odzcJlFQi3YYXoXP
- bcK65h6dAVEl92kVmP07RYMX62uEJcYL0BFsqQD+UylhR4Cs6WAGqkh4IAX1C06UCOTgHrmqi
- FXQI4QIX/3s0psujJoX9lF0DWoxKMYaoJVWa2Xcn2wt/IVj9jtiQ6O13ROm+06MyRmbqIPCUO
- MofVTzX5Uhf+oTNErwuhBNyAZZku270+kelRhMD+Pw6ddEnqM3laKN0JH82WLbcCxlBX6VrnS
- Vh1u/ZbtyfAyLNzCiCf32Y83ymi5JXHcT2TBVm4Mb4kTEHCuW1ytMN3KNRW4Otie7HzAB0S
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:hYVfATmajBOJ5pMHRvVK/fipsf1zG1zZ/XtU8JI2X9WJq7CHULQ
+ mYpzqLoNZg1PKspU1/YvMNHLNUepZjpGzSJiD0hrP146o8ZxLfgpehL7byyIXDpMty138zb
+ 4T8zQCmMiuVkwUL52kM4W/Orl02L8SgxEB3cRCXYjIR13Mf3lPdfJ00oPD6XrwbS/RtkhfJ
+ CMnUXt6aYIMx9wCNhy12A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:kN98XEpLlwo=:O68hlzn1Ic//0t/WUETcAS
+ MahSO1PzRNOppKyucS8r4QyONTGGbFqxwk6VVUIU/NreYfaTa/P2H0eH96Chsb/NMwAxQn18Y
+ fD1PevIfY8Kd43/ZNWjhl6QjbQwJijM5YBZTzFdypNpiatGoa3rVcOzFMugb7us+QoFp6ymLz
+ tnl7miZFmTs+JdJtdNtn8P4tZuFO2rlrt2xSdmbG6AqOPIiIj/zFmG/K412ZhLGWQ/Vsz+SYn
+ CR6SiH3q/y40YLJ4jvp8OceyQ3lCLFlzTe0+j1TvjTl/3b+MKUYXWOlT2lqrjmUI4kmvGIoZZ
+ 5TWeccS7G3ixE/VE/X/vZsY7eiq10zDO61JM0aPoKyE0nG+ifPgTFZjBIUwWIStAVvySOEudr
+ Ypja26DcqQs8zbMurFI8U0KOXz0SAA6yLUTpHiea5N58gIYuSsRFvoQkhjHZhcjTtWT3u+QyV
+ HbNzmRAth8G8pJstV0ZaY8BUzHVcowP2FWNRO4EpUIfv9Vwn4+r7MBMB9lachyHQ5HKutiRZC
+ ShxNeRccIGKbuLNKB6dW5uFjl4/Bqc6h4NtBD9gnkqpD5P0aseMvWaw0c4DOPXBxYG4DQowjF
+ in1HyyjEUMYKWmDpt0ECfliPHdfzll8Azmy8syP7pfv9J1lWNsK60UWuze1GZ6F5+g211zcc7
+ bZUt+nukyzm6U75b/YvBYfhiKJ8iMyPGxWOZtJyAE+I+MqTCj1krZJchpWmidU9LOvEqpocy0
+ Pb/B8TvH+pWmh112rYZuzEteD5HzgUFYb96QWe97lH8gl6r85bfcvITN0+Gfv3u7XBUxjCBAd
+ JHoyxQN0+l/7zgJCwQRiAxwgkZ27zzFKOivHVMspJlXX9nYeU6/AclT1v8vBxDpY9EJvO7E
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -69,32 +70,32 @@ X-List-Received-Date: Tue, 01 Sep 2020 14:10:20 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-This mailmap entry does not work as I expected. I am receiving
-emails related to my hobbyist contributions in my work mailbox
-and I get distracted :) Remove the entry to keep things separated.
-
-This reverts commit 289371239153b24cb7bd96b6948c6b40b4627a9b.
+Remove the second 'and' introduced in commit 73d5f22ecb
+("hw/i2c: Document the I2C qdev helpers").
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200806135832.2319-1-philmd@redhat.com>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20200811151643.21293-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- .mailmap | 1 -
- 1 file changed, 1 deletion(-)
+ include/hw/i2c/i2c.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.mailmap b/.mailmap
-index 81c2ce09370c..2d97a14af3c6 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -54,7 +54,6 @@ Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
- Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
- Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
- Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
--Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
- Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
- Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index a9c030a51233..f57808851e22 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -102,7 +102,7 @@ I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+ I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
  
+ /**
+- * Realize and and drop a reference an I2C slave device
++ * Realize and drop a reference an I2C slave device
+  * @dev: I2C slave device to realize
+  * @bus: I2C bus to put it on
+  * @addr: I2C address of the slave on the bus
 -- 
 2.26.2
 
