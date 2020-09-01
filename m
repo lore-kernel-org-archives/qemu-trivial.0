@@ -1,28 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD0Zb-00039r-DO
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:19:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56600)
+	id 1kD0hr-0007aC-8f
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 03:27:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0ZZ-000398-S1; Tue, 01 Sep 2020 03:19:17 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:58519)
+ id 1kD0hp-0007Wd-UR; Tue, 01 Sep 2020 03:27:49 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:47185)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD0ZY-0007qk-5K; Tue, 01 Sep 2020 03:19:17 -0400
+ id 1kD0ho-0000cx-3Y; Tue, 01 Sep 2020 03:27:49 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M89TB-1kHfPF1OFP-005MKP; Tue, 01 Sep 2020 09:19:06 +0200
-Subject: Re: [PATCH] qemu-options.hx: Fix typo for netdev documentation
-To: Peter Maydell <peter.maydell@linaro.org>,
- Tianjia Zhang <tianjia.zhang@linux.alibaba.com>
-Cc: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20200727045925.29375-1-tianjia.zhang@linux.alibaba.com>
- <20200727054335-mutt-send-email-mst@kernel.org>
- <cb08fa85-e7d3-09af-d702-036fd165a46d@linux.alibaba.com>
- <CAFEAcA8iK-J3NKA=QxFV5uswBSXLNNQDbx1NnFzhz3ppWVEVkQ@mail.gmail.com>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MyK9S-1kVUOX1ubE-00ye6l; Tue, 01 Sep 2020 09:27:41 +0200
+Subject: Re: [PATCH-for-5.2 1/2] hw/core/sysbus: Fix a typo
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200806130945.21629-1-f4bug@amsat.org>
+ <20200806130945.21629-2-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -66,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <854a7e98-5265-d856-892c-beb9a92c4810@vivier.eu>
-Date: Tue, 1 Sep 2020 09:19:04 +0200
+Message-ID: <a3666ec5-5d76-e962-babb-3033c03edbf4@vivier.eu>
+Date: Tue, 1 Sep 2020 09:27:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8iK-J3NKA=QxFV5uswBSXLNNQDbx1NnFzhz3ppWVEVkQ@mail.gmail.com>
+In-Reply-To: <20200806130945.21629-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EB1bZ2m2kFazt5ke4xZm9cv1gWPU4ybl5pteedZEw85JMjkvv3t
- uXmqPMPlyj5VLLjyb6BrePZQwQ5Jk266hRxcQKgIZAxsvQsOv4148N4RltPgku0jekuIMyY
- boBhJCvFvutljXjXlqcDKNBtVe89ZsVzQbv0dVz2PQy+2THUYqnmT5DKNGC4p2QnxTDxkvV
- hoAkCk5J/ZDwEOlARH/6Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sAaptwHF5qA=:BsN5aCFOyn5GTeU6bZJbC8
- pq3XClwj/hnFayaiDK04qrUtNQI3wXxPCjEc4OiQfMrmefs/qCDi3DYtHuWmYanGCiHB1SSp1
- Nn2/dmdeK4KGe9byeyyNbOIAkiKWyihqo08q/1fEsrfnZ07coDSbIsvRykFzLZHciYpmh4+Uu
- YchKGGmeXVbc22kYz3tCEbLC1YLZXXSfJ29jcOZ9Rv6BWJLc6Gx6bxXqs0a9q0J9xGPNNpCzn
- Jk11+e0xgfBRGKI/2j2GS5H6XlNsh0DC9J2UQHNzrQiqHH/tGqya1/txQUspv3Dfe6TIpoxNP
- wkXyu3F673EI+eJBkf8ZT3rKhUZ7xBhhtURbtbiJrHyNQr/uoo5Fz4yJjvtogbV+G+kN9m/SY
- qz1JyZWNOLQIZnEO2tf78S3mf93/nxVGUHS0PXxWTbrTfAx7AYrboI0EyjTnUSPRpUn9zFCFc
- jv5rZINjjcLqwF+EwQbxHU/2miPp0Zf3sMaK+qZZsdsIXLSKy9QwIGp379RU5ET7Qu/ooRALs
- HhZzm/IoyqMq2so3MBNoqmPngkjpsQnd+CiYa5NkMWG7FTNiPIZEQcLSqQY3c/7AMswfDtpu9
- fcBRJBHV1ncxvPJeaW02HsdzSlyqiWMKxxWrr4kbAkA4bacg/NwJSgWM+KwEryqiBGgXltxVI
- ADTKl8Ezr3OKc3qTGd8RoELoMMG4aOU8SzxPtwNkb34ULnBj64jS/hZKQFJzITWNK3L/NRnA3
- cWeqTp3rf0ntXRxQ2sBjQByqqw3Hn9+QZE5GVDELQvFLqWEww+goOzOQ7xG3pthHHUDWfXVUg
- EZEbyjOeg0/hMhvEwR6qAOsukExWA4nOKcztVMkNqv8doU3ufEMXkhaagHCVg2epurHz7GD
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:3itDNp7VP5DR1o2gzy38ZhS8P+BxK/noqYy5ZYCthguRlKRm6Gh
+ TwDqW6Lgi688zfh/0xIbqaCvf9cwTMD4M2ZD1w0PaqTBZ75jsrdsCMOgkeRBiV1QZjLEnjY
+ zLkAB3kLlLXI7P3+guKgQ+nQAcSUBcbOIE51GxGApIq4Ifm9yRYx5CRpJttn/PUt4AJx9zr
+ sEnl+vR46Oacvv0HRLSgg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LBBvpgrtBEY=:AO6YiWLPQHiZSlNdzr1MHc
+ ahicELVJuLk9txi+94Z/jAaRYLCWNTM0hnmV8A/jv84WWVXh5TExqkyN80k60YzE3sqBL8VMO
+ SCUASDCErjDMR6LwUgr6h8QT2I7FA9GGhm7vK7w5q4THCggr9x1WiGzaDMZZi2DsHdrqtCjHQ
+ f4LMX1nwx2uhk4/yNTh+IIscc9FPSWxbyICo6rUk8P+pku2JiQwqFjcvI1hgW3D6EVF7KBIPq
+ M2/TVe0dmivGdIzbbraT/M/CxIxDtt/li3u8lsb/i69XF6gNIalmnXIQ1hAoG2ZbFlNw937yW
+ hwReAlnhKsfY1/12r/TqYEydE5rw6NmKMxdqaO0bgl8CS6u+X0BMLv20eIfaXlgyaBML8ap1g
+ yS7dr3FZxkz/SniH5JERlYs38oxA+KfA5tpm8M8GDl8ZWhVDTL7HvoGsVzzRWWOO0TS6I0naB
+ PFfnwfBLrWDDS8skgR/ox/c8D6KyEAHwY3zkEGfWvLvUmf9mBUtUd23QmY1IWXrZfK/TiyD4I
+ iUmm2kzt1QzTi1xlvnyqlLq7rEJP49vfDK+pRN4HAwgOb8S8w0Wd23CK7LYWsM4Rn7JX+/5Ap
+ /z008USXZmrLs+T61rNjdxR0LeH6l7Od+Vf6efMv63cW07NJ9HsVAvBRNdOWN/YLRDMUmdh61
+ QYfiRzruimobMAUklDSzro17T9d+p+H2qN4IBQqYZqlltgbXjFUf0aHwIb0HRKdv9g03XdmA3
+ k435+rlIeMldgMqjzenOL7GbsIvXliK6fN/M67XZcfvOYcpsgaK3LAh60kqKRgN1laL87s8TU
+ gg3qp9asWoyjbK1bkO2syXXtgRXaXPL8vNNIZaMA0+AdVEYWV16oueUmNN8gtLXbtcSCfF9
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 03:19:14
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:33:59
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -114,32 +111,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 07:19:18 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 07:27:50 -0000
 
-Le 27/08/2020 à 15:03, Peter Maydell a écrit :
-> On Thu, 27 Aug 2020 at 14:00, Tianjia Zhang
-> <tianjia.zhang@linux.alibaba.com> wrote:
->> Other opinions needed?
+Le 06/08/2020 à 15:09, Philippe Mathieu-Daudé a écrit :
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/core/sysbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> No, the patch just got lost by accident; sorry.
+> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+> index 70239b7e7d..77ab351ce1 100644
+> --- a/hw/core/sysbus.c
+> +++ b/hw/core/sysbus.c
+> @@ -64,7 +64,7 @@ void foreach_dynamic_sysbus_device(FindSysbusDeviceFunc *func, void *opaque)
+>          .opaque = opaque,
+>      };
+>  
+> -    /* Loop through all sysbus devices that were spawened outside the machine */
+> +    /* Loop through all sysbus devices that were spawned outside the machine */
+>      container = container_get(qdev_get_machine(), "/peripheral");
+>      find_sysbus_device(container, &find);
+>      container = container_get(qdev_get_machine(), "/peripheral-anon");
 > 
-> Jason, could you take this via your net tree, please?
-> 
-> thanks
-> -- PMM
-> 
->>
->> On 7/27/20 5:44 PM, Michael S. Tsirkin wrote:
->>> On Mon, Jul 27, 2020 at 12:59:25PM +0800, Tianjia Zhang wrote:
->>>> This patch fixes the netdev document description typo in qemu-option.hx.
->>>>
->>>> Signed-off-by: Tianjia Zhang <tianjia.zhang@linux.alibaba.com>
->>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->>>
->>> Trivial tree? Jason's ?
 
-I'm taking it via the trivial tree.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
