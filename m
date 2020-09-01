@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2zO-0003EL-4u
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:54:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43882)
+	id 1kD32U-00088f-3q
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:57:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2zL-0003A2-VH; Tue, 01 Sep 2020 05:54:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:58957)
+ id 1kD32S-00084a-9t; Tue, 01 Sep 2020 05:57:16 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:47147)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2zK-0003bp-4g; Tue, 01 Sep 2020 05:54:03 -0400
+ id 1kD32Q-0004Ab-H1; Tue, 01 Sep 2020 05:57:16 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MNKuK-1jx8h6315u-00Olt5; Tue, 01 Sep 2020 11:53:54 +0200
-Subject: Re: [PATCH v3 02/10] hw/arm/omap1:Remove redundant statement in
- omap_clkdsp_read()
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MVuXT-1k3X1Y22QX-00RmTy; Tue, 01 Sep 2020 11:56:57 +0200
+Subject: Re: [PATCH v3 03/10] target/arm/translate-a64:Remove dead assignment
+ in handle_scalar_simd_shli()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com, 
- pannengyuan@huawei.com, Li Qiang <liq3ea@gmail.com>, qemu-arm@nongnu.org, 
+ pannengyuan@huawei.com, qemu-arm@nongnu.org,
  Euler Robot <euler.robot@huawei.com>
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
- <20200827110311.164316-3-kuhn.chenqun@huawei.com>
+ <20200827110311.164316-4-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,32 +64,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <de1fd7c5-6bd3-39e0-e040-b10da548edf5@vivier.eu>
-Date: Tue, 1 Sep 2020 11:53:53 +0200
+Message-ID: <b3496af4-be3d-2433-1398-9b54f328b58f@vivier.eu>
+Date: Tue, 1 Sep 2020 11:56:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200827110311.164316-3-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200827110311.164316-4-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gFTRsUiCDzWWFawcLJ3MHA2mEXDIRWiQMWEMJHA5XX7m+Tj6lGD
- R5xQahQZX7l0Irc02yRbBqqUU0RsZ74PyZbcBuqSNDFvqTA+kJjZ+nFL+sfDykqhk84Eo/C
- 6/hgceptOA4PhfFvLHc/Ho8jzdN48VHTdODsTbUBDNirP4EzmnANEY1X/dOvzR/0wDldhki
- 1URJjDXMnTyh9bI5lrHGg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RX5m1ijYb4s=:h8EK1n1XwnjZ1aj5EfaKTS
- VErABeICJOPOkYku8VxbxPVTHNfFUbbSS1HekyIDGQdA0G8dsRky7OP73s68Kty4V47E0GNSI
- WkRJlLhMgGP7/LrNn75BYW/wGzlUVedELzUO7rSstjw14GPDx/Rp2HV6KKRr41JSDfsGF7nNH
- nElKYFZPybU2p/0Xzb3SQRwwCohyt4TaHuuZjH7OW8hLCeTRxUGUQflDs1wkU4siy+SeAkB2a
- 08sDsrDwgC2nVkH+EOIAip1y4OOaj2n0nqBNdQ9F457OW98+KMG8xjWiCxMLeemHzIS31HUxT
- kxLRWUpP4EzvYaJbko94xrBgL2SQCYI9cgIeI3TNz2Fv9zJ8vxTk6lFgYkUPpCVIfI5eeyrAE
- gZNpyE+Kcv/4gNzlGZjoARdlYFVNgKJwO+RDq+ZDkcfJy5pokT0TS2chwAq96dIxR9Z1TcVGJ
- WIL3e6xEp5B2sSvBMOVIHAZ2BpKKCCD5fbzqcdrYIAz9v7hNM23IOUfjgCJ+KrdyxAvtYInoX
- g1pYPjkdDVnm7w9dt1U4UdS/8nXB1divsNm05v9/I7Ma7Vs3Mz+Wis9CfvAVIbR5aObA9lIzi
- F9j15mOXsHyXXy7y4KOVOzGqvnq4L9YZqZl4SPWQMMo44DMgYFrfQMnzaCrTTJTgECdsi7iCR
- vpmkRc79LMoYHZxZ1fYP2/SWYb/kPb5IifdcAVNusUJA2wsxiimjUMGJU/Uf7gSjCjCOfLNuh
- SdQZ+T+5/FUFXQFA4ef+SKB0H+oYYkp7j3vH9opx2D7pIAn3djmJDUVQGe0Fv5i0JSwfYliIb
- /aEuqk5qaaBKRg750gMqD8eEbQXtDxb/gpXwg0o2jVpj026DxkW0nN1yJOCN3PsgvtCZIfM
+X-Provags-ID: V03:K1:n1tsVbBS9naJHpYVwkBGjvYUpBmzHQjQFbcHinQYpMt8r07cOz9
+ kk/GaQyQ56QoxgfYZTDw0wNxsLr2NbQclSdI8oikQlUPL4ek+EnN7tYRg2nmq945FEDTFxS
+ BSSSdxTMgskYExCDu29whb1IfhUEY5653ksLWSBUUZeZgoRlDfYI+yiWsFXsfEr0U7gXGmb
+ qVm8Y7MgXhp46IOwmflVg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:epHZaP5W5zA=:CAGHQsF/NE8wiRaCA1tpO6
+ DExkPbmNDGrk6GjKeOj84cFqnCSH1/WvdQP+DWCCkOTj84veV+4+llzTM6MKQ0NsgGZ0d1XFB
+ Vz3dsk2HC2qR6BuWH4uTLmHYaO9h64jYi23LmmUM8mnb/Z2qM5GYfdqTp8Jt6MlswS206MZ0d
+ SHS8R1Ag3RXFRC73nvQyRzhZ9d7p5/pCtKkPfFgWSJk9KqTel9+64QDA5rZaqmPLp9xhrp1c8
+ gYLiGRKzefj+rSuSNeV7k79LSijjqPIgwGMQBZtjfCdvGcznYu76zCQEB8WcyWawgIzD5XtBQ
+ dwL/gf9PfjL2Scq1J6W8hxSGIn2+fUfgtpCADZRrh1n9H+qS3CR2EeDJ2Lgu8XXV6/ZSWUX81
+ Cbu5TpWzyIgye7zfwO2QmFsp5wEFJuzYX4TEC/ocnB2Fl/74vgFe511TOkt0AySZDtwlblHPc
+ 2cvxOiRaEbLxnZDYVruaFBj3QzhSyVaQ5E5g8IlF748Y2gwkOs3Wzenr6VOQQ01bbcz+9s6FJ
+ Z73Syi1Bn91U/f9WtqL6FHecGkMO075yGzQtdDGF7kGKy1hXvtuU9tYqHGya+Zx5ea3bKq81u
+ OLQfVKz04y0yj1G0s6Inb2PTuTulK1Hm7LPfP1P921RQ3WzzAEb40ON8bLEakK46bu8IzgdXb
+ W7sNfI+MTuiURwgSz6IHJY8989OIHrA/qDj09TjHVaE8FNnYO6OoZOlLudCtn2CJNP0sZvKnR
+ nNIfMbxvC5s2s10Guwo9eABVgQfsdsHjWfcScU07FGVheETJ9LRW2T5E9oEzZTlocLp6ny3Tv
+ eXX9zfBJmlTsrEnBPOndV1dDtI55kVcO4Z/reyl2IOR1Pi702qbn6flaS874+X8PgUhmuMi
 Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:47:22
@@ -112,38 +112,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:54:04 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:57:16 -0000
 
 Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> hw/arm/omap1.c:1760:15: warning: Value stored to 'cpu' during its
-> initialization is never read
->     CPUState *cpu = CPU(s->cpu);
->               ^~~   ~~~~~~~~~~~
+> target/arm/translate-a64.c:8635:14: warning: Value stored to 'tcg_rn' during its
+>  initialization is never read
+>     TCGv_i64 tcg_rn = new_tmp_a64(s);
+>              ^~~~~~   ~~~~~~~~~~~~~~
+> target/arm/translate-a64.c:8636:14: warning: Value stored to 'tcg_rd' during its
+>  initialization is never read
+>     TCGv_i64 tcg_rd = new_tmp_a64(s);
+>              ^~~~~~   ~~~~~~~~~~~~~~
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Li Qiang <liq3ea@gmail.com>
 > ---
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: qemu-arm@nongnu.org
-> ---
->  hw/arm/omap1.c | 1 -
->  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-> index 6ba0df6b6d..02c0f66431 100644
-> --- a/hw/arm/omap1.c
-> +++ b/hw/arm/omap1.c
-> @@ -1774,7 +1774,6 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
->          return s->clkm.dsp_rstct2;
+> v2->v3:According to Peter's review, the variable 's' does not have a memleak,
+> so deleted the description about memleak.
+> ---
+>  target/arm/translate-a64.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 534c3ff5f3..c83bb85e4e 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -8632,8 +8632,8 @@ static void handle_scalar_simd_shli(DisasContext *s, bool insert,
+>      int size = 32 - clz32(immh) - 1;
+>      int immhb = immh << 3 | immb;
+>      int shift = immhb - (8 << size);
+> -    TCGv_i64 tcg_rn = new_tmp_a64(s);
+> -    TCGv_i64 tcg_rd = new_tmp_a64(s);
+> +    TCGv_i64 tcg_rn;
+> +    TCGv_i64 tcg_rd;
 >  
->      case 0x18:	/* DSP_SYSST */
-> -        cpu = CPU(s->cpu);
->          return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
->                  (cpu->halted << 6);      /* Quite useless... */
->      }
+>      if (!extract32(immh, 3, 1)) {
+>          unallocated_encoding(s);
 > 
 
 Applied to my trivial-patches branch.
