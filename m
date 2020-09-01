@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zK-0005PG-49
+	id 1kD6zK-0005Pr-B9
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55090)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zG-0005FU-FA; Tue, 01 Sep 2020 10:10:14 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:49511)
+ id 1kD6zH-0005HP-5K; Tue, 01 Sep 2020 10:10:15 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:37343)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zD-0003kv-Ck; Tue, 01 Sep 2020 10:10:14 -0400
+ id 1kD6zD-0003l6-Mw; Tue, 01 Sep 2020 10:10:14 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MyseA-1kYbuO0Vko-00vzY7; Tue, 01 Sep 2020 16:10:06 +0200
+ id 1M7auL-1kETUO2Mij-0081Fw; Tue, 01 Sep 2020 16:10:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- John Snow <jsnow@redhat.com>
-Subject: [PULL 13/44] stubs/cmos: Use correct include
-Date: Tue,  1 Sep 2020 16:09:23 +0200
-Message-Id: <20200901140954.889743-14-laurent@vivier.eu>
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 12/44] hw/isa/isa-superio: Fix IDE controller realization
+Date: Tue,  1 Sep 2020 16:09:22 +0200
+Message-Id: <20200901140954.889743-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dS20v3gw2u2mvJ4hZkS/ZTB7063+qvvt1jXg6HhuBk2JPnF3+RB
- 8sjbueW+jPeuKyTAVWgpNloTrtJ1ocBy7hKQjczZt44JafwLl/l8pLoXu/cseaa8N0SGZAF
- K6naJDOMnj3Pb/4CmOZsslC+UYKt/Tc2224O/bOa3kK7khbd7jlZF4IEIyfwYW2I7AVr0MY
- Y1zoE/w5/j/9iFUWv1zyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wYgD4GoZcuU=:9zM3pFHSZ7J6EkcLFwQnQj
- NlL1BiPLP8tBj3m2QYeh8tnr+tmiBoJvt456nmBnojNOcJsA8PSZ7voTk7ohvC/hRWcAyg2sK
- OnKwzVHmkXQHqUOChdbRHU8D4IOdEYZInhyRj4bFqoM/MtSE91gICtfUHIrqA9wIsVho1RcpT
- WitmRXET3IVDQAXptC+LXi9jXH/tcqGTHM24QzJmKrRyBFB8JhGYKhpz+jhM2rgOipkSwaI5m
- iCAq+4ZwCKe3eA7qbFVLsFUJq9dSEZeVFk3r+VugwnLM3pxyyt3Y5kvTyJ7eW/xZ2fR8k43R7
- vAbT7h2ESHWn5hRZ8Zop1wOEmWuK0oihOP+Eon/4tSpKkukkzh7y39pgltN0XJSwaqkDfVJAs
- Irt78zkeu+zNW7Y14950Zp3ErzyfUeahy2SqFhKQgNBg2/78IgXsFneEgxmBS5lWKYNKtsI0I
- /5yynxqxq4aEF8lQMd8zuVWtW+JCIvWwk0yTcG9m/2eGrdNzCMcts13DQYY3JSUhghtMd0xVz
- iWbw/+8h+b/V5nh5pflFLHrS3yhxEPQX57RgbCBDM3wWamaa8T2F7/vZ4bOrF4Xf4D17kIN/X
- 08VdC7T069L8NJY9p6n0pLHsLsjc1FPnATEHL5B+slS7E7WSuK24ijNYogoy5Hxo7ssFcGhR9
- PvrX4KPpv7AEqj5pNGHEBITAzcv2dZJWag3xzfrxhqSj31tfHuOYSLoTHXoFfWFFnUq3YyJ5i
- TLrOULmHxtTjb51goLrSOzdvo+e+MHy7c+z9LKmZ0e8+t1T5cnhXAsNDaCz2yFRQ/CnvGBsml
- JvtbiwqU2S3wjVFFYrcJ3+JOmn5mxSU0R43dCpq85zeksCy40HNhoXirUmXhK75WIGGMtbl
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:xbZu9qGgfijSoHkTjzR/3GFFaiU2ozU8OfWqHkB/F82rpNxfY3r
+ 8btq3ZvjhH58kl0ahDfKx/7gF9mv5RwFxXe5vAIMrC9wvvP1Rxpg3M+avnBfQ3sHNvhUmBH
+ ynrydryGHd4HpsrIdkTGAN/HHEz3UZ8wS9x+gqEtesVVZfR02oMpsRHsBsOdaijJikq37FY
+ 3mZToT7lDRqBJPfTiR/mg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3+WNcWVgOzk=:bzePoUoElpVzHn3vxvadwl
+ bJ46a7KYnhU/F8nek9T/W1JfdIqp4IVt8/XOUrtfIPtgD2U4HnInfAXHAa6n2B+j2BuPiZ64X
+ 5daLrV6igaJvZ/rLAYqSx4/w0HqV/JarxNec0Vk48RnejktzXXuqAYWWWhB4BL8vONu3kHGcc
+ jY5HBTeOHzRiwQrKXCnonoJlXkvM0In02ZwhwE3QihMBxz/G9hMVAHoHUrm87UCKPmtNC3zT8
+ zGLO6jSIcMHOQQdQjM+G/tCMO+3D2vCk7YUNq7nun9Dc9GR065P5fndHgB8srypKQ6tnk63Bz
+ NM5GWXvMNicljm9aad2wVIz1Zz8yzJ94t7ewQ4r472y5xYP4vIWpudskg5uM5DP0xi4oHTzIB
+ uhmwMpKJL7BDlxWO2ZPY1FYmjkhoBp/EdlIST5d9x6GNQFQ5O8Hj4grHJBQSPBP0kT83Q4sTn
+ JJYpyOLbVBPtS/TTJjJtR/qWbdmAmxaddGKrn8BSLilv67gjGjlO28oTh31KRxRtEnf19Rquj
+ YvsIxgkhuAzEdf/cknB49KHmIyCT+AtSS+4aJ08hSZ+gPU9YjDFBKWrIX84fSCxs5hIiTGdsP
+ BPElEqye59YY5a2fhLno07gXhpF0RkZrlosJybRBAWy08fhEiZs/p5EAYWZ+O87xpFz2o/lIj
+ OOyN2H1Q6YBCJHmnkYe9UGK4AHAllq3rrD122yBNxl9AtcQknvAKILIFs99yBmG3kqkH4W4+v
+ jHPvL8XazWVk2VMhux84PLEVzSRvMAuqXHBUqseusUZAyqlc+rtJE8y8lqqWxjEqheIN8/+Je
+ HEM56Cr5hNn0byzP5l9vvvX3UpC9swrgUVFjegq+Yx2Wb8+0XdcgJ+EGT6UmHAW4+NPG2gG
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -69,30 +69,42 @@ X-List-Received-Date: Tue, 01 Sep 2020 14:10:15 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-cmos_get_fd_drive_type() is declared in "hw/block/fdc.h".
-This currently works because "hw/i386/pc.h" happens to
-include it. Simplify including the correct header.
+When realizing a Super I/O with IDE controller [*], we get:
 
-Fixes: 2055dbc1c9 ("acpi: move aml builder code for floppy device")
+  qom/object.c:1684: object_property_try_add_child: Assertion `!child->parent' failed.
+  Aborted (core dumped)
+
+This is because the device is already realized when we try to
+add the QOM property to the parent. Fix by realizing *after*
+adding the QOM relationship.
+
+[*] Set ISASuperIOClass::ide.count = N with N not zero
+    (no such thing currently exists; the bug is latent)
+
+Fixes: e508430619 ("hw/isa/superio: Make the components QOM children")
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Message-Id: <20200724084315.1606-1-f4bug@amsat.org>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20200721124516.9602-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- stubs/cmos.c | 2 +-
+ hw/isa/isa-superio.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/stubs/cmos.c b/stubs/cmos.c
-index 416cbe4055ff..3fdbae2c69e8 100644
---- a/stubs/cmos.c
-+++ b/stubs/cmos.c
-@@ -1,5 +1,5 @@
- #include "qemu/osdep.h"
--#include "hw/i386/pc.h"
-+#include "hw/block/fdc.h"
- 
- int cmos_get_fd_drive_type(FloppyDriveType fd0)
- {
+diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+index e2e47d8fd99a..179c1856956b 100644
+--- a/hw/isa/isa-superio.c
++++ b/hw/isa/isa-superio.c
+@@ -158,8 +158,8 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+         if (k->ide.get_irq) {
+             qdev_prop_set_uint32(d, "irq", k->ide.get_irq(sio, 0));
+         }
+-        isa_realize_and_unref(isa, bus, &error_fatal);
+         object_property_add_child(OBJECT(sio), "isa-ide", OBJECT(isa));
++        isa_realize_and_unref(isa, bus, &error_fatal);
+         sio->ide = isa;
+         trace_superio_create_ide(0,
+                                  k->ide.get_iobase ?
 -- 
 2.26.2
 
