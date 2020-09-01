@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zY-00066E-Ls
+	id 1kD6zY-000678-UF
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55418)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zQ-0005fU-2R; Tue, 01 Sep 2020 10:10:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:46097)
+ id 1kD6zP-0005fA-TX; Tue, 01 Sep 2020 10:10:23 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:44969)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zN-0003uU-Qy; Tue, 01 Sep 2020 10:10:23 -0400
+ id 1kD6zN-0003uP-Op; Tue, 01 Sep 2020 10:10:23 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MGQaz-1kNJD416sP-00GmgK; Tue, 01 Sep 2020 16:10:11 +0200
+ id 1MEVBa-1kNaK03rti-00Fxjj; Tue, 01 Sep 2020 16:10:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 21/44] util/qemu-timer: Fix typo in description
-Date: Tue,  1 Sep 2020 16:09:31 +0200
-Message-Id: <20200901140954.889743-22-laurent@vivier.eu>
+ Mike Gelfand <mikedld@mikedld.com>
+Subject: [PULL 32/44] linux-user: Add strace support for printing OFD fcntl
+ operations
+Date: Tue,  1 Sep 2020 16:09:42 +0200
+Message-Id: <20200901140954.889743-33-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fBZk9ez3vhEgDKEwBIi+DZi3OhQueHvRjUMJcSzEeEqICWTwBLL
- VaRxBQkmEKu5bJ6M31IZM8JvJGlUQME5tsjp7C22vrYi7AWu/X6YnPFxN7S8bnv5BtgTlmB
- hiEljrKb9YAEeA91ura+6HZON2aC3XcYDgh6c6gFXTxs9PLHpkTft+/EIcJTN8GsViSJfrH
- B76QvdpFkltiXKzNs0I2A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:i43uraF2Yhk=:zvcwRIBjL3uFBNQTqxTsfG
- Mm8ifcRhrfOKRXjWTUWxlyiqxyuLNsC0STxyY+RUM7+cNC1KaNHy64mvVVwGV8TLtMTHPrAuX
- M4Zg2SZzU3wfeKvQnQaqnm8/gF/93wDODu9R1EFvRDWWYKl4RcpKWdlhgpH4KIeY5eAt7++8e
- eGJr4JbHWhVc/J6qA5MkGCJd6VTAfJQdUzPAATv8L7EXgO6d00PrCg8yjru4/Ofz7vmMItPNQ
- uBhAcYxXXVW8fenUW9kaXsjW/mkTXEgNVH5hgt432nJmZIFAc07DwCz9N9US64eRToWiVZcwW
- rfIpB64q/DReR7yHiaj/V1guH/jCbyJnliOHUcoxOC2OJwrC7RO6u/oMZYkIpD6FLE4bFkrbj
- gTlwFGbQo+jkRhj6BU+IEm2EbKOOf40/aknqmBQmFCemcEPNrn0+HnwcSnQlZ487ZGoIiVbuS
- 2BgGvZB5lXrF5yr2fy9H2GRkzGQ1sK7isfoLYaihJhC/jI3YBIonEFw5rNwpNtoJvPFeihLKP
- OAjj/Dathm81qmhXTuGJN1RNcA1hhXKiZplp6zerQxLZTW3IDyprIE/jlcpw4NLfPLX9xiLI+
- 3obtBNZP+gAL2A5mZbQ36Jwu//RC/sGd+MiS7OtA4EhXM7aVek2Ga7zHoIH9ngbbZAwPC1tPp
- ftqAkslWKeHbfb/ZYRApdQwMTouMqpfKQo8BMzXBK5RHh9OqOaO4mifyhJmnq9s7Bl8Zftb6+
- 9B4ZhtJZTm42xGb2+f5L0ea4vs4VkLQCxL8KOidNkvTw8YcuRkPy7ftNW0Lj1+04BVyEeRTpZ
- 1ezb0EkkFf6VOhnnOfmjkmY1EHbet+Ct1lYuvGBn9n93jBkUzlwKKzREC5aInr4Nk0P+6rg
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:o3ur6JqCZo4qSN9nasD1Ujj6N0dcSAJWVFOYwBK7k0Z2J5rk7FK
+ l/XuWxcgHOQT2gicVeubPtUNGwnDjVdUur2Ru2Tc05FnW2djSsz/9I+YUMR8X6Sy/UV5P6P
+ qp6eHNNgEO3c4dFsuvSqrjseJrcYJZQt4EX3V6CsCmzqlnrhc8WOj8glrL3kK08Ao4SsWDX
+ gax1A0f3X9dkFHK5D0jyg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Qu1gcnBW3yM=:c2k70dmoJ8wgiwGMUehr7I
+ BnlfXaPy+eB0InYKHm1GOOk7420F5TwO+v5dw7rupS6rsxCqUwmPp029OL0T/aJd14AlQr+/g
+ oqa/QowMsUJgpUkcUWfN1L4PoJAiU7LFC4LBDeqexCCM128k+n6LV2v+r4GcZFbBH0+362oGV
+ zS1wtfiRs4Q7fqhaS3r8ZhI/KHSSTPw6faWpswr3hp56TmyiQgt7+h/OwMVTFb+r1eAlbt1uL
+ XccFO8EKtJzT1U8KzkocG8IRki3U09lsRpfXoQv08UMD8IiOHdH5W0ZBNfbr6lB0k2+XGlE3N
+ 6NULtDovtOmsKXWQZbc/ciVbpNiyrWi6LpkodN0pH093AvAhdX0cnLrs+1579xJG0DffINm2Z
+ Bh6poE1cFd/R8XYDp7hXIHm/rDbKjl47WkIZs3++RkGxksL8JXxCvab8nGd/aG+BKgRcX2LiS
+ U10OmD9kgJuXM55NxitUiUnTcqrmbpnGnsoMkYUm06DHvhgTBG01AZ4axYtcj8pM+J0E4PdMf
+ 8MMs++aH7ZN6jTck53e+K1vHE7E1XksBX67MH+yiyX3Ba8tcZ3qOiTNEu+LtPGXEpIeYXeQ1F
+ aLIx7TYxYgoHAYbjXazL42UcvrDer/OqGygzn+yRcs1lNChBPbIK1YKPPm8Ervz5a3keFlsBy
+ 3kn5nroVloIS9F0W/MYnjxSHvCTsmyvWBVDWVrBQZ7BmngJKG5flu/3kOPXXcvMDjPng3P58+
+ ARLDpTrBczOEYwuCjf2Vyf6uUkiCd6/Gp4zPy/sviBfqRTchV6lT9gPVUvllSNhPfy6CqR7Cy
+ L5rykaFLhu9RCnjW/8KZ+DIhdU/V00vH15Qi5xWt643rVK6sursTq/p2vO9TP6E/cKbR/6M
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -67,33 +66,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 01 Sep 2020 14:10:24 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Mike Gelfand <mikedld@mikedld.com>
 
-Remove the second 'and' introduced in commit e81f86790f ("qemu-timer:
-avoid checkpoints for virtual clock timers in external subsystems").
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20200811151643.21293-3-philmd@redhat.com>
+Signed-off-by: Mike Gelfand <mikedld@mikedld.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20200830092242.31506-1-mikedld@mikedld.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/qemu-timer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/strace.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index f62b4feecdb0..878d80fd5e5e 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -530,7 +530,7 @@ bool timerlist_run_timers(QEMUTimerList *timer_list)
-     }
- 
-     /*
--     * Extract expired timers from active timers list and and process them.
-+     * Extract expired timers from active timers list and process them.
-      *
-      * In rr mode we need "filtered" checkpointing for virtual clock.  The
-      * checkpoint must be recorded/replayed before processing any non-EXTERNAL timer,
+diff --git a/linux-user/strace.c b/linux-user/strace.c
+index 4f77b0cf76eb..11fea14fba2e 100644
+--- a/linux-user/strace.c
++++ b/linux-user/strace.c
+@@ -2056,6 +2056,18 @@ print_fcntl(void *cpu_env, const struct syscallname *name,
+         print_pointer(arg2, 1);
+         break;
+ #endif
++    case TARGET_F_OFD_GETLK:
++        qemu_log("F_OFD_GETLK,");
++        print_pointer(arg2, 1);
++        break;
++    case TARGET_F_OFD_SETLK:
++        qemu_log("F_OFD_SETLK,");
++        print_pointer(arg2, 1);
++        break;
++    case TARGET_F_OFD_SETLKW:
++        qemu_log("F_OFD_SETLKW,");
++        print_pointer(arg2, 1);
++        break;
+     case TARGET_F_SETLEASE:
+         qemu_log("F_SETLEASE,");
+         print_raw_param(TARGET_ABI_FMT_ld, arg2, 0);
 -- 
 2.26.2
 
