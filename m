@@ -1,21 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2M0-0006r3-6d
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:13:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34190)
+	id 1kD2Oc-0003bV-7Z
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:16:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2Ly-0006ny-OE; Tue, 01 Sep 2020 05:13:22 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:35889)
+ id 1kD2OY-0003VJ-J3; Tue, 01 Sep 2020 05:16:02 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:39783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2Lw-00071V-CM; Tue, 01 Sep 2020 05:13:22 -0400
+ id 1kD2OV-0007P8-Ho; Tue, 01 Sep 2020 05:16:02 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MGQax-1kNF5M3GCj-00GtTt; Tue, 01 Sep 2020 11:13:17 +0200
-Subject: Re: [PATCH] mailmap: Add entry for Greg Kurz
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <159724665142.75339.817685642171828648.stgit@bahia.lan>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MNKqC-1jx9P70JGk-00Onv2; Tue, 01 Sep 2020 11:15:55 +0200
+Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
+ MAINTAINERS
+To: Thomas Huth <huth@tuxfamily.org>, qemu-devel@nongnu.org,
+ Michael Rolnik <mrolnik@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>
+References: <20200812155304.18016-1-huth@tuxfamily.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -59,32 +62,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <fbb4f46a-5949-03f6-f263-f996cf808b6f@vivier.eu>
-Date: Tue, 1 Sep 2020 11:13:16 +0200
+Message-ID: <f3f8e218-a78e-5a98-5b06-c588170f105a@vivier.eu>
+Date: Tue, 1 Sep 2020 11:15:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <159724665142.75339.817685642171828648.stgit@bahia.lan>
+In-Reply-To: <20200812155304.18016-1-huth@tuxfamily.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TlGoOFBW29Wyg8xzYf6o6sjH1HgjMQHZhP1k4qprgIWcSrI1+oj
- 9wLp+SOArLPVa5PrDj2hp9rPrHKjEYoljYWMsSsW+OTre1/5rl+cz2WQ1MxNX7YL+TmInN5
- lkjXk8VEYWK/Wm9MiLN8IUQeRA0fqAGQP4e4YtxQW2d15LdVsUwYA0EtZvs3J0pyn0/4oPG
- FtPljdqNNhFd2sxIYyj/g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:OwKhnpLLFWU=:eg09/ApyU4IVosniMlfzNT
- +PzyjM1ISrdSu0ywaVsMZon6KjEZoerP0AkmhQwWFCLMsLhQRAGs8uhstSHE88qSiZj8jsm45
- l+xGTYaCG5S3G1diksiZ+Cp+7+clmRhgg6SvGQ5TGFpNpzUd2bpL9CNGAnKRsh7qQw4RcCqP4
- FQbNNtIKB8uSWJDQhrNZ480ca0VHXj9qo6j0oJejrPXNoN9OeEpPRBU7quIqi61xRN/4N2DBm
- yutNgFSP8T2Q9MnVm50kkqMyfFMV1fZesXQQHnr8m/m3tjYvlKynAdUv/Re5p/f2XVnEmkYxP
- ebNyU9bSuAR8Aa3gFle61G4bxFWvNGk92dR0LPlKHiS3/pLBNEj059BSg6hzhvWCfnII1aLAG
- FdODuEXX4BTwaDein+3U7F+yOF75DbylkEngJwy6JetmKRjo3kZQd3ftdUAYhk6lqj9JUHfZ3
- SUn8IMUdGqFyVjfbDZTaim/+WQncDdndcbgrkTVBuMhV7uxKZmBIv9E+kd8HrDGisEMG6DHQ4
- v01stPYEC6ZJoBsKhNQd3hYog6VOqxxXE27k0OnPX+5aRwyS8pVYyUN+ZjIXLMD/LeRllh6Rs
- jWf7MiweVxJxc4uvTdowubbPCCdGFmuabwUWwfCzRBPPZAupET3uaVDuDOAUWk5sJFQd4TPqm
- OiXUO4+6zsDLsKjq6zY8/lJk/KmaAwbHMeasZieqHiVbm4VqbO4p5jUFaYZLObNhdYE11TRbg
- etrJMAcRRFRUnfC0Cs1xUlTE/LZrGvOzvwgaUcngcL8mkvC9HsZ0D8yY7AeRXD+N0Bq4+wYhm
- Ix68r3mUEKoNi2TeUV2etDGcpHmCAaBlwvO6erBuVjt2A0XHVv+QXnlWGKM8+xHpTfQNNPR
+X-Provags-ID: V03:K1:1ceeWEXpsnsLa6emFXf2oNCdRoMhB4wNYSzpIcyO1lWMEWGfA5L
+ xqUlJSjHvNGv2gqCqFZkXmk3hn7ZgCCsesildJ7UrAkpAPnkUfZ+5QFYm7QyzZbPWJN1Rn7
+ PiW81NtYkJmP+imNz1NIoxD7Og5mg6TjEaimaCf67FyuWKSs3a/emOJEKz4NirFQZobhE48
+ b8b48Bo9z3719ekx9LvCA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:eYZ9f7lVI60=:o7QwIOEC3FYy0JFqysOdZ0
+ WIMUvTAhlm74e6e420b+R40VZcNoQoOoPKLfdwysfwtgvpZkMQJH5oaVQjnjxjQ6ZN9HFQDrw
+ b8HhsPP0IcmNcomKMxOQ+wPqrz2Yezf2XCMYkR+9CNtAseCfvnjRxdpquYGOMh0bIjkX1bNFu
+ cddOVaJ8tgmHk0rNd5gDQTvtvBulOu3GxaGRaEBP7m2psERk3LM2/1cis2zKnBOAf1sQwaCjE
+ oR+O74AVuBI5hfxv6M867TASxb9ACYJPFtRwq5K+N/d+4/HK3xopgyiT+t7BgNuHPuA3/7cVo
+ 2sjNh5rECHbIXVLykdTpDJ7UE1e24GKgzX+v4wMqjHlNh7BZ+QJNcp57nxfpLfunuHT9ujXqi
+ keInbhDXmZSaFUldcN+wF7sROBg4LU+ZpqTiAoF8SqPY1TGsf+0owuUVCTcw+Yllelm34Vgek
+ 8A/oL5kbqjPCSWH2Js59pLUBynHw4Z3Njqqn45CKSZwoBuyZyA4AVMXdujQzHpBzU05RxBZuF
+ oiQeMvmRU2RWOQapD0ZwfmRME9CSiGw2i3l9S7XS3dp0ZLxZfI6RHi/Inx6kw+DbiwUvRCeUB
+ 9SIfXHWNKSFqEozyvpMXVmRzvtLiCSqHx/pIJfvI3c1nkNK7lAZLmEZorh9/4/kFts/ESvd0V
+ 4Wr/v+IdpXYxXWufXvo/AcI7iyWeLgCAz2v7K7fyFYUvknVLzwIpYboIVzOJSGrkXv4d8Tt2U
+ wcYcrTLst3bepDzqGV9L0ROhlhKv6M9NbtwivwxDUtQaLBGOodIzL/SM0gCQkRC54g8TDlWie
+ EL694pwRQDwbf52r0JmvaR9EHEZs03+n2Zfi7NXGsaHDKL5iqtLs3X2Ic4MnyTyLOHPaYtM
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
@@ -107,35 +110,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:13:23 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:16:02 -0000
 
-Le 12/08/2020 à 17:37, Greg Kurz a écrit :
-> I had stopped using gkurz@linux.vnet.ibm.com a while back already but
-> this email address was shutdown last June when I quit IBM. It's about
-> time to map it to groug@kaod.org.
+Le 12/08/2020 à 17:53, Thomas Huth a écrit :
+> The examples look nicer when using "::" code blocks.
+> Also mention that "-d in_asm" only outputs instructions that have not
+> been translated by the JIT layer yet.
+> And while we're at it, also add the AVR doc file to the MAINTAINERS file.
 > 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
+> Signed-off-by: Thomas Huth <huth@tuxfamily.org>
 > ---
->  .mailmap |    1 +
->  1 file changed, 1 insertion(+)
+>  MAINTAINERS                |  1 +
+>  docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
+>  2 files changed, 30 insertions(+), 18 deletions(-)
 > 
-> diff --git a/.mailmap b/.mailmap
-> index 81c2ce09370c..896e2d195d86 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -48,6 +48,7 @@ Alexander Graf <agraf@csgraf.de> <agraf@suse.de>
->  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
->  Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
->  Frederic Konrad <konrad@adacore.com> <fred.konrad@greensocs.com>
-> +Greg Kurz <groug@kaod.org> <gkurz@linux.vnet.ibm.com>
->  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
->  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
->  Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
-> 
-> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 0886eb3d2b..5b21962bc6 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -171,6 +171,7 @@ AVR TCG CPUs
+>  M: Michael Rolnik <mrolnik@gmail.com>
+>  R: Sarah Harris <S.E.Harris@kent.ac.uk>
+>  S: Maintained
+> +F: docs/system/target-avr.rst
+>  F: gdb-xml/avr-cpu.xml
+>  F: target/avr/
+>  F: tests/acceptance/machine_avr6.py
+> diff --git a/docs/system/target-avr.rst b/docs/system/target-avr.rst
+> index dc99afc895..1410031f5e 100644
+> --- a/docs/system/target-avr.rst
+> +++ b/docs/system/target-avr.rst
+> @@ -17,21 +17,32 @@ https://github.com/seharris/qemu-avr-tests/blob/master/free-rtos/Demo/AVR_ATMega
+>  Following are examples of possible usages, assuming demo.elf is compiled for
+>  AVR cpu
+>  
+> - - Continuous non interrupted execution:
+> -   ``qemu-system-avr -machine mega2560 -bios demo.elf``
+> -
+> - - Continuous non interrupted execution with serial output into telnet window:
+> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -serial
+> -   tcp::5678,server,nowait -nographic``
+> -   and then in another shell
+> -   ``telnet localhost 5678``
+> -
+> - - Debugging wit GDB debugger:
+> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -s -S``
+> -   and then in another shell
+> -   ``avr-gdb demo.elf``
+> -   and then within GDB shell
+> -   ``target remote :1234``
+> -
+> - - Print out executed instructions:
+> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm``
+> +- Continuous non interrupted execution::
+> +
+> +   qemu-system-avr -machine mega2560 -bios demo.elf
+> +
+> +- Continuous non interrupted execution with serial output into telnet window::
+> +
+> +   qemu-system-avr -M mega2560 -bios demo.elf -nographic \
+> +                   -serial tcp::5678,server,nowait 
+> +
+> +  and then in another shell::
+> +
+> +   telnet localhost 5678
+> +
+> +- Debugging wit GDB debugger::
+> +
+> +   qemu-system-avr -machine mega2560 -bios demo.elf -s -S
+> +
+> +  and then in another shell::
+> +
+> +   avr-gdb demo.elf
+> +
+> +  and then within GDB shell::
+> +
+> +   target remote :1234
+> +
+> +- Print out executed instructions (that have not been translated by the JIT
+> +  compiler yet)::
+> +
+> +   qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm
 > 
 
 Applied to my trivial-patches branch.
+(I have removed the trailing whitespace)
 
 Thanks,
 Laurent
