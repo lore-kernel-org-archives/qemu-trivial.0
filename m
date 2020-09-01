@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6za-0006BM-D1
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55440)
+	id 1kD6zb-0006Ed-F3
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zQ-0005iK-Q7; Tue, 01 Sep 2020 10:10:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:54469)
+ id 1kD6zS-0005lO-17; Tue, 01 Sep 2020 10:10:26 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:34003)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zN-0003uZ-VA; Tue, 01 Sep 2020 10:10:24 -0400
+ id 1kD6zO-0003vM-9z; Tue, 01 Sep 2020 10:10:25 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MirfI-1kpj3P28pg-00es6T; Tue, 01 Sep 2020 16:10:03 +0200
+ id 1MF39M-1kO8YZ1I88-00FPlt; Tue, 01 Sep 2020 16:10:15 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 09/44] target/cris: Remove superfluous breaks
-Date: Tue,  1 Sep 2020 16:09:19 +0200
-Message-Id: <20200901140954.889743-10-laurent@vivier.eu>
+ Li Qiang <liq3ea@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 27/44] hw/ide/atapi: Replace magic '512' value by
+ BDRV_SECTOR_SIZE
+Date: Tue,  1 Sep 2020 16:09:37 +0200
+Message-Id: <20200901140954.889743-28-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XPGk1ppX/yIcmerFfjdQ8YEXT48yPdytcScu35k7J4MP4OtT53r
- eWf/sK8GFUOSw71FV2s7xmY/QBP0WSp8FGJPSmdKB/4jRSwLdWTZBdYpmyCYnmqrMBhzhcE
- QXiOk1SQ4cckOUe5h/eRktxlLA116LEaTibX7B7yVkQbkybzftKYJJCqofwwQHaFfnjEH0f
- knnYmomER83ZRAOLx841w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2yHF8nSWOIs=:sBPsy+AaCj1nt0Aou7cjxw
- C2Q4pP+qftH+i6TNfTN3BLrfAGeXchsK+bqY92ENQiZw/Q93SJhRPvIB542m8FZnhTa3lp0lO
- 00fhUj94INR2WytAflneLLgz0Rs9JfEzpIKNeGpAa2qTdemZY5AA+4taa1WqnMsnfKpnDJl7a
- rbsrafxfnf4Jhec0T2l28W+2UJcd6ZZ0rlyZpqjDv9lKYgERcFHGmpDvJRe/c4wr51FDurLXI
- o8m0zPuaXmr4YDXPFRly/2xWxaEgW7foRvpPDXd0RUzBy3M1Keft4ET9TyrwWROFNY1AxTqcO
- iQaGoOfNeQpSez9V0nIYNg2Utz8x7KvixO5zy6F3ZcyC+N1xf8HEtPs2DPOm0Xv6fUGpD6QFo
- ooY+pYkXU1De1nGQStb0/h7LXlgi/B0bLDXDw36yyC2ChNJBY5TgtZXWrr6AMESg9RiKQJQNM
- ofe9joVixHz/RcgvcmIpTY+iJLCTKzzic8Xvk+xjWwtfCbCx71F4eD8b4l4lDhXyaL/pLzGE2
- nZvfn5m5+XpMa3YQM9Z9P5SMGXm6FUektosEN7KxHgCmhvvXQfzrFVCvw87tNDgANNVkf4Rqu
- Lz07MreGe5gxSrmMvOJtr3qrLgewM8pnDR1C4nzUwunD+X8n45/JL7Dxs2qGLpKSxa3S5HeIh
- YtOQ+p7cSOBkcIWCTsXXJum2XfNpkb0sI9R92Xh8krt6UvMriDq0AIdeQFjoqTKcqAe8KFKVi
- erNHLtuf29tWwc1eggXnvVdLwnGEqlzT9YqJhl0u7gi4zwoxcX3brkgQ+BisYdgbpCBN8PsOO
- qsEtORnC7zBeFYpVHcXeRqPkgQUCn22Qzj9wLqGq20umRDOmgAD+DwDV3vdAtrRvjGdLCMo
+X-Provags-ID: V03:K1:XxvDiAfEEf/04NBgoBcF9pZo4GWfl/h/H5eA0RtNc1GoJBaRxzA
+ 7a9L0pf3xltRzut/4I+nLUEaJWFqpMvKfrOeDM9I3xERbD43UbkrUA+9p8hBPwXlyArULK1
+ CXzApjMmspuv/hmZwE9HWixkBa0meLnVX/A4V/jz2fb6SceC86ExY8ufbQPWnC76aCxbkAh
+ WUsHLH/egpmzl9uyynddg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0j5L6IFBVXQ=:YWRmFRVEYEl7NwFBvgwZ1N
+ zvL1EzYmCwBE3cQcgxjRRWGUkAn/zT9b480225Dn7QoLaWOZzaiuNjr7r20X0Jvll/vMAPLNF
+ OsMIlYBe6H5cR87DnZ/UP9OkF+HYLozgPSE3TWiChI2hsjWZehXbrFFiAB10wjmN0ldbXAtsx
+ po0/k4V3Ix58G9Qtlj9HRgbEnhaK+DxOxSD2Sl029CW+04PyLMtv19P5dKwBVPAHVncn55cm2
+ a2Rq3zClLO5LDeDtgkboMfJTTZkXr1GhpwzbYfirbEeOov3gwJ2R30BbSGIJsf7fZRwiCMp/R
+ sEMHu4YgujNHRRWEaZoaS3fVAb4OdZUoCEbmZ6QGHanAY7SrJXDHZ7gt2feuXWUv3x0B+D2QU
+ 0Ui1GHmCXFeIRcNH2bOF+Oly2niUMmEQNss2KVsuuJ/GcQ1kgiVFJ6G4TQuGqqVjOXtiQH7JF
+ m+fIfvvXYV9tyq/4yygp0tMledU2QKZDHIHj6t0X8FYmGuFjN1tpAUlLCxvOsoMx+9h0v663v
+ em5i36dE/z+3bhich2E9j0QA9NurAsGznT5kTJGkBVGA1xEX9fNuIC10WLUKseNs0evqf1Zfe
+ W2Dt6Llncn1OSQ0S2Wn5m3crZbgUg4uDwF8jvUsdUJcEYxHYFPKSGzUaqglEEwpyrlwQ0lHFc
+ F5xQ54UzUq0VQ0jmmt/LT4s3QIdmtJey1FEcB5gBquhz+CAwYxkLynTQ2VG91Tto68/77QXQZ
+ RYwwsAfZlD3HzaDrIKdrcm2M+nebtiGKKrbiUqahq5TYEzLVhqMMg6wdMQAe6gecSR2VQDeYi
+ KYWuECHweCBd7bOzY3tSfV0SJ0cod7/ZE5/btHURtriSyFysd4VTIQmmKUXFtxlpHo16cN+
 Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
@@ -66,58 +68,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:25 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:26 -0000
 
-From: Liao Pingfang <liao.pingfang@zte.com.cn>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Remove superfluous breaks, as there is a "return" before them.
+Use self-explicit definitions instead of magic '512' value.
 
-Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
-Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1594631150-36801-1-git-send-email-wang.yi59@zte.com.cn>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20200814082841.27000-6-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/cris/translate.c         | 7 +++----
- target/cris/translate_v10.c.inc | 2 --
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ hw/ide/atapi.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index ee5e359c7788..c312e6f8a65f 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -1178,12 +1178,11 @@ static inline void t_gen_zext(TCGv d, TCGv s, int size)
- static char memsize_char(int size)
- {
-     switch (size) {
--    case 1: return 'b';  break;
--    case 2: return 'w';  break;
--    case 4: return 'd';  break;
-+    case 1: return 'b';
-+    case 2: return 'w';
-+    case 4: return 'd';
-     default:
-         return 'x';
--        break;
+diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+index 17a9d635d842..14a2b0bb2f8a 100644
+--- a/hw/ide/atapi.c
++++ b/hw/ide/atapi.c
+@@ -824,9 +824,9 @@ static void cmd_get_configuration(IDEState *s, uint8_t *buf)
+      *
+      *      Only a problem if the feature/profiles grow.
+      */
+-    if (max_len > 512) {
++    if (max_len > BDRV_SECTOR_SIZE) {
+         /* XXX: assume 1 sector */
+-        max_len = 512;
++        max_len = BDRV_SECTOR_SIZE;
      }
- }
- #endif
-diff --git a/target/cris/translate_v10.c.inc b/target/cris/translate_v10.c.inc
-index ae34a0d1a3d8..7f38fd215eae 100644
---- a/target/cris/translate_v10.c.inc
-+++ b/target/cris/translate_v10.c.inc
-@@ -1026,10 +1026,8 @@ static unsigned int dec10_ind(CPUCRISState *env, DisasContext *dc)
-         switch (dc->opcode) {
-             case CRISV10_IND_MOVE_M_R:
-                 return dec10_ind_move_m_r(env, dc, size);
--                break;
-             case CRISV10_IND_MOVE_R_M:
-                 return dec10_ind_move_r_m(dc, size);
--                break;
-             case CRISV10_IND_CMP:
-                 LOG_DIS("cmp size=%d op=%d %d\n",  size, dc->src, dc->dst);
-                 cris_cc_mask(dc, CC_MASK_NZVC);
+ 
+     memset(buf, 0, max_len);
+@@ -1186,8 +1186,8 @@ static void cmd_read_dvd_structure(IDEState *s, uint8_t* buf)
+         }
+     }
+ 
+-    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * 512 + 4 ?
+-           IDE_DMA_BUF_SECTORS * 512 + 4 : max_len);
++    memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 ?
++           IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 : max_len);
+ 
+     switch (format) {
+         case 0x00 ... 0x7f:
 -- 
 2.26.2
 
