@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zV-0005vs-FB
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55156)
+	id 1kD6zW-0005yX-7y
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zI-0005Kk-DY; Tue, 01 Sep 2020 10:10:16 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:57293)
+ id 1kD6zM-0005V6-5C; Tue, 01 Sep 2020 10:10:20 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:41591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zC-0003kH-Ej; Tue, 01 Sep 2020 10:10:15 -0400
+ id 1kD6zH-0003np-4x; Tue, 01 Sep 2020 10:10:19 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MF39M-1kO8Wa3wcq-00FPlt; Tue, 01 Sep 2020 16:10:05 +0200
+ id 1MplPh-1kwe1l2Won-00q7Qu; Tue, 01 Sep 2020 16:10:08 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Kenta Ishiguro <kentaishiguro@slowstart.org>,
- Stefano Garzarella <sgarzare@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Li Qiang <liq3ea@gmail.com>
-Subject: [PULL 11/44] hw/i386/kvm/ioapic.c: fix typo in error message
-Date: Tue,  1 Sep 2020 16:09:21 +0200
-Message-Id: <20200901140954.889743-12-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 17/44] Revert "mailmap: Update philmd email address"
+Date: Tue,  1 Sep 2020 16:09:27 +0200
+Message-Id: <20200901140954.889743-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8zzF2KBG2U8YkswJX4xybFx0/NJ8yL9YrgzOOzQ6QIWlM//DCjD
- YhJRN20gS/SmybesOw3JPHnJ2hp4c/QL+aUDoP7jrHJV/1gCT77+dFfYdLtOyCUqs2QPsEY
- IARA2i/1ZSzgU4zckYrulNgAfBKO/Ot3Uvj8ZqRumBjXwYjmFS9ycIC8yplkNCB+2WmKoEP
- 5XmEjeQ/vq1HePDrQN/Fg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mNv9wNw5Zps=:8zz29vuzW58qf+YH7/w7IT
- aZ4REfq5OnRcYGd4dSN/MCuYyQ/QGQtqPk3iM+kbLHL7pZxQr8jJOOoAqTtzelTwtg+lwmAkX
- dw3S1z0dUKLYIGPFPnezd/cQwhhyBrCQgzYmGoQC5xzJpGLY3MBOX5Ui4CJkpXMkX5XOCHUFC
- ChL73jk+FErtcfEmRsnD19aZsg+LHjfWoLSVkBo767HbjU6oLshmhmxjgiEGy9tPJHbyABs/7
- O7h7ULQjuwSjpcDcOnVcCtyK3fWBhwS0lkLvJCKubExu5Fw7+Ee4gJdvLn9+HAZ+H72p3R0Ds
- czTzfzc9BFc483HOxqw8Yqu8ss4fu4UyyOtpZLfmQQ0iSl91n0M29eDPWwS6fGsMFACZiK7QR
- CzqK/Y7mrmrEKrw7C9+5e1grWrbBOXQvsSJyth6+X+9taMnmPKn0Cg08eLqi568ji+xQrq66L
- SqZNgZl4DYwh1JL5wSaJII4BRAp5jZseD1VcdGq0KT4pmrpJfEdIQ2U9uT8nU320dCpghmEi1
- Cl239yNndcDUHS0p8xw9lWFX6eG3rIoXu/MIW3lqpNXWemyiDlwogF4jkmAmQ93nv2HIC21aN
- vEF2BeMTupGBdquQgdJqzJ1yxp+6wEe8GccAmpiIdmpQWaWEvV9HIauNjviNO3e5zwANncAJG
- Fpzpgv1MLg5fDWA/cHU0OXENxfqEegY0bjlK0vCh6ZrxgrorMteAwIGkBWXmTZS/TF5Xidd2y
- iSYmghZ8nZXayxR2mEaJcAWfFucDJ3/BkNyyqPxi5K/+eAJ+NxslkMn1C1pgslQeXWg8LU7tw
- 3tmEVHD1WrrUfPXT7EtudnRr9YSttZAWKPyiBF3Y4qr8YahDTQCpu6EbUnFwG5VFTfReVNm
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ChtALlJkZgJpiF96Cn17CCN5tia8WPa0gmyMFO9vzh2KNErH/3p
+ 1MWld+uKMHrIzYVOqrquGvgScUiCphJcVEUEN1ed8XjHDNoYpteyKh3UTDeQFQhdX7HD8kJ
+ O2u4eBI+JASfBmNnL+mWqflMsnSIuf7EB1pMDXo5WwKwORZpXFiGEeB067wnSmlFSUMwa0y
+ IE3UEB9IBiMqrJsaGIjew==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hyd1NQj9Bdk=:evSdRF+5+e+oaDyNbJ4FPJ
+ z8dEhxaPiSPs8Bwb8llDbJzL7F5FseE9L2OMUKBvo8J/4rFA2d7uS73x3tO1MWgYaMr2Fxf/w
+ aZAMUjbnj9I1P1hcnExjhfn3TZjkra0oHN7HHcV+REC7iOximSq52s9D52jnxTum62tZTp0U0
+ /lnk/iJAT2E81i8guN8Wwirko+UIkMQkt2N4vAQEIpLqVb2THINDsR3K57/clT3wg3zBICR6c
+ okk327mZD69DOUfsXGFMwuQbPmc5NMssVvkWStr5/Wyw5gomJxsAxR/gYVYWffoayELB7Wl+j
+ BpynW1LRe2F1bDnF9XFcwOd+GlgJL+tPybwUO6GuujmYg18xysSQBPeh2TKzOaZR+J0DXmsNr
+ golo44nfkUWZH9IvKwiaVwHk8UBgpBzIOkjEDraycfozj/J6PEuqw/ZQ4QtjO/HszIURq4Ahg
+ inDIk4NVLcAkbFrLuPHNVtZ3qDxaZlcoWg4E4p0OfAxy0QMDbmPViA41W3Hvdr/vOIEc/V8Vz
+ qoiObjCJf1CO+NkNylVUeviKcZr2XRw2DVK7eJoE5fTS5TOC3LQCli0Z+odzcJlFQi3YYXoXP
+ bcK65h6dAVEl92kVmP07RYMX62uEJcYL0BFsqQD+UylhR4Cs6WAGqkh4IAX1C06UCOTgHrmqi
+ FXQI4QIX/3s0psujJoX9lF0DWoxKMYaoJVWa2Xcn2wt/IVj9jtiQ6O13ROm+06MyRmbqIPCUO
+ MofVTzX5Uhf+oTNErwuhBNyAZZku270+kelRhMD+Pw6ddEnqM3laKN0JH82WLbcCxlBX6VrnS
+ Vh1u/ZbtyfAyLNzCiCf32Y83ymi5JXHcT2TBVm4Mb4kTEHCuW1ytMN3KNRW4Otie7HzAB0S
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -67,37 +65,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 14:10:17 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 14:10:20 -0000
 
-From: Kenta Ishiguro <kentaishiguro@slowstart.org>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix a typo in an error message for KVM_SET_IRQCHIP ioctl:
-"KVM_GET_IRQCHIP" should be "KVM_SET_IRQCHIP".
+This mailmap entry does not work as I expected. I am receiving
+emails related to my hobbyist contributions in my work mailbox
+and I get distracted :) Remove the entry to keep things separated.
 
-Fixes: a39c1d47ac ("kvm: x86: Add user space part for in-kernel IOAPIC")
-Signed-off-by: Kenta Ishiguro <kentaishiguro@slowstart.org>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Message-Id: <20200717123514.15406-1-kentaishiguro@slowstart.org>
+This reverts commit 289371239153b24cb7bd96b6948c6b40b4627a9b.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20200806135832.2319-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i386/kvm/ioapic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .mailmap | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-index 4ba8e472510d..c5528df942a2 100644
---- a/hw/i386/kvm/ioapic.c
-+++ b/hw/i386/kvm/ioapic.c
-@@ -97,7 +97,7 @@ static void kvm_ioapic_put(IOAPICCommonState *s)
+diff --git a/.mailmap b/.mailmap
+index 81c2ce09370c..2d97a14af3c6 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -54,7 +54,6 @@ Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+ Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+-Philippe Mathieu-Daudé <philmd@redhat.com> <f4bug@amsat.org>
+ Stefan Brankovic <stefan.brankovic@syrmia.com> <stefan.brankovic@rt-rk.com.com>
+ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
  
-     ret = kvm_vm_ioctl(kvm_state, KVM_SET_IRQCHIP, &chip);
-     if (ret < 0) {
--        fprintf(stderr, "KVM_GET_IRQCHIP failed: %s\n", strerror(ret));
-+        fprintf(stderr, "KVM_SET_IRQCHIP failed: %s\n", strerror(ret));
-         abort();
-     }
- }
 -- 
 2.26.2
 
