@@ -1,26 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD00b-0004Bf-G4
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 02:43:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48528)
+	id 1kD0Eu-0007P8-Ps
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 02:57:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD00Z-0004BJ-Ov; Tue, 01 Sep 2020 02:43:07 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:57273)
+ id 1kD0Et-0007Ov-0S; Tue, 01 Sep 2020 02:57:55 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:55127)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD00Y-0003Rn-17; Tue, 01 Sep 2020 02:43:07 -0400
+ id 1kD0Eq-0005JP-Ts; Tue, 01 Sep 2020 02:57:54 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
  (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MQuLB-1jyv5x2plv-00Nz2W; Tue, 01 Sep 2020 08:42:58 +0200
-Subject: Re: [PATCH] hw/net/can: Add missing fallthrough statements
-To: Pavel Pisa <pisa@cmp.felk.cvut.cz>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Oliver Hartkopp <socketcan@hartkopp.net>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Ondrej Ille <ondrej.ille@gmail.com>,
- =?UTF-8?Q?Jan_Charv=c3=a1t?= <charvj10@fel.cvut.cz>
-References: <20200630075520.29825-1-thuth@redhat.com>
- <c31c772f-9d30-ac47-9e91-02126dc79736@vivier.eu>
- <202007140009.55103.pisa@cmp.felk.cvut.cz>
+ 1N3bCH-1kdRCk1Wh1-010ZTr; Tue, 01 Sep 2020 08:57:45 +0200
+Subject: Re: [PATCH-for-5.1] hw/misc/milkymist-pfpu: Fix pFPU region size
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: Michael Walle <michael@walle.cc>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200718093705.7271-1-f4bug@amsat.org>
+ <b0eb3028f61e6eaaf9c1f4aedefeaa20@walle.cc>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +61,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <278ac22c-e3f9-cc93-c711-ad420102141f@vivier.eu>
-Date: Tue, 1 Sep 2020 08:42:57 +0200
+Message-ID: <1819668f-4747-0cb7-69c0-e167af71e8ba@vivier.eu>
+Date: Tue, 1 Sep 2020 08:57:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <202007140009.55103.pisa@cmp.felk.cvut.cz>
+In-Reply-To: <b0eb3028f61e6eaaf9c1f4aedefeaa20@walle.cc>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lQXv3JTZV+xhFPnPtXnzJIpCk7lV7he7h+WpXxNcuoeDbWHIgYB
- +viX0AAXUkLCeQxdpkqlEVrAYvLwdGzG3swNXu31j7kDYHXFmIKx/mG9i8DssUmoPVDEtKS
- H+hSyIKqNjwxfk+8sqiKvXPm7o7OAeBww351y1veO+R46inZRzvfLxJuxv4jtrUMSz/rGnx
- AdoWRzZxu5u73Cs1EruAA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jUmjIUnGbGM=:13KNceBjcVpV27tbIHRivB
- 6GAaQUeBKHQJZVCXYOb/Ne27IWZtco83OFuQwmgfCgR9bm7R3ZNXUh8pMVvTxHDNOSKq99yWS
- oGa+phUOkaOFEqr3CaEPbURNoxMvii2cSEF+agr+w1grknt/D7TqtgFPReXWE8ODpaWy6090b
- np3/PXOrQCXtaWp+UAt5Gesxbmjvb+6fkC+Y9pmXpah4hVPkjKm5kxZBzOgMpaoowU571nykL
- UcYQOeuhbgulk65aEeBsFbIl9eZK8FzRKH3Fx/8ngdXLe3ZCnWAYv2aHvkIDdm2z34dQeLWSD
- +mQFKNHSx4Cjc9iNoaQAb2QaqRTm739EUa8iRD+AmHMe69vv92kb1al1JyiMknRyJNgWjnbbZ
- Kt567rYyZw9KoaJjSugjuwU8JDia2slqvr/p9tw6udZuy3z6So01M+YvFlqvEXrnAQrOn9ip4
- doEkdThJeArxjYnwVbepxKIDgHP/eAGUgmqJe2eNb66ORF9GqRP3HPaERQ5sTI8/HrBAuQbc5
- cLZy5gCYooS8zqgHzIQ5fgd6fG/8CvTc/U+/YNlmm2GEr7pUIv9aaD7Y+1dOrQ+0/yb23galP
- /MZwvSYDqxTe4a+AzbpMz9wtplojiPZhGbx/ttMBla2HojCgke4wyZtOY8NITjWyJGJh60tti
- KVpMBN+2uNqfu3okYV2s2h6jDYmChCJt8PzRZuo4vKPBFRJItmT6iGhA4aup4Z9TQf4CZjOh6
- V3VhhxTkgkibw/Q71l4cKtG3peU0UxaW+vegm+dVwaVkfS6NoARI7FE5Tn2w22GOm82KoU4fq
- HCobwNjxcPHWzp7YBKxddSGjHrOwod3R4mfILzggjcjZG8FUZzrEYQaH+aOyLu3/NtstbJb
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:WbBYeDt31EDzWW7GWgeMzrTTqE78DYwFEW7weg4lMLWY7yh5jTU
+ yBTA+F98y5CTgC5NI8VvKgjhivrT3yUd+iBpLuH57acVp7MqCnK1teFoa9S2qTRCqdVVBxD
+ dPDEtfawXBtXffvq9yalmgl+jnLXfs8S3TMDf8aziRwMQNLd1Vl5ryls2xBF/E+91FADICS
+ 5P1dS/GiBk7+bNrq2jcjg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zVM9PVMOVs4=:HeP7MtS29aILNkTVEtZrsU
+ RoT6pz1yHR9S2pmQUI/j3FBvHdeWuFthB1itDzfls7QtYcaxoQHQfFCIyi2i62Q4j8NcP13LB
+ FjVNq6EI3RdPYhnbg4jm9p8quMF4ZoN+RWg3+9qkt0jRkK/e2YA4sAeDmEYWNXrXh6/aws1WA
+ sg1AeUrsDkJ2cCF1u2+bn0xR+DViReQGGXLwb9Jsy9A9/+fLhSzzEpblWilKM/Do++9JkbdGJ
+ 13CBLeGdndakVIn9O5FK9s+7SMb4CLdWDuYRsH1pt1steNoO9TYT2IakxHULedehEQcdBu3cN
+ OOs4o+ABIUq5nuWqqyAP6pCftacy8qM7fqnsQeVOgQfJZWJtMz59XC4grIKKgLEIrGGJElBbv
+ Dpsk+VeaS0ONemhZfmY6x4NbpTTNHfNMD2DaiziNv8qjEBHM8FZnoHLpF70Y0uRtJFPp42LMM
+ 6BvoP1sUv3d31Mt+NXVwiPaBLxktgCNRC0+lSZB7wrtgVGJOvtDQvdtJlamJY1LnS+xqxY+ZL
+ yFWhMSEc/0hYPV1wpI6Ved+Zlxa70GqUmMqeHkknCm7UjGL+bqDtE62/SEyCyax6B4upfpcmK
+ qGnNtnYECVSvk1N3zGRAlgA4AEWYezwgo8tT97JH4J9NRvhlstkscI4blK5umydHMV48kKYFq
+ MlYa00BqWCckHlIIqlnUwlmVyK7vMsxWEsyteT1stDrYYWPNTwMTpAHBj/eGRLLC//YgKcBgv
+ 8BRDXodq/0uEgQyvxiZdqvTxcFOuIqLWqUeml6IYdXeXPo2y4BmSnkpbF8sxIlxUSgdiVVWv3
+ Rlpo4C7E3qSI8jYsmeySu6DmVGjPbe+jSq02VcN+sk8aoreFW/p/5xlrKcsHdF/tLndWsCD
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:35:25
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:33:59
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -112,69 +109,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 06:43:08 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 06:57:55 -0000
 
-Le 14/07/2020 à 00:09, Pavel Pisa a écrit :
-> Hello Laurent and others,
+Le 19/07/2020 à 19:23, Michael Walle a écrit :
+> Hi Philippe,
 > 
-> On Monday 06 of July 2020 18:35:50 Laurent Vivier wrote:
->> Le 30/06/2020 à 09:55, Thomas Huth a écrit :
->>> Add fallthrough annotations to be able to compile the code without
->>> warnings when using -Wimplicit-fallthrough in our CFLAGS. Looking
->>> at the code, it seems like the fallthrough is indeed intended here,
->>> so the comments should be appropriate.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  hw/net/can/can_sja1000.c | 2 ++
->>>  1 file changed, 2 insertions(+)
->>>
->>> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
->>> index ea915a023a..299932998a 100644
->>> --- a/hw/net/can/can_sja1000.c
->>> +++ b/hw/net/can/can_sja1000.c
->>> @@ -523,6 +523,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
->>> addr, uint64_t val, break;
->>>          case 16: /* RX frame information addr16-28. */
->>>              s->status_pel |= (1 << 5); /* Set transmit status. */
->>> +            /* fallthrough */
->>>          case 17 ... 28:
->>>              if (s->mode & 0x01) { /* Reset mode */
->>>                  if (addr < 24) {
->>> @@ -620,6 +621,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr
->>> addr, uint64_t val, break;
->>>          case 10:
->>>              s->status_bas |= (1 << 5); /* Set transmit status. */
->>> +            /* fallthrough */
->>>          case 11 ... 19:
->>>              if ((s->control & 0x01) == 0) { /* Operation mode */
->>>                  s->tx_buff[addr - 10] = val; /* Store to TX buffer
->>> directly. */
+> Am 2020-07-18 11:37, schrieb Philippe Mathieu-Daudé:
+>> The last microcode word (address 0x6000.6ffc) is not reachable.
+>> Correct the programmable FPU I/O size (which is 4 KiB) to be
+>> able to use all the microcode area.
 >>
->> cc: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/misc/milkymist-pfpu.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>> diff --git a/hw/misc/milkymist-pfpu.c b/hw/misc/milkymist-pfpu.c
+>> index 516825e83d..4fbe3e8971 100644
+>> --- a/hw/misc/milkymist-pfpu.c
+>> +++ b/hw/misc/milkymist-pfpu.c
+>> @@ -507,7 +507,7 @@ static void milkymist_pfpu_realize(DeviceState
+>> *dev, Error **errp)
+>>      sysbus_init_irq(sbd, &s->irq);
+>>
+>>      memory_region_init_io(&s->regs_region, OBJECT(dev),
+>> &pfpu_mmio_ops, s,
+>> -            "milkymist-pfpu", MICROCODE_END * 4);
+>> +                          "milkymist-pfpu", 0x1000);
 > 
-> The fallthrough is intentional for sure but I have gone
-> through datasheet and checked why the status bit is set
-> there and my conclusion is that to mimic real HW the status
-> bit should not be set there. In the fact, it should be set
-> and immediately (in a future delayed) reset after SJA_CMR
-> transmit request write. This would mimic real hardware
-> more closely. May it be I send patch in future when more
-> of our developed CAN support is added to QEMU. The status
-> bit behavior has no influence on actual Linux SJA1000 driver
-> anyway.
+> Could you use one of the MICROCODE_ macros instead? maybe
+> (MICROCODE_WORDS * 2)?
 > 
-> So for now, I confirm that adding  /* fallthrough */ is correct
-> step forward.
-> 
-> Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+> With that fixed:
+> Reviewed-by: Michael Walle <michael@walle.cc>
 > 
 
-Applied to my trivial-patches branch.
+Philippe,
+
+do you plan to repost with the change suggested by Michael?
 
 Thanks,
 Laurent
-
 
