@@ -1,77 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD3kt-0000kj-BJ
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 06:43:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57664)
+	id 1kD4ay-0004bj-Ti
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 07:37:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD3kr-0000i7-72
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 06:43:09 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:42473)
+ (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
+ id 1kD4ax-0004Z6-75; Tue, 01 Sep 2020 07:36:59 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:37445)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD3ko-00026Y-Cv
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 06:43:08 -0400
-Received: by mail-ej1-x643.google.com with SMTP id q13so916244ejo.9
- for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2020 03:43:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
+ id 1kD4av-0000jU-Ds; Tue, 01 Sep 2020 07:36:58 -0400
+Received: by mail-lf1-x142.google.com with SMTP id z19so316127lfr.4;
+ Tue, 01 Sep 2020 04:36:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=iy3sccm8fjT+ATmdM2Je1CTkkwV+/bf6H9/Ajo8YwfA=;
- b=og2TzfK65fHU42vGC3jsBcBg4QfctnbvBSA7OtgtzoqtnMWdla4tlk47bD/DF50h8f
- 4dp9mmSiRsMFSwBe2TIA8El1H6qlPucy28aYSsmcZinaL005ep0PZJ2AGwgU0f0HVETB
- rHqc9hydK9iBK88K/VGkw9XCmksh/i4hmHIJc6/605m6bc+kn9T7yNc/kdjl8lVd8B5n
- CupEH9eMn5pzwpSw6mw/6gEkjcz/by6aP0xGeYYr97UkE7E2e0xlrRZCiAM9WLoze3PK
- +J0BmfBJH2p6fbVAi1S4kmnh816ienf/r07DRvfHK3i4S1CyviTGPNsnMxpT3DFnfG7x
- KFoQ==
+ bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
+ b=tXmGWzZ9QhqdYs+6Jf7SiZdQ0484pFkix+AdCywb75wBw5WE+eG6RYO4Gbei3KzXgo
+ N9sRy3NY8a+HfcUF0f7DNAHIIuwwtzr899y9HuirklPEFdKwgXYdJAtN0ZHDZZrfglA2
+ DkbmspzCvrKIGcuzDPB5UIRB+xED4vKLqS/QbbZxPobvTNrYgMU5uCJzinjCLb0y6ayM
+ i/mlVKFILY9uR4Ma4cMkkfvpOxyNiPdQg5pOrd9w9++XED3k1iNDo7SEuai7icw3IW8v
+ B57uOz3KuZPLGBN0/t6W393F37Rw/CR4cYfmfkqIZPTAw1zmIEeiGJn9RynatYiCoJtv
+ 4MRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=iy3sccm8fjT+ATmdM2Je1CTkkwV+/bf6H9/Ajo8YwfA=;
- b=e+0hM+i5FbY19to4kgCqSn/CIde6TG+t6DMsHoxWUnBMkITskkDmRsAeqrFqkRTV9D
- qv1tUlzohce9KAmMnhBIT1J8CUDMBtQUcm9X3LlUdz7qB3lGKn1a36V22sNAflMUvbah
- EB5sNnmoejnI15Neb6ELE7dinyR7VGfeTrpp6v30l3b/qDoyhOo5HW4yP8Z4N4M+LNRZ
- cdUG4U3ld0Od75HlU0JB9mVJL+gzJZTm1RiqB9+FHDSbyQOEj4+oiF96BCx5kIIQbhHm
- 3+9BbuNSOYzWDXdJs5WdexdZ4/rV4o/1NewFTKRIjG2Gx6iX0mUq7htS0wEGKST3W2AA
- wT1g==
-X-Gm-Message-State: AOAM5321s4Lj3Qk1vVsLEMJhB8P0g/tB16PpfkSe/6L/QuzwLsZrMWoI
- U3h8gZiMsHNju4DNPV1EiY0fy0NgxRiJ1dYNG2qnlg==
-X-Google-Smtp-Source: ABdhPJxjzKt5/pggHdt8VsmK6CpWqELFCxCcK5t5bJbUemjVGnwyykizB4S82Kh2KSRFt+n46+1Z0GNz7iAM0ZIIatc=
-X-Received: by 2002:a17:906:71c9:: with SMTP id
- i9mr884602ejk.250.1598956984999; 
- Tue, 01 Sep 2020 03:43:04 -0700 (PDT)
+ bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
+ b=dlhpTa88G2j3F9Q8+Gg8mf5OjlgU5xA3Of6o7jKKrxHfcbw3PpGb2KmoiAHKkvGbyT
+ TSLB1PvEjU4/eEV8m9Mm0yOiVtSEGSJj4kIE0XBiApNRYOHYJHPLpxg+jjVjCLY9s1o9
+ L/YVajV9iyeRidz9FTD5MhsNHkZnI2HhLXR6EyF0bArFRFyrSNisTci3lsME5fhQ7GHS
+ 2HwldO6EMQrOyNmmCapUi6IbrIZsTCnyl0/mEsczS0ZEsGs/XOppYwAomdhBbJEBQnix
+ rTOSiI11gjS4EyvVHV5xWAz/1Qt5g8m0WmoD5qYX/NQeQKceMr7NWiqddrTrOXeCek2H
+ TYAQ==
+X-Gm-Message-State: AOAM5332HTARxKHbcmKypxw9ELd2NqHYer/msIRvcvadDIej4H1Zjm8z
+ zxWP39IJGsTeGcLuPJ0FyqWKctQ1LJ7XoCBpq5Y=
+X-Google-Smtp-Source: ABdhPJwRHa62/8JGjcpHcEYxLhYPuZRvdTLxC+AUAHqeQJjZCeAwqP3+yEhB29+lzbxMkfB09uhJlYtKaR06rAAagwI=
+X-Received: by 2002:ac2:4576:: with SMTP id k22mr383115lfm.55.1598960212793;
+ Tue, 01 Sep 2020 04:36:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-2-f4bug@amsat.org>
-In-Reply-To: <20200901104043.91383-2-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Sep 2020 11:42:53 +0100
-Message-ID: <CAFEAcA8fcBZpQcZuS7SgOxpAcMRMjOPrG0bJcKSTsxFMitHfzA@mail.gmail.com>
-Subject: Re: [PATCH 1/5] hw/gpio/max7310: Remove impossible check
+ <20200901104043.91383-3-f4bug@amsat.org>
+In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
+From: chen huacai <zltjiangshi@gmail.com>
+Date: Tue, 1 Sep 2020 19:36:41 +0800
+Message-ID: <CABDp7VpVpyAyQVBadt088qPZirdNDZ6nrSJAVVN8pv2-aAKeZQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
+ an assert()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, 
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, 
- Huacai Chen <chenhc@lemote.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
+Cc: qemu-level <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc <qemu-ppc@nongnu.org>, 
- qemu-arm <qemu-arm@nongnu.org>
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, 
+ Huacai Chen <chenhc@lemote.com>, Aurelien Jarno <aurelien@aurel32.net>, 
+ David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=zltjiangshi@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,43 +80,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 10:43:09 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 11:36:59 -0000
 
-On Tue, 1 Sep 2020 at 11:40, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
+Reviewed-by: Huacai Chen <chenhc@lemote.com>
+
+On Tue, Sep 1, 2020 at 6:41 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
 >
-> The max7310_gpio_set() handler is static and only used by
-> qdev_init_gpio_in, initialized with 8 IRQs. The 'line'
-> argument can not be out of the [0-8[ range.
-> Remove the dead code.
+> Displaying "vt82c686b_init error" doesn't give any hint about why
+> this call failed. As this message targets developers and not users,
+> replace the pointless error message by a call to assert() which
+> will provide more useful information.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/gpio/max7310.c | 4 ----
->  1 file changed, 4 deletions(-)
+>  hw/mips/fuloong2e.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 >
-> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
-> index bebb4030d27..7f5de189acf 100644
-> --- a/hw/gpio/max7310.c
-> +++ b/hw/gpio/max7310.c
-> @@ -8,9 +8,7 @@
->   */
+> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+> index 8ca31e5162c..f28609976bf 100644
+> --- a/hw/mips/fuloong2e.c
+> +++ b/hw/mips/fuloong2e.c
+> @@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_b=
+us, int slot, qemu_irq intc,
+>      PCIDevice *dev;
 >
->  #include "qemu/osdep.h"
-> -#include "hw/hw.h"
->  #include "hw/i2c/i2c.h"
-> -#include "hw/hw.h"
->  #include "hw/irq.h"
->  #include "migration/vmstate.h"
->  #include "qemu/module.h"
-> @@ -176,8 +174,6 @@ static const VMStateDescription vmstate_max7310 =3D {
->  static void max7310_gpio_set(void *opaque, int line, int level)
->  {
->      MAX7310State *s =3D (MAX7310State *) opaque;
-> -    if (line >=3D ARRAY_SIZE(s->handler) || line  < 0)
-> -        hw_error("bad GPIO line");
+>      isa_bus =3D vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
+> -    if (!isa_bus) {
+> -        fprintf(stderr, "vt82c686b_init error\n");
+> -        exit(1);
+> -    }
+> +    assert(isa_bus);
+>      *p_isa_bus =3D isa_bus;
+>      /* Interrupt controller */
+>      /* The 8259 -> IP5  */
+> --
+> 2.26.2
+>
+>
 
-I think it would be reasonable to retain this one as an assert.
 
--- PMM
+--=20
+Huacai Chen
 
