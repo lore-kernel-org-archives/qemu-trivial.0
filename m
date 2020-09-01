@@ -1,66 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD8ZO-000144-GT
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 11:51:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56658)
+	id 1kDAPu-0002aq-Ib
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 13:49:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD8ZN-00013B-Qq
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 11:51:37 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:42821)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kDAPt-0002aT-1M
+ for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 13:49:57 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:34371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD8ZM-0002n8-3V
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 11:51:37 -0400
-Received: by mail-ed1-x541.google.com with SMTP id l63so1930787edl.9
- for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2020 08:51:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kDAPr-0002UZ-FJ
+ for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 13:49:56 -0400
+Received: by mail-pg1-x543.google.com with SMTP id u13so147850pgh.1
+ for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2020 10:49:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=/3r0V5XaWzpq03UXQxRhWPAEfoInKgh4VrLacrOfRHk=;
- b=y2FoEqnTpKJ8yZ6xQbESB03fyV4FpWOkpiXvUxfH9A2HnDGKr/Q9mrWG+TTBPWS9aK
- Tt5Q1ZVhKxYG7qqqgR3XMEU95d6rZxmzmf30M6BWVB7GJQA68SaG0qqbR+MYnxHAvAhb
- GbEgA2w/EMXKNZrNlHb+Qh/WkcQLXGBPJENxkPLlQ06IRsq7hHM4Os4YcfhjGNwfbcAI
- j/4O2UGeI86G45RqcHBb6i9ETm6eCjTEx0MJbqZeCPAJrJj7SIu49EeSZ3F+ilH3VpSE
- sjeXkd3zsXHtsMMGwGmUa/jhJ2/B65N39MoDZa2clraA9qthsZTVj3/Nv0NHSIOnWvGG
- cEXw==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=8ifEANnOFnkWKd9qry6HkZCR/efNySP3CF8YCipTVYs=;
+ b=Iu5Vbar7JGqjeN+ISEcpd0k4XXR/9X4mQKjrltOjAOeP8BcdErvVqocvTg9lAuhPTV
+ fw7YZlXfHXDHnq4JBTx8PRjhYlFmk0/2hUHpxxlEuFfc5j7MxOhefqrvEmvLVB7PLusD
+ ZNynTOp8qjDFSc2pLNTFlNI0KQNFAdhDKMjlvjg3sjXTdedkMczf571Y38jHn+q+hXuK
+ vVmrB8I4s9FlCxOcnOM3yfQ0v4xQKuJZ9tIL949QwDrV8x1dn06r1QMjoz5487LffX77
+ ij+1F4UsvfkstGqjAxTTAbDXmcpedwtkaytf7x3/g+gABeIInEDaIUY1CIGM7oVsSMbw
+ 55Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=/3r0V5XaWzpq03UXQxRhWPAEfoInKgh4VrLacrOfRHk=;
- b=uJuVthWuNcf6e68821qSpistoiBj1Uw1OJBbuTsG2h7xz3XUYpjeyXXI3racHsDWrp
- EakfWqp707QWbA3ABlUlsceifEfgHFrxMtoA6Tiw93XF59RA9aiDn4dbIk2qHXRRfVwI
- 4r1auBTNSn0yTZABaDElvnukecLQ0bdjdtgV1WYbmz9tqeZ1m35X2CdtycsrMhdLXE8r
- vDW2qV4gUDxE/lT46TSRCuBO8koiiDz/E6Vc6ACKR21vlE4sJKKpCNC5vEx3eljd9O6Z
- CkF7losVtPAmDvktUj8MPgAdLhhveqq2J706nFc54f5aH+odjFAwHpML9N7D5XBIfZXr
- KlyA==
-X-Gm-Message-State: AOAM5304pbSELqHQtUV5suInyANy818cn46qgEueRR/0MsU75J8SnXgj
- ZS012/dEYGjM2NC4/0uvUQpXi7zVCPgDNJv2JU7Nag==
-X-Google-Smtp-Source: ABdhPJwNfFpSHwO1xiJbcqKIqWq8tcKjeBQs9PJeYoxt7WHzXpjVw8/7yjcLcZedTErCJYNQogfmw1ctnMcsD5D97JA=
-X-Received: by 2002:aa7:d596:: with SMTP id r22mr2344387edq.204.1598975494113; 
- Tue, 01 Sep 2020 08:51:34 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=8ifEANnOFnkWKd9qry6HkZCR/efNySP3CF8YCipTVYs=;
+ b=jJWHLYRWEwd99NMMDhqU+uvlHUwl0i9dP4hGUPf3KF/XfCmoeRGWn8RzNX6kqkkHuO
+ QRfsUrG1gnSHZOZscMwueYecEionDFzLSFygyvhWil0vrm5Bg0bMIZS2OyfLqxftzkJa
+ eBfSkQACPKZ47aPK1wGFHTtD1Su3qJUpBuqIb8Z3+9wX1CPVDoDgzE2Jg6HUP0GpT2mL
+ lCKVgnAK/kos1cfy0EJ7CWNRm5HTb6qlzPD8JamSuw8o1mkFFGX1A4k15a5Tsfn6HLuH
+ QDFWZ42SMr+cqibzFtVvjRtiaFdyPHYQqcv7HsWfKCCpxlmIqUzVIa5VtXXGuhJwqtQE
+ H62A==
+X-Gm-Message-State: AOAM531v7WF8gYPN4Y/svSAVsMUN2wDgaIgYF8QnM6y35PzaAMPmgPoN
+ UJq0iIknfT3HXRoemiDrZu54qg==
+X-Google-Smtp-Source: ABdhPJxAljdJR0hjLwTHy94WZWG1AnFAUYMEhuXfMWvUv9zJyrG1X7QdNNkxp0JC5sDbpyyA3kd7Wg==
+X-Received: by 2002:a63:4a19:: with SMTP id x25mr2414236pga.56.1598982593787; 
+ Tue, 01 Sep 2020 10:49:53 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id a138sm228105pfd.19.2020.09.01.10.49.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Sep 2020 10:49:53 -0700 (PDT)
+Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
+ an assert()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20200901104043.91383-1-f4bug@amsat.org>
+ <20200901104043.91383-3-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <bc79a73e-ee46-c8a5-3843-0f472b2680c9@linaro.org>
+Date: Tue, 1 Sep 2020 10:49:50 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200901140803.888852-1-laurent@vivier.eu>
- <c63cde35-2959-f119-5c22-fccdf23a23d7@vivier.eu>
-In-Reply-To: <c63cde35-2959-f119-5c22-fccdf23a23d7@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Sep 2020 16:51:20 +0100
-Message-ID: <CAFEAcA-OMRhuZFZO3S4-g7BCX0BQVvqaivSN6E5WXCxeoo_eAg@mail.gmail.com>
-Subject: Re: [PULL 00/44] Trivial branch for 5.2 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x541.google.com
+In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.13,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -75,44 +90,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 15:51:38 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 17:49:57 -0000
 
-On Tue, 1 Sep 2020 at 15:42, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> Le 01/09/2020 =C3=A0 16:07, Laurent Vivier a =C3=A9crit :
-> > The following changes since commit 39335fab59e11cfda9b7cf63929825db2dd3=
-a3e0:
-> >
-> >   Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-5.2=
--pull-=3D
-> > request' into staging (2020-08-28 22:30:11 +0100)
-> >
-> > are available in the Git repository at:
-> >
-> >   git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-req=
-uest
-> >
-> > for you to fetch changes up to 1eef4ba6be30f8b95c8cda1bcb50a176d680a34d=
-:
-> >
-> >   docs/system: Fix grammar in documentation (2020-09-01 12:09:30 +0200)
+On 9/1/20 3:40 AM, Philippe Mathieu-Daudé wrote:
+> Displaying "vt82c686b_init error" doesn't give any hint about why
+> this call failed. As this message targets developers and not users,
+> replace the pointless error message by a call to assert() which
+> will provide more useful information.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/mips/fuloong2e.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 
-> Please ignore this PR, it failed after the first patch.
->
-> The second attempt is the one to take (same name, no versioning but
-> completed).
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-The two are identical from my point of view because they refer
-to the same tag (and even the same commit hash in this case).
-The merge process doesn't care about the emails that go to the
-list: those are just for others' information and the historical
-record.
+r~
 
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
-for any user-visible changes.
-
--- PMM
 
