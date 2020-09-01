@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6za-0006Ae-3k
+	id 1kD6za-0006BM-D1
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55432)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zQ-0005hX-IS; Tue, 01 Sep 2020 10:10:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:52125)
+ id 1kD6zQ-0005iK-Q7; Tue, 01 Sep 2020 10:10:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:54469)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zN-0003uX-Un; Tue, 01 Sep 2020 10:10:24 -0400
+ id 1kD6zN-0003uZ-VA; Tue, 01 Sep 2020 10:10:24 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MYvTs-1k8f0I2cWe-00UsG5; Tue, 01 Sep 2020 16:10:14 +0200
+ id 1MirfI-1kpj3P28pg-00es6T; Tue, 01 Sep 2020 16:10:03 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Li Qiang <liq3ea@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PULL 26/44] hw/ide/ahci: Replace magic '512' value by
- BDRV_SECTOR_SIZE
-Date: Tue,  1 Sep 2020 16:09:36 +0200
-Message-Id: <20200901140954.889743-27-laurent@vivier.eu>
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 09/44] target/cris: Remove superfluous breaks
+Date: Tue,  1 Sep 2020 16:09:19 +0200
+Message-Id: <20200901140954.889743-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xxDhq+TV0IfhP9YC17vf1ffp70QmhzJ+LSLjKKD9ZRHGqPWKsWI
- dfMp6LQG9bu0HuMAOhgCjrfL4jmvrzdVCMHJCKzHMrTMO8pTnrj0JUXGDPhqy9RjENZYxDk
- ZeqE0vMA+F9m07Q7KsL1ucznABmEKRh3aBMiRuLFOzEjexUZQCJaH95fnYrNdju4X0N+bqu
- ml90btsCLsq6qiwbXix/w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:D8jVz6yqPOU=:xLlTOrRID3d6tMfvRLF1Mp
- M7hjRbUmlidApPd0IsDWxMTLXVM1V8yTNCkMIZh9mUa3yLQPpK7T8zbEoUWvGMJN5H8NO5XCN
- CInWGHTtdKkKGeV9dCT8grtgUPLntUJuPCttFshMnLjgPOH0UqL7UvTVXca9GWb4na2+s0ANl
- rH5PV23JuqZSkCIcxhcHR3CD42/GHyzUb+dKdMFVXkBIJWS6Y01OB+9n7MhpT0pmKc3ICetvn
- rSzQac05LCNWWxdawI0uJtQBeMjTVSmkM5sdaQi8Bo37OepCT2llLZVLqfr0wW6XUyE1sy+v/
- byj5SxvFZOYX9bPF3LhmfYWK9+VMv62e3MW0xfKToZMFRVgkbZ+aZl1i0sv2OSxejO51fcQjY
- FKddVNk1MLTNRz8Wh4cfXC0yTxExLqYSbG9t14XeoGnDfx53dc0Kph4m3Fl4BjB5N51A+zAw1
- 1e983eLJBN2ORK4UQVMqKCwj4q/+XWwRrxZVdkp2iR/AdQ+b7hXeCY2ZC5iIBgIx6k+T/3zSu
- Fvrq/96h/cYNpzuiJV8N/8Ovdhdp4YYEZtDOIGGagXsQuMkOROIvdkl0mHlKwfF2mc8xijNRb
- BnKu7JiOE5OENTWSiNHHPAy7k7RNDLf4Aj9+PLdowls3PZMyeDckmBI2lg7ZbU0IMCsF+zkUu
- ssOaLBYXD2cnXa2LwS+xqQCk9QGsupLJEikydcjCufwJ0zkoGjhb5JOkKK4UzNbZobPQRt1ES
- 5eLDYu21KGZMdqjcq3rzeZ5Us6QrHVbDgy0/s8qPQkClJqlEjGjniD4LD3Z/cVZzRCkcXee1m
- xgZeNSXjowMALY5VkOXiXqVMydB4KVX1ZAeZfCmN7oUThp/afhMt8VqLdiYN4q92jeYInAy
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:XPGk1ppX/yIcmerFfjdQ8YEXT48yPdytcScu35k7J4MP4OtT53r
+ eWf/sK8GFUOSw71FV2s7xmY/QBP0WSp8FGJPSmdKB/4jRSwLdWTZBdYpmyCYnmqrMBhzhcE
+ QXiOk1SQ4cckOUe5h/eRktxlLA116LEaTibX7B7yVkQbkybzftKYJJCqofwwQHaFfnjEH0f
+ knnYmomER83ZRAOLx841w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2yHF8nSWOIs=:sBPsy+AaCj1nt0Aou7cjxw
+ C2Q4pP+qftH+i6TNfTN3BLrfAGeXchsK+bqY92ENQiZw/Q93SJhRPvIB542m8FZnhTa3lp0lO
+ 00fhUj94INR2WytAflneLLgz0Rs9JfEzpIKNeGpAa2qTdemZY5AA+4taa1WqnMsnfKpnDJl7a
+ rbsrafxfnf4Jhec0T2l28W+2UJcd6ZZ0rlyZpqjDv9lKYgERcFHGmpDvJRe/c4wr51FDurLXI
+ o8m0zPuaXmr4YDXPFRly/2xWxaEgW7foRvpPDXd0RUzBy3M1Keft4ET9TyrwWROFNY1AxTqcO
+ iQaGoOfNeQpSez9V0nIYNg2Utz8x7KvixO5zy6F3ZcyC+N1xf8HEtPs2DPOm0Xv6fUGpD6QFo
+ ooY+pYkXU1De1nGQStb0/h7LXlgi/B0bLDXDw36yyC2ChNJBY5TgtZXWrr6AMESg9RiKQJQNM
+ ofe9joVixHz/RcgvcmIpTY+iJLCTKzzic8Xvk+xjWwtfCbCx71F4eD8b4l4lDhXyaL/pLzGE2
+ nZvfn5m5+XpMa3YQM9Z9P5SMGXm6FUektosEN7KxHgCmhvvXQfzrFVCvw87tNDgANNVkf4Rqu
+ Lz07MreGe5gxSrmMvOJtr3qrLgewM8pnDR1C4nzUwunD+X8n45/JL7Dxs2qGLpKSxa3S5HeIh
+ YtOQ+p7cSOBkcIWCTsXXJum2XfNpkb0sI9R92Xh8krt6UvMriDq0AIdeQFjoqTKcqAe8KFKVi
+ erNHLtuf29tWwc1eggXnvVdLwnGEqlzT9YqJhl0u7gi4zwoxcX3brkgQ+BisYdgbpCBN8PsOO
+ qsEtORnC7zBeFYpVHcXeRqPkgQUCn22Qzj9wLqGq20umRDOmgAD+DwDV3vdAtrRvjGdLCMo
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -70,43 +68,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 01 Sep 2020 14:10:25 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Liao Pingfang <liao.pingfang@zte.com.cn>
 
-Use self-explicit definitions instead of magic '512' value.
+Remove superfluous breaks, as there is a "return" before them.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20200814082841.27000-5-f4bug@amsat.org>
+Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
+Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <1594631150-36801-1-git-send-email-wang.yi59@zte.com.cn>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/ide/ahci.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ target/cris/translate.c         | 7 +++----
+ target/cris/translate_v10.c.inc | 2 --
+ 2 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 009120f88b78..b696c6291a38 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1151,7 +1151,7 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
-     if (!ncq_tfs->sector_count) {
-         ncq_tfs->sector_count = 0x10000;
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index ee5e359c7788..c312e6f8a65f 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -1178,12 +1178,11 @@ static inline void t_gen_zext(TCGv d, TCGv s, int size)
+ static char memsize_char(int size)
+ {
+     switch (size) {
+-    case 1: return 'b';  break;
+-    case 2: return 'w';  break;
+-    case 4: return 'd';  break;
++    case 1: return 'b';
++    case 2: return 'w';
++    case 4: return 'd';
+     default:
+         return 'x';
+-        break;
      }
--    size = ncq_tfs->sector_count * 512;
-+    size = ncq_tfs->sector_count * BDRV_SECTOR_SIZE;
-     ahci_populate_sglist(ad, &ncq_tfs->sglist, ncq_tfs->cmdh, size, 0);
- 
-     if (ncq_tfs->sglist.size < size) {
-@@ -1703,7 +1703,8 @@ static int ahci_state_post_load(void *opaque, int version_id)
-                 return -1;
-             }
-             ahci_populate_sglist(ncq_tfs->drive, &ncq_tfs->sglist,
--                                 ncq_tfs->cmdh, ncq_tfs->sector_count * 512,
-+                                 ncq_tfs->cmdh,
-+                                 ncq_tfs->sector_count * BDRV_SECTOR_SIZE,
-                                  0);
-             if (ncq_tfs->sector_count != ncq_tfs->sglist.size >> 9) {
-                 return -1;
+ }
+ #endif
+diff --git a/target/cris/translate_v10.c.inc b/target/cris/translate_v10.c.inc
+index ae34a0d1a3d8..7f38fd215eae 100644
+--- a/target/cris/translate_v10.c.inc
++++ b/target/cris/translate_v10.c.inc
+@@ -1026,10 +1026,8 @@ static unsigned int dec10_ind(CPUCRISState *env, DisasContext *dc)
+         switch (dc->opcode) {
+             case CRISV10_IND_MOVE_M_R:
+                 return dec10_ind_move_m_r(env, dc, size);
+-                break;
+             case CRISV10_IND_MOVE_R_M:
+                 return dec10_ind_move_r_m(dc, size);
+-                break;
+             case CRISV10_IND_CMP:
+                 LOG_DIS("cmp size=%d op=%d %d\n",  size, dc->src, dc->dst);
+                 cris_cc_mask(dc, CC_MASK_NZVC);
 -- 
 2.26.2
 
