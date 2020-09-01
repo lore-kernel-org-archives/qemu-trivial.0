@@ -1,54 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kCrCy-0003MW-LN
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Aug 2020 17:19:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47368)
+	id 1kCwo3-0000kW-Mt
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Aug 2020 23:17:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kCrCv-0003Jw-Rg; Mon, 31 Aug 2020 17:19:18 -0400
-Received: from mail-qk1-f193.google.com ([209.85.222.193]:34507)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kCrCu-0001Vb-Ar; Mon, 31 Aug 2020 17:19:17 -0400
-Received: by mail-qk1-f193.google.com with SMTP id w186so7631028qkd.1;
- Mon, 31 Aug 2020 14:19:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UnOhsdclhNGw6uOGPI/gGfLGWUI4yxWuQ7GxNhBiXXY=;
- b=OthKF68Qoz2N9jqnZrklL9ziytcoVRkIoMBVjE4xr8euND0rJ7sjA3Q/iV9avHabnZ
- 8VG1WBdeOyDAqgFv44chG74oywNFBWSgi0KhZo3egXtXZbGmyjmI//mTngCXxPhUE1M7
- G82GXeW1csECoZnCNrY149saPoWa41sNUTXPfnP8Bp2qZBMkaNyGJDTnN9hJfWQovkiS
- ZvsK/gIG3RPaPv0d1oPhk+/aKbv+kTqFJNslRuIFrnhe2a02p9Ar7UWFgJLk0Vdae6iu
- T4gpr0/7rgUw25GP0WyrxYs7FxEuAWMok+CwRlh6eLGSpRwDXNYLBvUaXjetwzkDRqpC
- 6eEg==
-X-Gm-Message-State: AOAM533y6XvmxzTZNEHiOYEQFWvrBodeVEKKBJpEXlWum4dAC8BOuI7v
- 4ByDNu2FbI7se8aGdanszn+of+nA9KlkJ3JqRT0=
-X-Google-Smtp-Source: ABdhPJxfa32tuC+xChS76Fw4Z0e72GsfsVgVnV/mr69cDCnsNgNsq0L1/+2yKzvHGOPR0EUSxSbhlnAA6MKhw/gPK/o=
-X-Received: by 2002:a37:498e:: with SMTP id w136mr2794711qka.187.1598908755128; 
- Mon, 31 Aug 2020 14:19:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kCwo1-0000k4-VD
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2020 23:17:57 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48983
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kCwnz-0002Zs-7d
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2020 23:17:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598930273;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UhWlYaTCpKFEvdVrcqy0M8TIDbH2UzIE8/0Zarc8u38=;
+ b=Hc3nvnYBf1MsuHiyflNNeIFqNZOrVcGyohnr9mmh3Xhrs/t/l21yMFlXer5XDeKmOJtmZM
+ JCQulghMc/GYm2bgkLpcisxaNSdkP6dkVqR8lGUJjv/IqTD7DdLSBC0Avv6sjjfv60CHP+
+ Mz0eeh7PIWwPA+6tgUvceb4taQk9anw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-540-LeWAl1EFPsSm6aGVqOORdw-1; Mon, 31 Aug 2020 23:17:51 -0400
+X-MC-Unique: LeWAl1EFPsSm6aGVqOORdw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8D328030A9;
+ Tue,  1 Sep 2020 03:17:47 +0000 (UTC)
+Received: from [10.72.13.164] (ovpn-13-164.pek2.redhat.com [10.72.13.164])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E049B5D9CD;
+ Tue,  1 Sep 2020 03:17:35 +0000 (UTC)
+Subject: Re: [PATCH v2 0/2] util/hexdump: Cleanup qemu_hexdump()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Li Zhijian <lizhijian@cn.fujitsu.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Zhang Chen
+ <chen.zhang@intel.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
+References: <20200822180950.1343963-1-f4bug@amsat.org>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <17019b64-30b7-1cbb-701d-c3760a8e13d4@redhat.com>
+Date: Tue, 1 Sep 2020 11:17:34 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200827175520.32355-1-sw@weilnetz.de>
-In-Reply-To: <20200827175520.32355-1-sw@weilnetz.de>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 31 Aug 2020 21:59:53 +0200
-Message-ID: <CAAdtpL5VS8P2uhgToFHH=y58ZKK44UVVRHj71g7NgriN6O-1Fg@mail.gmail.com>
-Subject: Re: [PATCH] main-loop: Fix comment
-To: Stefan Weil <sw@weilnetz.de>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000060b5f105ae32f490"
-Received-SPF: pass client-ip=209.85.222.193;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-qk1-f193.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 17:16:08
+In-Reply-To: <20200822180950.1343963-1-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 23:17:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.13, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,88 +86,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Aug 2020 21:19:18 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 03:17:58 -0000
 
---00000000000060b5f105ae32f490
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Le jeu. 27 ao=C3=BBt 2020 19:55, Stefan Weil <sw@weilnetz.de> a =C3=A9crit =
-:
-
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 2020/8/23 上午2:09, Philippe Mathieu-Daudé wrote:
+> - Pass const void* buffer
+> - Reorder arguments
+>
+> Supersedes: <20200822150457.1322519-1-f4bug@amsat.org>
+>
+> Philippe Mathieu-Daudé (2):
+>    util/hexdump: Convert to take a void pointer argument
+>    util/hexdump: Reorder qemu_hexdump() arguments
+>
+>   include/qemu-common.h    |  3 ++-
+>   hw/dma/xlnx_dpdma.c      |  2 +-
+>   hw/net/fsl_etsec/etsec.c |  2 +-
+>   hw/net/fsl_etsec/rings.c |  2 +-
+>   hw/sd/sd.c               |  2 +-
+>   hw/usb/redirect.c        |  2 +-
+>   net/colo-compare.c       | 24 ++++++++++++------------
+>   net/net.c                |  2 +-
+>   util/hexdump.c           |  4 +++-
+>   util/iov.c               |  2 +-
+>   10 files changed, 24 insertions(+), 21 deletions(-)
 >
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Applied.
 
----
->  include/qemu/main-loop.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
-> index 8e98613656..d6892fd208 100644
-> --- a/include/qemu/main-loop.h
-> +++ b/include/qemu/main-loop.h
-> @@ -52,7 +52,7 @@ int qemu_init_main_loop(Error **errp);
->   * repeatedly calls main_loop_wait(false).
->   *
->   * Main loop services include file descriptor callbacks, bottom halves
-> - * and timers (defined in qemu-timer.h).  Bottom halves are similar to
-> timers
-> + * and timers (defined in qemu/timer.h).  Bottom halves are similar to
-> timers
->   * that execute immediately, but have a lower overhead and scheduling th=
-em
->   * is wait-free, thread-safe and signal-safe.
->   *
-> --
-> 2.28.0
->
->
+Thanks
 
---00000000000060b5f105ae32f490
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">Le jeu. 27 ao=C3=BBt 2020 19:55, Stefan Weil &lt;<a hr=
-ef=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt; a =C3=A9crit=C2=A0:<br>=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
-eft:1px #ccc solid;padding-left:1ex">Signed-off-by: Stefan Weil &lt;<a href=
-=3D"mailto:sw@weilnetz.de" target=3D"_blank" rel=3D"noreferrer">sw@weilnetz=
-.de</a>&gt;<br></blockquote></div></div><div dir=3D"auto"><br></div><div di=
-r=3D"auto"><span style=3D"font-family:sans-serif;font-size:13.696px">Review=
-ed-by: Philippe Mathieu-Daud=C3=A9 &lt;</span><a href=3D"mailto:f4bug@amsat=
-.org" style=3D"text-decoration:none;color:rgb(66,133,244);font-family:sans-=
-serif;font-size:13.696px">f4bug@amsat.org</a><span style=3D"font-family:san=
-s-serif;font-size:13.696px">&gt;</span><br></div><div dir=3D"auto"><br></di=
-v><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
-x">
----<br>
-=C2=A0include/qemu/main-loop.h | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h<br>
-index 8e98613656..d6892fd208 100644<br>
---- a/include/qemu/main-loop.h<br>
-+++ b/include/qemu/main-loop.h<br>
-@@ -52,7 +52,7 @@ int qemu_init_main_loop(Error **errp);<br>
-=C2=A0 * repeatedly calls main_loop_wait(false).<br>
-=C2=A0 *<br>
-=C2=A0 * Main loop services include file descriptor callbacks, bottom halve=
-s<br>
-- * and timers (defined in qemu-timer.h).=C2=A0 Bottom halves are similar t=
-o timers<br>
-+ * and timers (defined in qemu/timer.h).=C2=A0 Bottom halves are similar t=
-o timers<br>
-=C2=A0 * that execute immediately, but have a lower overhead and scheduling=
- them<br>
-=C2=A0 * is wait-free, thread-safe and signal-safe.<br>
-=C2=A0 *<br>
--- <br>
-2.28.0<br>
-<br></blockquote></div></div></div>
-
---00000000000060b5f105ae32f490--
 
