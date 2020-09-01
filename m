@@ -1,24 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2bq-0006ZI-Sn
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:29:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38564)
+	id 1kD2hs-0004Yt-48
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:36:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2bp-0006Wc-0U; Tue, 01 Sep 2020 05:29:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:54607)
+ id 1kD2hr-0004Y9-4B; Tue, 01 Sep 2020 05:35:59 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:40917)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2bn-0000XU-A7; Tue, 01 Sep 2020 05:29:44 -0400
+ id 1kD2hp-0001QX-4z; Tue, 01 Sep 2020 05:35:58 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MHX3X-1kQX7f2fuD-00DbpI; Tue, 01 Sep 2020 11:29:34 +0200
-Subject: Re: [PATCH] hw/net/xilinx_axienet: Remove unused code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ 1MlfCm-1kufBC2cfi-00infU; Tue, 01 Sep 2020 11:35:52 +0200
+Subject: Re: [PATCH] util/vfio-helpers: Unify trace-events size format
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20200814133007.16850-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+References: <20200820171006.1140228-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <5c956447-cacc-49f4-6eea-353cf962bf75@vivier.eu>
-Date: Tue, 1 Sep 2020 11:29:33 +0200
+Message-ID: <b7a06f98-bda7-ef84-a159-dd134a1c1fe5@vivier.eu>
+Date: Tue, 1 Sep 2020 11:35:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200814133007.16850-1-f4bug@amsat.org>
+In-Reply-To: <20200820171006.1140228-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:au9EBG+dZWST5gYmy5WYLudAXOt/MI4DUKGUIatfuLBlyyGwu6S
- QPL13zyiSBP9ekoib1a6JUuOAkVOcVTW0hP54TQQrtBPIBjYasYQE0KqkmdVm2VibgteItC
- b++dQci2yEgqFD0aVcRZurGiC2uuzzWKxxVM7hmOOk9GKWZ2mA3o+/7VmIoD1A44SeAyPNf
- iPMkBeFjwvZirOuRyzfnw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZnPYnWm8fYQ=:CXf6vhECw+ijNKzteokOW2
- ct5lTpL5HKdgGTfvkL8xaMFh6zgnEsoUye1knui3p5fFHp0E1U5t+Z5PyR2JlvseduO31p0v8
- l2nCbSMY31iYG67OQrSaQHCJiyImDvsFtDJUotqMPJ7EbWBh9NFJwUmyGrUBmUQgGWFIA6Qpn
- 55SAv67fCPDEXRv7PZLqYa+Y6LOlhjx8pNZRoWP+hjBC6MVm08rHIZ+nqw5QS7st3dRr4rlRC
- OOID7mBsbsmkXBPgMIEoqTqJLU9ZpOFtxXrpxQr1EWcYJ057nWoVeOppSW/zqvEtbpRvgUmC6
- HX7fGNcDfSxiiLc3X9o3eseC4bGYXTY5oHyqwTJ3eM4h8+7oZG+kl3gwpKtW6wvs9M6Dj96Ev
- QfILn7Wcu684lAab8gw7qPWZrSV7WyGdKJ06QvLPN5UKAe3shLfgSL5G/q69p4OFW0/473dXN
- WOGCqG0qbYS8DK+SQC3U8OGQ6cZHCHOCy92Em8GxrjistW8aYxYHDWcYC3QRwLSXny6/nAJcn
- 36/J5sBpRWO/ZJzAo/tpUxFlMYkKBuPqjKYyc1UFw21gJXnLcR/3WcSTzQdUdUtALka9n3lxh
- qi59j6R7uzVio3Rddj9JCmJ/plQvB/0mt++KqR2aFh5fVjHO8GbJg1XOTKQ750cOVgdMsEBFc
- O866O/cfzd0t47EeP0tq9BEXYyQu4Z/VKjUD7A2qDr+IVi66lqPyEui27EHpCwywHI0pmD81Q
- n7TlUx20OkrKmbgOMxYH5FcdSQqC8hSEcU7C5hwWsxv4VE05SuEtDkF7VSQ9+DiHin0yZeLUN
- L6Q4BVzVeV8TXZUBK2hAGg+lfaqYB75pUy4ecdvLkp2SVx+bGrLGiUhWs3wFChS9+nOlf31
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:1mCQt0OEMGc5N76i4DsvDKFnia4pPyAkFIelw54tLtnZDK+bvJc
+ 7DIq3fkEfzP7nRUCDzILxeoe/ffi2hAqVApgTrTKkJMfhJgucb78WUkmyQ1TU4kpJNq4WFJ
+ xgoQhw6MO3dedRyOO9gThczT/6ehz48IuGMkjyPIINRNKSZT7USLtsh6cTSUSwp3i5zVney
+ Pz3/ZoDDtMD1uZZt57cGA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:C9EJ2BzRe44=:x4VpAtkmCihxG5Na6fsfGM
+ K9oLKME9MDSzP32ZBLxqK7JCWsMO9ttMMMrMeZTp5Z9dT/YofJzKY9iZiiIZK2acDGWUYfb0j
+ IDwXbSZNKI4xgH3TJFBL/nf5n98vlZWOQT97ZGj4haQRA4GOnddER5XMvL7QtgyDk8zBPIYJk
+ euPi1WoynaIps+hfbuA4vlRNZFFdXOtByxGxOcKBBHQKBIc1TQAVSce3saK+XfiTrM2cN0FTU
+ stKJKjQTkrN0hxFe9YmvUPLSMVsesqqEl4LxXfUnlccnqwyEv3xzhtq1TxHU2rGyfBQhNTlIs
+ LiPombp9GHsQ0jOCkrmfXc4Ql8F9iXMoIV4mA1uoz2tOqpx3whPJDDGg7k3EqdGiEj6kO/jLQ
+ BHb6fFc79gCpDM7OtMLFbVLrhJu6AUW57aY39C4BckY6MbZDNGAF95bD8i+amBWigNqOVCDuc
+ S3t/9mTIIUqs/Ro3sji8gokJSBpTffAJ7tiQww6sTfVKmR/uU8NS85F30tML9aXgrZHAiBlhz
+ zTaTLfWegZY9KSTR1YMlGAGcF9EGsNpSRp0buPh28FDoZpQ2EHpY6ovZNPa8YFoUQoGs52ECe
+ yrjttoBiH+Mu30FMuBIzHVWtppfOiCYUi+CAZOu9zSSxSjLE40AHVEC5NL9NLkfOoivL0aRUB
+ p8GzRI2NBjRTPh4GuSqUZfq1hek1objpS4F9XBHxGwuZ19Nmp2ok4MyLIAF/gsEhXSHINZ2Qr
+ bsL2h1KVkEgXXCKKVgOsF3Dcfr/UYtakcaKGVh2ivbhXfr28T6sZ7PTf3s6H9dfmfP84ehVg+
+ R6MHfZPKwdT1y2G7hRRQiYbqrAbzQKV7KOtpCSdB+VR8CTJK/hfkILj9nbEhkIZ5MBKciUC
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:06:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -110,58 +108,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:29:45 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:35:59 -0000
 
-Le 14/08/2020 à 15:30, Philippe Mathieu-Daudé a écrit :
-> Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
-> definition is unused.  Remove unused code.
+Le 20/08/2020 à 19:10, Philippe Mathieu-Daudé a écrit :
+> Some 'qemu_vfio_*' trace events sizes are displayed using
+> decimal notation, other using hexadecimal notation:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   qemu_vfio_ram_block_added s 0xaaaaf2448d90 host 0xffff5bc00000 size 0x4000000
+>   qemu_vfio_dma_map s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 temporary 0 iova (nil)
+>   qemu_vfio_find_mapping s 0xaaaaf2448d90 host 0xffff5bc00000
+>   qemu_vfio_new_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 index 4 iova 0x114000
+>   qemu_vfio_do_mapping s 0xaaaaf2448d90 host 0xffff5bc00000 size 67108864 iova 0x114000
+> 
+> As it is hard to follow, unify using hexadecimal for all sizes:
+> 
+>   qemu_vfio_ram_block_added s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000
+>   qemu_vfio_dma_map s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 temporary 0 iova (nil)
+>   qemu_vfio_find_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000
+>   qemu_vfio_new_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 index 4 iova 0x114000
+>   qemu_vfio_do_mapping s 0xaaaaf1c60d90 host 0xffff2bc00000 size 0x4000000 iova 0x114000
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/net/xilinx_axienet.c | 23 -----------------------
->  1 file changed, 23 deletions(-)
+>  util/trace-events | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 1e48eb70c9..2e89f236b4 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -54,7 +54,6 @@
->       TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
->  
->  /* Advertisement control register. */
-> -#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
->  #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  */
->  #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex */
->  #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex */
-> @@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
->  }
->  
->  struct MDIOBus {
-> -    /* bus.  */
-> -    int mdc;
-> -    int mdio;
-> -
-> -    /* decoder.  */
-> -    enum {
-> -        PREAMBLE,
-> -        SOF,
-> -        OPC,
-> -        ADDR,
-> -        REQ,
-> -        TURNAROUND,
-> -        DATA
-> -    } state;
-> -    unsigned int drive;
-> -
-> -    unsigned int cnt;
-> -    unsigned int addr;
-> -    unsigned int opc;
-> -    unsigned int req;
-> -    unsigned int data;
-> -
->      struct PHY *devs[32];
->  };
->  
+> diff --git a/util/trace-events b/util/trace-events
+> index 0ce42822eba..d9a0b4f8c63 100644
+> --- a/util/trace-events
+> +++ b/util/trace-events
+> @@ -79,7 +79,7 @@ qemu_vfio_dma_reset_temporary(void *s) "s %p"
+>  qemu_vfio_ram_block_added(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
+>  qemu_vfio_ram_block_removed(void *s, void *p, size_t size) "s %p host %p size 0x%zx"
+>  qemu_vfio_find_mapping(void *s, void *p) "s %p host %p"
+> -qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size %zu index %d iova 0x%"PRIx64
+> -qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size %zu iova 0x%"PRIx64
+> -qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size %zu temporary %d iova %p"
+> +qemu_vfio_new_mapping(void *s, void *host, size_t size, int index, uint64_t iova) "s %p host %p size 0x%zx index %d iova 0x%"PRIx64
+> +qemu_vfio_do_mapping(void *s, void *host, size_t size, uint64_t iova) "s %p host %p size 0x%zx iova 0x%"PRIx64
+> +qemu_vfio_dma_map(void *s, void *host, size_t size, bool temporary, uint64_t *iova) "s %p host %p size 0x%zx temporary %d iova %p"
+>  qemu_vfio_dma_unmap(void *s, void *host) "s %p host %p"
 > 
 
 Applied to my trivial-patches branch.
