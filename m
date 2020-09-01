@@ -1,24 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD2Oc-0003bV-7Z
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:16:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34866)
+	id 1kD2a3-0003we-3N
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 05:27:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2OY-0003VJ-J3; Tue, 01 Sep 2020 05:16:02 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:39783)
+ id 1kD2a1-0003u4-49; Tue, 01 Sep 2020 05:27:53 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:56433)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD2OV-0007P8-Ho; Tue, 01 Sep 2020 05:16:02 -0400
+ id 1kD2Zz-0000Ot-Ay; Tue, 01 Sep 2020 05:27:52 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MNKqC-1jx9P70JGk-00Onv2; Tue, 01 Sep 2020 11:15:55 +0200
-Subject: Re: [PATCH] docs/system/target-avr: Improve the AVR docs and add to
- MAINTAINERS
-To: Thomas Huth <huth@tuxfamily.org>, qemu-devel@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>
-References: <20200812155304.18016-1-huth@tuxfamily.org>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N6bsG-1keDgR14jG-0182Jm; Tue, 01 Sep 2020 11:27:33 +0200
+Subject: Re: [PATCH 0/7] block: Use definitions instead of magic values
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
+References: <20200814082841.27000-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,32 +63,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f3f8e218-a78e-5a98-5b06-c588170f105a@vivier.eu>
-Date: Tue, 1 Sep 2020 11:15:52 +0200
+Message-ID: <e232bf0a-1362-a90d-31ff-95d90ad7ebc8@vivier.eu>
+Date: Tue, 1 Sep 2020 11:27:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200812155304.18016-1-huth@tuxfamily.org>
+In-Reply-To: <20200814082841.27000-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1ceeWEXpsnsLa6emFXf2oNCdRoMhB4wNYSzpIcyO1lWMEWGfA5L
- xqUlJSjHvNGv2gqCqFZkXmk3hn7ZgCCsesildJ7UrAkpAPnkUfZ+5QFYm7QyzZbPWJN1Rn7
- PiW81NtYkJmP+imNz1NIoxD7Og5mg6TjEaimaCf67FyuWKSs3a/emOJEKz4NirFQZobhE48
- b8b48Bo9z3719ekx9LvCA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:eYZ9f7lVI60=:o7QwIOEC3FYy0JFqysOdZ0
- WIMUvTAhlm74e6e420b+R40VZcNoQoOoPKLfdwysfwtgvpZkMQJH5oaVQjnjxjQ6ZN9HFQDrw
- b8HhsPP0IcmNcomKMxOQ+wPqrz2Yezf2XCMYkR+9CNtAseCfvnjRxdpquYGOMh0bIjkX1bNFu
- cddOVaJ8tgmHk0rNd5gDQTvtvBulOu3GxaGRaEBP7m2psERk3LM2/1cis2zKnBOAf1sQwaCjE
- oR+O74AVuBI5hfxv6M867TASxb9ACYJPFtRwq5K+N/d+4/HK3xopgyiT+t7BgNuHPuA3/7cVo
- 2sjNh5rECHbIXVLykdTpDJ7UE1e24GKgzX+v4wMqjHlNh7BZ+QJNcp57nxfpLfunuHT9ujXqi
- keInbhDXmZSaFUldcN+wF7sROBg4LU+ZpqTiAoF8SqPY1TGsf+0owuUVCTcw+Yllelm34Vgek
- 8A/oL5kbqjPCSWH2Js59pLUBynHw4Z3Njqqn45CKSZwoBuyZyA4AVMXdujQzHpBzU05RxBZuF
- oiQeMvmRU2RWOQapD0ZwfmRME9CSiGw2i3l9S7XS3dp0ZLxZfI6RHi/Inx6kw+DbiwUvRCeUB
- 9SIfXHWNKSFqEozyvpMXVmRzvtLiCSqHx/pIJfvI3c1nkNK7lAZLmEZorh9/4/kFts/ESvd0V
- 4Wr/v+IdpXYxXWufXvo/AcI7iyWeLgCAz2v7K7fyFYUvknVLzwIpYboIVzOJSGrkXv4d8Tt2U
- wcYcrTLst3bepDzqGV9L0ROhlhKv6M9NbtwivwxDUtQaLBGOodIzL/SM0gCQkRC54g8TDlWie
- EL694pwRQDwbf52r0JmvaR9EHEZs03+n2Zfi7NXGsaHDKL5iqtLs3X2Ic4MnyTyLOHPaYtM
+X-Provags-ID: V03:K1:uBjerWWhZWgGSVDS4OhqFnDa+CGQa4pZJbTOVEXjGapqa03volP
+ veRTr3xOr+b2qTLJepGU1NLsBIqwQGa6GmTgGABJGM5a2O8WlxDEcxP1a0A2kCro4dueScz
+ Cr5bioNZQg9c9iqzZRueD10D84A1NQ1MFJVgrUtdoG2Em42E1l+LeD80+uxeKOOAJJRQsdv
+ PW0I0TGYY9O8PCFreLjrw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MsSHszpiIHc=:45yR1aVIv+HZw7jes9WAjm
+ n69LVdaSDoPwd3n9TevVTlKfakmswRtn6OTiy9jtl51CajEX+lPJpp7FQDlMUGiJs3WASV9i5
+ gIwmJk5l8hURZuNsRtTiclsLi9b+q4ZCx4YQBB/FpBeWQbRdXGWuI7xN67kgu1BepagMKeYVH
+ 8IU2TZ69iPH9HZ2MDLmxQmJLrGnVJ7tzRHy5eE5Nhqv8Z+Qn3/nH4vWI72uqXa+ch3RG4R+De
+ f4T4LaXem1kg+u7EaA1hwUvOrp/eTDmZchAqVI88LLv+Mi7mRezQNdswe6C2yxEKGvx3R5xjY
+ AeZNyJq2d8qk9NXv7bswmF7U84uwKYtowqTWF4UlvaDW3UUI/QqF41OliDaCX8yY3u/Azlx8r
+ JKBNezS2RwaaYqTq8D/KENaz5m37aTdbdyQMjMVYeW7YyKLN6zIAimx7f4CX73iMFIaPGlpoj
+ ksjHQ3uh5epOJZM3kVYO8Sox5wB/zydDdOf5hJYTh9Y9QM9xKMCYAR1918QwPoyUil/Am2+u/
+ MZCrnXLYP0Bf1zGiGTAPUuT/Nm2CTqsWmuciIAKve2OncvOjl7WyakcQCtSmAPqy8CbG/52U7
+ 5BriGerzYKOujBFXgSq+ohewp8Wo1O2AUJaLk8Df6y+bk9K/g2RcAhvr3cG9FQrm+nJHTDXIw
+ 4njtU1KWwzLsUrLBhEWZriVhOJ0Sa+NdssF8IGp/sywIsgZV5DiH6otOfMJ3py94XKaXTMFbs
+ xaDW58ISmA5Kvd+sOIV/WUHuqigiHPbMGJMBtIIUHFDfiP9h+2WA+BemMzuvZ4qsxuUxbkoir
+ 26TAVSKs/7ln7Hmmc/BM2XBaRVcd59zzG0ZL2LpfmqiSuCyjcrnEKRwwJlMVJaZfmF/AAwG
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:13:18
@@ -110,93 +111,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 09:16:02 -0000
+X-List-Received-Date: Tue, 01 Sep 2020 09:27:53 -0000
 
-Le 12/08/2020 à 17:53, Thomas Huth a écrit :
-> The examples look nicer when using "::" code blocks.
-> Also mention that "-d in_asm" only outputs instructions that have not
-> been translated by the JIT layer yet.
-> And while we're at it, also add the AVR doc file to the MAINTAINERS file.
+Le 14/08/2020 à 10:28, Philippe Mathieu-Daudé a écrit :
+> Trivial block patches:
+> - Fix a typo
+> - Replace '1 << 30' by '1 * GiB' in null-co
+> - Replace 512 by BDRV_SECTOR_SIZE when appropriate.
 > 
-> Signed-off-by: Thomas Huth <huth@tuxfamily.org>
-> ---
->  MAINTAINERS                |  1 +
->  docs/system/target-avr.rst | 47 +++++++++++++++++++++++---------------
->  2 files changed, 30 insertions(+), 18 deletions(-)
+> Philippe Mathieu-Daudé (7):
+>   block/null: Make more explicit the driver default size is 1GiB
+>   hw/ide/core: Trivial typo fix
+>   hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
+>   hw/ide/ahci: Replace magic '512' value by BDRV_SECTOR_SIZE
+>   hw/ide/atapi: Replace magic '512' value by BDRV_SECTOR_SIZE
+>   hw/ide/pci: Replace magic '512' value by BDRV_SECTOR_SIZE
+>   hw/scsi/scsi-disk: Replace magic '512' value by BDRV_SECTOR_SIZE
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0886eb3d2b..5b21962bc6 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -171,6 +171,7 @@ AVR TCG CPUs
->  M: Michael Rolnik <mrolnik@gmail.com>
->  R: Sarah Harris <S.E.Harris@kent.ac.uk>
->  S: Maintained
-> +F: docs/system/target-avr.rst
->  F: gdb-xml/avr-cpu.xml
->  F: target/avr/
->  F: tests/acceptance/machine_avr6.py
-> diff --git a/docs/system/target-avr.rst b/docs/system/target-avr.rst
-> index dc99afc895..1410031f5e 100644
-> --- a/docs/system/target-avr.rst
-> +++ b/docs/system/target-avr.rst
-> @@ -17,21 +17,32 @@ https://github.com/seharris/qemu-avr-tests/blob/master/free-rtos/Demo/AVR_ATMega
->  Following are examples of possible usages, assuming demo.elf is compiled for
->  AVR cpu
->  
-> - - Continuous non interrupted execution:
-> -   ``qemu-system-avr -machine mega2560 -bios demo.elf``
-> -
-> - - Continuous non interrupted execution with serial output into telnet window:
-> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -serial
-> -   tcp::5678,server,nowait -nographic``
-> -   and then in another shell
-> -   ``telnet localhost 5678``
-> -
-> - - Debugging wit GDB debugger:
-> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -s -S``
-> -   and then in another shell
-> -   ``avr-gdb demo.elf``
-> -   and then within GDB shell
-> -   ``target remote :1234``
-> -
-> - - Print out executed instructions:
-> -   ``qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm``
-> +- Continuous non interrupted execution::
-> +
-> +   qemu-system-avr -machine mega2560 -bios demo.elf
-> +
-> +- Continuous non interrupted execution with serial output into telnet window::
-> +
-> +   qemu-system-avr -M mega2560 -bios demo.elf -nographic \
-> +                   -serial tcp::5678,server,nowait 
-> +
-> +  and then in another shell::
-> +
-> +   telnet localhost 5678
-> +
-> +- Debugging wit GDB debugger::
-> +
-> +   qemu-system-avr -machine mega2560 -bios demo.elf -s -S
-> +
-> +  and then in another shell::
-> +
-> +   avr-gdb demo.elf
-> +
-> +  and then within GDB shell::
-> +
-> +   target remote :1234
-> +
-> +- Print out executed instructions (that have not been translated by the JIT
-> +  compiler yet)::
-> +
-> +   qemu-system-avr -machine mega2560 -bios demo.elf -d in_asm
+>  block/null.c        |  4 +++-
+>  hw/ide/ahci.c       |  5 +++--
+>  hw/ide/atapi.c      |  8 ++++----
+>  hw/ide/core.c       | 25 +++++++++++++------------
+>  hw/ide/pci.c        |  2 +-
+>  hw/scsi/scsi-disk.c | 44 +++++++++++++++++++++++---------------------
+>  6 files changed, 47 insertions(+), 41 deletions(-)
 > 
 
 Applied to my trivial-patches branch.
-(I have removed the trailing whitespace)
+
+Except the following ones that have comment from Kevin:
+
+[PATCH 1/7] block/null: Make more explicit the driver default size is 1GiB
+[PATCH 3/7] hw/ide/core: Replace magic '512' value by BDRV_SECTOR_SIZE
 
 Thanks,
 Laurent
-
 
