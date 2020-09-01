@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zk-0006gD-Ik
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55488)
+	id 1kD6zl-0006hg-1Z
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zS-0005ns-Nv; Tue, 01 Sep 2020 10:10:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:44715)
+ id 1kD6zT-0005rV-K3; Tue, 01 Sep 2020 10:10:27 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:49385)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zJ-0003qF-Sf; Tue, 01 Sep 2020 10:10:26 -0400
+ id 1kD6zR-0003yK-Pm; Tue, 01 Sep 2020 10:10:27 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M5wTr-1kF1jc3fVD-007TIE; Tue, 01 Sep 2020 16:10:12 +0200
+ id 1Mv2tE-1kUmOf3Bi4-00r3s5; Tue, 01 Sep 2020 16:10:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 22/44] util/vfio-helpers: Fix typo in description
-Date: Tue,  1 Sep 2020 16:09:32 +0200
-Message-Id: <20200901140954.889743-23-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
+Subject: [PULL 30/44] hw/net/xilinx_axienet: Remove unused code
+Date: Tue,  1 Sep 2020 16:09:40 +0200
+Message-Id: <20200901140954.889743-31-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fvs2r8nQPYulppaFIXhHwCIGgOisL/qy2m9RS/M+1rJ4NyO43gZ
- nh0UWjyY88OttrEvUyHl2EQ80u6NM/TQiS3NrUwLIqOwEKEQbQhPGNKt4wKkBAiOA0tHSej
- 8c2okxweiXjg9n4vITh65IwjVjxE92CHS2BA+qRWFcs3G4JBWIQdjSwtA/2nCSNGBPlxuTe
- GTF6SurCL6mZc+Ia+Jfvg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1Lg0SCjDYZQ=:MDPmLqx/8Ug5OmS7PPs/Lh
- kmAjbJUcuQPGnv84pxg3lw5Br7pyaokw0lRUH+kG5SLLSnldAC3JwjQv4dfeb0/yTqJNh0nBG
- t7zhotU0KXtxR5cXrmJTP4fhWjPwLaYnes41NeOuex8qUlukWqwIXlv9NDdJdektd55B59ECh
- Y6Mc6TDc7y7b9nszXFQNNOjXQQ72+DsjoJwB4ane6jxG1/cEVDUCTyYXoPiiPZbnUwEZR1nXI
- KbbHLWFSeiJC7fXdGHQVU0m4sOTXwKBhoPxYxECKXq1sUhOcbSpG2qtggUrrekUXTn+CbrL0C
- fGvOUI7ksDRE4YMuEsVz8wKRLTuGzkQV1hsAsuiY0BS03QfpbqFefytWfQKtPtB8bu0SCLkkk
- jwIkd33uKpuLgaH7lmKLx5otBznPJdlpm6Pt/tND6P3S/v5RbbNHZdacL/JQ6wE3kzLdlJAZ8
- yz4sFyCMUBTpgCawas5Zs3dn1MhaIV6+LA/iZ8sEhBsc05vC+qc5OgMLOpyH90WIKE1ko3xO8
- E/K58+4/jCoQoiPYYRU6vX+2+WKvmIPtA2dReREgtEL58WT3fSIn5Mqql5PvGSVLG8OZi1r3A
- RP3WvGUaP9jXC4QL8Zw15fl0Y0a01G+sFqbrI88UnzXM7XJNwqCM2SRr/mq+q8m3leMve87NF
- SPnmLJgs62b7O3qOUtcuolag41rTwCJzxGPEWeosNqq2onGi77/OYFn16wmxq711BLnnPNWCP
- gQxvobjS1alYY91kZlsK5po4Ihwt8UacTfj8/EJBv/ayLswxCyNPPABONQNd/YYl/Hf3Tjw05
- 1NkcdV6dzSED/Wd68BAjq54iHfLezmVj8hvfiyfsVAcXp32BL08Eupw3WZySG9GzpnyuRc5
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:n+vFiyHYyYBQqQfH6cYkSjR6+cxuqFt5Hp+vTdtSzSMNljrGceV
+ 3i8MU/Kt/Ke/8vIGr3QSRDFuJ8dBVdaLuAJFGrsFSoQJE2b4YeGdWlchQQRnvcfIUbqgqh1
+ uzmYh1/F1FqSIvlHOjnRSmzx5vVEoleHAOo+RN8fD5LemhsGY/VgOKD9KKXbdPWIIV2/E4O
+ xfBgMQqvvE4c5fs8578qw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ieP0z49afpw=:+o2uGUoye/c2L4x+d/FpJt
+ UekgvLNw73+PzFQtQp6K5yBgxLlmqTJvF6bwv7bCbywF6R/3AlMyrva+nnpr8pw4NqJ7dvdmO
+ mgpbVnubL8l0hx94FSwsTOwu/+6FmUutSBQGRfRCZEGhSsUuu4hac3cmOz3j5jtrzBMNrt/HT
+ RRFrsnY8wrfxC0R+mzpD160h2OR49bEK5LMh+jyuLtkgazPgMHiYxWtuNKdzPjqv7PGKOqKSI
+ uJTokeLr6u7UOWJzICQvGWOLwDHZcZ5/ZIh2DOkpdqnO7K9dhcST99Dv4Q7H00dDxtalAtNlr
+ qqmmLI/R4yUY2wRMldxiX7iVhBpDKFiTdQdl0yMAq2N+1gW3d3f85xBMo8tk39nD9pMKWyuMi
+ 8oojV3MrDw7B//ZsXHFCUMl6ZL0KlrqXO09P3BMhPIhY9gtiZLF8vIZcyom6TjOqf9/X+Oq1A
+ NPrUu2bDUZFFl2HbUurIl41CMWzQsK9PD6xcmktldgqygQsbv9qskL9qnK62Tv6xVmhhThVGz
+ TJV8UHulJbwjlhwg955IuU3QgJ2hPkTZ2yGNmvDFv0c5B7GR7uSM4GehDpbaSPduN9gCbz6+o
+ PeAHrAhsv4kElOOYp952hnVWZT9TOyGxPTR1FOMsnY+QgjqdprAcpJp0Q3ukYhftQMT3Yr/B+
+ 5D14l+Jz8C+6Hu5KnTcavxml2Mr1ko4gCoQZh6y++pmPJzMLmNsh2IhRJ8A88LF/3tAbXqiWp
+ DH1FOpwxkRew0r7l2z72Basbowa69rb4dZLo2lwwfGh2rtMuKNBIuBDvC2Q5XSAYaI5tyyHBB
+ bw4DUdfupS+zf0UT4B0MQ6YEdpoXJMl3vyW2jmunnuUIrDzwgRNP1sowIN69K880DPoMEIb
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:09:57
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:07
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -67,42 +68,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 01 Sep 2020 14:10:27 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Remove the second 'and' introduced in commit 418026ca43
-("util: Introduce vfio helpers").
+Most of the MDIOBus fields are unused.  The ADVERTISE_10HALF
+definition is unused.  Remove unused code.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20200811151643.21293-4-philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Message-Id: <20200814133007.16850-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/vfio-helpers.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/net/xilinx_axienet.c | 23 -----------------------
+ 1 file changed, 23 deletions(-)
 
-diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
-index e399e330e26a..583bdfb36fc2 100644
---- a/util/vfio-helpers.c
-+++ b/util/vfio-helpers.c
-@@ -173,7 +173,7 @@ void qemu_vfio_pci_unmap_bar(QEMUVFIOState *s, int index, void *bar,
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index 1e48eb70c9cc..2e89f236b4ab 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -54,7 +54,6 @@
+      TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
+ 
+ /* Advertisement control register. */
+-#define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
+ #define ADVERTISE_10FULL        0x0040  /* Try for 10mbps full-duplex  */
+ #define ADVERTISE_100HALF       0x0080  /* Try for 100mbps half-duplex */
+ #define ADVERTISE_100FULL       0x0100  /* Try for 100mbps full-duplex */
+@@ -169,28 +168,6 @@ tdk_init(struct PHY *phy)
  }
  
- /**
-- * Initialize device IRQ with @irq_type and and register an event notifier.
-+ * Initialize device IRQ with @irq_type and register an event notifier.
-  */
- int qemu_vfio_pci_init_irq(QEMUVFIOState *s, EventNotifier *e,
-                            int irq_type, Error **errp)
-@@ -505,7 +505,7 @@ static IOVAMapping *qemu_vfio_find_mapping(QEMUVFIOState *s, void *host,
- }
+ struct MDIOBus {
+-    /* bus.  */
+-    int mdc;
+-    int mdio;
+-
+-    /* decoder.  */
+-    enum {
+-        PREAMBLE,
+-        SOF,
+-        OPC,
+-        ADDR,
+-        REQ,
+-        TURNAROUND,
+-        DATA
+-    } state;
+-    unsigned int drive;
+-
+-    unsigned int cnt;
+-    unsigned int addr;
+-    unsigned int opc;
+-    unsigned int req;
+-    unsigned int data;
+-
+     struct PHY *devs[32];
+ };
  
- /**
-- * Allocate IOVA and and create a new mapping record and insert it in @s.
-+ * Allocate IOVA and create a new mapping record and insert it in @s.
-  */
- static IOVAMapping *qemu_vfio_add_mapping(QEMUVFIOState *s,
-                                           void *host, size_t size,
 -- 
 2.26.2
 
