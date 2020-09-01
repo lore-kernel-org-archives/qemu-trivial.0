@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kD6zY-00065T-Dw
+	id 1kD6zY-00066E-Ls
 	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 10:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55394)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zP-0005e5-GA; Tue, 01 Sep 2020 10:10:23 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:57709)
+ id 1kD6zQ-0005fU-2R; Tue, 01 Sep 2020 10:10:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:46097)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD6zJ-0003q8-HW; Tue, 01 Sep 2020 10:10:23 -0400
+ id 1kD6zN-0003uU-Qy; Tue, 01 Sep 2020 10:10:23 -0400
 Received: from localhost.localdomain ([82.252.135.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MdNTs-1kmRnl1vAu-00ZOSj; Tue, 01 Sep 2020 16:10:01 +0200
+ id 1MGQaz-1kNJD416sP-00GmgK; Tue, 01 Sep 2020 16:10:11 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Liao Pingfang <liao.pingfang@zte.com.cn>, Yi Wang <wang.yi59@zte.com.cn>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 06/44] block/vmdk: Remove superfluous breaks
-Date: Tue,  1 Sep 2020 16:09:16 +0200
-Message-Id: <20200901140954.889743-7-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 21/44] util/qemu-timer: Fix typo in description
+Date: Tue,  1 Sep 2020 16:09:31 +0200
+Message-Id: <20200901140954.889743-22-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200901140954.889743-1-laurent@vivier.eu>
 References: <20200901140954.889743-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9wtfzMg5h42L8zLIZ5MY4d1StIUcSwuyoMS1KXY1qPL9bKgHQGG
- gcqTAG2jl9PCl4Mpscv2LUEL0i6o7f6BZY5Rggc4E8ibppLpuV4+C8JUqAXtsGdKrGRhfhj
- L8ghfwYhgNZrKY8Hx1GJf+MNNZg5vZINf9+Z7wyNuAnH3xMNorSDdz5KDf5RWqH+q0TRMQx
- 6VAH8GdbXM0EQtmkz/RKQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JXSwrQqWkOQ=:yHcjmdYNlpacSrQivakCb3
- l5Qf7W9ACAeCuhz+HMkeqeEp5yanC8ON3NJPAzA6qK7T+J09/uoKd1fYdJ6HejeKxYkgZp8qE
- +Xx94VxW3HkmKIL2980elyRkDzmkLz+twpXNbm2W/hZ0MFL3k2qhAsVs162mto7XuOITG3vHz
- 1uEmtFW+LZXBlKuliPbPiQjFPdonnIE+T+fNUP77sWJlwHgVbJykBga4DrI0lKKgZ+UNYe9r7
- AwOaSGU0vwHt1pX7hGjlY9p7pkYXgw36jzAmLGLczfwVI5M/2kuqSolT3nfpbNDXbX1O/N9gn
- OqGWaAjrszW/ly7ou4XFcp+7jY9ilVI+vvP4pBK9u3cxUvpKZ4fwqhnUs9uLvy5+F61ICJzvb
- /yzIyLRE8RDYM0CBfM+t1twM+RM9at+Ud/CEyCMiEDFhptkDsU3bNUW9XhtnTPLFmIDt65/N+
- ESBZLAXJ+7msJe3g6bmKrNBYPUCsco9V16ldu/pGftgSEUS8Uk8jChqKZkqhG6/Bbi2GQ1329
- pd/HZzOE62Q7gmZkjk8WJg1HA2h67xySQeQ66fZW9G7ysTJi+L9Z0elgKMK9eItdOcC8LaUbX
- AuyARP8EVKpkjEznq7oi7ujGjufE/vV1uj0HvKKn05Yj8pnqAukqYZHeOl9xvcEHiMm8UgNVC
- G7bIXwoc+dmZF+MAlaHyaeLfvXpBM/pixBR900Ml8G83aMNqDIWJ8h5qImlUDSaTnW7Bzi9wP
- B99jaCyA1xtoiMD5Pxew/1g9wD117zqwAoJDyHnIoLZ1XHIx3GJUkUM4SyN5X1+ypxpaJh83O
- FnYDp10aL4VOD9swMuafrmQY5Df+/TDoP0VFLRrP8/jBFAHXaRg1X6EAsdOsdS6QlMjGuEM
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:fBZk9ez3vhEgDKEwBIi+DZi3OhQueHvRjUMJcSzEeEqICWTwBLL
+ VaRxBQkmEKu5bJ6M31IZM8JvJGlUQME5tsjp7C22vrYi7AWu/X6YnPFxN7S8bnv5BtgTlmB
+ hiEljrKb9YAEeA91ura+6HZON2aC3XcYDgh6c6gFXTxs9PLHpkTft+/EIcJTN8GsViSJfrH
+ B76QvdpFkltiXKzNs0I2A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:i43uraF2Yhk=:zvcwRIBjL3uFBNQTqxTsfG
+ Mm8ifcRhrfOKRXjWTUWxlyiqxyuLNsC0STxyY+RUM7+cNC1KaNHy64mvVVwGV8TLtMTHPrAuX
+ M4Zg2SZzU3wfeKvQnQaqnm8/gF/93wDODu9R1EFvRDWWYKl4RcpKWdlhgpH4KIeY5eAt7++8e
+ eGJr4JbHWhVc/J6qA5MkGCJd6VTAfJQdUzPAATv8L7EXgO6d00PrCg8yjru4/Ofz7vmMItPNQ
+ uBhAcYxXXVW8fenUW9kaXsjW/mkTXEgNVH5hgt432nJmZIFAc07DwCz9N9US64eRToWiVZcwW
+ rfIpB64q/DReR7yHiaj/V1guH/jCbyJnliOHUcoxOC2OJwrC7RO6u/oMZYkIpD6FLE4bFkrbj
+ gTlwFGbQo+jkRhj6BU+IEm2EbKOOf40/aknqmBQmFCemcEPNrn0+HnwcSnQlZ487ZGoIiVbuS
+ 2BgGvZB5lXrF5yr2fy9H2GRkzGQ1sK7isfoLYaihJhC/jI3YBIonEFw5rNwpNtoJvPFeihLKP
+ OAjj/Dathm81qmhXTuGJN1RNcA1hhXKiZplp6zerQxLZTW3IDyprIE/jlcpw4NLfPLX9xiLI+
+ 3obtBNZP+gAL2A5mZbQ36Jwu//RC/sGd+MiS7OtA4EhXM7aVek2Ga7zHoIH9ngbbZAwPC1tPp
+ ftqAkslWKeHbfb/ZYRApdQwMTouMqpfKQo8BMzXBK5RHh9OqOaO4mifyhJmnq9s7Bl8Zftb6+
+ 9B4ZhtJZTm42xGb2+f5L0ea4vs4VkLQCxL8KOidNkvTw8YcuRkPy7ftNW0Lj1+04BVyEeRTpZ
+ 1ezb0EkkFf6VOhnnOfmjkmY1EHbet+Ct1lYuvGBn9n93jBkUzlwKKzREC5aInr4Nk0P+6rg
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:03
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 10:10:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -68,39 +67,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 01 Sep 2020 14:10:24 -0000
 
-From: Liao Pingfang <liao.pingfang@zte.com.cn>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Remove superfluous breaks, as there is a "return" before them.
+Remove the second 'and' introduced in commit e81f86790f ("qemu-timer:
+avoid checkpoints for virtual clock timers in external subsystems").
 
-Signed-off-by: Liao Pingfang <liao.pingfang@zte.com.cn>
-Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1594631107-36574-1-git-send-email-wang.yi59@zte.com.cn>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20200811151643.21293-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block/vmdk.c | 3 ---
- 1 file changed, 3 deletions(-)
+ util/qemu-timer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index bf9df5ce92ed..d90855446af4 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -1053,14 +1053,11 @@ static int vmdk_open_sparse(BlockDriverState *bs, BdrvChild *file, int flags,
-     switch (magic) {
-         case VMDK3_MAGIC:
-             return vmdk_open_vmfs_sparse(bs, file, flags, errp);
--            break;
-         case VMDK4_MAGIC:
-             return vmdk_open_vmdk4(bs, file, flags, options, errp);
--            break;
-         default:
-             error_setg(errp, "Image not in VMDK format");
-             return -EINVAL;
--            break;
+diff --git a/util/qemu-timer.c b/util/qemu-timer.c
+index f62b4feecdb0..878d80fd5e5e 100644
+--- a/util/qemu-timer.c
++++ b/util/qemu-timer.c
+@@ -530,7 +530,7 @@ bool timerlist_run_timers(QEMUTimerList *timer_list)
      }
- }
  
+     /*
+-     * Extract expired timers from active timers list and and process them.
++     * Extract expired timers from active timers list and process them.
+      *
+      * In rr mode we need "filtered" checkpointing for virtual clock.  The
+      * checkpoint must be recorded/replayed before processing any non-EXTERNAL timer,
 -- 
 2.26.2
 
