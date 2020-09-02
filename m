@@ -1,104 +1,117 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kDOu4-0004BU-4H
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 05:18:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32880)
+	id 1kDPS2-0001OP-Nl
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 05:53:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kDOu3-0004BH-7d; Wed, 02 Sep 2020 05:18:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:46329)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kDOtz-0002o7-Dn; Wed, 02 Sep 2020 05:18:02 -0400
-Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MjSDU-1ksl2w1Vc2-00kx9m; Wed, 02 Sep 2020 11:17:28 +0200
-Subject: Re: [PATCH 2/2] hw/gpio/max7310: Replace disabled printf() by
- qemu_log_mask(UNIMP)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
-References: <20200901104234.92159-1-f4bug@amsat.org>
- <20200901104234.92159-3-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <163c6c1b-bb3a-0ed0-2316-8d024bc84183@vivier.eu>
-Date: Wed, 2 Sep 2020 11:17:27 +0200
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDPS0-0001MO-O4
+ for qemu-trivial@nongnu.org; Wed, 02 Sep 2020 05:53:08 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24487
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDPRy-0007NO-DK
+ for qemu-trivial@nongnu.org; Wed, 02 Sep 2020 05:53:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599040385;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=rm9+9XvMjo2bpL2GAM/21F/jpjy1E0z2Dcc+38nj9I8=;
+ b=P/fz3ZlmPFHnNjXeoMTRl7AjnSBCjHb6LRXnE0u6lv0Vod5JMruU+Vn4IZSDKgJmYJKmqM
+ NCy6KteVjPQIqLhG9///sPlYaZ6Jon44vx/GO3GST2Stqz2hdyLWgobaxt+thY7AxXmr4S
+ uusHlewAOM2raBCW9OqcfnkS3TQT+cU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-13-B7b4to3nM1CfXkA6LLgR6w-1; Wed, 02 Sep 2020 05:53:03 -0400
+X-MC-Unique: B7b4to3nM1CfXkA6LLgR6w-1
+Received: by mail-wm1-f72.google.com with SMTP id 23so1421558wmk.8
+ for <qemu-trivial@nongnu.org>; Wed, 02 Sep 2020 02:53:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=rm9+9XvMjo2bpL2GAM/21F/jpjy1E0z2Dcc+38nj9I8=;
+ b=iMEhfAUs2A6B4vRMdEbWwU/YBYnRbOyvYTYlC0Ongxz95DlD1n8DonAqrKFWUFka5c
+ kAJLowYafClaAYI8SNCwMU0pJUykoX8x6Q77WVLo3R9kVK+L7W4ebDCq6F5lf/Nxfyho
+ 3i+2FEylrN/viAvD+/x+W0HgXoEJE7961IlMV6JDFrY28fs7KDiDkyYNGjIx0muGNwsN
+ qz62iKDOoS/eOzfeUb6NXYI9X7oC1hrXKGpKlj3vAzBabwois+Kdl8tlJT0ibYdGLYDL
+ 809lwTVbL1MsuxaVj0SYNa5Adq1Uw5ANHYTovTp14VoRMf4hWbzKC86bMbAVJ3KEUNo9
+ 044g==
+X-Gm-Message-State: AOAM530Fp2Mq98JuBkzOTaQohRXJHYVboJRw/SW+C3vMjDOUJpXKT/sa
+ IbX55+g9edS3vlJOLk2JJTSHwxcJPCwhLOjnoX/DQAXlJuTzXuEnSazOBQ42fSTxXcpBJrpagZN
+ ruMwIOl9bs4GPaofkJg==
+X-Received: by 2002:a1c:7c17:: with SMTP id x23mr5964782wmc.30.1599040382372; 
+ Wed, 02 Sep 2020 02:53:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxulEPZyLk9hmZykbgiE9hg3ckhcFUUgLb0NHjAUxd3/4OdojbJgJhmnA2ANEiERCFAbkScwQ==
+X-Received: by 2002:a1c:7c17:: with SMTP id x23mr5964752wmc.30.1599040382004; 
+ Wed, 02 Sep 2020 02:53:02 -0700 (PDT)
+Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id f14sm6542217wrv.72.2020.09.02.02.53.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Sep 2020 02:53:01 -0700 (PDT)
+Subject: Re: [PATCH 5/5] util/qsp: Do not declare local variable only used for
+ assertion
+To: Greg Kurz <groug@kaod.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Corey Minyard <minyard@acm.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
+References: <20200902080801.160652-1-philmd@redhat.com>
+ <20200902080801.160652-6-philmd@redhat.com>
+ <20200902111112.251568b8@bahia.lan>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <f69d4081-a297-a9ca-b5c9-39efff9fa3ca@redhat.com>
+Date: Wed, 2 Sep 2020 11:53:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200901104234.92159-3-f4bug@amsat.org>
+In-Reply-To: <20200902111112.251568b8@bahia.lan>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Bqx5yJcBtwM9/wQcztqYOzToBGEJTLVIXvw1UUSkleQtjbHbkqZ
- kyL8N61xDuRkxXvQ0TXU+IWtiP0Z4Qu/GOyp1BMUwZMQ0vtWV9TYH1OMHdoVLTlJFiT+pJZ
- xFShNj2W10zTXVXNsLJ6An2TgfLNZa2FUxCtJrjHOgdUtVHP7gZZEMZc2TQyjYDFoFq4RJt
- r54x3ASaV++iaGfEJfJiA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ECWtHgJgqEg=:QB9CIwA/w0lauRfvB7Rem8
- /7B/ujTVScOHfzzenvXsZ+GNmA9JoFLr4+9enF+yfnbHO+NSZsml5VITKUBdgiDltgmmGjp2Q
- 7COcV3nsGv6XYmcP8Vbj3cFmBTomkkkfye0G4Qji9g1H0eJZCoqqyEtHleMI1LZbdz0kliC3x
- hvqn+8I5EFG53l2KXodD5PI6JEdegG5MpGzri7pGWgY9k52GFyvZdQMEVn3WeYoYvCfulXajh
- SBefgI0O+L7rtE+3C/dGXLrDyLxxn7KRvWDwCqMakdZNtyUuvLLXnqHmGQn/naDvcpVDj9B4d
- m2+QOhqCmnmlIo7JtcECTL5KJqoxqTvwx1Cl8DobcINgL9s6Xnv7buT1u1C8rFvfg/MRd1hka
- VigexJFfNFjpUZYNnmq+WKz5cic1jHPV99f69e59Jzz3PkveG4sw1DGGcAVU29LpUiLEx3ttc
- L4KEuhNEtRBcl7jNT4UuuvcZuY/CHi3uZRcX1C1fJmaKB1rZk1yAkimCkjChNxvkyH8N65GPd
- WloHJ2qocJLsYjxRT3o/ZTYclQNUcW+1ibDDgFVQRpufizKh0K0raeCa2ptFHVqia7M/1Qvyo
- zwvw+9urj/KtmcOAfQ7LrhPKsY6/TaVPXjdskmujke5z3shLdiKlf46l5PrQ2dUQg98mTCjfc
- F2jXnR0mseOC1pFpgS98EQ8zm/q4eGfddWlDQ+Sn2YIyDOK5GTuq/h6w+LzMqI7JKGtr56bSX
- TdiTQUYp9JEPtk285oUtAnQfAv4UQfBfQpGY9zwrwknEww4NA7YW9Het1a9Jrtx6COO6cf5dF
- dJ8UMNaJN1ws0SyuxfpuyMlBFxFdgM4ot+FFDfcOg+rEfpmEreBoFqNi1fl9ry9+vJC6S/C
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 05:17:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -39
-X-Spam_score: -4.0
+Content-Language: en-US
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:07:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.13,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.13, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,53 +124,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Sep 2020 09:18:03 -0000
+X-List-Received-Date: Wed, 02 Sep 2020 09:53:08 -0000
 
-Le 01/09/2020 à 12:42, Philippe Mathieu-Daudé a écrit :
-> Replace disabled printf() by qemu_log_mask(UNIMP).
+On 9/2/20 11:11 AM, Greg Kurz wrote:
+> On Wed,  2 Sep 2020 10:08:01 +0200
+> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/gpio/max7310.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
+>> This variable is used once in an assertion. Remove single
+>> declaration and access directly in the assert().
+>>
+>> See in "qemu/osdep.h":
+>>
+>>  *                                  [...] disable assertion is not
+>>  * supported upstream so the risk is all yours.  Meanwhile, please
+>>  * submit patches to remove any side-effects inside an assertion, or
+>>  * fixing error handling that should use Error instead of assert.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  util/qsp.c | 4 +---
+>>  1 file changed, 1 insertion(+), 3 deletions(-)
+>>
+>> diff --git a/util/qsp.c b/util/qsp.c
+>> index 7d5147f1b20..1db044ecedd 100644
+>> --- a/util/qsp.c
+>> +++ b/util/qsp.c
+>> @@ -560,9 +560,7 @@ static void qsp_iter_diff(void *p, uint32_t hash, void *htp)
+>>  
+>>      /* No point in reporting an empty entry */
+>>      if (new->n_acqs == 0 && new->ns == 0) {
+>> -        bool removed = qht_remove(ht, new, hash);
+>> -
+>> -        g_assert(removed);
+>> +        g_assert(qht_remove(ht, new, hash));
 > 
-> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
-> index 7f5de189acf..c58a1996418 100644
-> --- a/hw/gpio/max7310.c
-> +++ b/hw/gpio/max7310.c
-> @@ -11,6 +11,7 @@
->  #include "hw/i2c/i2c.h"
->  #include "hw/irq.h"
->  #include "migration/vmstate.h"
-> +#include "qemu/log.h"
->  #include "qemu/module.h"
->  
->  #define TYPE_MAX7310 "max7310"
-> @@ -69,9 +70,8 @@ static uint8_t max7310_rx(I2CSlave *i2c)
->          return 0xff;
->  
->      default:
-> -#ifdef VERBOSE
-> -        printf("%s: unknown register %02x\n", __func__, s->command);
-> -#endif
-> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
-> +                      __func__, s->command);
->          break;
->      }
->      return 0xff;
-> @@ -123,9 +123,8 @@ static int max7310_tx(I2CSlave *i2c, uint8_t data)
->      case 0x00:	/* Input port - ignore writes */
->          break;
->      default:
-> -#ifdef VERBOSE
-> -        printf("%s: unknown register %02x\n", __func__, s->command);
-> -#endif
-> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
-> +                      __func__, s->command);
->          return 1;
->      }
->  
+> Urgh... this is doing exactly the opposite of the "qemu/osdep.h"
+> recommandations above. We still want to remove new from the
+> hash table even if QEMU was built without assertions.
+
+Oops you are right :/
+
+> 
+>>          g_free(new);
+>>      }
+>>  }
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
