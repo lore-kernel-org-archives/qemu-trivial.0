@@ -1,66 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kDMeH-00069x-Gy
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 02:53:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50884)
+	id 1kDNoR-0005GN-Kh
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 04:08:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kDMeF-00066e-8c; Wed, 02 Sep 2020 02:53:35 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:33189)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kDMeC-0000QS-JB; Wed, 02 Sep 2020 02:53:34 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.123])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 83DAC5D06B68;
- Wed,  2 Sep 2020 08:53:19 +0200 (CEST)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Wed, 2 Sep 2020
- 08:53:18 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0048ac43cfe-bc6d-40ae-a34e-729923152ec4,
- 725C0B02AD5EA5A9EE23B5614217EC25792C566F) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 3/5] hw/ppc/ppc4xx_pci: Use ARRAY_SIZE() instead of magic
- value
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>, <qemu-arm@nongnu.org>,
- <qemu-ppc@nongnu.org>, Huacai Chen <chenhc@lemote.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, David Gibson
- <david@gibson.dropbear.id.au>
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-4-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <0ffcf77e-9b1a-24e6-c763-4a94614b1549@kaod.org>
-Date: Wed, 2 Sep 2020 08:53:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDNoQ-0005Eq-5Q
+ for qemu-trivial@nongnu.org; Wed, 02 Sep 2020 04:08:10 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:44779
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDNoO-0001go-0H
+ for qemu-trivial@nongnu.org; Wed, 02 Sep 2020 04:08:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599034087;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=CbYixINhpQModzpfyZXayzanTCK/bGB3UBj1WchAysQ=;
+ b=L4z29lFn8wOsflYmhxf0/6gFPvm5NAm334cVE46r9hjD1/R56UHis+8xBUa3EiGI7FW/qE
+ q/7BdUDdC8MzGLwdtmJPt4kDsMpSGy9ZQJ22/v/Nh7PKwvUgY5HKyXv/ZolRbt+FSFVsUj
+ M8WCs7NYd6Gih9VX7BcqcdyM5JSXRQw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-467--lT52Si0Pj6C9Bys3gypDg-1; Wed, 02 Sep 2020 04:08:05 -0400
+X-MC-Unique: -lT52Si0Pj6C9Bys3gypDg-1
+Received: by mail-wr1-f72.google.com with SMTP id v12so1647013wrm.9
+ for <qemu-trivial@nongnu.org>; Wed, 02 Sep 2020 01:08:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CbYixINhpQModzpfyZXayzanTCK/bGB3UBj1WchAysQ=;
+ b=uQPkljSAlmIpjtZ5/zFkUiguFVI8uzWIZ6JD3OJjfP8zlqdv6bcwRRvdMIfW5IMRJj
+ RRfFnltDFILWPTEEL1Ve0B8aSD5sRqFOYNIImC2lbJ73GwogdQf3mHnr87uX+rvZEkww
+ nRkEfFUnuGuafSfk4wdVidh0OCk+i/y/PUphU9COXvNUfdveOAKpM5OO21IPOyOo+cZT
+ 3J5pmHTZ0/MEMZXe/SFNMb8zJs06sO86TYlW9sPJcxyE5Xao7i4TONpEyw1AeQBLU+1F
+ uDe1TWF/LTbJvVH5sCPQAuZYfpHnR58T0ORjVtJwCV3Brx9Q3LwVbqMnCCUqn8GFRSIZ
+ HISw==
+X-Gm-Message-State: AOAM531xLnyTO06lctI0MgTYDklv0rkSF9HN6RkBuKEC8QSU9+A+aOK5
+ 7c4cs8rOizmPtHrGMICBxfGNIiiWz+RkE15crBP5ZQLKs7YeTa+u6iwlN8MKgSM1+1uBITQPKWc
+ VrepeUtEdyBQjvOWq6g==
+X-Received: by 2002:a5d:56c1:: with SMTP id m1mr5644652wrw.87.1599034084238;
+ Wed, 02 Sep 2020 01:08:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0hnTmjf6TyPZSDic3rqSM/zVRo8gg6Pg9xJwOuEUnahBeEP++Lc5CrrB+7/xZ1WzO1k66rA==
+X-Received: by 2002:a5d:56c1:: with SMTP id m1mr5644628wrw.87.1599034084046;
+ Wed, 02 Sep 2020 01:08:04 -0700 (PDT)
+Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id c4sm6054281wrp.85.2020.09.02.01.08.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Sep 2020 01:08:03 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Corey Minyard <minyard@acm.org>, Thomas Huth <thuth@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH 0/5] misc: Reduce assert side-effects
+Date: Wed,  2 Sep 2020 10:07:56 +0200
+Message-Id: <20200902080801.160652-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200901104043.91383-4-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: d9b36a0f-30f8-438e-9295-807c83e4cb17
-X-Ovh-Tracer-Id: 4710202263967533886
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefkedguddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:53:21
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.13,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:33:32
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,35 +91,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Sep 2020 06:53:35 -0000
+X-List-Received-Date: Wed, 02 Sep 2020 08:08:10 -0000
 
-On 9/1/20 12:40 PM, Philippe Mathieu-Daudé wrote:
-> Replace the magic '4' by ARRAY_SIZE(s->irq) which is more explicit.
+Fix a Coverity warning in qtest,
+do not declare local variable only used for assertions
+(use them directly).
 
-We could also define the 'irq' array with PCI_NUM_PINS instead of 4.
+Philippe Mathieu-Daudé (5):
+  tests/qtest/ipmi-kcs: Fix assert side-effect
+  hw/pci-bridge: Do not declare local variable only used for assertion
+  hw/ppc/spapr: Do not declare local variable only used for assertion
+  tcg/tcg: Do not declare local variable only used for assertion
+  util/qsp: Do not declare local variable only used for assertion
 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+ hw/pci-bridge/pci_bridge_dev.c | 4 +---
+ hw/ppc/spapr.c                 | 3 +--
+ tcg/tcg.c                      | 3 +--
+ tests/qtest/ipmi-kcs-test.c    | 3 ++-
+ util/qsp.c                     | 4 +---
+ 5 files changed, 6 insertions(+), 11 deletions(-)
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-> ---
->  hw/ppc/ppc4xx_pci.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index 3ea47df71fe..cd3f192a138 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -320,7 +320,8 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, Error **errp)
->  
->      b = pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
->                                ppc4xx_pci_map_irq, s->irq, get_system_memory(),
-> -                              get_system_io(), 0, 4, TYPE_PCI_BUS);
-> +                              get_system_io(), 0, ARRAY_SIZE(s->irq),
-> +                              TYPE_PCI_BUS);
->      h->bus = b;
->  
->      pci_create_simple(b, 0, "ppc4xx-host-bridge");
-> 
+-- 
+2.26.2
 
 
