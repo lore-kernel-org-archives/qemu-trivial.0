@@ -1,83 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kDAQx-00048I-Kp
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 13:51:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36932)
+	id 1kDHRd-0000K5-VP
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2020 21:20:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45554)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kDAQv-000469-NU
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 13:51:01 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:33046)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kDAQq-0002ku-UP
- for qemu-trivial@nongnu.org; Tue, 01 Sep 2020 13:51:00 -0400
-Received: by mail-pl1-x643.google.com with SMTP id h2so918960plr.0
- for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2020 10:50:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7Ko1jM+38f+VOxHuq8IymQYkeWmQIek8QusLvh9d0fg=;
- b=C24GLxl8ZOktYzKsSfJDaZ2LgxElgIfkMv/dklBM28gU+/56MZNyumhTuFMVEyUqkj
- b3Cg2641DEEyQgw7x882Yog1vFHogE6W6IjEw9hPplApxb41dyMDP+WKl0BNsJoqLf+w
- fPBZ/8xUK01IMx9gVwDIQOd0WI6qxYgV4V88sJJYa7341whgab61id/2AvhOwjul3jzp
- oD33ZT7cXBUaDuyCL0qtWW7jgbxdaOFSiLflnTauHCDeU1WYKe/DnD+HSXyLeuY5Nsp/
- ai4tUud8gx3pmfuP3Q6kA7i3GPPWQy2nmU1c9RWyC/0+NeACkIehZcF3C8QPweDsXIem
- pB7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7Ko1jM+38f+VOxHuq8IymQYkeWmQIek8QusLvh9d0fg=;
- b=ffsl0ERv9DyYQ/NMTmrOMOgdwPY7GQO9+7y8C1PrcMw6+a8DXp9+IehikEDgQbdMxh
- rsAa0qvxW3S1eO/p7nodIyTIBV6jxoXHdwx73BxKdQaqcxdZt1AogEpjbjmZ/tofe1+e
- dINtgwpBnwsT2QXXCUZ28zGa6/tabT+px3FW+70DCFh9s/sSl9RxnNXksrABMwlOtJxW
- Ouy2K1deZSGdQLw6AIIzi6nXWs0V+nTOtefLC94EByDk6e0y1cMXGcdAEfBQxOg6gCcp
- YDDuf0Ycg/5IgCdWKh7XVForJFxbGibWfydfIC7bvgi3xjLouOiw4Ed5zq0T1JtAOIUx
- g+CQ==
-X-Gm-Message-State: AOAM53044lJf08Jo7+1c6X3ivg3/dpe+2F7E4Xxuuf2lA9PBmMrUbkUL
- tEFkEcNY4bc/ILvVQiKm20ji0A==
-X-Google-Smtp-Source: ABdhPJyw5j64baONFL3+S6Y4M6yGHvx3pgWDaHilByaCumrtvLv2JVgfnLGW31vmGzM8iSOKBP6Rcg==
-X-Received: by 2002:a17:902:10f:: with SMTP id
- 15mr2306925plb.232.1598982655459; 
- Tue, 01 Sep 2020 10:50:55 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id y65sm2521484pfb.155.2020.09.01.10.50.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Sep 2020 10:50:54 -0700 (PDT)
-Subject: Re: [PATCH 5/5] hw/isa/isa-bus: Replace hw_error() by assert()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHRb-0000Id-Sj; Tue, 01 Sep 2020 21:20:11 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:49455 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHRZ-00033x-Bd; Tue, 01 Sep 2020 21:20:11 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4Bh5hg40RFz9sVC; Wed,  2 Sep 2020 11:20:03 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1599009603;
+ bh=/0Fr68ZLatqgPD2Ci5FuiRZsFR3bvwm+hPOl1XlWBAE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZAgoIYin2FAgD8kDjGTHbFHdDuMhJgdVBFQ+bzAn51/ITDYmtYGfIsc5pULCHDBZd
+ WdU8cfGVz/Gjy3tGzNAyOY9jIUYJamfBnBFCtKOYzUROO/J7yV3yFGF/MPKt7xlV9k
+ za6bpwg0LuuwzBMWQEnerH+RfCT8x7nm/wDs14ag=
+Date: Wed, 2 Sep 2020 11:16:46 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ Huacai Chen <chenhc@lemote.com>, qemu-trivial@nongnu.org,
  Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 3/5] hw/ppc/ppc4xx_pci: Use ARRAY_SIZE() instead of magic
+ value
+Message-ID: <20200902011646.GD1897@yekko.fritz.box>
 References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-6-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <79238190-0c1d-f6c1-bf2b-e9094241689a@linaro.org>
-Date: Tue, 1 Sep 2020 10:50:52 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <20200901104043.91383-4-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200901104043.91383-6-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="hxkXGo8AKqTJ+9QI"
+Content-Disposition: inline
+In-Reply-To: <20200901104043.91383-4-f4bug@amsat.org>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.13,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,22 +63,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2020 17:51:02 -0000
+X-List-Received-Date: Wed, 02 Sep 2020 01:20:12 -0000
 
-On 9/1/20 3:40 AM, Philippe Mathieu-Daudé wrote:
-> As we can never have more than ISA_NUM_IRQS (16) ISA IRQs,
-> replace the not very interesting hw_error() call by an
-> assert() which is more useful to debug condition that can
-> not happen.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+--hxkXGo8AKqTJ+9QI
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Sep 01, 2020 at 12:40:41PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Replace the magic '4' by ARRAY_SIZE(s->irq) which is more explicit.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  hw/isa/isa-bus.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
+>  hw/ppc/ppc4xx_pci.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+> index 3ea47df71fe..cd3f192a138 100644
+> --- a/hw/ppc/ppc4xx_pci.c
+> +++ b/hw/ppc/ppc4xx_pci.c
+> @@ -320,7 +320,8 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, =
+Error **errp)
+> =20
+>      b =3D pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
+>                                ppc4xx_pci_map_irq, s->irq, get_system_mem=
+ory(),
+> -                              get_system_io(), 0, 4, TYPE_PCI_BUS);
+> +                              get_system_io(), 0, ARRAY_SIZE(s->irq),
+> +                              TYPE_PCI_BUS);
+>      h->bus =3D b;
+> =20
+>      pci_create_simple(b, 0, "ppc4xx-host-bridge");
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-r~
+--hxkXGo8AKqTJ+9QI
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl9O8nwACgkQbDjKyiDZ
+s5ISdw/+Ni8dI57O4f+4QVXKXRlk4CHa6MGCPttZD3sTvlp/gmvUUUu+cD4exKck
+gQWqpH3+mYZxILRI8bk0Ep6D2lGGgwvbLIQjN6WbDbX8arLgQ/BZqgQtDutD9Ugb
++CUIaQxP9ewl15HIz7jM00dkwESUpdeigbbAp2wp8WUFLzASjvyooiI5OTfrYL3I
+ZpS14gpYSI4A2ULLLKgSTA5hzEmdLULA1EXhKeaqTgrn2jBSJxUyB2xGh4fhSOeW
+uG4whEF61bjjFzpHA9daeT2cZfHnLF5KHpnySnj5cB5nqGOkg050DfmQ2rRvkRr+
+rOWJAbNZ61G2+Rfch1T/AmcgwiCmaHtF4+Y2qIN3NOeNymoPOInjJnXxUz+KDdRb
+VeSc5ZSBIfMgTCBcXYdOi29fIt6wrqB1eeaB5MLC74SmihDMDNRinvQfH1Ii7Mxm
+JgXU/QfBBwnzbxehyV3OzzxrLKMa2013cTGTQ+X0qmkxoNwsNG8txmurMzcGHCBc
+zldTFFC/08F+IjzVrGj+p/b3CtCB+JAGCT7wfFLRMkzyupDgDYOMd0+A1PrvLR83
+d8E1g7HfsyAGDbEloYMGtfABpK2O7DSAFlSqF1jH5FH3fdf/hxRjDe+2PAtLv/6H
+/oVtSUvYsygKNo+3JdZzYoGGrzT+UyoL68oBhr4m5z0krn/VC6U=
+=ITJa
+-----END PGP SIGNATURE-----
+
+--hxkXGo8AKqTJ+9QI--
 
