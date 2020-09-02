@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kDOcA-0000Tw-3q
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 04:59:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56604)
+	id 1kDOd3-0001ZP-Jy
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 05:00:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kDOc8-0000SX-8B; Wed, 02 Sep 2020 04:59:32 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:55091)
+ id 1kDOd2-0001Yz-An; Wed, 02 Sep 2020 05:00:28 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:47953)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kDOc6-0000I4-2E; Wed, 02 Sep 2020 04:59:31 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.191])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id C66A95D1511D;
- Wed,  2 Sep 2020 10:59:24 +0200 (CEST)
-Received: from kaod.org (37.59.142.95) by DAG8EX1.mxp5.local (172.16.2.71)
+ id 1kDOd0-0000Pb-L2; Wed, 02 Sep 2020 05:00:28 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.136])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 96A555D15328;
+ Wed,  2 Sep 2020 11:00:24 +0200 (CEST)
+Received: from kaod.org (37.59.142.101) by DAG8EX1.mxp5.local (172.16.2.71)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Wed, 2 Sep 2020
- 10:59:24 +0200
+ 11:00:23 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-95G0012be1b71a-f7e9-4ddd-b332-576716138389,
+ (GARM-101G00449756ef9-19f3-427e-b8b5-204c0705ce53,
  AA3809B24A0F88596FE87CA7447536A9393A4537) smtp.auth=groug@kaod.org
-Date: Wed, 2 Sep 2020 10:59:22 +0200
+Date: Wed, 2 Sep 2020 11:00:22 +0200
 From: Greg Kurz <groug@kaod.org>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
 CC: <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, Thomas Huth
  <thuth@redhat.com>, Corey Minyard <minyard@acm.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, <qemu-trivial@nongnu.org>, <qemu-ppc@nongnu.org>, "Marcel
- Apfelbaum" <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- David Gibson <david@gibson.dropbear.id.au>, "Richard Henderson"
- <rth@twiddle.net>
-Subject: Re: [PATCH 2/5] hw/pci-bridge: Do not declare local variable only
+ <mst@redhat.com>, <qemu-trivial@nongnu.org>, <qemu-ppc@nongnu.org>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH 3/5] hw/ppc/spapr: Do not declare local variable only
  used for assertion
-Message-ID: <20200902105922.33bef18e@bahia.lan>
-In-Reply-To: <20200902080801.160652-3-philmd@redhat.com>
+Message-ID: <20200902110022.6f600e03@bahia.lan>
+In-Reply-To: <20200902080801.160652-4-philmd@redhat.com>
 References: <20200902080801.160652-1-philmd@redhat.com>
- <20200902080801.160652-3-philmd@redhat.com>
+ <20200902080801.160652-4-philmd@redhat.com>
 X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [37.59.142.95]
+X-Originating-IP: [37.59.142.101]
 X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG8EX1.mxp5.local
  (172.16.2.71)
-X-Ovh-Tracer-GUID: 17fb97fa-bd2a-48ad-92a5-ecca5a668f9f
-X-Ovh-Tracer-Id: 6839841936875297272
+X-Ovh-Tracer-GUID: 5b362662-7b61-4c17-a39d-d57447dedc42
+X-Ovh-Tracer-Id: 6856730434922256885
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefledgudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtqhertdertdejnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeevlefhtddufffhieevhefhleegleelgfetffetkedugeehjeffgfehhfefueduffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehrthhhsehtfihiuggulhgvrdhnvght
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefledgudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtqhertdertdejnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeevlefhtddufffhieevhefhleegleelgfetffetkedugeehjeffgfehhfefueduffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtoheprhhthhesthifihguughlvgdrnhgvth
 Received-SPF: pass client-ip=79.137.123.220; envelope-from=groug@kaod.org;
  helo=smtpout1.mo804.mail-out.ovh.net
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 04:59:26
@@ -69,9 +67,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Sep 2020 08:59:32 -0000
+X-List-Received-Date: Wed, 02 Sep 2020 09:00:28 -0000
 
-On Wed,  2 Sep 2020 10:07:58 +0200
+On Wed,  2 Sep 2020 10:07:59 +0200
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
 > This variable is used once in an assertion. Remove single
@@ -84,38 +82,36 @@ Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 >  * submit patches to remove any side-effects inside an assertion, or
 >  * fixing error handling that should use Error instead of assert.
 >=20
-
-Not sure how this relates to what the patch is doing, ie. get rid
-of a local variable with a single user...
-
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/pci-bridge/pci_bridge_dev.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+
+Same remarks as patch 2/5.
+
+>  hw/ppc/spapr.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 >=20
-> diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_de=
-v.c
-> index 4a080b7c7bf..10c521085d7 100644
-> --- a/hw/pci-bridge/pci_bridge_dev.c
-> +++ b/hw/pci-bridge/pci_bridge_dev.c
-> @@ -224,9 +224,7 @@ void pci_bridge_dev_plug_cb(HotplugHandler *hotplug_d=
-ev, DeviceState *dev,
->  void pci_bridge_dev_unplug_cb(HotplugHandler *hotplug_dev, DeviceState *=
-dev,
->                                Error **errp)
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index dd2fa4826b3..6447a5b3808 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -628,7 +628,6 @@ static int spapr_dt_dynamic_reconfiguration_memory(Sp=
+aprMachineState *spapr,
+>  static int spapr_dt_memory(SpaprMachineState *spapr, void *fdt)
 >  {
-> -    PCIDevice *pci_hotplug_dev =3D PCI_DEVICE(hotplug_dev);
-> -
-> -    g_assert(shpc_present(pci_hotplug_dev));
-> +    g_assert(shpc_present(PCI_DEVICE(hotplug_dev)));
-
-I don't think this is correct because PCI_DEVICE() has a side-effect: it
-causes QEMU to abort() if dev doesn't point to a PCI device. I guess that
-if a non-PCI device reaches this code, something is clearly wrong and we
-should abort(), even if QEMU was built without assertions.
-
->      shpc_device_unplug_cb(hotplug_dev, dev, errp);
->  }
+>      MachineState *machine =3D MACHINE(spapr);
+> -    SpaprMachineClass *smc =3D SPAPR_MACHINE_GET_CLASS(spapr);
+>      hwaddr mem_start, node_size;
+>      int i, nb_nodes =3D machine->numa_state->num_nodes;
+>      NodeInfo *nodes =3D machine->numa_state->nodes;
+> @@ -670,7 +669,7 @@ static int spapr_dt_memory(SpaprMachineState *spapr, =
+void *fdt)
+>      if (spapr_ovec_test(spapr->ov5_cas, OV5_DRCONF_MEMORY)) {
+>          int ret;
 > =20
+> -        g_assert(smc->dr_lmb_enabled);
+> +        g_assert(SPAPR_MACHINE_GET_CLASS(spapr)->dr_lmb_enabled);
+>          ret =3D spapr_dt_dynamic_reconfiguration_memory(spapr, fdt);
+>          if (ret) {
+>              return ret;
 
 
