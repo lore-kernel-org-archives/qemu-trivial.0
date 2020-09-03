@@ -1,77 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kDRqW-0007yZ-Tf
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Sep 2020 08:26:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56628)
+	id 1kDnj5-0006fX-Gk
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Sep 2020 07:48:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDRqW-0007xv-Bm; Wed, 02 Sep 2020 08:26:36 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38144)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDRqU-00036t-N8; Wed, 02 Sep 2020 08:26:36 -0400
-Received: by mail-wr1-x442.google.com with SMTP id g4so4536310wrs.5;
- Wed, 02 Sep 2020 05:26:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=lV4TsDfxVdncS0hihVVEcQkF+phPF2SxR9yJGcmFyyg=;
- b=Jv33P+4qkDuP388Biz1Gg2JtfkYKpjQSA+fEhRgw4Umj2HMhkmG0ahtO+oi7F/HDXu
- eS5vWRhcLxzdN+gNYE3DHhpDhpSlF70brqFi7eIRLvQIWyb5QFgpQ2znFjOewiQRcFjK
- 2efCpaY/0lFNxcVKPysK4ttFhmtJsfxKh2iPPor9K2ulARt34nmfH5IixvxAlq//kMop
- T59+Hgc9B0LmskYmxOLm51j0tUMQtxkfJltW0d869xUBwpvi0D+JIBE1Sm3BO+ip/eOE
- dxqspDyuQjn1oNDIALC8NPPE+Z1t4NCfLtTtcS5/rlAQ0qFQ6kP/0HU4OvtEUCjzPDV6
- pg2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lV4TsDfxVdncS0hihVVEcQkF+phPF2SxR9yJGcmFyyg=;
- b=kQwDBqoiYK2TDfLcXY99zfjNUbHQHarBlVK+vQK12AXm4ifdflUQuelYv5ZmMv53E/
- MTbbhsmYd1/HZMN4rVYI1TrlZIBLos8tqEia7lKFK80ylYw5VFczl5MQk4KskQAdlDU4
- FNX4pkQpvj2JXEc6JBNsnYIbJx67wQQ3cIyK29JIlQcQ7eruhXm21PWzyhrSTVneFfS1
- xvQqtEZapOnkTkZcJbzYWZK1aIZR7ejL8z5TTVkgIcyJ0uhBPOtzUPOn8aqHNq9Z+1sf
- zAcgzCOFPwyl9Z2EADP6CXa/FGkD3GexXYOZ1e7wnQtbg1A1BcAVECCGWcI2DDmz+xw8
- DaUw==
-X-Gm-Message-State: AOAM531k1j9/txmtw5YZbZx4yWpovG6Jj9ivfKkakKl+OgXUh7/+EqcR
- y9Xd95ZNpA0cOqzklcn7+cM=
-X-Google-Smtp-Source: ABdhPJztYRCQMR6qA4IarZPnlwxw+DP4y7Q/jsN0XoQPt7h5V1ahKRm4OsHqX7ZEc6qKYGNm+DqH0A==
-X-Received: by 2002:a5d:67d2:: with SMTP id n18mr6921070wrw.223.1599049592875; 
- Wed, 02 Sep 2020 05:26:32 -0700 (PDT)
-Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id q3sm5924110wmq.12.2020.09.02.05.26.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Sep 2020 05:26:32 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/2] hw/net/opencores_eth: Trivial patches
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>
-References: <20200608091508.19838-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e472244f-d764-6cd6-70cd-86d71358b999@amsat.org>
-Date: Wed, 2 Sep 2020 14:26:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kDnj4-0006f8-1y
+ for qemu-trivial@nongnu.org; Thu, 03 Sep 2020 07:48:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53305
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kDnj0-0002Gm-SZ
+ for qemu-trivial@nongnu.org; Thu, 03 Sep 2020 07:48:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599133696;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mzNSoeywjXO6rdCV2kJtu7Hk8SJX50hh0HmN1ZRX/Wk=;
+ b=E+MHF/mwwG6vH2Y2VPzLqIw/x8aRjHjub8ngKHnATUMqoBZ+ydoq0tA0ReAs/ABUxPSgp0
+ z0apTUoYYNHL+5478Quk0AK2vpppIpg3BrMK2CtyjvRPtzTt/BgNepmy3DFtcuECj7K1j2
+ Urm9nLVNipB9MF4JZRUoPjEYjJkNtrw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-8-gTXyq0w9OxaV4EmhoTRceQ-1; Thu, 03 Sep 2020 07:48:15 -0400
+X-MC-Unique: gTXyq0w9OxaV4EmhoTRceQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 31DD881CBEB;
+ Thu,  3 Sep 2020 11:48:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-68.ams2.redhat.com
+ [10.36.113.68])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D70507EECB;
+ Thu,  3 Sep 2020 11:48:10 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 51C3D113865F; Thu,  3 Sep 2020 13:48:09 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: duboisj@gmail.com
+Cc: qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,  Josh DuBois
+ <josh@joshdubois.com>, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [PATCH] trace/simple: Enable tracing on startup only if the
+ user specifies a trace option
+References: <20200816174610.20253-1-josh@joshdubois.com>
+Date: Thu, 03 Sep 2020 13:48:09 +0200
+In-Reply-To: <20200816174610.20253-1-josh@joshdubois.com> (duboisj@gmail.com's
+ message of "Sun, 16 Aug 2020 12:46:10 -0500")
+Message-ID: <87r1rjkrnq.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200608091508.19838-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 01:58:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-0.324,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,18 +77,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Sep 2020 12:26:36 -0000
+X-List-Received-Date: Thu, 03 Sep 2020 11:48:22 -0000
 
-On 6/8/20 11:15 AM, Philippe Mathieu-Daudé wrote:
-> Remove unnecessary mask, use #define instead of magic.
-> 
-> Philippe Mathieu-Daudé (2):
->   hw/net/opencores_eth: Use definitions instead of magic values
->   hw/net/opencores_eth: Remove unnecessary address masking
-> 
->  hw/net/opencores_eth.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
+duboisj@gmail.com writes:
 
-Ping to Jason as the series is reviewed :)
+> From: Josh DuBois <josh@joshdubois.com>
+>
+> Tracing can be enabled at the command line or via the
+> monitor. Command-line trace options are recorded during
+> trace_opt_parse(), but tracing is not enabled until the various
+> front-ends later call trace_init_file(). If the user passes a trace
+> option on the command-line, remember that and enable tracing during
+> trace_init_file().  Otherwise, trace_init_file() should record the
+> trace file specified by the frontend and avoid enabling traces
+> until the user requests them via the monitor.
+>
+> This fixes 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 and also
+> db25d56c014aa1a96319c663e0a60346a223b31e, by allowing the user
+> to enable traces on the command line and also avoiding
+> unwanted trace-<pid> files when the user has not asked for them.
+>
+> Fixes: 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4
+> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+> ---
+>  trace/control.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+>
+> diff --git a/trace/control.c b/trace/control.c
+> index 6558b5c906..8f94f09444 100644
+> --- a/trace/control.c
+> +++ b/trace/control.c
+> @@ -39,6 +39,7 @@ static TraceEventGroup *event_groups;
+>  static size_t nevent_groups;
+>  static uint32_t next_id;
+>  static uint32_t next_vcpu_id;
+> +static bool init_trace_on_startup;
+>  
+>  QemuOptsList qemu_trace_opts = {
+>      .name = "trace",
+> @@ -225,7 +226,9 @@ void trace_init_file(const char *file)
+>  {
+>  #ifdef CONFIG_TRACE_SIMPLE
+>      st_set_trace_file(file);
+> -    st_set_trace_file_enabled(true);
+> +    if (init_trace_on_startup) {
+> +        st_set_trace_file_enabled(true);
+> +    }
+>  #elif defined CONFIG_TRACE_LOG
+>      /*
+>       * If both the simple and the log backends are enabled, "--trace file"
+> @@ -299,6 +302,7 @@ char *trace_opt_parse(const char *optarg)
+>      }
+>      trace_init_events(qemu_opt_get(opts, "events"));
+>      trace_file = g_strdup(qemu_opt_get(opts, "file"));
+> +    init_trace_on_startup = true;
+>      qemu_opts_del(opts);
+>  
+>      return trace_file;
+
+Stops the littering for me.
+
+Stefan, please have a closer look.
+
 
