@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kEetZ-0000jV-St
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 16:34:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56450)
+	id 1kEf1U-0003Lj-FS
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 16:42:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kEetY-0000jI-BZ; Sat, 05 Sep 2020 16:34:44 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:40457)
+ id 1kEf1S-0003JW-OT; Sat, 05 Sep 2020 16:42:54 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:38597)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kEetW-0002gF-J3; Sat, 05 Sep 2020 16:34:43 -0400
-Received: by mail-pg1-x542.google.com with SMTP id j34so705556pgi.7;
- Sat, 05 Sep 2020 13:34:41 -0700 (PDT)
+ id 1kEf1Q-0003Rj-RM; Sat, 05 Sep 2020 16:42:54 -0400
+Received: by mail-pg1-x544.google.com with SMTP id l191so6102141pgd.5;
+ Sat, 05 Sep 2020 13:42:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=jb0C5wKZBYHTJl4NG7AvTp3blaclsoguhzCBKfU7DMk=;
- b=lq9md4tckFACMCxkow84Dj9OLVRGWIXEHt/dIqtHWEjKoCVZm1+c22mtLmHbPPGW4z
- l7LJLLQcRhJcV3yA37oAjV6ikYib80J0eurry2oDLjguuE+D1JmpdAoxD3HgtneJ4D7o
- 99jHM1Nhlo3tYpCsyjhtoA96capqQmKKzO/fhc/OAuyPxpT3SCbcDQEhVohZfwFtiNi5
- BwB/5eT3Lgv6BD3hyLW9mmj9kMX/O3yW16/DU6PmdWkyEBLWJrob+3h/y4MuSm8gFCT1
- 6o4Wx4wkOJXkFbnYoLMmCOYPlETp8l7CjVUUwzSgpZjJcPVoZKXzItRpoWmAKo2+Ur7Z
- xn5g==
+ bh=DJ11iwEEM/d9RNzP4qWLnzmAXm8pKezjX8Rc7qNKN5I=;
+ b=W89R8fZLWDohv1+KU+s858lSg0GCRDtXXju+GF5CXyRmhRG05TVWGFjzl/Vza3jhwg
+ kphhdmV1LX030doq+PDG2OXN0rv101Zbg4+CT2d2zWBI+OpwoWB7bMLzTk/0YNd7hKgR
+ HcawQDMqLe5WzAkwrHr7q+FVbmdwLhfqOvO894q5soP2E6E6gwmHRZoXrrFs+TwBzLOW
+ mnDk933xxe4cv0t10GeuN6zBrchxZC7RYSlvxKCqj2e46SOvBemiXLDX5KgAHeLwtt9s
+ qKVyN+74SKeWRVKho+c9T98xCYYwxlmpp7KeGXTVurqY+RTE+Z+P4ICvHxo7bB1hz0Iw
+ EEew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=jb0C5wKZBYHTJl4NG7AvTp3blaclsoguhzCBKfU7DMk=;
- b=oQy/8GJapMgvxAe3LaTjvrwEduN+kLyqeuKZOoiZ8qMqsBBvX+QZ2c3v/DWPTqb4ZA
- vPj6PDXpzskTrU0LC3B69dihSiXq73LfEOevgRYdpmDFXwDNRRc5DhEDi53AjS40iewC
- ijrXXpRRRWYCRhGGoyRKFnCVSm/9+6oyeVEis+6JXA2c4atUxpUmdX35j/hMTdp4xgoe
- a7qdlOI7TahIh2kd6DPTsknBv5gE/KR4Sgj0Ie7KOs/G91XOMWZ9fG3ngzzbXKD7F15S
- 8gXqiv30DL4CigZHlipyLYI15IUTW1WtsH55KWvyjO7FMWIPZrBwGVU7xIkpfciEMPvi
- HLQA==
-X-Gm-Message-State: AOAM533ltLxaQhhxjTRtsk/k08QA71a2pSm51qvqd6Bd9fTTbUMTxcbp
- 3EICGyrMCmLgspduNNafOVMqF+BrbeprRDpd
-X-Google-Smtp-Source: ABdhPJxs9I4PtwAlvIiSB/OQPFbvAG4Gl5ngTKVlqEVWUUxJNIM0u0uYSbbWhENZjeBoVy8M63kSRA==
-X-Received: by 2002:a62:e404:: with SMTP id r4mr13983300pfh.213.1599338079998; 
- Sat, 05 Sep 2020 13:34:39 -0700 (PDT)
+ bh=DJ11iwEEM/d9RNzP4qWLnzmAXm8pKezjX8Rc7qNKN5I=;
+ b=n9csodXXkmKxNDdwvuo0Li+wgyULiu42yeAwozTXiA0F0sLvo1rWeBuxF5N+zMAV2d
+ hKJkT+xHo+DoAIFb2kkTvjrfHv+MpIhzMXNnKfWr8reOlcoWrKU3Hs5Jmv2PhRMmjJSC
+ 6oV0zv89y28CwF7lwK5abY25mAh95qcsNq6a2B/HrKGIOSL16RLO31UqSO/mFqQY3gcy
+ Jo/PA+TywJEy/KqSC1i/wuzRv9e780lu7HDx9V6jIVL06Ts40qDt7TUbNKZcN9bERDLt
+ wmsJArJKdlSZaCDEyM+KayW0EnjIX9biXL79qfAhrvbZCqs1wtsrlApIVuqQIXWPoRkz
+ Doag==
+X-Gm-Message-State: AOAM5300YO2Wdox7nnYMUe7e1Cs1GkWeA/zxFa/Zxg7AXNanLzTYP80+
+ 541D8ybHwpOGnlG0Q6d/AeNDTUpXEvQn9I5x
+X-Google-Smtp-Source: ABdhPJwg86BH3AxWLK7x/lVczV5tB2VntKVypy97HC+vNT9qK2AMSZeABE0RQstBe7/9uNEAM6odZQ==
+X-Received: by 2002:a62:e40a:: with SMTP id r10mr14479887pfh.52.1599338570327; 
+ Sat, 05 Sep 2020 13:42:50 -0700 (PDT)
 Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id
- x140sm10519518pfc.211.2020.09.05.13.34.37
+ by smtp.googlemail.com with ESMTPSA id v21sm8227422pjn.4.2020.09.05.13.42.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Sep 2020 13:34:39 -0700 (PDT)
+ Sat, 05 Sep 2020 13:42:49 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- "Daniel P . Berrange" <berrange@redhat.com>,
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] tests: Fixes building test-util-filemonitor.c on msys2/mingw
-Date: Sun,  6 Sep 2020 04:34:25 +0800
-Message-Id: <20200905203425.1470-1-luoyonggang@gmail.com>
+Subject: [PATCH] configure: Fixes ncursesw detection under msys2/mingw and
+ enable curses
+Date: Sun,  6 Sep 2020 04:42:36 +0800
+Message-Id: <20200905204236.1508-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -76,47 +75,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Sep 2020 20:34:44 -0000
+X-List-Received-Date: Sat, 05 Sep 2020 20:42:55 -0000
 
-Fixes the following compiling error:
-../tests/test-util-filemonitor.c: In function 'test_file_monitor_events':
-../tests/test-util-filemonitor.c:620:17: error: too many arguments to function 'mkdir'
-  620 |             if (mkdir(pathsrc, 0700) < 0) {
-      |                 ^~~~~
-In file included from C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/unistd.h:10,
-                 from C:/work/xemu/qemu/include/qemu/osdep.h:93,
-                 from ../tests/test-util-filemonitor.c:21:
-C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/io.h:282:15: note: declared here
-  282 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
-      |               ^~~~~
+The mingw pkg-config are showing following absolute path and contains : as the separator,
+so we must handling : properly.
+
+-D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC:/CI-Tools/msys64/mingw64/include/ncursesw:-I/usr/include/ncursesw:
+-DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -pipe -lncursesw -lgnurx -ltre -lintl -liconv
+-DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lncursesw
+-DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lcursesw
+-DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
+-DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lncursesw
+-DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lcursesw
+-DNCURSES_WIDECHAR -I/usr/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
+-DNCURSES_WIDECHAR -I/usr/include/ncursesw -lncursesw
+-DNCURSES_WIDECHAR -I/usr/include/ncursesw -lcursesw
+
+MINGW doesn't have langinfo.h, only exist in glic and musl
+
+gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
+test.c:4:10: fatal error: langinfo.h: No such file or directory
+    4 | #include <langinfo.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- tests/test-util-filemonitor.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ configure   | 9 +++------
+ ui/curses.c | 9 ++++-----
+ 2 files changed, 7 insertions(+), 11 deletions(-)
 
-diff --git a/tests/test-util-filemonitor.c b/tests/test-util-filemonitor.c
-index 8f0eff3d03..b629e10857 100644
---- a/tests/test-util-filemonitor.c
-+++ b/tests/test-util-filemonitor.c
-@@ -23,6 +23,8 @@
+diff --git a/configure b/configure
+index f8cbd2898c..2dc25bda69 100755
+--- a/configure
++++ b/configure
+@@ -3620,8 +3620,8 @@ if test "$iconv" = "no" ; then
+ fi
+ if test "$curses" != "no" ; then
+   if test "$mingw32" = "yes" ; then
+-    curses_inc_list="$($pkg_config --cflags ncurses 2>/dev/null):"
+-    curses_lib_list="$($pkg_config --libs ncurses 2>/dev/null):-lpdcurses"
++    curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/${MSYSTEM,,}/include/ncursesw:"
++    curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw"
+   else
+     curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/usr/include/ncursesw:"
+     curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw:-lcursesw"
+@@ -3631,17 +3631,14 @@ if test "$curses" != "no" ; then
+ #include <locale.h>
+ #include <curses.h>
+ #include <wchar.h>
+-#include <langinfo.h>
+ int main(void) {
+-  const char *codeset;
+   wchar_t wch = L'w';
+   setlocale(LC_ALL, "");
+   resize_term(0, 0);
+   addwstr(L"wide chars\n");
+   addnwstr(&wch, 1);
+   add_wch(WACS_DEGREE);
+-  codeset = nl_langinfo(CODESET);
+-  return codeset != 0;
++  return 0;
+ }
+ EOF
+   IFS=:
+diff --git a/ui/curses.c b/ui/curses.c
+index a59b23a9cf..74b30d323c 100644
+--- a/ui/curses.c
++++ b/ui/curses.c
+@@ -30,7 +30,6 @@
+ #endif
+ #include <locale.h>
+ #include <wchar.h>
+-#include <langinfo.h>
+ #include <iconv.h>
+ 
  #include "qapi/error.h"
- #include "qemu/filemonitor.h"
+@@ -566,14 +565,14 @@ static void font_setup(void)
+       0x25bc
+     };
  
-+#include <glib/gstdio.h>
-+
- #include <utime.h>
+-    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
++    ucs2_to_nativecharset = iconv_open(g_get_codeset(), "UCS-2");
+     if (ucs2_to_nativecharset == (iconv_t) -1) {
+         fprintf(stderr, "Could not convert font glyphs from UCS-2: '%s'\n",
+                         strerror(errno));
+         exit(1);
+     }
  
- enum {
-@@ -617,7 +619,7 @@ test_file_monitor_events(void)
-             if (debug) {
-                 g_printerr("Mkdir %s\n", pathsrc);
-             }
--            if (mkdir(pathsrc, 0700) < 0) {
-+            if (g_mkdir_with_parents(pathsrc, 0700) < 0) {
-                 g_printerr("Unable to mkdir %s: %s",
-                            pathsrc, strerror(errno));
-                 goto cleanup;
+-    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
++    nativecharset_to_ucs2 = iconv_open("UCS-2", g_get_codeset());
+     if (nativecharset_to_ucs2 == (iconv_t) -1) {
+         iconv_close(ucs2_to_nativecharset);
+         fprintf(stderr, "Could not convert font glyphs to UCS-2: '%s'\n",
+@@ -581,7 +580,7 @@ static void font_setup(void)
+         exit(1);
+     }
+ 
+-    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
++    font_conv = iconv_open(g_get_codeset(), font_charset);
+     if (font_conv == (iconv_t) -1) {
+         iconv_close(ucs2_to_nativecharset);
+         iconv_close(nativecharset_to_ucs2);
+@@ -602,7 +601,7 @@ static void font_setup(void)
+     /* DEL */
+     convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
+ 
+-    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
++    if (strcmp(g_get_codeset(), "UTF-8")) {
+         /* Non-Unicode capable, use termcap equivalents for those available */
+         for (i = 0; i <= 0xFF; i++) {
+             wchar_t wch[CCHARW_MAX];
 -- 
 2.28.0.windows.1
 
