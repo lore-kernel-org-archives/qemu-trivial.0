@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kEf1U-0003Lj-FS
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 16:42:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57220)
+	id 1kEfhY-0003QK-Dq
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 17:26:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kEf1S-0003JW-OT; Sat, 05 Sep 2020 16:42:54 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:38597)
+ id 1kEfhW-0003PT-6Z; Sat, 05 Sep 2020 17:26:22 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:56024)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kEf1Q-0003Rj-RM; Sat, 05 Sep 2020 16:42:54 -0400
-Received: by mail-pg1-x544.google.com with SMTP id l191so6102141pgd.5;
- Sat, 05 Sep 2020 13:42:52 -0700 (PDT)
+ id 1kEfhU-00085l-ID; Sat, 05 Sep 2020 17:26:21 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id 2so4792295pjx.5;
+ Sat, 05 Sep 2020 14:26:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DJ11iwEEM/d9RNzP4qWLnzmAXm8pKezjX8Rc7qNKN5I=;
- b=W89R8fZLWDohv1+KU+s858lSg0GCRDtXXju+GF5CXyRmhRG05TVWGFjzl/Vza3jhwg
- kphhdmV1LX030doq+PDG2OXN0rv101Zbg4+CT2d2zWBI+OpwoWB7bMLzTk/0YNd7hKgR
- HcawQDMqLe5WzAkwrHr7q+FVbmdwLhfqOvO894q5soP2E6E6gwmHRZoXrrFs+TwBzLOW
- mnDk933xxe4cv0t10GeuN6zBrchxZC7RYSlvxKCqj2e46SOvBemiXLDX5KgAHeLwtt9s
- qKVyN+74SKeWRVKho+c9T98xCYYwxlmpp7KeGXTVurqY+RTE+Z+P4ICvHxo7bB1hz0Iw
- EEew==
+ bh=EgO1cmzCxGlg+P1IOmJLS549V2SlGp5yHrf5EgcbiQg=;
+ b=gUWRuRGLoDvv2hncmHcGORWRWH24VVSCU7ueGapVvuN+JZo0LkAme9aLeThnQcHirN
+ DASSRkg0MlU5MNVuug/POzjtQLZ+kXmvTfjWOPD28XFwlVv067tOHyXBUekDoA2qs4o6
+ 7WL/ZrJmXnjsC/nLvmMAzoYIah/rn0NeDvcTaZpLOuwCdzP/NmRS8zD83vkBvFhgf6Qs
+ 1daiz1iiiYRWGhZlY0bhWFJOCLsi3jP4MkSp4VU6/SznB+hv8N28cibVKh+eYJU6nGv0
+ w61Cym7gPJzCk9fvZoLXJMeVne/YlMC5DjIp12MEMReEsFbLsZPZ0QD4zccMhO23MMDd
+ Zi1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DJ11iwEEM/d9RNzP4qWLnzmAXm8pKezjX8Rc7qNKN5I=;
- b=n9csodXXkmKxNDdwvuo0Li+wgyULiu42yeAwozTXiA0F0sLvo1rWeBuxF5N+zMAV2d
- hKJkT+xHo+DoAIFb2kkTvjrfHv+MpIhzMXNnKfWr8reOlcoWrKU3Hs5Jmv2PhRMmjJSC
- 6oV0zv89y28CwF7lwK5abY25mAh95qcsNq6a2B/HrKGIOSL16RLO31UqSO/mFqQY3gcy
- Jo/PA+TywJEy/KqSC1i/wuzRv9e780lu7HDx9V6jIVL06Ts40qDt7TUbNKZcN9bERDLt
- wmsJArJKdlSZaCDEyM+KayW0EnjIX9biXL79qfAhrvbZCqs1wtsrlApIVuqQIXWPoRkz
- Doag==
-X-Gm-Message-State: AOAM5300YO2Wdox7nnYMUe7e1Cs1GkWeA/zxFa/Zxg7AXNanLzTYP80+
- 541D8ybHwpOGnlG0Q6d/AeNDTUpXEvQn9I5x
-X-Google-Smtp-Source: ABdhPJwg86BH3AxWLK7x/lVczV5tB2VntKVypy97HC+vNT9qK2AMSZeABE0RQstBe7/9uNEAM6odZQ==
-X-Received: by 2002:a62:e40a:: with SMTP id r10mr14479887pfh.52.1599338570327; 
- Sat, 05 Sep 2020 13:42:50 -0700 (PDT)
+ bh=EgO1cmzCxGlg+P1IOmJLS549V2SlGp5yHrf5EgcbiQg=;
+ b=j2lj39GzX0LqZTtkTdeNdCUUH/4MnOpw1NNdwwRhqQ/Fb+cwQjmhNt51abXXR5XRo2
+ EK/exqNOTnV11tIanJzNOAQW+4PzjmFnXjEuqkepZMYA6CKHyqHp3+amgaa4ATwIJTch
+ 8UuMrT4Zh5hXzmhWGjN7SVksAYG44/v8sIWLT9XeN8J+gOj6+ojCwPT/KEBFl9PMAtDZ
+ c9D8nSE08/XTpCDmXsfCMHrfEEgN61/AyBvTlG/IYPGLlvVfFGibw64WUgbn4X3Gt0UR
+ yP2jrJq2KvEtP9DzOMi2ZIXghLSlcH5N2afh0EnjQstkjTKi356btak/b/XbEG8hLsBU
+ LrKg==
+X-Gm-Message-State: AOAM531QbaM24hfzq+kW5adeLbF3q1J9ytGqAH6qcVquEu8VYX+R+gw9
+ 4pFo32rau+BYR3CeQHfjDXMwOys2Hny4z4/f
+X-Google-Smtp-Source: ABdhPJywLAeoHVIjIlevgUvUnZVVU0saQquUW+JabCVEzFJZ7vLKD9h1oXz6DnIcuPPWoSe1y2OIhg==
+X-Received: by 2002:a17:902:c3d3:: with SMTP id
+ j19mr13884746plj.59.1599341178226; 
+ Sat, 05 Sep 2020 14:26:18 -0700 (PDT)
 Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id v21sm8227422pjn.4.2020.09.05.13.42.48
+ by smtp.googlemail.com with ESMTPSA id x19sm10035898pfm.28.2020.09.05.14.26.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Sep 2020 13:42:49 -0700 (PDT)
+ Sat, 05 Sep 2020 14:26:17 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] configure: Fixes ncursesw detection under msys2/mingw and
- enable curses
-Date: Sun,  6 Sep 2020 04:42:36 +0800
-Message-Id: <20200905204236.1508-1-luoyonggang@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] meson: Fixes qapi tests.
+Date: Sun,  6 Sep 2020 05:26:03 +0800
+Message-Id: <20200905212603.761-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x544.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1031.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -75,117 +75,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Sep 2020 20:42:55 -0000
+X-List-Received-Date: Sat, 05 Sep 2020 21:26:22 -0000
 
-The mingw pkg-config are showing following absolute path and contains : as the separator,
-so we must handling : properly.
+Use -b to ignore-space-change
 
--D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC:/CI-Tools/msys64/mingw64/include/ncursesw:-I/usr/include/ncursesw:
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lncursesw
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lcursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lcursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lcursesw
-
-MINGW doesn't have langinfo.h, only exist in glic and musl
-
-gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
-test.c:4:10: fatal error: langinfo.h: No such file or directory
-    4 | #include <langinfo.h>
-      |          ^~~~~~~~~~~~
-compilation terminated.
+The error are:
++@end table
++
++@end deftypefn
++
+make: *** [Makefile.mtest:63: check-qapi-schema] Error 1
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- configure   | 9 +++------
- ui/curses.c | 9 ++++-----
- 2 files changed, 7 insertions(+), 11 deletions(-)
+ tests/qapi-schema/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index f8cbd2898c..2dc25bda69 100755
---- a/configure
-+++ b/configure
-@@ -3620,8 +3620,8 @@ if test "$iconv" = "no" ; then
- fi
- if test "$curses" != "no" ; then
-   if test "$mingw32" = "yes" ; then
--    curses_inc_list="$($pkg_config --cflags ncurses 2>/dev/null):"
--    curses_lib_list="$($pkg_config --libs ncurses 2>/dev/null):-lpdcurses"
-+    curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/${MSYSTEM,,}/include/ncursesw:"
-+    curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw"
-   else
-     curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/usr/include/ncursesw:"
-     curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw:-lcursesw"
-@@ -3631,17 +3631,14 @@ if test "$curses" != "no" ; then
- #include <locale.h>
- #include <curses.h>
- #include <wchar.h>
--#include <langinfo.h>
- int main(void) {
--  const char *codeset;
-   wchar_t wch = L'w';
-   setlocale(LC_ALL, "");
-   resize_term(0, 0);
-   addwstr(L"wide chars\n");
-   addnwstr(&wch, 1);
-   add_wch(WACS_DEGREE);
--  codeset = nl_langinfo(CODESET);
--  return codeset != 0;
-+  return 0;
- }
- EOF
-   IFS=:
-diff --git a/ui/curses.c b/ui/curses.c
-index a59b23a9cf..74b30d323c 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -30,7 +30,6 @@
- #endif
- #include <locale.h>
- #include <wchar.h>
--#include <langinfo.h>
- #include <iconv.h>
+diff --git a/tests/qapi-schema/meson.build b/tests/qapi-schema/meson.build
+index c87d141417..f1449298b0 100644
+--- a/tests/qapi-schema/meson.build
++++ b/tests/qapi-schema/meson.build
+@@ -220,6 +220,6 @@ qapi_doc = custom_target('QAPI doc',
  
- #include "qapi/error.h"
-@@ -566,14 +565,14 @@ static void font_setup(void)
-       0x25bc
-     };
- 
--    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
-+    ucs2_to_nativecharset = iconv_open(g_get_codeset(), "UCS-2");
-     if (ucs2_to_nativecharset == (iconv_t) -1) {
-         fprintf(stderr, "Could not convert font glyphs from UCS-2: '%s'\n",
-                         strerror(errno));
-         exit(1);
-     }
- 
--    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
-+    nativecharset_to_ucs2 = iconv_open("UCS-2", g_get_codeset());
-     if (nativecharset_to_ucs2 == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         fprintf(stderr, "Could not convert font glyphs to UCS-2: '%s'\n",
-@@ -581,7 +580,7 @@ static void font_setup(void)
-         exit(1);
-     }
- 
--    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
-+    font_conv = iconv_open(g_get_codeset(), font_charset);
-     if (font_conv == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         iconv_close(nativecharset_to_ucs2);
-@@ -602,7 +601,7 @@ static void font_setup(void)
-     /* DEL */
-     convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
- 
--    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
-+    if (strcmp(g_get_codeset(), "UTF-8")) {
-         /* Non-Unicode capable, use termcap equivalents for those available */
-         for (i = 0; i <= 0xFF; i++) {
-             wchar_t wch[CCHARW_MAX];
+ # "full_path()" needed here to work around
+ # https://github.com/mesonbuild/meson/issues/7585
+-test('QAPI doc', diff, args: ['-u', files('doc-good.texi'), qapi_doc[0].full_path()],
++test('QAPI doc', diff, args: ['-b', '-u', files('doc-good.texi'), qapi_doc[0].full_path()],
+      depends: qapi_doc,
+      suite: ['qapi-schema', 'qapi-doc'])
 -- 
 2.28.0.windows.1
 
