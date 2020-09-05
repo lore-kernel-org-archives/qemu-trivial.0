@@ -1,66 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kEMXa-0006NQ-MT
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2020 20:58:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42696)
+	id 1kETde-00040i-U1
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 04:33:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kEMXZ-0006NF-Qc; Fri, 04 Sep 2020 20:58:49 -0400
-Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41]:42641)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kEMXY-0007AM-8q; Fri, 04 Sep 2020 20:58:49 -0400
-Received: by mail-oo1-xc41.google.com with SMTP id a6so2042204oog.9;
- Fri, 04 Sep 2020 17:58:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=rTk/9yIBQj2wtr1pcLS4FVGlR4Au0jYG2QniZaZ1pi0=;
- b=Al0ILXYhTTJpqqCH8fUapKZAIKQh6adg/kTWltnYw9XN5MaEvc1vXuV4BOr093Qy1s
- CEiRKLxglplTHeZbtFKeowzvbic6iV8Con5Kw/5cT5Gsd8WZB13qnjnT7VI0yscb3NgO
- dzISoiks1E0wxX2Ktudd/ifmcYh07j9J4pNHhM4o1/egbvi6ixpDsUlKIsivMvFpjw0J
- YIAExigMWXnHzJI3125TZSn0YiSYVS1xqtdpjsT550kpTpjqI2NhcVK2CQlTsIAGMYlS
- jKW6ciOvNqaInHRdHcUt46nVoNKKNiwePoj6CVNOw1jLTf72BkdNVv5cDaTmM2hIiuwK
- UURg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=rTk/9yIBQj2wtr1pcLS4FVGlR4Au0jYG2QniZaZ1pi0=;
- b=MDSff1yzM92y7btIM0IPOXnNRJR/qps8EMBUxgR4sZ8H7P/Uz5clGa01Yfkclf4Aey
- mVDUextBKwi3vv8Y7CU+CDdJwcA+y0IRmlZNJw+QxfAMmgEeA8mqd4d/IB1I/S/Hp5jJ
- MpgiiUuBjx4IxBTnIuYloPw061rcCMJnh/hjIbMXse/ti8QevKxRd6z4NoKAbB1eFpHZ
- wTbP0+eI2w5zq7BRtxqtL0MQjyO5NSPKedG98B5iZL0HdQKpNljuC7ZlINs4sdIpi5Er
- BaDbA7bhJ8agneIDFax/RWNyT4lo6XA2l9EPqgKt2+38GBO6hN6a1cRXbGbfgPF0bmDv
- rTQQ==
-X-Gm-Message-State: AOAM530A28kcvSpTTLLLAEa2w1CxpryBAKUkEgIYPYv0zNNF6QsjkTOD
- /8kDJBlzgfFazsPcShe7QndHGjdB722+0zcDCIM=
-X-Google-Smtp-Source: ABdhPJz7urNp3qWoEoWTY2v7sN1Gr83rEwHYjNO1iwvP0+saXtufztIv+bAenwBZ66qTCfGS8BinCM7bCuUTScoN4d8=
-X-Received: by 2002:a4a:4201:: with SMTP id h1mr7835389ooj.1.1599267526828;
- Fri, 04 Sep 2020 17:58:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETdd-00040F-C5
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:33:33 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:31692
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETdb-00004y-J1
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:33:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599294810;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=q0IKNRVI3YAFFXTpzaHng5Qgq6iVqAIoM5CZsmOW6bA=;
+ b=D7qYS4MDKClNliqXeSMofN7TMwevuXLnZx0rbv83J9+iBagS/FG9PkVtP3PawmHk/XTPdc
+ dI5xS4M6HoZJxAWZCeSzGkLYZJ4M8UgPiqVw9Qt8M6yNg2OfUIAYq0ROhWgRLQWNekPWg4
+ 3AL6SgZpcl7CJRY5zW+UaDlJQirzh0M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-559-XT5z5vCMNiiEqKRr3DIU1Q-1; Sat, 05 Sep 2020 04:33:28 -0400
+X-MC-Unique: XT5z5vCMNiiEqKRr3DIU1Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 420A2100670D;
+ Sat,  5 Sep 2020 08:33:27 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-27.ams2.redhat.com [10.36.112.27])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2F3F05D9CA;
+ Sat,  5 Sep 2020 08:33:24 +0000 (UTC)
+Subject: Re: [PATCH v5 08/11] osdep: These function are only available on
+ Non-Win32 system.
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, QEMU Block <qemu-block@nongnu.org>,
+ Stefan Weil <sw@weilnetz.de>, Peter Lieven <pl@kamp.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200905062333.1087-1-luoyonggang@gmail.com>
+ <20200905062333.1087-9-luoyonggang@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <8d7357bc-518e-e408-bf56-32fcce8bb520@redhat.com>
+Date: Sat, 5 Sep 2020 10:33:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <20200904131402.590055-1-f4bug@amsat.org>
- <20200904131402.590055-3-f4bug@amsat.org>
-In-Reply-To: <20200904131402.590055-3-f4bug@amsat.org>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Sat, 5 Sep 2020 08:58:10 +0800
-Message-ID: <CAKXe6SJ6nrAm-LDK_gv__5vcK4Py62zQ7-RfVJodAghuMfdfJw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/net/e1000e: Remove duplicated write handler for
- FLSWDATA register
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Jason Wang <jasowang@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c41;
- envelope-from=liq3ea@gmail.com; helo=mail-oo1-xc41.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20200905062333.1087-9-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/05 03:25:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.107, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,50 +80,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Sep 2020 00:58:50 -0000
+X-List-Received-Date: Sat, 05 Sep 2020 08:33:33 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B49=E6=9C=
-=884=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=889:14=E5=86=99=E9=81=93=EF=
-=BC=9A
->
-> The FLSWDATA register writeop handler is initialized twice:
->
->   3067 #define e1000e_putreg(x)    [x] =3D e1000e_mac_writereg
->   3068 typedef void (*writeops)(E1000ECore *, int, uint32_t);
->   3069 static const writeops e1000e_macreg_writeops[] =3D {
->   ....
->   3102     e1000e_putreg(FLSWDATA),
->   ....
->   3145     e1000e_putreg(FLSWDATA),
->
-> To avoid confusion, remove the duplicated initialization.
->
-> Fixes: 6f3fbe4ed0 ("net: Introduce e1000e device emulation")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-
+On 05/09/2020 08.23, Yonggang Luo wrote:
+> int qemu_lock_fd(int fd, int64_t start, int64_t len, bool exclusive);
+> int qemu_unlock_fd(int fd, int64_t start, int64_t len);
+> int qemu_lock_fd_test(int fd, int64_t start, int64_t len, bool exclusive);
+> bool qemu_has_ofd_lock(void);
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
-> Noticed after looking for other cases of the previous patch.
-> ---
->  hw/net/e1000e_core.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-> index 5170e6a4563..bcfd46696ff 100644
-> --- a/hw/net/e1000e_core.c
-> +++ b/hw/net/e1000e_core.c
-> @@ -3141,7 +3141,6 @@ static const writeops e1000e_macreg_writeops[] =3D =
-{
->      e1000e_putreg(RXCFGL),
->      e1000e_putreg(TSYNCRXCTL),
->      e1000e_putreg(TSYNCTXCTL),
-> -    e1000e_putreg(FLSWDATA),
->      e1000e_putreg(EXTCNF_SIZE),
->      e1000e_putreg(EEMNGCTL),
->      e1000e_putreg(RA),
-> --
-> 2.26.2
->
->
+>  include/qemu/osdep.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 412962d91a..e80fddd1e8 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -502,11 +502,11 @@ int qemu_close(int fd);
+>  int qemu_unlink(const char *name);
+>  #ifndef _WIN32
+>  int qemu_dup(int fd);
+> -#endif
+>  int qemu_lock_fd(int fd, int64_t start, int64_t len, bool exclusive);
+>  int qemu_unlock_fd(int fd, int64_t start, int64_t len);
+>  int qemu_lock_fd_test(int fd, int64_t start, int64_t len, bool exclusive);
+>  bool qemu_has_ofd_lock(void);
+> +#endif
+>  
+>  #if defined(__HAIKU__) && defined(__i386__)
+>  #define FMT_pid "%ld"
+> 
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
