@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kETde-00040i-U1
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 04:33:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37868)
+	id 1kETsX-0003Qi-TT
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 04:48:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETdd-00040F-C5
- for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:33:33 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:31692
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETsV-0003Og-8s
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:48:55 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24555
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETdb-00004y-J1
- for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:33:32 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kETsS-0001aM-F1
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 04:48:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599294810;
+ s=mimecast20190719; t=1599295731;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=q0IKNRVI3YAFFXTpzaHng5Qgq6iVqAIoM5CZsmOW6bA=;
- b=D7qYS4MDKClNliqXeSMofN7TMwevuXLnZx0rbv83J9+iBagS/FG9PkVtP3PawmHk/XTPdc
- dI5xS4M6HoZJxAWZCeSzGkLYZJ4M8UgPiqVw9Qt8M6yNg2OfUIAYq0ROhWgRLQWNekPWg4
- 3AL6SgZpcl7CJRY5zW+UaDlJQirzh0M=
+ bh=Aib86e8UyJL+uw2dKy1yyP4FfcfFN7gu49Scwc3x0ww=;
+ b=R0tqeNVlh8JjeZLTjqZ6CWtYjiIyXuoLqyQE/pBGsyyiU1GLG739BiwYMjI1KfWjpdVTV9
+ emLXu8MM0M6+j9IxzleQXVj0qjZDu/hC4FUlBR1TPdeW0ZyVsqinqULc1nDLwfQSowfMOB
+ SGfY0ivaIatAE4fNMJuo4XIokTaftNM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-559-XT5z5vCMNiiEqKRr3DIU1Q-1; Sat, 05 Sep 2020 04:33:28 -0400
-X-MC-Unique: XT5z5vCMNiiEqKRr3DIU1Q-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-536-BsAVsE8QNYGk1J5moWf5OA-1; Sat, 05 Sep 2020 04:48:49 -0400
+X-MC-Unique: BsAVsE8QNYGk1J5moWf5OA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 420A2100670D;
- Sat,  5 Sep 2020 08:33:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0CDB618B9ECA;
+ Sat,  5 Sep 2020 08:48:48 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-27.ams2.redhat.com [10.36.112.27])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F3F05D9CA;
- Sat,  5 Sep 2020 08:33:24 +0000 (UTC)
-Subject: Re: [PATCH v5 08/11] osdep: These function are only available on
- Non-Win32 system.
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 685837DA2A;
+ Sat,  5 Sep 2020 08:48:46 +0000 (UTC)
+Subject: Re: [PATCH] tests: fixes test-vmstate.c compile error on msys2
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, QEMU Block <qemu-block@nongnu.org>,
- Stefan Weil <sw@weilnetz.de>, Peter Lieven <pl@kamp.de>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200905062333.1087-1-luoyonggang@gmail.com>
- <20200905062333.1087-9-luoyonggang@gmail.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200905063813.1875-1-luoyonggang@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <8d7357bc-518e-e408-bf56-32fcce8bb520@redhat.com>
-Date: Sat, 5 Sep 2020 10:33:24 +0200
+Message-ID: <aed3143c-5bf5-3b40-2c7c-1db2ac43f4c9@redhat.com>
+Date: Sat, 5 Sep 2020 10:48:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200905062333.1087-9-luoyonggang@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20200905063813.1875-1-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/05 03:25:07
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/05 04:11:15
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.107, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ NICE_REPLY_A=-0.107, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,37 +78,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Sep 2020 08:33:33 -0000
+X-List-Received-Date: Sat, 05 Sep 2020 08:48:55 -0000
 
-On 05/09/2020 08.23, Yonggang Luo wrote:
-> int qemu_lock_fd(int fd, int64_t start, int64_t len, bool exclusive);
-> int qemu_unlock_fd(int fd, int64_t start, int64_t len);
-> int qemu_lock_fd_test(int fd, int64_t start, int64_t len, bool exclusive);
-> bool qemu_has_ofd_lock(void);
+On 05/09/2020 08.38, Yonggang Luo wrote:
+> ../tests/test-vmstate.c: In function 'int_cmp':
+> ../tests/test-vmstate.c:884:5: error: unknown type name 'uint'; did you mean 'uInt'?
+>   884 |     uint ua = GPOINTER_TO_UINT(a);
+>       |     ^~~~
+>       |     uInt
+> ../tests/test-vmstate.c:885:5: error: unknown type name 'uint'; did you mean 'uInt'?
+>   885 |     uint ub = GPOINTER_TO_UINT(b);
+>       |     ^~~~
+>       |     uInt
+> make: *** [Makefile.ninja:5461：tests/test-vmstate.exe.p/test-vmstate.c.obj] 错误 1
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->  include/qemu/osdep.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  tests/test-vmstate.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-> index 412962d91a..e80fddd1e8 100644
-> --- a/include/qemu/osdep.h
-> +++ b/include/qemu/osdep.h
-> @@ -502,11 +502,11 @@ int qemu_close(int fd);
->  int qemu_unlink(const char *name);
->  #ifndef _WIN32
->  int qemu_dup(int fd);
-> -#endif
->  int qemu_lock_fd(int fd, int64_t start, int64_t len, bool exclusive);
->  int qemu_unlock_fd(int fd, int64_t start, int64_t len);
->  int qemu_lock_fd_test(int fd, int64_t start, int64_t len, bool exclusive);
->  bool qemu_has_ofd_lock(void);
-> +#endif
->  
->  #if defined(__HAIKU__) && defined(__i386__)
->  #define FMT_pid "%ld"
-> 
+> diff --git a/tests/test-vmstate.c b/tests/test-vmstate.c
+> index f7b3868881..f8de709a0b 100644
+> --- a/tests/test-vmstate.c
+> +++ b/tests/test-vmstate.c
+> @@ -881,8 +881,8 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>  /* ID comparison function */
+>  static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>  {
+> -    uint ua = GPOINTER_TO_UINT(a);
+> -    uint ub = GPOINTER_TO_UINT(b);
+> +    guint ua = GPOINTER_TO_UINT(a);
+> +    guint ub = GPOINTER_TO_UINT(b);
+>      return (ua > ub) - (ua < ub);
+>  }
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
