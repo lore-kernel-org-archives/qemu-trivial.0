@@ -1,68 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kEkCj-0001FB-5V
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 22:14:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36156)
+	id 1kElMS-0003WN-PO
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Sep 2020 23:29:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kEkCh-0001Es-Uv
- for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 22:14:51 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:42403)
+ id 1kElMR-0003VT-1h
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 23:28:59 -0400
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:50666)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kEkCg-00032M-C8
- for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 22:14:51 -0400
-Received: by mail-pl1-x644.google.com with SMTP id y6so428497plt.9
- for <qemu-trivial@nongnu.org>; Sat, 05 Sep 2020 19:14:49 -0700 (PDT)
+ id 1kElMO-0001q4-K2
+ for qemu-trivial@nongnu.org; Sat, 05 Sep 2020 23:28:58 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id b16so5016179pjp.0
+ for <qemu-trivial@nongnu.org>; Sat, 05 Sep 2020 20:28:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rnqKeYjT1gCh07zTwKxNFwiWzunpvcDckfNSKQmPOY4=;
- b=WvhnfVrAWGpO5YTZa8vTdwwo3vDGFUJ4Bz/6ejCfuascmI5lugPsAd2KdCEdK+rZpc
- W2d3k8GZaUAJMHpfvJBzagl5LGAiAoBWaKerVOo3WVz2sCp/K8o+X9liJQWgJu347JYC
- ypnCADbshTYxd5KaG/DIrfN7WQj5+7Vne+yapgICQemn+kQewOfQ4kpK+ewKfLgQpF2a
- w+432JJKx5ZCQcJsk4ievLkaiwzYQoKdqfQ/FsNJBSU98r7AI3DK811m7TMzmfezMR+S
- U41trQEVX/JQXl4O+wAJo8FYdT+zauuLxfh83HWg/INvu7VXQ3Mn+2IldRYGhOGh9YHD
- cK1A==
+ bh=GM5GxuSwUXd4HA9aQks/8/UeKS6woBVL1eS7wfsmIWM=;
+ b=f7HtZAQcyaaTCx+ImybAFQ9RBgltHzPk38+AFwF98daRVUifWxxgiYiDvyVvQOL4tx
+ Ze8LSE9ueAF0dUb2vcVS9zaGJHbjlvWL2q3p9iieXQ5I4l/Nr6IY65BUL/hrgk45JH4d
+ 8RD9iZsOusfVOjLayLZC5jVddxYvGowUclB4DH14ugCHaXtNzo6y36BWWBSk43otZHdH
+ VUyzXugKFpSITeEB8oIkM6OavXHzOybWhzDa7AJWvgMZfXZtHmGb6ol2fepl7YW8BvfF
+ DgKNsZ7lDICzeyaRC/fyfZiufYHIoDnZtGTWaa2hpjjP+lBATaQ2J+tFeNqxB37mAtbd
+ xIPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=rnqKeYjT1gCh07zTwKxNFwiWzunpvcDckfNSKQmPOY4=;
- b=MqlmqpF+CbHXt8QPRMX2E2sjWDI8Sj3ZWqmGANwcuGAcTBSeyRRoV6z+rGALBPdBBQ
- H0odRVMpP+s1KmgmZ0IWZT0hfwJqWIkPyFsA/ut3Cxg22Fht72mkgbDC7wOC8I4AG9PU
- yOtTb0SHNIbzah+x8+NnYpaTvOlgjvDlizYbzTyjkgjRAaORLQ4RdMSO2ZoRpd9MAg/Y
- vS6cXJH3v8VdBM2ncVlbs6EOZcbgtzmCHmx9YpSERKZkwsDNFPOI7MKPq7lR7bN72um4
- 2tWO5AIn6SSeeF8Ytiee7m3g7YstVhkhXWamMau0zRZoVMQBkYmx/9ppu8AboV3AF6DS
- t3pg==
-X-Gm-Message-State: AOAM531kfz2ddUOH2r9zU0waioPVdYeVZLpGgLnAicgzkFARjkA/fyIR
- vkq3t7EfB1n/0CADB4oepfjmTg==
-X-Google-Smtp-Source: ABdhPJxnQicC9/9sXGfEWdOzMd5HfEWMxdxOrLXEN4TGKOo8fioo1QFh2SfcKoGimyiepEvtbQqKAA==
-X-Received: by 2002:a17:902:56a:: with SMTP id
- 97mr14845116plf.130.1599358488564; 
- Sat, 05 Sep 2020 19:14:48 -0700 (PDT)
+ bh=GM5GxuSwUXd4HA9aQks/8/UeKS6woBVL1eS7wfsmIWM=;
+ b=bK3C5wEaPRVq0PAECFAksX4eYeCH1PvsiKVz5evXSPzw86zvKhswoVnSIBlmob7VWZ
+ sU27O9t7qP5DHhrSAxSguTY6jOTuqftlfGkaIQ/tZaF2+H5aqsqF5o6aso6hsjf4ddjT
+ n0lFDMcV6PF81kV8xF3JAF03DdWlZo9orHTNBU/jg/R9QNqxZY+vU1DJXXuF6ILCbI/q
+ XpPCLDyr7J8CBVNY5nns4fMgitGe1qTZwTxfLYUJb9RkXhXxESBBMDEOv5oVt4+kvXOr
+ PxR4ef8EHFLK/ys445GrQGydfQlrp7E/XZYaCv2HnDtrPjta5E4FnZ4NibfuW0twQenW
+ PaRg==
+X-Gm-Message-State: AOAM532Pciv5eZMNmpI/pYr8zLpZRyiZQsVEXEvC88QHCc5Qf8YufUrn
+ 5weZQSiKIxmDlZDec42rmvFMug==
+X-Google-Smtp-Source: ABdhPJzbNXn0BbvWZI4BApDqvOQeV6HkVyH8xoXxZ9SNfF04+m5nJWNyHUoAi9nI3XbGMy85quEqWw==
+X-Received: by 2002:a17:902:8c90:: with SMTP id
+ t16mr14045931plo.55.1599362935029; 
+ Sat, 05 Sep 2020 20:28:55 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id 64sm3846510pfz.204.2020.09.05.19.14.47
+ by smtp.gmail.com with ESMTPSA id b203sm10588738pfb.205.2020.09.05.20.28.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 05 Sep 2020 19:14:47 -0700 (PDT)
-Subject: Re: [PATCH] tests: Fixes building test-util-filemonitor.c on
- msys2/mingw
+ Sat, 05 Sep 2020 20:28:54 -0700 (PDT)
+Subject: Re: [PATCH] configure: Fixes ncursesw detection under msys2/mingw and
+ enable curses
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- "Daniel P . Berrange" <berrange@redhat.com>
-References: <20200905203425.1470-1-luoyonggang@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20200905204236.1508-1-luoyonggang@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f0a88f9e-b4a9-9ef1-ee47-6054a1cbbc5e@linaro.org>
-Date: Sat, 5 Sep 2020 19:14:45 -0700
+Message-ID: <b40c03d0-99bc-eb94-200f-7cf9a7734797@linaro.org>
+Date: Sat, 5 Sep 2020 20:28:52 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200905203425.1470-1-luoyonggang@gmail.com>
+In-Reply-To: <20200905204236.1508-1-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -21
@@ -84,27 +83,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Sep 2020 02:14:52 -0000
+X-List-Received-Date: Sun, 06 Sep 2020 03:28:59 -0000
 
-On 9/5/20 1:34 PM, Yonggang Luo wrote:
-> Fixes the following compiling error:
-> ../tests/test-util-filemonitor.c: In function 'test_file_monitor_events':
-> ../tests/test-util-filemonitor.c:620:17: error: too many arguments to function 'mkdir'
->   620 |             if (mkdir(pathsrc, 0700) < 0) {
->       |                 ^~~~~
-> In file included from C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/unistd.h:10,
->                  from C:/work/xemu/qemu/include/qemu/osdep.h:93,
->                  from ../tests/test-util-filemonitor.c:21:
-> C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/io.h:282:15: note: declared here
->   282 |   int __cdecl mkdir (const char *) __MINGW_ATTRIB_DEPRECATED_MSVC2005;
->       |               ^~~~~
-> 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->  tests/test-util-filemonitor.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+On 9/5/20 1:42 PM, Yonggang Luo wrote:
+> +    nativecharset_to_ucs2 = iconv_open("UCS-2", g_get_codeset());
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+g_get_codeset():
+"a newly allocated string containing the name of the character set. This string
+must be freed with g_free()."
+
+You need to plug the memory leak.
+
+It's probably worth fixing the mistake in which we call this function four
+times from the same function.
+
 
 r~
 
