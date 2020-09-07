@@ -1,69 +1,110 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kFLct-0005au-JF
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 14:12:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40202)
+	id 1kFN35-0000FI-5R
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 15:43:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFLcq-0005Z7-7h; Mon, 07 Sep 2020 14:12:20 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:44799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFLco-0003Uw-Em; Mon, 07 Sep 2020 14:12:19 -0400
-Received: by mail-pf1-x441.google.com with SMTP id o20so8953196pfp.11;
- Mon, 07 Sep 2020 11:12:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bscWSrwzBlA91ho91MKRFqbKOrFCfnhQG9RPGa7f72A=;
- b=nbZtP2xfNQelrpGVvPjniH+IuZEFq1QURYHtG5nLjJ2/6cHZ3UeGnFAF2o4dz7sMHX
- 9n9hYcjgs3bqicW4x0hVWNSbE9mruhHLX2JqXK2+UDvutmNoqXfW9SfueJ++yP7wQpe9
- wIA6TyXrJTz4Kdgv0rEf66sHMSf+oRtbXRV+zqHHRhSzsfXuTdVMGtMGKfKAUVPk65fA
- xs9DcDDMNJKXz+tXcrOBA7FmO3fml1GTiCcpW6WQ8GqjT3dFLfF/bmHik+2hnwsjUeeN
- +yeFHEka14drqzLFE1NUZTOg0LLL9WzXgjC4PHw++Z2wYz0qTOgXeD0cDiJmXfVdGBt7
- 4xiA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFN31-0000Eb-W5
+ for qemu-trivial@nongnu.org; Mon, 07 Sep 2020 15:43:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52941)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFN2z-0005bQ-H5
+ for qemu-trivial@nongnu.org; Mon, 07 Sep 2020 15:43:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599507803;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Z++SeE3fXfeQuq7S4ZDYekEnVFmX5JMrbPFlyU05rmQ=;
+ b=PwwjzBLbQhAxvNQ4MJHgo5TKzeo31gtT10VsUpD18C2o9nO/CtOfAqRcw3RIsxLe2GVU3U
+ +MuRgyy906muHwMvZdbyPIQ631cqtqBtPphjv/ol48XFraf+tM4+e5BywB6Lb0aPqVHh9m
+ S3TvYEEVZaG4bUE7cXXW21WF8D1wbuY=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-309-1bAM_yj1Ox-1fUQFVqZ_bg-1; Mon, 07 Sep 2020 15:43:22 -0400
+X-MC-Unique: 1bAM_yj1Ox-1fUQFVqZ_bg-1
+Received: by mail-wr1-f71.google.com with SMTP id 33so6055239wre.0
+ for <qemu-trivial@nongnu.org>; Mon, 07 Sep 2020 12:43:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bscWSrwzBlA91ho91MKRFqbKOrFCfnhQG9RPGa7f72A=;
- b=JUUnDfZnuVwjImXXOtttttldZ3KkYHCsEy5aLyy+e3xtV7/mel4n79o4CVGWLkHQ4K
- LFHbh/FjP1uPks7FZK7ug3gZigoBuJyYFDfE6sC6PZ0Hdc44EM+Z/+GAKjSC884ERgI6
- 9M8tzDB0+I6VeYWq2ainoa7UtI6nDQUQRqPwFIHKjak91RMooZrxrw81bMEGrxtoLEgo
- vl8kJnCqnGRm1t2X08LDTNPutiFHhcN1bMHtKhqgJM728NnuARLpCzpjCB2rzzp8dLGi
- 5fiSrFEygTjVVs3PmKkl1X8wWcUHToHub8fBbUXjmoWickJQ4bQ1CSh3pB00oE5cGlOu
- 0KRw==
-X-Gm-Message-State: AOAM532vvjNoVK6f6S4FBLY1D3TbKdfGL/Sfpt2jGQsQk1K09Y3pXvo7
- jgVHI6bex1yhCrIbCdTA4p2hN9L83h6/Q6OE
-X-Google-Smtp-Source: ABdhPJyTxqvCti7/h6aHkqKDfWSvWfNbTY3lq6OXJrQLcd84HOBoLti7xLHN4itMzNy0SkP3WS/Qbg==
-X-Received: by 2002:a17:902:ab92:: with SMTP id
- f18mr20082156plr.12.1599502335772; 
- Mon, 07 Sep 2020 11:12:15 -0700 (PDT)
-Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id w10sm13013443pjq.46.2020.09.07.11.12.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2020 11:12:14 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Peter Lieven <pl@kamp.de>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] block: Fixes nfs on msys2/mingw
-Date: Tue,  8 Sep 2020 02:12:01 +0800
-Message-Id: <20200907181201.2186-1-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Z++SeE3fXfeQuq7S4ZDYekEnVFmX5JMrbPFlyU05rmQ=;
+ b=inql/Tc3/R9jmTqr+YMeO9O2iAcC6HShaS6pH0sFP7KPzL6joN0jaPlc4qi29PwPaJ
+ DIdrWy9C/apFuINRWF9MCq5scYGId1/giiwTE0wwKWF84A+qbHzvO9oFKR2L73wyRcOD
+ v6skbFQ2Ped/Hb8fzB6YXmTdM9+9zjRUx4Pe4F7pt23oZOV4BeEKzUKcpItAK+XtE+Iv
+ oygZN+41+x4KbJ0u933W3r/qOCr48qFJFxuDjG/Z1S4OqXDL2aCcMhbnTErmiZJbIbCj
+ jxxwIJKM72brsNwrd+JdzZmgcJ9uLD/KwgLaFaBMOLUIvGiQHK0ryZa3K5IHBN7G8k0S
+ ZfVw==
+X-Gm-Message-State: AOAM531d6FNt9dsp5RotMDnthNpU4QWuGH7LilekIsxvQfi5jk5Qiuhx
+ iZBGW908R6QpsoyKpagkDbWOHPr8KKnZoKCAx7fQLwEoXt7QtDofZbeWuhw6/3BNBagGjupkvhi
+ QTdgNM0Az1Zx1MmCPvA==
+X-Received: by 2002:adf:e385:: with SMTP id e5mr22753773wrm.129.1599507801062; 
+ Mon, 07 Sep 2020 12:43:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZi2hbNW+sg0CYtMh9DhVnoJdY8nSctwBc3U5dPEGMFVyHHrHaeu9cjYbZMR+8oxgxZEvsxg==
+X-Received: by 2002:adf:e385:: with SMTP id e5mr22753749wrm.129.1599507800746; 
+ Mon, 07 Sep 2020 12:43:20 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id u66sm3651385wme.12.2020.09.07.12.43.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Sep 2020 12:43:19 -0700 (PDT)
+Subject: Re: [PATCH] Simplify the .gitignore file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20200907174255.179652-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <e6755ee5-5d41-da76-1a34-e4a05fd76663@redhat.com>
+Date: Mon, 7 Sep 2020 21:43:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200907174255.179652-1-thuth@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/07 14:12:50
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.825, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,118 +117,209 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 18:12:20 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 19:43:28 -0000
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- block/nfs.c | 26 +++++++++++++++++---------
- 1 file changed, 17 insertions(+), 9 deletions(-)
+On 9/7/20 7:42 PM, Thomas Huth wrote:
+> Now that we always do out-of-tree builds (and the in-tree builds are
+> faked via a "build" directory), we can simplify out .gitignore file
+> quite a bit.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  .gitignore | 158 -----------------------------------------------------
+>  1 file changed, 158 deletions(-)
+> 
+> diff --git a/.gitignore b/.gitignore
+> index 4ccb9ed975..bb916594eb 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -1,165 +1,7 @@
+>  /GNUmakefile
+>  /build/
+> -/.doctrees
+> -/config-devices.*
+> -/config-all-devices.*
+> -/config-all-disas.*
+> -/config-host.*
+> -/config-target.*
+> -/config.status
+> -/config-temp
+> -/tools/virtiofsd/50-qemu-virtiofsd.json
+> -/elf2dmp
+> -/trace-events-all
+> -/trace/generated-events.h
+> -/trace/generated-events.c
+> -/trace/generated-helpers-wrappers.h
+> -/trace/generated-helpers.h
+> -/trace/generated-helpers.c
+> -/trace/generated-tcg-tracers.h
+> -/ui/shader/texture-blit-frag.h
+> -/ui/shader/texture-blit-vert.h
+> -/ui/shader/texture-blit-flip-vert.h
+> -/ui/input-keymap-*.c.inc
+> -*-timestamp
+> -/*-softmmu
+> -/*-darwin-user
+> -/*-linux-user
+> -/*-bsd-user
+> -/ivshmem-client
+> -/ivshmem-server
+> -/libdis*
+> -/libuser
+> -/linux-headers/asm
+> -/qga/qapi-generated
+> -/qapi-gen-timestamp
+> -/qapi/qapi-builtin-types.[ch]
+> -/qapi/qapi-builtin-visit.[ch]
+> -/qapi/qapi-commands-*.[ch]
+> -**/qapi/qapi-commands.[ch]
+> -**/qapi/qapi-emit-events.[ch]
+> -/qapi/qapi-events-*.[ch]
+> -**/qapi/qapi-events.[ch]
+> -**/qapi/qapi-init-commands.[ch]
+> -**/qapi/qapi-introspect.[ch]
+> -/qapi/qapi-types-*.[ch]
+> -**/qapi/qapi-types.[ch]
+> -/qapi/qapi-visit-*.[ch]
+> -!/qapi/qapi-visit-core.c
+> -**/qapi/qapi-visit.[ch]
+> -**/qapi/qapi-doc.texi
+> -/qemu-edid
+> -/qemu-img
+> -/qemu-nbd
+> -/qemu-options.def
+> -/qemu-options.texi
+> -/qemu-img-cmds.texi
+> -/qemu-img-cmds.h
+> -/qemu-io
+> -/qemu-ga
+> -/qemu-bridge-helper
+> -/qemu-keymap
+> -/qemu-monitor.texi
+> -/qemu-monitor-info.texi
+> -/qemu-storage-daemon
+> -/qemu-version.h
+> -/qemu-version.h.tmp
+> -/module_block.h
+> -/scsi/qemu-pr-helper
+> -/vhost-user-scsi
+> -/vhost-user-blk
+> -/vhost-user-gpu
+> -/vhost-user-input
+> -/fsdev/virtfs-proxy-helper
+> -*.tmp
 
-diff --git a/block/nfs.c b/block/nfs.c
-index 61a249a9fc..34b2cd5708 100644
---- a/block/nfs.c
-+++ b/block/nfs.c
-@@ -24,7 +24,9 @@
- 
- #include "qemu/osdep.h"
- 
-+#if !defined(_WIN32)
- #include <poll.h>
-+#endif
- #include "qemu/config-file.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
-@@ -51,6 +53,12 @@
- #define QEMU_NFS_MAX_PAGECACHE_SIZE (8388608 / NFS_BLKSIZE)
- #define QEMU_NFS_MAX_DEBUG_LEVEL 2
- 
-+#if defined (_WIN32)
-+#define nfs_stat __stat64
-+#else
-+#define nfs_stat stat
-+#endif
-+
- typedef struct NFSClient {
-     struct nfs_context *context;
-     struct nfsfh *fh;
-@@ -58,7 +66,7 @@ typedef struct NFSClient {
-     bool has_zero_init;
-     AioContext *aio_context;
-     QemuMutex mutex;
--    blkcnt_t st_blocks;
-+    int64_t st_size;
-     bool cache_used;
-     NFSServer *server;
-     char *path;
-@@ -70,7 +78,7 @@ typedef struct NFSRPC {
-     int ret;
-     int complete;
-     QEMUIOVector *iov;
--    struct stat *st;
-+    struct nfs_stat *st;
-     Coroutine *co;
-     NFSClient *client;
- } NFSRPC;
-@@ -419,7 +427,7 @@ static int64_t nfs_client_open(NFSClient *client, BlockdevOptionsNfs *opts,
-                                int flags, int open_flags, Error **errp)
- {
-     int64_t ret = -EINVAL;
--    struct stat st;
-+    struct nfs_stat st;
-     char *file = NULL, *strp = NULL;
- 
-     qemu_mutex_init(&client->mutex);
-@@ -545,7 +553,7 @@ static int64_t nfs_client_open(NFSClient *client, BlockdevOptionsNfs *opts,
-     }
- 
-     ret = DIV_ROUND_UP(st.st_size, BDRV_SECTOR_SIZE);
--    client->st_blocks = st.st_blocks;
-+    client->st_size = st.st_size;
-     client->has_zero_init = S_ISREG(st.st_mode);
-     *strp = '/';
-     goto out;
-@@ -729,11 +737,11 @@ static int64_t nfs_get_allocated_file_size(BlockDriverState *bs)
- {
-     NFSClient *client = bs->opaque;
-     NFSRPC task = {0};
--    struct stat st;
-+    struct nfs_stat st;
- 
-     if (bdrv_is_read_only(bs) &&
-         !(bs->open_flags & BDRV_O_NOCACHE)) {
--        return client->st_blocks * 512;
-+        return client->st_size;
-     }
- 
-     task.bs = bs;
-@@ -746,7 +754,7 @@ static int64_t nfs_get_allocated_file_size(BlockDriverState *bs)
-     nfs_set_events(client);
-     BDRV_POLL_WHILE(bs, !task.complete);
- 
--    return (task.ret < 0 ? task.ret : st.st_blocks * 512);
-+    return (task.ret < 0 ? task.ret : st.st_size);
- }
- 
- static int coroutine_fn
-@@ -778,7 +786,7 @@ static int nfs_reopen_prepare(BDRVReopenState *state,
-                               BlockReopenQueue *queue, Error **errp)
- {
-     NFSClient *client = state->bs->opaque;
--    struct stat st;
-+    struct nfs_stat st;
-     int ret = 0;
- 
-     if (state->flags & BDRV_O_RDWR && bdrv_is_read_only(state->bs)) {
-@@ -800,7 +808,7 @@ static int nfs_reopen_prepare(BDRVReopenState *state,
-                        nfs_get_error(client->context));
-             return ret;
-         }
--        client->st_blocks = st.st_blocks;
-+        client->st_size = st.st_size;
-     }
- 
-     return 0;
--- 
-2.28.0.windows.1
+I'm not sure about this one.
+
+> -*.[1-9]
+> -*.a
+> -*.aux
+> -*.cp
+> -*.exe
+> -*.msi
+> -*.dll
+> -*.so
+> -*.fn
+> -*.ky
+
+Need to double-check where this come from.
+
+> -*.log
+> -*.pdf
+> -*.pod
+> -*.cps
+> -*.fns
+> -*.kys
+> -*.pg
+> -*.pyc
+> -*.toc
+> -*.tp
+> -*.vr
+> -*.d
+> -!/.gitlab-ci.d
+> -!/scripts/qemu-guest-agent/fsfreeze-hook.d
+> -*.o
+> -.sdk
+
+Need to double-check where this come from.
+
+> -*.gcda
+> -*.gcno
+> -*.gcov
+> -/pc-bios/bios-pq/status
+> -/pc-bios/edk2-*.fd
+
+I'm not sure about this one but will check.
+
+> -/pc-bios/vgabios-pq/status
+> -/pc-bios/optionrom/linuxboot.asm
+> -/pc-bios/optionrom/linuxboot.bin
+> -/pc-bios/optionrom/linuxboot.raw
+> -/pc-bios/optionrom/linuxboot.img
+> -/pc-bios/optionrom/linuxboot_dma.asm
+> -/pc-bios/optionrom/linuxboot_dma.bin
+> -/pc-bios/optionrom/linuxboot_dma.raw
+> -/pc-bios/optionrom/linuxboot_dma.img
+> -/pc-bios/optionrom/pvh.asm
+> -/pc-bios/optionrom/pvh.bin
+> -/pc-bios/optionrom/pvh.raw
+> -/pc-bios/optionrom/pvh.img
+> -/pc-bios/optionrom/multiboot.asm
+> -/pc-bios/optionrom/multiboot.bin
+> -/pc-bios/optionrom/multiboot.raw
+> -/pc-bios/optionrom/multiboot.img
+> -/pc-bios/optionrom/kvmvapic.asm
+> -/pc-bios/optionrom/kvmvapic.bin
+> -/pc-bios/optionrom/kvmvapic.raw
+> -/pc-bios/optionrom/kvmvapic.img
+> -/pc-bios/s390-ccw/s390-ccw.elf
+> -/pc-bios/s390-ccw/s390-ccw.img
+> -/docs/built
+> -/docs/interop/qemu-ga-qapi.texi
+> -/docs/interop/qemu-ga-ref.html
+> -/docs/interop/qemu-ga-ref.info*
+> -/docs/interop/qemu-ga-ref.txt
+> -/docs/interop/qemu-qmp-qapi.texi
+> -/docs/interop/qemu-qmp-ref.html
+> -/docs/interop/qemu-qmp-ref.info*
+> -/docs/interop/qemu-qmp-ref.txt
+> -/docs/version.texi
+> -/contrib/vhost-user-gpu/50-qemu-gpu.json
+> -*.tps
+
+Need to double-check where this come from.
+
+> -.stgit-*
+
+Need to double-check where this come from.
+
+>  .git-submodule-status
+>  cscope.*
+>  tags
+>  TAGS
+> -docker-src.*
+>  *~
+> -*.ast_raw
+> -*.depend_raw
+
+Coccinelle generated in source tree, please keep.
+
+> -trace.c
+> -trace-ust.h
+> -trace-ust.h
+> -trace-dtrace.h
+> -trace-dtrace.dtrace
+> -trace-root.h
+> -trace-root.c
+> -trace-ust-root.h
+> -trace-ust-root.h
+> -trace-ust-all.h
+> -trace-ust-all.c
+> -trace-dtrace-root.h
+> -trace-dtrace-root.dtrace
+> -trace-ust-all.h
+> -trace-ust-all.c
+> -/target/arm/decode-sve.c.inc
+> 
 
 
