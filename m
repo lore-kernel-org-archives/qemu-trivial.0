@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF6Nm-00065t-1M
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59798)
+	id 1kF6No-0006Bs-7j
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Nk-00061i-1G; Sun, 06 Sep 2020 21:55:44 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:41857)
+ id 1kF6Nm-00067B-Et; Sun, 06 Sep 2020 21:55:46 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38514)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Ni-0007Ij-GG; Sun, 06 Sep 2020 21:55:43 -0400
-Received: by mail-wr1-x443.google.com with SMTP id w5so14073618wrp.8;
- Sun, 06 Sep 2020 18:55:41 -0700 (PDT)
+ id 1kF6Nk-0007LP-T8; Sun, 06 Sep 2020 21:55:46 -0400
+Received: by mail-wr1-x444.google.com with SMTP id g4so14089697wrs.5;
+ Sun, 06 Sep 2020 18:55:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JF7kT9Jakz5MXZ7s85w029ixb/+6fikTUFTZrRv4yoU=;
- b=ATpKEDrJ7K9awH1N2zYTl4yBM9vwgdywoDL8jJwFb0map4kJ1wW5Z6SzgmkBLz6Di1
- 4+J89Zkp0QYSl/r/M91ckYgeDfnshUAdYUAwDZ3jkVqeaC5CbtrEPPKLwoHihsv1pcmG
- /tyiLuSpV9SCW9XFjVC1ifDvER1j9gedYUd1vK1QWQQd4onN5NYyUXPI2KEj/go04Yhp
- Zr4ScnsbSukE3j4I63uUQDzIW1OJlr7uwAlYA0kUv7ChD/LtZbe1m1F/jpYDX6ESedGO
- IOu21GsUwvi4leEM8WIe359yXNL2rInLotpGuyvnwuKHnGyQ7xGMCL0gsnLrsUJsCRX9
- EmEg==
+ bh=QQ3fywF3U7FMDEHRpvf9acNc1XCO6x1yzECnPG9z1Co=;
+ b=DDB+MVtIis5U0yp6R2ic47YLBD+3fjbpRQJLkJwFHJCYLMc3mWWdHKmnSPX0tpaoTa
+ ayue6ZuYolMfJGt029y+Dpw8ip9e7hXKiINP81BqeqJzfPkddYkCBAzpbujxisoMzviE
+ /ku2RGwCllL8c2rMoH3ZDDvK2T2eqQeZmj0JCm1ObkFMKP5t1sWpBshEeA8XvQpIMLiu
+ giwX+nhMn8mL3Uvkb7mW04sPOLTOA8ipXvXvGonmD+h4OyIUxVRemXT+Y7Pz54wadjZE
+ zNpTQ8NGlJnDBy7NdIYfBI4r+M2fuWmSF4BcDVgbxdmjFxgpFFoJ7pfSk2yLP8JWV38K
+ Mahg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=JF7kT9Jakz5MXZ7s85w029ixb/+6fikTUFTZrRv4yoU=;
- b=SaL2epDMLbMH9lxA9jrmyp18KQcN05ZMmyMh5myK5LMe5IuYjfDqKlczerMFS/oDFR
- fVz8cQLWWqs0dLPdt3UdaD6VP5Ku7cMR7PlFGAIEFbks/56aTDNnX3EWNubTV24ulb+i
- fHhbHphWn4p3DZeisWM/hyxprBPsdunG06YiabKlOUO9eyP4CXLjLlLo2Yn4F/vxg5bQ
- Wolw8peyTVTp2NCCSes9ffAroyNpbCYoWvc+TG9VriqysPd4cJoh9qzrLhvufgC4ZY6m
- 7mtsw6d1WwVmL4eSISpXSGLNESOdDlT6kYT2Ws93rpotNUSgM9+K4n06ToGCx8xAaYbY
- 6EGg==
-X-Gm-Message-State: AOAM5319pFsUpiYwZDYpJOC5J3G0pnXARzdqHteMs/UeZk6cEnkfIbFw
- ZlPkgpgSffaBPqokObHAkIkOgt7zQh0=
-X-Google-Smtp-Source: ABdhPJxdbJIbUhDSxyWa3OoBkrlsOphRHXMZU37nN6v0gCouNh4gRK5/N8Tw4mT/s7687uE4t+h37Q==
-X-Received: by 2002:adf:dfd1:: with SMTP id q17mr21031760wrn.347.1599443740620; 
- Sun, 06 Sep 2020 18:55:40 -0700 (PDT)
+ bh=QQ3fywF3U7FMDEHRpvf9acNc1XCO6x1yzECnPG9z1Co=;
+ b=CVEW+q04bJBlChv+MXhkYvvj+0c4as7LtofGxS7jIPaDId+G+kcqgxJ6/W8P7kuRPW
+ JOqMWkA2j3pgEc5n1A2pE2q4TdLXsqy3OYCMWxel8i8Qs5Oj0FQPv8BNXjrXbj2qi9Zb
+ DNz6ZokbhDKFfOQzAD3t9+9FxnL4ygcx59ZMtQQphyqS8Tda/by7bCeCFeJJ0aP4GkKp
+ 5kb/w6p4+7a/fXa14OmWirELLVAjyL6vbo6jKdVBopWlMskceYweI0fxjO89PW1M+MJQ
+ sj2EWl2TPI55xv0DgrbGNy1BRitkHFZkvExOPXxQiixnaA6F8b51cs3gLlt27nWBWRti
+ zbfg==
+X-Gm-Message-State: AOAM530ehSSiBKQcn3VYcCswcnaAeSSRRLYXd1lDTkbX4NuT/lkKGoih
+ zZE+qcssNfoXh+lT1taqWKZ1EvIBbAk=
+X-Google-Smtp-Source: ABdhPJyi0x0cVVoQ+7SHtYPb1M1wl81oPCisPgg8JJWhaYjB9CXUFHhVU22DLzEkwhPYgYnZ1ZdRXA==
+X-Received: by 2002:a5d:4e8c:: with SMTP id e12mr6280124wru.180.1599443742996; 
+ Sun, 06 Sep 2020 18:55:42 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.39
+ by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 18:55:40 -0700 (PDT)
+ Sun, 06 Sep 2020 18:55:42 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -49,11 +49,10 @@ To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 2/7] hw/char/serial: Replace commented DPRINTF() by trace event
-Date: Mon,  7 Sep 2020 03:55:30 +0200
-Message-Id: <20200907015535.827885-3-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 4/7] hw/char/serial: Rename I/O read/write trace events
+Date: Mon,  7 Sep 2020 03:55:32 +0200
+Message-Id: <20200907015535.827885-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200907015535.827885-1-f4bug@amsat.org>
 References: <20200907015535.827885-1-f4bug@amsat.org>
@@ -61,8 +60,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -85,45 +84,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 01:55:44 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 01:55:46 -0000
 
-Convert the old debug PRINTF() call to display the UART
-baudrate to a trace event.
+The serial_mm_read/write() handlers from the TYPE_SERIAL_MM device
+call the serial_ioport_read/write() handlers with shifted offset.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+When looking at the trace events from this MMIO device, it is
+confusing to read the accesses as I/O. Simplify using generic
+trace event names which make sense the various uses.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/serial.c     | 4 +---
- hw/char/trace-events | 1 +
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ hw/char/serial.c     | 4 ++--
+ hw/char/trace-events | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index a855ef66ea2..fb41337b661 100644
+index 1e70294f28a..ade4adfd526 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -187,9 +187,7 @@ static void serial_update_parameters(SerialState *s)
-     ssp.stop_bits = stop_bits;
-     s->char_transmit_time =  (NANOSECONDS_PER_SECOND / speed) * frame_size;
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
--
--    DPRINTF("speed=%.2f parity=%c data=%d stop=%d\n",
--           speed, parity, data_bits, stop_bits);
-+    trace_serial_update_parameters(speed, parity, data_bits, stop_bits);
+@@ -333,7 +333,7 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
+     SerialState *s = opaque;
+ 
+     assert(size == 1 && addr < 8);
+-    trace_serial_ioport_write(addr, val);
++    trace_serial_write(addr, val);
+     switch(addr) {
+     default:
+     case 0:
+@@ -550,7 +550,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
+         ret = s->scr;
+         break;
+     }
+-    trace_serial_ioport_read(addr, ret);
++    trace_serial_read(addr, ret);
+     return ret;
  }
  
- static void serial_update_msl(SerialState *s)
 diff --git a/hw/char/trace-events b/hw/char/trace-events
-index d20eafd56f8..85e39d9d62b 100644
+index 85e39d9d62b..cd36b63f39d 100644
 --- a/hw/char/trace-events
 +++ b/hw/char/trace-events
-@@ -7,6 +7,7 @@ parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s
+@@ -5,8 +5,8 @@ parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s]
+ parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
+ 
  # serial.c
- serial_ioport_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
- serial_ioport_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
-+serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
+-serial_ioport_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
+-serial_ioport_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
++serial_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
++serial_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
+ serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
  
  # virtio-serial-bus.c
- virtio_serial_send_control_event(unsigned int port, uint16_t event, uint16_t value) "port %u, event %u, value %u"
 -- 
 2.26.2
 
