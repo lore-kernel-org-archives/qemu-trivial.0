@@ -1,80 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kErhG-00020M-P4
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 06:14:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38062)
+	id 1kF6Nj-000616-M2
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kErhF-000207-J1; Sun, 06 Sep 2020 06:14:53 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46477)
+ id 1kF6Nh-00060N-Vg; Sun, 06 Sep 2020 21:55:41 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:43381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kErhD-0000VE-PB; Sun, 06 Sep 2020 06:14:53 -0400
-Received: by mail-wr1-x443.google.com with SMTP id o5so11592840wrn.13;
- Sun, 06 Sep 2020 03:14:51 -0700 (PDT)
+ id 1kF6Ng-0007Ho-J0; Sun, 06 Sep 2020 21:55:41 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id k15so14040840wrn.10;
+ Sun, 06 Sep 2020 18:55:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vbn0+Q7LLK7QzYKdUg/R1tO/MQuDY7rPs11ACzEAzzI=;
- b=TvDq276tTfUKBvltXAUaiZSNlA2PCAiC10ufGIXIRJN4MvwciazeBLX18v+ckw26s8
- cAavwzIueebv3iVDa2/7GnskLMlrTPXZSZfQ0LqNZyZMEfpwFvueJ8W7xcXCwKHgbBte
- NHuB2qE08Txveh/s3fPMdMPkR+q+8BeBFk+p8cfIPjXd+h6koYJsCAxTxzcmfZbXOqol
- aV4mPqeot8pLRnrbdcBMNCaXAV5qe9/9i6T2Ww66h+6f1FlgP+4ggk5EWID05n4OkInz
- hcs0zBcpeaWsvUj6y801j49vKgq2ulnu/67UAduRrF9XXrxbIK2SRZxAZxB7pmfK0rgm
- MzKQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TTqBRIWUGDzlPmlUQ/wFZcYsZZ7W+Ar6r75Vl/q5/lM=;
+ b=a8tntNJWoqrN2jijqrfaCRXmcXny9/MwznU5zdWO0tVowsd1qc8wWisY1eo1mgqE+G
+ jPsWVvGiRmEF/6sSG8Rp6dDTZb8aLmDmuA1EP9Tfa17OWHe44lec6KYRbM0oqiC9onkP
+ D0W3sX4arg1TccVAAU1/TQF54fn8tt5M2Kc40Xp/4qogZ1D6QLSc65y/vojTTUH5iQF8
+ REraTrShj8dDvonr55ZGuPFJ/LXhd9gju4KCQTvfYcKnYR45oxaXGQIz9jyhH1X15Lrw
+ RtyrQHcQfWs66zNYasl8pbKUFYc58HWz2VgnDJt6s+DpuQ6nXaZy9cnBQCCeGZ4OJSfT
+ NNrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vbn0+Q7LLK7QzYKdUg/R1tO/MQuDY7rPs11ACzEAzzI=;
- b=EYUIy4zaP6WGWIXnKw9c5WTjdW+7XfEFdgk97P643A5dJepnB/4XL+nhdMza89S6m8
- 3wR6gU8gUk5rC+pYWKKqnwWFp821kzYeEdpxzofshi830Lefh8dW782C/M5r8I1wIqEC
- IEL8DZAIcurTPmu2jznbV/4qrKUxLOlIxbH4VQrcPv5hrEGUTWUEiYiZLKDY8NuTBtOt
- JyDybcg0iiFwj1HOYSWIGR45MAL+kYb4S2Hci+cQiyM/tEBD8BbIZgmY3TP9oQDgrJSx
- rYwlJ+AqLZwdOLrpZqJ/wg7SSa44gd3Twdgu1HVTRbwFh5LmvfnB3plvviDl/6unL5ib
- 91Pw==
-X-Gm-Message-State: AOAM5338NDFOZLdugdfDlnfQ6ntsuSb93sRS/bDRjeQWzwSyUxIaTEEh
- KRaTfjzqULE5XVsbwDVJ827yJdNPMqE=
-X-Google-Smtp-Source: ABdhPJxthR0Pc9eFwoKNkI0qdEttRVddukb+H+ipb91q6m/h8yz1n18cESopH+e/Qod7lxjZMpgRYA==
-X-Received: by 2002:a5d:4bcf:: with SMTP id l15mr16088849wrt.384.1599387289625; 
- Sun, 06 Sep 2020 03:14:49 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=TTqBRIWUGDzlPmlUQ/wFZcYsZZ7W+Ar6r75Vl/q5/lM=;
+ b=gUzBhrkrD43bnnjwnh2sI1Pkwq7rUptgvyoOk6+jlA37wVNjmW2BQ1qbV/7OBZt5Lo
+ clKmu/s1UZdiyrZYVYKUk3aMGnyYxJQaW+CEi5l7iLikXvS+yoaCxd0mJn4J23tXyoyI
+ 1JaeA4QEBmEJ5VjWxv0skrvZWcSR40jK6V3WwgbW1jol8/P7z5Nzb1M5uBUbJwzdW6Lg
+ 1EB8KudzylQLzMlt2/g6PnS0fLviCj1PO1teM4GHBESPD34HNu3lLMJpxIEpyyZJz3B/
+ 71+no6V213i1OxrED07XWHB8zcUWFey3iFWQMjudAU9dy3Fmdslol2uH7hsXPIu3vu4c
+ qRAA==
+X-Gm-Message-State: AOAM532DX8Fi3Hj5bRoZaijHGU2kQ3VyMZDqg/BcTuJSt7MnLOxTxgHh
+ +zHd1IdwRvBRkEi0oEwdwNBBRRC7Ypc=
+X-Google-Smtp-Source: ABdhPJzp2bHb/NZUah0Eq/Wmf90jasmtbJCG4l8HXldirXwKszs7Cq+ixEC2RCK+1nZzKrIuVF9Kiw==
+X-Received: by 2002:adf:e6c8:: with SMTP id y8mr20619273wrm.229.1599443738194; 
+ Sun, 06 Sep 2020 18:55:38 -0700 (PDT)
+Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id y1sm21736079wmi.36.2020.09.06.03.14.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Sep 2020 03:14:48 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 06 Sep 2020 18:55:37 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v5 2/2] hw: hyperv: vmbus: Fix 32bit compilation
-To: Jon Doron <arilou@gmail.com>, qemu-devel@nongnu.org
-Cc: mail@maciej.szmigiero.name, rvkagan@yandex-team.ru, imammedo@redhat.com,
- pbonzini@redhat.com, vkuznets@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200715084326.678715-1-arilou@gmail.com>
- <20200715084326.678715-3-arilou@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <87028ae2-f31e-a6ee-a4ba-c147837fc52d@amsat.org>
-Date: Sun, 6 Sep 2020 12:14:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/7] hw/char/serial: Housekeeping
+Date: Mon,  7 Sep 2020 03:55:28 +0200
+Message-Id: <20200907015535.827885-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200715084326.678715-3-arilou@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-0.107,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,46 +81,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Sep 2020 10:14:53 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 01:55:42 -0000
 
-Cc'ing qemu-trivial@
+Nothing very exciting, cleanups before more serious changes.
 
-Can we add the commit description Richard wrote?
+Philippe Mathieu-Daudé (7):
+  hw/char/serial: Assert serial_ioport_read/write offset fits 8 bytes
+  hw/char/serial: Replace commented DPRINTF() by trace event
+  hw/char/serial: Remove old DEBUG_SERIAL commented code
+  hw/char/serial: Rename I/O read/write trace events
+  hw/char/serial: Make 'wakeup' property boolean
+  hw/char/serial-isa: Alias QDEV properties from generic serial object
+  hw/char/serial: Let SerialState have an 'id' field
 
----
-Fix 32-bit build error for vmbus:
+ include/hw/char/serial.h |  3 ++-
+ hw/char/serial-isa.c     |  4 ++--
+ hw/char/serial.c         | 25 +++++++------------------
+ hw/char/trace-events     |  5 +++--
+ 4 files changed, 14 insertions(+), 23 deletions(-)
 
-  hw/hyperv/vmbus.c: In function ‘gpadl_iter_io’:
-  hw/hyperv/vmbus.c:383:13: error: cast to pointer from integer of
-different size [-Werror=int-to-pointer-cast]
-  383 |         p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) |
-off_in_page);
-      |             ^
-  cc1: all warnings being treated as errors
-
-Fixes: 0d71f7082d7 ("vmbus: vmbus implementation")
----
-
-On 7/15/20 10:43 AM, Jon Doron wrote:
-> Signed-off-by: Jon Doron <arilou@gmail.com>
-> ---
->  hw/hyperv/vmbus.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
-> index 34392e892a..c28bb4201b 100644
-> --- a/hw/hyperv/vmbus.c
-> +++ b/hw/hyperv/vmbus.c
-> @@ -383,7 +383,8 @@ static ssize_t gpadl_iter_io(GpadlIter *iter, void *buf, uint32_t len)
->              }
->          }
->  
-> -        p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) | off_in_page);
-> +        p = (void *)(uintptr_t)(((uintptr_t)iter->map & TARGET_PAGE_MASK) |
-> +                off_in_page);
->          if (iter->dir == DMA_DIRECTION_FROM_DEVICE) {
->              memcpy(p, buf, cplen);
->          } else {
-> 
+-- 
+2.26.2
 
 
