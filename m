@@ -1,78 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF6Nx-0006LY-Ue
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59884)
+	id 1kF753-0001Zr-RL
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 22:40:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Nr-0006G0-0O; Sun, 06 Sep 2020 21:55:51 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:54362)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Np-0007MO-G9; Sun, 06 Sep 2020 21:55:50 -0400
-Received: by mail-wm1-x335.google.com with SMTP id s13so12842105wmh.4;
- Sun, 06 Sep 2020 18:55:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wF4VBmCfS9zKcYQvvNCwbCMf1/hOUCUDtnmmxztSuOU=;
- b=A+tOfRsYi/AS2aMt6hUHW5BkWISmIH2BCCjEQWD4HndeIYLsQfqQLlIUfoFFTi1z1M
- rnGO5CjnV73+5YCkpwtHXHNz8VwdNie1sytnYsgLlghFjfaY5vyAvZMqqiJB8uagTeSw
- x6SVuuVVDThh5CV+LFSO+JGb/tlyZvKpx6GcBZkpY5BYOVqeWrk4KcZy6cwY4wIfAIok
- t1rZkrCwmlDV/xK0Axye3T2iUaBjQJ777GL2oHePfEAr3tuyeZMtSjr5IwAxWn008+gl
- YXGanU3e4qysp92XRjIS0oKo+/e2lx+mOuEGFQi/BjCOmAXONS29p86ZodboKJcvbvHB
- dvMQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kF752-0001Z6-LT
+ for qemu-trivial@nongnu.org; Sun, 06 Sep 2020 22:40:28 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31483
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kF750-0004X3-Vj
+ for qemu-trivial@nongnu.org; Sun, 06 Sep 2020 22:40:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599446425;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=4OIj4jz8LXHEWJ5feeAlUTIZDKQ5O5S7lX7AHvNA6oc=;
+ b=GWGLSf+6bOrdEugSZgOSij0mzuQkhYBCX/qfPrVzfhzFxJGI8JAVRYlFDqUeDzX5HdmwxL
+ AzzF6FKqDYGfXbbJvTC0/XQomNdVE3JajAWxGbJyi8oblMixBdM+fzkTrp6vT1yUDXoFHI
+ xr8b++2qzIMF+eqsffC2jvkQJ3zhuiQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-117-kb0BI4VhMT6m88NJi2FeMQ-1; Sun, 06 Sep 2020 22:40:24 -0400
+X-MC-Unique: kb0BI4VhMT6m88NJi2FeMQ-1
+Received: by mail-wr1-f69.google.com with SMTP id j7so3538475wro.14
+ for <qemu-trivial@nongnu.org>; Sun, 06 Sep 2020 19:40:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=wF4VBmCfS9zKcYQvvNCwbCMf1/hOUCUDtnmmxztSuOU=;
- b=hoOeWRlbjsL+UUWSdwzLkupqzKio1SbNk4NRpZdc0n8OkCL1/o0vixSx0sECb411Zn
- SNceheANHWFfVExPiEtUVGodva3aawyyG3C+rYPeLxUFPsm5AK+Up0Effxe3WvvZvGxT
- fDsn1NsunXDSrLedTH1kfrdyFVJ3s1bQ+I6PZ16ceSOAsRwzTs5ySq/zbdOR6G8DX6s6
- mi6KGjdwav8P71M5VmTkvLdsByDkvxXiMCV1ZNgZr4o2mOYMoLh/mqSJ3+VD2Y2rGebM
- W5nNlAAH/5AbJd+naqwznyhLvQvtUkW09y6+dM6CkmyHIvjk/V0gFV4P3I5CDpgStL84
- lkdw==
-X-Gm-Message-State: AOAM531eapm51bj8kR9wC6nQpOle1aPnIHBgVJ+boeGI+pS5YaXVkiYU
- tq120PwjM+rxzYbNB+TmVy8xierAsWg=
-X-Google-Smtp-Source: ABdhPJxMVAy0UvsXBDC0vR3bqXONvU4Jmqf0AfclvlQ0Q3fUUlWEH/DQK+/tR6IAYuCvZhosFtoE8w==
-X-Received: by 2002:a1c:e0d4:: with SMTP id x203mr19691036wmg.91.1599443747539; 
- Sun, 06 Sep 2020 18:55:47 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4OIj4jz8LXHEWJ5feeAlUTIZDKQ5O5S7lX7AHvNA6oc=;
+ b=W+jFN4G4XkAbZxc8PpdfPa9o01Ay+eFW8HQ2IDNhTkyiqG9QYKnEU9GKjmqtZ0Lgza
+ 4qZacc1G/NukEeM9LgUcRG7Tve3etsPhjZGaoJso0GM1gJnqyx9GivXDG2dKLDQ2VRUN
+ qzrHMmj7IcxmWZRKQSsWTsquPBlekCbErP6AJilzhurCZjgk8q3FXjZHFS7U6b2tkaZg
+ 9dbkfbclhhbDc8x/H+2sDD1nOzuA3ne4FBxLsxBOrVjZN+lEeWGQ6RhbeSmF0xFxrAR1
+ o6hgL7DKY5cp7d6SFbwwypolRHw1jTTkxDLD1a2LQn3OhWNCSeeOLBWtfVM+GwIafn1W
+ YPIA==
+X-Gm-Message-State: AOAM5323vGs8E82GRCwTza3+bn62taD9TnHDbpyGzfcopuE4Tha/Vqc0
+ zRfFY/4se+42uhGucE/YFuKWMKILWx450a1EcsB2YMRpUxI2uqz5m2JyEmdQ1RoUa3DGYgOi9Oh
+ mJyLi0nTOOxbWnUDyZw==
+X-Received: by 2002:adf:c404:: with SMTP id v4mr18782083wrf.17.1599446423414; 
+ Sun, 06 Sep 2020 19:40:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdhbmfejOQRnTYHq/FvUULXHKw2HSDGUiqQAlr9sUy9fovlhOU/lgA5l0QN8+7XEjg08lWRg==
+X-Received: by 2002:adf:c404:: with SMTP id v4mr18782062wrf.17.1599446423182; 
+ Sun, 06 Sep 2020 19:40:23 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.46
+ by smtp.gmail.com with ESMTPSA id g2sm25686140wmg.32.2020.09.06.19.40.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 18:55:46 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ Sun, 06 Sep 2020 19:40:22 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 7/7] hw/char/serial: Let SerialState have an 'id' field
-Date: Mon,  7 Sep 2020 03:55:35 +0200
-Message-Id: <20200907015535.827885-8-f4bug@amsat.org>
+Cc: Richard Henderson <rth@twiddle.net>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-s390x@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] hw/s390x/css: Remove double initialization
+Date: Mon,  7 Sep 2020 04:40:20 +0200
+Message-Id: <20200907024020.854465-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200907015535.827885-1-f4bug@amsat.org>
-References: <20200907015535.827885-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/06 22:29:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -85,90 +91,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 01:55:53 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 02:40:28 -0000
 
-When a SoC has multiple UARTs (some configured differently),
-it is hard to associate events to their UART.
+Fix eventual copy/paste mistake introduced in commit bc994b74ea
+("s390x/css: Use static initialization for channel_subsys fields").
 
-To be able to distinct trace events between various instances,
-add an 'id' field. Update the trace format accordingly.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/char/serial.h | 1 +
- hw/char/serial.c         | 7 ++++---
- hw/char/trace-events     | 6 +++---
- 3 files changed, 8 insertions(+), 6 deletions(-)
+ hw/s390x/css.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 3d2a5b27e87..3ee2d096a85 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -75,6 +75,7 @@ typedef struct SerialState {
-     uint64_t char_transmit_time;    /* time to transmit a char in ticks */
-     int poll_msl;
- 
-+    uint8_t id;
-     QEMUTimer *modem_status_poll;
-     MemoryRegion io;
- } SerialState;
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index ade89fadb44..e5a6b939f13 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -177,7 +177,7 @@ static void serial_update_parameters(SerialState *s)
-     ssp.stop_bits = stop_bits;
-     s->char_transmit_time =  (NANOSECONDS_PER_SECOND / speed) * frame_size;
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
--    trace_serial_update_parameters(speed, parity, data_bits, stop_bits);
-+    trace_serial_update_parameters(s->id, speed, parity, data_bits, stop_bits);
- }
- 
- static void serial_update_msl(SerialState *s)
-@@ -333,7 +333,7 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-     SerialState *s = opaque;
- 
-     assert(size == 1 && addr < 8);
--    trace_serial_write(addr, val);
-+    trace_serial_write(s->id, addr, val);
-     switch(addr) {
-     default:
-     case 0:
-@@ -550,7 +550,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
-         ret = s->scr;
-         break;
-     }
--    trace_serial_read(addr, ret);
-+    trace_serial_read(s->id, addr, ret);
-     return ret;
- }
- 
-@@ -1013,6 +1013,7 @@ static const TypeInfo serial_io_info = {
- };
- 
- static Property serial_properties[] = {
-+    DEFINE_PROP_UINT8("id", SerialState, id, 0),
-     DEFINE_PROP_CHR("chardev", SerialState, chr),
-     DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-     DEFINE_PROP_BOOL("wakeup", SerialState, wakeup, false),
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index cd36b63f39d..40800c9334c 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -5,9 +5,9 @@ parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s]
- parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
- 
- # serial.c
--serial_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
--serial_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
--serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
-+serial_read(uint8_t id, uint8_t addr, uint8_t value) "id#%u read addr 0x%x val 0x%02x"
-+serial_write(uint8_t id, uint8_t addr, uint8_t value) "id#%u write addr 0x%x val 0x%02x"
-+serial_update_parameters(uint8_t id, uint64_t baudrate, char parity, int data_bits, int stop_bits) "id#%u baudrate=%"PRIu64" parity=%c data=%d stop=%d"
- 
- # virtio-serial-bus.c
- virtio_serial_send_control_event(unsigned int port, uint16_t event, uint16_t value) "port %u, event %u, value %u"
+diff --git a/hw/s390x/css.c b/hw/s390x/css.c
+index 519dc91316d..9961cfe7bf6 100644
+--- a/hw/s390x/css.c
++++ b/hw/s390x/css.c
+@@ -353,7 +353,6 @@ static ChannelSubSys channel_subsys = {
+     .pending_crws = QTAILQ_HEAD_INITIALIZER(channel_subsys.pending_crws),
+     .do_crw_mchk = true,
+     .sei_pending = false,
+-    .do_crw_mchk = true,
+     .crws_lost = false,
+     .chnmon_active = false,
+     .indicator_addresses =
 -- 
 2.26.2
 
