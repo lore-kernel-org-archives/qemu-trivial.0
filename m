@@ -1,61 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF8PX-0003Ww-Ac
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 00:05:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48696)
+	id 1kF8ec-0007Qz-J9
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 00:21:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kF8PW-0003W2-33; Mon, 07 Sep 2020 00:05:42 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42564)
+ id 1kF8ea-0007KC-Hq; Mon, 07 Sep 2020 00:21:16 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:46230)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kF8PU-0005Qm-B1; Mon, 07 Sep 2020 00:05:41 -0400
-Received: by mail-pl1-x643.google.com with SMTP id y6so1419673plt.9;
- Sun, 06 Sep 2020 21:05:39 -0700 (PDT)
+ id 1kF8eT-00073S-QA; Mon, 07 Sep 2020 00:21:16 -0400
+Received: by mail-lf1-x142.google.com with SMTP id u27so6744193lfm.13;
+ Sun, 06 Sep 2020 21:20:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MsDGWZdMFYlVObWUTNQg4i0KMQLXUbGWCWMsfzNNwCA=;
- b=P2Q6m+4SAtfAlO2OwzDVkTH+syonhbQsCimE8LXc2wzL0S9a0mAKxvWwGtvgCHuiL+
- 77WyuBx7L4Kkrqc+WbRe4roKbY1X8btHD666KPjcBs5wVYIobN7TYakGv7VY3Ma6XBSq
- /SvO3FiT/m70hJdjwQrqIrud8qdaLF9wySypoyIbDNktgzT5IxYeB0Ax6HbfsW2Akdms
- UH/74hQwLwEsc8e0MnRi4K/96Uj1QyIzBlRCvZcuWqRNncK3lDm3d9uh0uJy8tnKoMHT
- /BKlroYZqfX1Mms5weBHv34Pmb9/FUnM5UjVRnsa+h0g8a2X7RdjKGDwUNpOse9Imvxg
- 250g==
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=uAWCekkydZn1lOHe45YNp0uVn0gd0Kd5AXukfWwTbNU=;
+ b=V+tVYzatmSgNhcaxQb2axzvLPl9BuO2NLq1eowymap6H4N5XRd54KYeLprTczx/wCe
+ wkGQyJYTL8wFi0Jxx8L1ZxOI3qV5DmSv8HFu2sUhO5AqB1+TJv5y13cHEKa6AFrEiDTr
+ 1Y9zetTUrK+zpPZ0vFRtge8rhfvUg447WBAZkVJ1Z8r0TK/yverD4o4Ek6ZSwiH58DZ5
+ /ocvqXua51pEcxl/RegnbWw/palSDBBoAb7Sjx8dRrOzuaBClHdjL2KJjRhCDNyXq/0t
+ 000qcqVC04MzIC5pd3eu6fjiEQ5QDrGg6nG+XPBHq3hD3u6BAE1c+U9vtcuqTsJdlNFf
+ dNFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MsDGWZdMFYlVObWUTNQg4i0KMQLXUbGWCWMsfzNNwCA=;
- b=Kenk4orN5HO/7TfPNv7rjaM6tKdmzGzZrEf3DDsGL6BZY34FSeshjRMKzTeDXGZK+J
- E4lfQ7m10nE+1FBdEjTyGIQ/m6xVtjpVCUdwI8QsTyv7xJTxmC2ui7XWGbG/uejPYwL5
- e16cgy0lV3/Ieu5RqkGHO50xnWVgMMboPtQm4ko9rp8XWyjLST9QL7D41Caz9M7QBY2p
- hvDwya7cmoVlbqdCBKJpQiqpRdUt8NRFzfjWTQZWAxQ9kj1PCmMk7OD+J52eNXDafDtN
- pgDcm58hLbH10Fxr3AGPaYGFYcc42NT1yVNdF+6dtSbRvZxlrwWG+pH98JDDL7+Nxkoi
- gQDw==
-X-Gm-Message-State: AOAM532vyw0zRria/IdglfQrLbdYGVByZefK80cM1BhnD8wNH0md6otY
- 5zlBpRAKtbCnSQsUM0u4rIrdPLRIKghZMoit
-X-Google-Smtp-Source: ABdhPJwKwBZc2zGWFM7Yh5IleC2HUiP1TUVQK53A54Q8V2DMTU/fGlbpF0WN0D9GZ6z+nQ9N8Ta8mg==
-X-Received: by 2002:a17:902:c412:: with SMTP id
- k18mr18198324plk.120.1599451538052; 
- Sun, 06 Sep 2020 21:05:38 -0700 (PDT)
-Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id
- a138sm13726346pfd.19.2020.09.06.21.05.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 21:05:37 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v3] configure: Fixes ncursesw detection under msys2/mingw and
- enable curses
-Date: Mon,  7 Sep 2020 12:05:23 +0800
-Message-Id: <20200907040523.1842-1-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=uAWCekkydZn1lOHe45YNp0uVn0gd0Kd5AXukfWwTbNU=;
+ b=d1OwWz9CRzbiiTi5fjsZCA/GaoJ9DLu9TSIGgt3RqUa1dhQ2jiE4vU5Wp6JZPwIZWG
+ aq3zgxGM7ENTc/Ce/nh/3VJn27646+DFAxEEruDKiVH+PQEcphodxGTNVJba0QF8LqaA
+ 7XDrU+q6Sej5riH2pz7d9rGunKGg9/Fvg2iILI9aQsFyhjciIFrbIRG45+p/PbuqyCls
+ G5Lhfw9/JyVkQlPOtdsaHx5/wOhih1B2/O6SSrkam0RdIIgg8nBSYO/TqFiwGzbKUzwU
+ pVgy2dXxHL3Adl+fOIt0GR21iimtoyxyPMwdzBCOyDX917nwII534w6mhrB0e6LvvL64
+ rKsA==
+X-Gm-Message-State: AOAM533VHlAj6/Sx+B6HC5E+ifitCp7gVGsI1cJ/pc6Uckn1nJKL0WB6
+ vI9Qh28HhP92BitgkydSPXqt43e2xhoYUG7fcMU=
+X-Google-Smtp-Source: ABdhPJxhcyunMsMtBHpPQqWD9+SiWuUF7KNz9vvE1ROZuMUHvqHZ0U2sEI/6FlrSW4q4wOiuktf9/VqJcD44OuMQuqc=
+X-Received: by 2002:a19:b83:: with SMTP id 125mr5057367lfl.126.1599452435806; 
+ Sun, 06 Sep 2020 21:20:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x643.google.com
+References: <20200905204236.1508-1-luoyonggang@gmail.com>
+ <b40c03d0-99bc-eb94-200f-7cf9a7734797@linaro.org>
+In-Reply-To: <b40c03d0-99bc-eb94-200f-7cf9a7734797@linaro.org>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Mon, 7 Sep 2020 12:20:24 +0800
+Message-ID: <CAE2XoE9qajeCRoVBZYBSYycdB-+j0fL2atfUjP-vkhXHhjp9tg@mail.gmail.com>
+Subject: Re: [PATCH] configure: Fixes ncursesw detection under msys2/mingw and
+ enable curses
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000457c8405aeb18af3"
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -63,7 +60,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,126 +74,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 04:05:42 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 04:21:17 -0000
 
-The mingw pkg-config are showing following absolute path and contains : as the separator,
-so we must handling : properly.
+--000000000000457c8405aeb18af3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC:/CI-Tools/msys64/mingw64/include/ncursesw:-I/usr/include/ncursesw:
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lncursesw
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lcursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lcursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lcursesw
+On Sun, Sep 6, 2020 at 11:28 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-MINGW doesn't have langinfo.h, only exist in glic and musl
+> On 9/5/20 1:42 PM, Yonggang Luo wrote:
+> > +    nativecharset_to_ucs2 =3D iconv_open("UCS-2", g_get_codeset());
+>
+> g_get_codeset():
+> "a newly allocated string containing the name of the character set. This
+> string
+> must be freed with g_free()."
+>
+> You need to plug the memory leak.
+>
+> It's probably worth fixing the mistake in which we call this function fou=
+r
+> times from the same function.
+>
+Done with autofree
 
-gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
-test.c:4:10: fatal error: langinfo.h: No such file or directory
-    4 | #include <langinfo.h>
-      |          ^~~~~~~~~~~~
-compilation terminated.
+>
+>
+> r~
+>
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- configure   |  9 +++------
- ui/curses.c | 10 +++++-----
- 2 files changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/configure b/configure
-index f8cbd2898c..2dc25bda69 100755
---- a/configure
-+++ b/configure
-@@ -3620,8 +3620,8 @@ if test "$iconv" = "no" ; then
- fi
- if test "$curses" != "no" ; then
-   if test "$mingw32" = "yes" ; then
--    curses_inc_list="$($pkg_config --cflags ncurses 2>/dev/null):"
--    curses_lib_list="$($pkg_config --libs ncurses 2>/dev/null):-lpdcurses"
-+    curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/${MSYSTEM,,}/include/ncursesw:"
-+    curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw"
-   else
-     curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/usr/include/ncursesw:"
-     curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw:-lcursesw"
-@@ -3631,17 +3631,14 @@ if test "$curses" != "no" ; then
- #include <locale.h>
- #include <curses.h>
- #include <wchar.h>
--#include <langinfo.h>
- int main(void) {
--  const char *codeset;
-   wchar_t wch = L'w';
-   setlocale(LC_ALL, "");
-   resize_term(0, 0);
-   addwstr(L"wide chars\n");
-   addnwstr(&wch, 1);
-   add_wch(WACS_DEGREE);
--  codeset = nl_langinfo(CODESET);
--  return codeset != 0;
-+  return 0;
- }
- EOF
-   IFS=:
-diff --git a/ui/curses.c b/ui/curses.c
-index a59b23a9cf..12bc682cf9 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -30,7 +30,6 @@
- #endif
- #include <locale.h>
- #include <wchar.h>
--#include <langinfo.h>
- #include <iconv.h>
- 
- #include "qapi/error.h"
-@@ -526,6 +525,7 @@ static void font_setup(void)
-     iconv_t nativecharset_to_ucs2;
-     iconv_t font_conv;
-     int i;
-+    g_autofree gchar *local_codeset = g_get_codeset();
- 
-     /*
-      * Control characters are normally non-printable, but VGA does have
-@@ -566,14 +566,14 @@ static void font_setup(void)
-       0x25bc
-     };
- 
--    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
-+    ucs2_to_nativecharset = iconv_open(local_codeset, "UCS-2");
-     if (ucs2_to_nativecharset == (iconv_t) -1) {
-         fprintf(stderr, "Could not convert font glyphs from UCS-2: '%s'\n",
-                         strerror(errno));
-         exit(1);
-     }
- 
--    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
-+    nativecharset_to_ucs2 = iconv_open("UCS-2", local_codeset);
-     if (nativecharset_to_ucs2 == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         fprintf(stderr, "Could not convert font glyphs to UCS-2: '%s'\n",
-@@ -581,7 +581,7 @@ static void font_setup(void)
-         exit(1);
-     }
- 
--    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
-+    font_conv = iconv_open(local_codeset, font_charset);
-     if (font_conv == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         iconv_close(nativecharset_to_ucs2);
-@@ -602,7 +602,7 @@ static void font_setup(void)
-     /* DEL */
-     convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
- 
--    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
-+    if (strcmp(local_codeset, "UTF-8")) {
-         /* Non-Unicode capable, use termcap equivalents for those available */
-         for (i = 0; i <= 0xFF; i++) {
-             wchar_t wch[CCHARW_MAX];
--- 
-2.28.0.windows.1
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
+--000000000000457c8405aeb18af3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Sep 6, 2020 at 11:28 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 9/5/20 1:42 PM, Yonggang Luo wrote:<br>
+&gt; +=C2=A0 =C2=A0 nativecharset_to_ucs2 =3D iconv_open(&quot;UCS-2&quot;,=
+ g_get_codeset());<br>
+<br>
+g_get_codeset():<br>
+&quot;a newly allocated string containing the name of the character set. Th=
+is string<br>
+must be freed with g_free().&quot;<br>
+<br>
+You need to plug the memory leak.<br>
+<br>
+It&#39;s probably worth fixing the mistake in which we call this function f=
+our<br>
+times from the same function.<br></blockquote><div>Done with autofree=C2=A0=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+<br>
+r~<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature">=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =E6=AD=A4=E8=
+=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=
+=A0 sincerely,<br>Yonggang Luo<br></div></div>
+
+--000000000000457c8405aeb18af3--
 
