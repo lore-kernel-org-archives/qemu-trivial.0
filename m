@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF6Nq-0006Fr-2z
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59836)
+	id 1kF6Nv-0006IH-8x
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Nn-0006B5-V4; Sun, 06 Sep 2020 21:55:47 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53847)
+ id 1kF6Np-0006F1-AP; Sun, 06 Sep 2020 21:55:49 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53845)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Nm-0007La-Cv; Sun, 06 Sep 2020 21:55:47 -0400
-Received: by mail-wm1-x344.google.com with SMTP id x23so2943833wmi.3;
+ id 1kF6Nm-0007Ll-Oa; Sun, 06 Sep 2020 21:55:48 -0400
+Received: by mail-wm1-x341.google.com with SMTP id x23so2943843wmi.3;
  Sun, 06 Sep 2020 18:55:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0L6FMvGCY7Yqd00xQ/ZxKfuTHVYGmeZNYt98i5HNRDQ=;
- b=Nu9yn4I572XTs2h/pxBeMKSFLjGP9QBvQ5EEsO3R1rF7zesE2dh8nvd0nrdIqqMaLp
- ic9oKnFgq6cR/TRt4Hdn/iHYWZaHLT+GrhyXe5nBxvuY1f1Ctu7yIeXfzB62LAbRyqDa
- I6HIuDYOGDPDIspKcvyQPki2OmqbC2O7KZ2rlz0AIIR05wwcMLuorORaY4ZGvhOmcBQp
- HTO2MfRSVVimUnQy9hVrbfclPgmuCcH7NPvhWk/5v6y0kdBgTycUkoVhKsy+2t0bNn9C
- E13N8BLsQt9pKPblQe4CL3U8yGPc5QuvYPP/MNg6ZQR/V4iHcCZH4Co5hAjbUmIl/5Cu
- 92vA==
+ bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
+ b=ZAKXwIlcheRQ7uF37G0Dw/DfnyfX5wqZKGp1+82B+xSifzGM6ZyoVOImVmIi4Rpc4q
+ RLKMsl7/hnNTi0WhrtNcucLt0F/WQNWJbD0P4RpyiGFAtGswN2Eya/MBpN59KOZbFN2/
+ p830v0NIPzfSaniixt1aM6PCSEl/bdp0p9N/ytv2nLHb0qYUmzL+zhwIeh1ru/TPR3t/
+ yAjXd1MajOZ4DC4q8nFMkMXJQQxsKBzvDVCo1kZCSFaPN+OrqV4yFLX1Y1z4I/+5iWPJ
+ kHsoNK5qP4nW5/nD5ZqzVdzQo6PYSTtyMr5Q/x/L5NrZwEx/coQH+2clx9c3VE2XrMWa
+ v8KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=0L6FMvGCY7Yqd00xQ/ZxKfuTHVYGmeZNYt98i5HNRDQ=;
- b=FlBQXChFP70ARsl5nvgmK48HtAYz6tgf1jd7Dwg7W8U4S2zeT5KjSSU2MqMNWG/nbx
- +q+RuiqapzDQv6g9aR6FcrdKHNt0QhV20V4tuqBinGclDdnJt5+Z6+aohmsALGBNSZDv
- 9vyLvoUzxCRjvhK3Qbt/wNe/jIIMvk68fL+EenMCKEXiPc2x3pmgnuB+2F7AyWcf41a6
- ZFz1fMvJq5x0ZXxP6fFax2kExSuHWYO7ETS8e4B4CawYmoI+4Cf7cbn3DbFWVst2LUwA
- xVBVWZU6D0yK4OzD5CWRHN95ALGBhTgNTyBKSGnhLK5DMJtP6lrw5MK4GRz9RjMDUyny
- T5Rw==
-X-Gm-Message-State: AOAM531yiBuRAEB3WVNLHyE4Z2vtNhOiWC3DFW4mp/d3LBDSMTK8UnIt
- 5a7c7t20om/qHUzHxJlZYePUZnksyLE=
-X-Google-Smtp-Source: ABdhPJz0+Wx8FlePRpciApvzJoZqsUGQeqDUyIJzpgtF9yr1rUki+orEphbcJKcqE9s5fB3m0cYnDg==
-X-Received: by 2002:a1c:7c13:: with SMTP id x19mr18864165wmc.45.1599443744300; 
- Sun, 06 Sep 2020 18:55:44 -0700 (PDT)
+ bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
+ b=GWpQKoGgktMz4coMInEGyuIX93paISNoPpxZC9NdpdtZyTfvU6i6eelFweo1eQBMxZ
+ ysyzgeV1dN1LPPxYWQg3JIBlGAOHBiK9C/t6nR9vWVMfLchCYXVQIPbDTh4Uo/Ls2Cos
+ 1D2KvdR2obNo2ewE7wnIw9nK0sT3F34Y3eNbb6+THxNFehgqu/yBmqqJot9j5lvfiGd7
+ dgLi5DFeR86fjZxrP9bgstLDw4Ob4hP0X1FXt+6le38Oo4VqlvwviX/klikzciQycmbf
+ GcFvWz+QtrgQfXtPyS7YG3rgKr/yumsIP9ojsEi1AcLVfrpOPg/x5TTaRiNtcfUMPL26
+ n2fg==
+X-Gm-Message-State: AOAM533BKlF0zOTl1h6uMeDIjG8iXp/qtSp2I7S8+9/Lw5uUphG7sTIh
+ uUL+CiQXfcpQWHcRHWAI/tPN+7HhMvw=
+X-Google-Smtp-Source: ABdhPJwNPzGEimfV5QOVz6vrgn92szWy9wM++PUUZin7MUiYC/kpwkBNb+m+g9zmFtBocHxJClDB3A==
+X-Received: by 2002:a05:600c:2317:: with SMTP id
+ 23mr19335637wmo.183.1599443741827; 
+ Sun, 06 Sep 2020 18:55:41 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.43
+ by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 18:55:43 -0700 (PDT)
+ Sun, 06 Sep 2020 18:55:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -49,10 +50,11 @@ To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 5/7] hw/char/serial: Make 'wakeup' property boolean
-Date: Mon,  7 Sep 2020 03:55:33 +0200
-Message-Id: <20200907015535.827885-6-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 3/7] hw/char/serial: Remove old DEBUG_SERIAL commented code
+Date: Mon,  7 Sep 2020 03:55:31 +0200
+Message-Id: <20200907015535.827885-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200907015535.827885-1-f4bug@amsat.org>
 References: <20200907015535.827885-1-f4bug@amsat.org>
@@ -60,8 +62,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -84,59 +86,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 01:55:48 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 01:55:51 -0000
 
-Make the "wakeup" property introduced in commit 9826fd597df
-("suspend: make serial ports wakeup the guest") a boolean.
+All useful DPRINTF() calls have been converted to trace
+events.  Remove a pointless one in the IOEventHandler,
+and drop the DEBUG_SERIAL ifdef'ry.
 
-As we want to reuse the generic serial properties in the
-ISA model (next commit), expose this property.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/char/serial.h | 2 +-
- hw/char/serial-isa.c     | 2 +-
- hw/char/serial.c         | 1 +
- 3 files changed, 3 insertions(+), 2 deletions(-)
+ hw/char/serial.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 535fa23a2b8..3d2a5b27e87 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -60,7 +60,7 @@ typedef struct SerialState {
-     uint32_t baudbase;
-     uint32_t tsr_retry;
-     guint watch_tag;
--    uint32_t wakeup;
-+    bool wakeup;
- 
-     /* Time when the last byte was successfully sent out of the tsr */
-     uint64_t last_xmit_ts;
-diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
-index b4c65949cd8..a0c338796d5 100644
---- a/hw/char/serial-isa.c
-+++ b/hw/char/serial-isa.c
-@@ -116,7 +116,7 @@ static Property serial_isa_properties[] = {
-     DEFINE_PROP_UINT32("iobase",  ISASerialState, iobase,  -1),
-     DEFINE_PROP_UINT32("irq",    ISASerialState, isairq,  -1),
-     DEFINE_PROP_CHR("chardev",   ISASerialState, state.chr),
--    DEFINE_PROP_UINT32("wakeup", ISASerialState, state.wakeup, 0),
-+    DEFINE_PROP_BOOL("wakeup",   ISASerialState, state.wakeup, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index ade4adfd526..ade89fadb44 100644
+index fb41337b661..1e70294f28a 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -1015,6 +1015,7 @@ static const TypeInfo serial_io_info = {
- static Property serial_properties[] = {
-     DEFINE_PROP_CHR("chardev", SerialState, chr),
-     DEFINE_PROP_UINT32("baudbase", SerialState, baudbase, 115200),
-+    DEFINE_PROP_BOOL("wakeup", SerialState, wakeup, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
+@@ -36,8 +36,6 @@
+ #include "trace.h"
+ #include "hw/qdev-properties.h"
  
+-//#define DEBUG_SERIAL
+-
+ #define UART_LCR_DLAB	0x80	/* Divisor latch access bit */
+ 
+ #define UART_IER_MSI	0x08	/* Enable Modem status interrupt */
+@@ -102,14 +100,6 @@
+ 
+ #define MAX_XMIT_RETRY      4
+ 
+-#ifdef DEBUG_SERIAL
+-#define DPRINTF(fmt, ...) \
+-do { fprintf(stderr, "serial: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) \
+-do {} while (0)
+-#endif
+-
+ static void serial_receive1(void *opaque, const uint8_t *buf, int size);
+ static void serial_xmit(SerialState *s);
+ 
+@@ -636,7 +626,6 @@ static void serial_receive1(void *opaque, const uint8_t *buf, int size)
+ static void serial_event(void *opaque, QEMUChrEvent event)
+ {
+     SerialState *s = opaque;
+-    DPRINTF("event %x\n", event);
+     if (event == CHR_EVENT_BREAK)
+         serial_receive_break(s);
+ }
 -- 
 2.26.2
 
