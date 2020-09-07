@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF6Nv-0006IH-8x
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59862)
+	id 1kF6Nx-0006Jj-Dk
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 21:55:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59864)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Np-0006F1-AP; Sun, 06 Sep 2020 21:55:49 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53845)
+ id 1kF6Np-0006FQ-Ir; Sun, 06 Sep 2020 21:55:49 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33177)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kF6Nm-0007Ll-Oa; Sun, 06 Sep 2020 21:55:48 -0400
-Received: by mail-wm1-x341.google.com with SMTP id x23so2943843wmi.3;
- Sun, 06 Sep 2020 18:55:45 -0700 (PDT)
+ id 1kF6No-0007M4-2x; Sun, 06 Sep 2020 21:55:49 -0400
+Received: by mail-wm1-x344.google.com with SMTP id e11so11335164wme.0;
+ Sun, 06 Sep 2020 18:55:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
- b=ZAKXwIlcheRQ7uF37G0Dw/DfnyfX5wqZKGp1+82B+xSifzGM6ZyoVOImVmIi4Rpc4q
- RLKMsl7/hnNTi0WhrtNcucLt0F/WQNWJbD0P4RpyiGFAtGswN2Eya/MBpN59KOZbFN2/
- p830v0NIPzfSaniixt1aM6PCSEl/bdp0p9N/ytv2nLHb0qYUmzL+zhwIeh1ru/TPR3t/
- yAjXd1MajOZ4DC4q8nFMkMXJQQxsKBzvDVCo1kZCSFaPN+OrqV4yFLX1Y1z4I/+5iWPJ
- kHsoNK5qP4nW5/nD5ZqzVdzQo6PYSTtyMr5Q/x/L5NrZwEx/coQH+2clx9c3VE2XrMWa
- v8KQ==
+ bh=rOdtOAtfcg70s6XvC95J7b24iDolYSlhUR8qCVqx1mg=;
+ b=TT96a1438TOU1/6XpjJ8jj2zBffaiIoSy0PrPjy/Ye7Lj+J3ZhA8EyX/9nIO75eO27
+ OspzVsLIAY4GzBsdrgV2/qCgv9hHMiCL/LUUC2fK74JnxksNAh3ZCVqgpYQxt4Q7pOdQ
+ VaHrUjCCooeQSWR3kRfnDbz9K2fn4pOlyBm9xvxUkQ4D0prr0oPhH6JKO6j948TYJuGo
+ 0AENerUpdiidW8eJgYhJF37rXkvjtHmffAQ5EcZLRR+UtOlTfXF0wWN6aRSXB2JTWHPY
+ 1gqSeMlrCUC6nx4HRrXe3SVrdS69w4lWdklPqL0z9rtRUhQ1/zABfaWez8LkqBHlqPNb
+ GA7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
- b=GWpQKoGgktMz4coMInEGyuIX93paISNoPpxZC9NdpdtZyTfvU6i6eelFweo1eQBMxZ
- ysyzgeV1dN1LPPxYWQg3JIBlGAOHBiK9C/t6nR9vWVMfLchCYXVQIPbDTh4Uo/Ls2Cos
- 1D2KvdR2obNo2ewE7wnIw9nK0sT3F34Y3eNbb6+THxNFehgqu/yBmqqJot9j5lvfiGd7
- dgLi5DFeR86fjZxrP9bgstLDw4Ob4hP0X1FXt+6le38Oo4VqlvwviX/klikzciQycmbf
- GcFvWz+QtrgQfXtPyS7YG3rgKr/yumsIP9ojsEi1AcLVfrpOPg/x5TTaRiNtcfUMPL26
- n2fg==
-X-Gm-Message-State: AOAM533BKlF0zOTl1h6uMeDIjG8iXp/qtSp2I7S8+9/Lw5uUphG7sTIh
- uUL+CiQXfcpQWHcRHWAI/tPN+7HhMvw=
-X-Google-Smtp-Source: ABdhPJwNPzGEimfV5QOVz6vrgn92szWy9wM++PUUZin7MUiYC/kpwkBNb+m+g9zmFtBocHxJClDB3A==
-X-Received: by 2002:a05:600c:2317:: with SMTP id
- 23mr19335637wmo.183.1599443741827; 
- Sun, 06 Sep 2020 18:55:41 -0700 (PDT)
+ bh=rOdtOAtfcg70s6XvC95J7b24iDolYSlhUR8qCVqx1mg=;
+ b=k/J7waaRDhtmANu46MTOfYAaQEj5FVoc6QzwLAG7uYtfegJoCPfVtZ7mzd/z6O2L/d
+ h+eZKBQUcUEwNTyAkHL2EFz4P2WBsbv+VO+ktj4Nho//8zmKiuCG8DNHL+fUKh+D+RpG
+ MEPI14BrGRpYCF15lYgpyAtqVtga9PS23Z+jtQHGsCCiLdc2MBegn6z1mRLjienfijex
+ 5QDlvspQcpKxhhDNCBLsd0rU1BIF8eklOGN+6t0mZdAOlg194vfQVT/uefVseWUsQX63
+ WY+Ez9wmqlKsibsHymC27z2Iujpeg+H7QyoJVm09Rvw7e+R/1vDgzsZObSS/UZJ2tlKA
+ tI8g==
+X-Gm-Message-State: AOAM532AhrW484EE6AE8Zt8ArDJhp8YFWqIeYCBBE0EaCb1U3y6Yxtsp
+ T7ArO5R3jBCU3n3szDAuV+2QzSFAdrc=
+X-Google-Smtp-Source: ABdhPJyp8VaHrFYgHeJQJsDHWfkSgg16a4KeNBjBfG3vUUMYvh7lgQs1hEDw1k3xQa+VU3SkLTUYAw==
+X-Received: by 2002:a1c:6145:: with SMTP id v66mr19218611wmb.171.1599443746206; 
+ Sun, 06 Sep 2020 18:55:46 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.40
+ by smtp.gmail.com with ESMTPSA id b84sm29377773wmd.0.2020.09.06.18.55.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 18:55:41 -0700 (PDT)
+ Sun, 06 Sep 2020 18:55:44 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -50,11 +49,11 @@ To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 3/7] hw/char/serial: Remove old DEBUG_SERIAL commented code
-Date: Mon,  7 Sep 2020 03:55:31 +0200
-Message-Id: <20200907015535.827885-4-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 6/7] hw/char/serial-isa: Alias QDEV properties from generic
+ serial object
+Date: Mon,  7 Sep 2020 03:55:34 +0200
+Message-Id: <20200907015535.827885-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200907015535.827885-1-f4bug@amsat.org>
 References: <20200907015535.827885-1-f4bug@amsat.org>
@@ -62,8 +61,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -86,54 +85,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 01:55:51 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 01:55:53 -0000
 
-All useful DPRINTF() calls have been converted to trace
-events.  Remove a pointless one in the IOEventHandler,
-and drop the DEBUG_SERIAL ifdef'ry.
+Instead of overwritting the properties of the generic 'state'
+object, alias them.
+Note we can now propagate the "baudbase" property.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/serial.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ hw/char/serial-isa.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index fb41337b661..1e70294f28a 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -36,8 +36,6 @@
- #include "trace.h"
- #include "hw/qdev-properties.h"
+diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
+index a0c338796d5..0626edda8d1 100644
+--- a/hw/char/serial-isa.c
++++ b/hw/char/serial-isa.c
+@@ -115,8 +115,6 @@ static Property serial_isa_properties[] = {
+     DEFINE_PROP_UINT32("index",  ISASerialState, index,   -1),
+     DEFINE_PROP_UINT32("iobase",  ISASerialState, iobase,  -1),
+     DEFINE_PROP_UINT32("irq",    ISASerialState, isairq,  -1),
+-    DEFINE_PROP_CHR("chardev",   ISASerialState, state.chr),
+-    DEFINE_PROP_BOOL("wakeup",   ISASerialState, state.wakeup, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
  
--//#define DEBUG_SERIAL
--
- #define UART_LCR_DLAB	0x80	/* Divisor latch access bit */
+@@ -137,6 +135,8 @@ static void serial_isa_initfn(Object *o)
+     ISASerialState *self = ISA_SERIAL(o);
  
- #define UART_IER_MSI	0x08	/* Enable Modem status interrupt */
-@@ -102,14 +100,6 @@
- 
- #define MAX_XMIT_RETRY      4
- 
--#ifdef DEBUG_SERIAL
--#define DPRINTF(fmt, ...) \
--do { fprintf(stderr, "serial: " fmt , ## __VA_ARGS__); } while (0)
--#else
--#define DPRINTF(fmt, ...) \
--do {} while (0)
--#endif
--
- static void serial_receive1(void *opaque, const uint8_t *buf, int size);
- static void serial_xmit(SerialState *s);
- 
-@@ -636,7 +626,6 @@ static void serial_receive1(void *opaque, const uint8_t *buf, int size)
- static void serial_event(void *opaque, QEMUChrEvent event)
- {
-     SerialState *s = opaque;
--    DPRINTF("event %x\n", event);
-     if (event == CHR_EVENT_BREAK)
-         serial_receive_break(s);
+     object_initialize_child(o, "serial", &self->state, TYPE_SERIAL);
++
++    qdev_alias_all_properties(DEVICE(&self->state), o);
  }
+ 
+ static const TypeInfo serial_isa_info = {
 -- 
 2.26.2
 
