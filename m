@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kF7tG-0004n6-O5
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2020 23:32:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43300)
+	id 1kF8PX-0003Ww-Ac
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 00:05:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48696)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kF7tF-0004lu-3Q; Sun, 06 Sep 2020 23:32:21 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:37341)
+ id 1kF8PW-0003W2-33; Mon, 07 Sep 2020 00:05:42 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42564)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kF7tD-0001w3-A0; Sun, 06 Sep 2020 23:32:20 -0400
-Received: by mail-pf1-x443.google.com with SMTP id w7so7908044pfi.4;
- Sun, 06 Sep 2020 20:32:18 -0700 (PDT)
+ id 1kF8PU-0005Qm-B1; Mon, 07 Sep 2020 00:05:41 -0400
+Received: by mail-pl1-x643.google.com with SMTP id y6so1419673plt.9;
+ Sun, 06 Sep 2020 21:05:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=nAx6s0n7EquPuKtbRfQCQcpP1wZJocedy6K5u8E7EDo=;
- b=et8TH88KAEvaQt4beYyr20+X4EvGDTuta0UPlHeG33J0BEG/JRZVxNFuSUJpvSol3I
- MUM/5OTL/pRfn18RJ6doWKoXz3w6lSaf3iB+eiFFyoUq/yYeq9bATBH5k4W2Z3oBCITd
- 8flU5B3KEVeOSjxGRIk/xWAd8YnAoueP8JWAWGPua3VFPSmKvDf3ATduhsChbBKyQgya
- DHA1MsTC0ur4zM6n7GSJU6cXF3OzKkVhZGlEAiMFeak4eFZgrS8QBDYlgSBW2P6n5dkc
- LhuVFl2hN9nHFvRJNCzzmk4eXqShHCRJekC5EMLST/kmsHvieFswwn/H+lxxZGx/ztqm
- E0YA==
+ bh=MsDGWZdMFYlVObWUTNQg4i0KMQLXUbGWCWMsfzNNwCA=;
+ b=P2Q6m+4SAtfAlO2OwzDVkTH+syonhbQsCimE8LXc2wzL0S9a0mAKxvWwGtvgCHuiL+
+ 77WyuBx7L4Kkrqc+WbRe4roKbY1X8btHD666KPjcBs5wVYIobN7TYakGv7VY3Ma6XBSq
+ /SvO3FiT/m70hJdjwQrqIrud8qdaLF9wySypoyIbDNktgzT5IxYeB0Ax6HbfsW2Akdms
+ UH/74hQwLwEsc8e0MnRi4K/96Uj1QyIzBlRCvZcuWqRNncK3lDm3d9uh0uJy8tnKoMHT
+ /BKlroYZqfX1Mms5weBHv34Pmb9/FUnM5UjVRnsa+h0g8a2X7RdjKGDwUNpOse9Imvxg
+ 250g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=nAx6s0n7EquPuKtbRfQCQcpP1wZJocedy6K5u8E7EDo=;
- b=fs/Fpn05Tjfp3Y07mpRULRsx5Munt9DWYMqGwFLrH9zW6py50axKj9yZMRFZReII7m
- kwJ3dMGKZ57tl6AlOkgBwjuWPhRrdI/MpZl6dZSY6tdyc6BjlfCbA+jCZGfOdrSAXt73
- W5baWmqPqdXN08FN5//6lgm28ddFn/13CjsiO0rCU70m+ifZekeJHFP2jwTQ9VwC406C
- O+tNddayLF+lSeM/EA9pKh+NnWsTkO7uo35JnJnq+fEcbQJzaWV2R+d1CVSGwdqxD55E
- O5lzglZIXITN7A58URHwDG7obbB/YmogD6vL56B5alzLfKOlqwfWuIFsj3RsUXtEtk6k
- n16A==
-X-Gm-Message-State: AOAM531wStiAUt1FdSlZxZULBMoWoj4zpSuF5XlXKSPla4kODBY4NdsG
- 42NrXc8ZNurvwrzLyxyPuxAaHD/eOm4edAeh
-X-Google-Smtp-Source: ABdhPJzuFIypYQbGNaq+jH8XeaaNXD6FKPuGRL7tzl34f18XZUcNZbgJHHkjHVGqkmHBotBbWOiGZQ==
-X-Received: by 2002:a63:6d0d:: with SMTP id i13mr15673017pgc.372.1599449536980; 
- Sun, 06 Sep 2020 20:32:16 -0700 (PDT)
+ bh=MsDGWZdMFYlVObWUTNQg4i0KMQLXUbGWCWMsfzNNwCA=;
+ b=Kenk4orN5HO/7TfPNv7rjaM6tKdmzGzZrEf3DDsGL6BZY34FSeshjRMKzTeDXGZK+J
+ E4lfQ7m10nE+1FBdEjTyGIQ/m6xVtjpVCUdwI8QsTyv7xJTxmC2ui7XWGbG/uejPYwL5
+ e16cgy0lV3/Ieu5RqkGHO50xnWVgMMboPtQm4ko9rp8XWyjLST9QL7D41Caz9M7QBY2p
+ hvDwya7cmoVlbqdCBKJpQiqpRdUt8NRFzfjWTQZWAxQ9kj1PCmMk7OD+J52eNXDafDtN
+ pgDcm58hLbH10Fxr3AGPaYGFYcc42NT1yVNdF+6dtSbRvZxlrwWG+pH98JDDL7+Nxkoi
+ gQDw==
+X-Gm-Message-State: AOAM532vyw0zRria/IdglfQrLbdYGVByZefK80cM1BhnD8wNH0md6otY
+ 5zlBpRAKtbCnSQsUM0u4rIrdPLRIKghZMoit
+X-Google-Smtp-Source: ABdhPJwKwBZc2zGWFM7Yh5IleC2HUiP1TUVQK53A54Q8V2DMTU/fGlbpF0WN0D9GZ6z+nQ9N8Ta8mg==
+X-Received: by 2002:a17:902:c412:: with SMTP id
+ k18mr18198324plk.120.1599451538052; 
+ Sun, 06 Sep 2020 21:05:38 -0700 (PDT)
 Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id j18sm10973291pgm.30.2020.09.06.20.32.14
+ by smtp.googlemail.com with ESMTPSA id
+ a138sm13726346pfd.19.2020.09.06.21.05.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Sep 2020 20:32:16 -0700 (PDT)
+ Sun, 06 Sep 2020 21:05:37 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v2] configure: Fixes ncursesw detection under msys2/mingw and
+Subject: [PATCH v3] configure: Fixes ncursesw detection under msys2/mingw and
  enable curses
-Date: Mon,  7 Sep 2020 11:32:01 +0800
-Message-Id: <20200907033201.1453-1-luoyonggang@gmail.com>
+Date: Mon,  7 Sep 2020 12:05:23 +0800
+Message-Id: <20200907040523.1842-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x443.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -75,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 03:32:21 -0000
+X-List-Received-Date: Mon, 07 Sep 2020 04:05:42 -0000
 
 The mingw pkg-config are showing following absolute path and contains : as the separator,
 so we must handling : properly.
@@ -140,7 +142,7 @@ index f8cbd2898c..2dc25bda69 100755
  EOF
    IFS=:
 diff --git a/ui/curses.c b/ui/curses.c
-index a59b23a9cf..f13804e942 100644
+index a59b23a9cf..12bc682cf9 100644
 --- a/ui/curses.c
 +++ b/ui/curses.c
 @@ -30,7 +30,6 @@
@@ -155,7 +157,7 @@ index a59b23a9cf..f13804e942 100644
      iconv_t nativecharset_to_ucs2;
      iconv_t font_conv;
      int i;
-+    g_autoptr(gchar) local_codeset = g_get_codeset();
++    g_autofree gchar *local_codeset = g_get_codeset();
  
      /*
       * Control characters are normally non-printable, but VGA does have
