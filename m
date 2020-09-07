@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kFLVS-0003HR-RI
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 14:04:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38636)
+	id 1kFLct-0005au-JF
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2020 14:12:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFLVR-0003GT-50; Mon, 07 Sep 2020 14:04:41 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:41429)
+ id 1kFLcq-0005Z7-7h; Mon, 07 Sep 2020 14:12:20 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:44799)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFLVP-0002K5-AP; Mon, 07 Sep 2020 14:04:40 -0400
-Received: by mail-pg1-x542.google.com with SMTP id w186so8322638pgb.8;
- Mon, 07 Sep 2020 11:04:38 -0700 (PDT)
+ id 1kFLco-0003Uw-Em; Mon, 07 Sep 2020 14:12:19 -0400
+Received: by mail-pf1-x441.google.com with SMTP id o20so8953196pfp.11;
+ Mon, 07 Sep 2020 11:12:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=vYVNcO+j3y5vx77lLAsjhQ4Ubiy/GtT4uVJMQ/0BKPY=;
- b=WNxNX3zeMMtG2N9EDBROskg+R3ugjzfp6Me6pMJlg53S+a6WkyQYRBFERaEEfChYcz
- z112VJnTX6HHT5tm75zFuYYzP4ZM5T5+l6rth2QgaAmil3aintjc1O9uftG8MLGt80uJ
- Thd+k0ovvwD2azxmJAohAuoXotY14v4BBIfoZ2qou8Ho5wLyL12evBbfbxrvVBm/tukL
- Q4cJyPkKZ+YMlbLoTM3rt8atrX3ZoPyte1JkpBZ3f8YDqbNoFo/FVSSZvWKfHLSFk44i
- Mpscc8dRMSTCs9SciwhEqw1v/tawV6HtpgfY2Po3ioY2tre/8Knd4TMGqMHoIuK2OP4T
- dOPA==
+ bh=bscWSrwzBlA91ho91MKRFqbKOrFCfnhQG9RPGa7f72A=;
+ b=nbZtP2xfNQelrpGVvPjniH+IuZEFq1QURYHtG5nLjJ2/6cHZ3UeGnFAF2o4dz7sMHX
+ 9n9hYcjgs3bqicW4x0hVWNSbE9mruhHLX2JqXK2+UDvutmNoqXfW9SfueJ++yP7wQpe9
+ wIA6TyXrJTz4Kdgv0rEf66sHMSf+oRtbXRV+zqHHRhSzsfXuTdVMGtMGKfKAUVPk65fA
+ xs9DcDDMNJKXz+tXcrOBA7FmO3fml1GTiCcpW6WQ8GqjT3dFLfF/bmHik+2hnwsjUeeN
+ +yeFHEka14drqzLFE1NUZTOg0LLL9WzXgjC4PHw++Z2wYz0qTOgXeD0cDiJmXfVdGBt7
+ 4xiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=vYVNcO+j3y5vx77lLAsjhQ4Ubiy/GtT4uVJMQ/0BKPY=;
- b=aPygwrE2T4zhlRECJrGj7+XHSerAAx2prSXCGCF7XgMezDTkBUwiMM1KA+zdKW1VR7
- C62Z3yPWnCcZwfiMzKGtyL34+7rf1NVVcbB3ybRbzdlq1DTa5N2WjWB07uijhB+qWFvN
- pAmOgGvVnCAHiYq8EnZBhS2Cl/O7eLpZ778aDFbEo9UZMFjrv4AcaVq1j2PK+3T2OyqG
- jGCeVfORHvIslk0yov27lZSaZbGll2oxChr0+HTzzOA0udVvX42RO1ZauJa9Gulj/fXA
- Id88bVDT9LvYzTx0fkgrhgQtk4MBS4AnIXGBX9gx4msEijZsVHmmhY0/HWxvsOliCZHn
- uvXw==
-X-Gm-Message-State: AOAM533ufOFoz+TtGrPwVyzRq1BvZApYFv6IHxm5OHD1OJd09/Ts8frZ
- VtMudmvK7hCQRDxKn7ze/whle73LyV+bniVc
-X-Google-Smtp-Source: ABdhPJwxuUyEIBFPLQhMaDr1g/SEpuhcXSFXtt59UPVIa/T0CNOANtrFV8vhIzxaTyMAPPfByScGAA==
-X-Received: by 2002:a63:4503:: with SMTP id s3mr17646213pga.119.1599501877162; 
- Mon, 07 Sep 2020 11:04:37 -0700 (PDT)
+ bh=bscWSrwzBlA91ho91MKRFqbKOrFCfnhQG9RPGa7f72A=;
+ b=JUUnDfZnuVwjImXXOtttttldZ3KkYHCsEy5aLyy+e3xtV7/mel4n79o4CVGWLkHQ4K
+ LFHbh/FjP1uPks7FZK7ug3gZigoBuJyYFDfE6sC6PZ0Hdc44EM+Z/+GAKjSC884ERgI6
+ 9M8tzDB0+I6VeYWq2ainoa7UtI6nDQUQRqPwFIHKjak91RMooZrxrw81bMEGrxtoLEgo
+ vl8kJnCqnGRm1t2X08LDTNPutiFHhcN1bMHtKhqgJM728NnuARLpCzpjCB2rzzp8dLGi
+ 5fiSrFEygTjVVs3PmKkl1X8wWcUHToHub8fBbUXjmoWickJQ4bQ1CSh3pB00oE5cGlOu
+ 0KRw==
+X-Gm-Message-State: AOAM532vvjNoVK6f6S4FBLY1D3TbKdfGL/Sfpt2jGQsQk1K09Y3pXvo7
+ jgVHI6bex1yhCrIbCdTA4p2hN9L83h6/Q6OE
+X-Google-Smtp-Source: ABdhPJyTxqvCti7/h6aHkqKDfWSvWfNbTY3lq6OXJrQLcd84HOBoLti7xLHN4itMzNy0SkP3WS/Qbg==
+X-Received: by 2002:a17:902:ab92:: with SMTP id
+ f18mr20082156plr.12.1599502335772; 
+ Mon, 07 Sep 2020 11:12:15 -0700 (PDT)
 Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id z22sm16906110pjq.2.2020.09.07.11.04.34
+ by smtp.googlemail.com with ESMTPSA id w10sm13013443pjq.46.2020.09.07.11.12.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2020 11:04:36 -0700 (PDT)
+ Mon, 07 Sep 2020 11:12:14 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v4] configure: Fixes ncursesw detection under msys2/mingw and
- enable curses
-Date: Tue,  8 Sep 2020 02:04:22 +0800
-Message-Id: <20200907180422.1955-1-luoyonggang@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Peter Lieven <pl@kamp.de>,
+ Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] block: Fixes nfs on msys2/mingw
+Date: Tue,  8 Sep 2020 02:12:01 +0800
+Message-Id: <20200907181201.2186-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -76,125 +76,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2020 18:04:41 -0000
-
-The mingw pkg-config are showing following absolute path and contains : as the separator,
-so we must handling : properly.
-
--D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC:/CI-Tools/msys64/mingw64/include/ncursesw:-I/usr/include/ncursesw:
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lncursesw
--DNCURSES_WIDECHAR -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=199506L -IC -lcursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR /CI-Tools/msys64/mingw64/include/ncursesw -lcursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lncursesw
--DNCURSES_WIDECHAR -I/usr/include/ncursesw -lcursesw
-
-MINGW doesn't have langinfo.h, only exist in glic and musl
-
-gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
-test.c:4:10: fatal error: langinfo.h: No such file or directory
-    4 | #include <langinfo.h>
-      |          ^~~~~~~~~~~~
-compilation terminated.
+X-List-Received-Date: Mon, 07 Sep 2020 18:12:20 -0000
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- configure   |  9 +++------
- ui/curses.c | 10 +++++-----
- 2 files changed, 8 insertions(+), 11 deletions(-)
+ block/nfs.c | 26 +++++++++++++++++---------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
 
-diff --git a/configure b/configure
-index 1c634c8468..8ff5f9bc22 100755
---- a/configure
-+++ b/configure
-@@ -3638,8 +3638,8 @@ if test "$iconv" = "no" ; then
- fi
- if test "$curses" != "no" ; then
-   if test "$mingw32" = "yes" ; then
--    curses_inc_list="$($pkg_config --cflags ncurses 2>/dev/null):"
--    curses_lib_list="$($pkg_config --libs ncurses 2>/dev/null):-lpdcurses"
-+    curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/${MSYSTEM,,}/include/ncursesw:"
-+    curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw"
-   else
-     curses_inc_list="$($pkg_config --cflags ncursesw 2>/dev/null):-I/usr/include/ncursesw:"
-     curses_lib_list="$($pkg_config --libs ncursesw 2>/dev/null):-lncursesw:-lcursesw"
-@@ -3649,17 +3649,14 @@ if test "$curses" != "no" ; then
- #include <locale.h>
- #include <curses.h>
- #include <wchar.h>
--#include <langinfo.h>
- int main(void) {
--  const char *codeset;
-   wchar_t wch = L'w';
-   setlocale(LC_ALL, "");
-   resize_term(0, 0);
-   addwstr(L"wide chars\n");
-   addnwstr(&wch, 1);
-   add_wch(WACS_DEGREE);
--  codeset = nl_langinfo(CODESET);
--  return codeset != 0;
-+  return 0;
- }
- EOF
-   IFS=:
-diff --git a/ui/curses.c b/ui/curses.c
-index a59b23a9cf..12bc682cf9 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -30,7 +30,6 @@
- #endif
- #include <locale.h>
- #include <wchar.h>
--#include <langinfo.h>
- #include <iconv.h>
+diff --git a/block/nfs.c b/block/nfs.c
+index 61a249a9fc..34b2cd5708 100644
+--- a/block/nfs.c
++++ b/block/nfs.c
+@@ -24,7 +24,9 @@
  
+ #include "qemu/osdep.h"
+ 
++#if !defined(_WIN32)
+ #include <poll.h>
++#endif
+ #include "qemu/config-file.h"
+ #include "qemu/error-report.h"
  #include "qapi/error.h"
-@@ -526,6 +525,7 @@ static void font_setup(void)
-     iconv_t nativecharset_to_ucs2;
-     iconv_t font_conv;
-     int i;
-+    g_autofree gchar *local_codeset = g_get_codeset();
+@@ -51,6 +53,12 @@
+ #define QEMU_NFS_MAX_PAGECACHE_SIZE (8388608 / NFS_BLKSIZE)
+ #define QEMU_NFS_MAX_DEBUG_LEVEL 2
  
-     /*
-      * Control characters are normally non-printable, but VGA does have
-@@ -566,14 +566,14 @@ static void font_setup(void)
-       0x25bc
-     };
++#if defined (_WIN32)
++#define nfs_stat __stat64
++#else
++#define nfs_stat stat
++#endif
++
+ typedef struct NFSClient {
+     struct nfs_context *context;
+     struct nfsfh *fh;
+@@ -58,7 +66,7 @@ typedef struct NFSClient {
+     bool has_zero_init;
+     AioContext *aio_context;
+     QemuMutex mutex;
+-    blkcnt_t st_blocks;
++    int64_t st_size;
+     bool cache_used;
+     NFSServer *server;
+     char *path;
+@@ -70,7 +78,7 @@ typedef struct NFSRPC {
+     int ret;
+     int complete;
+     QEMUIOVector *iov;
+-    struct stat *st;
++    struct nfs_stat *st;
+     Coroutine *co;
+     NFSClient *client;
+ } NFSRPC;
+@@ -419,7 +427,7 @@ static int64_t nfs_client_open(NFSClient *client, BlockdevOptionsNfs *opts,
+                                int flags, int open_flags, Error **errp)
+ {
+     int64_t ret = -EINVAL;
+-    struct stat st;
++    struct nfs_stat st;
+     char *file = NULL, *strp = NULL;
  
--    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
-+    ucs2_to_nativecharset = iconv_open(local_codeset, "UCS-2");
-     if (ucs2_to_nativecharset == (iconv_t) -1) {
-         fprintf(stderr, "Could not convert font glyphs from UCS-2: '%s'\n",
-                         strerror(errno));
-         exit(1);
+     qemu_mutex_init(&client->mutex);
+@@ -545,7 +553,7 @@ static int64_t nfs_client_open(NFSClient *client, BlockdevOptionsNfs *opts,
      }
  
--    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
-+    nativecharset_to_ucs2 = iconv_open("UCS-2", local_codeset);
-     if (nativecharset_to_ucs2 == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         fprintf(stderr, "Could not convert font glyphs to UCS-2: '%s'\n",
-@@ -581,7 +581,7 @@ static void font_setup(void)
-         exit(1);
+     ret = DIV_ROUND_UP(st.st_size, BDRV_SECTOR_SIZE);
+-    client->st_blocks = st.st_blocks;
++    client->st_size = st.st_size;
+     client->has_zero_init = S_ISREG(st.st_mode);
+     *strp = '/';
+     goto out;
+@@ -729,11 +737,11 @@ static int64_t nfs_get_allocated_file_size(BlockDriverState *bs)
+ {
+     NFSClient *client = bs->opaque;
+     NFSRPC task = {0};
+-    struct stat st;
++    struct nfs_stat st;
+ 
+     if (bdrv_is_read_only(bs) &&
+         !(bs->open_flags & BDRV_O_NOCACHE)) {
+-        return client->st_blocks * 512;
++        return client->st_size;
      }
  
--    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
-+    font_conv = iconv_open(local_codeset, font_charset);
-     if (font_conv == (iconv_t) -1) {
-         iconv_close(ucs2_to_nativecharset);
-         iconv_close(nativecharset_to_ucs2);
-@@ -602,7 +602,7 @@ static void font_setup(void)
-     /* DEL */
-     convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
+     task.bs = bs;
+@@ -746,7 +754,7 @@ static int64_t nfs_get_allocated_file_size(BlockDriverState *bs)
+     nfs_set_events(client);
+     BDRV_POLL_WHILE(bs, !task.complete);
  
--    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
-+    if (strcmp(local_codeset, "UTF-8")) {
-         /* Non-Unicode capable, use termcap equivalents for those available */
-         for (i = 0; i <= 0xFF; i++) {
-             wchar_t wch[CCHARW_MAX];
+-    return (task.ret < 0 ? task.ret : st.st_blocks * 512);
++    return (task.ret < 0 ? task.ret : st.st_size);
+ }
+ 
+ static int coroutine_fn
+@@ -778,7 +786,7 @@ static int nfs_reopen_prepare(BDRVReopenState *state,
+                               BlockReopenQueue *queue, Error **errp)
+ {
+     NFSClient *client = state->bs->opaque;
+-    struct stat st;
++    struct nfs_stat st;
+     int ret = 0;
+ 
+     if (state->flags & BDRV_O_RDWR && bdrv_is_read_only(state->bs)) {
+@@ -800,7 +808,7 @@ static int nfs_reopen_prepare(BDRVReopenState *state,
+                        nfs_get_error(client->context));
+             return ret;
+         }
+-        client->st_blocks = st.st_blocks;
++        client->st_size = st.st_size;
+     }
+ 
+     return 0;
 -- 
 2.28.0.windows.1
 
