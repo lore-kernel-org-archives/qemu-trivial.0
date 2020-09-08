@@ -1,71 +1,113 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kFfHH-0002CY-3b
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 11:11:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51440)
+	id 1kFg78-0002eO-6A
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 12:04:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFfHG-00029x-5o; Tue, 08 Sep 2020 11:11:22 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:36305)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kFfHE-0005k8-Hj; Tue, 08 Sep 2020 11:11:21 -0400
-Received: by mail-pg1-x542.google.com with SMTP id m8so4956311pgi.3;
- Tue, 08 Sep 2020 08:11:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Mis/yrVWeY+EL6B3pLHydPEbEg8SDdnmsH3w5+AQmwk=;
- b=TQLmKAz9nd909OiIlWTMWjeD3By3G6qIuSvgdzpd+FhPl9Omo6vpX6cNJ2LIwZmjUu
- ByKPJyGP+wyJg8yFQp1D6U78sb4Oa0heoygICrSv1/qXbd37F/eRZMKi7pg5jVPYntvs
- 0OpD/Ufnr9vACL5a8TseT5Hr7juVW18BFhHZDzG7s4O0gss8tZTIPMC8rAv2VthVrRAb
- T9qWMg4veqOAMB7qHKmD2Gw+RRP3GfThqSIG9czLACmKJYuZ0tig1RhWfdfjGO7UVvP1
- aGfc4lJL4QIZIc5bhB9ijHqWZN8Ay3TNPUdXxMfuDGZ3kd6XpcTMB4UuRf7PJF3u1Ico
- ZbKg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFg76-0002Ze-Nk
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 12:04:56 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:35958
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFg70-00058r-VB
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 12:04:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599581089;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=TgO2VWWWy7c/Ec8n4UGTeVopdjeSCWe2/3oLszH3a88=;
+ b=YFM0dll7mPg2YwKQ+hi4ZogyugdGMmnyKTeTUaIe58IX87J4jTJKnAd/MaP7uVaDmh86EJ
+ DKV3VZ2MrQEoOjcsfYp43EDLeboq2iU8wRLS5shp0B2Uyqn55mqRR39lYO2u5jWvN6pgGH
+ Yi3VJp1oXAeNJfcZlb63J5Sr4rJa2Vg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-388-eebwe9qRNB-KrssT-2Ofiw-1; Tue, 08 Sep 2020 12:04:43 -0400
+X-MC-Unique: eebwe9qRNB-KrssT-2Ofiw-1
+Received: by mail-wm1-f71.google.com with SMTP id a7so4909005wmc.2
+ for <qemu-trivial@nongnu.org>; Tue, 08 Sep 2020 09:04:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Mis/yrVWeY+EL6B3pLHydPEbEg8SDdnmsH3w5+AQmwk=;
- b=a4+hCwU0FVBDKV8yidqLk0MfyuT+yVvAduMB4I9lRWKKukOz3XBUG2y6ly2w2LKs3f
- tVeeQcS7Lc/usWXJSNODzaFPaDyjTwSs5TWTVhYvI67B4N66qrYSeVYD3URT6bYGjXK8
- /k6858hOLG9om+hEgwVM4tjsdjy+ocXthT4duYTVrMe5l4yShlP4ArwABOxG50tykRfj
- Ascb2fhAPcKca7oIVNBxlQFEn+yM21ythpb5nVKGEF3PGhjMQvGAl4dUYs0FkhscHs85
- BfkX7ipbUI8nwCeQIyVV5ySlMFoak4Uy3iWX8yo5sVQkwOkH9qEHCYO1ENv+HVpIkaWV
- fPlQ==
-X-Gm-Message-State: AOAM530vSaMgfVru1dMy6lHKNNtvuZq+0scqVXQOfMXC7b25kHg1OYtt
- lyLgt8eJIB0V1Ykup7bgC53EGjoukKSRNihS
-X-Google-Smtp-Source: ABdhPJwfHRUKwTnv3oFRniD03ux2+ImjTaO0O80Wy/6KoeTFX+uiPkljIZAF5iD+QQs7/JCnFIO0Gw==
-X-Received: by 2002:a17:902:b192:b029:d0:cbe1:e7a1 with SMTP id
- s18-20020a170902b192b02900d0cbe1e7a1mr1188763plr.18.1599577878343; 
- Tue, 08 Sep 2020 08:11:18 -0700 (PDT)
-Received: from localhost.localdomain ([222.95.248.6])
- by smtp.googlemail.com with ESMTPSA id k5sm29436469pjl.3.2020.09.08.08.11.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 08:11:17 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Juan Quintela <quintela@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Daniel Brodsky <dnbrdsky@gmail.com>, Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v4 2/2] rcu: add uninit destructor for rcu
-Date: Tue,  8 Sep 2020 23:10:52 +0800
-Message-Id: <20200908151052.713-3-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
-In-Reply-To: <20200908151052.713-1-luoyonggang@gmail.com>
-References: <20200908151052.713-1-luoyonggang@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=TgO2VWWWy7c/Ec8n4UGTeVopdjeSCWe2/3oLszH3a88=;
+ b=YJnlSARc9AZ5cdueVOeRsl+GnlfUZgtoX6axa+dl5OKi8mKFA8BAM12JW8KCVjwSIT
+ /iWyVb+SM4utaGRtEFJ5R8Ebbg/rLEhO/cc1PYAz1h6++bJUoCCGIpEQeyd/tYflRpDU
+ vBNku19fnGoKTukTWZQFluSfB3JyEsxN3Xs3/PXZDL58WUtIQwFUspefqSljBrbvfSP1
+ 6RYksJ1btWvnTT8ts7wcIyMVaCc3FOphKgJLOhaMwak8G+rSEleFXTj5HQJOmuiWaGFR
+ oppxgqXSBmdB9cgYeMWlyLRj8IJFcPByyzRBrk60tekg8iaENnqTWXyf26VZ1Su9VG6p
+ /C7A==
+X-Gm-Message-State: AOAM531MKv4VVnAShVm5fqCaqnGsKJF7TIaA5xR1sZZyxiHkEMkriJ6m
+ +GlApy2GvsEhKTxywjyRKCV0A36zevrfNhAqKbVC7wQRvkIwy7KxAzXETtKB7/inkxzLPiNZHRJ
+ h80MZkvUKWm752JZ4Uw==
+X-Received: by 2002:a1c:7207:: with SMTP id n7mr243726wmc.134.1599581082624;
+ Tue, 08 Sep 2020 09:04:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbywJPKbYAe2lk/nGyiTiHQivjJxLQy2gQji3IN5R2hWGSMc7M6l6ue5CxQQEiL73AZ5f2CA==
+X-Received: by 2002:a1c:7207:: with SMTP id n7mr243688wmc.134.1599581082246;
+ Tue, 08 Sep 2020 09:04:42 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id c145sm30605848wmd.7.2020.09.08.09.04.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Sep 2020 09:04:41 -0700 (PDT)
+Subject: Re: [PATCH] Simplify the .gitignore file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20200907174255.179652-1-thuth@redhat.com>
+ <e6755ee5-5d41-da76-1a34-e4a05fd76663@redhat.com>
+ <fac14891-3cff-4a27-8fa5-12ddd286e9db@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <4149727b-0bf4-0c94-134f-3228d88050af@redhat.com>
+Date: Tue, 8 Sep 2020 18:04:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <fac14891-3cff-4a27-8fa5-12ddd286e9db@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 01:08:25
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,113 +120,231 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2020 15:11:22 -0000
+X-List-Received-Date: Tue, 08 Sep 2020 16:04:57 -0000
 
-This is necessary if the pending  rcu calls are closing and removing
-temp files. This also provide a function
-void rcu_wait_finished(void);
-to fixes test-logging.c test failure on msys2/mingw.
-On windows if the file doesn't closed, you can not remove it.
+On 9/8/20 4:41 PM, Thomas Huth wrote:
+> On 07/09/2020 21.43, Philippe Mathieu-Daudé wrote:
+>> On 9/7/20 7:42 PM, Thomas Huth wrote:
+>>> Now that we always do out-of-tree builds (and the in-tree builds are
+>>> faked via a "build" directory), we can simplify out .gitignore file
+>>> quite a bit.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  .gitignore | 158 -----------------------------------------------------
+>>>  1 file changed, 158 deletions(-)
+>>>
+>>> diff --git a/.gitignore b/.gitignore
+>>> index 4ccb9ed975..bb916594eb 100644
+>>> --- a/.gitignore
+>>> +++ b/.gitignore
+>>> @@ -1,165 +1,7 @@
+>>>  /GNUmakefile
+>>>  /build/
+>>> -/.doctrees
+>>> -/config-devices.*
+>>> -/config-all-devices.*
+>>> -/config-all-disas.*
+>>> -/config-host.*
+>>> -/config-target.*
+>>> -/config.status
+>>> -/config-temp
+>>> -/tools/virtiofsd/50-qemu-virtiofsd.json
+>>> -/elf2dmp
+>>> -/trace-events-all
+>>> -/trace/generated-events.h
+>>> -/trace/generated-events.c
+>>> -/trace/generated-helpers-wrappers.h
+>>> -/trace/generated-helpers.h
+>>> -/trace/generated-helpers.c
+>>> -/trace/generated-tcg-tracers.h
+>>> -/ui/shader/texture-blit-frag.h
+>>> -/ui/shader/texture-blit-vert.h
+>>> -/ui/shader/texture-blit-flip-vert.h
+>>> -/ui/input-keymap-*.c.inc
+>>> -*-timestamp
+>>> -/*-softmmu
+>>> -/*-darwin-user
+>>> -/*-linux-user
+>>> -/*-bsd-user
+>>> -/ivshmem-client
+>>> -/ivshmem-server
+>>> -/libdis*
+>>> -/libuser
+>>> -/linux-headers/asm
+>>> -/qga/qapi-generated
+>>> -/qapi-gen-timestamp
+>>> -/qapi/qapi-builtin-types.[ch]
+>>> -/qapi/qapi-builtin-visit.[ch]
+>>> -/qapi/qapi-commands-*.[ch]
+>>> -**/qapi/qapi-commands.[ch]
+>>> -**/qapi/qapi-emit-events.[ch]
+>>> -/qapi/qapi-events-*.[ch]
+>>> -**/qapi/qapi-events.[ch]
+>>> -**/qapi/qapi-init-commands.[ch]
+>>> -**/qapi/qapi-introspect.[ch]
+>>> -/qapi/qapi-types-*.[ch]
+>>> -**/qapi/qapi-types.[ch]
+>>> -/qapi/qapi-visit-*.[ch]
+>>> -!/qapi/qapi-visit-core.c
+>>> -**/qapi/qapi-visit.[ch]
+>>> -**/qapi/qapi-doc.texi
+>>> -/qemu-edid
+>>> -/qemu-img
+>>> -/qemu-nbd
+>>> -/qemu-options.def
+>>> -/qemu-options.texi
+>>> -/qemu-img-cmds.texi
+>>> -/qemu-img-cmds.h
+>>> -/qemu-io
+>>> -/qemu-ga
+>>> -/qemu-bridge-helper
+>>> -/qemu-keymap
+>>> -/qemu-monitor.texi
+>>> -/qemu-monitor-info.texi
+>>> -/qemu-storage-daemon
+>>> -/qemu-version.h
+>>> -/qemu-version.h.tmp
+>>> -/module_block.h
+>>> -/scsi/qemu-pr-helper
+>>> -/vhost-user-scsi
+>>> -/vhost-user-blk
+>>> -/vhost-user-gpu
+>>> -/vhost-user-input
+>>> -/fsdev/virtfs-proxy-helper
+>>> -*.tmp
+>>
+>> I'm not sure about this one.
+> 
+> According to git blame, it has been added in commit b8bd2f598b7 for
+> tests/vm images.
+> 
+>>> -*.[1-9]
+>>> -*.a
+>>> -*.aux
+>>> -*.cp
+>>> -*.exe
+>>> -*.msi
+>>> -*.dll
+>>> -*.so
+>>> -*.fn
+>>> -*.ky
+>>
+>> Need to double-check where this come from.
+> 
+> Looking at 0cb3fb1e30a7789881e18 and some other commits, it seems like
+> these were once used for the qemu-doc PDF file generation. Should be ok
+> to remove them now since we moved to Sphinx.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- include/qemu/rcu.h   |  5 +++++
- tests/test-logging.c |  2 ++
- util/rcu.c           | 37 ++++++++++++++++++++++++++++++++++++-
- 3 files changed, 43 insertions(+), 1 deletion(-)
+Thanks for checking yourself, I meant to say "I'll check this later",
+not "go and check for me".
 
-diff --git a/include/qemu/rcu.h b/include/qemu/rcu.h
-index 570aa603eb..dd0a92c1d0 100644
---- a/include/qemu/rcu.h
-+++ b/include/qemu/rcu.h
-@@ -124,6 +124,11 @@ extern void rcu_unregister_thread(void);
- extern void rcu_enable_atfork(void);
- extern void rcu_disable_atfork(void);
- 
-+/*
-+ * Wait all rcu call executed and exit the rcu thread.
-+ */
-+extern void rcu_wait_finished(void);
-+
- struct rcu_head;
- typedef void RCUCBFunc(struct rcu_head *head);
- 
-diff --git a/tests/test-logging.c b/tests/test-logging.c
-index 957f6c08cd..7a5b59f4a5 100644
---- a/tests/test-logging.c
-+++ b/tests/test-logging.c
-@@ -210,6 +210,8 @@ int main(int argc, char **argv)
-                          tmp_path, test_logfile_lock);
- 
-     rc = g_test_run();
-+    qemu_log_close();
-+    rcu_wait_finished();
- 
-     rmdir_full(tmp_path);
-     g_free(tmp_path);
-diff --git a/util/rcu.c b/util/rcu.c
-index 60a37f72c3..43367988b9 100644
---- a/util/rcu.c
-+++ b/util/rcu.c
-@@ -308,10 +308,20 @@ void rcu_unregister_thread(void)
-     qemu_mutex_unlock(&rcu_registry_lock);
- }
- 
-+typedef struct QemuRcuMessage {
-+    struct rcu_head rcu;
-+    void *message;
-+} QemuRcuMessage;
-+
-+static int rcu_thread_exit_called = 0;
-+static int rcu_thread_exited = 0;
-+static QemuRcuMessage rcu_thread_message;
-+
- static void rcu_init_complete(void)
- {
-     QemuThread thread;
--
-+    atomic_mb_set(&rcu_thread_exit_called, 0);
-+    atomic_mb_set(&rcu_thread_exited, 0);
-     qemu_mutex_init(&rcu_registry_lock);
-     qemu_mutex_init(&rcu_sync_lock);
-     qemu_event_init(&rcu_gp_event, true);
-@@ -327,6 +337,26 @@ static void rcu_init_complete(void)
-     rcu_register_thread();
- }
- 
-+static void rcu_thread_exit(QemuRcuMessage *param)
-+{
-+    atomic_mb_set((int*)param->message, 1);
-+    qemu_thread_exit(NULL);
-+}
-+
-+void rcu_wait_finished(void)
-+{
-+    if (atomic_xchg(&rcu_thread_exit_called, 1) == 0)
-+    {
-+        rcu_thread_message.message = &rcu_thread_exited;
-+        call_rcu(&rcu_thread_message, rcu_thread_exit, rcu);
-+    }
-+
-+    while (atomic_mb_read(&rcu_thread_exited) == 0)
-+    {
-+        g_usleep(10000);
-+    }
-+}
-+
- static int atfork_depth = 1;
- 
- void rcu_enable_atfork(void)
-@@ -379,3 +409,8 @@ static void __attribute__((__constructor__)) rcu_init(void)
- #endif
-     rcu_init_complete();
- }
-+
-+static void __attribute__((__destructor__)) rcu_uninit(void)
-+{
-+    rcu_wait_finished();
-+}
--- 
-2.28.0.windows.1
+> 
+>>> -*.log
+>>> -*.pdf
+>>> -*.pod
+>>> -*.cps
+>>> -*.fns
+>>> -*.kys
+>>> -*.pg
+>>> -*.pyc
+>>> -*.toc
+>>> -*.tp
+>>> -*.vr
+>>> -*.d
+>>> -!/.gitlab-ci.d
+>>> -!/scripts/qemu-guest-agent/fsfreeze-hook.d
+>>> -*.o
+>>> -.sdk
+>>
+>> Need to double-check where this come from.
+> 
+> It's used for the Win32 SDK symlink in "configure":
+> 
+>  symlink "$vss_win32_sdk/inc" "$source_path/.sdk/vss/inc"
+> 
+> Indeed, it might be necessary to keep this entry.
+> 
+>>> -*.gcda
+>>> -*.gcno
+>>> -*.gcov
+>>> -/pc-bios/bios-pq/status
+>>> -/pc-bios/edk2-*.fd
+>>
+>> I'm not sure about this one but will check.
+> 
+> Are the pc-bios/edk* file still built in-tree?
+
+No, you are right, they are built in the build/ directory,
+so we can safely remove this entry.
+
+Thanks!
+
+> 
+>>> -/pc-bios/vgabios-pq/status
+>>> -/pc-bios/optionrom/linuxboot.asm
+>>> -/pc-bios/optionrom/linuxboot.bin
+>>> -/pc-bios/optionrom/linuxboot.raw
+>>> -/pc-bios/optionrom/linuxboot.img
+>>> -/pc-bios/optionrom/linuxboot_dma.asm
+>>> -/pc-bios/optionrom/linuxboot_dma.bin
+>>> -/pc-bios/optionrom/linuxboot_dma.raw
+>>> -/pc-bios/optionrom/linuxboot_dma.img
+>>> -/pc-bios/optionrom/pvh.asm
+>>> -/pc-bios/optionrom/pvh.bin
+>>> -/pc-bios/optionrom/pvh.raw
+>>> -/pc-bios/optionrom/pvh.img
+>>> -/pc-bios/optionrom/multiboot.asm
+>>> -/pc-bios/optionrom/multiboot.bin
+>>> -/pc-bios/optionrom/multiboot.raw
+>>> -/pc-bios/optionrom/multiboot.img
+>>> -/pc-bios/optionrom/kvmvapic.asm
+>>> -/pc-bios/optionrom/kvmvapic.bin
+>>> -/pc-bios/optionrom/kvmvapic.raw
+>>> -/pc-bios/optionrom/kvmvapic.img
+>>> -/pc-bios/s390-ccw/s390-ccw.elf
+>>> -/pc-bios/s390-ccw/s390-ccw.img
+>>> -/docs/built
+>>> -/docs/interop/qemu-ga-qapi.texi
+>>> -/docs/interop/qemu-ga-ref.html
+>>> -/docs/interop/qemu-ga-ref.info*
+>>> -/docs/interop/qemu-ga-ref.txt
+>>> -/docs/interop/qemu-qmp-qapi.texi
+>>> -/docs/interop/qemu-qmp-ref.html
+>>> -/docs/interop/qemu-qmp-ref.info*
+>>> -/docs/interop/qemu-qmp-ref.txt
+>>> -/docs/version.texi
+>>> -/contrib/vhost-user-gpu/50-qemu-gpu.json
+>>> -*.tps
+>>
+>> Need to double-check where this come from.
+> 
+> According to 56e8bdd46a8 this is related to the QAPI doc generation ...
+> I hope this is done properly out-of-tree now, so it should be ok to
+> remove it.
+> 
+>>> -.stgit-*
+>>
+>> Need to double-check where this come from.
+> 
+> I assume that this is related to temporary files from "Stacked Git" ...
+> if anybody is still using that tool, I think that line should rather go
+> into their global ~/.gitignore file instead.
+> 
+>>>  .git-submodule-status
+>>>  cscope.*
+>>>  tags
+>>>  TAGS
+>>> -docker-src.*
+>>>  *~
+>>> -*.ast_raw
+>>> -*.depend_raw
+>>
+>> Coccinelle generated in source tree, please keep.
+> 
+> Ok.
+> 
+>  Thomas
+> 
 
 
