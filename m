@@ -1,82 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kFcpf-0007Qi-NK
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 08:34:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34570)
+	id 1kFcxF-0000su-MH
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 08:42:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFcpe-0007M1-1G
- for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 08:34:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48603
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kFcxE-0000sV-IC
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 08:42:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43478)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFcpc-0008NN-E6
- for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 08:34:41 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kFcxC-0001AU-7Y
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 08:42:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599568479;
+ s=mimecast20190719; t=1599568949;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=H8Bt+SoGCwHI5v8vuo9aRmtnYuy2KkNT4W5PKJJ+pEo=;
- b=cUO+7oiwFG12NB9pkFrMxnq1JXWxb+xgP3VvFMbYRaFuB8uh7fjtjM4/WP3be3HVdEqybX
- oiaEQSYGI2XvgQCzEuvF0p8dCWEk9Gt07J4lC31R9FAJzqa+5nb5yWnuVCi02q/5ARvqrl
- YnHGTY/lcvOtqiuGClBCVmAB28pxYG0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-8x7_62HnN6KyiXpb4Vc_Fg-1; Tue, 08 Sep 2020 08:34:38 -0400
-X-MC-Unique: 8x7_62HnN6KyiXpb4Vc_Fg-1
-Received: by mail-wm1-f69.google.com with SMTP id d5so3432628wmb.2
- for <qemu-trivial@nongnu.org>; Tue, 08 Sep 2020 05:34:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=H8Bt+SoGCwHI5v8vuo9aRmtnYuy2KkNT4W5PKJJ+pEo=;
- b=ujpz+B3933+xBqM2WnT/8cMsKKgt0SxYc0wl5C6x+AfS948lKNoB67YXPeOPlBWYWG
- z5Yy5xnMqBn+0jTCE3fmF6koOTlNmIGqRWeYzzgTzNEVfhGjxzuQiq0v7nvCOycAOaKZ
- ot0tzBQy/1HT1WcRA3dtbRTQGjSW7qE6sRdAvCarA4vf3WPLxese4xtTqJl6apDYtCJ0
- wzKTXPJ3Z0nDvJ2DBCT5f/A0Oi9FsuoHSv4QTZ29fcmO++IjCDx2KDILOb39p5gTkcFl
- g9UcyFKjStlVzUkxqyagF46G2xlsYtOrt438oKieSm0HpUSSBtVqQphnIoXmbs3h74++
- hv4g==
-X-Gm-Message-State: AOAM532sW+mfXxx3gJ3yABHLatFCaXXcIucqy6CWXuhp45SxdQJC2Pvq
- gHemDkj0VymM4w0M2QXjT6RasyNrLm+FrzRRwT2zTKdebk3jAIq0ZbdTx6Wi0DPiOCp/JM8kWh+
- bgXBCl1YmMfXf+DAbgQ==
-X-Received: by 2002:adf:a48d:: with SMTP id g13mr26245402wrb.212.1599568476916; 
- Tue, 08 Sep 2020 05:34:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHVDS7APNGfQg6onMvH5pOdGKb31yvi/vagMB+owAQf86vw4YlC+7eWYF0aReRutuR2PMNqA==
-X-Received: by 2002:adf:a48d:: with SMTP id g13mr26245379wrb.212.1599568476678; 
- Tue, 08 Sep 2020 05:34:36 -0700 (PDT)
-Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b11sm33839733wrt.38.2020.09.08.05.34.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 05:34:36 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] hw/core/cpu: Add missing 'exec/cpu-common.h' include
-Date: Tue,  8 Sep 2020 14:34:33 +0200
-Message-Id: <20200908123433.105706-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=83jq8UmXWwF2rJa5Qwpk/jya6EYo6XLLy2agS1z5tzk=;
+ b=KK9l+BTigsndzoo6agbdqtW28O+ZVUIRapAA5qSpxudttIADkVBvPu+f4PiSevzACfRcnK
+ X0l4p6tQV7qQZjv3RCE0PPWL24V+ggEICsCU4LhdB0YuEx9NFz7cY0zT5g67Dx9xlw40kz
+ XLw4cFkW073wq+E5AvtubkG6qtyVm10=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-385-y2qfvu-vORu2cigGCPNcVA-1; Tue, 08 Sep 2020 08:42:26 -0400
+X-MC-Unique: y2qfvu-vORu2cigGCPNcVA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C1F610082E5;
+ Tue,  8 Sep 2020 12:42:25 +0000 (UTC)
+Received: from [10.3.112.176] (ovpn-112-176.phx2.redhat.com [10.3.112.176])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ED9035D9EF;
+ Tue,  8 Sep 2020 12:42:24 +0000 (UTC)
+Subject: Re: [PATCH v2] meson: Use -b to ignore CR vs. CR-LF issues on Windows
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20200907174828.1768-1-luoyonggang@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <4cd42e60-03c3-ced3-284f-bc6fad2780f0@redhat.com>
+Date: Tue, 8 Sep 2020 07:42:24 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200907174828.1768-1-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
 X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:53
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -90,35 +77,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2020 12:34:42 -0000
+X-List-Received-Date: Tue, 08 Sep 2020 12:42:32 -0000
 
-cpu_common_reset() uses tcg_flush_softmmu_tlb() which is
-declared in "exec/cpu-common.h". Add the missing header
-to avoid when refactoring other headers:
+On 9/7/20 12:48 PM, Yonggang Luo wrote:
+> Or the tests result would cause following test failure:
+> Running test QAPI doc
+>    LINK    tests/check-qdict.exe
+> --- C:/Users/ContainerAdministrator/AppData/Local/Temp/qemu-build/../cirrus-ci-build/tests/qapi-schema/doc-good.texi	2020-09-02 10:26:02.396028200 -0700
+> +++ C:/Users/ContainerAdministrator/AppData/Local/Temp/qemu-build/tests/qapi-schema/doc-good-qapi-doc.texi	2020-09-02 10:43:09.849568200 -0700
+> @@ -1,319 +1,319 @@
+> -@c AUTOMATICALLY GENERATED, DO NOT MODIFY
+> -
 
-  hw/core/cpu.c: In function ‘cpu_common_reset’:
-  hw/core/cpu.c:273:9: error: implicit declaration of function ‘tcg_flush_softmmu_tlb’ [-Werror=implicit-function-declaration]
-    273 |         tcg_flush_softmmu_tlb(cpu);
-        |         ^~~~~~~~~~~~~~~~~~~~~
+> -
+> +@c AUTOMATICALLY GENERATED, DO NOT MODIFY
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/core/cpu.c | 1 +
- 1 file changed, 1 insertion(+)
+> +@end deftypefn
+> +
+> make: *** [Makefile.mtest:85: check-qapi-doc] Error 1
+> make: *** Waiting for unfinished jobs....
 
-diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 22bc3f974a2..63ece3662d6 100644
---- a/hw/core/cpu.c
-+++ b/hw/core/cpu.c
-@@ -26,6 +26,7 @@
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
- #include "exec/log.h"
-+#include "exec/cpu-common.h"
- #include "qemu/error-report.h"
- #include "qemu/qemu-print.h"
- #include "sysemu/tcg.h"
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>   tests/qapi-schema/meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+
+Commit message is tooooo long compared to the body of the patch.  I'd 
+suggest:
+
+meson: Use -b to ignore CR vs. CR-LF issues on Windows
+
+On windows, a difference in line endings causes testsuite failures 
+complaining that every single line in files such as 
+'tests/qapi-schemadoc-good.texi' is wrong.  Fix it by adding -b to diff.
+
+> 
+> diff --git a/tests/qapi-schema/meson.build b/tests/qapi-schema/meson.build
+> index c87d141417..f1449298b0 100644
+> --- a/tests/qapi-schema/meson.build
+> +++ b/tests/qapi-schema/meson.build
+> @@ -220,6 +220,6 @@ qapi_doc = custom_target('QAPI doc',
+>   
+>   # "full_path()" needed here to work around
+>   # https://github.com/mesonbuild/meson/issues/7585
+> -test('QAPI doc', diff, args: ['-u', files('doc-good.texi'), qapi_doc[0].full_path()],
+> +test('QAPI doc', diff, args: ['-b', '-u', files('doc-good.texi'), qapi_doc[0].full_path()],
+
+The change itself is sensible, once the commit message is fixed, so for 
+v3, you can add:
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+>        depends: qapi_doc,
+>        suite: ['qapi-schema', 'qapi-doc'])
+> 
+
 -- 
-2.26.2
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
