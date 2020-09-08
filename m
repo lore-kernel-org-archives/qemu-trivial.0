@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kFeoO-0004qw-KC
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 10:41:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43044)
+	id 1kFexK-0004jd-4r
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2020 10:50:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kFeoN-0004qZ-0F
- for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 10:41:31 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47138
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kFexI-0004i6-9s
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 10:50:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55615)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kFeoK-0000wh-7m
- for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 10:41:30 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kFexF-00021L-4C
+ for qemu-trivial@nongnu.org; Tue, 08 Sep 2020 10:50:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599576086;
+ s=mimecast20190719; t=1599576639;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=20DuaKPLW2jRiLxGaRrROMn1vz5ZOVzWeqC0ckFNwSI=;
- b=eX6t6sHk42nJYGIHpOpEjPmUssiUqQXOmLADhtePo3KAuSpc4SlXtk2V+sbRr1A8oHPJbI
- Me3TNWK/GlhktyG7l1WfmCNCb4mmhvY6tJj+BnvlHxVqQ6tILE+HFRnPyi8Cn2/OfSZjpe
- QjAi/m2gKbLFlxtsV+OaKeIRyYOJsgI=
+ bh=eoRFHLUdMSkSgyer7bttDSdg2ApYkQth4g7QPCSDkjY=;
+ b=Qy9GPd2L+NdgdWatTDuVKyoH+1PZU03WISuJWmzL5BkSiZrjIsqVvemZoy+N3AEYcChHU2
+ X6JBuVWnpOcER7RtQgcV0j3JZKznc+7D8f9xgN/ZNrLwo1M7KtW3cns9JFPuiRQSLmoCXr
+ XvQGW9KfQNJfoYnRMmnMdAl9rIEtMxs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-506-lwBLe7SUNA2S10q3xXvaaQ-1; Tue, 08 Sep 2020 10:41:24 -0400
-X-MC-Unique: lwBLe7SUNA2S10q3xXvaaQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-503-lEQFGiiGNkOaDKuRJjKTXA-1; Tue, 08 Sep 2020 10:50:38 -0400
+X-MC-Unique: lEQFGiiGNkOaDKuRJjKTXA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A482910BBECF;
- Tue,  8 Sep 2020 14:41:23 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 418CF18B9F00;
+ Tue,  8 Sep 2020 14:50:37 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-131.ams2.redhat.com [10.36.112.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D77A27ED85;
- Tue,  8 Sep 2020 14:41:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 129415D9EF;
+ Tue,  8 Sep 2020 14:50:35 +0000 (UTC)
 Subject: Re: [PATCH] Simplify the .gitignore file
+From: Thomas Huth <thuth@redhat.com>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  <alex.bennee@linaro.org>
 References: <20200907174255.179652-1-thuth@redhat.com>
  <e6755ee5-5d41-da76-1a34-e4a05fd76663@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <fac14891-3cff-4a27-8fa5-12ddd286e9db@redhat.com>
-Date: Tue, 8 Sep 2020 16:41:20 +0200
+ <fac14891-3cff-4a27-8fa5-12ddd286e9db@redhat.com>
+Message-ID: <01416c95-b956-0b58-f272-c75cceff73a9@redhat.com>
+Date: Tue, 8 Sep 2020 16:50:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <e6755ee5-5d41-da76-1a34-e4a05fd76663@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <fac14891-3cff-4a27-8fa5-12ddd286e9db@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:53
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -36
 X-Spam_score: -3.7
 X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,218 +79,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2020 14:41:31 -0000
+X-List-Received-Date: Tue, 08 Sep 2020 14:50:44 -0000
 
-On 07/09/2020 21.43, Philippe Mathieu-Daudé wrote:
-> On 9/7/20 7:42 PM, Thomas Huth wrote:
->> Now that we always do out-of-tree builds (and the in-tree builds are
->> faked via a "build" directory), we can simplify out .gitignore file
->> quite a bit.
+On 08/09/2020 16.41, Thomas Huth wrote:
+> On 07/09/2020 21.43, Philippe Mathieu-Daudé wrote:
+>> On 9/7/20 7:42 PM, Thomas Huth wrote:
+>>> Now that we always do out-of-tree builds (and the in-tree builds are
+>>> faked via a "build" directory), we can simplify out .gitignore file
+>>> quite a bit.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  .gitignore | 158 -----------------------------------------------------
+>>>  1 file changed, 158 deletions(-)
+>>>
+>>> diff --git a/.gitignore b/.gitignore
+>>> index 4ccb9ed975..bb916594eb 100644
+>>> --- a/.gitignore
+>>> +++ b/.gitignore
+>>> @@ -1,165 +1,7 @@
+>>>  /GNUmakefile
+>>>  /build/
+>>> -/.doctrees
+>>> -/config-devices.*
+>>> -/config-all-devices.*
+>>> -/config-all-disas.*
+>>> -/config-host.*
+>>> -/config-target.*
+>>> -/config.status
+>>> -/config-temp
+>>> -/tools/virtiofsd/50-qemu-virtiofsd.json
+>>> -/elf2dmp
+>>> -/trace-events-all
+>>> -/trace/generated-events.h
+>>> -/trace/generated-events.c
+>>> -/trace/generated-helpers-wrappers.h
+>>> -/trace/generated-helpers.h
+>>> -/trace/generated-helpers.c
+>>> -/trace/generated-tcg-tracers.h
+>>> -/ui/shader/texture-blit-frag.h
+>>> -/ui/shader/texture-blit-vert.h
+>>> -/ui/shader/texture-blit-flip-vert.h
+>>> -/ui/input-keymap-*.c.inc
+>>> -*-timestamp
+>>> -/*-softmmu
+>>> -/*-darwin-user
+>>> -/*-linux-user
+>>> -/*-bsd-user
+>>> -/ivshmem-client
+>>> -/ivshmem-server
+>>> -/libdis*
+>>> -/libuser
+>>> -/linux-headers/asm
+>>> -/qga/qapi-generated
+>>> -/qapi-gen-timestamp
+>>> -/qapi/qapi-builtin-types.[ch]
+>>> -/qapi/qapi-builtin-visit.[ch]
+>>> -/qapi/qapi-commands-*.[ch]
+>>> -**/qapi/qapi-commands.[ch]
+>>> -**/qapi/qapi-emit-events.[ch]
+>>> -/qapi/qapi-events-*.[ch]
+>>> -**/qapi/qapi-events.[ch]
+>>> -**/qapi/qapi-init-commands.[ch]
+>>> -**/qapi/qapi-introspect.[ch]
+>>> -/qapi/qapi-types-*.[ch]
+>>> -**/qapi/qapi-types.[ch]
+>>> -/qapi/qapi-visit-*.[ch]
+>>> -!/qapi/qapi-visit-core.c
+>>> -**/qapi/qapi-visit.[ch]
+>>> -**/qapi/qapi-doc.texi
+>>> -/qemu-edid
+>>> -/qemu-img
+>>> -/qemu-nbd
+>>> -/qemu-options.def
+>>> -/qemu-options.texi
+>>> -/qemu-img-cmds.texi
+>>> -/qemu-img-cmds.h
+>>> -/qemu-io
+>>> -/qemu-ga
+>>> -/qemu-bridge-helper
+>>> -/qemu-keymap
+>>> -/qemu-monitor.texi
+>>> -/qemu-monitor-info.texi
+>>> -/qemu-storage-daemon
+>>> -/qemu-version.h
+>>> -/qemu-version.h.tmp
+>>> -/module_block.h
+>>> -/scsi/qemu-pr-helper
+>>> -/vhost-user-scsi
+>>> -/vhost-user-blk
+>>> -/vhost-user-gpu
+>>> -/vhost-user-input
+>>> -/fsdev/virtfs-proxy-helper
+>>> -*.tmp
 >>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  .gitignore | 158 -----------------------------------------------------
->>  1 file changed, 158 deletions(-)
->>
->> diff --git a/.gitignore b/.gitignore
->> index 4ccb9ed975..bb916594eb 100644
->> --- a/.gitignore
->> +++ b/.gitignore
->> @@ -1,165 +1,7 @@
->>  /GNUmakefile
->>  /build/
->> -/.doctrees
->> -/config-devices.*
->> -/config-all-devices.*
->> -/config-all-disas.*
->> -/config-host.*
->> -/config-target.*
->> -/config.status
->> -/config-temp
->> -/tools/virtiofsd/50-qemu-virtiofsd.json
->> -/elf2dmp
->> -/trace-events-all
->> -/trace/generated-events.h
->> -/trace/generated-events.c
->> -/trace/generated-helpers-wrappers.h
->> -/trace/generated-helpers.h
->> -/trace/generated-helpers.c
->> -/trace/generated-tcg-tracers.h
->> -/ui/shader/texture-blit-frag.h
->> -/ui/shader/texture-blit-vert.h
->> -/ui/shader/texture-blit-flip-vert.h
->> -/ui/input-keymap-*.c.inc
->> -*-timestamp
->> -/*-softmmu
->> -/*-darwin-user
->> -/*-linux-user
->> -/*-bsd-user
->> -/ivshmem-client
->> -/ivshmem-server
->> -/libdis*
->> -/libuser
->> -/linux-headers/asm
->> -/qga/qapi-generated
->> -/qapi-gen-timestamp
->> -/qapi/qapi-builtin-types.[ch]
->> -/qapi/qapi-builtin-visit.[ch]
->> -/qapi/qapi-commands-*.[ch]
->> -**/qapi/qapi-commands.[ch]
->> -**/qapi/qapi-emit-events.[ch]
->> -/qapi/qapi-events-*.[ch]
->> -**/qapi/qapi-events.[ch]
->> -**/qapi/qapi-init-commands.[ch]
->> -**/qapi/qapi-introspect.[ch]
->> -/qapi/qapi-types-*.[ch]
->> -**/qapi/qapi-types.[ch]
->> -/qapi/qapi-visit-*.[ch]
->> -!/qapi/qapi-visit-core.c
->> -**/qapi/qapi-visit.[ch]
->> -**/qapi/qapi-doc.texi
->> -/qemu-edid
->> -/qemu-img
->> -/qemu-nbd
->> -/qemu-options.def
->> -/qemu-options.texi
->> -/qemu-img-cmds.texi
->> -/qemu-img-cmds.h
->> -/qemu-io
->> -/qemu-ga
->> -/qemu-bridge-helper
->> -/qemu-keymap
->> -/qemu-monitor.texi
->> -/qemu-monitor-info.texi
->> -/qemu-storage-daemon
->> -/qemu-version.h
->> -/qemu-version.h.tmp
->> -/module_block.h
->> -/scsi/qemu-pr-helper
->> -/vhost-user-scsi
->> -/vhost-user-blk
->> -/vhost-user-gpu
->> -/vhost-user-input
->> -/fsdev/virtfs-proxy-helper
->> -*.tmp
+>> I'm not sure about this one.
 > 
-> I'm not sure about this one.
+> According to git blame, it has been added in commit b8bd2f598b7 for
+> tests/vm images.
 
-According to git blame, it has been added in commit b8bd2f598b7 for
-tests/vm images.
-
->> -*.[1-9]
->> -*.a
->> -*.aux
->> -*.cp
->> -*.exe
->> -*.msi
->> -*.dll
->> -*.so
->> -*.fn
->> -*.ky
-> 
-> Need to double-check where this come from.
-
-Looking at 0cb3fb1e30a7789881e18 and some other commits, it seems like
-these were once used for the qemu-doc PDF file generation. Should be ok
-to remove them now since we moved to Sphinx.
-
->> -*.log
->> -*.pdf
->> -*.pod
->> -*.cps
->> -*.fns
->> -*.kys
->> -*.pg
->> -*.pyc
->> -*.toc
->> -*.tp
->> -*.vr
->> -*.d
->> -!/.gitlab-ci.d
->> -!/scripts/qemu-guest-agent/fsfreeze-hook.d
->> -*.o
->> -.sdk
-> 
-> Need to double-check where this come from.
-
-It's used for the Win32 SDK symlink in "configure":
-
- symlink "$vss_win32_sdk/inc" "$source_path/.sdk/vss/inc"
-
-Indeed, it might be necessary to keep this entry.
-
->> -*.gcda
->> -*.gcno
->> -*.gcov
->> -/pc-bios/bios-pq/status
->> -/pc-bios/edk2-*.fd
-> 
-> I'm not sure about this one but will check.
-
-Are the pc-bios/edk* file still built in-tree?
-
->> -/pc-bios/vgabios-pq/status
->> -/pc-bios/optionrom/linuxboot.asm
->> -/pc-bios/optionrom/linuxboot.bin
->> -/pc-bios/optionrom/linuxboot.raw
->> -/pc-bios/optionrom/linuxboot.img
->> -/pc-bios/optionrom/linuxboot_dma.asm
->> -/pc-bios/optionrom/linuxboot_dma.bin
->> -/pc-bios/optionrom/linuxboot_dma.raw
->> -/pc-bios/optionrom/linuxboot_dma.img
->> -/pc-bios/optionrom/pvh.asm
->> -/pc-bios/optionrom/pvh.bin
->> -/pc-bios/optionrom/pvh.raw
->> -/pc-bios/optionrom/pvh.img
->> -/pc-bios/optionrom/multiboot.asm
->> -/pc-bios/optionrom/multiboot.bin
->> -/pc-bios/optionrom/multiboot.raw
->> -/pc-bios/optionrom/multiboot.img
->> -/pc-bios/optionrom/kvmvapic.asm
->> -/pc-bios/optionrom/kvmvapic.bin
->> -/pc-bios/optionrom/kvmvapic.raw
->> -/pc-bios/optionrom/kvmvapic.img
->> -/pc-bios/s390-ccw/s390-ccw.elf
->> -/pc-bios/s390-ccw/s390-ccw.img
->> -/docs/built
->> -/docs/interop/qemu-ga-qapi.texi
->> -/docs/interop/qemu-ga-ref.html
->> -/docs/interop/qemu-ga-ref.info*
->> -/docs/interop/qemu-ga-ref.txt
->> -/docs/interop/qemu-qmp-qapi.texi
->> -/docs/interop/qemu-qmp-ref.html
->> -/docs/interop/qemu-qmp-ref.info*
->> -/docs/interop/qemu-qmp-ref.txt
->> -/docs/version.texi
->> -/contrib/vhost-user-gpu/50-qemu-gpu.json
->> -*.tps
-> 
-> Need to double-check where this come from.
-
-According to 56e8bdd46a8 this is related to the QAPI doc generation ...
-I hope this is done properly out-of-tree now, so it should be ok to
-remove it.
-
->> -.stgit-*
-> 
-> Need to double-check where this come from.
-
-I assume that this is related to temporary files from "Stacked Git" ...
-if anybody is still using that tool, I think that line should rather go
-into their global ~/.gitignore file instead.
-
->>  .git-submodule-status
->>  cscope.*
->>  tags
->>  TAGS
->> -docker-src.*
->>  *~
->> -*.ast_raw
->> -*.depend_raw
-> 
-> Coccinelle generated in source tree, please keep.
-
-Ok.
+I forgot to add: These are properly created in the build directory, so
+it is fine to remove this line.
 
  Thomas
 
