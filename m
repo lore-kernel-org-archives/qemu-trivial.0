@@ -1,24 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG0FS-0006K3-PZ
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 09:34:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35456)
+	id 1kG0S8-0003HO-Ud
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 09:48:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG0FQ-0006Gf-Nc; Wed, 09 Sep 2020 09:34:52 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:43539)
+ id 1kG0S7-0003D4-1S; Wed, 09 Sep 2020 09:47:59 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:58273)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG0FP-0005y3-0H; Wed, 09 Sep 2020 09:34:52 -0400
+ id 1kG0S4-0007d8-Ag; Wed, 09 Sep 2020 09:47:58 -0400
 Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MrQ2R-1kvPSV1rrL-00oZHK; Wed, 09 Sep 2020 15:34:44 +0200
-Subject: Re: [PATCH 1/2] hw/timer/hpet: Remove dead code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MWixU-1k0Y0t0FY0-00X0RU; Wed, 09 Sep 2020 15:47:51 +0200
+Subject: Re: [PATCH 1/2] hw/net/e1000e: Remove overwritten read handler for
+ STATUS register
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200903134506.440082-1-philmd@redhat.com>
- <20200903134506.440082-2-philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>
+References: <20200904131402.590055-1-f4bug@amsat.org>
+ <20200904131402.590055-2-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <8d77229e-daf3-6bb3-ae07-55007fe22fed@vivier.eu>
-Date: Wed, 9 Sep 2020 15:34:43 +0200
+Message-ID: <f754d7d4-f731-85a4-efa0-7736b1df2883@vivier.eu>
+Date: Wed, 9 Sep 2020 15:47:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200903134506.440082-2-philmd@redhat.com>
+In-Reply-To: <20200904131402.590055-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:sTgtevp/Dm89Wy8Xykaclg374XEndO9G3NXktvQK3e4GBPRDb45
- yaqIWsuv6nx6Qx+RaPp1poWHp5oUwC40l4iz0omjpfzUjQE8Ec0yy6oxvxd84uCjSpntS3U
- QSR0aLDfiZx9LHEJtWk/YktoGJWRRV441ukZ4PcIV5NR3e2aHVXI1SEnpgq+HF6YD08IKnz
- IDs8O4WdXXX5P74JLRX3A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:16uBbLUXElM=:FOF9eIaHntPvoMYkfXxR8J
- 1Tw3xR0UnyYZpnq/iWoAOgHC0CEUhDp8jPSBzUVi2FBldFcw69KSdGL45O3sZVF1kDG/xle0J
- auxJi/zK6tDfrRe8YJZ8u/OlNDB+kjWWqWHE9ddqKrSm7LEk2QfCTDTZTmC8+JERR5jvt/2YF
- 41F7WRR+SsZMsu+fLyOva1yhI4FCDuCF94FRL/yO4Jt+Yi+12qjl4mk4JQMa9TjezucNUYbQu
- a15ndAKp+5TgdDpTdryKdjOPzqz5ccpWJ+JLAuJADBSytRAjcyeSTH+lcyVesdCuVbxevUzj+
- u5puiXfjBdswdWZ2iaxlt/1GI6y/Ctx76lJNh2AsxvbEfegjZwEBY3QTTGV42KtKxm3wmh6TB
- vfHx8ZgNSabEKNqnHBfSXF3jOBlfxaXR1e5h35pXu5HgXE2JlIIuAkkS7FS9Iz+L3I4uM8nX9
- 0P+UqvNuL72MW1A3yHBzsaCPVsoTSOob1vbfClIWTX82IWbpM9O2jjST+Bo9a2STx9t0EcuKe
- OS6J4URfEWgQTGhN26AXmY7WN8IeFdIR77ZeX94687qf9tewuRNH+i5R0eEFjBwl95bRm+ayk
- Or5V9/oUPgVXGISljl7Z54Tms5JekoA6gykEsup44UJDim0nDjv4xUbe/hbtwL7So84UqeeuL
- q2ieWT+T++q4/d+IQC8JDrpiUg/OjiJZoSvGKe/Ee61lSNJo9lEmHWPqwAzuCYsRZ1hzwEqTh
- M7+9C6KhrPbJ64mj2Cla9AQ86J5/LCYVURmEL5ctRxUsSR4JRl1AAVNrT9S4GSvxgrL+zXewN
- 0srEPXlAAyE/m21IiRYdK/xv+9nca9/Yy3uWGrPu/63ms2YMmkChZRxQ7m/qQFaEcRrZw3o
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:mQ+TFq2K0qrj1BrFMvsZaQVHOT2PWJYWhOUqlojaLEW+UFM2MyJ
+ Vnz8M9X0lTN+AXqIMBoQ9w02mr+eaBgBVu/+CBf7HgrQRAMQVZlcWRCFKeoyXuS9KxKlWDt
+ fFnI6D9uOE3BUHMYM9bAJasCx0r4juUzleeXmQMR9xYDYuJj4hvKxsMvHGrjBnt9wmSUYbf
+ 6IHh7vJFCx580tZtBrRlg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OnjoOjcIg4U=:g4hUlhIwiz/Z5J25Gx961g
+ 18+U1r0pd0qrKMR/d/AGq91RpRrL/X6ABkvAILpEyhJK2P0iRUJDybcJSoOE080djKL5OZVJI
+ lD6SgyM4LL43543iqHItqz8Hvqpl0a0SJ80+g608Rb4KcpXR6rI5O9JqPel2pX1jPryvLxOoi
+ qIjs2CYpmYEQdGm/MMUa9UFerB2/LFpqFrZVnGEQ3YFcPY9iMwGn4PLeQfSmX85dxZhwfmlNv
+ hdHqU/MQR6oKyC2ln7nEzopDh0pzkrA2OXTi463edZeszxz64A9RYTQbAsMuoc+1j4Iwoj5kv
+ 5Py0hWa2OCpv5krGcz4BUGsjfJCPEHURtzsq08/p+RyGF1M3wRH6uHP3PXTfgECbKoHjNz2od
+ 2iQSPKiLaBeiO46qh/z+1+wR4dUMJKMaLvwAPg/JB/yNiJYzdSJhpzP6bODN9LMZVcoB3l2Aq
+ b4PgGcB8NSNaEe9h7RQTpjcr8sw684m4k0GB3tACXL5+bRUB5i4rdrzguPdjS/4Rie8OppxEa
+ p+jeAgRiHEZGT6PVcRH+myTRKzFmwo6apqExGcnZ5Kk6d1QuKLoIeHOb/gduRBzB2irRW3hTw
+ kl5kc2eC1TOAhjwhGvxjXkDqxdsaSF7bn+xyZ/2vlDYyQneX6N0ixfdB8FJzxU7H1oIE5cWT8
+ CZvTEF7zlBMmizBzjZK2OH9Z8I5l0dBz5zcgx+3omuf9oKfjHG91cCeQ6fYVEggt/2z8Uuwuv
+ rQQKtuQ1Hl+yFOgWbJuKlWCUuVImK7ccbPMMTflDjBW3VdcHEOBSK+5dzDSZgXAhfuz5GZmVv
+ bdZatrX+u/l5x/RMiMRBAvxpdvgXTcCEzP0wK5ZEYNwfnCGS9aB9Ob8rDfStRo4J0NUvBW0
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:23:43
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:26:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -54
 X-Spam_score: -5.5
@@ -110,41 +111,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 13:34:53 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 13:47:59 -0000
 
-Le 03/09/2020 à 15:45, Philippe Mathieu-Daudé a écrit :
-> This code was never compiled/used, remove it.
+Le 04/09/2020 à 15:14, Philippe Mathieu-Daudé a écrit :
+> The STATUS register readop handler is initialized first with
+> the generic e1000e_mac_readreg() handler:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>   2861 #define e1000e_getreg(x)    [x] = e1000e_mac_readreg
+>   2862 typedef uint32_t (*readops)(E1000ECore *, int);
+>   2863 static const readops e1000e_macreg_readops[] = {
+>   ....
+>   2919     e1000e_getreg(STATUS),
+> 
+> Then overwritten with the specific e1000e_get_status handler:
+> 
+>   3018     [STATUS]  = e1000e_get_status,
+> 
+> To avoid confusion, remove the overwritten initialization.
+> 
+> 6f3fbe4ed0 ("net: Introduce e1000e device emulation")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/timer/hpet.c | 14 --------------
->  1 file changed, 14 deletions(-)
+>  hw/net/e1000e_core.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-> index 380acfa7c8a..b683f64f1d3 100644
-> --- a/hw/timer/hpet.c
-> +++ b/hw/timer/hpet.c
-> @@ -416,20 +416,6 @@ static void hpet_del_timer(HPETTimer *t)
->      update_irq(t, 0);
->  }
->  
-> -#ifdef HPET_DEBUG
-> -static uint32_t hpet_ram_readb(void *opaque, hwaddr addr)
-> -{
-> -    printf("qemu: hpet_read b at %" PRIx64 "\n", addr);
-> -    return 0;
-> -}
-> -
-> -static uint32_t hpet_ram_readw(void *opaque, hwaddr addr)
-> -{
-> -    printf("qemu: hpet_read w at %" PRIx64 "\n", addr);
-> -    return 0;
-> -}
-> -#endif
-> -
->  static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
->                                unsigned size)
->  {
+> diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+> index bcd186cac52..5170e6a4563 100644
+> --- a/hw/net/e1000e_core.c
+> +++ b/hw/net/e1000e_core.c
+> @@ -2916,7 +2916,6 @@ static const readops e1000e_macreg_readops[] = {
+>      e1000e_getreg(TSYNCRXCTL),
+>      e1000e_getreg(TDH),
+>      e1000e_getreg(LEDCTL),
+> -    e1000e_getreg(STATUS),
+>      e1000e_getreg(TCTL),
+>      e1000e_getreg(TDBAL),
+>      e1000e_getreg(TDLEN),
 > 
 
 Applied to my trivial-patches branch.
