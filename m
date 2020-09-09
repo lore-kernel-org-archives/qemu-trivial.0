@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG2ji-0007z8-1P
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 12:14:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54530)
+	id 1kG2kc-0000Tx-KJ
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 12:15:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kG2jg-0007yE-2q
- for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:14:16 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27652
+ id 1kG2ka-0000S6-8b
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:15:12 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20447
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kG2jd-0006R1-IU
- for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:14:15 -0400
+ id 1kG2kY-0006Xn-IR
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:15:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599668052;
+ s=mimecast20190719; t=1599668109;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=NlnIjF7L86V5+9wZ1OH/H8lj8QgoBZCQnyX6nouVO6U=;
- b=QOCz6o3zuMdO5bm70gcaJGofRPsNYbl8yqAI5xL/IUX8l1pKjCaZowbtnDe59v+MnAvrwA
- zauF8KQ32MO5y0nXA2YpsX32WaDTQicRlItwNTY93+evVn3gbJTBunHr8cE/eYIit8DoiW
- 3cVqMcI9XEy6CWY/tl0B3vfRWLaPUTE=
+ bh=q5IWGhETzZVHVSgwIxyid7VdYTOVwN6kPJowq0maYDU=;
+ b=f3CufvOudrRBjPNjoSHy9+Upfp+qf2+AyMxNDwhzVFKyb4U64i8lHxDcnz5RHoR4XBMM9B
+ 1AL2BGNlnBepEGq2WZ+UlENsnsfibp/TLY+mYZGhkkT3GxmHU7OHYkNyqXJspMrafHbiA/
+ QYpCZHgfhSxrCupjQPoqJqZEzmbsRaA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-318-KXxyPWnzMFWGjrpPAbWKzQ-1; Wed, 09 Sep 2020 12:14:09 -0400
-X-MC-Unique: KXxyPWnzMFWGjrpPAbWKzQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-130-6P0vwicyMkSfEk6X3vzVwQ-1; Wed, 09 Sep 2020 12:15:02 -0400
+X-MC-Unique: 6P0vwicyMkSfEk6X3vzVwQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6171800466;
- Wed,  9 Sep 2020 16:14:08 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CBA421084C81;
+ Wed,  9 Sep 2020 16:15:00 +0000 (UTC)
 Received: from localhost (ovpn-112-103.ams2.redhat.com [10.36.112.103])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0B07C5C1C2;
- Wed,  9 Sep 2020 16:14:07 +0000 (UTC)
-Date: Wed, 9 Sep 2020 17:13:51 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 71B2D83562;
+ Wed,  9 Sep 2020 16:15:00 +0000 (UTC)
+Date: Wed, 9 Sep 2020 17:14:44 +0100
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: =?utf-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
 Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
  Juan Quintela <quintela@redhat.com>, Daniel Brodsky <dnbrdsky@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH v4 1/2] logging: Fixes memory leak in test-logging.c
-Message-ID: <20200909161351.GB61449@stefanha-x1.localdomain>
+ Paolo Bonzini <pbonzini@redhat.com>, Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: [PATCH v4 2/2] rcu: add uninit destructor for rcu
+Message-ID: <20200909161444.GC61449@stefanha-x1.localdomain>
 References: <20200908151052.713-1-luoyonggang@gmail.com>
- <20200908151052.713-2-luoyonggang@gmail.com>
- <20200909083001.GD12090@stefanha-x1.localdomain>
- <CAE2XoE_AOYve+0uxRp4ki8nHERbvvTLVvJnzC-Oh7HFHDkr0xA@mail.gmail.com>
+ <20200908151052.713-3-luoyonggang@gmail.com>
+ <20200909084107.GE12090@stefanha-x1.localdomain>
+ <CAE2XoE_+z5g=iO25qq=qsHp_m=p_dcte4taHDd8y3VirjR-pAg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE_AOYve+0uxRp4ki8nHERbvvTLVvJnzC-Oh7HFHDkr0xA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <CAE2XoE_+z5g=iO25qq=qsHp_m=p_dcte4taHDd8y3VirjR-pAg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
 X-Mimecast-Spam-Score: 0.0
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="Yylu36WmvOXNoKYn"
+ protocol="application/pgp-signature"; boundary="QRj9sO5tAVLaXnSD"
 Content-Disposition: inline
 Received-SPF: pass client-ip=205.139.110.120; envelope-from=stefanha@redhat.com;
  helo=us-smtp-1.mimecast.com
@@ -66,7 +66,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,81 +79,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 16:14:16 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 16:15:12 -0000
 
---Yylu36WmvOXNoKYn
+--QRj9sO5tAVLaXnSD
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Sep 09, 2020 at 04:35:26PM +0800, =E7=BD=97=E5=8B=87=E5=88=9A(Yongg=
+On Wed, Sep 09, 2020 at 05:05:16PM +0800, =E7=BD=97=E5=8B=87=E5=88=9A(Yongg=
 ang Luo) wrote:
-> On Wed, Sep 9, 2020 at 4:30 PM Stefan Hajnoczi <stefanha@redhat.com> wrot=
+> On Wed, Sep 9, 2020 at 4:41 PM Stefan Hajnoczi <stefanha@redhat.com> wrot=
 e:
 >=20
-> > On Tue, Sep 08, 2020 at 11:10:51PM +0800, Yonggang Luo wrote:
-> > > g_dir_make_tmp Returns the actual name used. This string should be
-> > > freed with g_free() when not needed any longer and is is in the GLib
-> > > file name encoding. In case of errors, NULL is returned and error wil=
-l
-> > > be set. Use g_autofree to free it properly
+> > On Tue, Sep 08, 2020 at 11:10:52PM +0800, Yonggang Luo wrote:
+> > > This is necessary if the pending  rcu calls are closing and removing
+> > > temp files. This also provide a function
+> > > void rcu_wait_finished(void);
+> > > to fixes test-logging.c test failure on msys2/mingw.
+> > > On windows if the file doesn't closed, you can not remove it.
 > > >
 > > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > > > ---
-> > >  tests/test-logging.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/tests/test-logging.c b/tests/test-logging.c
-> > > index 8a1161de1d..957f6c08cd 100644
-> > > --- a/tests/test-logging.c
-> > > +++ b/tests/test-logging.c
-> > > @@ -196,7 +196,7 @@ static void rmdir_full(gchar const *root)
-> > >
-> > >  int main(int argc, char **argv)
-> > >  {
-> > > -    gchar *tmp_path =3D g_dir_make_tmp("qemu-test-logging.XXXXXX", N=
-ULL);
-> > > +    g_autofree gchar *tmp_path =3D
-> > g_dir_make_tmp("qemu-test-logging.XXXXXX", NULL);
-> > >      int rc;
-> > >
-> > >      g_test_init(&argc, &argv, NULL);
+> > >  include/qemu/rcu.h   |  5 +++++
+> > >  tests/test-logging.c |  2 ++
+> > >  util/rcu.c           | 37 ++++++++++++++++++++++++++++++++++++-
+> > >  3 files changed, 43 insertions(+), 1 deletion(-)
 > >
-> > I don't see the memory leak. There is a g_free(tmp_path) at the bottom
-> > of main().
+> > Can the new drain_call_rcu() function be used? Maxim recently posted th=
+e
+> > following patch:
 > >
-> > Did I miss something?
+> > https://patchew.org/QEMU/20200831150124.206267-1-mlevitsk@redhat.com/20=
+200831150124.206267-3-mlevitsk@redhat.com/
 > >
-> Oh, gocha, this issue fixed by someone else. So when I rebasing, somethin=
-g
-> are lost.
->  I am intent replace the free with  g_autofree , should I update it? this
-> is not a fix anymore, just
-> a improve
+> > Whether drain_call_rcu() or rcu_wait_finished() is used, please include
+> > a comment in the code that documents why the wait is necessary. For
+> > example, "qemu_log_close() uses RCU for its FILE pointer but Windows
+> > cannot remove open files, so we need to wait for RCU here".
+> >
+> > Another option is to wait for RCU inside qemu_log_close() so that
+> > callers don't need to worry about this implementation detail:
+> >
+> >   #ifdef _WIN32
+> >   /* Windows cannot remove open files so we need to wait for RCU here *=
+/
+> >   drain_call_rcu();
+> >   #endif
+> >
+> How about not gurad with   #ifdef _WIN32?
+> So we don't got silent differencies between posix and win32?
+> and qemu_log_close  only called in function cpu_abort()
+>       if (qemu_log_separate()) {
+>         FILE *logfile =3D qemu_log_lock();
+>         qemu_log("qemu: fatal: ");
+>         qemu_log_vprintf(fmt, ap2);
+>         qemu_log("\n");
+>         log_cpu_state(cpu, CPU_DUMP_FPU | CPU_DUMP_CCOP);
+>         qemu_log_flush();
+>         qemu_log_unlock(logfile);
+>         qemu_log_close();
+>     }
+>=20
+> So that on't affect the performance
 
-If you want. It's not essential in this function since there aren't
-return statements where memory leaks often occur, but since you're
-already working on the code, it's still an improvement to use
-g_autofree.
+Yes, that sounds good.
 
 Stefan
 
---Yylu36WmvOXNoKYn
+--QRj9sO5tAVLaXnSD
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9Y/z8ACgkQnKSrs4Gr
-c8iCPQgAp23ejgNO7qUhwT9wz585rQo9q32wQhqrKYKlz2xwPOibgS4qJok6wymN
-+v3yFGNfC2SEyfbZFHgzMfvhXpLBnioBKqvS4yu2S3w5ME3yhbYh/U51ZSPEP+fV
-6/NuQdiFr6612UPfOaDWG289lPj/UsB7D7o6ndnGoWf2rdME4CZHz1RqWXeNr/BG
-iGM2jVYwSff5a5Q6PsNACtlt9WWksI8rCZLB9xPFkBwg70m5IMaWw4+AoRR6otS8
-PeYkAKmzDyfeJf9yzMbikLVuxDOnotM6MXhFaUwL/OD7oJYeFsCRmCqHTxTiGIG7
-ekQialjeOLGFvwvdmnADX1A2twq2jg==
-=tend
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9Y/3QACgkQnKSrs4Gr
+c8jnHAgAiYoy2tJhEkVAhaiZ6fnqJvupxMP9+gO0vD5DS7mw1jZwFDO5tUChVXa5
+XMhD4KD7WoY16aK9qw2E+PrNSgAHejBf0f1vV7NU4jI/8aay2jJxc2r1LcZXHbIS
+Vcs0zY1R4I8WDM0/j+A+WhcJ344vpEg+YYQPxTLb1Rey3Y6smCZp1prEs0MXV0G/
+t+VZTRSNjiEBgztuOF92lDpL93S/m9JL0/c3oMzhBjxyMVI0eH6GBMG7yHxI4Pv+
+QOHIPhAPR/qIkazPX5Oxvv03D5Leecly06I2fWgvQZZphHIvPa+OuMoiFiqpmxZY
+X0B0cvmC4s5+/jBxEYJDoF98QZHhew==
+=sTW7
 -----END PGP SIGNATURE-----
 
---Yylu36WmvOXNoKYn--
+--QRj9sO5tAVLaXnSD--
 
 
