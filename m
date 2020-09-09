@@ -1,100 +1,111 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG253-0000ed-Gq
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 11:32:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41802)
+	id 1kG2dD-0000yt-Su
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 12:07:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG252-0000dH-JZ; Wed, 09 Sep 2020 11:32:16 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:55573)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG250-0006xM-P8; Wed, 09 Sep 2020 11:32:16 -0400
-Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M27ix-1kE7CV0SZV-002YCv; Wed, 09 Sep 2020 17:32:10 +0200
-Subject: Re: [PATCH] kconfig: fix comment referring to old Makefiles
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20200908094244.26327-1-pbonzini@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <0f5f8afc-a62f-6e84-d020-1fc485f9b795@vivier.eu>
-Date: Wed, 9 Sep 2020 17:32:09 +0200
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kG2dB-0000w8-Ok
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:07:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60605)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kG2d8-0004o8-JU
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 12:07:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599667648;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Uen1zQ03UCNBS0tMR0NsJEQYDnVTJlnMGc3Wshw14MM=;
+ b=LyTnhgWVI+LyCygHoTbde/yNe8u1b1CQMmcJtMhVrJ9YX4YVC079COQenXBC32tnvcu0jz
+ eJHOzb+Kf2LxB9bu+gXblbG/HSo96G/E2F0c3JCAUoJAo7RlnIg1R7Siq0cTuN/+rDnPOf
+ jmnFkd9ikKI+M+kgqsZ5kxiT+ZumAjA=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-142-6TRAZ6qhOQSaYUaWdf9ULw-1; Wed, 09 Sep 2020 12:07:27 -0400
+X-MC-Unique: 6TRAZ6qhOQSaYUaWdf9ULw-1
+Received: by mail-wm1-f72.google.com with SMTP id b73so1011749wmb.0
+ for <qemu-trivial@nongnu.org>; Wed, 09 Sep 2020 09:07:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Uen1zQ03UCNBS0tMR0NsJEQYDnVTJlnMGc3Wshw14MM=;
+ b=WkfEHWZtfzIlshJYFZde+a5J/cCa42iLk0mD/qugnRyJUGxPn4/roCeC3H9YeAaufo
+ EahVJgziUx5sNtwMJko8kuSokfnecNKlxEmBkCKzTqplP1GHBgRMA7bekjiREP/Vkcoq
+ xiDXIST/l+cmYkSHO5UmfKsOcVLYUU4yPcH21fPUeC3VM2pEpPzwq2RXkwX5euJVF9hE
+ HrNzSLFDDWDFfn9CscgP3liytBIMCJldbrePtcmSgeUcTxgz1IDHX/JfwcVE6jB63x5V
+ WksqJEngUPZD1pIkl1v5/otmlRx1GXrvfwQUTMGa3eciDxBZG7vPB6R5u7BTjvCz1wk0
+ qc5g==
+X-Gm-Message-State: AOAM533A7kI9WOJemMh8o4brUafjwtvCLtScPKzo4dI+tNZ8GDH9o2bW
+ Rzd1JGlL7HZ9ZPor7F4dCwaMUl98zG94+lRDWDU1RnExSK9PvIv9ij9pYoKM26bCSqzB2LJwx5V
+ pMU38wH0HrOEbpulKmg==
+X-Received: by 2002:adf:e989:: with SMTP id h9mr5152356wrm.38.1599667645904;
+ Wed, 09 Sep 2020 09:07:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpv/+XHwWKr4EUMMfP0obi4T7UUMz99B/UguEmXxXoOHuyc4LOlcgL42h4en7XlWq29SbxSg==
+X-Received: by 2002:adf:e989:: with SMTP id h9mr5152325wrm.38.1599667645555;
+ Wed, 09 Sep 2020 09:07:25 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id z15sm4694479wrv.94.2020.09.09.09.07.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Sep 2020 09:07:24 -0700 (PDT)
+Subject: Re: [PATCH v2] Simplify the .gitignore file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20200909080305.258961-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <2fdc9691-2fd6-d453-be45-8140b0afa429@redhat.com>
+Date: Wed, 9 Sep 2020 18:07:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200908094244.26327-1-pbonzini@redhat.com>
+In-Reply-To: <20200909080305.258961-1-thuth@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YNe3oWx8za8ty70jujLs+Uz4pxYJF2epG6DugwYjsR+Oc8yLYv0
- sV+FE7NpV8SjFBPBFCmm3TpFMBcguMgB9/EvrqMduKH/1QRjIyf83JZ+yCEeO7+IhXJjq/4
- MQoxRpw79PwvqdFeC3S2N73OqBc0aEfDzYnzhzemDeapCCTVfQiAOEAFwsFJbdipczgwutY
- kIYfkZ0kfmPcE+6n6VQSQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PEAz2gM4Dn0=:uLrHoin6IbtLlzSb225CsX
- xUizFW7vp0GIrrHm6bKNvz5TrOJyCmygSIqUWrvEuqYPmRNW1DjHhZzQuzZ4Jp0ArvU2RmAzC
- zt8FVWBlglQY73Vfv27P/P150j//cZRunTC2nkkZRcMn9eV8D80b1ti21ocxODPzdNqabQfM6
- Un4fvj5SM1fPdkGpDslX8Pn2Jt/QM+K3qpIzmG6fEHvdLtCqLnbFU8TdwHPSsOqdxlXuEHBly
- SrKK/sHtYel/MILFRy1UHjk9TJXdi016iArv584q9zy/pgc7H31/365kA12oDyJpUts7wAWut
- jbjTqbIHA+ATgMpccapaoGZ5Clq8LnIIL3Z7c8fBUEJnV3hhsRZWlsoYJBBLzT5nSerfMVTYi
- P55CmuihYAKz0bv/xK93zF/uES/u92fkS+iL+lhJBvslkic3oiHsk+SZZRHV8/yCKfAiA3gwL
- U50nSrDsWyETbJGTVAZ/e3joaboHfxE7QYvYo3pGQp+3gKVK7lg198Usu5dHQG6rNbr5f2gD4
- O3Wo70im9zJFum8Vf5nMvwVdkYwHTtU8E6t0NlDCSmMm/0q/6iOw9VgwM3muuLIaoPJMdLP7N
- 6FI/RwmBf1iwidOL2OeYyv7kJ9MKscYgbpVO2GLDCYWqwYCwW0UEbSODRRCg9E6T3B8nHYfQf
- ww15C6aC/G3Hw7z8/dczpv0aS4T6s0KY76q//Ebp/C8jSxnpz5SOWhY6A9Ea2Cld6hZuLWFY3
- bTUUovS2h3gG3j4/jBt72hAkLbqGHljCbZJlClhWhPYqGjiw7L3oeTK9xK2qWBQR7VBN1TdCe
- 8PkXloG7IqyIxAC72QEpu7DP8VWxZ+jmG1C70ptOnt3HnlTqb2AWXgLe9UlAHbPyDHhYiD3
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 11:32:12
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -54
-X-Spam_score: -5.5
+Content-Language: en-US
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 03:25:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -56
+X-Spam_score: -5.7
 X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.576,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.576, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,32 +118,193 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 15:32:16 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 16:07:34 -0000
 
-Le 08/09/2020 à 11:42, Paolo Bonzini a écrit :
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+On 9/9/20 10:03 AM, Thomas Huth wrote:
+> Now that we always do out-of-tree builds (and the in-tree builds are
+> faked via a "build" directory), we can simplify out .gitignore file
+> quite a bit.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  Kconfig.host | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  v2: Do not delete the .sdk, stgit and coccinelle lines 
 > 
-> diff --git a/Kconfig.host b/Kconfig.host
-> index a6d871c399..4af19bf70e 100644
-> --- a/Kconfig.host
-> +++ b/Kconfig.host
-> @@ -1,6 +1,6 @@
->  # These are "proxy" symbols used to pass config-host.mak values
-> -# down to Kconfig.  See also MINIKCONF_ARGS in the Makefile:
-> -# these two need to be kept in sync.
-> +# down to Kconfig.  See also kconfig_external_symbols in
-> +# meson.build: these two need to be kept in sync.
->  
->  config LINUX
->      bool
+>  .gitignore | 152 -----------------------------------------------------
+>  1 file changed, 152 deletions(-)
 > 
+> diff --git a/.gitignore b/.gitignore
+> index b6fdd34ddf..5515f595e6 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -1,163 +1,11 @@
+>  /GNUmakefile
+>  /build/
+> -/.doctrees
+> -/config-devices.*
+> -/config-host.*
+> -/config-target.*
+> -/config.status
+> -/config-temp
+> -/tools/virtiofsd/50-qemu-virtiofsd.json
+> -/elf2dmp
+> -/trace-events-all
+> -/trace/generated-events.h
+> -/trace/generated-events.c
+> -/trace/generated-helpers-wrappers.h
+> -/trace/generated-helpers.h
+> -/trace/generated-helpers.c
+> -/trace/generated-tcg-tracers.h
+> -/ui/shader/texture-blit-frag.h
+> -/ui/shader/texture-blit-vert.h
+> -/ui/shader/texture-blit-flip-vert.h
+> -/ui/input-keymap-*.c.inc
+> -*-timestamp
+> -/*-softmmu
+> -/*-darwin-user
+> -/*-linux-user
+> -/*-bsd-user
+> -/ivshmem-client
+> -/ivshmem-server
+> -/libdis*
+> -/libuser
+> -/linux-headers/asm
+> -/qga/qapi-generated
+> -/qapi-gen-timestamp
+> -/qapi/qapi-builtin-types.[ch]
+> -/qapi/qapi-builtin-visit.[ch]
+> -/qapi/qapi-commands-*.[ch]
+> -**/qapi/qapi-commands.[ch]
+> -**/qapi/qapi-emit-events.[ch]
+> -/qapi/qapi-events-*.[ch]
+> -**/qapi/qapi-events.[ch]
+> -**/qapi/qapi-init-commands.[ch]
+> -**/qapi/qapi-introspect.[ch]
+> -/qapi/qapi-types-*.[ch]
+> -**/qapi/qapi-types.[ch]
+> -/qapi/qapi-visit-*.[ch]
+> -!/qapi/qapi-visit-core.c
+> -**/qapi/qapi-visit.[ch]
+> -**/qapi/qapi-doc.texi
+> -/qemu-edid
+> -/qemu-img
+> -/qemu-nbd
+> -/qemu-options.def
+> -/qemu-options.texi
+> -/qemu-img-cmds.texi
+> -/qemu-img-cmds.h
+> -/qemu-io
+> -/qemu-ga
+> -/qemu-bridge-helper
+> -/qemu-keymap
+> -/qemu-monitor.texi
+> -/qemu-monitor-info.texi
+> -/qemu-storage-daemon
+> -/qemu-version.h
+> -/qemu-version.h.tmp
+> -/module_block.h
+> -/scsi/qemu-pr-helper
+> -/vhost-user-scsi
+> -/vhost-user-blk
+> -/vhost-user-gpu
+> -/vhost-user-input
+> -/fsdev/virtfs-proxy-helper
+> -*.tmp
+> -*.[1-9]
+> -*.a
+> -*.aux
+> -*.cp
+> -*.exe
+> -*.msi
+> -*.dll
+> -*.so
+> -*.fn
+> -*.ky
+> -*.log
+> -*.pdf
+> -*.pod
+> -*.cps
+> -*.fns
+> -*.kys
+> -*.pg
+> -*.pyc
+> -*.toc
+> -*.tp
+> -*.vr
+> -*.d
 
-Applied to my trivial-patches branch.
+Yeah!
 
-Thanks,
-Laurent
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> -!/.gitlab-ci.d
+> -!/scripts/qemu-guest-agent/fsfreeze-hook.d
+> -*.o
+>  .sdk
+> -*.gcda
+> -*.gcno
+> -*.gcov
+> -/pc-bios/bios-pq/status
+> -/pc-bios/edk2-*.fd
+> -/pc-bios/vgabios-pq/status
+> -/pc-bios/optionrom/linuxboot.asm
+> -/pc-bios/optionrom/linuxboot.bin
+> -/pc-bios/optionrom/linuxboot.raw
+> -/pc-bios/optionrom/linuxboot.img
+> -/pc-bios/optionrom/linuxboot_dma.asm
+> -/pc-bios/optionrom/linuxboot_dma.bin
+> -/pc-bios/optionrom/linuxboot_dma.raw
+> -/pc-bios/optionrom/linuxboot_dma.img
+> -/pc-bios/optionrom/pvh.asm
+> -/pc-bios/optionrom/pvh.bin
+> -/pc-bios/optionrom/pvh.raw
+> -/pc-bios/optionrom/pvh.img
+> -/pc-bios/optionrom/multiboot.asm
+> -/pc-bios/optionrom/multiboot.bin
+> -/pc-bios/optionrom/multiboot.raw
+> -/pc-bios/optionrom/multiboot.img
+> -/pc-bios/optionrom/kvmvapic.asm
+> -/pc-bios/optionrom/kvmvapic.bin
+> -/pc-bios/optionrom/kvmvapic.raw
+> -/pc-bios/optionrom/kvmvapic.img
+> -/pc-bios/s390-ccw/s390-ccw.elf
+> -/pc-bios/s390-ccw/s390-ccw.img
+> -/docs/built
+> -/docs/interop/qemu-ga-qapi.texi
+> -/docs/interop/qemu-ga-ref.html
+> -/docs/interop/qemu-ga-ref.info*
+> -/docs/interop/qemu-ga-ref.txt
+> -/docs/interop/qemu-qmp-qapi.texi
+> -/docs/interop/qemu-qmp-ref.html
+> -/docs/interop/qemu-qmp-ref.info*
+> -/docs/interop/qemu-qmp-ref.txt
+> -/docs/version.texi
+> -/contrib/vhost-user-gpu/50-qemu-gpu.json
+> -*.tps
+>  .stgit-*
+>  .git-submodule-status
+>  cscope.*
+>  tags
+>  TAGS
+> -docker-src.*
+>  *~
+>  *.ast_raw
+>  *.depend_raw
+> -trace.c
+> -trace-ust.h
+> -trace-ust.h
+> -trace-dtrace.h
+> -trace-dtrace.dtrace
+> -trace-root.h
+> -trace-root.c
+> -trace-ust-root.h
+> -trace-ust-root.h
+> -trace-ust-all.h
+> -trace-ust-all.c
+> -trace-dtrace-root.h
+> -trace-dtrace-root.dtrace
+> -trace-ust-all.h
+> -trace-ust-all.c
+> -/target/arm/decode-sve.c.inc
+> 
 
 
