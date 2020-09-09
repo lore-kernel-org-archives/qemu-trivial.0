@@ -1,68 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG3t8-0003pm-UP
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 13:28:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49550)
+	id 1kG4P4-0004X9-9L
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 14:01:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kG3t6-0003ma-MW; Wed, 09 Sep 2020 13:28:04 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:46249)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kG4P3-0004VM-3L; Wed, 09 Sep 2020 14:01:05 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42791)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kG3t4-0001Q2-QC; Wed, 09 Sep 2020 13:28:04 -0400
-Received: by mail-lj1-x243.google.com with SMTP id a22so4565501ljp.13;
- Wed, 09 Sep 2020 10:28:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kG4Oy-0001ie-Vt; Wed, 09 Sep 2020 14:01:04 -0400
+Received: by mail-wr1-x442.google.com with SMTP id c18so3916701wrm.9;
+ Wed, 09 Sep 2020 11:00:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=RwgBRnPlh/MQohEyO0yaWpWbyXHSUxrPm0nMPESEb8o=;
- b=jvKIa7Q4lvRx46LQNjxHmMZAC6IyD0nTHYKJkyv95IKLsmHeplurt4+M4knG4c2RX3
- lp/hD+S/jssEMmYw+dRFuR5YHurFIsRHoDra3CEy7UhzahgUY9ZAbpkk8fbGv6e63Vpe
- PmiyGfIhbu6WEe4G0nQa2vhzhGiNrk8v0/QAlxC6HUQw762DyXJDUhPMsw6UbA6eO5TK
- j9utjpbIT0rLjzViywsQEZsgvJ15Ns7xhoEwA1cS4HqNQlpKVzjtVc3G5Zzy6ROGKeNy
- BYa3ghLOUUqVuiNdE253oxPN8qyCxw9p+eDLTbauscZiagcaYt8lr/dGtHC1dduKCJz/
- ipKg==
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=FWr/YwTt4WUSL01JYpZATKxD1oyh2WODIXz1W4tUS0I=;
+ b=Xwun+t2/TnZ8tbpHsVvmuNeokhwgG60cqzfojguisHiRATD+KZ9zzpN6CtXzb6P0SP
+ GE5gZjhi6zestCZ/MtTY6yYYAj28fRMvP8w+kxM5nWLAst3CR7NT7m6Z1dorSfZcySXL
+ JcclSoI76SMoD3FIT/oXXJCxUBGo+h04fk7Li7od95+70ywInGCvT0C3xMtBUE8D8MZk
+ bcUVgKFg217bDYws+N6T/B2KSOyZhEm8N/cigXPdXw3SWc8al7c5f6Us7oEOnmABUpMi
+ 8D474h4eNr/0JtKwLMKhwmOQlnDgkS8tikG+8xLWw5gWqFFb4hdCkbaevWCvAGdcxhaW
+ pq0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=RwgBRnPlh/MQohEyO0yaWpWbyXHSUxrPm0nMPESEb8o=;
- b=JzAiGZC+PgkrXoYTNgfyulmPOSIYwHJKfrhR+yQGZZndz2Ldtjy5bxhWH3i1+ZQoFb
- AS8s8pub4rdGfbEZ4HM4QoA/V/6USVziGGQqfk6VbBdrM1nzeqE/5jFBJuZZ/OAyaomX
- /SZ4EJJnhFXhRKERh2ZBGly8biFjjMHVijGBeN0tvJmPcjIhaElqt9r1tt0OzyrDSOXU
- xhHkKYu6X42/7HzR6y1A8NZudm2U/uEQQXmt3Rs/UoTjYkD0k5zpWLo121eax0J+28ZX
- 02PRF0WOBQaduzCb/q/pbvzb+TPHXqo08tUF00boQzcAlo4eQmZcfD8kE/4/xPvVV7p3
- /OfA==
-X-Gm-Message-State: AOAM530N1NsmKAWubcOm6AHPzVuufyftMoyx7fmY9ZAYUgFNrK2yYpGu
- mRaulEouWLFU3XKKLdJa9F2MRE0MKc8PzniuwOg=
-X-Google-Smtp-Source: ABdhPJz+AI8teYrnhrmP5/1oxxQgctEVZUW4Vz86vFld7a8xQiYnlMkKRZ9jnk3V7Ac2LAqbwqhGUwxQVSQzEjUNdbY=
-X-Received: by 2002:a2e:9dc7:: with SMTP id x7mr2600141ljj.447.1599672480136; 
- Wed, 09 Sep 2020 10:28:00 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=FWr/YwTt4WUSL01JYpZATKxD1oyh2WODIXz1W4tUS0I=;
+ b=YQZKyb2z7l1Jl4c9fauIgHOVb3qpuf/PHEaxJC3bQoTyTr0ZytrD3/Hp7zPupGgt4R
+ kDFxwRgfdOTnfcXlNCvTy6hZ8/fVRz0/VE1wszsPerZVzwMTFhrucrRXpl0eoVe18JP0
+ Hag6k+V1CT1gP8GYZ30Wy/8oNbu2uMWLZAT6IHcB2MLbOIIFR1JDGEiGeVXkEytg0/cx
+ 62cIEnmMO3Bg3M8APWEK6h1izgw/N2m02k88iEziKNDmEMFDpB1WEji7/2o79hAhqDN9
+ MLOEwhwVzaE0/mmZkbE0rOQ87XG0mLzx6O5bQDU/apZODCiXsUMU5y81J+eYG/liDQdk
+ G2Vw==
+X-Gm-Message-State: AOAM531KfNk4E+zJOwSP7FjJIIEcLcuqhbzggDx1HfP9t9Tdivb5dggX
+ etU28iuA7HQGR2ivhg7YiN8=
+X-Google-Smtp-Source: ABdhPJzy4CGnUowK8rBbHuVJD46qg3NdtRedveYVeIteDRAsfu7UAYvQ34k7K6i4Ost+4wF8UeMBJQ==
+X-Received: by 2002:a5d:46c5:: with SMTP id g5mr5279217wrs.416.1599674457940; 
+ Wed, 09 Sep 2020 11:00:57 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id n4sm4987232wmd.26.2020.09.09.11.00.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Sep 2020 11:00:56 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 0/2] hw/net/opencores_eth: Trivial patches
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
+References: <20200608091508.19838-1-f4bug@amsat.org>
+ <e472244f-d764-6cd6-70cd-86d71358b999@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <9836f385-ccb8-981f-4677-95d22b2c0a90@amsat.org>
+Date: Wed, 9 Sep 2020 20:00:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200908151052.713-1-luoyonggang@gmail.com>
- <20200908151052.713-3-luoyonggang@gmail.com>
- <20200909084107.GE12090@stefanha-x1.localdomain>
- <ef674b21-cdad-9aea-662e-315006438ed4@redhat.com>
-In-Reply-To: <ef674b21-cdad-9aea-662e-315006438ed4@redhat.com>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Thu, 10 Sep 2020 01:27:47 +0800
-Message-ID: <CAE2XoE8K6OHBm2DnRQEGjrMFhKU-BngSzh2vjYH5c+Q-2eo9kg@mail.gmail.com>
-Subject: Re: [PATCH v4 2/2] rcu: add uninit destructor for rcu
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-level <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Juan Quintela <quintela@redhat.com>,
- Daniel Brodsky <dnbrdsky@gmail.com>, Maxim Levitsky <mlevitsk@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000ef82de05aee4c5af"
-Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x243.google.com
+In-Reply-To: <e472244f-d764-6cd6-70cd-86d71358b999@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.576,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,129 +110,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 17:28:05 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 18:01:05 -0000
 
---000000000000ef82de05aee4c5af
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 9/2/20 2:26 PM, Philippe Mathieu-Daudé wrote:
+> On 6/8/20 11:15 AM, Philippe Mathieu-Daudé wrote:
+>> Remove unnecessary mask, use #define instead of magic.
+>>
+>> Philippe Mathieu-Daudé (2):
+>>   hw/net/opencores_eth: Use definitions instead of magic values
+>>   hw/net/opencores_eth: Remove unnecessary address masking
+>>
+>>  hw/net/opencores_eth.c | 6 ++----
+>>  1 file changed, 2 insertions(+), 4 deletions(-)
+>>
+> 
+> Ping to Jason as the series is reviewed :)
 
-On Thu, Sep 10, 2020 at 1:23 AM Paolo Bonzini <pbonzini@redhat.com> wrote:
-
-> On 09/09/20 10:41, Stefan Hajnoczi wrote:
-> > On Tue, Sep 08, 2020 at 11:10:52PM +0800, Yonggang Luo wrote:
-> >> This is necessary if the pending  rcu calls are closing and removing
-> >> temp files. This also provide a function
-> >> void rcu_wait_finished(void);
-> >> to fixes test-logging.c test failure on msys2/mingw.
-> >> On windows if the file doesn't closed, you can not remove it.
-> >>
-> >> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >> ---
-> >>  include/qemu/rcu.h   |  5 +++++
-> >>  tests/test-logging.c |  2 ++
-> >>  util/rcu.c           | 37 ++++++++++++++++++++++++++++++++++++-
-> >>  3 files changed, 43 insertions(+), 1 deletion(-)
-> > Can the new drain_call_rcu() function be used? Maxim recently posted th=
-e
-> > following patch:
-> >
-> https://patchew.org/QEMU/20200831150124.206267-1-mlevitsk@redhat.com/2020=
-0831150124.206267-3-mlevitsk@redhat.com/
-> >
-> > Whether drain_call_rcu() or rcu_wait_finished() is used, please include
-> > a comment in the code that documents why the wait is necessary. For
-> > example, "qemu_log_close() uses RCU for its FILE pointer but Windows
-> > cannot remove open files, so we need to wait for RCU here".
-> >
-> > Another option is to wait for RCU inside qemu_log_close() so that
-> > callers don't need to worry about this implementation detail:
-> >
-> >   #ifdef _WIN32
-> >   /* Windows cannot remove open files so we need to wait for RCU here *=
-/
-> >   drain_call_rcu();
-> >   #endif
-> >
->
-> In this case even synchronize_rcu() should be okay.
->
-> Tried and not working.
-
-> Paolo
->
->
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---000000000000ef82de05aee4c5af
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Sep 10, 2020 at 1:23 AM Paolo=
- Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzini@redhat.com</a>=
-&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
-0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 0=
-9/09/20 10:41, Stefan Hajnoczi wrote:<br>
-&gt; On Tue, Sep 08, 2020 at 11:10:52PM +0800, Yonggang Luo wrote:<br>
-&gt;&gt; This is necessary if the pending=C2=A0 rcu calls are closing and r=
-emoving<br>
-&gt;&gt; temp files. This also provide a function<br>
-&gt;&gt; void rcu_wait_finished(void);<br>
-&gt;&gt; to fixes test-logging.c test failure on msys2/mingw.<br>
-&gt;&gt; On windows if the file doesn&#39;t closed, you can not remove it.<=
-br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmai=
-l.com" target=3D"_blank">luoyonggang@gmail.com</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 include/qemu/rcu.h=C2=A0 =C2=A0|=C2=A0 5 +++++<br>
-&gt;&gt;=C2=A0 tests/test-logging.c |=C2=A0 2 ++<br>
-&gt;&gt;=C2=A0 util/rcu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 37 ++++=
-++++++++++++++++++++++++++++++++-<br>
-&gt;&gt;=C2=A0 3 files changed, 43 insertions(+), 1 deletion(-)<br>
-&gt; Can the new drain_call_rcu() function be used? Maxim recently posted t=
-he<br>
-&gt; following patch:<br>
-&gt; <a href=3D"https://patchew.org/QEMU/20200831150124.206267-1-mlevitsk@r=
-edhat.com/20200831150124.206267-3-mlevitsk@redhat.com/" rel=3D"noreferrer" =
-target=3D"_blank">https://patchew.org/QEMU/20200831150124.206267-1-mlevitsk=
-@redhat.com/20200831150124.206267-3-mlevitsk@redhat.com/</a><br>
-&gt; <br>
-&gt; Whether drain_call_rcu() or rcu_wait_finished() is used, please includ=
-e<br>
-&gt; a comment in the code that documents why the wait is necessary. For<br=
->
-&gt; example, &quot;qemu_log_close() uses RCU for its FILE pointer but Wind=
-ows<br>
-&gt; cannot remove open files, so we need to wait for RCU here&quot;.<br>
-&gt; <br>
-&gt; Another option is to wait for RCU inside qemu_log_close() so that<br>
-&gt; callers don&#39;t need to worry about this implementation detail:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0#ifdef _WIN32<br>
-&gt;=C2=A0 =C2=A0/* Windows cannot remove open files so we need to wait for=
- RCU here */<br>
-&gt;=C2=A0 =C2=A0drain_call_rcu();<br>
-&gt;=C2=A0 =C2=A0#endif<br>
-&gt; <br>
-<br>
-In this case even synchronize_rcu() should be okay.<br>
-<br></blockquote><div>Tried and not working.=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-Paolo<br>
-<br>
-</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
- class=3D"gmail_signature">=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =E6=AD=A4=E8=
-=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=
-=A0 sincerely,<br>Yonggang Luo<br></div></div>
-
---000000000000ef82de05aee4c5af--
+Ping^2
 
