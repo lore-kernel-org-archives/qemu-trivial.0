@@ -1,30 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG07P-0006nV-QN
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 09:26:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
+	id 1kG07v-0007Sq-6F
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 09:27:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG07N-0006jZ-OJ; Wed, 09 Sep 2020 09:26:33 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:37899)
+ id 1kG07r-0007QQ-SI; Wed, 09 Sep 2020 09:27:04 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:51271)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG07K-00051N-Pd; Wed, 09 Sep 2020 09:26:33 -0400
+ id 1kG07p-00055x-Sn; Wed, 09 Sep 2020 09:27:03 -0400
 Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MkHhB-1kvycc0ozR-00kjvB; Wed, 09 Sep 2020 15:26:03 +0200
-Subject: Re: [PATCH 5/5] hw/isa/isa-bus: Replace hw_error() by assert()
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MryKr-1kurJd1MxR-00nudc; Wed, 09 Sep 2020 15:26:56 +0200
+Subject: Re: [PATCH] hw/acpi/tco: Remove unused definitions
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno
- <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-6-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Paulo Alcantara <pcacjr@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200901101951.85892-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -68,35 +61,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <acb7e804-6244-1db1-4332-42e538cc6051@vivier.eu>
-Date: Wed, 9 Sep 2020 15:25:57 +0200
+Message-ID: <ad29f6ad-694d-948c-f3e5-6c25bf04b1f3@vivier.eu>
+Date: Wed, 9 Sep 2020 15:26:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200901104043.91383-6-f4bug@amsat.org>
+In-Reply-To: <20200901101951.85892-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BSwa64N3/5Uk2GR3Mbn0uw61aITbdeMocYtHtOCdi3+8WrkW8g0
- f3OqN5t312lRq9vv8RAMCbRKbZfr9+Ha9GfDimyqS/Oa/MPpbyWwXFfykYLAkL0BUBfq4Zh
- fiGpTIAQ/2uJRdsgfp1yEGjoX89Hlve8ELje+72/dLyDBMHLBufBJuAEUMwflvE1YKuDmcH
- n3HyLRrwnVxTxZzelikAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZLAkdfIqjXk=:lpRNIzXz/meXfjMHtN1e4i
- UP9RIxFumtsCxxrRxMPeDLqYPwrXCXJrKtswiIxWP15a+g/xXS7BAZePsmL2PVdPRNbdUd0JP
- 41wThlRLal1xqT5Pv56M6Mq6vKn3qX4tJBa3p+sGfZARCr0SK4Dyr9ghZiydT8U5Kn5xIazwB
- Zs1fPMqz3LowVNDRajedfyFILHSNdVQFk5RshKR0GvfrjhJc5M1tsKULLp2NSLMnUJyTPP+xx
- DaeAk9s2/fMlsNcvq9pd87XidVNVoPlOia2QY3OYvgGSmThozITJWSPPNJq0Q35QzFf/XfOdR
- VA4GDCLSkaK+p7IfoQAnnzdrPZ/AY73QcjiFoyRwOWTMbhZGZ49nRg73gJG0vvaZnLap22Eow
- hKl30BbC1OkRwWQKYpfrH5d5MZ999sRsIuVEdlLQ2rBO8T1iZvJ4bP7+N/hueSSWyripSbiNs
- 7bryAJ5S3svi6gOYjQlaDxvSxsQ4x4vbTP4QvMSXTlm09OZfzf4fHgWpUdd3PI0gJZ+AUAsjE
- RcvqXOHvGBTjVn+UMPN8j96F5Ir84VLoAMZXsoKc7qgZYsT1wqkKhC3e8c1hO1JhWJeYzktv/
- EVkAcjCZ5TGLKixKi4Gkfd/DobnfrVY3v5t0r3uqBYG5lJCWiK0F8HzkjpuuH0hqYq45JHuy/
- oBhc4gsNoEOrRUrs12jKu4EOuVKXBYtbfwU3nCZxuqy6wgt+FZmFWMumnuKIQiW2lry5yMjeL
- 9mAjtNrFH+6WR4o+aElAJf5jVLfsVeMuz5l4I3+Vk132i0k2MXi9+Bm6SXUpCoZf61o0K6N2Z
- 5RRFT4I/GKcp6H1xIjM02+zzqmt7f+Wt/W4WG86McvW/kQLnr81fY8MBaemUPLjgifIIugG
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:syj5Hemr6B/ZuvOTwAIrBJbWOrqjh7QTcGnFZpZhTas7k7tvlA8
+ fcVG+/1tFvXKg9sOFmfJtZGi6FA3b6j/Ti/TzGljDTokQnZyV7eZR2y4lwcdCo+DaOU2069
+ c8cXxDTbv2RV9GCZgdp+J92wOmVwumra/+mDF1pBBytEI5IeDaDjTVwdHgGP1GETalFJbkN
+ Cj/V9uu2+a0FbqCg5l9Qw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TgC7KHR/uDY=:ehtn/45K8Z2RG04aRIm9js
+ dkf2wgXR++Q2uinWwtiC3KSTjp9fmZT0t+Uq4sMNW5RmM95oNmBHHfSktwwRS+R5yHFOCKFgd
+ cC4T2z+pZtHEof7rII5ivbooG5koYSGMe2q2tL+oREvoF8SktldTPqaHNJy6UbWdG5R9r01ra
+ 0+8Pa+lx8a8UnSxNKgyNIAGSPZ2lms08pqXsF3U14SDeCgnr9R1188gpziFuuXwuZAMTMcgrj
+ 5c2q+PHPYeeljn7D8pgA0/Pscn7gpoyNvGaRIoA5rW4Grx3QLBlv9828G7etz2DDsbmIZyu27
+ A83aiiUtK7PxKYfgM40SBrY6C7RiA5C2hkfJVXJ54SIpe7YGR8Mkfzp3HRpI5kZ/RlIKi0ZR/
+ 2tUvX/2dG0aYuqV7IymGzAUBrmLtHzxBE5Ekft8sGMbE3k5p3HU8oyDYhkQzEDdPN+/POj4YG
+ QoWX4KBxmuC3jpF+hpV/2H6P2HAwZ7MVXjzS9hjLUeC5EV0WR7uf4As7rx+g/MRub46F6Lku/
+ T9G1IMjgnpngCbUjAwbmoe0N+cA/bRXJgBDbzG7hylrLJwIgNKfyYQphxDDCUUPNCj2r7I6xR
+ OfPHsxwQi3m36xr8bl8tu00pneRDBRqFc8BJchFN0gFZJ+KOmSDGH+aHb5yQXVQMaspvDOrOf
+ BMdlqPwqAawqHNSFVgB5xBeq7qRCTHs7JX8W/v0TiqI3gVQJFBf5QlVcMIcCWt2Fj6DJ8jwyq
+ Y6auIcR3jkwaAoEN+AItF3FRXjgIl3xyJQkuQgDJB8ZpaeLpFuueIUq3QmzztqjG/u8I2bt4o
+ jTPEKDrWudkTO9LewmegpSOq67WHllHk2pgX4rlL6U7Q+36QVwOl/FBE6V0K3dbTYktkafi
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:26:28
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:27:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -54
 X-Spam_score: -5.5
@@ -116,57 +109,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 13:26:34 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 13:27:04 -0000
 
-Le 01/09/2020 à 12:40, Philippe Mathieu-Daudé a écrit :
-> As we can never have more than ISA_NUM_IRQS (16) ISA IRQs,
-> replace the not very interesting hw_error() call by an
-> assert() which is more useful to debug condition that can
-> not happen.
+Le 01/09/2020 à 12:19, Philippe Mathieu-Daudé a écrit :
+> TCO_DEBUG() and DEBUG definitions are not used, remove them.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/isa/isa-bus.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
+>  hw/acpi/tco.c | 11 -----------
+>  1 file changed, 11 deletions(-)
 > 
-> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
-> index 58fde178f92..10bb7ffa43a 100644
-> --- a/hw/isa/isa-bus.c
-> +++ b/hw/isa/isa-bus.c
-> @@ -21,7 +21,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
-> -#include "hw/hw.h"
->  #include "monitor/monitor.h"
->  #include "hw/sysbus.h"
->  #include "sysemu/sysemu.h"
-> @@ -85,18 +84,14 @@ void isa_bus_irqs(ISABus *bus, qemu_irq *irqs)
->  qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
->  {
->      assert(!dev || ISA_BUS(qdev_get_parent_bus(DEVICE(dev))) == isabus);
-> -    if (isairq >= ISA_NUM_IRQS) {
-> -        hw_error("isa irq %d invalid", isairq);
-> -    }
-> +    assert(isairq < ISA_NUM_IRQS);
->      return isabus->irqs[isairq];
->  }
+> diff --git a/hw/acpi/tco.c b/hw/acpi/tco.c
+> index fb9052dbca2..cf1e68a5393 100644
+> --- a/hw/acpi/tco.c
+> +++ b/hw/acpi/tco.c
+> @@ -15,17 +15,6 @@
+>  #include "hw/acpi/tco.h"
+>  #include "trace.h"
 >  
->  void isa_init_irq(ISADevice *dev, qemu_irq *p, unsigned isairq)
->  {
->      assert(dev->nirqs < ARRAY_SIZE(dev->isairq));
-> -    if (isairq >= ISA_NUM_IRQS) {
-> -        hw_error("isa irq %d invalid", isairq);
-> -    }
-> +    assert(isairq < ISA_NUM_IRQS);
->      dev->isairq[dev->nirqs] = isairq;
->      *p = isa_get_irq(dev, isairq);
->      dev->nirqs++;
+> -//#define DEBUG
+> -
+> -#ifdef DEBUG
+> -#define TCO_DEBUG(fmt, ...)                                     \
+> -    do {                                                        \
+> -        fprintf(stderr, "%s "fmt, __func__, ## __VA_ARGS__);    \
+> -    } while (0)
+> -#else
+> -#define TCO_DEBUG(fmt, ...) do { } while (0)
+> -#endif
+> -
+>  enum {
+>      TCO_RLD_DEFAULT         = 0x0000,
+>      TCO_DAT_IN_DEFAULT      = 0x00,
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
