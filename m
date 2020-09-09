@@ -1,26 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG0ae-00010k-4o
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 09:56:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41148)
+	id 1kG24S-0000AJ-1y
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 11:31:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG0ac-00010J-Nm; Wed, 09 Sep 2020 09:56:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:44993)
+ id 1kG24Q-00009v-7x; Wed, 09 Sep 2020 11:31:38 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:45595)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG0aa-0000LA-2q; Wed, 09 Sep 2020 09:56:46 -0400
+ id 1kG24O-0006r7-1J; Wed, 09 Sep 2020 11:31:37 -0400
 Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MjjSt-1kwW4y1K9r-00lGba; Wed, 09 Sep 2020 15:56:31 +0200
-Subject: Re: [PATCH v5 2/2] hw: hyperv: vmbus: Fix 32bit compilation
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jon Doron <arilou@gmail.com>, qemu-devel@nongnu.org
-Cc: mail@maciej.szmigiero.name, QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>, rvkagan@yandex-team.ru,
- pbonzini@redhat.com, imammedo@redhat.com, vkuznets@redhat.com
-References: <20200715084326.678715-1-arilou@gmail.com>
- <20200715084326.678715-3-arilou@gmail.com>
- <87028ae2-f31e-a6ee-a4ba-c147837fc52d@amsat.org>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N6KQZ-1kZr9I2kYL-016dEi; Wed, 09 Sep 2020 17:31:17 +0200
+Subject: Re: [PATCH] meson.build: tweak sdl-image error message
+To: Paolo Bonzini <pbonzini@redhat.com>, Sergei Trofimovich <slyfox@gentoo.org>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ Rafael Kitover <rkitover@gmail.com>
+References: <20200908074016.2593596-1-slyfox@gentoo.org>
+ <CABgObfaqxdOuH93OB=_ioiHR3np00hwNuzvpOXD=Wte4ErkUqQ@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <fb8f1744-4c28-4171-2ffb-61d3ad39be88@vivier.eu>
-Date: Wed, 9 Sep 2020 15:56:29 +0200
+Message-ID: <51084888-77f4-f3ca-4eee-fbfd765c13ef@vivier.eu>
+Date: Wed, 9 Sep 2020 17:31:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <87028ae2-f31e-a6ee-a4ba-c147837fc52d@amsat.org>
+In-Reply-To: <CABgObfaqxdOuH93OB=_ioiHR3np00hwNuzvpOXD=Wte4ErkUqQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9hfcNGCiuqVLR+Vz1zSgEILpVA71l5CRtNKbh7x8htpH9UrrxhP
- wre3eEc2EXYSjq4/z+lS3eU0a+Jm+mNjF9lT3Gkrlnxhi8E83p/Q5z1E9NnatUkqehKgqoK
- hwnPXXmIjJeZNebiSyTqsxRFeDL81En2JOIXVA2JiG+X/7f/iV4HkEP/qu7ztYLl1Hou2YG
- +rakC6Y5HpcyJ5T4WgDYA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:up7XA78dkvs=:ZhSv6r9g4AsjgnXoskRri2
- APeXmna1ZdWlFom3Ql7iTTh9ZpgxwxwZnSmj+MVLchJFBghahAURKw3wH33m9uJ6J6SqqsyfF
- OWXTRqq1vjZxyfb6q+JEqHicfqWxd1zG8KFalgn0zWoXqmGtigo4xDCKWO6EhVQLoFS/ouG10
- 9KqHYVn5HcCjGfBxuMWZSDE3r/R21nAtWdgk7OaVXoDK/ON1jXRSKi0FWH8UYhDd2Xagt8hvJ
- Eku9O5I5RHIefEpw3+KC0unhniJ0kBjuwx9uk0VJF/GJvTlvt/N5WkLON2xKPt1+qWgY+UmGp
- nuzMXCDm3x9FXjww6IeU/EAkmrqqrdaw4Qh1IrvcPdhpSCq5e6z7aNNIt7b/kGX3OWNjv6T3h
- g5FGqdd03sMXXNIeV6C7Ts1mVxjonYIPKtl3FbzKDJZnLs4jI6uP3mjhXQcANSHuOVLdG8JZ4
- C0h7JeHm4Vivewix+fFrRGP011v3lSrFb1Qi4cD2WZiuUl1mNj5Wz6G/SoQbtQvVFt015QpVN
- fsGfnk7JQLq54c2qDl9gabLlKVzgOUWIbQ0MFFmCxoFrBljrfMDrD5yLH/U6nlfiKFuqo8fA5
- vsi+7FP6f/ojFSVz93oiXQYFSdDUl3PjHBMeDfh6LegOQ3yoEyybnGFgIX8XHkD4gvI6BLdfO
- F1CW095zq9o7ZGOUlNhaa0n+/jvvTzhJGQNG4nn8CEde9avpCAKze/lrCAPrfDNr5lXknriKF
- F4jI7MHot4CWN7nKdf0e6ZQIK/1Vh60YJxsM7U5LKo+ZGMO2UBaXRVuXkVkhX714EyElQ+W/S
- GTM+Z3z/lE4MTb7eDWgYULYcoaGNslm2NeMTxYhEjVOLL5G/AETwJFnrhtK3x7KWvcRjvJn
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:odvXJiwPXaCt4vG0eRonaM41wSzzkaA7Uej6z26t+hWeiTOLiS2
+ z3qvKjMetYNdVdCrjmR2hR6S9McX4ZK+Zo7pUM71RToltw8K04FrKQoNFqraKfHu8LC0+DU
+ WXhPv0+xF3wbr40sbvMmk57Vws4yOmAsLsSebJlGTicgzV8LasepX/vFO6GhzyK3IspCwLS
+ m4bCFDkulfjudogqvng1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jeu/XPcCtiI=:FfbTAUhch2gU/qpQLhl1SU
+ bP0RA0+h++G6pDWcjmlRW2b4ZNux/0XJR3zx/R6BqUarB0FTeLcXFP/ithPrte0mOz6Bx/3oe
+ tsl0zxWj6vj9EJEWlfb1QEzOT27GM6Nm4PZcO7flR7Hb4oCjdpJ4fibgKaw8fc/H4kL0sSS6Y
+ 7ByIMek5NKwOJY0HpZAUoxtnnwCLGcxlGX45FHR0Gzga/VQuNfRqZOs/FdPPiYKuyGRm3QZlI
+ qp05l5EEpEeMdzlJK8D6qFNcD1eJPoSUV0vmAKZ2a/XtWM3BBL6T9F/y9M0jwF7iHk3FmciFV
+ 9qZSQD1QqLzD2n1b4vtqLZvSfrXCz3xIPFm6ef3sS9ziY343XjO4nmim6e8DxYSRUZs3M90cC
+ OTA6qJytB91G98YOC0UaS8YLf6T9BpsxIqNYg+J+4Vsl7kc5VIqV+GagcnCQRLHZ6K7ZzGZra
+ 6wvmL5GeK5IJrrX6oEUveIVGWBs1/tnpwMPIIYPnMyHSUSbe/IdcSpqKE528W8LXXo3V222tb
+ Z5ZNZ5Gsu78GiaYyfTPlvwkGRinaeFRvMzrk6SLAJsHQ7gG0HaS91LD7ut2JBMy8dtMNQosU+
+ aNh8fcOmDBtvf31VTakHjWJSQSxCIwE4ZsDXCk80GXTK8sIIIS+y+RfS3lFBuDg1kWCE0wH4u
+ mthHJ6naWcgvJnrSjRWozbxUkIneFHacO2G783tM0n44A5NtYskjytGxEqky+DCvrqVkDALD4
+ +/iZxiE8TzyqhVot+R6Hz26BXkiKt8j2/FZdUm4nDz3aYXkpppsQDVL5YbOtFxSs5fqNtS2te
+ 9ltGx/pcIM5ocOkGQpMY5WjS8CYxN9VFkV7df0MT74LFXShMB+R0WXhW6peWFxPsLvejRpN
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:56:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 11:31:32
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -54
 X-Spam_score: -5.5
@@ -112,54 +111,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 13:56:46 -0000
+X-List-Received-Date: Wed, 09 Sep 2020 15:31:38 -0000
 
-Le 06/09/2020 à 12:14, Philippe Mathieu-Daudé a écrit :
-> Cc'ing qemu-trivial@
+Le 08/09/2020 à 10:24, Paolo Bonzini a écrit :
+> Cc: qemu-trivial@nongnu.org <mailto:qemu-trivial@nongnu.org>
 > 
-> Can we add the commit description Richard wrote?
+> Il mar 8 set 2020, 09:50 Sergei Trofimovich <slyfox@gentoo.org
+> <mailto:slyfox@gentoo.org>> ha scritto:
+> 
+>     Before the change missing SDL was reported as:
+> 
+>         ../meson.build:253:4: ERROR: Expected 1 arguments, got 2.
+> 
+>     After the error as:
+> 
+>         ../meson.build:258:4: ERROR: Problem encountered: sdl-image
+>     required, but SDL was not found
+> 
+>     CC: Paolo Bonzini <pbonzini@redhat.com <mailto:pbonzini@redhat.com>>
+>     CC: "Marc-André Lureau" <marcandre.lureau@redhat.com
+>     <mailto:marcandre.lureau@redhat.com>>
+>     CC: "Philippe Mathieu-Daudé" <philmd@redhat.com
+>     <mailto:philmd@redhat.com>>
+>     CC: Rafael Kitover <rkitover@gmail.com <mailto:rkitover@gmail.com>>
+>     Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org
+>     <mailto:slyfox@gentoo.org>>
+>     ---
+>      meson.build | 4 ++--
+>      1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+>     diff --git a/meson.build b/meson.build
+>     index 04e070bb3b..7fd2a903c5 100644
+>     --- a/meson.build
+>     +++ b/meson.build
+>     @@ -255,8 +255,8 @@ if sdl.found()
+>                               method: 'pkg-config', static: enable_static)
+>      else
+>        if get_option('sdl_image').enabled()
+>     -    error('sdl-image required, but SDL was @0@',
+>     -          get_option('sdl').disabled() ? 'disabled' : 'not found')
+>     +    error('sdl-image required, but SDL was @0@'.format(
+>     +          get_option('sdl').disabled() ? 'disabled' : 'not found'))
+>        endif
+>        sdl_image = not_found
+>      endif
+>     -- 
+>     2.28.0
+> 
 
-I have no message from Richard regarding this patch.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-> 
-> ---
-> Fix 32-bit build error for vmbus:
-> 
->   hw/hyperv/vmbus.c: In function ‘gpadl_iter_io’:
->   hw/hyperv/vmbus.c:383:13: error: cast to pointer from integer of
-> different size [-Werror=int-to-pointer-cast]
->   383 |         p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) |
-> off_in_page);
->       |             ^
->   cc1: all warnings being treated as errors
-> 
-> Fixes: 0d71f7082d7 ("vmbus: vmbus implementation")
-> ---
-> 
-> On 7/15/20 10:43 AM, Jon Doron wrote:
->> Signed-off-by: Jon Doron <arilou@gmail.com>
->> ---
->>  hw/hyperv/vmbus.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
->> index 34392e892a..c28bb4201b 100644
->> --- a/hw/hyperv/vmbus.c
->> +++ b/hw/hyperv/vmbus.c
->> @@ -383,7 +383,8 @@ static ssize_t gpadl_iter_io(GpadlIter *iter, void *buf, uint32_t len)
->>              }
->>          }
->>  
->> -        p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) | off_in_page);
->> +        p = (void *)(uintptr_t)(((uintptr_t)iter->map & TARGET_PAGE_MASK) |
->> +                off_in_page);
->>          if (iter->dir == DMA_DIRECTION_FROM_DEVICE) {
->>              memcpy(p, buf, cplen);
->>          } else {
->>
-> 
-> 
 
 
