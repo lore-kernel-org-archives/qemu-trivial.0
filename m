@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGGve-0006ld-Iw
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:23:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36052)
+	id 1kGGve-0006mB-OH
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:23:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGGvc-0006iy-65; Thu, 10 Sep 2020 03:23:32 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:37748)
+ id 1kGGvc-0006j5-N1; Thu, 10 Sep 2020 03:23:32 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35609)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGGva-0004Io-E1; Thu, 10 Sep 2020 03:23:31 -0400
-Received: by mail-wr1-x429.google.com with SMTP id z4so5524952wrr.4;
- Thu, 10 Sep 2020 00:23:28 -0700 (PDT)
+ id 1kGGvb-0004J1-B1; Thu, 10 Sep 2020 03:23:32 -0400
+Received: by mail-wm1-x343.google.com with SMTP id y15so4709014wmi.0;
+ Thu, 10 Sep 2020 00:23:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IiUNInL/307o83xAPoEOVWsbuFJeacWIMWUZqFjFjKg=;
- b=EV1O5ouYb1hrMPao8ECJKuezt3lKVJVlYgpfS8p7oKejc/N35zkPLblK3QvTPLnCur
- tSA+ZJ28wnYaux9AyAQL4BF3KfGaKxTtQoKX1cQ5eAmK2kSFxhjr324HRqlErKAWSxh5
- MdB8lQEKy5vGk9l7BtvYDK1TUMaA/flRQWWsajizBtFat6euSd/e+OBg9WKwU9ARyaGk
- 33dANB97NsQnobSYMAwi9Lf8ITbxw/nm/2jfDbADmtE30WZXqBBfRn89BfClqzXOfJBU
- 57MigVyhHuo1TtSPgPqvpdgVnf5giDb+U6yDV1QBezpMT80sK3+pewArA3N74eRo6Xyl
- NDhg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=t4kTfpWibJLcPX1miKAIAIqMzQ2vkU3n7DRrDkK4dk8=;
+ b=lySK3Ik4aggs5kzMHlWai0SL7UyMLQETZqBZ9/AR6fbrgiyzPaDgLX7nfVkJe0f5sD
+ sBv3Zcb1XUmFMJuuFPzyjindOu/U6x5BqLlK9DnwqqO3yNe9/380TUYWG2Ledaw9qTTF
+ +2XilGatQhxBOHk77IS8nR/bvoo4rnuuA7OHBBrU1NTHK0ek4dpBoviMoRKa8CggXS66
+ j0fAbf/ldAD9tmWAvQYBPu0iqZP945BPeNhopgx0UyWiTsgLa+u8jjknnkdznB+EIotQ
+ wtsF7bKNW5SKE8u2/XertEDI/8JDINVn5tAhfkVUwROznnq6CTTans8YOt1m6H6f4SHt
+ dOsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=IiUNInL/307o83xAPoEOVWsbuFJeacWIMWUZqFjFjKg=;
- b=t0UyEuJgqUZlM7ZgE94DQvyQvXU4xNlNoRelP3mXmJP810QbCZ2qPB/mnKJ2ltPJhF
- ucj9XAxQ+x82OOT0mi1iErg1r0OBBrpO+D+QbY/l+9Rjjr7tiQO3gs72rFvAzo8trlaw
- R3EDzRS58CKqOBobXizyKCuPdIxIm5m3bD0Yk+rYiJOD5Rzri3JN6jFHDHTrpz6OQDFT
- JqIPZqXk/R13OAqfMkgVHsjVnms4Qo/VIsSR2jZr5wlT0NJFX44/ngXCYG8NOLggpyI+
- ZdlKeniU6ff1o1lDdxQWAIeZytmwzWiSAcb7LZMlQ4dnwjTUfX6hELfWPbBVg2wlpaKa
- CG4w==
-X-Gm-Message-State: AOAM532E6mJE+EfVLgKxk6OVBJLG6/JE+MtZ/mC109DrP5/KPau2i4TO
- mh4UxcGBsnqw0k4KffDS7H2zKCXUWzg=
-X-Google-Smtp-Source: ABdhPJyYfKznX8/g+KZ8ebcG81Le6+PRqHD7XmdoCskSgHkPInY6fDqbzwHCo5jazT/YS29DaapCrg==
-X-Received: by 2002:a5d:540a:: with SMTP id g10mr7187535wrv.138.1599722606993; 
- Thu, 10 Sep 2020 00:23:26 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=t4kTfpWibJLcPX1miKAIAIqMzQ2vkU3n7DRrDkK4dk8=;
+ b=BPQI8wetsUGFfq8ngUix8XjJZeFfZMb6TAwPtjGrZ4koxuR9AkHs7jkfWFQtaS7qlH
+ Qcba6Y3yr0itQROEbW96xeIiGMIJ/WO2SASkhjNEu+sINS8AE+T1pcv1OSMu+4anHmGC
+ vjm7qB9skN1/EGjhdVpIwmnTtdVeP06ef3XeavHzapsEGsgId4nQq5YhICPWpozXeyvh
+ wF6FdwI7RaICUhglJfhCiGWftFmKoub2DXbz4fQAnrEfvjGvIB/fF4qDJSAb1valda8v
+ qP9fZ188w8+kRiXlEABmwL0IcJ8xVdsAeTQiii6YVPXLXyfejrXdwt+b8B06KFFc0/1l
+ 7H5A==
+X-Gm-Message-State: AOAM532cWuZatj4DtUqKWDwuOSDCxSFn/V3gDWj+r1i863466tc8zftR
+ 6MNCNvDeDMoz2+eyjdS+j/bc8nZMXB8=
+X-Google-Smtp-Source: ABdhPJwi9hutOnXWrSLkvEs0WvrNZlVwpMeuo2oy3RykGWLrUsYEOGp2i1exvAKIPspRd0wPK1HDgw==
+X-Received: by 2002:a7b:c84a:: with SMTP id c10mr7019905wml.139.1599722608717; 
+ Thu, 10 Sep 2020 00:23:28 -0700 (PDT)
 Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id x2sm6783804wrl.13.2020.09.10.00.23.25
+ by smtp.gmail.com with ESMTPSA id x2sm6783804wrl.13.2020.09.10.00.23.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 00:23:26 -0700 (PDT)
+ Thu, 10 Sep 2020 00:23:27 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -50,15 +50,18 @@ Cc: David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
  Andrzej Zaborowski <balrogg@gmail.com>, qemu-ppc@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 0/2] hw: Replace some impossible checks by assertions
-Date: Thu, 10 Sep 2020 09:23:23 +0200
-Message-Id: <20200910072325.439344-1-f4bug@amsat.org>
+Subject: [PATCH v2 1/2] hw/gpio/max7310: Remove impossible check
+Date: Thu, 10 Sep 2020 09:23:24 +0200
+Message-Id: <20200910072325.439344-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200910072325.439344-1-f4bug@amsat.org>
+References: <20200910072325.439344-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -83,21 +86,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 10 Sep 2020 07:23:33 -0000
 
-Trivial patches removing unreachable code.
+The max7310_gpio_set() handler is static and only used by
+qdev_init_gpio_in, initialized with 8 IRQs. The 'line'
+argument can not be out of the [0-8[ range.
+Replace the dead code by an assertion.
 
-Since v1:
-- dropped patches queued
-- replace dead code by assert (Peter)
-- use PCI_NUM_PINS definition (Cédric)
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/gpio/max7310.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Philippe Mathieu-Daudé (2):
-  hw/gpio/max7310: Remove impossible check
-  hw/ppc/ppc4xx_pci: Replace magic value by the PCI_NUM_PINS definition
-
- hw/gpio/max7310.c   | 5 +----
- hw/ppc/ppc4xx_pci.c | 2 +-
- 2 files changed, 2 insertions(+), 5 deletions(-)
-
+diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+index 4f78774dc8f..158b0a074e5 100644
+--- a/hw/gpio/max7310.c
++++ b/hw/gpio/max7310.c
+@@ -8,9 +8,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/hw.h"
+ #include "hw/i2c/i2c.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qemu/module.h"
+@@ -173,8 +171,7 @@ static const VMStateDescription vmstate_max7310 = {
+ static void max7310_gpio_set(void *opaque, int line, int level)
+ {
+     MAX7310State *s = (MAX7310State *) opaque;
+-    if (line >= ARRAY_SIZE(s->handler) || line  < 0)
+-        hw_error("bad GPIO line");
++    assert(line >= 0 && line < ARRAY_SIZE(s->handler));
+ 
+     if (level)
+         s->level |= s->direction & (1 << line);
 -- 
 2.26.2
 
