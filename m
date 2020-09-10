@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGGaq-0005Hk-JM
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:02:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59710)
+	id 1kGGb1-0005gQ-Tb
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:02:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGap-0005F7-8r
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:02:03 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59232
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGaz-0005az-Gt
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:02:13 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50353
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGan-0001lF-1k
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:02:02 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGax-0001nE-Nn
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:02:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599721320;
+ s=mimecast20190719; t=1599721331;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rOfPlRcHNPnFEFQL04D9b7WV0+f6qJ96Y7nXN27AiJ8=;
- b=GWBdzqOWAxbPW7jhunM+/J/b63iVFY3I+8wE/0tFTQ/6MoDVTYH8mAQqgL0LHVW0QAEn32
- BIrhZCIkXFbiAdaxupxHhtM2NY5EBdHZKWp4C9vrsA4GN3QAWlOaDnNi3ShNYDmchKbZRp
- zFtiL+vPJ8O3CLkLvkXQarnpVNOe5Zw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-494-Bw9Xk9d8O2Kc_CA58UeymA-1; Thu, 10 Sep 2020 03:01:58 -0400
-X-MC-Unique: Bw9Xk9d8O2Kc_CA58UeymA-1
-Received: by mail-wr1-f71.google.com with SMTP id l17so1869607wrw.11
- for <qemu-trivial@nongnu.org>; Thu, 10 Sep 2020 00:01:58 -0700 (PDT)
+ bh=lGs5ABKm8y9Jc/D3T2fzKVj+EYzhUQk9uXM+DI2xiY8=;
+ b=UfvytXJwaUshkoAXm5DqDY0WlAxkGs6JLz7inrVLQFBMqOghHj0HUW1dg2laFH8ZOp5UjC
+ GT5LO2jfKjB2A/3+2ZzhLXYTdo8PlRb7lGhCrOlRBOMTvCt+VsHyu6QbD+Cuchj+Akdtbf
+ 3HVZbM8KX8yDEbf0bpbbxH/RXPhh+Zk=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-117-tIs5BUJVPQuLgG1B1KRsnA-1; Thu, 10 Sep 2020 03:02:09 -0400
+X-MC-Unique: tIs5BUJVPQuLgG1B1KRsnA-1
+Received: by mail-wm1-f72.google.com with SMTP id s24so1767987wmh.1
+ for <qemu-trivial@nongnu.org>; Thu, 10 Sep 2020 00:02:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=rOfPlRcHNPnFEFQL04D9b7WV0+f6qJ96Y7nXN27AiJ8=;
- b=bXHUJRgVm3jZTGriLQraxkz7IXF348rY+cGPhK1ZkyQpPe6w+UcAgb4fOjsa7vIoTr
- kLRNuZXtGH8IEa8ErSFDnz9YmBYZ1fQhkwN5A1cftSy4h9ZuPS3wO8lx56vId8UcbIds
- om4jDsY0h1L1tghxakgzu+DdEuO9KcScpssGUvw0130ehgILIMO3uD+XogsLKNk3xjPI
- m3r+FydVMobhxLV6QGUyCxrHhL60984VGHOxXBP9iCDJjWCdpEJ1YulYkQwpWl6L+3nW
- PvSqTezi2xgi+S1b0F69RC4G/nEiY7XIPRjp9xiWmvP4GXrJubWI8t675DAjYtmNsPAI
- JTjg==
-X-Gm-Message-State: AOAM5335GbTRsTgGXw1OD/A0YqPo/Bjt9wr9MEJYNZ1oE4Labh5mBEdZ
- K/E8PHZQRVfJ1qsXOJPZMT0HqabGvqlgUesF9REz0rOJqOJFxo3fBEqw9gMusWefjXBkjcLh2tr
- jIkqppuvUt8mDSz0Dvg==
-X-Received: by 2002:adf:e852:: with SMTP id d18mr8003824wrn.40.1599721316989; 
- Thu, 10 Sep 2020 00:01:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlwpG0tUUcWG7cYI6DeHX0M5TDMJpNZQcQfEC1vqrWrbjug/Hj3GDkPn1UBSppzX4Ol1mWhw==
-X-Received: by 2002:adf:e852:: with SMTP id d18mr8003791wrn.40.1599721316799; 
- Thu, 10 Sep 2020 00:01:56 -0700 (PDT)
+ bh=lGs5ABKm8y9Jc/D3T2fzKVj+EYzhUQk9uXM+DI2xiY8=;
+ b=RTPOAQBUKjKzQeZ15gxSoLOBH6rlQ/mwSjchQha6GpF4ZpEpfJzFupK/9YI+TZXkpe
+ RKCwtZM0GdPDLKC/5d2t0+bdFoNDcVUDjAhi4JFH0QOyxUjN2VW2X9DDcmeMHbUi6uYe
+ CyL9MhWjT4PKDO+GnHyttSiMlRO0YI+cEV6nAfXbU+zfm5noNN7fJg5iolGW2v6jKNJg
+ qqdaHo2/Ho8tj3oG1WdP1DNd7PJB2L2KnZjVbXuf6/MSjAIJUXqK5yHdH+uw12FeWW1u
+ gx8vLgEQ7mDzgrX1xpQP2Rwhq+2lnGB3Jw24oUV68/GgmR5owFqMTa+YtTeNRtg5w0nv
+ UKog==
+X-Gm-Message-State: AOAM533D1WYoJyr6aEVb16rBMQFFeOFN7oHytWokwYnLdFh/+y1NGKEi
+ LIos2/B1ReGzvEr+YPE10OayuJd5L76e34eLVjcZUSRqo2aaxeSTYRAkyYu4LLre0Vp8KkQ4pyP
+ XNG6saiRN1mIZJj55bQ==
+X-Received: by 2002:a1c:4b04:: with SMTP id y4mr6890990wma.111.1599721328156; 
+ Thu, 10 Sep 2020 00:02:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwE0Z695VXU3e9M0JVMx/m5jixlhhfySuGaTkiZxpc9kM9WGt9z1mdGK0NlEetghntMunzOLg==
+X-Received: by 2002:a1c:4b04:: with SMTP id y4mr6890972wma.111.1599721327946; 
+ Thu, 10 Sep 2020 00:02:07 -0700 (PDT)
 Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id f6sm2615123wme.32.2020.09.10.00.01.55
+ by smtp.gmail.com with ESMTPSA id m185sm2221410wmf.5.2020.09.10.00.02.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 00:01:56 -0700 (PDT)
+ Thu, 10 Sep 2020 00:02:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -66,9 +66,10 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 4/6] hw/net/xilinx_axienet: Rename StreamSlave as StreamSink
-Date: Thu, 10 Sep 2020 09:01:29 +0200
-Message-Id: <20200910070131.435543-5-philmd@redhat.com>
+Subject: [PATCH 6/6] target/i386/kvm: Rename host_tsx_blacklisted() as
+ host_tsx_broken()
+Date: Thu, 10 Sep 2020 09:01:31 +0200
+Message-Id: <20200910070131.435543-7-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200910070131.435543-1-philmd@redhat.com>
 References: <20200910070131.435543-1-philmd@redhat.com>
@@ -80,9 +81,9 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 01:23:25
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 00:49:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -103,105 +104,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Sep 2020 07:02:03 -0000
+X-List-Received-Date: Thu, 10 Sep 2020 07:02:13 -0000
 
-In order to use inclusive terminology, rename 'slave stream'
-as 'sink stream'.
+In order to use inclusive terminology, rename host_tsx_blacklisted()
+as host_tsx_broken().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/net/xilinx_axienet.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ target/i386/kvm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 0c4ac727207..4e48535f373 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -46,11 +46,11 @@
-      OBJECT_CHECK(XilinxAXIEnet, (obj), TYPE_XILINX_AXI_ENET)
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 205b68bc0ce..3d640a8decf 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
+     return features;
+ }
  
- #define XILINX_AXI_ENET_DATA_STREAM(obj) \
--     OBJECT_CHECK(XilinxAXIEnetStreamSlave, (obj),\
-+     OBJECT_CHECK(XilinxAXIEnetStreamSink, (obj),\
-      TYPE_XILINX_AXI_ENET_DATA_STREAM)
- 
- #define XILINX_AXI_ENET_CONTROL_STREAM(obj) \
--     OBJECT_CHECK(XilinxAXIEnetStreamSlave, (obj),\
-+     OBJECT_CHECK(XilinxAXIEnetStreamSink, (obj),\
-      TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
- 
- /* Advertisement control register. */
-@@ -310,10 +310,10 @@ struct TEMAC  {
-     void *parent;
- };
- 
--typedef struct XilinxAXIEnetStreamSlave XilinxAXIEnetStreamSlave;
-+typedef struct XilinxAXIEnetStreamSink XilinxAXIEnetStreamSink;
- typedef struct XilinxAXIEnet XilinxAXIEnet;
- 
--struct XilinxAXIEnetStreamSlave {
-+struct XilinxAXIEnetStreamSink {
-     Object parent;
- 
-     struct XilinxAXIEnet *enet;
-@@ -325,8 +325,8 @@ struct XilinxAXIEnet {
-     qemu_irq irq;
-     StreamSink *tx_data_dev;
-     StreamSink *tx_control_dev;
--    XilinxAXIEnetStreamSlave rx_data_dev;
--    XilinxAXIEnetStreamSlave rx_control_dev;
-+    XilinxAXIEnetStreamSink rx_data_dev;
-+    XilinxAXIEnetStreamSink rx_control_dev;
-     NICState *nic;
-     NICConf conf;
- 
-@@ -859,7 +859,7 @@ xilinx_axienet_control_stream_push(StreamSink *obj, uint8_t *buf, size_t len,
-                                    bool eop)
+-static bool host_tsx_blacklisted(void)
++static bool host_tsx_broken(void)
  {
-     int i;
--    XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(obj);
-+    XilinxAXIEnetStreamSink *cs = XILINX_AXI_ENET_CONTROL_STREAM(obj);
-     XilinxAXIEnet *s = cs->enet;
- 
-     assert(eop);
-@@ -880,7 +880,7 @@ static size_t
- xilinx_axienet_data_stream_push(StreamSink *obj, uint8_t *buf, size_t size,
-                                 bool eop)
- {
--    XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
-+    XilinxAXIEnetStreamSink *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
-     XilinxAXIEnet *s = ds->enet;
- 
-     /* TX enable ?  */
-@@ -954,8 +954,8 @@ static NetClientInfo net_xilinx_enet_info = {
- static void xilinx_enet_realize(DeviceState *dev, Error **errp)
- {
-     XilinxAXIEnet *s = XILINX_AXI_ENET(dev);
--    XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
--    XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(
-+    XilinxAXIEnetStreamSink *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
-+    XilinxAXIEnetStreamSink *cs = XILINX_AXI_ENET_CONTROL_STREAM(
-                                                             &s->rx_control_dev);
- 
-     object_property_add_link(OBJECT(ds), "enet", "xlnx.axi-ethernet",
-@@ -1046,7 +1046,7 @@ static const TypeInfo xilinx_enet_info = {
- static const TypeInfo xilinx_enet_data_stream_info = {
-     .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
-     .parent        = TYPE_OBJECT,
--    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-+    .instance_size = sizeof(struct XilinxAXIEnetStreamSink),
-     .class_init    = xilinx_enet_data_stream_class_init,
-     .interfaces = (InterfaceInfo[]) {
-             { TYPE_STREAM_SINK },
-@@ -1057,7 +1057,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
- static const TypeInfo xilinx_enet_control_stream_info = {
-     .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
-     .parent        = TYPE_OBJECT,
--    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-+    .instance_size = sizeof(struct XilinxAXIEnetStreamSink),
-     .class_init    = xilinx_enet_control_stream_class_init,
-     .interfaces = (InterfaceInfo[]) {
-             { TYPE_STREAM_SINK },
+     int family, model, stepping;\
+     char vendor[CPUID_VENDOR_SZ + 1];
+@@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
+     } else if (function == 6 && reg == R_EAX) {
+         ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
+     } else if (function == 7 && index == 0 && reg == R_EBX) {
+-        if (host_tsx_blacklisted()) {
++        if (host_tsx_broken()) {
+             ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
+         }
+     } else if (function == 7 && index == 0 && reg == R_EDX) {
 -- 
 2.26.2
 
