@@ -1,103 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kG4P4-0004X9-9L
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 14:01:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45468)
+	id 1kGBdh-0000MS-TO
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Sep 2020 21:44:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kG4P3-0004VM-3L; Wed, 09 Sep 2020 14:01:05 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42791)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kG4Oy-0001ie-Vt; Wed, 09 Sep 2020 14:01:04 -0400
-Received: by mail-wr1-x442.google.com with SMTP id c18so3916701wrm.9;
- Wed, 09 Sep 2020 11:00:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=FWr/YwTt4WUSL01JYpZATKxD1oyh2WODIXz1W4tUS0I=;
- b=Xwun+t2/TnZ8tbpHsVvmuNeokhwgG60cqzfojguisHiRATD+KZ9zzpN6CtXzb6P0SP
- GE5gZjhi6zestCZ/MtTY6yYYAj28fRMvP8w+kxM5nWLAst3CR7NT7m6Z1dorSfZcySXL
- JcclSoI76SMoD3FIT/oXXJCxUBGo+h04fk7Li7od95+70ywInGCvT0C3xMtBUE8D8MZk
- bcUVgKFg217bDYws+N6T/B2KSOyZhEm8N/cigXPdXw3SWc8al7c5f6Us7oEOnmABUpMi
- 8D474h4eNr/0JtKwLMKhwmOQlnDgkS8tikG+8xLWw5gWqFFb4hdCkbaevWCvAGdcxhaW
- pq0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=FWr/YwTt4WUSL01JYpZATKxD1oyh2WODIXz1W4tUS0I=;
- b=YQZKyb2z7l1Jl4c9fauIgHOVb3qpuf/PHEaxJC3bQoTyTr0ZytrD3/Hp7zPupGgt4R
- kDFxwRgfdOTnfcXlNCvTy6hZ8/fVRz0/VE1wszsPerZVzwMTFhrucrRXpl0eoVe18JP0
- Hag6k+V1CT1gP8GYZ30Wy/8oNbu2uMWLZAT6IHcB2MLbOIIFR1JDGEiGeVXkEytg0/cx
- 62cIEnmMO3Bg3M8APWEK6h1izgw/N2m02k88iEziKNDmEMFDpB1WEji7/2o79hAhqDN9
- MLOEwhwVzaE0/mmZkbE0rOQ87XG0mLzx6O5bQDU/apZODCiXsUMU5y81J+eYG/liDQdk
- G2Vw==
-X-Gm-Message-State: AOAM531KfNk4E+zJOwSP7FjJIIEcLcuqhbzggDx1HfP9t9Tdivb5dggX
- etU28iuA7HQGR2ivhg7YiN8=
-X-Google-Smtp-Source: ABdhPJzy4CGnUowK8rBbHuVJD46qg3NdtRedveYVeIteDRAsfu7UAYvQ34k7K6i4Ost+4wF8UeMBJQ==
-X-Received: by 2002:a5d:46c5:: with SMTP id g5mr5279217wrs.416.1599674457940; 
- Wed, 09 Sep 2020 11:00:57 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id n4sm4987232wmd.26.2020.09.09.11.00.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Sep 2020 11:00:56 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kGBdg-0000Kc-6J
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 21:44:40 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:29807
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kGBde-0005xY-KA
+ for qemu-trivial@nongnu.org; Wed, 09 Sep 2020 21:44:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599702277;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5RPj9Qp0z36BonbrcDYUwQZd9deZsAjgza1p42Kqf4w=;
+ b=cqKgQJKyCy7gWopU5NDJGFX08SWoHg7KXi2Fop5+ml9wjkiau1X4fRkrZ+hbxhZyC98xP2
+ ooT60Hgv1s1mO9VCNuZWwjNpTlC89yqkFLv3Pf6FnfRrKRZFMgdk291BOomhRjr5YnaWW9
+ t+shReii797CMpNLCxDG4xZuMoY8vII=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-355-xaOzj8VGPXK5bIGMKuoVww-1; Wed, 09 Sep 2020 21:44:33 -0400
+X-MC-Unique: xaOzj8VGPXK5bIGMKuoVww-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 29FDC425D8;
+ Thu, 10 Sep 2020 01:44:32 +0000 (UTC)
+Received: from [10.72.13.124] (ovpn-13-124.pek2.redhat.com [10.72.13.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 12E797E175;
+ Thu, 10 Sep 2020 01:44:29 +0000 (UTC)
 Subject: Re: [PATCH 0/2] hw/net/opencores_eth: Trivial patches
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
 References: <20200608091508.19838-1-f4bug@amsat.org>
  <e472244f-d764-6cd6-70cd-86d71358b999@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <9836f385-ccb8-981f-4677-95d22b2c0a90@amsat.org>
-Date: Wed, 9 Sep 2020 20:00:55 +0200
+ <9836f385-ccb8-981f-4677-95d22b2c0a90@amsat.org>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <c7f34876-7939-b27f-b00b-01cac2955086@redhat.com>
+Date: Thu, 10 Sep 2020 09:44:28 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <e472244f-d764-6cd6-70cd-86d71358b999@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <9836f385-ccb8-981f-4677-95d22b2c0a90@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -50
-X-Spam_score: -5.1
+Content-Language: en-US
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 21:44:37
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -56
+X-Spam_score: -5.7
 X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.576,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.576, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,21 +81,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Sep 2020 18:01:05 -0000
+X-List-Received-Date: Thu, 10 Sep 2020 01:44:40 -0000
 
-On 9/2/20 2:26 PM, Philippe Mathieu-Daudé wrote:
-> On 6/8/20 11:15 AM, Philippe Mathieu-Daudé wrote:
->> Remove unnecessary mask, use #define instead of magic.
->>
->> Philippe Mathieu-Daudé (2):
->>   hw/net/opencores_eth: Use definitions instead of magic values
->>   hw/net/opencores_eth: Remove unnecessary address masking
->>
->>  hw/net/opencores_eth.c | 6 ++----
->>  1 file changed, 2 insertions(+), 4 deletions(-)
->>
-> 
-> Ping to Jason as the series is reviewed :)
 
-Ping^2
+On 2020/9/10 上午2:00, Philippe Mathieu-Daudé wrote:
+> On 9/2/20 2:26 PM, Philippe Mathieu-Daudé wrote:
+>> On 6/8/20 11:15 AM, Philippe Mathieu-Daudé wrote:
+>>> Remove unnecessary mask, use #define instead of magic.
+>>>
+>>> Philippe Mathieu-Daudé (2):
+>>>    hw/net/opencores_eth: Use definitions instead of magic values
+>>>    hw/net/opencores_eth: Remove unnecessary address masking
+>>>
+>>>   hw/net/opencores_eth.c | 6 ++----
+>>>   1 file changed, 2 insertions(+), 4 deletions(-)
+>>>
+>> Ping to Jason as the series is reviewed :)
+> Ping^2
+>
+
+Applied.
+
+Thanks
+
 
