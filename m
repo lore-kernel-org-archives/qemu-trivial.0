@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGGaT-0004aY-Us
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:01:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59478)
+	id 1kGGaa-0004iw-GY
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:01:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGaT-0004aL-7p
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:01:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49841)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGaY-0004fg-GR
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:01:46 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22575
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGaR-0001iR-53
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:01:40 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kGGaV-0001jB-Q0
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:01:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599721297;
+ s=mimecast20190719; t=1599721303;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Y1vGmD/fvsXEOWa6wkRKs3aLydzIceOGg7Tbh5f+UXQ=;
- b=GWjYsRTrA+NnxLIECRMVdbYv0rX9n/OjSIMEmuL36MAooVd+C2d5d/Mmtc20YCUQh2dHe7
- uznluxpwZIPTOi4BwtjK7RhVkJ3zwmoGwPkbZO7xGDBqfqJ0ZTZzX53Q4BH1W0hQ2kH9Uy
- //26XvyVJxHD7EUN7bpJLF09yCgSWwo=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-266-8v4ncaLrM5S6FCkDNYuINA-1; Thu, 10 Sep 2020 03:01:35 -0400
-X-MC-Unique: 8v4ncaLrM5S6FCkDNYuINA-1
-Received: by mail-wm1-f71.google.com with SMTP id k12so551653wmj.1
- for <qemu-trivial@nongnu.org>; Thu, 10 Sep 2020 00:01:35 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3LVq3GBMxvuW5ThC5No6G6me9ou9dAQJhQkLuf9vMHg=;
+ b=Kna6C9SLL8kP0KHVgat50x7ub/fWQYKQ6eXubxX8H9gmiCYuKwEDqaGCQqn/mRCikX3/rl
+ vsnTFv8tS4jLA5wsRFxW9wZhcU4iokm7Yy/uc3L72AERIoGJ7/bCC/YzMAPoBxbyQa6rkU
+ bu72t5IjBlltwdrR4b2ZAXUhQWMUZ8o=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-429-X9zE6728NUynBKIvOJOqSA-1; Thu, 10 Sep 2020 03:01:41 -0400
+X-MC-Unique: X9zE6728NUynBKIvOJOqSA-1
+Received: by mail-wm1-f69.google.com with SMTP id a144so1752015wme.9
+ for <qemu-trivial@nongnu.org>; Thu, 10 Sep 2020 00:01:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Y1vGmD/fvsXEOWa6wkRKs3aLydzIceOGg7Tbh5f+UXQ=;
- b=GqGS8JlYjy5bI5tQeb88KsfUMi+1nyDM80CIJfk+U8AMZ0vxD0b0hCSaQNT4W91+5x
- xSegieCXY3VT+524mu4TYG5A2Jtj9KMK5Y+uBB/E9ymkQIrY1luO2L06KGy9/WOIbhVe
- 0pNodC5c5L5RjYddgkJ8sowRPK8gSoLHoYAOSlhD1F71iuduCEkvC+7t3aBmrfDl3xS0
- mZs6MJUn0CjnPP9KhkMXtFeWz2zBPBt6t+wk+sLhjx8ku6S1LrHuKdA6OZPa0LwMNqR4
- IS3RJcRVVBk64O9en8IbUa1s9NmSbs1tqwAwxLY6v5MJj+hASFEbdcFEI4pAT50EeGrZ
- 14bw==
-X-Gm-Message-State: AOAM532dgGv8B8XQiNh8jF+atVyDLZTc7i1cBbnNLXOXsX8anMFxbNWT
- p1mFvB7r0cjJ75JXLc35xOvRe75l87BJnzYs1U+B7KXDV1BGE//fm8BSoo0+c4MzsTtReSgQsoo
- gGhS7vzl70cVHbNvmYg==
-X-Received: by 2002:adf:f2d0:: with SMTP id d16mr7037173wrp.332.1599721294494; 
- Thu, 10 Sep 2020 00:01:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOgVJywoHM/rmr+qzXsusn/6m5n3bTGfi1VzgpHQxefWx1TwErPpn8kQ+0ho5qhfDSLK+sVw==
-X-Received: by 2002:adf:f2d0:: with SMTP id d16mr7037127wrp.332.1599721294215; 
- Thu, 10 Sep 2020 00:01:34 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3LVq3GBMxvuW5ThC5No6G6me9ou9dAQJhQkLuf9vMHg=;
+ b=PM5nBnckac0KLPK9HLPgpQN0w9VuVV/7/T7MiWkWsIsdimKE9Igd6jtIp89HpztNbK
+ DwaSXUiUHUStxVj28O9Sq9LbYQ+lusXM3huvnkAKpK/ogvYgAa9hpkOP+nFb7i/2cr46
+ VoW+N7Kys6YENyKHlwNmOfqwxEA2Ziz/guLABiI4ND8M6CT5mpV019qDgYPnZjvulloh
+ xw83ZYqJ50QzeSOqErT6BPZvb48jtDSW793xViBrM1F72VUNsBAHlsfiGmmm8O6fSxXj
+ 0xqs/KrxyThJQGiY62IzR8H6VlD0Al0G6BY1GLsC1FfUSUlyjE9hfCmCa/YsveKvzIOZ
+ nSYw==
+X-Gm-Message-State: AOAM532pvEP1fShwyAuDK+iSvBVZmDD4pkUOPbLi2IbODwAnLaRQDRAR
+ X2gpVsFWkNckOco31QclCe/ra9wsCUwXq7aljrdYNo9/BREif2Ny/+3OTMCVg+YyLDlSFiO64n4
+ kDT2q9J3MHM8dXveBkQ==
+X-Received: by 2002:a7b:c182:: with SMTP id y2mr6733460wmi.21.1599721299919;
+ Thu, 10 Sep 2020 00:01:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgp6jskt+jFoWEu9oClQRannFnMaW2ju14kuX/HT2/8P8+6b5Zro3I2ovA3LneRaIpwyvZzA==
+X-Received: by 2002:a7b:c182:: with SMTP id y2mr6733445wmi.21.1599721299694;
+ Thu, 10 Sep 2020 00:01:39 -0700 (PDT)
 Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id c14sm7314726wrv.12.2020.09.10.00.01.32
+ by smtp.gmail.com with ESMTPSA id o124sm2127336wmb.2.2020.09.10.00.01.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 00:01:33 -0700 (PDT)
+ Thu, 10 Sep 2020 00:01:39 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -64,28 +66,31 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 0/6] misc: Some inclusive terminology changes
-Date: Thu, 10 Sep 2020 09:01:25 +0200
-Message-Id: <20200910070131.435543-1-philmd@redhat.com>
+Subject: [PATCH 1/6] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+Date: Thu, 10 Sep 2020 09:01:26 +0200
+Message-Id: <20200910070131.435543-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200910070131.435543-1-philmd@redhat.com>
+References: <20200910070131.435543-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Spam-Score: 0.003
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 02:38:59
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 00:49:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,38 +103,194 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Sep 2020 07:01:41 -0000
+X-List-Received-Date: Thu, 10 Sep 2020 07:01:46 -0000
 
-We don't have (yet?) inclusive terminology guidelines,
-but the PCI hole memory is not "black", the DMA sources
-don't stream to "slaves", and there isn't really a TSX
-"black" list, we only check for broken fields.
+In order to use inclusive terminology, rename max_slaves
+as max_devices.
 
-As this terms can be considered offensive, and changing
-them is a no-brain operation, simply do it.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ include/hw/ssi/aspeed_smc.h |  2 +-
+ hw/ssi/aspeed_smc.c         | 40 ++++++++++++++++++-------------------
+ 2 files changed, 21 insertions(+), 21 deletions(-)
 
-Philippe Mathieu-Daudé (6):
-  hw/ssi/aspeed_smc: Rename max_slaves as max_devices
-  hw/core/stream: Rename StreamSlave as StreamSink
-  hw/dma/xilinx_axidma: Rename StreamSlave as StreamSink
-  hw/net/xilinx_axienet: Rename StreamSlave as StreamSink
-  hw/pci-host/q35: Rename PCI 'black hole as '(memory) hole'
-  target/i386/kvm: Rename host_tsx_blacklisted() as host_tsx_broken()
-
- include/hw/pci-host/q35.h     |  4 +--
- include/hw/ssi/aspeed_smc.h   |  2 +-
- include/hw/ssi/xilinx_spips.h |  2 +-
- include/hw/stream.h           | 46 +++++++++++++--------------
- hw/core/stream.c              | 20 ++++++------
- hw/dma/xilinx_axidma.c        | 58 +++++++++++++++++------------------
- hw/net/xilinx_axienet.c       | 44 +++++++++++++-------------
- hw/pci-host/q35.c             | 38 +++++++++++------------
- hw/ssi/aspeed_smc.c           | 40 ++++++++++++------------
- hw/ssi/xilinx_spips.c         |  2 +-
- target/i386/kvm.c             |  4 +--
- tests/qtest/q35-test.c        |  2 +-
- 12 files changed, 131 insertions(+), 131 deletions(-)
-
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 6fbbb238f15..52ae34e38d1 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -42,7 +42,7 @@ typedef struct AspeedSMCController {
+     uint8_t r_timings;
+     uint8_t nregs_timings;
+     uint8_t conf_enable_w0;
+-    uint8_t max_slaves;
++    uint8_t max_devices;
+     const AspeedSegments *segments;
+     hwaddr flash_window_base;
+     uint32_t flash_window_size;
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 795784e5f36..8219272016c 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -259,7 +259,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 1,
++        .max_devices       = 1,
+         .segments          = aspeed_segments_legacy,
+         .flash_window_base = ASPEED_SOC_SMC_FLASH_BASE,
+         .flash_window_size = 0x6000000,
+@@ -275,7 +275,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 5,
++        .max_devices       = 5,
+         .segments          = aspeed_segments_fmc,
+         .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -293,7 +293,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_SPI_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = SPI_CONF_ENABLE_W0,
+-        .max_slaves        = 1,
++        .max_devices       = 1,
+         .segments          = aspeed_segments_spi,
+         .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -309,7 +309,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 3,
++        .max_devices       = 3,
+         .segments          = aspeed_segments_ast2500_fmc,
+         .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -327,7 +327,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 2,
++        .max_devices       = 2,
+         .segments          = aspeed_segments_ast2500_spi1,
+         .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
+         .flash_window_size = 0x8000000,
+@@ -343,7 +343,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 2,
++        .max_devices       = 2,
+         .segments          = aspeed_segments_ast2500_spi2,
+         .flash_window_base = ASPEED_SOC_SPI2_FLASH_BASE,
+         .flash_window_size = 0x8000000,
+@@ -359,7 +359,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 1,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 3,
++        .max_devices       = 3,
+         .segments          = aspeed_segments_ast2600_fmc,
+         .flash_window_base = ASPEED26_SOC_FMC_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -377,7 +377,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 2,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 2,
++        .max_devices       = 2,
+         .segments          = aspeed_segments_ast2600_spi1,
+         .flash_window_base = ASPEED26_SOC_SPI_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -395,7 +395,7 @@ static const AspeedSMCController controllers[] = {
+         .r_timings         = R_TIMINGS,
+         .nregs_timings     = 3,
+         .conf_enable_w0    = CONF_ENABLE_W0,
+-        .max_slaves        = 3,
++        .max_devices       = 3,
+         .segments          = aspeed_segments_ast2600_spi2,
+         .flash_window_base = ASPEED26_SOC_SPI2_FLASH_BASE,
+         .flash_window_size = 0x10000000,
+@@ -476,7 +476,7 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+     AspeedSegments seg;
+     int i;
+ 
+-    for (i = 0; i < s->ctrl->max_slaves; i++) {
++    for (i = 0; i < s->ctrl->max_devices; i++) {
+         if (i == cs) {
+             continue;
+         }
+@@ -537,7 +537,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+      */
+     if ((s->ctrl->segments == aspeed_segments_ast2500_spi1 ||
+          s->ctrl->segments == aspeed_segments_ast2500_spi2) &&
+-        cs == s->ctrl->max_slaves &&
++        cs == s->ctrl->max_devices &&
+         seg.addr + seg.size != s->ctrl->segments[cs].addr +
+         s->ctrl->segments[cs].size) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -948,7 +948,7 @@ static void aspeed_smc_reset(DeviceState *d)
+     }
+ 
+     /* setup the default segment register values and regions for all */
+-    for (i = 0; i < s->ctrl->max_slaves; ++i) {
++    for (i = 0; i < s->ctrl->max_devices; ++i) {
+         aspeed_smc_flash_set_segment_region(s, i,
+                     s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]));
+     }
+@@ -995,8 +995,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
+         (s->ctrl->has_dma && addr == R_DMA_DRAM_ADDR) ||
+         (s->ctrl->has_dma && addr == R_DMA_LEN) ||
+         (s->ctrl->has_dma && addr == R_DMA_CHECKSUM) ||
+-        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slaves) ||
+-        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves)) {
++        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_devices) ||
++        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_devices)) {
+ 
+         trace_aspeed_smc_read(addr, size, s->regs[addr]);
+ 
+@@ -1270,7 +1270,7 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+         int cs = addr - s->r_ctrl0;
+         aspeed_smc_flash_update_ctrl(&s->flashes[cs], value);
+     } else if (addr >= R_SEG_ADDR0 &&
+-               addr < R_SEG_ADDR0 + s->ctrl->max_slaves) {
++               addr < R_SEG_ADDR0 + s->ctrl->max_devices) {
+         int cs = addr - R_SEG_ADDR0;
+ 
+         if (value != s->regs[R_SEG_ADDR0 + cs]) {
+@@ -1341,10 +1341,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+     s->conf_enable_w0 = s->ctrl->conf_enable_w0;
+ 
+     /* Enforce some real HW limits */
+-    if (s->num_cs > s->ctrl->max_slaves) {
++    if (s->num_cs > s->ctrl->max_devices) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
+-                      __func__, s->ctrl->max_slaves);
+-        s->num_cs = s->ctrl->max_slaves;
++                      __func__, s->ctrl->max_devices);
++        s->num_cs = s->ctrl->max_devices;
+     }
+ 
+     /* DMA irq. Keep it first for the initialization in the SoC */
+@@ -1376,7 +1376,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+                           s->ctrl->flash_window_size);
+     sysbus_init_mmio(sbd, &s->mmio_flash);
+ 
+-    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_slaves);
++    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_devices);
+ 
+     /*
+      * Let's create a sub memory region for each possible slave. All
+@@ -1385,7 +1385,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+      * module behind to handle the memory accesses. This depends on
+      * the board configuration.
+      */
+-    for (i = 0; i < s->ctrl->max_slaves; ++i) {
++    for (i = 0; i < s->ctrl->max_devices; ++i) {
+         AspeedSMCFlash *fl = &s->flashes[i];
+ 
+         snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
 -- 
 2.26.2
 
