@@ -1,79 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGGnj-0003PE-DA
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:15:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34346)
+	id 1kGGve-0006ld-Iw
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2020 03:23:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kGGnh-0003Mj-Jp
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:15:21 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43607
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kGGnf-0003DL-Df
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2020 03:15:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599722118;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NujrVkwgQXomRFqBptCRf8I5qXyjyjT+dpDlxDqalIs=;
- b=DhUCx5sbS11FicIidga+LdQdZ+Yq/JDl8uk3YjUavRmsY7LZ1uvH+/gGzbWwaLgU4iZ8j+
- OiDo02K1dBfg7nyK/matjMkjJvSTXYbCnKm7QXh0y48QCic9E8a1xR5kL+5vwvZd0R9ZQ6
- q8q2NjkPvRI7vg1JSVkJ21sTb3jxe9U=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-7ObhZB0GNoSSa78vWCPA5A-1; Thu, 10 Sep 2020 03:15:14 -0400
-X-MC-Unique: 7ObhZB0GNoSSa78vWCPA5A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 191ECEF4EE;
- Thu, 10 Sep 2020 07:15:12 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-86.ams2.redhat.com [10.36.112.86])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BDFEC5D9E8;
- Thu, 10 Sep 2020 07:15:03 +0000 (UTC)
-Subject: Re: [PATCH 5/6] hw/pci-host/q35: Rename PCI 'black hole as '(memory)
- hole'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20200910070131.435543-1-philmd@redhat.com>
- <20200910070131.435543-6-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
-Date: Thu, 10 Sep 2020 09:15:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGGvc-0006iy-65; Thu, 10 Sep 2020 03:23:32 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:37748)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGGva-0004Io-E1; Thu, 10 Sep 2020 03:23:31 -0400
+Received: by mail-wr1-x429.google.com with SMTP id z4so5524952wrr.4;
+ Thu, 10 Sep 2020 00:23:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=IiUNInL/307o83xAPoEOVWsbuFJeacWIMWUZqFjFjKg=;
+ b=EV1O5ouYb1hrMPao8ECJKuezt3lKVJVlYgpfS8p7oKejc/N35zkPLblK3QvTPLnCur
+ tSA+ZJ28wnYaux9AyAQL4BF3KfGaKxTtQoKX1cQ5eAmK2kSFxhjr324HRqlErKAWSxh5
+ MdB8lQEKy5vGk9l7BtvYDK1TUMaA/flRQWWsajizBtFat6euSd/e+OBg9WKwU9ARyaGk
+ 33dANB97NsQnobSYMAwi9Lf8ITbxw/nm/2jfDbADmtE30WZXqBBfRn89BfClqzXOfJBU
+ 57MigVyhHuo1TtSPgPqvpdgVnf5giDb+U6yDV1QBezpMT80sK3+pewArA3N74eRo6Xyl
+ NDhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=IiUNInL/307o83xAPoEOVWsbuFJeacWIMWUZqFjFjKg=;
+ b=t0UyEuJgqUZlM7ZgE94DQvyQvXU4xNlNoRelP3mXmJP810QbCZ2qPB/mnKJ2ltPJhF
+ ucj9XAxQ+x82OOT0mi1iErg1r0OBBrpO+D+QbY/l+9Rjjr7tiQO3gs72rFvAzo8trlaw
+ R3EDzRS58CKqOBobXizyKCuPdIxIm5m3bD0Yk+rYiJOD5Rzri3JN6jFHDHTrpz6OQDFT
+ JqIPZqXk/R13OAqfMkgVHsjVnms4Qo/VIsSR2jZr5wlT0NJFX44/ngXCYG8NOLggpyI+
+ ZdlKeniU6ff1o1lDdxQWAIeZytmwzWiSAcb7LZMlQ4dnwjTUfX6hELfWPbBVg2wlpaKa
+ CG4w==
+X-Gm-Message-State: AOAM532E6mJE+EfVLgKxk6OVBJLG6/JE+MtZ/mC109DrP5/KPau2i4TO
+ mh4UxcGBsnqw0k4KffDS7H2zKCXUWzg=
+X-Google-Smtp-Source: ABdhPJyYfKznX8/g+KZ8ebcG81Le6+PRqHD7XmdoCskSgHkPInY6fDqbzwHCo5jazT/YS29DaapCrg==
+X-Received: by 2002:a5d:540a:: with SMTP id g10mr7187535wrv.138.1599722606993; 
+ Thu, 10 Sep 2020 00:23:26 -0700 (PDT)
+Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id x2sm6783804wrl.13.2020.09.10.00.23.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Sep 2020 00:23:26 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
+ Andrzej Zaborowski <balrogg@gmail.com>, qemu-ppc@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v2 0/2] hw: Replace some impossible checks by assertions
+Date: Thu, 10 Sep 2020 09:23:23 +0200
+Message-Id: <20200910072325.439344-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-6-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 01:44:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.576, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,38 +81,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Sep 2020 07:15:21 -0000
+X-List-Received-Date: Thu, 10 Sep 2020 07:23:33 -0000
 
-On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
-> In order to use inclusive terminology, rename "blackhole"
-> as "(memory)hole".
+Trivial patches removing unreachable code.
 
-A black hole is a well-known astronomical term, which is simply named
-that way since it absorbes all light. I doubt that anybody could get
-upset by this term?
+Since v1:
+- dropped patches queued
+- replace dead code by assert (Peter)
+- use PCI_NUM_PINS definition (Cédric)
 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  include/hw/pci-host/q35.h |  4 ++--
->  hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
->  tests/qtest/q35-test.c    |  2 +-
->  3 files changed, 22 insertions(+), 22 deletions(-)
-> 
-> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-> index 070305f83df..0fb90aca18b 100644
-> --- a/include/hw/pci-host/q35.h
-> +++ b/include/hw/pci-host/q35.h
-> @@ -48,8 +48,8 @@ typedef struct MCHPCIState {
->      PAMMemoryRegion pam_regions[13];
->      MemoryRegion smram_region, open_high_smram;
->      MemoryRegion smram, low_smram, high_smram;
-> -    MemoryRegion tseg_blackhole, tseg_window;
-> -    MemoryRegion smbase_blackhole, smbase_window;
-> +    MemoryRegion tseg_hole, tseg_window;
-> +    MemoryRegion smbase_hole, smbase_window;
+Philippe Mathieu-Daudé (2):
+  hw/gpio/max7310: Remove impossible check
+  hw/ppc/ppc4xx_pci: Replace magic value by the PCI_NUM_PINS definition
 
-Maybe rather use smbase_memhole and tseg_memhole?
+ hw/gpio/max7310.c   | 5 +----
+ hw/ppc/ppc4xx_pci.c | 2 +-
+ 2 files changed, 2 insertions(+), 5 deletions(-)
 
- Thomas
+-- 
+2.26.2
 
 
