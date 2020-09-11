@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGoo3-000353-UO
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44946)
+	id 1kGoo8-0003Fy-4A
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:34:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGoo2-00031w-Tq; Fri, 11 Sep 2020 15:33:58 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:49519)
+ id 1kGoo6-0003BT-67; Fri, 11 Sep 2020 15:34:02 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:37457)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGoo0-0000qZ-TW; Fri, 11 Sep 2020 15:33:58 -0400
+ id 1kGoo4-0000rI-Is; Fri, 11 Sep 2020 15:34:01 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MMY9X-1jzQoC2fFH-00JYvd; Fri, 11 Sep 2020 21:33:52 +0200
+ id 1MJnnV-1jwgST02wr-00K7QZ; Fri, 11 Sep 2020 21:33:56 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 15/18] hw/arm/pxa2xx: Add missing fallthrough comment
-Date: Fri, 11 Sep 2020 21:33:27 +0200
-Message-Id: <20200911193330.1148942-16-laurent@vivier.eu>
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 18/18] target/i386/kvm: Add missing fallthrough comment
+Date: Fri, 11 Sep 2020 21:33:30 +0200
+Message-Id: <20200911193330.1148942-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:MFlSvULitaydFXZ1z6AuKK+Pklr0g/yjNEpPSc4suR87LECVFeI
- atTidlOQpKNbzZMiqsOsO5tFr1sFUQczA4QS7xKwGwYId64+JP3Ch0QfBdYXpVrNA+Ri3gp
- xXOs3Sx8Z8p3o/PzGcGfXnqazut3fQzJ4zYB0JT8Hl9gYjT3y/v3KOi4TglaUeLxRSGZtmP
- NEH/35ysKQgk52O/KnCkA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NmYKcVDTjTA=:PpYvzJSdhmoF2gdezkJ8bD
- Ao9ZYhxovp4/4D3VW868TC+3L24gnsdwQ9pgHfiVDL5+fu77wouifgRkYUAVMscXHtxkC4oZy
- MmPP/ut4cEOWa5tQSIj9z1Ntxda9X75R1Gt2J1POznyG/C/LVLE7+8G5Os/pBxuoGlBRZifKM
- cYy0NUK0710tf+tGUR5t5FkYIIEr2AL0KhSvSYNlJeGv/yiq4o4aMWKdBalHbdmSmqzagFVFm
- sNKav4oQsilAkBtwX4gDOirv6HzHTIUCcOZhzCqpR716tAFrduVkyR6fDqlh1an14TzmjCkGM
- gp0deSCPYyv8EyToSF5GkofcBufUx3p2OTDcCEsAA3nq49NvofL8p5svwp6M9O/t5Vk+Hxip8
- FNzYfUrmjnTqQw9P6kyBfDitFMK0PB4QyP0oGhfKANdYFWYcNJVZp3/r1kxGa53fPNFg89BOt
- KyuKuJMxuziuXaKJB+97X8Wgzo/mVMHkeyKNlHDiQUFYpxc2aN5hg8oUpWmPFaKnjq69rzrN5
- kA0eZ7SZ+knX3nIo5g3RhNfZIrj5hGaDcCX4Yym6VGRSe7GD06z7LDPcVxdCB8rUQW0kok5yM
- w/JnTpWy/tEggdupV+arbY3rR6JqIiO122br2SiBO2lotQAUzBqGigozUi8eE4i+3gbdNP6Yu
- f070XiHEKePdoW4bNf7erMUBrsrfJUQnDkMoZ2zPoy2wWazOfNZOumf/Cy+trC+CrD4iYPzLi
- +o7I3pFi+9XmRjihiBun0vqKXf4N6TfV3nsekw7l8ZZvdgyvew2+xMmaCT5N642fgLakUdQPC
- rCQu1L9+f04vNpYNgC4ZzvxQJGiETctKoKsgTWo9A9IWtpO42bHIXCn88z/+p+9I7u5Gu9J
+X-Provags-ID: V03:K1:8eSCGAMo/5u/kTK+WDIR9jqTjryidJYbIvMIkdsfMbq/F3g0UGc
+ FZmmzLd7xa5mMG0LC6Vz/IOJWOta9MTeMy6Fv9YBBnVVu0VlFfPtH/YvXbog9cVn0/mMS7o
+ 9x8wiSFOFK75QV37p4PzKzKLrQn2MDWFJ++Mlj4w5SkDFXG5DfgjKRdXXhONkmOEJHR5cHf
+ xc2F3v8gL/5rDYMMhTwHg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BFyx7pkX1ws=:DrsyTQEothKm/cGvb43DTC
+ JMSQyjCQ+ACR28sXJrMjaf72G5aCM5KbH/StTZHDyIrFF9tzK4wd9oibiSNDh6eisfcLgOrnR
+ RlqoirwiJakCUjLHvq4uqo9KwZWjNZ2+lz5yzg9TyMuheoaeFwbFMVrZKaFamHnHXJLJd7iPA
+ TbzhQQyajWKY4rOh2rJ1GMX0O7P7kH6+7tbVqSAM7j6ORHDKXuHdxNhj+JIKhWGuOI9OlTE2D
+ 0W0HrmvVnt6E/fWcVheE0EYnw8krXMYWuJZtirh+v8fMctFKDsBHvuceI/fA+H38bRdn+hxx+
+ NsWZSxbTjLl/PT7QnKQXcwZVoZUAC0N50j+aeOFRcOX+hgnHU6WDqszKaAVPmx3a8AKFi+H9B
+ gqUovXvL+HhjQEz6JXGksS1GLiK4O+3cekMbUthvwd18f1F0750YsFFSdaFvx/nitrtjCnHm5
+ kqeDFIOzYUK0y59Y3ivpVRhE15T4PapGt0fN2NNlY/WbDoIIzWhrYzkf0Yj84UMfsCUxr2lo2
+ JuoTXfNYMhRQqMS2TN5ZEaj2NL2DqAnQhV9AqT6FwUWsDJjY6rmbL1X4RnNZ42r0AuMOztMWL
+ mLak7DXOL8vX2kVjPungn6H/9TYcBLBg88sr/cUib3Dkk5YwQerRHPIYFGF/m8HpIq4UIrBtc
+ FljG1Dy/zlRjVE38JtEOJDnEYcUd+k/E2mWkA/dGy1vUQARSA2eSVlhtWv31SE4ITakDDduRz
+ iBS8hl0RGS28lvNibl8jKadFBhFpZ5q1Zv1TK8Linxwi3rOa1jM3zGnCy6tczPCRA0qfVUfux
+ wiKvXDKekg5AoZGcb/uRh3WFytYU2rZCsfzj8UVSVW8AMmTAP8LYXz/VX7MQGH3lyJ1Z9YN
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:34
@@ -65,7 +63,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:59 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:34:02 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
@@ -74,27 +72,25 @@ Looking at the code, it seems like the fallthrough is intended here,
 so we should add the corresponding "/* fallthrough */" comment here.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200911121844.404434-1-thuth@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20200911125301.413081-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/pxa2xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/i386/kvm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index 76975d17a461..c1f45b2adfa0 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -443,7 +443,7 @@ static void pxa2xx_mm_write(void *opaque, hwaddr addr,
-             s->mm_regs[addr >> 2] = value;
-             break;
-         }
--
-+        /* fallthrough */
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 3d640a8decf6..d87af57a23ce 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -1568,6 +1568,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+             if (env->nr_dies < 2) {
+                 break;
+             }
++            /* fallthrough */
+         case 4:
+         case 0xb:
+         case 0xd:
 -- 
 2.26.2
 
