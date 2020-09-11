@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGony-0002q7-S4
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44832)
+	id 1kGoo0-0002te-1d
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonx-0002lk-Fj; Fri, 11 Sep 2020 15:33:53 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:37719)
+ id 1kGony-0002na-1M; Fri, 11 Sep 2020 15:33:54 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:39069)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonp-0000oZ-5C; Fri, 11 Sep 2020 15:33:53 -0400
+ id 1kGonq-0000pD-OT; Fri, 11 Sep 2020 15:33:53 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Md76B-1kp3UV3saB-00aGKf; Fri, 11 Sep 2020 21:33:41 +0200
+ id 1Mm9NA-1kyiH82wNs-00iCoM; Fri, 11 Sep 2020 21:33:43 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Greg Kurz <groug@kaod.org>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 07/18] Makefile: Skip the meson subdir in cscope/TAGS/ctags
-Date: Fri, 11 Sep 2020 21:33:19 +0200
-Message-Id: <20200911193330.1148942-8-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Li Qiang <liq3ea@gmail.com>
+Subject: [PULL 09/18] hw/net/e1000e: Remove duplicated write handler for
+ FLSWDATA register
+Date: Fri, 11 Sep 2020 21:33:21 +0200
+Message-Id: <20200911193330.1148942-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:MrHVAjpRelqQJOP4hIAj+9NIxnoOOpmCfTXNZKY5j5cnzohF2r5
- ab/wkV+l6CIhQ8MZ5yoqGAzCZ504nGnx1PVxt38BDUzlYyG6Qg392ZEPkaljEBbKvXbd6Jp
- f8W9xkCiWxdWLPiAv+AfR8txbnDRaX94EGLGQTSHDxSxj4Fj/WBwN0JdYvdP51myD4E/J3X
- YkbNMCWLbILUiirXOZHpA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wP4UtN7fN6I=:OmSpA/3FqvmXSi2z9V0z7Y
- 0VTlzInQafdSVlM9hnKrlvrZUzILtP4pIbJXPtSEXhZR4U8S7IkadZgfOJ+EGESKoG0wCGB4s
- 3WJ4mbvhRM7DlihiZU8FYkWj6La/8VAbnLYolYvmvamLNmTCvsCxVletfLo7EF2FWlZFUl9OB
- LmeU7kHshB539ILL6mSfV27XZQ7/KtaJgDdPAYrl0Ov788kffW5LF/JrLJo9zOnaH4NaOcmt1
- GcHejQXf5RRVxIBRW8LPJeAvwxBg4JBMg3GZlxZbHpgxMF2+jDQnCCls5ingy0wdwcWTHHUhr
- Ess6VouZFLYKBiK0MWFhVfrgqK0VynDViwLzt7j9siQDACUthpxzgrk4pF42P+qYGolOJH4uJ
- sWjzpVY8Il573U5kemYDA5aZhgyRTSlLEoMmZ7a61+JID4nNLalzEJQBaPW+x/sNWsVKVhmu8
- tBUc7cVnqyw7Ct3TBD0psUigUVz6ZAQ9Y9WIVB77YrTIZXniK0flM6X1UzsE89w6nT0XhMhqe
- NcXBCajVyTYvGLdyLWOirH63RYWaGgRcuq22iW7JTkxSO+Tfs08DV66gnjoskmSlCpL73J9lB
- q5e5L5QLnM7QYMITAgFu2dzosOnMwrYWF/AbP2W+psP0EmBe9jMtfdIFnZOuIcEu92H2OTiOR
- lgxNMZiIXCmY9LVSwjgzTbHUnqf8iaRr2c+En0X8ANW4wYSjDq+RKpYMWiqyQiO8E4GzX1QKh
- opO98FbV7BxzjzPLR+KPcB62V4RlVz6HEQG8722HTzgC+pAFzvujuU8WLgCT5yxR4caby+RYJ
- ZrBzE4kidLWPdTSTTrGmQievbnrZh3w4h9UbVlG6fd3JwpL900YG20eCSDls69XBSYXYCPK
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Y/4Sk9ZML6j6d7n4zSs4wCwLlVgPAzfY2WrD6YIIDM30LKGNFML
+ ljMQ17ZVwLHCpUytAcSfMZBzQCprAwZZoRpl7IL6kZWczDLsIDqTN5WouRTpyZ7+0eFhA0c
+ akMa1Nsrm81XwwIVVEe5P2jQ7tWl1XCR7voTHoORb/QbyFyludvSBVpzxjnR2WL9JQC3gRn
+ PNOdaNLF75m5lyelh6D2w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wwAWt+jCFKA=:DEREyALNF8B/RQCivYJ1x0
+ mOSVPrr2Ne/h2Vcq3swlZ63CUcyO7e3p8FwMqJDDG5kI+m8V6yD222uRYb/KUtpQIWa7UHOe7
+ wyAJusnAbW2oZs7u+Kj5gfwPeysupvoKeR5QIRmt1liNcyx4WUOXyDJiicuh5uQz3Qej9Qjiw
+ l1iMsq3BzIInv4JtCH5+CK7yE5kwW4TAhHO+7ACRE+lYJ77HWlLf5WvuXtBvis2iVDiDqOEwN
+ /YNJpozUEeXOE5N34xV/QuTZr4YFe2DL41YZP0pvTMB/vmSbOKwbrU0u9xAyyoovdwD7ByFdF
+ 3QMBRdMNWtMepOW9LUEBkTabB+Gvzizp3sCMwQbKmTu1Jp2hgCUGNYdYyJTbYrwwSi4+4tX3M
+ L3d1tnx+M/aYjV+HD4TmNzcbjS+h5zSJGiVpQb2fO3/XjnUK0KfIpK65OdUACzeYqg3DXNmtR
+ 77twjq0y8GDD83z3ljs9xeggte9DOu1Y6bXGq4005WnAiwZ7+Zd3SQksBD9sAFPT/O6YONd8h
+ 5W/c1RUTfMaWfqPu6Ui4GKu13zucjmI6a+ptXdCB4CaCu7i8Qs6xsN23tcWWcliCmcGPvzDre
+ 2PE7zx5StOJKDhvLtNmMr94mFZQx1u6YaFaYye8kYinaCXJZIt4qIi2Yw1LHB/A1PIUCWUd+p
+ vwc4tLVxyuoSN47B12ANe3SWHZ45XrV7qcE0oe4S6UTDJ8Q+67wc2njoyGEXU48KOPpWRL3TX
+ WIRFKConZrp4iPwzxOM2RRrGpHVanLWuQWXI3opPk+na2vGnQG/krSbxp/5B4F+fLK1IF/ZKi
+ ugbwL9yp89d9eDzBYExiuOPG94/gOqBKNbe657CzP6NMlP6N+lVWYdARLDLllTpVdBDwNa3
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:43
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,54 +66,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:53 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:54 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-If the meson submodule is present, we don't really want to index its
-source code. Consolidate the find command in a single place and use
-it for cscope, ctags and etags. Note that this now causes ctags and
-etags to also index assembly files, but this is okay since they both
-have been supporting assembly since 2001 at least.
+The FLSWDATA register writeop handler is initialized twice:
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <159916247553.691541.10480293747685886851.stgit@bahia.lan>
+  3067 #define e1000e_putreg(x)    [x] = e1000e_mac_writereg
+  3068 typedef void (*writeops)(E1000ECore *, int, uint32_t);
+  3069 static const writeops e1000e_macreg_writeops[] = {
+  ....
+  3102     e1000e_putreg(FLSWDATA),
+  ....
+  3145     e1000e_putreg(FLSWDATA),
+
+To avoid confusion, remove the duplicated initialization.
+
+Fixes: 6f3fbe4ed0 ("net: Introduce e1000e device emulation")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Message-Id: <20200904131402.590055-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Makefile | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ hw/net/e1000e_core.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index 83bc40b255db..2ed19310cf74 100644
---- a/Makefile
-+++ b/Makefile
-@@ -221,20 +221,22 @@ distclean: clean ninja-distclean
- 	rm -f linux-headers/asm
- 	rm -Rf .sdk
- 
-+find-src-path = find "$(SRC_PATH)/" -path "$(SRC_PATH)/meson" -prune -o -name "*.[chsS]"
-+
- .PHONY: ctags
- ctags:
- 	rm -f tags
--	find "$(SRC_PATH)" -name '*.[hc]' -exec ctags --append {} +
-+	$(find-src-path) -exec ctags --append {} +
- 
- .PHONY: TAGS
- TAGS:
- 	rm -f TAGS
--	find "$(SRC_PATH)" -name '*.[hc]' -exec etags --append {} +
-+	$(find-src-path) -exec etags --append {} +
- 
- .PHONY: cscope
- cscope:
- 	rm -f "$(SRC_PATH)"/cscope.*
--	find "$(SRC_PATH)/" -name "*.[chsS]" -print | sed -e 's,^\./,,' > "$(SRC_PATH)/cscope.files"
-+	$(find-src-path) -print | sed -e 's,^\./,,' > "$(SRC_PATH)/cscope.files"
- 	cscope -b -i"$(SRC_PATH)/cscope.files"
- 
- # Needed by "meson install"
+diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+index 5170e6a45633..bcfd46696ff7 100644
+--- a/hw/net/e1000e_core.c
++++ b/hw/net/e1000e_core.c
+@@ -3141,7 +3141,6 @@ static const writeops e1000e_macreg_writeops[] = {
+     e1000e_putreg(RXCFGL),
+     e1000e_putreg(TSYNCRXCTL),
+     e1000e_putreg(TSYNCTXCTL),
+-    e1000e_putreg(FLSWDATA),
+     e1000e_putreg(EXTCNF_SIZE),
+     e1000e_putreg(EEMNGCTL),
+     e1000e_putreg(RA),
 -- 
 2.26.2
 
