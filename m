@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGonm-0002ZN-SC
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44680)
+	id 1kGono-0002bT-2h
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonj-0002Xw-11; Fri, 11 Sep 2020 15:33:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:37843)
+ id 1kGonn-0002Zk-1h; Fri, 11 Sep 2020 15:33:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:33945)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGong-0000nO-NJ; Fri, 11 Sep 2020 15:33:38 -0400
+ id 1kGonj-0000ne-Sh; Fri, 11 Sep 2020 15:33:42 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MtPzy-1kWZpT2vnS-00upci; Fri, 11 Sep 2020 21:33:34 +0200
+ id 1MyNoa-1kShwq1D2q-00yhVm; Fri, 11 Sep 2020 21:33:36 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 00/18] Trivial branch for 5.2 patches
-Date: Fri, 11 Sep 2020 21:33:12 +0200
-Message-Id: <20200911193330.1148942-1-laurent@vivier.eu>
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 02/18] hw/isa/isa-bus: Replace hw_error() by assert()
+Date: Fri, 11 Sep 2020 21:33:14 +0200
+Message-Id: <20200911193330.1148942-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
+References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Uf1ImHGN3hTCyItTuo1NSRy+QQeqZKpPch5ylqEbMnYLi5mncEh
- /phlRp2Peq37BptkEMxOeOX4Q0UB+xGrm0Xqrki/ekT9Zyql9WxNbpvG3Ht4b0hURQzc/MN
- KkLvSdWQvBSnlydZxZ4kzdLmJOuwbHuCsizZmpy6xDnJ0Y+wo3xOC5nDAJMuEAPL9dQbE8f
- B1IzdaYrozXGwzqM/8aug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:p3sUHaW7zsE=:7+ynzq724ge7URL9KWOMuF
- 1kGRGrwe/9WHiE7nzReq1eDB7iJdiuKtdkrHGrZeMNiqEK/HRMZYzPyQn+Uh8Ozl+N0PpqC2J
- i3jtNAGKyi+NNaRQn20A+97ZwKQHBEFr4HiJ6yeMDwnvEngeeW6xZT6MAT3vW4bIv2dLicA1e
- qcoDQxBhtiIP4lf7RemVigJko4mXXpTTUnvnSH5juxirtXdx9shiHD0ZnzRW4aWyFBYDCJ4FX
- 2YFN9S/Et/dvbaMx15kBFrgDB2ixTIWnqU4qoYf7wyHWRr3oDT/geH0pZZ215KBir/4TiKiVu
- IBzS7zlA6aHOrImDOpNKfgDymekkJiJgJHCIqRwz68Aeih59H1jwYL3DsTgx6UVmeB80ihGVO
- kyb6yZmIoOg16tW8j2ouX417OFi6M/NdnJ25aHMQwMycrTHMUdYTHleTyDbkcX8A1CahzwzHE
- 9sMo44+9wjW0Ru7hEUmxBHNATVKLHyLiJTUgGamCsBuEG03SdeyGuXjdDS5JrAbIX7jV6eqhQ
- cG5Diz6y/fdtIn88UlVlxEo6HNRR99RePoQBmfqeuNLR+KgZRbeSX/7jNdF7bh+IKbMz5yW3o
- g/Z4rnl0B5Qo4nTPJg+thLNFLy1OCgk5cYxPO93V+WuReol3iRWmthCip9nXIBd0a1Kxf7L7G
- KEENJTmIH5MEIteABiXO8v8s6io6xkGo3kSX4i6jjcAZfP8jHjv73yJLv1/5jKHbKc8lcYEyO
- Jl5hh3PblczWzdoKu9ZVNeLP7747mZXuEiRcBnD7ZXyqgiHHs/i+/Af2ekXyBCigN3drhivuT
- 4GpGnq1mJAYiUaaVDNeDgi4kxHAMbyNIhSGrWVBWqgejpQ+IIqL+8b1dBHNIn68L6yq8AZx
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:T5tDDC6sn8sfomspzaRG6piVUoCJq/6+OY5a/NPxdgYZBZQMAQp
+ 4elPTyTwbRZw55Gpo1Ub6lkDCTWmxhQvWaveUsCC6z7Nd+XXS+2iCZHTQq+YFgjD5UP4bS2
+ WgvrN9GJr/kDObO+EDeY4AtpRDTMZwJEVcUZP2wcC6YAEUfAZ/W+zmxLXPjVsO/ip4nSBFp
+ SF4P5VOkc+2pB6TVc7caw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7QDBlccRhQM=:lo18sON3JHGEEOcvvUxGa0
+ 87rpIorodcFlGL4dePZQMIR8vGmWF8oC2vEzwbEk+T+wVcnqHXm07aQrMCamlx4dONwuZaTqf
+ Hoqds7Ztrjl3NOXG/YtiW2EO0AFOo9RuqRNwn1yzzOLcFhyw17kz4TWcx/OFl7yhn4Vq+Ju4t
+ lxQGUSX/C58CY13IM5ATeSe8vR7YFLjY0IWnEEvZueX6/n27cHNqjNUtadW0C2AthGXMcGlTB
+ U/vb22suJoAfflKGdSFXhBGZ1jKSNNts7hlgEQRZUHA9IudSYKIG76o5wa1e9qIXfknV5Dzqj
+ kJ3dlkbf7U20YMTHozp7NoxiLiMGwMUJ7cyMcuO4DNmeVpCU3UvaGj//HzoefRT5Ap2wJBmXM
+ 2v/7m7EG4wsUFSX5NguULUXfYzhSPqwGxs3sYdOK+ESl2xnIMXthoaM10eb8yiwX2hEhZQMCU
+ 25Pod5+mnbkTRqrA9UKLhnNJAaEVkZKpo7gzMA0ITBYgF9WAYA+VmgRGt1K8NSX9wmW1TE6LK
+ GJW/hCXFotSB5sMpTr4dKNyBUBXygyNRjAdd4Civ10VfbQ7WHEzuot/oPgJDkRD+A/qQ2yUFn
+ 4zZ19rjY5FEryEljZOxyo1IrR23HJAQrJSg1qdrUP1Xbnt0OcVq3WgBs1oqVKP/d1BTs3jLpc
+ 0Ov92a/aE6YfVjNtUXH1YK3deR71RadX1MFVslBBPscKtQtmuGZpAImyIz2h6B7z16/DFoey8
+ xQrB1N/MtqCn7KvqRTcejE23dB1vlYxR5/XP5fo8upgd8zEE7ktC4dnn/mggtdyAqR9VHgJ7h
+ jNLgaSHZyokKmQbL6V63Itd5OX6yXgTvMTbwtUvklxXbx2rewgp2vSDpRNMMB+VH8ROxU2R
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:34
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:38
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,88 +65,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:41 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:43 -0000
 
-The following changes since commit 9435a8b3dd35f1f926f1b9127e8a906217a5518a=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/kraxel/tags/sirius/ipxe-20200908-pu=
-ll=3D=0D
--request' into staging (2020-09-08 21:21:13 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request=
-=0D
-=0D
-for you to fetch changes up to 8821e21414468b1810f0ccf38bcbfa5c0bd1d56b:=0D
-=0D
-  target/i386/kvm: Add missing fallthrough comment (2020-09-11 21:25:59 +02=
-00)=0D
-=0D
-----------------------------------------------------------------=0D
-trivial patches pull request 20200911=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Greg Kurz (2):=0D
-  Makefile: Drop extra phony cscope=0D
-  Makefile: Skip the meson subdir in cscope/TAGS/ctags=0D
-=0D
-Jon Doron (1):=0D
-  hw: hyperv: vmbus: Fix 32bit compilation=0D
-=0D
-Pan Nengyuan (1):=0D
-  test-vmstate: remove unnecessary code in match_interval_mapping_node=0D
-=0D
-Paolo Bonzini (1):=0D
-  kconfig: fix comment referring to old Makefiles=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (10):=0D
-  hw/mips/fuloong2e: Convert pointless error message to an assert()=0D
-  hw/isa/isa-bus: Replace hw_error() by assert()=0D
-  hw/acpi/tco: Remove unused definitions=0D
-  hw/gpio/omap_gpio: Replace fprintf() by qemu_log_mask(GUEST_ERROR)=0D
-  hw/gpio/max7310: Replace disabled printf() by qemu_log_mask(UNIMP)=0D
-  hw/net/e1000e: Remove overwritten read handler for STATUS register=0D
-  hw/net/e1000e: Remove duplicated write handler for FLSWDATA register=0D
-  target/i386/kvm: Rename host_tsx_blacklisted() as host_tsx_broken()=0D
-  util/hexdump: Convert to take a void pointer argument=0D
-  util/hexdump: Reorder qemu_hexdump() arguments=0D
-=0D
-Sergei Trofimovich (1):=0D
-  meson.build: tweak sdl-image error message=0D
-=0D
-Thomas Huth (2):=0D
-  hw/arm/pxa2xx: Add missing fallthrough comment=0D
-  target/i386/kvm: Add missing fallthrough comment=0D
-=0D
- Kconfig.host             |  4 ++--=0D
- Makefile                 | 10 ++++++----=0D
- hw/acpi/tco.c            | 11 -----------=0D
- hw/arm/pxa2xx.c          |  2 +-=0D
- hw/dma/xlnx_dpdma.c      |  2 +-=0D
- hw/gpio/max7310.c        | 11 +++++------=0D
- hw/gpio/omap_gpio.c      |  6 ++++--=0D
- hw/hyperv/vmbus.c        |  3 ++-=0D
- hw/isa/isa-bus.c         |  9 ++-------=0D
- hw/mips/fuloong2e.c      |  5 +----=0D
- hw/net/e1000e_core.c     |  2 --=0D
- hw/net/fsl_etsec/etsec.c |  2 +-=0D
- hw/net/fsl_etsec/rings.c |  2 +-=0D
- hw/sd/sd.c               |  2 +-=0D
- hw/usb/redirect.c        |  2 +-=0D
- include/qemu-common.h    |  3 ++-=0D
- meson.build              |  4 ++--=0D
- net/colo-compare.c       | 24 ++++++++++++------------=0D
- net/net.c                |  2 +-=0D
- target/i386/kvm.c        |  5 +++--=0D
- tests/test-vmstate.c     |  3 ---=0D
- util/hexdump.c           |  4 +++-=0D
- util/iov.c               |  2 +-=0D
- 23 files changed, 52 insertions(+), 68 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+As we can never have more than ISA_NUM_IRQS (16) ISA IRQs,
+replace the not very interesting hw_error() call by an
+assert() which is more useful to debug condition that can
+not happen.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200901104043.91383-6-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/isa/isa-bus.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+index 58fde178f92a..10bb7ffa43ae 100644
+--- a/hw/isa/isa-bus.c
++++ b/hw/isa/isa-bus.c
+@@ -21,7 +21,6 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "monitor/monitor.h"
+ #include "hw/sysbus.h"
+ #include "sysemu/sysemu.h"
+@@ -85,18 +84,14 @@ void isa_bus_irqs(ISABus *bus, qemu_irq *irqs)
+ qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
+ {
+     assert(!dev || ISA_BUS(qdev_get_parent_bus(DEVICE(dev))) == isabus);
+-    if (isairq >= ISA_NUM_IRQS) {
+-        hw_error("isa irq %d invalid", isairq);
+-    }
++    assert(isairq < ISA_NUM_IRQS);
+     return isabus->irqs[isairq];
+ }
+ 
+ void isa_init_irq(ISADevice *dev, qemu_irq *p, unsigned isairq)
+ {
+     assert(dev->nirqs < ARRAY_SIZE(dev->isairq));
+-    if (isairq >= ISA_NUM_IRQS) {
+-        hw_error("isa irq %d invalid", isairq);
+-    }
++    assert(isairq < ISA_NUM_IRQS);
+     dev->isairq[dev->nirqs] = isairq;
+     *p = isa_get_irq(dev, isairq);
+     dev->nirqs++;
+-- 
+2.26.2
+
 
