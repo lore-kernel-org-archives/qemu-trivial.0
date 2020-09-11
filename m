@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGs9K-0003gp-Dz
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 19:08:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56488)
+	id 1kGsBw-0004rW-UB
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 19:10:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kGs9J-0003gg-0z
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 19:08:09 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:40027)
+ id 1kGsBv-0004rG-Dd
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 19:10:51 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:37885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kGs9H-00034S-Kg
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 19:08:08 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id gf14so2370863pjb.5
- for <qemu-trivial@nongnu.org>; Fri, 11 Sep 2020 16:08:07 -0700 (PDT)
+ id 1kGsBt-0003Nu-Qq
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 19:10:51 -0400
+Received: by mail-pg1-x544.google.com with SMTP id 5so7598259pgl.4
+ for <qemu-trivial@nongnu.org>; Fri, 11 Sep 2020 16:10:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=FFt5QqvzeNr/MSJoRb5TuXp6VUbt0z1qymt7bCxMVFQ=;
- b=Ww4s5iXQSXFQtC/eD5tlMcGzuImwdc+Kx/X00VxyhoszeQ5Fo4PQPJ8vzNAtT62rIg
- ZC/4WaYgCZyzZv3R62se1DZ8wXch1dKk9rmomokcJdQCjwbII/VPI7HUiWY4ZCbK2ScR
- Ja+EjZZsKUT74Ko6PkpMT/ZnfWpipzuQjohAuiDjfasu/uQB2VAHg8C/vggiAIB4VO/x
- VB5v7/RJ/VB+56191jeTLiA1q/9Yyva5ywPPPChsZb1yhh90lKBbP1fIO9NXns8jWG8T
- 0mCGyO33DhTmcAh2jZBjn/IUYMSHSglS4Va+evxdNWk83QfmFw9m4yYmLlDaK6MguycF
- qKcQ==
+ bh=0ydLp4meF9o2JhNP0kAqRQyliGYUsh+mHHbI+dJCN9c=;
+ b=obMOWbMSHReO+/dB/VDTGnk30//PcBR/wxLA1s/kVcxod20bHi05ng0wZBJvLapdo6
+ 3sy17/pAzVyKxvMw/QnSlgyjcB2WlzHpU0Jmn7KIHCIB/Kze3AvbF35GVZ8D3s8GrQDe
+ LU8576YtjJU7vEiDjVqDjPwOZACYwWv+iD+Zu1CAmHAiHZt46iyV+Iu0fpSLzoIHZf7v
+ oSFpZ5O6xehzfVBB3BwPQhJhxfpml+658YcBC2PsjIk+YY/8NnjH11oqdCJIHeIohayE
+ p9NnHPHAFZpgT05FRMIVzvzP/0xJoFb2/Cs9EpxrAgdq/dNXjODaBT46U+ox5HWjybi5
+ qm5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=FFt5QqvzeNr/MSJoRb5TuXp6VUbt0z1qymt7bCxMVFQ=;
- b=I8TPAo9H5hghkUgWZP01l0R4fySe9EywB64Uxxl6Xgs2GkknDRosNmar++dLpKGJkL
- AQSuJK0VtzGuA286CZFYZJ7RmzCatgYfk7tMecd95n14nVHH2aevl0saXpUmLOjlNS2P
- vVgAqg9h6cqkurHTWD6zl3UuyW9/IZyunyWQCotJ3S7cOnZ24pU+2QIEvHbiTN+KZKDb
- ss8j8+ovYk5vDeaBY+DbOfL1P7G1zyHz2ajCp9OjMuJLlytOoKAJJiR2RenzIQAnlLhr
- yNEblNV7ruvtREcTdWN/wVVEtHIcMRB46jUhYVA/55Ie+yjfrcBqz2ljUkzkMzqugXH+
- CYew==
-X-Gm-Message-State: AOAM531Bf6UnX6IPRDQvzZcojmy1SJF0Es5QcgWLk2d8TAU6CmUZX8ZD
- JN4d0i+eE3wpoxNN/1liePvtUg==
-X-Google-Smtp-Source: ABdhPJzKUi2SH/U3Xz+cHoQJug1CIDUfbWTLAkeD07yOUACG1J6ODVuYSjGJFfq/PSn0zx1k036Leg==
-X-Received: by 2002:a17:90a:4cc6:: with SMTP id
- k64mr4152311pjh.103.1599865686051; 
- Fri, 11 Sep 2020 16:08:06 -0700 (PDT)
+ bh=0ydLp4meF9o2JhNP0kAqRQyliGYUsh+mHHbI+dJCN9c=;
+ b=d33AluRBVvLUdTWtBToRJh4hChhTCNU6e1Y8JHLEVeAQHkrD4JUPsEDYa3EQ+yhzta
+ RHWAD4rgBirWRx9vzm6vA2LmpiiNrqWq9pHwjBflhO5JiM6ea0S9yz7weRkog0j2hRMJ
+ DKC4KC9FEeEje3m0jdm+dAQzciCrw3gwBHQO2JHJErEZqVu3pD0oNG7ygh7LosyBHUXc
+ cXwf3TsWb3tYhrdSxcHMbN2mCi3EWrAkl5ZmTqrDNgnySyEEnV3tGQko6dV6VbUCJQVX
+ mZJzaBJscdHTYVraKDRsHvEZtrnMosL/DmaYao0snFJnPDpx6rDxgPWMO9a6ueuIcDQ/
+ Gh9A==
+X-Gm-Message-State: AOAM533dgTDqfDMBE3K/GSxuqZDrB7PlBP6aDOOztEcHbjzRNeXK09D1
+ teTQKHfJvSGNDW7cWqI4LNhahA==
+X-Google-Smtp-Source: ABdhPJxQ9IzbgepDdIJubmYjyBHqaZs6gTt5tBtnnJuGUBEiPbLl61dGxqSWkVqDH5Pbl/OPfXlsDQ==
+X-Received: by 2002:a63:c66:: with SMTP id 38mr3144108pgm.379.1599865847637;
+ Fri, 11 Sep 2020 16:10:47 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id il14sm2700586pjb.54.2020.09.11.16.08.04
+ by smtp.gmail.com with ESMTPSA id m13sm2751775pjl.45.2020.09.11.16.10.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Sep 2020 16:08:05 -0700 (PDT)
-Subject: Re: [PATCH 4/7] hw/char/serial: Rename I/O read/write trace events
+ Fri, 11 Sep 2020 16:10:46 -0700 (PDT)
+Subject: Re: [PATCH 5/7] hw/char/serial: Make 'wakeup' property boolean
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
  <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>
 References: <20200907015535.827885-1-f4bug@amsat.org>
- <20200907015535.827885-5-f4bug@amsat.org>
+ <20200907015535.827885-6-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <5decc72a-fc28-d2f5-9516-8bb55f2092ce@linaro.org>
-Date: Fri, 11 Sep 2020 16:08:03 -0700
+Message-ID: <3287e2ce-966f-50f0-cb66-e166ca37046b@linaro.org>
+Date: Fri, 11 Sep 2020 16:10:44 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200907015535.827885-5-f4bug@amsat.org>
+In-Reply-To: <20200907015535.827885-6-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -45
@@ -86,21 +85,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 23:08:09 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 23:10:51 -0000
 
 On 9/6/20 6:55 PM, Philippe Mathieu-Daudé wrote:
-> The serial_mm_read/write() handlers from the TYPE_SERIAL_MM device
-> call the serial_ioport_read/write() handlers with shifted offset.
+> Make the "wakeup" property introduced in commit 9826fd597df
+> ("suspend: make serial ports wakeup the guest") a boolean.
 > 
-> When looking at the trace events from this MMIO device, it is
-> confusing to read the accesses as I/O. Simplify using generic
-> trace event names which make sense the various uses.
+> As we want to reuse the generic serial properties in the
+> ISA model (next commit), expose this property.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/char/serial.c     | 4 ++--
->  hw/char/trace-events | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
+>  include/hw/char/serial.h | 2 +-
+>  hw/char/serial-isa.c     | 2 +-
+>  hw/char/serial.c         | 1 +
+>  3 files changed, 3 insertions(+), 2 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
