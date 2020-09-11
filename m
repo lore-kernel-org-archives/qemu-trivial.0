@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGaVv-00081d-87
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 00:18:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40462)
+	id 1kGbDq-0002t9-KZ
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 01:03:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kGaVt-0007xr-IM
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 00:18:17 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26253
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kGbDp-0002su-HD
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 01:03:41 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:40482
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kGaVq-0001x2-Vb
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 00:18:17 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kGbDn-0000Nn-Ep
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 01:03:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599797893;
+ s=mimecast20190719; t=1599800617;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tX4xfaZDYxhcllxVB5LE7NO7bf53MuHSfpRLwFrwKe4=;
- b=fmjPnIIrergkwcvgt5dJp6+tvU2897UCAK4el+ttWcqFGOpPFFvMKfC0vxK5uAzNxDl94d
- e9FXDRJpd6PWN3nsPbea3dcqdssjUi6btHNDzwEFGUiDDMp3Pg6MTcn0/G7Wh4LFtEcjQP
- II5DOQeuRv0F0shUOjtZmaJkkdzY9Gs=
+ bh=UagiaZNNJ5NhGbrw2rwSb7/pZUSmOAKsPipqaOHmzWE=;
+ b=EZchgWVLQbT6//tXvWjZ6K3baeCrrXt7qBfU05/L9Emv4x7rqCQVp/b29khxUNBa7bR2ue
+ 36bdWuSAm7vzWLhJbsz/gQzPlrLbA+WDH8t1kNWXpWAaEzoH2hMamb8v8+nn44CZiU1+US
+ M7WSh7TToMRJ8OnpOwJrMCsEqzx4oc4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-269-26IgmYYeOxmk-QHNCNCbFw-1; Fri, 11 Sep 2020 00:18:11 -0400
-X-MC-Unique: 26IgmYYeOxmk-QHNCNCbFw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-571-IZwGGYD-NYWvKm0gjXGU0Q-1; Fri, 11 Sep 2020 01:03:35 -0400
+X-MC-Unique: IZwGGYD-NYWvKm0gjXGU0Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49E0F1084C82;
- Fri, 11 Sep 2020 04:18:10 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-46.ams2.redhat.com [10.36.112.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0729960BF4;
- Fri, 11 Sep 2020 04:18:05 +0000 (UTC)
-Subject: Re: elf2dmp: Fix memory leak on main() error paths
-To: AlexChen <alex.chen@huawei.com>,
- Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-Cc: zhengchuan@huawei.com, qemu-devel@nongnu.org,
- zhang.zhanghailiang@huawei.com, QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <5F463659.8080101@huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c9a661c3-7a86-8ae7-6304-6110d0bfb461@redhat.com>
-Date: Fri, 11 Sep 2020 06:18:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 35B211074651;
+ Fri, 11 Sep 2020 05:03:34 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-114-66.ams2.redhat.com
+ [10.36.114.66])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CEA9A81C42;
+ Fri, 11 Sep 2020 05:03:29 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 52A2B113865F; Fri, 11 Sep 2020 07:03:28 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: duboisj@gmail.com,  qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,
+ Josh DuBois <josh@joshdubois.com>
+Subject: Re: [PATCH] trace/simple: Enable tracing on startup only if the
+ user specifies a trace option
+References: <20200816174610.20253-1-josh@joshdubois.com>
+ <87r1rjkrnq.fsf@dusky.pond.sub.org>
+Date: Fri, 11 Sep 2020 07:03:28 +0200
+In-Reply-To: <87r1rjkrnq.fsf@dusky.pond.sub.org> (Markus Armbruster's message
+ of "Thu, 03 Sep 2020 13:48:09 +0200")
+Message-ID: <87ft7ohplr.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <5F463659.8080101@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0.001
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 22:33:40
+Content-Type: text/plain
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 00:33:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -56
-X-Spam_score: -5.7
-X-Spam_bar: -----
-X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.576, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,42 +78,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 04:18:17 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 05:03:41 -0000
 
-On 26/08/2020 12.15, AlexChen wrote:
-> From: AlexChen <alex.chen@huawei.com>
-> 
-> The 'kdgb' is allocating memory in get_kdbg(), but it is not freed
-> in both fill_header() and fill_context() failed branches, fix it.
-> 
-> Signed-off-by: AlexChen <alex.chen@huawei.com>
-> ---
->  contrib/elf2dmp/main.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
-> index 9a2dbc2902..ac746e49e0 100644
-> --- a/contrib/elf2dmp/main.c
-> +++ b/contrib/elf2dmp/main.c
-> @@ -568,12 +568,12 @@ int main(int argc, char *argv[])
->      if (fill_header(&header, &ps, &vs, KdDebuggerDataBlock, kdbg,
->              KdVersionBlock, qemu_elf.state_nr)) {
->          err = 1;
-> -        goto out_pdb;
-> +        goto out_kdbg;
->      }
-> 
->      if (fill_context(kdbg, &vs, &qemu_elf)) {
->          err = 1;
-> -        goto out_pdb;
-> +        goto out_kdbg;
->      }
-> 
->      if (write_dump(&ps, &header, argv[2])) {
-> 
+Markus Armbruster <armbru@redhat.com> writes:
 
-I think this could go via qemu-trivial (now on CC:).
+> duboisj@gmail.com writes:
+>
+>> From: Josh DuBois <josh@joshdubois.com>
+>>
+>> Tracing can be enabled at the command line or via the
+>> monitor. Command-line trace options are recorded during
+>> trace_opt_parse(), but tracing is not enabled until the various
+>> front-ends later call trace_init_file(). If the user passes a trace
+>> option on the command-line, remember that and enable tracing during
+>> trace_init_file().  Otherwise, trace_init_file() should record the
+>> trace file specified by the frontend and avoid enabling traces
+>> until the user requests them via the monitor.
+>>
+>> This fixes 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 and also
+>> db25d56c014aa1a96319c663e0a60346a223b31e, by allowing the user
+>> to enable traces on the command line and also avoiding
+>> unwanted trace-<pid> files when the user has not asked for them.
+>>
+>> Fixes: 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4
+>> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+>> ---
+>>  trace/control.c | 6 +++++-
+>>  1 file changed, 5 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/trace/control.c b/trace/control.c
+>> index 6558b5c906..8f94f09444 100644
+>> --- a/trace/control.c
+>> +++ b/trace/control.c
+>> @@ -39,6 +39,7 @@ static TraceEventGroup *event_groups;
+>>  static size_t nevent_groups;
+>>  static uint32_t next_id;
+>>  static uint32_t next_vcpu_id;
+>> +static bool init_trace_on_startup;
+>>  
+>>  QemuOptsList qemu_trace_opts = {
+>>      .name = "trace",
+>> @@ -225,7 +226,9 @@ void trace_init_file(const char *file)
+>>  {
+>>  #ifdef CONFIG_TRACE_SIMPLE
+>>      st_set_trace_file(file);
+>> -    st_set_trace_file_enabled(true);
+>> +    if (init_trace_on_startup) {
+>> +        st_set_trace_file_enabled(true);
+>> +    }
+>>  #elif defined CONFIG_TRACE_LOG
+>>      /*
+>>       * If both the simple and the log backends are enabled, "--trace file"
+>> @@ -299,6 +302,7 @@ char *trace_opt_parse(const char *optarg)
+>>      }
+>>      trace_init_events(qemu_opt_get(opts, "events"));
+>>      trace_file = g_strdup(qemu_opt_get(opts, "file"));
+>> +    init_trace_on_startup = true;
+>>      qemu_opts_del(opts);
+>>  
+>>      return trace_file;
+>
+> Stops the littering for me.
+>
+> Stefan, please have a closer look.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Ping?
 
 
