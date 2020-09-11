@@ -1,77 +1,110 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGkuS-000206-PN
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 11:24:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43978)
+	id 1kGlLg-0002hB-PQ
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 11:52:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kGkuR-0001yp-8V
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 11:24:19 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41300
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kGkuO-0006Og-It
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 11:24:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599837856;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=xdg6kiQbx4t6mfdB8vw8E9TPvsPyMjvWzwqpQumToK4=;
- b=CxzBn03vqeLLMzpJ5qtmnGSEXETRd4KRqliTNF+pHzQeEiJBpAlDQOVTiwawKiNnmbxlzh
- DMHjm7YOpfdBa3vkNu/6EPb3bzmWaN27L3953jDBN7frGI8qWxToUgdxWa8Xsxec9vXpg2
- eesxpgRPY26hzwOkq77RkPNb4dNqUUU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-105-NAuC4LlXM2ehMAuaiXkDdQ-1; Fri, 11 Sep 2020 11:24:03 -0400
-X-MC-Unique: NAuC4LlXM2ehMAuaiXkDdQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DC2D4107B273;
- Fri, 11 Sep 2020 15:24:01 +0000 (UTC)
-Received: from redhat.com (ovpn-113-229.ams2.redhat.com [10.36.113.229])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D67E60C04;
- Fri, 11 Sep 2020 15:23:56 +0000 (UTC)
-Date: Fri, 11 Sep 2020 16:23:53 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Laszlo Ersek <lersek@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "McMillan, Erich" <erich.mcmillan@hp.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: PATCH: Increase System Firmware Max Size
-Message-ID: <20200911152353.GI1203593@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
- <20c5210f-8199-a9e7-9297-0bea06c4d9ae@redhat.com>
- <20200911083408.GA3310@work-vm>
- <ae2d820e-78c6-da92-2fa6-73c1a7d10333@redhat.com>
- <20200911150602.GH3310@work-vm>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kGlLf-0002di-0s; Fri, 11 Sep 2020 11:52:27 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:50207)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kGlLc-0002mQ-O4; Fri, 11 Sep 2020 11:52:26 -0400
+Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mnq0K-1krU4G0Ywc-00pPP0; Fri, 11 Sep 2020 17:52:02 +0200
+Subject: Re: [PATCH v2 1/2] util/hexdump: Convert to take a void pointer
+ argument
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Zhang Chen <chen.zhang@intel.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20200822180950.1343963-1-f4bug@amsat.org>
+ <20200822180950.1343963-2-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <13f8adc3-2ad1-41cc-803b-a8b9afd241c1@vivier.eu>
+Date: Fri, 11 Sep 2020 17:51:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200911150602.GH3310@work-vm>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200822180950.1343963-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 00:33:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:k0CBv2m4x4VxWg4vLeLOq7ocITgNU9ezsqcO2Wm7AHPHlJAjLTO
+ RtUzLrJwBwQO8sS3r23sboEII18smqZh+acd78dFdKNqN+R1MnCKPJnQtCxIlQ11jr0SVm5
+ JjqdenI8XLafRaD/2OitOV/+bw28v0o5eMX1fKU6i62A+p3gFfHRgP6aMzLHdyjRpnO8S/U
+ zmc2Szjdlj+WugHtrkUwg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:16PxyF/lV7o=:/FvPC6de3MI8jSabdOcn5d
+ yCj4gbDjPge+vWMEbnjaWOlpI8iREauykizwm9H5RFwEhsmRL0J3GPfYYUA690G7dx6qXXBuG
+ gxwY5Myf47KmJV4+NjCzNAPiirVmwBDVLEiLWPxuyrFzwCY5pbVnk+KZnBo/wKCRvdfVSp1iU
+ rPehfyHiWr6fLO7uhu5qAOCXo4WWIp4Mvq1MtIKRM7vb+7JLrG3jOJEtj5xaS61tE2Rteztn8
+ 0LIbI89i3aOthIQ9sEgA6RMrDo+LVO2f+mOOl4TqQwH+iWfLBwBy0BMpWB9EFRvzSKEEgV3qV
+ UKbjBqQZmit19l1jFVBGOafGX18YnvEZst1ApETZNr7tcq5djUBkI/5YgsfSYf6khClfwokkO
+ FcUw7d2Y3BCRWMx/6HZ6X9WYr1kg8+l5ZqhIzGEBCSIUb2ReFYJvnqHsd/5G1qVMgpJkCQOIm
+ NSJzMTT6OtrnIkZkW0tpzrHdFkkaqoFT9qiTsRCbuiA5Y+vgE5qDVK9cYAE+RXxwq66W5kWdE
+ NixjXuUhgi/4WdVpyvbIgQgSuKUnK85r+wKs/O8RoVzu7chrQgUl/k49a1jf8jC1Kj+r2YYqJ
+ 0rRt2GLNlsmcc26KN8GIN122vz4xX4IQMGiuQ7KGWkQAV+fxJUZBz/MSllkpal//O5VE6Ah10
+ uZYRUhn8o+4xCtRmtwDYGjyN+XiMr9nZhWB8giIkCtMUTzZpqIcw0djjMeOqmIKAfuS1cJtiX
+ HI2kJioWPdB02R5GbJZet03bycRLFLnhjpGu8o58HBcbxg81QKhRa7OUa67xPnccFpAvx5s1r
+ fxfiDMOOaDXGxnjVx6pKzQCSAnC1ktM2MLGoNZsvT83rBjDYbmIS0wuJq8WiERlSEe9cpCS
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 11:52:21
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.469,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,81 +117,169 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 15:24:19 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 15:52:27 -0000
 
-On Fri, Sep 11, 2020 at 04:06:02PM +0100, Dr. David Alan Gilbert wrote:
-> * Laszlo Ersek (lersek@redhat.com) wrote:
-> > On 09/11/20 10:34, Dr. David Alan Gilbert wrote:
-
-> > > it doesn't have any pretty graphics
-> > > or snazzy stuff,
-> > 
-> > Which is arguably completely superfluous on every possible platform one
-> > can imagine. On the other hand, if you want a real serial port on
-> > workstation class hardware, you may have to order a separate part (if
-> > you are lucky and you *can* order one). Serial-over-LAN is a complete
-> > non-replacement.
-> > 
-> > The reason (should I say: excuse) for the firmware to exist is to (a)
-> > boot operating systems, (b) abstract away some ugly platform-specific
-> > hardware for OS runtime (by providing ACPI and SMBIOS descriptions, and
-> > a *small* set of runtime services). We can maybe add (c) "root of trust".
-> > 
-> > In practice, physical firmware is becoming the hw vendor's OS before
-> > (and under) your OS, one you cannot replace, and one whose updates can
-> > brick your hardware. Permitting the same feature creep on virtual
-> > platforms is wrong.
+Le 22/08/2020 à 20:09, Philippe Mathieu-Daudé a écrit :
+> Most uses of qemu_hexdump() do not take an array of char
+> as input, forcing use of cast. Since we can use this
+> helper to dump any kind of buffer, use a pointer to void
+> argument instead.
 > 
-> On the firmware you develop that choice is fine; but there's no reason
-> to force that restriction onto others.
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> Since v1:
+> - renamed argument 'bufptr' (Peter Maydell)
+> ---
+>  include/qemu-common.h    |  3 ++-
+>  hw/dma/xlnx_dpdma.c      |  2 +-
+>  hw/net/fsl_etsec/etsec.c |  2 +-
+>  hw/sd/sd.c               |  2 +-
+>  hw/usb/redirect.c        |  2 +-
+>  net/colo-compare.c       | 12 ++++++------
+>  net/net.c                |  2 +-
+>  util/hexdump.c           |  4 +++-
+>  8 files changed, 16 insertions(+), 13 deletions(-)
 > 
-> > > or have to survive configuring lots of hardware; also
-> > > I'm aware of other companies who are looking at putting big blobs
-> > > of stuff in firmware for open uses;
-> > 
-> > Key term being "open uses". Let us see them.
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index bb9496bd80f..6834883822f 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -138,7 +138,8 @@ int os_parse_cmd_args(int index, const char *optarg);
+>   * Hexdump a buffer to a file. An optional string prefix is added to every line
+>   */
+>  
+> -void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
+> +void qemu_hexdump(const void *bufptr, FILE *fp,
+> +                  const char *prefix, size_t size);
+>  
+>  /*
+>   * helper to parse debug environment variables
+> diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+> index b40c897de2c..d75a8069426 100644
+> --- a/hw/dma/xlnx_dpdma.c
+> +++ b/hw/dma/xlnx_dpdma.c
+> @@ -388,7 +388,7 @@ static void xlnx_dpdma_dump_descriptor(DPDMADescriptor *desc)
+>  {
+>      if (DEBUG_DPDMA) {
+>          qemu_log("DUMP DESCRIPTOR:\n");
+> -        qemu_hexdump((char *)desc, stdout, "", sizeof(DPDMADescriptor));
+> +        qemu_hexdump(desc, stdout, "", sizeof(DPDMADescriptor));
+>      }
+>  }
+>  
+> diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+> index 7035cf4eb97..c817a28decd 100644
+> --- a/hw/net/fsl_etsec/etsec.c
+> +++ b/hw/net/fsl_etsec/etsec.c
+> @@ -357,7 +357,7 @@ static ssize_t etsec_receive(NetClientState *nc,
+>  
+>  #if defined(HEX_DUMP)
+>      fprintf(stderr, "%s receive size:%zd\n", nc->name, size);
+> -    qemu_hexdump((void *)buf, stderr, "", size);
+> +    qemu_hexdump(buf, stderr, "", size);
+>  #endif
+>      /* Flush is unnecessary as are already in receiving path */
+>      etsec->need_flush = false;
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index fad9cf1ee7a..190e4cf1232 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -1781,7 +1781,7 @@ send_response:
+>      }
+>  
+>  #ifdef DEBUG_SD
+> -    qemu_hexdump((const char *)response, stderr, "Response", rsplen);
+> +    qemu_hexdump(response, stderr, "Response", rsplen);
+>  #endif
+>  
+>      return rsplen;
+> diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+> index 417a60a2e68..09edb0d81c0 100644
+> --- a/hw/usb/redirect.c
+> +++ b/hw/usb/redirect.c
+> @@ -240,7 +240,7 @@ static void usbredir_log_data(USBRedirDevice *dev, const char *desc,
+>      if (dev->debug < usbredirparser_debug_data) {
+>          return;
+>      }
+> -    qemu_hexdump((char *)data, stderr, desc, len);
+> +    qemu_hexdump(data, stderr, desc, len);
+>  }
+>  
+>  /*
+> diff --git a/net/colo-compare.c b/net/colo-compare.c
+> index 2c20de1537d..550272b3baa 100644
+> --- a/net/colo-compare.c
+> +++ b/net/colo-compare.c
+> @@ -494,9 +494,9 @@ sec:
+>          g_queue_push_head(&conn->secondary_list, spkt);
+>  
+>          if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
+> -            qemu_hexdump((char *)ppkt->data, stderr,
+> +            qemu_hexdump(ppkt->data, stderr,
+>                          "colo-compare ppkt", ppkt->size);
+> -            qemu_hexdump((char *)spkt->data, stderr,
+> +            qemu_hexdump(spkt->data, stderr,
+>                          "colo-compare spkt", spkt->size);
+>          }
+>  
+> @@ -535,9 +535,9 @@ static int colo_packet_compare_udp(Packet *spkt, Packet *ppkt)
+>          trace_colo_compare_udp_miscompare("primary pkt size", ppkt->size);
+>          trace_colo_compare_udp_miscompare("Secondary pkt size", spkt->size);
+>          if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
+> -            qemu_hexdump((char *)ppkt->data, stderr, "colo-compare pri pkt",
+> +            qemu_hexdump(ppkt->data, stderr, "colo-compare pri pkt",
+>                           ppkt->size);
+> -            qemu_hexdump((char *)spkt->data, stderr, "colo-compare sec pkt",
+> +            qemu_hexdump(spkt->data, stderr, "colo-compare sec pkt",
+>                           spkt->size);
+>          }
+>          return -1;
+> @@ -578,9 +578,9 @@ static int colo_packet_compare_icmp(Packet *spkt, Packet *ppkt)
+>          trace_colo_compare_icmp_miscompare("Secondary pkt size",
+>                                             spkt->size);
+>          if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
+> -            qemu_hexdump((char *)ppkt->data, stderr, "colo-compare pri pkt",
+> +            qemu_hexdump(ppkt->data, stderr, "colo-compare pri pkt",
+>                           ppkt->size);
+> -            qemu_hexdump((char *)spkt->data, stderr, "colo-compare sec pkt",
+> +            qemu_hexdump(spkt->data, stderr, "colo-compare sec pkt",
+>                           spkt->size);
+>          }
+>          return -1;
+> diff --git a/net/net.c b/net/net.c
+> index bbaedb3c7a6..f3e5d533fd7 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -636,7 +636,7 @@ static ssize_t qemu_send_packet_async_with_flags(NetClientState *sender,
+>  
+>  #ifdef DEBUG_NET
+>      printf("qemu_send_packet_async:\n");
+> -    qemu_hexdump((const char *)buf, stdout, "net", size);
+> +    qemu_hexdump(buf, stdout, "net", size);
+>  #endif
+>  
+>      if (sender->link_down || !sender->peer) {
+> diff --git a/util/hexdump.c b/util/hexdump.c
+> index f879ff0ad6b..053f05d4160 100644
+> --- a/util/hexdump.c
+> +++ b/util/hexdump.c
+> @@ -16,8 +16,10 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu-common.h"
+>  
+> -void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size)
+> +void qemu_hexdump(const void *bufptr, FILE *fp,
+> +                  const char *prefix, size_t size)
+>  {
+> +    const char *buf = bufptr;
+>      unsigned int b, len, i, c;
+>  
+>      for (b = 0; b < size; b += 16) {
 > 
-> Well yes, I think we know who we're speaking about here and we're
-> working on it.
 
-I don't think we need to dictate that firmware used with QEMU has to be
-open source.
+Applied to my trivial-patches branch.
 
-If someone wants to use a closed source firmware that is fine. They simply
-can't expect us to help debug problems in QEMU when using the closed source
-firmware, without first demonstrating it with an open source firmware we can
-see.
-
-> > > so I don't see a problem with
-> > > changing this limit from the QEMU side of things.
-> > 
-> > I do. Software and data always expand to consume all available space,
-> > and it's going to cause a conflict between UEFI features and platform
-> > MMIO sooner or later. Then I'll get the privilege of shuffling around
-> > the crap in OVMF (all of which is "indispensable" or course).
-> > 
-> > If we ever go down this route, it needs to benefit open source directly
-> > and significantly.
-> 
-> Being able to use QEMU to let vendors debug their platform firmware is a
-> perfectly reasonable use of QEMU; maybe not of your OVMF build - we
-> need to keep the restrictions on the two separate.
-
-Agreed, I can understand the motivation to not want to change the QEMU
-defaults, but I don't see why we should have this as a hard coded
-limit that is not runtime configurable.
-
-IOW, why can't we keep our current default and provide a machine type
-property "firmware_max_size" which users can opt-in to setting if
-their particular firmware exceeds normal defaults. That won't impact
-us for migration compat in any way, and lets users have flexibility t
-do what they want.
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Thanks,
+Laurent
 
 
