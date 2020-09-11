@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGoo2-00031m-Rf
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44918)
+	id 1kGoo3-00034O-Nn
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGoo1-0002wn-8Y; Fri, 11 Sep 2020 15:33:57 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:43811)
+ id 1kGoo1-0002ym-Rg; Fri, 11 Sep 2020 15:33:57 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:60437)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonz-0000qB-40; Fri, 11 Sep 2020 15:33:56 -0400
+ id 1kGonx-0000pl-F7; Fri, 11 Sep 2020 15:33:57 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N3omW-1kh2ty0cU4-00zjhC; Fri, 11 Sep 2020 21:33:50 +0200
+ id 1N94FT-1kcuQm0rXb-0164xR; Fri, 11 Sep 2020 21:33:47 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 14/18] target/i386/kvm: Rename host_tsx_blacklisted() as
- host_tsx_broken()
-Date: Fri, 11 Sep 2020 21:33:26 +0200
-Message-Id: <20200911193330.1148942-15-laurent@vivier.eu>
+ Jon Doron <arilou@gmail.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Subject: [PULL 12/18] hw: hyperv: vmbus: Fix 32bit compilation
+Date: Fri, 11 Sep 2020 21:33:24 +0200
+Message-Id: <20200911193330.1148942-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ByzX+nKrU9Pn4umFephF1QbtRl8A/12WTAEMwwAf2fcVuf8nmQy
- DmLcO6ggFMt+YE36skQSW1hF9QBFEYmX57411DBFQFrUVCDpCCDREKpzbpfjAuMf7/M/Mks
- 4HTyAYYDRQxNzlC3kXdQUSL89vLB9BZIa9VuKfU/Br3c+nG2utj5ritqL6G6UDOBBn4Y6+j
- 0wS6QAcjOZQFwv3jnsO7w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:secB9ygbXB4=:wb8DnbEG1Acrhl06BddOd7
- Fy/EqviGqcXbgjR6wZ7UT99ODYUwIjNm1YXHfJ9Ez85rf0AI7zlGDXx9edjhEiccrT07BVaT+
- W5+YbEBeFByN7b0iBHe6dfVnLltEHRpiP3VMGbI1JUl7efWMJ38HZExNQ0s23Tcf/lDj87Rd/
- F2DZoo/kNVrLKf+CnnDXUof3wnZiIOkQMDAz4ZFASy9Y73GpWwBtycvs8ygzkVFEP6HJePnSW
- iZ2KNiZyM79PYETAmKAogy5Uwg106shzQpfUVSndASVuRCWCdgOXkftBJRPfBPhle2kjvJutR
- cR/n1lGLidQcMI8FVcXspxWtokUr5U1uoFGDeSM2mBa37leHJfpphGzb8M91/Kr5+mK+msG9Y
- lYELfwMb1EM+3kqn77mEbvE3iniTlbT7jBicxPzMO30p0Cvk2Kro0wlaszdhxqO14PYf202Ab
- Ozeaz+7zqrgchQA6L64dv63HqIqVU34jLVZZPKWloD6fSZv6y8VLn6HXgB3k7VFRI8mmnFjya
- AsMnWxTZVaMweVU05yDrIKlIWetH/JUQ+2//51QwlyNCKaaJchiIT/kgCzN0P6AGcm/mXvEvB
- W00fkq7KKZV1PbTOJVsUPHlW2xEOm8xp5K70g9XL+rHyx2cIOlf95XIzqSjn4iSAOEyIfn7z9
- TNt2KyhdHvFDFJYM1zkventj2+0dCE1XQ+2xvm1aMmiFoDemMvGskrnm66HCsko5pJCCSi3aa
- MZtiz7owggrHCbeh3Eizjvn5tW5RVw0x3jAJTzYktDekvYGgrWIWsEs7xYaf1t4JfDqiP87L1
- SBocenNMPVi+FzHxv3Qdx2pPrFXM282rA/y6wU0gxzDR3fg0rnTd14gsU0SShMxhai9GhGl
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:K4gAqu5gqDOiQPAt7j4PednT7s9z+df7zh63luO3srHDbESqqmT
+ L+y+/SRIztKLnUXqISo/RraJQtbT5tflDaY8iECxMMThzbZjApz2N4MviXBpT6+8LQXi8qr
+ +N2/XFRJjwSUGmGusH03HMwGa4Id5GmcyRXEYEGnWJfMqqMtySWVQknAnZKzEYK58XUjC5w
+ yZzNh1ZtQkVu4KY3P1euQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uM8ICdled2c=:Hmcc8M85HnqHFY9KCqnI6g
+ 2NzWChgIn3HsxHpKenpsY3xeohG/MCDgH3Jv/PX0ru10hLoZgzCKeTmqN5Slphj1P47T6Z57/
+ HOKV/78J6xq76EXQcvXWUw4AMvFmAWgJ7MjjqsGL3d8KRt2kiqHJL2hrhfVPWyHIlxT4B5N0z
+ r//cPCITfvg8PL9NzvSpvIxVbn0rH4Bi9kkdYAbTV2DNznX3RlMNtEkee+r8kgSmX4KYaovRo
+ Al9qHs2mCD5nzFI+zAUGjkYJx5wTOSItA1/8fDjDilK0TYWqZr5ihRbpSIEjSLiBPXPc8dhtl
+ o9VPg25mK0htLfUXCTde77TScwdcFkpezkBBlPKpJbM5wo5Fd6eCF35wDauXJ3s+IrwSdBlyy
+ YBudl6Aifuv/GsyzNK0t5e1X9iS0zYa5IswaIf/M8wzZz4Eg3WEPt0rrTRvysjeKCucv2suie
+ xqaYESAgdzhNdalqlJ+emSD7MIj3BqbE7nT6FTf+iXzTvZELmvkAIBjtMUz0YwRSQTa9f61+V
+ bbr7dlFZYYNS4U4B0ZPJZBkN/icFWIzxikKnU0pDprf1slQ9xB/5/7NuMxKEDJf1+68KVEzP+
+ ebobamn/ZhmeEG+uNOViXFLQUViSmp+w0bR1dMN3yUP/RoFSUQ0wjWnWFJWNpyENm6RLspuRJ
+ m52To9fFbuso9JHfEFwStUtJIVh2OGyOh1vohET1lsKkFDSZqPwSdJw0WUw3ijuTRfq7+0Q6W
+ y0hNahPRkBLJObgsuR8mv5mfX0+sF/ue8hxg632CS+AOaMzEwi6Z+zNjj2yMmfq9cB/zYrb4Z
+ Y7q57PnUrj60L5V5YRoP5zq85AtjmZmDAIzz1lZ2FBgI+vj6M/touSuEN5K27WSHsDc55Rg
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:39
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -66,44 +65,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:57 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:58 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Jon Doron <arilou@gmail.com>
 
-In order to use inclusive terminology, rename host_tsx_blacklisted()
-as host_tsx_broken().
+Fix 32-bit build error for vmbus:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20200910070131.435543-7-philmd@redhat.com>
+  hw/hyperv/vmbus.c: In function ‘gpadl_iter_io’:
+  hw/hyperv/vmbus.c:383:13: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
+  383 |         p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) | off_in_page);
+      |             ^
+  cc1: all warnings being treated as errors
+
+Fixes: 0d71f7082d7 ("vmbus: vmbus implementation")
+Signed-off-by: Jon Doron <arilou@gmail.com>
+Tested-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Reviewed-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Message-Id: <20200715084326.678715-3-arilou@gmail.com>
+[lv: updated with commit description from <20200906050113.2783642-1-richard.henderson@linaro.org>]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/i386/kvm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/hyperv/vmbus.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 205b68bc0ce8..3d640a8decf6 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
-     return features;
- }
- 
--static bool host_tsx_blacklisted(void)
-+static bool host_tsx_broken(void)
- {
-     int family, model, stepping;\
-     char vendor[CPUID_VENDOR_SZ + 1];
-@@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
-     } else if (function == 6 && reg == R_EAX) {
-         ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
-     } else if (function == 7 && index == 0 && reg == R_EBX) {
--        if (host_tsx_blacklisted()) {
-+        if (host_tsx_broken()) {
-             ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
+diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
+index 75af6b83dde7..6ef895bc352b 100644
+--- a/hw/hyperv/vmbus.c
++++ b/hw/hyperv/vmbus.c
+@@ -380,7 +380,8 @@ static ssize_t gpadl_iter_io(GpadlIter *iter, void *buf, uint32_t len)
+             }
          }
-     } else if (function == 7 && index == 0 && reg == R_EDX) {
+ 
+-        p = (void *)(((uintptr_t)iter->map & TARGET_PAGE_MASK) | off_in_page);
++        p = (void *)(uintptr_t)(((uintptr_t)iter->map & TARGET_PAGE_MASK) |
++                off_in_page);
+         if (iter->dir == DMA_DIRECTION_FROM_DEVICE) {
+             memcpy(p, buf, cplen);
+         } else {
 -- 
 2.26.2
 
