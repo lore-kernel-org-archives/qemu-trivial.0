@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGoo1-0002wr-8W
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44870)
+	id 1kGoo2-00031m-Rf
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonz-0002rF-71; Fri, 11 Sep 2020 15:33:55 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:37531)
+ id 1kGoo1-0002wn-8Y; Fri, 11 Sep 2020 15:33:57 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:43811)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonx-0000pt-Fv; Fri, 11 Sep 2020 15:33:54 -0400
+ id 1kGonz-0000qB-40; Fri, 11 Sep 2020 15:33:56 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MlbPO-1kyAJM1Ox0-00ikm8; Fri, 11 Sep 2020 21:33:46 +0200
+ id 1N3omW-1kh2ty0cU4-00zjhC; Fri, 11 Sep 2020 21:33:50 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 11/18] kconfig: fix comment referring to old Makefiles
-Date: Fri, 11 Sep 2020 21:33:23 +0200
-Message-Id: <20200911193330.1148942-12-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 14/18] target/i386/kvm: Rename host_tsx_blacklisted() as
+ host_tsx_broken()
+Date: Fri, 11 Sep 2020 21:33:26 +0200
+Message-Id: <20200911193330.1148942-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JbJE6hEwoNqmKtwsTiUeACjKP1Ty9bABu8wpcMB39zJV4Adg3Zl
- R61wQJXshlbM+sFknRYk2vENeeISaH2LWRgiqFpLxLJHyBQJcGZ0B5e6figS8bv6XGbnQ90
- 04dHuzj/dv1JxIs99Dn+E2nUc5MnMvbi5dBz2+qTFZi7aaK787Vv7Sr5GOkQqenXLu5m4jz
- C2jvGwUaK9cigc5Gx0alg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:x3n0pGJDLXE=:/fJJsH/gGymy+uK8sdmUsY
- YMpZ79v9YnR0kWkcBu2z7lxAulZfR5N3sgLTR6tRbT5X8G8caWLJdFlUbwbBl1rborGqywzV/
- HTBNWEAO/r3apyhM2QRiBcFFMFDt8eTIyM7NeROrAe5gIcQgzkeAl+dWwiFFGl0loml2BlGwD
- 7U1qQAEydUwHUGNN0Aa6kikNFf2D1DNicdXFjmDux73f8rdp34KbrCFaYQHGI+IiSdrpDroXg
- jBBlDZtEgEw4wOjoI6H8erd7ON03Zlp7ydX8tjNNXrZJ3g06m73rnUsGtg0QYFViYRa2SAm43
- I+In2SOt1FVFaEdMDyOyCkg/P7a7ywzwDcll60GuVpB2C8gQD81b8S0B5N9KFIm4zQ24eyisy
- zXo/FJ0TvDRRZ6WkaTL1IMnKNAjnpBf+AU4i7wJlROYHZSRJ7j7qDjvrhMp4EGSy72FKoKRiU
- ZbOM57YnOrPFS5u/8Q+VZOe+THSdMlPp5ZhL1E2EjcVS/3D0RfN3nfks3FPSBWDRCBmcSvK9S
- yJ2eVK/FfrDapObuaeSb3GpTllRUOMde3Fxtbxvh8gr24w1xnoU3PkZ/CQ60rGzkYnr1Gqydo
- swkePXB98/+tqxtAHhcGOLR1e4FZjw8+g9tRL++lrr38cBykEB98doIkFQY9CFMpbvoLARnEd
- LuvrHmBbPHDO92W8QCW99nyVCu9P643cuKU9NGR1MxmXBK1ndN9ZOoDqHLSGfaFC7Ne7JC/pj
- Wbm1NZA+zSImOVPGqarygZxuHyLC/rfaExUkK41W3dSCZ7hyjALqVLM2mcX8yi3yCIftqBTHd
- zs8QHIIOT6KU4I21w5I2Havluoueh1IcPYjJ0G4cS8+/OKTAh21mT96TVPWW1TQpbzKn9Rn
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ByzX+nKrU9Pn4umFephF1QbtRl8A/12WTAEMwwAf2fcVuf8nmQy
+ DmLcO6ggFMt+YE36skQSW1hF9QBFEYmX57411DBFQFrUVCDpCCDREKpzbpfjAuMf7/M/Mks
+ 4HTyAYYDRQxNzlC3kXdQUSL89vLB9BZIa9VuKfU/Br3c+nG2utj5ritqL6G6UDOBBn4Y6+j
+ 0wS6QAcjOZQFwv3jnsO7w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:secB9ygbXB4=:wb8DnbEG1Acrhl06BddOd7
+ Fy/EqviGqcXbgjR6wZ7UT99ODYUwIjNm1YXHfJ9Ez85rf0AI7zlGDXx9edjhEiccrT07BVaT+
+ W5+YbEBeFByN7b0iBHe6dfVnLltEHRpiP3VMGbI1JUl7efWMJ38HZExNQ0s23Tcf/lDj87Rd/
+ F2DZoo/kNVrLKf+CnnDXUof3wnZiIOkQMDAz4ZFASy9Y73GpWwBtycvs8ygzkVFEP6HJePnSW
+ iZ2KNiZyM79PYETAmKAogy5Uwg106shzQpfUVSndASVuRCWCdgOXkftBJRPfBPhle2kjvJutR
+ cR/n1lGLidQcMI8FVcXspxWtokUr5U1uoFGDeSM2mBa37leHJfpphGzb8M91/Kr5+mK+msG9Y
+ lYELfwMb1EM+3kqn77mEbvE3iniTlbT7jBicxPzMO30p0Cvk2Kro0wlaszdhxqO14PYf202Ab
+ Ozeaz+7zqrgchQA6L64dv63HqIqVU34jLVZZPKWloD6fSZv6y8VLn6HXgB3k7VFRI8mmnFjya
+ AsMnWxTZVaMweVU05yDrIKlIWetH/JUQ+2//51QwlyNCKaaJchiIT/kgCzN0P6AGcm/mXvEvB
+ W00fkq7KKZV1PbTOJVsUPHlW2xEOm8xp5K70g9XL+rHyx2cIOlf95XIzqSjn4iSAOEyIfn7z9
+ TNt2KyhdHvFDFJYM1zkventj2+0dCE1XQ+2xvm1aMmiFoDemMvGskrnm66HCsko5pJCCSi3aa
+ MZtiz7owggrHCbeh3Eizjvn5tW5RVw0x3jAJTzYktDekvYGgrWIWsEs7xYaf1t4JfDqiP87L1
+ SBocenNMPVi+FzHxv3Qdx2pPrFXM282rA/y6wU0gxzDR3fg0rnTd14gsU0SShMxhai9GhGl
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:45
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:39
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -65,31 +66,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:55 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:57 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200908094244.26327-1-pbonzini@redhat.com>
+In order to use inclusive terminology, rename host_tsx_blacklisted()
+as host_tsx_broken().
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20200910070131.435543-7-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Kconfig.host | 4 ++--
+ target/i386/kvm.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Kconfig.host b/Kconfig.host
-index a6d871c399d0..4af19bf70ef9 100644
---- a/Kconfig.host
-+++ b/Kconfig.host
-@@ -1,6 +1,6 @@
- # These are "proxy" symbols used to pass config-host.mak values
--# down to Kconfig.  See also MINIKCONF_ARGS in the Makefile:
--# these two need to be kept in sync.
-+# down to Kconfig.  See also kconfig_external_symbols in
-+# meson.build: these two need to be kept in sync.
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 205b68bc0ce8..3d640a8decf6 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
+     return features;
+ }
  
- config LINUX
-     bool
+-static bool host_tsx_blacklisted(void)
++static bool host_tsx_broken(void)
+ {
+     int family, model, stepping;\
+     char vendor[CPUID_VENDOR_SZ + 1];
+@@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
+     } else if (function == 6 && reg == R_EAX) {
+         ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
+     } else if (function == 7 && index == 0 && reg == R_EBX) {
+-        if (host_tsx_blacklisted()) {
++        if (host_tsx_broken()) {
+             ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
+         }
+     } else if (function == 7 && index == 0 && reg == R_EDX) {
 -- 
 2.26.2
 
