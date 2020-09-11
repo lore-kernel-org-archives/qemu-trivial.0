@@ -1,73 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGeVk-00023U-FZ
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 04:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60968)
+	id 1kGfyX-0002TV-RU
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 06:08:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kGeVi-00023I-Mh
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 04:34:22 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41680
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kGeVg-0001S5-SR
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 04:34:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599813259;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=I4H9O8FeQ22hLqTb6o6t6FP/Z++k4JXXfQAP73NJZoI=;
- b=e7SxmXcyy0/RMGipI7DTdD8RoaNre8WsKWRrkaptVgvkXDOPwqkMqaNmomtWdTGb3lBOTw
- lvcqTuA17RE+P62xN2tkRJBpp/M93m1AB0cZEW1mkG66ya+V/1ItQG0BrPwWBoAZFHDKJr
- V6tC9cU9/6hUtPMhxvBRE4hoiYqt6Zo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-481-lYwBtNtzOyKaz28imnsAWQ-1; Fri, 11 Sep 2020 04:34:18 -0400
-X-MC-Unique: lYwBtNtzOyKaz28imnsAWQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C586C1005E60;
- Fri, 11 Sep 2020 08:34:16 +0000 (UTC)
-Received: from work-vm (ovpn-113-52.ams2.redhat.com [10.36.113.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 562F27E8F4;
- Fri, 11 Sep 2020 08:34:11 +0000 (UTC)
-Date: Fri, 11 Sep 2020 09:34:08 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: "McMillan, Erich" <erich.mcmillan@hp.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: PATCH: Increase System Firmware Max Size
-Message-ID: <20200911083408.GA3310@work-vm>
-References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
- <20c5210f-8199-a9e7-9297-0bea06c4d9ae@redhat.com>
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1kGfyW-0002S5-OJ; Fri, 11 Sep 2020 06:08:12 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:33066)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1kGfyU-0005Yc-UW; Fri, 11 Sep 2020 06:08:12 -0400
+Received: by mail-wm1-x342.google.com with SMTP id e11so3751113wme.0;
+ Fri, 11 Sep 2020 03:08:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=QwXnKMZ6OYLtmDATXHlNcuEnLPm9sjav2g8IQnmUExw=;
+ b=ZakIuf6SfKCR9cR/0UxwkLvKstwuZ/pJyJHeWeXVIB9Mvt2PidkIS0taUAUgHoWLOa
+ kCfhKlqwkIXHM55tFaglW10PYSJs1m1KIYV7lGB6Qo86Cag7rLxAEhMP1djS93SqYHOl
+ wou9+Q+pkrGPVrYqbhbXDh6CB0Vd+8Cl7vMGUQgZqVhx/HbiX5pzB28xRogCfRaXdXP3
+ RV7/I1PmQvZkzDiFNRM5T5STuwj/V2V/iK2IszgtILFTzF5LUd8RQfTm6zl3msw2wqUo
+ nn0P4MPGbhlJvICTmOwUM0fjJwt1vy/Rt3McMpxeIxolwBvuR62GNgVerGuPmFoHoDSu
+ 0mHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=QwXnKMZ6OYLtmDATXHlNcuEnLPm9sjav2g8IQnmUExw=;
+ b=IxKWq5qdCpyQy9oPWKbpGjLhr4W+PjId01qao8df1a0bdtBjI0txdKzc0ndK9qJEL4
+ owM10Cb3pAKkTyhSQ5W6rqoxlNCzrCDS9KuecPa30lKhoFo7wsvPDJxMP3TGEhC/6gVI
+ kf299S0FOjP6JNI1LVHTa6fWrGhxfaLCjxQwHBZtzksdPdPK7h9wY8zgqN1f/LoI/+Qr
+ rskaMTXeXmK+MfXnGFdSsjvxswa0U+H6naHL9/zhcWu4bauk0OUpqWLpOEflM3oePhOQ
+ q3yHu5tPlwWCvXPerjAUdS5NRJK85Zd27OBtHeh7vujfG4NfPTnOwUiSN15toun5EfV2
+ ITbw==
+X-Gm-Message-State: AOAM531NqM8wkKL2sUBC4tzO50MN8DPaRHOvnXqMUDJgjiaP4j1/eucJ
+ QQsEc5FztOqHhN/wDEn6V+0=
+X-Google-Smtp-Source: ABdhPJw0uvaKMhtTFWp9MkneHOviF8mNAaocxQa7yFA/Vs+Z/jjIvWjlkVs2bAZ+zpXC9NYKbzgqOA==
+X-Received: by 2002:a7b:c182:: with SMTP id y2mr1503013wmi.21.1599818888552;
+ Fri, 11 Sep 2020 03:08:08 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id q12sm3438623wrs.48.2020.09.11.03.08.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Sep 2020 03:08:07 -0700 (PDT)
+Date: Fri, 11 Sep 2020 11:08:05 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: duboisj@gmail.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, armbru@redhat.com,
+ Josh DuBois <josh@joshdubois.com>
+Subject: Re: [PATCH] trace/simple: Enable tracing on startup only if the user
+ specifies a trace option
+Message-ID: <20200911100805.GB81586@stefanha-x1.localdomain>
+References: <20200816174610.20253-1-josh@joshdubois.com>
 MIME-Version: 1.0
-In-Reply-To: <20c5210f-8199-a9e7-9297-0bea06c4d9ae@redhat.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0.004
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="aVD9QWMuhilNxW9f"
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 00:33:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+In-Reply-To: <20200816174610.20253-1-josh@joshdubois.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=stefanha@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,100 +78,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 08:34:22 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 10:08:13 -0000
 
-* Laszlo Ersek (lersek@redhat.com) wrote:
-> +Markus, Dave, Phil
-> 
-> On 09/11/20 03:45, McMillan, Erich wrote:
-> > Hi all,
-> > 
-> > (this is my first Qemu patch submission, please let me know if my formatting/content needs to be fixed).
-> > We have a need for increased firmware size, currently we are building Qemu with the following change to test our Uefi Firmware and it works well for us. Hope that this change can be made to open source. Thank you.
-> > -------
-> > Increase allowed system firmware size to 16M per comment suggesting up to 18M is permissible.
-> > 
-> >  Signed-off-by: Erich McMillan <erich.mcmillan@hp.com>
-> > 
-> > diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-> > index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..f6f7cd744d0690cee0355fbd19ffdcdb71ea75ca 100644
-> > --- a/hw/i386/pc_sysfw.c
-> > +++ b/hw/i386/pc_sysfw.c
-> > @@ -46,7 +46,7 @@
-> >   * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB in
-> >   * size.
-> >   */
-> > -#define FLASH_SIZE_LIMIT (8 * MiB)
-> > +#define FLASH_SIZE_LIMIT (16 * MiB)
-> > 
-> >  #define FLASH_SECTOR_SIZE 4096
-> > -------
-> > 
-> > 
-> 
-> (1) This is not a trivial change, so qemu-trivial: please ignore.
-> 
-> (2) The comment has not been updated.
-> 
-> (3) I'm almost certain that *if* we want to change this, it needs to be
-> turned into a machine type (or some device model) property, for
-> migration compatibility.
 
-I'm missing what this constant exists for - why is the
-check there at all  Is there something else that lives below this
-address that we have to protect?
-My reading of the code is that increasing that constant doesn't change
-the guests view at all, as long as the guest was given the same flash
-files - so if the guests view doesn't change, then why would we tie
-it to the machine type?
+--aVD9QWMuhilNxW9f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> (4) I feel we need much more justification for this change than just
-> "our firmware is larger than upstream OVMF".
-> 
-> In the upstream 4MB unified OVMF build, there's *plenty* of free room.
-> Of course that's not to say that we're willing to *squander* that space
-> -- whenever we include anything new in the upstream OVMF platform(s),
-> there must be a very good reason for it --, just that, given the
-> upstream OVMF status, the proposed pflash increase in QEMU is staggering.
-> 
-> Considering upstream OVMF and QEMU, it should take *years* to even get
-> close to filling the 4MB unified flash image of OVMF (hint: link-time
-> optimization, LZMA compression), let alone to exhaust the twice as large
-> (8MB) QEMU allowance.
-> 
-> Unless you are committed to open source your guest firmware too (maybe
-> as part of upstream edk2, maybe elsewhere), I seriously doubt we should
-> accommodate this use case in *upstream* QEMU. It complicates things
-> (minimally with regard to migration), and currently I don't see the
-> benefit to the upstream community.
-> 
-> Clearly, for building your firmware image, you must have minimally
-> modified the DSC and FDF files in OVMF too, or created an entirely
-> separate firmware platform -- DSC and FDF both.
-> 
-> If you are using your downstream OVMF build as a testbed for your
-> proprietary physical platform firmware, that's generally a use case that
-> we're mildly interested in not breaking in upstream OvmfPkg. But in
-> order to make me care for real (as an OvmfPkg co-maintainer), you'd need
-> to upstream your OVMF platform to edk2 (we already have Xen and --
-> recently added -- bhyve firmware platforms under OvmfPkg, not just
-> QEMU). You'd also have to offer long-term reviewership and testing for
-> that platform in edk2 (like the Xen and bhyve stake-holders do). Then we
-> could consider additional complexity in QEMU for booting that firmware
-> platform.
+On Sun, Aug 16, 2020 at 12:46:10PM -0500, duboisj@gmail.com wrote:
+> From: Josh DuBois <josh@joshdubois.com>
+>=20
+> Tracing can be enabled at the command line or via the
+> monitor. Command-line trace options are recorded during
+> trace_opt_parse(), but tracing is not enabled until the various
+> front-ends later call trace_init_file(). If the user passes a trace
+> option on the command-line, remember that and enable tracing during
+> trace_init_file().  Otherwise, trace_init_file() should record the
+> trace file specified by the frontend and avoid enabling traces
+> until the user requests them via the monitor.
+>=20
+> This fixes 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 and also
+> db25d56c014aa1a96319c663e0a60346a223b31e, by allowing the user
+> to enable traces on the command line and also avoiding
+> unwanted trace-<pid> files when the user has not asked for them.
+>=20
+> Fixes: 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4
+> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+> ---
+>  trace/control.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 
-Our UEFI firmware is pretty sparse; it doesn't have any pretty graphics
-or snazzy stuff, or have to survive configuring lots of hardware; also
-I'm aware of other companies who are looking at putting big blobs
-of stuff in firmware for open uses;  so I don't see a problem with
-changing this limit from the QEMU side of things.
+Thanks, applied to my tracing-next tree:
+https://github.com/stefanha/qemu/commits/tracing-next
 
-Dave
+Stefan
 
-> 
-> Thanks,
-> Laszlo
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+--aVD9QWMuhilNxW9f
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9bTIUACgkQnKSrs4Gr
+c8hzBQf8D8XdsiArhw6Lnezf3Y5UQDheBWptZHGf6Swa6qLHjvD47gfllVNuFQgV
+ldlJsv4vLOmacGFuKoj6CONo4cPwGKSnODWy22D5DYSFegDaObVrBkySIwzlMe1+
+IAbCIy80yiO9AkG2+TZ0oRG95xV4nU4lLQ1/UMWwgwbLwKp66pjdx5MMhbInJpxX
+uDxn/lKDcnAIqko/hR9Elg8yXzAFKoX9Tq/yNK+NH16Pi04f+Oz0W7ta6v1UNJZK
+PaZMrMwT0C3V5vJe2mpmxuFNOFMgx/JlsUB8VJcvM4xC/zvSkVlyIqnGxMqD2iuA
+uoW7jRyNtyJ8EwfeeB/O+pfUm+KRVA==
+=Fi5B
+-----END PGP SIGNATURE-----
+
+--aVD9QWMuhilNxW9f--
 
