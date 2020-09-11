@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGonp-0002eT-9E
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44742)
+	id 1kGonq-0002h0-CB
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGono-0002bg-5J; Fri, 11 Sep 2020 15:33:44 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:58637)
+ id 1kGono-0002dA-Oc; Fri, 11 Sep 2020 15:33:44 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:42009)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonl-0000nl-2p; Fri, 11 Sep 2020 15:33:43 -0400
+ id 1kGonm-0000o0-UV; Fri, 11 Sep 2020 15:33:44 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mtxxk-1kX7nh13eO-00uHew; Fri, 11 Sep 2020 21:33:37 +0200
+ id 1Mpkwn-1ksvug00JZ-00qD2F; Fri, 11 Sep 2020 21:33:39 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 03/18] hw/acpi/tco: Remove unused definitions
-Date: Fri, 11 Sep 2020 21:33:15 +0200
-Message-Id: <20200911193330.1148942-4-laurent@vivier.eu>
+Subject: [PULL 05/18] hw/gpio/max7310: Replace disabled printf() by
+ qemu_log_mask(UNIMP)
+Date: Fri, 11 Sep 2020 21:33:17 +0200
+Message-Id: <20200911193330.1148942-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lytElenqQ/jkApA2KD0dlZ7WvY0XwOzKahOEJvBCS+/K7IWbE9Y
- RFxC4CfKUOPWsG8jnExJi6ggrOq+4/2IjrmLwU3Il3jhGma+rQn7zT3ssFEbFN39eu6wigJ
- ktQk778rI+lC7sN0Ams0T8eMajWia/cKJ7smUe5VlGmcGWq4YQ5stbNd+wJksSIYMZiS529
- 5qSW5mA8I1fS5sSDz+DKA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:KE7inTOMhi0=:ZndHDxmf0MC5OOHoHLZb3e
- GHNqOWqiu/FGC1CJ+3RKUUfUtFv7BoAQNptDDe6g8deSWvQGY+bSDOcmf9j2YbH4X7VaCZANl
- HTQMQK1Weaaa28mQCaiFzLckB6L96cujMwy/yjt1R0gEx6elsml3MFr5/w4NVES0P5L1wFkwt
- fpyj9H6DrJUFTYCySIBB7yU3gcsqfhsiF+ZQUtFOnaMnyIm/D9TItJ3obx4rr9ldeGMzXoC5H
- T7TLvFhvhXncHx4UIbSiIliQyiIPiba8XYKTUTtq1fuCkeAQoGu3Dxhub0duB1O9jT6pY9598
- ghyv0gL4Gfui6ZDib0j8nhU2M8kfYEOlxRNRKobfJoblbLFpGkd80QOyXGaOBS/9S/wGR0Zxz
- 5D4yA3gmjobqc9/EN6eadWcyOEYLNZg49Han/b+3vO0/9NUCeRIqU+o7YVJ6lWdgW8YOhHa/F
- tE/51+DwxGRx+Q0505odW2xpRcx2g5xGUyQghEgjzOmq52nv3bhHStVa382+s0u6XuNJwkDwJ
- ZTcSIyAW9x0Lxb5qPnZXvmNmWLyCwhrkP6assldyNqnn5yp52PL6mZ5bKY/9Jpiu+p2cRDv+j
- y/GHKFLh/0cJYVBq9cuXCckHinjBOzvrit/UAACD0rt/EXYvAkd4EK8qMjPCJ8+0JITXYWH9E
- 8+Ie58mHC4CNC74x9wQtCgtIhp1ixrNGbhsdPf5I1fbyzx1MKvMMwA28XWogpSzVfJ5euk5wf
- ZueY4XUBfhPzMMfbmrvVcsPwrR/SP89xNd1dvZZIszYnlEp497g6ge/V7PrjsrdHOG/CC65ch
- F1YkjUlJy0akbQDqXz9c53gmPrMaGaiFR5k6oyOp8mwhUrH8s9fwbcipGCVs+6CTV0nzpWi
+X-Provags-ID: V03:K1:6HHjcsMsC1UMVlJ9ehessa7IF8hgB8UCqK7rXrhkuKOysz/RmEt
+ ndeSnj1EeH9C/m138K8ixt6mQzMQ5LNOE7grltRNgqF2cKvoRT31iWoSEhgRZk1+CBUhUr0
+ NBkgcj+P7D9ygLIjaQUygMRDYMjxLPs5qcFDSlE2U7nPAVq7TJBZ+9f2W16P1kJ6mttKluR
+ mUQv/yFW/weDU7VWT+7xw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fkaGS7uf30Q=:piGLu2HK1rJYlZMDXKZj2L
+ WR/ulubabyADErZVn2UR0uUgXMcPK1XdNnseIivoYVgFlZ1nyyGgmISOCtUKOhxWE26Ik+uyW
+ RsUSDy7pb3Fqi/QK/+eraHP+MWLaXxOp5ED2klwEzgvNv5BLpkzus/xt09Y4TfVL1ryOFJqly
+ 3pJGDc+mD8JZmgFHTJnCu3ADiedl45bVtrskZkuspoXGZxdJ83fPrxnlORaog5YCCEoNVyDsZ
+ DIBnarJWjxHNjzjzwAu7DCAzH93BezHe8QhsybdJsV/Qj4vF2252ieJeIl39XBpC/kFDZOort
+ 4zhvGwviW3Un/uFZUuqpt+HQ/nPrgG8GUqvx+WpFuupR+Qi8wqWvEyELYJfJ27SepWnODbO9h
+ IMqpwokCm/cVQYUGrfEeH7mAjHEwfcm0gqL+LgrGd8nIHdzz9zEQDtB5jBx/v3U9giwzb6XX1
+ 2PYTL0xgjzaMK3sjRmYzPvtnLqRTLVIkDzR+Vm7ZdvygBzMoqillG3CW2ompvlzkZVSJa35+8
+ luM+liCyyt9XXMTZ/L9U8mW85yzlEuG523cCzDmamkrE3LIxD4opOnSpeun7BalENj301+OEC
+ gJusMwZKmr0WnBP3YmZpz9/xYF/ab819GEM7Hs7KKmIWp69hxgRKp19r/fwV1Iqh9ngkrr8qm
+ 5hITzj3K3DMhbxfJXzHzgOXqOk6zKe/mbi3y0mcLF7RRYvJ/Ko3wnr+fX6m8H5OagG3IssEzK
+ nhTaQ++7xIVmak1fuoZD9JAbVl16HG2mRIlHFXaLMdXDUmUcy6LlJ7jXQPPnY58j1B8kc1THg
+ xleFj3Qyjz68RajPqGiFepIBeyX0Qy7G07Fvs6rmDLVIgytNba1PtrOBqO+oNwU9EGcpdLk
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:39
@@ -64,42 +65,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:44 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:45 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-TCO_DEBUG() and DEBUG definitions are not used, remove them.
+Replace disabled printf() by qemu_log_mask(UNIMP).
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20200901101951.85892-1-f4bug@amsat.org>
+Message-Id: <20200901104234.92159-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/acpi/tco.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ hw/gpio/max7310.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/hw/acpi/tco.c b/hw/acpi/tco.c
-index fb9052dbca2a..cf1e68a5393b 100644
---- a/hw/acpi/tco.c
-+++ b/hw/acpi/tco.c
-@@ -15,17 +15,6 @@
- #include "hw/acpi/tco.h"
- #include "trace.h"
+diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+index 4f78774dc8f2..3e298c2d349c 100644
+--- a/hw/gpio/max7310.c
++++ b/hw/gpio/max7310.c
+@@ -13,6 +13,7 @@
+ #include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
++#include "qemu/log.h"
+ #include "qemu/module.h"
  
--//#define DEBUG
--
--#ifdef DEBUG
--#define TCO_DEBUG(fmt, ...)                                     \
--    do {                                                        \
--        fprintf(stderr, "%s "fmt, __func__, ## __VA_ARGS__);    \
--    } while (0)
--#else
--#define TCO_DEBUG(fmt, ...) do { } while (0)
+ #define TYPE_MAX7310 "max7310"
+@@ -68,9 +69,8 @@ static uint8_t max7310_rx(I2CSlave *i2c)
+         return 0xff;
+ 
+     default:
+-#ifdef VERBOSE
+-        printf("%s: unknown register %02x\n", __func__, s->command);
 -#endif
--
- enum {
-     TCO_RLD_DEFAULT         = 0x0000,
-     TCO_DAT_IN_DEFAULT      = 0x00,
++        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
++                      __func__, s->command);
+         break;
+     }
+     return 0xff;
+@@ -122,9 +122,8 @@ static int max7310_tx(I2CSlave *i2c, uint8_t data)
+     case 0x00:	/* Input port - ignore writes */
+         break;
+     default:
+-#ifdef VERBOSE
+-        printf("%s: unknown register %02x\n", __func__, s->command);
+-#endif
++        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
++                      __func__, s->command);
+         return 1;
+     }
+ 
 -- 
 2.26.2
 
