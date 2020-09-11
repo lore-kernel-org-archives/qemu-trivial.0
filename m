@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGonx-0002lZ-FF
+	id 1kGonx-0002mA-LF
 	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44804)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonq-0002gS-44; Fri, 11 Sep 2020 15:33:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:35715)
+ id 1kGonq-0002iY-TJ; Fri, 11 Sep 2020 15:33:46 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:49643)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGono-0000oV-Gx; Fri, 11 Sep 2020 15:33:45 -0400
+ id 1kGonp-0000od-5h; Fri, 11 Sep 2020 15:33:46 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MLRgp-1jyKLM0plL-00ISSv; Fri, 11 Sep 2020 21:33:35 +0200
+ id 1MfL5v-1kiRmY32Vf-00gt6v; Fri, 11 Sep 2020 21:33:42 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Huacai Chen <chenhc@lemote.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 01/18] hw/mips/fuloong2e: Convert pointless error message to an
- assert()
-Date: Fri, 11 Sep 2020 21:33:13 +0200
-Message-Id: <20200911193330.1148942-2-laurent@vivier.eu>
+ Li Qiang <liq3ea@gmail.com>
+Subject: [PULL 08/18] hw/net/e1000e: Remove overwritten read handler for
+ STATUS register
+Date: Fri, 11 Sep 2020 21:33:20 +0200
+Message-Id: <20200911193330.1148942-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:W6d0M8xiDFfJGbyVtJHHG7N7kNRbKGLWK4jJG48cK3TzhzDMdia
- IVRiUrQ5TRdaCsCYLGPJa+bJe0hP63R3jyLnpGn14uNeFtQk5bDsYITACheJjl6VN40yzVr
- HuIaSg1YBkH+3F8o659PoPgVSI9edT4qdzzvFYOeT9k4IUB+KNCv3qbD0VNcfN9q62B1SGo
- LRVO5giEnv9pdFegavjZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1liJtNPbD+A=:yDw3vphphqB8zWAli9r/3z
- wKVRpHPWodn94qiIE2Gdxi00rRXVKhZ2mbl8MsBzQFf5+j86C8vyuep6jhMbrYYnQPxNQ/trN
- asBGTDzVMBdFnQBNHoZKwlawyB78Wk0O4ded82/tTv4GiLH78DOl31kmE75tDcIOkXZFYrDYV
- 0VgDLjev3tIyixyPZlAIFzrZYnYDq0oJ3wUz0quGd1pA9ViwBBpGmdr4bwxuTgemxleUA97R2
- 1ZBoVhiCjFiEJ7kIaXm/lUqXvkoGhkK6Y5iuQlrJvDyAsR64i0JyC8O3XYx5+e8yqfn/tE8OT
- eVT0DLisnvXo9ue/86rOtlSNmCtahTWCpia57o2OMZFnwKirpjyAJJG3jfpgilsVgdFXjDi1L
- A2GM1bdjSzaD4uCU2mqXPwbmf/gk0EJvb1itns1QHF+sdu/h+aVtAriCByVoHNWm/m5qVH6b/
- AUdr6XxXo/loZDbeIg2wnFwRGuZbCSJzU5gxAVkTQj60w6kAiqvJtf9e/823qD49XCA9pmtkO
- ZWmPSLlMb/qtXwLAHtz2JthRgSC3s988qkR25hceYEm+tPmGfGuOFiPEMlXDa6fqgMaIeLOKF
- 6g7WUGI5i+fThANYco3+504Nw8e5rWxocEl9MyCpmgG7T2Hm5gieLr+vNTue75s88PzWnhKC2
- bprTsnKzsNQ85jcLIdlyIeq8WYkvN75KYzs7AqBiMs9+Ha+LapBEeeNd9o078nZLgyts+kgm6
- yH87G2LGUxhH2u+x267ahSSMl48iBwZjfBS97EedlyyRBhv0tnLkaLv2TNSrl8+RmaO7inKIu
- +SMe1CbVVpd3qSS6S94Tv4Pjki9nII0lmua4qSm2IjjfyEj4H4pe36qvFeBX6HIm0nVYuf1
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Sf2oOc/V610s/ecndz6lKV1wa7DBCekol9y2GpdW4qy79KRGsGA
+ P4HbYN2xNqrnT4JCb9+PPSgoiKP3nUYqFMw8sfJQ/7o3VxmjBcxopN1ESKI+2vVjVfa3n22
+ cuah/XcWonczpm19y1xphitMMHLIvfGVR8Mz+klSixHHcr9ThfIKaPUh6ZwdtIm+ISRLlxv
+ IvaCQKbLMAGgWlc1Tx0Rg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Uhy+ph77yhM=:8CKwEN7xgbgoPhuGsCWcET
+ vnNymzpcp2x+RCsejWFGQgH6UonEG6zbPl8b+V0Sfg3RmcHPgRhV/IygYlvbxaSpdceCKwrR6
+ WTteGS3MPOmGyEo+G7eW+VlKZ3mAMVVLsvjgS5IbzcKjsJFBEO6uJZsuJxe5L/iqcw0rx9ss1
+ JwTsHP7CQ8+exKse9YF6HHSCCc9jAHADuEdU2qcBAd79TfPACmpNbSGEimxVtrW/5y5EM3z/7
+ Vf1tpNp3KUEiq0ijh4bKODa6f7squxQw2N9ifPABA2U9BrlYW0jxY5A1yhsXMPygnfb9HLkHX
+ slC+W7qgB7x7rs5qOoHUoaQynNrn1LlbCMzXLwj/+lV7QxQT+cFEfNij6BuOBa9qTNiV5yCYp
+ GMIYq/HA/cVoYS1ilp/ZKzSr/Bk2kwQlxIbiUh80NXJoG6ROCy1138sPlgI4mAD/65S2AV3RH
+ D3bEg4m8IYQYvhmEjKZOorGCRi/1cKV7ZYu4DW00BpfkJWpzciDI9B7ZDYh9VAPPOzvIPFG4W
+ f9d4IL3SOGPUDhxCk4wo23xm5H9ufZVK3I1j+6n01R/HaA7x/k6477jTIDer1EO1h2tSIR8E4
+ /NBypvAol/CHuCmDxCgs9ToqmTavhH8d1XVmVzbBJU8JWWN9hPNQxCuZs0Toj4zD+1V9eHZ4D
+ G3paFfxzHcaYf31mF2FvGhkaKZ5S5u1ob+sFtLWbYHob8geqP1Ac8EKbD/csMa3dUDTPg/9xx
+ iRcokHOzDt/0cHYrhieVMldtOfFhw5YbQ1yx0JeIOOFOWKW/93cfQZ0hCjbZuyd/66yonXK2v
+ qaNkLTFgHPWQRjZoUK4mxlh+K85w5pqi+5MfLJC0ETEX2XPdDoPFd8biRQbYGeKmcNjLWF1
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:43
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -67,40 +66,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:46 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:47 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Displaying "vt82c686b_init error" doesn't give any hint about why
-this call failed. As this message targets developers and not users,
-replace the pointless error message by a call to assert() which
-will provide more useful information.
+The STATUS register readop handler is initialized first with
+the generic e1000e_mac_readreg() handler:
 
+  2861 #define e1000e_getreg(x)    [x] = e1000e_mac_readreg
+  2862 typedef uint32_t (*readops)(E1000ECore *, int);
+  2863 static const readops e1000e_macreg_readops[] = {
+  ....
+  2919     e1000e_getreg(STATUS),
+
+Then overwritten with the specific e1000e_get_status handler:
+
+  3018     [STATUS]  = e1000e_get_status,
+
+To avoid confusion, remove the overwritten initialization.
+
+6f3fbe4ed0 ("net: Introduce e1000e device emulation")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Huacai Chen <chenhc@lemote.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200901104043.91383-3-f4bug@amsat.org>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Message-Id: <20200904131402.590055-2-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/mips/fuloong2e.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ hw/net/e1000e_core.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index 8ca31e5162c4..f28609976bf4 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_bus, int slot, qemu_irq intc,
-     PCIDevice *dev;
- 
-     isa_bus = vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
--    if (!isa_bus) {
--        fprintf(stderr, "vt82c686b_init error\n");
--        exit(1);
--    }
-+    assert(isa_bus);
-     *p_isa_bus = isa_bus;
-     /* Interrupt controller */
-     /* The 8259 -> IP5  */
+diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+index bcd186cac524..5170e6a45633 100644
+--- a/hw/net/e1000e_core.c
++++ b/hw/net/e1000e_core.c
+@@ -2916,7 +2916,6 @@ static const readops e1000e_macreg_readops[] = {
+     e1000e_getreg(TSYNCRXCTL),
+     e1000e_getreg(TDH),
+     e1000e_getreg(LEDCTL),
+-    e1000e_getreg(STATUS),
+     e1000e_getreg(TCTL),
+     e1000e_getreg(TDBAL),
+     e1000e_getreg(TDLEN),
 -- 
 2.26.2
 
