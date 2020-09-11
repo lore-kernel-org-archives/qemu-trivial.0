@@ -1,87 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGdXh-0000JP-9E
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 03:32:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48112)
+	id 1kGdug-0002Js-U2
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 03:56:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53748)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kGdXd-0000G2-7S; Fri, 11 Sep 2020 03:32:17 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:43328)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kGdXb-0002FL-Qe; Fri, 11 Sep 2020 03:32:16 -0400
-Received: by mail-lf1-x143.google.com with SMTP id y2so4953487lfy.10;
- Fri, 11 Sep 2020 00:32:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=LHK4F2MqWd5dXKy2V+64wHdCsq3BPH6G32kaFVS1Kgg=;
- b=UNV2LkEjubfC/T5nSdh5SJQEeFEi+/GuTRy/PdeUmphzfexU206EnRai71uF2gRuaA
- IzvGp1pSIwarpiPgMDh1q8s8jH8rE0hyo3KMsCt68m0uRFNYIKpoTBbEs+gG0gA1Bm7B
- coX9xzWLNnjUtL1klXrTbpYVZBlCrFnSqCFCnQiY+Xc6vz8amBpGd+V0uQ7LeF256iPo
- 7Hn/qLsgr/Y6sCDJgMyfj5L4Hr5+WwWHkIYK8YUs1TehOZDpoDM/ly3ZvJfFcfSp5Z2V
- j65gPkHQWFVCq0S2N6MvkqyLUCq5UIoz+tuVlXjfqd3LGBdwxpVhi3UEsx2FrffvdZVn
- ENNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=LHK4F2MqWd5dXKy2V+64wHdCsq3BPH6G32kaFVS1Kgg=;
- b=l59QQQN7U2u3vqrR0YfXgcpnmhHU0wMwYO44VRtFO6j8O09ErdVtprsaqH2F6Ca6Td
- gb/la7Cp2aY/8hQaWlZOioHXoRNj6n4jJ01+4UrFlRaYwjVSOqb69P6/WaZgUO+IfwNk
- QI9YhLEfF9SncOZA7U7arhKk2tj1rvC+DZEVfBGz4jpPCV+J0hcC5ImOOe4uIkc6HxSa
- Ronkyl2Bm7vMOrGeoH0W2uWdFJlwdac1fVEG5cmz57QfIVoCG+/8Qs33/wFwzEQOCHrS
- qtLo0d0oBThR5QriDryTjz163F2f5fL+AXTFjttNEBgIEizH1czBlP9V2bM4iIhTraxR
- K2MQ==
-X-Gm-Message-State: AOAM533HZHVOTyljZ51K95vLdDC3AIs+5oO3K/THWBuZ4anLdPlQhO0e
- OjGOyaS6zmHRxY5RaaKvg7o=
-X-Google-Smtp-Source: ABdhPJxyeuqUgihgOc4fwupdHuaN5J/O1r9PTCdHVhBWU7k75LyYISClw14MKQIX4EKOUkT1VwT9LQ==
-X-Received: by 2002:a19:ca48:: with SMTP id h8mr297019lfj.173.1599809532525;
- Fri, 11 Sep 2020 00:32:12 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id j4sm362441ljc.116.2020.09.11.00.32.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Sep 2020 00:32:11 -0700 (PDT)
-Date: Fri, 11 Sep 2020 09:32:11 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Jason Wang <jasowang@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Joel Stanley <joel@jms.id.au>
-Subject: Re: [PATCH 4/6] hw/net/xilinx_axienet: Rename StreamSlave as
- StreamSink
-Message-ID: <20200911073211.GE2954729@toto>
-References: <20200910070131.435543-1-philmd@redhat.com>
- <20200910070131.435543-5-philmd@redhat.com>
- <9214b56d-59e7-1229-bf01-b6dca0445014@redhat.com>
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kGduf-0002Hj-Jj
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 03:56:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39493)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kGduc-0005X0-8W
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 03:56:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599810960;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hr81u7eMe+eZt/wS/Plq0RTW8wzeKJ2XtJkP6jGfroA=;
+ b=ORW0tHdFh0hv+Sa62hEUwh7ke0YsxYNEIhvc4O2W11PwJcxbw8coqYrVy8uGqDlgUKsxjM
+ 4IbR1H0wEX4JwC7qgtnvTyVMtkiCNhaI89dDC4CznoZQpd4Dg6VWaD5XB0LdJFk6lyHivE
+ VujkCav8BgPeOcym3PGCEN7LptlUTEE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-578-sDWJ6NXVOnOy-J-JE9HLdw-1; Fri, 11 Sep 2020 03:55:58 -0400
+X-MC-Unique: sDWJ6NXVOnOy-J-JE9HLdw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F3541020AD3;
+ Fri, 11 Sep 2020 07:55:19 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-52.ams2.redhat.com
+ [10.36.113.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7E9AA7BCC1;
+ Fri, 11 Sep 2020 07:55:17 +0000 (UTC)
+Subject: Re: PATCH: Increase System Firmware Max Size
+To: "McMillan, Erich" <erich.mcmillan@hp.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "mst@redhat.com" <mst@redhat.com>,
+ "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <20c5210f-8199-a9e7-9297-0bea06c4d9ae@redhat.com>
+Date: Fri, 11 Sep 2020 09:55:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9214b56d-59e7-1229-bf01-b6dca0445014@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::143;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FSL_HELO_FAKE=1.8, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0.004
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 03:12:53
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,112 +79,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 07:32:18 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 07:56:05 -0000
 
-On Fri, Sep 11, 2020 at 09:28:38AM +0200, Paolo Bonzini wrote:
-> On 10/09/20 09:01, Philippe Mathieu-Daudé wrote:
-> > In order to use inclusive terminology, rename 'slave stream'
-> > as 'sink stream'.
-> > 
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> > ---
-> >  hw/net/xilinx_axienet.c | 24 ++++++++++++------------
-> >  1 file changed, 12 insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> > index 0c4ac727207..4e48535f373 100644
-> > --- a/hw/net/xilinx_axienet.c
-> > +++ b/hw/net/xilinx_axienet.c
-> > @@ -46,11 +46,11 @@
-> >       OBJECT_CHECK(XilinxAXIEnet, (obj), TYPE_XILINX_AXI_ENET)
-> >  
-> >  #define XILINX_AXI_ENET_DATA_STREAM(obj) \
-> > -     OBJECT_CHECK(XilinxAXIEnetStreamSlave, (obj),\
-> > +     OBJECT_CHECK(XilinxAXIEnetStreamSink, (obj),\
-> >       TYPE_XILINX_AXI_ENET_DATA_STREAM)
-> >  
-> >  #define XILINX_AXI_ENET_CONTROL_STREAM(obj) \
-> > -     OBJECT_CHECK(XilinxAXIEnetStreamSlave, (obj),\
-> > +     OBJECT_CHECK(XilinxAXIEnetStreamSink, (obj),\
-> >       TYPE_XILINX_AXI_ENET_CONTROL_STREAM)
-> >  
-> >  /* Advertisement control register. */
-> > @@ -310,10 +310,10 @@ struct TEMAC  {
-> >      void *parent;
-> >  };
-> >  
-> > -typedef struct XilinxAXIEnetStreamSlave XilinxAXIEnetStreamSlave;
-> > +typedef struct XilinxAXIEnetStreamSink XilinxAXIEnetStreamSink;
-> >  typedef struct XilinxAXIEnet XilinxAXIEnet;
-> >  
-> > -struct XilinxAXIEnetStreamSlave {
-> > +struct XilinxAXIEnetStreamSink {
-> >      Object parent;
-> >  
-> >      struct XilinxAXIEnet *enet;
-> > @@ -325,8 +325,8 @@ struct XilinxAXIEnet {
-> >      qemu_irq irq;
-> >      StreamSink *tx_data_dev;
-> >      StreamSink *tx_control_dev;
-> > -    XilinxAXIEnetStreamSlave rx_data_dev;
-> > -    XilinxAXIEnetStreamSlave rx_control_dev;
-> > +    XilinxAXIEnetStreamSink rx_data_dev;
-> > +    XilinxAXIEnetStreamSink rx_control_dev;
-> >      NICState *nic;
-> >      NICConf conf;
-> >  
-> > @@ -859,7 +859,7 @@ xilinx_axienet_control_stream_push(StreamSink *obj, uint8_t *buf, size_t len,
-> >                                     bool eop)
-> >  {
-> >      int i;
-> > -    XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(obj);
-> > +    XilinxAXIEnetStreamSink *cs = XILINX_AXI_ENET_CONTROL_STREAM(obj);
-> >      XilinxAXIEnet *s = cs->enet;
-> >  
-> >      assert(eop);
-> > @@ -880,7 +880,7 @@ static size_t
-> >  xilinx_axienet_data_stream_push(StreamSink *obj, uint8_t *buf, size_t size,
-> >                                  bool eop)
-> >  {
-> > -    XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
-> > +    XilinxAXIEnetStreamSink *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
-> >      XilinxAXIEnet *s = ds->enet;
-> >  
-> >      /* TX enable ?  */
-> > @@ -954,8 +954,8 @@ static NetClientInfo net_xilinx_enet_info = {
-> >  static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-> >  {
-> >      XilinxAXIEnet *s = XILINX_AXI_ENET(dev);
-> > -    XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
-> > -    XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(
-> > +    XilinxAXIEnetStreamSink *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
-> > +    XilinxAXIEnetStreamSink *cs = XILINX_AXI_ENET_CONTROL_STREAM(
-> >                                                              &s->rx_control_dev);
-> >  
-> >      object_property_add_link(OBJECT(ds), "enet", "xlnx.axi-ethernet",
-> > @@ -1046,7 +1046,7 @@ static const TypeInfo xilinx_enet_info = {
-> >  static const TypeInfo xilinx_enet_data_stream_info = {
-> >      .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
-> >      .parent        = TYPE_OBJECT,
-> > -    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> > +    .instance_size = sizeof(struct XilinxAXIEnetStreamSink),
-> >      .class_init    = xilinx_enet_data_stream_class_init,
-> >      .interfaces = (InterfaceInfo[]) {
-> >              { TYPE_STREAM_SINK },
-> > @@ -1057,7 +1057,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
-> >  static const TypeInfo xilinx_enet_control_stream_info = {
-> >      .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
-> >      .parent        = TYPE_OBJECT,
-> > -    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> > +    .instance_size = sizeof(struct XilinxAXIEnetStreamSink),
-> >      .class_init    = xilinx_enet_control_stream_class_init,
-> >      .interfaces = (InterfaceInfo[]) {
-> >              { TYPE_STREAM_SINK },
-> > 
++Markus, Dave, Phil
+
+On 09/11/20 03:45, McMillan, Erich wrote:
+> Hi all,
 > 
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> (this is my first Qemu patch submission, please let me know if my formatting/content needs to be fixed).
+> We have a need for increased firmware size, currently we are building Qemu with the following change to test our Uefi Firmware and it works well for us. Hope that this change can be made to open source. Thank you.
+> -------
+> Increase allowed system firmware size to 16M per comment suggesting up to 18M is permissible.
+> 
+>  Signed-off-by: Erich McMillan <erich.mcmillan@hp.com>
+> 
+> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+> index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..f6f7cd744d0690cee0355fbd19ffdcdb71ea75ca 100644
+> --- a/hw/i386/pc_sysfw.c
+> +++ b/hw/i386/pc_sysfw.c
+> @@ -46,7 +46,7 @@
+>   * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB in
+>   * size.
+>   */
+> -#define FLASH_SIZE_LIMIT (8 * MiB)
+> +#define FLASH_SIZE_LIMIT (16 * MiB)
+> 
+>  #define FLASH_SECTOR_SIZE 4096
+> -------
+> 
+> 
 
+(1) This is not a trivial change, so qemu-trivial: please ignore.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+(2) The comment has not been updated.
+
+(3) I'm almost certain that *if* we want to change this, it needs to be
+turned into a machine type (or some device model) property, for
+migration compatibility.
+
+(4) I feel we need much more justification for this change than just
+"our firmware is larger than upstream OVMF".
+
+In the upstream 4MB unified OVMF build, there's *plenty* of free room.
+Of course that's not to say that we're willing to *squander* that space
+-- whenever we include anything new in the upstream OVMF platform(s),
+there must be a very good reason for it --, just that, given the
+upstream OVMF status, the proposed pflash increase in QEMU is staggering.
+
+Considering upstream OVMF and QEMU, it should take *years* to even get
+close to filling the 4MB unified flash image of OVMF (hint: link-time
+optimization, LZMA compression), let alone to exhaust the twice as large
+(8MB) QEMU allowance.
+
+Unless you are committed to open source your guest firmware too (maybe
+as part of upstream edk2, maybe elsewhere), I seriously doubt we should
+accommodate this use case in *upstream* QEMU. It complicates things
+(minimally with regard to migration), and currently I don't see the
+benefit to the upstream community.
+
+Clearly, for building your firmware image, you must have minimally
+modified the DSC and FDF files in OVMF too, or created an entirely
+separate firmware platform -- DSC and FDF both.
+
+If you are using your downstream OVMF build as a testbed for your
+proprietary physical platform firmware, that's generally a use case that
+we're mildly interested in not breaking in upstream OvmfPkg. But in
+order to make me care for real (as an OvmfPkg co-maintainer), you'd need
+to upstream your OVMF platform to edk2 (we already have Xen and --
+recently added -- bhyve firmware platforms under OvmfPkg, not just
+QEMU). You'd also have to offer long-term reviewership and testing for
+that platform in edk2 (like the Xen and bhyve stake-holders do). Then we
+could consider additional complexity in QEMU for booting that firmware
+platform.
+
+Thanks,
+Laszlo
 
 
