@@ -1,77 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGlpL-0006G4-5O
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 12:23:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58496)
+	id 1kGmB1-0006ML-Ky
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 12:45:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kGlpJ-0006CB-51
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 12:23:05 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:58241
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kGmAz-0006Ky-Uq
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 12:45:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35624)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kGlpH-0007ws-1m
- for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 12:23:04 -0400
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kGmAx-0002rv-Vh
+ for qemu-trivial@nongnu.org; Fri, 11 Sep 2020 12:45:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599841381;
+ s=mimecast20190719; t=1599842726;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ogCUpFA1nyPzdCXfnAqTQ3wyky+zL3F2m25FbzkpviQ=;
- b=I0v2youBeJLHsWZ0yJpTCZf4WVRQ5lc8DHfzSQxpcUStEf/SELCdafcmGuyUTRYYSLXN6C
- OzMad1hWVoj7gwkbT9ysSk9Nhi5557TWWLNVmW2PfFE5k35WYWBSUvfssLeo6ajQEsPJVN
- vU3bDsgZdPnZt3xwpuMyhYTElA7eIc0=
+ bh=5uN3Bus+wqtgjJBDdJEx+GdZnfKMYS1EtHVnRYDk5FI=;
+ b=gXcPuDfXuAxPB/J0zGbIHMNDqC4fAWWmP/srHRpQCq2ge+Q1YYyDNNbajX56uq+F2F0V7H
+ QcJ/QMubCEh/i7w85p3IeOo1AgxEAWH5KfVhrxFgfcg79XIyK0LH4o8zFnzGBE+/ldFDm3
+ luV3Vbmw3x4OA2CBZMBwcOGSIYaGxFU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-116-QuSvtX_oM9Kn8JRmXHT8EQ-1; Fri, 11 Sep 2020 12:23:00 -0400
-X-MC-Unique: QuSvtX_oM9Kn8JRmXHT8EQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-230-N9-mAhN-NGmn5u9tubTeSA-1; Fri, 11 Sep 2020 12:45:24 -0400
+X-MC-Unique: N9-mAhN-NGmn5u9tubTeSA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09FCE18B9ECA;
- Fri, 11 Sep 2020 16:22:59 +0000 (UTC)
-Received: from work-vm (ovpn-113-52.ams2.redhat.com [10.36.113.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5DC5B60C15;
- Fri, 11 Sep 2020 16:22:54 +0000 (UTC)
-Date: Fri, 11 Sep 2020 17:22:51 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: "McMillan, Erich" <erich.mcmillan@hp.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 900181009446;
+ Fri, 11 Sep 2020 16:45:23 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-62.ams2.redhat.com
+ [10.36.113.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2AFFC1002D57;
+ Fri, 11 Sep 2020 16:45:18 +0000 (UTC)
+Subject: Re: PATCH: Increase System Firmware Max Size
+To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  "mst@redhat.com" <mst@redhat.com>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
  "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
  Markus Armbruster <armbru@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: PATCH: Increase System Firmware Max Size
-Message-ID: <20200911162251.GA3311@work-vm>
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "McMillan, Erich" <erich.mcmillan@hp.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
  <20c5210f-8199-a9e7-9297-0bea06c4d9ae@redhat.com>
  <20200911083408.GA3310@work-vm>
  <ae2d820e-78c6-da92-2fa6-73c1a7d10333@redhat.com>
- <20200911150602.GH3310@work-vm>
- <8e2d0bf7-a206-124c-15b0-0f0071ef5a11@redhat.com>
+ <20200911150602.GH3310@work-vm> <20200911152353.GI1203593@redhat.com>
+ <d7d0d37e-4bba-ab82-783d-06463d78d9cf@redhat.com>
+ <20200911162138.GL1203593@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <c021d04f-8ae4-d8be-c107-7ac89db9bb94@redhat.com>
+Date: Fri, 11 Sep 2020 18:45:18 +0200
 MIME-Version: 1.0
-In-Reply-To: <8e2d0bf7-a206-124c-15b0-0f0071ef5a11@redhat.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20200911162138.GL1203593@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 03:40:15
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 08:18:51
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,156 +85,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 16:23:05 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 16:45:30 -0000
 
-* Laszlo Ersek (lersek@redhat.com) wrote:
-> On 09/11/20 17:06, Dr. David Alan Gilbert wrote:
-> > * Laszlo Ersek (lersek@redhat.com) wrote:
-> >> On 09/11/20 10:34, Dr. David Alan Gilbert wrote:
-> 
-> >>> I'm missing what this constant exists for - why is the
-> >>> check there at all  Is there something else that lives below this
-> >>> address that we have to protect?
-> >>
-> >> Yes, some MMIOs that I'm at least aware of are IO_APIC_DEFAULT_ADDRESS
-> >> (0xfec00000), TPM_PPI_ADDR_BASE (0xFED45000), APIC_DEFAULT_ADDRESS
-> >> (0xfee00000).
-> >>
-> >> They are not directly adjacent with pflash; nor should they be.
-> > 
-> > Hmm those need explicitly checks adding somewhere against
-> > FLASH_SIZE_LIMIT!
-> 
-> Yes, that would be nice. I don't know how it works. Maybe when adding
-> the next MemoryRegion there's an error or an assert(). No clue.
-> 
-> >> If you increase the size limit (without tieing it to a machine type),
-> >> then, with an upgraded QEMU and the same (old) machine type, you can
-> >> start a guest with a larger-than-earlier (cumulative) flash size. Then,
-> >> when you try to migrate this to an old QEMU (but same machine type),
-> >> it's a bad surprise. I understand that backwards migration is not
-> >> universally supported (or expected), but I don't want this problem to
-> >> land on my desk *ever*.
-> > 
-> > I support backwards migration; but that migration wouldn't work anyway -
-> > wouldn't that fail nicely with a mismatched RAMBlock size?
-> 
-> My point wasn't that the guest would be lost or corrupted, only that it
-> couldn't be migrated. We'd say "for this, you have to upgrade QEMU on
-> the destination host as well, or use a smaller firmware", and they'd say
-> "we don't want either of those things".
+On 09/11/20 18:21, Daniel P. Berrangé wrote:
 
-My point is that already breaks if you used a smaller firmware on the
-source and the current size on the destination.
+> If OVMF maintainers want to reject
+> feature proposals they have the right to do that regardless of what
+> QEMU sets for max image size. As you say earlier, the existing size
+> limit is already enourmous compared to what OVMF actually uses, so
+> if this was a real problem it'd already exist.
 
-> >>> Our UEFI firmware is pretty sparse;
-> >>
-> >> Yes, in part because I strive to keep it that way.
-> > 
-> > But that's your choice, on our firmware implementation; that's not a
-> > requirement of QEMU or q35.
-> 
-> Right; if we can keep regressions out (not just functional regressions,
-> but workflow / use case regressions too), then it's OK to support more
-> use cases.
-> 
-> By workflow / use case regressions I mean that it should not become more
-> difficult to maintain OVMF as a result of the patch. (It should not
-> imply that now people can stuff even more cruft into OVMF, because "hey
-> there's more room now".)
-> 
-> >> The reason (should I say: excuse) for the firmware to exist is to (a)
-> >> boot operating systems, (b) abstract away some ugly platform-specific
-> >> hardware for OS runtime (by providing ACPI and SMBIOS descriptions, and
-> >> a *small* set of runtime services). We can maybe add (c) "root of trust".
-> >>
-> >> In practice, physical firmware is becoming the hw vendor's OS before
-> >> (and under) your OS, one you cannot replace, and one whose updates can
-> >> brick your hardware. Permitting the same feature creep on virtual
-> >> platforms is wrong.
-> > 
-> > On the firmware you develop that choice is fine; but there's no reason
-> > to force that restriction onto others.
-> 
-> Technically, I agree. It's fine to run larger UEFI firmware as long as
-> the default size restriction for the default (or traditional) UEFI
-> firmware remains the same.
-> 
-> Turn the size limit into a property, keep the same default value,
-> implement the migration aspects; specify *very clearly* in the commit
-> message what particular firmware this knob is being introduced for.
+Very good point -- I have indeed not realized this.
 
-I don't think there is a migration aspect here; and this knob is a
-general knob - it's just Erich here is the poor unfortunate person
-who wanted to tune that knob for the first time.
-
-> ... And I'd still be grumpy, because it increases maintenance burden for
-> QEMU (and possibly OVMF too -- "hey we got more room now!"; see above),
-> without open source users benefiting from the change. It's not like
-> we'll ever be able to run, or read the source code of, that 8MB+
-> firmware image, is it?
-
-Sorry, not QEMU's problem; we don't restrict RAM to 640k just because
-it should be enough for anyone.
-
-> >>> or have to survive configuring lots of hardware; also
-> >>> I'm aware of other companies who are looking at putting big blobs
-> >>> of stuff in firmware for open uses;
-> >>
-> >> Key term being "open uses". Let us see them.
-> > 
-> > Well yes, I think we know who we're speaking about here and we're
-> > working on it.
-> 
-> Sorry, I wasn't clear enough.
-> 
-> I *know* we're going to see *those* "open uses" that you meant.
-> 
-> Precisely because they are "open uses", they have a chance at justifying
-> the churn.
-> 
-> My intent was to apply your (valid) argument to *this* proposal -- let
-> us see the "open uses" for *this* particular proposal.
-> 
-> Notice, in the thread starter:
-> 
-> "We have a need for increased firmware size", "our Uefi Firmware",
-> "change can be made to open source" --> it's obviously for the sake of a
-> proprietary platform firmware. Do you feel comfortable about taking on
-> more risks, reviews and maintenance for that?
-
-I'm not seeing any more risks, reviews or maintenance in QEMU due to it.
-Indeed replacing an undocumented, unchecked constant comparison with
-a proper property seems better.
-
-> (Note that I'm not singling out this particular proprietary guest
-> payload. I feel the exact same way when QEMU is being contorted for
-> Windows of OSX guests, but at least those guest payloads are universally
-> available to users, if the users are willing to comply with the
-> corresponding terms and conditions.)
-> 
-> > Being able to use QEMU to let vendors debug their platform firmware is a
-> > perfectly reasonable use of QEMU; maybe not of your OVMF build - we
-> > need to keep the restrictions on the two separate.
-> 
-> You as a QEMU maintainer / reviewer, and I as an OVMF maintainer /
-> reviewer, are going to pay with our time and effort for a proprietary
-> guest oriented change that normal QEMU users won't even be able to run,
-> let alone read, modify, distribute.
-
-We have lots of complex hideous changes that I'm never going to use but
-seem reasonable;  this is a tiny change that seems perfectly reasonable
-both for open and closed firmware.
-I realise herding OVMF developers is tricky, but that's not a reason
-to nack a reasonable almost trivial change in QEMU.
-
-Dave
-
-> But yes, technically speaking, we can replace the size limit constant
-> with a property, I think.
-> 
-> Laszlo
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Laszlo
 
 
