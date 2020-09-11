@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGonq-0002ig-V5
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44772)
+	id 1kGonx-0002lZ-FF
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 15:33:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonp-0002eP-7w; Fri, 11 Sep 2020 15:33:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:37177)
+ id 1kGonq-0002gS-44; Fri, 11 Sep 2020 15:33:46 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:35715)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kGonm-0000o6-VQ; Fri, 11 Sep 2020 15:33:44 -0400
+ id 1kGono-0000oV-Gx; Fri, 11 Sep 2020 15:33:45 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MTfgb-1k6ccT0kJR-00TzJf; Fri, 11 Sep 2020 21:33:40 +0200
+ id 1MLRgp-1jyKLM0plL-00ISSv; Fri, 11 Sep 2020 21:33:35 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Greg Kurz <groug@kaod.org>
-Subject: [PULL 06/18] Makefile: Drop extra phony cscope
-Date: Fri, 11 Sep 2020 21:33:18 +0200
-Message-Id: <20200911193330.1148942-7-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Huacai Chen <chenhc@lemote.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 01/18] hw/mips/fuloong2e: Convert pointless error message to an
+ assert()
+Date: Fri, 11 Sep 2020 21:33:13 +0200
+Message-Id: <20200911193330.1148942-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200911193330.1148942-1-laurent@vivier.eu>
 References: <20200911193330.1148942-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:P5pbF6IVxKRfx62q1+IVYkTf7lX5zxdS1J31WHZ31XgHpvkRr3t
- 9DwdSrl2dydc/G7L5Z5cOanPIXJaNoUeJW4M5pKGGRHflj6IP0JQyApGCuh5QGQhEaBzDpI
- Ai/6dbMVDTeIIGVtXcLMoFZM/6TZ7w8SaFTsNYy/Bs9j52MeTZd+/mGEYF5rbAVZ6Xn3JfG
- uOIlSN0jaRLAgIfDBU+dA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XFLQPU2ZFIA=:tiUAQFxOIGEtCOB5CD4FVY
- gPRzC9sU/5ZPA9jdXdwaUaTnxSyWAIy08dn0XxOW1lycDpmdIhfQRQfxcj43K/bW0IqInCNp6
- X/o08Ol7oKWNxoLlYbHHe6pqPhNcVpC0uqvwPBgYXbp0wQrZJlARBI9DoqIMdISpF4Jglds80
- sWItSllXpF+kZ1G9HJ/feLcqOxAPs1KRlcTLYcZQLof0mhlAaGXidQLDuISTMzk09IH1b+tRJ
- P03d7BsokXbvI/pToT3EfQZlmDAIeuTvp7NHKpG7Fu6yVnfXilIGVvuqtzFJydipC8hshwH83
- 65O7XGBUsn53omTBJ952Upep8+CnhOa6mXIqE4CEJN93yHx1zFIkX07bqs3q3COooaTbaZXbE
- lTE6qzQuFLT1m/lEQiAXjMupsjizE3X3XTbzZhqp/F2LTf45IdQpIBy7hFy9eAuwLZOzLJp2Q
- 12R/2q3TTStgb+yCzjDpvVVsj7CTprcsWMRY6nZx9NwRM7J6xqaObcmGBs28xY5ygUlGdRXCd
- 9oE4/9fw8Ue8cT1eZ1bTb1mVWEtiaq5ZcVCU6v7Ltrmmf2Or8rLFBtJ2UyZNDBDr298msOdR5
- K4BcvO76i/bngvGEFiWTxj8sdK9qwei2QwAuGj2R48EWP1bZpDPETjZt8kacD//GCCEAmh6iC
- xz5iRFh1Z/AveWu9e1PsCW81BjUjStcO+ZrnyVdpeSWgKzOVl54pTCIItvgRZXjs1ET+u67Wz
- bNwSgv2e1wzyQBgHSc4HV7Hnh6kKgdJ4aZYPTCypCVT/1cdDxM3JWTsheSs0wDatOxEh1TlTh
- QGgupdjbrcigIpPiXw8kdQQPaPjVmb4asSUE8gFYlJtZsdpayfJemSGh7LYBxKOFTyp4lJ7
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:W6d0M8xiDFfJGbyVtJHHG7N7kNRbKGLWK4jJG48cK3TzhzDMdia
+ IVRiUrQ5TRdaCsCYLGPJa+bJe0hP63R3jyLnpGn14uNeFtQk5bDsYITACheJjl6VN40yzVr
+ HuIaSg1YBkH+3F8o659PoPgVSI9edT4qdzzvFYOeT9k4IUB+KNCv3qbD0VNcfN9q62B1SGo
+ LRVO5giEnv9pdFegavjZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1liJtNPbD+A=:yDw3vphphqB8zWAli9r/3z
+ wKVRpHPWodn94qiIE2Gdxi00rRXVKhZ2mbl8MsBzQFf5+j86C8vyuep6jhMbrYYnQPxNQ/trN
+ asBGTDzVMBdFnQBNHoZKwlawyB78Wk0O4ded82/tTv4GiLH78DOl31kmE75tDcIOkXZFYrDYV
+ 0VgDLjev3tIyixyPZlAIFzrZYnYDq0oJ3wUz0quGd1pA9ViwBBpGmdr4bwxuTgemxleUA97R2
+ 1ZBoVhiCjFiEJ7kIaXm/lUqXvkoGhkK6Y5iuQlrJvDyAsR64i0JyC8O3XYx5+e8yqfn/tE8OT
+ eVT0DLisnvXo9ue/86rOtlSNmCtahTWCpia57o2OMZFnwKirpjyAJJG3jfpgilsVgdFXjDi1L
+ A2GM1bdjSzaD4uCU2mqXPwbmf/gk0EJvb1itns1QHF+sdu/h+aVtAriCByVoHNWm/m5qVH6b/
+ AUdr6XxXo/loZDbeIg2wnFwRGuZbCSJzU5gxAVkTQj60w6kAiqvJtf9e/823qD49XCA9pmtkO
+ ZWmPSLlMb/qtXwLAHtz2JthRgSC3s988qkR25hceYEm+tPmGfGuOFiPEMlXDa6fqgMaIeLOKF
+ 6g7WUGI5i+fThANYco3+504Nw8e5rWxocEl9MyCpmgG7T2Hm5gieLr+vNTue75s88PzWnhKC2
+ bprTsnKzsNQ85jcLIdlyIeq8WYkvN75KYzs7AqBiMs9+Ha+LapBEeeNd9o078nZLgyts+kgm6
+ yH87G2LGUxhH2u+x267ahSSMl48iBwZjfBS97EedlyyRBhv0tnLkaLv2TNSrl8+RmaO7inKIu
+ +SMe1CbVVpd3qSS6S94Tv4Pjki9nII0lmua4qSm2IjjfyEj4H4pe36qvFeBX6HIm0nVYuf1
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 15:33:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,34 +67,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 19:33:45 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 19:33:46 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Commit d79864058a64 added a dedicated phony line for cscope.
+Displaying "vt82c686b_init error" doesn't give any hint about why
+this call failed. As this message targets developers and not users,
+replace the pointless error message by a call to assert() which
+will provide more useful information.
 
-Fixes: d79864058a64 ("Makefile: Add back TAGS/ctags/cscope rules")
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <159916246865.691541.16619858522304817323.stgit@bahia.lan>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Huacai Chen <chenhc@lemote.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200901104043.91383-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/mips/fuloong2e.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index d6c5c9fdef1a..83bc40b255db 100644
---- a/Makefile
-+++ b/Makefile
-@@ -128,7 +128,7 @@ build.ninja: config-host.mak
- Makefile: ;
- configure: ;
+diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+index 8ca31e5162c4..f28609976bf4 100644
+--- a/hw/mips/fuloong2e.c
++++ b/hw/mips/fuloong2e.c
+@@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_bus, int slot, qemu_irq intc,
+     PCIDevice *dev;
  
--.PHONY: all clean cscope distclean install \
-+.PHONY: all clean distclean install \
- 	recurse-all dist msi FORCE
- 
- SUBDIR_MAKEFLAGS=$(if $(V),,--no-print-directory --quiet)
+     isa_bus = vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
+-    if (!isa_bus) {
+-        fprintf(stderr, "vt82c686b_init error\n");
+-        exit(1);
+-    }
++    assert(isa_bus);
+     *p_isa_bus = isa_bus;
+     /* Interrupt controller */
+     /* The 8259 -> IP5  */
 -- 
 2.26.2
 
