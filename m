@@ -1,54 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kGjTT-0003NI-PD
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 09:52:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34202)
+	id 1kGk9B-0001nu-OO
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2020 10:35:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55726)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kGjTS-0003KV-8H; Fri, 11 Sep 2020 09:52:22 -0400
-Resent-Date: Fri, 11 Sep 2020 09:52:22 -0400
-Resent-Message-Id: <E1kGjTS-0003KV-8H@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21702)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kGjTP-0005Ma-Pi; Fri, 11 Sep 2020 09:52:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1599832316; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=RcK7tjKclORmAywO+Tus3wie/ZuC5uLanOcI0FNKwogkh010+li9QcZESRTBVfsXeth8ibDDSt1qxfoCuqeC8+OQa5cRtrlNzZRx3O/0a6UvvqIWWIqULOAsHRCrFjyCmq3WAnbCiDki6yvzF2e+s5G0cLYDcyM1GMUYSsxr9ss=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1599832316;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=6Su1RGHqB6Te+EtzZIdOxqW+747CL7Xz3gfOGusUy/c=; 
- b=BLC5EIDMUX0NGFemLmuP+3nvu8FL7gufNW6PxqH/Zud50q7Id7im9oDVj8JwaCb+J83e3COdf4ETRhi5dKLXvlbNZDTPW+PFLJHZwHUUgF2QBWRbakqUFEQgAsnz7178cmYKp/cexg8QuN39cAg/JPDmK2lBQmi9I31EK70UiX8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1599832315343294.6325585562721;
- Fri, 11 Sep 2020 06:51:55 -0700 (PDT)
-Subject: Re: [PATCH] target/i386/kvm: Add missing fallthrough comment
-Message-ID: <159983231403.4426.3570736825698577006@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200911125301.413081-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGk9A-0001mI-7Y; Fri, 11 Sep 2020 10:35:28 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40679)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGk97-000584-W3; Fri, 11 Sep 2020 10:35:27 -0400
+Received: by mail-wr1-x442.google.com with SMTP id j2so11718795wrx.7;
+ Fri, 11 Sep 2020 07:35:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=2eYQpOd3x0Q9Yh5498CMZbfDCFLE5K2oSaR634+ivvQ=;
+ b=o0Wk/Sd1KbBD6my2VYfb4zpOqSpUuE2UpBJjTZV8duqHxS+NrMK3g08dRpClc1dJAv
+ dsg0ahhQEVSCmsSL2fr+qvKeNdyzESaic1OMHTndsvRi/iVEv1vFAqfB2LCPT79pkdsn
+ OllGLb1+WJvH/esDnMK4lYsc07ybLSnHvIj5b5vgplLfZHohHjJQ2xA7w++lUIH+l6fa
+ udf6WGawEAasjkOCH+UmGCKanRp22jCkpEEKgscUJehqtXVg2ypZHWibOs9G3SV5a1lC
+ IpwEgBHcwq7UkwiLgSqceiqXRUAeozm9A+NddrEkWtA/zyQiG9514Tmd2eJJOsJM/oDy
+ 5oiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=2eYQpOd3x0Q9Yh5498CMZbfDCFLE5K2oSaR634+ivvQ=;
+ b=UxEVlH60BZEGxvRl52FDSKwZ699wUmv5HlEQJiRY/n1NbeL8xoyf+pkRi3bY9p2Z5W
+ 1JUKD9ObsvKI6Hi4om/U77WIay5nQT4Hi+EWb//Y4wsnbOb1MVFzDtq/VZno0bGPCOcu
+ q0EMdaZxYr8wKlGeF2jW6OZxWf2h5rTO7O71o/9pesQ0O0mst5BU43KjUKVa/v4MkZz0
+ Dbp338vNHgQ515EzkbHuAm3dLVuygMUJRzfVi/+7Vqg4SB+MddTpOozLjgBKKCJo8lFQ
+ WBvgI9ctWlUEsbE/hcdsNL2TWNjN2c3nZkDNa6W8+Teybf8V3ru2Qsr5tmBkUVRHxe8s
+ pP6w==
+X-Gm-Message-State: AOAM532e/LIocMSkOBKLiJ1t5dspnSKoccnukXyH4J9y/uh2r7FhDBIf
+ P4B8Bb8SByAtsT4u7H2F27WBdiOVrP8=
+X-Google-Smtp-Source: ABdhPJzMymzRQHHRl63zYm7DXt1iuKdCryomoKs5M9jniAjIHt7LPvNqxdWtvOLlHZPOxKivX05Lpg==
+X-Received: by 2002:adf:f24f:: with SMTP id b15mr2544132wrp.301.1599834921121; 
+ Fri, 11 Sep 2020 07:35:21 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id p9sm4537370wma.42.2020.09.11.07.35.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 11 Sep 2020 07:35:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 0/2] util/hexdump: Cleanup qemu_hexdump()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Zhang Chen
+ <chen.zhang@intel.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org
+References: <20200822180950.1343963-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <d91cbe5f-9a24-dbc7-c726-2e3eda8e980a@amsat.org>
+Date: Fri, 11 Sep 2020 16:35:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: thuth@redhat.com
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, qemu-trivial@nongnu.org,
- mtosatti@redhat.com, ehabkost@redhat.com, rth@twiddle.net
-Date: Fri, 11 Sep 2020 06:51:55 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/11 09:52:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20200822180950.1343963-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.469,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,21 +90,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2020 13:52:22 -0000
+X-List-Received-Date: Fri, 11 Sep 2020 14:35:29 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkxMTEyNTMwMS40MTMw
-ODEtMS10aHV0aEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBidWlsZCB0
-ZXN0IG9uIEZyZWVCU0QgaG9zdC4gUGxlYXNlIGZpbmQgdGhlIGRldGFpbHMgYmVsb3cuCgo9PT0g
-VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCiMgVGVzdGluZyBzY3JpcHQgd2lsbCBi
-ZSBpbnZva2VkIHVuZGVyIHRoZSBnaXQgY2hlY2tvdXQgd2l0aAojIEhFQUQgcG9pbnRpbmcgdG8g
-YSBjb21taXQgdGhhdCBoYXMgdGhlIHBhdGNoZXMgYXBwbGllZCBvbiB0b3Agb2YgImJhc2UiCiMg
-YnJhbmNoCmlmIHFlbXUtc3lzdGVtLXg4Nl82NCAtLWhlbHAgPi9kZXYvbnVsbCAyPiYxOyB0aGVu
-CiAgUUVNVT1xZW11LXN5c3RlbS14ODZfNjQKZWxpZiAvdXNyL2xpYmV4ZWMvcWVtdS1rdm0gLS1o
-ZWxwID4vZGV2L251bGwgMj4mMTsgdGhlbgogIFFFTVU9L3Vzci9saWJleGVjL3FlbXUta3ZtCmVs
-c2UKICBleGl0IDEKZmkKbWFrZSB2bS1idWlsZC1mcmVlYnNkIEo9MjEgUUVNVT0kUUVNVQpleGl0
-IDAKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCgoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUg
-YXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA5MTExMjUzMDEuNDEzMDgxLTEtdGh1dGhA
-cmVkaGF0LmNvbS90ZXN0aW5nLkZyZWVCU0QvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVy
-YXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxl
-YXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Hi Laurent,
+
+On 8/22/20 8:09 PM, Philippe Mathieu-Daudé wrote:
+> - Pass const void* buffer
+> - Reorder arguments
+> 
+> Supersedes: <20200822150457.1322519-1-f4bug@amsat.org>
+> 
+> Philippe Mathieu-Daudé (2):
+>   util/hexdump: Convert to take a void pointer argument
+>   util/hexdump: Reorder qemu_hexdump() arguments
+
+This series is fully reviewed, can it go via
+your qemu-trivial tree?
+
+Thanks,
+
+Phil.
 
