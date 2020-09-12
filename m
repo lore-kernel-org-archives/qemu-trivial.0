@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kH3tj-0001QU-9p
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53482)
+	id 1kH3tj-0001R1-Fy
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3te-0001PQ-Td; Sat, 12 Sep 2020 07:40:47 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36418)
+ id 1kH3th-0001Pf-8f; Sat, 12 Sep 2020 07:40:49 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34009)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3tc-0000Sq-SP; Sat, 12 Sep 2020 07:40:46 -0400
-Received: by mail-wm1-x342.google.com with SMTP id z9so7056386wmk.1;
- Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
+ id 1kH3tf-0000TA-Ce; Sat, 12 Sep 2020 07:40:48 -0400
+Received: by mail-wm1-x341.google.com with SMTP id l15so2759774wmh.1;
+ Sat, 12 Sep 2020 04:40:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=FQvkJn1GQASYjh2tCAEKRHVEfvoL4XB1f3Wl9kk0OVM=;
- b=dphRM0c5taPWbwIajeayxOcez0nx+HzzwCNalHMh8H+IQn136C2v2yttquCvVfP0yw
- raJQLiNcr7Gr5W5D3NYP7djRbd3Ek2MPZeCsbEytwNF3IhOld8Ns9n0RORNkW3oj2c1l
- 5xDkQfzM37jwXLlMiVThC/L5/g5UaIpj1Xjjp0mj+rj27gXejH4k9S+DR3L3mfT/NWCG
- ddSkr5orQEaYUchiyXa8snLRrKTfxVUM7CfbjAC+VRnYqC/OFkG3rbOtdO4cRJzNLrN6
- DSbq+bott7M++8TWVJMQlQzbFZVkECcCI43nPihNcHv7Wh88yFgCtzNdl4PDhGQ3FOMZ
- m2uw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=cjPhR7IkpYLtqYuSQXOeOWy0Y3FOG5E14Z0Rs7drrRo=;
+ b=O8YRdEkXWNjoNtmpWnTI2O2/pyOgp4edHqysBRyDq66zwFGdaLEgaWPxzgr0uOH9cG
+ T0+fOtFD+A2UsnZRVIRIbatk2XInbyhECywtGy++xp5BcyteRzuyxEUzags0mVik4Y8F
+ gphqz1dPLcWyNn8XtBYMvJ/z2343OFeMxI0JJ4bPp3CtU2zLvtqSGXL2fb2rW82fHSAG
+ PcGl5XbsbBRqhby59hWsI4q5QkBw0d/Xu11t1+sJGQw4ZxgnLNTZ/+xsMS9XF5w4qX4m
+ grYvjL9x48G+7RbvTtmC1u8gnMuTPFcTSbpVDhcmewf9kdUFsIsmHpdEJuClS0f2YZaj
+ k3ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=FQvkJn1GQASYjh2tCAEKRHVEfvoL4XB1f3Wl9kk0OVM=;
- b=UY1nT8kDUZVoq6O2TCtYZTU8ABlT1PDlvttda8y8pQDfxqaGNF2d5XtDq2qsVPxRu0
- x1hiVmhZOTTIRb/nTnF2+NzxsGsjwPJA3hBEKRlYlDRkp5csjgXCrp7FhA+izBIWNpbP
- zT8iOuqFzR2ccEx9s4+LIMBGsl1/q4NJAVB53Vq8Gquyp25S3B0ywMxzalT5iT8bRWIn
- RIZDrhV4s0Oi1ZD25ckLbu1V5wvNy3nroT4xjX0vJ6yI0T5aDU1PTY69YB4sc70uq+++
- +Bcvo8RgeKtOaByKiJldPCMXjgWmFjCPiPieGNtuVyq4bRSfCFFqjhYya8/ZsPgUsO+m
- WVfg==
-X-Gm-Message-State: AOAM530Yl+jA0zdACMcdJ97AVsDtNKWL3Wwt9uJM7pR0tihG5Vq6hOg4
- PetQl2pGJ8tkPpczFnWmFic=
-X-Google-Smtp-Source: ABdhPJygLScMMJapyzGRP3SwYj+aFQkBBf5tM7gsBRHjdlaVhSLjO0I2AxYdRlJqRLo5B0xobNMIEw==
-X-Received: by 2002:a05:600c:2f8f:: with SMTP id
- t15mr6794523wmn.41.1599910842884; 
- Sat, 12 Sep 2020 04:40:42 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=cjPhR7IkpYLtqYuSQXOeOWy0Y3FOG5E14Z0Rs7drrRo=;
+ b=KEDH8sTrzwbs/nFpyaGTlL6SafHk/pYGqmKJ3NkljnzOB8Rx4+v3GdZGa0C8hmCUic
+ t2JRSa0PQeS0yP9AGtoNsw9H2sot+EL8+APk+3tMH/cybvV3zNGNC4bsFd6MVQqbFhY9
+ IhJotHJ9oih4NTmUadvC4p1g/iE0kMvxZH0KnJc9s3vaSWTnsg6G7w+wjX5JYy23bR4+
+ iliYSLki3jouzJTVXiq8Eae9cotw6I1nFMBnKxc0iEkl/T13vsdk/L0WUTuQNoLTJevy
+ IK+GPvd9hIqhEM3jWkL7k0/gWS/rxnoYF/LPQgWoPgiiKw2mjiiVwEMZnshjSmYUPF+O
+ GfBw==
+X-Gm-Message-State: AOAM532oAVlwBIHDkPog96a4+1E5ZO69fFd687HY2mfdWCG0bqT6/Uqo
+ PNYGJTtOTIokPpWBOhNCoZ8=
+X-Google-Smtp-Source: ABdhPJzTIhb57qOmta0EIxYkO2MBw9vnBPaze/OsjXLZv8ICZW8A9vFz+LOvR9ZIVc1l4wcW6KR+Ug==
+X-Received: by 2002:a1c:7c13:: with SMTP id x19mr6751152wmc.45.1599910845264; 
+ Sat, 12 Sep 2020 04:40:45 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.41
+ by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 04:40:42 -0700 (PDT)
+ Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -51,16 +50,21 @@ To: Paolo Bonzini <pbonzini@redhat.com>,
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 0/7] hw/char/serial: Housekeeping
-Date: Sat, 12 Sep 2020 13:40:33 +0200
-Message-Id: <20200912114040.918464-1-f4bug@amsat.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 2/7] hw/char/serial: Replace commented DPRINTF() by trace
+ event
+Date: Sat, 12 Sep 2020 13:40:35 +0200
+Message-Id: <20200912114040.918464-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200912114040.918464-1-f4bug@amsat.org>
+References: <20200912114040.918464-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -83,58 +87,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Sep 2020 11:40:48 -0000
+X-List-Received-Date: Sat, 12 Sep 2020 11:40:49 -0000
 
-Nothing very exciting, cleanups before more serious changes.
+Convert the old debug PRINTF() call to display the UART
+baudrate to a trace event.
 
-Since v1: addressed Paolo's comments
-- Also alias QDev properties on the PCI device (patch 6)
-- Initialize the 'id' property on the PCI multi-UART device (patch 7)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/char/serial.c     | 4 +---
+ hw/char/trace-events | 1 +
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-Patches 1-6 already queued by Paolo.
-
-$ git backport-diff -r v2 -u v1
-Key:
-[----] : patches are identical
-[####] : number of functional differences between upstream/downstream patch
-[down] : patch is downstream-only
-The flags [FC] indicate (F)unctional and (C)ontextual differences, respective=
-ly
-
-001/7:[----] [--] 'hw/char/serial: Assert serial_ioport_read/write offset fit=
-s 8 bytes'
-002/7:[----] [--] 'hw/char/serial: Replace commented DPRINTF() by trace event'
-003/7:[----] [--] 'hw/char/serial: Remove old DEBUG_SERIAL commented code'
-004/7:[----] [--] 'hw/char/serial: Rename I/O read/write trace events'
-005/7:[----] [-C] 'hw/char/serial: Make 'wakeup' property boolean'
-006/7:[0003] [FC] 'hw/char/serial: Alias QDEV properties from generic serial =
-object'
-007/7:[0001] [FC] 'hw/char/serial: Let SerialState have an 'id' field'
-
-Paolo, can you take this #6 (instead of v1) and #7 now?
-
-Thanks,
-
-Phil.
-
-Philippe Mathieu-Daud=C3=A9 (7):
-  hw/char/serial: Assert serial_ioport_read/write offset fits 8 bytes
-  hw/char/serial: Replace commented DPRINTF() by trace event
-  hw/char/serial: Remove old DEBUG_SERIAL commented code
-  hw/char/serial: Rename I/O read/write trace events
-  hw/char/serial: Make 'wakeup' property boolean
-  hw/char/serial: Alias QDEV properties from generic serial object
-  hw/char/serial: Let SerialState have an 'id' field
-
- include/hw/char/serial.h   |  3 ++-
- hw/char/serial-isa.c       |  4 ++--
- hw/char/serial-pci-multi.c |  1 +
- hw/char/serial-pci.c       |  3 ++-
- hw/char/serial.c           | 25 +++++++------------------
- hw/char/trace-events       |  5 +++--
- 6 files changed, 17 insertions(+), 24 deletions(-)
-
---=20
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index a855ef66ea2..fb41337b661 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -187,9 +187,7 @@ static void serial_update_parameters(SerialState *s)
+     ssp.stop_bits = stop_bits;
+     s->char_transmit_time =  (NANOSECONDS_PER_SECOND / speed) * frame_size;
+     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
+-
+-    DPRINTF("speed=%.2f parity=%c data=%d stop=%d\n",
+-           speed, parity, data_bits, stop_bits);
++    trace_serial_update_parameters(speed, parity, data_bits, stop_bits);
+ }
+ 
+ static void serial_update_msl(SerialState *s)
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 2442a9f7d5f..17304bef26d 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -7,6 +7,7 @@ parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s
+ # serial.c
+ serial_ioport_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
+ serial_ioport_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
++serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
+ 
+ # virtio-serial-bus.c
+ virtio_serial_send_control_event(unsigned int port, uint16_t event, uint16_t value) "port %u, event %u, value %u"
+-- 
 2.26.2
 
 
