@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kH3to-0001Up-U3
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53522)
+	id 1kH3tp-0001Vq-BE
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3th-0001Pe-3J; Sat, 12 Sep 2020 07:40:49 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43984)
+ id 1kH3ti-0001QG-0B; Sat, 12 Sep 2020 07:40:51 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3te-0000Sx-W8; Sat, 12 Sep 2020 07:40:48 -0400
-Received: by mail-wr1-x442.google.com with SMTP id k15so13889775wrn.10;
- Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
+ id 1kH3tg-0000TP-7L; Sat, 12 Sep 2020 07:40:49 -0400
+Received: by mail-wm1-x342.google.com with SMTP id w2so6619965wmi.1;
+ Sat, 12 Sep 2020 04:40:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=34kk1edcAv9gPx2tbUUFoSPGnc2hB1OEkRGzgkZ3UyM=;
- b=qSwHns8pnvRcyHGrA6m6QJYDbIa9MegbKjQShn4pRkdvDWB1rdtPDt3nWzPDQz7OAM
- PlesndzWMGYz7tGB1k+tKf1s1BLhIq8QfSMcraNH8t1AslRWYKyYsdmW30uJgkd4knmy
- GHnN4ZG0VN8ToXeo9Gunl9yn7uzIOwBs2d+vf0klmrTwZRnPkK4BtV/Epd468NMjtzpt
- jMHO3kve/Uwh91YPXVsbTKhXMPPGvqkPf/taolCuj7y4CETBJqdp4i9o9cey1geps/if
- tGMG5w+XW7geXXR7I0i+v2IlH1Sb7siLWaqpI8hBdvEPfj93UNFc1Fl5pi48uBeuaHWH
- ZBMQ==
+ bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
+ b=TsZpsrhJ3RhWZIJyw16+9bzFXZyg5ncW7kck6EcoSZ8ZhUz4o7YPT5TIxK0ptSMD5l
+ SjOf5qYNqjBiXqm9tO+JcJNKnM6aWwOXsmjBWl0UojGAkKBRiEXmKUgGyeBtNKOFyxFk
+ DRkY0E+mCjaHTuAxPrEQ36yecUFEPEhSf+jTJOwqp9Snq1apB1f7C4f5WWqltDdrXVxb
+ Hk81uwkLK/tSwiKWUcoHAEFrRcogiFZsbv7RSwzY2UgvRoZCtaMJ8aP+ZsNyPbVNEomc
+ C6bhAgrYPoyhgqeEdNwlDMDKuLraXuhqBCZBnY7h+dj3Uy2RUGMzEuOerPsqf5gV7Ugc
+ anSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=34kk1edcAv9gPx2tbUUFoSPGnc2hB1OEkRGzgkZ3UyM=;
- b=nrA7oKW5RWEx1P3p16j/PBp/9d4aBAFaiz+U1OTHqKmPSR0CAtmr8vHSRUES+iw6qP
- 0oPQj8Ust/AzCvK0y65F83j/jbkZh/xgiSgNS0lKnebW7jCELUgMdizIZZCSX//u+RnW
- LD4r1j/Zj3egaX2KEvrNWXKBTmmk5gr0SeX+d/nhEhVI5393PwA0y1UjxcBdIKI18+Me
- ko4L341s/C/xo1K+z4liPIRD23pzefScUDCM2MauTCo+gblzqL+kAd2Sr9ur2YbtEXFp
- cQVM+Vr9lxghaojrb5BCTRfZhxzzGtolctQbj+8l1XC6WqnGps0/yIh6Mv9UQ65BoBJK
- z/lQ==
-X-Gm-Message-State: AOAM530s2aDAf+/eUyXFfQHuvp77eIOCbQCq57j1qrPpc/BFnd3CHDCf
- 27pNRIhrpPriYc5Gwrgka30=
-X-Google-Smtp-Source: ABdhPJxBfxV8QkEtvA+iRweVpgQY7yx7umsKtYT8+OouFCiBWv/6XSDMSHJ3MBcxNgztCZRszD7ntQ==
-X-Received: by 2002:adf:f290:: with SMTP id k16mr6962931wro.124.1599910844047; 
- Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
+ bh=ziCw1jrdbRRxzZUuAacPeDfn99gOs6JW3cbKwKy/6Wo=;
+ b=tAne9t0eXm86QUjwkeym7jXw6ofYK2W95188hXoDUxRGXApdxvjbsM6W+yFyaO1waD
+ fHuiTn9WW2Vk09gnRDbOdKDcQfTgRWGDGqno/3rgUhOSrAu0B1ApRvVT0AtA0b8XAGLy
+ nKeWFO93WnjDmbm3U47l4yDzyA+Bj9aN8j92A0FGQ834whNWPGswExejbXjnd3MwP8pC
+ 5YoMSDnF1EAFmAZqElUoEitsktC+h2mtzw30RFYDusDx7MvaMVjupXtzs65CGVZAw//O
+ 8oLlhTAIwFjwgH9/y3EKTN+75orKeir2ngTwkYIPTMpTjvAWzjmZyqFR+nAL6wG/+0Fn
+ ASXQ==
+X-Gm-Message-State: AOAM5326BqWXHNjXnaTZoyun3Yhw8qPuiHhRJMiIByyDbm4c9i0k3iJY
+ GNr2BKckTrjntcxUS4VskGQ=
+X-Google-Smtp-Source: ABdhPJxvI/WOGV6Fo61vJPY+cPr8BV3k0ADGPI8FRgkd1nBBH18I4hf3/vqIJeD+D6P1uXdpjYpIgQ==
+X-Received: by 2002:a1c:c2c6:: with SMTP id s189mr1791879wmf.146.1599910846444; 
+ Sat, 12 Sep 2020 04:40:46 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.43
+ by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 04:40:43 -0700 (PDT)
+ Sat, 12 Sep 2020 04:40:45 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -52,10 +52,9 @@ Cc: qemu-trivial@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 1/7] hw/char/serial: Assert serial_ioport_read/write offset
- fits 8 bytes
-Date: Sat, 12 Sep 2020 13:40:34 +0200
-Message-Id: <20200912114040.918464-2-f4bug@amsat.org>
+Subject: [PATCH v2 3/7] hw/char/serial: Remove old DEBUG_SERIAL commented code
+Date: Sat, 12 Sep 2020 13:40:36 +0200
+Message-Id: <20200912114040.918464-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200912114040.918464-1-f4bug@amsat.org>
 References: <20200912114040.918464-1-f4bug@amsat.org>
@@ -63,8 +62,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -87,48 +86,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Sep 2020 11:40:49 -0000
+X-List-Received-Date: Sat, 12 Sep 2020 11:40:51 -0000
 
-The serial device has 8 registers, each 8-bit. The MemoryRegionOps
-'serial_io_ops' is initialized with max_access_size=1, and all
-memory_region_init_io() callers correctly set the region size to
-8 bytes:
-- serial_io_realize
-- serial_isa_realizefn
-- serial_pci_realize
-- multi_serial_pci_realize
-
-It is safe to assert the offset argument of serial_ioport_read()
-and serial_ioport_write() is always less than 8.
+All useful DPRINTF() calls have been converted to trace
+events.  Remove a pointless one in the IOEventHandler,
+and drop the DEBUG_SERIAL ifdef'ry.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/serial.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/char/serial.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 23864794929..a855ef66ea2 100644
+index fb41337b661..1e70294f28a 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -344,7 +344,7 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
+@@ -36,8 +36,6 @@
+ #include "trace.h"
+ #include "hw/qdev-properties.h"
+ 
+-//#define DEBUG_SERIAL
+-
+ #define UART_LCR_DLAB	0x80	/* Divisor latch access bit */
+ 
+ #define UART_IER_MSI	0x08	/* Enable Modem status interrupt */
+@@ -102,14 +100,6 @@
+ 
+ #define MAX_XMIT_RETRY      4
+ 
+-#ifdef DEBUG_SERIAL
+-#define DPRINTF(fmt, ...) \
+-do { fprintf(stderr, "serial: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) \
+-do {} while (0)
+-#endif
+-
+ static void serial_receive1(void *opaque, const uint8_t *buf, int size);
+ static void serial_xmit(SerialState *s);
+ 
+@@ -636,7 +626,6 @@ static void serial_receive1(void *opaque, const uint8_t *buf, int size)
+ static void serial_event(void *opaque, QEMUChrEvent event)
  {
      SerialState *s = opaque;
- 
--    addr &= 7;
-+    assert(size == 1 && addr < 8);
-     trace_serial_ioport_write(addr, val);
-     switch(addr) {
-     default:
-@@ -485,7 +485,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
-     SerialState *s = opaque;
-     uint32_t ret;
- 
--    addr &= 7;
-+    assert(size == 1 && addr < 8);
-     switch(addr) {
-     default:
-     case 0:
+-    DPRINTF("event %x\n", event);
+     if (event == CHR_EVENT_BREAK)
+         serial_receive_break(s);
+ }
 -- 
 2.26.2
 
