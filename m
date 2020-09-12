@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kH3tj-0001R1-Fy
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53528)
+	id 1kH3to-0001Up-U3
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Sep 2020 07:40:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3th-0001Pf-8f; Sat, 12 Sep 2020 07:40:49 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34009)
+ id 1kH3th-0001Pe-3J; Sat, 12 Sep 2020 07:40:49 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43984)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH3tf-0000TA-Ce; Sat, 12 Sep 2020 07:40:48 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l15so2759774wmh.1;
- Sat, 12 Sep 2020 04:40:46 -0700 (PDT)
+ id 1kH3te-0000Sx-W8; Sat, 12 Sep 2020 07:40:48 -0400
+Received: by mail-wr1-x442.google.com with SMTP id k15so13889775wrn.10;
+ Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cjPhR7IkpYLtqYuSQXOeOWy0Y3FOG5E14Z0Rs7drrRo=;
- b=O8YRdEkXWNjoNtmpWnTI2O2/pyOgp4edHqysBRyDq66zwFGdaLEgaWPxzgr0uOH9cG
- T0+fOtFD+A2UsnZRVIRIbatk2XInbyhECywtGy++xp5BcyteRzuyxEUzags0mVik4Y8F
- gphqz1dPLcWyNn8XtBYMvJ/z2343OFeMxI0JJ4bPp3CtU2zLvtqSGXL2fb2rW82fHSAG
- PcGl5XbsbBRqhby59hWsI4q5QkBw0d/Xu11t1+sJGQw4ZxgnLNTZ/+xsMS9XF5w4qX4m
- grYvjL9x48G+7RbvTtmC1u8gnMuTPFcTSbpVDhcmewf9kdUFsIsmHpdEJuClS0f2YZaj
- k3ww==
+ bh=34kk1edcAv9gPx2tbUUFoSPGnc2hB1OEkRGzgkZ3UyM=;
+ b=qSwHns8pnvRcyHGrA6m6QJYDbIa9MegbKjQShn4pRkdvDWB1rdtPDt3nWzPDQz7OAM
+ PlesndzWMGYz7tGB1k+tKf1s1BLhIq8QfSMcraNH8t1AslRWYKyYsdmW30uJgkd4knmy
+ GHnN4ZG0VN8ToXeo9Gunl9yn7uzIOwBs2d+vf0klmrTwZRnPkK4BtV/Epd468NMjtzpt
+ jMHO3kve/Uwh91YPXVsbTKhXMPPGvqkPf/taolCuj7y4CETBJqdp4i9o9cey1geps/if
+ tGMG5w+XW7geXXR7I0i+v2IlH1Sb7siLWaqpI8hBdvEPfj93UNFc1Fl5pi48uBeuaHWH
+ ZBMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cjPhR7IkpYLtqYuSQXOeOWy0Y3FOG5E14Z0Rs7drrRo=;
- b=KEDH8sTrzwbs/nFpyaGTlL6SafHk/pYGqmKJ3NkljnzOB8Rx4+v3GdZGa0C8hmCUic
- t2JRSa0PQeS0yP9AGtoNsw9H2sot+EL8+APk+3tMH/cybvV3zNGNC4bsFd6MVQqbFhY9
- IhJotHJ9oih4NTmUadvC4p1g/iE0kMvxZH0KnJc9s3vaSWTnsg6G7w+wjX5JYy23bR4+
- iliYSLki3jouzJTVXiq8Eae9cotw6I1nFMBnKxc0iEkl/T13vsdk/L0WUTuQNoLTJevy
- IK+GPvd9hIqhEM3jWkL7k0/gWS/rxnoYF/LPQgWoPgiiKw2mjiiVwEMZnshjSmYUPF+O
- GfBw==
-X-Gm-Message-State: AOAM532oAVlwBIHDkPog96a4+1E5ZO69fFd687HY2mfdWCG0bqT6/Uqo
- PNYGJTtOTIokPpWBOhNCoZ8=
-X-Google-Smtp-Source: ABdhPJzTIhb57qOmta0EIxYkO2MBw9vnBPaze/OsjXLZv8ICZW8A9vFz+LOvR9ZIVc1l4wcW6KR+Ug==
-X-Received: by 2002:a1c:7c13:: with SMTP id x19mr6751152wmc.45.1599910845264; 
- Sat, 12 Sep 2020 04:40:45 -0700 (PDT)
+ bh=34kk1edcAv9gPx2tbUUFoSPGnc2hB1OEkRGzgkZ3UyM=;
+ b=nrA7oKW5RWEx1P3p16j/PBp/9d4aBAFaiz+U1OTHqKmPSR0CAtmr8vHSRUES+iw6qP
+ 0oPQj8Ust/AzCvK0y65F83j/jbkZh/xgiSgNS0lKnebW7jCELUgMdizIZZCSX//u+RnW
+ LD4r1j/Zj3egaX2KEvrNWXKBTmmk5gr0SeX+d/nhEhVI5393PwA0y1UjxcBdIKI18+Me
+ ko4L341s/C/xo1K+z4liPIRD23pzefScUDCM2MauTCo+gblzqL+kAd2Sr9ur2YbtEXFp
+ cQVM+Vr9lxghaojrb5BCTRfZhxzzGtolctQbj+8l1XC6WqnGps0/yIh6Mv9UQ65BoBJK
+ z/lQ==
+X-Gm-Message-State: AOAM530s2aDAf+/eUyXFfQHuvp77eIOCbQCq57j1qrPpc/BFnd3CHDCf
+ 27pNRIhrpPriYc5Gwrgka30=
+X-Google-Smtp-Source: ABdhPJxBfxV8QkEtvA+iRweVpgQY7yx7umsKtYT8+OouFCiBWv/6XSDMSHJ3MBcxNgztCZRszD7ntQ==
+X-Received: by 2002:adf:f290:: with SMTP id k16mr6962931wro.124.1599910844047; 
+ Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.44
+ by smtp.gmail.com with ESMTPSA id h6sm9373895wmb.22.2020.09.12.04.40.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 04:40:44 -0700 (PDT)
+ Sat, 12 Sep 2020 04:40:43 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -52,10 +52,10 @@ Cc: qemu-trivial@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 2/7] hw/char/serial: Replace commented DPRINTF() by trace
- event
-Date: Sat, 12 Sep 2020 13:40:35 +0200
-Message-Id: <20200912114040.918464-3-f4bug@amsat.org>
+Subject: [PATCH v2 1/7] hw/char/serial: Assert serial_ioport_read/write offset
+ fits 8 bytes
+Date: Sat, 12 Sep 2020 13:40:34 +0200
+Message-Id: <20200912114040.918464-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200912114040.918464-1-f4bug@amsat.org>
 References: <20200912114040.918464-1-f4bug@amsat.org>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -89,43 +89,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 12 Sep 2020 11:40:49 -0000
 
-Convert the old debug PRINTF() call to display the UART
-baudrate to a trace event.
+The serial device has 8 registers, each 8-bit. The MemoryRegionOps
+'serial_io_ops' is initialized with max_access_size=1, and all
+memory_region_init_io() callers correctly set the region size to
+8 bytes:
+- serial_io_realize
+- serial_isa_realizefn
+- serial_pci_realize
+- multi_serial_pci_realize
+
+It is safe to assert the offset argument of serial_ioport_read()
+and serial_ioport_write() is always less than 8.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/serial.c     | 4 +---
- hw/char/trace-events | 1 +
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ hw/char/serial.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index a855ef66ea2..fb41337b661 100644
+index 23864794929..a855ef66ea2 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -187,9 +187,7 @@ static void serial_update_parameters(SerialState *s)
-     ssp.stop_bits = stop_bits;
-     s->char_transmit_time =  (NANOSECONDS_PER_SECOND / speed) * frame_size;
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
--
--    DPRINTF("speed=%.2f parity=%c data=%d stop=%d\n",
--           speed, parity, data_bits, stop_bits);
-+    trace_serial_update_parameters(speed, parity, data_bits, stop_bits);
- }
+@@ -344,7 +344,7 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
+ {
+     SerialState *s = opaque;
  
- static void serial_update_msl(SerialState *s)
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 2442a9f7d5f..17304bef26d 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -7,6 +7,7 @@ parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s
- # serial.c
- serial_ioport_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
- serial_ioport_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
-+serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
+-    addr &= 7;
++    assert(size == 1 && addr < 8);
+     trace_serial_ioport_write(addr, val);
+     switch(addr) {
+     default:
+@@ -485,7 +485,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
+     SerialState *s = opaque;
+     uint32_t ret;
  
- # virtio-serial-bus.c
- virtio_serial_send_control_event(unsigned int port, uint16_t event, uint16_t value) "port %u, event %u, value %u"
+-    addr &= 7;
++    assert(size == 1 && addr < 8);
+     switch(addr) {
+     default:
+     case 0:
 -- 
 2.26.2
 
