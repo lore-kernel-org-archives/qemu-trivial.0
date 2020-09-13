@@ -1,65 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kHQNL-0001Ps-BT
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Sep 2020 07:40:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40990)
+	id 1kHQP2-0002PS-GY
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Sep 2020 07:42:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHQNG-0001LP-5b
- for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 07:40:50 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:43906
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHQP0-0002MZ-D0
+ for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 07:42:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:48565)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHQNE-0003fO-B1
- for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 07:40:49 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHQOy-0003ms-Gf
+ for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 07:42:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599997247;
+ s=mimecast20190719; t=1599997355;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=gpPRBijc+3G9gBPOKUwy0YneqiwSCcznq1QbS8eARGU=;
- b=gDOasce6IAO5MRAQZKD96uhb8ucITuH7Kf6zE1V/HcwdStnjQ4z8KfBGBtOdX22Qysvj6a
- YxCb/PR4jBllJVdSCEW3DGtBT1fTNlU58X4LlU1gTJ3zrkb9Efus0kXgmngPfGqGon5klw
- HRCLk8UH/HS0oTrJG7b0p8//6duCA0A=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-228-jl3T99MZPtiWgkCm5sw9yg-1; Sun, 13 Sep 2020 07:40:43 -0400
-X-MC-Unique: jl3T99MZPtiWgkCm5sw9yg-1
-Received: by mail-wr1-f70.google.com with SMTP id r15so5456029wrt.8
- for <qemu-trivial@nongnu.org>; Sun, 13 Sep 2020 04:40:43 -0700 (PDT)
+ bh=YzzUzExnk4lJrfqWcFFqxb4T2DLOs+soNXtK6RFCLak=;
+ b=BHofjwyldcw2E8XHehoe2AgENjdGpUDKy+ofkz+A2gi7aTK9aupZjkoolBa+YYhB0k0lsU
+ VnDI4arnaDMbbUEL0NTZFlLEwFUzNONZZWam7oFB0P4DE2KQEAPEHFC0migKtx+YyDkRJj
+ JYhAqB5DwIVG6CqHl4X6S/1vCTj+p2s=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-416-0ejtv3CvNKiZRSv5lIshSg-1; Sun, 13 Sep 2020 07:42:31 -0400
+X-MC-Unique: 0ejtv3CvNKiZRSv5lIshSg-1
+Received: by mail-wr1-f71.google.com with SMTP id j7so5502147wro.14
+ for <qemu-trivial@nongnu.org>; Sun, 13 Sep 2020 04:42:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=gpPRBijc+3G9gBPOKUwy0YneqiwSCcznq1QbS8eARGU=;
- b=mmCDD+7xBBPJWzrBUKw5iiywsHh2h2W11KXf/Dz26n6Nd6m7ro2Yo6c7OVH+uxaVWD
- jPmyq4L4Uc4Q/S8G0p/iCwyR0Zjjgdpu5rNzgK2ju+ekWsqeHG6F/sW0mb9dyWGr6aKn
- g0Gw/Y3Qlte8fa08O9K1MmU8lek6r3cY1GEniS8YGsLagCBGlSmojigybp8V+AZ72vfg
- OR+ZI0Oh1yF+rn5bu/kj5ClefNSoL4UecVmO6UJbomRGEecXXLmZ11e3jARwM4tuY4eP
- nAfEH9Ri0d27dNwqiuYTn1bTqAk+PLyh2VDlfmYG9yJMig45dHKJmEoR6b4cz+e7a7Zw
- Xrxw==
-X-Gm-Message-State: AOAM531RAlJRBkmMTlN3xg/ovki1PaT9S68tMel96F93b89lf95OKOJg
- rXmKXDEK/0l9yJdDf5MDUSYxsB2ZxyfaOXqRgA48oH/zTMJQpYPywF9hzw2Xks2G0FQoGOnY1HE
- 0/MoZwLxpZxTYKiDCpg==
-X-Received: by 2002:a5d:4fcc:: with SMTP id h12mr10789313wrw.199.1599997242190; 
- Sun, 13 Sep 2020 04:40:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzn9ckusCaLJzd27W8hIuMf3ax9Hgtt3AHwMEO9po6t3x+Vb42LZS/8VG/KmuQNzAcYUJGnLA==
-X-Received: by 2002:a5d:4fcc:: with SMTP id h12mr10789305wrw.199.1599997242039; 
- Sun, 13 Sep 2020 04:40:42 -0700 (PDT)
+ bh=YzzUzExnk4lJrfqWcFFqxb4T2DLOs+soNXtK6RFCLak=;
+ b=iIekQkLdi1YnraZ9c0oV5n4c6y2z41eUpel3qAHCnjgeshCsgtPS/YxSlAZh94Yl68
+ z34y18W2rALlVhWgyjE5/vhQVKcPRzPrGGmdgbmuilcK45BE+w0bFjzHNo73gviBLHk6
+ 3VLhD+R/VoQ60uYo5aWbVQcmg6tSBe2hOfElCywfaryeiWWuz04nyYqL91kmw4F5OEMe
+ Ta9SsTZTuMmLjOrB2O+uOM8Fc69jmGMuh/YymISQhVQCLP4hOo+1Sxesaiq7wcxNysii
+ gDQal/DUw5HkVScCFoMshm6+hX3NTFBmWKqLW3F7tbBe+Sfa5GQ9nF8g8tqrUGAxxEE4
+ ZbsA==
+X-Gm-Message-State: AOAM5305mZnfiAnT4DA6B//L5lloup5DP2rYXjhiK6CXcWPfBM+QRypL
+ IY1piyTdcZWQZNvttpMjp8GZ1JPqr2FcFdY6IeMN0YjV+fLhU4hQsDxgp4Bd7RSsrWfq4cXfGW1
+ DRlLH+p/930ySuVrcUA==
+X-Received: by 2002:a1c:1d17:: with SMTP id d23mr10783694wmd.187.1599997350008; 
+ Sun, 13 Sep 2020 04:42:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmN7RR7tjkEI/U6wY/w2vAIKs0OqcryCl1ZJ7tXMkkZDhrGKRafqg3MjsxUaL2sLdJqNIOJQ==
+X-Received: by 2002:a1c:1d17:: with SMTP id d23mr10783686wmd.187.1599997349851; 
+ Sun, 13 Sep 2020 04:42:29 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id x16sm14843157wrq.62.2020.09.13.04.40.40
+ by smtp.gmail.com with ESMTPSA id f14sm15269802wrv.72.2020.09.13.04.42.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 13 Sep 2020 04:40:41 -0700 (PDT)
-Subject: Re: [PATCH v2 0/2] hw/timer/hpet: Trivial format string fix
-To: Laurent Vivier <laurent@vivier.eu>, Dov Murik <dovmurik@linux.vnet.ibm.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200910135852.516809-1-philmd@redhat.com>
- <35c826f7-bfbf-9e74-ad86-ef2d3262828f@redhat.com>
- <2d4ff491-de20-944f-dabd-f35d6a81b53d@linux.vnet.ibm.com>
- <254802cd-2e4e-8506-2bd4-ce7cc0dad23e@vivier.eu>
- <398087ba-6c7f-488b-632d-d36b8c27f1c6@vivier.eu>
+ Sun, 13 Sep 2020 04:42:29 -0700 (PDT)
+Subject: Re: [PATCH 0/2] hw/timer/hpet: Fix compiler errors with -DHPET_DEBUG
+To: Dov Murik <dovmurik@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200909083650.46771-1-dovmurik@linux.vnet.ibm.com>
+ <8d9ae068-77cc-6152-7b90-a51bf70648a0@redhat.com>
+ <4918b958-dbd4-bd18-bb75-da7386124886@linux.vnet.ibm.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -84,12 +81,12 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <a0ddd476-8f9c-ced1-e7d9-86ea9db7be0d@redhat.com>
-Date: Sun, 13 Sep 2020 13:40:40 +0200
+Message-ID: <f246ada9-bf7d-2c94-e24e-e28bf3d2efc2@redhat.com>
+Date: Sun, 13 Sep 2020 13:42:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <398087ba-6c7f-488b-632d-d36b8c27f1c6@vivier.eu>
+In-Reply-To: <4918b958-dbd4-bd18-bb75-da7386124886@linux.vnet.ibm.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0.001
@@ -97,17 +94,18 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/13 07:40:47
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/13 07:42:35
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.695,
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.695,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,46 +118,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Sep 2020 11:40:50 -0000
+X-List-Received-Date: Sun, 13 Sep 2020 11:42:38 -0000
 
-On 9/12/20 9:15 PM, Laurent Vivier wrote:
-> Le 12/09/2020 à 21:02, Laurent Vivier a écrit :
->> Le 12/09/2020 à 19:34, Dov Murik a écrit :
+Cc'ing qemu-trivial@
+
+On 9/10/20 2:53 PM, Dov Murik wrote:
+> On 09/09/2020 20:24, Philippe Mathieu-Daudé wrote:
+>> On 9/9/20 10:36 AM, Dov Murik wrote:
+>>> Fix several compiler errors when compiling withe -DHPET_DEBUG.
 >>>
+>>> Steps to reproduce the issue:
 >>>
->>> On 10/09/2020 17:08, Philippe Mathieu-Daudé wrote:
->>>> On 9/10/20 3:58 PM, Philippe Mathieu-Daudé wrote:
->>>>> Fix a format string and remove dead code.
->>>>>
->>>>> Since v1:
->>>>> - Addressed Dov comments (fix format string + style):
->>>>>    https://www.mail-archive.com/qemu-devel@nongnu.org/msg739239.html
->>>>
->>>> Dov, since you sent the same patches/code and sign them with
->>>> your S-o-b, I added them here too, is that OK with you?
+>>>      mkdir build
+>>>      cd build
+>>>      ../configure --target-list=x86_64-softmmu
+>>> --extra-cflags=-DHPET_DEBUG
+>>>      make
 >>>
->>> Yes, thank you for that.
+>>> Dov Murik (2):
+>>>    hw/timer/hpet: Remove unused functions hpet_ram_readb, hpet_ram_readw
+>>>    hw/timer/hpet: Fix debug format strings
 >>>
->>>>
->>>>>
->>>>> Philippe Mathieu-Daudé (2):
->>>>>    hw/timer/hpet: Remove dead code
->>>>>    hw/timer/hpet: Fix DPRINTF format string
->>>>>
->>>>>   hw/timer/hpet.c | 23 ++++++-----------------
->>>>>   1 file changed, 6 insertions(+), 17 deletions(-)
->>>>>
+>>>   hw/timer/hpet.c | 27 +++++++--------------------
+>>>   1 file changed, 7 insertions(+), 20 deletions(-)
 >>>
 >>
->> Applied to my trivial-patches branch.
+>> I sent almost the same patches last week :)
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg736836.html
 > 
-> As Dov makes more comments on a patch, I've removed them from my branch.
+> Oops, missed that. You're right.
+> 
+>> You seem to fix a 4th format, can you rebase on top? (As these
+>> patches have already been queued).
+> 
+> Actually there's a small issue in one of your suggested fixes: you added
+> "0x" but kept the "%#".  I think it should be without the "#" (also
+> according to the coding style document).
+> 
+> I suggest you fix this small issue, and also add any changes you wish
+> from this patchset; then we can throw my patchset to the bin.
 
-Thanks. Let's follow up with Dov patches.
+Let's use your patchset instead.
+
+Series:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 > 
-> Thanks,
-> Laurent
+> -Dov
 > 
 
 
