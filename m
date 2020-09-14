@@ -1,112 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kHZG5-0001pB-8y
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Sep 2020 17:10:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48574)
+	id 1kHfc7-0005le-Jv
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Sep 2020 23:57:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47914)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHZG2-0001nJ-NC
- for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 17:10:00 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38974
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kHZFz-0002M1-Hj
- for qemu-trivial@nongnu.org; Sun, 13 Sep 2020 17:09:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600031393;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=NZmefyiMd3OQu2suCBGHury0I2opDZZ7VCklKKg5C1c=;
- b=Tswxg6KQT51zv36ZsEilIWJtRx2sIcRMAAyW8upBZOHoOauca1mt/itCVIsdz2sAKmzEth
- /4qisWUaJFPI9AoP5qC/174RSX13Rfi92mREr3X3RXgJvYp9tbAIXglHSCFQwE9L5oT7HD
- 06KZ3GBJI9bbt1tplMys03vDQ/3EidM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-484-ur8VUf_fMoyLzOokpUSRqQ-1; Sun, 13 Sep 2020 17:09:50 -0400
-X-MC-Unique: ur8VUf_fMoyLzOokpUSRqQ-1
-Received: by mail-wr1-f69.google.com with SMTP id b7so5980220wrn.6
- for <qemu-trivial@nongnu.org>; Sun, 13 Sep 2020 14:09:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=NZmefyiMd3OQu2suCBGHury0I2opDZZ7VCklKKg5C1c=;
- b=Ajv/jpnAgSKs/sOeKW97uVYwFuKGDcsawsa/OhTjYUzJs5V+0oIpsCXUcyUKmRcz1B
- A97a0osMVpZs60vEwU0Q+Gu0scbaW2zIwxYSF4FmPbYh7vWhMVq4cDyPx8xlCztsPtKk
- ohlU05jzcFzn3AdsiOCkdEIYpV0TWNYSNj0uCjzYXiBiZewY+ozgjE/rA94v1Fd9teCi
- 5a50nQAVkhnYMBOsJ1bRDFiq9/l+0KxVE+hIqWUP4CAS7sQiiFa98PYVDm5XiKY+Cb7w
- LuDanY7B0P5k3RXlVUVNg4o4nI+TwQbUQUZBl74QH6LsyhY+8Of4ZIVd3Mm6VE0R6slp
- gQzg==
-X-Gm-Message-State: AOAM532TS/z47sJcq5VigcUxWyEpyJiMcRgxT5cVndmgWid3X1KalIiv
- FkCNZEPPyXpQQ4klVE59WlsAf86JLe9h5YPsN0ZcKZBb/z5GL3FSJza6amsDLbcII4UzMYbV0OU
- WTYJZzqxbKMzjSfbJPQ==
-X-Received: by 2002:a7b:c308:: with SMTP id k8mr11921730wmj.90.1600031389011; 
- Sun, 13 Sep 2020 14:09:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxy32kTvBbAbyKbMgqtR1vxSEm5xCbBgcuDWnCV1be3i9zBiPaGXphrUzQ7gf5SbDovntepAQ==
-X-Received: by 2002:a7b:c308:: with SMTP id k8mr11921716wmj.90.1600031388722; 
- Sun, 13 Sep 2020 14:09:48 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id 91sm18929251wrq.9.2020.09.13.14.09.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 13 Sep 2020 14:09:47 -0700 (PDT)
-Subject: Re: [PATCH resend] configure: actually disable 'git_update' mode with
- --disable-git-update
-To: Dan Streetman <ddstreet@canonical.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Rafael David Tinoco <rafael.tinoco@canonical.com>,
- Christian Ehrhardt <christian.ehrhardt@canonical.com>,
- "Daniel P . Berrange" <berrange@redhat.com>
-References: <20200913185708.1681279-1-ddstreet@canonical.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <f0b87265-d997-c29a-af55-de862ebe34b7@redhat.com>
-Date: Sun, 13 Sep 2020 23:09:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kHfc4-0005kf-Sl; Sun, 13 Sep 2020 23:57:08 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2537 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kHfc1-0005FB-Sh; Sun, 13 Sep 2020 23:57:08 -0400
+Received: from dggemi406-hub.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id 74481FE1F74BC1701D5B;
+ Mon, 14 Sep 2020 11:56:52 +0800 (CST)
+Received: from DGGEMI522-MBS.china.huawei.com ([169.254.8.78]) by
+ dggemi406-hub.china.huawei.com ([10.3.17.144]) with mapi id 14.03.0487.000;
+ Mon, 14 Sep 2020 11:56:42 +0800
+From: zhaolichang <zhaolichang@huawei.com>
+To: zhaolichang <zhaolichang@huawei.com>
+CC: QEMU Trivial <qemu-trivial@nongnu.org>, QEMU Developers
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH V2 00/10] fix some comment spelling errors
+Thread-Topic: Re: [PATCH V2 00/10] fix some comment spelling errors
+Thread-Index: AdaKSwpwVT6rHY/nQ5CCifgPto8GOg==
+Date: Mon, 14 Sep 2020 03:56:41 +0000
+Message-ID: <640CDEE67BE2784FAE298BB2517210E48B38FC@dggemi522-mbs.china.huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.87]
+Content-Type: multipart/alternative;
+ boundary="_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_"
 MIME-Version: 1.0
-In-Reply-To: <20200913185708.1681279-1-ddstreet@canonical.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/13 17:09:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.695,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=zhaolichang@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/13 23:56:53
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_HTML_MOSTLY=0.1, PYZOR_CHECK=1.392, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,176 +55,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Sep 2020 21:10:00 -0000
+X-List-Received-Date: Mon, 14 Sep 2020 03:57:09 -0000
 
-Cc'ing Daniel as this is related to 'GIT submodules' which
-he maintains:
+--_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-$ scripts/get_maintainer.pl -f scripts/git-submodule.sh
-"Daniel P. Berrangé" <berrange@redhat.com> (odd fixer:GIT submodules)
+ping
 
-On 9/13/20 8:57 PM, Dan Streetman wrote:
-> The --disable-git-update configure param sets git_update=no, but
-> some later checks only look for the .git dir. This changes the
-> --enable-git-update to set git_update=yes but also fail if it
-> does not find a .git dir. Then all the later checks for the .git
-> dir can just be changed to a check for $git_update = "yes".
-> 
-> Also update the Makefile to skip the 'git_update' checks if it has
-> been disabled.
-> 
-> This is needed because downstream packagers, e.g. Debian, Ubuntu, etc,
-> also keep the source code in git, but do not want to enable the
-> 'git_update' mode; with the current code, that's not possible even
-> if the downstream package specifies --disable-git-update.
-> 
-> Signed-off-by: Dan Streetman <ddstreet@canonical.com>
-> ---
-> Resend; this was sent twice before:
-> https://lists.nongnu.org/archive/html/qemu-trivial/2020-07/msg00180.html
+--_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-Which was v2,
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+/* Page Definitions */
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"text-justi=
+fy-trim:punctuation">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US">ping<o:p></o:p></span></p>
+</div>
+</body>
+</html>
 
-> https://lists.nongnu.org/archive/html/qemu-devel/2020-07/msg08243.html
-
-probably v3,
-
-so this is v4.
-
-Please don't post new patches as reply to previous versions,
-because they'll likely get unnoticed (for developers who use
-threaded view of their mail folder).
-
-> 
-> Makefile  | 15 +++++++++------
->  configure | 23 ++++++++++++++---------
->  2 files changed, 23 insertions(+), 15 deletions(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 2ed19310cf7..712aaf8b53b 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -38,6 +38,8 @@ git-submodule-update:
->  
->  .PHONY: git-submodule-update
->  
-> +# If --disable-git-update specified, skip these git checks
-> +ifneq (no,$(GIT_UPDATE))
->  git_module_status := $(shell \
->    cd '$(SRC_PATH)' && \
->    GIT="$(GIT)" ./scripts/git-submodule.sh status $(GIT_SUBMODULES); \
-> @@ -45,7 +47,12 @@ git_module_status := $(shell \
->  )
->  
->  ifeq (1,$(git_module_status))
-> -ifeq (no,$(GIT_UPDATE))
-> +ifeq (yes,$(GIT_UPDATE))
-> +git-submodule-update:
-> +	$(call quiet-command, \
-> +          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
-> +          "GIT","$(GIT_SUBMODULES)")
-> +else
->  git-submodule-update:
->  	$(call quiet-command, \
->              echo && \
-> @@ -54,11 +61,7 @@ git-submodule-update:
->              echo "from the source directory checkout $(SRC_PATH)" && \
->              echo && \
->              exit 1)
-> -else
-> -git-submodule-update:
-> -	$(call quiet-command, \
-> -          (cd $(SRC_PATH) && GIT="$(GIT)" ./scripts/git-submodule.sh update $(GIT_SUBMODULES)), \
-> -          "GIT","$(GIT_SUBMODULES)")
-> +endif
->  endif
->  endif
->  
-> diff --git a/configure b/configure
-> index 4231d56bcc0..2e0e2adc587 100755
-> --- a/configure
-> +++ b/configure
-> @@ -346,7 +346,7 @@ then
->      git_submodules="$git_submodules tests/fp/berkeley-testfloat-3"
->      git_submodules="$git_submodules tests/fp/berkeley-softfloat-3"
->  else
-> -    git_update=no
-> +    git_update=""
->      git_submodules=""
->  
->      if ! test -f "$source_path/ui/keycodemapdb/README"
-> @@ -1577,7 +1577,12 @@ for opt do
->    ;;
->    --with-git=*) git="$optarg"
->    ;;
-> -  --enable-git-update) git_update=yes
-> +  --enable-git-update)
-> +      git_update=yes
-> +      if test ! -e "$source_path/.git"; then
-> +          echo "ERROR: cannot --enable-git-update without .git"
-> +          exit 1
-> +      fi
->    ;;
->    --disable-git-update) git_update=no
->    ;;
-> @@ -1974,7 +1979,7 @@ python="$python -B"
->  if test -z "$meson"; then
->      if test "$explicit_python" = no && has meson && version_ge "$(meson --version)" 0.55.1; then
->          meson=meson
-> -    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-> +    elif test $git_update = 'yes' ; then
->          meson=git
->      elif test -e "${source_path}/meson/meson.py" ; then
->          meson=internal
-> @@ -2052,7 +2057,7 @@ fi
->  # Consult white-list to determine whether to enable werror
->  # by default.  Only enable by default for git builds
->  if test -z "$werror" ; then
-> -    if test -e "$source_path/.git" && \
-> +    if test "$git_update" = "yes" && \
->          { test "$linux" = "yes" || test "$mingw32" = "yes"; }; then
->          werror="yes"
->      else
-> @@ -4175,10 +4180,10 @@ EOF
->      fdt=system
->    else
->        # have GIT checkout, so activate dtc submodule
-> -      if test -e "${source_path}/.git" ; then
-> +      if test "$git_update" = "yes" ; then
->            git_submodules="${git_submodules} dtc"
->        fi
-> -      if test -d "${source_path}/dtc/libfdt" || test -e "${source_path}/.git" ; then
-> +      if test -d "${source_path}/dtc/libfdt" || test "$git_update" = "yes" ; then
->            fdt=git
->            mkdir -p dtc
->            fdt_cflags="-I${source_path}/dtc/libfdt"
-> @@ -5126,7 +5131,7 @@ case "$capstone" in
->    "" | yes)
->      if $pkg_config capstone; then
->        capstone=system
-> -    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-> +    elif test "$git_update" = "yes" ; then
->        capstone=git
->      elif test -e "${source_path}/capstone/Makefile" ; then
->        capstone=internal
-> @@ -6126,7 +6131,7 @@ case "$slirp" in
->    "" | yes)
->      if $pkg_config slirp; then
->        slirp=system
-> -    elif test -e "${source_path}/.git" && test $git_update = 'yes' ; then
-> +    elif test "$git_update" = "yes" ; then
->        slirp=git
->      elif test -e "${source_path}/slirp/Makefile" ; then
->        slirp=internal
-> @@ -6460,7 +6465,7 @@ if test "$cpu" = "s390x" ; then
->      roms="$roms s390-ccw"
->      # SLOF is required for building the s390-ccw firmware on s390x,
->      # since it is using the libnet code from SLOF for network booting.
-> -    if test -e "${source_path}/.git" ; then
-> +    if test "$git_update" = "yes" ; then
->        git_submodules="${git_submodules} roms/SLOF"
->      fi
->    fi
-> 
-
+--_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_--
 
