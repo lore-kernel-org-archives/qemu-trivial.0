@@ -1,48 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kHfc7-0005le-Jv
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Sep 2020 23:57:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47914)
+	id 1kHiAJ-0006wU-GS
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Sep 2020 02:40:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kHfc4-0005kf-Sl; Sun, 13 Sep 2020 23:57:08 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2537 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
+ id 1kHiAH-0006vM-49; Mon, 14 Sep 2020 02:40:37 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:19766)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kHfc1-0005FB-Sh; Sun, 13 Sep 2020 23:57:08 -0400
-Received: from dggemi406-hub.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id 74481FE1F74BC1701D5B;
- Mon, 14 Sep 2020 11:56:52 +0800 (CST)
-Received: from DGGEMI522-MBS.china.huawei.com ([169.254.8.78]) by
- dggemi406-hub.china.huawei.com ([10.3.17.144]) with mapi id 14.03.0487.000;
- Mon, 14 Sep 2020 11:56:42 +0800
-From: zhaolichang <zhaolichang@huawei.com>
-To: zhaolichang <zhaolichang@huawei.com>
-CC: QEMU Trivial <qemu-trivial@nongnu.org>, QEMU Developers
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH V2 00/10] fix some comment spelling errors
-Thread-Topic: Re: [PATCH V2 00/10] fix some comment spelling errors
-Thread-Index: AdaKSwpwVT6rHY/nQ5CCifgPto8GOg==
-Date: Mon, 14 Sep 2020 03:56:41 +0000
-Message-ID: <640CDEE67BE2784FAE298BB2517210E48B38FC@dggemi522-mbs.china.huawei.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.87]
-Content-Type: multipart/alternative;
- boundary="_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_"
+ (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
+ id 1kHiAD-00067A-T2; Mon, 14 Sep 2020 02:40:36 -0400
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 08E6XVhE062025; Mon, 14 Sep 2020 02:40:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=GIy6mz3+A3PXzu4bhygSvTwWkrqPCtfiQOXJoTn4hxA=;
+ b=GGehs10DDBVJnEGbpPYt2+2kJ76K/+gJ5GZ6yhiqFrgr3meJwL3QDtGt+v4/GHfR6C7K
+ NqCI3YKzxM6q8zRgS/nSpPZP0jEChExG4E/+tNU3hUikMojvoNazr9s171fH0i3L3KjH
+ rbPzkgH78nssMn+ZgiBbPK6ORDqjMcihDtFrylfhgJOS2nLpsfHEbazKq4ujo8cj3L86
+ TKf7+QYbxOCJ/AUVh92Sob1DgKAZ6pXCdXdN7gc4dnNnOHxHi+rRUnV+0lsqTzmBWP/N
+ SP4Wa6uFm9e6wFUWeMMrU9Y+dn8m2a+ocCH3FJfwFgVeAF25kV/tOOKguRLAeQawAxj8 /w== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 33hyapdg2g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Sep 2020 02:40:30 -0400
+Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 08E6XhVe062853;
+ Mon, 14 Sep 2020 02:40:30 -0400
+Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com
+ [159.122.73.71])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 33hyapdg03-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Sep 2020 02:40:30 -0400
+Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
+ by ppma02fra.de.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 08E6NvFx020744;
+ Mon, 14 Sep 2020 06:40:27 GMT
+Received: from b06avi18878370.portsmouth.uk.ibm.com
+ (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
+ by ppma02fra.de.ibm.com with ESMTP id 33gny8102m-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Sep 2020 06:40:27 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 08E6ePXq15401302
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 14 Sep 2020 06:40:25 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5089E4204F;
+ Mon, 14 Sep 2020 06:40:25 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D44EB42042;
+ Mon, 14 Sep 2020 06:40:22 +0000 (GMT)
+Received: from [9.65.222.171] (unknown [9.65.222.171])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Mon, 14 Sep 2020 06:40:22 +0000 (GMT)
+Subject: Re: [PATCH v2 2/2] hw/timer/hpet: Fix DPRINTF format string
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200910135852.516809-1-philmd@redhat.com>
+ <20200910135852.516809-3-philmd@redhat.com>
+ <9db297fa-02c0-aadb-e0c7-555d3578b7b3@linux.vnet.ibm.com>
+ <3dbac311-dc90-0eda-10c2-13ab28407a6a@redhat.com>
+From: Dov Murik <dovmurik@linux.vnet.ibm.com>
+Message-ID: <00747ce4-c714-cfca-464c-6999edfede3a@linux.vnet.ibm.com>
+Date: Mon, 14 Sep 2020 09:40:21 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/13 23:56:53
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+In-Reply-To: <3dbac311-dc90-0eda-10c2-13ab28407a6a@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-09-13_09:2020-09-10,
+ 2020-09-13 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 bulkscore=0
+ clxscore=1011 spamscore=0 impostorscore=0 mlxscore=0 lowpriorityscore=0
+ malwarescore=0 priorityscore=1501 suspectscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009140054
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=dovmurik@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/14 02:01:13
+X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_HTML_MOSTLY=0.1, PYZOR_CHECK=1.392, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,83 +109,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Sep 2020 03:57:09 -0000
+X-List-Received-Date: Mon, 14 Sep 2020 06:40:37 -0000
 
---_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
 
-ping
 
---_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+On 13/09/2020 14:40, Philippe Mathieu-Daudé wrote:
+> On 9/12/20 7:40 PM, Dov Murik wrote:
+>> Hi Phil,
+>>
+>> On 10/09/2020 16:58, Philippe Mathieu-Daudé wrote:
+>>> Fix building with HPET_DEBUG enabled:
+>>>
+>>>     hw/timer/hpet.c:512:73: error: format specifies type 'unsigned int'
+>>> but the argument has type 'uint64_t' (aka 'unsigned long')
+>>> [-Werror,-Wformat]
+>>>         DPRINTF("qemu: Enter hpet_ram_writel at %" PRIx64 " = %#x\n",
+>>> addr, value);
+>>>                                                              
+>>> ~~~           ^~~~~
+>>>                                                               %#lx
+>>>     hw/timer/hpet.c:655:21: error: format specifies type 'unsigned int'
+>>> but the argument has type 'uint64_t' (aka 'unsigned long')
+>>> [-Werror,-Wformat]
+>>>                         value, s->hpet_counter);
+>>>                         ^~~~~
+>>>
+>>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>>> Signed-off-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>> ---
+>>>    hw/timer/hpet.c | 9 ++++++---
+>>>    1 file changed, 6 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+>>> index b683f64f1d3..20bd0388740 100644
+>>> --- a/hw/timer/hpet.c
+>>> +++ b/hw/timer/hpet.c
+>>> @@ -495,7 +495,8 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
+>>>        HPETState *s = opaque;
+>>>        uint64_t old_val, new_val, val, index;
+>>>
+>>> -    DPRINTF("qemu: Enter hpet_ram_writel at %" PRIx64 " = %#x\n",
+>>> addr, value);
+>>> +    DPRINTF("qemu: Enter hpet_ram_writel at %#" HWADDR_PRIx " =
+>>> %#"PRIx64"\n",
+>>> +            addr, value);
+>>
+>> You still use "#" in the format string; but qemu's CODING_STYLE.rst says:
+>>
+>> //////////////
+>>
+>> '#' printf flag
+>> ---------------
+>>
+>> Do not use printf flag '#', like '%#x'.
+>>
+>> Rationale: there are two ways to add a '0x' prefix to printed number:
+>> '0x%...'
+>> and '%#...'. For consistency the only one way should be used. Arguments for
+>> '0x%' are:
+>>
+>> * it is more popular
+>> * '%#' omits the 0x for the value 0 which makes output inconsistent
+> 
+> Yes you are right, I missed that.
+> 
+> Do you mind adding that check to ./checkpatch?
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:SimSun;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:SimSun;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	font-size:10.5pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-/* Page Definitions */
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"text-justi=
-fy-trim:punctuation">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span lang=3D"EN-US">ping<o:p></o:p></span></p>
-</div>
-</body>
-</html>
+Fix to checkpatch sent in another patch:
 
---_000_640CDEE67BE2784FAE298BB2517210E48B38FCdggemi522mbschina_--
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg740065.html
+
+-Dov
 
