@@ -1,102 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kHiAJ-0006wU-GS
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Sep 2020 02:40:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42722)
+	id 1kHlf0-0003j8-7t
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Sep 2020 06:24:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
- id 1kHiAH-0006vM-49; Mon, 14 Sep 2020 02:40:37 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:19766)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
- id 1kHiAD-00067A-T2; Mon, 14 Sep 2020 02:40:36 -0400
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 08E6XVhE062025; Mon, 14 Sep 2020 02:40:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=GIy6mz3+A3PXzu4bhygSvTwWkrqPCtfiQOXJoTn4hxA=;
- b=GGehs10DDBVJnEGbpPYt2+2kJ76K/+gJ5GZ6yhiqFrgr3meJwL3QDtGt+v4/GHfR6C7K
- NqCI3YKzxM6q8zRgS/nSpPZP0jEChExG4E/+tNU3hUikMojvoNazr9s171fH0i3L3KjH
- rbPzkgH78nssMn+ZgiBbPK6ORDqjMcihDtFrylfhgJOS2nLpsfHEbazKq4ujo8cj3L86
- TKf7+QYbxOCJ/AUVh92Sob1DgKAZ6pXCdXdN7gc4dnNnOHxHi+rRUnV+0lsqTzmBWP/N
- SP4Wa6uFm9e6wFUWeMMrU9Y+dn8m2a+ocCH3FJfwFgVeAF25kV/tOOKguRLAeQawAxj8 /w== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 33hyapdg2g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Sep 2020 02:40:30 -0400
-Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 08E6XhVe062853;
- Mon, 14 Sep 2020 02:40:30 -0400
-Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.71])
- by mx0a-001b2d01.pphosted.com with ESMTP id 33hyapdg03-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Sep 2020 02:40:30 -0400
-Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
- by ppma02fra.de.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 08E6NvFx020744;
- Mon, 14 Sep 2020 06:40:27 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma02fra.de.ibm.com with ESMTP id 33gny8102m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Sep 2020 06:40:27 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 08E6ePXq15401302
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 14 Sep 2020 06:40:25 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5089E4204F;
- Mon, 14 Sep 2020 06:40:25 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D44EB42042;
- Mon, 14 Sep 2020 06:40:22 +0000 (GMT)
-Received: from [9.65.222.171] (unknown [9.65.222.171])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Mon, 14 Sep 2020 06:40:22 +0000 (GMT)
-Subject: Re: [PATCH v2 2/2] hw/timer/hpet: Fix DPRINTF format string
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200910135852.516809-1-philmd@redhat.com>
- <20200910135852.516809-3-philmd@redhat.com>
- <9db297fa-02c0-aadb-e0c7-555d3578b7b3@linux.vnet.ibm.com>
- <3dbac311-dc90-0eda-10c2-13ab28407a6a@redhat.com>
-From: Dov Murik <dovmurik@linux.vnet.ibm.com>
-Message-ID: <00747ce4-c714-cfca-464c-6999edfede3a@linux.vnet.ibm.com>
-Date: Mon, 14 Sep 2020 09:40:21 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.2.2
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHley-0003ij-2h; Mon, 14 Sep 2020 06:24:32 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33090)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHlew-0000IG-HH; Mon, 14 Sep 2020 06:24:31 -0400
+Received: by mail-wr1-x443.google.com with SMTP id m6so18125431wrn.0;
+ Mon, 14 Sep 2020 03:24:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xdg3/apUjZJVOlOfnD/BCFpWvd7I8+hMge8okefApw8=;
+ b=LLQzDrtbolAP58qXEfMDXnXdeehVqPXF927w/ej9VNt5PlBoX6iFuO8QwRpew5qtH9
+ UNhE/y2FJNjK+WbXPgpgjqtPcPiNhrcaMVBnJcQJezcaBGlVDZEzJzPtR9HfMm8JaHJH
+ tk2H932yaNHff7v0EGJLxNsDcSPx1UietwZm96foNV3h5LP8vCJE2f69huJpKc36Z/2U
+ BaHDbohFZ0HlE29FNHfDapoIlL0d1+gwWNdug429NWxSn/7oVmY7H/FllQpI9nMoLnbb
+ yZAgj6DUwH6xQzba+TUPKpyXg6zUHzC5iuiVehYo9qBeMK/+ulhbpdwZfPCQY7HG/NbW
+ q5Bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=xdg3/apUjZJVOlOfnD/BCFpWvd7I8+hMge8okefApw8=;
+ b=UA28mDmpo0/rVzLiZbqkHeilnZF1qi2eMNftftYDkT6veAJ8tDv7VGc0x1Z+Id3bCQ
+ RIUiBHVIMNpw1cC2ygcTF7t/9Tdvtc+ucfeBSjhsIEVkQmDpZjVpvgWhNuYhSKEQ2mCZ
+ kw/FZiwgm/DCH8iP3snpjrmA0R24fI0Buv3uEvxMHr/HjdCZ41ACCopfUQJ+TgSbXRR0
+ oNMdJ8bm+qMRKPJ3osI3OSKgElCkEeQa1pBdG+qGTJst5iZ+19/yddJkf/Mbc1DViAp8
+ ZQ5VuPf4XZuO5qT+J7x6WO/WtE9o8Xq3GvF3xSYEXLe4+YluQ3B3QumCMAV/7LSBc2Ph
+ 0W3g==
+X-Gm-Message-State: AOAM532J05fOfCaUX2ThtIddS9x6VLrcuxR9uHIvW0CRtXsVKXeRWe+B
+ 9/pTGiZsq4Z6+Sr1Izwp2sCJ60mf2vs=
+X-Google-Smtp-Source: ABdhPJw4tpOwP678ZA/c2uO1eEhmKtOGTtnK96uKN5O/i2S5TqO/v3mKhjNzUP6WrVCTwohdxiCMAw==
+X-Received: by 2002:adf:f852:: with SMTP id d18mr15134677wrq.245.1600079067975; 
+ Mon, 14 Sep 2020 03:24:27 -0700 (PDT)
+Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id y6sm19949427wrn.41.2020.09.14.03.24.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Sep 2020 03:24:27 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
+Date: Mon, 14 Sep 2020 12:24:25 +0200
+Message-Id: <20200914102425.1152962-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <3dbac311-dc90-0eda-10c2-13ab28407a6a@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
- definitions=2020-09-13_09:2020-09-10,
- 2020-09-13 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 bulkscore=0
- clxscore=1011 spamscore=0 impostorscore=0 mlxscore=0 lowpriorityscore=0
- malwarescore=0 priorityscore=1501 suspectscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009140054
-Received-SPF: none client-ip=148.163.156.1;
- envelope-from=dovmurik@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/14 02:01:13
-X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,76 +84,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Sep 2020 06:40:37 -0000
+X-List-Received-Date: Mon, 14 Sep 2020 10:24:32 -0000
 
+As the 'io_base' argument of m48t59_init() is unused (set to 0),
+remove it to simplify.
+To create a device on the ISA bus, m48t59_init_isa() is the
+preferred function to use.
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/rtc/m48t59.h |  2 +-
+ hw/ppc/ppc405_boards.c  |  2 +-
+ hw/rtc/m48t59.c         | 10 ++--------
+ hw/sparc/sun4m.c        |  2 +-
+ hw/sparc64/sun4u.c      |  2 +-
+ 5 files changed, 6 insertions(+), 12 deletions(-)
 
-On 13/09/2020 14:40, Philippe Mathieu-Daudé wrote:
-> On 9/12/20 7:40 PM, Dov Murik wrote:
->> Hi Phil,
->>
->> On 10/09/2020 16:58, Philippe Mathieu-Daudé wrote:
->>> Fix building with HPET_DEBUG enabled:
->>>
->>>     hw/timer/hpet.c:512:73: error: format specifies type 'unsigned int'
->>> but the argument has type 'uint64_t' (aka 'unsigned long')
->>> [-Werror,-Wformat]
->>>         DPRINTF("qemu: Enter hpet_ram_writel at %" PRIx64 " = %#x\n",
->>> addr, value);
->>>                                                              
->>> ~~~           ^~~~~
->>>                                                               %#lx
->>>     hw/timer/hpet.c:655:21: error: format specifies type 'unsigned int'
->>> but the argument has type 'uint64_t' (aka 'unsigned long')
->>> [-Werror,-Wformat]
->>>                         value, s->hpet_counter);
->>>                         ^~~~~
->>>
->>> Reviewed-by: Thomas Huth <thuth@redhat.com>
->>> Signed-off-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>>    hw/timer/hpet.c | 9 ++++++---
->>>    1 file changed, 6 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
->>> index b683f64f1d3..20bd0388740 100644
->>> --- a/hw/timer/hpet.c
->>> +++ b/hw/timer/hpet.c
->>> @@ -495,7 +495,8 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
->>>        HPETState *s = opaque;
->>>        uint64_t old_val, new_val, val, index;
->>>
->>> -    DPRINTF("qemu: Enter hpet_ram_writel at %" PRIx64 " = %#x\n",
->>> addr, value);
->>> +    DPRINTF("qemu: Enter hpet_ram_writel at %#" HWADDR_PRIx " =
->>> %#"PRIx64"\n",
->>> +            addr, value);
->>
->> You still use "#" in the format string; but qemu's CODING_STYLE.rst says:
->>
->> //////////////
->>
->> '#' printf flag
->> ---------------
->>
->> Do not use printf flag '#', like '%#x'.
->>
->> Rationale: there are two ways to add a '0x' prefix to printed number:
->> '0x%...'
->> and '%#...'. For consistency the only one way should be used. Arguments for
->> '0x%' are:
->>
->> * it is more popular
->> * '%#' omits the 0x for the value 0 which makes output inconsistent
-> 
-> Yes you are right, I missed that.
-> 
-> Do you mind adding that check to ./checkpatch?
+diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+index 04abedf3b2b..62297ee0db1 100644
+--- a/include/hw/rtc/m48t59.h
++++ b/include/hw/rtc/m48t59.h
+@@ -50,7 +50,7 @@ struct NvramClass {
+ Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+                        int base_year, int type);
+ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+-                   uint32_t io_base, uint16_t size, int base_year,
++                   uint16_t size, int base_year,
+                    int type);
+ 
+ #endif /* HW_M48T59_H */
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index 6198ec1035b..93ffee801a3 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
+     /* Register FPGA */
+     ref405ep_fpga_init(sysmem, 0xF0300000);
+     /* Register NVRAM */
+-    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
++    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
+     /* Load kernel */
+     linux_boot = (kernel_filename != NULL);
+     if (linux_boot) {
+diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
+index 6525206976b..2d6a095c4e4 100644
+--- a/hw/rtc/m48t59.c
++++ b/hw/rtc/m48t59.c
+@@ -566,7 +566,7 @@ const MemoryRegionOps m48t59_io_ops = {
+ 
+ /* Initialisation routine */
+ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+-                   uint32_t io_base, uint16_t size, int base_year,
++                   uint16_t size, int base_year,
+                    int model)
+ {
+     DeviceState *dev;
+@@ -584,13 +584,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+         s = SYS_BUS_DEVICE(dev);
+         sysbus_realize_and_unref(s, &error_fatal);
+         sysbus_connect_irq(s, 0, IRQ);
+-        if (io_base != 0) {
+-            memory_region_add_subregion(get_system_io(), io_base,
+-                                        sysbus_mmio_get_region(s, 1));
+-        }
+-        if (mem_base != 0) {
+-            sysbus_mmio_map(s, 0, mem_base);
+-        }
++        sysbus_mmio_map(s, 0, mem_base);
+ 
+         return NVRAM(s);
+     }
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 947b69d1597..56a0d38f274 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+         create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
+     }
+ 
+-    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0, 0x2000, 1968, 8);
++    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968, 8);
+ 
+     slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cpu_irq, smp_cpus);
+ 
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index b4aabfc076f..1cc57b030a7 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -675,7 +675,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
+     pci_ide_create_devs(pci_dev);
+ 
+     /* Map NVRAM into I/O (ebus) space */
+-    nvram = m48t59_init(NULL, 0, 0, NVRAM_SIZE, 1968, 59);
++    nvram = m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
+     s = SYS_BUS_DEVICE(nvram);
+     memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
+                                 sysbus_mmio_get_region(s, 0));
+-- 
+2.26.2
 
-Fix to checkpatch sent in another patch:
-
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg740065.html
-
--Dov
 
