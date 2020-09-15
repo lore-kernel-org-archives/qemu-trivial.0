@@ -1,77 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kHlf0-0003j8-7t
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Sep 2020 06:24:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34430)
+	id 1kI5qo-00005B-0g
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 03:58:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kHley-0003ij-2h; Mon, 14 Sep 2020 06:24:32 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33090)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kHlew-0000IG-HH; Mon, 14 Sep 2020 06:24:31 -0400
-Received: by mail-wr1-x443.google.com with SMTP id m6so18125431wrn.0;
- Mon, 14 Sep 2020 03:24:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xdg3/apUjZJVOlOfnD/BCFpWvd7I8+hMge8okefApw8=;
- b=LLQzDrtbolAP58qXEfMDXnXdeehVqPXF927w/ej9VNt5PlBoX6iFuO8QwRpew5qtH9
- UNhE/y2FJNjK+WbXPgpgjqtPcPiNhrcaMVBnJcQJezcaBGlVDZEzJzPtR9HfMm8JaHJH
- tk2H932yaNHff7v0EGJLxNsDcSPx1UietwZm96foNV3h5LP8vCJE2f69huJpKc36Z/2U
- BaHDbohFZ0HlE29FNHfDapoIlL0d1+gwWNdug429NWxSn/7oVmY7H/FllQpI9nMoLnbb
- yZAgj6DUwH6xQzba+TUPKpyXg6zUHzC5iuiVehYo9qBeMK/+ulhbpdwZfPCQY7HG/NbW
- q5Bg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=xdg3/apUjZJVOlOfnD/BCFpWvd7I8+hMge8okefApw8=;
- b=UA28mDmpo0/rVzLiZbqkHeilnZF1qi2eMNftftYDkT6veAJ8tDv7VGc0x1Z+Id3bCQ
- RIUiBHVIMNpw1cC2ygcTF7t/9Tdvtc+ucfeBSjhsIEVkQmDpZjVpvgWhNuYhSKEQ2mCZ
- kw/FZiwgm/DCH8iP3snpjrmA0R24fI0Buv3uEvxMHr/HjdCZ41ACCopfUQJ+TgSbXRR0
- oNMdJ8bm+qMRKPJ3osI3OSKgElCkEeQa1pBdG+qGTJst5iZ+19/yddJkf/Mbc1DViAp8
- ZQ5VuPf4XZuO5qT+J7x6WO/WtE9o8Xq3GvF3xSYEXLe4+YluQ3B3QumCMAV/7LSBc2Ph
- 0W3g==
-X-Gm-Message-State: AOAM532J05fOfCaUX2ThtIddS9x6VLrcuxR9uHIvW0CRtXsVKXeRWe+B
- 9/pTGiZsq4Z6+Sr1Izwp2sCJ60mf2vs=
-X-Google-Smtp-Source: ABdhPJw4tpOwP678ZA/c2uO1eEhmKtOGTtnK96uKN5O/i2S5TqO/v3mKhjNzUP6WrVCTwohdxiCMAw==
-X-Received: by 2002:adf:f852:: with SMTP id d18mr15134677wrq.245.1600079067975; 
- Mon, 14 Sep 2020 03:24:27 -0700 (PDT)
-Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id y6sm19949427wrn.41.2020.09.14.03.24.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 03:24:27 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
-Date: Mon, 14 Sep 2020 12:24:25 +0200
-Message-Id: <20200914102425.1152962-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kI5qn-00004z-G0
+ for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 03:58:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36645)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kI5qh-00086X-Rd
+ for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 03:58:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600156678;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YOxFw6CqrVICvMxoIpgsdL71t2yzkXcnimmxSQAOofc=;
+ b=bfmzudoEYj0w/mQKHTYjOJ/cFRW5Exo1wbf78fsggvBGZfrzbtSdwXMVyxqZoYeVnvOpna
+ xtAx8n54184goTXoWI4Vg3Q38T6PKXfMjvDJqpJQ77VjlyZ7PLqSrIU9fwhWT86AbNqkyO
+ Pl2GQKR74+G1NCWctmpwwgb5aDgj7JQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-142-L_QOrGK4NHKf7faN37GgFg-1; Tue, 15 Sep 2020 03:57:54 -0400
+X-MC-Unique: L_QOrGK4NHKf7faN37GgFg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28E9B801AD9;
+ Tue, 15 Sep 2020 07:57:53 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-131.ams2.redhat.com
+ [10.36.114.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 698AB27BC0;
+ Tue, 15 Sep 2020 07:57:51 +0000 (UTC)
+Subject: Re: [PATCH RESEND] manual: escape backslashes in "parsed-literal"
+ blocks
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu devel list <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200908172111.19072-1-lersek@redhat.com>
+ <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
+Date: Tue, 15 Sep 2020 09:57:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Language: en-US
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 02:23:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.792,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,103 +77,320 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Sep 2020 10:24:32 -0000
+X-List-Received-Date: Tue, 15 Sep 2020 07:58:05 -0000
 
-As the 'io_base' argument of m48t59_init() is unused (set to 0),
-remove it to simplify.
-To create a device on the ISA bus, m48t59_init_isa() is the
-preferred function to use.
+On 09/10/20 12:23, Philippe Mathieu-Daudé wrote:
+> Cc'ing qemu-trivial@
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/rtc/m48t59.h |  2 +-
- hw/ppc/ppc405_boards.c  |  2 +-
- hw/rtc/m48t59.c         | 10 ++--------
- hw/sparc/sun4m.c        |  2 +-
- hw/sparc64/sun4u.c      |  2 +-
- 5 files changed, 6 insertions(+), 12 deletions(-)
+Thanks!
 
-diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
-index 04abedf3b2b..62297ee0db1 100644
---- a/include/hw/rtc/m48t59.h
-+++ b/include/hw/rtc/m48t59.h
-@@ -50,7 +50,7 @@ struct NvramClass {
- Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
-                        int base_year, int type);
- Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
--                   uint32_t io_base, uint16_t size, int base_year,
-+                   uint16_t size, int base_year,
-                    int type);
- 
- #endif /* HW_M48T59_H */
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index 6198ec1035b..93ffee801a3 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
-     /* Register FPGA */
-     ref405ep_fpga_init(sysmem, 0xF0300000);
-     /* Register NVRAM */
--    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
-+    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
-     /* Load kernel */
-     linux_boot = (kernel_filename != NULL);
-     if (linux_boot) {
-diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-index 6525206976b..2d6a095c4e4 100644
---- a/hw/rtc/m48t59.c
-+++ b/hw/rtc/m48t59.c
-@@ -566,7 +566,7 @@ const MemoryRegionOps m48t59_io_ops = {
- 
- /* Initialisation routine */
- Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
--                   uint32_t io_base, uint16_t size, int base_year,
-+                   uint16_t size, int base_year,
-                    int model)
- {
-     DeviceState *dev;
-@@ -584,13 +584,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
-         s = SYS_BUS_DEVICE(dev);
-         sysbus_realize_and_unref(s, &error_fatal);
-         sysbus_connect_irq(s, 0, IRQ);
--        if (io_base != 0) {
--            memory_region_add_subregion(get_system_io(), io_base,
--                                        sysbus_mmio_get_region(s, 1));
--        }
--        if (mem_base != 0) {
--            sysbus_mmio_map(s, 0, mem_base);
--        }
-+        sysbus_mmio_map(s, 0, mem_base);
- 
-         return NVRAM(s);
-     }
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 947b69d1597..56a0d38f274 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
-         create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
-     }
- 
--    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0, 0x2000, 1968, 8);
-+    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968, 8);
- 
-     slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cpu_irq, smp_cpus);
- 
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index b4aabfc076f..1cc57b030a7 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -675,7 +675,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
-     pci_ide_create_devs(pci_dev);
- 
-     /* Map NVRAM into I/O (ebus) space */
--    nvram = m48t59_init(NULL, 0, 0, NVRAM_SIZE, 1968, 59);
-+    nvram = m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
-     s = SYS_BUS_DEVICE(nvram);
-     memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
-                                 sysbus_mmio_get_region(s, 0));
--- 
-2.26.2
+The patch was posted a week ago (and reviewed as well, by you, thanks!)
+-- is there something I need to do for getting this merged?
+
+Thank you
+Laszlo
+
+> On 9/8/20 7:21 PM, Laszlo Ersek wrote:
+>> According to
+>> <https://docutils.sourceforge.io/docs/ref/rst/directives.html#parsed-literal>,
+>> "inline markup is recognized and there is no protection from parsing.
+>> Backslash-escapes may be necessary to prevent unintended parsing".
+>>
+>> The qemu(1) manual page (formatted with Sphinx 2.2.2) has several overlong
+>> lines on my system. A stand-alone backslash at EOL serves as line
+>> continuation in a "parsed-literal" block. Therefore, escape the
+>> backslashes that we want to appear as such in the formatted documentation.
+>>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+>> ---
+>>
+>> Notes:
+>>     Resending with Peter's email address in the Cc: tag fixed. Sorry!
+>>
+>>  docs/system/device-url-syntax.rst.inc |   8 +-
+>>  qemu-options.hx                       | 108 ++++++++++----------
+>>  2 files changed, 58 insertions(+), 58 deletions(-)
+>>
+>> diff --git a/docs/system/device-url-syntax.rst.inc b/docs/system/device-url-syntax.rst.inc
+>> index 88d7a372a748..6f6ec8366b7a 100644
+>> --- a/docs/system/device-url-syntax.rst.inc
+>> +++ b/docs/system/device-url-syntax.rst.inc
+>> @@ -25,8 +25,8 @@ These are specified using a special URL syntax.
+>>  
+>>     .. parsed-literal::
+>>  
+>> -      |qemu_system| -iscsi initiator-name=iqn.2001-04.com.example:my-initiator \
+>> -                       -cdrom iscsi://192.0.2.1/iqn.2001-04.com.example/2 \
+>> +      |qemu_system| -iscsi initiator-name=iqn.2001-04.com.example:my-initiator \\
+>> +                       -cdrom iscsi://192.0.2.1/iqn.2001-04.com.example/2 \\
+>>                         -drive file=iscsi://192.0.2.1/iqn.2001-04.com.example/1
+>>  
+>>     Example (CHAP username/password via URL):
+>> @@ -39,8 +39,8 @@ These are specified using a special URL syntax.
+>>  
+>>     .. parsed-literal::
+>>  
+>> -      LIBISCSI_CHAP_USERNAME="user" \
+>> -      LIBISCSI_CHAP_PASSWORD="password" \
+>> +      LIBISCSI_CHAP_USERNAME="user" \\
+>> +      LIBISCSI_CHAP_PASSWORD="password" \\
+>>        |qemu_system| -drive file=iscsi://192.0.2.1/iqn.2001-04.com.example/1
+>>  
+>>  ``NBD``
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index b0f020594eab..47f64be0c041 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -373,9 +373,9 @@ SRST
+>>  
+>>      .. parsed-literal::
+>>  
+>> -        |qemu_system| \
+>> -         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \
+>> -         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \
+>> +        |qemu_system| \\
+>> +         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \\
+>> +         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \\
+>>           -drive file=/dev/fdset/2,index=0,media=disk
+>>  ERST
+>>  
+>> @@ -1338,9 +1338,9 @@ SRST
+>>  
+>>      .. parsed-literal::
+>>  
+>> -        |qemu_system| \
+>> -         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \
+>> -         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \
+>> +        |qemu_system| \\
+>> +         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \\
+>> +         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \\
+>>           -drive file=/dev/fdset/2,index=0,media=disk
+>>  
+>>      You can connect a CDROM to the slave of ide0:
+>> @@ -2593,7 +2593,7 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -            |qemu_system| -hda linux.img -boot n -device e1000,netdev=n1 \
+>> +            |qemu_system| -hda linux.img -boot n -device e1000,netdev=n1 \\
+>>                  -netdev user,id=n1,tftp=/path/to/tftp/files,bootfile=/pxelinux.0
+>>  
+>>      ``smb=dir[,smbserver=addr]``
+>> @@ -2703,15 +2703,15 @@ SRST
+>>  
+>>          #launch a QEMU instance with two NICs, each one connected
+>>          #to a TAP device
+>> -        |qemu_system| linux.img \
+>> -                -netdev tap,id=nd0,ifname=tap0 -device e1000,netdev=nd0 \
+>> +        |qemu_system| linux.img \\
+>> +                -netdev tap,id=nd0,ifname=tap0 -device e1000,netdev=nd0 \\
+>>                  -netdev tap,id=nd1,ifname=tap1 -device rtl8139,netdev=nd1
+>>  
+>>      .. parsed-literal::
+>>  
+>>          #launch a QEMU instance with the default network helper to
+>>          #connect a TAP device to bridge br0
+>> -        |qemu_system| linux.img -device virtio-net-pci,netdev=n1 \
+>> +        |qemu_system| linux.img -device virtio-net-pci,netdev=n1 \\
+>>                  -netdev tap,id=n1,"helper=/path/to/qemu-bridge-helper"
+>>  
+>>  ``-netdev bridge,id=id[,br=bridge][,helper=helper]``
+>> @@ -2749,12 +2749,12 @@ SRST
+>>      .. parsed-literal::
+>>  
+>>          # launch a first QEMU instance
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+>>                           -netdev socket,id=n1,listen=:1234
+>>          # connect the network of this instance to the network of the first instance
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \\
+>>                           -netdev socket,id=n2,connect=127.0.0.1:1234
+>>  
+>>  ``-netdev socket,id=id[,fd=h][,mcast=maddr:port[,localaddr=addr]]``
+>> @@ -2776,16 +2776,16 @@ SRST
+>>      .. parsed-literal::
+>>  
+>>          # launch one QEMU instance
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+>>                           -netdev socket,id=n1,mcast=230.0.0.1:1234
+>>          # launch another QEMU instance on same "bus"
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \\
+>>                           -netdev socket,id=n2,mcast=230.0.0.1:1234
+>>          # launch yet another QEMU instance on same "bus"
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n3,mac=52:54:00:12:34:58 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n3,mac=52:54:00:12:34:58 \\
+>>                           -netdev socket,id=n3,mcast=230.0.0.1:1234
+>>  
+>>      Example (User Mode Linux compat.):
+>> @@ -2793,8 +2793,8 @@ SRST
+>>      .. parsed-literal::
+>>  
+>>          # launch QEMU instance (note mcast address selected is UML's default)
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+>>                           -netdev socket,id=n1,mcast=239.192.168.1:1102
+>>          # launch UML
+>>          /path/to/linux ubd0=/path/to/root_fs eth0=mcast
+>> @@ -2803,8 +2803,8 @@ SRST
+>>  
+>>      .. parsed-literal::
+>>  
+>> -        |qemu_system| linux.img \
+>> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
+>> +        |qemu_system| linux.img \\
+>> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+>>                           -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
+>>  
+>>  ``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6][,udp][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
+>> @@ -2860,9 +2860,9 @@ SRST
+>>  
+>>          # Setup tunnel on linux host using raw ip as encapsulation
+>>          # on 1.2.3.4
+>> -        ip l2tp add tunnel remote 4.3.2.1 local 1.2.3.4 tunnel_id 1 peer_tunnel_id 1 \
+>> +        ip l2tp add tunnel remote 4.3.2.1 local 1.2.3.4 tunnel_id 1 peer_tunnel_id 1 \\
+>>              encap udp udp_sport 16384 udp_dport 16384
+>> -        ip l2tp add session tunnel_id 1 name vmtunnel0 session_id \
+>> +        ip l2tp add session tunnel_id 1 name vmtunnel0 session_id \\
+>>              0xFFFFFFFF peer_session_id 0xFFFFFFFF
+>>          ifconfig vmtunnel0 mtu 1500
+>>          ifconfig vmtunnel0 up
+>> @@ -2872,7 +2872,7 @@ SRST
+>>          # on 4.3.2.1
+>>          # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
+>>  
+>> -        |qemu_system| linux.img -device e1000,netdev=n1 \
+>> +        |qemu_system| linux.img -device e1000,netdev=n1 \\
+>>              -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
+>>  
+>>  ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
+>> @@ -4627,8 +4627,8 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -                 -object tls-cipher-suites,id=mysuite0,priority=@SYSTEM \
+>> +             # |qemu_system| \\
+>> +                 -object tls-cipher-suites,id=mysuite0,priority=@SYSTEM \\
+>>                   -fw_cfg name=etc/edk2/https/ciphers,gen_id=mysuite0
+>>  
+>>      ``-object filter-buffer,id=id,netdev=netdevid,interval=t[,queue=all|rx|tx][,status=on|off][,position=head|tail|id=<id>][,insert=behind|before]``
+>> @@ -4791,10 +4791,10 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -               [...] \
+>> -                   -object cryptodev-backend-builtin,id=cryptodev0 \
+>> -                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \
+>> +             # |qemu_system| \\
+>> +               [...] \\
+>> +                   -object cryptodev-backend-builtin,id=cryptodev0 \\
+>> +                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \\
+>>                 [...]
+>>  
+>>      ``-object cryptodev-vhost-user,id=id,chardev=chardevid[,queues=queues]``
+>> @@ -4810,11 +4810,11 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -               [...] \
+>> -                   -chardev socket,id=chardev0,path=/path/to/socket \
+>> -                   -object cryptodev-vhost-user,id=cryptodev0,chardev=chardev0 \
+>> -                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \
+>> +             # |qemu_system| \\
+>> +               [...] \\
+>> +                   -chardev socket,id=chardev0,path=/path/to/socket \\
+>> +                   -object cryptodev-vhost-user,id=cryptodev0,chardev=chardev0 \\
+>> +                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \\
+>>                 [...]
+>>  
+>>      ``-object secret,id=id,data=string,format=raw|base64[,keyid=secretid,iv=string]``
+>> @@ -4892,9 +4892,9 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -                 -object secret,id=secmaster0,format=base64,file=key.b64 \
+>> -                 -object secret,id=sec0,keyid=secmaster0,format=base64,\
+>> +             # |qemu_system| \\
+>> +                 -object secret,id=secmaster0,format=base64,file=key.b64 \\
+>> +                 -object secret,id=sec0,keyid=secmaster0,format=base64,\\
+>>                       data=$SECRET,iv=$(<iv.b64)
+>>  
+>>      ``-object sev-guest,id=id,cbitpos=cbitpos,reduced-phys-bits=val,[sev-device=string,policy=policy,handle=handle,dh-cert-file=file,session-file=file]``
+>> @@ -4941,10 +4941,10 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system_x86| \
+>> -                 ......
+>> -                 -object sev-guest,id=sev0,cbitpos=47,reduced-phys-bits=5 \
+>> -                 -machine ...,memory-encryption=sev0
+>> +             # |qemu_system_x86| \\
+>> +                 ...... \\
+>> +                 -object sev-guest,id=sev0,cbitpos=47,reduced-phys-bits=5 \\
+>> +                 -machine ...,memory-encryption=sev0 \\
+>>                   .....
+>>  
+>>      ``-object authz-simple,id=id,identity=string``
+>> @@ -4962,9 +4962,9 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -                 ...
+>> -                 -object 'authz-simple,id=auth0,identity=CN=laptop.example.com,,O=Example Org,,L=London,,ST=London,,C=GB' \
+>> +             # |qemu_system| \\
+>> +                 ... \\
+>> +                 -object 'authz-simple,id=auth0,identity=CN=laptop.example.com,,O=Example Org,,L=London,,ST=London,,C=GB' \\
+>>                   ...
+>>  
+>>          Note the use of quotes due to the x509 distinguished name
+>> @@ -5013,9 +5013,9 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -                 ...
+>> -                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes
+>> +             # |qemu_system| \\
+>> +                 ... \\
+>> +                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes \\
+>>                   ...
+>>  
+>>      ``-object authz-pam,id=id,service=string``
+>> @@ -5032,9 +5032,9 @@ SRST
+>>  
+>>          .. parsed-literal::
+>>  
+>> -             # |qemu_system| \
+>> -                 ...
+>> -                 -object authz-pam,id=auth0,service=qemu-vnc
+>> +             # |qemu_system| \\
+>> +                 ... \\
+>> +                 -object authz-pam,id=auth0,service=qemu-vnc \\
+>>                   ...
+>>  
+>>          There would then be a corresponding config file for PAM at
+>>
+> 
+> 
 
 
