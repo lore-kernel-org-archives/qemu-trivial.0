@@ -1,100 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIGLa-0006m1-B2
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 15:10:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43156)
+	id 1kIGSD-0004PV-Qx
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 15:17:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erich.mcmillan@hp.com>)
- id 1kIGLS-0006kO-Fv
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 15:10:26 -0400
-Received: from us-smtp-delivery-162.mimecast.com ([63.128.21.162]:31054)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <erich.mcmillan@hp.com>)
- id 1kIGLO-0001PU-M8
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 15:10:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hp.com;
- s=mimecast20180716; t=1600197021;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=h0APxmKDmjPSFU8WlOkNAV6Up2G4IHdrg6mXItJ4g3o=;
- b=W35AWzn71fadX5dMcjTpOVQZiNDCcouv8VmKi86cGCPbAs79YHDWCRvcvli/EeyGuEaLz9
- jRJcMpiOAtUlWlKrZIh9bhQqWv79mqCEe77CGJ/cCs4BB3+XXB8aqhUzObTm3fOle/frcw
- isDDXFriqOXkhUkVlbCN0ENL/7wQlAk=
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12lp2174.outbound.protection.outlook.com [104.47.55.174])
- (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-78-cJQwplOXP1S1aTW5L2yDQA-1; Tue, 15 Sep 2020 15:10:19 -0400
-X-MC-Unique: cJQwplOXP1S1aTW5L2yDQA-1
-Received: from CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM
- (2a01:111:e400:7507::9) by CS1PR8401MB0965.NAMPRD84.PROD.OUTLOOK.COM
- (2a01:111:e400:7508::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3370.16; Tue, 15 Sep
- 2020 19:10:16 +0000
-Received: from CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM
- ([fe80::40df:1118:3bef:736c]) by CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM
- ([fe80::40df:1118:3bef:736c%12]) with mapi id 15.20.3370.019; Tue, 15 Sep
- 2020 19:10:16 +0000
-From: "McMillan, Erich" <erich.mcmillan@hp.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "mst@redhat.com" <mst@redhat.com>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-Subject: Re: PATCH: Increase System Firmware Max Size
-Thread-Topic: PATCH: Increase System Firmware Max Size
-Thread-Index: AQHWh9wbvH3PA15ju0WtYVYwRPIQ7qlqFivMgAABqbE=
-Date: Tue, 15 Sep 2020 19:10:16 +0000
-Message-ID: <CS1PR8401MB03279AC1D869BBBA8D810A19F3200@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
-References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>,
- <CS1PR8401MB0327959D96C84FB32E071E49F3200@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
-In-Reply-To: <CS1PR8401MB0327959D96C84FB32E071E49F3200@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [76.199.17.212]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: eecb2917-eb58-48db-0f2a-08d859aafb32
-x-ms-traffictypediagnostic: CS1PR8401MB0965:
-x-microsoft-antispam-prvs: <CS1PR8401MB0965772938C6A5D4D83BEC7CF3200@CS1PR8401MB0965.NAMPRD84.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fMj4lpfmxaM46Uhffu28po/vJ9DMqBxX26NrJtOdX4R3Ho6Xiy8Pq0bYCa3IDOZKEg/rz9gzrHubpD/crCmEwOEmcIc60ZTLAI5YDxszRIpFfielFAO2F1CyJvwBT9iWAP7v/M+kR19bTbSNqyeYNGRsc+OzfAGU2aRn3U89L9pDm9DmlM6klqmO/h4MmeweyV3mqtqNIMhRJcykoWy7iFuEVXc6Dqa2WczmCT2bc6/Lnsr4zea1W/ZnEmY5slj1c1XBUQVCOdjV/8jK2DnHVOj9N5DVzCDkwO5KymlKfRzQaKosMrtAR1eXeLF4GBxrVPchCv6fRFrtmB0LLZMI8Q==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(396003)(136003)(366004)(39860400002)(346002)(376002)(316002)(7696005)(54906003)(478600001)(2906002)(9686003)(55016002)(8936002)(4326008)(2940100002)(6506007)(53546011)(71200400001)(76116006)(26005)(66946007)(6916009)(186003)(19627405001)(52536014)(66476007)(64756008)(66556008)(30864003)(8676002)(5660300002)(86362001)(33656002)(66446008)(83380400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: VUac7EAD5CeNDd4uOS20T0yLhPxObCbXeVVSQIQhqXw6I+3QHSxmU6K0hLMEitR4cktnic0DZ8U52aV+9UlR9aF79ncDuIPgINnctTadfwxcHe9Mf40jz9ZXxxxAlZEN48Xll5eBcstBn+IgQ2xMbLx3c4ftEB99KG8NTe5Kt1KM7bhVFjpoC9/3NKoSwVRGBNUG1EeI8p1g8bbCOa0NJ7d53WIv5UDzQEE1tEL9k9SoJMNhzJ5xsWGYNwaok4zyX7XHkMW96JGoHU6Q9p3SuKHNqm+GuA0/Fk011781MTEzW7IKB1GT45txUGTJblbo5WUVaDNhBVBf02yqXO9XQDkmvwYcYMcr/j/jCGeOL73MRCiOxRoFvWQ+KSPJTPW3G1fT/MCuwk8mOmNAR2h4WZLLGdtc+cImQWpnCPtY4gMpwqZXinCD9oBR01AzdE1ruJCHv5QRfsX7QH9lUXq1L84EeCWgD5SJN06DuuHqrjeD88R3PqUxpRg1lus3mj73VKBaBex8AcPrenqRUq5ISqhJSyW5Cgqj+siwNZjejexmX2knraRgP/MfxRSSmVAhJnQBZ68ewvh6Sv7YXQpM/dAV6XLIPYI1SAuF2HQP/IXRLs8XoK4To72IR0bqz2B/SYjtb9hxiCzHEfKvxvbu4w==
-x-ms-exchange-transport-forked: True
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kIGSC-0004M1-8C; Tue, 15 Sep 2020 15:17:24 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:46818)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kIGS8-0002Rr-0J; Tue, 15 Sep 2020 15:17:23 -0400
+Received: by mail-lf1-x143.google.com with SMTP id b22so4258107lfs.13;
+ Tue, 15 Sep 2020 12:17:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=gAQCC2THZ4BDSX7taD02VqYincq+fZsD23hrk3Iq2wU=;
+ b=K0/q2YBCKdO16eP4S2kGd6BGZEwRPRgoQ+gEcYZx2xroZuwwqCcUbSBHNNajvN9i9A
+ Hd2d8LBHt1unzbwGGzibObJqr4AP/Zjr1JCPqb9xydizNJLPVgb54pj6PbsQKctfgS+0
+ 5f5qs6LzIWqM91tDYWZII9a+5eCA36hIMU1JP5efKDIfa3CdZzodirrVgTA3MYvkHxt6
+ Jhd9s4PdeD6VpJvmijyGfts5aOjb/JnZTQPOod4rm03cbRNe0FuC8EsjjYurVR30JvJk
+ VbbeZeKqhyElRil2x/NNxko3lOUtMzW5w7JkDY/fcIokZGCBNwUMUNX4l0pJiOggeTzZ
+ z0mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=gAQCC2THZ4BDSX7taD02VqYincq+fZsD23hrk3Iq2wU=;
+ b=lrIBCNpcs2bLdGv6TSikeGY+oDdKjfUahrq+XQ3QyH+1pvyMvqf43wsxwgQIvOnmId
+ 4kqS07wLMBL+aa1yH+f18FpkUG232BOX5mY3Z/OD1MXf33q3VObWZ5CEtbsdhwKt1fqt
+ sYXo2+8pZRmb9kDqr4xSTus1QZFDxblNujLmvW47n4mTk8eKpk909xVJAr7xEFRBuTuD
+ CUjqoY/adu8dH1eJPNqgZVdMJtw837RFZulcrmfUmHUZThhm8wlxB1lttHQfxBiTpNQB
+ GfOD0YrPqD9jvBV4ga+90/AbRnk/nWBxvXgu42Y4SFFsij0Xr/oq71v23BlZK6jMAKdK
+ QBeA==
+X-Gm-Message-State: AOAM532dj3r1Y/D1zFgrfYeMgyAZSKlQZeeWBHecUdW1KSylq1k00cAO
+ gI3rc2CAmCbYXmPPHBHKn4WXqsCvMKTQ6tTNGcQ=
+X-Google-Smtp-Source: ABdhPJwRC4fpqWvkiWcS03WUFZqzr/CbbdSFt7MhRIoCNzIs9vPUBUAfZT2buZJNSe1cG/bqgFucHQxw3qkLNbXpjhI=
+X-Received: by 2002:a19:9141:: with SMTP id y1mr5931227lfj.554.1600197437771; 
+ Tue, 15 Sep 2020 12:17:17 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: hp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: eecb2917-eb58-48db-0f2a-08d859aafb32
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Sep 2020 19:10:16.4780 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: ca7981a2-785a-463d-b82a-3db87dfc3ce6
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wapl6MZ/FJVMQxqdpwq7yI01orV7zGqdn78ip6t0FUiDEy/Rmb0NnAACf//Vm0701XiUwS6JvXc7MEcFGV9Qzw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CS1PR8401MB0965
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA62A171 smtp.mailfrom=erich.mcmillan@hp.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: hp.com
-Content-Type: multipart/alternative;
- boundary="_000_CS1PR8401MB03279AC1D869BBBA8D810A19F3200CS1PR8401MB0327_"
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.162; envelope-from=erich.mcmillan@hp.com;
- helo=us-smtp-delivery-162.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 15:10:21
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200915163343.1100-1-luoyonggang@gmail.com>
+ <06c76888-b2c1-866f-f6f5-78ee9a2bac0c@redhat.com>
+ <CAE2XoE8OmSSnzzUivS0jNQu=QEe8c_gPasfksoihdYhO6f4CYg@mail.gmail.com>
+ <ba164474-7cb0-1f8f-ef01-2529954a1df9@amsat.org>
+In-Reply-To: <ba164474-7cb0-1f8f-ef01-2529954a1df9@amsat.org>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Wed, 16 Sep 2020 03:17:04 +0800
+Message-ID: <CAE2XoE_N=XWeg1y74=ohb_p5qiH+rewDtwSGfSwkhHJpA2V06A@mail.gmail.com>
+Subject: Re: [PATCH] guest agent: Fixes for windows guest agent building on
+ msys2/mingw
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000d954f505af5eff65"
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,968 +80,425 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Sep 2020 19:10:27 -0000
+X-List-Received-Date: Tue, 15 Sep 2020 19:17:25 -0000
 
---_000_CS1PR8401MB03279AC1D869BBBA8D810A19F3200CS1PR8401MB0327_
-Content-Type: text/plain; charset=WINDOWS-1252
+--000000000000d954f505af5eff65
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Apologies, ignore previous patch. The relevant patch is below:
-
-From 473daf6129debf8d158a9ae1aff788c5bdbbc799 Mon Sep 17 00:00:00 2001
-From: Erich McMillan <erich.mcmillan@hp.com>
-Date: Tue, 15 Sep 2020 13:23:25 -0500
-Subject: [PATCH 2/2] Add max firmware size as optional parameter
-
-Signed-off-by: Erich McMillan <erich.mcmillan@hp.com>
----
- hw/i386/pc_sysfw.c  | 13 ++-----------
- include/hw/loader.h |  9 +++++++++
- qemu-options.hx     |  8 ++++++++
- softmmu/vl.c        | 40 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 59 insertions(+), 11 deletions(-)
-
-diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-index b6c0822..ba6c99d 100644
---- a/hw/i386/pc_sysfw.c
-+++ b/hw/i386/pc_sysfw.c
-@@ -39,15 +39,6 @@
- #include "hw/block/flash.h"
- #include "sysemu/kvm.h"
-
--/*
-- * We don't have a theoretically justifiable exact lower bound on the base
-- * address of any flash mapping. In practice, the IO-APIC MMIO range is
-- * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving fre=
+On Wed, Sep 16, 2020 at 1:55 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+>
+> On 9/15/20 7:41 PM, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:
+> > On Wed, Sep 16, 2020 at 12:41 AM Philippe Mathieu-Daud=C3=A9
+> > <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> >>
+> >> On 9/15/20 6:33 PM, Yonggang Luo wrote:
+> >> > error message:
+> >> > "cc" "-Iqga/qemu-ga.exe.p" "-Iqga" "-I../qga" "-I." "-Iqapi"
+> > "-Itrace" "-Iui" "-Iui/shader" "-IC:/CI-Tools/msys64/mingw64/include"
+> > "-IC:/CI-Tools/msys64/mingw64/include/glib-2.0"
+> > "-IC:/CI-Tools/msys64/mingw64/lib/glib-2.0/include"
+> > "-fdiagnostics-color=3Dauto" "-pipe" "-Wall" "-Winvalid-pch" "-Werror"
+> > "-std=3Dgnu99" "-g" "-m64" "-mcx16" "-D_GNU_SOURCE"
+> > "-D_FILE_OFFSET_BITS=3D64" "-D_LARGEFILE_SOURCE" "-Wstrict-prototypes"
+> > "-Wredundant-decls" "-Wundef" "-Wwrite-strings" "-Wmissing-prototypes"
+> > "-fno-strict-aliasing" "-fno-common" "-fwrapv" "-Wold-style-declaration=
+"
+> > "-Wold-style-definition" "-Wtype-limits" "-Wformat-security"
+> > "-Wformat-y2k" "-Winit-self" "-Wignored-qualifiers" "-Wempty-body"
+> > "-Wnested-externs" "-Wendif-labels" "-Wexpansion-to-defined"
+> > "-Wno-missing-include-dirs" "-Wno-shift-negative-value" "-Wno-psabi"
+> > "-fstack-protector-strong" "-iquote" "/c/work/xemu/qemu/tcg/i386"
+> > "-iquote" "." "-iquote" "/c/work/xemu/qemu" "-iquote"
+> > "/c/work/xemu/qemu/accel/tcg" "-iquote" "/c/work/xemu/qemu/include"
+> > "-iquote" "/c/work/xemu/qemu/disas/libvixl" "-pthread" "-mms-bitfields"
+> > -MD -MQ qga/qemu-ga.exe.p/commands-win32.c.obj -MF
+> > "qga/qemu-ga.exe.p/commands-win32.c.obj.d" -o
+> > qga/qemu-ga.exe.p/commands-win32.c.obj "-c" ../qga/commands-win32.c -MP
+> >> > ../qga/commands-win32.c:62:24: error: redundant redeclaration of
+> > 'CM_Get_DevNode_PropertyW' [-Werror=3Dredundant-decls]
+> >> >    62 | CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(
+> >> >       |                        ^~~~~~~~~~~~~~~~~~~~~~~~
+> >> > In file included from ../qga/commands-win32.c:26:
+> >> >
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/cfgmgr32.h:840:26=
+:
+> > note: previous declaration of 'CM_Get_DevNode_PropertyW' was here
+> >> >   840 |   CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST
+> > dnDevInst, const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType,
+> > PBYTE PropertyBuffer, PULONG PropertyBufferSize, ULONG ulFlags);
+> >> >       |                          ^~~~~~~~~~~~~~~~~~~~~~~~
+> >> > cc1.exe: all warnings being treated as errors
+> >> > make: [Makefile.ninja:5143=EF=BC=9Aqga/qemu-ga.exe.p/commands-win32.=
+c.obj]
+> > =E9=94=99=E8=AF=AF 1 (=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89
+> >> >
+> >> > This error comes from qemu configure didn't add predefined macro
+> > -DUNICODE -D_UNICODE in QEMU_CFLAGS,
+> >> > and these too macro are standard config for win32 if using windows
+> > wide api.
+> >> >
+> >> > in cfgmgr32.h
+> >> >   CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST dnDevInst,
+> > const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType, PBYTE
+> > PropertyBuffer, PULONG PropertyBufferSize, ULONG ulFlags);
+> >> > #ifdef UNICODE
+> >> > #define CM_Get_DevNode_Property CM_Get_DevNode_PropertyW
+> >> > #endif
+> >> >
+> >> > macro CM_Get_DevNode_Property defined only when UNICODE are defined.
+> >> > and in win32, UNICODE and _UNICODE should be defined at the same tim=
 e
-- * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB=
- in
-- * size.
-- */
--#define FLASH_SIZE_LIMIT (8 * MiB)
--
- #define FLASH_SECTOR_SIZE 4096
+> >> >
+> >> > #endif
+> >> >
+> >> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com
+> > <mailto:luoyonggang@gmail.com>>
+> >> > ---
+> >> >  configure | 1 +
+> >> >  1 file changed, 1 insertion(+)
+> >> >
+> >> > diff --git a/configure b/configure
+> >> > index 9f141891ea..f5d661af4a 100755
+> >> > --- a/configure
+> >> > +++ b/configure
+> >> > @@ -812,6 +812,7 @@ MINGW32*)
+> >> >    mingw32=3D"yes"
+> >> >    hax=3D"yes"
+> >> >    whpx=3D""
+> >> > +  QEMU_CFLAGS=3D"-DUNICODE -D_UNICODE $QEMU_CFLAGS"
+> >>
+> >> What about declaring them in include/qemu/osdep.h
+> >> instead?
+> > That's a good idea.
+> > But more compiling error warns me that the windows version of qemu are
+> > not in a good situation.
+>
+> :)
+>
+> > On Win32, all API should call the wide version so that support for
+> > Unicode properly.
+> > But obviously the currently qemu didn't do that
+> >
+> > ```
+> [...]
+> > ../util/qemu-sockets.c: In function 'socket_sockaddr_to_address_inet':
+> > C:/work/xemu/qemu/include/qapi/error.h:319:25: error: format '%s'
+> > expects argument of type 'char *', but argument 6 has type 'WCHAR *'
+> > {aka 'short unsigned int *'} [-Werror=3Dformat=3D]
+> >   319 |                         (fmt), ## __VA_ARGS__)
+> >       |                         ^~~~~
+> > ../util/qemu-sockets.c:1235:9: note: in expansion of macro 'error_setg'
+> >  1235 |         error_setg(errp, "Cannot format numeric socket address:
+%s",
+> >       |         ^~~~~~~~~~
+> > In file included from ../io/dns-resolver.c:26:
+> > ../io/dns-resolver.c: In function 'qio_dns_resolver_lookup_sync_inet':
+> > C:/work/xemu/qemu/include/qapi/error.h:319:25: error: format '%s'
+> > expects argument of type 'char *', but argument 8 has type 'WCHAR *'
+> > {aka 'short unsigned int *'} [-Werror=3Dformat=3D]
+> >   319 |                         (fmt), ## __VA_ARGS__)
+> >       |                         ^~~~~
+> > ../io/dns-resolver.c:93:9: note: in expansion of macro 'error_setg'
+> >    93 |         error_setg(errp, "address resolution failed for %s:%s:
+%s",
+> >       |         ^~~~~~~~~~
+> > cc1.exe: all warnings being treated as errors
+> > make: [Makefile.ninja:756=EF=BC=9Aio/libio.fa.p/dns-resolver.c.obj] =E9=
+=94=99=E8=AF=AF 1 (=E5=B7=B2
+> > =E5=BF=BD=E7=95=A5=EF=BC=89
+> > cc1.exe: all warnings being treated as errors
+> > make: [Makefile.ninja:697=EF=BC=9Alibqemuutil.a.p/util_qemu-sockets.c.o=
+bj] =E9=94=99=E8=AF=AF
+> > 1 (=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89
+> > Linking static target io/libio.fa
+> > C:\CI-Tools\msys64\mingw64\bin\ar.exe: io/libio.fa.p/dns-resolver.c.obj=
+:
+> > No such file or directory
+> > make: [Makefile.ninja:764=EF=BC=9Aio/libio.fa] =E9=94=99=E8=AF=AF 1 (=
+=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89
+> > ../net/tap-win32.c: In function 'is_tap_win32_dev':
+> > ../net/tap-win32.c:62:21: error: passing argument 2 of 'RegOpenKeyExW'
+> > from incompatible pointer type [-Werror=3Dincompatible-pointer-types]
+> >    62 | #define ADAPTER_KEY
+> >
+"SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002B=
+E10318}"
+> >       |
+> >
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~
+> >       |                     |
+> >       |                     const char *
+> > ../net/tap-win32.c:62:21: note: in definition of macro 'ADAPTER_KEY'
+> >    62 | #define ADAPTER_KEY
+> >
+"SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002B=
+E10318}"
+> >       |
+> >
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~
+> > In file included from
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/windows.h:76,
+> >                  from
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/winsock2.h:23,
+> >                  from C:/work/xemu/qemu/include/sysemu/os-win32.h:29,
+> >                  from C:/work/xemu/qemu/include/qemu/osdep.h:119,
+> >                  from ../net/tap-win32.c:29:
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/winreg.h:195:57:
+> > note: expected 'LPCWSTR' {aka 'const short unsigned int *'} but argumen=
+t
+> > is of type 'const char *'
+> >   195 |   WINADVAPI LONG WINAPI RegOpenKeyExW(HKEY hKey,LPCWSTR
+> > lpSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult);
+> >       |                                                 ~~~~~~~~^~~~~~~=
+~
+> > ../net/tap-win32.c:229:13: error: passing argument 3 of 'RegEnumKeyExW'
+> > from incompatible pointer type [-Werror=3Dincompatible-pointer-types]
+> >   229 |             enum_name,
+> >       |             ^~~~~~~~~
+> >       |             |
+> >       |             char *
+> > In file included from
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/windows.h:76,
+> >                  from
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/winsock2.h:23,
+> >                  from C:/work/xemu/qemu/include/sysemu/os-win32.h:29,
+> >                  from C:/work/xemu/qemu/include/qemu/osdep.h:119,
+> >                  from ../net/tap-win32.c:29:
+> > C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/winreg.h:184:70:
+> > note: expected 'LPWSTR' {aka 'short unsigned int *'} but argument is of
+> > type 'char *'
+> >   184 |   WINADVAPI LONG WINAPI RegEnumKeyExW(HKEY hKey,DWORD
+> > dwIndex,LPWSTR lpName,LPDWORD lpcchName,LPDWORD lpReserved,LPWSTR
+> > lpClass,LPDWORD lpcchClass,PFILETIME lpftLastWriteTime);
+> >       |
+> > ~~~~~~~^~~~~~
+> > ../net/tap-win32.c:247:13: error: passing argument 2 of 'RegOpenKeyExW'
+> > from incompatible pointer type [-Werror=3Dincompatible-pointer-types]
+> >   247 |             unit_string,
+> >       |             ^~~~~~~~~~~
+> >       |             |
+> >       |             char *
+>
+> I'm not sure fixing all these warnings would produce a
+> maintainable code base. I'd rather disable these 2 warning
+> classes on Windows.
+I agree with that, seems QEMU currently are calling ANSI api all the time,
+better not change that,
+ so globally define -DUNICODE -D_UNICODE is not a option
 
- static void pc_isa_bios_init(MemoryRegion *rom_memory,
-@@ -182,10 +173,10 @@ static void pc_system_flash_map(PCMachineState *pcms,
-         }
-         if ((hwaddr)size !=3D size
-             || total_size > HWADDR_MAX - size
--            || total_size + size > FLASH_SIZE_LIMIT) {
-+            || total_size + size > MaxCombinedFirmwareSize) {
-             error_report("combined size of system firmware exceeds "
-                          "%" PRIu64 " bytes",
--                         FLASH_SIZE_LIMIT);
-+                         MaxCombinedFirmwareSize);
-             exit(1);
-         }
-
-diff --git a/include/hw/loader.h b/include/hw/loader.h
-index a9eeea3..7898b63 100644
---- a/include/hw/loader.h
-+++ b/include/hw/loader.h
-@@ -318,4 +318,13 @@ int rom_add_option(const char *file, int32_t bootindex=
-);
-  * overflow on real hardware too. */
- #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
-
-+/*
-+ * We don't have a theoretically justifiable exact lower bound on the base
-+ * address of any flash mapping. In practice, the IO-APIC MMIO range is
-+ * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving fre=
-e
-+ * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB=
- in
-+ * size, but allow user to specify larger size via command line.
-+ */
-+extern uint64_t MaxCombinedFirmwareSize;
-+
- #endif
-diff --git a/qemu-options.hx b/qemu-options.hx
-index b0f0205..32eed3a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1377,6 +1377,14 @@ SRST
-         |qemu_system_x86| -hda a -hdb b
- ERST
-
-+DEF("maxfirmwaresize", HAS_ARG, QEMU_OPTION_maxfirmwaresize,
-+    "-maxfirmwaresize [size=3D]megs  specify maximum combined firmware siz=
-e, default is 8MiB. Known issues if value exceeds 16MiB.\n",
-+    QEMU_ARCH_ALL)
-+SRST
-+``-maxfirmwaresize [size=3D]megs``
-+    Specify maximum combined firmware size, default is 8MiB. Known issues =
-if value exceeds 16MiB.
-+ERST
-+
- DEF("mtdblock", HAS_ARG, QEMU_OPTION_mtdblock,
-     "-mtdblock file  use 'file' as on-board Flash memory image\n",
-     QEMU_ARCH_ALL)
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 0cc86b0..fcf41d2 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -116,6 +116,8 @@
-
- #define MAX_VIRTIO_CONSOLES 1
-
-+uint64_t MaxCombinedFirmwareSize =3D 8 * MiB;
-+
- static const char *data_dir[16];
- static int data_dir_idx;
- const char *bios_name =3D NULL;
-@@ -448,6 +450,20 @@ static QemuOptsList qemu_mem_opts =3D {
-     },
- };
-
-+static QemuOptsList qemu_max_fw_size_opts =3D {
-+    .name =3D "maxfirmwaresize",
-+    .implied_opt_name =3D "size",
-+    .head =3D QTAILQ_HEAD_INITIALIZER(qemu_max_fw_size_opts.head),
-+    .merge_lists =3D true,
-+    .desc =3D {
-+        {
-+            .name =3D "size",
-+            .type =3D QEMU_OPT_SIZE,
-+        },
-+        { /* end of list */ }
-+    },
-+};
-+
- static QemuOptsList qemu_icount_opts =3D {
-     .name =3D "icount",
-     .implied_opt_name =3D "shift",
-@@ -2576,6 +2592,23 @@ static bool object_create_delayed(const char *type, =
-QemuOpts *opts)
-     return !object_create_initial(type, opts);
- }
-
-+static void set_max_firmware_size(uint64_t *maxfwsize)
-+{
-+    const char *max_fw_size_str;
-+    QemuOpts *opts =3D qemu_find_opts_singleton("maxfirmwaresize");
-+
-+    max_fw_size_str =3D qemu_opt_get(opts, "size");
-+
-+    if (max_fw_size_str) {
-+        if (!*max_fw_size_str) {
-+            error_report("missing 'size' option value");
-+            exit(EXIT_FAILURE);
-+        }
-+
-+        *maxfwsize =3D qemu_opt_get_size(opts, "size", 8 * MiB);
-+    }
-+}
-+
-
- static bool set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_siz=
-e,
-                                MachineClass *mc)
-@@ -2904,6 +2937,7 @@ void qemu_init(int argc, char **argv, char **envp)
-     qemu_add_opts(&qemu_machine_opts);
-     qemu_add_opts(&qemu_accel_opts);
-     qemu_add_opts(&qemu_mem_opts);
-+    qemu_add_opts(&qemu_max_fw_size_opts);
-     qemu_add_opts(&qemu_smp_opts);
-     qemu_add_opts(&qemu_boot_opts);
-     qemu_add_opts(&qemu_add_fd_opts);
-@@ -3160,6 +3194,10 @@ void qemu_init(int argc, char **argv, char **envp)
-                     exit(EXIT_FAILURE);
-                 }
-                 break;
-+            case QEMU_OPTION_maxfirmwaresize:
-+                opts =3D qemu_opts_parse_noisily(qemu_find_opts("maxfirmwa=
-resize"),
-+                                               optarg, true);
-+                break;
- #ifdef CONFIG_TPM
-             case QEMU_OPTION_tpmdev:
-                 if (tpm_config_parse(qemu_find_opts("tpmdev"), optarg) < 0=
-) {
-@@ -3845,6 +3883,8 @@ void qemu_init(int argc, char **argv, char **envp)
-     have_custom_ram_size =3D set_memory_options(&ram_slots, &maxram_size,
-                                               machine_class);
-
-+    set_max_firmware_size(&MaxCombinedFirmwareSize);
-+
-     os_daemonize();
-     rcu_disable_atfork();
 
 --
-2.25.1
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
-
-
-________________________________
-From: McMillan, Erich <erich.mcmillan@hp.com>
-Sent: Tuesday, September 15, 2020 2:09 PM
-To: qemu-devel@nongnu.org <qemu-devel@nongnu.org>
-Cc: mst@redhat.com <mst@redhat.com>; marcel.apfelbaum@gmail.com <marcel.apf=
-elbaum@gmail.com>; qemu-trivial@nongnu.org <qemu-trivial@nongnu.org>
-Subject: Re: PATCH: Increase System Firmware Max Size
-
-Hi all,
-
-I've rewritten the FLASH_SIZE_LIMIT as a command line parameter as requeste=
-d, but I'd like some feedback. My current concerns are:
-
-  1.  I'm not too happy using an global variable in this manner, but I'm no=
-t sure the appropriate way to share this information between vl.c and pc_sy=
-sfw.c. Is there a way for other .c modules to query the QemuOpts, or is thi=
-s not preferred.
-  2.  Would appreciate feedback on the help strings, I think the formatting=
- is correct based on -m (memory size) flag.
-  3.  If global variable is acceptable then is it appropriate for it to be =
-shared via loader.h, this seemed the most appropriate place to put it witho=
-ut adding new includes to either vl.c or pc_sysfw.c.
-
-Thank you,
-Erich
-
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 05d1a4cb6bf863b6ac1df8f94694c073fa4f8d90..a34995819fa14ef728d82ab179e=
-f3a2e468e2365 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -442,6 +442,20 @@ static QemuOptsList qemu_mem_opts =3D {
-     },
- };
-
-+static QemuOptsList qemu_max_fw_size_opts =3D {
-+    .name =3D "maxfirmwaresize",
-+    .implied_opt_name =3D "fwsize",
-+    .head =3D QTAILQ_HEAD_INITIALIZER(qemu_max_fw_size_opts.head),
-+    .merge_lists =3D true,
-+    .desc =3D {
-+        {
-+            .name =3D "size",
-+            .type =3D QEMU_OPT_SIZE,
-+        },
-+        { /* end of list */ }
-+    },
-+};
-+
- static QemuOptsList qemu_icount_opts =3D {
-     .name =3D "icount",
-     .implied_opt_name =3D "shift",
-@@ -2559,6 +2573,23 @@ static bool object_create_delayed(const char *type, =
-QemuOpts *opts)
-     return !object_create_initial(type, opts);
- }
-
-+static void set_max_firmware_size(uint64_t *maxfwsize)
-+{
-+    const char *max_fw_size_str;
-+    QemuOpts *opts =3D qemu_find_opts_singleton("maxfirmwaresize");
-+
-+    max_fw_size_str =3D qemu_opt_get(opts, "size");
-+
-+    if (max_fw_size_str) {
-+        if (!*max_fw_size_str) {
-+            error_report("missing 'size' option value");
-+            exit(EXIT_FAILURE);
-+        }
-+
-+        *maxfwsize =3D qemu_opt_get_size(opts, "size", 8 * MiB);
-+    }
-+}
-+
-
- static bool set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_siz=
-e,
-                                MachineClass *mc)
-@@ -2887,6 +2918,7 @@ void qemu_init(int argc, char **argv, char **envp)
-     qemu_add_opts(&qemu_machine_opts);
-     qemu_add_opts(&qemu_accel_opts);
-     qemu_add_opts(&qemu_mem_opts);
-+    qemu_add_opts(&qemu_max_fw_size_opts);
-     qemu_add_opts(&qemu_smp_opts);
-     qemu_add_opts(&qemu_boot_opts);
-     qemu_add_opts(&qemu_add_fd_opts);
-@@ -3143,6 +3175,10 @@ void qemu_init(int argc, char **argv, char **envp)
-                     exit(EXIT_FAILURE);
-                 }
-                 break;
-+            case QEMU_OPTION_maxfirmwaresize:
-+                opts =3D qemu_opts_parse_noisily(qemu_find_opts("maxfirmwa=
-resize"),
-+                                               optarg, true);
-+                break;
- #ifdef CONFIG_TPM
-             case QEMU_OPTION_tpmdev:
-                 if (tpm_config_parse(qemu_find_opts("tpmdev"), optarg) < 0=
-) {
-@@ -3831,6 +3867,8 @@ void qemu_init(int argc, char **argv, char **envp)
-     have_custom_ram_size =3D set_memory_options(&ram_slots, &maxram_size,
-                                               machine_class);
-
-+    set_max_firmware_size(&MaxCombinedFirmwareSize);
-+
-     os_daemonize();
-
-     /*
-diff --git a/include/hw/loader.h b/include/hw/loader.h
-index a9eeea39521d2d5b5e9b73e0fcbd4d4ce9292046..9e982cd60f8f2173a3160f56316=
-7e48b7ca88aa9 100644
---- a/include/hw/loader.h
-+++ b/include/hw/loader.h
-@@ -318,4 +318,13 @@ int rom_add_option(const char *file, int32_t bootindex=
-);
-  * overflow on real hardware too. */
- #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
-
-+/*
-+ * We don't have a theoretically justifiable exact lower bound on the base
-+ * address of any flash mapping. In practice, the IO-APIC MMIO range is
-+ * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving fre=
-e
-+ * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB=
- in
-+ * size, but allow user to specify larger size via command line.
-+ */
-+uint64_t MaxCombinedFirmwareSize =3D (8 * MiB);
-+
- #endif
-diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..012c28a3b4de1c1618404faefd6=
-3a99267636935 100644
---- a/hw/i386/pc_sysfw.c
-+++ b/hw/i386/pc_sysfw.c
-@@ -39,14 +39,8 @@
- #include "hw/block/flash.h"
- #include "sysemu/kvm.h"
-
--/*
-- * We don't have a theoretically justifiable exact lower bound on the base
-- * address of any flash mapping. In practice, the IO-APIC MMIO range is
-- * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving fre=
-e
-- * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB=
- in
-- * size.
-- */
--#define FLASH_SIZE_LIMIT (8 * MiB)
-+
-+extern MaxCombinedFirmwareSize;
-
- #define FLASH_SECTOR_SIZE 4096
-
-@@ -177,10 +171,10 @@ static void pc_system_flash_map(PCMachineState *pcms,
-         }
-         if ((hwaddr)size !=3D size
-             || total_size > HWADDR_MAX - size
--            || total_size + size > FLASH_SIZE_LIMIT) {
-+            || total_size + size > MaxCombinedFirmwareSize) {
-             error_report("combined size of system firmware exceeds "
-                          "%" PRIu64 " bytes",
--                         FLASH_SIZE_LIMIT);
-+                         MaxCombinedFirmwareSize);
-             exit(1);
-         }
-
-
-
-
-________________________________
-From: McMillan, Erich
-Sent: Thursday, September 10, 2020 8:45 PM
-To: qemu-devel@nongnu.org <qemu-devel@nongnu.org>
-Cc: mst@redhat.com <mst@redhat.com>; marcel.apfelbaum@gmail.com <marcel.apf=
-elbaum@gmail.com>; qemu-trivial@nongnu.org <qemu-trivial@nongnu.org>
-Subject: PATCH: Increase System Firmware Max Size
-
-Hi all,
-
-(this is my first Qemu patch submission, please let me know if my formattin=
-g/content needs to be fixed).
-We have a need for increased firmware size, currently we are building Qemu =
-with the following change to test our Uefi Firmware and it works well for u=
-s. Hope that this change can be made to open source. Thank you.
--------
-Increase allowed system firmware size to 16M per comment suggesting up to 1=
-8M is permissible.
-
- Signed-off-by: Erich McMillan <erich.mcmillan@hp.com>
-
-diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..f6f7cd744d0690cee0355fbd19f=
-fdcdb71ea75ca 100644
---- a/hw/i386/pc_sysfw.c
-+++ b/hw/i386/pc_sysfw.c
-@@ -46,7 +46,7 @@
-  * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB=
- in
-  * size.
-  */
--#define FLASH_SIZE_LIMIT (8 * MiB)
-+#define FLASH_SIZE_LIMIT (16 * MiB)
-
- #define FLASH_SECTOR_SIZE 4096
--------
-
-
---_000_CS1PR8401MB03279AC1D869BBBA8D810A19F3200CS1PR8401MB0327_
-Content-Type: text/html; charset=WINDOWS-1252
+--000000000000d954f505af5eff65
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
-Apologies, ignore previous patch. The relevant patch is below:</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
-<br>
-</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
-From 473daf6129debf8d158a9ae1aff788c5bdbbc799 Mon Sep 17 00:00:00 2001
-<div>From: Erich McMillan &lt;erich.mcmillan@hp.com&gt;</div>
-<div>Date: Tue, 15 Sep 2020 13:23:25 -0500</div>
-<div>Subject: [PATCH 2/2] Add max firmware size as optional parameter</div>
-<div><br>
-</div>
-<div>Signed-off-by: Erich McMillan &lt;erich.mcmillan@hp.com&gt;</div>
-<div>---</div>
-<div>&nbsp;hw/i386/pc_sysfw.c &nbsp;| 13 ++-----------</div>
-<div>&nbsp;include/hw/loader.h | &nbsp;9 +++++++++</div>
-<div>&nbsp;qemu-options.hx &nbsp; &nbsp; | &nbsp;8 ++++++++</div>
-<div>&nbsp;softmmu/vl.c &nbsp; &nbsp; &nbsp; &nbsp;| 40 +++++++++++++++++++=
-+++++++++++++++++++++</div>
-<div>&nbsp;4 files changed, 59 insertions(+), 11 deletions(-)</div>
-<div><br>
-</div>
-<div>diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c</div>
-<div>index b6c0822..ba6c99d 100644</div>
-<div>--- a/hw/i386/pc_sysfw.c</div>
-<div>+++ b/hw/i386/pc_sysfw.c</div>
-<div>@@ -39,15 +39,6 @@</div>
-<div>&nbsp;#include &quot;hw/block/flash.h&quot;</div>
-<div>&nbsp;#include &quot;sysemu/kvm.h&quot;</div>
-<div>&nbsp;</div>
-<div>-/*</div>
-<div>- * We don't have a theoretically justifiable exact lower bound on the=
- base</div>
-<div>- * address of any flash mapping. In practice, the IO-APIC MMIO range =
-is</div>
-<div>- * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leavin=
-g free</div>
-<div>- * only 18MB-4KB below 4G. For now, restrict the cumulative mapping t=
-o 8MB in</div>
-<div>- * size.</div>
-<div>- */</div>
-<div>-#define FLASH_SIZE_LIMIT (8 * MiB)</div>
-<div>-</div>
-<div>&nbsp;#define FLASH_SECTOR_SIZE 4096</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void pc_isa_bios_init(MemoryRegion *rom_memory,</div>
-<div>@@ -182,10 +173,10 @@ static void pc_system_flash_map(PCMachineState *=
-pcms,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if ((hwaddr)size !=3D size</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size &gt; HWA=
-DDR_MAX - size</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size + size &gt; F=
-LASH_SIZE_LIMIT) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size + size &gt; M=
-axCombinedFirmwareSize) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;error_report(&quot;com=
-bined size of system firmware exceeds &quot;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &quot;%&quot; PRIu64 &quot; bytes&quot;,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; FLASH_SIZE_LIMIT);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; MaxCombinedFirmwareSize);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;exit(1);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>diff --git a/include/hw/loader.h b/include/hw/loader.h</div>
-<div>index a9eeea3..7898b63 100644</div>
-<div>--- a/include/hw/loader.h</div>
-<div>+++ b/include/hw/loader.h</div>
-<div>@@ -318,4 +318,13 @@ int rom_add_option(const char *file, int32_t boot=
-index);</div>
-<div>&nbsp; * overflow on real hardware too. */</div>
-<div>&nbsp;#define UBOOT_MAX_GUNZIP_BYTES (64 &lt;&lt; 20)</div>
-<div>&nbsp;</div>
-<div>+/*</div>
-<div>+ * We don't have a theoretically justifiable exact lower bound on the=
- base</div>
-<div>+ * address of any flash mapping. In practice, the IO-APIC MMIO range =
-is</div>
-<div>+ * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leavin=
-g free</div>
-<div>+ * only 18MB-4KB below 4G. For now, restrict the cumulative mapping t=
-o 8MB in</div>
-<div>+ * size, but allow user to specify larger size via command line.</div=
->
-<div>+ */</div>
-<div>+extern uint64_t MaxCombinedFirmwareSize;</div>
-<div>+</div>
-<div>&nbsp;#endif</div>
-<div>diff --git a/qemu-options.hx b/qemu-options.hx</div>
-<div>index b0f0205..32eed3a 100644</div>
-<div>--- a/qemu-options.hx</div>
-<div>+++ b/qemu-options.hx</div>
-<div>@@ -1377,6 +1377,14 @@ SRST</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|qemu_system_x86| -hda a -hdb b</div=
->
-<div>&nbsp;ERST</div>
-<div>&nbsp;</div>
-<div>+DEF(&quot;maxfirmwaresize&quot;, HAS_ARG, QEMU_OPTION_maxfirmwaresize=
-,</div>
-<div>+ &nbsp; &nbsp;&quot;-maxfirmwaresize [size=3D]megs &nbsp;specify maxi=
-mum combined firmware size, default is 8MiB. Known issues if value exceeds =
-16MiB.\n&quot;,</div>
-<div>+ &nbsp; &nbsp;QEMU_ARCH_ALL)</div>
-<div>+SRST</div>
-<div>+``-maxfirmwaresize [size=3D]megs``</div>
-<div>+ &nbsp; &nbsp;Specify maximum combined firmware size, default is 8MiB=
-. Known issues if value exceeds 16MiB.</div>
-<div>+ERST</div>
-<div>+</div>
-<div>&nbsp;DEF(&quot;mtdblock&quot;, HAS_ARG, QEMU_OPTION_mtdblock,</div>
-<div>&nbsp; &nbsp; &nbsp;&quot;-mtdblock file &nbsp;use 'file' as on-board =
-Flash memory image\n&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp;QEMU_ARCH_ALL)</div>
-<div>diff --git a/softmmu/vl.c b/softmmu/vl.c</div>
-<div>index 0cc86b0..fcf41d2 100644</div>
-<div>--- a/softmmu/vl.c</div>
-<div>+++ b/softmmu/vl.c</div>
-<div>@@ -116,6 +116,8 @@</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define MAX_VIRTIO_CONSOLES 1</div>
-<div>&nbsp;</div>
-<div>+uint64_t MaxCombinedFirmwareSize =3D 8 * MiB;</div>
-<div>+</div>
-<div>&nbsp;static const char *data_dir[16];</div>
-<div>&nbsp;static int data_dir_idx;</div>
-<div>&nbsp;const char *bios_name =3D NULL;</div>
-<div>@@ -448,6 +450,20 @@ static QemuOptsList qemu_mem_opts =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>+static QemuOptsList qemu_max_fw_size_opts =3D {</div>
-<div>+ &nbsp; &nbsp;.name =3D &quot;maxfirmwaresize&quot;,</div>
-<div>+ &nbsp; &nbsp;.implied_opt_name =3D &quot;size&quot;,</div>
-<div>+ &nbsp; &nbsp;.head =3D QTAILQ_HEAD_INITIALIZER(qemu_max_fw_size_opts=
-.head),</div>
-<div>+ &nbsp; &nbsp;.merge_lists =3D true,</div>
-<div>+ &nbsp; &nbsp;.desc =3D {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;{</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.name =3D &quot;size&quot;,=
-</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.type =3D QEMU_OPT_SIZE,</d=
-iv>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;},</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;{ /* end of list */ }</div>
-<div>+ &nbsp; &nbsp;},</div>
-<div>+};</div>
-<div>+</div>
-<div>&nbsp;static QemuOptsList qemu_icount_opts =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.name =3D &quot;icount&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp;.implied_opt_name =3D &quot;shift&quot;,</div>
-<div>@@ -2576,6 +2592,23 @@ static bool object_create_delayed(const char *t=
-ype, QemuOpts *opts)</div>
-<div>&nbsp; &nbsp; &nbsp;return !object_create_initial(type, opts);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>+static void set_max_firmware_size(uint64_t *maxfwsize)</div>
-<div>+{</div>
-<div>+ &nbsp; &nbsp;const char *max_fw_size_str;</div>
-<div>+ &nbsp; &nbsp;QemuOpts *opts =3D qemu_find_opts_singleton(&quot;maxfi=
-rmwaresize&quot;);</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp;max_fw_size_str =3D qemu_opt_get(opts, &quot;size&quot;=
-);</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp;if (max_fw_size_str) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;if (!*max_fw_size_str) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;error_report(&quot;missing =
-'size' option value&quot;);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;exit(EXIT_FAILURE);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;*maxfwsize =3D qemu_opt_get_size(opts, &q=
-uot;size&quot;, 8 * MiB);</div>
-<div>+ &nbsp; &nbsp;}</div>
-<div>+}</div>
-<div>+</div>
-<div>&nbsp;</div>
-<div>&nbsp;static bool set_memory_options(uint64_t *ram_slots, ram_addr_t *=
-maxram_size,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MachineClass *mc)</div>
-<div>@@ -2904,6 +2937,7 @@ void qemu_init(int argc, char **argv, char **env=
-p)</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_machine_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_accel_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_mem_opts);</div>
-<div>+ &nbsp; &nbsp;qemu_add_opts(&amp;qemu_max_fw_size_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_smp_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_boot_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_add_fd_opts);</div>
-<div>@@ -3160,6 +3194,10 @@ void qemu_init(int argc, char **argv, char **en=
-vp)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp;exit(EXIT_FAILURE);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</=
-div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case QEMU_OPTION_maxfirmwar=
-esize:</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;opts =3D qemu=
-_opts_parse_noisily(qemu_find_opts(&quot;maxfirmwaresize&quot;),</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; optarg, true);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>&nbsp;#ifdef CONFIG_TPM</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case QEMU_OPTION_tpmde=
-v:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (tpm_=
-config_parse(qemu_find_opts(&quot;tpmdev&quot;), optarg) &lt; 0) {</div>
-<div>@@ -3845,6 +3883,8 @@ void qemu_init(int argc, char **argv, char **env=
-p)</div>
-<div>&nbsp; &nbsp; &nbsp;have_custom_ram_size =3D set_memory_options(&amp;r=
-am_slots, &amp;maxram_size,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp;machine_class);</div>
-<div>&nbsp;</div>
-<div>+ &nbsp; &nbsp;set_max_firmware_size(&amp;MaxCombinedFirmwareSize);</d=
-iv>
-<div>+</div>
-<div>&nbsp; &nbsp; &nbsp;os_daemonize();</div>
-<div>&nbsp; &nbsp; &nbsp;rcu_disable_atfork();</div>
-<div>&nbsp;</div>
-<div>-- </div>
-<div>2.25.1</div>
-<div><br>
-</div>
-<br>
-<br>
-</div>
-<div id=3D"appendonsend"></div>
-<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
-<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
-yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> McMillan, Erich &lt;e=
-rich.mcmillan@hp.com&gt;<br>
-<b>Sent:</b> Tuesday, September 15, 2020 2:09 PM<br>
-<b>To:</b> qemu-devel@nongnu.org &lt;qemu-devel@nongnu.org&gt;<br>
-<b>Cc:</b> mst@redhat.com &lt;mst@redhat.com&gt;; marcel.apfelbaum@gmail.co=
-m &lt;marcel.apfelbaum@gmail.com&gt;; qemu-trivial@nongnu.org &lt;qemu-triv=
-ial@nongnu.org&gt;<br>
-<b>Subject:</b> Re: PATCH: Increase System Firmware Max Size</font>
-<div>&nbsp;</div>
-</div>
-<style type=3D"text/css" style=3D"display:none">
-<!--
-p
-=09{margin-top:0;
-=09margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-Hi all,</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-I've rewritten the FLASH_SIZE_LIMIT as a command line parameter as requeste=
-d, but I'd like some feedback. My current concerns are:</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-<ol>
-<li>I'm not too happy using an global variable in this manner, but I'm not =
-sure the appropriate way to share this information between vl.c and pc_sysf=
-w.c. Is there a way for other .c modules to query the QemuOpts, or is this =
-not preferred.</li><li>Would appreciate feedback on the help strings, I thi=
-nk the formatting is correct based on -m (memory size) flag.</li><li>If glo=
-bal variable is acceptable then is it appropriate for it to be shared via l=
-oader.h, this seemed the most appropriate place to put it without adding ne=
-w includes to either vl.c or pc_sysfw.c.</li></ol>
-<div>Thank you,</div>
-<div>Erich</div>
-<div><br>
-</div>
-<div>diff --git a/softmmu/vl.c b/softmmu/vl.c
-<div>index 05d1a4cb6bf863b6ac1df8f94694c073fa4f8d90..a34995819fa14ef728d82a=
-b179ef3a2e468e2365 100644</div>
-<div>--- a/softmmu/vl.c</div>
-<div>+++ b/softmmu/vl.c</div>
-<div>@@ -442,6 +442,20 @@ static QemuOptsList qemu_mem_opts =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>+static QemuOptsList qemu_max_fw_size_opts =3D {</div>
-<div>+ &nbsp; &nbsp;.name =3D &quot;maxfirmwaresize&quot;,</div>
-<div>+ &nbsp; &nbsp;.implied_opt_name =3D &quot;fwsize&quot;,</div>
-<div>+ &nbsp; &nbsp;.head =3D QTAILQ_HEAD_INITIALIZER(qemu_max_fw_size_opts=
-.head),</div>
-<div>+ &nbsp; &nbsp;.merge_lists =3D true,</div>
-<div>+ &nbsp; &nbsp;.desc =3D {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;{</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.name =3D &quot;size&quot;,=
-</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.type =3D QEMU_OPT_SIZE,</d=
-iv>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;},</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;{ /* end of list */ }</div>
-<div>+ &nbsp; &nbsp;},</div>
-<div>+};</div>
-<div>+</div>
-<div>&nbsp;static QemuOptsList qemu_icount_opts =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.name =3D &quot;icount&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp;.implied_opt_name =3D &quot;shift&quot;,</div>
-<div>@@ -2559,6 +2573,23 @@ static bool object_create_delayed(const char *t=
-ype, QemuOpts *opts)</div>
-<div>&nbsp; &nbsp; &nbsp;return !object_create_initial(type, opts);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>+static void set_max_firmware_size(uint64_t *maxfwsize)</div>
-<div>+{</div>
-<div>+ &nbsp; &nbsp;const char *max_fw_size_str;</div>
-<div>+ &nbsp; &nbsp;QemuOpts *opts =3D qemu_find_opts_singleton(&quot;maxfi=
-rmwaresize&quot;);</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp;max_fw_size_str =3D qemu_opt_get(opts, &quot;size&quot;=
-);</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp;if (max_fw_size_str) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;if (!*max_fw_size_str) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;error_report(&quot;missing =
-'size' option value&quot;);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;exit(EXIT_FAILURE);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>+</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp;*maxfwsize =3D qemu_opt_get_size(opts, &q=
-uot;size&quot;, 8 * MiB);</div>
-<div>+ &nbsp; &nbsp;}</div>
-<div>+}</div>
-<div>+</div>
-<div>&nbsp;</div>
-<div>&nbsp;static bool set_memory_options(uint64_t *ram_slots, ram_addr_t *=
-maxram_size,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MachineClass *mc)</div>
-<div>@@ -2887,6 +2918,7 @@ void qemu_init(int argc, char **argv, char **env=
-p)</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_machine_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_accel_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_mem_opts);</div>
-<div>+ &nbsp; &nbsp;qemu_add_opts(&amp;qemu_max_fw_size_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_smp_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_boot_opts);</div>
-<div>&nbsp; &nbsp; &nbsp;qemu_add_opts(&amp;qemu_add_fd_opts);</div>
-<div>@@ -3143,6 +3175,10 @@ void qemu_init(int argc, char **argv, char **en=
-vp)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp;exit(EXIT_FAILURE);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</=
-div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case QEMU_OPTION_maxfirmwar=
-esize:</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;opts =3D qemu=
-_opts_parse_noisily(qemu_find_opts(&quot;maxfirmwaresize&quot;),</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; optarg, true);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>&nbsp;#ifdef CONFIG_TPM</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case QEMU_OPTION_tpmde=
-v:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (tpm_=
-config_parse(qemu_find_opts(&quot;tpmdev&quot;), optarg) &lt; 0) {</div>
-<div>@@ -3831,6 +3867,8 @@ void qemu_init(int argc, char **argv, char **env=
-p)</div>
-<div>&nbsp; &nbsp; &nbsp;have_custom_ram_size =3D set_memory_options(&amp;r=
-am_slots, &amp;maxram_size,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp;machine_class);</div>
-<div>&nbsp;</div>
-<div>+ &nbsp; &nbsp;set_max_firmware_size(&amp;MaxCombinedFirmwareSize);</d=
-iv>
-<div>+</div>
-<div>&nbsp; &nbsp; &nbsp;os_daemonize();</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/*</div>
-<div>diff --git a/include/hw/loader.h b/include/hw/loader.h</div>
-<div>index a9eeea39521d2d5b5e9b73e0fcbd4d4ce9292046..9e982cd60f8f2173a3160f=
-563167e48b7ca88aa9 100644</div>
-<div>--- a/include/hw/loader.h</div>
-<div>+++ b/include/hw/loader.h</div>
-<div>@@ -318,4 +318,13 @@ int rom_add_option(const char *file, int32_t boot=
-index);</div>
-<div>&nbsp; * overflow on real hardware too. */</div>
-<div>&nbsp;#define UBOOT_MAX_GUNZIP_BYTES (64 &lt;&lt; 20)</div>
-<div>&nbsp;</div>
-<div>+/*</div>
-<div>+ * We don't have a theoretically justifiable exact lower bound on the=
- base</div>
-<div>+ * address of any flash mapping. In practice, the IO-APIC MMIO range =
-is</div>
-<div>+ * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leavin=
-g free</div>
-<div>+ * only 18MB-4KB below 4G. For now, restrict the cumulative mapping t=
-o 8MB in</div>
-<div>+ * size, but allow user to specify larger size via command line.</div=
->
-<div>+ */</div>
-<div>+uint64_t MaxCombinedFirmwareSize =3D (8 * MiB);</div>
-<div>+</div>
-<div>&nbsp;#endif</div>
-<div>diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c</div>
-<div>index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..012c28a3b4de1c1618404f=
-aefd63a99267636935 100644</div>
-<div>--- a/hw/i386/pc_sysfw.c</div>
-<div>+++ b/hw/i386/pc_sysfw.c</div>
-<div>@@ -39,14 +39,8 @@</div>
-<div>&nbsp;#include &quot;hw/block/flash.h&quot;</div>
-<div>&nbsp;#include &quot;sysemu/kvm.h&quot;</div>
-<div>&nbsp;</div>
-<div>-/*</div>
-<div>- * We don't have a theoretically justifiable exact lower bound on the=
- base</div>
-<div>- * address of any flash mapping. In practice, the IO-APIC MMIO range =
-is</div>
-<div>- * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leavin=
-g free</div>
-<div>- * only 18MB-4KB below 4G. For now, restrict the cumulative mapping t=
-o 8MB in</div>
-<div>- * size.</div>
-<div>- */</div>
-<div>-#define FLASH_SIZE_LIMIT (8 * MiB)</div>
-<div>+</div>
-<div>+extern MaxCombinedFirmwareSize;</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define FLASH_SECTOR_SIZE 4096</div>
-<div>&nbsp;</div>
-<div>@@ -177,10 +171,10 @@ static void pc_system_flash_map(PCMachineState *=
-pcms,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if ((hwaddr)size !=3D size</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size &gt; HWA=
-DDR_MAX - size</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size + size &gt; F=
-LASH_SIZE_LIMIT) {</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|| total_size + size &gt; M=
-axCombinedFirmwareSize) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;error_report(&quot;com=
-bined size of system firmware exceeds &quot;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &quot;%&quot; PRIu64 &quot; bytes&quot;,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; FLASH_SIZE_LIMIT);</div>
-<div>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; MaxCombinedFirmwareSize);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;exit(1);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<br>
-<br>
-</div>
-<div><br>
-</div>
-</div>
-<div id=3D"x_appendonsend"></div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> McMillan, Erich<br>
-<b>Sent:</b> Thursday, September 10, 2020 8:45 PM<br>
-<b>To:</b> qemu-devel@nongnu.org &lt;qemu-devel@nongnu.org&gt;<br>
-<b>Cc:</b> mst@redhat.com &lt;mst@redhat.com&gt;; marcel.apfelbaum@gmail.co=
-m &lt;marcel.apfelbaum@gmail.com&gt;; qemu-trivial@nongnu.org &lt;qemu-triv=
-ial@nongnu.org&gt;<br>
-<b>Subject:</b> PATCH: Increase System Firmware Max Size</font>
-<div>&nbsp;</div>
-</div>
-<style type=3D"text/css" style=3D"display:none">
-<!--
-p
-=09{margin-top:0;
-=09margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-Hi all,</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-(this is my first Qemu patch submission, please let me know if my formattin=
-g/content needs to be fixed).<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-We have a need for increased firmware size, currently we are building Qemu =
-with the following change to test our Uefi Firmware and it works well for u=
-s. Hope that this change can be made to open source. Thank you.<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
--------<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-Increase allowed system firmware size to 16M per comment suggesting up to 1=
-8M is permissible.<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-&nbsp;Signed-off-by: Erich McMillan &lt;erich.mcmillan@hp.com&gt;<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0); background-color:rgb(255,255,255)">
-diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-<div>index b8d8ef59eb17c6ace8194fc69c3d27809becfbc0..f6f7cd744d0690cee0355f=
-bd19ffdcdb71ea75ca 100644</div>
-<div>--- a/hw/i386/pc_sysfw.c</div>
-<div>+++ b/hw/i386/pc_sysfw.c</div>
-<div>@@ -46,7 +46,7 @@</div>
-<div>&nbsp; * only 18MB-4KB below 4G. For now, restrict the cumulative mapp=
-ing to 8MB in</div>
-<div>&nbsp; * size.</div>
-<div>&nbsp; */</div>
-<div>-#define FLASH_SIZE_LIMIT (8 * MiB)</div>
-<div>+#define FLASH_SIZE_LIMIT (16 * MiB)</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define FLASH_SECTOR_SIZE 4096</div>
-<div>-------<br>
-</div>
-&nbsp;<br>
-</div>
-</div>
-</div>
-</body>
-</html>
+<div dir=3D"ltr"><br><br>On Wed, Sep 16, 2020 at 1:55 AM Philippe Mathieu-D=
+aud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wr=
+ote:<br>&gt;<br>&gt; On 9/15/20 7:41 PM, =E7=BD=97=E5=8B=87=E5=88=9A(Yongga=
+ng Luo) wrote:<br>&gt; &gt; On Wed, Sep 16, 2020 at 12:41 AM Philippe Mathi=
+eu-Daud=C3=A9<br>&gt; &gt; &lt;<a href=3D"mailto:philmd@redhat.com">philmd@=
+redhat.com</a> &lt;mailto:<a href=3D"mailto:philmd@redhat.com">philmd@redha=
+t.com</a>&gt;&gt; wrote:<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; On 9/15/20 6:33 =
+PM, Yonggang Luo wrote:<br>&gt; &gt;&gt; &gt; error message:<br>&gt; &gt;&g=
+t; &gt; &quot;cc&quot; &quot;-Iqga/qemu-ga.exe.p&quot; &quot;-Iqga&quot; &q=
+uot;-I../qga&quot; &quot;-I.&quot; &quot;-Iqapi&quot;<br>&gt; &gt; &quot;-I=
+trace&quot; &quot;-Iui&quot; &quot;-Iui/shader&quot; &quot;-IC:/CI-Tools/ms=
+ys64/mingw64/include&quot;<br>&gt; &gt; &quot;-IC:/CI-Tools/msys64/mingw64/=
+include/glib-2.0&quot;<br>&gt; &gt; &quot;-IC:/CI-Tools/msys64/mingw64/lib/=
+glib-2.0/include&quot;<br>&gt; &gt; &quot;-fdiagnostics-color=3Dauto&quot; =
+&quot;-pipe&quot; &quot;-Wall&quot; &quot;-Winvalid-pch&quot; &quot;-Werror=
+&quot;<br>&gt; &gt; &quot;-std=3Dgnu99&quot; &quot;-g&quot; &quot;-m64&quot=
+; &quot;-mcx16&quot; &quot;-D_GNU_SOURCE&quot;<br>&gt; &gt; &quot;-D_FILE_O=
+FFSET_BITS=3D64&quot; &quot;-D_LARGEFILE_SOURCE&quot; &quot;-Wstrict-protot=
+ypes&quot;<br>&gt; &gt; &quot;-Wredundant-decls&quot; &quot;-Wundef&quot; &=
+quot;-Wwrite-strings&quot; &quot;-Wmissing-prototypes&quot;<br>&gt; &gt; &q=
+uot;-fno-strict-aliasing&quot; &quot;-fno-common&quot; &quot;-fwrapv&quot; =
+&quot;-Wold-style-declaration&quot;<br>&gt; &gt; &quot;-Wold-style-definiti=
+on&quot; &quot;-Wtype-limits&quot; &quot;-Wformat-security&quot;<br>&gt; &g=
+t; &quot;-Wformat-y2k&quot; &quot;-Winit-self&quot; &quot;-Wignored-qualifi=
+ers&quot; &quot;-Wempty-body&quot;<br>&gt; &gt; &quot;-Wnested-externs&quot=
+; &quot;-Wendif-labels&quot; &quot;-Wexpansion-to-defined&quot;<br>&gt; &gt=
+; &quot;-Wno-missing-include-dirs&quot; &quot;-Wno-shift-negative-value&quo=
+t; &quot;-Wno-psabi&quot;<br>&gt; &gt; &quot;-fstack-protector-strong&quot;=
+ &quot;-iquote&quot; &quot;/c/work/xemu/qemu/tcg/i386&quot;<br>&gt; &gt; &q=
+uot;-iquote&quot; &quot;.&quot; &quot;-iquote&quot; &quot;/c/work/xemu/qemu=
+&quot; &quot;-iquote&quot;<br>&gt; &gt; &quot;/c/work/xemu/qemu/accel/tcg&q=
+uot; &quot;-iquote&quot; &quot;/c/work/xemu/qemu/include&quot;<br>&gt; &gt;=
+ &quot;-iquote&quot; &quot;/c/work/xemu/qemu/disas/libvixl&quot; &quot;-pth=
+read&quot; &quot;-mms-bitfields&quot;<br>&gt; &gt; -MD -MQ qga/qemu-ga.exe.=
+p/commands-win32.c.obj -MF<br>&gt; &gt; &quot;qga/qemu-ga.exe.p/commands-wi=
+n32.c.obj.d&quot; -o<br>&gt; &gt; qga/qemu-ga.exe.p/commands-win32.c.obj &q=
+uot;-c&quot; ../qga/commands-win32.c -MP<br>&gt; &gt;&gt; &gt; ../qga/comma=
+nds-win32.c:62:24: error: redundant redeclaration of<br>&gt; &gt; &#39;CM_G=
+et_DevNode_PropertyW&#39; [-Werror=3Dredundant-decls]<br>&gt; &gt;&gt; &gt;=
+ =C2=A0 =C2=A062 | CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(<br>&gt;=
+ &gt;&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~~~~~~~~~~~~~~~~~~<br=
+>&gt; &gt;&gt; &gt; In file included from ../qga/commands-win32.c:26:<br>&g=
+t; &gt;&gt; &gt;<br>&gt; &gt; C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32=
+/include/cfgmgr32.h:840:26:<br>&gt; &gt; note: previous declaration of &#39=
+;CM_Get_DevNode_PropertyW&#39; was here<br>&gt; &gt;&gt; &gt; =C2=A0 840 | =
+=C2=A0 CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST<br>&gt; &gt;=
+ dnDevInst, const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType,<br>&g=
+t; &gt; PBYTE PropertyBuffer, PULONG PropertyBufferSize, ULONG ulFlags);<br=
+>&gt; &gt;&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~~~~~~~~~~=
+~~~~~~~~<br>&gt; &gt;&gt; &gt; cc1.exe: all warnings being treated as error=
+s<br>&gt; &gt;&gt; &gt; make: [Makefile.ninja:5143=EF=BC=9Aqga/qemu-ga.exe.=
+p/commands-win32.c.obj]<br>&gt; &gt; =E9=94=99=E8=AF=AF 1 (=E5=B7=B2=E5=BF=
+=BD=E7=95=A5=EF=BC=89<br>&gt; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; This erro=
+r comes from qemu configure didn&#39;t add predefined macro<br>&gt; &gt; -D=
+UNICODE -D_UNICODE in QEMU_CFLAGS,<br>&gt; &gt;&gt; &gt; and these too macr=
+o are standard config for win32 if using windows<br>&gt; &gt; wide api.<br>=
+&gt; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; in cfgmgr32.h<br>&gt; &gt;&gt; &gt=
+; =C2=A0 CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST dnDevInst,=
+<br>&gt; &gt; const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType, PBY=
+TE<br>&gt; &gt; PropertyBuffer, PULONG PropertyBufferSize, ULONG ulFlags);<=
+br>&gt; &gt;&gt; &gt; #ifdef UNICODE<br>&gt; &gt;&gt; &gt; #define CM_Get_D=
+evNode_Property CM_Get_DevNode_PropertyW<br>&gt; &gt;&gt; &gt; #endif<br>&g=
+t; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; macro CM_Get_DevNode_Property define=
+d only when UNICODE are defined.<br>&gt; &gt;&gt; &gt; and in win32, UNICOD=
+E and _UNICODE should be defined at the same time<br>&gt; &gt;&gt; &gt;<br>=
+&gt; &gt;&gt; &gt; #endif<br>&gt; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; Signe=
+d-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyong=
+gang@gmail.com</a><br>&gt; &gt; &lt;mailto:<a href=3D"mailto:luoyonggang@gm=
+ail.com">luoyonggang@gmail.com</a>&gt;&gt;<br>&gt; &gt;&gt; &gt; ---<br>&gt=
+; &gt;&gt; &gt; =C2=A0configure | 1 +<br>&gt; &gt;&gt; &gt; =C2=A01 file ch=
+anged, 1 insertion(+)<br>&gt; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; diff --gi=
+t a/configure b/configure<br>&gt; &gt;&gt; &gt; index 9f141891ea..f5d661af4=
+a 100755<br>&gt; &gt;&gt; &gt; --- a/configure<br>&gt; &gt;&gt; &gt; +++ b/=
+configure<br>&gt; &gt;&gt; &gt; @@ -812,6 +812,7 @@ MINGW32*)<br>&gt; &gt;&=
+gt; &gt; =C2=A0 =C2=A0mingw32=3D&quot;yes&quot;<br>&gt; &gt;&gt; &gt; =C2=
+=A0 =C2=A0hax=3D&quot;yes&quot;<br>&gt; &gt;&gt; &gt; =C2=A0 =C2=A0whpx=3D&=
+quot;&quot;<br>&gt; &gt;&gt; &gt; + =C2=A0QEMU_CFLAGS=3D&quot;-DUNICODE -D_=
+UNICODE $QEMU_CFLAGS&quot;<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; What about dec=
+laring them in include/qemu/osdep.h<br>&gt; &gt;&gt; instead?<br>&gt; &gt; =
+That&#39;s a good idea.<br>&gt; &gt; But more compiling error warns me that=
+ the windows version of qemu are<br>&gt; &gt; not in a good situation.<br>&=
+gt;<br>&gt; :)<br>&gt;<br>&gt; &gt; On Win32, all API should call the wide =
+version so that support for<br>&gt; &gt; Unicode properly.<br>&gt; &gt; But=
+ obviously the currently qemu didn&#39;t do that<br>&gt; &gt;<br>&gt; &gt; =
+```<br>&gt; [...]<br>&gt; &gt; ../util/qemu-sockets.c: In function &#39;soc=
+ket_sockaddr_to_address_inet&#39;:<br>&gt; &gt; C:/work/xemu/qemu/include/q=
+api/error.h:319:25: error: format &#39;%s&#39;<br>&gt; &gt; expects argumen=
+t of type &#39;char *&#39;, but argument 6 has type &#39;WCHAR *&#39;<br>&g=
+t; &gt; {aka &#39;short unsigned int *&#39;} [-Werror=3Dformat=3D]<br>&gt; =
+&gt; =C2=A0 319 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 (fmt), ## __VA_ARGS__)<br>&gt; &gt; =C2=A0 =C2=
+=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 ^~~~~<br>&gt; &gt; ../util/qemu-sockets.c:1235:9: not=
+e: in expansion of macro &#39;error_setg&#39;<br>&gt; &gt; =C2=A01235 | =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;Cannot format numeric socke=
+t address: %s&quot;,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ^~~~~~~~~~<br>&gt; &gt; In file included from ../io/dns-resolver=
+.c:26:<br>&gt; &gt; ../io/dns-resolver.c: In function &#39;qio_dns_resolver=
+_lookup_sync_inet&#39;:<br>&gt; &gt; C:/work/xemu/qemu/include/qapi/error.h=
+:319:25: error: format &#39;%s&#39;<br>&gt; &gt; expects argument of type &=
+#39;char *&#39;, but argument 8 has type &#39;WCHAR *&#39;<br>&gt; &gt; {ak=
+a &#39;short unsigned int *&#39;} [-Werror=3Dformat=3D]<br>&gt; &gt; =C2=A0=
+ 319 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 (fmt), ## __VA_ARGS__)<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =
+| =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ^~~~~<br>&gt; &gt; ../io/dns-resolver.c:93:9: note: in expansion=
+ of macro &#39;error_setg&#39;<br>&gt; &gt; =C2=A0 =C2=A093 | =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 error_setg(errp, &quot;address resolution failed for %s:%s: =
+%s&quot;,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^=
+~~~~~~~~~<br>&gt; &gt; cc1.exe: all warnings being treated as errors<br>&gt=
+; &gt; make: [Makefile.ninja:756=EF=BC=9Aio/libio.fa.p/dns-resolver.c.obj] =
+=E9=94=99=E8=AF=AF 1 (=E5=B7=B2<br>&gt; &gt; =E5=BF=BD=E7=95=A5=EF=BC=89<br=
+>&gt; &gt; cc1.exe: all warnings being treated as errors<br>&gt; &gt; make:=
+ [Makefile.ninja:697=EF=BC=9Alibqemuutil.a.p/util_qemu-sockets.c.obj] =E9=
+=94=99=E8=AF=AF<br>&gt; &gt; 1 (=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89<br>&gt=
+; &gt; Linking static target io/libio.fa<br>&gt; &gt; C:\CI-Tools\msys64\mi=
+ngw64\bin\ar.exe: io/libio.fa.p/dns-resolver.c.obj:<br>&gt; &gt; No such fi=
+le or directory<br>&gt; &gt; make: [Makefile.ninja:764=EF=BC=9Aio/libio.fa]=
+ =E9=94=99=E8=AF=AF 1 (=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89<br>&gt; &gt; ..=
+/net/tap-win32.c: In function &#39;is_tap_win32_dev&#39;:<br>&gt; &gt; ../n=
+et/tap-win32.c:62:21: error: passing argument 2 of &#39;RegOpenKeyExW&#39;<=
+br>&gt; &gt; from incompatible pointer type [-Werror=3Dincompatible-pointer=
+-types]<br>&gt; &gt; =C2=A0 =C2=A062 | #define ADAPTER_KEY<br>&gt; &gt; &qu=
+ot;SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-0800=
+2BE10318}&quot;<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<br>&gt; &gt; ^~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>&=
+gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 const char *=
+<br>&gt; &gt; ../net/tap-win32.c:62:21: note: in definition of macro &#39;A=
+DAPTER_KEY&#39;<br>&gt; &gt; =C2=A0 =C2=A062 | #define ADAPTER_KEY<br>&gt; =
+&gt; &quot;SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-B=
+FC1-08002BE10318}&quot;<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<br>&gt; &gt; ^~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~<br>&gt; &gt; In file included from<br>&gt; &gt; C:/CI-Tools/msys64/mingw=
+64/x86_64-w64-mingw32/include/windows.h:76,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0from<br>&gt; &gt; C:/CI-Tools/=
+msys64/mingw64/x86_64-w64-mingw32/include/winsock2.h:23,<br>&gt; &gt; =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0from C:/work/xem=
+u/qemu/include/sysemu/os-win32.h:29,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0from C:/work/xemu/qemu/include/qemu/o=
+sdep.h:119,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0from ../net/tap-win32.c:29:<br>&gt; &gt; C:/CI-Tools/msys64/mi=
+ngw64/x86_64-w64-mingw32/include/winreg.h:195:57:<br>&gt; &gt; note: expect=
+ed &#39;LPCWSTR&#39; {aka &#39;const short unsigned int *&#39;} but argumen=
+t<br>&gt; &gt; is of type &#39;const char *&#39;<br>&gt; &gt; =C2=A0 195 | =
+=C2=A0 WINADVAPI LONG WINAPI RegOpenKeyExW(HKEY hKey,LPCWSTR<br>&gt; &gt; l=
+pSubKey,DWORD ulOptions,REGSAM samDesired,PHKEY phkResult);<br>&gt; &gt; =
+=C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ~~~~~~~~^~~~~~~~<br>&gt; &gt; ../=
+net/tap-win32.c:229:13: error: passing argument 3 of &#39;RegEnumKeyExW&#39=
+;<br>&gt; &gt; from incompatible pointer type [-Werror=3Dincompatible-point=
+er-types]<br>&gt; &gt; =C2=A0 229 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 enum_name,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 ^~~~~~~~~<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 char *<br>&gt; &gt; In file included=
+ from<br>&gt; &gt; C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/wi=
+ndows.h:76,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0from<br>&gt; &gt; C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw3=
+2/include/winsock2.h:23,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0from C:/work/xemu/qemu/include/sysemu/os-win32.h=
+:29,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0from C:/work/xemu/qemu/include/qemu/osdep.h:119,<br>&gt; &gt; =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0from ../net/tap-win3=
+2.c:29:<br>&gt; &gt; C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/=
+winreg.h:184:70:<br>&gt; &gt; note: expected &#39;LPWSTR&#39; {aka &#39;sho=
+rt unsigned int *&#39;} but argument is of<br>&gt; &gt; type &#39;char *&#3=
+9;<br>&gt; &gt; =C2=A0 184 | =C2=A0 WINADVAPI LONG WINAPI RegEnumKeyExW(HKE=
+Y hKey,DWORD<br>&gt; &gt; dwIndex,LPWSTR lpName,LPDWORD lpcchName,LPDWORD l=
+pReserved,LPWSTR<br>&gt; &gt; lpClass,LPDWORD lpcchClass,PFILETIME lpftLast=
+WriteTime);<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<br>&gt; &gt; ~~~~~~~^~~~~~<br>&gt=
+; &gt; ../net/tap-win32.c:247:13: error: passing argument 2 of &#39;RegOpen=
+KeyExW&#39;<br>&gt; &gt; from incompatible pointer type [-Werror=3Dincompat=
+ible-pointer-types]<br>&gt; &gt; =C2=A0 247 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 unit_string,<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^~~~~~~~~~~<br>&gt; &gt; =C2=A0 =C2=A0 =C2=
+=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |<br>&gt; &gt; =C2=A0 =C2=
+=A0 =C2=A0 | =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 char *<br>&gt;<br>&g=
+t; I&#39;m not sure fixing all these warnings would produce a<br>&gt; maint=
+ainable code base. I&#39;d rather disable these 2 warning<br>&gt; classes o=
+n Windows.<br>I agree with that, seems QEMU currently are calling ANSI api =
+all the time, better not change that,<div>=C2=A0so globally define
 
---_000_CS1PR8401MB03279AC1D869BBBA8D810A19F3200CS1PR8401MB0327_--
+-DUNICODE -D_UNICODE is not a option<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A=
+<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
 
+--000000000000d954f505af5eff65--
 
