@@ -1,113 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIE1N-0005vo-Mz
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 12:41:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37472)
+	id 1kIF2f-0001kE-11
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 13:46:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIE1M-0005tq-06
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 12:41:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59715)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIF2a-0001eP-N4
+ for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 13:46:52 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:29252
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIE1K-0007Rr-2o
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 12:41:31 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIF2V-0007Gd-2j
+ for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 13:46:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600188088;
+ s=mimecast20190719; t=1600192005;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=aRVFwpIIX+feLpOndU3aAC4Yw1VDqv29SgSDhywjXuY=;
- b=Sk/Up0Ea0TP3ysiP0pgetlrCxKi6avIVt87Lscf6WFQvAge8epbV6o8550PdG6a4EucBzG
- DC9F9ZfK2ZmFDM+OKh5s5PAXgDv5njrcj/wX4UQ7IQk6kvofVP8IT6Co08jDmZ6Sdv51ip
- i0RtsZ3cpG4QrpNYTpTZiEVmtvVh4ss=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-72-oYcnrvpsMpOBELWi4Vk5Vw-1; Tue, 15 Sep 2020 12:41:20 -0400
-X-MC-Unique: oYcnrvpsMpOBELWi4Vk5Vw-1
-Received: by mail-wr1-f69.google.com with SMTP id v5so1418702wrs.17
- for <qemu-trivial@nongnu.org>; Tue, 15 Sep 2020 09:41:20 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=V9E5diWhrRbicYgJlE9jOABL332i7DZaKEazsBktu98=;
+ b=i2q+VDU3fEXnlzRj6bf25A5DtKoldHUeVs1m1+1tKkWH5wvauoF6q7x1Xtav+olacaAcLy
+ Zn5C1Y5y7ps0ZfOFNlb496i405n7lKN7rDvn1+x1Ql0aLJ3NX85Jf3cUaMAt8UcpnVgbCo
+ 1gxh8YkmUHWmXTkLBAeZpoDpUNx1I90=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-477-CSYyltxINL-jF7uGYiM8tg-1; Tue, 15 Sep 2020 13:46:44 -0400
+X-MC-Unique: CSYyltxINL-jF7uGYiM8tg-1
+Received: by mail-wm1-f69.google.com with SMTP id u5so95404wme.3
+ for <qemu-trivial@nongnu.org>; Tue, 15 Sep 2020 10:46:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=POvtAE37SnADrvNNjqhqmmHLdfOtHXlnUEDPfCXo8yk=;
- b=lONtetVWDHSF+tWCUDgfoy9qoIRI79f0LDhE2MxSv5E66MTcEeLOBaMx4gEj77kO2j
- Tuw/Mfp9yDSJKlGCCrg0+ojONRB8r0/SLRdMi+UibKAp9dDVfV3t3tcVmMTqstlvlWTN
- F2vsUfLniV5sXWwFp+l/aAjNoeuyk0H7jWabczNriv3i/rWPBeX2Yyj9mToLPg/6wm8+
- 4cwm4KPLpu3YphcXHSwek+xWhJVEp89Zvw6hUKF4Z2H4y+50QnYTUdxopYZajH+Y2lzS
- dpt7Hx4ulbvcywl4MZ2JV6BKFFDXQz0yeBNrVfGBN8gfwEjHyNKSgZAufeL+LZlQykuD
- ty9w==
-X-Gm-Message-State: AOAM532XoMfgRUEXlzE4J2mzn7Ll2jpVxUe6ZxkNqf52wcJ2ZAJxj+g0
- FL5NP/UvOxttVLYsm7TVdvQ1wrpo2opmNDcEWMn/9seyPg0a9vPFq9Nrf2X41MrErxC3WON13gv
- K19udC3AN61ymQCFxdg==
-X-Received: by 2002:a5d:494b:: with SMTP id r11mr22249929wrs.227.1600188079231; 
- Tue, 15 Sep 2020 09:41:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhJNR0vcDmq4j9IeZkabzwOK8qrJ91msQv0W2K9cbJUdK23vKg/OVMN/maHgSHAQduaFcuKQ==
-X-Received: by 2002:a5d:494b:: with SMTP id r11mr22249907wrs.227.1600188078978; 
- Tue, 15 Sep 2020 09:41:18 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=V9E5diWhrRbicYgJlE9jOABL332i7DZaKEazsBktu98=;
+ b=RnT+pMK0TndDCDHac8UIf1Frr/vBpDelLaTUhE6PNoq7Xw9VpKEy5Gtc2UQOcCaEbF
+ Gjiy0j3GO7q7fQ67/vKnBJl//QLOrxcmKmaC+Z0PBnc07K6oJT/vxuuqcih4wrbYzdca
+ SVaxM1HxFz2TdMwhL73qIKaN/LtWQfKvonsOrp1Y5Jme6q3DPj7kI1e5QzWspYZzsjAB
+ JHF1d+eRzUlfPb+IUQwMubowckSjQZLgwp4aph7LcZPzUJGAdA2lkBYL3kFNWdt3RKYc
+ n1bIfWUA3P15JoB8X+Sq+Ok9RpMuQbSEJMU7et5u29jjbWhaL1QE8YZUUbEb33TpVFjS
+ cyqQ==
+X-Gm-Message-State: AOAM532vL4R/DUk4afp7CrdXiFKYw0TZBVW0o0Vg3tvQ8sLhnnwn2Icy
+ Nsyx9qbYP2oAzORADeRac8vY8xmrbqF6jlJxcRUIZWWwpJ8LJl0/Bfnd9R0XPzEH0BOXTlnOsqa
+ fDSK+Kt6xMj11KFpgBA==
+X-Received: by 2002:a7b:cf30:: with SMTP id m16mr543203wmg.0.1600192001867;
+ Tue, 15 Sep 2020 10:46:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzn8hlVTm9vMvPskzb2OpiF/YlQkmj82TAZVB/hRy4HshHRviUWl4L8IXZZzAr1cLVjur3vRg==
+X-Received: by 2002:a7b:cf30:: with SMTP id m16mr543188wmg.0.1600192001640;
+ Tue, 15 Sep 2020 10:46:41 -0700 (PDT)
+Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id v17sm27611733wrr.60.2020.09.15.09.41.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Sep 2020 09:41:18 -0700 (PDT)
-Subject: Re: [PATCH] guest agent: Fixes for windows guest agent building on
- msys2/mingw
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-References: <20200915163343.1100-1-luoyonggang@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <06c76888-b2c1-866f-f6f5-78ee9a2bac0c@redhat.com>
-Date: Tue, 15 Sep 2020 18:41:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ by smtp.gmail.com with ESMTPSA id q84sm578177wme.23.2020.09.15.10.46.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Sep 2020 10:46:41 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Fam Zheng <fam@euphon.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] hw/scsi/lsi53c895a: Sanitize some trace events format
+Date: Tue, 15 Sep 2020 19:46:39 +0200
+Message-Id: <20200915174639.1366226-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200915163343.1100-1-luoyonggang@gmail.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: base64
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 11:54:42
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 11:09:49
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -50
 X-Spam_score: -5.1
 X-Spam_bar: -----
 X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,75 +89,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Sep 2020 16:41:32 -0000
+X-List-Received-Date: Tue, 15 Sep 2020 17:46:53 -0000
 
-T24gOS8xNS8yMCA2OjMzIFBNLCBZb25nZ2FuZyBMdW8gd3JvdGU6DQo+IGVycm9yIG1lc3NhZ2U6
-DQo+ICJjYyIgIi1JcWdhL3FlbXUtZ2EuZXhlLnAiICItSXFnYSIgIi1JLi4vcWdhIiAiLUkuIiAi
-LUlxYXBpIiAiLUl0cmFjZSIgIi1JdWkiICItSXVpL3NoYWRlciIgIi1JQzovQ0ktVG9vbHMvbXN5
-czY0L21pbmd3NjQvaW5jbHVkZSIgIi1JQzovQ0ktVG9vbHMvbXN5czY0L21pbmd3NjQvaW5jbHVk
-ZS9nbGliLTIuMCIgIi1JQzovQ0ktVG9vbHMvbXN5czY0L21pbmd3NjQvbGliL2dsaWItMi4wL2lu
-Y2x1ZGUiICItZmRpYWdub3N0aWNzLWNvbG9yPWF1dG8iICItcGlwZSIgIi1XYWxsIiAiLVdpbnZh
-bGlkLXBjaCIgIi1XZXJyb3IiICItc3RkPWdudTk5IiAiLWciICItbTY0IiAiLW1jeDE2IiAiLURf
-R05VX1NPVVJDRSIgIi1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQiICItRF9MQVJHRUZJTEVfU09VUkNF
-IiAiLVdzdHJpY3QtcHJvdG90eXBlcyIgIi1XcmVkdW5kYW50LWRlY2xzIiAiLVd1bmRlZiIgIi1X
-d3JpdGUtc3RyaW5ncyIgIi1XbWlzc2luZy1wcm90b3R5cGVzIiAiLWZuby1zdHJpY3QtYWxpYXNp
-bmciICItZm5vLWNvbW1vbiIgIi1md3JhcHYiICItV29sZC1zdHlsZS1kZWNsYXJhdGlvbiIgIi1X
-b2xkLXN0eWxlLWRlZmluaXRpb24iICItV3R5cGUtbGltaXRzIiAiLVdmb3JtYXQtc2VjdXJpdHki
-ICItV2Zvcm1hdC15MmsiICItV2luaXQtc2VsZiIgIi1XaWdub3JlZC1xdWFsaWZpZXJzIiAiLVdl
-bXB0eS1ib2R5IiAiLVduZXN0ZWQtZXh0ZXJucyIgIi1XZW5kaWYtbGFiZWxzIiAiLVdleHBhbnNp
-b24tdG8tZGVmaW5lZCIgIi1Xbm8tbWlzc2luZy1pbmNsdWRlLWRpcnMiICItV25vLXNoaWZ0LW5l
-Z2F0aXZlLXZhbHVlIiAiLVduby1wc2FiaSIgIi1mc3RhY2stcHJvdGVjdG9yLXN0cm9uZyIgIi1p
-cXVvdGUiICIvYy93b3JrL3hlbXUvcWVtdS90Y2cvaTM4NiIgIi1pcXVvdGUiICIuIiAiLWlxdW90
-ZSIgIi9jL3dvcmsveGVtdS9xZW11IiAiLWlxdW90ZSIgIi9jL3dvcmsveGVtdS9xZW11L2FjY2Vs
-L3RjZyIgIi1pcXVvdGUiICIvYy93b3JrL3hlbXUvcWVtdS9pbmNsdWRlIiAiLWlxdW90ZSIgIi9j
-L3dvcmsveGVtdS9xZW11L2Rpc2FzL2xpYnZpeGwiICItcHRocmVhZCIgIi1tbXMtYml0ZmllbGRz
-IiAtTUQgLU1RIHFnYS9xZW11LWdhLmV4ZS5wL2NvbW1hbmRzLXdpbjMyLmMub2JqIC1NRiAicWdh
-L3FlbXUtZ2EuZXhlLnAvY29tbWFuZHMtd2luMzIuYy5vYmouZCIgLW8gcWdhL3FlbXUtZ2EuZXhl
-LnAvY29tbWFuZHMtd2luMzIuYy5vYmogIi1jIiAuLi9xZ2EvY29tbWFuZHMtd2luMzIuYyAtTVAN
-Cj4gLi4vcWdhL2NvbW1hbmRzLXdpbjMyLmM6NjI6MjQ6IGVycm9yOiByZWR1bmRhbnQgcmVkZWNs
-YXJhdGlvbiBvZiAnQ01fR2V0X0Rldk5vZGVfUHJvcGVydHlXJyBbLVdlcnJvcj1yZWR1bmRhbnQt
-ZGVjbHNdDQo+ICAgIDYyIHwgQ01BUEkgQ09ORklHUkVUIFdJTkFQSSBDTV9HZXRfRGV2Tm9kZV9Q
-cm9wZXJ0eVcoDQo+ICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn4NCj4gSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC4uL3FnYS9jb21tYW5kcy13aW4z
-Mi5jOjI2Og0KPiBDOi9DSS1Ub29scy9tc3lzNjQvbWluZ3c2NC94ODZfNjQtdzY0LW1pbmd3MzIv
-aW5jbHVkZS9jZmdtZ3IzMi5oOjg0MDoyNjogbm90ZTogcHJldmlvdXMgZGVjbGFyYXRpb24gb2Yg
-J0NNX0dldF9EZXZOb2RlX1Byb3BlcnR5Vycgd2FzIGhlcmUNCj4gICA4NDAgfCAgIENNQVBJIENP
-TkZJR1JFVCBXSU5BUEkgQ01fR2V0X0Rldk5vZGVfUHJvcGVydHlXKERFVklOU1QgZG5EZXZJbnN0
-LCBjb25zdCBERVZQUk9QS0VZICpQcm9wZXJ0eUtleSwgREVWUFJPUFRZUEUgKlByb3BlcnR5VHlw
-ZSwgUEJZVEUgUHJvcGVydHlCdWZmZXIsIFBVTE9ORyBQcm9wZXJ0eUJ1ZmZlclNpemUsIFVMT05H
-IHVsRmxhZ3MpOw0KPiAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn4NCj4gY2MxLmV4ZTogYWxsIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMg
-ZXJyb3JzDQo+IG1ha2U6IFtNYWtlZmlsZS5uaW5qYTo1MTQz77yacWdhL3FlbXUtZ2EuZXhlLnAv
-Y29tbWFuZHMtd2luMzIuYy5vYmpdIOmUmeivryAxICjlt7Llv73nlaXvvIkNCj4gDQo+IFRoaXMg
-ZXJyb3IgY29tZXMgZnJvbSBxZW11IGNvbmZpZ3VyZSBkaWRuJ3QgYWRkIHByZWRlZmluZWQgbWFj
-cm8gLURVTklDT0RFIC1EX1VOSUNPREUgaW4gUUVNVV9DRkxBR1MsDQo+IGFuZCB0aGVzZSB0b28g
-bWFjcm8gYXJlIHN0YW5kYXJkIGNvbmZpZyBmb3Igd2luMzIgaWYgdXNpbmcgd2luZG93cyB3aWRl
-IGFwaS4NCj4gDQo+IGluIGNmZ21ncjMyLmgNCj4gICBDTUFQSSBDT05GSUdSRVQgV0lOQVBJIENN
-X0dldF9EZXZOb2RlX1Byb3BlcnR5VyhERVZJTlNUIGRuRGV2SW5zdCwgY29uc3QgREVWUFJPUEtF
-WSAqUHJvcGVydHlLZXksIERFVlBST1BUWVBFICpQcm9wZXJ0eVR5cGUsIFBCWVRFIFByb3BlcnR5
-QnVmZmVyLCBQVUxPTkcgUHJvcGVydHlCdWZmZXJTaXplLCBVTE9ORyB1bEZsYWdzKTsNCj4gI2lm
-ZGVmIFVOSUNPREUNCj4gI2RlZmluZSBDTV9HZXRfRGV2Tm9kZV9Qcm9wZXJ0eSBDTV9HZXRfRGV2
-Tm9kZV9Qcm9wZXJ0eVcNCj4gI2VuZGlmDQo+IA0KPiBtYWNybyBDTV9HZXRfRGV2Tm9kZV9Qcm9w
-ZXJ0eSBkZWZpbmVkIG9ubHkgd2hlbiBVTklDT0RFIGFyZSBkZWZpbmVkLg0KPiBhbmQgaW4gd2lu
-MzIsIFVOSUNPREUgYW5kIF9VTklDT0RFIHNob3VsZCBiZSBkZWZpbmVkIGF0IHRoZSBzYW1lIHRp
-bWUNCj4gDQo+ICNlbmRpZg0KPiANCj4gU2lnbmVkLW9mZi1ieTogWW9uZ2dhbmcgTHVvIDxsdW95
-b25nZ2FuZ0BnbWFpbC5jb20+DQo+IC0tLQ0KPiAgY29uZmlndXJlIHwgMSArDQo+ICAxIGZpbGUg
-Y2hhbmdlZCwgMSBpbnNlcnRpb24oKykNCj4gDQo+IGRpZmYgLS1naXQgYS9jb25maWd1cmUgYi9j
-b25maWd1cmUNCj4gaW5kZXggOWYxNDE4OTFlYS4uZjVkNjYxYWY0YSAxMDA3NTUNCj4gLS0tIGEv
-Y29uZmlndXJlDQo+ICsrKyBiL2NvbmZpZ3VyZQ0KPiBAQCAtODEyLDYgKzgxMiw3IEBAIE1JTkdX
-MzIqKQ0KPiAgICBtaW5ndzMyPSJ5ZXMiDQo+ICAgIGhheD0ieWVzIg0KPiAgICB3aHB4PSIiDQo+
-ICsgIFFFTVVfQ0ZMQUdTPSItRFVOSUNPREUgLURfVU5JQ09ERSAkUUVNVV9DRkxBR1MiDQoNCldo
-YXQgYWJvdXQgZGVjbGFyaW5nIHRoZW0gaW4gaW5jbHVkZS9xZW11L29zZGVwLmgNCmluc3RlYWQ/
-DQoNCi0tID44IC0tDQpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9xZW11L29zZGVwLmggYi9pbmNsdWRl
-L3FlbXUvb3NkZXAuaA0KaW5kZXggNDEyOTYyZDkxYTIuLmNkNWNlZGMwYjIxIDEwMDY0NA0KLS0t
-IGEvaW5jbHVkZS9xZW11L29zZGVwLmgNCisrKyBiL2luY2x1ZGUvcWVtdS9vc2RlcC5oDQpAQCAt
-NzQsNiArNzQsMTIgQEAgZXh0ZXJuIGludCBkYWVtb24oaW50LCBpbnQpOw0KIC8qIGVuYWJsZSBD
-OTkvUE9TSVggZm9ybWF0IHN0cmluZ3MgKG5lZWRzIG1pbmd3MzItcnVudGltZSAzLjE1IG9yIGxh
-dGVyKSAqLw0KICNpZmRlZiBfX01JTkdXMzJfXw0KICNkZWZpbmUgX19VU0VfTUlOR1dfQU5TSV9T
-VERJTyAxDQorI2lmbmRlZiBVTklDT0RFDQorI2RlZmluZSBVTklDT0RFDQorI2VuZGlmDQorI2lm
-bmRlZiBfVU5JQ09ERQ0KKyNkZWZpbmUgX1VOSUNPREUNCisjZW5kaWYNCiAjZW5kaWYNCg0KICNp
-bmNsdWRlIDxzdGRhcmcuaD4NCi0tLQ0KDQo+ICAgIHZob3N0X3VzZXI9Im5vIg0KPiAgICBhdWRp
-b19wb3NzaWJsZV9kcml2ZXJzPSJkc291bmQgc2RsIg0KPiAgICBpZiBjaGVja19pbmNsdWRlIGRz
-b3VuZC5oOyB0aGVuDQo+IA0KDQo=
+Make some lsi53c895a trace events more understandable.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/scsi/trace-events | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/scsi/trace-events b/hw/scsi/trace-events
+index 9a4a60ca635..ac4209f361e 100644
+--- a/hw/scsi/trace-events
++++ b/hw/scsi/trace-events
+@@ -234,9 +234,9 @@ spapr_vscsi_do_crq(unsigned c0, unsigned c1) "crq: %02x %02x ..."
+ 
+ # lsi53c895a.c
+ lsi_reset(void) "Reset"
+-lsi_update_irq(int level, uint8_t dstat, uint8_t sist1, uint8_t sist0) "Update IRQ level %d dstat 0x%02x sist 0x%02x0x%02x"
++lsi_update_irq(int level, uint8_t dstat, uint8_t sist1, uint8_t sist0) "Update IRQ level %d dstat 0x%02x sist 1:0x%02x 0:0x%02x"
+ lsi_update_irq_disconnected(void) "Handled IRQs & disconnected, looking for pending processes"
+-lsi_script_scsi_interrupt(uint8_t stat1, uint8_t stat0, uint8_t sist1, uint8_t sist0) "SCSI Interrupt 0x%02x0x%02x prev 0x%02x0x%02x"
++lsi_script_scsi_interrupt(uint8_t stat1, uint8_t stat0, uint8_t sist1, uint8_t sist0) "SCSI Interrupt stat 1:0x%02x 0:0x%02x sist 1:0x%02x 0:0x%02x"
+ lsi_script_dma_interrupt(uint8_t stat, uint8_t dstat) "DMA Interrupt 0x%x prev 0x%x"
+ lsi_bad_phase_jump(uint32_t dsp) "Data phase mismatch jump to 0x%"PRIX32
+ lsi_bad_phase_interrupt(void) "Phase mismatch interrupt"
+-- 
+2.26.2
 
 
