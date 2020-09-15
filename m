@@ -1,70 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kI5qo-00005B-0g
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 03:58:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44264)
+	id 1kIDuE-0008KI-0q
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2020 12:34:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kI5qn-00004z-G0
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 03:58:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36645)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kI5qh-00086X-Rd
- for qemu-trivial@nongnu.org; Tue, 15 Sep 2020 03:58:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600156678;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YOxFw6CqrVICvMxoIpgsdL71t2yzkXcnimmxSQAOofc=;
- b=bfmzudoEYj0w/mQKHTYjOJ/cFRW5Exo1wbf78fsggvBGZfrzbtSdwXMVyxqZoYeVnvOpna
- xtAx8n54184goTXoWI4Vg3Q38T6PKXfMjvDJqpJQ77VjlyZ7PLqSrIU9fwhWT86AbNqkyO
- Pl2GQKR74+G1NCWctmpwwgb5aDgj7JQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-142-L_QOrGK4NHKf7faN37GgFg-1; Tue, 15 Sep 2020 03:57:54 -0400
-X-MC-Unique: L_QOrGK4NHKf7faN37GgFg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28E9B801AD9;
- Tue, 15 Sep 2020 07:57:53 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-131.ams2.redhat.com
- [10.36.114.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 698AB27BC0;
- Tue, 15 Sep 2020 07:57:51 +0000 (UTC)
-Subject: Re: [PATCH RESEND] manual: escape backslashes in "parsed-literal"
- blocks
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu devel list <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kIDuB-0008Eb-CZ; Tue, 15 Sep 2020 12:34:07 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:42737)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kIDu9-00062J-KG; Tue, 15 Sep 2020 12:34:07 -0400
+Received: by mail-pg1-x544.google.com with SMTP id k14so2251690pgi.9;
+ Tue, 15 Sep 2020 09:34:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=s2T2ElnQNYuoeSNC0tZ6pkdPXUdDMCc2T3Nh6TvMvFc=;
+ b=nfqS9iGTIxaXk7UuZI4W8nI9uUqo74ti2STCMFkNgNBgv/Y+zzqx6gCDXUb3KetA2U
+ UYGaQQCOisW8irTirtMv1i5HFeL5xRO71KIXya67HhjrVZASwgqwlervBEtJd/KO+2Zx
+ cnWp78L1S892fdEcXJRx+LrCX9eHJ8XN3Xi3+auJWzJqhjh8Yy2STc3lpsyJVFjvFCuY
+ Hgs9FHLRXUsFEc8ZEeB7fSO20B1cwe2i26BEXPDca4jwtUDsADU21jv/CEvtZWp4UU4L
+ KX8rTxyMvbE9NLVd2Ra6MXkhgqWVVMwrTYWCDylipjMjLyX4nexMizTQEFi9YUX3yY3z
+ 4pGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=s2T2ElnQNYuoeSNC0tZ6pkdPXUdDMCc2T3Nh6TvMvFc=;
+ b=je1KO9n7VGGUl0Klx8jxhwokePsJ7UUzCY38Gszy3stXTQvfSm8pmPwyCqCz4ltIiR
+ tlHso3IYcye73yBUjZEFNqlmhXiXnFxNabbFQZtTNw5Huiu7KX7qYgfwdcRuSFcyRJeA
+ 3RnIETdfFuXqRQ0psTwz8bvUySDF78uPCOHFPGXZjTz5iEotLkEoI27tnYgPNvKp0eZG
+ +IIhKSRytYaLOZau3ZmI/pv2mJeu2om28nEjcyRmQEqVXE3kiOtKyfGH/blUL7tg0+xu
+ SaQZCVATHk81FaE+dwex/3NqGieODLGB1hT7ldvxTN4RjESmPJSXY+/rux69ffWMc5fI
+ IVdg==
+X-Gm-Message-State: AOAM530FAnOMREynMimRSLtoweJP/7hcsCChhSfVNFzsJ0Wq/0Hn99E4
+ yBCnvuOtpseAlz9Fbv1KR/BIG6mCOBoC7FbWZQw=
+X-Google-Smtp-Source: ABdhPJxTspRWnMt6VAC3ZSEIuxwJhnfrzL35SasrFrdF0NiFI8hLOOiGc/ytgRhXVjoy+8MOrLRSSA==
+X-Received: by 2002:a65:6487:: with SMTP id e7mr7189793pgv.409.1600187643286; 
+ Tue, 15 Sep 2020 09:34:03 -0700 (PDT)
+Received: from localhost.localdomain ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id a16sm11708429pgh.48.2020.09.15.09.34.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Sep 2020 09:34:02 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200908172111.19072-1-lersek@redhat.com>
- <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
-Date: Tue, 15 Sep 2020 09:57:50 +0200
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] guest agent: Fixes for windows guest agent building on
+ msys2/mingw
+Date: Wed, 16 Sep 2020 00:33:43 +0800
+Message-Id: <20200915163343.1100-1-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 02:23:19
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.792,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x544.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,320 +81,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Sep 2020 07:58:05 -0000
+X-List-Received-Date: Tue, 15 Sep 2020 16:34:07 -0000
 
-On 09/10/20 12:23, Philippe Mathieu-Daudé wrote:
-> Cc'ing qemu-trivial@
+error message:
+"cc" "-Iqga/qemu-ga.exe.p" "-Iqga" "-I../qga" "-I." "-Iqapi" "-Itrace" "-Iu=
+i" "-Iui/shader" "-IC:/CI-Tools/msys64/mingw64/include" "-IC:/CI-Tools/msys=
+64/mingw64/include/glib-2.0" "-IC:/CI-Tools/msys64/mingw64/lib/glib-2.0/inc=
+lude" "-fdiagnostics-color=3Dauto" "-pipe" "-Wall" "-Winvalid-pch" "-Werror=
+" "-std=3Dgnu99" "-g" "-m64" "-mcx16" "-D_GNU_SOURCE" "-D_FILE_OFFSET_BITS=
+=3D64" "-D_LARGEFILE_SOURCE" "-Wstrict-prototypes" "-Wredundant-decls" "-Wu=
+ndef" "-Wwrite-strings" "-Wmissing-prototypes" "-fno-strict-aliasing" "-fno=
+-common" "-fwrapv" "-Wold-style-declaration" "-Wold-style-definition" "-Wty=
+pe-limits" "-Wformat-security" "-Wformat-y2k" "-Winit-self" "-Wignored-qual=
+ifiers" "-Wempty-body" "-Wnested-externs" "-Wendif-labels" "-Wexpansion-to-=
+defined" "-Wno-missing-include-dirs" "-Wno-shift-negative-value" "-Wno-psab=
+i" "-fstack-protector-strong" "-iquote" "/c/work/xemu/qemu/tcg/i386" "-iquo=
+te" "." "-iquote" "/c/work/xemu/qemu" "-iquote" "/c/work/xemu/qemu/accel/tc=
+g" "-iquote" "/c/work/xemu/qemu/include" "-iquote" "/c/work/xemu/qemu/disas=
+/libvixl" "-pthread" "-mms-bitfields" -MD -MQ qga/qemu-ga.exe.p/commands-wi=
+n32.c.obj -MF "qga/qemu-ga.exe.p/commands-win32.c.obj.d" -o qga/qemu-ga.exe=
+.p/commands-win32.c.obj "-c" ../qga/commands-win32.c -MP
+../qga/commands-win32.c:62:24: error: redundant redeclaration of 'CM_Get_De=
+vNode_PropertyW' [-Werror=3Dredundant-decls]
+   62 | CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../qga/commands-win32.c:26:
+C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/cfgmgr32.h:840:26: no=
+te: previous declaration of 'CM_Get_DevNode_PropertyW' was here
+  840 |   CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST dnDevInst=
+, const DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType, PBYTE PropertyB=
+uffer, PULONG PropertyBufferSize, ULONG ulFlags);
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+make: [Makefile.ninja:5143=EF=BC=9Aqga/qemu-ga.exe.p/commands-win32.c.obj] =
+=E9=94=99=E8=AF=AF 1 (=E5=B7=B2=E5=BF=BD=E7=95=A5=EF=BC=89
 
-Thanks!
+This error comes from qemu configure didn't add predefined macro -DUNICODE =
+-D_UNICODE in QEMU_CFLAGS,
+and these too macro are standard config for win32 if using windows wide api.
 
-The patch was posted a week ago (and reviewed as well, by you, thanks!)
--- is there something I need to do for getting this merged?
+in cfgmgr32.h
+  CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(DEVINST dnDevInst, const =
+DEVPROPKEY *PropertyKey, DEVPROPTYPE *PropertyType, PBYTE PropertyBuffer, P=
+ULONG PropertyBufferSize, ULONG ulFlags);
+#ifdef UNICODE
+#define CM_Get_DevNode_Property CM_Get_DevNode_PropertyW
+#endif
 
-Thank you
-Laszlo
+macro CM_Get_DevNode_Property defined only when UNICODE are defined.
+and in win32, UNICODE and _UNICODE should be defined at the same time
 
-> On 9/8/20 7:21 PM, Laszlo Ersek wrote:
->> According to
->> <https://docutils.sourceforge.io/docs/ref/rst/directives.html#parsed-literal>,
->> "inline markup is recognized and there is no protection from parsing.
->> Backslash-escapes may be necessary to prevent unintended parsing".
->>
->> The qemu(1) manual page (formatted with Sphinx 2.2.2) has several overlong
->> lines on my system. A stand-alone backslash at EOL serves as line
->> continuation in a "parsed-literal" block. Therefore, escape the
->> backslashes that we want to appear as such in the formatted documentation.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
->> ---
->>
->> Notes:
->>     Resending with Peter's email address in the Cc: tag fixed. Sorry!
->>
->>  docs/system/device-url-syntax.rst.inc |   8 +-
->>  qemu-options.hx                       | 108 ++++++++++----------
->>  2 files changed, 58 insertions(+), 58 deletions(-)
->>
->> diff --git a/docs/system/device-url-syntax.rst.inc b/docs/system/device-url-syntax.rst.inc
->> index 88d7a372a748..6f6ec8366b7a 100644
->> --- a/docs/system/device-url-syntax.rst.inc
->> +++ b/docs/system/device-url-syntax.rst.inc
->> @@ -25,8 +25,8 @@ These are specified using a special URL syntax.
->>  
->>     .. parsed-literal::
->>  
->> -      |qemu_system| -iscsi initiator-name=iqn.2001-04.com.example:my-initiator \
->> -                       -cdrom iscsi://192.0.2.1/iqn.2001-04.com.example/2 \
->> +      |qemu_system| -iscsi initiator-name=iqn.2001-04.com.example:my-initiator \\
->> +                       -cdrom iscsi://192.0.2.1/iqn.2001-04.com.example/2 \\
->>                         -drive file=iscsi://192.0.2.1/iqn.2001-04.com.example/1
->>  
->>     Example (CHAP username/password via URL):
->> @@ -39,8 +39,8 @@ These are specified using a special URL syntax.
->>  
->>     .. parsed-literal::
->>  
->> -      LIBISCSI_CHAP_USERNAME="user" \
->> -      LIBISCSI_CHAP_PASSWORD="password" \
->> +      LIBISCSI_CHAP_USERNAME="user" \\
->> +      LIBISCSI_CHAP_PASSWORD="password" \\
->>        |qemu_system| -drive file=iscsi://192.0.2.1/iqn.2001-04.com.example/1
->>  
->>  ``NBD``
->> diff --git a/qemu-options.hx b/qemu-options.hx
->> index b0f020594eab..47f64be0c041 100644
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -373,9 +373,9 @@ SRST
->>  
->>      .. parsed-literal::
->>  
->> -        |qemu_system| \
->> -         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \
->> -         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \
->> +        |qemu_system| \\
->> +         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \\
->> +         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \\
->>           -drive file=/dev/fdset/2,index=0,media=disk
->>  ERST
->>  
->> @@ -1338,9 +1338,9 @@ SRST
->>  
->>      .. parsed-literal::
->>  
->> -        |qemu_system| \
->> -         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \
->> -         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \
->> +        |qemu_system| \\
->> +         -add-fd fd=3,set=2,opaque="rdwr:/path/to/file" \\
->> +         -add-fd fd=4,set=2,opaque="rdonly:/path/to/file" \\
->>           -drive file=/dev/fdset/2,index=0,media=disk
->>  
->>      You can connect a CDROM to the slave of ide0:
->> @@ -2593,7 +2593,7 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -            |qemu_system| -hda linux.img -boot n -device e1000,netdev=n1 \
->> +            |qemu_system| -hda linux.img -boot n -device e1000,netdev=n1 \\
->>                  -netdev user,id=n1,tftp=/path/to/tftp/files,bootfile=/pxelinux.0
->>  
->>      ``smb=dir[,smbserver=addr]``
->> @@ -2703,15 +2703,15 @@ SRST
->>  
->>          #launch a QEMU instance with two NICs, each one connected
->>          #to a TAP device
->> -        |qemu_system| linux.img \
->> -                -netdev tap,id=nd0,ifname=tap0 -device e1000,netdev=nd0 \
->> +        |qemu_system| linux.img \\
->> +                -netdev tap,id=nd0,ifname=tap0 -device e1000,netdev=nd0 \\
->>                  -netdev tap,id=nd1,ifname=tap1 -device rtl8139,netdev=nd1
->>  
->>      .. parsed-literal::
->>  
->>          #launch a QEMU instance with the default network helper to
->>          #connect a TAP device to bridge br0
->> -        |qemu_system| linux.img -device virtio-net-pci,netdev=n1 \
->> +        |qemu_system| linux.img -device virtio-net-pci,netdev=n1 \\
->>                  -netdev tap,id=n1,"helper=/path/to/qemu-bridge-helper"
->>  
->>  ``-netdev bridge,id=id[,br=bridge][,helper=helper]``
->> @@ -2749,12 +2749,12 @@ SRST
->>      .. parsed-literal::
->>  
->>          # launch a first QEMU instance
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
->>                           -netdev socket,id=n1,listen=:1234
->>          # connect the network of this instance to the network of the first instance
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \\
->>                           -netdev socket,id=n2,connect=127.0.0.1:1234
->>  
->>  ``-netdev socket,id=id[,fd=h][,mcast=maddr:port[,localaddr=addr]]``
->> @@ -2776,16 +2776,16 @@ SRST
->>      .. parsed-literal::
->>  
->>          # launch one QEMU instance
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
->>                           -netdev socket,id=n1,mcast=230.0.0.1:1234
->>          # launch another QEMU instance on same "bus"
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n2,mac=52:54:00:12:34:57 \\
->>                           -netdev socket,id=n2,mcast=230.0.0.1:1234
->>          # launch yet another QEMU instance on same "bus"
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n3,mac=52:54:00:12:34:58 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n3,mac=52:54:00:12:34:58 \\
->>                           -netdev socket,id=n3,mcast=230.0.0.1:1234
->>  
->>      Example (User Mode Linux compat.):
->> @@ -2793,8 +2793,8 @@ SRST
->>      .. parsed-literal::
->>  
->>          # launch QEMU instance (note mcast address selected is UML's default)
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
->>                           -netdev socket,id=n1,mcast=239.192.168.1:1102
->>          # launch UML
->>          /path/to/linux ubd0=/path/to/root_fs eth0=mcast
->> @@ -2803,8 +2803,8 @@ SRST
->>  
->>      .. parsed-literal::
->>  
->> -        |qemu_system| linux.img \
->> -                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \
->> +        |qemu_system| linux.img \\
->> +                         -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
->>                           -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
->>  
->>  ``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6][,udp][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
->> @@ -2860,9 +2860,9 @@ SRST
->>  
->>          # Setup tunnel on linux host using raw ip as encapsulation
->>          # on 1.2.3.4
->> -        ip l2tp add tunnel remote 4.3.2.1 local 1.2.3.4 tunnel_id 1 peer_tunnel_id 1 \
->> +        ip l2tp add tunnel remote 4.3.2.1 local 1.2.3.4 tunnel_id 1 peer_tunnel_id 1 \\
->>              encap udp udp_sport 16384 udp_dport 16384
->> -        ip l2tp add session tunnel_id 1 name vmtunnel0 session_id \
->> +        ip l2tp add session tunnel_id 1 name vmtunnel0 session_id \\
->>              0xFFFFFFFF peer_session_id 0xFFFFFFFF
->>          ifconfig vmtunnel0 mtu 1500
->>          ifconfig vmtunnel0 up
->> @@ -2872,7 +2872,7 @@ SRST
->>          # on 4.3.2.1
->>          # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
->>  
->> -        |qemu_system| linux.img -device e1000,netdev=n1 \
->> +        |qemu_system| linux.img -device e1000,netdev=n1 \\
->>              -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
->>  
->>  ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
->> @@ -4627,8 +4627,8 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -                 -object tls-cipher-suites,id=mysuite0,priority=@SYSTEM \
->> +             # |qemu_system| \\
->> +                 -object tls-cipher-suites,id=mysuite0,priority=@SYSTEM \\
->>                   -fw_cfg name=etc/edk2/https/ciphers,gen_id=mysuite0
->>  
->>      ``-object filter-buffer,id=id,netdev=netdevid,interval=t[,queue=all|rx|tx][,status=on|off][,position=head|tail|id=<id>][,insert=behind|before]``
->> @@ -4791,10 +4791,10 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -               [...] \
->> -                   -object cryptodev-backend-builtin,id=cryptodev0 \
->> -                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \
->> +             # |qemu_system| \\
->> +               [...] \\
->> +                   -object cryptodev-backend-builtin,id=cryptodev0 \\
->> +                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \\
->>                 [...]
->>  
->>      ``-object cryptodev-vhost-user,id=id,chardev=chardevid[,queues=queues]``
->> @@ -4810,11 +4810,11 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -               [...] \
->> -                   -chardev socket,id=chardev0,path=/path/to/socket \
->> -                   -object cryptodev-vhost-user,id=cryptodev0,chardev=chardev0 \
->> -                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \
->> +             # |qemu_system| \\
->> +               [...] \\
->> +                   -chardev socket,id=chardev0,path=/path/to/socket \\
->> +                   -object cryptodev-vhost-user,id=cryptodev0,chardev=chardev0 \\
->> +                   -device virtio-crypto-pci,id=crypto0,cryptodev=cryptodev0 \\
->>                 [...]
->>  
->>      ``-object secret,id=id,data=string,format=raw|base64[,keyid=secretid,iv=string]``
->> @@ -4892,9 +4892,9 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -                 -object secret,id=secmaster0,format=base64,file=key.b64 \
->> -                 -object secret,id=sec0,keyid=secmaster0,format=base64,\
->> +             # |qemu_system| \\
->> +                 -object secret,id=secmaster0,format=base64,file=key.b64 \\
->> +                 -object secret,id=sec0,keyid=secmaster0,format=base64,\\
->>                       data=$SECRET,iv=$(<iv.b64)
->>  
->>      ``-object sev-guest,id=id,cbitpos=cbitpos,reduced-phys-bits=val,[sev-device=string,policy=policy,handle=handle,dh-cert-file=file,session-file=file]``
->> @@ -4941,10 +4941,10 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system_x86| \
->> -                 ......
->> -                 -object sev-guest,id=sev0,cbitpos=47,reduced-phys-bits=5 \
->> -                 -machine ...,memory-encryption=sev0
->> +             # |qemu_system_x86| \\
->> +                 ...... \\
->> +                 -object sev-guest,id=sev0,cbitpos=47,reduced-phys-bits=5 \\
->> +                 -machine ...,memory-encryption=sev0 \\
->>                   .....
->>  
->>      ``-object authz-simple,id=id,identity=string``
->> @@ -4962,9 +4962,9 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -                 ...
->> -                 -object 'authz-simple,id=auth0,identity=CN=laptop.example.com,,O=Example Org,,L=London,,ST=London,,C=GB' \
->> +             # |qemu_system| \\
->> +                 ... \\
->> +                 -object 'authz-simple,id=auth0,identity=CN=laptop.example.com,,O=Example Org,,L=London,,ST=London,,C=GB' \\
->>                   ...
->>  
->>          Note the use of quotes due to the x509 distinguished name
->> @@ -5013,9 +5013,9 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -                 ...
->> -                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes
->> +             # |qemu_system| \\
->> +                 ... \\
->> +                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes \\
->>                   ...
->>  
->>      ``-object authz-pam,id=id,service=string``
->> @@ -5032,9 +5032,9 @@ SRST
->>  
->>          .. parsed-literal::
->>  
->> -             # |qemu_system| \
->> -                 ...
->> -                 -object authz-pam,id=auth0,service=qemu-vnc
->> +             # |qemu_system| \\
->> +                 ... \\
->> +                 -object authz-pam,id=auth0,service=qemu-vnc \\
->>                   ...
->>  
->>          There would then be a corresponding config file for PAM at
->>
-> 
-> 
+#endif
+
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index 9f141891ea..f5d661af4a 100755
+--- a/configure
++++ b/configure
+@@ -812,6 +812,7 @@ MINGW32*)
+   mingw32=3D"yes"
+   hax=3D"yes"
+   whpx=3D""
++  QEMU_CFLAGS=3D"-DUNICODE -D_UNICODE $QEMU_CFLAGS"
+   vhost_user=3D"no"
+   audio_possible_drivers=3D"dsound sdl"
+   if check_include dsound.h; then
+--=20
+2.28.0.windows.1
 
 
