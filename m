@@ -1,24 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kITZH-0002mX-AV
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 05:17:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43968)
+	id 1kITm9-0006B9-QV
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 05:30:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kITZF-0002m9-TO; Wed, 16 Sep 2020 05:17:33 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:34727)
+ id 1kITm8-0006A3-TD; Wed, 16 Sep 2020 05:30:52 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:33171)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kITZE-00043h-5j; Wed, 16 Sep 2020 05:17:33 -0400
+ id 1kITm6-0005rC-Uo; Wed, 16 Sep 2020 05:30:52 -0400
 Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N6t3Z-1kZ3oL1pXz-018HQj; Wed, 16 Sep 2020 11:17:14 +0200
-Subject: Re: [PATCH v2] scripts/git.orderfile: Display meson files along with
- buildsys ones
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200907161222.41915-1-philmd@redhat.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N8GAQ-1kVUQd3C7c-014ADB; Wed, 16 Sep 2020 11:30:44 +0200
+To: zhaolichang <zhaolichang@huawei.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <640CDEE67BE2784FAE298BB2517210E48B38FC@dggemi522-mbs.china.huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,36 +59,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <63775093-0f82-4c35-4722-c6f62ed9d2c6@vivier.eu>
-Date: Wed, 16 Sep 2020 11:17:12 +0200
+Subject: Re: [PATCH V2 00/10] fix some comment spelling errors
+Message-ID: <83589673-723b-6617-60fd-abaebcfca24a@vivier.eu>
+Date: Wed, 16 Sep 2020 11:30:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200907161222.41915-1-philmd@redhat.com>
+In-Reply-To: <640CDEE67BE2784FAE298BB2517210E48B38FC@dggemi522-mbs.china.huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/dYyqX2hf6ng91zR2/od23aSuP7lWEVRs7SjO6i77xcp/BpFDdo
- Qm44T4SwEZ+c6DRLEJXUH1LzQaBf4lzsO3p0Tz2B8ieYq6LNnV3a0cUXgHZmVQ3pgmoLvpM
- Jr1ZIO/cqLSJfQjJjy86TONrrSUSZ4DIrN8tYjTyLb29uHNltF12dzxKeoOsOpNsWce4vIr
- 9ANxOPVUkRQOhn/qK1WUw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:z/WG4jNhjvM=:hLhNFUnXwjpS2q663prQcG
- mPRxmwEwSlnjfLWlaGAZG93zMoEi3MURLVHZd7ymEvz+XbOWl7p5K2XuWAqBwLnlq1OA4KVVl
- VTC9JYb7FVI7SvJGCF6F0ut8NENYLDifUmD0UGYJOr5yfonl4/+v3O2zz0QWT0K2KMsB+r/+R
- QqIjBCUQVgRyc7m1DeXRnHaEGjg2yiRI5+ZGs3PxoB0X/xhDsy/zvlCf+564YPWDETarg/VyB
- VxR5I94YwuuKR1O6D5vlMlyD7jTc+2fnZuDUue0RXhZVDDyaEnyoUviLZGQi/mnmXmPejdRTJ
- +0ngRRI+XjajVbORQIiL38eJCouIW68uPYAlheBD8CxGjaE9JZl+tEn8Uk2cgW1+V4PzIqYuL
- Yp/afnJrUQhOio0jLnTcl0/M1mFnCwJJbTbh8Mqs351dIImXKt5A26ImfDhcodCsLuD3Ee/my
- XbUxa5kQV/EjWK9qcJ5NumHgFViCvV5Z8/c/QSi6LyVyWaByPsI7YvqwEJ9RLuoqAepRQSzUG
- RlEm/G4KxgsiNMWMs2+u0y6N4ks4KAATkcZyKNZAtIFwZP3OZQmXrMCASoKCmvrC/Nou0ea8Q
- tcpcpH84/5RaQ+bpmPxnY/OuKniWZk4Vc/PxkHoqORx4a+NVfcvAkDkYhDu1PgdEUY2PAAI4z
- UptVRpg93+9JHDgKG3qvEkJZplFxyzjqLnqz7HNgH4EM4QDMKxJyQ5U5xZoF72Sv30hNBO9d0
- VKh456IpLpLVualDfiwgHKh5O2AKbc8OsRTf8UnC9+Gbr/GknU7ze1YAIkElJg0bOXTNrJEd7
- MolV7n0F2OfmIPUqMTkGhTxBUJE+qmTFZEoXVXgvTZ6XAT8ex+woWxaicLIi+ietx3g5LmeEK
- /WuFbtsK7rRjW+ErXuKbxvUj9xukmbmJJZAL8p/nI=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:vejbKmo/Sbb04fhE6qyjWS3ma1re0n4KK3F21eOS7p6+7NChRkD
+ RzE0ZZ5TzrBCRb7wvGCEwLBKItoDsVopkCF2fcGoflc+OTwQKJwbx9VacQsQq2v0v1cJ0WX
+ hkOOXKCUhqiIUz+6FLC2hf+smI7tTYWZGSL/+yDRkQQL2y2XmFbOMPPnQ7bJMKqPVaBaNZC
+ n6iEQD66jbOPZzLkl92mg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sVkVT6LNgoc=:zD/O8LVNfigbyioGQDSmZe
+ LG+svYuBu00hvIDDp8WH3u2pogYzz23y7YrsStFn6qjnz90jTgk+LFX1VOdHKnZa3HoppKpM4
+ dtGG0EiW5jhUKbSUmAUeOejb38GjSBs7LIT+Uo9CLr5Rs2Kxorhik4Ag3Fjn9W9huMcySyF9V
+ A4LcECZHmqSN4FnynGPKu1yKIS+Ap4HjPX+YPcIX3QdCCBfd95eGjjPlns9S4bu6d3hrP2TuJ
+ sEeJS75bRDLR0Ga4HCeydaHBypO/aBiei/Xy3Go4oucj7nDTeFz/8zslfoDtZmtiRGJP+wD0k
+ 0q1cAbPOa0v3xwGdlb75G7gc4Myt16zVWCEfUBCLq3KH2FQi8kAozTxlRUhY2syj1qbjXwPFJ
+ fi/pFgBFk/D6rWSUApRsIy5/bj/LCaOABwAOBszioFZfIUKnWwy2ZoAd5BEyU4fDCpDdkyK7l
+ mYTJs6EgA5o1Ciu4y0W21DRCiW/qD4+BQWryQ0xrbCS8HH3ZYmOdKTLphF9W8N4dEjYHgEPlv
+ wTHjLT7gBLGzHz/j+Z8hyoweumzxu4qA4FJuOAef/ubJoa+6qXHSexASavJd5rI663HtoTtv1
+ RkY/CqjDN3qLt0PD9uH3AKRqcUc82aicrmVlG4G3hXzXEVkpC3esAD9Lmc8q1VKMNn4PjQgku
+ +q0AuFp+hEjqJIsS/ySegVzuw80IvuZ7i1+Qs9HwW/hOXNihruJ8rKHw28Bg9pDcvv6SAtdic
+ zx+hu1QWe6Xi1hnNc7h9oKtPGoHyTHhISu9RTRn9CVgJHrn7rTbqhQZSG8y1RYDtZesVy6wDL
+ uQEAHWZDRCgjfqrgLsVSlhKynAk8Ol7wc2PLp/SwUVn/EzZYHj6zXusrVJmlmCy9feQji99
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 04:53:54
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 05:30:48
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -111,35 +108,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2020 09:17:34 -0000
+X-List-Received-Date: Wed, 16 Sep 2020 09:30:53 -0000
 
-Le 07/09/2020 à 18:12, Philippe Mathieu-Daudé a écrit :
-> Since commit a56650518f5 ("configure: integrate Meson in the build
-> system") we replaced many Makefile by Meson files. Adapt the
-> git.orderfile script to display the new file at the same position.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  scripts/git.orderfile | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 73fd818d7f3..a021afc2d51 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -18,6 +18,7 @@ docs/*
->  configure
->  Makefile*
->  *.mak
-> +meson.build
->  
->  # qapi schema
->  qapi/*.json
+Le 14/09/2020 à 05:56, zhaolichang a écrit :
+> ping
 > 
 
-Applied to my trivial-patches branch.
+I tried to apply some of your patches, but they don't apply because they
+are not formated correctly.
+
+You should send them using "git send-email" or "git publish".
 
 Thanks,
 Laurent
-
 
