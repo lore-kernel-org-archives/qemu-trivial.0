@@ -1,22 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIT7D-0000Zm-Tw
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 04:48:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36326)
+	id 1kITCV-0003mM-7t
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 04:54:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kIT7C-0000XI-1E; Wed, 16 Sep 2020 04:48:34 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:57227)
+ id 1kITCS-0003la-0x; Wed, 16 Sep 2020 04:54:00 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:44889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kIT7A-00008r-Ai; Wed, 16 Sep 2020 04:48:33 -0400
+ id 1kITCN-0000ky-Vd; Wed, 16 Sep 2020 04:53:59 -0400
 Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MVNEv-1jtPr90bJv-00SNl2; Wed, 16 Sep 2020 10:48:28 +0200
-Subject: Re: [PATCH] ui/spice-input: Remove superfluous forward declaration
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-References: <20200909171145.350360-1-f4bug@amsat.org>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MY6P5-1jzSVf3Ksn-00YOIM; Wed, 16 Sep 2020 10:53:50 +0200
+Subject: Re: [PATCH RESEND] manual: escape backslashes in "parsed-literal"
+ blocks
+To: Laszlo Ersek <lersek@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu devel list <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200908172111.19072-1-lersek@redhat.com>
+ <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
+ <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +65,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <08800cd4-8f7e-33d5-ce69-95ce8723267d@vivier.eu>
-Date: Wed, 16 Sep 2020 10:48:27 +0200
+Message-ID: <b631614e-dd4a-1c25-257a-3f28f952fda4@vivier.eu>
+Date: Wed, 16 Sep 2020 10:53:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200909171145.350360-1-f4bug@amsat.org>
+In-Reply-To: <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:L/ghuPTEHj+MsWebif9e1UtgWUtTRI4fQiSmVsic+JQkNG+PaF4
- fbkG9sTbLKvi3O/vCKpsPWtOzXnnhl06PS/TyOySs/IK0Bh5pIZA/3n5Q0VzsK2iy4PECea
- W48jEHPg06ejtFj1yG5AemLV0YQbztKA3u4Cb59/AlDnM1apyBpMOHUONdfgs8WqLSgkIpT
- 1QeHuCtMYWN8vfPuIy3uQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:cNVYhS5mD6o=:0fFpkqf/ktfRMqPFD6m5nv
- TuT8g/1UD5/TU6YWcSITM3EO31pcPQ0H4qEd7DrpOI0rpNxs36l5cQpCGBOVNydY1DALcXXPw
- Xq6YXz4/r+0sGB1UlvsMZF2R/7bbiummiFBczTK7caTTeDihVikq/m3RVwnwxMCu9ogP7Nsfr
- N1JILp9ZOUNdH9iTdJFH/urXz9zIvaljC0KCSXurjBboEPHHzzvTshf2UVWWSX89rI7cB0xYJ
- xalhjVybzLDFZaHiHu+Hep84J2JxgNC1X+lytuuWXWLqxws5iKcydogf+LssFAKS87S4g3BtI
- cvBTIy2fIWOHlk+dS3GvP7dnaCViulq/IHqwCoUwWe1mZ0Q3KZ11rsLi/ST8nRrYXdvWxiJbk
- +JpfBMnnNJYiOZZMXYMtlvKoEETBJtON8/XDrvW1T+oHtIwJBtTLZhYdIeV6g07wku6LLWWkx
- 6aK5HIAdgyrWjzB9fyX3fcn4tOWhpVFYGAqSUc01OJXsxkIhcN4pBorWSzpUVqvo2vwb/fOaG
- /MZH4/uTOp3vtR0bgvAZJ46DxgYSs9DrRvH+9RhsLJG7Rhl7lNblrMO+bNJmTWRNhbSAI4W8k
- b1UGOL4+eX0Z2L1BWh5D+7vj+EMUzC+P/v9lWIobqBbEbPo6YHS3uA7H8OEh+k+55MWtRmUw5
- 90SjYuci2sNATJF2j0IfrWTj1QiL/HSsHxLk16SUjvLDktp+v1OXAWuS/TikIFJLPlfAcgXH3
- tHgH9ARN1v6LwlFRY0GGOpmqLdYgW55bw2mArYB4NtV8p/E/OSOqgC4jfQb2KtIO1wWbiwSUf
- /J1wD5OdMRayhT0lyd6e+Pyg9Kj74AcgK4U4HRBjEq7xUJkUQz1VUgfSZG5tyKhWQ88XMop
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:tNGndTcbqrjZgfSOOwEffsBUdQ84kJrMTwoOS3ZMb2ZzjcAfJt6
+ Hae2UEeqxL9vRC513H1zzkA5BM7xiI+6CTJg6VEKAolbHtxlyGa9Id8BAa1bbTeTKFvhlKg
+ Lyhce5kpfyqMRqIgy7gISPPExEBQxs2KDDF4c7Trce9IVrQiY+V+v6CpXWkxGG7F7iJwvav
+ BHOcn1S5NHMkjOMcuNvMQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7eE5aOsY/8o=:NYrk8NlHBnejfz4ZYHvzkv
+ fyOczzXq6gwNb+DkouineADhr+cra0Hofnn0z7u65N8jP5FN5Wgoz0FXp5vhzmM3SMWhJ0F/1
+ NM2niDIyavNQxcHn5cOOo0xc8h7wj+Y6c6NsxNwTOYOpVSy4WI831mcCvsEMGAtTrSCmgusqe
+ qvQG9gbkf0CNTYOszT4/GZzxFUQh+YCTH59H5NOUP63JB4yOCjFhAzrUcrqn5u+i+mAiu4SPq
+ 9y7Mebtx2FXBAEc1CLgR1W2fEND6N7VdhlLwnqLuR/JneQfJcKNoj+oMU+ezhMMrNJiyRmDaB
+ HUyzlHQVYfYMjfhqtcg9HvPYg1qmZoph0VMyFd87SA6q42OJIKg2E10n0Mck+DdpXMQnRmJsc
+ 3mgl/g8JcWmlsC1qCp540A9ExQZEtJ+rmdaU4TsTMJJAsukYfsvNoQ8SFdOh4FOtirUyU4LjF
+ Gnx8ajRYfjPTIezEYcaOM08QTPcSKXBCUpacnbbCUFdbBeLybNL8Dp/xsgldm1QRVdHemAE2y
+ KW0P4P3mKRUL4CixYhfrnnybZRMdydKWb4czkfh1G4+cjRY/twrrGzt41cj217IhddRi8H0VV
+ DFxQ3PMrkcdhEet+g2c6mKheI4Wldihl7kQ6U+yltxe3ilvIx6mXVRUtygTjQF2OGV8EtBPeP
+ ROoAaZeYwGifHEnkcSHNyoCjCPGiggVgMUnsrBSMqxVWwNErNQruCohReWDk8AaGWXnuNqCwL
+ BmnjnMvoSK1HnqnQOsjU7wphuSP3ZJnpg6iBlSxwU5cRP3+rsuncn/615UHaSmNtcYvMG6goo
+ 0JldL4B2OTBGt3rtQE3PkxfUdN/Uk8IY9a5zxsxBEjM05MauqZXs+RPq9iGpoObryuhjUwc
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 04:45:47
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 04:53:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -108,34 +113,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2020 08:48:34 -0000
+X-List-Received-Date: Wed, 16 Sep 2020 08:54:00 -0000
 
-Le 09/09/2020 à 19:11, Philippe Mathieu-Daudé a écrit :
-> We only need to forward-declare kbd_push_key() and kbd_get_leds()
-> which are used in kbd_interface, not kbd_leds(). Remove this
-> superfluous forward declaration.
+Le 15/09/2020 à 09:57, Laszlo Ersek a écrit :
+> On 09/10/20 12:23, Philippe Mathieu-Daudé wrote:
+>> Cc'ing qemu-trivial@
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  ui/spice-input.c | 1 -
->  1 file changed, 1 deletion(-)
+> Thanks!
 > 
-> diff --git a/ui/spice-input.c b/ui/spice-input.c
-> index d5bba231c95..21990fa9962 100644
-> --- a/ui/spice-input.c
-> +++ b/ui/spice-input.c
-> @@ -36,7 +36,6 @@ typedef struct QemuSpiceKbd {
->  
->  static void kbd_push_key(SpiceKbdInstance *sin, uint8_t frag);
->  static uint8_t kbd_get_leds(SpiceKbdInstance *sin);
-> -static void kbd_leds(void *opaque, int l);
->  
->  static const SpiceKbdInterface kbd_interface = {
->      .base.type          = SPICE_INTERFACE_KEYBOARD,
-> 
+> The patch was posted a week ago (and reviewed as well, by you, thanks!)
+> -- is there something I need to do for getting this merged?
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
+
 
