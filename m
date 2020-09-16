@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIVep-0007gT-PF
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 07:31:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49564)
+	id 1kIVrG-0003FB-Fa
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 07:44:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kIVei-0007fi-3R
- for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 07:31:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43667)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kIVrC-0003Am-9P
+ for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 07:44:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56062
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kIVee-0005mb-UN
- for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 07:31:19 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kIVr8-0007RR-F9
+ for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 07:44:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600255876;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1600256649;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=w9JceFoepaeBtg+amNpuy8AkT/yCci2mWWvCUd+bqeo=;
- b=c1TRz1RyhnVNnSl70K11NJBTsApnwE03uKbAZhqrG0A8ivbEecicc7aGhiA+YGb1R4Gtfy
- MJGhPtNE87xf6erLDdwwd51nrfOUw+nPAmGcUNNjYtmiAlZQ5t0Zi1FgJj0BrdRvuF/dnb
- crYDDx64HeYkK9x46LBySVLJOsKr6Ho=
+ bh=RG27yyuiYjRfXtUywL7hT4Z1JRI0U3K4s7qn31lOFok=;
+ b=NDjIqvDBMnZwUminL0SdgP9oHCVzJHWIiOe/KwOolt+AjuQRNqEYSjDt2UQJrFaaYPHvRN
+ pL2ro6tZ4XeiwA1KrSPYbkgbVYby4X5E6GIkTFwRH+SRG6PfGyS6yz5x2311mIvudebXil
+ NuZkPeVZmWL/gGnhVdD+ouTbJpm0l4c=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-521-GkoOLPkyMZaowLxmtnb3aA-1; Wed, 16 Sep 2020 07:31:10 -0400
-X-MC-Unique: GkoOLPkyMZaowLxmtnb3aA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-474-oflZelVWNoeNYiPjf7xDRA-1; Wed, 16 Sep 2020 07:43:55 -0400
+X-MC-Unique: oflZelVWNoeNYiPjf7xDRA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B5F5084E246;
- Wed, 16 Sep 2020 11:31:08 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-213.ams2.redhat.com
- [10.36.113.213])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 76FB4100239F;
- Wed, 16 Sep 2020 11:31:06 +0000 (UTC)
-Subject: Re: PATCH: Increase System Firmware Max Size
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B411C1074664;
+ Wed, 16 Sep 2020 11:43:54 +0000 (UTC)
+Received: from redhat.com (ovpn-113-248.ams2.redhat.com [10.36.113.248])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AB75F75123;
+ Wed, 16 Sep 2020 11:43:49 +0000 (UTC)
+Date: Wed, 16 Sep 2020 12:43:46 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
 Cc: "McMillan, Erich" <erich.mcmillan@hp.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "mst@redhat.com" <mst@redhat.com>,
@@ -42,35 +46,37 @@ Cc: "McMillan, Erich" <erich.mcmillan@hp.com>,
  "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>
+Subject: Re: PATCH: Increase System Firmware Max Size
+Message-ID: <20200916114346.GK1535709@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <CS1PR8401MB0327EF9D532330BA44257AFCF3240@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
  <CS1PR8401MB0327959D96C84FB32E071E49F3200@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
  <CS1PR8401MB03279AC1D869BBBA8D810A19F3200@CS1PR8401MB0327.NAMPRD84.PROD.OUTLOOK.COM>
  <eaa64c6a-18cb-69df-3154-614744e1bfa9@redhat.com>
  <20200916095633.GJ1535709@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <712696ed-8f23-d8e6-f765-df7aa68f1013@redhat.com>
-Date: Wed, 16 Sep 2020 13:31:05 +0200
+ <712696ed-8f23-d8e6-f765-df7aa68f1013@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200916095633.GJ1535709@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <712696ed-8f23-d8e6-f765-df7aa68f1013@redhat.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 02:16:02
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=berrange@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 03:05:01
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -50
 X-Spam_score: -5.1
 X-Spam_bar: -----
 X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,217 +89,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2020 11:31:20 -0000
+X-List-Received-Date: Wed, 16 Sep 2020 11:44:14 -0000
 
-On 09/16/20 11:56, Daniel P. Berrangé wrote:
-> On Wed, Sep 16, 2020 at 11:52:41AM +0200, Laszlo Ersek wrote:
->> Hi Erich,
->>
->> (1) this patch is really not trivial; please do not continue CC'ing
->> qemu-trivial
->>
->> (2) Please do CC people that have given you feedback previously. I
->> primarily mean Daniel and David.
->>
->> (3) Generally speaking, please post new versions of a patch stand-alone
->> (not in reply to another message) on the list.
->>
->> (4) Please use git-send-email (or suitable wrapper utilities) for
->> sending your patch.
->>
->> https://wiki.qemu.org/Contribute/SubmitAPatch
->>
->>
->> One non-meta comment below:
->>
->> On 09/15/20 21:10, McMillan, Erich via wrote:
->>> Apologies, ignore previous patch. The relevant patch is below:
->>>
->>> From 473daf6129debf8d158a9ae1aff788c5bdbbc799 Mon Sep 17 00:00:00 2001
->>> From: Erich McMillan <erich.mcmillan@hp.com>
->>> Date: Tue, 15 Sep 2020 13:23:25 -0500
->>> Subject: [PATCH 2/2] Add max firmware size as optional parameter
->>>
->>> Signed-off-by: Erich McMillan <erich.mcmillan@hp.com>
->>> ---
->>>  hw/i386/pc_sysfw.c  | 13 ++-----------
->>>  include/hw/loader.h |  9 +++++++++
->>>  qemu-options.hx     |  8 ++++++++
->>>  softmmu/vl.c        | 40 ++++++++++++++++++++++++++++++++++++++++
->>>  4 files changed, 59 insertions(+), 11 deletions(-)
->>>
->>> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
->>> index b6c0822..ba6c99d 100644
->>> --- a/hw/i386/pc_sysfw.c
->>> +++ b/hw/i386/pc_sysfw.c
->>> @@ -39,15 +39,6 @@
->>>  #include "hw/block/flash.h"
->>>  #include "sysemu/kvm.h"
->>>
->>> -/*
->>> - * We don't have a theoretically justifiable exact lower bound on the base
->>> - * address of any flash mapping. In practice, the IO-APIC MMIO range is
->>> - * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving free
->>> - * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB in
->>> - * size.
->>> - */
->>> -#define FLASH_SIZE_LIMIT (8 * MiB)
->>> -
->>>  #define FLASH_SECTOR_SIZE 4096
->>>
->>>  static void pc_isa_bios_init(MemoryRegion *rom_memory,
->>> @@ -182,10 +173,10 @@ static void pc_system_flash_map(PCMachineState *pcms,
->>>          }
->>>          if ((hwaddr)size != size
->>>              || total_size > HWADDR_MAX - size
->>> -            || total_size + size > FLASH_SIZE_LIMIT) {
->>> +            || total_size + size > MaxCombinedFirmwareSize) {
->>>              error_report("combined size of system firmware exceeds "
->>>                           "%" PRIu64 " bytes",
->>> -                         FLASH_SIZE_LIMIT);
->>> +                         MaxCombinedFirmwareSize);
->>>              exit(1);
->>>          }
->>>
->>> diff --git a/include/hw/loader.h b/include/hw/loader.h
->>> index a9eeea3..7898b63 100644
->>> --- a/include/hw/loader.h
->>> +++ b/include/hw/loader.h
->>> @@ -318,4 +318,13 @@ int rom_add_option(const char *file, int32_t bootindex);
->>>   * overflow on real hardware too. */
->>>  #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
->>>
->>> +/*
->>> + * We don't have a theoretically justifiable exact lower bound on the base
->>> + * address of any flash mapping. In practice, the IO-APIC MMIO range is
->>> + * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving free
->>> + * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB in
->>> + * size, but allow user to specify larger size via command line.
->>> + */
->>> +extern uint64_t MaxCombinedFirmwareSize;
->>> +
->>>  #endif
->>> diff --git a/qemu-options.hx b/qemu-options.hx
->>> index b0f0205..32eed3a 100644
->>> --- a/qemu-options.hx
->>> +++ b/qemu-options.hx
->>> @@ -1377,6 +1377,14 @@ SRST
->>>          |qemu_system_x86| -hda a -hdb b
->>>  ERST
->>>
->>> +DEF("maxfirmwaresize", HAS_ARG, QEMU_OPTION_maxfirmwaresize,
->>> +    "-maxfirmwaresize [size=]megs  specify maximum combined firmware size, default is 8MiB. Known issues if value exceeds 16MiB.\n",
->>> +    QEMU_ARCH_ALL)
->>> +SRST
->>> +``-maxfirmwaresize [size=]megs``
->>> +    Specify maximum combined firmware size, default is 8MiB. Known issues if value exceeds 16MiB.
->>> +ERST
->>> +
->>>  DEF("mtdblock", HAS_ARG, QEMU_OPTION_mtdblock,
->>>      "-mtdblock file  use 'file' as on-board Flash memory image\n",
->>>      QEMU_ARCH_ALL)
->>> diff --git a/softmmu/vl.c b/softmmu/vl.c
->>> index 0cc86b0..fcf41d2 100644
->>> --- a/softmmu/vl.c
->>> +++ b/softmmu/vl.c
->>> @@ -116,6 +116,8 @@
->>>
->>>  #define MAX_VIRTIO_CONSOLES 1
->>>
->>> +uint64_t MaxCombinedFirmwareSize = 8 * MiB;
->>> +
->>>  static const char *data_dir[16];
->>>  static int data_dir_idx;
->>>  const char *bios_name = NULL;
->>> @@ -448,6 +450,20 @@ static QemuOptsList qemu_mem_opts = {
->>>      },
->>>  };
->>>
->>> +static QemuOptsList qemu_max_fw_size_opts = {
->>> +    .name = "maxfirmwaresize",
->>> +    .implied_opt_name = "size",
->>> +    .head = QTAILQ_HEAD_INITIALIZER(qemu_max_fw_size_opts.head),
->>> +    .merge_lists = true,
->>> +    .desc = {
->>> +        {
->>> +            .name = "size",
->>> +            .type = QEMU_OPT_SIZE,
->>> +        },
->>> +        { /* end of list */ }
->>> +    },
->>> +};
->>> +
->>>  static QemuOptsList qemu_icount_opts = {
->>>      .name = "icount",
->>>      .implied_opt_name = "shift",
->>> @@ -2576,6 +2592,23 @@ static bool object_create_delayed(const char *type, QemuOpts *opts)
->>>      return !object_create_initial(type, opts);
->>>  }
->>>
->>> +static void set_max_firmware_size(uint64_t *maxfwsize)
->>> +{
->>> +    const char *max_fw_size_str;
->>> +    QemuOpts *opts = qemu_find_opts_singleton("maxfirmwaresize");
->>> +
->>> +    max_fw_size_str = qemu_opt_get(opts, "size");
->>> +
->>> +    if (max_fw_size_str) {
->>> +        if (!*max_fw_size_str) {
->>> +            error_report("missing 'size' option value");
->>> +            exit(EXIT_FAILURE);
->>> +        }
->>> +
->>> +        *maxfwsize = qemu_opt_get_size(opts, "size", 8 * MiB);
->>> +    }
->>> +}
->>> +
->>>
->>>  static bool set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_size,
->>>                                 MachineClass *mc)
->>> @@ -2904,6 +2937,7 @@ void qemu_init(int argc, char **argv, char **envp)
->>>      qemu_add_opts(&qemu_machine_opts);
->>>      qemu_add_opts(&qemu_accel_opts);
->>>      qemu_add_opts(&qemu_mem_opts);
->>> +    qemu_add_opts(&qemu_max_fw_size_opts);
->>>      qemu_add_opts(&qemu_smp_opts);
->>>      qemu_add_opts(&qemu_boot_opts);
->>>      qemu_add_opts(&qemu_add_fd_opts);
->>> @@ -3160,6 +3194,10 @@ void qemu_init(int argc, char **argv, char **envp)
->>>                      exit(EXIT_FAILURE);
->>>                  }
->>>                  break;
->>> +            case QEMU_OPTION_maxfirmwaresize:
->>> +                opts = qemu_opts_parse_noisily(qemu_find_opts("maxfirmwaresize"),
->>> +                                               optarg, true);
->>> +                break;
->>>  #ifdef CONFIG_TPM
->>>              case QEMU_OPTION_tpmdev:
->>>                  if (tpm_config_parse(qemu_find_opts("tpmdev"), optarg) < 0) {
->>> @@ -3845,6 +3883,8 @@ void qemu_init(int argc, char **argv, char **envp)
->>>      have_custom_ram_size = set_memory_options(&ram_slots, &maxram_size,
->>>                                                machine_class);
->>>
->>> +    set_max_firmware_size(&MaxCombinedFirmwareSize);
->>> +
->>>      os_daemonize();
->>>      rcu_disable_atfork();
->>>
->>
->> (5) In my opinion (which could be wrong of course), we shouldn't
->> introduce a new command line option for this, but a new PC machine type
->> property called "x-firmware-max-size".
+On Wed, Sep 16, 2020 at 01:31:05PM +0200, Laszlo Ersek wrote:
+> On 09/16/20 11:56, Daniel P. Berrangé wrote:
+> > On Wed, Sep 16, 2020 at 11:52:41AM +0200, Laszlo Ersek wrote:
+> >> (5) In my opinion (which could be wrong of course), we shouldn't
+> >> introduce a new command line option for this, but a new PC machine type
+> >> property called "x-firmware-max-size".
+> > 
+> > Yeah, we definitely do not want a new top level CLI arg, just a
+> > machine type property.  We don't need any "x-" prefix on it
+> > though, just a plain "firmware-max-size" prop is fine.
 > 
-> Yeah, we definitely do not want a new top level CLI arg, just a
-> machine type property.  We don't need any "x-" prefix on it
-> though, just a plain "firmware-max-size" prop is fine.
+> According to the previous discussion, I'd like to request that we add
+> the x- prefix (showing that either the property is experimental, or that
+> it is intended in support of experimental use cases).
+> 
+> If you disagree, I'll accept that though.
 
-According to the previous discussion, I'd like to request that we add
-the x- prefix (showing that either the property is experimental, or that
-it is intended in support of experimental use cases).
+I don't see a reason to call the property itself experimental unless
+someone is proposing that there's likely to be a better way to enlarge
+the max firmware size that will replace it later.
 
-If you disagree, I'll accept that though.
+The use case is definitely not something I'd call experimental either.
+The user providing their own arbirary firmware is not going to be common,
+but when they do I'd consider it a valid supported use case. QEMU is
+agnostic about what firmware impl is used, as long as the firmware can
+support the expected services/interfaces.
 
-Thanks
-Laszlo
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
