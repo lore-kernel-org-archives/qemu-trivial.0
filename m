@@ -1,27 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kITCV-0003mM-7t
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 04:54:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37484)
+	id 1kITT6-0007rg-QO
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 05:11:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kITCS-0003la-0x; Wed, 16 Sep 2020 04:54:00 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:44889)
+ id 1kITT5-0007rP-M7; Wed, 16 Sep 2020 05:11:11 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:41929)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kITCN-0000ky-Vd; Wed, 16 Sep 2020 04:53:59 -0400
+ id 1kITSz-0003Kh-1I; Wed, 16 Sep 2020 05:11:11 -0400
 Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MY6P5-1jzSVf3Ksn-00YOIM; Wed, 16 Sep 2020 10:53:50 +0200
-Subject: Re: [PATCH RESEND] manual: escape backslashes in "parsed-literal"
- blocks
-To: Laszlo Ersek <lersek@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu devel list <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200908172111.19072-1-lersek@redhat.com>
- <0bcfea31-36eb-08ba-c450-a7d01910d837@redhat.com>
- <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MjSDU-1klWch3SHq-00kxbc; Wed, 16 Sep 2020 11:10:38 +0200
+Subject: Re: [PATCH v10 13/26] meson: remove empty else and duplicated gio deps
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Ed Maste <emaste@freebsd.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-block@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>, Xie Changlong <xiechanglong.d@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Peter Lieven <pl@kamp.de>, Thomas Huth <thuth@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20200915171234.236-1-luoyonggang@gmail.com>
+ <20200915171234.236-14-luoyonggang@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,35 +69,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b631614e-dd4a-1c25-257a-3f28f952fda4@vivier.eu>
-Date: Wed, 16 Sep 2020 10:53:49 +0200
+Message-ID: <917241ce-5dae-02ba-687b-aed3a942bfd8@vivier.eu>
+Date: Wed, 16 Sep 2020 11:10:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <1f8188ed-68b0-3561-462f-0d903a815f38@redhat.com>
+In-Reply-To: <20200915171234.236-14-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:tNGndTcbqrjZgfSOOwEffsBUdQ84kJrMTwoOS3ZMb2ZzjcAfJt6
- Hae2UEeqxL9vRC513H1zzkA5BM7xiI+6CTJg6VEKAolbHtxlyGa9Id8BAa1bbTeTKFvhlKg
- Lyhce5kpfyqMRqIgy7gISPPExEBQxs2KDDF4c7Trce9IVrQiY+V+v6CpXWkxGG7F7iJwvav
- BHOcn1S5NHMkjOMcuNvMQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7eE5aOsY/8o=:NYrk8NlHBnejfz4ZYHvzkv
- fyOczzXq6gwNb+DkouineADhr+cra0Hofnn0z7u65N8jP5FN5Wgoz0FXp5vhzmM3SMWhJ0F/1
- NM2niDIyavNQxcHn5cOOo0xc8h7wj+Y6c6NsxNwTOYOpVSy4WI831mcCvsEMGAtTrSCmgusqe
- qvQG9gbkf0CNTYOszT4/GZzxFUQh+YCTH59H5NOUP63JB4yOCjFhAzrUcrqn5u+i+mAiu4SPq
- 9y7Mebtx2FXBAEc1CLgR1W2fEND6N7VdhlLwnqLuR/JneQfJcKNoj+oMU+ezhMMrNJiyRmDaB
- HUyzlHQVYfYMjfhqtcg9HvPYg1qmZoph0VMyFd87SA6q42OJIKg2E10n0Mck+DdpXMQnRmJsc
- 3mgl/g8JcWmlsC1qCp540A9ExQZEtJ+rmdaU4TsTMJJAsukYfsvNoQ8SFdOh4FOtirUyU4LjF
- Gnx8ajRYfjPTIezEYcaOM08QTPcSKXBCUpacnbbCUFdbBeLybNL8Dp/xsgldm1QRVdHemAE2y
- KW0P4P3mKRUL4CixYhfrnnybZRMdydKWb4czkfh1G4+cjRY/twrrGzt41cj217IhddRi8H0VV
- DFxQ3PMrkcdhEet+g2c6mKheI4Wldihl7kQ6U+yltxe3ilvIx6mXVRUtygTjQF2OGV8EtBPeP
- ROoAaZeYwGifHEnkcSHNyoCjCPGiggVgMUnsrBSMqxVWwNErNQruCohReWDk8AaGWXnuNqCwL
- BmnjnMvoSK1HnqnQOsjU7wphuSP3ZJnpg6iBlSxwU5cRP3+rsuncn/615UHaSmNtcYvMG6goo
- 0JldL4B2OTBGt3rtQE3PkxfUdN/Uk8IY9a5zxsxBEjM05MauqZXs+RPq9iGpoObryuhjUwc
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:S3OTOLvd8t97gDsj6byXb6h999CXlUEpYP7WcLtNM49YWHm5DCt
+ z8/IcP/F8Vzna9EGvlIaNyK6WMRrYnyR60W8ePKcWlb2TPEsOufCPkSOci0ecu055KZNuOB
+ mwveySDD/UpgF85kNUMbxM6SUsuFwnbg5Q7CQBO4q+xBYHyGHHgmwtwv04D1j+yQs/4WBxU
+ 6GdL3jAeGZ6Hkc5li139Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:H/amolakits=:+kPPcW6uI8NRfN29PKvpx+
+ aDifL4T3U1s0UQYc8YUJ5nOL8tH3Q9b3NiGHpai1gxzwCyyduRiL402witwgZhTHBWvTlGm6g
+ IsNA6K1pqzLEOLlJuqohPWBoBN0C/WY2kPKpPveUXe+3qSOT6RBaKt/0nJwxxYoim678dvXIr
+ W4RDu4dLHzPpRh5a5DKq/N+4Ipq5pA+tM+jwntEMV6H3rewLyGvRGF5IKCkTS5iBJnes1++6h
+ EAY1x0JNTXLAiDLsSalcJ4FwlEdmt9LgUrOq1HxBFyU7NzpC7szWwigWEK2Jez91uz6fUiKww
+ F2ulVrz7hnJPzzaxAPAq5xUO9XTCtUBvgiwa7WNx98cV2E6l3yNP3Grc5CpCFsEO3VfkorEt3
+ MqlpeEaY/kiLgXOsKowH2qa14Yo7FEHRWtJtA553UcNO0qAFPjV8xu8buLSMzgellRbyHbfbG
+ KrFetRjM0s4Kaf6UA8rjpXoHVOk2EqnF7YZnghXVuUM1fLqUm5Qt55+9xsasWBKGeSE+pUHFO
+ Uqqf3b2vero5sofu1LgUCu2oH9Dc0OVLUzIj6xIlDhnpNHPPGgSOb74InLEllEtpz1WWsa5Cq
+ Cpn/dj6VOwQ3hybkVGdYlJGeKzUGkJo37DpC7Ey7W2lK5O+4TckU4/lVhjXY4YaXyKMUP8xTf
+ KEB+Y/TGVVzcwhkN+MF/0gDBWIm5dbU6Y+0q1SN/JULBAHbDbPISYdUSCf44bR7aWOgFT7RoV
+ tYUfjb9sQJDGjEu10NsFqoPPiZio9R2Sgxcy+xiECOTUTG8C0qJOXTFVnZTdrJmISMR1/WIKD
+ xTXNbpgHpKHE7ZV/o5Bb/W+ej4sENyDAjEwGkqQ9IgecKyI9cMoVDDK1QOUuPSvl14TxLq4
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 04:53:54
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 05:11:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -113,21 +117,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2020 08:54:00 -0000
+X-List-Received-Date: Wed, 16 Sep 2020 09:11:12 -0000
 
-Le 15/09/2020 à 09:57, Laszlo Ersek a écrit :
-> On 09/10/20 12:23, Philippe Mathieu-Daudé wrote:
->> Cc'ing qemu-trivial@
+Le 15/09/2020 à 19:12, Yonggang Luo a écrit :
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  meson.build | 6 ------
+>  1 file changed, 6 deletions(-)
 > 
-> Thanks!
+> diff --git a/meson.build b/meson.build
+> index 690723b470..23cb1b8742 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -317,7 +317,6 @@ opengl = not_found
+>  if 'CONFIG_OPENGL' in config_host
+>    opengl = declare_dependency(compile_args: config_host['OPENGL_CFLAGS'].split(),
+>                                link_args: config_host['OPENGL_LIBS'].split())
+> -else
+>  endif
+>  gtk = not_found
+>  if 'CONFIG_GTK' in config_host
+> @@ -344,11 +343,6 @@ if 'CONFIG_ICONV' in config_host
+>    iconv = declare_dependency(compile_args: config_host['ICONV_CFLAGS'].split(),
+>                               link_args: config_host['ICONV_LIBS'].split())
+>  endif
+> -gio = not_found
+> -if 'CONFIG_GIO' in config_host
+> -  gio = declare_dependency(compile_args: config_host['GIO_CFLAGS'].split(),
+> -                           link_args: config_host['GIO_LIBS'].split())
+> -endif
+>  vnc = not_found
+>  png = not_found
+>  jpeg = not_found
 > 
-> The patch was posted a week ago (and reviewed as well, by you, thanks!)
-> -- is there something I need to do for getting this merged?
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
 
