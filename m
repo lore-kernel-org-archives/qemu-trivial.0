@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIZKc-0001CF-Gz
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 11:26:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33984)
+	id 1kIZYI-0003k7-Em
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2020 11:40:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1kIZKa-00017X-1F
- for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 11:26:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38320)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1kIZKW-0006dE-F1
- for qemu-trivial@nongnu.org; Wed, 16 Sep 2020 11:26:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600270003;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=k0kmqVTmIVn6noz8+7tyjIo+j7eS8cobDcN0Mx9Dkck=;
- b=DPbnI4cCyYxBUwNOZtPe0xVvZ5JoFkn9R3cnM8Yb7IBuaabsmGCR7PYMNNJpGOMfda2qFY
- OBes+pWu52BAMhgNkDf6XNEFGK7BN59LQjRnszAj8b7u311/NeNy+uabK+j8nkyOPthJle
- O9m7WaYsFuMu0WkWrJw8SfOIE2IioXI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-Li3rTHBVOa-cqjBWnrloyQ-1; Wed, 16 Sep 2020 11:26:41 -0400
-X-MC-Unique: Li3rTHBVOa-cqjBWnrloyQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3156D80734F;
- Wed, 16 Sep 2020 15:26:40 +0000 (UTC)
-Received: from steredhat.redhat.com (ovpn-113-80.ams2.redhat.com
- [10.36.113.80])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9FDD058;
- Wed, 16 Sep 2020 15:26:35 +0000 (UTC)
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, lulu@redhat.com,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH] vhost-vdpa: fix indentation in vdpa_ops
-Date: Wed, 16 Sep 2020 17:26:34 +0200
-Message-Id: <20200916152634.56917-1-sgarzare@redhat.com>
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kIZYG-0003eO-2m; Wed, 16 Sep 2020 11:40:56 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:35016)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kIZYD-0000bq-KP; Wed, 16 Sep 2020 11:40:55 -0400
+Received: by mail-oi1-x241.google.com with SMTP id w16so8646545oia.2;
+ Wed, 16 Sep 2020 08:40:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Z4XFpC8HVOqWVKMlwmppY/0mKycP09OAomU3WYC79XU=;
+ b=CYcV6mfcbjIufDcbF7T+RF0OPA+FWGBizUr0WaY4RaMXrFKMD4+jRbEyWLdvkbmpw3
+ tz/bqElibrZE88RjYm/YtAtJC2LSERlIA3SspfBJ11mq87Bs53xV4styhpVpsODbECI6
+ YczyAIa2UciyH/HpRynos+272WFPkumlo3kxuAmTEJU1nBsmG1SnDIiwEivUdWezByUl
+ QNGtb4jaUq3L7ROjs8eGFpxWSM1lka8006is3fv5ev4d2y1ZgfIw5TRB7U+ziLxHdgAs
+ EI/3pqY0kf31jeI4jnl9lOYmfaCe0xU03oThVuzC/bqlRliR1LVMQO0ws6Uhnwfc3Op2
+ YIkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Z4XFpC8HVOqWVKMlwmppY/0mKycP09OAomU3WYC79XU=;
+ b=lLFNqsOsTh+TkXn/U2Hop8b9BxOIiIzMy2ZfydY6q3IsglISwp1ACUz81DbLteJhU5
+ WlJa1vaprvc7ePeZsurrOHeLEOFh9xG4q836B/hCeXOLQWycGjqEJXDeB5UhHaL9EfT/
+ TSVqzXInz4zQv7pHFN+Btnqm2UNI5kLkjQzvwJSWev1OaMGkSCs+17bIw+Th+fun4i3G
+ UQQt3fBYADwkGLwORmFez8qDZk8XqMfX+MkxE3mZZxgELgbrpBFhEKe1D20S7gr21bqx
+ z8ss31xlvAqbSfiq9/GSzBiJcho2iPnD7dMZOCzzThHO5LvjhOQoD9ienO3Fcm+OjfOE
+ zKmA==
+X-Gm-Message-State: AOAM532aHoKv1YSFaWtbyvZ9vesGp0Czc7hcxNefnt4lHah+6qABBGRE
+ h6+rTHeLkzDI0u82VL88AvWFNl7jT1Ob/cBpuHc=
+X-Google-Smtp-Source: ABdhPJxwsW02zktIRWI8ul/eqiUiPTvUishKo4PJxcm3kZ1qfbraPPRPzczrzDqroxBgaSMNSdt4Gs8GF2MsvA1puV4=
+X-Received: by 2002:aca:e155:: with SMTP id y82mr3779473oig.56.1600270852227; 
+ Wed, 16 Sep 2020 08:40:52 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=sgarzare@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 02:16:02
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200916152634.56917-1-sgarzare@redhat.com>
+In-Reply-To: <20200916152634.56917-1-sgarzare@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Wed, 16 Sep 2020 23:40:16 +0800
+Message-ID: <CAKXe6SKFHD2qJY+M33UQDJ2uaWH99uQk5ZOwWmck8VYE7ZyaXA@mail.gmail.com>
+Subject: Re: [PATCH] vhost-vdpa: fix indentation in vdpa_ops
+To: Stefano Garzarella <sgarzare@redhat.com>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Cindy Lu <lulu@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=liq3ea@gmail.com; helo=mail-oi1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,31 +72,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2020 15:26:48 -0000
+X-List-Received-Date: Wed, 16 Sep 2020 15:40:56 -0000
 
-This patch fixes wrong indentation of some vdpa_ops fields introduced
-with the initial commit 108a64818e ("vhost-vdpa: introduce vhost-vdpa
-backend")
+Stefano Garzarella <sgarzare@redhat.com> =E4=BA=8E2020=E5=B9=B49=E6=9C=8816=
+=E6=97=A5=E5=91=A8=E4=B8=89 =E4=B8=8B=E5=8D=8811:27=E5=86=99=E9=81=93=EF=BC=
+=9A
+>
+> This patch fixes wrong indentation of some vdpa_ops fields introduced
+> with the initial commit 108a64818e ("vhost-vdpa: introduce vhost-vdpa
+> backend")
+>
+> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
 
-Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
----
- hw/virtio/vhost-vdpa.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-index 4580f3efd8..e123837a55 100644
---- a/hw/virtio/vhost-vdpa.c
-+++ b/hw/virtio/vhost-vdpa.c
-@@ -469,6 +469,6 @@ const VhostOps vdpa_ops = {
-         .vhost_send_device_iotlb_msg = NULL,
-         .vhost_dev_start = vhost_vdpa_dev_start,
-         .vhost_get_device_id = vhost_vdpa_get_device_id,
--         .vhost_vq_get_addr = vhost_vdpa_vq_get_addr,
--         .vhost_force_iommu = vhost_vdpa_force_iommu,
-+        .vhost_vq_get_addr = vhost_vdpa_vq_get_addr,
-+        .vhost_force_iommu = vhost_vdpa_force_iommu,
- };
--- 
-2.26.2
-
+> ---
+>  hw/virtio/vhost-vdpa.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+> index 4580f3efd8..e123837a55 100644
+> --- a/hw/virtio/vhost-vdpa.c
+> +++ b/hw/virtio/vhost-vdpa.c
+> @@ -469,6 +469,6 @@ const VhostOps vdpa_ops =3D {
+>          .vhost_send_device_iotlb_msg =3D NULL,
+>          .vhost_dev_start =3D vhost_vdpa_dev_start,
+>          .vhost_get_device_id =3D vhost_vdpa_get_device_id,
+> -         .vhost_vq_get_addr =3D vhost_vdpa_vq_get_addr,
+> -         .vhost_force_iommu =3D vhost_vdpa_force_iommu,
+> +        .vhost_vq_get_addr =3D vhost_vdpa_vq_get_addr,
+> +        .vhost_force_iommu =3D vhost_vdpa_force_iommu,
+>  };
+> --
+> 2.26.2
+>
+>
 
