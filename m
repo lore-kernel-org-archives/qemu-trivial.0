@@ -1,22 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIyqa-0004FL-Ay
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 14:41:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60080)
+	id 1kIzAt-0000jx-7s
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 15:02:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kIyqX-0004Bv-GD; Thu, 17 Sep 2020 14:41:29 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:48119)
+ id 1kIzAq-0000hc-4W; Thu, 17 Sep 2020 15:02:28 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:43591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kIyqV-0002W7-IZ; Thu, 17 Sep 2020 14:41:29 -0400
+ id 1kIzAm-0006Vn-Jw; Thu, 17 Sep 2020 15:02:27 -0400
 Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M9ntb-1kODVY2WAv-005oVf; Thu, 17 Sep 2020 20:41:17 +0200
-Subject: Re: [PATCH V3 09/10] qapi/: fix some comment spelling errors
-To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20200917075029.313-1-zhaolichang@huawei.com>
- <20200917075029.313-10-zhaolichang@huawei.com>
+ 1MLR9p-1k0d6T3gRf-00IXZO; Thu, 17 Sep 2020 21:02:07 +0200
+Subject: Re: [PATCH 0/6] misc: Some inclusive terminology changes
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <rth@twiddle.net>
+References: <20200910070131.435543-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +72,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b2c394d2-4a77-93bc-f984-96d21ec85b6c@vivier.eu>
-Date: Thu, 17 Sep 2020 20:41:16 +0200
+Message-ID: <58370210-1ff8-4ec2-553b-7693a9b85c99@vivier.eu>
+Date: Thu, 17 Sep 2020 21:02:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200917075029.313-10-zhaolichang@huawei.com>
+In-Reply-To: <20200910070131.435543-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zqW2cLHEvTKVJS7QoLW8M9whWcaXugYj0GDO8rj0boXk4APHMGb
- 9y1Iz25GVwNz7prsyQeyPbsN5NmGKHr1uP/+RtvBdDreyGWkMQ4oZKh1d61lCd36NqvNF6K
- lv5atzfB/fc4VrCQAR2cFV60L434kM/mYPYHzQZFtyvhxoMl8elpIUaBIIxjl/jy30+FIVC
- 4bui2chC5rFkLH2P+oDQw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:CiL1c0v/yx4=:7qtkoSDZkjmThqXnphGGuu
- z9gr1Tr6wLNQ1QiiV/9N0NK9MBQrE8bRdNW55gh2DNmb/FXcT74TdqcwDZtNp+EI+iYig4lcZ
- hirb7efoex8ongaegqFb/8Vg9c++yNPXZSqsh9fpg6xoPdaPxBwD+6u1XxQZiiFGUGnTgw4F3
- ZX8kPE7Oue8NWPscRlGTyyrgA2yaCDObtVIfolTlBg1GOeFlUmWERUFH1bZlERmwrgeTG7SnP
- nOYAlmwvGJc18/Q21OhXqEHhmgTbOeeHtcHIt3kx+ryH3//NXlzoVV9EQ7GZOxc4RAv/2lRus
- egXLaxq7mya87X4aQEahwTlhYyivFgDQVMEO0cq1YTHTqm+M0MzwibPPOGTMTHpSh/ceku0kZ
- NOsCKz3R3fH1hnzvN8NyBDBJmIu5McjeFDZ0vfTUfucu9/IHYqDaD7KEBsSP1/jz+vXhpl3s3
- 5eqlrtYm777qCtxBihhlwSVRhjBHw/H419Tr07ZADqbzEzq4TA3+w+3V0JeX6HIFnsfe746My
- p9BB+S1QaY9hYxmc+pcpxlsbuGmZf8zZq9MqRfR4xm3lhw44LXdLwGsRZgy9Np6iPvXZzCHvX
- Q7B+OeEZGOXOGuavo3fo7Bb9fJ4ZM3DDeGdC2FGwX0paBlw1QLDQEd/KSGZHjR50O3r22+Jia
- JFcwUEE1ZBk+dtC5D0Ygzm4j3pOETpXDDfTOghszJxVXp+smP31EJXKaGAQWMNbkmlupBwFLp
- J1YHzxoSBlxm9t8Kru4gsDFZ9cFnbPIVxBbRhi4ikLB6LEGp9nvi6//rz38LAHDEKzKS7FDbc
- 1+CCPoYzuPeF80PL0w27IUW79fujIQa5jky+6+Iu+lGRfopu0O/1x8V4mPrmJyQu5Bml4Iu
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:vSkFfUIMLAFpwGxD4kzvP0Wh7o/G0mxbO0B+DlLdDBHKRvz3KBg
+ by18GcAinCDBchxvJZiG2Ykd6g3Ry7XjzcakL2FonD/2CSA/TW4LJ38ZjUr7IaP/5/Mn8IZ
+ EI8L+dPqGkqFzeT3VI1Zv1EpZaKk9lf8AAh6UqoJhg29yQTxnWJAzVdtXkIq/rENklDwAMc
+ 1PZk4LpgwNS6tcdOuSOpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:FcvYsasPsek=:Id4SEdzULicuCqz5IyrQQ8
+ NtxUH6vo94AmBi9JFX4uIe7iIhe/fJIZbefhmkFd4Bua/9vg/jNovfMrQb6w9LZHJ/9gW/iBa
+ jGotKQd3qfcjRWuJSXwBEeeWlu3nWIdjNQXYCK+c0U18arozUuJ1S/5rocl4dS8YHtMP67IzX
+ ermVB7CQICuV9GO4Fp2jpUxtW7kMhijK1VNtVGnZ+z5M4LgcSSgY1miT465/BQAHcMG9v+5ZG
+ LsLRf+flgrUhQ7Oc45J2RmgHCawa2MaUx/6wlt+jiLwMo1zLFwl7M97VklprmdgRbM0uMBJ2d
+ bkA8JaZYwAoPtbplevsJxlGidPTVt2DI9YtVhOhpbYIrmpIixe7VndWRtWUaLMjKgOd+/IZHW
+ F1bJH5g1mJiPiQjSYWFf6rujOPFcrb+E39xvtHhwvss+6g9W5uC3GXdZXKu9Vq8wyyfNzh4V9
+ AU5MUdHrbFbkLcT/70QnbfleeB1M+6GRi79IiqieDIDA9+jj4Osn1hoDge7K6XCx4z5leQRVj
+ 2THQgU31KJzMn4v0TPPUyoGRjuCT9iEXe4jco9IWtEVingFO+KITkODzjft6cGdeph5E0LGk+
+ IAcZuSgsdgwijpCR3r6sdichY1v0HUSOmm/g8NdeC3Tb1kOeUzIgNPpxIXAyF5She8bzUXgc6
+ rGQSSaqn1i9gM5ijWraGSTboHf46Erj9Xc609/b7wzYb9NLytfD0wMbQ1V/6bHPzXYQzizHWY
+ DPJpQ4qe7S7kJQq5+JdPJtyCCGUbGgqp66wTzHFNNQwzFNhl5svEvgPiLRDVQoaN6DgWr2Vx3
+ aANS6T7EnDoUIce7bF51x+vEyAJQOBqyXCQYRjkncHdh0jVmzywoyE7cmpoU3NvBdOi1p3y
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 14:41:25
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 14:36:13
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -108,69 +120,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Sep 2020 18:41:29 -0000
+X-List-Received-Date: Thu, 17 Sep 2020 19:02:28 -0000
 
-Le 17/09/2020 à 09:50, zhaolichang a écrit :
-> I found that there are many spelling errors in the comments of qemu,
-> so I used the spellcheck tool to check the spelling errors
-> and finally found some spelling errors in the qapi folder.
+Le 10/09/2020 à 09:01, Philippe Mathieu-Daudé a écrit :
+> We don't have (yet?) inclusive terminology guidelines,
+> but the PCI hole memory is not "black", the DMA sources
+> don't stream to "slaves", and there isn't really a TSX
+> "black" list, we only check for broken fields.
 > 
-> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  qapi/block-core.json | 4 ++--
->  qapi/crypto.json     | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
+> As this terms can be considered offensive, and changing
+> them is a no-brain operation, simply do it.
 > 
-> diff --git a/qapi/block-core.json b/qapi/block-core.json
-> index 2d94873ca0..3c16f1e11d 100644
-> --- a/qapi/block-core.json
-> +++ b/qapi/block-core.json
-> @@ -1795,7 +1795,7 @@
->  #
->  # @block-backend: corresponds to BlockBackend
->  #
-> -# @block-job: corresonds to BlockJob
-> +# @block-job: corresponds to BlockJob
->  #
->  # @block-driver: corresponds to BlockDriverState
->  #
-> @@ -2067,7 +2067,7 @@
->  # @target: name of the destination dirty bitmap
->  #
->  # @bitmaps: name(s) of the source dirty bitmap(s) at @node and/or fully
-> -#           specifed BlockDirtyBitmap elements. The latter are supported
-> +#           specified BlockDirtyBitmap elements. The latter are supported
->  #           since 4.1.
->  #
->  # Since: 4.0
-> diff --git a/qapi/crypto.json b/qapi/crypto.json
-> index bb7930d332..2aebe6fa20 100644
-> --- a/qapi/crypto.json
-> +++ b/qapi/crypto.json
-> @@ -336,7 +336,7 @@
->  #                 written into added active keyslots
->  #
->  # @old-secret:    Optional (for deactivation only)
-> -#                 If given will deactive all keyslots that
-> +#                 If given will deactivate all keyslots that
->  #                 match password located in QCryptoSecret with this ID
->  #
->  # @iter-time:     Optional (for activation only)
-> @@ -354,7 +354,7 @@
->  #                 keyslot to deactivate
->  #
->  # @secret:        Optional. The ID of a QCryptoSecret object providing the
-> -#                 password to use to retrive current master key.
-> +#                 password to use to retrieve current master key.
->  #                 Defaults to the same secret that was used to open the image
->  #
->  #
+> Philippe Mathieu-Daudé (6):
+>   hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+>   hw/core/stream: Rename StreamSlave as StreamSink
+>   hw/dma/xilinx_axidma: Rename StreamSlave as StreamSink
+>   hw/net/xilinx_axienet: Rename StreamSlave as StreamSink
+>   hw/pci-host/q35: Rename PCI 'black hole as '(memory) hole'
+>   target/i386/kvm: Rename host_tsx_blacklisted() as host_tsx_broken()
+> 
+>  include/hw/pci-host/q35.h     |  4 +--
+>  include/hw/ssi/aspeed_smc.h   |  2 +-
+>  include/hw/ssi/xilinx_spips.h |  2 +-
+>  include/hw/stream.h           | 46 +++++++++++++--------------
+>  hw/core/stream.c              | 20 ++++++------
+>  hw/dma/xilinx_axidma.c        | 58 +++++++++++++++++------------------
+>  hw/net/xilinx_axienet.c       | 44 +++++++++++++-------------
+>  hw/pci-host/q35.c             | 38 +++++++++++------------
+>  hw/ssi/aspeed_smc.c           | 40 ++++++++++++------------
+>  hw/ssi/xilinx_spips.c         |  2 +-
+>  target/i386/kvm.c             |  4 +--
+>  tests/qtest/q35-test.c        |  2 +-
+>  12 files changed, 131 insertions(+), 131 deletions(-)
 > 
 
-Applied to my trivial-patches branch.
+Philippe,
+
+Could you report your series: it doesn't apply cleanly on my branch.
 
 Thanks,
 Laurent
-
 
