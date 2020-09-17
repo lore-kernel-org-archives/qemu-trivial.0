@@ -1,53 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIlF4-00039W-Mx
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 00:09:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58350)
+	id 1kInR4-0004D7-Ht
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 02:30:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kIlF2-00038d-DV; Thu, 17 Sep 2020 00:09:52 -0400
-Resent-Date: Thu, 17 Sep 2020 00:09:52 -0400
-Resent-Message-Id: <E1kIlF2-00038d-DV@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21309)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kIlF0-0002OV-1W; Thu, 17 Sep 2020 00:09:52 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1600315778; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=JJ6RBdua3hfejB6mSDdOVdIl9bwI61kWhCLHdWr+NYhrYhLI7FYXvgY48vYJE8o8p+RJHxNIhxUAj/2+RVqwjjmzb2LCHPWxZcU3BBs2Ju58wJaUGYnJ5t3Yp+OD5+3ko9lwYgKwuSSpafkC7cfYRF17rGTqWjYr/Mk4tNFaeUU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1600315778;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=E9tCkNUsX1DwthyCYk2p4x6P//7uEPxB7C3zvyHHbrM=; 
- b=FW/bJw5b8/OAp5siouO6uxqIVXeF5IsCy84ef3qxwP+aT3CAvTtoDo9uQg7+qlfg4rjd56YRW2EClpVCIadtI5cZgBdwyFU4y7PLCa8gCSXh2qv0cToIac2c8jnsRpsKVtJMTpouhziEpchxFBytP50oQI/VpkImHX/6+Kkn34Y=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1600315777535711.3123966288862;
- Wed, 16 Sep 2020 21:09:37 -0700 (PDT)
-Subject: Re: [PATCH V2 00/10] fix some comment spelling errors
-Message-ID: <160031577631.8478.3112365757373962378@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200917035413.701-1-zhaolichang@huawei.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kInQz-00049y-5o
+ for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 02:30:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38045)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kInQw-0003c5-At
+ for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 02:30:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600324215;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FkkO6yrGMMcRtoi4c7OWyS2swIvstU9Vv7XhdpFyz8k=;
+ b=J5/KEgNcHsFe6MeOilBwfIpQPuaNzBxpJ6HqG86zNajk6mBLFOsxxU0XVkCTuytajYOI80
+ V6NNHWgTdt6NmePbgNrhz78CzSdj03X4hKhcmiCD//2YUKEgtLLbDUdsqwSZ9R/JjrMHcs
+ Na5fyojtdG5VqdTRvAd1dqr0TO6Ye2o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-338-7pZ5WRkNMQannjDpQr4R-A-1; Thu, 17 Sep 2020 02:30:11 -0400
+X-MC-Unique: 7pZ5WRkNMQannjDpQr4R-A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CE661017DCD;
+ Thu, 17 Sep 2020 06:30:10 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-38.ams2.redhat.com [10.36.113.38])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C33A9610F3;
+ Thu, 17 Sep 2020 06:30:08 +0000 (UTC)
+Subject: Re: [PATCH] migration: Silence compiler warning in
+ global_state_store_running()
+From: Thomas Huth <thuth@redhat.com>
+To: Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20200916171913.148681-1-thuth@redhat.com>
+Message-ID: <93744d31-0f33-5bb1-fb76-42ca3a5fa401@redhat.com>
+Date: Thu, 17 Sep 2020 08:30:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zhaolichang@huawei.com
-Cc: qemu-trivial@nongnu.org, zhaolichang@huawei.com, qemu-devel@nongnu.org
-Date: Wed, 16 Sep 2020 21:09:37 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 00:09:46
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20200916171913.148681-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 20:51:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.062, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,15 +80,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Sep 2020 04:09:52 -0000
+X-List-Received-Date: Thu, 17 Sep 2020 06:30:21 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkxNzAzNTQxMy43MDEt
-MS16aGFvbGljaGFuZ0BodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
-dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
-aW5mb3JtYXRpb246CgpOL0EuIEludGVybmFsIGVycm9yIHdoaWxlIHJlYWRpbmcgbG9nIGZpbGUK
-CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8y
-MDIwMDkxNzAzNTQxMy43MDEtMS16aGFvbGljaGFuZ0BodWF3ZWkuY29tL3Rlc3RpbmcuY2hlY2tw
-YXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkg
-UGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNr
-IHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 16/09/2020 19.19, Thomas Huth wrote:
+> GCC 9.3.0 on Ubuntu complains:
+> 
+> In file included from /usr/include/string.h:495,
+>                  from /home/travis/build/huth/qemu/include/qemu/osdep.h:87,
+>                  from ../migration/global_state.c:13:
+> In function ‘strncpy’,
+>     inlined from ‘global_state_store_running’ at ../migration/global_state.c:47:5:
+> /usr/include/x86_64-linux-gnu/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 100 equals destination size [-Werror=stringop-truncation]
+>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> ... but we apparently really want to do the strncpy here. Silence the
+> warning with QEMU_NONSTRING.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  migration/global_state.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/migration/global_state.c b/migration/global_state.c
+> index 25311479a4..f1355d7d97 100644
+> --- a/migration/global_state.c
+> +++ b/migration/global_state.c
+> @@ -43,9 +43,9 @@ int global_state_store(void)
+>  void global_state_store_running(void)
+>  {
+>      const char *state = RunState_str(RUN_STATE_RUNNING);
+> +    QEMU_NONSTRING char *dest = (char *)global_state.runstate;
+>      assert(strlen(state) < sizeof(global_state.runstate));
+> -    strncpy((char *)global_state.runstate,
+> -           state, sizeof(global_state.runstate));
+> +    strncpy(dest, state, sizeof(global_state.runstate));
+>  }
+
+Darn, I was sending too fast here, sorry, but seems like this does *not*
+fix the issue with GCC 9.3:
+
+ https://travis-ci.com/github/huth/qemu/jobs/385871010#L2930
+
+... so maybe we should simply switch to strpadcpy() instead?
+
+ Thomas
+
 
