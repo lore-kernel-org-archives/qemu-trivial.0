@@ -1,27 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIoha-0004ul-7m
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 03:51:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51678)
+	id 1kIohb-0004yG-L3
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 03:51:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kIohW-0004mk-0J; Thu, 17 Sep 2020 03:51:30 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4757 helo=huawei.com)
+ id 1kIohX-0004np-Od; Thu, 17 Sep 2020 03:51:31 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4708 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kIohQ-0005Mg-P5; Thu, 17 Sep 2020 03:51:29 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 02BB2642F1F42872FD83;
- Thu, 17 Sep 2020 15:51:21 +0800 (CST)
-Received: from localhost (10.174.187.87) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 15:51:12 +0800
+ id 1kIohS-0005Mw-6x; Thu, 17 Sep 2020 03:51:31 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 64A337430B9064DC29CE;
+ Thu, 17 Sep 2020 15:51:23 +0800 (CST)
+Received: from localhost (10.174.187.87) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 15:51:16 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
-CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>, Alex Bennee
- <alex.bennee@linaro.org>
-Subject: [PATCH V3 05/10] util/: fix some comment spelling errors
-Date: Thu, 17 Sep 2020 15:50:24 +0800
-Message-ID: <20200917075029.313-6-zhaolichang@huawei.com>
+CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
+Subject: [PATCH V3 07/10] block/: fix some comment spelling errors
+Date: Thu, 17 Sep 2020 15:50:26 +0800
+Message-ID: <20200917075029.313-8-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200917075029.313-1-zhaolichang@huawei.com>
 References: <20200917075029.313-1-zhaolichang@huawei.com>
@@ -30,9 +29,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.87]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.190;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:37:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:50:46
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -52,101 +51,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Sep 2020 07:51:31 -0000
+X-List-Received-Date: Thu, 17 Sep 2020 07:51:32 -0000
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the util folder.
+and finally found some spelling errors in the block folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-Reviewed-by: Alex Bennee <alex.bennee@linaro.org>
 ---
- util/osdep.c             | 2 +-
- util/qemu-progress.c     | 2 +-
- util/qemu-sockets.c      | 2 +-
- util/qemu-thread-win32.c | 2 +-
- util/qht.c               | 2 +-
- util/trace-events        | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
+ block/block-copy.c | 2 +-
+ block/linux-aio.c  | 2 +-
+ block/mirror.c     | 2 +-
+ block/vhdx.c       | 2 +-
+ block/vhdx.h       | 4 ++--
+ 5 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/util/osdep.c b/util/osdep.c
-index 4829c07ff6..e50dc2214e 100644
---- a/util/osdep.c
-+++ b/util/osdep.c
-@@ -392,7 +392,7 @@ int qemu_unlink(const char *name)
-  * Set errno if fewer than `count' bytes are written.
+diff --git a/block/block-copy.c b/block/block-copy.c
+index cd9bc47c8f..5eb8912e0a 100644
+--- a/block/block-copy.c
++++ b/block/block-copy.c
+@@ -321,7 +321,7 @@ static coroutine_fn int block_copy_task_run(AioTaskPool *pool,
+  * Do copy of cluster-aligned chunk. Requested region is allowed to exceed
+  * s->len only to cover last cluster when s->len is not aligned to clusters.
   *
-  * This function don't work with non-blocking fd's.
-- * Any of the possibilities with non-bloking fd's is bad:
-+ * Any of the possibilities with non-blocking fd's is bad:
-  *   - return a short write (then name is wrong)
-  *   - busy wait adding (errno == EAGAIN) to the loop
+- * No sync here: nor bitmap neighter intersecting requests handling, only copy.
++ * No sync here: neither bitmap nor intersecting requests handling, only copy.
+  *
+  * Returns 0 on success.
   */
-diff --git a/util/qemu-progress.c b/util/qemu-progress.c
-index 3c2223c1a2..20d51f8c12 100644
---- a/util/qemu-progress.c
-+++ b/util/qemu-progress.c
-@@ -131,7 +131,7 @@ void qemu_progress_end(void)
- /*
-  * Report progress.
-  * @delta is how much progress we made.
-- * If @max is zero, @delta is an absolut value of the total job done.
-+ * If @max is zero, @delta is an absolute value of the total job done.
-  * Else, @delta is a progress delta since the last call, as a fraction
-  * of @max.  I.e. the delta is @delta * @max / 100. This allows
-  * relative accounting of functions which may be a different fraction of
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index b37d288866..99ce2fd5e6 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -416,7 +416,7 @@ static struct addrinfo *inet_parse_connect_saddr(InetSocketAddress *saddr,
+diff --git a/block/linux-aio.c b/block/linux-aio.c
+index 3c0527c2bf..772ff860ea 100644
+--- a/block/linux-aio.c
++++ b/block/linux-aio.c
+@@ -222,7 +222,7 @@ static void qemu_laio_process_completions(LinuxAioState *s)
  
-     /* At least FreeBSD and OS-X 10.6 declare AI_V4MAPPED but
-      * then don't implement it in their getaddrinfo(). Detect
--     * this and retry without the flag since that's preferrable
-+     * this and retry without the flag since that's preferable
-      * to a fatal error
-      */
-     if (rc == EAI_BADFLAGS &&
-diff --git a/util/qemu-thread-win32.c b/util/qemu-thread-win32.c
-index 56a83333da..d207b0cb58 100644
---- a/util/qemu-thread-win32.c
-+++ b/util/qemu-thread-win32.c
-@@ -289,7 +289,7 @@ void qemu_event_wait(QemuEvent *ev)
-             ResetEvent(ev->event);
+     /* If we are nested we have to notify the level above that we are done
+      * by setting event_max to zero, upper level will then jump out of it's
+-     * own `for` loop.  If we are the last all counters droped to zero. */
++     * own `for` loop.  If we are the last all counters dropped to zero. */
+     s->event_max = 0;
+     s->event_idx = 0;
+ }
+diff --git a/block/mirror.c b/block/mirror.c
+index 26acf4af6f..c798a1e54e 100644
+--- a/block/mirror.c
++++ b/block/mirror.c
+@@ -479,7 +479,7 @@ static uint64_t coroutine_fn mirror_iteration(MirrorBlockJob *s)
  
-             /* Tell qemu_event_set that there are waiters.  No need to retry
--             * because there cannot be a concurent busy->free transition.
-+             * because there cannot be a concurrent busy->free transition.
-              * After the CAS, the event will be either set or busy.
-              */
-             if (atomic_cmpxchg(&ev->value, EV_FREE, EV_BUSY) == EV_SET) {
-diff --git a/util/qht.c b/util/qht.c
-index 67e5d5b916..b2e020c398 100644
---- a/util/qht.c
-+++ b/util/qht.c
-@@ -49,7 +49,7 @@
-  * it anymore.
-  *
-  * Writers check for concurrent resizes by comparing ht->map before and after
-- * acquiring their bucket lock. If they don't match, a resize has occured
-+ * acquiring their bucket lock. If they don't match, a resize has occurred
-  * while the bucket spinlock was being acquired.
-  *
-  * Related Work:
-diff --git a/util/trace-events b/util/trace-events
-index 4e894aa9c3..24c31803b0 100644
---- a/util/trace-events
-+++ b/util/trace-events
-@@ -28,7 +28,7 @@ qemu_file_monitor_add_watch(void *mon, const char *dirpath, const char *filename
- qemu_file_monitor_remove_watch(void *mon, const char *dirpath, int64_t id) "File monitor %p remove watch dir='%s' id=%" PRId64
- qemu_file_monitor_new(void *mon, int fd) "File monitor %p created fd=%d"
- qemu_file_monitor_enable_watch(void *mon, const char *dirpath, int id) "File monitor %p enable watch dir='%s' id=%u"
--qemu_file_monitor_disable_watch(void *mon, const char *dirpath, int id) "Fle monitor %p disable watch dir='%s' id=%u"
-+qemu_file_monitor_disable_watch(void *mon, const char *dirpath, int id) "File monitor %p disable watch dir='%s' id=%u"
- qemu_file_monitor_event(void *mon, const char *dirpath, const char *filename, int mask, unsigned int id) "File monitor %p event dir='%s' file='%s' mask=0x%x id=%u"
- qemu_file_monitor_dispatch(void *mon, const char *dirpath, const char *filename, int ev, void *cb, void *opaque, int64_t id) "File monitor %p dispatch dir='%s' file='%s' ev=%d cb=%p opaque=%p id=%" PRId64
+     job_pause_point(&s->common.job);
  
+-    /* Find the number of consective dirty chunks following the first dirty
++    /* Find the number of consecutive dirty chunks following the first dirty
+      * one, and wait for in flight requests in them. */
+     bdrv_dirty_bitmap_lock(s->dirty_bitmap);
+     while (nb_chunks * s->granularity < s->buf_size) {
+diff --git a/block/vhdx.c b/block/vhdx.c
+index 356ec4c455..99cc3d12bb 100644
+--- a/block/vhdx.c
++++ b/block/vhdx.c
+@@ -1073,7 +1073,7 @@ static int vhdx_open(BlockDriverState *bs, QDict *options, int flags,
+         goto fail;
+     }
+ 
+-    /* endian convert populated BAT field entires */
++    /* endian convert populated BAT field entries */
+     for (i = 0; i < s->bat_entries; i++) {
+         s->bat[i] = le64_to_cpu(s->bat[i]);
+     }
+diff --git a/block/vhdx.h b/block/vhdx.h
+index 0b74924cee..e385e484b4 100644
+--- a/block/vhdx.h
++++ b/block/vhdx.h
+@@ -212,7 +212,7 @@ typedef struct QEMU_PACKED VHDXLogDataSector {
+     uint32_t    sequence_high;          /* 4 MSB of 8 byte sequence_number */
+     uint8_t     data[4084];             /* raw data, bytes 8-4091 (inclusive).
+                                            see the data descriptor field for the
+-                                           other mising bytes */
++                                           other missing bytes */
+     uint32_t    sequence_low;           /* 4 LSB of 8 byte sequence_number */
+ } VHDXLogDataSector;
+ 
+@@ -257,7 +257,7 @@ typedef struct QEMU_PACKED VHDXMetadataTableHeader {
+ 
+ #define VHDX_META_FLAGS_IS_USER         0x01    /* max 1024 entries */
+ #define VHDX_META_FLAGS_IS_VIRTUAL_DISK 0x02    /* virtual disk metadata if set,
+-                                                   otherwise file metdata */
++                                                   otherwise file metadata */
+ #define VHDX_META_FLAGS_IS_REQUIRED     0x04    /* parse must understand this
+                                                    entry to open the file */
+ typedef struct QEMU_PACKED VHDXMetadataTableEntry {
 -- 
 2.26.2.windows.1
 
