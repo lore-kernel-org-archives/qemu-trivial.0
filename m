@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIl6Q-0003DG-Nl
+	id 1kIl6Q-0003E0-Vg
 	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 00:00:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56154)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kIl6O-00038K-Ec; Thu, 17 Sep 2020 00:00:56 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:33756 helo=huawei.com)
+ id 1kIl6O-000391-Qq; Thu, 17 Sep 2020 00:00:56 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33754 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kIl6K-0001EA-NT; Thu, 17 Sep 2020 00:00:56 -0400
+ id 1kIl6M-0001E9-0H; Thu, 17 Sep 2020 00:00:56 -0400
 Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id F3C294D8A3EE0E8CFEEB;
- Thu, 17 Sep 2020 11:56:08 +0800 (CST)
+ by Forcepoint Email with ESMTP id 0907B3AAB3DBC4F0EB91;
+ Thu, 17 Sep 2020 11:57:10 +0800 (CST)
 Received: from localhost (10.174.187.87) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 11:55:58 +0800
+ 11:56:59 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH V2 06/10] linux-user/: fix some comment spelling errors
-Date: Thu, 17 Sep 2020 11:54:09 +0800
-Message-ID: <20200917035413.701-7-zhaolichang@huawei.com>
+Subject: [PATCH V2 10/10] contrib/: fix some comment spelling errors
+Date: Thu, 17 Sep 2020 11:54:13 +0800
+Message-ID: <20200917035413.701-11-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200917035413.701-1-zhaolichang@huawei.com>
 References: <20200917035413.701-1-zhaolichang@huawei.com>
@@ -56,124 +56,89 @@ X-List-Received-Date: Thu, 17 Sep 2020 04:00:57 -0000
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the linux-user folder.
+and finally found some spelling errors in the contrib folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- linux-user/aarch64/signal.c              | 2 +-
- linux-user/cris/target_syscall.h         | 4 ++--
- linux-user/flat.h                        | 2 +-
- linux-user/flatload.c                    | 4 ++--
- linux-user/host/ppc64/safe-syscall.inc.S | 2 +-
- linux-user/syscall.c                     | 4 ++--
- 6 files changed, 9 insertions(+), 9 deletions(-)
+ contrib/gitdm/filetypes.txt             | 6 +++---
+ contrib/ivshmem-client/ivshmem-client.h | 2 +-
+ contrib/libvhost-user/libvhost-user.c   | 4 ++--
+ contrib/libvhost-user/libvhost-user.h   | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index cd521ee42d..d50c1ae583 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -78,7 +78,7 @@ struct target_sve_context {
-     struct target_aarch64_ctx head;
-     uint16_t vl;
-     uint16_t reserved[3];
--    /* The actual SVE data immediately follows.  It is layed out
-+    /* The actual SVE data immediately follows.  It is laid out
-      * according to TARGET_SVE_SIG_{Z,P}REG_OFFSET, based off of
-      * the original struct pointer.
-      */
-diff --git a/linux-user/cris/target_syscall.h b/linux-user/cris/target_syscall.h
-index d109a6b42a..19e1281403 100644
---- a/linux-user/cris/target_syscall.h
-+++ b/linux-user/cris/target_syscall.h
-@@ -4,7 +4,7 @@
- #define UNAME_MACHINE "cris"
- #define UNAME_MINIMUM_RELEASE "2.6.32"
+diff --git a/contrib/gitdm/filetypes.txt b/contrib/gitdm/filetypes.txt
+index 9e9c505205..d2d6f6db8d 100644
+--- a/contrib/gitdm/filetypes.txt
++++ b/contrib/gitdm/filetypes.txt
+@@ -22,7 +22,7 @@
+ # in the gitdm sample-config directory.
+ #
+ # This file contains associations parameters regarding filetypes
+-# (documentation, develompent, multimedia, images...)
++# (documentation, development, multimedia, images...)
+ #
+ # format:
+ # filetype <type> <regex> [<comment>]
+@@ -59,8 +59,8 @@ filetype code \.s$	# Assembly
+ filetype code \.S$	# Assembly
+ filetype code \.asm$	# Assembly
+ filetype code \.awk$	# awk
+-filetype code ^common$  # script fragements
+-filetype code ^common.*$  # script fragements
++filetype code ^common$  # script fragments
++filetype code ^common.*$  # script fragments
+ filetype code (qom|qmp)-\w+$  # python script fragments
  
--/* pt_regs not only specifices the format in the user-struct during
-+/* pt_regs not only specifies the format in the user-struct during
-  * ptrace but is also the frame format used in the kernel prologue/epilogues
-  * themselves
-  */
-@@ -32,7 +32,7 @@ struct target_pt_regs {
-         unsigned long spc;
-         unsigned long ccs;
-         unsigned long srp;
--        unsigned long erp; /* This is actually the debugged process' PC */
-+        unsigned long erp; /* This is actually the debugged process's PC */
-         /* For debugging purposes; saved only when needed. */
-         unsigned long exs;
-         unsigned long eda;
-diff --git a/linux-user/flat.h b/linux-user/flat.h
-index 1e44b33443..ed518e2013 100644
---- a/linux-user/flat.h
-+++ b/linux-user/flat.h
-@@ -43,7 +43,7 @@ struct flat_hdr {
- 	abi_ulong reloc_count;  /* Number of relocation records */
- 	abi_ulong flags;
- 	abi_ulong build_date;   /* When the program/library was built */
--	abi_ulong filler[5];    /* Reservered, set to zero */
-+	abi_ulong filler[5];    /* Reserved, set to zero */
- };
+ #
+diff --git a/contrib/ivshmem-client/ivshmem-client.h b/contrib/ivshmem-client/ivshmem-client.h
+index fe3cc4a03d..fc45a38060 100644
+--- a/contrib/ivshmem-client/ivshmem-client.h
++++ b/contrib/ivshmem-client/ivshmem-client.h
+@@ -174,7 +174,7 @@ int ivshmem_client_notify_all_vects(const IvshmemClient *client,
+                                     const IvshmemClientPeer *peer);
  
- #define FLAT_FLAG_RAM    0x0001 /* load program entirely into RAM */
-diff --git a/linux-user/flatload.c b/linux-user/flatload.c
-index 8fb448f0bf..14d2999d15 100644
---- a/linux-user/flatload.c
-+++ b/linux-user/flatload.c
-@@ -442,7 +442,7 @@ static int load_flat_file(struct linux_binprm * bprm,
-     indx_len = (indx_len + 15) & ~(abi_ulong)15;
+ /**
+- * Broadcat a notification to all vectors of all peers
++ * Broadcast a notification to all vectors of all peers
+  *
+  * @client: The ivshmem client
+  *
+diff --git a/contrib/libvhost-user/libvhost-user.c b/contrib/libvhost-user/libvhost-user.c
+index 53f16bdf08..9d30ff2283 100644
+--- a/contrib/libvhost-user/libvhost-user.c
++++ b/contrib/libvhost-user/libvhost-user.c
+@@ -684,7 +684,7 @@ vu_add_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
  
      /*
--     * Alloate the address space.
-+     * Allocate the address space.
+      * If we are in postcopy mode and we receive a u64 payload with a 0 value
+-     * we know all the postcopy client bases have been recieved, and we
++     * we know all the postcopy client bases have been received, and we
+      * should start generating faults.
       */
-     probe_guest_base(bprm->filename, 0,
-                      text_len + data_len + extra + indx_len);
-@@ -794,7 +794,7 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
- #error here
-     for (i = MAX_SHARED_LIBS-1; i>0; i--) {
-             if (libinfo[i].loaded) {
--                    /* Push previos first to call address */
-+                    /* Push previous first to call address */
-                     --sp;
-                     if (put_user_ual(start_addr, sp))
-                         return -EFAULT;
-diff --git a/linux-user/host/ppc64/safe-syscall.inc.S b/linux-user/host/ppc64/safe-syscall.inc.S
-index 8ed73a5b86..875133173b 100644
---- a/linux-user/host/ppc64/safe-syscall.inc.S
-+++ b/linux-user/host/ppc64/safe-syscall.inc.S
-@@ -84,7 +84,7 @@ safe_syscall_end:
- 
- 	/* code path when we didn't execute the syscall */
- 0:	addi	3, 0, -TARGET_ERESTARTSYS
--	ld 14, 16(1) /* restore r14 to its orginal value */
-+	ld 14, 16(1) /* restore r14 to its original value */
- 	blr
- 	.cfi_endproc
- 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 55ac5c3208..897d20c076 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -481,7 +481,7 @@ _syscall4(int, sys_prlimit64, pid_t, pid, int, resource,
- 
- 
- #if defined(TARGET_NR_timer_create)
--/* Maxiumum of 32 active POSIX timers allowed at any one time. */
-+/* Maximum of 32 active POSIX timers allowed at any one time. */
- static timer_t g_posix_timers[32] = { 0, } ;
- 
- static inline int next_free_host_timer(void)
-@@ -8180,7 +8180,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-     switch(num) {
-     case TARGET_NR_exit:
-         /* In old applications this may be used to implement _exit(2).
--           However in threaded applictions it is used for thread termination,
-+           However in threaded applications it is used for thread termination,
-            and _exit_group is used for application termination.
-            Do thread termination if we have more then one thread.  */
- 
+     if (track_ramblocks &&
+@@ -973,7 +973,7 @@ vu_set_mem_table_exec(VuDev *dev, VhostUserMsg *vmsg)
+     for (i = 0; i < dev->max_queues; i++) {
+         if (dev->vq[i].vring.desc) {
+             if (map_ring(dev, &dev->vq[i])) {
+-                vu_panic(dev, "remaping queue %d during setmemtable", i);
++                vu_panic(dev, "remapping queue %d during setmemtable", i);
+             }
+         }
+     }
+diff --git a/contrib/libvhost-user/libvhost-user.h b/contrib/libvhost-user/libvhost-user.h
+index 844c37c648..287ac5fec7 100644
+--- a/contrib/libvhost-user/libvhost-user.h
++++ b/contrib/libvhost-user/libvhost-user.h
+@@ -424,7 +424,7 @@ typedef struct VuVirtqElement {
+  * @remove_watch: a remove_watch callback
+  * @iface: a VuDevIface structure with vhost-user device callbacks
+  *
+- * Intializes a VuDev vhost-user context.
++ * Initializes a VuDev vhost-user context.
+  *
+  * Returns: true on success, false on failure.
+  **/
 -- 
 2.26.2.windows.1
 
