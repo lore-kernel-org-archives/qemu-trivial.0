@@ -1,73 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kInR4-0004D7-Ht
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 02:30:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33188)
+	id 1kIoBa-0002x7-Fb
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 03:18:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kInQz-00049y-5o
- for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 02:30:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38045)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kIoBZ-0002wW-78
+ for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 03:18:29 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40055
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kInQw-0003c5-At
- for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 02:30:20 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kIoBW-00017X-4K
+ for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 03:18:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600324215;
+ s=mimecast20190719; t=1600327104;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FkkO6yrGMMcRtoi4c7OWyS2swIvstU9Vv7XhdpFyz8k=;
- b=J5/KEgNcHsFe6MeOilBwfIpQPuaNzBxpJ6HqG86zNajk6mBLFOsxxU0XVkCTuytajYOI80
- V6NNHWgTdt6NmePbgNrhz78CzSdj03X4hKhcmiCD//2YUKEgtLLbDUdsqwSZ9R/JjrMHcs
- Na5fyojtdG5VqdTRvAd1dqr0TO6Ye2o=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-338-7pZ5WRkNMQannjDpQr4R-A-1; Thu, 17 Sep 2020 02:30:11 -0400
-X-MC-Unique: 7pZ5WRkNMQannjDpQr4R-A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CE661017DCD;
- Thu, 17 Sep 2020 06:30:10 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-38.ams2.redhat.com [10.36.113.38])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C33A9610F3;
- Thu, 17 Sep 2020 06:30:08 +0000 (UTC)
+ bh=J0mg7l8fSD8OC+hLvKntNqWk2rLwJkbIBms8Q2gkZY4=;
+ b=WDYIlizJ3o+aTMY2X9GIq9VAMBz8X+pLY/TR7YGBx+b8TStKH1lWx3w34Pz87Uek0AJ/NM
+ Dk/gcW1R/s15k+4qdNL1u80CxMDKuCrtcJ6PTv2up3yYeUT1QoBdYK85+gJmQ8lmUgdXuH
+ YZDDr5leReeTpw663OGCY8fZ0Ar/brk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-243-x1qA3DdJPRSeLH0m9k1vrw-1; Thu, 17 Sep 2020 03:18:21 -0400
+X-MC-Unique: x1qA3DdJPRSeLH0m9k1vrw-1
+Received: by mail-wm1-f70.google.com with SMTP id x6so414844wmi.1
+ for <qemu-trivial@nongnu.org>; Thu, 17 Sep 2020 00:18:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=J0mg7l8fSD8OC+hLvKntNqWk2rLwJkbIBms8Q2gkZY4=;
+ b=dg2fqwB6jJgvzTvGeNJJKPRhWTklo0bMxDDUHpFw3fqKWiXeNs4KVUSdfma3vpI8FS
+ MUbM+o7VjFwHNgMOkAlmJ+k4lIaam/pdyphhZW0asL4AZ7GDopViYXIGC/tuutr9EZIr
+ P8A0tDuOvmbKgqpg/OSo7z1JUD+u+xaSks7wAuTgfotxVxpC9r3UDsyF7uqVVtsULWJ4
+ kgsu/Jx2+zKi9XhRE+WMqm+fFFM4m0MpmsTOkDY3+86tNn5DevIBAI9XN+CRD1YQfBrL
+ G/vC3ojeiD2x/7gVfqg+aQf6XlDON2SJmn/vdSthi/eajd/mXn5hbdH1piF3m6wx/lCx
+ nWJA==
+X-Gm-Message-State: AOAM532OzcGbsVtsJcj/uMRM+zzTYS3RcoCDnmYhb21fS9+cfiei4XT6
+ C0DdgRGd6GNJ4d84TZSaRMHjOnF9voE/io1zu27w4xPlyAlwe5S+kYeoTmb3XmNpz43p14q5kll
+ 4YGQq2Dl77jaWsTJ4pg==
+X-Received: by 2002:a5d:4e8c:: with SMTP id e12mr32256882wru.180.1600327099974; 
+ Thu, 17 Sep 2020 00:18:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+PAeD59V/Ntd6yzkU+CSOJAv8ujM5iD5oyi3X7OZDLhDK9h96un3Fjbqcwrw77dQlGzIJhg==
+X-Received: by 2002:a5d:4e8c:: with SMTP id e12mr32256857wru.180.1600327099654; 
+ Thu, 17 Sep 2020 00:18:19 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:d003:b94f:6314:4839?
+ ([2001:b07:6468:f312:d003:b94f:6314:4839])
+ by smtp.gmail.com with ESMTPSA id y5sm9654084wmg.21.2020.09.17.00.18.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Sep 2020 00:18:19 -0700 (PDT)
 Subject: Re: [PATCH] migration: Silence compiler warning in
  global_state_store_running()
-From: Thomas Huth <thuth@redhat.com>
-To: Juan Quintela <quintela@redhat.com>,
+To: Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
  <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+ Richard Henderson <richard.henderson@linaro.org>
 References: <20200916171913.148681-1-thuth@redhat.com>
-Message-ID: <93744d31-0f33-5bb1-fb76-42ca3a5fa401@redhat.com>
-Date: Thu, 17 Sep 2020 08:30:07 +0200
+ <93744d31-0f33-5bb1-fb76-42ca3a5fa401@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <e44e5105-baba-3d0d-6477-37f24531d39f@redhat.com>
+Date: Thu, 17 Sep 2020 09:18:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200916171913.148681-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <93744d31-0f33-5bb1-fb76-42ca3a5fa401@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0.003
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 20:51:18
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 02:16:16
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -51
 X-Spam_score: -5.2
 X-Spam_bar: -----
 X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.062, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.062, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,50 +99,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Sep 2020 06:30:21 -0000
+X-List-Received-Date: Thu, 17 Sep 2020 07:18:29 -0000
 
-On 16/09/2020 19.19, Thomas Huth wrote:
-> GCC 9.3.0 on Ubuntu complains:
+On 17/09/20 08:30, Thomas Huth wrote:
+> On 16/09/2020 19.19, Thomas Huth wrote:
+>> GCC 9.3.0 on Ubuntu complains:
+>>
+>> In file included from /usr/include/string.h:495,
+>>                  from /home/travis/build/huth/qemu/include/qemu/osdep.h:87,
+>>                  from ../migration/global_state.c:13:
+>> In function ‘strncpy’,
+>>     inlined from ‘global_state_store_running’ at ../migration/global_state.c:47:5:
+>> /usr/include/x86_64-linux-gnu/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 100 equals destination size [-Werror=stringop-truncation]
+>>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+>>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>
+>> ... but we apparently really want to do the strncpy here. Silence the
+>> warning with QEMU_NONSTRING.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  migration/global_state.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/migration/global_state.c b/migration/global_state.c
+>> index 25311479a4..f1355d7d97 100644
+>> --- a/migration/global_state.c
+>> +++ b/migration/global_state.c
+>> @@ -43,9 +43,9 @@ int global_state_store(void)
+>>  void global_state_store_running(void)
+>>  {
+>>      const char *state = RunState_str(RUN_STATE_RUNNING);
+>> +    QEMU_NONSTRING char *dest = (char *)global_state.runstate;
+>>      assert(strlen(state) < sizeof(global_state.runstate));
+>> -    strncpy((char *)global_state.runstate,
+>> -           state, sizeof(global_state.runstate));
+>> +    strncpy(dest, state, sizeof(global_state.runstate));
+>>  }
 > 
-> In file included from /usr/include/string.h:495,
->                  from /home/travis/build/huth/qemu/include/qemu/osdep.h:87,
->                  from ../migration/global_state.c:13:
-> In function ‘strncpy’,
->     inlined from ‘global_state_store_running’ at ../migration/global_state.c:47:5:
-> /usr/include/x86_64-linux-gnu/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 100 equals destination size [-Werror=stringop-truncation]
->   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
->       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> Darn, I was sending too fast here, sorry, but seems like this does *not*
+> fix the issue with GCC 9.3:
 > 
-> ... but we apparently really want to do the strncpy here. Silence the
-> warning with QEMU_NONSTRING.
+>  https://travis-ci.com/github/huth/qemu/jobs/385871010#L2930
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  migration/global_state.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/migration/global_state.c b/migration/global_state.c
-> index 25311479a4..f1355d7d97 100644
-> --- a/migration/global_state.c
-> +++ b/migration/global_state.c
-> @@ -43,9 +43,9 @@ int global_state_store(void)
->  void global_state_store_running(void)
->  {
->      const char *state = RunState_str(RUN_STATE_RUNNING);
-> +    QEMU_NONSTRING char *dest = (char *)global_state.runstate;
->      assert(strlen(state) < sizeof(global_state.runstate));
-> -    strncpy((char *)global_state.runstate,
-> -           state, sizeof(global_state.runstate));
-> +    strncpy(dest, state, sizeof(global_state.runstate));
->  }
+> ... so maybe we should simply switch to strpadcpy() instead?
 
-Darn, I was sending too fast here, sorry, but seems like this does *not*
-fix the issue with GCC 9.3:
+Yes, and probably do so everywhere that strncpy is used.
 
- https://travis-ci.com/github/huth/qemu/jobs/385871010#L2930
+Paolo
 
-... so maybe we should simply switch to strpadcpy() instead?
 
- Thomas
 
 
