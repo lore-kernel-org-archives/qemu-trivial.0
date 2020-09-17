@@ -1,111 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kIodZ-0006zU-0V
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 03:47:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50344)
+	id 1kIoh2-00046F-8X
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Sep 2020 03:51:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIodX-0006xl-GD
- for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 03:47:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60793)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kIodV-0004jG-Hl
- for qemu-trivial@nongnu.org; Thu, 17 Sep 2020 03:47:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600328840;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Ot9QkrYEDbGS3t+N9d85/lzjBh1N8X9TllGTFiyj/RQ=;
- b=V/rUKds8Rjr1hMvGFFWMH6b6R3SAamwfAVqlqH4TQONJkuM09loCl7HvYAaCej7kwKl8iy
- yfKhMISQd7rh9Mk7TefHRNYjRqJSMFohBdV4ern3LhEfZaLaBy1oQC1uMq0QA2bze4xFU5
- SDpR7wizL9+kGAXiEyozJGzyXMqBfxE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-LwmDZYgGNFWOm7dgijetYA-1; Thu, 17 Sep 2020 03:47:16 -0400
-X-MC-Unique: LwmDZYgGNFWOm7dgijetYA-1
-Received: by mail-wr1-f69.google.com with SMTP id f18so536029wrv.19
- for <qemu-trivial@nongnu.org>; Thu, 17 Sep 2020 00:47:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=Ot9QkrYEDbGS3t+N9d85/lzjBh1N8X9TllGTFiyj/RQ=;
- b=p53p6RZVFFQ7+F5jfr5XZZwuH1teUljSryGZ64ta9KHOPpdyrNi4M+DwoHMjP0YN+L
- VfZIEJ0die76riuZKUda9QVvJ9dLOXN9ZsmhJin7bkcVtMKjUYkiCQz4ALpO/ehxW/Dk
- nonR7lxYpxfuqOZscHrL1NdDHIIbVcHjzxCBDBsXfSM4P+pOYIhAcyvOytlfEQRil5Yj
- bau7SbKz5hDyFzge+0G9cRrPO1smVoZUbNG2D40fpztyu3dC5G6H1N3ppUnfFqQ+Gaye
- bWAWqqL6cO5DWdHgsNCpBwUwnn6DFJ9pcIGgoevtlSm/mA8Tmoz3dFhZWzAb5Sb3L/0b
- ZwHw==
-X-Gm-Message-State: AOAM533BOegJ98ZRKipE9nv3prhPj7QWc5eYQciLNn1XA4hNdnn4O+gW
- j3IY04n6e52YPcZ3un2NI2VZo1yYhrG4k1f8fZEIYZ0PUJQQRRi7tgRDCjyGwgrcnyh37FZ6MNa
- VdFW1n6qinu1kk38Ysg==
-X-Received: by 2002:a5d:68d1:: with SMTP id p17mr29531125wrw.378.1600328835409; 
- Thu, 17 Sep 2020 00:47:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKwJx9stU1EiVE9OEJMzQOyi4Qy7d/9RHeSn5Ck2s//GJCqdC+FI7/mRpUOonLRTZ4vwMl0A==
-X-Received: by 2002:a5d:68d1:: with SMTP id p17mr29531112wrw.378.1600328835220; 
- Thu, 17 Sep 2020 00:47:15 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id z9sm10121544wmg.46.2020.09.17.00.47.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Sep 2020 00:47:14 -0700 (PDT)
-Subject: Re: [PATCH v2] migration: Silence compiler warning in
- global_state_store_running()
-To: Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200917074344.168785-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <da9ed157-dd81-c486-e4ac-d98ca3ac0ee3@redhat.com>
-Date: Thu, 17 Sep 2020 09:47:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kIoh0-00040V-6a; Thu, 17 Sep 2020 03:50:58 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4707 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kIogx-0005II-Jc; Thu, 17 Sep 2020 03:50:57 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 85FDEA9A3CD9D40445D9;
+ Thu, 17 Sep 2020 15:50:45 +0800 (CST)
+Received: from localhost (10.174.187.87) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 15:50:36 +0800
+From: zhaolichang <zhaolichang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
+Subject: [PATCH V3 00/10] fix some comment spelling errors
+Date: Thu, 17 Sep 2020 15:50:19 +0800
+Message-ID: <20200917075029.313-1-zhaolichang@huawei.com>
+X-Mailer: git-send-email 2.26.2.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20200917074344.168785-1-thuth@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 02:01:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.062, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.87]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhaolichang@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:50:46
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,52 +49,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Sep 2020 07:47:23 -0000
+X-List-Received-Date: Thu, 17 Sep 2020 07:50:58 -0000
 
-On 9/17/20 9:43 AM, Thomas Huth wrote:
-> GCC 9.3.0 on Ubuntu complains:
-> 
-> In file included from /usr/include/string.h:495,
->                  from /home/travis/build/huth/qemu/include/qemu/osdep.h:87,
->                  from ../migration/global_state.c:13:
-> In function ‘strncpy’,
->     inlined from ‘global_state_store_running’ at ../migration/global_state.c:47:5:
-> /usr/include/x86_64-linux-gnu/bits/string_fortified.h:106:10: error:
->  ‘__builtin_strncpy’ specified bound 100 equals destination size [-Werror=stringop-truncation]
->   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
->       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> ... but we apparently really want to do a strncpy here - the size is already
-> checked with the assert() statement right in front of it. To silence the
-> warning, simply replace it with our strpadcpy() function.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Use strpadcpy instead of QEMU_NONSTRING (and yes, this time it seems
->      to really silence the compiler warning :-))
-> 
->  migration/global_state.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/migration/global_state.c b/migration/global_state.c
-> index 25311479a4..a33947ca32 100644
-> --- a/migration/global_state.c
-> +++ b/migration/global_state.c
-> @@ -44,8 +44,8 @@ void global_state_store_running(void)
->  {
->      const char *state = RunState_str(RUN_STATE_RUNNING);
->      assert(strlen(state) < sizeof(global_state.runstate));
-> -    strncpy((char *)global_state.runstate,
-> -           state, sizeof(global_state.runstate));
-> +    strpadcpy((char *)global_state.runstate, sizeof(global_state.runstate),
-> +              state, '\0');
+I found that there are many spelling errors in the comments of qemu,=0D
+so I used the spellcheck tool to check the spelling errors, this series fix=
+ed this=0D
+spelling errors.=0D
+=0D
+v2 -> v3:=0D
+  fix coding style problems in v2 version=0D
+=0D
+v1 -> v2:=0D
+  address Peter Maydell's comments=0D
+  address Alex Bennee's comments=0D
+  add reviewed-by for patch 1,2,3,4,5,6,9,10
 
-https://www.mail-archive.com/qemu-block@nongnu.org/msg44925.html
-;)
+zhaolichang (10):
+  qemu/: fix some comment spelling errors
+  migration/: fix some comment spelling errors
+  docs/: fix some comment spelling errors
+  scripts/: fix some comment spelling errors
+  util/: fix some comment spelling errors
+  linux-user/: fix some comment spelling errors
+  block/: fix some comment spelling errors
+  disas/: fix some comment spelling errors
+  qapi/: fix some comment spelling errors
+  contrib/: fix some comment spelling errors
 
->  }
->  
->  bool global_state_received(void)
-> 
+ Changelog                                |  2 +-
+ accel/tcg/user-exec.c                    |  2 +-
+ audio/audio.c                            |  2 +-
+ block.c                                  |  2 +-
+ block/block-copy.c                       |  2 +-
+ block/linux-aio.c                        |  2 +-
+ block/mirror.c                           |  2 +-
+ block/vhdx.c                             |  2 +-
+ block/vhdx.h                             |  4 ++--
+ configure                                |  2 +-
+ contrib/gitdm/filetypes.txt              |  6 +++---
+ contrib/ivshmem-client/ivshmem-client.h  |  2 +-
+ contrib/libvhost-user/libvhost-user.c    |  4 ++--
+ contrib/libvhost-user/libvhost-user.h    |  2 +-
+ disas/hppa.c                             |  2 +-
+ disas/m68k.c                             |  8 ++++----
+ disas/ppc.c                              |  2 +-
+ docs/COLO-FT.txt                         |  6 +++---
+ docs/devel/blkdebug.txt                  |  2 +-
+ docs/devel/migration.rst                 |  2 +-
+ docs/devel/testing.rst                   |  2 +-
+ docs/devel/tracing.txt                   |  2 +-
+ docs/interop/bitmaps.rst                 |  2 +-
+ docs/interop/dbus.rst                    |  4 ++--
+ docs/interop/nbd.txt                     |  2 +-
+ docs/interop/vhost-user-gpu.rst          |  2 +-
+ docs/interop/vhost-user.rst              |  4 ++--
+ docs/rdma.txt                            |  2 +-
+ docs/specs/ppc-spapr-hotplug.txt         |  4 ++--
+ docs/specs/ppc-spapr-xive.rst            |  4 ++--
+ docs/system/arm/aspeed.rst               |  2 +-
+ docs/system/deprecated.rst               |  8 ++++----
+ docs/system/target-avr.rst               |  4 ++--
+ docs/tools/virtiofsd.rst                 |  2 +-
+ fsdev/virtfs-proxy-helper.c              |  2 +-
+ hmp-commands.hx                          |  2 +-
+ libdecnumber/decNumber.c                 |  2 +-
+ linux-user/aarch64/signal.c              |  2 +-
+ linux-user/cris/target_syscall.h         |  4 ++--
+ linux-user/flat.h                        |  2 +-
+ linux-user/flatload.c                    |  4 ++--
+ linux-user/host/ppc64/safe-syscall.inc.S |  2 +-
+ linux-user/syscall.c                     |  4 ++--
+ migration/colo-failover.c                |  2 +-
+ migration/colo.c                         |  2 +-
+ migration/multifd.c                      |  4 ++--
+ migration/postcopy-ram.c                 |  4 ++--
+ migration/postcopy-ram.h                 |  2 +-
+ migration/ram.c                          | 10 +++++-----
+ migration/rdma.c                         |  8 ++++----
+ migration/savevm.c                       |  4 ++--
+ qapi/block-core.json                     |  4 ++--
+ qapi/crypto.json                         |  4 ++--
+ qemu-img.c                               |  2 +-
+ qobject/qdict.c                          |  2 +-
+ scripts/checkpatch.pl                    |  2 +-
+ scripts/clean-header-guards.pl           |  2 +-
+ scripts/decodetree.py                    |  6 +++---
+ scripts/oss-fuzz/build.sh                |  2 +-
+ scripts/tracetool/__init__.py            |  2 +-
+ scsi/pr-manager-helper.c                 |  2 +-
+ util/osdep.c                             |  2 +-
+ util/qemu-progress.c                     |  2 +-
+ util/qemu-sockets.c                      |  2 +-
+ util/qemu-thread-win32.c                 |  2 +-
+ util/qht.c                               |  2 +-
+ util/trace-events                        |  2 +-
+ 67 files changed, 101 insertions(+), 101 deletions(-)
+
+--=20
+2.26.2.windows.1
 
 
