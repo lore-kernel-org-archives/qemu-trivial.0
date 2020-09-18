@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJHe0-0007hk-25
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Sep 2020 10:45:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37340)
+	id 1kJIr0-0001OX-5M
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Sep 2020 12:03:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJHdo-0007eh-Bo; Fri, 18 Sep 2020 10:45:38 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:37524)
+ id 1kJIqw-0001Ln-TU; Fri, 18 Sep 2020 12:03:14 -0400
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:41393)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJHdm-00048c-1x; Fri, 18 Sep 2020 10:45:36 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id kk9so3138469pjb.2;
- Fri, 18 Sep 2020 07:45:32 -0700 (PDT)
+ id 1kJIqu-0001zx-VV; Fri, 18 Sep 2020 12:03:14 -0400
+Received: by mail-pg1-x534.google.com with SMTP id y1so3727953pgk.8;
+ Fri, 18 Sep 2020 09:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=KI9wi8wtXI4j9WWUYsI3+T64+fj4Vp22um09VqfofOU=;
- b=jlqDCbs7YH68PQj7GDzsfbzfrrMEwItV4Njj9aV0ZxIRfkZ0j4wGTgTffqu5GfKNea
- w8QIqGLxX5oMr4ExPg4vnss34aDmg72r+14YEc4AJVtlZcrbs7H1mh5oqtFFXsisElAP
- eMd6z5tQkwmVnb/T2IyN3iWD7SnOxnroXbHrH21poBWDDsxfW9MOctE8ZGy1upda2g06
- uWjdJ6DSLnwab4ax56ET69+rmWmwuAQfuVLKGOnSt7WYJ1BWflIAbpnXi0WA12Et5uV8
- zI3gKLZ+BnndJ31BE64fTcciLgk0vbl6z7uhNlAO18nBQzGFuuQASqzKupEoJ562VA75
- puyw==
+ bh=QeBnjb1q1hgtSEdwnecjk3xUUXCWDRHjOz4q4A5pXKo=;
+ b=fyb5OGweXnxgKi88JR08OKCEZkDyIWMdEJXAnWOE9vD5EBopbsCSEccH8+fExqYHps
+ v2ln/i/PqWBhecfgtHjtDloUcwaf2xm1o4IBkk2p2whMlalhqXvwIKwDpCn74cWa63NE
+ LbkxiGpnR0fa1rogMjZVEDXtp8KSmbRxmfAO2xSVydlcahxo3v8/S0GbcSfK6JoPtzVj
+ 6IaJSx6FarWb9W9o0/LNu8C3H22b9Tjv9TJf/0t3muzs0TfagIcHhfGhGTKe8M1CHTXc
+ nKpcGcp6Qz6LQjvSQjrFxJohWyobK/fs6zuZrQN4rrhJkTSZYGgEPtk2Tt9fp8Usv96q
+ dy3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=KI9wi8wtXI4j9WWUYsI3+T64+fj4Vp22um09VqfofOU=;
- b=PI5AvYCDuFHCRJWuwaVC7B9tk0er0zWXKypzhMqA5xd0P1apzmbkLIibSts8SQ7zbH
- xO2Mo1K+Do77siQQBqvcOJz7JkZbG/BCRhK4O99QjoA121flrIV4/yZ8s8jqAXY+Z+w9
- 12XeFS0fS67AtVFKJNHm5rLSubBsR538IYCn3ZZW9uh0lCcDmWws+g6BIEl75gk3qo4Z
- KWPWcG6a6V+BfZ88mWRe+uzlyrk8tOLzuZODYrMXGnvOJ1EkciUW95cWAq4WDUukVIig
- URMANJC00UKvV+7HsX7KckvPVyDB3uFcyQldrMbQcWQ5hu3yH0P/CUz2JXFCSDLOLQQq
- mYoA==
-X-Gm-Message-State: AOAM532j6tnznuMFB0uZDYm9eCOegajQFe4dcI9Mss+ZMFH0ivk9jCub
- fIDyLDV9QKdD7DCUtUjfc3jlsiOMEX0UCg==
-X-Google-Smtp-Source: ABdhPJwTbPOLOeghdZEKNWD260eCzY0Ps0gkVH7XQ6jQ+aNff+qDhJh5WIQ1gAepugQEJLJqcfgpRw==
-X-Received: by 2002:a17:90a:c28e:: with SMTP id
- f14mr13152584pjt.83.1600440331498; 
- Fri, 18 Sep 2020 07:45:31 -0700 (PDT)
+ bh=QeBnjb1q1hgtSEdwnecjk3xUUXCWDRHjOz4q4A5pXKo=;
+ b=jpYGGRuioeMaJ4i6ml7MTnpqxBNI6Vhek0GdG2dauWlKw869FYgFOv4dB8Kq1oJ/x9
+ 0MKJUiyh4b9ApRzWG9SdL0ZDpg/ca1S0cCYle16TQDEEVuM7tjptXmb9ZZCzrvGo2RNp
+ G/OH3n+Yfx7QkcBUKhX2TXs110Or5iloYyTYIFBuFx7bkUwCLDwsUDrd8xd5FAhYun00
+ 3SB8Dr8HFdQc3Sfm/I8s66eKn63urv5JmpqX1fMGUltfVTsQwlpxRl9kI9rGq+3RypKR
+ cP2U4ZKMp8XoBPeVYUhTUFpnktzK2tKrHazrMoQ+pD36rWhFBXFz18dy7ilBYfWbDBVI
+ ebLw==
+X-Gm-Message-State: AOAM531zBhkaVHfRU+9QepAyiR3AsGHamqpim70UaNBRxy+H2jFjmK3m
+ nRGQzYViuo8E9wA1X3niGMgxGpadiR16Hg==
+X-Google-Smtp-Source: ABdhPJwB0uCkhSwaEm7atnpdPqayvGEPVflEZ2/Knb/+4qjRP7/4ze64U5nWhMwqYDyj5+AxAekOKQ==
+X-Received: by 2002:aa7:8512:0:b029:13c:1611:653e with SMTP id
+ v18-20020aa785120000b029013c1611653emr32587656pfn.16.1600444989941; 
+ Fri, 18 Sep 2020 09:03:09 -0700 (PDT)
 Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id k7sm3178184pjs.9.2020.09.18.07.45.29
+ by smtp.googlemail.com with ESMTPSA id z22sm16889012pjq.2.2020.09.18.09.03.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Sep 2020 07:45:30 -0700 (PDT)
+ Fri, 18 Sep 2020 09:03:09 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] configure: fixes indent of $meson setup
-Date: Fri, 18 Sep 2020 22:45:12 +0800
-Message-Id: <20200918144512.978-1-luoyonggang@gmail.com>
+Subject: [PATCH v5 0/4] Fixes curses on msys2/mingw
+Date: Sat, 19 Sep 2020 00:02:46 +0800
+Message-Id: <20200918160250.1141-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102e.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x534.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -79,35 +81,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Sep 2020 14:45:44 -0000
+X-List-Received-Date: Fri, 18 Sep 2020 16:03:15 -0000
 
-convert these line from tab to space
-
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- configure | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/configure b/configure
-index 3757e48b17..422b1ef2a3 100755
---- a/configure
-+++ b/configure
-@@ -7850,10 +7850,10 @@ NINJA=${ninja:-$PWD/ninjatool} $meson setup \
-         -Dstrip=$(if test "$strip_opt" = yes; then echo true; else echo false; fi) \
-         -Db_pie=$(if test "$pie" = yes; then echo true; else echo false; fi) \
-         -Db_coverage=$(if test "$gcov" = yes; then echo true; else echo false; fi) \
--	-Dmalloc=$malloc -Dmalloc_trim=$malloc_trim \
--	-Dcocoa=$cocoa -Dmpath=$mpath -Dsdl=$sdl -Dsdl_image=$sdl_image \
--	-Dvnc=$vnc -Dvnc_sasl=$vnc_sasl -Dvnc_jpeg=$vnc_jpeg -Dvnc_png=$vnc_png \
--	-Dgettext=$gettext -Dxkbcommon=$xkbcommon -Du2f=$u2f\
-+        -Dmalloc=$malloc -Dmalloc_trim=$malloc_trim \
-+        -Dcocoa=$cocoa -Dmpath=$mpath -Dsdl=$sdl -Dsdl_image=$sdl_image \
-+        -Dvnc=$vnc -Dvnc_sasl=$vnc_sasl -Dvnc_jpeg=$vnc_jpeg -Dvnc_png=$vnc_png \
-+        -Dgettext=$gettext -Dxkbcommon=$xkbcommon -Du2f=$u2f \
-         $cross_arg \
-         "$PWD" "$source_path"
- 
--- 
-2.28.0.windows.1
-
+And also convert related configure script to meson.=0D
+=0D
+Yonggang Luo (4):=0D
+  curses: Fixes compiler error that complain don't have langinfo.h on=0D
+    msys2/mingw=0D
+  curses: Fixes curses compiling errors.=0D
+  win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE=0D
+    are defined on msys2/mingw=0D
+  configure: Fixes ncursesw detection under msys2/mingw by convert them=0D
+    to meson=0D
+=0D
+ configure                 | 155 ++------------------------------------=0D
+ include/sysemu/os-win32.h |   4 +-=0D
+ meson.build               |  80 +++++++++++++++++---=0D
+ meson_options.txt         |   4 +=0D
+ ui/curses.c               |  14 ++--=0D
+ ui/meson.build            |   2 +-=0D
+ util/oslib-win32.c        |   4 +-=0D
+ 7 files changed, 91 insertions(+), 172 deletions(-)=0D
+=0D
+-- =0D
+2.28.0.windows.1=0D
+=0D
 
