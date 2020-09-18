@@ -1,55 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJIwt-0000nE-Fj
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Sep 2020 12:09:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37120)
+	id 1kJIyD-0002Yv-3A
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Sep 2020 12:10:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJIwr-0000iq-IC; Fri, 18 Sep 2020 12:09:21 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:37419)
+ id 1kJIy2-0002Xa-RU; Fri, 18 Sep 2020 12:10:36 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:44198)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJIwp-0003QG-LP; Fri, 18 Sep 2020 12:09:21 -0400
-Received: by mail-lj1-x244.google.com with SMTP id n25so5548393ljj.4;
- Fri, 18 Sep 2020 09:09:18 -0700 (PDT)
+ id 1kJIy0-0003gi-L7; Fri, 18 Sep 2020 12:10:34 -0400
+Received: by mail-lj1-x242.google.com with SMTP id b19so5524185lji.11;
+ Fri, 18 Sep 2020 09:10:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:reply-to:from:date:message-id
  :subject:to:cc;
- bh=rsYfhxRLSpWgsr9CzxyA1x6Nm0my2NfvcK+oJ7qbYu0=;
- b=Ig1fXr4sgKcpbiaZM63NnhbETvUFl7TBGD6R/SVliIe0lpsdNZ5EELEnJrxl/LWeb8
- mr9trAoVds30HYy3G2pi1kHPAxPzB1SET0g19nD/TBgIWSiM0aC49T/t3QETkCBqJe9L
- 7eWAwuJAIS9wXLJ3hvfd8YYp1ccz+oEmMk0ZVtInltDN2bfFOuE2rLAph2blc/Whic7I
- gdmDPYGq3/pFknmmXGC4RO9cbeTiQEgE3wfP7JFd0XRx7uEqj9uPhmWItreIyorlfB+t
- 3VGNRRPUGA7wvHMKyurEnKavQX1ITTAc/TqjzQ9S3PUuoSk7cef2e+iwoVpUXyc7HOkK
- i76A==
+ bh=vkSAzfcNZzpzQTPyneasZVlyRDJqjgu5obu7LlNouFU=;
+ b=XdflC47fLi7vrMXnMmxqSLRIzgtWF4kBMoevc9in7Jm1Ys0UWW9LfNZzuKscSWz37N
+ ti+x0SR0cV97araAM38NwbIJsDgfTUnhtV+I1UjzoWEwoE9oVZIioAL7mVtlIQWCDWMW
+ GT8jN4haVqm9zcFuBNUN+lr6a+TkS/i63jTNW9bPqaQgRki0TmVLwAwHLCnV8H4NTBNJ
+ Lrcshce9uqYJYWNZ3xvnJx5W1896zF4tGDPffzz5Dhu4M4gMygyoayi8fj+lLbzAlDgq
+ 7b3noCveS33L5ekV9gfSrpE/mRA6TOkl2Xxc1c1t0V2lWQOX9c3hSvw6AKg8jwTpEa17
+ AUEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
  :from:date:message-id:subject:to:cc;
- bh=rsYfhxRLSpWgsr9CzxyA1x6Nm0my2NfvcK+oJ7qbYu0=;
- b=Ot9bkbMdjb0bhEf8m4H9588j4XgnBFfR54Xw+SD2PYn1odOnlEFzT5yKCFrbureG/R
- 5kOjsA6jHqbvTtox11FkybJY6nwWsiy1Je61NXkHEnAKXak0lqCj+bgb7NyxmXWu5EZy
- ZR/rnLb1Da4on8me11ZC+fx5eJmw2APSTkRdvaas1Gq1NhfC9yeRXnNrdY1hh7C57iDu
- boHMiagFNj2y0BAop4jIZJ4IYqQA+eZVCQoLNApjncDzoTUpx/JhNZ7dXQ+gy6pLsZdd
- mRI+at3KBlVAGx2Ru/e097eu/3/KcU3nWXBxCF/4YVoWhS5HnWcACZ9mU17Dv77ByqS8
- TLig==
-X-Gm-Message-State: AOAM533FxEqAjo/8/R4j4P2sZG+d1faq/FI2HgabASSSC8xnCmfPPwlS
- wmEk5wxyE9IIsQQuJLwCgFAsLEmnC1Am/RkukAnaWBR7cx4=
-X-Google-Smtp-Source: ABdhPJwLZTU6bbC9V63Dp8YpdJU5BzcMP3LddfyrFnOW1QVdYlT08xREnnltcHcoSXqnJseoisqzKfNgaT46E2J8yUQ=
-X-Received: by 2002:a2e:89d6:: with SMTP id c22mr12825907ljk.242.1600445356240; 
- Fri, 18 Sep 2020 09:09:16 -0700 (PDT)
+ bh=vkSAzfcNZzpzQTPyneasZVlyRDJqjgu5obu7LlNouFU=;
+ b=ovp3y7CQVeBhy1WrowMC2LfLxfCDwqGePz2nqAusQb+S66iSBUVd+MDLROuGbkWp11
+ PVtGkxQBc6a5cuOQ0prGaAyqb7rQcRgc09rCMqFGvsTyBK5hGGc9wxrLGyHuYzn3G/5E
+ R6y9hJlYDtJwXnwJiyeYp+cHIviXS9lEYaZsHYFYVaIleS+e9rznnbw//p5dMIhg/1PD
+ uiWm0+0jBSRHhRZsPHOA7sui65nKNrE5PFr0U/7pbzuFN3D8BKpYDUCefHtR4/r8xjX3
+ V2JdAwUpKpag9TqB8i+boj0aw4LxfWUZcoVQCzL0AYSmyQ2z70hTBHY9VyWHMdyOY1Zl
+ cGSw==
+X-Gm-Message-State: AOAM532s07n+B96IpP+sWuPTtzoXR5SRhduoQDR8vP3s1DjVRxLeWu22
+ vZPOiQVInPYL14i+jHL8x/93RADRjwEoSKAISPmkdMU2iTHJmQ==
+X-Google-Smtp-Source: ABdhPJyIiqlNiOWmj9l2HB+JOcWt+T+c0lJlh3r2YjhrGuaA5DcpdfSUqaSZ2cgoTbb296tJRAfZ//QD9rGwUGpzY9k=
+X-Received: by 2002:a2e:9dc7:: with SMTP id x7mr13123188ljj.447.1600445428942; 
+ Fri, 18 Sep 2020 09:10:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200918144512.978-1-luoyonggang@gmail.com>
-In-Reply-To: <20200918144512.978-1-luoyonggang@gmail.com>
+References: <20200918160250.1141-1-luoyonggang@gmail.com>
+In-Reply-To: <20200918160250.1141-1-luoyonggang@gmail.com>
 Reply-To: luoyonggang@gmail.com
 From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Sat, 19 Sep 2020 00:09:04 +0800
-Message-ID: <CAE2XoE-GoYSFWjaprHH_y__=u0mhp+hK2CaPrOQ=ApWELewCKQ@mail.gmail.com>
-Subject: Re: [PATCH] configure: fixes indent of $meson setup
+Date: Sat, 19 Sep 2020 00:10:17 +0800
+Message-ID: <CAE2XoE9Vf3Zixv6Ds0BmO9O5EWWjPbG-0EkP0BEbPikuCc4SVg@mail.gmail.com>
+Subject: Re: [PATCH v5 0/4] Fixes curses on msys2/mingw
 To: qemu-level <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f0f45605af98b861"
-Received-SPF: pass client-ip=2a00:1450:4864:20::244;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x244.google.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000464d7a05af98bdbc"
+Received-SPF: pass client-ip=2a00:1450:4864:20::242;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x242.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -71,52 +77,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Sep 2020 16:09:22 -0000
+X-List-Received-Date: Fri, 18 Sep 2020 16:10:36 -0000
 
---000000000000f0f45605af98b861
+--000000000000464d7a05af98bdbc
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Bonzini, please queue this
+Hi Bonzini, help to look at this, I convert curses and it's depends iconv
+to meson
 
-On Fri, Sep 18, 2020 at 10:45 PM Yonggang Luo <luoyonggang@gmail.com> wrote=
+On Sat, Sep 19, 2020 at 12:03 AM Yonggang Luo <luoyonggang@gmail.com> wrote=
 :
 >
-> convert these line from tab to space
+> And also convert related configure script to meson.
 >
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->  configure | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+> Yonggang Luo (4):
+>   curses: Fixes compiler error that complain don't have langinfo.h on
+>     msys2/mingw
+>   curses: Fixes curses compiling errors.
+>   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE
+>     are defined on msys2/mingw
+>   configure: Fixes ncursesw detection under msys2/mingw by convert them
+>     to meson
 >
-> diff --git a/configure b/configure
-> index 3757e48b17..422b1ef2a3 100755
-> --- a/configure
-> +++ b/configure
-> @@ -7850,10 +7850,10 @@ NINJA=3D${ninja:-$PWD/ninjatool} $meson setup \
->          -Dstrip=3D$(if test "$strip_opt" =3D yes; then echo true; else e=
-cho
-false; fi) \
->          -Db_pie=3D$(if test "$pie" =3D yes; then echo true; else echo fa=
-lse;
-fi) \
->          -Db_coverage=3D$(if test "$gcov" =3D yes; then echo true; else e=
-cho
-false; fi) \
-> -       -Dmalloc=3D$malloc -Dmalloc_trim=3D$malloc_trim \
-> -       -Dcocoa=3D$cocoa -Dmpath=3D$mpath -Dsdl=3D$sdl -Dsdl_image=3D$sdl=
-_image \
-> -       -Dvnc=3D$vnc -Dvnc_sasl=3D$vnc_sasl -Dvnc_jpeg=3D$vnc_jpeg
--Dvnc_png=3D$vnc_png \
-> -       -Dgettext=3D$gettext -Dxkbcommon=3D$xkbcommon -Du2f=3D$u2f\
-> +        -Dmalloc=3D$malloc -Dmalloc_trim=3D$malloc_trim \
-> +        -Dcocoa=3D$cocoa -Dmpath=3D$mpath -Dsdl=3D$sdl -Dsdl_image=3D$sd=
-l_image \
-> +        -Dvnc=3D$vnc -Dvnc_sasl=3D$vnc_sasl -Dvnc_jpeg=3D$vnc_jpeg
--Dvnc_png=3D$vnc_png \
-> +        -Dgettext=3D$gettext -Dxkbcommon=3D$xkbcommon -Du2f=3D$u2f \
->          $cross_arg \
->          "$PWD" "$source_path"
+>  configure                 | 155 ++------------------------------------
+>  include/sysemu/os-win32.h |   4 +-
+>  meson.build               |  80 +++++++++++++++++---
+>  meson_options.txt         |   4 +
+>  ui/curses.c               |  14 ++--
+>  ui/meson.build            |   2 +-
+>  util/oslib-win32.c        |   4 +-
+>  7 files changed, 91 insertions(+), 172 deletions(-)
 >
 > --
 > 2.28.0.windows.1
@@ -131,41 +122,33 @@ Yours
     sincerely,
 Yonggang Luo
 
---000000000000f0f45605af98b861
+--000000000000464d7a05af98bdbc
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hi Bonzini, please queue this<br><br>On Fri, Sep 18, 2020 =
-at 10:45 PM Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyo=
-nggang@gmail.com</a>&gt; wrote:<br>&gt;<br>&gt; convert these line from tab=
- to space<br>&gt;<br>&gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto=
-:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt; ---<br>&gt; =
-=C2=A0configure | 8 ++++----<br>&gt; =C2=A01 file changed, 4 insertions(+),=
- 4 deletions(-)<br>&gt;<br>&gt; diff --git a/configure b/configure<br>&gt; =
-index 3757e48b17..422b1ef2a3 100755<br>&gt; --- a/configure<br>&gt; +++ b/c=
-onfigure<br>&gt; @@ -7850,10 +7850,10 @@ NINJA=3D${ninja:-$PWD/ninjatool} $=
-meson setup \<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-Dstrip=3D$(if test=
- &quot;$strip_opt&quot; =3D yes; then echo true; else echo false; fi) \<br>=
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-Db_pie=3D$(if test &quot;$pie&quot;=
- =3D yes; then echo true; else echo false; fi) \<br>&gt; =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0-Db_coverage=3D$(if test &quot;$gcov&quot; =3D yes; then e=
-cho true; else echo false; fi) \<br>&gt; - =C2=A0 =C2=A0 =C2=A0 -Dmalloc=3D=
-$malloc -Dmalloc_trim=3D$malloc_trim \<br>&gt; - =C2=A0 =C2=A0 =C2=A0 -Dcoc=
-oa=3D$cocoa -Dmpath=3D$mpath -Dsdl=3D$sdl -Dsdl_image=3D$sdl_image \<br>&gt=
-; - =C2=A0 =C2=A0 =C2=A0 -Dvnc=3D$vnc -Dvnc_sasl=3D$vnc_sasl -Dvnc_jpeg=3D$=
-vnc_jpeg -Dvnc_png=3D$vnc_png \<br>&gt; - =C2=A0 =C2=A0 =C2=A0 -Dgettext=3D=
-$gettext -Dxkbcommon=3D$xkbcommon -Du2f=3D$u2f\<br>&gt; + =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0-Dmalloc=3D$malloc -Dmalloc_trim=3D$malloc_trim \<br>&gt; + =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0-Dcocoa=3D$cocoa -Dmpath=3D$mpath -Dsdl=3D$sdl -Dsd=
-l_image=3D$sdl_image \<br>&gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0-Dvnc=3D$vnc -D=
-vnc_sasl=3D$vnc_sasl -Dvnc_jpeg=3D$vnc_jpeg -Dvnc_png=3D$vnc_png \<br>&gt; =
-+ =C2=A0 =C2=A0 =C2=A0 =C2=A0-Dgettext=3D$gettext -Dxkbcommon=3D$xkbcommon =
--Du2f=3D$u2f \<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$cross_arg \<br>&g=
-t; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;$PWD&quot; &quot;$source_path&qu=
-ot;<br>&gt;<br>&gt; --<br>&gt; 2.28.0.windows.1<br>&gt;<br><br><br>--<br>=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=
-=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo<=
-/div>
+<div dir=3D"ltr">Hi Bonzini, help to look at this, I convert curses and it&=
+#39;s depends=C2=A0iconv to meson<div><br>On Sat, Sep 19, 2020 at 12:03 AM =
+Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail=
+.com</a>&gt; wrote:<br>&gt;<br>&gt; And also convert related configure scri=
+pt to meson.<br>&gt;<br>&gt; Yonggang Luo (4):<br>&gt; =C2=A0 curses: Fixes=
+ compiler error that complain don&#39;t have langinfo.h on<br>&gt; =C2=A0 =
+=C2=A0 msys2/mingw<br>&gt; =C2=A0 curses: Fixes curses compiling errors.<br=
+>&gt; =C2=A0 win32: Simplify gmtime_r detection not depends on if =C2=A0_PO=
+SIX_C_SOURCE<br>&gt; =C2=A0 =C2=A0 are defined on msys2/mingw<br>&gt; =C2=
+=A0 configure: Fixes ncursesw detection under msys2/mingw by convert them<b=
+r>&gt; =C2=A0 =C2=A0 to meson<br>&gt;<br>&gt; =C2=A0configure =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 155 ++------------------------=
+------------<br>&gt; =C2=A0include/sysemu/os-win32.h | =C2=A0 4 +-<br>&gt; =
+=C2=A0meson.build =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | =C2=A0=
+80 +++++++++++++++++---<br>&gt; =C2=A0meson_options.txt =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 | =C2=A0 4 +<br>&gt; =C2=A0ui/curses.c =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 | =C2=A014 ++--<br>&gt; =C2=A0ui/meson.build =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A0 2 +-<br>&gt; =C2=A0util/osli=
+b-win32.c =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A0 4 +-<br>&gt; =C2=A07 files ch=
+anged, 91 insertions(+), 172 deletions(-)<br>&gt;<br>&gt; --<br>&gt; 2.28.0=
+.windows.1<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=
+=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=
+=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
 
---000000000000f0f45605af98b861--
+--000000000000464d7a05af98bdbc--
 
