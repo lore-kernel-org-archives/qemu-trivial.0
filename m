@@ -1,92 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJeON-0004pV-NX
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 11:03:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40054)
+	id 1kJfeN-0001JU-VQ
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 12:23:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kJeOM-0004pE-Dx
- for qemu-trivial@nongnu.org; Sat, 19 Sep 2020 11:03:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42424)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kJeOK-0007XY-Mm
- for qemu-trivial@nongnu.org; Sat, 19 Sep 2020 11:03:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600527787;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=swnZwxpLtegqnt3wqlIj88WC1uyZ0o0GcFQvA+vaVG0=;
- b=C0rNhfrzfkDNWjBdoJ8SHktiFrq9YkZqxB+szTI3eZB0L6PnuOf70i0QYUqKO4+yrYsc5n
- D0IUOxn1FDqKDFm17gVFRSbE8cauthbNv33TpoW00C9E4RLefxZ/aLn+bM9rR5CfM4v4U6
- 0oOhSYRUoM+aDg8LOMfCzrVCZ3uGnlQ=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-560-rJwZlBGFNZqV-qfRRdHmKQ-1; Sat, 19 Sep 2020 11:03:03 -0400
-X-MC-Unique: rJwZlBGFNZqV-qfRRdHmKQ-1
-Received: by mail-wr1-f72.google.com with SMTP id 33so3555582wre.0
- for <qemu-trivial@nongnu.org>; Sat, 19 Sep 2020 08:03:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kJfeM-0001Ex-BZ; Sat, 19 Sep 2020 12:23:46 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:33440)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kJfeK-0001ZU-6j; Sat, 19 Sep 2020 12:23:45 -0400
+Received: by mail-lj1-x243.google.com with SMTP id k25so7577726ljk.0;
+ Sat, 19 Sep 2020 09:23:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=h1dK1H3qIZ3YtwRio+FVOyiBNnTsEnjaiHbmZEifJpc=;
+ b=IsASpxtbYTzFKN5Pb/jq2DCqAuLlJcakbL5rKMoTwJqTu+LkZTMMcrItBa4/ozTBXM
+ wODn57Taqk5qUvuLK1WSqpIhp1+bGK+xT/xe9FKnxTFTLQllckK2QaPGbt/epVeDo57T
+ YkT9RGbnnmIChdzHgsvohlvS8oP6v1oBioQys+MKDbNUd6xk1L804mSjWTyTVnt2mfLX
+ T5IIcgFaTLewib1n4T6FHQhtDOVb3gJmNNCvl+HMtpZU8BkZFOyjrWpPVetopYJZ6OwB
+ FDb3cercUleTbpvNlmotXacpmZslD3mwrJOL+87d3jqoY4wz01MbwLN9+GFsIrSdZmpE
+ RGNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=swnZwxpLtegqnt3wqlIj88WC1uyZ0o0GcFQvA+vaVG0=;
- b=hKsa7+0jtjg3e2tZed3bvoERjYwMG5qJIpIRwOjsxBK0J4wdsJbh/ZcicFp5J1TQ3W
- 15KuK9djfC3PDbxYwF4Yq4IJoVHQu2xjMIRJMM9WgQDWUYyrVp19x4GJHyKrn/eLFK+U
- THPpWUUbGUJQUKmusKrqB/MorsRWitya3Z+5qOjo6ugwch8qJ1zRJ8gq7PbE2pY5mClp
- jzOv34MdrDmi9HPIVRHpIRUtFsHVUoEAVXuHc0/JAuRb1rRb7wGmQmWnHhY3D//XvxUZ
- 33tWcHO/ksxTiszyiX5W7Vok9RBGmAZiQPby6p6rF5BeKDf7BmsALIR6ce2a0RyPhCu/
- aeKg==
-X-Gm-Message-State: AOAM531jkQS4mQqYp/E36d34Uwxu6Rqcp28exo09XVywJHbvCQYJjBaZ
- ppI6M0iwFtdME+i7orpLA9RzO/Q9d3QbvY66zEufoXU74Hagzm3pcVtkMNPAjS+WUqVlul+IcdQ
- Gg/cVOe5/qzXKlNvyaw==
-X-Received: by 2002:a5d:430d:: with SMTP id h13mr46093037wrq.41.1600527782294; 
- Sat, 19 Sep 2020 08:03:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0kSk7q48TAWNdhwdlBBtXpJHBo6w1kdCcYFYPPGV3Sh7upF+q0adtu9byTpinDmMAsfPm/A==
-X-Received: by 2002:a5d:430d:: with SMTP id h13mr46093013wrq.41.1600527782096; 
- Sat, 19 Sep 2020 08:03:02 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:b20a:b600:521c:512d?
- ([2001:b07:6468:f312:b20a:b600:521c:512d])
- by smtp.gmail.com with ESMTPSA id z127sm11129054wmc.2.2020.09.19.08.03.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 19 Sep 2020 08:03:01 -0700 (PDT)
-Subject: Re: [PATCH v5 0/4] Fixes curses on msys2/mingw
-To: luoyonggang@gmail.com, qemu-level <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=h1dK1H3qIZ3YtwRio+FVOyiBNnTsEnjaiHbmZEifJpc=;
+ b=CxjoFzn9Vj1HYzitYIEIWyLbpAc9WnA/+EvmlvuFM/0E1eYqFREJTCWwGjT1nouFSt
+ 11qe2cHfd9u1xQYtRGSw0WAFmTrrZ4TF/ZUOGaL9Fzkgemarr6PcDCPguuwqnelPZPwH
+ jmi29qXSCEkOl7oVNgNhPLk71/jI5Z7FjqxtP0lv4XArDguO4SVlg0xJjQLgd8rt1vZQ
+ hx6e+Rvrl6zpfmSSYo4fFiZmR25V8BAjr2XAQc4MZM+GXol4btJwcFmsQ6FAAxz3hv7T
+ po7pOGuz/n9DJiJyPhr9phiuxQ1G/e2IaXvXAvRY1D2GrJls6h3hPBcHwuKOEvv1LCev
+ FErQ==
+X-Gm-Message-State: AOAM533LtWEJqD/VG6ptV/Jr8F9cZkKj5N8APQf5MCUvyR2izRatYx0M
+ RSAZNMk8J2MYKLVqq5GS6IagCPBuLk7eu2JP5AA=
+X-Google-Smtp-Source: ABdhPJyl54WJITNX7jUozJdJNDECrHaBqibsGogCe/foCCFcmIpGSceBbOzJiS9YUD2pwGJ6IRKSv2lqsfRTLds19aw=
+X-Received: by 2002:a05:651c:1119:: with SMTP id
+ d25mr12281989ljo.300.1600532621507; 
+ Sat, 19 Sep 2020 09:23:41 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200918160250.1141-1-luoyonggang@gmail.com>
  <CAE2XoE9Vf3Zixv6Ds0BmO9O5EWWjPbG-0EkP0BEbPikuCc4SVg@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5c0699e8-62ef-8f29-182f-a0744c727bae@redhat.com>
-Date: Sat, 19 Sep 2020 17:03:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <CAE2XoE9Vf3Zixv6Ds0BmO9O5EWWjPbG-0EkP0BEbPikuCc4SVg@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 11:03:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <5c0699e8-62ef-8f29-182f-a0744c727bae@redhat.com>
+In-Reply-To: <5c0699e8-62ef-8f29-182f-a0744c727bae@redhat.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Sun, 20 Sep 2020 00:23:31 +0800
+Message-ID: <CAE2XoE-Z5zLjs1aKmghXoXLUm7tguro5GFLBFPOKhv1Uq42b2A@mail.gmail.com>
+Subject: Re: [PATCH v5 0/4] Fixes curses on msys2/mingw
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000005b3f5805afad0ae0"
+Received-SPF: pass client-ip=2a00:1450:4864:20::243;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,23 +79,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 15:03:10 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 16:23:46 -0000
 
-On 18/09/20 18:10, 罗勇刚(Yonggang Luo) wrote:
-> 
->> Yonggang Luo (4):
->>   curses: Fixes compiler error that complain don't have langinfo.h on
->>     msys2/mingw
->>   curses: Fixes curses compiling errors.
->>   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE
->>     are defined on msys2/mingw
->>   configure: Fixes ncursesw detection under msys2/mingw by convert them
->>     to meson
+--0000000000005b3f5805afad0ae0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hi, patches 1-3 are okay, but for patch 4 I think it's better to wait
-for Meson 0.56 which will likely embed all the magic needed to test
-curses (https://github.com/mesonbuild/meson/pull/7757).
+On Sat, Sep 19, 2020 at 11:03 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 18/09/20 18:10, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:
+> >
+> >> Yonggang Luo (4):
+> >>   curses: Fixes compiler error that complain don't have langinfo.h on
+> >>     msys2/mingw
+> >>   curses: Fixes curses compiling errors.
+> >>   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURC=
+E
+> >>     are defined on msys2/mingw
+> >>   configure: Fixes ncursesw detection under msys2/mingw by convert the=
+m
+> >>     to meson
+>
+> Hi, patches 1-3 are okay, but for patch 4 I think it's better to wait
+> for Meson 0.56 which will likely embed all the magic needed to test
+> curses (https://github.com/mesonbuild/meson/pull/7757).
+>
+> Paolo
+>
+Wonderfull, I think there is no need fixing configure anymore, so I convert
+it to meson
 
-Paolo
+Waiting https://github.com/mesonbuild/meson/pull/7757 to be merged.
+In deed when I convert to meson, I am facing a problem that
+DNCURSES_WIDECHAR  can not be tested with the library.
 
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--0000000000005b3f5805afad0ae0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Sat, Sep 19, 2020 at 11:03 PM Paolo Bonzini &lt=
+;<a href=3D"mailto:pbonzini@redhat.com" target=3D"_blank">pbonzini@redhat.c=
+om</a>&gt; wrote:<br>&gt;<br>&gt; On 18/09/20 18:10, =E7=BD=97=E5=8B=87=E5=
+=88=9A(Yonggang Luo) wrote:<br>&gt; &gt;<br>&gt; &gt;&gt; Yonggang Luo (4):=
+<br>&gt; &gt;&gt; =C2=A0 curses: Fixes compiler error that complain don&#39=
+;t have langinfo.h on<br>&gt; &gt;&gt; =C2=A0 =C2=A0 msys2/mingw<br>&gt; &g=
+t;&gt; =C2=A0 curses: Fixes curses compiling errors.<br>&gt; &gt;&gt; =C2=
+=A0 win32: Simplify gmtime_r detection not depends on if =C2=A0_POSIX_C_SOU=
+RCE<br>&gt; &gt;&gt; =C2=A0 =C2=A0 are defined on msys2/mingw<br>&gt; &gt;&=
+gt; =C2=A0 configure: Fixes ncursesw detection under msys2/mingw by convert=
+ them<br>&gt; &gt;&gt; =C2=A0 =C2=A0 to meson<br>&gt;<br>&gt; Hi, patches 1=
+-3 are okay, but for patch 4 I think it&#39;s better to wait<br>&gt; for Me=
+son 0.56 which will likely embed all the magic needed to test<br>&gt; curse=
+s (<a href=3D"https://github.com/mesonbuild/meson/pull/7757" target=3D"_bla=
+nk">https://github.com/mesonbuild/meson/pull/7757</a>).<br>&gt;<br>&gt; Pao=
+lo<br>&gt;<div>Wonderfull, I think there is no need fixing configure anymor=
+e, so I convert it to meson</div><div><br></div><div>Waiting=C2=A0<a href=
+=3D"https://github.com/mesonbuild/meson/pull/7757" target=3D"_blank">https:=
+//github.com/mesonbuild/meson/pull/7757</a> to be merged.</div><div>In deed=
+ when I convert to meson, I am facing a problem that=C2=A0<br>DNCURSES_WIDE=
+CHAR=C2=A0 can not be tested with the library.=C2=A0<br><br>--<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=
+=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div><=
+/div>
+
+--0000000000005b3f5805afad0ae0--
 
