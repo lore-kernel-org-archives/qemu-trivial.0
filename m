@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJhs8-0006i1-Bn
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 14:46:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52050)
+	id 1kJhsA-0006jJ-77
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 14:46:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhs0-0006Zx-E7; Sat, 19 Sep 2020 14:46:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:60901)
+ id 1kJhs1-0006be-0K; Sat, 19 Sep 2020 14:46:01 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:40667)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhrw-0001St-Rt; Sat, 19 Sep 2020 14:46:00 -0400
+ id 1kJhrv-0001Sn-O8; Sat, 19 Sep 2020 14:46:00 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MCXhr-1kAfR02sHz-009h6x; Sat, 19 Sep 2020 20:45:18 +0200
+ id 1MCXhr-1kAfQz204x-009h6x; Sat, 19 Sep 2020 20:45:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  zhaolichang <zhaolichang@huawei.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 10/17] migration/: fix some comment spelling errors
-Date: Sat, 19 Sep 2020 20:44:44 +0200
-Message-Id: <20200919184451.2129349-11-laurent@vivier.eu>
+Subject: [PULL 11/17] docs/: fix some comment spelling errors
+Date: Sat, 19 Sep 2020 20:44:45 +0200
+Message-Id: <20200919184451.2129349-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200919184451.2129349-1-laurent@vivier.eu>
 References: <20200919184451.2129349-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Nn2mBXx8oZiaSj79ijuEvTQoywxApOhaT/yDwxJdeE7ptfW2nnp
- X7pbpvKfeSonaOgczdjBr/kpHEaUWYOrv7k3O8XBRPhgm4Mash1KVlM7NkXLKfioYias6ap
- 7nwjLXyRVsDxNJh8DkKD5IDa07noRjCGvSmxFHEYx+eHBJf77F731BiWnf9hqeJ3pj/bADp
- Ggkp5HeLth8cyI9VRS2xw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:M980zZuf4Lc=:qLED36jWxTlAgV2vFQVhR5
- 9kt234b2Dhmxe/lc6lJZ9t5ovCWYoO40YxZWk3nWynKN01L8i+yaehnJECrzmgoDMJVGX7IM0
- 13PUb6d8RfdtDCCzYdGI3UjHdyfU4hCz3LXmHVai+3Bso9+FXawy3AGvu6l5jkvsRWA2rZgO8
- Zey5O4iZQ4Lp87NQtHnFL9FZOZ+DQEwN7uuQLZXy+PWA9XW5eJz164m0AlmR5+QQgE09Z6eqT
- 5JnPuaEtAaC2w6uzl5soYf9IRW/uGXf7ee4EfVxZLY09XUL83HfD5IvKw8T9LnT5yZZlOwh9Z
- GYqk1Al7Sqspyj5E9SxsHx8oiYT6omkHsukKdmhq2nyXMs5dEPdwpJ4fzlZmTyeKnGViE+/84
- CGYKJ0bQho56WqIALGaQ6GiLLkEeEZ6petj9bXolc0lMBPsiBuo1XE1PVcTnryUbKo+5rOCPf
- EWgSU2F/d34NstmP8Wrv+f27ypITHP3YDDYr6qoDOavrNlHDfAB53cXjZTqHN2ynpTbp0Zp8t
- pwfFwpgoNlHyd5c5jMwXdQ//havIxgA5a4aENaQdOOJjtkQU9hwhm0zscW/jolc6PMD6BaGTP
- tzkemOcl2+e/77OTqQFR/t2Td/szBREFWpzmOfotuP7MJNbXrkwAZLO70Fyr1vhpAP0GjFaRJ
- r1PYTFQAXVQEvvLoCj+t9qnkshYI4t1SqC/FhupeJMgEV2lYyQTx9gpOLvf864ioZffIwL/uf
- iE3IlOvsp/73fXZ/ERGCVH3GQTqhhE0QX+TbCHpz7fXneHVtNNlScMkyQLmFOkfoSVkDNRfPF
- zzBi4tHcmL6QMzqTquQFU/sg8QjLKIPUeBeNNwbnItiAHmLH0dngF0YrSXXz3gLqL+bq9/U
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZYsjorq0LaKROTKoJerbXgBgfcWpvclKRL7wQG7Nw6gsuJl+W/E
+ w37UA0opGze4NJ43HwTBjtFhG7KzZNt9mkxoztRuq8flFCi7+Se0xmfkxjQentRsxNyWC30
+ 0F9C6zwY8tMKY4whEYMu9AwCi0ajQqFoul2jt5f2gqMhYwEEzpC3KByeuA1TjNznLmuZra6
+ Ys0jxxAxDZtY2QfUowxTA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/CB8XFAxxng=:mv95wnM30OoXs01tKC8kgC
+ t+8xlVP7Y1s6SscePxQHM7DR1xLPz7GZT9YVs+DDSKRRfLUAhAZ99jbJ4lgo+8/s0+ckv/wmV
+ /nuMUYbPE5qRIyWJvZrid1N2c14Ve2zWQiCgWotrtfJldFJmLV7OnYtB35909km3wshslHHXF
+ 0PQPr4sPBrJ2M0bhTZAAsDhuJv9CE3BH5EUhYhd8UamYorzTB45ogh+T39Alb/gU0xuRFb916
+ AYTAu5IdY8FVds182g1N6jYDwLh1KBatJgTaRn9bgGz1vJiLUCtmsG8fnLjBgqzzAWer4YRqG
+ XbEFu9NK9828twD3J3xNPiXzUK04d0TBCAwKBFwfKxrZzXv6AKko8g+FagSUidB/lWy/0fvux
+ VFZVNT3PnkHK2W5u2nZI+1wNgHB3B0Sf6L7ctxuz9qPtRwJQZ5E6CSIINo3TcvxTpGQqyUpDd
+ 9ZIB5S/yx1psg7vRntuXcJ0Pk4eRSUtFMfJAp6MUvZyven2o5MfQCm8Tly7uk/C5dKXawS5jG
+ r6pgwA0PljuNa+tOmAtZtEjfY/cms6ugD5NomlsE/mdbeDwQzxNdbAOYYORF6PMbDtJMMhh1l
+ iDKWUs77P5FcivVCWT2Bw4YWHi5TQtfhsWHr1N06yv3rmkYUZhvoFKxq+fnuMBpywiJT3nWwT
+ OMXWzL5HuhJCfz4d5FYAcegHjXlCNtiVxs3lMmtlnLgBG1lmmQ54z/texdULcfKDZE6xlckJu
+ zjoKq26e2ahtExaHREypswgiDHskdy/BWA8p+D8ep0oyardjYD5zWDZkrvwF/NN4UlCFrPAyn
+ H9kLgZbM1utDKY9DAT34k4vO9TIVgG7KxPXrZxni4019FB4l5x+H3oBciI6RR4YwkoXsQq/
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:03
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:13
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_PDS_OTHER_BAD_TLD=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,217 +71,333 @@ From: zhaolichang <zhaolichang@huawei.com>
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the migration folder.
+and finally found some spelling errors in the docs folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20200917075029.313-3-zhaolichang@huawei.com>
+Message-Id: <20200917075029.313-4-zhaolichang@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- migration/colo-failover.c |  2 +-
- migration/colo.c          |  2 +-
- migration/multifd.c       |  4 ++--
- migration/postcopy-ram.c  |  4 ++--
- migration/postcopy-ram.h  |  2 +-
- migration/ram.c           | 10 +++++-----
- migration/rdma.c          |  8 ++++----
- migration/savevm.c        |  4 ++--
- 8 files changed, 18 insertions(+), 18 deletions(-)
+ docs/COLO-FT.txt                 | 6 +++---
+ docs/devel/blkdebug.txt          | 2 +-
+ docs/devel/migration.rst         | 2 +-
+ docs/devel/testing.rst           | 2 +-
+ docs/devel/tracing.txt           | 2 +-
+ docs/interop/bitmaps.rst         | 2 +-
+ docs/interop/dbus.rst            | 4 ++--
+ docs/interop/nbd.txt             | 2 +-
+ docs/interop/vhost-user-gpu.rst  | 2 +-
+ docs/interop/vhost-user.rst      | 4 ++--
+ docs/rdma.txt                    | 2 +-
+ docs/specs/ppc-spapr-hotplug.txt | 4 ++--
+ docs/specs/ppc-spapr-xive.rst    | 4 ++--
+ docs/system/arm/aspeed.rst       | 2 +-
+ docs/system/deprecated.rst       | 8 ++++----
+ docs/system/target-avr.rst       | 4 ++--
+ docs/tools/virtiofsd.rst         | 2 +-
+ 17 files changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/migration/colo-failover.c b/migration/colo-failover.c
-index e9ca0b47744b..b717edc8e2f6 100644
---- a/migration/colo-failover.c
-+++ b/migration/colo-failover.c
-@@ -46,7 +46,7 @@ void failover_request_active(Error **errp)
- {
-    if (failover_set_state(FAILOVER_STATUS_NONE,
-         FAILOVER_STATUS_REQUIRE) != FAILOVER_STATUS_NONE) {
--        error_setg(errp, "COLO failover is already actived");
-+        error_setg(errp, "COLO failover is already activated");
-         return;
-     }
-     failover_bh = qemu_bh_new(colo_failover_bh, NULL);
-diff --git a/migration/colo.c b/migration/colo.c
-index ea7d1e9d4e7b..80788d46b555 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -632,7 +632,7 @@ out:
-     /*
-      * It is safe to unregister notifier after failover finished.
-      * Besides, colo_delay_timer and colo_checkpoint_sem can't be
--     * released befor unregister notifier, or there will be use-after-free
-+     * released before unregister notifier, or there will be use-after-free
-      * error.
-      */
-     colo_compare_unregister_notifier(&packets_compare_notifier);
-diff --git a/migration/multifd.c b/migration/multifd.c
-index d0441202aae9..ac84a61797f3 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -731,7 +731,7 @@ static void multifd_new_send_channel_async(QIOTask *task, gpointer opaque)
-         qemu_sem_post(&p->sem_sync);
-         /*
-          * Although multifd_send_thread is not created, but main migration
--         * thread neet to judge whether it is running, so we need to mark
-+         * thread needs to judge whether it is running, so we need to mark
-          * its status.
-          */
-         p->quit = true;
-@@ -1042,7 +1042,7 @@ bool multifd_recv_all_channels_created(void)
+diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
+index c8e174093566..bc5fb2a1bb5f 100644
+--- a/docs/COLO-FT.txt
++++ b/docs/COLO-FT.txt
+@@ -91,7 +91,7 @@ the heartbeat stops responding, the secondary node will trigger a failover
+ as soon as it determines the absence.
  
- /*
-  * Try to receive all multifd channels to get ready for the migration.
-- * - Return true and do not set @errp when correctly receving all channels;
-+ * - Return true and do not set @errp when correctly receiving all channels;
-  * - Return false and do not set @errp when correctly receiving the current one;
-  * - Return false and set @errp when failing to receive the current channel.
-  */
-diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-index 1bb22f2b6cba..baf094ba3a0d 100644
---- a/migration/postcopy-ram.c
-+++ b/migration/postcopy-ram.c
-@@ -237,7 +237,7 @@ release_ufd:
-  * request_ufd_features: this function should be called only once on a newly
-  * opened ufd, subsequent calls will lead to error.
-  *
-- * Returns: true on succes
-+ * Returns: true on success
-  *
-  * @ufd: fd obtained from userfaultfd syscall
-  * @features: bit mask see UFFD_API_FEATURES
-@@ -807,7 +807,7 @@ static void mark_postcopy_blocktime_end(uintptr_t addr)
+ COLO disk Manager:
+-When primary VM writes data into image, the colo disk manger captures this data
++When primary VM writes data into image, the colo disk manager captures this data
+ and sends it to secondary VM's which makes sure the context of secondary VM's
+ image is consistent with the context of primary VM 's image.
+ For more details, please refer to docs/block-replication.txt.
+@@ -146,12 +146,12 @@ in test procedure.
  
-     low_time_offset = get_low_time_offset(dc);
-     /* lookup cpu, to clear it,
--     * that algorithm looks straighforward, but it's not
-+     * that algorithm looks straightforward, but it's not
-      * optimal, more optimal algorithm is keeping tree or hash
-      * where key is address value is a list of  */
-     for (i = 0; i < smp_cpus; i++) {
-diff --git a/migration/postcopy-ram.h b/migration/postcopy-ram.h
-index 9941feb63aa7..6d2b3cf124e8 100644
---- a/migration/postcopy-ram.h
-+++ b/migration/postcopy-ram.h
-@@ -161,7 +161,7 @@ struct PostCopyFD {
-  */
- void postcopy_register_shared_ufd(struct PostCopyFD *pcfd);
- void postcopy_unregister_shared_ufd(struct PostCopyFD *pcfd);
--/* Call each of the shared 'waker's registerd telling them of
-+/* Call each of the shared 'waker's registered telling them of
-  * availability of a block.
-  */
- int postcopy_notify_shared_wake(RAMBlock *rb, uint64_t offset);
-diff --git a/migration/ram.c b/migration/ram.c
-index 76d4fee5d511..c5f36aeae53b 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -256,7 +256,7 @@ int64_t ramblock_recv_bitmap_send(QEMUFile *file,
-     /*
-      * Always use little endian when sending the bitmap. This is
-      * required that when source and destination VMs are not using the
--     * same endianess. (Note: big endian won't work.)
-+     * same endianness. (Note: big endian won't work.)
-      */
-     bitmap_to_le(le_bitmap, block->receivedmap, nbits);
+ == Test procedure ==
+ Note: Here we are running both instances on the same host for testing,
+-change the IP Addresses if you want to run it on two hosts. Initally
++change the IP Addresses if you want to run it on two hosts. Initially
+ 127.0.0.1 is the Primary Host and 127.0.0.2 is the Secondary Host.
  
-@@ -275,7 +275,7 @@ int64_t ramblock_recv_bitmap_send(QEMUFile *file,
-     qemu_put_buffer(file, (const uint8_t *)le_bitmap, size);
-     /*
-      * Mark as an end, in case the middle part is screwed up due to
--     * some "misterious" reason.
-+     * some "mysterious" reason.
-      */
-     qemu_put_be64(file, RAMBLOCK_RECV_BITMAP_ENDING);
-     qemu_fflush(file);
-@@ -718,7 +718,7 @@ static int save_xbzrle_page(RAMState *rs, uint8_t **current_data,
-     /*
-      * Reaching here means the page has hit the xbzrle cache, no matter what
-      * encoding result it is (normal encoding, overflow or skipping the page),
--     * count the page as encoded. This is used to caculate the encoding rate.
-+     * count the page as encoded. This is used to calculate the encoding rate.
-      *
-      * Example: 2 pages (8KB) being encoded, first page encoding generates 2KB,
-      * 2nd page turns out to be skipped (i.e. no new bytes written to the
-@@ -3705,7 +3705,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block)
+ == Startup qemu ==
+ 1. Primary:
+-Note: Initally, $imagefolder/primary.qcow2 needs to be copied to all hosts.
++Note: Initially, $imagefolder/primary.qcow2 needs to be copied to all hosts.
+ You don't need to change any IP's here, because 0.0.0.0 listens on any
+ interface. The chardev's with 127.0.0.1 IP's loopback to the local qemu
+ instance.
+diff --git a/docs/devel/blkdebug.txt b/docs/devel/blkdebug.txt
+index 43d8e8f9c63b..0b0c128d356b 100644
+--- a/docs/devel/blkdebug.txt
++++ b/docs/devel/blkdebug.txt
+@@ -62,7 +62,7 @@ Rules support the following attributes:
  
-     /*
-      * Note: see comments in ramblock_recv_bitmap_send() on why we
--     * need the endianess convertion, and the paddings.
-+     * need the endianness conversion, and the paddings.
-      */
-     local_size = ROUND_UP(local_size, 8);
+   errno - the numeric errno value to return when a request matches this rule.
+           The errno values depend on the host since the numeric values are not
+-          standarized in the POSIX specification.
++          standardized in the POSIX specification.
  
-@@ -3743,7 +3743,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block)
-     }
+   sector - (optional) a sector number that the request must overlap in order to
+            match this rule
+diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+index 2eb08624fc36..49112bb27aab 100644
+--- a/docs/devel/migration.rst
++++ b/docs/devel/migration.rst
+@@ -625,7 +625,7 @@ It can be issued immediately after migration is started or any
+ time later on.  Issuing it after the end of a migration is harmless.
  
-     /*
--     * Endianess convertion. We are during postcopy (though paused).
-+     * Endianness conversion. We are during postcopy (though paused).
-      * The dirty bitmap won't change. We can directly modify it.
-      */
-     bitmap_from_le(block->bmap, le_bitmap, nbits);
-diff --git a/migration/rdma.c b/migration/rdma.c
-index 1dc563ec3f1b..8f43d69b066d 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -1511,7 +1511,7 @@ static int qemu_rdma_wait_comp_channel(RDMAContext *rdma)
-     } else {
-         /* This is the source side, we're in a separate thread
-          * or destination prior to migration_fd_process_incoming()
--         * after postcopy, the destination also in a seprate thread.
-+         * after postcopy, the destination also in a separate thread.
-          * we can't yield; so we have to poll the fd.
-          * But we need to be able to handle 'cancel' or an error
-          * without hanging forever.
-@@ -2268,7 +2268,7 @@ static inline int qemu_rdma_buffer_mergable(RDMAContext *rdma,
-  *    chunk, then start a new chunk and flush() the old chunk.
-  * 3. To keep the hardware busy, we also group chunks into batches
-  *    and only require that a batch gets acknowledged in the completion
-- *    qeueue instead of each individual chunk.
-+ *    queue instead of each individual chunk.
-  */
- static int qemu_rdma_write(QEMUFile *f, RDMAContext *rdma,
-                            uint64_t block_offset, uint64_t offset,
-@@ -3150,7 +3150,7 @@ static size_t qemu_rdma_save_page(QEMUFile *f, void *opaque,
-     if (size > 0) {
-         /*
-          * Add this page to the current 'chunk'. If the chunk
--         * is full, or the page doen't belong to the current chunk,
-+         * is full, or the page doesn't belong to the current chunk,
-          * an actual RDMA write will occur and a new chunk will be formed.
-          */
-         ret = qemu_rdma_write(f, rdma, block_offset, offset, size);
-@@ -4103,7 +4103,7 @@ void rdma_start_outgoing_migration(void *opaque,
-         goto err;
-     }
+ Blocktime is a postcopy live migration metric, intended to show how
+-long the vCPU was in state of interruptable sleep due to pagefault.
++long the vCPU was in state of interruptible sleep due to pagefault.
+ That metric is calculated both for all vCPUs as overlapped value, and
+ separately for each vCPU. These values are calculated on destination
+ side.  To enable postcopy blocktime calculation, enter following
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 196e3bc35eb6..bd64c1bdcdd4 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -471,7 +471,7 @@ the warning.
+ A few important files for suppressing warnings are:
  
--    /* RDMA postcopy need a seprate queue pair for return path */
-+    /* RDMA postcopy need a separate queue pair for return path */
-     if (migrate_postcopy()) {
-         rdma_return_path = qemu_rdma_data_init(host_port, errp);
+ tests/tsan/suppressions.tsan - Has TSan warnings we wish to suppress at runtime.
+-The comment on each supression will typically indicate why we are
++The comment on each suppression will typically indicate why we are
+ suppressing it.  More information on the file format can be found here:
  
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 304d98ff7825..ee21e981ba2c 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2795,7 +2795,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
+ https://github.com/google/sanitizers/wiki/ThreadSanitizerSuppressions
+diff --git a/docs/devel/tracing.txt b/docs/devel/tracing.txt
+index 6144d9921bfd..d2160655b4e3 100644
+--- a/docs/devel/tracing.txt
++++ b/docs/devel/tracing.txt
+@@ -55,7 +55,7 @@ without any sub-directory path prefix. eg io/channel-buffer.c would do
+   #include "trace.h"
  
-     if (!has_live) {
-         /* live default to true so old version of Xen tool stack can have a
--         * successfull live migration */
-+         * successful live migration */
-         live = true;
-     }
+ To access the 'io/trace.h' file. While it is possible to include a trace.h
+-file from outside a source files' own sub-directory, this is discouraged in
++file from outside a source file's own sub-directory, this is discouraged in
+ general. It is strongly preferred that all events be declared directly in
+ the sub-directory that uses them. The only exception is where there are some
+ shared trace events defined in the top level directory trace-events file.
+diff --git a/docs/interop/bitmaps.rst b/docs/interop/bitmaps.rst
+index c20bd37a7971..059ad6792940 100644
+--- a/docs/interop/bitmaps.rst
++++ b/docs/interop/bitmaps.rst
+@@ -484,7 +484,7 @@ Bitmaps can generally be modified at any time, but certain operations often
+ only make sense when paired directly with other commands. When a VM is paused,
+ it's easy to ensure that no guest writes occur between individual QMP
+ commands. When a VM is running, this is difficult to accomplish with
+-individual QMP commands that may allow guest writes to occur inbetween each
++individual QMP commands that may allow guest writes to occur between each
+ command.
  
-@@ -2818,7 +2818,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
-          * "xen-save-devices-state" and in case of migration failure, libxl
-          * would call "cont".
-          * So call bdrv_inactivate_all (release locks) here to let the other
--         * side of the migration take controle of the images.
-+         * side of the migration take control of the images.
-          */
-         if (live && !saved_vm_running) {
-             ret = bdrv_inactivate_all();
+ For example, using only individual QMP commands, we could:
+diff --git a/docs/interop/dbus.rst b/docs/interop/dbus.rst
+index 76a5bde62534..be596d3f418c 100644
+--- a/docs/interop/dbus.rst
++++ b/docs/interop/dbus.rst
+@@ -57,7 +57,7 @@ Depending on the use case, you may choose different scenarios:
+  - Everything the same UID
+ 
+    - Convenient for developers
+-   - Improved reliability - crash of one part doens't take
++   - Improved reliability - crash of one part doesn't take
+      out entire VM
+    - No security benefit over traditional QEMU, unless additional
+      unless additional controls such as SELinux or AppArmor are
+@@ -87,7 +87,7 @@ For example, to allow only ``qemu`` user to talk to ``qemu-helper``
+   </policy>
+ 
+ 
+-dbus-daemon can also perfom SELinux checks based on the security
++dbus-daemon can also perform SELinux checks based on the security
+ context of the source and the target. For example, ``virtiofs_t``
+ could be allowed to send a message to ``svirt_t``, but ``virtiofs_t``
+ wouldn't be allowed to send a message to ``virtiofs_t``.
+diff --git a/docs/interop/nbd.txt b/docs/interop/nbd.txt
+index 45118809618e..f3b3cacc9621 100644
+--- a/docs/interop/nbd.txt
++++ b/docs/interop/nbd.txt
+@@ -53,5 +53,5 @@ the operation of that feature.
+ * 2.12: NBD_CMD_BLOCK_STATUS for "base:allocation"
+ * 3.0: NBD_OPT_STARTTLS with TLS Pre-Shared Keys (PSK),
+ NBD_CMD_BLOCK_STATUS for "qemu:dirty-bitmap:", NBD_CMD_CACHE
+-* 4.2: NBD_FLAG_CAN_MULTI_CONN for sharable read-only exports,
++* 4.2: NBD_FLAG_CAN_MULTI_CONN for shareable read-only exports,
+ NBD_CMD_FLAG_FAST_ZERO
+diff --git a/docs/interop/vhost-user-gpu.rst b/docs/interop/vhost-user-gpu.rst
+index 688f8b425999..3268bf405ce3 100644
+--- a/docs/interop/vhost-user-gpu.rst
++++ b/docs/interop/vhost-user-gpu.rst
+@@ -66,7 +66,7 @@ VhostUserGpuCursorPos
+ 
+ :scanout-id: ``u32``, the scanout where the cursor is located
+ 
+-:x/y: ``u32``, the cursor postion
++:x/y: ``u32``, the cursor position
+ 
+ VhostUserGpuCursorUpdate
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+diff --git a/docs/interop/vhost-user.rst b/docs/interop/vhost-user.rst
+index 10e3e3475ed8..988f1541447d 100644
+--- a/docs/interop/vhost-user.rst
++++ b/docs/interop/vhost-user.rst
+@@ -464,7 +464,7 @@ the ``VHOST_USER_SET_MEM_TABLE`` request. For invalidation events, the
+ (3), the I/O virtual address and the size. On success, the slave is
+ expected to reply with a zero payload, non-zero otherwise.
+ 
+-The slave relies on the slave communcation channel (see :ref:`Slave
++The slave relies on the slave communication channel (see :ref:`Slave
+ communication <slave_communication>` section below) to send IOTLB miss
+ and access failure events, by sending ``VHOST_USER_SLAVE_IOTLB_MSG``
+ requests to the master with a ``struct vhost_iotlb_msg`` as
+@@ -1450,7 +1450,7 @@ vhost-user backends can provide various devices & services and may
+ need to be configured manually depending on the use case. However, it
+ is a good idea to follow the conventions listed here when
+ possible. Users, QEMU or libvirt, can then rely on some common
+-behaviour to avoid heterogenous configuration and management of the
++behaviour to avoid heterogeneous configuration and management of the
+ backend programs and facilitate interoperability.
+ 
+ Each backend installed on a host system should come with at least one
+diff --git a/docs/rdma.txt b/docs/rdma.txt
+index a86e992c8453..49dc9f8bcab4 100644
+--- a/docs/rdma.txt
++++ b/docs/rdma.txt
+@@ -261,7 +261,7 @@ qemu_rdma_exchange_send(header, data, optional response header & data):
+    of the connection (described below).
+ 
+ All of the remaining command types (not including 'ready')
+-described above all use the aformentioned two functions to do the hard work:
++described above all use the aforementioned two functions to do the hard work:
+ 
+ 1. After connection setup, RAMBlock information is exchanged using
+    this protocol before the actual migration begins. This information includes
+diff --git a/docs/specs/ppc-spapr-hotplug.txt b/docs/specs/ppc-spapr-hotplug.txt
+index 859d52cce6c8..d4fb2d46d950 100644
+--- a/docs/specs/ppc-spapr-hotplug.txt
++++ b/docs/specs/ppc-spapr-hotplug.txt
+@@ -371,7 +371,7 @@ ibm,dynamic-memory
+ 
+ This property describes the dynamically reconfigurable memory. It is a
+ property encoded array that has an integer N, the number of LMBs followed
+-by N LMB list entires.
++by N LMB list entries.
+ 
+ Each LMB list entry consists of the following elements:
+ 
+@@ -390,7 +390,7 @@ Each LMB list entry consists of the following elements:
+ ibm,dynamic-memory-v2
+ 
+ This property describes the dynamically reconfigurable memory. This is
+-an alternate and newer way to describe dyanamically reconfigurable memory.
++an alternate and newer way to describe dynamically reconfigurable memory.
+ It is a property encoded array that has an integer N (the number of
+ LMB set entries) followed by N LMB set entries. There is an LMB set entry
+ for each sequential group of LMBs that share common attributes.
+diff --git a/docs/specs/ppc-spapr-xive.rst b/docs/specs/ppc-spapr-xive.rst
+index 7144347560f1..f47f739e0190 100644
+--- a/docs/specs/ppc-spapr-xive.rst
++++ b/docs/specs/ppc-spapr-xive.rst
+@@ -46,7 +46,7 @@ default mode. ``dual`` means that both modes XICS **and** XIVE are
+ supported and if the guest OS supports XIVE, this mode will be
+ selected.
+ 
+-The choosen interrupt mode is activated after a reconfiguration done
++The chosen interrupt mode is activated after a reconfiguration done
+ in a machine reset.
+ 
+ KVM negotiation
+@@ -158,7 +158,7 @@ XIVE Device tree properties
+ ---------------------------
+ 
+ The properties for the PAPR interrupt controller node when the *XIVE
+-native exploitation mode* is selected shoud contain:
++native exploitation mode* is selected should contain:
+ 
+ - ``device_type``
+ 
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 45f891eb3cad..fe45840fbe15 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -72,7 +72,7 @@ Boot options
+ ------------
+ 
+ The Aspeed machines can be started using the -kernel option to load a
+-Linux kernel or from a firmare image which can be downloaded from the
++Linux kernel or from a firmware image which can be downloaded from the
+ OpenPOWER jenkins :
+ 
+    https://openpower.xyz/
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index 0cb8b0142447..808c334fe74d 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -79,7 +79,7 @@ Creating sound card devices and vnc without ``audiodev=`` property (since 4.2)
+ 
+ When not using the deprecated legacy audio config, each sound card
+ should specify an ``audiodev=`` property.  Additionally, when using
+-vnc, you should specify an ``audiodev=`` propery if you plan to
++vnc, you should specify an ``audiodev=`` property if you plan to
+ transmit audio through the VNC protocol.
+ 
+ Creating sound card devices using ``-soundhw`` (since 5.1)
+@@ -111,7 +111,7 @@ Splitting RAM by default between NUMA nodes has the same issues as ``mem``
+ parameter described above with the difference that the role of the user plays
+ QEMU using implicit generic or board specific splitting rule.
+ Use ``memdev`` with *memory-backend-ram* backend or ``mem`` (if
+-it's supported by used machine type) to define mapping explictly instead.
++it's supported by used machine type) to define mapping explicitly instead.
+ 
+ ``-mem-path`` fallback to RAM (since 4.1)
+ '''''''''''''''''''''''''''''''''''''''''
+@@ -541,10 +541,10 @@ The ``[hub_id name]`` parameter tuple of the 'hostfwd_add' and
+ Guest Emulator ISAs
+ -------------------
+ 
+-RISC-V ISA privledge specification version 1.09.1 (removed in 5.1)
++RISC-V ISA privilege specification version 1.09.1 (removed in 5.1)
+ ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+-The RISC-V ISA privledge specification version 1.09.1 has been removed.
++The RISC-V ISA privilege specification version 1.09.1 has been removed.
+ QEMU supports both the newer version 1.10.0 and the ratified version 1.11.0, these
+ should be used instead of the 1.09.1 version.
+ 
+diff --git a/docs/system/target-avr.rst b/docs/system/target-avr.rst
+index eb5c513cce09..25ab46ef05cc 100644
+--- a/docs/system/target-avr.rst
++++ b/docs/system/target-avr.rst
+@@ -10,7 +10,7 @@ xmega6 and xmega7.
+ 
+ As for now it supports few Arduino boards for educational and testing purposes.
+ These boards use a ATmega controller, which model is limited to USART & 16-bit
+-timer devices, enought to run FreeRTOS based applications (like
++timer devices, enough to run FreeRTOS based applications (like
+ https://github.com/seharris/qemu-avr-tests/blob/master/free-rtos/Demo/AVR_ATMega2560_GCC/demo.elf
+ ).
+ 
+@@ -30,7 +30,7 @@ AVR cpu
+ 
+    telnet localhost 5678
+ 
+-- Debugging wit GDB debugger::
++- Debugging with GDB debugger::
+ 
+    qemu-system-avr -machine mega2560 -bios demo.elf -s -S
+ 
+diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+index e33c81ed41f1..7fe6a87291c2 100644
+--- a/docs/tools/virtiofsd.rst
++++ b/docs/tools/virtiofsd.rst
+@@ -76,7 +76,7 @@ Options
+     I/O timeout in seconds.  The default depends on cache= option.
+ 
+   * writeback|no_writeback -
+-    Enable/disable writeback cache. The cache alows the FUSE client to buffer
++    Enable/disable writeback cache. The cache allows the FUSE client to buffer
+     and merge write requests.  The default is ``no_writeback``.
+ 
+   * xattr|no_xattr -
 -- 
 2.26.2
 
