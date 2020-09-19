@@ -1,76 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJaOF-00014Q-Sc
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 06:46:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55494)
+	id 1kJbu9-0003nZ-Ej
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 08:23:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJaOE-000142-Am; Sat, 19 Sep 2020 06:46:46 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34038)
+ id 1kJbu7-0003nE-57; Sat, 19 Sep 2020 08:23:47 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39434)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJaOC-0003vc-Hi; Sat, 19 Sep 2020 06:46:45 -0400
-Received: by mail-wr1-x444.google.com with SMTP id t10so8027386wrv.1;
- Sat, 19 Sep 2020 03:46:43 -0700 (PDT)
+ id 1kJbu4-0005jk-QD; Sat, 19 Sep 2020 08:23:46 -0400
+Received: by mail-wm1-x344.google.com with SMTP id b79so8056682wmb.4;
+ Sat, 19 Sep 2020 05:23:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+atIDDG1io4VXvDSH1rnmJsXFlg1IvhbkCCWv/A459w=;
- b=L7Q+DqKblfyvJGPuDKDgeDAQxuKwIzyrLNmbPY3odJ+aRcV/n0cH9CdkoVkQX0OVYH
- Oqju+Gxv5aFJZCFAA6orJ5y7VZ3Aq4zm+2dxDIxKLwPv1mq8nM449R9b0Ra227Gh1SxG
- m5l/nztx0h/ra2WLHG51egnaMs16KMVlDDGrIAa/54Af0Fe4SsU+g7umwW5XSOEelZTE
- Nma2Ev6i/U5YM9wLiXnvxrI863vNleUN22cD1t2D+Dud13Qyz94/IgxDu/UFAH3fdjuH
- 2C6wLiBL+229pEmoBxMMrz1kiVSr+LANGIH5lGQzumJMysOT059X5ewUbBW4LK0U7bk/
- 2R1A==
+ bh=x792t5UgtPuY5LZTB49doOI/JJSALOXiZvyzW0t5x+c=;
+ b=BOHpXfjdTvyGuTna9BiGKh6JLCpXZTodw3hN3etKMWj3HztuXgxT9nPGXweegoAbWK
+ /c1o3t+8/nnlAeImqOyZRVXRLwWAtpUwhX3mi5Oqwwdfa+ivcPOHGZxV/JpyrDZyzBEW
+ Iz4YLWzAnn+J6NPulAMEWvzevD9jfqANWyWtqGfApAhAmp8hYW7473cS/Z+goo3MkuEk
+ DBTPUHSX4dHJIS7smU5LPicDK229Y++kq9Jq6ncuU3SSY92ImthYifBAQvd13Y2otPb+
+ 1YvMNtCPj/PMFyh4XUGy3qGraAF5qVpKC0yiTvHkx7lvtF7Jl6XmlF3ZloLO8jAA+dzc
+ 12FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=+atIDDG1io4VXvDSH1rnmJsXFlg1IvhbkCCWv/A459w=;
- b=hcyljdiMJdH+Ls2+fXJ0DvP/zMi7+v1Y00HQJiq3XssLWcbk4FVaYFxhZRMWaFY/oz
- 5IC+LeJj0nF2kn09Awnt622MaUY+6IgR99t5HIfeiAG4dvwtRZ+b6xnUlY4Q+pKu/jMB
- hBO5I6NVMnwKv/hcDwBqT63CXD4M+R3fGamyuZUhgWMvQUX0THX/PHUefSTV5tkobOIo
- 11JOKQQivZwJUaGDLZaf+89j0WuOW/nHCMMllrXSXMe6am44mgMQ6Kos4IQ5+bvXaO2U
- Lkr9X5HFbr4dKFwABPWYB0RD3FkN5rNaTl4no4dUlw6FMo1oiIYYgHS1IVYTweym5zk2
- YHeg==
-X-Gm-Message-State: AOAM533XZWdHXFoUARILVWTkiBgI8/sCvlL9cHC4KNnhqKJ5a25llAkR
- e7EwOfM8uzLiDXKxQrcgUXE=
-X-Google-Smtp-Source: ABdhPJwIUEubnUgQ5iYtNG90PMXX/5wvkEgNsbdyUFQLIvnxwAF+jv0PzFGMossto8pfjvWLxvVj9w==
-X-Received: by 2002:a5d:4450:: with SMTP id x16mr40742441wrr.28.1600512401766; 
- Sat, 19 Sep 2020 03:46:41 -0700 (PDT)
+ bh=x792t5UgtPuY5LZTB49doOI/JJSALOXiZvyzW0t5x+c=;
+ b=FkyR7LU6L7v0r+rxCgXOnDyzO164UrDqnTkMnk1aI8tvH8yQl3fbQiUEY04YBcsvoc
+ tym8cDjI+jgLja1BvhUrwwFTwXTnigNUb+I9v0q+522uNV+o1y/CIis2MWT/VfJCgPll
+ dILGH/anBDRWrkrniHWdl9hGoAXUE+Mnon1qV0O/7CgN40gSov4/DNFpUeam+v1NP3yv
+ tPQ5dfuQlcj5CWXwVi7umHWZ1/AYAsSX1bYrazrewic9DLvUK4FA9ZpKnfuhltI0YoT3
+ nZaYuyj8FH+NmYXS2yS2W1HwwhSAM1AygJTyRrHa5Symlu3gkKagAzG2GItCRt8S/591
+ R7Mw==
+X-Gm-Message-State: AOAM531bVDHfcl/zChbd5U98JtJmpK3v5ZtFdDyoNlu29KxQe69Ie8ME
+ hGbKXcmGlkgARRDyE5ekUQNny5lhMLU=
+X-Google-Smtp-Source: ABdhPJx8NQNWx5+UK5hbmiFeHbiPQ6hDt28AUcOjbZwaOpNvxgG3FwW8lMB3FlTPshT4MXYi0VsT9A==
+X-Received: by 2002:a05:600c:210c:: with SMTP id
+ u12mr22001682wml.185.1600518222482; 
+ Sat, 19 Sep 2020 05:23:42 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id l16sm11448798wrb.70.2020.09.19.03.46.40
+ by smtp.gmail.com with ESMTPSA id f12sm9972368wmf.26.2020.09.19.05.23.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 19 Sep 2020 03:46:40 -0700 (PDT)
+ Sat, 19 Sep 2020 05:23:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] Add *.pyc back to the .gitignore file
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20200919101859.28739-1-thuth@redhat.com>
+Subject: Re: [PATCH] xen: xenguest is not used so is not needed
+To: Anthony PERARD <anthony.perard@citrix.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200727140048.19779-1-mjt@msgid.tls.msk.ru>
+ <20200727150949.GC2866@perard.uk.xensource.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b9aa78cc-4919-6ed7-37ea-868f2b0e1c72@amsat.org>
-Date: Sat, 19 Sep 2020 12:46:40 +0200
+Message-ID: <07fb2cbf-e006-0ee8-a749-af0d5b4fcc9e@amsat.org>
+Date: Sat, 19 Sep 2020 14:23:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200919101859.28739-1-thuth@redhat.com>
+In-Reply-To: <20200727150949.GC2866@perard.uk.xensource.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.869,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,32 +87,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 10:46:46 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 12:23:47 -0000
 
-On 9/19/20 12:18 PM, Thomas Huth wrote:
-> Python still dumps its bytecode into the source directory, so
-> we should continue to ignore the *.pyc files.
-> 
-> Fixes: 0e72b7df4d ("Simplify the .gitignore file")
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  .gitignore | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/.gitignore b/.gitignore
-> index 5515f595e6..b32bca1315 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -1,5 +1,6 @@
->  /GNUmakefile
->  /build/
-> +*.pyc
->  .sdk
->  .stgit-*
->  .git-submodule-status
-> 
+Cc'ing qemu-trivial@
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+On 7/27/20 5:09 PM, Anthony PERARD wrote:
+> On Mon, Jul 27, 2020 at 05:00:48PM +0300, Michael Tokarev wrote:
+>> There's no references in only file which includes xenguest.h
+>> to any xen definitions. And there's no references to -lxenguest
+>> in qemu, either. Drop it.
+> 
+> I'm not sure what you mean by "no references to -lxenguest", do you mean
+> in the binary?
+> 
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> 
+> Otherwise, thanks for the cleanup!
+> 
+> Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+> 
 
