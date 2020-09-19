@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJhs0-0006aJ-Ka
+	id 1kJhs0-0006b8-Rq
 	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 14:46:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51960)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhrv-0006QV-Cj; Sat, 19 Sep 2020 14:45:56 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:36865)
+ id 1kJhry-0006Uc-BQ; Sat, 19 Sep 2020 14:45:58 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:47719)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhri-0001Sa-9b; Sat, 19 Sep 2020 14:45:52 -0400
+ id 1kJhrv-0001T2-Me; Sat, 19 Sep 2020 14:45:57 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MVrXh-1jsS4z0XG1-00RmE9; Sat, 19 Sep 2020 20:45:20 +0200
+ id 1MumVX-1kb6Dm2kjr-00rnO7; Sat, 19 Sep 2020 20:45:26 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  zhaolichang <zhaolichang@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 12/17] scripts/: fix some comment spelling errors
-Date: Sat, 19 Sep 2020 20:44:46 +0200
-Message-Id: <20200919184451.2129349-13-laurent@vivier.eu>
+Subject: [PULL 15/17] disas/: fix some comment spelling errors
+Date: Sat, 19 Sep 2020 20:44:49 +0200
+Message-Id: <20200919184451.2129349-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200919184451.2129349-1-laurent@vivier.eu>
 References: <20200919184451.2129349-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ToRF9ijQbLwKLUOyNUID350EhQHEUJaEBCR5GZRbDaA4yqRPpwO
- +3nZ5HNFcERP19jm/r+HzyJnPqechdUX16e6mh8EqaYu8AhisSuWIkeAAjA1CRINQ0NuEto
- pQLIul7JnU4+5LXzBUI/YlvC1eJkSG3q1agAsrFQfaJZDgoJikdNrq6HLcqu2IgkLG1A/2O
- 1VDyQv4pf4gOsvcVtKF8Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gkVeuz2F/kQ=:wAj3wbq3wtVHME79IbxU8K
- 2Q3+/WoOtXsvTg5g1P32rwYJguWh6JQ8YY0feKmt3E1s1gUhhjMUaAjh4vex9jzJiv56CC839
- y76kv8gBqvMOiHtDP3fgrczW4r6EWUVUppAssZq+gW4lYk7lwGu8jah+YH44ArUatG512vFSb
- nPwDA604QDsCAYiADazN26M61tWWHnluf1gQvOAdMat8NGkj+zFhMnKDH9h3qiPUls9nstI2J
- LheGOay3OIdPCq6ZtYOvvbB1qIEyqRSI0dEBeMlb3w4lKU756VWdMC3fjCOu/87t2J8WF5NQr
- b3fTc3IgiK5Ce49P0JdWHns+8QLFE1uRSAsmAgmhlATKiOh4vNFOqZG2ZZrYjf7iLCwvfFxeW
- KAZEg/X9/WKQehKH7B1vUMZ4yFgTKHCNZCCNiN8SzwnfxHOIEmxWUurmY42D9vktfBkWSCuse
- L714LdPxRSkXixHfTSJ36W3d9xfaq2wP61Cl9RZQQCYfVZbmTrWxrUyb9ZgVaFvdcIZ12NIOH
- L2LrPWJJxd4EuS4QsNumQysIdlKWsdOea/lNyV9KEQwocU3eHa3vfIvknlXbR9tAsHAoUu0zU
- MFShzWcuSpuWIR/VSae8/rnHZjmmM9XGOG1sgyM4IyLfzMiZr7c0JKSHMys+IYdI8pKNWlFxn
- VI6axrtdATgkcP2O91ME9WvIwByJ1BcSSvwkX+uYNkBAvIvsprca+RssvKhfU2s0zEgbHXDD2
- nCXoTrDBidcufmj2krixTlRTYNbI7AU/tn+07F8+6jvLX6AIbG6OGf4vHOBOirRqoSz/jvy1q
- gN4tLuw9Mp3GN8skaTL7dyhoJZ136EdlFK5URv8VNuZUyvbr2US8SduuU63URIM60FyGpn8
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BTJflAAr8RmxrOXvUIfLapFUTFo5ADqXvPsdDBbVMnaqADDkUZt
+ Giz8/eOIhhqkpS9LPQ6HpJMjI8axYHwQzuflWIvnVbyPCjFL4lASAdCdju1cgOttFbQQ7Xx
+ L1Ne5fbMBP88aQCmi257gkS5fVKxcAUcMjTj5w66IxckMrOWJ+6EQpzqKWx07Nc1qX89aPf
+ 4f+VS/uvpQY4I+NZIzy2A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GTZiQbERvRc=:VyDIi8XOob9YryTdpo506z
+ gQyFqPQW91NLOBsk64CmKdjHo58n7eUQLOopbhQIGF6masMGvGg6BcCFbniUkj3cwCr/9LiiD
+ tRiEbwWB/qNZ7jVtFKvknHmS48+kB0Szn5n9m7RiLTI0I/2uFrBCOpfGdP5pohFPbsXSDNga5
+ Xplt9eNzya+hU6Gi9shCh9hm2FVGbKgxidr9KVKKW5Od87dpP7/51DVFCfiaRgwLJzuhiCul4
+ lxx/PoGPIIO37YPgXa1vGWUyBooa2CXqZTodGMO5Ijcf7O5tFKVgya77f+vNkeOL+Ogvgc5K2
+ Swb8ze9zMgayr4sQj92yuOH1SO0HpDHsfJRyxLLBnNxW9k7RpMjB4/hx0aheuU5jNHE2Gh5mH
+ oOcWsx+gt966t40fFYiXwRA6fFV6Rn07UIDatm0cP1QFjACLUzsZad73fI3f27prwjKBKwNP4
+ /L2cErwZLXsC9+/6Ymm1wfb3fgAo0yviKmZB/FAMtn/9H4WhCxIe6fBKfzHEc0D/mgyfXBHTf
+ cctf170v8ZlbeTCxv9DlF9ONxasPM3pCo4yXIgZv2rUl6GRFwo/Ph5aXxmWQ2ucs7TaWSIu+u
+ dA1R3CLOIh2kH1kbdTBRmH28LGkDT434/9feoqIhUm+bTqGWHIk2mHib3eVFjIBNEnZp0faae
+ 3o8ZqgU5iYZ2YEeDEh+Og0yRQD6HgZiczcQW/s1jZuQzWRlCVV9iSISZ0cVRp27ypFfpAHq1Y
+ zPmiLFIUlrGmGUkebmIit3njOZXdN9T3MsWnJoDXJMNjPrUgPH7M7L/5p5dWoWLMpif+vTd6l
+ dMpfPv5u3lD5E6e3D/lKIFeLmyK0fsXkNrcwI56iQBVVExX2f8Nz8tenFSRRAv08WdMKw2G
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:13
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:11
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -65,109 +66,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 18:45:57 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 18:45:59 -0000
 
 From: zhaolichang <zhaolichang@huawei.com>
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the scripts folder.
+and finally found some spelling errors in the disas folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20200917075029.313-5-zhaolichang@huawei.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20200917075029.313-9-zhaolichang@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/checkpatch.pl          | 2 +-
- scripts/clean-header-guards.pl | 2 +-
- scripts/decodetree.py          | 6 +++---
- scripts/oss-fuzz/build.sh      | 2 +-
- scripts/tracetool/__init__.py  | 2 +-
- 5 files changed, 7 insertions(+), 7 deletions(-)
+ disas/hppa.c | 2 +-
+ disas/m68k.c | 8 ++++----
+ disas/ppc.c  | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index bd3faa154c36..50910899f2ee 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1870,7 +1870,7 @@ sub process {
- 			substr($s, 0, length($c), '');
+diff --git a/disas/hppa.c b/disas/hppa.c
+index 2dbd1fc4454e..dcf9a47f3489 100644
+--- a/disas/hppa.c
++++ b/disas/hppa.c
+@@ -2021,7 +2021,7 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
+ 			fput_fp_reg (GET_FIELD (insn, 6, 10), info);
+ 		      break;
  
- 			# Make sure we remove the line prefixes as we have
--			# none on the first line, and are going to readd them
-+			# none on the first line, and are going to re-add them
- 			# where necessary.
- 			$s =~ s/\n./\n/gs;
+-		      /* 'fA' will not generate a space before the regsiter
++		      /* 'fA' will not generate a space before the register
+ 			 name.  Normally that is fine.  Except that it
+ 			 causes problems with xmpyu which has no FP format
+ 			 completer.  */
+diff --git a/disas/m68k.c b/disas/m68k.c
+index 863409c67ccb..aefaecfbd6cb 100644
+--- a/disas/m68k.c
++++ b/disas/m68k.c
+@@ -70,7 +70,7 @@ struct floatformat
+   unsigned int exp_start;
+   unsigned int exp_len;
+   /* Bias added to a "true" exponent to form the biased exponent.  It
+-     is intentionally signed as, otherwize, -exp_bias can turn into a
++     is intentionally signed as, otherwise, -exp_bias can turn into a
+      very large number (e.g., given the exp_bias of 0x3fff and a 64
+      bit long, the equation (long)(1 - exp_bias) evaluates to
+      4294950914) instead of -16382).  */
+@@ -479,7 +479,7 @@ struct m68k_opcode_alias
+       and remaining 3 bits of register shifted 9 bits in first word.
+       Indicate upper/lower in 1 bit shifted 7 bits in second word.
+       Use with `R' or `u' format.
+-   n  `m' withouth upper/lower indication. (For M[S]ACx; 4 bits split
++   n  `m' without upper/lower indication. (For M[S]ACx; 4 bits split
+       with MSB shifted 6 bits in first word and remaining 3 bits of
+       register shifted 9 bits in first word.  No upper/lower
+       indication is done.)  Use with `R' or `u' format.
+@@ -854,7 +854,7 @@ fetch_arg (unsigned char *buffer,
  
-diff --git a/scripts/clean-header-guards.pl b/scripts/clean-header-guards.pl
-index f47d673ad5c5..a6680253b1fa 100755
---- a/scripts/clean-header-guards.pl
-+++ b/scripts/clean-header-guards.pl
-@@ -19,7 +19,7 @@
- # Does the following:
- # - Header files without a recognizable header guard are skipped.
- # - Clean up any untidy header guards in-place.  Warn if the cleanup
--#   renames guard symbols, and explain how to find occurences of these
-+#   renames guard symbols, and explain how to find occurrences of these
- #   symbols that may have to be updated manually.
- # - Warn about duplicate header guard symbols.  To make full use of
- #   this warning, you should clean up *all* headers in one run.
-diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-index c02de9865b27..60fd3b5e5f66 100644
---- a/scripts/decodetree.py
-+++ b/scripts/decodetree.py
-@@ -94,7 +94,7 @@ def str_indent(c):
+ /* Check if an EA is valid for a particular code.  This is required
+    for the EMAC instructions since the type of source address determines
+-   if it is a EMAC-load instruciton if the EA is mode 2-5, otherwise it
++   if it is a EMAC-load instruction if the EA is mode 2-5, otherwise it
+    is a non-load EMAC instruction and the bits mean register Ry.
+    A similar case exists for the movem instructions where the register
+    mask is interpreted differently for different EAs.  */
+@@ -1080,7 +1080,7 @@ print_indexed (int basereg,
  
+ /* Returns number of bytes "eaten" by the operand, or
+    return -1 if an invalid operand was found, or -2 if
+-   an opcode tabe error was found.
++   an opcode table error was found.
+    ADDR is the pc for this arg to be relative to.  */
  
- def str_fields(fields):
--    """Return a string uniquely identifing FIELDS"""
-+    """Return a string uniquely identifying FIELDS"""
-     r = ''
-     for n in sorted(fields.keys()):
-         r += '_' + n
-@@ -814,7 +814,7 @@ def parse_generic(lineno, parent_pat, name, toks):
-     arg = None
-     fmt = None
-     for t in toks:
--        # '&Foo' gives a format an explcit argument set.
-+        # '&Foo' gives a format an explicit argument set.
-         if re.fullmatch(re_arg_ident, t):
-             tt = t[1:]
-             if arg:
-@@ -903,7 +903,7 @@ def parse_generic(lineno, parent_pat, name, toks):
-     elif not (is_format and width == 0) and width != insnwidth:
-         error(lineno, 'definition has {0} bits'.format(width))
- 
--    # Do not check for fields overlaping fields; one valid usage
-+    # Do not check for fields overlapping fields; one valid usage
-     # is to be able to duplicate fields via import.
-     fieldmask = 0
-     for f in flds.values():
-diff --git a/scripts/oss-fuzz/build.sh b/scripts/oss-fuzz/build.sh
-index d16207eb6726..0c3ca9e06f02 100755
---- a/scripts/oss-fuzz/build.sh
-+++ b/scripts/oss-fuzz/build.sh
-@@ -69,7 +69,7 @@ mkdir -p "$DEST_DIR/lib/"  # Copy the shared libraries here
- 
- if ! make "-j$(nproc)" qemu-fuzz-i386; then
-     fatal "Build failed. Please specify a compiler with fuzzing support"\
--          "using the \$CC and \$CXX environemnt variables"\
-+          "using the \$CC and \$CXX environment variables"\
-           "\nFor example: CC=clang CXX=clang++ $0"
- fi
- 
-diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-index 3ccfa1e1163d..3ee54be223c6 100644
---- a/scripts/tracetool/__init__.py
-+++ b/scripts/tracetool/__init__.py
-@@ -34,7 +34,7 @@ def error(*lines):
- def out(*lines, **kwargs):
-     """Write a set of output lines.
- 
--    You can use kwargs as a shorthand for mapping variables when formating all
-+    You can use kwargs as a shorthand for mapping variables when formatting all
-     the strings in lines.
-     """
-     lines = [ l % kwargs for l in lines ]
+ static int
+diff --git a/disas/ppc.c b/disas/ppc.c
+index 63e97cfe1da2..02be87819832 100644
+--- a/disas/ppc.c
++++ b/disas/ppc.c
+@@ -5226,7 +5226,7 @@ operand_value_powerpc (const struct powerpc_operand *operand,
+       if ((operand->flags & PPC_OPERAND_SIGNED) != 0)
+ 	{
+ 	  /* BITM is always some number of zeros followed by some
+-	     number of ones, followed by some numer of zeros.  */
++	     number of ones, followed by some number of zeros.  */
+ 	  unsigned long top = operand->bitm;
+ 	  /* top & -top gives the rightmost 1 bit, so this
+ 	     fills in any trailing zeros.  */
 -- 
 2.26.2
 
