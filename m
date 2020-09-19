@@ -1,80 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJbu9-0003nZ-Ej
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 08:23:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41034)
+	id 1kJd2n-0001EQ-7c
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 09:36:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJbu7-0003nE-57; Sat, 19 Sep 2020 08:23:47 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39434)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJbu4-0005jk-QD; Sat, 19 Sep 2020 08:23:46 -0400
-Received: by mail-wm1-x344.google.com with SMTP id b79so8056682wmb.4;
- Sat, 19 Sep 2020 05:23:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=x792t5UgtPuY5LZTB49doOI/JJSALOXiZvyzW0t5x+c=;
- b=BOHpXfjdTvyGuTna9BiGKh6JLCpXZTodw3hN3etKMWj3HztuXgxT9nPGXweegoAbWK
- /c1o3t+8/nnlAeImqOyZRVXRLwWAtpUwhX3mi5Oqwwdfa+ivcPOHGZxV/JpyrDZyzBEW
- Iz4YLWzAnn+J6NPulAMEWvzevD9jfqANWyWtqGfApAhAmp8hYW7473cS/Z+goo3MkuEk
- DBTPUHSX4dHJIS7smU5LPicDK229Y++kq9Jq6ncuU3SSY92ImthYifBAQvd13Y2otPb+
- 1YvMNtCPj/PMFyh4XUGy3qGraAF5qVpKC0yiTvHkx7lvtF7Jl6XmlF3ZloLO8jAA+dzc
- 12FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=x792t5UgtPuY5LZTB49doOI/JJSALOXiZvyzW0t5x+c=;
- b=FkyR7LU6L7v0r+rxCgXOnDyzO164UrDqnTkMnk1aI8tvH8yQl3fbQiUEY04YBcsvoc
- tym8cDjI+jgLja1BvhUrwwFTwXTnigNUb+I9v0q+522uNV+o1y/CIis2MWT/VfJCgPll
- dILGH/anBDRWrkrniHWdl9hGoAXUE+Mnon1qV0O/7CgN40gSov4/DNFpUeam+v1NP3yv
- tPQ5dfuQlcj5CWXwVi7umHWZ1/AYAsSX1bYrazrewic9DLvUK4FA9ZpKnfuhltI0YoT3
- nZaYuyj8FH+NmYXS2yS2W1HwwhSAM1AygJTyRrHa5Symlu3gkKagAzG2GItCRt8S/591
- R7Mw==
-X-Gm-Message-State: AOAM531bVDHfcl/zChbd5U98JtJmpK3v5ZtFdDyoNlu29KxQe69Ie8ME
- hGbKXcmGlkgARRDyE5ekUQNny5lhMLU=
-X-Google-Smtp-Source: ABdhPJx8NQNWx5+UK5hbmiFeHbiPQ6hDt28AUcOjbZwaOpNvxgG3FwW8lMB3FlTPshT4MXYi0VsT9A==
-X-Received: by 2002:a05:600c:210c:: with SMTP id
- u12mr22001682wml.185.1600518222482; 
- Sat, 19 Sep 2020 05:23:42 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id f12sm9972368wmf.26.2020.09.19.05.23.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 19 Sep 2020 05:23:41 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] xen: xenguest is not used so is not needed
-To: Anthony PERARD <anthony.perard@citrix.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200727140048.19779-1-mjt@msgid.tls.msk.ru>
- <20200727150949.GC2866@perard.uk.xensource.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <07fb2cbf-e006-0ee8-a749-af0d5b4fcc9e@amsat.org>
-Date: Sat, 19 Sep 2020 14:23:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <20200727150949.GC2866@perard.uk.xensource.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kJd2l-0001Do-DO
+ for qemu-trivial@nongnu.org; Sat, 19 Sep 2020 09:36:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37840)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kJd2i-000597-N3
+ for qemu-trivial@nongnu.org; Sat, 19 Sep 2020 09:36:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600522603;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=U9ubkd3O7+YWeUZ8RN0ix03ulsPZPWBQJNmS6a7M/ow=;
+ b=SnBtwgwqmQ9c74vV58GevE/P1Hhjb2E9JA12imt13vwZlE3tRihbXqDmHwznaSWLJJje+1
+ XQAeWCDRFJ73emET4FQR1v30nljfcX3FHsh8XKXhQpD51HQovIlSvWWg72PX7ILO32h9XE
+ YfgXDU4VaagMy7f0W2z/AZSWk0BYRPo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-443-PojkqYCxO6WaFs54D65m2A-1; Sat, 19 Sep 2020 09:36:40 -0400
+X-MC-Unique: PojkqYCxO6WaFs54D65m2A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9A5C10A7AE2;
+ Sat, 19 Sep 2020 13:36:39 +0000 (UTC)
+Received: from thuth.com (ovpn-112-71.ams2.redhat.com [10.36.112.71])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1B19A68D62;
+ Sat, 19 Sep 2020 13:36:38 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] Remove superfluous .gitignore files
+Date: Sat, 19 Sep 2020 15:36:37 +0200
+Message-Id: <20200919133637.72744-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 06:41:51
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,23 +65,147 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 12:23:47 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 13:36:47 -0000
 
-Cc'ing qemu-trivial@
+Since we are now always doing out-of-tree builds, these gitignore
+files should not be necessary anymore.
 
-On 7/27/20 5:09 PM, Anthony PERARD wrote:
-> On Mon, Jul 27, 2020 at 05:00:48PM +0300, Michael Tokarev wrote:
->> There's no references in only file which includes xenguest.h
->> to any xen definitions. And there's no references to -lxenguest
->> in qemu, either. Drop it.
-> 
-> I'm not sure what you mean by "no references to -lxenguest", do you mean
-> in the binary?
-> 
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> 
-> Otherwise, thanks for the cleanup!
-> 
-> Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
-> 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ pc-bios/keymaps/.gitignore       |  1 -
+ plugins/.gitignore               |  2 --
+ tests/.gitignore                 | 32 --------------------------------
+ tests/fp/.gitignore              |  2 --
+ tests/migration/.gitignore       |  2 --
+ tests/multiboot/.gitignore       |  3 ---
+ tests/qemu-iotests/.gitignore    |  9 ---------
+ tests/tcg/.gitignore             |  5 -----
+ tests/uefi-test-tools/.gitignore |  3 ---
+ 9 files changed, 59 deletions(-)
+ delete mode 100644 pc-bios/keymaps/.gitignore
+ delete mode 100644 plugins/.gitignore
+ delete mode 100644 tests/.gitignore
+ delete mode 100644 tests/fp/.gitignore
+ delete mode 100644 tests/migration/.gitignore
+ delete mode 100644 tests/multiboot/.gitignore
+ delete mode 100644 tests/qemu-iotests/.gitignore
+ delete mode 100644 tests/tcg/.gitignore
+ delete mode 100644 tests/uefi-test-tools/.gitignore
+
+diff --git a/pc-bios/keymaps/.gitignore b/pc-bios/keymaps/.gitignore
+deleted file mode 100644
+index f90738f4dc..0000000000
+--- a/pc-bios/keymaps/.gitignore
++++ /dev/null
+@@ -1 +0,0 @@
+-/*.stamp
+diff --git a/plugins/.gitignore b/plugins/.gitignore
+deleted file mode 100644
+index 7b8aaa1f10..0000000000
+--- a/plugins/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-qemu-plugins-ld.symbols
+-qemu-plugins-ld64.symbols
+diff --git a/tests/.gitignore b/tests/.gitignore
+deleted file mode 100644
+index d03c037d77..0000000000
+--- a/tests/.gitignore
++++ /dev/null
+@@ -1,32 +0,0 @@
+-atomic_add-bench
+-benchmark-crypto-cipher
+-benchmark-crypto-hash
+-benchmark-crypto-hmac
+-check-*
+-!check-*.c
+-!check-*.sh
+-fp/*.out
+-qht-bench
+-rcutorture
+-test-*
+-!test-*.c
+-!test-*.py
+-!docker/test-*
+-test-qapi-commands.[ch]
+-test-qapi-init-commands.[ch]
+-include/test-qapi-commands-sub-module.[ch]
+-test-qapi-commands-sub-sub-module.[ch]
+-test-qapi-emit-events.[ch]
+-test-qapi-events.[ch]
+-include/test-qapi-events-sub-module.[ch]
+-test-qapi-events-sub-sub-module.[ch]
+-test-qapi-types.[ch]
+-include/test-qapi-types-sub-module.[ch]
+-test-qapi-types-sub-sub-module.[ch]
+-test-qapi-visit.[ch]
+-include/test-qapi-visit-sub-module.[ch]
+-test-qapi-visit-sub-sub-module.[ch]
+-test-qapi-introspect.[ch]
+-*-test
+-qapi-schema/*.test.*
+-vm/*.img
+diff --git a/tests/fp/.gitignore b/tests/fp/.gitignore
+deleted file mode 100644
+index 704fd42992..0000000000
+--- a/tests/fp/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-fp-test
+-fp-bench
+diff --git a/tests/migration/.gitignore b/tests/migration/.gitignore
+deleted file mode 100644
+index 84f37552e4..0000000000
+--- a/tests/migration/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-initrd-stress.img
+-stress
+diff --git a/tests/multiboot/.gitignore b/tests/multiboot/.gitignore
+deleted file mode 100644
+index 93ef99800b..0000000000
+--- a/tests/multiboot/.gitignore
++++ /dev/null
+@@ -1,3 +0,0 @@
+-*.bin
+-*.elf
+-test.out
+diff --git a/tests/qemu-iotests/.gitignore b/tests/qemu-iotests/.gitignore
+deleted file mode 100644
+index da62054000..0000000000
+--- a/tests/qemu-iotests/.gitignore
++++ /dev/null
+@@ -1,9 +0,0 @@
+-check.log
+-check.time*
+-common.env
+-*.out.bad
+-*.notrun
+-socket_scm_helper
+-
+-# ignore everything in the scratch directory
+-scratch/
+diff --git a/tests/tcg/.gitignore b/tests/tcg/.gitignore
+deleted file mode 100644
+index 84d7541b28..0000000000
+--- a/tests/tcg/.gitignore
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# These are build artefacts which only appear when you are doing
+-# builds directly in the source tree.
+-config-*.mak
+-*-softmmu/
+-*-linux-user/
+diff --git a/tests/uefi-test-tools/.gitignore b/tests/uefi-test-tools/.gitignore
+deleted file mode 100644
+index 9f246701de..0000000000
+--- a/tests/uefi-test-tools/.gitignore
++++ /dev/null
+@@ -1,3 +0,0 @@
+-Build
+-Conf
+-log
+-- 
+2.18.2
+
 
