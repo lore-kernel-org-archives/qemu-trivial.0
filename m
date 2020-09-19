@@ -1,72 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJfeN-0001JU-VQ
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 12:23:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55718)
+	id 1kJhrD-0005wD-60
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 14:45:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51750)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJfeM-0001Ex-BZ; Sat, 19 Sep 2020 12:23:46 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:33440)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kJfeK-0001ZU-6j; Sat, 19 Sep 2020 12:23:45 -0400
-Received: by mail-lj1-x243.google.com with SMTP id k25so7577726ljk.0;
- Sat, 19 Sep 2020 09:23:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=h1dK1H3qIZ3YtwRio+FVOyiBNnTsEnjaiHbmZEifJpc=;
- b=IsASpxtbYTzFKN5Pb/jq2DCqAuLlJcakbL5rKMoTwJqTu+LkZTMMcrItBa4/ozTBXM
- wODn57Taqk5qUvuLK1WSqpIhp1+bGK+xT/xe9FKnxTFTLQllckK2QaPGbt/epVeDo57T
- YkT9RGbnnmIChdzHgsvohlvS8oP6v1oBioQys+MKDbNUd6xk1L804mSjWTyTVnt2mfLX
- T5IIcgFaTLewib1n4T6FHQhtDOVb3gJmNNCvl+HMtpZU8BkZFOyjrWpPVetopYJZ6OwB
- FDb3cercUleTbpvNlmotXacpmZslD3mwrJOL+87d3jqoY4wz01MbwLN9+GFsIrSdZmpE
- RGNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=h1dK1H3qIZ3YtwRio+FVOyiBNnTsEnjaiHbmZEifJpc=;
- b=CxjoFzn9Vj1HYzitYIEIWyLbpAc9WnA/+EvmlvuFM/0E1eYqFREJTCWwGjT1nouFSt
- 11qe2cHfd9u1xQYtRGSw0WAFmTrrZ4TF/ZUOGaL9Fzkgemarr6PcDCPguuwqnelPZPwH
- jmi29qXSCEkOl7oVNgNhPLk71/jI5Z7FjqxtP0lv4XArDguO4SVlg0xJjQLgd8rt1vZQ
- hx6e+Rvrl6zpfmSSYo4fFiZmR25V8BAjr2XAQc4MZM+GXol4btJwcFmsQ6FAAxz3hv7T
- po7pOGuz/n9DJiJyPhr9phiuxQ1G/e2IaXvXAvRY1D2GrJls6h3hPBcHwuKOEvv1LCev
- FErQ==
-X-Gm-Message-State: AOAM533LtWEJqD/VG6ptV/Jr8F9cZkKj5N8APQf5MCUvyR2izRatYx0M
- RSAZNMk8J2MYKLVqq5GS6IagCPBuLk7eu2JP5AA=
-X-Google-Smtp-Source: ABdhPJyl54WJITNX7jUozJdJNDECrHaBqibsGogCe/foCCFcmIpGSceBbOzJiS9YUD2pwGJ6IRKSv2lqsfRTLds19aw=
-X-Received: by 2002:a05:651c:1119:: with SMTP id
- d25mr12281989ljo.300.1600532621507; 
- Sat, 19 Sep 2020 09:23:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kJhrB-0005vk-MY; Sat, 19 Sep 2020 14:45:09 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:60065)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kJhr8-0001Ir-Ob; Sat, 19 Sep 2020 14:45:09 -0400
+Received: from localhost.localdomain ([82.252.129.222]) by
+ mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1Mm9NA-1kkHAC46Zk-00iCiO; Sat, 19 Sep 2020 20:45:01 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 00/17] Trivial branch for 5.2 patches
+Date: Sat, 19 Sep 2020 20:44:34 +0200
+Message-Id: <20200919184451.2129349-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20200918160250.1141-1-luoyonggang@gmail.com>
- <CAE2XoE9Vf3Zixv6Ds0BmO9O5EWWjPbG-0EkP0BEbPikuCc4SVg@mail.gmail.com>
- <5c0699e8-62ef-8f29-182f-a0744c727bae@redhat.com>
-In-Reply-To: <5c0699e8-62ef-8f29-182f-a0744c727bae@redhat.com>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Sun, 20 Sep 2020 00:23:31 +0800
-Message-ID: <CAE2XoE-Z5zLjs1aKmghXoXLUm7tguro5GFLBFPOKhv1Uq42b2A@mail.gmail.com>
-Subject: Re: [PATCH v5 0/4] Fixes curses on msys2/mingw
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000005b3f5805afad0ae0"
-Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x243.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:FYiDGj/X5eqDMnuI8MhBv3ReGc03TyFcO6EspACXJdrL4LHtla9
+ AYdcBf2G3ArtDLyghK+lEBZzflgf8seFooR8KprdTrwOlki3BqCCLto6WuRkTEt8F2iKlF2
+ 3CiMbfpW0nwSLoQGa89sY9g0uTaKdYZyvusBUnRHwbKWUqDK2HAvrsCm3vODljD3aD9ryq/
+ F46MeK73bpbh4tOQkLksw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:T4BaOkVEYvU=:NdJNE+Qfrh29p40Q8Ex3Kw
+ AMHr4NhnDGzSgHZ9n+TRIYFi7FHDjm+XWlWhNJEwZMiWfy5QERK33xlA4kl29rSvLke861Fed
+ qPyZud+sZ3hMCv5DK8mINdLmtlP4TVYip6RiGVaASaAoJZTNgUJpd6BvOIHGX0rj9+z2pKFEw
+ +e0lQ4dt8f4LsKNVLaT7jIG/v/FT5z3BJlqO68J3YFraRJkF/njw5SYs0UY1d9eHNKQpUT2gG
+ Zwk7HHDe7lLazbXQn0kJNXE42nriOVU9PJxp6mzvv4NipSpwIHMH0qh69KpEmqJLRRW6yLUxb
+ xJLeBw1B4cDThXnEwEVBGbUrgyn6JOVRzqFFjQfRs7zOhF6ZrGW4rMmtqJW/5+2/IaEgpqH0L
+ CKORvSHsFMr7SAMsZKSJ3pHO99Mqkjs3urEwgi8iRqbaLdG6fx2FPBGqsVw9BiRG7LvMA42AY
+ SD+wuODc7LRohtmhYxC0GYgAu1kydP6lxI1UHG6Zz+aiz7BAFZfTlQhYn9f+gsAOKiv0wmGwa
+ yDh6WS9eI0SBb/IWOPhJ5l4SpYpExlEDJguAuOrmLAHQkwCC2lyicdzjBzrynLVzr2hUExlC1
+ 056yqsjchoXZmkxcRcstPEX52Xd8+zrFnR5Qj+fKLNGF3muoPkVoux4q9ctj48TxE8gbKAC1P
+ DaYdmf/chZLrS4Z//dWvd/MQ6dTrAT6E6isp61cFbcA6SxMPQthC80Y8LESe7KLtGszll5rMd
+ SVEGMN8MrmBJfP6PewvWIdHTB+ZTeO2vnkevn0V9xsMFLhtjNh07p6E+aZbSfOPGo2RxFZd/K
+ 3cefvvyXFV7EPvc3+UtV5E1K/pjSfP2Vo32NZUDacdxe7foVlxb5t7SB9R7pNOFVgskDjok
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:03
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,76 +62,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 16:23:46 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 18:45:10 -0000
 
---0000000000005b3f5805afad0ae0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Sep 19, 2020 at 11:03 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
->
-> On 18/09/20 18:10, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:
-> >
-> >> Yonggang Luo (4):
-> >>   curses: Fixes compiler error that complain don't have langinfo.h on
-> >>     msys2/mingw
-> >>   curses: Fixes curses compiling errors.
-> >>   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURC=
-E
-> >>     are defined on msys2/mingw
-> >>   configure: Fixes ncursesw detection under msys2/mingw by convert the=
-m
-> >>     to meson
->
-> Hi, patches 1-3 are okay, but for patch 4 I think it's better to wait
-> for Meson 0.56 which will likely embed all the magic needed to test
-> curses (https://github.com/mesonbuild/meson/pull/7757).
->
-> Paolo
->
-Wonderfull, I think there is no need fixing configure anymore, so I convert
-it to meson
-
-Waiting https://github.com/mesonbuild/meson/pull/7757 to be merged.
-In deed when I convert to meson, I am facing a problem that
-DNCURSES_WIDECHAR  can not be tested with the library.
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---0000000000005b3f5805afad0ae0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sat, Sep 19, 2020 at 11:03 PM Paolo Bonzini &lt=
-;<a href=3D"mailto:pbonzini@redhat.com" target=3D"_blank">pbonzini@redhat.c=
-om</a>&gt; wrote:<br>&gt;<br>&gt; On 18/09/20 18:10, =E7=BD=97=E5=8B=87=E5=
-=88=9A(Yonggang Luo) wrote:<br>&gt; &gt;<br>&gt; &gt;&gt; Yonggang Luo (4):=
-<br>&gt; &gt;&gt; =C2=A0 curses: Fixes compiler error that complain don&#39=
-;t have langinfo.h on<br>&gt; &gt;&gt; =C2=A0 =C2=A0 msys2/mingw<br>&gt; &g=
-t;&gt; =C2=A0 curses: Fixes curses compiling errors.<br>&gt; &gt;&gt; =C2=
-=A0 win32: Simplify gmtime_r detection not depends on if =C2=A0_POSIX_C_SOU=
-RCE<br>&gt; &gt;&gt; =C2=A0 =C2=A0 are defined on msys2/mingw<br>&gt; &gt;&=
-gt; =C2=A0 configure: Fixes ncursesw detection under msys2/mingw by convert=
- them<br>&gt; &gt;&gt; =C2=A0 =C2=A0 to meson<br>&gt;<br>&gt; Hi, patches 1=
--3 are okay, but for patch 4 I think it&#39;s better to wait<br>&gt; for Me=
-son 0.56 which will likely embed all the magic needed to test<br>&gt; curse=
-s (<a href=3D"https://github.com/mesonbuild/meson/pull/7757" target=3D"_bla=
-nk">https://github.com/mesonbuild/meson/pull/7757</a>).<br>&gt;<br>&gt; Pao=
-lo<br>&gt;<div>Wonderfull, I think there is no need fixing configure anymor=
-e, so I convert it to meson</div><div><br></div><div>Waiting=C2=A0<a href=
-=3D"https://github.com/mesonbuild/meson/pull/7757" target=3D"_blank">https:=
-//github.com/mesonbuild/meson/pull/7757</a> to be merged.</div><div>In deed=
- when I convert to meson, I am facing a problem that=C2=A0<br>DNCURSES_WIDE=
-CHAR=C2=A0 can not be tested with the library.=C2=A0<br><br>--<br>=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=
-=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div><=
-/div>
-
---0000000000005b3f5805afad0ae0--
+The following changes since commit de39a045bd8d2b49e4f3d07976622c29d58e0bac=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/kraxel/tags/vga-20200915-pull-reque=
+st=3D=0D
+' into staging (2020-09-15 14:25:05 +0100)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request=
+=0D
+=0D
+for you to fetch changes up to 639b090df52a4952262615328a3fdfae81234ea8:=0D
+=0D
+  contrib/: fix some comment spelling errors (2020-09-17 20:41:44 +0200)=0D
+=0D
+----------------------------------------------------------------=0D
+Pull request trivial patches 20200919=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Dov Murik (2):=0D
+  hw/timer/hpet: Remove unused functions hpet_ram_readb, hpet_ram_readw=0D
+  hw/timer/hpet: Fix debug format strings=0D
+=0D
+Laszlo Ersek (1):=0D
+  manual: escape backslashes in "parsed-literal" blocks=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (4):=0D
+  hw/gpio/max7310: Remove impossible check=0D
+  hw/ppc/ppc4xx_pci: Replace magic value by the PCI_NUM_PINS definition=0D
+  ui/spice-input: Remove superfluous forward declaration=0D
+  scripts/git.orderfile: Display meson files along with buildsys ones=0D
+=0D
+Yonggang Luo (1):=0D
+  meson: remove empty else and duplicated gio deps=0D
+=0D
+zhaolichang (9):=0D
+  qemu/: fix some comment spelling errors=0D
+  migration/: fix some comment spelling errors=0D
+  docs/: fix some comment spelling errors=0D
+  scripts/: fix some comment spelling errors=0D
+  util/: fix some comment spelling errors=0D
+  linux-user/: fix some comment spelling errors=0D
+  disas/: fix some comment spelling errors=0D
+  qapi/: fix some comment spelling errors=0D
+  contrib/: fix some comment spelling errors=0D
+=0D
+ Changelog                                |   2 +-=0D
+ accel/tcg/user-exec.c                    |   2 +-=0D
+ audio/audio.c                            |   2 +-=0D
+ block.c                                  |   2 +-=0D
+ configure                                |   2 +-=0D
+ contrib/gitdm/filetypes.txt              |   6 +-=0D
+ contrib/ivshmem-client/ivshmem-client.h  |   2 +-=0D
+ contrib/libvhost-user/libvhost-user.c    |   4 +-=0D
+ contrib/libvhost-user/libvhost-user.h    |   2 +-=0D
+ disas/hppa.c                             |   2 +-=0D
+ disas/m68k.c                             |   8 +-=0D
+ disas/ppc.c                              |   2 +-=0D
+ docs/COLO-FT.txt                         |   6 +-=0D
+ docs/devel/blkdebug.txt                  |   2 +-=0D
+ docs/devel/migration.rst                 |   2 +-=0D
+ docs/devel/testing.rst                   |   2 +-=0D
+ docs/devel/tracing.txt                   |   2 +-=0D
+ docs/interop/bitmaps.rst                 |   2 +-=0D
+ docs/interop/dbus.rst                    |   4 +-=0D
+ docs/interop/nbd.txt                     |   2 +-=0D
+ docs/interop/vhost-user-gpu.rst          |   2 +-=0D
+ docs/interop/vhost-user.rst              |   4 +-=0D
+ docs/rdma.txt                            |   2 +-=0D
+ docs/specs/ppc-spapr-hotplug.txt         |   4 +-=0D
+ docs/specs/ppc-spapr-xive.rst            |   4 +-=0D
+ docs/system/arm/aspeed.rst               |   2 +-=0D
+ docs/system/deprecated.rst               |   8 +-=0D
+ docs/system/device-url-syntax.rst.inc    |   8 +-=0D
+ docs/system/target-avr.rst               |   4 +-=0D
+ docs/tools/virtiofsd.rst                 |   2 +-=0D
+ fsdev/virtfs-proxy-helper.c              |   2 +-=0D
+ hmp-commands.hx                          |   2 +-=0D
+ hw/gpio/max7310.c                        |   5 +-=0D
+ hw/ppc/ppc4xx_pci.c                      |   2 +-=0D
+ hw/timer/hpet.c                          |  27 ++----=0D
+ libdecnumber/decNumber.c                 |   2 +-=0D
+ linux-user/aarch64/signal.c              |   2 +-=0D
+ linux-user/cris/target_syscall.h         |   4 +-=0D
+ linux-user/flat.h                        |   2 +-=0D
+ linux-user/flatload.c                    |   4 +-=0D
+ linux-user/host/ppc64/safe-syscall.inc.S |   2 +-=0D
+ linux-user/syscall.c                     |   4 +-=0D
+ meson.build                              |   6 --=0D
+ migration/colo-failover.c                |   2 +-=0D
+ migration/colo.c                         |   2 +-=0D
+ migration/multifd.c                      |   4 +-=0D
+ migration/postcopy-ram.c                 |   4 +-=0D
+ migration/postcopy-ram.h                 |   2 +-=0D
+ migration/ram.c                          |  10 +--=0D
+ migration/rdma.c                         |   8 +-=0D
+ migration/savevm.c                       |   4 +-=0D
+ qapi/block-core.json                     |   4 +-=0D
+ qapi/crypto.json                         |   4 +-=0D
+ qemu-img.c                               |   2 +-=0D
+ qemu-options.hx                          | 108 +++++++++++------------=0D
+ qobject/qdict.c                          |   2 +-=0D
+ scripts/checkpatch.pl                    |   2 +-=0D
+ scripts/clean-header-guards.pl           |   2 +-=0D
+ scripts/decodetree.py                    |   6 +-=0D
+ scripts/git.orderfile                    |   1 +=0D
+ scripts/oss-fuzz/build.sh                |   2 +-=0D
+ scripts/tracetool/__init__.py            |   2 +-=0D
+ scsi/pr-manager-helper.c                 |   2 +-=0D
+ ui/spice-input.c                         |   1 -=0D
+ util/osdep.c                             |   2 +-=0D
+ util/qemu-progress.c                     |   2 +-=0D
+ util/qemu-sockets.c                      |   2 +-=0D
+ util/qemu-thread-win32.c                 |   2 +-=0D
+ util/qht.c                               |   2 +-=0D
+ util/trace-events                        |   2 +-=0D
+ 70 files changed, 163 insertions(+), 185 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D
 
