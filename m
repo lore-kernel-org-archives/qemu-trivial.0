@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kJhs0-0006Zk-CW
+	id 1kJhs0-0006aJ-Ka
 	for mharc-qemu-trivial@gnu.org; Sat, 19 Sep 2020 14:46:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51964)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhrv-0006QX-Mx; Sat, 19 Sep 2020 14:45:56 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:39161)
+ id 1kJhrv-0006QV-Cj; Sat, 19 Sep 2020 14:45:56 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:36865)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kJhrq-0001UJ-3z; Sat, 19 Sep 2020 14:45:55 -0400
+ id 1kJhri-0001Sa-9b; Sat, 19 Sep 2020 14:45:52 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MgzWP-1kyoJP3uO5-00hRVN; Sat, 19 Sep 2020 20:45:27 +0200
+ id 1MVrXh-1jsS4z0XG1-00RmE9; Sat, 19 Sep 2020 20:45:20 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  zhaolichang <zhaolichang@huawei.com>,
- Markus Armbruster <armbru@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 16/17] qapi/: fix some comment spelling errors
-Date: Sat, 19 Sep 2020 20:44:50 +0200
-Message-Id: <20200919184451.2129349-17-laurent@vivier.eu>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 12/17] scripts/: fix some comment spelling errors
+Date: Sat, 19 Sep 2020 20:44:46 +0200
+Message-Id: <20200919184451.2129349-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200919184451.2129349-1-laurent@vivier.eu>
 References: <20200919184451.2129349-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1A5PPQHe8J8WBrP0ysvdQGSXaCtVcCkbVyJEDYTNNjm6fLCf3fR
- 2rkQF/B/Qemwjmgn9o0h/Idm6aZqNOl5FIx4gnmuuK1VilykXW9m1/RP75cQ/e3KoTWmlk/
- R5R0eBc/M0H9tdRgYVj1JSl8t+jHkZznKovwTdXURH//nMzc+I0mfVf5yEOzjWXirt7L5rU
- zERq0B3p1U1qfNU1JJGcg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:k6fzmJmeTQk=:JWfJ79hfOl9VDldrolIK8y
- n8A+h+VX/PphEIjkVw5orpd9PXMB/l8kMhY3ROrmY2WkkKbtKD5eHIYfnXhD6srZ4uIhCSQSR
- PHrp40lkyJQjZaUX8o4zk/GW8BX9SVyZA60ImVreQcPG8QUO1Kv5wu/QjNDEWdJjQVxWy0UzH
- Hqg2W/LEGCGeK4RyGAZNVeLispufSYGxWk59wVHrGf/FriDOQ0nu7grkSWXOLciJZgdhgs6b0
- TxlKN51eDetSqLPm7PfIFrFrnzSB0boKAVXVn9rtArCZgq74W7TEQ/eqboxLSn7Ps728+jvcF
- E47QawrQpaHtWwow04n4vExj2rJ6pMSml5VBMXNb0n0CNNdu5DMS/7n+W32QvUh99wHmbcaJx
- gSioClSMFFDwCIAYbrn2rOr636pwg/xZqS43BbcTzVL49xhf3OTO8iTjYw/a3RkHFSYRXKb0v
- supX0TlL+EREGGbjlDl05o4HZ2x/V0RNmIftTVZaODbmK1RtqPfAzhds31f4e3QxcC57Wwo6h
- uHfr4Yh6VPJjTSdSeODdENcphVONZZHrfdBwjlVd4W14h2uyAfeA3AG/Cpa2Vsp0/RMZZbKGp
- Ot9M0MhvwE+Q0mlAF08B6DW53viQcmO2/6NiVGiIRcJxN8Qi1FZXH+k5Dqom7iO6hCgUYvR9q
- EFuUfncy14mdCb1KjJkeuq3ITGZ9/8mXn4RC4Ht1CGnMowwCIqNrkv+CevS+evHkT38pa4kO8
- bdgEy04biBHKagzlVNyKPsUwSz+Ik0HcwaWkEsrsNX8/sA3Hl0zsVbSJkaG9/v3lU6l8MbnaR
- 9lKENm+EgA8+0FSvyS9ZAyCLFqjRbiqDF+bLzUJbwiulNcBR3SSRjzNSucVadCHJ6ulV821
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ToRF9ijQbLwKLUOyNUID350EhQHEUJaEBCR5GZRbDaA4yqRPpwO
+ +3nZ5HNFcERP19jm/r+HzyJnPqechdUX16e6mh8EqaYu8AhisSuWIkeAAjA1CRINQ0NuEto
+ pQLIul7JnU4+5LXzBUI/YlvC1eJkSG3q1agAsrFQfaJZDgoJikdNrq6HLcqu2IgkLG1A/2O
+ 1VDyQv4pf4gOsvcVtKF8Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gkVeuz2F/kQ=:wAj3wbq3wtVHME79IbxU8K
+ 2Q3+/WoOtXsvTg5g1P32rwYJguWh6JQ8YY0feKmt3E1s1gUhhjMUaAjh4vex9jzJiv56CC839
+ y76kv8gBqvMOiHtDP3fgrczW4r6EWUVUppAssZq+gW4lYk7lwGu8jah+YH44ArUatG512vFSb
+ nPwDA604QDsCAYiADazN26M61tWWHnluf1gQvOAdMat8NGkj+zFhMnKDH9h3qiPUls9nstI2J
+ LheGOay3OIdPCq6ZtYOvvbB1qIEyqRSI0dEBeMlb3w4lKU756VWdMC3fjCOu/87t2J8WF5NQr
+ b3fTc3IgiK5Ce49P0JdWHns+8QLFE1uRSAsmAgmhlATKiOh4vNFOqZG2ZZrYjf7iLCwvfFxeW
+ KAZEg/X9/WKQehKH7B1vUMZ4yFgTKHCNZCCNiN8SzwnfxHOIEmxWUurmY42D9vktfBkWSCuse
+ L714LdPxRSkXixHfTSJ36W3d9xfaq2wP61Cl9RZQQCYfVZbmTrWxrUyb9ZgVaFvdcIZ12NIOH
+ L2LrPWJJxd4EuS4QsNumQysIdlKWsdOea/lNyV9KEQwocU3eHa3vfIvknlXbR9tAsHAoUu0zU
+ MFShzWcuSpuWIR/VSae8/rnHZjmmM9XGOG1sgyM4IyLfzMiZr7c0JKSHMys+IYdI8pKNWlFxn
+ VI6axrtdATgkcP2O91ME9WvIwByJ1BcSSvwkX+uYNkBAvIvsprca+RssvKhfU2s0zEgbHXDD2
+ nCXoTrDBidcufmj2krixTlRTYNbI7AU/tn+07F8+6jvLX6AIbG6OGf4vHOBOirRqoSz/jvy1q
+ gN4tLuw9Mp3GN8skaTL7dyhoJZ136EdlFK5URv8VNuZUyvbr2US8SduuU63URIM60FyGpn8
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:05
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/19 14:45:13
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,67 +65,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Sep 2020 18:45:56 -0000
+X-List-Received-Date: Sat, 19 Sep 2020 18:45:57 -0000
 
 From: zhaolichang <zhaolichang@huawei.com>
 
 I found that there are many spelling errors in the comments of qemu,
 so I used the spellcheck tool to check the spelling errors
-and finally found some spelling errors in the qapi folder.
+and finally found some spelling errors in the scripts folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Message-Id: <20200917075029.313-10-zhaolichang@huawei.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20200917075029.313-5-zhaolichang@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qapi/block-core.json | 4 ++--
- qapi/crypto.json     | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ scripts/checkpatch.pl          | 2 +-
+ scripts/clean-header-guards.pl | 2 +-
+ scripts/decodetree.py          | 6 +++---
+ scripts/oss-fuzz/build.sh      | 2 +-
+ scripts/tracetool/__init__.py  | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/qapi/block-core.json b/qapi/block-core.json
-index 2d94873ca02c..3c16f1e11d6b 100644
---- a/qapi/block-core.json
-+++ b/qapi/block-core.json
-@@ -1795,7 +1795,7 @@
- #
- # @block-backend: corresponds to BlockBackend
- #
--# @block-job: corresonds to BlockJob
-+# @block-job: corresponds to BlockJob
- #
- # @block-driver: corresponds to BlockDriverState
- #
-@@ -2067,7 +2067,7 @@
- # @target: name of the destination dirty bitmap
- #
- # @bitmaps: name(s) of the source dirty bitmap(s) at @node and/or fully
--#           specifed BlockDirtyBitmap elements. The latter are supported
-+#           specified BlockDirtyBitmap elements. The latter are supported
- #           since 4.1.
- #
- # Since: 4.0
-diff --git a/qapi/crypto.json b/qapi/crypto.json
-index bb7930d33209..2aebe6fa20fd 100644
---- a/qapi/crypto.json
-+++ b/qapi/crypto.json
-@@ -336,7 +336,7 @@
- #                 written into added active keyslots
- #
- # @old-secret:    Optional (for deactivation only)
--#                 If given will deactive all keyslots that
-+#                 If given will deactivate all keyslots that
- #                 match password located in QCryptoSecret with this ID
- #
- # @iter-time:     Optional (for activation only)
-@@ -354,7 +354,7 @@
- #                 keyslot to deactivate
- #
- # @secret:        Optional. The ID of a QCryptoSecret object providing the
--#                 password to use to retrive current master key.
-+#                 password to use to retrieve current master key.
- #                 Defaults to the same secret that was used to open the image
- #
- #
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index bd3faa154c36..50910899f2ee 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1870,7 +1870,7 @@ sub process {
+ 			substr($s, 0, length($c), '');
+ 
+ 			# Make sure we remove the line prefixes as we have
+-			# none on the first line, and are going to readd them
++			# none on the first line, and are going to re-add them
+ 			# where necessary.
+ 			$s =~ s/\n./\n/gs;
+ 
+diff --git a/scripts/clean-header-guards.pl b/scripts/clean-header-guards.pl
+index f47d673ad5c5..a6680253b1fa 100755
+--- a/scripts/clean-header-guards.pl
++++ b/scripts/clean-header-guards.pl
+@@ -19,7 +19,7 @@
+ # Does the following:
+ # - Header files without a recognizable header guard are skipped.
+ # - Clean up any untidy header guards in-place.  Warn if the cleanup
+-#   renames guard symbols, and explain how to find occurences of these
++#   renames guard symbols, and explain how to find occurrences of these
+ #   symbols that may have to be updated manually.
+ # - Warn about duplicate header guard symbols.  To make full use of
+ #   this warning, you should clean up *all* headers in one run.
+diff --git a/scripts/decodetree.py b/scripts/decodetree.py
+index c02de9865b27..60fd3b5e5f66 100644
+--- a/scripts/decodetree.py
++++ b/scripts/decodetree.py
+@@ -94,7 +94,7 @@ def str_indent(c):
+ 
+ 
+ def str_fields(fields):
+-    """Return a string uniquely identifing FIELDS"""
++    """Return a string uniquely identifying FIELDS"""
+     r = ''
+     for n in sorted(fields.keys()):
+         r += '_' + n
+@@ -814,7 +814,7 @@ def parse_generic(lineno, parent_pat, name, toks):
+     arg = None
+     fmt = None
+     for t in toks:
+-        # '&Foo' gives a format an explcit argument set.
++        # '&Foo' gives a format an explicit argument set.
+         if re.fullmatch(re_arg_ident, t):
+             tt = t[1:]
+             if arg:
+@@ -903,7 +903,7 @@ def parse_generic(lineno, parent_pat, name, toks):
+     elif not (is_format and width == 0) and width != insnwidth:
+         error(lineno, 'definition has {0} bits'.format(width))
+ 
+-    # Do not check for fields overlaping fields; one valid usage
++    # Do not check for fields overlapping fields; one valid usage
+     # is to be able to duplicate fields via import.
+     fieldmask = 0
+     for f in flds.values():
+diff --git a/scripts/oss-fuzz/build.sh b/scripts/oss-fuzz/build.sh
+index d16207eb6726..0c3ca9e06f02 100755
+--- a/scripts/oss-fuzz/build.sh
++++ b/scripts/oss-fuzz/build.sh
+@@ -69,7 +69,7 @@ mkdir -p "$DEST_DIR/lib/"  # Copy the shared libraries here
+ 
+ if ! make "-j$(nproc)" qemu-fuzz-i386; then
+     fatal "Build failed. Please specify a compiler with fuzzing support"\
+-          "using the \$CC and \$CXX environemnt variables"\
++          "using the \$CC and \$CXX environment variables"\
+           "\nFor example: CC=clang CXX=clang++ $0"
+ fi
+ 
+diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
+index 3ccfa1e1163d..3ee54be223c6 100644
+--- a/scripts/tracetool/__init__.py
++++ b/scripts/tracetool/__init__.py
+@@ -34,7 +34,7 @@ def error(*lines):
+ def out(*lines, **kwargs):
+     """Write a set of output lines.
+ 
+-    You can use kwargs as a shorthand for mapping variables when formating all
++    You can use kwargs as a shorthand for mapping variables when formatting all
+     the strings in lines.
+     """
+     lines = [ l % kwargs for l in lines ]
 -- 
 2.26.2
 
