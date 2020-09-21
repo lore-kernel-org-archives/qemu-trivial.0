@@ -1,66 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kKDdX-0001MK-9I
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Sep 2020 00:41:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33808)
+	id 1kKJa2-0004aO-5O
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Sep 2020 07:01:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kKDdU-0001Kj-Mh; Mon, 21 Sep 2020 00:41:09 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37627)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kKDdS-0008NI-Lq; Mon, 21 Sep 2020 00:41:08 -0400
-Received: by mail-ot1-x342.google.com with SMTP id o8so11199857otl.4;
- Sun, 20 Sep 2020 21:41:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=T9z5juxnqWaH5fSD6t1DfXl875cHuMo58ZbIdQ1757E=;
- b=hQ4zTOJv9+41wubiJuGgHXqPbLC3syUC3j8FAI/qCjXRiPCipoMB5yV8kdUF2sljOZ
- ndr3HWswJqleGmh07f9OvtFpuBwQFGDjQYm8zkUJ+vrz2EH2Ba8i43VMmqVEaWSHBgqA
- jry8e4Q6dQLoJJbM9I5K0EY8UMjP8bEiIpoMwbbnSnv6Fl/ZHoNQkv0gYZUpbURI/zzI
- a0yyGGvy1T9sKVErEGonS4yQDh/qHNsIM06ynaGMBPGx2yvq8zV9lZVWLKABiG7BJx0a
- mKM0jYR0+2IrWSyiQIF9+0qcBRQzR44HkSeXciTOq3oY/D7e9Ju96LwxascYw+Du63ih
- 1FPQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kKJa0-0004Z5-Jb
+ for qemu-trivial@nongnu.org; Mon, 21 Sep 2020 07:01:56 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49507
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kKJZy-0005a1-UY
+ for qemu-trivial@nongnu.org; Mon, 21 Sep 2020 07:01:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600686113;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wV4+WdW4FWzUt71VT+Q4JOE9A0gMJkMnKTuWpyklnGw=;
+ b=V/keHLnEy5i0+sUr7J/jBlxEGH9Oy7DHLazvwmddX2qHDpXN+/VWX5nOZxRKuoeQbQ3Mst
+ +DDgZEB2DhjttLOc2Z8OoznJV508XhbhNYhBvmZVvJMAN13zSoKY1x/m40jRQKUchuPDrT
+ GgPwzIy9klWWqDxrAM0vSgPl0Kqx7c0=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-168-XNQj54LVOPOHFu3A7FLv1A-1; Mon, 21 Sep 2020 07:01:49 -0400
+X-MC-Unique: XNQj54LVOPOHFu3A7FLv1A-1
+Received: by mail-wm1-f70.google.com with SMTP id r10so3563102wmh.0
+ for <qemu-trivial@nongnu.org>; Mon, 21 Sep 2020 04:01:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=T9z5juxnqWaH5fSD6t1DfXl875cHuMo58ZbIdQ1757E=;
- b=hPUBYnNOnQP88hytmiWfPIJ5EZQcgHoYDhLSS1UMDPncN4FvxQBc0CjLgZHHMdonxF
- rDCec1zLkaMmFqxxoiGVco0OPELhe/cdaee3tSYJWqMhIfRwUWWUGoQBZz/5MK44aDEa
- /PVoOAuJ5As8ToMr0tpIn/C2LEo1UirN1mku5bQpqhLWjGRhiSvkVzv9tlobXuKlodCA
- DdOSQaxaEuL76OzccIcaJOFJS5Y/rdM/+7G4nWr8HyuBhQ5+bx9LoC/XLpIuKdCsz/Uo
- Mky40wrrj3FWj8CC3PJlexkqPHGPJiLgWF/ncdfZxV3jldXsyl9zasdNIUqNDN8LzKLU
- 5Uag==
-X-Gm-Message-State: AOAM533LRpxr1LF0yHjaEQm24YtXBAALW81+5FUvG+Iq9EksJA0NcHaZ
- 6WNq3ohEZuPVkjyU40Rbm5mZN2PYsi7HbTfyZx0=
-X-Google-Smtp-Source: ABdhPJwGc8LwAHhKLaV0U98RJvyGHKIAsoHi5ljtSh+FQw/dmFnQ/VAZIidxhyB0I9a/GHwLq3NAcsvjInVIgmf5T0k=
-X-Received: by 2002:a9d:5e11:: with SMTP id d17mr29373606oti.333.1600663265098; 
- Sun, 20 Sep 2020 21:41:05 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wV4+WdW4FWzUt71VT+Q4JOE9A0gMJkMnKTuWpyklnGw=;
+ b=RLa6P6xPEjtj8kJ/+wHSUJYfD20Hz7o0jlLR7IgtzFTXWFA2ADtzn8kmugcs5Z5Umh
+ RhW8KvZBuQZKmR0zfqedRVxwBnPVrL7ai68rgb9OuXtxlAuZht23ZKHG1SLoIwuvpccE
+ MBUXpwuPwUTFjGVfBGZgZGuOrTcreghM6+xDsh7JZj9Vi1oWrhikwYtexIEDSsNM+ckW
+ WZiKGXZiD+8b82ZXPnv7q94Mg7kkzefmIw/QHUrvMSkdpf21Xy8TFvTR1Nqv1PMjQcmM
+ 2c/XCx9q97ne00lxysm4raWY8D9D5jfnpansceTVyCuiXa0IrEqLV3rFpeUfvLV0MV03
+ 4x6g==
+X-Gm-Message-State: AOAM531Mt5gBu+fRDpOKd66/orEFJ5Pwb8lV8UzEkTUAckSlZU1Zkw+n
+ KHEwdOGSM6QZSnJuwsh207qDKdFq0A/K/rtLCL0i7sX+TSzorn2qjhzvwnnpttyEk0XdozB7odt
+ 0Cxt1hE8Wha7jY/mZxA==
+X-Received: by 2002:a7b:c2a9:: with SMTP id c9mr11890534wmk.87.1600686108330; 
+ Mon, 21 Sep 2020 04:01:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHoNAzVcwsm2gbND4w/6goazRsLqMZZCIUS7TbpWeTxrshxPc2QRbyTetetlpst811HtZeBg==
+X-Received: by 2002:a7b:c2a9:: with SMTP id c9mr11890505wmk.87.1600686108154; 
+ Mon, 21 Sep 2020 04:01:48 -0700 (PDT)
+Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id z11sm20001837wru.88.2020.09.21.04.01.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Sep 2020 04:01:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Liu Yuan <namei.unix@gmail.com>, Kevin Wolf <kwolf@redhat.com>,
+ sheepdog@lists.wpkg.org, Max Reitz <mreitz@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] block/sheepdog: Replace magic val by NANOSECONDS_PER_SECOND
+ definition
+Date: Mon, 21 Sep 2020 13:01:45 +0200
+Message-Id: <20200921110145.520944-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20200921040231.437653-1-f4bug@amsat.org>
-In-Reply-To: <20200921040231.437653-1-f4bug@amsat.org>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Mon, 21 Sep 2020 12:40:29 +0800
-Message-ID: <CAKXe6SJL-=RfdtxV2rA6mLYzQGovcSEfUNHwgpO_dTz7P5yHwA@mail.gmail.com>
-Subject: Re: [PATCH] migration/multifd: Remove superfluous semicolons
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/21 04:38:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.501,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,45 +91,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Sep 2020 04:41:10 -0000
+X-List-Received-Date: Mon, 21 Sep 2020 11:01:56 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B49=E6=9C=
-=8821=E6=97=A5=E5=91=A8=E4=B8=80 =E4=B8=8B=E5=8D=8812:03=E5=86=99=E9=81=93=
-=EF=BC=9A
->
-> checkpatch.pl report superfluous semicolons since commit
-> ee0f3c09e01, but this one was missed:
->
->   scripts/checkpatch.pl d32ca5ad798~..d32ca5ad798
->   ERROR: superfluous trailing semicolon
->   #498: FILE: migration/multifd.c:308:
->   +    ram_counters.transferred +=3D transferred;;
->   total: 1 errors, 1 warnings, 2073 lines checked
->
-> Fixes: d32ca5ad798 ("multifd: Split multifd code into its own file")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Use self-explicit NANOSECONDS_PER_SECOND definition instead
+of magic value.
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ block/sheepdog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  migration/multifd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/migration/multifd.c b/migration/multifd.c
-> index d0441202aae..8aaa2f9ade1 100644
-> --- a/migration/multifd.c
-> +++ b/migration/multifd.c
-> @@ -447,7 +447,7 @@ static int multifd_send_pages(QEMUFile *f)
->                  + p->packet_len;
->      qemu_file_update_transfer(f, transferred);
->      ram_counters.multifd_bytes +=3D transferred;
-> -    ram_counters.transferred +=3D transferred;;
-> +    ram_counters.transferred +=3D transferred;
->      qemu_mutex_unlock(&p->mutex);
->      qemu_sem_post(&p->sem);
->
-> --
-> 2.26.2
->
->
+diff --git a/block/sheepdog.c b/block/sheepdog.c
+index cbbebc1aaf2..cbc655a1a05 100644
+--- a/block/sheepdog.c
++++ b/block/sheepdog.c
+@@ -740,7 +740,7 @@ static coroutine_fn void reconnect_to_sdog(void *opaque)
+         if (s->fd < 0) {
+             trace_sheepdog_reconnect_to_sdog();
+             error_report_err(local_err);
+-            qemu_co_sleep_ns(QEMU_CLOCK_REALTIME, 1000000000ULL);
++            qemu_co_sleep_ns(QEMU_CLOCK_REALTIME, NANOSECONDS_PER_SECOND);
+         }
+     };
+ 
+-- 
+2.26.2
+
 
