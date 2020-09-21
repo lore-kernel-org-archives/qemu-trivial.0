@@ -1,74 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kKD2G-000315-RS
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Sep 2020 00:02:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57184)
+	id 1kKDdX-0001MK-9I
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Sep 2020 00:41:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKD2E-0002zr-Op; Mon, 21 Sep 2020 00:02:38 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37933)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kKDdU-0001Kj-Mh; Mon, 21 Sep 2020 00:41:09 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKD2D-0004SX-Co; Mon, 21 Sep 2020 00:02:38 -0400
-Received: by mail-wm1-x343.google.com with SMTP id l9so11062795wme.3;
- Sun, 20 Sep 2020 21:02:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kKDdS-0008NI-Lq; Mon, 21 Sep 2020 00:41:08 -0400
+Received: by mail-ot1-x342.google.com with SMTP id o8so11199857otl.4;
+ Sun, 20 Sep 2020 21:41:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MPAiKLeXC283ppfLqQLlp3Ann9X1fHBDsb552s5XDKo=;
- b=hPc31pFhtAw4UzZcokkeBDFEbDmKGGdnbxIlsZye7I0iD55H6uW/GKofejhRQtg1L5
- hDtHa6zzc3UWCcAhoyvDoYTH7QoliqgQOoxl44sc+RD9lovsdRhN+BAc9yFzohlwPaCw
- v+a2kIzES62kXN+rNxybZjtbH2H/PNYDlGWXQdoXbs1uTNh7klrgOWAv2GRCAycNs7+Q
- FifU9zXrRSqVxlxQcAidhYq+xIejk/ZAWMQktu/yvIIGjifmzsg+1r91cI71ylEEcasQ
- UTXBxxi2nagufZeXMzqHdO3fqe+LPyH78nwUEj78YOtOTKjuMQwx/jR2Htya8rhGUmlT
- 8ubA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=T9z5juxnqWaH5fSD6t1DfXl875cHuMo58ZbIdQ1757E=;
+ b=hQ4zTOJv9+41wubiJuGgHXqPbLC3syUC3j8FAI/qCjXRiPCipoMB5yV8kdUF2sljOZ
+ ndr3HWswJqleGmh07f9OvtFpuBwQFGDjQYm8zkUJ+vrz2EH2Ba8i43VMmqVEaWSHBgqA
+ jry8e4Q6dQLoJJbM9I5K0EY8UMjP8bEiIpoMwbbnSnv6Fl/ZHoNQkv0gYZUpbURI/zzI
+ a0yyGGvy1T9sKVErEGonS4yQDh/qHNsIM06ynaGMBPGx2yvq8zV9lZVWLKABiG7BJx0a
+ mKM0jYR0+2IrWSyiQIF9+0qcBRQzR44HkSeXciTOq3oY/D7e9Ju96LwxascYw+Du63ih
+ 1FPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=MPAiKLeXC283ppfLqQLlp3Ann9X1fHBDsb552s5XDKo=;
- b=aXzmB69gjuxwr2YBujqU1/cNBkmi9k54KvKGyi2WVlWt34BQrpLq4T5HLPUbtR4LbS
- qa32FUzTjnWUSaNu80XZ1CFQVyRddPj7bKE7eGCk7en1FmpGlTTqvcoeN6W+jt1l7Skc
- YpCFFkMcyHPS9hlql41MRD1ZLrzwZRcBuJhuOoaTDDb50Z6yD3CI7f8GnEV5eAWqJtqv
- 7/lxzcJX1QBtvra4t1oqsHDto27l9mWMGisEc6B6O599vFszxDS1hjjqw+e2lIz+86aB
- rywZmzCOH8ZSNjOjF10clQ9ptn+83lYaK4sLmbgc645iPCSQc+onr2M5Tq31NR7/DU9B
- moDw==
-X-Gm-Message-State: AOAM533/pX+0xdY361kdq2quxN4greXvMhEOIZGJplDsgSJn/c4eOpgk
- 8IJtyVOqvfgYAw+6IASSUFbdZvbb2RE=
-X-Google-Smtp-Source: ABdhPJwbqQkXAvYjtsJeVQc4tho1wPXCoPLJl8wclW+1ntfmM4qocd4ubRw3F2ifhumJ5Tufxof/TQ==
-X-Received: by 2002:a7b:c0c5:: with SMTP id s5mr27468142wmh.152.1600660953922; 
- Sun, 20 Sep 2020 21:02:33 -0700 (PDT)
-Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id m13sm17681419wrr.74.2020.09.20.21.02.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Sep 2020 21:02:32 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] migration/multifd: Remove superfluous semicolons
-Date: Mon, 21 Sep 2020 06:02:31 +0200
-Message-Id: <20200921040231.437653-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=T9z5juxnqWaH5fSD6t1DfXl875cHuMo58ZbIdQ1757E=;
+ b=hPUBYnNOnQP88hytmiWfPIJ5EZQcgHoYDhLSS1UMDPncN4FvxQBc0CjLgZHHMdonxF
+ rDCec1zLkaMmFqxxoiGVco0OPELhe/cdaee3tSYJWqMhIfRwUWWUGoQBZz/5MK44aDEa
+ /PVoOAuJ5As8ToMr0tpIn/C2LEo1UirN1mku5bQpqhLWjGRhiSvkVzv9tlobXuKlodCA
+ DdOSQaxaEuL76OzccIcaJOFJS5Y/rdM/+7G4nWr8HyuBhQ5+bx9LoC/XLpIuKdCsz/Uo
+ Mky40wrrj3FWj8CC3PJlexkqPHGPJiLgWF/ncdfZxV3jldXsyl9zasdNIUqNDN8LzKLU
+ 5Uag==
+X-Gm-Message-State: AOAM533LRpxr1LF0yHjaEQm24YtXBAALW81+5FUvG+Iq9EksJA0NcHaZ
+ 6WNq3ohEZuPVkjyU40Rbm5mZN2PYsi7HbTfyZx0=
+X-Google-Smtp-Source: ABdhPJwGc8LwAHhKLaV0U98RJvyGHKIAsoHi5ljtSh+FQw/dmFnQ/VAZIidxhyB0I9a/GHwLq3NAcsvjInVIgmf5T0k=
+X-Received: by 2002:a9d:5e11:: with SMTP id d17mr29373606oti.333.1600663265098; 
+ Sun, 20 Sep 2020 21:41:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+References: <20200921040231.437653-1-f4bug@amsat.org>
+In-Reply-To: <20200921040231.437653-1-f4bug@amsat.org>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Mon, 21 Sep 2020 12:40:29 +0800
+Message-ID: <CAKXe6SJL-=RfdtxV2rA6mLYzQGovcSEfUNHwgpO_dTz7P5yHwA@mail.gmail.com>
+Subject: Re: [PATCH] migration/multifd: Remove superfluous semicolons
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,37 +73,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Sep 2020 04:02:39 -0000
+X-List-Received-Date: Mon, 21 Sep 2020 04:41:10 -0000
 
-checkpatch.pl report superfluous semicolons since commit
-ee0f3c09e01, but this one was missed:
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2020=E5=B9=B49=E6=9C=
+=8821=E6=97=A5=E5=91=A8=E4=B8=80 =E4=B8=8B=E5=8D=8812:03=E5=86=99=E9=81=93=
+=EF=BC=9A
+>
+> checkpatch.pl report superfluous semicolons since commit
+> ee0f3c09e01, but this one was missed:
+>
+>   scripts/checkpatch.pl d32ca5ad798~..d32ca5ad798
+>   ERROR: superfluous trailing semicolon
+>   #498: FILE: migration/multifd.c:308:
+>   +    ram_counters.transferred +=3D transferred;;
+>   total: 1 errors, 1 warnings, 2073 lines checked
+>
+> Fixes: d32ca5ad798 ("multifd: Split multifd code into its own file")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-  scripts/checkpatch.pl d32ca5ad798~..d32ca5ad798
-  ERROR: superfluous trailing semicolon
-  #498: FILE: migration/multifd.c:308:
-  +    ram_counters.transferred += transferred;;
-  total: 1 errors, 1 warnings, 2073 lines checked
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-Fixes: d32ca5ad798 ("multifd: Split multifd code into its own file")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- migration/multifd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/migration/multifd.c b/migration/multifd.c
-index d0441202aae..8aaa2f9ade1 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -447,7 +447,7 @@ static int multifd_send_pages(QEMUFile *f)
-                 + p->packet_len;
-     qemu_file_update_transfer(f, transferred);
-     ram_counters.multifd_bytes += transferred;
--    ram_counters.transferred += transferred;;
-+    ram_counters.transferred += transferred;
-     qemu_mutex_unlock(&p->mutex);
-     qemu_sem_post(&p->sem);
- 
--- 
-2.26.2
-
+> ---
+>  migration/multifd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/migration/multifd.c b/migration/multifd.c
+> index d0441202aae..8aaa2f9ade1 100644
+> --- a/migration/multifd.c
+> +++ b/migration/multifd.c
+> @@ -447,7 +447,7 @@ static int multifd_send_pages(QEMUFile *f)
+>                  + p->packet_len;
+>      qemu_file_update_transfer(f, transferred);
+>      ram_counters.multifd_bytes +=3D transferred;
+> -    ram_counters.transferred +=3D transferred;;
+> +    ram_counters.transferred +=3D transferred;
+>      qemu_mutex_unlock(&p->mutex);
+>      qemu_sem_post(&p->sem);
+>
+> --
+> 2.26.2
+>
+>
 
