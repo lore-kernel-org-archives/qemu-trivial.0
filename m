@@ -1,109 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kL0D6-0002Ob-Ix
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 04:33:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44146)
+	id 1kL3UC-0005IR-Id
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 08:03:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40054)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kL0Cv-0002Md-Hz
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 04:33:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35788)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kL3UA-0005II-PA
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 08:02:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48417)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kL0Cr-00063A-Q1
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 04:32:57 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kL3U8-0001YL-9p
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 08:02:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600849970;
+ s=mimecast20190719; t=1600862575;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=eFEY2B5IJkF3hSXzF+QMEEb2gUc9/rsp+JVylQtS7Dc=;
- b=b9UXpyKj66o/8S1fus8NQ12A3I0GDwfEbgj6PYktP0mUi1hAWsmgTo5Z0OvHWlSoVVL2js
- PkQYB5s4aB2IxvaG0MD4CKi67eGccp1+IxqTXjqujRtIQWOi2V4BtUGY+Gvl/N8Smn56Ht
- ZLFuG8HI1DGF9TURRudIC9rMHgWCLa8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-eleb5WunNq-IBolGMukOaw-1; Wed, 23 Sep 2020 04:32:48 -0400
-X-MC-Unique: eleb5WunNq-IBolGMukOaw-1
-Received: by mail-wr1-f70.google.com with SMTP id d9so8528614wrv.16
- for <qemu-trivial@nongnu.org>; Wed, 23 Sep 2020 01:32:47 -0700 (PDT)
+ in-reply-to:in-reply-to:references:references;
+ bh=msS/G5bxiNgrv8OcnHCj3SXyDBzh/tqTF3WPL6ELImg=;
+ b=f1XcCdhrLIbfrA6hWYCWqqTvRfCJIRPPUwhVldrjBm8D4iZekcplbaVjTNocz7NVDO507d
+ Zreg23zG48CklFbYLtFbeKM9Vt7a02LNp6QP7YhjEokT24iWAgAADlKHnN8obp77xQDUQj
+ ZtBtvl2+r5X1qwAWeE/o25bn1OVIp7U=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-423-yMQ69qIuP4yx4hZPA-f0Yg-1; Wed, 23 Sep 2020 08:02:53 -0400
+X-MC-Unique: yMQ69qIuP4yx4hZPA-f0Yg-1
+Received: by mail-wr1-f71.google.com with SMTP id j7so8769878wro.14
+ for <qemu-trivial@nongnu.org>; Wed, 23 Sep 2020 05:02:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=eFEY2B5IJkF3hSXzF+QMEEb2gUc9/rsp+JVylQtS7Dc=;
- b=uoY5giVf9VGOjrgvbl98ot+9HpmZ4ieRMwZqL0WdSw5B6HXi1OSo45H+IJ/CRFpS22
- EpB5idMz1Zi5GLgjY1SokgrvcFWMNsosCXP0GQuruDegaIGNIu/A09kphde/VzejeoqE
- YZb4qXtpiyvf1qd2cesFtxmhn1kBtNHSLzC0YgZAWm3vdDTr69hqbaJX0g/zaxo27DmC
- AYbdN637eXdFuAevsk3vHznhPj1PjzRGpvBk2UMF/Jk/s/WPxRfm6nSHU1powHv7LhHg
- TRdNgEy7Y0DYxL/qUzjl/dOOHXQSXtzwc1nlMCfcfRIE1/OI+C+HsTCe/kP0VdG5ceP8
- Wsng==
-X-Gm-Message-State: AOAM533JoRFe+rUnMIoaPUdk5vtjFupa4ddShbXXBhWbVA4ZELrDA6L0
- ok/RX7BLe3+WYL3y4eXIbr1Mk5knlCK2lONAkwGbszPH7cRT71Yeuedww1swmp8l1EVUVfEjG6P
- LaszHE7h7WyjLQiCi9A==
-X-Received: by 2002:a1c:ed09:: with SMTP id l9mr5220391wmh.89.1600849966853;
- Wed, 23 Sep 2020 01:32:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDxsrWLwjgJxlujGQRFJf+RBMZDYUaJZBZhAOqU2cQFlimWndxB1lLRWIvKE4ds2zcckexCQ==
-X-Received: by 2002:a1c:ed09:: with SMTP id l9mr5220379wmh.89.1600849966621;
- Wed, 23 Sep 2020 01:32:46 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id n21sm7242355wmi.21.2020.09.23.01.32.45
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=msS/G5bxiNgrv8OcnHCj3SXyDBzh/tqTF3WPL6ELImg=;
+ b=bNn6d4F28znDWiFk9D5BnNC2EfFOpdncGC97DgUxH3k0b7bE6CWyQijqJCxf8dt0oF
+ j9wGClhRmHSCon5jB+fSMFbWJRpGOWT0CVraHcN/OaJeeShHsUcs5O5z5syd+QEoZe5V
+ /XVrr4/fB4PLv4bW+FujdbSwvZoZmu9eXHKWQtsdBd4y8DMmpOYbpGshlasQSXZT/MRY
+ mrP/l5ew46DxUHkhyKt1bFxP+MuIzXI5BeD8czmJRr0MyCjKs1AZZOqXlTVJ+Izbt7Z5
+ ZPuGRMsNxcpd6NU3TyvUVw+R4QafFcsQ3cJw9GnxmmygrwcOn1AqjFaVdjXSU8JrW2F7
+ X7iw==
+X-Gm-Message-State: AOAM5319biElS96IMLUJ4ZjjV5k0S1qtA7iJcw1tOVJvH+ub+2tFXXVs
+ 5MJosuo/0PmSQLJGjudFktX/sEa21WLiX1jEmne2kfosxaNcB+VSb083W5RaCA+/7di7vLZVboi
+ tl2rlKh7pMQGpzizRpw==
+X-Received: by 2002:adf:f24f:: with SMTP id b15mr460577wrp.301.1600862572350; 
+ Wed, 23 Sep 2020 05:02:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6SansG3zPuqnv37AzSAGPXHMPTINuSo8Ro4AyHQUSutyIVtkM1WfnrTEmWVdwh+L8FT5lXw==
+X-Received: by 2002:adf:f24f:: with SMTP id b15mr460548wrp.301.1600862572037; 
+ Wed, 23 Sep 2020 05:02:52 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:15f1:648d:7de6:bad9?
+ ([2001:b07:6468:f312:15f1:648d:7de6:bad9])
+ by smtp.gmail.com with ESMTPSA id l10sm28480975wru.59.2020.09.23.05.02.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2020 01:32:45 -0700 (PDT)
-Subject: Re: [PATCH] docs/system/deprecated: Move lm32 and unicore32 to the
- right section
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20200923080015.77373-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <4586da8f-d5de-4edb-8d70-6bf143bc7adc@redhat.com>
-Date: Wed, 23 Sep 2020 10:32:44 +0200
+ Wed, 23 Sep 2020 05:02:51 -0700 (PDT)
+Subject: Re: [PATCH] Add execute bit back to scripts/tracetool.py
+To: Anthony PERARD <anthony.perard@citrix.com>, qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20200923103620.1980151-1-anthony.perard@citrix.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <94748953-43e7-fce4-3ec4-eb18678fbb76@redhat.com>
+Date: Wed, 23 Sep 2020 14:02:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200923080015.77373-1-thuth@redhat.com>
+In-Reply-To: <20200923103620.1980151-1-anthony.perard@citrix.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 00:53:58
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/22 23:02:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -35
-X-Spam_score: -3.6
+X-Spam_score_int: -32
+X-Spam_score: -3.3
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.455,
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.228,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,71 +96,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Sep 2020 08:33:05 -0000
+X-List-Received-Date: Wed, 23 Sep 2020 12:02:59 -0000
 
-On 9/23/20 10:00 AM, Thomas Huth wrote:
-> lm32 and unicore32 are softmmut targets, and not linux-user targets.
-
-Typo "softmmu" (else it sounds like soft mammoth targets).
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
+On 23/09/20 12:36, Anthony PERARD wrote:
+> Commit a81df1b68b65 ("libqemuutil, qapi, trace: convert to meson")
+> removed it without explanation and it is useful to be able to run a
+> script without having to figure out which interpreter to use.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
 > ---
->  docs/system/deprecated.rst | 32 ++++++++++++++++----------------
->  1 file changed, 16 insertions(+), 16 deletions(-)
+>  scripts/tracetool.py | 0
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  mode change 100644 => 100755 scripts/tracetool.py
 > 
-> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-> index 0cb8b01424..e3dcf1f149 100644
-> --- a/docs/system/deprecated.rst
-> +++ b/docs/system/deprecated.rst
-> @@ -329,6 +329,22 @@ The ``compat`` property used to set backwards compatibility modes for
->  the processor has been deprecated. The ``max-cpu-compat`` property of
->  the ``pseries`` machine type should be used instead.
->  
-> +``lm32`` CPUs (since 5.2.0)
-> +'''''''''''''''''''''''''''
-> +
-> +The ``lm32`` guest CPU support is deprecated and will be removed in
-> +a future version of QEMU. The only public user of this architecture
-> +was the milkymist project, which has been dead for years; there was
-> +never an upstream Linux port.
-> +
-> +``unicore32`` CPUs (since 5.2.0)
-> +''''''''''''''''''''''''''''''''
-> +
-> +The ``unicore32`` guest CPU support is deprecated and will be removed in
-> +a future version of QEMU. Support for this CPU was removed from the
-> +upstream Linux kernel, and there is no available upstream toolchain
-> +to build binaries for it.
-> +
->  System emulator devices
->  -----------------------
->  
-> @@ -408,22 +424,6 @@ The above, converted to the current supported format::
->  linux-user mode CPUs
->  --------------------
->  
-> -``lm32`` CPUs (since 5.2.0)
-> -'''''''''''''''''''''''''''
-> -
-> -The ``lm32`` guest CPU support is deprecated and will be removed in
-> -a future version of QEMU. The only public user of this architecture
-> -was the milkymist project, which has been dead for years; there was
-> -never an upstream Linux port.
-> -
-> -``unicore32`` CPUs (since 5.2.0)
-> -''''''''''''''''''''''''''''''''
-> -
-> -The ``unicore32`` guest CPU support is deprecated and will be removed in
-> -a future version of QEMU. Support for this CPU was removed from the
-> -upstream Linux kernel, and there is no available upstream toolchain
-> -to build binaries for it.
-> -
->  ``tilegx`` CPUs (since 5.1.0)
->  '''''''''''''''''''''''''''''
->  
+> diff --git a/scripts/tracetool.py b/scripts/tracetool.py
+> old mode 100644
+> new mode 100755
 > 
+
+Cc: qemu-trivial@nongnu.org
 
 
