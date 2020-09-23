@@ -1,24 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kL8JJ-0006G8-JJ
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 13:12:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37040)
+	id 1kL8KY-0007xo-9j
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 13:13:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kL8JI-0006Dx-9D; Wed, 23 Sep 2020 13:12:04 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:59147)
+ id 1kL8KV-0007wV-5a; Wed, 23 Sep 2020 13:13:20 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:55677)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kL8JF-0007jl-T6; Wed, 23 Sep 2020 13:12:03 -0400
+ id 1kL8KT-0007rb-AZ; Wed, 23 Sep 2020 13:13:18 -0400
 Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mq2rM-1kpISs0xNq-00n76b; Wed, 23 Sep 2020 19:11:56 +0200
-Subject: Re: [PATCH] vhost-vdpa: remove useless variable
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>, 
- Cindy Lu <lulu@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200920152024.860172-1-lvivier@redhat.com>
- <8793d489-3961-f53a-df69-21a7eda85f22@redhat.com>
+ 1M8hR1-1kPHCL1Ztx-004i8G; Wed, 23 Sep 2020 19:13:12 +0200
+Subject: Re: [PATCH] timer: Fix timer_mod_anticipate() documentation
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200920155042.400737-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <eef04a11-7c32-45d0-bbc8-ee9eff4c02b1@vivier.eu>
-Date: Wed, 23 Sep 2020 19:11:55 +0200
+Message-ID: <3cee22bf-d0c9-8942-7206-397fa167930f@vivier.eu>
+Date: Wed, 23 Sep 2020 19:13:11 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <8793d489-3961-f53a-df69-21a7eda85f22@redhat.com>
+In-Reply-To: <20200920155042.400737-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:stFfRJz8uXAOqVndLOwK9Fzm4+KC7e5zLfWEb8U1rbuW0bRAy0b
- nzAcXL6rW9J+X6UdSHslCoL8MTqttYTl7O+KiEN8iho/PIS7VCHbnmDVeHthM86REBcO90A
- eUbiEoM5F6vda24L5zzDmNEoZV4CqSog6AJuujhyRVIcYEjHxuK5KhFF3NutEzV/56HhoTR
- e3L470OKdLwDWD50OE4mg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/Eb1zGyHL10=:0jsE3dFdaOz2A6zjChtcrm
- FxQKwctxXADq3LGZF3ybvoWFboJb90LNpajaPx//cD2Qqp2nC838pmlzGpihxYa6i1HBMwwqB
- 5pz83WgbF3qUIDYKd5RcBG02s+vDrff1aEAPPdHNSNiRjCSfs/4c0BFe25tWarBPOLraIeBr3
- KS2ikKrQnFIRVx1wnQ1/+xXHgHUCSDFyZU8tzXW6pr147B2QQuG1ErZtGyXNyWYJuCQ72nUBV
- wFnhCuY6fB/vQv9GYo3CDBn+q+py4Jt/xt8YjyxW0bFxfrSxvBWKQv8FDwucNLx5P/rM3GGds
- cx+1oOKoVnPHgHB21vwOOlUHC7Uu5vohzvcbiDlSz1AD0XtPtkeiu0MGimLjRBkxHolYm5quF
- o4GIr0EXjNGbb0OSiYElwxKaqgW3XdpZ2IuR5ITOCfNbzNx539Bn7uhzgSIrtetB5BglzBZaT
- 63eRt4MDtEXHi00VqG0KPA/7oBb/8OBWlSLBVGNAnRYWT986sU8sV2QjNIBYV7f2sI7hmFKa0
- ZLhh2o8KRafqlBR/h4pk3dBZvosnFbtFOV4mx3WCLGUQn8BVnP+4YiemD4J9/vjUx4rYgaMyy
- dD17biosMDIu9t1HWsUwHzQ089z2I57pIeYZgLbtKnXVWF0RQouTXUOPs8qjWNuxwjrmgotjf
- ayV7Gj7wIw+srkvaocLnJ0F0qV6UQ0omfsYYgn8zuWRwiaAX21NJldAybahqyqgLMnnY09K9o
- a8qN01OsNxhNtGRRAl3v+qc8hmD3JDE3sJG8pqEK2zdcQw0e/aStsMNeyK3C2LMd1UDJnFiW/
- JbogJVIdlYF+2rrSNxhHbCm8mWWxcPJwjQEItXmtW6njd551uqM6Q+qDH/JHFwdtjjgc0px
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:oowgM6vervFQZPxnNLLj8qoPU7U0eYm+HLFTZk0yU+8iCtnpc/z
+ U2Ayc5kQ32ZVbhs/zD6G7EoQepLo+qMsPOrfscjOtovhODjjCyRMw59V15GapZltynjGW0B
+ q6Di5Ovby2NlY6Tt39y75QUZ8zcMjzjJSz2TUwEYcFIUPQYTVGeme/oETE6BOnLLZybDjqq
+ v0aA2eNo/+o/Z16Lj2dUA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Czx3L65lFqE=:TM/RusTtVzP8igZxz+vcce
+ LUk/S+9EBa8UNWQr7oQpCsdkPzJt1ZPeR96dqkICTtDxGnqSLYnulkGHKk8spNRVmoA3he2+1
+ wBjz5FHXuycbm/QQCgID3/mFApgnWpCs+xPwgwIFhQixC2kIDY43m7MwHB2feoczVTXlfp9kT
+ 8yYwXAtGWcPz6Ii9SntrhLWT+tYrmBZ03ZLtLrVmd7wdEVjvqKsxbnS7XOK0vl0joVLnMcBDX
+ /EdgPQQwxEjOKN+IK0HBS+bIdpDvOiNJJWHqYk8RZ2braJIgYTtsn6Nm7pcsOOEmgzgWaxgmN
+ MpIVXDTkc7NL1dwwcRBWR3BsEhwkOElve0YITnzZCoDKwTOIdKdW6UBQYdhSReN3ew3N/mxzX
+ Shgw1K3Gpo03XX4ChWBHzUMgxq2Y94obkhsdsK5sHRCVGgF9MjM0zIAyWqSvOufyb4iJ1Zfy2
+ YKdwCmzXekDIcs2/SHuaQ/1jabNRmUltuHlRNLN18KOej8Bi/1RA4+LRBDLn2A4PKrQ+Ifhkv
+ jGcR4PSQVjEZ6MU67jC25wu9q2h2sSsh54CKgF1CdUYLp49nNhKJGnX/wZhD5bYPuJdLI8K7x
+ X2dpmFVL8Plte47wRqlchYHjhIPnV/nDXFZix6APX2NhyT8GE33YvNR/n9X8R9xXz05Jt8p3Q
+ JJS9rFkh40MmhQ3LOidM37bBJ30KfO6pb0kP3Rm1gKxFlbUbaH7kBKZ0lqQYI1yCRyjmatWVH
+ ve+ROSl5755EEWeYJ8VuVbwqaXaepa6q7FDz31hMq9EBu2YZHfxKVsu0sSjuwnrBecKW7QkXV
+ pR/DMlZZTyeVi0PRuzoVx+PCCwYHIwXfF0xlwG6+XT9sVUbJ4eEpTfZAMb/1xDqmcMQ3Utb
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 13:10:06
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 13:09:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -110,52 +108,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Sep 2020 17:12:04 -0000
+X-List-Received-Date: Wed, 23 Sep 2020 17:13:20 -0000
 
-Le 20/09/2020 à 17:59, Philippe Mathieu-Daudé a écrit :
-> Cc'ing qemu-trivial@
+Le 20/09/2020 à 17:50, Philippe Mathieu-Daudé a écrit :
+> timer_mod_anticipate() will be scaled to the timer unit,
+> which is not always nanosecond. Fix the documentation.
 > 
-> On 9/20/20 5:20 PM, Laurent Vivier wrote:
->> in vhost_vdpa_listener_region_del(), try_unmap is always true and so,
->> vhost_vdpa_dma_unmap() is always called. We can remove the variable
->>
->> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> Fixes: add40e9777d ("timer: add timer_mod_anticipate*")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/qemu/timer.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> 
->> ---
->>  hw/virtio/vhost-vdpa.c | 9 +++------
->>  1 file changed, 3 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
->> index 4580f3efd8a2..c6cae6a6cabf 100644
->> --- a/hw/virtio/vhost-vdpa.c
->> +++ b/hw/virtio/vhost-vdpa.c
->> @@ -153,7 +153,6 @@ static void vhost_vdpa_listener_region_del(MemoryListener *listener,
->>      hwaddr iova;
->>      Int128 llend, llsize;
->>      int ret;
->> -    bool try_unmap = true;
->>  
->>      if (vhost_vdpa_listener_skipped_section(section)) {
->>          return;
->> @@ -176,11 +175,9 @@ static void vhost_vdpa_listener_region_del(MemoryListener *listener,
->>  
->>      llsize = int128_sub(llend, int128_make64(iova));
->>  
->> -    if (try_unmap) {
->> -        ret = vhost_vdpa_dma_unmap(v, iova, int128_get64(llsize));
->> -        if (ret) {
->> -            error_report("vhost_vdpa dma unmap error!");
->> -        }
->> +    ret = vhost_vdpa_dma_unmap(v, iova, int128_get64(llsize));
->> +    if (ret) {
->> +        error_report("vhost_vdpa dma unmap error!");
->>      }
->>  
->>      memory_region_unref(section->mr);
->>
-> 
+> diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+> index 6a8b48b5a9d..1dc880e94e7 100644
+> --- a/include/qemu/timer.h
+> +++ b/include/qemu/timer.h
+> @@ -679,7 +679,7 @@ void timer_mod(QEMUTimer *ts, int64_t expire_timer);
+>  /**
+>   * timer_mod_anticipate:
+>   * @ts: the timer
+> - * @expire_time: the expiry time in nanoseconds
+> + * @expire_time: the expire time in the units associated with the timer
+>   *
+>   * Modify a timer to expire at @expire_time or the current time, whichever
+>   * comes earlier, taking into account the scale associated with the timer.
 > 
 
 Applied to my trivial-patches branch.
