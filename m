@@ -1,68 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kL6XK-0002TT-K4
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 11:18:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35190)
+	id 1kL85O-0004Xu-P2
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Sep 2020 12:57:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kL6XB-0002Nv-Nu
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 11:18:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58713)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kL6X9-0004pF-JR
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2020 11:18:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600874294;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QZtuYQxEXQHmmLPY/YNLronE3WuZi8xHxajv91xkyzc=;
- b=h7eSEj+I+/jMmsi0tnUhix5Hx1NBX1WiSbi1gCmOmA/spkBq8PPxIcOifp5SVQZZkBEhK3
- 4lqDSVmYaihbkpV76LpTr8wCBfPC9LZ+rpqHF7WJFpODymYHPqCcM+KipQGx07JRZc2McB
- IXHpHG6uZhPIk+9Ya4peOepBtiNZNXg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-20-C6HmXw5DN0-XgAJj6wN53Q-1; Wed, 23 Sep 2020 11:18:11 -0400
-X-MC-Unique: C6HmXw5DN0-XgAJj6wN53Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BDFCA10BBED1;
- Wed, 23 Sep 2020 15:18:09 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-112-239.ams2.redhat.com [10.36.112.239])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 581219CBA;
- Wed, 23 Sep 2020 15:18:08 +0000 (UTC)
-Date: Wed, 23 Sep 2020 17:18:06 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Liu Yuan <namei.unix@gmail.com>,
- sheepdog@lists.wpkg.org, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, qemu-block@nongnu.org
-Subject: Re: [PATCH] block/sheepdog: Replace magic val by
- NANOSECONDS_PER_SECOND definition
-Message-ID: <20200923151806.GD6912@linux.fritz.box>
-References: <20200921110145.520944-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kL85K-0004UQ-Lr; Wed, 23 Sep 2020 12:57:38 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34367)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kL85J-000650-7m; Wed, 23 Sep 2020 12:57:38 -0400
+Received: by mail-wm1-x341.google.com with SMTP id l15so4951196wmh.1;
+ Wed, 23 Sep 2020 09:57:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=eTOwXgcDvf0qJPusx8+dn0NqJdcIT1vyPwxo//UMpeU=;
+ b=iOsPqxjq6yhExkvFp0zLC0Pp5DvwnvJPxdvOdXm1QTB17AT5WrEDLc6jdFIavEPQ8P
+ q8BtHC7SyhqjHo536L/v/WZbrR1FbUdpjv2rs4A5b9pWPorNdNZ7JUX4agHQdGCjTdyN
+ +1TZazAu7hjt5dKVAl3N3ZG8doNpOz0Ng/liRjl9exUMBVjJnaSLwbh9+w2cKUmZVXYt
+ 89jRpabnC4o7IPULuoeYYunaLONKw8L4GklZ2x1svtGfDodRzoVDzOGHa5EcMPaUsd44
+ pRGmRBtmmIB0mNJf6bP/jVmOjijR9AF8flKEiSfjdqef0ebjob8He4f6pfUiEeWjJRx3
+ zDIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eTOwXgcDvf0qJPusx8+dn0NqJdcIT1vyPwxo//UMpeU=;
+ b=P3XVMcW+uATzMUX/smCxHOhd/D1YpEIFRHtb4oWjTM+uBsODvoYh9gocrQn7yZe+Eg
+ MuLQ6Ufmd+EY7qJrqBppiVxcITdQfnFOyCneMT7rdc3nBVk5ZErIjp7gX8yLD/2xUf5Q
+ 7AT2Dg6GphnL/ouwwUneu3hJG5QFzcW5ZGQ2EBX4StJuozAPiBaHXaKI1YZaQdW9DNkx
+ itRdeprAwlhnTpDZHPm6b/Uf5+ZtP6WB62Tke4MHM9hLjD72IJepa2Q5Lp4B3p0yCquI
+ vKj5qSvi3i0oimejTFujEys8hmmGFeYAevAKGug+O9+jxLiPp8VurO+vewX46mT/ctLC
+ qNkQ==
+X-Gm-Message-State: AOAM532kQLf283nxHBbr12gfPvqP5/TPR372PVe10akjMkwai9S4lDHN
+ KRDV+M40dkVP4TTUj1tYRNc=
+X-Google-Smtp-Source: ABdhPJwMTR0YKsbCfqrf891xH0g+aAIN6MbgCzqHCBBkAje4TdSNsaI7Vw1bsdpXCcINjLrcQBH4lg==
+X-Received: by 2002:a1c:e904:: with SMTP id q4mr480668wmc.151.1600880254818;
+ Wed, 23 Sep 2020 09:57:34 -0700 (PDT)
+Received: from [192.168.1.34] (234.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.234])
+ by smtp.gmail.com with ESMTPSA id a81sm416099wmf.32.2020.09.23.09.57.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Sep 2020 09:57:33 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 3/7] hw/ide/core: Replace magic '512' value by
+ BDRV_SECTOR_SIZE
+To: John Snow <jsnow@redhat.com>, Kevin Wolf <kwolf@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>
+References: <20200814082841.27000-1-f4bug@amsat.org>
+ <20200814082841.27000-4-f4bug@amsat.org>
+ <20200817111745.GG11402@linux.fritz.box>
+ <2347d8f7-5632-f7a4-6b81-bee179241da4@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c5669c37-6727-89fd-a68f-518e56f39884@amsat.org>
+Date: Wed, 23 Sep 2020 18:57:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200921110145.520944-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <2347d8f7-5632-f7a4-6b81-bee179241da4@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 00:53:58
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.228,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,16 +90,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Sep 2020 15:18:18 -0000
+X-List-Received-Date: Wed, 23 Sep 2020 16:57:40 -0000
 
-Am 21.09.2020 um 13:01 hat Philippe Mathieu-Daudé geschrieben:
-> Use self-explicit NANOSECONDS_PER_SECOND definition instead
-> of magic value.
+On 9/23/20 4:53 PM, John Snow wrote:
+> On 8/17/20 7:17 AM, Kevin Wolf wrote:
+>> Am 14.08.2020 um 10:28 hat Philippe Mathieu-Daudé geschrieben:
+>>> Use self-explicit definitions instead of magic '512' value.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> BDRV_SECTOR_SIZE is the arbitrary unit in which some block layer
+>> functions and variables work (such as bs->total_sectors). It happens to
+>> be 512.
+>>
+>> IDE disks have a sector size, too. Actually, two of them, a physical and
+>> a logical one. The more important one is the logical one. We happen to
+>> emulate only IDE devices for which the logical block size is 512 bytes
+>> (ide_dev_initfn() errors out otherwise).
+>>
+>> But just because two constants both happen to be 512 in practice, they
+>> are not the same thing.
+>>
+>> So if we want to replace all magic 512 values, we should probably
+>> introduce a new IDE_SECTOR_SIZE and then decide case by case whether
+>> IDE_SECTOR_SIZE or BDRV_SECTOR_SIZE is meant. I think most (if not all)
+>> of the places you converted in this patch need to be IDE_SECTOR_SIZE.
+>>
+>> Kevin
+>>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> I didn't audit the other patches, but be mindful of the distinction that
+> Kevin is pointing out.
+> 
+> Luckily, I think we're low risk for deciding to change the
+> BDRV_SECTOR_SIZE default any time soon, so it probably won't matter in
+> the near future ...
 
-Thanks, applied to the block branch.
+TBO my only concern was code readability while reviewing
+(improve code readability).
 
-Kevin
+I'll address Kevin's review comment at some point, but this is
+a low priority.
 
+Thanks both for having a look,
+
+Phil.
+
+> 
+> --js
+> 
+> 
 
