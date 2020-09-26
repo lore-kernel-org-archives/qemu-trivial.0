@@ -1,88 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kLu5B-0004Wm-Ho
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Sep 2020 16:12:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42580)
+	id 1kM541-00088t-P7
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2020 03:56:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kLu59-0004VQ-GO
- for qemu-trivial@nongnu.org; Fri, 25 Sep 2020 16:12:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23773)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kM53z-00088P-Ok
+ for qemu-trivial@nongnu.org; Sat, 26 Sep 2020 03:56:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60211)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kLu56-00028v-Hq
- for qemu-trivial@nongnu.org; Fri, 25 Sep 2020 16:12:39 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kM53x-0008GS-J3
+ for qemu-trivial@nongnu.org; Sat, 26 Sep 2020 03:56:11 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601064755;
+ s=mimecast20190719; t=1601106968;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VGTZRba0keDGpa2BfPuVyfRcUixYmMaxVgpMXya3MGI=;
- b=P8cFx5NVk0DiyEFvfz6Td4LKmAh5foX4g3Efdfohg18/IDvgHG8H3T4IW3Bp8LX5sHaeqV
- ollJatLJ7A2n40fSbJxH9oHcwIyOKF4C+EsSFEya1kzVysPs+t2qc/cIuTLWFvz28c+tfR
- 1/P9/Xu7FALAGja6aaaSQFkCwxDMERY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-453-oBDnNcM6Ooy4ZcyKF8mfjg-1; Fri, 25 Sep 2020 16:12:33 -0400
-X-MC-Unique: oBDnNcM6Ooy4ZcyKF8mfjg-1
-Received: by mail-wm1-f72.google.com with SMTP id t10so59988wmi.9
- for <qemu-trivial@nongnu.org>; Fri, 25 Sep 2020 13:12:33 -0700 (PDT)
+ bh=S4kV3T7hzPKK3/3oXJOpR3FlMCQqMO5CoJCEIAAx/K4=;
+ b=QeLsbLcjdHz5BjiEPDdIUXi+1jb83MKGMHnvx/iuyTAjJOmWs1cF/JyEQjZkuxmF9lIxML
+ RVIIb08WooE7To9mi7pfcB0ZR1ucykjpODO6bHBClkuKzsj0QrQxlzp2qMRyY6vdQFJKfB
+ b5J25K4mp6jrt5U/jIp5oynsF2p07Zg=
+Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
+ [209.85.161.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-18-2evc-BYYNYGr8kEX-U8ktQ-1; Sat, 26 Sep 2020 03:56:06 -0400
+X-MC-Unique: 2evc-BYYNYGr8kEX-U8ktQ-1
+Received: by mail-oo1-f71.google.com with SMTP id a21so2406312oos.5
+ for <qemu-trivial@nongnu.org>; Sat, 26 Sep 2020 00:56:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=VGTZRba0keDGpa2BfPuVyfRcUixYmMaxVgpMXya3MGI=;
- b=cwveakPcze1knFnTNnpXVsJ5s2G+QNPNzJOaWifAvBVpb5GDd8Yc9/eFwYHuut4C7I
- Pyg2hfv9gGZoqYg3e4+C+ZPB/y4FXsdqpJCzuxa9lcKe0Oo4eTwXPQ0KkE8/RpomyTuV
- au2xJkzd4uks3KilAdXerNZ2czRDcp83D5zyc/KyNut79Kp5LXsk4HWfn9BeyAB22RGv
- 0PmemPFIXeddNTTUg5qQJGXT044WfcNMKboyqedHZXKDxtSkoPojZbEGIVD0KNWPBhBy
- /FvR2LcP0AhKYFveAU9BvWIUEwXCAdjF35JjvTtg3LlUiZx6DoNC0YwgKXvDOwpft7fr
- W6oA==
-X-Gm-Message-State: AOAM533qPnH8gd8vn44v1K4oc3g/DfqTL9w2nwhqk0sQOeoawPUqhdZE
- 1z/p5pNult9qHVNSC9Ro90aY5nmJ4RVgg5ni12M1Ipn+W3IxpwsdaMW1TD5fY6sLW25YxTEZbyY
- y8wvyDwH7jU+C0CkgUQ==
-X-Received: by 2002:a7b:c84a:: with SMTP id c10mr235258wml.139.1601064752060; 
- Fri, 25 Sep 2020 13:12:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjaOnD//kLc8F/UcS1x3gDOkTN9eZkxAi3ihfH8eHBYzgYGSJdkFnqTNu4HgmTUrpXmHJMDQ==
-X-Received: by 2002:a7b:c84a:: with SMTP id c10mr235231wml.139.1601064751689; 
- Fri, 25 Sep 2020 13:12:31 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:ec9b:111a:97e3:4baf?
- ([2001:b07:6468:f312:ec9b:111a:97e3:4baf])
- by smtp.gmail.com with ESMTPSA id 31sm1580219wre.57.2020.09.25.13.12.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Sep 2020 13:12:29 -0700 (PDT)
-Subject: Re: [PATCH] hw/scsi/lsi53c895a: Sanitize some trace events format
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fam Zheng <fam@euphon.net>
-References: <20200915174639.1366226-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <8934c787-b909-e885-b15a-c4bcd194f458@redhat.com>
-Date: Fri, 25 Sep 2020 22:12:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=S4kV3T7hzPKK3/3oXJOpR3FlMCQqMO5CoJCEIAAx/K4=;
+ b=eVVJlgFjVEqZIV5k+a1qGCZiFYcW+L9UqAwnstiB5P+4w0qGZg9kVof2JDe/RQfB6C
+ azzmog4c/6/Ewmh21y4U2gHCmVQDhApnncUt9JPet5VJ8hzIx6YGwPl2gvHXwxg8x8fY
+ IUwGzml2efNECeY6NAMgdLeDDVeljxGMKKA0Wmphs4wdhhwAet1zGLElgQdy1UNpN7Ve
+ gA6Zyu7M7pJ6jK4UdZZRjOMAQuBFD1//C4tLUbITPFfqbOesnsd+7wPlJ654XHT7LaUB
+ jOi+wCgz7mR+kqA1znKoV8B0QzH0Dj2cDtFMV5Hyg6nDYSclzVg21BVXW/rwXl1RZT7k
+ DmUQ==
+X-Gm-Message-State: AOAM5330IwFhYhjRQi1pB/5/TrvYLj9T6J6CUjiXEr2V9lj1rZRwwY5V
+ 3vlNOlcBpqGqOsUYj9qZHu7pzFi3ckwC5aFWairxZEsv2rMvWn+GGBm4Tu9HHfrOj43cTle5TZ4
+ Qqk0Fdy+hinnKZgzygml5AiIJYhhDbnxQsA==
+X-Received: by 2002:aca:5110:: with SMTP id f16mr750807oib.30.1601106965358;
+ Sat, 26 Sep 2020 00:56:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQU6V4x31QZRjhA/rEuj9+m+wkqXbtsMxkjX3FzfvlqWeH6p8BjMGIr1tgmWg76SnkFXWt9W1mYmmZ+FiC39Y=
+X-Received: by 2002:aca:5110:: with SMTP id f16mr750801oib.30.1601106965175;
+ Sat, 26 Sep 2020 00:56:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200915174639.1366226-1-philmd@redhat.com>
+References: <CA+XhMqxQ3o_h7_Fwho7gu9x9Pw5jCw=z-goVMyzJgQYqZR-cgA@mail.gmail.com>
+In-Reply-To: <CA+XhMqxQ3o_h7_Fwho7gu9x9Pw5jCw=z-goVMyzJgQYqZR-cgA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Sat, 26 Sep 2020 09:55:54 +0200
+Message-ID: <CAP+75-XwpLiutpW6-J3DLKFGXOVd=tLF2fG2=0=nP9+KZ0UYug@mail.gmail.com>
+Subject: Re: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros
+ build
+To: David CARLIER <devnexen@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/25 02:48:20
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/26 03:02:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -34
-X-Spam_score: -3.5
+X-Spam_score_int: -32
+X-Spam_score: -3.3
 X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.199,
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.199,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.238, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,40 +81,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Sep 2020 20:12:39 -0000
+X-List-Received-Date: Sat, 26 Sep 2020 07:56:12 -0000
 
-On 15/09/20 19:46, Philippe Mathieu-Daudé wrote:
-> Make some lsi53c895a trace events more understandable.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Hi David,
+
+On Fri, Jun 26, 2020 at 4:08 PM David CARLIER <devnexen@gmail.com> wrote:
+>
+> From 95ef79ddff73eebd1f1bec6673c2c68209fab107 Mon Sep 17 00:00:00 2001
+> From: David Carlier <devnexen@gmail.com>
+> Date: Fri, 26 Jun 2020 13:56:14 +0000
+> Subject: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros build
+>  failure.
+
+Back to this patch, what version of Haiku are you using?
+I couldn't find this information in your other emails.
+Thanks,
+Phil.
+
+>
+> Signed-off-by: David Carlier <devnexen@gmail.com>
 > ---
->  hw/scsi/trace-events | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/scsi/trace-events b/hw/scsi/trace-events
-> index 9a4a60ca635..ac4209f361e 100644
-> --- a/hw/scsi/trace-events
-> +++ b/hw/scsi/trace-events
-> @@ -234,9 +234,9 @@ spapr_vscsi_do_crq(unsigned c0, unsigned c1) "crq: %02x %02x ..."
->  
->  # lsi53c895a.c
->  lsi_reset(void) "Reset"
-> -lsi_update_irq(int level, uint8_t dstat, uint8_t sist1, uint8_t sist0) "Update IRQ level %d dstat 0x%02x sist 0x%02x0x%02x"
-> +lsi_update_irq(int level, uint8_t dstat, uint8_t sist1, uint8_t sist0) "Update IRQ level %d dstat 0x%02x sist 1:0x%02x 0:0x%02x"
->  lsi_update_irq_disconnected(void) "Handled IRQs & disconnected, looking for pending processes"
-> -lsi_script_scsi_interrupt(uint8_t stat1, uint8_t stat0, uint8_t sist1, uint8_t sist0) "SCSI Interrupt 0x%02x0x%02x prev 0x%02x0x%02x"
-> +lsi_script_scsi_interrupt(uint8_t stat1, uint8_t stat0, uint8_t sist1, uint8_t sist0) "SCSI Interrupt stat 1:0x%02x 0:0x%02x sist 1:0x%02x 0:0x%02x"
->  lsi_script_dma_interrupt(uint8_t stat, uint8_t dstat) "DMA Interrupt 0x%x prev 0x%x"
->  lsi_bad_phase_jump(uint32_t dsp) "Data phase mismatch jump to 0x%"PRIX32
->  lsi_bad_phase_interrupt(void) "Phase mismatch interrupt"
-> 
-
-The idea of the patch is that SIST0 and SIST1 are usually read in pairs.
- So it's a bit weird in the tracepoint format but it's actually more
-understandable this way when you see it printed.
-
-Laurent, can you please unqueue this?
-
-Paolo
+>  include/qemu/bswap.h | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+> index 2a9f3fe783..1d3e4c24e4 100644
+> --- a/include/qemu/bswap.h
+> +++ b/include/qemu/bswap.h
+> @@ -8,6 +8,8 @@
+>  # include <machine/bswap.h>
+>  #elif defined(__FreeBSD__)
+>  # include <sys/endian.h>
+> +#elif defined(__HAIKU__)
+> +# include <endian.h>
+>  #elif defined(CONFIG_BYTESWAP_H)
+>  # include <byteswap.h>
+>
+> --
+> 2.26.0
+>
 
 
