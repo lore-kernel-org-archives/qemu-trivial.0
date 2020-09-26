@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kM5YN-0004yl-A0
-	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2020 04:27:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36476)
+	id 1kM7Ud-0007hK-Ji
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2020 06:31:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1kM5YJ-0004yS-Fv; Sat, 26 Sep 2020 04:27:32 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:36809)
+ (Exim 4.90_1) (envelope-from <carenas@gmail.com>)
+ id 1kM7Ub-0007gh-18; Sat, 26 Sep 2020 06:31:49 -0400
+Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43]:35538)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1kM5YG-0003k0-5b; Sat, 26 Sep 2020 04:27:31 -0400
-Received: by mail-ej1-x643.google.com with SMTP id e23so1758792eja.3;
- Sat, 26 Sep 2020 01:27:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <carenas@gmail.com>)
+ id 1kM7UY-0008Sq-Sc; Sat, 26 Sep 2020 06:31:48 -0400
+Received: by mail-vs1-xe43.google.com with SMTP id e23so2921642vsk.2;
+ Sat, 26 Sep 2020 03:31:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=aLT5Tr+qY+bS33oT4GgjLOMJ1Mn//nK1Vk8VVjgX1J4=;
- b=BALh30wE4/WHrw+haP1Y9B1mLRKZfheKs+ZSWIA3VQJSxXTKtv6/xbpEaIJfvhiHXu
- lMzgiM/wFaAGP6ihFW8H8YOdZhgQP0todNzYsF24G6yDLWHZqLgugTitbT9Nk78NbTsb
- CTuXeJJ9fAP2bl3O/GE9rLn9gtyMlUDoD5GgafLSRpOWKKx2eNH1vqos+SKqURS/qlQg
- 0bP4IB41BrX63qeHj0mIe6TjV8Qsmbjw5gZV0XwVvIpalg83XYplwLhM2jYoBI3zWyWy
- gwqyuxiwBF/tLjJgzew8trtFi3ptifxsjNRSz3rT/CUOUeerDxXJVZmfvAj+rdk9f2r/
- Ez8Q==
+ :cc; bh=DCux6ibpwv2WidxVbb/6aY5wr47jk+W+hdcfe8EreII=;
+ b=I2PvJSTzIp4YOPuDBcfAkOCbpqZXIkzMKVEcNDXvlGeF988SfRxKtroV55v+n1x1aa
+ /mJiFFduR+XTEmX0mNiMq3mhtOcEP7frmk2OlA9Yd7ZdYndgY4Y7vi+UgztECB29xA1+
+ 5RaTCfM8ZoGoa/JGECdZIXS14ubOYKRiFds5y3qynP/yG88m83CVcw/Qjrnz/KbR9p+v
+ bEx4tEzeWjVVR7wFWm1D5+aOzEaD/tOr0Q3HZ5oYBdnUma0rGLPZzGnEsdiawFF0Lnas
+ fmn1ScD0FOFjLS92PvVYlGqohhR3ZFqQs7q9d591K45RmaOVNlpsgRt6NIBMRIU5qI9O
+ rdAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=aLT5Tr+qY+bS33oT4GgjLOMJ1Mn//nK1Vk8VVjgX1J4=;
- b=ZpKyG9UoNB3Obgra99RasRABYVFwev9Cq0nfRlvKMbYTMeG7W9EsQppDQ4zarjHyys
- KBIeCYXbLqfntxKxaFDRQ/CeFjJphn5Uom7CUp2bgPGX4Ns8TWeePdOXxHx3jQyBSHoR
- VxYtouQ3QxF0yUMQXs1O+EyJ/wOeKesB9iW9S+9JTq6DYiPaU37d9Bbu2/CTFJYv3j21
- Ay9/YMFfdD5WE2npr/pFoK56yuTbn2g3s3wMIwXrRPpLYFBvViSi01QxyW21+pEdb0vW
- uJIbLSViWG8bxWDZbOg3KwVxlc2RSqxWa+065I+IEVLJLX+yjmRNPGvPy+MI9IOeqNjb
- dcag==
-X-Gm-Message-State: AOAM530I3J5gCZkvvVBfvd8UoutD7wDKc5Rn9y9rePaX9jGQm19mCZvR
- MNs+68mbKAbePGMMYJWJGxoeapgrW1/FWg8dY5w=
-X-Google-Smtp-Source: ABdhPJySzuNpXR7DYj0skIjOB4tSX0urf9NqlX5Ks4BiPNbzSIzVOGVJlgWq6bdFdLSCPrWoelIriU9WdhjISBzXqvo=
-X-Received: by 2002:a17:906:c045:: with SMTP id
- bm5mr6255805ejb.311.1601108845151; 
- Sat, 26 Sep 2020 01:27:25 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=DCux6ibpwv2WidxVbb/6aY5wr47jk+W+hdcfe8EreII=;
+ b=oQGZfPX6Y5twnRsZ4K6jGcITjeRFuJgpb1KKtHJKDt1q9MmR1/8zqUpMWJ3S9l5Zzl
+ 3VerJvNlKw5Ob66YwwgbJA1XRsRFj9ZBrjUXF3WqFIQXqeHJ7MKeW57SLIDGSZtPtE9e
+ En2Ohe/ccBxfRvzuwS8/xCUBR7XLAlC5ZA/66VkzZ0R2aDmH2rZQWPt/Ixb9Z4sag5Yt
+ WF+oamPLVq7adf1X0sArAIbXz82FA5n/mFjYQhxKbTbx6dv2/dfFZQgXMZBk5keL4E15
+ q6WfmZCJLLZKnBz0X7+DNYhUhlwf6w+r/ALe2PuYEaymNScFdwPUscnXqU3WIvZ4QbW8
+ ujUg==
+X-Gm-Message-State: AOAM531nAyy+0UFkINi1QDHP6tOH9RnNe8ObqrowYkL4Rb0AdhJEw/mw
+ 2UBoDtzJU4p8BQnMKPkuUAi223S1iXoLjsQUnzg=
+X-Google-Smtp-Source: ABdhPJwVrAY7Hw5pGhJpGbNvf3x3TotWvZq55jONHcltYi6l4uo41OVtPvYv/+0jrkwtp1ovfvxRHNWRCn2uwPCZBwU=
+X-Received: by 2002:a67:8802:: with SMTP id k2mr1301197vsd.42.1601116305129;
+ Sat, 26 Sep 2020 03:31:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <CA+XhMqxQ3o_h7_Fwho7gu9x9Pw5jCw=z-goVMyzJgQYqZR-cgA@mail.gmail.com>
  <CAP+75-XwpLiutpW6-J3DLKFGXOVd=tLF2fG2=0=nP9+KZ0UYug@mail.gmail.com>
-In-Reply-To: <CAP+75-XwpLiutpW6-J3DLKFGXOVd=tLF2fG2=0=nP9+KZ0UYug@mail.gmail.com>
-From: David CARLIER <devnexen@gmail.com>
-Date: Sat, 26 Sep 2020 09:27:14 +0100
-Message-ID: <CA+XhMqwWuMrnUsFx7re5K6Yo7UP5xdF5kNaPmVsabf-4LU9Rfw@mail.gmail.com>
+ <CA+XhMqwWuMrnUsFx7re5K6Yo7UP5xdF5kNaPmVsabf-4LU9Rfw@mail.gmail.com>
+In-Reply-To: <CA+XhMqwWuMrnUsFx7re5K6Yo7UP5xdF5kNaPmVsabf-4LU9Rfw@mail.gmail.com>
+From: Carlo Arenas <carenas@gmail.com>
+Date: Sat, 26 Sep 2020 03:31:34 -0700
+Message-ID: <CAPUEspiBbM1N_=2or8P7VuFtpHNWvcjD2orkUFNOFOW-ytHx8w@mail.gmail.com>
 Subject: Re: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros
  build
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+To: David CARLIER <devnexen@gmail.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e43;
+ envelope-from=carenas@gmail.com; helo=mail-vs1-xe43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -74,52 +73,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 26 Sep 2020 08:27:32 -0000
+X-List-Received-Date: Sat, 26 Sep 2020 10:31:49 -0000
 
-Hi the last image available the beta 2.
+FWIW the 32 bit image (haiku-r1beta2-x86_gcc2h-anyboot.zip[1]), uses
+gcc 2.95.3 as system CC
+a newer gcc (the same version that is used for the 64 bit port) is
+provided as an alternative though
 
-Regards.
+Carlo
 
-On Sat, 26 Sep 2020 at 08:56, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Hi David,
->
-> On Fri, Jun 26, 2020 at 4:08 PM David CARLIER <devnexen@gmail.com> wrote:
-> >
-> > From 95ef79ddff73eebd1f1bec6673c2c68209fab107 Mon Sep 17 00:00:00 2001
-> > From: David Carlier <devnexen@gmail.com>
-> > Date: Fri, 26 Jun 2020 13:56:14 +0000
-> > Subject: [PATCH 1/3] Include endian.h for Haiku to solve bswap* macros =
-build
-> >  failure.
->
-> Back to this patch, what version of Haiku are you using?
-> I couldn't find this information in your other emails.
-> Thanks,
-> Phil.
->
-> >
-> > Signed-off-by: David Carlier <devnexen@gmail.com>
-> > ---
-> >  include/qemu/bswap.h | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-> > index 2a9f3fe783..1d3e4c24e4 100644
-> > --- a/include/qemu/bswap.h
-> > +++ b/include/qemu/bswap.h
-> > @@ -8,6 +8,8 @@
-> >  # include <machine/bswap.h>
-> >  #elif defined(__FreeBSD__)
-> >  # include <sys/endian.h>
-> > +#elif defined(__HAIKU__)
-> > +# include <endian.h>
-> >  #elif defined(CONFIG_BYTESWAP_H)
-> >  # include <byteswap.h>
-> >
-> > --
-> > 2.26.0
-> >
->
+[1] https://www.haiku-os.org/get-haiku/r1beta2/
 
