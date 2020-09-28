@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kMpGr-0003zM-OT
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2020 05:16:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47036)
+	id 1kMpGt-0003zg-Bm
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2020 05:16:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kMpGc-0003pp-U9; Mon, 28 Sep 2020 05:16:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:47113)
+ id 1kMpGg-0003rZ-Fx; Mon, 28 Sep 2020 05:16:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:48021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kMpGZ-0002XF-CL; Mon, 28 Sep 2020 05:16:18 -0400
+ id 1kMpGc-0002YB-RE; Mon, 28 Sep 2020 05:16:22 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mcpz0-1kwRCL33li-00ZzAk; Mon, 28 Sep 2020 11:16:11 +0200
+ id 1M2Plu-1kQfoc3G7q-003wD4; Mon, 28 Sep 2020 11:16:08 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 6/8] timer: Fix timer_mod_anticipate() documentation
-Date: Mon, 28 Sep 2020 11:16:00 +0200
-Message-Id: <20200928091602.383870-7-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@163.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PULL 3/8] virtio: vdpa: omit check return of g_malloc
+Date: Mon, 28 Sep 2020 11:15:57 +0200
+Message-Id: <20200928091602.383870-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200928091602.383870-1-laurent@vivier.eu>
 References: <20200928091602.383870-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:E9M87k8ilxga7J2Kbq+H6vVR+koCd8hGomfw+KeNjO2JHx2wwEe
- ygudZXPk3dcCs8FQdw41GFQ8Ir+pn+Br7BZ/i2kMoNqxV7r/GNp9m9wklpgevU6NqDU2WCJ
- HkjPXRIADnWOVByx2aWzoJ7pezmC0VlCNN+pWgS07RDSjim+10ndEc32gw0+NGKaEU5E48p
- YZ5Vecso7HUksaI0dEV9w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:J0DpAWLij7g=:9mtf+MbMYOo6TtETCJ+pdJ
- 40C7SkWltLLtfMsd4rzCGt4zT3k84OCmwIAocHD79Qnaa6xg0EkvkoOCb3ffIp7MjduqPJrhU
- 3T6ar8BHeLHnQ7SF67ljcSsEoHaZpnn8IKwySg4Ko71ris2UL8pbzPVy1wPXDH1KV++RJC6G1
- 7wCFiyMJdEuk65BJgBW4op8idmqeW4YyGEhbqq6SNgFmMFbFObOynyKCy0P+Ov+Dg/b5hzHXY
- j10IXvXEFcjAHD4E6WCde8l7Zs/5rhC71mtUs1NvHJVASa5x9u8JITmxGyY4fXfCRlJofS/D/
- fNwUAKtsH5J/79uW+0IUBEkYI/JAeq543KsTcCuXX5i5PoJf24/QWdA8bhKno3523EZGPf/wb
- oNM+XqyE+KUwfnpB60ujzXJ0cRerrWRZIMniKPRb5XQ6EKR4NGkAFApcH3M8oFkwCS2tpn0JR
- lFIvHTE2JrVjvSLJgkhr2ah77fkTNA6SvYpPHD6lb/FVuxMpAMk/CdmwGEHfTT51PfO+Q4gRr
- ravZ05angkc+W5OIUcZkpUMyYs1HZMxQHkxUBeXme01ukrJFWR5XMygkBj5+Sfu6WmZgDKVRg
- EyL8xyxdDVdLkr6EFHrJVdzFUJSTkVd0HPw9rn4potCkVAoq6oh4Py0kZ8J0TmU8B9/ehfiS1
- ZWtfItzEs1RfR7t6bcg2qcYW3DNQAbhbeMV/dBBUREcy07fWM2iMksUKkjCMkaM2o0sW2Jq6m
- n6EA/Biqwp5ThfJqE5ccSoRC5BEIsJUQuGqY9PxOwXL2bnFUHlmBEhnIE9a+8yMYRcx3Zx+5t
- wJijkt6B+9WjfTpfczv6kR1Gf6uDhv4X//LLoUZG3xjIR1mI9AHafNXMbU3E1ZfmHnlAtBn
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:prN8HB6UaU6hDQgdKIbe3aQiPbzmL42/lAKCeIa+G9BG00vDvGC
+ N2fTIQz9ux5+8biCr2NGF6pWEL89qCf12kcAwvZiKXIZQVrm8XRPLxN2My5iAgyxtFr9iFC
+ vJKtw6jBV6N2VgCMyDHsqj9ktMjMiKcNiYV4IHrpNUzOY6QHM5Q9GvCfQt639qBk82NJExH
+ /ymZxiYIybLDEJhKS8wuQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LEvot/+3Nb8=:/M7mXZzHudAZgOi9PEvtPN
+ 50zMSNrglY9ZXofj8vZFmYHp+Eo932LtH6d0dsYcmqd7ftR6PKlgxDxLqup2g4bjxGmPpXlsm
+ LhC7ktvm7sFDBYE2hiiCM6zes95WU3ThgE43i3SJHzAi/XWgev9xzsQl5GPaFxsXoT8yL0+ke
+ 26adkRAxnqAxTJ66MEvAJ18ulE09Min8FZ2v17cygKnbfnNTWG17yp1PvXXqzDF97q4rOKEHx
+ 9nwb8YE95fqr7PEbzovV1YdHFpkYYoC0E+x+eviFN14233eI0CrQk7UZNv8tNlHK6kCYlinI1
+ U/CxQOUEa9yEhV5aYQjm7jAv4WygKiDxU3nC9CTTHFLgwDKFhMOVXDyOPmC29U9pkdSkZjmaz
+ EEdGjNeSyyP3KuH2EsBlRYircasCQ8G8/CUPBGfwPa7EHUuXpmSBVRrEp5hhb3HxANaOABj4D
+ zEGojHhqqEr5y+m235vzroOw3gpzGaTe5VuB4+O7bfNT5be7yEjCCtbzMRF7jVVvIa7P6WsZK
+ irflZxLHgcSvpwQreDMhy0w5q2t5WqmBj5i5XfMHoh7XOzSRhD7B24DFeihY3pDeXVS8JYOBs
+ qw6/8LysoXlYZmrFbg5ZI0H1rAp/dO6uBz5kp4Kh6ZokxHvjc6lDMC0g2aLg8PaeUakkKgeFA
+ 5DZ6EkEphcz9+JD1ldwdDFHDc+RFHKCuQwfeiVdQPAltAQ6lFoPJTmbg6HQLHZ8glYwS/MxcP
+ LD+aH33l+1na+1T4zZzMdzM3awiIKAPTonbYhASysmklcxLhxCCLuG857bhJjGShEYAypKkUH
+ msKFMAGbwdmMCq790AZKK0Bt3gRv1CKm3bgPcl5eo9zplvrhe7bTIp9I2ySyMhevxiFh2iM
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 05:16:13
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 05:16:14
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -23
 X-Spam_score: -2.4
@@ -66,35 +66,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Sep 2020 09:16:20 -0000
+X-List-Received-Date: Mon, 28 Sep 2020 09:16:25 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Li Qiang <liq3ea@163.com>
 
-timer_mod_anticipate() will be scaled to the timer unit,
-which is not always nanosecond. Fix the documentation.
+If g_malloc fails, the application will be terminated.
+No need to check the return value of g_malloc.
 
-Fixes: add40e9777d ("timer: add timer_mod_anticipate*")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200920155042.400737-1-f4bug@amsat.org>
+Signed-off-by: Li Qiang <liq3ea@163.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20200819144309.67579-1-liq3ea@163.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/qemu/timer.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/virtio/vhost-vdpa.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index 6a8b48b5a9d8..1dc880e94e76 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -679,7 +679,7 @@ void timer_mod(QEMUTimer *ts, int64_t expire_timer);
- /**
-  * timer_mod_anticipate:
-  * @ts: the timer
-- * @expire_time: the expiry time in nanoseconds
-+ * @expire_time: the expire time in the units associated with the timer
-  *
-  * Modify a timer to expire at @expire_time or the current time, whichever
-  * comes earlier, taking into account the scale associated with the timer.
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index e123837a55de..97f4b2e353ab 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -320,10 +320,8 @@ static int vhost_vdpa_set_config(struct vhost_dev *dev, const uint8_t *data,
+     struct vhost_vdpa_config *config;
+     int ret;
+     unsigned long config_size = offsetof(struct vhost_vdpa_config, buf);
++
+     config = g_malloc(size + config_size);
+-    if (config == NULL) {
+-        return -1;
+-    }
+     config->off = offset;
+     config->len = size;
+     memcpy(config->buf, data, size);
+@@ -340,9 +338,6 @@ static int vhost_vdpa_get_config(struct vhost_dev *dev, uint8_t *config,
+     int ret;
+ 
+     v_config = g_malloc(config_len + config_size);
+-    if (v_config == NULL) {
+-        return -1;
+-    }
+     v_config->len = config_len;
+     v_config->off = 0;
+     ret = vhost_vdpa_call(dev, VHOST_VDPA_GET_CONFIG, v_config);
 -- 
 2.26.2
 
