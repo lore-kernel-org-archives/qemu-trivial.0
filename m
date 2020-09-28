@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kMpGt-00040H-IB
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2020 05:16:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47110)
+	id 1kMpGz-00042h-3C
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2020 05:16:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kMpGi-0003t3-KK; Mon, 28 Sep 2020 05:16:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:46023)
+ id 1kMpGe-0003r2-Ni; Mon, 28 Sep 2020 05:16:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:41627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kMpGZ-0002XL-T6; Mon, 28 Sep 2020 05:16:24 -0400
+ id 1kMpGZ-0002XI-Pj; Mon, 28 Sep 2020 05:16:20 -0400
 Received: from localhost.localdomain ([82.252.129.222]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MxHLs-1kcADc1asy-00xXMi; Mon, 28 Sep 2020 11:16:12 +0200
+ id 1MHVWT-1k9Kjw3AXZ-00Dahp; Mon, 28 Sep 2020 11:16:09 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Li Qiang <liq3ea@gmail.com>
-Subject: [PULL 7/8] migration/multifd: Remove superfluous semicolons
-Date: Mon, 28 Sep 2020 11:16:01 +0200
-Message-Id: <20200928091602.383870-8-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 4/8] Add *.pyc back to the .gitignore file
+Date: Mon, 28 Sep 2020 11:15:58 +0200
+Message-Id: <20200928091602.383870-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200928091602.383870-1-laurent@vivier.eu>
 References: <20200928091602.383870-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TDv8xBk1ThJ7knLw+EZGmeA0WjIMds6uExppLuBUybg5NiLUPul
- BZ3GoLl8ROIvSO34Dxz15rlVBT2NMUY1kSKD8oFp1FGiuZrI6HXWWSs1KxKG2lVkqhfqkmZ
- YwYonHlWXMV0P9pneRyETtcnjdRxinPDOGQdXnQv4wnM3lEZulSNBcevOEoAjkjsCIRrUbS
- vC+6Ysws2MSAxnWIZdYyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JAWtdgVEnlU=:ZSLNwbrpxEAI6B3TkxQkV5
- As1vfzDuYkdAS94JZQehSzuX86k46IBz7KDavzMxlrUFC4EcpXMeQI+0BCwO85QO/DnwyABkr
- zktP/oJe2dRrCdaNEyJqQ7EM/JCGmh2SfqYquuQ02Hq6oEkqTwn+MNJoJapUkxA+qGybtMVaD
- Nz5tddzYC9/3oWq/NWcE2YrF90xI+l7uTba3ZcZb4TL1bSh+kED3XEkdGbevVFKDvaR7QwXbU
- Lt4NG9F7nf3tzkxfUZN61y4Rx7ScYNAQOTWDb3uCnJWLslpRcu406lpOKJhypi2CZAzsGg03L
- Ncqb/GMxz0scJN7hJmb0suFi5r2h5McvOEx8Rgh1nw6faWASSofBZ1WXpHaKPqXpaCMtGNe6u
- wocEsyALefKA/Gg9lKzaz2u7ncCD9E0iby3U+exNgropy80wAZvYikObd2zq6h9PgyBfmfTm8
- huLTTLWsRwhtjyGDIY8zbl176Ocye30OfI2xOV9nS+LI7Z6wAWpEMfImh2eSR8GLb0X9/7vU4
- Ese1CAhu8EX/Kkd9FMb03HeS3AZkMR/E4EQlqmbf2cIC43z4VTqD0ZmV1hvlGxHNAoe3JcR2a
- lvOXpR2ONvVKZ+BuVQ/YCAXIVqIp/GPQSIxZoexYFfbtr8275DlMBWxwJb78bl/MERghM7me0
- 6e2WWoOKAzQISjMZIT58C90eJkZgZQu6I64j0La9n5lxNPu1V29QVVso6290UtLbrvR8Oe/x0
- R5S54nnL7Q6mo7+cCqnOOOJiEslOvf6hnKPGuEfg563It8fC9IgEdZd7Ela1stNjg1SZKUBIX
- 1Qyca7SCL4grxa1rz8K2PmrRswKXnKO9SZI7bLKpZR7liHfkNmIvOJednSMhsgxROLqvjxn
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZJYK1rFyvYfcc1RY9shQRugdD/I2fgxXiA5GSPXHDWik7DtpDjJ
+ o4naIrgY093fD8n/YDr8+FdVkdYd0sLGeFzzXvGKhtj8C1Tf6Jhwl6W1zxVTI6H6oAYCXF7
+ YwSrdhBC8Ge3dMaL7US6KJhbtFyimqf0VC7KConAmbVzvdt9csL34qrEeIJyiUHDmgOzFoO
+ M4zjSD7MUsQqAcN4OH30g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sHi8vO6LAyw=:b5I++VPdeCqL1djMULZwhH
+ zeNdBpBsGL4XtKnjqnvvR3c1huKZ2Ljlkoj13TIf/MIGziBKfRdI1dYSKGNWSa07NmXeP2sSx
+ YeyBZl/4JBOBHCkIt5r4ocSrflqmrIdbqeJ3vtwmlpWqacTs/9zJysEmVCE9gMBFYQfyd42v9
+ mY0h0M1yJt9cor8EyMDqYyXpd+nPQ3eHTBI3fR0Q98opCFSCaIlwZQFh51swmqvhye3ugob9Y
+ AoxqriFaJML8wJ/Hn4ul3paDF7kf9n1P//ZGH0ySYG5NSuuswTGsiZZnPyu7fnv3Z8lyVTUlk
+ HVTa4KAH2BoisufgWchRJlMoceh2jS7g+OXZhwrQ64ysGjBtAPeqJp+EkdLweTZRuJ4bEF4/C
+ KrTPL2VKUDR18QFd/aTAe55ybKaaQ4mewsssFVWNsHqdbWJeVG/7IEd/N70sS7aosLTm8a6ER
+ vrs3Sdx2+/2W57JwKyHT8z4taBgJDfYsX+3mpmUvM0ojryXAR6AQlFcqbU1yWe1DYb5WrRvam
+ yNJAPidMibtU3Td4OAgNIqf2LhM9iZ1SvWHy9vGW/WUNaU3yMRG4XsGkUZEtWmr6So8bR2Wir
+ P6ydG2Oliw0yg3d4oKvHF08xKEPpfSXbIhheuFqABIP60uIJhgu02LTJNz5ykNW59zIM/1wGx
+ m0ZQeFJf5Xy/0/2ojJctHm5YOBi8n6yU5tohWEKUdtXG6HmC7nJTO6Fq0xsRzzT58U/gUocoJ
+ Erszr3nJ7/9BpGOaMRVJ9XmIssTE8kiwbaYC3rv2MA7wcpMqn/kck8Fg0YlNQ6sk2dAYQOuyV
+ YsaWaChNhaWjXA0/lkfRDeMK04q9icFMQXk0rmDR3KnE/0QDF5hX7hlBvRsinJ2wpdZCuYu
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 05:16:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 05:16:14
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -23
 X-Spam_score: -2.4
@@ -66,41 +66,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Sep 2020 09:16:26 -0000
+X-List-Received-Date: Mon, 28 Sep 2020 09:16:24 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
 
-checkpatch.pl report superfluous semicolons since commit
-ee0f3c09e01, but this one was missed:
+Python still dumps its bytecode into the source directory, so
+we should continue to ignore the *.pyc files.
 
-  scripts/checkpatch.pl d32ca5ad798~..d32ca5ad798
-  ERROR: superfluous trailing semicolon
-  #498: FILE: migration/multifd.c:308:
-  +    ram_counters.transferred += transferred;;
-  total: 1 errors, 1 warnings, 2073 lines checked
-
-Fixes: d32ca5ad798 ("multifd: Split multifd code into its own file")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Message-Id: <20200921040231.437653-1-f4bug@amsat.org>
+Fixes: 0e72b7df4d ("Simplify the .gitignore file")
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20200919101859.28739-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- migration/multifd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/migration/multifd.c b/migration/multifd.c
-index ac84a61797f3..2de5263c3263 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -447,7 +447,7 @@ static int multifd_send_pages(QEMUFile *f)
-                 + p->packet_len;
-     qemu_file_update_transfer(f, transferred);
-     ram_counters.multifd_bytes += transferred;
--    ram_counters.transferred += transferred;;
-+    ram_counters.transferred += transferred;
-     qemu_mutex_unlock(&p->mutex);
-     qemu_sem_post(&p->sem);
- 
+diff --git a/.gitignore b/.gitignore
+index 5515f595e67c..b32bca1315e1 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,5 +1,6 @@
+ /GNUmakefile
+ /build/
++*.pyc
+ .sdk
+ .stgit-*
+ .git-submodule-status
 -- 
 2.26.2
 
