@@ -1,69 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNJzc-00076v-0B
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 14:04:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56642)
+	id 1kNKAW-0004Iq-DQ
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 14:16:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNJzR-00071w-B4
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:04:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47808)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNKAP-0004HW-21
+ for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:15:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22836)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNJzK-0001NC-SB
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:04:35 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNKAK-0003FX-I4
+ for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:15:56 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601402669;
+ s=mimecast20190719; t=1601403350;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nlFwm7RI0lGLNdRGb5CgeXYS5DP1WyoDb7YAGdFDbKE=;
- b=hjk3z6sIUaQieUG/6ETtdLe0vyDxTNnpZfOSNUQRH9+k1WtThHzO7vv9TKtdTlTfoinHcg
- u5iikXuEunY81xrOxyowIYDsDybJN0hrEUJDrlqBrjnP14FE4rfSEA33rNXZWykJdqN1qH
- A/AaeOvhlm+FNaM3x8Uck+MQR1Q/iL4=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=d/14icxDoim5+ppQr30Q6aMGsbb+jHdVRSBxZtSImQE=;
+ b=KloUErBWIOJ4nY9WzG8VLCvpd67zIwvCLuKvEPycpWKbsFQQQOUP4x7IBOje+u7N2aBkrP
+ sYelYDI1FJusF52BCceQtEUW47Lt4exGf5l1nCQHtzhhqpjzC5ZNdsjF0lL09KF4Aqq4NC
+ ssrajDnZ5gDDqpWEAigvjiEmAxqnIU0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-230-93IfcqofMWyrsMSfs4q6Ow-1; Tue, 29 Sep 2020 14:04:27 -0400
-X-MC-Unique: 93IfcqofMWyrsMSfs4q6Ow-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-273-1RDIuzwIMLCqfnzcYZB_Jw-1; Tue, 29 Sep 2020 14:15:48 -0400
+X-MC-Unique: 1RDIuzwIMLCqfnzcYZB_Jw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 492A11018724;
- Tue, 29 Sep 2020 18:04:26 +0000 (UTC)
-Received: from [10.10.119.140] (ovpn-119-140.rdu2.redhat.com [10.10.119.140])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B40725C1CF;
- Tue, 29 Sep 2020 18:04:25 +0000 (UTC)
-Subject: Re: [PATCH] job: delete job_{lock, unlock} functions and replace them
- with lock guard
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20200929134214.4103-1-eafanasova@gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33C138797D4;
+ Tue, 29 Sep 2020 18:15:47 +0000 (UTC)
+Received: from scv.redhat.com (ovpn-119-140.rdu2.redhat.com [10.10.119.140])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 738417C83D;
+ Tue, 29 Sep 2020 18:15:46 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
-Message-ID: <b055221b-c436-1ff3-b986-5a522178fde8@redhat.com>
-Date: Tue, 29 Sep 2020 14:04:25 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ John Snow <jsnow@redhat.com>
+Subject: [PATCH 0/1] docs: repair broken references
+Date: Tue, 29 Sep 2020 14:15:44 -0400
+Message-Id: <20200929181545.1030256-1-jsnow@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200929134214.4103-1-eafanasova@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/29 02:22:44
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,101 +69,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Sep 2020 18:04:40 -0000
+X-List-Received-Date: Tue, 29 Sep 2020 18:15:58 -0000
 
-On 9/29/20 9:42 AM, Elena Afanasova wrote:
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-
-Hi, can I have a commit message here, please?
-
-> ---
->   job.c | 46 +++++++++++++++++-----------------------------
->   1 file changed, 17 insertions(+), 29 deletions(-)
-> 
-> diff --git a/job.c b/job.c
-> index 8fecf38960..89ceb53434 100644
-> --- a/job.c
-> +++ b/job.c
-> @@ -79,16 +79,6 @@ struct JobTxn {
->    * job_enter. */
->   static QemuMutex job_mutex;
->   
-> -static void job_lock(void)
-> -{
-> -    qemu_mutex_lock(&job_mutex);
-> -}
-> -
-> -static void job_unlock(void)
-> -{
-> -    qemu_mutex_unlock(&job_mutex);
-> -}
-> -
->   static void __attribute__((__constructor__)) job_init(void)
->   {
->       qemu_mutex_init(&job_mutex);
-> @@ -437,21 +427,19 @@ void job_enter_cond(Job *job, bool(*fn)(Job *job))
->           return;
->       }
->   
-> -    job_lock();
-> -    if (job->busy) {
-> -        job_unlock();
-> -        return;
-> -    }
-> +    WITH_QEMU_LOCK_GUARD(&job_mutex) {
-> +        if (job->busy) {
-> +            return;
-> +        }
->   
-> -    if (fn && !fn(job)) {
-> -        job_unlock();
-> -        return;
-> -    }
-> +        if (fn && !fn(job)) {
-> +            return;
-> +        }
->   
-> -    assert(!job->deferred_to_main_loop);
-> -    timer_del(&job->sleep_timer);
-> -    job->busy = true;
-> -    job_unlock();
-> +        assert(!job->deferred_to_main_loop);
-> +        timer_del(&job->sleep_timer);
-> +        job->busy = true;
-> +    }
->       aio_co_enter(job->aio_context, job->co);
->   }
->   
-> @@ -468,13 +456,13 @@ void job_enter(Job *job)
->    * called explicitly. */
->   static void coroutine_fn job_do_yield(Job *job, uint64_t ns)
->   {
-> -    job_lock();
-> -    if (ns != -1) {
-> -        timer_mod(&job->sleep_timer, ns);
-> +    WITH_QEMU_LOCK_GUARD(&job_mutex) {
-> +        if (ns != -1) {
-> +            timer_mod(&job->sleep_timer, ns);
-> +        }
-> +        job->busy = false;
-> +        job_event_idle(job);
-
-Is this new macro safe to use in a coroutine context?
-
->       }
-> -    job->busy = false;
-> -    job_event_idle(job);
-> -    job_unlock();
->       qemu_coroutine_yield();
->   
->       /* Set by job_enter_cond() before re-entering the coroutine.  */
-> 
-
-I haven't looked into WITH_QEMU_LOCK_GUARD before, I assume it's new. If 
-it works like I think it does, this change seems good.
-
-(I'm assuming it works like a Python context manager and it drops the 
-lock when it leaves the scope of the macro using GCC/Clang language 
-extensions.)
+Found while doing other work for the QAPI generator.=0D
+=0D
+John Snow (1):=0D
+  docs: repair broken references=0D
+=0D
+ docs/devel/multi-thread-tcg.rst | 2 +-=0D
+ docs/devel/testing.rst          | 2 +-=0D
+ 2 files changed, 2 insertions(+), 2 deletions(-)=0D
+=0D
+--=20=0D
+2.26.2=0D
+=0D
 
 
