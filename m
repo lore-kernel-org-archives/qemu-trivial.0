@@ -1,66 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNKAY-0004KH-DY
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 14:16:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59506)
+	id 1kNRbc-0001UD-Ou
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 22:12:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNKAS-0004II-GP
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:16:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47448)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kNKAP-0003Fm-1X
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 14:16:00 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601403355;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6JO9oQUNShiFIYsnPzaTD1P9Oqqoab6OoTZl/2NL3A4=;
- b=H45KJJL49kfhy0Y4d+JyA+MMJJOxl/0miFmeTx730WNfhHfpniaZRNnjQEXrWl0Y2OwOH8
- K42nY2eibWC99GZNf4SkeiK9oUzK/gysNM85uJc+URQDHuwYEkciRm3WoVrYF3rAxROUTA
- d5PKG8zCClCbHnHgmXzzVAaDzHjN4YU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448-ZbEBt_3iNgGJCU21zwC3Ug-1; Tue, 29 Sep 2020 14:15:53 -0400
-X-MC-Unique: ZbEBt_3iNgGJCU21zwC3Ug-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF5AC801AFF;
- Tue, 29 Sep 2020 18:15:52 +0000 (UTC)
-Received: from scv.redhat.com (ovpn-119-140.rdu2.redhat.com [10.10.119.140])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5B4377C83D;
- Tue, 29 Sep 2020 18:15:47 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- John Snow <jsnow@redhat.com>
-Subject: [PATCH 1/1] docs: repair broken references
-Date: Tue, 29 Sep 2020 14:15:45 -0400
-Message-Id: <20200929181545.1030256-2-jsnow@redhat.com>
-In-Reply-To: <20200929181545.1030256-1-jsnow@redhat.com>
-References: <20200929181545.1030256-1-jsnow@redhat.com>
+ (Exim 4.90_1) (envelope-from <snizovtsev@gmail.com>)
+ id 1kNP4N-0007zo-06; Tue, 29 Sep 2020 19:30:03 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:41506)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <snizovtsev@gmail.com>)
+ id 1kNP4K-0001Gf-74; Tue, 29 Sep 2020 19:30:02 -0400
+Received: by mail-ed1-x542.google.com with SMTP id l24so3543999edj.8;
+ Tue, 29 Sep 2020 16:29:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:mime-version:date:message-id:subject:to:cc;
+ bh=KhSGaXrogwd/Fi04sIgiySppfiPQ9ooG3Z4HZ+ITPnI=;
+ b=UjQrQxfUBiRcU99Fg63dZOJ1z779cgXwXivVVDdyn9y0dXNdHX1jILgA54bVfqJWJ8
+ mmW9nSRTP7YoFCOY5qvQ+e1853pfgTY3kWQV9vbORrUoMFFgwiGV/r88ggZKJdZ4kDpY
+ 2S4pvIEJaZyLkUwZBudQ3INUSmurGShLGJhztcevbOAOBg4Wd8xVKzBVYTkMg5cMxoRq
+ xm/ruIabkA+Ze5nx0kowEgV2Hpm8zQrDjNeIDDjwpSZkqmxmCKYp6AEIj4rax/SUizKL
+ MbNn6zu2d6J6wlEQH2k9p5k1uthfjHzvYPg9WV/LdfIvqb8vw3c5ZTwA7KtyqPpXHntA
+ HlAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:mime-version:date:message-id:subject:to:cc;
+ bh=KhSGaXrogwd/Fi04sIgiySppfiPQ9ooG3Z4HZ+ITPnI=;
+ b=uOqPz57BVrWH++VKUuzvg0dgzB7yVCaOqEMrCf/fvH5Nnuk2SgGWW9mcMGDzIM1gmo
+ NST26CXBWPm1O0itsKDEFaFajAhehwqjL/RtqN0JBWYF3CXKTGX2ZvfVkC2azJIqC/Y+
+ syTlyAA6C1l8htRNvE3bjwM3gb/T1dxKpr1knTEz9+IG6V7+tTAhJeAnqp98tHT8yisp
+ YfzyU0FJVKHK30m2fA8V7m49Sj4a2kpjysh2bfkZh5Ze75IQmZrFDkj6C+/XXZ5ai2Aq
+ bnJMkZ7ZF4XgFdfh7Ttk4XJsV+tOkFiczOxxcd7cQ4LckS4+HZD0ccJPJvoFokSm+tkn
+ HJRg==
+X-Gm-Message-State: AOAM5319CovXs2mxCe+NYkr90ZB99zvnBEykRpjUp+MQHQQ47dJJ/MDM
+ 06wbv622k/kBva9aIQ33vnxKDjrWf3FO6hJ9IbE0T42R0g+gzg==
+X-Google-Smtp-Source: ABdhPJxO2U15arn8GlgktMdGncuCePagDALHi+zkk0JOJe1EGXPtSMJv5EPgHC+dRJZlH0WRkwhOEw4Gu+EcPO8OUbY=
+X-Received: by 2002:aa7:d606:: with SMTP id c6mr5990371edr.370.1601422197377; 
+ Tue, 29 Sep 2020 16:29:57 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 29 Sep 2020 16:29:56 -0700
+From: Sergey Nizovtsev <snizovtsev@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Date: Tue, 29 Sep 2020 16:29:56 -0700
+Message-ID: <CAHOaf94Mq-YNY12NaANg=3Tqxd1UFFhVgxuSD7PRHgN0MyUpMg@mail.gmail.com>
+Subject: [PATCH] qom: fix objects with improper parent type
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Sergey Nizovtsev <snizovtsev@gmail.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
+ Ben Warren <ben@skyportsystems.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=snizovtsev@gmail.com; helo=mail-ed1-x542.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 29 Sep 2020 22:12:31 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,45 +74,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Sep 2020 18:16:02 -0000
+X-List-Received-Date: Tue, 29 Sep 2020 23:30:06 -0000
 
-In two different places, we are making a cross-reference to some
-resource incorrectly. These were being interpreted as "content" instead
-of a link and a reference, accordingly.
+Some objects accidentally inherit ObjectClass instead of Object.
+They compile silently but may crash after downcasting.
 
-Signed-off-by: John Snow <jsnow@redhat.com>
+In this patch, we introduce a coccinelle script to find broken
+declarations and fix them manually with proper base type.
+
+Signed-off-by: Sergey Nizovtsev <snizovtsev@gmail.com>
 ---
- docs/devel/multi-thread-tcg.rst | 2 +-
- docs/devel/testing.rst          | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ scripts/coccinelle/qobject-parent-type.cocci | 26 ++++++++++++++++++++
+ include/hw/acpi/vmgenid.h                    |  2 +-
+ include/hw/misc/vmcoreinfo.h                 |  2 +-
+ include/net/can_host.h                       |  2 +-
+ MAINTAINERS                                  |  1 +
+ 5 files changed, 30 insertions(+), 3 deletions(-)
+ create mode 100644 scripts/coccinelle/qobject-parent-type.cocci
 
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index 21483870dbc..92a9eba13c9 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -267,7 +267,7 @@ of view of external observers (e.g. another processor core). They can
- apply to any memory operations as well as just loads or stores.
- 
- The Linux kernel has an excellent `write-up
--<https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/memory-barriers.txt>`
-+<https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/memory-barriers.txt>`_
- on the various forms of memory barrier and the guarantees they can
- provide.
- 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index bd64c1bdcdd..8875a40a2b6 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -953,7 +953,7 @@ compiler flags are needed to build for a given target.
- If you have the ability to run containers as the user you can also
- take advantage of the build systems "Docker" support. It will then use
- containers to build any test case for an enabled guest where there is
--no system compiler available. See :ref: `_docker-ref` for details.
-+no system compiler available. See :ref:`docker-ref` for details.
- 
- Running subset of tests
- -----------------------
+diff --git a/scripts/coccinelle/qobject-parent-type.cocci
+b/scripts/coccinelle/qobject-parent-type.cocci
+new file mode 100644
+index 0000000000..9afb3edd97
+--- /dev/null
++++ b/scripts/coccinelle/qobject-parent-type.cocci
+@@ -0,0 +1,26 @@
++// Highlight object declarations that don't look like object class but
++// accidentally inherit from it.
++
++@match@
++identifier obj_t, fld;
++type parent_t =~ ".*Class$";
++@@
++struct obj_t {
++    parent_t fld;
++    ...
++};
++
++@script:python filter depends on match@
++obj_t << match.obj_t;
++@@
++is_class_obj = obj_t.endswith('Class')
++cocci.include_match(not is_class_obj)
++
++@replacement depends on filter@
++identifier match.obj_t, match.fld;
++type match.parent_t;
++@@
++struct obj_t {
++*   parent_t fld;
++    ...
++};
+diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
+index d50fbacb8e..cb4ad37fc5 100644
+--- a/include/hw/acpi/vmgenid.h
++++ b/include/hw/acpi/vmgenid.h
+@@ -19,7 +19,7 @@
+ OBJECT_DECLARE_SIMPLE_TYPE(VmGenIdState, VMGENID)
+
+ struct VmGenIdState {
+-    DeviceClass parent_obj;
++    DeviceState parent_obj;
+     QemuUUID guid;                /* The 128-bit GUID seen by the guest */
+     uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-endian) */
+ };
+diff --git a/include/hw/misc/vmcoreinfo.h b/include/hw/misc/vmcoreinfo.h
+index ebada6617a..0b7b55d400 100644
+--- a/include/hw/misc/vmcoreinfo.h
++++ b/include/hw/misc/vmcoreinfo.h
+@@ -24,7 +24,7 @@ DECLARE_INSTANCE_CHECKER(VMCoreInfoState, VMCOREINFO,
+ typedef struct fw_cfg_vmcoreinfo FWCfgVMCoreInfo;
+
+ struct VMCoreInfoState {
+-    DeviceClass parent_obj;
++    DeviceState parent_obj;
+
+     bool has_vmcoreinfo;
+     FWCfgVMCoreInfo vmcoreinfo;
+diff --git a/include/net/can_host.h b/include/net/can_host.h
+index 4e3ce3f954..caab71bdda 100644
+--- a/include/net/can_host.h
++++ b/include/net/can_host.h
+@@ -35,7 +35,7 @@
+ OBJECT_DECLARE_TYPE(CanHostState, CanHostClass, CAN_HOST)
+
+ struct CanHostState {
+-    ObjectClass oc;
++    Object oc;
+
+     CanBusState *bus;
+     CanBusClientState bus_client;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5eed1e692b..2160b8196a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2402,6 +2402,7 @@ F: qobject/
+ F: include/qapi/qmp/
+ X: include/qapi/qmp/dispatch.h
+ F: scripts/coccinelle/qobject.cocci
++F: scripts/coccinelle/qobject-parent-type.cocci
+ F: tests/check-qdict.c
+ F: tests/check-qjson.c
+ F: tests/check-qlist.c
 -- 
-2.26.2
-
+2.28.0
 
