@@ -1,108 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNBkI-0002q5-J1
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 05:16:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57026)
+	id 1kNClr-0002gy-7C
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 06:22:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNBkF-0002pU-Ou
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 05:16:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41336)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNBkD-00030Y-3E
- for qemu-trivial@nongnu.org; Tue, 29 Sep 2020 05:16:23 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601370975;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=5zlZ6wlhJF0cEh8W9dJgoFYCqoURdGLcwVPriKU4CUQ=;
- b=JQPMBpzkZ5cybDkAfsvNt/Gshl5EzjHeIM5BEYziFeb9/2xjFsfqKHe2M802TKLoyDohWs
- v+PcvCDUK1CdRR0+KjVPbNSZlN4eHn0+BmMPLl8Aee+0c+ugStxk/MQ0UccMC/CyvqxWeb
- QzqWH1k2CKXJYYoJKW2acjPJEuveZQ4=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-388-poFT7wXoOXCVBqSm3u980g-1; Tue, 29 Sep 2020 05:16:13 -0400
-X-MC-Unique: poFT7wXoOXCVBqSm3u980g-1
-Received: by mail-wr1-f69.google.com with SMTP id g6so1504301wrv.3
- for <qemu-trivial@nongnu.org>; Tue, 29 Sep 2020 02:16:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNClp-0002eE-6E; Tue, 29 Sep 2020 06:22:05 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:50469)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNCln-0004nw-DE; Tue, 29 Sep 2020 06:22:04 -0400
+Received: by mail-wm1-x341.google.com with SMTP id e17so4063364wme.0;
+ Tue, 29 Sep 2020 03:22:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=CxFKuzpm1OwRH+Wg8lMsITpenR2tWn/Ge+EjRA5k0Co=;
+ b=EHOtSjob03zStwGtu+qfa4eQtTNw3eh2DgVmmOyrmjuJgknVj1sCf5aB0BJ9x/ScGe
+ LBBhYbfF0FS/MCOhQDUSyTiknlPLmwGIgvA5++MOl1ZE18qhO7G3sEDzIknpgZ/XJojO
+ xUvp5DDoLG5XBpwH4MNfFlU+Pjh16GpLTyeKNcSDiQ9JfD7JBgmPsBu8cqXgmjhLCtmO
+ LLX2R1OjKDmCzypCQSj1LO7vuX1IMtY0+YNQYybHarBmO4EXztnoK29JkwzB2KkSFnRu
+ CRgaML3eNKsjvxIUuRRSPOA6C/CACbPjoGkGYEESqGvSAhswdohmySPs7QJWEmzdJYt6
+ uo/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=5zlZ6wlhJF0cEh8W9dJgoFYCqoURdGLcwVPriKU4CUQ=;
- b=qEl2+VY1X7Q0KbLDZAbYujGdJST9LJ7ErXF65dQzbk5bjJAkYD3iDb3T0OsqYaDq2R
- CVKRnIXDBNMSxVSI9TPurvSkir66VMkXTlWUBNJsFm1jVzwsypS41YCv4GqqCfULQjBy
- vgNAeLGqmpPbmqUkGDUJE7RJPkJSe0Lwpmef8GsmfheDDtWb5lNLDxwvRgSl9QRDJv2s
- Wj7GpSd5H/94sApsLcqhr4yDDuYztrDNL7kYE62EOZ/Ihah9kKnL5MemPiF7/hjGkafZ
- 91xvyqNTx3veHjUiZZbBrenpxtFo/4EvtHUAdy/sZDYTb9KwEIait/+4Q+FCRRFiXQPY
- xaXA==
-X-Gm-Message-State: AOAM532aNFEv2yXnXb0kaJEdCvAVPOmdleB/Ki0hzAAqzMaYcVDqyzB/
- CX4au8ehH2VcWRVwarFovH56xYS1nbslCjeAZc58a5A5lEbdDiLnWOdVbNPVYPPt9j+M7UNuFOJ
- 4ZkSUtO8nqJrvLjmMqw==
-X-Received: by 2002:a5d:660d:: with SMTP id n13mr3205534wru.308.1601370971719; 
- Tue, 29 Sep 2020 02:16:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcltpIuR3woc0LhPM3i7XfsxmggQXb10oduaCcof3zhR6pRQG/gaLBYKfWjrq77OU8H4GiUQ==
-X-Received: by 2002:a5d:660d:: with SMTP id n13mr3205503wru.308.1601370971348; 
- Tue, 29 Sep 2020 02:16:11 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=CxFKuzpm1OwRH+Wg8lMsITpenR2tWn/Ge+EjRA5k0Co=;
+ b=MTzdhhzuO+wCWnujyWfoZFm+qnmHIdTDa8eJpI/OxXuM7jWuEixvlXowQlJpEL+0c3
+ /u127OF2QVmvT280o0GpMoMOi7mFCj02aWD2b5I5IvyRRCamrFpudK2rUKCvvvZ/paa2
+ dyzFBOgtrlO3tw80qFuIj3SH1YXUpjv4A2MZirSejfWslTSIZISyABq3JdVBhmyEqUPK
+ HWgg8HOwutGL3fqKjRJ3rvfsos0lMdoKsMEFao6i2yNu9eB4AOj0C2Tkla9k238EfFgu
+ pfMZ1mF75ar2aNJduvQZRW+I2eDIw/5lY2pV9MpkUnaRGxAkmYYevVpSoCPaUIIgNc6l
+ shng==
+X-Gm-Message-State: AOAM5310t/LwnA2xaNS8/4Atcxpe3um4XgnYzuXuPKOZ1SkuRs2fklDc
+ dGvylbBQiEul/plkDNPClqQ=
+X-Google-Smtp-Source: ABdhPJzbsHl1JDMpYI7oCtztr6bD1IbS+oZyTjSjUyCrYzVI8HGi6Vevp9PLOjRkRx775RNfqq+tVA==
+X-Received: by 2002:a7b:ce86:: with SMTP id q6mr3919527wmj.163.1601374920402; 
+ Tue, 29 Sep 2020 03:22:00 -0700 (PDT)
 Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
  [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id t5sm5292403wrb.21.2020.09.29.02.16.10
+ by smtp.gmail.com with ESMTPSA id d19sm4445403wmd.0.2020.09.29.03.21.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Sep 2020 02:16:10 -0700 (PDT)
-Subject: Re: [PATCH 0/2] Update leftover comments that mention Texinfo
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-References: <20200929075824.1517969-1-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <2cca4b8d-85a7-209a-af47-91a479416a8f@redhat.com>
-Date: Tue, 29 Sep 2020 11:16:09 +0200
+ Tue, 29 Sep 2020 03:21:59 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
+To: Laurent Vivier <laurent@vivier.eu>,
+ David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20200914102425.1152962-1-f4bug@amsat.org>
+ <20200916025022.GE5258@yekko.fritz.box>
+ <de2b5d0c-fcc4-a26c-5fda-610b7fa75862@amsat.org>
+ <cc4d5239-636c-f01a-d822-97ea60ee303c@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <480ac05a-41b0-e857-a151-3063f6a56265@amsat.org>
+Date: Tue, 29 Sep 2020 12:21:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200929075824.1517969-1-armbru@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <cc4d5239-636c-f01a-d822-97ea60ee303c@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.199, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,18 +90,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Sep 2020 09:16:24 -0000
+X-List-Received-Date: Tue, 29 Sep 2020 10:22:05 -0000
 
-On 9/29/20 9:58 AM, Markus Armbruster wrote:
-> Markus Armbruster (2):
->   qemu-img-cmds.hx: Update comment that mentions Texinfo
->   target/i386/cpu: Update comment that mentions Texinfo
+On 9/24/20 5:00 PM, Laurent Vivier wrote:
+> Le 24/09/2020 à 16:53, Philippe Mathieu-Daudé a écrit :
+>> On 9/16/20 4:50 AM, David Gibson wrote:
+>>> On Mon, Sep 14, 2020 at 12:24:25PM +0200, Philippe Mathieu-Daudé wrote:
+>>>> As the 'io_base' argument of m48t59_init() is unused (set to 0),
+>>>> remove it to simplify.
+>>>> To create a device on the ISA bus, m48t59_init_isa() is the
+>>>> preferred function to use.
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>> ---
+>>>>  include/hw/rtc/m48t59.h |  2 +-
+>>>>  hw/ppc/ppc405_boards.c  |  2 +-
+>>>>  hw/rtc/m48t59.c         | 10 ++--------
+>>>>  hw/sparc/sun4m.c        |  2 +-
+>>>>  hw/sparc64/sun4u.c      |  2 +-
+>>>>  5 files changed, 6 insertions(+), 12 deletions(-)
+>>>
+>>> ppc part
+>>> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+>>
+>> Thanks!
+>>
+>> Can this go via qemu-trivial@?
 > 
->  target/i386/cpu.c | 3 ++-
->  qemu-img-cmds.hx  | 2 +-
->  2 files changed, 3 insertions(+), 2 deletions(-)
+> Yes, but more reviewers would help. Mark?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Or Artyom :)
 
-
+> 
+> Thanks,
+> Laurent
+> 
 
