@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNdSf-0008Md-04
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53748)
+	id 1kNdSY-0008CD-P6
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:51:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZnA-0000mq-HY; Wed, 30 Sep 2020 06:57:00 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:34496)
+ id 1kNZiH-0002PP-7t; Wed, 30 Sep 2020 06:51:57 -0400
+Received: from aserp2120.oracle.com ([141.146.126.78]:59826)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZn6-00016I-Rf; Wed, 30 Sep 2020 06:56:59 -0400
+ id 1kNZiF-0000eL-9R; Wed, 30 Sep 2020 06:51:56 -0400
 Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAu8pO105547;
- Wed, 30 Sep 2020 10:56:46 GMT
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAneBg100954;
+ Wed, 30 Sep 2020 10:51:46 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=to : cc : subject :
  in-reply-to : references : sender : from : date : message-id :
  mime-version : content-type; s=corp-2020-01-29;
- bh=XagkkAKuPG/OQf5ovEgHy6V8nnK3SSkKwWZDSfeHv+U=;
- b=dUQUTie7iMMOf5qECOfSm9ru+pNz2GREnz6qznuVaMl0eDuUXG2TMllAqUJ8IeMDxIyc
- XFBlKK46Sj2djz/egQ06lvSBm8KU4ppAJMRuyPzLLAssq0WJi2p7cRFslUedoYjwZugO
- pc+BwJEdxLZBHSChMhml3AQPddB08Ha+sjHawVXDiCkjEGrJ/e/QFkSbhpb9Q413MGbM
- YwEIe8DEOkMbjFqqc7HYB5OEEeJGQkVHF8Oc0Dntc8l3tWLxOXZDFPZTlgj/2va/A1D6
- Pw2aP1MUhHFEo4bsg0X7zhzIP7wz3AgK7UDCLCaPXhp6Yao9AJ65mWztDg6G9Z3/vOwb 5w== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 33swkkyudx-1
+ bh=mfqi5cNpZDxFa3TIvOdWNYWzsiu8+D5MdIykpVcBTCY=;
+ b=pIA/M3N5C/J65B1gCy00BUvvPyLeVYGTB+pF7iuuu6/WBoxCYZjvCRDDb22JrM7Hbqlj
+ KOYOzKP5BScDGwjGlEQ/OA5RNzr9xeYMFiJjcCgJ+wLTYibzOo76pcGv2h5W/QHk+tog
+ EyS88eNGMSTJuVTkYIEl7qdlrJZFlljbUW82aX/VjZQWbCv5OeoQz3IZLxhP9NFnlsSi
+ gSbdPHKI71v3+w4jnkyd8mzQqsw1ZEE2chCnXxdl9wLXr+KlIvAVPemznzgVxJ6EOSxL
+ OWsnQFMTUqJvHAR0AodTB1b0m3PcpgVPbGI8PSEl9VLbD7WGskzSyMOmf2GOSnUwmi8t LQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 33swkkytyg-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 30 Sep 2020 10:56:46 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAssW5014008;
- Wed, 30 Sep 2020 10:56:45 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 33uv2f6j9c-1
+ Wed, 30 Sep 2020 10:51:46 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAnmgY006397;
+ Wed, 30 Sep 2020 10:51:46 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 33tfjyf4r3-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 30 Sep 2020 10:56:45 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08UAuj7H019856;
- Wed, 30 Sep 2020 10:56:45 GMT
+ Wed, 30 Sep 2020 10:51:45 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08UApioQ025444;
+ Wed, 30 Sep 2020 10:51:44 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 30 Sep 2020 03:56:44 -0700
+ with ESMTP ; Wed, 30 Sep 2020 03:51:44 -0700
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 3ae3fd50;
- Wed, 30 Sep 2020 10:56:42 +0000 (UTC)
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 42cceebd;
+ Wed, 30 Sep 2020 10:51:42 +0000 (UTC)
 To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
 Cc: zhaolichang <zhaolichang@huawei.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 14/14] target/: fix some comment spelling errors
-In-Reply-To: <20200930095321.2006-15-zhaolichang@huawei.com>
+Subject: Re: [PATCH RFC 03/14] riscv/: fix some comment spelling errors
+In-Reply-To: <20200930095321.2006-4-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
- <20200930095321.2006-15-zhaolichang@huawei.com>
+ <20200930095321.2006-4-zhaolichang@huawei.com>
 X-HGTTG: heart-of-gold
 Sender: david.edmondson@oracle.com
 From: David Edmondson <david.edmondson@oracle.com>
-Date: Wed, 30 Sep 2020 11:56:42 +0100
-Message-ID: <m27dsbpm6t.fsf@oracle.com>
+Date: Wed, 30 Sep 2020 11:51:42 +0100
+Message-ID: <m2362zr0zl.fsf@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
  signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 adultscore=0
- suspectscore=1 malwarescore=0 bulkscore=0 mlxlogscore=999 mlxscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=1
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009300088
+ definitions=main-2009300087
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
  signatures=668680
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
@@ -69,20 +69,20 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
  suspectscore=1 mlxlogscore=999 clxscore=1015 priorityscore=1501
  impostorscore=0 lowpriorityscore=0 bulkscore=0 spamscore=0 adultscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009300088
+ definitions=main-2009300087
 Received-SPF: pass client-ip=141.146.126.78;
  envelope-from=david.edmondson@oracle.com; helo=aserp2120.oracle.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 06:51:53
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -51
-X-Spam_score: -5.2
+X-Spam_score_int: -56
+X-Spam_score: -5.7
 X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.373, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.614, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 30 Sep 2020 10:51:47 -0400
+X-Mailman-Approved-At: Wed, 30 Sep 2020 10:51:45 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,11 +94,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 10:57:01 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 10:51:57 -0000
 
-On Wednesday, 2020-09-30 at 17:53:21 +08, zhaolichang wrote:
+On Wednesday, 2020-09-30 at 17:53:10 +08, zhaolichang wrote:
 
-> I found that there are many spelling errors in the comments of qemu/target.
+> I found that there are many spelling errors in the comments of qemu/target/riscv.
 > I used spellcheck to check the spelling errors and found some errors in the folder.
 >
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
@@ -106,54 +106,86 @@ On Wednesday, 2020-09-30 at 17:53:21 +08, zhaolichang wrote:
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 
 > ---
->  target/openrisc/cpu.h        | 2 +-
->  target/sparc/asi.h           | 2 +-
->  target/unicore32/translate.c | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  target/riscv/cpu.c           | 2 +-
+>  target/riscv/cpu_bits.h      | 2 +-
+>  target/riscv/csr.c           | 6 +++---
+>  target/riscv/vector_helper.c | 2 +-
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 >
-> diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-> index bd42faf..8ca8605 100644
-> --- a/target/openrisc/cpu.h
-> +++ b/target/openrisc/cpu.h
-> @@ -291,7 +291,7 @@ typedef struct CPUOpenRISCState {
->      int is_counting;
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index 0bbfd7f..f40a0b2 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -472,7 +472,7 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
+>                      return;
+>                  }
+>              } else {
+> -                qemu_log("vector verison is not specified, "
+> +                qemu_log("vector version is not specified, "
+>                          "use the default value v0.7.1\n");
+>              }
+>              set_vext_version(env, vext_version);
+> diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+> index bd36062..6e11555 100644
+> --- a/target/riscv/cpu_bits.h
+> +++ b/target/riscv/cpu_bits.h
+> @@ -536,7 +536,7 @@
+>  /* Leaf page shift amount */
+>  #define PGSHIFT             12
 >  
->      uint32_t picmr;         /* Interrupt mask register */
-> -    uint32_t picsr;         /* Interrupt contrl register*/
-> +    uint32_t picsr;         /* Interrupt control register*/
->  #endif
->      void *irq[32];          /* Interrupt irq input */
->  } CPUOpenRISCState;
-> diff --git a/target/sparc/asi.h b/target/sparc/asi.h
-> index bb58735..4e9f1d5 100644
-> --- a/target/sparc/asi.h
-> +++ b/target/sparc/asi.h
-> @@ -231,7 +231,7 @@
->  #define ASI_INTR_ID		0x63 /* (CMT) Interrupt ID register	*/
->  #define ASI_CORE_ID		0x63 /* (CMT) LP ID register		*/
->  #define ASI_CESR_ID		0x63 /* (CMT) CESR ID register		*/
-> -#define ASI_IC_INSTR		0x66 /* Insn cache instrucion ram diag	*/
-> +#define ASI_IC_INSTR		0x66 /* Insn cache instruction ram diag	*/
->  #define ASI_IC_TAG		0x67 /* Insn cache tag/valid ram diag 	*/
->  #define ASI_IC_STAG		0x68 /* (III) Insn cache snoop tag ram	*/
->  #define ASI_IC_PRE_DECODE	0x6e /* Insn cache pre-decode ram diag	*/
-> diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
-> index d4b06df..2e91b05 100644
-> --- a/target/unicore32/translate.c
-> +++ b/target/unicore32/translate.c
-> @@ -119,7 +119,7 @@ static void load_reg_var(DisasContext *s, TCGv var, int reg)
+> -/* Default Reset Vector adress */
+> +/* Default Reset Vector address */
+>  #define DEFAULT_RSTVEC      0x1000
+>  
+>  /* Exception causes */
+> diff --git a/target/riscv/csr.c b/target/riscv/csr.c
+> index 26ae347..559db11 100644
+> --- a/target/riscv/csr.c
+> +++ b/target/riscv/csr.c
+> @@ -624,7 +624,7 @@ static int write_mcounteren(CPURISCVState *env, int csrno, target_ulong val)
+>      return 0;
+>  }
+>  
+> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+>  static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
 >  {
->      if (reg == 31) {
->          uint32_t addr;
-> -        /* normaly, since we updated PC */
-> +        /* normally, since we updated PC */
->          addr = (long)s->pc;
->          tcg_gen_movi_i32(var, addr);
->      } else {
+>      if (env->priv_ver < PRIV_VERSION_1_11_0) {
+> @@ -634,7 +634,7 @@ static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
+>      return 0;
+>  }
+>  
+> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+>  static int write_mscounteren(CPURISCVState *env, int csrno, target_ulong val)
+>  {
+>      if (env->priv_ver < PRIV_VERSION_1_11_0) {
+> @@ -1278,7 +1278,7 @@ int riscv_csrrw(CPURISCVState *env, int csrno, target_ulong *ret_value,
+>          !riscv_cpu_virt_enabled(env)) {
+>          /*
+>           * We are in S mode without virtualisation, therefore we are in HS Mode.
+> -         * Add 1 to the effective privledge level to allow us to access the
+> +         * Add 1 to the effective privilege level to allow us to access the
+>           * Hypervisor CSRs.
+>           */
+>          effective_priv++;
+> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
+> index a156573..fa89a6e 100644
+> --- a/target/riscv/vector_helper.c
+> +++ b/target/riscv/vector_helper.c
+> @@ -709,7 +709,7 @@ typedef void vext_amo_noatomic_fn(void *vs3, target_ulong addr,
+>                                    uint32_t wd, uint32_t idx, CPURISCVState *env,
+>                                    uintptr_t retaddr);
+>  
+> -/* no atomic opreation for vector atomic insructions */
+> +/* no atomic operation for vector atomic insructions */
+>  #define DO_SWAP(N, M) (M)
+>  #define DO_AND(N, M)  (N & M)
+>  #define DO_XOR(N, M)  (N ^ M)
 > -- 
 > 2.26.2.windows.1
 
 dme.
 -- 
-Tell her I'll be waiting, in the usual place.
+But are you safe Miss Gradenko?
 
