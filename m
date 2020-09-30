@@ -1,44 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNYp8-0007zR-21
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:54:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39622)
+	id 1kNZFS-0006fH-Ab
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 06:22:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYp1-0007s7-Ec; Wed, 30 Sep 2020 05:54:51 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:49942 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYol-0004QJ-06; Wed, 30 Sep 2020 05:54:51 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 78E83DA85810A5CBFB69;
- Wed, 30 Sep 2020 17:54:32 +0800 (CST)
-Received: from localhost (10.174.185.186) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
- 17:54:23 +0800
-From: zhaolichang <zhaolichang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 13/14] alpha/: fix some comment spelling errors
-Date: Wed, 30 Sep 2020 17:53:20 +0800
-Message-ID: <20200930095321.2006-14-zhaolichang@huawei.com>
-X-Mailer: git-send-email 2.26.2.windows.1
-In-Reply-To: <20200930095321.2006-1-zhaolichang@huawei.com>
-References: <20200930095321.2006-1-zhaolichang@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNZFR-0006cE-4y; Wed, 30 Sep 2020 06:22:09 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:33195)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNZFP-0006Zw-A7; Wed, 30 Sep 2020 06:22:08 -0400
+Received: by mail-wm1-x342.google.com with SMTP id e11so927397wme.0;
+ Wed, 30 Sep 2020 03:22:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ffvdVpz6qk0ca0WBUblQrsJnJG2P8c1t+fIKqaw2HWg=;
+ b=IJRS2uzLRxlsrsU1zvHS0srMz8OWFnTeETmroomLVMYRRci+AnaH8k60n50De9ezou
+ McKVN40IIOghwmGHuagWXufS4vZdRJnDjJjTnrjWv5w35EoQy1uyMf8/GeG7HiIhy2nE
+ 9m8eqnxeVqtr43lEmA0qUl60kIKQ0Nv3xs/bQPxtPBEUOeasPt5puATwKYa9hNRQdAEL
+ wiORZyIdsfoLp86mk0arOm3CTcSHJaFBO5Tfh7nZWKrFMZrE6DC+JC0fvb12FxTOyz2K
+ mGe9th+nhKjk1FCXqXD+IlVlzQc6zVBqN+KsPtRINaqG6OQ4mua7MrROpfvqMkB/GZgn
+ dR6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ffvdVpz6qk0ca0WBUblQrsJnJG2P8c1t+fIKqaw2HWg=;
+ b=nxQNU8PtOYBHDzIAqiebKn6Z7CkQOAJr1EbZIdhRJ9/E86hPTmd4ZSaNEtqPBiGdh4
+ 147oy0eudg5SS3IIKQz+GjN3FXAvY/oWtx0XtiMQ/SnE7LYt9s8GsITAffTy1sWre60w
+ 8ZJdC7RxbvsOvmtICyYz4yFLp3+Uhxxzz2vmAsskJaphMwV9XBpiPPQf0Kn+6OxE3kmx
+ 6EHAWM2F2bukPbbIkxdd+k2+OiJQoXuW+ladcgvVtAK60j5dz8TcwDFnY/VL+uJiena3
+ ixqeoD+itgYK1OroxB2mEEAWwEu8APZ4zXdLHMGbBFoz2E+6wa4YWFf7OVSn5rCO9BI2
+ ZfrA==
+X-Gm-Message-State: AOAM5323GNnzfX4v1/9lyCWQXfdBokxIcH1ftj3pfn7Bg8/Ideeob5Gr
+ QBSupDcGhwL3OUzprTnVMQg=
+X-Google-Smtp-Source: ABdhPJz2WWiA1YgONKSUxgaldMQ25eB8Xpl1kLYEDTGptk3+Mq7R69MWXgSr6o+CvS+NyVJnPaRaBQ==
+X-Received: by 2002:a05:600c:2312:: with SMTP id
+ 18mr2143116wmo.141.1601461325013; 
+ Wed, 30 Sep 2020 03:22:05 -0700 (PDT)
+Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
+ [83.53.161.74])
+ by smtp.gmail.com with ESMTPSA id g12sm2066548wro.89.2020.09.30.03.22.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Sep 2020 03:22:04 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20200914102425.1152962-1-f4bug@amsat.org>
+ <ff2fd61b-b0ae-97f2-820e-79209e9882eb@ilande.co.uk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <bcd0d490-da5e-6d43-3f4d-38be88565ac3@amsat.org>
+Date: Wed, 30 Sep 2020 12:22:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <ff2fd61b-b0ae-97f2-820e-79209e9882eb@ilande.co.uk>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.186]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 05:46:53
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.199, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,53 +88,127 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 09:54:51 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 10:22:09 -0000
 
-I found that there are many spelling errors in the comments of qemu/target/alpha.
-I used spellcheck to check the spelling errors and found some errors in the folder.
+On 9/30/20 10:35 AM, Mark Cave-Ayland wrote:
+> On 14/09/2020 11:24, Philippe Mathieu-Daudé wrote:
+> 
+>> As the 'io_base' argument of m48t59_init() is unused (set to 0),
+>> remove it to simplify.
+>> To create a device on the ISA bus, m48t59_init_isa() is the
+>> preferred function to use.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/rtc/m48t59.h |  2 +-
+>>  hw/ppc/ppc405_boards.c  |  2 +-
+>>  hw/rtc/m48t59.c         | 10 ++--------
+>>  hw/sparc/sun4m.c        |  2 +-
+>>  hw/sparc64/sun4u.c      |  2 +-
+>>  5 files changed, 6 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+>> index 04abedf3b2b..62297ee0db1 100644
+>> --- a/include/hw/rtc/m48t59.h
+>> +++ b/include/hw/rtc/m48t59.h
+>> @@ -50,7 +50,7 @@ struct NvramClass {
+>>  Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+>>                         int base_year, int type);
+>>  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>> -                   uint32_t io_base, uint16_t size, int base_year,
+>> +                   uint16_t size, int base_year,
+>>                     int type);
+>>  
+>>  #endif /* HW_M48T59_H */
+>> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+>> index 6198ec1035b..93ffee801a3 100644
+>> --- a/hw/ppc/ppc405_boards.c
+>> +++ b/hw/ppc/ppc405_boards.c
+>> @@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
+>>      /* Register FPGA */
+>>      ref405ep_fpga_init(sysmem, 0xF0300000);
+>>      /* Register NVRAM */
+>> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
+>> +    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
+>>      /* Load kernel */
+>>      linux_boot = (kernel_filename != NULL);
+>>      if (linux_boot) {
+>> diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
+>> index 6525206976b..2d6a095c4e4 100644
+>> --- a/hw/rtc/m48t59.c
+>> +++ b/hw/rtc/m48t59.c
+>> @@ -566,7 +566,7 @@ const MemoryRegionOps m48t59_io_ops = {
+>>  
+>>  /* Initialisation routine */
+>>  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>> -                   uint32_t io_base, uint16_t size, int base_year,
+>> +                   uint16_t size, int base_year,
+>>                     int model)
+>>  {
+>>      DeviceState *dev;
+>> @@ -584,13 +584,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>>          s = SYS_BUS_DEVICE(dev);
+>>          sysbus_realize_and_unref(s, &error_fatal);
+>>          sysbus_connect_irq(s, 0, IRQ);
+>> -        if (io_base != 0) {
+>> -            memory_region_add_subregion(get_system_io(), io_base,
+>> -                                        sysbus_mmio_get_region(s, 1));
+>> -        }
+>> -        if (mem_base != 0) {
+>> -            sysbus_mmio_map(s, 0, mem_base);
+>> -        }
+>> +        sysbus_mmio_map(s, 0, mem_base);
+>>  
+>>          return NVRAM(s);
+>>      }
+>> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+>> index 947b69d1597..56a0d38f274 100644
+>> --- a/hw/sparc/sun4m.c
+>> +++ b/hw/sparc/sun4m.c
+>> @@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+>>          create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
+>>      }
+>>  
+>> -    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0, 0x2000, 1968, 8);
+>> +    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968, 8);
+>>  
+>>      slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cpu_irq, smp_cpus);
+>>  
+>> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+>> index b4aabfc076f..1cc57b030a7 100644
+>> --- a/hw/sparc64/sun4u.c
+>> +++ b/hw/sparc64/sun4u.c
+>> @@ -675,7 +675,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
+>>      pci_ide_create_devs(pci_dev);
+>>  
+>>      /* Map NVRAM into I/O (ebus) space */
+>> -    nvram = m48t59_init(NULL, 0, 0, NVRAM_SIZE, 1968, 59);
+>> +    nvram = m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
+>>      s = SYS_BUS_DEVICE(nvram);
+>>      memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
+>>                                  sysbus_mmio_get_region(s, 0));
+> 
+> Looks good to me. In fact, if you're working in this area there are a couple of other
+> quick wins here too:
+> 
+> - Remove m48t59_init() and replace with QOM/qdev properties
+> 
+> - Remove m48t59_init_isa() as this seems to be unused, along with the associated
+> complexity of handling the m48txx_isa_info[] array
 
-Signed-off-by: zhaolichang <zhaolichang@huawei.com>
----
- target/alpha/cpu.h       | 4 ++--
- target/alpha/translate.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+OK.
 
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index be29bdd..8a6d477 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -190,7 +190,7 @@ enum {
- 
-    That said, we're only emulating Unix PALcode, and not attempting VMS,
-    so we don't need to implement Executive and Supervisor.  QEMU's own
--   PALcode cheats and usees the KSEG mapping for its code+data rather than
-+   PALcode cheats and uses the KSEG mapping for its code+data rather than
-    physical addresses.  */
- 
- #define MMU_KERNEL_IDX   0
-@@ -370,7 +370,7 @@ enum {
-    The Unix PALcode only uses bit 4.  */
- #define PS_USER_MODE  8u
- 
--/* CPUAlphaState->flags constants.  These are layed out so that we
-+/* CPUAlphaState->flags constants.  These are laid out so that we
-    can set or reset the pieces individually by assigning to the byte,
-    or manipulated as a whole.  */
- 
-diff --git a/target/alpha/translate.c b/target/alpha/translate.c
-index 8870284..6aef9ec 100644
---- a/target/alpha/translate.c
-+++ b/target/alpha/translate.c
-@@ -2939,7 +2939,7 @@ static void alpha_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cpu)
-        the first fp insn of the TB.  Alternately we could define a proper
-        default for every TB (e.g. QUAL_RM_N or QUAL_RM_D) and make sure
-        to reset the FP_STATUS to that default at the end of any TB that
--       changes the default.  We could even (gasp) dynamiclly figure out
-+       changes the default.  We could even (gasp) dynamically figure out
-        what default would be most efficient given the running program.  */
-     ctx->tb_rm = -1;
-     /* Similarly for flush-to-zero.  */
--- 
-2.26.2.windows.1
+> 
+> Anyhow:
+> 
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
+Thanks!
+
+> 
+> 
+> ATB,
+> 
+> Mark.
+> 
 
