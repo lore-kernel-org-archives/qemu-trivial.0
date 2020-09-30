@@ -1,75 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNdSb-0008FB-K9
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54044)
+	id 1kNdSd-0008I9-1B
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZoW-0002Ka-5x; Wed, 30 Sep 2020 06:58:24 -0400
-Received: from aserp2130.oracle.com ([141.146.126.79]:54994)
+ id 1kNZk4-00051M-Tu; Wed, 30 Sep 2020 06:53:50 -0400
+Received: from aserp2130.oracle.com ([141.146.126.79]:51768)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZoU-0001B7-3T; Wed, 30 Sep 2020 06:58:23 -0400
+ id 1kNZk0-0000sD-LZ; Wed, 30 Sep 2020 06:53:48 -0400
 Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAs7RT175447;
- Wed, 30 Sep 2020 10:58:13 GMT
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAo6OT172342;
+ Wed, 30 Sep 2020 10:53:36 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=to : cc : subject :
  in-reply-to : references : sender : from : date : message-id :
  mime-version : content-type; s=corp-2020-01-29;
- bh=kXFKbd2O+dEeX1bnYgOQCaWXJy/3slcH0/KkKvKMu0o=;
- b=x+JpL1SrwLwK9g78TYsGwwOGo9hSNuTU8ZATzv0sOn2OArN9quiT8dnkHtNwoAqQYTSp
- gjE5DYKbZJJbRf64m5WqHSkHD1J4CU6z9HyaBDyCppc9hy+0r6CTHf+/2oj6zzEiyuXr
- jpaQfq4q/JFfnB/ggd89cDUNXLlJ+PTf3/Lm4eCggSnsBW58yWxnOmlCMmjT6YCbxQZl
- Bm3XxC1pK9aLTB9soyXhPdeU0lSMFuFFygSw+BLnzu24ZM96Puw+EGVHjmNGZNO7AXs2
- 5YrseAB/IvCdF3J1OluclNugW7K5JcVJhrVLFG+35vybrFjtIlnQSGIk0hWk/eF5yK+/ 2A== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 33su5aywrq-1
+ bh=Cfy9m35AYAzl8RntmCP3gEKRoaFkzRg1NsBJNfqUGk0=;
+ b=pQdpcIbp8T+zsRRGeT2Lzs+lZPcJ8VTHJilHWwnXuyyBBfJQIq3ytluc8rPyPA3MgGb6
+ QazZWEq2JQLWE53udW0nIRRHiJx77dhDX3grnzhNfEpq9CxLD7vHIKmVhZ/ogRid5Waw
+ 35nPEFAfkgqKCCY98huWmlfFvsDNDmY7g8JDXrXn1cr99MeWfja4iONkS2zN1y1NZivA
+ b0Y7aCeN31sOoHY8uO2876FDrrS38RFlewUjTngP4Tvso5RGuwdOF+BAdAAZKQfUu+v1
+ b0/7tN22L+bq2xAQy+v7/9Hzk0aYllA3eO+0huxuVrwwy62mLfeTKfA8BlNqp4uTZe27 AQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2130.oracle.com with ESMTP id 33su5aywa8-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 30 Sep 2020 10:58:12 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAoSIQ039435;
- Wed, 30 Sep 2020 10:56:12 GMT
+ Wed, 30 Sep 2020 10:53:34 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAolfw035536;
+ Wed, 30 Sep 2020 10:53:33 GMT
 Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 33tfhyxmxu-1
+ by userp3020.oracle.com with ESMTP id 33tfdtp7b4-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 30 Sep 2020 10:56:12 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08UAuCWj019414;
- Wed, 30 Sep 2020 10:56:12 GMT
+ Wed, 30 Sep 2020 10:53:33 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08UArWQE018205;
+ Wed, 30 Sep 2020 10:53:32 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 30 Sep 2020 03:56:11 -0700
+ with ESMTP ; Wed, 30 Sep 2020 03:53:32 -0700
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id a8d06956;
- Wed, 30 Sep 2020 10:56:10 +0000 (UTC)
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 6f888adf;
+ Wed, 30 Sep 2020 10:53:30 +0000 (UTC)
 To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
 Cc: zhaolichang <zhaolichang@huawei.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 12/14] arm/: fix some comment spelling errors
-In-Reply-To: <20200930095321.2006-13-zhaolichang@huawei.com>
+Subject: Re: [PATCH RFC 07/14] s390x/: fix some comment spelling errors
+In-Reply-To: <20200930095321.2006-8-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
- <20200930095321.2006-13-zhaolichang@huawei.com>
+ <20200930095321.2006-8-zhaolichang@huawei.com>
 X-HGTTG: heart-of-gold
 Sender: david.edmondson@oracle.com
 From: David Edmondson <david.edmondson@oracle.com>
-Date: Wed, 30 Sep 2020 11:56:09 +0100
-Message-ID: <m2d023pm7q.fsf@oracle.com>
+Date: Wed, 30 Sep 2020 11:53:30 +0100
+Message-ID: <m2r1qjpmc5.fsf@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
  signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=999 bulkscore=0
- phishscore=0 malwarescore=0 adultscore=0 suspectscore=1 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009300087
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ phishscore=0
+ adultscore=0 malwarescore=0 spamscore=0 mlxscore=0 bulkscore=0
+ suspectscore=5 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009300087
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
  signatures=668680
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=1
+ suspectscore=5
  lowpriorityscore=0 spamscore=0 clxscore=1015 mlxscore=0 impostorscore=0
  malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009300088
+ definitions=main-2009300087
 Received-SPF: pass client-ip=141.146.126.79;
  envelope-from=david.edmondson@oracle.com; helo=aserp2130.oracle.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 06:53:43
@@ -83,7 +83,7 @@ X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 30 Sep 2020 10:51:47 -0400
+X-Mailman-Approved-At: Wed, 30 Sep 2020 10:51:45 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,11 +95,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 10:58:24 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 10:53:51 -0000
 
-On Wednesday, 2020-09-30 at 17:53:19 +08, zhaolichang wrote:
+On Wednesday, 2020-09-30 at 17:53:14 +08, zhaolichang wrote:
 
-> I found that there are many spelling errors in the comments of qemu/target/arm.
+> I found that there are many spelling errors in the comments of qemu/target/s390x.
 > I used spellcheck to check the spelling errors and found some errors in the folder.
 >
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
@@ -107,100 +107,126 @@ On Wednesday, 2020-09-30 at 17:53:19 +08, zhaolichang wrote:
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 
 > ---
->  target/arm/cpu.h           | 2 +-
->  target/arm/helper.c        | 4 ++--
->  target/arm/m_helper.c      | 2 +-
->  target/arm/translate-a64.c | 4 ++--
->  target/arm/translate-sve.c | 2 +-
->  5 files changed, 7 insertions(+), 7 deletions(-)
+>  target/s390x/cpu_models.h       | 4 ++--
+>  target/s390x/excp_helper.c      | 2 +-
+>  target/s390x/fpu_helper.c       | 2 +-
+>  target/s390x/insn-data.def      | 2 +-
+>  target/s390x/misc_helper.c      | 2 +-
+>  target/s390x/translate.c        | 4 ++--
+>  target/s390x/translate_vx.c.inc | 2 +-
+>  7 files changed, 9 insertions(+), 9 deletions(-)
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 6036f61..996308b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2067,7 +2067,7 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
->      return aa64;
->  }
->  
-> -/* Function for determing whether guest cp register reads and writes should
-> +/* Function for determining whether guest cp register reads and writes should
->   * access the secure or non-secure bank of a cp register.  When EL3 is
->   * operating in AArch32 state, the NS-bit determines whether the secure
->   * instance of a cp register should be used. When EL3 is AArch64 (or if
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 88bd9dd..9292e16 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -1867,7 +1867,7 @@ static void pmevtyper_rawwrite(CPUARMState *env, const ARMCPRegInfo *ri,
->       * pmevtyper_rawwrite is called between a pair of pmu_op_start and
->       * pmu_op_finish calls when loading saved state for a migration. Because
->       * we're potentially updating the type of event here, the value written to
-> -     * c14_pmevcntr_delta by the preceeding pmu_op_start call may be for a
-> +     * c14_pmevcntr_delta by the preceding pmu_op_start call may be for a
->       * different counter type. Therefore, we need to set this value to the
->       * current count for the counter type we're writing so that pmu_op_finish
->       * has the correct count for its calculation.
-> @@ -12214,7 +12214,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
->              } else {
->                  memattr = 0x44;  /* Normal, NC, No */
->              }
-> -            cacheattrs->shareability = 2; /* outer sharable */
-> +            cacheattrs->shareability = 2; /* outer shareable */
->          } else {
->              memattr = 0x00;      /* Device, nGnRnE */
->          }
-> diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-> index 0364542..1e8080d 100644
-> --- a/target/arm/m_helper.c
-> +++ b/target/arm/m_helper.c
-> @@ -158,7 +158,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
->       *  R: 0 because unpriv and A flag not set
->       *  SRVALID: 0 because NS
->       *  MRVALID: 0 because unpriv and A flag not set
-> -     *  SREGION: 0 becaus SRVALID is 0
-> +     *  SREGION: 0 because SRVALID is 0
->       *  MREGION: 0 because MRVALID is 0
->       */
->      return 0;
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 7188808..5451f02 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -160,7 +160,7 @@ void gen_a64_set_pc_im(uint64_t val)
->   *  + for EL2 and EL3 there is only one TBI bit, and if it is set
->   *    then the address is zero-extended, clearing bits [63:56]
->   *  + for EL0 and EL1, TBI0 controls addresses with bit 55 == 0
-> - *    and TBI1 controls addressses with bit 55 == 1.
-> + *    and TBI1 controls addresses with bit 55 == 1.
->   *    If the appropriate TBI bit is set for the address then
->   *    the address is sign-extended from bit 55 into bits [63:56]
->   *
-> @@ -1964,7 +1964,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+> diff --git a/target/s390x/cpu_models.h b/target/s390x/cpu_models.h
+> index 74d1f87..15c0f0d 100644
+> --- a/target/s390x/cpu_models.h
+> +++ b/target/s390x/cpu_models.h
+> @@ -24,13 +24,13 @@ struct S390CPUDef {
+>      uint8_t gen;            /* hw generation identification */
+>      uint16_t type;          /* cpu type identification */
+>      uint8_t ec_ga;          /* EC GA version (on which also the BC is based) */
+> -    uint8_t mha_pow;        /* Maximum Host Adress Power, mha = 2^pow-1 */
+> +    uint8_t mha_pow;        /* Maximum Host Address Power, mha = 2^pow-1 */
+>      uint32_t hmfai;         /* hypervisor-managed facilities */
+>      /* base/min features, must never be changed between QEMU versions */
+>      S390FeatBitmap base_feat;
+>      /* used to init base_feat from generated data */
+>      S390FeatInit base_init;
+> -    /* deafault features, QEMU version specific */
+> +    /* default features, QEMU version specific */
+>      S390FeatBitmap default_feat;
+>      /* used to init default_feat from generated data */
+>      S390FeatInit default_init;
+> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+> index 3b58d10..9644a67 100644
+> --- a/target/s390x/excp_helper.c
+> +++ b/target/s390x/excp_helper.c
+> @@ -538,7 +538,7 @@ try_deliver:
+>          /* don't trigger a cpu_loop_exit(), use an interrupt instead */
+>          cpu_interrupt(CPU(cpu), CPU_INTERRUPT_HALT);
+>      } else if (cs->halted) {
+> -        /* unhalt if we had a WAIT PSW somehwere in our injection chain */
+> +        /* unhalt if we had a WAIT PSW somewhere in our injection chain */
+>          s390_cpu_unhalt(cpu);
 >      }
->      if (!isread && !(ri->type & ARM_CP_SUPPRESS_TB_END)) {
->          /*
-> -         * A write to any coprocessor regiser that ends a TB
-> +         * A write to any coprocessor register that ends a TB
->           * must rebuild the hflags for the next TB.
->           */
->          TCGv_i32 tcg_el = tcg_const_i32(s->current_el);
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index e4cd6b6..4e8a1c7 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -1528,7 +1528,7 @@ static bool trans_PNEXT(DisasContext *s, arg_rr_esz *a)
->  
->  /* Perform an inline saturating addition of a 32-bit value within
->   * a 64-bit register.  The second operand is known to be positive,
-> - * which halves the comparisions we must perform to bound the result.
-> + * which halves the comparisons we must perform to bound the result.
->   */
->  static void do_sat_addsub_32(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
+>  }
+> diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
+> index f155bc0..3e609b7 100644
+> --- a/target/s390x/fpu_helper.c
+> +++ b/target/s390x/fpu_helper.c
+> @@ -89,7 +89,7 @@ static void handle_exceptions(CPUS390XState *env, bool XxC, uintptr_t retaddr)
+>      /*
+>       * invalid/divbyzero cannot coexist with other conditions.
+>       * overflow/underflow however can coexist with inexact, we have to
+> -     * handle it separatly.
+> +     * handle it separately.
+>       */
+>      if (s390_exc & ~S390_IEEE_MASK_INEXACT) {
+>          if (s390_exc & ~S390_IEEE_MASK_INEXACT & env->fpc >> 24) {
+> diff --git a/target/s390x/insn-data.def b/target/s390x/insn-data.def
+> index d79ae9e..1631948 100644
+> --- a/target/s390x/insn-data.def
+> +++ b/target/s390x/insn-data.def
+> @@ -523,7 +523,7 @@
+>  /* LOAD LOGICAL HALFWORD RELATIVE LONG */
+>      C(0xc402, LLHRL,   RIL_b, GIE, 0, ri2, new, r1_32, ld16u, 0)
+>      C(0xc406, LLGHRL,  RIL_b, GIE, 0, ri2, r1, 0, ld16u, 0)
+> -/* LOAD LOGICAL IMMEDATE */
+> +/* LOAD LOGICAL IMMEDIATE */
+>      D(0xc00e, LLIHF,   RIL_a, EI, 0, i2_32u_shl, 0, r1, mov2, 0, 32)
+>      D(0xc00f, LLILF,   RIL_a, EI, 0, i2_32u_shl, 0, r1, mov2, 0, 0)
+>      D(0xa50c, LLIHH,   RI_a,  Z,  0, i2_16u_shl, 0, r1, mov2, 0, 48)
+> diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
+> index 58dbc02..929e509 100644
+> --- a/target/s390x/misc_helper.c
+> +++ b/target/s390x/misc_helper.c
+> @@ -312,7 +312,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0, uint64_t r0, uint64_t r1)
+>              /* same as machine type number in STORE CPU ID, but in EBCDIC */
+>              snprintf(type, ARRAY_SIZE(type), "%X", cpu->model->def->type);
+>              ebcdic_put(sysib.sysib_111.type, type, 4);
+> -            /* model number (not stored in STORE CPU ID for z/Architecure) */
+> +            /* model number (not stored in STORE CPU ID for z/Architecture) */
+>              ebcdic_put(sysib.sysib_111.model, "QEMU            ", 16);
+>              ebcdic_put(sysib.sysib_111.sequence, "QEMU            ", 16);
+>              ebcdic_put(sysib.sysib_111.plant, "QEMU", 4);
+> diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+> index a777343..58ad6c8 100644
+> --- a/target/s390x/translate.c
+> +++ b/target/s390x/translate.c
+> @@ -433,7 +433,7 @@ static void gen_program_exception(DisasContext *s, int code)
 >  {
+>      TCGv_i32 tmp;
+>  
+> -    /* Remember what pgm exeption this was.  */
+> +    /* Remember what pgm exception this was.  */
+>      tmp = tcg_const_i32(code);
+>      tcg_gen_st_i32(tmp, cpu_env, offsetof(CPUS390XState, int_pgm_code));
+>      tcg_temp_free_i32(tmp);
+> @@ -489,7 +489,7 @@ static TCGv_i64 get_address(DisasContext *s, int x2, int b2, int d2)
+>  
+>      /*
+>       * Note that d2 is limited to 20 bits, signed.  If we crop negative
+> -     * displacements early we create larger immedate addends.
+> +     * displacements early we create larger immediate addends.
+>       */
+>      if (b2 && x2) {
+>          tcg_gen_add_i64(tmp, regs[b2], regs[x2]);
+> diff --git a/target/s390x/translate_vx.c.inc b/target/s390x/translate_vx.c.inc
+> index eb767f5..983da56 100644
+> --- a/target/s390x/translate_vx.c.inc
+> +++ b/target/s390x/translate_vx.c.inc
+> @@ -789,7 +789,7 @@ static DisasJumpType op_vpk(DisasContext *s, DisasOps *o)
+>          }
+>          break;
+>      case 0x94:
+> -        /* If sources and destination dont't overlap -> fast path */
+> +        /* If sources and destination don't overlap -> fast path */
+>          if (v1 != v2 && v1 != v3) {
+>              const uint8_t src_es = get_field(s, m4);
+>              const uint8_t dst_es = src_es - 1;
 > -- 
 > 2.26.2.windows.1
 
 dme.
 -- 
-Tell me sweet little lies.
+Do I have to tell the story, of a thousand rainy days since we first met?
 
