@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNaGz-00017W-1F
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 07:27:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32980)
+	id 1kNaIj-0003Ne-Ea
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 07:29:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kNaGw-00016I-I6; Wed, 30 Sep 2020 07:27:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:40701)
+ id 1kNaIh-0003IO-5z; Wed, 30 Sep 2020 07:29:35 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:59775)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kNaGs-0003bH-1b; Wed, 30 Sep 2020 07:27:46 -0400
+ id 1kNaIf-0003u8-93; Wed, 30 Sep 2020 07:29:34 -0400
 Received: from [192.168.100.1] ([82.252.145.98]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MdNwm-1kwv1N0u6i-00ZR8y; Wed, 30 Sep 2020 13:27:37 +0200
-Subject: Re: [PATCH 1/2] qemu-img-cmds.hx: Update comment that mentions Texinfo
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N7zJj-1kSrgB35jH-0153k2; Wed, 30 Sep 2020 13:29:28 +0200
+Subject: Re: [PATCH 2/2] target/i386/cpu: Update comment that mentions Texinfo
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
 References: <20200929075824.1517969-1-armbru@redhat.com>
- <20200929075824.1517969-2-armbru@redhat.com>
+ <20200929075824.1517969-3-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3e4c3c7f-c8ed-5e94-c436-bad7346c27fd@vivier.eu>
-Date: Wed, 30 Sep 2020 13:27:36 +0200
+Message-ID: <cbee2af8-38ef-daa8-4b53-ff12df4cca2a@vivier.eu>
+Date: Wed, 30 Sep 2020 13:29:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200929075824.1517969-2-armbru@redhat.com>
+In-Reply-To: <20200929075824.1517969-3-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WH5HdYJgPXnUIIyksZYA6A05VAIrVGqSGhPs1tjVMmGLsMwwhE9
- /A6EXHpqkEZbkhxwuroVVk/UjAMzRT3gxLu6KdzhIYUJtEDJD9wbXw3CL0IBctAU8dszSkD
- e2HYRTpiyYOJqApiVnFLBbw00gvcorAEsfiHxCx8QkqQw90/W3KxAesAvAwCMED7s1g7RLI
- uhK/VIrUiJzdbXaWmAQ7w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YS6Ljv6ERQk=:bAda4MZYDzMnYhAxAqod4C
- tC8waUh2v181jK9ngo3/R6nrbHVHvumJookte4zIQfFmXYxRoMHuJ9EnSnkjZxkRGURTaA3o8
- QMZ+j1w1ING+K/jVyL/WT5hP0kGAHEhHI9gE4Nq03R/Yn9lvwSYdvGRxYlVUrieUoZGC73bzY
- IaAWpIXvcbhRNPdUwphvTjpAm2H93WEzodYIIhV8Ovj1euugzBG4TRQeqvjhP5YbibOPDIu8p
- gE/LV1tuXC4YvvWLiQuQnKrZXsCES6jHe0TeDVgZKFAUAIBX5N+4dDhrf1a9+Ebok5+KjW36i
- 2PV7ZIpX4djB7Hwkkh7gnviWHOaoMj9V84swUtIcWaq0sb+5kic7buDOOgpdys6VHvwgL6dmb
- UeFwhP1pICGnFCILkvmzixpcWZT1ZHHFDaPx3mv9fTMEinzZk21Oz8/DtgYxNey6hGdxOGiDP
- 3ndefQ7wGEC7FVFn0Jb6eIaPpOQ8vWqlKWPrleBK36xPiRvCbw26R8VVwKIKJzmzJoPpVMAlh
- pAVSzZhWTx0g6qqwUw7GNQnaBmJkmFH2TT2Uv2dy+i9N/UKD7Day+XhVW08RH4CgaVwCc6ZqC
- CEsTvFpbDKsUAuWmlUGDUdjoaY6bOjlwomlrlnj2fN2mzJb41OuKXPm6rUBdq4Ap/w4zJ7jEh
- JN8FmBbWVDGfUbgdR5QTuwjGLIy+GXoPPcIn5XTbMNXcPwJIViIFWK1wc3waghAV0cl3jxtrH
- RdyirTWD1N9gKup2G/V7UFE+708WiM9mjyxDeMtco5/HFCquQM35dubiXOd7Y4vdzz0piEB1N
- dCtXn202g0aGsbElYFusw9LMb/MW7tYrJYCa4DnyykrEMsVGhMDM7h8QuXJzpdP9QXQq5iV
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:3l1CQMHQQL2gx+gq8ptibeeDO+mp5ruM15rifDGLccAtdg+IBIL
+ Z63zrJB1SRg+rGCz3QUhuoXaydpnxdKwiCj//BCSJcOj2+3cIoMaqv+OXQVwxwP0RtYgbuI
+ EscFNeNPhUqCd5nMK0OZRP+uTnRk4VscUoK9A7+w9t0Zv2A61UBLI/pNZqMwQQ7xLa3GIDG
+ zeVUKXP/MjlVPbDeLUVYw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:SapJlKE1t0M=:Pv4OsdLKOmeeXZSoHzZWB4
+ gGF51mO0PY5zQGLekySmbbzSeQEyjDYIURUTGu193ritSnIr0/wMGIXjjxPUzs1wPFUYlTKbX
+ pboquKDzRuMQrVML1jnLiaBI8HAvixWINK1HEXyjNwwn11lVNKYctmtzXhGSXgXQUDLcfW89P
+ wvnffG6s9VXop79nhQr5Q2n0Irfi02MZh8tR4p3kJ6z5D3UPrkyOceqbvTXT05PvJXKoYJ++o
+ ACWefji1Os0Gl2ZXwwvRodS8DD8HeDqN//z+FNBlNAoXlYGN4WNNWxE6T6uMKPFUB2TRqom8q
+ H1L50pgm2jwj19WDe9PMhBn65NQtm+VWPKvAG0wsGW0i87OMp1vOqIh2AUgEI6KT80iN1P7HY
+ fg28aAFVnMzRd5jT8hfL6l6NrRseKvfLT0SEjD/MWddurqaqQUBZRt4rXWNdUHsza1xkbdqAD
+ qgaYEBCtaQFGD3tc16+fIHBBbVWAQBypbn5K8REdfr1V1S2RW0DBDytWYInDO/N31N85tk23N
+ Tj1Hd2r2Ehr4mN0XUUmtty88nEGEOsK0jzE6Qks9Wab7JHykeTcnV1gUByb8UJPQNN8r4U5D3
+ 1+9xorJoHs3uaCdGr6q9Taf54Ps90LKwcYpPVZpTQUohIJsXViA6JRxTBTOJIySQ9hcEBPWaC
+ iUaOfgcN/mdCDvnlDqKpNUEEHvO689+FKi5DW3orbzJ7UlzQx8llfKts0VBWljADfxC2pHN26
+ lr1JUG8Q62oI5SzxY1TI1oXdUHzJhNohkr0JJwWnKy/d9oZcixRiUFuLjgfOn6uimZCBcmnc6
+ R0fJ4iqy6flkaPAqh15mBAgLlfQTJtvod85FghNATDVmheYu1jdXVroKrJWv17yaX0e3M8G
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 07:27:40
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 06:26:33
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -22
 X-Spam_score: -2.3
@@ -108,32 +108,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 11:27:47 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 11:29:35 -0000
 
 Le 29/09/2020 à 09:58, Markus Armbruster a écrit :
-> Missed in 3c95fdef94 "Update comments in .hx files that mention
-> Texinfo".
+> Missed in commit 41fba1618b "docs/system: convert the documentation of
+> deprecated features to rST."
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  qemu-img-cmds.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/i386/cpu.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
-> index b89c019b76..cab8234235 100644
-> --- a/qemu-img-cmds.hx
-> +++ b/qemu-img-cmds.hx
-> @@ -1,5 +1,5 @@
->  HXCOMM Keep the list of subcommands sorted by name.
-> -HXCOMM Use DEFHEADING() to define headings in both help text and texi
-> +HXCOMM Use DEFHEADING() to define headings in both help text and rST
->  HXCOMM Text between SRST and ERST are copied to rST version and
->  HXCOMM discarded from C version
->  HXCOMM DEF(command, callback, arg_string) is used to construct
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 3ffd877dd5..aa0c38c793 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -4127,7 +4127,8 @@ static PropValue tcg_default_props[] = {
+>   * We resolve CPU model aliases using -v1 when using "-machine
+>   * none", but this is just for compatibility while libvirt isn't
+>   * adapted to resolve CPU model versions before creating VMs.
+> - * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi.
+> + * See "Runnability guarantee of CPU models" at
+> + * docs/system/deprecated.rst.
+>   */
+>  X86CPUVersion default_cpu_version = 1;
+>  
 > 
-
 
 Applied to my trivial-patches branch.
 
 Thanks,
+Laurent
+
 
