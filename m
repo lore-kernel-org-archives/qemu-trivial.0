@@ -1,65 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNeRg-0005oM-EP
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 11:55:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50116)
+	id 1kNeXz-00009w-QB
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 12:01:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kNeRe-0005nx-Pm; Wed, 30 Sep 2020 11:55:06 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:37665)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNeXx-00007g-Bx; Wed, 30 Sep 2020 12:01:37 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37689)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kNeRc-0001c1-Uy; Wed, 30 Sep 2020 11:55:06 -0400
-Received: by mail-io1-xd42.google.com with SMTP id y13so2333360iow.4;
- Wed, 30 Sep 2020 08:55:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kNeXv-0002F9-SI; Wed, 30 Sep 2020 12:01:37 -0400
+Received: by mail-wm1-x341.google.com with SMTP id a9so52185wmm.2;
+ Wed, 30 Sep 2020 09:01:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bKClRjzFMT0pps90a/PsiFGDtFSBeovqRUJ8PPva6NE=;
- b=Em9tANLgJXKEqA7KDNZkYUI9JFcK2e1A2lgBounII6B9lo+F31SKis7pOOa+tXPAAK
- Jk7PNB9Q9Nz+MSxnaYNEIOrosWamidCxrIka+9B7yfvajZzGbcRAudFBQ0sO5ZW7xo3k
- 2+wG/UHzdDLyQM+zyPvFQMnQkhtk5YPVqfsSTiEKDa4Sp8enuN/vSQ9EGau2z4Z07QiT
- TC+85sKtgDenqhB0m6vlWjVeJB0mzID0vuiyx71ZtAu6L/jGTG/kFEyQYfGACXNuCyua
- RMYwQA4Uby24tCH8EejZcpHGgLIeO3brI5DUwWiGTIRFrcb+neAMU3Jl+XIpIkvqDBkh
- sA8A==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=FN8QF9OeGBHcS3Ikvq47L0HMj3W/IbqJABlhYv6lL/A=;
+ b=gDwWQhruWkPeaDjk1q817iP0v+3ClyjzZpq6bW9w2cdGJbSYgdK8BDYFxnX8Dy7Jhi
+ Uu4HgquFq69gKuZg0oGP1wRKM5Ia3G2hfViaDWRjSsxP/zt7j8g4VXlWultfKNYoIANI
+ DZjdcUl5w73vUTfNr0LyL5dLLZ+Jn9Yn6+MPH+YA+McJ2W+/l+5IA6ZhN/JA1DIrO+cZ
+ sQcNhKRGoDf73Of+IN8C/qDXJrOD4gV2APJD9OgAOSqAtxr3nlnZARFo9k9z0cbo4y4b
+ KN6cx0jN+dojvrxdHyP7lPApx9W7/FZp1x0xGlvX3hiN3CIf1AiPGpAUn3qcXeTLdLXP
+ 3bKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bKClRjzFMT0pps90a/PsiFGDtFSBeovqRUJ8PPva6NE=;
- b=qyYyuSA4wlfzJN/c9vRgo8A8rUuyi1KR7BKCkRkcGr7M9qJMv7C3iKA/ac6hvLSdP3
- wRhYU2VQBkKNPdmIl0Qh3FENN2UgIQnRsVQAJi2qrEB5OznozZvTSPiO8mTF7RPYt5UD
- w2wkwxRNvAeMB+oymocSZjtmM3emTawuhorrXt5qyo48j3Dv3I+GF12jaHCtPAnEwXgU
- fNNgxnYoVB1ivk/NhgY+lH4lJ7aI5Xd7+R5S1fAbu2zdXVdTat0Sodw3S5DbHSTjZHt3
- 7PgtcNKiFmh50lV5H2V6BM5zxg6Or3G7oGhhZ1a+AcCoDTII+KaQfeZgkYx8+YV8Yq73
- bTFg==
-X-Gm-Message-State: AOAM531YSKKZcMTD5pTCx71e2DFJD56fWT529+rLkhXaglVfQpoHR9GD
- VWvum0nsaYU2wIO89/BcTwgVSLq+HJbi27wQ8EU=
-X-Google-Smtp-Source: ABdhPJyN2IzpGqG9Lkhk9mRB+eMXAWHs/qqK4d/p3P94a/UNiZkhE23bKhDtm2ECV75za1pt713Edv7HwVxvGpw7Tno=
-X-Received: by 2002:a02:5584:: with SMTP id e126mr2574689jab.26.1601481303401; 
- Wed, 30 Sep 2020 08:55:03 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=FN8QF9OeGBHcS3Ikvq47L0HMj3W/IbqJABlhYv6lL/A=;
+ b=e2zDD2zjdLSHfOz9I8T2qTRQzKW3RsC5imZ1LfONes5Ya+B2CuVXvNvTby6APN+XZz
+ XG/X9WMbOMszq4iBE8Fu4fXHQSFMWWXRJqOTklt0M6509Y6UVqizEAd9X9CwhsGeR5x7
+ jthmKgCDdSsU+ockUfbp7D44+HsF6JhCKXZUi7ZdCtFbBxFFnJeTlvTUrU5fVZhrT3hU
+ /dk4swW8OKPfeqNw8JKtsd28aNQ3ju9WGmVyF2WYt8qTKUUiLssmd+RYIh6KKa8lMg8Z
+ u05CbqmTBwWKVkw6NzLV7Nh2yk5QuaIX5hj6KeZJeXvXp5iTzn6QvyNlXOLXEvRfnQbm
+ aH4g==
+X-Gm-Message-State: AOAM531B1uCa+rCOHgkB1Q5QY9zk2ugzdiH0qP2gwCN5WRMLYfhgdJnN
+ I3aqa+fixOk01VJAXHfiuSnj72bsxoQ=
+X-Google-Smtp-Source: ABdhPJw9oS6GEzGHe0Ko1N3pN1FKPsg2DyBTM1g7YSuaW5mQgPSgmPv3GRZ70EPDcHipsL0ll/29Gg==
+X-Received: by 2002:a7b:c345:: with SMTP id l5mr3768677wmj.123.1601481689616; 
+ Wed, 30 Sep 2020 09:01:29 -0700 (PDT)
+Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
+ [83.53.161.74])
+ by smtp.gmail.com with ESMTPSA id z191sm3604774wme.40.2020.09.30.09.01.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Sep 2020 09:01:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH RFC 13/14] alpha/: fix some comment spelling errors
+To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
- <20200930095321.2006-4-zhaolichang@huawei.com>
-In-Reply-To: <20200930095321.2006-4-zhaolichang@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 30 Sep 2020 08:43:34 -0700
-Message-ID: <CAKmqyKMR7eKFmJW=5x1R4X7HObjgZo9Y93jPfsRS+6h=F4TBWg@mail.gmail.com>
-Subject: Re: [PATCH RFC 03/14] riscv/: fix some comment spelling errors
-To: zhaolichang <zhaolichang@huawei.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+ <20200930095321.2006-14-zhaolichang@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <51cf9db0-36ef-23b6-3b92-6d1e6a054694@amsat.org>
+Date: Wed, 30 Sep 2020 18:01:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <20200930095321.2006-14-zhaolichang@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-0.001,
+ PDS_TONAME_EQ_TOLOCAL_SHORT=1.999, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,98 +84,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 15:55:07 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 16:01:38 -0000
 
-On Wed, Sep 30, 2020 at 2:56 AM zhaolichang <zhaolichang@huawei.com> wrote:
->
-> I found that there are many spelling errors in the comments of qemu/target/riscv.
+On 9/30/20 11:53 AM, zhaolichang wrote:
+> I found that there are many spelling errors in the comments of qemu/target/alpha.
 > I used spellcheck to check the spelling errors and found some errors in the folder.
->
+> 
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
 > ---
->  target/riscv/cpu.c           | 2 +-
->  target/riscv/cpu_bits.h      | 2 +-
->  target/riscv/csr.c           | 6 +++---
->  target/riscv/vector_helper.c | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 0bbfd7f..f40a0b2 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -472,7 +472,7 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
->                      return;
->                  }
->              } else {
-> -                qemu_log("vector verison is not specified, "
-> +                qemu_log("vector version is not specified, "
->                          "use the default value v0.7.1\n");
->              }
->              set_vext_version(env, vext_version);
-> diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
-> index bd36062..6e11555 100644
-> --- a/target/riscv/cpu_bits.h
-> +++ b/target/riscv/cpu_bits.h
-> @@ -536,7 +536,7 @@
->  /* Leaf page shift amount */
->  #define PGSHIFT             12
->
-> -/* Default Reset Vector adress */
-> +/* Default Reset Vector address */
->  #define DEFAULT_RSTVEC      0x1000
->
->  /* Exception causes */
-> diff --git a/target/riscv/csr.c b/target/riscv/csr.c
-> index 26ae347..559db11 100644
-> --- a/target/riscv/csr.c
-> +++ b/target/riscv/csr.c
-> @@ -624,7 +624,7 @@ static int write_mcounteren(CPURISCVState *env, int csrno, target_ulong val)
->      return 0;
->  }
->
-> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
-> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
->  static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
->  {
->      if (env->priv_ver < PRIV_VERSION_1_11_0) {
-> @@ -634,7 +634,7 @@ static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
->      return 0;
->  }
->
-> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
-> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
->  static int write_mscounteren(CPURISCVState *env, int csrno, target_ulong val)
->  {
->      if (env->priv_ver < PRIV_VERSION_1_11_0) {
-> @@ -1278,7 +1278,7 @@ int riscv_csrrw(CPURISCVState *env, int csrno, target_ulong *ret_value,
->          !riscv_cpu_virt_enabled(env)) {
->          /*
->           * We are in S mode without virtualisation, therefore we are in HS Mode.
-> -         * Add 1 to the effective privledge level to allow us to access the
-> +         * Add 1 to the effective privilege level to allow us to access the
->           * Hypervisor CSRs.
->           */
->          effective_priv++;
-> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-> index a156573..fa89a6e 100644
-> --- a/target/riscv/vector_helper.c
-> +++ b/target/riscv/vector_helper.c
-> @@ -709,7 +709,7 @@ typedef void vext_amo_noatomic_fn(void *vs3, target_ulong addr,
->                                    uint32_t wd, uint32_t idx, CPURISCVState *env,
->                                    uintptr_t retaddr);
->
-> -/* no atomic opreation for vector atomic insructions */
-> +/* no atomic operation for vector atomic insructions */
->  #define DO_SWAP(N, M) (M)
->  #define DO_AND(N, M)  (N & M)
->  #define DO_XOR(N, M)  (N ^ M)
-> --
-> 2.26.2.windows.1
->
->
+>  target/alpha/cpu.h       | 4 ++--
+>  target/alpha/translate.c | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
