@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNdSd-0008Jy-LE
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53320)
+	id 1kNdSe-0008Lk-Jv
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZlo-0007cz-DH; Wed, 30 Sep 2020 06:55:36 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:33682)
+ id 1kNZiq-0003Cd-Kc; Wed, 30 Sep 2020 06:52:32 -0400
+Received: from userp2120.oracle.com ([156.151.31.85]:51352)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZli-00012Y-6M; Wed, 30 Sep 2020 06:55:36 -0400
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAo0kf101106;
- Wed, 30 Sep 2020 10:55:25 GMT
+ id 1kNZio-0000jX-U4; Wed, 30 Sep 2020 06:52:32 -0400
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAn9ce038455;
+ Wed, 30 Sep 2020 10:52:23 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=to : cc : subject :
  in-reply-to : references : sender : from : date : message-id :
  mime-version : content-type; s=corp-2020-01-29;
- bh=ojj3tAddVkTIJeRWZR6A2Efai90NZ2FQ3Wa9teU3IDY=;
- b=hT3G8x17KpFhKI7ej9M4I9PDBDX2SBMaUXIx4otXi3ijgV5s76ImUC+HMnM5VzS5yGoD
- XZjfT2xt/tnRdxXiMtfnJL6lMwa2Qo7aHQLZrs7Pl4xQh6GkF7qAUjYYETwoESxvnwMY
- DLNUNddugB1u3AR4wZ/htJREetQTNxryynx5efagyQTBxkg3b2CDYZXtG6lqMMnzVsXu
- yHHP5mughEi/IsjVzPwBQlfYtSWkhd1yrkrrtbS+JgGihNAPA1XfebHsRZ9NUqMkeSo2
- 3ooGZdcqoUOe3uOWSmfZEUBHNy39vq8vLF9H5tYdSvcQg/XPwJmwp2jLhvapDqV4CO7i ug== 
+ bh=d2lmXsb3uk0OfiEKbY6Kf2dBMbt07cy4/L2FGKqbXcA=;
+ b=xDSpnjJhPMygu29DFTf6JYIacLAMdU5VAe5oZ4EM5V6YI6S/x+2B/K7oX7+Y5wircZ/q
+ Gd9Db4yqoN5AQ3RLcQ4vIXB0aCPUlHm5vLm0DZL3rkXZQhz4bSXVSSjTKEcLL6SQKwnO
+ pHan9Kh5YuIiMuuk2sCTPiO3dSFfTP9cDYq4+E5RmN8/7wS+3/trO2TlbFhuIoGrKZQv
+ 0z5UaYxwaGVsTsL9oWA6HwQ2esAsX4tlFh5uCoaUVsp7HDdy3Am56hg+gJRiUTzYWe4f
+ W7+Cbemv/CDnRuuYU2MwCGWeqvH9lxxbUoILxm89hx4Coc2d1TYZcnwLfK670deuwpX3 fg== 
 Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 33swkkyuaf-1
+ by userp2120.oracle.com with ESMTP id 33sx9n7r5g-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 30 Sep 2020 10:55:25 +0000
+ Wed, 30 Sep 2020 10:52:23 +0000
 Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAoSXs039391;
- Wed, 30 Sep 2020 10:55:24 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 33tfhyxm86-1
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAoSAs039407;
+ Wed, 30 Sep 2020 10:52:22 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 33tfhyxh8s-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 30 Sep 2020 10:55:24 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08UAtNdO011724;
- Wed, 30 Sep 2020 10:55:23 GMT
+ Wed, 30 Sep 2020 10:52:22 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08UAqMLc017820;
+ Wed, 30 Sep 2020 10:52:22 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 30 Sep 2020 03:55:22 -0700
+ with ESMTP ; Wed, 30 Sep 2020 03:52:21 -0700
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 102f625f;
- Wed, 30 Sep 2020 10:55:20 +0000 (UTC)
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 083983e0;
+ Wed, 30 Sep 2020 10:52:20 +0000 (UTC)
 To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
 Cc: zhaolichang <zhaolichang@huawei.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 10/14] i386/: fix some comment spelling errors
-In-Reply-To: <20200930095321.2006-11-zhaolichang@huawei.com>
+Subject: Re: [PATCH RFC 05/14] tricore/: fix some comment spelling errors
+In-Reply-To: <20200930095321.2006-6-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
- <20200930095321.2006-11-zhaolichang@huawei.com>
+ <20200930095321.2006-6-zhaolichang@huawei.com>
 X-HGTTG: heart-of-gold
 Sender: david.edmondson@oracle.com
 From: David Edmondson <david.edmondson@oracle.com>
-Date: Wed, 30 Sep 2020 11:55:20 +0100
-Message-ID: <m2imbvpm93.fsf@oracle.com>
+Date: Wed, 30 Sep 2020 11:52:19 +0100
+Message-ID: <m2wo0bpme4.fsf@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
@@ -64,24 +64,16 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
  definitions=main-2009300087
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
  signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0 phishscore=0
- suspectscore=1 mlxlogscore=999 clxscore=1015 priorityscore=1501
- impostorscore=0 lowpriorityscore=0 bulkscore=0 spamscore=0 adultscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=1
+ phishscore=0 mlxscore=0 lowpriorityscore=0 adultscore=0 clxscore=1015
+ spamscore=0 impostorscore=0 malwarescore=0 bulkscore=0 priorityscore=1501
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
  definitions=main-2009300087
-Received-SPF: pass client-ip=141.146.126.78;
- envelope-from=david.edmondson@oracle.com; helo=aserp2120.oracle.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 06:51:53
+Received-SPF: pass client-ip=156.151.31.85;
+ envelope-from=david.edmondson@oracle.com; helo=userp2120.oracle.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 06:51:12
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.373, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 30 Sep 2020 10:51:45 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,11 +86,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 10:55:36 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 10:52:33 -0000
 
-On Wednesday, 2020-09-30 at 17:53:17 +08, zhaolichang wrote:
+On Wednesday, 2020-09-30 at 17:53:12 +08, zhaolichang wrote:
 
-> I found that there are many spelling errors in the comments of qemu/target/i386.
+> I found that there are many spelling errors in the comments of qemu/target/tricore.
 > I used spellcheck to check the spelling errors and found some errors in the folder.
 >
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
@@ -106,170 +98,51 @@ On Wednesday, 2020-09-30 at 17:53:17 +08, zhaolichang wrote:
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 
 > ---
->  target/i386/cpu.c           | 4 ++--
->  target/i386/hax-interface.h | 4 ++--
->  target/i386/hax-windows.c   | 2 +-
->  target/i386/kvm.c           | 2 +-
->  target/i386/machine.c       | 6 +++---
->  target/i386/translate.c     | 8 ++++----
->  target/i386/whpx-all.c      | 2 +-
->  7 files changed, 14 insertions(+), 14 deletions(-)
+>  target/s390x/ioinst.c      | 2 +-
+>  target/tricore/csfr.def    | 2 +-
+>  target/tricore/translate.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 3ffd877..23851e5 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -4677,7 +4677,7 @@ static const char *x86_cpu_feature_name(FeatureWord w, int bitnr)
->      return name;
->  }
+> diff --git a/target/s390x/ioinst.c b/target/s390x/ioinst.c
+> index a412926..c576d85 100644
+> --- a/target/s390x/ioinst.c
+> +++ b/target/s390x/ioinst.c
+> @@ -279,7 +279,7 @@ void ioinst_handle_stsch(S390CPU *cpu, uint64_t reg1, uint32_t ipb,
+>          /*
+>           * As operand exceptions have a lower priority than access exceptions,
+>           * we check whether the memory area is writeable (injecting the
+> -         * access execption if it is not) first.
+> +         * access exception if it is not) first.
+>           */
+>          if (!s390_cpu_virt_mem_check_write(cpu, addr, ar, sizeof(schib))) {
+>              s390_program_interrupt(env, PGM_OPERAND, ra);
+> diff --git a/target/tricore/csfr.def b/target/tricore/csfr.def
+> index ff004cb..cdfaf1d 100644
+> --- a/target/tricore/csfr.def
+> +++ b/target/tricore/csfr.def
+> @@ -1,4 +1,4 @@
+> -/* A(ll) access permited
+> +/* A(ll) access permitted
+>     R(ead only) access
+>     E(nd init protected) access
 >  
-> -/* Compatibily hack to maintain legacy +-feat semantic,
-> +/* Compatibility hack to maintain legacy +-feat semantic,
->   * where +-feat overwrites any feature set by
->   * feat=on|feat even if the later is parsed after +-feat
->   * (i.e. "-x2apic,x2apic=on" will result in x2apic disabled)
-> @@ -6896,7 +6896,7 @@ static void x86_cpu_get_crash_info_qom(Object *obj, Visitor *v,
->      GuestPanicInformation *panic_info;
+> diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+> index 7752630..c9c420d 100644
+> --- a/target/tricore/translate.c
+> +++ b/target/tricore/translate.c
+> @@ -397,7 +397,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
+>  #undef E
 >  
->      if (!cs->crash_occurred) {
-> -        error_setg(errp, "No crash occured");
-> +        error_setg(errp, "No crash occurred");
->          return;
->      }
->  
-> diff --git a/target/i386/hax-interface.h b/target/i386/hax-interface.h
-> index 537ae08..edef4fd 100644
-> --- a/target/i386/hax-interface.h
-> +++ b/target/i386/hax-interface.h
-> @@ -238,7 +238,7 @@ enum exit_status {
->      HAX_EXIT_UNKNOWN_VMEXIT,
->      /* HALT from guest */
->      HAX_EXIT_HLT,
-> -    /* Reboot request, like because of tripple fault in guest */
-> +    /* Reboot request, like because of triple fault in guest */
->      HAX_EXIT_STATECHANGE,
->      /* the vcpu is now only paused when destroy, so simply return to hax */
->      HAX_EXIT_PAUSED,
-> @@ -295,7 +295,7 @@ struct hax_qemu_version {
->      uint32_t min_version;
->  } __attribute__ ((__packed__));
->  
-> -/* The mac specfic interface to qemu, mostly is ioctl related */
-> +/* The mac specific interface to qemu, mostly is ioctl related */
->  struct hax_tunnel_info {
->      uint64_t va;
->      uint64_t io_va;
-> diff --git a/target/i386/hax-windows.c b/target/i386/hax-windows.c
-> index 863c2bc..881089b 100644
-> --- a/target/i386/hax-windows.c
-> +++ b/target/i386/hax-windows.c
-> @@ -174,7 +174,7 @@ int hax_mod_version(struct hax_state *hax, struct hax_module_version *version)
->      if (!ret) {
->          err = GetLastError();
->          if (err == ERROR_INSUFFICIENT_BUFFER || err == ERROR_MORE_DATA) {
-> -            fprintf(stderr, "hax module verion is too long to hold.\n");
-> +            fprintf(stderr, "hax module version is too long to hold.\n");
->          }
->          fprintf(stderr, "Failed to get Hax module version:%lu\n", err);
->          return -EFAULT;
-> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-> index 9efb07e..fbdbb49 100644
-> --- a/target/i386/kvm.c
-> +++ b/target/i386/kvm.c
-> @@ -1179,7 +1179,7 @@ static int hv_cpuid_check_and_set(CPUState *cs, struct kvm_cpuid2 *cpuid,
->  /*
->   * Fill in Hyper-V CPUIDs. Returns the number of entries filled in cpuid_ent in
->   * case of success, errno < 0 in case of failure and 0 when no Hyper-V
-> - * extentions are enabled.
-> + * extensions are enabled.
->   */
->  static int hyperv_handle_properties(CPUState *cs,
->                                      struct kvm_cpuid_entry2 *cpuid_ent)
-> diff --git a/target/i386/machine.c b/target/i386/machine.c
-> index b1acf7d..90e6139 100644
-> --- a/target/i386/machine.c
-> +++ b/target/i386/machine.c
-> @@ -264,12 +264,12 @@ static int cpu_pre_save(void *opaque)
->       * hypervisor, its exception payload (CR2/DR6 on #PF/#DB)
->       * should not be set yet in the respective vCPU register.
->       * Thus, in case an exception is pending, it is
-> -     * important to save the exception payload seperately.
-> +     * important to save the exception payload separately.
->       *
->       * Therefore, if an exception is not in a pending state
->       * or vCPU is not in guest-mode, it is not important to
->       * distinguish between a pending and injected exception
-> -     * and we don't need to store seperately the exception payload.
-> +     * and we don't need to store separately the exception payload.
->       *
->       * In order to preserve better backwards-compatible migration,
->       * convert a pending exception to an injected exception in
-> @@ -1138,7 +1138,7 @@ static int nested_state_post_load(void *opaque, int version_id)
->          return -EINVAL;
->      }
->      if (nested_state->size > max_nested_state_len) {
-> -        error_report("Recieved unsupported nested state size: "
-> +        error_report("Received unsupported nested state size: "
->                       "nested_state->size=%d, max=%d",
->                       nested_state->size, max_nested_state_len);
->          return -EINVAL;
-> diff --git a/target/i386/translate.c b/target/i386/translate.c
-> index caea6f5..5cdfe0e 100644
-> --- a/target/i386/translate.c
-> +++ b/target/i386/translate.c
-> @@ -893,7 +893,7 @@ static CCPrepare gen_prepare_eflags_z(DisasContext *s, TCGv reg)
->  }
->  
->  /* perform a conditional store into register 'reg' according to jump opcode
-> -   value 'b'. In the fast case, T0 is guaranted not to be used. */
-> +   value 'b'. In the fast case, T0 is guaranteed not to be used. */
->  static CCPrepare gen_prepare_cc(DisasContext *s, int b, TCGv reg)
->  {
->      int inv, jcc_op, cond;
-> @@ -1026,7 +1026,7 @@ static inline void gen_compute_eflags_c(DisasContext *s, TCGv reg)
->  }
->  
->  /* generate a conditional jump to label 'l1' according to jump opcode
-> -   value 'b'. In the fast case, T0 is guaranted not to be used. */
-> +   value 'b'. In the fast case, T0 is guaranteed not to be used. */
->  static inline void gen_jcc1_noeob(DisasContext *s, int b, TCGLabel *l1)
->  {
->      CCPrepare cc = gen_prepare_cc(s, b, s->T0);
-> @@ -1043,7 +1043,7 @@ static inline void gen_jcc1_noeob(DisasContext *s, int b, TCGLabel *l1)
->  }
->  
->  /* Generate a conditional jump to label 'l1' according to jump opcode
-> -   value 'b'. In the fast case, T0 is guaranted not to be used.
-> +   value 'b'. In the fast case, T0 is guaranteed not to be used.
->     A translation block must end soon.  */
->  static inline void gen_jcc1(DisasContext *s, int b, TCGLabel *l1)
->  {
-> @@ -6841,7 +6841,7 @@ static target_ulong disas_insn(DisasContext *s, CPUState *cpu)
->          if (s->prefix & PREFIX_LOCK) {
->              switch (op) {
->              case 0: /* bt */
-> -                /* Needs no atomic ops; we surpressed the normal
-> +                /* Needs no atomic ops; we suppressed the normal
->                     memory load for LOCK above so do it now.  */
->                  gen_op_ld_v(s, ot, s->T0, s->A0);
->                  break;
-> diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c
-> index 5a0f337..661f9c7 100644
-> --- a/target/i386/whpx-all.c
-> +++ b/target/i386/whpx-all.c
-> @@ -1214,7 +1214,7 @@ int whpx_init_vcpu(CPUState *cpu)
->      vcpu = g_malloc0(sizeof(struct whpx_vcpu));
->  
->      if (!vcpu) {
-> -        error_report("WHPX: Failed to allocte VCPU context.");
-> +        error_report("WHPX: Failed to allocate VCPU context.");
->          return -ENOMEM;
->      }
->  
+>  #define R(ADDRESS, REG, FEATURE) /* don't gen writes to read-only reg,
+> -                                    since no execption occurs */
+> +                                    since no exception occurs */
+>  #define A(ADDRESS, REG, FEATURE) R(ADDRESS, REG, FEATURE)                \
+>      case ADDRESS:                                                        \
+>          if (has_feature(ctx, FEATURE)) {                             \
 > -- 
 > 2.26.2.windows.1
 
 dme.
 -- 
-Tell me sweet little lies.
+If I could buy my reasoning, I'd pay to lose.
 
