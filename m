@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNYot-0007kv-K6
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:54:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39532)
+	id 1kNYou-0007oM-RA
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:54:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYor-0007gK-Rf; Wed, 30 Sep 2020 05:54:41 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:49750 helo=huawei.com)
+ id 1kNYos-0007hJ-Ae; Wed, 30 Sep 2020 05:54:42 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:49778 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYoh-0004Pn-74; Wed, 30 Sep 2020 05:54:41 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id BF9E5B24852456841869;
+ id 1kNYoh-0004Pp-7V; Wed, 30 Sep 2020 05:54:41 -0400
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id CD1CBE1047232C6D5E8F;
  Wed, 30 Sep 2020 17:54:28 +0800 (CST)
-Received: from localhost (10.174.185.186) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
- 17:54:18 +0800
+Received: from localhost (10.174.185.186) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
+ 17:54:23 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 09/14] sh4/: fix some comment spelling errors
-Date: Wed, 30 Sep 2020 17:53:16 +0800
-Message-ID: <20200930095321.2006-10-zhaolichang@huawei.com>
+Subject: [PATCH RFC 12/14] arm/: fix some comment spelling errors
+Date: Wed, 30 Sep 2020 17:53:19 +0800
+Message-ID: <20200930095321.2006-13-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200930095321.2006-1-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
@@ -53,55 +53,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 30 Sep 2020 09:54:42 -0000
 
-I found that there are many spelling errors in the comments of qemu/target/sh4.
+I found that there are many spelling errors in the comments of qemu/target/arm.
 I used spellcheck to check the spelling errors and found some errors in the folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 ---
- target/sh4/cpu.h       | 2 +-
- target/sh4/op_helper.c | 2 +-
- target/sh4/translate.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ target/arm/cpu.h           | 2 +-
+ target/arm/helper.c        | 4 ++--
+ target/arm/m_helper.c      | 2 +-
+ target/arm/translate-a64.c | 4 ++--
+ target/arm/translate-sve.c | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index dbe58c7..91fa949 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -160,7 +160,7 @@ typedef struct CPUSH4State {
-     uint32_t pteh;		/* page table entry high register */
-     uint32_t ptel;		/* page table entry low register */
-     uint32_t ptea;		/* page table entry assistance register */
--    uint32_t ttb;		/* tranlation table base register */
-+    uint32_t ttb;		/* translation table base register */
-     uint32_t tea;		/* TLB exception address register */
-     uint32_t tra;		/* TRAPA exception register */
-     uint32_t expevt;		/* exception event register */
-diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
-index 14c3db0..9de4152 100644
---- a/target/sh4/op_helper.c
-+++ b/target/sh4/op_helper.c
-@@ -400,7 +400,7 @@ float32 helper_fsrra_FT(CPUSH4State *env, float32 t0)
-     t0 = float32_div(float32_one, t0, &env->fp_status);
-     /* Since this is supposed to be an approximation, an imprecision
-        exception is required.  One supposes this also follows the usual
--       IEEE rule that other exceptions take precidence.  */
-+       IEEE rule that other exceptions take precedence.  */
-     if (get_float_exception_flags(&env->fp_status) == 0) {
-         set_float_exception_flags(float_flag_inexact, &env->fp_status);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 6036f61..996308b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2067,7 +2067,7 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
+     return aa64;
+ }
+ 
+-/* Function for determing whether guest cp register reads and writes should
++/* Function for determining whether guest cp register reads and writes should
+  * access the secure or non-secure bank of a cp register.  When EL3 is
+  * operating in AArch32 state, the NS-bit determines whether the secure
+  * instance of a cp register should be used. When EL3 is AArch64 (or if
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 88bd9dd..9292e16 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1867,7 +1867,7 @@ static void pmevtyper_rawwrite(CPUARMState *env, const ARMCPRegInfo *ri,
+      * pmevtyper_rawwrite is called between a pair of pmu_op_start and
+      * pmu_op_finish calls when loading saved state for a migration. Because
+      * we're potentially updating the type of event here, the value written to
+-     * c14_pmevcntr_delta by the preceeding pmu_op_start call may be for a
++     * c14_pmevcntr_delta by the preceding pmu_op_start call may be for a
+      * different counter type. Therefore, we need to set this value to the
+      * current count for the counter type we're writing so that pmu_op_finish
+      * has the correct count for its calculation.
+@@ -12214,7 +12214,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+             } else {
+                 memattr = 0x44;  /* Normal, NC, No */
+             }
+-            cacheattrs->shareability = 2; /* outer sharable */
++            cacheattrs->shareability = 2; /* outer shareable */
+         } else {
+             memattr = 0x00;      /* Device, nGnRnE */
+         }
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 0364542..1e8080d 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -158,7 +158,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+      *  R: 0 because unpriv and A flag not set
+      *  SRVALID: 0 because NS
+      *  MRVALID: 0 because unpriv and A flag not set
+-     *  SREGION: 0 becaus SRVALID is 0
++     *  SREGION: 0 because SRVALID is 0
+      *  MREGION: 0 because MRVALID is 0
+      */
+     return 0;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 7188808..5451f02 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -160,7 +160,7 @@ void gen_a64_set_pc_im(uint64_t val)
+  *  + for EL2 and EL3 there is only one TBI bit, and if it is set
+  *    then the address is zero-extended, clearing bits [63:56]
+  *  + for EL0 and EL1, TBI0 controls addresses with bit 55 == 0
+- *    and TBI1 controls addressses with bit 55 == 1.
++ *    and TBI1 controls addresses with bit 55 == 1.
+  *    If the appropriate TBI bit is set for the address then
+  *    the address is sign-extended from bit 55 into bits [63:56]
+  *
+@@ -1964,7 +1964,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
      }
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index 60c863d..c57218e 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -1959,7 +1959,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
-     NEXT_INSN;
-     switch (ctx->opcode & 0xf00f) {
-     case 0x6003: /* mov Rm,Rn */
--        /* Here we want to recognize ld_dst being saved for later consumtion,
-+        /* Here we want to recognize ld_dst being saved for later consumption,
-            or for another input register being copied so that ld_dst need not
-            be clobbered during the operation.  */
-         op_dst = B11_8;
+     if (!isread && !(ri->type & ARM_CP_SUPPRESS_TB_END)) {
+         /*
+-         * A write to any coprocessor regiser that ends a TB
++         * A write to any coprocessor register that ends a TB
+          * must rebuild the hflags for the next TB.
+          */
+         TCGv_i32 tcg_el = tcg_const_i32(s->current_el);
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index e4cd6b6..4e8a1c7 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -1528,7 +1528,7 @@ static bool trans_PNEXT(DisasContext *s, arg_rr_esz *a)
+ 
+ /* Perform an inline saturating addition of a 32-bit value within
+  * a 64-bit register.  The second operand is known to be positive,
+- * which halves the comparisions we must perform to bound the result.
++ * which halves the comparisons we must perform to bound the result.
+  */
+ static void do_sat_addsub_32(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
+ {
 -- 
 2.26.2.windows.1
 
