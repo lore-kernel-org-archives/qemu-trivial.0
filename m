@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNYor-0007ei-72
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:54:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39482)
+	id 1kNYos-0007i8-KX
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:54:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYoo-0007Wm-6G; Wed, 30 Sep 2020 05:54:38 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:49652 helo=huawei.com)
+ id 1kNYoq-0007dg-QL; Wed, 30 Sep 2020 05:54:40 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:46822 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kNYod-0004PE-7R; Wed, 30 Sep 2020 05:54:37 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id BDD339ECDDA296FC7901;
- Wed, 30 Sep 2020 17:54:23 +0800 (CST)
-Received: from localhost (10.174.185.186) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
- 17:54:13 +0800
+ id 1kNYog-0004Pc-V1; Wed, 30 Sep 2020 05:54:40 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 46A20F9395786ACA8D87;
+ Wed, 30 Sep 2020 17:54:27 +0800 (CST)
+Received: from localhost (10.174.185.186) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
+ 17:54:16 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
-Subject: [PATCH RFC 06/14] mips/: fix some comment spelling errors
-Date: Wed, 30 Sep 2020 17:53:13 +0800
-Message-ID: <20200930095321.2006-7-zhaolichang@huawei.com>
+Subject: [PATCH RFC 08/14] m68k/: fix some comment spelling errors
+Date: Wed, 30 Sep 2020 17:53:15 +0800
+Message-ID: <20200930095321.2006-9-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20200930095321.2006-1-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
@@ -29,14 +29,14 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.186]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
+Received-SPF: pass client-ip=45.249.212.32;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 05:46:53
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 05:46:49
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -51,93 +51,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 09:54:38 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 09:54:41 -0000
 
-I found that there are many spelling errors in the comments of qemu/target/mips.
+I found that there are many spelling errors in the comments of qemu/target/m68k.
 I used spellcheck to check the spelling errors and found some errors in the folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 ---
- target/mips/internal.h           |  2 +-
- target/mips/translate.c          | 10 +++++-----
- target/mips/translate_init.c.inc |  2 +-
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ target/m68k/translate.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target/mips/internal.h b/target/mips/internal.h
-index 7f159a9..b811f54 100644
---- a/target/mips/internal.h
-+++ b/target/mips/internal.h
-@@ -188,7 +188,7 @@ static inline bool cpu_mips_hw_interrupts_pending(CPUMIPSState *env)
-         /*
-          * A MIPS configured with a vectorizing external interrupt controller
-          * will feed a vector into the Cause pending lines. The core treats
--         * the status lines as a vector level, not as indiviual masks.
-+         * the status lines as a vector level, not as individual masks.
-          */
-         r = pending > status;
-     } else {
-diff --git a/target/mips/translate.c b/target/mips/translate.c
-index 398edf7..b4d0090 100644
---- a/target/mips/translate.c
-+++ b/target/mips/translate.c
-@@ -3718,7 +3718,7 @@ static void gen_st_cond(DisasContext *ctx, int rt, int base, int offset,
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 3fc67aa..133a404 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -438,7 +438,7 @@ static TCGv gen_addr_index(DisasContext *s, uint16_t ext, TCGv tmp)
+ }
  
-     t0 = tcg_temp_new();
-     addr = tcg_temp_new();
--    /* compare the address against that of the preceeding LL */
-+    /* compare the address against that of the preceding LL */
-     gen_base_offset_addr(ctx, addr, base, offset);
-     tcg_gen_brcond_tl(TCG_COND_EQ, addr, cpu_lladdr, l1);
-     tcg_temp_free(addr);
-@@ -25597,7 +25597,7 @@ static void gen_mxu_D16MAX_D16MIN(DisasContext *ctx)
-         }
-         /* return resulting half-words to its original position */
-         tcg_gen_shri_i32(t0, t0, 16);
--        /* finaly update the destination */
-+        /* finally update the destination */
-         tcg_gen_or_i32(mxu_gpr[XRa - 1], mxu_gpr[XRa - 1], t0);
+ /*
+- * Handle a base + index + displacement effective addresss.
++ * Handle a base + index + displacement effective address.
+  * A NULL_QREG base means pc-relative.
+  */
+ static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
+@@ -1696,7 +1696,7 @@ static void bcd_add(TCGv dest, TCGv src)
  
-         tcg_temp_free(t1);
-@@ -25633,7 +25633,7 @@ static void gen_mxu_D16MAX_D16MIN(DisasContext *ctx)
-         }
-         /* return resulting half-words to its original position */
-         tcg_gen_shri_i32(t0, t0, 16);
--        /* finaly update the destination */
-+        /* finally update the destination */
-         tcg_gen_or_i32(mxu_gpr[XRa - 1], mxu_gpr[XRa - 1], t0);
+     /*
+      * t1 = (src + 0x066) + dest + X
+-     *    = result with some possible exceding 0x6
++     *    = result with some possible exceeding 0x6
+      */
  
-         tcg_temp_free(t1);
-@@ -25702,7 +25702,7 @@ static void gen_mxu_Q8MAX_Q8MIN(DisasContext *ctx)
-             }
-             /* return resulting byte to its original position */
-             tcg_gen_shri_i32(t0, t0, 8 * (3 - i));
--            /* finaly update the destination */
-+            /* finally update the destination */
-             tcg_gen_or_i32(mxu_gpr[XRa - 1], mxu_gpr[XRa - 1], t0);
-         }
+     t0 = tcg_const_i32(0x066);
+@@ -1706,7 +1706,7 @@ static void bcd_add(TCGv dest, TCGv src)
+     tcg_gen_add_i32(t1, t0, dest);
+     tcg_gen_add_i32(t1, t1, QREG_CC_X);
  
-@@ -25742,7 +25742,7 @@ static void gen_mxu_Q8MAX_Q8MIN(DisasContext *ctx)
-             }
-             /* return resulting byte to its original position */
-             tcg_gen_shri_i32(t0, t0, 8 * (3 - i));
--            /* finaly update the destination */
-+            /* finally update the destination */
-             tcg_gen_or_i32(mxu_gpr[XRa - 1], mxu_gpr[XRa - 1], t0);
-         }
+-    /* we will remove exceding 0x6 where there is no carry */
++    /* we will remove exceeding 0x6 where there is no carry */
  
-diff --git a/target/mips/translate_init.c.inc b/target/mips/translate_init.c.inc
-index 637cacc..c735b2b 100644
---- a/target/mips/translate_init.c.inc
-+++ b/target/mips/translate_init.c.inc
-@@ -995,7 +995,7 @@ static void mvp_init (CPUMIPSState *env, const mips_def_t *def)
+     /*
+      * t0 = (src + 0x0066) ^ dest
+@@ -1736,7 +1736,7 @@ static void bcd_add(TCGv dest, TCGv src)
+     tcg_temp_free(t0);
  
-     /* MVPConf1 implemented, TLB sharable, no gating storage support,
-        programmable cache partitioning implemented, number of allocatable
--       and sharable TLB entries, MVP has allocatable TCs, 2 VPEs
-+       and shareable TLB entries, MVP has allocatable TCs, 2 VPEs
-        implemented, 5 TCs implemented. */
-     env->mvp->CP0_MVPConf0 = (1U << CP0MVPC0_M) | (1 << CP0MVPC0_TLBS) |
-                              (0 << CP0MVPC0_GS) | (1 << CP0MVPC0_PCP) |
+     /*
+-     * remove the exceding 0x6
++     * remove the exceeding 0x6
+      * for digits that have not generated a carry
+      */
+ 
+@@ -2638,7 +2638,7 @@ DISAS_INSN(negx)
+     gen_flush_flags(s); /* compute old Z */
+ 
+     /*
+-     * Perform substract with borrow.
++     * Perform subtract with borrow.
+      * (X, N) =  -(src + X);
+      */
+ 
+@@ -2653,7 +2653,7 @@ DISAS_INSN(negx)
+     /*
+      * Compute signed-overflow for negation.  The normal formula for
+      * subtraction is (res ^ src) & (src ^ dest), but with dest==0
+-     * this simplies to res & src.
++     * this simplifies to res & src.
+      */
+ 
+     tcg_gen_and_i32(QREG_CC_V, QREG_CC_N, src);
+@@ -3159,7 +3159,7 @@ static inline void gen_subx(DisasContext *s, TCGv src, TCGv dest, int opsize)
+     gen_flush_flags(s); /* compute old Z */
+ 
+     /*
+-     * Perform substract with borrow.
++     * Perform subtract with borrow.
+      * (X, N) = dest - (src + X);
+      */
+ 
+@@ -3169,7 +3169,7 @@ static inline void gen_subx(DisasContext *s, TCGv src, TCGv dest, int opsize)
+     gen_ext(QREG_CC_N, QREG_CC_N, opsize, 1);
+     tcg_gen_andi_i32(QREG_CC_X, QREG_CC_X, 1);
+ 
+-    /* Compute signed-overflow for substract.  */
++    /* Compute signed-overflow for subtract.  */
+ 
+     tcg_gen_xor_i32(QREG_CC_V, QREG_CC_N, dest);
+     tcg_gen_xor_i32(tmp, dest, src);
 -- 
 2.26.2.windows.1
 
