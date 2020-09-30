@@ -1,69 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNRbe-0001Xu-4M
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2020 22:12:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41646)
+	id 1kNXRX-0002HW-92
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 04:26:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <snizovtsev@gmail.com>)
- id 1kNPBn-0004FF-UJ; Tue, 29 Sep 2020 19:37:43 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:45265)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <snizovtsev@gmail.com>)
- id 1kNPBm-00027V-4K; Tue, 29 Sep 2020 19:37:43 -0400
-Received: by mail-ej1-x642.google.com with SMTP id i26so7260ejb.12;
- Tue, 29 Sep 2020 16:37:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:mime-version:date:message-id:subject:to:cc;
- bh=KhSGaXrogwd/Fi04sIgiySppfiPQ9ooG3Z4HZ+ITPnI=;
- b=N1pHDb+gpo9taAbdQwE0YTXFzIK1QrAkhdHLWSX9CAwqe0VUVAQsRZe7xyTU/eL8w7
- jSX3Tt4XrMydl6gyg47KDK2+G+Orq0Uoqkif3aEFdcYqSmEE5NwrUKfYlzK9U59swUtG
- Nb6OY/JN+uOB2RW/xgJ0Qw4UNlSBV1q7wsqZOD/jELXLQGTdjIiON92fMzkFIdvskh2b
- hTkpAg1xDuOjpz/VxQfOdcfUexWfhFyh/pZmaJrSIks4anOhoTl71bbQ7tAQlQ0RC2GW
- 13GviGXCsVdUCyh0LBtlp0zBCambQ8rNK0yxmV2j4kKALntxf7UejPXv8JOTBrqFPZnn
- 7QUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:mime-version:date:message-id:subject:to:cc;
- bh=KhSGaXrogwd/Fi04sIgiySppfiPQ9ooG3Z4HZ+ITPnI=;
- b=kBThjW9tsWgX36NfaiKzxP5NYztOgkKXm94sZg+QJYySXbG8a82vr87shYRpLzJZgM
- 5FjxY8SQrVeu1hHsSU8io7dq/yFb8YDh4MB13cz2r5EAxm7NDeb6oBF+q1ase+W+6m8i
- Bb4qE5LwVm3XCHRbZIX0IticgQSeMn1FvaZS3Vi7OimAsTFDPPFzrHu27fCUEkUPbcdn
- JBmGTKjE/iYzvh1Loo8q2q90c0dqfFE380fApUrAzQ25oPvk5bN0u27YK6VWKV9rhdsU
- uaezfdJAGVUeuDCH8y3vFDUz41ARdF8S9YxdV31AoW3K64qcJWqute9tMb/ZTxQAIZGW
- 2OsA==
-X-Gm-Message-State: AOAM533IjyTjbdsTCfvFig+/f3nHcLq/SLf8iU7aEvOfhW9csShSBeag
- 81ew7TuBDNqbx3h72tIEfi66VYEomSZS1RWNJcrA+CzS6PtnqQ==
-X-Google-Smtp-Source: ABdhPJxZR2tKewYVz3y9phajr1rKsmW7R9AaLCfY0MwSWT1dzrIiYvG/9iOQCefNkT2V9sfmCcW1mVxkeY6qibRyqcM=
-X-Received: by 2002:a17:906:b784:: with SMTP id
- dt4mr67007ejb.376.1601422660131; 
- Tue, 29 Sep 2020 16:37:40 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 29 Sep 2020 16:37:39 -0700
-From: Sergey Nizovtsev <snizovtsev@gmail.com>
-X-Mailer: git-send-email 2.28.0
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kNXRV-0002Gb-7T; Wed, 30 Sep 2020 04:26:29 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:49258
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kNXRT-000707-Bq; Wed, 30 Sep 2020 04:26:28 -0400
+Received: from host86-184-131-21.range86-184.btcentralplus.com
+ ([86.184.131.21] helo=[192.168.1.65])
+ by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kNXS2-0000Fb-40; Wed, 30 Sep 2020 09:27:05 +0100
+To: Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20200914102425.1152962-1-f4bug@amsat.org>
+ <20200916025022.GE5258@yekko.fritz.box>
+ <de2b5d0c-fcc4-a26c-5fda-610b7fa75862@amsat.org>
+ <cc4d5239-636c-f01a-d822-97ea60ee303c@vivier.eu>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+ OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+Message-ID: <8661dcb8-09b1-2c0e-bdf4-0ca4a6d754d5@ilande.co.uk>
+Date: Wed, 30 Sep 2020 09:26:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Date: Tue, 29 Sep 2020 16:37:39 -0700
-Message-ID: <CAHOaf96apgoTCxV-3xggHkwoFpLBvTYzmk0myUG6CzvgWMXw2Q@mail.gmail.com>
-Subject: [PATCH] qom: fix objects with improper parent type
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Sergey Nizovtsev <snizovtsev@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
- Ben Warren <ben@skyportsystems.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=snizovtsev@gmail.com; helo=mail-ej1-x642.google.com
+In-Reply-To: <cc4d5239-636c-f01a-d822-97ea60ee303c@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 86.184.131.21
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 29 Sep 2020 22:12:31 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,108 +87,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Sep 2020 23:37:44 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 08:26:29 -0000
 
-Some objects accidentally inherit ObjectClass instead of Object.
-They compile silently but may crash after downcasting.
+On 24/09/2020 16:00, Laurent Vivier wrote:
 
-In this patch, we introduce a coccinelle script to find broken
-declarations and fix them manually with proper base type.
+> Le 24/09/2020 à 16:53, Philippe Mathieu-Daudé a écrit :
+>> On 9/16/20 4:50 AM, David Gibson wrote:
+>>> On Mon, Sep 14, 2020 at 12:24:25PM +0200, Philippe Mathieu-Daudé wrote:
+>>>> As the 'io_base' argument of m48t59_init() is unused (set to 0),
+>>>> remove it to simplify.
+>>>> To create a device on the ISA bus, m48t59_init_isa() is the
+>>>> preferred function to use.
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>> ---
+>>>>  include/hw/rtc/m48t59.h |  2 +-
+>>>>  hw/ppc/ppc405_boards.c  |  2 +-
+>>>>  hw/rtc/m48t59.c         | 10 ++--------
+>>>>  hw/sparc/sun4m.c        |  2 +-
+>>>>  hw/sparc64/sun4u.c      |  2 +-
+>>>>  5 files changed, 6 insertions(+), 12 deletions(-)
+>>>
+>>> ppc part
+>>> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+>>
+>> Thanks!
+>>
+>> Can this go via qemu-trivial@?
+> 
+> Yes, but more reviewers would help. Mark?
 
-Signed-off-by: Sergey Nizovtsev <snizovtsev@gmail.com>
----
- scripts/coccinelle/qobject-parent-type.cocci | 26 ++++++++++++++++++++
- include/hw/acpi/vmgenid.h                    |  2 +-
- include/hw/misc/vmcoreinfo.h                 |  2 +-
- include/net/can_host.h                       |  2 +-
- MAINTAINERS                                  |  1 +
- 5 files changed, 30 insertions(+), 3 deletions(-)
- create mode 100644 scripts/coccinelle/qobject-parent-type.cocci
+Ooof sorry I missed this one. Let me take a quick look now...
 
-diff --git a/scripts/coccinelle/qobject-parent-type.cocci
-b/scripts/coccinelle/qobject-parent-type.cocci
-new file mode 100644
-index 0000000000..9afb3edd97
---- /dev/null
-+++ b/scripts/coccinelle/qobject-parent-type.cocci
-@@ -0,0 +1,26 @@
-+// Highlight object declarations that don't look like object class but
-+// accidentally inherit from it.
-+
-+@match@
-+identifier obj_t, fld;
-+type parent_t =~ ".*Class$";
-+@@
-+struct obj_t {
-+    parent_t fld;
-+    ...
-+};
-+
-+@script:python filter depends on match@
-+obj_t << match.obj_t;
-+@@
-+is_class_obj = obj_t.endswith('Class')
-+cocci.include_match(not is_class_obj)
-+
-+@replacement depends on filter@
-+identifier match.obj_t, match.fld;
-+type match.parent_t;
-+@@
-+struct obj_t {
-+*   parent_t fld;
-+    ...
-+};
-diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
-index d50fbacb8e..cb4ad37fc5 100644
---- a/include/hw/acpi/vmgenid.h
-+++ b/include/hw/acpi/vmgenid.h
-@@ -19,7 +19,7 @@
- OBJECT_DECLARE_SIMPLE_TYPE(VmGenIdState, VMGENID)
 
- struct VmGenIdState {
--    DeviceClass parent_obj;
-+    DeviceState parent_obj;
-     QemuUUID guid;                /* The 128-bit GUID seen by the guest */
-     uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-endian) */
- };
-diff --git a/include/hw/misc/vmcoreinfo.h b/include/hw/misc/vmcoreinfo.h
-index ebada6617a..0b7b55d400 100644
---- a/include/hw/misc/vmcoreinfo.h
-+++ b/include/hw/misc/vmcoreinfo.h
-@@ -24,7 +24,7 @@ DECLARE_INSTANCE_CHECKER(VMCoreInfoState, VMCOREINFO,
- typedef struct fw_cfg_vmcoreinfo FWCfgVMCoreInfo;
+ATB,
 
- struct VMCoreInfoState {
--    DeviceClass parent_obj;
-+    DeviceState parent_obj;
-
-     bool has_vmcoreinfo;
-     FWCfgVMCoreInfo vmcoreinfo;
-diff --git a/include/net/can_host.h b/include/net/can_host.h
-index 4e3ce3f954..caab71bdda 100644
---- a/include/net/can_host.h
-+++ b/include/net/can_host.h
-@@ -35,7 +35,7 @@
- OBJECT_DECLARE_TYPE(CanHostState, CanHostClass, CAN_HOST)
-
- struct CanHostState {
--    ObjectClass oc;
-+    Object oc;
-
-     CanBusState *bus;
-     CanBusClientState bus_client;
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 5eed1e692b..2160b8196a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2402,6 +2402,7 @@ F: qobject/
- F: include/qapi/qmp/
- X: include/qapi/qmp/dispatch.h
- F: scripts/coccinelle/qobject.cocci
-+F: scripts/coccinelle/qobject-parent-type.cocci
- F: tests/check-qdict.c
- F: tests/check-qjson.c
- F: tests/check-qlist.c
--- 
-2.28.0
+Mark.
 
