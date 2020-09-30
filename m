@@ -1,77 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNXaS-0005FH-UN
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 04:35:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51126)
+	id 1kNYoB-0006bO-PZ
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 05:53:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kNXaS-0005Eq-0x; Wed, 30 Sep 2020 04:35:44 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:49280
- helo=mail.default.ilande.uk0.bigv.io)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kNYo7-0006ZS-Av; Wed, 30 Sep 2020 05:53:57 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:46174 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kNXaP-0007TK-Ub; Wed, 30 Sep 2020 04:35:43 -0400
-Received: from host86-184-131-21.range86-184.btcentralplus.com
- ([86.184.131.21] helo=[192.168.1.65])
- by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kNXaz-0000LR-Ue; Wed, 30 Sep 2020 09:36:19 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20200914102425.1152962-1-f4bug@amsat.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
- OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-Message-ID: <ff2fd61b-b0ae-97f2-820e-79209e9882eb@ilande.co.uk>
-Date: Wed, 30 Sep 2020 09:35:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kNYo4-0004Lp-13; Wed, 30 Sep 2020 05:53:54 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 001495E249C872AC6C51;
+ Wed, 30 Sep 2020 17:53:48 +0800 (CST)
+Received: from localhost (10.174.185.186) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 30 Sep 2020
+ 17:53:41 +0800
+From: zhaolichang <zhaolichang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>
+Subject: [PATCH RFC 01/14] cris/: fix some comment spelling errors
+Date: Wed, 30 Sep 2020 17:53:08 +0800
+Message-ID: <20200930095321.2006-2-zhaolichang@huawei.com>
+X-Mailer: git-send-email 2.26.2.windows.1
+In-Reply-To: <20200930095321.2006-1-zhaolichang@huawei.com>
+References: <20200930095321.2006-1-zhaolichang@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200914102425.1152962-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.184.131.21
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.uk0.bigv.io
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.186]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=zhaolichang@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 05:46:49
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,120 +51,127 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 08:35:44 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 09:53:58 -0000
 
-On 14/09/2020 11:24, Philippe Mathieu-Daudé wrote:
+I found that there are many spelling errors in the comments of qemu/target/cris.
+I used spellcheck to check the spelling errors and found some errors in the folder.
 
-> As the 'io_base' argument of m48t59_init() is unused (set to 0),
-> remove it to simplify.
-> To create a device on the ISA bus, m48t59_init_isa() is the
-> preferred function to use.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/rtc/m48t59.h |  2 +-
->  hw/ppc/ppc405_boards.c  |  2 +-
->  hw/rtc/m48t59.c         | 10 ++--------
->  hw/sparc/sun4m.c        |  2 +-
->  hw/sparc64/sun4u.c      |  2 +-
->  5 files changed, 6 insertions(+), 12 deletions(-)
-> 
-> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
-> index 04abedf3b2b..62297ee0db1 100644
-> --- a/include/hw/rtc/m48t59.h
-> +++ b/include/hw/rtc/m48t59.h
-> @@ -50,7 +50,7 @@ struct NvramClass {
->  Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
->                         int base_year, int type);
->  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
-> -                   uint32_t io_base, uint16_t size, int base_year,
-> +                   uint16_t size, int base_year,
->                     int type);
->  
->  #endif /* HW_M48T59_H */
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index 6198ec1035b..93ffee801a3 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
->      /* Register FPGA */
->      ref405ep_fpga_init(sysmem, 0xF0300000);
->      /* Register NVRAM */
-> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
-> +    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
->      /* Load kernel */
->      linux_boot = (kernel_filename != NULL);
->      if (linux_boot) {
-> diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-> index 6525206976b..2d6a095c4e4 100644
-> --- a/hw/rtc/m48t59.c
-> +++ b/hw/rtc/m48t59.c
-> @@ -566,7 +566,7 @@ const MemoryRegionOps m48t59_io_ops = {
->  
->  /* Initialisation routine */
->  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
-> -                   uint32_t io_base, uint16_t size, int base_year,
-> +                   uint16_t size, int base_year,
->                     int model)
->  {
->      DeviceState *dev;
-> @@ -584,13 +584,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
->          s = SYS_BUS_DEVICE(dev);
->          sysbus_realize_and_unref(s, &error_fatal);
->          sysbus_connect_irq(s, 0, IRQ);
-> -        if (io_base != 0) {
-> -            memory_region_add_subregion(get_system_io(), io_base,
-> -                                        sysbus_mmio_get_region(s, 1));
-> -        }
-> -        if (mem_base != 0) {
-> -            sysbus_mmio_map(s, 0, mem_base);
-> -        }
-> +        sysbus_mmio_map(s, 0, mem_base);
->  
->          return NVRAM(s);
->      }
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 947b69d1597..56a0d38f274 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
->          create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
->      }
->  
-> -    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0, 0x2000, 1968, 8);
-> +    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968, 8);
->  
->      slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cpu_irq, smp_cpus);
->  
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index b4aabfc076f..1cc57b030a7 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -675,7 +675,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
->      pci_ide_create_devs(pci_dev);
->  
->      /* Map NVRAM into I/O (ebus) space */
-> -    nvram = m48t59_init(NULL, 0, 0, NVRAM_SIZE, 1968, 59);
-> +    nvram = m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
->      s = SYS_BUS_DEVICE(nvram);
->      memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
->                                  sysbus_mmio_get_region(s, 0));
+Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+---
+ target/cris/helper.c    |  6 +++---
+ target/cris/op_helper.c |  2 +-
+ target/cris/translate.c | 14 +++++++-------
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
-Looks good to me. In fact, if you're working in this area there are a couple of other
-quick wins here too:
+diff --git a/target/cris/helper.c b/target/cris/helper.c
+index b5159b8..50419e7 100644
+--- a/target/cris/helper.c
++++ b/target/cris/helper.c
+@@ -141,7 +141,7 @@ void crisv10_cpu_do_interrupt(CPUState *cs)
+     assert(!(env->pregs[PR_CCS] & PFIX_FLAG));
+     switch (cs->exception_index) {
+     case EXCP_BREAK:
+-        /* These exceptions are genereated by the core itself.
++        /* These exceptions are generated by the core itself.
+            ERP should point to the insn following the brk.  */
+         ex_vec = env->trap_vector;
+         env->pregs[PRV10_BRP] = env->pc;
+@@ -197,7 +197,7 @@ void cris_cpu_do_interrupt(CPUState *cs)
+ 
+     switch (cs->exception_index) {
+     case EXCP_BREAK:
+-        /* These exceptions are genereated by the core itself.
++        /* These exceptions are generated by the core itself.
+            ERP should point to the insn following the brk.  */
+         ex_vec = env->trap_vector;
+         env->pregs[PR_ERP] = env->pc;
+@@ -256,7 +256,7 @@ void cris_cpu_do_interrupt(CPUState *cs)
+        undefined.  */
+     env->pc = cpu_ldl_code(env, env->pregs[PR_EBP] + ex_vec * 4);
+ 
+-    /* Clear the excption_index to avoid spurios hw_aborts for recursive
++    /* Clear the excption_index to avoid spurious hw_aborts for recursive
+        bus faults.  */
+     cs->exception_index = -1;
+ 
+diff --git a/target/cris/op_helper.c b/target/cris/op_helper.c
+index 6b1e7ae..3c4aacc 100644
+--- a/target/cris/op_helper.c
++++ b/target/cris/op_helper.c
+@@ -231,7 +231,7 @@ static inline uint32_t evaluate_flags_writeback(CPUCRISState *env,
+ {
+     unsigned int x, z, mask;
+ 
+-    /* Extended arithmetics, leave the z flag alone.  */
++    /* Extended arithmetic, leave the z flag alone.  */
+     x = env->cc_x;
+     mask = env->cc_mask | X_FLAG;
+     if (x) {
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index c312e6f..16b0ef8 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -348,7 +348,7 @@ static void t_gen_cris_mstep(TCGv d, TCGv a, TCGv b, TCGv ccs)
+     tcg_temp_free(t);
+ }
+ 
+-/* Extended arithmetics on CRIS.  */
++/* Extended arithmetic on CRIS.  */
+ static inline void t_gen_add_flag(TCGv d, int flag)
+ {
+     TCGv c;
+@@ -725,7 +725,7 @@ static void cris_alu_op_exec(DisasContext *dc, int op,
+     switch (op) {
+     case CC_OP_ADD:
+         tcg_gen_add_tl(dst, a, b);
+-        /* Extended arithmetics.  */
++        /* Extended arithmetic.  */
+         t_gen_addx_carry(dc, dst);
+         break;
+     case CC_OP_ADDC:
+@@ -738,7 +738,7 @@ static void cris_alu_op_exec(DisasContext *dc, int op,
+         break;
+     case CC_OP_SUB:
+         tcg_gen_sub_tl(dst, a, b);
+-        /* Extended arithmetics.  */
++        /* Extended arithmetic.  */
+         t_gen_subx_carry(dc, dst);
+         break;
+     case CC_OP_MOVE:
+@@ -764,7 +764,7 @@ static void cris_alu_op_exec(DisasContext *dc, int op,
+         break;
+     case CC_OP_NEG:
+         tcg_gen_neg_tl(dst, b);
+-        /* Extended arithmetics.  */
++        /* Extended arithmetic.  */
+         t_gen_subx_carry(dc, dst);
+         break;
+     case CC_OP_LZ:
+@@ -787,7 +787,7 @@ static void cris_alu_op_exec(DisasContext *dc, int op,
+         break;
+     case CC_OP_CMP:
+         tcg_gen_sub_tl(dst, a, b);
+-        /* Extended arithmetics.  */
++        /* Extended arithmetic.  */
+         t_gen_subx_carry(dc, dst);
+         break;
+     default:
+@@ -3053,12 +3053,12 @@ static unsigned int crisv32_decoder(CPUCRISState *env, DisasContext *dc)
+  * On QEMU care needs to be taken when a branch+delayslot sequence is broken
+  * and the branch and delayslot don't share pages.
+  *
+- * The TB contaning the branch insn will set up env->btarget and evaluate 
++ * The TB containing the branch insn will set up env->btarget and evaluate 
+  * env->btaken. When the translation loop exits we will note that the branch 
+  * sequence is broken and let env->dslot be the size of the branch insn (those
+  * vary in length).
+  *
+- * The TB contaning the delayslot will have the PC of its real insn (i.e no lsb
++ * The TB containing the delayslot will have the PC of its real insn (i.e no lsb
+  * set). It will also expect to have env->dslot setup with the size of the 
+  * delay slot so that env->pc - env->dslot point to the branch insn. This TB 
+  * will execute the dslot and take the branch, either to btarget or just one 
+-- 
+2.26.2.windows.1
 
-- Remove m48t59_init() and replace with QOM/qdev properties
-
-- Remove m48t59_init_isa() as this seems to be unused, along with the associated
-complexity of handling the m48txx_isa_info[] array
-
-
-Anyhow:
-
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.
 
