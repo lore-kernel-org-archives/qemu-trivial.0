@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kNdSb-0008Dx-71
+	id 1kNdSb-0008EY-DY
 	for mharc-qemu-trivial@gnu.org; Wed, 30 Sep 2020 10:52:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53376)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZm3-000857-Je; Wed, 30 Sep 2020 06:55:51 -0400
-Received: from userp2120.oracle.com ([156.151.31.85]:53266)
+ id 1kNZmv-0000XN-To; Wed, 30 Sep 2020 06:56:45 -0400
+Received: from userp2120.oracle.com ([156.151.31.85]:53808)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kNZlx-00013D-SO; Wed, 30 Sep 2020 06:55:51 -0400
+ id 1kNZmu-000161-1F; Wed, 30 Sep 2020 06:56:45 -0400
 Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAt9SN042851;
- Wed, 30 Sep 2020 10:55:39 GMT
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAt5Lp042822;
+ Wed, 30 Sep 2020 10:56:32 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=to : cc : subject :
  in-reply-to : references : sender : from : date : message-id :
  mime-version : content-type; s=corp-2020-01-29;
- bh=LK4mrkfkFt0h0TDkpajytllCo+54t/wECyX2TcqqHV4=;
- b=AyN6DCaJZO42Vg7ozpHM4kmdTkEnR+kXgdVGk/PmB/U++8ge3KnKy2zsT4z/v427PF08
- bHs48sgrPeBA6iO4FISa0teZ2QI1N2j+OxSkUsOgpP0ldZcivSiekYXTXQsZtB4Eykos
- jSsjjbXfMRGiOPm3EyFHryvRSLWH0k62koq5o7pyDgf7pLV7SB7SF/iBmY9bOlh4AbQI
- 9Lpz3OyNt8wSu3EfVUb+STEqswdVYKZ9nKfePaiGoCBpZiILv19JcCMfJIM0WHZFhIHi
- luHx/3NeaGHpz4Mn6nZbpfEbacYSA3yKvYPsDr5UYO0pJdZg3/Icma6qKpgdZbVH2XOI GA== 
+ bh=8yX1l7AGMQRULODb1nu11K6vxiMxQeinMz0ccnsz9HI=;
+ b=bttjDE/WYbljEfUpJM7Bd6wEwh3PM6j6XM3685d/bq7huGFjy+1HcugXhWQBWy0+QS3A
+ XGHVR4QZfVc/KzEBqyod4wtkg3TfG6P988SgO5GqyDPRphaRl0OfbI+2NWVQkLNQFr/U
+ BbsxX0WFuUQAfrVVblnjElrJddH2rTvwLIQoTsKrJPQWpCiRn8cXugOrnvmS5UmFpI8c
+ Pu2eyAMmbtCTuh5YFA6TG/wJYA8Wrp+KtdlPU9sN7xownzCY1BPkk3DcALMOb8PnHFh9
+ MdiDJZiFGp1tnWK0uPW/VaffxI9IjDONePU9xVDfv2zs72pLIuCPnipkjA35jh9L0i9x 8Q== 
 Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 33sx9n7reh-1
+ by userp2120.oracle.com with ESMTP id 33sx9n7rge-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 30 Sep 2020 10:55:39 +0000
+ Wed, 30 Sep 2020 10:56:31 +0000
 Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAssu6014007;
- Wed, 30 Sep 2020 10:55:38 GMT
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08UAss3X014009;
+ Wed, 30 Sep 2020 10:56:31 GMT
 Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 33uv2f6h4p-1
+ by aserp3030.oracle.com with ESMTP id 33uv2f6j19-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 30 Sep 2020 10:55:38 +0000
-Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08UAtc5u027002;
- Wed, 30 Sep 2020 10:55:38 GMT
+ Wed, 30 Sep 2020 10:56:31 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08UAuUlt027373;
+ Wed, 30 Sep 2020 10:56:30 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 30 Sep 2020 03:55:37 -0700
+ with ESMTP ; Wed, 30 Sep 2020 03:56:30 -0700
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 126917a2;
- Wed, 30 Sep 2020 10:55:35 +0000 (UTC)
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 710b6bd5;
+ Wed, 30 Sep 2020 10:56:27 +0000 (UTC)
 To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
 Cc: zhaolichang <zhaolichang@huawei.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 11/14] avr/: fix some comment spelling errors
-In-Reply-To: <20200930095321.2006-12-zhaolichang@huawei.com>
+Subject: Re: [PATCH RFC 13/14] alpha/: fix some comment spelling errors
+In-Reply-To: <20200930095321.2006-14-zhaolichang@huawei.com>
 References: <20200930095321.2006-1-zhaolichang@huawei.com>
- <20200930095321.2006-12-zhaolichang@huawei.com>
+ <20200930095321.2006-14-zhaolichang@huawei.com>
 X-HGTTG: heart-of-gold
 Sender: david.edmondson@oracle.com
 From: David Edmondson <david.edmondson@oracle.com>
-Date: Wed, 30 Sep 2020 11:55:35 +0100
-Message-ID: <m2ft6zpm8o.fsf@oracle.com>
+Date: Wed, 30 Sep 2020 11:56:27 +0100
+Message-ID: <m2a6x7pm78.fsf@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9759
@@ -94,11 +94,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2020 10:55:51 -0000
+X-List-Received-Date: Wed, 30 Sep 2020 10:56:46 -0000
 
-On Wednesday, 2020-09-30 at 17:53:18 +08, zhaolichang wrote:
+On Wednesday, 2020-09-30 at 17:53:20 +08, zhaolichang wrote:
 
-> I found that there are many spelling errors in the comments of qemu/target/avr.
+> I found that there are many spelling errors in the comments of qemu/target/alpha.
 > I used spellcheck to check the spelling errors and found some errors in the folder.
 >
 > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
@@ -106,44 +106,49 @@ On Wednesday, 2020-09-30 at 17:53:18 +08, zhaolichang wrote:
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 
 > ---
->  target/avr/helper.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  target/alpha/cpu.h       | 4 ++--
+>  target/alpha/translate.c | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/avr/helper.c b/target/avr/helper.c
-> index d96d143..9f325bc 100644
-> --- a/target/avr/helper.c
-> +++ b/target/avr/helper.c
-> @@ -97,7 +97,7 @@ int avr_cpu_memory_rw_debug(CPUState *cs, vaddr addr, uint8_t *buf,
+> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+> index be29bdd..8a6d477 100644
+> --- a/target/alpha/cpu.h
+> +++ b/target/alpha/cpu.h
+> @@ -190,7 +190,7 @@ enum {
 >  
->  hwaddr avr_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
->  {
-> -    return addr; /* I assume 1:1 address correspondance */
-> +    return addr; /* I assume 1:1 address correspondence */
->  }
+>     That said, we're only emulating Unix PALcode, and not attempting VMS,
+>     so we don't need to implement Executive and Supervisor.  QEMU's own
+> -   PALcode cheats and usees the KSEG mapping for its code+data rather than
+> +   PALcode cheats and uses the KSEG mapping for its code+data rather than
+>     physical addresses.  */
 >  
->  bool avr_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-> @@ -298,7 +298,7 @@ void helper_outb(CPUAVRState *env, uint32_t port, uint32_t data)
->  }
+>  #define MMU_KERNEL_IDX   0
+> @@ -370,7 +370,7 @@ enum {
+>     The Unix PALcode only uses bit 4.  */
+>  #define PS_USER_MODE  8u
 >  
->  /*
-> - *  this function implements LD instruction when there is a posibility to read
-> + *  this function implements LD instruction when there is a possibility to read
->   *  from a CPU register
->   */
->  target_ulong helper_fullrd(CPUAVRState *env, uint32_t addr)
-> @@ -322,7 +322,7 @@ target_ulong helper_fullrd(CPUAVRState *env, uint32_t addr)
->  }
+> -/* CPUAlphaState->flags constants.  These are layed out so that we
+> +/* CPUAlphaState->flags constants.  These are laid out so that we
+>     can set or reset the pieces individually by assigning to the byte,
+>     or manipulated as a whole.  */
 >  
->  /*
-> - *  this function implements ST instruction when there is a posibility to write
-> + *  this function implements ST instruction when there is a possibility to write
->   *  into a CPU register
->   */
->  void helper_fullwr(CPUAVRState *env, uint32_t data, uint32_t addr)
+> diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+> index 8870284..6aef9ec 100644
+> --- a/target/alpha/translate.c
+> +++ b/target/alpha/translate.c
+> @@ -2939,7 +2939,7 @@ static void alpha_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cpu)
+>         the first fp insn of the TB.  Alternately we could define a proper
+>         default for every TB (e.g. QUAL_RM_N or QUAL_RM_D) and make sure
+>         to reset the FP_STATUS to that default at the end of any TB that
+> -       changes the default.  We could even (gasp) dynamiclly figure out
+> +       changes the default.  We could even (gasp) dynamically figure out
+>         what default would be most efficient given the running program.  */
+>      ctx->tb_rm = -1;
+>      /* Similarly for flush-to-zero.  */
 > -- 
 > 2.26.2.windows.1
 
 dme.
 -- 
-I'm in California dreaming about who we used to be.
+They like the smell of it in Hollywood.
 
