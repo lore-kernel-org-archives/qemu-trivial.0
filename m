@@ -1,77 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kO1FJ-0000BD-4i
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 12:15:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39194)
+	id 1kO1Qc-0005oj-JB
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 12:27:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kO1F2-0008SJ-IC
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 12:15:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58302)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kO1Ez-0001Ku-Lu
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 12:15:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601568931;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RsLGJhXantaM/GrBJPH0dn3HgcePgCMBV2SxHRFx5RU=;
- b=iA6Jb3orHuIO7tfKXzOZRQ5gH9OZHUQLqX3CjV5Fvmgn08N/W5irD2vMKkxDsN0C5bJh5w
- BqlKQQX35T3cCpIp218aQEJ7jXZc/MyXRE9b4fLmG6pX5JG1beZ39caiy1YIx2jyxxI1WF
- NfCDSggfG/ZtUGDeURBiI4SBlzWDrp0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-515-NWq1SUhOOdymTGfu92pVWw-1; Thu, 01 Oct 2020 12:15:30 -0400
-X-MC-Unique: NWq1SUhOOdymTGfu92pVWw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6661E10BBED1;
- Thu,  1 Oct 2020 16:15:28 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.5])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 26C5F5D9D3;
- Thu,  1 Oct 2020 16:15:24 +0000 (UTC)
-Date: Thu, 1 Oct 2020 12:15:23 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <rth@twiddle.net>, Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>
-Subject: Re: [PATCH v4 2/3] target/i386/cpu: Restrict some of feature-words
- uses to system-mode
-Message-ID: <20201001161523.GG3717385@habkost.net>
-References: <20201001144152.1555659-1-philmd@redhat.com>
- <20201001144152.1555659-3-philmd@redhat.com>
- <933089b7-a088-d142-bf0c-55cae3e9bd70@redhat.com>
- <53758e35-f596-8e17-12cf-58b1a81f98e3@redhat.com>
- <20201001153725.GD3717385@habkost.net>
- <0766785b-29a5-b145-2685-781fbee86add@redhat.com>
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kO1QX-0005j8-0G; Thu, 01 Oct 2020 12:27:29 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:33404)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kO1QV-0003DY-1h; Thu, 01 Oct 2020 12:27:28 -0400
+Received: by mail-pg1-x530.google.com with SMTP id o25so4447028pgm.0;
+ Thu, 01 Oct 2020 09:27:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OxTuJZi4yOFQzwAVxPQMOtb1M7Vd0gQ3V5Fr2XqNTNg=;
+ b=hKE1a0dsPW1Nppv3z+t3JlysETzzJJQpK3dj6hiWfV8VEILCubk4bFpGOUgHyhIYqP
+ V0oAQE8wkx4Gw4DiXFNotPqAM1I/Sr9KjCd4ZCxUqIUoYZpz/2Y4QSMskw0j/MpuiLsS
+ naREpQU+A2xQK2YWTDhkKRPrmluT/llteUbPfpbyIPl/jpTzSSOrd7w3zyICiq6aJIXs
+ 5kZtyzfS7Eu9fxhhOYROuAOxj9I9Ywi+a9XP5ekcKdBSYpurlolL50VA93dN7lMLyzX+
+ ImHA8HSLSAVeTJzcAORXYn1jubPLNF8+YwH6FfcN/aY7CG5SPjoHTmd1pCCwz75q1Gzo
+ Kzeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OxTuJZi4yOFQzwAVxPQMOtb1M7Vd0gQ3V5Fr2XqNTNg=;
+ b=jzQXcTh0sFxGcDkteZpBETZ9zTIHPZWwWNV9tk4ObgxtaL9dRRd4r4jw9Zf/Bo17gD
+ wHoCEPHed4JtOVpsT5eBSrfkn6TMrPwcr/Vuc79EvbiJvgWRMrHSpmPEnoFQ09Zl7W1Q
+ ilrnkCMc6p3t45I9UHkIsX6ErqAG2UpXGEOuthT1siHmePlZqxJ0ljD/pckQjccKg1fC
+ hAHaL2h0VtOfoNFqJNKlgTrfTxpvSRb0ym5KcOJciiqasWaodc5y+u5oZwJPuRfkugYL
+ iz511cfwaMitq28UFMJcaG5XzyMeMPn61tjo3fag8j4n+2G/3BKWqsiAHPbdT0YiIp9L
+ F1QA==
+X-Gm-Message-State: AOAM531R4Gqdle6muO/QPp/nV1WDX5/IHdjs9zfCQVnMHZBOTl9Si0QI
+ QoV//8rFnlPWrr6De/Z2/JhlPF4DQajsbw==
+X-Google-Smtp-Source: ABdhPJx/N8YnbC/PokkUjn9uTYLqCjTnCCIA+oMgYRE2W1Q6ubAyB++OEHzz0dPr86kysAO274Wvsg==
+X-Received: by 2002:a62:3802:0:b029:142:2501:397e with SMTP id
+ f2-20020a6238020000b02901422501397emr3400650pfa.67.1601569644634; 
+ Thu, 01 Oct 2020 09:27:24 -0700 (PDT)
+Received: from localhost.localdomain ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id e8sm3810174pgj.8.2020.10.01.09.27.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Oct 2020 09:27:23 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH 0/2] Texi cleanup
+Date: Fri,  2 Oct 2020 00:27:03 +0800
+Message-Id: <20201001162705.219-1-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.28.0.windows.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <0766785b-29a5-b145-2685-781fbee86add@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 04:25:37
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x530.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,52 +77,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Oct 2020 16:15:47 -0000
+X-List-Received-Date: Thu, 01 Oct 2020 16:27:33 -0000
 
-On Thu, Oct 01, 2020 at 05:57:14PM +0200, Philippe Mathieu-Daudé wrote:
-> On 10/1/20 5:37 PM, Eduardo Habkost wrote:
-> > On Thu, Oct 01, 2020 at 05:27:32PM +0200, Philippe Mathieu-Daudé wrote:
-> >> On 10/1/20 5:14 PM, Paolo Bonzini wrote:
-> >>> On 01/10/20 16:41, Philippe Mathieu-Daudé wrote:
-> >>>> The feature-words properties are not used in user-mode emulation,
-> >>>> restrict it to system-mode.
-> >>>>
-> >>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> >>>
-> >>> This seems a bit pointless honestly.  It's going to be a few KBs of code
-> >>> at most.  I would end the work with the patches that have already been
-> >>> queued.
-> >>
-> >> I'll let Eduardo and you discuss that, as he suggested the #ifdef
-> >> instead of the stub. The two options are on the list, whichever
-> >> you guys prefer :)
-> > 
-> > Having neither the stub or the #ifdef is even better.  :)
-> > 
-> > I assumed the stub was necessary as a means for an end, but now I
-> > don't understand why the stub was necessary in the first place.
-> 
-> x86_cpu_get_feature_words() calls QAPI-generated
-> visit_type_X86CPUFeatureWordInfoList().
-> 
-> Since "Only qemu-system-FOO and qemu-storage-daemon provide QMP
-> monitors", this code is unreachable on user-mode.
-
-This is true, but you are shaving a tiny fraction of
-target/i386/cpu.c code unreachable in user-mode.  I agree with
-Paolo that it's pointless.
-
-> 
-> I tried to get a "no ifdef/no stub" codebase by not removing the
-> QAPI uses from user-mode code, and build it without QAPI-generated
-> files. I could only start the work and realized it is a huge effort.
-> In particular since nobody sees the point of doing this cleanup...
-
-I don't see the point of removing QAPI-generated files from
-user-mode.  Long term, I'd expect to see more QAPI usage in QEMU,
-which will probably include code used by user-mode.
-
--- 
-Eduardo
-
+Texi cleanup=0D
+=0D
+Yonggang Luo (2):=0D
+  doc: more texi cleanup=0D
+  doc: remove hxtool-conv.pl=0D
+=0D
+ qemu-img-cmds.hx       |   2 +-=0D
+ scripts/hxtool-conv.pl | 137 -----------------------------------------=0D
+ target/i386/cpu.c      |   2 +-=0D
+ 3 files changed, 2 insertions(+), 139 deletions(-)=0D
+ delete mode 100755 scripts/hxtool-conv.pl=0D
+=0D
+-- =0D
+2.28.0.windows.1=0D
+=0D
 
