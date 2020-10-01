@@ -1,72 +1,115 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kO1Qf-0005xa-SZ
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 12:27:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42862)
+	id 1kO1xQ-0003Vj-9n
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 13:01:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kO1Qd-0005s1-On; Thu, 01 Oct 2020 12:27:35 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436]:46314)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kO1Qb-0003GF-Qf; Thu, 01 Oct 2020 12:27:35 -0400
-Received: by mail-pf1-x436.google.com with SMTP id b124so4985527pfg.13;
- Thu, 01 Oct 2020 09:27:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=FJ7Ef1/m9lpzTEr425fS28KWzMjxylwCQmwLFMMCyOg=;
- b=BTEX8tgWcGQuIWjA9Oid5gYrnEjazYqO2GpNYckvSkQglFkKPoJTkl1nBKw28xL+CL
- RsplShqHsOSl0y3dr9mBrWkom4KfqUQZJZCbaKJ7QHjZXes76QcY/D5VtIAAJHppIyEa
- 6qloXs9tunrJNbELm4XSfRGvLIbG7wsp1JHMSyitPSxkPRA5WeJ0qVK4hec+I3dkrzt+
- f/CGVpyUb2WtGQ69A0G6LabymE5r2gI1QRMy/loB7V7gTvHNVyCB4B+dY9O4lQ+Fzob+
- DghjpW5ZTn43IeDnNw5MkMuo8JUlZkKSSKWJphLr8arsA8Fcs5Dax6A1SSn+Yve4bQin
- kNEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=FJ7Ef1/m9lpzTEr425fS28KWzMjxylwCQmwLFMMCyOg=;
- b=L0QnrVWzdUe5e2CTdqFDLkT4fdqfzDosFZcyGcLlQQ1RqTaqJsaz73gnKcebkwqc6b
- RZkTIt+sSaOqAcO8hRhu5HfA/nnH5DR/TzlD7Z7A1huxx3VE412wN+xtOhAzzmzZs9PT
- Nhp40wHX3g+5PBHoZyfbJP2H5spSrVYyAdWMj1TLNovh4kqFq4HIdATa1PUM/sN0w7Ie
- t0OebS/PwEyCEI/6t18Tkub25awV5o6qn4imG3/xUE8Y6A/2unBaQdFyI3wbEWZsNgnc
- NDhClYzwbsRI0agJppeQPWQPeTO97UtYKsDgAFMW055O9ncgqP5g1p3Do4UHI5FKbD0F
- D1lQ==
-X-Gm-Message-State: AOAM532x4JpJJrksBdWKBz+Yme46R/jafO7+Yq+zCnb/ScaE7PtigtIZ
- qlLtHuTqrFEyLYaedTEHb6F0LmcEA75VUg==
-X-Google-Smtp-Source: ABdhPJxmtZd1D16RunNdWgSzONRb1c7CGzz4om7chKQlpw7y1DgoCta9TJUPgqKTfVEhwUE0wPMcLQ==
-X-Received: by 2002:a62:7b90:0:b029:152:ebe:828 with SMTP id
- w138-20020a627b900000b02901520ebe0828mr3057133pfc.38.1601569649985; 
- Thu, 01 Oct 2020 09:27:29 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id e8sm3810174pgj.8.2020.10.01.09.27.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Oct 2020 09:27:29 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH 2/2] doc: remove hxtool-conv.pl
-Date: Fri,  2 Oct 2020 00:27:05 +0800
-Message-Id: <20201001162705.219-3-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
-In-Reply-To: <20201001162705.219-1-luoyonggang@gmail.com>
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kO1xN-0003UI-7U
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 13:01:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32482)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kO1xJ-0000fs-Hf
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 13:01:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601571680;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=GqE+//sU3MsWz9R/+ZlyT4CrReeIbG0oXCTyPn6A4qA=;
+ b=PgFXKy7F454myp4G0RMjr2nAsA7V6trIkiNktUU06+0wdv27QmunFklDfZhO+V/zbHEwnq
+ 3DSd5nG3YfCVkhHNglMLe54lfgyhxbpcmMGa49jthdabdD0e0eRRwk2Bz5a+T2SnHMp1D8
+ 7qgZF/UFu7ax1M7914JYg94lHP3oetQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-592-LHTagis9NFm_oh_94ELATA-1; Thu, 01 Oct 2020 13:00:55 -0400
+X-MC-Unique: LHTagis9NFm_oh_94ELATA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6A97A7420;
+ Thu,  1 Oct 2020 17:00:54 +0000 (UTC)
+Received: from [10.3.112.131] (ovpn-112-131.phx2.redhat.com [10.3.112.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2BDD95C1CF;
+ Thu,  1 Oct 2020 17:00:54 +0000 (UTC)
+Subject: Re: [PATCH 1/2] doc: more texi cleanup
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20201001162705.219-1-luoyonggang@gmail.com>
+ <20201001162705.219-2-luoyonggang@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Autocrypt: addr=eblake@redhat.com; keydata=
+ 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
+Organization: Red Hat, Inc.
+Message-ID: <f3cb8beb-6d55-6629-ee23-2a621a94b4eb@redhat.com>
+Date: Thu, 1 Oct 2020 12:00:53 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x436.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20201001162705.219-2-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="ZCgnZDAI7B1BpiRC09XsEcQItsmJfC2Lp"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 02:15:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.26, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,160 +122,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Oct 2020 16:27:36 -0000
+X-List-Received-Date: Thu, 01 Oct 2020 17:01:26 -0000
 
-This script doesn't need anymore as all texi are already convert to rST
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--ZCgnZDAI7B1BpiRC09XsEcQItsmJfC2Lp
+Content-Type: multipart/mixed; boundary="2adTBaey492oclUffqMIHCuJCok0vTfSY";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <f3cb8beb-6d55-6629-ee23-2a621a94b4eb@redhat.com>
+Subject: Re: [PATCH 1/2] doc: more texi cleanup
+References: <20201001162705.219-1-luoyonggang@gmail.com>
+ <20201001162705.219-2-luoyonggang@gmail.com>
+In-Reply-To: <20201001162705.219-2-luoyonggang@gmail.com>
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- scripts/hxtool-conv.pl | 137 -----------------------------------------
- 1 file changed, 137 deletions(-)
- delete mode 100755 scripts/hxtool-conv.pl
+--2adTBaey492oclUffqMIHCuJCok0vTfSY
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/scripts/hxtool-conv.pl b/scripts/hxtool-conv.pl
-deleted file mode 100755
-index eede40b346..0000000000
---- a/scripts/hxtool-conv.pl
-+++ /dev/null
-@@ -1,137 +0,0 @@
--#!/usr/bin/perl -w
--#
--# Script to convert .hx file STEXI/ETEXI blocks to SRST/ERST
--#
--# Copyright (C) 2020 Linaro
--#
--# This work is licensed under the terms of the GNU GPL, version 2 or
--# (at your option) any later version. See the COPYING file in the
--# top-level directory.
--
--# This script was only ever intended as a one-off conversion operation.
--# Please excuse the places where it is a bit hacky.
--# Some manual intervention after the conversion is expected, as are
--# some warnings from makeinfo.
--# Warning: this script is not idempotent: don't try to run it on
--# a .hx file that already has SRST/ERST sections.
--
--# Expected usage:
--# scripts/hxtool-conv.pl file.hx > file.hx.new
--
--use utf8;
--
--my $reading_texi = 0;
--my $texiblock = '';
--my @tables = ();
--
--sub update_tables($) {
--    my ($texi) = @_;
--    # Update our list of open table directives: every @table
--    # line in the texi fragment is added to the list, and every
--    # @end table line means we remove an entry from the list.
--    # If this fragment had a completely self contained table with
--    # both the @table and @end table lines, this will be a no-op.
--    foreach (split(/\n/, $texi)) {
--        push @tables, $_ if /^\@table/;
--        pop @tables if /^\@end table/;
--    }
--}
--
--sub only_table_directives($) {
--    # Return true if every line in the fragment is a start or end table directive
--    my ($texi) = @_;
--    foreach (split(/\n/, $texi)) {
--        return 0 unless /^\@table/ or /^\@end table/;
--    }
--    return 1;
--}
--
--sub output_rstblock($) {
--    # Write the output to /tmp/frag.texi, wrapped in whatever current @table
--    # lines we need.
--    my ($texi) = @_;
--
--    # As a special case, if this fragment is only table directives and
--    # nothing else, update our set of open table directives but otherwise
--    # ignore it. This avoids emitting an empty SRST/ERST block.
--    if (only_table_directives($texi)) {
--        update_tables($texi);
--        return;
--    }
--
--    open(my $fragfh, '>', '/tmp/frag.texi');
--    # First output the currently active set of open table directives
--    print $fragfh join("\n", @tables);
--    # Next, update our list of open table directives.
--    # We need to do this before we emit the closing table directives
--    # so that we emit the right number if this fragment had an
--    # unbalanced set of directives.
--    update_tables($texi);
--    # Then emit the texi fragment itself.
--    print $fragfh "\n$texi\n";
--    # Finally, add the necessary closing table directives.
--    print $fragfh "\@end table\n" x scalar @tables;
--    close $fragfh;
--
--    # Now invoke makeinfo/pandoc on it and slurp the results into a string
--    open(my $fh, '-|', "makeinfo --force -o - --docbook "
--         . "-D 'qemu_system_x86 QEMU_SYSTEM_X86_MACRO' "
--         . "-D 'qemu_system     QEMU_SYSTEM_MACRO'  /tmp/frag.texi "
--         . " | pandoc  -f docbook -t rst")
--        or die "can't start makeinfo/pandoc: $!";
--
--    binmode $fh, ':encoding(utf8)';
--
--    print "SRST\n";
--
--    # Slurp the whole thing into a string so we can do multiline
--    # string matches on it.
--    my $rst = do {
--        local $/ = undef;
--        <$fh>;
--    };
--    $rst =~ s/^-  − /-  /gm;
--    $rst =~ s/“/"/gm;
--    $rst =~ s/”/"/gm;
--    $rst =~ s/‘/'/gm;
--    $rst =~ s/’/'/gm;
--    $rst =~ s/QEMU_SYSTEM_MACRO/|qemu_system|/g;
--    $rst =~ s/QEMU_SYSTEM_X86_MACRO/|qemu_system_x86|/g;
--    $rst =~ s/(?=::\n\n +\|qemu)/.. parsed-literal/g;
--    $rst =~ s/:\n\n::$/::/gm;
--
--    # Fix up the invalid reference format makeinfo/pandoc emit:
--    # `Some string here <#anchorname>`__
--    # should be:
--    # :ref:`anchorname`
--    $rst =~ s/\`[^<`]+\<\#([^>]+)\>\`__/:ref:`$1`/gm;
--    print $rst;
--
--    close $fh or die "error on close: $!";
--    print "ERST\n";
--}
--
--# Read the whole .hx input file.
--while (<>) {
--    # Always print the current line
--    print;
--    if (/STEXI/) {
--        $reading_texi = 1;
--        $texiblock = '';
--        next;
--    }
--    if (/ETEXI/) {
--        $reading_texi = 0;
--        # dump RST version of block
--        output_rstblock($texiblock);
--        next;
--    }
--    if ($reading_texi) {
--        # Accumulate the texi into a string
--        # but drop findex entries as they will confuse makeinfo
--        next if /^\@findex/;
--        $texiblock .= $_;
--    }
--}
--
--die "Unexpectedly still in texi block at EOF" if $reading_texi;
--- 
-2.28.0.windows.1
+On 10/1/20 11:27 AM, Yonggang Luo wrote:
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  qemu-img-cmds.hx  | 2 +-
+>  target/i386/cpu.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
+> index b89c019b76..cab8234235 100644
+> --- a/qemu-img-cmds.hx
+> +++ b/qemu-img-cmds.hx
+> @@ -1,5 +1,5 @@
+>  HXCOMM Keep the list of subcommands sorted by name.
+> -HXCOMM Use DEFHEADING() to define headings in both help text and texi
+> +HXCOMM Use DEFHEADING() to define headings in both help text and rST
+>  HXCOMM Text between SRST and ERST are copied to rST version and
+>  HXCOMM discarded from C version
+>  HXCOMM DEF(command, callback, arg_string) is used to construct
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index f37eb7b675..f8231f56b6 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -4127,7 +4127,7 @@ static PropValue tcg_default_props[] =3D {
+>   * We resolve CPU model aliases using -v1 when using "-machine
+>   * none", but this is just for compatibility while libvirt isn't
+>   * adapted to resolve CPU model versions before creating VMs.
+> - * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi.
+> + * See "Runnability guarantee of CPU models" at * deprecated.rst.
+
+The mid-line * looks spurious.  You might as well fix that while here.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
+
+--2adTBaey492oclUffqMIHCuJCok0vTfSY--
+
+--ZCgnZDAI7B1BpiRC09XsEcQItsmJfC2Lp
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl92C0UACgkQp6FrSiUn
+Q2raIQf9HHdcnBdzsmpNTwSDLHBG0dyMMGaVI2RZocp+NR56qqCZnzxd1YDD4SWQ
+FHNI8IsNSH9cAAJwf5obsLUD/HHDQz1zkYO6oKgsKp9kn2KV19vgO/kfMQkVEaOq
+VFoOOTcct2CschJWOHBThk9I4zbFYQyyCNhpEUpy+tSZpivZ3u1kvAedaI1H44Vs
+x4BAWJ5SnN+DO6e+nP3QNHWPKexq7BQK9sOuU7XT1TKW0vvC5iT+0WtjBJdmKz8Q
+3tCECSX5xWESUb2mqT0fYLHZV+iz73ro0k0ohxVCEbEF/72BJpGv8EbQHQGQ4rw5
+JkqYNazqh1dIIjNs80nwdnti0nsEYA==
+=p5Of
+-----END PGP SIGNATURE-----
+
+--ZCgnZDAI7B1BpiRC09XsEcQItsmJfC2Lp--
 
 
