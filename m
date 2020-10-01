@@ -1,59 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kO069-0006nP-1I
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 11:02:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47526)
+	id 1kO0Hd-0005q5-Q4
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 11:14:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO060-0006kS-7S
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 11:02:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56214)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kO0Hc-0005ms-HD
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 11:14:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21137)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO05t-0005D3-S3
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 11:02:10 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kO0Ha-0007gh-II
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 11:14:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601564524;
+ s=mimecast20190719; t=1601565248;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VjY980M3j683XwjxRN64oS8USRfLJqvigyVnEBEuKZY=;
- b=cHBPzZyBvudLEhb8zMq6GKmFkLditDM/fw8uGk+Mkd2LXsLY+KW685eMc8prANrexnpd8/
- c1owX4p99FmSS6noeIoqdIGWl5UiOzhELGWAMwfA+AhkNUZM6lptjf7tXZuhNqEnWKeGh/
- Lnqeh+nCMsFKS4/3TmN76cosRq8qdJk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-553-v9Oy-dE7NA6SOSXlyHuh9Q-1; Thu, 01 Oct 2020 11:02:00 -0400
-X-MC-Unique: v9Oy-dE7NA6SOSXlyHuh9Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEA1E1882FA3;
- Thu,  1 Oct 2020 15:01:57 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-107.ams2.redhat.com [10.36.112.107])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 18F6773678;
- Thu,  1 Oct 2020 15:01:54 +0000 (UTC)
-Subject: Re: [PATCH] elfload: use g_new instead of malloc
-To: Elena Afanasova <eafanasova@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Kamil Rytarowski <kamil@netbsd.org>,
- Brad Smith <brad@comstyle.com>, Ed Maste <emaste@freebsd.org>,
- Li-Wen Hsu <lwhsu@freebsd.org>
-References: <20201001123807.42978-1-eafanasova@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3acc2481-a3ac-9ec4-9520-10727cc92ef3@redhat.com>
-Date: Thu, 1 Oct 2020 17:01:54 +0200
+ bh=ErXrq1Qxd/KCQTO9mhhx/WLKLdDbsSAU1USGV/RH6jM=;
+ b=C2Z4yrW1wYBb7YNA2CuayJbq58B3Snsi/DzcA89NQnEKK5+xAE12wTzyheePGsVb/aqYVD
+ c/NCLkCkr+re2G97ssKGX/FFWdX1+PFUXth4e8VFXpI5Pbb85PYuWJRClL8eJkEtMdHYk8
+ xyRdacGq/unbzHoH6sxA+7uU/1hJNBk=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-509-JbbAPmGpNZmTYnYjoyuGvQ-1; Thu, 01 Oct 2020 11:14:07 -0400
+X-MC-Unique: JbbAPmGpNZmTYnYjoyuGvQ-1
+Received: by mail-wr1-f70.google.com with SMTP id a2so2172529wrp.8
+ for <qemu-trivial@nongnu.org>; Thu, 01 Oct 2020 08:14:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ErXrq1Qxd/KCQTO9mhhx/WLKLdDbsSAU1USGV/RH6jM=;
+ b=toevtHj5T23hKZgMSgX86zaQ1kaIPFMsgBwxd3p+eBrL0axmKCwifT+0gkzP2HsgrT
+ IKRFSmMRN7osSUuA7IpbduktqbjoHIDa2EVCdVaTjZyeKNyDmhb8Jpmop4fB+sG2e5NV
+ 1/pUyG3x92JIMeCDbla22Hfh9qejt7rxJyl875tno+2EhytzsPjzvtDExRxyPoPW682a
+ MnZcZy01lEZU5rDXIqjJ4Vl2fKwHRFzHvnzk1eTtBZFgYLlHWlcpYLm7e10erPFCc/yt
+ PWHUEEBX9HxrgTr87XnMuu5y7vWhpGbmVxVhslRs2JWt0CDH+FsGTqNm+OiRWknafZ/b
+ OvTg==
+X-Gm-Message-State: AOAM531FdXBIdCwiZqx1aWeXwUca1VcqDAdXZW+Nxx+KuYDQvjo7YZXh
+ svIeWXQHw/8JsgmVYCdqFWioNhpOKzJzKY2knMo9pGDFNMAaV41//M/SGKjaX0KNSF64MMSCw3N
+ 7Ap69fibTFs820mH7pQ==
+X-Received: by 2002:a5d:4c88:: with SMTP id z8mr9470372wrs.218.1601565245856; 
+ Thu, 01 Oct 2020 08:14:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzleR/4PnbFPelvjE0zQQidtmG+WB/O7Zi5qDZhjtXNK6gAcv3Zv2jqDfjQakG8XC5zwJE9bw==
+X-Received: by 2002:a5d:4c88:: with SMTP id z8mr9470339wrs.218.1601565245571; 
+ Thu, 01 Oct 2020 08:14:05 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:86de:492a:fae3:16f2?
+ ([2001:b07:6468:f312:86de:492a:fae3:16f2])
+ by smtp.gmail.com with ESMTPSA id t202sm443873wmt.14.2020.10.01.08.14.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Oct 2020 08:14:04 -0700 (PDT)
+Subject: Re: [PATCH v4 2/3] target/i386/cpu: Restrict some of feature-words
+ uses to system-mode
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Richard Henderson <rth@twiddle.net>, Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
+ Eric Blake <eblake@redhat.com>
+References: <20201001144152.1555659-1-philmd@redhat.com>
+ <20201001144152.1555659-3-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <933089b7-a088-d142-bf0c-55cae3e9bd70@redhat.com>
+Date: Thu, 1 Oct 2020 17:14:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201001123807.42978-1-eafanasova@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20201001144152.1555659-3-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 04:25:37
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -77,133 +100,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Oct 2020 15:02:12 -0000
+X-List-Received-Date: Thu, 01 Oct 2020 15:14:12 -0000
 
-On 01/10/2020 14.38, Elena Afanasova wrote:
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> ---
->  bsd-user/elfload.c | 92 +++++++++++++++-------------------------------
->  1 file changed, 30 insertions(+), 62 deletions(-)
+On 01/10/20 16:41, Philippe Mathieu-Daudé wrote:
+> The feature-words properties are not used in user-mode emulation,
+> restrict it to system-mode.
 > 
-> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
-> index 32378af7b2..e10ca54eb7 100644
-> --- a/bsd-user/elfload.c
-> +++ b/bsd-user/elfload.c
-> @@ -867,18 +867,14 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->          if (sizeof(struct elf_phdr) * interp_elf_ex->e_phnum > TARGET_PAGE_SIZE)
->              return ~(abi_ulong)0UL;
->  
-> -        elf_phdata =  (struct elf_phdr *)
-> -                malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
-> -
-> -        if (!elf_phdata)
-> -          return ~((abi_ulong)0UL);
-> +        elf_phdata = g_new(struct elf_phdr, interp_elf_ex->e_phnum);
->  
->          /*
->           * If the size of this structure has changed, then punt, since
->           * we will be doing the wrong thing.
->           */
->          if (interp_elf_ex->e_phentsize != sizeof(struct elf_phdr)) {
-> -            free(elf_phdata);
-> +            g_free(elf_phdata);
->              return ~((abi_ulong)0UL);
->          }
->  
-> @@ -890,9 +886,8 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->          }
->          if (retval < 0) {
->                  perror("load_elf_interp");
-> +                g_free(elf_phdata);
->                  exit(-1);
-> -                free (elf_phdata);
-> -                return retval;
->          }
->  #ifdef BSWAP_NEEDED
->          eppnt = elf_phdata;
-> @@ -940,7 +935,7 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->              if (error == -1) {
->                /* Real error */
->                close(interpreter_fd);
-> -              free(elf_phdata);
-> +              g_free(elf_phdata);
->                return ~((abi_ulong)0UL);
->              }
->  
-> @@ -983,7 +978,7 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->                          PROT_READ|PROT_WRITE|PROT_EXEC,
->                          MAP_FIXED|MAP_PRIVATE|MAP_ANON, -1, 0);
->          }
-> -        free(elf_phdata);
-> +        g_free(elf_phdata);
->  
->          *interp_load_addr = load_addr;
->          return ((abi_ulong) interp_elf_ex->e_entry) + load_addr;
-> @@ -1064,24 +1059,15 @@ static void load_symbols(struct elfhdr *hdr, int fd)
->  
->   found:
->      /* Now know where the strtab and symtab are.  Snarf them. */
-> -    s = malloc(sizeof(*s));
-> -    syms = malloc(symtab.sh_size);
-> -    if (!syms) {
-> -        free(s);
-> -        return;
-> -    }
-> -    s->disas_strtab = strings = malloc(strtab.sh_size);
-> -    if (!s->disas_strtab) {
-> -        free(s);
-> -        free(syms);
-> -        return;
-> -    }
-> +    s = g_new(struct syminfo, 1);
-> +    syms = g_new(symtab.sh_size, 1);
-> +    s->disas_strtab = strings = g_new(strtab.sh_size, 1);
->  
->      lseek(fd, symtab.sh_offset, SEEK_SET);
->      if (read(fd, syms, symtab.sh_size) != symtab.sh_size) {
-> -        free(s);
-> -        free(syms);
-> -        free(strings);
-> +        g_free(s);
-> +        g_free(syms);
-> +        g_free(strings);
->          return;
->      }
->  
-> @@ -1113,22 +1099,16 @@ static void load_symbols(struct elfhdr *hdr, int fd)
->          that we threw away.  Whether or not this has any effect on the
->          memory allocation depends on the malloc implementation and how
->          many symbols we managed to discard. */
-> -    new_syms = realloc(syms, nsyms * sizeof(*syms));
-> -    if (new_syms == NULL) {
-> -        free(s);
-> -        free(syms);
-> -        free(strings);
-> -        return;
-> -    }
-> +    new_syms = g_realloc(syms, nsyms * sizeof(*syms));
->      syms = new_syms;
->  
->      qsort(syms, nsyms, sizeof(*syms), symcmp);
->  
->      lseek(fd, strtab.sh_offset, SEEK_SET);
->      if (read(fd, strings, strtab.sh_size) != strtab.sh_size) {
-> -        free(s);
-> -        free(syms);
-> -        free(strings);
-> +        g_free(s);
-> +        g_free(syms);
-> +        g_free(strings);
->          return;
->      }
-[...]
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
- Hi!
+This seems a bit pointless honestly.  It's going to be a few KBs of code
+at most.  I would end the work with the patches that have already been
+queued.
 
-That clean-up sounds like a very good idea ... but I think this would be
-a perfect place to use g_autofree in the declaration of the variables,
-then you can get rid of the free() calls completely!
+Paolo
 
- Thomas
+> ---
+>  target/i386/cpu.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 2eec53ca22..9f72342506 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -4607,6 +4607,7 @@ static void x86_cpuid_set_tsc_freq(Object *obj, Visitor *v, const char *name,
+>      cpu->env.tsc_khz = cpu->env.user_tsc_khz = value / 1000;
+>  }
+>  
+> +#if !defined(CONFIG_USER_ONLY)
+>  /* Generic getter for "feature-words" and "filtered-features" properties */
+>  static void x86_cpu_get_feature_words(Object *obj, Visitor *v,
+>                                        const char *name, void *opaque,
+> @@ -4666,6 +4667,7 @@ static const char *x86_cpu_feature_name(FeatureWord w, int bitnr)
+>      assert(bitnr < 32 || !(name && feature_word_info[w].type == CPUID_FEATURE_WORD));
+>      return name;
+>  }
+> +#endif /* CONFIG_USER_ONLY */
+>  
+>  /*
+>   * Convert all '_' in a feature string option name to '-', to make feature
+> @@ -4783,6 +4785,7 @@ static void x86_cpu_parse_featurestr(const char *typename, char *features,
+>  static void x86_cpu_expand_features(X86CPU *cpu, Error **errp);
+>  static void x86_cpu_filter_features(X86CPU *cpu, bool verbose);
+>  
+> +#if !defined(CONFIG_USER_ONLY)
+>  /* Build a list with the name of all features on a feature word array */
+>  static void x86_cpu_list_feature_names(FeatureWordArray features,
+>                                         strList **feat_names)
+> @@ -4853,6 +4856,7 @@ static void x86_cpu_class_check_missing_features(X86CPUClass *xcc,
+>  
+>      object_unref(OBJECT(xc));
+>  }
+> +#endif /* CONFIG_USER_ONLY */
+>  
+>  /* Print all cpuid feature names in featureset
+>   */
+> @@ -4987,7 +4991,9 @@ static void x86_cpu_definition_entry(gpointer data, gpointer user_data)
+>  
+>      info = g_malloc0(sizeof(*info));
+>      info->name = x86_cpu_class_get_model_name(cc);
+> +#if !defined(CONFIG_USER_ONLY)
+>      x86_cpu_class_check_missing_features(cc, &info->unavailable_features);
+> +#endif
+>      info->has_unavailable_features = true;
+>      info->q_typename = g_strdup(object_class_get_name(oc));
+>      info->migration_safe = cc->migration_safe;
+> @@ -6941,6 +6947,7 @@ static void x86_cpu_initfn(Object *obj)
+>      object_property_add(obj, "tsc-frequency", "int",
+>                          x86_cpuid_get_tsc_freq,
+>                          x86_cpuid_set_tsc_freq, NULL, NULL);
+> +#if !defined(CONFIG_USER_ONLY)
+>      object_property_add(obj, "feature-words", "X86CPUFeatureWordInfo",
+>                          x86_cpu_get_feature_words,
+>                          NULL, NULL, (void *)env->features);
+> @@ -6957,7 +6964,6 @@ static void x86_cpu_initfn(Object *obj)
+>                          x86_cpu_get_unavailable_features,
+>                          NULL, NULL, NULL);
+>  
+> -#if !defined(CONFIG_USER_ONLY)
+>      object_property_add(obj, "crash-information", "GuestPanicInformation",
+>                          x86_cpu_get_crash_info_qom, NULL, NULL, NULL);
+>  #endif
+> 
 
 
