@@ -1,62 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kO2pC-0008E8-SR
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 13:57:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39322)
+	id 1kO3Cw-0005Ca-PO
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 14:21:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kO2p3-0008BV-Gx
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 13:56:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20100)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cu-00057s-Tq
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 14:21:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49042)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kO2p0-0008GU-KM
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 13:56:52 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cs-0002pn-P9
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 14:21:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601575008;
+ s=mimecast20190719; t=1601576489;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FIvUOwW3qme1A3loFSMi1+8exHY8qAY72cgyMrRkcO8=;
- b=R23NOxMg9zkTNGzmYa++Gi9WM0aL97f0q3RRRbUJCLc0kWPYXMxo2zreQoZg5yZ3nNyiOJ
- hnhmweQdEtcRGXPb1aqGEUpiG+2Y7GyJ5dYisJtmWeQRIXoPXRkBYMMtONBqpdHZeL5GXN
- gJIgihrt0cuYT9dsE/j7RFO7lECPRbg=
+ to:to:cc:cc:content-type:content-type;
+ bh=XovN2yUCiekbmBAKdpWLRIt4i1lJ0Bmc1UNkl7nCvwU=;
+ b=YXAJD+RpHjMU/w0Xw8TvcrxJtQRuuCiu/vigiRnktv0RoTA7zdmgQj3WPVVuUg1qRJ3Bg2
+ F5rFr4kjuqnc+aTEn6lFAyARh61VZ36noqzahduUqXuElr2c1vzdYIzZCRS0cAjC/WMaV/
+ 4wIbGnKiziu2Bh8GtWucHANHD/1x/98=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-576-Aw7a2JZWPxyuG8SsH8cRWQ-1; Thu, 01 Oct 2020 13:56:45 -0400
-X-MC-Unique: Aw7a2JZWPxyuG8SsH8cRWQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-575-pzuGm37mNd2DR_HrlrpD9A-1; Thu, 01 Oct 2020 14:21:27 -0400
+X-MC-Unique: pzuGm37mNd2DR_HrlrpD9A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8312E801AB1;
- Thu,  1 Oct 2020 17:56:44 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.5])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4041655770;
- Thu,  1 Oct 2020 17:56:44 +0000 (UTC)
-Date: Thu, 1 Oct 2020 13:56:42 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH] hw/core/cpu: Add missing 'exec/cpu-common.h' include
-Message-ID: <20201001175642.GH3717385@habkost.net>
-References: <20200908123433.105706-1-philmd@redhat.com>
- <ff99f676-2e6d-2f23-5a09-96cc77fb8469@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <ff99f676-2e6d-2f23-5a09-96cc77fb8469@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8F54710866A0;
+ Thu,  1 Oct 2020 18:21:26 +0000 (UTC)
+Received: from thuth.com (ovpn-112-107.ams2.redhat.com [10.36.112.107])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3B9175C1CF;
+ Thu,  1 Oct 2020 18:21:24 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] hw/rtc/twl92230: Silence warnings about missing fallthrough
+ statements
+Date: Thu,  1 Oct 2020 20:21:21 +0200
+Message-Id: <20201001182121.187122-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 02:15:30
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 04:25:37
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -77,26 +67,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Oct 2020 17:56:55 -0000
+X-List-Received-Date: Thu, 01 Oct 2020 18:21:33 -0000
 
-On Thu, Oct 01, 2020 at 07:44:57PM +0200, Philippe Mathieu-Daudé wrote:
-> ping?
-> 
-> On 9/8/20 2:34 PM, Philippe Mathieu-Daudé wrote:
-> > cpu_common_reset() uses tcg_flush_softmmu_tlb() which is
-> > declared in "exec/cpu-common.h". Add the missing header
-> > to avoid when refactoring other headers:
-> > 
-> >   hw/core/cpu.c: In function ‘cpu_common_reset’:
-> >   hw/core/cpu.c:273:9: error: implicit declaration of function ‘tcg_flush_softmmu_tlb’ [-Werror=implicit-function-declaration]
-> >     273 |         tcg_flush_softmmu_tlb(cpu);
-> >         |         ^~~~~~~~~~~~~~~~~~~~~
-> > 
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+When compiling with -Werror=implicit-fallthrough, gcc complains about
+missing fallthrough annotations in this file. Looking at the code,
+the fallthrough is indeed wanted here, but instead of adding the
+annotations, it can be done more efficiently by simply calculating
+the offset with a subtraction instead of increasing a local variable
+one by one.
 
-Qeueued, thanks!
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
+ 1 file changed, 24 insertions(+), 26 deletions(-)
 
+diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+index f838913b37..499f421932 100644
+--- a/hw/rtc/twl92230.c
++++ b/hw/rtc/twl92230.c
+@@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
+ static uint8_t menelaus_read(void *opaque, uint8_t addr)
+ {
+     MenelausState *s = (MenelausState *) opaque;
+-    int reg = 0;
+ 
+     switch (addr) {
+     case MENELAUS_REV:
+         return 0x22;
+ 
+-    case MENELAUS_VCORE_CTRL5: reg ++;
+-    case MENELAUS_VCORE_CTRL4: reg ++;
+-    case MENELAUS_VCORE_CTRL3: reg ++;
+-    case MENELAUS_VCORE_CTRL2: reg ++;
++    case MENELAUS_VCORE_CTRL5:
++    case MENELAUS_VCORE_CTRL4:
++    case MENELAUS_VCORE_CTRL3:
++    case MENELAUS_VCORE_CTRL2:
+     case MENELAUS_VCORE_CTRL1:
+-        return s->vcore[reg];
++        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
+ 
+-    case MENELAUS_DCDC_CTRL3: reg ++;
+-    case MENELAUS_DCDC_CTRL2: reg ++;
++    case MENELAUS_DCDC_CTRL3:
++    case MENELAUS_DCDC_CTRL2:
+     case MENELAUS_DCDC_CTRL1:
+-        return s->dcdc[reg];
+-
+-    case MENELAUS_LDO_CTRL8: reg ++;
+-    case MENELAUS_LDO_CTRL7: reg ++;
+-    case MENELAUS_LDO_CTRL6: reg ++;
+-    case MENELAUS_LDO_CTRL5: reg ++;
+-    case MENELAUS_LDO_CTRL4: reg ++;
+-    case MENELAUS_LDO_CTRL3: reg ++;
+-    case MENELAUS_LDO_CTRL2: reg ++;
++        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
++
++    case MENELAUS_LDO_CTRL8:
++    case MENELAUS_LDO_CTRL7:
++    case MENELAUS_LDO_CTRL6:
++    case MENELAUS_LDO_CTRL5:
++    case MENELAUS_LDO_CTRL4:
++    case MENELAUS_LDO_CTRL3:
++    case MENELAUS_LDO_CTRL2:
+     case MENELAUS_LDO_CTRL1:
+-        return s->ldo[reg];
++        return s->ldo[addr - MENELAUS_LDO_CTRL1];
+ 
+-    case MENELAUS_SLEEP_CTRL2: reg ++;
++    case MENELAUS_SLEEP_CTRL2:
+     case MENELAUS_SLEEP_CTRL1:
+-        return s->sleep[reg];
++        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
+ 
+     case MENELAUS_DEVICE_OFF:
+         return 0;
+@@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
+     case MENELAUS_S2_PULL_DIR:
+         return s->pull[3];
+ 
+-    case MENELAUS_MCT_CTRL3: reg ++;
+-    case MENELAUS_MCT_CTRL2: reg ++;
++    case MENELAUS_MCT_CTRL3:
++    case MENELAUS_MCT_CTRL2:
+     case MENELAUS_MCT_CTRL1:
+-        return s->mmc_ctrl[reg];
++        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
+     case MENELAUS_MCT_PIN_ST:
+         /* TODO: return the real Card Detect */
+         return 0;
+@@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+ {
+     MenelausState *s = (MenelausState *) opaque;
+     int line;
+-    int reg = 0;
+     struct tm tm;
+ 
+     switch (addr) {
+@@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+         s->ldo[7] = value & 3;
+         break;
+ 
+-    case MENELAUS_SLEEP_CTRL2: reg ++;
++    case MENELAUS_SLEEP_CTRL2:
+     case MENELAUS_SLEEP_CTRL1:
+-        s->sleep[reg] = value;
++        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
+         break;
+ 
+     case MENELAUS_DEVICE_OFF:
 -- 
-Eduardo
+2.18.2
 
 
