@@ -1,60 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kO3Cw-0005Ca-PO
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 14:21:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45608)
+	id 1kO5QH-0002OU-Q2
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Oct 2020 16:43:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cu-00057s-Tq
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 14:21:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49042)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cs-0002pn-P9
- for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 14:21:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601576489;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=XovN2yUCiekbmBAKdpWLRIt4i1lJ0Bmc1UNkl7nCvwU=;
- b=YXAJD+RpHjMU/w0Xw8TvcrxJtQRuuCiu/vigiRnktv0RoTA7zdmgQj3WPVVuUg1qRJ3Bg2
- F5rFr4kjuqnc+aTEn6lFAyARh61VZ36noqzahduUqXuElr2c1vzdYIzZCRS0cAjC/WMaV/
- 4wIbGnKiziu2Bh8GtWucHANHD/1x/98=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-575-pzuGm37mNd2DR_HrlrpD9A-1; Thu, 01 Oct 2020 14:21:27 -0400
-X-MC-Unique: pzuGm37mNd2DR_HrlrpD9A-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8F54710866A0;
- Thu,  1 Oct 2020 18:21:26 +0000 (UTC)
-Received: from thuth.com (ovpn-112-107.ams2.redhat.com [10.36.112.107])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3B9175C1CF;
- Thu,  1 Oct 2020 18:21:24 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] hw/rtc/twl92230: Silence warnings about missing fallthrough
- statements
-Date: Thu,  1 Oct 2020 20:21:21 +0200
-Message-Id: <20201001182121.187122-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 04:25:37
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kO5QF-0002NF-M1
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 16:43:27 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:37545)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kO5QA-0003YZ-Sa
+ for qemu-trivial@nongnu.org; Thu, 01 Oct 2020 16:43:27 -0400
+Received: by mail-ed1-x543.google.com with SMTP id n22so7076939edt.4
+ for <qemu-trivial@nongnu.org>; Thu, 01 Oct 2020 13:43:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/ZDqjKscR2h1brTW66ZxSqMk0uKUmy0MPLBI4j0VFAo=;
+ b=FbJa7uWLVPKfL0uUo/HMQY9gevlHIYcD3fnOHEuVmJ5knFwz6ZyaKiz+0U/vVX5lvl
+ JbEE0Yt6dXTB6xjUmr3mpV87qGQhjt/R77hNwmD8YyRyNbp8bfux5kJp/PUhOSQaRuAP
+ xgRjyoUD5ZSi70AS7Ts9akMRfxAHpkFoTXB38xG69426INsBqQ+nvMtxKCMcrQZuWG4x
+ mnikUzL12P/m6LAzjuz+sR75yRI7goeP036QwFQW0/zlDSEli2Dzee7+5zfeiLq1WfUs
+ BJH6ZQ05T9VWk1HjO5hsjZwu+lO/lSztvQ7wG3TTJbldCbIyQrpRLGMCBzoljH/MSaer
+ jECg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/ZDqjKscR2h1brTW66ZxSqMk0uKUmy0MPLBI4j0VFAo=;
+ b=Il6o8QV6zbP/lcVt/UwyE687Io0S1BqXeQAmUtKFUpvSKnchq3jt0dm5+qCuc892xQ
+ Cfn30toA5uRK3Vx8KoMW4UkFdMgotbP1jbWMTXOm5/NDeZ5D3L9W+APxIrtqBW2FBpA8
+ ax1IgxEr94CcXaYVejs7CUfs5zmsyXRIRB8VDqWBisnbq/E9Xub24H/5qjFt61hQVnQu
+ 2ZoPhedsF/6u2DX0ePVn2OlL1A6hRu8OIzDXUaIOvVh1IKyZ13H8B1iUgrWQvpxAK8Wk
+ +ggLBbCEYmqfB1D1zfV+XNvzynDtm/OojXFmo9d3vnQa8Il4tXA37blOKg4WwpKbHERw
+ vrBA==
+X-Gm-Message-State: AOAM531M6fkP60QokHs/qoslUqOh6Vjngiz29yM/lUWP7OAQLLnCH9NE
+ qSv0+Uvb/IBm09cgHZFNRJ92UY1fCwNvl3oBYRMuMQ==
+X-Google-Smtp-Source: ABdhPJzMBnUFb72erwW5Op7nIjxffs7QgJxlAqhUxFEf+yGn61M4L0jxFS6n++tCAGLTu7QObvnT52ZzvIfSMaOfbck=
+X-Received: by 2002:a50:e68a:: with SMTP id z10mr10644272edm.100.1601585001469; 
+ Thu, 01 Oct 2020 13:43:21 -0700 (PDT)
+MIME-Version: 1.0
+References: <20201001182121.187122-1-thuth@redhat.com>
+In-Reply-To: <20201001182121.187122-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Oct 2020 21:43:10 +0100
+Message-ID: <CAFEAcA8nQgvgdHE7G8b9sWP4kFeRZvseyFzFvOBFAp8O_A5Xyg@mail.gmail.com>
+Subject: Re: [PATCH] hw/rtc/twl92230: Silence warnings about missing
+ fallthrough statements
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x543.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,116 +73,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Oct 2020 18:21:33 -0000
+X-List-Received-Date: Thu, 01 Oct 2020 20:43:27 -0000
 
-When compiling with -Werror=implicit-fallthrough, gcc complains about
-missing fallthrough annotations in this file. Looking at the code,
-the fallthrough is indeed wanted here, but instead of adding the
-annotations, it can be done more efficiently by simply calculating
-the offset with a subtraction instead of increasing a local variable
-one by one.
+On Thu, 1 Oct 2020 at 19:21, Thomas Huth <thuth@redhat.com> wrote:
+>
+> When compiling with -Werror=implicit-fallthrough, gcc complains about
+> missing fallthrough annotations in this file. Looking at the code,
+> the fallthrough is indeed wanted here, but instead of adding the
+> annotations, it can be done more efficiently by simply calculating
+> the offset with a subtraction instead of increasing a local variable
+> one by one.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
+>  1 file changed, 24 insertions(+), 26 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
- 1 file changed, 24 insertions(+), 26 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
-index f838913b37..499f421932 100644
---- a/hw/rtc/twl92230.c
-+++ b/hw/rtc/twl92230.c
-@@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
- static uint8_t menelaus_read(void *opaque, uint8_t addr)
- {
-     MenelausState *s = (MenelausState *) opaque;
--    int reg = 0;
- 
-     switch (addr) {
-     case MENELAUS_REV:
-         return 0x22;
- 
--    case MENELAUS_VCORE_CTRL5: reg ++;
--    case MENELAUS_VCORE_CTRL4: reg ++;
--    case MENELAUS_VCORE_CTRL3: reg ++;
--    case MENELAUS_VCORE_CTRL2: reg ++;
-+    case MENELAUS_VCORE_CTRL5:
-+    case MENELAUS_VCORE_CTRL4:
-+    case MENELAUS_VCORE_CTRL3:
-+    case MENELAUS_VCORE_CTRL2:
-     case MENELAUS_VCORE_CTRL1:
--        return s->vcore[reg];
-+        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
- 
--    case MENELAUS_DCDC_CTRL3: reg ++;
--    case MENELAUS_DCDC_CTRL2: reg ++;
-+    case MENELAUS_DCDC_CTRL3:
-+    case MENELAUS_DCDC_CTRL2:
-     case MENELAUS_DCDC_CTRL1:
--        return s->dcdc[reg];
--
--    case MENELAUS_LDO_CTRL8: reg ++;
--    case MENELAUS_LDO_CTRL7: reg ++;
--    case MENELAUS_LDO_CTRL6: reg ++;
--    case MENELAUS_LDO_CTRL5: reg ++;
--    case MENELAUS_LDO_CTRL4: reg ++;
--    case MENELAUS_LDO_CTRL3: reg ++;
--    case MENELAUS_LDO_CTRL2: reg ++;
-+        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
-+
-+    case MENELAUS_LDO_CTRL8:
-+    case MENELAUS_LDO_CTRL7:
-+    case MENELAUS_LDO_CTRL6:
-+    case MENELAUS_LDO_CTRL5:
-+    case MENELAUS_LDO_CTRL4:
-+    case MENELAUS_LDO_CTRL3:
-+    case MENELAUS_LDO_CTRL2:
-     case MENELAUS_LDO_CTRL1:
--        return s->ldo[reg];
-+        return s->ldo[addr - MENELAUS_LDO_CTRL1];
- 
--    case MENELAUS_SLEEP_CTRL2: reg ++;
-+    case MENELAUS_SLEEP_CTRL2:
-     case MENELAUS_SLEEP_CTRL1:
--        return s->sleep[reg];
-+        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
- 
-     case MENELAUS_DEVICE_OFF:
-         return 0;
-@@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
-     case MENELAUS_S2_PULL_DIR:
-         return s->pull[3];
- 
--    case MENELAUS_MCT_CTRL3: reg ++;
--    case MENELAUS_MCT_CTRL2: reg ++;
-+    case MENELAUS_MCT_CTRL3:
-+    case MENELAUS_MCT_CTRL2:
-     case MENELAUS_MCT_CTRL1:
--        return s->mmc_ctrl[reg];
-+        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
-     case MENELAUS_MCT_PIN_ST:
-         /* TODO: return the real Card Detect */
-         return 0;
-@@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
- {
-     MenelausState *s = (MenelausState *) opaque;
-     int line;
--    int reg = 0;
-     struct tm tm;
- 
-     switch (addr) {
-@@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
-         s->ldo[7] = value & 3;
-         break;
- 
--    case MENELAUS_SLEEP_CTRL2: reg ++;
-+    case MENELAUS_SLEEP_CTRL2:
-     case MENELAUS_SLEEP_CTRL1:
--        s->sleep[reg] = value;
-+        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
-         break;
- 
-     case MENELAUS_DEVICE_OFF:
--- 
-2.18.2
-
+thanks
+-- PMM
 
