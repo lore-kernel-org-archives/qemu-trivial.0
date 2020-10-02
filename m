@@ -1,74 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOG8N-0002MW-Ss
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 04:09:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36124)
+	id 1kOGHA-00069N-Mt
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 04:18:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOG8M-0002LG-9I; Fri, 02 Oct 2020 04:09:42 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46741)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kOGH9-00068g-0S; Fri, 02 Oct 2020 04:18:47 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:40765)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOG8K-0008HQ-S3; Fri, 02 Oct 2020 04:09:42 -0400
-Received: by mail-wr1-x442.google.com with SMTP id o5so714698wrn.13;
- Fri, 02 Oct 2020 01:09:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kOGH6-0001Aq-SJ; Fri, 02 Oct 2020 04:18:46 -0400
+Received: by mail-lf1-x142.google.com with SMTP id m5so823302lfp.7;
+ Fri, 02 Oct 2020 01:18:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=T2KAyG9+GcnWb+hQJRM2BaLdbK3udo5BOAO1tzVT6Qg=;
- b=PNzO/eOGDc7X3YLvqMbuE/63cB5ZTHcUJXofMZ9/m2QgSUT1VNQZDbMQxvW2hRapkW
- FOB42j/7MsC8q4AUWOyk0LXjBL3kAqshH6a1lviDCkDAaOSwrAe7rL3LwXoCUkIRbCQr
- jks3ZuKYu1+ASEAKOmJ692WNcLhWHOWxfnKvKpIgYDViSJucKyX/HU9thN/cpSS8uKep
- bOYO21tUyb+T2hd89Eb+P1y4gBBtXOafMMfuqhzQLl2b3mnbCL54CpCs6Qsy0s7Km30m
- pDyNmZdS2/cCeTf0FwnxZmub189Oe+K87D2z0pyTwZy+SDcPw+Rp/pRWKueQQmC+SWGh
- s7kw==
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=zHXhax1dbjEU812GaMOKsxVjkC3XpdhlsfpMUpPCDYk=;
+ b=JcuCPdyC4IsGPEI3YqMN4yJJxWZZJlXEEfHRB1gjjeTVjRl3w1HMHSJJ9jxxQEw+KB
+ m0vdQ5J5Je+hR6li+ySZk4kbwm4c+EIyIVko8pvdSlHDqFsyBBgZX7Xcw/S+Iz8eQ+LJ
+ SWLIcV5rkFAixdPl/+s0perwJ7Aa+aKKvLL0+nBDwV7IkNEraV0+HFxKshk1J2ntVCnG
+ 8oocY4HoyvvXi+XJQHBLyKBUmwJmfSOAZ2atMUwbmYXmsIIsJ/LxwvVuFoioN+z9re5X
+ OWhL+LGdQWushlUf3ZBncQZqSt7mxEXMiDqQbu9p1LkmH9O2VIosQm/tRq4iafKswCoi
+ hzIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=T2KAyG9+GcnWb+hQJRM2BaLdbK3udo5BOAO1tzVT6Qg=;
- b=FxsYhc5LX1D8isyQfBc8haQVrE1WNkfSnuR7csFd6c9joYTWjIxKbkrOFHZxFroMRq
- a4aPgDl920bHK7L8H+YFcj90nAA5iw5z6GVWX+0S7MQtscEVcOHeHvEsdwfTq3eW+im9
- GpzNbBKN5dUAt6ElitcmWR75nUswdxeXAUm9NTjqy3syUAKifTL2niM+CMwSwGUv8wLt
- uSVXRqKWYB57LilPd22kxhsWUEWhLJSAyJrkxUEYvoWqyC21Zv5WZYs7DcfWAeYV8fIN
- 7EqWkmgtPFmVm4+qrUSOolzuouXneIU/kAMOT3YuB8AA6jQtuyxtYlB6nn4cVrkUjQdI
- PibA==
-X-Gm-Message-State: AOAM530Mk7Mu84CKH0QaB7KuqUHgwrQ9xVhOZsId82vom/weY2UP8Dzx
- XiHFzh4X394IJit3O2cxRtZeB+QPyvg=
-X-Google-Smtp-Source: ABdhPJzEM8ZFvjX/uiTI27DM16nhmTSh4YFta/YMDG9oNLM6c629d5QCpD8AXCSGdBYdfrOWMiH6OQ==
-X-Received: by 2002:adf:ef0a:: with SMTP id e10mr1554020wro.362.1601626178249; 
- Fri, 02 Oct 2020 01:09:38 -0700 (PDT)
-Received: from localhost.localdomain (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id t203sm838508wmg.43.2020.10.02.01.09.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 01:09:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/arm/fsl-imx25: Fix a typo
-Date: Fri,  2 Oct 2020 10:09:35 +0200
-Message-Id: <20201002080935.1660005-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=zHXhax1dbjEU812GaMOKsxVjkC3XpdhlsfpMUpPCDYk=;
+ b=NXfNChC80a1z+bqoyVtvp00zbgPl6UiNHYf/RfquYueC7nqKgR0tf3PgAzjHH0jAI3
+ rmYLhki8HvneLmxpvtO6XzHCJ5txdV9t28aJzl5b/qCbPyXsAB616ALFQtIE/jVkCw61
+ 6/PfNLGB/Za08gneycJGPSombm3bIFZwTDRSYZ61macsUpE+G6FDUWcI3fILeopIPxhl
+ 0nc3V8aeqSBpGanpjrd2bxx7Zs7ayuS2lLD6cI1VRFUCFGeDGg+PeIJojHyPHGoE1hDj
+ OZfBj75c0qNQUfIPNStAjndMa89MCNKoJQnGHYUcE37Peg185UWYeDvZSc2g2odw6dEz
+ UyFQ==
+X-Gm-Message-State: AOAM53257EQLswkDRdzZXMmRPkngLCqhjXpN4wjlLIZRS43HsFRoAErI
+ q+PG0XEjtfDu+l/P8OPPVV3VSLzY0JUgHBvc8Hc=
+X-Google-Smtp-Source: ABdhPJzWh8RlVQtECK0BuBhp50guCH6vN0uSia6JAiX3rYiOktYq/pU4fjwDTjMp46FdkCknPHezpfb8PnO/L0P909I=
+X-Received: by 2002:a19:383:: with SMTP id 125mr479227lfd.356.1601626722539;
+ Fri, 02 Oct 2020 01:18:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+References: <20201001173503.1107-1-luoyonggang@gmail.com>
+ <20201001173503.1107-2-luoyonggang@gmail.com>
+ <87blhltdh7.fsf@dusky.pond.sub.org>
+In-Reply-To: <87blhltdh7.fsf@dusky.pond.sub.org>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Fri, 2 Oct 2020 16:18:30 +0800
+Message-ID: <CAE2XoE-PysXdbGLAddGf0b1Z-MrZfSjcpzijRzK8gKgq8bEuAg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] doc: Remove texi referenced in qemu-img-cmds.hx
+ and target/i386/cpu.c
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-level <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000dc1b7305b0abc7ba"
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,27 +76,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 08:09:42 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 08:18:47 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/arm/fsl-imx25.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--000000000000dc1b7305b0abc7ba
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
-index 971f35dd16..c1603b2ac2 100644
---- a/include/hw/arm/fsl-imx25.h
-+++ b/include/hw/arm/fsl-imx25.h
-@@ -179,7 +179,7 @@ struct FslIMX25State {
-  * 0xBB00_0000 0xBB00_0FFF 4 Kbytes     NAND flash main area buffer
-  * 0xBB00_1000 0xBB00_11FF 512 B        NAND flash spare area buffer
-  * 0xBB00_1200 0xBB00_1DFF 3 Kbytes     Reserved
-- * 0xBB00_1E00 0xBB00_1FFF 512 B        NAND flash control regisers
-+ * 0xBB00_1E00 0xBB00_1FFF 512 B        NAND flash control registers
-  * 0xBB01_2000 0xBFFF_FFFF 96 Mbytes (minus 8 Kbytes) Reserved
-  * 0xC000_0000 0xFFFF_FFFF 1024 Mbytes  Reserved
-  */
--- 
-2.26.2
+OK, then skip this
 
+On Fri, Oct 2, 2020 at 1:15 PM Markus Armbruster <armbru@redhat.com> wrote:
+>
+> Yonggang Luo <luoyonggang@gmail.com> writes:
+>
+> > There is no texi document anymore
+> >
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > ---
+> >  qemu-img-cmds.hx  | 2 +-
+> >  target/i386/cpu.c | 2 +-
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
+> > index b89c019b76..cab8234235 100644
+> > --- a/qemu-img-cmds.hx
+> > +++ b/qemu-img-cmds.hx
+> > @@ -1,5 +1,5 @@
+> >  HXCOMM Keep the list of subcommands sorted by name.
+> > -HXCOMM Use DEFHEADING() to define headings in both help text and texi
+> > +HXCOMM Use DEFHEADING() to define headings in both help text and rST
+> >  HXCOMM Text between SRST and ERST are copied to rST version and
+> >  HXCOMM discarded from C version
+> >  HXCOMM DEF(command, callback, arg_string) is used to construct
+> > diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> > index f37eb7b675..f8231f56b6 100644
+> > --- a/target/i386/cpu.c
+> > +++ b/target/i386/cpu.c
+> > @@ -4127,7 +4127,7 @@ static PropValue tcg_default_props[] =3D {
+> >   * We resolve CPU model aliases using -v1 when using "-machine
+> >   * none", but this is just for compatibility while libvirt isn't
+> >   * adapted to resolve CPU model versions before creating VMs.
+> > - * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi=
+.
+> > + * See "Runnability guarantee of CPU models" at * deprecated.rst.
+> >   */
+> >  X86CPUVersion default_cpu_version =3D 1;
+>
+> Duplicates my "[PATCH 0/2] Update leftover comments that mention
+> Texinfo", which Laurent has queued.
+>
+
+
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--000000000000dc1b7305b0abc7ba
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">OK, then skip this<br><br>On Fri, Oct 2, 2020 at 1:15 PM M=
+arkus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redhat.com=
+</a>&gt; wrote:<br>&gt;<br>&gt; Yonggang Luo &lt;<a href=3D"mailto:luoyongg=
+ang@gmail.com">luoyonggang@gmail.com</a>&gt; writes:<br>&gt;<br>&gt; &gt; T=
+here is no texi document anymore<br>&gt; &gt;<br>&gt; &gt; Signed-off-by: Y=
+onggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.=
+com</a>&gt;<br>&gt; &gt; ---<br>&gt; &gt; =C2=A0qemu-img-cmds.hx =C2=A0| 2 =
++-<br>&gt; &gt; =C2=A0target/i386/cpu.c | 2 +-<br>&gt; &gt; =C2=A02 files c=
+hanged, 2 insertions(+), 2 deletions(-)<br>&gt; &gt;<br>&gt; &gt; diff --gi=
+t a/qemu-img-cmds.hx b/qemu-img-cmds.hx<br>&gt; &gt; index b89c019b76..cab8=
+234235 100644<br>&gt; &gt; --- a/qemu-img-cmds.hx<br>&gt; &gt; +++ b/qemu-i=
+mg-cmds.hx<br>&gt; &gt; @@ -1,5 +1,5 @@<br>&gt; &gt; =C2=A0HXCOMM Keep the =
+list of subcommands sorted by name.<br>&gt; &gt; -HXCOMM Use DEFHEADING() t=
+o define headings in both help text and texi<br>&gt; &gt; +HXCOMM Use DEFHE=
+ADING() to define headings in both help text and rST<br>&gt; &gt; =C2=A0HXC=
+OMM Text between SRST and ERST are copied to rST version and<br>&gt; &gt; =
+=C2=A0HXCOMM discarded from C version<br>&gt; &gt; =C2=A0HXCOMM DEF(command=
+, callback, arg_string) is used to construct<br>&gt; &gt; diff --git a/targ=
+et/i386/cpu.c b/target/i386/cpu.c<br>&gt; &gt; index f37eb7b675..f8231f56b6=
+ 100644<br>&gt; &gt; --- a/target/i386/cpu.c<br>&gt; &gt; +++ b/target/i386=
+/cpu.c<br>&gt; &gt; @@ -4127,7 +4127,7 @@ static PropValue tcg_default_prop=
+s[] =3D {<br>&gt; &gt; =C2=A0 * We resolve CPU model aliases using -v1 when=
+ using &quot;-machine<br>&gt; &gt; =C2=A0 * none&quot;, but this is just fo=
+r compatibility while libvirt isn&#39;t<br>&gt; &gt; =C2=A0 * adapted to re=
+solve CPU model versions before creating VMs.<br>&gt; &gt; - * See &quot;Ru=
+nnability guarantee of CPU models&quot; at * qemu-deprecated.texi.<br>&gt; =
+&gt; + * See &quot;Runnability guarantee of CPU models&quot; at * deprecate=
+d.rst.<br>&gt; &gt; =C2=A0 */<br>&gt; &gt; =C2=A0X86CPUVersion default_cpu_=
+version =3D 1;<br>&gt;<br>&gt; Duplicates my &quot;[PATCH 0/2] Update lefto=
+ver comments that mention<br>&gt; Texinfo&quot;, which Laurent has queued.<=
+br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=
+=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 s=
+incerely,<br>Yonggang Luo</div>
+
+--000000000000dc1b7305b0abc7ba--
 
