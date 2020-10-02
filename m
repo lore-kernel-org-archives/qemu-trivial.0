@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kODO5-0003EL-6r
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 01:13:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32844)
+	id 1kODQh-0005mL-9c
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 01:16:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kODO1-0003DI-Ot
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:13:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23748)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kODQD-0005jl-3o
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:16:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60432)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kODNs-00054s-Mq
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:13:38 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kODQB-0005R5-Jn
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:15:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601615611;
+ s=mimecast20190719; t=1601615755;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=r/sqrDFxqtzzKsLRXkq0MVoi6bqs6Ltd2r+sHsuzdZk=;
- b=dpeLcFlMo9nXvsJPvyA94vWx0O6Ox/Y172qTsIF+WZn1i6kcsEAA0TIbDjqe6lXvFpYU8o
- G1TxOmepmiFCicsFgRdFrNZlh2L5sYmme/ENpK52nG6j+vLAAwq9zGKl2T/adcW5w3ltH8
- lZjaf/YJl7Zcy05M+dcblTN6TikphxM=
+ bh=yjOVmG5P0WquPOPxlTDi1YhXt1Lo6hG/NUeb0apxGuA=;
+ b=gbQ9dyvEigtOmbFCZmy3FxeXgxVmqA4FAJ3TL2gWWsECYi6HtvE2hJQO6OWIgfAw9k0TC6
+ 8ZLdelOwHNDxlYvQN4jpOHiKRnP5JbdRx+dguvwCyflVwFqd/IVjV1qQ4A7uzn8WmP0PHC
+ +J9MCKzdBUjoxvR8nKUIH4biqu4+kOQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-251-CKzxBJx0Nw6wHS-amXL3DA-1; Fri, 02 Oct 2020 01:13:28 -0400
-X-MC-Unique: CKzxBJx0Nw6wHS-amXL3DA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-511-KcSJId9KOZWtyErXqcVjZA-1; Fri, 02 Oct 2020 01:15:51 -0400
+X-MC-Unique: KcSJId9KOZWtyErXqcVjZA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1658785C707;
- Fri,  2 Oct 2020 05:13:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 241901882FAA;
+ Fri,  2 Oct 2020 05:15:50 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-101.ams2.redhat.com
  [10.36.112.101])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DAA3273693;
- Fri,  2 Oct 2020 05:13:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E84D478822;
+ Fri,  2 Oct 2020 05:15:49 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6D7791132784; Fri,  2 Oct 2020 07:13:25 +0200 (CEST)
+ id 797CE1132784; Fri,  2 Oct 2020 07:15:48 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org,  Kevin Wolf <kwolf@redhat.com>,  Peter Maydell
  <peter.maydell@linaro.org>,  QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH 1/2] doc: more texi cleanup
-References: <20201001162705.219-1-luoyonggang@gmail.com>
- <20201001162705.219-2-luoyonggang@gmail.com>
-Date: Fri, 02 Oct 2020 07:13:25 +0200
-In-Reply-To: <20201001162705.219-2-luoyonggang@gmail.com> (Yonggang Luo's
- message of "Fri, 2 Oct 2020 00:27:04 +0800")
-Message-ID: <87k0w9tdl6.fsf@dusky.pond.sub.org>
+Subject: Re: [PATCH v2 1/2] doc: Remove texi referenced in qemu-img-cmds.hx
+ and target/i386/cpu.c
+References: <20201001173503.1107-1-luoyonggang@gmail.com>
+ <20201001173503.1107-2-luoyonggang@gmail.com>
+Date: Fri, 02 Oct 2020 07:15:48 +0200
+In-Reply-To: <20201001173503.1107-2-luoyonggang@gmail.com> (Yonggang Luo's
+ message of "Fri, 2 Oct 2020 01:35:03 +0800")
+Message-ID: <87blhltdh7.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -76,10 +77,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 05:13:42 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 05:16:26 -0000
 
 Yonggang Luo <luoyonggang@gmail.com> writes:
 
+> There is no texi document anymore
+>
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
 >  qemu-img-cmds.hx  | 2 +-
