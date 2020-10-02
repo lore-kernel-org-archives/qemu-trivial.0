@@ -1,73 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOP9N-0002m9-RL
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:47:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46838)
+	id 1kOPBi-0005tw-Si
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:49:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kOP9L-0002kM-7Q; Fri, 02 Oct 2020 13:47:19 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:35556)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kOP9I-0004Q2-DK; Fri, 02 Oct 2020 13:47:18 -0400
-Received: by mail-lj1-x241.google.com with SMTP id a15so1875814ljk.2;
- Fri, 02 Oct 2020 10:47:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=9bckGEsdJ4rfT4qLRpHPnXbsTMT5MvGwDPFj9taiq80=;
- b=K/Uz9vBmb97w886C/kNqziqYSsJuob2BC+9XoCCweuxrAj72ccWS3n8y44eqB4nRZS
- Z48pbLUgol+L43BtqkMN8X70ddRy+MGcYv/HaxR+WPt4aqQ8dAU7j4c9khU21XIkDnGH
- Qpwvp8Jr2FonjH+OdhfuUmZ17u+M7gUpon0D3zVUfqCJ+p+VzROxkn7UO8nRxCr+U2dI
- 2T416yxGtquxsoYL7Zr63JjLpA1k0nx6wuB+G0J9eRKnujI8LR5F4wNNwrHjuJvsO6RH
- 2KlZjVeTxlLNO2zzyu++z/UQayA6hOqJp5e+MfSkOP1dAZ2ntoosxT4neWoGKwwF5ik3
- BFJA==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kOPBh-0005rw-2b
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:49:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55448)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kOPBf-0004af-Ev
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:49:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601660982;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5qE2vgyc55FZTYFofewcNWIc54bfVQoSgZCgD3DQVjY=;
+ b=JiKjPmBKUWZLoQYqUT5JujvOQv/dhxPEtvv7ZHtKmwr3jExHQj0r2E1bxqS8fIe775y+th
+ ic98iZ4wQwUT5WNXZhDWMTQU74+IYD66oUDl+oYfa4Q7TrGdLkGA9x0O3JZDTrTUh7v/iD
+ BwTZ+jXcR6496sRKuWxtrl9ePaNolhc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-433-JQ_ds1dbPbanRBhQ2VuVTw-1; Fri, 02 Oct 2020 13:49:41 -0400
+X-MC-Unique: JQ_ds1dbPbanRBhQ2VuVTw-1
+Received: by mail-wr1-f71.google.com with SMTP id w7so827267wrp.2
+ for <qemu-trivial@nongnu.org>; Fri, 02 Oct 2020 10:49:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=9bckGEsdJ4rfT4qLRpHPnXbsTMT5MvGwDPFj9taiq80=;
- b=mrO6isWB9gZFhx0TW4QAwLVkVfSnz3Tp7OLSgla5Qa/Mq+Jyrnrfibg5H8BwA+jC3i
- zDCknbs/WHXrz7F9fXblJHDUg/8GafDLQZb1CDt3t2uYSHtSQuSAiTlUXnHrRxZR3Kh9
- eKWwHvwtrRRK/SitxcqET8DoJJmCJg6l/XayU+EOQfPHoZCWYnSDTPEv7mPaOxpfN3zg
- 4U3Tus51ANyNT2udaXTmw5t6NrSXN22h3rkNVAKtEnHqcuqi6BDOECZQbMEAxev9wxHP
- 6xiH1ij8coYLT29/575h+JPsSoiEt5WaO3f4mVZ3bP33WZo261gSu6bmYnyX0t48ntWb
- kf3A==
-X-Gm-Message-State: AOAM531VRVehkwUfoRXNjnq7brk/X82kK3rfX/MXMKPHfPR2Wa7q/vQp
- 0U6MPQkWSfuSELuBH3+HFJT9z4zkI3LtaX+5mg0=
-X-Google-Smtp-Source: ABdhPJwdXrJIicN3LdlWXXyKIaCYK2J+xWKB9SYdcU8wd70L6QEMLhF1mWdsu3xHivVpnhdZ2+7XZ9C3W5LnWCwPRk8=
-X-Received: by 2002:a2e:b80c:: with SMTP id u12mr949926ljo.300.1601660833914; 
- Fri, 02 Oct 2020 10:47:13 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5qE2vgyc55FZTYFofewcNWIc54bfVQoSgZCgD3DQVjY=;
+ b=coOegMP72xr7uqAAAdNXQMbnFe3f2cjXfmwBTUtSTkdWAGgblxRcuBnMNfYtOECJ2D
+ 61Gre7SvcotePFmsYGkkDNuguofGvdwrQK4e6BvX4Odt6n3qeaVaq2DBH0ZiVGz1lq0I
+ zBvV4OKlxCdnGb8Ol7erprcgZ7lHNxbBNSkz7ZHEolHy/V44CS0m2FwOjFLN+jVOyx6z
+ 1fjF49ESy9m/A3tG6wZJMKv2zcSJlOX2ZoGIX1exl5PHxhzceMtpNP0P2k3KOyDPzhzi
+ mrI06oHrTNlX5vTzmEzyl08doO6ho2ChLoXHUfNDMFYnqRj+0vdSITGa7lmN2auDosWT
+ gegQ==
+X-Gm-Message-State: AOAM5314hAvFF+b6zyJuI/NkXBrMOiI/mhtedjYoiZG0tSDzgWZZVFpx
+ p5reo7PwxMP+f0W0GBnogddrC1w/s256NOMpNebnlZlseqcn1T+tM3fIKGXeE5TA6XT7lRzVn0d
+ RTiY3vAHAEvU/212LZA==
+X-Received: by 2002:a1c:35c1:: with SMTP id c184mr4058522wma.161.1601660979945; 
+ Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx8hPwIg2uuzLrr2Y+awvnnqdRrU3UBD+qVOWDe1bxu+eV9oCUjXERnPZnrQqZ4huKZ+xfKQA==
+X-Received: by 2002:a1c:35c1:: with SMTP id c184mr4058505wma.161.1601660979698; 
+ Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:47e0:e742:75ba:b84d?
+ ([2001:b07:6468:f312:47e0:e742:75ba:b84d])
+ by smtp.gmail.com with ESMTPSA id f14sm2717666wme.22.2020.10.02.10.49.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
+Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
+ have langinfo.h on msys2/mingw
+To: luoyonggang@gmail.com, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>
+Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20201001173230.829-1-luoyonggang@gmail.com>
  <20201001173230.829-3-luoyonggang@gmail.com>
  <20201002153559.GJ2338114@redhat.com>
  <CAE2XoE_z3j+_+Oh1Kn-GSAT4q0_nXnT0sLHMLCw0+r1o0WBJSA@mail.gmail.com>
  <20201002164232.GO2338114@redhat.com>
-In-Reply-To: <20201002164232.GO2338114@redhat.com>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Sat, 3 Oct 2020 01:47:02 +0800
-Message-ID: <CAE2XoE_+ERRdDgGcisNj0WWMU=rCs49PrikVw6Tk+Ov2TC0+Tw@mail.gmail.com>
-Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
- have langinfo.h on msys2/mingw
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, 
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000000e66de05b0b3b9e2"
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAE2XoE_+ERRdDgGcisNj0WWMU=rCs49PrikVw6Tk+Ov2TC0+Tw@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <7998dac5-0bd6-a552-30d4-c567805ad1ed@redhat.com>
+Date: Fri, 2 Oct 2020 19:49:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <CAE2XoE_+ERRdDgGcisNj0WWMU=rCs49PrikVw6Tk+Ov2TC0+Tw@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,236 +105,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 17:47:20 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 17:49:45 -0000
 
---0000000000000e66de05b0b3b9e2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 02/10/20 19:47, 罗勇刚(Yonggang Luo) wrote:
+> Because the configure script change far more complicated than you
+> imgaine. And I post that before
 
-On Sat, Oct 3, 2020 at 12:42 AM Daniel P. Berrang=C3=A9 <berrange@redhat.co=
-m>
-wrote:
->
-> On Sat, Oct 03, 2020 at 12:38:50AM +0800, =E7=BD=97=E5=8B=87=E5=88=9A(Yon=
-ggang Luo) wrote:
-> > On Fri, Oct 2, 2020 at 11:36 PM Daniel P. Berrang=C3=A9 <berrange@redha=
-t.com>
-> > wrote:
-> > >
-> > > On Fri, Oct 02, 2020 at 01:32:28AM +0800, Yonggang Luo wrote:
-> > > > msys2/mingw lacks the POSIX-required langinfo.h.
-> > > >
-> > > > gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe
-> > -lncursesw -lgnurx -ltre -lintl -liconv
-> > > > test.c:4:10: fatal error: langinfo.h: No such file or directory
-> > > >     4 | #include <langinfo.h>
-> > > >       |          ^~~~~~~~~~~~
-> > > > compilation terminated.
-> > > >
-> > > > So we using g_get_codeset instead of nl_langinfo(CODESET)
-> > > >
-> > > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > > > Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-> > > > ---
-> > > >  ui/curses.c | 10 +++++-----
-> > > >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > > >
-> > > > diff --git a/ui/curses.c b/ui/curses.c
-> > > > index a59b23a9cf..12bc682cf9 100644
-> > > > --- a/ui/curses.c
-> > > > +++ b/ui/curses.c
-> > > > @@ -30,7 +30,6 @@
-> > > >  #endif
-> > > >  #include <locale.h>
-> > > >  #include <wchar.h>
-> > > > -#include <langinfo.h>
-> > > >  #include <iconv.h>
-> > > >
-> > > >  #include "qapi/error.h"
-> > > > @@ -526,6 +525,7 @@ static void font_setup(void)
-> > > >      iconv_t nativecharset_to_ucs2;
-> > > >      iconv_t font_conv;
-> > > >      int i;
-> > > > +    g_autofree gchar *local_codeset =3D g_get_codeset();
-> > > >
-> > > >      /*
-> > > >       * Control characters are normally non-printable, but VGA does
-have
-> > > > @@ -566,14 +566,14 @@ static void font_setup(void)
-> > > >        0x25bc
-> > > >      };
-> > > >
-> > > > -    ucs2_to_nativecharset =3D iconv_open(nl_langinfo(CODESET),
-"UCS-2");
-> > > > +    ucs2_to_nativecharset =3D iconv_open(local_codeset, "UCS-2");
-> > > >      if (ucs2_to_nativecharset =3D=3D (iconv_t) -1) {
-> > > >          fprintf(stderr, "Could not convert font glyphs from UCS-2:
-> > '%s'\n",
-> > > >                          strerror(errno));
-> > > >          exit(1);
-> > > >      }
-> > > >
-> > > > -    nativecharset_to_ucs2 =3D iconv_open("UCS-2",
-nl_langinfo(CODESET));
-> > > > +    nativecharset_to_ucs2 =3D iconv_open("UCS-2", local_codeset);
-> > > >      if (nativecharset_to_ucs2 =3D=3D (iconv_t) -1) {
-> > > >          iconv_close(ucs2_to_nativecharset);
-> > > >          fprintf(stderr, "Could not convert font glyphs to UCS-2:
-> > '%s'\n",
-> > > > @@ -581,7 +581,7 @@ static void font_setup(void)
-> > > >          exit(1);
-> > > >      }
-> > > >
-> > > > -    font_conv =3D iconv_open(nl_langinfo(CODESET), font_charset);
-> > > > +    font_conv =3D iconv_open(local_codeset, font_charset);
-> > > >      if (font_conv =3D=3D (iconv_t) -1) {
-> > > >          iconv_close(ucs2_to_nativecharset);
-> > > >          iconv_close(nativecharset_to_ucs2);
-> > > > @@ -602,7 +602,7 @@ static void font_setup(void)
-> > > >      /* DEL */
-> > > >      convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
-> > > >
-> > > > -    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
-> > > > +    if (strcmp(local_codeset, "UTF-8")) {
-> > >
-> > > If you're removing use of nl_langinfo / langinfo.h then you need
-> > > to also update configure, because it is checking for this function
-> > > and header file when validating curses library support.
-> > The change of configure are waiting for meson 0.56, so I didn't post
-that
-> > yet And this patch
-> > is a pre-request for msys2/mingw support and won't hurt other platform
-> >
-> > We are converting everything to meson, so I am not willing to change
-> > configure this time
->
-> I don't see why the configure change has any dependancy on meson 0.56.
-> It just requires you to remove the mentioned header file and function
-> from the configure check. This patch needs to include that or it is
-> incomplete IMHO
->
-Because the configure script change far more complicated than you imgaine.
-And I post that before
-> Regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-
-https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-
-https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-
-https://www.instagram.com/dberrange :|
->
+Daniel is literally asking for a two-line change:
 
+diff --git a/configure b/configure
+index fee5faa054..ffd72b571d 100755
+--- a/configure
++++ b/configure
+@@ -3671,7 +3671,6 @@ if test "$curses" != "no" ; then
+ #include <locale.h>
+ #include <curses.h>
+ #include <wchar.h>
+-#include <langinfo.h>
+ int main(void) {
+   const char *codeset;
+   wchar_t wch = L'w';
+@@ -3680,7 +3679,6 @@ int main(void) {
+   addwstr(L"wide chars\n");
+   addnwstr(&wch, 1);
+   add_wch(WACS_DEGREE);
+-  codeset = nl_langinfo(CODESET);
+   return codeset != 0;
+ }
+ EOF
 
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+Paolo
 
---0000000000000e66de05b0b3b9e2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sat, Oct 3, 2020 at 12:42 AM Daniel P. Berrang=
-=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.com</a>&g=
-t; wrote:<br>&gt;<br>&gt; On Sat, Oct 03, 2020 at 12:38:50AM +0800, =E7=BD=
-=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:<br>&gt; &gt; On Fri, Oct 2, 2020=
- at 11:36 PM Daniel P. Berrang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.=
-com">berrange@redhat.com</a>&gt;<br>&gt; &gt; wrote:<br>&gt; &gt; &gt;<br>&=
-gt; &gt; &gt; On Fri, Oct 02, 2020 at 01:32:28AM +0800, Yonggang Luo wrote:=
-<br>&gt; &gt; &gt; &gt; msys2/mingw lacks the POSIX-required langinfo.h.<br=
->&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; gcc test.c -DNCURSES_WIDECHAR -=
-I/mingw64/include/ncursesw -pipe<br>&gt; &gt; -lncursesw -lgnurx -ltre -lin=
-tl -liconv<br>&gt; &gt; &gt; &gt; test.c:4:10: fatal error: langinfo.h: No =
-such file or directory<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 4 | #include &l=
-t;langinfo.h&gt;<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 | =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~~~~~~<br>&gt; &gt; &gt; &gt; compilation ter=
-minated.<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; So we using g_get_co=
-deset instead of nl_langinfo(CODESET)<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &=
-gt; &gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmai=
-l.com">luoyonggang@gmail.com</a>&gt;<br>&gt; &gt; &gt; &gt; Reviewed-by: Ge=
-rd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com">kraxel@redhat.com</a>&=
-gt;<br>&gt; &gt; &gt; &gt; ---<br>&gt; &gt; &gt; &gt; =C2=A0ui/curses.c | 1=
-0 +++++-----<br>&gt; &gt; &gt; &gt; =C2=A01 file changed, 5 insertions(+), =
-5 deletions(-)<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; diff --git a/u=
-i/curses.c b/ui/curses.c<br>&gt; &gt; &gt; &gt; index a59b23a9cf..12bc682cf=
-9 100644<br>&gt; &gt; &gt; &gt; --- a/ui/curses.c<br>&gt; &gt; &gt; &gt; ++=
-+ b/ui/curses.c<br>&gt; &gt; &gt; &gt; @@ -30,7 +30,6 @@<br>&gt; &gt; &gt; =
-&gt; =C2=A0#endif<br>&gt; &gt; &gt; &gt; =C2=A0#include &lt;locale.h&gt;<br=
->&gt; &gt; &gt; &gt; =C2=A0#include &lt;wchar.h&gt;<br>&gt; &gt; &gt; &gt; =
--#include &lt;langinfo.h&gt;<br>&gt; &gt; &gt; &gt; =C2=A0#include &lt;icon=
-v.h&gt;<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; =C2=A0#include &quot;=
-qapi/error.h&quot;<br>&gt; &gt; &gt; &gt; @@ -526,6 +525,7 @@ static void f=
-ont_setup(void)<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0iconv_t nativech=
-arset_to_ucs2;<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0iconv_t font_conv=
-;<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0int i;<br>&gt; &gt; &gt; &gt; =
-+ =C2=A0 =C2=A0g_autofree gchar *local_codeset =3D g_get_codeset();<br>&gt;=
- &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0/*<br>&gt; &gt; =
-&gt; &gt; =C2=A0 =C2=A0 =C2=A0 * Control characters are normally non-printa=
-ble, but VGA does have<br>&gt; &gt; &gt; &gt; @@ -566,14 +566,14 @@ static =
-void font_setup(void)<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A00x2=
-5bc<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0};<br>&gt; &gt; &gt; &gt;<br=
->&gt; &gt; &gt; &gt; - =C2=A0 =C2=A0ucs2_to_nativecharset =3D iconv_open(nl=
-_langinfo(CODESET), &quot;UCS-2&quot;);<br>&gt; &gt; &gt; &gt; + =C2=A0 =C2=
-=A0ucs2_to_nativecharset =3D iconv_open(local_codeset, &quot;UCS-2&quot;);<=
-br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0if (ucs2_to_nativecharset =3D=3D=
- (iconv_t) -1) {<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0f=
-printf(stderr, &quot;Could not convert font glyphs from UCS-2:<br>&gt; &gt;=
- &#39;%s&#39;\n&quot;,<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0strerror(errn=
-o));<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>&=
-gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0}<br>&gt; &gt; &gt; &gt;<br>&gt; &gt=
-; &gt; &gt; - =C2=A0 =C2=A0nativecharset_to_ucs2 =3D iconv_open(&quot;UCS-2=
-&quot;, nl_langinfo(CODESET));<br>&gt; &gt; &gt; &gt; + =C2=A0 =C2=A0native=
-charset_to_ucs2 =3D iconv_open(&quot;UCS-2&quot;, local_codeset);<br>&gt; &=
-gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0if (nativecharset_to_ucs2 =3D=3D (iconv_t=
-) -1) {<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0iconv_clos=
-e(ucs2_to_nativecharset);<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0fprintf(stderr, &quot;Could not convert font glyphs to UCS-2:<br>=
-&gt; &gt; &#39;%s&#39;\n&quot;,<br>&gt; &gt; &gt; &gt; @@ -581,7 +581,7 @@ =
-static void font_setup(void)<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0exit(1);<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0}<br>&gt; =
-&gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; - =C2=A0 =C2=A0font_conv =3D iconv_op=
-en(nl_langinfo(CODESET), font_charset);<br>&gt; &gt; &gt; &gt; + =C2=A0 =C2=
-=A0font_conv =3D iconv_open(local_codeset, font_charset);<br>&gt; &gt; &gt;=
- &gt; =C2=A0 =C2=A0 =C2=A0if (font_conv =3D=3D (iconv_t) -1) {<br>&gt; &gt;=
- &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0iconv_close(ucs2_to_nativechar=
-set);<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0iconv_close(=
-nativecharset_to_ucs2);<br>&gt; &gt; &gt; &gt; @@ -602,7 +602,7 @@ static v=
-oid font_setup(void)<br>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0/* DEL */<b=
-r>&gt; &gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0convert_ucs(0x7F, 0x2302, ucs2_to=
-_nativecharset);<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; - =C2=A0 =C2=
-=A0if (strcmp(nl_langinfo(CODESET), &quot;UTF-8&quot;)) {<br>&gt; &gt; &gt;=
- &gt; + =C2=A0 =C2=A0if (strcmp(local_codeset, &quot;UTF-8&quot;)) {<br>&gt=
-; &gt; &gt;<br>&gt; &gt; &gt; If you&#39;re removing use of nl_langinfo / l=
-anginfo.h then you need<br>&gt; &gt; &gt; to also update configure, because=
- it is checking for this function<br>&gt; &gt; &gt; and header file when va=
-lidating curses library support.<br>&gt; &gt; The change of configure are w=
-aiting for meson 0.56, so I didn&#39;t post that<br>&gt; &gt; yet And this =
-patch<br>&gt; &gt; is a pre-request for msys2/mingw support and won&#39;t h=
-urt other platform<br>&gt; &gt;<br>&gt; &gt; We are converting everything t=
-o meson, so I am not willing to change<br>&gt; &gt; configure this time<br>=
-&gt;<br>&gt; I don&#39;t see why the configure change has any dependancy on=
- meson 0.56.<br>&gt; It just requires you to remove the mentioned header fi=
-le and function<br>&gt; from the configure check. This patch needs to inclu=
-de that or it is<br>&gt; incomplete IMHO<br>&gt;<div>Because the configure =
-script change far more complicated than you imgaine. And I post that before=
-<br>&gt; Regards,<br>&gt; Daniel<br>&gt; --<br>&gt; |: <a href=3D"https://b=
-errange.com">https://berrange.com</a> =C2=A0 =C2=A0 =C2=A0-o- =C2=A0 =C2=A0=
-<a href=3D"https://www.flickr.com/photos/dberrange">https://www.flickr.com/=
-photos/dberrange</a> :|<br>&gt; |: <a href=3D"https://libvirt.org">https://=
-libvirt.org</a> =C2=A0 =C2=A0 =C2=A0 =C2=A0 -o- =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0<a href=3D"https://fstop138.berrange.com">https://fstop138.be=
-rrange.com</a> :|<br>&gt; |: <a href=3D"https://entangle-photo.org">https:/=
-/entangle-photo.org</a> =C2=A0 =C2=A0-o- =C2=A0 =C2=A0<a href=3D"https://ww=
-w.instagram.com/dberrange">https://www.instagram.com/dberrange</a> :|<br>&g=
-t;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br=
->=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincere=
-ly,<br>Yonggang Luo</div></div>
-
---0000000000000e66de05b0b3b9e2--
 
