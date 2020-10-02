@@ -1,60 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOGuY-0003je-Lb
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 04:59:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45116)
+	id 1kOKTb-0004Sj-Vm
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 08:47:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kOGuX-0003iS-CY
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 04:59:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21501)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kOKTa-0004PM-2B
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 08:47:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25388)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kOGuV-0005qo-Sv
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 04:59:29 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kOKTX-0007zW-KZ
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 08:47:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601629167;
+ s=mimecast20190719; t=1601642870;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=gSQLEzjCoofHvLRyic7Egg1QTCB+2StV2VfL+d22ipE=;
- b=XDjjKjvv/nVGzExTgNeHvaIDDu72b6P2A/R29UxJMkEm0kvMKH2OqWitTRpj0ikPwZN5M4
- PAK/iFpGHfs8C3Pazx/LD+vYsPoNnW8eIzT0MbXG6HjLutBcuQX84r4asszA6dglTYy6BI
- sOyS8DJKFAzDzqLjwPtEyIuO91W9QS0=
+ bh=OrkmzMv/0VWKCk+2+WI5ZhEbUjhpuS4ELN8u5HTArqY=;
+ b=JYJs233RPywZ9pwbeYX4bOW3nS2SCriG38HaAX5ebeIG3q3gvhy3rIDLyaTbMLoTDYF09Z
+ u+a4DbxYBiUOLDMrUGw9JUEOQ9noYor/8eN56DCQu0FHDCkmw9kFEkgb7er4Zvu65nznlp
+ hTEkHaAtZmfffMBWzc2JqY9AlL/f7kE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-121--3E7gdo5P9aRgYWDxpkf4Q-1; Fri, 02 Oct 2020 04:59:23 -0400
-X-MC-Unique: -3E7gdo5P9aRgYWDxpkf4Q-1
+ us-mta-293-Afb1-OyCNs2k7ob10nxtTg-1; Fri, 02 Oct 2020 08:47:47 -0400
+X-MC-Unique: Afb1-OyCNs2k7ob10nxtTg-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A953A1015ED6;
- Fri,  2 Oct 2020 08:58:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-101.ams2.redhat.com
- [10.36.112.101])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4630160C05;
- Fri,  2 Oct 2020 08:58:52 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BECDD1132784; Fri,  2 Oct 2020 10:58:50 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Elena Afanasova <eafanasova@gmail.com>,  qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] elfload: use g_new instead of malloc
-References: <20201001123807.42978-1-eafanasova@gmail.com>
- <87r1qhtdxt.fsf@dusky.pond.sub.org>
- <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
-Date: Fri, 02 Oct 2020 10:58:50 +0200
-In-Reply-To: <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com> (Thomas Huth's
- message of "Fri, 2 Oct 2020 07:18:06 +0200")
-Message-ID: <87eemhm2b9.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D220C1882FA0;
+ Fri,  2 Oct 2020 12:47:45 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
+ [10.36.112.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9059C60BE2;
+ Fri,  2 Oct 2020 12:47:45 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id CAA9317538; Fri,  2 Oct 2020 14:47:44 +0200 (CEST)
+Date: Fri, 2 Oct 2020 14:47:44 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v6 0/4] Fixes curses on msys2/mingw
+Message-ID: <20201002124744.whdgh4xtmvifi72y@sirius.home.kraxel.org>
+References: <20201001173230.829-1-luoyonggang@gmail.com>
+ <89710921-1d64-14fd-f8ce-05ee58f412c5@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <89710921-1d64-14fd-f8ce-05ee58f412c5@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -77,65 +79,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 08:59:29 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 12:47:54 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+On Thu, Oct 01, 2020 at 07:39:33PM +0200, Paolo Bonzini wrote:
+> On 01/10/20 19:32, Yonggang Luo wrote:
+> > And also convert related configure script to meson.
+> > V5-V6
+> > Dropping configure: Fixes ncursesw detection under msys2/mingw by convert the=
+> > m to meson first.
+> > That need the meson 0.56 upstream to fixes the curses detection.
+> > Add
+> > * configure: fixes indent of $meson setup
+> > 
+> > Yonggang Luo (4):
+> >   configure: fixes indent of $meson setup
+> >   curses: Fixes compiler error that complain don't have langinfo.h on
+> >     msys2/mingw
+> >   curses: Fixes curses compiling errors.
+> >   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE
+> >     are defined on msys2/mingw
+> > 
+> >  configure                 | 42 ++++-----------------------------------
+> >  include/sysemu/os-win32.h |  4 ++--
+> >  ui/curses.c               | 14 ++++++-------
+> >  util/oslib-win32.c        |  4 ++--
+> >  4 files changed, 15 insertions(+), 49 deletions(-)
+> > 
+> > --=20
+> > 2.28.0.windows.1
+> > 
+> > 
+> 
+> Looks good (though there is no conversion to meson yet in this version).
+> 
+> Not trivial, but perhaps Gerd can take it?
 
-> On 02/10/2020 07.05, Markus Armbruster wrote:
->> Elena Afanasova <eafanasova@gmail.com> writes:
->> 
->>> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
->>> ---
->>>  bsd-user/elfload.c | 92 +++++++++++++++-------------------------------
->>>  1 file changed, 30 insertions(+), 62 deletions(-)
->>>
->>> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->>> index 32378af7b2..e10ca54eb7 100644
->>> --- a/bsd-user/elfload.c
->>> +++ b/bsd-user/elfload.c
->>> @@ -867,18 +867,14 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->>>          if (sizeof(struct elf_phdr) * interp_elf_ex->e_phnum > TARGET_PAGE_SIZE)
->>>              return ~(abi_ulong)0UL;
->>>  
->>> -        elf_phdata =  (struct elf_phdr *)
->>> -                malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
->>> -
->>> -        if (!elf_phdata)
->>> -          return ~((abi_ulong)0UL);
->>> +        elf_phdata = g_new(struct elf_phdr, interp_elf_ex->e_phnum);
->>>  
->>>          /*
->>>           * If the size of this structure has changed, then punt, since
->>>           * we will be doing the wrong thing.
->>>           */
->>>          if (interp_elf_ex->e_phentsize != sizeof(struct elf_phdr)) {
->>> -            free(elf_phdata);
->>> +            g_free(elf_phdata);
->>>              return ~((abi_ulong)0UL);
->>>          }
->>>  
->>> @@ -890,9 +886,8 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->>>          }
->>>          if (retval < 0) {
->>>                  perror("load_elf_interp");
->>> +                g_free(elf_phdata);
->>>                  exit(-1);
->>> -                free (elf_phdata);
->>> -                return retval;
->> 
->> Deleting return looks wrong.
->
-> Why? There is an exit(-1) right in front of it, so this is dead code...
-> well, maybe that should be done in a separate patch, or at least
-> mentioned in the patch description, though.
+Sure, series looks good.
 
-You're right; I missed the exit(-1).
+Can't finish this today due to -ENOTIME and I'm offline next week so
+this has to wait a bit in the UI patch queue ...
 
-Following the unpleasant odour spread by exit(-1)...  Aha, the
-function's behavior on error is inconsistent: sometimes it returns zero,
-sometimes it exits.
-
-Since the problem is bigger than just one dead return, I recommend
-leaving it to a separate patch, and keeping this one focused on g_new().
+take care,
+  Gerd
 
 
