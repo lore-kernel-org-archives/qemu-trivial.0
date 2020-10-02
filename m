@@ -1,70 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOMmM-0008WU-U1
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 11:15:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41460)
+	id 1kOMvl-0000in-EU
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 11:25:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kOMmH-0008U2-5W
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:15:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35197)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kOMmE-0000nG-Pf
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:15:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601651718;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=teGmqP9zjwugyt7mYDcpk5P66r4KT0e912JA9JFt9AU=;
- b=OlvsRiklGms17zS6jQtUKMVdHFp0Ahhx+wafrs/hefdXDFuhlTpaqj2jX8MW1GIldMe/2a
- kXrOkAAk9WXlBsHkewianu6qcsi7BsjlXa4arlRa63WK3sOlwoMrbfAZPD1cHZnFGaH2LZ
- gat+vGUPVMl7wSm9bqr5sN8la6BeqmU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-E5-S2h8iO4Ce8YYo1djT2w-1; Fri, 02 Oct 2020 11:15:16 -0400
-X-MC-Unique: E5-S2h8iO4Ce8YYo1djT2w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36B9A64145;
- Fri,  2 Oct 2020 15:15:15 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-90.ams2.redhat.com [10.36.112.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8D90A19C78;
- Fri,  2 Oct 2020 15:15:10 +0000 (UTC)
-Subject: Re: [PATCH] gitlab-ci.yml: Only run one test-case per fuzzer
+ (Exim 4.90_1) (envelope-from <darren.kenny@oracle.com>)
+ id 1kOMvj-0000fK-11; Fri, 02 Oct 2020 11:25:07 -0400
+Received: from userp2120.oracle.com ([156.151.31.85]:57396)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <darren.kenny@oracle.com>)
+ id 1kOMvc-0001ky-Ct; Fri, 02 Oct 2020 11:25:06 -0400
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 092FJCjX009115;
+ Fri, 2 Oct 2020 15:24:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : in-reply-to : references : date : message-id : mime-version :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=Au3SegbzlEBLORvHP8t+tb1nX/8DEP+yWCdqwmizheA=;
+ b=UANpDecJ2zS80w5L+LSFpDHz+kYGFdiUOpuePsnTDvAsd/zk7lkIPWbnr6bj54wPBzah
+ iY6ZnWL4DJiIPonoOrK9CBeWQSd+Bisz1jXAHjQ9b9AXiXzoJdcJ5DY7OweX1JgRVmER
+ zYaVlW1D60FmCM2RDEGOQNA+iLyLGBaKop1JZMV4NAg4i3c5cfoDbOe7XHmXuCQv9rts
+ 3qZCTEjE5H/gzAA3Uck7g5WWsyKjzGvx6CKdrhFmprcGDT5gzGxLm4HFEkNuWk9r8N+C
+ Fw6/+Ugc18WfCSIfOySPgYFqpNtZrwgL5tY7EiXoPO6/5rsjOTq4p1PQqvmnAUBQeb4Y UA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 33sx9nkeqv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 02 Oct 2020 15:24:48 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 092FJtWD194156;
+ Fri, 2 Oct 2020 15:22:48 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 33tfk3ng2w-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 02 Oct 2020 15:22:48 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 092FMkAm003128;
+ Fri, 2 Oct 2020 15:22:47 GMT
+Received: from starbug-mbp.localdomain (/79.97.215.145)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 02 Oct 2020 08:22:46 -0700
+Received: by starbug-mbp.localdomain (Postfix, from userid 501)
+ id 5605019208F4; Fri,  2 Oct 2020 16:22:42 +0100 (IST)
+From: Darren Kenny <darren.kenny@oracle.com>
 To: Alexander Bulekov <alxndr@bu.edu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-References: <20201002143524.56930-1-alxndr@bu.edu>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <6564a712-71e5-460b-c9d6-1d2c245ff6ea@redhat.com>
-Date: Fri, 2 Oct 2020 17:15:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
-MIME-Version: 1.0
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH] gitlab-ci.yml: Only run one test-case per fuzzer
 In-Reply-To: <20201002143524.56930-1-alxndr@bu.edu>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+References: <20201002143524.56930-1-alxndr@bu.edu>
+Date: Fri, 02 Oct 2020 16:22:42 +0100
+Message-ID: <m27ds87iv1.fsf@oracle.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 23:37:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9762
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=1
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2010020120
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9762
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=1
+ phishscore=0 mlxscore=0 lowpriorityscore=0 adultscore=0 clxscore=1011
+ spamscore=0 impostorscore=0 malwarescore=0 bulkscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2010020120
+Received-SPF: pass client-ip=156.151.31.85;
+ envelope-from=darren.kenny@oracle.com; helo=userp2120.oracle.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 11:24:51
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,39 +94,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 15:15:22 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 15:25:08 -0000
 
-On 02/10/2020 16.35, Alexander Bulekov wrote:
+On Friday, 2020-10-02 at 10:35:24 -04, Alexander Bulekov wrote:
 > With 1000 runs, there is a non-negligible chance that the fuzzer can
 > trigger a crash. With this CI job, we care about catching build/runtime
 > issues in the core fuzzing code. Actual device fuzzing takes place on
 > oss-fuzz. For these purposes, only running one input should be
 > sufficient.
-> 
+>
 > Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-> Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
+
 > ---
 >  .gitlab-ci.yml | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>
 > diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
 > index a51c89554f..075c15d45c 100644
 > --- a/.gitlab-ci.yml
 > +++ b/.gitlab-ci.yml
 > @@ -303,7 +303,7 @@ build-oss-fuzz:
 >                        | grep -v slirp); do
->          grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
+>          grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || cont=
+inue ;
 >          echo Testing ${fuzzer} ... ;
-> -        "${fuzzer}" -runs=1000 -seed=1 || exit 1 ;
-> +        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
-
-... but we're apparently already using a fixed seed for running the
-test, so it should be pretty much deterministic, shouldn't it? So the
-chance that the fuzzer hits a crash here for a pre-existing problem
-should be close to zero? ... so I'm not quite sure whether we really
-need this? Anyway, I certainly also won't object this patch, so in case
-anybody wants to merge it:
-
-Acked-by: Thomas Huth <thuth@redhat.com>
-
+> -        "${fuzzer}" -runs=3D1000 -seed=3D1 || exit 1 ;
+> +        "${fuzzer}" -runs=3D1 -seed=3D1 || exit 1 ;
+>        done
+>      # Unrelated to fuzzer: run some tests with -fsanitize=3Daddress
+>      - cd build-oss-fuzz && make check-qtest-i386 check-unit
+> --=20
+> 2.28.0
 
