@@ -1,69 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOO96-0004pl-Hl
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 12:43:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34160)
+	id 1kOOd5-00041k-Is
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:13:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kOO95-0004na-8r
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 12:42:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21301)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kOOd3-000402-Ul
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:13:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49657)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kOO93-0005iL-Bb
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 12:42:58 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kOOd2-0000ho-Do
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:13:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601656976;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iH4WVe1fboO0go6wFqb5pjfE3ThOsBdSEiB6vdAOYDo=;
- b=aob+LRDQuV/T0vgV34aubzvKmAv22H9fwJehySnC2WAl1VBv9eiciUmkJSzfVwmdH3V5MM
- WugVSdAs8h86drHkKXtbRIGWjTpsuX4NtKPPyrrKNScu3AEZo+gXjMA/dvk6TSwd2g9rQ+
- TvRcf6ssO2KPAlDnX5gx2hD726VDMfY=
+ s=mimecast20190719; t=1601658835;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=KCRz8TBfrLlsAglmmhI1z/Iun6VO75VvQ6hf6kVLBkw=;
+ b=B3QPzkH5XcQgqKsCiTHEp7nvQKCsGTc1DRjsjWutznGKRV+aoynsseihEbDxH/cds/ssWH
+ CUwwF9mpjNzizaUN5sAA2k8Rd/6wEheGB1sp+GdF5+zOmyFrBAtDiLKaxm1rSxCeCsI+Co
+ rH+QMHeYEI51dK5cNwZ4PEHxV2NJNCI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-558-qNgNbmB6MCOWznHKLiwfpg-1; Fri, 02 Oct 2020 12:42:41 -0400
-X-MC-Unique: qNgNbmB6MCOWznHKLiwfpg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-58-ihCvRLwyNT2aBq0fE8CRsg-1; Fri, 02 Oct 2020 13:13:54 -0400
+X-MC-Unique: ihCvRLwyNT2aBq0fE8CRsg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 32A181018F85;
- Fri,  2 Oct 2020 16:42:40 +0000 (UTC)
-Received: from redhat.com (ovpn-114-9.ams2.redhat.com [10.36.114.9])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E93D160C15;
- Fri,  2 Oct 2020 16:42:34 +0000 (UTC)
-Date: Fri, 2 Oct 2020 17:42:32 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: =?utf-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
- have langinfo.h on msys2/mingw
-Message-ID: <20201002164232.GO2338114@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20201001173230.829-1-luoyonggang@gmail.com>
- <20201001173230.829-3-luoyonggang@gmail.com>
- <20201002153559.GJ2338114@redhat.com>
- <CAE2XoE_z3j+_+Oh1Kn-GSAT4q0_nXnT0sLHMLCw0+r1o0WBJSA@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAE2XoE_z3j+_+Oh1Kn-GSAT4q0_nXnT0sLHMLCw0+r1o0WBJSA@mail.gmail.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1BA780B702;
+ Fri,  2 Oct 2020 17:13:52 +0000 (UTC)
+Received: from thuth.com (ovpn-112-90.ams2.redhat.com [10.36.112.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EE2055D9E4;
+ Fri,  2 Oct 2020 17:13:45 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] tests/test-char: Use a proper fallthrough comment
+Date: Fri,  2 Oct 2020 19:13:43 +0200
+Message-Id: <20201002171343.283426-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 23:37:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -73,7 +53,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,105 +66,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 16:42:59 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 17:13:58 -0000
 
-On Sat, Oct 03, 2020 at 12:38:50AM +0800, 罗勇刚(Yonggang Luo) wrote:
-> On Fri, Oct 2, 2020 at 11:36 PM Daniel P. Berrangé <berrange@redhat.com>
-> wrote:
-> >
-> > On Fri, Oct 02, 2020 at 01:32:28AM +0800, Yonggang Luo wrote:
-> > > msys2/mingw lacks the POSIX-required langinfo.h.
-> > >
-> > > gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe
-> -lncursesw -lgnurx -ltre -lintl -liconv
-> > > test.c:4:10: fatal error: langinfo.h: No such file or directory
-> > >     4 | #include <langinfo.h>
-> > >       |          ^~~~~~~~~~~~
-> > > compilation terminated.
-> > >
-> > > So we using g_get_codeset instead of nl_langinfo(CODESET)
-> > >
-> > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > > Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-> > > ---
-> > >  ui/curses.c | 10 +++++-----
-> > >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > >
-> > > diff --git a/ui/curses.c b/ui/curses.c
-> > > index a59b23a9cf..12bc682cf9 100644
-> > > --- a/ui/curses.c
-> > > +++ b/ui/curses.c
-> > > @@ -30,7 +30,6 @@
-> > >  #endif
-> > >  #include <locale.h>
-> > >  #include <wchar.h>
-> > > -#include <langinfo.h>
-> > >  #include <iconv.h>
-> > >
-> > >  #include "qapi/error.h"
-> > > @@ -526,6 +525,7 @@ static void font_setup(void)
-> > >      iconv_t nativecharset_to_ucs2;
-> > >      iconv_t font_conv;
-> > >      int i;
-> > > +    g_autofree gchar *local_codeset = g_get_codeset();
-> > >
-> > >      /*
-> > >       * Control characters are normally non-printable, but VGA does have
-> > > @@ -566,14 +566,14 @@ static void font_setup(void)
-> > >        0x25bc
-> > >      };
-> > >
-> > > -    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
-> > > +    ucs2_to_nativecharset = iconv_open(local_codeset, "UCS-2");
-> > >      if (ucs2_to_nativecharset == (iconv_t) -1) {
-> > >          fprintf(stderr, "Could not convert font glyphs from UCS-2:
-> '%s'\n",
-> > >                          strerror(errno));
-> > >          exit(1);
-> > >      }
-> > >
-> > > -    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
-> > > +    nativecharset_to_ucs2 = iconv_open("UCS-2", local_codeset);
-> > >      if (nativecharset_to_ucs2 == (iconv_t) -1) {
-> > >          iconv_close(ucs2_to_nativecharset);
-> > >          fprintf(stderr, "Could not convert font glyphs to UCS-2:
-> '%s'\n",
-> > > @@ -581,7 +581,7 @@ static void font_setup(void)
-> > >          exit(1);
-> > >      }
-> > >
-> > > -    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
-> > > +    font_conv = iconv_open(local_codeset, font_charset);
-> > >      if (font_conv == (iconv_t) -1) {
-> > >          iconv_close(ucs2_to_nativecharset);
-> > >          iconv_close(nativecharset_to_ucs2);
-> > > @@ -602,7 +602,7 @@ static void font_setup(void)
-> > >      /* DEL */
-> > >      convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
-> > >
-> > > -    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
-> > > +    if (strcmp(local_codeset, "UTF-8")) {
-> >
-> > If you're removing use of nl_langinfo / langinfo.h then you need
-> > to also update configure, because it is checking for this function
-> > and header file when validating curses library support.
-> The change of configure are waiting for meson 0.56, so I didn't post that
-> yet And this patch
-> is a pre-request for msys2/mingw support and won't hurt other platform
-> 
-> We are converting everything to meson, so I am not willing to change
-> configure this time
+For being able to compile with -Werror=implicit-fallthrough we need
+to use comments that the compiler recognizes. Use "fallthrough" instead
+of "no break" here.
 
-I don't see why the configure change has any dependancy on meson 0.56.
-It just requires you to remove the mentioned header file and function
-from the configure check. This patch needs to include that or it is
-incomplete IMHO
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/test-char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Regards,
-Daniel
+diff --git a/tests/test-char.c b/tests/test-char.c
+index d35cc839bc..9196e566e9 100644
+--- a/tests/test-char.c
++++ b/tests/test-char.c
+@@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)
+             h->openclose_mismatch = true;
+         }
+         h->is_open = new_open_state;
+-        /* no break */
++        /* fallthrough */
+     default:
+         quit = true;
+         break;
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.18.2
 
 
