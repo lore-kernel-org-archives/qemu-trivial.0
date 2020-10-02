@@ -1,81 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOFwT-0001ed-Qj
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 03:57:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33018)
+	id 1kOG0b-0004X1-QD
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 04:01:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOFwS-0001eT-MZ
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 03:57:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31798)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOFwR-0006gt-35
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 03:57:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601625442;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=GUZ3nahLtsN6ysOXUaTD5/IBM8hbjZ2M6e1FnNyYS/s=;
- b=csaxUOVskfS9eCJ9PeJYDvrbo0uBTQgRmFXGj+cq1ngBVzaPrCjJt5P2siBiAGY0kGsFCi
- Zzv0GdpvQ57ykO0Cb2qP5cg6J0aKMuT34aNMqqcWVZE/dqR/pjUOUV3UIDR/ztzfoRcFdD
- Lwlin61W9sOWHdrB5JCCijR7TfGncWA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-459-5qarue7JNRa4Gu1NmEFc5Q-1; Fri, 02 Oct 2020 03:57:20 -0400
-X-MC-Unique: 5qarue7JNRa4Gu1NmEFc5Q-1
-Received: by mail-wr1-f71.google.com with SMTP id r16so243969wrm.18
- for <qemu-trivial@nongnu.org>; Fri, 02 Oct 2020 00:57:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GUZ3nahLtsN6ysOXUaTD5/IBM8hbjZ2M6e1FnNyYS/s=;
- b=satralt4talTVnkSZFejWVyRaGVR7I60DPeMukCKtvuFhbP2DwpmP7+L7wIfm/nIyo
- SD16W3UugK1RIk8lSVqelWdByNMxxXmuZamP+Iz808G3SrpnBMRR+GqNQOnptWs16lmD
- pyfzlxNb92YIIzG9yvC2t+NCCWTjkPw8dxQeuxvbxiA7CLHHAWpFEKKhwdB6SmgkrxIS
- 1uUSzjHMaYxH/5yYNijbYcTjoYQPOlAA8NKK2d5hkC/JhCAfkXAuqBQwm/JDlDE0vF00
- o784JAHOBkKLFaAb8KIC7n9MkOOLxw8Wi6NtJfYPo+OL+XIf2b0Fo8fZWcdWacgJdgXy
- r09w==
-X-Gm-Message-State: AOAM532ACIlGJM23h7CstVIMERVrZxMfWJ0VW67xIAqXnKz385i8yWsO
- JPqjDJDvL6vgv8ti9t0uqitEmQ+SAB0ukvDRqK2SBI05yAhvxkL49kxn4MFOIh6ydU0/KpGnZfi
- onDkbeZ20ocwAz7DrWw==
-X-Received: by 2002:adf:e690:: with SMTP id r16mr1484182wrm.15.1601625439428; 
- Fri, 02 Oct 2020 00:57:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkCX3qCe54u1P+ctBCOUhXnodSBAE5w3a9lLFpCTlRGMggsdzPcKIlXvdsYjWUyoKNcccwFA==
-X-Received: by 2002:adf:e690:: with SMTP id r16mr1484163wrm.15.1601625439195; 
- Fri, 02 Oct 2020 00:57:19 -0700 (PDT)
-Received: from localhost.localdomain (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id g14sm802943wrv.25.2020.10.02.00.57.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 00:57:18 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Keith Busch <kbusch@kernel.org>, Max Reitz <mreitz@redhat.com>,
- Klaus Jensen <its@irrelevant.dk>, Kevin Wolf <kwolf@redhat.com>,
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1kOG0a-0004Ua-0t; Fri, 02 Oct 2020 04:01:40 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:45375)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1kOG0W-0007NR-ES; Fri, 02 Oct 2020 04:01:39 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 5C8CA58019B;
+ Fri,  2 Oct 2020 04:01:34 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Fri, 02 Oct 2020 04:01:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=ts/HeDudNEBQGzRxTWxnzTiHTUn
+ 4cm1JsEXaqZ3izGE=; b=ynNP3RI2XJFU69fhhvu5JdUn6jGzDhGanj7KKxwUiAC
+ UAN7g2NgJOmhyKTlvZrN89HJ0Lj0UY5EFouzBA04s3ut+bfmtq3Tx4JKHar/d/qj
+ n6oXcr2+TCfF1SdiFXz+CFx3uSQAeE4TmvMoVz8YEnNmqSf2ZwwDbde4qVx+ntc7
+ NxSjQr8pnVMO+AiC01+lcYqeQacBrXuDgmD8OFjhPjyxTQtIxYX7/+poSWz3e3Bs
+ aSIFNg4fKCRvZvcQmUVAVDwCpGPAQdh4aSSvIynIkx9Y338WtShQmH71Jav6DGEL
+ bB+9Fqwb+v+A9jgpPibc9HxHxLVs59RERD66IlLkvXg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=ts/HeD
+ udNEBQGzRxTWxnzTiHTUn4cm1JsEXaqZ3izGE=; b=K+nK9o/EtNckoVMaGNbX2l
+ BQpET46AJbEDGn8cavc224WDuY+mahCxJdYwlu7Aeei00j80MzVjhPK8AF66+0hs
+ aeYWYSh77Qo8JbRfjIZgZCJacqA1igwV2IW3go3fYlmgRAA9aLw4836IHn0ak8N7
+ fLqLlCPfLXU3zg6jVq/Be1LUujtZAcMxAcQxuErDAkt9+9wWsTkBMUaC47A9DAz4
+ ei2FWkh3a8FSpSmkrrVIeesWJvID8ucc6yUIB/5PbDlvdNN+4poqiiHTEULoCVdA
+ IKpWcfP1ik4Z5aV96UZt6QJBR8VEKfJSh5JO6mg3hspe23KtehA1R5WzVP5duopw
+ ==
+X-ME-Sender: <xms:Xd52X9Lzajuj6AHPpn8Sov908GiVhbnhsm_U0ciSROD3W0hzHfVdDA>
+ <xme:Xd52X5KYJo3SCOmams4892EYudlKGVeGLMm0jwJptKwEfdw4KSVQKkMr--CBq_8xp
+ UFEqbaD2lQsbhoOl4U>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrfeeiucetufdoteggodetrfdotffvucfrrh
+ hofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurh
+ epfffhvffukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhsucflvghn
+ shgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtthgvrhhnpe
+ ejgeduffeuieetkeeileekvdeuleetveejudeileduffefjeegfffhuddvudffkeenucfk
+ phepkedtrdduieejrdelkedrudeltdenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
+ grmhepmhgrihhlfhhrohhmpehithhssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:Xd52X1t6egDkrvLsptm4jYj47vFIcXhzJVAJJ3w89bXoVrihFJ4plg>
+ <xmx:Xd52X-ZG2zg1Kff_vrbvGcMehcLWonkbRVZHuYvwTBM-1LyTmHeZzA>
+ <xmx:Xd52X0aYW0OqfIli9JLCQJ5LXz9_T06fw00Eg8lQfEn6KTAXRZUNlQ>
+ <xmx:Xd52XzzjetdAfs2e6PmGsFFiND7YqtM7Fp1JxJTFkhRf0TuIIkDjqw>
+Received: from apples.localdomain (80-167-98-190-cable.dk.customer.tdc.net
+ [80.167.98.190])
+ by mail.messagingengine.com (Postfix) with ESMTPA id B9F3E3064684;
+ Fri,  2 Oct 2020 04:01:31 -0400 (EDT)
+Date: Fri, 2 Oct 2020 10:01:29 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
  qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] hw/block/nvme: Simplify timestamp sum
-Date: Fri,  2 Oct 2020 09:57:16 +0200
-Message-Id: <20201002075716.1657849-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ Max Reitz <mreitz@redhat.com>, Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH] hw/block/nvme: Simplify timestamp sum
+Message-ID: <20201002080129.GA877411@apples.localdomain>
+References: <20201002075716.1657849-1-philmd@redhat.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="2oS5YaxWCcQjTEyO"
+Content-Disposition: inline
+In-Reply-To: <20201002075716.1657849-1-philmd@redhat.com>
+Received-SPF: pass client-ip=66.111.4.221; envelope-from=its@irrelevant.dk;
+ helo=new1-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 04:01:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,35 +90,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 07:57:24 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 08:01:40 -0000
 
-As the 'timestamp' variable is declared as a 48-bit bitfield,
-we do not need to wrap the sum result.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/block/nvme.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+--2oS5YaxWCcQjTEyO
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/block/nvme.c b/hw/block/nvme.c
-index 63078f6009..44fa5b9076 100644
---- a/hw/block/nvme.c
-+++ b/hw/block/nvme.c
-@@ -1280,12 +1280,7 @@ static inline uint64_t nvme_get_timestamp(const NvmeCtrl *n)
- 
-     union nvme_timestamp ts;
-     ts.all = 0;
--
--    /*
--     * If the sum of the Timestamp value set by the host and the elapsed
--     * time exceeds 2^48, the value returned should be reduced modulo 2^48.
--     */
--    ts.timestamp = (n->host_timestamp + elapsed_time) & 0xffffffffffff;
-+    ts.timestamp = n->host_timestamp + elapsed_time;
- 
-     /* If the host timestamp is non-zero, set the timestamp origin */
-     ts.origin = n->host_timestamp ? 0x01 : 0x00;
--- 
-2.26.2
+On Oct  2 09:57, Philippe Mathieu-Daud=C3=A9 wrote:
+> As the 'timestamp' variable is declared as a 48-bit bitfield,
+> we do not need to wrap the sum result.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+
+> ---
+>  hw/block/nvme.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+>=20
+> diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+> index 63078f6009..44fa5b9076 100644
+> --- a/hw/block/nvme.c
+> +++ b/hw/block/nvme.c
+> @@ -1280,12 +1280,7 @@ static inline uint64_t nvme_get_timestamp(const Nv=
+meCtrl *n)
+> =20
+>      union nvme_timestamp ts;
+>      ts.all =3D 0;
+> -
+> -    /*
+> -     * If the sum of the Timestamp value set by the host and the elapsed
+> -     * time exceeds 2^48, the value returned should be reduced modulo 2^=
+48.
+> -     */
+> -    ts.timestamp =3D (n->host_timestamp + elapsed_time) & 0xffffffffffff;
+> +    ts.timestamp =3D n->host_timestamp + elapsed_time;
+> =20
+>      /* If the host timestamp is non-zero, set the timestamp origin */
+>      ts.origin =3D n->host_timestamp ? 0x01 : 0x00;
+> --=20
+> 2.26.2
+>=20
+>=20
+
+--=20
+One of us - No more doubt, silence or taboo about mental illness.
+
+--2oS5YaxWCcQjTEyO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAl923lQACgkQTeGvMW1P
+DekPtQf/bbwonD3gH43JRl64udrY31xcysQbMQ5D32zUjUUmYLSLBYxv2y5wfqV0
+cKs7qhwhA4WnZcrHiLdHVPPCHYJu9yUs/mt7QtxLt5Mu+CpYMr+FhLft7Ynoga08
+bmTF8fhO8cX1AE99cKeTqpez371nm+ikL8gYb8zriXgu7CrDrWGbUhh6gCmpYI4x
+wWyxFRqHSJrwjNayc93dZrD3ngubew0gtgKreXaAmbsb/7dxe1gTmXnyuseyp0dP
+7U0nNtgHdUN9SLOWI+NLsmlNiun76IamICaXyMVl+w6sTU5aa75UfiCSoQMJjwsP
+7pkzw2KTLl7t8hvajMexOJCCAFU6+A==
+=EMB+
+-----END PGP SIGNATURE-----
+
+--2oS5YaxWCcQjTEyO--
 
