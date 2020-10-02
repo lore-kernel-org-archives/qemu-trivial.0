@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kON4t-0002fA-IS
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 11:34:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45956)
+	id 1kON6Z-0004O4-4Z
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 11:36:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kON4r-0002bL-DA
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:34:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47943)
+ id 1kON6V-0004N6-HR
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:36:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kON4p-00032E-T3
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:34:33 -0400
+ id 1kON6R-0003MR-VE
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:36:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601652871;
+ s=mimecast20190719; t=1601652971;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oLizrscbJER+6ujqFmmgQToC45HsaREUk4ujlNoOPVI=;
- b=SkoufjJfCoK3860YXXw0PRvPwGSXDLARaY37xaIRVkAARh884GRr89z4hwnjR48xNu9Csa
- 3sn9YocFF53bHZfLCQW81jdamKpCp+GcxvmJ1X9phaILzUUZvkA39pRZBJMcRl9QyAeGan
- aR2QkyuOjVLErD5q1VB9SU4afGBfltU=
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=6UnijvftDmS9XWWVlyfuGQgYqCBFfDuk1hSHGZN1GG4=;
+ b=YDpv+2+AgbUwCEXvG94sFiS4X+kctMAc/Wi/OVqRo94x294MCQmT88oxTkijecIRbGUO/e
+ CPy3qhTIlIRX8gwaeV8ldvE+WjMzQtcoEg4H5A77h5z2Z//LTMyrHRI2YohYndcH9VRgCa
+ DZ0mbErPit1WRLKjGLO+0cTqOCvvQmM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-7-WukScEl8PNCEJTt7yuMvDg-1; Fri, 02 Oct 2020 11:34:19 -0400
-X-MC-Unique: WukScEl8PNCEJTt7yuMvDg-1
+ us-mta-235-5CrSGf2sNxOTc3kXy1rmxg-1; Fri, 02 Oct 2020 11:36:09 -0400
+X-MC-Unique: 5CrSGf2sNxOTc3kXy1rmxg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75DDD801ABF;
- Fri,  2 Oct 2020 15:34:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C40C1040C23;
+ Fri,  2 Oct 2020 15:36:08 +0000 (UTC)
 Received: from redhat.com (ovpn-114-9.ams2.redhat.com [10.36.114.9])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 544E81992F;
- Fri,  2 Oct 2020 15:34:11 +0000 (UTC)
-Date: Fri, 2 Oct 2020 16:34:08 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CA13F19C78;
+ Fri,  2 Oct 2020 15:36:02 +0000 (UTC)
+Date: Fri, 2 Oct 2020 16:35:59 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
@@ -44,13 +42,14 @@ Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
  Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v6 1/4] configure: fixes indent of $meson setup
-Message-ID: <20201002153408.GI2338114@redhat.com>
+Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
+ have langinfo.h on msys2/mingw
+Message-ID: <20201002153559.GJ2338114@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20201001173230.829-1-luoyonggang@gmail.com>
- <20201001173230.829-2-luoyonggang@gmail.com>
+ <20201001173230.829-3-luoyonggang@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201001173230.829-2-luoyonggang@gmail.com>
+In-Reply-To: <20201001173230.829-3-luoyonggang@gmail.com>
 User-Agent: Mutt/1.14.6 (2020-07-11)
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
@@ -59,7 +58,6 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
@@ -70,7 +68,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,17 +81,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 15:34:33 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 15:36:17 -0000
 
-On Fri, Oct 02, 2020 at 01:32:27AM +0800, Yonggang Luo wrote:
-> convert these line from tab to space
+On Fri, Oct 02, 2020 at 01:32:28AM +0800, Yonggang Luo wrote:
+> msys2/mingw lacks the POSIX-required langinfo.h.
+> 
+> gcc test.c -DNCURSES_WIDECHAR -I/mingw64/include/ncursesw -pipe -lncursesw -lgnurx -ltre -lintl -liconv
+> test.c:4:10: fatal error: langinfo.h: No such file or directory
+>     4 | #include <langinfo.h>
+>       |          ^~~~~~~~~~~~
+> compilation terminated.
+> 
+> So we using g_get_codeset instead of nl_langinfo(CODESET)
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->  configure | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  ui/curses.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/ui/curses.c b/ui/curses.c
+> index a59b23a9cf..12bc682cf9 100644
+> --- a/ui/curses.c
+> +++ b/ui/curses.c
+> @@ -30,7 +30,6 @@
+>  #endif
+>  #include <locale.h>
+>  #include <wchar.h>
+> -#include <langinfo.h>
+>  #include <iconv.h>
+>  
+>  #include "qapi/error.h"
+> @@ -526,6 +525,7 @@ static void font_setup(void)
+>      iconv_t nativecharset_to_ucs2;
+>      iconv_t font_conv;
+>      int i;
+> +    g_autofree gchar *local_codeset = g_get_codeset();
+>  
+>      /*
+>       * Control characters are normally non-printable, but VGA does have
+> @@ -566,14 +566,14 @@ static void font_setup(void)
+>        0x25bc
+>      };
+>  
+> -    ucs2_to_nativecharset = iconv_open(nl_langinfo(CODESET), "UCS-2");
+> +    ucs2_to_nativecharset = iconv_open(local_codeset, "UCS-2");
+>      if (ucs2_to_nativecharset == (iconv_t) -1) {
+>          fprintf(stderr, "Could not convert font glyphs from UCS-2: '%s'\n",
+>                          strerror(errno));
+>          exit(1);
+>      }
+>  
+> -    nativecharset_to_ucs2 = iconv_open("UCS-2", nl_langinfo(CODESET));
+> +    nativecharset_to_ucs2 = iconv_open("UCS-2", local_codeset);
+>      if (nativecharset_to_ucs2 == (iconv_t) -1) {
+>          iconv_close(ucs2_to_nativecharset);
+>          fprintf(stderr, "Could not convert font glyphs to UCS-2: '%s'\n",
+> @@ -581,7 +581,7 @@ static void font_setup(void)
+>          exit(1);
+>      }
+>  
+> -    font_conv = iconv_open(nl_langinfo(CODESET), font_charset);
+> +    font_conv = iconv_open(local_codeset, font_charset);
+>      if (font_conv == (iconv_t) -1) {
+>          iconv_close(ucs2_to_nativecharset);
+>          iconv_close(nativecharset_to_ucs2);
+> @@ -602,7 +602,7 @@ static void font_setup(void)
+>      /* DEL */
+>      convert_ucs(0x7F, 0x2302, ucs2_to_nativecharset);
+>  
+> -    if (strcmp(nl_langinfo(CODESET), "UTF-8")) {
+> +    if (strcmp(local_codeset, "UTF-8")) {
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+If you're removing use of nl_langinfo / langinfo.h then you need
+to also update configure, because it is checking for this function
+and header file when validating curses library support.
+
 
 Regards,
 Daniel
