@@ -1,62 +1,108 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOOfs-00079E-Jn
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:16:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40908)
+	id 1kOOlv-0005w5-M5
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:23:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kOOfq-000740-95; Fri, 02 Oct 2020 13:16:50 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:35805)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kOOfo-00016V-GO; Fri, 02 Oct 2020 13:16:49 -0400
-Received: by mail-ej1-x644.google.com with SMTP id u21so3017145eja.2;
- Fri, 02 Oct 2020 10:16:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cMa4HcF1qD//+Q9EjGI9OvrlBKY3nCOhDzrnwd/FzsE=;
- b=n8cYeEqJKgL6sbxEcNG7CePo8fkSjgEMjjdRn3UZBJuWOlaz5Ivsf0k7pMyIJxtGwr
- /KbKVqcPsD4+cQ5G3kwZ/wIBn7VLnZasFKqmC+EI4UuAuw7h4Z8SUYOROE0ZJg3I+McY
- 1TXT7Vlk/w5hP2F868VY0pf6M0koYoWhbmuPO5Bzc5CHSWtqa9jh5XUmXl2KaHfzUoO3
- rxtoAw1Dmg8pai6l3ruNqYSZWzBFBqtW8srQr8Yfwexp1IP1h/L+l4YxRqM4vgwwUNF7
- 7wuUyVAqOJAGcdenW8qqLhb/CUfHgEYKfJqkq6GOu6Gb5Y9UScm+CqkClgZywHz8ZKDX
- s/jA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOOls-0005sq-Hq
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:23:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51754)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOOlp-0001kW-QF
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:23:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601659380;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=/HVzgTA/hiH5z/et12sQaOcAcRrIPvkF5F7FilN1wGo=;
+ b=U0p/16KZSYbS6WxGYsX+ueBh7EpTM6BStA38L3KVlmWZcteHThf3BBjo0s8TAgupCZNTnt
+ tAPYYqfX+J4cLbh7t2o3+4d0FMptLRP9UO2m709ltrgLeMV2Q+/FKkA2bhk0go5u+y4bm9
+ UEMhktk5CxVYnQu0eb4OHm99hSf80ws=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-311-Kk4FS61HPuq0XTJ4supp_g-1; Fri, 02 Oct 2020 13:22:58 -0400
+X-MC-Unique: Kk4FS61HPuq0XTJ4supp_g-1
+Received: by mail-wm1-f70.google.com with SMTP id 13so643604wmf.0
+ for <qemu-trivial@nongnu.org>; Fri, 02 Oct 2020 10:22:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cMa4HcF1qD//+Q9EjGI9OvrlBKY3nCOhDzrnwd/FzsE=;
- b=pshnZFK+SKl0OV+nObXiTrX0XQl70ll2stqyMofLgTQsKnPGiMnIrq1YIUv6F/HbX0
- WaextI6bClFEHp0b47FGtGrm2+Poyr1A8fYKZ7Zhy7G3jWEQE+zm5N62YP8r8Ht2MNIm
- NBam0QZFacey1mNn7nr8Bdo5tV3nJqcD9Iaq/3tuH0orGZdlxKoUDR4InIcnqI200HDm
- itOUli1QYZlTPBchn5EB62UGMR6HY+VP4VkYk0T7xTGSQmBwb7w58ZMhYl0xvghSgiSV
- kiRq1Pct29xY/zCNko38q6jau5oSb0ByfTPr8IQ6jXE5FLOSwXyIA4SlZWS6L6Wbnul4
- m0Rg==
-X-Gm-Message-State: AOAM530YsSlTAFlpLVOG2KTELbM30sQnD7eOcdbOex9QH/IN99xbFJkI
- VFoDPQV4pKX5pF7BhYqRsxiT24nA2ARjruBftuQ=
-X-Google-Smtp-Source: ABdhPJxYGKhhbzWJOV0ffHoKRoFj/lEMArKkN8rAx/M/ThGx2PMwmeAhwKd1FfLws+tZpmvK4NUyFJVITssvQWp0Ums=
-X-Received: by 2002:a17:906:a88a:: with SMTP id
- ha10mr3505350ejb.532.1601659006094; 
- Fri, 02 Oct 2020 10:16:46 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201002171343.283426-1-thuth@redhat.com>
-In-Reply-To: <20201002171343.283426-1-thuth@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 2 Oct 2020 21:16:34 +0400
-Message-ID: <CAJ+F1CKzAR3s+1W6BZHNVV531N7RY4NMDPo86+69rxmDWna7zQ@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=/HVzgTA/hiH5z/et12sQaOcAcRrIPvkF5F7FilN1wGo=;
+ b=UoAgkjrMe3KvcbhvzciC+cPChAQIkhSBJmsznSGLQCa45pn31+5WZMC3C7KGpnpYgV
+ Bfe//5lcGyRGu6gReUcASgjLqs2LdiC80FJ0/0xYms4Nxb22aBZzbNNO+pX+9/jj9qFd
+ 2xr7ZPYWqtCOimjMX7/zCQVt0RmKd7fHx6iyhZwt6oML57MkK7UXZlVct/o8O1RdU5+y
+ DtDBs+ALQf3F0kxsnYUD6Vfvr8IciBD8XjF/IWnZJaQEpxduRgatlrUdUafm6diVMBXg
+ r90eGQ8w7Cx+7lN8vJsWn9nlI6lcjR37iyuMzM2B0XtkE2zFd/roUnU9hTka93rcWioM
+ I91g==
+X-Gm-Message-State: AOAM531Z9HsKneF4vr8apUdUPd+0PVlE0oBanwxjlm0adIwc5A2THb3d
+ DdweYLi9WcsxgWIleo2uHWiCrXVd0vJCfPcj3mOgUcXO7mzYgllDPVhii2pmnGisn+nbv+2QiYe
+ cwU9svTBY4nmhozELhA==
+X-Received: by 2002:a1c:63d7:: with SMTP id x206mr4144902wmb.183.1601659377599; 
+ Fri, 02 Oct 2020 10:22:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKivAgqNgwoT9UGV0cK6mqKlIOs0tvwQ9X+Xhxvxf1Pw2ZBPzMMwPPjPI8MGEtncnqRZzRxw==
+X-Received: by 2002:a1c:63d7:: with SMTP id x206mr4144873wmb.183.1601659377281; 
+ Fri, 02 Oct 2020 10:22:57 -0700 (PDT)
+Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
+ [83.53.161.74])
+ by smtp.gmail.com with ESMTPSA id i14sm2733353wro.96.2020.10.02.10.22.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Oct 2020 10:22:56 -0700 (PDT)
 Subject: Re: [PATCH] tests/test-char: Use a proper fallthrough comment
-To: Thomas Huth <thuth@redhat.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000001c10af05b0b34c1b"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>
+References: <20201002171343.283426-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <5e51097c-e1d5-8e78-a4ef-69256d5b0a6a@redhat.com>
+Date: Fri, 2 Oct 2020 19:22:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <20201002171343.283426-1-thuth@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,94 +116,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 17:16:50 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 17:23:06 -0000
 
---0000000000001c10af05b0b34c1b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Oct 2, 2020 at 9:14 PM Thomas Huth <thuth@redhat.com> wrote:
-
-> For being able to compile with -Werror=3Dimplicit-fallthrough we need
+On 10/2/20 7:13 PM, Thomas Huth wrote:
+> For being able to compile with -Werror=implicit-fallthrough we need
 > to use comments that the compiler recognizes. Use "fallthrough" instead
 > of "no break" here.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
->
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
----
+> ---
 >  tests/test-char.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->
+> 
 > diff --git a/tests/test-char.c b/tests/test-char.c
 > index d35cc839bc..9196e566e9 100644
 > --- a/tests/test-char.c
 > +++ b/tests/test-char.c
 > @@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)
->              h->openclose_mismatch =3D true;
+>              h->openclose_mismatch = true;
 >          }
->          h->is_open =3D new_open_state;
+>          h->is_open = new_open_state;
 > -        /* no break */
 > +        /* fallthrough */
 >      default:
->          quit =3D true;
+>          quit = true;
 >          break;
-> --
-> 2.18.2
->
->
->
+> 
 
---=20
-Marc-Andr=C3=A9 Lureau
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
---0000000000001c10af05b0b34c1b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Oct 2, 2020 at 9:14 PM Thomas=
- Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrot=
-e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">For being abl=
-e to compile with -Werror=3Dimplicit-fallthrough we need<br>
-to use comments that the compiler recognizes. Use &quot;fallthrough&quot; i=
-nstead<br>
-of &quot;no break&quot; here.<br>
-<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br></blockquote><div><br></div><div>Re=
-viewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@re=
-dhat.com">marcandre.lureau@redhat.com</a>&gt;=C2=A0 <br></div><div><br></di=
-v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
-r-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0tests/test-char.c | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/tests/test-char.c b/tests/test-char.c<br>
-index d35cc839bc..9196e566e9 100644<br>
---- a/tests/test-char.c<br>
-+++ b/tests/test-char.c<br>
-@@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0h-&gt;openclose_mismatch =
-=3D true;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0h-&gt;is_open =3D new_open_state;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* no break */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fallthrough */<br>
-=C2=A0 =C2=A0 =C2=A0default:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0quit =3D true;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
--- <br>
-2.18.2<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---0000000000001c10af05b0b34c1b--
 
