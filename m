@@ -1,70 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kODSU-00084m-5Q
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 01:18:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33796)
+	id 1kOEya-00025F-LR
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 02:55:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49146)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kODSR-000826-PE
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:18:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41906)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kOEyZ-00024z-F0
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 02:55:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kODSQ-0005Yd-7b
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 01:18:15 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kOEyW-0007RF-PF
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 02:55:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601615893;
+ s=mimecast20190719; t=1601621727;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zWVFIUqGEIclDGfyH0Lcc7BBj/UYWXLCnhEBFb1Y/54=;
- b=bfy1E8ud55XG6xNXz1tx6UqJQefY1xXd3yX0ejxTnCqzipupXHBt0BXbJ9l5cTlQTnqAzo
- nAJEnXdfQN/Ry+FR8BHEcTPOAzT8ctP03la34yiDs8PiR6HFJRTZOfDF4MleRsn6YsSgxy
- lfqC5PD5GwSeUnVR9Uxz70PiGVLks+w=
+ bh=3VIn9U7JdE8+w7OYcWYkoviZMu91KGiodi8TfYJ2Aig=;
+ b=CG2p9Z0a5ZpwnoTCMkjy82g9+iQ8DBZ82YupYz404WNmGjHE1sZwmV1J/C+DSGug2kQLRi
+ bl2bDD3RzQMVRAcmc5xe/ATqhEpRRccF2Ce5Ti/U69e6plCeRSgyff70c7v19CjhyXVOFh
+ xb8SqkNgrsVc+RKAzuTn1cvMNWDZD54=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-515-6MA3xlvSMZaDBHwAuKWW0A-1; Fri, 02 Oct 2020 01:18:09 -0400
-X-MC-Unique: 6MA3xlvSMZaDBHwAuKWW0A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-192-b9uNPQVkMyukqo7atQAW7Q-1; Fri, 02 Oct 2020 02:55:25 -0400
+X-MC-Unique: b9uNPQVkMyukqo7atQAW7Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A91FA1DE08;
- Fri,  2 Oct 2020 05:18:08 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-90.ams2.redhat.com [10.36.112.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8261160C17;
- Fri,  2 Oct 2020 05:18:07 +0000 (UTC)
-Subject: Re: [PATCH] elfload: use g_new instead of malloc
-To: Markus Armbruster <armbru@redhat.com>,
- Elena Afanasova <eafanasova@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20201001123807.42978-1-eafanasova@gmail.com>
- <87r1qhtdxt.fsf@dusky.pond.sub.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
-Date: Fri, 2 Oct 2020 07:18:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 369A08015FD;
+ Fri,  2 Oct 2020 06:55:24 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-101.ams2.redhat.com
+ [10.36.112.101])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B2DA35C1D0;
+ Fri,  2 Oct 2020 06:55:23 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3F8911132784; Fri,  2 Oct 2020 08:55:22 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,  Michael Tokarev
+ <mjt@tls.msk.ru>,  Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
+ Henderson <rth@twiddle.net>
+Subject: Re: [PATCH v4 3/3] target/i386: Restrict X86CPUFeatureWord to X86
+ targets
+References: <20201001144152.1555659-1-philmd@redhat.com>
+ <20201001144152.1555659-4-philmd@redhat.com>
+ <20201001152905.GC3717385@habkost.net>
+Date: Fri, 02 Oct 2020 08:55:22 +0200
+In-Reply-To: <20201001152905.GC3717385@habkost.net> (Eduardo Habkost's message
+ of "Thu, 1 Oct 2020 11:29:05 -0400")
+Message-ID: <87pn61ruat.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <87r1qhtdxt.fsf@dusky.pond.sub.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 23:37:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.26, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,56 +84,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 05:18:16 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 06:55:31 -0000
 
-On 02/10/2020 07.05, Markus Armbruster wrote:
-> Elena Afanasova <eafanasova@gmail.com> writes:
-> 
->> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
->> ---
->>  bsd-user/elfload.c | 92 +++++++++++++++-------------------------------
->>  1 file changed, 30 insertions(+), 62 deletions(-)
->>
->> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->> index 32378af7b2..e10ca54eb7 100644
->> --- a/bsd-user/elfload.c
->> +++ b/bsd-user/elfload.c
->> @@ -867,18 +867,14 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->>          if (sizeof(struct elf_phdr) * interp_elf_ex->e_phnum > TARGET_PAGE_SIZE)
->>              return ~(abi_ulong)0UL;
->>  
->> -        elf_phdata =  (struct elf_phdr *)
->> -                malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
->> -
->> -        if (!elf_phdata)
->> -          return ~((abi_ulong)0UL);
->> +        elf_phdata = g_new(struct elf_phdr, interp_elf_ex->e_phnum);
->>  
->>          /*
->>           * If the size of this structure has changed, then punt, since
->>           * we will be doing the wrong thing.
->>           */
->>          if (interp_elf_ex->e_phentsize != sizeof(struct elf_phdr)) {
->> -            free(elf_phdata);
->> +            g_free(elf_phdata);
->>              return ~((abi_ulong)0UL);
->>          }
->>  
->> @@ -890,9 +886,8 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
->>          }
->>          if (retval < 0) {
->>                  perror("load_elf_interp");
->> +                g_free(elf_phdata);
->>                  exit(-1);
->> -                free (elf_phdata);
->> -                return retval;
-> 
-> Deleting return looks wrong.
+Eduardo Habkost <ehabkost@redhat.com> writes:
 
-Why? There is an exit(-1) right in front of it, so this is dead code...
-well, maybe that should be done in a separate patch, or at least
-mentioned in the patch description, though.
+> On Thu, Oct 01, 2020 at 04:41:52PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>> Only qemu-system-FOO and qemu-storage-daemon provide QMP
+>> monitors, therefore such declarations and definitions are
+>> irrelevant for user-mode emulation.
+>>=20
+>> Restricting the x86-specific commands to machine-target.json
+>> pulls less QAPI-generated code into user-mode.
+>
+> Is this still true without "qapi: Restrict code generated for
+> user-mode"?
+>
+> Markus, Eric: what's the difference between machine.json and
+> machine-target.json? commit 7f7b4e7abef4 ("qapi: Split
+> machine-target.json off target.json and misc.json") explains what
+> but not why.
 
- Thomas
+My bad.
+
+Short explanation: machine-target.json can use preprocessor symbols with
+'if' that are only available in target-specific code: TARGET_S390X,
+TARGET_I386, TARGET_ARM, ...  This requires compiling per target.
+machine.json can't use these, because it's compiled just once.
+
+Same for misc-target.json and misc.json.
+
+
+Now the long explanation.
+
+The clue is buried in the patch:
+
+    diff --git a/qapi/Makefile.objs b/qapi/Makefile.objs
+    index 01dced01aa..4e87bef6e1 100644
+    --- a/qapi/Makefile.objs
+    +++ b/qapi/Makefile.objs
+    @@ -9,7 +9,7 @@ QAPI_COMMON_MODULES =3D audio authz block-core block ch=
+ar common crypto
+     QAPI_COMMON_MODULES +=3D introspect job machine migration misc net
+     QAPI_COMMON_MODULES +=3D qdev qom rdma rocker run-state sockets tpm
+     QAPI_COMMON_MODULES +=3D trace transaction ui
+    -QAPI_TARGET_MODULES =3D target
+    +QAPI_TARGET_MODULES =3D machine-target target
+     QAPI_MODULES =3D $(QAPI_COMMON_MODULES) $(QAPI_TARGET_MODULES)
+
+     util-obj-y +=3D qapi-builtin-types.o
+
+QAPI_TARGET_MODULES appears in commit 61eb9e80d5:
+
+    qapi: New module target.json
+   =20
+    We can't add appropriate target-specific conditionals to misc.json,
+    because that would make all of misc.json unusable in
+    target-independent code.  To keep misc.json target-independent, we
+    need to split off target-dependent target.json.
+   =20
+    This commit doesn't actually split off anything, it merely creates the
+    empty module.  The next few patches will move stuff from misc.json
+    there.
+   =20
+    Signed-off-by: Markus Armbruster <armbru@redhat.com>
+
+Aha: it's about compiling per target, to make target-specific
+conditionals available.
+
+This part of qapi/Makefile.objs has since morphed into
+
+    qapi_inputs =3D []
+    qapi_specific_outputs =3D []
+    foreach module : qapi_all_modules
+      qapi_inputs +=3D [ files(module + '.json') ]
+      qapi_module_outputs =3D [
+      ...
+      ]
+      if module.endswith('-target')
+        qapi_specific_outputs +=3D qapi_module_outputs
+      else
+        qapi_util_outputs +=3D qapi_module_outputs
+      endif
+    endforeach
+
+in qapi/meson.build.  Further down:
+
+    # Now go through all the outputs and add them to the right sourceset.
+    # These loops must be synchronized with the output of the above custom =
+target.
+
+    i =3D 0
+    foreach output : qapi_util_outputs
+      if output.endswith('.h')
+        genh +=3D qapi_files[i]
+      endif
+      util_ss.add(qapi_files[i])
+      i =3D i + 1
+    endforeach
+
+    foreach output : qapi_specific_outputs + qapi_nonmodule_outputs
+      if output.endswith('.h')
+        genh +=3D qapi_files[i]
+      endif
+      specific_ss.add(when: 'CONFIG_SOFTMMU', if_true: qapi_files[i])
+      i =3D i + 1
+    endforeach
+
+The source files generated for the "common" modules are added to
+sourceset util_ss, and the ones for the "target" modules are added to
+sourceset specific_ss.
+
+The former gets compiled just once, and the .o get linked into pretty
+much everything.
+
+The latter gets compiled per target, and the .o get linked into
+target-specific executables.
+
+Clear as mud?
+
+[...]
 
 
