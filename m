@@ -1,97 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOPBi-0005tw-Si
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:49:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47158)
+	id 1kOPGH-00022H-1N
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 13:54:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kOPBh-0005rw-2b
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:49:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55448)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kOPBf-0004af-Ev
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 13:49:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601660982;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5qE2vgyc55FZTYFofewcNWIc54bfVQoSgZCgD3DQVjY=;
- b=JiKjPmBKUWZLoQYqUT5JujvOQv/dhxPEtvv7ZHtKmwr3jExHQj0r2E1bxqS8fIe775y+th
- ic98iZ4wQwUT5WNXZhDWMTQU74+IYD66oUDl+oYfa4Q7TrGdLkGA9x0O3JZDTrTUh7v/iD
- BwTZ+jXcR6496sRKuWxtrl9ePaNolhc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-433-JQ_ds1dbPbanRBhQ2VuVTw-1; Fri, 02 Oct 2020 13:49:41 -0400
-X-MC-Unique: JQ_ds1dbPbanRBhQ2VuVTw-1
-Received: by mail-wr1-f71.google.com with SMTP id w7so827267wrp.2
- for <qemu-trivial@nongnu.org>; Fri, 02 Oct 2020 10:49:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kOPGE-00021A-Rg; Fri, 02 Oct 2020 13:54:27 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:38822)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kOPGC-0005A3-Ti; Fri, 02 Oct 2020 13:54:26 -0400
+Received: by mail-lj1-x241.google.com with SMTP id w3so1879450ljo.5;
+ Fri, 02 Oct 2020 10:54:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=KLzAvA12BDrOuDsq9G64J4ANl6yG66aF1CUdl7U7iys=;
+ b=CrhgcxsEsgwH+hN5WbX4l6ogW7qHsbT3YwgMTc069pvHl+iPdhmZwXCBIezogDnXIx
+ oWKZACF0s+ksfVpvuD7Mxy48nMmq1oe4xffUSVyz4Nyhl6pSr3O7kHNjPqJUXKbkwCba
+ zlGfRwsb6eCyy905LTh8nvWvm3xE7lPmbCfzmsnuqT6C21OtgWDui66ue6dXENYqknhS
+ ycORxP1sVr5Wa1hr7l92f1KBWcAVGToChsp/UE95UU2pWmTXs5u83j+lmsqeJCG91Ncl
+ JiU0/uNbFXomQNEE+fiMLKx5zQB+oHEidq8lK7zvwR/kmKgS3Ga1ZFbrZU6b63Z4i4yy
+ gouQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5qE2vgyc55FZTYFofewcNWIc54bfVQoSgZCgD3DQVjY=;
- b=coOegMP72xr7uqAAAdNXQMbnFe3f2cjXfmwBTUtSTkdWAGgblxRcuBnMNfYtOECJ2D
- 61Gre7SvcotePFmsYGkkDNuguofGvdwrQK4e6BvX4Odt6n3qeaVaq2DBH0ZiVGz1lq0I
- zBvV4OKlxCdnGb8Ol7erprcgZ7lHNxbBNSkz7ZHEolHy/V44CS0m2FwOjFLN+jVOyx6z
- 1fjF49ESy9m/A3tG6wZJMKv2zcSJlOX2ZoGIX1exl5PHxhzceMtpNP0P2k3KOyDPzhzi
- mrI06oHrTNlX5vTzmEzyl08doO6ho2ChLoXHUfNDMFYnqRj+0vdSITGa7lmN2auDosWT
- gegQ==
-X-Gm-Message-State: AOAM5314hAvFF+b6zyJuI/NkXBrMOiI/mhtedjYoiZG0tSDzgWZZVFpx
- p5reo7PwxMP+f0W0GBnogddrC1w/s256NOMpNebnlZlseqcn1T+tM3fIKGXeE5TA6XT7lRzVn0d
- RTiY3vAHAEvU/212LZA==
-X-Received: by 2002:a1c:35c1:: with SMTP id c184mr4058522wma.161.1601660979945; 
- Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8hPwIg2uuzLrr2Y+awvnnqdRrU3UBD+qVOWDe1bxu+eV9oCUjXERnPZnrQqZ4huKZ+xfKQA==
-X-Received: by 2002:a1c:35c1:: with SMTP id c184mr4058505wma.161.1601660979698; 
- Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:47e0:e742:75ba:b84d?
- ([2001:b07:6468:f312:47e0:e742:75ba:b84d])
- by smtp.gmail.com with ESMTPSA id f14sm2717666wme.22.2020.10.02.10.49.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 10:49:39 -0700 (PDT)
-Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
- have langinfo.h on msys2/mingw
-To: luoyonggang@gmail.com, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>
-Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=KLzAvA12BDrOuDsq9G64J4ANl6yG66aF1CUdl7U7iys=;
+ b=aILrFhc6n24CI5OR3gOcy6M17Uoi5kG1+7gKD1HBivaP79046dt687q9to47ZTCdMM
+ +R4W7SySi6ek/mArgf4vZBHJG1POMcVeIr+cfkoWQgHXuFjOQoKkVvLAHCVtqMncRVaP
+ bG+LGhgcXnBKbeUHvwOpRcePba46ecBIub5C4bDCz4iTHQtbhV5nd6mixf6PvHuE+QFQ
+ ts1snHATd5nyjo/rWROdrAyV2lv2kCNHFzDmTYGk3d0/uy0mb7yeXBSnE9J7NiwzY6og
+ cVCqwrtMK/4hq39hFO9dDmPiDI+06LEPdj6YxjePKL4UuJLIuKMIKQ1LFR7J5ylG7bnq
+ LrWQ==
+X-Gm-Message-State: AOAM533YjVwul/09IxJlDbmv8xsl2a4FY7o7gnT/62lHpzglR266QD3E
+ Vy1ObHnReOcT0cVZmP8ByGbGV0esLhzdLUTSNrw=
+X-Google-Smtp-Source: ABdhPJyNEK79fKniIRIGZEkHDSlgyRH2itR6GB7bOeMyfwRCoVEi3heuwBADyC09hBO+FZp0qXjQhAJLdrWZ8g8oXss=
+X-Received: by 2002:a2e:854c:: with SMTP id u12mr1004882ljj.120.1601661262425; 
+ Fri, 02 Oct 2020 10:54:22 -0700 (PDT)
+MIME-Version: 1.0
 References: <20201001173230.829-1-luoyonggang@gmail.com>
  <20201001173230.829-3-luoyonggang@gmail.com>
  <20201002153559.GJ2338114@redhat.com>
  <CAE2XoE_z3j+_+Oh1Kn-GSAT4q0_nXnT0sLHMLCw0+r1o0WBJSA@mail.gmail.com>
  <20201002164232.GO2338114@redhat.com>
  <CAE2XoE_+ERRdDgGcisNj0WWMU=rCs49PrikVw6Tk+Ov2TC0+Tw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <7998dac5-0bd6-a552-30d4-c567805ad1ed@redhat.com>
-Date: Fri, 2 Oct 2020 19:49:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <CAE2XoE_+ERRdDgGcisNj0WWMU=rCs49PrikVw6Tk+Ov2TC0+Tw@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+ <7998dac5-0bd6-a552-30d4-c567805ad1ed@redhat.com>
+In-Reply-To: <7998dac5-0bd6-a552-30d4-c567805ad1ed@redhat.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Sat, 3 Oct 2020 01:54:11 +0800
+Message-ID: <CAE2XoE9OP0Z-xCXEjvAE-rCkusJ+GMypg=YU19ee8G=MKj2RPQ@mail.gmail.com>
+Subject: Re: [PATCH v6 2/4] curses: Fixes compiler error that complain don't
+ have langinfo.h on msys2/mingw
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000098f43a05b0b3d296"
+Received-SPF: pass client-ip=2a00:1450:4864:20::241;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -105,35 +83,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 17:49:45 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 17:54:28 -0000
 
-On 02/10/20 19:47, 罗勇刚(Yonggang Luo) wrote:
-> Because the configure script change far more complicated than you
-> imgaine. And I post that before
+--00000000000098f43a05b0b3d296
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Daniel is literally asking for a two-line change:
+gotcha
+On Sat, Oct 3, 2020 at 1:49 AM Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 02/10/20 19:47, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:
+> > Because the configure script change far more complicated than you
+> > imgaine. And I post that before
+>
+> Daniel is literally asking for a two-line change:
+>
+> diff --git a/configure b/configure
+> index fee5faa054..ffd72b571d 100755
+> --- a/configure
+> +++ b/configure
+> @@ -3671,7 +3671,6 @@ if test "$curses" !=3D "no" ; then
+>  #include <locale.h>
+>  #include <curses.h>
+>  #include <wchar.h>
+> -#include <langinfo.h>
+>  int main(void) {
+>    const char *codeset;
+>    wchar_t wch =3D L'w';
+> @@ -3680,7 +3679,6 @@ int main(void) {
+>    addwstr(L"wide chars\n");
+>    addnwstr(&wch, 1);
+>    add_wch(WACS_DEGREE);
+> -  codeset =3D nl_langinfo(CODESET);
+>    return codeset !=3D 0;
+>  }
+>  EOF
+>
+> Paolo
+>
 
-diff --git a/configure b/configure
-index fee5faa054..ffd72b571d 100755
---- a/configure
-+++ b/configure
-@@ -3671,7 +3671,6 @@ if test "$curses" != "no" ; then
- #include <locale.h>
- #include <curses.h>
- #include <wchar.h>
--#include <langinfo.h>
- int main(void) {
-   const char *codeset;
-   wchar_t wch = L'w';
-@@ -3680,7 +3679,6 @@ int main(void) {
-   addwstr(L"wide chars\n");
-   addnwstr(&wch, 1);
-   add_wch(WACS_DEGREE);
--  codeset = nl_langinfo(CODESET);
-   return codeset != 0;
- }
- EOF
 
-Paolo
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
+--00000000000098f43a05b0b3d296
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br>gotcha<br>On Sat, Oct 3, 2020 at 1:49 AM Paolo Bonzini=
+ &lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzini@redhat.com</a>&gt; wro=
+te:<br>&gt;<br>&gt; On 02/10/20 19:47, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang=
+ Luo) wrote:<br>&gt; &gt; Because the configure script change far more comp=
+licated than you<br>&gt; &gt; imgaine. And I post that before<br>&gt;<br>&g=
+t; Daniel is literally asking for a two-line change:<br>&gt;<br>&gt; diff -=
+-git a/configure b/configure<br>&gt; index fee5faa054..ffd72b571d 100755<br=
+>&gt; --- a/configure<br>&gt; +++ b/configure<br>&gt; @@ -3671,7 +3671,6 @@=
+ if test &quot;$curses&quot; !=3D &quot;no&quot; ; then<br>&gt; =C2=A0#incl=
+ude &lt;locale.h&gt;<br>&gt; =C2=A0#include &lt;curses.h&gt;<br>&gt; =C2=A0=
+#include &lt;wchar.h&gt;<br>&gt; -#include &lt;langinfo.h&gt;<br>&gt; =C2=
+=A0int main(void) {<br>&gt; =C2=A0 =C2=A0const char *codeset;<br>&gt; =C2=
+=A0 =C2=A0wchar_t wch =3D L&#39;w&#39;;<br>&gt; @@ -3680,7 +3679,6 @@ int m=
+ain(void) {<br>&gt; =C2=A0 =C2=A0addwstr(L&quot;wide chars\n&quot;);<br>&gt=
+; =C2=A0 =C2=A0addnwstr(&amp;wch, 1);<br>&gt; =C2=A0 =C2=A0add_wch(WACS_DEG=
+REE);<br>&gt; - =C2=A0codeset =3D nl_langinfo(CODESET);<br>&gt; =C2=A0 =C2=
+=A0return codeset !=3D 0;<br>&gt; =C2=A0}<br>&gt; =C2=A0EOF<br>&gt;<br>&gt;=
+ Paolo<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=
+=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =
+=C2=A0 sincerely,<br>Yonggang Luo</div>
+
+--00000000000098f43a05b0b3d296--
 
