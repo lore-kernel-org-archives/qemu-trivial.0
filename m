@@ -1,99 +1,106 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOMHt-00013d-4q
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 10:43:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34156)
+	id 1kOMfQ-0007LW-Jr
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 11:08:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39726)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOMHo-00012n-AI
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 10:43:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44797)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kOMfP-0007I0-52
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:08:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34112)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kOMHl-0004U5-P4
- for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 10:43:51 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kOMfM-00084D-Qk
+ for qemu-trivial@nongnu.org; Fri, 02 Oct 2020 11:08:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601649828;
+ s=mimecast20190719; t=1601651291;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=G8FVA2pApPajgk5f0KCKkT+GbakwtULbBVubAzEKm1A=;
- b=hwT5tGU585rd5k4v5t1bJbKBgABo7RPGigBXGOYou9alpPPzixD2ccBrrd97sqsQjsC4KW
- DxfcmSiFbTwQeqyuIfL2/vukTimiwqcjubcA6R2prLwSfQmPQn6BQV4atbpdHnhklEfcbC
- hxssrbvuAFvzAajalqmNgoi9PRXWlVo=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-433-oaJICZXiNx-Jzp7CGhD2pQ-1; Fri, 02 Oct 2020 10:43:47 -0400
-X-MC-Unique: oaJICZXiNx-Jzp7CGhD2pQ-1
-Received: by mail-wr1-f72.google.com with SMTP id o6so639005wrp.1
- for <qemu-trivial@nongnu.org>; Fri, 02 Oct 2020 07:43:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=G8FVA2pApPajgk5f0KCKkT+GbakwtULbBVubAzEKm1A=;
- b=Fo902yku9katTxGR6idtkctV8PW2b/8tr4HiVGuJHRSnfG6bIG+7eV/WmOLz+YTR16
- nN/tnPww44RfJMh50cuGmIFMztLDJON1BO/4ETh+JFtz7Y5LJ1Jo+URxb4lAT+a1a8MY
- cEZQJyIIMTUIP7YGEcSnes13b2MQAK5aQbqVJfUJiG86oSKnWqLCrya/gNkluq4Xc5WU
- QhVGGV4Sk9D9OMvY5bzqq7CJ0BmK8QSONIMWJPyx0GADP/CPLw9eH+DBBtEqGiG6aLK2
- ElMcEBUY1EP9StYvHevhdahmFcUxaFlAMc+hqxtOHjXIerwiDEBkPAg6XfH6kw+8ilhl
- S5YQ==
-X-Gm-Message-State: AOAM530stSU7kyWHE4Oe+O4MXKJtXCT8qwzh275ImQgrlGOSQEwtdXX6
- /gWixGBmh4B08f+A3Mx2qYWDmzOvL5o2THMmSd4jU47RXH57WfPro/wk0n0ko4b0i4w2h/BNeVR
- dz8n2m5TxtdkgplYmcA==
-X-Received: by 2002:a7b:c1c3:: with SMTP id a3mr3557217wmj.68.1601649824650;
- Fri, 02 Oct 2020 07:43:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaet1dusnBcmlCi+4ty0L2XyXfCbXqEw4wL8uVrkzBemP8QZTqTRMTU2i9VjCrOa36GR9C2g==
-X-Received: by 2002:a7b:c1c3:: with SMTP id a3mr3557197wmj.68.1601649824458;
- Fri, 02 Oct 2020 07:43:44 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id b84sm2124448wmd.0.2020.10.02.07.43.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 07:43:43 -0700 (PDT)
-Subject: Re: [PATCH] gitlab-ci.yml: Only run one test-case per fuzzer
-To: Alexander Bulekov <alxndr@bu.edu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-References: <20201002143524.56930-1-alxndr@bu.edu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <893310a2-b2bb-da3c-4a4f-ff037d304dde@redhat.com>
-Date: Fri, 2 Oct 2020 16:43:43 +0200
+ bh=gVeIn2++EL6hPE1pQU/Oj4UisJDzrZyNsI7DGKed7AA=;
+ b=TW/e3bGsa0Fx1QctGd/C2HGRR42FW2zPn1WQR/TtkFGgRgjZNPKatUzm4NTlsrmJpKUYzA
+ cIDuQUhTEhX7u4qNV3jwCDZdI6GF52TT+CU6p2NyZHA4woohACLWf+IthJUxinGB282v2P
+ jEwApQbWPrRN/5fVmgyu8+S500eQUls=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-101-8df3CSnuPyGoghV9gmqhSA-1; Fri, 02 Oct 2020 11:08:09 -0400
+X-MC-Unique: 8df3CSnuPyGoghV9gmqhSA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57DDE188C12B;
+ Fri,  2 Oct 2020 15:08:08 +0000 (UTC)
+Received: from [10.3.112.222] (ovpn-112-222.phx2.redhat.com [10.3.112.222])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D1CB060C17;
+ Fri,  2 Oct 2020 15:08:07 +0000 (UTC)
+Subject: Re: [PATCH] elfload: use g_new instead of malloc
+To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
+Cc: Elena Afanasova <eafanasova@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20201001123807.42978-1-eafanasova@gmail.com>
+ <87r1qhtdxt.fsf@dusky.pond.sub.org>
+ <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
+ <87eemhm2b9.fsf@dusky.pond.sub.org>
+From: Eric Blake <eblake@redhat.com>
+Autocrypt: addr=eblake@redhat.com; keydata=
+ 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
+Organization: Red Hat, Inc.
+Message-ID: <17636b91-e111-1b60-4eb2-d526df4a6bb6@redhat.com>
+Date: Fri, 2 Oct 2020 10:08:07 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201002143524.56930-1-alxndr@bu.edu>
+In-Reply-To: <87eemhm2b9.fsf@dusky.pond.sub.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="ZfNo7srAZJhLbPz23i2CMRAxtlDrlIg3Z"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 01:13:31
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -104,7 +111,7 @@ X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.256, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,36 +124,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 14:43:52 -0000
+X-List-Received-Date: Fri, 02 Oct 2020 15:08:15 -0000
 
-On 10/2/20 4:35 PM, Alexander Bulekov wrote:
-> With 1000 runs, there is a non-negligible chance that the fuzzer can
-> trigger a crash. With this CI job, we care about catching build/runtime
-> issues in the core fuzzing code. Actual device fuzzing takes place on
-> oss-fuzz. For these purposes, only running one input should be
-> sufficient.
-> 
-> Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-> Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  .gitlab-ci.yml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
-> index a51c89554f..075c15d45c 100644
-> --- a/.gitlab-ci.yml
-> +++ b/.gitlab-ci.yml
-> @@ -303,7 +303,7 @@ build-oss-fuzz:
->                        | grep -v slirp); do
->          grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
->          echo Testing ${fuzzer} ... ;
-> -        "${fuzzer}" -runs=1000 -seed=1 || exit 1 ;
-> +        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
->        done
->      # Unrelated to fuzzer: run some tests with -fsanitize=address
->      - cd build-oss-fuzz && make check-qtest-i386 check-unit
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--ZfNo7srAZJhLbPz23i2CMRAxtlDrlIg3Z
+Content-Type: multipart/mixed; boundary="fkNFsz23iw1wVBCQ7VMajr6T6byryJYVU";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
+Cc: Elena Afanasova <eafanasova@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Message-ID: <17636b91-e111-1b60-4eb2-d526df4a6bb6@redhat.com>
+Subject: Re: [PATCH] elfload: use g_new instead of malloc
+References: <20201001123807.42978-1-eafanasova@gmail.com>
+ <87r1qhtdxt.fsf@dusky.pond.sub.org>
+ <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
+ <87eemhm2b9.fsf@dusky.pond.sub.org>
+In-Reply-To: <87eemhm2b9.fsf@dusky.pond.sub.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+--fkNFsz23iw1wVBCQ7VMajr6T6byryJYVU
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 10/2/20 3:58 AM, Markus Armbruster wrote:
+
+>>>> @@ -890,9 +886,8 @@ static abi_ulong load_elf_interp(struct elfhdr * i=
+nterp_elf_ex,
+>>>>          }
+>>>>          if (retval < 0) {
+>>>>                  perror("load_elf_interp");
+>>>> +                g_free(elf_phdata);
+>>>>                  exit(-1);
+>>>> -                free (elf_phdata);
+>>>> -                return retval;
+>>>
+>>> Deleting return looks wrong.
+>>
+>> Why? There is an exit(-1) right in front of it, so this is dead code...
+>> well, maybe that should be done in a separate patch, or at least
+>> mentioned in the patch description, though.
+>=20
+> You're right; I missed the exit(-1).
+>=20
+> Following the unpleasant odour spread by exit(-1)...  Aha, the
+> function's behavior on error is inconsistent: sometimes it returns zero,
+> sometimes it exits.
+
+Eradicating exit(-1) (which is indistinguishable from exit(255), and
+generally not what you want, unless your program is designed to
+specifically invoke the immediate-exit semantics of xargs) is also a
+worthwhile cleanup project.  But I agree with the advice for separate
+patches for separate bugs.
+
+>=20
+> Since the problem is bigger than just one dead return, I recommend
+> leaving it to a separate patch, and keeping this one focused on g_new().
+>=20
+>=20
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
+
+--fkNFsz23iw1wVBCQ7VMajr6T6byryJYVU--
+
+--ZfNo7srAZJhLbPz23i2CMRAxtlDrlIg3Z
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl93QlcACgkQp6FrSiUn
+Q2r6egf/Xrfxn+zRmM1giSS6blF/Gg0IM3Cid8J0ZyXv+/ptkrIAF88RQt9sOlRM
+A1hPE2VQNy6jJoI1rA7UdsvOUHPgTI9B3vgmh0F8A76xuAq3QgPmysoKhAscTTwv
+fvGTYcwf/79ZdLfSafFHvQRHL9mz1ccRvJS+p5eJv5W2Ywbpv6SHzL3amssXF1L9
+gPynin3zLb5KRxvGelpDXYG/92VZH0NCOpx3FzqSC0MBDzntcE14TQ3GOPdxsoEc
+XS/AnNn0g9XQgHt2kCE2fJ4UIZBa/LbzwWUwrheMg0ZIKl0T2o7NukDA+853iuSd
+eUWevlh0gYqBzGLaJfla1imh6gnPyg==
+=Q4fv
+-----END PGP SIGNATURE-----
+
+--ZfNo7srAZJhLbPz23i2CMRAxtlDrlIg3Z--
 
 
