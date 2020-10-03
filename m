@@ -1,47 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kOQ5e-0003j7-DQ
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Oct 2020 14:47:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58476)
+	id 1kOa82-0000if-BM
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Oct 2020 01:30:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1kOQ5d-0003hT-Kx; Fri, 02 Oct 2020 14:47:33 -0400
-Received: from relay68.bu.edu ([128.197.228.73]:34463)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1kOQ5b-0002yZ-Ux; Fri, 02 Oct 2020 14:47:33 -0400
-X-Envelope-From: alxndr@bu.edu
-X-BU-AUTH: mozz.bu.edu [128.197.127.33]
-Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
- bits=0)
- by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 092Il5kl001741
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 2 Oct 2020 14:47:09 -0400
-Date: Fri, 2 Oct 2020 14:47:05 -0400
-From: Alexander Bulekov <alxndr@bu.edu>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: Re: [PATCH] gitlab-ci.yml: Only run one test-case per fuzzer
-Message-ID: <20201002184705.uipujm4cqujcyfyl@mozz.bu.edu>
-References: <20201002143524.56930-1-alxndr@bu.edu>
- <6564a712-71e5-460b-c9d6-1d2c245ff6ea@redhat.com>
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kOa7z-0000hY-1i; Sat, 03 Oct 2020 01:30:39 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39151)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kOa7x-0000JN-A0; Sat, 03 Oct 2020 01:30:38 -0400
+Received: by mail-ot1-x343.google.com with SMTP id u25so3544914otq.6;
+ Fri, 02 Oct 2020 22:30:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=+TBwnHhyO6rYGo/JS6j684wdk4x4F9+47Qp1eAYpAII=;
+ b=ZTkNMBw4YyBVO4sSsLaBBhNxIHpvjTAfMVJM9fbpYLcuvuIwWyPIwAciGvtbIdzTl3
+ sWSyKiUbFtp3muL4MoA1442ib7tiNtu/ffMQC5CmPtUPhlJ+XZdbRt8wwy7sNkI6XCyJ
+ r/NQAkUWB2H+bZf4AWuV/4ulz4hwH7JGPpF48ahdQ4ej29vUAAd+X4WAWKPuxQ9LabNd
+ tL+OG1WDKqTx73Z7Yjmg0AB3XGosjDax5SyXZRJcbpVGkjFhmN2IyFU51+BuGSDQFoEd
+ buP3gtPAwWqVIzspxWrdsvqYAbfaPmxeVMIdTbDgfE60WRDZdkIbhqvSLAddF2zGEj6b
+ 69Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=+TBwnHhyO6rYGo/JS6j684wdk4x4F9+47Qp1eAYpAII=;
+ b=m0vQSHVqGGBgj9HSJgiWuIn3nH226uMyolYNEIziafywcSavfdGD1NiaWfmKDnZnF8
+ jRtuWb8nUGV4eQDg1hawJdXleqM4EBzdz3R1KKn/cHb1re7HaLiqjsHq/VzgohwOhvbc
+ S4J8Amdw8N3L34QXKwpsMqUOSFml3myneZfSZy3CJ9WEaXYYTQkg2PgYuShqaTgMOubV
+ ADnepCrpDKxTQhQJQg9wA1Zt2zD7xHEkmJLP7DxQQORWN43HV9gfHDsWsdskeEVvM52e
+ 2DgjhV5DVfyPI8I8Jxtgp8tpb/cIzQ0/FHEb2JiwZ3zjgg+PJr0B8HGDEsbTbF7RnQu+
+ rbTA==
+X-Gm-Message-State: AOAM530looFbdDYGrSg4FK/Hjalzmeq+VtXypzDemlwwljF6Xoy9btQZ
+ HeJS3yNDHiScJMTgLc2KWS6O+6XppgWYvs2ArLg=
+X-Google-Smtp-Source: ABdhPJyKfJzjlwqI2W8rVRsFf/u1SSrz0OnjiD0qoCmUUEtJKX6gQLIci4JgBxbDalNVSKbnB4gqF7/ai0s+nj7ZSX8=
+X-Received: by 2002:a05:6830:1187:: with SMTP id
+ u7mr4084711otq.181.1601703035134; 
+ Fri, 02 Oct 2020 22:30:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6564a712-71e5-460b-c9d6-1d2c245ff6ea@redhat.com>
-Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
- helo=relay68.bu.edu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/02 14:47:30
-X-ACL-Warn: Detected OS   = Linux 2.6.x
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.001,
- HK_RANDOM_FROM=0.821, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <160165476743.57452.2128307974125615413.stgit@bahia.lan>
+In-Reply-To: <160165476743.57452.2128307974125615413.stgit@bahia.lan>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Sat, 3 Oct 2020 13:29:59 +0800
+Message-ID: <CAKXe6SKC2aBuGUCrqg73VpiMVY3US8tvq9CbOxy71pFKcYok-Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/acpi/piix4: Rename piix4_pm_add_propeties() to
+ piix4_pm_add_properties()
+To: Greg Kurz <groug@kaod.org>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,51 +73,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Oct 2020 18:47:33 -0000
+X-List-Received-Date: Sat, 03 Oct 2020 05:30:40 -0000
 
-On 201002 1715, Thomas Huth wrote:
-> On 02/10/2020 16.35, Alexander Bulekov wrote:
-> > With 1000 runs, there is a non-negligible chance that the fuzzer can
-> > trigger a crash. With this CI job, we care about catching build/runtime
-> > issues in the core fuzzing code. Actual device fuzzing takes place on
-> > oss-fuzz. For these purposes, only running one input should be
-> > sufficient.
-> > 
-> > Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-> > Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> > ---
-> >  .gitlab-ci.yml | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
-> > index a51c89554f..075c15d45c 100644
-> > --- a/.gitlab-ci.yml
-> > +++ b/.gitlab-ci.yml
-> > @@ -303,7 +303,7 @@ build-oss-fuzz:
-> >                        | grep -v slirp); do
-> >          grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
-> >          echo Testing ${fuzzer} ... ;
-> > -        "${fuzzer}" -runs=1000 -seed=1 || exit 1 ;
-> > +        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
-> 
-> ... but we're apparently already using a fixed seed for running the
-> test, so it should be pretty much deterministic, shouldn't it? So the
-> chance that the fuzzer hits a crash here for a pre-existing problem
-> should be close to zero? ... so I'm not quite sure whether we really
-> need this? Anyway, I certainly also won't object this patch, so in case
-> anybody wants to merge it:
+Greg Kurz <groug@kaod.org> =E4=BA=8E2020=E5=B9=B410=E6=9C=883=E6=97=A5=E5=
+=91=A8=E5=85=AD =E4=B8=8A=E5=8D=8812:07=E5=86=99=E9=81=93=EF=BC=9A
+>
+> Signed-off-by: Greg Kurz <groug@kaod.org>
 
-In addition to using an RNG+seed, libfuzzer also uses coverage
-information to guide mutations. My guess is that as QEMU changes, this
-coverage can change as well, so I wouldn't assume that using the same
-seed will result in the same inputs generated, in the longer term.
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-Its true that the main benefit will probably be a few minutes shaved off
-the 400 minute limit...
-Thanks
--Alex
-
-> 
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> 
+> ---
+>  hw/acpi/piix4.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index 894d357f8c35..67a1ea41914f 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -437,7 +437,7 @@ static void piix4_pm_machine_ready(Notifier *n, void =
+*opaque)
+>          (memory_region_present(io_as, 0x2f8) ? 0x90 : 0);
+>  }
+>
+> -static void piix4_pm_add_propeties(PIIX4PMState *s)
+> +static void piix4_pm_add_properties(PIIX4PMState *s)
+>  {
+>      static const uint8_t acpi_enable_cmd =3D ACPI_ENABLE;
+>      static const uint8_t acpi_disable_cmd =3D ACPI_DISABLE;
+> @@ -509,7 +509,7 @@ static void piix4_pm_realize(PCIDevice *dev, Error **=
+errp)
+>                                     pci_get_bus(dev), s);
+>      qbus_set_hotplug_handler(BUS(pci_get_bus(dev)), OBJECT(s));
+>
+> -    piix4_pm_add_propeties(s);
+> +    piix4_pm_add_properties(s);
+>  }
+>
+>  I2CBus *piix4_pm_init(PCIBus *bus, int devfn, uint32_t smb_io_base,
+>
+>
+>
 
