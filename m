@@ -1,75 +1,144 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kP30L-0002il-Mg
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Oct 2020 08:20:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56580)
+	id 1kPJws-0003jN-OR
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 02:26:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kP30K-0002iY-1p; Sun, 04 Oct 2020 08:20:40 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:37910)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kP30H-0002QT-Qz; Sun, 04 Oct 2020 08:20:39 -0400
-Received: by mail-lj1-x241.google.com with SMTP id w3so4846521ljo.5;
- Sun, 04 Oct 2020 05:20:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=gUGwOZQkxmPD7anmpZi8bbMrX9lFvKWVHOaabMtKDfA=;
- b=pqAI0EQP6Er14VEHAPNmZp8RG8CgbWsTbDCrVjv5PZQ+IA2sXERTnCfxlFSwjZywUB
- SvayKozUYmEI0Hm2Q67NdPAPZAAQ/a0dvB4rsxDo13VNYzwsEohmD1AwQ3sUCXh4MHMC
- cgt+pafsQp1kHjKL1OgGVTXMb6c+yMP6KK6CYxazyTaYmILPTDV5tv6lbHGrwFiVqKo4
- yLba+e+U5l/slo7zjc3bEqpgvVJc5lt+POhsiE3Nyxozl/Q8bwE8oY20V0SPvJH0VRaW
- Q2AEciQOG0wSNNcpCxy4ucWkFzuvwyG/fv+uPdAiWd1egaQ0NCDGme9jnuoxDjgRFlxT
- Xr3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=gUGwOZQkxmPD7anmpZi8bbMrX9lFvKWVHOaabMtKDfA=;
- b=dLvjLy8Z4az/PF4mCZAW3Y8kKkN6s3VruT6sfPqHxJO4uGgm52um3xEQuY6CiMiUQ2
- n/wLlgNYjKMHpXS47TOB6ekxpqKxkW1G6TTrJ8WRKfBEj0Dezd0K5pjP1M6KavngqBYm
- F/TdE9UYDqlPnEXUpC9M/L/CTsnhhQltCsq6aikeeGOudZh80HjsuKfi5d2TUh6eB/Qx
- z0tYzt4802v0DT6SUbuRXH/mGEi9QIwAO6iiS6h61cNc5muRmi5rZAd1ffh1JOre1760
- ALam5NzUoIGlWpTJ6QPUnCcUM48/9rKTPRdI7dlj09jfwIewJSDk3RpoPeMe2H5Dteq4
- YdmA==
-X-Gm-Message-State: AOAM530t35hOAeL/Vtdlre0Fk7z1PCbM9krSUCOf5Yli4EKtmwQl4guw
- D4U896PRUfw08xPMKuj77ps=
-X-Google-Smtp-Source: ABdhPJxgbSwb1WlcH+FASiaFUo6MZy4RbDr7m/3UZWoKiC/pqzP96KAK7zPFVq76pSyAkD1KMrrRVg==
-X-Received: by 2002:a2e:7809:: with SMTP id t9mr2603458ljc.115.1601814034833; 
- Sun, 04 Oct 2020 05:20:34 -0700 (PDT)
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
- [37.145.186.126])
- by smtp.gmail.com with ESMTPSA id m13sm2380333lfb.172.2020.10.04.05.20.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Oct 2020 05:20:34 -0700 (PDT)
-Message-ID: <d52b5d3655fba86d1b3816115b24997b36952e3b.camel@gmail.com>
-Subject: Re: [PATCH v2] elfload: use g_new/g_malloc and g_autofree
-From: Elena Afanasova <eafanasova@gmail.com>
-To: Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, kamil@netbsd.org, brad@comstyle.com,
- emaste@freebsd.org, lwhsu@freebsd.org
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Sun, 04 Oct 2020 05:20:18 -0700
-In-Reply-To: <17636b91-e111-1b60-4eb2-d526df4a6bb6@redhat.com>
-References: <20201001123807.42978-1-eafanasova@gmail.com>
- <87r1qhtdxt.fsf@dusky.pond.sub.org>
- <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
- <87eemhm2b9.fsf@dusky.pond.sub.org>
- <17636b91-e111-1b60-4eb2-d526df4a6bb6@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ (Exim 4.90_1) (envelope-from <borntraeger@de.ibm.com>)
+ id 1kPJwm-0003h5-0g; Mon, 05 Oct 2020 02:26:13 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:37554)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <borntraeger@de.ibm.com>)
+ id 1kPJwg-0001Ps-Jo; Mon, 05 Oct 2020 02:26:07 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 09562fhc146133; Mon, 5 Oct 2020 02:25:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=KKgENuj99aDUaf4qyUcOrpFzt+zRHV1FIWm7BoCqbw0=;
+ b=Gftfeaw3oVbe2vAJRe+llKJgcetPpPMfQ6aKopJg5YALGFY9vMO01qhTnEVqqOclcT5r
+ 9rT8yWYiRTIq7aQ5xzcx6J3edt1dbWoJjwukUrHJMt9muE+9q0NIVM0rFx9nHnuOh34H
+ /qIM76jf8DCRApSl0fycvqdFlXkXcWVQYjH7Ry/J9IBCHxIR9tpUp8Tm28MKBVDb9Pgw
+ +5jv2//6ay2D/xiC1WcQi8SZanoi6E+Ql0+hjvg+LZhEEir1HtPkb4Mhin7wHPWyXRyX
+ OTQo5EiBbvy/R95F43cLnTHHgdAy8UNhcHWskHYyewobmV0zcKf4l2P2FVm3PIQ0unrb 1w== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 33yu0p471v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 05 Oct 2020 02:25:54 -0400
+Received: from m0098394.ppops.net (m0098394.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 09563WDH150500;
+ Mon, 5 Oct 2020 02:25:53 -0400
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.107])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 33yu0p4714-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 05 Oct 2020 02:25:53 -0400
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+ by ppma03fra.de.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0956DDut005997;
+ Mon, 5 Oct 2020 06:25:51 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma03fra.de.ibm.com with ESMTP id 33xgx7rxag-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 05 Oct 2020 06:25:51 +0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 0956PmeL21561676
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 5 Oct 2020 06:25:48 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9D838A405F;
+ Mon,  5 Oct 2020 06:25:48 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3697CA405C;
+ Mon,  5 Oct 2020 06:25:48 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.145.0.84])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Mon,  5 Oct 2020 06:25:48 +0000 (GMT)
+Subject: Re: [PATCH 2/4] nbd: silence maybe-uninitialized warnings
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-trivial@nongnu.org
+References: <20200930155859.303148-1-borntraeger@de.ibm.com>
+ <20200930155859.303148-3-borntraeger@de.ibm.com>
+ <a6cf1fcd-cf09-08ed-774c-30f716b73cfa@redhat.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+ 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
+ nS4h0HDFPrrp1C2EMVYIQrMokWvlFZbCpsdYbBI=
+Message-ID: <e1d1d60d-7df1-5152-a4a6-7f121b5f76f5@de.ibm.com>
+Date: Mon, 5 Oct 2020 08:25:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=eafanasova@gmail.com; helo=mail-lj1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <a6cf1fcd-cf09-08ed-774c-30f716b73cfa@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-10-05_04:2020-10-02,
+ 2020-10-05 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 malwarescore=0
+ priorityscore=1501 lowpriorityscore=0 mlxscore=0 adultscore=0
+ mlxlogscore=999 suspectscore=0 phishscore=0 spamscore=0 clxscore=1011
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2010050044
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=borntraeger@de.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:25:59
+X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,289 +152,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Oct 2020 12:20:40 -0000
+X-List-Received-Date: Mon, 05 Oct 2020 06:26:13 -0000
 
-Subject: [PATCH v2] elfload: use g_new/g_malloc and g_autofree
-
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
----
- bsd-user/elfload.c | 79 ++++++++--------------------------------------
- 1 file changed, 14 insertions(+), 65 deletions(-)
-
-diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
-index 32378af7b2..bc4be4c874 100644
---- a/bsd-user/elfload.c
-+++ b/bsd-user/elfload.c
-@@ -838,7 +838,7 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
-                                  int interpreter_fd,
-                                  abi_ulong *interp_load_addr)
- {
--        struct elf_phdr *elf_phdata  =  NULL;
-+        g_autofree struct elf_phdr *elf_phdata = NULL;
-         struct elf_phdr *eppnt;
-         abi_ulong load_addr = 0;
-         int load_addr_set = 0;
-@@ -867,18 +867,13 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
-         if (sizeof(struct elf_phdr) * interp_elf_ex->e_phnum > TARGET_PAGE_SIZE)
-             return ~(abi_ulong)0UL;
- 
--        elf_phdata =  (struct elf_phdr *)
--                malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
--
--        if (!elf_phdata)
--          return ~((abi_ulong)0UL);
-+        elf_phdata = g_new(struct elf_phdr, interp_elf_ex->e_phnum);
- 
-         /*
-          * If the size of this structure has changed, then punt, since
-          * we will be doing the wrong thing.
-          */
-         if (interp_elf_ex->e_phentsize != sizeof(struct elf_phdr)) {
--            free(elf_phdata);
-             return ~((abi_ulong)0UL);
-         }
- 
-@@ -891,7 +886,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
-         if (retval < 0) {
-                 perror("load_elf_interp");
-                 exit(-1);
--                free (elf_phdata);
-                 return retval;
-         }
- #ifdef BSWAP_NEEDED
-@@ -940,7 +934,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
-             if (error == -1) {
-               /* Real error */
-               close(interpreter_fd);
--              free(elf_phdata);
-               return ~((abi_ulong)0UL);
-             }
- 
-@@ -983,7 +976,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
-                         PROT_READ|PROT_WRITE|PROT_EXEC,
-                         MAP_FIXED|MAP_PRIVATE|MAP_ANON, -1, 0);
-         }
--        free(elf_phdata);
- 
-         *interp_load_addr = load_addr;
-         return ((abi_ulong) interp_elf_ex->e_entry) + load_addr;
-@@ -1036,9 +1028,10 @@ static void load_symbols(struct elfhdr *hdr, int fd)
- {
-     unsigned int i, nsyms;
-     struct elf_shdr sechdr, symtab, strtab;
--    char *strings;
--    struct syminfo *s;
--    struct elf_sym *syms, *new_syms;
-+    g_autofree char *strings = NULL;
-+    g_autofree struct syminfo *s = NULL;
-+    g_autofree struct elf_sym *syms = NULL;
-+    struct elf_sym *new_syms;
- 
-     lseek(fd, hdr->e_shoff, SEEK_SET);
-     for (i = 0; i < hdr->e_shnum; i++) {
-@@ -1064,24 +1057,12 @@ static void load_symbols(struct elfhdr *hdr, int fd)
- 
-  found:
-     /* Now know where the strtab and symtab are.  Snarf them. */
--    s = malloc(sizeof(*s));
--    syms = malloc(symtab.sh_size);
--    if (!syms) {
--        free(s);
--        return;
--    }
--    s->disas_strtab = strings = malloc(strtab.sh_size);
--    if (!s->disas_strtab) {
--        free(s);
--        free(syms);
--        return;
--    }
-+    s = g_new(struct syminfo, 1);
-+    syms = g_malloc(symtab.sh_size);
-+    s->disas_strtab = strings = g_new(char, strtab.sh_size);
- 
-     lseek(fd, symtab.sh_offset, SEEK_SET);
-     if (read(fd, syms, symtab.sh_size) != symtab.sh_size) {
--        free(s);
--        free(syms);
--        free(strings);
-         return;
-     }
- 
-@@ -1113,22 +1094,13 @@ static void load_symbols(struct elfhdr *hdr, int fd)
-         that we threw away.  Whether or not this has any effect on the
-         memory allocation depends on the malloc implementation and how
-         many symbols we managed to discard. */
--    new_syms = realloc(syms, nsyms * sizeof(*syms));
--    if (new_syms == NULL) {
--        free(s);
--        free(syms);
--        free(strings);
--        return;
--    }
-+    new_syms = g_realloc(syms, nsyms * sizeof(*syms));
-     syms = new_syms;
- 
-     qsort(syms, nsyms, sizeof(*syms), symcmp);
- 
-     lseek(fd, strtab.sh_offset, SEEK_SET);
-     if (read(fd, strings, strtab.sh_size) != strtab.sh_size) {
--        free(s);
--        free(syms);
--        free(strings);
-         return;
-     }
-     s->disas_num_syms = nsyms;
-@@ -1156,10 +1128,10 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-     unsigned char ibcs2_interpreter;
-     int i;
-     struct elf_phdr * elf_ppnt;
--    struct elf_phdr *elf_phdata;
-+    g_autofree struct elf_phdr *elf_phdata = NULL;
-     abi_ulong elf_bss, k, elf_brk;
-     int retval;
--    char * elf_interpreter;
-+    g_autofree char *elf_interpreter = NULL;
-     abi_ulong elf_entry, interp_load_addr = 0;
-     abi_ulong start_code, end_code, start_data, end_data;
-     abi_ulong reloc_func_desc = 0;
-@@ -1190,10 +1162,7 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-     }
- 
-     /* Now read in all of the header information */
--    elf_phdata = (struct elf_phdr *)malloc(elf_ex.e_phentsize*elf_ex.e_phnum);
--    if (elf_phdata == NULL) {
--        return -ENOMEM;
--    }
-+    elf_phdata = g_new(struct elf_phdr, elf_ex.e_phnum);
- 
-     retval = lseek(bprm->fd, elf_ex.e_phoff, SEEK_SET);
-     if(retval > 0) {
-@@ -1204,7 +1173,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-     if (retval < 0) {
-         perror("load_elf_binary");
-         exit(-1);
--        free (elf_phdata);
-         return -errno;
-     }
- 
-@@ -1220,7 +1188,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-     elf_brk = 0;
- 
- 
--    elf_interpreter = NULL;
-     start_code = ~((abi_ulong)0UL);
-     end_code = 0;
-     start_data = 0;
-@@ -1231,8 +1198,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-         if (elf_ppnt->p_type == PT_INTERP) {
-             if ( elf_interpreter != NULL )
-             {
--                free (elf_phdata);
--                free(elf_interpreter);
-                 close(bprm->fd);
-                 return -EINVAL;
-             }
-@@ -1242,13 +1207,7 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-              * is an a.out format binary
-              */
- 
--            elf_interpreter = (char *)malloc(elf_ppnt->p_filesz);
--
--            if (elf_interpreter == NULL) {
--                free (elf_phdata);
--                close(bprm->fd);
--                return -ENOMEM;
--            }
-+            elf_interpreter = g_new(char, elf_ppnt->p_filesz);
- 
-             retval = lseek(bprm->fd, elf_ppnt->p_offset, SEEK_SET);
-             if(retval >= 0) {
-@@ -1298,8 +1257,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-             if (retval < 0) {
-                 perror("load_elf_binary3");
-                 exit(-1);
--                free (elf_phdata);
--                free(elf_interpreter);
-                 close(bprm->fd);
-                 return retval;
-             }
-@@ -1323,8 +1280,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-         }
- 
-         if (!interpreter_type) {
--            free(elf_interpreter);
--            free(elf_phdata);
-             close(bprm->fd);
-             return -ELIBBAD;
-         }
-@@ -1346,8 +1301,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-             }
-         }
-         if (!bprm->p) {
--            free(elf_interpreter);
--            free (elf_phdata);
-             close(bprm->fd);
-             return -E2BIG;
-         }
-@@ -1486,18 +1439,14 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
-         reloc_func_desc = interp_load_addr;
- 
-         close(interpreter_fd);
--        free(elf_interpreter);
- 
-         if (elf_entry == ~((abi_ulong)0UL)) {
-             printf("Unable to load interpreter\n");
--            free(elf_phdata);
-             exit(-1);
-             return 0;
-         }
-     }
- 
--    free(elf_phdata);
--
-     if (qemu_log_enabled())
-         load_symbols(&elf_ex, bprm->fd);
- 
--- 
-2.25.1
-
-On Fri, 2020-10-02 at 10:08 -0500, Eric Blake wrote:
-> On 10/2/20 3:58 AM, Markus Armbruster wrote:
+On 30.09.20 19:19, Eric Blake wrote:
+> On 9/30/20 10:58 AM, Christian Borntraeger wrote:
+>> gcc 10 from Fedora 32 gives me:
+>>
+>> Compiling C object libblock.fa.p/nbd_server.c.o
+>> ../nbd/server.c: In function ‘nbd_co_client_start’:
+>> ../nbd/server.c:625:14: error: ‘namelen’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>>   625 |         rc = nbd_negotiate_send_info(client, NBD_INFO_NAME, namelen, name,
+>>       |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>   626 |                                      errp);
+>>       |                                      ~~~~~
+>> ../nbd/server.c:564:14: note: ‘namelen’ was declared here
+>>   564 |     uint32_t namelen;
+>>       |              ^~~~~~~
+>> cc1: all warnings being treated as errors
+>>
+>> As I cannot see how this can happen, let uns silence the warning.
 > 
-> > > > > @@ -890,9 +886,8 @@ static abi_ulong load_elf_interp(struct
-> > > > > elfhdr * interp_elf_ex,
-> > > > >          }
-> > > > >          if (retval < 0) {
-> > > > >                  perror("load_elf_interp");
-> > > > > +                g_free(elf_phdata);
-> > > > >                  exit(-1);
-> > > > > -                free (elf_phdata);
-> > > > > -                return retval;
-> > > > 
-> > > > Deleting return looks wrong.
-> > > 
-> > > Why? There is an exit(-1) right in front of it, so this is dead
-> > > code...
-> > > well, maybe that should be done in a separate patch, or at least
-> > > mentioned in the patch description, though.
-> > 
-> > You're right; I missed the exit(-1).
-> > 
-> > Following the unpleasant odour spread by exit(-1)...  Aha, the
-> > function's behavior on error is inconsistent: sometimes it returns
-> > zero,
-> > sometimes it exits.
+> gcc is smart enough to see that nbd_opt_read_name(... &namelen), which
+> is the only use of namelen between declaration and use, does not always
+> initialize namelen; but fails to see we also exit this function early in
+> the same conditions when nbd_opt_read_name left namelen uninit.  The
+> workaround is fine.
 > 
-> Eradicating exit(-1) (which is indistinguishable from exit(255), and
-> generally not what you want, unless your program is designed to
-> specifically invoke the immediate-exit semantics of xargs) is also a
-> worthwhile cleanup project.  But I agree with the advice for separate
-> patches for separate bugs.
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 > 
-> > Since the problem is bigger than just one dead return, I recommend
-> > leaving it to a separate patch, and keeping this one focused on
-> > g_new().
-> > 
-> > 
+> I'm happy for this to go in through the trivial tree, but I'll also
+> queue it on my NBD tree if that is ready first.
 
+Just in case cc qemu-trival. 
 
