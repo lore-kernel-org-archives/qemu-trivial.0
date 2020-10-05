@@ -1,79 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPL93-0000fU-Pf
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 03:42:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55826)
+	id 1kPLNM-0000qH-3G
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 03:57:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPL92-0000de-5K; Mon, 05 Oct 2020 03:42:52 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36864)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPL90-0002B4-NB; Mon, 05 Oct 2020 03:42:51 -0400
-Received: by mail-wm1-x343.google.com with SMTP id j136so7697334wmj.2;
- Mon, 05 Oct 2020 00:42:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ou425MrM93zzw94YYkXdoKoDa2dIAXchADFAz/T72ZU=;
- b=RhM9FlIa4bUryVwqQ7YTZMYccyqmQhR2C0t2biu6QEkJJRTQS9Y+4wdsLHNVM3VaXO
- JU8Sax7/1qxdPEHYdT9srG15gtn9//EPhK7gWitgOAdhnXHeFH/2xrxFhNpx5xgoShiW
- bf3AZZChZ7D5Upy9wqDLc9Wc8NavyDUb9xszXtWk3JWjFVl+jXnXkyyqXJGdCdM+f7yT
- 5sPaoqAdpKwu6+NsUh8BPMAaMkpB+TzD300d4zncmFSWKsgwPmC4HDvTUlge/Y3jDFij
- RrZGVNU2tcavHXv3uLcSo8c2yeg5tctEWxJPl7877BkmZOCpd/8nQousLPJOXNSJ7mFl
- GAEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ou425MrM93zzw94YYkXdoKoDa2dIAXchADFAz/T72ZU=;
- b=tIEARE2bCdZjlIBOI3STTgCyVPPeVQ2erlGxNHHJF92mPhylz+Qv2HFP7Uzb+7cpXv
- By3qpikF0nAHHXrDYrHFw1/xXJhZTKKwCgndiPk+3a4HaouEK9AQvoJVqw6pvKMrGj87
- NE6RNk/8PExtrACgku4YAmbmvDYm5fKzXuLwetnf7sxhO1B/Kd1J5TVr9yYVzhzZZLIl
- PP0MuB6gDPiISkAsDFfYZoDR0+h0Mm1+gx1DAlT0TXN7Em7Z4J6JIilPVzq8zaMiLoT8
- Ze3w9srKMD+vD0lY1W3kOSmnO802oemzrRWfWqJT6ZUmJ0nAdQPMZt+D4O9gwGjI55nA
- kJNQ==
-X-Gm-Message-State: AOAM5327Zr4Yc2OsGH0QMMcNdfgHu758QDyCHyjKk3QaR3q0S7/fVyga
- dxKjajRxJ4Ghbc1iaWxs8WM=
-X-Google-Smtp-Source: ABdhPJzsmgNxpqxFPtPclObri4nInCRZ43xrueZH1WGFYHgmYG0sBK++gIsjj0LKIjEYI1cgoVab9w==
-X-Received: by 2002:a1c:f415:: with SMTP id z21mr15395968wma.88.1601883768847; 
- Mon, 05 Oct 2020 00:42:48 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id q15sm11896659wrr.8.2020.10.05.00.42.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Oct 2020 00:42:48 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] qom: Improve error message displayed with missing object
- properties
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20200920155340.401482-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8cb8d06a-3d28-58a1-7203-a49469ecb820@amsat.org>
-Date: Mon, 5 Oct 2020 09:42:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kPLNK-0000oE-6A
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 03:57:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49756)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kPLNH-00042S-05
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 03:57:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601884653;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zMBMn1g3ajfjio//JMhNgl6rmuGrCIBVU09xjSVhdR0=;
+ b=esxNWy+eyoYgReusEblLW4RD08XGuj2IDlhFdq3WbR/cx8o3osBxvkREq3ZYUSY/kpWjVS
+ 3OlbDJ2w5I4i9FnqPXmZW+pb2A9MWv5L45XrQjJGPYq08lcWRDdO5WkUedom3o2bCfB2SI
+ vRHAubfkCAmt7fF4BMkcDGZJ5NdtFuA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-459-lJr9n0uJMyqGtQJGdRMXEg-1; Mon, 05 Oct 2020 03:57:31 -0400
+X-MC-Unique: lJr9n0uJMyqGtQJGdRMXEg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93575801ABB;
+ Mon,  5 Oct 2020 07:57:29 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-101.ams2.redhat.com
+ [10.36.112.101])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0424F757DF;
+ Mon,  5 Oct 2020 07:57:28 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7E34810C7796; Mon,  5 Oct 2020 09:57:27 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Elena Afanasova <eafanasova@gmail.com>
+Cc: Eric Blake <eblake@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+ kamil@netbsd.org,  brad@comstyle.com,  emaste@freebsd.org,
+ lwhsu@freebsd.org,  qemu-trivial@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH v2] elfload: use g_new/g_malloc and g_autofree
+References: <20201001123807.42978-1-eafanasova@gmail.com>
+ <87r1qhtdxt.fsf@dusky.pond.sub.org>
+ <b4ab229a-0e84-9d0b-1287-846c52a667bb@redhat.com>
+ <87eemhm2b9.fsf@dusky.pond.sub.org>
+ <17636b91-e111-1b60-4eb2-d526df4a6bb6@redhat.com>
+ <d52b5d3655fba86d1b3816115b24997b36952e3b.camel@gmail.com>
+Date: Mon, 05 Oct 2020 09:57:27 +0200
+In-Reply-To: <d52b5d3655fba86d1b3816115b24997b36952e3b.camel@gmail.com> (Elena
+ Afanasova's message of "Sun, 04 Oct 2020 05:20:18 -0700")
+Message-ID: <871ridcdg8.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200920155340.401482-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:11:31
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.745,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,33 +81,295 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2020 07:42:52 -0000
+X-List-Received-Date: Mon, 05 Oct 2020 07:57:38 -0000
 
-Eduardo, can you take this patch, or can it goes via qemu-trivial?
+Please don't post respins as replies, because our tooling will miss them
+there, and even humans may.  Start a new thread instead.  Next time :)
 
-On 9/20/20 5:53 PM, Philippe Mathieu-Daudé wrote:
-> Instead of only displaying the property missing, also display
-> the object name. This help developer to quickly figure out the
-> mistake without opening a debugger.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Elena Afanasova <eafanasova@gmail.com> writes:
+
+> Subject: [PATCH v2] elfload: use g_new/g_malloc and g_autofree
+>
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 > ---
->  qom/object.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/qom/object.c b/qom/object.c
-> index 387efb25ebe..257914b1fe3 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -1259,7 +1259,8 @@ ObjectProperty *object_property_find(Object *obj, const char *name,
->          return prop;
+>  bsd-user/elfload.c | 79 ++++++++--------------------------------------
+>  1 file changed, 14 insertions(+), 65 deletions(-)
+>
+> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+> index 32378af7b2..bc4be4c874 100644
+> --- a/bsd-user/elfload.c
+> +++ b/bsd-user/elfload.c
+> @@ -838,7 +838,7 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
+>                                   int interpreter_fd,
+>                                   abi_ulong *interp_load_addr)
+>  {
+> -        struct elf_phdr *elf_phdata  =  NULL;
+> +        g_autofree struct elf_phdr *elf_phdata = NULL;
+>          struct elf_phdr *eppnt;
+>          abi_ulong load_addr = 0;
+>          int load_addr_set = 0;
+> @@ -867,18 +867,13 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
+>          if (sizeof(struct elf_phdr) * interp_elf_ex->e_phnum > TARGET_PAGE_SIZE)
+>              return ~(abi_ulong)0UL;
+>  
+> -        elf_phdata =  (struct elf_phdr *)
+> -                malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
+> -
+> -        if (!elf_phdata)
+> -          return ~((abi_ulong)0UL);
+> +        elf_phdata = g_new(struct elf_phdr, interp_elf_ex->e_phnum);
+>  
+>          /*
+>           * If the size of this structure has changed, then punt, since
+>           * we will be doing the wrong thing.
+>           */
+>          if (interp_elf_ex->e_phentsize != sizeof(struct elf_phdr)) {
+> -            free(elf_phdata);
+>              return ~((abi_ulong)0UL);
+>          }
+>  
+> @@ -891,7 +886,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
+>          if (retval < 0) {
+>                  perror("load_elf_interp");
+>                  exit(-1);
+> -                free (elf_phdata);
+>                  return retval;
+>          }
+>  #ifdef BSWAP_NEEDED
+> @@ -940,7 +934,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
+>              if (error == -1) {
+>                /* Real error */
+>                close(interpreter_fd);
+> -              free(elf_phdata);
+>                return ~((abi_ulong)0UL);
+>              }
+>  
+> @@ -983,7 +976,6 @@ static abi_ulong load_elf_interp(struct elfhdr * interp_elf_ex,
+>                          PROT_READ|PROT_WRITE|PROT_EXEC,
+>                          MAP_FIXED|MAP_PRIVATE|MAP_ANON, -1, 0);
+>          }
+> -        free(elf_phdata);
+>  
+>          *interp_load_addr = load_addr;
+>          return ((abi_ulong) interp_elf_ex->e_entry) + load_addr;
+> @@ -1036,9 +1028,10 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>  {
+>      unsigned int i, nsyms;
+>      struct elf_shdr sechdr, symtab, strtab;
+> -    char *strings;
+> -    struct syminfo *s;
+> -    struct elf_sym *syms, *new_syms;
+> +    g_autofree char *strings = NULL;
+> +    g_autofree struct syminfo *s = NULL;
+> +    g_autofree struct elf_sym *syms = NULL;
+> +    struct elf_sym *new_syms;
+
+Note for later: @strings, @syminfo and @syms are freed on return.
+
+>  
+>      lseek(fd, hdr->e_shoff, SEEK_SET);
+>      for (i = 0; i < hdr->e_shnum; i++) {
+> @@ -1064,24 +1057,12 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>  
+>   found:
+>      /* Now know where the strtab and symtab are.  Snarf them. */
+> -    s = malloc(sizeof(*s));
+> -    syms = malloc(symtab.sh_size);
+> -    if (!syms) {
+> -        free(s);
+> -        return;
+> -    }
+> -    s->disas_strtab = strings = malloc(strtab.sh_size);
+> -    if (!s->disas_strtab) {
+> -        free(s);
+> -        free(syms);
+> -        return;
+> -    }
+> +    s = g_new(struct syminfo, 1);
+
+The smaller change would be
+
+       s = g_malloc(sizeof(*s));
+
+Matter of taste.
+
+> +    syms = g_malloc(symtab.sh_size);
+> +    s->disas_strtab = strings = g_new(char, strtab.sh_size);
+
+I'd prefer the simpler
+
+       s->disas_strtab = strings = g_malloc(strtab.sh_size);
+
+Yes, it returns void * whereas g_new() returns char *, but the char * is
+vanishingly unlikely to catch actual bugs.
+
+>  
+>      lseek(fd, symtab.sh_offset, SEEK_SET);
+>      if (read(fd, syms, symtab.sh_size) != symtab.sh_size) {
+> -        free(s);
+> -        free(syms);
+> -        free(strings);
+>          return;
 >      }
 >  
-> -    error_setg(errp, "Property '.%s' not found", name);
-> +    error_setg(errp, "Property '%s.%s' not found",
-> +               object_get_typename(obj), name);
->      return NULL;
->  }
+> @@ -1113,22 +1094,13 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>          that we threw away.  Whether or not this has any effect on the
+>          memory allocation depends on the malloc implementation and how
+>          many symbols we managed to discard. */
+> -    new_syms = realloc(syms, nsyms * sizeof(*syms));
+> -    if (new_syms == NULL) {
+> -        free(s);
+> -        free(syms);
+> -        free(strings);
+> -        return;
+> -    }
+> +    new_syms = g_realloc(syms, nsyms * sizeof(*syms));
+>      syms = new_syms;
 >  
-> 
+>      qsort(syms, nsyms, sizeof(*syms), symcmp);
+>  
+>      lseek(fd, strtab.sh_offset, SEEK_SET);
+>      if (read(fd, strings, strtab.sh_size) != strtab.sh_size) {
+> -        free(s);
+> -        free(syms);
+> -        free(strings);
+>          return;
+>      }
+>      s->disas_num_syms = nsyms;
+   #if ELF_CLASS == ELFCLASS32
+       s->disas_symtab.elf32 = syms;
+       s->lookup_symbol = (lookup_symbol_t)lookup_symbolxx;
+   #else
+       s->disas_symtab.elf64 = syms;
+       s->lookup_symbol = (lookup_symbol_t)lookup_symbolxx;
+   #endif
+       s->next = syminfos;
+       syminfos = s;
+
+@strings, @syminfo and @syms are freed here.  s->disas_strtab,
+s->disas_symtab.elf{32,64}, s->next become dangling pointers.
+I'd expect this to blow up.  Have you tested?
+
+   }
+
+> @@ -1156,10 +1128,10 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>      unsigned char ibcs2_interpreter;
+>      int i;
+>      struct elf_phdr * elf_ppnt;
+> -    struct elf_phdr *elf_phdata;
+> +    g_autofree struct elf_phdr *elf_phdata = NULL;
+>      abi_ulong elf_bss, k, elf_brk;
+>      int retval;
+> -    char * elf_interpreter;
+> +    g_autofree char *elf_interpreter = NULL;
+>      abi_ulong elf_entry, interp_load_addr = 0;
+>      abi_ulong start_code, end_code, start_data, end_data;
+>      abi_ulong reloc_func_desc = 0;
+> @@ -1190,10 +1162,7 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>      }
+>  
+>      /* Now read in all of the header information */
+> -    elf_phdata = (struct elf_phdr *)malloc(elf_ex.e_phentsize*elf_ex.e_phnum);
+> -    if (elf_phdata == NULL) {
+> -        return -ENOMEM;
+> -    }
+> +    elf_phdata = g_new(struct elf_phdr, elf_ex.e_phnum);
+
+This assumes elf_ex.e_phentsize == sizeof(struct elf_phdr).  Why is that
+true?
+
+>  
+>      retval = lseek(bprm->fd, elf_ex.e_phoff, SEEK_SET);
+>      if(retval > 0) {
+> @@ -1204,7 +1173,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>      if (retval < 0) {
+>          perror("load_elf_binary");
+>          exit(-1);
+> -        free (elf_phdata);
+>          return -errno;
+>      }
+>  
+> @@ -1220,7 +1188,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>      elf_brk = 0;
+>  
+>  
+> -    elf_interpreter = NULL;
+>      start_code = ~((abi_ulong)0UL);
+>      end_code = 0;
+>      start_data = 0;
+> @@ -1231,8 +1198,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>          if (elf_ppnt->p_type == PT_INTERP) {
+>              if ( elf_interpreter != NULL )
+>              {
+> -                free (elf_phdata);
+> -                free(elf_interpreter);
+>                  close(bprm->fd);
+>                  return -EINVAL;
+>              }
+> @@ -1242,13 +1207,7 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>               * is an a.out format binary
+>               */
+>  
+> -            elf_interpreter = (char *)malloc(elf_ppnt->p_filesz);
+> -
+> -            if (elf_interpreter == NULL) {
+> -                free (elf_phdata);
+> -                close(bprm->fd);
+> -                return -ENOMEM;
+> -            }
+> +            elf_interpreter = g_new(char, elf_ppnt->p_filesz);
+
+Again, I'd prefer the simpler
+
+               elf_interpreter = g_malloc(elf_ppnt->p_filesz);
+
+>  
+>              retval = lseek(bprm->fd, elf_ppnt->p_offset, SEEK_SET);
+>              if(retval >= 0) {
+> @@ -1298,8 +1257,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>              if (retval < 0) {
+>                  perror("load_elf_binary3");
+>                  exit(-1);
+> -                free (elf_phdata);
+> -                free(elf_interpreter);
+>                  close(bprm->fd);
+>                  return retval;
+>              }
+> @@ -1323,8 +1280,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>          }
+>  
+>          if (!interpreter_type) {
+> -            free(elf_interpreter);
+> -            free(elf_phdata);
+>              close(bprm->fd);
+>              return -ELIBBAD;
+>          }
+> @@ -1346,8 +1301,6 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>              }
+>          }
+>          if (!bprm->p) {
+> -            free(elf_interpreter);
+> -            free (elf_phdata);
+>              close(bprm->fd);
+>              return -E2BIG;
+>          }
+> @@ -1486,18 +1439,14 @@ int load_elf_binary(struct linux_binprm * bprm, struct target_pt_regs * regs,
+>          reloc_func_desc = interp_load_addr;
+>  
+>          close(interpreter_fd);
+> -        free(elf_interpreter);
+>  
+>          if (elf_entry == ~((abi_ulong)0UL)) {
+>              printf("Unable to load interpreter\n");
+> -            free(elf_phdata);
+>              exit(-1);
+>              return 0;
+>          }
+>      }
+>  
+> -    free(elf_phdata);
+> -
+>      if (qemu_log_enabled())
+>          load_symbols(&elf_ex, bprm->fd);
+
 
