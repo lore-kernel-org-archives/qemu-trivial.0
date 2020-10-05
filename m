@@ -1,62 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPLm2-000788-Tn
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 04:23:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36690)
+	id 1kPM93-00086U-NF
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 04:46:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kPLm1-00076I-CZ
- for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 04:23:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:48609)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kPM8u-00085n-1G
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 04:46:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31905)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kPLlz-0007EP-BW
- for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 04:23:09 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kPM8m-00025v-RN
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 04:46:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601886186;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=VLIdSsN85IcUhOj40925EP+1CFySfhvhE18uzFCFpAk=;
- b=VShvYt7CI/3o8fBfsSThodHQ26eFtASfo2tEl0pT4AyPeOKYiy/yR9k2Oh6QOdul0Zs8FQ
- TlJ4rKyqyyC1VioMWOnNhhYASGMaD0crmrLro0f8q4r6s3PExQoRt2xnjV6R5O7/50KajZ
- Q0oPQLGXG11NVvZj7Bz5qQm5nCzMqJA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-128-Eg9YeZzkP1yD_Nqi1H2rVA-1; Mon, 05 Oct 2020 04:23:02 -0400
-X-MC-Unique: Eg9YeZzkP1yD_Nqi1H2rVA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 98EA4425CF;
- Mon,  5 Oct 2020 08:23:01 +0000 (UTC)
-Received: from redhat.com (ovpn-114-250.ams2.redhat.com [10.36.114.250])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 93C247BE44;
- Mon,  5 Oct 2020 08:22:56 +0000 (UTC)
-Date: Mon, 5 Oct 2020 09:22:54 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v7 0/4] Fixes curses on msys2/mingw
-Message-ID: <20201005082254.GE2385272@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20201002180838.2047-1-luoyonggang@gmail.com>
+ s=mimecast20190719; t=1601887599;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iGtB50YnsRxdtPcnxSKy9zziUsWLU+C2ClHiTUgK4HY=;
+ b=ErKtggPNLAdxJRoMZM8qJ3tJKJHTvZWYTsN4iCtjzFaODiVfWiC16EcDUaMkNAT/qGsPPz
+ MqouicTSxQBDFccK45irfQlqZ77GzLqO9HRq2oMajYgKWiaJq+doNFTBhWXpe5wEN8C36Z
+ p3SEM/zYSZ22/sDVPFF+qgYmTr4iThA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-590-0S8aBv6hOE6mU2yYMaBrBw-1; Mon, 05 Oct 2020 04:46:38 -0400
+X-MC-Unique: 0S8aBv6hOE6mU2yYMaBrBw-1
+Received: by mail-wm1-f70.google.com with SMTP id 13so2183570wmf.0
+ for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2020 01:46:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=iGtB50YnsRxdtPcnxSKy9zziUsWLU+C2ClHiTUgK4HY=;
+ b=hyS8tK5D//i5d4EwkBCulPKQMi39n0OnAXOzTZZaI1MgcwHV/8DEdWD1J0OwiasUr3
+ nr3WnX1KyjH+txRhsJ+/trkn8oWn/Q5xrd3m3TpYU8QpOvzhIqy3W78u3j4toFCVK9Bn
+ zwP8iGX6FRa1Pk2d7KHmlPFwQD0/waVb92EJW9K8KSCf/WXhu+M//+fkNh7u42vUq9fZ
+ QEB5DngnF2XbBiHvri5lshu1XAM4AKPFOsN7vgi7rivIJcU3puI+Uj7SbcVknorfS4LO
+ tRbrFDlho615XzTG31I9SCPlcaxQy5n95E7NdOEC9LqGcFfqYaKZlWXZMvm5Av8zvv1Q
+ Uivw==
+X-Gm-Message-State: AOAM5318g5nKfQxaGdUV4AD5WjMlGKcnFXq343Qvzh4B+TGBE3weGoyh
+ DMF39fbtHJXbEhZWln5AySqBs10C8rbyZF8PQ19DqaVoZ/7FBeHPVVpjwHRmb863l8Yg8OYRlxc
+ SwrlDitbPftTxb0+luw==
+X-Received: by 2002:adf:f508:: with SMTP id q8mr15628311wro.233.1601887596919; 
+ Mon, 05 Oct 2020 01:46:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxh8gBdXjFPP6Fg5LpFJWyuWEnPq5OgT89WT+nnJI2qo5KAVzXdVErIty6ISrAJ1Uq7rNJfQ==
+X-Received: by 2002:adf:f508:: with SMTP id q8mr15628293wro.233.1601887596747; 
+ Mon, 05 Oct 2020 01:46:36 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:2e86:3d8b:8b70:920c?
+ ([2001:b07:6468:f312:2e86:3d8b:8b70:920c])
+ by smtp.gmail.com with ESMTPSA id f63sm11027412wme.38.2020.10.05.01.46.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Oct 2020 01:46:36 -0700 (PDT)
+Subject: Re: [PATCH] qom: Improve error message displayed with missing object
+ properties
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+References: <20200920155340.401482-1-f4bug@amsat.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <0263e47d-549e-8acb-a6cb-93a7436f5f6d@redhat.com>
+Date: Mon, 5 Oct 2020 10:46:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201002180838.2047-1-luoyonggang@gmail.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20200920155340.401482-1-f4bug@amsat.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 01:25:11
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -65,8 +82,9 @@ X-Spam_score: -3.9
 X-Spam_bar: ---
 X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.745,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,47 +97,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2020 08:23:09 -0000
+X-List-Received-Date: Mon, 05 Oct 2020 08:46:51 -0000
 
-Only one of the 4 patches in this series appears to have been sent.
-
-On Sat, Oct 03, 2020 at 02:08:37AM +0800, Yonggang Luo wrote:
-> V6-V7
-> Update the configure script for
-> * curses: Fixes compiler error that complain don't have langinfo.h on msys2/m=
-> ingw
+On 20/09/20 17:53, Philippe Mathieu-Daudé wrote:
+> Instead of only displaying the property missing, also display
+> the object name. This help developer to quickly figure out the
+> mistake without opening a debugger.
 > 
-> V5-V6
-> Dropping configure: Fixes ncursesw detection under msys2/mingw by convert the=
-> m to meson first.
-> That need the meson 0.56 upstream to fixes the curses detection.
-> Add
-> * configure: fixes indent of $meson setup
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  qom/object.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> Yonggang Luo (4):
->   configure: fixes indent of $meson setup
->   curses: Fixes compiler error that complain don't have langinfo.h on
->     msys2/mingw
->   curses: Fixes curses compiling errors.
->   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE
->     are defined on msys2/mingw
-> 
->  configure                 | 47 +++++----------------------------------
->  include/sysemu/os-win32.h |  4 ++--
->  ui/curses.c               | 14 ++++++------
->  util/oslib-win32.c        |  4 ++--
->  4 files changed, 16 insertions(+), 53 deletions(-)
-> 
-> --=20
-> 2.28.0.windows.1
-> 
+> diff --git a/qom/object.c b/qom/object.c
+> index 387efb25ebe..257914b1fe3 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -1259,7 +1259,8 @@ ObjectProperty *object_property_find(Object *obj, const char *name,
+>          return prop;
+>      }
+>  
+> -    error_setg(errp, "Property '.%s' not found", name);
+> +    error_setg(errp, "Property '%s.%s' not found",
+> +               object_get_typename(obj), name);
+>      return NULL;
+>  }
+>  
 > 
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+
+I think it's okay for qemu-trivial.
 
 
