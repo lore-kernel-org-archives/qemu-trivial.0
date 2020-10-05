@@ -1,65 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPV2D-0001sX-6l
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 14:16:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36204)
+	id 1kPW4o-0001nA-9e
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 15:23:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPV2C-0001sC-0J; Mon, 05 Oct 2020 14:16:28 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:36929)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kPW4m-0001iE-8N
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 15:23:12 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42226)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPV2A-0003Z2-0X; Mon, 05 Oct 2020 14:16:27 -0400
-Received: by mail-lf1-x143.google.com with SMTP id z19so12047985lfr.4;
- Mon, 05 Oct 2020 11:16:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=0Dy7+aGe0krkzZNEYGvv0QTP4Vfv/uE31LQBteMw3D4=;
- b=owKJroDqJmB2M+fsG4fRT6U3Git9YUMlTADmJ2d1eK6zxxY85+YMY61gBfvWBGwAUg
- AJVoceIsqznCTs0AIkiKkZZH4k/vR7BXfj/WvrzKJOkJ3pwYSBljeaOYU7UxpCHNPgr5
- lbKQyozQpkJI1aOXhQF9uwilGIPfdhpNUnOH3PoMhF/4x/StK+IyR7alTXAonwwIWoCv
- QWb2vdMuYwkssn76r/isXGOZVsFK8+R/UsayQhB2e7mi6cLpyyBd7c+xlY3FpsNWa37P
- mQW9P00vvnRZocbvOmdf9TPFVN1IizASwwK3T+okyP9WtEvDG+JmIZ7MXWgDJmoxtqg7
- Sjxg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kPW4j-0003Ua-Mb
+ for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 15:23:11 -0400
+Received: by mail-ed1-x544.google.com with SMTP id j2so10727275eds.9
+ for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2020 12:23:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jfIe+ax7/FYKwNc3Q73tdb1xfdCyd5kHUTSwCu2yi28=;
+ b=LOix/pzZWUXv130EW4mNCyvbQN3jITwiB53XKl4t6lcvhrmJWMnin1+sllAGW/lsmm
+ lSeCnmspCOElW+QIrrOJZBbeB6AMxyrYboYs0C/1/C21o0LQVIZoIbeZsmuPlTAHnr+t
+ Pj90wKXK5Cljx9gnoHjfg+Eue7a+RDXfLBIGXuFOQoqJ0AEDBmMZJSaTMc66hGmtMn2x
+ EAUJU/z7Xq0R8b3fBHEDBGgqNM7h1BxTlr6/CojXeoL6UFXSEXAUM2J6I4D+JjLFRzKw
+ JTD/hX0LyqLD9sh07NquLijY86pJ/A6GgBPz0Z2T3cWzZh/kDY8oOZVw3jb+tJFJJ1Ks
+ MKLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=0Dy7+aGe0krkzZNEYGvv0QTP4Vfv/uE31LQBteMw3D4=;
- b=JLkKRrLmbdETgOqQKDX0K9EzGr/UYoCl1iDga66/12M+flwI3ye2PF1jVk8wFVhx4T
- xQAb3o0UD23Hv90KEqUAGDwU5qivBAQvzi/bLqlBd/iakIsfaQFiofoR/ONIoDCVtMPE
- UW7PK44xTBC8MgddNTlznJg+AZ9kYDuBwjN9S0u6Q4sCNZhUtjWcZySgil9CBljGyXiR
- 9pfWt7e5R3x5ejPXIQ79rNo8+saCRGOMR6fEa/QTQwCtdZLW0kCGNLveC+oOmCtjaGZP
- ZgNqmCvgDVtUwmVF8VyTuSP2rACy/N2k0xdcVqQOEdD8j7rhKaHfPu2GVKuw6bElyMoS
- Igmg==
-X-Gm-Message-State: AOAM531H57D1i6WUe0CwNFXP2pAJ1BxT9ZGJ39shxtqWX+42/+7NwaIR
- 7oQOrwkPLws5xEnNT18bhFeMBxTBLWIn2EDJf9s=
-X-Google-Smtp-Source: ABdhPJw3SSF+d4xZKvNnm2I41qtPQw+wdjlDQgjd7QtxeEw32VpofQjIKrlRBrfQc6WAugIaTN4/mcwZqByX337CRo4=
-X-Received: by 2002:a19:674f:: with SMTP id e15mr224590lfj.50.1601921782883;
- Mon, 05 Oct 2020 11:16:22 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jfIe+ax7/FYKwNc3Q73tdb1xfdCyd5kHUTSwCu2yi28=;
+ b=NimToWkMfHYvYdOryvptxAsyBV2a5BzgJBjsC/gR3GJ2mcw0mr1LXE6VhkUO2nK5Cv
+ ZemBvbd7MoWH2YQtOI8jUHsEidoErLiYz8Fs517YsgNN5YEb7piAwoUjdYFR8w2gyKnx
+ WzfBWRDBp4CyQSvojlbgSkYtbCTZtAdYUhyul1ihjt/nuVzb0wK7p1tT2U2Q3wYImn3G
+ 14B9JKo4KZ4KB4XDXnlWQVMkKX/9H7ozhwi3BS3j/obvOPIzl9K7U8nm6A+SqjZ/uG1B
+ Wr8JWd1fAz09lXVKdoOefMSgYehHHMDPQM1wwrmzbyWTfqLX6uQLpWazGb5n0NJ237mn
+ eS/A==
+X-Gm-Message-State: AOAM531um1wO9Bok3au40plTn4VowI5YGifszclCRFZMyIJtku4UJNpA
+ p27ecuStReGwxxDi/pyfv1d8MOUV+MfR3Y/4ksG9MQ==
+X-Google-Smtp-Source: ABdhPJztg9Jl/vqrrvBKB6rrPrTKbntL6coa+W8TGAbGNB+vi7f2LYgEQaDfh61+8vTepoeKkizUye90zQ+vfx8la6U=
+X-Received: by 2002:aa7:d75a:: with SMTP id a26mr1346328eds.36.1601925787570; 
+ Mon, 05 Oct 2020 12:23:07 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201005172109.416-1-luoyonggang@gmail.com>
- <afc7c5df-8103-9317-7002-d74b14b30be8@amsat.org>
-In-Reply-To: <afc7c5df-8103-9317-7002-d74b14b30be8@amsat.org>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Tue, 6 Oct 2020 02:16:11 +0800
-Message-ID: <CAE2XoE-vfzshWvsT9XyMkPbUDCaO6gUYXvh=STGtSArJgmf9WQ@mail.gmail.com>
+In-Reply-To: <20201005172109.416-1-luoyonggang@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Oct 2020 20:22:56 +0100
+Message-ID: <CAFEAcA95r2FZibphrO0N_rckWOKigM_d80Qi0grtpWWzN3d19A@mail.gmail.com>
 Subject: Re: [PATCH v2] scripts: Convert qemu-version.sh to qemu-version.py
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-level <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000d3ad5f05b0f07aca"
-Received-SPF: pass client-ip=2a00:1450:4864:20::143;
- envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x143.google.com
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,216 +74,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2020 18:16:28 -0000
+X-List-Received-Date: Mon, 05 Oct 2020 19:23:12 -0000
 
---000000000000d3ad5f05b0f07aca
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Oct 6, 2020 at 2:10 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Mon, 5 Oct 2020 at 18:24, Yonggang Luo <luoyonggang@gmail.com> wrote:
 >
-wrote:
+> The sh script are harder to maintain for compatible different
+> xsh environment
 >
-> On 10/5/20 7:21 PM, Yonggang Luo wrote:
-> > The sh script are harder to maintain for compatible different
-> > xsh environment
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  meson.build             |  2 +-
+>  scripts/qemu-version.py | 30 ++++++++++++++++++++++++++++++
+>  scripts/qemu-version.sh | 25 -------------------------
+>  3 files changed, 31 insertions(+), 26 deletions(-)
+>  create mode 100644 scripts/qemu-version.py
+>  delete mode 100755 scripts/qemu-version.sh
 >
-> What are the changes since v1?
-
-+    pc =3D subprocess.run(['git', 'describe', '--match', "'v*'", '--dirty'=
-,
-'--always'],
-+        stdout=3Dsubprocess.PIPE, stderr=3Dsubprocess.DEVNULL, cwd=3Ddir)
-
-I output the stderr to devnull so that doesn't pollute the console.
-
+> diff --git a/meson.build b/meson.build
+> index 95a532bd29..20f653b6eb 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -1072,7 +1072,7 @@ tracetool = [
+>     '--backend=' + config_host['TRACE_BACKENDS']
+>  ]
 >
-> >  meson.build             |  2 +-
-> >  scripts/qemu-version.py | 30 ++++++++++++++++++++++++++++++
-> >  scripts/qemu-version.sh | 25 -------------------------
-> >  3 files changed, 31 insertions(+), 26 deletions(-)
-> >  create mode 100644 scripts/qemu-version.py
-> >  delete mode 100755 scripts/qemu-version.sh
-> >
-> > diff --git a/meson.build b/meson.build
-> > index 95a532bd29..20f653b6eb 100644
-> > --- a/meson.build
-> > +++ b/meson.build
-> > @@ -1072,7 +1072,7 @@ tracetool =3D [
-> >     '--backend=3D' + config_host['TRACE_BACKENDS']
-> >  ]
-> >
-> > -qemu_version_cmd =3D [find_program('scripts/qemu-version.sh'),
-> > +qemu_version_cmd =3D [find_program('scripts/qemu-version.py'),
-> >                      meson.current_source_dir(),
-> >                      config_host['PKGVERSION'], meson.project_version()=
-]
-> >  qemu_version =3D custom_target('qemu-version.h',
-> > diff --git a/scripts/qemu-version.py b/scripts/qemu-version.py
-> > new file mode 100644
-> > index 0000000000..384c54027d
-> > --- /dev/null
-> > +++ b/scripts/qemu-version.py
-> > @@ -0,0 +1,30 @@
-> > +#!/usr/bin/env python3
-> > +
-> > +# Script for retrieve qemu git version information
-> > +# and output to stdout as QEMU_PKGVERSION and QEMU_FULL_VERSION header
-> > +# Author: Yonggang Luo <luoyonggang@gmail.com>
-> > +
-> > +import sys
-> > +import subprocess
-> > +
-> > +def main(args):
-> > +    if len(args) <=3D 3:
-> > +        sys.exit(0)
-> > +
-> > +    dir =3D args[1]
-> > +    pkgversion =3D args[2]
-> > +    version =3D args[3]
-> > +    pc =3D subprocess.run(['git', 'describe', '--match', "'v*'",
-'--dirty', '--always'],
-> > +        stdout=3Dsubprocess.PIPE, stderr=3Dsubprocess.DEVNULL, cwd=3Dd=
-ir)
-> > +    if pc.returncode =3D=3D 0:
-> > +        pkgversion =3D pc.stdout.decode('utf8').strip()
-> > +    fullversion =3D version
-> > +    if len(pkgversion) > 0:
-> > +        fullversion =3D "{} ({})".format(version, pkgversion)
-> > +
-> > +    version_header =3D '''#define QEMU_PKGVERSION "{}"
-> > +#define QEMU_FULL_VERSION "{}"'''.format(pkgversion, fullversion)
-> > +    sys.stdout.buffer.write(version_header.encode('utf8'))
-> > +
-> > +if __name__ =3D=3D "__main__":
-> > +    main(sys.argv)
-> > diff --git a/scripts/qemu-version.sh b/scripts/qemu-version.sh
-> > deleted file mode 100755
-> > index 03128c56a2..0000000000
-> > --- a/scripts/qemu-version.sh
-> > +++ /dev/null
-> > @@ -1,25 +0,0 @@
-> > -#!/bin/sh
-> > -
-> > -set -eu
-> > -
-> > -dir=3D"$1"
-> > -pkgversion=3D"$2"
-> > -version=3D"$3"
-> > -
-> > -if [ -z "$pkgversion" ]; then
-> > -    cd "$dir"
-> > -    if [ -e .git ]; then
-> > -        pkgversion=3D$(git describe --match 'v*' --dirty | echo "")
-> > -    fi
-> > -fi
-> > -
-> > -if [ -n "$pkgversion" ]; then
-> > -    fullversion=3D"$version ($pkgversion)"
-> > -else
-> > -    fullversion=3D"$version"
-> > -fi
-> > -
-> > -cat <<EOF
-> > -#define QEMU_PKGVERSION "$pkgversion"
-> > -#define QEMU_FULL_VERSION "$fullversion"
-> > -EOF
-> >
+> -qemu_version_cmd = [find_program('scripts/qemu-version.sh'),
+> +qemu_version_cmd = [find_program('scripts/qemu-version.py'),
+>                      meson.current_source_dir(),
+>                      config_host['PKGVERSION'], meson.project_version()]
+>  qemu_version = custom_target('qemu-version.h',
+> diff --git a/scripts/qemu-version.py b/scripts/qemu-version.py
+> new file mode 100644
+> index 0000000000..384c54027d
+> --- /dev/null
+> +++ b/scripts/qemu-version.py
+> @@ -0,0 +1,30 @@
+> +#!/usr/bin/env python3
+> +
+> +# Script for retrieve qemu git version information
+> +# and output to stdout as QEMU_PKGVERSION and QEMU_FULL_VERSION header
+> +# Author: Yonggang Luo <luoyonggang@gmail.com>
 
+Can we have a license statement in all new files, please?
 
+> +
+> +import sys
+> +import subprocess
+> +
+> +def main(args):
+> +    if len(args) <= 3:
+> +        sys.exit(0)
+> +
+> +    dir = args[1]
+> +    pkgversion = args[2]
+> +    version = args[3]
+> +    pc = subprocess.run(['git', 'describe', '--match', "'v*'", '--dirty', '--always'],
+> +        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, cwd=dir)
+> +    if pc.returncode == 0:
+> +        pkgversion = pc.stdout.decode('utf8').strip()
+> +    fullversion = version
+> +    if len(pkgversion) > 0:
+> +        fullversion = "{} ({})".format(version, pkgversion)
+> +
+> +    version_header = '''#define QEMU_PKGVERSION "{}"
+> +#define QEMU_FULL_VERSION "{}"'''.format(pkgversion, fullversion)
+> +    sys.stdout.buffer.write(version_header.encode('utf8'))
+> +
+> +if __name__ == "__main__":
+> +    main(sys.argv)
 
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+Wow, python really makes this kind of task clunky compared to shell...
 
---000000000000d3ad5f05b0f07aca
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This doesn't seem to be the same logic as the original shell.
+I'm not too familiar with python, but:
+ * the shell script doesn't run git if pkgversion is not the empty string
+ * the shell script doesn't run git unless the .git directory exists
+If these are intentional behaviour changes you should mention
+them in the commit message.
 
-<div dir=3D"ltr"><br><br>On Tue, Oct 6, 2020 at 2:10 AM Philippe Mathieu-Da=
-ud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wro=
-te:<br>&gt;<br>&gt; On 10/5/20 7:21 PM, Yonggang Luo wrote:<br>&gt; &gt; Th=
-e sh script are harder to maintain for compatible different<br>&gt; &gt; xs=
-h environment<br>&gt; &gt;<br>&gt; &gt; Signed-off-by: Yonggang Luo &lt;<a =
-href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt;=
- &gt; ---<br>&gt;<br>&gt; What are the changes since v1?<div><br></div><div=
-><span class=3D"gmail-im" style=3D"color:rgb(80,0,80)">+=C2=A0 =C2=A0 pc =
-=3D subprocess.run([&#39;git&#39;, &#39;describe&#39;, &#39;--match&#39;, &=
-quot;&#39;v*&#39;&quot;, &#39;--dirty&#39;, &#39;--always&#39;],<br></span>=
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 stdout=3Dsubprocess.PIPE, stderr=3Dsubprocess.=
-DEVNULL, cwd=3Ddir)=C2=A0</div><div><br></div><div>I output the stderr to d=
-evnull so that doesn&#39;t pollute the console.</div><div>=C2=A0<br>&gt;<br=
->&gt; &gt; =C2=A0meson.build =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | =
-=C2=A02 +-<br>&gt; &gt; =C2=A0scripts/qemu-version.py | 30 ++++++++++++++++=
-++++++++++++++<br>&gt; &gt; =C2=A0scripts/qemu-version.sh | 25 ------------=
--------------<br>&gt; &gt; =C2=A03 files changed, 31 insertions(+), 26 dele=
-tions(-)<br>&gt; &gt; =C2=A0create mode 100644 scripts/qemu-version.py<br>&=
-gt; &gt; =C2=A0delete mode 100755 scripts/qemu-version.sh<br>&gt; &gt;<br>&=
-gt; &gt; diff --git a/meson.build b/meson.build<br>&gt; &gt; index 95a532bd=
-29..20f653b6eb 100644<br>&gt; &gt; --- a/meson.build<br>&gt; &gt; +++ b/mes=
-on.build<br>&gt; &gt; @@ -1072,7 +1072,7 @@ tracetool =3D [<br>&gt; &gt; =
-=C2=A0 =C2=A0 &#39;--backend=3D&#39; + config_host[&#39;TRACE_BACKENDS&#39;=
-]<br>&gt; &gt; =C2=A0]<br>&gt; &gt; <br>&gt; &gt; -qemu_version_cmd =3D [fi=
-nd_program(&#39;scripts/qemu-version.sh&#39;),<br>&gt; &gt; +qemu_version_c=
-md =3D [find_program(&#39;scripts/qemu-version.py&#39;),<br>&gt; &gt; =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0me=
-son.current_source_dir(),<br>&gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0config_host[&#39;PKGVERSION&#39;],=
- meson.project_version()]<br>&gt; &gt; =C2=A0qemu_version =3D custom_target=
-(&#39;qemu-version.h&#39;,<br>&gt; &gt; diff --git a/scripts/qemu-version.p=
-y b/scripts/qemu-version.py<br>&gt; &gt; new file mode 100644<br>&gt; &gt; =
-index 0000000000..384c54027d<br>&gt; &gt; --- /dev/null<br>&gt; &gt; +++ b/=
-scripts/qemu-version.py<br>&gt; &gt; @@ -0,0 +1,30 @@<br>&gt; &gt; +#!/usr/=
-bin/env python3<br>&gt; &gt; +<br>&gt; &gt; +# Script for retrieve qemu git=
- version information<br>&gt; &gt; +# and output to stdout as QEMU_PKGVERSIO=
-N and QEMU_FULL_VERSION header<br>&gt; &gt; +# Author: Yonggang Luo &lt;<a =
-href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt;=
- &gt; +<br>&gt; &gt; +import sys<br>&gt; &gt; +import subprocess<br>&gt; &g=
-t; +<br>&gt; &gt; +def main(args):<br>&gt; &gt; + =C2=A0 =C2=A0if len(args)=
- &lt;=3D 3:<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0sys.exit(0)<br>&gt; &=
-gt; +<br>&gt; &gt; + =C2=A0 =C2=A0dir =3D args[1]<br>&gt; &gt; + =C2=A0 =C2=
-=A0pkgversion =3D args[2]<br>&gt; &gt; + =C2=A0 =C2=A0version =3D args[3]<b=
-r>&gt; &gt; + =C2=A0 =C2=A0pc =3D subprocess.run([&#39;git&#39;, &#39;descr=
-ibe&#39;, &#39;--match&#39;, &quot;&#39;v*&#39;&quot;, &#39;--dirty&#39;, &=
-#39;--always&#39;],<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0stdout=3Dsubp=
-rocess.PIPE, stderr=3Dsubprocess.DEVNULL, cwd=3Ddir)<br>&gt; &gt; + =C2=A0 =
-=C2=A0if pc.returncode =3D=3D 0:<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-pkgversion =3D pc.stdout.decode(&#39;utf8&#39;).strip()<br>&gt; &gt; + =C2=
-=A0 =C2=A0fullversion =3D version<br>&gt; &gt; + =C2=A0 =C2=A0if len(pkgver=
-sion) &gt; 0:<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0fullversion =3D &qu=
-ot;{} ({})&quot;.format(version, pkgversion)<br>&gt; &gt; +<br>&gt; &gt; + =
-=C2=A0 =C2=A0version_header =3D &#39;&#39;&#39;#define QEMU_PKGVERSION &quo=
-t;{}&quot;<br>&gt; &gt; +#define QEMU_FULL_VERSION &quot;{}&quot;&#39;&#39;=
-&#39;.format(pkgversion, fullversion)<br>&gt; &gt; + =C2=A0 =C2=A0sys.stdou=
-t.buffer.write(version_header.encode(&#39;utf8&#39;))<br>&gt; &gt; +<br>&gt=
-; &gt; +if __name__ =3D=3D &quot;__main__&quot;:<br>&gt; &gt; + =C2=A0 =C2=
-=A0main(sys.argv)<br>&gt; &gt; diff --git a/scripts/qemu-version.sh b/scrip=
-ts/qemu-version.sh<br>&gt; &gt; deleted file mode 100755<br>&gt; &gt; index=
- 03128c56a2..0000000000<br>&gt; &gt; --- a/scripts/qemu-version.sh<br>&gt; =
-&gt; +++ /dev/null<br>&gt; &gt; @@ -1,25 +0,0 @@<br>&gt; &gt; -#!/bin/sh<br=
->&gt; &gt; -<br>&gt; &gt; -set -eu<br>&gt; &gt; -<br>&gt; &gt; -dir=3D&quot=
-;$1&quot;<br>&gt; &gt; -pkgversion=3D&quot;$2&quot;<br>&gt; &gt; -version=
-=3D&quot;$3&quot;<br>&gt; &gt; -<br>&gt; &gt; -if [ -z &quot;$pkgversion&qu=
-ot; ]; then<br>&gt; &gt; - =C2=A0 =C2=A0cd &quot;$dir&quot;<br>&gt; &gt; - =
-=C2=A0 =C2=A0if [ -e .git ]; then<br>&gt; &gt; - =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0pkgversion=3D$(git describe --match &#39;v*&#39; --dirty | echo &quot;&q=
-uot;)<br>&gt; &gt; - =C2=A0 =C2=A0fi<br>&gt; &gt; -fi<br>&gt; &gt; -<br>&gt=
-; &gt; -if [ -n &quot;$pkgversion&quot; ]; then<br>&gt; &gt; - =C2=A0 =C2=
-=A0fullversion=3D&quot;$version ($pkgversion)&quot;<br>&gt; &gt; -else<br>&=
-gt; &gt; - =C2=A0 =C2=A0fullversion=3D&quot;$version&quot;<br>&gt; &gt; -fi=
-<br>&gt; &gt; -<br>&gt; &gt; -cat &lt;&lt;EOF<br>&gt; &gt; -#define QEMU_PK=
-GVERSION &quot;$pkgversion&quot;<br>&gt; &gt; -#define QEMU_FULL_VERSION &q=
-uot;$fullversion&quot;<br>&gt; &gt; -EOF<br>&gt; &gt;<br><br><br><br>--<br>=
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=
-=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo<=
-/div></div>
+Also worth mentioning that you're fixing the bug in the shell
+script where we ignore the output from git (the intention was
+to ignore a failure from git but otherwise to keep its output;
+this patch:
+https://patchew.org/QEMU/20200929143654.518157-1-marcandre.lureau@redhat.com/
+is the fix for that in the existing shell script).
 
---000000000000d3ad5f05b0f07aca--
+> diff --git a/scripts/qemu-version.sh b/scripts/qemu-version.sh
+> deleted file mode 100755
+> index 03128c56a2..0000000000
+> --- a/scripts/qemu-version.sh
+> +++ /dev/null
+> @@ -1,25 +0,0 @@
+> -#!/bin/sh
+> -
+> -set -eu
+> -
+> -dir="$1"
+> -pkgversion="$2"
+> -version="$3"
+> -
+> -if [ -z "$pkgversion" ]; then
+> -    cd "$dir"
+> -    if [ -e .git ]; then
+> -        pkgversion=$(git describe --match 'v*' --dirty | echo "")
+> -    fi
+> -fi
+> -
+> -if [ -n "$pkgversion" ]; then
+> -    fullversion="$version ($pkgversion)"
+> -else
+> -    fullversion="$version"
+> -fi
+> -
+> -cat <<EOF
+> -#define QEMU_PKGVERSION "$pkgversion"
+> -#define QEMU_FULL_VERSION "$fullversion"
+> -EOF
+
+thanks
+-- PMM
 
