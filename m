@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPl1H-0003Wn-Mp
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 07:20:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36220)
+	id 1kPl2f-0005Fx-He
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 07:22:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPl1F-0003T0-Dv; Tue, 06 Oct 2020 07:20:33 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:45654)
+ id 1kPl2d-0005CQ-L4; Tue, 06 Oct 2020 07:21:59 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:36841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPl0r-0006Bd-B8; Tue, 06 Oct 2020 07:20:33 -0400
-Received: by mail-pl1-x636.google.com with SMTP id y20so1060309pll.12;
- Tue, 06 Oct 2020 04:20:08 -0700 (PDT)
+ id 1kPl2b-0006TG-C7; Tue, 06 Oct 2020 07:21:59 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id s19so1061949plp.3;
+ Tue, 06 Oct 2020 04:21:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ireCJYo+5bCBzUR1jS15CkZt6OPS1jT+teHIMYat7dE=;
- b=UPbhtChiqhUqHsbV5OcSf6Cu/LKWwVkYWrZWiUpyRWGmU6zP8pXWYYQJ41ysb+R1e7
- JfS/qPzaMu3BgVdpF6O9prGc7YSlPO26ev0usm1bKioM7fWLishzaQvsLM8kiuAJCDNv
- XPJ506hw7419GAeLHHBPrVPewUBa9p1FoM+7cMgPEdYqsgSzCr9bybKiv5u5IDE51v0N
- R5lCBqLd9DpaxHDPiu2wJLz2ALDAgefJXE9JK8JSqyUNTgMkrBabM9UwCPjkhzIcNXbp
- FpHEp783AM9AlXmPn+/5c91uAUemG5raWJp2mEcaojKrAJzQpaaQC7mizgZcLwR3q8/v
- hzMw==
+ bh=IVrvxOUsYiShuvVwfOqOW7Y32dz8mgeWzYfDdIYjZq4=;
+ b=kmGxAOHvW3lkdEe5GatiS1wOBBP7Mg0YbBl8vbCwjjxpPUYjEGvPFuKxFywFHYamYO
+ quVhymddOnJQiH3fLQbQbRteoB49qWx3aXG9qIvOoRrEG/t5VQgC9A4q2mnVlrOeXZ2V
+ XOvq3WV8Vkiz9tAJV2QHNI/Rxp2p8oqO4GiIcb1IhCg3AyvKk2gJK7BmAkKJ44iq85gU
+ QSK461GkPwpf8xdUpURcE4BuhpPElMbev8KOcJ/nqikzZ3XwTd5/83i64/WkOu7EOQyD
+ P0q1sD98E9gx11h2XYj/pLrmyieb03pSfZB7OkYzfh3TronbU6Q8qZ95TgTuUdSp4lrC
+ 5mdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ireCJYo+5bCBzUR1jS15CkZt6OPS1jT+teHIMYat7dE=;
- b=YQ2J8jfDnoYEBzn+s0iFpc/lPc0gFAdY5bI7kLikLQWmZ2RHqyj/6/9TdIv35278sr
- vOdPo0v9MWZ4fA/11u0mkpCXgS4cHAgmuE8cg/s186i9HKffnfMqqtT3hofbMETJBiHz
- WnzOucGVLvORDrkUVlUip+b9ltsDkjQ7XjKLUZpt+zVsy5oyUMxh/oCNYqBLXmzQzyNd
- VtuAaf7Ft00A0IF4txsLDbYk51ALSm8c79tX1XhERbYCW4CpdIbrQ9+HKZNhUfteqt02
- lTLQBRr2DMxpjPZca2mtw1G1d7i9UvA5HimcMABcFf3OxR57XipmWHWhvP3riob2k0Os
- eIPw==
-X-Gm-Message-State: AOAM531XwHkKh6Jl4U3wEHnRG2YMFY62xGV7xaKlFcq0pWXJaSOURkrB
- WapPUg35dvYDiRBSzeyrBi2G88fVIeOE9Q==
-X-Google-Smtp-Source: ABdhPJwrmisqF/6pZTr5tLYgEk5c5pdecz2VycWogSUA3CrdSu61WDxXj7jOcj1DYXaxQmETBDkyBw==
-X-Received: by 2002:a17:90a:7486:: with SMTP id
- p6mr3955965pjk.162.1601983207110; 
- Tue, 06 Oct 2020 04:20:07 -0700 (PDT)
+ bh=IVrvxOUsYiShuvVwfOqOW7Y32dz8mgeWzYfDdIYjZq4=;
+ b=aeNFazSHenBvXIvAOrTtxextS8FBaB34EVibeGdMGa5K8ibXk40gd4PAiZ6ykwIb9d
+ x4ydSjK5jeM8r+sjPI4qhyDIarLQmguvUh/v8NUPnXajxchHy9g7NxUSFOpXhfkZIuhW
+ iVrr/lJzXkeY7uxVhXv/TVyV+Td3wil9BSLhnvZL8UxlKeUZCi0i35hOM225+U6+7/va
+ rPUxhTrK0lM45tpumrhi5YS7ol8JRs4jivT1+NhdttNfQpm/kOjMsuy9v6unhksaPo1B
+ yf4YTXOzhWo+ni1PFX/6PCUbsArQ5Xdgeya0hF/ySNtW5a6TYnIUj24QGVvep5csklJX
+ 9PXQ==
+X-Gm-Message-State: AOAM530LUetE84RKXeaIr57uFn2Ph5ti8MB5DbfOYFWA8AFoQyFakCfn
+ kwzqWJLdZT0UQzvmZ7FUTUXe6mELxMqxyQ==
+X-Google-Smtp-Source: ABdhPJyQK737y3aJY3hIYbB0NQfhrTDNoMRVyK229Faidi+31li38fTPgdQZ/AWX4xWc2fFSvVoPuQ==
+X-Received: by 2002:a17:90a:128d:: with SMTP id
+ g13mr3779868pja.35.1601983314940; 
+ Tue, 06 Oct 2020 04:21:54 -0700 (PDT)
 Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id j4sm2988116pfj.143.2020.10.06.04.20.04
+ by smtp.googlemail.com with ESMTPSA id x3sm2941386pgg.54.2020.10.06.04.21.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2020 04:20:06 -0700 (PDT)
+ Tue, 06 Oct 2020 04:21:54 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=E8=8C=85?= <f4bug@amsat.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v4] scripts: Convert qemu-version.sh to qemu-version.py
-Date: Tue,  6 Oct 2020 19:19:50 +0800
-Message-Id: <20201006111950.875-1-luoyonggang@gmail.com>
+Subject: [PATCH v5] scripts: Convert qemu-version.sh to qemu-version.py
+Date: Tue,  6 Oct 2020 19:21:39 +0800
+Message-Id: <20201006112139.700-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x62e.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -78,7 +78,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Oct 2020 11:20:33 -0000
+X-List-Received-Date: Tue, 06 Oct 2020 11:22:00 -0000
 
 The sh script are harder to maintain for compatible different
 xsh environment so convert it to python script
@@ -111,7 +111,7 @@ index 95a532bd29..20f653b6eb 100644
  qemu_version = custom_target('qemu-version.h',
 diff --git a/scripts/qemu-version.py b/scripts/qemu-version.py
 new file mode 100644
-index 0000000000..04a68b7612
+index 0000000000..e6eb548220
 --- /dev/null
 +++ b/scripts/qemu-version.py
 @@ -0,0 +1,31 @@
@@ -142,7 +142,7 @@ index 0000000000..04a68b7612
 +        fullversion = "{} ({})".format(version, pkgversion)
 +
 +    print('#define QEMU_PKGVERSION "%s"' % pkgversion)
-+    print('#define QEMU_FULLVERSION "%s"' % fullversion)
++    print('#define QEMU_FULL_VERSION "%s"' % fullversion)
 +
 +if __name__ == "__main__":
 +    main(*sys.argv)
