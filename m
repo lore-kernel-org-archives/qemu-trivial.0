@@ -1,71 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPfxA-0007qg-Fc
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 01:56:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46266)
+	id 1kPhc0-0003HE-Te
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 03:42:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kPfx8-0007pv-Ld
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 01:55:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36847)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kPhby-0003BX-Rt
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 03:42:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60020)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kPfx6-0006kv-D7
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 01:55:58 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kPhbw-0002xE-BI
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 03:42:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601963755;
+ s=mimecast20190719; t=1601970130;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UrZygpvh9pmqOkW8TdeRxz0K0eh5T3/89hZCaKcyY/I=;
- b=ZcYnKnS8SDAl0GkGlINNMF8brj7IXdB/WVcZIvegjweD9MzBqH9icjRt3IUkcWeIfTsvW+
- c/a5Tpaulwdt1nhcPvX8W1XxmRkA7BL5oocHucmvCb8/rfY4wFi3HFyJHkdQZxGyB3ycD6
- AjgAkf843thQiJEUQ/daVVBfcS7uWVs=
+ bh=BgId7LstDm7tdDrDOesKhRCBO+RL7ifS3kYl+H00O8g=;
+ b=BxT9IZMuxUn9rPijZ92G11F+T8RZhdVObBYI2NKVqIF/Tvo3Vmm0NN7wdr290tocrlHW/Q
+ ACXEx0yuwpAC2VM48bVItHbRb272xWViWh380nKR9AIEjpo1EEKwD6wLf4GmoRp/4E4sW8
+ kUQZyEDsOPmiFtS/tfmIFYkw/41LD0k=
 Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
  [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-503-YLoeWl0oOCSVtxuypsWLhg-1; Tue, 06 Oct 2020 01:55:53 -0400
-X-MC-Unique: YLoeWl0oOCSVtxuypsWLhg-1
-Received: by mail-wr1-f72.google.com with SMTP id o6so4913995wrp.1
- for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2020 22:55:53 -0700 (PDT)
+ us-mta-201-zlxt7D-cNXGEmbjcn1W2wA-1; Tue, 06 Oct 2020 03:42:07 -0400
+X-MC-Unique: zlxt7D-cNXGEmbjcn1W2wA-1
+Received: by mail-wr1-f72.google.com with SMTP id b6so275711wrn.17
+ for <qemu-trivial@nongnu.org>; Tue, 06 Oct 2020 00:42:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=UrZygpvh9pmqOkW8TdeRxz0K0eh5T3/89hZCaKcyY/I=;
- b=JXdKFq2Q03QXyoo2+r/haTfN8B3nMjf79ZvlOZFxe8U+IojVaPipBix/lytsjMzfl1
- LwrnH33gNrb0wlm6gNdQ5J5JrY0IGqtC+uVLcLUlyoZByH8IQRZUHIHOO3SY4lbTnaqK
- jjgvDCddquuP4QTSlyuddh/KClnsr2XuLsnvON2M7WOfrkFfRYglbpAaON5lKMYCCeZ4
- Ue+i9yMrKXpZI2RY0wmvXuxAvv7l3/zWeHIH1G84N973RmeTp2Ay88TD0HFdLPYEP4ZK
- dpbrdASX6n3UeSDTs7fUZqcFzWWeUw4DuHOipwpuKkG6FTw37FEaLvf3Bxv2rxSRkrnM
- /Sog==
-X-Gm-Message-State: AOAM533NjjYqKLytnAHUVGtMx29baC+FG8hkLc/B6IUjP9t6L+ON7ZPd
- eY3WfPhDh9ugvYl1PHktix8etGmb56szLlOnV8ecjtz3gN7FEvhRzWaPAGYMIYTq0K72FeMgfhM
- KdFtXCw/m3kuu6T/Eqw==
-X-Received: by 2002:a1c:b409:: with SMTP id d9mr2990655wmf.106.1601963752155; 
- Mon, 05 Oct 2020 22:55:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyK2vxD+CstKvWFKlAjmVbDkxmqD44/PqMkmg1/gQj1fUTFDQFkP6mcI/QpU8A0/fg269rHAg==
-X-Received: by 2002:a1c:b409:: with SMTP id d9mr2990625wmf.106.1601963751857; 
- Mon, 05 Oct 2020 22:55:51 -0700 (PDT)
-Received: from redhat.com (bzq-79-179-71-128.red.bezeqint.net. [79.179.71.128])
- by smtp.gmail.com with ESMTPSA id q20sm2192164wmc.39.2020.10.05.22.55.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2020 22:55:50 -0700 (PDT)
-Date: Tue, 6 Oct 2020 01:55:47 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Sergey Nizovtsev <snizovtsev@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Ben Warren <ben@skyportsystems.com>, Igor Mammedov <imammedo@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH] qom: fix objects with improper parent type
-Message-ID: <20201006015528-mutt-send-email-mst@kernel.org>
-References: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BgId7LstDm7tdDrDOesKhRCBO+RL7ifS3kYl+H00O8g=;
+ b=W3hE3/d9snv/hYcbX/G5W6JIxPc7YVaLkWImNOQfhVWWz0NYKAf4XbDz1UyrqCHkCP
+ U0Od1ln7meYm9l/W7T5yFjji9tTe8CTVRNbZfm++E7ophdK72DtKqO4HoJguwuRNExaF
+ PaFc2bw4axSbQ6tKjsqxUXANmTvdcmbfotjsXZ1+pGcPrLTBQya4YkeFKUhU1gk4W1gf
+ /av40blqsCQAHwmdA9lpok6tsFilsblB0w70wh/oC5G99O05nV1nTdbwJBv+uHkI+naf
+ IhhR1ljZkvqh6mDvDTxmaeojkx5ytocXfP+uE8hYzzEosWMPf/3cL8IlIVn17IyIKU1K
+ S3EQ==
+X-Gm-Message-State: AOAM531Ac+odBimpirizXeS2NfoXFrJzojySpHp0V6DZBIDDnWiSfU3E
+ 0aj86b8DlC7pcO7G7bS62qYy9aiAxIJFdeucw3injfk0EjSA63RYFD5TH+oTV9meTeld4xBKHkn
+ Uz5wNstJhoXtoe01Cmw==
+X-Received: by 2002:a1c:a593:: with SMTP id o141mr3352648wme.88.1601970126747; 
+ Tue, 06 Oct 2020 00:42:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHM1zfXwthC7OTHyqntKgn8EiG/SZjcN514t2ZqVLFf3YTtTgs4CjaCN71VEkIEw/Dt/9e+w==
+X-Received: by 2002:a1c:a593:: with SMTP id o141mr3352616wme.88.1601970126489; 
+ Tue, 06 Oct 2020 00:42:06 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:5aca:cd0b:c4a1:9c2e?
+ ([2001:b07:6468:f312:5aca:cd0b:c4a1:9c2e])
+ by smtp.gmail.com with ESMTPSA id h76sm2818079wme.10.2020.10.06.00.42.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Oct 2020 00:42:05 -0700 (PDT)
+Subject: Re: [PATCH v2] scripts: Convert qemu-version.sh to qemu-version.py
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20201005172109.416-1-luoyonggang@gmail.com>
+ <CAFEAcA95r2FZibphrO0N_rckWOKigM_d80Qi0grtpWWzN3d19A@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <7f6f412b-03f8-b8f3-9708-0080277999a6@redhat.com>
+Date: Tue, 6 Oct 2020 09:42:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA95r2FZibphrO0N_rckWOKigM_d80Qi0grtpWWzN3d19A@mail.gmail.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/06 00:55:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -74,8 +83,9 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,115 +98,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Oct 2020 05:55:58 -0000
+X-List-Received-Date: Tue, 06 Oct 2020 07:42:15 -0000
 
-On Tue, Sep 29, 2020 at 04:47:14PM -0700, Sergey Nizovtsev wrote:
-> Some objects accidentally inherit ObjectClass instead of Object.
-> They compile silently but may crash after downcasting.
-> 
-> In this patch, we introduce a coccinelle script to find broken
-> declarations and fix them manually with proper base type.
-> 
-> Signed-off-by: Sergey Nizovtsev <snizovtsev@gmail.com>
+On 05/10/20 21:22, Peter Maydell wrote:
+>> +def main(args):
+>> +    if len(args) <= 3:
+>> +        sys.exit(0)
+>> +
+>> +    dir = args[1]
+>> +    pkgversion = args[2]
+>> +    version = args[3]
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+In addition to what Peter pointed out, all these lines can be changed to
 
-which tree should this go in through?
+    def main(dir, pkgversion, version, *unused):
 
-> ---
->  scripts/coccinelle/qobject-parent-type.cocci | 26 ++++++++++++++++++++
->  include/hw/acpi/vmgenid.h                    |  2 +-
->  include/hw/misc/vmcoreinfo.h                 |  2 +-
->  include/net/can_host.h                       |  2 +-
->  MAINTAINERS                                  |  1 +
->  5 files changed, 30 insertions(+), 3 deletions(-)
->  create mode 100644 scripts/coccinelle/qobject-parent-type.cocci
-> 
-> diff --git a/scripts/coccinelle/qobject-parent-type.cocci
-> b/scripts/coccinelle/qobject-parent-type.cocci
-> new file mode 100644
-> index 0000000000..9afb3edd97
-> --- /dev/null
-> +++ b/scripts/coccinelle/qobject-parent-type.cocci
-> @@ -0,0 +1,26 @@
-> +// Highlight object declarations that don't look like object class but
-> +// accidentally inherit from it.
-> +
-> +@match@
-> +identifier obj_t, fld;
-> +type parent_t =~ ".*Class$";
-> +@@
-> +struct obj_t {
-> +    parent_t fld;
-> +    ...
-> +};
-> +
-> +@script:python filter depends on match@
-> +obj_t << match.obj_t;
-> +@@
-> +is_class_obj = obj_t.endswith('Class')
-> +cocci.include_match(not is_class_obj)
-> +
-> +@replacement depends on filter@
-> +identifier match.obj_t, match.fld;
-> +type match.parent_t;
-> +@@
-> +struct obj_t {
-> +*   parent_t fld;
-> +    ...
-> +};
-> diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
-> index d50fbacb8e..cb4ad37fc5 100644
-> --- a/include/hw/acpi/vmgenid.h
-> +++ b/include/hw/acpi/vmgenid.h
-> @@ -19,7 +19,7 @@
->  OBJECT_DECLARE_SIMPLE_TYPE(VmGenIdState, VMGENID)
-> 
->  struct VmGenIdState {
-> -    DeviceClass parent_obj;
-> +    DeviceState parent_obj;
->      QemuUUID guid;                /* The 128-bit GUID seen by the guest */
->      uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-endian) */
->  };
-> diff --git a/include/hw/misc/vmcoreinfo.h b/include/hw/misc/vmcoreinfo.h
-> index ebada6617a..0b7b55d400 100644
-> --- a/include/hw/misc/vmcoreinfo.h
-> +++ b/include/hw/misc/vmcoreinfo.h
-> @@ -24,7 +24,7 @@ DECLARE_INSTANCE_CHECKER(VMCoreInfoState, VMCOREINFO,
->  typedef struct fw_cfg_vmcoreinfo FWCfgVMCoreInfo;
-> 
->  struct VMCoreInfoState {
-> -    DeviceClass parent_obj;
-> +    DeviceState parent_obj;
-> 
->      bool has_vmcoreinfo;
->      FWCfgVMCoreInfo vmcoreinfo;
-> diff --git a/include/net/can_host.h b/include/net/can_host.h
-> index 4e3ce3f954..caab71bdda 100644
-> --- a/include/net/can_host.h
-> +++ b/include/net/can_host.h
-> @@ -35,7 +35,7 @@
->  OBJECT_DECLARE_TYPE(CanHostState, CanHostClass, CAN_HOST)
-> 
->  struct CanHostState {
-> -    ObjectClass oc;
-> +    Object oc;
-> 
->      CanBusState *bus;
->      CanBusClientState bus_client;
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 5eed1e692b..2160b8196a 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2402,6 +2402,7 @@ F: qobject/
->  F: include/qapi/qmp/
->  X: include/qapi/qmp/dispatch.h
->  F: scripts/coccinelle/qobject.cocci
-> +F: scripts/coccinelle/qobject-parent-type.cocci
->  F: tests/check-qdict.c
->  F: tests/check-qjson.c
->  F: tests/check-qlist.c
-> -- 
-> 2.28.0
+and below
+
+    if __name__ == "__main__":
+        main(*sys.argv)
+
+>> +    pc = subprocess.run(['git', 'describe', '--match', "'v*'", '--dirty', '--always'],
+>> +        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, cwd=dir)
+>> +    if pc.returncode == 0:
+>> +        pkgversion = pc.stdout.decode('utf8').strip()
+>> +    fullversion = version
+>> +    if len(pkgversion) > 0:
+
+Just "if pkgversion:" please.
+
+>> +        fullversion = "{} ({})".format(version, pkgversion)
+>> +
+>> +    version_header = '''#define QEMU_PKGVERSION "{}"
+>> +#define QEMU_FULL_VERSION "{}"'''.format(pkgversion, fullversion)
+>> +    sys.stdout.buffer.write(version_header.encode('utf8'))
+
+No need to use buffer and encode, just
+
+    print('#define QEMU_PKGVERSION "%s"' % pkgversion)
+    print('#define QEMU_FULLVERSION "%s"' % fullversion)
+
+It is still a bit more clunky than a shell script, but at least not as much.
+
+Paolo
 
 
