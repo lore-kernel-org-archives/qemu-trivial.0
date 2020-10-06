@@ -1,82 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPWl3-0002sT-01
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Oct 2020 16:06:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59792)
+	id 1kPfxA-0007qg-Fc
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 01:56:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1kPWkw-0002mn-2q
- for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 16:06:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41407)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kPfx8-0007pv-Ld
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 01:55:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36847)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1kPWkt-0000L1-Mw
- for qemu-trivial@nongnu.org; Mon, 05 Oct 2020 16:06:45 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kPfx6-0006kv-D7
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 01:55:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601928400;
+ s=mimecast20190719; t=1601963755;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WTPbRsoAdIdaieEFBEjZBBCyhx5pQwTJSbQV3jAJ6SU=;
- b=UyCpxWoP0es+zgGXwRYhbZIK+NaZrzBJ6hphcukRp5J3z6MPr4sCr0WC8OjeqiGFF4EpNX
- w/ma4CCfTYNjnZnXZWk2gleCn4L/jevjQO8Hciq2vgrQt9NVYOdCraWC/m/sl6yOF5wdRt
- RWSMXXnq+8ww8/z+MKlcaDjux4pxnDc=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-80-IBGUt16GMrqGxRexOlnhnw-1; Mon, 05 Oct 2020 16:06:38 -0400
-X-MC-Unique: IBGUt16GMrqGxRexOlnhnw-1
-Received: by mail-io1-f69.google.com with SMTP id a2so5661462iod.13
- for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2020 13:06:38 -0700 (PDT)
+ bh=UrZygpvh9pmqOkW8TdeRxz0K0eh5T3/89hZCaKcyY/I=;
+ b=ZcYnKnS8SDAl0GkGlINNMF8brj7IXdB/WVcZIvegjweD9MzBqH9icjRt3IUkcWeIfTsvW+
+ c/a5Tpaulwdt1nhcPvX8W1XxmRkA7BL5oocHucmvCb8/rfY4wFi3HFyJHkdQZxGyB3ycD6
+ AjgAkf843thQiJEUQ/daVVBfcS7uWVs=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-503-YLoeWl0oOCSVtxuypsWLhg-1; Tue, 06 Oct 2020 01:55:53 -0400
+X-MC-Unique: YLoeWl0oOCSVtxuypsWLhg-1
+Received: by mail-wr1-f72.google.com with SMTP id o6so4913995wrp.1
+ for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2020 22:55:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=WTPbRsoAdIdaieEFBEjZBBCyhx5pQwTJSbQV3jAJ6SU=;
- b=HGmPPWHKMWW6Aud3vcBQFDwBdYt0i3/JKC4IBSkPEhIvYJ1YwmjpPZnh8Hd0cEbq8t
- m4IXCuI3mZNGMQir+i3pJIxZ2qNdNGLOQuNK3+MeqRaWDB0YXErKdkJuxEtq+vEJ5O0g
- iPOC6wPYM7g+kF/p8VWuH2/7y2ve8/e2c09xKhFNJSROPiFqQ4MMGHKy/1c36cWCRbYb
- MWuM+Gnvs05LN0EXWX/EA0puSfqH5/hVhm8lf07kUuOfiKwJzfoMKrMFeTeaPvKf702G
- 1eSSuTn9Jz+26R6owHemo/jAdDE01zxVd1zwVxCCgtQs+8Z2B2PvskIXJvxc+9bqeT7/
- t0qw==
-X-Gm-Message-State: AOAM533eybPD95KKmdezmJYrjP78gcwvfXqkLvOZjJixIAM70nQVGv96
- BD0llrzsMq7ND5HOGB63pvKr4HtfGdVYdjbZrBexyY8tzxs29i7+EE4rXx9p5WURN5SFipHyPHI
- IhHJKkw9bVTBQeuJclNKFT0Knw23QxbnQsg==
-X-Received: by 2002:a05:6638:f03:: with SMTP id
- h3mr1475959jas.36.1601928397951; 
- Mon, 05 Oct 2020 13:06:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHeq++59ug/FUJZEuILeI66AoE0E9EjsPWMsMSyjda7KgIWHEu8lzgCZAeVCL2ael7rB2747RXED0HzC5gRSI=
-X-Received: by 2002:a05:6638:f03:: with SMTP id
- h3mr1475938jas.36.1601928397723; 
- Mon, 05 Oct 2020 13:06:37 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
-In-Reply-To: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 6 Oct 2020 00:06:26 +0400
-Message-ID: <CAMxuvazRhrB8baHp3p=NmzCX5hQBDF6mYDDaQ5Ow1TZu96T2Uw@mail.gmail.com>
-Subject: Re: [PATCH] qom: fix objects with improper parent type
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UrZygpvh9pmqOkW8TdeRxz0K0eh5T3/89hZCaKcyY/I=;
+ b=JXdKFq2Q03QXyoo2+r/haTfN8B3nMjf79ZvlOZFxe8U+IojVaPipBix/lytsjMzfl1
+ LwrnH33gNrb0wlm6gNdQ5J5JrY0IGqtC+uVLcLUlyoZByH8IQRZUHIHOO3SY4lbTnaqK
+ jjgvDCddquuP4QTSlyuddh/KClnsr2XuLsnvON2M7WOfrkFfRYglbpAaON5lKMYCCeZ4
+ Ue+i9yMrKXpZI2RY0wmvXuxAvv7l3/zWeHIH1G84N973RmeTp2Ay88TD0HFdLPYEP4ZK
+ dpbrdASX6n3UeSDTs7fUZqcFzWWeUw4DuHOipwpuKkG6FTw37FEaLvf3Bxv2rxSRkrnM
+ /Sog==
+X-Gm-Message-State: AOAM533NjjYqKLytnAHUVGtMx29baC+FG8hkLc/B6IUjP9t6L+ON7ZPd
+ eY3WfPhDh9ugvYl1PHktix8etGmb56szLlOnV8ecjtz3gN7FEvhRzWaPAGYMIYTq0K72FeMgfhM
+ KdFtXCw/m3kuu6T/Eqw==
+X-Received: by 2002:a1c:b409:: with SMTP id d9mr2990655wmf.106.1601963752155; 
+ Mon, 05 Oct 2020 22:55:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyK2vxD+CstKvWFKlAjmVbDkxmqD44/PqMkmg1/gQj1fUTFDQFkP6mcI/QpU8A0/fg269rHAg==
+X-Received: by 2002:a1c:b409:: with SMTP id d9mr2990625wmf.106.1601963751857; 
+ Mon, 05 Oct 2020 22:55:51 -0700 (PDT)
+Received: from redhat.com (bzq-79-179-71-128.red.bezeqint.net. [79.179.71.128])
+ by smtp.gmail.com with ESMTPSA id q20sm2192164wmc.39.2020.10.05.22.55.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Oct 2020 22:55:50 -0700 (PDT)
+Date: Tue, 6 Oct 2020 01:55:47 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Sergey Nizovtsev <snizovtsev@gmail.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>,
- Ben Warren <ben@skyportsystems.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, Jason Wang <jasowang@redhat.com>, 
- Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Ben Warren <ben@skyportsystems.com>, Igor Mammedov <imammedo@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH] qom: fix objects with improper parent type
+Message-ID: <20201006015528-mutt-send-email-mst@kernel.org>
+References: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mlureau@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=mlureau@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 01:25:11
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/06 00:55:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,21 +88,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2020 20:06:47 -0000
+X-List-Received-Date: Tue, 06 Oct 2020 05:55:58 -0000
 
-On Wed, Sep 30, 2020 at 3:47 AM Sergey Nizovtsev <snizovtsev@gmail.com> wro=
-te:
->
+On Tue, Sep 29, 2020 at 04:47:14PM -0700, Sergey Nizovtsev wrote:
 > Some objects accidentally inherit ObjectClass instead of Object.
 > They compile silently but may crash after downcasting.
->
+> 
 > In this patch, we introduce a coccinelle script to find broken
 > declarations and fix them manually with proper base type.
->
+> 
 > Signed-off-by: Sergey Nizovtsev <snizovtsev@gmail.com>
 
-thanks!!
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+which tree should this go in through?
 
 > ---
 >  scripts/coccinelle/qobject-parent-type.cocci | 26 ++++++++++++++++++++
@@ -113,7 +111,7 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >  MAINTAINERS                                  |  1 +
 >  5 files changed, 30 insertions(+), 3 deletions(-)
 >  create mode 100644 scripts/coccinelle/qobject-parent-type.cocci
->
+> 
 > diff --git a/scripts/coccinelle/qobject-parent-type.cocci
 > b/scripts/coccinelle/qobject-parent-type.cocci
 > new file mode 100644
@@ -126,7 +124,7 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > +
 > +@match@
 > +identifier obj_t, fld;
-> +type parent_t =3D~ ".*Class$";
+> +type parent_t =~ ".*Class$";
 > +@@
 > +struct obj_t {
 > +    parent_t fld;
@@ -136,7 +134,7 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > +@script:python filter depends on match@
 > +obj_t << match.obj_t;
 > +@@
-> +is_class_obj =3D obj_t.endswith('Class')
+> +is_class_obj = obj_t.endswith('Class')
 > +cocci.include_match(not is_class_obj)
 > +
 > +@replacement depends on filter@
@@ -153,14 +151,12 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > +++ b/include/hw/acpi/vmgenid.h
 > @@ -19,7 +19,7 @@
 >  OBJECT_DECLARE_SIMPLE_TYPE(VmGenIdState, VMGENID)
->
+> 
 >  struct VmGenIdState {
 > -    DeviceClass parent_obj;
 > +    DeviceState parent_obj;
->      QemuUUID guid;                /* The 128-bit GUID seen by the guest =
-*/
->      uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-endian)=
- */
+>      QemuUUID guid;                /* The 128-bit GUID seen by the guest */
+>      uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-endian) */
 >  };
 > diff --git a/include/hw/misc/vmcoreinfo.h b/include/hw/misc/vmcoreinfo.h
 > index ebada6617a..0b7b55d400 100644
@@ -168,11 +164,11 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > +++ b/include/hw/misc/vmcoreinfo.h
 > @@ -24,7 +24,7 @@ DECLARE_INSTANCE_CHECKER(VMCoreInfoState, VMCOREINFO,
 >  typedef struct fw_cfg_vmcoreinfo FWCfgVMCoreInfo;
->
+> 
 >  struct VMCoreInfoState {
 > -    DeviceClass parent_obj;
 > +    DeviceState parent_obj;
->
+> 
 >      bool has_vmcoreinfo;
 >      FWCfgVMCoreInfo vmcoreinfo;
 > diff --git a/include/net/can_host.h b/include/net/can_host.h
@@ -181,11 +177,11 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > +++ b/include/net/can_host.h
 > @@ -35,7 +35,7 @@
 >  OBJECT_DECLARE_TYPE(CanHostState, CanHostClass, CAN_HOST)
->
+> 
 >  struct CanHostState {
 > -    ObjectClass oc;
 > +    Object oc;
->
+> 
 >      CanBusState *bus;
 >      CanBusClientState bus_client;
 > diff --git a/MAINTAINERS b/MAINTAINERS
@@ -200,8 +196,7 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >  F: tests/check-qdict.c
 >  F: tests/check-qjson.c
 >  F: tests/check-qlist.c
-> --
+> -- 
 > 2.28.0
->
 
 
