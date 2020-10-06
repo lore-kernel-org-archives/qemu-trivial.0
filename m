@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPlBp-0007Fp-GX
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 07:31:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38950)
+	id 1kPlEk-0001UX-B1
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 07:34:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kPlBn-0007Dz-F6
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 07:31:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59881)
+ id 1kPlEb-0001ST-81
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 07:34:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50877)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kPlBl-0007qt-A5
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 07:31:27 -0400
+ id 1kPlEY-00084G-90
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 07:34:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601983884;
+ s=mimecast20190719; t=1601984057;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wjcNNMJhWr1GcCod35r4/KZkRcXUZ1UnznJ5NE5wdkA=;
- b=ZEl5zOZreMgWh23LB9zatzxv4CLVt8UHS2sviVtFR88AYE+5LJO+FH/HsHKXqk4Hf6d3Fz
- eHn5aMDfNLxKPfZ2KWtBzY7H+QasgIh18nnDpiKhejX9UHkQop5uNJnP7D/TMpljM3xcQZ
- x2gSl1t+2qF/5QTeJV0RWbeq0w4DjxQ=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-104-ANOjuF0UPoe6ULJ8HXPOMg-1; Tue, 06 Oct 2020 07:31:22 -0400
-X-MC-Unique: ANOjuF0UPoe6ULJ8HXPOMg-1
-Received: by mail-wm1-f69.google.com with SMTP id p17so591378wmi.7
- for <qemu-trivial@nongnu.org>; Tue, 06 Oct 2020 04:31:21 -0700 (PDT)
+ bh=gJyvbLDNu+d+c/zI7H5aK0+b2ctGwhtVvqaTeLeClss=;
+ b=RUbUeWR3kM59EYwBW8a6ePij4fSOpWQxhHCft682hA4jA3stV6cbIIClDhqbIqwiQLZk8Y
+ l3P4GG2g6pEKTRDK5I/pHJTt0TNxZo1remNYbCodnZIrNbG1kZTk4EYw1AfRpKMlkfBas4
+ EKtAzkcZPpEHEcYvRgTTHGMRN2F25zA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-102-NmW-MBpOPrON5oA6eLPuFQ-1; Tue, 06 Oct 2020 07:34:15 -0400
+X-MC-Unique: NmW-MBpOPrON5oA6eLPuFQ-1
+Received: by mail-wr1-f71.google.com with SMTP id t17so1918467wrm.13
+ for <qemu-trivial@nongnu.org>; Tue, 06 Oct 2020 04:34:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=wjcNNMJhWr1GcCod35r4/KZkRcXUZ1UnznJ5NE5wdkA=;
- b=j3/G8dgcbLNkKhUqvhidNGBsDsqBcx1Hfk3Sn7scMnePvJxHxtOB0+CT81VtaALSRr
- 7DxMF1D97g4TYkIca6jyrwMBJjfQYE6byhhjpnJfwqsWHmN+Vg7UeDsA6mADKc73N4so
- 1dK1i+wX4t7rcdYldREdSsSG6EZEZLrjij1mBQsnxgH4/BY9U9ycQLwXHhfxOHNezXJg
- 7KmlPf4GMd/1tGxPWFkRcIfiRTe/haf/OTD9fuxtDffdpdO2iXfTkzjqN5enhtbO4p2N
- 0JXpT2H/XNiMdktatfXpCi7O0C1YqCFqXumAOxICp02/29r3SirZIUjltX+5MBtAOCjs
- 6Xaw==
-X-Gm-Message-State: AOAM532+uJiY+4jwvYvK0t1bS+Nz33TXSGgFH6TIBm43i2hOwBnsHgZT
- dzurlxr4xTBgCXS711HSCdIkLMlswAHeS8meWS0yL5zK2zWXjfOwueIqukPCqq1dsBOBJ81VIxr
- PWnmVXBllnJk7VdIEUQ==
-X-Received: by 2002:a1c:66d5:: with SMTP id a204mr4201945wmc.62.1601983880652; 
- Tue, 06 Oct 2020 04:31:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVT9z6XDWnwYATZyCpNqpsh4Lwv+lckgW9bdSyXhaDuZGUtOWiBxtHR46HIQokS49kmTeO2g==
-X-Received: by 2002:a1c:66d5:: with SMTP id a204mr4201925wmc.62.1601983880400; 
- Tue, 06 Oct 2020 04:31:20 -0700 (PDT)
+ bh=gJyvbLDNu+d+c/zI7H5aK0+b2ctGwhtVvqaTeLeClss=;
+ b=ZRGsOp36DeUDr0ni5tKsPt4k2FJDMiY6ySJLPiZAIPjnYlZ+QeD8P4LlvQRb4GX12T
+ v9sKBOXbt4bp5Q/R24W9rwF/DTRmMyEQysZF6yW21LnG7wvQX6AiC3WSdKEyl1N/eIB5
+ zfQt1nTbr5g+x5TdyluyEWnuZjkoBSL+zbPMErvhlxjjOEk2T4Os4LzEhweEIH/jm9d8
+ UHjUcqL26fatzxdrROL6uSfrwuUI7t+lmN+rtDAkD4AcHu2BFrVpKwJsWqDz8WWPe88J
+ rdsvHqdS4uvXOOSKwwnSo19qjwEhH9rf+oxDEoMAmdj7mrKq/LnCQNBHPyDwmLcpW9/P
+ +lHA==
+X-Gm-Message-State: AOAM532PspJzIcIWPmNlrSEloOI88T+x+/SSgFTrL1JEt1yb28dSjYoL
+ 96mjLbdeDhLwSv7dFI/F4BeEXadqnp5/wdwl4nmP8XxUwbIDK8nOMaMTjGP+muV3q4Kllh0HzRJ
+ e7erNJv41vw5Ise6ktA==
+X-Received: by 2002:a5d:67c2:: with SMTP id n2mr4222787wrw.4.1601984053985;
+ Tue, 06 Oct 2020 04:34:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEztE/PGa9UvgUzIic3I0JUq3bond3JPbdpgcGqyLnNMX+drrRHuqk24hi1m1REZKjI/IpFA==
+X-Received: by 2002:a5d:67c2:: with SMTP id n2mr4222770wrw.4.1601984053759;
+ Tue, 06 Oct 2020 04:34:13 -0700 (PDT)
 Received: from ?IPv6:2001:b07:6468:f312:5aca:cd0b:c4a1:9c2e?
  ([2001:b07:6468:f312:5aca:cd0b:c4a1:9c2e])
- by smtp.gmail.com with ESMTPSA id l17sm3424229wme.11.2020.10.06.04.31.19
+ by smtp.gmail.com with ESMTPSA id z191sm3691594wme.40.2020.10.06.04.34.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2020 04:31:19 -0700 (PDT)
+ Tue, 06 Oct 2020 04:34:13 -0700 (PDT)
 Subject: Re: [PATCH v5] scripts: Convert qemu-version.sh to qemu-version.py
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=e8=8c=85?= <f4bug@amsat.org>,
@@ -59,8 +59,8 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=e8=8c=85?= <f4bug@amsat.org>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20201006112139.700-1-luoyonggang@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0e1a884d-895d-dd4d-104d-ae391e016d20@redhat.com>
-Date: Tue, 6 Oct 2020 13:31:19 +0200
+Message-ID: <d8097b12-f5d8-cd12-6e87-c12774ba5f5b@redhat.com>
+Date: Tue, 6 Oct 2020 13:34:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
@@ -83,7 +83,7 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,7 +96,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Oct 2020 11:31:27 -0000
+X-List-Received-Date: Tue, 06 Oct 2020 11:34:23 -0000
 
 On 06/10/20 13:21, Yonggang Luo wrote:
 > The sh script are harder to maintain for compatible different
@@ -198,7 +198,8 @@ On 06/10/20 13:21, Yonggang Luo wrote:
 > -EOF
 > 
 
-Queued, thanks.
+Hmm it still doesn't check for a ".git" directory.  I'll fix it up, but
+please pay more attention to the reviews.
 
 Paolo
 
