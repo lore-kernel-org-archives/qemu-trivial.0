@@ -1,97 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPnPf-00062z-Vj
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 09:53:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46444)
+	id 1kPr0J-0002zk-83
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 13:43:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kPnPe-00060e-0d
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 09:53:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56860)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kPr0I-0002ym-0h
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 13:43:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20099)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kPnPc-0000hG-Hu
- for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 09:53:53 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kPr0F-0000FL-6Y
+ for qemu-trivial@nongnu.org; Tue, 06 Oct 2020 13:43:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601992431;
+ s=mimecast20190719; t=1602006234;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=CE4rpxQnGmNW4pz1mJB6dVVhMlr06XrIX21AyJ9BQqE=;
- b=NBrv9fDMR30mqv53OwSkmHakqldemhrf4cPp9ZoUYWfaznOHmZ2TxuDdRc/w10ehusCbpx
- sTdObSttJvXM4LDeFT9Pu9tr9pAXwmSFWYMek2B0EJBl2HoOd2yi4Ef+43FWlqAKtVfPCa
- Nr6MLfTMmUXn7mA4UrahQ1Msqk9B8QU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-178-TTu4ZFZsMoGy4bw3MAu-Jg-1; Tue, 06 Oct 2020 09:53:48 -0400
-X-MC-Unique: TTu4ZFZsMoGy4bw3MAu-Jg-1
-Received: by mail-wr1-f69.google.com with SMTP id t17so2067667wrm.13
- for <qemu-trivial@nongnu.org>; Tue, 06 Oct 2020 06:53:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=CE4rpxQnGmNW4pz1mJB6dVVhMlr06XrIX21AyJ9BQqE=;
- b=E8qm14ZfAbO6/qZUvoek3RuHtdoN7UtNqvMwhNOj+kdZWFL08GihsqLFOfg6BXQp5z
- 9RWW+1NbL25MxIdMr+/A94y4AHQPhAJm/gqM19vRs/Oamtubf/peLhF1A0frUtWPu3cg
- BY6DyIo4yt1oJCnWahIcwRQvSYFNiid87QiafuW2S6Ubv5Usq6U3aGXLRkV3Mpk2pMdR
- OEZ8ceK0TCIhIF9dnQ96orxoTfhWDlRiV4LruKKMxJnvlNzULXav0khkQH7Np3/Jl+iM
- M5LFc/7SWcAY3/6C6gTVKN+i20/DwVoayS7SxAWZNQUNVcWdI9STcnzhS9T6RU0B5EcR
- mtKg==
-X-Gm-Message-State: AOAM530vmrQj8svKv/FG+vdtM/q2I9JflXKN9c9BrODZmpMA5YZZJeh2
- zUnDKj6TLYTducNLm8nPF2z8DADLZGwYFzKjDB09XTthKzX7Ap2xcMc7S/vS5bwBkawebRXYUxP
- GJnsb9c9XIPFOaidahg==
-X-Received: by 2002:a1c:1dc3:: with SMTP id d186mr4749738wmd.182.1601992427188; 
- Tue, 06 Oct 2020 06:53:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw69gxFg73K7DC9Za0dCPPNsMXGoqTh/ezIdflXm9O6hrVvyWkMSkMRmyt2/pIUI5bsIVIfqg==
-X-Received: by 2002:a1c:1dc3:: with SMTP id d186mr4749728wmd.182.1601992426984; 
- Tue, 06 Oct 2020 06:53:46 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id 24sm3992857wmg.8.2020.10.06.06.53.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2020 06:53:46 -0700 (PDT)
-Subject: Re: [PATCH] hw/pci: Fix typo in PCI hot-plug error message
-To: Julia Suvorova <jusual@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20201006133958.600932-1-jusual@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <e87cb709-ba14-8973-5815-bf3795b51fa5@redhat.com>
-Date: Tue, 6 Oct 2020 15:53:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <20201006133958.600932-1-jusual@redhat.com>
+ to:to:cc:cc:content-type:content-type;
+ bh=dhKcb9zC8Pzia6sElJokg8/PX0MuqUhMvbxWy4B99w0=;
+ b=Jbi1JT3MKLkeBJD7t3Xl8xA83KRPNB5cV83zyxgZq+6lx+t+mvlvUGo6qB1ZYUTYCjLCxs
+ C8WS2NttNN4eaS2oETJOSXZP7gSo7w6nb41AHLZL9Hi3qUEXPuRnX5nIUtXEn5MdXIQdWU
+ v/6BdZO1kMzuz2bM3nV+/8W7AE/RO8A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-62-nLOm34C9OOmkVkaeuhQYzg-1; Tue, 06 Oct 2020 13:43:52 -0400
+X-MC-Unique: nLOm34C9OOmkVkaeuhQYzg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C5BA805EF7;
+ Tue,  6 Oct 2020 17:43:51 +0000 (UTC)
+Received: from thuth.com (ovpn-113-60.ams2.redhat.com [10.36.113.60])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D2E2419936;
+ Tue,  6 Oct 2020 17:43:49 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9=20?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] tests/docker: Add genisoimage to the docker file
+Date: Tue,  6 Oct 2020 19:43:47 +0200
+Message-Id: <20201006174347.152040-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/06 01:55:55
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -100,9 +54,8 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,17 +68,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Oct 2020 13:53:54 -0000
+X-List-Received-Date: Tue, 06 Oct 2020 17:43:58 -0000
 
-On 10/6/20 3:39 PM, Julia Suvorova wrote:
-> 'occupied' is spelled like 'ocuppied' in the message.
-> 
-> Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> ---
->  hw/pci/pci.c       | 2 +-
->  hw/ppc/spapr_pci.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+genisoimage is needed for running the tests/qtest/cdrom-test qtest.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/docker/dockerfiles/centos8.docker      | 1 +
+ tests/docker/dockerfiles/debian-amd64.docker | 1 +
+ tests/docker/dockerfiles/fedora.docker       | 1 +
+ tests/docker/dockerfiles/ubuntu2004.docker   | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
+index f435616d6a..0fc2697491 100644
+--- a/tests/docker/dockerfiles/centos8.docker
++++ b/tests/docker/dockerfiles/centos8.docker
+@@ -8,6 +8,7 @@ ENV PACKAGES \
+     dbus-daemon \
+     gcc \
+     gcc-c++ \
++    genisoimage \
+     gettext \
+     git \
+     glib2-devel \
+diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian-amd64.docker
+index d2500dcff1..314c6bae83 100644
+--- a/tests/docker/dockerfiles/debian-amd64.docker
++++ b/tests/docker/dockerfiles/debian-amd64.docker
+@@ -14,6 +14,7 @@ RUN apt update && \
+ RUN apt update && \
+     DEBIAN_FRONTEND=noninteractive eatmydata \
+     apt install -y --no-install-recommends \
++        genisoimage \
+         libbz2-dev \
+         liblzo2-dev \
+         libgcrypt20-dev \
+diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+index ec783418c8..85c975543d 100644
+--- a/tests/docker/dockerfiles/fedora.docker
++++ b/tests/docker/dockerfiles/fedora.docker
+@@ -15,6 +15,7 @@ ENV PACKAGES \
+     findutils \
+     gcc \
+     gcc-c++ \
++    genisoimage \
+     gettext \
+     git \
+     glib2-devel \
+diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
+index cafe8443fb..f4b9556b9e 100644
+--- a/tests/docker/dockerfiles/ubuntu2004.docker
++++ b/tests/docker/dockerfiles/ubuntu2004.docker
+@@ -3,6 +3,7 @@ ENV PACKAGES flex bison \
+     ccache \
+     clang-10\
+     gcc \
++    genisoimage \
+     gettext \
+     git \
+     glusterfs-common \
+-- 
+2.18.2
 
 
