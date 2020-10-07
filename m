@@ -1,69 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQF8Y-0002Q0-Na
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 15:30:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55188)
+	id 1kQFCR-0005Fk-F5
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 15:34:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQF8W-0002NT-TY; Wed, 07 Oct 2020 15:30:04 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:46527)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQF8U-00086Q-9e; Wed, 07 Oct 2020 15:30:04 -0400
-Received: by mail-pg1-x532.google.com with SMTP id 34so2076230pgo.13;
- Wed, 07 Oct 2020 12:30:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Irdtj8q1RD0LQlLWbA57KSRDKqcckx9crXDBvCEWy6o=;
- b=lKsQUtbZK/DO0Z3wVfDs8Btysz/qTPzOxk68evJw/G+V9OaSSZzRfRc6Q9fTbepWVN
- cX6iD7s+G4noHFIb/hcprSPuLmJW6S7923H/Ea2VZqARoVCxspV10TOVENAcEsJj6zCK
- c90vt1Vet8YQjutaSMvL/jVHS5kmp30A69s1Nzungt2G2XoHJNlPvKbPE8bdCsLbPFy/
- qq7gCwHO0JvAXVZxv63Q/c3r1I9eV/ZtYX4ThXCVzBOjrwAwm8cALuWTDh4BQs05iQDM
- SPRYjM+tbaCDPEp8kwdfgk2DFwVUJzDhNxRABW9GnWSOuVlQ1xPEqdpl1AAblkdLviKl
- mW6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Irdtj8q1RD0LQlLWbA57KSRDKqcckx9crXDBvCEWy6o=;
- b=bbkcu7R2h6XEbuCWM9AyCd3MpX7IzSWg6INkI53GngsP5GoBsJK0Kbx6IEOxlmjhHt
- PJJG6hWcLO4tm+0z/2bC4e39t70z3Elfc/hQpUTZbZHFWJzQwy3pMSz/m/YESWeZ3e2r
- mItPXOT1TFqterBBz6v4fnIu4qQ2stdp30/wyc2f4bopU9itOsha4wr7Xtbvn2YhAkgc
- zN5CzfdLgWNijNEGk1TOmwnaeFuGHJjiBR6j71f97qzEcrkFE4JRWQ7+gwDZVTkBxS3H
- u939utKoXMVvuTeOwsx6oXfTXyyreWvn+A/fWj29ttc93cCga3BrboK/c0CpoO38/EpZ
- //hQ==
-X-Gm-Message-State: AOAM532SMsGc8D1Hhe9JthR+0n3fEUNMUwdqtbP3t+/ef07lHMWOUcSo
- kt3jBPtwV5F8SMDGlpv5NMVZCy+vet4LAQ==
-X-Google-Smtp-Source: ABdhPJzbDrktx04Y6h0y8NbnZLEe2lUBZrYMVhJA5Q5axeh5ucEvy3oGPYkqVkWe3GTU26PrtqWu3A==
-X-Received: by 2002:a65:63ca:: with SMTP id n10mr4466327pgv.271.1602098999458; 
- Wed, 07 Oct 2020 12:29:59 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id q15sm4397797pgr.27.2020.10.07.12.29.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Oct 2020 12:29:58 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=E8=8C=85?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v7] scripts: Convert qemu-version.sh to qemu-version.py
-Date: Thu,  8 Oct 2020 03:29:40 +0800
-Message-Id: <20201007192940.280-1-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kQFCO-0005EK-15; Wed, 07 Oct 2020 15:34:04 -0400
+Resent-Date: Wed, 07 Oct 2020 15:34:04 -0400
+Resent-Message-Id: <E1kQFCO-0005EK-15@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21747)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kQFCI-0000Dp-PF; Wed, 07 Oct 2020 15:34:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1602099225; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=eK+T3VDOoCEuDPqR37nHSZT98BiZdOE8JE0KJksY4KRuzJ+XGLExNeDZuLTiTm3JP/Vf0bkoO0S3UVcHir5xuH2YHVd3qstarWSKv+qjLwCYh++q0QXk9MMqxqyhduKlQnAeQ8lfjkxtuXkXoA34MptYMpmIbVEBGAW6BRTR1ZM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1602099225;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=zWD0NPZinfQ5QQWUI4nwYpnPYulJ/Ds3Bp9Z4X/n9iU=; 
+ b=iShDYkACtaPUR8f5DyJ19zn1GdVm4ESS+FAUmLyNbB474TzS2oG9TmkAebUvGCbnLeP91MA7LTBIvNqbTMXIQanljvWFqme20GgnNG2QZvHQ06+G1GIWtFRxm0Zhm0EHMxzLvz0xwDZwL6NgPsfjeVxK1IVJFPMo4+BHyqtkgRI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1602099222184956.138247267311;
+ Wed, 7 Oct 2020 12:33:42 -0700 (PDT)
+Subject: Re: [PATCH v7] scripts: Convert qemu-version.sh to qemu-version.py
+Message-ID: <160209922036.3664.11448137849652157024@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20201007192940.280-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x532.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: luoyonggang@gmail.com
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, thuth@redhat.com,
+ qemu-trivial@nongnu.org, f4bug@amsat.org, luoyonggang@gmail.com,
+ pbonzini@redhat.com
+Date: Wed, 7 Oct 2020 12:33:42 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 15:33:55
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,112 +63,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 19:30:05 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 19:34:05 -0000
 
-The sh script are harder to maintain for compatible different
-xsh environment so convert it to python script
-Also incorporate the fixes in
-https://patchew.org/QEMU/20200929143654.518157-1-marcandre.lureau@redhat.com/
-Using --match=v* instead of --match 'v*' for speed up the git version
-retrieve, and also resolve the Windows wildcard match problem. only when the
-.git parallel folder have filenames start with --match=v such as --match=v123
-would cause issue, and that's rare.
-
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Message-Id: <20201006112139.700-1-luoyonggang@gmail.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- meson.build             |  2 +-
- scripts/qemu-version.py | 33 +++++++++++++++++++++++++++++++++
- scripts/qemu-version.sh | 25 -------------------------
- 3 files changed, 34 insertions(+), 26 deletions(-)
- create mode 100644 scripts/qemu-version.py
- delete mode 100755 scripts/qemu-version.sh
-
-diff --git a/meson.build b/meson.build
-index 26230614ba..1d3bb25bc6 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1132,7 +1132,7 @@ tracetool = [
-    '--backend=' + config_host['TRACE_BACKENDS']
- ]
- 
--qemu_version_cmd = [find_program('scripts/qemu-version.sh'),
-+qemu_version_cmd = [find_program('scripts/qemu-version.py'),
-                     meson.current_source_dir(),
-                     config_host['PKGVERSION'], meson.project_version()]
- qemu_version = custom_target('qemu-version.h',
-diff --git a/scripts/qemu-version.py b/scripts/qemu-version.py
-new file mode 100644
-index 0000000000..52b23ceb01
---- /dev/null
-+++ b/scripts/qemu-version.py
-@@ -0,0 +1,33 @@
-+#!/usr/bin/env python3
-+
-+#
-+# Script for retrieve qemu git version information
-+#
-+# Authors:
-+#  Yonggang Luo <luoyonggang@gmail.com>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2
-+# or, at your option, any later version.  See the COPYING file in
-+# the top-level directory.
-+
-+import sys
-+import subprocess
-+import os, os.path
-+
-+def main(_program, dir, pkgversion, version, *unused):
-+    os.chdir(dir)
-+    if not pkgversion and os.path.exists('.git'):
-+        pc = subprocess.run(['git', 'describe', '--match=v*', '--always'],
-+                            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, encoding='utf8', shell=False)
-+        if pc.returncode == 0:
-+            pkgversion = pc.stdout.strip()
-+
-+    fullversion = version
-+    if pkgversion:
-+        fullversion = "{} ({})".format(version, pkgversion)
-+
-+    print('#define QEMU_PKGVERSION "%s"' % pkgversion)
-+    print('#define QEMU_FULL_VERSION "%s"' % fullversion)
-+
-+if __name__ == "__main__":
-+    main(*sys.argv)
-diff --git a/scripts/qemu-version.sh b/scripts/qemu-version.sh
-deleted file mode 100755
-index 03128c56a2..0000000000
---- a/scripts/qemu-version.sh
-+++ /dev/null
-@@ -1,25 +0,0 @@
--#!/bin/sh
--
--set -eu
--
--dir="$1"
--pkgversion="$2"
--version="$3"
--
--if [ -z "$pkgversion" ]; then
--    cd "$dir"
--    if [ -e .git ]; then
--        pkgversion=$(git describe --match 'v*' --dirty | echo "")
--    fi
--fi
--
--if [ -n "$pkgversion" ]; then
--    fullversion="$version ($pkgversion)"
--else
--    fullversion="$version"
--fi
--
--cat <<EOF
--#define QEMU_PKGVERSION "$pkgversion"
--#define QEMU_FULL_VERSION "$fullversion"
--EOF
--- 
-2.28.0.windows.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAwNzE5Mjk0MC4yODAt
+MS1sdW95b25nZ2FuZ0BnbWFpbC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2
+ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBp
+bmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMTAwNzE5Mjk0MC4yODAt
+MS1sdW95b25nZ2FuZ0BnbWFpbC5jb20KU3ViamVjdDogW1BBVENIIHY3XSBzY3JpcHRzOiBDb252
+ZXJ0IHFlbXUtdmVyc2lvbi5zaCB0byBxZW11LXZlcnNpb24ucHkKCj09PSBURVNUIFNDUklQVCBC
+RUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4
+aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1s
+b2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0g
+aGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBU
+RVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0
+NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11
+CiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAyMDEwMDcxOTI5NDAuMjgwLTEtbHVveW9u
+Z2dhbmdAZ21haWwuY29tIC0+IHBhdGNoZXcvMjAyMDEwMDcxOTI5NDAuMjgwLTEtbHVveW9uZ2dh
+bmdAZ21haWwuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMzRiNDY4NiBzY3Jp
+cHRzOiBDb252ZXJ0IHFlbXUtdmVyc2lvbi5zaCB0byBxZW11LXZlcnNpb24ucHkKCj09PSBPVVRQ
+VVQgQkVHSU4gPT09CldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRv
+ZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzM1OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQK
+CkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojNjA6IEZJTEU6IHNjcmlwdHMvcWVtdS12
+ZXJzaW9uLnB5OjIxOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0ZG91dD1zdWJwcm9j
+ZXNzLlBJUEUsIHN0ZGVycj1zdWJwcm9jZXNzLkRFVk5VTEwsIGVuY29kaW5nPSd1dGY4Jywgc2hl
+bGw9RmFsc2UpCgp0b3RhbDogMSBlcnJvcnMsIDEgd2FybmluZ3MsIDQxIGxpbmVzIGNoZWNrZWQK
+CkNvbW1pdCAzNGI0Njg2NzNkZWUgKHNjcmlwdHM6IENvbnZlcnQgcWVtdS12ZXJzaW9uLnNoIHRv
+IHFlbXUtdmVyc2lvbi5weSkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
+YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
+ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBF
+TkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBp
+cyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDEwMDcxOTI5NDAuMjgw
+LTEtbHVveW9uZ2dhbmdAZ21haWwuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdl
+LgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9w
+YXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxA
+cmVkaGF0LmNvbQ==
 
