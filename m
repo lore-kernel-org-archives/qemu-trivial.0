@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQAp2-0004g2-AG
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 10:53:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47778)
+	id 1kQAp5-0004lo-De
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 10:53:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQAp0-0004cs-L6; Wed, 07 Oct 2020 10:53:38 -0400
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:44954)
+ id 1kQAp1-0004eD-9O; Wed, 07 Oct 2020 10:53:39 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:44102)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQAov-0006lC-Kg; Wed, 07 Oct 2020 10:53:38 -0400
-Received: by mail-pf1-x442.google.com with SMTP id f19so1448162pfj.11;
- Wed, 07 Oct 2020 07:53:21 -0700 (PDT)
+ id 1kQAoy-0006lr-MA; Wed, 07 Oct 2020 10:53:38 -0400
+Received: by mail-pl1-x642.google.com with SMTP id h2so1111134pll.11;
+ Wed, 07 Oct 2020 07:53:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9kbGEm3EbGzEmJKqtgZ7++E9UoagfgdWtumbA/uZFN0=;
- b=PYkE5TqT2sO6/WFUWBnU9rVS/M0QJZS/SZVDBRXCfpW+grlprQ8nTQzIfsZqu5AfH4
- 56YlR4FwckuDr2CUCFJbNMzybO1wZWZ4TgcF93NkEp8t8d9rxoBWdO84EtvPGJdJP8vQ
- hZDXAPNasUnb4NhTjbcuv2iFmGLIXHDP1rusAqFeIEKPHyOp/d1PQFMgedto6fIbn9u9
- VuvLiEcI6uNfRTnePrO0OZdQ/jo5GlzC6EzzlZqukCbMXE0kTQIXxTY4a/mQi4fVMM7D
- pB2zMgGevBqKyhy9/f8YdhMKjQ+hG8gTYTVYcwZH1anYRVXQmfKYYfCXaMW7yGvQ4s7H
- HBSQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=h9qB+cYtAljBmE+4oAASbt9KeE0cbCLtFq/3AIskHy0=;
+ b=sNDRcSE7EQDiJ87x4F53d0aMYs72KrQahdkhjPq3KA4WWmqL0V6pTGq/JShCR9Yx/t
+ IcQ7VpsT3Gm5qrc1DFN+6Z0WQ+rxnZMGK0lvlJu7zmZ+1MwJdNdeEBlxDSDxapAh7h+e
+ FFJHuZUrIGMLyXVhXYBnO8WT0VHb35c6ptLd/ZgIBNXZGGdtMlyf6hq97CuTBpOuVRLu
+ 3TCMXEpahLNxj3/LNmWiIxl3VQKr5zxsa5AatlBbdGQ+0EguhKHBrZ8LLEGZKmelz8LD
+ rAKc2k16q3rhV1CFwj90bX0nevXLx74bTgk/iztb+/xQZyQpSyPJoUPIeFOlIcZrq2aC
+ 13wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9kbGEm3EbGzEmJKqtgZ7++E9UoagfgdWtumbA/uZFN0=;
- b=Mh4MNHZfDrC9NUFROLi7T1iRd95/GZh9CIXy/Gv3ChEyUfH7wE4egBxD0ygm0tKELg
- goMpQKdp+pJrH3daKBwmlMywF/MDyv66895zDaSmx+a/MQlteLSCOpIXSykc0pbAgk4Q
- mDVSLexmr/PKLWh4Em0irsETKk3fK7qYxo08h89r5uvilph+daAyErC+RM0hdy9mT0ll
- hYbY5ZCvI114kAUg+7/YD6j4IeU2umuWe/NJLKKF1TjrujjJVy+Ajm6m9vVKydMx80Uz
- 0iWp75KDU+ZrSkV0REe2mt584xVBTDjqc6bH+jsiZKdPLEtTmvyTAOXP9YYkl9/cxIjV
- SreQ==
-X-Gm-Message-State: AOAM5319S96xIlz+bVeQumBLJ6D0cWMpA7/at2IcrLDIzyrGAush8rvR
- edGFbLuXptboPybQ4Hqa9b/+U1iXE21pTw==
-X-Google-Smtp-Source: ABdhPJyOONQOeE/4HYH82Eb52eOXSCdaLswNoKl5CzRz7FfporyZhTkg802+SK5czC5qVSTBezL/WA==
-X-Received: by 2002:a63:145c:: with SMTP id 28mr3295608pgu.451.1602082400289; 
- Wed, 07 Oct 2020 07:53:20 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=h9qB+cYtAljBmE+4oAASbt9KeE0cbCLtFq/3AIskHy0=;
+ b=W6ZlN0PJRdLAUbQw1BCimQql/I6dvSXbGcYSwR17lFe2EXaU+XLlW7h/FV1H7NUQFD
+ wQknBW/Xoo8p2JddkpzIt5JmxCX1iVeZkVVlAhYQTpZ60fW2LXLOGhnWe5HKHOWgeK0u
+ QDfRPo6dKBx9jI96CrttZ7ZVQ8tvztiH+1f53hqJ1mR48INGUEdkn0uTFwf7Vc9sYNei
+ Ao+FjpLSXy5mNkxqB7CoDXIACIAGz3lBISZqS+sVsyXU+7/GKUbAAVTFnYUPN0S5q/Ax
+ PP5kZn6MhEBUIxoip94pYB07Ay1kgzt9fxMgNHzRE5bApPuodYm8UuIDYvQK1oeKS44N
+ WMIw==
+X-Gm-Message-State: AOAM5328A+iQA4W51VCKWsxsweRBo0qcgUqEc0hLFbmkypfk3m7CJjqh
+ rWt9uTiWnMyeEMCLQVZs/vWOw+Mli+Kc6g==
+X-Google-Smtp-Source: ABdhPJwpcmJQpMgAj06aaY9xWEGiRcPxPBo6FLU2aUCX73Rcd9gCiTZrvGH0ir2s8qbHiTc+jkALzw==
+X-Received: by 2002:a17:90a:7c03:: with SMTP id
+ v3mr3166956pjf.233.1602082411254; 
+ Wed, 07 Oct 2020 07:53:31 -0700 (PDT)
 Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id u14sm3301514pfm.80.2020.10.07.07.53.16
+ by smtp.googlemail.com with ESMTPSA id u14sm3301514pfm.80.2020.10.07.07.53.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Oct 2020 07:53:19 -0700 (PDT)
+ Wed, 07 Oct 2020 07:53:30 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -48,15 +49,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v5 0/2] Improve cirrus msys2
-Date: Wed,  7 Oct 2020 22:52:58 +0800
-Message-Id: <20201007145300.1197-1-luoyonggang@gmail.com>
+Subject: [PATCH v5 2/2] cirrus: msys2/mingw speed is up,
+ add excluded target back
+Date: Wed,  7 Oct 2020 22:53:00 +0800
+Message-Id: <20201007145300.1197-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20201007145300.1197-1-luoyonggang@gmail.com>
+References: <20201007145300.1197-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
- envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x442.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -80,35 +83,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 07 Oct 2020 14:53:39 -0000
 
-Fixes the broken msys2/mingw ci and speed it up.=0D
-=0D
-V4-V5=0D
-Now the cache are usefull by using 7zip to archive msys64=0D
-Saved about 18min, compare=0D
-https://cirrus-ci.com/task/5093551157542912=0D
-https://cirrus-ci.com/task/6177196538593280=0D
-=0D
-V3-V4=0D
-Using cirrus cache to speed up msys2 ci instead of downloading archive file=
-=0D
-=0D
-V2-V3=0D
-Add one more patch:=0D
-cirrus: msys2/mingw speed is up, add excluded target back=0D
-Do not build sphinx on windows, that's failing=0D
-set the number of parallel count to fixed number 8=0D
-=0D
-V1-V2=0D
-Resolve the cirrus conflict=0D
-=0D
-Yonggang Luo (2):=0D
-  cirrus: Fixing and speedup the msys2/mingw CI=0D
-  cirrus: msys2/mingw speed is up, add excluded target back=0D
-=0D
- .cirrus.yml | 113 +++++++++++++++++++++++++++++++---------------------=0D
- 1 file changed, 67 insertions(+), 46 deletions(-)=0D
-=0D
--- =0D
-2.28.0.windows.1=0D
-=0D
+The following target are add back:
+i386-softmmu,arm-softmmu,ppc-softmmu,mips-softmmu
+
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ .cirrus.yml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/.cirrus.yml b/.cirrus.yml
+index a1145d0366..639f0b51c4 100644
+--- a/.cirrus.yml
++++ b/.cirrus.yml
+@@ -124,8 +124,7 @@ windows_msys2_task:
+   script:
+     - C:\tools\msys64\usr\bin\bash.exe -lc "mkdir build"
+     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && ../configure
+-      --python=python3 --ninja=ninja
+-      --target-list-exclude=i386-softmmu,arm-softmmu,ppc-softmmu,mips-softmmu"
++      --python=python3 --ninja=ninja"
+     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make -j8"
+   test_script:
+     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make V=1 check"
+-- 
+2.28.0.windows.1
+
 
