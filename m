@@ -1,89 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQCXL-0001Zp-QS
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 12:43:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46282)
+	id 1kQCd2-00016K-1L
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 12:49:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQCXJ-0001Uf-Nz
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 12:43:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38271)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQCXH-0000yW-P6
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 12:43:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602089007;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Qv1qn82YLRFHmBycsrSc4fqvKuCS0ltG4NeYle3TGY=;
- b=NhGqzp3Mb/oxRG0JFTUXCVNdSYArUJG//eopVUlkjJ3HtQcwzMhNS6LBy7yv9vwHEKZd89
- VEXnTF1vgmr2nlwx5aL/om1/w2q7H00uVfbXu6VvshhbpoIsTxFpBXXq7qLf8Wsrc4EhvW
- +BUSoaAVPTrEcXAYVjPOA89WpC8O5Q8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-12-kpjpnuP7P62SmZrjHjsEdg-1; Wed, 07 Oct 2020 12:43:24 -0400
-X-MC-Unique: kpjpnuP7P62SmZrjHjsEdg-1
-Received: by mail-wm1-f70.google.com with SMTP id y83so1044384wmc.8
- for <qemu-trivial@nongnu.org>; Wed, 07 Oct 2020 09:43:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/Qv1qn82YLRFHmBycsrSc4fqvKuCS0ltG4NeYle3TGY=;
- b=Kw92Fl460AA5Wwc0Ub1d/tPzqUr4+TMFJ7HVeuKOcVQQ/2D6Gtxs1cgeYUWpCHbsVD
- +14T2rVwRgD458e+kTRazXAgtosA+PnQeLM855yJ/m+lH2CHYSVI6a2Ik7s8euD+nbp6
- qkAcVbX1ynf6GenBqZuOk0EMSQIWyUXBlVsDVY8rypu6GY5hApHmpvEmHVakxXRHo+8G
- kJ4xuV9s4yQMmkJ/dp93GvsqKC6GLtFB7tGgwDd0HQuPyA1S26FfgXmCw9IfZ01H6rd7
- SPjUpj/uNfRw4APFnX7KiSuvF5SchdzzFILWTd97sWlzBtS5oR22gyLShIijj0gP7+fa
- wGaw==
-X-Gm-Message-State: AOAM532YB1dWd8Rq4sbefFJGm/TiVtAb3CInR6y3xxxj6Z+4N3KcaYuP
- MFDKwGn5+TNJlJlDN4BQ2gBx2ThjlSnrBXG/im3BgOYgfvKiYYNHxXGS6oekEV1o6IzUKMZwJxR
- qsxmGv5+HDOhzVEM7Hw==
-X-Received: by 2002:adf:a3d4:: with SMTP id m20mr4871265wrb.29.1602089002729; 
- Wed, 07 Oct 2020 09:43:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8OLbOaEGGUoFP9QIBFl+kfBue1OI+r0n5042LURkN3BSQ8zaWIGZXa1STk+Wt0VJ3f6pxxg==
-X-Received: by 2002:adf:a3d4:: with SMTP id m20mr4871248wrb.29.1602089002498; 
- Wed, 07 Oct 2020 09:43:22 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:d2f4:5943:190c:39ff?
- ([2001:b07:6468:f312:d2f4:5943:190c:39ff])
- by smtp.gmail.com with ESMTPSA id x15sm4032599wrr.36.2020.10.07.09.43.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2020 09:43:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kQCcy-0000yx-AS; Wed, 07 Oct 2020 12:49:20 -0400
+Resent-Date: Wed, 07 Oct 2020 12:49:20 -0400
+Resent-Message-Id: <E1kQCcy-0000yx-AS@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21745)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kQCcv-0002FX-L7; Wed, 07 Oct 2020 12:49:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1602089339; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=ENb602Vy0UgRWm1SjzkkSlVstRr9WaZcv4+q28w5vupNRuVZB+VPKBMzJWIC6Wj7nhaWG8GFTEMHX4UYXtf6RMel8YHtdAYSFOnO8iPUCjtDWZhwZVpcLN8t3x6QnEqlCV2JWzBjdMHQL897/j5RPpeNcCkGmRfjPrdZDZQ0+Fs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1602089339;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=vgdCQ7ncc0N8wos2UXuVVF4IsIDp/Adj3TKinqYRmrU=; 
+ b=VtRsAXvNnY5FtQnLRrYn6Fjs/xayLzWxeexxJWOjtnNeF5nuVRkhGrBTnS5kQHMXyk6925re3j6MHIt4uz6g1HdWfc5K/AGxwJ95AUWO2PPAWxVUAFuQByXjHH9wBnSIrPpyIqKjOzRgTwERWqHHEp2Zi7wfN+rrTzYMXu6D0hg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1602089336262670.5117220606605;
+ Wed, 7 Oct 2020 09:48:56 -0700 (PDT)
 Subject: Re: [PATCH v6] scripts: Convert qemu-version.sh to qemu-version.py
-To: luoyonggang@gmail.com, qemu-level <qemu-devel@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
-References: <20201007162138.425-1-luoyonggang@gmail.com>
- <CAE2XoE9sf0p5QuG=dSqbOvmGvbzDaEBN8qSG1ejM=RH+D+zq1g@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <798fb17d-fcf5-3234-1e17-37b3c0a18b8e@redhat.com>
-Date: Wed, 7 Oct 2020 18:43:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+Message-ID: <160208933460.3664.3185538282247320794@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20201007162138.425-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE9sf0p5QuG=dSqbOvmGvbzDaEBN8qSG1ejM=RH+D+zq1g@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: luoyonggang@gmail.com
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, thuth@redhat.com,
+ qemu-trivial@nongnu.org, f4bug@amsat.org, luoyonggang@gmail.com,
+ pbonzini@redhat.com
+Date: Wed, 7 Oct 2020 09:48:56 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 12:49:11
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -97,29 +63,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 16:43:30 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 16:49:20 -0000
 
-On 07/10/20 18:23, 罗勇刚(Yonggang Luo) wrote:
->> +    if not pkgversion and os.path.exists('.git'):
->> +        # The quote of v* should preserve, otherwise git command
-> would fail
->> +        pc = subprocess.run(['git', 'describe', '--match', "'v*'",
-> '--dirty', '--always'],
->> +                            stdout=subprocess.PIPE,
-> stderr=subprocess.DEVNULL, encoding='utf8')
-
-It's a total mess.
-
-On Linux, if you use 'v*' git is invoked with an argument that looks
-like 'v*', that is as if you used \'v\*\' on bash.
-
-On Windows, wildcard expansion is done by the program so you need to
-pass a quoted value to stop the wildcard expansion.
-
-I have no idea how to fix it.  Probably it can be made to work using a
-string argument and "shell=True", but at this point it makes more sense
-to keep the shell script version.
-
-Paolo
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAwNzE2MjEzOC40MjUt
+MS1sdW95b25nZ2FuZ0BnbWFpbC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2
+ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBp
+bmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMTAwNzE2MjEzOC40MjUt
+MS1sdW95b25nZ2FuZ0BnbWFpbC5jb20KU3ViamVjdDogW1BBVENIIHY2XSBzY3JpcHRzOiBDb252
+ZXJ0IHFlbXUtdmVyc2lvbi5zaCB0byBxZW11LXZlcnNpb24ucHkKCj09PSBURVNUIFNDUklQVCBC
+RUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4
+aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1s
+b2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0g
+aGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBU
+RVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0
+NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11
+CiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAyMDEwMDcxNjIxMzguNDI1LTEtbHVveW9u
+Z2dhbmdAZ21haWwuY29tIC0+IHBhdGNoZXcvMjAyMDEwMDcxNjIxMzguNDI1LTEtbHVveW9uZ2dh
+bmdAZ21haWwuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYzFjNmM5YyBzY3Jp
+cHRzOiBDb252ZXJ0IHFlbXUtdmVyc2lvbi5zaCB0byBxZW11LXZlcnNpb24ucHkKCj09PSBPVVRQ
+VVQgQkVHSU4gPT09CldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRv
+ZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzMzOiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQK
+CldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM1ODogRklMRTogc2NyaXB0cy9xZW11
+LXZlcnNpb24ucHk6MjE6CisgICAgICAgIHBjID0gc3VicHJvY2Vzcy5ydW4oWydnaXQnLCAnZGVz
+Y3JpYmUnLCAnLS1tYXRjaCcsICIndionIiwgJy0tZGlydHknLCAnLS1hbHdheXMnXSwKCkVSUk9S
+OiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojNTk6IEZJTEU6IHNjcmlwdHMvcWVtdS12ZXJzaW9u
+LnB5OjIyOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0ZG91dD1zdWJwcm9jZXNzLlBJ
+UEUsIHN0ZGVycj1zdWJwcm9jZXNzLkRFVk5VTEwsIGVuY29kaW5nPSd1dGY4JykKCnRvdGFsOiAx
+IGVycm9ycywgMiB3YXJuaW5ncywgNDIgbGluZXMgY2hlY2tlZAoKQ29tbWl0IGMxYzZjOWMwNDM0
+OSAoc2NyaXB0czogQ29udmVydCBxZW11LXZlcnNpb24uc2ggdG8gcWVtdS12ZXJzaW9uLnB5KSBo
+YXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3Jz
+CmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpD
+SEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFu
+ZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
+Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMTAwNzE2MjEzOC40MjUtMS1sdW95b25nZ2FuZ0BnbWFp
+bC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
+ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
+ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
