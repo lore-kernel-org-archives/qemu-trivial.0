@@ -1,92 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQ40u-0006gb-Hr
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 03:37:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35478)
+	id 1kQ4eN-0001XH-1e
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 04:18:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQ40t-0006et-65
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 03:37:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41422)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQ40q-000372-Lg
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 03:37:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602056243;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YzrSgfxp6vjMPRr6JpN6S3U5ikBim9yiDhRmMSDSY0Y=;
- b=MEDCjhyONex9dUuUJDcsKEjFJsE6gs6mSI6HtxJftPQtjjmM+ZmsKw/xZyMgLfIldSPk+n
- 0N/7L7cIiK/R1FM8I7Mem+E8taYGdUMVuRoO5+MXQJVRsHan0se3PKkqbamSUgpUHUTTj+
- ww6ATY8tJBvZbNsZMXntYXvSscK2+HM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-460-15jIoNHENBimQXmKG97Ihg-1; Wed, 07 Oct 2020 03:37:22 -0400
-X-MC-Unique: 15jIoNHENBimQXmKG97Ihg-1
-Received: by mail-wm1-f71.google.com with SMTP id z7so218480wmi.3
- for <qemu-trivial@nongnu.org>; Wed, 07 Oct 2020 00:37:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kQ4eL-0001TB-8x; Wed, 07 Oct 2020 04:18:13 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:42007)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kQ4eI-0007yL-Hs; Wed, 07 Oct 2020 04:18:12 -0400
+Received: by mail-lf1-x143.google.com with SMTP id a7so203968lfk.9;
+ Wed, 07 Oct 2020 01:18:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=N8V7+E9BHDwSicgFZ53Ky39lYpMAhXUlJyJskHLXTdI=;
+ b=uZ44sU+yDuXivyM9+Z0eyVuYo+x3GGs/w5eKEFwlDDhihkMzMfx4bw3t2gWg/ADDCE
+ vNQEA1sTbIpIIwqRnDFJmXfWrfMD5T3p6NitG2byByTFfKMhGvAveAItBnoHJQ0IHvxi
+ ciBOq71mxZWRtoIJwRFTl08ouKvoQsTCXB8sA2gk3HlAKuV2+ygy1LvpyHLwzpeouW5X
+ XmggsDQeaUfbrQep3EzW0Ld1nlgPDhUOHCzjFYgA0AmJIJ+xJSQrY2o8M/WAQmmeAd7n
+ KjME5Jj6MkdcvB1Of89FbSZY4bi4YFCv3Xbi8VRJflIlEtUDHl7blZYhhYJLiibg6EDV
+ sAaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YzrSgfxp6vjMPRr6JpN6S3U5ikBim9yiDhRmMSDSY0Y=;
- b=pwQnr6vDDJ9fyjv0hTZ0pF2ZAiF1efudRnXW/UUBWr/YxYWyxNXccd/Ixj6m+l47nO
- RlkTCCobuEAKFYKcLkUb0Uyy+sumMgrLGx0TBc8Xn+DTXzkBDkyxNlX2xmOJWozxVkQ4
- cU/qogncys/rMpMV9c3DRLGAcCPGgy3r5jQ45uXArwSh2Ddax/BGu6Gfa/jALiEDZPWe
- gDR/4Pfcy4OxZlWjoRtZF3nfk5/E2bIIxBoa5VAFkjkwVGTc1wBqJQwXBvtt1DDqdyTF
- Q6sVZShKP9cQEBjK1B+hkWVUSaZ9uTFVyDkuPLsFeFlEkqfh0Aa/+L8186M06aIjcJ3r
- 27rw==
-X-Gm-Message-State: AOAM530SIXRGR1MGDTfgY4ko0zYcKojB/sptHKTe96AJNsvp4Je4lZi9
- WcFIR5waz3XXWkbXYkr1OVQV6d7Pk/PN4jMxx026ysjgouNPw6Sfms0p78mqlJP7517qqM/46KT
- H/HADj8myHf5y3qBsHA==
-X-Received: by 2002:a1c:238e:: with SMTP id j136mr1769702wmj.176.1602056240802; 
- Wed, 07 Oct 2020 00:37:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw+uGzaUWTBuL4/lSb+EYrjjLPG9W8AJY7asTIMQJcltmutM9SllGYyLkKozAAmcKGS/lEc+Q==
-X-Received: by 2002:a1c:238e:: with SMTP id j136mr1769687wmj.176.1602056240541; 
- Wed, 07 Oct 2020 00:37:20 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:d2f4:5943:190c:39ff?
- ([2001:b07:6468:f312:d2f4:5943:190c:39ff])
- by smtp.gmail.com with ESMTPSA id c14sm1582704wrv.12.2020.10.07.00.37.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2020 00:37:19 -0700 (PDT)
-Subject: Re: [PATCH] qom: fix objects with improper parent type
-To: snizovtsev@gmail.com, "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <CAHOaf96qxm6_qigD+DuoJ5GpS9rOqXe4Gv=2UnujiiwcfN0HHQ@mail.gmail.com>
- <20201006015528-mutt-send-email-mst@kernel.org>
- <ea2f637545fb0dbc21cb7d6ff2b7839307d06b3f.camel@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <95d7f1cd-168e-3fa7-c7fd-fc476377a427@redhat.com>
-Date: Wed, 7 Oct 2020 09:37:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=N8V7+E9BHDwSicgFZ53Ky39lYpMAhXUlJyJskHLXTdI=;
+ b=M2aeA+Rq1m/VB+bhU9oRCaCNZyIkTrT8kBuVECjf6fliqOUb5sebVqHCqPBabVkXVk
+ chrRFW8O0OeGrugqosnOGitS3ghUCCc+k/z94StIX6GcGPO/7352xl35Ph0Ms9946/KC
+ YwNXDc8JHcRG1EjzQd+nD7B0Xj9zR6WWe+mphVW5xheXApUdFXI2X1607ubGQF/Mnovg
+ 05NxvGPAL07oG3vB6qYIyqFoV6Eyfack2WO6ntM9OVQRsDnctcKSdV+TSUWSmyt7dNYX
+ cWkUM6GT3qBJAnrGg0JRplyzxZJKisyK8+hFJ6/mljBwiEq/fnGKAFJo4k/D9PTwdfRL
+ oRVg==
+X-Gm-Message-State: AOAM530z+W+oUhsHbFrdgv/DCuSEFH9AvDAYI2sBCzJAdx9Hf2g5lsJ3
+ kyHSekwWCZMv/nsBJ2sbWIJ1j9YHEM3tGu60tSI=
+X-Google-Smtp-Source: ABdhPJw0UzeTEi4GubPaivGh/xjP0lFklifuqNGIDN69eos8ggxDq6wNw66slqGuyRsPmCM8/afcOGq8HTDr4i16RxM=
+X-Received: by 2002:ac2:54ab:: with SMTP id w11mr524035lfk.50.1602058688074;
+ Wed, 07 Oct 2020 01:18:08 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <ea2f637545fb0dbc21cb7d6ff2b7839307d06b3f.camel@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20201007024135.1885-1-luoyonggang@gmail.com>
+ <20201007024135.1885-2-luoyonggang@gmail.com>
+ <e437f0ed-20a9-c370-8c87-ceb845513805@redhat.com>
+In-Reply-To: <e437f0ed-20a9-c370-8c87-ceb845513805@redhat.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Wed, 7 Oct 2020 16:17:57 +0800
+Message-ID: <CAE2XoE9RyMFpLNWP+o13o7NOFXJAChR8Mf4QbF7ON3XRXEbkKA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] docker: Add win32/msys2/mingw64 docker
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-level <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000000318c005b1105b0f"
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,143 +76,165 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 07:37:27 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 08:18:13 -0000
 
-On 06/10/20 21:20, snizovtsev@gmail.com wrote:
-> On Tue, 2020-10-06 at 01:55 -0400, Michael S. Tsirkin wrote:
->> On Tue, Sep 29, 2020 at 04:47:14PM -0700, Sergey Nizovtsev wrote:
->>> Some objects accidentally inherit ObjectClass instead of Object.
->>> They compile silently but may crash after downcasting.
->>>
->>> In this patch, we introduce a coccinelle script to find broken
->>> declarations and fix them manually with proper base type.
->>>
->>> Signed-off-by: Sergey Nizovtsev <snizovtsev@gmail.com>
->>
->> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->>
->> which tree should this go in through?
-> 
-> Well, since this may only affect some generic QOM walking code, i
-> suggest it goes in QOM/QObject/QMP related tree.
-> 
-> So, `scripts/get_maintainer.pl -f qom/object.c`:
-> 
-> +CC Paolo Bonzini <pbonzini@redhat.com>
-> -CC Ben Warren <ben@skyportsystems.com>
+--0000000000000318c005b1105b0f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Queued, thanks.
+On Wed, Oct 7, 2020 at 2:43 PM Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 07/10/2020 04.41, Yonggang Luo wrote:
+> > This docker is used to preparing a msys2/mingw with basic software
+installed.
+> >
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > ---
+> >  tests/docker/dockerfiles/msys2.docker | 57 +++++++++++++++++++++++++++
+> >  1 file changed, 57 insertions(+)
+> >  create mode 100644 tests/docker/dockerfiles/msys2.docker
+> >
+> > diff --git a/tests/docker/dockerfiles/msys2.docker
+b/tests/docker/dockerfiles/msys2.docker
+> > new file mode 100644
+> > index 0000000000..ce1404cbb8
+> > --- /dev/null
+> > +++ b/tests/docker/dockerfiles/msys2.docker
+> > @@ -0,0 +1,57 @@
+> > +FROM mcr.microsoft.com/windows/servercore:2004
+> > +RUN cmd /S /C powershell -NoLogo -NoProfile -Command netsh interface
+ipv4 show interfaces ; netsh interface ipv4 set subinterface 18 mtu=3D1460
+store=3Dpersistent ; netsh interface ipv4 show interfaces ;
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object
+System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+;
+> > +RUN choco install -y --no-progress git 7zip
+> > +RUN cmd /S /C powershell -NoLogo -NoProfile -Command Remove-Item
+C:\ProgramData\chocolatey\logs -Force -Recurse ; Remove-Item
+C:\Users\ContainerAdministrator\AppData\Local\Temp -Force -Recurse
+> > +RUN mkdir C:\tools
+> > +RUN bitsadmin /transfer msys_download /dynamic /download /priority
+FOREGROUND
+https://github.com/msys2/msys2-installer/releases/download/2020-09-03/msys2=
+-base-x86_64-20200903.sfx.exe
+C:\tools\base.exe
+> > +RUN cd /d C:\tools && base.exe -y
+> > +RUN cmd /S /C powershell -NoLogo -NoProfile -Command "((Get-Content
+-path C:\tools\msys64\etc\\post-install\\07-pacman-key.post -Raw) -replace
+'--refresh-keys', '--version') | Set-Content -Path
+C:\tools\msys64\etc\\post-install\\07-pacman-key.post"
+> > +RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i
+'s/^CheckSpace/#CheckSpace/g' /etc/pacman.conf"
+> > +RUN C:\tools\msys64\usr\bin\bash.exe -lc "echo $MSYSTEM" >nul 2>&1
+> > +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server =3D
+http:\/\/repo.msys2.org\/msys\/.arch\///g' /etc/pacman.d/mirrorlist.msys"
+> > +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server =3D
+http:\/\/repo.msys2.org\/mingw\/i686\///g' /etc/pacman.d/mirrorlist.mingw32=
+"
+> > +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server =3D
+http:\/\/repo.msys2.org\/mingw\/x86_64\///g'
+/etc/pacman.d/mirrorlist.mingw64"
+> > +RUN C:\tools\msys64\usr\bin\bash.exe -lc "grep -rl 'repo.msys2.org/'
+/etc/pacman.d/mirrorlist.* | xargs sed -i 's/repo.msys2.org\//
+mirrors.tuna.tsinghua.edu.cn\/msys2\//g'"
+> > +RUN C:\tools\msys64\usr\bin\pacman.exe --noconfirm -Sy
+> > +RUN echo Y | C:\tools\msys64\usr\bin\pacman.exe -Suu --noconfirm
+--needed
+> > +RUN taskkill /F /FI "MODULES eq msys-2.0.dll"
+> > +RUN tasklist
+> > +RUN C:\tools\msys64\usr\bin\bash.exe -lc "pacman.exe --noconfirm -S
+--needed \
+> > +base-devel \
+>
+> base-devel pulls in a lot of stuff that we do not really need
+(automake...),
+> can you please replace it with the packages that are really required? See=
+:
+OK
+>
+> https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg00072.html
+>
+>  Thanks,
+>   Thomas
+>
 
-Paolo
 
-> On Tue, 2020-10-06 at 00:06 +0400, Marc-André Lureau wrote:
->> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> On Mon, 2020-10-05 at 18:47 +0200, Igor Mammedov wrote:
->> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> 
->>
->>> ---
->>>  scripts/coccinelle/qobject-parent-type.cocci | 26
->>> ++++++++++++++++++++
->>>  include/hw/acpi/vmgenid.h                    |  2 +-
->>>  include/hw/misc/vmcoreinfo.h                 |  2 +-
->>>  include/net/can_host.h                       |  2 +-
->>>  MAINTAINERS                                  |  1 +
->>>  5 files changed, 30 insertions(+), 3 deletions(-)
->>>  create mode 100644 scripts/coccinelle/qobject-parent-type.cocci
->>>
->>> diff --git a/scripts/coccinelle/qobject-parent-type.cocci
->>> b/scripts/coccinelle/qobject-parent-type.cocci
->>> new file mode 100644
->>> index 0000000000..9afb3edd97
->>> --- /dev/null
->>> +++ b/scripts/coccinelle/qobject-parent-type.cocci
->>> @@ -0,0 +1,26 @@
->>> +// Highlight object declarations that don't look like object class
->>> but
->>> +// accidentally inherit from it.
->>> +
->>> +@match@
->>> +identifier obj_t, fld;
->>> +type parent_t =~ ".*Class$";
->>> +@@
->>> +struct obj_t {
->>> +    parent_t fld;
->>> +    ...
->>> +};
->>> +
->>> +@script:python filter depends on match@
->>> +obj_t << match.obj_t;
->>> +@@
->>> +is_class_obj = obj_t.endswith('Class')
->>> +cocci.include_match(not is_class_obj)
->>> +
->>> +@replacement depends on filter@
->>> +identifier match.obj_t, match.fld;
->>> +type match.parent_t;
->>> +@@
->>> +struct obj_t {
->>> +*   parent_t fld;
->>> +    ...
->>> +};
->>> diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
->>> index d50fbacb8e..cb4ad37fc5 100644
->>> --- a/include/hw/acpi/vmgenid.h
->>> +++ b/include/hw/acpi/vmgenid.h
->>> @@ -19,7 +19,7 @@
->>>  OBJECT_DECLARE_SIMPLE_TYPE(VmGenIdState, VMGENID)
->>>
->>>  struct VmGenIdState {
->>> -    DeviceClass parent_obj;
->>> +    DeviceState parent_obj;
->>>      QemuUUID guid;                /* The 128-bit GUID seen by the
->>> guest */
->>>      uint8_t vmgenid_addr_le[8];   /* Address of the GUID (little-
->>> endian) */
->>>  };
->>> diff --git a/include/hw/misc/vmcoreinfo.h
->>> b/include/hw/misc/vmcoreinfo.h
->>> index ebada6617a..0b7b55d400 100644
->>> --- a/include/hw/misc/vmcoreinfo.h
->>> +++ b/include/hw/misc/vmcoreinfo.h
->>> @@ -24,7 +24,7 @@ DECLARE_INSTANCE_CHECKER(VMCoreInfoState,
->>> VMCOREINFO,
->>>  typedef struct fw_cfg_vmcoreinfo FWCfgVMCoreInfo;
->>>
->>>  struct VMCoreInfoState {
->>> -    DeviceClass parent_obj;
->>> +    DeviceState parent_obj;
->>>
->>>      bool has_vmcoreinfo;
->>>      FWCfgVMCoreInfo vmcoreinfo;
->>> diff --git a/include/net/can_host.h b/include/net/can_host.h
->>> index 4e3ce3f954..caab71bdda 100644
->>> --- a/include/net/can_host.h
->>> +++ b/include/net/can_host.h
->>> @@ -35,7 +35,7 @@
->>>  OBJECT_DECLARE_TYPE(CanHostState, CanHostClass, CAN_HOST)
->>>
->>>  struct CanHostState {
->>> -    ObjectClass oc;
->>> +    Object oc;
->>>
->>>      CanBusState *bus;
->>>      CanBusClientState bus_client;
->>> diff --git a/MAINTAINERS b/MAINTAINERS
->>> index 5eed1e692b..2160b8196a 100644
->>> --- a/MAINTAINERS
->>> +++ b/MAINTAINERS
->>> @@ -2402,6 +2402,7 @@ F: qobject/
->>>  F: include/qapi/qmp/
->>>  X: include/qapi/qmp/dispatch.h
->>>  F: scripts/coccinelle/qobject.cocci
->>> +F: scripts/coccinelle/qobject-parent-type.cocci
->>>  F: tests/check-qdict.c
->>>  F: tests/check-qjson.c
->>>  F: tests/check-qlist.c
->>> -- 
->>> 2.28.0
-> 
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
+--0000000000000318c005b1105b0f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Wed, Oct 7, 2020 at 2:43 PM Thomas Huth &lt;<a =
+href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br>&gt;<br=
+>&gt; On 07/10/2020 04.41, Yonggang Luo wrote:<br>&gt; &gt; This docker is =
+used to preparing a msys2/mingw with basic software installed.<br>&gt; &gt;=
+<br>&gt; &gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang=
+@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt; &gt; ---<br>&gt; &gt; =C2=
+=A0tests/docker/dockerfiles/msys2.docker | 57 +++++++++++++++++++++++++++<b=
+r>&gt; &gt; =C2=A01 file changed, 57 insertions(+)<br>&gt; &gt; =C2=A0creat=
+e mode 100644 tests/docker/dockerfiles/msys2.docker<br>&gt; &gt;<br>&gt; &g=
+t; diff --git a/tests/docker/dockerfiles/msys2.docker b/tests/docker/docker=
+files/msys2.docker<br>&gt; &gt; new file mode 100644<br>&gt; &gt; index 000=
+0000000..ce1404cbb8<br>&gt; &gt; --- /dev/null<br>&gt; &gt; +++ b/tests/doc=
+ker/dockerfiles/msys2.docker<br>&gt; &gt; @@ -0,0 +1,57 @@<br>&gt; &gt; +FR=
+OM <a href=3D"http://mcr.microsoft.com/windows/servercore:2004">mcr.microso=
+ft.com/windows/servercore:2004</a><br>&gt; &gt; +RUN cmd /S /C powershell -=
+NoLogo -NoProfile -Command netsh interface ipv4 show interfaces ; netsh int=
+erface ipv4 set subinterface 18 mtu=3D1460 store=3Dpersistent ; netsh inter=
+face ipv4 show interfaces ; Set-ExecutionPolicy Bypass -Scope Process -Forc=
+e; iex ((New-Object System.Net.WebClient).DownloadString(&#39;<a href=3D"ht=
+tps://chocolatey.org/install.ps1&#39;">https://chocolatey.org/install.ps1&#=
+39;</a>)) ;<br>&gt; &gt; +RUN choco install -y --no-progress git 7zip<br>&g=
+t; &gt; +RUN cmd /S /C powershell -NoLogo -NoProfile -Command Remove-Item C=
+:\ProgramData\chocolatey\logs -Force -Recurse ; Remove-Item C:\Users\Contai=
+nerAdministrator\AppData\Local\Temp -Force -Recurse<br>&gt; &gt; +RUN mkdir=
+ C:\tools<br>&gt; &gt; +RUN bitsadmin /transfer msys_download /dynamic /dow=
+nload /priority FOREGROUND <a href=3D"https://github.com/msys2/msys2-instal=
+ler/releases/download/2020-09-03/msys2-base-x86_64-20200903.sfx.exe">https:=
+//github.com/msys2/msys2-installer/releases/download/2020-09-03/msys2-base-=
+x86_64-20200903.sfx.exe</a> C:\tools\base.exe<br>&gt; &gt; +RUN cd /d C:\to=
+ols &amp;&amp; base.exe -y<br>&gt; &gt; +RUN cmd /S /C powershell -NoLogo -=
+NoProfile -Command &quot;((Get-Content -path C:\tools\msys64\etc\\post-inst=
+all\\<a href=3D"http://07-pacman-key.post">07-pacman-key.post</a> -Raw) -re=
+place &#39;--refresh-keys&#39;, &#39;--version&#39;) | Set-Content -Path C:=
+\tools\msys64\etc\\post-install\\<a href=3D"http://07-pacman-key.post">07-p=
+acman-key.post</a>&quot;<br>&gt; &gt; +RUN C:\tools\msys64\usr\bin\bash.exe=
+ -lc &quot;sed -i &#39;s/^CheckSpace/#CheckSpace/g&#39; /etc/pacman.conf&qu=
+ot;<br>&gt; &gt; +RUN C:\tools\msys64\usr\bin\bash.exe -lc &quot;echo $MSYS=
+TEM&quot; &gt;nul 2&gt;&amp;1<br>&gt; &gt; +# RUN C:\tools\msys64\usr\bin\b=
+ash.exe -lc &quot;sed -i &#39;s/Server =3D http:\/\/<a href=3D"http://repo.=
+msys2.org">repo.msys2.org</a>\/msys\/.arch\///g&#39; /etc/pacman.d/mirrorli=
+st.msys&quot;<br>&gt; &gt; +# RUN C:\tools\msys64\usr\bin\bash.exe -lc &quo=
+t;sed -i &#39;s/Server =3D http:\/\/<a href=3D"http://repo.msys2.org">repo.=
+msys2.org</a>\/mingw\/i686\///g&#39; /etc/pacman.d/mirrorlist.mingw32&quot;=
+<br>&gt; &gt; +# RUN C:\tools\msys64\usr\bin\bash.exe -lc &quot;sed -i &#39=
+;s/Server =3D http:\/\/<a href=3D"http://repo.msys2.org">repo.msys2.org</a>=
+\/mingw\/x86_64\///g&#39; /etc/pacman.d/mirrorlist.mingw64&quot;<br>&gt; &g=
+t; +RUN C:\tools\msys64\usr\bin\bash.exe -lc &quot;grep -rl &#39;<a href=3D=
+"http://repo.msys2.org/">repo.msys2.org/</a>&#39; /etc/pacman.d/mirrorlist.=
+* | xargs sed -i &#39;s/<a href=3D"http://repo.msys2.org">repo.msys2.org</a=
+>\//<a href=3D"http://mirrors.tuna.tsinghua.edu.cn">mirrors.tuna.tsinghua.e=
+du.cn</a>\/msys2\//g&#39;&quot;<br>&gt; &gt; +RUN C:\tools\msys64\usr\bin\p=
+acman.exe --noconfirm -Sy<br>&gt; &gt; +RUN echo Y | C:\tools\msys64\usr\bi=
+n\pacman.exe -Suu --noconfirm --needed<br>&gt; &gt; +RUN taskkill /F /FI &q=
+uot;MODULES eq msys-2.0.dll&quot;<br>&gt; &gt; +RUN tasklist<br>&gt; &gt; +=
+RUN C:\tools\msys64\usr\bin\bash.exe -lc &quot;pacman.exe --noconfirm -S --=
+needed \<br>&gt; &gt; +base-devel \<br>&gt;<br>&gt; base-devel pulls in a l=
+ot of stuff that we do not really need (automake...),<br>&gt; can you pleas=
+e replace it with the packages that are really required? See:<div>OK<br>&gt=
+;<br>&gt; <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-10/=
+msg00072.html">https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg000=
+72.html</a><br>&gt;<br>&gt; =C2=A0Thanks,<br>&gt; =C2=A0 Thomas<br>&gt;<br>=
+<br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=
+=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<=
+br>Yonggang Luo</div></div>
+
+--0000000000000318c005b1105b0f--
 
