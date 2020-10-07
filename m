@@ -1,67 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQArz-0007kY-Us
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 10:56:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48420)
+	id 1kQB7K-0002xA-4V
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 11:12:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQAru-0007hF-LD; Wed, 07 Oct 2020 10:56:38 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:45563)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQArs-0007EM-Jx; Wed, 07 Oct 2020 10:56:38 -0400
-Received: by mail-lj1-x241.google.com with SMTP id a4so2253463lji.12;
- Wed, 07 Oct 2020 07:56:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=KEBpAeWU5Zy5B8JqteBkDPWXaSVE6DdEnGqGKd7z9Bg=;
- b=FmhU+Qcx47GqcbQxXtCGk2FTG90LmY4W41GZ6ueA8X8dm/1mKVW/EaUlbudivzYMjl
- piEk9ztE4I5mjf9A4OeDcYHDYb78LPmCXnYa+/VndCHRdZkO+AqDL999QMwrEKMFA49I
- suarothr42qZ56gSPM7XtS51M+Ghw9PyGXFcyvskGsXTzA4Td/0f5f+HOhnCzC2OCWEQ
- 2hwz/54PPNCLVEEEDF2YG4b6FZmLzR5jhbtZnsrU4Qpn0k1DgvgkZjsCwhpgUff8CV5u
- deJ6IZNQcjyKqUjQO9OiF6F6CW3/dfPXwm33b5ywQIowrhW1VCsX/eGEqlmcw0ASEMSQ
- /ODw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=KEBpAeWU5Zy5B8JqteBkDPWXaSVE6DdEnGqGKd7z9Bg=;
- b=K3z1EvHwhTjfEUpyj19z49Q4iQNS7dbTFeQ3r0w8sS9jgyv3I9OWVko9aGdDbX+3LW
- odezjjJMxmYDYwAMCxxP4xNW1o8PIMVCEZbfMwj6K2Ho1CiOSu/KFRP1PoB0nhCxaFo7
- XD31Y3s9Puc4oPjxhMhu+GSzB/HpcvAY7rXlkHG/q6Nm/L/V9zAi1isxkCFxIMIkURgy
- BFvNO60sN3l2aH0KYReo9DWdGXIVIONWbzYzxLruq/fQ4jOQQeYCRajoCEG+7UPOOYLY
- kH6XT1DoM4uwfJcXr8r/tQJ6qdSRI9HezoGiJ7TDC1iwyFKt7l5K7BfxeZ99gs+1zDTg
- UpAA==
-X-Gm-Message-State: AOAM532XpIl7Al+WycSwSx8nv2DfYqtNwCaD5IQwc40reB8Vp2ReBPt6
- MHFLyZ9pcalhPaoiYMbJl/fiFOrcqDunhv1wbEuiQXX8V+g=
-X-Google-Smtp-Source: ABdhPJzsKfy+BuIV6jZwS0zw2LI03pl+2gynKLhXzwxlGRnZ9pXGYpMHN6BwLbgTgFfXeDwAkn5mMGRHOahwXLrYIBo=
-X-Received: by 2002:a2e:8983:: with SMTP id c3mr1432602lji.171.1602082593326; 
- Wed, 07 Oct 2020 07:56:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201007145300.1197-1-luoyonggang@gmail.com>
-In-Reply-To: <20201007145300.1197-1-luoyonggang@gmail.com>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Wed, 7 Oct 2020 22:56:21 +0800
-Message-ID: <CAE2XoE_5J07roLdUzPZzZx_KHvO-oLHSZGBSSw5wb42qD7vn0A@mail.gmail.com>
-Subject: Re: [PATCH v5 0/2] Improve cirrus msys2
-To: qemu-level <qemu-devel@nongnu.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQB7I-0002wo-LU
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 11:12:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25587)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQB7G-0001eB-GU
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 11:12:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602083549;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zGAeFSlDQMyCs7edayZGzepLWoyhQTBGcNgC23QgIUE=;
+ b=KuaDFfOnjjPXshGG+H+NdhWZPV4SKw4TNtW6nnVaD9nbIpZbPRl403CJYAQXw81oN8fwpo
+ P0I/RJ6/H4LNSTwcdC+/Zba3rFYYvk6GxfhO1dceCEdAGdrKFb1eY2enHB9c8HiWLB9ILg
+ YathBoO5CIWUqYDoyNFpiih3zsupN3I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-573--NKYqwYoPc67-FehzCLNmw-1; Wed, 07 Oct 2020 11:12:26 -0400
+X-MC-Unique: -NKYqwYoPc67-FehzCLNmw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E334D84E246;
+ Wed,  7 Oct 2020 15:12:24 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-72.ams2.redhat.com [10.36.113.72])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 747605D9DD;
+ Wed,  7 Oct 2020 15:12:23 +0000 (UTC)
+Subject: Re: [PATCH v5 1/2] cirrus: Fixing and speedup the msys2/mingw CI
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000e04b0d05b115eb91"
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20201007145300.1197-1-luoyonggang@gmail.com>
+ <20201007145300.1197-2-luoyonggang@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <11e4e784-3ce9-a385-bf81-8c7e1034f42d@redhat.com>
+Date: Wed, 7 Oct 2020 17:12:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
+MIME-Version: 1.0
+In-Reply-To: <20201007145300.1197-2-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:54:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,82 +79,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 14:56:43 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 15:12:32 -0000
 
---000000000000e04b0d05b115eb91
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 07/10/2020 16.52, Yonggang Luo wrote:
+> Use cache of cirrus caching msys2
+> The install of msys2 are refer to https://github.com/msys2/setup-msys2
+> The first time install msys2 would be time consuming, so increase timeout_in to 90m
+> according to https://cirrus-ci.org/faq/#instance-timed-out
+> 
+> Apply patch of https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg00072.html
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  .cirrus.yml | 110 +++++++++++++++++++++++++++++++---------------------
+>  1 file changed, 66 insertions(+), 44 deletions(-)
+> 
+> diff --git a/.cirrus.yml b/.cirrus.yml
+> index d58782ce67..a1145d0366 100644
+> --- a/.cirrus.yml
+> +++ b/.cirrus.yml
+> @@ -46,64 +46,86 @@ macos_xcode_task:
+>      - gmake check
+>  
+>  windows_msys2_task:
+> +  timeout_in: 90m
+>    windows_container:
+> -    image: cirrusci/windowsservercore:cmake
+> +    image: cirrusci/windowsservercore:2019
+>      os_version: 2019
+>      cpu: 8
+>      memory: 8G
+>    env:
+> +    CIRRUS_SHELL: powershell
+>      MSYS: winsymlinks:nativestrict
+>      MSYSTEM: MINGW64
+>      CHERE_INVOKING: 1
+>    printenv_script:
+> -    - C:\tools\msys64\usr\bin\bash.exe -lc 'printenv'
+> +    - choco install -y --no-progress 7zip
 
-CC Alex, now it's really fixed
+Since you've now removed the 'printenv' line, I think the section should
+maybe not be called "printenv_script" anymore, should it?
 
-On Wed, Oct 7, 2020 at 10:53 PM Yonggang Luo <luoyonggang@gmail.com> wrote:
->
-> Fixes the broken msys2/mingw ci and speed it up.
->
-> V4-V5
-> Now the cache are usefull by using 7zip to archive msys64
-> Saved about 18min, compare
-> https://cirrus-ci.com/task/5093551157542912
-> https://cirrus-ci.com/task/6177196538593280
->
-> V3-V4
-> Using cirrus cache to speed up msys2 ci instead of downloading archive
-file
->
-> V2-V3
-> Add one more patch:
-> cirrus: msys2/mingw speed is up, add excluded target back
-> Do not build sphinx on windows, that's failing
-> set the number of parallel count to fixed number 8
->
-> V1-V2
-> Resolve the cirrus conflict
->
-> Yonggang Luo (2):
->   cirrus: Fixing and speedup the msys2/mingw CI
->   cirrus: msys2/mingw speed is up, add excluded target back
->
->  .cirrus.yml | 113 +++++++++++++++++++++++++++++++---------------------
->  1 file changed, 67 insertions(+), 46 deletions(-)
->
-> --
-> 2.28.0.windows.1
->
+ Thomas
 
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---000000000000e04b0d05b115eb91
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">CC Alex, now it&#39;s really fixed<div><br>On Wed, Oct 7, =
-2020 at 10:53 PM Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">=
-luoyonggang@gmail.com</a>&gt; wrote:<br>&gt;<br>&gt; Fixes the broken msys2=
-/mingw ci and speed it up.<br>&gt;<br>&gt; V4-V5<br>&gt; Now the cache are =
-usefull by using 7zip to archive msys64<br>&gt; Saved about 18min, compare<=
-br>&gt; <a href=3D"https://cirrus-ci.com/task/5093551157542912">https://cir=
-rus-ci.com/task/5093551157542912</a><br>&gt; <a href=3D"https://cirrus-ci.c=
-om/task/6177196538593280">https://cirrus-ci.com/task/6177196538593280</a><b=
-r>&gt;<br>&gt; V3-V4<br>&gt; Using cirrus cache to speed up msys2 ci instea=
-d of downloading archive file<br>&gt;<br>&gt; V2-V3<br>&gt; Add one more pa=
-tch:<br>&gt; cirrus: msys2/mingw speed is up, add excluded target back<br>&=
-gt; Do not build sphinx on windows, that&#39;s failing<br>&gt; set the numb=
-er of parallel count to fixed number 8<br>&gt;<br>&gt; V1-V2<br>&gt; Resolv=
-e the cirrus conflict<br>&gt;<br>&gt; Yonggang Luo (2):<br>&gt; =C2=A0 cirr=
-us: Fixing and speedup the msys2/mingw CI<br>&gt; =C2=A0 cirrus: msys2/ming=
-w speed is up, add excluded target back<br>&gt;<br>&gt; =C2=A0.cirrus.yml |=
- 113 +++++++++++++++++++++++++++++++---------------------<br>&gt; =C2=A01 f=
-ile changed, 67 insertions(+), 46 deletions(-)<br>&gt;<br>&gt; --<br>&gt; 2=
-.28.0.windows.1<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=
-=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
-
---000000000000e04b0d05b115eb91--
 
