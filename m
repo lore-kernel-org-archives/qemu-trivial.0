@@ -1,79 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQ4fC-00029N-BW
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 04:19:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44732)
+	id 1kQ4pp-0000Yi-7I
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 04:30:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQ4f7-00028P-Rn
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 04:19:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60447)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kQ4pn-0000XO-SY
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 04:30:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57894)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kQ4f4-00082f-MB
- for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 04:19:01 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kQ4pm-0000u4-57
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 04:30:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602058737;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vk+UbotGnWkQH7iWaY0/ec/+yIu08MozIyBU1LrOP2M=;
- b=NDugA3XSEkmHooyz4J1RFmp52AXny0XxGyC2ch5Q8UDjQScWetoWabyEjjJjwwVFk2drh+
- bB36SbEwrbmfY4sKwVfeMqBP5PtE7BoDEQ9hQCnr8SIbZbIrnvZZWGPkANjOSi2s60vger
- qC4tZAA6wXmLlmRDs5OBhbFZ156qoVA=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-256-sI-OvdWAP6C2W6Dy_3d3Wg-1; Wed, 07 Oct 2020 04:18:51 -0400
-X-MC-Unique: sI-OvdWAP6C2W6Dy_3d3Wg-1
-Received: by mail-wr1-f69.google.com with SMTP id p6so194108wrm.23
- for <qemu-trivial@nongnu.org>; Wed, 07 Oct 2020 01:18:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Vk+UbotGnWkQH7iWaY0/ec/+yIu08MozIyBU1LrOP2M=;
- b=SSD/LsGCqFGPtGKH6axrTP+vs6VBwRhAo7Ki5+siTCkw42drv1G30es1Yb0v+SbFtK
- 6uEn+ssaSFuxxASgldc/6i0hJ6uP7dxPLum3e5Q7TFfWpGikOyabv7Y3fUisrHcRrp9a
- ofmPif+tep0Ih8eusVNOU3kHz45Bj+akU9awB7EXBhoXb7AjVMulB6PsS5cfxZ75wHPZ
- bS+PLMFbGBnOhfeEXn1SwKGpaUApn7Y4Lc849GDKC9wY7NYYzDFOz/hPA0/a4Tb2SL4j
- JmlPVE3F30+JkaOqIMuFGDCCu4FmMomfcX4jX9RXDUV0d7jismL4Fhw322lJpT7UqiPz
- L0Xg==
-X-Gm-Message-State: AOAM5309Hr4VfvCXiwDQhvrlW+YbadBeLyDGIkVz5pafiKCpXg6S/Yop
- Y2xkZvVFgD8drV90W0lfzZ7U5FJL/dUNeg4vn/06RyKmVKG/EpFiRLks0mSnF0U7QphQbboBip/
- dajwKI4ha3UuJieWlfg==
-X-Received: by 2002:adf:dd89:: with SMTP id x9mr2298241wrl.25.1602058730567;
- Wed, 07 Oct 2020 01:18:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAzm7GOjPLHXQtFYM1EpisscyAxwyCgpTUPj0oHAseRN6DVr5ieQ86b5BESbYM4c2cYfmvUg==
-X-Received: by 2002:adf:dd89:: with SMTP id x9mr2298221wrl.25.1602058730297;
- Wed, 07 Oct 2020 01:18:50 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:d2f4:5943:190c:39ff?
- ([2001:b07:6468:f312:d2f4:5943:190c:39ff])
- by smtp.gmail.com with ESMTPSA id b189sm1588827wmb.37.2020.10.07.01.18.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Oct 2020 01:18:49 -0700 (PDT)
-Subject: Re: [PATCH v3 2/3] cirrus: Fixing and speedup the msys2/mingw CI
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
-References: <20201007035154.109-1-luoyonggang@gmail.com>
- <20201007035154.109-3-luoyonggang@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <6b4528dc-918d-ebf4-db27-cbd67fa96c11@redhat.com>
-Date: Wed, 7 Oct 2020 10:18:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ s=mimecast20190719; t=1602059401;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=xJvWVSBojrU+JxbQ9cfafTRQDAWon1AhlTTOBiFFfYk=;
+ b=WeogHaBWIAsqhNmkqrjJeFc0elL2FbhQnxsJAjMJ10UHy00ZmVkCWyZko0baxrBruwffcv
+ RyC1mz6QvPEjGHucueVNf0wyhtJNwCI1SCiEH/Ivd56vmuSnkEGh23LGoXgla3a2liO/N+
+ 07V1+eDhpNddesTQXvpzshTzNS9WUL4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-s8g159XDPQSlutRZaTHKkw-1; Wed, 07 Oct 2020 04:29:57 -0400
+X-MC-Unique: s8g159XDPQSlutRZaTHKkw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 69577801FDB;
+ Wed,  7 Oct 2020 08:29:56 +0000 (UTC)
+Received: from redhat.com (ovpn-114-68.ams2.redhat.com [10.36.114.68])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 586F878800;
+ Wed,  7 Oct 2020 08:29:54 +0000 (UTC)
+Date: Wed, 7 Oct 2020 09:29:51 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 2/2] cirrus: Fixing and speedup the msys2/mingw CI
+Message-ID: <20201007082951.GE2505881@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20201007024135.1885-1-luoyonggang@gmail.com>
+ <20201007024135.1885-3-luoyonggang@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201007035154.109-3-luoyonggang@gmail.com>
+In-Reply-To: <20201007024135.1885-3-luoyonggang@gmail.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -82,9 +64,8 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,23 +78,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 08:19:02 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 08:30:04 -0000
 
-On 07/10/20 05:51, Yonggang Luo wrote:
+These kind of changes are not appropriate for QEMU trivial.
+
+On Wed, Oct 07, 2020 at 10:41:35AM +0800, Yonggang Luo wrote:
 > Using a prepared https://github.com/lygstate/qemu/releases/download/v5.1.0/msys2-x86_64.tar.xz
 > for speed up the msys2/mingw prepare speed on the cirrus CI.
-> This file are generated by the msys2.docker
 
-The speedup is nice, but we need to be able to regenerate the tarball
-without access to a Windows machine.  Otherwise whoever adds a new
-dependency cannot test it himself with CI.
+I appreciate the desire to speed up CI, but relying on the contents of
+a arbitrary blob provided by a user as the build environment is not
+satisfatory for QEMU's CI.  The project has no visibility, control
+or tracking over what is in that blob.
 
-Ideally, the tarball would be generated by the containers job in the
-Gitlab CI, but I'm not sure if that's possible.
+Any caches need to be managed by the CI system, and populated by
+the defined CI job logic.
 
-On top of this, whoever commits this needs to replace the URL with
-something under download.qemu.org, but that's the easy part.
 
-Paolo
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
