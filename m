@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kPzsI-0000YF-3b
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 23:12:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50628)
+	id 1kQ0V0-00036N-An
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 23:52:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPzsF-0000TZ-Md; Tue, 06 Oct 2020 23:12:15 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:32786)
+ id 1kQ0Uz-000369-DL; Tue, 06 Oct 2020 23:52:17 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:32833)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kPzsD-0005lY-Lg; Tue, 06 Oct 2020 23:12:15 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id t23so2193376pji.0;
- Tue, 06 Oct 2020 20:12:12 -0700 (PDT)
+ id 1kQ0Ux-0001wp-TZ; Tue, 06 Oct 2020 23:52:17 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id o25so555255pgm.0;
+ Tue, 06 Oct 2020 20:52:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Ti82CZTFz3EhPzRXs4Twux3NzJ56A37z948Ppkw4Evw=;
- b=Wjc5u9crHCBTUzjT0wiTxspQ42JCtdjFStdZCMRsP17MBzEHJt3AiDKnoNx8TakhAj
- 4/PHQlP3jXd8hwOd49WIA1kWFqvkP0Lg0DiC94a2JNfnoTqCVEW+hnoXpUD1kPWYKZ7T
- Dw7Qzfr1aLuaQhTLWCb/cHqeCBtFH+x2h7+Cm0VK+dU+jIAqV4voT9a9nVdwsT56ZBz5
- GX1mfjIgYFFw2cQEXQfN8haMcb3rlqTTTohG1up8yDrVQJXluLsXlvk4dCQDePNxusd3
- w7j9lwNQgXw/mBHHM3R9h97DEVfDBH1ZddlhoaumR39rLJiCjDlKeW8xEa4ipno+AYQt
- IW4A==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0u004zZv1eefQLQ4o5fz6OoIFmDGh9h/pn8NmTmgvvs=;
+ b=GNnt5IEehDwh0r3Alz9s52CrSTEPX+zpEZ/YrS0UjVl8cG/Og+prBDViqDhe5Npn3G
+ 5HQi0nJeN/Xl22uvLxWTfJXpzzlg2wqfJA1GtfguDvIfuXnl3FTLi5IsC4Vd7p/y0vzU
+ 7ijoHmMSBbzXtmgbskNjJmwCmKlZq0QXFajGeac5P74z0zxFlWkva5urWaOoHjPg+hL2
+ hiKtUZ0V8x0YYXc6bE91TBY6RfmrEOHmPMiR+WcEJcGKxh63R8RF6ZJKAAxXtfOOLzIy
+ 6OrADVJMyvYqEGO3VjvMemVojM5mSapJIXk0cf1vV0xA8nHbinKpomGTmcWwhgIYrILD
+ Aabw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Ti82CZTFz3EhPzRXs4Twux3NzJ56A37z948Ppkw4Evw=;
- b=fSNdj0opVqxPJz+g9MliQbnm/34t0de/Rofs+DciFnMRTaAbwSNhuiEpzOu1Weqkzw
- du5LiojY4wYfLZ11Aj/+AqYz14ONwa8T4BTmKRrz8g7L4vYiUPoafUUH0fLSUd0fhBku
- eC1xEwaul/c15hNGXt1hlG7HG29NU40+Qm3eWVN2hHCjCtntldtHp85fi0+yLN1kry/x
- MmzBTeVirvtEbJJLDsYFPDaaPooGP3vBFmryJ6A5H72KpnRWhsdFFGjG/a3/5reJMmuG
- ZF77WAzGXarBdm/lzEJLbqnGMmkbCP7ZTJtw21+F6kMmj6Nrtvk+CFJ1oiu7vm+y1802
- v3zw==
-X-Gm-Message-State: AOAM530bnmPoWh+cft1XR0kgFURLGptYyVP9aKRRidJdMoK0pXFgzq47
- 1BQhfXQhHrlY/27tsMPf1Ii6ui0aqXDrmw==
-X-Google-Smtp-Source: ABdhPJzd333it522tIKmKwoFZc1B87iN5dN6XqRBriR724uaindA+1KOnil8v23BkQMVG23eJSLAlg==
-X-Received: by 2002:a17:902:8509:b029:d3:89e2:7931 with SMTP id
- bj9-20020a1709028509b02900d389e27931mr947151plb.51.1602040331263; 
- Tue, 06 Oct 2020 20:12:11 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0u004zZv1eefQLQ4o5fz6OoIFmDGh9h/pn8NmTmgvvs=;
+ b=lyJDWc6UwrdcVeEWaQmTVBciDYZtVS8kFRgJedZ7MNkEvaRcITDb1kpJ4SHJf1VKkd
+ DZ1CMQbdU1DZHGg97LCKWcRzeqWNki7ft/0Hwv8ZW7dw8Q3lkcRybk6ND5hpc+K7B6Td
+ Wma8NtV3ydSQ3pUBZWrjyPknHreg40sXbg81kZRVvJoZHWSt4WFAe/uVKcBgEcBQmOPt
+ MbLb4NG80xWZJE49a57PwD7dP3BlwuvZQkr8NPCmlSKNAjJvEbgeSDMXI3ObmbLef2cX
+ LygcSALrhKl7ueVYjFu1qdq+oLAy8+2rQu/mQl9Co1vim2mEtGmx6Zb6dLefMXYT6Xba
+ M+gA==
+X-Gm-Message-State: AOAM531YVLJWgvtLFknAdTgEpRhTcpsgpO3A/Ah1DRRQlPTM5ilV9hpi
+ 2QGbjRYRWyDWJ0Ke4clx+WFtB1hvji/IHA==
+X-Google-Smtp-Source: ABdhPJzfNuJIVS7TDo6hdxBI8gb3u5KIpClzQ++2SmrggjFoS6kb+fZdqRqrhoJsKyE5Ud0HQ1FlFA==
+X-Received: by 2002:a62:7657:0:b029:152:4d66:dcb with SMTP id
+ r84-20020a6276570000b02901524d660dcbmr1265795pfc.74.1602042733462; 
+ Tue, 06 Oct 2020 20:52:13 -0700 (PDT)
 Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id cs21sm9001614pjb.0.2020.10.06.20.12.08
+ by smtp.googlemail.com with ESMTPSA id v10sm497031pjf.34.2020.10.06.20.52.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2020 20:12:10 -0700 (PDT)
+ Tue, 06 Oct 2020 20:52:12 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -49,16 +49,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v2 2/2] cirrus: Fixing and speedup the msys2/mingw CI
-Date: Wed,  7 Oct 2020 11:11:48 +0800
-Message-Id: <20201007031148.232-3-luoyonggang@gmail.com>
+Subject: [PATCH v3 0/3] Improve cirrus msys2
+Date: Wed,  7 Oct 2020 11:51:51 +0800
+Message-Id: <20201007035154.109-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.28.0.windows.1
-In-Reply-To: <20201007031148.232-1-luoyonggang@gmail.com>
-References: <20201007031148.232-1-luoyonggang@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102f.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x52b.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -80,96 +79,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 03:12:16 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 03:52:17 -0000
 
-Using a prepared https://github.com/lygstate/qemu/releases/download/v5.1.0/msys2-x86_64.tar.xz
-for speed up the msys2/mingw prepare speed on the cirrus CI.
-This file are generated by the msys2.docker
-
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- .cirrus.yml | 58 ++++++++++++++---------------------------------------
- 1 file changed, 15 insertions(+), 43 deletions(-)
-
-diff --git a/.cirrus.yml b/.cirrus.yml
-index d58782ce67..6fd884db7a 100644
---- a/.cirrus.yml
-+++ b/.cirrus.yml
-@@ -47,58 +47,30 @@ macos_xcode_task:
- 
- windows_msys2_task:
-   windows_container:
--    image: cirrusci/windowsservercore:cmake
-+    image: cirrusci/windowsservercore:2019
-     os_version: 2019
-     cpu: 8
-     memory: 8G
-   env:
-+    CIRRUS_SHELL: powershell
-     MSYS: winsymlinks:nativestrict
-     MSYSTEM: MINGW64
-     CHERE_INVOKING: 1
--  printenv_script:
--    - C:\tools\msys64\usr\bin\bash.exe -lc 'printenv'
-   install_script:
--    - C:\tools\msys64\usr\bin\bash.exe -lc "cd /c/tools &&
--        curl -O http://repo.msys2.org/msys/x86_64/msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz"
--    - C:\tools\msys64\usr\bin\bash.exe -lc "cd /c/tools &&
--        curl -O http://repo.msys2.org/msys/x86_64/msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz.sig"
--    - C:\tools\msys64\usr\bin\bash.exe -lc "cd /c/tools &&
--        pacman -U --noconfirm msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz"
--    - C:\tools\msys64\usr\bin\bash.exe -lc "pacman --noconfirm -Sy"
-+    - |
-+      Write-Output $env:PATH
-+      md C:\tools
-+      $start_time = Get-Date
-+      bitsadmin /transfer msys_download /dynamic /download /priority FOREGROUND https://github.com/lygstate/qemu/releases/download/v5.1.0/msys2-x86_64.tar.xz C:\tools\msys2-x86_64.tar.xz
-+      Write-Output "Download time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
-+      $start_time = Get-Date
-+      cd C:\tools
-+      choco install -y --no-progress 7zip
-+      cmd /C "7z x msys2-x86_64.tar.xz -so | 7z x -aoa -simsys2-x86_64.tar -ttar -omsys64"
-+      Write-Output "Extract time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
-     - C:\tools\msys64\usr\bin\bash.exe -lc "pacman --noconfirm -S --needed
--        bash pacman pacman-mirrors msys2-runtime"
--    - taskkill /F /IM gpg-agent.exe
--    - C:\tools\msys64\usr\bin\bash.exe -lc "pacman --noconfirm -Su"
--    - C:\tools\msys64\usr\bin\bash.exe -lc "pacman --noconfirm -S --needed
--        base-devel
--        git
--        mingw-w64-x86_64-python
--        mingw-w64-x86_64-python-setuptools
--        mingw-w64-x86_64-toolchain
--        mingw-w64-x86_64-capstone
--        mingw-w64-x86_64-SDL2
--        mingw-w64-x86_64-SDL2_image
--        mingw-w64-x86_64-gtk3
--        mingw-w64-x86_64-glib2
--        mingw-w64-x86_64-ninja
--        mingw-w64-x86_64-make
--        mingw-w64-x86_64-lzo2
--        mingw-w64-x86_64-zstd
--        mingw-w64-x86_64-libjpeg-turbo
--        mingw-w64-x86_64-pixman
--        mingw-w64-x86_64-libgcrypt
--        mingw-w64-x86_64-libpng
--        mingw-w64-x86_64-libssh
--        mingw-w64-x86_64-libxml2
--        mingw-w64-x86_64-snappy
--        mingw-w64-x86_64-libusb
--        mingw-w64-x86_64-usbredir
--        mingw-w64-x86_64-libtasn1
--        mingw-w64-x86_64-nettle
--        mingw-w64-x86_64-cyrus-sasl
--        mingw-w64-x86_64-curl
--        mingw-w64-x86_64-gnutls
--        mingw-w64-x86_64-zstd"
-+      mingw-w64-x86_64-python-sphinx"
-+
-   script:
-     - C:\tools\msys64\usr\bin\bash.exe -lc "mkdir build"
-     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && ../configure
--- 
-2.28.0.windows.1
-
+Fixes the broken msys2/mingw ci and speed it up.=0D
+=0D
+V2-V3=0D
+Add one more patch:=0D
+cirrus: msys2/mingw speed is up, add excluded target back=0D
+Do not build sphinx on windows, that's failing=0D
+set the number of parallel count to fixed number 8=0D
+=0D
+V1-V2=0D
+Resolve the cirrus conflict=0D
+=0D
+Yonggang Luo (3):=0D
+  docker: Add win32/msys2/mingw64 docker=0D
+  cirrus: Fixing and speedup the msys2/mingw CI=0D
+  cirrus: msys2/mingw speed is up, add excluded target back=0D
+=0D
+ .cirrus.yml                           | 63 +++++++--------------------=0D
+ tests/docker/dockerfiles/msys2.docker | 57 ++++++++++++++++++++++++=0D
+ 2 files changed, 73 insertions(+), 47 deletions(-)=0D
+ create mode 100644 tests/docker/dockerfiles/msys2.docker=0D
+=0D
+-- =0D
+2.28.0.windows.1=0D
+=0D
 
