@@ -1,73 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQ0VP-0003FX-U1
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Oct 2020 23:52:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56582)
+	id 1kQ3BH-00021d-Vy
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Oct 2020 02:44:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQ0VC-0003Ap-Kq; Tue, 06 Oct 2020 23:52:34 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33573)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kQ0V7-00020q-KR; Tue, 06 Oct 2020 23:52:28 -0400
-Received: by mail-pg1-x541.google.com with SMTP id o25so555428pgm.0;
- Tue, 06 Oct 2020 20:52:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=QoOFcj0BBtVtN0N8jZL22G41FB50g1ddTWqyY3DXOVE=;
- b=KX0VMui5C9KORw0wRkFsQSnAzXVU/BABvNNSv0DBalT9gqGvnBfwmfPNSw+KO84zjs
- Bnp3IvkB8xIqVy2z4kemBwjtsxLxS22TBAhWOguy0vTSUJE9Gr96kX6bzUMyfXikWULp
- 474rmpfUscsX27kcv5c1jgTGkfVVIp2XnyXBcsN3i4n++WVcL/13Yh9os1A8hZe004bl
- AOVuiVMaDQ1zuXVOd4DdjcMcOAf2/aWMi56mVeTEc6X18kv6VpLYR+X7t18Y2EgA0mCy
- +dyvEdj89UN1PZ5xPpCt+4aFwDGRqVJFGlvKjsZeVq78EqEySJG67/EyzefdbFa6lAX5
- HXUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=QoOFcj0BBtVtN0N8jZL22G41FB50g1ddTWqyY3DXOVE=;
- b=dTCFM4yv1Xepwbr/fJYzxYhXjE41t4y/nZEhwUePDT7tpAonBBCFH1LHx/hEG8g2zH
- szAYFUogXhE15B9iEdlWv/PNUOZ5Zwr5lB0bpeYuU/UhPssCdKcbWguSim8g+cXeUtSi
- HIjwV2yZnCda7TKY9BnzUdH87SE1A/LNuTIyT8oEA/9vxlUL6clKonx3OQNdk3zEtdB6
- yQf8qwUEjPNdgQ3bhJLiCOQgQR7FiXsKV7g9TkI64mrIAbcy+UrGpTnHurGSe1U/Pvvr
- KTA4smf1v4WGeHR7LMJq72BGLk0oj1f+RfjM0YPuZqnxyxJIm1FwtW9qL6eGJYbxRBea
- sTeg==
-X-Gm-Message-State: AOAM533yF0hfQm/MbIlxl3oTztR5bwJ5EIQyhPnpsjo4z9j7RzeqJ8jC
- ULJ7/Rl4lfGTMJlBPdpPM9MGJqjCCAjg7g==
-X-Google-Smtp-Source: ABdhPJz4H6oSYgNrI8q/mc4ap/+s6mS48K70eJVXKiAlQRfkoAsWXOK4ezhfof4+E1yc51VBC3jKXg==
-X-Received: by 2002:a63:c5b:: with SMTP id 27mr1307712pgm.80.1602042741974;
- Tue, 06 Oct 2020 20:52:21 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id v10sm497031pjf.34.2020.10.06.20.52.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2020 20:52:21 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQ3BG-0001xd-3I
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 02:44:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54065)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQ3BE-00058H-7J
+ for qemu-trivial@nongnu.org; Wed, 07 Oct 2020 02:44:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602053043;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=K5HkoXL0p6BDlBw5EYi/PnxPTeHvpeahPhnZHvYBp6s=;
+ b=ORe8wPvZSO+U6AS33d311JdNoNb9+b6q0Jar0sFKFzo6pROYJLqa78FHSNSOO1JD2C3iwg
+ u5JAvy/85wq64aaWwL290O3M0fezOMEleGf4i2YMWOIHIqay3+/ZlJ6KqPGZIGRPz58R4P
+ RLAYTeBYV6gBGGHXmTNWnNysl8jf1tE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-535-e6WrnHpANdSunrT07LF28w-1; Wed, 07 Oct 2020 02:43:49 -0400
+X-MC-Unique: e6WrnHpANdSunrT07LF28w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E1A411007B23;
+ Wed,  7 Oct 2020 06:43:47 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-72.ams2.redhat.com [10.36.113.72])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5972C5D9DD;
+ Wed,  7 Oct 2020 06:43:46 +0000 (UTC)
+Subject: Re: [PATCH 1/2] docker: Add win32/msys2/mingw64 docker
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v3 3/3] cirrus: msys2/mingw speed is up,
- add excluded target back
-Date: Wed,  7 Oct 2020 11:51:54 +0800
-Message-Id: <20201007035154.109-4-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
-In-Reply-To: <20201007035154.109-1-luoyonggang@gmail.com>
-References: <20201007035154.109-1-luoyonggang@gmail.com>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20201007024135.1885-1-luoyonggang@gmail.com>
+ <20201007024135.1885-2-luoyonggang@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e437f0ed-20a9-c370-8c87-ceb845513805@redhat.com>
+Date: Wed, 7 Oct 2020 08:43:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20201007024135.1885-2-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:54:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,31 +78,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Oct 2020 03:52:37 -0000
+X-List-Received-Date: Wed, 07 Oct 2020 06:44:06 -0000
 
-The following target are add back:
-i386-softmmu,arm-softmmu,ppc-softmmu,mips-softmmu
+On 07/10/2020 04.41, Yonggang Luo wrote:
+> This docker is used to preparing a msys2/mingw with basic software installed.
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  tests/docker/dockerfiles/msys2.docker | 57 +++++++++++++++++++++++++++
+>  1 file changed, 57 insertions(+)
+>  create mode 100644 tests/docker/dockerfiles/msys2.docker
+> 
+> diff --git a/tests/docker/dockerfiles/msys2.docker b/tests/docker/dockerfiles/msys2.docker
+> new file mode 100644
+> index 0000000000..ce1404cbb8
+> --- /dev/null
+> +++ b/tests/docker/dockerfiles/msys2.docker
+> @@ -0,0 +1,57 @@
+> +FROM mcr.microsoft.com/windows/servercore:2004
+> +RUN cmd /S /C powershell -NoLogo -NoProfile -Command netsh interface ipv4 show interfaces ; netsh interface ipv4 set subinterface 18 mtu=1460 store=persistent ; netsh interface ipv4 show interfaces ; Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) ;
+> +RUN choco install -y --no-progress git 7zip
+> +RUN cmd /S /C powershell -NoLogo -NoProfile -Command Remove-Item C:\ProgramData\chocolatey\logs -Force -Recurse ; Remove-Item C:\Users\ContainerAdministrator\AppData\Local\Temp -Force -Recurse
+> +RUN mkdir C:\tools
+> +RUN bitsadmin /transfer msys_download /dynamic /download /priority FOREGROUND https://github.com/msys2/msys2-installer/releases/download/2020-09-03/msys2-base-x86_64-20200903.sfx.exe C:\tools\base.exe
+> +RUN cd /d C:\tools && base.exe -y
+> +RUN cmd /S /C powershell -NoLogo -NoProfile -Command "((Get-Content -path C:\tools\msys64\etc\\post-install\\07-pacman-key.post -Raw) -replace '--refresh-keys', '--version') | Set-Content -Path C:\tools\msys64\etc\\post-install\\07-pacman-key.post"
+> +RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/^CheckSpace/#CheckSpace/g' /etc/pacman.conf"
+> +RUN C:\tools\msys64\usr\bin\bash.exe -lc "echo $MSYSTEM" >nul 2>&1
+> +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server = http:\/\/repo.msys2.org\/msys\/.arch\///g' /etc/pacman.d/mirrorlist.msys"
+> +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server = http:\/\/repo.msys2.org\/mingw\/i686\///g' /etc/pacman.d/mirrorlist.mingw32"
+> +# RUN C:\tools\msys64\usr\bin\bash.exe -lc "sed -i 's/Server = http:\/\/repo.msys2.org\/mingw\/x86_64\///g' /etc/pacman.d/mirrorlist.mingw64"
+> +RUN C:\tools\msys64\usr\bin\bash.exe -lc "grep -rl 'repo.msys2.org/' /etc/pacman.d/mirrorlist.* | xargs sed -i 's/repo.msys2.org\//mirrors.tuna.tsinghua.edu.cn\/msys2\//g'"
+> +RUN C:\tools\msys64\usr\bin\pacman.exe --noconfirm -Sy
+> +RUN echo Y | C:\tools\msys64\usr\bin\pacman.exe -Suu --noconfirm --needed
+> +RUN taskkill /F /FI "MODULES eq msys-2.0.dll"
+> +RUN tasklist
+> +RUN C:\tools\msys64\usr\bin\bash.exe -lc "pacman.exe --noconfirm -S --needed \
+> +base-devel \
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- .cirrus.yml | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+base-devel pulls in a lot of stuff that we do not really need (automake...),
+can you please replace it with the packages that are really required? See:
 
-diff --git a/.cirrus.yml b/.cirrus.yml
-index bf5a0990ec..39a175d569 100644
---- a/.cirrus.yml
-+++ b/.cirrus.yml
-@@ -72,8 +72,7 @@ windows_msys2_task:
-   script:
-     - C:\tools\msys64\usr\bin\bash.exe -lc "mkdir build"
-     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && ../configure
--      --python=python3 --ninja=ninja
--      --target-list-exclude=i386-softmmu,arm-softmmu,ppc-softmmu,mips-softmmu"
-+      --python=python3 --ninja=ninja"
-     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make -j8"
-   test_script:
-     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make V=1 check"
--- 
-2.28.0.windows.1
+https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg00072.html
+
+ Thanks,
+  Thomas
 
 
