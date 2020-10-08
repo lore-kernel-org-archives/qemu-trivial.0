@@ -1,72 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQPLM-0005f4-4p
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2020 02:24:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46662)
+	id 1kQPwO-0000rf-T5
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2020 03:02:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53766)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQPLL-0005ev-HU
- for qemu-trivial@nongnu.org; Thu, 08 Oct 2020 02:23:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33760)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kQPLG-0006AZ-OQ
- for qemu-trivial@nongnu.org; Thu, 08 Oct 2020 02:23:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602138233;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1x1IevKNGxdaE3Ghq7QXMVnbRGazny19seJ3MxyjZkY=;
- b=fQ+z98exa7FxVKA+rEpSxHFbfxyGJXjyXz7IIgFBpolMwUdDNb/LhDoJALPSQyuwY6E2XV
- GS4h1OqE9MihIwHlegfLFVjbezNWd61wJSSZV5cH6BPfqo0n0zPfV9+VYkZFKEdunbIzTL
- 5dZVpRrbESoIyFjOW4SQOljhcOzPYC8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-62-3B1fqYa6MWSjoIyU-5lgbA-1; Thu, 08 Oct 2020 02:23:50 -0400
-X-MC-Unique: 3B1fqYa6MWSjoIyU-5lgbA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B0DC318A076B;
- Thu,  8 Oct 2020 06:23:48 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-40.ams2.redhat.com [10.36.113.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B3D969F63;
- Thu,  8 Oct 2020 06:23:44 +0000 (UTC)
-Subject: Re: [PATCH v10] scripts: Convert qemu-version.sh to qemu-version.py
-To: luoyonggang@gmail.com, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201007195934.297-1-luoyonggang@gmail.com>
- <CABgObfboc5-01TVBgLw-u8eKzR2QJkRYA5cTQ0wpx4SD2D92yw@mail.gmail.com>
- <CAE2XoE8JV0G=3yK3HzMuXb19925p1J76rm2rVQH-OMhniPS8-g@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3c8e44c9-d302-1869-258c-65fa77ecbbb4@redhat.com>
-Date: Thu, 8 Oct 2020 08:23:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kQPwG-0000p4-QC; Thu, 08 Oct 2020 03:02:09 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:37306)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kQPwE-0002wm-1o; Thu, 08 Oct 2020 03:02:08 -0400
+Received: by mail-ej1-x642.google.com with SMTP id e22so6546217ejr.4;
+ Thu, 08 Oct 2020 00:02:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JeRqgtDBYnHt5SiMKhN4RpRt4Xe1xXTtzB3loz7l9lE=;
+ b=aXfaXYLutYEFPbA811Sjsv3WJPjDJao+A4UYGzOWwtnjC5+nSoqbpIMuEjez82ivhX
+ 0gmul1O0IyyzKzQ7wD1C3Y9T7lxHiLilPogwYUnrWI9I+AcYqV/Q7sowLwx2TWqLm9gD
+ 6Pn1P6veaD9beAI+IEbNZoRw4j6zwiLU/JuC+V0fVosy4OolYdaE7U3LFQHnv3XJcKy0
+ Wc1omKCkd+XEiBgAnz5JAYioCtzfNFPLTo5bcNGwMwjPOZT6nAp6ApstROPkLzuo0NVE
+ lBtzqykztoR0Qim2pvZEkUmY0es5KMKq4I52lhsCpHvpTfINda6vPrEV5JookdiPGCIt
+ cqWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JeRqgtDBYnHt5SiMKhN4RpRt4Xe1xXTtzB3loz7l9lE=;
+ b=bnLmBXz69WWZj8Eu5Sq9H2LM5uBT6u3HsfNZaxLqaZMRonTXoQf5oixAN9ulJodEPj
+ 8PGODMXLKzEzmAscXQ8iYS4j4xYPop0shn5OPZP6/uG+ProiNrUqoz+x9oo0xwTGMKNS
+ oNQyzEFOkHyKAS0nsUKf7QIWhYj9AOlwW9b9c8stWRAh3gv1TTQGs486ObjTfCXeBGZ7
+ LEwUpa5N338IIduamfidjvMBZ7kCCjItt7Qns1IKo20Icghrnf2wLHhTnSL2mQ1mwQC5
+ uVdBl65a7PEMT7ea3pqp1yq5lY9LWxvR2EnW1TLEUpZuVC8v5+mdnUilcSjcNU/tLbkE
+ VFQA==
+X-Gm-Message-State: AOAM531L48Snid/CTqsVDabUHLEOSjdpDEUIsPPs2rqO+ElxwkjMQpCI
+ z4i3BlZMaemZT+SUd2M5DsbeNYK7yfFhCiTj9wk=
+X-Google-Smtp-Source: ABdhPJxZx/OeEvTmIYzGl25AD13iihRSWkEsRRkJFCZu6VT1ac53IMKaMb73pibS8ZgvuxR+T8WlRHVET3gEe+9VeaY=
+X-Received: by 2002:a17:906:4e16:: with SMTP id
+ z22mr1182161eju.527.1602140523901; 
+ Thu, 08 Oct 2020 00:02:03 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE8JV0G=3yK3HzMuXb19925p1J76rm2rVQH-OMhniPS8-g@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/08 01:56:49
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20201007220255.1170167-1-ehabkost@redhat.com>
+In-Reply-To: <20201007220255.1170167-1-ehabkost@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 8 Oct 2020 11:01:52 +0400
+Message-ID: <CAJ+F1C+G-oU9qQMUFKqQqWxPqvA2k_qSJnYcYCPMu=Y8T+Hw5A@mail.gmail.com>
+Subject: Re: [PATCH] qom: Fix "typddef" typo
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000ceb96405b12368ce"
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x642.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,22 +73,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2020 06:23:59 -0000
+X-List-Received-Date: Thu, 08 Oct 2020 07:02:10 -0000
 
-On 07/10/2020 23.51, 罗勇刚(Yonggang Luo) wrote:
-> 
-> On Thu, Oct 8, 2020 at 4:31 AM Paolo Bonzini <pbonzini@redhat.com
-> <mailto:pbonzini@redhat.com>> wrote:
->>
->> You won't hear no for an answer, right?...
-> I am trying to figure out the real issue, it's the issue of git,
-> https://github.com/msys2/MSYS2-packages/issues/2176
-Can you at least please stop crap-flooding the QEMU mailing list with
-multiple versions of your patches each day? We are all busy, so nobody is
-going to review 5 or more iterations of your patches each day. Work on your
-patches first, make sure that they are working, and only if you think that
-they are really, really good, then send them to the list. Thanks.
+--000000000000ceb96405b12368ce
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- Thomas
+On Thu, Oct 8, 2020 at 2:04 AM Eduardo Habkost <ehabkost@redhat.com> wrote:
 
+> Fix typo introduced in the C11 #ifdef for qemu_max_align_t.  It
+> never caused any problems because we always compile using
+> -std=3Dgnu99.
+>
+> Fixes: 4c880f363e9e ("qom: Allow objects to be allocated with increased
+> alignment")
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+>
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+> ---
+>  qom/object.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/qom/object.c b/qom/object.c
+> index c335dce7e4..125dabd28b 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -692,7 +692,7 @@ static void object_finalize(void *data)
+>
+>  /* Find the minimum alignment guaranteed by the system malloc. */
+>  #if __STDC_VERSION__ >=3D 201112L
+> -typddef max_align_t qemu_max_align_t;
+> +typedef max_align_t qemu_max_align_t;
+>  #else
+>  typedef union {
+>      long l;
+> --
+> 2.26.2
+>
+>
+>
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--000000000000ceb96405b12368ce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 8, 2020 at 2:04 AM Eduard=
+o Habkost &lt;<a href=3D"mailto:ehabkost@redhat.com">ehabkost@redhat.com</a=
+>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fix=
+ typo introduced in the C11 #ifdef for qemu_max_align_t.=C2=A0 It<br>
+never caused any problems because we always compile using<br>
+-std=3Dgnu99.<br>
+<br>
+Fixes: 4c880f363e9e (&quot;qom: Allow objects to be allocated with increase=
+d alignment&quot;)<br>
+Signed-off-by: Eduardo Habkost &lt;<a href=3D"mailto:ehabkost@redhat.com" t=
+arget=3D"_blank">ehabkost@redhat.com</a>&gt;<br></blockquote><div><br></div=
+><div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcan=
+dre.lureau@redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt=
+;</div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0qom/object.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/qom/object.c b/qom/object.c<br>
+index c335dce7e4..125dabd28b 100644<br>
+--- a/qom/object.c<br>
++++ b/qom/object.c<br>
+@@ -692,7 +692,7 @@ static void object_finalize(void *data)<br>
+<br>
+=C2=A0/* Find the minimum alignment guaranteed by the system malloc. */<br>
+=C2=A0#if __STDC_VERSION__ &gt;=3D 201112L<br>
+-typddef max_align_t qemu_max_align_t;<br>
++typedef max_align_t qemu_max_align_t;<br>
+=C2=A0#else<br>
+=C2=A0typedef union {<br>
+=C2=A0 =C2=A0 =C2=A0long l;<br>
+-- <br>
+2.26.2<br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--000000000000ceb96405b12368ce--
 
