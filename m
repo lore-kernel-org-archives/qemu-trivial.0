@@ -1,56 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQSTn-000892-Nj
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2020 05:44:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44522)
+	id 1kQSTo-0008Ax-QT
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2020 05:44:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kQRTG-0006b2-VY; Thu, 08 Oct 2020 04:40:18 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:42272)
+ id 1kQS8M-0008Bh-GE; Thu, 08 Oct 2020 05:22:46 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:39482)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kQRTE-0007Uy-EP; Thu, 08 Oct 2020 04:40:18 -0400
-Received: by mail-il1-x144.google.com with SMTP id c5so4928257ilr.9;
- Thu, 08 Oct 2020 01:40:15 -0700 (PDT)
+ id 1kQS8K-0004cT-Du; Thu, 08 Oct 2020 05:22:46 -0400
+Received: by mail-il1-x144.google.com with SMTP id q1so5041347ilt.6;
+ Thu, 08 Oct 2020 02:22:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Yo8eawsYt25LHabU7xyYGWra2pm7iePuuilWGf4A5jo=;
- b=MZZKr7Jh44969O3Tyaasauofrg7fcFBfBeDg3zieIrTrXrN2hiSXQ0dZj4cIlu8wTa
- rG0NPosgyZL0qbT0r2agPhGatkhkC/SNE0sl6hZ2EG+jexRwUQgMG0LxqZJMXraxMwWE
- WMjRxgU3xBtgPh28nH1/uHj5AIhg4BZq9SsBK2wZiYwk6l4HJ7vA9OGOM78bnzMY9Xzv
- Ms90kwwBnGHg9nbRETe5ef239fUeyp7aBahWCIbI72pW0tnGGSXdJadKpX04C350fReE
- 7fduhuTzpEjADmyQl6aFKoeEzBUHkR+UzMfhq6IWeKsX3OmG75vymbcmklMAizt93ldK
- M+KQ==
+ :cc; bh=3kQmNNinowxqs25Y82Hf1yjNnmYqEqa8fStyGACofeg=;
+ b=HfILuJMd/XPU77x+99VbiReeXuOEHQBji4cfNLbyi3nchL0Ni0FZRZ6R0xWyGCfVMb
+ V1FoJGZC1739S0n+cYIFxW3W5JUHe9QOoIbrTrqHgkAUnW7iTbDDQmXfaEPQI2Tov5SY
+ ZtN1OxB/Tus9ZeDhlAWaw5UsRWjLxBrTo69BniLLf1/KVT4dfdsw/bS9D/L3UT4gMDUA
+ rUbPXIuzE2wacn/5Mb6LYNfm3lm38v/b1l1s5y/uCdmLr9lU/aRTh7ZHrnWHf4FPZldN
+ nAClFHmj5K+VjpFn9PPRGGPfsp1Yyo/GuiZ8/LQphuwtA0BIYMCv2+QwpjUCHfbJWJaI
+ WICA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Yo8eawsYt25LHabU7xyYGWra2pm7iePuuilWGf4A5jo=;
- b=KrpK29OnrTDd/tZGbFV2FCtefQIPwhRu0O5aqEkCfKnRVyUolGv8hD7nao6ddM7C4y
- zPVzsb6EI+Xj9SxCBgzmX8o28Wp82l0cYK/gCwAZ1B5gAR3jXszZ9DQhzO/CQgtThjze
- 7IKgSuLNMPBQ+EIeUPYDaf2TUrZYY8JhsrCQ+YvvPdBnZDJKHmuKWydcMNZX503yQyLh
- 30arCaD9DU3YPmLOTPvOeLAmwaZjz+W8Qc1Gr34HpQnGb4KM2VNFbIa8Nwj+dx1LyPN+
- iMYEzLFGlVRG3UrUX5S75wM35Kqe17RtfEgom9W47doJiAOQQFPsNMiUPs21FWno0ZdN
- CRGw==
-X-Gm-Message-State: AOAM531juumFzIbGmwOYstH9+wdWn4KPImBMoX5PEjCy+cQ3T+vKlWPs
- lzAhjcj8V3Q87pJKbqxHnqF1aE+u5ihEIkoj0xk=
-X-Google-Smtp-Source: ABdhPJx2j4FIOwQMvNSAGpbi9ZvZqtrjtuafXCf2I/APtsvVFHtypcfUmMo9+anK8UeDKeJvKUnrsntMmfZUdPkkkNo=
-X-Received: by 2002:a92:cb8c:: with SMTP id z12mr5453670ilo.123.1602146415004; 
- Thu, 08 Oct 2020 01:40:15 -0700 (PDT)
+ bh=3kQmNNinowxqs25Y82Hf1yjNnmYqEqa8fStyGACofeg=;
+ b=nKQMTPuC1FQWSpIkLgBF/xyIy77zISqfmExmuek7yTQqukCpp/dBlSdvpT9jQa6+8d
+ LSdtC3dBfRHKlNBMQh3djbIaJcR9AVwKvYYwCkkAkjNyv+8L6cdjhZ7P0iu4hpsEvSOu
+ h5o1b7C6vmjOIRSvV7HyP4Jp9jsx6AC09tWQ4AGwsmD06gmoDZN0fG6RLiqD0E97PxZy
+ 4rxwaV0VlLD5iy7I1ib182QjodWjYfGiD1cuSE71JbMupng/4pWRL86CM8Y8XS4Sf7OV
+ H8Q0eqAZ586ceAnbYZeJEQXtrinihZdxVwoCg6qMHZ5s4vc97KL7FAyKlCLs6iajFQDl
+ HOEg==
+X-Gm-Message-State: AOAM530vBJsKR6zWsEQnLkmXs8kqZbWocfb4PD4udlTLzTkzwSkVXCYr
+ JAWA/7N3zaBgtK7RXUHA/jz1lZLk055s12opcFc=
+X-Google-Smtp-Source: ABdhPJxCTyU6M9IxoilO4P8zkbVVtjd/ALpPR0j56WV8qwHq2FzBO7oqoOShmrMBrKVyfbePDGR88RLJMU6y8Y0W9O8=
+X-Received: by 2002:a05:6e02:ca2:: with SMTP id 2mr5943870ilg.51.1602148963119; 
+ Thu, 08 Oct 2020 02:22:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201008060528.68579-1-chetan4windows@gmail.com>
- <df199cc8-c383-ed03-6244-7a204e92397b@redhat.com>
- <ba4f81dd-8e5c-1d50-311c-fdc41f9cc504@redhat.com>
-In-Reply-To: <ba4f81dd-8e5c-1d50-311c-fdc41f9cc504@redhat.com>
+ <1c24b564-9870-10f9-ac37-c4ebfacc74f0@redhat.com>
+In-Reply-To: <1c24b564-9870-10f9-ac37-c4ebfacc74f0@redhat.com>
 From: Chetan <chetan4windows@gmail.com>
-Date: Thu, 8 Oct 2020 14:10:01 +0530
-Message-ID: <CAPPKfOHQV44b+kkcc3QYsLXya-5Ttcbve51uqRUS0e5GyouX6w@mail.gmail.com>
+Date: Thu, 8 Oct 2020 14:52:30 +0530
+Message-ID: <CAPPKfOE2bOYjCPQSqAfOnvqfYhY1d5hJE-1MqO1VsuQ8qqwgCQ@mail.gmail.com>
 Subject: Re: [PATCH] Fixing LGPL version number
-To: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, 
- "Daniel P . Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000f1d1b005b124c7dc"
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000d2f51c05b1255fd3"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
  envelope-from=chetan4windows@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -63,7 +59,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 08 Oct 2020 05:44:54 -0400
+X-Mailman-Approved-At: Thu, 08 Oct 2020 05:44:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,166 +71,247 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2020 08:40:19 -0000
+X-List-Received-Date: Thu, 08 Oct 2020 09:22:46 -0000
 
---000000000000f1d1b005b124c7dc
+--000000000000d2f51c05b1255fd3
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hello,
+On Thu, Oct 8, 2020 at 2:18 PM Thomas Huth <thuth@redhat.com> wrote:
+>I'm also not sure whether it's legally possible to replace the license text
+>without agreement of all authors of the file ... so better don't do a
+global
+>patch for that right now, start with one subsystem instead and see whether
+>it gets accepted... or maybe we should only add the SPDX tags, without
+>removing the license text? ... this all might require some more discussions
+>first ...
 
-I'll be working on replacing the license text in LGPL licensed files with
-the SPDX identifier tag and will submit it as a separate patch.
+I'll put those changes on hold then, for now.
 
+On Thu, Oct 8, 2020 at 2:34 PM Thomas Huth <thuth@redhat.com> wrote:
+>Phew, that's a pretty huge patch, could you maybe split it by subsystem /
+>folder so that it is easier to review?
 
-*On 08/10/2020 09.54, Philippe Mathieu-Daud=C3=A9 wrote: *
+Sorry about that. Sure, I'll split the patch in different versions folder
+wise.
 
+>I'm not sure whether we should update the version in the files that just
+say
+>"LGPL" (and do not mention "Lesser") ... they could also refer to the GNU
+>*Library* GPL instead, which was available as version 2 (in the sense of
+2.0).
+>Could you please drop the hunks for the files that only mention LGPL for
+now?
 
-*> --- > *
+Ok. I'll exclude the files which mention just LGPL in the revision.
 
-* >Also, if you use a script to do that cleanup, it would be >useful to
-include it in the commit description.*
+Chetan.
 
-Sure, I'll be including the commands/script I use.
+On Thu, Oct 8, 2020 at 2:34 PM Thomas Huth <thuth@redhat.com> wrote:
 
-Chetan
-
-On Thu, Oct 8, 2020 at 1:27 PM Thomas Huth <thuth@redhat.com> wrote:
-
-> On 08/10/2020 09.54, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Hi,
-> >
-> > On 10/8/20 8:05 AM, Chetan Pant wrote:
-> >> There is no "version 2" of the "Lesser" General Public License. It is
-> >> either "GPL version 2.0" or "LGPL version 2.1". This patch replaces al=
-l
-> >> occurrences of "LGPL version 2" with "LGPL version 2.1" in comment
+> On 08/10/2020 08.05, Chetan Pant wrote:
+> > There is no "version 2" of the "Lesser" General Public License. It is
+> > either "GPL version 2.0" or "LGPL version 2.1". This patch replaces all
+> > occurrences of "LGPL version 2" with "LGPL version 2.1" in comment
 > section.
 > >
-> > This looks like a good cleanup!
-> >
-> > Since you already listed all the files using this license,
-> > it can be a good opportunity to correct and use the full
-> > license text (which is miswritten in various places):
-> >
-> > ---
-> >
-> >  Copyright (C) <year> <name of author>
-> >
-> > This library is free software; you can redistribute it and/or modify it
-> > under the terms of the GNU Lesser General Public License as published b=
-y
-> > the Free Software Foundation; either version 2.1 of the License, or (at
-> > your option) any later version.
-> >
-> > This library is distributed in the hope that it will be useful, but
-> > WITHOUT ANY WARRANTY; without even the implied warranty of
-> > MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-> > General Public License for more details.
-> >
-> > You should have received a copy of the GNU Lesser General Public Licens=
-e
-> > along with this library; if not, write to the Free Software Foundation,
-> > Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+> > Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 >
-> Please don't use that version. If the FSF move to another office again, w=
-e
-> have to update the whole mess again.
+> Phew, that's a pretty huge patch, could you maybe split it by subsystem /
+> folder so that it is easier to review?
 >
-> > Or simpler, add the SPDX identifier tag:
-> >
-> >   SPDX-License-Identifier: LGPL-2.1-or-later
+> [...]
+> > diff --git a/net/hub.h b/net/hub.h
+> > index ce45f7b..83e33e4 100644
+> > --- a/net/hub.h
+> > +++ b/net/hub.h
+> > @@ -7,7 +7,7 @@
+> >   *  Stefan Hajnoczi   <stefanha@linux.vnet.ibm.com>
+> >   *  Zhi Yong Wu       <wuzhy@linux.vnet.ibm.com>
+> >   *
+> > - * This work is licensed under the terms of the GNU LGPL, version 2 or
+> later.
+> > + * This work is licensed under the terms of the GNU LGPL, version 2.1
+> or later.
+> >   * See the COPYING.LIB file in the top-level directory.
+> >   *
+> >   */
 >
-> SPDX tags would be cool, of course, but it could also be done in a separa=
-te
-> patch later.
+> I'm not sure whether we should update the version in the files that just
+> say
+> "LGPL" (and do not mention "Lesser") ... they could also refer to the GNU
+> *Library* GPL instead, which was available as version 2 (in the sense of
+> 2.0).
+> Could you please drop the hunks for the files that only mention LGPL for
+> now?
+>
+> > diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
+> > index d3e289e..da570e3 100644
+> > --- a/target/i386/hvf/x86_emu.c
+> > +++ b/target/i386/hvf/x86_emu.c
+> > @@ -5,7 +5,7 @@
+> >   * This program is free software; you can redistribute it and/or
+> >   * modify it under the terms of the GNU Lesser General Public
+> >   * License as published by the Free Software Foundation; either
+> > - * version 2 of the License, or (at your option) any later version.
+> > + * version 2.1 of the License, or (at your option) any later version.
+> >   *
+> >   * This program is distributed in the hope that it will be useful,
+> >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > @@ -23,7 +23,7 @@
+> >  //  This library is free software; you can redistribute it and/or
+> >  //  modify it under the terms of the GNU Lesser General Public
+> >  //  License as published by the Free Software Foundation; either
+> > -//  version 2 of the License, or (at your option) any later version.
+> > +//  version 2.1 of the License, or (at your option) any later version.
+> >  //
+> >  //  This library is distributed in the hope that it will be useful,
+> >  //  but WITHOUT ANY WARRANTY; without even the implied warranty of
+>
+> That's an interesting file - the license text shows up twice here... I
+> wonder whether we could scratch one of the two... but that's also something
+> for a separate patch, I think.
 >
 >  Thomas
 >
 >
 
---000000000000f1d1b005b124c7dc
+--000000000000d2f51c05b1255fd3
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hello,</div><div><br></div><div>I&#3=
-9;ll be working on replacing the license text in LGPL licensed files with t=
-he SPDX identifier tag and will submit it as a separate patch.
+<div dir=3D"ltr"><div dir=3D"ltr">
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu=
+, Oct 8, 2020 at 2:18 PM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com=
+">thuth@redhat.com</a>&gt; wrote:</div></div>
 
-</div><div><br></div><div>
-<i><span class=3D"gmail-im">On 08/10/2020 09.54, Philippe Mathieu-Daud=C3=
-=A9 wrote:</span> <br></i></div><div>
-<i><span class=3D"gmail-im">&gt; ---<br>
-&gt; <br></span></i></div><div><span class=3D"gmail-im"><i>
-&gt;Also, if you use a script to do that cleanup, it would be<br>
-&gt;useful to include it in the commit description.</i>
+</div><div dir=3D"ltr">
+&gt;I&#39;m also not sure whether it&#39;s legally possible to replace the =
+license text<br>
+&gt;without agreement of all authors of the file ... so better don&#39;t do=
+ a global<br>
+&gt;patch for that right now, start with one subsystem instead and see whet=
+her<br>
+&gt;it gets accepted... or maybe we should only add the SPDX tags, without<=
+br>
+&gt;removing the license text? ... this all might require some more discuss=
+ions<br>
+&gt;first ...
 
-</span>
+</div><div><br></div><div>I&#39;ll put those changes on hold then, for now.=
+<br></div><div dir=3D"ltr"><br></div><div dir=3D"ltr">
+On Thu, Oct 8, 2020 at 2:34 PM Thomas Huth &lt;<a href=3D"mailto:thuth@redh=
+at.com">thuth@redhat.com</a>&gt; wrote: <br>&gt;Phew, that&#39;s a pretty h=
+uge patch, could you maybe split it by subsystem /<br>
+&gt;folder so that it is easier to review?
 
-</div><div><br></div><div>Sure, I&#39;ll be including the commands/script I=
- use.<br></div><div><br></div><div>Chetan<br></div></div><br><div class=3D"=
-gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 8, 2020 at 1=
-:27 PM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=3D"_blank=
-">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On 08/10/2020 09.54, Philippe Mathieu-Daud=C3=A9 wrote:<b=
+</div><div><br></div><div>Sorry about that. Sure, I&#39;ll split the patch =
+in different versions folder wise.</div><div><br></div><div>
+&gt;I&#39;m not sure whether we should update the version in the files that=
+ just say<br>
+&gt;&quot;LGPL&quot; (and do not mention &quot;Lesser&quot;) ... they could=
+ also refer to the GNU<br>
+&gt;*Library* GPL instead, which was available as version 2 (in the sense o=
+f 2.0).<br>
+&gt;Could you please drop the hunks for the files that only mention LGPL fo=
+r now?
+
+</div><div><br></div><div>Ok. I&#39;ll exclude the files which mention just=
+ LGPL in the revision.<br></div><div><br></div><div>Chetan.</div><div><br><=
+/div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Th=
+u, Oct 8, 2020 at 2:34 PM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.co=
+m">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">On 08/10/2020 08.05, Chetan Pant wrote:<br>
+&gt; There is no &quot;version 2&quot; of the &quot;Lesser&quot; General Pu=
+blic License. It is<br>
+&gt; either &quot;GPL version 2.0&quot; or &quot;LGPL version 2.1&quot;. Th=
+is patch replaces all<br>
+&gt; occurrences of &quot;LGPL version 2&quot; with &quot;LGPL version 2.1&=
+quot; in comment section.<br>
+&gt; <br>
+&gt; Signed-off-by: Chetan Pant &lt;<a href=3D"mailto:chetan4windows@gmail.=
+com" target=3D"_blank">chetan4windows@gmail.com</a>&gt;<br>
+<br>
+Phew, that&#39;s a pretty huge patch, could you maybe split it by subsystem=
+ /<br>
+folder so that it is easier to review?<br>
+<br>
+[...]<br>
+&gt; diff --git a/net/hub.h b/net/hub.h<br>
+&gt; index ce45f7b..83e33e4 100644<br>
+&gt; --- a/net/hub.h<br>
+&gt; +++ b/net/hub.h<br>
+&gt; @@ -7,7 +7,7 @@<br>
+&gt;=C2=A0 =C2=A0*=C2=A0 Stefan Hajnoczi=C2=A0 =C2=A0&lt;<a href=3D"mailto:=
+stefanha@linux.vnet.ibm.com" target=3D"_blank">stefanha@linux.vnet.ibm.com<=
+/a>&gt;<br>
+&gt;=C2=A0 =C2=A0*=C2=A0 Zhi Yong Wu=C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;<a href=
+=3D"mailto:wuzhy@linux.vnet.ibm.com" target=3D"_blank">wuzhy@linux.vnet.ibm=
+.com</a>&gt;<br>
+&gt;=C2=A0 =C2=A0*<br>
+&gt; - * This work is licensed under the terms of the GNU LGPL, version 2 o=
+r later.<br>
+&gt; + * This work is licensed under the terms of the GNU LGPL, version 2.1=
+ or later.<br>
+&gt;=C2=A0 =C2=A0* See the COPYING.LIB file in the top-level directory.<br>
+&gt;=C2=A0 =C2=A0*<br>
+&gt;=C2=A0 =C2=A0*/<br>
+<br>
+I&#39;m not sure whether we should update the version in the files that jus=
+t say<br>
+&quot;LGPL&quot; (and do not mention &quot;Lesser&quot;) ... they could als=
+o refer to the GNU<br>
+*Library* GPL instead, which was available as version 2 (in the sense of 2.=
+0).<br>
+Could you please drop the hunks for the files that only mention LGPL for no=
+w?<br>
+<br>
+&gt; diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c<br>
+&gt; index d3e289e..da570e3 100644<br>
+&gt; --- a/target/i386/hvf/x86_emu.c<br>
+&gt; +++ b/target/i386/hvf/x86_emu.c<br>
+&gt; @@ -5,7 +5,7 @@<br>
+&gt;=C2=A0 =C2=A0* This program is free software; you can redistribute it a=
+nd/or<br>
+&gt;=C2=A0 =C2=A0* modify it under the terms of the GNU Lesser General Publ=
+ic<br>
+&gt;=C2=A0 =C2=A0* License as published by the Free Software Foundation; ei=
+ther<br>
+&gt; - * version 2 of the License, or (at your option) any later version.<b=
 r>
-&gt; Hi,<br>
-&gt; <br>
-&gt; On 10/8/20 8:05 AM, Chetan Pant wrote:<br>
-&gt;&gt; There is no &quot;version 2&quot; of the &quot;Lesser&quot; Genera=
-l Public License. It is<br>
-&gt;&gt; either &quot;GPL version 2.0&quot; or &quot;LGPL version 2.1&quot;=
-. This patch replaces all<br>
-&gt;&gt; occurrences of &quot;LGPL version 2&quot; with &quot;LGPL version =
-2.1&quot; in comment section.<br>
-&gt; <br>
-&gt; This looks like a good cleanup!<br>
-&gt; <br>
-&gt; Since you already listed all the files using this license,<br>
-&gt; it can be a good opportunity to correct and use the full<br>
-&gt; license text (which is miswritten in various places):<br>
-&gt; <br>
-&gt; ---<br>
-&gt; <br>
-&gt;=C2=A0 Copyright (C) &lt;year&gt; &lt;name of author&gt;<br>
-&gt; <br>
-&gt; This library is free software; you can redistribute it and/or modify i=
-t<br>
-&gt; under the terms of the GNU Lesser General Public License as published =
-by<br>
-&gt; the Free Software Foundation; either version 2.1 of the License, or (a=
-t<br>
-&gt; your option) any later version.<br>
-&gt; <br>
-&gt; This library is distributed in the hope that it will be useful, but<br=
->
-&gt; WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-&gt; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesse=
-r<br>
-&gt; General Public License for more details.<br>
-&gt; <br>
-&gt; You should have received a copy of the GNU Lesser General Public Licen=
-se<br>
-&gt; along with this library; if not, write to the Free Software Foundation=
-,<br>
-&gt; Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA<br>
+&gt; + * version 2.1 of the License, or (at your option) any later version.=
 <br>
-Please don&#39;t use that version. If the FSF move to another office again,=
- we<br>
-have to update the whole mess again.<br>
+&gt;=C2=A0 =C2=A0*<br>
+&gt;=C2=A0 =C2=A0* This program is distributed in the hope that it will be =
+useful,<br>
+&gt;=C2=A0 =C2=A0* but WITHOUT ANY WARRANTY; without even the implied warra=
+nty of<br>
+&gt; @@ -23,7 +23,7 @@<br>
+&gt;=C2=A0 //=C2=A0 This library is free software; you can redistribute it =
+and/or<br>
+&gt;=C2=A0 //=C2=A0 modify it under the terms of the GNU Lesser General Pub=
+lic<br>
+&gt;=C2=A0 //=C2=A0 License as published by the Free Software Foundation; e=
+ither<br>
+&gt; -//=C2=A0 version 2 of the License, or (at your option) any later vers=
+ion.<br>
+&gt; +//=C2=A0 version 2.1 of the License, or (at your option) any later ve=
+rsion.<br>
+&gt;=C2=A0 //<br>
+&gt;=C2=A0 //=C2=A0 This library is distributed in the hope that it will be=
+ useful,<br>
+&gt;=C2=A0 //=C2=A0 but WITHOUT ANY WARRANTY; without even the implied warr=
+anty of<br>
 <br>
-&gt; Or simpler, add the SPDX identifier tag:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0SPDX-License-Identifier: LGPL-2.1-or-later<br>
-<br>
-SPDX tags would be cool, of course, but it could also be done in a separate=
-<br>
-patch later.<br>
+That&#39;s an interesting file - the license text shows up twice here... I<=
+br>
+wonder whether we could scratch one of the two... but that&#39;s also somet=
+hing<br>
+for a separate patch, I think.<br>
 <br>
 =C2=A0Thomas<br>
 <br>
 </blockquote></div></div>
 
---000000000000f1d1b005b124c7dc--
+--000000000000d2f51c05b1255fd3--
 
