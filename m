@@ -1,113 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQyWC-00005s-P3
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 15:57:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54488)
+	id 1kR0dg-00056G-LB
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 18:13:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kQyW9-0008Qp-Tz
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 15:57:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34080)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kQyVc-0005qH-Cv
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 15:57:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602273414;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=OPFeCcoMQP/e2elK3jSrN60RnVqJbxdMoTQQ5fcokBw=;
- b=bKVpccsSFDoxpfJZiizwPEPGyznuNVYImRlLrGA5XiHfp5OkOov3gwEZGyOm1tk5y/CpLq
- 1pbLx4mkddoCgeCqWasmZOfdvyY++1h2epQCJGNxRtvfgK2L30LKQAbfKBssxhC7P7O1ph
- OycPpi8c0UsTZNRRYhDnCcwgUWYJzfg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-546-cmpz0bItMXG4M9qUdjccOg-1; Fri, 09 Oct 2020 15:56:52 -0400
-X-MC-Unique: cmpz0bItMXG4M9qUdjccOg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ECC50186DD29;
- Fri,  9 Oct 2020 19:56:50 +0000 (UTC)
-Received: from [10.3.113.14] (ovpn-113-14.phx2.redhat.com [10.3.113.14])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 687546266E;
- Fri,  9 Oct 2020 19:56:50 +0000 (UTC)
-Subject: Re: [PATCH] block/blkdebug: fix memory leak
-To: Elena Afanasova <eafanasova@gmail.com>, kwolf@redhat.com,
- mreitz@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Autocrypt: addr=eblake@redhat.com; keydata=
- mQENBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAG0HkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPokBOgQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6uQENBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAGJAR8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4PpkBDQRL
- x8lsAQgAsOw8LECIdJAG1F8qoX4igCjk1bujojBn38NsPdBoK6eG3VSpgmhF5a1S1MaYQTPJ
- m/sLBZFPqavWEettVl6PURGFSJdBcSnkKPXckAWf175lDJGuDTph7RYO+J75KSRQg01Dc5qn
- 3I3SoXxVdHez/4sSkHma9lj9cTHI5gEGOWL0NpVKBz+N5vE7aQdS5I8mAQqHXfi5FRpgsdga
- KdS0m5W726zptmyqWXQT453ETaG+93k6SFxLrbxGhx+9i86c5LH3CjPjNfHMkR/pz7AHffMS
- G1Y5tyZuJOHeaEMhNh8Drq/ra5NhHMU4Hade0Gqblj8DH4Wjat67p2l+8d+M4QARAQABtB5F
- cmljIEJsYWtlIDxlYmxha2VAcmVkaGF0LmNvbT6JATcEEwEIACEFAkvHyWwCGwMFCwkIBwMF
- FQoJCAsFFgIDAQACHgECF4AACgkQp6FrSiUnQ2oiZgf/ccRzSLeY7uXWCgNhlYgB1ZdDkGgB
- oITVYrq6VE78zTDQn/9f+TCA3odhnwwoLuQPWDjbR+d0PS10s/VAKcgnDWf1v8KYtP0aYjPK
- y9aPX6K+Jkcbu5BBQ+2fHO2NLqKCZMqMVSw96T1CI9igwDSDBoGsr/VPIarhr9qHgQKko83B
- 9iVERjQUDaz5KnyawDD6WxqVYJaLGo2C4QVFn4ePhtZc5F0NymIlplZPJORhnx05tsiJrEW2
- 0CnRmICOwIyCc24O0tNjBWX6ccoe8aMP9AIkOzs4ZGOOWv04dfKFv21PZYhHJgc1PSorz4mi
- Gs2bCdUKzBxrJ+bxoAPUZ6a2brkBDQRLx8lsAQgAxpDBcxY5psqgBJ+Q/jLeD8z3TvDWrbA8
- PEIrd0Zs7vpFMoMcmG8+dmTuNFlLuxIEOZA0znkT50zne2sFg0HJdYBgV4K5EaQJUNJdEXju
- e0NHoJRcnSzIuW5MGIX2Pk8AzzId2jj+agV5JuKiGErMW/APotND+9gKhW/UO98Hhv35cUjw
- KS2EBOalhkl4zpFyb+NjRkuqOoHeEZg+gKeXvAAqNZUjD306Rs15beGkZAX72zQnzbEIpC2c
- xWAy20ICgQN9wQ3lerzSfQo9EoBBjpGMnneCOgG1NJCMtYRwJta+vrAJxHSCo3B4t8Vh/1D6
- 2VuX5TPCqqNeDkw5CPRLZQARAQABiQEfBBgBCAAJBQJLx8lsAhsMAAoJEKeha0olJ0NqtN8I
- AJkRRg3l83OfDV9Daw4o1LtM8dy57P6mfVa5ElmzWQRY6Vimni9X3VXhOEwxpiOZkUSLErY0
- M3NkfW/tlQVIZQKmNZwIgQ79EJ7fvXC4rhCAnlMJcpeNmHcKZmNBC3MufrusM5iv48a2Dqc1
- yg8C6uZOF/oZhrkjVlgDd4B4iapiWT5IRT1CKM2VAnhHO+qUvyFDe9jX6a2ZhQ6ev0A4wxbX
- 0t/Wx0llylWVG6mjD6pY/8+lIJNNu/9xlIxx6/FpHi9Xs1nqWA2O1kqF8H6AC9lF2LDAK/7l
- J3EipX47wK4bHo9EuM26optmWOkvGkVsPeCd20ryUfjcG7N+Bj0w+D4=
-Organization: Red Hat, Inc.
-Message-ID: <2a2b524b-337b-ff2d-d4c9-39e04f4a7a55@redhat.com>
-Date: Fri, 9 Oct 2020 14:56:49 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kR0de-000548-Ov; Fri, 09 Oct 2020 18:13:22 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:32894)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kR0dd-0005GG-A0; Fri, 09 Oct 2020 18:13:22 -0400
+Received: by mail-io1-xd42.google.com with SMTP id r4so4177812ioh.0;
+ Fri, 09 Oct 2020 15:13:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yLTMTm4pMOnCg4lmMf90/RRrLNpMObFiVfKrT8fuLCY=;
+ b=Yf8+qdRzyQQs0+rHahMji1CeFM9HlPVGpg6nFonpm/EZz5RH75YOZoarnaNBOeu28+
+ IcmhvjU7aUvBxkDE0osgdG/BPUx9HnPCjid3J4UtOx3MbNbSJrhgoKs4+zbyY8h21FbZ
+ sEeKWf7a2bKg7xaLVPq7YadDXYkdfTbx38Wv9wQcyBF/6vJbftQS7VJ+0nUY2DvVLVZ5
+ qps3u0S9cGn0TkzuCT2lHDX6zYOzqeIQTuFXLjzn6+wr7Pey5V89Te+GqIJnbYivRMOR
+ K+1tlzkie5sPAShrI1OGBkOib/9WxKn32pDSb37xEUtlM7sG7+WE56AGF8YfP4cY82hi
+ shNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yLTMTm4pMOnCg4lmMf90/RRrLNpMObFiVfKrT8fuLCY=;
+ b=r7QjETGyxFiBZxEhsI4TILi1AtPuCg+kv4ZNxY4AyC4zxfWN47dMgdMl8ep3IQNZyp
+ dfJKx3ajlDESYEzyRTFZsag5s7cdkOLNRurKu6dHF6hprQWnjOcs38FlUxNVxyAC7BtJ
+ A+57V0G8Df9HFbKzORoQvTf9OUluHG24njYNMVTRSdMTVFMeA92cyN0rQcJTs5o/V1tv
+ 2Ep1UGKDfyD2f34Zfry+ULotRmfuEwV+0X/kQ1h3iIavlYuPb4DzieDqPY0Tu7oV0uQ0
+ CcYRWPcptsnBxDF/rRLrwMjFi202pVZL8K3bPnDUifWfKCUKAyFXe5+EvE0JojwZgFeD
+ jX9A==
+X-Gm-Message-State: AOAM531NTSvtbPKUxgrBecmbTFXHAqyngpTkEdbO8klQG3MaJIMj7QFO
+ CdmUg19G6ipFcoV4gfijc6tHFNRiPJpFg2SwnwM=
+X-Google-Smtp-Source: ABdhPJxLzXdpG1k+gjxpFck4OJXiYUVTArq+nP6jIqhMlR9nsXIECmUjLhPalVkgf+HYfXFyFhRcoYQOEjSV6xhJDwA=
+X-Received: by 2002:a6b:8ec7:: with SMTP id q190mr1419196iod.42.1602281599198; 
+ Fri, 09 Oct 2020 15:13:19 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="f5gABgER9E4urbxanJoJ5GuAP3En4TSBz"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:34:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.208, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20201009113843.60995-1-lvivier@redhat.com>
+In-Reply-To: <20201009113843.60995-1-lvivier@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 9 Oct 2020 15:01:45 -0700
+Message-ID: <CAKmqyKOo5KXUH7N=1DmJvO2_1y4Az5HNwBcXOx9VhgFzhS_4xg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/char/serial: remove duplicate .class_init in
+ serial_mm_info
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Anup Patel <anup.patel@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -121,77 +76,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 19:57:30 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 22:13:23 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---f5gABgER9E4urbxanJoJ5GuAP3En4TSBz
-Content-Type: multipart/mixed; boundary="8cSYvKjBfVQSf1VLLQwjUXdHYsFKRspzu";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Elena Afanasova <eafanasova@gmail.com>, kwolf@redhat.com,
- mreitz@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Message-ID: <2a2b524b-337b-ff2d-d4c9-39e04f4a7a55@redhat.com>
-Subject: Re: [PATCH] block/blkdebug: fix memory leak
-References: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
-In-Reply-To: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
+On Fri, Oct 9, 2020 at 4:39 AM Laurent Vivier <lvivier@redhat.com> wrote:
+>
+> .class_init is already set to serial_mm_class_init.
+>
+> Remove the duplicate entry.
+>
+> Fixes: 17fd1a6490b1 ("serial-mm: add "regshift" property")
+> Cc: marcandre.lureau@redhat.com
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 
---8cSYvKjBfVQSf1VLLQwjUXdHYsFKRspzu
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-On 10/9/20 2:09 PM, Elena Afanasova wrote:
-> Spotted by PVS-Studio
->=20
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+Alistair
+
 > ---
->  block/blkdebug.c | 1 +
->  1 file changed, 1 insertion(+)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> diff --git a/block/blkdebug.c b/block/blkdebug.c
-> index eecbf3e5c4..54da719dd1 100644
-> --- a/block/blkdebug.c
-> +++ b/block/blkdebug.c
-> @@ -215,6 +215,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Err=
-or **errp)
->                                   BLKDEBUG_IO_TYPE__MAX, &local_error);
->          if (local_error) {
->              error_propagate(errp, local_error);
-> +            g_free(rule);
->              return -1;
->          }
->          if (iotype !=3D BLKDEBUG_IO_TYPE__MAX) {
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---8cSYvKjBfVQSf1VLLQwjUXdHYsFKRspzu--
-
---f5gABgER9E4urbxanJoJ5GuAP3En4TSBz
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl+AwIEACgkQp6FrSiUn
-Q2od4Qf7Bx6zO/LOrmDqT+SByeWAw0ntHYB3jkLW45qxIr2itTwouWwpydU083tV
-LLeUGHjrxpdz+HrQQOi5vxxLX8W0QAKP7PFBUDmHsXW12LReUCaUO69gEEtUVpBx
-tXlClkNBcr3hX/VZD+lZCMX1NHKfl9jnRW7uZEWqVmkwSaXAdPwLeIBUVLKuS2pW
-bHWIKopkt0NQ06vhcmOA/rGkJieQA+IaqKWOcHdSBIW7OAvBmYKI/d6DEVSEGQyD
-dv0VxPlN3P4+4bSuceou78fsRrbEosUIf8h43/3zMWe+xSbI/sg/rlfB5c/h//EU
-to6vfLoRPPIk5UQ6wwKzVt2EQjeuwg==
-=Fxdp
------END PGP SIGNATURE-----
-
---f5gABgER9E4urbxanJoJ5GuAP3En4TSBz--
-
+>  hw/char/serial.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index 4386adabd466..97f71879ff2a 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -1120,7 +1120,6 @@ static const TypeInfo serial_mm_info = {
+>      .class_init = serial_mm_class_init,
+>      .instance_init = serial_mm_instance_init,
+>      .instance_size = sizeof(SerialMM),
+> -    .class_init = serial_mm_class_init,
+>  };
+>
+>  static void serial_register_types(void)
+> --
+> 2.26.2
+>
+>
 
