@@ -1,76 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQu7j-0004Qf-SD
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 11:15:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48242)
+	id 1kQxmf-00076r-TR
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 15:10:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43232)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kQu7h-0004Ol-J5; Fri, 09 Oct 2020 11:15:57 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34521)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kQxmd-00075Z-Pq; Fri, 09 Oct 2020 15:10:27 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:32890)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kQu7f-0003vG-SV; Fri, 09 Oct 2020 11:15:57 -0400
-Received: by mail-wr1-x441.google.com with SMTP id i1so4562476wro.1;
- Fri, 09 Oct 2020 08:15:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kQxmc-0008C6-9o; Fri, 09 Oct 2020 15:10:27 -0400
+Received: by mail-lj1-x244.google.com with SMTP id 133so10633664ljj.0;
+ Fri, 09 Oct 2020 12:10:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zV5OhfB3Xvwm0HlsivDFmjvPZtSGJKFWQhvvDSrZZ64=;
- b=NAUcbee6HH3aMI0Js70rcthrTh4fTLhewM+sroKRj0NRYX3u41wy0Wi+Ay0RLE6N6C
- +oZGmMvXYdG1xzMIXtLik+5odOS+OpOLvnFBS8weuGmWUIpgPSSk3rZlYG1vXMCA+mRu
- oit2V3fevqnyEKLnotHJ0N6cZTmQ12+YhpSucyqECkLI9L+qtBrF+RHU4O60yRt0TzMH
- LQhhZB34TYgyQ1WndC3aEfk2uARbJgJki7zqv8OYUgxhirR6WqJCt8+f6r7+wud2ltff
- n8HritqfMRWTVGcT5SXnWvxlBiTvhcItNNScJzIZQ6kF/H+RsbTPfwSc04+aRK6tw1Te
- B4hw==
+ h=message-id:subject:from:to:cc:date:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=h3BHiBImTSYBNwunlyobpGQ88O38txvYjdThycmXeiI=;
+ b=AKxROpTIaZLMWK1lICRCw1I39WPEOf95PCjo8fLIZpjD7vs3llhy+2MmW1Av3mDU/j
+ ZSj0txcqfUztadXbSHwG6d054lkoYfh9daOwNtNms51snQOT8qD4tFk8doat2CZ8o7et
+ ZlQl5fEx907NGWc9Z76scCx0EEYFy6lEc1BwK1n5B+sl5kJ+Le5hPI7xVKPpDvQPhzWS
+ 9Cq7Cjf/C3r2CxQI/yzcEmLM+f/6bxHC3MCy1XBNm8sTQIDsmYuxf/8Ju0GwBJbHxXlz
+ QrJwosX/YQQMKLJGDv0Oia/VqviIZenIIi1UYtsPbtyvvF3PrZ1rCqgzmHJxE8Nx7Jnw
+ /cBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zV5OhfB3Xvwm0HlsivDFmjvPZtSGJKFWQhvvDSrZZ64=;
- b=nD72fktbZm1OCglydOFw+7jNLzi9CsdU23N9cSQZBTYQGZK6WRHvOGGyeM2gMruvRI
- q1Hx5mxQSQbTkvrMcrLJpz+wSr61WF2pyCOYvVOn8Ptj4n+8mXbmXggb0Wt9JGu/BbUm
- DUMSjukTCLpRxqAPePGM2B52EB7uSHYqQwwOnq0lJmlDMLm/e1JW5jM5xxYgkcRAnRbB
- TGs7h1TG70/jltoqLEZxQcVn8KDTaulnWcs4osyUoPS3GfBRciPwz3AcT7yqIJdBTNYH
- TjhTpkut6gbojhUIofpJrtIGTHT7nEU6B9ONL6A+plvp41YGtbM/6no7++JwMM4edwx0
- V5fw==
-X-Gm-Message-State: AOAM533gNNH789uiyvTuQBihNc7xln8dF5qf+xI7OV3qMjrjeXw7ARRp
- 6xZOxEtgEyY6z+Ka9asyuspdDir+Z/4=
-X-Google-Smtp-Source: ABdhPJyg5VnbXG01fHmcvvfRoeB6TrIpWC7O1xCYTHMp7xyYEjZ5f29dY8ktvTN/paYMzm7DI12UYw==
-X-Received: by 2002:a5d:4691:: with SMTP id u17mr1506802wrq.324.1602256553368; 
- Fri, 09 Oct 2020 08:15:53 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id a3sm11838322wmb.46.2020.10.09.08.15.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Oct 2020 08:15:52 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH V2 06/14] mips/: fix some comment spelling errors
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
-Cc: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org
-References: <20201009064449.2336-1-zhaolichang@huawei.com>
- <20201009064449.2336-7-zhaolichang@huawei.com>
- <db7d3c7a-4889-2cd5-9d60-909175917c97@amsat.org>
-Message-ID: <8a8fcbe9-f814-555a-0f27-1b056767bb4c@amsat.org>
-Date: Fri, 9 Oct 2020 17:15:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=h3BHiBImTSYBNwunlyobpGQ88O38txvYjdThycmXeiI=;
+ b=ZS0y1TAbFNsZtQheCKa5x04Z3OtKxLTTBeDGEEZwbP+EIEfjb2r9fTptK9dd7HtXtN
+ 5I1ZPxGw2pESwBihzoj5kNXHGEmJCn6Wdw+29WJr2VKbrg4aH0sA73yu4EQ0i+kyqpkt
+ 5jwYt08Icnb2dVN7zPUzUuscuYAOAucEpEDoZnWx8fI7hOyo1dp3jTpgcVfcsTaRU6Ok
+ HVEThFVGLHx3yhd5MEVuC1NnisQu1vVLubbnNQ1okVSEjV8T+UWKJ0qBv8hDc52Y02J5
+ HOH9I4CGjeGboL6TMnlr1rC4MiUwlGC4kiOjE95aHBJouf1er+UgAs3rFdy6BFZA4Lw+
+ FXIQ==
+X-Gm-Message-State: AOAM530P2lwq+NKytM9hxT4Bh2uswYFbNOxSQ0LADmlSc1VmfDy/g8QD
+ ECzY/vJclk4QLZShFqdnaSE=
+X-Google-Smtp-Source: ABdhPJzws/KS8CxegbSfa7wffDIMNlpklj7igreQ7dKKx30dv7dxm1DnqT1+xHY7oDmjArYSmALQjQ==
+X-Received: by 2002:a2e:a315:: with SMTP id l21mr5356361lje.31.1602270623364; 
+ Fri, 09 Oct 2020 12:10:23 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id x4sm1637167lfn.280.2020.10.09.12.10.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 09 Oct 2020 12:10:22 -0700 (PDT)
+Message-ID: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
+Subject: [PATCH] block/blkdebug: fix memory leak
+From: Elena Afanasova <eafanasova@gmail.com>
+To: kwolf@redhat.com, mreitz@redhat.com, qemu-block@nongnu.org, 
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 09 Oct 2020 12:09:59 -0700
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-In-Reply-To: <db7d3c7a-4889-2cd5-9d60-909175917c97@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::244;
+ envelope-from=eafanasova@gmail.com; helo=mail-lj1-x244.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.208,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -85,29 +76,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 15:15:58 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 19:10:28 -0000
 
-On 10/9/20 4:36 PM, Philippe Mathieu-Daudé wrote:
-> On 10/9/20 8:44 AM, zhaolichang wrote:
->> I found that there are many spelling errors in the comments of 
->> qemu/target/mips.
->> I used spellcheck to check the spelling errors and found some errors 
->> in the folder.
->>
->> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
->> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
->> Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
-> 
-> The line I sent is:
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Spotted by PVS-Studio
 
-I'm queuing this patch on mips-next and will fix that along.
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+---
+ block/blkdebug.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> 
->> ---
->>   target/mips/internal.h           |  2 +-
->>   target/mips/translate.c          | 10 +++++-----
->>   target/mips/translate_init.c.inc |  2 +-
->>   3 files changed, 7 insertions(+), 7 deletions(-)
-> 
+diff --git a/block/blkdebug.c b/block/blkdebug.c
+index eecbf3e5c4..54da719dd1 100644
+--- a/block/blkdebug.c
++++ b/block/blkdebug.c
+@@ -215,6 +215,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Error **errp)
+                                  BLKDEBUG_IO_TYPE__MAX, &local_error);
+         if (local_error) {
+             error_propagate(errp, local_error);
++            g_free(rule);
+             return -1;
+         }
+         if (iotype != BLKDEBUG_IO_TYPE__MAX) {
+-- 
+2.25.1
+
+
 
