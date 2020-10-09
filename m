@@ -1,67 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQsiF-0006jl-OT
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:45:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56396)
+	id 1kQszR-0001St-7A
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 10:03:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kQsiD-0006fD-Ds
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:45:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21926)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kQsiA-0001N0-KS
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:45:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602251129;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=bLgBf2EQvQav7x/C2D0ump4vSp4cER5SB/Nd+1wfrp0=;
- b=VfBB+ZWaIcYhBiKQUn+S3tcQzNL3+RAeMGjvZyR1QklkR5yx8icJaBQOZpir6x9GEmX0m3
- OzgwvMP9Fj+atufhotMX3Yko/zffCD3O9SMTyrKe8RIGVANPv5kPuEf6x4DQPngdM8fYCQ
- +yF7UXaxYk2VeKBcnxhlyfm3A7IbUD4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-ye3ZxogOObeQ1PRqo0ygzw-1; Fri, 09 Oct 2020 09:45:27 -0400
-X-MC-Unique: ye3ZxogOObeQ1PRqo0ygzw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE0FC101962D;
- Fri,  9 Oct 2020 13:45:26 +0000 (UTC)
-Received: from redhat.com (ovpn-114-251.ams2.redhat.com [10.36.114.251])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 538A650B44;
- Fri,  9 Oct 2020 13:45:25 +0000 (UTC)
-Date: Fri, 9 Oct 2020 14:45:22 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Chetan Pant <chetan4windows@gmail.com>
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [PATCH 5/5] Fixing Lesser GPL version number [5/5]
-Message-ID: <20201009134522.GE25901@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20201009064410.2913-1-chetan4windows@gmail.com>
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kQszP-0001Rv-0l; Fri, 09 Oct 2020 10:03:19 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:38227)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kQszN-0003S8-71; Fri, 09 Oct 2020 10:03:18 -0400
+Received: by mail-lf1-x142.google.com with SMTP id c141so4189299lfg.5;
+ Fri, 09 Oct 2020 07:03:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=IAbwpPmzgr1V5gG2lEeRiHos45MFc3LZ0SMyVzcC7XI=;
+ b=P7Z/9isnL9EQAoPVXufuPp4Cu85Dy5bEo4gN+NYjIKdZt1hWy0iASPc4M8gm3w3tB1
+ 6wQ2D8XoAKwJs7J3y7o47Ryce5Y3n8tF+1ptfuLRotVRW0Wkj3a8A12YyUAuHNCNGT0s
+ JJi3anziEjpIGh/RLz4oCHSqiMVhTtIq+9iY9QSf5APwe0gg5KSjJWM5UwFwYeGve5Dt
+ oePl0lbuPnWZMZQS4dtYeR3WvgDvKcDqqFAevbHWbQdD0HYZMiuRdgs8Kkb/hfvUFC7U
+ hNAy2Qo1RXwaidsq50amv4BkrJiDBF7POCqrA3O3MZAa6W8jdmhsuMxLkV3KrJLmRjgC
+ 1c6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=IAbwpPmzgr1V5gG2lEeRiHos45MFc3LZ0SMyVzcC7XI=;
+ b=KqSF18EfsbAKhhMjJr+seXrzr9z7qIRHhRlHpkIXpaFZXT9CygfFrcLOt69LCXrslJ
+ bwXSswWE82Z5dx6tXFn/fLdgsa/M4Ww2qMIwWd/mvuajhTm3HB9xjlhihwYSsH6llwLM
+ 4Fb/t+Dpo6xKNaqzcqp+DUaetOTxfMd2nYYFnd9VAA6rYQK79BLQhH2RgaB4VOKZ3nWQ
+ pzCpY2Fl7gbL8SVU8hM3Hj3+/cvI9G9Lq8/qoWHfbTm8tjzZOcwSBo8VHOP4WpH0NtoV
+ 0v4qVvP21xgYQMKERJcmc4zN+CyTDil/wBxVGmoguI18/cCDCrZnnP6jrZ8hMFufqAjG
+ gxGQ==
+X-Gm-Message-State: AOAM531q7NBl4ASCFKXtZwRaZdJ3Bq0etye7ckAPC2ZZH54QxhCX2OUu
+ rwzXmU1YMCI2wfrf0QN3R00=
+X-Google-Smtp-Source: ABdhPJyXHNP2v826p/f3O7d0jc9DU/RghENILNHdfu+l0Cjrtcnc8pQ4R55xcS9oJOvyTzjdl56Yng==
+X-Received: by 2002:ac2:4e92:: with SMTP id o18mr4478220lfr.543.1602252194406; 
+ Fri, 09 Oct 2020 07:03:14 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id h25sm1498622lfp.81.2020.10.09.07.03.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 09 Oct 2020 07:03:13 -0700 (PDT)
+Message-ID: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+Subject: [PATCH] hw/net: move allocation to the heap due to very large stack
+ frame
+From: Elena Afanasova <eafanasova@gmail.com>
+To: david@gibson.dropbear.id.au, jasowang@redhat.com, qemu-ppc@nongnu.org, 
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 09 Oct 2020 07:02:56 -0700
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-In-Reply-To: <20201009064410.2913-1-chetan4windows@gmail.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:34:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=eafanasova@gmail.com; helo=mail-lf1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,75 +77,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 13:45:33 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 14:03:19 -0000
 
-On Fri, Oct 09, 2020 at 06:44:10AM +0000, Chetan Pant wrote:
-> There is no "version 2" of the "Lesser" General Public License. It is
-> either "GPL version 2.0" or "Lesser GPL version 2.1". This patch replaces all
-> occurrences of "Lesser GPL version 2" with "Lesser GPL version 2.1" in comment section.
-> Also, It came to notice that some of the files that were edited for the change
-> were not following latest comment rules. For example using "//" to mark comment
-> instead of "/*". That is also fixed in this patch.
-> 
-> This patch is divided in 5 parts, directory wise, in order to make reviewing process easier.
-> Below listed are the parts of the patch, where asterisk denotes the part you are currently viewing.
-> 
-> 	[ ] Files in authz/backends/block/linux-user/tests/migration directory (82 Files)
-> 	[ ] Files in hw/include/disas (100 files)
-> 	[ ] Files inside target/ 'alpha,arm,cris,hppa,i386' (96 files)
-> 	[ ] Files inside target/ 'lm32,microblaze,mips,ppc,rx,sparc,tilegx,tricore,xtensa' (63 files)
-> 	[*] Files in ui/util/include/scripts and QEMU root directory (76 Files)
-> 
-> Below is how the license version was corrected:
-> 
-> 1. To find the number of file having "Lesser GPL version 2 ":
-> 	grep -l Lesser $(grep -rl "version 2 " * ) > result.dat
->    Total of 417 files were found (After manually exluding the files like COPYING and COPYING.LIB from the result)
-> 
-> 2. To find the number of occurences of "version 2 " in the resulted files:
-> 	egrep -c "version 2 " $(cat result.dat)
->    410 files had "version 2" occurence 1 time (name of those files was saved in one_timers.dat)
->    and in 7 files "version 2" occurences were multiple times.
-> 
-> 3. Files having occurence exactly 1 time were corrected using below command:
-> 	sed -i "s/version 2 /version 2.1 /g" $(cat one_timers.dat)
->    For rest of 7 files, correction was done manually.
-> 
-> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
-> ---
->  cpus-common.c                         | 2 +-
->  exec-vary.c                           | 2 +-
->  exec.c                                | 2 +-
->  include/authz/base.h                  | 2 +-
->  include/authz/list.h                  | 2 +-
->  include/authz/listfile.h              | 2 +-
->  include/authz/pamacct.h               | 2 +-
->  include/authz/simple.h                | 2 +-
+From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00 2001
+From: Elena Afanasova <eafanasova@gmail.com>
+Date: Fri, 9 Oct 2020 06:41:36 -0700
+Subject: [PATCH] hw/net: move allocation to the heap due to very large stack
+ frame
 
-Can you include these with the "authz" pieces from patch 1 and I'll
-queue them
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+---
+ hw/net/spapr_llan.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-
->  include/io/channel-buffer.h           | 2 +-
->  include/io/channel-command.h          | 2 +-
->  include/io/channel-file.h             | 2 +-
->  include/io/channel-socket.h           | 2 +-
->  include/io/channel-tls.h              | 2 +-
->  include/io/channel-util.h             | 2 +-
->  include/io/channel-watch.h            | 2 +-
->  include/io/channel-websock.h          | 2 +-
->  include/io/channel.h                  | 2 +-
->  include/io/dns-resolver.h             | 2 +-
->  include/io/task.h                     | 2 +-
-
-Combine with the "io" pieces from patch 1.
-
-
-Regards,
-Daniel
+diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
+index 2093f1bad0..581320a0e7 100644
+--- a/hw/net/spapr_llan.c
++++ b/hw/net/spapr_llan.c
+@@ -688,7 +688,8 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
+     SpaprVioDevice *sdev = spapr_vio_find_by_reg(spapr->vio_bus, reg);
+     SpaprVioVlan *dev = VIO_SPAPR_VLAN_DEVICE(sdev);
+     unsigned total_len;
+-    uint8_t *lbuf, *p;
++    uint8_t *p;
++    g_autofree uint8_t *lbuf = NULL;
+     int i, nbufs;
+     int ret;
+ 
+@@ -729,7 +730,7 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
+         return H_RESOURCE;
+     }
+ 
+-    lbuf = alloca(total_len);
++    lbuf = g_malloc(total_len);
+     p = lbuf;
+     for (i = 0; i < nbufs; i++) {
+         ret = spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.25.1
+
 
 
