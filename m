@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQsgb-0004sM-1O
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:43:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56064)
+	id 1kQshB-0005cX-Rc
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:44:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kQsgZ-0004qO-J1
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:43:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20437)
+ id 1kQshA-0005al-KM
+ for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:44:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38438)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kQsgW-0001D2-9v
- for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:43:51 -0400
+ id 1kQsh8-0001Gb-IG
+ for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:44:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602251025;
+ s=mimecast20190719; t=1602251065;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=cwnQEjlcpryndssPY3m0VwV4oJGOOo5Ad6sgkM9RsWk=;
- b=SwO/qV8OM78h2iFNOpAJueSe6THZ/96qC3IIO56nnUcbS6XyLq6E4VU/EmJkgMB2kTNhUD
- MYMPE9Dy5UOpQHw6AsyW8B1Nkz/dwjTDe76rfi4To5j207Tir/3Z+Y5cJIjwbnQqg3ZoRf
- 4i9xmKj/AQVslhzICdkacc92yQEcFXw=
+ bh=YNniShT7St4VH9bctvtOt0EMAMkeVtw9quJLLuUhL1o=;
+ b=Pwe99QpC1KN+S3lPtxac50Tcu2gKXXZpQkHd5v/h9jYutd7rvaLlzUpTxa3xI5I8NF1Jfa
+ DNU0MLuzSPsCnGZj6vyxCaJzh1uim4H9F9VAPP79X9Y84oPYRFdWC+M7eb1vgvYg8M2frZ
+ mBRQIbSU8SgUMwmq+uW+IkLH/CjnDx4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-296-1kWu33TlNf2-Hpnj0d9PEA-1; Fri, 09 Oct 2020 09:43:44 -0400
-X-MC-Unique: 1kWu33TlNf2-Hpnj0d9PEA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-276-a3VkcY_eMDq19aZxDbI_pw-1; Fri, 09 Oct 2020 09:44:24 -0400
+X-MC-Unique: a3VkcY_eMDq19aZxDbI_pw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1196A8DA151;
- Fri,  9 Oct 2020 13:43:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02EA2101962F;
+ Fri,  9 Oct 2020 13:44:23 +0000 (UTC)
 Received: from redhat.com (ovpn-114-251.ams2.redhat.com [10.36.114.251])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8EFC35C1BB;
- Fri,  9 Oct 2020 13:43:40 +0000 (UTC)
-Date: Fri, 9 Oct 2020 14:43:37 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B765D6EF59;
+ Fri,  9 Oct 2020 13:44:21 +0000 (UTC)
+Date: Fri, 9 Oct 2020 14:44:18 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org,
- thuth@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [PATCH 1/5] Fixing Lesser GPL version number [1/5]
-Message-ID: <20201009134337.GC25901@redhat.com>
+To: Chetan Pant <chetan4windows@gmail.com>
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [PATCH 2/5] Fixing Lesser GPL version number [2/5]
+Message-ID: <20201009134418.GD25901@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20201009063734.2627-1-chetan4windows@gmail.com>
- <9f236758-8039-0a16-df3a-b49b7e24168d@redhat.com>
+References: <20201009063934.2679-1-chetan4windows@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <9f236758-8039-0a16-df3a-b49b7e24168d@redhat.com>
+In-Reply-To: <20201009063934.2679-1-chetan4windows@gmail.com>
 User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -76,38 +74,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 13:43:51 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 13:44:28 -0000
 
-On Fri, Oct 09, 2020 at 08:07:52AM -0500, Eric Blake wrote:
-
-> > There is no "version 2" of the "Lesser" General Public License. It is
-> > either "GPL version 2.0" or "Lesser GPL version 2.1". This patch replaces all
-> > occurrences of "Lesser GPL version 2" with "Lesser GPL version 2.1" in comment section.
+On Fri, Oct 09, 2020 at 06:39:34AM +0000, Chetan Pant wrote:
+> There is no "version 2" of the "Lesser" General Public License. It is
+> either "GPL version 2.0" or "Lesser GPL version 2.1". This patch replaces all
+> occurrences of "Lesser GPL version 2" with "Lesser GPL version 2.1" in comment section.
+> Also, It came to notice that some of the files that were edited for the change
+> were not following latest comment rules. For example using "//" to mark comment
+> instead of "/*". That is also fixed in this patch.
 > 
-> I'm not a copyright lawyer; there may be legal ramifications for doing
-> this on files where you are not the copyright owner, although to me it
-> looks like an obvious correction of intent, so I'm okay with the idea.
-
-Yes, we've done exactly this same cleanup for various files before,
-and considered it acceptable since it is matching the intent.
-
-
-> Thus, maybe something like:
+> This patch is divided in 5 parts, directory wise, in order to make reviewing process easier.
+> Below listed are the parts of the patch, where asterisk denotes the part you are currently viewing.
 > 
-> backends: Fix LGPL version number
-> disas: Fix LGPL version number
-> target: Fix LGPL version number
+> 	[ ] Files in authz/backends/block/linux-user/tests/migration directory (82 Files)
+> 	[*] Files in hw/include/disas (100 files)
+> 	[ ] Files inside target/ 'alpha,arm,cris,hppa,i386' (96 files)
+> 	[ ] Files inside target/ 'lm32,microblaze,mips,ppc,rx,sparc,tilegx,tricore,xtensa' (63 files)
+> 	[ ] Files in ui/util/include/scripts and QEMU root directory (76 Files)
 > 
-> and so on.  There may be a smarter division of the work based on which
-> maintainer(s) will have to ack various patches; breaking the series into
-> more than 5 chunks may be easier, although it then requires more topic
-> lines.  Or, if it truly is automated, doing it all in one shot may be
-> best after all.
+> Below is how the license version was corrected:
+> 
+> 1. To find the number of file having "Lesser GPL version 2 ":
+> 	grep -l Lesser $(grep -rl "version 2 " * ) > result.dat
+>    Total of 417 files were found (After manually exluding the files like COPYING and COPYING.LIB from the result)
+> 
+> 2. To find the number of occurences of "version 2 " in the resulted files:
+> 	egrep -c "version 2 " $(cat result.dat)
+>    410 files had "version 2" occurence 1 time (name of those files was saved in one_timers.dat)
+>    and in 7 files "version 2" occurences were multiple times.
+> 
+> 3. Files having occurence exactly 1 time were corrected using below command:
+> 	sed -i "s/version 2 /version 2.1 /g" $(cat one_timers.dat)
+>    For rest of 7 files, correction was done manually.
+> 
+> Note:
+> During validating this patch (2/5), It was noticed that "hw/i2c/mpc_i2c.c" file had below license text mentioned:
+> "You should have received a copy of the GNU Lesser General Public"
+> But the file was actually using "GNU General Public License, version 2 or later," which was confusing
+> so I've not included the that change in this patch. So in fact, only 99 files are changed in this patch.
+> 
+> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+> ---
 
-I'm happy to queue 80% of this patch, and a patch of patch 2, since
-they cover files in subsystems I maintain and the typos are largely
-my fault :-)
+>  io/channel-buffer.c                   |  2 +-
+>  io/channel-command.c                  |  2 +-
+>  io/channel-file.c                     |  2 +-
+>  io/channel-socket.c                   |  2 +-
+>  io/channel-tls.c                      |  2 +-
+>  io/channel-util.c                     |  2 +-
+>  io/channel-watch.c                    |  2 +-
+>  io/channel-websock.c                  |  2 +-
+>  io/channel.c                          |  2 +-
+>  io/dns-resolver.c                     |  2 +-
+>  io/task.c                             |  2 +-
 
+I'll queue these if you combine them with the "io" pieces from
+patch 1.
 
 
 Regards,
