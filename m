@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQsPz-0001QB-1r
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:26:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33438)
+	id 1kQsen-00030U-0h
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:42:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kQmdT-0006ro-NK; Fri, 09 Oct 2020 03:16:16 -0400
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:43238)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kQmdN-0004v8-Am; Fri, 09 Oct 2020 03:16:15 -0400
-Received: by mail-yb1-xb42.google.com with SMTP id n65so2766258ybg.10;
- Fri, 09 Oct 2020 00:16:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BoBqAmKxWIwTVBSQjzR2MvO5DNeQhNVblINghDND6eQ=;
- b=Ghf4HjylinUd0CuWtagt8NPab58sMJponcgZVm37MLWdbZDS1M6OaH8fqjp1GfSow6
- 0Yinxlogix4LxxCDSeDAOmiQS2vVWEwjU0N8yD5yph8HoKjETBTrxlPKWTP3z5ZUz/2q
- JA4be3upzBlv/S28u/Ud4ZIvxRFziVoecB4qXwZ7hjFd2ZDM23rW8yrdCU8MZ2zL+fBh
- hmmTFcgPmscDjmzuVBCVXr1D60KuIQE1gA9AZU4M9yx1ybNdJaoloMb1a1Zq2KamBO+9
- 7xE1a8iha4L551yv+lwh/ZekA3faTh/T1x5FaROiAYu/ljO0aKxnm7LI6uSOlJdIKyOe
- ORIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BoBqAmKxWIwTVBSQjzR2MvO5DNeQhNVblINghDND6eQ=;
- b=BzJc6/++a6st6PQqNAaWPLWWt7ERPIedd5lgYynUgfw0bWTjKvaQww4TWdN53xv1FT
- k3I5T0G9v8y6LYJ4k9tg5VtlBxgwzZuZ9qUDmaPTDHN7g1ji6p1EcGnOoOXw/tRJrxeJ
- Irj6hQKrEQw/mCxIzp4EQM3+UuD20jTF7pJgPHzIzhQWqC4g5fDwFkCbFj9naGQYmQic
- UOHVVVDf13QX/Y0MolcFsbJT4LZvvUpKjXekpw6x1tjquTPkAlGbrG51ZK15J1am7BAM
- ZAQg5TsWNgVlrNb7ZOgMlLH8/G7b/K6VQFagCOFs/KRTJTAcEyVy/KxuyQbyjbprxmew
- J8MA==
-X-Gm-Message-State: AOAM533X3tKeY/nj8rOV5i8Ac/x+XFK5xUQATjmMDo/fKygQMMrRGE7T
- 6IGckYYAWZocRb0dBRK1EzYAmJP7axPTWwumuHA=
-X-Google-Smtp-Source: ABdhPJwjxJAT9HJzdZYdFPOqh9MfKtzmgIOuy4fLtCuwyQE048azDOO7Dw4bowURwyIBfiyU/LGw7SzVtyirTIefa+g=
-X-Received: by 2002:a25:bb01:: with SMTP id z1mr17143529ybg.387.1602227767750; 
- Fri, 09 Oct 2020 00:16:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kQsel-0002yU-Q7
+ for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:41:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44192)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kQsej-0000rm-4k
+ for qemu-trivial@nongnu.org; Fri, 09 Oct 2020 09:41:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602250915;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=4870C/Yw8QYX4iOA712GslH8ICQW7umTbgnJLvu60O8=;
+ b=UVJrpw9nX6GX01qyFls1kVuj5cnihIveKfrr4+kxaft3ZBqYxb7yE7ykFtoNc2j13mxhOt
+ HZRhK8GeKRuAt0VKnoRfEf6vMkdrK9aDDYzroKOlbfSO+PfTHf1lgZ1wGZfWbCE2OkHaij
+ jSzOOKwcZ5iJzmf5uOagjGjbtaNKE8I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-293-JXuaPCYdNIeOTf0plgRMBQ-1; Fri, 09 Oct 2020 09:41:54 -0400
+X-MC-Unique: JXuaPCYdNIeOTf0plgRMBQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D8A38879519;
+ Fri,  9 Oct 2020 13:41:52 +0000 (UTC)
+Received: from redhat.com (ovpn-114-251.ams2.redhat.com [10.36.114.251])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 814D65C1C7;
+ Fri,  9 Oct 2020 13:41:51 +0000 (UTC)
+Date: Fri, 9 Oct 2020 14:41:48 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Chetan Pant <chetan4windows@gmail.com>
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [PATCH 1/5] Fixing Lesser GPL version number [1/5]
+Message-ID: <20201009134148.GB25901@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20201009063734.2627-1-chetan4windows@gmail.com>
 MIME-Version: 1.0
-References: <20201009064449.2336-1-zhaolichang@huawei.com>
- <20201009064449.2336-4-zhaolichang@huawei.com>
-In-Reply-To: <20201009064449.2336-4-zhaolichang@huawei.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 9 Oct 2020 15:15:56 +0800
-Message-ID: <CAEUhbmXKmx+c3DtA2i4WzG3Hb5x+WPwMEB6dd1792gyqp2NSSA@mail.gmail.com>
-Subject: Re: [PATCH V2 03/14] riscv/: fix some comment spelling errors
-To: zhaolichang <zhaolichang@huawei.com>
-Cc: qemu-trivial@nongnu.org, David Edmondson <david.edmondson@oracle.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <20201009063734.2627-1-chetan4windows@gmail.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:34:37
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 09 Oct 2020 09:26:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,100 +74,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 07:16:17 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 13:42:00 -0000
 
-Hi,
+On Fri, Oct 09, 2020 at 06:37:34AM +0000, Chetan Pant wrote:
 
-On Fri, Oct 9, 2020 at 2:55 PM zhaolichang <zhaolichang@huawei.com> wrote:
->
-> I found that there are many spelling errors in the comments of qemu/target/riscv.
-> I used spellcheck to check the spelling errors and found some errors in the folder.
->
-> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+I'll take the following if you can split them up into a couple of
+patches
+
 > ---
->  target/riscv/cpu.c           | 2 +-
->  target/riscv/cpu_bits.h      | 2 +-
->  target/riscv/csr.c           | 6 +++---
->  target/riscv/vector_helper.c | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 0bbfd7f457..f40a0b26a3 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -472,7 +472,7 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
->                      return;
->                  }
->              } else {
-> -                qemu_log("vector verison is not specified, "
-> +                qemu_log("vector version is not specified, "
->                          "use the default value v0.7.1\n");
->              }
->              set_vext_version(env, vext_version);
-> diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
-> index bd36062877..6e1155560b 100644
-> --- a/target/riscv/cpu_bits.h
-> +++ b/target/riscv/cpu_bits.h
-> @@ -536,7 +536,7 @@
->  /* Leaf page shift amount */
->  #define PGSHIFT             12
->
-> -/* Default Reset Vector adress */
-> +/* Default Reset Vector address */
->  #define DEFAULT_RSTVEC      0x1000
->
->  /* Exception causes */
-> diff --git a/target/riscv/csr.c b/target/riscv/csr.c
-> index aaef6c6f20..93e117020d 100644
-> --- a/target/riscv/csr.c
-> +++ b/target/riscv/csr.c
-> @@ -624,7 +624,7 @@ static int write_mcounteren(CPURISCVState *env, int csrno, target_ulong val)
->      return 0;
->  }
->
-> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
-> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
->  static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
->  {
->      if (env->priv_ver < PRIV_VERSION_1_11_0) {
-> @@ -634,7 +634,7 @@ static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
->      return 0;
->  }
->
-> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
-> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
->  static int write_mscounteren(CPURISCVState *env, int csrno, target_ulong val)
->  {
->      if (env->priv_ver < PRIV_VERSION_1_11_0) {
-> @@ -1278,7 +1278,7 @@ int riscv_csrrw(CPURISCVState *env, int csrno, target_ulong *ret_value,
->          !riscv_cpu_virt_enabled(env)) {
->          /*
->           * We are in S mode without virtualisation, therefore we are in HS Mode.
-> -         * Add 1 to the effective privledge level to allow us to access the
-> +         * Add 1 to the effective privilege level to allow us to access the
->           * Hypervisor CSRs.
->           */
->          effective_priv++;
-> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-> index a156573d28..fa89a6e6c1 100644
-> --- a/target/riscv/vector_helper.c
-> +++ b/target/riscv/vector_helper.c
-> @@ -709,7 +709,7 @@ typedef void vext_amo_noatomic_fn(void *vs3, target_ulong addr,
->                                    uint32_t wd, uint32_t idx, CPURISCVState *env,
->                                    uintptr_t retaddr);
->
-> -/* no atomic opreation for vector atomic insructions */
-> +/* no atomic operation for vector atomic insructions */
+>  authz/base.c                               | 2 +-
+>  authz/list.c                               | 2 +-
+>  authz/listfile.c                           | 2 +-
+>  authz/pamacct.c                            | 2 +-
+>  authz/simple.c                             | 2 +-
 
-There is still one typo here: instructions
+Split these into an "authz" patch.
 
->  #define DO_SWAP(N, M) (M)
->  #define DO_AND(N, M)  (N & M)
->  #define DO_XOR(N, M)  (N ^ M)
-> --
+
+>  block/crypto.c                             | 2 +-
+>  block/crypto.h                             | 2 +-
+
+Split these two into a "crypto" patch.
+
+
+
+>  tests/io-channel-helpers.c                 | 2 +-
+>  tests/io-channel-helpers.h                 | 2 +-
+
+Split these into an "io" patch.
+
+Also combine with the io/* cleanups in patch 2, and the
+tests/test-io-* cleanups later.
+
+>  tests/migration/guestperf-batch.py         | 2 +-
+>  tests/migration/guestperf-plot.py          | 2 +-
+>  tests/migration/guestperf.py               | 2 +-
+>  tests/migration/guestperf/comparison.py    | 2 +-
+>  tests/migration/guestperf/engine.py        | 2 +-
+>  tests/migration/guestperf/hardware.py      | 2 +-
+>  tests/migration/guestperf/plot.py          | 2 +-
+>  tests/migration/guestperf/progress.py      | 2 +-
+>  tests/migration/guestperf/report.py        | 2 +-
+>  tests/migration/guestperf/scenario.py      | 2 +-
+>  tests/migration/guestperf/shell.py         | 2 +-
+>  tests/migration/guestperf/timings.py       | 2 +-
+>  tests/migration/stress.c                   | 2 +-
+
+Split these.
+
+>  tests/test-authz-list.c                    | 2 +-
+>  tests/test-authz-listfile.c                | 2 +-
+>  tests/test-authz-pam.c                     | 2 +-
+>  tests/test-authz-simple.c                  | 2 +-
+
+Include in "authz" patch.
+
+>  tests/test-crypto-afsplit.c                | 2 +-
+>  tests/test-crypto-block.c                  | 2 +-
+>  tests/test-crypto-cipher.c                 | 2 +-
+>  tests/test-crypto-hash.c                   | 2 +-
+>  tests/test-crypto-ivgen.c                  | 2 +-
+>  tests/test-crypto-secret.c                 | 2 +-
+>  tests/test-crypto-xts.c                    | 2 +-
+
+SPlit into a "crypto" patch
+
+>  tests/test-io-channel-buffer.c             | 2 +-
+>  tests/test-io-channel-command.c            | 2 +-
+>  tests/test-io-channel-file.c               | 2 +-
+>  tests/test-io-channel-socket.c             | 2 +-
+>  tests/test-io-task.c                       | 2 +-
+
+Include in an "io" patch
+
 
 Regards,
-Bin
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
 
