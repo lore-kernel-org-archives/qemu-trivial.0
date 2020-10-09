@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQmAl-0006Gl-NX
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 02:46:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56370)
+	id 1kQmAm-0006Hh-C6
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 02:46:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kQmAe-00068o-39; Fri, 09 Oct 2020 02:46:28 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:55224 helo=huawei.com)
+ id 1kQmAe-0006A9-LT; Fri, 09 Oct 2020 02:46:28 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5164 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kQmAS-0001K2-IA; Fri, 09 Oct 2020 02:46:27 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id DB459A45892EB9F0360D;
- Fri,  9 Oct 2020 14:46:07 +0800 (CST)
-Received: from localhost (10.174.186.238) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Fri, 9 Oct 2020
- 14:45:58 +0800
+ id 1kQmAS-0001K7-I9; Fri, 09 Oct 2020 02:46:28 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id EFAC5E88C67239AC7086;
+ Fri,  9 Oct 2020 14:46:08 +0800 (CST)
+Received: from localhost (10.174.186.238) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Fri, 9 Oct 2020
+ 14:46:02 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>, "David
  Edmondson" <david.edmondson@oracle.com>, Philippe Mathieu-Daude
- <f4bug@amsat.org>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH V2 08/14] m68k/: fix some comment spelling errors
-Date: Fri, 9 Oct 2020 14:44:43 +0800
-Message-ID: <20201009064449.2336-9-zhaolichang@huawei.com>
+ <f4bug@amsat.org>
+Subject: [PATCH V2 12/14] arm/: fix some comment spelling errors
+Date: Fri, 9 Oct 2020 14:44:47 +0800
+Message-ID: <20201009064449.2336-13-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20201009064449.2336-1-zhaolichang@huawei.com>
 References: <20201009064449.2336-1-zhaolichang@huawei.com>
@@ -31,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.186.238]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
+Received-SPF: pass client-ip=45.249.212.190;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:45:58
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:45:16
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -53,95 +53,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 06:46:28 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 06:46:29 -0000
 
-I found that there are many spelling errors in the comments of qemu/target/m68k.
+I found that there are many spelling errors in the comments of qemu/target/arm.
 I used spellcheck to check the spelling errors and found some errors in the folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
-Reviewed-by: Laurent Vivier<laurent@vivier.eu>
 ---
- target/m68k/translate.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ target/arm/cpu.h           | 2 +-
+ target/arm/helper.c        | 4 ++--
+ target/arm/m_helper.c      | 2 +-
+ target/arm/translate-a64.c | 4 ++--
+ target/arm/translate-sve.c | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 3fc67aa452..133a404919 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -438,7 +438,7 @@ static TCGv gen_addr_index(DisasContext *s, uint16_t ext, TCGv tmp)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index cfff1b5c8f..985f6834a4 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2090,7 +2090,7 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
+     return aa64;
  }
  
- /*
-- * Handle a base + index + displacement effective addresss.
-+ * Handle a base + index + displacement effective address.
-  * A NULL_QREG base means pc-relative.
+-/* Function for determing whether guest cp register reads and writes should
++/* Function for determining whether guest cp register reads and writes should
+  * access the secure or non-secure bank of a cp register.  When EL3 is
+  * operating in AArch32 state, the NS-bit determines whether the secure
+  * instance of a cp register should be used. When EL3 is AArch64 (or if
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cd0779ff5f..a23dfdec07 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1868,7 +1868,7 @@ static void pmevtyper_rawwrite(CPUARMState *env, const ARMCPRegInfo *ri,
+      * pmevtyper_rawwrite is called between a pair of pmu_op_start and
+      * pmu_op_finish calls when loading saved state for a migration. Because
+      * we're potentially updating the type of event here, the value written to
+-     * c14_pmevcntr_delta by the preceeding pmu_op_start call may be for a
++     * c14_pmevcntr_delta by the preceding pmu_op_start call may be for a
+      * different counter type. Therefore, we need to set this value to the
+      * current count for the counter type we're writing so that pmu_op_finish
+      * has the correct count for its calculation.
+@@ -12216,7 +12216,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+             } else {
+                 memattr = 0x44;  /* Normal, NC, No */
+             }
+-            cacheattrs->shareability = 2; /* outer sharable */
++            cacheattrs->shareability = 2; /* outer shareable */
+         } else {
+             memattr = 0x00;      /* Device, nGnRnE */
+         }
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 036454234c..1e8080dc92 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -158,7 +158,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+      *  R: 0 because unpriv and A flag not set
+      *  SRVALID: 0 because NS
+      *  MRVALID: 0 because unpriv and A flag not set
+-     *  SREGION: 0 becaus SRVALID is 0
++     *  SREGION: 0 because SRVALID is 0
+      *  MREGION: 0 because MRVALID is 0
+      */
+     return 0;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 7188808341..5451f02995 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -160,7 +160,7 @@ void gen_a64_set_pc_im(uint64_t val)
+  *  + for EL2 and EL3 there is only one TBI bit, and if it is set
+  *    then the address is zero-extended, clearing bits [63:56]
+  *  + for EL0 and EL1, TBI0 controls addresses with bit 55 == 0
+- *    and TBI1 controls addressses with bit 55 == 1.
++ *    and TBI1 controls addresses with bit 55 == 1.
+  *    If the appropriate TBI bit is set for the address then
+  *    the address is sign-extended from bit 55 into bits [63:56]
+  *
+@@ -1964,7 +1964,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+     }
+     if (!isread && !(ri->type & ARM_CP_SUPPRESS_TB_END)) {
+         /*
+-         * A write to any coprocessor regiser that ends a TB
++         * A write to any coprocessor register that ends a TB
+          * must rebuild the hflags for the next TB.
+          */
+         TCGv_i32 tcg_el = tcg_const_i32(s->current_el);
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 9095586fc9..73b0686213 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -1528,7 +1528,7 @@ static bool trans_PNEXT(DisasContext *s, arg_rr_esz *a)
+ 
+ /* Perform an inline saturating addition of a 32-bit value within
+  * a 64-bit register.  The second operand is known to be positive,
+- * which halves the comparisions we must perform to bound the result.
++ * which halves the comparisons we must perform to bound the result.
   */
- static TCGv gen_lea_indexed(CPUM68KState *env, DisasContext *s, TCGv base)
-@@ -1696,7 +1696,7 @@ static void bcd_add(TCGv dest, TCGv src)
- 
-     /*
-      * t1 = (src + 0x066) + dest + X
--     *    = result with some possible exceding 0x6
-+     *    = result with some possible exceeding 0x6
-      */
- 
-     t0 = tcg_const_i32(0x066);
-@@ -1706,7 +1706,7 @@ static void bcd_add(TCGv dest, TCGv src)
-     tcg_gen_add_i32(t1, t0, dest);
-     tcg_gen_add_i32(t1, t1, QREG_CC_X);
- 
--    /* we will remove exceding 0x6 where there is no carry */
-+    /* we will remove exceeding 0x6 where there is no carry */
- 
-     /*
-      * t0 = (src + 0x0066) ^ dest
-@@ -1736,7 +1736,7 @@ static void bcd_add(TCGv dest, TCGv src)
-     tcg_temp_free(t0);
- 
-     /*
--     * remove the exceding 0x6
-+     * remove the exceeding 0x6
-      * for digits that have not generated a carry
-      */
- 
-@@ -2638,7 +2638,7 @@ DISAS_INSN(negx)
-     gen_flush_flags(s); /* compute old Z */
- 
-     /*
--     * Perform substract with borrow.
-+     * Perform subtract with borrow.
-      * (X, N) =  -(src + X);
-      */
- 
-@@ -2653,7 +2653,7 @@ DISAS_INSN(negx)
-     /*
-      * Compute signed-overflow for negation.  The normal formula for
-      * subtraction is (res ^ src) & (src ^ dest), but with dest==0
--     * this simplies to res & src.
-+     * this simplifies to res & src.
-      */
- 
-     tcg_gen_and_i32(QREG_CC_V, QREG_CC_N, src);
-@@ -3159,7 +3159,7 @@ static inline void gen_subx(DisasContext *s, TCGv src, TCGv dest, int opsize)
-     gen_flush_flags(s); /* compute old Z */
- 
-     /*
--     * Perform substract with borrow.
-+     * Perform subtract with borrow.
-      * (X, N) = dest - (src + X);
-      */
- 
-@@ -3169,7 +3169,7 @@ static inline void gen_subx(DisasContext *s, TCGv src, TCGv dest, int opsize)
-     gen_ext(QREG_CC_N, QREG_CC_N, opsize, 1);
-     tcg_gen_andi_i32(QREG_CC_X, QREG_CC_X, 1);
- 
--    /* Compute signed-overflow for substract.  */
-+    /* Compute signed-overflow for subtract.  */
- 
-     tcg_gen_xor_i32(QREG_CC_V, QREG_CC_N, dest);
-     tcg_gen_xor_i32(tmp, dest, src);
+ static void do_sat_addsub_32(TCGv_i64 reg, TCGv_i64 val, bool u, bool d)
+ {
 -- 
 2.26.2.windows.1
 
