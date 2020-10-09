@@ -1,68 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQtrq-0005AE-V6
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 10:59:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44102)
+	id 1kQu7j-0004Qf-SD
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 11:15:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kQtrp-000599-Fi; Fri, 09 Oct 2020 10:59:33 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44369)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kQu7h-0004Ol-J5; Fri, 09 Oct 2020 11:15:57 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34521)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kQtrn-0001mT-NT; Fri, 09 Oct 2020 10:59:33 -0400
-Received: by mail-oi1-x244.google.com with SMTP id x62so10451217oix.11;
- Fri, 09 Oct 2020 07:59:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kQu7f-0003vG-SV; Fri, 09 Oct 2020 11:15:57 -0400
+Received: by mail-wr1-x441.google.com with SMTP id i1so4562476wro.1;
+ Fri, 09 Oct 2020 08:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=+jG2DP2iJh0+zAnhwbYD3F7QwCkBTCr/X6nB+Vw5Lek=;
- b=cDsdSRNIn+5U31Su3SgP5Ks1Fxoy2cYUYttAkVNrDg+bzNBHRWAn7Gps5G6fJaWWvz
- kWtJLtGpro2yjXfsxG2gE9vYYJiVN3AzEeTSo7uCbuntq7pTVVU+um0uqDUYHFVhpcYU
- YMgQoib93G458taP6S1gaCzic1/6gqEihxITel/2Mr7EOTG19AspW4vw8/FwOb0Oac5a
- VxgLYK8+gWGj34og+3ztzhrgBPN2TtAhCVMAsfz/utSc2xzV47EQWF4SAXgoulipxQpv
- P6EUVcXe715ubh9OtjVV4/+yseWPYj8zKHL2C4WQwJeszK3zkOhH8JotKcXf0WPrqU99
- mRQg==
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=zV5OhfB3Xvwm0HlsivDFmjvPZtSGJKFWQhvvDSrZZ64=;
+ b=NAUcbee6HH3aMI0Js70rcthrTh4fTLhewM+sroKRj0NRYX3u41wy0Wi+Ay0RLE6N6C
+ +oZGmMvXYdG1xzMIXtLik+5odOS+OpOLvnFBS8weuGmWUIpgPSSk3rZlYG1vXMCA+mRu
+ oit2V3fevqnyEKLnotHJ0N6cZTmQ12+YhpSucyqECkLI9L+qtBrF+RHU4O60yRt0TzMH
+ LQhhZB34TYgyQ1WndC3aEfk2uARbJgJki7zqv8OYUgxhirR6WqJCt8+f6r7+wud2ltff
+ n8HritqfMRWTVGcT5SXnWvxlBiTvhcItNNScJzIZQ6kF/H+RsbTPfwSc04+aRK6tw1Te
+ B4hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=+jG2DP2iJh0+zAnhwbYD3F7QwCkBTCr/X6nB+Vw5Lek=;
- b=LhQt5n44Wuy+P/JQqklWQr6Qe1hZKMRHySFDOhLmeyibsY44IvpH6koiNZ/uitC7IM
- kxHRJzwiJqE4oEtnclcaLOCCJYPxllqTncYKVgJfoeXroE7FP/AdBFNxIk+CClbZScW7
- ecrsbjpMkCFVm2hzqkEUKSpuwiwYxw7v57vETwiYZIbHNI7W3D1L9tlcpK9LjaLvDrc8
- /+peV/7/xnQCl48HDTSyaeGkXiUKsb6XDCbrs3voM4MQYJAa8VqRAe1a9yuERy10PPby
- nQjWUeyisuWAea+pj1T5oZwIeVGdYLfIwqQzoSWP9lWbM59DsdkE4+tjlneMo5snsW/C
- OtbA==
-X-Gm-Message-State: AOAM532y07SFh7IGJVmaY8yPPq4K5lqz4Ibc6m+CN7h/PkDxQIyp/Tf/
- LlLShicSpGR3xdLLPDTbvCXKJlAt+borbXpnKLE=
-X-Google-Smtp-Source: ABdhPJzyZP7rQIx2M6ZztelWeYebLmPugVDJ/+1ZYeiEUHpxw037WrTUm8u1NdH3yGOaH438CrSZDRNrO31qRdxwpEQ=
-X-Received: by 2002:a54:4d88:: with SMTP id y8mr2743122oix.97.1602255569913;
- Fri, 09 Oct 2020 07:59:29 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zV5OhfB3Xvwm0HlsivDFmjvPZtSGJKFWQhvvDSrZZ64=;
+ b=nD72fktbZm1OCglydOFw+7jNLzi9CsdU23N9cSQZBTYQGZK6WRHvOGGyeM2gMruvRI
+ q1Hx5mxQSQbTkvrMcrLJpz+wSr61WF2pyCOYvVOn8Ptj4n+8mXbmXggb0Wt9JGu/BbUm
+ DUMSjukTCLpRxqAPePGM2B52EB7uSHYqQwwOnq0lJmlDMLm/e1JW5jM5xxYgkcRAnRbB
+ TGs7h1TG70/jltoqLEZxQcVn8KDTaulnWcs4osyUoPS3GfBRciPwz3AcT7yqIJdBTNYH
+ TjhTpkut6gbojhUIofpJrtIGTHT7nEU6B9ONL6A+plvp41YGtbM/6no7++JwMM4edwx0
+ V5fw==
+X-Gm-Message-State: AOAM533gNNH789uiyvTuQBihNc7xln8dF5qf+xI7OV3qMjrjeXw7ARRp
+ 6xZOxEtgEyY6z+Ka9asyuspdDir+Z/4=
+X-Google-Smtp-Source: ABdhPJyg5VnbXG01fHmcvvfRoeB6TrIpWC7O1xCYTHMp7xyYEjZ5f29dY8ktvTN/paYMzm7DI12UYw==
+X-Received: by 2002:a5d:4691:: with SMTP id u17mr1506802wrq.324.1602256553368; 
+ Fri, 09 Oct 2020 08:15:53 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id a3sm11838322wmb.46.2020.10.09.08.15.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 09 Oct 2020 08:15:52 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH V2 06/14] mips/: fix some comment spelling errors
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
+Cc: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+ <20201009064449.2336-7-zhaolichang@huawei.com>
+ <db7d3c7a-4889-2cd5-9d60-909175917c97@amsat.org>
+Message-ID: <8a8fcbe9-f814-555a-0f27-1b056767bb4c@amsat.org>
+Date: Fri, 9 Oct 2020 17:15:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-References: <20201009113843.60995-1-lvivier@redhat.com>
-In-Reply-To: <20201009113843.60995-1-lvivier@redhat.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Fri, 9 Oct 2020 22:58:53 +0800
-Message-ID: <CAKXe6SLbXTZMyT6XcSkUEhqZ2+V_SUCBu0U6nwmFYmSh_hrXMg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/char/serial: remove duplicate .class_init in
- serial_mm_info
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-riscv@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Anup Patel <anup.patel@wdc.com>, 
- Alistair Francis <Alistair.Francis@wdc.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=liq3ea@gmail.com; helo=mail-oi1-x244.google.com
+In-Reply-To: <db7d3c7a-4889-2cd5-9d60-909175917c97@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.208,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -77,39 +85,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 14:59:34 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 15:15:58 -0000
 
-Laurent Vivier <lvivier@redhat.com> =E4=BA=8E2020=E5=B9=B410=E6=9C=889=E6=
-=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=887:40=E5=86=99=E9=81=93=EF=BC=9A
->
-> .class_init is already set to serial_mm_class_init.
->
-> Remove the duplicate entry.
->
-> Fixes: 17fd1a6490b1 ("serial-mm: add "regshift" property")
-> Cc: marcandre.lureau@redhat.com
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+On 10/9/20 4:36 PM, Philippe Mathieu-Daudé wrote:
+> On 10/9/20 8:44 AM, zhaolichang wrote:
+>> I found that there are many spelling errors in the comments of 
+>> qemu/target/mips.
+>> I used spellcheck to check the spelling errors and found some errors 
+>> in the folder.
+>>
+>> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+>> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
+>> Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
+> 
+> The line I sent is:
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+I'm queuing this patch on mips-next and will fix that along.
 
-> ---
->  hw/char/serial.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index 4386adabd466..97f71879ff2a 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -1120,7 +1120,6 @@ static const TypeInfo serial_mm_info =3D {
->      .class_init =3D serial_mm_class_init,
->      .instance_init =3D serial_mm_instance_init,
->      .instance_size =3D sizeof(SerialMM),
-> -    .class_init =3D serial_mm_class_init,
->  };
->
->  static void serial_register_types(void)
-> --
-> 2.26.2
->
->
+> 
+>> ---
+>>   target/mips/internal.h           |  2 +-
+>>   target/mips/translate.c          | 10 +++++-----
+>>   target/mips/translate_init.c.inc |  2 +-
+>>   3 files changed, 7 insertions(+), 7 deletions(-)
+> 
 
