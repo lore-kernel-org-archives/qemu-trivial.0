@@ -1,82 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQsG3-0004wl-1k
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:16:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50166)
+	id 1kQsPz-0001QB-1r
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 09:26:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kQsFz-0004sU-R5; Fri, 09 Oct 2020 09:16:23 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38886)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kQmdT-0006ro-NK; Fri, 09 Oct 2020 03:16:16 -0400
+Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:43238)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kQsFu-0006JL-63; Fri, 09 Oct 2020 09:16:23 -0400
-Received: by mail-wr1-x441.google.com with SMTP id n18so10265476wrs.5;
- Fri, 09 Oct 2020 06:16:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kQmdN-0004v8-Am; Fri, 09 Oct 2020 03:16:15 -0400
+Received: by mail-yb1-xb42.google.com with SMTP id n65so2766258ybg.10;
+ Fri, 09 Oct 2020 00:16:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BCBRkd7SY1UGBTvNjwTUZiHdR4k7LgdAwwkOsNr4HZc=;
- b=HmitRWhVocYgSOtXwuynB0laV7+779gNP5WyPmGsnLmV0Wdr1AOxYCB//YgqMJMDYd
- YBKnylVN4WkCwNelgHbEV0ebCkrI4XV2V6qVA1iEmFf2dE3vhgwdOveSaiobqsO+R5NC
- VXd0gSG+GKjQjVGg+EvTNUr9Tis8ujquK8ViJdScF0zugPQTebioMi8Q09ppaVSkbw03
- LQc4e225Z7w+F4gttVuZK86R5HKKr+ItjBISoKaBRr6xz3OelbTe1lYrv5Sv0R3b1C0c
- 0R7Hz/qGEH9RHiabNj8CKw0j+nYV9dV7/VEBrw2oUihRIJr91BeBjAKMDoaiuEDgqWOk
- CJCg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BoBqAmKxWIwTVBSQjzR2MvO5DNeQhNVblINghDND6eQ=;
+ b=Ghf4HjylinUd0CuWtagt8NPab58sMJponcgZVm37MLWdbZDS1M6OaH8fqjp1GfSow6
+ 0Yinxlogix4LxxCDSeDAOmiQS2vVWEwjU0N8yD5yph8HoKjETBTrxlPKWTP3z5ZUz/2q
+ JA4be3upzBlv/S28u/Ud4ZIvxRFziVoecB4qXwZ7hjFd2ZDM23rW8yrdCU8MZ2zL+fBh
+ hmmTFcgPmscDjmzuVBCVXr1D60KuIQE1gA9AZU4M9yx1ybNdJaoloMb1a1Zq2KamBO+9
+ 7xE1a8iha4L551yv+lwh/ZekA3faTh/T1x5FaROiAYu/ljO0aKxnm7LI6uSOlJdIKyOe
+ ORIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BCBRkd7SY1UGBTvNjwTUZiHdR4k7LgdAwwkOsNr4HZc=;
- b=bsSV411EaFJ0vCZI6OvhAhVs861XQmjCXcVZZzmtTC9nAvCkyDwIDuEnkLNzbWST4j
- JYnooWuAZQp0JeCYTN/SNS8K6sh3VsVVPr+CWSu3+OlizVptd57ZaMFqMB7Q7kiDJaCM
- Lndov6y9xGB0t2KNe5vGJ208QIlDo3gzDRSonWPHUd9xRTpO4cb5xQ9fUjEIqaivS9/Z
- 9D6HKCJht9FQEZ9WyF8TANW84qZIgzJkUxc9EiaRksOb6rV8fmHDq0GhNDux0YFv2DEX
- BUzttU67SLB7gPUxNGI+PWe++pKT5oflxpp4kM/3/VXAy4WZKTuQRItHV6iT7fp/pcxZ
- wEaA==
-X-Gm-Message-State: AOAM533oI/QcME0GNptwrt7DFsYJajXBzp8q7K2gwvrBwViPS2GQfqpB
- /UZcxXyGKqhyeIvmatxwWyE=
-X-Google-Smtp-Source: ABdhPJx43Sc1uffzDRFdDFnR7yJXhv8U6uF6XLhW8Y5iGr/UPkQiLkVVfgOiblm7b7nvYqS+PhbNwQ==
-X-Received: by 2002:adf:a345:: with SMTP id d5mr16166666wrb.55.1602249375258; 
- Fri, 09 Oct 2020 06:16:15 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id m1sm11297366wmm.34.2020.10.09.06.16.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Oct 2020 06:16:14 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 1/2] hw/char/serial: remove duplicate .class_init in
- serial_mm_info
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-trivial@nongnu.org, Anup Patel <anup.patel@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20201009113843.60995-1-lvivier@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8ddff8d3-752b-2219-dd49-bfe53b925c43@amsat.org>
-Date: Fri, 9 Oct 2020 15:16:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BoBqAmKxWIwTVBSQjzR2MvO5DNeQhNVblINghDND6eQ=;
+ b=BzJc6/++a6st6PQqNAaWPLWWt7ERPIedd5lgYynUgfw0bWTjKvaQww4TWdN53xv1FT
+ k3I5T0G9v8y6LYJ4k9tg5VtlBxgwzZuZ9qUDmaPTDHN7g1ji6p1EcGnOoOXw/tRJrxeJ
+ Irj6hQKrEQw/mCxIzp4EQM3+UuD20jTF7pJgPHzIzhQWqC4g5fDwFkCbFj9naGQYmQic
+ UOHVVVDf13QX/Y0MolcFsbJT4LZvvUpKjXekpw6x1tjquTPkAlGbrG51ZK15J1am7BAM
+ ZAQg5TsWNgVlrNb7ZOgMlLH8/G7b/K6VQFagCOFs/KRTJTAcEyVy/KxuyQbyjbprxmew
+ J8MA==
+X-Gm-Message-State: AOAM533X3tKeY/nj8rOV5i8Ac/x+XFK5xUQATjmMDo/fKygQMMrRGE7T
+ 6IGckYYAWZocRb0dBRK1EzYAmJP7axPTWwumuHA=
+X-Google-Smtp-Source: ABdhPJwjxJAT9HJzdZYdFPOqh9MfKtzmgIOuy4fLtCuwyQE048azDOO7Dw4bowURwyIBfiyU/LGw7SzVtyirTIefa+g=
+X-Received: by 2002:a25:bb01:: with SMTP id z1mr17143529ybg.387.1602227767750; 
+ Fri, 09 Oct 2020 00:16:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201009113843.60995-1-lvivier@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+ <20201009064449.2336-4-zhaolichang@huawei.com>
+In-Reply-To: <20201009064449.2336-4-zhaolichang@huawei.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Fri, 9 Oct 2020 15:15:56 +0800
+Message-ID: <CAEUhbmXKmx+c3DtA2i4WzG3Hb5x+WPwMEB6dd1792gyqp2NSSA@mail.gmail.com>
+Subject: Re: [PATCH V2 03/14] riscv/: fix some comment spelling errors
+To: zhaolichang <zhaolichang@huawei.com>
+Cc: qemu-trivial@nongnu.org, David Edmondson <david.edmondson@oracle.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.208,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 09 Oct 2020 09:26:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,36 +73,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 13:16:24 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 07:16:17 -0000
 
-On 10/9/20 1:38 PM, Laurent Vivier wrote:
-> .class_init is already set to serial_mm_class_init.
-> 
-> Remove the duplicate entry.
-> 
-> Fixes: 17fd1a6490b1 ("serial-mm: add "regshift" property")
-> Cc: marcandre.lureau@redhat.com
+Hi,
 
-I was going to send exactly the same one tomorrow =)
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+On Fri, Oct 9, 2020 at 2:55 PM zhaolichang <zhaolichang@huawei.com> wrote:
+>
+> I found that there are many spelling errors in the comments of qemu/target/riscv.
+> I used spellcheck to check the spelling errors and found some errors in the folder.
+>
+> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 > ---
->   hw/char/serial.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index 4386adabd466..97f71879ff2a 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -1120,7 +1120,6 @@ static const TypeInfo serial_mm_info = {
->       .class_init = serial_mm_class_init,
->       .instance_init = serial_mm_instance_init,
->       .instance_size = sizeof(SerialMM),
-> -    .class_init = serial_mm_class_init,
->   };
->   
->   static void serial_register_types(void)
-> 
+>  target/riscv/cpu.c           | 2 +-
+>  target/riscv/cpu_bits.h      | 2 +-
+>  target/riscv/csr.c           | 6 +++---
+>  target/riscv/vector_helper.c | 2 +-
+>  4 files changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index 0bbfd7f457..f40a0b26a3 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -472,7 +472,7 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
+>                      return;
+>                  }
+>              } else {
+> -                qemu_log("vector verison is not specified, "
+> +                qemu_log("vector version is not specified, "
+>                          "use the default value v0.7.1\n");
+>              }
+>              set_vext_version(env, vext_version);
+> diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+> index bd36062877..6e1155560b 100644
+> --- a/target/riscv/cpu_bits.h
+> +++ b/target/riscv/cpu_bits.h
+> @@ -536,7 +536,7 @@
+>  /* Leaf page shift amount */
+>  #define PGSHIFT             12
+>
+> -/* Default Reset Vector adress */
+> +/* Default Reset Vector address */
+>  #define DEFAULT_RSTVEC      0x1000
+>
+>  /* Exception causes */
+> diff --git a/target/riscv/csr.c b/target/riscv/csr.c
+> index aaef6c6f20..93e117020d 100644
+> --- a/target/riscv/csr.c
+> +++ b/target/riscv/csr.c
+> @@ -624,7 +624,7 @@ static int write_mcounteren(CPURISCVState *env, int csrno, target_ulong val)
+>      return 0;
+>  }
+>
+> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+>  static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
+>  {
+>      if (env->priv_ver < PRIV_VERSION_1_11_0) {
+> @@ -634,7 +634,7 @@ static int read_mscounteren(CPURISCVState *env, int csrno, target_ulong *val)
+>      return 0;
+>  }
+>
+> -/* This regiser is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+> +/* This register is replaced with CSR_MCOUNTINHIBIT in 1.11.0 */
+>  static int write_mscounteren(CPURISCVState *env, int csrno, target_ulong val)
+>  {
+>      if (env->priv_ver < PRIV_VERSION_1_11_0) {
+> @@ -1278,7 +1278,7 @@ int riscv_csrrw(CPURISCVState *env, int csrno, target_ulong *ret_value,
+>          !riscv_cpu_virt_enabled(env)) {
+>          /*
+>           * We are in S mode without virtualisation, therefore we are in HS Mode.
+> -         * Add 1 to the effective privledge level to allow us to access the
+> +         * Add 1 to the effective privilege level to allow us to access the
+>           * Hypervisor CSRs.
+>           */
+>          effective_priv++;
+> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
+> index a156573d28..fa89a6e6c1 100644
+> --- a/target/riscv/vector_helper.c
+> +++ b/target/riscv/vector_helper.c
+> @@ -709,7 +709,7 @@ typedef void vext_amo_noatomic_fn(void *vs3, target_ulong addr,
+>                                    uint32_t wd, uint32_t idx, CPURISCVState *env,
+>                                    uintptr_t retaddr);
+>
+> -/* no atomic opreation for vector atomic insructions */
+> +/* no atomic operation for vector atomic insructions */
 
+There is still one typo here: instructions
+
+>  #define DO_SWAP(N, M) (M)
+>  #define DO_AND(N, M)  (N & M)
+>  #define DO_XOR(N, M)  (N ^ M)
+> --
+
+Regards,
+Bin
 
