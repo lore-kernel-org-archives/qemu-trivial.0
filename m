@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kQmAm-0006IT-St
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 02:46:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56398)
+	id 1kQmAp-0006JU-Aa
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2020 02:46:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kQmAf-0006B6-05; Fri, 09 Oct 2020 02:46:29 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5213 helo=huawei.com)
+ id 1kQmAX-00066R-74; Fri, 09 Oct 2020 02:46:21 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5163 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
- id 1kQmAS-0001KR-Jy; Fri, 09 Oct 2020 02:46:28 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 3BAF7A5FC36138034763;
- Fri,  9 Oct 2020 14:46:13 +0800 (CST)
-Received: from localhost (10.174.186.238) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Fri, 9 Oct 2020
- 14:46:04 +0800
+ id 1kQmAS-0001K8-Gv; Fri, 09 Oct 2020 02:46:20 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 00A93FCF439F12BC3E80;
+ Fri,  9 Oct 2020 14:46:09 +0800 (CST)
+Received: from localhost (10.174.186.238) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Fri, 9 Oct 2020
+ 14:45:58 +0800
 From: zhaolichang <zhaolichang@huawei.com>
 To: <qemu-trivial@nongnu.org>
 CC: <qemu-devel@nongnu.org>, zhaolichang <zhaolichang@huawei.com>, "David
  Edmondson" <david.edmondson@oracle.com>, Philippe Mathieu-Daude
  <f4bug@amsat.org>
-Subject: [PATCH V2 14/14] target/: fix some comment spelling errors
-Date: Fri, 9 Oct 2020 14:44:49 +0800
-Message-ID: <20201009064449.2336-15-zhaolichang@huawei.com>
+Subject: [PATCH V2 09/14] sh4/: fix some comment spelling errors
+Date: Fri, 9 Oct 2020 14:44:44 +0800
+Message-ID: <20201009064449.2336-10-zhaolichang@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20201009064449.2336-1-zhaolichang@huawei.com>
 References: <20201009064449.2336-1-zhaolichang@huawei.com>
@@ -31,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.186.238]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.190;
  envelope-from=zhaolichang@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:45:42
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 02:45:16
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -53,59 +53,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2020 06:46:29 -0000
+X-List-Received-Date: Fri, 09 Oct 2020 06:46:26 -0000
 
-I found that there are many spelling errors in the comments of qemu/target.
+I found that there are many spelling errors in the comments of qemu/target/sh4.
 I used spellcheck to check the spelling errors and found some errors in the folder.
 
 Signed-off-by: zhaolichang <zhaolichang@huawei.com>
 Reviewed-by: David Edmondson <david.edmondson@oracle.com>
 Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
 ---
- target/openrisc/cpu.h        | 2 +-
- target/sparc/asi.h           | 2 +-
- target/unicore32/translate.c | 2 +-
+ target/sh4/cpu.h       | 2 +-
+ target/sh4/op_helper.c | 2 +-
+ target/sh4/translate.c | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index bd42faf144..8ca8605301 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -291,7 +291,7 @@ typedef struct CPUOpenRISCState {
-     int is_counting;
- 
-     uint32_t picmr;         /* Interrupt mask register */
--    uint32_t picsr;         /* Interrupt contrl register*/
-+    uint32_t picsr;         /* Interrupt control register*/
- #endif
-     void *irq[32];          /* Interrupt irq input */
- } CPUOpenRISCState;
-diff --git a/target/sparc/asi.h b/target/sparc/asi.h
-index bb58735ddb..4e9f1d59ed 100644
---- a/target/sparc/asi.h
-+++ b/target/sparc/asi.h
-@@ -231,7 +231,7 @@
- #define ASI_INTR_ID		0x63 /* (CMT) Interrupt ID register	*/
- #define ASI_CORE_ID		0x63 /* (CMT) LP ID register		*/
- #define ASI_CESR_ID		0x63 /* (CMT) CESR ID register		*/
--#define ASI_IC_INSTR		0x66 /* Insn cache instrucion ram diag	*/
-+#define ASI_IC_INSTR		0x66 /* Insn cache instruction ram diag	*/
- #define ASI_IC_TAG		0x67 /* Insn cache tag/valid ram diag 	*/
- #define ASI_IC_STAG		0x68 /* (III) Insn cache snoop tag ram	*/
- #define ASI_IC_PRE_DECODE	0x6e /* Insn cache pre-decode ram diag	*/
-diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
-index d4b06df672..2e91b05c15 100644
---- a/target/unicore32/translate.c
-+++ b/target/unicore32/translate.c
-@@ -119,7 +119,7 @@ static void load_reg_var(DisasContext *s, TCGv var, int reg)
- {
-     if (reg == 31) {
-         uint32_t addr;
--        /* normaly, since we updated PC */
-+        /* normally, since we updated PC */
-         addr = (long)s->pc;
-         tcg_gen_movi_i32(var, addr);
-     } else {
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index dbe58c7888..91fa9498f0 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -160,7 +160,7 @@ typedef struct CPUSH4State {
+     uint32_t pteh;		/* page table entry high register */
+     uint32_t ptel;		/* page table entry low register */
+     uint32_t ptea;		/* page table entry assistance register */
+-    uint32_t ttb;		/* tranlation table base register */
++    uint32_t ttb;		/* translation table base register */
+     uint32_t tea;		/* TLB exception address register */
+     uint32_t tra;		/* TRAPA exception register */
+     uint32_t expevt;		/* exception event register */
+diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
+index 14c3db0f48..9de4152735 100644
+--- a/target/sh4/op_helper.c
++++ b/target/sh4/op_helper.c
+@@ -400,7 +400,7 @@ float32 helper_fsrra_FT(CPUSH4State *env, float32 t0)
+     t0 = float32_div(float32_one, t0, &env->fp_status);
+     /* Since this is supposed to be an approximation, an imprecision
+        exception is required.  One supposes this also follows the usual
+-       IEEE rule that other exceptions take precidence.  */
++       IEEE rule that other exceptions take precedence.  */
+     if (get_float_exception_flags(&env->fp_status) == 0) {
+         set_float_exception_flags(float_flag_inexact, &env->fp_status);
+     }
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 60c863d9e1..c57218eb7d 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -1959,7 +1959,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
+     NEXT_INSN;
+     switch (ctx->opcode & 0xf00f) {
+     case 0x6003: /* mov Rm,Rn */
+-        /* Here we want to recognize ld_dst being saved for later consumtion,
++        /* Here we want to recognize ld_dst being saved for later consumption,
+            or for another input register being copied so that ld_dst need not
+            be clobbered during the operation.  */
+         op_dst = B11_8;
 -- 
 2.26.2.windows.1
 
