@@ -1,73 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRHBq-0000Ck-22
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 11:53:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39900)
+	id 1kRHdf-0004Ut-7F
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 12:22:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45810)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kRHBl-000086-Vz; Sat, 10 Oct 2020 11:53:42 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:37725)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kRHBi-0001yL-KC; Sat, 10 Oct 2020 11:53:41 -0400
-Received: by mail-lf1-x143.google.com with SMTP id j30so11520993lfp.4;
- Sat, 10 Oct 2020 08:53:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=uL2hp2LUdE/j/mRHzKildq+S5sAxX8bJDXiT5xZLryQ=;
- b=pYmtMSUiPmSdbZ2oSvlSGEmusMYSpdoOLYv3O85/8TYu85BlEn1luz1aHUALuj9aBV
- PaNnOcStr3N9Cs3ehsV7rpizJur+tpoh5xLxCcgH6ZJMGpYfbBNX7ARGamLQ0xDX6qq9
- Isel9GbOn6mxnzKD4XchA3Hat6VkS3wb8IcmmcC1FOSE+9fyjzo1WV4Kvwvfe4qze0TD
- 4c/WhlrJ8GnGJOro/7CgqVTLHlKfcXJoNdAG7MRr3vDTB+BBPdvoJRzZWJodZy/42THE
- LZwFixPwCh5380xcOR2hpY8vyf4k+VLMcxoNyygbTkZIncS9NcnyP3W8nENOIVgx54Pu
- A3dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=uL2hp2LUdE/j/mRHzKildq+S5sAxX8bJDXiT5xZLryQ=;
- b=nRPEx4qVhcmchIyXLFmAFC9ImWCt6xvD99raB6Sn05+P2Y6DV9n1RuJZu50HqsYHVI
- Da4XPEh7IX4D1TyLvX+Mnx+2n6Qb7/behjiu01vHBJMiE6xWYxXatlnn7yn8S/rOtZvV
- sODvqm4jFabG/ZKInsXUDp7qyQ8upQp7Uht2MmGME0t6BewvaRwKADp6RFdDY4pEx1HE
- +b2XdtO9AAhio+DSBE7xpDEtxyZqYeJAooyOJB0wI02n6rVgMn740X4ZWBLpLKpKBdOg
- dqgYAP9G3ZG5aQvLTRME8dAR1Hl0MeK4dXqpUQ5tSFbe69fGac7mEqeg9aU6gt2tTNMN
- x4AA==
-X-Gm-Message-State: AOAM532E6OXtra5jNeMPYB5JdwIBfD2VQWmemY4/vjRa5h1i5LlQ5vI4
- Q5gmyDAMG8f/njmvJ9Yt/gM=
-X-Google-Smtp-Source: ABdhPJwdpbhogcd2+ztjqN2oDsjsRpZuq4wXTV1HS6M0QDhC2CpsZkvX8LKXAPJ5ArEGxC2VqCFltw==
-X-Received: by 2002:ac2:5c5d:: with SMTP id s29mr3002471lfp.584.1602345215685; 
- Sat, 10 Oct 2020 08:53:35 -0700 (PDT)
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
- [37.145.186.126])
- by smtp.gmail.com with ESMTPSA id x4sm2407822ljj.62.2020.10.10.08.53.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Oct 2020 08:53:34 -0700 (PDT)
-Message-ID: <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-From: Elena Afanasova <eafanasova@gmail.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: jasowang@redhat.com, qemu-ppc@nongnu.org, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Date: Sat, 10 Oct 2020 08:53:00 -0700
-In-Reply-To: <20201010060745.GK1025389@yekko.fritz.box>
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
+ id 1kRHdd-0004UV-Qi; Sat, 10 Oct 2020 12:22:29 -0400
+Received: from mga05.intel.com ([192.55.52.43]:64260)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
+ id 1kRHdb-0005Zm-8t; Sat, 10 Oct 2020 12:22:29 -0400
+IronPort-SDR: y60BstR+gyVhrVACtB6QzsWKOT9Yw9bNaV9aAmwEbFCtUhlEDD57TdJlrDHC2aXQmnGm14lfYT
+ 8FhE7iUmy2Xw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9770"; a="250286057"
+X-IronPort-AV: E=Sophos;i="5.77,359,1596524400"; d="scan'208";a="250286057"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Oct 2020 09:22:21 -0700
+IronPort-SDR: PogaIxRRd1ze8U2UPT3Li/AgkLUQTnoxLaOcuDsdJqYUMO2viw3NCijno82VOrR7LLsFcl1AYQ
+ uGvX/OYnqNug==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,359,1596524400"; d="scan'208";a="520122762"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by fmsmga005.fm.intel.com with ESMTP; 10 Oct 2020 09:22:21 -0700
+Received: from shsmsx603.ccr.corp.intel.com (10.109.6.143) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Sat, 10 Oct 2020 09:22:20 -0700
+Received: from shsmsx605.ccr.corp.intel.com (10.109.6.215) by
+ SHSMSX603.ccr.corp.intel.com (10.109.6.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Sun, 11 Oct 2020 00:22:18 +0800
+Received: from shsmsx605.ccr.corp.intel.com ([10.109.6.215]) by
+ SHSMSX605.ccr.corp.intel.com ([10.109.6.215]) with mapi id 15.01.1713.004;
+ Sun, 11 Oct 2020 00:22:18 +0800
+From: "Zhang, Chen" <chen.zhang@intel.com>
+To: Pan Nengyuan <pannengyuan@huawei.com>, Li Qiang <liq3ea@gmail.com>
+CC: Qemu Developers <qemu-devel@nongnu.org>, Jason Wang <jasowang@redhat.com>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
+Subject: RE: [PATCH] net/filter-rewriter: destroy g_hash_table in
+ colo_rewriter_cleanup
+Thread-Topic: [PATCH] net/filter-rewriter: destroy g_hash_table in
+ colo_rewriter_cleanup
+Thread-Index: AQHWgoxAN7Z5W4Oo6kad3S1TmqXujalYsCSAgDesHgCAAOC18A==
+Date: Sat, 10 Oct 2020 16:22:18 +0000
+Message-ID: <b2e6f80cf0f04b39a7ebeb96a572fe7c@intel.com>
+References: <20200904134908.1396-1-pannengyuan@huawei.com>
+ <CAKXe6SJL8Y2frr1-d06=Ovoo=45+kJSGM2vhDGFeJf4YuUfN4A@mail.gmail.com>
+ <e327c596-08bf-655b-5b2b-aaeb4fcbdb2e@huawei.com>
+In-Reply-To: <e327c596-08bf-655b-5b2b-aaeb4fcbdb2e@huawei.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.5.1.3
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.36]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::143;
- envelope-from=eafanasova@gmail.com; helo=mail-lf1-x143.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=192.55.52.43; envelope-from=chen.zhang@intel.com;
+ helo=mga05.intel.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 12:22:21
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,55 +84,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Oct 2020 15:53:42 -0000
+X-List-Received-Date: Sat, 10 Oct 2020 16:22:30 -0000
 
-On Sat, 2020-10-10 at 17:07 +1100, David Gibson wrote:
-> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
-> > > From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00
-> > > 2001
-> > From: Elena Afanasova <eafanasova@gmail.com>
-> > Date: Fri, 9 Oct 2020 06:41:36 -0700
-> > Subject: [PATCH] hw/net: move allocation to the heap due to very
-> > large stack
-> >  frame
-> 
-> Patch looks fine, but some more details of the motivation would be
-> nice.  I wouldn't have thought that the size of a network packet
-> counted as a "very large" stack frame by userspace standards.
-> 
-
-gcc with wstack-usage warns that stack frame size may be ~65Kbytes
-
-> > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> > ---
-> >  hw/net/spapr_llan.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
-> > index 2093f1bad0..581320a0e7 100644
-> > --- a/hw/net/spapr_llan.c
-> > +++ b/hw/net/spapr_llan.c
-> > @@ -688,7 +688,8 @@ static target_ulong
-> > h_send_logical_lan(PowerPCCPU *cpu,
-> >      SpaprVioDevice *sdev = spapr_vio_find_by_reg(spapr->vio_bus,
-> > reg);
-> >      SpaprVioVlan *dev = VIO_SPAPR_VLAN_DEVICE(sdev);
-> >      unsigned total_len;
-> > -    uint8_t *lbuf, *p;
-> > +    uint8_t *p;
-> > +    g_autofree uint8_t *lbuf = NULL;
-> >      int i, nbufs;
-> >      int ret;
-> >  
-> > @@ -729,7 +730,7 @@ static target_ulong
-> > h_send_logical_lan(PowerPCCPU *cpu,
-> >          return H_RESOURCE;
-> >      }
-> >  
-> > -    lbuf = alloca(total_len);
-> > +    lbuf = g_malloc(total_len);
-> >      p = lbuf;
-> >      for (i = 0; i < nbufs; i++) {
-> >          ret = spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
-
+SSBhbHJlYWR5IHF1ZXVlZCB0aGlzIHBhdGNoIHRvIENPTE8gcHJveHkgdHJlZSwgdGhlbiBJIHdp
+bGwgc2VuZCBhIHNlcmllcyB0byBKYXNvbi4NCg0KVGhhbmtzDQpDaGVuDQoNCj4gLS0tLS1Pcmln
+aW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGFuIE5lbmd5dWFuIDxwYW5uZW5neXVhbkBodWF3
+ZWkuY29tPg0KPiBTZW50OiBTYXR1cmRheSwgT2N0b2JlciAxMCwgMjAyMCA2OjU1IFBNDQo+IFRv
+OiBMaSBRaWFuZyA8bGlxM2VhQGdtYWlsLmNvbT4NCj4gQ2M6IFFlbXUgRGV2ZWxvcGVycyA8cWVt
+dS1kZXZlbEBub25nbnUub3JnPjsgWmhhbmcsIENoZW4NCj4gPGNoZW4uemhhbmdAaW50ZWwuY29t
+PjsgSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT47DQo+IHpoYW5naGFpbGlhbmcgPHpo
+YW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IENoZW4gUXVuDQo+IDxrdWhuLmNoZW5xdW5A
+aHVhd2VpLmNvbT47IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBMYXVyZW50IFZpdmllcg0KPiA8
+bGF1cmVudEB2aXZpZXIuZXU+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0hdIG5ldC9maWx0ZXItcmV3
+cml0ZXI6IGRlc3Ryb3kgZ19oYXNoX3RhYmxlIGluDQo+IGNvbG9fcmV3cml0ZXJfY2xlYW51cA0K
+PiANCj4gcGluZyENCj4gDQo+IE1heWJlIG1pc3NlZCB0byBxdWV1ZT8NCj4gDQo+IE9uIDIwMjAv
+OS81IDg6NDQsIExpIFFpYW5nIHdyb3RlOg0KPiA+IFBhbiBOZW5neXVhbiA8cGFubmVuZ3l1YW5A
+aHVhd2VpLmNvbT4g5LqOMjAyMOW5tDnmnIg05pel5ZGo5LqUIOS4iw0KPiDljYgzOjIz5YaZ6YGT
+77yaDQo+ID4+DQo+ID4+IHMtPmNvbm5lY3Rpb25fdHJhY2tfdGFibGUgZm9yZ290IHRvIGRlc3Ry
+b3kgaW4gY29sb19yZXdyaXRlcl9jbGVhbnVwLiBGaXgNCj4gaXQuDQo+ID4+DQo+ID4+IFJlcG9y
+dGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gPj4gU2lnbmVk
+LW9mZi1ieTogUGFuIE5lbmd5dWFuIDxwYW5uZW5neXVhbkBodWF3ZWkuY29tPg0KPiA+DQo+ID4g
+UmV2aWV3ZWQtYnk6IExpIFFpYW5nIDxsaXEzZWFAZ21haWwuY29tPg0KPiA+DQo+ID4+IC0tLQ0K
+PiA+PiAgbmV0L2ZpbHRlci1yZXdyaXRlci5jIHwgMiArKw0KPiA+PiAgMSBmaWxlIGNoYW5nZWQs
+IDIgaW5zZXJ0aW9ucygrKQ0KPiA+Pg0KPiA+PiBkaWZmIC0tZ2l0IGEvbmV0L2ZpbHRlci1yZXdy
+aXRlci5jIGIvbmV0L2ZpbHRlci1yZXdyaXRlci5jIGluZGV4DQo+ID4+IDFhYWFkMTAxYjYuLjlm
+ZjM2NmQ0NGYgMTAwNjQ0DQo+ID4+IC0tLSBhL25ldC9maWx0ZXItcmV3cml0ZXIuYw0KPiA+PiAr
+KysgYi9uZXQvZmlsdGVyLXJld3JpdGVyLmMNCj4gPj4gQEAgLTM3Niw2ICszNzYsOCBAQCBzdGF0
+aWMgdm9pZCBjb2xvX3Jld3JpdGVyX2NsZWFudXAoTmV0RmlsdGVyU3RhdGUNCj4gKm5mKQ0KPiA+
+PiAgICAgICAgICBmaWx0ZXJfcmV3cml0ZXJfZmx1c2gobmYpOw0KPiA+PiAgICAgICAgICBnX2Zy
+ZWUocy0+aW5jb21pbmdfcXVldWUpOw0KPiA+PiAgICAgIH0NCj4gPj4gKw0KPiA+PiArICAgIGdf
+aGFzaF90YWJsZV9kZXN0cm95KHMtPmNvbm5lY3Rpb25fdHJhY2tfdGFibGUpOw0KPiA+PiAgfQ0K
+PiA+Pg0KPiA+PiAgc3RhdGljIHZvaWQgY29sb19yZXdyaXRlcl9zZXR1cChOZXRGaWx0ZXJTdGF0
+ZSAqbmYsIEVycm9yICoqZXJycCkNCj4gPj4gLS0NCj4gPj4gMi4xOC4yDQo+ID4+DQo+ID4+DQo=
 
