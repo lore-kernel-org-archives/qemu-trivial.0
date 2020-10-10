@@ -1,47 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRCjH-0005iR-Is
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 07:07:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45476)
+	id 1kRHBq-0000Ck-22
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 11:53:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kRCjF-0005hX-3v; Sat, 10 Oct 2020 07:07:57 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:42674 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kRCjD-0003CQ-GQ; Sat, 10 Oct 2020 07:07:56 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id C4758844187CB6902956;
- Sat, 10 Oct 2020 19:07:49 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Sat, 10 Oct 2020
- 19:07:43 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <mreitz@redhat.com>, <vsementsov@virtuozzo.com>, <stefanha@redhat.com>,
- <fam@euphon.net>, <eblake@redhat.com>, <jsnow@redhat.com>,
- <quintela@redhat.com>, <dgilbert@redhat.com>,
- <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>,
- <qemu-block@nongnu.org>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
- <euler.robot@huawei.com>
-Subject: [PATCH] migration/block-dirty-bitmap: fix uninitialized variable
- warning
-Date: Sat, 10 Oct 2020 19:07:30 +0800
-Message-ID: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.23.0
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kRHBl-000086-Vz; Sat, 10 Oct 2020 11:53:42 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:37725)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kRHBi-0001yL-KC; Sat, 10 Oct 2020 11:53:41 -0400
+Received: by mail-lf1-x143.google.com with SMTP id j30so11520993lfp.4;
+ Sat, 10 Oct 2020 08:53:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=uL2hp2LUdE/j/mRHzKildq+S5sAxX8bJDXiT5xZLryQ=;
+ b=pYmtMSUiPmSdbZ2oSvlSGEmusMYSpdoOLYv3O85/8TYu85BlEn1luz1aHUALuj9aBV
+ PaNnOcStr3N9Cs3ehsV7rpizJur+tpoh5xLxCcgH6ZJMGpYfbBNX7ARGamLQ0xDX6qq9
+ Isel9GbOn6mxnzKD4XchA3Hat6VkS3wb8IcmmcC1FOSE+9fyjzo1WV4Kvwvfe4qze0TD
+ 4c/WhlrJ8GnGJOro/7CgqVTLHlKfcXJoNdAG7MRr3vDTB+BBPdvoJRzZWJodZy/42THE
+ LZwFixPwCh5380xcOR2hpY8vyf4k+VLMcxoNyygbTkZIncS9NcnyP3W8nENOIVgx54Pu
+ A3dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=uL2hp2LUdE/j/mRHzKildq+S5sAxX8bJDXiT5xZLryQ=;
+ b=nRPEx4qVhcmchIyXLFmAFC9ImWCt6xvD99raB6Sn05+P2Y6DV9n1RuJZu50HqsYHVI
+ Da4XPEh7IX4D1TyLvX+Mnx+2n6Qb7/behjiu01vHBJMiE6xWYxXatlnn7yn8S/rOtZvV
+ sODvqm4jFabG/ZKInsXUDp7qyQ8upQp7Uht2MmGME0t6BewvaRwKADp6RFdDY4pEx1HE
+ +b2XdtO9AAhio+DSBE7xpDEtxyZqYeJAooyOJB0wI02n6rVgMn740X4ZWBLpLKpKBdOg
+ dqgYAP9G3ZG5aQvLTRME8dAR1Hl0MeK4dXqpUQ5tSFbe69fGac7mEqeg9aU6gt2tTNMN
+ x4AA==
+X-Gm-Message-State: AOAM532E6OXtra5jNeMPYB5JdwIBfD2VQWmemY4/vjRa5h1i5LlQ5vI4
+ Q5gmyDAMG8f/njmvJ9Yt/gM=
+X-Google-Smtp-Source: ABdhPJwdpbhogcd2+ztjqN2oDsjsRpZuq4wXTV1HS6M0QDhC2CpsZkvX8LKXAPJ5ArEGxC2VqCFltw==
+X-Received: by 2002:ac2:5c5d:: with SMTP id s29mr3002471lfp.584.1602345215685; 
+ Sat, 10 Oct 2020 08:53:35 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id x4sm2407822ljj.62.2020.10.10.08.53.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 10 Oct 2020 08:53:34 -0700 (PDT)
+Message-ID: <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
+ stack frame
+From: Elena Afanasova <eafanasova@gmail.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: jasowang@redhat.com, qemu-ppc@nongnu.org, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Date: Sat, 10 Oct 2020 08:53:00 -0700
+In-Reply-To: <20201010060745.GK1025389@yekko.fritz.box>
+References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+ <20201010060745.GK1025389@yekko.fritz.box>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 06:54:40
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+User-Agent: Evolution 3.36.4-0ubuntu1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=eafanasova@gmail.com; helo=mail-lf1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,36 +80,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Oct 2020 11:07:57 -0000
+X-List-Received-Date: Sat, 10 Oct 2020 15:53:42 -0000
 
-This if statement judgment is redundant and it will cause a warning:
+On Sat, 2020-10-10 at 17:07 +1100, David Gibson wrote:
+> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
+> > > From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00
+> > > 2001
+> > From: Elena Afanasova <eafanasova@gmail.com>
+> > Date: Fri, 9 Oct 2020 06:41:36 -0700
+> > Subject: [PATCH] hw/net: move allocation to the heap due to very
+> > large stack
+> >  frame
+> 
+> Patch looks fine, but some more details of the motivation would be
+> nice.  I wouldn't have thought that the size of a network packet
+> counted as a "very large" stack frame by userspace standards.
+> 
 
-migration/block-dirty-bitmap.c:1090:13: warning: ‘bitmap_name’ may be used
- uninitialized in this function [-Wmaybe-uninitialized]
-             g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc with wstack-usage warns that stack frame size may be ~65Kbytes
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
- migration/block-dirty-bitmap.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/migration/block-dirty-bitmap.c b/migration/block-dirty-bitmap.c
-index 5bef793ac0..e09ea4f22b 100644
---- a/migration/block-dirty-bitmap.c
-+++ b/migration/block-dirty-bitmap.c
-@@ -1084,9 +1084,7 @@ static int dirty_bitmap_load_header(QEMUFile *f, DBMLoadState *s,
-             } else {
-                 bitmap_name = s->bitmap_alias;
-             }
--        }
- 
--        if (!s->cancelled) {
-             g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
-             s->bitmap = bdrv_find_dirty_bitmap(s->bs, s->bitmap_name);
- 
--- 
-2.23.0
+> > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> > ---
+> >  hw/net/spapr_llan.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
+> > index 2093f1bad0..581320a0e7 100644
+> > --- a/hw/net/spapr_llan.c
+> > +++ b/hw/net/spapr_llan.c
+> > @@ -688,7 +688,8 @@ static target_ulong
+> > h_send_logical_lan(PowerPCCPU *cpu,
+> >      SpaprVioDevice *sdev = spapr_vio_find_by_reg(spapr->vio_bus,
+> > reg);
+> >      SpaprVioVlan *dev = VIO_SPAPR_VLAN_DEVICE(sdev);
+> >      unsigned total_len;
+> > -    uint8_t *lbuf, *p;
+> > +    uint8_t *p;
+> > +    g_autofree uint8_t *lbuf = NULL;
+> >      int i, nbufs;
+> >      int ret;
+> >  
+> > @@ -729,7 +730,7 @@ static target_ulong
+> > h_send_logical_lan(PowerPCCPU *cpu,
+> >          return H_RESOURCE;
+> >      }
+> >  
+> > -    lbuf = alloca(total_len);
+> > +    lbuf = g_malloc(total_len);
+> >      p = lbuf;
+> >      for (i = 0; i < nbufs; i++) {
+> >          ret = spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
 
 
