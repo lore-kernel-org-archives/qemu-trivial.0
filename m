@@ -1,77 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRHdf-0004Ut-7F
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 12:22:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45810)
+	id 1kRQbG-0004T9-MU
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 21:56:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1kRHdd-0004UV-Qi; Sat, 10 Oct 2020 12:22:29 -0400
-Received: from mga05.intel.com ([192.55.52.43]:64260)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1kRHdb-0005Zm-8t; Sat, 10 Oct 2020 12:22:29 -0400
-IronPort-SDR: y60BstR+gyVhrVACtB6QzsWKOT9Yw9bNaV9aAmwEbFCtUhlEDD57TdJlrDHC2aXQmnGm14lfYT
- 8FhE7iUmy2Xw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9770"; a="250286057"
-X-IronPort-AV: E=Sophos;i="5.77,359,1596524400"; d="scan'208";a="250286057"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Oct 2020 09:22:21 -0700
-IronPort-SDR: PogaIxRRd1ze8U2UPT3Li/AgkLUQTnoxLaOcuDsdJqYUMO2viw3NCijno82VOrR7LLsFcl1AYQ
- uGvX/OYnqNug==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,359,1596524400"; d="scan'208";a="520122762"
-Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
- by fmsmga005.fm.intel.com with ESMTP; 10 Oct 2020 09:22:21 -0700
-Received: from shsmsx603.ccr.corp.intel.com (10.109.6.143) by
- fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Sat, 10 Oct 2020 09:22:20 -0700
-Received: from shsmsx605.ccr.corp.intel.com (10.109.6.215) by
- SHSMSX603.ccr.corp.intel.com (10.109.6.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Sun, 11 Oct 2020 00:22:18 +0800
-Received: from shsmsx605.ccr.corp.intel.com ([10.109.6.215]) by
- SHSMSX605.ccr.corp.intel.com ([10.109.6.215]) with mapi id 15.01.1713.004;
- Sun, 11 Oct 2020 00:22:18 +0800
-From: "Zhang, Chen" <chen.zhang@intel.com>
-To: Pan Nengyuan <pannengyuan@huawei.com>, Li Qiang <liq3ea@gmail.com>
-CC: Qemu Developers <qemu-devel@nongnu.org>, Jason Wang <jasowang@redhat.com>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
-Subject: RE: [PATCH] net/filter-rewriter: destroy g_hash_table in
- colo_rewriter_cleanup
-Thread-Topic: [PATCH] net/filter-rewriter: destroy g_hash_table in
- colo_rewriter_cleanup
-Thread-Index: AQHWgoxAN7Z5W4Oo6kad3S1TmqXujalYsCSAgDesHgCAAOC18A==
-Date: Sat, 10 Oct 2020 16:22:18 +0000
-Message-ID: <b2e6f80cf0f04b39a7ebeb96a572fe7c@intel.com>
-References: <20200904134908.1396-1-pannengyuan@huawei.com>
- <CAKXe6SJL8Y2frr1-d06=Ovoo=45+kJSGM2vhDGFeJf4YuUfN4A@mail.gmail.com>
- <e327c596-08bf-655b-5b2b-aaeb4fcbdb2e@huawei.com>
-In-Reply-To: <e327c596-08bf-655b-5b2b-aaeb4fcbdb2e@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.5.1.3
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.36]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kRQbF-0004Se-9l; Sat, 10 Oct 2020 21:56:37 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41538)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kRQbD-0004Sh-J7; Sat, 10 Oct 2020 21:56:36 -0400
+Received: by mail-ot1-x342.google.com with SMTP id q21so12584570ota.8;
+ Sat, 10 Oct 2020 18:56:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iafPvEnAsyoEe4Ey2SSoAVShKbsoVPNle8hYe14TBV4=;
+ b=OXB02dAdZIBTl+KrKmhVSLISLfzH0o8fLIIa7ThYZzQGNC9BPHZKkJS9tOEheZlZhn
+ Nk3ZKSC+p881FErg8g3GlehIDx71JaPhZupjhx5TKJN/gHrEkxjboqnySgo/ee7FiaJJ
+ A5qQ8+QARSc2n6dxE7fEvcCNvIqIECxzj6bdH3lCBoIKMHLYQN9YAcsU1hPyLAzjzmOI
+ 5QzJLSddWFSaX3Col5amAfm40K6Ysc7ZU7ozsrn/lRSgwo/AtSLwCUUo7PA/LZyXF0Os
+ Ci7gkTmi1aSZ8Cv43ByhUMrqQ768C0JtxNyomAcmd5H9GgFYYxM8DuytCdxCFkhUkZws
+ 257A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iafPvEnAsyoEe4Ey2SSoAVShKbsoVPNle8hYe14TBV4=;
+ b=JueJJ33jUeOcFAvsSzYuyUOgBybHbiTPopHadpp5FIiWzOcCjODR6/jmdpirC2gB7Q
+ 8GxQK4T5eDnCjFK9r8vUX2QOZFauMAyKHRAJquNZsKU6VkEFTjNKYfQhozPL8vzHal0a
+ cvF+qFX9OXsmA31p/SC0yPPBgF5NJ7NeQbH5Rs6TL+ovlmObqAt8uCt8Nzdy5/JyYpaG
+ +Wiapk7CJ+X+nnGM1ADlv6WNQ7KVeS3PcmFVH4kLz+VqMbwwXnPuwzq0FLJzUBUBXs6W
+ Y8fbDWDgAMBxFDj2JxM7krbIIot3CxuvPdlijMlNWoJ8aZIKzmpVOAj+mKiavel+Xepf
+ U5oQ==
+X-Gm-Message-State: AOAM533Rbft2tOf8zeZMQwnErIqd0AluPFiRgHmqfyjRJIzpaISWdBAK
+ mFScdG4VDB1UpkccRrAE92pk/e6oseNot6PEfcU=
+X-Google-Smtp-Source: ABdhPJxkVrr/7++zNogbmBXafpoSSBO5maPk7oU2TXT65H3qOdsLZRPavxdebY1sDpMId4gfYGSGcOAHT0X6CzjxUwo=
+X-Received: by 2002:a9d:1a2:: with SMTP id e31mr10721565ote.181.1602381393235; 
+ Sat, 10 Oct 2020 18:56:33 -0700 (PDT)
 MIME-Version: 1.0
-Received-SPF: pass client-ip=192.55.52.43; envelope-from=chen.zhang@intel.com;
- helo=mga05.intel.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 12:22:21
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Sun, 11 Oct 2020 09:55:57 +0800
+Message-ID: <CAKXe6SJWZ+ek-MefzJzDH=H=N90B67i5pV7CybA2maYq9Euk5w@mail.gmail.com>
+Subject: Re: [PATCH] migration/block-dirty-bitmap: fix uninitialized variable
+ warning
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Fam Zheng <fam@euphon.net>, ganqixin@huawei.com, vsementsov@virtuozzo.com, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-block@nongnu.org, 
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Euler Robot <euler.robot@huawei.com>, 
+ John Snow <jsnow@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,36 +78,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Oct 2020 16:22:30 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 01:56:37 -0000
 
-SSBhbHJlYWR5IHF1ZXVlZCB0aGlzIHBhdGNoIHRvIENPTE8gcHJveHkgdHJlZSwgdGhlbiBJIHdp
-bGwgc2VuZCBhIHNlcmllcyB0byBKYXNvbi4NCg0KVGhhbmtzDQpDaGVuDQoNCj4gLS0tLS1Pcmln
-aW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGFuIE5lbmd5dWFuIDxwYW5uZW5neXVhbkBodWF3
-ZWkuY29tPg0KPiBTZW50OiBTYXR1cmRheSwgT2N0b2JlciAxMCwgMjAyMCA2OjU1IFBNDQo+IFRv
-OiBMaSBRaWFuZyA8bGlxM2VhQGdtYWlsLmNvbT4NCj4gQ2M6IFFlbXUgRGV2ZWxvcGVycyA8cWVt
-dS1kZXZlbEBub25nbnUub3JnPjsgWmhhbmcsIENoZW4NCj4gPGNoZW4uemhhbmdAaW50ZWwuY29t
-PjsgSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT47DQo+IHpoYW5naGFpbGlhbmcgPHpo
-YW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IENoZW4gUXVuDQo+IDxrdWhuLmNoZW5xdW5A
-aHVhd2VpLmNvbT47IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBMYXVyZW50IFZpdmllcg0KPiA8
-bGF1cmVudEB2aXZpZXIuZXU+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0hdIG5ldC9maWx0ZXItcmV3
-cml0ZXI6IGRlc3Ryb3kgZ19oYXNoX3RhYmxlIGluDQo+IGNvbG9fcmV3cml0ZXJfY2xlYW51cA0K
-PiANCj4gcGluZyENCj4gDQo+IE1heWJlIG1pc3NlZCB0byBxdWV1ZT8NCj4gDQo+IE9uIDIwMjAv
-OS81IDg6NDQsIExpIFFpYW5nIHdyb3RlOg0KPiA+IFBhbiBOZW5neXVhbiA8cGFubmVuZ3l1YW5A
-aHVhd2VpLmNvbT4g5LqOMjAyMOW5tDnmnIg05pel5ZGo5LqUIOS4iw0KPiDljYgzOjIz5YaZ6YGT
-77yaDQo+ID4+DQo+ID4+IHMtPmNvbm5lY3Rpb25fdHJhY2tfdGFibGUgZm9yZ290IHRvIGRlc3Ry
-b3kgaW4gY29sb19yZXdyaXRlcl9jbGVhbnVwLiBGaXgNCj4gaXQuDQo+ID4+DQo+ID4+IFJlcG9y
-dGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gPj4gU2lnbmVk
-LW9mZi1ieTogUGFuIE5lbmd5dWFuIDxwYW5uZW5neXVhbkBodWF3ZWkuY29tPg0KPiA+DQo+ID4g
-UmV2aWV3ZWQtYnk6IExpIFFpYW5nIDxsaXEzZWFAZ21haWwuY29tPg0KPiA+DQo+ID4+IC0tLQ0K
-PiA+PiAgbmV0L2ZpbHRlci1yZXdyaXRlci5jIHwgMiArKw0KPiA+PiAgMSBmaWxlIGNoYW5nZWQs
-IDIgaW5zZXJ0aW9ucygrKQ0KPiA+Pg0KPiA+PiBkaWZmIC0tZ2l0IGEvbmV0L2ZpbHRlci1yZXdy
-aXRlci5jIGIvbmV0L2ZpbHRlci1yZXdyaXRlci5jIGluZGV4DQo+ID4+IDFhYWFkMTAxYjYuLjlm
-ZjM2NmQ0NGYgMTAwNjQ0DQo+ID4+IC0tLSBhL25ldC9maWx0ZXItcmV3cml0ZXIuYw0KPiA+PiAr
-KysgYi9uZXQvZmlsdGVyLXJld3JpdGVyLmMNCj4gPj4gQEAgLTM3Niw2ICszNzYsOCBAQCBzdGF0
-aWMgdm9pZCBjb2xvX3Jld3JpdGVyX2NsZWFudXAoTmV0RmlsdGVyU3RhdGUNCj4gKm5mKQ0KPiA+
-PiAgICAgICAgICBmaWx0ZXJfcmV3cml0ZXJfZmx1c2gobmYpOw0KPiA+PiAgICAgICAgICBnX2Zy
-ZWUocy0+aW5jb21pbmdfcXVldWUpOw0KPiA+PiAgICAgIH0NCj4gPj4gKw0KPiA+PiArICAgIGdf
-aGFzaF90YWJsZV9kZXN0cm95KHMtPmNvbm5lY3Rpb25fdHJhY2tfdGFibGUpOw0KPiA+PiAgfQ0K
-PiA+Pg0KPiA+PiAgc3RhdGljIHZvaWQgY29sb19yZXdyaXRlcl9zZXR1cChOZXRGaWx0ZXJTdGF0
-ZSAqbmYsIEVycm9yICoqZXJycCkNCj4gPj4gLS0NCj4gPj4gMi4xOC4yDQo+ID4+DQo+ID4+DQo=
+Chen Qun <kuhn.chenqun@huawei.com> =E4=BA=8E2020=E5=B9=B410=E6=9C=8810=E6=
+=97=A5=E5=91=A8=E5=85=AD =E4=B8=8B=E5=8D=887:08=E5=86=99=E9=81=93=EF=BC=9A
+>
+> This if statement judgment is redundant and it will cause a warning:
+>
+> migration/block-dirty-bitmap.c:1090:13: warning: =E2=80=98bitmap_name=E2=
+=80=99 may be used
+>  uninitialized in this function [-Wmaybe-uninitialized]
+>              g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name=
+));
+>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+
+> ---
+>  migration/block-dirty-bitmap.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/migration/block-dirty-bitmap.c b/migration/block-dirty-bitma=
+p.c
+> index 5bef793ac0..e09ea4f22b 100644
+> --- a/migration/block-dirty-bitmap.c
+> +++ b/migration/block-dirty-bitmap.c
+> @@ -1084,9 +1084,7 @@ static int dirty_bitmap_load_header(QEMUFile *f, DB=
+MLoadState *s,
+>              } else {
+>                  bitmap_name =3D s->bitmap_alias;
+>              }
+> -        }
+>
+> -        if (!s->cancelled) {
+>              g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name=
+));
+>              s->bitmap =3D bdrv_find_dirty_bitmap(s->bs, s->bitmap_name);
+>
+> --
+> 2.23.0
+>
+>
 
