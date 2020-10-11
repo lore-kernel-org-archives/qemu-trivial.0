@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRbWJ-0000jo-OH
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56794)
+	id 1kRbWL-0000kS-Jn
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYY6-0000yz-KN; Sun, 11 Oct 2020 06:25:54 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:52058 helo=huawei.com)
+ id 1kRYYC-00013M-Bm; Sun, 11 Oct 2020 06:26:00 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:52168 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYY4-0003G7-On; Sun, 11 Oct 2020 06:25:54 -0400
+ id 1kRYYA-0003Ji-Eg; Sun, 11 Oct 2020 06:26:00 -0400
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id DEFA347A27AEFD77E8CF;
+ by Forcepoint Email with ESMTP id EF935A9660D1AEBE83CC;
  Sun, 11 Oct 2020 18:25:48 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
- 18:25:41 +0800
+ 18:25:39 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <yubihong@huawei.com>
-Subject: [PATCH v1 8/8] migration: Delete redundant spaces
-Date: Sun, 11 Oct 2020 18:57:43 +0800
-Message-ID: <1602413863-19513-9-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v1 5/8] migration: Add braces {} for if statement
+Date: Sun, 11 Oct 2020 18:57:40 +0800
+Message-ID: <1602413863-19513-6-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1602413863-19513-1-git-send-email-yubihong@huawei.com>
 References: <1602413863-19513-1-git-send-email-yubihong@huawei.com>
@@ -52,28 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Oct 2020 10:25:55 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 10:26:00 -0000
 
 Signed-off-by:Bihong Yu <yubihong@huawei.com>
 Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 Signed-off-by: Bihong Yu <yubihong@huawei.com>
 ---
- migration/rdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ migration/ram.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/migration/rdma.c b/migration/rdma.c
-index ca4d315..00eac34 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -855,7 +855,7 @@ static int qemu_rdma_broken_ipv6_kernel(struct ibv_context *verbs, Error **errp)
-      */
-     if (!verbs) {
-         int num_devices, x;
--        struct ibv_device ** dev_list = ibv_get_device_list(&num_devices);
-+        struct ibv_device **dev_list = ibv_get_device_list(&num_devices);
-         bool roce_found = false;
-         bool ib_found = false;
+diff --git a/migration/ram.c b/migration/ram.c
+index 90b277b..12e7296 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -101,14 +101,16 @@ static struct {
  
+ static void XBZRLE_cache_lock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_lock(&XBZRLE.lock);
++    }
+ }
+ 
+ static void XBZRLE_cache_unlock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_unlock(&XBZRLE.lock);
++    }
+ }
+ 
+ /**
 -- 
 1.8.3.1
 
