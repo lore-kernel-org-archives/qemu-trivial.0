@@ -1,77 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRiEX-0006cD-61
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 16:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59094)
+	id 1kRiX5-0007g3-Ew
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 17:05:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRiEU-0006ZR-4z
- for qemu-trivial@nongnu.org; Sun, 11 Oct 2020 16:46:19 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:38828)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRiX4-0007eh-84; Sun, 11 Oct 2020 17:05:30 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:39434)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRiEQ-0006YC-Gq
- for qemu-trivial@nongnu.org; Sun, 11 Oct 2020 16:46:17 -0400
-Received: by mail-ej1-x644.google.com with SMTP id ce10so20446547ejc.5
- for <qemu-trivial@nongnu.org>; Sun, 11 Oct 2020 13:46:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Zd7z4Zeb1k14kVm7EXjC3JkEyZMOY9MA5z0PafSZ+sc=;
- b=B3F6pgeO0Tn8KgvLLQ3yUAnVQ1ELii/Ue3tGgjguk8AYbFaAT1uG5HLzFF2hsMWdtB
- wSn7br303hLqFQzfp1OgLtnCUGUX/4OHAFgqZ2E4D5lO0JFP9++wh44/wQnHpnZrMNc6
- 1N854ZV2ZCrvwlySz5Fx6NcqBa2IhrE5fspiZEhyyoMrJSy/KaFI1lbPJXoqKmeoO2fg
- EVFCbAR3AZ092bpKKyKZOoWCWu1gFtEpGvrfotQQuQyiv0y1JR1kxnq6pybym3hBu9Gj
- /F3vxOeb29N+W/eyrrDyxow1o9luvHmPyoSnrtA/RusMWLhpKfNmmjRlY2GBhd3T1sqk
- hRqA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRiWz-0008SA-5W; Sun, 11 Oct 2020 17:05:26 -0400
+Received: by mail-wm1-x342.google.com with SMTP id d3so15560627wma.4;
+ Sun, 11 Oct 2020 14:05:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RVEzdFzHG52dMol05fP/JH3htxgV/2K75VVlQolC92Q=;
+ b=nOt/7E1w5qckBWFAbySA3+Ea7uSlqnSe92H+xbt4af0H0jD5QOF6W48WhFa8a+iFqB
+ TWv7jqJ0+ziefyPjBka1Ot+H/RIfVYAhecFsIXZZwmj/ztJSyAQQUM77GHMxuuB44H9q
+ NK2TJ3ltKzVFSAeSLYLkEC+YZYHiJXzEW7HA/Z8Xoo8zoSeNIsITA+v1RtAYchm8s/qc
+ fLo5RDDsX+Z8h9kLuvWgrHnaCQwfGGGx/km6YaTzipTSmm9uS6l822Oe4Gybxt5BMk3I
+ YNkffa+qogQDkt96K41FbVNh8CluYSeW0G181TwexFIygZSe0mbluTWeFDpu6k4x3NCW
+ +gpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Zd7z4Zeb1k14kVm7EXjC3JkEyZMOY9MA5z0PafSZ+sc=;
- b=NFQ1Q4dscEiQ1L76uUaiP/HkRPM9+cL4XA2rsOCBBpzu3+MKgKGFUxoEArcbXKrjQj
- fToG8kqI+1KKEHpK1MLPbL7KxIs4x8kpn40H9aRcUx/MdGLhGPz3GVKw+vMb8V9MA6tP
- Idq0Nw8oVkKW8X8qdZl+Z/+zqOl6mo5kwblrICoT+es4p5wsYKlYWRWdTnuW5xk80bcI
- 0hU7y8wVNDVcqOJ8oibFB0xL97SbSHeywZ93MR0yWUz7HHl8LwfCq01IF1n+UUrgw5Wc
- 9m95nJnz0cgMSyun5C29MpEGHiZmOif+Ip4KTLB1WuIt4kBRaGanEEzfSLkCWGmywgEz
- IYVw==
-X-Gm-Message-State: AOAM5318owFGAvC689CY13bc+EkkdJsQ2sK4RkjgM4jtrBMJMTYhWdo7
- EejA3RwqffG/vjfLGH6k+/UcfBo28Vl9yyKQrsSQ2w==
-X-Google-Smtp-Source: ABdhPJxocql7lB8canWSvJt1PqUPILVS6Md83pZvWOTIyQmRjhuDvkuehfWmq8SyYEP3bQCkcax6ga2CdgWJKWGj1Qk=
-X-Received: by 2002:a17:906:1f42:: with SMTP id
- d2mr24587356ejk.407.1602449172696; 
- Sun, 11 Oct 2020 13:46:12 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=RVEzdFzHG52dMol05fP/JH3htxgV/2K75VVlQolC92Q=;
+ b=tBuzkzh1yzHM6HphrmV0QjHhi0HxpYirygO+B1Qs3DXWzLmZBBptddgHZG0eo5a6qE
+ HGOFtwHBBjZ+vybvxsnR2BXQztElYuvhfahCcCYQuiNIuk+eQ5mqcKw/j3NAZxgQIZpk
+ 1g0z9VXxM/xmvwO3tmxVonJUQacWJYeXB70hrIuOtG1NeEkrJrmBbI3lMzv1YPT1JFUZ
+ V2QlKAM3oesUdTFIBNglVVR2A/oc45uAOA8GnROMlGwdhMbVgY9sMCU5Yy7GKkpYrjlZ
+ U50nbvHrSMEu/CpkCyj4wkmnqRUOF4jov4V4C1noinbZgS/eiOJZB8VkqSpuIGiT0OSW
+ 1WuA==
+X-Gm-Message-State: AOAM5315pdLQYRn0JiF7oZjPzis3iS6sYh5Ls2f9Cb/375vPdUwppWRz
+ VN0IfWjFtKWLr4lrqG6AFzJHbTow0fI=
+X-Google-Smtp-Source: ABdhPJzWYQEr/OMaVc3tepE4+WU58sBwce3RsVkO+V4yBy1LFp3sJUXhk5TDGOggZhyWeGCxllj8NQ==
+X-Received: by 2002:a1c:9cd3:: with SMTP id f202mr8078235wme.148.1602450320998; 
+ Sun, 11 Oct 2020 14:05:20 -0700 (PDT)
+Received: from localhost.localdomain
+ (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id x15sm24781991wrr.36.2020.10.11.14.05.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 11 Oct 2020 14:05:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>
+Subject: [PATCH 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
+Date: Sun, 11 Oct 2020 23:05:10 +0200
+Message-Id: <20201011210513.3253905-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20201011194918.3219195-1-f4bug@amsat.org>
- <20201011194918.3219195-4-f4bug@amsat.org>
-In-Reply-To: <20201011194918.3219195-4-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 11 Oct 2020 21:46:01 +0100
-Message-ID: <CAFEAcA8hbkrTo0VpLtjFDtXc5CL7zK+X8ppX==P9_+q_V8-pAw@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/pci-host/versatile: Add WINDOW_COUNT definition to
- replace magic '3'
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, 
- Laurent Vivier <lvivier@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,85 +85,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Oct 2020 20:46:20 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 21:05:30 -0000
 
-On Sun, 11 Oct 2020 at 20:49, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Use self-explicit WINDOW_COUNT definition instead of a magic value.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/pci-host/versatile.c | 28 ++++++++++++++--------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
->
-> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-> index b4951023f4e..4d9565de4b1 100644
-> --- a/hw/pci-host/versatile.c
-> +++ b/hw/pci-host/versatile.c
-> @@ -72,6 +72,8 @@ enum {
->      PCI_VPB_IRQMAP_FORCE_OK,
->  };
->
-> +#define WINDOW_COUNT 3
-> +
->  struct PCIVPBState {
->      PCIHostState parent_obj;
->
-> @@ -86,18 +88,18 @@ struct PCIVPBState {
->       * The offsets into pci_mem_space are controlled by the imap registe=
-rs.
->       */
->      MemoryRegion pci_io_window;
-> -    MemoryRegion pci_mem_window[3];
-> +    MemoryRegion pci_mem_window[WINDOW_COUNT];
->      PCIBus pci_bus;
->      PCIDevice pci_dev;
->
->      /* Constant for life of device: */
->      int realview;
-> -    uint32_t mem_win_size[3];
-> +    uint32_t mem_win_size[WINDOW_COUNT];
->      uint8_t irq_mapping_prop;
->
->      /* Variable state: */
-> -    uint32_t imap[3];
-> -    uint32_t smap[3];
-> +    uint32_t imap[WINDOW_COUNT];
-> +    uint32_t smap[WINDOW_COUNT];
-
-Strictly speaking, this is conflating two separate
-things which both happen to be equal to three.
-
-The versatile/realview PCI controller has:
- * three memory windows in the system address space
-   - those are represented by the pci_mem_window[] array
-   - mem_win_size[] holds the size of each window
-     (which is fixed but varies between the different
-     implementations of this controller on different boards)
-   - the device IMAPn registers allow the guest to
-     configure the mapping from "a CPU access to an
-     address in window n" to "a PCI address on the PCI bus,
-     and our imap[] array holds those register values
- * three PCI BARs which represent memory windows on the
-     PCI bus which bus-master PCI devices can use to
-     write back into the system address space
-   - the device SMAPn registers allow the guest to configure
-     the mapping from "a bus-master access to an address
-     on the PCI bus wherever the guest mapped BAR n"
-     to "a system address", and the smap[] array holds
-     those register values
-There's no inherent reason why the number of PCI BARs
-needs to be the same as the number of system address
-space memory windows, so they shouldn't really share
-the same constant.
-
-(We don't actually implement the behaviour of the SMAP
-registers and the BARs, because Linux always configures
-the PCI controller to a 1:1 mapping of PCI space to
-system address space. So we get away with just having
-our implementation be "always do direct accesses".)
-
-thanks
--- PMM
+In order to use inclusive terminology, rename SSI 'slave' as=0D
+'peripheral', following the resolution Paolo pointed in [*]:=0D
+https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/=0D
+=0D
+Candidate to be merged via the ARM or Trivial trees.=0D
+=0D
+[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/ssi/aspeed_smc: Rename max_slaves as max_devices=0D
+  hw/ssi/ssi: Update coding style to make checkpatch.pl happy=0D
+  hw/ssi: Rename SSI 'slave' as 'peripheral'=0D
+=0D
+ include/hw/misc/max111x.h   |  2 +-=0D
+ include/hw/ssi/aspeed_smc.h |  2 +-=0D
+ include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------=0D
+ hw/arm/spitz.c              | 32 ++++++++++-----------=0D
+ hw/arm/stellaris.c          |  4 +--=0D
+ hw/arm/tosa.c               | 12 ++++----=0D
+ hw/arm/z2.c                 | 14 +++++-----=0D
+ hw/block/m25p80.c           | 14 +++++-----=0D
+ hw/display/ads7846.c        | 12 ++++----=0D
+ hw/display/ssd0323.c        | 12 ++++----=0D
+ hw/misc/max111x.c           | 18 ++++++------=0D
+ hw/sd/ssi-sd.c              | 12 ++++----=0D
+ hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------=0D
+ hw/ssi/pl022.c              |  2 +-=0D
+ hw/ssi/ssi.c                | 48 +++++++++++++++----------------=0D
+ hw/ssi/xilinx_spips.c       |  7 +++--=0D
+ 16 files changed, 152 insertions(+), 148 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D
 
