@@ -1,30 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRbW8-0000OK-DO
+	id 1kRbW8-0000Ov-JK
 	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55300)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYPX-0005RN-Lg; Sun, 11 Oct 2020 06:17:04 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5221 helo=huawei.com)
+ id 1kRYPU-0005R8-Gh; Sun, 11 Oct 2020 06:17:03 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5219 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYPV-0002F1-Jr; Sun, 11 Oct 2020 06:17:03 -0400
+ id 1kRYPM-0002Dv-7S; Sun, 11 Oct 2020 06:17:00 -0400
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 5F7601E299D7A5A1C2F5;
+ by Forcepoint Email with ESMTP id 288BD60FFC45561DC02D;
  Sun, 11 Oct 2020 18:16:45 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
- 18:16:38 +0800
+ 18:16:35 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>
-Subject: [PATCH v1 5/8] migration: Add braces {} for if statement
-Date: Sun, 11 Oct 2020 18:48:38 +0800
-Message-ID: <1602413321-22252-6-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v1 0/8] Fix some style problems in migration
+Date: Sun, 11 Oct 2020 18:48:33 +0800
+Message-ID: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
-References: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
@@ -54,36 +52,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 11 Oct 2020 10:17:04 -0000
 
-Signed-off-by:Bihong Yu <yubihong@huawei.com>
-Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
-Signed-off-by: Bihong Yu <yubihong@huawei.com>
----
- migration/ram.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Recently I am reading migration related code, find some style problems in
+migration directory while using checkpatch.pl to check migration code. Fix the
+error style problems.
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 90b277b..12e7296 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -101,14 +101,16 @@ static struct {
- 
- static void XBZRLE_cache_lock(void)
- {
--    if (migrate_use_xbzrle())
-+    if (migrate_use_xbzrle()) {
-         qemu_mutex_lock(&XBZRLE.lock);
-+    }
- }
- 
- static void XBZRLE_cache_unlock(void)
- {
--    if (migrate_use_xbzrle())
-+    if (migrate_use_xbzrle()) {
-         qemu_mutex_unlock(&XBZRLE.lock);
-+    }
- }
- 
- /**
+Bihong Yu (8):
+  migration: Do not use C99 // comments
+  migration: Don't use '#' flag of printf format
+  migration: Add spaces around operator
+  migration: Open brace '{' following struct go on the same line
+  migration: Add braces {} for if statement
+  migration: Do not initialise statics and globals to 0 or NULL
+  migration: Open brace '{' following function declarations go on the
+    next line
+  migration: Delete redundant spaces
+
+ migration/block.c        |  4 ++--
+ migration/migration.c    |  4 ++--
+ migration/migration.h    |  3 +--
+ migration/postcopy-ram.c |  2 +-
+ migration/ram.c          | 14 ++++++++------
+ migration/rdma.c         |  7 ++++---
+ migration/savevm.c       |  4 ++--
+ migration/vmstate.c      | 10 +++++-----
+ 8 files changed, 25 insertions(+), 23 deletions(-)
+
 -- 
 1.8.3.1
 
