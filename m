@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRbW7-0000MD-Pr
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51466)
+	id 1kRbW7-0000Mo-W9
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRXvF-0001B5-To; Sun, 11 Oct 2020 05:45:46 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5174 helo=huawei.com)
+ id 1kRXvI-0001Bo-4q; Sun, 11 Oct 2020 05:45:48 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5175 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRXv6-0007SD-0P; Sun, 11 Oct 2020 05:45:44 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id A99115D73DC16BA43095;
- Sun, 11 Oct 2020 17:45:12 +0800 (CST)
+ id 1kRXv7-0007SV-TR; Sun, 11 Oct 2020 05:45:47 -0400
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 8CDC098318C705229A41;
+ Sun, 11 Oct 2020 17:45:17 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
  (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
- 17:45:03 +0800
+ 17:45:06 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>
-Subject: [PATCH v1 1/8] migration: Do not use C99 // comments
-Date: Sun, 11 Oct 2020 18:17:02 +0800
-Message-ID: <1602411429-12043-2-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v1 7/8] migration: Open brace '{' following function
+ declarations go on the next line
+Date: Sun, 11 Oct 2020 18:17:08 +0800
+Message-ID: <1602411429-12043-8-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1602411429-12043-1-git-send-email-yubihong@huawei.com>
 References: <1602411429-12043-1-git-send-email-yubihong@huawei.com>
@@ -58,36 +59,23 @@ Signed-off-by:Bihong Yu <yubihong@huawei.com>
 Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 Signed-off-by: Bihong Yu <yubihong@huawei.com>
 ---
- migration/block.c | 2 +-
- migration/rdma.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ migration/rdma.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/migration/block.c b/migration/block.c
-index 737b649..4b8576b 100644
---- a/migration/block.c
-+++ b/migration/block.c
-@@ -40,7 +40,7 @@
- #define MAX_IO_BUFFERS 512
- #define MAX_PARALLEL_IO 16
- 
--//#define DEBUG_BLK_MIGRATION
-+/* #define DEBUG_BLK_MIGRATION */
- 
- #ifdef DEBUG_BLK_MIGRATION
- #define DPRINTF(fmt, ...) \
 diff --git a/migration/rdma.c b/migration/rdma.c
-index 0340841..0eb42b7 100644
+index 0eb42b7..ca4d315 100644
 --- a/migration/rdma.c
 +++ b/migration/rdma.c
-@@ -1288,7 +1288,7 @@ const char *print_wrid(int wrid)
-  * workload information or LRU information is available, do not attempt to use
-  * this feature except for basic testing.
-  */
--//#define RDMA_UNREGISTRATION_EXAMPLE
-+/* #define RDMA_UNREGISTRATION_EXAMPLE */
+@@ -273,7 +273,8 @@ static uint64_t htonll(uint64_t v)
+     return u.llv;
+ }
  
- /*
-  * Perform a non-optimized memory unregistration after every transfer
+-static uint64_t ntohll(uint64_t v) {
++static uint64_t ntohll(uint64_t v)
++{
+     union { uint32_t lv[2]; uint64_t llv; } u;
+     u.llv = v;
+     return ((uint64_t)ntohl(u.lv[0]) << 32) | (uint64_t) ntohl(u.lv[1]);
 -- 
 1.8.3.1
 
