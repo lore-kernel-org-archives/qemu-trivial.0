@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRbWC-0000aH-9s
+	id 1kRbWC-0000cA-O7
 	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55264)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYPS-0005Qm-RQ; Sun, 11 Oct 2020 06:17:00 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5215 helo=huawei.com)
+ id 1kRXv2-00017K-EY; Sun, 11 Oct 2020 05:45:32 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5171 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRYPM-0002Dw-GJ; Sun, 11 Oct 2020 06:16:58 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 35D5ED4502AAD23BD250;
- Sun, 11 Oct 2020 18:16:45 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
- 18:16:37 +0800
+ id 1kRXv0-0007P5-Bn; Sun, 11 Oct 2020 05:45:32 -0400
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 8FAA85347C2F70B557BD;
+ Sun, 11 Oct 2020 17:45:12 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
+ 17:45:05 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>
-Subject: [PATCH v1 4/8] migration: Open brace '{' following struct go on the
- same line
-Date: Sun, 11 Oct 2020 18:48:37 +0800
-Message-ID: <1602413321-22252-5-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v1 5/8] migration: Add braces {} for if statement
+Date: Sun, 11 Oct 2020 18:17:06 +0800
+Message-ID: <1602411429-12043-6-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
-References: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
+In-Reply-To: <1602411429-12043-1-git-send-email-yubihong@huawei.com>
+References: <1602411429-12043-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=yubihong@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 06:16:45
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 05:45:13
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -41,7 +40,7 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 11 Oct 2020 09:35:56 -0400
+X-Mailman-Approved-At: Sun, 11 Oct 2020 09:35:53 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,29 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Oct 2020 10:17:03 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 09:45:33 -0000
 
 Signed-off-by:Bihong Yu <yubihong@huawei.com>
 Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 Signed-off-by: Bihong Yu <yubihong@huawei.com>
 ---
- migration/migration.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ migration/ram.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/migration/migration.h b/migration/migration.h
-index deb411a..99784b4 100644
---- a/migration/migration.h
-+++ b/migration/migration.h
-@@ -124,8 +124,7 @@ struct MigrationClass {
-     DeviceClass parent_class;
- };
+diff --git a/migration/ram.c b/migration/ram.c
+index 90b277b..12e7296 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -101,14 +101,16 @@ static struct {
  
--struct MigrationState
--{
-+struct MigrationState {
-     /*< private >*/
-     DeviceState parent_obj;
+ static void XBZRLE_cache_lock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_lock(&XBZRLE.lock);
++    }
+ }
  
+ static void XBZRLE_cache_unlock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_unlock(&XBZRLE.lock);
++    }
+ }
+ 
+ /**
 -- 
 1.8.3.1
 
