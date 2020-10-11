@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRhMD-0003v1-Mt
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 15:50:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49872)
+	id 1kRhX1-0006Qh-3K
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 16:01:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRhM7-0003rG-DG; Sun, 11 Oct 2020 15:50:08 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37127)
+ id 1kRhWz-0006PR-ET; Sun, 11 Oct 2020 16:01:21 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38618)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRhM5-0000LY-V1; Sun, 11 Oct 2020 15:50:07 -0400
-Received: by mail-wm1-x344.google.com with SMTP id j136so15373094wmj.2;
- Sun, 11 Oct 2020 12:50:04 -0700 (PDT)
+ id 1kRhWx-0001oL-Lv; Sun, 11 Oct 2020 16:01:21 -0400
+Received: by mail-wm1-x341.google.com with SMTP id b127so2573553wmb.3;
+ Sun, 11 Oct 2020 13:01:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=d523o/fbZffgfzeiRypgl8Sr4+ahfNlUxyuEoCVUj0g=;
- b=EYnrGZPTOj8yaPLAWO28rI1ri1ce5smeOkO+Tb5ZS3nLhMsToBsTcmgkiL1I4SM89J
- 3bhpFEf2TJhNMkaOJHmP1M9r2veA/0Bz1QTZxzMaDiNjN3lsTt5aLRaSH+wLrMhEqoBS
- Iacs4R+/JupBRmIgMJZ7Zt65v35FSwMGnjV7hQta7uKJaFaFcjFJjivrpOEZvuEyFLkt
- QGL0sZ/JHAj1qduW7ab8Hh2Ed/Kk8DptGiYqDdmZLfRR6BPzk9oRcVBVUectfgD/a1l1
- 3f1GnO7lMqPKeAl5vAB67lymbKIpwKJJtzTd8lh4IhWTLYVSPK/daWaFb2ver8ns+ESA
- baJw==
+ bh=rtigXnUA5mLNlaDE2SoGG3FoQ3kUlMHtI0Gcr6lFObY=;
+ b=TQxADvQyvYWtmLzUMbQhcYPQvjij3SxxWbkYc1+LYjsZ2j1hLOjmjLXrer62+XH+p6
+ UlQ5xxwIdtsIGaAAi9xmC53NfTaVQmcXAkoX0YsRXIAT9gY6nZHteLtKC2zZ/+9X6wkd
+ rJwpGVmkPyaF3oewcztiLZGHHKOa0zxWdvXWILmQ1D9VKl+WS8v6ObASL5PCyrzJhzaO
+ 9UQnwsLDMq+0xrrVHrdWx/MrNvVDeq+qObKkXDEPyG/oTNPREg/togBbI0hLWOfztECU
+ goCBoebJ3rIrCHj6drs3Sv99OEtFx7DbMMsOuKnC33wvE1lTsMqU3nRz18jwA1wUJ+LD
+ Lcyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=d523o/fbZffgfzeiRypgl8Sr4+ahfNlUxyuEoCVUj0g=;
- b=H6uOnsC+sk5uNl4z2KL2d0x9h5exYsB39hce0wbVxzhir4GncsDSmW9kwpLVhOGYVG
- FUeMVVo0HvRW4HHTjQEVVEeMnCTG5Gnw4Co950EHZQrxuLIs839g6mMiECn7vhH52eV0
- ToX7F6zbRiHCCOblBOexsLL84NlUDKCLSxRAspa/FYkWvHG3F+erW4zWushOzzsXdLGx
- 4yAniOe9q36CqllORX5X9w5kJjcdsye1VCC62eDcf95AWYog3ANvF4ih2uYnttguUt7x
- RP6oGg7nFW4LHHD6bdgadERJJIqE8gOnnA2guVe26i+C8Yp4U9oYw0Q8GghbnoudSZ0F
- qiwA==
-X-Gm-Message-State: AOAM532tG+PcVjI+ot2Bs2Wo7gte3aOgTfMaYZAtSzp9Fn+ZBIEIrHzB
- dY/FnE/ylb3w5qGl2jAdOYYS4W0VQJ8=
-X-Google-Smtp-Source: ABdhPJw004lI0n18X2RegqYlDFdb6T8L+lqp9TtPBR8lixfsZH7J1EdsRtlse37U2+jjKfMPz6V/Uw==
-X-Received: by 2002:a1c:f208:: with SMTP id s8mr7981313wmc.85.1602445803811;
- Sun, 11 Oct 2020 12:50:03 -0700 (PDT)
+ bh=rtigXnUA5mLNlaDE2SoGG3FoQ3kUlMHtI0Gcr6lFObY=;
+ b=IuNyphqEdV0t+lFshXvsZ/c3byr1/yvqhobrcx6PpO0231Kk8rgVrImKGHgcFYwt0b
+ feNT25KY/diw5Bav8JDlIQl8H4uyGULGcxkbJeCat/fwwc4xP5LSsibWg/1eMRle8s/B
+ aGHClVXSK9EgFPDmGZ3SiF0kBqWWssrR773R6beeWRduHpZMXiNCyl3JryByTHbMjtv9
+ EhmTETXRc/mPY3GswUtG3bFPlQyFdKt/anhQXP0sBpKKyzR130QMPJ/MV4r/ChcdlMWd
+ uhKmAWao10SQON3C0hun7d6/0XsnoOfl11DKih6ctLa7AeVHL7shBVgzWApN8UR88Ivb
+ tNrw==
+X-Gm-Message-State: AOAM532VPVICkXVh+IUsxyPh6ay7oYN1puBQ98+yovgHyBREgovY5Xg4
+ NAnYO0XhCN8+hvQiR6Il2Xsy0aeXY2Q=
+X-Google-Smtp-Source: ABdhPJxsTY9YqOEC/mry96dOBi0DKumFWLiFn4mDyifEiPRK51/NDM143dggb1BhtmykInMcPQegMg==
+X-Received: by 2002:a1c:9c4b:: with SMTP id f72mr7762340wme.188.1602446474071; 
+ Sun, 11 Oct 2020 13:01:14 -0700 (PDT)
 Received: from localhost.localdomain
  (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id r68sm15474264wmr.37.2020.10.11.12.50.02
+ by smtp.gmail.com with ESMTPSA id d2sm11826680wrq.34.2020.10.11.13.01.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Oct 2020 12:50:03 -0700 (PDT)
+ Sun, 11 Oct 2020 13:01:13 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Hannes Reinecke <hare@suse.com>, qemu-block@nongnu.org,
- Fam Zheng <fam@euphon.net>,
+Cc: qemu-trivial@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/scsi/megasas: Remove pointless parenthesis
-Date: Sun, 11 Oct 2020 21:50:01 +0200
-Message-Id: <20201011195001.3219730-1-f4bug@amsat.org>
+Subject: [PATCH] target/sparc/int32_helper: Remove duplicated 'Tag Overflow'
+ entry
+Date: Sun, 11 Oct 2020 22:01:12 +0200
+Message-Id: <20201011200112.3222822-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -82,28 +82,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Oct 2020 19:50:09 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 20:01:21 -0000
+
+Commit 0b09be2b2f ("Nicer debug output for exceptions") added
+twice the same "Tag Overflow" entry, remove the extra one.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/scsi/megasas.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/sparc/int32_helper.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-index e24c12d7eed..d57402c9b09 100644
---- a/hw/scsi/megasas.c
-+++ b/hw/scsi/megasas.c
-@@ -2384,8 +2384,8 @@ static void megasas_scsi_realize(PCIDevice *dev, Error **errp)
-     if (!s->sas_addr) {
-         s->sas_addr = ((NAA_LOCALLY_ASSIGNED_ID << 24) |
-                        IEEE_COMPANY_LOCALLY_ASSIGNED) << 36;
--        s->sas_addr |= (pci_dev_bus_num(dev) << 16);
--        s->sas_addr |= (PCI_SLOT(dev->devfn) << 8);
-+        s->sas_addr |= pci_dev_bus_num(dev) << 16;
-+        s->sas_addr |= PCI_SLOT(dev->devfn) << 8;
-         s->sas_addr |= PCI_FUNC(dev->devfn);
-     }
-     if (!s->hba_serial) {
+diff --git a/target/sparc/int32_helper.c b/target/sparc/int32_helper.c
+index 9a71e1abd87..ba63c739c1e 100644
+--- a/target/sparc/int32_helper.c
++++ b/target/sparc/int32_helper.c
+@@ -50,7 +50,6 @@ static const char * const excp_names[0x80] = {
+     [TT_EXTINT | 0xd] = "External Interrupt 13",
+     [TT_EXTINT | 0xe] = "External Interrupt 14",
+     [TT_EXTINT | 0xf] = "External Interrupt 15",
+-    [TT_TOVF] = "Tag Overflow",
+     [TT_CODE_ACCESS] = "Instruction Access Error",
+     [TT_DATA_ACCESS] = "Data Access Error",
+     [TT_DIV_ZERO] = "Division By Zero",
 -- 
 2.26.2
 
