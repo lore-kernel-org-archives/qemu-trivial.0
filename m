@@ -1,69 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRR2K-0001rL-Jl
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2020 22:24:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35570)
+	id 1kRbW7-0000JZ-05
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Oct 2020 09:36:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55252)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kRR2H-0001qA-C7; Sat, 10 Oct 2020 22:24:34 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33290)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kRR2B-0007Jp-Vc; Sat, 10 Oct 2020 22:24:31 -0400
-Received: by mail-ot1-x343.google.com with SMTP id t15so12689814otk.0;
- Sat, 10 Oct 2020 19:24:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=LbcoDkWpl9BJGGhkAZo9NDJdhNj4Brlb1Abcc1AN0ME=;
- b=QVj7mzfJoZqdpNj99y6/yfBLFeyhajQfEfz+/qsoDnuLZQ3Y5AT6GD9KjMvKC46zXt
- 7tib4uGpBLueDMjkzdKPs7xr2PX/pcsjddU6R0pKUm4a6Ob904VrL9vxkjOBWALVVHIE
- J/dq2zoaAId1YQhtukgY01l7WwZuIHPasYwtbwEXf656kyQUPagf6NKb0z38GtiYV3sX
- i9xKmm3zdKdSinDl2NEsxmkqryCbpK2gEF6PHTbfuNN/q33ul3NOCUgZBJgEHu795o14
- ezZnKiHgbfp5ldO7qitfxNpQz+OmXB3G4MHMJSf1mOriixUcCos4ep6y4Wgt8zoBbjII
- YhgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=LbcoDkWpl9BJGGhkAZo9NDJdhNj4Brlb1Abcc1AN0ME=;
- b=oQCInwBxjgwTsskUcBGCHa7Ee7lDiN3qwYOHJoAlreYSVJRI7NFFUPiwJxRxD/D9Q0
- lkDy3Nz1oJfiu1zPmn7kIOxUZ6RcrtT5D3e6PHQJbCZMRa1GfGoHneDF2D8oqwwSOH0B
- S72nd4KWsjlcmSlzPZ779jSp+xGqu+9illoamKTGqkyzFkqtMamME76Kdmo7A3swJOt0
- 5F3tzunqSftgNZs+Z2UPtOAQViY7skLAbZAnI/dQcgq83MBHQW/NhnCDNUUHkpO+6QM6
- o76cXmaK+Kp0QCGLLWRIWyQ1GRDWkAlyOzeYbwQ0CDe4KXQHF63FJtTZobfZjMuyjcfS
- R/pA==
-X-Gm-Message-State: AOAM532tx49lfywlkQ/cLZ1B8Rb9XUnfLIgLTiyilyUdgMdXnTz1MLsz
- yauSe+5rrs8ThHEdiKGZAsLw9Vg7l5belUnOxPs=
-X-Google-Smtp-Source: ABdhPJz4rnQKGxoqQ7YxrHd47sPrbyoYg7NMVvlyk6kEMxcfyRXtN+xFGeV3NobaOM+mNIuJNNDCvNisSGRzQPr2OiE=
-X-Received: by 2002:a9d:5e11:: with SMTP id d17mr13477275oti.333.1602383065916; 
- Sat, 10 Oct 2020 19:24:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
+ id 1kRYPQ-0005QH-9B; Sun, 11 Oct 2020 06:16:58 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5216 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
+ id 1kRYPM-0002E4-GM; Sun, 11 Oct 2020 06:16:56 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 31B7DCCB11DACA29D9D0;
+ Sun, 11 Oct 2020 18:16:45 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Sun, 11 Oct 2020
+ 18:16:36 +0800
+From: Bihong Yu <yubihong@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
+ <wanghao232@huawei.com>, <zhengchuan@huawei.com>
+Subject: [PATCH v1 1/8] migration: Do not use C99 // comments
+Date: Sun, 11 Oct 2020 18:48:34 +0800
+Message-ID: <1602413321-22252-2-git-send-email-yubihong@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
+References: <1602413321-22252-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
-In-Reply-To: <20201010060745.GK1025389@yekko.fritz.box>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Sun, 11 Oct 2020 10:23:49 +0800
-Message-ID: <CAKXe6S+k7b0A_wB7uvthfn-jt3Q_jXxxGhg7uy=r6=uYZvvp3w@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: Elena Afanasova <eafanasova@gmail.com>, qemu-trivial@nongnu.org, 
- Jason Wang <jasowang@redhat.com>, qemu-ppc@nongnu.org, 
- Qemu Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URI_DOTEDU=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 06:16:45
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 11 Oct 2020 09:35:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,70 +52,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Oct 2020 02:24:34 -0000
+X-List-Received-Date: Sun, 11 Oct 2020 10:17:00 -0000
 
-David Gibson <david@gibson.dropbear.id.au> =E4=BA=8E2020=E5=B9=B410=E6=9C=
-=8810=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8B=E5=8D=882:34=E5=86=99=E9=81=93=
-=EF=BC=9A
->
-> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
-> > >From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00 2001
-> > From: Elena Afanasova <eafanasova@gmail.com>
-> > Date: Fri, 9 Oct 2020 06:41:36 -0700
-> > Subject: [PATCH] hw/net: move allocation to the heap due to very large =
-stack
-> >  frame
->
-> Patch looks fine, but some more details of the motivation would be
-> nice.  I wouldn't have thought that the size of a network packet
-> counted as a "very large" stack frame by userspace standards.
->
+Signed-off-by:Bihong Yu <yubihong@huawei.com>
+Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
+Signed-off-by: Bihong Yu <yubihong@huawei.com>
+---
+ migration/block.c | 2 +-
+ migration/rdma.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-It is also a best practice to avoid large stack allocation according.
--->https://wiki.sei.cmu.edu/confluence/display/c/MEM05-C.+Avoid+large+stack=
-+allocations
+diff --git a/migration/block.c b/migration/block.c
+index 737b649..4b8576b 100644
+--- a/migration/block.c
++++ b/migration/block.c
+@@ -40,7 +40,7 @@
+ #define MAX_IO_BUFFERS 512
+ #define MAX_PARALLEL_IO 16
+ 
+-//#define DEBUG_BLK_MIGRATION
++/* #define DEBUG_BLK_MIGRATION */
+ 
+ #ifdef DEBUG_BLK_MIGRATION
+ #define DPRINTF(fmt, ...) \
+diff --git a/migration/rdma.c b/migration/rdma.c
+index 0340841..0eb42b7 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -1288,7 +1288,7 @@ const char *print_wrid(int wrid)
+  * workload information or LRU information is available, do not attempt to use
+  * this feature except for basic testing.
+  */
+-//#define RDMA_UNREGISTRATION_EXAMPLE
++/* #define RDMA_UNREGISTRATION_EXAMPLE */
+ 
+ /*
+  * Perform a non-optimized memory unregistration after every transfer
+-- 
+1.8.3.1
 
-Though I don't see any issue here.
-
-Thanks,
-Li Qiang
-
-> > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> > ---
-> >  hw/net/spapr_llan.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
-> > index 2093f1bad0..581320a0e7 100644
-> > --- a/hw/net/spapr_llan.c
-> > +++ b/hw/net/spapr_llan.c
-> > @@ -688,7 +688,8 @@ static target_ulong h_send_logical_lan(PowerPCCPU *=
-cpu,
-> >      SpaprVioDevice *sdev =3D spapr_vio_find_by_reg(spapr->vio_bus, reg=
-);
-> >      SpaprVioVlan *dev =3D VIO_SPAPR_VLAN_DEVICE(sdev);
-> >      unsigned total_len;
-> > -    uint8_t *lbuf, *p;
-> > +    uint8_t *p;
-> > +    g_autofree uint8_t *lbuf =3D NULL;
-> >      int i, nbufs;
-> >      int ret;
-> >
-> > @@ -729,7 +730,7 @@ static target_ulong h_send_logical_lan(PowerPCCPU *=
-cpu,
-> >          return H_RESOURCE;
-> >      }
-> >
-> > -    lbuf =3D alloca(total_len);
-> > +    lbuf =3D g_malloc(total_len);
-> >      p =3D lbuf;
-> >      for (i =3D 0; i < nbufs; i++) {
-> >          ret =3D spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
->
-> --
-> David Gibson                    | I'll have my music baroque, and my code
-> david AT gibson.dropbear.id.au  | minimalist, thank you.  NOT _the_ _othe=
-r_
->                                 | _way_ _around_!
-> http://www.ozlabs.org/~dgibson
 
