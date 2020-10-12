@@ -1,28 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRx52-0003Ev-2Y
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 08:37:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59696)
+	id 1kRx57-0003J8-Um
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 08:37:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRx4t-0003AM-Oa; Mon, 12 Oct 2020 08:37:24 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5227 helo=huawei.com)
+ id 1kRx50-0003EP-9T; Mon, 12 Oct 2020 08:37:31 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5228 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRx4p-0007ZF-RZ; Mon, 12 Oct 2020 08:37:22 -0400
+ id 1kRx4v-0007bQ-LK; Mon, 12 Oct 2020 08:37:29 -0400
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 01295C619A7EA9F6618C;
+ by Forcepoint Email with ESMTP id 136A941C519B93C818FD;
  Mon, 12 Oct 2020 20:37:04 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Mon, 12 Oct 2020
- 20:36:54 +0800
+ 20:36:56 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <yubihong@huawei.com>
-Subject: [PATCH v2 0/8] Fix some style problems in migration
-Date: Mon, 12 Oct 2020 21:08:52 +0800
-Message-ID: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v2 4/8] migration: Open brace '{' following struct go on the
+ same line
+Date: Mon, 12 Oct 2020 21:08:56 +0800
+Message-ID: <1602508140-11372-5-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
+References: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
@@ -49,37 +52,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 12:37:25 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 12:37:32 -0000
 
-Recently I am reading migration related code, find some style problems in
-migration directory while using checkpatch.pl to check migration code. Fix the
-error style problems.
+Signed-off-by: Bihong Yu <yubihong@huawei.com>
+Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
+---
+ migration/migration.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-v2:
-- fix Signed-off-by error
-- fix printf format error: "%0x" -> "0x%x"
-
-Bihong Yu (8):
-  migration: Do not use C99 // comments
-  migration: Don't use '#' flag of printf format
-  migration: Add spaces around operator
-  migration: Open brace '{' following struct go on the same line
-  migration: Add braces {} for if statement
-  migration: Do not initialise statics and globals to 0 or NULL
-  migration: Open brace '{' following function declarations go on the
-    next line
-  migration: Delete redundant spaces
-
- migration/block.c        |  4 ++--
- migration/migration.c    |  4 ++--
- migration/migration.h    |  3 +--
- migration/postcopy-ram.c |  2 +-
- migration/ram.c          | 14 ++++++++------
- migration/rdma.c         |  7 ++++---
- migration/savevm.c       |  4 ++--
- migration/vmstate.c      | 10 +++++-----
- 8 files changed, 25 insertions(+), 23 deletions(-)
-
+diff --git a/migration/migration.h b/migration/migration.h
+index deb411a..99784b4 100644
+--- a/migration/migration.h
++++ b/migration/migration.h
+@@ -124,8 +124,7 @@ struct MigrationClass {
+     DeviceClass parent_class;
+ };
+ 
+-struct MigrationState
+-{
++struct MigrationState {
+     /*< private >*/
+     DeviceState parent_obj;
+ 
 -- 
 1.8.3.1
 
