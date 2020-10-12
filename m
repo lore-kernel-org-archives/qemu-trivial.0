@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kS8Re-0002Lr-6D
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 20:45:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58448)
+	id 1kS8d9-00034Z-EU
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 20:57:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RO-00024R-FF; Mon, 12 Oct 2020 20:45:22 -0400
-Received: from ozlabs.org ([203.11.71.1]:41699)
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kS6mJ-0004pd-PW; Mon, 12 Oct 2020 18:58:52 -0400
+Received: from shark3.inbox.lv ([194.152.32.83]:60426)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RJ-0006nG-42; Mon, 12 Oct 2020 20:45:21 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4C9GzQ3G7kz9sVD; Tue, 13 Oct 2020 11:45:06 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1602549906;
- bh=FxmL8PgRV16Qjfh784pRUyyS19OMN6XPdKaH+2s3XQY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Q5VlRYK42GLi323qOU1U2uPXwSgfixA5nhvnab92FcUhIbuIY8qjKt+l9+W5lbOn1
- AHgXCUgkxM3LVkqXj64KOeWyIdTlj92EJnGgC7eQw5WtognVDjiZ3OPD6XO7UVi554
- hT6k9cyVoyI/u8szxx+DNJXmKPtBUd6/JwkI7Nw0=
-Date: Tue, 13 Oct 2020 11:43:30 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
- Paul Durrant <paul@xen.org>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-arm@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Stefano Stabellini <sstabellini@kernel.org>, Helge Deller <deller@gmx.de>,
- Anthony Perard <anthony.perard@citrix.com>,
- Richard Henderson <rth@twiddle.net>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- xen-devel@lists.xenproject.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, Huacai Chen <chenhc@lemote.com>
-Subject: Re: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
-Message-ID: <20201013004330.GI71119@yekko.fritz.box>
-References: <20201012124506.3406909-1-philmd@redhat.com>
- <20201012124506.3406909-5-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kS6mH-0002eF-N3; Mon, 12 Oct 2020 18:58:51 -0400
+Received: from shark3.inbox.lv (localhost [127.0.0.1])
+ by shark3-out.inbox.lv (Postfix) with ESMTP id E7667280497;
+ Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=inbox.lv; s=30062014;
+ t=1602543521; bh=YURXcdd3KixEF1JRsw7xcPaqVLvQhhrS2Ji7AWyby/c=;
+ h=From:To:Cc:Subject:Date;
+ b=lY339KaCq+88J75H225bQjuxJuYv/waZ2GKYvB9dJQHtBNLRF/sOkepWYqkv8KppV
+ aOeRtvRy0nJC+uQ4U7LuZPzTm4OPgHuoFXe7O371+DfnoyqQgAUjfY1Wck8SW2TG8d
+ DZ+CGqFXX6UOAkWSNq9tRmHwZtUoKj6OFGbL154I=
+Received: from localhost (localhost [127.0.0.1])
+ by shark3-in.inbox.lv (Postfix) with ESMTP id E1C4928049E;
+ Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
+Received: from shark3.inbox.lv ([127.0.0.1])
+ by localhost (shark3.inbox.lv [127.0.0.1]) (spamfilter, port 35)
+ with ESMTP id D1X3p9Y2KjnD; Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
+Received: from mail.inbox.lv (pop1 [127.0.0.1])
+ by shark3-in.inbox.lv (Postfix) with ESMTP id A8EFD280497;
+ Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
+Received: from localhost.localdomain (net-93-145-34-111.cust.vodafonedsl.it
+ [93.145.34.111]) (Authenticated sender: kherman@inbox.lv)
+ by mail.inbox.lv (Postfix) with ESMTPA id 7B9F545B033;
+ Tue, 13 Oct 2020 01:58:38 +0300 (EEST)
+From: Klaus Herman <kherman@inbox.lv>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Klaus Herman <kherman@inbox.lv>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH] hw/core/qdev-properties: Fix pci bus range in
+ set_pci_host_devaddr()
+Date: Mon, 12 Oct 2020 22:58:31 +0000
+Message-Id: <20201012225831.72920-1-kherman@inbox.lv>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="D6z0c4W1rkZNF4Vu"
-Content-Disposition: inline
-In-Reply-To: <20201012124506.3406909-5-philmd@redhat.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 20:45:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: OK
+X-ESPOL: G4mES3oDmH1DpsO6NYVt5v+GstuyV1kquSb9yrQ39QEqu8qlr7wGfWmJaPriWV35bg==
+Received-SPF: pass client-ip=194.152.32.83; envelope-from=kherman@inbox.lv;
+ helo=shark3.inbox.lv
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 18:58:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 12 Oct 2020 20:57:29 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,170 +70,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 00:45:24 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 22:58:52 -0000
 
+---
+ hw/core/qdev-properties-system.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---D6z0c4W1rkZNF4Vu
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 49bdd12..e3dca56 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
+     bus = val;
+ 
+     p = (char *)e + 1;
+-    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
++    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
+         goto inval;
+     }
+     if (*e == ':') {
+-- 
+2.28.0
 
-On Mon, Oct 12, 2020 at 02:45:05PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
->=20
-> We already have a generic PCI_SLOT() macro in "hw/pci/pci.h"
-> to extract the PCI slot identifier, use it.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-
-ppc parts
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  hw/hppa/dino.c        | 2 +-
->  hw/i386/xen/xen-hvm.c | 2 +-
->  hw/isa/piix3.c        | 2 +-
->  hw/mips/gt64xxx_pci.c | 2 +-
->  hw/pci-host/bonito.c  | 2 +-
->  hw/pci-host/ppce500.c | 2 +-
->  hw/ppc/ppc4xx_pci.c   | 2 +-
->  hw/sh4/sh_pci.c       | 2 +-
->  8 files changed, 8 insertions(+), 8 deletions(-)
->=20
-> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-> index 81053b5fb64..5b82c9440d1 100644
-> --- a/hw/hppa/dino.c
-> +++ b/hw/hppa/dino.c
-> @@ -496,7 +496,7 @@ static void dino_set_irq(void *opaque, int irq, int l=
-evel)
-> =20
->  static int dino_pci_map_irq(PCIDevice *d, int irq_num)
->  {
-> -    int slot =3D d->devfn >> 3;
-> +    int slot =3D PCI_SLOT(d->devfn);
-> =20
->      assert(irq_num >=3D 0 && irq_num <=3D 3);
-> =20
-> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-> index f3ababf33b6..276254e6ca9 100644
-> --- a/hw/i386/xen/xen-hvm.c
-> +++ b/hw/i386/xen/xen-hvm.c
-> @@ -140,7 +140,7 @@ typedef struct XenIOState {
-> =20
->  int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
->  {
-> -    return irq_num + ((pci_dev->devfn >> 3) << 2);
-> +    return irq_num + (PCI_SLOT(pci_dev->devfn) << 2);
->  }
-> =20
->  void xen_piix3_set_irq(void *opaque, int irq_num, int level)
-> diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-> index 587850b8881..f46ccae25cf 100644
-> --- a/hw/isa/piix3.c
-> +++ b/hw/isa/piix3.c
-> @@ -361,7 +361,7 @@ type_init(piix3_register_types)
->  static int pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
->  {
->      int slot_addend;
-> -    slot_addend =3D (pci_dev->devfn >> 3) - 1;
-> +    slot_addend =3D PCI_SLOT(pci_dev->devfn) - 1;
->      return (pci_intx + slot_addend) & 3;
->  }
-> =20
-> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-> index e091bc4ed55..588e6f99301 100644
-> --- a/hw/mips/gt64xxx_pci.c
-> +++ b/hw/mips/gt64xxx_pci.c
-> @@ -982,7 +982,7 @@ static int gt64120_pci_map_irq(PCIDevice *pci_dev, in=
-t irq_num)
->  {
->      int slot;
-> =20
-> -    slot =3D (pci_dev->devfn >> 3);
-> +    slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      switch (slot) {
->      /* PIIX4 USB */
-> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-> index b05295639a6..ee8b193e15b 100644
-> --- a/hw/pci-host/bonito.c
-> +++ b/hw/pci-host/bonito.c
-> @@ -570,7 +570,7 @@ static int pci_bonito_map_irq(PCIDevice *pci_dev, int=
- irq_num)
->  {
->      int slot;
-> =20
-> -    slot =3D (pci_dev->devfn >> 3);
-> +    slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      switch (slot) {
->      case 5:   /* FULOONG2E_VIA_SLOT, SouthBridge, IDE, USB, ACPI, AC97, =
-MC97 */
-> diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-> index 9517aab913e..5ad1424b31a 100644
-> --- a/hw/pci-host/ppce500.c
-> +++ b/hw/pci-host/ppce500.c
-> @@ -342,7 +342,7 @@ static const MemoryRegionOps e500_pci_reg_ops =3D {
-> =20
->  static int mpc85xx_pci_map_irq(PCIDevice *pci_dev, int pin)
->  {
-> -    int devno =3D pci_dev->devfn >> 3;
-> +    int devno =3D PCI_SLOT(pci_dev->devfn);
->      int ret;
-> =20
->      ret =3D ppce500_pci_map_irq_slot(devno, pin);
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index 28724c06f88..e8789f64e80 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -243,7 +243,7 @@ static void ppc4xx_pci_reset(void *opaque)
->   * may need further refactoring for other boards. */
->  static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
->  {
-> -    int slot =3D pci_dev->devfn >> 3;
-> +    int slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      trace_ppc4xx_pci_map_irq(pci_dev->devfn, irq_num, slot);
-> =20
-> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
-> index 73d2d0bccb0..734892f47c7 100644
-> --- a/hw/sh4/sh_pci.c
-> +++ b/hw/sh4/sh_pci.c
-> @@ -109,7 +109,7 @@ static const MemoryRegionOps sh_pci_reg_ops =3D {
-> =20
->  static int sh_pci_map_irq(PCIDevice *d, int irq_num)
->  {
-> -    return (d->devfn >> 3);
-> +    return PCI_SLOT(d->devfn);
->  }
-> =20
->  static void sh_pci_set_irq(void *opaque, int irq_num, int level)
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---D6z0c4W1rkZNF4Vu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+E+DIACgkQbDjKyiDZ
-s5JM4g//S3eKSoztBYSfXaiJO/9rehJ7mK4hYgR5S2pvQTSFkf6LP+HJaCkVa0lE
-a4bUGSpR3bqHhGGYWF6ppIeGNowkD++B5YnsbeFaFVTxaRdDLY0WqcB6YnNVTU2Z
-LskxdcLYtuDddT+S+DU/4ZkC+nXSJyfqU9CTjFq2QuY+4TI4Zf4zeK9m375Oo6qN
-yUSBxj7pOiPy149ZF4tuIVBJy/WOijP5DUmz+I3xS/BqQecGuD2kQzRLGfC/oULr
-TaulgUcr35isuBXOoV9SfQpiLjhzK7Thp1twsSV60rbHKN8mK5uL1M4h8NdJqVmm
-ncct21mR6XQg5Zs/EB4ClFpa2IFKfCgDIA19wUUW627e1OAV8Xdb7OlLV7AkrB0i
-mdt6kGLrs0dOSXUqqDZP04NdDFx49Jp1tK9ZBspjw9nxiluNhpOYC1SuND2+lenf
-OiaZxMPNyIYKbCS1pfMGXyKsh8/qcf8M2RNtqdjRzKn2Odn9J+TFy6M7I6Y1VdTa
-nJbPVDkHKoqRkkehT4fzSSW72NYznbJVTPi/NuTsoWLy6hqFxTemkZWf8PcjLhLj
-X236DGBmExrBcFtPyuSV0iS2Nc8vxxzd+XiMUoAkPGmD9EWwU/++5S7HXm9PNrZ2
-QetxthxhIXdnOkIu/hzAFMaj+8ABa4LWmrVBtq1SZmi1hdka2do=
-=gg8r
------END PGP SIGNATURE-----
-
---D6z0c4W1rkZNF4Vu--
 
