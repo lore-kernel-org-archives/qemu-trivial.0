@@ -1,22 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRzZf-0001Vn-Sk
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 11:17:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52632)
+	id 1kRzgQ-0007z5-TS
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 11:24:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRzZe-0001Tf-8b; Mon, 12 Oct 2020 11:17:18 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:35113)
+ id 1kRzgO-0007tZ-JY; Mon, 12 Oct 2020 11:24:16 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:34789)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRzZa-0005F2-Jw; Mon, 12 Oct 2020 11:17:17 -0400
+ id 1kRzgM-0005vz-K6; Mon, 12 Oct 2020 11:24:16 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Moex5-1k8Yuq0HYv-00p50D; Mon, 12 Oct 2020 17:17:09 +0200
-Subject: Re: [PATCH v2] mingw: fix error __USE_MINGW_ANSI_STDIO redefined
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Cc: sw@weilnetz.de, armbru@redhat.com,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20201008165953.884599-1-marcandre.lureau@redhat.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N2VGj-1kL9yo0OVD-013xQ3; Mon, 12 Oct 2020 17:24:09 +0200
+Subject: Re: [PATCH] qom: Fix "typddef" typo
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20201007220255.1170167-1-ehabkost@redhat.com>
+ <20201012144512.GI39408@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <65366aa1-f521-0980-ed63-0fa3daaf6449@vivier.eu>
-Date: Mon, 12 Oct 2020 17:17:06 +0200
+Message-ID: <b6d4e780-116c-af48-863c-1a65a8bc8c2d@vivier.eu>
+Date: Mon, 12 Oct 2020 17:24:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201008165953.884599-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20201012144512.GI39408@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:6UWMvaDFa5rrMed7xRfVYBLwSzJm98Nd8R16mBeuB5moU4Je5aR
- TLPepjnnpWlpVqBWSJGqGWQdabk67RlCpAO4/xa/0ertMG70rz5E7OoyEZuB0J9GL8HkWEe
- ms8x1FlSwKyfoDC1JLTr8BKimduc12LBiaiBn+x0cNSjsmQC7s2KTUbXgyWUwx/Or05gcFX
- dFTK5g3Mi3wb87NRfDIKg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pxqfSUoJtpY=:aqVjE99HcwIc/mI/WjgzSq
- xAHRKzbqmKV2ji3OjT5S5zW5VIiMA139FYcfHnnjugM55Sfnj/5X3ifj12Gk5B1FAYVatXIwp
- eCZbVrlYz0kHBemXj7o2FKUFwuyBKtJD+nsj2Po5dbcRVSGeOJc2U8yQbaGZey2NcI7P8dCYR
- dmFs0yvpeEiMDkxQpDTqkqV3auRgn07INH7ProeL319gsw1Vcxt/8vRoC3HM3OasSKC+YtW26
- KTY1KozGv9BSvCZqzOxzA22C4oh35PbC4TOpp/XBa1AF8MqXKFXDhvCEPTo0b1NGJ1FjTWkH5
- 48ir2wrHQb6kctt056SGgzL3YFfLbTaE+PNXbMLnCrCn3JxTelaF9jQxNFkOgsQDWgqivfCy+
- POxWAPs7iyib91D+SFzoSf7HDHqk0vusKPv/zL4uM5vF31ivvjgEXuesr1sLfiY0aIUM7Iv/2
- RC49UklbWs4pFUWbpc+G4poP6KSVSfPSzkMYMptAWi2Ml5p9Wlm+WZcWLMpAsGIse96T3IHxW
- yZbAPPzb7CVmqa3Jm0eLUrLVWLDPd5e6kGCzGUA+DFym1gY7lBqbGscz2GB7Tduyp022Nmyvq
- TfThS9hQ7KvuUga1AHl/GW9pyBIwJ32K0ggu7lO7iERHo7fss88m+dBXOAQQ8luESJU4Pbi0l
- 7IbUFEW7G3ew50LZS5heqPkhNfPXiejwkF+sxzLDP/iWkB4WNrC4n8tpuOHrlDBgNvUdjQY14
- e98wD9R0cicQWwTe6b9Tmud3hY9TbR+NmsD2DHOCQDSYAGHPkLKae6QkL9bO9PERWu/YAJy8+
- Dbp9u3sr4A3w0PUPQmWsqOw1DSIa592lulr2EV59aPQyQE3r1peK9hDJwDoAQcpwqLL+bcz
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:JaFjnB4NgPFu3rXYFnheWZ3QWjIT7dYbREaVDpRILvsgD5F1ejV
+ 6Ad2SlWlUAFTDGAQ175ZdzuJBmUYAti73R7SRqye7KVmzF35zXeX07tr3iZzgOB0H7uMyeD
+ BP69/MUli4IrISw0dtBgSfhxYiBFO9gNXl1llzpCR80T1sJODB7KjgVT2yy1DjVi78OaJe3
+ 1Hs148bTBnRP1xpXKT1aw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:N1DexPzQnKM=:IOWINbxiZu6LaxmQEPYysh
+ ueSOo6+9hsNDvFT5r7ObKht1ciWUQsx4GHK0Xf9zwH9SpDFbSoYfo7bDFVjRw65AEsOpL0EP+
+ ie+x23lXAF9IhITreq4QXjLFvY4QsmlyjO6M/DcRXvoNs5JLjzdze4PAT3k22yjhiPZgXfvrt
+ x5rCQSF1AsWZ9BXW3Csf0o62MjiutZernkBKTSj6cb08tUZBegrl4AHNmPRcIENdBfFjIAqdY
+ hiVBGv9miDDWQUbyEV+I9r9WeklC6fFiy3EpzySCv5+2Xw8dms31UVVyWNfje26p6rQJfH1bZ
+ z/1L2PJUQIh+GchO4yjm/DGuL6j3M+dyfQ+wOq0191UTDJiS/LbtcZ3AcmrTAUgfEJEkl1OWM
+ drzuN7P2/6qBHrSfFocQoCuAYZncLNgrx9sy9HCqy8xdVN/wjhFfrWOrXoEF5eAdSVhVLkoLg
+ UJFLnEJWJi1jqjin8abs+xmwqdCNrHgpMcacBVuudUKzR9tIHu3yhoiz0gf7ztgDh2VwcdyUT
+ mIyomax+s2nv3FDucE9SspyV9jtq6IKZysougNEnSVPIj6pWFe+Xn2FZ3yVpZwbZt39jMvYB4
+ F3MYdc2Go1vDL7XgtrYP3Y7Zqftr9aba/HCuOjXZB/PGXN10C7v9X0JX2uqIuw6hC1jtFbjXO
+ hKAdL8SdL/D+7V48ThcCoFbg9tpb9Vtb4PjuA8dBLKjcFAkwGvh515RZWI9T/6dbfcKxgZ/Hi
+ TbepTHplviCPoCecYcgTBgKBe1KUV84tAz7TiJcQaivdBcwOQc50Qh0WczdzATm10/8aqpxT0
+ qjDKkvMe0sZej+jbm5ICSfBNzuEr+LDr0xD/IDs8Ivj+jSqCqND56Pq6ZIWHVhEpSgLoYuC
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:20:48
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 11:24:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -108,51 +110,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 15:17:18 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 15:24:16 -0000
 
-Le 08/10/2020 à 18:59, marcandre.lureau@redhat.com a écrit :
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+Le 12/10/2020 à 16:45, Daniel P. Berrangé a écrit :
+> On Wed, Oct 07, 2020 at 06:02:55PM -0400, Eduardo Habkost wrote:
+>> Fix typo introduced in the C11 #ifdef for qemu_max_align_t.  It
+>> never caused any problems because we always compile using
+>> -std=gnu99.
+>>
+>> Fixes: 4c880f363e9e ("qom: Allow objects to be allocated with increased alignment")
+>> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+>> ---
+>>  qom/object.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/qom/object.c b/qom/object.c
+>> index c335dce7e4..125dabd28b 100644
+>> --- a/qom/object.c
+>> +++ b/qom/object.c
+>> @@ -692,7 +692,7 @@ static void object_finalize(void *data)
+>>  
+>>  /* Find the minimum alignment guaranteed by the system malloc. */
+>>  #if __STDC_VERSION__ >= 201112L
+>> -typddef max_align_t qemu_max_align_t;
+>> +typedef max_align_t qemu_max_align_t;
+>>  #else
 > 
-> Always put osdep.h first, and remove redundant stdlib.h include.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->  migration/dirtyrate.c | 3 ++-
->  tests/test-bitmap.c   | 1 -
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
-> index 68577ef250..47f761e67a 100644
-> --- a/migration/dirtyrate.c
-> +++ b/migration/dirtyrate.c
-> @@ -10,8 +10,9 @@
->   * See the COPYING file in the top-level directory.
->   */
->  
-> -#include <zlib.h>
->  #include "qemu/osdep.h"
-> +
-> +#include <zlib.h>
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "qemu/config-file.h"
-> diff --git a/tests/test-bitmap.c b/tests/test-bitmap.c
-> index 2f5b71458a..8db4f67883 100644
-> --- a/tests/test-bitmap.c
-> +++ b/tests/test-bitmap.c
-> @@ -8,7 +8,6 @@
->   * Author: Peter Xu <peterx@redhat.com>
->   */
->  
-> -#include <stdlib.h>
->  #include "qemu/osdep.h"
->  #include "qemu/bitmap.h"
->  
+> Why do we need / have this first part of the #if at all ?  We
+> unconditionally add  -std=gnu99, so surely this has always
+> been dead code and can just be better deleted.
 > 
 
-Applied to my trivial-patches branch.
+I've removed the patch from my queue.
+
+But perhaps it will be needed in the future if we switch to a newer
+standard version?
 
 Thanks,
 Laurent
-
 
