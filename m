@@ -1,51 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRu5z-0000kO-BJ
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 05:26:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37244)
+	id 1kRuQQ-00024Z-Ss
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 05:47:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kRu5x-0000ip-M7; Mon, 12 Oct 2020 05:26:17 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:49290
- helo=mail.default.ilande.uk0.bigv.io)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kRu5w-0006kc-7J; Mon, 12 Oct 2020 05:26:17 -0400
-Received: from host86-158-109-18.range86-158.btcentralplus.com
- ([86.158.109.18] helo=[192.168.1.65])
- by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kRu5t-000452-Vs; Mon, 12 Oct 2020 10:26:17 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
-References: <20201011200112.3222822-1-f4bug@amsat.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <a1181b86-cf4d-1b20-c741-4de6cbe96dc5@ilande.co.uk>
-Date: Mon, 12 Oct 2020 10:26:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRuQP-00023e-B1
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 05:47:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27801)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRuQM-0001QW-R3
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 05:47:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602496042;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DORu/2dEgR15H323oG1TDNnVoQdu2cxlBC0nuYBTL9E=;
+ b=QBn5Puo1gYQ/Cc4Yb5XYPBKRDKql/Y9zNWgWjt7tUEhSOmvle5uhlFJkVC2lMDdgf5QXfe
+ /VaYydMi0xKI2V593I2nWwmRAmFHAacTUhXdRKvpBNjQtUkYOZTQZHCV6Vo35i4GDOFPpz
+ w0zae8k0bE3ZvWkSYUS37DFjH4I+UJY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-235-lvBjJhz-MZqCOti74C1uCw-1; Mon, 12 Oct 2020 05:47:19 -0400
+X-MC-Unique: lvBjJhz-MZqCOti74C1uCw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 54AE91800D42;
+ Mon, 12 Oct 2020 09:47:18 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-22.ams2.redhat.com [10.36.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 343925D9CD;
+ Mon, 12 Oct 2020 09:47:16 +0000 (UTC)
+Subject: Re: [PATCH v2 2/4] Makefile: Require GNU make 3.82+
+To: Roman Bolshakov <r.bolshakov@yadro.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200825202755.50626-1-r.bolshakov@yadro.com>
+ <20200825202755.50626-3-r.bolshakov@yadro.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <1ff85cc3-40dc-98da-fb18-a1b3d134d7dc@redhat.com>
+Date: Mon, 12 Oct 2020 11:47:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201011200112.3222822-1-f4bug@amsat.org>
+In-Reply-To: <20200825202755.50626-3-r.bolshakov@yadro.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.158.109.18
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH] target/sparc/int32_helper: Remove duplicated 'Tag
- Overflow' entry
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.uk0.bigv.io
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 23:52:29
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,35 +77,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 09:26:17 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 09:47:25 -0000
 
-On 11/10/2020 21:01, Philippe Mathieu-Daudé wrote:
-
-> Commit 0b09be2b2f ("Nicer debug output for exceptions") added
-> twice the same "Tag Overflow" entry, remove the extra one.
+On 25/08/2020 22.27, Roman Bolshakov wrote:
+> QEMU build fails with cryptic messages if make is too old:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   Makefile.ninja:2655: *** multiple target patterns.  Stop.
+> 
+> To avoid the confusion it's worth to fail the build right away and print
+> a friendly error message.
+> 
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
 > ---
->  target/sparc/int32_helper.c | 1 -
->  1 file changed, 1 deletion(-)
+>  Makefile | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
-> diff --git a/target/sparc/int32_helper.c b/target/sparc/int32_helper.c
-> index 9a71e1abd87..ba63c739c1e 100644
-> --- a/target/sparc/int32_helper.c
-> +++ b/target/sparc/int32_helper.c
-> @@ -50,7 +50,6 @@ static const char * const excp_names[0x80] = {
->      [TT_EXTINT | 0xd] = "External Interrupt 13",
->      [TT_EXTINT | 0xe] = "External Interrupt 14",
->      [TT_EXTINT | 0xf] = "External Interrupt 15",
-> -    [TT_TOVF] = "Tag Overflow",
->      [TT_CODE_ACCESS] = "Instruction Access Error",
->      [TT_DATA_ACCESS] = "Data Access Error",
->      [TT_DIV_ZERO] = "Division By Zero",
+> diff --git a/Makefile b/Makefile
+> index 81794d5c34..b4ebf3e30f 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -4,6 +4,11 @@ ifneq ($(words $(subst :, ,$(CURDIR))), 1)
+>    $(error main directory cannot contain spaces nor colons)
+>  endif
+>  
+> +ifeq ($(filter undefine,$(value .FEATURES)),)
+> +$(error Unsupported Make version: $(MAKE_VERSION). \
+> +        Please use GNU Make 3.82 or above)
+> +endif
+> +
+>  # Always point to the root of the build tree (needs GNU make).
+>  BUILD_DIR=$(CURDIR)
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-
-ATB,
-
-Mark.
 
