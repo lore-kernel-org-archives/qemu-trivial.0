@@ -1,51 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRxDU-0006HW-4o
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 08:46:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33690)
+	id 1kRxHA-0002Ej-1h
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 08:50:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRxDR-0006DL-Kf; Mon, 12 Oct 2020 08:46:13 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5232 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kRxDO-0000Ky-Os; Mon, 12 Oct 2020 08:46:13 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id EF885F46E000FDB4DF67;
- Mon, 12 Oct 2020 20:46:04 +0800 (CST)
-Received: from [10.174.186.14] (10.174.186.14) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 12 Oct 2020 20:45:58 +0800
-Subject: Re: [PATCH v1 2/8] migration: Don't use '#' flag of printf format
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, <zhengchuan@huawei.com>, Juan Quintela
- <quintela@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- <alex.chen@huawei.com>, <wanghao232@huawei.com>
-References: <1602413863-19513-1-git-send-email-yubihong@huawei.com>
- <1602413863-19513-3-git-send-email-yubihong@huawei.com>
- <CAFEAcA_VGzPsteNKjYkm7PGUn5As5Z+XWLMZq60ph055LqqfrA@mail.gmail.com>
-From: Bihong Yu <yubihong@huawei.com>
-Message-ID: <9d9a11cd-ff11-4192-f72d-0495dda97351@huawei.com>
-Date: Mon, 12 Oct 2020 20:45:41 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRxH8-0002BN-Jt; Mon, 12 Oct 2020 08:50:02 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35264)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRxH6-0000i5-Jl; Mon, 12 Oct 2020 08:50:02 -0400
+Received: by mail-wr1-x441.google.com with SMTP id n15so19063539wrq.2;
+ Mon, 12 Oct 2020 05:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iFs6emz6fGf+xQlicgZNk8cNGLeirUVE2ipQ9bTFfcw=;
+ b=UdBxpfLpqcO6gsLuw7AjHeCoUN8MkW98il5/42IOG8OPQpTPw8M4R/zwcv0ZMeIj4e
+ UY6UpJj2+3Yaisp18iYaF8gNl15rjMiT4ZRxMP7W5DKJxebai7SMZsoSnGxKXFIWCbwb
+ +KlAd73sf3jhMCXSiUnYDHjCJcOGBVvG2jM505n2EpC4UC1PSC7cqTmKFdIPDsjPU9tc
+ Hg10BIV0sogdIgHsehM1krukocI28DV/tpUv48aFQfo3DoriMhcMThlebTGuvwYCJH8m
+ 3TNQU+vjR+1+k2I9eanneHzOj5L67XqAmLq+f39pQkiHU66ttOlEqrwYYFqvXAb/gZOU
+ rFOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=iFs6emz6fGf+xQlicgZNk8cNGLeirUVE2ipQ9bTFfcw=;
+ b=HZaz0icJV+eJ8DN54P7eP30amZLruPwdR46o+/YMBROgHH89JcxaQyC8d3TbLMDFLI
+ GJNI2wXZsRUum71LltU3IA3NBpC++w2BRs/9dADkczS1PNs6qeRoi8NnFwhAXtMOYjEc
+ bOjlqjNeeBSEjm74v3n9LRPL5F7glxxdrjCPgY6lf7rSBwpeLD24jv03330xEEKwVVuc
+ 7jFY/neMAIgGYn0OfWcBQV7UInmUW5TniKKDsgfdI2OQc5JhEsMA3hSE73e0lArTUjpK
+ KJ3v3nG6iFNe6fRMhETAk8v21G2mu+Lv5JiALm2/iHF5ffqBZEVqQ9u1BlxGQyt8Vqfa
+ omhA==
+X-Gm-Message-State: AOAM530Dz9z0KIff1JFLQgjDyoK9JWZhX6FbqZidSbm+UXx6MVjffY1B
+ BTjVp7tD9LrjNle0TQS7Jm3lsV6Qh20=
+X-Google-Smtp-Source: ABdhPJzkPqUkQ1uXLcrzZi6wJc+XcPTs1T76h+i/YCMijhTTitA50sxHBC+r+WLOjkynRu1NOTrjUQ==
+X-Received: by 2002:adf:a551:: with SMTP id j17mr30236535wrb.217.1602506997537; 
+ Mon, 12 Oct 2020 05:49:57 -0700 (PDT)
+Received: from localhost.localdomain
+ (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id p21sm23516472wmc.28.2020.10.12.05.49.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2020 05:49:56 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Max Reitz <mreitz@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Joel Stanley <joel@jms.id.au>, qemu-block@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Kevin Wolf <kwolf@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
+Subject: [PATCH v2 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
+Date: Mon, 12 Oct 2020 14:49:52 +0200
+Message-Id: <20201012124955.3409127-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_VGzPsteNKjYkm7PGUn5As5Z+XWLMZq60ph055LqqfrA@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.14]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 07:12:20
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,61 +85,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 12:46:14 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 12:50:03 -0000
 
-Thank you for your review. OK,I have fixed the problem in v2.
-
-On 2020/10/12 2:19, Peter Maydell wrote:
-> On Sun, 11 Oct 2020 at 14:52, Bihong Yu <yubihong@huawei.com> wrote:
->> @@ -998,7 +998,7 @@ static int block_load(QEMUFile *f, void *opaque, int version_id)
->>                     (addr == 100) ? '\n' : '\r');
->>              fflush(stdout);
->>          } else if (!(flags & BLK_MIG_FLAG_EOS)) {
->> -            fprintf(stderr, "Unknown block migration flags: %#x\n", flags);
->> +            fprintf(stderr, "Unknown block migration flags: %0x\n", flags);
-> 
-> This doesn't look right. "%#x" will print a number in hex with a leading '0x'.
-> To get the same effect without using "#" you need "0x%x" (that is,
-> the format string provides the 0x characters literally).
-> What you've written is '%0x", which is a format string where the '0' is
-> a request to print with zero padding (which is ignored since there's no
-> field width given), so the result is the same as if you'd just said '%x',
-> and there is no '0x' in the output.
-> 
-> $ cat /tmp/zz9.c
-> #include <stdio.h>
-> int main(void) {
->   printf("%#x\n", 42);
->   printf("%0x\n", 42);
->   printf("0x%x\n", 42);
->   return 0;
-> }
-> $ gcc -g -Wall -o /tmp/zz9 /tmp/zz9.c
-> $ /tmp/zz9
-> 0x2a
-> 2a
-> 0x2a
-> 
->>          default:
->> -            error_report("Unknown combination of migration flags: %#x"
->> +            error_report("Unknown combination of migration flags: %0x"
->>                           " (postcopy mode)", flags);
->>              ret = -EINVAL;
->>              break;
->> @@ -3576,7 +3576,7 @@ static int ram_load_precopy(QEMUFile *f)
->>              if (flags & RAM_SAVE_FLAG_HOOK) {
->>                  ram_control_load_hook(f, RAM_CONTROL_HOOK, NULL);
->>              } else {
->> -                error_report("Unknown combination of migration flags: %#x",
->> +                error_report("Unknown combination of migration flags: %0x",
->>                               flags);
->>                  ret = -EINVAL;
->>              }
-> 
-> These two similarly should be "0x%x".
-> 
-> thanks
-> -- PMM
-> .
-> 
+Since v1:=0D
+- Fixed patch #1 subject (Kevin)=0D
+=0D
+In order to use inclusive terminology, rename SSI 'slave' as=0D
+'peripheral', following the resolution Paolo pointed in [*]:=0D
+https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/=0D
+=0D
+Candidate to be merged via the ARM or Trivial trees.=0D
+=0D
+[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/ssi/aspeed_smc: Rename 'max_slaves' variable as 'max_peripherals'=0D
+  hw/ssi: Update coding style to make checkpatch.pl happy=0D
+  hw/ssi: Rename SSI 'slave' as 'peripheral'=0D
+=0D
+ include/hw/misc/max111x.h   |  2 +-=0D
+ include/hw/ssi/aspeed_smc.h |  2 +-=0D
+ include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------=0D
+ hw/arm/spitz.c              | 32 ++++++++++-----------=0D
+ hw/arm/stellaris.c          |  4 +--=0D
+ hw/arm/tosa.c               | 12 ++++----=0D
+ hw/arm/z2.c                 | 14 +++++-----=0D
+ hw/block/m25p80.c           | 14 +++++-----=0D
+ hw/display/ads7846.c        | 12 ++++----=0D
+ hw/display/ssd0323.c        | 12 ++++----=0D
+ hw/misc/max111x.c           | 18 ++++++------=0D
+ hw/sd/ssi-sd.c              | 12 ++++----=0D
+ hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------=0D
+ hw/ssi/pl022.c              |  2 +-=0D
+ hw/ssi/ssi.c                | 48 +++++++++++++++----------------=0D
+ hw/ssi/xilinx_spips.c       |  7 +++--=0D
+ 16 files changed, 152 insertions(+), 148 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D
 
