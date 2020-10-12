@@ -1,24 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kS3Io-0005j2-Os
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 15:16:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49874)
+	id 1kS5DH-0000wm-ER
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 17:18:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kS3In-0005ip-4H; Mon, 12 Oct 2020 15:16:09 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:49247)
+ id 1kS5DG-0000wY-6L; Mon, 12 Oct 2020 17:18:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:49677)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kS3Ik-0001Wm-T5; Mon, 12 Oct 2020 15:16:08 -0400
+ id 1kS5DE-00080N-7F; Mon, 12 Oct 2020 17:18:33 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MnagF-1k0f1g1RTx-00jX54; Mon, 12 Oct 2020 21:15:53 +0200
-Subject: Re: [PATCH] meson.build: drop duplicate 'sparc64' entry
-To: Sergei Trofimovich <slyfox@gentoo.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-References: <823880d6-ec51-e014-bc69-155102e1b43d@vivier.eu>
- <20201012175719.2573367-1-slyfox@gentoo.org>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MgNQd-1jz5ag41Rn-00hv3r; Mon, 12 Oct 2020 23:18:26 +0200
 From: Laurent Vivier <laurent@vivier.eu>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20200914102425.1152962-1-f4bug@amsat.org>
+ <116cc893-74c3-42d7-adbd-0afa1660805b@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
@@ -61,35 +64,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <1c9867d9-6508-f4cf-c1f1-cf6e5ed6bca4@vivier.eu>
-Date: Mon, 12 Oct 2020 21:15:51 +0200
+Subject: Re: [PATCH] hw/rtc/m48t59: Simplify m48t59_init()
+Message-ID: <42432a9d-d350-db62-ee1d-564a5c2538b9@vivier.eu>
+Date: Mon, 12 Oct 2020 23:18:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201012175719.2573367-1-slyfox@gentoo.org>
+In-Reply-To: <116cc893-74c3-42d7-adbd-0afa1660805b@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:m7u1OELGzKMmOaOyJlcpY12wkMbAe0P+yWwzgxFK2g9cTD9pm7z
- CxeBKjEQOiTgHd2CilCpgEfaJAG3rkl7hz8ECScMI2eAzGT+fsuk/zWt2ne7fljQz8e9BVn
- s67eb3U9TXjZPaX66uwTb4VS2LLwJJqEPGsLxJHKbnmzpdUhMyy2f0/7GzCtRAljw4CqXHc
- snLBWMhiQOyA18CgFqfYQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:v7m4GjnJXgk=:ttzHa0CvPq8+oXbDztrqC1
- Negq1tGkpbXsOJyAEmsnl8A+x0+eyobsfxmmzVHgyVWgB2K4A50zJ2XjGO+jHnI6qXCv6v3Iu
- 8iFHxAo3oSspiCGFYyqMGjOtAV2TfOCyjAphorVOZkxTzAujz1wTi8rYtEguNV8JKpWcYVLa1
- 07HpG4izLAByz3+O234LYnAHwcBl/zqP3JqSFwmJ1t6CSnSgrYW2uXLGosT1c3A3TwxpE25Sm
- /qr4Nw4SFrFLwAZcxjpsSp0Qkijdn2+SZ0PVeAdvw8fqcToYK/YCn6igog5lUpGUTIpUh62mR
- KsggQmphjcOu+5McF5llVL90iFlyL2elcjeOCklgaSvlbFyRP9CuVHLdDroRoM+/NDUs3mjkS
- Xa7KFy55H3RoHmb3nHWFN2c8onHFg9IV1dDT+cmfvd0F43xzUFQ54+QjNIYpd9NxDKAp+wHFz
- WdgLmLhEEqbEeQlx5rOv3oP/SFIgDmUfaFdV9MV7hv/oa4V2+q4I6RjsmRPdntzWxfZMxAnIO
- tqLX0mVh+lFW3Y1DjHtJBxMpQfAiJnoHF1x72Y/ve7tHMKSmu3tcMWYvi8/eV3cwncrAEsvG5
- nyBlSZJn0IkqAxrUq68d8MjpBRcnkSJfz48Y7gnzm9JQtLuYI7LUOh9ZQdtztTyv4J7mMJTEr
- tfqmJ40d5hV2x0CDwtA1xKgQo30Z/ik/aQFP3PTCjmJhmbsCU2XMVj1RthdVJ8aOiKVi5bWS7
- EfMgK2VSZUvfw4eVZgIF07yciTOnN8h96NI3i32ZmGGIuN9yYEy6zeOgjdwzFFKz5wQJdqbLc
- HJ4hYls0limgQoga3B31sOhZYVLwTGK3pvBJbIiJ5gx5gY4+mX+2oy9Xz/YJix/kvLsUwhU
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:3MUUx1ZKVe86QG3n9h3k5ydp2MWRzpI1rVLeiUhlAggtoVw7ZCX
+ Lda0TGqNQes31CL3VJfEMVXpgD44WGadcAOh+jmn25hNYb5sZgge85DZ4TkIzVs5zDjP/m2
+ j0T+kNF7TKOKV+GbAf0dE0w39+B/S7/t/Xvi52yuIUNehYi98/SnrybRqEISbVtYbQWTMHh
+ BiGdSFj1eHpgbomyWLJxQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:q701Njh3hyg=:wn54fPzzg2Yz0pKkS7yvS0
+ xURaEoFrjkSXSlymcoazpOdgUCKNVei9ML/Sp85ssg7TBazWYyuoRPi9vpVVVYMJrZD65xA1z
+ RmoZscqJ6rKGAnq0VEQkZNTxVs5n32jssxhZBYw9iGzMl3zTCqfyyMP1/5P/Lpxb36Nq8gieC
+ 1CNdQ0K7a15IKajXnj3uDqr4CXjFywYEzGBGGzm+rQrzF13Z29ywd/esxVS5sF1wooGq0oBwt
+ fUViUiIKZL1mA6q1ffFbSKQHUPyUlcNtqP5wm+bBfdraKEJDWYcIJKXi1cTTjLu30qJaEnyyF
+ mPx5Ad5iHl5/dmwXmp1E9b2RN+dr/4WgnyGTGcnItG2nk6HvdZe6cfOSfjqc+guN6WKYElwiY
+ 1KAU7ew0OkErtMCUkqd3ziSHi49xzfWP2H8upq6btT7eOVJ2ZgI0EtCrhHmr4EORGKuTNL4d6
+ l5iZ9Yq4m27ECPuBqlQ3z3jTv1im9QYPI55Nk4nKBi7kNaQMiwPEN7yeNxb84LuiN0VlqT8+p
+ ++M1piiNHs/plXFjFVdo8h8cyHK9SKXwc+PPsEZNy4HenpAP1GV2RUuPQlCYj/hsUsQxSU0SO
+ Xb3CKnnngWdzBTjbQxIQt56BnHtNChQT0+G/If5Foe1T5VDlu52oBysI1AqGolUaaJJmGe/OT
+ JwFZwOgDRED+Dl3dXcv4J4yFF+ck2MgGb6zcQxJAIElBh3dh9NwwPkXzLs8h3GynOmQtdFglw
+ 7s8G27e4X5dTv36HiM5vq3FWegZipu1cLXhZYDPhjgJErvdayVOYM/0vmtsooOO6b8WAhXZ76
+ cVvcEhkWwONT/GrjYSGO/XIBTN9eDbH33W4HYIdCGRi13Mes0za/rcW/0HrlfbDt5fwepH6
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 14:10:35
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 15:52:16
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -109,35 +113,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 19:16:09 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 21:18:34 -0000
 
-Le 12/10/2020 à 19:57, Sergei Trofimovich a écrit :
-> CC: Laurent Vivier <laurent@vivier.eu>
-> CC: qemu-trivial@nongnu.org
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
-> ---
->  meson.build | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index a02c743794..48e7c56cc1 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -41,7 +41,7 @@ have_block = have_system or have_tools
->  python = import('python').find_installation()
->  
->  supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
-> -supported_cpus = ['ppc', 'ppc64', 's390x', 'sparc64', 'riscv32', 'riscv64', 'x86', 'x86_64',
-> +supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
->    'arm', 'aarch64', 'mips', 'mips64', 'sparc', 'sparc64']
->  
->  cpu = host_machine.cpu_family()
-> 
+Le 30/09/2020 à 13:25, Laurent Vivier a écrit :
+> Le 14/09/2020 à 12:24, Philippe Mathieu-Daudé a écrit :
+>> As the 'io_base' argument of m48t59_init() is unused (set to 0),
+>> remove it to simplify.
+>> To create a device on the ISA bus, m48t59_init_isa() is the
+>> preferred function to use.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/rtc/m48t59.h |  2 +-
+>>  hw/ppc/ppc405_boards.c  |  2 +-
+>>  hw/rtc/m48t59.c         | 10 ++--------
+>>  hw/sparc/sun4m.c        |  2 +-
+>>  hw/sparc64/sun4u.c      |  2 +-
+>>  5 files changed, 6 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+>> index 04abedf3b2b..62297ee0db1 100644
+>> --- a/include/hw/rtc/m48t59.h
+>> +++ b/include/hw/rtc/m48t59.h
+>> @@ -50,7 +50,7 @@ struct NvramClass {
+>>  Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+>>                         int base_year, int type);
+>>  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>> -                   uint32_t io_base, uint16_t size, int base_year,
+>> +                   uint16_t size, int base_year,
+>>                     int type);
+>>  
+>>  #endif /* HW_M48T59_H */
+>> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+>> index 6198ec1035b..93ffee801a3 100644
+>> --- a/hw/ppc/ppc405_boards.c
+>> +++ b/hw/ppc/ppc405_boards.c
+>> @@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
+>>      /* Register FPGA */
+>>      ref405ep_fpga_init(sysmem, 0xF0300000);
+>>      /* Register NVRAM */
+>> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
+>> +    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
+>>      /* Load kernel */
+>>      linux_boot = (kernel_filename != NULL);
+>>      if (linux_boot) {
+>> diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
+>> index 6525206976b..2d6a095c4e4 100644
+>> --- a/hw/rtc/m48t59.c
+>> +++ b/hw/rtc/m48t59.c
+>> @@ -566,7 +566,7 @@ const MemoryRegionOps m48t59_io_ops = {
+>>  
+>>  /* Initialisation routine */
+>>  Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>> -                   uint32_t io_base, uint16_t size, int base_year,
+>> +                   uint16_t size, int base_year,
+>>                     int model)
+>>  {
+>>      DeviceState *dev;
+>> @@ -584,13 +584,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>>          s = SYS_BUS_DEVICE(dev);
+>>          sysbus_realize_and_unref(s, &error_fatal);
+>>          sysbus_connect_irq(s, 0, IRQ);
+>> -        if (io_base != 0) {
+>> -            memory_region_add_subregion(get_system_io(), io_base,
+>> -                                        sysbus_mmio_get_region(s, 1));
+>> -        }
+>> -        if (mem_base != 0) {
 
-Applied to my trivial-patches branch.
+You can't remove the "if ()"...
+
+>> -            sysbus_mmio_map(s, 0, mem_base);
+>> -        }
+>> +        sysbus_mmio_map(s, 0, mem_base);
+>>  
+>>          return NVRAM(s);
+>>      }
+>> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+>> index 947b69d1597..56a0d38f274 100644
+>> --- a/hw/sparc/sun4m.c
+>> +++ b/hw/sparc/sun4m.c
+>> @@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+>>          create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
+>>      }
+>>  
+>> -    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0, 0x2000, 1968, 8);
+>> +    nvram = m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968, 8);
+>>  
+>>      slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cpu_irq, smp_cpus);
+>>  
+>> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+>> index b4aabfc076f..1cc57b030a7 100644
+>> --- a/hw/sparc64/sun4u.c
+>> +++ b/hw/sparc64/sun4u.c
+>> @@ -675,7 +675,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
+>>      pci_ide_create_devs(pci_dev);
+>>  
+>>      /* Map NVRAM into I/O (ebus) space */
+>> -    nvram = m48t59_init(NULL, 0, 0, NVRAM_SIZE, 1968, 59);
+>> +    nvram = m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
+
+... because mem_base is 0 here.
+
+>>      s = SYS_BUS_DEVICE(nvram);
+>>      memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
+>>                                  sysbus_mmio_get_region(s, 0));
+>>
+> 
+> Applied to my trivial-patches branch.
+
+I'm removing it from my branch because it breaks check-qtest-sparc64:
+
+Running test qtest-sparc64: endianness-test
+qemu-system-sparc64: ../../../Projects/qemu/softmmu/memory.c:2398:
+memory_region_add_subregion_common: Assertion `!subregion->container'
+failed.
 
 Thanks,
 Laurent
+
 
 
