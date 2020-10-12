@@ -1,70 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRvhq-0005zq-2u
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 07:09:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34874)
+	id 1kRwJp-0005CP-NY
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 07:48:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRvhn-0005xk-US; Mon, 12 Oct 2020 07:09:27 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34578)
+ id 1kRwJn-00057A-Ft; Mon, 12 Oct 2020 07:48:43 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44454)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRvhm-0003nT-3v; Mon, 12 Oct 2020 07:09:27 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l15so13542220wmh.1;
- Mon, 12 Oct 2020 04:09:25 -0700 (PDT)
+ id 1kRwJl-0000Pw-Tv; Mon, 12 Oct 2020 07:48:43 -0400
+Received: by mail-wr1-x444.google.com with SMTP id t9so18816210wrq.11;
+ Mon, 12 Oct 2020 04:48:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Y1DvR9Wu/fFEDAtZ00ZeWHpKTHUHpqy583395dNRKf8=;
- b=Je350kYAX4WQeU4OWCUPzkPvqqeqy+aJr34LpvZwH8G1HL+TSNHKgjuA2VxmgQxZrA
- XqybaSWHT3aYEC4g6nrZzLko26Cm8bBY/7g5IuJAJXUXEFJDNL/ZcuVEdTqFSXeLHWuG
- sfaSwHzh1pW0j8Zh4AdamT/z6LYOFbjvUKS66v5GaQYIQ1MwiBOOT+onpWdPVraCrcXO
- K1IKHz4+KhqJtxuquuddD5vSPU2S2HbGB6/SURPnCi20GbMvlUxinTMK4UJNJnnlmWEJ
- FpniKBI7RLsjG4w6v1u+GcjTNvujpWRcnLe/nt4cu1E3hTBAfWpuj2q74GxEJdeTp+Le
- hvWA==
+ bh=wk6H6LW7B03MEmC1dnThRIOnlITtkeGE9GcFSrl9Gpw=;
+ b=ErwhKJzyH5QchiirOA+/mNsiJEG7v0ao5UmShFNZJLyB7ftGoyr/cfFlGKNOb9GUFr
+ xCThZchmQrlAnQ7mvT3jdH6kx4qONv7RGgPoC39WenTfTRYErzmQHG0+z8q5HEyDIEQ/
+ 0xCDzYrRbFXfaOz2DPdjGeRsnITK3FLZVtXLNbaaaW9iXk5pxrDXy+Xjl5FFPTZLGKQA
+ qE5xJjboCjjd3WkKm2O9sTGVJDjBTQmRZxx7t+iiMCGGo9zuIKh5E7E14a1CqmrmfJ6P
+ ZzUPXAfdI7zCLT+vDsKL4YxoWTYZp91/wMSx7kmD8U61ORRETC2V7AYMghSRqj+/bn0/
+ sKYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Y1DvR9Wu/fFEDAtZ00ZeWHpKTHUHpqy583395dNRKf8=;
- b=DWIVzlfPDd6q3RBNdg1x+86mMIGObKZX2cnWliSk8DLeazXswy1AFtGMfe60b3vL7m
- g+uW6ptQ1cHdAo23ZPRG2rU30pZrlfE5/wHCEVr5DLk5fbKPrk6d5e44FGmY3BzdyVBI
- P/M7m3PAHPbC32IlqZ0GaaNybxYHHSRjfJH2PAMY7+ddsw6LLM+9yaP58Fja/2biLBzr
- 0ERtodhJ7230HyJFmKaMww+ojXVObAAfyf9SEaCi0x03dpgvZG/hcGKzpcirnCGmxyRT
- u375oqvIWFJmqbj/c/6uHXZzJavnqoIBNrz84guZSt91Oc6+lSaZollZNg4nuBW098sC
- O9GQ==
-X-Gm-Message-State: AOAM530TQqOw6V8/BmlcALqwvvjvGfh/1EAiIkDqGRbHcm659dt7oBYU
- +hLRRp0neGws0J78PJKNHqFKv8ncWKs=
-X-Google-Smtp-Source: ABdhPJxY3sZIjPtEx9D45lbWngsID6uFqo7lsh9iqAly3lzdPCjsXiT3bAD0lh43xUXrMp1fDmfOpg==
-X-Received: by 2002:a7b:c4cb:: with SMTP id g11mr6093613wmk.88.1602500963394; 
- Mon, 12 Oct 2020 04:09:23 -0700 (PDT)
+ bh=wk6H6LW7B03MEmC1dnThRIOnlITtkeGE9GcFSrl9Gpw=;
+ b=Os3wgqD2aa48lGlpGhcCE6P4vYhuMv8xtUA1+yVg5hVbalJ9FMIvDRIKPWHfALFtez
+ uA4B27kGktP+bFjX/cTEJ1eRMdYmzpIQ6xKu7u78sjgAzssuMMCEcJw/90Ny5DQ1Nla1
+ N9rdY9R+Whmtx6SZcykH3VHCYntiJNDJkZ7U+pZ42CGoSaWt5aUsZlIpNCH35M3//kAa
+ kbnKwe0zt3ZvflSkQC1hYcPVbcI97A0ifl1PrLvh5If7VPA85IYkfexNy7c46imws8Ph
+ OrtDODPKhllQnPWoFPJYhbI9XQ4Ul0mSiX7dObmUMVyL86abs6D1ARphccvz47zjLSNj
+ mtmQ==
+X-Gm-Message-State: AOAM532blYk78rO7V+3boqjSyljdy/i0/N8TiOJ9XvNX7l0UGR/ioHW3
+ rPTfP7giRS+WkmPay6hi+47kVH7H9m0=
+X-Google-Smtp-Source: ABdhPJw3zoroa62LapV1i3nMoYy6jspx55eUYatONlPE4JbdggE1OQSlNKvdCQ7ZWJDOhytQijKKNg==
+X-Received: by 2002:a5d:4843:: with SMTP id n3mr6373140wrs.416.1602503319211; 
+ Mon, 12 Oct 2020 04:48:39 -0700 (PDT)
 Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
  [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id o184sm2075334wmo.37.2020.10.12.04.09.22
+ by smtp.gmail.com with ESMTPSA id b189sm21686008wmb.37.2020.10.12.04.48.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Oct 2020 04:09:22 -0700 (PDT)
+ Mon, 12 Oct 2020 04:48:37 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
  stack frame
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 To: David Gibson <david@gibson.dropbear.id.au>,
  Elena Afanasova <eafanasova@gmail.com>
 Cc: qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
  qemu-devel@nongnu.org
 References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
  <20201010060745.GK1025389@yekko.fritz.box>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a329006c-ed11-2f1b-5766-7480c19c0462@amsat.org>
-Date: Mon, 12 Oct 2020 13:09:22 +0200
+ <a329006c-ed11-2f1b-5766-7480c19c0462@amsat.org>
+Message-ID: <ce1e6d92-1eb9-847b-8b3f-e29a23b36639@amsat.org>
+Date: Mon, 12 Oct 2020 13:48:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201010060745.GK1025389@yekko.fritz.box>
+In-Reply-To: <a329006c-ed11-2f1b-5766-7480c19c0462@amsat.org>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -87,57 +88,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 11:09:28 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 11:48:44 -0000
 
-On 10/10/20 8:07 AM, David Gibson wrote:
-> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
->> >From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00 2001
->> From: Elena Afanasova <eafanasova@gmail.com>
->> Date: Fri, 9 Oct 2020 06:41:36 -0700
->> Subject: [PATCH] hw/net: move allocation to the heap due to very large stack
->>   frame
-> 
-> Patch looks fine, but some more details of the motivation would be
-> nice.  I wouldn't have thought that the size of a network packet
-> counted as a "very large" stack frame by userspace standards.
-
-Maybe academia doing research on "super jumbo frames"?
-
-"Super jumbo frames ... increase the path MTU of high-performance
-national research and education networks from 1500 bytes to 9000
-bytes or so, a subsequent increase, possibly to 64,000 bytes"
-
-(https://en.wikipedia.org/wiki/Jumbo_frame#Super_jumbo_frames)
-
-> 
->> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
->> ---
->>   hw/net/spapr_llan.c | 5 +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
+On 10/12/20 1:09 PM, Philippe Mathieu-Daudé wrote:
+> On 10/10/20 8:07 AM, David Gibson wrote:
+>> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
+>>> >From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00 2001
+>>> From: Elena Afanasova <eafanasova@gmail.com>
+>>> Date: Fri, 9 Oct 2020 06:41:36 -0700
+>>> Subject: [PATCH] hw/net: move allocation to the heap due to very 
+>>> large stack
+>>>   frame
 >>
->> diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
->> index 2093f1bad0..581320a0e7 100644
->> --- a/hw/net/spapr_llan.c
->> +++ b/hw/net/spapr_llan.c
->> @@ -688,7 +688,8 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
->>       SpaprVioDevice *sdev = spapr_vio_find_by_reg(spapr->vio_bus, reg);
->>       SpaprVioVlan *dev = VIO_SPAPR_VLAN_DEVICE(sdev);
->>       unsigned total_len;
->> -    uint8_t *lbuf, *p;
->> +    uint8_t *p;
->> +    g_autofree uint8_t *lbuf = NULL;
->>       int i, nbufs;
->>       int ret;
->>   
->> @@ -729,7 +730,7 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
->>           return H_RESOURCE;
->>       }
->>   
->> -    lbuf = alloca(total_len);
->> +    lbuf = g_malloc(total_len);
->>       p = lbuf;
->>       for (i = 0; i < nbufs; i++) {
->>           ret = spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
+>> Patch looks fine, but some more details of the motivation would be
+>> nice.  I wouldn't have thought that the size of a network packet
+>> counted as a "very large" stack frame by userspace standards.
 > 
+> Maybe academia doing research on "super jumbo frames"?
+> 
+> "Super jumbo frames ... increase the path MTU of high-performance
+> national research and education networks from 1500 bytes to 9000
+> bytes or so, a subsequent increase, possibly to 64,000 bytes"
+> 
+> (https://en.wikipedia.org/wiki/Jumbo_frame#Super_jumbo_frames)
 
+The one I was actually looking for is the IPv6 jumbogram:
+
+"An optional feature of IPv6, the jumbo payload option, allows the 
+exchange of packets with payloads of up to one byte less than 4 GiB,
+by making use of a 32-bit length field."
+
+(https://en.wikipedia.org/wiki/Jumbogram)
 
