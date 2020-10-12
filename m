@@ -1,93 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRy8X-00062i-Ry
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:45:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51432)
+	id 1kRyIc-00079T-RM
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:55:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kRy8U-0005zV-Bh
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:45:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46647)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kRy8Q-00007A-F2
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:45:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602510304;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fOefzMy1BDsq2KlMUkuY8d0EYifJ5JTTwdRTwXuLgV8=;
- b=bpgD4m/1Wu51lBij/lYy6ftYCLseks5LtawlNVQGYMh7VcpLr/8eXp0x0gKY5Nn4xJG6Mf
- KLMYWWjKvgS9QOWL75h6op0QXno4P4jTEJ7LxkzRF0vxoVPzM5Amu4zYNJEHiJ0pHdPzbW
- WewDpesfS/cXbj4vZiavmEZOCtscBEU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-86-OhTlkN4COkqmKkjn9kzMag-1; Mon, 12 Oct 2020 09:45:00 -0400
-X-MC-Unique: OhTlkN4COkqmKkjn9kzMag-1
-Received: by mail-wr1-f69.google.com with SMTP id t3so2833684wrq.2
- for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2020 06:45:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=fOefzMy1BDsq2KlMUkuY8d0EYifJ5JTTwdRTwXuLgV8=;
- b=DJ0eeH/sFBChQbsbzZISKHqmAxINEHyKD8nEsK7qztgTG8/lApZRNyWElODLa/eF95
- 2alIlL/3kckfgymFHVwpqfp6BE55CYasVt0kZeNIroJu9A2kYR/7erz0eLPZtPSEIOkw
- zFSDYCMd5/qoTij9xRWjI1kYhOnZkQ6jr70aeRc8+WaYvbNfTwew6CKQDDNmHNtEfz28
- SXIlSM3n1xQnr9nZm4hAarZTNftXBWxD3ceBSioJzleRt9Bt8+9VXE/VV5kN3fBKIwsG
- TztSvQ1FUXUd6uMrGzvFhdHF1Kq3qyykQOomh+4Na6+eu1MSJkFHN6g4y3e3g02ql5dW
- JSgA==
-X-Gm-Message-State: AOAM533jXcIPAVtTujTrcU1fGpmXu6ulywk3Gd33EcSY0oYhCK5eBH1s
- OhgMVuFe154anQDb6tpfuC9XQA6fqb9hWskO+uox2ZDD/nmG/sm9wANrQjLyHZW4tEqXb5QDBFV
- ciSl33+dlOoWJcBdlzQ==
-X-Received: by 2002:adf:c3cd:: with SMTP id d13mr4306583wrg.15.1602510299692; 
- Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxK2oZhKbfelocLEVt0Nm4s7meurcokG+YKDleXlVDtaUCblfv+RG0F8QpYmpSYlHwO58jWUQ==
-X-Received: by 2002:adf:c3cd:: with SMTP id d13mr4306574wrg.15.1602510299510; 
- Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:7ffb:1107:73ba:dbcf?
- ([2001:b07:6468:f312:7ffb:1107:73ba:dbcf])
- by smtp.gmail.com with ESMTPSA id n3sm23520646wmn.28.2020.10.12.06.44.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-To: Thomas Huth <thuth@redhat.com>, David Gibson
- <david@gibson.dropbear.id.au>, Elena Afanasova <eafanasova@gmail.com>
-Cc: qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
- <20201012053001.GD4787@yekko.fritz.box>
- <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
-Date: Mon, 12 Oct 2020 15:45:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kRyIW-000749-1Z; Mon, 12 Oct 2020 09:55:32 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:39018)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kRyIQ-0001YS-3J; Mon, 12 Oct 2020 09:55:29 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 0E74074594E;
+ Mon, 12 Oct 2020 15:55:19 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id E0E53745712; Mon, 12 Oct 2020 15:55:18 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id DF31F745702;
+ Mon, 12 Oct 2020 15:55:18 +0200 (CEST)
+Date: Mon, 12 Oct 2020 15:55:18 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
+cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Paul Durrant <paul@xen.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Huacai Chen <chenhc@lemote.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org, 
+ Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org, 
+ David Gibson <david@gibson.dropbear.id.au>, 
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ Richard Henderson <rth@twiddle.net>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>, 
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH 1/5] hw/pci-host/bonito: Make PCI_ADDR() macro more
+ readable
+In-Reply-To: <20201012124506.3406909-2-philmd@redhat.com>
+Message-ID: <3894edd-a214-3edf-8cbe-3566842e8a4@eik.bme.hu>
+References: <20201012124506.3406909-1-philmd@redhat.com>
+ <20201012124506.3406909-2-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: multipart/mixed;
+ boundary="3866299591-694601815-1602510918=:97629"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -101,23 +68,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 13:45:12 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 13:55:32 -0000
 
-On 12/10/20 12:44, Thomas Huth wrote:
-> I think this is one of the tasks from:
-> 
->  https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
-> 
-> It has been added by Paolo in 2016:
-> 
->  https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
-> 
-> ... so maybe Paolo can comment on the size that has been chosen here...?
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-I used 16K, mostly because it is a nice round number.  8k is too small
-due to PATH_MAX-sized variables.  16k seemed to be plenty and triggered
-in few-enough places that the cleanup is viable.
+--3866299591-694601815-1602510918=:97629
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Paolo
+On Mon, 12 Oct 2020, Philippe Mathieu-Daudé wrote:
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>
+> The PCI_ADDR() macro use generic PCI fields shifted by 8-bit.
+> Rewrite it extracting the shift operation one layer.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> hw/pci-host/bonito.c | 4 ++--
+> 1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+> index a99eced0657..abb3ee86769 100644
+> --- a/hw/pci-host/bonito.c
+> +++ b/hw/pci-host/bonito.c
+> @@ -196,8 +196,8 @@ FIELD(BONGENCFG, PCIQUEUE,      12, 1)
+> #define PCI_IDSEL_VIA686B          (1 << PCI_IDSEL_VIA686B_BIT)
+>
+> #define PCI_ADDR(busno , devno , funno , regno)  \
+> -    ((((busno) << 16) & 0xff0000) + (((devno) << 11) & 0xf800) + \
+> -    (((funno) << 8) & 0x700) + (regno))
+> +    ((((busno) << 8) & 0xff00) + (((devno) << 3) & 0xf8) + \
+> +    (((funno) & 0x7) << 8) + (regno))
 
+Are you missing a << 8 somewhere before + (regno) or both of these are 
+equally unreadable and I've missed something? This seems to be completely 
+replaced by next patch so what's the point of this change?
+
+Regards,
+BALATON Zoltan
+
+>
+> typedef struct BonitoState BonitoState;
+>
+>
+--3866299591-694601815-1602510918=:97629--
 
