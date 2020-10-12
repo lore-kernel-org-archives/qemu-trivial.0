@@ -1,49 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRqTK-0005zx-58
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 01:34:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43770)
+	id 1kRrei-0003Km-R6
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 02:50:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kRqTG-0005vB-0T; Mon, 12 Oct 2020 01:34:06 -0400
-Received: from ozlabs.org ([203.11.71.1]:46897)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kRqTD-0001rB-77; Mon, 12 Oct 2020 01:34:05 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4C8nR918V1z9sT6; Mon, 12 Oct 2020 16:33:57 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1602480837;
- bh=7npcZXfxoQiFV9CiabMxq6WUU2nIGOBoSxVOtkTlxLg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=neJN/YKroZBIdGm+CNE1Jpkh6F7FPvoN8niyQ/+TUGThBuegLfCVsOHw2rG+L3fa4
- lglIQKCzot6O3mPluGWFjpFYk1Uj/UtKmYFT4rN+nrpbEm4bhYsKAqYVK6Xxj48HYY
- 28YNZU7D6pEduWaHscvUiURGFRcvA6SK6s3aTOYE=
-Date: Mon, 12 Oct 2020 16:30:01 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: jasowang@redhat.com, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-Message-ID: <20201012053001.GD4787@yekko.fritz.box>
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kRreh-0003Hn-3T
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 02:49:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48509)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kRree-0004HK-6S
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 02:49:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602485395;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8+zd0PE6T2aczaUdNrh8pOUCwaJ9bS6ZmfN4Ku0UJ9Y=;
+ b=XAXkIhB3Yq0hSEnh/86hSgsh1zCRFmPFx2473mZPkaGP3v0yJrkimqHjRfnI7a/2zVstV3
+ eciZpOhgbyHnBkiV8I6A0IjdglcrLKEQLcBHJqhCDtb075cluXN4VlNghFN2BUa4k2pbSu
+ iiE4yOQgqFkf3TtqLp/POL1k2NN9ZrA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-25-0aQ1k338OhmSZsPRKWMigg-1; Mon, 12 Oct 2020 02:49:53 -0400
+X-MC-Unique: 0aQ1k338OhmSZsPRKWMigg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4AAFF107ACF8;
+ Mon, 12 Oct 2020 06:49:52 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
+ [10.36.112.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C718D19C78;
+ Mon, 12 Oct 2020 06:49:51 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id A81CF17538; Mon, 12 Oct 2020 08:49:50 +0200 (CEST)
+Date: Mon, 12 Oct 2020 08:49:50 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Yonggang Luo <luoyonggang@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v6 0/4] Fixes curses on msys2/mingw
+Message-ID: <20201012064950.rbudmzrcbtub6a6i@sirius.home.kraxel.org>
+References: <20201001173230.829-1-luoyonggang@gmail.com>
+ <89710921-1d64-14fd-f8ce-05ee58f412c5@redhat.com>
+ <20201002124744.whdgh4xtmvifi72y@sirius.home.kraxel.org>
+ <20201002153801.GL2338114@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="L6iaP+gRLNZHKoI4"
+In-Reply-To: <20201002153801.GL2338114@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 01:33:58
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 23:52:29
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -56,95 +84,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 05:34:06 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 06:49:59 -0000
 
+On Fri, Oct 02, 2020 at 04:38:01PM +0100, Daniel P. Berrangé wrote:
+> On Fri, Oct 02, 2020 at 02:47:44PM +0200, Gerd Hoffmann wrote:
+> > On Thu, Oct 01, 2020 at 07:39:33PM +0200, Paolo Bonzini wrote:
+> > > On 01/10/20 19:32, Yonggang Luo wrote:
+> > > > And also convert related configure script to meson.
+> > > > V5-V6
+> > > > Dropping configure: Fixes ncursesw detection under msys2/mingw by convert the=
+> > > > m to meson first.
+> > > > That need the meson 0.56 upstream to fixes the curses detection.
+> > > > Add
+> > > > * configure: fixes indent of $meson setup
+> > > > 
+> > > > Yonggang Luo (4):
+> > > >   configure: fixes indent of $meson setup
+> > > >   curses: Fixes compiler error that complain don't have langinfo.h on
+> > > >     msys2/mingw
+> > > >   curses: Fixes curses compiling errors.
+> > > >   win32: Simplify gmtime_r detection not depends on if  _POSIX_C_SOURCE
+> > > >     are defined on msys2/mingw
+> > > > 
+> > > >  configure                 | 42 ++++-----------------------------------
+> > > >  include/sysemu/os-win32.h |  4 ++--
+> > > >  ui/curses.c               | 14 ++++++-------
+> > > >  util/oslib-win32.c        |  4 ++--
+> > > >  4 files changed, 15 insertions(+), 49 deletions(-)
+> > > > 
+> > > > --=20
+> > > > 2.28.0.windows.1
+> > > > 
+> > > > 
+> > > 
+> > > Looks good (though there is no conversion to meson yet in this version).
+> > > 
+> > > Not trivial, but perhaps Gerd can take it?
+> > 
+> > Sure, series looks good.
+> > 
+> > Can't finish this today due to -ENOTIME and I'm offline next week so
+> > this has to wait a bit in the UI patch queue ...
+> 
+> Patch 2 needs more work I think, as its missing the corresponding
+> configure change.
 
---L6iaP+gRLNZHKoI4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Also the series must be adapted to latest master, auto-rebase didn't work ...
 
-On Sat, Oct 10, 2020 at 08:53:00AM -0700, Elena Afanasova wrote:
-> On Sat, 2020-10-10 at 17:07 +1100, David Gibson wrote:
-> > On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
-> > > > From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00
-> > > > 2001
-> > > From: Elena Afanasova <eafanasova@gmail.com>
-> > > Date: Fri, 9 Oct 2020 06:41:36 -0700
-> > > Subject: [PATCH] hw/net: move allocation to the heap due to very
-> > > large stack
-> > >  frame
-> >=20
-> > Patch looks fine, but some more details of the motivation would be
-> > nice.  I wouldn't have thought that the size of a network packet
-> > counted as a "very large" stack frame by userspace standards.
-> >=20
->=20
-> gcc with wstack-usage warns that stack frame size may be ~65Kbytes
+take care,
+  Gerd
 
-AFAICT, -Wstack-usage takes a parameter giving what size it will
-complain about.  What was that value, and what was the rationale for
-choosing it?
-
->=20
-> > > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> > > ---
-> > >  hw/net/spapr_llan.c | 5 +++--
-> > >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
-> > > index 2093f1bad0..581320a0e7 100644
-> > > --- a/hw/net/spapr_llan.c
-> > > +++ b/hw/net/spapr_llan.c
-> > > @@ -688,7 +688,8 @@ static target_ulong
-> > > h_send_logical_lan(PowerPCCPU *cpu,
-> > >      SpaprVioDevice *sdev =3D spapr_vio_find_by_reg(spapr->vio_bus,
-> > > reg);
-> > >      SpaprVioVlan *dev =3D VIO_SPAPR_VLAN_DEVICE(sdev);
-> > >      unsigned total_len;
-> > > -    uint8_t *lbuf, *p;
-> > > +    uint8_t *p;
-> > > +    g_autofree uint8_t *lbuf =3D NULL;
-> > >      int i, nbufs;
-> > >      int ret;
-> > > =20
-> > > @@ -729,7 +730,7 @@ static target_ulong
-> > > h_send_logical_lan(PowerPCCPU *cpu,
-> > >          return H_RESOURCE;
-> > >      }
-> > > =20
-> > > -    lbuf =3D alloca(total_len);
-> > > +    lbuf =3D g_malloc(total_len);
-> > >      p =3D lbuf;
-> > >      for (i =3D 0; i < nbufs; i++) {
-> > >          ret =3D spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
->=20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---L6iaP+gRLNZHKoI4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+D6dgACgkQbDjKyiDZ
-s5J3Pw//aUEWNttjBHkVuGKgPBmSuetBuLULUQZOMkoiwXYkM8KCaQ0VZPao/Iy5
-WIuaJd3EnWShLlyYFKnLFkiezprXYfGXKdbNlJwonQkqW23Wkdrl40LeAf7eJJzA
-ihEFVAbnYXG9AL8F89cfXBxl+/NPe4tPtELCyUcxDmc68CYhhkMB+4M55zeVz9+A
-/BXb8qk9IkrUo02nlD6MuQuCvLJkFqW+zSTbtx978rncH61l8ToaWELKAO4KBgJv
-t9ylZhAS+H1nKmcfshsQkFekKxUGbnBV2MrSdJYD6Hcnl8sW8mqORnYAB5dgTj93
-rKFneJyp7kueGayUjPraCJqPlElJYrQ17ISw1is4oPMbdin4IWp8fIM1opyPMNmU
-uH62iIQ7f9k7g2kiN6KUGUwr37BqsIkIcKHuB0yZEVrij7xdYkm/L4cM8PyK1zdD
-LL4DGlPYba9bnNX0HGScwiuTqFMNduFxPpeW7nuAKc+zp3rbrZZDmeh5XrShN983
-geT0qn/VWA/UWLcLg9i2q2zJPe9Y7s6Yd4kcU23rPx7jzHT1uY2mJ1y7N0KH8KBS
-d3eO91FrR5Sz7fTa4AwsOzv+PHY4ztUYqSjSV7fCQ3LXW85MQRG5FvZrtJnWFZ0L
-N9q2h3RWQxYniSVCrZ9P2z+r9+W64tDSioasrfErllX5+DPHxCI=
-=0Jkj
------END PGP SIGNATURE-----
-
---L6iaP+gRLNZHKoI4--
 
