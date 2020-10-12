@@ -1,74 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRvKL-00085K-LA
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 06:45:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58086)
+	id 1kRvhq-0005zq-2u
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 07:09:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRvKK-00084X-Fb
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:45:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36690)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRvKD-0000iL-7M
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:45:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602499503;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4DgQyBUKHO9uEFcEOkapjV+Catm7VjAWQNj1RQiFJtk=;
- b=jPy19BjyOpOZd+RyTvVCVNqiuOMSR0YfGPPRAr+owGPVf/I2dLrXOQYS6+7Cu7FnyZfCie
- kwo0cwn+a5AsbdQ/UaO9yxPn0WvqPQ/+9QS+YI2mfieyQO0F63WgVLpc4M3/p79WTV51uX
- ENuZMf8NpAaESa/m63ahYx/5/lmXyBM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-584-ZW2fJnqYOBqhrvNTQZRzJg-1; Mon, 12 Oct 2020 06:45:00 -0400
-X-MC-Unique: ZW2fJnqYOBqhrvNTQZRzJg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74B841868403;
- Mon, 12 Oct 2020 10:44:59 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-22.ams2.redhat.com [10.36.113.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8936C19C78;
- Mon, 12 Oct 2020 10:44:57 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRvhn-0005xk-US; Mon, 12 Oct 2020 07:09:27 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34578)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRvhm-0003nT-3v; Mon, 12 Oct 2020 07:09:27 -0400
+Received: by mail-wm1-x341.google.com with SMTP id l15so13542220wmh.1;
+ Mon, 12 Oct 2020 04:09:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Y1DvR9Wu/fFEDAtZ00ZeWHpKTHUHpqy583395dNRKf8=;
+ b=Je350kYAX4WQeU4OWCUPzkPvqqeqy+aJr34LpvZwH8G1HL+TSNHKgjuA2VxmgQxZrA
+ XqybaSWHT3aYEC4g6nrZzLko26Cm8bBY/7g5IuJAJXUXEFJDNL/ZcuVEdTqFSXeLHWuG
+ sfaSwHzh1pW0j8Zh4AdamT/z6LYOFbjvUKS66v5GaQYIQ1MwiBOOT+onpWdPVraCrcXO
+ K1IKHz4+KhqJtxuquuddD5vSPU2S2HbGB6/SURPnCi20GbMvlUxinTMK4UJNJnnlmWEJ
+ FpniKBI7RLsjG4w6v1u+GcjTNvujpWRcnLe/nt4cu1E3hTBAfWpuj2q74GxEJdeTp+Le
+ hvWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Y1DvR9Wu/fFEDAtZ00ZeWHpKTHUHpqy583395dNRKf8=;
+ b=DWIVzlfPDd6q3RBNdg1x+86mMIGObKZX2cnWliSk8DLeazXswy1AFtGMfe60b3vL7m
+ g+uW6ptQ1cHdAo23ZPRG2rU30pZrlfE5/wHCEVr5DLk5fbKPrk6d5e44FGmY3BzdyVBI
+ P/M7m3PAHPbC32IlqZ0GaaNybxYHHSRjfJH2PAMY7+ddsw6LLM+9yaP58Fja/2biLBzr
+ 0ERtodhJ7230HyJFmKaMww+ojXVObAAfyf9SEaCi0x03dpgvZG/hcGKzpcirnCGmxyRT
+ u375oqvIWFJmqbj/c/6uHXZzJavnqoIBNrz84guZSt91Oc6+lSaZollZNg4nuBW098sC
+ O9GQ==
+X-Gm-Message-State: AOAM530TQqOw6V8/BmlcALqwvvjvGfh/1EAiIkDqGRbHcm659dt7oBYU
+ +hLRRp0neGws0J78PJKNHqFKv8ncWKs=
+X-Google-Smtp-Source: ABdhPJxY3sZIjPtEx9D45lbWngsID6uFqo7lsh9iqAly3lzdPCjsXiT3bAD0lh43xUXrMp1fDmfOpg==
+X-Received: by 2002:a7b:c4cb:: with SMTP id g11mr6093613wmk.88.1602500963394; 
+ Mon, 12 Oct 2020 04:09:23 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id o184sm2075334wmo.37.2020.10.12.04.09.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2020 04:09:22 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
  stack frame
 To: David Gibson <david@gibson.dropbear.id.au>,
  Elena Afanasova <eafanasova@gmail.com>
 Cc: qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ qemu-devel@nongnu.org
 References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
  <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
- <20201012053001.GD4787@yekko.fritz.box>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
-Date: Mon, 12 Oct 2020 12:44:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a329006c-ed11-2f1b-5766-7480c19c0462@amsat.org>
+Date: Mon, 12 Oct 2020 13:09:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201012053001.GD4787@yekko.fritz.box>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20201010060745.GK1025389@yekko.fritz.box>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,41 +87,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 10:45:12 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 11:09:28 -0000
 
-On 12/10/2020 07.30, David Gibson wrote:
-> On Sat, Oct 10, 2020 at 08:53:00AM -0700, Elena Afanasova wrote:
->> On Sat, 2020-10-10 at 17:07 +1100, David Gibson wrote:
->>> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
->>>>> From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00
->>>>> 2001
->>>> From: Elena Afanasova <eafanasova@gmail.com>
->>>> Date: Fri, 9 Oct 2020 06:41:36 -0700
->>>> Subject: [PATCH] hw/net: move allocation to the heap due to very
->>>> large stack
->>>>  frame
->>>
->>> Patch looks fine, but some more details of the motivation would be
->>> nice.  I wouldn't have thought that the size of a network packet
->>> counted as a "very large" stack frame by userspace standards.
->>>
->>
->> gcc with wstack-usage warns that stack frame size may be ~65Kbytes
+On 10/10/20 8:07 AM, David Gibson wrote:
+> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
+>> >From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00 2001
+>> From: Elena Afanasova <eafanasova@gmail.com>
+>> Date: Fri, 9 Oct 2020 06:41:36 -0700
+>> Subject: [PATCH] hw/net: move allocation to the heap due to very large stack
+>>   frame
 > 
-> AFAICT, -Wstack-usage takes a parameter giving what size it will
-> complain about.  What was that value, and what was the rationale for
-> choosing it?
+> Patch looks fine, but some more details of the motivation would be
+> nice.  I wouldn't have thought that the size of a network packet
+> counted as a "very large" stack frame by userspace standards.
 
-I think this is one of the tasks from:
+Maybe academia doing research on "super jumbo frames"?
 
- https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
+"Super jumbo frames ... increase the path MTU of high-performance
+national research and education networks from 1500 bytes to 9000
+bytes or so, a subsequent increase, possibly to 64,000 bytes"
 
-It has been added by Paolo in 2016:
+(https://en.wikipedia.org/wiki/Jumbo_frame#Super_jumbo_frames)
 
- https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
-
-... so maybe Paolo can comment on the size that has been chosen here...?
-
- Thomas
+> 
+>> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+>> ---
+>>   hw/net/spapr_llan.c | 5 +++--
+>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
+>> index 2093f1bad0..581320a0e7 100644
+>> --- a/hw/net/spapr_llan.c
+>> +++ b/hw/net/spapr_llan.c
+>> @@ -688,7 +688,8 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
+>>       SpaprVioDevice *sdev = spapr_vio_find_by_reg(spapr->vio_bus, reg);
+>>       SpaprVioVlan *dev = VIO_SPAPR_VLAN_DEVICE(sdev);
+>>       unsigned total_len;
+>> -    uint8_t *lbuf, *p;
+>> +    uint8_t *p;
+>> +    g_autofree uint8_t *lbuf = NULL;
+>>       int i, nbufs;
+>>       int ret;
+>>   
+>> @@ -729,7 +730,7 @@ static target_ulong h_send_logical_lan(PowerPCCPU *cpu,
+>>           return H_RESOURCE;
+>>       }
+>>   
+>> -    lbuf = alloca(total_len);
+>> +    lbuf = g_malloc(total_len);
+>>       p = lbuf;
+>>       for (i = 0; i < nbufs; i++) {
+>>           ret = spapr_vio_dma_read(sdev, VLAN_BD_ADDR(bufs[i]),
+> 
 
 
