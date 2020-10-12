@@ -1,22 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRyyD-00043M-AQ
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:38:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38960)
+	id 1kRyzR-0005ZK-6u
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:39:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyyC-00041o-7z; Mon, 12 Oct 2020 10:38:36 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:48011)
+ id 1kRyzP-0005WW-B2; Mon, 12 Oct 2020 10:39:51 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:39351)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyy9-0007is-3n; Mon, 12 Oct 2020 10:38:35 -0400
+ id 1kRyzN-0007sC-Kj; Mon, 12 Oct 2020 10:39:51 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MD9CZ-1kb1Va33Td-009605; Mon, 12 Oct 2020 16:38:27 +0200
-Subject: Re: [PATCH] block/blkdebug: fix memory leak
-To: Elena Afanasova <eafanasova@gmail.com>, kwolf@redhat.com,
- mreitz@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mysa4-1kFPv41i0g-00vzP3; Mon, 12 Oct 2020 16:39:40 +0200
+Subject: Re: [PATCH 1/2] hw/char/serial: remove duplicate .class_init in
+ serial_mm_info
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org, Anup Patel <anup.patel@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20201009113843.60995-1-lvivier@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -60,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <d1eb7b56-cbfe-9a96-f7f5-95bea795b96a@vivier.eu>
-Date: Mon, 12 Oct 2020 16:38:26 +0200
+Message-ID: <ba8a3b47-c1d7-b4dc-7a0e-e59848833688@vivier.eu>
+Date: Mon, 12 Oct 2020 16:39:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
+In-Reply-To: <20201009113843.60995-1-lvivier@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:y8nG3MOecPuxNQwCxsxrb2zPgEUYunT60gMIPv0RdeMf+2JShko
- uYIH6WXZnA0H0Q6woSg2JYjaaOgaD4QijFULxkOAJGtn4O3MIbWQ5/PruhVGC2KSY3eGNpn
- vNeWjoTPi31Xi0rWFRGXX2mcdhHL4N4pIq+d1hOiC2X/wegazF2Gob8Ez6W44lERatZY7PZ
- KnRtrk+5EACJqUskzVcIA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZBiOEF2/QCs=:qyqxMIxupldjGaL7uAMJO+
- Nm3WwTsAH3ngXC8MDAdsSyhHTMkzWmyFSHya7I8sC3vG+mmMuSZ0wJLANTjq3xM5SvuJKWh8K
- PZvRlPgxp6KSUgHIJSwERD52ljc21SNFezU2HZtNtUuqLQC2WpSor2WrReH9ayaNpO/75/L31
- ZafGFoB+b8AWSnYthHeyWS9FxQMjR++hIr7IQcpj92EhBRw0wANpJyBhyuFFcSmrFQx1TPVDA
- lmO/9LFL4DPsqG8d9wzV6nMqzk3iJmegrJQdYYk5rYOXZLW0r8wYN4N9dvNzJflZABW3SPRRs
- lylork31qukWdDAPsmeQ8HlEIwq7piHI1/dQK0TO2+E5Bx+ETQymyhzHT6zvRwj5DM2SQ/WZ2
- 88yHP4W8JzmGDCDtaDZBhH+AGH0hbZhV6vTJnoIwwWC/3Pqd0mzsRbCCo3tYc/UjQmlgV8JkT
- kjG//KsAO23H/CKBIK+CnORsosLOD1AgbQV9n+L6i7vQTHLuBcnt7ZgmV9gsJxcG1gWFUZOiy
- uaUFywVZUt+D3RqmesHpNrgBvRhdKFh/SxwCVv3ZO/UHWRY+UKrbMeWkc1zb9DTEbQfmZR/x8
- uxnwWPekEKS8OgE/3Yu3quf3twXQsLR1JVVb/ifffYPp8EYxgMibY/ElXJf00vsuS1cAJV5oi
- WwLgSEX3xvE97TwqT+QhKk5D5yxij5DZwEx1zkj/XOVosijzDoJ3Se2QGnbrDiK8HMhJ1Awrt
- OmKk43patda0Own8Oy2ZBj8A8Ll0FE7Cr4q7SClwr3Dl78kZq2sMfHni73hjJr5QEPLjhEik3
- 8EUHyNqQ9HdjhpZEaDMbvwpwNd/ZCdwTTDIG8+mFYWeReoZewPRxxzNMbQ08cVCNs+hijwk
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IUljwxNvBKcVPPaaAFPlsvZYhdvxr7hDuA/juslhlGgj+/Yr2JZ
+ C4Tw1D066Eo0u2X/E5A0yBLQnKSf+SInH7fJSGiukQJ+9qrNMg4QieY0tjXpmTReJHPuhgp
+ Q/540OwO397S0cpxEKaVcCWJH/bhvERG7KaY/h79y6rjGbVrJiC3lSPcctWz4gdEw0Y6JNq
+ T24+XjRAdDS/O5rs+SuJQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:E+zD7A4LLZ8=:y5H3qot4JXgbo5V3XQ4qmj
+ CR+gAkAwwamxu76JDCNlsmzoV0D7xwEXr7g5dybq+t+bWrWg1h+uGtc1czhR3mElHcypJy5TI
+ B0mB97n69ZdumtBMankm7yzu8yl1wU1O5gyPxmi21e7IoTUNnM+J/CRaa4MEoxOs8GBiNBBLZ
+ omkv7HkmIj1Rh4gbGdUkiT3yAARNShfe9Z0LfkedEefZXDuxlseGcuaGwzj2ZseF/p8M31wWR
+ ArjX7P+v4brrA3C79VegPnT1JcNc798Bf5+I86O5uK2N5v+ZKZ5XnxTI7KPLizAg9tP1cXPUG
+ lC1A+8KJL6lJnqHCNsHY/lj5XFJh2xoSr5o5+b1opRmbnKFyaL0O3lfgnEDdWki/qelbF2n/H
+ eOGQ+73vM0fRhGLdBdPJDSj6uXFIezSBgUhDNanSK7FLg9qCsSTd9jx8QY2cca6WMRn538b69
+ fsA6RHGsAYjqL3rLkLMzDsYbMvpVcYS/6N/sr5aTRRPKG9ysJgMIonvgrtEwSY/wz0zJwjCfY
+ w8P2mibHbAGwW14jrlx5VgTmjwUdSFgj+hDHfRDtoeybb+CxPnLjaE4v7ujzXYPaJcPiuPKPb
+ IN38Z7X9B+xsq4jNcI/tRGMlm9Bdp0IPp/Edo1kXHpRU2T0uSz4UOQd3pezExa3qtnnJRZnzc
+ UnObYn2TgT5M7xTQiuzuOFo8ztQV8tITotCW2rM53C+Zk397pSN9zPhoOu0DwDoc33CfWGhSt
+ gdlV/SMw40wCPNBzb9TB7pT+1UwC7ZHaef7Ig76m5gRHe3xlpvq6zxLhpvS2lHYDwmx3H2ZXY
+ EndQz3hlnnO2NZAqSp3L8DchCG2MTcxpCEBCMF+QrpJdun55u2Wsq+591zhXd8RanfZHmbb
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:20:48
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:12:41
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -108,28 +112,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 14:38:36 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 14:39:51 -0000
 
-Le 09/10/2020 à 21:09, Elena Afanasova a écrit :
-> Spotted by PVS-Studio
+Le 09/10/2020 à 13:38, Laurent Vivier a écrit :
+> .class_init is already set to serial_mm_class_init.
 > 
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> Remove the duplicate entry.
+> 
+> Fixes: 17fd1a6490b1 ("serial-mm: add "regshift" property")
+> Cc: marcandre.lureau@redhat.com
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 > ---
->  block/blkdebug.c | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/char/serial.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/block/blkdebug.c b/block/blkdebug.c
-> index eecbf3e5c4..54da719dd1 100644
-> --- a/block/blkdebug.c
-> +++ b/block/blkdebug.c
-> @@ -215,6 +215,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Error **errp)
->                                   BLKDEBUG_IO_TYPE__MAX, &local_error);
->          if (local_error) {
->              error_propagate(errp, local_error);
-> +            g_free(rule);
->              return -1;
->          }
->          if (iotype != BLKDEBUG_IO_TYPE__MAX) {
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index 4386adabd466..97f71879ff2a 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -1120,7 +1120,6 @@ static const TypeInfo serial_mm_info = {
+>      .class_init = serial_mm_class_init,
+>      .instance_init = serial_mm_instance_init,
+>      .instance_size = sizeof(SerialMM),
+> -    .class_init = serial_mm_class_init,
+>  };
+>  
+>  static void serial_register_types(void)
 > 
 
 Applied to my trivial-patches branch.
