@@ -1,24 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRzgQ-0007z5-TS
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 11:24:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54036)
+	id 1kRzoI-000598-G0
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 11:32:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRzgO-0007tZ-JY; Mon, 12 Oct 2020 11:24:16 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:34789)
+ id 1kRzoH-00058s-4m; Mon, 12 Oct 2020 11:32:25 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:42049)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRzgM-0005vz-K6; Mon, 12 Oct 2020 11:24:16 -0400
+ id 1kRzoF-00076J-A7; Mon, 12 Oct 2020 11:32:24 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N2VGj-1kL9yo0OVD-013xQ3; Mon, 12 Oct 2020 17:24:09 +0200
-Subject: Re: [PATCH] qom: Fix "typddef" typo
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20201007220255.1170167-1-ehabkost@redhat.com>
- <20201012144512.GI39408@redhat.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MTAW9-1kuDdB0Lnz-00UdDF; Mon, 12 Oct 2020 17:31:42 +0200
+Subject: Re: [PATCH] migration/block-dirty-bitmap: fix uninitialized variable
+ warning
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: fam@euphon.net, ganqixin@huawei.com, vsementsov@virtuozzo.com,
+ zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org, quintela@redhat.com,
+ eblake@redhat.com, dgilbert@redhat.com, mreitz@redhat.com,
+ stefanha@redhat.com, Euler Robot <euler.robot@huawei.com>, jsnow@redhat.com
+References: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b6d4e780-116c-af48-863c-1a65a8bc8c2d@vivier.eu>
-Date: Mon, 12 Oct 2020 17:24:05 +0200
+Message-ID: <2b2bc826-0785-66e2-3515-b98abfac26ca@vivier.eu>
+Date: Mon, 12 Oct 2020 17:31:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201012144512.GI39408@redhat.com>
+In-Reply-To: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JaFjnB4NgPFu3rXYFnheWZ3QWjIT7dYbREaVDpRILvsgD5F1ejV
- 6Ad2SlWlUAFTDGAQ175ZdzuJBmUYAti73R7SRqye7KVmzF35zXeX07tr3iZzgOB0H7uMyeD
- BP69/MUli4IrISw0dtBgSfhxYiBFO9gNXl1llzpCR80T1sJODB7KjgVT2yy1DjVi78OaJe3
- 1Hs148bTBnRP1xpXKT1aw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:N1DexPzQnKM=:IOWINbxiZu6LaxmQEPYysh
- ueSOo6+9hsNDvFT5r7ObKht1ciWUQsx4GHK0Xf9zwH9SpDFbSoYfo7bDFVjRw65AEsOpL0EP+
- ie+x23lXAF9IhITreq4QXjLFvY4QsmlyjO6M/DcRXvoNs5JLjzdze4PAT3k22yjhiPZgXfvrt
- x5rCQSF1AsWZ9BXW3Csf0o62MjiutZernkBKTSj6cb08tUZBegrl4AHNmPRcIENdBfFjIAqdY
- hiVBGv9miDDWQUbyEV+I9r9WeklC6fFiy3EpzySCv5+2Xw8dms31UVVyWNfje26p6rQJfH1bZ
- z/1L2PJUQIh+GchO4yjm/DGuL6j3M+dyfQ+wOq0191UTDJiS/LbtcZ3AcmrTAUgfEJEkl1OWM
- drzuN7P2/6qBHrSfFocQoCuAYZncLNgrx9sy9HCqy8xdVN/wjhFfrWOrXoEF5eAdSVhVLkoLg
- UJFLnEJWJi1jqjin8abs+xmwqdCNrHgpMcacBVuudUKzR9tIHu3yhoiz0gf7ztgDh2VwcdyUT
- mIyomax+s2nv3FDucE9SspyV9jtq6IKZysougNEnSVPIj6pWFe+Xn2FZ3yVpZwbZt39jMvYB4
- F3MYdc2Go1vDL7XgtrYP3Y7Zqftr9aba/HCuOjXZB/PGXN10C7v9X0JX2uqIuw6hC1jtFbjXO
- hKAdL8SdL/D+7V48ThcCoFbg9tpb9Vtb4PjuA8dBLKjcFAkwGvh515RZWI9T/6dbfcKxgZ/Hi
- TbepTHplviCPoCecYcgTBgKBe1KUV84tAz7TiJcQaivdBcwOQc50Qh0WczdzATm10/8aqpxT0
- qjDKkvMe0sZej+jbm5ICSfBNzuEr+LDr0xD/IDs8Ivj+jSqCqND56Pq6ZIWHVhEpSgLoYuC
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:XbFYmENONU/6Mm1HMrD1Nm5nCTRkVuxTRVByzJfzH8LhrASxkJg
+ IiSfXJ/DETmQ4eNwGX8dwWxYj+5XD4akPg993q8slJwl5iP2FF26GGYlS83r3fijlAEzFnZ
+ riRrIhBeFNLrPgSLKPWDA6dif6Uc9VBYZ/4xHDikKObP74AXc6Iw5F+G7qEV67TXdXsEfPs
+ PeB3vjiyVLi8MoJMl3Y5A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7z93bNTcxkw=:uy/l1roNaQbJOk+YMB1Kat
+ CTlDwO+RlSsVVv8WmYYNT745VvxQdRqMgPYjA7uvOn4yDZMrQZey19+kaksp+9CCPoJ4IeJbt
+ qpAz9/SS+XhsZe55qTRfffjzvfKdDVr88QYg8kSLJqiRD+25083kRsDGf/3OaIlIE3acHlcHy
+ RNo5Mh7/ZrkwsdBao2oVjSNEnMyycdqJw/SSgsmOvXES3WW6Ds0TYlpm4zCJB1gcWk0gditoI
+ STVpwUO0x3JCAceNRMSebhLDdfaQg4SIrNahAoTAKPs0MXn7VmQo0b4C4rXS3Zw7GpBy8jOsd
+ h7mbZRKco6dIg43eWEJGCBwizbFMwrHnctYhbQJlJbz5HdE+Pfcu7ajTjkwWkc5mgNjj4+8wq
+ kFgXgZ4aDcG5iha88j3Rwfq4Wo2sZDXtgCltetLCBIOL2PiF8rvy/AEHzedpzX9OcYSiYMKBK
+ rH7ihWN3/4N7SLJGWUhiXYp0Ep8IOQI92eL57BYnHDF2pVd6Cv4CCBwuhd8Depi6sr9hxNEFA
+ p8mwlNeE5jswNtMMoe+lcWGsg+/AjsEL8Crqx22k4S2GibzGRepdDOwt1hc/dLadvrM5Dc0tb
+ babFqc32SifjqyztHpp5oPXxWE9lxvO7PVSo2D5OGtXSzvVNsiC8ZAVGLld7LIY8eu1xJUijH
+ XYdIZOn6pPt1BsWsovQ+c7Lq0QdtiXQGwFEgAD0qmhnuOS4ww+tbKq2R6Bd+sB3B+IiJhCiqo
+ tO1QCydoxGLgDsLOoPeiYNvrq8nql+Gvf/JmAqkYAS8gnwZVoUh2CC9ewmVG0JarRFMBdsw16
+ Oxd0lIsntSy9gRZfW3SMT1Zemxr2wVZhF85OxB1hhAiJrO5FN3cj0S+ubP6IXOUWke60Wh5
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 11:24:12
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:16:52
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -110,41 +112,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 15:24:16 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 15:32:25 -0000
 
-Le 12/10/2020 à 16:45, Daniel P. Berrangé a écrit :
-> On Wed, Oct 07, 2020 at 06:02:55PM -0400, Eduardo Habkost wrote:
->> Fix typo introduced in the C11 #ifdef for qemu_max_align_t.  It
->> never caused any problems because we always compile using
->> -std=gnu99.
->>
->> Fixes: 4c880f363e9e ("qom: Allow objects to be allocated with increased alignment")
->> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
->> ---
->>  qom/object.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/qom/object.c b/qom/object.c
->> index c335dce7e4..125dabd28b 100644
->> --- a/qom/object.c
->> +++ b/qom/object.c
->> @@ -692,7 +692,7 @@ static void object_finalize(void *data)
->>  
->>  /* Find the minimum alignment guaranteed by the system malloc. */
->>  #if __STDC_VERSION__ >= 201112L
->> -typddef max_align_t qemu_max_align_t;
->> +typedef max_align_t qemu_max_align_t;
->>  #else
+Le 10/10/2020 à 13:07, Chen Qun a écrit :
+> This if statement judgment is redundant and it will cause a warning:
 > 
-> Why do we need / have this first part of the #if at all ?  We
-> unconditionally add  -std=gnu99, so surely this has always
-> been dead code and can just be better deleted.
+> migration/block-dirty-bitmap.c:1090:13: warning: ‘bitmap_name’ may be used
+>  uninitialized in this function [-Wmaybe-uninitialized]
+>              g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
+>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+>  migration/block-dirty-bitmap.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/migration/block-dirty-bitmap.c b/migration/block-dirty-bitmap.c
+> index 5bef793ac0..e09ea4f22b 100644
+> --- a/migration/block-dirty-bitmap.c
+> +++ b/migration/block-dirty-bitmap.c
+> @@ -1084,9 +1084,7 @@ static int dirty_bitmap_load_header(QEMUFile *f, DBMLoadState *s,
+>              } else {
+>                  bitmap_name = s->bitmap_alias;
+>              }
+> -        }
+>  
+> -        if (!s->cancelled) {
+>              g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
+>              s->bitmap = bdrv_find_dirty_bitmap(s->bs, s->bitmap_name);
+>  
 > 
 
-I've removed the patch from my queue.
-
-But perhaps it will be needed in the future if we switch to a newer
-standard version?
+I don't think it's correct as "cancel_incoming_locked(s)" can change the
+value of "s->cancelled".
 
 Thanks,
 Laurent
