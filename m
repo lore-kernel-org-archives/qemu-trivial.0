@@ -1,21 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRyjn-0002gR-3Q
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:23:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34604)
+	id 1kRynQ-00041v-Em
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:27:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyjl-0002eg-Gt; Mon, 12 Oct 2020 10:23:41 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:41633)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1kRynO-00040D-IZ
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 10:27:26 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:54651)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyjj-0005cO-MQ; Mon, 12 Oct 2020 10:23:41 -0400
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1kRymk-00063m-MJ
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 10:27:26 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
  (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M2wbS-1kT5CN1M32-003MTk; Mon, 12 Oct 2020 16:23:35 +0200
-Subject: Re: [PATCH] hw/pci: Fix typo in PCI hot-plug error message
-To: Julia Suvorova <jusual@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20201006133958.600932-1-jusual@redhat.com>
+ 1Miqzy-1jwEOb48Em-00esN6; Mon, 12 Oct 2020 16:26:34 +0200
+Subject: Re: [PATCH] meson.build: drop duplicate 'sparc64' entry
+To: Sergei Trofimovich <slyfox@gentoo.org>, qemu-trivial@nongnu.org
+References: <20201006221827.1682106-1-slyfox@gentoo.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -59,35 +58,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c0ab52bd-82a9-e85e-4598-5251c91c073a@vivier.eu>
-Date: Mon, 12 Oct 2020 16:23:34 +0200
+Message-ID: <823880d6-ec51-e014-bc69-155102e1b43d@vivier.eu>
+Date: Mon, 12 Oct 2020 16:26:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201006133958.600932-1-jusual@redhat.com>
+In-Reply-To: <20201006221827.1682106-1-slyfox@gentoo.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IROZWIPEJ9i6h3KSYkKhsBol1CHpphIXyw5PG/OtTbWccZsHAMl
- d+F53nUT28zKAyAHqa+GgxuqOzF1FBIH7XrQSe+F5UusToLD2sAiSvRyUmNlmJwMQV4sGIy
- 5wIdVHeHmmZGRn33RRtstTx4RYs95J+ZHeWUEzbrsEMHBTewXI/3MVz+3B+FZ+H7OS89rEf
- /H0XtI7OuQQHfWaHrmD7g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jZWPemJoo5Y=:yrm4gDG2nK/bTTm6NFuEuz
- Tfpb1RXxOT0MoYlTNbOziX1RVobUIGeNZ7106Hi+QuufqAuIsI1IhaJFJWkv2dUjLIh/u1qgy
- 6AI6bHixPKUeuodtuUmC4lXDgBVni+b9pUHToDYsSPNqp2DZ1ZupjncqRDwOLZba+Ar116cOy
- p0VOycWopIICd07jehcSTrNsygxQowvkuVDIGT/wUhCZWO+++b0dDb2Ss7b5tFyXIeaJx6+k0
- sizNkwC4hKnbGGUo7FdBshKhg71JntoKAjQbFB9UXKr7KdnK9WG0kO/K72qIMEmf58r6y5JSM
- 7fMqnRxU+4pMAiKnr0AcAwP2xbVYMZYjGN11+npdGTYyqlnRTjHHi7yL4rzixgF4RfyZY26x/
- uM0QuFUoQMwj0HG/+7WvPe/jVoyvxTRomu2c6baiX0AYzL5Ejy2O4DdMIFLmOZ7Br0hjL/Tay
- 8vfvHtTPut/7UolhERSpWuZvQ/YtX2hozwjxwX+ToJh/KdGCV/AG0XBUa8MND7FjcZQdnGIWv
- EnGTGa0RULLftdfb/Nk3bseRq4oXbKzw/vunpHF8i6pq0CxT6CRwSq571u93PLygEEV+gNQt6
- iiPa1fRwINqfx3U4bxqBVV5OPleLE01anG1p4r7eJFxp2rcGQeHVOuvKzWsKRivoejle+E0Wn
- D2S5Y8FkazHG3FRknEJtutJvksCqql4dW929yoaho2pyLjMyIE8UCRV7/8BJqjBUrEn8Ll4Yk
- pb060QppQutU55X9zYF4Cg+e9zBW/d+uR+3x8EuP+6uNbNNhj7jfS7KX9CAwkKBr9YE+1vc/h
- 2HNOyWf9A6rx5rN7bmdmuM635c3J2C91P6nqjnur1BiZ1dCecNsYv0fsU5G6D2LzVY3fDLY
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:L/3exJsVBcgv8At5Ezl0Zb/2O2MrcJJolescVv5p8q9G2owW9KX
+ 3KFbKb/s+IMQqN3q3X6mTBeLNhabnbeJazoAbZS9z0pcASNWhGuLS5T76Zqohh9/VcHYaIx
+ 0+FEDfXqmLtJ8VGF7eSgY6hVQVnZj36L57eTsz5se8bRwKnHxwvQCD1fiAJ6tFaydIkNDja
+ 1cMCLYCPX58DzJIiyql1g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sZFu2xs18bA=:TLkGEIYzFqQAH3HwRjryqs
+ fIG7K1Nu8lA1xDBRvi2iapmEAW7cDXeFZuQZK5E4XWwear0jD+1aq9PRp4tB+FlP08So3jzpM
+ 05x5DjR7jEUuTVJfQd4n0cwNbpwD0oP0dzq7EZeLnMHS75Pqpx8oZRWtpvaNGhfoI1YbKrSKk
+ shjQEl5xJnXQMMdK4nyzD3t9e/L0pXM3QQRmjgP4lw6pobWIMwhkyETi5x7g7YbjmtUlpJvom
+ ueW2255qWPQnAvE451DnOTjwHxohIVL0WntaoQXXY/oI1BiDh//cLzmRdYD5vlmyyjYRDGcIz
+ FQUz+Mr9N/WfkRHW3i5ytpM5wrc7GyA9ioIK1ewGwLWL8ScgTFPvQb4ooaNs4FVaCRDEy93tt
+ kIsflrCJ0sIzzCfGkIfHgmzWgFGmcpLsZiHYNr0QCSXiy8erMXkHLqZJBAiJWo9c4u7MJq9Dv
+ znFOUJliFoDe/nBIy7YHw9OLxK0XbLYlLKjmLmJOenVZ4LfyxD5Octi0NzcRcuEfOXNcXYtig
+ s8bNJ/BlEzCOS3aao+SKOgu5ntAmf8+n9I+ntzTRD9S9HvGkoRDxq7ys6h8nxeKn8P3fDoLJN
+ hehukOpcczQNtDKnmb4+G0A/QPz8cM43bDDBy++qsJny6kBt6LgziUq9DL9zrG6oURItKpedo
+ bxSAdbmPzF9m+NWYmu2dHUnQDDakAoPy2pzmnj74214Fl7AB5Bd/KPCBdR+EfkJ+SldQSN9Jf
+ T3ivFn/V5KKzgHctG6INNClCcBBRhY7rrPOMoYWy8zOg2B2F9iZsYgndKpmtNYHzJ821VysGY
+ tdvY/uFfFPPaBUc/XKzPXGqtUBtKTprdE82QPBx7VAwsnlVa+HW3M14XkyGH2qqyZr5iSvS
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:16:52
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:26:44
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -107,48 +106,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 14:23:41 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 14:27:26 -0000
 
-Le 06/10/2020 à 15:39, Julia Suvorova a écrit :
-> 'occupied' is spelled like 'ocuppied' in the message.
-> 
-> Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Le 07/10/2020 à 00:18, Sergei Trofimovich a écrit :
+> Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
 > ---
->  hw/pci/pci.c       | 2 +-
->  hw/ppc/spapr_pci.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  meson.build | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 3c8f10b461..100c9381c2 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -1036,7 +1036,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
->          return NULL;
->      } else if (dev->hotplugged &&
->                 pci_get_function_0(pci_dev)) {
-> -        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
-> +        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
->                     " new func %s cannot be exposed to guest.",
->                     PCI_SLOT(pci_get_function_0(pci_dev)->devfn),
->                     pci_get_function_0(pci_dev)->name,
-> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-> index 5db912b48c..68e2218fe0 100644
-> --- a/hw/ppc/spapr_pci.c
-> +++ b/hw/ppc/spapr_pci.c
-> @@ -1572,7 +1572,7 @@ static void spapr_pci_plug(HotplugHandler *plug_handler,
->       */
->      if (plugged_dev->hotplugged && bus->devices[PCI_DEVFN(slotnr, 0)] &&
->          PCI_FUNC(pdev->devfn) != 0) {
-> -        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
-> +        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
->                     " additional functions can no longer be exposed to guest.",
->                     slotnr, bus->devices[PCI_DEVFN(slotnr, 0)]->name);
->          return;
+> diff --git a/meson.build b/meson.build
+> index a02c743794..48e7c56cc1 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -41,7 +41,7 @@ have_block = have_system or have_tools
+>  python = import('python').find_installation()
+>  
+>  supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
+> -supported_cpus = ['ppc', 'ppc64', 's390x', 'sparc64', 'riscv32', 'riscv64', 'x86', 'x86_64',
+> +supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
+>    'arm', 'aarch64', 'mips', 'mips64', 'sparc', 'sparc64']
+>  
+>  cpu = host_machine.cpu_family()
 > 
 
-Applied to my trivial-patches branch.
+Please, always cc: qemu-devel@nongnu.org
+
+you need to re-send your patch.
 
 Thanks,
 Laurent
-
 
