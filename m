@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRysG-000858-0z
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:32:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36970)
+	id 1kRyva-0001xR-Um
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:35:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38006)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRysE-00083V-IK; Mon, 12 Oct 2020 10:32:26 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:55759)
+ id 1kRyvZ-0001wq-LY; Mon, 12 Oct 2020 10:35:53 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:38603)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRysC-0006t3-2N; Mon, 12 Oct 2020 10:32:26 -0400
+ id 1kRyvX-0007Le-Lk; Mon, 12 Oct 2020 10:35:53 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N6bsG-1kPHO00o50-017zL4; Mon, 12 Oct 2020 16:32:18 +0200
-Subject: Re: [PATCH] qom: Fix "typddef" typo
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20201007220255.1170167-1-ehabkost@redhat.com>
+ 1MHX3X-1kfRCc07nt-00DYNN; Mon, 12 Oct 2020 16:35:47 +0200
+Subject: Re: [PATCH] mingw: Fix builds on f33 mingw
+To: Thomas Huth <thuth@redhat.com>,
+ "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
+ quintela@redhat.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20201008174359.157627-1-dgilbert@redhat.com>
+ <7f8ffa77-cc95-b121-0da8-269d37c52830@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -61,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <4ca77b31-cc4e-679c-ed87-cb1ddcaecb5a@vivier.eu>
-Date: Mon, 12 Oct 2020 16:32:16 +0200
+Message-ID: <fa6c8769-b1d7-cd75-2c2e-d8bc74ebe51e@vivier.eu>
+Date: Mon, 12 Oct 2020 16:35:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201007220255.1170167-1-ehabkost@redhat.com>
+In-Reply-To: <7f8ffa77-cc95-b121-0da8-269d37c52830@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3zWIqC8exGVOETk8dVC7FobKgWNG68Vw1oP34w2c+lfcX0aTNyF
- jIbyR7kqDqPos3K4U6bvwBx8iHgPLiA1C+5gQIlPQNWOb47cQioDnDTaS8n4pHT/0F81i3P
- 0mPEP7BYEA5SlzFc0bIuIWkmAjnPVzReNq4/D+dLE2b3MWKVprqBK49uWEBIBSkTiHGYcU5
- /hS+ovas6MXtQVvf4IJqA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sGTEoAG61Ow=:qh7jBcaDshWqqNpl+L+/tK
- TGBWoKlssoUqxDL2mXRBbGPRD4PVt+23aUbE7+780CzYEw05N+vVWMWR0/eKssqxXCbLlz0lS
- nWIyOtgZF5OanSLlAfaAoEEI7UXZbtZmH5WLF0Sewx4CVGHc+ko1T4bQNEzcZrnUTp3KZsGJF
- 2fJDlZhVJZsK9pnM4ANn/DpYhHRcES9SvfEDiz/8oViDCVOe9ruXYYhDlbcoz7NAXuO40vLJ/
- GdazIaIAVu6Wqdbi80vt8B/NMwiL4azCGf25i2ioopeK9KRyTlCijWTti7GK2+sDJCbZtyaD5
- kwaPW3pNPSYR/bkMk5s7Y3NDwk+CzPCzY5VLDQPIjDkSwEAbFokvDMSFxEO9ySFz7OkY/02uy
- zBsIcvPoPCr888mEo+7C7QbsAviYlwtsRx/tDkpYFkua1BY/UEFnahYKBkcOAOgfj+Lq9ervb
- 33J2XiBfCY7zXCMyRJcN2LDPeiTYYefqMQr2Y0gp2ONAQ7b8mxE0af3WoW/XCcYbB4JXn9a13
- L/7Tg6zQxsqMuvu9IM/F1WWoWQ4QTQcdJwdSll0Wj0DmxykwKr1ESHogOyHyU7Eaw6NUJ1uT2
- 828MNOusdteaoRIVoK9cCgPOTGE5w9GKMSaOz0REeTK3qu27Mh39dr8A+iAzt1+P+lM/RU/9E
- 0ydY7ttZ02CpzJrtvCX5s3Pnjpmdkn6PRk76+64zqr0JTGgAlTkBu51U1twyL21f4k6FDIQNO
- AcpSqTKmLW5FLvgaHaWxFb70vs7pdepwdc2R73gKCUXG+zm0GKO0Quyb5ej9klff7Np3Ce1s+
- KJJPeOzOCOM7MfawiK4ktGX8TaaAlrFXO0YMIDAamwcrOWDkLMfzFcdoRtmULJwYa1suIMO
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:LKzn7fSMu3cxQ/2d/XzOnMyLs32GzSSTolKqDUrCWaMeZhmvPD7
+ D7eiG09Lrf1n/ViJtCn+PVlGd88vwKjlompFAWfdSrfxLQadwvM8/eqs/QIo98905ew99EB
+ pNkLYpKQXsZT81kZNe/rNpf06ibxuF5sF+Xct5RpjdKoRl3Y8ezllzA1YpPRLm9MA3iUWDg
+ Ltyqpw3hbMPyltylB7ztw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GN/y/+qZrSo=:wWoO3LxBJ4s51Bf+KzPmgq
+ uhxGCq/wiV+JyTmChwlN0gDRoqb/60XdY/74IalCtyK6yBqWXTbmUbHPTjDUbi1OPuJxfVwFs
+ ua+zFVyfym8BOM/jOZrqn+vLtipCTQUWOp6b45mXnuzvcFrSZ/irAo3NxUReYyPb7pLRA+11c
+ ZOr9pAlQ0iuTDO47DdalGvyK2Qvehm4FpEvo342wCLHmCur53lmMqpTV1DLL4fwkZGeBtr1CV
+ Y+AuVF9LLU6n07AfRsL3PVG9ejbqV72kqmaSKN/QtdY95NCOpO89qZ56dMV3hQd2m8xxD8wDW
+ dCFHxY94fj+OMbgnLZbz8DZ9fyajtzxD0KqyWr2G/ZP7LANS6WAAd7g1vlIbgJb02fgSILZlR
+ lotZxaGkV17mlUb7+EmaXy2QWlSSjX0yOCfaexaK2ISPjMLpGXPlQZUjx6x3CCUxAFzvdIJ2x
+ iIW4yZz4q5z1BOkr2m+nAP7stQ2vjkwT9uu/V3pb4ElmKmWTDhA+LzPk8e8FbQ4afTYWru4TY
+ 4jqQNyp7VcOqGqRY/GG1muZsCEaaaf9lWupV1LgI870MDKYmy/qLlPkgxnYbYCnaYDOVlvnac
+ Q1I4a5T8aEOSGBg9mdXNJS0T6n+rPiBw++8k2nDGNIGjmJfQT52PehW6K6Cg7iupfa00vAfSK
+ /D1C74ihSUxTsyMLaN54FXi2Z+cVpHR+lF1Q1uUqzQCR2yUIk2kJrqxodzCFWqpaO5MpRuQ1e
+ nN1l6NDjBQSR0wV87gdwNGFbk9ITpCBgNF2Z8qdbEzRzf7kpKULzBX04gRYFlpLUM/zx98Ks6
+ CYFWa0+vsK8BeP5T5tbTVTOs17aQJLWST51zF3o1vLYF3lKiIKy6ymRZSK2FBtkXc5LSSIX
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:16:52
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:26:44
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -109,32 +110,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 14:32:27 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 14:35:53 -0000
 
-Le 08/10/2020 à 00:02, Eduardo Habkost a écrit :
-> Fix typo introduced in the C11 #ifdef for qemu_max_align_t.  It
-> never caused any problems because we always compile using
-> -std=gnu99.
+Le 08/10/2020 à 19:46, Thomas Huth a écrit :
+> On 08/10/2020 19.43, Dr. David Alan Gilbert (git) wrote:
+>> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>>
+>> Fedora 33's mingw moans about:
+>>
+>> In file included from ../tests/test-bitmap.c:12:
+>> /home/dgilbert/git/migpull/include/qemu/osdep.h:76: error: "__USE_MINGW_ANSI_STDIO" redefined [-Werror]
+>>    76 | #define __USE_MINGW_ANSI_STDIO 1
+>>       |
+>>
+>> the fix is to make sure osdep.h is the first include - which is our
+>> rule anyway; but one we broke in a couple of places.
+>>
+>> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+>> ---
+>>  migration/dirtyrate.c | 2 +-
+>>  tests/test-bitmap.c   | 2 +-
+>>  2 files changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
+>> index ab9e1301f6..42b71e771e 100644
+>> --- a/migration/dirtyrate.c
+>> +++ b/migration/dirtyrate.c
+>> @@ -10,8 +10,8 @@
+>>   * See the COPYING file in the top-level directory.
+>>   */
+>>  
+>> -#include <zlib.h>
+>>  #include "qemu/osdep.h"
+>> +#include <zlib.h>
+>>  #include "qapi/error.h"
+>>  #include "cpu.h"
+>>  #include "qemu/config-file.h"
+>> diff --git a/tests/test-bitmap.c b/tests/test-bitmap.c
+>> index 2f5b71458a..c3c9d79667 100644
+>> --- a/tests/test-bitmap.c
+>> +++ b/tests/test-bitmap.c
+>> @@ -8,8 +8,8 @@
+>>   * Author: Peter Xu <peterx@redhat.com>
+>>   */
+>>  
+>> -#include <stdlib.h>
+>>  #include "qemu/osdep.h"
+>> +#include <stdlib.h>
+>>  #include "qemu/bitmap.h"
+>>  
+>>  #define BMAP_SIZE  1024
+>>
 > 
-> Fixes: 4c880f363e9e ("qom: Allow objects to be allocated with increased alignment")
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
->  qom/object.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> diff --git a/qom/object.c b/qom/object.c
-> index c335dce7e4..125dabd28b 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -692,7 +692,7 @@ static void object_finalize(void *data)
->  
->  /* Find the minimum alignment guaranteed by the system malloc. */
->  #if __STDC_VERSION__ >= 201112L
-> -typddef max_align_t qemu_max_align_t;
-> +typedef max_align_t qemu_max_align_t;
->  #else
->  typedef union {
->      long l;
 > 
 
 Applied to my trivial-patches branch.
