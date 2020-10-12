@@ -1,85 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRutC-0006Ul-1M
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 06:17:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49876)
+	id 1kRvKL-00085K-LA
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 06:45:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRutA-0006R6-5u; Mon, 12 Oct 2020 06:17:08 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42938)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRut7-0004u1-8L; Mon, 12 Oct 2020 06:17:07 -0400
-Received: by mail-wr1-x443.google.com with SMTP id e18so18496274wrw.9;
- Mon, 12 Oct 2020 03:17:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
- b=ciWzv/nuoIqxe708TEr26XgvzVTHzz0Cv9oShIMsfP/2/+RDZlm4CY2h4eMmGynGwX
- 3JJBiLpLjvk/T1klmQMMaKZTGOGfbFAA/LfEtptY5VgwWBnCw4P+sVrya8BWJ7zsAuhh
- npo/c/L0fow6kXLmW8yThZw++69ykuHVfhUl5sogeKhAdtHudyiEzraoeKKATV/O0YVS
- axuUQhQnfe2OwwfXaO0so2b4rZwwi60v3WSROQ7P1XTrFkNa1mnkbp8P2FEZvEG8dqFG
- /Hfx4XqwtaUUUtediOAAKFl4uGJ+uWreOKq2YWbtbL3OqtGJlE9hqgFzmwsFbKoSB6mj
- IFIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
- b=Zln3r0Io/nPv7q2clx8nZprGJvuArUENdWp341JOCV9rjHDJ5XjCi0ZmmAvUhxjdAk
- f0orLXMuD7dWzNDBAxRMCn7HdZlIXMRky20hVnY9V1x5yLfhK+DXUHGZCHCZAoePYWKS
- jmUXBHOodDMZsyiZB1S8zuJNEX6e7G6DmR3LwPUk32WTSBktIrqIRaCKZjMwgwRuvFdq
- NoXv99djrCcRwexclm0EFfRiiGakg+JnQ6X5taH/Lvg0spgx9kEfA9s21ti7RSpbUR2J
- hx8IHdfl0GO7ffmCrBG/Mi9kq1qKHfcALuVLKJhxaBCGjPBV34l8ytGUBFRt4uQxY7Nq
- mDaQ==
-X-Gm-Message-State: AOAM531jTSRV96emtwoQBoS5qv+5e40LdmKttpTHGAQhv3pxugArx93G
- 8kn0AvM7/NoxQA4RVj4PvkUHs9UkENk=
-X-Google-Smtp-Source: ABdhPJzGnl5/C+pOGLimfM4krdiU44wYlepphuPwZcOQWs6PAYun1wEemoEoWWyU3V47fjTnnv1GZQ==
-X-Received: by 2002:a5d:518b:: with SMTP id k11mr28391098wrv.369.1602497822808; 
- Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id u63sm23305649wmb.13.2020.10.12.03.17.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 1/3] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-References: <20201011210513.3253905-1-f4bug@amsat.org>
- <20201011210513.3253905-2-f4bug@amsat.org>
- <20201012100444.GB7777@merkur.fritz.box>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5b707ead-286c-4a1b-fc0a-4af934686475@amsat.org>
-Date: Mon, 12 Oct 2020 12:17:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRvKK-00084X-Fb
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:45:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36690)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRvKD-0000iL-7M
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:45:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602499503;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4DgQyBUKHO9uEFcEOkapjV+Catm7VjAWQNj1RQiFJtk=;
+ b=jPy19BjyOpOZd+RyTvVCVNqiuOMSR0YfGPPRAr+owGPVf/I2dLrXOQYS6+7Cu7FnyZfCie
+ kwo0cwn+a5AsbdQ/UaO9yxPn0WvqPQ/+9QS+YI2mfieyQO0F63WgVLpc4M3/p79WTV51uX
+ ENuZMf8NpAaESa/m63ahYx/5/lmXyBM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-584-ZW2fJnqYOBqhrvNTQZRzJg-1; Mon, 12 Oct 2020 06:45:00 -0400
+X-MC-Unique: ZW2fJnqYOBqhrvNTQZRzJg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74B841868403;
+ Mon, 12 Oct 2020 10:44:59 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-22.ams2.redhat.com [10.36.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8936C19C78;
+ Mon, 12 Oct 2020 10:44:57 +0000 (UTC)
+Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
+ stack frame
+To: David Gibson <david@gibson.dropbear.id.au>,
+ Elena Afanasova <eafanasova@gmail.com>
+Cc: qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+ <20201010060745.GK1025389@yekko.fritz.box>
+ <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+ <20201012053001.GD4787@yekko.fritz.box>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
+Date: Mon, 12 Oct 2020 12:44:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201012100444.GB7777@merkur.fritz.box>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20201012053001.GD4787@yekko.fritz.box>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,17 +81,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 10:17:08 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 10:45:12 -0000
 
-On 10/12/20 12:04 PM, Kevin Wolf wrote:
-> Am 11.10.2020 um 23:05 hat Philippe Mathieu-DaudÃ© geschrieben:
->> From: Philippe Mathieu-DaudÃ© <philmd@redhat.com>
+On 12/10/2020 07.30, David Gibson wrote:
+> On Sat, Oct 10, 2020 at 08:53:00AM -0700, Elena Afanasova wrote:
+>> On Sat, 2020-10-10 at 17:07 +1100, David Gibson wrote:
+>>> On Fri, Oct 09, 2020 at 07:02:56AM -0700, Elena Afanasova wrote:
+>>>>> From 09905773a00e417d3a37c12350d9e55466fdce8a Mon Sep 17 00:00:00
+>>>>> 2001
+>>>> From: Elena Afanasova <eafanasova@gmail.com>
+>>>> Date: Fri, 9 Oct 2020 06:41:36 -0700
+>>>> Subject: [PATCH] hw/net: move allocation to the heap due to very
+>>>> large stack
+>>>>  frame
+>>>
+>>> Patch looks fine, but some more details of the motivation would be
+>>> nice.  I wouldn't have thought that the size of a network packet
+>>> counted as a "very large" stack frame by userspace standards.
+>>>
 >>
->> In order to use inclusive terminology, rename max_slaves
->> as max_peripherals.
+>> gcc with wstack-usage warns that stack frame size may be ~65Kbytes
 > 
-> This is inconsistent with the subject line which talks about
-> "max_devices".
+> AFAICT, -Wstack-usage takes a parameter giving what size it will
+> complain about.  What was that value, and what was the rationale for
+> choosing it?
 
-Ah I missed that change, thanks.
+I think this is one of the tasks from:
+
+ https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
+
+It has been added by Paolo in 2016:
+
+ https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
+
+... so maybe Paolo can comment on the size that has been chosen here...?
+
+ Thomas
+
 
