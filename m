@@ -1,74 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRuhO-0007ng-Al
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 06:04:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47416)
+	id 1kRutC-0006Ul-1M
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 06:17:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kRuhM-0007kG-TU
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:04:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35863)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kRuhK-0003Ta-Py
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 06:04:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602497093;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=26bYJ3kV9qOG6sJymY48BBmaYoGlXnd4Mlrzdww9JZo=;
- b=ZV0Gpd1DrZRShImC9H6oOAsRRBSWS0OYU1AQCWxPvX9oGt9M55y3kQwmf2HUO3Xm/s/Lrb
- /IqBdPHWzACCEhZzJ3H6mBTihUNl4EPZl1ShaLWQwVWnwIVAL7FL3QqUol17jshIVTZH0v
- 9e2RwC8rPaDmPBP9AmaoGC2owPPAov8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-300-rNjWWOEBPnKoQzfTLLzoeg-1; Mon, 12 Oct 2020 06:04:51 -0400
-X-MC-Unique: rNjWWOEBPnKoQzfTLLzoeg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 72A151018F60;
- Mon, 12 Oct 2020 10:04:49 +0000 (UTC)
-Received: from merkur.fritz.box (ovpn-114-24.ams2.redhat.com [10.36.114.24])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E71576666;
- Mon, 12 Oct 2020 10:04:45 +0000 (UTC)
-Date: Mon, 12 Oct 2020 12:04:44 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRutA-0006R6-5u; Mon, 12 Oct 2020 06:17:08 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42938)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRut7-0004u1-8L; Mon, 12 Oct 2020 06:17:07 -0400
+Received: by mail-wr1-x443.google.com with SMTP id e18so18496274wrw.9;
+ Mon, 12 Oct 2020 03:17:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
+ b=ciWzv/nuoIqxe708TEr26XgvzVTHzz0Cv9oShIMsfP/2/+RDZlm4CY2h4eMmGynGwX
+ 3JJBiLpLjvk/T1klmQMMaKZTGOGfbFAA/LfEtptY5VgwWBnCw4P+sVrya8BWJ7zsAuhh
+ npo/c/L0fow6kXLmW8yThZw++69ykuHVfhUl5sogeKhAdtHudyiEzraoeKKATV/O0YVS
+ axuUQhQnfe2OwwfXaO0so2b4rZwwi60v3WSROQ7P1XTrFkNa1mnkbp8P2FEZvEG8dqFG
+ /Hfx4XqwtaUUUtediOAAKFl4uGJ+uWreOKq2YWbtbL3OqtGJlE9hqgFzmwsFbKoSB6mj
+ IFIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
+ b=Zln3r0Io/nPv7q2clx8nZprGJvuArUENdWp341JOCV9rjHDJ5XjCi0ZmmAvUhxjdAk
+ f0orLXMuD7dWzNDBAxRMCn7HdZlIXMRky20hVnY9V1x5yLfhK+DXUHGZCHCZAoePYWKS
+ jmUXBHOodDMZsyiZB1S8zuJNEX6e7G6DmR3LwPUk32WTSBktIrqIRaCKZjMwgwRuvFdq
+ NoXv99djrCcRwexclm0EFfRiiGakg+JnQ6X5taH/Lvg0spgx9kEfA9s21ti7RSpbUR2J
+ hx8IHdfl0GO7ffmCrBG/Mi9kq1qKHfcALuVLKJhxaBCGjPBV34l8ytGUBFRt4uQxY7Nq
+ mDaQ==
+X-Gm-Message-State: AOAM531jTSRV96emtwoQBoS5qv+5e40LdmKttpTHGAQhv3pxugArx93G
+ 8kn0AvM7/NoxQA4RVj4PvkUHs9UkENk=
+X-Google-Smtp-Source: ABdhPJzGnl5/C+pOGLimfM4krdiU44wYlepphuPwZcOQWs6PAYun1wEemoEoWWyU3V47fjTnnv1GZQ==
+X-Received: by 2002:a5d:518b:: with SMTP id k11mr28391098wrv.369.1602497822808; 
+ Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id u63sm23305649wmb.13.2020.10.12.03.17.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 1/3] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+To: Kevin Wolf <kwolf@redhat.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
  Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 1/3] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
-Message-ID: <20201012100444.GB7777@merkur.fritz.box>
 References: <20201011210513.3253905-1-f4bug@amsat.org>
  <20201011210513.3253905-2-f4bug@amsat.org>
+ <20201012100444.GB7777@merkur.fritz.box>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5b707ead-286c-4a1b-fc0a-4af934686475@amsat.org>
+Date: Mon, 12 Oct 2020 12:17:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201011210513.3253905-2-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20201012100444.GB7777@merkur.fritz.box>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,17 +92,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 10:04:57 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 10:17:08 -0000
 
-Am 11.10.2020 um 23:05 hat Philippe Mathieu-Daudé geschrieben:
-> From: Philippe Mathieu-Daudé <philmd@redhat.com>
+On 10/12/20 12:04 PM, Kevin Wolf wrote:
+> Am 11.10.2020 um 23:05 hat Philippe Mathieu-DaudÃ© geschrieben:
+>> From: Philippe Mathieu-DaudÃ© <philmd@redhat.com>
+>>
+>> In order to use inclusive terminology, rename max_slaves
+>> as max_peripherals.
 > 
-> In order to use inclusive terminology, rename max_slaves
-> as max_peripherals.
+> This is inconsistent with the subject line which talks about
+> "max_devices".
 
-This is inconsistent with the subject line which talks about
-"max_devices".
-
-Kevin
-
+Ah I missed that change, thanks.
 
