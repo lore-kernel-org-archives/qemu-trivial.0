@@ -1,84 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRxzG-0000gz-31
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:35:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48600)
+	id 1kRy8X-00062i-Ry
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:45:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxzD-0000cR-Kw
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:35:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24328)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kRy8U-0005zV-Bh
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:45:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46647)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxzB-0007H4-CI
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:35:35 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kRy8Q-00007A-F2
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 09:45:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602509731;
+ s=mimecast20190719; t=1602510304;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NvbXSClYIzwj2r2gYxWjlhXEfDIn1+3uI+VyMvrDSfU=;
- b=TZe22/SQ9bexk9Znv0L8j3iH/bqiR0g3QIFADAdmX7OTsV0fGqqP7XH/ABfscHuQ5LBRdf
- Z6l1+XkDhmWhLJhzi1OV9NkOJ2dNlICk1mMmV31/qZSN8db4A1etRAESjk1/u0ZaaeFseh
- 6Dfb78bMIRBxn5Oht8cj7NKXNEG+MWU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-571-9pxV_L3DPYurhWnTX7qiIQ-1; Mon, 12 Oct 2020 09:35:29 -0400
-X-MC-Unique: 9pxV_L3DPYurhWnTX7qiIQ-1
-Received: by mail-wm1-f70.google.com with SMTP id w23so5217961wmi.1
- for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2020 06:35:29 -0700 (PDT)
+ bh=fOefzMy1BDsq2KlMUkuY8d0EYifJ5JTTwdRTwXuLgV8=;
+ b=bpgD4m/1Wu51lBij/lYy6ftYCLseks5LtawlNVQGYMh7VcpLr/8eXp0x0gKY5Nn4xJG6Mf
+ KLMYWWjKvgS9QOWL75h6op0QXno4P4jTEJ7LxkzRF0vxoVPzM5Amu4zYNJEHiJ0pHdPzbW
+ WewDpesfS/cXbj4vZiavmEZOCtscBEU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-86-OhTlkN4COkqmKkjn9kzMag-1; Mon, 12 Oct 2020 09:45:00 -0400
+X-MC-Unique: OhTlkN4COkqmKkjn9kzMag-1
+Received: by mail-wr1-f69.google.com with SMTP id t3so2833684wrq.2
+ for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2020 06:45:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=NvbXSClYIzwj2r2gYxWjlhXEfDIn1+3uI+VyMvrDSfU=;
- b=Tgarxaq6xejAga7BWYjJ5C6x3HIKuLrhjA+w4WStc/4LTih9XcEqJRLH4ZZyBOYkXn
- KouJZ8TGyJz1QoNn5Jjm27OUaFkSHoYjLWRSO1A5odhus6h8MzyzHiBtSyM21z5MOupq
- l8S7tuRfAa3hc6s9xU7gQdf0jDeWlokYlqxU5YaZy+eC2++FxTXLmBxcKK8DvofpLi9+
- hTAYXPRIrr3TdNEZNWd0NTaAuCo5xvC0bhG10HZ4gAvkxmzsC33RXGGR2DXXxIrQcVg6
- TP2ivKs0uCZR2AP77Bwdb8tlMRZ2Lu7uZ3nsV8YrRz4JbtKEaApnSzahXSpMCTzceXhM
- 40fw==
-X-Gm-Message-State: AOAM5314sc2bd3kXZHAIr9m4xDmgSxiEIMTmoAcpYLhtVlQzg8yEmNth
- WgAzaEbBIOmSOgWxdDVnwmJWf8l8BsZNKHuhWzlR7wLsCCZf5M0YLh2dd2f4rGeQmxi0/qLpdGV
- DDCTKgR1siVZ2knZIWA==
-X-Received: by 2002:a1c:dcc3:: with SMTP id t186mr10880184wmg.70.1602509728216; 
- Mon, 12 Oct 2020 06:35:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXYbZ7OWNFRh5uWxEQRMW1SSndZfMjlaf+bg5jNDDFFbVuwnCdtfm+p0KnqZFK2n3vX1vcEw==
-X-Received: by 2002:a1c:dcc3:: with SMTP id t186mr10880172wmg.70.1602509728024; 
- Mon, 12 Oct 2020 06:35:28 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id o4sm6560487wrv.8.2020.10.12.06.35.26
+ bh=fOefzMy1BDsq2KlMUkuY8d0EYifJ5JTTwdRTwXuLgV8=;
+ b=DJ0eeH/sFBChQbsbzZISKHqmAxINEHyKD8nEsK7qztgTG8/lApZRNyWElODLa/eF95
+ 2alIlL/3kckfgymFHVwpqfp6BE55CYasVt0kZeNIroJu9A2kYR/7erz0eLPZtPSEIOkw
+ zFSDYCMd5/qoTij9xRWjI1kYhOnZkQ6jr70aeRc8+WaYvbNfTwew6CKQDDNmHNtEfz28
+ SXIlSM3n1xQnr9nZm4hAarZTNftXBWxD3ceBSioJzleRt9Bt8+9VXE/VV5kN3fBKIwsG
+ TztSvQ1FUXUd6uMrGzvFhdHF1Kq3qyykQOomh+4Na6+eu1MSJkFHN6g4y3e3g02ql5dW
+ JSgA==
+X-Gm-Message-State: AOAM533jXcIPAVtTujTrcU1fGpmXu6ulywk3Gd33EcSY0oYhCK5eBH1s
+ OhgMVuFe154anQDb6tpfuC9XQA6fqb9hWskO+uox2ZDD/nmG/sm9wANrQjLyHZW4tEqXb5QDBFV
+ ciSl33+dlOoWJcBdlzQ==
+X-Received: by 2002:adf:c3cd:: with SMTP id d13mr4306583wrg.15.1602510299692; 
+ Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxK2oZhKbfelocLEVt0Nm4s7meurcokG+YKDleXlVDtaUCblfv+RG0F8QpYmpSYlHwO58jWUQ==
+X-Received: by 2002:adf:c3cd:: with SMTP id d13mr4306574wrg.15.1602510299510; 
+ Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:7ffb:1107:73ba:dbcf?
+ ([2001:b07:6468:f312:7ffb:1107:73ba:dbcf])
+ by smtp.gmail.com with ESMTPSA id n3sm23520646wmn.28.2020.10.12.06.44.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Oct 2020 06:35:27 -0700 (PDT)
-Subject: Re: [PATCH] hw/scsi: remove dead code
-To: Elena Afanasova <eafanasova@gmail.com>, hare@suse.com,
- pbonzini@redhat.com, fam@euphon.net, qemu-block@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <ea41618a040224242fced25fc3d09d3b1f75a06a.camel@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <98c5390e-aabd-82e8-e596-a53c90754ccf@redhat.com>
-Date: Mon, 12 Oct 2020 15:35:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ Mon, 12 Oct 2020 06:44:59 -0700 (PDT)
+Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
+ stack frame
+To: Thomas Huth <thuth@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Elena Afanasova <eafanasova@gmail.com>
+Cc: qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org
+References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+ <20201010060745.GK1025389@yekko.fritz.box>
+ <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+ <20201012053001.GD4787@yekko.fritz.box>
+ <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
+Date: Mon, 12 Oct 2020 15:45:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <ea41618a040224242fced25fc3d09d3b1f75a06a.camel@gmail.com>
+In-Reply-To: <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 23:52:29
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -93,36 +101,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 13:35:35 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 13:45:12 -0000
 
-Hi Elena,
-
-On 10/12/20 3:32 PM, Elena Afanasova wrote:
-> Since MEGASAS_MAX_SGE is defined to be 128 the following if statement can be removed.
-> Spotted by PVS-Studio.
+On 12/10/20 12:44, Thomas Huth wrote:
+> I think this is one of the tasks from:
 > 
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> ---
->   hw/scsi/megasas.c | 2 --
->   1 file changed, 2 deletions(-)
+>  https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
 > 
-> diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-> index e24c12d7ee..6dcaad55fa 100644
-> --- a/hw/scsi/megasas.c
-> +++ b/hw/scsi/megasas.c
-> @@ -2393,8 +2393,6 @@ static void megasas_scsi_realize(PCIDevice *dev, Error **errp)
->       }
->       if (s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
->           s->fw_sge = MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
-> -    } else if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
-> -        s->fw_sge = 128 - MFI_PASS_FRAME_SIZE;
-
-See previous discussion:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg668850.html
-
->       } else {
->           s->fw_sge = 64 - MFI_PASS_FRAME_SIZE;
->       }
+> It has been added by Paolo in 2016:
 > 
+>  https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
+> 
+> ... so maybe Paolo can comment on the size that has been chosen here...?
+
+I used 16K, mostly because it is a nice round number.  8k is too small
+due to PATH_MAX-sized variables.  16k seemed to be plenty and triggered
+in few-enough places that the cleanup is viable.
+
+Paolo
 
 
