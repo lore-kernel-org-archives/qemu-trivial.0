@@ -1,24 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRyva-0001xR-Um
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:35:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38006)
+	id 1kRyyD-00043M-AQ
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 10:38:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyvZ-0001wq-LY; Mon, 12 Oct 2020 10:35:53 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:38603)
+ id 1kRyyC-00041o-7z; Mon, 12 Oct 2020 10:38:36 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:48011)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRyvX-0007Le-Lk; Mon, 12 Oct 2020 10:35:53 -0400
+ id 1kRyy9-0007is-3n; Mon, 12 Oct 2020 10:38:35 -0400
 Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MHX3X-1kfRCc07nt-00DYNN; Mon, 12 Oct 2020 16:35:47 +0200
-Subject: Re: [PATCH] mingw: Fix builds on f33 mingw
-To: Thomas Huth <thuth@redhat.com>,
- "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
- quintela@redhat.com
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201008174359.157627-1-dgilbert@redhat.com>
- <7f8ffa77-cc95-b121-0da8-269d37c52830@redhat.com>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MD9CZ-1kb1Va33Td-009605; Mon, 12 Oct 2020 16:38:27 +0200
+Subject: Re: [PATCH] block/blkdebug: fix memory leak
+To: Elena Afanasova <eafanasova@gmail.com>, kwolf@redhat.com,
+ mreitz@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,35 +60,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <fa6c8769-b1d7-cd75-2c2e-d8bc74ebe51e@vivier.eu>
-Date: Mon, 12 Oct 2020 16:35:45 +0200
+Message-ID: <d1eb7b56-cbfe-9a96-f7f5-95bea795b96a@vivier.eu>
+Date: Mon, 12 Oct 2020 16:38:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <7f8ffa77-cc95-b121-0da8-269d37c52830@redhat.com>
+In-Reply-To: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LKzn7fSMu3cxQ/2d/XzOnMyLs32GzSSTolKqDUrCWaMeZhmvPD7
- D7eiG09Lrf1n/ViJtCn+PVlGd88vwKjlompFAWfdSrfxLQadwvM8/eqs/QIo98905ew99EB
- pNkLYpKQXsZT81kZNe/rNpf06ibxuF5sF+Xct5RpjdKoRl3Y8ezllzA1YpPRLm9MA3iUWDg
- Ltyqpw3hbMPyltylB7ztw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GN/y/+qZrSo=:wWoO3LxBJ4s51Bf+KzPmgq
- uhxGCq/wiV+JyTmChwlN0gDRoqb/60XdY/74IalCtyK6yBqWXTbmUbHPTjDUbi1OPuJxfVwFs
- ua+zFVyfym8BOM/jOZrqn+vLtipCTQUWOp6b45mXnuzvcFrSZ/irAo3NxUReYyPb7pLRA+11c
- ZOr9pAlQ0iuTDO47DdalGvyK2Qvehm4FpEvo342wCLHmCur53lmMqpTV1DLL4fwkZGeBtr1CV
- Y+AuVF9LLU6n07AfRsL3PVG9ejbqV72kqmaSKN/QtdY95NCOpO89qZ56dMV3hQd2m8xxD8wDW
- dCFHxY94fj+OMbgnLZbz8DZ9fyajtzxD0KqyWr2G/ZP7LANS6WAAd7g1vlIbgJb02fgSILZlR
- lotZxaGkV17mlUb7+EmaXy2QWlSSjX0yOCfaexaK2ISPjMLpGXPlQZUjx6x3CCUxAFzvdIJ2x
- iIW4yZz4q5z1BOkr2m+nAP7stQ2vjkwT9uu/V3pb4ElmKmWTDhA+LzPk8e8FbQ4afTYWru4TY
- 4jqQNyp7VcOqGqRY/GG1muZsCEaaaf9lWupV1LgI870MDKYmy/qLlPkgxnYbYCnaYDOVlvnac
- Q1I4a5T8aEOSGBg9mdXNJS0T6n+rPiBw++8k2nDGNIGjmJfQT52PehW6K6Cg7iupfa00vAfSK
- /D1C74ihSUxTsyMLaN54FXi2Z+cVpHR+lF1Q1uUqzQCR2yUIk2kJrqxodzCFWqpaO5MpRuQ1e
- nN1l6NDjBQSR0wV87gdwNGFbk9ITpCBgNF2Z8qdbEzRzf7kpKULzBX04gRYFlpLUM/zx98Ks6
- CYFWa0+vsK8BeP5T5tbTVTOs17aQJLWST51zF3o1vLYF3lKiIKy6ymRZSK2FBtkXc5LSSIX
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:y8nG3MOecPuxNQwCxsxrb2zPgEUYunT60gMIPv0RdeMf+2JShko
+ uYIH6WXZnA0H0Q6woSg2JYjaaOgaD4QijFULxkOAJGtn4O3MIbWQ5/PruhVGC2KSY3eGNpn
+ vNeWjoTPi31Xi0rWFRGXX2mcdhHL4N4pIq+d1hOiC2X/wegazF2Gob8Ez6W44lERatZY7PZ
+ KnRtrk+5EACJqUskzVcIA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZBiOEF2/QCs=:qyqxMIxupldjGaL7uAMJO+
+ Nm3WwTsAH3ngXC8MDAdsSyhHTMkzWmyFSHya7I8sC3vG+mmMuSZ0wJLANTjq3xM5SvuJKWh8K
+ PZvRlPgxp6KSUgHIJSwERD52ljc21SNFezU2HZtNtUuqLQC2WpSor2WrReH9ayaNpO/75/L31
+ ZafGFoB+b8AWSnYthHeyWS9FxQMjR++hIr7IQcpj92EhBRw0wANpJyBhyuFFcSmrFQx1TPVDA
+ lmO/9LFL4DPsqG8d9wzV6nMqzk3iJmegrJQdYYk5rYOXZLW0r8wYN4N9dvNzJflZABW3SPRRs
+ lylork31qukWdDAPsmeQ8HlEIwq7piHI1/dQK0TO2+E5Bx+ETQymyhzHT6zvRwj5DM2SQ/WZ2
+ 88yHP4W8JzmGDCDtaDZBhH+AGH0hbZhV6vTJnoIwwWC/3Pqd0mzsRbCCo3tYc/UjQmlgV8JkT
+ kjG//KsAO23H/CKBIK+CnORsosLOD1AgbQV9n+L6i7vQTHLuBcnt7ZgmV9gsJxcG1gWFUZOiy
+ uaUFywVZUt+D3RqmesHpNrgBvRhdKFh/SxwCVv3ZO/UHWRY+UKrbMeWkc1zb9DTEbQfmZR/x8
+ uxnwWPekEKS8OgE/3Yu3quf3twXQsLR1JVVb/ifffYPp8EYxgMibY/ElXJf00vsuS1cAJV5oi
+ WwLgSEX3xvE97TwqT+QhKk5D5yxij5DZwEx1zkj/XOVosijzDoJ3Se2QGnbrDiK8HMhJ1Awrt
+ OmKk43patda0Own8Oy2ZBj8A8Ll0FE7Cr4q7SClwr3Dl78kZq2sMfHni73hjJr5QEPLjhEik3
+ 8EUHyNqQ9HdjhpZEaDMbvwpwNd/ZCdwTTDIG8+mFYWeReoZewPRxxzNMbQ08cVCNs+hijwk
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:26:44
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 10:20:48
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -110,60 +108,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 14:35:53 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 14:38:36 -0000
 
-Le 08/10/2020 à 19:46, Thomas Huth a écrit :
-> On 08/10/2020 19.43, Dr. David Alan Gilbert (git) wrote:
->> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
->>
->> Fedora 33's mingw moans about:
->>
->> In file included from ../tests/test-bitmap.c:12:
->> /home/dgilbert/git/migpull/include/qemu/osdep.h:76: error: "__USE_MINGW_ANSI_STDIO" redefined [-Werror]
->>    76 | #define __USE_MINGW_ANSI_STDIO 1
->>       |
->>
->> the fix is to make sure osdep.h is the first include - which is our
->> rule anyway; but one we broke in a couple of places.
->>
->> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
->> ---
->>  migration/dirtyrate.c | 2 +-
->>  tests/test-bitmap.c   | 2 +-
->>  2 files changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
->> index ab9e1301f6..42b71e771e 100644
->> --- a/migration/dirtyrate.c
->> +++ b/migration/dirtyrate.c
->> @@ -10,8 +10,8 @@
->>   * See the COPYING file in the top-level directory.
->>   */
->>  
->> -#include <zlib.h>
->>  #include "qemu/osdep.h"
->> +#include <zlib.h>
->>  #include "qapi/error.h"
->>  #include "cpu.h"
->>  #include "qemu/config-file.h"
->> diff --git a/tests/test-bitmap.c b/tests/test-bitmap.c
->> index 2f5b71458a..c3c9d79667 100644
->> --- a/tests/test-bitmap.c
->> +++ b/tests/test-bitmap.c
->> @@ -8,8 +8,8 @@
->>   * Author: Peter Xu <peterx@redhat.com>
->>   */
->>  
->> -#include <stdlib.h>
->>  #include "qemu/osdep.h"
->> +#include <stdlib.h>
->>  #include "qemu/bitmap.h"
->>  
->>  #define BMAP_SIZE  1024
->>
+Le 09/10/2020 à 21:09, Elena Afanasova a écrit :
+> Spotted by PVS-Studio
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> ---
+>  block/blkdebug.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
+> diff --git a/block/blkdebug.c b/block/blkdebug.c
+> index eecbf3e5c4..54da719dd1 100644
+> --- a/block/blkdebug.c
+> +++ b/block/blkdebug.c
+> @@ -215,6 +215,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Error **errp)
+>                                   BLKDEBUG_IO_TYPE__MAX, &local_error);
+>          if (local_error) {
+>              error_propagate(errp, local_error);
+> +            g_free(rule);
+>              return -1;
+>          }
+>          if (iotype != BLKDEBUG_IO_TYPE__MAX) {
 > 
 
 Applied to my trivial-patches branch.
