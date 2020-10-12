@@ -1,117 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kRxmw-0008Gf-Dv
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:22:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37564)
+	id 1kRxws-00074T-HJ
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 09:33:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <David.Leonard@digi.com>)
- id 1kRs2W-0003oK-08
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 03:14:36 -0400
-Received: from outbound-ip24a.ess.barracuda.com ([209.222.82.206]:54778)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <David.Leonard@digi.com>)
- id 1kRs2T-0007CX-MP
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2020 03:14:35 -0400
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10lp2109.outbound.protection.outlook.com [104.47.55.109]) by
- mx1.us-east-2a.ess.aws.cudaops.com (version=TLSv1.2
- cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 12 Oct 2020 07:14:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ULe1pyCasmOdevMQofQj0aze2Yrt2rtiUrtwGxi7U3xBgd6grzwpvHFtudYgQJaZBJ2bAsHfsP5+2ifK6aGXh79MOnw8j9JTRwIOFgLwcYrlbzgA2L7725KKkPi7gkKnBNi6pfigCnNMV3CaCldkgXXh+GT3/UtfZZ8f4lEE661eTuLO8ZZ/IknFeWuIdsNoQnYyhqqDoECummBA9uZq5OWLx250DRByru2m+nwuN7AVKfAbWyeGppU4FpOKajIlEA3rWLklsaKWLxoDRelx7pohBu8YMhHfJOwK8tOrdtUaMQTBhSWDyLAMCYwo8DKq4+dZhZLjoLwAhZ7+fbeflg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OQbmjC0ukHnkKE2PqW8lDwA/BZ7mDGCZoOz/pqE++TY=;
- b=JtlYUVd9s8b7QIYHbqNuG6zLNN5nmNJW6f7v20+MuyZLzWehTkX9DYrgZtGGhlZXXf7l6NW1gjuBqfputYiuAW9xxc1kSpSMu0cgarN9uV3Xpc3WxiPSjR/T5zcCSZFPCDT06m0zQTRKmxBZQ7y6oaOkPMXavBd2Nm4IIrB48tI0SexQpawh2zN5BMz/0rj8Q+B7l+c3pzKMgRHqH8xAqDoJOLqALG5P86fXPUjDSTI267Uq05BrV5ofnOXJ1RnqLPYLX6+riGrDEBuzZkok1pcjuDdcNUQgQBDqo32vi0NGaGQWe2dIUmBVFaLJEf4pzFrQHHEv2B6tfL44r4B+Pw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=digi.com; dmarc=pass action=none header.from=digi.com;
- dkim=pass header.d=digi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digi.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OQbmjC0ukHnkKE2PqW8lDwA/BZ7mDGCZoOz/pqE++TY=;
- b=ds26ZBwphah/Ilj6cJZQOdkTfViHAaLAEDzYdjJO+2OpK+tg4edWO++vG89dDPSivSKLf8tj3R/N6eU44hp8ayBHI4WwYuFXHEvCGBo3iOEJXe0HdkqvjZZxq5FGeCF7uE06zsFS+GCQ1RCgOEsWYhSCx1md9883h1eFMbN6n5c=
-Authentication-Results: nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=none action=none header.from=digi.com;
-Received: from MN2PR10MB3791.namprd10.prod.outlook.com (2603:10b6:208:1bb::26)
- by MN2PR10MB4077.namprd10.prod.outlook.com (2603:10b6:208:182::30)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3455.27; Mon, 12 Oct
- 2020 07:14:30 +0000
-Received: from MN2PR10MB3791.namprd10.prod.outlook.com
- ([fe80::d8dd:acff:b0e1:9d8c]) by MN2PR10MB3791.namprd10.prod.outlook.com
- ([fe80::d8dd:acff:b0e1:9d8c%4]) with mapi id 15.20.3455.029; Mon, 12 Oct 2020
- 07:14:30 +0000
-Date: Mon, 12 Oct 2020 17:14:16 +1000 (AEST)
-From: David Leonard <David.Leonard@digi.com>
-To: qemu-trivial@nongnu.org
-Subject: [PATCH] linux-user: Add support for pivot_root syscall
-Message-ID: <alpine.DEB.2.22.394.2010121712560.2113823@davidl>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
-Organization: Opengear Digi
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-X-Originating-IP: [2406:3400:41b:89b0:329c:23ff:fef3:d412]
-X-ClientProxiedBy: CH2PR16CA0016.namprd16.prod.outlook.com
- (2603:10b6:610:50::26) To MN2PR10MB3791.namprd10.prod.outlook.com
- (2603:10b6:208:1bb::26)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kRxwr-00073k-DL; Mon, 12 Oct 2020 09:33:09 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:46311)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kRxwp-0006y5-5T; Mon, 12 Oct 2020 09:33:09 -0400
+Received: by mail-lf1-x142.google.com with SMTP id v6so2721755lfa.13;
+ Mon, 12 Oct 2020 06:33:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=5K086FO462wmszI+hBM+jjP61a7FY2AqPedu6W0K3fI=;
+ b=mk6DRktiMVqPBvLK/39/hJE3RYmk2BvBzIpcfAeOFdyBKLPD8U7nCSRswRYaKR2bgS
+ nYTz/vdpdoIPLR2G/XUzUCYUlgTp+vI+5lCyKC2jZ6MxmR4LmwdGbGI07UKX3Tb7JfKQ
+ tZs7uP8VydTFYzkPr9GSlmTVQtkroXMpYi/XGfsDeWJFiEJ+q2/O3aOmCR538qWQDHTR
+ d7XwHTANH5Ypz0HCXC6rMTL6jGJviff+jvjdm8Vn9SNQ9CsHIQLbcfFLCBX6YWlKEims
+ evtTD8UrRecGrq5gruy3st98jRoO6MPHYfgSUrf00VsWxwtv0CJc2NgIomJj1prTu4P4
+ Aubw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=5K086FO462wmszI+hBM+jjP61a7FY2AqPedu6W0K3fI=;
+ b=ionXQI2xBFw9/gwHoKb5rPLDYdwusva5OIsJeFajk+cfUKQBxA0wq1j8Cd5WxEiW7Y
+ WXFso7ZfzNikUY+JU3JCi5PVBL36Urry1Ajg0IspBQQFPHVAe/uqf1Yyr1YAP0R3Dvs4
+ Pe1P1hLvonxEgWNulv96qvKQO449YAdc3CHS8UR+HbN4WFApoXMhH38vnsu8Zf/3mnlT
+ PEwiDc7lNmKMib19ufpp86astxpShokjLb3LZPwSVCG7HJzKLNpCh2jJDlbg4fIQVO2G
+ 1h6LlQy4DbZB7br4it/RhHcgqhXDKwSUa7ehBnnbpqlOCfv0SFN9ZDx01awnmQLTq4Nk
+ UpUg==
+X-Gm-Message-State: AOAM533ccmNNIV4zdWF/JT4eXnpAnEEKkL+4UnGSwKG7YU5ZS0FcX9mx
+ bY0inBJ4RukK8sXdbX4DZvI=
+X-Google-Smtp-Source: ABdhPJyCuXcSyBcsvbr8oEpDz/K0d7EXfIb4Oy/iB1H0DBAjnuGSa/S59VaEKHpwk/DbDDr+9SgLdg==
+X-Received: by 2002:a19:fc1c:: with SMTP id a28mr8888921lfi.517.1602509584142; 
+ Mon, 12 Oct 2020 06:33:04 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id h17sm3284021lfj.188.2020.10.12.06.33.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2020 06:33:03 -0700 (PDT)
+Message-ID: <ea41618a040224242fced25fc3d09d3b1f75a06a.camel@gmail.com>
+Subject: [PATCH] hw/scsi: remove dead code
+From: Elena Afanasova <eafanasova@gmail.com>
+To: hare@suse.com, pbonzini@redhat.com, fam@euphon.net, qemu-block@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 12 Oct 2020 06:32:42 -0700
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [2406:3400:41b:89b0:329c:23ff:fef3:d412]
- (2406:3400:41b:89b0:329c:23ff:fef3:d412) by
- CH2PR16CA0016.namprd16.prod.outlook.com (2603:10b6:610:50::26) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3455.23 via Frontend Transport; Mon, 12 Oct 2020 07:14:28 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5d0b4d41-120b-4b38-ee84-08d86e7e760d
-X-MS-TrafficTypeDiagnostic: MN2PR10MB4077:
-X-Microsoft-Antispam-PRVS: <MN2PR10MB4077EC8A7CDB8652BBD551EC99070@MN2PR10MB4077.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:422;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: e6xbBIwr+1kEZW2XExkDIWBSNVonXMV87iC6iJkaMcQKgtgbv0SMLDmRXTXxz+d24BcHQVOOkbFj9Z6IsmECUj7DjSrISnAV6nbfIOT7s0nowBCHRA6r26rU6lZKkeO9JYyFhClm5zJVirZuWxiwgLx6xgw/9pYXxIT1OPM+lQ4rdsvQqQd+cAkQbpcacEPDjM/NpOLbVv+bhcoIqIdcOeoI0frHtB7kmvDiV8vDzJxXuifpkzDwqWvAo0aNyl+lqtTtvvkY2CgBLQbys0TwsDC3x+N3691jWZZvqllz9BDbpch4ORcILlctKHreRYN3
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR10MB3791.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(7916004)(4636009)(396003)(376002)(366004)(346002)(39840400004)(136003)(16526019)(5660300002)(33716001)(186003)(6916009)(6486002)(36916002)(316002)(8676002)(9686003)(52116002)(8936002)(66556008)(66476007)(478600001)(66946007)(86362001)(83380400001)(6666004)(2906002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: XTdoU42ab4luEcfT8dwG9JvuisiZo/Vp/QHRmbkiJwIc7G/t600P/u4IaBe0IH+iDfF/r25MpmczJ1rSwJug1wEYkfj16qb3L0odKUH1YgjGjcrdp5TtHr8kwLogBreFn/cfkYIF4p/lgahaUfXWB0tOFy6f7i31tFpP19d1Sm3mnJe3BQTJP0C+OI6tQnoAXVmVOXW7UafuwGu/Pe2gvAH3y/s+wgpBzhYmqtW/LRixxJ1SemnxRp6KdeZY44Ow7gT2TyaNK5Sy6ptOBTXIb4wV3VE0cw2GnWgEqGEHAaUogwytoMq2iysjpKIUhjgKTYZ9GDQMZSvhjwJYVmCMRlX9pdjMvKeHF7H8tlqzZLuh5XEiN8zpzX98jXIqGvYSc8XgYYRx2IypxhnbYRLZXeEbg9Bo/HmDKTvQIpUrEJcdwZ0RKlsgd3ldOtXCbKb0NAyIDvAPCk8P24+dlJBx1TZcR5KcOzobRXWAlznJcRu5MsrlOM+REaVBi9gnlpK9qlB97zEfk+jGKQY49FrCu0h/bf5txAm76ELoiAU3/2sfYTAz8pCj814Y+RgSOvMxPGHOcyWnUgctk0drMKL9EJ7IKCejO8VjiHlbP67d0mtPUdb5NQyoqkjF6PqUPvuTVz/4n0t5BOKxd4kce2wzqi/I10amqRSixYGDZuXWEIKMTclwSJFq2Om1bSH54iULD6NQAFzWBQFnsrLKDiGaMA==
-X-OriginatorOrg: digi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d0b4d41-120b-4b38-ee84-08d86e7e760d
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR10MB3791.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2020 07:14:30.2512 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: abb4cdb7-1b7e-483e-a143-7ebfd1184b9e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: VpEoBbUiuNauTvtLZwKUEYtJMHK/DxGXxVwK9kKfF+EoDOBCa3ncvoUjlFU2BhINnsw54gzqhhDwLh4BUqSBZQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR10MB4077
-X-BESS-ID: 1602486871-893000-18761-149197-1
-X-BESS-VER: 2019.3_20201009.2239
-X-BESS-Apparent-Source-IP: 104.47.55.109
-X-BESS-Outbound-Spam-Score: 0.00
-X-BESS-Outbound-Spam-Report: Code version 3.2,
- rules version 3.2.2.227497 [from 
- cloudscan11-64.us-east-2a.ess.aws.cudaops.com]
- Rule breakdown below
- pts rule name              description
- ---- ---------------------- --------------------------------
- 0.00 BSF_BESS_OUTBOUND      META: BESS Outbound 
- 0.00 MSGID_FROM_MTA_HEADER  META: Message-Id was added by a relay 
-X-BESS-Outbound-Spam-Status: SCORE=0.00 using account:ESS112744 scores of
- KILL_LEVEL=7.0 tests=BSF_BESS_OUTBOUND, MSGID_FROM_MTA_HEADER
-X-BESS-BRTS-Status: 1
-Received-SPF: pass client-ip=209.222.82.206;
- envelope-from=David.Leonard@digi.com; helo=outbound-ip24a.ess.barracuda.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:52:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=eafanasova@gmail.com; helo=mail-lf1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 12 Oct 2020 09:22:52 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,55 +75,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 07:14:36 -0000
+X-List-Received-Date: Mon, 12 Oct 2020 13:33:09 -0000
 
+Since MEGASAS_MAX_SGE is defined to be 128 the following if statement can be removed.
+Spotted by PVS-Studio.
 
-Tested on Ubuntu 20.04 x86_64 against arm-linux-gnueabi toolchain.
-
-Signed-off-by: David Leonard <David.Leonard@digi.com>
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 ---
-  linux-user/syscall.c | 20 ++++++++++++++++++++
-  1 file changed, 20 insertions(+)
+ hw/scsi/megasas.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 897d20c076..8143c8c280 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -345,6 +345,10 @@ _syscall5(int, kcmp, pid_t, pid1, pid_t, pid2, int, type,
-            unsigned long, idx1, unsigned long, idx2)
-  #endif
-
-+#if defined(TARGET_NR_pivot_root) && defined(__NR_pivot_root)
-+_syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
-+#endif
-+
-  /*
-   * It is assumed that struct statx is architecture independent.
-   */
-@@ -8834,6 +8838,22 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-          ret = get_errno(umount2(p, arg2));
-          unlock_user(p, arg1, 0);
-          return ret;
-+#endif
-+#if defined(TARGET_NR_pivot_root) && defined(__NR_pivot_root)
-+    case TARGET_NR_pivot_root:
-+        {
-+            void *p2;
-+            p  = lock_user_string(arg1);
-+            p2 = lock_user_string(arg2);
-+            if (!p || !p2) {
-+                ret = -TARGET_EFAULT;
-+            } else {
-+                ret = get_errno(pivot_root(p, p2));
-+            }
-+            unlock_user(p2, arg2, 0);
-+            unlock_user(p, arg1, 0);
-+        }
-+        return ret;
-  #endif
-      case TARGET_NR_ioctl:
-          return do_ioctl(arg1, arg2, arg3);
+diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+index e24c12d7ee..6dcaad55fa 100644
+--- a/hw/scsi/megasas.c
++++ b/hw/scsi/megasas.c
+@@ -2393,8 +2393,6 @@ static void megasas_scsi_realize(PCIDevice *dev, Error **errp)
+     }
+     if (s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
+         s->fw_sge = MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
+-    } else if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
+-        s->fw_sge = 128 - MFI_PASS_FRAME_SIZE;
+     } else {
+         s->fw_sge = 64 - MFI_PASS_FRAME_SIZE;
+     }
 -- 
 2.25.1
+
 
 
