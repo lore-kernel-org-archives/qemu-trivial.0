@@ -1,49 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSKEH-0003jS-0z
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 09:20:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40864)
+	id 1kSKR6-0005kP-1V
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 09:33:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kSKEF-0003j0-Cj; Tue, 13 Oct 2020 09:20:35 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5178 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kSKE9-0008ME-FN; Tue, 13 Oct 2020 09:20:35 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 60D42D6F03B004B82F7B;
- Tue, 13 Oct 2020 21:20:20 +0800 (CST)
-Received: from [10.174.186.14] (10.174.186.14) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 13 Oct 2020 21:20:11 +0800
-Subject: Re: [PATCH v2 1/8] migration: Do not use C99 // comments
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <quintela@redhat.com>, 
- <alex.chen@huawei.com>, <wanghao232@huawei.com>, <zhengchuan@huawei.com>
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1kSKR4-0005hN-J3
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 09:33:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53465)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1kSKR2-0001st-A5
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 09:33:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602596027;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=r0BP+gQqKln20CsI1CX4LB5dICD1Ue1fbnsy7cjJaAs=;
+ b=N+FZTE/ba7wHQuBMEpCof6yqBnI2qKpS7cCFvpWXwVF8SdDGeBHGjuFmeRcEPkjESF6aLi
+ EoBG/gZXmlPH7OZ6T+0Jh6TdXHcjKn+CT4DbnsmZgFY22iLCCE7+q8AjF8hYQw0fJDH+5q
+ kt9ewIL0lxyZpfYHyV7P4PqkB0zPegU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-336-zrn7wZtlO5elQGKDf5torg-1; Tue, 13 Oct 2020 09:33:43 -0400
+X-MC-Unique: zrn7wZtlO5elQGKDf5torg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DD06876E3B;
+ Tue, 13 Oct 2020 13:33:42 +0000 (UTC)
+Received: from work-vm (ovpn-114-238.ams2.redhat.com [10.36.114.238])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 80E0160C0F;
+ Tue, 13 Oct 2020 13:33:40 +0000 (UTC)
+Date: Tue, 13 Oct 2020 14:33:37 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Bihong Yu <yubihong@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, quintela@redhat.com,
+ alex.chen@huawei.com, wanghao232@huawei.com, zhengchuan@huawei.com
+Subject: Re: [PATCH v2 4/8] migration: Open brace '{' following struct go on
+ the same line
+Message-ID: <20201013133337.GD2920@work-vm>
 References: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
- <1602508140-11372-2-git-send-email-yubihong@huawei.com>
- <20201013093905.GB2920@work-vm>
-From: Bihong Yu <yubihong@huawei.com>
-Message-ID: <ae6666c0-e68e-3541-274e-de25d4bd3a22@huawei.com>
-Date: Tue, 13 Oct 2020 21:20:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ <1602508140-11372-5-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201013093905.GB2920@work-vm>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.14]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=yubihong@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 08:34:04
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1602508140-11372-5-git-send-email-yubihong@huawei.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:04:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -56,52 +76,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 13:20:35 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 13:33:50 -0000
 
-Thank you for your review. OK, I will try to rewrite the DPRINTF to use trace_ instead.
+* Bihong Yu (yubihong@huawei.com) wrote:
+> Signed-off-by: Bihong Yu <yubihong@huawei.com>
+> Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 
-On 2020/10/13 17:39, Dr. David Alan Gilbert wrote:
-> * Bihong Yu (yubihong@huawei.com) wrote:
->> Signed-off-by: Bihong Yu <yubihong@huawei.com>
->> Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
+Yes, I think that line probably predates the coding standard :-)
+
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
+> ---
+>  migration/migration.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> diff --git a/migration/migration.h b/migration/migration.h
+> index deb411a..99784b4 100644
+> --- a/migration/migration.h
+> +++ b/migration/migration.h
+> @@ -124,8 +124,7 @@ struct MigrationClass {
+>      DeviceClass parent_class;
+>  };
+>  
+> -struct MigrationState
+> -{
+> +struct MigrationState {
+>      /*< private >*/
+>      DeviceState parent_obj;
+>  
+> -- 
+> 1.8.3.1
 > 
-> another task at some point would be to rewrite the DPRINTF's in
-> migration/block.c to use trace_ instead.
-> 
->> ---
->>  migration/block.c | 2 +-
->>  migration/rdma.c  | 2 +-
->>  2 files changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/migration/block.c b/migration/block.c
->> index 737b649..4b8576b 100644
->> --- a/migration/block.c
->> +++ b/migration/block.c
->> @@ -40,7 +40,7 @@
->>  #define MAX_IO_BUFFERS 512
->>  #define MAX_PARALLEL_IO 16
->>  
->> -//#define DEBUG_BLK_MIGRATION
->> +/* #define DEBUG_BLK_MIGRATION */
->>  
->>  #ifdef DEBUG_BLK_MIGRATION
->>  #define DPRINTF(fmt, ...) \
->> diff --git a/migration/rdma.c b/migration/rdma.c
->> index 0340841..0eb42b7 100644
->> --- a/migration/rdma.c
->> +++ b/migration/rdma.c
->> @@ -1288,7 +1288,7 @@ const char *print_wrid(int wrid)
->>   * workload information or LRU information is available, do not attempt to use
->>   * this feature except for basic testing.
->>   */
->> -//#define RDMA_UNREGISTRATION_EXAMPLE
->> +/* #define RDMA_UNREGISTRATION_EXAMPLE */
->>  
->>  /*
->>   * Perform a non-optimized memory unregistration after every transfer
->> -- 
->> 1.8.3.1
->>
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
 
