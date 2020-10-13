@@ -1,58 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSHG4-0007Xd-NN
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 06:10:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50670)
+	id 1kSHde-0001Q3-Al
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 06:34:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kSHG3-0007Wt-N5
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 06:10:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44592)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSHdc-0001Po-Dm
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 06:34:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39324)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kSHG1-0000VB-WA
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 06:10:15 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSHda-0003ko-5B
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 06:34:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602583813;
+ s=mimecast20190719; t=1602585272;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=20Tnhwv58I+CBp820CK39SUNm4kh2KWvpA7aQkNlgIY=;
- b=ZEyhrHRMZ9UUHSv3SjHfhfCPVZP7N5OAyWjjl1qIcNZ7PB3hIPO+8xutpDya5Rkwjw+Xi+
- rGYIHGfIAkBk+RXRD3NB2yCmWkiWazUqprPdOFh/M6qFV9mmrj64O211x3CGacB+MzwVMq
- 5k6rfnWx3+Z17slUcSX61NIraK3Dx/A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-539-8g-p5NIONciuG_CqfuPNjg-1; Tue, 13 Oct 2020 06:10:10 -0400
-X-MC-Unique: 8g-p5NIONciuG_CqfuPNjg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 90B1886ABD2;
- Tue, 13 Oct 2020 10:10:08 +0000 (UTC)
-Received: from work-vm (ovpn-114-238.ams2.redhat.com [10.36.114.238])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 569FF27BD2;
- Tue, 13 Oct 2020 10:10:06 +0000 (UTC)
-Date: Tue, 13 Oct 2020 11:10:03 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Bihong Yu <yubihong@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, quintela@redhat.com,
- alex.chen@huawei.com, wanghao232@huawei.com, zhengchuan@huawei.com
-Subject: Re: [PATCH v2 3/8] migration: Add spaces around operator
-Message-ID: <20201013101003.GC2920@work-vm>
-References: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
- <1602508140-11372-4-git-send-email-yubihong@huawei.com>
+ bh=VoguNjI7oBCF4ito9ca0lw6czC+f+FC3PWqdy4LBhOk=;
+ b=Hxu1984y0DUREdigJPb6qDJWNKQQGyEffDzsCwZFlSvwvf+LvLInEw4JUUyXkF3psh7Zh0
+ 5zff5D0VzCLWVJH3wdoE34lvsAwRyPlgeuTrJo3xla838+rk4U0Ooiz66M3Z+XXD9CSysF
+ aZwMxWJFBVxZlav728ibs4JujYOMW1o=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-41-tq68Z_dDNPWvUjW4N0kg6Q-1; Tue, 13 Oct 2020 06:34:29 -0400
+X-MC-Unique: tq68Z_dDNPWvUjW4N0kg6Q-1
+Received: by mail-wr1-f69.google.com with SMTP id 2so1531310wrd.14
+ for <qemu-trivial@nongnu.org>; Tue, 13 Oct 2020 03:34:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VoguNjI7oBCF4ito9ca0lw6czC+f+FC3PWqdy4LBhOk=;
+ b=COnmdnV2ARsxO1wCPh05+x12Mkj0UV5f6paXcloWuf67IF5NQYej6g+58Z4igMCbea
+ AaOMq1glh/T4jtLidRYqoEBBgatylxBrU2vmDSwtQMOxIevHG2PDXXJDyEs4U/Lk0K0y
+ 6oHPfCyEnl2b6jXsCkvh/9DHuo6RZPdcce7KHI10FPtzXBWwFDD/Q8zcZ6x2uYM/ElqI
+ kf5QAsne3nkpHd0Zj04l3jEDj9UhbMchpD1kErTiEklSd/32skglIewknGopfGdftvRM
+ jMCPFCJEu7FhD6Nt9mVBaDYF67RDBAwD6VdSkciboAZD3OCzdy8EZYFx7Gtwc/B7RPZN
+ SFZg==
+X-Gm-Message-State: AOAM530fAuW7laSYqnY9en7T9RQTGgMMTfjpUraifJRuSF0R8OO1CoSS
+ pCcqa/fByRxWics+KqpMRIrpbHT6f4Y7M3yiQcDOk27n6Jr29nKLknh74fh8BcgrcTL0VbYWfH2
+ sNYYmxukRK9k5GZuizg==
+X-Received: by 2002:a1c:bd43:: with SMTP id n64mr14194481wmf.113.1602585268719; 
+ Tue, 13 Oct 2020 03:34:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXxAhYHpQXHMAHqMNLnEgFO7iGslPWdKPALdTKqMPOCyGzdTryyT9Cc7ETObocvJFFMa7KbQ==
+X-Received: by 2002:a1c:bd43:: with SMTP id n64mr14194463wmf.113.1602585268523; 
+ Tue, 13 Oct 2020 03:34:28 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id p4sm22652218wrf.67.2020.10.13.03.34.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Oct 2020 03:34:27 -0700 (PDT)
+Subject: Re: [PATCH v3] hw/core/qdev-properties-system: Fix pci bus range in
+ set_pci_host_devaddr()
+To: Klaus Herman <kherman@inbox.lv>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <20201013092014.34059-1-kherman@inbox.lv>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <9f1303e7-90f4-aeb4-a7e9-0088b9f3c741@redhat.com>
+Date: Tue, 13 Oct 2020 12:34:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <1602508140-11372-4-git-send-email-yubihong@huawei.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20201013092014.34059-1-kherman@inbox.lv>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:06:42
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -61,8 +80,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,116 +95,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 10:10:16 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 10:34:36 -0000
 
-* Bihong Yu (yubihong@huawei.com) wrote:
-> Signed-off-by: Bihong Yu <yubihong@huawei.com>
-> Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
-
-Yes that's OK, I'm a bit sturprised we need the space afte rthe * in the
-VMStateDescription case, I wouldn't necessarily go and change them all.
-
-
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
+On 10/13/20 11:20 AM, Klaus Herman wrote:
+> Fixes: bccb20c49df ("hw/core/qdev-properties: Use qemu_strtoul() in set_pci_host_devaddr()")
+> Signed-off-by: Klaus Herman <kherman@inbox.lv>
 > ---
->  migration/migration.c    |  4 ++--
->  migration/postcopy-ram.c |  2 +-
->  migration/ram.c          |  2 +-
->  migration/savevm.c       |  2 +-
->  migration/vmstate.c      | 10 +++++-----
->  5 files changed, 10 insertions(+), 10 deletions(-)
+>   hw/core/qdev-properties-system.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/migration/migration.c b/migration/migration.c
-> index 0575ecb..e050f57 100644
-> --- a/migration/migration.c
-> +++ b/migration/migration.c
-> @@ -2478,8 +2478,8 @@ static void migrate_handle_rp_req_pages(MigrationState *ms, const char* rbname,
->       * Since we currently insist on matching page sizes, just sanity check
->       * we're being asked for whole host pages.
->       */
-> -    if (start & (our_host_ps-1) ||
-> -       (len & (our_host_ps-1))) {
-> +    if (start & (our_host_ps - 1) ||
-> +       (len & (our_host_ps - 1))) {
->          error_report("%s: Misaligned page request, start: " RAM_ADDR_FMT
->                       " len: %zd", __func__, start, len);
->          mark_source_rp_bad(ms);
-> diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-> index 0a2f88a8..eea92bb 100644
-> --- a/migration/postcopy-ram.c
-> +++ b/migration/postcopy-ram.c
-> @@ -403,7 +403,7 @@ bool postcopy_ram_supported_by_host(MigrationIncomingState *mis)
->                       strerror(errno));
->          goto out;
->      }
-> -    g_assert(((size_t)testarea & (pagesize-1)) == 0);
-> +    g_assert(((size_t)testarea & (pagesize - 1)) == 0);
->  
->      reg_struct.range.start = (uintptr_t)testarea;
->      reg_struct.range.len = pagesize;
-> diff --git a/migration/ram.c b/migration/ram.c
-> index 6ed4f9e..0aea78f 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -1563,7 +1563,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
->          rs->last_req_rb = ramblock;
->      }
->      trace_ram_save_queue_pages(ramblock->idstr, start, len);
-> -    if (start+len > ramblock->used_length) {
-> +    if (start + len > ramblock->used_length) {
->          error_report("%s request overrun start=" RAM_ADDR_FMT " len="
->                       RAM_ADDR_FMT " blocklen=" RAM_ADDR_FMT,
->                       __func__, start, len, ramblock->used_length);
-> diff --git a/migration/savevm.c b/migration/savevm.c
-> index d2e141f..9e95df1 100644
-> --- a/migration/savevm.c
-> +++ b/migration/savevm.c
-> @@ -521,7 +521,7 @@ static const VMStateDescription vmstate_configuration = {
->          VMSTATE_VBUFFER_ALLOC_UINT32(name, SaveState, 0, NULL, len),
->          VMSTATE_END_OF_LIST()
->      },
-> -    .subsections = (const VMStateDescription*[]) {
-> +    .subsections = (const VMStateDescription * []) {
->          &vmstate_target_page_bits,
->          &vmstate_capabilites,
->          &vmstate_uuid,
-> diff --git a/migration/vmstate.c b/migration/vmstate.c
-> index bafa890..e9d2aef 100644
-> --- a/migration/vmstate.c
-> +++ b/migration/vmstate.c
-> @@ -32,13 +32,13 @@ static int vmstate_n_elems(void *opaque, const VMStateField *field)
->      if (field->flags & VMS_ARRAY) {
->          n_elems = field->num;
->      } else if (field->flags & VMS_VARRAY_INT32) {
-> -        n_elems = *(int32_t *)(opaque+field->num_offset);
-> +        n_elems = *(int32_t *)(opaque + field->num_offset);
->      } else if (field->flags & VMS_VARRAY_UINT32) {
-> -        n_elems = *(uint32_t *)(opaque+field->num_offset);
-> +        n_elems = *(uint32_t *)(opaque + field->num_offset);
->      } else if (field->flags & VMS_VARRAY_UINT16) {
-> -        n_elems = *(uint16_t *)(opaque+field->num_offset);
-> +        n_elems = *(uint16_t *)(opaque + field->num_offset);
->      } else if (field->flags & VMS_VARRAY_UINT8) {
-> -        n_elems = *(uint8_t *)(opaque+field->num_offset);
-> +        n_elems = *(uint8_t *)(opaque + field->num_offset);
->      }
->  
->      if (field->flags & VMS_MULTIPLY_ELEMENTS) {
-> @@ -54,7 +54,7 @@ static int vmstate_size(void *opaque, const VMStateField *field)
->      int size = field->size;
->  
->      if (field->flags & VMS_VBUFFER) {
-> -        size = *(int32_t *)(opaque+field->size_offset);
-> +        size = *(int32_t *)(opaque + field->size_offset);
->          if (field->flags & VMS_MULTIPLY) {
->              size *= field->size;
->          }
-> -- 
-> 1.8.3.1
+> diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+> index 49bdd12..e3dca56 100644
+> --- a/hw/core/qdev-properties-system.c
+> +++ b/hw/core/qdev-properties-system.c
+> @@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
+>       bus = val;
+>   
+>       p = (char *)e + 1;
+> -    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
+> +    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
+
+As this is used to check both bus/slot range, I sent a different
+approach to fix this issue:
+https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg03604.html
+
+>           goto inval;
+>       }
+>       if (*e == ':') {
 > 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
