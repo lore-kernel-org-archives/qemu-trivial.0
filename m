@@ -1,58 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSIq1-0007ru-5G
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44298)
+	id 1kSJVQ-0002by-2b
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 08:34:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpy-0007mv-EV; Tue, 13 Oct 2020 07:51:26 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:51917)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSJVN-0002Zq-9Z; Tue, 13 Oct 2020 08:34:13 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:5177 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpw-00050A-8s; Tue, 13 Oct 2020 07:51:26 -0400
-Received: from localhost.localdomain ([82.252.141.186]) by
- mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MNtny-1kqYsw1Nnc-00OIj1; Tue, 13 Oct 2020 13:51:10 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Sergei Trofimovich <slyfox@gentoo.org>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 14/14] meson.build: drop duplicate 'sparc64' entry
-Date: Tue, 13 Oct 2020 13:50:52 +0200
-Message-Id: <20201013115052.133355-15-laurent@vivier.eu>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201013115052.133355-1-laurent@vivier.eu>
-References: <20201013115052.133355-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSJVK-0002YV-O9; Tue, 13 Oct 2020 08:34:13 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 6068FE123A333A2F22D7;
+ Tue, 13 Oct 2020 20:34:02 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Tue, 13 Oct 2020
+ 20:33:56 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <mreitz@redhat.com>, <vsementsov@virtuozzo.com>, <stefanha@redhat.com>,
+ <fam@euphon.net>, <eblake@redhat.com>, <jsnow@redhat.com>,
+ <quintela@redhat.com>, <dgilbert@redhat.com>,
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>,
+ <qemu-block@nongnu.org>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Laurent Vivier <laurent@vivier.eu>, Li Qiang
+ <liq3ea@gmail.com>
+Subject: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized variable
+ warning
+Date: Tue, 13 Oct 2020 20:33:40 +0800
+Message-ID: <20201013123340.1850548-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jBEdeiOklT/eZ0CDQWnCxpX1YMzRpDwu1r6q/zXsIQOBnj9OvJM
- zwLPhUCWGKS0rctwvfBDXpJC5up12co8CEaqRyyhrg9kbR06UvlekKPPggAeaQo6771gGnR
- DqM/pQzh/s0ssyW3ksG3tJIq1u3T1U+W+9JbePER3t9G2CY1O7LvovqTVOmuJV1IMe3RA0M
- bzngrhJksfIEMkQzAaZfA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xOQSOvg/1Mo=:vGbXTggR2dxCf1UicioCo5
- WSKiyHy9ZxDWEnNRixS+9wVpStI0jrwzIZuqJmlXGPlU9MndbxyoMEtC13sNsjJr6uiVmIqN4
- v4B2sG9wCzLpkizhorZZ2kiOek1Mhf7UZV/d7wGvZ0qcxE23l0J22MggG6hykebd62wePlkKl
- r4XFhYfEtvqNckpMQnzH+T/uJRnvleDkph+656ZD+3hfNHH4x5vdsKiYvLHq3la8rCWABvcpU
- SXjcScBo5FUdlQ/s7wnLyiwwWYeGct+KKQ8V74H/KobrsTRAzTLqS1PRSYKCNnJ0oC0aQtxVD
- yPnl5wLIyEWMeCLmId0QiaL1EVJcjggid3uKOnDbH+Em8xqJ5B92A6MJc+TW0ASpHdHlNwmb4
- CMfmPBHIoF9qAlCGbEE82UguiGvGlDGsKUaRuIVtBIueS2H2Bvd9W4ONtfj9tK/QQS4Xp9q4F
- bpbvJqLtHh4Oy4HuUBmiGDS0IXs20BSr9v8RZ2EsfJjhuCrirXtFXRi9fNBcdF72w6IPEsVV1
- briL9//wdorT7K/cmh8iPTpLhN60HDBHKAdCCZaHftg7zALQE0JVCTUtzQQSkJfHLxSG8jHrC
- f/9tuBKMxs9e9WKMmAP283sUQFdMfoK2Zf4JWMmU8Fj+XK9OTSz4qFy1ZzyIqC6+degjmCREX
- w3GW07ELHzjJvOX4gRBsDEdEZlVV44ZdY1zhu/iNcrH81ax0HKttDASyvZR3edyHm/z7n07NT
- JY/2Z5u6JyFTGQvuFegRHrh3LND3e2km6yzJtQugqpxSu21trLnUofYotmoQEe6Zau6niTZyv
- 63chwLv2mueDxv1wb3Bh+N5Ho6shAoVzejDSemg/uLjUoYCsUPLRVMv6HTu48hEosrfsPg9
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:50:58
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 08:34:04
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,34 +56,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 11:51:27 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 12:34:13 -0000
 
-From: Sergei Trofimovich <slyfox@gentoo.org>
+A default value is provided for the variable 'bitmap_name' to avoid compiler warning.
 
-CC: Laurent Vivier <laurent@vivier.eu>
-CC: qemu-trivial@nongnu.org
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
-Message-Id: <20201012175719.2573367-1-slyfox@gentoo.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+The compiler show warning:
+migration/block-dirty-bitmap.c:1090:13: warning: ‘bitmap_name’
+may be used uninitialized in this function [-Wmaybe-uninitialized]
+       g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
- meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Li Qiang <liq3ea@gmail.com>
+---
+ migration/block-dirty-bitmap.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 17c89c87c626..392d326f4563 100644
---- a/meson.build
-+++ b/meson.build
-@@ -41,7 +41,7 @@ have_block = have_system or have_tools
- python = import('python').find_installation()
+diff --git a/migration/block-dirty-bitmap.c b/migration/block-dirty-bitmap.c
+index 5bef793ac0..bcb79c04ce 100644
+--- a/migration/block-dirty-bitmap.c
++++ b/migration/block-dirty-bitmap.c
+@@ -1064,15 +1064,13 @@ static int dirty_bitmap_load_header(QEMUFile *f, DBMLoadState *s,
+     assert(nothing || s->cancelled || !!alias_map == !!bitmap_alias_map);
  
- supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
--supported_cpus = ['ppc', 'ppc64', 's390x', 'sparc64', 'riscv32', 'riscv64', 'x86', 'x86_64',
-+supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
-   'arm', 'aarch64', 'mips', 'mips64', 'sparc', 'sparc64']
+     if (s->flags & DIRTY_BITMAP_MIG_FLAG_BITMAP_NAME) {
+-        const char *bitmap_name;
+-
+         if (!qemu_get_counted_string(f, s->bitmap_alias)) {
+             error_report("Unable to read bitmap alias string");
+             return -EINVAL;
+         }
  
- cpu = host_machine.cpu_family()
+-        if (!s->cancelled) {
+-            if (bitmap_alias_map) {
++        const char *bitmap_name = s->bitmap_alias;
++        if (!s->cancelled && bitmap_alias_map) {
+                 bitmap_name = g_hash_table_lookup(bitmap_alias_map,
+                                                   s->bitmap_alias);
+                 if (!bitmap_name) {
+@@ -1081,9 +1079,6 @@ static int dirty_bitmap_load_header(QEMUFile *f, DBMLoadState *s,
+                                  s->bs->node_name, s->node_alias);
+                     cancel_incoming_locked(s);
+                 }
+-            } else {
+-                bitmap_name = s->bitmap_alias;
+-            }
+         }
+ 
+         if (!s->cancelled) {
 -- 
-2.26.2
+2.23.0
 
 
