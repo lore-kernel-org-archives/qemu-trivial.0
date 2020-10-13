@@ -1,82 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEh2-0008OC-IY
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:25:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38930)
+	id 1kSEjO-0002jE-UY
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:28:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39500)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEgz-0008Mn-P5
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:25:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56516)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEgw-00047y-N2
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:25:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602573949;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xPZTApVmDjzuTCHJXqTEGqtiyH2TxDQ6tb77AUCO9jg=;
- b=IYhVUhPyau/uNrAo9B7W+rnb4Vx6RcsYAqPVus5OAtUmxCg7INgVgbm/MJZaZyoj4A1Bqr
- rnpl0eSeBB0knEYT1LWiLEsXS/MMZsvZZlgKy7o0MLUr6FaJUDvbhJsw//DxpKUzkLDV2y
- LXtS0eU23+VwkLs+49Dnh1DGN/c/9yg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-242-LzPqEUXtOm6fywbhdFO8jA-1; Tue, 13 Oct 2020 03:25:46 -0400
-X-MC-Unique: LzPqEUXtOm6fywbhdFO8jA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B5C1879511;
- Tue, 13 Oct 2020 07:25:44 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
- [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D041D60C07;
- Tue, 13 Oct 2020 07:25:32 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id E3A271750A; Tue, 13 Oct 2020 09:25:31 +0200 (CEST)
-Date: Tue, 13 Oct 2020 09:25:31 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-block@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
- qemu-trivial@nongnu.org,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH 10/10] hw/isa: Add the ISA_IRQ_IDE_DEFAULT definition
-Message-ID: <20201013072531.6zlfygj74dutgoue@sirius.home.kraxel.org>
-References: <20201011193229.3210774-1-f4bug@amsat.org>
- <20201011193229.3210774-11-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSEjM-0002gs-LP; Tue, 13 Oct 2020 03:28:20 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2546 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSEjK-0004LG-L4; Tue, 13 Oct 2020 03:28:20 -0400
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 03D4C96DDA76431286A1;
+ Tue, 13 Oct 2020 15:28:07 +0800 (CST)
+Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Tue, 13 Oct 2020 15:28:06 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.75]) by
+ dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0487.000;
+ Tue, 13 Oct 2020 15:27:56 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Li Qiang <liq3ea@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+CC: Qemu Developers <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Fam Zheng <fam@euphon.net>,
+ "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>, John Snow
+ <jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, "Dr. David Alan
+ Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>, ganqixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: RE: [PATCH] migration/block-dirty-bitmap: fix uninitialized
+ variable warning
+Thread-Topic: [PATCH] migration/block-dirty-bitmap: fix uninitialized
+ variable warning
+Thread-Index: AQHWnvWXB6+3xHhZ7kqhgehHhToetKmTlYMAgACocACAAKJqUA==
+Date: Tue, 13 Oct 2020 07:27:56 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B9B1FDA@dggemm531-mbx.china.huawei.com>
+References: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
+ <2b2bc826-0785-66e2-3515-b98abfac26ca@vivier.eu>
+ <CAKXe6SL8fRN=-iqFEiHeWqZm0F+T+8vkc7qJeUz6izQcZQ2Q-A@mail.gmail.com>
+In-Reply-To: <CAKXe6SL8fRN=-iqFEiHeWqZm0F+T+8vkc7qJeUz6izQcZQ2Q-A@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20201011193229.3210774-11-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:04:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:28:07
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,15 +69,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 07:25:54 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 07:28:21 -0000
 
-On Sun, Oct 11, 2020 at 09:32:29PM +0200, Philippe Mathieu-Daudé wrote:
-> The IDE controller uses IRQ #14 by default. Add this
-> default definition to the IsaIrqNumber enum.
-
-primary, while secondary uses IRQ 15.
-
-take care,
-  Gerd
-
+bWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4gPiBiL21pZ3JhdGlvbi9ibG9jay1k
+aXJ0eS1iaXRtYXAuYyBpbmRleCA1YmVmNzkzYWMwLi5lMDllYTRmMjJiIDEwMDY0NA0KPiA+ID4g
+LS0tIGEvbWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4gPiArKysgYi9taWdyYXRp
+b24vYmxvY2stZGlydHktYml0bWFwLmMNCj4gPiA+IEBAIC0xMDg0LDkgKzEwODQsNyBAQCBzdGF0
+aWMgaW50IGRpcnR5X2JpdG1hcF9sb2FkX2hlYWRlcihRRU1VRmlsZQ0KPiAqZiwgREJNTG9hZFN0
+YXRlICpzLA0KPiA+ID4gICAgICAgICAgICAgIH0gZWxzZSB7DQo+ID4gPiAgICAgICAgICAgICAg
+ICAgIGJpdG1hcF9uYW1lID0gcy0+Yml0bWFwX2FsaWFzOw0KPiA+ID4gICAgICAgICAgICAgIH0N
+Cj4gPiA+IC0gICAgICAgIH0NCj4gPiA+DQo+ID4gPiAtICAgICAgICBpZiAoIXMtPmNhbmNlbGxl
+ZCkgew0KPiA+ID4gICAgICAgICAgICAgIGdfc3RybGNweShzLT5iaXRtYXBfbmFtZSwgYml0bWFw
+X25hbWUsDQo+IHNpemVvZihzLT5iaXRtYXBfbmFtZSkpOw0KPiA+ID4gICAgICAgICAgICAgIHMt
+PmJpdG1hcCA9IGJkcnZfZmluZF9kaXJ0eV9iaXRtYXAocy0+YnMsDQo+ID4gPiBzLT5iaXRtYXBf
+bmFtZSk7DQo+ID4gPg0KPiA+ID4NCj4gPg0KPiA+IEkgZG9uJ3QgdGhpbmsgaXQncyBjb3JyZWN0
+IGFzICJjYW5jZWxfaW5jb21pbmdfbG9ja2VkKHMpIiBjYW4gY2hhbmdlDQo+ID4gdGhlIHZhbHVl
+IG9mICJzLT5jYW5jZWxsZWQiLg0KPiA+DQpIaSBMYXVyZW50LA0KICAgWWVzLCB5b3UncmUgcmln
+aHQuICBJdCB3aWxsIGJlIG1vZGlmaWVkIHZhbHVlIHdoZW4gY2FuY2VsX2luY29taW5nX2xvY2tl
+ZCBpcyBleGVjdXRlZC4NClRoYW5rcy4NCg0KPiBTbyBJIHRoaW5rIHRoaXMgY2FuIHNpbXBseSBh
+c3NpZ24gJ2JpdG1hcF9uYW1lJyB0byBOVUxMIHRvIG1ha2UNCj4gY29tcGlsZXIgaGFwcHkuDQo+
+DQpIaSBRaWFuZywNCiBJIHRoaW5rIHlvdXIgc3VnZ2VzdGlvbiBpcyBmZWFzaWJsZS4gDQpCdXQg
+Y2FuIHdlIGp1c3QgZ2l2ZSBpdCBhIGRlZmF1bHQgdmFsdWUgd2hlbiBkZWZpbmluZyB2YXJpYWJs
+ZXM/DQoNCkkgdGhpbmsgdGhlIGRlZmF1bHQgdmFsdWUgY291bGQgYmUgImJpdG1hcF9uYW1lID0g
+cy0+Yml0bWFwX2FsaWFzIiwgDQphbmQgdGhlbiB3ZSBjYW4gZGVsZXRlIHRoZSBlbHNlIHN0YXRl
+bWVudCBhYm92ZS4NCg0KVGhhbmtzLA0KQ2hlbiBRdW4NCg==
 
