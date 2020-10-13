@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEjO-0002jE-UY
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:28:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39500)
+	id 1kSF2I-0005nL-Ue
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:47:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kSEjM-0002gs-LP; Tue, 13 Oct 2020 03:28:20 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2546 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kSF2H-0005n0-Ge; Tue, 13 Oct 2020 03:47:53 -0400
+Received: from shark3.inbox.lv ([194.152.32.83]:56345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kSEjK-0004LG-L4; Tue, 13 Oct 2020 03:28:20 -0400
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 03D4C96DDA76431286A1;
- Tue, 13 Oct 2020 15:28:07 +0800 (CST)
-Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
- DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Tue, 13 Oct 2020 15:28:06 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.75]) by
- dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0487.000;
- Tue, 13 Oct 2020 15:27:56 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Li Qiang <liq3ea@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-CC: Qemu Developers <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Fam Zheng <fam@euphon.net>,
- "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>, John Snow
- <jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, "Dr. David Alan
- Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>, ganqixin
- <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
-Subject: RE: [PATCH] migration/block-dirty-bitmap: fix uninitialized
- variable warning
-Thread-Topic: [PATCH] migration/block-dirty-bitmap: fix uninitialized
- variable warning
-Thread-Index: AQHWnvWXB6+3xHhZ7kqhgehHhToetKmTlYMAgACocACAAKJqUA==
-Date: Tue, 13 Oct 2020 07:27:56 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B9B1FDA@dggemm531-mbx.china.huawei.com>
-References: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
- <2b2bc826-0785-66e2-3515-b98abfac26ca@vivier.eu>
- <CAKXe6SL8fRN=-iqFEiHeWqZm0F+T+8vkc7qJeUz6izQcZQ2Q-A@mail.gmail.com>
-In-Reply-To: <CAKXe6SL8fRN=-iqFEiHeWqZm0F+T+8vkc7qJeUz6izQcZQ2Q-A@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kSF2F-0006zL-3S; Tue, 13 Oct 2020 03:47:53 -0400
+Received: from shark3.inbox.lv (localhost [127.0.0.1])
+ by shark3-out.inbox.lv (Postfix) with ESMTP id 099D02804C3;
+ Tue, 13 Oct 2020 10:47:47 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=inbox.lv; s=30062014;
+ t=1602575267; bh=AufYZVGJL9mFLRLp54IndlrlAk+e+z634+y7dqlzhS4=;
+ h=From:To:Cc:Subject:Date;
+ b=ciNLRZzw0ZZKcA2XZlZ/1kbj5pWOc2OA0T5SYi+kUZqXOxOjWhKqVafA6jgDemyb6
+ ydXihyvcHKt70sy1q895wMWSYerpIqSFItd4LIY6njPY1VBeZSNYb6S2zWVRSyEC6U
+ 2azLNV3SPD35XCl9mv1g87JEI7XwoK6s6PRwD2CA=
+Received: from localhost (localhost [127.0.0.1])
+ by shark3-in.inbox.lv (Postfix) with ESMTP id 0140F280418;
+ Tue, 13 Oct 2020 10:47:47 +0300 (EEST)
+Received: from shark3.inbox.lv ([127.0.0.1])
+ by localhost (shark3.inbox.lv [127.0.0.1]) (spamfilter, port 35)
+ with ESMTP id 4WXzeauM-A6M; Tue, 13 Oct 2020 10:47:46 +0300 (EEST)
+Received: from mail.inbox.lv (pop1 [127.0.0.1])
+ by shark3-in.inbox.lv (Postfix) with ESMTP id BDE492804C5;
+ Tue, 13 Oct 2020 10:47:46 +0300 (EEST)
+Received: from localhost.localdomain (net-93-145-34-111.cust.vodafonedsl.it
+ [93.145.34.111]) (Authenticated sender: kherman@inbox.lv)
+ by mail.inbox.lv (Postfix) with ESMTPA id C4D2B189A6;
+ Tue, 13 Oct 2020 10:47:44 +0300 (EEST)
+From: Klaus Herman <kherman@inbox.lv>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Klaus Herman <kherman@inbox.lv>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH v2] hw/core/qdev-properties-system: Fix pci bus range in
+ set_pci_host_devaddr()
+Date: Tue, 13 Oct 2020 07:47:37 +0000
+Message-Id: <20201013074737.20668-1-kherman@inbox.lv>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:28:07
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: OK
+X-ESPOL: G4mES3oDmH1DpsO6NYVt5v+GstuyV1kquSb9yrQ39RAqu7XdwKB4MDDVB/ecFHvdbg==
+Received-SPF: pass client-ip=194.152.32.83; envelope-from=kherman@inbox.lv;
+ helo=shark3.inbox.lv
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:47:47
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -69,28 +69,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 07:28:21 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 07:47:53 -0000
 
-bWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4gPiBiL21pZ3JhdGlvbi9ibG9jay1k
-aXJ0eS1iaXRtYXAuYyBpbmRleCA1YmVmNzkzYWMwLi5lMDllYTRmMjJiIDEwMDY0NA0KPiA+ID4g
-LS0tIGEvbWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4gPiArKysgYi9taWdyYXRp
-b24vYmxvY2stZGlydHktYml0bWFwLmMNCj4gPiA+IEBAIC0xMDg0LDkgKzEwODQsNyBAQCBzdGF0
-aWMgaW50IGRpcnR5X2JpdG1hcF9sb2FkX2hlYWRlcihRRU1VRmlsZQ0KPiAqZiwgREJNTG9hZFN0
-YXRlICpzLA0KPiA+ID4gICAgICAgICAgICAgIH0gZWxzZSB7DQo+ID4gPiAgICAgICAgICAgICAg
-ICAgIGJpdG1hcF9uYW1lID0gcy0+Yml0bWFwX2FsaWFzOw0KPiA+ID4gICAgICAgICAgICAgIH0N
-Cj4gPiA+IC0gICAgICAgIH0NCj4gPiA+DQo+ID4gPiAtICAgICAgICBpZiAoIXMtPmNhbmNlbGxl
-ZCkgew0KPiA+ID4gICAgICAgICAgICAgIGdfc3RybGNweShzLT5iaXRtYXBfbmFtZSwgYml0bWFw
-X25hbWUsDQo+IHNpemVvZihzLT5iaXRtYXBfbmFtZSkpOw0KPiA+ID4gICAgICAgICAgICAgIHMt
-PmJpdG1hcCA9IGJkcnZfZmluZF9kaXJ0eV9iaXRtYXAocy0+YnMsDQo+ID4gPiBzLT5iaXRtYXBf
-bmFtZSk7DQo+ID4gPg0KPiA+ID4NCj4gPg0KPiA+IEkgZG9uJ3QgdGhpbmsgaXQncyBjb3JyZWN0
-IGFzICJjYW5jZWxfaW5jb21pbmdfbG9ja2VkKHMpIiBjYW4gY2hhbmdlDQo+ID4gdGhlIHZhbHVl
-IG9mICJzLT5jYW5jZWxsZWQiLg0KPiA+DQpIaSBMYXVyZW50LA0KICAgWWVzLCB5b3UncmUgcmln
-aHQuICBJdCB3aWxsIGJlIG1vZGlmaWVkIHZhbHVlIHdoZW4gY2FuY2VsX2luY29taW5nX2xvY2tl
-ZCBpcyBleGVjdXRlZC4NClRoYW5rcy4NCg0KPiBTbyBJIHRoaW5rIHRoaXMgY2FuIHNpbXBseSBh
-c3NpZ24gJ2JpdG1hcF9uYW1lJyB0byBOVUxMIHRvIG1ha2UNCj4gY29tcGlsZXIgaGFwcHkuDQo+
-DQpIaSBRaWFuZywNCiBJIHRoaW5rIHlvdXIgc3VnZ2VzdGlvbiBpcyBmZWFzaWJsZS4gDQpCdXQg
-Y2FuIHdlIGp1c3QgZ2l2ZSBpdCBhIGRlZmF1bHQgdmFsdWUgd2hlbiBkZWZpbmluZyB2YXJpYWJs
-ZXM/DQoNCkkgdGhpbmsgdGhlIGRlZmF1bHQgdmFsdWUgY291bGQgYmUgImJpdG1hcF9uYW1lID0g
-cy0+Yml0bWFwX2FsaWFzIiwgDQphbmQgdGhlbiB3ZSBjYW4gZGVsZXRlIHRoZSBlbHNlIHN0YXRl
-bWVudCBhYm92ZS4NCg0KVGhhbmtzLA0KQ2hlbiBRdW4NCg==
+Signed-off-by: Klaus Herman <kherman@inbox.lv>
+---
+ hw/core/qdev-properties-system.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 49bdd12..e3dca56 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
+     bus = val;
+ 
+     p = (char *)e + 1;
+-    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
++    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
+         goto inval;
+     }
+     if (*e == ':') {
+-- 
+2.28.0
+
 
