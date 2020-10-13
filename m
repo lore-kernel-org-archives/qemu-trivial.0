@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSIph-00074q-JM
+	id 1kSIph-00075O-RM
 	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44112)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpd-0006x4-0N; Tue, 13 Oct 2020 07:51:05 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:40879)
+ id 1kSIpe-0006yl-R9; Tue, 13 Oct 2020 07:51:06 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:43169)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpa-0004x9-3C; Tue, 13 Oct 2020 07:51:04 -0400
+ id 1kSIpb-0004xV-Tu; Tue, 13 Oct 2020 07:51:06 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MWjUc-1kzOZd2WjY-00X49P; Tue, 13 Oct 2020 13:50:57 +0200
+ id 1MuDoR-1kBSu60cDF-00udPG; Tue, 13 Oct 2020 13:50:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 02/14] target/i386/cpu: Update comment that mentions Texinfo
-Date: Tue, 13 Oct 2020 13:50:40 +0200
-Message-Id: <20201013115052.133355-3-laurent@vivier.eu>
+Subject: [PULL 04/14] tests/test-char: Use a proper fallthrough comment
+Date: Tue, 13 Oct 2020 13:50:42 +0200
+Message-Id: <20201013115052.133355-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013115052.133355-1-laurent@vivier.eu>
 References: <20201013115052.133355-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VT0tRzQgQqS3Xn0HZeurVsM0NOuomd8i+kDrc9WfR6rfSC0AD65
- KBlMjcoY5E58Xcty1zGECxlCi8s2c595UvYVGDFNH0umsQdIJrFpbdTL0FP5v3NBFgQ+4h0
- N9SiWL6Gkioww76ygNYNSrQtAJconPb6d09XCz/hpaAz6fCt/m+jmWNB3lUGiM3dWctllK1
- O3Ignd1JhFvN5Ks8YPu2w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hIZlfULOJxg=:fLkuQqNTb1EpEo+OnhFiSz
- KpB/NQVx0vRNt4pm6N9vRBxfFYZG29B5+No+yZAs20lonUv8pBRGdnAsbPRUwM00lUEYmUNkh
- NzNzxEHqbwyFKED3BU1mlwXIj2H46lWYayhOL3HhjXt+K9zAat9WQgC6G0JEf5qKVH7Deo5Nu
- UNR93boD7E0aW0icFIHOUbVgISzloDu9q/WvqtRZCfNOwET3pwuhgOK1NHyB7gJ0EPnEt8L5N
- YSGBdrz2zKnIPoLZ8uDdhTo5Oypn/e8n5wFT5C/X8rMOnQgfIK1of3yIfsCpxPacQ+SBx+/bv
- SXkFmGR6FyGKCvS2l1NF0um2D9YjnHxTb2DKoNPVPTT7OMkLWT/3f7FguwBgEgdGoFE2GMu38
- D/u3SW6X56J2Fe7A5ED9paQ/+JF9X62UNJcy8+r2j+IDEUnUWL6UvTNZNxpdaAj3GkF0HX4GS
- GNYZJXBPT2OhnOndHf8ojTNkdEEEvCVLR1hdBPoaPsCJz9BCXsBEfGdyIAfzQyYdIDancn8Qc
- sd9sRw6jpkx+cqiVf5vhHUuCisBZA8+/yGOyJdLcNQfluzIPgDJ6PBW6cORPaVIOB8V7EYDKr
- g/tkIU6dh9bgEdby5ztVenP0Ee1New2BnL0mpHMAUth2j1qzghzFhuv5qRl961yhNHdeHwF51
- WfWOo++pWwvDTD164QXtV4IQ8dAdsGUkmMcIdrg+iVHReqwLEJgm4odbflP5injV65gv9zUJY
- U9UVC6sWMV+krRmZAPJX0uuff2yo+nLmzD58jcWj/v9aG09qQ/NwJ1OqyMGxsR1jksV5ZkEKQ
- X6yz9nxlR7cswkAwOX5UbfOPT/X/XazenhZZoCvYkmeg4p6dHMOtx9px74SIlaUeqOPU/Ax
+X-Provags-ID: V03:K1:xOnKqLYQxlYpUSu48+Sp9EeEa+GeWMDcwKFkY7MBbD/q83w2Lbq
+ kzQimEGc08p2Dvf/DQ/Uoo+83qnzrH3ev5yR89+lX0EdyI2ArbMlOAXUQ/LZEcOoB/32vqe
+ aD9Tot+oa9Wfzo9ZAfR7ZxLh55iDzkxH34J5xmf8UzjjRoyxZeF4jp2bsNREupStXC/XaG/
+ zvOoF820DZCkAKQynzgAQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IjiTpc+qpWc=:OZWwq/pQGGZoaeEu4igBWc
+ etlj/vRPgo91s2wJF6y0CfqXkNskvjL3OC1YEu3by4rH9GVssqX0tKIG/5Cv/lQhGMtHud+s5
+ +1+0Nf9xKN2Q3Yi59klEwXstsXe7QH7nnNzJ7PfYr71RQdHKBA2UwexvHMxylW3wuyfre6KfE
+ OzzhCYwDl0yi+lz/kKdh3LKhVcjwneX3m0eBJ2YRqIv7H916QOhmrzeri/qKkYXajwh+YItwp
+ KMe+NmAjBBee3Ju9HYwLhxGR5HcwDST6ltaGmGYAbSezsLoqpOz+Qz0tW8MC9BoHI/fOyxLG4
+ J6alb7MvtXwgrGcl778OI7gGO76gNNTej9VbDN5YdgYI7ZVf0lKooiagdaILSgRhDB+KPCwW7
+ ae9crXDJ/B1a9kkgYYmcmVdTZjp7OcZ2c1a+1qLAw/1nGcfSFPDswPR79XfW+CWt9g6O7qD8a
+ pVIvIEu/6mBb7laPUZQzNYJQGkccL2iG+OclLXnTckmcwcXv45f6cL86QsssGB1u2JG9HcHnt
+ v0b/eR9abHjyxnQBf3D52U7Cr2Rtnt4Az1NcJ2r9c24mnrxlDS1zu/HmrzkytSpyx8pPKrsKo
+ 8GtWoX54L5NQII6V3yIUlbx27wy0iPiek1HgHVdGjv+4UVeCvznloPP1nUrqmj5/d83jS9tT0
+ i8dO+XnhVNcQBCf5247jWMeSON51vN4I2g6Njby0OA+K/I3ssFaByf+46xyY759le5JwBeK/f
+ qNUB6v48MW1Acmu0AEol2JV5eA6/DwCjONFa7dgsX8eZPEc+DGeW0aNFNojN5yDEjNQSRbzMr
+ +9GeykGgc8MZiSxFUuufRld7PGSuQlzIII1NBXdCxzQM9waTb+tgUM3Q6ytWNyQgUib/XGs
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:50:58
@@ -66,35 +67,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 11:51:05 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 11:51:07 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Missed in commit 41fba1618b "docs/system: convert the documentation of
-deprecated features to rST."
+For being able to compile with -Werror=implicit-fallthrough we need
+to use comments that the compiler recognizes. Use "fallthrough" instead
+of "no break" here.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200929075824.1517969-3-armbru@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20201002171343.283426-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/i386/cpu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests/test-char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index f37eb7b675f4..9eafbe369075 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -4127,7 +4127,8 @@ static PropValue tcg_default_props[] = {
-  * We resolve CPU model aliases using -v1 when using "-machine
-  * none", but this is just for compatibility while libvirt isn't
-  * adapted to resolve CPU model versions before creating VMs.
-- * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi.
-+ * See "Runnability guarantee of CPU models" at
-+ * docs/system/deprecated.rst.
-  */
- X86CPUVersion default_cpu_version = 1;
- 
+diff --git a/tests/test-char.c b/tests/test-char.c
+index d35cc839bc60..9196e566e9ba 100644
+--- a/tests/test-char.c
++++ b/tests/test-char.c
+@@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)
+             h->openclose_mismatch = true;
+         }
+         h->is_open = new_open_state;
+-        /* no break */
++        /* fallthrough */
+     default:
+         quit = true;
+         break;
 -- 
 2.26.2
 
