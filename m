@@ -1,64 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kS8d9-00034Z-EU
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 20:57:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39842)
+	id 1kS8pD-00073Z-6x
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 21:09:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
- id 1kS6mJ-0004pd-PW; Mon, 12 Oct 2020 18:58:52 -0400
-Received: from shark3.inbox.lv ([194.152.32.83]:60426)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kS8pA-0006yS-Gt; Mon, 12 Oct 2020 21:09:56 -0400
+Resent-Date: Mon, 12 Oct 2020 21:09:56 -0400
+Resent-Message-Id: <E1kS8pA-0006yS-Gt@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21739)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
- id 1kS6mH-0002eF-N3; Mon, 12 Oct 2020 18:58:51 -0400
-Received: from shark3.inbox.lv (localhost [127.0.0.1])
- by shark3-out.inbox.lv (Postfix) with ESMTP id E7667280497;
- Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=inbox.lv; s=30062014;
- t=1602543521; bh=YURXcdd3KixEF1JRsw7xcPaqVLvQhhrS2Ji7AWyby/c=;
- h=From:To:Cc:Subject:Date;
- b=lY339KaCq+88J75H225bQjuxJuYv/waZ2GKYvB9dJQHtBNLRF/sOkepWYqkv8KppV
- aOeRtvRy0nJC+uQ4U7LuZPzTm4OPgHuoFXe7O371+DfnoyqQgAUjfY1Wck8SW2TG8d
- DZ+CGqFXX6UOAkWSNq9tRmHwZtUoKj6OFGbL154I=
-Received: from localhost (localhost [127.0.0.1])
- by shark3-in.inbox.lv (Postfix) with ESMTP id E1C4928049E;
- Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
-Received: from shark3.inbox.lv ([127.0.0.1])
- by localhost (shark3.inbox.lv [127.0.0.1]) (spamfilter, port 35)
- with ESMTP id D1X3p9Y2KjnD; Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
-Received: from mail.inbox.lv (pop1 [127.0.0.1])
- by shark3-in.inbox.lv (Postfix) with ESMTP id A8EFD280497;
- Tue, 13 Oct 2020 01:58:41 +0300 (EEST)
-Received: from localhost.localdomain (net-93-145-34-111.cust.vodafonedsl.it
- [93.145.34.111]) (Authenticated sender: kherman@inbox.lv)
- by mail.inbox.lv (Postfix) with ESMTPA id 7B9F545B033;
- Tue, 13 Oct 2020 01:58:38 +0300 (EEST)
-From: Klaus Herman <kherman@inbox.lv>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Klaus Herman <kherman@inbox.lv>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH] hw/core/qdev-properties: Fix pci bus range in
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kS8p8-0001E3-1W; Mon, 12 Oct 2020 21:09:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1602551384; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=GVhUGxueUwtRT6ROUK7scVnl/oSYgEoGEGreM1ZZkWYHae0l8t9NixBwA1FQImA38anhpY8q68zLXeAA22M4OuRyd+UxFQmjSuGMW55Tqc/hBERQ4wsBXARwirEVqV6eFdy1fFhmpgYr7x73qGM5lysYK5LOkrCSBVwA3G1qmuo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1602551384;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=yDGS2TFzl7+fRSQXBV+nM+Pzv8gwWxs3l9aOUSxwjnQ=; 
+ b=hxzjhEqHkG8QrqeElaEWBj0HelEu2IcoWR0H+Vb3bu0BKirXlYD7M1/LyxvTE5ciWe315Ky3FeRKnnLLnncvPDZ63o2GBpw+Kfem43k0eArwLw/Osrsjz6JfOMKmEQAJUB0HajawJre0w+2yEVkyofR2PyBrH18mqcHv2xyvGH8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1602551382926323.4279109242839;
+ Mon, 12 Oct 2020 18:09:42 -0700 (PDT)
+Subject: Re: [PATCH] hw/core/qdev-properties: Fix pci bus range in
  set_pci_host_devaddr()
-Date: Mon, 12 Oct 2020 22:58:31 +0000
-Message-Id: <20201012225831.72920-1-kherman@inbox.lv>
-X-Mailer: git-send-email 2.28.0
+Message-ID: <160255138139.18344.1015598257686866587@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20201012225831.72920-1-kherman@inbox.lv>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: OK
-X-ESPOL: G4mES3oDmH1DpsO6NYVt5v+GstuyV1kquSb9yrQ39QEqu8qlr7wGfWmJaPriWV35bg==
-Received-SPF: pass client-ip=194.152.32.83; envelope-from=kherman@inbox.lv;
- helo=shark3.inbox.lv
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 18:58:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: kherman@inbox.lv
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kherman@inbox.lv,
+ pbonzini@redhat.com, berrange@redhat.com, ehabkost@redhat.com
+Date: Mon, 12 Oct 2020 18:09:42 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 21:09:51
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 12 Oct 2020 20:57:29 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,26 +63,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2020 22:58:52 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 01:09:57 -0000
 
----
- hw/core/qdev-properties-system.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 49bdd12..e3dca56 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
-     bus = val;
- 
-     p = (char *)e + 1;
--    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
-+    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
-         goto inval;
-     }
-     if (*e == ':') {
--- 
-2.28.0
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAxMjIyNTgzMS43Mjky
+MC0xLWtoZXJtYW5AaW5ib3gubHYvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
+b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
+cm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMTAxMjIyNTgzMS43MjkyMC0x
+LWtoZXJtYW5AaW5ib3gubHYKU3ViamVjdDogW1BBVENIXSBody9jb3JlL3FkZXYtcHJvcGVydGll
+czogRml4IHBjaSBidXMgcmFuZ2UgaW4gc2V0X3BjaV9ob3N0X2RldmFkZHIoKQoKPT09IFRFU1Qg
+U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251
+bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNv
+bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFs
+Z29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNl
+Li4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0
+ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9q
+ZWN0L3FlbXUKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMTAxMjEyNDUwNi4zNDA2
+OTA5LTEtcGhpbG1kQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDIwMTAxMjEyNDUwNi4zNDA2OTA5
+LTEtcGhpbG1kQHJlZGhhdC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMTAx
+MjIyNTgzMS43MjkyMC0xLWtoZXJtYW5AaW5ib3gubHYgLT4gcGF0Y2hldy8yMDIwMTAxMjIyNTgz
+MS43MjkyMC0xLWtoZXJtYW5AaW5ib3gubHYKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0
+JwoyYjg4ZjBjIGh3L2NvcmUvcWRldi1wcm9wZXJ0aWVzOiBGaXggcGNpIGJ1cyByYW5nZSBpbiBz
+ZXRfcGNpX2hvc3RfZGV2YWRkcigpCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogTWlzc2lu
+ZyBTaWduZWQtb2ZmLWJ5OiBsaW5lKHMpCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDgg
+bGluZXMgY2hlY2tlZAoKQ29tbWl0IDJiODhmMGM0MWMwNyAoaHcvY29yZS9xZGV2LXByb3BlcnRp
+ZXM6IEZpeCBwY2kgYnVzIHJhbmdlIGluIHNldF9wY2lfaG9zdF9kZXZhZGRyKCkpIGhhcyBzdHls
+ZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZh
+bHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFU
+Q0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRl
+ZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRj
+aGV3Lm9yZy9sb2dzLzIwMjAxMDEyMjI1ODMxLjcyOTIwLTEta2hlcm1hbkBpbmJveC5sdi90ZXN0
+aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0
+aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91
+ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
