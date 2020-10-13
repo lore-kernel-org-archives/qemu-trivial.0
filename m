@@ -1,75 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSGC9-0001Mw-Ov
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 05:02:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34868)
+	id 1kSGTy-0003MH-5J
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 05:20:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kSGC3-0001Kp-C5
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 05:02:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37268)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kSGC0-0000i0-OH
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 05:02:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602579719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MJxlfcwRwxwoKfUpzW/aGKrdRXqGFZlBzRQkEKlG3hM=;
- b=L8Ewiswyd1MAJCh+RmrVTCVgtnTsBZkh8vHLmkEDYAGG270O9KIvJaXYsitVktCE3/HF5L
- E6ry4AdmgjR1mVClyH5TsgULyBcMIQN/eVuNxEEnsL13SpvIoFzfzM1ezzdH9i0KPDu2CY
- muBFrFqITClhb1vIPWNUIITMbXVvhRY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-498-Mao9d4v7NGiBz_OVVPxUZg-1; Tue, 13 Oct 2020 05:01:56 -0400
-X-MC-Unique: Mao9d4v7NGiBz_OVVPxUZg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA54D1008307;
- Tue, 13 Oct 2020 09:01:54 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 56BC460C07;
- Tue, 13 Oct 2020 09:01:52 +0000 (UTC)
-Subject: Re: [PATCH v7 2/4] gitignore: ignore a bit more
-To: luoyonggang@gmail.com, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
-Cc: qemu-level <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20201012233740.190-1-luoyonggang@gmail.com>
- <20201012233740.190-3-luoyonggang@gmail.com>
- <7431126f-cc78-57d3-fd78-bd21c5785927@redhat.com>
- <CAE2XoE_gYX9G7LS6q5GAMsAZAxpGe-M1nO=bei9+D5HKwhBnUw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <0c0ff749-9b79-e24f-6576-e0a396db37d7@redhat.com>
-Date: Tue, 13 Oct 2020 11:01:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kSGTv-0003Io-DG; Tue, 13 Oct 2020 05:20:31 -0400
+Received: from shark2.inbox.lv ([194.152.32.82]:34351)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
+ id 1kSGTr-0002fA-MZ; Tue, 13 Oct 2020 05:20:30 -0400
+Received: from shark2.inbox.lv (localhost [127.0.0.1])
+ by shark2-out.inbox.lv (Postfix) with ESMTP id 56F7242D92;
+ Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=inbox.lv; s=30062014;
+ t=1602580823; bh=k3S397z/Qm1HzfxxEdSY5HNCjKU5sz8r8JhVSecFSYE=;
+ h=From:To:Cc:Subject:Date;
+ b=f0bBNKCmqpU5TS7cFgn7X9UC9M1MYz1PH6jEZatK6hWSNCV1iAnqQwTgjSm5vvYxr
+ y7VGzAMu77y1LliBrPmRRMJocvWGjFFu2NLXic3NU6uls1gDN1Snp8kQtSEb5CBQTr
+ B7Vdkr8Kp0YvUbZS5swbROInJ1jPBw357o8Nh/Mo=
+Received: from localhost (localhost [127.0.0.1])
+ by shark2-in.inbox.lv (Postfix) with ESMTP id 39CAA42D8D;
+ Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
+Received: from shark2.inbox.lv ([127.0.0.1])
+ by localhost (shark2.inbox.lv [127.0.0.1]) (spamfilter, port 35)
+ with ESMTP id qhulorEEqZNS; Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
+Received: from mail.inbox.lv (pop1 [127.0.0.1])
+ by shark2-in.inbox.lv (Postfix) with ESMTP id E496142D8C;
+ Tue, 13 Oct 2020 12:20:22 +0300 (EEST)
+Received: from localhost.localdomain (unknown [94.177.228.81])
+ (Authenticated sender: kherman@inbox.lv)
+ by mail.inbox.lv (Postfix) with ESMTPA id DF8233D9829;
+ Tue, 13 Oct 2020 12:20:21 +0300 (EEST)
+From: Klaus Herman <kherman@inbox.lv>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Klaus Herman <kherman@inbox.lv>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH v3] hw/core/qdev-properties-system: Fix pci bus range in
+ set_pci_host_devaddr()
+Date: Tue, 13 Oct 2020 09:20:14 +0000
+Message-Id: <20201013092014.34059-1-kherman@inbox.lv>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE_gYX9G7LS6q5GAMsAZAxpGe-M1nO=bei9+D5HKwhBnUw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:04:27
+X-Virus-Scanned: OK
+X-ESPOL: G4mES30DmH5BpsK8I5pk5v+XtdvHI0ZBySr7z7457XNesrrGr60LfS/KW5iNag+/bg==
+Received-SPF: pass client-ip=194.152.32.82; envelope-from=kherman@inbox.lv;
+ helo=shark2.inbox.lv
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 05:20:23
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,54 +70,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 09:02:05 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 09:20:32 -0000
 
-On 13/10/2020 10.53, 罗勇刚(Yonggang Luo) wrote:
-> 
-> 
-> On Tue, Oct 13, 2020 at 4:38 PM Philippe Mathieu-Daudé <philmd@redhat.com
-> <mailto:philmd@redhat.com>> wrote:
->>
->> On 10/13/20 1:37 AM, Yonggang Luo wrote:
->> > Enable the creating multiple build directory at the source root.
->> > Ignore /meson/ and /roms/ for better search experience.
->> >
->> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com
-> <mailto:luoyonggang@gmail.com>>
->> > ---
->> >   .gitignore | 4 +++-
->> >   1 file changed, 3 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/.gitignore b/.gitignore
->> > index b32bca1315..f78ee9f297 100644
->> > --- a/.gitignore
->> > +++ b/.gitignore
->> > @@ -1,5 +1,5 @@
->> >   /GNUmakefile
->> > -/build/
->> > +/build*/
+Fixes: bccb20c49df ("hw/core/qdev-properties: Use qemu_strtoul() in set_pci_host_devaddr()")
+Signed-off-by: Klaus Herman <kherman@inbox.lv>
+---
+ hw/core/qdev-properties-system.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The naming of your private build directories is IMHO something that should
-not be part of the public .gitignore file. I think you can use your
-~/.gitignore file for that.
-
->> >   *.pyc
->> >   .sdk
->> >   .stgit-*
->> > @@ -10,3 +10,5 @@ TAGS
->> >   *~
->> >   *.ast_raw
->> >   *.depend_raw
->> > +/meson/
->> > +/roms/**/*
->>
->> Why?
-> As I said, help for searching tool ignore it, meson and roms are thirdparty
-> packages.
-
-Hmm, but "git status" should still show whether there are modifications in
-the subdirectories, so IMHO this should not be ignored?
-
- Thomas
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 49bdd12..e3dca56 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
+     bus = val;
+ 
+     p = (char *)e + 1;
+-    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
++    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
+         goto inval;
+     }
+     if (*e == ':') {
+-- 
+2.28.0
 
 
