@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEBc-000547-ES
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32910)
+	id 1kSEBh-0005HZ-DD
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBa-00050s-W7; Tue, 13 Oct 2020 02:53:27 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:33083)
+ id 1kSEBf-0005BI-3T; Tue, 13 Oct 2020 02:53:31 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:51879)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBZ-0000Eb-Cf; Tue, 13 Oct 2020 02:53:26 -0400
+ id 1kSEBc-0000GF-BQ; Tue, 13 Oct 2020 02:53:30 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MhDEo-1jy8EU22Ak-00eNXF; Tue, 13 Oct 2020 08:53:20 +0200
+ id 1Mo6zD-1k8snY3oT5-00pgC8; Tue, 13 Oct 2020 08:53:24 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Julia Suvorova <jusual@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 05/15] tests/test-char: Use a proper fallthrough comment
-Date: Tue, 13 Oct 2020 08:53:03 +0200
-Message-Id: <20201013065313.7349-6-laurent@vivier.eu>
+Subject: [PULL 09/15] hw/pci: Fix typo in PCI hot-plug error message
+Date: Tue, 13 Oct 2020 08:53:07 +0200
+Message-Id: <20201013065313.7349-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013065313.7349-1-laurent@vivier.eu>
 References: <20201013065313.7349-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9Xfjz56fO9lF7hiKITH/c1toHpSmo850v+vuEsOpzUHK5gLk8AW
- VFifuVvIm0s0L+SZX2PmKFq3KnyA5+dn6kf+SdXI4loRr3otXiaCPEYRLZH5uCNN8o+A7rT
- uLJSu9Cbh23y30iSXVHRPaA0es2aVmm3Cva5lCMebGKQrAHTkEkcttiM5X83U8CRpxr8C94
- cFpZkVi4UVHm7bhMTMaiw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qttuLacMo2Q=:91ngz4MfHImT2rvpnHk0o/
- ajj0inkzy8T6dq6T0TznUlOToBjELm0Nb93RON2YoUL3An0eCuXw9twsMbHKUCqBAtdIZ5k2E
- QKqC6f2JgeSwzj0pFWbIixI2hy95/WTxxwqa0TwfMZsfGzx7am/zXSqOLnc+jyqfk1Drxm7K1
- NZQTgxVUf4uzcmwzcCAdQ+Xl7cn89aR1VwnN0TXervd3JkvWlG9pJOpmCAVTTA21XGAn8iTzl
- kIQtG+9FuktWDlxA6gH6FJDkBEC3iypF2PRiyB5LQS7mTtJEA59NTHVoRNEG4yrZz4u6k5JLv
- BR7YT2IPBlq2l5+X8LkkMln/tyElIyw+H479FA9Qfl+iRbWKcTG3Vj7m7k4SqLOG2rxwgl+pG
- DXceVGfXQ1u6SndaEnAJMYr+RZSqYt+fE2zdHQc9gc4z0rbsuhInGH6NUAuRpzDTBDUahKEkC
- nFCSifd3/1LvRWzyQE2+6c4u+NPy7UOhWyStIwiGrkCl1F106dxsnCncuw1uMd+SRAZG8HHQ9
- 1gqkLarVltIzZ32nTwNeciM0Bnpktgawgo3BjFjeWaRaKBXthQC6iIbtDzx5mE+hQqDtxOeee
- KErB4jDqWBDk1/+xb5VYVbT3F1yefreNZN6ADkxzVB01wmE5mU1OP54et7qa6v6akRLhYGGFh
- UxAqQVHfl8TVZcg1O6WT02qkT8HJ+455Kt6y6KZD+AqoqMhLK9wKSOcuHIqljD1ozvdOwBrQI
- KRS2V6L5lpUp2l5RF9pAkFBRv4kiVkjQB7A7jvnuHYrtFyOncsfRhO/8YuYtzLgQFjv5noJvD
- fIy9PTLyIJ99g4juz1tCTCpyGRhrnBEANoITh9lcwObpxtB8ofMsx+DCCh5BhOnLLDuTetQ
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:KxIJdSNteaPV8erMZYKlw57B9VUtVuVDrRmaSNOn0Fv0Zhno1F9
+ APUA9GE304aZTJBW+ojwPJf1EJjALba2qgVFHeL+YCZipEW6hxP7DxUNmmcg3FoNXy16Uix
+ WCd/ApVc7TeWPEC7nhC7YMdKDQ5/iieMLu85zeZIEfl4XUxuZbBi1PLwqDqiI0SBoWJTD48
+ 8z7sU5tfu9jBDzljsw6qQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CCXGgor1zGw=:dmmujSXj26jJkvg2xjVgsT
+ UdjZCN4jLx9sJYfAUGkogCbZb9UJjw/aYqK2R8wRaQiPkXhFSIzxDjDBksNxuObULVpp/Mhj0
+ Izosn/G33ZhBnVqeWl68fS/hh9HwJ8VJLPYAC2qxitK3pt0hp8uwPlTMln8lbl6zMRlz1adij
+ HAiumBdms9u17GOP2y+vpODr1HJJxWpxq5KKfRBVelyLYUQILePJVgu/6VeWHaqHKFErvjGoc
+ 1fd7dBk3lxrbeVxEMLkm7m00CCQ2DASsEFbvC7k+Xyxbl3rOii4ZyscwuBbZQziqJAZ7zOMWi
+ PNSO5HH1NFet1wzZPWKOmykVTyUTsUthv9f+wfKcgdhftoy9kPcvM+t0e8qRnLaRJMduP+ay1
+ +fsCsO9hL8OWnoAd7dQKwvKVmxdoWJSf3bcy6/SI9NnwoeTufhMRAeMns2JERnx9GOpWPc29K
+ WRJzE+SiWrir8VdYOtbbE+2vq6++jqo/0qYdqlSzk2bkvEA9ZC7R8/Wf0CFIT+x3pMCG4UV1h
+ tUZIyO6kgSdgn4CM20mszP9rf6xrHQJWfN/lSZ6OfB7k9QfM9ckaKCdP11Jh591AWW1QJpvbr
+ 83Ua2LBqAB9uHWDzkewpBB7X/ssYz5JTwTnX0WFU5KNSSTGmFJ24TxbH1b/8ExVKkm9cfh1b+
+ a+i9D1y1L4Eqy7CuQhONhhc3jP1rjuuDQhVy3X8N4uEg0QGWDBGeCPNJJhLOPOzlZbGifYVnF
+ jnilVJX1QwyakozBKaCsA/DpHuozjrVuim3lBdgMVCATni5T4ictAHNjYlUhpvDYVqZuGhVFw
+ q3dqJeMewlMRXBkuqcHw/PMbi6quga5WjCICzCYO0fWTH7mlUiCWEsfPPeadE3QMZOQmHpR
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:22
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -67,37 +66,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 06:53:27 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 06:53:31 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Julia Suvorova <jusual@redhat.com>
 
-For being able to compile with -Werror=implicit-fallthrough we need
-to use comments that the compiler recognizes. Use "fallthrough" instead
-of "no break" here.
+'occupied' is spelled like 'ocuppied' in the message.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20201002171343.283426-1-thuth@redhat.com>
+Message-Id: <20201006133958.600932-1-jusual@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/test-char.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/pci/pci.c       | 2 +-
+ hw/ppc/spapr_pci.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/test-char.c b/tests/test-char.c
-index d35cc839bc60..9196e566e9ba 100644
---- a/tests/test-char.c
-+++ b/tests/test-char.c
-@@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)
-             h->openclose_mismatch = true;
-         }
-         h->is_open = new_open_state;
--        /* no break */
-+        /* fallthrough */
-     default:
-         quit = true;
-         break;
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 3c8f10b4618a..100c9381c2f1 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -1036,7 +1036,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+         return NULL;
+     } else if (dev->hotplugged &&
+                pci_get_function_0(pci_dev)) {
+-        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
++        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
+                    " new func %s cannot be exposed to guest.",
+                    PCI_SLOT(pci_get_function_0(pci_dev)->devfn),
+                    pci_get_function_0(pci_dev)->name,
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 3999392b32c6..88ce87f130a5 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1571,7 +1571,7 @@ static void spapr_pci_plug(HotplugHandler *plug_handler,
+      */
+     if (plugged_dev->hotplugged && bus->devices[PCI_DEVFN(slotnr, 0)] &&
+         PCI_FUNC(pdev->devfn) != 0) {
+-        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
++        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
+                    " additional functions can no longer be exposed to guest.",
+                    slotnr, bus->devices[PCI_DEVFN(slotnr, 0)]->name);
+         return;
 -- 
 2.26.2
 
