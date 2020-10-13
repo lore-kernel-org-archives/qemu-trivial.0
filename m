@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSCyj-0004E5-Rj
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 01:36:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48518)
+	id 1kSEBY-0004vd-Pb
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kSCyh-0004DW-0d; Tue, 13 Oct 2020 01:36:03 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:36245 helo=ozlabs.org)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kSEBW-0004vM-PG; Tue, 13 Oct 2020 02:53:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:53471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kSCye-0006ph-Km; Tue, 13 Oct 2020 01:36:02 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4C9PQy5B5Rz9sTr; Tue, 13 Oct 2020 16:35:54 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1602567354;
- bh=ohphu5M/BSTRL24nVNhXV9XyHODbES+uWCGzWuYevhU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oCFtHRveU0mNRz/klp5jXZvQOnbvOGEYe9FNGCfH09QvV1SUGzGI7aI+9wJxoQaiw
- OIXHoQdJnK1MNV+niMZz41+Pd802aozeBibGNhCG8NVSzbgUtDThbJJa4sotNdhSwU
- m/WWUCTGVFlQDxANYl6NYlHX0inLoIMNjPyJgEXA=
-Date: Tue, 13 Oct 2020 16:32:50 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, Elena Afanasova <eafanasova@gmail.com>,
- qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-Message-ID: <20201013053250.GV71119@yekko.fritz.box>
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
- <20201012053001.GD4787@yekko.fritz.box>
- <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
- <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kSEBU-0000Dy-UO; Tue, 13 Oct 2020 02:53:22 -0400
+Received: from localhost.localdomain ([82.252.141.186]) by
+ mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1M3DBd-1kT2av35bR-003ePW; Tue, 13 Oct 2020 08:53:16 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 00/15] Trivial branch for 5.2 patches
+Date: Tue, 13 Oct 2020 08:52:58 +0200
+Message-Id: <20201013065313.7349-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="dRgc669pgRVB2OqT"
-Content-Disposition: inline
-In-Reply-To: <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:uIZSGJka0sLXeoNUzhf3XdpAdnHsBRNj813yKbvyQSuLUuB9PqF
+ +F+3+LGmHpdsQavaUtqmv53QWTaoNESQm4I262vCAFomB9rfXG/MFDCoh7cCsTxemKKj3oL
+ yeIdgFnhse6iRW3ekVbhRL0fD7YR/DdJv246oxxS98o7tBUH7bXKqqasQx/WBb17Y+BQ9FE
+ OMWGb6XXrQYsNISULqCzw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pvObdF34zO4=:LODujIsST7wDaZk9BqnKeu
+ cyWvANP91NvUOIOcS8mHUa+kJznuWtt+k6elgS5BY4+peuO/UfCuoM7T/m5/oN963ksBrYocM
+ hl7EoXzOySUaaGCd73QtIIkZvoKPF4zXYB8wvM07fmplye8z+0XO0y92ArkCDYkNTDKF2OGSP
+ KVwlia79vyQqRtHaJAl1LgpePxjEM+/llie1U9T0Kw/3hQW7eT3PDVcaYxsaR+oo4E/4zr1vO
+ UKgYMtE50Y/LgDFYaGCdV1X+rqj9GOwOHtBK02bJr1HWFlYff/XwyJ8RI3/PEJgz+jv4dtegT
+ nzcaXIbRYEv2DF9udn2WdiBmdw9nsU3DJcTfd09wiWNoGltwiZsFpDbdKEogpY/tvoHDx3GQg
+ HlKHSh46ee7STDM1RISaXfakZm1q6ax7E8zO5T7vLvnwZWv6lbeAi59z3BR7LlRwZZvdnav3b
+ z3uqeXCGwR8De/x5Jw/WnTETb/dVK/I7OnkwvwrCo0vgiqGcXZkG066RvxM9F5XTbpUaFA5p8
+ kQHyaL5X0KKlL4YS9lnkd1KmaKymCrc4s/PUS7V9Nr7D9PpZFwn6QwAQqEn92EZq9lW4l0Gaq
+ MDJvxoQnl8HjsSSHNt57g2icYhXt1uPl9gcBx9r4IanRyUV8wGUUbWTpv+5r5V7Js8LypU2dO
+ JkoK0bk95Mag32EGHoe36eyn7NaEPQmhwr2QIgKq7oIpx3oDA5WNjFnmYXO8x16piId2Y4oSb
+ vYpDhU1Uy1/DIGr5pOdCrfAAx7UOTPG0twWeRPe4UvkpGfmccHjX9UHMVrk6i6UMkiXxZgAfH
+ 7oRnO5zDcHQfIK+lZy6mo8ouZP5JZhf5zr/XUotTAozOvUYCQAnK2lbtBXh1NKZfb4ybUVR
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,59 +62,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 05:36:04 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 06:53:23 -0000
 
-
---dRgc669pgRVB2OqT
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Oct 12, 2020 at 03:45:02PM +0200, Paolo Bonzini wrote:
-> On 12/10/20 12:44, Thomas Huth wrote:
-> > I think this is one of the tasks from:
-> >=20
-> >  https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanu=
-ps
-> >=20
-> > It has been added by Paolo in 2016:
-> >=20
-> >  https://wiki.qemu.org/index.php?title=3DContribute/BiteSizedTasks&diff=
-=3D5368&oldid=3D5367
-> >=20
-> > ... so maybe Paolo can comment on the size that has been chosen here...?
->=20
-> I used 16K, mostly because it is a nice round number.  8k is too small
-> due to PATH_MAX-sized variables.  16k seemed to be plenty and triggered
-> in few-enough places that the cleanup is viable.
-
-Ok.  Why are large stack frames bad in qemu?
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---dRgc669pgRVB2OqT
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+FPAAACgkQbDjKyiDZ
-s5IruA/+JK7ojWXQ59ESgaHBg2dDtFwnSvbOTRQQ42kh7pgvfT7lsQ+UfPJMc/Sh
-P5J4GiLBqT456nq0HiUGEY63iHDO1Cs7GzoNOktesvOSXRhN2peCALwfgGLApcnz
-cxXrWfZWnrr+iCp81YHJ5dlzQr+byBx/3AIwGcxWRnQ9G/mmcH6b+w7aNVTsuHpy
-uUhhJrYeKrQ9ZklGhHw4ZgoH7VDB8Sn2Ebu45bJv+mqU+gzQ3mr5aw1nmOj+R0D4
-zm8GtNkG3FnVv7vqj1M4wouOKtrTBXpsf7SRlFlzGiBGOyRYE96x0bWxqLpiql8x
-k/WLBozKZfRYzMKBi1xcEeWmlYLTNN04qVmXltVGgM6YQj4TNiGmre6MGSgyejXy
-EdRaIPrD9l1IfsKuq5UBYpkja/4YSxtJ4X+dK2LbIegmSXw7ZaHtAPmKIZBllgGM
-+WOJ2dsz5a3F51Ue1WriO59W5zcQN/jFEVvzVh/LZyGNdbg1UXpiqxFmdRESRwM8
-hcWtPDLkmM++8fRbV5+44YKvDgOXtXUy04tBAIwl8nCbAKuEwO5jnxSfoNCzcpOY
-Ln28JA7vtu1R9wlI4YiZQjQ2gyKD40uAj0rwbWTWFh/EIlUK/1Tupxunxi+26yuW
-8KdY/0pYKPuGQ7dt1+cHqp/6vjEnTyzrJ3DdlQDoKxuBWtxjPyg=
-=8cXA
------END PGP SIGNATURE-----
-
---dRgc669pgRVB2OqT--
+The following changes since commit 2387df497b4b4bcf754eb7398edca82889e2ef54=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2020-10-10' i=
+nt=3D=0D
+o staging (2020-10-12 11:29:42 +0100)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request=
+=0D
+=0D
+for you to fetch changes up to ef3a1d9fc36140f8933fbced70ee21fd9740b33c:=0D
+=0D
+  meson.build: drop duplicate 'sparc64' entry (2020-10-12 23:11:32 +0200)=0D
+=0D
+----------------------------------------------------------------=0D
+Trivial Patches Pull request 20201013=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Christian Borntraeger (1):=0D
+  vmdk: fix maybe uninitialized warnings=0D
+=0D
+Elena Afanasova (1):=0D
+  block/blkdebug: fix memory leak=0D
+=0D
+Greg Kurz (1):=0D
+  hw/acpi/piix4: Rename piix4_pm_add_propeties() to=0D
+    piix4_pm_add_properties()=0D
+=0D
+Julia Suvorova (1):=0D
+  hw/pci: Fix typo in PCI hot-plug error message=0D
+=0D
+Laurent Vivier (2):=0D
+  hw/char/serial: remove duplicate .class_init in serial_mm_info=0D
+  goldfish_rtc: change MemoryRegionOps endianness to=0D
+    DEVICE_NATIVE_ENDIAN=0D
+=0D
+Marc-Andr=3DC3=3DA9 Lureau (1):=0D
+  mingw: fix error __USE_MINGW_ANSI_STDIO redefined=0D
+=0D
+Markus Armbruster (2):=0D
+  qemu-img-cmds.hx: Update comment that mentions Texinfo=0D
+  target/i386/cpu: Update comment that mentions Texinfo=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (3):=0D
+  hw/block/nvme: Simplify timestamp sum=0D
+  softmmu/memory: Log invalid memory accesses=0D
+  target/sparc/int32_helper: Remove duplicated 'Tag Overflow' entry=0D
+=0D
+Sergei Trofimovich (1):=0D
+  meson.build: drop duplicate 'sparc64' entry=0D
+=0D
+Thomas Huth (2):=0D
+  hw/rtc/twl92230: Silence warnings about missing fallthrough statements=0D
+  tests/test-char: Use a proper fallthrough comment=0D
+=0D
+ block/blkdebug.c            |  1 +=0D
+ block/vmdk.c                |  8 +++---=0D
+ hw/acpi/piix4.c             |  4 +--=0D
+ hw/block/nvme.c             |  7 +-----=0D
+ hw/char/serial.c            |  1 -=0D
+ hw/pci/pci.c                |  2 +-=0D
+ hw/ppc/spapr_pci.c          |  2 +-=0D
+ hw/rtc/goldfish_rtc.c       |  2 +-=0D
+ hw/rtc/twl92230.c           | 50 ++++++++++++++++++-------------------=0D
+ meson.build                 |  2 +-=0D
+ migration/dirtyrate.c       |  3 ++-=0D
+ qemu-img-cmds.hx            |  2 +-=0D
+ softmmu/memory.c            | 16 ++++++++++++=0D
+ target/i386/cpu.c           |  3 ++-=0D
+ target/sparc/int32_helper.c |  1 -=0D
+ tests/test-bitmap.c         |  1 -=0D
+ tests/test-char.c           |  2 +-=0D
+ 17 files changed, 58 insertions(+), 49 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D
 
