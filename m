@@ -1,63 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSGTy-0003MH-5J
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 05:20:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38548)
+	id 1kSGXS-0005tD-Io
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 05:24:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
- id 1kSGTv-0003Io-DG; Tue, 13 Oct 2020 05:20:31 -0400
-Received: from shark2.inbox.lv ([194.152.32.82]:34351)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kherman@inbox.lv>)
- id 1kSGTr-0002fA-MZ; Tue, 13 Oct 2020 05:20:30 -0400
-Received: from shark2.inbox.lv (localhost [127.0.0.1])
- by shark2-out.inbox.lv (Postfix) with ESMTP id 56F7242D92;
- Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=inbox.lv; s=30062014;
- t=1602580823; bh=k3S397z/Qm1HzfxxEdSY5HNCjKU5sz8r8JhVSecFSYE=;
- h=From:To:Cc:Subject:Date;
- b=f0bBNKCmqpU5TS7cFgn7X9UC9M1MYz1PH6jEZatK6hWSNCV1iAnqQwTgjSm5vvYxr
- y7VGzAMu77y1LliBrPmRRMJocvWGjFFu2NLXic3NU6uls1gDN1Snp8kQtSEb5CBQTr
- B7Vdkr8Kp0YvUbZS5swbROInJ1jPBw357o8Nh/Mo=
-Received: from localhost (localhost [127.0.0.1])
- by shark2-in.inbox.lv (Postfix) with ESMTP id 39CAA42D8D;
- Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
-Received: from shark2.inbox.lv ([127.0.0.1])
- by localhost (shark2.inbox.lv [127.0.0.1]) (spamfilter, port 35)
- with ESMTP id qhulorEEqZNS; Tue, 13 Oct 2020 12:20:23 +0300 (EEST)
-Received: from mail.inbox.lv (pop1 [127.0.0.1])
- by shark2-in.inbox.lv (Postfix) with ESMTP id E496142D8C;
- Tue, 13 Oct 2020 12:20:22 +0300 (EEST)
-Received: from localhost.localdomain (unknown [94.177.228.81])
- (Authenticated sender: kherman@inbox.lv)
- by mail.inbox.lv (Postfix) with ESMTPA id DF8233D9829;
- Tue, 13 Oct 2020 12:20:21 +0300 (EEST)
-From: Klaus Herman <kherman@inbox.lv>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Klaus Herman <kherman@inbox.lv>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH v3] hw/core/qdev-properties-system: Fix pci bus range in
- set_pci_host_devaddr()
-Date: Tue, 13 Oct 2020 09:20:14 +0000
-Message-Id: <20201013092014.34059-1-kherman@inbox.lv>
-X-Mailer: git-send-email 2.28.0
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kSGXQ-0005qp-Lw; Tue, 13 Oct 2020 05:24:08 -0400
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:43619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kSGXO-00037S-VU; Tue, 13 Oct 2020 05:24:08 -0400
+Received: by mail-lf1-x141.google.com with SMTP id l28so6032706lfp.10;
+ Tue, 13 Oct 2020 02:24:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=i+eBoAJiGHBNbr1kvVNmo+HnJL20iQZ60j9+GiS1TVE=;
+ b=gqkFtAWlzpbwJznxrae6+wSMRw68Uibx2KzFOg2hOXg0dqNxcB8Tmhz2rb4CZuB+yQ
+ ozj3o6yoi9VU4JEsio9fV/u8FlMNko4c0i4k47/vws1gRJiHa0SwXaVLhLAGO0iP95zz
+ ZvdAB00b1XMsjASzFPr1ZWjoVfJWwPnt383LfpbeMVApCP+Dv4pk6sn18a0Xu+78R5gJ
+ sK11fjf9fouJIVIBgEzKoCUFjIWmQjkStcuMf+PtRGKae21bKeMwwg+Uvqeka/u7ukyp
+ A4bn759BX8l04LVK0jaxkZjCOJyKMFi7tibAKo/ZqitciTHREGAJrOKcXYhg4kHpQUp2
+ m0+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=i+eBoAJiGHBNbr1kvVNmo+HnJL20iQZ60j9+GiS1TVE=;
+ b=J9dfE4xfLs8JQ+ggtXWt3vjtd6zWNTAYIZitkNbIYdwIcOhAVx+ormGXPAGJL0Mtga
+ oNYh3bsxh1NxkBuCS3A/15UhSWsjlv9M5lPpL+4Wk8tYE+wiVqyamBjbFSV3/FILIfxb
+ 2MPKej60Y0Jai42dcO91x4TngULZLNqtqy8eXv3d8pne36JKEHEx3WwZIgZPRF7esT9r
+ seFIQr8NbjB+nxZIRcmbT1koR1PBnXswphmOC9+kGv5gsIv0AJe0MPfyErdmiwlMNvGF
+ lvtN9xOpAL/FH3P5HlGAV1Tda7doaeoZ9xDQJnVSxGChArZbcOlh6/VErHnbczU5qxa+
+ 0CPg==
+X-Gm-Message-State: AOAM53347CTULv2n5xPBgnYtjyjbb04WjcY/sueZSh2m2CZMMxlmfHcJ
+ VWQH8VvJuiFYk9c/s4kyG83aoKcBLZE8FK0YvUA=
+X-Google-Smtp-Source: ABdhPJzqxg1k149kKnuEa+cxC4mQi7RYUuMD7jEq+GK1T85u8ioC4Xunjuek4BvwwJSH3ssPr7BS/PcSDYxAZGZEUoU=
+X-Received: by 2002:a19:8a84:: with SMTP id m126mr9053120lfd.377.1602581044077; 
+ Tue, 13 Oct 2020 02:24:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: OK
-X-ESPOL: G4mES30DmH5BpsK8I5pk5v+XtdvHI0ZBySr7z7457XNesrrGr60LfS/KW5iNag+/bg==
-Received-SPF: pass client-ip=194.152.32.82; envelope-from=kherman@inbox.lv;
- helo=shark2.inbox.lv
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 05:20:23
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20201012233740.190-1-luoyonggang@gmail.com>
+ <20201012233740.190-3-luoyonggang@gmail.com>
+ <7431126f-cc78-57d3-fd78-bd21c5785927@redhat.com>
+ <CAE2XoE_gYX9G7LS6q5GAMsAZAxpGe-M1nO=bei9+D5HKwhBnUw@mail.gmail.com>
+ <0c0ff749-9b79-e24f-6576-e0a396db37d7@redhat.com>
+In-Reply-To: <0c0ff749-9b79-e24f-6576-e0a396db37d7@redhat.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Tue, 13 Oct 2020 17:23:53 +0800
+Message-ID: <CAE2XoE_+MFkOcCMQRwm-fWOyiz04FjmA3_5uRa_qqqUbrgwXgA@mail.gmail.com>
+Subject: Re: [PATCH v7 2/4] gitignore: ignore a bit more
+To: Thomas Huth <thuth@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-level <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000db28d705b189f9a2"
+Received-SPF: pass client-ip=2a00:1450:4864:20::141;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lf1-x141.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,28 +78,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 09:20:32 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 09:24:09 -0000
 
-Fixes: bccb20c49df ("hw/core/qdev-properties: Use qemu_strtoul() in set_pci_host_devaddr()")
-Signed-off-by: Klaus Herman <kherman@inbox.lv>
----
- hw/core/qdev-properties-system.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--000000000000db28d705b189f9a2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 49bdd12..e3dca56 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -903,7 +903,7 @@ static void set_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
-     bus = val;
- 
-     p = (char *)e + 1;
--    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0x1f || e == p) {
-+    if (qemu_strtoul(p, &e, 16, &val) < 0 || val > 0xff || e == p) {
-         goto inval;
-     }
-     if (*e == ':') {
--- 
-2.28.0
+On Tue, Oct 13, 2020 at 5:02 PM Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 13/10/2020 10.53, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote:
+> >
+> >
+> > On Tue, Oct 13, 2020 at 4:38 PM Philippe Mathieu-Daud=C3=A9 <
+philmd@redhat.com
+> > <mailto:philmd@redhat.com>> wrote:
+> >>
+> >> On 10/13/20 1:37 AM, Yonggang Luo wrote:
+> >> > Enable the creating multiple build directory at the source root.
+> >> > Ignore /meson/ and /roms/ for better search experience.
+> >> >
+> >> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com
+> > <mailto:luoyonggang@gmail.com>>
+> >> > ---
+> >> >   .gitignore | 4 +++-
+> >> >   1 file changed, 3 insertions(+), 1 deletion(-)
+> >> >
+> >> > diff --git a/.gitignore b/.gitignore
+> >> > index b32bca1315..f78ee9f297 100644
+> >> > --- a/.gitignore
+> >> > +++ b/.gitignore
+> >> > @@ -1,5 +1,5 @@
+> >> >   /GNUmakefile
+> >> > -/build/
+> >> > +/build*/
+>
+> The naming of your private build directories is IMHO something that shoul=
+d
+> not be part of the public .gitignore file. I think you can use your
+> ~/.gitignore file for that.
+>
+> >> >   *.pyc
+> >> >   .sdk
+> >> >   .stgit-*
+> >> > @@ -10,3 +10,5 @@ TAGS
+> >> >   *~
+> >> >   *.ast_raw
+> >> >   *.depend_raw
+> >> > +/meson/
+> >> > +/roms/**/*
+> >>
+> >> Why?
+> > As I said, help for searching tool ignore it, meson and roms are
+thirdparty
+> > packages.
+>
+> Hmm, but "git status" should still show whether there are modifications i=
+n
+> the subdirectories, so IMHO this should not be ignored?
+Yeap, it's doens't affect git, just affect search tools. If this is
+improper, skip it, I can use it locally
+>
+>  Thomas
+>
 
+
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--000000000000db28d705b189f9a2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tue, Oct 13, 2020 at 5:02 PM Thomas Huth &lt;<a=
+ href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br>&gt;<b=
+r>&gt; On 13/10/2020 10.53, =E7=BD=97=E5=8B=87=E5=88=9A(Yonggang Luo) wrote=
+:<br>&gt; &gt;<br>&gt; &gt;<br>&gt; &gt; On Tue, Oct 13, 2020 at 4:38 PM Ph=
+ilippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@r=
+edhat.com</a><br>&gt; &gt; &lt;mailto:<a href=3D"mailto:philmd@redhat.com">=
+philmd@redhat.com</a>&gt;&gt; wrote:<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; On 1=
+0/13/20 1:37 AM, Yonggang Luo wrote:<br>&gt; &gt;&gt; &gt; Enable the creat=
+ing multiple build directory at the source root.<br>&gt; &gt;&gt; &gt; Igno=
+re /meson/ and /roms/ for better search experience.<br>&gt; &gt;&gt; &gt;<b=
+r>&gt; &gt;&gt; &gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoy=
+onggang@gmail.com">luoyonggang@gmail.com</a><br>&gt; &gt; &lt;mailto:<a hre=
+f=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt;&gt;<br>&gt=
+; &gt;&gt; &gt; ---<br>&gt; &gt;&gt; &gt; =C2=A0 .gitignore | 4 +++-<br>&gt=
+; &gt;&gt; &gt; =C2=A0 1 file changed, 3 insertions(+), 1 deletion(-)<br>&g=
+t; &gt;&gt; &gt;<br>&gt; &gt;&gt; &gt; diff --git a/.gitignore b/.gitignore=
+<br>&gt; &gt;&gt; &gt; index b32bca1315..f78ee9f297 100644<br>&gt; &gt;&gt;=
+ &gt; --- a/.gitignore<br>&gt; &gt;&gt; &gt; +++ b/.gitignore<br>&gt; &gt;&=
+gt; &gt; @@ -1,5 +1,5 @@<br>&gt; &gt;&gt; &gt; =C2=A0 /GNUmakefile<br>&gt; =
+&gt;&gt; &gt; -/build/<br>&gt; &gt;&gt; &gt; +/build*/<br>&gt;<br>&gt; The =
+naming of your private build directories is IMHO something that should<br>&=
+gt; not be part of the public .gitignore file. I think you can use your<br>=
+&gt; ~/.gitignore file for that.<br>&gt;<br>&gt; &gt;&gt; &gt; =C2=A0 *.pyc=
+<br>&gt; &gt;&gt; &gt; =C2=A0 .sdk<br>&gt; &gt;&gt; &gt; =C2=A0 .stgit-*<br=
+>&gt; &gt;&gt; &gt; @@ -10,3 +10,5 @@ TAGS<br>&gt; &gt;&gt; &gt; =C2=A0 *~<=
+br>&gt; &gt;&gt; &gt; =C2=A0 *.ast_raw<br>&gt; &gt;&gt; &gt; =C2=A0 *.depen=
+d_raw<br>&gt; &gt;&gt; &gt; +/meson/<br>&gt; &gt;&gt; &gt; +/roms/**/*<br>&=
+gt; &gt;&gt;<br>&gt; &gt;&gt; Why?<br>&gt; &gt; As I said, help for searchi=
+ng tool ignore it, meson and roms are thirdparty<br>&gt; &gt; packages.<br>=
+&gt;<br>&gt; Hmm, but &quot;git status&quot; should still show whether ther=
+e are modifications in<br>&gt; the subdirectories, so IMHO this should not =
+be ignored?<div>Yeap, it&#39;s doens&#39;t affect git, just affect search t=
+ools. If this is improper, skip it, I can use it locally<br>&gt;<br>&gt; =
+=C2=A0Thomas<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=
+=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=
+=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
+
+--000000000000db28d705b189f9a2--
 
