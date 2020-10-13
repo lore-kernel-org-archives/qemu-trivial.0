@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEBc-00053T-7S
+	id 1kSEBc-000547-ES
 	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32908)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32910)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBa-0004zj-Jp; Tue, 13 Oct 2020 02:53:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:51999)
+ id 1kSEBa-00050s-W7; Tue, 13 Oct 2020 02:53:27 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:33083)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBX-0000EH-LL; Tue, 13 Oct 2020 02:53:26 -0400
+ id 1kSEBZ-0000Eb-Cf; Tue, 13 Oct 2020 02:53:26 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MXY2Z-1kyMxV49Z1-00Yyn6; Tue, 13 Oct 2020 08:53:19 +0200
+ id 1MhDEo-1jy8EU22Ak-00eNXF; Tue, 13 Oct 2020 08:53:20 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 03/15] hw/rtc/twl92230: Silence warnings about missing
- fallthrough statements
-Date: Tue, 13 Oct 2020 08:53:01 +0200
-Message-Id: <20201013065313.7349-4-laurent@vivier.eu>
+Subject: [PULL 05/15] tests/test-char: Use a proper fallthrough comment
+Date: Tue, 13 Oct 2020 08:53:03 +0200
+Message-Id: <20201013065313.7349-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013065313.7349-1-laurent@vivier.eu>
 References: <20201013065313.7349-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZtJvTo3dGjT6+a5UiQQYseHectvtReqizKvf8Wv6GDQoRyuzM9Y
- AcYsYLX+guxUGzgz1Dp0cQ9rTgBo91uQskMyZRdFNIMYFyeewfxQjUhi+qjy0xZSd6zJBRI
- h/LtwfDn6WIt//e4nbnyBwqBoR7l4Oti8rcBZQOXA/KmK/19Q322Z23aTz75gqk2EfDerYW
- 1/7R4OdYkNSMfHre3+UPg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9WaF3tBctDA=:4+XCNH6GPQuOjSLF6mfa91
- 1Pc1r9D2RrsPW8fIe/0QsANQXbkTSITcbLhMxqNH8p7/qjw4oGeXSHQREHEzI7XTv1U04KMLU
- qHkaY9dYPFe+xmRVnm4VSM+GS3E9Au1xDHoOaKNKVRK7nviR00d2ej6olpqOziL6Z+dvl8P2m
- vriXwehxdAoOjbwVoUDRD7iAN4Pfu7hNY6K9Wtl76FaWs2peD27yC+DUQvxuvkWjKcMHyBjQ1
- OVnqU5TRXIUcvaxXsQ77MMPSDnlzMFTJE2X3X8yr/nXtWWIEc+GSeC6YlXsiKV7Qcl46hSLo+
- fWWqreiVRi6PGeyE5uYtuDqjb14wwG9Dqga+hJj2lm6IKWOdl6R13gnG+CacC05ueFdh2ziJU
- thcM7OtHyt6jIRw2/4kBjfQ1XuMLTzEi1T+pJbiEP7LvJyA6yofXP4MDeGqVinMv8xIHM1nOg
- Wr4BqT4JQ/hBqtnp87sVcZ6vqhOSq3a6pcZHudK7ub6T+ir4Uj834Gp7l+sxRSstZZLx9uMb3
- Z7RLH0QuSNakY5a3SD+CgICqdROD5LmJoUsHongn5iFtFtjqHm1HhYBx2hWSdpA7jbh6Ez/1D
- gBeRERGfXZZlZhVsBwGUCss03COOCmFKEZg0coQvucY7bTbRlmNmlg4VGpFnBs0eG5DvLxfoh
- PmJOxHoJx0drTTpSgl9k/4YFzHWfpwfdVNp0L21n5D669oiK/vPBqAAn72EGu3hsyGjXHLKGg
- Jd4rTdpL0rwCL2pyv4WkBMp0GwuFSrqMyXmLwQBSIgEA3ka8/W86Uo1YPHt8omWS4q13/+SAs
- k8edqdtG4k4z97E7qDrw5lCF5BJf1lDK4XSQ2qRFrRz09jYNyj+QGwt5qeW3fOZsG9rpjoq
+X-Provags-ID: V03:K1:9Xfjz56fO9lF7hiKITH/c1toHpSmo850v+vuEsOpzUHK5gLk8AW
+ VFifuVvIm0s0L+SZX2PmKFq3KnyA5+dn6kf+SdXI4loRr3otXiaCPEYRLZH5uCNN8o+A7rT
+ uLJSu9Cbh23y30iSXVHRPaA0es2aVmm3Cva5lCMebGKQrAHTkEkcttiM5X83U8CRpxr8C94
+ cFpZkVi4UVHm7bhMTMaiw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qttuLacMo2Q=:91ngz4MfHImT2rvpnHk0o/
+ ajj0inkzy8T6dq6T0TznUlOToBjELm0Nb93RON2YoUL3An0eCuXw9twsMbHKUCqBAtdIZ5k2E
+ QKqC6f2JgeSwzj0pFWbIixI2hy95/WTxxwqa0TwfMZsfGzx7am/zXSqOLnc+jyqfk1Drxm7K1
+ NZQTgxVUf4uzcmwzcCAdQ+Xl7cn89aR1VwnN0TXervd3JkvWlG9pJOpmCAVTTA21XGAn8iTzl
+ kIQtG+9FuktWDlxA6gH6FJDkBEC3iypF2PRiyB5LQS7mTtJEA59NTHVoRNEG4yrZz4u6k5JLv
+ BR7YT2IPBlq2l5+X8LkkMln/tyElIyw+H479FA9Qfl+iRbWKcTG3Vj7m7k4SqLOG2rxwgl+pG
+ DXceVGfXQ1u6SndaEnAJMYr+RZSqYt+fE2zdHQc9gc4z0rbsuhInGH6NUAuRpzDTBDUahKEkC
+ nFCSifd3/1LvRWzyQE2+6c4u+NPy7UOhWyStIwiGrkCl1F106dxsnCncuw1uMd+SRAZG8HHQ9
+ 1gqkLarVltIzZ32nTwNeciM0Bnpktgawgo3BjFjeWaRaKBXthQC6iIbtDzx5mE+hQqDtxOeee
+ KErB4jDqWBDk1/+xb5VYVbT3F1yefreNZN6ADkxzVB01wmE5mU1OP54et7qa6v6akRLhYGGFh
+ UxAqQVHfl8TVZcg1O6WT02qkT8HJ+455Kt6y6KZD+AqoqMhLK9wKSOcuHIqljD1ozvdOwBrQI
+ KRS2V6L5lpUp2l5RF9pAkFBRv4kiVkjQB7A7jvnuHYrtFyOncsfRhO/8YuYtzLgQFjv5noJvD
+ fIy9PTLyIJ99g4juz1tCTCpyGRhrnBEANoITh9lcwObpxtB8ofMsx+DCCh5BhOnLLDuTetQ
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:22
@@ -69,116 +71,33 @@ X-List-Received-Date: Tue, 13 Oct 2020 06:53:27 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-When compiling with -Werror=implicit-fallthrough, gcc complains about
-missing fallthrough annotations in this file. Looking at the code,
-the fallthrough is indeed wanted here, but instead of adding the
-annotations, it can be done more efficiently by simply calculating
-the offset with a subtraction instead of increasing a local variable
-one by one.
+For being able to compile with -Werror=implicit-fallthrough we need
+to use comments that the compiler recognizes. Use "fallthrough" instead
+of "no break" here.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20201001182121.187122-1-thuth@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20201002171343.283426-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
- 1 file changed, 24 insertions(+), 26 deletions(-)
+ tests/test-char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
-index f838913b378d..499f421932e6 100644
---- a/hw/rtc/twl92230.c
-+++ b/hw/rtc/twl92230.c
-@@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
- static uint8_t menelaus_read(void *opaque, uint8_t addr)
- {
-     MenelausState *s = (MenelausState *) opaque;
--    int reg = 0;
- 
-     switch (addr) {
-     case MENELAUS_REV:
-         return 0x22;
- 
--    case MENELAUS_VCORE_CTRL5: reg ++;
--    case MENELAUS_VCORE_CTRL4: reg ++;
--    case MENELAUS_VCORE_CTRL3: reg ++;
--    case MENELAUS_VCORE_CTRL2: reg ++;
-+    case MENELAUS_VCORE_CTRL5:
-+    case MENELAUS_VCORE_CTRL4:
-+    case MENELAUS_VCORE_CTRL3:
-+    case MENELAUS_VCORE_CTRL2:
-     case MENELAUS_VCORE_CTRL1:
--        return s->vcore[reg];
-+        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
- 
--    case MENELAUS_DCDC_CTRL3: reg ++;
--    case MENELAUS_DCDC_CTRL2: reg ++;
-+    case MENELAUS_DCDC_CTRL3:
-+    case MENELAUS_DCDC_CTRL2:
-     case MENELAUS_DCDC_CTRL1:
--        return s->dcdc[reg];
--
--    case MENELAUS_LDO_CTRL8: reg ++;
--    case MENELAUS_LDO_CTRL7: reg ++;
--    case MENELAUS_LDO_CTRL6: reg ++;
--    case MENELAUS_LDO_CTRL5: reg ++;
--    case MENELAUS_LDO_CTRL4: reg ++;
--    case MENELAUS_LDO_CTRL3: reg ++;
--    case MENELAUS_LDO_CTRL2: reg ++;
-+        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
-+
-+    case MENELAUS_LDO_CTRL8:
-+    case MENELAUS_LDO_CTRL7:
-+    case MENELAUS_LDO_CTRL6:
-+    case MENELAUS_LDO_CTRL5:
-+    case MENELAUS_LDO_CTRL4:
-+    case MENELAUS_LDO_CTRL3:
-+    case MENELAUS_LDO_CTRL2:
-     case MENELAUS_LDO_CTRL1:
--        return s->ldo[reg];
-+        return s->ldo[addr - MENELAUS_LDO_CTRL1];
- 
--    case MENELAUS_SLEEP_CTRL2: reg ++;
-+    case MENELAUS_SLEEP_CTRL2:
-     case MENELAUS_SLEEP_CTRL1:
--        return s->sleep[reg];
-+        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
- 
-     case MENELAUS_DEVICE_OFF:
-         return 0;
-@@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
-     case MENELAUS_S2_PULL_DIR:
-         return s->pull[3];
- 
--    case MENELAUS_MCT_CTRL3: reg ++;
--    case MENELAUS_MCT_CTRL2: reg ++;
-+    case MENELAUS_MCT_CTRL3:
-+    case MENELAUS_MCT_CTRL2:
-     case MENELAUS_MCT_CTRL1:
--        return s->mmc_ctrl[reg];
-+        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
-     case MENELAUS_MCT_PIN_ST:
-         /* TODO: return the real Card Detect */
-         return 0;
-@@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
- {
-     MenelausState *s = (MenelausState *) opaque;
-     int line;
--    int reg = 0;
-     struct tm tm;
- 
-     switch (addr) {
-@@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
-         s->ldo[7] = value & 3;
+diff --git a/tests/test-char.c b/tests/test-char.c
+index d35cc839bc60..9196e566e9ba 100644
+--- a/tests/test-char.c
++++ b/tests/test-char.c
+@@ -70,7 +70,7 @@ static void fe_event(void *opaque, QEMUChrEvent event)
+             h->openclose_mismatch = true;
+         }
+         h->is_open = new_open_state;
+-        /* no break */
++        /* fallthrough */
+     default:
+         quit = true;
          break;
- 
--    case MENELAUS_SLEEP_CTRL2: reg ++;
-+    case MENELAUS_SLEEP_CTRL2:
-     case MENELAUS_SLEEP_CTRL1:
--        s->sleep[reg] = value;
-+        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
-         break;
- 
-     case MENELAUS_DEVICE_OFF:
 -- 
 2.26.2
 
