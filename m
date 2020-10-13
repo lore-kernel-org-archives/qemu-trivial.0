@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSIpy-0007nt-VZ
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44294)
+	id 1kSIq1-0007ru-5G
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpx-0007jy-JW; Tue, 13 Oct 2020 07:51:25 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:60203)
+ id 1kSIpy-0007mv-EV; Tue, 13 Oct 2020 07:51:26 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:51917)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpv-000506-Hs; Tue, 13 Oct 2020 07:51:25 -0400
+ id 1kSIpw-00050A-8s; Tue, 13 Oct 2020 07:51:26 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MFslN-1kgtx30155-00HKY4; Tue, 13 Oct 2020 13:51:02 +0200
+ id 1MNtny-1kqYsw1Nnc-00OIj1; Tue, 13 Oct 2020 13:51:10 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>, Fam Zheng <fam@euphon.net>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 05/14] vmdk: fix maybe uninitialized warnings
-Date: Tue, 13 Oct 2020 13:50:43 +0200
-Message-Id: <20201013115052.133355-6-laurent@vivier.eu>
+ Sergei Trofimovich <slyfox@gentoo.org>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 14/14] meson.build: drop duplicate 'sparc64' entry
+Date: Tue, 13 Oct 2020 13:50:52 +0200
+Message-Id: <20201013115052.133355-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013115052.133355-1-laurent@vivier.eu>
 References: <20201013115052.133355-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XB7loyoGcXKIcOfHMjQoDjVgKRfm0t1xGrFtoqpspoGMvsOcC1T
- jQ6z5HFbfuZrpWTPDoFlGS57/JCQAxSTV/7ATvUpe5TmTdaRFi4ni50+yk6VrgCopGTWidY
- H25kL+/T7yiUypYZVGIk2lvU7mXC24IROVa3kQrmBHMhqDOoPoc1c1ip4c0KnfqzbQRhbwk
- TnKysulw0Ozq6x6ZYhYHg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZeNJ7wiqgXw=:Hw2tyxTQmuifLlKl7Js/QC
- UMz2Yz4KxPJSYvwPyoBiwyBJjArlQPbO5pnf5eMdDQxyuSlccEFSwGXke52O4apat4hFWopA+
- Ru3lFLtWoqn039IryxV9L7tHirxQBZLmosJ9Ljh434jMyqvPOtrlNHKOATOrer7ACXxC9lIym
- Gd9cJbubNgr/hjPhYLfUvUy5nWJ7QEfwX7QsBawt5JPk5utKXeU02UC8//39AezmF1yzgiiqj
- HOWiRWutR30pR6JNs21l0z1UFv1pCPcpvudOS1kPkQyDJ2sYR2okyHWU0OnzltXiYc1B4jppN
- SnSVo49Kkpct9or7PyFmwxmda+DW9jE6ZcW/v4gchoVQUOGmv1X4KyY8xLux0RYkZseOFrXF5
- pSid1GbUswMBHNb9PLTOWzGBQmbpOunLIxzfjOIigV5RF06Ks33sffJUMQr59NglLIgD97K0g
- ok/JKivi4NWNG4jkYBoDT1f4FnPXdRmZuYsR2nQ+VuDEeeieWZ9ANQyMiLBgukg5NO2kjZcdl
- JxcuDvxRAoLTTRj5HDvPHwalBY+RU2xfbdm3BV0G8YxjeI94Dd+qIarIJq8WYZIcgG3RanTop
- 5jAPohwgktqkNkSsJ710AW5uc8+Q+8xI+JR6k9KVYVBvcrMNkpVMLg3gBLlCkPu0ChzreFJxu
- 08WKNJ3Axj0YVNSOfMS5AXKcWQkBZeiPUU2qiiyLPOJsaxqP0W6JS9dS8tE9XhBuLyunF6acy
- fnM5xOxSoAssvTmptmbvhjiRgaXZVTyRT5gvQzqNg6uglqPfp5GPIIagz4FajlcBk5epIfXsf
- N3w/LDp4QLQltINtBrtFHmaKmnVtq4fCDMnrdMmQTEG6VdEjFHMAPm7MpkI060wxW3vb9ku
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:jBEdeiOklT/eZ0CDQWnCxpX1YMzRpDwu1r6q/zXsIQOBnj9OvJM
+ zwLPhUCWGKS0rctwvfBDXpJC5up12co8CEaqRyyhrg9kbR06UvlekKPPggAeaQo6771gGnR
+ DqM/pQzh/s0ssyW3ksG3tJIq1u3T1U+W+9JbePER3t9G2CY1O7LvovqTVOmuJV1IMe3RA0M
+ bzngrhJksfIEMkQzAaZfA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xOQSOvg/1Mo=:vGbXTggR2dxCf1UicioCo5
+ WSKiyHy9ZxDWEnNRixS+9wVpStI0jrwzIZuqJmlXGPlU9MndbxyoMEtC13sNsjJr6uiVmIqN4
+ v4B2sG9wCzLpkizhorZZ2kiOek1Mhf7UZV/d7wGvZ0qcxE23l0J22MggG6hykebd62wePlkKl
+ r4XFhYfEtvqNckpMQnzH+T/uJRnvleDkph+656ZD+3hfNHH4x5vdsKiYvLHq3la8rCWABvcpU
+ SXjcScBo5FUdlQ/s7wnLyiwwWYeGct+KKQ8V74H/KobrsTRAzTLqS1PRSYKCNnJ0oC0aQtxVD
+ yPnl5wLIyEWMeCLmId0QiaL1EVJcjggid3uKOnDbH+Em8xqJ5B92A6MJc+TW0ASpHdHlNwmb4
+ CMfmPBHIoF9qAlCGbEE82UguiGvGlDGsKUaRuIVtBIueS2H2Bvd9W4ONtfj9tK/QQS4Xp9q4F
+ bpbvJqLtHh4Oy4HuUBmiGDS0IXs20BSr9v8RZ2EsfJjhuCrirXtFXRi9fNBcdF72w6IPEsVV1
+ briL9//wdorT7K/cmh8iPTpLhN60HDBHKAdCCZaHftg7zALQE0JVCTUtzQQSkJfHLxSG8jHrC
+ f/9tuBKMxs9e9WKMmAP283sUQFdMfoK2Zf4JWMmU8Fj+XK9OTSz4qFy1ZzyIqC6+degjmCREX
+ w3GW07ELHzjJvOX4gRBsDEdEZlVV44ZdY1zhu/iNcrH81ax0HKttDASyvZR3edyHm/z7n07NT
+ JY/2Z5u6JyFTGQvuFegRHrh3LND3e2km6yzJtQugqpxSu21trLnUofYotmoQEe6Zau6niTZyv
+ 63chwLv2mueDxv1wb3Bh+N5Ho6shAoVzejDSemg/uLjUoYCsUPLRVMv6HTu48hEosrfsPg9
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:51:08
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:50:58
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -65,98 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 11:51:26 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 11:51:27 -0000
 
-From: Christian Borntraeger <borntraeger@de.ibm.com>
+From: Sergei Trofimovich <slyfox@gentoo.org>
 
-Fedora 32 gcc 10 seems to give false positives:
-
-Compiling C object libblock.fa.p/block_vmdk.c.o
-../block/vmdk.c: In function ‘vmdk_parse_extents’:
-../block/vmdk.c:587:5: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-  587 |     g_free(extent->l1_table);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~
-../block/vmdk.c:754:17: note: ‘extent’ was declared here
-  754 |     VmdkExtent *extent;
-      |                 ^~~~~~
-../block/vmdk.c:620:11: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-  620 |     ret = vmdk_init_tables(bs, extent, errp);
-      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../block/vmdk.c:598:17: note: ‘extent’ was declared here
-  598 |     VmdkExtent *extent;
-      |                 ^~~~~~
-../block/vmdk.c:1178:39: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
- 1178 |             extent->flat_start_offset = flat_offset << 9;
-      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
-../block/vmdk.c: In function ‘vmdk_open_vmdk4’:
-../block/vmdk.c:581:22: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-  581 |     extent->l2_cache =
-      |     ~~~~~~~~~~~~~~~~~^
-  582 |         g_malloc(extent->entry_size * extent->l2_size * L2_CACHE_SIZE);
-      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../block/vmdk.c:872:17: note: ‘extent’ was declared here
-  872 |     VmdkExtent *extent;
-      |                 ^~~~~~
-../block/vmdk.c: In function ‘vmdk_open’:
-../block/vmdk.c:620:11: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-  620 |     ret = vmdk_init_tables(bs, extent, errp);
-      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../block/vmdk.c:598:17: note: ‘extent’ was declared here
-  598 |     VmdkExtent *extent;
-      |                 ^~~~~~
-cc1: all warnings being treated as errors
-make: *** [Makefile.ninja:884: libblock.fa.p/block_vmdk.c.o] Error 1
-
-fix them by assigning a default value.
-
-Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
-Reviewed-by: Fam Zheng <fam@euphon.net>
-Message-Id: <20200930155859.303148-2-borntraeger@de.ibm.com>
+CC: Laurent Vivier <laurent@vivier.eu>
+CC: qemu-trivial@nongnu.org
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+Message-Id: <20201012175719.2573367-1-slyfox@gentoo.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block/vmdk.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 8ec62c7ab798..a00dc00eb47a 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -595,7 +595,7 @@ static int vmdk_open_vmfs_sparse(BlockDriverState *bs,
-     int ret;
-     uint32_t magic;
-     VMDK3Header header;
--    VmdkExtent *extent;
-+    VmdkExtent *extent = NULL;
+diff --git a/meson.build b/meson.build
+index 17c89c87c626..392d326f4563 100644
+--- a/meson.build
++++ b/meson.build
+@@ -41,7 +41,7 @@ have_block = have_system or have_tools
+ python = import('python').find_installation()
  
-     ret = bdrv_pread(file, sizeof(magic), &header, sizeof(header));
-     if (ret < 0) {
-@@ -751,7 +751,7 @@ static int vmdk_open_se_sparse(BlockDriverState *bs,
-     int ret;
-     VMDKSESparseConstHeader const_header;
-     VMDKSESparseVolatileHeader volatile_header;
--    VmdkExtent *extent;
-+    VmdkExtent *extent = NULL;
+ supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux']
+-supported_cpus = ['ppc', 'ppc64', 's390x', 'sparc64', 'riscv32', 'riscv64', 'x86', 'x86_64',
++supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
+   'arm', 'aarch64', 'mips', 'mips64', 'sparc', 'sparc64']
  
-     ret = bdrv_apply_auto_read_only(bs,
-             "No write support for seSparse images available", errp);
-@@ -869,7 +869,7 @@ static int vmdk_open_vmdk4(BlockDriverState *bs,
-     uint32_t magic;
-     uint32_t l1_size, l1_entry_sectors;
-     VMDK4Header header;
--    VmdkExtent *extent;
-+    VmdkExtent *extent = NULL;
-     BDRVVmdkState *s = bs->opaque;
-     int64_t l1_backup_offset = 0;
-     bool compressed;
-@@ -1088,7 +1088,7 @@ static int vmdk_parse_extents(const char *desc, BlockDriverState *bs,
-     BdrvChild *extent_file;
-     BdrvChildRole extent_role;
-     BDRVVmdkState *s = bs->opaque;
--    VmdkExtent *extent;
-+    VmdkExtent *extent = NULL;
-     char extent_opt_prefix[32];
-     Error *local_err = NULL;
- 
+ cpu = host_machine.cpu_family()
 -- 
 2.26.2
 
