@@ -1,48 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEBY-0004vd-Pb
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32862)
+	id 1kSEBa-0004ye-0i
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBW-0004vM-PG; Tue, 13 Oct 2020 02:53:22 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:53471)
+ id 1kSEBZ-0004w9-6O; Tue, 13 Oct 2020 02:53:25 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:46741)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBU-0000Dy-UO; Tue, 13 Oct 2020 02:53:22 -0400
+ id 1kSEBX-0000EC-Db; Tue, 13 Oct 2020 02:53:24 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M3DBd-1kT2av35bR-003ePW; Tue, 13 Oct 2020 08:53:16 +0200
+ id 1MTRIi-1ktg8I0xUy-00Tjrr; Tue, 13 Oct 2020 08:53:18 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 00/15] Trivial branch for 5.2 patches
-Date: Tue, 13 Oct 2020 08:52:58 +0200
-Message-Id: <20201013065313.7349-1-laurent@vivier.eu>
+Subject: [PULL 02/15] target/i386/cpu: Update comment that mentions Texinfo
+Date: Tue, 13 Oct 2020 08:53:00 +0200
+Message-Id: <20201013065313.7349-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201013065313.7349-1-laurent@vivier.eu>
+References: <20201013065313.7349-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:uIZSGJka0sLXeoNUzhf3XdpAdnHsBRNj813yKbvyQSuLUuB9PqF
- +F+3+LGmHpdsQavaUtqmv53QWTaoNESQm4I262vCAFomB9rfXG/MFDCoh7cCsTxemKKj3oL
- yeIdgFnhse6iRW3ekVbhRL0fD7YR/DdJv246oxxS98o7tBUH7bXKqqasQx/WBb17Y+BQ9FE
- OMWGb6XXrQYsNISULqCzw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pvObdF34zO4=:LODujIsST7wDaZk9BqnKeu
- cyWvANP91NvUOIOcS8mHUa+kJznuWtt+k6elgS5BY4+peuO/UfCuoM7T/m5/oN963ksBrYocM
- hl7EoXzOySUaaGCd73QtIIkZvoKPF4zXYB8wvM07fmplye8z+0XO0y92ArkCDYkNTDKF2OGSP
- KVwlia79vyQqRtHaJAl1LgpePxjEM+/llie1U9T0Kw/3hQW7eT3PDVcaYxsaR+oo4E/4zr1vO
- UKgYMtE50Y/LgDFYaGCdV1X+rqj9GOwOHtBK02bJr1HWFlYff/XwyJ8RI3/PEJgz+jv4dtegT
- nzcaXIbRYEv2DF9udn2WdiBmdw9nsU3DJcTfd09wiWNoGltwiZsFpDbdKEogpY/tvoHDx3GQg
- HlKHSh46ee7STDM1RISaXfakZm1q6ax7E8zO5T7vLvnwZWv6lbeAi59z3BR7LlRwZZvdnav3b
- z3uqeXCGwR8De/x5Jw/WnTETb/dVK/I7OnkwvwrCo0vgiqGcXZkG066RvxM9F5XTbpUaFA5p8
- kQHyaL5X0KKlL4YS9lnkd1KmaKymCrc4s/PUS7V9Nr7D9PpZFwn6QwAQqEn92EZq9lW4l0Gaq
- MDJvxoQnl8HjsSSHNt57g2icYhXt1uPl9gcBx9r4IanRyUV8wGUUbWTpv+5r5V7Js8LypU2dO
- JkoK0bk95Mag32EGHoe36eyn7NaEPQmhwr2QIgKq7oIpx3oDA5WNjFnmYXO8x16piId2Y4oSb
- vYpDhU1Uy1/DIGr5pOdCrfAAx7UOTPG0twWeRPe4UvkpGfmccHjX9UHMVrk6i6UMkiXxZgAfH
- 7oRnO5zDcHQfIK+lZy6mo8ouZP5JZhf5zr/XUotTAozOvUYCQAnK2lbtBXh1NKZfb4ybUVR
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:aOPdbd0/QNgignjlMKnrrE/N+IJOP3L7RsemEXgjbAaHm7hplkd
+ gFTBnhMYeE6z6NvRQf6o+gcTaUFxPO9Y99Grb9qIUVRSQdoODs3J6wRUWgwyemD8aTukME9
+ yz779Yf287RgXpxcqGR23dwBV0kwTP6SU+znz52fzaBy1Jin02h7w5FIGMWrBqKzh8hr36f
+ Jx9cINej1mxTFE8zNBePA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oX8jXPjBIdw=:LaIysuB9PRisQlZUiKUHq3
+ 6LDYHKyKLzuV6bB3h4gZqJ9RrHAutOvGEhDWBrDQHcnLbIw4GCVNgMlHfAP3bgFd0odfvcR0z
+ AZra7nasaPijSs3DYESqmvsb4/vDElZAvaXibsXFPjz5tE8UAYXOv6qKwS+LyJ6TLJAwy/pYg
+ VpepBOZqf7S1wWG4d3hlhr4FUWbl0gMPPKvvB1JsfUkKpYwl6f1MHbiISl14mAMxlTFDNWPHf
+ RdPwyiXVi71zJzVHNL+tyBlnys09BLCRBO2tqtN1RHHbepHGtjAtLYbgo0Gnzr/HLC/Ww6rYy
+ ruZ20rPH6Bft91gWsqXGkarEH4ZuafR8WOw9nic+tjn8uMiZT49FLpzF1DtKFoSMV2eE9Kq5R
+ xmbTcqwR0GFyBMIRsrB+/aomsZxC38mezVJsF3mUs+oqK6RkDxBlQUGoiAUL4yVr69D7ivuA4
+ FZLBi26bLpzDlu2aPZ2W5eq4yBstv+LwVFcomLDLIZ3o7RrSMsOpmQ5zColBWhLTntf4/Esqr
+ zPcoN9vMUVnpdXQeiwDgueKTjRr6AjP9dloVYIxDZIczqukqhxcVzBwk8tA6PSXQvmOpS3g3c
+ 0P8S+/OApP81QvOmT5ysbWjiXIIc5FUiU5iCC3LYeTO6ZimiW8pOBEFbcOPWLUkJ93V6ynnMe
+ c2VIVhgli5cORzUKJ7UxO7hclvTdCxRPMjSSJomZUoMhua5Hvhcain8aMepsGtFc5SeingnyB
+ DZCbljwB5kIikTFbZ3ENxSQwERFNuWxycKdZwsOyPcrbgS4YLo4cfY3+gjhe4sFqvOo74+NZR
+ fQKSD3+nhszIF/IRcFCR/MZCFrm3Jl19zgwPbvb7ZXMgp5JGh2ajQhQjPc04pQ58QPsBRU4
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:18
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:21
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,86 +66,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 06:53:23 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 06:53:25 -0000
 
-The following changes since commit 2387df497b4b4bcf754eb7398edca82889e2ef54=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2020-10-10' i=
-nt=3D=0D
-o staging (2020-10-12 11:29:42 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request=
-=0D
-=0D
-for you to fetch changes up to ef3a1d9fc36140f8933fbced70ee21fd9740b33c:=0D
-=0D
-  meson.build: drop duplicate 'sparc64' entry (2020-10-12 23:11:32 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial Patches Pull request 20201013=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Christian Borntraeger (1):=0D
-  vmdk: fix maybe uninitialized warnings=0D
-=0D
-Elena Afanasova (1):=0D
-  block/blkdebug: fix memory leak=0D
-=0D
-Greg Kurz (1):=0D
-  hw/acpi/piix4: Rename piix4_pm_add_propeties() to=0D
-    piix4_pm_add_properties()=0D
-=0D
-Julia Suvorova (1):=0D
-  hw/pci: Fix typo in PCI hot-plug error message=0D
-=0D
-Laurent Vivier (2):=0D
-  hw/char/serial: remove duplicate .class_init in serial_mm_info=0D
-  goldfish_rtc: change MemoryRegionOps endianness to=0D
-    DEVICE_NATIVE_ENDIAN=0D
-=0D
-Marc-Andr=3DC3=3DA9 Lureau (1):=0D
-  mingw: fix error __USE_MINGW_ANSI_STDIO redefined=0D
-=0D
-Markus Armbruster (2):=0D
-  qemu-img-cmds.hx: Update comment that mentions Texinfo=0D
-  target/i386/cpu: Update comment that mentions Texinfo=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (3):=0D
-  hw/block/nvme: Simplify timestamp sum=0D
-  softmmu/memory: Log invalid memory accesses=0D
-  target/sparc/int32_helper: Remove duplicated 'Tag Overflow' entry=0D
-=0D
-Sergei Trofimovich (1):=0D
-  meson.build: drop duplicate 'sparc64' entry=0D
-=0D
-Thomas Huth (2):=0D
-  hw/rtc/twl92230: Silence warnings about missing fallthrough statements=0D
-  tests/test-char: Use a proper fallthrough comment=0D
-=0D
- block/blkdebug.c            |  1 +=0D
- block/vmdk.c                |  8 +++---=0D
- hw/acpi/piix4.c             |  4 +--=0D
- hw/block/nvme.c             |  7 +-----=0D
- hw/char/serial.c            |  1 -=0D
- hw/pci/pci.c                |  2 +-=0D
- hw/ppc/spapr_pci.c          |  2 +-=0D
- hw/rtc/goldfish_rtc.c       |  2 +-=0D
- hw/rtc/twl92230.c           | 50 ++++++++++++++++++-------------------=0D
- meson.build                 |  2 +-=0D
- migration/dirtyrate.c       |  3 ++-=0D
- qemu-img-cmds.hx            |  2 +-=0D
- softmmu/memory.c            | 16 ++++++++++++=0D
- target/i386/cpu.c           |  3 ++-=0D
- target/sparc/int32_helper.c |  1 -=0D
- tests/test-bitmap.c         |  1 -=0D
- tests/test-char.c           |  2 +-=0D
- 17 files changed, 58 insertions(+), 49 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+From: Markus Armbruster <armbru@redhat.com>
+
+Missed in commit 41fba1618b "docs/system: convert the documentation of
+deprecated features to rST."
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200929075824.1517969-3-armbru@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ target/i386/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index f37eb7b675f4..9eafbe369075 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -4127,7 +4127,8 @@ static PropValue tcg_default_props[] = {
+  * We resolve CPU model aliases using -v1 when using "-machine
+  * none", but this is just for compatibility while libvirt isn't
+  * adapted to resolve CPU model versions before creating VMs.
+- * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi.
++ * See "Runnability guarantee of CPU models" at
++ * docs/system/deprecated.rst.
+  */
+ X86CPUVersion default_cpu_version = 1;
+ 
+-- 
+2.26.2
+
 
