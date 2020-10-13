@@ -1,90 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSFoR-0002rl-FE
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 04:37:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56438)
+	id 1kSFpZ-0003Vp-Of
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 04:38:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSFoO-0002py-45
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 04:37:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28557)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSFpX-0003Sa-Q9
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 04:38:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSFoL-00057t-9p
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 04:37:35 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSFoz-0005A3-W8
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 04:38:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602578252;
+ s=mimecast20190719; t=1602578293;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YER42suSzgo1mdCZneD+dAT6C2yg98ryiioL9b4AR5c=;
- b=IooVdEDTQ2Lp9DrRvROC06i0yPLpVYXZpZ7vjrl+L507HZsCea2Aw3ISgzt/FUwUB2VIIw
- QwA9fEi3uNOCkI30JefT/whFhO9c/GDtBlkEhWX1UDSiMrpKJH/wyJ55TsBa23+Fgd2ala
- B4gC37r0Yv6RTgAvn/GgiY1vzjMj6gI=
+ bh=Fv6Fa/S+yjMsgxTeLF/dgikbc6nPa/7K1ehD4HJtvw4=;
+ b=D8MYqXGVaBGaVBIcXMi6ytKqO7y1ryKOvM2qj7a/N7Xkc7edg76PsE0Lu+4FFCQIuYP31T
+ ++y1aNnNGCkQkRr3/WE6xSG2C8A6fIMni2qB1qftdm+uD+3cXPiY9KEMwL8rz7yI5OrW50
+ oSwz8EiXc9hzJQ0yJOZ2qOScflFqiMk=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-EUL_Cye9NCqptC9PUJGYhg-1; Tue, 13 Oct 2020 04:37:30 -0400
-X-MC-Unique: EUL_Cye9NCqptC9PUJGYhg-1
-Received: by mail-wr1-f69.google.com with SMTP id p6so10038107wrm.23
- for <qemu-trivial@nongnu.org>; Tue, 13 Oct 2020 01:37:30 -0700 (PDT)
+ us-mta-35-RdTLfT2tP1CF0vvLtA3S0A-1; Tue, 13 Oct 2020 04:38:11 -0400
+X-MC-Unique: RdTLfT2tP1CF0vvLtA3S0A-1
+Received: by mail-wr1-f69.google.com with SMTP id a15so843108wrx.9
+ for <qemu-trivial@nongnu.org>; Tue, 13 Oct 2020 01:38:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=YER42suSzgo1mdCZneD+dAT6C2yg98ryiioL9b4AR5c=;
- b=kkq7XxuvBpu0e/Izj5ft/7N/gqziI5Pa29OPWOIF5QjZKb3nhmu9mT3yZYpHcMGDnK
- pBtrWg3RgQToM6YWnnx8e7N1jh/e82Dmu6zbv9gbrNQSWEa4bTf4MPq2XvuYWiIQp7LP
- S+QEVLP7mDwEko6bUCrqstaQY3XQKFy9GcOw8o3IWhwubOxrSwlsbUUWY1D84QTvQvsw
- 00bTtjU+PCZdmVeosNKXIHpq0LqxaFY4k6dbbYtVtVbAO+KjQ7LbNHxITO+dtTEUGOOk
- UAqrhQloWAKrKb2n5Wr3kJZhKJOn16MthhKBm3L0YzjUvA7O0aAbYIA7tJ/QNREivqlW
- 1gvQ==
-X-Gm-Message-State: AOAM531LpXqW8GWVhrEWCwCYffqKxKmpjbNPv8N3tlS6iPXu6xZQCypN
- alOn9OSFUWBHVqRPlq68O2y0yzA6W2oB4vkAm2UsPPfRxaG9KOTZIUrXZUG2OeT4Xq1LyCrBgOg
- +3rDX/Tn9cUyKrCJ4Iw==
-X-Received: by 2002:adf:93e5:: with SMTP id 92mr33314280wrp.31.1602578249439; 
- Tue, 13 Oct 2020 01:37:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXqI7kgL0CoevUkym211lbRIfbsZCtGkZlZYRskWOqC5tYS/cdGxbl1sIEDTAHUv1T0D8AgA==
-X-Received: by 2002:adf:93e5:: with SMTP id 92mr33314257wrp.31.1602578249250; 
- Tue, 13 Oct 2020 01:37:29 -0700 (PDT)
+ bh=Fv6Fa/S+yjMsgxTeLF/dgikbc6nPa/7K1ehD4HJtvw4=;
+ b=cp9nWfTCl+VSUWhdhnJSL4bcwZoVYCpFq3EVdGjTy0gB1N6s5ild0MOP3wRmA61sbw
+ 6+tRBQQVGgFh0hiT+mUgh2r+FsnG3Txy02b5PVzntlL2q2de2qnyR9L6+Z829lsIjPw0
+ GsUI7V+0eSfw9ZHozZS6hTf2Z8vpwR5oc9s5fvLvCL0Q0dkblsKBW3LdU95Q6Nzv3IHL
+ 6iCYO66wCctT4T9fOOVkxcE5LguFzXa8eQ0ESeGmzYiBwqkeZ2QnW+Tf1+O6rV5Csov4
+ 8FLoGPsnOXs7hxY0rcO9H4UCF1k4kv1aV6UW9O15qLTbcOyqsgmIg6B2EAR7Hiv/vquo
+ 1u0w==
+X-Gm-Message-State: AOAM530dTYrm7WVsVzSfVhIQR5BtS+xBw5ejsXZWXeWAohL+w2OQvENb
+ OiJjmHmejVd8XumLivYV1rW8Y8etrXEDNlqzAGNkG2fg9DMuiOSRpCd0u+WOKe5TmozzYEBu+BE
+ EdctnYIeIrAicfvwSng==
+X-Received: by 2002:adf:ce12:: with SMTP id p18mr34691057wrn.52.1602578290437; 
+ Tue, 13 Oct 2020 01:38:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzKlJf/dy+7ovm3eN2P8LmhOBQuLlfdbrFX0/PiwCSjfFv02l5PAhcG3C6oAyHaIiIXZGtJw==
+X-Received: by 2002:adf:ce12:: with SMTP id p18mr34691028wrn.52.1602578290212; 
+ Tue, 13 Oct 2020 01:38:10 -0700 (PDT)
 Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
  [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id p67sm26420219wmp.11.2020.10.13.01.37.28
+ by smtp.gmail.com with ESMTPSA id v3sm29254399wre.17.2020.10.13.01.38.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Oct 2020 01:37:28 -0700 (PDT)
-Subject: Re: [PATCH v9 4/5] win32: Simplify gmtime_r detection not depends on
- if _POSIX_C_SOURCE are defined on msys2/mingw
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20201012234348.1427-1-luoyonggang@gmail.com>
- <20201012234348.1427-5-luoyonggang@gmail.com>
+ Tue, 13 Oct 2020 01:38:09 -0700 (PDT)
+Subject: Re: [PATCH v7 2/4] gitignore: ignore a bit more
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20201012233740.190-1-luoyonggang@gmail.com>
+ <20201012233740.190-3-luoyonggang@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4d300fcc-7ca9-aaa4-7bc4-e513ae558dc0@redhat.com>
-Date: Tue, 13 Oct 2020 10:37:27 +0200
+Message-ID: <7431126f-cc78-57d3-fd78-bd21c5785927@redhat.com>
+Date: Tue, 13 Oct 2020 10:38:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201012234348.1427-5-luoyonggang@gmail.com>
+In-Reply-To: <20201012233740.190-3-luoyonggang@gmail.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:04:27
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:06:42
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -99,98 +95,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 08:37:37 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 08:38:48 -0000
 
-On 10/13/20 1:43 AM, Yonggang Luo wrote:
-> We remove the CONFIG_LOCALTIME_R detection option in configure, and move the check
-> existence of gmtime_r from configure into C header and source directly by using macro
-> `_POSIX_THREAD_SAFE_FUNCTIONS`.
-> Before this patch, the configure script are always assume the compiler doesn't define
-> _POSIX_C_SOURCE macro at all, but that's not true, because thirdparty library such
-> as ncursesw may define -D_POSIX_C_SOURCE in it's pkg-config file. And that C Flags will
-> added -D_POSIX_C_SOURCE into each QEMU_CFLAGS. And that's causing the following compiling error:
-> n file included from C:/work/xemu/qemu/include/qemu/osdep.h:119,
->                   from ../softmmu/main.c:25:
-> C:/work/xemu/qemu/include/sysemu/os-win32.h:53:12: error: redundant redeclaration of 'gmtime_r' [-Werror=redundant-decls]
->     53 | struct tm *gmtime_r(const time_t *timep, struct tm *result);
->        |            ^~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:94,
->                   from ../softmmu/main.c:25:
-> C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/time.h:284:36: note: previous definition of 'gmtime_r' was here
->    284 | __forceinline struct tm *__CRTDECL gmtime_r(const time_t *_Time, struct tm *_Tm) {
->        |                                    ^~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:119,
->                   from ../softmmu/main.c:25:
-> C:/work/xemu/qemu/include/sysemu/os-win32.h:55:12: error: redundant redeclaration of 'localtime_r' [-Werror=redundant-decls]
->     55 | struct tm *localtime_r(const time_t *timep, struct tm *result);
->        |            ^~~~~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:94,
->                   from ../softmmu/main.c:25:
-> C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/time.h:281:36: note: previous definition of 'localtime_r' was here
->    281 | __forceinline struct tm *__CRTDECL localtime_r(const time_t *_Time, struct tm *_Tm) {
->        |                                    ^~~~~~~~~~~
-
-^^^ very verbose but OK.
-
-vvv This part is duplicated, can you remove?
-
-> Compiling C object libcommon.fa.p/hw_gpio_zaurus.c.obj
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:119,
->                   from ../hw/i2c/smbus_slave.c:16:
-> C:/work/xemu/qemu/include/sysemu/os-win32.h:53:12: error: redundant redeclaration of 'gmtime_r' [-Werror=redundant-decls]
->     53 | struct tm *gmtime_r(const time_t *timep, struct tm *result);
->        |            ^~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:94,
->                   from ../hw/i2c/smbus_slave.c:16:
-> C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/time.h:284:36: note: previous definition of 'gmtime_r' was here
->    284 | __forceinline struct tm *__CRTDECL gmtime_r(const time_t *_Time, struct tm *_Tm) {
->        |                                    ^~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:119,
->                   from ../hw/i2c/smbus_slave.c:16:
-> C:/work/xemu/qemu/include/sysemu/os-win32.h:55:12: error: redundant redeclaration of 'localtime_r' [-Werror=redundant-decls]
->     55 | struct tm *localtime_r(const time_t *timep, struct tm *result);
->        |            ^~~~~~~~~~~
-> In file included from C:/work/xemu/qemu/include/qemu/osdep.h:94,
->                   from ../hw/i2c/smbus_slave.c:16:
-> C:/CI-Tools/msys64/mingw64/x86_64-w64-mingw32/include/time.h:281:36: note: previous definition of 'localtime_r' was here
->    281 | __forceinline struct tm *__CRTDECL localtime_r(const time_t *_Time, struct tm *_Tm) {
->        |                                    ^~~~~~~~~~~
-> Compiling C object libcommon.fa.p/hw_dma_xilinx_axidma.c.obj
-> 
-> After this patch, whenever ncursesw or other thirdparty libraries tried to define or not
-> define  _POSIX_C_SOURCE, the source will building properly. Because now, we don't make any
-> assumption if _POSIX_C_SOURCE are defined. We solely relied on if the macro `_POSIX_THREAD_SAFE_FUNCTIONS`
-> are defined in msys2/mingw header.
-> 
-> The _POSIX_THREAD_SAFE_FUNCTIONS are defined in mingw header like this:
-> 
-> ```
-> #if defined(_POSIX_C_SOURCE) && !defined(_POSIX_THREAD_SAFE_FUNCTIONS)
-> #define _POSIX_THREAD_SAFE_FUNCTIONS 200112L
-> #endif
-> 
-> #ifdef _POSIX_THREAD_SAFE_FUNCTIONS
-> __forceinline struct tm *__CRTDECL localtime_r(const time_t *_Time, struct tm *_Tm) {
->    return localtime_s(_Tm, _Time) ? NULL : _Tm;
-> }
-> __forceinline struct tm *__CRTDECL gmtime_r(const time_t *_Time, struct tm *_Tm) {
->    return gmtime_s(_Tm, _Time) ? NULL : _Tm;
-> }
-> __forceinline char *__CRTDECL ctime_r(const time_t *_Time, char *_Str) {
->    return ctime_s(_Str, 0x7fffffff, _Time) ? NULL : _Str;
-> }
-> __forceinline char *__CRTDECL asctime_r(const struct tm *_Tm, char * _Str) {
->    return asctime_s(_Str, 0x7fffffff, _Tm) ? NULL : _Str;
-> }
-> #endif
-> ```
+On 10/13/20 1:37 AM, Yonggang Luo wrote:
+> Enable the creating multiple build directory at the source root.
+> Ignore /meson/ and /roms/ for better search experience.
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   configure                 | 34 ----------------------------------
->   include/sysemu/os-win32.h |  4 ++--
->   util/oslib-win32.c        |  4 ++--
->   3 files changed, 4 insertions(+), 38 deletions(-)
+>   .gitignore | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/.gitignore b/.gitignore
+> index b32bca1315..f78ee9f297 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -1,5 +1,5 @@
+>   /GNUmakefile
+> -/build/
+> +/build*/
+>   *.pyc
+>   .sdk
+>   .stgit-*
+> @@ -10,3 +10,5 @@ TAGS
+>   *~
+>   *.ast_raw
+>   *.depend_raw
+> +/meson/
+> +/roms/**/*
+
+Why?
 
 
