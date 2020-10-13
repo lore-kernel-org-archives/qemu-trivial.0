@@ -1,82 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSL4a-0006tm-3P
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 10:14:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57644)
+	id 1kSL9h-0003dI-7t
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 10:19:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kSL4K-0006qj-Vv; Tue, 13 Oct 2020 10:14:28 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:33938)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kSL4I-0007KV-I0; Tue, 13 Oct 2020 10:14:24 -0400
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09DEEGaH117774;
- Tue, 13 Oct 2020 14:14:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-transfer-encoding;
- s=corp-2020-01-29; bh=uj2LKtjKJJ7DdSEmRNUjqh5LCM5jLrVIpdPTZ9hXRBs=;
- b=mcI/2z2r2MwgPtnHH7RMbQquwRFK4tToyJMoeAest/rOVaIRtXYLTtHW7QlQXTQhNNe+
- nRgCHE1RB/5qdc3UI1E68r2raWNzIT89muqpzjvEPA2telGujD6j7NixC53ZOfeXxIJ0
- lHrpkgaPj8x3XVtduuQL3q7l/u7C32JDSZcd09i0AlToW40BjzticoDqOshuJ+tCKFMe
- YyI3v4cqaHnc39C2AsxlKJGT+PMnCJdRfJt+AU4u+7ce+xSSAJgEFCJJTJuQxJMy2dEl
- SGgD2LbjD5+IK0YFeJATbdcDQRB2kzFQKBxinmmK0LyEX2o6ikYqOTDXEKkRjACucgGG Qg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 3434wkjds5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 13 Oct 2020 14:14:18 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09DEBDd9017151;
- Tue, 13 Oct 2020 14:14:18 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 343puxym25-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 13 Oct 2020 14:14:18 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09DEEGJf015255;
- Tue, 13 Oct 2020 14:14:17 GMT
-Received: from disaster-area.hh.sledj.net (/81.187.26.238)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 13 Oct 2020 07:14:16 -0700
-Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id babe4ce0;
- Tue, 13 Oct 2020 14:14:14 +0000 (UTC)
-From: David Edmondson <david.edmondson@oracle.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- David Edmondson <david.edmondson@oracle.com>
-Subject: [PATCH] qmp-shell: Sort by key when pretty-printing
-Date: Tue, 13 Oct 2020 15:14:14 +0100
-Message-Id: <20201013141414.18398-1-david.edmondson@oracle.com>
-X-Mailer: git-send-email 2.28.0
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSL9X-0003cD-SO
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 10:19:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37553)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSL9V-0008B8-62
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 10:19:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602598783;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WOv27z5xhdK4/eY0BmPUYbYYvfCTu8eURB6iPyPgwCo=;
+ b=IJ8hKIxezZ1VXAelJ9FFMbrn9jzvPDgJx56+y5uR1tsjkPWeDYPcQwT8vADxGK0d6MyGXW
+ ZZtHJD5VZ20lObMmi777/mvb9f+YAykehKiFxtpvvXryNOe7TjBqa29AY606uxgGUuN45G
+ A3tS8HurpJ6+nh6FAZjHSkP1NlzokDg=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-582-NPSULqjAMsC5kXlG47Ceew-1; Tue, 13 Oct 2020 10:19:41 -0400
+X-MC-Unique: NPSULqjAMsC5kXlG47Ceew-1
+Received: by mail-wm1-f70.google.com with SMTP id w23so43364wmi.1
+ for <qemu-trivial@nongnu.org>; Tue, 13 Oct 2020 07:19:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WOv27z5xhdK4/eY0BmPUYbYYvfCTu8eURB6iPyPgwCo=;
+ b=YlaNWQMt0kF0MWHvl8YjTDEHld4Lb4bdABBF/nUiMirpPcpRDdOqRrHrJLDkLG2Wzc
+ BamOMZX8iBtJfxv4BBqsnpvW5axIYgXG5VZgG+JR7N7vMGqL88CLBjecgnF8HBrjrHdq
+ 5FIZvVWKAvyXrRUKJx2Z07NzRdvpEMTMFo8oDXUHeTQKSw2eFumjcR6531eZdwTHyNX+
+ U/6TBrXdAaaC9TZg0MzKVc2er1l5xINXXV9MlPqH0ImQA2GsRjkqEo1Si+E5rUWQmHRp
+ cTN4TtKMqfALajwHLAUaCIdl5AgBTD6/7gKArF/H0N2ZywwVQq+nSNiOSre8/ZkOmUwh
+ aZ3Q==
+X-Gm-Message-State: AOAM533LpX0CmwffCC0vJgDu+OOzxJGVNQ83GRwSeS93fhYYhihzlfWi
+ BOUN58CXAaRETJbAhWavJ6MdSr8lIJtkzJL46ydkkTNpSXP267O3aem+vFVhmQwAjijZxSkKBvn
+ T3GnoPYJvWuVoO55O+w==
+X-Received: by 2002:a7b:c085:: with SMTP id r5mr67477wmh.17.1602598780454;
+ Tue, 13 Oct 2020 07:19:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwo5/56Ij4h9ohtF/0X5tYD7oS0nXWeIZfP9rItx4BzKzGPSeg/6fNkM1p5jU2GKPuklOHgnQ==
+X-Received: by 2002:a7b:c085:: with SMTP id r5mr67452wmh.17.1602598780209;
+ Tue, 13 Oct 2020 07:19:40 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id t12sm19759134wrm.25.2020.10.13.07.19.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Oct 2020 07:19:39 -0700 (PDT)
+Subject: Re: [PATCH] qmp-shell: Sort by key when pretty-printing
+To: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>
+References: <20201013141414.18398-1-david.edmondson@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <71a27e2a-3883-fc4f-647f-594b49f62816@redhat.com>
+Date: Tue, 13 Oct 2020 16:19:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
+In-Reply-To: <20201013141414.18398-1-david.edmondson@oracle.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9772
- signatures=668681
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=932
- mlxscore=0 spamscore=0
- adultscore=0 suspectscore=0 phishscore=0 bulkscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010130107
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9772
- signatures=668681
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 mlxscore=0
- malwarescore=0 phishscore=0 suspectscore=0 impostorscore=0 clxscore=1011
- spamscore=0 priorityscore=1501 bulkscore=0 adultscore=0 mlxlogscore=949
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010130108
-Received-SPF: pass client-ip=141.146.126.78;
- envelope-from=david.edmondson@oracle.com; helo=aserp2120.oracle.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 10:14:19
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:04:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,30 +93,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 14:14:34 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 14:19:49 -0000
 
-If the user selects pretty-printing (-p) the contents of any
-dictionaries in the output are sorted by key.
+On 10/13/20 4:14 PM, David Edmondson wrote:
+> If the user selects pretty-printing (-p) the contents of any
+> dictionaries in the output are sorted by key.
+> 
+> Signed-off-by: David Edmondson <david.edmondson@oracle.com>
+> ---
+>   scripts/qmp/qmp-shell | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
+> index c5eef06f3f..b4d06096ab 100755
+> --- a/scripts/qmp/qmp-shell
+> +++ b/scripts/qmp/qmp-shell
+> @@ -260,7 +260,7 @@ class QMPShell(qmp.QEMUMonitorProtocol):
+>           indent = None
+>           if self._pretty:
+>               indent = 4
+> -        jsobj = json.dumps(qmp, indent=indent)
+> +        jsobj = json.dumps(qmp, indent=indent, sort_keys=self._pretty)
+>           print(str(jsobj))
+>   
+>       def _execute_cmd(self, cmdline):
+> 
 
-Signed-off-by: David Edmondson <david.edmondson@oracle.com>
----
- scripts/qmp/qmp-shell | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
-index c5eef06f3f..b4d06096ab 100755
---- a/scripts/qmp/qmp-shell
-+++ b/scripts/qmp/qmp-shell
-@@ -260,7 +260,7 @@ class QMPShell(qmp.QEMUMonitorProtocol):
-         indent = None
-         if self._pretty:
-             indent = 4
--        jsobj = json.dumps(qmp, indent=indent)
-+        jsobj = json.dumps(qmp, indent=indent, sort_keys=self._pretty)
-         print(str(jsobj))
- 
-     def _execute_cmd(self, cmdline):
--- 
-2.28.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
