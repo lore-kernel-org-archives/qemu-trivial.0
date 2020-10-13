@@ -1,60 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSF3x-0006yy-JE
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:49:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44168)
+	id 1kSFdt-0000VH-OU
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 04:26:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54244)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kSF3u-0006xU-34; Tue, 13 Oct 2020 03:49:34 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2982 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kSF3r-00075u-7H; Tue, 13 Oct 2020 03:49:33 -0400
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id 7029CF933DCD19530814;
- Tue, 13 Oct 2020 15:49:21 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.75]) by
- DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0487.000;
- Tue, 13 Oct 2020 15:49:15 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@gmail.com>
-CC: Fam Zheng <fam@euphon.net>, ganqixin <ganqixin@huawei.com>,
- "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Qemu Developers
- <qemu-devel@nongnu.org>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Euler Robot <euler.robot@huawei.com>,
- Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: RE: [PATCH] migration/block-dirty-bitmap: fix uninitialized
- variable warning
-Thread-Topic: [PATCH] migration/block-dirty-bitmap: fix uninitialized
- variable warning
-Thread-Index: AQHWnvWXB6+3xHhZ7kqhgehHhToetKmTlYMAgACocACAAF4JAIAAjDZA
-Date: Tue, 13 Oct 2020 07:49:15 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B9B2054@dggemm531-mbx.china.huawei.com>
-References: <20201010110730.1575180-1-kuhn.chenqun@huawei.com>
- <2b2bc826-0785-66e2-3515-b98abfac26ca@vivier.eu>
- <CAKXe6SL8fRN=-iqFEiHeWqZm0F+T+8vkc7qJeUz6izQcZQ2Q-A@mail.gmail.com>
- <70bc9735-6555-078a-52da-61da6c58f1d3@vivier.eu>
-In-Reply-To: <70bc9735-6555-078a-52da-61da6c58f1d3@vivier.eu>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kSFdr-0000SD-W8; Tue, 13 Oct 2020 04:26:44 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43730)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kSFdq-0003pn-Hy; Tue, 13 Oct 2020 04:26:43 -0400
+Received: by mail-wr1-x444.google.com with SMTP id g12so22890985wrp.10;
+ Tue, 13 Oct 2020 01:26:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JvV/jsI0fp+K5yXTJ78yB5K/nDwyOATa0k0NxH4XbJ4=;
+ b=skTw/xlICwwR5N0v0dnG8QvyF/1b6Pv/5qIpJCXnNA+DEz/b8DpsuXQRJ5EE0UQxEu
+ MTZJDKGwNQ8G7nY0uIdtcgXv/xQKYK/1kXGMYgVO3kZj9kvkqXI6h1DGmMNsAux/Df9V
+ QTf9Mxf24UGVJNovd7f7sSXsGIvL+aLdtTpvgBUxi1g0UIIgMWXnMMNMZqDan2mQCHFl
+ 92sphId05K4/lAxuq0/SpT7MGJuw16PD+3sJaZL9Rj0DSz+q9mRYropOwOgiTfyUlUnE
+ ff0nIgtc2cfXeQ+0YMLQAbmaXZgn2TwXHaWu/07HpZFKLLgZD9ZfEWqOSlFrI/kLg1XQ
+ pYRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JvV/jsI0fp+K5yXTJ78yB5K/nDwyOATa0k0NxH4XbJ4=;
+ b=sh+tfPSzcUzuleos4CDYfaPFm3ykx8ypArcssBuIvO+PqkyQQgTffM90x8oMOXYJAC
+ jIjZd6EUCwQLPBiEde8jDs5Jmvc0vEXhvk1g6VzmFhvTG5cUTU2QswJj0SE9A1aMuB1K
+ rZV8/NfEWV4Yu9cu3ZZWbYWaRMZp2cbXWFi8bMR+k5+GahPWkUPX34C8FrkWBTYo56QF
+ 5rLC1fJyMbXsh7uhJe5BT8kURKGLgY479BCgoAtPX1tmPKOeJRjWXAcyFPHzXbQH2uYl
+ rvwH8ZFS0O0S1iOW6aahD+0rijdiMWBdFeCYLYPnmWl+HK5VydunzxwAdadmBSimcl00
+ YnSA==
+X-Gm-Message-State: AOAM531exXFnhPBbn5USofGGIgcm1KdMJqhx/DLHCSKCQIq3ovkhXgU1
+ c+E4gT5djJAmMipmF2v2mieclJRXyk8=
+X-Google-Smtp-Source: ABdhPJzFRTTKs5E+I6c9XaE9kersmgVLuDwxs29Hfpp6s9Wcp9PfLyQCrxv3ltI5geolaA10KC7L1g==
+X-Received: by 2002:adf:dec1:: with SMTP id i1mr31612704wrn.50.1602577600223; 
+ Tue, 13 Oct 2020 01:26:40 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id 4sm29132690wrn.48.2020.10.13.01.26.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Oct 2020 01:26:39 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 04/10] hw/isa: Add the ISA_IRQ_TPM_DEFAULT definition
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ qemu-trivial@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+References: <20201011193229.3210774-1-f4bug@amsat.org>
+ <20201011193229.3210774-5-f4bug@amsat.org>
+ <20201013072028.lw2uuncabmme7vws@sirius.home.kraxel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <70253a5e-d4cc-fb89-6235-cd53ee1bc18b@amsat.org>
+Date: Tue, 13 Oct 2020 10:26:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 03:49:22
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201013072028.lw2uuncabmme7vws@sirius.home.kraxel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,80 +96,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 07:49:34 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 08:26:44 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBMYXVyZW50IFZpdmllciBbbWFp
-bHRvOmxhdXJlbnRAdml2aWVyLmV1XQ0KPiBTZW50OiBUdWVzZGF5LCBPY3RvYmVyIDEzLCAyMDIw
-IDM6MTEgUE0NCj4gVG86IExpIFFpYW5nIDxsaXEzZWFAZ21haWwuY29tPg0KPiBDYzogRmFtIFpo
-ZW5nIDxmYW1AZXVwaG9uLm5ldD47IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPjsNCj4g
-dnNlbWVudHNvdkB2aXJ0dW96em8uY29tOyBaaGFuZ2hhaWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hh
-aWxpYW5nQGh1YXdlaS5jb20+OyBxZW11LWJsb2NrQG5vbmdudS5vcmc7IEp1YW4gUXVpbnRlbGEN
-Cj4gPHF1aW50ZWxhQHJlZGhhdC5jb20+OyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsgUWVtdSBE
-ZXZlbG9wZXJzDQo+IDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBEci4gRGF2aWQgQWxhbiBHaWxi
-ZXJ0IDxkZ2lsYmVydEByZWRoYXQuY29tPjsNCj4gU3RlZmFuIEhham5vY3ppIDxzdGVmYW5oYUBy
-ZWRoYXQuY29tPjsgRXVsZXIgUm9ib3QNCj4gPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBDaGVu
-cXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+Ow0KPiBNYXggUmVpdHogPG1yZWl0
-ekByZWRoYXQuY29tPjsgSm9obiBTbm93IDxqc25vd0ByZWRoYXQuY29tPg0KPiBTdWJqZWN0OiBS
-ZTogW1BBVENIXSBtaWdyYXRpb24vYmxvY2stZGlydHktYml0bWFwOiBmaXggdW5pbml0aWFsaXpl
-ZCB2YXJpYWJsZQ0KPiB3YXJuaW5nDQo+IA0KPiBMZSAxMy8xMC8yMDIwIMOgIDAzOjM0LCBMaSBR
-aWFuZyBhIMOpY3JpdMKgOg0KPiA+IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZpdmllci5ldT4g
-5LqOMjAyMOW5tDEw5pyIMTLml6XlkajkuIAg5LiL5Y2IMTE6MzMNCj4g5YaZ6YGT77yaDQo+ID4+
-DQo+ID4+IExlIDEwLzEwLzIwMjAgw6AgMTM6MDcsIENoZW4gUXVuIGEgw6ljcml0IDoNCj4gPj4+
-IFRoaXMgaWYgc3RhdGVtZW50IGp1ZGdtZW50IGlzIHJlZHVuZGFudCBhbmQgaXQgd2lsbCBjYXVz
-ZSBhIHdhcm5pbmc6DQo+ID4+Pg0KPiA+Pj4gbWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5j
-OjEwOTA6MTM6IHdhcm5pbmc6IOKAmGJpdG1hcF9uYW1l4oCZIG1heQ0KPiA+Pj4gYmUgdXNlZCAg
-dW5pbml0aWFsaXplZCBpbiB0aGlzIGZ1bmN0aW9uIFstV21heWJlLXVuaW5pdGlhbGl6ZWRdDQo+
-ID4+PiAgICAgICAgICAgICAgZ19zdHJsY3B5KHMtPmJpdG1hcF9uYW1lLCBiaXRtYXBfbmFtZSwN
-Cj4gc2l6ZW9mKHMtPmJpdG1hcF9uYW1lKSk7DQo+ID4+Pg0KPiA+Pj4NCj4gXn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4NCj4gPj4+
-DQo+ID4+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+
-DQo+ID4+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+
-DQo+ID4+PiAtLS0NCj4gPj4+ICBtaWdyYXRpb24vYmxvY2stZGlydHktYml0bWFwLmMgfCAyIC0t
-DQo+ID4+PiAgMSBmaWxlIGNoYW5nZWQsIDIgZGVsZXRpb25zKC0pDQo+ID4+Pg0KPiA+Pj4gZGlm
-ZiAtLWdpdCBhL21pZ3JhdGlvbi9ibG9jay1kaXJ0eS1iaXRtYXAuYw0KPiA+Pj4gYi9taWdyYXRp
-b24vYmxvY2stZGlydHktYml0bWFwLmMgaW5kZXggNWJlZjc5M2FjMC4uZTA5ZWE0ZjIyYiAxMDA2
-NDQNCj4gPj4+IC0tLSBhL21pZ3JhdGlvbi9ibG9jay1kaXJ0eS1iaXRtYXAuYw0KPiA+Pj4gKysr
-IGIvbWlncmF0aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4+PiBAQCAtMTA4NCw5ICsxMDg0
-LDcgQEAgc3RhdGljIGludCBkaXJ0eV9iaXRtYXBfbG9hZF9oZWFkZXIoUUVNVUZpbGUNCj4gKmYs
-IERCTUxvYWRTdGF0ZSAqcywNCj4gPj4+ICAgICAgICAgICAgICB9IGVsc2Ugew0KPiA+Pj4gICAg
-ICAgICAgICAgICAgICBiaXRtYXBfbmFtZSA9IHMtPmJpdG1hcF9hbGlhczsNCj4gPj4+ICAgICAg
-ICAgICAgICB9DQo+ID4+PiAtICAgICAgICB9DQo+ID4+Pg0KPiA+Pj4gLSAgICAgICAgaWYgKCFz
-LT5jYW5jZWxsZWQpIHsNCj4gPj4+ICAgICAgICAgICAgICBnX3N0cmxjcHkocy0+Yml0bWFwX25h
-bWUsIGJpdG1hcF9uYW1lLA0KPiBzaXplb2Yocy0+Yml0bWFwX25hbWUpKTsNCj4gPj4+ICAgICAg
-ICAgICAgICBzLT5iaXRtYXAgPSBiZHJ2X2ZpbmRfZGlydHlfYml0bWFwKHMtPmJzLA0KPiA+Pj4g
-cy0+Yml0bWFwX25hbWUpOw0KPiA+Pj4NCj4gPj4+DQo+ID4+DQo+ID4+IEkgZG9uJ3QgdGhpbmsg
-aXQncyBjb3JyZWN0IGFzICJjYW5jZWxfaW5jb21pbmdfbG9ja2VkKHMpIiBjYW4gY2hhbmdlDQo+
-ID4+IHRoZSB2YWx1ZSBvZiAicy0+Y2FuY2VsbGVkIi4NCj4gPj4NCj4gPg0KPiA+IEhpIExhdXJl
-bnQsDQo+ID4NCj4gPiBZb3UncmUgcmlnaHQuIFNvIEkgdGhpbmsgdGhpcyBjYW4gc2ltcGx5IGFz
-c2lnbiAnYml0bWFwX25hbWUnIHRvIE5VTEwNCj4gPiB0byBtYWtlIGNvbXBpbGVyIGhhcHB5Lg0K
-PiANCj4gWWVzLCBhbmQgYWRkaW5nIGEgY29tbWVudCBiZWZvcmUgdGhlIHNlY29uZCAiaWYgKCFz
-LT5jYW5jZWxsZWQpIHsiIHRvIGV4cGxhaW4NCj4gdGhlIHZhbHVlIGNhbiBiZSBjaGFuZ2VkIGJ5
-ICJjYW5jZWxfaW5jb21pbmdfbG9ja2VkKHMpIiB3b3VsZCBhdm9pZCB0byBoYXZlDQo+IHRoaXMg
-a2luZCBvZiBwYXRjaCBwb3N0ZWQgcmVndWxhcmx5IHRvIHRoZSBNTC4NCj4gDQpIaSBMYXVyZW50
-LA0KDQpXZSBnaXZlIHRoZSBiaXRtYXBfbmFtZSBhIGRlZmF1bHQgdmFsdWUgKHMtPmJpdG1hcF9h
-bGlhcykgc28gdGhhdCB3ZSBjYW4gcmVtb3ZlIHRoZSBhc3NpZ25tZW50IG9mIHRoZSBlbHNlIGJy
-YW5jaCBzdGF0ZW1lbnQuDQoNCkFuZCB0aGVuIHdlIG1lcmdlIHRoZSB0d28gaWYgc3RhdGVtZW50
-cygiaWYgKCFzLT5jYW5jZWxsZWQpIiwgImlmIChiaXRtYXBfYWxpYXNfbWFwKSIpICwgIGF2b2lk
-cyBjb25mdXNpb24gdGhlIHR3byAiaWYgKCFzLT5jYW5jZWxsZWQpIi4NCg0KVGhhbmtzLA0KQ2hl
-biBRdW4NCg0KDQpUaGUgY29kZSBzaG93IGFzIHRoYXQ6DQpAQCAtMTA2NCwxNSArMTA2NCwxNCBA
-QCBzdGF0aWMgaW50IGRpcnR5X2JpdG1hcF9sb2FkX2hlYWRlcihRRU1VRmlsZSAqZiwgREJNTG9h
-ZFN0YXRlICpzLA0KICAgICBhc3NlcnQobm90aGluZyB8fCBzLT5jYW5jZWxsZWQgfHwgISFhbGlh
-c19tYXAgPT0gISFiaXRtYXBfYWxpYXNfbWFwKTsNCg0KICAgICBpZiAocy0+ZmxhZ3MgJiBESVJU
-WV9CSVRNQVBfTUlHX0ZMQUdfQklUTUFQX05BTUUpIHsNCi0gICAgICAgIGNvbnN0IGNoYXIgKmJp
-dG1hcF9uYW1lOw0KKyAgICAgICAgY29uc3QgY2hhciAqYml0bWFwX25hbWUgPSBzLT5iaXRtYXBf
-YWxpYXM7DQoNCiAgICAgICAgIGlmICghcWVtdV9nZXRfY291bnRlZF9zdHJpbmcoZiwgcy0+Yml0
-bWFwX2FsaWFzKSkgew0KICAgICAgICAgICAgIGVycm9yX3JlcG9ydCgiVW5hYmxlIHRvIHJlYWQg
-Yml0bWFwIGFsaWFzIHN0cmluZyIpOw0KICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOw0KICAg
-ICAgICAgfQ0KDQotICAgICAgICBpZiAoIXMtPmNhbmNlbGxlZCkgew0KLSAgICAgICAgICAgIGlm
-IChiaXRtYXBfYWxpYXNfbWFwKSB7DQorICAgICAgICBpZiAoIXMtPmNhbmNlbGxlZCAmJiBiaXRt
-YXBfYWxpYXNfbWFwKSB7DQogICAgICAgICAgICAgICAgIGJpdG1hcF9uYW1lID0gZ19oYXNoX3Rh
-YmxlX2xvb2t1cChiaXRtYXBfYWxpYXNfbWFwLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgcy0+Yml0bWFwX2FsaWFzKTsNCiAgICAgICAgICAgICAg
-ICAgaWYgKCFiaXRtYXBfbmFtZSkgew0KQEAgLTEwODEsOSArMTA4MCw2IEBAIHN0YXRpYyBpbnQg
-ZGlydHlfYml0bWFwX2xvYWRfaGVhZGVyKFFFTVVGaWxlICpmLCBEQk1Mb2FkU3RhdGUgKnMsDQog
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcy0+YnMtPm5vZGVfbmFtZSwgcy0+bm9k
-ZV9hbGlhcyk7DQogICAgICAgICAgICAgICAgICAgICBjYW5jZWxfaW5jb21pbmdfbG9ja2VkKHMp
-Ow0KICAgICAgICAgICAgICAgICB9DQotICAgICAgICAgICAgfSBlbHNlIHsNCi0gICAgICAgICAg
-ICAgICAgYml0bWFwX25hbWUgPSBzLT5iaXRtYXBfYWxpYXM7DQotICAgICAgICAgICAgfQ0KICAg
-ICAgICAgfQ0KDQogICAgICAgICBpZiAoIXMtPmNhbmNlbGxlZCkgew0K
+On 10/13/20 9:20 AM, Gerd Hoffmann wrote:
+> On Sun, Oct 11, 2020 at 09:32:23PM +0200, Philippe Mathieu-DaudÃƒÆ’Ã‚Â© wrote:
+>> The TPM TIS device uses IRQ #5 by default. Add this
+>> default definition to the IsaIrqNumber enum.
+> 
+> IRQ 5 has no fixed assignment.  All kinds of add-on isa cards (sound,
+> net) used to use irq #5 by default because that one wasn't assigned
+> otherwise.  Seems these days tpm and ipmi use it ...
+
+Yes, I'll drop this patch.
+
+Thanks,
+
+Phil.
 
