@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEfQ-00073w-1n
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:24:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38504)
+	id 1kSEh2-0008OC-IY
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 03:25:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEfO-00071g-G1
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:24:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49985)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEgz-0008Mn-P5
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:25:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56516)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEfL-0003iS-Kp
- for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:24:14 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kSEgw-00047y-N2
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2020 03:25:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602573850;
+ s=mimecast20190719; t=1602573949;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JcV67gizIaXhjaqgp/ZIjSOlta2dBL3Nb+/fOvvVEvU=;
- b=d5jimamKZkC2qibtx4e3ScdsED124dSP1QSbRmAbVI3ocWWnBzqAsQ8t2PI3paHHeGLP6T
- qtWWIx8F0Ukc2Mbb6ewjb8hkKXHi08ddNsfgPAxwnptsLh/xrNcW0ASdSgVJ46UycAqOEh
- gHQaWBQSBX3rNEIydNqmStIC0Yx9QFE=
+ bh=xPZTApVmDjzuTCHJXqTEGqtiyH2TxDQ6tb77AUCO9jg=;
+ b=IYhVUhPyau/uNrAo9B7W+rnb4Vx6RcsYAqPVus5OAtUmxCg7INgVgbm/MJZaZyoj4A1Bqr
+ rnpl0eSeBB0knEYT1LWiLEsXS/MMZsvZZlgKy7o0MLUr6FaJUDvbhJsw//DxpKUzkLDV2y
+ LXtS0eU23+VwkLs+49Dnh1DGN/c/9yg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-ufbXCbLVOTaKhuWYho-SUw-1; Tue, 13 Oct 2020 03:24:09 -0400
-X-MC-Unique: ufbXCbLVOTaKhuWYho-SUw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-242-LzPqEUXtOm6fywbhdFO8jA-1; Tue, 13 Oct 2020 03:25:46 -0400
+X-MC-Unique: LzPqEUXtOm6fywbhdFO8jA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 44968393B7;
- Tue, 13 Oct 2020 07:24:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B5C1879511;
+ Tue, 13 Oct 2020 07:25:44 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 681915D9CD;
- Tue, 13 Oct 2020 07:24:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D041D60C07;
+ Tue, 13 Oct 2020 07:25:32 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 9E2291750A; Tue, 13 Oct 2020 09:23:59 +0200 (CEST)
-Date: Tue, 13 Oct 2020 09:23:59 +0200
+ id E3A271750A; Tue, 13 Oct 2020 09:25:31 +0200 (CEST)
+Date: Tue, 13 Oct 2020 09:25:31 +0200
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -52,13 +52,13 @@ Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH 08/10] hw/isa: Add the ISA_IRQ_NET_DEFAULT definition
-Message-ID: <20201013072359.t3q7q4ck3cggschm@sirius.home.kraxel.org>
+Subject: Re: [PATCH 10/10] hw/isa: Add the ISA_IRQ_IDE_DEFAULT definition
+Message-ID: <20201013072531.6zlfygj74dutgoue@sirius.home.kraxel.org>
 References: <20201011193229.3210774-1-f4bug@amsat.org>
- <20201011193229.3210774-9-f4bug@amsat.org>
+ <20201011193229.3210774-11-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20201011193229.3210774-9-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20201011193229.3210774-11-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -76,7 +76,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,15 +89,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 07:24:14 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 07:25:54 -0000
 
-On Sun, Oct 11, 2020 at 09:32:27PM +0200, Philippe Mathieu-Daudé wrote:
-> The network devices use IRQ #9 by default. Add this
+On Sun, Oct 11, 2020 at 09:32:29PM +0200, Philippe Mathieu-Daudé wrote:
+> The IDE controller uses IRQ #14 by default. Add this
 > default definition to the IsaIrqNumber enum.
 
-IRQ #9 seems to be sort-of standard for acpi.  Not sure whenever that is
-actually written down somewhere.  IIRC in pre-ACPI days it was free
-like irq #5.
+primary, while secondary uses IRQ 15.
 
 take care,
   Gerd
