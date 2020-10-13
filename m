@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEBl-0005Sv-Hz
+	id 1kSEBl-0005Tm-T7
 	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33008)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBj-0005MW-4u; Tue, 13 Oct 2020 02:53:35 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:34615)
+ id 1kSEBg-0005FD-Ja; Tue, 13 Oct 2020 02:53:32 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:50869)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBh-0000HG-9q; Tue, 13 Oct 2020 02:53:34 -0400
+ id 1kSEBc-0000GI-Ek; Tue, 13 Oct 2020 02:53:32 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N7Qp3-1kOlDv2bAD-017lZu; Tue, 13 Oct 2020 08:53:26 +0200
+ id 1N336L-1kKLNi2uCr-013Lja; Tue, 13 Oct 2020 08:53:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <lvivier@redhat.com>, Anup.Patel@wdc.com,
- Alistair Francis <alistair.francis@wdc.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 12/15] goldfish_rtc: change MemoryRegionOps endianness to
- DEVICE_NATIVE_ENDIAN
-Date: Tue, 13 Oct 2020 08:53:10 +0200
-Message-Id: <20201013065313.7349-13-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Klaus Jensen <k.jensen@samsung.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 04/15] hw/block/nvme: Simplify timestamp sum
+Date: Tue, 13 Oct 2020 08:53:02 +0200
+Message-Id: <20201013065313.7349-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013065313.7349-1-laurent@vivier.eu>
 References: <20201013065313.7349-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+QPS27oS1/dsBBHKFOL+t/CKzz6mpZv45f6hLo1RQRLpHx63+q6
- 7+KrbH9ahjbjZE0FonsA/k28zNuVQBaxwEizyz7ftTa/0PSer/QjDWZT5HxSzQA2+X+KX+k
- yaZB3InfAQ7CaCm+wz9ML4x4NxHc522W2r3wICwehCJGTQHuVusYVijwP9E606zj5TwAIbm
- jfp57Gi+A7/0Of5/u9MUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:91riXVbfGek=:DrIlnm/mDmYuFm2RMc782F
- Z6qRETPAzsh3AGjDbhlq+ngsSHhAA7OTgO62/HA/Ij0A40m/UWVZNOUIKuwNAa6guQfZWuhVI
- QPpj158N6CZ7/YYvCRC1bvklkTq0nGkJ8uOq3seZunCwQs0t+7rqC0U+U1OJKQh6LbI52K5jN
- Jm/IZEYUF9Zx9xLta5rQRRpmETJR8uaAR7blNg34XtFTxpBRb++haePpKNw6nwXm0embTu91m
- gl19RjjBQBjxAEUEgJoUtiTPxqMeWjUn36ytO/UNOjt637emIhPaMhqdbfnvv7FxZ8o3X3J+N
- Q3c0nE+haWi8GnXfIYfEFiCNOXfw2MULW8ecRdH6vJ/Nh1GWVZO5Pr9DvPVOa3AkQmDPjQdJ6
- CHhd3yLGO5gVotSricaLEB5y1+TkwUqyjW7F37NbHKD44tVFCeyvPySNMBO/FZ6ioOzLq/1Hh
- ym1WE1iKS9g9d3n01x1y/s+lWMBJcG/YHsKt+wYpftydJsBN5D7SBq7XPc3SA3rfQuPw+l/I8
- caGcjiDEfJIjRlXXdh687kQOhsCmg40lz+mGAN2OC77FeGQLiAeLRhB5T61cKOkUmpKBDCmFq
- 1cyozDLwW++ryJLNLdX/p3pe7UJ9K81CHkIEhKIqEnDCL3SlS32ZSvbLHchHHutbOgecjds2/
- hFk+cTWQ4eq3CM79ofDcqXz47N1UycJBMoHXDWTqzOAJ4zeB0y0WG7sIxEBCFZDqjNItQ3uIP
- V9vBSg2+tTyTerHy8cCoqQtZSP8oYqaHueBzxO9+Wg24aoCH0micmUfVE9Bl0mPsUy/V5P23L
- dObU6o1H3ict0YfJ+dq+Q7ZJxc4cY/072GFq7sSXlPGug0RFA01dUjACEI+ChJwCA2+fUF/
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:thAWqtsOGGWdyx3A3Sp8/A5qpp41eiSiBlLglRFkNQzyIPGxnZ6
+ x5L+hByGdftKt6F+PJpwtI6/zjr4w6CDEYGZufyqNwjYVinqUjasEQ0mcA3cw0MucGk9/kX
+ 2VbeNfo4/IjDKETZMvycvD/3kwxi67wlt51ZHxfnQyq+0w0jcdZb5bzYP2/GzgACJu6J1cc
+ fDIBke9v00Is49KOW/SJQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jtwOttJ3RqU=:166esNlX+yG2yLk+OMflJW
+ 0uixCK4xUl3jtdGKtfKeTH70kCiAwKeP1LIDMJ0onYPE41iuiN8iS960z3ra4QkqbsGc8SHQO
+ p0H3eYVQ51rQid0Szc1uzYLo0TzX0Kt4lC7uXGtQ8HN8vYgyLANlztfeIIVEx4k5QFekUJHBe
+ i6YFFLMmXCh7JLWM6CtI1TpXtkZ/avvbDxlp1Ph76/HZ6GZMutGqFVGIVcP2tJoVQcYNEqqke
+ NTwKLSiXMndv+vIQ8VHUENKYLSoogOxc4br4xREnD5XXcJO1SKQtR5ev1hSafSGUQxvBRFdPO
+ BZGFwRZvvn6uxJXVJM/opJdCKkzNtMoyYra5e7SDBBtTekqZwVgI6Ghh86mobwLmW/IXSYz6q
+ kkS2l+wTB/glZEJZRR3Pd6eXSVcyJ2TpexZLNKTygC/WBOtQwyimsKRjn4CnHqGfNBkrAixvy
+ MzqvWjuDwVoWH1zEl6V0dMFgcKncrAUJeqmR6+3DAIVlnGeZWhrk7fnJHBJmL3zPSuACXgTNQ
+ /i5vjWEHj50raUCymIS4B9qzHfHBwOFyz1xQdb9E+UFU1LPaSPPuItRBYeHyOx9a5jBeta5qg
+ 5fMX9DWGDSJ1BnYMJrhuqOekKrJEItTPuTrlF+sowdp6EI4RF+eIalT9wYEZNVkGOvzdP5OQj
+ mKdyPgiaLauY9eaujfTXuZRxEdTdRRTap59GcWdpnw2wPyVBKBmBj4ry04AlYi1fJkYqhFg0e
+ v05CZqhYvyIt0utbQAFD0YvUKU8OKUF9lJ8RZdUwS2fXrTrWZ1J/IDfr92gDXdF9YpBulr9Jn
+ cZk8WnHTQa/zc3jtVHqLeEjJzQNJFjQsPNio30dtPbDLdghgc6haYmbjxFp6ye8p+2KQ+lL
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:26
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:21
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,45 +65,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 06:53:35 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 06:53:33 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The doc [1] doesn't define the endianness, but the kernel driver
-uses readl() to access the registers, so we can guess it depends
-on the architecture endianness.
+As the 'timestamp' variable is declared as a 48-bit bitfield,
+we do not need to wrap the sum result.
 
-As riscv architecture endianness is little it might not change anything
-for it.
-
-Moreover, android implementation uses DEVICE_NATIVE_ENDIAN [2]
-
-[1] https://android.googlesource.com/platform/external/qemu/+/master/docs/GOLDFISH-VIRTUAL-HARDWARE.TXT
-[2] https://android.googlesource.com/platform/external/qemu/+/refs/heads/emu-master-dev/hw/timer/goldfish_timer.c#177
-
-Fixes: 9a5b40b84279 ("hw: rtc: Add Goldfish RTC device")
-Cc: Anup.Patel@wdc.com
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20201009113843.60995-2-lvivier@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Message-Id: <20201002075716.1657849-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/goldfish_rtc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/block/nvme.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/hw/rtc/goldfish_rtc.c b/hw/rtc/goldfish_rtc.c
-index 6ddd45cce039..0f4e8185a796 100644
---- a/hw/rtc/goldfish_rtc.c
-+++ b/hw/rtc/goldfish_rtc.c
-@@ -217,7 +217,7 @@ static int goldfish_rtc_post_load(void *opaque, int version_id)
- static const MemoryRegionOps goldfish_rtc_ops = {
-     .read = goldfish_rtc_read,
-     .write = goldfish_rtc_write,
--    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4
+diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+index 63078f600920..44fa5b90769b 100644
+--- a/hw/block/nvme.c
++++ b/hw/block/nvme.c
+@@ -1280,12 +1280,7 @@ static inline uint64_t nvme_get_timestamp(const NvmeCtrl *n)
+ 
+     union nvme_timestamp ts;
+     ts.all = 0;
+-
+-    /*
+-     * If the sum of the Timestamp value set by the host and the elapsed
+-     * time exceeds 2^48, the value returned should be reduced modulo 2^48.
+-     */
+-    ts.timestamp = (n->host_timestamp + elapsed_time) & 0xffffffffffff;
++    ts.timestamp = n->host_timestamp + elapsed_time;
+ 
+     /* If the host timestamp is non-zero, set the timestamp origin */
+     ts.origin = n->host_timestamp ? 0x01 : 0x00;
 -- 
 2.26.2
 
