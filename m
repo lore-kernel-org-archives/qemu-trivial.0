@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kS8Rd-0002Ir-5t
+	id 1kS8Rd-0002Ke-OJ
 	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2020 20:45:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58474)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RS-00027M-I3; Mon, 12 Oct 2020 20:45:28 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:43927 helo=ozlabs.org)
+ id 1kS8RO-00024Q-EY; Mon, 12 Oct 2020 20:45:22 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:36943)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RP-0006tz-WF; Mon, 12 Oct 2020 20:45:25 -0400
+ id 1kS8RK-0006nJ-1X; Mon, 12 Oct 2020 20:45:21 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4C9GzQ4GrGz9sVK; Tue, 13 Oct 2020 11:45:06 +1100 (AEDT)
+ id 4C9GzQ3p3Mz9sVM; Tue, 13 Oct 2020 11:45:06 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1602549906;
- bh=+lALO7HgNrojm6+JDT1ennot8m6liZUo5GH8lT9O9Tg=;
+ bh=B3neiLDzH8RrfvD/WtpyEbiHUt7aAF0dawOY7BXLETc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=onlHrub/sstF9DahVxIp6mc0qSOP4MEbM6deGOjZB9YlBmj2WNzKmC0iPNNmnvsv9
- 3+A/PXljQDpjzjzwlgkz9u0xN3HKj1rcZ4tGm8+tZtJG2/Azwk2ffuCZKXG0rDP9jo
- d1bf9D8mnrWnV5p4Cc2SRmbWrpeS5JlZ80Q3jcRc=
-Date: Tue, 13 Oct 2020 11:45:00 +1100
+ b=PCr2cCivKVjWimiGYnDjtlLa5uZT/Y8VHxNTQRU5QHyFR+AZfsTa77b42k+9vKwx3
+ LO/i6hMZztXNNLP4o9AfcDaARlWHY/m6om2FEBougwEDqtlvWxnx5+HFmGIdaqHtDm
+ RYRZpPHZenUrS02Ae3vWPHJzSCUe7c3rZqDI6cvU=
+Date: Tue, 13 Oct 2020 11:42:56 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -40,15 +40,16 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Paolo Bonzini <pbonzini@redhat.com>, Huacai Chen <chenhc@lemote.com>
-Subject: Re: [PATCH 5/5] hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
-Message-ID: <20201013004500.GJ71119@yekko.fritz.box>
+Subject: Re: [PATCH 3/5] hw/pci-host/uninorth: Use the PCI_FUNC() macro from
+ 'hw/pci/pci.h'
+Message-ID: <20201013004256.GH71119@yekko.fritz.box>
 References: <20201012124506.3406909-1-philmd@redhat.com>
- <20201012124506.3406909-6-philmd@redhat.com>
+ <20201012124506.3406909-4-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="dwWFXG4JqVa0wfCP"
+ protocol="application/pgp-signature"; boundary="Yia77v5a8fyVHJSl"
 Content-Disposition: inline
-In-Reply-To: <20201012124506.3406909-6-philmd@redhat.com>
+In-Reply-To: <20201012124506.3406909-4-philmd@redhat.com>
 Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -71,64 +72,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 00:45:29 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 00:45:24 -0000
 
 
---dwWFXG4JqVa0wfCP
+--Yia77v5a8fyVHJSl
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Oct 12, 2020 at 02:45:06PM +0200, Philippe Mathieu-Daud=E9 wrote:
+On Mon, Oct 12, 2020 at 02:45:04PM +0200, Philippe Mathieu-Daud=E9 wrote:
 > From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 >=20
-> We already have a generic PCI_DEVFN() macro in "hw/pci/pci.h"
-> to pack the PCI slot/function identifiers, use it.
+> We already have a generic PCI_FUNC() macro in "hw/pci/pci.h" to
+> extract the PCI function identifier, use it.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-
-ppc part
 
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/arm/virt.c          | 3 ++-
->  hw/pci-host/uninorth.c | 6 ++----
->  2 files changed, 4 insertions(+), 5 deletions(-)
+>  hw/pci-host/uninorth.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index e465a988d68..f601ef0798c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1144,7 +1144,8 @@ static void create_pcie_irq_map(const VirtMachineSt=
-ate *vms,
->                       full_irq_map, sizeof(full_irq_map));
-> =20
->      qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupt-map-mask",
-> -                           0x1800, 0, 0, /* devfn (PCI_SLOT(3)) */
-> +                           cpu_to_be16(PCI_DEVFN(3, 0)), /* Slot 3 */
-> +                           0, 0,
->                             0x7           /* PCI irq */);
->  }
-> =20
 > diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-> index c21de0ab805..f73d452bdce 100644
+> index 1ed1072eeb5..c21de0ab805 100644
 > --- a/hw/pci-host/uninorth.c
 > +++ b/hw/pci-host/uninorth.c
-> @@ -70,10 +70,8 @@ static uint32_t unin_get_config_reg(uint32_t reg, uint=
-32_t addr)
+> @@ -65,7 +65,7 @@ static uint32_t unin_get_config_reg(uint32_t reg, uint3=
+2_t addr)
+>          if (slot =3D=3D 32) {
+>              slot =3D -1; /* XXX: should this be 0? */
+>          }
+> -        func =3D (reg >> 8) & 7;
+> +        func =3D PCI_FUNC(reg >> 8);
+> =20
 >          /* ... and then convert them to x86 format */
 >          /* config pointer */
->          retval =3D (reg & (0xff - 7)) | (addr & 7);
-> -        /* slot */
-> -        retval |=3D slot << 11;
-> -        /* fn */
-> -        retval |=3D func << 8;
-> +        /* slot, fn */
-> +        retval |=3D PCI_DEVFN(slot, func) << 8;
->      }
-> =20
->      trace_unin_get_config_reg(reg, addr, retval);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -136,25 +115,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---dwWFXG4JqVa0wfCP
+--Yia77v5a8fyVHJSl
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+E+IwACgkQbDjKyiDZ
-s5J+QQ//T4fQpDPR/JHRFc6LbsMxAjBTFaF0roQjm+CI8Md8/NY7ptdCqg1+GKy6
-eoEUInbZ/945BywYqGDOqWxu3/zJcpG+4spb5usgG+IKMT3N5xuUzKd+PBIaJilP
-JhB2UkcG5VhUOvf8FhbPGmAO/M6WYElXbtKGPy9/CLFLNXzWXiJ0MZy4TAAscpra
-M3Xz8Fs/lwFTNOQKFXD7BpuESdLdWy5jPMhODBx0H0OCrsr6ZnZcIXYlVUUi4K3f
-rLpdkhDyN1ZF2VeLYTslVEfMVCPHxSDFJRRONioEjpP6ELFnXAEvNqRmyYzF/a19
-FJ/5nB7L4wNXQ9rV5C6E72joI3nkjujeKZT8lfRSKcz17owRlIJrrwa9hbbxomy+
-G9dmE57lTw42mRCEd3nZgeq7CwBK0a5IfJOkt5WEriUMfHjRFyhCB5t7sqbaL5Aa
-NDCD7XZowgia7WmsZvAb/dMrjQpUCzya4OtR16TQ63W6wKC/pCr6lb/J+BS9RCu0
-mSdB2d1L/eItGWyJvGIHVbf7JSIY0pLYnkaM83E0QsXTKRABRzhQ6CBsK8URM6kh
-5HziPQxsVW1ZkJ27hfLKjbZwHshw7IgicYRCDCLa+WfcZQv750KiJq/ku/Gnjq59
-uy1uR5C2STlSxRSSNraOCu0u7ad0arUjhx/SNUtxXQBpQWAXBhI=
-=E6th
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+E+BAACgkQbDjKyiDZ
+s5JqUhAAwaHNI4PyhRz1NaHKujUD5pEGVl+BohEX4xZhYb9nyi7iA1qkel9qGhcg
+2daGPZSaQpaPCM1f2hFxcUKS4TfGfk8CbGQ8rIUHhRoJdR//xqN64Q2uo8yagtCt
+bxv8Wo0CnC0JUb9idlbr9S03tiQCJSkEPnK+ACJaGPKDJxA2I61eAVJtRYMX/0Bl
+BT3J8QFi+wqH05l7FP1rnv1Z3IhlGk7cPJ126TEypdlBIUTKDr9X8LOYNqgrhTEK
+0CIHfwsBPQVd7Gj7QN6yDmRiPKIfmxqnF9NRX+itaSe7EfP0OXiphgJLQvRldCnH
+UmmcbaYVhMSjXSPcvRdWY1ahFwR+e256Mv8cMLeYFuwCUI19xagsujCNhr3rt6tj
+DbQQx7U3c8+S6ggFHxC0BWy/XrrPtgDKr4Fqm5/nBseLK3P5W5RQMSVn1DCao8hx
+TCibJgQ6B9p2bRTp2V2mzICw7k68APPSOcg8r+MxTtArCErG0IfO5+ERd/tEeBsa
+4wWXXSn7+DDJauSUqVrnOq4JrxZDiDICujFXP+hhvU/FwBBpwPF5qfNCgtDwPrMR
+TwmgY+eMFml+klzUuDX/AbhZstEq2DZvPXMrO8imZXGzyGWiYWP7NDZYTG/jD69z
+Rc5HRuZfiGm08uaztotylX7G5u+UceWDaaFFswZ+UseMU1q9whY=
+=VMSj
 -----END PGP SIGNATURE-----
 
---dwWFXG4JqVa0wfCP--
+--Yia77v5a8fyVHJSl--
 
