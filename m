@@ -1,53 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSIpo-0007Lf-Cp
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44202)
+	id 1kSIpp-0007Ov-Kr
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44186)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpl-0007Em-K9; Tue, 13 Oct 2020 07:51:13 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43121)
+ id 1kSIpj-0007A6-Od; Tue, 13 Oct 2020 07:51:11 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:56663)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpj-0004yq-OP; Tue, 13 Oct 2020 07:51:13 -0400
+ id 1kSIph-0004yI-PS; Tue, 13 Oct 2020 07:51:11 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MYe6H-1kxStr1AHr-00VhdU; Tue, 13 Oct 2020 13:51:08 +0200
+ id 1MDPuq-1kaaI30EOU-00ATrN; Tue, 13 Oct 2020 13:51:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Elena Afanasova <eafanasova@gmail.com>, Eric Blake <eblake@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 12/14] target/sparc/int32_helper: Remove duplicated 'Tag
- Overflow' entry
-Date: Tue, 13 Oct 2020 13:50:50 +0200
-Message-Id: <20201013115052.133355-13-laurent@vivier.eu>
+Subject: [PULL 09/14] block/blkdebug: fix memory leak
+Date: Tue, 13 Oct 2020 13:50:47 +0200
+Message-Id: <20201013115052.133355-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013115052.133355-1-laurent@vivier.eu>
 References: <20201013115052.133355-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nCNc9T18Be/d8Qh5C3QrpTMVnQZPU+9VitGm2C64Prae8UVty5r
- 1GM5RBumt5mlrX0Q1g+VQVcU4wAvdy+lYsUoIRR30PTmdlNPJouL4wN/o2ZEglCgzx5UhQp
- c4BNFlSfWaAeUwG4pE878ZiMVRbENB91iIL+DBNDkTA0I29APF5oe/ww579qZYzPr+GHu7N
- zut0fuXyYOmn5ooRoDhgg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rGXvPaVQ8hI=:4xwJj5mpYOQIZESBxcXy7M
- Ix9XO+Ysg06c8qgjReihx68hlYUj8B9RhXVpIoENJuR2ipHi8PEpeq3L1ltog9aL87brvlKXs
- oT9ybv0debaSYMr5Di8pzzuexyx+YGQ5yq0Qhm3kHNMeVlo4c35nztARGIadhudL3r4v9TYt9
- CzXCGmbCKLfHQnW+AjA2w1ORWxDhyrfWFNgIG830RZKbJD5dONbfddh3VLuA7y+PNYNRhY0sl
- TeTyBLSkf5QIP5kTwPiSvdHyOpiCAad+O8VAxoxWpDQNaQOXydbboIOgNbjN/A1pStXiw8dUZ
- MWR4K4ZO5eTh4f1J57Osq+v0G5oAee1LmLSZqr3A5/mpBZdmNniFRqiF/Z9bcrHf6AVJdhCUf
- 1BhIQ6wtoR/6VYgkgJfnczadVSoC0lsNHQ6MmdQmh6QrtDl3RHr41f48x/FnLbQOjndkAy97w
- yHxajkqnnYFnmX8v3v74kn7ZyGBaAXaQ0ZYDh02j1+iYGk7/olkw2mSuxM9u3S+VdLPSEWI4G
- iHYDJX9QY+9sY+QnirNmIN34BDJXi89w602P9vOKcP32OPiizrvLUuYBlB74vr6jzWzUD8gQX
- emePB102gcZJ2u//IlwgRJppaFifxdCwVN8gp4SnsQTpCjZnfAxzimP2lsMxhLZi+gsTVeJzb
- T544QbAgb7SKEskLdlcjnuW5OqD6UiU24IeFZKj20VDViq24jw1SzC7wltxBFwN9xv/X0cgQF
- bnFHqDhPNK+p4oqcFTSemDZt64JecQp1UwuXgZHyAG3b7JZuN5518hxaM4a8U2EpltOc3SO96
- MZ2EGOWyvqM2pBdjRtcv2TCnSNOuCI6PhYSPXA9weUTEPSqLsFcVlJPL3N1vSDJGFqrnDvA
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:sXFJcObT6HydYI86ubWnhmwbL5VRqq6w5mYyPUT9X0c+XoSZesJ
+ ki/HYXs18sIOT5gKFSpY4Pkq8xbC/ydcpcXhjPvQH/Y3TfP02xlo6d5B9tE9pKCiU+R/VHg
+ KBICRPWN2sYPjceAylf33Xg1fLOZ/nuEkRXSu8inPyN8MZ5/MUY5LVNS01Zu8lHtiSJ+Mk0
+ oPz1uQXY5JO4pt5oxMKPw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Choe0KraBmM=:4NazQIya4DsCzxILkh8r+M
+ V/D9yQKoLJ5VwnnE5F8AcNQnOxFggI9w6FzdbImZcW/gRR6BRV9N57wyegGIdMoG7HFoz6z96
+ RmNUXYPDjdVjDjTgNj82EQoAOCx0D9C9jfIhZt1g9WXPPEodISv4V+82rEAs67d07Y0GiQuwJ
+ wBQu1TqXlwQHHsPpV6ZZnxV9OLzuAOjGG7ezLoeNUMvPx1Vd+FhjftIyDJp/Cd830FYIn5SC9
+ DZhBvvTxnGLDZO4onaS9ICYNLgVATq1jF7vFC1rw+rIwmrGMiq/kffZ9bTp2ZdNxTtfklQJad
+ tm4jMZwyrEpIHFrevdFDhs1oa/euVdjSpHA2U+0svtw60bKV9lOwEfvzg/se9El1D6oozAs97
+ +eJROf7R6D8q1E5s/O1e6WZOdR36c/Xgllm9dNO8C9+BnEzzdWMtFhDP4Jr16JuzILd3Cmf6J
+ YBUWY6yktj45nJAAmgjUHUymOZ4g+Cy+YTFegz+BNZ4mzRZNtzxeD32OFRXCHmpDAkXClx2c9
+ rFTtM52VgJytRSdlyo96RleB0lkj3iJ1N5+LaBooRHtPeLhILjW4JENq5iIC/Do/3RfHERYQR
+ jjMQXRQktRL/hA5k5w3D5JFLwPGGUbxGwpk/gOyX7baYPldcdn9OJX87VR073av1AgN4EgBch
+ XipcDznMWcNdSN30BqJaGAszVu3cCSX2cc9ROnppaHgOBQ+3Js64ByTyhBE1exF6jhhto8E5R
+ ZPQ01gBvqI1NrWAok8nWJYBGpoF3axVBdOdx8jjWiNJkwadRQ7C880QdT5RB8kUgzwQt1au/L
+ Or2h//1V+KqzzmHKwGPQQAYwYDfnZTX+WJTaLVF40rYf7hj256qfMV9Bo16Q8L7l5Mm1SJ5
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:40:12
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:32:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -67,33 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 11:51:14 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 11:51:12 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Elena Afanasova <eafanasova@gmail.com>
 
-Commit 0b09be2b2f ("Nicer debug output for exceptions") added
-twice the same "Tag Overflow" entry, remove the extra one.
+Spotted by PVS-Studio
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20201011200112.3222822-1-f4bug@amsat.org>
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Message-Id: <1e903f928eb3da332cc95e2a6f87243bd9fe66e4.camel@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/sparc/int32_helper.c | 1 -
- 1 file changed, 1 deletion(-)
+ block/blkdebug.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/sparc/int32_helper.c b/target/sparc/int32_helper.c
-index 9a71e1abd871..ba63c739c1e8 100644
---- a/target/sparc/int32_helper.c
-+++ b/target/sparc/int32_helper.c
-@@ -50,7 +50,6 @@ static const char * const excp_names[0x80] = {
-     [TT_EXTINT | 0xd] = "External Interrupt 13",
-     [TT_EXTINT | 0xe] = "External Interrupt 14",
-     [TT_EXTINT | 0xf] = "External Interrupt 15",
--    [TT_TOVF] = "Tag Overflow",
-     [TT_CODE_ACCESS] = "Instruction Access Error",
-     [TT_DATA_ACCESS] = "Data Access Error",
-     [TT_DIV_ZERO] = "Division By Zero",
+diff --git a/block/blkdebug.c b/block/blkdebug.c
+index eecbf3e5c479..54da719dd151 100644
+--- a/block/blkdebug.c
++++ b/block/blkdebug.c
+@@ -215,6 +215,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Error **errp)
+                                  BLKDEBUG_IO_TYPE__MAX, &local_error);
+         if (local_error) {
+             error_propagate(errp, local_error);
++            g_free(rule);
+             return -1;
+         }
+         if (iotype != BLKDEBUG_IO_TYPE__MAX) {
 -- 
 2.26.2
 
