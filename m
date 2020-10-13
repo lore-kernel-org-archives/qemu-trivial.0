@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSEBo-0005ai-CB
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33030)
+	id 1kSEBp-0005ed-Oh
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 02:53:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBk-0005Qw-Pk; Tue, 13 Oct 2020 02:53:36 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:33213)
+ id 1kSEBo-0005bb-Lf; Tue, 13 Oct 2020 02:53:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:53711)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSEBi-0000HT-UD; Tue, 13 Oct 2020 02:53:36 -0400
+ id 1kSEBm-0000Hq-Nr; Tue, 13 Oct 2020 02:53:40 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MuluN-1kAyFa3K6N-00rlgu; Tue, 13 Oct 2020 08:53:26 +0200
+ id 1N8onW-1kNOJL2eYg-015qZR; Tue, 13 Oct 2020 08:53:21 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <lvivier@redhat.com>, marcandre.lureau@redhat.com,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Li Qiang <liq3ea@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Fam Zheng <fam@euphon.net>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 11/15] hw/char/serial: remove duplicate .class_init in
- serial_mm_info
-Date: Tue, 13 Oct 2020 08:53:09 +0200
-Message-Id: <20201013065313.7349-12-laurent@vivier.eu>
+Subject: [PULL 06/15] vmdk: fix maybe uninitialized warnings
+Date: Tue, 13 Oct 2020 08:53:04 +0200
+Message-Id: <20201013065313.7349-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013065313.7349-1-laurent@vivier.eu>
 References: <20201013065313.7349-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:deymScBIsP96b62FQfdXR1P7S5QpWc0kXxsLUrNgcoVURcCuhgW
- QZcCBcCUfxK87jYYig7ML25m288gbs5vU30Un09qjtjp+LXpsABqXoAwdd/5prMqOQAyg0r
- uBDFkbop1de+nHHPfVGXq1KLwpdhBo2qeJpXTk1Bt2BohBV7r6UnW0y7Hje7lwc0kR7Pvdu
- yPiY2eIpt5tt9qq3DktFQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:B9Yf8OzXxs0=:CSSa6tG/hv5vkn62pYBCyO
- DVgaaTxUdi/wrjQxdGg8tbv/5UDt9mycqYG9oHyyttrrAvTtiE68JZMrVnmJ2PQCcpWFJNEH6
- OcaazVL4eAW7Y/EhKuzrVSQzA8lswrnnt0scFxO+SyfGX6DlBGgTfRiR0pOXYxiLpsgeBIlMs
- D2xGfo0OuTyWrXHT54o0EMnUZkOJODp0Nq8AI3ozsk30Q+cNe5YZQ93OrLUQMooFQ0iF2354b
- GZ3DmCVJsTMdwOiJeC8Myuzzr5P5z7nzer18PL8lo6BdksYPPEOR1z6namhT3Ulc1XhCF9hMs
- rCgbZWbB2cuZtmmBOC2vw5rlDQmeYbYcAawuWJbZHIRNZUUU3aoWd6AI8hWzoMZX8NP3Ja8EQ
- etZntlRY6ziiMvM/XnOV/2xJiTUP7HUVljspjch39kzKfIk82ByE/6fERXVEeBsodJ37+uUTY
- AvpmIa6FwkFM9j2fLhoWKauXitesvo1lyRUPcR8YNTk7QygQ6cxNGAKZsMb7C8xvXJd1OXH4U
- 4Ooxu5aN2k1JOMA25S+3+WxhYv7yDWhf6uHpWcOyh1ZDeZLVVI5hAnQHiOjQKnUEE3PuNTFWo
- jfE3pHIzrjA74dg5I78OHSgxxkMmLZjKDrtyPpEyiDvhWUqAQZYbh3B6i2ybTdCGKId59sAnR
- D4WA+fS6goKbjs1R08JyMwz+19/NVmCUpjp7G+X/ysQMz8g+sRRC8AP3aVVtPoBmx3dxux12r
- tGcK5jfgSG+wMvJxs5ogp42a2zUBin3nz4nwMINBZ0Rva28r3i2D1UVE6dUwxe+f038JMs/Qy
- dXOKORuZ0KgrpgW7F1DjMAN7INefjfXG5ImUGQkI53P0TRtHTPZXKvC4BIKPBvi7LqJ2aCj
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:go/gI0UABVpjGWntfaRHl3a5hQIzFcI0Bx6KnnlQvmAePDyTE9X
+ VqdLTbm4jbfcYvf/c6JIaVK3RO45xuGsivpDMEZla0dq//T+LX2nXQvmBDY1rJgs3322WDE
+ 6YI4jZn+drpSiflXu/3MNgo2HYMyKp3+5NQuJQF3Gdu5zGKhbUQ2ClvWS+97iNu74mqKGCw
+ D5hwuyIyR4a3cbXCIL8nQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wLwde721jGA=:cn8rt9+G0ESHofOWkrqLqP
+ 0dFQnEtbKBPc5uxbD2UBiF8I8/12AgVOSCqfkINyGo2+kPLAV/MPUyKv2bnqf7GDrlvaNJpXX
+ 6WShT33eiUTs3VzH3HF/XSVzIkDykYsmqaxQOTQvkLygMRf4gig1E7d8SPqINqkER7ANoT3Yr
+ MPzoiV1O1VuFLo19SHqT+iodT6FBy/5E2/vRqZWy5CkCdYRLT5sKgj28hzmKu0WCtC98PHK+D
+ lPtW+uuq2FyDZ1iHTAEgLjkmDuKebSVD79pk3p7UQjmQCeMzxuGRneYm2nSWj2p8w2EfwAPOc
+ XBEHoEeShHT3aHqNlGGqJxIOW7DY+m6qcv12OIkEqY7nVdx4Ly1gFBlmSsDtPocuKOZRy2PJB
+ Fy3QKQe1H1DrAp3Se0iBj9XZGmWmHyY5vlk4dlp7ituXGIb6I/wYZSz8gvKVoIcZG0SMgLNrv
+ PLdDzU6xESiQ8OCYC7RKjx5il4oeCWgM7ata492/Zpv5Uh9U7UKXMS3DQy8PeNgPDgCAvf5D3
+ K1G1CaZ+Peg7ZQoq+0xrJFpi978F/ZUsqwOm3ENSWIUrpphhC1Y9m2mfk/fCl4X1FMbigEfo7
+ BLDNhCMhS0SNTmcpjk+q3bbIJs2DQ0j21SJ4I/TFMECmBXTo8XYEjny9WNcNJmvQN5q+Ip0O8
+ yz2bQBODhokIF3WjM9VB9z+18AEr16iduJ+tuy7IQ8LYT35ybqQ4JK5XLmcWuI4S3g7sS/MDv
+ PnYCdu59F0yD+EbGcfpKzH6MolQJe3zfF+TlF+GLc6HpHhLVR3d00k9jd1hX+a/0hn+Ip5JRw
+ u1goK3cGlYdNdBMDW79vV8Ai7DYIma/GHTGFzMI9yihIfoUKtmYbfkEavyZEPyELUIJrv0d
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 02:53:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
@@ -68,38 +65,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 06:53:37 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 06:53:41 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
 
-.class_init is already set to serial_mm_class_init.
+Fedora 32 gcc 10 seems to give false positives:
 
-Remove the duplicate entry.
+Compiling C object libblock.fa.p/block_vmdk.c.o
+../block/vmdk.c: In function ‘vmdk_parse_extents’:
+../block/vmdk.c:587:5: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  587 |     g_free(extent->l1_table);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+../block/vmdk.c:754:17: note: ‘extent’ was declared here
+  754 |     VmdkExtent *extent;
+      |                 ^~~~~~
+../block/vmdk.c:620:11: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  620 |     ret = vmdk_init_tables(bs, extent, errp);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../block/vmdk.c:598:17: note: ‘extent’ was declared here
+  598 |     VmdkExtent *extent;
+      |                 ^~~~~~
+../block/vmdk.c:1178:39: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+ 1178 |             extent->flat_start_offset = flat_offset << 9;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+../block/vmdk.c: In function ‘vmdk_open_vmdk4’:
+../block/vmdk.c:581:22: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  581 |     extent->l2_cache =
+      |     ~~~~~~~~~~~~~~~~~^
+  582 |         g_malloc(extent->entry_size * extent->l2_size * L2_CACHE_SIZE);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../block/vmdk.c:872:17: note: ‘extent’ was declared here
+  872 |     VmdkExtent *extent;
+      |                 ^~~~~~
+../block/vmdk.c: In function ‘vmdk_open’:
+../block/vmdk.c:620:11: error: ‘extent’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  620 |     ret = vmdk_init_tables(bs, extent, errp);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../block/vmdk.c:598:17: note: ‘extent’ was declared here
+  598 |     VmdkExtent *extent;
+      |                 ^~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile.ninja:884: libblock.fa.p/block_vmdk.c.o] Error 1
 
-Fixes: 17fd1a6490b1 ("serial-mm: add "regshift" property")
-Cc: marcandre.lureau@redhat.com
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20201009113843.60995-1-lvivier@redhat.com>
+fix them by assigning a default value.
+
+Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Reviewed-by: Fam Zheng <fam@euphon.net>
+Message-Id: <20200930155859.303148-2-borntraeger@de.ibm.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/char/serial.c | 1 -
- 1 file changed, 1 deletion(-)
+ block/vmdk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 4386adabd466..97f71879ff2a 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -1120,7 +1120,6 @@ static const TypeInfo serial_mm_info = {
-     .class_init = serial_mm_class_init,
-     .instance_init = serial_mm_instance_init,
-     .instance_size = sizeof(SerialMM),
--    .class_init = serial_mm_class_init,
- };
+diff --git a/block/vmdk.c b/block/vmdk.c
+index 8ec62c7ab798..a00dc00eb47a 100644
+--- a/block/vmdk.c
++++ b/block/vmdk.c
+@@ -595,7 +595,7 @@ static int vmdk_open_vmfs_sparse(BlockDriverState *bs,
+     int ret;
+     uint32_t magic;
+     VMDK3Header header;
+-    VmdkExtent *extent;
++    VmdkExtent *extent = NULL;
  
- static void serial_register_types(void)
+     ret = bdrv_pread(file, sizeof(magic), &header, sizeof(header));
+     if (ret < 0) {
+@@ -751,7 +751,7 @@ static int vmdk_open_se_sparse(BlockDriverState *bs,
+     int ret;
+     VMDKSESparseConstHeader const_header;
+     VMDKSESparseVolatileHeader volatile_header;
+-    VmdkExtent *extent;
++    VmdkExtent *extent = NULL;
+ 
+     ret = bdrv_apply_auto_read_only(bs,
+             "No write support for seSparse images available", errp);
+@@ -869,7 +869,7 @@ static int vmdk_open_vmdk4(BlockDriverState *bs,
+     uint32_t magic;
+     uint32_t l1_size, l1_entry_sectors;
+     VMDK4Header header;
+-    VmdkExtent *extent;
++    VmdkExtent *extent = NULL;
+     BDRVVmdkState *s = bs->opaque;
+     int64_t l1_backup_offset = 0;
+     bool compressed;
+@@ -1088,7 +1088,7 @@ static int vmdk_parse_extents(const char *desc, BlockDriverState *bs,
+     BdrvChild *extent_file;
+     BdrvChildRole extent_role;
+     BDRVVmdkState *s = bs->opaque;
+-    VmdkExtent *extent;
++    VmdkExtent *extent = NULL;
+     char extent_opt_prefix[32];
+     Error *local_err = NULL;
+ 
 -- 
 2.26.2
 
