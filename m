@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSIpl-0007EL-GS
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44180)
+	id 1kSIpm-0007IE-Ub
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Oct 2020 07:51:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIpj-00078R-31; Tue, 13 Oct 2020 07:51:11 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:48537)
+ id 1kSIpk-0007BJ-8T; Tue, 13 Oct 2020 07:51:12 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:60681)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kSIph-0004y9-5D; Tue, 13 Oct 2020 07:51:10 -0400
+ id 1kSIph-0004yK-SR; Tue, 13 Oct 2020 07:51:11 -0400
 Received: from localhost.localdomain ([82.252.141.186]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MUobv-1ksWwh3Wb3-00Qlh0; Tue, 13 Oct 2020 13:51:03 +0200
+ id 1N4Q8u-1kIusg18S6-011U5R; Tue, 13 Oct 2020 13:51:04 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Greg Kurz <groug@kaod.org>,
+ Julia Suvorova <jusual@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 06/14] hw/acpi/piix4: Rename piix4_pm_add_propeties() to
- piix4_pm_add_properties()
-Date: Tue, 13 Oct 2020 13:50:44 +0200
-Message-Id: <20201013115052.133355-7-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 08/14] hw/pci: Fix typo in PCI hot-plug error message
+Date: Tue, 13 Oct 2020 13:50:46 +0200
+Message-Id: <20201013115052.133355-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201013115052.133355-1-laurent@vivier.eu>
 References: <20201013115052.133355-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:U1JLs65+gAgexy6v+LBl9wE/g4Q0G1GxkcvGhlvQoGIIrOFstxm
- uBVsjCIP9WK9tAPHO3Vh4r04XJFvrtjmxtGa81l7rmmuE5dByDNg0gNCmmRpa0zWoBwfOtQ
- r3yFEjAfJeWKaOTxxI9/biFyyyq6PBdNqapD6kLhqFX5Wy8a0vAGwBJIQEO+BEOyjsWZX+9
- ZTjLCXD66Q3l4Y8RyjQBw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FVU741uBOW4=:fZAXdr1SQRvGWqR9AVSsSD
- HiQvyQKJDf2UCDhKFSbddVSERW8w347b5k8OyojY85+vPJkKyfp2S9fTDks/1eLQesKtn0RUF
- BoJKkIHhs9cF1/EINnKnNlorBPi66RF9s9/tGBnHIBqj2+KEjLCVnFJBKSkC9SpXJJK8lGqTi
- f6SUMO5Mfo1ZYceG/K9bCrbBUXq5s7hCdB04IZp9bVtmFUq9Sd/ZtuH9JxIvQtA/L+vZkC1D5
- BJYXyhKIoyYgee9M8guZQYJf0t59GcLf+UtOeIWgqIQN9LHZi7hUvO+lZzSPP4J/5W5wNqR2f
- wCL8XIPc8N7mVYnSmVQKDUqytTrokgxfV5U7RKsaE5DCqPLa+QonYfck6xuXV1r7tqwlXoJPP
- DPbkQ8+TnKQSkqNevFAvYjPJ4RfMdLH6q7yNcziyBKDEfCtjmdJF2FQo4MkqJOkmV2IQ16brk
- Q9T3UaZXme0mSiEKXvgAAinzbLJsvVtvlKxsA3ctHmjRt3yq5AWhV7pWRSY/njF6TCnifeNyf
- zaC3nr+AWmx+vBBhV5TaLMcwA++wlrc1wOgg/WIdsg/k546So7ZfGQlnXAl0oq1Xl3julAFx6
- s6j2IkP6c8bN2a9VXcmjdIVW2ZZhf+Yru2xG5GEu7478LpoWizJpvrX6+RrIyrbGaK8MQTJob
- MWcVFQQy3PcdJSTEaocLrQXuqk3LHJPRsDlBA/0DeM2iuLN6htjkRy+UM7ZZ6F2gpgrFNrGzb
- jR5omvr+R3y6OH4EnZRUCMFP90E2cD4wFsXyP67fkObtmfqeWLSORcvlSK8pJrvWTZ48lqQ87
- ktalE/9OCfnmNHfPoIkyJbjU2fhYWyutNUWGCcaS4A/Im7dmdTGEqzgeDOl6zH1ShQeL7nj
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:2LBmoiDVhBuO22eEYTNANL928DYxMfV6Z2wEE7rfy2/xdIIuH8/
+ oE4cRSDTU8iBZRUI7aHXb6ktk7HBI2fGLrxQuoYkex8+RjkpmdGbOedxTSNFRtZV1Z6sTyQ
+ JcJ+IwvDmjTZFT4bKYZ4jFT7J+cSlbtNxjHEG0tdqg56cKpR0wiHe7vC7zaViWeX+0ATC4i
+ Y5OK2a99GEjZXjV6JJLvQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:D5CKPOjaWmY=:8Gb9mfsb5RSJZyyr4fAAov
+ e0aSkjEFSoSF60honocHW0hUgh3EAnF1jkWWeNOizWJPNdiVC2lVNM/Cd6oeIxkPapUol71ic
+ /u4G54BWqvQ2JkL/HRjtHLSaP94VwFmsT87jqNDhqH6q6TNE8ZMUbEkJrbqPKr2O/EdJ3gckD
+ DaulDRveRVeEERDPPw2S/UhBdLtz5l9RQzgN2hHUazzj7JAMv3Aq2CsEA2C6fU726KbpPOzR/
+ asoI7mg7TpbjRN4dEPcNQhaPMlM+GvlzaS62igISOrpJtixL2rx/GxdrDLv5p22xCeu5loUBx
+ sup9qOWYsSfB9NdvLEjh2HDxysg4zYlfTrXxfnr8Hi3Sq2CMyym/ZPC336KhNFbBykCPxk6+g
+ Fe9lCW1X7e73rNCZI2mnsb9BRHTpXBFbEj/o0ys5ohKHpQqfsb8iS2y/rz+MKKkvgev/UAX31
+ bH67kKEcdJgeoyx3tfle0Ly0a5KunE1ABeYgbr3qp60wCfp75fapHl3ByDKRDHFoJahA0lXlZ
+ xm81oSZYFn++AgZ6WJg1RjYx1RjElXBVZziZFH7NDonuxatKDdvmpco+0Kh2UXk3CJblpfo/m
+ WEBruzI7ZqyLmd6KNFPJ5CXbukACG++Z5Om4C3e2pGtOiDXm6/0ypq2sa8y3A0oQagh5BUdIT
+ TW1sfGIR/gR7Qj3jnHvj68PP9nFoY9RWTRPlHIQorEg0iINfdXyVd9ZzK/wQ2oJUIbva1JRIA
+ rAYzb3GXskAnRKIVodT5A7M+HhkXqa/lhhbGSqS76DxR7eN3nwrfn2yhu8gVdoHgipmLv2Sxl
+ IysqocwwcG51ExS/1jGNhebZ72lV+qnYu8RH04/0dNybt8fZ9nJQFwScVMHr7LydmnCkuis
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:32:45
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 07:51:08
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -67,41 +66,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Oct 2020 11:51:11 -0000
+X-List-Received-Date: Tue, 13 Oct 2020 11:51:13 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Julia Suvorova <jusual@redhat.com>
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
+'occupied' is spelled like 'ocuppied' in the message.
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Message-Id: <160165476743.57452.2128307974125615413.stgit@bahia.lan>
+Message-Id: <20201006133958.600932-1-jusual@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/acpi/piix4.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/pci/pci.c       | 2 +-
+ hw/ppc/spapr_pci.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 894d357f8c35..67a1ea41914f 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -437,7 +437,7 @@ static void piix4_pm_machine_ready(Notifier *n, void *opaque)
-         (memory_region_present(io_as, 0x2f8) ? 0x90 : 0);
- }
- 
--static void piix4_pm_add_propeties(PIIX4PMState *s)
-+static void piix4_pm_add_properties(PIIX4PMState *s)
- {
-     static const uint8_t acpi_enable_cmd = ACPI_ENABLE;
-     static const uint8_t acpi_disable_cmd = ACPI_DISABLE;
-@@ -509,7 +509,7 @@ static void piix4_pm_realize(PCIDevice *dev, Error **errp)
-                                    pci_get_bus(dev), s);
-     qbus_set_hotplug_handler(BUS(pci_get_bus(dev)), OBJECT(s));
- 
--    piix4_pm_add_propeties(s);
-+    piix4_pm_add_properties(s);
- }
- 
- I2CBus *piix4_pm_init(PCIBus *bus, int devfn, uint32_t smb_io_base,
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 3c8f10b4618a..100c9381c2f1 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -1036,7 +1036,7 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+         return NULL;
+     } else if (dev->hotplugged &&
+                pci_get_function_0(pci_dev)) {
+-        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
++        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
+                    " new func %s cannot be exposed to guest.",
+                    PCI_SLOT(pci_get_function_0(pci_dev)->devfn),
+                    pci_get_function_0(pci_dev)->name,
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 3999392b32c6..88ce87f130a5 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1571,7 +1571,7 @@ static void spapr_pci_plug(HotplugHandler *plug_handler,
+      */
+     if (plugged_dev->hotplugged && bus->devices[PCI_DEVFN(slotnr, 0)] &&
+         PCI_FUNC(pdev->devfn) != 0) {
+-        error_setg(errp, "PCI: slot %d function 0 already ocuppied by %s,"
++        error_setg(errp, "PCI: slot %d function 0 already occupied by %s,"
+                    " additional functions can no longer be exposed to guest.",
+                    slotnr, bus->devices[PCI_DEVFN(slotnr, 0)]->name);
+         return;
 -- 
 2.26.2
 
