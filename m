@@ -1,53 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSgLT-0004MM-PK
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 08:57:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33118)
+	id 1kSgzi-0002Dh-OR
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 09:39:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50726)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhengchuan@huawei.com>)
- id 1kSVcF-0002w2-08; Tue, 13 Oct 2020 21:30:07 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5179 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhengchuan@huawei.com>)
- id 1kSVcC-00027N-Bl; Tue, 13 Oct 2020 21:30:06 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 2EF2FD7ED8481D1D300A;
- Wed, 14 Oct 2020 09:29:53 +0800 (CST)
-Received: from [10.174.186.51] (10.174.186.51) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 14 Oct 2020 09:29:43 +0800
-Subject: Re: [PATCH v2 1/8] migration: Do not use C99 // comments
-To: Bihong Yu <yubihong@huawei.com>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <quintela@redhat.com>, 
- <alex.chen@huawei.com>, <wanghao232@huawei.com>
-References: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
- <1602508140-11372-2-git-send-email-yubihong@huawei.com>
- <20201013093905.GB2920@work-vm>
- <ae6666c0-e68e-3541-274e-de25d4bd3a22@huawei.com>
-From: Zheng Chuan <zhengchuan@huawei.com>
-Message-ID: <f764ce51-60ee-0b84-a357-fb2cffc9d197@huawei.com>
-Date: Wed, 14 Oct 2020 09:29:43 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
-MIME-Version: 1.0
-In-Reply-To: <ae6666c0-e68e-3541-274e-de25d4bd3a22@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.51]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhengchuan@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 21:29:54
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
+ id 1kSgzh-0002DV-1G; Wed, 14 Oct 2020 09:39:05 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:36762)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
+ id 1kSgzf-0006vf-00; Wed, 14 Oct 2020 09:39:04 -0400
+Received: by mail-pl1-x643.google.com with SMTP id w21so1788085plq.3;
+ Wed, 14 Oct 2020 06:39:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=sRtlPAI1V8wLrxSirkSZ/JV+HdhX3ELhryBZ8+gA0N0=;
+ b=aoGw4q5l5+FWTHf6xUHUn80N1T23w7Oi776eBzlXP1l6W/ijaWBfkcLvOwB7RHTWFF
+ JInozaugArupUdWDW8VwM/Ki1o0qCtWqA8aPcUSEWIt42q5x4QHlVLI/+bOz7m05nDOY
+ XfA/443Md0VuJM9zI17sWq0ua29wsAM7Z3xH3TAoldAsIw3tUKGKtpyfe7Fi59yijWPj
+ e1PUNzxPEFV5j2BCybepM1sVLGsamSulU8Uw8KNkkX/8mncn/TMyPsP5CUuJhQeN6/qN
+ I8IHDzmHSl2EKB7CVrjvCzJC//6WFTVGcd9M9x6YpTle5bEDzWY/W7v3zGzrqYvFIROv
+ 8tJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=sRtlPAI1V8wLrxSirkSZ/JV+HdhX3ELhryBZ8+gA0N0=;
+ b=sgl3QyjTKkO8MIaZxgxEIR7AiolWrQhQQfvim9JLYKDJtjaMt/URTCR573FQYK/bdW
+ aDK/EPwiB2MnGli9V9v7o+mGG078blMp9y7YevjK5xEZeqIIWTLoNnB9yvOrAjbCpq2H
+ 2Ub0o8c1RzIGpArmIlbcCrJzS2zUKH3d0kgskHXkxciygWacDVRQurZmV5sr4+18XwW0
+ Mxf0zGqGgIfnEbd/kkgFa/dZe6Mp7+tTwDZQFDWT/2IbaWxiblMU/Dk5c4wHLISMG+Ng
+ AIYk0DsIVhSKcycPeuRPWtxSXGttCoKqbK+glOYHdY52Y4oqjn19Aeu1UBzDKTIfBgbF
+ T0vg==
+X-Gm-Message-State: AOAM532bhK7w6XTnQyE1tCmx4LUBIfnK+ILCtjrvMSus1DQsw/yPPehz
+ tZ3iFtAbu30O92khJKECQqaYGeOE4t9B4Iuk
+X-Google-Smtp-Source: ABdhPJwGo4O8gMFLIpcVkizzNmw4WYU5+EpKYABF3+SkIgwdjYyEdGRnLERUsiYItH77MULkL0VX7w==
+X-Received: by 2002:a17:90b:11d1:: with SMTP id
+ gv17mr3532011pjb.3.1602682740298; 
+ Wed, 14 Oct 2020 06:39:00 -0700 (PDT)
+Received: from pulp100.localdomain ([103.199.158.131])
+ by smtp.gmail.com with ESMTPSA id y137sm3521812pfc.77.2020.10.14.06.38.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 14 Oct 2020 06:38:59 -0700 (PDT)
+From: Chetan Pant <chetan4windows@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, arei.gonglei@huawei.com,
+ Chetan Pant <chetan4windows@gmail.com>
+Subject: [PATCH 1/30] cryptodev: Fix Lesser GPL version number
+Date: Wed, 14 Oct 2020 13:37:22 +0000
+Message-Id: <20201014133722.14041-1-chetan4windows@gmail.com>
+X-Mailer: git-send-email 2.17.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=chetan4windows@gmail.com; helo=mail-pl1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 14 Oct 2020 08:57:30 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,60 +71,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 01:30:09 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 13:39:05 -0000
 
-Also DEBUG_CACHE in migration/page_cache.c is need to rebase on trace_calls.
+There is no "version 2" of the "Lesser" General Public License.
+It is either "GPL version 2.0" or "Lesser GPL version 2.1".
+This patch replaces all occurrences of "Lesser GPL version 2" with
+"Lesser GPL version 2.1" in comment section.
 
-On 2020/10/13 21:20, Bihong Yu wrote:
-> Thank you for your review. OK, I will try to rewrite the DPRINTF to use trace_ instead.
-> 
-> On 2020/10/13 17:39, Dr. David Alan Gilbert wrote:
->> * Bihong Yu (yubihong@huawei.com) wrote:
->>> Signed-off-by: Bihong Yu <yubihong@huawei.com>
->>> Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
->>
->> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
->>
->> another task at some point would be to rewrite the DPRINTF's in
->> migration/block.c to use trace_ instead.
->>
->>> ---
->>>  migration/block.c | 2 +-
->>>  migration/rdma.c  | 2 +-
->>>  2 files changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/migration/block.c b/migration/block.c
->>> index 737b649..4b8576b 100644
->>> --- a/migration/block.c
->>> +++ b/migration/block.c
->>> @@ -40,7 +40,7 @@
->>>  #define MAX_IO_BUFFERS 512
->>>  #define MAX_PARALLEL_IO 16
->>>  
->>> -//#define DEBUG_BLK_MIGRATION
->>> +/* #define DEBUG_BLK_MIGRATION */
->>>  
->>>  #ifdef DEBUG_BLK_MIGRATION
->>>  #define DPRINTF(fmt, ...) \
->>> diff --git a/migration/rdma.c b/migration/rdma.c
->>> index 0340841..0eb42b7 100644
->>> --- a/migration/rdma.c
->>> +++ b/migration/rdma.c
->>> @@ -1288,7 +1288,7 @@ const char *print_wrid(int wrid)
->>>   * workload information or LRU information is available, do not attempt to use
->>>   * this feature except for basic testing.
->>>   */
->>> -//#define RDMA_UNREGISTRATION_EXAMPLE
->>> +/* #define RDMA_UNREGISTRATION_EXAMPLE */
->>>  
->>>  /*
->>>   * Perform a non-optimized memory unregistration after every transfer
->>> -- 
->>> 1.8.3.1
->>>
-> .
-> 
+Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+---
+ backends/cryptodev-builtin.c          | 2 +-
+ backends/cryptodev-vhost-user.c       | 2 +-
+ backends/cryptodev-vhost.c            | 2 +-
+ backends/cryptodev.c                  | 2 +-
+ include/sysemu/cryptodev-vhost-user.h | 2 +-
+ include/sysemu/cryptodev-vhost.h      | 2 +-
+ include/sysemu/cryptodev.h            | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
+diff --git a/backends/cryptodev-builtin.c b/backends/cryptodev-builtin.c
+index c6edb1b..0671bf9 100644
+--- a/backends/cryptodev-builtin.c
++++ b/backends/cryptodev-builtin.c
+@@ -9,7 +9,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-user.c
+index e1df073..bedb452 100644
+--- a/backends/cryptodev-vhost-user.c
++++ b/backends/cryptodev-vhost-user.c
+@@ -9,7 +9,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/backends/cryptodev-vhost.c b/backends/cryptodev-vhost.c
+index 8337c9a..8231e7f 100644
+--- a/backends/cryptodev-vhost.c
++++ b/backends/cryptodev-vhost.c
+@@ -10,7 +10,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/backends/cryptodev.c b/backends/cryptodev.c
+index 3f141f6..bf52476 100644
+--- a/backends/cryptodev.c
++++ b/backends/cryptodev.c
+@@ -9,7 +9,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/sysemu/cryptodev-vhost-user.h b/include/sysemu/cryptodev-vhost-user.h
+index 0d3421e..6071050 100644
+--- a/include/sysemu/cryptodev-vhost-user.h
++++ b/include/sysemu/cryptodev-vhost-user.h
+@@ -9,7 +9,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/sysemu/cryptodev-vhost.h b/include/sysemu/cryptodev-vhost.h
+index f42824f..e8cab13 100644
+--- a/include/sysemu/cryptodev-vhost.h
++++ b/include/sysemu/cryptodev-vhost.h
+@@ -10,7 +10,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/sysemu/cryptodev.h b/include/sysemu/cryptodev.h
+index b458aa4..f4d4057 100644
+--- a/include/sysemu/cryptodev.h
++++ b/include/sysemu/cryptodev.h
+@@ -9,7 +9,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
 -- 
-Thanks, Chuan
+2.17.1
+
 
