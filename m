@@ -1,64 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSgzi-0002Dh-OR
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 09:39:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50726)
+	id 1kSh1l-0004nG-PV
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 09:41:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kSgzh-0002DV-1G; Wed, 14 Oct 2020 09:39:05 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:36762)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kSgzf-0006vf-00; Wed, 14 Oct 2020 09:39:04 -0400
-Received: by mail-pl1-x643.google.com with SMTP id w21so1788085plq.3;
- Wed, 14 Oct 2020 06:39:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=sRtlPAI1V8wLrxSirkSZ/JV+HdhX3ELhryBZ8+gA0N0=;
- b=aoGw4q5l5+FWTHf6xUHUn80N1T23w7Oi776eBzlXP1l6W/ijaWBfkcLvOwB7RHTWFF
- JInozaugArupUdWDW8VwM/Ki1o0qCtWqA8aPcUSEWIt42q5x4QHlVLI/+bOz7m05nDOY
- XfA/443Md0VuJM9zI17sWq0ua29wsAM7Z3xH3TAoldAsIw3tUKGKtpyfe7Fi59yijWPj
- e1PUNzxPEFV5j2BCybepM1sVLGsamSulU8Uw8KNkkX/8mncn/TMyPsP5CUuJhQeN6/qN
- I8IHDzmHSl2EKB7CVrjvCzJC//6WFTVGcd9M9x6YpTle5bEDzWY/W7v3zGzrqYvFIROv
- 8tJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=sRtlPAI1V8wLrxSirkSZ/JV+HdhX3ELhryBZ8+gA0N0=;
- b=sgl3QyjTKkO8MIaZxgxEIR7AiolWrQhQQfvim9JLYKDJtjaMt/URTCR573FQYK/bdW
- aDK/EPwiB2MnGli9V9v7o+mGG078blMp9y7YevjK5xEZeqIIWTLoNnB9yvOrAjbCpq2H
- 2Ub0o8c1RzIGpArmIlbcCrJzS2zUKH3d0kgskHXkxciygWacDVRQurZmV5sr4+18XwW0
- Mxf0zGqGgIfnEbd/kkgFa/dZe6Mp7+tTwDZQFDWT/2IbaWxiblMU/Dk5c4wHLISMG+Ng
- AIYk0DsIVhSKcycPeuRPWtxSXGttCoKqbK+glOYHdY52Y4oqjn19Aeu1UBzDKTIfBgbF
- T0vg==
-X-Gm-Message-State: AOAM532bhK7w6XTnQyE1tCmx4LUBIfnK+ILCtjrvMSus1DQsw/yPPehz
- tZ3iFtAbu30O92khJKECQqaYGeOE4t9B4Iuk
-X-Google-Smtp-Source: ABdhPJwGo4O8gMFLIpcVkizzNmw4WYU5+EpKYABF3+SkIgwdjYyEdGRnLERUsiYItH77MULkL0VX7w==
-X-Received: by 2002:a17:90b:11d1:: with SMTP id
- gv17mr3532011pjb.3.1602682740298; 
- Wed, 14 Oct 2020 06:39:00 -0700 (PDT)
-Received: from pulp100.localdomain ([103.199.158.131])
- by smtp.gmail.com with ESMTPSA id y137sm3521812pfc.77.2020.10.14.06.38.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 06:38:59 -0700 (PDT)
-From: Chetan Pant <chetan4windows@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, arei.gonglei@huawei.com,
- Chetan Pant <chetan4windows@gmail.com>
-Subject: [PATCH 1/30] cryptodev: Fix Lesser GPL version number
-Date: Wed, 14 Oct 2020 13:37:22 +0000
-Message-Id: <20201014133722.14041-1-chetan4windows@gmail.com>
-X-Mailer: git-send-email 2.17.1
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=chetan4windows@gmail.com; helo=mail-pl1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kSh1k-0004lL-J6
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 09:41:12 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:30009)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kSh1i-0007IX-TX
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 09:41:12 -0400
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-266-_5R7XbkgMGCrytbn6CfN-A-1; Wed, 14 Oct 2020 09:40:59 -0400
+X-MC-Unique: _5R7XbkgMGCrytbn6CfN-A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA6BC18C5203;
+ Wed, 14 Oct 2020 13:40:58 +0000 (UTC)
+Received: from bahia.lan (ovpn-112-78.ams2.redhat.com [10.36.112.78])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 172B810013C1;
+ Wed, 14 Oct 2020 13:40:57 +0000 (UTC)
+Subject: [PATCH] cpus: Drop declaration of cpu_remove()
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 14 Oct 2020 15:40:57 +0200
+Message-ID: <160268285707.1107461.15035929822602623985.stgit@bahia.lan>
+User-Agent: StGit/0.21
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kaod.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
+ helo=us-smtp-delivery-44.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 09:41:01
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,116 +56,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 13:39:05 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 13:41:12 -0000
 
-There is no "version 2" of the "Lesser" General Public License.
-It is either "GPL version 2.0" or "Lesser GPL version 2.1".
-This patch replaces all occurrences of "Lesser GPL version 2" with
-"Lesser GPL version 2.1" in comment section.
+cpu_remove() got superseded by cpu_remove_sync() in commit dbadee4ff4a0,
+but its prototype wasn't removed. We could possibly keep the shorter
+cpu_remove() naming but it seems better to highligth that this blocks
+until the CPU thread is joined.
 
-Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+Fixes: dbadee4ff4a0 ("cpus: join thread when removing a vCPU")
+Cc: pbonzini@redhat.com
+Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- backends/cryptodev-builtin.c          | 2 +-
- backends/cryptodev-vhost-user.c       | 2 +-
- backends/cryptodev-vhost.c            | 2 +-
- backends/cryptodev.c                  | 2 +-
- include/sysemu/cryptodev-vhost-user.h | 2 +-
- include/sysemu/cryptodev-vhost.h      | 2 +-
- include/sysemu/cryptodev.h            | 2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
+ include/hw/core/cpu.h |    8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/backends/cryptodev-builtin.c b/backends/cryptodev-builtin.c
-index c6edb1b..0671bf9 100644
---- a/backends/cryptodev-builtin.c
-+++ b/backends/cryptodev-builtin.c
-@@ -9,7 +9,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 4879f2502659..ace443e88297 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -924,14 +924,6 @@ void cpu_exit(CPUState *cpu);
+ void cpu_resume(CPUState *cpu);
+=20
+ /**
+- * cpu_remove:
+- * @cpu: The CPU to remove.
+- *
+- * Requests the CPU to be removed.
+- */
+-void cpu_remove(CPUState *cpu);
+-
+- /**
+  * cpu_remove_sync:
+  * @cpu: The CPU to remove.
   *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-user.c
-index e1df073..bedb452 100644
---- a/backends/cryptodev-vhost-user.c
-+++ b/backends/cryptodev-vhost-user.c
-@@ -9,7 +9,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/backends/cryptodev-vhost.c b/backends/cryptodev-vhost.c
-index 8337c9a..8231e7f 100644
---- a/backends/cryptodev-vhost.c
-+++ b/backends/cryptodev-vhost.c
-@@ -10,7 +10,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/backends/cryptodev.c b/backends/cryptodev.c
-index 3f141f6..bf52476 100644
---- a/backends/cryptodev.c
-+++ b/backends/cryptodev.c
-@@ -9,7 +9,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/sysemu/cryptodev-vhost-user.h b/include/sysemu/cryptodev-vhost-user.h
-index 0d3421e..6071050 100644
---- a/include/sysemu/cryptodev-vhost-user.h
-+++ b/include/sysemu/cryptodev-vhost-user.h
-@@ -9,7 +9,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/sysemu/cryptodev-vhost.h b/include/sysemu/cryptodev-vhost.h
-index f42824f..e8cab13 100644
---- a/include/sysemu/cryptodev-vhost.h
-+++ b/include/sysemu/cryptodev-vhost.h
-@@ -10,7 +10,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/sysemu/cryptodev.h b/include/sysemu/cryptodev.h
-index b458aa4..f4d4057 100644
---- a/include/sysemu/cryptodev.h
-+++ b/include/sysemu/cryptodev.h
-@@ -9,7 +9,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
--- 
-2.17.1
+
 
 
