@@ -1,78 +1,105 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kShZk-0005Tx-Dm
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 10:16:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33004)
+	id 1kSj8Y-0003Y3-8T
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 11:56:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kShZi-0005SU-97; Wed, 14 Oct 2020 10:16:18 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:44589)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
- id 1kShZg-0003fs-LF; Wed, 14 Oct 2020 10:16:18 -0400
-Received: by mail-lf1-x141.google.com with SMTP id b1so3843296lfp.11;
- Wed, 14 Oct 2020 07:16:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=4rulUlLsOSz2rOq4EcyDa/eVfnIpoV3tqv12AO/FRDc=;
- b=DQv3u8TOi488lqXd0WHpYsrP9zxd9chVqP533oX3M2IOdZuxlE4EwwkVtSN9XTwDIv
- gnk21nAL9yNfHlOH7sseOssi3kBXYBZ1RN8CdYW5qV5rWpNhBxaJX+kqP1y4v4MaE6Ha
- VRnEPUInOI6XlAeeRZtUWj10qpg0X4oq2ivMh7Y0zlv9BFrWahFMmLuHAjiDi+UW7L7T
- YutvlDTMeDaBdG4cuIYtBGxtjLdR6PED19XZs/taw7/x0H6s3ixJiLIshYezY1UnpvkX
- 4SvD5LrvoA2F+d28o4u1ZN+5FzcqqYHPbOi5UjJwCOp9gknYLus1zhKvA0TiKpQg8X4S
- SNfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=4rulUlLsOSz2rOq4EcyDa/eVfnIpoV3tqv12AO/FRDc=;
- b=Ahks95Mxt1yA/cGLuKN8lASTyN65iDVJ37DVpNB3ZW6OmdADeHIyFVmgCi5aMIYRle
- 2Yz6dGD8xr0y9+R/kAbmkTFFaIcWVpLz9/FKyoD2dAGZ7l5/nF9FVhkMbhjmWakMB4e2
- 5vuiAsIuQtb+iyRtHcUNZSyRmKFxEroSDm1nURXSGnipt9p0m2WSI1UFw+NtYplaLtCv
- xCz8s+ctL5uBcwryyFWpAVBTQI3wLMIZTFf/KxxWBuUhWtDLgrGzz22nXpo89XTm7tWq
- tt8mRBX/MnOxUF3+iEU719FeTPnJYeDKzh9/ku3vQq+4BMgnhj1FCH1foNitju7cFXeg
- pXBg==
-X-Gm-Message-State: AOAM531Z9PGSG0Xcqnj+ye/X5oWCbFs/uPXEuf8JP08zspLkTUR5UWk7
- 4QbG80CXbC6qkWpNBKz059g=
-X-Google-Smtp-Source: ABdhPJzLzJy3Y347nwBsIwELBLhY5PkWIY0cfq825D3VfQJ0LE5lusVObOJx24kpZgIXyfKk0mRKVw==
-X-Received: by 2002:a19:8546:: with SMTP id h67mr1429921lfd.26.1602684973433; 
- Wed, 14 Oct 2020 07:16:13 -0700 (PDT)
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
- [37.145.186.126])
- by smtp.gmail.com with ESMTPSA id q8sm1259613ljg.105.2020.10.14.07.16.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 07:16:12 -0700 (PDT)
-Message-ID: <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-From: Elena Afanasova <eafanasova@gmail.com>
-To: David Gibson <david@gibson.dropbear.id.au>, Paolo Bonzini
- <pbonzini@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org, 
- jasowang@redhat.com, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-Date: Wed, 14 Oct 2020 07:15:47 -0700
-In-Reply-To: <20201013053250.GV71119@yekko.fritz.box>
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
- <20201012053001.GD4787@yekko.fritz.box>
- <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
- <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
- <20201013053250.GV71119@yekko.fritz.box>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1kSj8V-0003WI-W7; Wed, 14 Oct 2020 11:56:20 -0400
+Received: from mail-eopbgr20111.outbound.protection.outlook.com
+ ([40.107.2.111]:2279 helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1kSj8S-0000dt-Ff; Wed, 14 Oct 2020 11:56:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bJUgMGbmaz0p0M3IzuTbTErmUO0i6HxHESr3jv3j1FWmwTxcnFjsw4hD5pACKzmemthd4Sdh9IiPgT0Rmu5suNS0LVZucPaD6BHTNQhfxhK3fqYztjm334xzUooVYgFh9fMgwVxZviCJKb0bfbbLWmUrceS6BejZcDjaOzbl/gcn7+1a8Wim9rFNENzhaC84bGZDtjBIryf8v9bxTQaFoMLc8jtcbeioniD94rdhEmBbxulhIDl1moK+QdbYB2ZeUhS0a7oZct0RC6XKr6dXSPCtXlAwsm4B/lea0BaTBOVzMF0wTJWsda7WCJSbnM9Ttx35vpXYs3FKaBksnqjQYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rHMt/6+M9KK7J7qVdX6FouwxjY2E4qVurRQZ0w8uMI8=;
+ b=QEeuQ8afIDkegblFnEAajPF91T7YHdCccuGBibNa6nPn2JsK0YqobZDzpFocQBAI/oz1S7YTgHuAxybyyyXynUSjJSePPDfb/RoUF8Pq112NCRGEBd1Y4Nz6SANa5g/6yj42sVSDOIonmzO4HqvpHnInkWliw1drbJDH+2E+uMxgJCavqYwl8AWl63bQ700I9B8dmf8dxFVHuz+d9QSlJh3TBV1CSL8nhhpus67q5mvZkx7o2HO36Sn8VU3eedIY2z8BIbpneSLp+AD5lb4+z5m44keIgX3OWoFv/LJoL8Q5uuldj3cVIIYcsp/m4lt5FKVZmKf5VrviNdpxoYHQfw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rHMt/6+M9KK7J7qVdX6FouwxjY2E4qVurRQZ0w8uMI8=;
+ b=RoL72khog/AoaUiQ3JAOpUXs+ErDYJ4acyVb63E99FFEiRcrDyN17LaK36+evnspx9sM4OuR98/usT8nSEm82IFWYV80sBl6ccuARK6ZtKoWInVhldy/aoQ0MsBWxA57eKcC1Pun88szVW14wlfh19uDTex899nZDcqjTq+bSV4=
+Authentication-Results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=virtuozzo.com;
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com (2603:10a6:20b:dc::15)
+ by AM6PR08MB3095.eurprd08.prod.outlook.com (2603:10a6:209:45::28)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3455.23; Wed, 14 Oct
+ 2020 15:56:09 +0000
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::fd02:1330:f620:1243]) by AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::fd02:1330:f620:1243%9]) with mapi id 15.20.3455.031; Wed, 14 Oct 2020
+ 15:56:09 +0000
+Subject: Re: [PATCH v3] migration/block-dirty-bitmap: fix uninitialized
+ variable warning
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: mreitz@redhat.com, stefanha@redhat.com, fam@euphon.net,
+ eblake@redhat.com, jsnow@redhat.com, quintela@redhat.com,
+ dgilbert@redhat.com, zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+ qemu-block@nongnu.org, Euler Robot <euler.robot@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@gmail.com>
+References: <20201014114430.1898684-1-kuhn.chenqun@huawei.com>
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-ID: <c3a75c21-d9a6-a13b-7076-936867376ac6@virtuozzo.com>
+Date: Wed, 14 Oct 2020 18:56:07 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.2
+In-Reply-To: <20201014114430.1898684-1-kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [185.215.60.122]
+X-ClientProxiedBy: AM0PR02CA0001.eurprd02.prod.outlook.com
+ (2603:10a6:208:3e::14) To AM7PR08MB5494.eurprd08.prod.outlook.com
+ (2603:10a6:20b:dc::15)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::141;
- envelope-from=eafanasova@gmail.com; helo=mail-lf1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.100.5] (185.215.60.122) by
+ AM0PR02CA0001.eurprd02.prod.outlook.com (2603:10a6:208:3e::14) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3477.20 via Frontend Transport; Wed, 14 Oct 2020 15:56:08 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: b5d60175-7462-466e-725e-08d87059aade
+X-MS-TrafficTypeDiagnostic: AM6PR08MB3095:
+X-Microsoft-Antispam-PRVS: <AM6PR08MB30950CC65F18577409E7D91BC1050@AM6PR08MB3095.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Bd21i33trYfRDb0TC8s5SXXxClYa+Qe0TRhLj8v2OPrBLwH+yenNJb9dL5EjGYsBfPTIrGFSRbewnx/BZl+ycb7Zow0+HXA8kbajmatB8v3a7pEhfwLJJ1XhBO9jty4K3dEY1Dedaug7G4CN/MfGwR7FNq3K2OVLxxCflr2J8RhbP1yCfgMN0tPU414Jq/vjBQwMGr0KESqDyrWPOZCzkekJ0PZ43RMbmtZ1QCzGfvHbawXCpxy8231T/E7ZQt5kIreyAqDHrrRFCzOI7mBgcXleLh9ctuyri3Anbe2SxtPoO3si1eIh/zC+jXbGWR2gnaaUcOWkxxCR+PlzROpmWt5ujLuyZe1f+GWoDfdPIpxBrwru2qoiLqgqeSjeCVbNM7XMNwlZrUHlwNgT94jOdQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM7PR08MB5494.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(39830400003)(136003)(346002)(366004)(396003)(4744005)(26005)(186003)(16526019)(31696002)(36756003)(5660300002)(86362001)(8676002)(31686004)(52116002)(7416002)(16576012)(66946007)(956004)(2616005)(66556008)(66476007)(6486002)(8936002)(2906002)(478600001)(54906003)(316002)(83380400001)(4326008)(14143004)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: sw2cIvtspV/cpy4Rh5KwY32Gp0PcyGnMPXGTJnrHcvXb/87FO5vm22dC/kTOHG0pKr3tXPpqhDMnCljTgJQWUnEEQ6XSdBl6HlAUU46O4qHqoJzEAIA1oju26+f6PewBwKeRVbz7Lc8YnUkAokzVH8gnhXdNpUwDwhiLKdKk175umnE3h72fGfOCZNMUwU1D8Nfn67kEscPfVW5jqsMgudvPsoPiJT1t+J5u6I+LEf55BGPzGJFwJz+qgWIG8vEohIL3xqrn05qzEZAHf7ov+aaOexwabYCU62j3lgQ/8pBflNTlsNCQtBRHuKmVPE1F5TaZlmvgK+Hynm2ETaX0cKP/aa2VmD1KN5AvuGYsLZarXdatuphKer3EeumqmaxCSGjIP7wOJm7Kb06fQOMjzBBBBy9SADejI0I9Mqv9WH3vnji3eEZJ+nidpvIFgnXKkwaCVLfe6aW0QeoMd4Kc756C2guae88L+VRIV/oVqsmTtfBFfbe+KmcqD2P9o6OYQzutoFw5K2HKqk00aaPQgDtngbt+XTplfxeaSPGYcg+jRrOmHW/DDIGDuaUe60UILHcf0KvDXwEvO15nhfoSRySLcKHa/Shx4CQrmKbJeldt1eEgPXQ16NwncLIqDFvpZAvQ2N4Of762EeuTTLw+OA==
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b5d60175-7462-466e-725e-08d87059aade
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR08MB5494.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2020 15:56:09.6400 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Opt9BSXDZMLwOXV8Xl7xwaH8xmR8nz/STeDpHetf0Uolkjoy4PatCGuGgok7VzC0fPfBAiyy+zyGf6jdykkj+4NburdFJBOoi5YfC7JXyLo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR08MB3095
+Received-SPF: pass client-ip=40.107.2.111;
+ envelope-from=vsementsov@virtuozzo.com;
+ helo=EUR02-VE1-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 11:56:11
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MSGID_FROM_MTA_HEADER=0.001, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -86,33 +113,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 14:16:18 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 15:56:20 -0000
 
-On Tue, 2020-10-13 at 16:32 +1100, David Gibson wrote:
-> On Mon, Oct 12, 2020 at 03:45:02PM +0200, Paolo Bonzini wrote:
-> > On 12/10/20 12:44, Thomas Huth wrote:
-> > > I think this is one of the tasks from:
-> > > 
-> > >  
-> > > https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
-> > > 
-> > > It has been added by Paolo in 2016:
-> > > 
-> > >  
-> > > https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
-> > > 
-> > > ... so maybe Paolo can comment on the size that has been chosen
-> > > here...?
-> > 
-> > I used 16K, mostly because it is a nice round number.  8k is too
-> > small
-> > due to PATH_MAX-sized variables.  16k seemed to be plenty and
-> > triggered
-> > in few-enough places that the cleanup is viable.
+14.10.2020 14:44, Chen Qun wrote:
+> A default value is provided for the variable 'bitmap_name' to avoid compiler warning.
 > 
-> Ok.  Why are large stack frames bad in qemu?
+> The compiler show warning:
+> migration/block-dirty-bitmap.c:1090:13: warning: ‘bitmap_name’
+> may be used uninitialized in this function [-Wmaybe-uninitialized]
+>         g_strlcpy(s->bitmap_name, bitmap_name, sizeof(s->bitmap_name));
+>         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
+> Reported-by: Euler Robot<euler.robot@huawei.com>
+> Signed-off-by: Chen Qun<kuhn.chenqun@huawei.com>
 
-I think that the main issue here is alloca() because it can lead to UB.
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 
+-- 
+Best regards,
+Vladimir
 
