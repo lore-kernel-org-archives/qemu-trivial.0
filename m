@@ -1,105 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSdCc-0001xP-DU
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 05:36:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49588)
+	id 1kSeqr-0007oH-6F
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 07:21:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kSdCa-0001ur-5g
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 05:36:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57893)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kSdCW-0000JM-8o
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 05:36:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602668163;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=i1d+Y/NuWEo/+ougMrmF21qCkaAb+G4GJJxZ2VjSaDs=;
- b=OZB3dzguqqrCC+xjYCjVXLLlUPZ8j43FWotJJKpC6vB4SO7Hx0IRtD/o0Scw1A4l/g0+vj
- n5ZPhbP0XLSM6Y2ai2aMOMdvUZuD1/9Eco+fDdjTEnUDFOvKHsZv1m8pU0PyUBnBdOQ0UO
- gv2HiOql8aQRRmJwiHY52lQfjchUFwc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-72N0T8XLPdyHTeuv--Yysg-1; Wed, 14 Oct 2020 05:36:01 -0400
-X-MC-Unique: 72N0T8XLPdyHTeuv--Yysg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 367421823DD2;
- Wed, 14 Oct 2020 09:35:59 +0000 (UTC)
-Received: from dresden.str.redhat.com (unknown [10.40.194.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 351EC1002391;
- Wed, 14 Oct 2020 09:35:55 +0000 (UTC)
-Subject: Re: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSeql-0007m4-9W; Wed, 14 Oct 2020 07:21:43 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2940 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kSeqh-0005GZ-RK; Wed, 14 Oct 2020 07:21:42 -0400
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 4B615E4C454520B105BC;
+ Wed, 14 Oct 2020 19:21:26 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.75]) by
+ DGGEMM405-HUB.china.huawei.com ([10.3.20.213]) with mapi id 14.03.0487.000;
+ Wed, 14 Oct 2020 19:21:16 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Max Reitz <mreitz@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: "fam@euphon.net" <fam@euphon.net>, ganqixin <ganqixin@huawei.com>,
+ "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, "quintela@redhat.com" <quintela@redhat.com>, "Li
+ Qiang" <liq3ea@gmail.com>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, "stefanha@redhat.com"
+ <stefanha@redhat.com>, Euler Robot <euler.robot@huawei.com>,
+ "jsnow@redhat.com" <jsnow@redhat.com>
+Subject: RE: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized
  variable warning
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Cc: "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>,
- "stefanha@redhat.com" <stefanha@redhat.com>, "fam@euphon.net"
- <fam@euphon.net>, "eblake@redhat.com" <eblake@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- ganqixin <ganqixin@huawei.com>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>, Euler Robot <euler.robot@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@gmail.com>
+Thread-Topic: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized
+ variable warning
+Thread-Index: AQHWoV0hzSMk/IMnP02jswbxivecYqmVFqSAgAEuwTCAAAyWgIAAjlMA
+Date: Wed, 14 Oct 2020 11:21:15 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B9B8CE0@dggemm531-mbx.china.huawei.com>
 References: <20201013123340.1850548-1-kuhn.chenqun@huawei.com>
  <561a0092-3723-a95a-0208-d53cb475a532@redhat.com>
  <7412CDE03601674DA8197E2EBD8937E83B9B6538@dggemm531-mbx.china.huawei.com>
-From: Max Reitz <mreitz@redhat.com>
-Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
- mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
- /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
- U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
- mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
- awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
- AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
- CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
- B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
- 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
- AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
- 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
- 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
- BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
- xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
- W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
- DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
- 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
- ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
- sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
- alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
- /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
- bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
- R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
-Message-ID: <5a6483ec-9cab-58d9-872c-48762e96f768@redhat.com>
-Date: Wed, 14 Oct 2020 11:35:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ <5a6483ec-9cab-58d9-872c-48762e96f768@redhat.com>
+In-Reply-To: <5a6483ec-9cab-58d9-872c-48762e96f768@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B9B6538@dggemm531-mbx.china.huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mreitz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="9r5WyatiUIyroMZofYYsbgvBwERnwTNRj"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=mreitz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 01:12:43
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 06:21:56
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,134 +68,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 09:36:09 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 11:21:45 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---9r5WyatiUIyroMZofYYsbgvBwERnwTNRj
-Content-Type: multipart/mixed; boundary="syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay"
-
---syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 14.10.20 03:03, Chenqun (kuhn) wrote:
->=20
->=20
->> -----Original Message-----
->> From: Max Reitz [mailto:mreitz@redhat.com]
->> Sent: Tuesday, October 13, 2020 10:47 PM
->> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
->> qemu-trivial@nongnu.org
->> Cc: vsementsov@virtuozzo.com; stefanha@redhat.com; fam@euphon.net;
->> eblake@redhat.com; jsnow@redhat.com; quintela@redhat.com;
->> dgilbert@redhat.com; Zhanghailiang <zhang.zhanghailiang@huawei.com>;
->> ganqixin <ganqixin@huawei.com>; qemu-block@nongnu.org; Euler Robot
->> <euler.robot@huawei.com>; Laurent Vivier <laurent@vivier.eu>; Li Qiang
->> <liq3ea@gmail.com>
->> Subject: Re: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized =
-variable
->> warning
->>
->> On 13.10.20 14:33, Chen Qun wrote:
->>> A default value is provided for the variable 'bitmap_name' to avoid com=
-piler
->> warning.
->>>
->>> The compiler show warning:
->>> migration/block-dirty-bitmap.c:1090:13: warning: =E2=80=98bitmap_name=
-=E2=80=99
->>> may be used uninitialized in this function [-Wmaybe-uninitialized]
->>>        g_strlcpy(s->bitmap_name, bitmap_name,
->> sizeof(s->bitmap_name));
->>>
->> ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>> ---
->>> Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
->>> Cc: Laurent Vivier <laurent@vivier.eu>
->>> Cc: Li Qiang <liq3ea@gmail.com>
->>> ---
->>>  migration/block-dirty-bitmap.c | 9 ++-------
->>>  1 file changed, 2 insertions(+), 7 deletions(-)
->>
->> No objections, semantically, but...
->>
->>> diff --git a/migration/block-dirty-bitmap.c
->>> b/migration/block-dirty-bitmap.c index 5bef793ac0..bcb79c04ce 100644
->>> --- a/migration/block-dirty-bitmap.c
->>> +++ b/migration/block-dirty-bitmap.c
->>> @@ -1064,15 +1064,13 @@ static int dirty_bitmap_load_header(QEMUFile
->> *f, DBMLoadState *s,
->>>      assert(nothing || s->cancelled || !!alias_map =3D=3D
->>> !!bitmap_alias_map);
->>>
->>>      if (s->flags & DIRTY_BITMAP_MIG_FLAG_BITMAP_NAME) {
->>> -        const char *bitmap_name;
->>> -
->>>          if (!qemu_get_counted_string(f, s->bitmap_alias)) {
->>>              error_report("Unable to read bitmap alias string");
->>>              return -EINVAL;
->>>          }
->>>
->>> -        if (!s->cancelled) {
->>> -            if (bitmap_alias_map) {
->>> +        const char *bitmap_name =3D s->bitmap_alias;
->>
->> qemu=E2=80=99s coding style mandates declarations to be placed at the be=
-ginning of
->> their block, so the declaration has to stay where it is.  (Putting the a=
-ssignment
->> here looks reasonable.)
->>
-> Hi Max,
->   Declaration variables here to ensure that the above exceptions(Unable t=
-o read bitmap alias string) are avoided.
-> If the declaration has to stay where it is, is there a possibility that t=
-he assignment fails?
-
-I don=E2=80=99t understand what you mean.  A declaration without initializa=
-tion
-isn=E2=80=99t and doesn=E2=80=99t contain an expression, it isn=E2=80=99t e=
-ven a statement, so
-it has no side effects.[1]
-
-Placing the declaration (without an initialization) at the top of the
-block makes no semantic difference.
-
-(As I said, I=E2=80=99d keep the assignment =E2=80=9Cbitmap_name =3D s->bit=
-map_alias=E2=80=9D
-where you put it.  I think it would technically actually be correct to
-put it into the declaration at the start of the block as an initializer,
-but that would look weird.)
-
-Max
-
-[1] I suppose exceptions apply for types with constructors, but those
-don=E2=80=99t exist in plain C.
-
-
---syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay--
-
---9r5WyatiUIyroMZofYYsbgvBwERnwTNRj
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl+GxnkACgkQ9AfbAGHV
-z0BYbgf/Ys/ssEb9s1IzIpA3fJpzYsKYAVWZh7tP+Ufkth05t18zSMxUv18X8MHT
-T8g8Uk0vu/FzMLrICac49KyemeO4APnksuw/tnOGNdZpBrjXcouoMBI9UhFdL2sl
-zX8CqzUxMkwiZ83nzpUfJoI8SPGUuwh+E5L+77s67dT0gcVDPbkXT7Aa6d2/DnAH
-WkwXK+RBPImoCcJu2130N2sGom2Ax5KxuH6s0vRkpy2+tZX+3Zqg20WJnTsauKkt
-s9nNitaXynWDGRfmjShMK0zijG5/RA3Y+i6OxNqPziQxqrx2VqwUTeutilcvGevW
-HdzerNCQcxPHGilY74mip6OIPApRdA==
-=JtB3
------END PGP SIGNATURE-----
-
---9r5WyatiUIyroMZofYYsbgvBwERnwTNRj--
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBRZW11LWRldmVsDQo+IFttYWls
+dG86cWVtdS1kZXZlbC1ib3VuY2VzK2t1aG4uY2hlbnF1bj1odWF3ZWkuY29tQG5vbmdudS5vcmdd
+IE9uDQo+IEJlaGFsZiBPZiBNYXggUmVpdHoNCj4gU2VudDogV2VkbmVzZGF5LCBPY3RvYmVyIDE0
+LCAyMDIwIDU6MzYgUE0NCj4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2Vp
+LmNvbT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gcWVtdS10cml2aWFsQG5vbmdudS5vcmcN
+Cj4gQ2M6IGZhbUBldXBob24ubmV0OyBnYW5xaXhpbiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47DQo+
+IHZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbTsgWmhhbmdoYWlsaWFuZw0KPiA8emhhbmcuemhhbmdo
+YWlsaWFuZ0BodWF3ZWkuY29tPjsgcWVtdS1ibG9ja0Bub25nbnUub3JnOw0KPiBxdWludGVsYUBy
+ZWRoYXQuY29tOyBMaSBRaWFuZyA8bGlxM2VhQGdtYWlsLmNvbT47IGRnaWxiZXJ0QHJlZGhhdC5j
+b207DQo+IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZpdmllci5ldT47IHN0ZWZhbmhhQHJlZGhh
+dC5jb207IEV1bGVyIFJvYm90DQo+IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsganNub3dAcmVk
+aGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYyXSBtaWdyYXRpb24vYmxvY2stZGlydHkt
+Yml0bWFwOiBmaXggdW5pbml0aWFsaXplZCB2YXJpYWJsZQ0KPiB3YXJuaW5nDQo+IA0KPiBPbiAx
+NC4xMC4yMCAwMzowMywgQ2hlbnF1biAoa3Vobikgd3JvdGU6DQo+ID4NCj4gPg0KPiA+PiAtLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+PiBGcm9tOiBNYXggUmVpdHogW21haWx0bzptcmVp
+dHpAcmVkaGF0LmNvbV0NCj4gPj4gU2VudDogVHVlc2RheSwgT2N0b2JlciAxMywgMjAyMCAxMDo0
+NyBQTQ0KPiA+PiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsN
+Cj4gcWVtdS1kZXZlbEBub25nbnUub3JnOw0KPiA+PiBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0K
+PiA+PiBDYzogdnNlbWVudHNvdkB2aXJ0dW96em8uY29tOyBzdGVmYW5oYUByZWRoYXQuY29tOyBm
+YW1AZXVwaG9uLm5ldDsNCj4gPj4gZWJsYWtlQHJlZGhhdC5jb207IGpzbm93QHJlZGhhdC5jb207
+IHF1aW50ZWxhQHJlZGhhdC5jb207DQo+ID4+IGRnaWxiZXJ0QHJlZGhhdC5jb207IFpoYW5naGFp
+bGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47DQo+ID4+IGdhbnFpeGluIDxn
+YW5xaXhpbkBodWF3ZWkuY29tPjsgcWVtdS1ibG9ja0Bub25nbnUub3JnOyBFdWxlciBSb2JvdA0K
+PiA+PiA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IExhdXJlbnQgVml2aWVyIDxsYXVyZW50QHZp
+dmllci5ldT47IExpDQo+ID4+IFFpYW5nIDxsaXEzZWFAZ21haWwuY29tPg0KPiA+PiBTdWJqZWN0
+OiBSZTogW1BBVENIIHYyXSBtaWdyYXRpb24vYmxvY2stZGlydHktYml0bWFwOiBmaXgNCj4gPj4g
+dW5pbml0aWFsaXplZCB2YXJpYWJsZSB3YXJuaW5nDQo+ID4+DQo+ID4+IE9uIDEzLjEwLjIwIDE0
+OjMzLCBDaGVuIFF1biB3cm90ZToNCj4gPj4+IEEgZGVmYXVsdCB2YWx1ZSBpcyBwcm92aWRlZCBm
+b3IgdGhlIHZhcmlhYmxlICdiaXRtYXBfbmFtZScgdG8gYXZvaWQNCj4gPj4+IGNvbXBpbGVyDQo+
+ID4+IHdhcm5pbmcuDQo+ID4+Pg0KPiA+Pj4gVGhlIGNvbXBpbGVyIHNob3cgd2FybmluZzoNCj4g
+Pj4+IG1pZ3JhdGlvbi9ibG9jay1kaXJ0eS1iaXRtYXAuYzoxMDkwOjEzOiB3YXJuaW5nOiDigJhi
+aXRtYXBfbmFtZeKAmQ0KPiA+Pj4gbWF5IGJlIHVzZWQgdW5pbml0aWFsaXplZCBpbiB0aGlzIGZ1
+bmN0aW9uIFstV21heWJlLXVuaW5pdGlhbGl6ZWRdDQo+ID4+PiAgICAgICAgZ19zdHJsY3B5KHMt
+PmJpdG1hcF9uYW1lLCBiaXRtYXBfbmFtZSwNCj4gPj4gc2l6ZW9mKHMtPmJpdG1hcF9uYW1lKSk7
+DQo+ID4+Pg0KPiA+Pg0KPiBefn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fg0KPiA+Pj4NCj4gPj4+IFJlcG9ydGVkLWJ5OiBFdWxlciBS
+b2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gPj4+IFNpZ25lZC1vZmYtYnk6IENoZW4g
+UXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4gPj4+IC0tLQ0KPiA+Pj4gQ2M6IFZsYWRp
+bWlyIFNlbWVudHNvdi1PZ2lldnNraXkgPHZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbT4NCj4gPj4+
+IENjOiBMYXVyZW50IFZpdmllciA8bGF1cmVudEB2aXZpZXIuZXU+DQo+ID4+PiBDYzogTGkgUWlh
+bmcgPGxpcTNlYUBnbWFpbC5jb20+DQo+ID4+PiAtLS0NCj4gPj4+ICBtaWdyYXRpb24vYmxvY2st
+ZGlydHktYml0bWFwLmMgfCA5ICsrLS0tLS0tLQ0KPiA+Pj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGlu
+c2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pDQo+ID4+DQo+ID4+IE5vIG9iamVjdGlvbnMsIHNl
+bWFudGljYWxseSwgYnV0Li4uDQo+ID4+DQo+ID4+PiBkaWZmIC0tZ2l0IGEvbWlncmF0aW9uL2Js
+b2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4+PiBiL21pZ3JhdGlvbi9ibG9jay1kaXJ0eS1iaXRtYXAu
+YyBpbmRleCA1YmVmNzkzYWMwLi5iY2I3OWMwNGNlIDEwMDY0NA0KPiA+Pj4gLS0tIGEvbWlncmF0
+aW9uL2Jsb2NrLWRpcnR5LWJpdG1hcC5jDQo+ID4+PiArKysgYi9taWdyYXRpb24vYmxvY2stZGly
+dHktYml0bWFwLmMNCj4gPj4+IEBAIC0xMDY0LDE1ICsxMDY0LDEzIEBAIHN0YXRpYyBpbnQNCj4g
+ZGlydHlfYml0bWFwX2xvYWRfaGVhZGVyKFFFTVVGaWxlDQo+ID4+ICpmLCBEQk1Mb2FkU3RhdGUg
+KnMsDQo+ID4+PiAgICAgIGFzc2VydChub3RoaW5nIHx8IHMtPmNhbmNlbGxlZCB8fCAhIWFsaWFz
+X21hcCA9PQ0KPiA+Pj4gISFiaXRtYXBfYWxpYXNfbWFwKTsNCj4gPj4+DQo+ID4+PiAgICAgIGlm
+IChzLT5mbGFncyAmIERJUlRZX0JJVE1BUF9NSUdfRkxBR19CSVRNQVBfTkFNRSkgew0KPiA+Pj4g
+LSAgICAgICAgY29uc3QgY2hhciAqYml0bWFwX25hbWU7DQo+ID4+PiAtDQo+ID4+PiAgICAgICAg
+ICBpZiAoIXFlbXVfZ2V0X2NvdW50ZWRfc3RyaW5nKGYsIHMtPmJpdG1hcF9hbGlhcykpIHsNCj4g
+Pj4+ICAgICAgICAgICAgICBlcnJvcl9yZXBvcnQoIlVuYWJsZSB0byByZWFkIGJpdG1hcCBhbGlh
+cyBzdHJpbmciKTsNCj4gPj4+ICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsNCj4gPj4+ICAg
+ICAgICAgIH0NCj4gPj4+DQo+ID4+PiAtICAgICAgICBpZiAoIXMtPmNhbmNlbGxlZCkgew0KPiA+
+Pj4gLSAgICAgICAgICAgIGlmIChiaXRtYXBfYWxpYXNfbWFwKSB7DQo+ID4+PiArICAgICAgICBj
+b25zdCBjaGFyICpiaXRtYXBfbmFtZSA9IHMtPmJpdG1hcF9hbGlhczsNCj4gPj4NCj4gPj4gcWVt
+deKAmXMgY29kaW5nIHN0eWxlIG1hbmRhdGVzIGRlY2xhcmF0aW9ucyB0byBiZSBwbGFjZWQgYXQg
+dGhlDQo+ID4+IGJlZ2lubmluZyBvZiB0aGVpciBibG9jaywgc28gdGhlIGRlY2xhcmF0aW9uIGhh
+cyB0byBzdGF5IHdoZXJlIGl0IGlzLg0KPiA+PiAoUHV0dGluZyB0aGUgYXNzaWdubWVudCBoZXJl
+IGxvb2tzIHJlYXNvbmFibGUuKQ0KPiA+Pg0KPiA+IEhpIE1heCwNCj4gPiAgIERlY2xhcmF0aW9u
+IHZhcmlhYmxlcyBoZXJlIHRvIGVuc3VyZSB0aGF0IHRoZSBhYm92ZSBleGNlcHRpb25zKFVuYWJs
+ZSB0bw0KPiByZWFkIGJpdG1hcCBhbGlhcyBzdHJpbmcpIGFyZSBhdm9pZGVkLg0KPiA+IElmIHRo
+ZSBkZWNsYXJhdGlvbiBoYXMgdG8gc3RheSB3aGVyZSBpdCBpcywgaXMgdGhlcmUgYSBwb3NzaWJp
+bGl0eSB0aGF0IHRoZQ0KPiBhc3NpZ25tZW50IGZhaWxzPw0KPiANCj4gSSBkb27igJl0IHVuZGVy
+c3RhbmQgd2hhdCB5b3UgbWVhbi4gIA0KDQpJIHRoaW5rIG15IGRlc2NyaXB0aW9uIGlzIG5vdCBh
+Y2N1cmF0ZS4gRm9yZ2l2ZSBtZSBmb3IgYmVpbmcgYSBub24tbmF0aXZlIEVuZ2xpc2ggc3BlYWtl
+ci4NClRoZSB2YXJpYWJsZSAnYml0bWFwX25hbWUnIGFzc2lnbm1lbnQgbWF5YmUgZmFpbGVkIGF0
+IHRoZSBiZWdpbm5pbmcgb2YgdGhlIGJsb2NrLCBiZWNhdXNlIHJlYWRpbmcgdGhlICdzLT5iaXRt
+YXBfYWxpYXMnIG1heWJlIGZhaWxlZC4NCg0KPkEgZGVjbGFyYXRpb24gd2l0aG91dCBpbml0aWFs
+aXphdGlvbiBpc27igJl0DQo+IGFuZCBkb2VzbuKAmXQgY29udGFpbiBhbiBleHByZXNzaW9uLCBp
+dCBpc27igJl0IGV2ZW4gYSBzdGF0ZW1lbnQsIHNvIGl0IGhhcyBubyBzaWRlDQo+IGVmZmVjdHMu
+WzFdDQo+IA0KPiBQbGFjaW5nIHRoZSBkZWNsYXJhdGlvbiAod2l0aG91dCBhbiBpbml0aWFsaXph
+dGlvbikgYXQgdGhlIHRvcCBvZiB0aGUgYmxvY2sgbWFrZXMNCj4gbm8gc2VtYW50aWMgZGlmZmVy
+ZW5jZS4NCj4NCkkgc2VlIHdoYXQgeW91IG1lYW4uIFNlcGFyYXRlIHZhcmlhYmxlIGRlY2xhcmF0
+aW9ucyBmcm9tIHZhcmlhYmxlIGFzc2lnbm1lbnRzLg0KWW91J3JlIHJpZ2h0ISAgSSB3aWxsIHVw
+ZGF0ZSBpdCBsYXRlci4NCg0KVGhhbmtzLA0KQ2hlbiBRdW4NCj4gKEFzIEkgc2FpZCwgSeKAmWQg
+a2VlcCB0aGUgYXNzaWdubWVudCDigJxiaXRtYXBfbmFtZSA9IHMtPmJpdG1hcF9hbGlhc+KAnQ0K
+PiB3aGVyZSB5b3UgcHV0IGl0LiAgSSB0aGluayBpdCB3b3VsZCB0ZWNobmljYWxseSBhY3R1YWxs
+eSBiZSBjb3JyZWN0IHRvIHB1dCBpdCBpbnRvDQo+IHRoZSBkZWNsYXJhdGlvbiBhdCB0aGUgc3Rh
+cnQgb2YgdGhlIGJsb2NrIGFzIGFuIGluaXRpYWxpemVyLCBidXQgdGhhdCB3b3VsZCBsb29rDQo+
+IHdlaXJkLikNCj4gDQo+IE1heA0KPiANCj4gWzFdIEkgc3VwcG9zZSBleGNlcHRpb25zIGFwcGx5
+IGZvciB0eXBlcyB3aXRoIGNvbnN0cnVjdG9ycywgYnV0IHRob3NlIGRvbuKAmXQNCj4gZXhpc3Qg
+aW4gcGxhaW4gQy4NCg0K
 
