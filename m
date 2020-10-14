@@ -1,58 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kShAh-0003Wz-Vt
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 09:50:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54160)
+	id 1kShZk-0005Tx-Dm
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 10:16:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kShAg-0003U7-Cl; Wed, 14 Oct 2020 09:50:26 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:40032)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kShZi-0005SU-97; Wed, 14 Oct 2020 10:16:18 -0400
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:44589)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kShAd-0008Vp-Sp; Wed, 14 Oct 2020 09:50:25 -0400
-Received: by mail-pl1-x643.google.com with SMTP id d23so1792317pll.7;
- Wed, 14 Oct 2020 06:50:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kShZg-0003fs-LF; Wed, 14 Oct 2020 10:16:18 -0400
+Received: by mail-lf1-x141.google.com with SMTP id b1so3843296lfp.11;
+ Wed, 14 Oct 2020 07:16:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=XrPbpA3GsHQpFZ8QbmSfSwsyiZnfpJ7jykZYqxiFtio=;
- b=bBX0zYKzTouAgyWSq3u34hh/PBe9/9N7O/TjFXvvOIarH0QJ/JipcOVGgDGJ8xWCNM
- zpcQ068HptwvgdKAgdmwLUD2kxd5Bsv4Mllwo6PpGovmun1IjNaKgtZYgeM01SrFipYI
- DEfqj31IH2Hl9urdPegSErFm2Qaz3O6X2Ju/nt/sj9d7f7Hwd1xb7V1P3OtOz8Mi10BI
- UT7eE24T8ka6Ju9nTBzD3tYeshhRl3a/mHgAa1BWBmJV0+2GFRe3i05B01a50TY9QNXD
- Wi7HZhSKkuRWi3mLdS1F1O+Va/Exzpe2PjinnZqb04hmcXe3DL4XSGE2p5aeQCc38EDK
- h4bw==
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=4rulUlLsOSz2rOq4EcyDa/eVfnIpoV3tqv12AO/FRDc=;
+ b=DQv3u8TOi488lqXd0WHpYsrP9zxd9chVqP533oX3M2IOdZuxlE4EwwkVtSN9XTwDIv
+ gnk21nAL9yNfHlOH7sseOssi3kBXYBZ1RN8CdYW5qV5rWpNhBxaJX+kqP1y4v4MaE6Ha
+ VRnEPUInOI6XlAeeRZtUWj10qpg0X4oq2ivMh7Y0zlv9BFrWahFMmLuHAjiDi+UW7L7T
+ YutvlDTMeDaBdG4cuIYtBGxtjLdR6PED19XZs/taw7/x0H6s3ixJiLIshYezY1UnpvkX
+ 4SvD5LrvoA2F+d28o4u1ZN+5FzcqqYHPbOi5UjJwCOp9gknYLus1zhKvA0TiKpQg8X4S
+ SNfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=XrPbpA3GsHQpFZ8QbmSfSwsyiZnfpJ7jykZYqxiFtio=;
- b=RdE+uEGfFMmKb7bv1Gmz5pDF+yyC928BlTu87ZmMo0rPFdaUg4L01t0TcMcI4LRetz
- YDaSMrtwQcCVJN3T6+Q6Iv7cQe4ktyhz6iAgxrfhYkYDtaUzjRhARx2clP4Ua6yWZnfG
- kDZ7D8Q4GpOlZJDxFm/FMK5ljWxmeYwvnU+Eoxtp6dG8PkfZncGE8LXJBrfFkpiyfVWi
- xUkX7Nz+3nR3Y8MtZfs/uV6NjUsx+XAlSystAFfgMvyQf/s/4mhGZR/Mh6eTgsIiuXrn
- zsnFfiGXuAYClMOxANLPcdB3FQkrwO+POiDWldZBaI3aN7V3a906OeArqwqPOdy2glTC
- s2rQ==
-X-Gm-Message-State: AOAM532L5ABSTErAD+vFN8Sy/6lLSdDP76BE9sNUAcEy85Vcyzvu2l2e
- qwYjt86AtT9ZeuYlkAuUx1v92u4N9We8WX/2
-X-Google-Smtp-Source: ABdhPJxpaJ6u3LmKINTH+xD8RiJV03Uhwpv5WNIi1Ar0YUAWEr85nTgvym4ZpmGC1E07mJcUFDdpVw==
-X-Received: by 2002:a17:90a:9313:: with SMTP id
- p19mr3634272pjo.90.1602683421240; 
- Wed, 14 Oct 2020 06:50:21 -0700 (PDT)
-Received: from pulp100.localdomain ([103.199.158.131])
- by smtp.gmail.com with ESMTPSA id s10sm3434578pji.7.2020.10.14.06.50.18
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=4rulUlLsOSz2rOq4EcyDa/eVfnIpoV3tqv12AO/FRDc=;
+ b=Ahks95Mxt1yA/cGLuKN8lASTyN65iDVJ37DVpNB3ZW6OmdADeHIyFVmgCi5aMIYRle
+ 2Yz6dGD8xr0y9+R/kAbmkTFFaIcWVpLz9/FKyoD2dAGZ7l5/nF9FVhkMbhjmWakMB4e2
+ 5vuiAsIuQtb+iyRtHcUNZSyRmKFxEroSDm1nURXSGnipt9p0m2WSI1UFw+NtYplaLtCv
+ xCz8s+ctL5uBcwryyFWpAVBTQI3wLMIZTFf/KxxWBuUhWtDLgrGzz22nXpo89XTm7tWq
+ tt8mRBX/MnOxUF3+iEU719FeTPnJYeDKzh9/ku3vQq+4BMgnhj1FCH1foNitju7cFXeg
+ pXBg==
+X-Gm-Message-State: AOAM531Z9PGSG0Xcqnj+ye/X5oWCbFs/uPXEuf8JP08zspLkTUR5UWk7
+ 4QbG80CXbC6qkWpNBKz059g=
+X-Google-Smtp-Source: ABdhPJzLzJy3Y347nwBsIwELBLhY5PkWIY0cfq825D3VfQJ0LE5lusVObOJx24kpZgIXyfKk0mRKVw==
+X-Received: by 2002:a19:8546:: with SMTP id h67mr1429921lfd.26.1602684973433; 
+ Wed, 14 Oct 2020 07:16:13 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id q8sm1259613ljg.105.2020.10.14.07.16.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 06:50:20 -0700 (PDT)
-From: Chetan Pant <chetan4windows@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, berrange@redhat.com,
- Chetan Pant <chetan4windows@gmail.com>
-Subject: [PATCH 4/30] authz: Fix Lesser GPL version number
-Date: Wed, 14 Oct 2020 13:49:02 +0000
-Message-Id: <20201014134902.14291-1-chetan4windows@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201014134248.14146-1-chetan4windows@gmail.com>
-References: <20201014134248.14146-1-chetan4windows@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=chetan4windows@gmail.com; helo=mail-pl1-x643.google.com
+ Wed, 14 Oct 2020 07:16:12 -0700 (PDT)
+Message-ID: <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
+Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
+ stack frame
+From: Elena Afanasova <eafanasova@gmail.com>
+To: David Gibson <david@gibson.dropbear.id.au>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org, 
+ jasowang@redhat.com, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Date: Wed, 14 Oct 2020 07:15:47 -0700
+In-Reply-To: <20201013053250.GV71119@yekko.fritz.box>
+References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+ <20201010060745.GK1025389@yekko.fritz.box>
+ <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+ <20201012053001.GD4787@yekko.fritz.box>
+ <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
+ <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
+ <20201013053250.GV71119@yekko.fritz.box>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::141;
+ envelope-from=eafanasova@gmail.com; helo=mail-lf1-x141.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -74,214 +86,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 13:50:26 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 14:16:18 -0000
 
-There is no "version 2" of the "Lesser" General Public License.
-It is either "GPL version 2.0" or "Lesser GPL version 2.1".
-This patch replaces all occurrences of "Lesser GPL version 2" with
-"Lesser GPL version 2.1" in comment section.
+On Tue, 2020-10-13 at 16:32 +1100, David Gibson wrote:
+> On Mon, Oct 12, 2020 at 03:45:02PM +0200, Paolo Bonzini wrote:
+> > On 12/10/20 12:44, Thomas Huth wrote:
+> > > I think this is one of the tasks from:
+> > > 
+> > >  
+> > > https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cleanups
+> > > 
+> > > It has been added by Paolo in 2016:
+> > > 
+> > >  
+> > > https://wiki.qemu.org/index.php?title=Contribute/BiteSizedTasks&diff=5368&oldid=5367
+> > > 
+> > > ... so maybe Paolo can comment on the size that has been chosen
+> > > here...?
+> > 
+> > I used 16K, mostly because it is a nice round number.  8k is too
+> > small
+> > due to PATH_MAX-sized variables.  16k seemed to be plenty and
+> > triggered
+> > in few-enough places that the cleanup is viable.
+> 
+> Ok.  Why are large stack frames bad in qemu?
+> 
 
-Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
----
- authz/base.c                | 2 +-
- authz/list.c                | 2 +-
- authz/listfile.c            | 2 +-
- authz/pamacct.c             | 2 +-
- authz/simple.c              | 2 +-
- include/authz/base.h        | 2 +-
- include/authz/list.h        | 2 +-
- include/authz/listfile.h    | 2 +-
- include/authz/pamacct.h     | 2 +-
- include/authz/simple.h      | 2 +-
- tests/test-authz-list.c     | 2 +-
- tests/test-authz-listfile.c | 2 +-
- tests/test-authz-pam.c      | 2 +-
- tests/test-authz-simple.c   | 2 +-
- 14 files changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/authz/base.c b/authz/base.c
-index c75bce3..f2b7fbe 100644
---- a/authz/base.c
-+++ b/authz/base.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/authz/list.c b/authz/list.c
-index 28b9909..0e17eed 100644
---- a/authz/list.c
-+++ b/authz/list.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/authz/listfile.c b/authz/listfile.c
-index cd6163a..c9dd116 100644
---- a/authz/listfile.c
-+++ b/authz/listfile.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/authz/pamacct.c b/authz/pamacct.c
-index c91593b..e67195f 100644
---- a/authz/pamacct.c
-+++ b/authz/pamacct.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/authz/simple.c b/authz/simple.c
-index ee061e9..18db035 100644
---- a/authz/simple.c
-+++ b/authz/simple.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/authz/base.h b/include/authz/base.h
-index eca170e..b53e4e4 100644
---- a/include/authz/base.h
-+++ b/include/authz/base.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/authz/list.h b/include/authz/list.h
-index f73bc5c..7ef4ad4 100644
---- a/include/authz/list.h
-+++ b/include/authz/list.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/authz/listfile.h b/include/authz/listfile.h
-index 51824f3..0a1e5bd 100644
---- a/include/authz/listfile.h
-+++ b/include/authz/listfile.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/authz/pamacct.h b/include/authz/pamacct.h
-index d05c18a..592edb2 100644
---- a/include/authz/pamacct.h
-+++ b/include/authz/pamacct.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/authz/simple.h b/include/authz/simple.h
-index 9f5b979..c46a5ac 100644
---- a/include/authz/simple.h
-+++ b/include/authz/simple.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tests/test-authz-list.c b/tests/test-authz-list.c
-index d80e6a6..5351992 100644
---- a/tests/test-authz-list.c
-+++ b/tests/test-authz-list.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tests/test-authz-listfile.c b/tests/test-authz-listfile.c
-index 26166b6..64d0e15 100644
---- a/tests/test-authz-listfile.c
-+++ b/tests/test-authz-listfile.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tests/test-authz-pam.c b/tests/test-authz-pam.c
-index 02bb149..1baeade 100644
---- a/tests/test-authz-pam.c
-+++ b/tests/test-authz-pam.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tests/test-authz-simple.c b/tests/test-authz-simple.c
-index d21d43e..6f9034d 100644
---- a/tests/test-authz-simple.c
-+++ b/tests/test-authz-simple.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
--- 
-2.17.1
+I think that the main issue here is alloca() because it can lead to UB.
 
 
