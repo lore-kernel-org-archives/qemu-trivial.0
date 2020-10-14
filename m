@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSmPq-0005CV-HK
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 15:26:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42758)
+	id 1kSmRG-0007Pt-Pq
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 15:28:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kSmPp-0005AV-E8
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 15:26:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58821)
+ id 1kSmRE-0007Ny-B5
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 15:27:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24076)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kSmPn-0002SK-NI
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 15:26:25 -0400
+ id 1kSmRB-0002ZK-GB
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 15:27:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602703582;
+ s=mimecast20190719; t=1602703668;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=cfn0wNNCYzC4IFRFHwTP/VEDeMdOjsOvXaSaOBmv+Z4=;
- b=Ec9sHdzWmWKCzWEc0qBvYBaDMvWmAcfSE5VZahWAGSA4yKNkXI6MR3XlEEvkzmHKdezKNi
- 6+8a1C+0LB5zyD+OVf4aPQtM1DpV55AHvGGXvYVlxR4IRjh5Sa8Kw918xQeh1ATBewHcYC
- 7OR711fcon1mSxm83Zk56wIazz4STn0=
+ bh=23lwnE/SWKwdg1DKhVYOsZFotB7XBPWrVm8smyqV3co=;
+ b=f/0lzvbX10eD+t5IlEzx5TU8xcZt9SjtZTRkKGlEnElzGohyAPgXh0vRQEjA63pDWel4dd
+ mVrNCgL/JbMBlp+2++4CkblOPkGsNmuudJ8h36xmtO3+aPbTidfXSSW1jAV939YHSYVPEO
+ z6Qs7f+lj7xY9wrieifVbRLW2AhtOvM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-298-R--Y8DgsMEOB9BR32OGcpA-1; Wed, 14 Oct 2020 15:26:19 -0400
-X-MC-Unique: R--Y8DgsMEOB9BR32OGcpA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-396-qmFhrRdFPHKSRk2vqV2X5w-1; Wed, 14 Oct 2020 15:27:45 -0400
+X-MC-Unique: qmFhrRdFPHKSRk2vqV2X5w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB37E56C90;
- Wed, 14 Oct 2020 19:26:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 208C4100746B;
+ Wed, 14 Oct 2020 19:27:44 +0000 (UTC)
 Received: from work-vm (ovpn-113-95.ams2.redhat.com [10.36.113.95])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BD886EF5E;
- Wed, 14 Oct 2020 19:26:15 +0000 (UTC)
-Date: Wed, 14 Oct 2020 20:26:13 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 91DA676673;
+ Wed, 14 Oct 2020 19:27:42 +0000 (UTC)
+Date: Wed, 14 Oct 2020 20:27:40 +0100
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Bihong Yu <yubihong@huawei.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, quintela@redhat.com,
  alex.chen@huawei.com, wanghao232@huawei.com, zhengchuan@huawei.com
-Subject: Re: [PATCH v2 7/8] migration: Open brace '{' following function
- declarations go on the next line
-Message-ID: <20201014192613.GM2996@work-vm>
+Subject: Re: [PATCH v2 2/8] migration: Don't use '#' flag of printf format
+Message-ID: <20201014192740.GN2996@work-vm>
 References: <1602508140-11372-1-git-send-email-yubihong@huawei.com>
- <1602508140-11372-8-git-send-email-yubihong@huawei.com>
+ <1602508140-11372-3-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1602508140-11372-8-git-send-email-yubihong@huawei.com>
+In-Reply-To: <1602508140-11372-3-git-send-email-yubihong@huawei.com>
 User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -76,7 +75,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 19:26:25 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 19:27:52 -0000
 
 * Bihong Yu (yubihong@huawei.com) wrote:
 > Signed-off-by: Bihong Yu <yubihong@huawei.com>
@@ -85,23 +84,45 @@ X-List-Received-Date: Wed, 14 Oct 2020 19:26:25 -0000
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
 > ---
->  migration/rdma.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  migration/block.c | 2 +-
+>  migration/ram.c   | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/migration/rdma.c b/migration/rdma.c
-> index 0eb42b7..ca4d315 100644
-> --- a/migration/rdma.c
-> +++ b/migration/rdma.c
-> @@ -273,7 +273,8 @@ static uint64_t htonll(uint64_t v)
->      return u.llv;
->  }
->  
-> -static uint64_t ntohll(uint64_t v) {
-> +static uint64_t ntohll(uint64_t v)
-> +{
->      union { uint32_t lv[2]; uint64_t llv; } u;
->      u.llv = v;
->      return ((uint64_t)ntohl(u.lv[0]) << 32) | (uint64_t) ntohl(u.lv[1]);
+> diff --git a/migration/block.c b/migration/block.c
+> index 4b8576b..273392b 100644
+> --- a/migration/block.c
+> +++ b/migration/block.c
+> @@ -998,7 +998,7 @@ static int block_load(QEMUFile *f, void *opaque, int version_id)
+>                     (addr == 100) ? '\n' : '\r');
+>              fflush(stdout);
+>          } else if (!(flags & BLK_MIG_FLAG_EOS)) {
+> -            fprintf(stderr, "Unknown block migration flags: %#x\n", flags);
+> +            fprintf(stderr, "Unknown block migration flags: 0x%x\n", flags);
+>              return -EINVAL;
+>          }
+>          ret = qemu_file_get_error(f);
+> diff --git a/migration/ram.c b/migration/ram.c
+> index 433489d..6ed4f9e 100644
+> --- a/migration/ram.c
+> +++ b/migration/ram.c
+> @@ -3298,7 +3298,7 @@ static int ram_load_postcopy(QEMUFile *f)
+>              multifd_recv_sync_main();
+>              break;
+>          default:
+> -            error_report("Unknown combination of migration flags: %#x"
+> +            error_report("Unknown combination of migration flags: 0x%x"
+>                           " (postcopy mode)", flags);
+>              ret = -EINVAL;
+>              break;
+> @@ -3576,7 +3576,7 @@ static int ram_load_precopy(QEMUFile *f)
+>              if (flags & RAM_SAVE_FLAG_HOOK) {
+>                  ram_control_load_hook(f, RAM_CONTROL_HOOK, NULL);
+>              } else {
+> -                error_report("Unknown combination of migration flags: %#x",
+> +                error_report("Unknown combination of migration flags: 0x%x",
+>                               flags);
+>                  ret = -EINVAL;
+>              }
 > -- 
 > 1.8.3.1
 > 
