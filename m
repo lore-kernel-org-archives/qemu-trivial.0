@@ -1,80 +1,105 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSc3C-0000VC-Cd
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 04:22:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33014)
+	id 1kSdCc-0001xP-DU
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 05:36:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSc38-0000Tp-EW
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 04:22:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55738)
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kSdCa-0001ur-5g
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 05:36:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kSc36-0007ci-Jw
- for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 04:22:18 -0400
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kSdCW-0000JM-8o
+ for qemu-trivial@nongnu.org; Wed, 14 Oct 2020 05:36:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602663735;
+ s=mimecast20190719; t=1602668163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=uuJppHX+C4z8kNnV/PTvBxvxulI+CAK/tNaO7ZCrtiU=;
- b=J3xixPyzoTY1/WC0BCg6ZrwyZgGDSiZj5Vv3qhpo/mfXrWiDjJt3KieL5Uwl15S45yeJiH
- QSSpQrf8UeFAubHWU4fXvjAYsNMypplENUR24miJ/vx6t27zWSLE2NhV9TiNROSPFLZcAC
- dlNxPd28VJHnPV8qoZpDvcMT7BLjMC0=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-70-gHMddjbRMEWamG0vLlOuUg-1; Wed, 14 Oct 2020 04:22:13 -0400
-X-MC-Unique: gHMddjbRMEWamG0vLlOuUg-1
-Received: by mail-wr1-f70.google.com with SMTP id q15so964276wrw.8
- for <qemu-trivial@nongnu.org>; Wed, 14 Oct 2020 01:22:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uuJppHX+C4z8kNnV/PTvBxvxulI+CAK/tNaO7ZCrtiU=;
- b=aNpWyd98ATl5pYBsffP3Z2S/epUuRABgREwXaWUkDnIbyXI8f0tF7a6874aGy+5gKH
- MzefHUkENP9ekxmHrbrc+44KnBen6qw7CfavUjFiQWDWW9NoGKCskM41J76xcSlHocNt
- PTL7QVmRDuAybPWGD/M7zYxPXr8BDz4oIVsGYY8FWKdBRE9Tun7zEmjDiEKE83UdalH5
- wyBn3AnassDDo7PMhL/xUIqhMs07sriTKlnUr58GJRLjon33p4K+DVpkqK+kJZiQhpGk
- 3hxNCMQTFUiPWFXaRnEmSBDiKG+PBKNL8NxiRhWQbu7Nt+bVHAxVGUECGr3uCtwOz9Or
- ZUMQ==
-X-Gm-Message-State: AOAM531ceu6J7hJ8Ud/VxiHp8AgEXivIibbBdLjeawmgtEae75Zpi1RP
- 6yrafgpG7KzJrXqn5jhEdshQoJt7Vc95yiOZEj+hkO1iF77R3XgVAfpW0Phi0JgX3dXUzXqAhl1
- MpqbFodJqs6feUR15Xg==
-X-Received: by 2002:adf:bbca:: with SMTP id z10mr4329826wrg.403.1602663731763; 
- Wed, 14 Oct 2020 01:22:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxy7c6kVKxNkSYE9n3ECqdxhMH6e5mO3f2Twcvri5oyjB3JBqQHQeKmEDKmsMD5AQ3eJUs7Q==
-X-Received: by 2002:adf:bbca:: with SMTP id z10mr4329810wrg.403.1602663731576; 
- Wed, 14 Oct 2020 01:22:11 -0700 (PDT)
-Received: from x1w.redhat.com (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id 30sm3713287wrr.35.2020.10.14.01.22.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 01:22:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] buildsys: Help git-diff adding .gitattributes config file
-Date: Wed, 14 Oct 2020 10:22:09 +0200
-Message-Id: <20201014082209.3712625-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=i1d+Y/NuWEo/+ougMrmF21qCkaAb+G4GJJxZ2VjSaDs=;
+ b=OZB3dzguqqrCC+xjYCjVXLLlUPZ8j43FWotJJKpC6vB4SO7Hx0IRtD/o0Scw1A4l/g0+vj
+ n5ZPhbP0XLSM6Y2ai2aMOMdvUZuD1/9Eco+fDdjTEnUDFOvKHsZv1m8pU0PyUBnBdOQ0UO
+ gv2HiOql8aQRRmJwiHY52lQfjchUFwc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-25-72N0T8XLPdyHTeuv--Yysg-1; Wed, 14 Oct 2020 05:36:01 -0400
+X-MC-Unique: 72N0T8XLPdyHTeuv--Yysg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 367421823DD2;
+ Wed, 14 Oct 2020 09:35:59 +0000 (UTC)
+Received: from dresden.str.redhat.com (unknown [10.40.194.40])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 351EC1002391;
+ Wed, 14 Oct 2020 09:35:55 +0000 (UTC)
+Subject: Re: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized
+ variable warning
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Cc: "vsementsov@virtuozzo.com" <vsementsov@virtuozzo.com>,
+ "stefanha@redhat.com" <stefanha@redhat.com>, "fam@euphon.net"
+ <fam@euphon.net>, "eblake@redhat.com" <eblake@redhat.com>,
+ "jsnow@redhat.com" <jsnow@redhat.com>,
+ "quintela@redhat.com" <quintela@redhat.com>,
+ "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ ganqixin <ganqixin@huawei.com>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, Euler Robot <euler.robot@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@gmail.com>
+References: <20201013123340.1850548-1-kuhn.chenqun@huawei.com>
+ <561a0092-3723-a95a-0208-d53cb475a532@redhat.com>
+ <7412CDE03601674DA8197E2EBD8937E83B9B6538@dggemm531-mbx.china.huawei.com>
+From: Max Reitz <mreitz@redhat.com>
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <5a6483ec-9cab-58d9-872c-48762e96f768@redhat.com>
+Date: Wed, 14 Oct 2020 11:35:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B9B6538@dggemm531-mbx.china.huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mreitz@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="9r5WyatiUIyroMZofYYsbgvBwERnwTNRj"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mreitz@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 03:37:33
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/14 01:12:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,31 +112,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 08:22:20 -0000
+X-List-Received-Date: Wed, 14 Oct 2020 09:36:09 -0000
 
-Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
-and 139c1837db7 ("meson: rename included C source files to .c.inc")
-'git-diff --function-context' stopped displaying C function context
-correctly.
-We can help git-diff by providing attributes to the .[ch].inc path
-names. See:
-https://git-scm.com/docs/gitattributes#_generating_diff_text
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--9r5WyatiUIyroMZofYYsbgvBwERnwTNRj
+Content-Type: multipart/mixed; boundary="syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay"
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- .gitattributes | 2 ++
- 1 file changed, 2 insertions(+)
- create mode 100644 .gitattributes
+--syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/.gitattributes b/.gitattributes
-new file mode 100644
-index 00000000000..3d2fe2ecda8
---- /dev/null
-+++ b/.gitattributes
-@@ -0,0 +1,2 @@
-+*.c.inc         diff=c
-+*.h.inc         diff=c
--- 
-2.26.2
+On 14.10.20 03:03, Chenqun (kuhn) wrote:
+>=20
+>=20
+>> -----Original Message-----
+>> From: Max Reitz [mailto:mreitz@redhat.com]
+>> Sent: Tuesday, October 13, 2020 10:47 PM
+>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-devel@nongnu.org;
+>> qemu-trivial@nongnu.org
+>> Cc: vsementsov@virtuozzo.com; stefanha@redhat.com; fam@euphon.net;
+>> eblake@redhat.com; jsnow@redhat.com; quintela@redhat.com;
+>> dgilbert@redhat.com; Zhanghailiang <zhang.zhanghailiang@huawei.com>;
+>> ganqixin <ganqixin@huawei.com>; qemu-block@nongnu.org; Euler Robot
+>> <euler.robot@huawei.com>; Laurent Vivier <laurent@vivier.eu>; Li Qiang
+>> <liq3ea@gmail.com>
+>> Subject: Re: [PATCH v2] migration/block-dirty-bitmap: fix uninitialized =
+variable
+>> warning
+>>
+>> On 13.10.20 14:33, Chen Qun wrote:
+>>> A default value is provided for the variable 'bitmap_name' to avoid com=
+piler
+>> warning.
+>>>
+>>> The compiler show warning:
+>>> migration/block-dirty-bitmap.c:1090:13: warning: =E2=80=98bitmap_name=
+=E2=80=99
+>>> may be used uninitialized in this function [-Wmaybe-uninitialized]
+>>>        g_strlcpy(s->bitmap_name, bitmap_name,
+>> sizeof(s->bitmap_name));
+>>>
+>> ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>>> ---
+>>> Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+>>> Cc: Laurent Vivier <laurent@vivier.eu>
+>>> Cc: Li Qiang <liq3ea@gmail.com>
+>>> ---
+>>>  migration/block-dirty-bitmap.c | 9 ++-------
+>>>  1 file changed, 2 insertions(+), 7 deletions(-)
+>>
+>> No objections, semantically, but...
+>>
+>>> diff --git a/migration/block-dirty-bitmap.c
+>>> b/migration/block-dirty-bitmap.c index 5bef793ac0..bcb79c04ce 100644
+>>> --- a/migration/block-dirty-bitmap.c
+>>> +++ b/migration/block-dirty-bitmap.c
+>>> @@ -1064,15 +1064,13 @@ static int dirty_bitmap_load_header(QEMUFile
+>> *f, DBMLoadState *s,
+>>>      assert(nothing || s->cancelled || !!alias_map =3D=3D
+>>> !!bitmap_alias_map);
+>>>
+>>>      if (s->flags & DIRTY_BITMAP_MIG_FLAG_BITMAP_NAME) {
+>>> -        const char *bitmap_name;
+>>> -
+>>>          if (!qemu_get_counted_string(f, s->bitmap_alias)) {
+>>>              error_report("Unable to read bitmap alias string");
+>>>              return -EINVAL;
+>>>          }
+>>>
+>>> -        if (!s->cancelled) {
+>>> -            if (bitmap_alias_map) {
+>>> +        const char *bitmap_name =3D s->bitmap_alias;
+>>
+>> qemu=E2=80=99s coding style mandates declarations to be placed at the be=
+ginning of
+>> their block, so the declaration has to stay where it is.  (Putting the a=
+ssignment
+>> here looks reasonable.)
+>>
+> Hi Max,
+>   Declaration variables here to ensure that the above exceptions(Unable t=
+o read bitmap alias string) are avoided.
+> If the declaration has to stay where it is, is there a possibility that t=
+he assignment fails?
+
+I don=E2=80=99t understand what you mean.  A declaration without initializa=
+tion
+isn=E2=80=99t and doesn=E2=80=99t contain an expression, it isn=E2=80=99t e=
+ven a statement, so
+it has no side effects.[1]
+
+Placing the declaration (without an initialization) at the top of the
+block makes no semantic difference.
+
+(As I said, I=E2=80=99d keep the assignment =E2=80=9Cbitmap_name =3D s->bit=
+map_alias=E2=80=9D
+where you put it.  I think it would technically actually be correct to
+put it into the declaration at the start of the block as an initializer,
+but that would look weird.)
+
+Max
+
+[1] I suppose exceptions apply for types with constructors, but those
+don=E2=80=99t exist in plain C.
+
+
+--syFb9lIOnh7aKeB6Cco0Ls51i7elfO6ay--
+
+--9r5WyatiUIyroMZofYYsbgvBwERnwTNRj
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl+GxnkACgkQ9AfbAGHV
+z0BYbgf/Ys/ssEb9s1IzIpA3fJpzYsKYAVWZh7tP+Ufkth05t18zSMxUv18X8MHT
+T8g8Uk0vu/FzMLrICac49KyemeO4APnksuw/tnOGNdZpBrjXcouoMBI9UhFdL2sl
+zX8CqzUxMkwiZ83nzpUfJoI8SPGUuwh+E5L+77s67dT0gcVDPbkXT7Aa6d2/DnAH
+WkwXK+RBPImoCcJu2130N2sGom2Ax5KxuH6s0vRkpy2+tZX+3Zqg20WJnTsauKkt
+s9nNitaXynWDGRfmjShMK0zijG5/RA3Y+i6OxNqPziQxqrx2VqwUTeutilcvGevW
+HdzerNCQcxPHGilY74mip6OIPApRdA==
+=JtB3
+-----END PGP SIGNATURE-----
+
+--9r5WyatiUIyroMZofYYsbgvBwERnwTNRj--
 
 
