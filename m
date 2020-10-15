@@ -1,73 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kSoRR-0003Cq-OS
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Oct 2020 17:36:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40646)
+	id 1kT29I-0004ng-N2
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 08:14:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59402)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kSoRP-00039b-Kx; Wed, 14 Oct 2020 17:36:11 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35079)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kT29E-0004my-V9; Thu, 15 Oct 2020 08:14:20 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:44359)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kSoRN-0001vE-IK; Wed, 14 Oct 2020 17:36:11 -0400
-Received: by mail-wr1-x444.google.com with SMTP id n15so756613wrq.2;
- Wed, 14 Oct 2020 14:36:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eafanasova@gmail.com>)
+ id 1kT297-0005z8-HE; Thu, 15 Oct 2020 08:14:18 -0400
+Received: by mail-lf1-x142.google.com with SMTP id b1so3287896lfp.11;
+ Thu, 15 Oct 2020 05:14:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
+ h=message-id:subject:from:to:cc:date:user-agent:mime-version
  :content-transfer-encoding;
- bh=uEjL+qGbbvV/SEcYco7BpZwU7c2hFnttQxVV9v2plEo=;
- b=IYojULWDPISHv7l8ZAad7PJ5mjEuup6DfIjh+WJHbztOTmqV3yhIXxJSVVT9MRaJkD
- 9duSWSRbPFpqGlEJhbfkvphULcyv6qdOKN0Hh7AHQA8sp2GB9SBrA+jmgsADVaFEJmvh
- dEgjOwnYaJZU7u1H0ggM+23iHAEvLjPCEUlvqKNhxSn94gWnnBEEZfIxI4TAxD/Gqo4k
- ewzhexYg+DRMUmdWCOXSqFLO4v1muJXK059S4qCdKxFdHfX54zMUUTyzXQd77j9AdYsz
- 0Ygbj0UG8y4kh3FyjBiKZyBVzJtceVGUBBAGnCfvF9kzUFCyoYeKXylG/vMc827W6/3x
- 1fDQ==
+ bh=dQmz9rhOlDq0/v2hbjxNx9h96+dAcVbZNubb/iXznIs=;
+ b=piCUUFbyoL8Ed8g0hah127MyF62P6+tx+NjUy8QnB2rakG+vYa4M337ryABTzYSrFH
+ mp0omeHkoSFd6qZyzlOcnUDTSKBQmL7EuDIGtokqJHbbA0Izio11nnX3/zWs9aduAdok
+ B1uZ3SWX0TO/Knxs8QwFXKiXQzaq/xQ9bd8TE5IkucXlfX1Rpvh6WF8TFdm9XnOrtC++
+ +ldk0onjhfNOtwR0MRNFrCRtJSrANxv9E2NvwnqvJqMvBsu93i920jCK6msMoy5Rgjk/
+ jdbEKn4OMHTlR5M3Yi3rWNNkc2NsuRxLH5OxaURL7jYXWI3On5kNPBpv+dBrvd1UGvj9
+ qIbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
  :mime-version:content-transfer-encoding;
- bh=uEjL+qGbbvV/SEcYco7BpZwU7c2hFnttQxVV9v2plEo=;
- b=r8JbmE2IpKIRaXuZGlP4V4tQt747bWH1E8X7qIHjLId/ZkB6RlbPOzgoGCwb2+F3ar
- 7E1F/MzCe8k/fS0+WzMx/HNvgVP1NQFOXBQgTJaJbeVIrIwodJoVwspRlZkuNmbbEotY
- y3h/0o8XfeXuPN6clX5JNmbOKLW/sg5NJGp4fZvGwm5GcNmm3i8pwY4gid+KQx70rUX+
- uN6jqlQYK7cbStofhR2b3nfQYVgaf2O9qwG2NExhqLq9YMDZazZWWCIStngLaBcTskPV
- 9cRMVW56FGUkHO8kLV64SR4yWxGAbyp+TBxzE7YEj8IlOpvfDpZaptdkz2FtYQqALKqT
- TgLg==
-X-Gm-Message-State: AOAM530v8FEJUR0OuEIO90ppZ9m72DHsD/b654yegYktIyshKqvKfJ/c
- oQ2zIBA2VmvZhiOuzwaqdahesaC12do=
-X-Google-Smtp-Source: ABdhPJzpkjmeJn6s+O5bVa3SgHAdDNmE6FkZGN5dtcEA3XiiS3skQgUFyr20XFH8iWkx/AcU1+ZlPw==
-X-Received: by 2002:adf:edcf:: with SMTP id v15mr648941wro.291.1602711363716; 
- Wed, 14 Oct 2020 14:36:03 -0700 (PDT)
-Received: from x1w.redhat.com (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id o3sm889204wru.15.2020.10.14.14.36.02
+ bh=dQmz9rhOlDq0/v2hbjxNx9h96+dAcVbZNubb/iXznIs=;
+ b=jgGO2u/ISuiV0VXJ/pMAgom/cOEaDLWmBvLaK5NmGP2xZPE5JWxidboZD1+BY8CZCv
+ 7agRmg+CN9Pk4ZJ8eeDRmFEr0RZYJoAkdqnIECWqIXi/rr9QzXjB3mpLDnvu1mnSHaSU
+ ERanOMHw2aYqG74MwAAtALgYZuLFKxkJTNLG3h2E4mPuIaR7noxKS6+OBgMy8rqu2+j9
+ 9G//Ej8v1K7aY1pZ3WlhAZvcjDuBIgZNFM4ywhZh/f8x8HlWE5shoyg5Egvzk8/svFL6
+ 3bkgILHAq5TDJO5BKIcWkvYBwgYs0d0+FXciOnNVCtmfN/IBo2TjjVQI/A/wGoqtyqnt
+ 39zw==
+X-Gm-Message-State: AOAM531WiDpHqQDELnKYIENvveNnFRvKD7ao4o42a70+noY8478uUbE0
+ Tfva3A12fvCOmI3VWRB66ZA=
+X-Google-Smtp-Source: ABdhPJwl+ckbQwZ5A6+trQDL3DF17h3m15WGRm1C+FykN+9z8Etyom+fr9XFodGBjqNjp94cGojoLQ==
+X-Received: by 2002:a19:7917:: with SMTP id u23mr974577lfc.543.1602764050366; 
+ Thu, 15 Oct 2020 05:14:10 -0700 (PDT)
+Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
+ [37.145.186.126])
+ by smtp.gmail.com with ESMTPSA id x8sm970036lff.222.2020.10.15.05.14.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 14:36:03 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/arm/strongarm: Fix 'time to transmit a char' unit comment
-Date: Wed, 14 Oct 2020 23:36:01 +0200
-Message-Id: <20201014213601.205222-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ Thu, 15 Oct 2020 05:14:09 -0700 (PDT)
+Message-ID: <e04b538ddbf6b6612c0c94602740ff78a98812d7.camel@gmail.com>
+Subject: [PATCH] block/qcow2-cluster: remove dead code
+From: Elena Afanasova <eafanasova@gmail.com>
+To: kwolf@redhat.com, mreitz@redhat.com, qemu-block@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Thu, 15 Oct 2020 05:13:54 -0700
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=eafanasova@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,29 +75,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Oct 2020 21:36:12 -0000
+X-List-Received-Date: Thu, 15 Oct 2020 12:14:22 -0000
 
-The time to transmit a char is expressed in nanoseconds, not in ticks.
+Since handle_dependencies() returns 0 or -EAGAIN the following case can be removed.
+Spotted by PVS-Studio.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 ---
- hw/arm/strongarm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ block/qcow2-cluster.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-index d7133eea6f9..ca7c385f313 100644
---- a/hw/arm/strongarm.c
-+++ b/hw/arm/strongarm.c
-@@ -935,7 +935,7 @@ struct StrongARMUARTState {
-     uint8_t rx_start;
-     uint8_t rx_len;
- 
--    uint64_t char_transmit_time; /* time to transmit a char in ticks*/
-+    uint64_t char_transmit_time; /* time to transmit a char in nanoseconds */
-     bool wait_break_end;
-     QEMUTimer *rx_timeout_timer;
-     QEMUTimer *tx_timer;
+diff --git a/block/qcow2-cluster.c b/block/qcow2-cluster.c
+index aa87d3e99b..e2e0db0cc9 100644
+--- a/block/qcow2-cluster.c
++++ b/block/qcow2-cluster.c
+@@ -1806,8 +1806,6 @@ again:
+              * structs before starting over. */
+             assert(*m == NULL);
+             goto again;
+-        } else if (ret < 0) {
+-            return ret;
+         } else if (cur_bytes == 0) {
+             break;
+         } else {
 -- 
-2.26.2
+2.25.1
+
 
 
