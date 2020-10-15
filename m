@@ -1,64 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kT2dR-0001wv-0O
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 08:45:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38152)
+	id 1kT4ZS-0003Bi-Sh
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 10:49:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kT2dP-0001wc-6C
- for qemu-trivial@nongnu.org; Thu, 15 Oct 2020 08:45:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:48442)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kT4ZR-00037s-22
+ for qemu-trivial@nongnu.org; Thu, 15 Oct 2020 10:49:33 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:20213)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kT2dN-0001ey-H4
- for qemu-trivial@nongnu.org; Thu, 15 Oct 2020 08:45:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602765928;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ChTchp8+SkWyVexFLXALXfgmfCaFAzluBLaYDJ4kvCQ=;
- b=A3F7L4Q0BPfKQcFd1IBKb5fLuexbrvvpoLzIrq5J5Xj50yuZjKW+zt8Ox+zGPLQX3pJaxN
- T+cYW5ceeWiz506mVu0en/gqAc/XGVSer7XEORb/GfIiP5hKmV48OqG2zN9+Ixxb/mlhqM
- KCuj/mwOgdSLKiECBseHL1yyqrFQF0g=
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kT4ZO-0001Wy-HW
+ for qemu-trivial@nongnu.org; Thu, 15 Oct 2020 10:49:32 -0400
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-kszUkNxlMMepKXNJExwm7A-1; Thu, 15 Oct 2020 08:45:26 -0400
-X-MC-Unique: kszUkNxlMMepKXNJExwm7A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-360-rDnF_8C-MHK3W1r3KIjyMQ-1; Thu, 15 Oct 2020 10:49:09 -0400
+X-MC-Unique: rDnF_8C-MHK3W1r3KIjyMQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8B3E9803646;
- Thu, 15 Oct 2020 12:45:25 +0000 (UTC)
-Received: from merkur.fritz.box (ovpn-114-163.ams2.redhat.com [10.36.114.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6A71460E1C;
- Thu, 15 Oct 2020 12:45:24 +0000 (UTC)
-Date: Thu, 15 Oct 2020 14:45:22 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: mreitz@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] block/qcow2-cluster: remove dead code
-Message-ID: <20201015124522.GJ4610@merkur.fritz.box>
-References: <e04b538ddbf6b6612c0c94602740ff78a98812d7.camel@gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 553D38015AA;
+ Thu, 15 Oct 2020 14:49:08 +0000 (UTC)
+Received: from bahia.lan (ovpn-112-78.ams2.redhat.com [10.36.112.78])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C44155763;
+ Thu, 15 Oct 2020 14:49:07 +0000 (UTC)
+Subject: [PATCH] Makefile: Ensure cscope.out/tags/TAGS are generated in the
+ source tree
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Date: Thu, 15 Oct 2020 16:49:06 +0200
+Message-ID: <160277334665.1754102.10921580280105870386.stgit@bahia.lan>
+User-Agent: StGit/0.21
 MIME-Version: 1.0
-In-Reply-To: <e04b538ddbf6b6612c0c94602740ff78a98812d7.camel@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:10:02
+X-Mimecast-Originator: kaod.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
+ helo=us-smtp-delivery-44.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 10:49:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,35 +57,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Oct 2020 12:45:31 -0000
+X-List-Received-Date: Thu, 15 Oct 2020 14:49:33 -0000
 
-Am 15.10.2020 um 14:13 hat Elena Afanasova geschrieben:
-> Since handle_dependencies() returns 0 or -EAGAIN the following case can be removed.
-> Spotted by PVS-Studio.
-> 
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> ---
->  block/qcow2-cluster.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/block/qcow2-cluster.c b/block/qcow2-cluster.c
-> index aa87d3e99b..e2e0db0cc9 100644
-> --- a/block/qcow2-cluster.c
-> +++ b/block/qcow2-cluster.c
-> @@ -1806,8 +1806,6 @@ again:
->               * structs before starting over. */
->              assert(*m == NULL);
->              goto again;
-> -        } else if (ret < 0) {
-> -            return ret;
->          } else if (cur_bytes == 0) {
->              break;
->          } else {
+Tools usually expect the index files to be in the source tree, eg. emacs.
+This is already the case when doing out-of-tree builds, but with in-tree
+builds they end up in the build directory.
 
-Technically correct, but let's keep it for anyone who will return a
-different error code in the future. I think we should always check for
-any error even if it is currently not produced.
+Force cscope, ctags and etags to put them in the source tree.
 
-Kevin
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ Makefile |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3c5a0b0f7a11..45f983d9ef08 100644
+--- a/Makefile
++++ b/Makefile
+@@ -194,19 +194,19 @@ find-src-path =3D find "$(SRC_PATH)/" -path "$(SRC_PA=
+TH)/meson" -prune -o \( -name
+=20
+ .PHONY: ctags
+ ctags:
+-=09rm -f tags
+-=09$(find-src-path) -exec ctags --append {} +
++=09rm -f "$(SRC_PATH)/"tags
++=09$(find-src-path) -exec ctags -f "$(SRC_PATH)/"tags --append {} +
+=20
+ .PHONY: TAGS
+ TAGS:
+-=09rm -f TAGS
+-=09$(find-src-path) -exec etags --append {} +
++=09rm -f "$(SRC_PATH)/"TAGS
++=09$(find-src-path) -exec etags -f "$(SRC_PATH)/"TAGS --append {} +
+=20
+ .PHONY: cscope
+ cscope:
+ =09rm -f "$(SRC_PATH)"/cscope.*
+ =09$(find-src-path) -print | sed -e 's,^\./,,' > "$(SRC_PATH)/cscope.files=
+"
+-=09cscope -b -i"$(SRC_PATH)/cscope.files"
++=09cscope -b -i"$(SRC_PATH)/cscope.files" -f"$(SRC_PATH)"/cscope.out
+=20
+ # Needed by "meson install"
+ export DESTDIR
+
 
 
