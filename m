@@ -1,47 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTUSl-0008Uz-1y
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 14:28:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52220)
+	id 1kTWEA-0000Cf-Rw
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 16:21:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTUSi-0008RF-Ea; Fri, 16 Oct 2020 14:28:20 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:57652
- helo=mail.default.ilande.uk0.bigv.io)
+ (Exim 4.90_1) (envelope-from <hpoussin@reactos.org>)
+ id 1kTWE8-0000Ab-Oz; Fri, 16 Oct 2020 16:21:24 -0400
+Received: from iserv.reactos.org ([2a01:4f8:1c17:5ae1::1]:56436)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTUSg-0000HV-Pt; Fri, 16 Oct 2020 14:28:20 -0400
-Received: from host86-148-246-80.range86-148.btcentralplus.com
- ([86.148.246.80] helo=kentang.home)
- by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTUSd-0003wP-TC; Fri, 16 Oct 2020 19:28:20 +0100
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, f4bug@amsat.org,
- hpoussin@reactos.org, qemu-ppc@nongnu.org, atar4qemu@gmail.com,
- david@gibson.dropbear.id.au
-Date: Fri, 16 Oct 2020 19:27:39 +0100
-Message-Id: <20201016182739.22875-6-mark.cave-ayland@ilande.co.uk>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
+ (Exim 4.90_1) (envelope-from <hpoussin@reactos.org>)
+ id 1kTWE4-0007Gh-QA; Fri, 16 Oct 2020 16:21:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=reactos.org
+ ; s=25047;
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:
+ Date:Message-ID:From:References:To:Subject:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=keuqbp1RCgxaqFHNcOWXprRe7erFPJbcAMtzT5INgcI=; b=BgobDDtMklAnnDgVlQUuLkLc39
+ QWrpS/cZMtjj2+FLHwwButtXj851n9tSX3MgZGSXz2N5rM+7W1h3ejC/774DHvIxsf2zUT5sTu0Hr
+ UMBB5AGbQ6VcSJnBsyySMfcnM4lbMNBPdZZhyRlltFWH+7kpMh4OhVL54cVMYbvq9czw=;
+Received: from [2a01:e35:2e3e:3c40:899a:1720:1cdf:ffca]
+ by iserv.reactos.org with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <hpoussin@reactos.org>)
+ id 1kTWDz-0007z1-13; Fri, 16 Oct 2020 20:21:15 +0000
+Subject: Re: [PATCH 0/5] m48t59: remove legacy init functions
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, f4bug@amsat.org, qemu-ppc@nongnu.org,
+ atar4qemu@gmail.com, david@gibson.dropbear.id.au
 References: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
+From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
+Message-ID: <49b1bc21-46b6-7836-8df9-f8300a6f3bb5@reactos.org>
+Date: Fri, 16 Oct 2020 22:21:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.148.246.80
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: [PATCH 5/5] m48t59: remove legacy m48t59_init() function
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.uk0.bigv.io
+Received-SPF: pass client-ip=2a01:4f8:1c17:5ae1::1;
+ envelope-from=hpoussin@reactos.org; helo=iserv.reactos.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.253,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,77 +60,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Oct 2020 18:28:21 -0000
+X-List-Received-Date: Fri, 16 Oct 2020 20:21:25 -0000
 
-Now that all of the callers of this function have been switched to use qdev
-properties, this legacy init function can now be removed.
+Le 16/10/2020 à 20:27, Mark Cave-Ayland a écrit :
+> This patchset is inspired by Philippe's "hw/rtc/m48t59: Simplify m48t59_init()"
+> patchset at https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg04493.html
+> but goes further: rather than tidy-up the legacy init functions, convert the
+> callers to use qdev properties directly so they can simply be removed.
+> 
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> 
+> 
+> Mark Cave-Ayland (5):
+>    m48t59-isa: remove legacy m48t59_init_isa() function
+>    sun4m: use qdev properties instead of legacy m48t59_init() function
+>    sun4u: use qdev properties instead of legacy m48t59_init() function
+>    ppc405_boards: use qdev properties instead of legacy m48t59_init()
+>      function
+>    m48t59: remove legacy m48t59_init() function
+> 
+>   hw/ppc/ppc405_boards.c  | 10 +++++++++-
+>   hw/rtc/m48t59-isa.c     | 25 -------------------------
+>   hw/rtc/m48t59.c         | 35 -----------------------------------
+>   hw/sparc/sun4m.c        |  8 +++++++-
+>   hw/sparc64/sun4u.c      |  7 +++++--
+>   include/hw/rtc/m48t59.h |  6 ------
+>   6 files changed, 21 insertions(+), 70 deletions(-)
+> 
 
-Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
----
- hw/rtc/m48t59.c         | 35 -----------------------------------
- include/hw/rtc/m48t59.h |  4 ----
- 2 files changed, 39 deletions(-)
-
-diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-index 6525206976..d54929e861 100644
---- a/hw/rtc/m48t59.c
-+++ b/hw/rtc/m48t59.c
-@@ -564,41 +564,6 @@ const MemoryRegionOps m48t59_io_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
--/* Initialisation routine */
--Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
--                   uint32_t io_base, uint16_t size, int base_year,
--                   int model)
--{
--    DeviceState *dev;
--    SysBusDevice *s;
--    int i;
--
--    for (i = 0; i < ARRAY_SIZE(m48txx_sysbus_info); i++) {
--        if (m48txx_sysbus_info[i].size != size ||
--            m48txx_sysbus_info[i].model != model) {
--            continue;
--        }
--
--        dev = qdev_new(m48txx_sysbus_info[i].bus_name);
--        qdev_prop_set_int32(dev, "base-year", base_year);
--        s = SYS_BUS_DEVICE(dev);
--        sysbus_realize_and_unref(s, &error_fatal);
--        sysbus_connect_irq(s, 0, IRQ);
--        if (io_base != 0) {
--            memory_region_add_subregion(get_system_io(), io_base,
--                                        sysbus_mmio_get_region(s, 1));
--        }
--        if (mem_base != 0) {
--            sysbus_mmio_map(s, 0, mem_base);
--        }
--
--        return NVRAM(s);
--    }
--
--    assert(false);
--    return NULL;
--}
--
- void m48t59_realize_common(M48t59State *s, Error **errp)
- {
-     s->buffer = g_malloc0(s->size);
-diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
-index 9defe578d1..d9b45eb161 100644
---- a/include/hw/rtc/m48t59.h
-+++ b/include/hw/rtc/m48t59.h
-@@ -47,8 +47,4 @@ struct NvramClass {
-     void (*toggle_lock)(Nvram *obj, int lock);
- };
- 
--Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
--                   uint32_t io_base, uint16_t size, int base_year,
--                   int type);
--
- #endif /* HW_M48T59_H */
--- 
-2.20.1
-
+Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
 
