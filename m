@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTTqV-0004fi-KG
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 13:48:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43668)
+	id 1kTUSM-0007oY-Ns
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 14:27:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kTTqT-0004dg-73; Fri, 16 Oct 2020 13:48:49 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:33950)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kTTqR-0003bl-Dr; Fri, 16 Oct 2020 13:48:48 -0400
-Received: by mail-io1-xd42.google.com with SMTP id m17so4955387ioo.1;
- Fri, 16 Oct 2020 10:48:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gT2hfcXVnuoEGL7argOkM4KGTVL7vjeDNNn/xmhpkVo=;
- b=nvC6AEXSEmHQ1h4sYskDt2cNwzGkD+EXn7i5083le4igl3aKouCqOnQMzrv5FVA36L
- drovp5RFJv1nr9hblmNyOcloR99hO/aC10Zj4apwb9ZIyKCkLyQuqb/7vEVxXBUNwTNG
- WMUeuvh3G6V7EVJLWmee6o3A2V7QVkBzxtJZr+MhR8eDZAOrUdHsdzPfUxMRSoLFdXBl
- 4FDxUNJXQ8PqbyywNebhrLs2rKYJOKUzWlJ8xa89hh3v2Jqb69Y1FzgXuBoED67/VH7G
- Usg1X7iF4xXxI6cuGtlUvck9Eo3ZdmPg3EcO7tFfQn+7j10D9OX4gfvSgian5ZuigqFv
- ZKog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gT2hfcXVnuoEGL7argOkM4KGTVL7vjeDNNn/xmhpkVo=;
- b=Ho2xAl1xJV+t5WtEKSTL26C/nYskpP1GIAZ0900ylZY1tGuvxE608zoFr56xsjc+eq
- 7h86aA7Q/axrijAFV+k9uDjG/8tiJSMUemyef/WzERd1piqI6MpgUUN7javPtOA+Blw+
- TUJDOeheIIkysT33IwYv1POAfwN8GdCWDK5qwzi1oKUZtuvI6lY1b3NvY0fGrFimhQco
- /7UWNrcfeEkpj9HvEo9FFdItZvyHFsFB6e+4M9ZFMWFn2mphAvN9nWc4gS+C2pbfFZ5f
- 8XeBsvM05zuqZ+0+xUNDxc/FwvfLLBhOxCWdCBWrtzO2KexP2IVbV317qCJkGLhOjN9q
- Do3A==
-X-Gm-Message-State: AOAM533KYdss87ihDwNvPCd9nRIIb4HsExKevbk/SHfuPP0B8KCE6hQ+
- rOgz9ksZn7XMNURGpYd3xl5770eQnz2nhm5YlJM=
-X-Google-Smtp-Source: ABdhPJzYIHAWC7yYKwXAPt2bCie6mEFWXwOJMja3DhYUhD7i44XOABxtkbmJ9dGc2wZ6ZTl9cfzMsE+t4TkF9xGTEPc=
-X-Received: by 2002:a6b:c9c9:: with SMTP id z192mr3258828iof.175.1602870525589; 
- Fri, 16 Oct 2020 10:48:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kTUSL-0007o9-4P; Fri, 16 Oct 2020 14:27:57 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:57594
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kTUSJ-0000F0-0E; Fri, 16 Oct 2020 14:27:56 -0400
+Received: from host86-148-246-80.range86-148.btcentralplus.com
+ ([86.148.246.80] helo=kentang.home)
+ by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kTUSE-0003wP-MF; Fri, 16 Oct 2020 19:27:54 +0100
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, f4bug@amsat.org,
+ hpoussin@reactos.org, qemu-ppc@nongnu.org, atar4qemu@gmail.com,
+ david@gibson.dropbear.id.au
+Date: Fri, 16 Oct 2020 19:27:34 +0100
+Message-Id: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <CAKmqyKODEgnkw4zBbsNK1zQ7qaiKWEAZBpwhnHzEetjgWpxtzQ@mail.gmail.com>
- <20201016171000.21240-1-ivan.griffin@emdalo.com>
-In-Reply-To: <20201016171000.21240-1-ivan.griffin@emdalo.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 16 Oct 2020 10:37:06 -0700
-Message-ID: <CAKmqyKPbw_Pf2DtjU=LYNM4YJhxkaTB7ukbZb56NZDR9BUtzAQ@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/riscv: microchip_pfsoc: IOSCBCTRL memmap entry
-To: Ivan Griffin <ivan.griffin@emdalo.com>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 86.148.246.80
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: [PATCH 0/5] m48t59: remove legacy init functions
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,68 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Oct 2020 17:48:49 -0000
+X-List-Received-Date: Fri, 16 Oct 2020 18:27:57 -0000
 
-On Fri, Oct 16, 2020 at 10:10 AM Ivan Griffin <ivan.griffin@emdalo.com> wrote:
->
-> Adding the PolarFire SoC IOSCBCTRL memory region to prevent QEMU
-> reporting a STORE/AMO Access Fault.
->
-> This region is used by the PolarFire SoC port of U-Boot to
-> interact with the FPGA system controller.
->
-> Signed-off-by: Ivan Griffin <ivan.griffin@emdalo.com>
+This patchset is inspired by Philippe's "hw/rtc/m48t59: Simplify m48t59_init()"
+patchset at https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg04493.html
+but goes further: rather than tidy-up the legacy init functions, convert the
+callers to use qdev properties directly so they can simply be removed.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-Alistair
 
-> ---
->  hw/riscv/microchip_pfsoc.c         | 10 ++++++++++
->  include/hw/riscv/microchip_pfsoc.h |  1 +
->  2 files changed, 11 insertions(+)
->
-> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-> index 4627179cd3..9aaa276ee2 100644
-> --- a/hw/riscv/microchip_pfsoc.c
-> +++ b/hw/riscv/microchip_pfsoc.c
-> @@ -97,6 +97,7 @@ static const struct MemmapEntry {
->      [MICROCHIP_PFSOC_GPIO2] =           { 0x20122000,     0x1000 },
->      [MICROCHIP_PFSOC_ENVM_CFG] =        { 0x20200000,     0x1000 },
->      [MICROCHIP_PFSOC_ENVM_DATA] =       { 0x20220000,    0x20000 },
-> +    [MICROCHIP_PFSOC_IOSCB_CTRL] =      { 0x37020000,     0x1000 },
->      [MICROCHIP_PFSOC_IOSCB_CFG] =       { 0x37080000,     0x1000 },
->      [MICROCHIP_PFSOC_DRAM] =            { 0x80000000,        0x0 },
->  };
-> @@ -341,6 +342,15 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
->      create_unimplemented_device("microchip.pfsoc.ioscb.cfg",
->          memmap[MICROCHIP_PFSOC_IOSCB_CFG].base,
->          memmap[MICROCHIP_PFSOC_IOSCB_CFG].size);
-> +
-> +    /* IOSCBCTRL
-> +     *
-> +     * These registers are not documented in the official documentation
-> +     * but used by the polarfire-soc-bare-meta-library code
-> +     */
-> +    create_unimplemented_device("microchip.pfsoc.ioscb.ctrl",
-> +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].base,
-> +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].size);
->  }
->
->  static void microchip_pfsoc_soc_class_init(ObjectClass *oc, void *data)
-> diff --git a/include/hw/riscv/microchip_pfsoc.h b/include/hw/riscv/microchip_pfsoc.h
-> index 8bfc7e1a85..3f1874b162 100644
-> --- a/include/hw/riscv/microchip_pfsoc.h
-> +++ b/include/hw/riscv/microchip_pfsoc.h
-> @@ -95,6 +95,7 @@ enum {
->      MICROCHIP_PFSOC_ENVM_CFG,
->      MICROCHIP_PFSOC_ENVM_DATA,
->      MICROCHIP_PFSOC_IOSCB_CFG,
-> +    MICROCHIP_PFSOC_IOSCB_CTRL,
->      MICROCHIP_PFSOC_DRAM,
->  };
->
-> --
-> 2.17.1
->
+Mark Cave-Ayland (5):
+  m48t59-isa: remove legacy m48t59_init_isa() function
+  sun4m: use qdev properties instead of legacy m48t59_init() function
+  sun4u: use qdev properties instead of legacy m48t59_init() function
+  ppc405_boards: use qdev properties instead of legacy m48t59_init()
+    function
+  m48t59: remove legacy m48t59_init() function
+
+ hw/ppc/ppc405_boards.c  | 10 +++++++++-
+ hw/rtc/m48t59-isa.c     | 25 -------------------------
+ hw/rtc/m48t59.c         | 35 -----------------------------------
+ hw/sparc/sun4m.c        |  8 +++++++-
+ hw/sparc64/sun4u.c      |  7 +++++--
+ include/hw/rtc/m48t59.h |  6 ------
+ 6 files changed, 21 insertions(+), 70 deletions(-)
+
+-- 
+2.20.1
+
 
