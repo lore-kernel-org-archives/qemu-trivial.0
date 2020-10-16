@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTDg6-0006y1-54
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 20:33:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33626)
+	id 1kTEjE-0007OW-5b
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 21:40:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kTDfw-0006w1-Lo; Thu, 15 Oct 2020 20:32:53 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:34355 helo=ozlabs.org)
+ id 1kTEjB-0007NX-Uj; Thu, 15 Oct 2020 21:40:17 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:34099 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kTDfo-0000Zj-Ci; Thu, 15 Oct 2020 20:32:46 -0400
+ id 1kTEj8-0000K2-Oe; Thu, 15 Oct 2020 21:40:17 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CC6Yf4P8qz9sTr; Fri, 16 Oct 2020 11:32:38 +1100 (AEDT)
+ id 4CC83W1YD1z9sTD; Fri, 16 Oct 2020 12:40:06 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1602808358;
- bh=IXQSSafvAJXfFXaugRaFsp9KrX8tZ3gG+kcKpBgEaAQ=;
+ d=gibson.dropbear.id.au; s=201602; t=1602812407;
+ bh=JqBp0wFPBsIZmsCG3bs0mT/7BuYJTZZoQh/6ez71pJI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HeMcDe0GeCaNNrisT8fx0kWB4bUCVZqfIyRXxZN7pwqDeCkfF++51i8eLA3E/UfkO
- KBc0l6nUeIG3LP/Lh2LgHPmbYzTcfM9hi4fTAdVYjCxgQP4uL+QBb2QhRP3PH8z762
- TrIgRsmO9+BtvSOEUbPIJCHDrp5cwGOOj0kB7qUU=
-Date: Fri, 16 Oct 2020 11:32:18 +1100
+ b=BhfgFO2gFjCNgiiN4byyRr/A59+bUNcZTlsDmMv/h8GysemsuIlbbbytMpsBvN6yn
+ tRwlX9Clf8RSBWM4ugkDhbst/OwB+mjHGpsk9/Mf7EixR5bZXbMMWotcTVImX5KL6a
+ /WMVXvr2J2vkY+uCrmxrxWSWDWu7iF4UL8D24Qew=
+Date: Fri, 16 Oct 2020 11:44:57 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
- stack frame
-Message-ID: <20201016003218.GF7078@yekko.fritz.box>
-References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
- <20201010060745.GK1025389@yekko.fritz.box>
- <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
- <20201012053001.GD4787@yekko.fritz.box>
- <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
- <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
- <20201013053250.GV71119@yekko.fritz.box>
- <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH v2 2/2] hw/rtc/m48t59: Simplify m48t59_init() passing
+ MemoryRegion argument
+Message-ID: <20201016004457.GH7078@yekko.fritz.box>
+References: <20201015194647.477252-1-f4bug@amsat.org>
+ <20201015194647.477252-3-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="VuQYccsttdhdIfIP"
+ protocol="application/pgp-signature"; boundary="X1xGqyAVbSpAWs5A"
 Content-Disposition: inline
-In-Reply-To: <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
+In-Reply-To: <20201015194647.477252-3-f4bug@amsat.org>
 Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 20:30:17
@@ -62,46 +57,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Oct 2020 00:33:00 -0000
+X-List-Received-Date: Fri, 16 Oct 2020 01:40:18 -0000
 
 
---VuQYccsttdhdIfIP
-Content-Type: text/plain; charset=us-ascii
+--X1xGqyAVbSpAWs5A
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Oct 14, 2020 at 07:15:47AM -0700, Elena Afanasova wrote:
-> On Tue, 2020-10-13 at 16:32 +1100, David Gibson wrote:
-> > On Mon, Oct 12, 2020 at 03:45:02PM +0200, Paolo Bonzini wrote:
-> > > On 12/10/20 12:44, Thomas Huth wrote:
-> > > > I think this is one of the tasks from:
-> > > >=20
-> > > > =20
-> > > > https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cle=
-anups
-> > > >=20
-> > > > It has been added by Paolo in 2016:
-> > > >=20
-> > > > =20
-> > > > https://wiki.qemu.org/index.php?title=3DContribute/BiteSizedTasks&d=
-iff=3D5368&oldid=3D5367
-> > > >=20
-> > > > ... so maybe Paolo can comment on the size that has been chosen
-> > > > here...?
-> > >=20
-> > > I used 16K, mostly because it is a nice round number.  8k is too
-> > > small
-> > > due to PATH_MAX-sized variables.  16k seemed to be plenty and
-> > > triggered
-> > > in few-enough places that the cleanup is viable.
-> >=20
-> > Ok.  Why are large stack frames bad in qemu?
-> >=20
+On Thu, Oct 15, 2020 at 09:46:47PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Pass a MemoryRegion* to m48t59_init(), directly call
+> memory_region_add_subregion() instead of sysbus_mmio_map().
 >=20
-> I think that the main issue here is alloca() because it can lead to UB.
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-That's a fair point.  I've applied the patch to ppc-for-5.2, with a
-tweak to the commit message.
+ppc parts
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  include/hw/rtc/m48t59.h |  2 +-
+>  hw/ppc/ppc405_boards.c  |  2 +-
+>  hw/rtc/m48t59.c         | 10 +++-------
+>  hw/sparc/sun4m.c        |  3 ++-
+>  hw/sparc64/sun4u.c      |  7 ++-----
+>  5 files changed, 9 insertions(+), 15 deletions(-)
+>=20
+> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+> index d99dda2b7de..3c337e8171c 100644
+> --- a/include/hw/rtc/m48t59.h
+> +++ b/include/hw/rtc/m48t59.h
+> @@ -49,7 +49,7 @@ struct NvramClass {
+> =20
+>  Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+>                         int base_year, int type);
+> -Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+> +Nvram *m48t59_init(MemoryRegion *mr, hwaddr mem_base, qemu_irq IRQ,
+>                     uint16_t size, int base_year, int model);
+> =20
+>  #endif /* HW_M48T59_H */
+> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+> index 93ffee801a3..6ab1b860545 100644
+> --- a/hw/ppc/ppc405_boards.c
+> +++ b/hw/ppc/ppc405_boards.c
+> @@ -227,7 +227,7 @@ static void ref405ep_init(MachineState *machine)
+>      /* Register FPGA */
+>      ref405ep_fpga_init(sysmem, 0xF0300000);
+>      /* Register NVRAM */
+> -    m48t59_init(NULL, 0xF0000000, 8192, 1968, 8);
+> +    m48t59_init(get_system_memory(), 0xF0000000, NULL, 8192, 1968, 8);
+>      /* Load kernel */
+>      linux_boot =3D (kernel_filename !=3D NULL);
+>      if (linux_boot) {
+> diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
+> index 8b02c2ec558..7ec4b241218 100644
+> --- a/hw/rtc/m48t59.c
+> +++ b/hw/rtc/m48t59.c
+> @@ -565,9 +565,8 @@ const MemoryRegionOps m48t59_io_ops =3D {
+>  };
+> =20
+>  /* Initialisation routine */
+> -Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+> -                   uint16_t size, int base_year,
+> -                   int model)
+> +Nvram *m48t59_init(MemoryRegion *mr, hwaddr mem_base, qemu_irq IRQ,
+> +                   uint16_t size, int base_year, int model)
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *s;
+> @@ -584,10 +583,7 @@ Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+>          s =3D SYS_BUS_DEVICE(dev);
+>          sysbus_realize_and_unref(s, &error_fatal);
+>          sysbus_connect_irq(s, 0, IRQ);
+> -        if (mem_base !=3D 0) {
+> -            sysbus_mmio_map(s, 0, mem_base);
+> -        }
+> -
+> +        memory_region_add_subregion(mr, mem_base, sysbus_mmio_get_region=
+(s, 0));
+>          return NVRAM(s);
+>      }
+> =20
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 20c1fa41192..aebe9e0df3d 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -966,7 +966,8 @@ static void sun4m_hw_init(const struct sun4m_hwdef *h=
+wdef,
+>          create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
+>      }
+> =20
+> -    nvram =3D m48t59_init(slavio_irq[0], hwdef->nvram_base, 0x2000, 1968=
+, 8);
+> +    nvram =3D m48t59_init(get_system_memory(), hwdef->nvram_base, slavio=
+_irq[0],
+> +                        0x2000, 1968, 8);
+> =20
+>      slavio_timer_init_all(hwdef->counter_base, slavio_irq[19], slavio_cp=
+u_irq, smp_cpus);
+> =20
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index 6854522bbfa..4c975c25274 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -561,7 +561,6 @@ static void sun4uv_init(MemoryRegion *address_space_m=
+em,
+>      SabreState *sabre;
+>      PCIBus *pci_bus, *pci_busA, *pci_busB;
+>      PCIDevice *ebus, *pci_dev;
+> -    SysBusDevice *s;
+>      DeviceState *iommu, *dev;
+>      FWCfgState *fw_cfg;
+>      NICInfo *nd;
+> @@ -671,10 +670,8 @@ static void sun4uv_init(MemoryRegion *address_space_=
+mem,
+>      pci_ide_create_devs(pci_dev);
+> =20
+>      /* Map NVRAM into I/O (ebus) space */
+> -    nvram =3D m48t59_init(NULL, 0, NVRAM_SIZE, 1968, 59);
+> -    s =3D SYS_BUS_DEVICE(nvram);
+> -    memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
+> -                                sysbus_mmio_get_region(s, 0));
+> +    nvram =3D m48t59_init(pci_address_space_io(ebus), 0x2000, NULL,
+> +                        NVRAM_SIZE, 1968, 59);
+>  =20
+>      initrd_size =3D 0;
+>      initrd_addr =3D 0;
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -109,25 +190,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---VuQYccsttdhdIfIP
+--X1xGqyAVbSpAWs5A
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+I6hIACgkQbDjKyiDZ
-s5L3Aw//bQBpt7YEIZTtlMVxI0R5OJgnZuTHnV8zqz+ena1SQlzK3PJ+bsF9Fl/x
-3Mx5+lKvo9aziKJHun1BsDfoq3YcQQZTeSc0MOzGUcIRMbssMisZZ3aWHIWbUbWy
-R9AbTkttnsJn5CRDaqNxjHVMdiGrBkaOg5chqLA2LtqtMdOCTnyOdCGNBV/fS+Um
-LL5p60T9S34HyMwx4QsvpSOw/ql7qbMkW4tzv/UWJ3qW4JcunaNFFZbBzIs89i9X
-pFyatNFt/Z7zs/Xx7jVU8hiFVz7U/6ACnDWyj90Fl2ayq4w3e3PwVAfx/Kxl2vGi
-FU+4HS5qRLa3T13jnkrhFJCJu2QGBKPS4nymFCiCSaLsJr76gpiisz300WrFXjSS
-1eH5m5RrmjioZQPcXyu9ikCmrwI4FwDL3AN770ytEsJivLCsr0bTWOGhhTMBSWYZ
-iJJJqsDj1qu+93kv89sd7bA5PCFAA16b4YUvMDAr+Z6w1VI5G3hjfkqEU1Z3rjvG
-FCW8jkGNBcd1JAYcx9Sg9/8ukeKbeMSJl4Q4cd6xw7NtXFenC8VXVZXjfsK0exV+
-+u7RJQjC/DtM9Te5ysVaofcMagCFdGGcJ975+wVnie12EFx5blI1m3U2+4YZ2BQC
-LtdFXaxFYvuZMUwJbWbtKkth1K3WLqeIwG83sMTg0UoHxOkzWJQ=
-=xxkU
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+I7QkACgkQbDjKyiDZ
+s5KO4g//YPfxO0rdy0GrP2JkE3U77uBieYwN/80HS1Y8kiwJ8Jhw2Ta2YCZTRTH+
+Z2c7eEUFjrZTynM0GBjtC1EfJaHbPITnde4BgJC+pqgMJcrFSZXcfRnhKkSKBCz0
+40NQIO6EFN8i9KUCnhl0xZa/r9BeQP5ZF7O4zmlTGcfIEJSkwG45LlyLEkPUzOL9
+gZCi7qPFBdOEqShae7rYCHo56QF+AdTztqKpjW9eGzEqyO5+Wv+ak9cQH0xyKaoN
+FMgTu9od3EPRH4OUifjxK4gizelySV07zGbR5LiHzAlfu56KYNRobJiszDgyG87K
+IgpSuTvOV1Tpe1tiIB9qid3RIvl2dZzUMs8jfRsTMwoc1E1DOpoxgTLtt5IH2nsR
+BJ4KH0OBtNVS9ad8/cgBOzoN0Mk8QsOk8m0BjMaGtXIRkyBm3Db3y6RsBC5Oaj5u
+RX3J474eNFYiNuwCwrM/KK9NV5cISsc5JcPkPlgJdh7nTI136GsvO1YkUDUN+JUS
+bSKT3CZLR7GvJQEs0jmCOkJPzQm5X6ztoiaa7an+7pMH3Io9X3KfSOBxhb/PcfzG
+GLq61FSK9xwy3jUth34AWq6l44j8pqwmT4dFTG2z0wWkCHMcbYhBUYJodNCX2/Mj
+1EHbvtkULw4qHiGczseGISf9HgHQJ2pVH3fvansydFlMXbJUPhs=
+=HnW+
 -----END PGP SIGNATURE-----
 
---VuQYccsttdhdIfIP--
+--X1xGqyAVbSpAWs5A--
 
