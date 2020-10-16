@@ -1,71 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kT9dU-0002gX-EX
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 16:14:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33924)
+	id 1kTDg6-0006y1-54
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2020 20:33:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kT9dS-0002cJ-5Z; Thu, 15 Oct 2020 16:14:02 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:40342)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kT9dQ-0001uL-Bp; Thu, 15 Oct 2020 16:14:01 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id j8so58598pjy.5;
- Thu, 15 Oct 2020 13:13:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Zs60eK5PfD5d3cYvFCbEHXTMHa3QpK7RkQrrTjYQvO0=;
- b=ihD2KHRRswMk2wryESPfGJDrrofohlFw6aGT2UjdJjKZErsxCIovHF4gtn6GCe6KVh
- ZA0fLocmdnsONd+Uo6Qm/Hwgln/bCQnBueIx3SLXqNn/dPGypV4o7P3QbAIzo0DV84Dz
- oFGaZFoo/M1geUbq6jYT20rGUONQxwYvdgx5pumujeszHBMWM7HMW7pSFlH+T5pOG43h
- 0aMpCSiDA+cdlsb6Szvj1Fj0r40waOcxNItYAI/gWRKIRchUCcw/IcLZIhLQQ1ZCKoHe
- vOlRUkSumr5mR7Tai+wpQrUbiLYiCVhP1V5u5f+GbM38UL7XxrNeuYYYV/iQvLM8eciv
- afAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Zs60eK5PfD5d3cYvFCbEHXTMHa3QpK7RkQrrTjYQvO0=;
- b=Z0lT01aOuL+kEiD5HsuJUcEACzDbt6o68SZ/pqSFoHyWtaNaR023e10D/KwH8SRHYN
- nlVkRpjcMkeI8IDy2TdlDKrdPyebHYphi9kl8yNOy6WVCFgX9eT88Cm6T0vr9TmOs1WK
- fiBPoR7Tfgk2yZ/D14AgtzDob9iQ2IWnn1hR1qewMw4XnkjEXQDb3pF0RpK19vQwt8oD
- SepVGQZWiQBlhbdfQN2yJqugGn1dHt7alvmZCiO8SM7Scoms4yIwJr7EiQVxKj1pK6ZZ
- BHNCR3emItxXmntNqiEdZNSa7tOzFXl7HNfcV3N62U7+5alCzAXvWq8CyCDWOTQ6h5h5
- eHCA==
-X-Gm-Message-State: AOAM531hZb2Oo4rVIYFdfjegpIrG3h+lHbbzrHGeHOYzAJc+Yx0tl2/m
- YwDcMJo7PQteOetY0fdM64oSqQVOOsfcIWBx
-X-Google-Smtp-Source: ABdhPJxh0fKR+hiPOzKdwT/A57r4Q/oRk8m1LyUzn9kQIdnaIl7FUWjwgkO3o0SRbh/27RKuurr80Q==
-X-Received: by 2002:a17:90b:4b08:: with SMTP id
- lx8mr401823pjb.204.1602792837924; 
- Thu, 15 Oct 2020 13:13:57 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id s20sm89922pfc.201.2020.10.15.13.13.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2020 13:13:57 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Peter Lieven <pl@kamp.de>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v3 2/2] block: enable libnfs on msys2/mingw in cirrus.yml
-Date: Fri, 16 Oct 2020 04:13:35 +0800
-Message-Id: <20201015201335.357-3-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.28.0.windows.1
-In-Reply-To: <20201015201335.357-1-luoyonggang@gmail.com>
-References: <20201015201335.357-1-luoyonggang@gmail.com>
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kTDfw-0006w1-Lo; Thu, 15 Oct 2020 20:32:53 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:34355 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kTDfo-0000Zj-Ci; Thu, 15 Oct 2020 20:32:46 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4CC6Yf4P8qz9sTr; Fri, 16 Oct 2020 11:32:38 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1602808358;
+ bh=IXQSSafvAJXfFXaugRaFsp9KrX8tZ3gG+kcKpBgEaAQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HeMcDe0GeCaNNrisT8fx0kWB4bUCVZqfIyRXxZN7pwqDeCkfF++51i8eLA3E/UfkO
+ KBc0l6nUeIG3LP/Lh2LgHPmbYzTcfM9hi4fTAdVYjCxgQP4uL+QBb2QhRP3PH8z762
+ TrIgRsmO9+BtvSOEUbPIJCHDrp5cwGOOj0kB7qUU=
+Date: Fri, 16 Oct 2020 11:32:18 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Elena Afanasova <eafanasova@gmail.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/net: move allocation to the heap due to very large
+ stack frame
+Message-ID: <20201016003218.GF7078@yekko.fritz.box>
+References: <8f07132478469b35fb50a4706691e2b56b10a67b.camel@gmail.com>
+ <20201010060745.GK1025389@yekko.fritz.box>
+ <f505c80b88ee665a62883a69bed9d614f6ba2a66.camel@gmail.com>
+ <20201012053001.GD4787@yekko.fritz.box>
+ <38d5993e-8a10-0fb1-5263-6531a356fefd@redhat.com>
+ <ca54ec71-11b4-70c5-6d48-4e58fb90a545@redhat.com>
+ <20201013053250.GV71119@yekko.fritz.box>
+ <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102b.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="VuQYccsttdhdIfIP"
+Content-Disposition: inline
+In-Reply-To: <96fa5d23ca57363e063b9b5006ad8f71e6b1b307.camel@gmail.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 20:30:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,29 +62,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Oct 2020 20:14:02 -0000
+X-List-Received-Date: Fri, 16 Oct 2020 00:33:00 -0000
 
-Initially, libnfs has not been enabled, and now it's fixed, so enable it
-on cirrus.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- .cirrus.yml | 1 +
- 1 file changed, 1 insertion(+)
+--VuQYccsttdhdIfIP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/.cirrus.yml b/.cirrus.yml
-index f42ccb956a..2c6bf45e6d 100644
---- a/.cirrus.yml
-+++ b/.cirrus.yml
-@@ -109,6 +109,7 @@ windows_msys2_task:
-           mingw-w64-x86_64-cyrus-sasl \
-           mingw-w64-x86_64-curl \
-           mingw-w64-x86_64-gnutls \
-+          mingw-w64-x86_64-libnfs \
-           "
-         bitsadmin /transfer msys_download /dynamic /download /priority FOREGROUND `
-           https://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-python-sphinx-2.3.1-1-any.pkg.tar.xz `
--- 
-2.28.0.windows.1
+On Wed, Oct 14, 2020 at 07:15:47AM -0700, Elena Afanasova wrote:
+> On Tue, 2020-10-13 at 16:32 +1100, David Gibson wrote:
+> > On Mon, Oct 12, 2020 at 03:45:02PM +0200, Paolo Bonzini wrote:
+> > > On 12/10/20 12:44, Thomas Huth wrote:
+> > > > I think this is one of the tasks from:
+> > > >=20
+> > > > =20
+> > > > https://wiki.qemu.org/Contribute/BiteSizedTasks#Compiler-driven_cle=
+anups
+> > > >=20
+> > > > It has been added by Paolo in 2016:
+> > > >=20
+> > > > =20
+> > > > https://wiki.qemu.org/index.php?title=3DContribute/BiteSizedTasks&d=
+iff=3D5368&oldid=3D5367
+> > > >=20
+> > > > ... so maybe Paolo can comment on the size that has been chosen
+> > > > here...?
+> > >=20
+> > > I used 16K, mostly because it is a nice round number.  8k is too
+> > > small
+> > > due to PATH_MAX-sized variables.  16k seemed to be plenty and
+> > > triggered
+> > > in few-enough places that the cleanup is viable.
+> >=20
+> > Ok.  Why are large stack frames bad in qemu?
+> >=20
+>=20
+> I think that the main issue here is alloca() because it can lead to UB.
 
+That's a fair point.  I've applied the patch to ppc-for-5.2, with a
+tweak to the commit message.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--VuQYccsttdhdIfIP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+I6hIACgkQbDjKyiDZ
+s5L3Aw//bQBpt7YEIZTtlMVxI0R5OJgnZuTHnV8zqz+ena1SQlzK3PJ+bsF9Fl/x
+3Mx5+lKvo9aziKJHun1BsDfoq3YcQQZTeSc0MOzGUcIRMbssMisZZ3aWHIWbUbWy
+R9AbTkttnsJn5CRDaqNxjHVMdiGrBkaOg5chqLA2LtqtMdOCTnyOdCGNBV/fS+Um
+LL5p60T9S34HyMwx4QsvpSOw/ql7qbMkW4tzv/UWJ3qW4JcunaNFFZbBzIs89i9X
+pFyatNFt/Z7zs/Xx7jVU8hiFVz7U/6ACnDWyj90Fl2ayq4w3e3PwVAfx/Kxl2vGi
+FU+4HS5qRLa3T13jnkrhFJCJu2QGBKPS4nymFCiCSaLsJr76gpiisz300WrFXjSS
+1eH5m5RrmjioZQPcXyu9ikCmrwI4FwDL3AN770ytEsJivLCsr0bTWOGhhTMBSWYZ
+iJJJqsDj1qu+93kv89sd7bA5PCFAA16b4YUvMDAr+Z6w1VI5G3hjfkqEU1Z3rjvG
+FCW8jkGNBcd1JAYcx9Sg9/8ukeKbeMSJl4Q4cd6xw7NtXFenC8VXVZXjfsK0exV+
++u7RJQjC/DtM9Te5ysVaofcMagCFdGGcJ975+wVnie12EFx5blI1m3U2+4YZ2BQC
+LtdFXaxFYvuZMUwJbWbtKkth1K3WLqeIwG83sMTg0UoHxOkzWJQ=
+=xxkU
+-----END PGP SIGNATURE-----
+
+--VuQYccsttdhdIfIP--
 
