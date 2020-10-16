@@ -1,60 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTMMl-00039y-P0
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 05:49:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47302)
+	id 1kTQrS-0005KU-Lr
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 10:37:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTMMj-00039l-RY; Fri, 16 Oct 2020 05:49:38 -0400
-Received: from mail-ej1-f66.google.com ([209.85.218.66]:40014)
+ (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
+ id 1kTQrR-0005Jj-0n; Fri, 16 Oct 2020 10:37:37 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:43296)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTMMh-0008HP-TP; Fri, 16 Oct 2020 05:49:37 -0400
-Received: by mail-ej1-f66.google.com with SMTP id p15so2222181ejm.7;
- Fri, 16 Oct 2020 02:49:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
+ id 1kTQrO-0001NQ-IU; Fri, 16 Oct 2020 10:37:36 -0400
+Received: by mail-pf1-x442.google.com with SMTP id a200so1605590pfa.10;
+ Fri, 16 Oct 2020 07:37:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=zaen85cnGFLYeawoKBay2kRei0Mi2ng8hhULAoIj1B4=;
+ b=fRAV8B0udYy1J7ShK5A+GnUqDWlpukECTp7jaejlll4jVZPAMQA1FdgKpNSH6dWYxP
+ O9bFpeecavBH7Gz5N6zEbUV43/iRU7ZfX/AfSwfxqQrCseU7FLRJjxbB05xvBzUTwTWg
+ WkSP8HYnazh911CzH3d+GQM4shhrFiiof1K5txgH3w6p4P9i14eq5O0O21We/a/JWAOH
+ GwaPf48vYTpw9E5kYohPM07o2sKnIkP6zQYh+XBreC+heK3K5vVr2s/a1t2jMi/hSfej
+ z9uCmei4XtAnFVUuCJSG1yX5WcqE+cd4XBk1t37nrQx1m1t4l8ZWJZ7WxTCz0k3S64a1
+ s8Jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wcc4sa8FZWR8hneIfj6Whm/Bq7kZCwcxlUdGIBIfi9c=;
- b=dw2Iw4uXyxgWVEnVhAHZASQ4HWN5V1YAmUA54yJNZCeAQ3Qk/fsZ4TExF+lgU8A6Yw
- 6lQvo+umcN4uxbJYl/VLQIO3ubGdOUr6vpowg5xjsNdSb1X+ZHoZ80e4K64LGbUDUoOm
- ObBfUh9FEBkqNRxxJMlIWf8gCWt3lruq29hSFAuZ/zgIuSvgRS3EyI9oKinX57eUbKVS
- jLIbBM2KNK9lyNZZZGK4LSGmVMt1mxPxaDGfRESVvqEWjtxlflx88exEulvJEuFB/U52
- +QAaxRb2Cq4y03+p9jMo0oIdOowL3Vmd90qgg0XmTRO3W3g0iidDEKOxtbap9uuzRPEB
- 5nQw==
-X-Gm-Message-State: AOAM530TaMqMTZxpxdl0qVJDi7fDbcs6Hvb+Sh6OZJVpUDPool23HmfP
- rb6Vk5ANVoYYvQxczHSTfQHdy88feG5LLnhrDBU=
-X-Google-Smtp-Source: ABdhPJynjeMVolVISqO6dF3HjFHzjbxF3W3DPCpOL+k+CGIbyF4BRqRaSitOF7xn99TX1vOgvYlUvV24UuZRmZBIAvc=
-X-Received: by 2002:a17:906:bc42:: with SMTP id
- s2mr2729786ejv.251.1602841773819; 
- Fri, 16 Oct 2020 02:49:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201015194647.477252-1-f4bug@amsat.org>
- <991e3614-e416-1ef3-c097-dccfaa8fb77d@ilande.co.uk>
-In-Reply-To: <991e3614-e416-1ef3-c097-dccfaa8fb77d@ilande.co.uk>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Fri, 16 Oct 2020 11:49:21 +0200
-Message-ID: <CAAdtpL7DfhqqpUfMSx=uHP7azVsXaopqApL0=-vnmHF49M0B3w@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] hw/rtc/m48t59: Simplify m48t59_init()
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, qemu-ppc@nongnu.org, 
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Content-Type: multipart/alternative; boundary="0000000000008f4dbc05b1c6ae60"
-Received-SPF: pass client-ip=209.85.218.66;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f66.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/16 04:26:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=zaen85cnGFLYeawoKBay2kRei0Mi2ng8hhULAoIj1B4=;
+ b=hwvLQDP3ftB6gfcKWiSs/UY2XjaNqJRP5doPsLwuKEJT4EhCuqqrWyFHzXJ4cfGOLS
+ DpoAtrxHTuYqqdoI1Lfdgyc7LOI4Dao4Xru9QFJlJk3vTtv/qkj8Dn+pbISq2FCsnLP8
+ kuiryb+vwFlTFqvVGYaoujXJbdDalg2aIfHvFtSApQ15KwyDkda3EqmQARyEQpXHB0mN
+ C0VyUaPrP/BiObOzjJpO8c3hX2ivXX3KBmYLcJjQr1YFkgCj2zvpzchIQss0ini5XCp9
+ 5d/Q/F43XfK85BOs2+BxuoOxWJqLeh4K07sLQjvxz5UPbTjKUaTZiVLPpUZ6fGrSo1bF
+ YDig==
+X-Gm-Message-State: AOAM531cGAS/rdt5aOWjSnvjc+f28j8WsKhbGSseyDoSTTXV5uVSv9fy
+ PsPzFB7hIA/VXbOnffPPmzDJ1zbplQif/Jr2
+X-Google-Smtp-Source: ABdhPJyNYm9FG5n/+8i8y5nQU52gVngmxE8dKyBuWpDCifmS6cbovxWas9lHVEuLBePYA1a9DXHAKA==
+X-Received: by 2002:a63:396:: with SMTP id 144mr3600813pgd.364.1602859051379; 
+ Fri, 16 Oct 2020 07:37:31 -0700 (PDT)
+Received: from pulp100.localdomain ([103.199.158.131])
+ by smtp.gmail.com with ESMTPSA id y4sm3245424pgs.0.2020.10.16.07.37.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Oct 2020 07:37:30 -0700 (PDT)
+From: Chetan Pant <chetan4windows@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, aleksandar.qemu.devel@gmail.com,
+ Chetan Pant <chetan4windows@gmail.com>
+Subject: [PATCH 5/30] mips tcg: Fix Lesser GPL version number
+Date: Fri, 16 Oct 2020 14:35:09 +0000
+Message-Id: <20201016143509.26692-1-chetan4windows@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20201014134902.14291-1-chetan4windows@gmail.com>
+References: <20201014134902.14291-1-chetan4windows@gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=chetan4windows@gmail.com; helo=mail-pf1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,101 +73,256 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Oct 2020 09:49:38 -0000
+X-List-Received-Date: Fri, 16 Oct 2020 14:37:37 -0000
 
---0000000000008f4dbc05b1c6ae60
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+There is no "version 2" of the "Lesser" General Public License.
+It is either "GPL version 2.0" or "Lesser GPL version 2.1".
+This patch replaces all occurrences of "Lesser GPL version 2" with
+"Lesser GPL version 2.1" in comment section.
 
-Le ven. 16 oct. 2020 11:39, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk=
->
-a =C3=A9crit :
+Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+---
+ hw/mips/cps.c                    | 2 +-
+ hw/misc/mips_cpc.c               | 2 +-
+ hw/misc/mips_itu.c               | 2 +-
+ include/hw/mips/cps.h            | 2 +-
+ include/hw/misc/mips_cpc.h       | 2 +-
+ include/hw/misc/mips_itu.h       | 2 +-
+ target/mips/cp0_helper.c         | 2 +-
+ target/mips/dsp_helper.c         | 2 +-
+ target/mips/fpu_helper.c         | 2 +-
+ target/mips/gdbstub.c            | 2 +-
+ target/mips/helper.c             | 2 +-
+ target/mips/lmmi_helper.c        | 2 +-
+ target/mips/mips-semi.c          | 2 +-
+ target/mips/msa_helper.c         | 2 +-
+ target/mips/op_helper.c          | 2 +-
+ target/mips/translate.c          | 2 +-
+ target/mips/translate_init.c.inc | 2 +-
+ 17 files changed, 17 insertions(+), 17 deletions(-)
 
-> On 15/10/2020 20:46, Philippe Mathieu-Daud=C3=A9 wrote:
->
-> > Since v1:
-> > - Do not remove mem_base in patch 1 (Laurent)
-> > - Pass MemoryRegion* (new patch)
-> > - Run check-qtest
-> >
-> > Philippe Mathieu-Daud=C3=A9 (2):
-> >    hw/rtc/m48t59: Simplify m48t59_init() removing 'io_base' argument
-> >    hw/rtc/m48t59: Simplify m48t59_init() passing MemoryRegion argument
-> >
-> >   include/hw/rtc/m48t59.h |  5 ++---
-> >   hw/ppc/ppc405_boards.c  |  2 +-
-> >   hw/rtc/m48t59.c         | 14 +++-----------
-> >   hw/sparc/sun4m.c        |  3 ++-
-> >   hw/sparc64/sun4u.c      |  7 ++-----
-> >   5 files changed, 10 insertions(+), 21 deletions(-)
->
-> This looks good, and from what you've done here it's only a little more
-> work to
-> remove m48t59_init() completely. Would you mind if I try this using these
-> patches as
-> a starting point? :)
->
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index 23c0f87..ea58d82 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/hw/misc/mips_cpc.c b/hw/misc/mips_cpc.c
+index 2f7b2c9..692c0db 100644
+--- a/hw/misc/mips_cpc.c
++++ b/hw/misc/mips_cpc.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
+index 3540985..1333995 100644
+--- a/hw/misc/mips_itu.c
++++ b/hw/misc/mips_itu.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/hw/mips/cps.h b/include/hw/mips/cps.h
+index 9e35a88..c31d9ac 100644
+--- a/include/hw/mips/cps.h
++++ b/include/hw/mips/cps.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/hw/misc/mips_cpc.h b/include/hw/misc/mips_cpc.h
+index e5dccea..fcafbd5 100644
+--- a/include/hw/misc/mips_cpc.h
++++ b/include/hw/misc/mips_cpc.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/include/hw/misc/mips_itu.h b/include/hw/misc/mips_itu.h
+index 96347db..50d9611 100644
+--- a/include/hw/misc/mips_itu.h
++++ b/include/hw/misc/mips_itu.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/cp0_helper.c b/target/mips/cp0_helper.c
+index de64add..a950946 100644
+--- a/target/mips/cp0_helper.c
++++ b/target/mips/cp0_helper.c
+@@ -8,7 +8,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/dsp_helper.c b/target/mips/dsp_helper.c
+index 8c58eeb..09b6e5f 100644
+--- a/target/mips/dsp_helper.c
++++ b/target/mips/dsp_helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/fpu_helper.c b/target/mips/fpu_helper.c
+index 56beda4..ffaac3c 100644
+--- a/target/mips/fpu_helper.c
++++ b/target/mips/fpu_helper.c
+@@ -8,7 +8,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/gdbstub.c b/target/mips/gdbstub.c
+index 98f56e6..e39f8d7 100644
+--- a/target/mips/gdbstub.c
++++ b/target/mips/gdbstub.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/helper.c b/target/mips/helper.c
+index afd78b1..063b65c 100644
+--- a/target/mips/helper.c
++++ b/target/mips/helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/lmmi_helper.c b/target/mips/lmmi_helper.c
+index 6c645cf..abeb773 100644
+--- a/target/mips/lmmi_helper.c
++++ b/target/mips/lmmi_helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
+index 10a710c..898251a 100644
+--- a/target/mips/mips-semi.c
++++ b/target/mips/mips-semi.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/msa_helper.c b/target/mips/msa_helper.c
+index 6865add..249f0fd 100644
+--- a/target/mips/msa_helper.c
++++ b/target/mips/msa_helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c
+index 9552b28..bbd0bf6 100644
+--- a/target/mips/op_helper.c
++++ b/target/mips/op_helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index 398edf7..3a6bd1e 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -10,7 +10,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/mips/translate_init.c.inc b/target/mips/translate_init.c.inc
+index 637cacc..4f24443 100644
+--- a/target/mips/translate_init.c.inc
++++ b/target/mips/translate_init.c.inc
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- 
+2.17.1
 
-I had a look at your previous suggestion, but I have too many in flight
-series waiting for 5.2, so sure go ahead!
-
-
->
-> ATB,
->
-> Mark.
->
->
-
---0000000000008f4dbc05b1c6ae60
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
-"gmail_attr">Le ven. 16 oct. 2020 11:39, Mark Cave-Ayland &lt;<a href=3D"ma=
-ilto:mark.cave-ayland@ilande.co.uk">mark.cave-ayland@ilande.co.uk</a>&gt; a=
- =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On 15/10/2020 20=
-:46, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-<br>
-&gt; Since v1:<br>
-&gt; - Do not remove mem_base in patch 1 (Laurent)<br>
-&gt; - Pass MemoryRegion* (new patch)<br>
-&gt; - Run check-qtest<br>
-&gt; <br>
-&gt; Philippe Mathieu-Daud=C3=A9 (2):<br>
-&gt;=C2=A0 =C2=A0 hw/rtc/m48t59: Simplify m48t59_init() removing &#39;io_ba=
-se&#39; argument<br>
-&gt;=C2=A0 =C2=A0 hw/rtc/m48t59: Simplify m48t59_init() passing MemoryRegio=
-n argument<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0include/hw/rtc/m48t59.h |=C2=A0 5 ++---<br>
-&gt;=C2=A0 =C2=A0hw/ppc/ppc405_boards.c=C2=A0 |=C2=A0 2 +-<br>
-&gt;=C2=A0 =C2=A0hw/rtc/m48t59.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 14 +++-=
-----------<br>
-&gt;=C2=A0 =C2=A0hw/sparc/sun4m.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 ++-<=
-br>
-&gt;=C2=A0 =C2=A0hw/sparc64/sun4u.c=C2=A0 =C2=A0 =C2=A0 |=C2=A0 7 ++-----<b=
-r>
-&gt;=C2=A0 =C2=A05 files changed, 10 insertions(+), 21 deletions(-)<br>
-<br>
-This looks good, and from what you&#39;ve done here it&#39;s only a little =
-more work to <br>
-remove m48t59_init() completely. Would you mind if I try this using these p=
-atches as <br>
-a starting point? :)<br></blockquote></div></div><div dir=3D"auto"><br></di=
-v><div dir=3D"auto">I had a look at your previous suggestion, but I have to=
-o many in flight series waiting for 5.2, so sure go ahead!=C2=A0</div><div =
-dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
-solid;padding-left:1ex">
-<br>
-<br>
-ATB,<br>
-<br>
-Mark.<br>
-<br>
-</blockquote></div></div></div>
-
---0000000000008f4dbc05b1c6ae60--
 
