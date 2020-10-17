@@ -1,78 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTiua-0001wS-Dw
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 05:54:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58792)
+	id 1kTji6-0005vf-Bz
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 06:45:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTiuY-0001w7-Rv; Sat, 17 Oct 2020 05:54:02 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40918)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTiuX-0001Es-5W; Sat, 17 Oct 2020 05:54:02 -0400
-Received: by mail-wr1-x441.google.com with SMTP id h5so6149099wrv.7;
- Sat, 17 Oct 2020 02:53:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=q49UfyD14QXRlfnbUMiA5vIoF4Xb1w8fN0itedSb+2M=;
- b=f5sLLsxblQrfSujPopRSZJu+ffXtEZdorPpo9KhpjmeXeaqTIEAaQyLwJ0p1EHZVfD
- MiXrLykGkCkUZvxeD1EHFbypsrmGV/zDF0BdgESlgzidr2sLrLqiS1uq2t2lgTp3jq5j
- qAb9xSDA+OcZqUK9FeVKlKfDFL8PZV+G+CMpC6hGq40kGVjpNmhxUxQMymtF5G5YUw1G
- xm8QVpO/yVp4NULjbS2Acny4gCpUoxrsRJp+WaW67opBT4Maw35eMlBcCLze/NYbl1Yd
- eXFuNSa82bNSypBhOreRnpL1L7n3xPFZ52FgDqEcDGjjBNtGIWp5nSSMblVOOitSE5Sl
- NZeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=q49UfyD14QXRlfnbUMiA5vIoF4Xb1w8fN0itedSb+2M=;
- b=p7eE3IWeAThl10Us6CzQEBtezfH0y1HtaSYqMqVR/jHiHssJGCDVReW3GhgA0mJ79T
- 1kjs369bBFmiddBqLlv9c8spD0M4OSane4yVPacr6O68uT24sKfvp0ECSm7pCiVFpqsB
- Vse4icacDkbq4V1PqjFzGkiEA69ygFKKSgcGKYHV9bD77TA1IO23RopH+SvdmOzZB9Ko
- oRbfIRKFmUtfRGhl3xuqNE0UBHz6uF5/3Lt4StM/2d0x3kMOU+s1coAH0zbCKXgnM+HQ
- uwTslXa1ryF9T+le2C8y9wf0LnrMAiJivdv4rLakSYZGEdzBHyYIoZl3PXwnxSAJH33/
- LtvQ==
-X-Gm-Message-State: AOAM532eRVrupMC6gQ+Ockswr/ia0b3X1ACcWEhS+LCj6kIOzxfgvMGB
- UOZ0q7STc31qfurC2R7FI14=
-X-Google-Smtp-Source: ABdhPJzAhSzbhJyrmRYg+EN/1RzYaqKROMIjk0y3saZJ4DAONmPExQTKDvmuRu1mD5fCo6vlH9lYdQ==
-X-Received: by 2002:a5d:504a:: with SMTP id h10mr8902218wrt.85.1602928438803; 
- Sat, 17 Oct 2020 02:53:58 -0700 (PDT)
-Received: from [192.168.1.36] (117.red-83-52-172.dynamicip.rima-tde.net.
- [83.52.172.117])
- by smtp.gmail.com with ESMTPSA id q7sm3182764wrr.39.2020.10.17.02.53.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 17 Oct 2020 02:53:57 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 5/5] m48t59: remove legacy m48t59_init() function
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, hpoussin@reactos.org, qemu-ppc@nongnu.org,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kTji2-0005tc-SC; Sat, 17 Oct 2020 06:45:10 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:50579)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kTjhz-00071g-AQ; Sat, 17 Oct 2020 06:45:09 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id A9CFC7475FA;
+ Sat, 17 Oct 2020 12:44:53 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 83C40746383; Sat, 17 Oct 2020 12:44:53 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 818D8746331;
+ Sat, 17 Oct 2020 12:44:53 +0200 (CEST)
+Date: Sat, 17 Oct 2020 12:44:53 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org, 
+ qemu-devel@nongnu.org, hpoussin@reactos.org, qemu-ppc@nongnu.org, 
  atar4qemu@gmail.com, david@gibson.dropbear.id.au
+Subject: Re: [PATCH 4/5] ppc405_boards: use qdev properties instead of legacy
+ m48t59_init() function
+In-Reply-To: <8efee931-3314-7f3a-395b-3b840acdab90@amsat.org>
+Message-ID: <75bb5535-62b9-12e1-b6bb-ce15265ca7eb@eik.bme.hu>
 References: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
- <20201016182739.22875-6-mark.cave-ayland@ilande.co.uk>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ad533302-e715-cc8a-12ec-d7e4ad75c120@amsat.org>
-Date: Sat, 17 Oct 2020 11:53:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ <20201016182739.22875-5-mark.cave-ayland@ilande.co.uk>
+ <653bf315-d1e4-4dc9-dac8-1e859a2ad4d1@eik.bme.hu>
+ <8efee931-3314-7f3a-395b-3b840acdab90@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20201016182739.22875-6-mark.cave-ayland@ilande.co.uk>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1682257510-1602931493=:86265"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/17 06:44:54
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -85,117 +56,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Oct 2020 09:54:03 -0000
+X-List-Received-Date: Sat, 17 Oct 2020 10:45:11 -0000
 
-On 10/16/20 8:27 PM, Mark Cave-Ayland wrote:
-> Now that all of the callers of this function have been switched to use qdev
-> properties, this legacy init function can now be removed.
-> 
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> ---
->   hw/rtc/m48t59.c         | 35 -----------------------------------
->   include/hw/rtc/m48t59.h |  4 ----
->   2 files changed, 39 deletions(-)
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-In the PoC I started after your suggestion, I see:
+--3866299591-1682257510-1602931493=:86265
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-#define TYPE_M48T02_SRAM "sysbus-m48t02"
-#define TYPE_M48T08_SRAM "sysbus-m48t08"
-#define TYPE_M48T59_SRAM "sysbus-m48t59"
+On Sat, 17 Oct 2020, Philippe Mathieu-Daudé wrote:
+> On 10/16/20 10:38 PM, BALATON Zoltan via wrote:
+>> On Fri, 16 Oct 2020, Mark Cave-Ayland wrote:
+>>> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>>> ---
+>>> hw/ppc/ppc405_boards.c | 10 +++++++++-
+>>> 1 file changed, 9 insertions(+), 1 deletion(-)
+>>> 
+>>> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+>>> index 6198ec1035..4687715b15 100644
+>>> --- a/hw/ppc/ppc405_boards.c
+>>> +++ b/hw/ppc/ppc405_boards.c
+>>> @@ -28,6 +28,8 @@
+>>> #include "qemu-common.h"
+>>> #include "cpu.h"
+>>> #include "hw/ppc/ppc.h"
+>>> +#include "hw/qdev-properties.h"
+>>> +#include "hw/sysbus.h"
+>>> #include "ppc405.h"
+>>> #include "hw/rtc/m48t59.h"
+>>> #include "hw/block/flash.h"
+>>> @@ -145,6 +147,8 @@ static void ref405ep_init(MachineState *machine)
+>>>     char *filename;
+>>>     ppc4xx_bd_info_t bd;
+>>>     CPUPPCState *env;
+>>> +    DeviceState *dev;
+>>> +    SysBusDevice *s;
+>>>     qemu_irq *pic;
+>>>     MemoryRegion *bios;
+>>>     MemoryRegion *sram = g_new(MemoryRegion, 1);
+>>> @@ -227,7 +231,11 @@ static void ref405ep_init(MachineState *machine)
+>>>     /* Register FPGA */
+>>>     ref405ep_fpga_init(sysmem, 0xF0300000);
+>>>     /* Register NVRAM */
+>>> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
+>>> +    dev = qdev_new("sysbus-m48t08");
+>>> +    qdev_prop_set_int32(dev, "base-year", 1968);
+>> 
+>> Is there anything that uses other than 1968 as base year? If not this could 
+>> be the default in the device so you don't need these set prop calls here 
+>> and in sun machines.
+>> 
+>> The only other place this device is used seems to be ppc/prep machine that 
+>> uses the isa version but does not set a base year. Is that a bug? The 
+>> original prep machine removed in b2ce76a0730 used 2000 but that's unlikely 
+>> as well as these machines predate that.
+>
+> =)
+>
+>> Anyway, the sysbus and isa versions are different
+>
+> They shouldn't, it is the same chipset, wired differently.
 
-static void m48t02_class_init(ObjectClass *oc, void *data)
-{
-     M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
+I mean in QEMU the sysbus and isa devices are different object types so 
+their default is settable independently. So setting the sysbus device 
+base-year does not change the isa device which can be sorted out in 
+another patch independently from this series later when the behaviour on 
+40p is confirmed.
 
-     amc->model = 2;
-     amc->size = 2 * KiB;
-};
+Regards,
+BALATON Zoltan
 
-static void m48t08_class_init(ObjectClass *oc, void *data)
-{
-     M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
-
-     amc->model = 8;
-     amc->size = 8 * KiB;
-};
-
-static void m48t59_class_init(ObjectClass *oc, void *data)
-{
-     M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
-
-     amc->model = 59;
-     amc->size = 8 * KiB;
-};
-
-static const TypeInfo m48t59_register_types[] = {
-     {
-         .name           = TYPE_M48T02_SRAM,
-         .parent         = TYPE_M48TXX_SYSBUS,
-         .class_init     = m48t02_class_init,
-     }, {
-         .name           = TYPE_M48T08_SRAM,
-         .parent         = TYPE_M48TXX_SYSBUS,
-         .class_init     = m48t08_class_init,
-     }, {
-         .name           = TYPE_M48T59_SRAM,
-         .parent         = TYPE_M48TXX_SYSBUS,
-         .class_init     = m48t59_class_init,
-     }, {
-         .name           = TYPE_M48TXX_SYSBUS,
-         .parent         = TYPE_SYS_BUS_DEVICE,
-         .instance_size  = sizeof(M48txxSysBusState),
-         .instance_init = m48t59_init1,
-         .class_size     = sizeof(M48txxSysBusDeviceClass),
-         .class_init     = m48txx_sysbus_class_init,
-         .abstract       = true,
-         .interfaces = (InterfaceInfo[]) {
-             { TYPE_NVRAM },
-             { }
-         }
-     }
-};
-
-and:
-
-#define TYPE_M48T59_SRAM "isa-m48t59"
-
-static void m48t59_class_init(ObjectClass *oc, void *data)
-{
-     M48txxISADeviceClass *midc = M48TXX_ISA_CLASS(oc);
-
-     midc->model = 59;
-     midc->size = 8 * KiB;
-};
-
-static const TypeInfo m48t59_isa_register_types[] = {
-     {
-         .name           = TYPE_M48T59_SRAM,
-         .parent         = TYPE_M48TXX_ISA,
-         .class_init     = m48t59_class_init,
-     }, {
-         .name           = TYPE_M48TXX_ISA,
-         .parent         = TYPE_ISA_DEVICE,
-         .instance_size  = sizeof(M48txxISAState),
-         .class_size     = sizeof(M48txxISADeviceClass),
-         .class_init     = m48txx_isa_class_init,
-         .abstract       = true,
-         .interfaces = (InterfaceInfo[]) {
-             { TYPE_NVRAM },
-             { }
-         }
-     }
-};
-
-I guess I didn't pursue because I wondered what was the
-best way to have the same model usable by sysbus/isa.
-
-IIRC I wanted to proceed as having TYPE_M48T59_SRAM being
-an abstract qdev parent, and then TYPE_M48TXX_SYSBUS /
-TYPE_M48TXX_ISA implementing the SYSBUS/ISA interfaces.
-
-As it need some thinking I postponed that for after 5.2.
-
-Anyhow back to this patch:
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> so their default base-year could be set independently and then boards won't 
+>> need to set this propery and may be could use qdev_create_simple instead or 
+>> whatever that was renamed to.
+>
+> Agreed.
+>
+> Preferably following Zoltan's suggestion:
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>
+>> 
+>> Regards,
+>> BALATON Zoltan
+>> 
+>>> +    s = SYS_BUS_DEVICE(dev);
+>>> +    sysbus_realize_and_unref(s, &error_fatal);
+>>> +    sysbus_mmio_map(s, 0, 0xF0000000);
+>>>     /* Load kernel */
+>>>     linux_boot = (kernel_filename != NULL);
+>>>     if (linux_boot) {
+>>> 
+>> 
+>
+>
+--3866299591-1682257510-1602931493=:86265--
 
