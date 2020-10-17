@@ -1,46 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTWVU-0007lV-J8
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Oct 2020 16:39:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55400)
+	id 1kTigK-0003m9-M5
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 05:39:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kTWVS-0007k1-Bv; Fri, 16 Oct 2020 16:39:18 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:37948)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kTWUO-00013y-DZ; Fri, 16 Oct 2020 16:39:17 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 9613574761F;
- Fri, 16 Oct 2020 22:38:02 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 7197C7475FA; Fri, 16 Oct 2020 22:38:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 708AD746383;
- Fri, 16 Oct 2020 22:38:02 +0200 (CEST)
-Date: Fri, 16 Oct 2020 22:38:02 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, f4bug@amsat.org, 
- hpoussin@reactos.org, qemu-ppc@nongnu.org, atar4qemu@gmail.com, 
- david@gibson.dropbear.id.au
-Subject: Re: [PATCH 4/5] ppc405_boards: use qdev properties instead of legacy
- m48t59_init() function
-In-Reply-To: <20201016182739.22875-5-mark.cave-ayland@ilande.co.uk>
-Message-ID: <653bf315-d1e4-4dc9-dac8-1e859a2ad4d1@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTigI-0003k5-Cl; Sat, 17 Oct 2020 05:39:18 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54357)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTigG-00083z-Rp; Sat, 17 Oct 2020 05:39:18 -0400
+Received: by mail-wm1-x344.google.com with SMTP id p15so5661619wmi.4;
+ Sat, 17 Oct 2020 02:39:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=DG/mHxFy72iLh7lV6DZxizL3gBRPOusXWa/XxHmKS7w=;
+ b=jj8kHuoVjMGhq6YVYJAuJwBtCm4BuDiV6FgiwTqqA2si6U/sKet8H9uOxEj7zzgyFV
+ AfN191xy6Tv9oN9JmvghxhwQdi3UW/VSbptpNtWZyuw6DYzKwUX41NnWgirxhY0ayjz+
+ mCSxfjeVshoRVq6whIIjmEnHYy3/uEAUmtgtmuRJAUrxhbofmBZ+VIfCmOzP9vpziUMH
+ wBq9thKH7LLRO7DWSlvc0pFtUHlW15jIGrXAgRSy3x0nDcZ9vrVSrFt8cXexFSUy1dh/
+ 8h7Luk2NY9LOy/ffXqx1N6xm7FZ1HrHDQhg50VP4fj6N5dVk4F27sBfbjMCp5H5NhpwX
+ 9fzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=DG/mHxFy72iLh7lV6DZxizL3gBRPOusXWa/XxHmKS7w=;
+ b=ZUn/69zkPWjZ4/lZQMoK0WjaPRPutSqUH3jtZTMQAceY6htri8CfXOPwKZOkas3tqa
+ bFMpokaSj+nLpFhMLkotaQ8eejlehoj0KtsRRP8AZXKoS/lhtgyJsBWmBrhhP1W2Iqv5
+ LH1bMxTHd924PPTa/+Ag9wkSY3rHVxbQbYS8NoWJ/w2vigO0EdM5afFPysyf0fLKngiZ
+ C5xPZiJNPSmHhZcrku2hJrVfK/5cjd0CSUQctBwA1DPBZ0nr8/NjuUaj9TqbpsJtc7nI
+ Ml5pGbMa6RWpAeFWKpwnrz+SAEIMw6rZTvwFjRgRM4NelGQFwitzlweXJw1b4hlCN6jy
+ l/1g==
+X-Gm-Message-State: AOAM531ozM46JC2Hwj2bgE/ZwSEGX5vBM/j7Cx8gMoS1QDUPJpenKUC3
+ z7m7kIAuWpW7rv0o41oNiVo=
+X-Google-Smtp-Source: ABdhPJydVarcofMBIfKNxApw/2r5V1yYNY4CWLfhcigsQIBsBmSzCdv8f2Qw4ttfJiCHoY2EibDOkQ==
+X-Received: by 2002:a7b:c14f:: with SMTP id z15mr8170810wmi.73.1602927554445; 
+ Sat, 17 Oct 2020 02:39:14 -0700 (PDT)
+Received: from [192.168.1.36] (117.red-83-52-172.dynamicip.rima-tde.net.
+ [83.52.172.117])
+ by smtp.gmail.com with ESMTPSA id w1sm7400564wrp.95.2020.10.17.02.39.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 17 Oct 2020 02:39:13 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 1/5] m48t59-isa: remove legacy m48t59_init_isa() function
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, hpoussin@reactos.org, qemu-ppc@nongnu.org,
+ atar4qemu@gmail.com, david@gibson.dropbear.id.au
 References: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
- <20201016182739.22875-5-mark.cave-ayland@ilande.co.uk>
+ <20201016182739.22875-2-mark.cave-ayland@ilande.co.uk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b49c1654-cb13-281d-cad9-b476da60635b@amsat.org>
+Date: Sat, 17 Oct 2020 11:39:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-X-Spam-Probability: 8%
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+In-Reply-To: <20201016182739.22875-2-mark.cave-ayland@ilande.co.uk>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -53,64 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Oct 2020 20:39:18 -0000
+X-List-Received-Date: Sat, 17 Oct 2020 09:39:18 -0000
 
-On Fri, 16 Oct 2020, Mark Cave-Ayland wrote:
+On 10/16/20 8:27 PM, Mark Cave-Ayland wrote:
+> This function is no longer used within the codebase.
+> 
 > Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 > ---
-> hw/ppc/ppc405_boards.c | 10 +++++++++-
-> 1 file changed, 9 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index 6198ec1035..4687715b15 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -28,6 +28,8 @@
-> #include "qemu-common.h"
-> #include "cpu.h"
-> #include "hw/ppc/ppc.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/sysbus.h"
-> #include "ppc405.h"
-> #include "hw/rtc/m48t59.h"
-> #include "hw/block/flash.h"
-> @@ -145,6 +147,8 @@ static void ref405ep_init(MachineState *machine)
->     char *filename;
->     ppc4xx_bd_info_t bd;
->     CPUPPCState *env;
-> +    DeviceState *dev;
-> +    SysBusDevice *s;
->     qemu_irq *pic;
->     MemoryRegion *bios;
->     MemoryRegion *sram = g_new(MemoryRegion, 1);
-> @@ -227,7 +231,11 @@ static void ref405ep_init(MachineState *machine)
->     /* Register FPGA */
->     ref405ep_fpga_init(sysmem, 0xF0300000);
->     /* Register NVRAM */
-> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
-> +    dev = qdev_new("sysbus-m48t08");
-> +    qdev_prop_set_int32(dev, "base-year", 1968);
+>   hw/rtc/m48t59-isa.c     | 25 -------------------------
+>   include/hw/rtc/m48t59.h |  2 --
+>   2 files changed, 27 deletions(-)
 
-Is there anything that uses other than 1968 as base year? If not this 
-could be the default in the device so you don't need these set prop calls 
-here and in sun machines.
-
-The only other place this device is used seems to be ppc/prep machine that 
-uses the isa version but does not set a base year. Is that a bug? The 
-original prep machine removed in b2ce76a0730 used 2000 but that's unlikely 
-as well as these machines predate that. Anyway, the sysbus and isa 
-versions are different so their default base-year could be set 
-independently and then boards won't need to set this propery and may be 
-could use qdev_create_simple instead or whatever that was renamed to.
-
-Regards,
-BALATON Zoltan
-
-> +    s = SYS_BUS_DEVICE(dev);
-> +    sysbus_realize_and_unref(s, &error_fatal);
-> +    sysbus_mmio_map(s, 0, 0xF0000000);
->     /* Load kernel */
->     linux_boot = (kernel_filename != NULL);
->     if (linux_boot) {
->
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
