@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTkFl-0007eo-R1
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 07:20:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41046)
+	id 1kTkmE-0001Bg-4M
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 07:53:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTkFk-0007eX-Ef; Sat, 17 Oct 2020 07:20:00 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:58572
+ id 1kTkmC-0001BO-Pm; Sat, 17 Oct 2020 07:53:32 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:58626
  helo=mail.default.ilande.uk0.bigv.io)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTkFi-0002MM-PM; Sat, 17 Oct 2020 07:20:00 -0400
+ id 1kTkmA-00060f-J5; Sat, 17 Oct 2020 07:53:32 -0400
 Received: from host86-148-246-80.range86-148.btcentralplus.com
  ([86.148.246.80] helo=[192.168.1.65])
  by mail.default.ilande.uk0.bigv.io with esmtpsa
  (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
  (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1kTkFc-00040J-Du; Sat, 17 Oct 2020 12:19:58 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org, hpoussin@reactos.org,
+ id 1kTkm0-0004Gf-3C; Sat, 17 Oct 2020 12:53:26 +0100
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, hpoussin@reactos.org,
  qemu-ppc@nongnu.org, atar4qemu@gmail.com, david@gibson.dropbear.id.au
 References: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
- <20201016182739.22875-6-mark.cave-ayland@ilande.co.uk>
- <ad533302-e715-cc8a-12ec-d7e4ad75c120@amsat.org>
+ <20201016182739.22875-5-mark.cave-ayland@ilande.co.uk>
+ <653bf315-d1e4-4dc9-dac8-1e859a2ad4d1@eik.bme.hu>
+ <8efee931-3314-7f3a-395b-3b840acdab90@amsat.org>
+ <75bb5535-62b9-12e1-b6bb-ce15265ca7eb@eik.bme.hu>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <3a5a388d-8be7-dc1b-401f-ed9e8fa3b554@ilande.co.uk>
-Date: Sat, 17 Oct 2020 12:19:46 +0100
+Message-ID: <9c3a17fd-0b57-4008-2088-4578a2097454@ilande.co.uk>
+Date: Sat, 17 Oct 2020 12:53:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <ad533302-e715-cc8a-12ec-d7e4ad75c120@amsat.org>
+In-Reply-To: <75bb5535-62b9-12e1-b6bb-ce15265ca7eb@eik.bme.hu>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 86.148.246.80
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 5/5] m48t59: remove legacy m48t59_init() function
+Subject: Re: [PATCH 4/5] ppc405_boards: use qdev properties instead of legacy
+ m48t59_init() function
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -42,10 +46,10 @@ Received-SPF: pass client-ip=2001:41c9:1:41f::167;
  helo=mail.default.ilande.uk0.bigv.io
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.253,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.247,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,129 +63,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Oct 2020 11:20:00 -0000
+X-List-Received-Date: Sat, 17 Oct 2020 11:53:33 -0000
 
-On 17/10/2020 10:53, Philippe Mathieu-Daudé wrote:
+On 17/10/2020 11:44, BALATON Zoltan via wrote:
 
-> On 10/16/20 8:27 PM, Mark Cave-Ayland wrote:
->> Now that all of the callers of this function have been switched to use qdev
->> properties, this legacy init function can now be removed.
+> On Sat, 17 Oct 2020, Philippe Mathieu-Daudé wrote:
+>> On 10/16/20 10:38 PM, BALATON Zoltan via wrote:
+>>> On Fri, 16 Oct 2020, Mark Cave-Ayland wrote:
+>>>> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>>>> ---
+>>>> hw/ppc/ppc405_boards.c | 10 +++++++++-
+>>>> 1 file changed, 9 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+>>>> index 6198ec1035..4687715b15 100644
+>>>> --- a/hw/ppc/ppc405_boards.c
+>>>> +++ b/hw/ppc/ppc405_boards.c
+>>>> @@ -28,6 +28,8 @@
+>>>> #include "qemu-common.h"
+>>>> #include "cpu.h"
+>>>> #include "hw/ppc/ppc.h"
+>>>> +#include "hw/qdev-properties.h"
+>>>> +#include "hw/sysbus.h"
+>>>> #include "ppc405.h"
+>>>> #include "hw/rtc/m48t59.h"
+>>>> #include "hw/block/flash.h"
+>>>> @@ -145,6 +147,8 @@ static void ref405ep_init(MachineState *machine)
+>>>>     char *filename;
+>>>>     ppc4xx_bd_info_t bd;
+>>>>     CPUPPCState *env;
+>>>> +    DeviceState *dev;
+>>>> +    SysBusDevice *s;
+>>>>     qemu_irq *pic;
+>>>>     MemoryRegion *bios;
+>>>>     MemoryRegion *sram = g_new(MemoryRegion, 1);
+>>>> @@ -227,7 +231,11 @@ static void ref405ep_init(MachineState *machine)
+>>>>     /* Register FPGA */
+>>>>     ref405ep_fpga_init(sysmem, 0xF0300000);
+>>>>     /* Register NVRAM */
+>>>> -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
+>>>> +    dev = qdev_new("sysbus-m48t08");
+>>>> +    qdev_prop_set_int32(dev, "base-year", 1968);
+>>>
+>>> Is there anything that uses other than 1968 as base year? If not this could be the 
+>>> default in the device so you don't need these set prop calls here and in sun 
+>>> machines.
+>>>
+>>> The only other place this device is used seems to be ppc/prep machine that uses 
+>>> the isa version but does not set a base year. Is that a bug? The original prep 
+>>> machine removed in b2ce76a0730 used 2000 but that's unlikely as well as these 
+>>> machines predate that.
 >>
->> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->> ---
->>   hw/rtc/m48t59.c         | 35 -----------------------------------
->>   include/hw/rtc/m48t59.h |  4 ----
->>   2 files changed, 39 deletions(-)
+>> =)
+>>
+>>> Anyway, the sysbus and isa versions are different
+>>
+>> They shouldn't, it is the same chipset, wired differently.
 > 
-> In the PoC I started after your suggestion, I see:
-> 
-> #define TYPE_M48T02_SRAM "sysbus-m48t02"
-> #define TYPE_M48T08_SRAM "sysbus-m48t08"
-> #define TYPE_M48T59_SRAM "sysbus-m48t59"
-> 
-> static void m48t02_class_init(ObjectClass *oc, void *data)
-> {
->      M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
-> 
->      amc->model = 2;
->      amc->size = 2 * KiB;
-> };
-> 
-> static void m48t08_class_init(ObjectClass *oc, void *data)
-> {
->      M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
-> 
->      amc->model = 8;
->      amc->size = 8 * KiB;
-> };
-> 
-> static void m48t59_class_init(ObjectClass *oc, void *data)
-> {
->      M48txxSysBusDeviceClass *amc = M48TXX_SYS_BUS_CLASS(oc);
-> 
->      amc->model = 59;
->      amc->size = 8 * KiB;
-> };
-> 
-> static const TypeInfo m48t59_register_types[] = {
->      {
->          .name           = TYPE_M48T02_SRAM,
->          .parent         = TYPE_M48TXX_SYSBUS,
->          .class_init     = m48t02_class_init,
->      }, {
->          .name           = TYPE_M48T08_SRAM,
->          .parent         = TYPE_M48TXX_SYSBUS,
->          .class_init     = m48t08_class_init,
->      }, {
->          .name           = TYPE_M48T59_SRAM,
->          .parent         = TYPE_M48TXX_SYSBUS,
->          .class_init     = m48t59_class_init,
->      }, {
->          .name           = TYPE_M48TXX_SYSBUS,
->          .parent         = TYPE_SYS_BUS_DEVICE,
->          .instance_size  = sizeof(M48txxSysBusState),
->          .instance_init = m48t59_init1,
->          .class_size     = sizeof(M48txxSysBusDeviceClass),
->          .class_init     = m48txx_sysbus_class_init,
->          .abstract       = true,
->          .interfaces = (InterfaceInfo[]) {
->              { TYPE_NVRAM },
->              { }
->          }
->      }
-> };
-> 
-> and:
-> 
-> #define TYPE_M48T59_SRAM "isa-m48t59"
-> 
-> static void m48t59_class_init(ObjectClass *oc, void *data)
-> {
->      M48txxISADeviceClass *midc = M48TXX_ISA_CLASS(oc);
-> 
->      midc->model = 59;
->      midc->size = 8 * KiB;
-> };
-> 
-> static const TypeInfo m48t59_isa_register_types[] = {
->      {
->          .name           = TYPE_M48T59_SRAM,
->          .parent         = TYPE_M48TXX_ISA,
->          .class_init     = m48t59_class_init,
->      }, {
->          .name           = TYPE_M48TXX_ISA,
->          .parent         = TYPE_ISA_DEVICE,
->          .instance_size  = sizeof(M48txxISAState),
->          .class_size     = sizeof(M48txxISADeviceClass),
->          .class_init     = m48txx_isa_class_init,
->          .abstract       = true,
->          .interfaces = (InterfaceInfo[]) {
->              { TYPE_NVRAM },
->              { }
->          }
->      }
-> };
-> 
-> I guess I didn't pursue because I wondered what was the
-> best way to have the same model usable by sysbus/isa.
-> 
-> IIRC I wanted to proceed as having TYPE_M48T59_SRAM being
-> an abstract qdev parent, and then TYPE_M48TXX_SYSBUS /
-> TYPE_M48TXX_ISA implementing the SYSBUS/ISA interfaces.
-> 
-> As it need some thinking I postponed that for after 5.2.
-> 
-> Anyhow back to this patch:
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> I mean in QEMU the sysbus and isa devices are different object types so their default 
+> is settable independently. So setting the sysbus device base-year does not change the 
+> isa device which can be sorted out in another patch independently from this series 
+> later when the behaviour on 40p is confirmed.
 
-Ha indeed, I think you also came to the same conclusion that I did in my previous 
-email :)
-
-I'm also not convinced by the dynamic generation of various M48TXX types using 
-class_data - this seems overly complex, and there's nothing there I can see that 
-can't be just as easily handled using qdev properties using an abstract parent as you 
-suggest above.
+Right, there are certainly some questions around exactly how this behaviour works but 
+in general people seem happy with this series. I'm going to apply this to my 
+qemu-macppc branch with the NVRAM cast suggested by Philippe so the basic conversion 
+is done, and then other improvements/tidy-ups can follow up later as time allows.
 
 
 ATB,
