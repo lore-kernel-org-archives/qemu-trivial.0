@@ -1,60 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kTncw-0008NL-Lh
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Oct 2020 10:56:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42834)
+	id 1kUKRA-0000eO-I2
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Oct 2020 21:58:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <a.tarasenko@gmail.com>)
- id 1kTnPA-00011o-Vl; Sat, 17 Oct 2020 10:41:57 -0400
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:46381)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kUKR9-0000eB-RU; Sun, 18 Oct 2020 21:58:11 -0400
+Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:34731)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <a.tarasenko@gmail.com>)
- id 1kTnP9-00083U-6I; Sat, 17 Oct 2020 10:41:56 -0400
-Received: by mail-qv1-xf42.google.com with SMTP id s1so2362324qvm.13;
- Sat, 17 Oct 2020 07:41:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kUKR8-0002Bs-4G; Sun, 18 Oct 2020 21:58:11 -0400
+Received: by mail-yb1-xb42.google.com with SMTP id o70so7547427ybc.1;
+ Sun, 18 Oct 2020 18:58:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JiNVF472HuYt6MgbPT0XLWmR4gT4sBztlT6GdODxlJs=;
- b=KYU1VesLSf5KqDgWyc3gjwqCxfekj2rkAFZXwQ16OaLfccGpLxl1smzqGLl5RAPiUk
- nIG28CA7DifzsnskvzPd4Mq6QKGgBMshPAfOBOWYlJnI0T90aLLSsJpA8hvtyCjxmD7A
- 0QWpAcJdPETJEui5+LDsul7/kWiLo/5UofZJzBSCdXMhGQzx2ApQZpWq2tX0vxroE9SN
- 8f3nPrdVss1UpXBrbQeVue7NKIZ0bJtBC4Op8gVWP8SwtOPnG6W/sv0KI4aE7rsoVQ8P
- 7m/NDPt0mGUje9iW/W6yg2hXJB1Tlja1/NmpnfemTvY80C+XUs8hk9aRZNQwfOphrmE3
- co7w==
+ :cc; bh=FpZ1UF+lf54rlJAxvV7Z1Wh7VrzUbPpn0uPzdr3tScs=;
+ b=VIsw8A0ymNrGBoVxy3lEllpc96HY2SC88s6TtyztmshZFY6d01SeI6bXN1aKz4cDrO
+ 1uL4HpTLPdn0RdXy7QLv/9GVPFDBObUJPqECailTfbpFGidw5bqcol9FpNc3Q9Wl7PlS
+ LPVRl7ZxuoGvXNM0ClbbSCY1QXUxTcW/7CbGxmAt2BgxKqYib1oxq81lkAL37sBS3B/6
+ ODDLfHLVPk+r4SFgK69kfaEUEyjc6BsW+5bsGhau+XcJ+UUF+jJkcJXWPXC5mmxq2DLz
+ Gq1orpY+rXw7fvQnuvXTtZwIYDc2IzYwNFl9ch3U0jwe/XnfYgUd+2eBRSWyvHmpxAZN
+ p/VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=JiNVF472HuYt6MgbPT0XLWmR4gT4sBztlT6GdODxlJs=;
- b=kpKc8THsdpynwB9vJknsVc4fzS9f+rQ3Ry4Xp7RwbRziDm4/J0x0tf5OGqj6dP1u/j
- OtOW3eZYOjHG7WO/6WarOdVnd4W1lkPjxUj9X4s3qfx29SJsuPpLzh7FobUintbM3Aaw
- GKNwXnmV8b3A5/ncM16nFtpVFFU/onTKoidn2pU02IWeydnL9xHD2mCULBnKV2C43AqM
- obdppRR61sWjslno2+ncWlmWI+U/ziwAAqOePgpSUurOAip4OnXQF1e5jpZ2N8cJ9UNL
- NUIaZYvqXcNOZP3rYVMUIobY8ikLX2D8h801qE1NmrQZ1tlqfGZOdvAyAN1L6HJPU3ZP
- t6qA==
-X-Gm-Message-State: AOAM532Q+Za1lCBt53aobr2DoaICIIGbp3r5EHYjlM9yLllAS5JGgct2
- 7qvYvpY9iZJDPLdBOvR9H/9McZ9qCZEM7+YnChjk9+1Hxj0=
-X-Google-Smtp-Source: ABdhPJw3pVImP3x0yleJDOLgtik8wQm6t8LQ66ltXyDoBJ5tK3v02x+fFV50zBsMVmyQMk5RQF7bU9BpY9igHZ5nUls=
-X-Received: by 2002:a05:6214:18cf:: with SMTP id
- cy15mr9273079qvb.53.1602945712944; 
- Sat, 17 Oct 2020 07:41:52 -0700 (PDT)
+ bh=FpZ1UF+lf54rlJAxvV7Z1Wh7VrzUbPpn0uPzdr3tScs=;
+ b=rFKECitmnI/zXphgLxkm1G6KAd3XEEnwUx0o9CHu0s/60Jz1Pe7F2v0fJVP7PUNuXp
+ sanSVSs4z42UmmROEmMSWuN9dNJ9LzDQFrtLo/zopd39ZpD3IR5SUPl4srBGAyH8wN6g
+ Oo/LQnx+gGeHdfnDqMuQFkgY6m2s8ZAwLCiBkERUElRD9bLnjc3AUg5vzQaAANg2hMhw
+ kczDq10XWAJLsFYQp8rPm7etSi4xdy9pB7bxR18LqY2Vyxy3Ubv3oHDcqnkXN8tqLqW0
+ TuG7mZm0smy0CVDyep0SpsGUFIXTRakxdft3KAeNx56ld1AONUAQ+MFz48bXmqRYcvqs
+ uRNQ==
+X-Gm-Message-State: AOAM5301rEyzqM4Vh0MHmhyQUQ/wTseMadK1esIgDdFH4/9GFlpFKFJr
+ 9XleoPljvDHItdrjs2KPmdldlQvcgWCGt+qjiI4=
+X-Google-Smtp-Source: ABdhPJyuFP080uB61Gx1obnE5i9SMrW1L2+Gc1MtXBXsdHokd1Mw9Tx90Yy5EZwnu6jlurM6tBpuuF9SGgYRGLLXo/w=
+X-Received: by 2002:a25:328a:: with SMTP id
+ y132mr18208024yby.306.1603072687932; 
+ Sun, 18 Oct 2020 18:58:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201016182739.22875-1-mark.cave-ayland@ilande.co.uk>
- <20201016182739.22875-5-mark.cave-ayland@ilande.co.uk>
- <653bf315-d1e4-4dc9-dac8-1e859a2ad4d1@eik.bme.hu>
-In-Reply-To: <653bf315-d1e4-4dc9-dac8-1e859a2ad4d1@eik.bme.hu>
-From: Artyom Tarasenko <a.tarasenko@gmail.com>
-Date: Sat, 17 Oct 2020 16:41:41 +0200
-Message-ID: <CAAM0arMhKLDAfrqbh9c-rZEGgvYaNUyxFBnjpS2RdT=PcSLB3w@mail.gmail.com>
-Subject: Re: [PATCH 4/5] ppc405_boards: use qdev properties instead of legacy
- m48t59_init() function
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org, f4bug@amsat.org, 
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, qemu-ppc@nongnu.org, 
- david@gibson.dropbear.id.au
+References: <CAKmqyKODEgnkw4zBbsNK1zQ7qaiKWEAZBpwhnHzEetjgWpxtzQ@mail.gmail.com>
+ <20201016171000.21240-1-ivan.griffin@emdalo.com>
+In-Reply-To: <20201016171000.21240-1-ivan.griffin@emdalo.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 19 Oct 2020 09:57:55 +0800
+Message-ID: <CAEUhbmV5V9gXeyn1Bp-u3L4FGwU_+m0CT-vomL7W8WGY9yt_nQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/riscv: microchip_pfsoc: IOSCBCTRL memmap entry
+To: Ivan Griffin <ivan.griffin@emdalo.com>
+Cc: Alistair Francis <alistair23@gmail.com>, qemu-trivial@nongnu.org, 
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f42;
- envelope-from=a.tarasenko@gmail.com; helo=mail-qv1-xf42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -65,7 +62,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 17 Oct 2020 10:56:09 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,70 +73,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Oct 2020 14:41:57 -0000
+X-List-Received-Date: Mon, 19 Oct 2020 01:58:12 -0000
 
-On Fri, Oct 16, 2020 at 10:38 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->
-> On Fri, 16 Oct 2020, Mark Cave-Ayland wrote:
-> > Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> > ---
-> > hw/ppc/ppc405_boards.c | 10 +++++++++-
-> > 1 file changed, 9 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> > index 6198ec1035..4687715b15 100644
-> > --- a/hw/ppc/ppc405_boards.c
-> > +++ b/hw/ppc/ppc405_boards.c
-> > @@ -28,6 +28,8 @@
-> > #include "qemu-common.h"
-> > #include "cpu.h"
-> > #include "hw/ppc/ppc.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "hw/sysbus.h"
-> > #include "ppc405.h"
-> > #include "hw/rtc/m48t59.h"
-> > #include "hw/block/flash.h"
-> > @@ -145,6 +147,8 @@ static void ref405ep_init(MachineState *machine)
-> >     char *filename;
-> >     ppc4xx_bd_info_t bd;
-> >     CPUPPCState *env;
-> > +    DeviceState *dev;
-> > +    SysBusDevice *s;
-> >     qemu_irq *pic;
-> >     MemoryRegion *bios;
-> >     MemoryRegion *sram = g_new(MemoryRegion, 1);
-> > @@ -227,7 +231,11 @@ static void ref405ep_init(MachineState *machine)
-> >     /* Register FPGA */
-> >     ref405ep_fpga_init(sysmem, 0xF0300000);
-> >     /* Register NVRAM */
-> > -    m48t59_init(NULL, 0xF0000000, 0, 8192, 1968, 8);
-> > +    dev = qdev_new("sysbus-m48t08");
-> > +    qdev_prop_set_int32(dev, "base-year", 1968);
->
-> Is there anything that uses other than 1968 as base year?
+Hi Ivan,
 
-I think 40p uses 1900 as the base year.
+On Sat, Oct 17, 2020 at 1:10 AM Ivan Griffin <ivan.griffin@emdalo.com> wrote:
+>
+> Adding the PolarFire SoC IOSCBCTRL memory region to prevent QEMU
+> reporting a STORE/AMO Access Fault.
+>
+> This region is used by the PolarFire SoC port of U-Boot to
+> interact with the FPGA system controller.
+>
+> Signed-off-by: Ivan Griffin <ivan.griffin@emdalo.com>
+> ---
+>  hw/riscv/microchip_pfsoc.c         | 10 ++++++++++
+>  include/hw/riscv/microchip_pfsoc.h |  1 +
+>  2 files changed, 11 insertions(+)
+>
+> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+> index 4627179cd3..9aaa276ee2 100644
+> --- a/hw/riscv/microchip_pfsoc.c
+> +++ b/hw/riscv/microchip_pfsoc.c
+> @@ -97,6 +97,7 @@ static const struct MemmapEntry {
+>      [MICROCHIP_PFSOC_GPIO2] =           { 0x20122000,     0x1000 },
+>      [MICROCHIP_PFSOC_ENVM_CFG] =        { 0x20200000,     0x1000 },
+>      [MICROCHIP_PFSOC_ENVM_DATA] =       { 0x20220000,    0x20000 },
+> +    [MICROCHIP_PFSOC_IOSCB_CTRL] =      { 0x37020000,     0x1000 },
+>      [MICROCHIP_PFSOC_IOSCB_CFG] =       { 0x37080000,     0x1000 },
+>      [MICROCHIP_PFSOC_DRAM] =            { 0x80000000,        0x0 },
+>  };
+> @@ -341,6 +342,15 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
+>      create_unimplemented_device("microchip.pfsoc.ioscb.cfg",
+>          memmap[MICROCHIP_PFSOC_IOSCB_CFG].base,
+>          memmap[MICROCHIP_PFSOC_IOSCB_CFG].size);
+> +
+> +    /* IOSCBCTRL
+> +     *
+> +     * These registers are not documented in the official documentation
+> +     * but used by the polarfire-soc-bare-meta-library code
+> +     */
+> +    create_unimplemented_device("microchip.pfsoc.ioscb.ctrl",
+> +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].base,
+> +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].size);
+>  }
+>
+>  static void microchip_pfsoc_soc_class_init(ObjectClass *oc, void *data)
+> diff --git a/include/hw/riscv/microchip_pfsoc.h b/include/hw/riscv/microchip_pfsoc.h
+> index 8bfc7e1a85..3f1874b162 100644
+> --- a/include/hw/riscv/microchip_pfsoc.h
+> +++ b/include/hw/riscv/microchip_pfsoc.h
+> @@ -95,6 +95,7 @@ enum {
+>      MICROCHIP_PFSOC_ENVM_CFG,
+>      MICROCHIP_PFSOC_ENVM_DATA,
+>      MICROCHIP_PFSOC_IOSCB_CFG,
+> +    MICROCHIP_PFSOC_IOSCB_CTRL,
+>      MICROCHIP_PFSOC_DRAM,
+>  };
 
-> If not this
-> could be the default in the device so you don't need these set prop calls
-> here and in sun machines.
->
-> The only other place this device is used seems to be ppc/prep machine that
-> uses the isa version but does not set a base year. Is that a bug? The
-> original prep machine removed in b2ce76a0730 used 2000 but that's unlikely
-> as well as these machines predate that. Anyway, the sysbus and isa
-> versions are different so their default base-year could be set
-> independently and then boards won't need to set this propery and may be
-> could use qdev_create_simple instead or whatever that was renamed to.
->
-> Regards,
-> BALATON Zoltan
->
-> > +    s = SYS_BUS_DEVICE(dev);
-> > +    sysbus_realize_and_unref(s, &error_fatal);
-> > +    sysbus_mmio_map(s, 0, 0xF0000000);
-> >     /* Load kernel */
-> >     linux_boot = (kernel_filename != NULL);
-> >     if (linux_boot) {
-> >
+Thank you for the patch!
+
+I am currently adding the DDR controller modeling support to PolarFire
+SoC which will cover this memory map. With my patch series, your patch
+is no longer needed.
+
+Regards,
+Bin
 
