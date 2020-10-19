@@ -1,81 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUXeQ-0001mP-Dp
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 12:04:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54638)
+	id 1kUbsT-0004BR-Se
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 16:35:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kUXeK-0001iA-1H; Mon, 19 Oct 2020 12:04:40 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36576)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kUXeH-0001TT-VN; Mon, 19 Oct 2020 12:04:39 -0400
-Received: by mail-wr1-x442.google.com with SMTP id x7so361797wrl.3;
- Mon, 19 Oct 2020 09:04:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=D4ItctQ3TsnRGygDCoAL5T8+QFcunk3G8AXUmBowc5k=;
- b=QFKkLNj4aMP7jjBxXjdXABcjpTaYrIhP8IYYjCRbONsgPhsWbJTLtC6AlLF5NZ0WNR
- EQaXJ15z/ijVGWKyu/hAa8v9SiZK+sdja6zVXAWK8kaCX0mad3uSRBPpD7ZAJigIehIK
- VnwHK0wlXmajD6hbu/9gWAUld0kGVynNscfswtwBadtUCGATKi5Ol0tRveLZRo2nA3/p
- 7twTuxNuUDY1gHIUkpAy8mx86j/vaOpX+8497FTpfcwie2hJbEw/8gvJr9z0DTPbxNsk
- kWMZ2x3Ksm4Bc5UxjchR6tqEOfVnrxFSfnjtmGDq7c3tRrghgABJxjima8xqOcXeBO3T
- TQnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=D4ItctQ3TsnRGygDCoAL5T8+QFcunk3G8AXUmBowc5k=;
- b=LvkCmAwNb2y3jI2u2MTshBiuo1IuDR2gndUWEzK+Zu/JXVasYJiNigIPY8vb3/r1RM
- DsosE+RcYdemg0X4XCOFYrmu/dcRbSEmGwmJ7BfiVUHxgOvNZoisCvd6cv1CKs6XpQMz
- tfDnZ8bo1ns/oKiYX+1tnmdJlTGJi1EeuSlYOMQq9nxBsojA+4Vrk4dkrY5jkLlIo3q6
- IbYHK5/t6CgBMm/NnFoJv+bjDMTh1IDFAvlI/y+PFavbFbP5eoHKmy5TmbUdXyFCjiif
- ozlAY6d5F/RNGtcA1XHxPKJNX0+PkoGvmuVRZkHC2DR07afThWxlCY4lVHLr8HJ3nH7i
- 1y1Q==
-X-Gm-Message-State: AOAM53068OxIO+3oSA/E2YWK+rS5q7kwkZ7ICRTGJXv4A+dWaQw8bZzk
- 25to4Xgbkusph042gHbW2yU=
-X-Google-Smtp-Source: ABdhPJzq7VNLtWgzwHejjvCDCz+H63OFS8YRI3QHXSv5lJ5FhGf8EsZpszyYVcmlXyfVMR1ZJWp48A==
-X-Received: by 2002:adf:e744:: with SMTP id c4mr285219wrn.222.1603123475133;
- Mon, 19 Oct 2020 09:04:35 -0700 (PDT)
-Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id s11sm204154wrm.56.2020.10.19.09.04.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Oct 2020 09:04:34 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
-To: qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20201012124955.3409127-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e15493bf-f31e-daf2-d216-b9d67ea638b1@amsat.org>
-Date: Mon, 19 Oct 2020 18:04:33 +0200
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kUbsR-0004AY-LF
+ for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 16:35:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39171)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kUbsO-0004Ng-QF
+ for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 16:35:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603139727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lTUu9QvrNkYv40O6iKHau2L0wvTijiBSehqfHgFDpiI=;
+ b=EKB3mU3ErLNRZWjqlMdXFvCdotqNQ//caEzubnHCNZcuQvZvwauYmBUHE7EUjIXC8fILoe
+ y3OQwUIHsP43E20tcVcdp1hohL805u/onL2ks03evs2rNcXtQ9YN3mtIQ2KrHQ+jhe+DLu
+ MEj/zWB4cgor8lliZYHU4WD1l0EgK+o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-379-nkYYGVQrP7ivY44r9cMAVA-1; Mon, 19 Oct 2020 16:35:22 -0400
+X-MC-Unique: nkYYGVQrP7ivY44r9cMAVA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6291A8049CB;
+ Mon, 19 Oct 2020 20:35:21 +0000 (UTC)
+Received: from [10.3.112.28] (ovpn-112-28.phx2.redhat.com [10.3.112.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EED7710013C1;
+ Mon, 19 Oct 2020 20:35:20 +0000 (UTC)
+Subject: Re: [PATCH 6/30] semihosting: Fix Lesser GPL version number
+To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
+Cc: alex.bennee@linaro.org, qemu-devel@nongnu.org
+References: <20201016143509.26692-1-chetan4windows@gmail.com>
+ <20201016144243.26817-1-chetan4windows@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <9a927711-58b5-c891-9713-dd735ec9fb59@redhat.com>
+Date: Mon, 19 Oct 2020 15:35:20 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201012124955.3409127-1-f4bug@amsat.org>
+In-Reply-To: <20201016144243.26817-1-chetan4windows@gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 15:28:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,43 +77,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Oct 2020 16:04:44 -0000
+X-List-Received-Date: Mon, 19 Oct 2020 20:35:32 -0000
 
-Ping for review?
+On 10/16/20 9:42 AM, Chetan Pant wrote:
+> There is no "version 2" of the "Lesser" General Public License.
 
-On 10/12/20 2:49 PM, Philippe Mathieu-Daudé wrote:
-> Since v1:
-> - Fixed patch #1 subject (Kevin)
-> 
-> In order to use inclusive terminology, rename SSI 'slave' as
-> 'peripheral', following the resolution Paolo pointed in [*]:
-> https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/
-> 
-> Candidate to be merged via the ARM or Trivial trees.
-> 
-> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html
-> 
-> Philippe Mathieu-Daudé (3):
->    hw/ssi/aspeed_smc: Rename 'max_slaves' variable as 'max_peripherals'
->    hw/ssi: Update coding style to make checkpatch.pl happy
->    hw/ssi: Rename SSI 'slave' as 'peripheral'
-> 
->   include/hw/misc/max111x.h   |  2 +-
->   include/hw/ssi/aspeed_smc.h |  2 +-
->   include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------
->   hw/arm/spitz.c              | 32 ++++++++++-----------
->   hw/arm/stellaris.c          |  4 +--
->   hw/arm/tosa.c               | 12 ++++----
->   hw/arm/z2.c                 | 14 +++++-----
->   hw/block/m25p80.c           | 14 +++++-----
->   hw/display/ads7846.c        | 12 ++++----
->   hw/display/ssd0323.c        | 12 ++++----
->   hw/misc/max111x.c           | 18 ++++++------
->   hw/sd/ssi-sd.c              | 12 ++++----
->   hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------
->   hw/ssi/pl022.c              |  2 +-
->   hw/ssi/ssi.c                | 48 +++++++++++++++----------------
->   hw/ssi/xilinx_spips.c       |  7 +++--
->   16 files changed, 152 insertions(+), 148 deletions(-)
-> 
+Meta-comment: Looking in the archives, I see some odd threading going on:
+
+https://lists.gnu.org/archive/html/qemu-devel/2020-10/threads.html#04020
+
+You sent 1/30 and 2/30 as independent threads, then deeply threaded 
+3-8/30, but I don't see a 0/30 cover letter, nor 9-30/30.
+
+When you use deep threading, it gets awkward to read replies in mailers 
+that group by thread depth before date:
+
++ 1/30
+  \+ re: 1/30
++ 2/30
+  \+ re: 1/30
++ 3/30
+| + 4/30
+| | + 5/30
+| | | + 6/30
+| | | | + 7/30
+| | | | | + 8/30
+| | | | |  \+ re: 8/30
+| | | |  \+ re: 7/30
+| | |  \+ re: 6/30
+| |  \+ re: 5/30
+|  \+ re: 4/30
+  \+ re: 3/30
+
+instead of the more typical
+
++ 0/30
+| + 1/30
+|  \+ re: 1/30
+| + 2/30
+|  \+ re: 2/30
+| + 3/30
+|  \+ re: 3/30
+| + 4/30
+|  \+ re: 4/30
+...
+| + 30/30
+|  \+ re: 30/30
+  \+ re: 0/30
+
+Figuring out how to make your mailer thread properly will make it easier 
+to interact with your future patches.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
 
