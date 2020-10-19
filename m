@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUsrA-0001ol-9o
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 10:43:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49300)
+	id 1kUsrC-0001pN-3p
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 10:43:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpQs-00060G-HN; Tue, 20 Oct 2020 07:03:58 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:38446 helo=huawei.com)
+ id 1kUpQw-00062i-0e; Tue, 20 Oct 2020 07:04:02 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5263 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpQp-0006li-Ao; Tue, 20 Oct 2020 07:03:58 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 90FA04532CA4D03D7C6B;
- Tue, 20 Oct 2020 19:03:44 +0800 (CST)
+ id 1kUpQt-0006nw-3r; Tue, 20 Oct 2020 07:04:01 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id DCB023420655B35F5E41;
+ Tue, 20 Oct 2020 19:03:54 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 19:03:36 +0800
+ 19:03:46 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <mst@redhat.com>, <f4bug@amsat.org>, <lvivier@redhat.com>,
  <peter.maydell@linaro.org>, <david@gibson.dropbear.id.au>,
  <alistair.francis@wdc.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 00/10] Fix line over 80 characters warning
-Date: Tue, 20 Oct 2020 04:30:13 +0800
-Message-ID: <20201019203023.658555-1-ganqixin@huawei.com>
+Subject: [PATCH 07/10] hw/pci-host/:split some lines containing more than 80
+ characters
+Date: Tue, 20 Oct 2020 04:30:20 +0800
+Message-ID: <20201019203023.658555-8-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201019203023.658555-1-ganqixin@huawei.com>
+References: <20201019203023.658555-1-ganqixin@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:03:45
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:03:55
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -53,87 +56,141 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 11:03:59 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 11:04:02 -0000
 
-Hi all,
-    I used scripts/checkpatch.pl to find that many files in the hw directory 
-contain lines with more than 80 characters. Therefore, I splited some lines to
-fix this warning. 
+By using scripts/checkpatch.pl, it is found that many files in hw/pci-host/
+contain lines with more than 80 characters.
 
-Thanks,
-Gan Qixin
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+---
+ hw/pci-host/gpex-acpi.c | 18 ++++++++----------
+ hw/pci-host/pam.c       |  4 ++--
+ hw/pci-host/ppce500.c   |  8 +++++---
+ hw/pci-host/q35.c       | 11 +++++++----
+ hw/pci-host/versatile.c |  5 +++--
+ 5 files changed, 25 insertions(+), 21 deletions(-)
 
-Gan Qixin (10):
-  hw/virtio/:split some lines containing more than 80 characters
-  hw/core/:split some lines containing more than 80 characters
-  hw/ide/:split some lines containing more than 80 characters
-  hw/intc/:split some lines containing more than 80 characters
-  hw/misc/:split some lines containing more than 80 characters
-  hw/pci/:split some lines containing more than 80 characters
-  hw/pci-host/:split some lines containing more than 80 characters
-  hw/char/:split some lines containing more than 80 characters
-  hw/input/:split some lines containing more than 80 characters
-  hw/riscv/:split some lines containing more than 80 characters
-
- hw/char/ibex_uart.c              | 12 ++++---
- hw/char/omap_uart.c              |  3 +-
- hw/char/parallel.c               | 12 ++++---
- hw/char/serial.c                 | 57 ++++++++++++++++++++++----------
- hw/char/virtio-serial-bus.c      |  3 +-
- hw/core/bus.c                    |  3 +-
- hw/core/loader.c                 | 17 ++++++----
- hw/core/machine-hmp-cmds.c       |  6 ++--
- hw/core/machine.c                |  3 +-
- hw/core/qdev-properties-system.c |  4 +--
- hw/ide/ahci.c                    | 10 +++---
- hw/ide/atapi.c                   |  9 ++---
- hw/ide/cmd646.c                  |  3 +-
- hw/ide/core.c                    | 21 ++++++++----
- hw/ide/piix.c                    |  3 +-
- hw/ide/via.c                     |  3 +-
- hw/input/hid.c                   |  3 +-
- hw/input/milkymist-softusb.c     | 16 +++++----
- hw/input/pxa2xx_keypad.c         |  3 +-
- hw/input/virtio-input.c          |  3 +-
- hw/intc/apic.c                   |  3 +-
- hw/intc/arm_gic.c                |  5 +--
- hw/intc/arm_gic_common.c         |  3 +-
- hw/intc/ioapic.c                 |  3 +-
- hw/intc/xics.c                   |  3 +-
- hw/intc/xics_kvm.c               |  3 +-
- hw/misc/aspeed_sdmc.c            | 10 +++---
- hw/misc/bcm2835_mphi.c           |  3 +-
- hw/misc/edu.c                    |  3 +-
- hw/misc/omap_gpmc.c              |  3 +-
- hw/misc/omap_sdrc.c              |  3 +-
- hw/misc/pci-testdev.c            |  3 +-
- hw/misc/sifive_test.c            |  4 +--
- hw/pci-host/gpex-acpi.c          | 18 +++++-----
- hw/pci-host/pam.c                |  4 +--
- hw/pci-host/ppce500.c            |  8 +++--
- hw/pci-host/q35.c                | 11 +++---
- hw/pci-host/versatile.c          |  5 +--
- hw/pci/msi.c                     |  3 +-
- hw/pci/msix.c                    |  8 ++---
- hw/pci/pci.c                     | 31 +++++++++++------
- hw/pci/pci_bridge.c              |  3 +-
- hw/pci/pcie.c                    | 11 +++---
- hw/pci/pcie_host.c               |  4 +--
- hw/riscv/opentitan.c             |  6 ++--
- hw/riscv/sifive_e.c              |  6 ++--
- hw/riscv/sifive_u.c              | 12 ++++---
- hw/virtio/vhost-backend.c        |  3 +-
- hw/virtio/vhost-user-fs.c        |  6 ++--
- hw/virtio/vhost-user.c           | 10 +++---
- hw/virtio/virtio-balloon.c       |  6 ++--
- hw/virtio/virtio-bus.c           |  3 +-
- hw/virtio/virtio-crypto.c        |  3 +-
- hw/virtio/virtio-pci.c           |  4 +--
- hw/virtio/virtio-pci.h           |  8 +++--
- hw/virtio/virtio-rng.c           |  3 +-
- hw/virtio/virtio.c               | 14 +++++---
- 57 files changed, 273 insertions(+), 160 deletions(-)
-
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index dbb350a837..a7cf59018d 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -64,12 +64,11 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+                             nr_pcie_buses));
+     if (cfg->mmio32.size) {
+         aml_append(rbuf,
+-                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
+-                                    cfg->mmio32.base,
++                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED,
++                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
++                                    AML_READ_WRITE, 0x0000, cfg->mmio32.base,
+                                     cfg->mmio32.base + cfg->mmio32.size - 1,
+-                                    0x0000,
+-                                    cfg->mmio32.size));
++                                    0x0000, cfg->mmio32.size));
+     }
+     if (cfg->pio.size) {
+         aml_append(rbuf,
+@@ -81,12 +80,11 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+     }
+     if (cfg->mmio64.size) {
+         aml_append(rbuf,
+-                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
+-                                    cfg->mmio64.base,
++                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
++                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
++                                    AML_READ_WRITE, 0x0000, cfg->mmio64.base,
+                                     cfg->mmio64.base + cfg->mmio64.size - 1,
+-                                    0x0000,
+-                                    cfg->mmio64.size));
++                                    0x0000, cfg->mmio64.size));
+     }
+     aml_append(dev, aml_name_decl("_CRS", rbuf));
+ 
+diff --git a/hw/pci-host/pam.c b/hw/pci-host/pam.c
+index a496205783..6253406abd 100644
+--- a/hw/pci-host/pam.c
++++ b/hw/pci-host/pam.c
+@@ -45,8 +45,8 @@ void init_pam(DeviceState *dev, MemoryRegion *ram_memory,
+     memory_region_set_readonly(&mem->alias[1], true);
+ 
+     /* XXX: should distinguish read/write cases */
+-    memory_region_init_alias(&mem->alias[0], OBJECT(dev), "pam-pci", pci_address_space,
+-                             start, size);
++    memory_region_init_alias(&mem->alias[0], OBJECT(dev), "pam-pci",
++                             pci_address_space, start, size);
+     memory_region_init_alias(&mem->alias[2], OBJECT(dev), "pam-pci", ram_memory,
+                              start, size);
+ 
+diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+index 9517aab913..d3e8e77236 100644
+--- a/hw/pci-host/ppce500.c
++++ b/hw/pci-host/ppce500.c
+@@ -423,8 +423,9 @@ static void e500_pcihost_bridge_realize(PCIDevice *d, Error **errp)
+     PPCE500CCSRState *ccsr = CCSR(container_get(qdev_get_machine(),
+                                   "/e500-ccsr"));
+ 
+-    memory_region_init_alias(&b->bar0, OBJECT(ccsr), "e500-pci-bar0", &ccsr->ccsr_space,
+-                             0, int128_get64(ccsr->ccsr_space.size));
++    memory_region_init_alias(&b->bar0, OBJECT(ccsr), "e500-pci-bar0",
++                             &ccsr->ccsr_space, 0,
++                             int128_get64(ccsr->ccsr_space.size));
+     pci_register_bar(d, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &b->bar0);
+ }
+ 
+@@ -474,7 +475,8 @@ static void e500_pcihost_realize(DeviceState *dev, Error **errp)
+ 
+     pci_create_simple(b, 0, "e500-host-bridge");
+ 
+-    memory_region_init(&s->container, OBJECT(h), "pci-container", PCIE500_ALL_SIZE);
++    memory_region_init(&s->container, OBJECT(h), "pci-container",
++                       PCIE500_ALL_SIZE);
+     memory_region_init_io(&h->conf_mem, OBJECT(h), &pci_host_conf_be_ops, h,
+                           "pci-conf-idx", 4);
+     memory_region_init_io(&h->data_mem, OBJECT(h), &pci_host_data_le_ops, h,
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index b67cb9c29f..8c4031dda7 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -573,14 +573,17 @@ static void mch_realize(PCIDevice *d, Error **errp)
+ 
+     /* if *disabled* show SMRAM to all CPUs */
+     memory_region_init_alias(&mch->smram_region, OBJECT(mch), "smram-region",
+-                             mch->pci_address_space, MCH_HOST_BRIDGE_SMRAM_C_BASE,
++                             mch->pci_address_space,
++                             MCH_HOST_BRIDGE_SMRAM_C_BASE,
+                              MCH_HOST_BRIDGE_SMRAM_C_SIZE);
+-    memory_region_add_subregion_overlap(mch->system_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
++    memory_region_add_subregion_overlap(mch->system_memory,
++                                        MCH_HOST_BRIDGE_SMRAM_C_BASE,
+                                         &mch->smram_region, 1);
+     memory_region_set_enabled(&mch->smram_region, true);
+ 
+-    memory_region_init_alias(&mch->open_high_smram, OBJECT(mch), "smram-open-high",
+-                             mch->ram_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
++    memory_region_init_alias(&mch->open_high_smram, OBJECT(mch),
++                             "smram-open-high", mch->ram_memory,
++                             MCH_HOST_BRIDGE_SMRAM_C_BASE,
+                              MCH_HOST_BRIDGE_SMRAM_C_SIZE);
+     memory_region_add_subregion_overlap(mch->system_memory, 0xfeda0000,
+                                         &mch->open_high_smram, 1);
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index 3553277f94..1dab38e695 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -454,8 +454,9 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+      * offsets are guest controllable via the IMAP registers.
+      */
+     for (i = 0; i < 3; i++) {
+-        memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s), "pci-vbp-window",
+-                                 &s->pci_mem_space, 0, s->mem_win_size[i]);
++        memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s),
++                                 "pci-vbp-window", &s->pci_mem_space, 0,
++                                 s->mem_win_size[i]);
+         sysbus_init_mmio(sbd, &s->pci_mem_window[i]);
+     }
+ 
 -- 
 2.23.0
 
