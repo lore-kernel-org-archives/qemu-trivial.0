@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUsrC-0001pN-3p
+	id 1kUsrD-0001q8-HU
 	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 10:43:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49342)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpQw-00062i-0e; Tue, 20 Oct 2020 07:04:02 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5263 helo=huawei.com)
+ id 1kUpQx-00067S-LH; Tue, 20 Oct 2020 07:04:03 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:38960 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpQt-0006nw-3r; Tue, 20 Oct 2020 07:04:01 -0400
+ id 1kUpQv-0006oj-FT; Tue, 20 Oct 2020 07:04:03 -0400
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id DCB023420655B35F5E41;
- Tue, 20 Oct 2020 19:03:54 +0800 (CST)
+ by Forcepoint Email with ESMTP id ACACA193F93C4181BED7;
+ Tue, 20 Oct 2020 19:03:49 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 19:03:46 +0800
+ 19:03:39 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <mst@redhat.com>, <f4bug@amsat.org>, <lvivier@redhat.com>,
  <peter.maydell@linaro.org>, <david@gibson.dropbear.id.au>,
  <alistair.francis@wdc.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 07/10] hw/pci-host/:split some lines containing more than 80
+Subject: [PATCH 02/10] hw/core/:split some lines containing more than 80
  characters
-Date: Tue, 20 Oct 2020 04:30:20 +0800
-Message-ID: <20201019203023.658555-8-ganqixin@huawei.com>
+Date: Tue, 20 Oct 2020 04:30:15 +0800
+Message-ID: <20201019203023.658555-3-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201019203023.658555-1-ganqixin@huawei.com>
 References: <20201019203023.658555-1-ganqixin@huawei.com>
@@ -33,9 +33,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:03:55
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:03:45
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -56,139 +56,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 11:04:02 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 11:04:04 -0000
 
-By using scripts/checkpatch.pl, it is found that many files in hw/pci-host/
+By using scripts/checkpatch.pl, it is found that many files in hw/core/
 contain lines with more than 80 characters.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
- hw/pci-host/gpex-acpi.c | 18 ++++++++----------
- hw/pci-host/pam.c       |  4 ++--
- hw/pci-host/ppce500.c   |  8 +++++---
- hw/pci-host/q35.c       | 11 +++++++----
- hw/pci-host/versatile.c |  5 +++--
- 5 files changed, 25 insertions(+), 21 deletions(-)
+ hw/core/bus.c                    |  3 ++-
+ hw/core/loader.c                 | 17 +++++++++++------
+ hw/core/machine-hmp-cmds.c       |  6 ++++--
+ hw/core/machine.c                |  3 ++-
+ hw/core/qdev-properties-system.c |  4 ++--
+ 5 files changed, 21 insertions(+), 12 deletions(-)
 
-diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-index dbb350a837..a7cf59018d 100644
---- a/hw/pci-host/gpex-acpi.c
-+++ b/hw/pci-host/gpex-acpi.c
-@@ -64,12 +64,11 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-                             nr_pcie_buses));
-     if (cfg->mmio32.size) {
-         aml_append(rbuf,
--                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
--                                    cfg->mmio32.base,
-+                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-+                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-+                                    AML_READ_WRITE, 0x0000, cfg->mmio32.base,
-                                     cfg->mmio32.base + cfg->mmio32.size - 1,
--                                    0x0000,
--                                    cfg->mmio32.size));
-+                                    0x0000, cfg->mmio32.size));
-     }
-     if (cfg->pio.size) {
-         aml_append(rbuf,
-@@ -81,12 +80,11 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-     }
-     if (cfg->mmio64.size) {
-         aml_append(rbuf,
--                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
--                                    cfg->mmio64.base,
-+                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-+                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-+                                    AML_READ_WRITE, 0x0000, cfg->mmio64.base,
-                                     cfg->mmio64.base + cfg->mmio64.size - 1,
--                                    0x0000,
--                                    cfg->mmio64.size));
-+                                    0x0000, cfg->mmio64.size));
-     }
-     aml_append(dev, aml_name_decl("_CRS", rbuf));
- 
-diff --git a/hw/pci-host/pam.c b/hw/pci-host/pam.c
-index a496205783..6253406abd 100644
---- a/hw/pci-host/pam.c
-+++ b/hw/pci-host/pam.c
-@@ -45,8 +45,8 @@ void init_pam(DeviceState *dev, MemoryRegion *ram_memory,
-     memory_region_set_readonly(&mem->alias[1], true);
- 
-     /* XXX: should distinguish read/write cases */
--    memory_region_init_alias(&mem->alias[0], OBJECT(dev), "pam-pci", pci_address_space,
--                             start, size);
-+    memory_region_init_alias(&mem->alias[0], OBJECT(dev), "pam-pci",
-+                             pci_address_space, start, size);
-     memory_region_init_alias(&mem->alias[2], OBJECT(dev), "pam-pci", ram_memory,
-                              start, size);
- 
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index 9517aab913..d3e8e77236 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -423,8 +423,9 @@ static void e500_pcihost_bridge_realize(PCIDevice *d, Error **errp)
-     PPCE500CCSRState *ccsr = CCSR(container_get(qdev_get_machine(),
-                                   "/e500-ccsr"));
- 
--    memory_region_init_alias(&b->bar0, OBJECT(ccsr), "e500-pci-bar0", &ccsr->ccsr_space,
--                             0, int128_get64(ccsr->ccsr_space.size));
-+    memory_region_init_alias(&b->bar0, OBJECT(ccsr), "e500-pci-bar0",
-+                             &ccsr->ccsr_space, 0,
-+                             int128_get64(ccsr->ccsr_space.size));
-     pci_register_bar(d, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &b->bar0);
+diff --git a/hw/core/bus.c b/hw/core/bus.c
+index a0483859ae..9b2dc7e25c 100644
+--- a/hw/core/bus.c
++++ b/hw/core/bus.c
+@@ -158,7 +158,8 @@ void qbus_create_inplace(void *bus, size_t size, const char *typename,
+     qbus_init(bus, parent, name);
  }
  
-@@ -474,7 +475,8 @@ static void e500_pcihost_realize(DeviceState *dev, Error **errp)
+-BusState *qbus_create(const char *typename, DeviceState *parent, const char *name)
++BusState *qbus_create(const char *typename, DeviceState *parent,
++                      const char *name)
+ {
+     BusState *bus;
  
-     pci_create_simple(b, 0, "e500-host-bridge");
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 8bbb1797a4..50839d93e3 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -211,14 +211,18 @@ static void bswap_ahdr(struct exec *e)
+ #define N_TXTOFF(x)							\
+     (N_MAGIC(x) == ZMAGIC ? _N_HDROFF((x)) + sizeof (struct exec) :	\
+      (N_MAGIC(x) == QMAGIC ? 0 : sizeof (struct exec)))
+-#define N_TXTADDR(x, target_page_size) (N_MAGIC(x) == QMAGIC ? target_page_size : 0)
+-#define _N_SEGMENT_ROUND(x, target_page_size) (((x) + target_page_size - 1) & ~(target_page_size - 1))
++#define N_TXTADDR(x, target_page_size) \
++    (N_MAGIC(x) == QMAGIC ? target_page_size : 0)
++#define _N_SEGMENT_ROUND(x, target_page_size) \
++    (((x) + target_page_size - 1) & ~(target_page_size - 1))
  
--    memory_region_init(&s->container, OBJECT(h), "pci-container", PCIE500_ALL_SIZE);
-+    memory_region_init(&s->container, OBJECT(h), "pci-container",
-+                       PCIE500_ALL_SIZE);
-     memory_region_init_io(&h->conf_mem, OBJECT(h), &pci_host_conf_be_ops, h,
-                           "pci-conf-idx", 4);
-     memory_region_init_io(&h->data_mem, OBJECT(h), &pci_host_data_le_ops, h,
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index b67cb9c29f..8c4031dda7 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -573,14 +573,17 @@ static void mch_realize(PCIDevice *d, Error **errp)
+-#define _N_TXTENDADDR(x, target_page_size) (N_TXTADDR(x, target_page_size)+(x).a_text)
++#define _N_TXTENDADDR(x, target_page_size) \
++    (N_TXTADDR(x, target_page_size) + (x).a_text)
  
-     /* if *disabled* show SMRAM to all CPUs */
-     memory_region_init_alias(&mch->smram_region, OBJECT(mch), "smram-region",
--                             mch->pci_address_space, MCH_HOST_BRIDGE_SMRAM_C_BASE,
-+                             mch->pci_address_space,
-+                             MCH_HOST_BRIDGE_SMRAM_C_BASE,
-                              MCH_HOST_BRIDGE_SMRAM_C_SIZE);
--    memory_region_add_subregion_overlap(mch->system_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
-+    memory_region_add_subregion_overlap(mch->system_memory,
-+                                        MCH_HOST_BRIDGE_SMRAM_C_BASE,
-                                         &mch->smram_region, 1);
-     memory_region_set_enabled(&mch->smram_region, true);
+ #define N_DATADDR(x, target_page_size) \
+-    (N_MAGIC(x)==OMAGIC? (_N_TXTENDADDR(x, target_page_size)) \
+-     : (_N_SEGMENT_ROUND (_N_TXTENDADDR(x, target_page_size), target_page_size)))
++    (N_MAGIC(x) == OMAGIC ? (_N_TXTENDADDR(x, target_page_size)) \
++     : (_N_SEGMENT_ROUND(_N_TXTENDADDR(x, target_page_size), \
++    target_page_size)))
  
--    memory_region_init_alias(&mch->open_high_smram, OBJECT(mch), "smram-open-high",
--                             mch->ram_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
-+    memory_region_init_alias(&mch->open_high_smram, OBJECT(mch),
-+                             "smram-open-high", mch->ram_memory,
-+                             MCH_HOST_BRIDGE_SMRAM_C_BASE,
-                              MCH_HOST_BRIDGE_SMRAM_C_SIZE);
-     memory_region_add_subregion_overlap(mch->system_memory, 0xfeda0000,
-                                         &mch->open_high_smram, 1);
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index 3553277f94..1dab38e695 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -454,8 +454,9 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
-      * offsets are guest controllable via the IMAP registers.
-      */
-     for (i = 0; i < 3; i++) {
--        memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s), "pci-vbp-window",
--                                 &s->pci_mem_space, 0, s->mem_win_size[i]);
-+        memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s),
-+                                 "pci-vbp-window", &s->pci_mem_space, 0,
-+                                 s->mem_win_size[i]);
-         sysbus_init_mmio(sbd, &s->pci_mem_window[i]);
+ 
+ int load_aout(const char *filename, hwaddr addr, int max_sz,
+@@ -1190,7 +1194,8 @@ int rom_check_and_register_reset(void)
+         }
+         section = memory_region_find(rom->mr ? rom->mr : get_system_memory(),
+                                      rom->addr, 1);
+-        rom->isrom = int128_nz(section.size) && memory_region_is_rom(section.mr);
++        rom->isrom = int128_nz(section.size)
++                     && memory_region_is_rom(section.mr);
+         memory_region_unref(section.mr);
+     }
+     qemu_register_reset(rom_reset, NULL);
+diff --git a/hw/core/machine-hmp-cmds.c b/hw/core/machine-hmp-cmds.c
+index 6357be9c6b..65280d53bc 100644
+--- a/hw/core/machine-hmp-cmds.c
++++ b/hw/core/machine-hmp-cmds.c
+@@ -73,7 +73,8 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict)
+             monitor_printf(mon, "    node-id: \"%" PRIu64 "\"\n", c->node_id);
+         }
+         if (c->has_socket_id) {
+-            monitor_printf(mon, "    socket-id: \"%" PRIu64 "\"\n", c->socket_id);
++            monitor_printf(mon, "    socket-id: \"%" PRIu64 "\"\n",
++                           c->socket_id);
+         }
+         if (c->has_die_id) {
+             monitor_printf(mon, "    die-id: \"%" PRIu64 "\"\n", c->die_id);
+@@ -82,7 +83,8 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict)
+             monitor_printf(mon, "    core-id: \"%" PRIu64 "\"\n", c->core_id);
+         }
+         if (c->has_thread_id) {
+-            monitor_printf(mon, "    thread-id: \"%" PRIu64 "\"\n", c->thread_id);
++            monitor_printf(mon, "    thread-id: \"%" PRIu64 "\"\n",
++                           c->thread_id);
+         }
+ 
+         l = l->next;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 7e2f4ec08e..055473c23a 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -317,7 +317,8 @@ static char *machine_get_dt_compatible(Object *obj, Error **errp)
+     return g_strdup(ms->dt_compatible);
+ }
+ 
+-static void machine_set_dt_compatible(Object *obj, const char *value, Error **errp)
++static void machine_set_dt_compatible(Object *obj,
++                                      const char *value, Error **errp)
+ {
+     MachineState *ms = MACHINE(obj);
+ 
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 49bdd12581..c4f7170a06 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -418,8 +418,8 @@ static void set_netdev(Object *obj, Visitor *v, const char *name,
+     }
+ 
+     if (queues > MAX_QUEUE_NUM) {
+-        error_setg(errp, "queues of backend '%s'(%d) exceeds QEMU limitation(%d)",
+-                   str, queues, MAX_QUEUE_NUM);
++        error_setg(errp, "queues of backend '%s'(%d) exceeds"
++                   "QEMU limitation(%d)", str, queues, MAX_QUEUE_NUM);
+         goto out;
      }
  
 -- 
