@@ -1,59 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUuEU-0006Ar-BN
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 12:11:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41568)
+	id 1kUuZ5-0001cR-Dn
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 12:32:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kUuEO-00068X-PD
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:11:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54410)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kUuYy-0001Yx-R2
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:32:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55207)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kUuEM-0005nQ-GX
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:11:24 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kUuYv-0000Cj-T8
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:32:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603210279;
+ s=mimecast20190719; t=1603211555;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hMdFmKf+4yJFeTkE1CsBn2wUg37eYQjXzxR2R0WcwOk=;
- b=ABi6SyuHQ210rua5X+N6BcpQlbcJA0HjcTegRVN85PMvJoSosmePfA/i69xPHBDj7eP/vi
- fNoRMjkHwpcCglMfv0w7rqFkbbp2OaEC7nacE4URp/qPgKgLk/Kq4iItZrQaCTOLPRNnkY
- zcZKZN3s9Epyeog7nonRwH9W7/s4weo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-494-nE5q74F8O0eOWsNQPazE-A-1; Tue, 20 Oct 2020 12:11:17 -0400
-X-MC-Unique: nE5q74F8O0eOWsNQPazE-A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D80198CD5BD;
- Tue, 20 Oct 2020 16:10:56 +0000 (UTC)
-Received: from [10.10.115.172] (ovpn-115-172.rdu2.redhat.com [10.10.115.172])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B98EB5B4A1;
- Tue, 20 Oct 2020 16:10:55 +0000 (UTC)
-Subject: Re: [PATCH v2] Remove deprecated -no-kvm option
+ bh=JBJSIk2O6RXCCa2bdwMEJbUFi81kXeBpz4bx/4z6zs0=;
+ b=TmbHKIBTZK9Xo/tyrGibB3KYCVrToxo7R6HdmRA0rvYirGUqTgjlyGrjq7gmzPQgtT6sUA
+ LM2se3Rkg5KvQ0Q+yK2ooR2oAeizukPk7nhq4Q7y4G49nkiDLVfx0YbjtHYFd1mIWfuZIt
+ vzAwb87vtyQdVFciQCxukEpQTmQZaHY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-234-XB-PaGx_Oei5Z4UzUZX37w-1; Tue, 20 Oct 2020 12:32:33 -0400
+X-MC-Unique: XB-PaGx_Oei5Z4UzUZX37w-1
+Received: by mail-wr1-f70.google.com with SMTP id 31so1020818wrg.12
+ for <qemu-trivial@nongnu.org>; Tue, 20 Oct 2020 09:32:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JBJSIk2O6RXCCa2bdwMEJbUFi81kXeBpz4bx/4z6zs0=;
+ b=Q8WP5Ol0fpe1J1XYGt0PLlw4jHOsBZUSJxJCDmz/ooNKtrAk2/fApa1cvAr30wi6//
+ Bc1qJ42OkKpRmkB2MK1OlMI7lN0YBH8NmQpprKNU8PIn1cyxQRaDVEFZp1AHqPCTMPUW
+ iSYiVjUf95WkrU6zzEsBH1DuS2XSWPRXDI1PTNY8O7tpyADHuNgexDSarHgrcVV9oAl4
+ ks0H5gAz4Gf+KfsA5Jj9bGxMeKgipzfKjAU8ATXFI7IMbGtuIOOK42lc3cexH0smzzPR
+ DlFAgfu15CrSfI/lGGe4GvzFtoPq+6UACdjdx3WVjpg8ZXkN+8QimNCg7rX8NSvNzMS5
+ IoRw==
+X-Gm-Message-State: AOAM53362WHCRuTEKQuiTMmK7vROVD09GoU3CFU+A2KQ2IF1NwOx4LaI
+ +8j6ErnUbaXeP5JY7iTyf3jaS/xyoWU7o8faXxrCTLXNh0avbcLiIvby8JfhPOZGra/TtnNs1T0
+ nnjGUb3fuljIc1s0P+A==
+X-Received: by 2002:a7b:c14f:: with SMTP id z15mr4007793wmi.73.1603211551443; 
+ Tue, 20 Oct 2020 09:32:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpI3V0EC9WbZ2CAJMbuXHk7vIaB+3rzCNPBJzsXs8wOLMVgC6iJjWpgIwrUg1mh3y213K1lw==
+X-Received: by 2002:a7b:c14f:: with SMTP id z15mr4007767wmi.73.1603211551122; 
+ Tue, 20 Oct 2020 09:32:31 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id s2sm3703990wmf.45.2020.10.20.09.32.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Oct 2020 09:32:30 -0700 (PDT)
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  "Daniel P . Berrange" <berrange@redhat.com>, libvir-list@redhat.com
 References: <20201020160504.62460-1-thuth@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <507d30ee-dd62-acd6-883a-73b3a052ca45@redhat.com>
-Date: Tue, 20 Oct 2020 12:10:55 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+From: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2] Remove deprecated -no-kvm option
+Message-ID: <a8f9d6ad-9ce9-485f-754e-64a4fbe18817@redhat.com>
+Date: Tue, 20 Oct 2020 18:32:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
 In-Reply-To: <20201020160504.62460-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:15:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -77,9 +96,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 16:11:26 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 16:32:41 -0000
 
-On 10/20/20 12:05 PM, Thomas Huth wrote:
+On 20/10/20 18:05, Thomas Huth wrote:
 > The option has never been mentioned in our documentation, it's been
 > deprecated since years, it's marked with QEMU_ARCH_I386 (which does
 > not make sense anymore since KVM is available on other architectures,
@@ -90,75 +109,43 @@ On 10/20/20 12:05 PM, Thomas Huth wrote:
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   v2: Mention the parameter in the "removed feature" section (thanks Paolo!)
+>  v2: Mention the parameter in the "removed feature" section (thanks Paolo!)
 > 
->   docs/system/deprecated.rst | 11 ++++++-----
->   qemu-options.hx            |  3 ---
->   softmmu/vl.c               |  4 ----
->   3 files changed, 6 insertions(+), 12 deletions(-)
+>  docs/system/deprecated.rst | 11 ++++++-----
+>  qemu-options.hx            |  3 ---
+>  softmmu/vl.c               |  4 ----
+>  3 files changed, 6 insertions(+), 12 deletions(-)
 > 
 > diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
 > index 905628f3a0..9bae13bc01 100644
 > --- a/docs/system/deprecated.rst
 > +++ b/docs/system/deprecated.rst
 > @@ -27,11 +27,6 @@ System emulator command line arguments
->   The ``enforce-config-section`` parameter is replaced by the
->   ``-global migration.send-configuration={on|off}`` option.
->   
+>  The ``enforce-config-section`` parameter is replaced by the
+>  ``-global migration.send-configuration={on|off}`` option.
+>  
 > -``-no-kvm`` (since 1.3.0)
 > -'''''''''''''''''''''''''
 > -
 > -The ``-no-kvm`` argument is now a synonym for setting ``-accel tcg``.
 > -
->   ``-usbdevice`` (since 2.10.0)
->   '''''''''''''''''''''''''''''
->   
+>  ``-usbdevice`` (since 2.10.0)
+>  '''''''''''''''''''''''''''''
+>  
 > @@ -504,6 +499,12 @@ System emulator command line arguments
->   The ``name`` parameter of the ``-net`` option was a synonym
->   for the ``id`` parameter, which should now be used instead.
->   
+>  The ``name`` parameter of the ``-net`` option was a synonym
+>  for the ``id`` parameter, which should now be used instead.
+>  
 > +``-no-kvm`` (removed in 5.2)
 > +''''''''''''''''''''''''''''
 > +
 > +The ``-no-kvm`` argument was a synonym for setting ``-accel tcg``.
-> +
-> +
->   QEMU Machine Protocol (QMP) commands
->   ------------------------------------
->   
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 1da52a269c..9e1ace04f7 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4351,9 +4351,6 @@ SRST
->       Enable FIPS 140-2 compliance mode.
->   ERST
->   
-> -HXCOMM Deprecated by -accel tcg
-> -DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
-> -
->   DEF("msg", HAS_ARG, QEMU_OPTION_msg,
->       "-msg [timestamp[=on|off]][,guest-name=[on|off]]\n"
->       "                control error message format\n"
-> diff --git a/softmmu/vl.c b/softmmu/vl.c
-> index cb476aa70b..6f5b000f07 100644
-> --- a/softmmu/vl.c
-> +++ b/softmmu/vl.c
-> @@ -3502,10 +3502,6 @@ void qemu_init(int argc, char **argv, char **envp)
->                       exit(1);
->                   }
->                   break;
-> -             case QEMU_OPTION_no_kvm:
-> -                olist = qemu_find_opts("machine");
-> -                qemu_opts_parse_noisily(olist, "accel=tcg", false);
-> -                break;
->               case QEMU_OPTION_accel:
->                   accel_opts = qemu_opts_parse_noisily(qemu_find_opts("accel"),
->                                                        optarg, true);
-> 
 
-One down, 130 to go? *g*
+Changed this to ``-machine accel=tcg`` and queued, thanks.
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+(In case you're wondering, the difference is that it prevents ``-no-kvm
+-accel kvm`` from working).
+
+Paolo
 
 
