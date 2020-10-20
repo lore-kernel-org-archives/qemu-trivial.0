@@ -1,69 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUkRs-00041b-0G
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 01:44:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39086)
+	id 1kUlM0-0002KC-S0
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 02:42:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUkRq-0003zk-Aj
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 01:44:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35940)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUkRo-0000AE-A3
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 01:44:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603172672;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Rl6aOWNMJvJ22FeKJKS5msBruGknc3U/DkTAGrtonVc=;
- b=irSMojALKSnhPcZOpmECIJkP82rHvjs/xBtPURJK0yrAepS2rNm5WRERVfm2Kaff2AKwZT
- t5GSeF2YVXeqczYEyWmGv2lWXK+O3tQn5Je4k12T+d9RUPNHsUrzUZG7fxUtAZkXOSQYkh
- yj4z9gjdxlc1Sz9SLPwr52FgmhGGwtM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-ZGE4PCIjOtKrlkYoQHNJqQ-1; Tue, 20 Oct 2020 01:44:30 -0400
-X-MC-Unique: ZGE4PCIjOtKrlkYoQHNJqQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 226A6186DD21;
- Tue, 20 Oct 2020 05:44:29 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-107.ams2.redhat.com [10.36.112.107])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0C91427CD4;
- Tue, 20 Oct 2020 05:44:25 +0000 (UTC)
-Subject: Re: [PATCH] scripts/qmp: delete 'qmp' script
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201019210430.1063390-1-jsnow@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <e057e735-1288-0aa3-0333-cc1d8188f704@redhat.com>
-Date: Tue, 20 Oct 2020 07:44:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kUlLz-0002Jl-L5; Tue, 20 Oct 2020 02:42:39 -0400
+Received: from mail-ej1-f65.google.com ([209.85.218.65]:40766)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kUlLx-00036h-Ow; Tue, 20 Oct 2020 02:42:39 -0400
+Received: by mail-ej1-f65.google.com with SMTP id z5so1022911ejw.7;
+ Mon, 19 Oct 2020 23:42:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=n5wA3F/wNadLtgZKL7hEJNVuHrBuhC/d+3AOnovrj7s=;
+ b=F0wyKRSEyovPqLJEAFMHrNL06pLkdznSKBOGwgFIfaUhuHAmoQPDFQld89zRNOCsda
+ 22H8IXc9mUO/2081tigrhsbcF2LBKTeLFU6olzgbS0/wFn6+56SG0N8QDO8tq3eI3wKU
+ a9kX38ToWTuT0AXrO7Jx9ztwtHEGcjtVy5rhkgVzpmS06efiJf74gug07HD29yvS1Vwu
+ 3U3l/UeVPbBmaMATGRPc9ot4ueLvF0eTAeV4NzqdLgBTQu9lILUC6sVe9PC30ltfnjT+
+ 79TWt3ABkaImPGMZclqBdcbNjhhKrk2wILDTy1c5Giq5BcuP7QMYbLdh7Pe56dEFh6a7
+ DU6g==
+X-Gm-Message-State: AOAM530yiz7NOZwPvuKiz3+mvdzU/Z/cm1KcOHxsMX9n5nGIDHhABPxE
+ 2n2nDd/c7+3tQNRpAS/vVmV8IVUHvfjKc4DgwG8=
+X-Google-Smtp-Source: ABdhPJzOTKSm0mIIS2FPQf0RDVsv4FcrMyx267Rcq9bvKebT0LHe5ufxq7CB+qm+iBIC7DACIM25SfCFe2EcbAciBsk=
+X-Received: by 2002:a17:906:fb86:: with SMTP id
+ lr6mr1609234ejb.510.1603176155998; 
+ Mon, 19 Oct 2020 23:42:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201019210430.1063390-1-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:15:43
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+ <a5a68476-0ed8-08f9-f993-464317d798bf@huawei.com>
+In-Reply-To: <a5a68476-0ed8-08f9-f993-464317d798bf@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Tue, 20 Oct 2020 08:42:24 +0200
+Message-ID: <CAAdtpL5HZzb+_gAyNGQfM1N7vBxmLck2TXiGohv9D9dgO16cRw@mail.gmail.com>
+Subject: Re: [PATCH V2 00/14] fix some comment spelling errors
+To: Lichang Zhao <zhaolichang@huawei.com>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.218.65;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f65.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 02:42:36
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,33 +66,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 05:44:38 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 06:42:40 -0000
 
-On 19/10/2020 23.04, John Snow wrote:
-> This script has not seen a patch that was specifically for this script
-> since it was moved to this location in 2013, and I doubt it is used. It
-> uses "man qmp" for its help message, which does not exist. It also
-> presumes there is a manual page for qmp-XXX, for each defined qmp
-> command XXX. I don't think that's true.
-> 
-> The format it expects arguments in is something like:
-> 
-> block-dirty-bitmap-add --node=foo --name=bar
-> 
-> and has no capacity to support nested JSON arguments, either.
-> 
-> Most developers use either qmp-shell or socat (or pasting JSON directly
-> into qmp stdio), so this duplication and additional alternate syntax is
-> not helpful.
-> 
-> Remove it. Leave a breadcrumb script just in case, to be removed next
-> release cycle.
-> 
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  scripts/qmp/qmp | 131 +++---------------------------------------------
->  1 file changed, 7 insertions(+), 124 deletions(-)
+You forgot to Cc qemu-devel@.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+(See https://wiki.qemu.org/Contribute/SubmitAPatch#CC_the_relevant_maintain=
+er)
 
+On Tue, Oct 20, 2020 at 4:46 AM Lichang Zhao <zhaolichang@huawei.com> wrote=
+:
+
+Now your name is properly displayed, so I assume you finally ran:
+
+$ git config user.name "Lichang Zhao".
+
+To fix how your name is displayed in your previous contributions,
+consider sending this patch:
+
+-- >8 --
+diff --git a/.mailmap b/.mailmap
+index 663819fb017..a56c5ba5ee1 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -113,6 +113,7 @@ Liu Yu <yu.liu@freescale.com>
+Liu Yu <Yu.Liu@freescale.com>
+Li Zhang <zhlcindy@gmail.com>
+Li Zhang <zhlcindy@linux.vnet.ibm.com>
++Lichang Zhao <zhaolichang@huawei.com>
+Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+Llu=C3=ADs Vilanova <xscript@gmx.net>
+Longpeng (Mike) <longpeng2@huawei.com>
+
+---
+
+(or Ack-by it here and I'll send it).
+
+>
+> On 2020/10/9 14:44, zhaolichang wrote:
+> > I found that there are many spelling errors in the comments of qemu/tar=
+get/.
+> >
+> > I used spellcheck to check the spelling errors and found some errors in=
+ the folder.
+> >
+> >
+> >
+> > The checkpatch.pl file in the Linux kernel can check spelling errors in=
+ patches.
+> >
+> > I'm trying to add this function to the checkpatch.pl in qemu,
+> >
+> > so that no similar spelling errors will occur in the feture.
+> >
+> > It's not done yet and I will commit the patch when it's done.
+> >
+> >
+> >
+> > v1 -> v2:
+> >
+> >   add reviewed-by for patch
+> >
+> >
+> >
+> > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+> >
+>
+> ping
+> This series of patches have been reviewed. Can you help me to pull them?
+>
 
