@@ -1,70 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUbsT-0004BR-Se
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 16:35:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33264)
+	id 1kUhfd-0001X3-Rv
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 22:46:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kUbsR-0004AY-LF
- for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 16:35:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39171)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kUbsO-0004Ng-QF
- for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 16:35:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603139727;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lTUu9QvrNkYv40O6iKHau2L0wvTijiBSehqfHgFDpiI=;
- b=EKB3mU3ErLNRZWjqlMdXFvCdotqNQ//caEzubnHCNZcuQvZvwauYmBUHE7EUjIXC8fILoe
- y3OQwUIHsP43E20tcVcdp1hohL805u/onL2ks03evs2rNcXtQ9YN3mtIQ2KrHQ+jhe+DLu
- MEj/zWB4cgor8lliZYHU4WD1l0EgK+o=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-nkYYGVQrP7ivY44r9cMAVA-1; Mon, 19 Oct 2020 16:35:22 -0400
-X-MC-Unique: nkYYGVQrP7ivY44r9cMAVA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6291A8049CB;
- Mon, 19 Oct 2020 20:35:21 +0000 (UTC)
-Received: from [10.3.112.28] (ovpn-112-28.phx2.redhat.com [10.3.112.28])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EED7710013C1;
- Mon, 19 Oct 2020 20:35:20 +0000 (UTC)
-Subject: Re: [PATCH 6/30] semihosting: Fix Lesser GPL version number
-To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: alex.bennee@linaro.org, qemu-devel@nongnu.org
-References: <20201016143509.26692-1-chetan4windows@gmail.com>
- <20201016144243.26817-1-chetan4windows@gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <9a927711-58b5-c891-9713-dd735ec9fb59@redhat.com>
-Date: Mon, 19 Oct 2020 15:35:20 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kUhfc-0001Ws-N9
+ for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 22:46:40 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:53332 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kUhfZ-0004hW-Vx
+ for qemu-trivial@nongnu.org; Mon, 19 Oct 2020 22:46:40 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id F3DF2AE0AEDF5D564540;
+ Tue, 20 Oct 2020 10:46:20 +0800 (CST)
+Received: from [10.174.186.238] (10.174.186.238) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 20 Oct 2020 10:46:10 +0800
+Subject: Re: [PATCH V2 00/14] fix some comment spelling errors
+To: zhaolichang <zhaolichang@huawei.com>
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+CC: <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, "Laurent
+ Vivier" <laurent@vivier.eu>
+From: Lichang Zhao <zhaolichang@huawei.com>
+Message-ID: <a5a68476-0ed8-08f9-f993-464317d798bf@huawei.com>
+Date: Tue, 20 Oct 2020 10:45:54 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.3
 MIME-Version: 1.0
-In-Reply-To: <20201016144243.26817-1-chetan4windows@gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20201009064449.2336-1-zhaolichang@huawei.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 15:28:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.174.186.238]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=zhaolichang@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 22:24:36
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,60 +56,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Oct 2020 20:35:32 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 02:46:40 -0000
 
-On 10/16/20 9:42 AM, Chetan Pant wrote:
-> There is no "version 2" of the "Lesser" General Public License.
+On 2020/10/9 14:44, zhaolichang wrote:
+> I found that there are many spelling errors in the comments of qemu/target/.
+> 
+> I used spellcheck to check the spelling errors and found some errors in the folder.
+> 
+> 
+> 
+> The checkpatch.pl file in the Linux kernel can check spelling errors in patches.
+> 
+> I'm trying to add this function to the checkpatch.pl in qemu,
+> 
+> so that no similar spelling errors will occur in the feture.
+> 
+> It's not done yet and I will commit the patch when it's done.
+> 
+> 
+> 
+> v1 -> v2:
+> 
+>   add reviewed-by for patch
+> 
+> 
+> 
+> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+> 
 
-Meta-comment: Looking in the archives, I see some odd threading going on:
-
-https://lists.gnu.org/archive/html/qemu-devel/2020-10/threads.html#04020
-
-You sent 1/30 and 2/30 as independent threads, then deeply threaded 
-3-8/30, but I don't see a 0/30 cover letter, nor 9-30/30.
-
-When you use deep threading, it gets awkward to read replies in mailers 
-that group by thread depth before date:
-
-+ 1/30
-  \+ re: 1/30
-+ 2/30
-  \+ re: 1/30
-+ 3/30
-| + 4/30
-| | + 5/30
-| | | + 6/30
-| | | | + 7/30
-| | | | | + 8/30
-| | | | |  \+ re: 8/30
-| | | |  \+ re: 7/30
-| | |  \+ re: 6/30
-| |  \+ re: 5/30
-|  \+ re: 4/30
-  \+ re: 3/30
-
-instead of the more typical
-
-+ 0/30
-| + 1/30
-|  \+ re: 1/30
-| + 2/30
-|  \+ re: 2/30
-| + 3/30
-|  \+ re: 3/30
-| + 4/30
-|  \+ re: 4/30
-...
-| + 30/30
-|  \+ re: 30/30
-  \+ re: 0/30
-
-Figuring out how to make your mailer thread properly will make it easier 
-to interact with your future patches.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+ping
+This series of patches have been reviewed. Can you help me to pull them?
 
