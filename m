@@ -1,90 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUuZ5-0001cR-Dn
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 12:32:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47584)
+	id 1kUy9x-0006u6-Af
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 16:23:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kUuYy-0001Yx-R2
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:32:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55207)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kUuYv-0000Cj-T8
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 12:32:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603211555;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JBJSIk2O6RXCCa2bdwMEJbUFi81kXeBpz4bx/4z6zs0=;
- b=TmbHKIBTZK9Xo/tyrGibB3KYCVrToxo7R6HdmRA0rvYirGUqTgjlyGrjq7gmzPQgtT6sUA
- LM2se3Rkg5KvQ0Q+yK2ooR2oAeizukPk7nhq4Q7y4G49nkiDLVfx0YbjtHYFd1mIWfuZIt
- vzAwb87vtyQdVFciQCxukEpQTmQZaHY=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-234-XB-PaGx_Oei5Z4UzUZX37w-1; Tue, 20 Oct 2020 12:32:33 -0400
-X-MC-Unique: XB-PaGx_Oei5Z4UzUZX37w-1
-Received: by mail-wr1-f70.google.com with SMTP id 31so1020818wrg.12
- for <qemu-trivial@nongnu.org>; Tue, 20 Oct 2020 09:32:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JBJSIk2O6RXCCa2bdwMEJbUFi81kXeBpz4bx/4z6zs0=;
- b=Q8WP5Ol0fpe1J1XYGt0PLlw4jHOsBZUSJxJCDmz/ooNKtrAk2/fApa1cvAr30wi6//
- Bc1qJ42OkKpRmkB2MK1OlMI7lN0YBH8NmQpprKNU8PIn1cyxQRaDVEFZp1AHqPCTMPUW
- iSYiVjUf95WkrU6zzEsBH1DuS2XSWPRXDI1PTNY8O7tpyADHuNgexDSarHgrcVV9oAl4
- ks0H5gAz4Gf+KfsA5Jj9bGxMeKgipzfKjAU8ATXFI7IMbGtuIOOK42lc3cexH0smzzPR
- DlFAgfu15CrSfI/lGGe4GvzFtoPq+6UACdjdx3WVjpg8ZXkN+8QimNCg7rX8NSvNzMS5
- IoRw==
-X-Gm-Message-State: AOAM53362WHCRuTEKQuiTMmK7vROVD09GoU3CFU+A2KQ2IF1NwOx4LaI
- +8j6ErnUbaXeP5JY7iTyf3jaS/xyoWU7o8faXxrCTLXNh0avbcLiIvby8JfhPOZGra/TtnNs1T0
- nnjGUb3fuljIc1s0P+A==
-X-Received: by 2002:a7b:c14f:: with SMTP id z15mr4007793wmi.73.1603211551443; 
- Tue, 20 Oct 2020 09:32:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpI3V0EC9WbZ2CAJMbuXHk7vIaB+3rzCNPBJzsXs8wOLMVgC6iJjWpgIwrUg1mh3y213K1lw==
-X-Received: by 2002:a7b:c14f:: with SMTP id z15mr4007767wmi.73.1603211551122; 
- Tue, 20 Oct 2020 09:32:31 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id s2sm3703990wmf.45.2020.10.20.09.32.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Oct 2020 09:32:30 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>, libvir-list@redhat.com
-References: <20201020160504.62460-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2] Remove deprecated -no-kvm option
-Message-ID: <a8f9d6ad-9ce9-485f-754e-64a4fbe18817@redhat.com>
-Date: Tue, 20 Oct 2020 18:32:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
-MIME-Version: 1.0
-In-Reply-To: <20201020160504.62460-1-thuth@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:15:43
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
+ id 1kUxKx-0004tX-96
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 15:30:23 -0400
+Received: from jax4mhob17.registeredsite.com ([64.69.218.105]:42910)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <josh@joshdubois.com>)
+ id 1kUxKv-0000DB-GM
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 15:30:22 -0400
+Received: from mailpod.hostingplatform.com
+ (atl4qobmail02pod1.registeredsite.com [10.30.71.114])
+ by jax4mhob17.registeredsite.com (8.14.4/8.14.4) with ESMTP id 09KJU7Be144908
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL)
+ for <qemu-trivial@nongnu.org>; Tue, 20 Oct 2020 15:30:07 -0400
+Received: (qmail 46928 invoked by uid 0); 20 Oct 2020 19:29:57 -0000
+X-TCPREMOTEIP: 50.93.248.134
+X-Authenticated-UID: josh@joshdubois.com
+Received: from unknown (HELO ?192.168.1.5?) (josh@joshdubois.com@50.93.248.134)
+ by 0 with ESMTPA; 20 Oct 2020 19:29:57 -0000
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
+Subject: Re: [PATCH] trace/simple: Enable tracing on startup only if the user
+ specifies a trace option
+From: Josh DuBois <josh@joshdubois.com>
+In-Reply-To: <87blgxfe4n.fsf@dusky.pond.sub.org>
+Date: Tue, 20 Oct 2020 14:29:56 -0500
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Josh DuBois <duboisj@gmail.com>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <B1123C1E-0FFD-4DC4-9DA3-92B6FB4A4FA8@joshdubois.com>
+References: <20200816174610.20253-1-josh@joshdubois.com>
+ <20200911100805.GB81586@stefanha-x1.localdomain>
+ <87lfgt3u0i.fsf@dusky.pond.sub.org> <87blgxfe4n.fsf@dusky.pond.sub.org>
+To: Markus Armbruster <armbru@redhat.com>
+X-Mailer: Apple Mail (2.3608.80.23.2.2)
+Received-SPF: neutral client-ip=64.69.218.105;
+ envelope-from=josh@joshdubois.com; helo=jax4mhob17.registeredsite.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 15:30:17
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 20 Oct 2020 16:22:57 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,56 +61,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 16:32:41 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 19:30:23 -0000
 
-On 20/10/20 18:05, Thomas Huth wrote:
-> The option has never been mentioned in our documentation, it's been
-> deprecated since years, it's marked with QEMU_ARCH_I386 (which does
-> not make sense anymore since KVM is available on other architectures,
-> too), it does not do anything by default in upstream QEMU (since TCG
-> is the default here anyway), and we're spending too much precious time
-> each year discussing whether it makes sense to keep this option as a
-> nice suger or not... let's finally put an end on this and remove it.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Mention the parameter in the "removed feature" section (thanks Paolo!)
-> 
->  docs/system/deprecated.rst | 11 ++++++-----
->  qemu-options.hx            |  3 ---
->  softmmu/vl.c               |  4 ----
->  3 files changed, 6 insertions(+), 12 deletions(-)
-> 
-> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-> index 905628f3a0..9bae13bc01 100644
-> --- a/docs/system/deprecated.rst
-> +++ b/docs/system/deprecated.rst
-> @@ -27,11 +27,6 @@ System emulator command line arguments
->  The ``enforce-config-section`` parameter is replaced by the
->  ``-global migration.send-configuration={on|off}`` option.
->  
-> -``-no-kvm`` (since 1.3.0)
-> -'''''''''''''''''''''''''
-> -
-> -The ``-no-kvm`` argument is now a synonym for setting ``-accel tcg``.
-> -
->  ``-usbdevice`` (since 2.10.0)
->  '''''''''''''''''''''''''''''
->  
-> @@ -504,6 +499,12 @@ System emulator command line arguments
->  The ``name`` parameter of the ``-net`` option was a synonym
->  for the ``id`` parameter, which should now be used instead.
->  
-> +``-no-kvm`` (removed in 5.2)
-> +''''''''''''''''''''''''''''
-> +
-> +The ``-no-kvm`` argument was a synonym for setting ``-accel tcg``.
+Thanks for keeping on following-up, Markus. =20
 
-Changed this to ``-machine accel=tcg`` and queued, thanks.
+I know it's a small one, but it's still nice to have a small patch feel =
+loved ;)
 
-(In case you're wondering, the difference is that it prevents ``-no-kvm
--accel kvm`` from working).
-
-Paolo
+> On Oct 20, 2020, at 4:19 AM, Markus Armbruster <armbru@redhat.com> =
+wrote:
+>=20
+> Markus Armbruster <armbru@redhat.com> writes:
+>=20
+>> Stefan Hajnoczi <stefanha@gmail.com> writes:
+>>=20
+>>> On Sun, Aug 16, 2020 at 12:46:10PM -0500, duboisj@gmail.com wrote:
+>>>> From: Josh DuBois <josh@joshdubois.com>
+>>>>=20
+>>>> Tracing can be enabled at the command line or via the
+>>>> monitor. Command-line trace options are recorded during
+>>>> trace_opt_parse(), but tracing is not enabled until the various
+>>>> front-ends later call trace_init_file(). If the user passes a trace
+>>>> option on the command-line, remember that and enable tracing during
+>>>> trace_init_file().  Otherwise, trace_init_file() should record the
+>>>> trace file specified by the frontend and avoid enabling traces
+>>>> until the user requests them via the monitor.
+>>>>=20
+>>>> This fixes 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4 and also
+>>>> db25d56c014aa1a96319c663e0a60346a223b31e, by allowing the user
+>>>> to enable traces on the command line and also avoiding
+>>>> unwanted trace-<pid> files when the user has not asked for them.
+>>>>=20
+>>>> Fixes: 1b7157be3a8c4300fc8044d40f4b2e64a152a1b4
+>>>> Signed-off-by: Josh DuBois <josh@joshdubois.com>
+>>>> ---
+>>>> trace/control.c | 6 +++++-
+>>>> 1 file changed, 5 insertions(+), 1 deletion(-)
+>>>=20
+>>> Thanks, applied to my tracing-next tree:
+>>> https://github.com/stefanha/qemu/commits/tracing-next
+>>>=20
+>>> Stefan
+>>=20
+>> Pull request?
+>=20
+> Pretty-please?
+>=20
 
 
