@@ -1,61 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUtjq-0006nq-Fk
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 11:39:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33220)
+	id 1kUtwm-0000xK-MM
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 11:53:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUtjo-0006jE-Oq
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 11:39:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48249)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUtwi-0000wR-HS
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 11:53:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56825)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUtjn-0001Qq-5u
- for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 11:39:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUtwf-0003C1-6N
+ for qemu-trivial@nongnu.org; Tue, 20 Oct 2020 11:53:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603208386;
+ s=mimecast20190719; t=1603209184;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
- references:references; bh=00KM4f2VWpsnzdCiWTlBAYahGIiw9FH66M8ACJQmM70=;
- b=KdLSzu+FBCw9L2l4c8QIdrC0ecFWliY4VRtPjkSa9A1ux7T8RQkM9845FvmS9gJQt8yrk+
- +yEM5VHCvojE0ipie9AHcjpaQKtyI0aeN3IAcchNEuHf0Gb3W/G1me4e7Cgf1yKjXECFnd
- twk3fNB+YVQjP1aAuNu7IjPOWChDOl0=
+ to:to:cc:cc:content-type:content-type;
+ bh=akgMhc7eR0i5BVCRcJnC/AoxoBb3HKoU16hj0AREpC0=;
+ b=GZuJ1meLtJ9Zkwk5ZPZVDjyKd8ZB3k/Nemift36tRYq/n2PM3o86+sIqOCy6c7ouqX8W/K
+ 3nOQtrrFxsvQ9TTLHkLnIngPRUW6nbkBMCi3MKHds2WZ8C/zlAapOc2qrIG/kgRizvzPKt
+ 8rtMt+9IOIV8matWIxlcqW2F51i5sEM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-589-a2LShN4dNhySGnNI3pyN4w-1; Tue, 20 Oct 2020 11:39:42 -0400
-X-MC-Unique: a2LShN4dNhySGnNI3pyN4w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-204-ueAIFweAOMiyqQ_LHAD9KA-1; Tue, 20 Oct 2020 11:53:01 -0400
+X-MC-Unique: ueAIFweAOMiyqQ_LHAD9KA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8BCF757084;
- Tue, 20 Oct 2020 15:39:41 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2A78710866B8;
+ Tue, 20 Oct 2020 15:53:00 +0000 (UTC)
 Received: from thuth.com (dhcp-192-238.str.redhat.com [10.33.192.238])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9FF965B4A1;
- Tue, 20 Oct 2020 15:39:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7C9ED27C2A;
+ Tue, 20 Oct 2020 15:52:55 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: Yoshinori Sato <ysato@users.sourceforge.jp>,
-	qemu-devel@nongnu.org
-Cc: Magnus Damm <magnus.damm@gmail.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH 3/3] hw/timer/sh_timer: Remove superfluous "break" statements
-Date: Tue, 20 Oct 2020 17:39:35 +0200
-Message-Id: <20201020153935.54315-4-thuth@redhat.com>
-In-Reply-To: <20201020153935.54315-1-thuth@redhat.com>
-References: <20201020153935.54315-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>, libvir-list@redhat.com
+Subject: [PATCH] Remove deprecated -no-kvm option
+Date: Tue, 20 Oct 2020 17:52:54 +0200
+Message-Id: <20201020155254.56589-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:16:16
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:15:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,44 +67,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 15:39:49 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 15:53:10 -0000
 
-hw_error() is marked as QEMU_NORETURN, so the "break" statements
-after this function are just dead code.
+The option has never been mentioned in our documentation, it's been
+deprecated since years, it's marked with QEMU_ARCH_I386 (which does
+not make sense anymore since KVM is available on other architectures,
+too), it does not do anything by default in upstream QEMU (since TCG
+is the default here anyway), and we're spending too much precious time
+each year discussing whether it makes sense to keep this option as a
+nice suger or not... let's finally put an end on this and remove it.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/timer/sh_timer.c | 3 ---
- 1 file changed, 3 deletions(-)
+ docs/system/deprecated.rst | 5 -----
+ qemu-options.hx            | 3 ---
+ softmmu/vl.c               | 4 ----
+ 3 files changed, 12 deletions(-)
 
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 934daaa7dc..58af1a1edb 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -125,7 +125,6 @@ static void sh_timer_write(void *opaque, hwaddr offset,
-             /* fallthrough */
-         default:
-             hw_error("sh_timer_write: Reserved TPSC value\n");
--            break;
-         }
-         switch ((value & TIMER_TCR_CKEG) >> 3) {
-         case 0:
-@@ -139,7 +138,6 @@ static void sh_timer_write(void *opaque, hwaddr offset,
-             /* fallthrough */
-         default:
-             hw_error("sh_timer_write: Reserved CKEG value\n");
--            break;
-         }
-         switch ((value & TIMER_TCR_ICPE) >> 6) {
-         case 0:
-@@ -152,7 +150,6 @@ static void sh_timer_write(void *opaque, hwaddr offset,
-             /* fallthrough */
-         default:
-             hw_error("sh_timer_write: Reserved ICPE value\n");
--            break;
-         }
-         if ((value & TIMER_TCR_UNF) == 0) {
-             s->int_level = 0;
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index 905628f3a0..66ef89b872 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -27,11 +27,6 @@ System emulator command line arguments
+ The ``enforce-config-section`` parameter is replaced by the
+ ``-global migration.send-configuration={on|off}`` option.
+ 
+-``-no-kvm`` (since 1.3.0)
+-'''''''''''''''''''''''''
+-
+-The ``-no-kvm`` argument is now a synonym for setting ``-accel tcg``.
+-
+ ``-usbdevice`` (since 2.10.0)
+ '''''''''''''''''''''''''''''
+ 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 1da52a269c..9e1ace04f7 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4351,9 +4351,6 @@ SRST
+     Enable FIPS 140-2 compliance mode.
+ ERST
+ 
+-HXCOMM Deprecated by -accel tcg
+-DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
+-
+ DEF("msg", HAS_ARG, QEMU_OPTION_msg,
+     "-msg [timestamp[=on|off]][,guest-name=[on|off]]\n"
+     "                control error message format\n"
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index cb476aa70b..6f5b000f07 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -3502,10 +3502,6 @@ void qemu_init(int argc, char **argv, char **envp)
+                     exit(1);
+                 }
+                 break;
+-             case QEMU_OPTION_no_kvm:
+-                olist = qemu_find_opts("machine");
+-                qemu_opts_parse_noisily(olist, "accel=tcg", false);
+-                break;
+             case QEMU_OPTION_accel:
+                 accel_opts = qemu_opts_parse_noisily(qemu_find_opts("accel"),
+                                                      optarg, true);
 -- 
 2.18.2
 
