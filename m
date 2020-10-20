@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUi4M-0000RN-HE
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41554)
+	id 1kUi4N-0000Sr-09
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41574)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4I-0000G6-9h; Mon, 19 Oct 2020 23:12:10 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:42912 helo=huawei.com)
+ id 1kUi4K-0000Jw-1G; Mon, 19 Oct 2020 23:12:12 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5261 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4E-0005Cz-E8; Mon, 19 Oct 2020 23:12:09 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 01E2277AC4DBF115D352;
- Tue, 20 Oct 2020 11:12:00 +0800 (CST)
+ id 1kUi4H-0005EH-8L; Mon, 19 Oct 2020 23:12:11 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id DE48069E624F245234AF;
+ Tue, 20 Oct 2020 11:12:04 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 11:11:53 +0800
+ 11:11:55 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <armbru@redhat.com>,
  <yubihong@huawei.com>
-Subject: [PATCH v3 2/8] migration: Don't use '#' flag of printf format
-Date: Tue, 20 Oct 2020 11:10:42 +0800
-Message-ID: <1603163448-27122-3-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v3 5/8] migration: Add braces {} for if statement
+Date: Tue, 20 Oct 2020 11:10:45 +0800
+Message-ID: <1603163448-27122-6-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
 References: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
@@ -30,7 +30,7 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=yubihong@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
  helo=huawei.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 22:24:46
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
@@ -52,51 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 03:12:10 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 03:12:12 -0000
 
 Signed-off-by: Bihong Yu <yubihong@huawei.com>
 Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/block.c | 2 +-
- migration/ram.c   | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ migration/ram.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/migration/block.c b/migration/block.c
-index 4b8576b..273392b 100644
---- a/migration/block.c
-+++ b/migration/block.c
-@@ -998,7 +998,7 @@ static int block_load(QEMUFile *f, void *opaque, int version_id)
-                    (addr == 100) ? '\n' : '\r');
-             fflush(stdout);
-         } else if (!(flags & BLK_MIG_FLAG_EOS)) {
--            fprintf(stderr, "Unknown block migration flags: %#x\n", flags);
-+            fprintf(stderr, "Unknown block migration flags: 0x%x\n", flags);
-             return -EINVAL;
-         }
-         ret = qemu_file_get_error(f);
 diff --git a/migration/ram.c b/migration/ram.c
-index 433489d..6ed4f9e 100644
+index 0aea78f..09178cc 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -3298,7 +3298,7 @@ static int ram_load_postcopy(QEMUFile *f)
-             multifd_recv_sync_main();
-             break;
-         default:
--            error_report("Unknown combination of migration flags: %#x"
-+            error_report("Unknown combination of migration flags: 0x%x"
-                          " (postcopy mode)", flags);
-             ret = -EINVAL;
-             break;
-@@ -3576,7 +3576,7 @@ static int ram_load_precopy(QEMUFile *f)
-             if (flags & RAM_SAVE_FLAG_HOOK) {
-                 ram_control_load_hook(f, RAM_CONTROL_HOOK, NULL);
-             } else {
--                error_report("Unknown combination of migration flags: %#x",
-+                error_report("Unknown combination of migration flags: 0x%x",
-                              flags);
-                 ret = -EINVAL;
-             }
+@@ -101,14 +101,16 @@ static struct {
+ 
+ static void XBZRLE_cache_lock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_lock(&XBZRLE.lock);
++    }
+ }
+ 
+ static void XBZRLE_cache_unlock(void)
+ {
+-    if (migrate_use_xbzrle())
++    if (migrate_use_xbzrle()) {
+         qemu_mutex_unlock(&XBZRLE.lock);
++    }
+ }
+ 
+ /**
 -- 
 1.8.3.1
 
