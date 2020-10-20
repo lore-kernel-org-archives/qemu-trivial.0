@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUi4M-0000Pi-1Z
+	id 1kUi4M-0000QR-9R
 	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41522)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4H-0000El-Qz; Mon, 19 Oct 2020 23:12:09 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:42914 helo=huawei.com)
+ id 1kUi4H-0000FC-TR; Mon, 19 Oct 2020 23:12:09 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:42920 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4E-0005Cy-FP; Mon, 19 Oct 2020 23:12:09 -0400
+ id 1kUi4E-0005Cx-Fb; Mon, 19 Oct 2020 23:12:09 -0400
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id E69F55958CD88F52ABD4;
+ by Forcepoint Email with ESMTP id EB88F645E52794F0B16F;
  Tue, 20 Oct 2020 11:11:59 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 11:11:52 +0800
+ 11:11:54 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <armbru@redhat.com>,
  <yubihong@huawei.com>
-Subject: [PATCH v3 0/8] Fix some style problems in migration
-Date: Tue, 20 Oct 2020 11:10:40 +0800
-Message-ID: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v3 3/8] migration: Add spaces around operator
+Date: Tue, 20 Oct 2020 11:10:43 +0800
+Message-ID: <1603163448-27122-4-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
+References: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
@@ -52,38 +54,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 20 Oct 2020 03:12:10 -0000
 
-Recently I am reading migration related code, find some style problems in
-migration directory while using checkpatch.pl to check migration code. Fix the
-error style problems.
-
-v2:
-- fix Signed-off-by error
-- fix printf format error: "%0x" -> "0x%x"
-
-v3:
-- change "VMStateDescription * []" to "VMStateDescription *[]"
-
-Bihong Yu (8):
-  migration: Do not use C99 // comments
-  migration: Don't use '#' flag of printf format
-  migration: Add spaces around operator
-  migration: Open brace '{' following struct go on the same line
-  migration: Add braces {} for if statement
-  migration: Do not initialise statics and globals to 0 or NULL
-  migration: Open brace '{' following function declarations go on the
-    next line
-  migration: Delete redundant spaces
-
- migration/block.c        |  4 ++--
+Signed-off-by: Bihong Yu <yubihong@huawei.com>
+Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
  migration/migration.c    |  4 ++--
- migration/migration.h    |  3 +--
  migration/postcopy-ram.c |  2 +-
- migration/ram.c          | 14 ++++++++------
- migration/rdma.c         |  7 ++++---
- migration/savevm.c       |  4 ++--
+ migration/ram.c          |  2 +-
+ migration/savevm.c       |  2 +-
  migration/vmstate.c      | 10 +++++-----
- 8 files changed, 25 insertions(+), 23 deletions(-)
+ 5 files changed, 10 insertions(+), 10 deletions(-)
 
+diff --git a/migration/migration.c b/migration/migration.c
+index 0575ecb..e050f57 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -2478,8 +2478,8 @@ static void migrate_handle_rp_req_pages(MigrationState *ms, const char* rbname,
+      * Since we currently insist on matching page sizes, just sanity check
+      * we're being asked for whole host pages.
+      */
+-    if (start & (our_host_ps-1) ||
+-       (len & (our_host_ps-1))) {
++    if (start & (our_host_ps - 1) ||
++       (len & (our_host_ps - 1))) {
+         error_report("%s: Misaligned page request, start: " RAM_ADDR_FMT
+                      " len: %zd", __func__, start, len);
+         mark_source_rp_bad(ms);
+diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
+index 0a2f88a8..eea92bb 100644
+--- a/migration/postcopy-ram.c
++++ b/migration/postcopy-ram.c
+@@ -403,7 +403,7 @@ bool postcopy_ram_supported_by_host(MigrationIncomingState *mis)
+                      strerror(errno));
+         goto out;
+     }
+-    g_assert(((size_t)testarea & (pagesize-1)) == 0);
++    g_assert(((size_t)testarea & (pagesize - 1)) == 0);
+ 
+     reg_struct.range.start = (uintptr_t)testarea;
+     reg_struct.range.len = pagesize;
+diff --git a/migration/ram.c b/migration/ram.c
+index 6ed4f9e..0aea78f 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1563,7 +1563,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
+         rs->last_req_rb = ramblock;
+     }
+     trace_ram_save_queue_pages(ramblock->idstr, start, len);
+-    if (start+len > ramblock->used_length) {
++    if (start + len > ramblock->used_length) {
+         error_report("%s request overrun start=" RAM_ADDR_FMT " len="
+                      RAM_ADDR_FMT " blocklen=" RAM_ADDR_FMT,
+                      __func__, start, len, ramblock->used_length);
+diff --git a/migration/savevm.c b/migration/savevm.c
+index d2e141f..b21f1c1 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -521,7 +521,7 @@ static const VMStateDescription vmstate_configuration = {
+         VMSTATE_VBUFFER_ALLOC_UINT32(name, SaveState, 0, NULL, len),
+         VMSTATE_END_OF_LIST()
+     },
+-    .subsections = (const VMStateDescription*[]) {
++    .subsections = (const VMStateDescription *[]) {
+         &vmstate_target_page_bits,
+         &vmstate_capabilites,
+         &vmstate_uuid,
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index bafa890..e9d2aef 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -32,13 +32,13 @@ static int vmstate_n_elems(void *opaque, const VMStateField *field)
+     if (field->flags & VMS_ARRAY) {
+         n_elems = field->num;
+     } else if (field->flags & VMS_VARRAY_INT32) {
+-        n_elems = *(int32_t *)(opaque+field->num_offset);
++        n_elems = *(int32_t *)(opaque + field->num_offset);
+     } else if (field->flags & VMS_VARRAY_UINT32) {
+-        n_elems = *(uint32_t *)(opaque+field->num_offset);
++        n_elems = *(uint32_t *)(opaque + field->num_offset);
+     } else if (field->flags & VMS_VARRAY_UINT16) {
+-        n_elems = *(uint16_t *)(opaque+field->num_offset);
++        n_elems = *(uint16_t *)(opaque + field->num_offset);
+     } else if (field->flags & VMS_VARRAY_UINT8) {
+-        n_elems = *(uint8_t *)(opaque+field->num_offset);
++        n_elems = *(uint8_t *)(opaque + field->num_offset);
+     }
+ 
+     if (field->flags & VMS_MULTIPLY_ELEMENTS) {
+@@ -54,7 +54,7 @@ static int vmstate_size(void *opaque, const VMStateField *field)
+     int size = field->size;
+ 
+     if (field->flags & VMS_VBUFFER) {
+-        size = *(int32_t *)(opaque+field->size_offset);
++        size = *(int32_t *)(opaque + field->size_offset);
+         if (field->flags & VMS_MULTIPLY) {
+             size *= field->size;
+         }
 -- 
 1.8.3.1
 
