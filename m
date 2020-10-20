@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUi4P-0000Zr-FY
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41576)
+	id 1kUi4Q-0000cC-71
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4K-0000KY-8j; Mon, 19 Oct 2020 23:12:12 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:52582 helo=huawei.com)
+ id 1kUi4J-0000Hr-9d; Mon, 19 Oct 2020 23:12:11 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5258 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4H-0005EL-4W; Mon, 19 Oct 2020 23:12:11 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 1BA69DAC5D17F78CAC8C;
- Tue, 20 Oct 2020 11:12:05 +0800 (CST)
+ id 1kUi4H-0005EJ-7s; Mon, 19 Oct 2020 23:12:10 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id E8A996BAF2C39A56581D;
+ Tue, 20 Oct 2020 11:12:04 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 11:11:56 +0800
+ 11:11:54 +0800
 From: Bihong Yu <yubihong@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
  <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <armbru@redhat.com>,
  <yubihong@huawei.com>
-Subject: [PATCH v3 7/8] migration: Open brace '{' following function
- declarations go on the next line
-Date: Tue, 20 Oct 2020 11:10:47 +0800
-Message-ID: <1603163448-27122-8-git-send-email-yubihong@huawei.com>
+Subject: [PATCH v3 4/8] migration: Open brace '{' following struct go on the
+ same line
+Date: Tue, 20 Oct 2020 11:10:44 +0800
+Message-ID: <1603163448-27122-5-git-send-email-yubihong@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
 References: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
@@ -31,9 +31,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=yubihong@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 22:24:36
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 22:24:46
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -53,29 +53,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 03:12:12 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 03:12:11 -0000
 
 Signed-off-by: Bihong Yu <yubihong@huawei.com>
 Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 ---
- migration/rdma.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ migration/migration.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/migration/rdma.c b/migration/rdma.c
-index 0eb42b7..ca4d315 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -273,7 +273,8 @@ static uint64_t htonll(uint64_t v)
-     return u.llv;
- }
+diff --git a/migration/migration.h b/migration/migration.h
+index deb411a..99784b4 100644
+--- a/migration/migration.h
++++ b/migration/migration.h
+@@ -124,8 +124,7 @@ struct MigrationClass {
+     DeviceClass parent_class;
+ };
  
--static uint64_t ntohll(uint64_t v) {
-+static uint64_t ntohll(uint64_t v)
-+{
-     union { uint32_t lv[2]; uint64_t llv; } u;
-     u.llv = v;
-     return ((uint64_t)ntohl(u.lv[0]) << 32) | (uint64_t) ntohl(u.lv[1]);
+-struct MigrationState
+-{
++struct MigrationState {
+     /*< private >*/
+     DeviceState parent_obj;
+ 
 -- 
 1.8.3.1
 
