@@ -1,47 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUsrD-0001qw-Ui
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 10:43:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49464)
+	id 1kUsrE-0001rd-5K
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Oct 2020 10:43:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpRJ-00071K-5L; Tue, 20 Oct 2020 07:04:25 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:45564 helo=huawei.com)
+ id 1kUqgf-0001Wf-EB; Tue, 20 Oct 2020 08:24:21 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2550 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kUpRE-0006sk-Fp; Tue, 20 Oct 2020 07:04:24 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A031EA5BB60AC3ECDB7A;
- Tue, 20 Oct 2020 19:04:15 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 19:03:50 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <mst@redhat.com>, <f4bug@amsat.org>, <lvivier@redhat.com>,
- <peter.maydell@linaro.org>, <david@gibson.dropbear.id.au>,
- <alistair.francis@wdc.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 10/10] hw/riscv/:split some lines containing more than 80
- characters
-Date: Tue, 20 Oct 2020 04:30:23 +0800
-Message-ID: <20201019203023.658555-11-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201019203023.658555-1-ganqixin@huawei.com>
+ id 1kUqgd-0000L6-BS; Tue, 20 Oct 2020 08:24:21 -0400
+Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id 568189413CF9E1705EDF;
+ Tue, 20 Oct 2020 20:24:14 +0800 (CST)
+Received: from DGGEMI422-HUB.china.huawei.com (10.1.199.151) by
+ dggemi405-hub.china.huawei.com (10.3.17.143) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Tue, 20 Oct 2020 20:24:13 +0800
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.177]) by
+ dggemi422-hub.china.huawei.com ([10.1.199.151]) with mapi id 14.03.0487.000;
+ Tue, 20 Oct 2020 20:24:05 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, "Laurent
+ Vivier" <lvivier@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Alistair Francis <alistair.francis@wdc.com>, "Chenqun (kuhn)"
+ <kuhn.chenqun@huawei.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: RE: [PATCH 00/10] Fix line over 80 characters warning
+Thread-Topic: [PATCH 00/10] Fix line over 80 characters warning
+Thread-Index: AQHWptCti2+LocN7wES+Gm5O7/e0H6mf0LeAgACY1aA=
+Date: Tue, 20 Oct 2020 12:24:04 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F4960658E4E1@DGGEMI525-MBS.china.huawei.com>
 References: <20201019203023.658555-1-ganqixin@huawei.com>
+ <CAFEAcA-NPcXxh7QPtUtY5CornQjb-vTb_kCzRUSwMCZqkVVkBg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-NPcXxh7QPtUtY5CornQjb-vTb_kCzRUSwMCZqkVVkBg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.184.196]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=ganqixin@huawei.com;
+Received-SPF: pass client-ip=45.249.212.189; envelope-from=ganqixin@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:04:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:17:20
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 20 Oct 2020 10:43:15 -0400
@@ -56,109 +65,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 11:04:25 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 12:24:21 -0000
 
-By using scripts/checkpatch.pl, it is found that many files in hw/riscv/
-contain lines with more than 80 characters.
-
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
- hw/riscv/opentitan.c |  6 ++++--
- hw/riscv/sifive_e.c  |  6 ++++--
- hw/riscv/sifive_u.c  | 12 ++++++++----
- 3 files changed, 16 insertions(+), 8 deletions(-)
-
-diff --git a/hw/riscv/opentitan.c b/hw/riscv/opentitan.c
-index 0531bd879b..f587d5993e 100644
---- a/hw/riscv/opentitan.c
-+++ b/hw/riscv/opentitan.c
-@@ -121,7 +121,8 @@ static void lowrisc_ibex_soc_realize(DeviceState *dev_soc, Error **errp)
-         memmap[IBEX_DEV_ROM].base, &s->rom);
- 
-     /* Flash memory */
--    memory_region_init_rom(&s->flash_mem, OBJECT(dev_soc), "riscv.lowrisc.ibex.flash",
-+    memory_region_init_rom(&s->flash_mem, OBJECT(dev_soc),
-+                           "riscv.lowrisc.ibex.flash",
-                            memmap[IBEX_DEV_FLASH].size, &error_fatal);
-     memory_region_add_subregion(sys_mem, memmap[IBEX_DEV_FLASH].base,
-                                 &s->flash_mem);
-@@ -172,7 +173,8 @@ static void lowrisc_ibex_soc_realize(DeviceState *dev_soc, Error **errp)
-     create_unimplemented_device("riscv.lowrisc.ibex.pinmux",
-         memmap[IBEX_DEV_PINMUX].base, memmap[IBEX_DEV_PINMUX].size);
-     create_unimplemented_device("riscv.lowrisc.ibex.alert_handler",
--        memmap[IBEX_DEV_ALERT_HANDLER].base, memmap[IBEX_DEV_ALERT_HANDLER].size);
-+        memmap[IBEX_DEV_ALERT_HANDLER].base,
-+        memmap[IBEX_DEV_ALERT_HANDLER].size);
-     create_unimplemented_device("riscv.lowrisc.ibex.nmi_gen",
-         memmap[IBEX_DEV_NMI_GEN].base, memmap[IBEX_DEV_NMI_GEN].size);
-     create_unimplemented_device("riscv.lowrisc.ibex.usbdev",
-diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-index fcfac16816..80ef2f857e 100644
---- a/hw/riscv/sifive_e.c
-+++ b/hw/riscv/sifive_e.c
-@@ -111,7 +111,8 @@ static void sifive_e_machine_init(MachineState *machine)
-         reset_vec[i] = cpu_to_le32(reset_vec[i]);
-     }
-     rom_add_blob_fixed_as("mrom.reset", reset_vec, sizeof(reset_vec),
--                          memmap[SIFIVE_E_DEV_MROM].base, &address_space_memory);
-+                          memmap[SIFIVE_E_DEV_MROM].base,
-+                          &address_space_memory);
- 
-     if (machine->kernel_filename) {
-         riscv_load_kernel(machine->kernel_filename, NULL);
-@@ -227,7 +228,8 @@ static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* Map GPIO registers */
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, memmap[SIFIVE_E_DEV_GPIO0].base);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0,
-+                    memmap[SIFIVE_E_DEV_GPIO0].base);
- 
-     /* Pass all GPIOs to the SOC layer so they are available to the board */
-     qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 6ad975d692..2c06d1a319 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -528,7 +528,8 @@ static void sifive_u_machine_init(MachineState *machine)
-         reset_vec[i] = cpu_to_le32(reset_vec[i]);
-     }
-     rom_add_blob_fixed_as("mrom.reset", reset_vec, sizeof(reset_vec),
--                          memmap[SIFIVE_U_DEV_MROM].base, &address_space_memory);
-+                          memmap[SIFIVE_U_DEV_MROM].base,
-+                          &address_space_memory);
- 
-     riscv_rom_copy_firmware_info(memmap[SIFIVE_U_DEV_MROM].base,
-                                  memmap[SIFIVE_U_DEV_MROM].size,
-@@ -542,7 +543,8 @@ static bool sifive_u_machine_get_start_in_flash(Object *obj, Error **errp)
-     return s->start_in_flash;
- }
- 
--static void sifive_u_machine_set_start_in_flash(Object *obj, bool value, Error **errp)
-+static void sifive_u_machine_set_start_in_flash(Object *obj, bool value,
-+                                                Error **errp)
- {
-     SiFiveUState *s = RISCV_U_MACHINE(obj);
- 
-@@ -731,13 +733,15 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->prci), errp)) {
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->prci), 0, memmap[SIFIVE_U_DEV_PRCI].base);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->prci), 0,
-+                    memmap[SIFIVE_U_DEV_PRCI].base);
- 
-     qdev_prop_set_uint32(DEVICE(&s->gpio), "ngpio", 16);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, memmap[SIFIVE_U_DEV_GPIO].base);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0,
-+                    memmap[SIFIVE_U_DEV_GPIO].base);
- 
-     /* Pass all GPIOs to the SOC layer so they are available to the board */
-     qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
--- 
-2.23.0
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGV0ZXIgTWF5ZGVsbCBb
+bWFpbHRvOnBldGVyLm1heWRlbGxAbGluYXJvLm9yZ10NCj4gU2VudDogVHVlc2RheSwgT2N0b2Jl
+ciAyMCwgMjAyMCA3OjE1IFBNDQo+IFRvOiBnYW5xaXhpbiA8Z2FucWl4aW5AaHVhd2VpLmNvbT4N
+Cj4gQ2M6IFFFTVUgRGV2ZWxvcGVycyA8cWVtdS1kZXZlbEBub25nbnUub3JnPjsgUUVNVSBUcml2
+aWFsDQo+IDxxZW11LXRyaXZpYWxAbm9uZ251Lm9yZz47IE1pY2hhZWwgUy4gVHNpcmtpbiA8bXN0
+QHJlZGhhdC5jb20+OyBQaGlsaXBwZQ0KPiBNYXRoaWV1LURhdWTDqSA8ZjRidWdAYW1zYXQub3Jn
+PjsgTGF1cmVudCBWaXZpZXIgPGx2aXZpZXJAcmVkaGF0LmNvbT47DQo+IERhdmlkIEdpYnNvbiA8
+ZGF2aWRAZ2lic29uLmRyb3BiZWFyLmlkLmF1PjsgQWxpc3RhaXIgRnJhbmNpcw0KPiA8YWxpc3Rh
+aXIuZnJhbmNpc0B3ZGMuY29tPjsgQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWku
+Y29tPjsNCj4gWmhhbmdoYWlsaWFuZyA8emhhbmcuemhhbmdoYWlsaWFuZ0BodWF3ZWkuY29tPg0K
+PiBTdWJqZWN0OiBSZTogW1BBVENIIDAwLzEwXSBGaXggbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMg
+d2FybmluZw0KPiANCj4gT24gVHVlLCAyMCBPY3QgMjAyMCBhdCAxMjowMywgR2FuIFFpeGluIDxn
+YW5xaXhpbkBodWF3ZWkuY29tPiB3cm90ZToNCj4gPg0KPiA+IEhpIGFsbCwNCj4gPiAgICAgSSB1
+c2VkIHNjcmlwdHMvY2hlY2twYXRjaC5wbCB0byBmaW5kIHRoYXQgbWFueSBmaWxlcyBpbiB0aGUg
+aHcNCj4gPiBkaXJlY3RvcnkgY29udGFpbiBsaW5lcyB3aXRoIG1vcmUgdGhhbiA4MCBjaGFyYWN0
+ZXJzLiBUaGVyZWZvcmUsIEkNCj4gPiBzcGxpdGVkIHNvbWUgbGluZXMgdG8gZml4IHRoaXMgd2Fy
+bmluZy4NCj4gDQo+IEkgcGVyc29uYWxseSBoYXZlIGNvbWUgcm91bmQgdG8gdGhlIGlkZWEgdGhh
+dCB3ZSBzaG91bGQgaW5zdGVhZCBhZGp1c3QNCj4gY2hlY2twYXRjaCBzbyB0aGF0IGl0IGRvZXNu
+J3QgaGF2ZSBhIGhhcmQgODAgY2hhcmFjdGVyIGNvbXBsYWludCBsaW1pdC4NCj4gDQoNCkhpIFBl
+dGVyLA0KICBJdCBzb3VuZHMgbGlrZSBhIGdvb2QgaWRlYSwgSSB0aGluayBJIGNhbiB0cnkgdG8g
+bW9kaWZ5IGNoZWNrcGF0Y2gucGwgYnkgcmVmZXJyaW5nIHRvIHRoZSBMaW51eCBwYXRjaC4NCg0K
+VGhhbmtzLA0KR2FuIFFpeGluDQoNCj4gQ29tcGFyZSB0aGUga2VybmVsIGNvZGluZyBzdHlsZSBj
+aGFuZ2U6DQo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0
+L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPQ0KPiBiZGM0OGZhMTFlNDZmODY3ZWE0ZDc1
+ZmE1OWVlODdhN2Y0OGJlMTQ0DQo+IA0KPiB3aG9zZSByYXRpb25hbGUgSSBhZ3JlZSB3aXRoLiBX
+ZSBzaG91bGQgKnByZWZlciogODAgY2hhcmFjdGVyIHdyYXBwaW5nLCBidXQNCj4gdGhlcmUgYXJl
+IHNvbWUgcGxhY2VzIHdoZXJlIGFuIDg1LWNoYXJhY3RlciBsaW5lIGlzIG11Y2ggbW9yZSByZWFk
+YWJsZSBhbmQNCj4gc2Vuc2libGUgc3R5bGUgdGhhbiBpbnNlcnRpbmcgYSBsaW5lIGJyZWFrIGp1
+c3QgdG8gcGxlYXNlIGNoZWNrcGF0Y2guDQo+IA0KPiB0aGFua3MNCj4gLS0gUE1NDQo=
 
