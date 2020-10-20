@@ -1,45 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kUi4Q-0000cC-71
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:12:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41570)
+	id 1kUiK1-0007Fd-8S
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Oct 2020 23:28:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4J-0000Hr-9d; Mon, 19 Oct 2020 23:12:11 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5258 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kUiJg-00077c-GY; Mon, 19 Oct 2020 23:28:09 -0400
+Resent-Date: Mon, 19 Oct 2020 23:28:04 -0400
+Resent-Message-Id: <E1kUiJg-00077c-GY@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21724)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubihong@huawei.com>)
- id 1kUi4H-0005EJ-7s; Mon, 19 Oct 2020 23:12:10 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id E8A996BAF2C39A56581D;
- Tue, 20 Oct 2020 11:12:04 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 11:11:54 +0800
-From: Bihong Yu <yubihong@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <quintela@redhat.com>, <dgilbert@redhat.com>, <alex.chen@huawei.com>,
- <wanghao232@huawei.com>, <zhengchuan@huawei.com>, <armbru@redhat.com>,
- <yubihong@huawei.com>
-Subject: [PATCH v3 4/8] migration: Open brace '{' following struct go on the
- same line
-Date: Tue, 20 Oct 2020 11:10:44 +0800
-Message-ID: <1603163448-27122-5-git-send-email-yubihong@huawei.com>
-X-Mailer: git-send-email 1.8.3.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kUiJd-0002Kp-3A; Mon, 19 Oct 2020 23:28:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1603164464; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=MHeFRe11wwaYxSXjekwmuLa5APPexu3LoKcG7HaLbVgpNWzYHj4EsYZ8IfUU26IIhF0RyBxwn3N+p6o1OwqhPHR4zD0mZMY7QjCCb7BB+FamcoKqP085PHbBcNyLRtLa9YiBiJ93ZpFYjS7dDylfI+Z7JlgmlvulP+iHVu6TRMo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1603164464;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=m71fKW4pA8XVGxvAhTG3jvu1JGUw5HBPCi/NX7Vb8L0=; 
+ b=J5JD7yjGnL2iUVeXAOaAtI33EowoJylrFaPMyBKms0M/H8vPwbF6te62AjLxKoallW1/dEigq7DYQbTlKrFmKTDpQF/B3bBrcbB79gro72Lt76uhSRlTWF3CNE/Hf+9aRkrEixC1j/E2TCT/a7ZCAf++T/8bmOKVF8b51xz+pSc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1603164463689563.7576093448332;
+ Mon, 19 Oct 2020 20:27:43 -0700 (PDT)
+Subject: Re: [PATCH v3 0/8] Fix some style problems in migration
+Message-ID: <160316446187.18439.7746821496766547264@66eaa9a8a123>
+Reply-To: <qemu-devel@nongnu.org>
 In-Reply-To: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
-References: <1603163448-27122-1-git-send-email-yubihong@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=yubihong@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 22:24:46
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: yubihong@huawei.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, yubihong@huawei.com,
+ zhengchuan@huawei.com, quintela@redhat.com, dgilbert@redhat.com,
+ armbru@redhat.com, alex.chen@huawei.com, wanghao232@huawei.com
+Date: Mon, 19 Oct 2020 20:27:43 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 23:27:58
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,30 +63,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Oct 2020 03:12:11 -0000
+X-List-Received-Date: Tue, 20 Oct 2020 03:28:22 -0000
 
-Signed-off-by: Bihong Yu <yubihong@huawei.com>
-Reviewed-by: Chuan Zheng <zhengchuan@huawei.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
- migration/migration.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/migration/migration.h b/migration/migration.h
-index deb411a..99784b4 100644
---- a/migration/migration.h
-+++ b/migration/migration.h
-@@ -124,8 +124,7 @@ struct MigrationClass {
-     DeviceClass parent_class;
- };
- 
--struct MigrationState
--{
-+struct MigrationState {
-     /*< private >*/
-     DeviceState parent_obj;
- 
--- 
-1.8.3.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNjAzMTYzNDQ4LTI3MTIyLTEt
+Z2l0LXNlbmQtZW1haWwteXViaWhvbmdAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBz
+ZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93
+IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDE2MDMxNjM0
+NDgtMjcxMjItMS1naXQtc2VuZC1lbWFpbC15dWJpaG9uZ0BodWF3ZWkuY29tClN1YmplY3Q6IFtQ
+QVRDSCB2MyAwLzhdIEZpeCBzb21lIHN0eWxlIHByb2JsZW1zIGluIG1pZ3JhdGlvbgoKPT09IFRF
+U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2
+L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
+LmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBi
+YXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4Nzgy
+MTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1w
+cm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8xNjAzMTYzNDQ4LTI3MTIy
+LTEtZ2l0LXNlbmQtZW1haWwteXViaWhvbmdAaHVhd2VpLmNvbSAtPiBwYXRjaGV3LzE2MDMxNjM0
+NDgtMjcxMjItMS1naXQtc2VuZC1lbWFpbC15dWJpaG9uZ0BodWF3ZWkuY29tCiAtIFt0YWcgdXBk
+YXRlXSAgICAgIHBhdGNoZXcvY292ZXIuMTYwMjYzNDUyNC5naXQuYWxpc3RhaXIuZnJhbmNpc0B3
+ZGMuY29tIC0+IHBhdGNoZXcvY292ZXIuMTYwMjYzNDUyNC5naXQuYWxpc3RhaXIuZnJhbmNpc0B3
+ZGMuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYjMzZWRlYSBtaWdyYXRpb246
+IERlbGV0ZSByZWR1bmRhbnQgc3BhY2VzCjI3NzU2M2QgbWlncmF0aW9uOiBPcGVuIGJyYWNlICd7
+JyBmb2xsb3dpbmcgZnVuY3Rpb24gZGVjbGFyYXRpb25zIGdvIG9uIHRoZSBuZXh0IGxpbmUKN2Rk
+MGFkMCBtaWdyYXRpb246IERvIG5vdCBpbml0aWFsaXNlIHN0YXRpY3MgYW5kIGdsb2JhbHMgdG8g
+MCBvciBOVUxMCjU1NDBmZDEgbWlncmF0aW9uOiBBZGQgYnJhY2VzIHt9IGZvciBpZiBzdGF0ZW1l
+bnQKODljMWExMiBtaWdyYXRpb246IE9wZW4gYnJhY2UgJ3snIGZvbGxvd2luZyBzdHJ1Y3QgZ28g
+b24gdGhlIHNhbWUgbGluZQoyM2U3ZjNmIG1pZ3JhdGlvbjogQWRkIHNwYWNlcyBhcm91bmQgb3Bl
+cmF0b3IKY2M5ZWM5OSBtaWdyYXRpb246IERvbid0IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9y
+bWF0CjEyMmRjNjggbWlncmF0aW9uOiBEbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwoKPT09IE9V
+VFBVVCBCRUdJTiA9PT0KMS84IENoZWNraW5nIGNvbW1pdCAxMjJkYzY4ZGEzZGYgKG1pZ3JhdGlv
+bjogRG8gbm90IHVzZSBDOTkgLy8gY29tbWVudHMpCjIvOCBDaGVja2luZyBjb21taXQgY2M5ZWM5
+OWM1YWMwIChtaWdyYXRpb246IERvbid0IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9ybWF0KQoz
+LzggQ2hlY2tpbmcgY29tbWl0IDIzZTdmM2ZiNTFjMiAobWlncmF0aW9uOiBBZGQgc3BhY2VzIGFy
+b3VuZCBvcGVyYXRvcikKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnKicgKGN0
+eDpXeFYpCiM2MjogRklMRTogbWlncmF0aW9uL3NhdmV2bS5jOjUyNDoKKyAgICAuc3Vic2VjdGlv
+bnMgPSAoY29uc3QgVk1TdGF0ZURlc2NyaXB0aW9uICpbXSkgewogICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdz
+LCA1OSBsaW5lcyBjaGVja2VkCgpQYXRjaCAzLzggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2Ug
+cmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9y
+dCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4K
+CjQvOCBDaGVja2luZyBjb21taXQgODljMWExMjE1ZWYwIChtaWdyYXRpb246IE9wZW4gYnJhY2Ug
+J3snIGZvbGxvd2luZyBzdHJ1Y3QgZ28gb24gdGhlIHNhbWUgbGluZSkKNS84IENoZWNraW5nIGNv
+bW1pdCA1NTQwZmQxMjFmMTkgKG1pZ3JhdGlvbjogQWRkIGJyYWNlcyB7fSBmb3IgaWYgc3RhdGVt
+ZW50KQo2LzggQ2hlY2tpbmcgY29tbWl0IDdkZDBhZDBjNWI4NiAobWlncmF0aW9uOiBEbyBub3Qg
+aW5pdGlhbGlzZSBzdGF0aWNzIGFuZCBnbG9iYWxzIHRvIDAgb3IgTlVMTCkKNy84IENoZWNraW5n
+IGNvbW1pdCAyNzc1NjNkMjdjMzMgKG1pZ3JhdGlvbjogT3BlbiBicmFjZSAneycgZm9sbG93aW5n
+IGZ1bmN0aW9uIGRlY2xhcmF0aW9ucyBnbyBvbiB0aGUgbmV4dCBsaW5lKQo4LzggQ2hlY2tpbmcg
+Y29tbWl0IGIzM2VkZWE1ODRiNCAobWlncmF0aW9uOiBEZWxldGUgcmVkdW5kYW50IHNwYWNlcykK
+PT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRo
+ZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMTYwMzE2
+MzQ0OC0yNzEyMi0xLWdpdC1zZW5kLWVtYWlsLXl1Ymlob25nQGh1YXdlaS5jb20vdGVzdGluZy5j
+aGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxs
+eSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
+ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
