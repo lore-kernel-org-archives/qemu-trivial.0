@@ -1,51 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kV8Sv-0007Dh-Do
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Oct 2020 03:23:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55746)
+	id 1kV9hG-0001r5-QD
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Oct 2020 04:42:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kV8St-0007DT-Jn
- for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 03:23:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42362)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kV9hC-0001oL-8t
+ for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 04:42:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49555)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kV8Sr-000098-U8
- for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 03:23:19 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kV9hA-0004Q2-2O
+ for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 04:42:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603264996;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=bMpN1ib5S7EpEYCsIAFiGVeSoDEeZVuGRBp8mwSulpk=;
- b=ZfPlq6bbzJKG+0rM6tCJkuHZ+ul5BpwJP5sREIP3ARSbd7SsCFExDTQujrFSZQPb47WOsj
- hTZsFTqkDgQ/GdGeq3vuCVRFV4svjSvVeXkmN3/oZMmsrCOZntBfW58JPWBA3U36hf5XKy
- lXvLmC4EHAz9lh6HIhYwWAd2XkG50jM=
+ s=mimecast20190719; t=1603269727;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PNsf4SQUxDTxtbQVmOvAoRTeVTdyu1aeWuYdj6y+tx0=;
+ b=gUrBlL9bQUppzaSs3UrYcxrwToY4xNszXQRobUo1DzNmSx1/UKGqwH9P8QBBXUDBmL/L4P
+ RjuUYrJnG307+KtJ9YRHES/DHue/PUocgHyO8Z3QPYIRwjcP3au0Qr2QmYhpHxsAoo92L5
+ YM7W3jXdL+f+Tn0DX9ilig4/gHuNBxE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-301-6x4ruLTQPRO13qNuESnGHA-1; Wed, 21 Oct 2020 03:23:15 -0400
-X-MC-Unique: 6x4ruLTQPRO13qNuESnGHA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-53-Di4ZQgo7P822KMtBYvGScQ-1; Wed, 21 Oct 2020 04:42:02 -0400
+X-MC-Unique: Di4ZQgo7P822KMtBYvGScQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC09E186DD34;
- Wed, 21 Oct 2020 07:23:13 +0000 (UTC)
-Received: from thuth.com (ovpn-112-165.ams2.redhat.com [10.36.112.165])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A12FA5576E;
- Wed, 21 Oct 2020 07:23:11 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Fam Zheng <fam@euphon.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: [PATCH] tests/docker/dockerfiles/centos: Use SDL2 instead of SDL1
-Date: Wed, 21 Oct 2020 09:23:08 +0200
-Message-Id: <20201021072308.9224-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D59761006C94;
+ Wed, 21 Oct 2020 08:42:00 +0000 (UTC)
+Received: from redhat.com (ovpn-114-86.ams2.redhat.com [10.36.114.86])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 365081A837;
+ Wed, 21 Oct 2020 08:41:58 +0000 (UTC)
+Date: Wed, 21 Oct 2020 09:41:56 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH] tests/docker/dockerfiles/centos: Use SDL2 instead of SDL1
+Message-ID: <20201021084156.GD412988@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20201021072308.9224-1-thuth@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <20201021072308.9224-1-thuth@redhat.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/21 02:16:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -68,43 +80,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Oct 2020 07:23:19 -0000
+X-List-Received-Date: Wed, 21 Oct 2020 08:42:12 -0000
 
-We do not support SDL1 in QEMU anymore. Use SDL2 instead.
+On Wed, Oct 21, 2020 at 09:23:08AM +0200, Thomas Huth wrote:
+> We do not support SDL1 in QEMU anymore. Use SDL2 instead.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/docker/dockerfiles/centos7.docker | 2 +-
+>  tests/docker/dockerfiles/centos8.docker | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/docker/dockerfiles/centos7.docker | 2 +-
- tests/docker/dockerfiles/centos8.docker | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/tests/docker/dockerfiles/centos7.docker b/tests/docker/dockerfiles/centos7.docker
-index 8b273725ee..6f11af1989 100644
---- a/tests/docker/dockerfiles/centos7.docker
-+++ b/tests/docker/dockerfiles/centos7.docker
-@@ -31,7 +31,7 @@ ENV PACKAGES \
-     perl-Test-Harness \
-     pixman-devel \
-     python3 \
--    SDL-devel \
-+    SDL2-devel \
-     spice-glib-devel \
-     spice-server-devel \
-     tar \
-diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
-index 585dfad9be..f86931f955 100644
---- a/tests/docker/dockerfiles/centos8.docker
-+++ b/tests/docker/dockerfiles/centos8.docker
-@@ -2,7 +2,7 @@ FROM centos:8.1.1911
- 
- RUN dnf -y update
- ENV PACKAGES \
--    SDL-devel \
-+    SDL2-devel \
-     bzip2 \
-     bzip2-devel \
-     dbus-daemon \
+
+Regards,
+Daniel
 -- 
-2.18.2
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
