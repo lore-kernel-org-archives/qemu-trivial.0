@@ -1,76 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVCR3-0006Nl-9w
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Oct 2020 07:37:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58728)
+	id 1kVDDZ-0002tJ-El
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Oct 2020 08:27:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kVCR1-0006MF-K1
- for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 07:37:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20672)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kVCQz-0006Nt-An
- for qemu-trivial@nongnu.org; Wed, 21 Oct 2020 07:37:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603280255;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3PVy7VWHAT0SJyxXzwBdxhY/I1OYGniiv6zXs6Hc4KM=;
- b=VRefQdjwKe5BIbn+KShBV9XJs+M+oN5rDt9NjTS6FIucNxK10glUEaifSFL7sJV7jenoNw
- Odj4fOpvGfPte5GSmQu6ZoDV3UxCqDiAMI0aQFR0vs+EsxFLgpzxQuKjyFHjs4kLDP1Z8A
- 4p3SRRPtuhbwpt8LGNO6qKfK67RezIo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-364-KGEp-oEXNG-qHJDarH5-MA-1; Wed, 21 Oct 2020 07:37:29 -0400
-X-MC-Unique: KGEp-oEXNG-qHJDarH5-MA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1692D107B473;
- Wed, 21 Oct 2020 11:37:28 +0000 (UTC)
-Received: from redhat.com (ovpn-114-86.ams2.redhat.com [10.36.114.86])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 366AF27BA3;
- Wed, 21 Oct 2020 11:37:26 +0000 (UTC)
-Date: Wed, 21 Oct 2020 12:37:23 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/docker/dockerfiles/centos: Use SDL2 instead of SDL1
-Message-ID: <20201021113723.GK412988@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20201021072308.9224-1-thuth@redhat.com>
- <e7ac0344-24d1-d53f-7e7f-798be452adcb@redhat.com>
- <4ea997ee-a0c9-34da-8ad6-048ed4904fb3@redhat.com>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kVDDT-0002s6-CD; Wed, 21 Oct 2020 08:27:43 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:41246 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kVDDO-0004XW-LZ; Wed, 21 Oct 2020 08:27:42 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 53D9A91BD3BA74942A1D;
+ Wed, 21 Oct 2020 20:27:25 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Wed, 21 Oct 2020
+ 20:27:19 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <thuth@redhat.com>, <lvivier@redhat.com>, <pbonzini@redhat.com>,
+ <mlevitsk@redhat.com>, <zhang.zhanghailiang@huawei.com>,
+ <ganqixin@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>
+Subject: [PATCH] tests/migration: fix memleak in wait_command/wait_command_fd
+Date: Wed, 21 Oct 2020 20:27:11 +0800
+Message-ID: <20201021122711.2035765-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-In-Reply-To: <4ea997ee-a0c9-34da-8ad6-048ed4904fb3@redhat.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 22:12:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/21 08:27:26
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,103 +52,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Oct 2020 11:37:39 -0000
+X-List-Received-Date: Wed, 21 Oct 2020 12:27:46 -0000
 
-On Wed, Oct 21, 2020 at 01:29:10PM +0200, Thomas Huth wrote:
-> On 21/10/2020 11.38, Philippe Mathieu-Daudé wrote:
-> > On 10/21/20 9:23 AM, Thomas Huth wrote:
-> >> We do not support SDL1 in QEMU anymore. Use SDL2 instead.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >> ---
-> >>   tests/docker/dockerfiles/centos7.docker | 2 +-
-> >>   tests/docker/dockerfiles/centos8.docker | 2 +-
-> >>   2 files changed, 2 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/tests/docker/dockerfiles/centos7.docker
-> >> b/tests/docker/dockerfiles/centos7.docker
-> >> index 8b273725ee..6f11af1989 100644
-> >> --- a/tests/docker/dockerfiles/centos7.docker
-> >> +++ b/tests/docker/dockerfiles/centos7.docker
-> >> @@ -31,7 +31,7 @@ ENV PACKAGES \
-> >>       perl-Test-Harness \
-> >>       pixman-devel \
-> >>       python3 \
-> >> -    SDL-devel \
-> >> +    SDL2-devel \
-> >>       spice-glib-devel \
-> >>       spice-server-devel \
-> >>       tar \
-> >> diff --git a/tests/docker/dockerfiles/centos8.docker
-> >> b/tests/docker/dockerfiles/centos8.docker
-> >> index 585dfad9be..f86931f955 100644
-> >> --- a/tests/docker/dockerfiles/centos8.docker
-> >> +++ b/tests/docker/dockerfiles/centos8.docker
-> >> @@ -2,7 +2,7 @@ FROM centos:8.1.1911
-> >>     RUN dnf -y update
-> >>   ENV PACKAGES \
-> >> -    SDL-devel \
-> >> +    SDL2-devel \
-> >>       bzip2 \
-> >>       bzip2-devel \
-> >>       dbus-daemon \
-> > 
-> > I wonder if we are having docker image caching issues...
+Properly free each command resp to avoid memory leak.
+ASAN shows memory leak stack:
 
-Looks more like something related to the artifact caching, rather
-than container image caching.
+Indirect leak of 2352520 byte(s) in 571 object(s) allocated from:
+    #0 0x7f6ca3308d4e in __interceptor_calloc (/lib64/libasan.so.5+0x112d4e)
+    #1 0x7f6ca3127a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
+    #2 0x557bf3c71d2b in qdict_new ../qobject/qdict.c:29
+    #3 0x557bf3c9caba in parse_object ../qobject/json-parser.c:318
+    #4 0x557bf3c9ce75 in json_parser_parse ../qobject/json-parser.c:580
+    #5 0x557bf3c8c8cf in json_message_process_token ../qobject/json-streamer.c:92
+    #6 0x557bf3c9ea59 in json_lexer_feed_char ../qobject/json-lexer.c:313
+    #7 0x557bf3c9eeb5 in json_lexer_feed ../qobject/json-lexer.c:350
+    #8 0x557bf3c4793a in qmp_fd_receive ../tests/qtest/libqtest.c:608
+    #9 0x557bf3c47b58 in qtest_qmp_receive ../tests/qtest/libqtest.c:618
+    #10 0x557bf3c44245 in wait_command ../tests/qtest/migration-helpers.c:59
+    #11 0x557bf3c445cb in migrate_query_status ../tests/qtest/migration-helpers.c:108
+    #12 0x557bf3c44642 in check_migration_status ../tests/qtest/migration-helpers.c:124
+    #13 0x557bf3c447e7 in wait_for_migration_status ../tests/qtest/migration-helpers.c:148
+    #14 0x557bf3c43b8f in test_migrate_auto_converge ../tests/qtest/migration-test.c:1243
+    ......
+SUMMARY: AddressSanitizer: 11670244 byte(s) leaked in 8422 allocation(s).
 
-> > 
-> > build-system-centos job passed but then in check-system-centos:
-> > 
-> > FAILED: libcommon.fa.p/ui_sdl2-input.c.o
-> > ui/sdl2.h:7:10: fatal error: SDL.h: No such file or directory
-> >  #include
-> >           ^~~~~~~
-> > 
-> > And then in acceptance-system-centos:
-> > 
-> > ./qemu-system-x86_64: error while loading shared libraries:
-> > libSDL2-2.0.so.0: cannot open shared object file: No such file or directory
-> 
-> Uh, weird, now I've got that one, too ... sorry, I only waited for the build
-> phase to complete before sending out the patch, I did not expect any trouble
-> in the testing stage...
-> 
-> The check-system-xxx jobs are apparently recompiling lots of files now ...
-> not sure yet why that happens... seems to be related to Paolo's PR from last
-> weekend?
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ tests/qtest/migration-helpers.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-Presumably this is related to this PR removing use of make, and instead
-building everything directly with ninja.
-
-> The previous CI run still looks okayish:
-> 
->  https://gitlab.com/qemu-project/qemu/-/jobs/796502985
-> 
-> then the one from Paolo suddenly recompiled pretty much everything:
-> 
->  https://gitlab.com/qemu-project/qemu/-/jobs/796767669
-> 
-> Does anybody got a clue what happened here?
-
-The log shows that it decided "meson" needed re-running, and as a result
-of re-running meson, we in turn rebuild all source.
-
-Best guess is that somewhere in here we are not correctly preserving
-timestamps on something, causing  ninja to consider the build out of
-date.
-
-Possibly this is because the the check/acceptance jobs re-clome the
-git checkout again ? Coud that make ninja thing the sources have
-changed, or does git clone set timestamps to match the git commit
-date ?
-
-Regards,
-Daniel
+diff --git a/tests/qtest/migration-helpers.c b/tests/qtest/migration-helpers.c
+index b799dbafb7..202064e4fc 100644
+--- a/tests/qtest/migration-helpers.c
++++ b/tests/qtest/migration-helpers.c
+@@ -32,7 +32,7 @@ static void check_stop_event(QTestState *who)
+ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
+ {
+     va_list ap;
+-    QDict *resp;
++    QDict *resp, *val;
+ 
+     va_start(ap, command);
+     qtest_qmp_vsend_fds(who, &fd, 1, command, ap);
+@@ -44,7 +44,11 @@ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
+     g_assert(!qdict_haskey(resp, "error"));
+     g_assert(qdict_haskey(resp, "return"));
+ 
+-    return qdict_get_qdict(resp, "return");
++    val =  qdict_get_qdict(resp, "return");
++    qobject_ref(val);
++    qobject_unref(resp);
++
++    return val;
+ }
+ 
+ /*
+@@ -53,7 +57,7 @@ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
+ QDict *wait_command(QTestState *who, const char *command, ...)
+ {
+     va_list ap;
+-    QDict *resp;
++    QDict *resp, *val;
+ 
+     va_start(ap, command);
+     resp = qtest_vqmp(who, command, ap);
+@@ -64,7 +68,11 @@ QDict *wait_command(QTestState *who, const char *command, ...)
+     g_assert(!qdict_haskey(resp, "error"));
+     g_assert(qdict_haskey(resp, "return"));
+ 
+-    return qdict_get_qdict(resp, "return");
++    val = qdict_get_qdict(resp, "return");
++    qobject_ref(val);
++    qobject_unref(resp);
++
++    return val;
+ }
+ 
+ /*
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.27.0
 
 
