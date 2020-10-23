@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVwL9-00046n-FE
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 08:38:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43182)
+	id 1kVwMO-0005wA-Ly
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 08:39:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kVwL7-00045B-W2; Fri, 23 Oct 2020 08:38:38 -0400
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35521)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kVwL6-0003oP-95; Fri, 23 Oct 2020 08:38:37 -0400
-Received: by mail-pf1-x442.google.com with SMTP id h7so1155669pfn.2;
- Fri, 23 Oct 2020 05:38:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=TTiABXpMy3dKcm+gxwkchOjD+jaxZwCHChua0Wmh0zc=;
- b=iBtC16NMEwAWF0Ckuwiwh+M1NK5hKPE0ormEIqnFF9XJhf/wy8h6dRAOgAv5PtlKHk
- k+9NLd8UnA/rm6I4UsY/H7TQAhwES3A5aQATDunXQ5m1kScUgYE4ampUT5Kebq8E9AmW
- c9DxMHFaSdmpLCTCWeRWBefGafnSxhH1+Qj9etuK7P9/0A+pFWKkN7LUmvJfn99kkBLm
- vjdXRCK7Ajat/cF9x6KArpesEPqSgBw/hOcQKH+ts2j+cSq8A9qR1ius51xejn5tBA+3
- x4wRJ3nPwgWw5wmdxQ1YOfLCc6Rha9kFbpxsI0njKM7FNcM9OnAQLr1AU/Puv5WQY+WY
- pHPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=TTiABXpMy3dKcm+gxwkchOjD+jaxZwCHChua0Wmh0zc=;
- b=EYqQlCzxUDOzKmIpAbdvLVqNuCNrBqhIwo7VUePxxeRhJvNKdJ5K167WCpROtlOrbd
- C5YhWU4lQqOvtjSlffLZt2ZB33IHJS0p5AW3IIk5x4xTRLL0S0JOq3aNxpM6D2pjFy0t
- w8AqE/WjCvls0Aqznxd64GR4HHEHMOdlGIpSsgalML9rW/swOrjhor4aKy7fAwTEKFG+
- JqM8FkylLCS7Ih1ueHXvFVTyCEee2DzRE/k1TKlHYEjplneCguZGS4SDjG25ykELjvTu
- 8FfcaKquEkk2ZrGCry5nGz9cu8l3rv+THi1RIUWGEXY1/Na+DVbPI19z6yEGXCHFbGfQ
- MXMw==
-X-Gm-Message-State: AOAM531+pJB6lWTHoNRvM9xnLGcBNbkWIo/GL78IFCzVS7SaySqyLA+x
- t4+Y/j7E1ig4F67PVmWIpOaZtrjcRH7yAe7E
-X-Google-Smtp-Source: ABdhPJzC/rMKPQgRKbndGW3XzTabzDdJIMatvL5vQ9Arf2Say/W92FwcLiREuQyZbran4keMncTWBA==
-X-Received: by 2002:a63:3202:: with SMTP id y2mr1847341pgy.97.1603456714425;
- Fri, 23 Oct 2020 05:38:34 -0700 (PDT)
-Received: from pulp100.localdomain ([103.199.158.131])
- by smtp.gmail.com with ESMTPSA id o13sm2298791pjq.19.2020.10.23.05.38.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2020 05:38:33 -0700 (PDT)
-From: Chetan Pant <chetan4windows@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, xiaoguangrong.eric@gmail.com,
- Chetan Pant <chetan4windows@gmail.com>
-Subject: [PATCH 25/30] nvdimm: Fix Lesser GPL version number
-Date: Fri, 23 Oct 2020 12:37:49 +0000
-Message-Id: <20201023123749.19941-1-chetan4windows@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201014134248.14146-1-chetan4windows@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kVwMN-0005un-EY
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 08:39:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55955)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kVwMJ-0003vO-7s
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 08:39:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603456790;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WFbMOkvTTss1rVx9Iv3aH14gg6PzylAzGIR6EDgeq20=;
+ b=HXzqfg6ITdjjceucl41StOAaHGBjkVlMPn+8WZbIOyE3pPUoPMd5nx56yFydb0vfkQUmc1
+ H9mXgAdxMRKVnWwmjnXE0Ii0dN4YyGaNXilQ+GRm5lTugJo2tD/twTYcsf2Dq0zupftJ5A
+ ph/fZGN0tvcq115CTdf5Loqji48Qquw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-dFyIwp9QM065C_enzswKKg-1; Fri, 23 Oct 2020 08:39:48 -0400
+X-MC-Unique: dFyIwp9QM065C_enzswKKg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48599879527;
+ Fri, 23 Oct 2020 12:39:47 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-115-61.ams2.redhat.com [10.36.115.61])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id ABB4C50DA;
+ Fri, 23 Oct 2020 12:39:45 +0000 (UTC)
+Subject: Re: [PATCH 10/30] microblaze tcg cpus: Fix Lesser GPL version number
+To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
+Cc: edgar.iglesias@gmail.com, qemu-devel@nongnu.org
 References: <20201014134248.14146-1-chetan4windows@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
- envelope-from=chetan4windows@gmail.com; helo=mail-pf1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20201023121821.19179-1-chetan4windows@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <adef95d9-150c-1224-c979-39315de45e9d@redhat.com>
+Date: Fri, 23 Oct 2020 14:39:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
+MIME-Version: 1.0
+In-Reply-To: <20201023121821.19179-1-chetan4windows@gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 01:44:00
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,32 +76,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 12:38:38 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 12:39:56 -0000
 
-There is no "version 2" of the "Lesser" General Public License.
-It is either "GPL version 2.0" or "Lesser GPL version 2.1".
-This patch replaces all occurrences of "Lesser GPL version 2" with
-"Lesser GPL version 2.1" in comment section.
+On 23/10/2020 14.18, Chetan Pant wrote:
+> There is no "version 2" of the "Lesser" General Public License.
+> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
+> This patch replaces all occurrences of "Lesser GPL version 2" with
+> "Lesser GPL version 2.1" in comment section.
+> 
+> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+> ---
+>  target/microblaze/cpu.h       | 2 +-
+>  target/microblaze/gdbstub.c   | 2 +-
+>  target/microblaze/helper.c    | 2 +-
+>  target/microblaze/machine.c   | 2 +-
+>  target/microblaze/mmu.c       | 2 +-
+>  target/microblaze/mmu.h       | 2 +-
+>  target/microblaze/op_helper.c | 2 +-
+>  target/microblaze/translate.c | 2 +-
+>  8 files changed, 8 insertions(+), 8 deletions(-)
 
-Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
----
- hw/acpi/nvdimm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 8f7cc16..e17734d 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -15,7 +15,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
--- 
-2.17.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
