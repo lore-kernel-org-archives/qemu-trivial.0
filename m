@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVqJr-0000Dg-9A
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 02:12:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49804)
+	id 1kVqJs-0000GZ-Ha
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 02:12:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49810)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJp-0000Bs-4j; Fri, 23 Oct 2020 02:12:53 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5204 helo=huawei.com)
+ id 1kVqJp-0000Bt-4u; Fri, 23 Oct 2020 02:12:53 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:47366 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJm-0000ux-Tf; Fri, 23 Oct 2020 02:12:52 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id B23FBF6EE23FC696F94D;
- Fri, 23 Oct 2020 14:12:40 +0800 (CST)
+ id 1kVqJn-0000u1-59; Fri, 23 Oct 2020 02:12:52 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 64C02DCB7E5C90CF1D36;
+ Fri, 23 Oct 2020 14:12:35 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Fri, 23 Oct 2020
- 14:12:34 +0800
+ 14:12:27 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <lvivier@redhat.com>,
- <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Li Qiang <liq3ea@gmail.com>, Chen Qun <kuhn.chenqun@huawei.com>
-Subject: [PATCH RESEND v2 4/7] elf2dmp/pdb: Plug memleak in pdb_init_from_file
-Date: Fri, 23 Oct 2020 14:12:15 +0800
-Message-ID: <20201023061218.2080844-5-kuhn.chenqun@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH RESEND v2 0/7] some memleak trivial patchs
+Date: Fri, 23 Oct 2020 14:12:11 +0800
+Message-ID: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
-References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
+Received-SPF: pass client-ip=45.249.212.32;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:12:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:12:37
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -56,31 +53,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 23 Oct 2020 06:12:53 -0000
 
-From: Pan Nengyuan <pannengyuan@huawei.com>
+Hi all,
 
-Missing g_error_free in pdb_init_from_file() error path. Fix that.
+  Here are some memory leak patches reported by EulerRobot.
+Some patch submissions have been unattended for a while and I resend
+them.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-Reviewed-by: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
- contrib/elf2dmp/pdb.c | 1 +
- 1 file changed, 1 insertion(+)
+Thanks,
+Chen Qun
 
-diff --git a/contrib/elf2dmp/pdb.c b/contrib/elf2dmp/pdb.c
-index a5bd40c99d..b3a6547068 100644
---- a/contrib/elf2dmp/pdb.c
-+++ b/contrib/elf2dmp/pdb.c
-@@ -285,6 +285,7 @@ int pdb_init_from_file(const char *name, struct pdb_reader *reader)
-     reader->gmf = g_mapped_file_new(name, TRUE, &gerr);
-     if (gerr) {
-         eprintf("Failed to map PDB file \'%s\'\n", name);
-+        g_error_free(gerr);
-         return 1;
-     }
- 
+
+Chen Qun (1):
+  tests/migration: fix memleak in wait_command/wait_command_fd
+
+Pan Nengyuan (6):
+  qga/channel-posix: Plug memory leak in ga_channel_write_all()
+  elf2dmp/qemu_elf: Plug memleak in QEMU_Elf_init
+  elf2dmp/pdb: Plug memleak in pdb_init_from_file
+  migration/colo: Plug memleaks in colo_process_incoming_thread
+  blockdev: Fix a memleak in drive_backup_prepare()
+  block/file-posix: fix a possible undefined behavior
+
+ block/file-posix.c              |  2 +-
+ blockdev.c                      |  1 +
+ contrib/elf2dmp/pdb.c           |  1 +
+ contrib/elf2dmp/qemu_elf.c      |  1 +
+ migration/colo.c                |  5 ++++-
+ qga/channel-posix.c             |  6 +++++-
+ tests/qtest/migration-helpers.c | 16 ++++++++++++----
+ 7 files changed, 25 insertions(+), 7 deletions(-)
+
 -- 
 2.23.0
 
