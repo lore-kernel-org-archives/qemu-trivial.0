@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kW2Is-0001lg-El
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 15:00:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55122)
+	id 1kW2Kk-0003O5-Sg
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 15:02:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Ig-0001kZ-Nz
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:00:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:27077)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Ki-0003IB-JU
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:02:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54620)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Ic-0004Vf-LC
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:00:30 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Kb-0004ov-Qd
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:02:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603479620;
+ s=mimecast20190719; t=1603479748;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I6ctCNQUUyTO3pVmlcxfrifV3oV5Hug6tcToFdkt/1s=;
- b=ZMFE7jNTX/S/z84vWk8BLlfo7gfapdJqje7oKQ6wh1LkDlcEUIf735m9iXLakneHPiDPAK
- it3UTFVyAnGx6Or1wQEAhZME32uKFcuBqIyN9I/k0OkxjtPZaURHywBl4wa041em3gcsKs
- MHDNVlgTwA0HL/14shiSuzDB/ZukZJQ=
+ bh=B7vkEwvGVZ+ZOQAVDnVrCDpHlhkd9cUNXxZxH36hNKY=;
+ b=Hu6BMSqSJpo45sgerpFzAIUFlCsOpVxfXOmUZ1cDYetKXURbKZ5NMGVEVOyM+CyWVoeLBX
+ XPLjTlyWObe9kUjlbh1Imo01Kgq7bzSgMxc6IIIdK0AbIJMLdv03KL2Rle41nTdNGbkJ8Q
+ yN+JJgXDtrG7geDnzMaxdd+1H3pLLI4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-406-7OjEk5o-OzWEJEptlHd_jg-1; Fri, 23 Oct 2020 15:00:18 -0400
-X-MC-Unique: 7OjEk5o-OzWEJEptlHd_jg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-12-2eY_WBCGP7GklX4qlz5WhA-1; Fri, 23 Oct 2020 15:02:27 -0400
+X-MC-Unique: 2eY_WBCGP7GklX4qlz5WhA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAE061099F6A;
- Fri, 23 Oct 2020 19:00:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DCE84804B7C;
+ Fri, 23 Oct 2020 19:02:25 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-25.ams2.redhat.com [10.36.112.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5129E5D9D5;
- Fri, 23 Oct 2020 19:00:16 +0000 (UTC)
-Subject: Re: [PATCH 17/30] x86 tcg cpus: Fix Lesser GPL version number
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5141160BFA;
+ Fri, 23 Oct 2020 19:02:24 +0000 (UTC)
+Subject: Re: [PATCH 18/30] arm tcg cpus: Fix Lesser GPL version number
 To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: pbonzini@redhat.com, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org
 References: <20201014134248.14146-1-chetan4windows@gmail.com>
- <20201023122801.19514-1-chetan4windows@gmail.com>
+ <20201023122913.19561-1-chetan4windows@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <4e61bd64-165e-672c-7ea7-35e81d60eabf@redhat.com>
-Date: Fri, 23 Oct 2020 21:00:14 +0200
+Message-ID: <0084dc74-f512-c93e-f444-d7cabf820b79@redhat.com>
+Date: Fri, 23 Oct 2020 21:02:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201023122801.19514-1-chetan4windows@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20201023122913.19561-1-chetan4windows@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -63,7 +63,7 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,9 +76,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 19:00:31 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 19:02:37 -0000
 
-On 23/10/2020 14.28, Chetan Pant wrote:
+On 23/10/2020 14.29, Chetan Pant wrote:
 > There is no "version 2" of the "Lesser" General Public License.
 > It is either "GPL version 2.0" or "Lesser GPL version 2.1".
 > This patch replaces all occurrences of "Lesser GPL version 2" with
@@ -86,29 +86,41 @@ On 23/10/2020 14.28, Chetan Pant wrote:
 > 
 > Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 > ---
->  target/i386/bpt_helper.c            | 2 +-
->  target/i386/cc_helper.c             | 2 +-
->  target/i386/cc_helper_template.h    | 2 +-
->  target/i386/cpu.c                   | 2 +-
->  target/i386/cpu.h                   | 2 +-
->  target/i386/excp_helper.c           | 2 +-
->  target/i386/fpu_helper.c            | 2 +-
->  target/i386/gdbstub.c               | 2 +-
->  target/i386/helper.c                | 2 +-
->  target/i386/int_helper.c            | 2 +-
->  target/i386/mem_helper.c            | 2 +-
->  target/i386/misc_helper.c           | 2 +-
->  target/i386/mpx_helper.c            | 2 +-
->  target/i386/ops_sse.h               | 2 +-
->  target/i386/ops_sse_header.h        | 2 +-
->  target/i386/seg_helper.c            | 2 +-
->  target/i386/shift_helper_template.h | 2 +-
->  target/i386/smm_helper.c            | 2 +-
->  target/i386/svm_helper.c            | 2 +-
->  target/i386/tcg-stub.c              | 2 +-
->  target/i386/translate.c             | 2 +-
->  21 files changed, 21 insertions(+), 21 deletions(-)
+>  hw/intc/arm_gicv2m.c            | 2 +-
+>  hw/intc/arm_gicv3_its_kvm.c     | 2 +-
+>  target/arm/a32-uncond.decode    | 2 +-
+>  target/arm/a32.decode           | 2 +-
+>  target/arm/arm_ldst.h           | 2 +-
+>  target/arm/cpu.h                | 2 +-
+>  target/arm/crypto_helper.c      | 2 +-
+>  target/arm/gdbstub.c            | 2 +-
+>  target/arm/gdbstub64.c          | 2 +-
+>  target/arm/helper-a64.c         | 2 +-
+>  target/arm/helper-a64.h         | 2 +-
+>  target/arm/helper-sve.h         | 2 +-
+>  target/arm/iwmmxt_helper.c      | 2 +-
+>  target/arm/neon-dp.decode       | 2 +-
+>  target/arm/neon-ls.decode       | 2 +-
+>  target/arm/neon-shared.decode   | 2 +-
+>  target/arm/op_helper.c          | 2 +-
+>  target/arm/pauth_helper.c       | 2 +-
+>  target/arm/sve.decode           | 2 +-
+>  target/arm/sve_helper.c         | 2 +-
+>  target/arm/t16.decode           | 2 +-
+>  target/arm/t32.decode           | 2 +-
+>  target/arm/translate-a64.c      | 2 +-
+>  target/arm/translate-a64.h      | 2 +-
+>  target/arm/translate-neon.c.inc | 2 +-
+>  target/arm/translate-sve.c      | 2 +-
+>  target/arm/translate-vfp.c.inc  | 2 +-
+>  target/arm/translate.c          | 2 +-
+>  target/arm/vec_helper.c         | 2 +-
+>  target/arm/vec_internal.h       | 2 +-
+>  target/arm/vfp-uncond.decode    | 2 +-
+>  target/arm/vfp.decode           | 2 +-
+>  32 files changed, 32 insertions(+), 32 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
 
