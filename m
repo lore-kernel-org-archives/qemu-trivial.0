@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVw1W-00025E-Uw
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 08:18:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37006)
+	id 1kVw2T-0002xp-6d
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 08:19:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kVw1V-000255-Vr; Fri, 23 Oct 2020 08:18:21 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:36951)
+ id 1kVw2R-0002ul-CZ; Fri, 23 Oct 2020 08:19:19 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:36680)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chetan4windows@gmail.com>)
- id 1kVw1T-0000wd-Ah; Fri, 23 Oct 2020 08:18:21 -0400
-Received: by mail-pl1-x643.google.com with SMTP id bf6so764804plb.4;
- Fri, 23 Oct 2020 05:18:18 -0700 (PDT)
+ id 1kVw2P-00011g-AH; Fri, 23 Oct 2020 08:19:19 -0400
+Received: by mail-pg1-x542.google.com with SMTP id b23so1114245pgb.3;
+ Fri, 23 Oct 2020 05:19:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=KSEDqVqpkGzWudkkdFkAWEi+UiMnzbkKsFsg0QviR08=;
- b=cPu/fwe3s78HNI6EArE9PZvUK4TwYizk+svBZcIDzuNCxTnkAl8/9ylXmf91seLJHo
- 3ZdqsWq7qzViGE+eRkQCA5tWcUQPwSdekM2Ztk6rr5Hb5swmjCaHHRvrq5KPd8pOuc2G
- sEtDAVvc/phF/yFhcEXyyG2Jydthwl70qDQ39nChyHCdE7cBT83JNMC0gUHeg84NzGsn
- VrHoX9UKMXdniE4K9Iw//8Rq2y4rSIc/ztr0kLh7C4tcQD6F9nPKNt9GJ0CJc5MYKVxT
- mf4r89TRCpv4xJNpp9abFZDoZr2ts0wTM+0lZLiZNvO2wkWXzKdrna3aPrBOjJSgHTw5
- rHKQ==
+ bh=z2WuP28xT86WpPobv7ndJGF5Was6IrYab0319WrXnpU=;
+ b=stkGGQDRRHEE5Yb2ANrVCfLcZYCuFOTf0JOyzbKPES0NGpt6Xrobdk2ydsCjTJqqUh
+ IZDb/xB4jpfFgYvsMKaIQ9I62JBVYoW7sFQA9EPldGPRN8DqqNrNiYaX1PeC2c1MdtJB
+ OGrUWc5OuIl81eY8HuidigbzVwNcJuSVu2aoyZBy1bPgN5AZ3oUNGbjY+Hk3cRZ7H2GG
+ YTON8pc0yv3CwEL5oClkuFXUOCMsFMAeLVdgZECRU89omyUKrxMA3rPb7ZS4gjXJVgjR
+ OMVa3fhjvGYIIrc16ZzWpCOzMjIJfPEJ/2CB/a95lKSdSISvKWGzQXGoidvbKG19QDfo
+ BENg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=KSEDqVqpkGzWudkkdFkAWEi+UiMnzbkKsFsg0QviR08=;
- b=fcUZyVRACsHpffsRJqFd/q6tE9Mz2UN3gpl4TaFYxac4g7fzTm3rKGK7iSqLATT2EG
- bEcZv9FOFv8rBIdMsn4JK3XXczKGpSDeFoAvriR+0+FYZwpU0U6f1n8Mx1zllrfkF9V9
- RtA6ErTYe/flnkp2lraTRyvQ+231ICDLENkOSLZ+uV/FQ+geetLFisvQxo8WNx3GGyhV
- c3mMb1nFsKBvUcURH/OvV26g7u8H9Y4dOKnkRZPdGFw8cKwBAOun/d6E13ej6FU+P3D/
- Kx7Z0N5Jt2965YWtxi7pMFa9O9ZdITb1f0ZDJQz0UhiSoHapYwMRAP/yRBFmwkhKeY8M
- AdfQ==
-X-Gm-Message-State: AOAM533hnRlS9PX3FtKuWlQ1z9+elOxWPG9eHFsRrzYGg/aGxRTJoF8R
- ZVai6q71hPC0dn2ugxAbOHUzodn0wimZwbmZ
-X-Google-Smtp-Source: ABdhPJwJjwkj9Qqly+HHRho8N6Lku2YIMzJ9nNGqvKIECxK0cp2YxoNjJ5RKd6e2hM42hb0Oebf8ZQ==
-X-Received: by 2002:a17:902:8691:b029:d3:9c6b:d326 with SMTP id
- g17-20020a1709028691b02900d39c6bd326mr2178350plo.60.1603455496468; 
- Fri, 23 Oct 2020 05:18:16 -0700 (PDT)
+ bh=z2WuP28xT86WpPobv7ndJGF5Was6IrYab0319WrXnpU=;
+ b=iixpp8TkT9cNGZkxFwihSW5LjvCRcNcTI4ln9ULusoHMW4Y9eNE6Q3YIFF0RPmYiCA
+ dweuTUhmNyeOlEbCJw2yrhP/HmdAUdYOAFJsFFsAKptDo5jxvvdq7u7N6DjZMW1pKl9+
+ vYsoKkkV+vjF5JwZlJ2s8U23Em4vbGmOasuGITRNFeBYvmV71lUqCNWIH9sOJEBXTHAp
+ EPJ7bdlaMI7+F6Lv2MZNmgloWy5Kwl1VE9OyHyWNVT3yq7+YrA0x0P8KMD8JZmfk+OC1
+ W+MfYjND6uILcLfUat8zPh/MfUU2E7SrQHpbHqBy/3lUr4HhQI4aEovWuxVA8XTHHrR1
+ xNYw==
+X-Gm-Message-State: AOAM530xJL8shAwqPlVRHeVdamAhZBHIkS/D/qGX/RpJaJP022qiLSPP
+ TlThGvL+UEvLajslsGafmiyOYeF+VHbIOcUv
+X-Google-Smtp-Source: ABdhPJwBVLRnVJk9ITf/iiacUVNF4OoIe4Pe2qX87WR53+jJ8Hts2hWr4/WFqddXDfdDw2KQo3dd+w==
+X-Received: by 2002:aa7:9e05:0:b029:158:ca8c:fe36 with SMTP id
+ y5-20020aa79e050000b0290158ca8cfe36mr1889357pfq.62.1603455555024; 
+ Fri, 23 Oct 2020 05:19:15 -0700 (PDT)
 Received: from pulp100.localdomain ([103.199.158.131])
- by smtp.gmail.com with ESMTPSA id l13sm1903430pgq.33.2020.10.23.05.18.13
+ by smtp.gmail.com with ESMTPSA id e4sm1756237pgg.37.2020.10.23.05.19.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2020 05:18:15 -0700 (PDT)
+ Fri, 23 Oct 2020 05:19:14 -0700 (PDT)
 From: Chetan Pant <chetan4windows@gmail.com>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, edgar.iglesias@gmail.com,
  Chetan Pant <chetan4windows@gmail.com>
-Subject: [PATCH 9/30] cris tcg cpus: Fix Lesser GPL version number
-Date: Fri, 23 Oct 2020 12:16:48 +0000
-Message-Id: <20201023121649.19123-1-chetan4windows@gmail.com>
+Subject: [PATCH 10/30] microblaze tcg cpus: Fix Lesser GPL version number
+Date: Fri, 23 Oct 2020 12:18:21 +0000
+Message-Id: <20201023121821.19179-1-chetan4windows@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201014134248.14146-1-chetan4windows@gmail.com>
 References: <20201014134248.14146-1-chetan4windows@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=chetan4windows@gmail.com; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=chetan4windows@gmail.com; helo=mail-pg1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -74,7 +74,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 12:18:22 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 12:19:19 -0000
 
 There is no "version 2" of the "Lesser" General Public License.
 It is either "GPL version 2.0" or "Lesser GPL version 2.1".
@@ -83,22 +83,33 @@ This patch replaces all occurrences of "Lesser GPL version 2" with
 
 Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 ---
- target/cris/cpu.h               | 2 +-
- target/cris/crisv10-decode.h    | 2 +-
- target/cris/crisv32-decode.h    | 2 +-
- target/cris/gdbstub.c           | 2 +-
- target/cris/helper.c            | 2 +-
- target/cris/machine.c           | 2 +-
- target/cris/mmu.c               | 2 +-
- target/cris/op_helper.c         | 2 +-
- target/cris/translate.c         | 2 +-
- target/cris/translate_v10.c.inc | 2 +-
- 10 files changed, 10 insertions(+), 10 deletions(-)
+ target/microblaze/cpu.h       | 2 +-
+ target/microblaze/gdbstub.c   | 2 +-
+ target/microblaze/helper.c    | 2 +-
+ target/microblaze/machine.c   | 2 +-
+ target/microblaze/mmu.c       | 2 +-
+ target/microblaze/mmu.h       | 2 +-
+ target/microblaze/op_helper.c | 2 +-
+ target/microblaze/translate.c | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-index 8f08d76..d3b6492 100644
---- a/target/cris/cpu.h
-+++ b/target/cris/cpu.h
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index 297b368..c1c2641 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
+index be39fd4..2e6e070 100644
+--- a/target/microblaze/gdbstub.c
++++ b/target/microblaze/gdbstub.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -108,10 +119,10 @@ index 8f08d76..d3b6492 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/crisv10-decode.h b/target/cris/crisv10-decode.h
-index 028179b..9c531f3 100644
---- a/target/cris/crisv10-decode.h
-+++ b/target/cris/crisv10-decode.h
+diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
+index 3d6ce1b..cda14a1 100644
+--- a/target/microblaze/helper.c
++++ b/target/microblaze/helper.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -121,10 +132,23 @@ index 028179b..9c531f3 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/crisv32-decode.h b/target/cris/crisv32-decode.h
-index cdc2f8c..fa0a7f0 100644
---- a/target/cris/crisv32-decode.h
-+++ b/target/cris/crisv32-decode.h
+diff --git a/target/microblaze/machine.c b/target/microblaze/machine.c
+index acdb8d0..c2074bb 100644
+--- a/target/microblaze/machine.c
++++ b/target/microblaze/machine.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/microblaze/mmu.c b/target/microblaze/mmu.c
+index 1dbbb27..2baaef7 100644
+--- a/target/microblaze/mmu.c
++++ b/target/microblaze/mmu.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -134,10 +158,23 @@ index cdc2f8c..fa0a7f0 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/gdbstub.c b/target/cris/gdbstub.c
-index b01b2aa..2418d57 100644
---- a/target/cris/gdbstub.c
-+++ b/target/cris/gdbstub.c
+diff --git a/target/microblaze/mmu.h b/target/microblaze/mmu.h
+index 7d0fbb8..09e4075 100644
+--- a/target/microblaze/mmu.h
++++ b/target/microblaze/mmu.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
+index 757f3ff..58d6335 100644
+--- a/target/microblaze/op_helper.c
++++ b/target/microblaze/op_helper.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -147,75 +184,10 @@ index b01b2aa..2418d57 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/helper.c b/target/cris/helper.c
-index b5159b8..ed45c3d 100644
---- a/target/cris/helper.c
-+++ b/target/cris/helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/machine.c b/target/cris/machine.c
-index be38a89..f370f33 100644
---- a/target/cris/machine.c
-+++ b/target/cris/machine.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/mmu.c b/target/cris/mmu.c
-index 2acbcfd..a279b7f 100644
---- a/target/cris/mmu.c
-+++ b/target/cris/mmu.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/op_helper.c b/target/cris/op_helper.c
-index 6b1e7ae..d55a18a 100644
---- a/target/cris/op_helper.c
-+++ b/target/cris/op_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/translate.c b/target/cris/translate.c
-index c312e6f..c893f87 100644
---- a/target/cris/translate.c
-+++ b/target/cris/translate.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/cris/translate_v10.c.inc b/target/cris/translate_v10.c.inc
-index 7f38fd2..86d78a8 100644
---- a/target/cris/translate_v10.c.inc
-+++ b/target/cris/translate_v10.c.inc
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index abfcc7e..c1b13f4 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
