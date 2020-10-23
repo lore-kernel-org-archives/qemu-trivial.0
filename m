@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVqJt-0000JA-Aj
+	id 1kVqJt-0000K0-H3
 	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 02:12:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49826)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJp-0000C1-BO; Fri, 23 Oct 2020 02:12:53 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:48244 helo=huawei.com)
+ id 1kVqJq-0000Cu-FT; Fri, 23 Oct 2020 02:12:54 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:47516 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJn-0000u2-4A; Fri, 23 Oct 2020 02:12:53 -0400
+ id 1kVqJo-0000wk-EJ; Fri, 23 Oct 2020 02:12:54 -0400
 Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 93A9F95D6ADF27123BE4;
- Fri, 23 Oct 2020 14:12:35 +0800 (CST)
+ by Forcepoint Email with ESMTP id 8E6D9956478C8FB263FF;
+ Fri, 23 Oct 2020 14:12:45 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Fri, 23 Oct 2020
- 14:12:29 +0800
+ 14:12:36 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <lvivier@redhat.com>,
- <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
- <thuth@redhat.com>, Maxim Levitsky <mlevitsk@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>
-Subject: [PATCH RESEND v2 1/7] tests/migration: fix memleak in
- wait_command/wait_command_fd
-Date: Fri, 23 Oct 2020 14:12:12 +0800
-Message-ID: <20201023061218.2080844-2-kuhn.chenqun@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Li Qiang <liq3ea@gmail.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>, Juan Quintela <quintela@redhat.com>, "Dr. David
+ Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PATCH RESEND v2 5/7] migration/colo: Plug memleaks in
+ colo_process_incoming_thread
+Date: Fri, 23 Oct 2020 14:12:16 +0800
+Message-ID: <20201023061218.2080844-6-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
 References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
@@ -34,7 +34,7 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
+Received-SPF: pass client-ip=45.249.212.32;
  envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:12:37
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
@@ -56,90 +56,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 06:12:53 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 06:12:54 -0000
 
-Properly free each command resp to avoid memory leak.
-ASAN shows memory leak stack:
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-Indirect leak of 2352520 byte(s) in 571 object(s) allocated from:
-    #0 0x7f6ca3308d4e in __interceptor_calloc (/lib64/libasan.so.5+0x112d4e)
-    #1 0x7f6ca3127a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
-    #2 0x557bf3c71d2b in qdict_new ../qobject/qdict.c:29
-    #3 0x557bf3c9caba in parse_object ../qobject/json-parser.c:318
-    #4 0x557bf3c9ce75 in json_parser_parse ../qobject/json-parser.c:580
-    #5 0x557bf3c8c8cf in json_message_process_token ../qobject/json-streamer.c:92
-    #6 0x557bf3c9ea59 in json_lexer_feed_char ../qobject/json-lexer.c:313
-    #7 0x557bf3c9eeb5 in json_lexer_feed ../qobject/json-lexer.c:350
-    #8 0x557bf3c4793a in qmp_fd_receive ../tests/qtest/libqtest.c:608
-    #9 0x557bf3c47b58 in qtest_qmp_receive ../tests/qtest/libqtest.c:618
-    #10 0x557bf3c44245 in wait_command ../tests/qtest/migration-helpers.c:59
-    #11 0x557bf3c445cb in migrate_query_status ../tests/qtest/migration-helpers.c:108
-    #12 0x557bf3c44642 in check_migration_status ../tests/qtest/migration-helpers.c:124
-    #13 0x557bf3c447e7 in wait_for_migration_status ../tests/qtest/migration-helpers.c:148
-    #14 0x557bf3c43b8f in test_migrate_auto_converge ../tests/qtest/migration-test.c:1243
-    ......
-
-Fix: 5e34005571af5
+'local_err' forgot to free in colo_process_incoming_thread error path.
+Fix that.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>
-Cc: Maxim Levitsky <mlevitsk@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 ---
- tests/qtest/migration-helpers.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ migration/colo.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/migration-helpers.c b/tests/qtest/migration-helpers.c
-index b799dbafb7..4ee26014b7 100644
---- a/tests/qtest/migration-helpers.c
-+++ b/tests/qtest/migration-helpers.c
-@@ -32,7 +32,7 @@ static void check_stop_event(QTestState *who)
- QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
- {
-     va_list ap;
--    QDict *resp;
-+    QDict *resp, *ret;
+diff --git a/migration/colo.c b/migration/colo.c
+index 3f1d3dfd95..7cc5a37192 100644
+--- a/migration/colo.c
++++ b/migration/colo.c
+@@ -886,7 +886,6 @@ void *colo_process_incoming_thread(void *opaque)
+     while (mis->state == MIGRATION_STATUS_COLO) {
+         colo_wait_handle_message(mis, fb, bioc, &local_err);
+         if (local_err) {
+-            error_report_err(local_err);
+             break;
+         }
  
-     va_start(ap, command);
-     qtest_qmp_vsend_fds(who, &fd, 1, command, ap);
-@@ -44,7 +44,11 @@ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
-     g_assert(!qdict_haskey(resp, "error"));
-     g_assert(qdict_haskey(resp, "return"));
+@@ -922,6 +921,10 @@ out:
+         qemu_fclose(fb);
+     }
  
--    return qdict_get_qdict(resp, "return");
-+    ret = qdict_get_qdict(resp, "return");
-+    qobject_ref(ret);
-+    qobject_unref(resp);
++    if (local_err) {
++        error_report_err(local_err);
++    }
 +
-+    return ret;
- }
- 
- /*
-@@ -53,7 +57,7 @@ QDict *wait_command_fd(QTestState *who, int fd, const char *command, ...)
- QDict *wait_command(QTestState *who, const char *command, ...)
- {
-     va_list ap;
--    QDict *resp;
-+    QDict *resp, *ret;
- 
-     va_start(ap, command);
-     resp = qtest_vqmp(who, command, ap);
-@@ -64,7 +68,11 @@ QDict *wait_command(QTestState *who, const char *command, ...)
-     g_assert(!qdict_haskey(resp, "error"));
-     g_assert(qdict_haskey(resp, "return"));
- 
--    return qdict_get_qdict(resp, "return");
-+    ret = qdict_get_qdict(resp, "return");
-+    qobject_ref(ret);
-+    qobject_unref(resp);
-+
-+    return ret;
- }
- 
- /*
+     /* Hope this not to be too long to loop here */
+     qemu_sem_wait(&mis->colo_incoming_sem);
+     qemu_sem_destroy(&mis->colo_incoming_sem);
 -- 
 2.23.0
 
