@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kW2AS-0001y0-Fy
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 14:52:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53444)
+	id 1kW2Is-0001lg-El
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 15:00:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2AM-0001wX-RT
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 14:51:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47300)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Ig-0001kZ-Nz
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:00:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:27077)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2AG-0003PY-Ug
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 14:51:53 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kW2Ic-0004Vf-LC
+ for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 15:00:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603479105;
+ s=mimecast20190719; t=1603479620;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hY/glQQa4W5Ct0mMD2m6fRv2JnpsEf0mMjyATkDzhGA=;
- b=ZhCLYCAIUrmO0HQH/FvHtDs3TACB+i/qOJNVFzMRa1rES0HUw1N0+yrnjxV7EI0reMgvLD
- 9q+n0yJ5GgvRDZFU65BvTX/beoqt1pqKd36Op0uB4o5HPyORRZcoUEuGowIxzfZI1Xq1Fn
- QqZNnnOLb8uGiuYli+auFe/mb+YQSMw=
+ bh=I6ctCNQUUyTO3pVmlcxfrifV3oV5Hug6tcToFdkt/1s=;
+ b=ZMFE7jNTX/S/z84vWk8BLlfo7gfapdJqje7oKQ6wh1LkDlcEUIf735m9iXLakneHPiDPAK
+ it3UTFVyAnGx6Or1wQEAhZME32uKFcuBqIyN9I/k0OkxjtPZaURHywBl4wa041em3gcsKs
+ MHDNVlgTwA0HL/14shiSuzDB/ZukZJQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-98-i6bv6nr_PRCpEZRADZAaYQ-1; Fri, 23 Oct 2020 14:51:37 -0400
-X-MC-Unique: i6bv6nr_PRCpEZRADZAaYQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-406-7OjEk5o-OzWEJEptlHd_jg-1; Fri, 23 Oct 2020 15:00:18 -0400
+X-MC-Unique: 7OjEk5o-OzWEJEptlHd_jg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C5B2F10557CF;
- Fri, 23 Oct 2020 18:51:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAE061099F6A;
+ Fri, 23 Oct 2020 19:00:17 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-25.ams2.redhat.com [10.36.112.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EABA055760;
- Fri, 23 Oct 2020 18:51:34 +0000 (UTC)
-Subject: Re: [PATCH] CHANGELOG: remove disused file
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
- Eric Blake <eblake@redhat.com>
-References: <20201022162843.1841780-1-jsnow@redhat.com>
- <576a881d-2c64-3e40-31b7-43680a1988f8@redhat.com>
- <22839fc4-a1b9-0510-ff19-3a713fd8a187@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5129E5D9D5;
+ Fri, 23 Oct 2020 19:00:16 +0000 (UTC)
+Subject: Re: [PATCH 17/30] x86 tcg cpus: Fix Lesser GPL version number
+To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
+Cc: pbonzini@redhat.com, qemu-devel@nongnu.org
+References: <20201014134248.14146-1-chetan4windows@gmail.com>
+ <20201023122801.19514-1-chetan4windows@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <88ac9998-51fb-0cca-8b7a-a2204ee0f9b2@redhat.com>
-Date: Fri, 23 Oct 2020 20:51:33 +0200
+Message-ID: <4e61bd64-165e-672c-7ea7-35e81d60eabf@redhat.com>
+Date: Fri, 23 Oct 2020 21:00:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <22839fc4-a1b9-0510-ff19-3a713fd8a187@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20201023122801.19514-1-chetan4windows@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:46:25
@@ -78,55 +76,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 18:51:56 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 19:00:31 -0000
 
-On 23/10/2020 18.34, John Snow wrote:
-> On 10/23/20 1:43 AM, Thomas Huth wrote:
->> On 22/10/2020 18.28, John Snow wrote:
->>> There's no reason to keep this here; the versions described are
->>> ancient. Everything here is still mirrored on
->>> https://wiki.qemu.org/ChangeLog/old if anyone is curious; otherwise, use
->>> the git history.
->>>
->>> Signed-off-by: John Snow <jsnow@redhat.com>
->>> ---
->>>   Changelog | 580 ------------------------------------------------------
->>>   1 file changed, 580 deletions(-)
->>>   delete mode 100644 Changelog
->>>
->>> diff --git a/Changelog b/Changelog
->>> deleted file mode 100644
->>> index f7e178ccc01..00000000000
->>> --- a/Changelog
->>> +++ /dev/null
->>> @@ -1,580 +0,0 @@
->>> -This file documents changes for QEMU releases 0.12 and earlier.
->>> -For changelog information for later releases, see
->>> -https://wiki.qemu.org/ChangeLog or look at the git history for
->>> -more detailed information.
->>
->> I agree with removing the old log. But should we maybe leave a pointer to
->> https://wiki.qemu.org/ChangeLog / the git history here to let people know
->> how to see the changelogs?
->>
->>   Thomas
->>
+On 23/10/2020 14.28, Chetan Pant wrote:
+> There is no "version 2" of the "Lesser" General Public License.
+> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
+> This patch replaces all occurrences of "Lesser GPL version 2" with
+> "Lesser GPL version 2.1" in comment section.
 > 
-> Maybe in README.rst, just below "Bug Reporting" and above "Contact" ?
-> 
-> 
-> Changelog
-> =========
-> 
-> For version history and release notes, please visit
-> `<https://wiki.qemu.org/ChangeLog/>`_ or look at the git history for more
-> detailed information.
+> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+> ---
+>  target/i386/bpt_helper.c            | 2 +-
+>  target/i386/cc_helper.c             | 2 +-
+>  target/i386/cc_helper_template.h    | 2 +-
+>  target/i386/cpu.c                   | 2 +-
+>  target/i386/cpu.h                   | 2 +-
+>  target/i386/excp_helper.c           | 2 +-
+>  target/i386/fpu_helper.c            | 2 +-
+>  target/i386/gdbstub.c               | 2 +-
+>  target/i386/helper.c                | 2 +-
+>  target/i386/int_helper.c            | 2 +-
+>  target/i386/mem_helper.c            | 2 +-
+>  target/i386/misc_helper.c           | 2 +-
+>  target/i386/mpx_helper.c            | 2 +-
+>  target/i386/ops_sse.h               | 2 +-
+>  target/i386/ops_sse_header.h        | 2 +-
+>  target/i386/seg_helper.c            | 2 +-
+>  target/i386/shift_helper_template.h | 2 +-
+>  target/i386/smm_helper.c            | 2 +-
+>  target/i386/svm_helper.c            | 2 +-
+>  target/i386/tcg-stub.c              | 2 +-
+>  target/i386/translate.c             | 2 +-
+>  21 files changed, 21 insertions(+), 21 deletions(-)
 
-Ok, but IIRC the "ChangeLog" file is a standard file in GNU coding
-conventions, so it might be worth to keep the information in this file ...
-of course we are not bound to the GNU conventions in QEMU, but users still
-might expect to find the information in here...
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
