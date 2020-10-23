@@ -1,29 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVqJs-0000GZ-Ha
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 02:12:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49810)
+	id 1kVqJt-0000Hx-0m
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 02:12:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJp-0000Bt-4u; Fri, 23 Oct 2020 02:12:53 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:47366 helo=huawei.com)
+ id 1kVqJq-0000CU-1H; Fri, 23 Oct 2020 02:12:54 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:47496 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kVqJn-0000u1-59; Fri, 23 Oct 2020 02:12:52 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 64C02DCB7E5C90CF1D36;
- Fri, 23 Oct 2020 14:12:35 +0800 (CST)
+ id 1kVqJn-0000wi-JC; Fri, 23 Oct 2020 02:12:53 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 883A9695B20B134086C6;
+ Fri, 23 Oct 2020 14:12:45 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Fri, 23 Oct 2020
- 14:12:27 +0800
+ 14:12:39 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pannengyuan@huawei.com>, <lvivier@redhat.com>,
- <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>, Stefano Garzarella <sgarzare@redhat.com>, "Kevin
+ Wolf" <kwolf@redhat.com>, Li Qiang <liq3ea@gmail.com>, Chen Qun
  <kuhn.chenqun@huawei.com>
-Subject: [PATCH RESEND v2 0/7] some memleak trivial patchs
-Date: Fri, 23 Oct 2020 14:12:11 +0800
-Message-ID: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
+Subject: [PATCH RESEND v2 7/7] block/file-posix: fix a possible undefined
+ behavior
+Date: Fri, 23 Oct 2020 14:12:18 +0800
+Message-ID: <20201023061218.2080844-8-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
+References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -51,38 +56,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 06:12:53 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 06:12:54 -0000
 
-Hi all,
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-  Here are some memory leak patches reported by EulerRobot.
-Some patch submissions have been unattended for a while and I resend
-them.
+local_err is not initialized to NULL, it will cause a assert error as below:
+qemu/util/error.c:59: error_setv: Assertion `*errp == NULL' failed.
 
-Thanks,
-Chen Qun
+Fixes: c6447510690
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ block/file-posix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-Chen Qun (1):
-  tests/migration: fix memleak in wait_command/wait_command_fd
-
-Pan Nengyuan (6):
-  qga/channel-posix: Plug memory leak in ga_channel_write_all()
-  elf2dmp/qemu_elf: Plug memleak in QEMU_Elf_init
-  elf2dmp/pdb: Plug memleak in pdb_init_from_file
-  migration/colo: Plug memleaks in colo_process_incoming_thread
-  blockdev: Fix a memleak in drive_backup_prepare()
-  block/file-posix: fix a possible undefined behavior
-
- block/file-posix.c              |  2 +-
- blockdev.c                      |  1 +
- contrib/elf2dmp/pdb.c           |  1 +
- contrib/elf2dmp/qemu_elf.c      |  1 +
- migration/colo.c                |  5 ++++-
- qga/channel-posix.c             |  6 +++++-
- tests/qtest/migration-helpers.c | 16 ++++++++++++----
- 7 files changed, 25 insertions(+), 7 deletions(-)
-
+diff --git a/block/file-posix.c b/block/file-posix.c
+index c63926d592..b711124672 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -2110,7 +2110,7 @@ static void raw_aio_attach_aio_context(BlockDriverState *bs,
+ #endif
+ #ifdef CONFIG_LINUX_IO_URING
+     if (s->use_linux_io_uring) {
+-        Error *local_err;
++        Error *local_err = NULL;
+         if (!aio_setup_linux_io_uring(new_context, &local_err)) {
+             error_reportf_err(local_err, "Unable to use linux io_uring, "
+                                          "falling back to thread pool: ");
 -- 
 2.23.0
 
