@@ -1,69 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kVwSk-0006rM-Dl
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 08:46:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45448)
+	id 1kVwg7-0008NJ-S1
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2020 09:00:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kVwSi-0006n5-BF
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 08:46:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42288)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kVwSg-0004x7-Kc
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2020 08:46:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603457185;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tzgfCZdGhO8nYRv17djMZY0DMkppNnApgy2Zm2+xu18=;
- b=LF9vy6OOV43HVJE7Gd0H+UVZ9f/TrpZ9jxN7zbkIjC6tuR17rTAEeu3zEKeGAiRG6LVJp1
- +O9/TFGNx44m23Q3afQZpNwrbBDQOVaNMGJXdsJXV9QyprxtyZHpUOon6iuoFperxRKnp8
- enYhbgeNOyPEZ6lEuULC15NrsxKhkiw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-436-M5LXRLLUPmy5lr9yQ4epww-1; Fri, 23 Oct 2020 08:46:21 -0400
-X-MC-Unique: M5LXRLLUPmy5lr9yQ4epww-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1kVwg6-0008MR-81; Fri, 23 Oct 2020 09:00:18 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:34702
+ helo=v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1kVwg4-0006je-02; Fri, 23 Oct 2020 09:00:17 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 9A0D5DB1A32;
+ Fri, 23 Oct 2020 15:00:11 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id VMatCTq90L7l; Fri, 23 Oct 2020 15:00:10 +0200 (CEST)
+Received: from macbook02.fritz.box (p57b42e50.dip0.t-ipconnect.de
+ [87.180.46.80])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F42718C9F42;
- Fri, 23 Oct 2020 12:46:20 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-115-61.ams2.redhat.com [10.36.115.61])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E431C55762;
- Fri, 23 Oct 2020 12:46:17 +0000 (UTC)
-Subject: Re: [PATCH 16/30] boston: Fix Lesser GPL version number
+ by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 20756DB1908;
+ Fri, 23 Oct 2020 15:00:10 +0200 (CEST)
 To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, paulburton@kernel.org
+Cc: qemu-devel@nongnu.org
 References: <20201014134248.14146-1-chetan4windows@gmail.com>
- <20201023122633.19466-1-chetan4windows@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <60e7db2c-c5be-0709-3e26-cfb1caa1889a@redhat.com>
-Date: Fri, 23 Oct 2020 14:46:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ <20201023123624.19891-1-chetan4windows@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+Subject: Re: [PATCH 24/30] w32: Fix Lesser GPL version number
+Message-ID: <7c7c4739-5649-165d-6be5-b68fad318047@weilnetz.de>
+Date: Fri, 23 Oct 2020 15:00:09 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.3.3
 MIME-Version: 1.0
-In-Reply-To: <20201023122633.19466-1-chetan4windows@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:46:25
+In-Reply-To: <20201023123624.19891-1-chetan4windows@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=v2201612906741603.powersrv.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 09:00:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.108,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,76 +60,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2020 12:46:28 -0000
+X-List-Received-Date: Fri, 23 Oct 2020 13:00:18 -0000
 
-On 23/10/2020 14.26, Chetan Pant wrote:
+Am 23.10.20 um 14:36 schrieb Chetan Pant:
+
 > There is no "version 2" of the "Lesser" General Public License.
 > It is either "GPL version 2.0" or "Lesser GPL version 2.1".
 > This patch replaces all occurrences of "Lesser GPL version 2" with
 > "Lesser GPL version 2.1" in comment section.
-> 
+>
 > Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 > ---
->  hw/core/loader-fit.c              | 2 +-
->  hw/mips/boston.c                  | 2 +-
->  hw/pci-host/xilinx-pcie.c         | 2 +-
->  include/hw/pci-host/xilinx-pcie.h | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
-> index c465921..b7c7b3b 100644
-> --- a/hw/core/loader-fit.c
-> +++ b/hw/core/loader-fit.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
+>   util/oslib-win32.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+> index c654daf..48e34c1 100644
+> --- a/util/oslib-win32.c
+> +++ b/util/oslib-win32.c
+> @@ -367,7 +367,7 @@ char *qemu_get_exec_dir(void)
+>    * This library is free software; you can redistribute it and/or
+>    * modify it under the terms of the GNU Lesser General Public
+>    * License as published by the Free Software Foundation; either
 > - * version 2 of the License, or (at your option) any later version.
 > + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-> index 1b3f69e..0e9c771 100644
-> --- a/hw/mips/boston.c
-> +++ b/hw/mips/boston.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-> index 3b32142..38d5901 100644
-> --- a/hw/pci-host/xilinx-pcie.c
-> +++ b/hw/pci-host/xilinx-pcie.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/include/hw/pci-host/xilinx-pcie.h b/include/hw/pci-host/xilinx-pcie.h
-> index f079e50..89be88d 100644
-> --- a/include/hw/pci-host/xilinx-pcie.h
-> +++ b/include/hw/pci-host/xilinx-pcie.h
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> 
+>    *
+>    * This library is distributed in the hope that it will be useful,
+>    * but WITHOUT ANY WARRANTY; without even the implied warranty of
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+LGPL 2.0 was the GNU Library General Public License,
+but in COPYING.LIB we already use LGPL 2.1, so
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+
 
 
