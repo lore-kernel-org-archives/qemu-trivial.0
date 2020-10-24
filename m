@@ -1,73 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kWCCO-0002sr-FX
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Oct 2020 01:34:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41080)
+	id 1kWPo6-0002ZK-Ui
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Oct 2020 16:06:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kWCCN-0002rH-3g
- for qemu-trivial@nongnu.org; Sat, 24 Oct 2020 01:34:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54615)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kWCCL-0000cy-Kt
- for qemu-trivial@nongnu.org; Sat, 24 Oct 2020 01:34:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603517676;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LVRtNw4D5HTKpjJUcJRv0V5nzhIcW2QoXRWLTfJSAJM=;
- b=dqugUnn/KC0z8ODnOc5JGEFU6r4igoJBw4f9j/KHNzY8/LkvVTynDoI4uXEOUf00LJOFTC
- iuCEOGu4q85evUOBcpnchQN703k3wwjs0DWQOkP78d2qiFRqalqTyTAJk9EJdIhgsAiLzz
- 2RSqNyz7GQmkNDxktdXnmmCkNberaX0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-530-CHCVL9iANrqZ6SgMY3Bt8w-1; Sat, 24 Oct 2020 01:34:32 -0400
-X-MC-Unique: CHCVL9iANrqZ6SgMY3Bt8w-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5A6E5F9EE;
- Sat, 24 Oct 2020 05:34:31 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5DFAB5D9D5;
- Sat, 24 Oct 2020 05:34:24 +0000 (UTC)
-Subject: Re: [PATCH 1/4] qdev: Fix two typos
-To: Maxim Levitsky <mlevitsk@redhat.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Max Reitz <mreitz@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201019163702.471239-1-mlevitsk@redhat.com>
- <20201019163702.471239-2-mlevitsk@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <ce809c9e-c6ad-2d4b-a186-d32ab79213ef@redhat.com>
-Date: Sat, 24 Oct 2020 07:34:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kWPo0-0002Wc-1Y; Sat, 24 Oct 2020 16:06:24 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:53535)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kWPnw-0001LD-GR; Sat, 24 Oct 2020 16:06:22 -0400
+Received: by mail-wm1-x342.google.com with SMTP id d78so6196745wmd.3;
+ Sat, 24 Oct 2020 13:06:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=gaGUXfj+4igL3ksAUaalL4a3tFJLwZ5Dv/u334hoUA4=;
+ b=fQ0s4GJvOZZYxfcqio/UMXm346/PHeAnB8ODO2g/IjQopXWm/m8aTIPaZHwGw2sxiC
+ PdW0JyaDEF+QgO0gtqKvWxJWb39Rd6kovsLp5eu3lIhKdZeXlZh5qkMNs5fgBRgFcUxg
+ Zuh+jnBrjbTKjiw90sLPaXwAcF3zcDesHhyYBm6V17+o97DGcWWLw3ga18fx99RpSqpa
+ IMB0IGVLrpJTga+3xWoWEPSZr6+oyn20lywZPmy4pz4Yjwcv4UJN6pc+6dSXY9U/t3xK
+ 6AHlFls3SzNNcn0+76EM/QD/Z9MiSPc4U02HxlzDgWky4utph8LklIckC/K8XQJfkVPf
+ kOEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gaGUXfj+4igL3ksAUaalL4a3tFJLwZ5Dv/u334hoUA4=;
+ b=CUCzUaNUigP46FEVsaj/O0VKQRLaecmcAoX7siPeoQXRVDWb9oyGBycM3zW+oU57sb
+ KmpzwVnksy4xy79SDj1wLTGRO+D0lvlqMfU8GHUzgNHNOYe13P6iZd1ZtDz3c4Xg2Co4
+ 2af+EwmqTGT5kCjdQg3WvXy8n00B+sGrATNrkQ528vQyGy/EmEfbpANPH3eTX0fEE8v+
+ ZtnclrE3F/s0gEC4kOJ81q9jw7/b4phBSKgg1kNp3+NrgEeiXW8G9H8WKhxvDlGtrUj/
+ gky6Ov2QrXiqIkkDv0xtJ+Qc+vW6xZYKFWcBa9xLYTQqXHDyXNpIBQ/q/+adwtwHdZlM
+ nzmg==
+X-Gm-Message-State: AOAM533tPKO8lEd7S+afhsxyJwqt94C6JVOPVdRXqLWykCqAyzfrj18R
+ EnilbH8cRWjejnnBwfN5z+c=
+X-Google-Smtp-Source: ABdhPJwLJq9/w7TpkRoVS5dMicWsxcsx+43GmZdQv8EGXXhAIdIAhPHCjIvtUyqnJa92vipUDL8Jtw==
+X-Received: by 2002:a1c:495:: with SMTP id 143mr7896466wme.63.1603569976205;
+ Sat, 24 Oct 2020 13:06:16 -0700 (PDT)
+Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id f14sm13484321wrr.80.2020.10.24.13.06.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 24 Oct 2020 13:06:15 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 1/3] hw/timer/sh_timer: Coding style clean-up
+To: Thomas Huth <thuth@redhat.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>
+References: <20201020153935.54315-1-thuth@redhat.com>
+ <20201020153935.54315-2-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3059881f-08f6-cc9f-9bbb-0e179b1d4002@amsat.org>
+Date: Sat, 24 Oct 2020 22:06:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201019163702.471239-2-mlevitsk@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20201020153935.54315-2-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/24 01:26:25
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.107,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,31 +85,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Oct 2020 05:34:39 -0000
+X-List-Received-Date: Sat, 24 Oct 2020 20:06:24 -0000
 
-On 19/10/2020 18.36, Maxim Levitsky wrote:
-> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+On 10/20/20 5:39 PM, Thomas Huth wrote:
+> Replace TAB characters with spaces, put code after case-statement on
+> separate lines and add some curly braces in related lines to keep
+> checkpatch.pl happy.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/hw/qdev-core.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index 868973319e..3761186804 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -163,8 +163,8 @@ struct NamedClockList {
->  /**
->   * DeviceState:
->   * @realized: Indicates whether the device has been fully constructed.
-> - *            When accessed outsize big qemu lock, must be accessed with
-> - *            atomic_load_acquire()
-> + *            When accessed outside big qemu lock, must be accessed with
-> + *            qatomic_load_acquire()
->   * @reset: ResettableState for the device; handled by Resettable interface.
->   *
->   * This structure should not be accessed directly.  We declare it here
-> 
+>   hw/timer/sh_timer.c | 89 +++++++++++++++++++++++++++++----------------
+>   1 file changed, 57 insertions(+), 32 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Easily reviewed with 'git-diff --color-words'.
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
