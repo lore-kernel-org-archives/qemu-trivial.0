@@ -1,67 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kWPsH-0004Mi-LN
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Oct 2020 16:10:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32958)
+	id 1kWU2X-0003kh-Bn
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Oct 2020 20:37:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37054)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kWPsG-0004Lb-Ge; Sat, 24 Oct 2020 16:10:48 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39194)
+ id 1kWU2U-0003jZ-VE; Sat, 24 Oct 2020 20:37:38 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46857)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kWPsE-0001xP-Vc; Sat, 24 Oct 2020 16:10:48 -0400
-Received: by mail-wr1-x444.google.com with SMTP id y12so6929535wrp.6;
- Sat, 24 Oct 2020 13:10:46 -0700 (PDT)
+ id 1kWU2T-0004HV-6l; Sat, 24 Oct 2020 20:37:38 -0400
+Received: by mail-wr1-x444.google.com with SMTP id n6so7922349wrm.13;
+ Sat, 24 Oct 2020 17:37:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=iwqDWawN4yHV2wS3lQhrrQziWlCFkYgrnQkpFiVzIAY=;
- b=UoX3b/ZTMbbC/5SNEA4tCVp1Zg5sXVn9gCaO6jNHeboKPqBX3pZ5dlDO2obGzLBC7P
- Ivh3ue0gGnHULzPYP8m54pfFrd39XRmmw3dRWrlDN5lZjzyWIi+31D9HW6ZQpKaQKYAo
- uGq+qnJ21rIbhVxqZOQMk0HvF9N8Mqm1/HJYeNgdrwjkH33tuoUbPmJhgc3upZyAuKaF
- hELBq6lt0+q8Fsd5ShkGBA47eY8aUbbRSh9o1CiBVa1V2yGedr6zoyyTXDrjNZpmwfom
- YMN2YMH1Xi1nQOraZ/N5/AgC75dhARHsETy5GM+2Tycfmrd56E6XUfxnyDW9PLGNJn99
- XDSg==
+ bh=ZabuqZGwm1fVDKwuFzSLyxhNSX/2duX+YmYK6sFRHYM=;
+ b=XuMLccjPkNU9QFTeE75BMcT1nN0hN/dzxD9AigWFXAR2kdQdNtYJZdxuwJDR/mxzCo
+ 8wd/0beJUAnzqscNUrbzmNQyVj2Ue/bhLTM5CBnjZPUv46kOiHbYHbKtvFB++v3bhtId
+ AuQkYTmIWbFyWu8FKlzFUCcNdWTVX6/ZDl+12vW7ar0AaWPOSPQjSU/QEyeEufkw0ZS9
+ Cg2nl3jJkc4n/BWycHj+6Yy/V+CFyySWVHToB2g6SuEgc9XMmZQ5tFLr2v6oAN18yoy5
+ 0w7EKJaccaTYkNNkSxfvH7YpDN3L9bBWx8E9vWOOECl9UEDZktfwX3J78tneg+zJwC1n
+ JyQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iwqDWawN4yHV2wS3lQhrrQziWlCFkYgrnQkpFiVzIAY=;
- b=NZgerMjtPCDkDID4bB+gy7P/KURS0gLpwBwYLVbcH8oWcF1F4Q2Nm0C5eyH2EG//wS
- cLGjGYA/6BikzmyXFbA/3n6a/PvD7ZhqvGDbMbjcbTYW/lalUQl+jibUi/EgT1yBHLNq
- MqrOqEmwtRa7qTJHa4zBnpYyywRwb81f+dnZ2uwXuyg4RdFZnCwUFpdLLL05gVxd5wnQ
- RCIbtgR3xtpPjlmxcUP1CkjMasU9UwwEu2a64dUOryetWkvtVGzugZWCb/0mLZwMG+pE
- ClmUrcleMRDEDl8zAnh+IvF7N8m9UTmFIkSlN+y/FnPQNsXGDETYmyWQblCE9J0UtAp2
- DBIQ==
-X-Gm-Message-State: AOAM532w6kGRntGwTMEbOjhYJUht4n9YX2Uk9ulINhLbMJDzbpkzULun
- oU88Qpixubs74UePPfDKNPE=
-X-Google-Smtp-Source: ABdhPJx6szxUafVoDgBLF9+REZVIT8OWvazHBs4gUq2GsBcRuZXV961lA+EJR/FCXoPTThEgkhPA5Q==
-X-Received: by 2002:a5d:6345:: with SMTP id b5mr9578448wrw.288.1603570245112; 
- Sat, 24 Oct 2020 13:10:45 -0700 (PDT)
+ bh=ZabuqZGwm1fVDKwuFzSLyxhNSX/2duX+YmYK6sFRHYM=;
+ b=rntsCeWecjWe5xZS5iOTFcM3WJFrHFkRp1v4CLKnbC97EN3i9CYx7mI8DYsAbcKTcW
+ 6Bjm2vlhi3JHCxW3VhHMfdfW7VxmQ0X+Jx+Xlzsq6HAbqmjDo4k0GDBgXjlyxx7DvhlK
+ 4k5rI1JFumBXvP9+3wmbrFQXAuuzPiHKJ/wGCmrdSz8uEfZDPSOH/O/VW0TNYcX1Neah
+ UabSoDCZHrcuMnM5uefin14RHw8HQQQpE+/4BAAmYYvoJIRGIMVgTZvxhfN6AaxRxbM4
+ Jm1/AP5lSewcxv+5T+JI0RnaSqMKMT/26wqkRdp0NN/SAjFmW/PNjsEzpndRZ2fP0W86
+ d9RA==
+X-Gm-Message-State: AOAM530rFJ/izH9q/qsGXBUfcMdH2vRFcUEvlsa2DjCdIoZ3zDsa1e/O
+ /bkezBrbtGZR4ISw0p3MWfOqfniYlY4=
+X-Google-Smtp-Source: ABdhPJxw+iEKq1PKP7Jcq10Ad++GznCNZCSAjHgRAAyXZI0TS54zyAAEvFUrUpkhm+aoqzX78y3QHw==
+X-Received: by 2002:adf:ecc8:: with SMTP id s8mr9681254wro.328.1603586254953; 
+ Sat, 24 Oct 2020 17:37:34 -0700 (PDT)
 Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
  [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id i126sm12837150wmi.0.2020.10.24.13.10.44
+ by smtp.gmail.com with ESMTPSA id 3sm12907060wmd.19.2020.10.24.17.37.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 24 Oct 2020 13:10:44 -0700 (PDT)
+ Sat, 24 Oct 2020 17:37:34 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 3/3] hw/timer/sh_timer: Remove superfluous "break"
- statements
-To: Thomas Huth <thuth@redhat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>
-References: <20201020153935.54315-1-thuth@redhat.com>
- <20201020153935.54315-4-thuth@redhat.com>
+Subject: Re: [PATCH V2 09/14] sh4/: fix some comment spelling errors
+To: zhaolichang <zhaolichang@huawei.com>, qemu-trivial@nongnu.org
+Cc: David Edmondson <david.edmondson@oracle.com>, qemu-devel@nongnu.org
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+ <20201009064449.2336-10-zhaolichang@huawei.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <eb29a32b-9fb1-8876-c76f-defd710c5b28@amsat.org>
-Date: Sat, 24 Oct 2020 22:10:43 +0200
+Message-ID: <8f8483cf-ed90-2ecc-d986-e0d31e928ad6@amsat.org>
+Date: Sun, 25 Oct 2020 02:37:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201020153935.54315-4-thuth@redhat.com>
+In-Reply-To: <20201009064449.2336-10-zhaolichang@huawei.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::444;
  envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -86,16 +84,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Oct 2020 20:10:48 -0000
+X-List-Received-Date: Sun, 25 Oct 2020 00:37:39 -0000
 
-On 10/20/20 5:39 PM, Thomas Huth wrote:
-> hw_error() is marked as QEMU_NORETURN, so the "break" statements
-> after this function are just dead code.
+On 10/9/20 8:44 AM, zhaolichang wrote:
+> I found that there are many spelling errors in the comments of qemu/target/sh4.
+> I used spellcheck to check the spelling errors and found some errors in the folder.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
+> Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
 > ---
->   hw/timer/sh_timer.c | 3 ---
->   1 file changed, 3 deletions(-)
+>   target/sh4/cpu.h       | 2 +-
+>   target/sh4/op_helper.c | 2 +-
+>   target/sh4/translate.c | 2 +-
+>   3 files changed, 3 insertions(+), 3 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Thanks, applied to renesas-next.
 
