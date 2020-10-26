@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX8Bq-0006xI-6t
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 15:29:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58354)
+	id 1kX8GK-0003cv-HP
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 15:34:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kX8Bo-0006t2-Cg; Mon, 26 Oct 2020 15:29:56 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:42509)
+ id 1kX8GI-0003Wx-6p; Mon, 26 Oct 2020 15:34:34 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:41305)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kX8Bm-0001M8-Pr; Mon, 26 Oct 2020 15:29:56 -0400
+ id 1kX8GG-00025N-D3; Mon, 26 Oct 2020 15:34:33 -0400
 Received: from [192.168.100.1] ([82.252.139.38]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MJEAX-1kqBAk2qIl-00KfW6; Mon, 26 Oct 2020 20:29:49 +0100
-Subject: Re: [PATCH] scripts/qmp: delete 'qmp' script
-To: Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N8X9L-1kJqc70gLp-014PPu; Mon, 26 Oct 2020 20:34:26 +0100
+Subject: Re: [PATCH 1/4] qdev: Fix two typos
+To: Thomas Huth <thuth@redhat.com>, Maxim Levitsky <mlevitsk@redhat.com>,
  qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <20201019210430.1063390-1-jsnow@redhat.com>
- <e057e735-1288-0aa3-0333-cc1d8188f704@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20201019163702.471239-1-mlevitsk@redhat.com>
+ <20201019163702.471239-2-mlevitsk@redhat.com>
+ <ce809c9e-c6ad-2d4b-a186-d32ab79213ef@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <8b7a0e58-c711-e398-7fe8-0a1b7a87a586@vivier.eu>
-Date: Mon, 26 Oct 2020 20:29:48 +0100
+Message-ID: <03a9894b-c6c3-8d1b-ff60-10bb17bf2dfc@vivier.eu>
+Date: Mon, 26 Oct 2020 20:34:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <e057e735-1288-0aa3-0333-cc1d8188f704@redhat.com>
+In-Reply-To: <ce809c9e-c6ad-2d4b-a186-d32ab79213ef@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AezqNs3HL9mnz03ldC6uN6GXcUnzasg2/aMl9zqVivFRVksLYi6
- v04UC3FyeMSEbSjHGZtthTZx02QWGNYzpWfwbOl+FYHkJYhorEZtHt/mjJr3WYROrjbGtry
- dHjc4GRT84dKzGQIazE/IjBqnwa3Xq6BFxerzNu/482bIB625bTFR/0Gr1+7PkvDP+9KMnG
- QxA1HMCEBZKVE56xAOzvg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AwdiOVTPTOg=:GRmb09wPdWffxtrCaUZmd4
- RvcqyNanLLR8TbPm9TiPj+hG5N0aSUVXO70wT8PMAIPw2ZbIIIJAdF1sVv7MFJ9JN0N+fcjrE
- 2/7JPCT86WW3/2DYCb9YHKvqdbuQDl1MLdpDC/Jva1Ki2rxFTwkOE4PxPHRz+4yKesOsVvX0E
- 0BkeDL/jponuM/FyUaPm6URD9vjbdApCi2GKFTf5sCVSllXC3cwvi0RyceBYItnCAOTaEo7MB
- 0TxkK8nGWq7eQK1P4jl5AdkQVeUXClY2TDCJNSDRgB68V97pOkJt1gzFwurf6RH3kR7Sr+v10
- ZYyknsx1yMFF9hLtWWN9ossHl5jDSPSCxE6vx6fjc/01GoD9UyXMCDyyLS8tk93u3SlhCZ+gT
- vq6y5SxRcHHYbKPkacTchDdqbi0rZwgwYIlcTNRZVRllgFDWdfq1AJDQGCRJIVo9eF8bW7zzK
- 1KG2+qqJsQ==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:dZ/zpS+44wCAZ782kZblDXIYj9sLMDZRDFoO7X/4P7iLeABrfP/
+ ynEX3P5vQGaKNc4O+Z/2RYlOiAekwxDV0JieBw66QYq+OxQhvZepp1IvHLRdw9p2EO9SviH
+ j499VyoG6njJg/B3zacisyi8s3QcZhweO12Tk6dHRVs0Cg3BUzV4hQrJq0qJ2k7scyOj9zE
+ 0MaVc3nchfZogn7/ubxoQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bz7q21iirus=:8Ugv2UsJfpJvlpjS6LUz3N
+ M7/GP/1v9PQJ4NQhUQxI2YrggMcboWX+ZDojNlm/E1V7wTzumO68TfZx//PYzj/d6XkVCej7B
+ CjQf/fP1WxrN1F+8AmET+S3GO1zKnrV23sSnglX5uEq1fE9O+EK2Vt0pILQQkq1trzkKfOW+w
+ 31cPnDw4aVMsdivrR8Cfr4oTx6BR0XWWFwzZmmsJ++v3C2eVbmjXEKwg3pQvejnmHXS2XZUmH
+ 3ViU9SrnOiQm7ZlFNE1AHDzIOcQIEaKcBVeXR1J80EoVkconQ5GCwxaAMuI2i5O0JxOeksG30
+ K9g054qLDlIHQiHUFJMofISbw9qgPLXA5HHuBe/V0BPGSuGPnFcLXZRR9r8DrJmD/ol0fWCjy
+ zn4inzyQgF3huNsj+gwlpnqrkr2kn1lnKKthuEOx9UMDNZc/sGbuC17xKLC0U2MHfAT+R1dcH
+ 6gbc+/n42g==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 15:18:32
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 15:34:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -63,38 +67,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 19:29:56 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 19:34:35 -0000
 
-Le 20/10/2020 à 07:44, Thomas Huth a écrit :
-> On 19/10/2020 23.04, John Snow wrote:
->> This script has not seen a patch that was specifically for this script
->> since it was moved to this location in 2013, and I doubt it is used. It
->> uses "man qmp" for its help message, which does not exist. It also
->> presumes there is a manual page for qmp-XXX, for each defined qmp
->> command XXX. I don't think that's true.
->>
->> The format it expects arguments in is something like:
->>
->> block-dirty-bitmap-add --node=foo --name=bar
->>
->> and has no capacity to support nested JSON arguments, either.
->>
->> Most developers use either qmp-shell or socat (or pasting JSON directly
->> into qmp stdio), so this duplication and additional alternate syntax is
->> not helpful.
->>
->> Remove it. Leave a breadcrumb script just in case, to be removed next
->> release cycle.
->>
->> Signed-off-by: John Snow <jsnow@redhat.com>
+Le 24/10/2020 à 07:34, Thomas Huth a écrit :
+> On 19/10/2020 18.36, Maxim Levitsky wrote:
+>> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
 >> ---
->>  scripts/qmp/qmp | 131 +++---------------------------------------------
->>  1 file changed, 7 insertions(+), 124 deletions(-)
+>>  include/hw/qdev-core.h | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+>> index 868973319e..3761186804 100644
+>> --- a/include/hw/qdev-core.h
+>> +++ b/include/hw/qdev-core.h
+>> @@ -163,8 +163,8 @@ struct NamedClockList {
+>>  /**
+>>   * DeviceState:
+>>   * @realized: Indicates whether the device has been fully constructed.
+>> - *            When accessed outsize big qemu lock, must be accessed with
+>> - *            atomic_load_acquire()
+>> + *            When accessed outside big qemu lock, must be accessed with
+>> + *            qatomic_load_acquire()
+>>   * @reset: ResettableState for the device; handled by Resettable interface.
+>>   *
+>>   * This structure should not be accessed directly.  We declare it here
+>>
 > 
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
 > 
-
 Applied to my trivial-patches branch.
 
 Thanks,
