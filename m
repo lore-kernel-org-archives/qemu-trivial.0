@@ -1,45 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX2yS-0001WT-7L
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60960)
+	id 1kX4K7-0005ru-VU
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 11:22:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kWz3U-0007Cb-Cr; Mon, 26 Oct 2020 05:44:44 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2482)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kWz3Q-0006qM-L3; Mon, 26 Oct 2020 05:44:43 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CKVKx0skczhbRk;
- Mon, 26 Oct 2020 17:44:37 +0800 (CST)
-Received: from [10.174.187.250] (10.174.187.250) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 26 Oct 2020 17:44:22 +0800
-To: <qemu-devel@nongnu.org>
-CC: <dengkai1@huawei.com>, <qemu-trivial@nongnu.org>
-From: jokenzhang <zhangxinhao1@huawei.com>
-Subject: [PATCH] hw/acpi/nvdimm.c : Don't use '#' flag of printf format
-Message-ID: <af7fe174-c789-faf6-e067-80f7ebe21f0c@huawei.com>
-Date: Mon, 26 Oct 2020 17:44:21 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.3
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kX4K6-0005ow-5m
+ for qemu-trivial@nongnu.org; Mon, 26 Oct 2020 11:22:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42475)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kX4K3-00078N-SX
+ for qemu-trivial@nongnu.org; Mon, 26 Oct 2020 11:22:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603725730;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=W0tIkUgGZjhQcfEolhVA9FgVQGoAdQAnzjG+9hFhz2s=;
+ b=M+c/bV/Nyy3r6qs2Q8XouAjJswaiUN/DNU68bR5FdKzLBZvYrrc5gTdmaLfj4y5jtsMtNn
+ yNDGBScyVJezI7XS3xLgWitbSYddxZMU2UWRPAG9TfsXF0cdgbR3i0NsvzmL58QbqGetev
+ +3CL89WGvypd2L8mfikEYB3i4yX11Fs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-271-hvbR2lNDOmO89bLpeV8g6g-1; Mon, 26 Oct 2020 11:22:05 -0400
+X-MC-Unique: hvbR2lNDOmO89bLpeV8g6g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4996818CBC47;
+ Mon, 26 Oct 2020 15:22:03 +0000 (UTC)
+Received: from [10.10.120.57] (ovpn-120-57.rdu2.redhat.com [10.10.120.57])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 410947D4E6;
+ Mon, 26 Oct 2020 15:22:00 +0000 (UTC)
+Subject: Re: [PATCH] CHANGELOG: remove disused file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+ Eric Blake <eblake@redhat.com>
+References: <20201022162843.1841780-1-jsnow@redhat.com>
+ <576a881d-2c64-3e40-31b7-43680a1988f8@redhat.com>
+ <22839fc4-a1b9-0510-ff19-3a713fd8a187@redhat.com>
+ <88ac9998-51fb-0cca-8b7a-a2204ee0f9b2@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <35df91c4-49e5-bc9e-e153-a27b7f443ffd@redhat.com>
+Date: Mon, 26 Oct 2020 11:21:59 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <88ac9998-51fb-0cca-8b7a-a2204ee0f9b2@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.250]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:44:33
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 02:39:09
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -42
+X-Spam_score: -4.3
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Oct 2020 09:55:40 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -51,92 +79,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 09:44:44 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 15:22:14 -0000
 
-Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
-Signed-off-by: Kai Deng <dengkai1@huawei.com>
-Reported-by: Euler Robot <euler.robot@huawei.com>
----
- hw/acpi/nvdimm.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+On 10/23/20 2:51 PM, Thomas Huth wrote:
+> On 23/10/2020 18.34, John Snow wrote:
+>> On 10/23/20 1:43 AM, Thomas Huth wrote:
+>>> On 22/10/2020 18.28, John Snow wrote:
+>>>> There's no reason to keep this here; the versions described are
+>>>> ancient. Everything here is still mirrored on
+>>>> https://wiki.qemu.org/ChangeLog/old if anyone is curious; otherwise, use
+>>>> the git history.
+>>>>
+>>>> Signed-off-by: John Snow <jsnow@redhat.com>
+>>>> ---
+>>>>    Changelog | 580 ------------------------------------------------------
+>>>>    1 file changed, 580 deletions(-)
+>>>>    delete mode 100644 Changelog
+>>>>
+>>>> diff --git a/Changelog b/Changelog
+>>>> deleted file mode 100644
+>>>> index f7e178ccc01..00000000000
+>>>> --- a/Changelog
+>>>> +++ /dev/null
+>>>> @@ -1,580 +0,0 @@
+>>>> -This file documents changes for QEMU releases 0.12 and earlier.
+>>>> -For changelog information for later releases, see
+>>>> -https://wiki.qemu.org/ChangeLog or look at the git history for
+>>>> -more detailed information.
+>>>
+>>> I agree with removing the old log. But should we maybe leave a pointer to
+>>> https://wiki.qemu.org/ChangeLog / the git history here to let people know
+>>> how to see the changelogs?
+>>>
+>>>    Thomas
+>>>
+>>
+>> Maybe in README.rst, just below "Bug Reporting" and above "Contact" ?
+>>
+>>
+>> Changelog
+>> =========
+>>
+>> For version history and release notes, please visit
+>> `<https://wiki.qemu.org/ChangeLog/>`_ or look at the git history for more
+>> detailed information.
+> 
+> Ok, but IIRC the "ChangeLog" file is a standard file in GNU coding
+> conventions, so it might be worth to keep the information in this file ...
+> of course we are not bound to the GNU conventions in QEMU, but users still
+> might expect to find the information in here...
+> 
+>   Thomas
+> 
 
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 8f7cc16add..dab3329890 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -556,7 +556,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
+My point in removing it is just getting rid of the runaround. If we 
+don't have the changelog information in CHANGELOG, why have the file and 
+pretend like we do?
 
-     fit = fit_buf->fit;
+Moving it into README.rst makes it visible on github and gitlab to 
+people stopping by for the first time.
 
--    nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
-+    nvdimm_debug("Read FIT: offset 0x%x FIT size 0x%x Dirty %s.\n",
-                  read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
+--js
 
-     if (read_fit->offset > fit->len) {
-@@ -664,7 +664,7 @@ static void nvdimm_dsm_label_size(NVDIMMDevice *nvdimm, hwaddr dsm_mem_addr)
-     label_size = nvdimm->label_size;
-     mxfer = nvdimm_get_max_xfer_label_size();
-
--    nvdimm_debug("label_size %#x, max_xfer %#x.\n", label_size, mxfer);
-+    nvdimm_debug("label_size 0x%x, max_xfer 0x%x.\n", label_size, mxfer);
-
-     label_size_out.func_ret_status = cpu_to_le32(NVDIMM_DSM_RET_STATUS_SUCCESS);
-     label_size_out.label_size = cpu_to_le32(label_size);
-@@ -680,19 +680,19 @@ static uint32_t nvdimm_rw_label_data_check(NVDIMMDevice *nvdimm,
-     uint32_t ret = NVDIMM_DSM_RET_STATUS_INVALID;
-
-     if (offset + length < offset) {
--        nvdimm_debug("offset %#x + length %#x is overflow.\n", offset,
-+        nvdimm_debug("offset 0x%x + length 0x%x is overflow.\n", offset,
-                      length);
-         return ret;
-     }
-
-     if (nvdimm->label_size < offset + length) {
--        nvdimm_debug("position %#x is beyond label data (len = %" PRIx64 ").\n",
-+        nvdimm_debug("position 0x%x is beyond label data (len = %" PRIx64 ").\n",
-                      offset + length, nvdimm->label_size);
-         return ret;
-     }
-
-     if (length > nvdimm_get_max_xfer_label_size()) {
--        nvdimm_debug("length (%#x) is larger than max_xfer (%#x).\n",
-+        nvdimm_debug("length (0x%x) is larger than max_xfer (0x%x).\n",
-                      length, nvdimm_get_max_xfer_label_size());
-         return ret;
-     }
-@@ -716,7 +716,7 @@ static void nvdimm_dsm_get_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     get_label_data->offset = le32_to_cpu(get_label_data->offset);
-     get_label_data->length = le32_to_cpu(get_label_data->length);
-
--    nvdimm_debug("Read Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Read Label Data: offset 0x%x length 0x%x.\n",
-                  get_label_data->offset, get_label_data->length);
-
-     status = nvdimm_rw_label_data_check(nvdimm, get_label_data->offset,
-@@ -755,7 +755,7 @@ static void nvdimm_dsm_set_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     set_label_data->offset = le32_to_cpu(set_label_data->offset);
-     set_label_data->length = le32_to_cpu(set_label_data->length);
-
--    nvdimm_debug("Write Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Write Label Data: offset 0x%x length 0x%x.\n",
-                  set_label_data->offset, set_label_data->length);
-
-     status = nvdimm_rw_label_data_check(nvdimm, set_label_data->offset,
-@@ -852,11 +852,11 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
-     in->function = le32_to_cpu(in->function);
-     in->handle = le32_to_cpu(in->handle);
-
--    nvdimm_debug("Revision %#x Handler %#x Function %#x.\n", in->revision,
-+    nvdimm_debug("Revision 0x%x Handler 0x%x Function 0x%x.\n", in->revision,
-                  in->handle, in->function);
-
-     if (in->revision != 0x1 /* Currently we only support DSM Spec Rev1. */) {
--        nvdimm_debug("Revision %#x is not supported, expect %#x.\n",
-+        nvdimm_debug("Revision 0x%x is not supported, expect 0x%x.\n",
-                      in->revision, 0x1);
-         nvdimm_dsm_no_payload(NVDIMM_DSM_RET_STATUS_UNSUPPORT, dsm_mem_addr);
-         goto exit;
--- 
-2.29.0-rc1
 
