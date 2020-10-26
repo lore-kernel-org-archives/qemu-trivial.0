@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX89j-0003B5-OA
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 15:27:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57798)
+	id 1kX8AJ-0004Mm-2m
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 15:28:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kX89g-00039d-LH; Mon, 26 Oct 2020 15:27:44 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:42259)
+ id 1kX8AH-0004IV-6B; Mon, 26 Oct 2020 15:28:21 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:55031)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kX89a-000169-K1; Mon, 26 Oct 2020 15:27:42 -0400
+ id 1kX8AF-0001DO-Fu; Mon, 26 Oct 2020 15:28:20 -0400
 Received: from [192.168.100.1] ([82.252.139.38]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mzhax-1kB51I1ko5-00vf9i; Mon, 26 Oct 2020 20:27:25 +0100
-Subject: Re: [PATCH 2/30] io: Fix Lesser GPL version number
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Chetan Pant <chetan4windows@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20201014134033.14095-1-chetan4windows@gmail.com>
- <20201019104107.GF236912@redhat.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N6bwO-1kKgKR1t0g-01821P; Mon, 26 Oct 2020 20:28:05 +0100
+Subject: Re: [PATCH 1/30] cryptodev: Fix Lesser GPL version number
+To: Thomas Huth <thuth@redhat.com>, Chetan Pant <chetan4windows@gmail.com>,
+ qemu-trivial@nongnu.org
+Cc: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <20201014133722.14041-1-chetan4windows@gmail.com>
+ <0050fa57-f728-4341-82c0-03ab057e0f7f@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <020bfca2-5542-97f4-5315-5e05c4f97dbc@vivier.eu>
-Date: Mon, 26 Oct 2020 20:27:24 +0100
+Message-ID: <d6ee885f-b37d-7b1b-5731-bf80facbbe76@vivier.eu>
+Date: Mon, 26 Oct 2020 20:28:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201019104107.GF236912@redhat.com>
+In-Reply-To: <0050fa57-f728-4341-82c0-03ab057e0f7f@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uh0a98ym8GIz937OT9xvn9ahSzY1RNqENdtvGyopaI2JlrZieNC
- 2R8c6WgSALqS0H1/nkEgK8vf0JYaxblDTYqArKog2CrJOqmbGznOYSwdWIJCCtKWhsnGnh7
- eK4EWd6fHOgusRNqpSuXSRJFmyB4MKb+D1cWrH+45fQaYOGI2ysbiFQK+MCdjNrRtpGraR+
- PXhLBOshPEpfJkqrkd4Fw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QoYObQsk95E=:HeZ8HNV84pcefAiL55pQNu
- ugV2Lo7DsgBi1rXjxbT4h8QbnPsikVIkty7cv2ouAEdf9nviG0vv2HALU8WWeAQRQDbVn7GKC
- j7RC1iqpoz9jga/AmsjllbrE8CNmemZJFX6eTft0KmW1v7PwMcA5qKF0cYMrCBHDfF/9aP6cT
- Dj07K2KDbELYtPPztHw6YVNiYHZ4YA4U3XqrMY5U11bxseWgYhGAg2AzQ3B+uEfu8pl9319ix
- VDc+Tv/f15IN6Zn4KfEqui2F+Tqx2iaEI+H5tBZaalqPfg/56pKXh0bvzIM1jDvUFvUZbEuPK
- GkZWxBS62r/2qiicn1C1LYi0/cVtuQY1FRnBkZT1MznrRcLsbK/D/g1mvweO+xuH+70Lw6NM/
- 4A6F1hiIOlMlJYY+ZWUQjZuxKwr25GUn2IkI+xHYKxrtU2MNhYBCWC9emGCRPQ0cyUYktLB2F
- HrmCUBPe9Q==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:P4X7m7+l0GCgFvAiYOJx602ZFqgYAJenAOZ8Obi+Ub8+qWjN9An
+ cmxU1JMXU0wPBk8GolNbYhbaNjVbLNEVTQY3MgosAVFMcMR2rnJaWtkZ854iltsDG9Nbzlz
+ 6uXbhSIxYlKIz4X6aKLCbqG7ya0CgoRgLnbGAUPniG7gncKOi+N4sw22QJOJhd6IGhZv5Db
+ x10Dxy9dIu/3IKW6S0kqg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jNDhhTmI/Rw=:e9HBNOXMxL9WFEtZ7o/pnh
+ Il+HNFnhWeECvfaeFuaoaNNL7tcLOXsh0AvYvSDo3tQYzvoe8XOSwsL4Pb+olfrXkfgJVN7EZ
+ yrQgJqVxVx6l7FF+B8ODfDhvIk2UBcC6wZW0OW1YDYYNgWk77Iyd0vhOJ40FBBj9P/JRm3iVu
+ +OEHqSpNihHHh4fpjMcL35bAVyydw8CdAMaI+uKadwv5JNPXIFCKuS5iDNofbrPzanUMVGu0b
+ dWGkvzI/mwBmFZqO4DFaaTN+QZwufv/qOUorY/4JcnwAQ47IY2Bt9BccCch6Km4nhBQOvl/22
+ 3zUWTygweNl5VFur6glxqOnjPrFECCKvsefTymOGC+yygp3pkc5IFEz/hCSsYkK6EMLf+SQsm
+ v/XDLelhoHJft2VpLCt5W2p4n1NMVXeHjDy/9EJex5bLFZ85LMG5beU03e/w4oapAjbAF1Dnm
+ Es9M58/FHA==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 15:27:32
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 15:11:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -62,10 +62,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 19:27:45 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 19:28:21 -0000
 
-Le 19/10/2020 à 12:41, Daniel P. Berrangé a écrit :
-> On Wed, Oct 14, 2020 at 01:40:33PM +0000, Chetan Pant wrote:
+Le 19/10/2020 à 16:49, Thomas Huth a écrit :
+> On 14/10/2020 15.37, Chetan Pant wrote:
 >> There is no "version 2" of the "Lesser" General Public License.
 >> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
 >> This patch replaces all occurrences of "Lesser GPL version 2" with
@@ -73,41 +73,22 @@ Le 19/10/2020 à 12:41, Daniel P. Berrangé a écrit :
 >>
 >> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 >> ---
->>  include/io/channel-buffer.h     | 2 +-
->>  include/io/channel-command.h    | 2 +-
->>  include/io/channel-file.h       | 2 +-
->>  include/io/channel-socket.h     | 2 +-
->>  include/io/channel-tls.h        | 2 +-
->>  include/io/channel-util.h       | 2 +-
->>  include/io/channel-watch.h      | 2 +-
->>  include/io/channel-websock.h    | 2 +-
->>  include/io/channel.h            | 2 +-
->>  include/io/dns-resolver.h       | 2 +-
->>  include/io/task.h               | 2 +-
->>  io/channel-buffer.c             | 2 +-
->>  io/channel-command.c            | 2 +-
->>  io/channel-file.c               | 2 +-
->>  io/channel-socket.c             | 2 +-
->>  io/channel-tls.c                | 2 +-
->>  io/channel-util.c               | 2 +-
->>  io/channel-watch.c              | 2 +-
->>  io/channel-websock.c            | 2 +-
->>  io/channel.c                    | 2 +-
->>  io/dns-resolver.c               | 2 +-
->>  io/task.c                       | 2 +-
->>  tests/test-io-channel-buffer.c  | 2 +-
->>  tests/test-io-channel-command.c | 2 +-
->>  tests/test-io-channel-file.c    | 2 +-
->>  tests/test-io-channel-socket.c  | 2 +-
->>  tests/test-io-task.c            | 2 +-
->>  27 files changed, 27 insertions(+), 27 deletions(-)
+>>  backends/cryptodev-builtin.c          | 2 +-
+>>  backends/cryptodev-vhost-user.c       | 2 +-
+>>  backends/cryptodev-vhost.c            | 2 +-
+>>  backends/cryptodev.c                  | 2 +-
+>>  include/sysemu/cryptodev-vhost-user.h | 2 +-
+>>  include/sysemu/cryptodev-vhost.h      | 2 +-
+>>  include/sysemu/cryptodev.h            | 2 +-
+>>  7 files changed, 7 insertions(+), 7 deletions(-)
 > 
-> Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
+> 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
 
