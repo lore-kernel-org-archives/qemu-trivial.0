@@ -1,72 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX4l7-0006Nb-MC
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 11:50:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49392)
+	id 1kX5wm-0000Se-IE
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 13:06:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kX4l5-0006LH-1k
- for qemu-trivial@nongnu.org; Mon, 26 Oct 2020 11:50:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59345)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kX4l0-0003kH-DI
- for qemu-trivial@nongnu.org; Mon, 26 Oct 2020 11:50:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603727401;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JZqipi+3QTB2ZIHe5SXUNK4do8a3mH83/qWhcfH6N14=;
- b=hdoj2BeH04+lzbMd3m0R1TgzqrowCSCp1IdPeUajtX+VSGVfHo0vNQ3w0cH13MvqIGJdfQ
- xecNXy6B+9q60nNSgcqgyo6OinqoBXTHDXm9os3ak857PasKhdxQ19QEtN0e9eMD/eK+5h
- DRQ765w17glow+Tg/OtBnDNgNBDPiek=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-547-sKtVZGZWNU--q6Q_JFoujg-1; Mon, 26 Oct 2020 11:49:55 -0400
-X-MC-Unique: sKtVZGZWNU--q6Q_JFoujg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AD55D8064C1;
- Mon, 26 Oct 2020 15:49:54 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-104.ams2.redhat.com [10.36.112.104])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A4EAE5B4A4;
- Mon, 26 Oct 2020 15:49:53 +0000 (UTC)
-Subject: Re: [PATCH] CHANGELOG: remove disused file
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
- Eric Blake <eblake@redhat.com>
-References: <20201022162843.1841780-1-jsnow@redhat.com>
- <576a881d-2c64-3e40-31b7-43680a1988f8@redhat.com>
- <22839fc4-a1b9-0510-ff19-3a713fd8a187@redhat.com>
- <88ac9998-51fb-0cca-8b7a-a2204ee0f9b2@redhat.com>
- <35df91c4-49e5-bc9e-e153-a27b7f443ffd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <f3b1f8ce-367b-c740-ebcd-2bce425d8d81@redhat.com>
-Date: Mon, 26 Oct 2020 16:49:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kX5wd-0000Nw-I1; Mon, 26 Oct 2020 13:06:07 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:45504)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kX5wa-0006cO-8d; Mon, 26 Oct 2020 13:06:07 -0400
+Received: by mail-ej1-x644.google.com with SMTP id dt13so14661808ejb.12;
+ Mon, 26 Oct 2020 10:06:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=YtILxrTiQyFvjXojSK8Xu46NkvXLNpokkJRzWpf6lec=;
+ b=DnWBcbAYi2O6L7inVEEY8MywOdFVWOHIR5v0A08RcjkjEv7Bbntqulm1x+bL1ES9FP
+ 3R0Py4thBhXkesc++TLxMoff2O68YFlUTIpUOpbicBVb1EmIrcBEM75ej4izL7YDNgwA
+ SIW4I/rFhtIY+84LpgYT6JJKcrSbwlIQfJPm6sIXJFN6idZuDjNCLB5guWzWOzWXxBiX
+ 9iuhMiORZkrkp2O8hKY2F76F6LAx+FpRu90dXKw5bfy2dU/6WxYF2NlwreYGolGqCHjs
+ BedTNfPq2GjyP6uo0l+qKaYxCuB5fARVq4zqdxv4CvlgdHcPTp5talRLhVb8GwwH7uiA
+ zBJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YtILxrTiQyFvjXojSK8Xu46NkvXLNpokkJRzWpf6lec=;
+ b=D+CJjNGv64b3K1e7IqJU+VFfcjL/7gUHvHK7Lwr5zQZhGX1Ak/sCK+m83zNSKW6Hao
+ ThpH+u6/amdpBE7BGld2zALie48WJAX3Tb/jKC2w8nK1iH1kDFzrTITuivrAa1TfIYLq
+ i1KqPd0ppjPjzFSevWOutyU4vXrp5UJHGGVTooKHHwokKF5mNTA5d/LJRSM7rzIchk1I
+ dJeV6e4WDffJK3N6gkI9IWTnXuMy8GH4efMHOXF6kohPmMoJqCLrShehM2WOMSVt+t0U
+ yZYZknk4UnIOKcgO9IqyD9VXXg0Y3Kbw6GC72HIEq1R4N/lHtU9jCOeGjzbSBnOFLpdw
+ H3oQ==
+X-Gm-Message-State: AOAM530qbEfe3mEdpMBxK8KuZ4tTo4EwlNYqrupOG04HJZ4lqOIhOR7P
+ frgWJjJd7nAOYwnBBQTBbTM=
+X-Google-Smtp-Source: ABdhPJz0tgPtwE36f1bMGOr9nlHHawF3eOATHJNCVv8lS7vIT2K0yQxCPlusFOXXEpFgWXLDwThk6A==
+X-Received: by 2002:a17:906:aecf:: with SMTP id
+ me15mr17433570ejb.423.1603731958795; 
+ Mon, 26 Oct 2020 10:05:58 -0700 (PDT)
+Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id cw15sm6202168ejb.47.2020.10.26.10.05.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Oct 2020 10:05:57 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Max Reitz <mreitz@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
+References: <20201012124955.3409127-1-f4bug@amsat.org>
+ <e15493bf-f31e-daf2-d216-b9d67ea638b1@amsat.org>
+Message-ID: <11aef83d-64ae-8954-e61f-911282896455@amsat.org>
+Date: Mon, 26 Oct 2020 18:05:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <35df91c4-49e5-bc9e-e153-a27b7f443ffd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <e15493bf-f31e-daf2-d216-b9d67ea638b1@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 02:39:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.167,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,69 +90,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 15:50:08 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 17:06:14 -0000
 
-On 26/10/2020 16.21, John Snow wrote:
-> On 10/23/20 2:51 PM, Thomas Huth wrote:
->> On 23/10/2020 18.34, John Snow wrote:
->>> On 10/23/20 1:43 AM, Thomas Huth wrote:
->>>> On 22/10/2020 18.28, John Snow wrote:
->>>>> There's no reason to keep this here; the versions described are
->>>>> ancient. Everything here is still mirrored on
->>>>> https://wiki.qemu.org/ChangeLog/old if anyone is curious; otherwise, use
->>>>> the git history.
->>>>>
->>>>> Signed-off-by: John Snow <jsnow@redhat.com>
->>>>> ---
->>>>>    Changelog | 580 ------------------------------------------------------
->>>>>    1 file changed, 580 deletions(-)
->>>>>    delete mode 100644 Changelog
->>>>>
->>>>> diff --git a/Changelog b/Changelog
->>>>> deleted file mode 100644
->>>>> index f7e178ccc01..00000000000
->>>>> --- a/Changelog
->>>>> +++ /dev/null
->>>>> @@ -1,580 +0,0 @@
->>>>> -This file documents changes for QEMU releases 0.12 and earlier.
->>>>> -For changelog information for later releases, see
->>>>> -https://wiki.qemu.org/ChangeLog or look at the git history for
->>>>> -more detailed information.
->>>>
->>>> I agree with removing the old log. But should we maybe leave a pointer to
->>>> https://wiki.qemu.org/ChangeLog / the git history here to let people know
->>>> how to see the changelogs?
->>>>
->>>>    Thomas
->>>>
->>>
->>> Maybe in README.rst, just below "Bug Reporting" and above "Contact" ?
->>>
->>>
->>> Changelog
->>> =========
->>>
->>> For version history and release notes, please visit
->>> `<https://wiki.qemu.org/ChangeLog/>`_ or look at the git history for more
->>> detailed information.
+ping^2?
+
+On 10/19/20 6:04 PM, Philippe Mathieu-Daudé wrote:
+> Ping for review?
+> 
+> On 10/12/20 2:49 PM, Philippe Mathieu-Daudé wrote:
+>> Since v1:
+>> - Fixed patch #1 subject (Kevin)
 >>
->> Ok, but IIRC the "ChangeLog" file is a standard file in GNU coding
->> conventions, so it might be worth to keep the information in this file ...
->> of course we are not bound to the GNU conventions in QEMU, but users still
->> might expect to find the information in here...
+>> In order to use inclusive terminology, rename SSI 'slave' as
+>> 'peripheral', following the resolution Paolo pointed in [*]:
+>> https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/
 >>
->>   Thomas
+>> Candidate to be merged via the ARM or Trivial trees.
+>>
+>> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html
+>>
+>> Philippe Mathieu-Daudé (3):
+>>    hw/ssi/aspeed_smc: Rename 'max_slaves' variable as 'max_peripherals'
+>>    hw/ssi: Update coding style to make checkpatch.pl happy
+>>    hw/ssi: Rename SSI 'slave' as 'peripheral'
+>>
+>>   include/hw/misc/max111x.h   |  2 +-
+>>   include/hw/ssi/aspeed_smc.h |  2 +-
+>>   include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------
+>>   hw/arm/spitz.c              | 32 ++++++++++-----------
+>>   hw/arm/stellaris.c          |  4 +--
+>>   hw/arm/tosa.c               | 12 ++++----
+>>   hw/arm/z2.c                 | 14 +++++-----
+>>   hw/block/m25p80.c           | 14 +++++-----
+>>   hw/display/ads7846.c        | 12 ++++----
+>>   hw/display/ssd0323.c        | 12 ++++----
+>>   hw/misc/max111x.c           | 18 ++++++------
+>>   hw/sd/ssi-sd.c              | 12 ++++----
+>>   hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------
+>>   hw/ssi/pl022.c              |  2 +-
+>>   hw/ssi/ssi.c                | 48 +++++++++++++++----------------
+>>   hw/ssi/xilinx_spips.c       |  7 +++--
+>>   16 files changed, 152 insertions(+), 148 deletions(-)
 >>
 > 
-> My point in removing it is just getting rid of the runaround. If we don't
-> have the changelog information in CHANGELOG, why have the file and pretend
-> like we do?
-> 
-> Moving it into README.rst makes it visible on github and gitlab to people
-> stopping by for the first time.
-
-Ok, fair point.
-
- Thomas
-
 
