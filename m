@@ -1,35 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX2yP-0001SI-7M
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52672)
+	id 1kX2yQ-0001Un-1I
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52216)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRt-0004Ka-La; Mon, 26 Oct 2020 05:05:53 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2111)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kWyPz-0002Uy-VD; Mon, 26 Oct 2020 05:03:55 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2110)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRr-0000Xh-8f; Mon, 26 Oct 2020 05:05:53 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CKTT84KrJz6xDM;
- Mon, 26 Oct 2020 17:05:48 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 26 Oct 2020 17:05:38 +0800
-Message-ID: <5F969162.2050302@huawei.com>
-Date: Mon, 26 Oct 2020 17:05:38 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kWyPw-0008DN-Ka; Mon, 26 Oct 2020 05:03:55 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CKTQk5xtFz6xQl;
+ Mon, 26 Oct 2020 17:03:42 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Mon, 26 Oct 2020
+ 17:03:08 +0800
+From: jokenzhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>
+CC: <dengkai1@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: [PATCH] hw/acpi/nvdimm.c : Don't use '#' flag of printf format
+Date: Mon, 26 Oct 2020 17:02:06 +0800
+Message-ID: <20201026090206.279087-1-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
 MIME-Version: 1.0
-To: <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH 1/4] qga: Add spaces around operator
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=alex.chen@huawei.com;
- helo=szxga07-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga07-in.huawei.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:03:38
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
@@ -51,159 +50,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 09:05:54 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 09:03:56 -0000
 
+Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
 Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: AlexChen <alex.chen@huawei.com>
 ---
- qga/channel-win32.c  |  6 +++---
- qga/commands-posix.c |  4 ++--
- qga/commands-win32.c | 24 ++++++++++++------------
- qga/commands.c       |  4 ++--
- qga/main.c           |  4 ++--
- 5 files changed, 21 insertions(+), 21 deletions(-)
+ hw/acpi/nvdimm.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/qga/channel-win32.c b/qga/channel-win32.c
-index 4f04868a76..21ec9268b4 100644
---- a/qga/channel-win32.c
-+++ b/qga/channel-win32.c
-@@ -292,9 +292,9 @@ static gboolean ga_channel_open(GAChannel *c, GAChannelMethod method,
-         return false;
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index 8f7cc16add..8ad5516142 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -556,7 +556,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
+ 
+     fit = fit_buf->fit;
+ 
+-    nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
++    nvdimm_debug("Read FIT: offset 0x%x FIT size 0x%x Dirty %s.\n",
+                  read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
+ 
+     if (read_fit->offset > fit->len) {
+@@ -664,7 +664,7 @@ static void nvdimm_dsm_label_size(NVDIMMDevice *nvdimm, hwaddr dsm_mem_addr)
+     label_size = nvdimm->label_size;
+     mxfer = nvdimm_get_max_xfer_label_size();
+ 
+-    nvdimm_debug("label_size %#x, max_xfer %#x.\n", label_size, mxfer);
++    nvdimm_debug("label_size 0x%x, max_xfer 0x%x.\n", label_size, mxfer);
+ 
+     label_size_out.func_ret_status = cpu_to_le32(NVDIMM_DSM_RET_STATUS_SUCCESS);
+     label_size_out.label_size = cpu_to_le32(label_size);
+@@ -680,19 +680,19 @@ static uint32_t nvdimm_rw_label_data_check(NVDIMMDevice *nvdimm,
+     uint32_t ret = NVDIMM_DSM_RET_STATUS_INVALID;
+ 
+     if (offset + length < offset) {
+-        nvdimm_debug("offset %#x + length %#x is overflow.\n", offset,
++        nvdimm_debug("offset 0x%x + length 0x%x is overflow.\n", offset,
+                      length);
+         return ret;
      }
-
--    if (method == GA_CHANNEL_ISA_SERIAL){
-+    if (method == GA_CHANNEL_ISA_SERIAL) {
-         snprintf(newpath, sizeof(newpath), "\\\\.\\%s", path);
--    }else {
-+    } else {
-         g_strlcpy(newpath, path, sizeof(newpath));
+ 
+     if (nvdimm->label_size < offset + length) {
+-        nvdimm_debug("position %#x is beyond label data (len = %" PRIx64 ").\n",
++        nvdimm_debug("position 0x%x is beyond label data (len = %" PRIx64 ").\n",
+                      offset + length, nvdimm->label_size);
+         return ret;
      }
-
-@@ -307,7 +307,7 @@ static gboolean ga_channel_open(GAChannel *c, GAChannelMethod method,
-         return false;
+ 
+     if (length > nvdimm_get_max_xfer_label_size()) {
+-        nvdimm_debug("length (%#x) is larger than max_xfer (%#x).\n",
++        nvdimm_debug("length (0x%x) is larger than max_xfer (0x%x).\n",
+                      length, nvdimm_get_max_xfer_label_size());
+         return ret;
      }
-
--    if (method == GA_CHANNEL_ISA_SERIAL && !SetCommTimeouts(c->handle,&comTimeOut)) {
-+    if (method == GA_CHANNEL_ISA_SERIAL && !SetCommTimeouts(c->handle, &comTimeOut)) {
-         g_autofree gchar *emsg = g_win32_error_message(GetLastError());
-         g_critical("error setting timeout for com port: %s", emsg);
-         CloseHandle(c->handle);
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 3bffee99d4..d5ebb3d83c 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -110,7 +110,7 @@ void qmp_guest_shutdown(bool has_mode, const char *mode, Error **errp)
-         reopen_fd_to_null(2);
-
-         execle("/sbin/shutdown", "shutdown", "-h", shutdown_flag, "+0",
--               "hypervisor initiated shutdown", (char*)NULL, environ);
-+               "hypervisor initiated shutdown", (char *)NULL, environ);
-         _exit(EXIT_FAILURE);
-     } else if (pid < 0) {
-         error_setg_errno(errp, errno, "failed to create child process");
-@@ -479,7 +479,7 @@ GuestFileRead *guest_file_read_unsafe(GuestFileHandle *gfh,
-         gfh->state = RW_STATE_NEW;
-     }
-
--    buf = g_malloc0(count+1);
-+    buf = g_malloc0(count + 1);
-     read_count = fread(buf, 1, count, fh);
-     if (ferror(fh)) {
-         error_setg_errno(errp, errno, "failed to read file");
-diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index 0c3c05484f..2c341c7bea 100644
---- a/qga/commands-win32.c
-+++ b/qga/commands-win32.c
-@@ -83,7 +83,7 @@ CMAPI CONFIGRET WINAPI CM_Get_DevNode_PropertyW(
-                        (365 * (1970 - 1601) +       \
-                         (1970 - 1601) / 4 - 3))
-
--#define INVALID_SET_FILE_POINTER ((DWORD)-1)
-+#define INVALID_SET_FILE_POINTER ((DWORD) - 1)
-
- struct GuestFileHandle {
-     int64_t id;
-@@ -110,15 +110,15 @@ static OpenFlags guest_file_open_modes[] = {
-     {"w",   GENERIC_WRITE,                    CREATE_ALWAYS},
-     {"wb",  GENERIC_WRITE,                    CREATE_ALWAYS},
-     {"a",   FILE_GENERIC_APPEND,              OPEN_ALWAYS  },
--    {"r+",  GENERIC_WRITE|GENERIC_READ,       OPEN_EXISTING},
--    {"rb+", GENERIC_WRITE|GENERIC_READ,       OPEN_EXISTING},
--    {"r+b", GENERIC_WRITE|GENERIC_READ,       OPEN_EXISTING},
--    {"w+",  GENERIC_WRITE|GENERIC_READ,       CREATE_ALWAYS},
--    {"wb+", GENERIC_WRITE|GENERIC_READ,       CREATE_ALWAYS},
--    {"w+b", GENERIC_WRITE|GENERIC_READ,       CREATE_ALWAYS},
--    {"a+",  FILE_GENERIC_APPEND|GENERIC_READ, OPEN_ALWAYS  },
--    {"ab+", FILE_GENERIC_APPEND|GENERIC_READ, OPEN_ALWAYS  },
--    {"a+b", FILE_GENERIC_APPEND|GENERIC_READ, OPEN_ALWAYS  }
-+    {"r+",  GENERIC_WRITE | GENERIC_READ,       OPEN_EXISTING},
-+    {"rb+", GENERIC_WRITE | GENERIC_READ,       OPEN_EXISTING},
-+    {"r+b", GENERIC_WRITE | GENERIC_READ,       OPEN_EXISTING},
-+    {"w+",  GENERIC_WRITE | GENERIC_READ,       CREATE_ALWAYS},
-+    {"wb+", GENERIC_WRITE | GENERIC_READ,       CREATE_ALWAYS},
-+    {"w+b", GENERIC_WRITE | GENERIC_READ,       CREATE_ALWAYS},
-+    {"a+",  FILE_GENERIC_APPEND | GENERIC_READ, OPEN_ALWAYS  },
-+    {"ab+", FILE_GENERIC_APPEND | GENERIC_READ, OPEN_ALWAYS  },
-+    {"a+b", FILE_GENERIC_APPEND | GENERIC_READ, OPEN_ALWAYS  }
- };
-
- #define debug_error(msg) do { \
-@@ -280,7 +280,7 @@ static void acquire_privilege(const char *name, Error **errp)
-     Error *local_err = NULL;
-
-     if (OpenProcessToken(GetCurrentProcess(),
--        TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY, &token))
-+        TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &token))
-     {
-         if (!LookupPrivilegeValue(NULL, name, &priv.Privileges[0].Luid)) {
-             error_setg(&local_err, QERR_QGA_COMMAND_FAILED,
-@@ -1023,7 +1023,7 @@ static GuestFilesystemInfo *build_guest_fsinfo(char *guid, Error **errp)
-
-     len = strlen(mnt_point);
-     mnt_point[len] = '\\';
--    mnt_point[len+1] = 0;
-+    mnt_point[len + 1] = 0;
-
-     if (!GetVolumeInformationByHandleW(hLocalDiskHandle, vol_info,
-                                        sizeof(vol_info), NULL, NULL, NULL,
-diff --git a/qga/commands.c b/qga/commands.c
-index 3dcd5fbe5c..54d0e5eb7e 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -22,9 +22,9 @@
- #include "commands-common.h"
-
- /* Maximum captured guest-exec out_data/err_data - 16MB */
--#define GUEST_EXEC_MAX_OUTPUT (16*1024*1024)
-+#define GUEST_EXEC_MAX_OUTPUT (16 * 1024 * 1024)
- /* Allocation and I/O buffer for reading guest-exec out_data/err_data - 4KB */
--#define GUEST_EXEC_IO_SIZE (4*1024)
-+#define GUEST_EXEC_IO_SIZE (4 * 1024)
- /*
-  * Maximum file size to read - 48MB
-  *
-diff --git a/qga/main.c b/qga/main.c
-index dea6a3aa64..308ebd6581 100644
---- a/qga/main.c
-+++ b/qga/main.c
-@@ -594,7 +594,7 @@ end:
- static gboolean channel_event_cb(GIOCondition condition, gpointer data)
- {
-     GAState *s = data;
--    gchar buf[QGA_READ_COUNT_DEFAULT+1];
-+    gchar buf[QGA_READ_COUNT_DEFAULT + 1];
-     gsize count;
-     GIOStatus status = ga_channel_read(s->channel, buf, QGA_READ_COUNT_DEFAULT, &count);
-     switch (status) {
-@@ -618,7 +618,7 @@ static gboolean channel_event_cb(GIOCondition condition, gpointer data)
-          * host-side chardev. sleep a bit to mitigate this
-          */
-         if (s->virtio) {
--            usleep(100*1000);
-+            usleep(100 * 1000);
-         }
-         return true;
-     default:
+@@ -716,7 +716,7 @@ static void nvdimm_dsm_get_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
+     get_label_data->offset = le32_to_cpu(get_label_data->offset);
+     get_label_data->length = le32_to_cpu(get_label_data->length);
+ 
+-    nvdimm_debug("Read Label Data: offset %#x length %#x.\n",
++    nvdimm_debug("Read Label Data: offset 0x%x length 0x%x.\n",
+                  get_label_data->offset, get_label_data->length);
+ 
+     status = nvdimm_rw_label_data_check(nvdimm, get_label_data->offset,
+@@ -755,7 +755,7 @@ static void nvdimm_dsm_set_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
+     set_label_data->offset = le32_to_cpu(set_label_data->offset);
+     set_label_data->length = le32_to_cpu(set_label_data->length);
+ 
+-    nvdimm_debug("Write Label Data: offset %#x length %#x.\n",
++    nvdimm_debug("Write Label Data: offset 0x%x length 0x%x.\n",
+                  set_label_data->offset, set_label_data->length);
+ 
+     status = nvdimm_rw_label_data_check(nvdimm, set_label_data->offset,
+@@ -838,7 +838,7 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+     NvdimmDsmIn *in;
+     hwaddr dsm_mem_addr = val;
+ 
+-    nvdimm_debug("dsm memory address %#" HWADDR_PRIx ".\n", dsm_mem_addr);
++    nvdimm_debug("dsm memory address 0x%" HWADDR_PRIx ".\n", dsm_mem_addr);
+ 
+     /*
+      * The DSM memory is mapped to guest address space so an evil guest
+@@ -852,11 +852,11 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+     in->function = le32_to_cpu(in->function);
+     in->handle = le32_to_cpu(in->handle);
+ 
+-    nvdimm_debug("Revision %#x Handler %#x Function %#x.\n", in->revision,
++    nvdimm_debug("Revision 0x%x Handler 0x%x Function 0x%x.\n", in->revision,
+                  in->handle, in->function);
+ 
+     if (in->revision != 0x1 /* Currently we only support DSM Spec Rev1. */) {
+-        nvdimm_debug("Revision %#x is not supported, expect %#x.\n",
++        nvdimm_debug("Revision 0x%x is not supported, expect 0x%x.\n",
+                      in->revision, 0x1);
+         nvdimm_dsm_no_payload(NVDIMM_DSM_RET_STATUS_UNSUPPORT, dsm_mem_addr);
+         goto exit;
 -- 
-2.19.1
+2.20.1 (Apple Git-117)
+
 
