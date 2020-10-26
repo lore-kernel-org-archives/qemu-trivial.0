@@ -1,36 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX2yM-0001JU-2V
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52706)
+	id 1kX2yN-0001Ma-9Z
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRv-0004OE-Q6; Mon, 26 Oct 2020 05:05:55 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2296)
+ id 1kWyRu-0004MQ-Ls; Mon, 26 Oct 2020 05:05:54 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2049)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRt-0000bM-L9; Mon, 26 Oct 2020 05:05:55 -0400
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CKTTH1DVfzkZVg;
- Mon, 26 Oct 2020 17:05:55 +0800 (CST)
+ id 1kWyRs-0000Z4-QR; Mon, 26 Oct 2020 05:05:54 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CKTTD0gSczhZgJ;
+ Mon, 26 Oct 2020 17:05:52 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 26 Oct 2020 17:05:49 +0800
-Message-ID: <5F96916D.1020501@huawei.com>
-Date: Mon, 26 Oct 2020 17:05:49 +0800
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 26 Oct 2020 17:05:42 +0800
+Message-ID: <5F969165.7000405@huawei.com>
+Date: Mon, 26 Oct 2020 17:05:41 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
 To: <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
 CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH 4/4] qga: Switch and case should be at the same indent
+Subject: [PATCH 2/4] qga: Delete redundant spaces
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:05:50
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:05:42
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -51,85 +51,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 09:05:56 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 09:05:55 -0000
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: AlexChen <alex.chen@huawei.com>
 ---
- qga/main.c | 52 ++++++++++++++++++++++++++--------------------------
- 1 file changed, 26 insertions(+), 26 deletions(-)
+ qga/commands-win32.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qga/main.c b/qga/main.c
-index 69660d9abd..33e510ba19 100644
---- a/qga/main.c
-+++ b/qga/main.c
-@@ -280,20 +280,20 @@ QEMU_HELP_BOTTOM "\n"
- static const char *ga_log_level_str(GLogLevelFlags level)
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index 2c341c7bea..de6e07f275 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -1234,7 +1234,7 @@ qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
+         DWORD char_count = 0;
+         char *path, *out;
+         GError *gerr = NULL;
+-        gchar * argv[4];
++        gchar *argv[4];
+
+         GetVolumePathNamesForVolumeNameW(guid, NULL, 0, &char_count);
+
+@@ -2111,7 +2111,7 @@ static ga_win_10_0_server_t const WIN_10_0_SERVER_VERSION_MATRIX[3] = {
+
+ static void ga_get_win_version(RTL_OSVERSIONINFOEXW *info, Error **errp)
  {
-     switch (level & G_LOG_LEVEL_MASK) {
--        case G_LOG_LEVEL_ERROR:
--            return "error";
--        case G_LOG_LEVEL_CRITICAL:
--            return "critical";
--        case G_LOG_LEVEL_WARNING:
--            return "warning";
--        case G_LOG_LEVEL_MESSAGE:
--            return "message";
--        case G_LOG_LEVEL_INFO:
--            return "info";
--        case G_LOG_LEVEL_DEBUG:
--            return "debug";
--        default:
--            return "user";
-+    case G_LOG_LEVEL_ERROR:
-+        return "error";
-+    case G_LOG_LEVEL_CRITICAL:
-+        return "critical";
-+    case G_LOG_LEVEL_WARNING:
-+        return "warning";
-+    case G_LOG_LEVEL_MESSAGE:
-+        return "message";
-+    case G_LOG_LEVEL_INFO:
-+        return "info";
-+    case G_LOG_LEVEL_DEBUG:
-+        return "debug";
-+    default:
-+        return "user";
-     }
- }
+-    typedef NTSTATUS(WINAPI * rtl_get_version_t)(
++    typedef NTSTATUS(WINAPI *rtl_get_version_t)(
+         RTL_OSVERSIONINFOEXW *os_version_info_ex);
 
-@@ -695,19 +695,19 @@ DWORD WINAPI service_ctrl_handler(DWORD ctrl, DWORD type, LPVOID data,
-     GAService *service = &ga_state->service;
-
-     switch (ctrl) {
--        case SERVICE_CONTROL_STOP:
--        case SERVICE_CONTROL_SHUTDOWN:
--            quit_handler(SIGTERM);
--            SetEvent(ga_state->wakeup_event);
--            service->status.dwCurrentState = SERVICE_STOP_PENDING;
--            SetServiceStatus(service->status_handle, &service->status);
--            break;
--        case SERVICE_CONTROL_DEVICEEVENT:
--            handle_serial_device_events(type, data);
--            break;
-+    case SERVICE_CONTROL_STOP:
-+    case SERVICE_CONTROL_SHUTDOWN:
-+        quit_handler(SIGTERM);
-+        SetEvent(ga_state->wakeup_event);
-+        service->status.dwCurrentState = SERVICE_STOP_PENDING;
-+        SetServiceStatus(service->status_handle, &service->status);
-+        break;
-+    case SERVICE_CONTROL_DEVICEEVENT:
-+        handle_serial_device_events(type, data);
-+        break;
-
--        default:
--            ret = ERROR_CALL_NOT_IMPLEMENTED;
-+    default:
-+        ret = ERROR_CALL_NOT_IMPLEMENTED;
-     }
-     return ret;
- }
+     info->dwOSVersionInfoSize = sizeof(RTL_OSVERSIONINFOEXW);
 -- 
 2.19.1
 
