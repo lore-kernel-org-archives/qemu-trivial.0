@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX2yQ-0001Un-1I
+	id 1kX2yQ-0001VU-8L
 	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52216)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kWyPz-0002Uy-VD; Mon, 26 Oct 2020 05:03:55 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2110)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kWyRw-0004P2-7S; Mon, 26 Oct 2020 05:05:56 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2297)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kWyPw-0008DN-Ka; Mon, 26 Oct 2020 05:03:55 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CKTQk5xtFz6xQl;
- Mon, 26 Oct 2020 17:03:42 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Mon, 26 Oct 2020
- 17:03:08 +0800
-From: jokenzhang <zhangxinhao1@huawei.com>
-To: <qemu-devel@nongnu.org>
-CC: <dengkai1@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH] hw/acpi/nvdimm.c : Don't use '#' flag of printf format
-Date: Mon, 26 Oct 2020 17:02:06 +0800
-Message-ID: <20201026090206.279087-1-zhangxinhao1@huawei.com>
-X-Mailer: git-send-email 2.29.0-rc1
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kWyRu-0000bu-Bx; Mon, 26 Oct 2020 05:05:55 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CKTTJ5Xh5zkZVK;
+ Mon, 26 Oct 2020 17:05:56 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 26 Oct 2020 17:05:46 +0800
+Message-ID: <5F96916A.2090105@huawei.com>
+Date: Mon, 26 Oct 2020 17:05:46 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
+To: <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [PATCH 3/4] qga: Open brace '{' following struct go on the same
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga07-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:03:38
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:05:50
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -50,101 +51,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 09:03:56 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 09:05:56 -0000
 
-Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
 Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: AlexChen <alex.chen@huawei.com>
 ---
- hw/acpi/nvdimm.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ qga/main.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 8f7cc16add..8ad5516142 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -556,7 +556,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
- 
-     fit = fit_buf->fit;
- 
--    nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
-+    nvdimm_debug("Read FIT: offset 0x%x FIT size 0x%x Dirty %s.\n",
-                  read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
- 
-     if (read_fit->offset > fit->len) {
-@@ -664,7 +664,7 @@ static void nvdimm_dsm_label_size(NVDIMMDevice *nvdimm, hwaddr dsm_mem_addr)
-     label_size = nvdimm->label_size;
-     mxfer = nvdimm_get_max_xfer_label_size();
- 
--    nvdimm_debug("label_size %#x, max_xfer %#x.\n", label_size, mxfer);
-+    nvdimm_debug("label_size 0x%x, max_xfer 0x%x.\n", label_size, mxfer);
- 
-     label_size_out.func_ret_status = cpu_to_le32(NVDIMM_DSM_RET_STATUS_SUCCESS);
-     label_size_out.label_size = cpu_to_le32(label_size);
-@@ -680,19 +680,19 @@ static uint32_t nvdimm_rw_label_data_check(NVDIMMDevice *nvdimm,
-     uint32_t ret = NVDIMM_DSM_RET_STATUS_INVALID;
- 
-     if (offset + length < offset) {
--        nvdimm_debug("offset %#x + length %#x is overflow.\n", offset,
-+        nvdimm_debug("offset 0x%x + length 0x%x is overflow.\n", offset,
-                      length);
-         return ret;
-     }
- 
-     if (nvdimm->label_size < offset + length) {
--        nvdimm_debug("position %#x is beyond label data (len = %" PRIx64 ").\n",
-+        nvdimm_debug("position 0x%x is beyond label data (len = %" PRIx64 ").\n",
-                      offset + length, nvdimm->label_size);
-         return ret;
-     }
- 
-     if (length > nvdimm_get_max_xfer_label_size()) {
--        nvdimm_debug("length (%#x) is larger than max_xfer (%#x).\n",
-+        nvdimm_debug("length (0x%x) is larger than max_xfer (0x%x).\n",
-                      length, nvdimm_get_max_xfer_label_size());
-         return ret;
-     }
-@@ -716,7 +716,7 @@ static void nvdimm_dsm_get_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     get_label_data->offset = le32_to_cpu(get_label_data->offset);
-     get_label_data->length = le32_to_cpu(get_label_data->length);
- 
--    nvdimm_debug("Read Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Read Label Data: offset 0x%x length 0x%x.\n",
-                  get_label_data->offset, get_label_data->length);
- 
-     status = nvdimm_rw_label_data_check(nvdimm, get_label_data->offset,
-@@ -755,7 +755,7 @@ static void nvdimm_dsm_set_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     set_label_data->offset = le32_to_cpu(set_label_data->offset);
-     set_label_data->length = le32_to_cpu(set_label_data->length);
- 
--    nvdimm_debug("Write Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Write Label Data: offset 0x%x length 0x%x.\n",
-                  set_label_data->offset, set_label_data->length);
- 
-     status = nvdimm_rw_label_data_check(nvdimm, set_label_data->offset,
-@@ -838,7 +838,7 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
-     NvdimmDsmIn *in;
-     hwaddr dsm_mem_addr = val;
- 
--    nvdimm_debug("dsm memory address %#" HWADDR_PRIx ".\n", dsm_mem_addr);
-+    nvdimm_debug("dsm memory address 0x%" HWADDR_PRIx ".\n", dsm_mem_addr);
- 
-     /*
-      * The DSM memory is mapped to guest address space so an evil guest
-@@ -852,11 +852,11 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
-     in->function = le32_to_cpu(in->function);
-     in->handle = le32_to_cpu(in->handle);
- 
--    nvdimm_debug("Revision %#x Handler %#x Function %#x.\n", in->revision,
-+    nvdimm_debug("Revision 0x%x Handler 0x%x Function 0x%x.\n", in->revision,
-                  in->handle, in->function);
- 
-     if (in->revision != 0x1 /* Currently we only support DSM Spec Rev1. */) {
--        nvdimm_debug("Revision %#x is not supported, expect %#x.\n",
-+        nvdimm_debug("Revision 0x%x is not supported, expect 0x%x.\n",
-                      in->revision, 0x1);
-         nvdimm_dsm_no_payload(NVDIMM_DSM_RET_STATUS_UNSUPPORT, dsm_mem_addr);
-         goto exit;
+diff --git a/qga/main.c b/qga/main.c
+index 308ebd6581..69660d9abd 100644
+--- a/qga/main.c
++++ b/qga/main.c
+@@ -694,8 +694,7 @@ DWORD WINAPI service_ctrl_handler(DWORD ctrl, DWORD type, LPVOID data,
+     DWORD ret = NO_ERROR;
+     GAService *service = &ga_state->service;
+
+-    switch (ctrl)
+-    {
++    switch (ctrl) {
+         case SERVICE_CONTROL_STOP:
+         case SERVICE_CONTROL_SHUTDOWN:
+             quit_handler(SIGTERM);
 -- 
-2.20.1 (Apple Git-117)
-
+2.19.1
 
