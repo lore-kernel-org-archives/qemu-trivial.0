@@ -1,36 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kX2yL-0001Io-RU
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52652)
+	id 1kX2yM-0001JU-2V
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Oct 2020 09:55:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRs-0004Iy-Gq; Mon, 26 Oct 2020 05:05:52 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2048)
+ id 1kWyRv-0004OE-Q6; Mon, 26 Oct 2020 05:05:55 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2296)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kWyRq-0000Vs-EX; Mon, 26 Oct 2020 05:05:52 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CKTT73R9pzhZsd;
- Mon, 26 Oct 2020 17:05:47 +0800 (CST)
+ id 1kWyRt-0000bM-L9; Mon, 26 Oct 2020 05:05:55 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CKTTH1DVfzkZVg;
+ Mon, 26 Oct 2020 17:05:55 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 26 Oct 2020 17:05:33 +0800
-Message-ID: <5F96915D.2040102@huawei.com>
-Date: Mon, 26 Oct 2020 17:05:33 +0800
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 26 Oct 2020 17:05:49 +0800
+Message-ID: <5F96916D.1020501@huawei.com>
+Date: Mon, 26 Oct 2020 17:05:49 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
 To: <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
 CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH 0/4] qga: Fix some style problems
+Subject: [PATCH 4/4] qga: Switch and case should be at the same indent
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
- helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:05:42
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 05:05:50
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -39,7 +39,7 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Oct 2020 09:55:38 -0400
+X-Mailman-Approved-At: Mon, 26 Oct 2020 09:55:40 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -51,23 +51,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Oct 2020 09:05:53 -0000
+X-List-Received-Date: Mon, 26 Oct 2020 09:05:56 -0000
 
-Fix some error style problems found by checkpatch.pl.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: AlexChen <alex.chen@huawei.com>
+---
+ qga/main.c | 52 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
 
-alexchen (4):
-  qga: Add spaces around operator
-  qga: Delete redundant spaces
-  qga: Open brace '{' following struct go on the same
-  qga: switch and case should be at the same indent
+diff --git a/qga/main.c b/qga/main.c
+index 69660d9abd..33e510ba19 100644
+--- a/qga/main.c
++++ b/qga/main.c
+@@ -280,20 +280,20 @@ QEMU_HELP_BOTTOM "\n"
+ static const char *ga_log_level_str(GLogLevelFlags level)
+ {
+     switch (level & G_LOG_LEVEL_MASK) {
+-        case G_LOG_LEVEL_ERROR:
+-            return "error";
+-        case G_LOG_LEVEL_CRITICAL:
+-            return "critical";
+-        case G_LOG_LEVEL_WARNING:
+-            return "warning";
+-        case G_LOG_LEVEL_MESSAGE:
+-            return "message";
+-        case G_LOG_LEVEL_INFO:
+-            return "info";
+-        case G_LOG_LEVEL_DEBUG:
+-            return "debug";
+-        default:
+-            return "user";
++    case G_LOG_LEVEL_ERROR:
++        return "error";
++    case G_LOG_LEVEL_CRITICAL:
++        return "critical";
++    case G_LOG_LEVEL_WARNING:
++        return "warning";
++    case G_LOG_LEVEL_MESSAGE:
++        return "message";
++    case G_LOG_LEVEL_INFO:
++        return "info";
++    case G_LOG_LEVEL_DEBUG:
++        return "debug";
++    default:
++        return "user";
+     }
+ }
 
- qga/channel-win32.c  |  6 ++---
- qga/commands-posix.c |  4 +--
- qga/commands-win32.c | 28 ++++++++++-----------
- qga/commands.c       |  4 +--
- qga/main.c           | 59 ++++++++++++++++++++++----------------------
- 5 files changed, 50 insertions(+), 51 deletions(-)
+@@ -695,19 +695,19 @@ DWORD WINAPI service_ctrl_handler(DWORD ctrl, DWORD type, LPVOID data,
+     GAService *service = &ga_state->service;
 
+     switch (ctrl) {
+-        case SERVICE_CONTROL_STOP:
+-        case SERVICE_CONTROL_SHUTDOWN:
+-            quit_handler(SIGTERM);
+-            SetEvent(ga_state->wakeup_event);
+-            service->status.dwCurrentState = SERVICE_STOP_PENDING;
+-            SetServiceStatus(service->status_handle, &service->status);
+-            break;
+-        case SERVICE_CONTROL_DEVICEEVENT:
+-            handle_serial_device_events(type, data);
+-            break;
++    case SERVICE_CONTROL_STOP:
++    case SERVICE_CONTROL_SHUTDOWN:
++        quit_handler(SIGTERM);
++        SetEvent(ga_state->wakeup_event);
++        service->status.dwCurrentState = SERVICE_STOP_PENDING;
++        SetServiceStatus(service->status_handle, &service->status);
++        break;
++    case SERVICE_CONTROL_DEVICEEVENT:
++        handle_serial_device_events(type, data);
++        break;
+
+-        default:
+-            ret = ERROR_CALL_NOT_IMPLEMENTED;
++    default:
++        ret = ERROR_CALL_NOT_IMPLEMENTED;
+     }
+     return ret;
+ }
 -- 
 2.19.1
 
