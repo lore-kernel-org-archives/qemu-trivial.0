@@ -1,53 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXRsA-0007D6-4r
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Oct 2020 12:30:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50670)
+	id 1kXWCX-0003bA-OE
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Oct 2020 17:08:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kXRs6-00075O-Ok; Tue, 27 Oct 2020 12:30:54 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:43005)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kXRs0-0001eZ-UF; Tue, 27 Oct 2020 12:30:54 -0400
-Received: from localhost.localdomain ([82.252.139.38]) by
- mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MpDa5-1k2Ycv1Kxj-00qkOe; Tue, 27 Oct 2020 17:30:18 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, AlexChen <alex.chen@huawei.com>,
- Li Qiang <liq3ea@gmail.com>,
- Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 1/8] elf2dmp: Fix memory leak on main() error paths
-Date: Tue, 27 Oct 2020 17:30:07 +0100
-Message-Id: <20201027163014.247336-2-laurent@vivier.eu>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201027163014.247336-1-laurent@vivier.eu>
-References: <20201027163014.247336-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kXWCW-0003Yy-Du; Tue, 27 Oct 2020 17:08:16 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:44036)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kXWCU-0001vk-Nk; Tue, 27 Oct 2020 17:08:16 -0400
+Received: by mail-il1-x142.google.com with SMTP id z2so2790388ilh.11;
+ Tue, 27 Oct 2020 14:08:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OFt45wZBSTHDWzJGnz4sMYVyBAla/d9gKrF9yfbNNFE=;
+ b=o1zCS5bb8cd7rD4inxz5qnT8JDzudke29C0nwTR7nbalQ0+kximfE77/vIyHdXJ0/i
+ mWi3RKZEGr5q9a8QDjMgmvYEbyqL9yVQ0u7dMyBpCclaOf50tMz6hBQ9NcNMC/oz9Mnq
+ B0xcRUcjb4OWTr8r9mOP1x88T96Ii4UvZ0cD5sB8dsY6i/euiOpFQ1TV1Hc2+SwJGD4L
+ VS1rnY9pzewJ/x5zIbv2kdKEEBcppQzv7Eo9ew5oItTbRjsztqydGfE7IpQC90YeFwG6
+ LsRdfElgJW5DZmttrpdKU49WwUOJCP4lg0rJrREhJ8H7bPW3/TVFN+WVHwyw2XzJJXVy
+ WDcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OFt45wZBSTHDWzJGnz4sMYVyBAla/d9gKrF9yfbNNFE=;
+ b=rwi8jR/eZQRNq9nQf57M+5Gkc5vBg01GW37XA50jzPUpAWeNB5xmpwN2cQPSXM83Ky
+ ikcW4klzWhK6clA7QzMrObhfaEeTWlmNHFe0VjRURamnmNbUzAqRX2TtHd3wGxVp1WlF
+ MH6JKu1USgUKTlAFeco7IpoSO21PYDQ3YblHeAy/M1krQt1IvQd4Cz8s4ayh2+HubvBX
+ TUCb/9GYk3UUz1aWcJP5pNoZJ4BROw4zUwSl1IhcDD7EASbeOmzHy2edXWCFsPh+ACHx
+ U5f0IsWjsJhR+IdSxX9b1SeCmg5n0om088FoN0hmdudMv5fNsZzv4NRgP5lbbk/Or0Pq
+ U2EA==
+X-Gm-Message-State: AOAM531hfAHH9bQu4Sfav6k2tzgBxwSHIYdGKEYpOh2XyPGgllhQlgEt
+ zvANz94aApfaPAUzOPqzdr0AUe+uQndi0tJ0Wm1NbAOKuNc=
+X-Google-Smtp-Source: ABdhPJxaXpJAM5KFQUXxUWrfD0VRlJ4oAy5elLMk5YSJhxXCPSqhaq7lN/QYLbJ5k+3rquZtEnWZZda1H7495Q6Wopc=
+X-Received: by 2002:a92:c5ce:: with SMTP id s14mr3622676ilt.40.1603832892910; 
+ Tue, 27 Oct 2020 14:08:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zfkWlbegQGmVbPTWCU+Etfk7R5b9h3WZDbxPY5jduOtHiItPdX5
- 4armuiMFALBPi9cM0Qp/jn9oQVY9mm7+g9rHcawF2iXhivPdrg46+siAkXskfjZiVoRfAm7
- pxuUCEOSJT3G0PEnniEkICuLd3WOM611pxVvFIsgPNtTWtWTpGPzaqK1hWLBT0Dk14ka6Lf
- N6EKQQWFtIKA7eTSSxwtg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lwvXl/dr7dQ=:76Zb1rLbH3dXgwX4NmduGZ
- tXBg1Ic2ahFea/Um4BoOCtJa3eX9vcFPjjB5RO/O5/LDz3SEhjrYFsmKi/mcRQiPzKg+6jaUY
- qIhZdzqplUf+3qeDRMh6ci7szCl3HytFjQi+PBAQJdSulc4cPB0YTF+RC7DDbouKtiZiypDdl
- qCQXU39HnDYpn7F9CvPJVawFqigJlkVwqEECIRkR1RTtRBzAV4IpTrztZW9SDpSBS6AbpMVMw
- d5l1z1k/H4NanuYuMzeFRYSHufxeVUFZoonsQtTjQYbojVUkDyKKjF59ygHmfRvKd/c/EiSr0
- 56x94B5fxGkdAhJSDUTkDO7+rvQ7+XTyYsrfRwLqesSxCr92AtyZEvO26wXILd3Xsl/gu1h2H
- MglL0nL2UFjzlXzSXJiQQ2NpEh45vDw0hzs0Csid7e0lVLEtTYM4hnrlxf/MT
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 12:30:20
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <CAKmqyKODEgnkw4zBbsNK1zQ7qaiKWEAZBpwhnHzEetjgWpxtzQ@mail.gmail.com>
+ <20201016171000.21240-1-ivan.griffin@emdalo.com>
+ <CAEUhbmV5V9gXeyn1Bp-u3L4FGwU_+m0CT-vomL7W8WGY9yt_nQ@mail.gmail.com>
+In-Reply-To: <CAEUhbmV5V9gXeyn1Bp-u3L4FGwU_+m0CT-vomL7W8WGY9yt_nQ@mail.gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 27 Oct 2020 13:56:22 -0700
+Message-ID: <CAKmqyKPQf74rJfYrbWXV1HO=mevyg8DvMYc85dNgPkiaOCyOKA@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/riscv: microchip_pfsoc: IOSCBCTRL memmap entry
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Ivan Griffin <ivan.griffin@emdalo.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,43 +75,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Oct 2020 16:30:55 -0000
+X-List-Received-Date: Tue, 27 Oct 2020 21:08:16 -0000
 
-From: AlexChen <alex.chen@huawei.com>
+On Sun, Oct 18, 2020 at 6:58 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>
+> Hi Ivan,
+>
+> On Sat, Oct 17, 2020 at 1:10 AM Ivan Griffin <ivan.griffin@emdalo.com> wrote:
+> >
+> > Adding the PolarFire SoC IOSCBCTRL memory region to prevent QEMU
+> > reporting a STORE/AMO Access Fault.
+> >
+> > This region is used by the PolarFire SoC port of U-Boot to
+> > interact with the FPGA system controller.
+> >
+> > Signed-off-by: Ivan Griffin <ivan.griffin@emdalo.com>
+> > ---
+> >  hw/riscv/microchip_pfsoc.c         | 10 ++++++++++
+> >  include/hw/riscv/microchip_pfsoc.h |  1 +
+> >  2 files changed, 11 insertions(+)
+> >
+> > diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+> > index 4627179cd3..9aaa276ee2 100644
+> > --- a/hw/riscv/microchip_pfsoc.c
+> > +++ b/hw/riscv/microchip_pfsoc.c
+> > @@ -97,6 +97,7 @@ static const struct MemmapEntry {
+> >      [MICROCHIP_PFSOC_GPIO2] =           { 0x20122000,     0x1000 },
+> >      [MICROCHIP_PFSOC_ENVM_CFG] =        { 0x20200000,     0x1000 },
+> >      [MICROCHIP_PFSOC_ENVM_DATA] =       { 0x20220000,    0x20000 },
+> > +    [MICROCHIP_PFSOC_IOSCB_CTRL] =      { 0x37020000,     0x1000 },
+> >      [MICROCHIP_PFSOC_IOSCB_CFG] =       { 0x37080000,     0x1000 },
+> >      [MICROCHIP_PFSOC_DRAM] =            { 0x80000000,        0x0 },
+> >  };
+> > @@ -341,6 +342,15 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
+> >      create_unimplemented_device("microchip.pfsoc.ioscb.cfg",
+> >          memmap[MICROCHIP_PFSOC_IOSCB_CFG].base,
+> >          memmap[MICROCHIP_PFSOC_IOSCB_CFG].size);
+> > +
+> > +    /* IOSCBCTRL
+> > +     *
+> > +     * These registers are not documented in the official documentation
+> > +     * but used by the polarfire-soc-bare-meta-library code
+> > +     */
+> > +    create_unimplemented_device("microchip.pfsoc.ioscb.ctrl",
+> > +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].base,
+> > +        memmap[MICROCHIP_PFSOC_IOSCB_CTRL].size);
+> >  }
+> >
+> >  static void microchip_pfsoc_soc_class_init(ObjectClass *oc, void *data)
+> > diff --git a/include/hw/riscv/microchip_pfsoc.h b/include/hw/riscv/microchip_pfsoc.h
+> > index 8bfc7e1a85..3f1874b162 100644
+> > --- a/include/hw/riscv/microchip_pfsoc.h
+> > +++ b/include/hw/riscv/microchip_pfsoc.h
+> > @@ -95,6 +95,7 @@ enum {
+> >      MICROCHIP_PFSOC_ENVM_CFG,
+> >      MICROCHIP_PFSOC_ENVM_DATA,
+> >      MICROCHIP_PFSOC_IOSCB_CFG,
+> > +    MICROCHIP_PFSOC_IOSCB_CTRL,
+> >      MICROCHIP_PFSOC_DRAM,
+> >  };
+>
+> Thank you for the patch!
+>
+> I am currently adding the DDR controller modeling support to PolarFire
+> SoC which will cover this memory map. With my patch series, your patch
+> is no longer needed.
 
-The 'kdgb' is allocating memory in get_kdbg(), but it is not freed
-in both fill_header() and fill_context() failed branches, fix it.
+I forgot to apply this, and Bin just sent his series. So if it's ok
+with you Ivan I'm just going to apply Bin's series instead. Sorry
+about that.
 
-Signed-off-by: AlexChen <alex.chen@huawei.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <5F463659.8080101@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- contrib/elf2dmp/main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Alistair
 
-diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
-index 9a2dbc290214..ac746e49e097 100644
---- a/contrib/elf2dmp/main.c
-+++ b/contrib/elf2dmp/main.c
-@@ -568,12 +568,12 @@ int main(int argc, char *argv[])
-     if (fill_header(&header, &ps, &vs, KdDebuggerDataBlock, kdbg,
-             KdVersionBlock, qemu_elf.state_nr)) {
-         err = 1;
--        goto out_pdb;
-+        goto out_kdbg;
-     }
- 
-     if (fill_context(kdbg, &vs, &qemu_elf)) {
-         err = 1;
--        goto out_pdb;
-+        goto out_kdbg;
-     }
- 
-     if (write_dump(&ps, &header, argv[2])) {
--- 
-2.26.2
-
+>
+> Regards,
+> Bin
 
