@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXfA4-00059B-NT
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 02:42:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45696)
+	id 1kXhQE-0000nO-T2
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 05:07:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <a.tarasenko@gmail.com>)
- id 1kXfA3-00056c-5G; Wed, 28 Oct 2020 02:42:19 -0400
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:37591)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <a.tarasenko@gmail.com>)
- id 1kXfA1-0000Ip-6c; Wed, 28 Oct 2020 02:42:18 -0400
-Received: by mail-vs1-xe44.google.com with SMTP id b4so2255983vsd.4;
- Tue, 27 Oct 2020 23:42:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Sa4UEROik2uM9xhhpz2pXjcWm10npUnARQEkA35Fldw=;
- b=CmCnVBAjhg9pOG3d2t3mTwwAFIKnqMQVO2hha/PjLTTpBy4vjjOg/ikP0Naxhu7eyd
- ILpXBaq7D+9dUPlODgROW/FMDT4fzcJiC2ssF5q9n3hl5ePpRpNqxpmnPLwKrgL7UXnw
- VY8oFn2pR1ZcV0kOgfpa1VFnqdJjeYgYFL3r/YC19y6gWw4RByx0HiUavUU+wjnb1gFM
- HlfEqp8kgq52BKWJCliIYMEwXg93qOjaMErQy8OlKW0q1Lxx8RYRK2Dc+7Otxa7xufEJ
- FtVQ09WilG3F/RFGAbuiOPNeOXO4eJUH/MdrfWQfpq1q2aO5qGFj05X9A0qcal/va2vt
- Q16A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Sa4UEROik2uM9xhhpz2pXjcWm10npUnARQEkA35Fldw=;
- b=GY9HzBLFG5oWPa1hmSYMA6To/iiBmWnrMlPyoGszewrjP53+oL2UkAVfSUgu6o/t82
- ipl9iqlLF2zxmDm0sBe7QKFjrGVFsABV24lQOchMOFl2LxCEOxS0ERPK9XWEkxdCojJf
- 5C0KqS5EhrKhvuVxoqdTtvB70grBIX44pDsC2sIVaGPF1wzAPwb+Trz6IpioGbveJ3De
- mHL6kHpirV/FlwFDVMQKy889DHow3G3MWmF5L/nY3inelgjZsy/Pnc/0KAlog7h9xvsE
- 7tgqY+alyC37jEqcp6/CBm7VipbcAmYXMChXyG210Xz2YDnxJ1NrOLkmoFqzOboH9mkZ
- xeEQ==
-X-Gm-Message-State: AOAM531WfBJDsgs0VXSsmr7Er2p87AELykq2eSzhrzppAalg38iY4atb
- gqMiKFwnOZU0uFEObQWHb/nP5+C1UmWURAuWhSU=
-X-Google-Smtp-Source: ABdhPJxDrRAFVSnJFNQygoPDtFcIMrNvsOig12zLRsT6sHiYS12qZ+GMDuPoeVOl5Zgcbe0UW+IluajHHvKPYXQaiNs=
-X-Received: by 2002:a67:d387:: with SMTP id b7mr3990350vsj.24.1603867335797;
- Tue, 27 Oct 2020 23:42:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kXhQC-0000mB-CX; Wed, 28 Oct 2020 05:07:08 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2056)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kXhQ9-0002mj-PL; Wed, 28 Oct 2020 05:07:07 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLjPX5F9jzhbXN;
+ Wed, 28 Oct 2020 17:06:56 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
+ 17:06:43 +0800
+From: jokenzhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>
+CC: <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: [PATCH 2/3] hw/9pfs : open brace '{' following struct go on the same
+ line
+Date: Wed, 28 Oct 2020 17:05:39 +0800
+Message-ID: <20201028090540.1070935-2-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
+In-Reply-To: <20201028090540.1070935-1-zhangxinhao1@huawei.com>
+References: <20201028090540.1070935-1-zhangxinhao1@huawei.com>
 MIME-Version: 1.0
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-7-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201028041819.2169003-7-kuhn.chenqun@huawei.com>
-From: Artyom Tarasenko <atar4qemu@gmail.com>
-Date: Wed, 28 Oct 2020 07:42:03 +0100
-Message-ID: <CAAM0arNiHFoXPs2xrAWY=T8_hb5_eqqQXsfkmkk-uxLr=NWDrA@mail.gmail.com>
-Subject: Re: [PATCH 6/9] target/sparc/win_helper: silence the compiler warnings
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com, 
- Euler Robot <euler.robot@huawei.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Content-Type: multipart/alternative; boundary="000000000000d12e8305b2b5768a"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e44;
- envelope-from=a.tarasenko@gmail.com; helo=mail-vs1-xe44.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 05:06:54
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,123 +52,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 06:42:19 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 09:07:08 -0000
 
---000000000000d12e8305b2b5768a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-=D1=81=D1=80, 28 =D0=BE=D0=BA=D1=82. 2020 =D0=B3., 5:19 Chen Qun <kuhn.chen=
-qun@huawei.com>:
-
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed
-> warning:
-> target/sparc/win_helper.c: In function =E2=80=98get_gregset=E2=80=99:
-> target/sparc/win_helper.c:304:9: warning: this statement may fall through
-> [-Wimplicit-fallthrough=3D]
->   304 |         trace_win_helper_gregset_error(pstate);
->       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> target/sparc/win_helper.c:306:5: note: here
->   306 |     case 0:
->       |     ^~~~
->
-> Add the corresponding "fall through" comment to fix it.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->
-
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-
+Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
+Signed-off-by: Kai Deng <dengkai1@huawei.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
 ---
-> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-> ---
->  target/sparc/win_helper.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
-> index 8290a21142..32eacc05e6 100644
-> --- a/target/sparc/win_helper.c
-> +++ b/target/sparc/win_helper.c
-> @@ -303,6 +303,7 @@ static inline uint64_t *get_gregset(CPUSPARCState
-> *env, uint32_t pstate)
->      default:
->          trace_win_helper_gregset_error(pstate);
->          /* pass through to normal set of global registers */
-> +        /* fall through */
->      case 0:
->          return env->bgregs;
->      case PS_AG:
-> --
-> 2.27.0
->
->
+ hw/9pfs/9p.h | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
---000000000000d12e8305b2b5768a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/hw/9pfs/9p.h b/hw/9pfs/9p.h
+index 3dd1b50b1a..32df81f360 100644
+--- a/hw/9pfs/9p.h
++++ b/hw/9pfs/9p.h
+@@ -143,8 +143,7 @@ typedef struct {
+  */
+ QEMU_BUILD_BUG_ON(sizeof(P9MsgHeader) != 7);
+ 
+-struct V9fsPDU
+-{
++struct V9fsPDU {
+     uint32_t size;
+     uint16_t tag;
+     uint8_t id;
+@@ -270,8 +269,7 @@ union V9fsFidOpenState {
+     void *private;
+ };
+ 
+-struct V9fsFidState
+-{
++struct V9fsFidState {
+     int fid_type;
+     int32_t fid;
+     V9fsPath path;
+@@ -338,8 +336,7 @@ typedef struct {
+     uint64_t path;
+ } QpfEntry;
+ 
+-struct V9fsState
+-{
++struct V9fsState {
+     QLIST_HEAD(, V9fsPDU) free_list;
+     QLIST_HEAD(, V9fsPDU) active_list;
+     V9fsFidState *fid_list;
+-- 
+2.29.0-rc1
 
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
-"gmail_attr">=D1=81=D1=80, 28 =D0=BE=D0=BA=D1=82. 2020 =D0=B3., 5:19 Chen Q=
-un &lt;<a href=3D"mailto:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</=
-a>&gt;:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex">When using -Wimplicit-fallt=
-hrough in our CFLAGS, the compiler showed warning:<br>
-target/sparc/win_helper.c: In function =E2=80=98get_gregset=E2=80=99:<br>
-target/sparc/win_helper.c:304:9: warning: this statement may fall through [=
--Wimplicit-fallthrough=3D]<br>
-=C2=A0 304 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0trace_win_helper_gregset_erro=
-r(pstate);<br>
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~~~~~~~~~~~~~=
-~~~~~~~~~~~~~~~~~~~<br>
-target/sparc/win_helper.c:306:5: note: here<br>
-=C2=A0 306 |=C2=A0 =C2=A0 =C2=A0case 0:<br>
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0^~~~<br>
-<br>
-Add the corresponding &quot;fall through&quot; comment to fix it.<br>
-<br>
-Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
-et=3D"_blank" rel=3D"noreferrer">euler.robot@huawei.com</a>&gt;<br>
-Signed-off-by: Chen Qun &lt;<a href=3D"mailto:kuhn.chenqun@huawei.com" targ=
-et=3D"_blank" rel=3D"noreferrer">kuhn.chenqun@huawei.com</a>&gt;<br></block=
-quote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto"><span style=
-=3D"font-family:sans-serif">Reviewed-by:=C2=A0</span><span style=3D"font-fa=
-mily:sans-serif">Artyom Tarasenko &lt;</span><a href=3D"mailto:atar4qemu@gm=
-ail.com" style=3D"font-family:sans-serif">atar4qemu@gmail.com</a><span styl=
-e=3D"font-family:sans-serif">&gt;</span><br></div><div dir=3D"auto"><span s=
-tyle=3D"font-family:sans-serif"><br></span></div><div dir=3D"auto"><div cla=
-ss=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 =
-.8ex;border-left:1px #ccc solid;padding-left:1ex">
----<br>
-Cc: Mark Cave-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@ilande.co.uk" t=
-arget=3D"_blank" rel=3D"noreferrer">mark.cave-ayland@ilande.co.uk</a>&gt;<b=
-r>
-Cc: Artyom Tarasenko &lt;<a href=3D"mailto:atar4qemu@gmail.com" target=3D"_=
-blank" rel=3D"noreferrer">atar4qemu@gmail.com</a>&gt;<br>
----<br>
-=C2=A0target/sparc/win_helper.c | 1 +<br>
-=C2=A01 file changed, 1 insertion(+)<br>
-<br>
-diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c<br>
-index 8290a21142..32eacc05e6 100644<br>
---- a/target/sparc/win_helper.c<br>
-+++ b/target/sparc/win_helper.c<br>
-@@ -303,6 +303,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env,=
- uint32_t pstate)<br>
-=C2=A0 =C2=A0 =C2=A0default:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0trace_win_helper_gregset_error(pstate);<b=
-r>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* pass through to normal set of global r=
-egisters */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fall through */<br>
-=C2=A0 =C2=A0 =C2=A0case 0:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return env-&gt;bgregs;<br>
-=C2=A0 =C2=A0 =C2=A0case PS_AG:<br>
--- <br>
-2.27.0<br>
-<br>
-</blockquote></div></div></div>
-
---000000000000d12e8305b2b5768a--
 
