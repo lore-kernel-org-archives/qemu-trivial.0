@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXnQp-0008Gg-1i
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:32:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48404)
+	id 1kXnWX-0004Uo-HL
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:38:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kXnQl-0008EV-92
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:32:08 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:41725)
+ id 1kXnWV-0004Pp-Vc
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:38:04 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:46465)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kXnQd-0008NX-NV
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:32:06 -0400
-Received: by mail-pg1-x541.google.com with SMTP id g12so2981302pgm.8
- for <qemu-trivial@nongnu.org>; Wed, 28 Oct 2020 08:31:59 -0700 (PDT)
+ id 1kXnWU-0000hW-2t
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:38:03 -0400
+Received: by mail-pl1-x642.google.com with SMTP id p17so904246pli.13
+ for <qemu-trivial@nongnu.org>; Wed, 28 Oct 2020 08:38:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qMCGCMxNu05t0BOq9LAHrQRdxysIBp4boivRz8gf6SA=;
- b=ca1srChwQrRbEvjn9w0ytMZ0YeDHDZ3Cn7g+xLM40wRqBar27XnhXKlNlKvbe/mBAU
- 2yW7MLEyL0vKQRkWq2FdS0joSWo4wtStVNlIcW5jx5uYHnv7qu0Sb4mZpltSKN1/bpEZ
- S8s3nU7kYO8Y7EsFNY9M1MQMWTdV7H3eJUsCTUmDCvOm/h2Ia9rHlKpho+Of2uJcEs0o
- GvTUxM8fKcCPNs747NDub+2cYwIQslJ3w79l+w8cDqmP4D2GmpVaRLnvw4clgZb5BsRA
- FavyarTzcA9zw0zW6ybtMHa4jtf8iZ81hvPJLxiL2tax1PeTysZOVf+NGFVgAyqPC5YS
- yR8g==
+ bh=om/PY/dr8sqpQP1wVkGQjD0OXvAzyU46yhLk+LQHcds=;
+ b=yKxwMO7gByBnXbEToW4/MlHTfMkii1fyaaZWFOBlniB9fvJsClv7mEDdMwFSod3um8
+ Ts/qYxufra9ti+pg+Lvu51FrazcSb+xaY8BLk8JmBGAJz6VZuBKlVZpZJAOXSEPeNxTk
+ 05wkWd8lM/nQiBGk9XZVuPEXe45vOsVq9yUXacq4ZYsGlIdDEE6azbTRrboQa1HUSA6i
+ L78go8Omi5+OAwXpwXtuigPQ1SzlWwVyztXPdomdjsqgPuA+R/kkoDookfscvzRNUT5D
+ hIqYLzqSfWbjbBeVHXhi6lzEiOHZaeW2GnR3gDzarMUI0BoU7G8ROu/GKloXHPFKhmAG
+ O8Wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qMCGCMxNu05t0BOq9LAHrQRdxysIBp4boivRz8gf6SA=;
- b=Qw9q+bo3GS/IEWhhWdKJjiY5skksCa6Jdb070uhNIZ3zwtkCgkZ6OJaMaHI8R1XzP8
- yQxuiGwjqABAGzPBBtN1hj7tGdUFvqFCHw2lHzvWD4zlDRGqbbXaNnseoqzh4Xm72ewL
- 4+k8MZIzt09o5ftJZp9rJcPxaVUnvV9B8bAgJu7H1C1roxWVsgmjHdiy0sHB1aDrQUer
- pCz2FeSFK+EnZq7DsSJKExcxPvamogojSpPbxSs3hK3LpX/ip4avMFQLeIt9KjNC8Ovn
- CVMZc/Uc6PjZirGyWxyUUzxD20eyL4s0SN47KuO2mwDL4M1s3eo8wsFmV8yyjVImJsfY
- flPg==
-X-Gm-Message-State: AOAM532g6W0r8RFEoipvZ8wp6affxl4UXSUagWYxhMJE/ahi34dkdH9r
- zk9180gMk7c2V0K/cXwlEB0yhA==
-X-Google-Smtp-Source: ABdhPJz5PZBeCGANwlteJy94gblIbZlVY7VhVwNE8S5N5FEpNWsT5mncsX2Vcgelebu0igtMUEpdbw==
-X-Received: by 2002:a62:92c5:0:b029:156:6a7f:ccff with SMTP id
- o188-20020a6292c50000b02901566a7fccffmr7783555pfd.39.1603899118236; 
- Wed, 28 Oct 2020 08:31:58 -0700 (PDT)
+ bh=om/PY/dr8sqpQP1wVkGQjD0OXvAzyU46yhLk+LQHcds=;
+ b=trr5yPWDMir4a5ruOyzLWgk5nnDpJMZbVpSJ/Lz2lkOELduRjpjxrt0peSoq09oeGd
+ ldzEFyAIKoqZrUeaNVIT3dm8bCbKlDFjDO4TcMLgbcnLOfshlwarDsP22fnOohRaKY0H
+ s7e/7lPhdEueOuHtklMyh8vmastAWOKEBOrXd4Y0AlILqM2vHLl0dMNgavMYFM0neJ7A
+ LFT9ZQ+4l/7iWE8KIud/Vi4TgN4ctjCW8U7oP88CCERcQdhb6H3Ft3xHseutiM+BVVp9
+ a1ExOeR1gbSCqHMLLBBjUNlBaE274riESLGuFrmpRhvsJnfV2WtC7yGVRa3fJhX9BB9Z
+ f5rQ==
+X-Gm-Message-State: AOAM533ZMH+bMLXhZVDAMY3At81GDsCKioF+XNaj66eeCG8EKIqvdaBI
+ 5WcXOd+57ogy2gvwqZL63vvHOA==
+X-Google-Smtp-Source: ABdhPJym8U4WKANMpr9YwyBFM8nDo2c1TKD8sM14RHDcyqhCEgWQswWjTpnPPvHCqZjRQtQm2SVrkA==
+X-Received: by 2002:a17:902:a60c:b029:d5:dc92:a1ca with SMTP id
+ u12-20020a170902a60cb02900d5dc92a1camr8060864plq.16.1603899480554; 
+ Wed, 28 Oct 2020 08:38:00 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id 13sm6550255pfj.100.2020.10.28.08.31.56
+ by smtp.gmail.com with ESMTPSA id 20sm6303570pfh.219.2020.10.28.08.37.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Oct 2020 08:31:57 -0700 (PDT)
-Subject: Re: [PATCH 1/9] target/i386: silence the compiler warnings in
- gen_shiftd_rm_T1
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
+ Wed, 28 Oct 2020 08:37:59 -0700 (PDT)
+Subject: Re: [PATCH 3/9] accel/tcg/user-exec: silence the compiler warnings
+To: Thomas Huth <thuth@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: zhang.zhanghailiang@huawei.com, Riku Voipio <riku.voipio@iki.fi>,
+ Paolo Bonzini <pbonzini@redhat.com>, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-2-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-4-kuhn.chenqun@huawei.com>
+ <e2a3548e-d36c-3338-f298-150cce3c3d47@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <b69cd31b-9a0d-7244-aa79-f035b4bcacac@linaro.org>
-Date: Wed, 28 Oct 2020 08:31:55 -0700
+Message-ID: <d84d1e42-5814-05fb-4bfa-878cdca0754b@linaro.org>
+Date: Wed, 28 Oct 2020 08:37:57 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201028041819.2169003-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <e2a3548e-d36c-3338-f298-150cce3c3d47@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -29
@@ -87,47 +87,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 15:32:09 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 15:38:04 -0000
 
-On 10/27/20 9:18 PM, Chen Qun wrote:
-> The current "#ifdef TARGET_X86_64" statement affects
-> the compiler's determination of fall through.
+On 10/28/20 6:52 AM, Thomas Huth wrote:
+> On 28/10/2020 05.18, Chen Qun wrote:
+>> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+>> ../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
+>> ../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>>   169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
+>>       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> ../accel/tcg/user-exec.c:172:9: note: here
+>>   172 |         default:
+>>
+>> This exception branch fall through the 'default' branch and run the 'g_assert_not_reached' statement.
+>> So we could use "fall through" instead of "NORETURN" here.
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>> ---
+>> Cc: Riku Voipio <riku.voipio@iki.fi>
+>> Cc: Richard Henderson <richard.henderson@linaro.org>
+>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>> ---
+>>  accel/tcg/user-exec.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+>> index 4ebe25461a..330468e990 100644
+>> --- a/accel/tcg/user-exec.c
+>> +++ b/accel/tcg/user-exec.c
+>> @@ -167,7 +167,7 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
+>>               */
+>>              clear_helper_retaddr();
+>>              cpu_exit_tb_from_sighandler(cpu, old_set);
+>> -            /* NORETURN */
+>> +            /* fall through */
 > 
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-> target/i386/translate.c: In function ‘gen_shiftd_rm_T1’:
-> target/i386/translate.c:1773:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
->          if (is_right) {
->             ^
-> target/i386/translate.c:1782:5: note: here
->      case MO_32:
->      ^~~~
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Eduardo Habkost <ehabkost@redhat.com>
-> ---
->  target/i386/translate.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/i386/translate.c b/target/i386/translate.c
-> index caea6f5fb1..4c353427d7 100644
-> --- a/target/i386/translate.c
-> +++ b/target/i386/translate.c
-> @@ -1777,9 +1777,9 @@ static void gen_shiftd_rm_T1(DisasContext *s, MemOp ot, int op1,
->          } else {
->              tcg_gen_deposit_tl(s->T1, s->T0, s->T1, 16, 16);
->          }
-> -        /* FALLTHRU */
-> -#ifdef TARGET_X86_64
-> +        /* fall through */
->      case MO_32:
-> +#ifdef TARGET_X86_64
->          /* Concatenate the two 32-bit values and use a 64-bit shift.  *
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> There should not be a fall through here since the previous function should
+> never return. Does the warning go away if you mark the
+> cpu_exit_tb_from_sighandler() function with QEMU_NORETURN ? If so, I think
+> that would be the better fix.
+
+The compiler should have figured that out itself, due to cpu_loop_exit_noexc
+being marked QEMU_NORETURN.  However,
+if adding a second QEMU_NORETURN works, I'm fine with that.
+
+As a very last resort, we can change the comment to
+
+    /* no return, but fall through to assert not reached */
+
+which correctly documents both the function preceding and also contains the
+regexp that the compiler is using for the warning.
 
 
 r~
+
 
