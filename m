@@ -1,78 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXnWX-0004Uo-HL
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:38:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49972)
+	id 1kXnZC-00081d-29
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:40:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kXnWV-0004Pp-Vc
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:38:04 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:46465)
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1kXnZ9-0007wP-Qn; Wed, 28 Oct 2020 11:40:47 -0400
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41]:33110)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kXnWU-0000hW-2t
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:38:03 -0400
-Received: by mail-pl1-x642.google.com with SMTP id p17so904246pli.13
- for <qemu-trivial@nongnu.org>; Wed, 28 Oct 2020 08:38:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=om/PY/dr8sqpQP1wVkGQjD0OXvAzyU46yhLk+LQHcds=;
- b=yKxwMO7gByBnXbEToW4/MlHTfMkii1fyaaZWFOBlniB9fvJsClv7mEDdMwFSod3um8
- Ts/qYxufra9ti+pg+Lvu51FrazcSb+xaY8BLk8JmBGAJz6VZuBKlVZpZJAOXSEPeNxTk
- 05wkWd8lM/nQiBGk9XZVuPEXe45vOsVq9yUXacq4ZYsGlIdDEE6azbTRrboQa1HUSA6i
- L78go8Omi5+OAwXpwXtuigPQ1SzlWwVyztXPdomdjsqgPuA+R/kkoDookfscvzRNUT5D
- hIqYLzqSfWbjbBeVHXhi6lzEiOHZaeW2GnR3gDzarMUI0BoU7G8ROu/GKloXHPFKhmAG
- O8Wg==
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1kXnZ7-000198-WA; Wed, 28 Oct 2020 11:40:47 -0400
+Received: by mail-oo1-xc41.google.com with SMTP id u5so1270726oot.0;
+ Wed, 28 Oct 2020 08:40:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xLxievp7hffuJOG/AbosdmuZHIAKJRbI1YEXMb4NUmA=;
+ b=LrHvKXcMIqIxsZEhCj7jWSHIPkca9uNazW4Hnk7CGNI7tcznjA1k7pu95WTgNmax6r
+ Y00tOKrxi8J24VJybhoPoyG7V7bnQCSMy++a0CpGXHwr3XrkxjwQsahnHAyEFP3lCfjb
+ JTYFotXEhP4RLZt2tBfC758F2DqbKt20X60U96zXliEud429aXExuX2+xC4G2nIkgh+5
+ ZFAOP8HBzcny8i9iyPaNbsR6jH80t32a6/cbTujmUKPttD4PVDBfrXoEpOB8wYhUX3Tr
+ eQvHgCYuYd6SnoxwO1cpcJo8FDymlh645W5YgWoNPUBoM1LYO19r1xdRyYm7WiuRkoHI
+ JjpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=om/PY/dr8sqpQP1wVkGQjD0OXvAzyU46yhLk+LQHcds=;
- b=trr5yPWDMir4a5ruOyzLWgk5nnDpJMZbVpSJ/Lz2lkOELduRjpjxrt0peSoq09oeGd
- ldzEFyAIKoqZrUeaNVIT3dm8bCbKlDFjDO4TcMLgbcnLOfshlwarDsP22fnOohRaKY0H
- s7e/7lPhdEueOuHtklMyh8vmastAWOKEBOrXd4Y0AlILqM2vHLl0dMNgavMYFM0neJ7A
- LFT9ZQ+4l/7iWE8KIud/Vi4TgN4ctjCW8U7oP88CCERcQdhb6H3Ft3xHseutiM+BVVp9
- a1ExOeR1gbSCqHMLLBBjUNlBaE274riESLGuFrmpRhvsJnfV2WtC7yGVRa3fJhX9BB9Z
- f5rQ==
-X-Gm-Message-State: AOAM533ZMH+bMLXhZVDAMY3At81GDsCKioF+XNaj66eeCG8EKIqvdaBI
- 5WcXOd+57ogy2gvwqZL63vvHOA==
-X-Google-Smtp-Source: ABdhPJym8U4WKANMpr9YwyBFM8nDo2c1TKD8sM14RHDcyqhCEgWQswWjTpnPPvHCqZjRQtQm2SVrkA==
-X-Received: by 2002:a17:902:a60c:b029:d5:dc92:a1ca with SMTP id
- u12-20020a170902a60cb02900d5dc92a1camr8060864plq.16.1603899480554; 
- Wed, 28 Oct 2020 08:38:00 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id 20sm6303570pfh.219.2020.10.28.08.37.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Oct 2020 08:37:59 -0700 (PDT)
-Subject: Re: [PATCH 3/9] accel/tcg/user-exec: silence the compiler warnings
-To: Thomas Huth <thuth@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, Riku Voipio <riku.voipio@iki.fi>,
- Paolo Bonzini <pbonzini@redhat.com>, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-4-kuhn.chenqun@huawei.com>
- <e2a3548e-d36c-3338-f298-150cce3c3d47@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d84d1e42-5814-05fb-4bfa-878cdca0754b@linaro.org>
-Date: Wed, 28 Oct 2020 08:37:57 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xLxievp7hffuJOG/AbosdmuZHIAKJRbI1YEXMb4NUmA=;
+ b=a4RxMd5m2nAeeDSy0kqHz9Id9YOdVm7bL75nt5MLJ3wPIt5F1gX8kIO2njRBmxXGxl
+ 0aKlScZXOcwpulw01GzM7CBp14+PvLvwIL4+gUJvZedkl/8pACqMin8xPJAMe/z33gPi
+ IMK2mLKWlE61M+gikXRNlo5wImn241xa6JMwUzuu8oZT7RAKItsK9GzfSRU+xrpoJQu5
+ tYjqgkspVTF3VksGdrhb+QFprN9inUkUJKbaEZY44GpWIbryEdtdH2NW2dLzS7iRCMiE
+ kDvEtIdp717+Y+pb4U9AsnIqo6KkSraLKrt3JT6ZhU/OP6WRdNwGKzn+95z6hDin4o4b
+ FvbQ==
+X-Gm-Message-State: AOAM531l0wfSS3oKMLpQGC1aynVGYFaKKjQoiXA4dqAFCP7iBF3Cx3h9
+ a35Lz62nyw2xxw40qRBFH8kV5+u/TzboYZRAvYY=
+X-Google-Smtp-Source: ABdhPJxEO/jRz9J6fA/4orU+fhlX25q3D6ejVdGqeEpin7H81CWLZbmJLkSdY3y2sCYen7ohr6WL/OVDXGhj/fztWd4=
+X-Received: by 2002:a4a:b601:: with SMTP id z1mr6205975oon.83.1603899643907;
+ Wed, 28 Oct 2020 08:40:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <e2a3548e-d36c-3338-f298-150cce3c3d47@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+References: <5F997B84.9040900@huawei.com>
+In-Reply-To: <5F997B84.9040900@huawei.com>
+From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
+Date: Wed, 28 Oct 2020 11:40:33 -0400
+Message-ID: <CAFubqFv0m9BeAvmCCkv9iEMvUXfHP2z+HJ8ffkOG4KONig2LHQ@mail.gmail.com>
+Subject: Re: [PATCH] vhost-user-blk: Fix two resource leaks
+To: AlexChen <alex.chen@huawei.com>
+Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>, qemu-trivial@nongnu.org, 
+ QEMU <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c41;
+ envelope-from=raphael.s.norwitz@gmail.com; helo=mail-oo1-xc41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.921,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -87,59 +70,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 15:38:04 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 15:40:48 -0000
 
-On 10/28/20 6:52 AM, Thomas Huth wrote:
-> On 28/10/2020 05.18, Chen Qun wrote:
->> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
->> ../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
->> ../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
->>   169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
->>       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> ../accel/tcg/user-exec.c:172:9: note: here
->>   172 |         default:
->>
->> This exception branch fall through the 'default' branch and run the 'g_assert_not_reached' statement.
->> So we could use "fall through" instead of "NORETURN" here.
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->> ---
->> Cc: Riku Voipio <riku.voipio@iki.fi>
->> Cc: Richard Henderson <richard.henderson@linaro.org>
->> Cc: Paolo Bonzini <pbonzini@redhat.com>
->> ---
->>  accel/tcg/user-exec.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
->> index 4ebe25461a..330468e990 100644
->> --- a/accel/tcg/user-exec.c
->> +++ b/accel/tcg/user-exec.c
->> @@ -167,7 +167,7 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
->>               */
->>              clear_helper_retaddr();
->>              cpu_exit_tb_from_sighandler(cpu, old_set);
->> -            /* NORETURN */
->> +            /* fall through */
-> 
-> There should not be a fall through here since the previous function should
-> never return. Does the warning go away if you mark the
-> cpu_exit_tb_from_sighandler() function with QEMU_NORETURN ? If so, I think
-> that would be the better fix.
+The change looks good but I'm not sure I'd call it resource leak in
+either case since the failure case kills vhost-user-blk/scsi. In the
+commit message maybe rather say "vhost-user-blk/scsi: fix broken error
+handling for socket call"?
 
-The compiler should have figured that out itself, due to cpu_loop_exit_noexc
-being marked QEMU_NORETURN.  However,
-if adding a second QEMU_NORETURN works, I'm fine with that.
-
-As a very last resort, we can change the comment to
-
-    /* no return, but fall through to assert not reached */
-
-which correctly documents both the function preceding and also contains the
-regexp that the compiler is using for the warning.
-
-
-r~
-
+On Wed, Oct 28, 2020 at 10:10 AM AlexChen <alex.chen@huawei.com> wrote:
+>
+> When socket() fails, it returns -1, 0 is the normal return value and should not return
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
+> ---
+>  contrib/vhost-user-blk/vhost-user-blk.c   | 2 +-
+>  contrib/vhost-user-scsi/vhost-user-scsi.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
+> index 25eccd02b5..40a2dfc544 100644
+> --- a/contrib/vhost-user-blk/vhost-user-blk.c
+> +++ b/contrib/vhost-user-blk/vhost-user-blk.c
+> @@ -474,7 +474,7 @@ static int unix_sock_new(char *unix_fn)
+>      assert(unix_fn);
+>
+>      sock = socket(AF_UNIX, SOCK_STREAM, 0);
+> -    if (sock <= 0) {
+> +    if (sock < 0) {
+>          perror("socket");
+>          return -1;
+>      }
+> diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> index 3c912384e9..0f9ba4b2a2 100644
+> --- a/contrib/vhost-user-scsi/vhost-user-scsi.c
+> +++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> @@ -320,7 +320,7 @@ static int unix_sock_new(char *unix_fn)
+>      assert(unix_fn);
+>
+>      sock = socket(AF_UNIX, SOCK_STREAM, 0);
+> -    if (sock <= 0) {
+> +    if (sock < 0) {
+>          perror("socket");
+>          return -1;
+>      }
+> --
+> 2.19.1
+>
 
