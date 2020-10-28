@@ -1,41 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXhQH-0000tM-J1
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 05:07:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47500)
+	id 1kXi6V-00086f-8x
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 05:50:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kXhQE-0000nB-If; Wed, 28 Oct 2020 05:07:10 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2054)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kXhQB-0002mh-BX; Wed, 28 Oct 2020 05:07:10 -0400
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLjPX53mLzhbQt;
- Wed, 28 Oct 2020 17:06:56 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS410-HUB.china.huawei.com
- (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 17:06:42 +0800
-From: jokenzhang <zhangxinhao1@huawei.com>
-To: <qemu-devel@nongnu.org>
-CC: <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH 1/3] hw/9pfs : add spaces around operator
-Date: Wed, 28 Oct 2020 17:05:38 +0800
-Message-ID: <20201028090540.1070935-1-zhangxinhao1@huawei.com>
-X-Mailer: git-send-email 2.29.0-rc1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kXi6P-00086M-D3; Wed, 28 Oct 2020 05:50:46 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:37314)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kXi6L-0001zn-DL; Wed, 28 Oct 2020 05:50:45 -0400
+Received: by mail-ed1-x542.google.com with SMTP id o18so4444914edq.4;
+ Wed, 28 Oct 2020 02:50:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=7rcqOUgGpPWm5Nn7fhEiGwGbSvogxqhTXe49HW3eu0A=;
+ b=eRFJaOMiRcsTdp2+mrI1pT6j2PrdLz3Of5nKsIaFPYf2yA/tDG1xlzYstYEOlg25JR
+ 7LLpdWD0biBNs6sfOsd7S0Gdj3JLVBUyw2ZnFNdeyIiOwomfetAUMusA+rKdRy3ChxqF
+ MmqejvC7D+ZgKnl/HEQW7d/AFIbKmH3BvDO4mJOsxDpLcmnNUcWcXw0CH8aTdpwf8FXL
+ dHZoNEmZtAq4rm8lRpZ0jHI3mAmDooL4UBIj7wx0hI101BKX1lBpsE/5oS97C+sehSlk
+ RAOn6bl9eiGDs+x9Fly46BZeImxZ+3jQZ6egsFujbtAE2IecY/LDplc9OO6YQsxNlbUH
+ k/oQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7rcqOUgGpPWm5Nn7fhEiGwGbSvogxqhTXe49HW3eu0A=;
+ b=jv7P9OThdi+B1bCexpPHSEJpTTnY7idN8OnyYrnap1sbBztMtSpjv8lX/5i7AlRnN2
+ hImkH5eW3iIjyPb7iq7MQzcJ4CgIhTCJbtCktZTFCuqMrxqxdb+4K6klvJ/7mR30HJNC
+ e9iH3m/+dFIAg187eT7zwDtgv42I2w1XeJRjBGJ2kbYlSSaILwpY09l7FSsQTTNGVOoZ
+ 5vPe8awlQdD0uDmYFjOwoXTob6xDil9VfMQLaZ7QS4lizotZRmofmakfDheytTZQjOLy
+ DsYQ2MaPOhJKUyCKPRGL0iS/QptOyy17ceAGUKOlaHYOhGLA8pQPjGFk3IBTEWpTsRUp
+ yAnA==
+X-Gm-Message-State: AOAM532VjYeFkAwQ62uQFvXCPL4RKxcUIQFBfv7yc7M7gHaeDpad5dEk
+ OCjQS/t2iZbpUkpXNckZs24=
+X-Google-Smtp-Source: ABdhPJyCSlrwJ6lm2qE1mtTsdLCT3ebz6wpXO8+Kzk/PLCvI0hibJmRiWZm5BO3rRdlnmQkNgAHHfA==
+X-Received: by 2002:aa7:c2c4:: with SMTP id m4mr7165061edp.172.1603878637406; 
+ Wed, 28 Oct 2020 02:50:37 -0700 (PDT)
+Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id k1sm2568021edl.0.2020.10.28.02.50.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Oct 2020 02:50:36 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 5/9] target/sparc/translate: silence the compiler warnings
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: zhang.zhanghailiang@huawei.com,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-6-kuhn.chenqun@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <83258829-a9c8-cf82-1e1b-0ce2129701d4@amsat.org>
+Date: Wed, 28 Oct 2020 10:50:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
+In-Reply-To: <20201028041819.2169003-6-kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 05:06:54
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x542.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.167,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,101 +87,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 09:07:11 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 09:50:48 -0000
 
-Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
-Signed-off-by: Kai Deng <dengkai1@huawei.com>
-Reported-by: Euler Robot <euler.robot@huawei.com>
----
- hw/9pfs/9p-local.c | 10 +++++-----
- hw/9pfs/9p.c       | 16 ++++++++--------
- 2 files changed, 13 insertions(+), 13 deletions(-)
+On 10/28/20 5:18 AM, Chen Qun wrote:
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+> target/sparc/translate.c: In function ‘gen_st_asi’:
+> target/sparc/translate.c:2320:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>  2320 |         if (!(dc->def->features & CPU_FEATURE_HYPV)) {
+>       |            ^
+> target/sparc/translate.c:2329:5: note: here
+>  2329 |     case GET_ASI_DIRECT:
+>       |     ^~~~
+> 
+> The "fall through" statement place is not correctly identified by the compiler.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> ---
+>  target/sparc/translate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+> index 1a4efd4ed6..a3d9aaa46b 100644
+> --- a/target/sparc/translate.c
+> +++ b/target/sparc/translate.c
+> @@ -2324,8 +2324,8 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
+>          }
+>          /* in OpenSPARC T1+ CPUs TWINX ASIs in store instructions
+>           * are ST_BLKINIT_ ASIs */
+> -        /* fall through */
+>  #endif
+> +        /* fall through */
+>      case GET_ASI_DIRECT:
+>          gen_address_mask(dc, addr);
+>          tcg_gen_qemu_st_tl(src, addr, da.mem_idx, da.memop);
+> 
 
-diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-index 3107637209..af52c1daac 100644
---- a/hw/9pfs/9p-local.c
-+++ b/hw/9pfs/9p-local.c
-@@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const char *name,
-     memset(buf, 0, ATTR_MAX);
-     while (fgets(buf, ATTR_MAX, fp)) {
-         if (!strncmp(buf, "virtfs.uid", 10)) {
--            stbuf->st_uid = atoi(buf+11);
-+            stbuf->st_uid = atoi(buf + 11);
-         } else if (!strncmp(buf, "virtfs.gid", 10)) {
--            stbuf->st_gid = atoi(buf+11);
-+            stbuf->st_gid = atoi(buf + 11);
-         } else if (!strncmp(buf, "virtfs.mode", 11)) {
--            stbuf->st_mode = atoi(buf+12);
-+            stbuf->st_mode = atoi(buf + 12);
-         } else if (!strncmp(buf, "virtfs.rdev", 11)) {
--            stbuf->st_rdev = atoi(buf+12);
-+            stbuf->st_rdev = atoi(buf + 12);
-         }
-         memset(buf, 0, ATTR_MAX);
-     }
-@@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
-         if (fd == -1) {
-             goto out;
-         }
--        credp->fc_mode = credp->fc_mode|S_IFREG;
-+        credp->fc_mode = credp->fc_mode | S_IFREG;
-         if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
-             /* Set cleint credentials in xattr */
-             err = local_set_xattrat(dirfd, name, credp);
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index 741d222c3f..94df440fc7 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString *extension)
-         }
-     }
- 
--    if (!(ret&~0777)) {
-+    if (!(ret & ~0777)) {
-         ret |= S_IFREG;
-     }
- 
-@@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
-         v9fs_path_unlock(s);
-     } else {
-         err = v9fs_co_open2(pdu, fidp, &name, -1,
--                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
-+                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
-         if (err < 0) {
-             goto out;
-         }
-@@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
-      * compute bsize factor based on host file system block size
-      * and client msize
-      */
--    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
-+    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
-     if (!bsize_factor) {
-         bsize_factor = 1;
-     }
-@@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
-      * adjust(divide) the number of blocks, free blocks and available
-      * blocks by bsize factor
-      */
--    f_blocks = stbuf->f_blocks/bsize_factor;
--    f_bfree  = stbuf->f_bfree/bsize_factor;
--    f_bavail = stbuf->f_bavail/bsize_factor;
-+    f_blocks = stbuf->f_blocks / bsize_factor;
-+    f_bfree  = stbuf->f_bfree / bsize_factor;
-+    f_bavail = stbuf->f_bavail / bsize_factor;
-     f_files  = stbuf->f_files;
-     f_ffree  = stbuf->f_ffree;
-     fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
-@@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__)) v9fs_set_fd_limit(void)
-         error_report("Failed to get the resource limit");
-         exit(1);
-     }
--    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
--    open_fd_rc = rlim.rlim_cur/2;
-+    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
-+    open_fd_rc = rlim.rlim_cur / 2;
- }
--- 
-2.29.0-rc1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
