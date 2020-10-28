@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXcvk-0001rl-G0
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43556)
+	id 1kXcvl-0001si-CN
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcve-0001lW-ON; Wed, 28 Oct 2020 00:19:18 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2050)
+ id 1kXcvi-0001pF-Fs; Wed, 28 Oct 2020 00:19:22 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2113)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvZ-0007bU-9f; Wed, 28 Oct 2020 00:19:18 -0400
+ id 1kXcve-0007cx-If; Wed, 28 Oct 2020 00:19:22 -0400
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLb1Y3Phbzhc1F;
- Wed, 28 Oct 2020 12:19:13 +0800 (CST)
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CLb1f0d8mz6y74;
+ Wed, 28 Oct 2020 12:19:18 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 12:19:01 +0800
+ 12:19:04 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Mark
- Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko
- <atar4qemu@gmail.com>
-Subject: [PATCH 5/9] target/sparc/translate: silence the compiler warnings
-Date: Wed, 28 Oct 2020 12:18:15 +0800
-Message-ID: <20201028041819.2169003-6-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, David Gibson
+ <david@gibson.dropbear.id.au>
+Subject: [PATCH 7/9] ppc: silence the compiler warnings
+Date: Wed, 28 Oct 2020 12:18:17 +0800
+Message-ID: <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
@@ -32,9 +31,9 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:19:09
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:19:14
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -54,42 +53,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:19:20 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 04:19:23 -0000
 
 When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-target/sparc/translate.c: In function ‘gen_st_asi’:
-target/sparc/translate.c:2320:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
- 2320 |         if (!(dc->def->features & CPU_FEATURE_HYPV)) {
-      |            ^
-target/sparc/translate.c:2329:5: note: here
- 2329 |     case GET_ASI_DIRECT:
-      |     ^~~~
+hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
+hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  118 |             if (level) {
+      |                ^
+hw/ppc/ppc.c:123:9: note: here
+  123 |         case PPC6xx_INPUT_INT:
+      |         ^~~~
 
-The "fall through" statement place is not correctly identified by the compiler.
+Add the corresponding "fall through" comment to fix it.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
 ---
- target/sparc/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/ppc/ppc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-index 1a4efd4ed6..a3d9aaa46b 100644
---- a/target/sparc/translate.c
-+++ b/target/sparc/translate.c
-@@ -2324,8 +2324,8 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
-         }
-         /* in OpenSPARC T1+ CPUs TWINX ASIs in store instructions
-          * are ST_BLKINIT_ ASIs */
--        /* fall through */
- #endif
-+        /* fall through */
-     case GET_ASI_DIRECT:
-         gen_address_mask(dc, addr);
-         tcg_gen_qemu_st_tl(src, addr, da.mem_idx, da.memop);
+diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+index 4a11fb1640..f9eb8f21b4 100644
+--- a/hw/ppc/ppc.c
++++ b/hw/ppc/ppc.c
+@@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
+             } else {
+                 cpu_ppc_tb_stop(env);
+             }
++            /* fall through */
+         case PPC6xx_INPUT_INT:
+             /* Level sensitive - active high */
+             LOG_IRQ("%s: set the external IRQ state to %d\n",
 -- 
 2.27.0
 
