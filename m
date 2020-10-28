@@ -1,72 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXn1r-0005I0-He
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:06:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41680)
+	id 1kXnQ2-0007ig-PI
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:31:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48134)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXn1o-0005FF-Hy
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:06:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38948)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXn1g-0004lA-3V
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:06:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603897569;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cu+A6FbL4icM+oyrSkDsqBrl3qU0PQJiQ3nWqMDOkIA=;
- b=hudAUX2BYqk14fZC9HfQ7n1+B3M5DNlhxJa8thbCd38bW6TswL4014PAXHl42zEDQNNW9w
- 3khB1wiHadfB5dmpFBSHzv1pHcpVy5xVLwlUYBaDHxVtpZEgex4RBQszbTorcO0lt3SDcA
- oGMQGBvDsK66jaJ2CsREIPE+hOEQHeM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-hMbfclVvMT6-9UdWONPbuA-1; Wed, 28 Oct 2020 11:06:07 -0400
-X-MC-Unique: hMbfclVvMT6-9UdWONPbuA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 650EB8015C3;
- Wed, 28 Oct 2020 15:06:06 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-124.ams2.redhat.com [10.36.112.124])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 911A076642;
- Wed, 28 Oct 2020 15:06:04 +0000 (UTC)
-Subject: Re: [PATCH 8/9] target/ppc: silence the compiler warnings
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Euler Robot <euler.robot@huawei.com>, zhang.zhanghailiang@huawei.com,
- ganqixin@huawei.com, David Gibson <david@gibson.dropbear.id.au>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kXnPx-0007gw-Gy
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:31:18 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:33085)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kXnPt-0008Ht-TN
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:31:17 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id g19so1407414pji.0
+ for <qemu-trivial@nongnu.org>; Wed, 28 Oct 2020 08:31:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=uHekAQPQf1cFTngoq7ZWMI1V3FXJujdAXNxZYCBxfDA=;
+ b=h7n4EWj7vMCtzKMhjUy6KE12xFxNBxtYbxENyxxPkMWmzmRLqZX+o4smUsm7tGUEYf
+ 2rCxbJLP3YYHiqsnqzf8JH1EXMrAboQCsgtqls1Cev/Q59rOBAxOhf8Lmqt4UVYIKTP4
+ ND5r4CV4Qd8lLsmhr4x82JJpVgfOba+zTJfhfpet/n/QnlGF5N+aWI7HEXPRnPcOurIZ
+ //nMaxTR910AmYrddHo50qk42oSetbeiLlCNlwN3pobg+SnVCKPaW4S64q67OgYUI5Yj
+ Q8VVoOBFZ6AxqhyWypBxeVEA4iXuR3AQ2hJA4OkGDXAm5c1eqPuwmy7GEffJ75Tp4ZkO
+ H+qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=uHekAQPQf1cFTngoq7ZWMI1V3FXJujdAXNxZYCBxfDA=;
+ b=tYBEI4ksAHRueKGzF0wXCgQRfPFFeD5ZiWFttPoFH0BHUB0PmVqQlLw5uCe+n73IyD
+ Hojv9sALBNzFKsJ+xFpw12ZbM/rCPdUerpxwKqJwBqeNGJOfg+sRQuuaV7VSRXk8g/kl
+ GgnsDW/dosrxiT9rWSPezETbtccr45GF0DwhiHigZRHbsP1QxlAgbjCqzvL0AnugDJcc
+ bbI2H3h81wY0O194LEOt2VzI9XYhX/ebZYSDmYUkXUvZlsIa57ojoCR4p1C7LeuIMUgO
+ FBI8/QNkpL50pEF9zf/K0zq0iZvyXzez5QDIY5GpSdBmNMozD4YUsmSIA3vrLNq45plv
+ LI3Q==
+X-Gm-Message-State: AOAM533LBNPB555RMpLhpswIa4nbgOtCRTYd1dFcTeEvilyvP36Tg+Y1
+ FRpFbZ0P4UiK7bgGFKi4c4J7iA==
+X-Google-Smtp-Source: ABdhPJwShpw1VPvOd9S84ejRXyM4MZM/e0M07Wy6WnhrjJ2OukTpfWxUuQ0oqj/w3AwNdxdvKo3VZg==
+X-Received: by 2002:a17:902:74ca:b029:d6:7963:5bae with SMTP id
+ f10-20020a17090274cab02900d679635baemr2203469plt.4.1603899067158; 
+ Wed, 28 Oct 2020 08:31:07 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id n12sm5666178pjt.16.2020.10.28.08.31.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Oct 2020 08:31:06 -0700 (PDT)
+Subject: Re: [PATCH 1/9] target/i386: silence the compiler warnings in
+ gen_shiftd_rm_T1
+To: Thomas Huth <thuth@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ ganqixin@huawei.com, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-9-kuhn.chenqun@huawei.com>
- <77fb89c5-daa2-0039-bdba-cce0f9895195@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c8255814-80ff-8937-938f-158ff924bb91@redhat.com>
-Date: Wed, 28 Oct 2020 16:06:03 +0100
+ <20201028041819.2169003-2-kuhn.chenqun@huawei.com>
+ <30ca9af0-dfc2-e236-5575-068cec679508@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <d1d59436-1a8a-7aa3-7983-4344e16ab881@linaro.org>
+Date: Wed, 28 Oct 2020 08:31:04 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <77fb89c5-daa2-0039-bdba-cce0f9895195@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <30ca9af0-dfc2-e236-5575-068cec679508@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:51:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.921,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,51 +88,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 15:06:21 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 15:31:20 -0000
 
-On 28/10/2020 10.56, Philippe Mathieu-Daudé wrote:
-> On 10/28/20 5:18 AM, Chen Qun wrote:
->> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
->> target/ppc/mmu_helper.c: In function ‘dump_mmu’:
->> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
->>  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
->>       |            ^
->> target/ppc/mmu_helper.c:1358:5: note: here
->>  1358 |     default:
->>       |     ^~~~~~~
+On 10/28/20 5:57 AM, Thomas Huth wrote:
+> On 28/10/2020 05.18, Chen Qun wrote:
+>> The current "#ifdef TARGET_X86_64" statement affects
+>> the compiler's determination of fall through.
 >>
->> Add the corresponding "fall through" comment to fix it.
+>> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+>> target/i386/translate.c: In function ‘gen_shiftd_rm_T1’:
+>> target/i386/translate.c:1773:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>>          if (is_right) {
+>>             ^
+>> target/i386/translate.c:1782:5: note: here
+>>      case MO_32:
+>>      ^~~~
 >>
 >> Reported-by: Euler Robot <euler.robot@huawei.com>
 >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 >> ---
->> Cc: David Gibson <david@gibson.dropbear.id.au>
+>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>> Cc: Richard Henderson <richard.henderson@linaro.org>
+>> Cc: Eduardo Habkost <ehabkost@redhat.com>
 >> ---
->>  target/ppc/mmu_helper.c | 1 +
->>  1 file changed, 1 insertion(+)
+>>  target/i386/translate.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
 >>
->> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
->> index 8972714775..51749b62df 100644
->> --- a/target/ppc/mmu_helper.c
->> +++ b/target/ppc/mmu_helper.c
->> @@ -1355,6 +1355,7 @@ void dump_mmu(CPUPPCState *env)
->>              break;
+>> diff --git a/target/i386/translate.c b/target/i386/translate.c
+>> index caea6f5fb1..4c353427d7 100644
+>> --- a/target/i386/translate.c
+>> +++ b/target/i386/translate.c
+>> @@ -1777,9 +1777,9 @@ static void gen_shiftd_rm_T1(DisasContext *s, MemOp ot, int op1,
+>>          } else {
+>>              tcg_gen_deposit_tl(s->T1, s->T0, s->T1, 16, 16);
 >>          }
->>  #endif
+>> -        /* FALLTHRU */
+>> -#ifdef TARGET_X86_64
 >> +        /* fall through */
+>>      case MO_32:
+>> +#ifdef TARGET_X86_64
+>>          /* Concatenate the two 32-bit values and use a 64-bit shift.  */
+>>          tcg_gen_subi_tl(s->tmp0, count, 1);
+>>          if (is_right) {
 > 
-> I'm surprise the compiler emit a warning for missing comment,
-> but don't emit one for superfluous and confusing ones (when
-> building a ppc32-only target). You'd need to put this before
-> the #endif.
+> The whole code here looks a little bit fishy to me ... in case TARGET_X86_64
+> is defined, the MO_16 code falls through to MO_32 ... but in case it is not
+> defined, it falls through to the default case that comes after the #ifdef
+> block? Is this really the right thing here? If so, I think there should be
+> some additional comments explaining this behavior.
 > 
-> But instead of this band-aid to silent warning, replace the
-> TODO by a LOG_UNIMP call, and add a break before the #endif.
+> Richard, maybe you could help to judge what is right here...?
 
-+1 for replacing the TODO with a LOG_UNIMP call and adding a break instead,
-that would look way less messy than the current code.
+It could definitely be rewritten, but it's not wrong as is.
 
- Thanks,
-  Thomas
 
+r~
 
