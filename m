@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXcvl-0001rw-5x
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43578)
+	id 1kXd6b-0006Ap-Rx
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:30:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvf-0001mY-AV; Wed, 28 Oct 2020 00:19:19 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2051)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kXd6N-00066b-NY; Wed, 28 Oct 2020 00:30:23 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:47465 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvZ-0007bV-Af; Wed, 28 Oct 2020 00:19:19 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLb1Y36GNzhbN0;
- Wed, 28 Oct 2020 12:19:13 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 12:19:02 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Mark
- Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko
- <atar4qemu@gmail.com>
-Subject: [PATCH 6/9] target/sparc/win_helper: silence the compiler warnings
-Date: Wed, 28 Oct 2020 12:18:16 +0800
-Message-ID: <20201028041819.2169003-7-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kXd6K-0002al-N8; Wed, 28 Oct 2020 00:30:23 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4CLbGH4BpJz9sWL; Wed, 28 Oct 2020 15:30:15 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1603859415;
+ bh=2kaPp802qzi8JciMFRifQFEAGJ96LTqZpquodN8UlFw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=PLyAbFB9997sf70m0p2ELxNJaYBi1tLSZzdxRbMj6SMalVpzPkcHydKFtcUP1rNuZ
+ BLifFGXKoo37QB118368uA/UVogPsiNcfLt2P8oFyYeACq98iKfztL+0c9m+rLKYUV
+ nBtKZtChNMi6KAdbvtbEencVoq9wWy+62xXQfgSE=
+Date: Wed, 28 Oct 2020 15:30:09 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>
+Subject: Re: [PATCH 8/9] target/ppc: silence the compiler warnings
+Message-ID: <20201028043009.GD5604@yekko.fritz.box>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-9-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:19:09
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="jCrbxBqMcLqd4mOl"
+Content-Disposition: inline
+In-Reply-To: <20201028041819.2169003-9-kuhn.chenqun@huawei.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,41 +55,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:19:20 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 04:30:26 -0000
 
-When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-target/sparc/win_helper.c: In function ‘get_gregset’:
-target/sparc/win_helper.c:304:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  304 |         trace_win_helper_gregset_error(pstate);
-      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-target/sparc/win_helper.c:306:5: note: here
-  306 |     case 0:
-      |     ^~~~
 
-Add the corresponding "fall through" comment to fix it.
+--jCrbxBqMcLqd4mOl
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
----
- target/sparc/win_helper.c | 1 +
- 1 file changed, 1 insertion(+)
+On Wed, Oct 28, 2020 at 12:18:18PM +0800, Chen Qun wrote:
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
+ing:
+> target/ppc/mmu_helper.c: In function =E2=80=98dump_mmu=E2=80=99:
+> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through=
+ [-Wimplicit-fallthrough=3D]
+>  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
+>       |            ^
+> target/ppc/mmu_helper.c:1358:5: note: here
+>  1358 |     default:
+>       |     ^~~~~~~
+>=20
+> Add the corresponding "fall through" comment to fix it.
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
-index 8290a21142..32eacc05e6 100644
---- a/target/sparc/win_helper.c
-+++ b/target/sparc/win_helper.c
-@@ -303,6 +303,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
-     default:
-         trace_win_helper_gregset_error(pstate);
-         /* pass through to normal set of global registers */
-+        /* fall through */
-     case 0:
-         return env->bgregs;
-     case PS_AG:
--- 
-2.27.0
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
+> ---
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> ---
+>  target/ppc/mmu_helper.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+> index 8972714775..51749b62df 100644
+> --- a/target/ppc/mmu_helper.c
+> +++ b/target/ppc/mmu_helper.c
+> @@ -1355,6 +1355,7 @@ void dump_mmu(CPUPPCState *env)
+>              break;
+>          }
+>  #endif
+> +        /* fall through */
+>      default:
+>          qemu_log_mask(LOG_UNIMP, "%s: unimplemented\n", __func__);
+>      }
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--jCrbxBqMcLqd4mOl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+Y89EACgkQbDjKyiDZ
+s5IVlw/+Jleirpt6htO9WLdpxyRccf0p8VXO52dK9GDgB5ES6sIPpAn5r8MIClA/
+A3b/fL/RPz/59dFwyk7qda2aaeMKp4FfTn4qfTfCcMlPm24ZITyIqgja+tAICU86
+PRkOZM4eZAiYmzIK4dzaXx8yjP8woqqvynwfTNx/k8s9Z1px12E8FhCtPyKDzpa+
+kXowefILfUCPZJawyWfD8QPb7IdfFrPUdvzzsqInQmqcMp1zXUyf7YcKVqu10Mn2
+Krw0ejVdAdZb5FVyIP9SOA7bbnfz46zmRfqXi8c0qQHNgZX+W/x+vjYeXCfTRgul
+LskBo+ReGpRO3SXMqRkHguBScgmYQK5PdCAccLUXlcaNyk0lOhn15pRBXoAaZ469
+LAi78BuK6RAU16JSJNg5KmrUDR/szUyO0dXDRg/768gJ2zxTM0qGWRf/uQmZjcXm
+xkfZTB4d9pj2Q8KRkxQyJ8zXk/VowWDdbjKk4Alwaw0Jv7egdlHE3RUAsNhWMNcy
+gjjy8wvh4RnlKAgytGqjcB0XuMtMxFQ2nO6rsuqK+u5kN02jOKKQD2yWV3GWgzJM
+l6D3zZldhyX1mgp4+HI18j6gLMOpgig15b6sMlMFXWHTSYibXiBO6joJjynIMC4K
+PsO1S/jGAOoiV3wZ1v3QuI3D5jG9A3geeFOJNPAyrCRa6DHtgn0=
+=KNQV
+-----END PGP SIGNATURE-----
+
+--jCrbxBqMcLqd4mOl--
 
