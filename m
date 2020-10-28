@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXcvs-00026p-AR
+	id 1kXcvs-00028G-QP
 	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43614)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvh-0001oY-Jm; Wed, 28 Oct 2020 00:19:22 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2114)
+ id 1kXcvj-0001qA-GT; Wed, 28 Oct 2020 00:19:23 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcve-0007cy-J6; Wed, 28 Oct 2020 00:19:21 -0400
+ id 1kXcvZ-0007bX-9h; Wed, 28 Oct 2020 00:19:23 -0400
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CLb1f0VN1z6y5r;
- Wed, 28 Oct 2020 12:19:18 +0800 (CST)
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLb1Y3FnlzhbXc;
+ Wed, 28 Oct 2020 12:19:13 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 12:19:07 +0800
+ 12:18:58 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Yoshinori
- Sato" <ysato@users.sourceforge.jp>, Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH 9/9] hw/timer/renesas_tmr: silence the compiler warnings
-Date: Wed, 28 Oct 2020 12:18:19 +0800
-Message-ID: <20201028041819.2169003-10-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Riku Voipio
+ <riku.voipio@iki.fi>, Richard Henderson <richard.henderson@linaro.org>,
+ "Paolo Bonzini" <pbonzini@redhat.com>
+Subject: [PATCH 3/9] accel/tcg/user-exec: silence the compiler warnings
+Date: Wed, 28 Oct 2020 12:18:13 +0800
+Message-ID: <20201028041819.2169003-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
@@ -31,9 +32,9 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga07-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:19:14
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:19:09
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -53,40 +54,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:19:23 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 04:19:24 -0000
 
 When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-../hw/timer/renesas_tmr.c: In function ‘tmr_read’:
-../hw/timer/renesas_tmr.c:221:19: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  221 |         } else if (ch == 0) {i
-      |                   ^
-../hw/timer/renesas_tmr.c:224:5: note: here
-  224 |     case A_TCORB:
-      |     ^~~~
+../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
+../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../accel/tcg/user-exec.c:172:9: note: here
+  172 |         default:
 
-Add the corresponding "fall through" comment to fix it.
+This exception branch fall through the 'default' branch and run the 'g_assert_not_reached' statement.
+So we could use "fall through" instead of "NORETURN" here.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: Magnus Damm <magnus.damm@gmail.com>
+Cc: Riku Voipio <riku.voipio@iki.fi>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- hw/timer/renesas_tmr.c | 1 +
- 1 file changed, 1 insertion(+)
+ accel/tcg/user-exec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index 446f2eacdd..e03a8155b2 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -221,6 +221,7 @@ static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
-         } else if (ch == 0) {
-             return concat_reg(tmr->tcora);
-         }
-+        /* fall through */
-     case A_TCORB:
-         if (size == 1) {
-             return tmr->tcorb[ch];
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 4ebe25461a..330468e990 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -167,7 +167,7 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
+              */
+             clear_helper_retaddr();
+             cpu_exit_tb_from_sighandler(cpu, old_set);
+-            /* NORETURN */
++            /* fall through */
+ 
+         default:
+             g_assert_not_reached();
 -- 
 2.27.0
 
