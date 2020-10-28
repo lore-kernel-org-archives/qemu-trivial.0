@@ -1,48 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXd6c-0006Bm-5W
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:30:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45258)
+	id 1kXeFm-0008QC-Ml
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 01:44:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXd6N-00066S-IG; Wed, 28 Oct 2020 00:30:23 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:53649)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kXeFl-0008PT-1n; Wed, 28 Oct 2020 01:44:09 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2110)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXd6K-0002a2-Ov; Wed, 28 Oct 2020 00:30:23 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CLbGG6TNhz9sWH; Wed, 28 Oct 2020 15:30:14 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1603859414;
- bh=4adRTVELwxF6Sc7ccXKYfneCpG4KJ5uE0zT9+mltIzg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eg2DvP/cbGfPcgQENEFXjQuefYsOc9HKpJI7YYqfiFPv0ZAn3zl0WoCfxeaa2XgGM
- dJjmN9WBdnw1VFbdicBIZWfli3dKL2bf+Vg5L2WEKYHMWSe4j7xCxtSwe1z1neFes8
- X51tQN12MRO/Cf09qXhkKqteySWosji7d8VDqJK0=
-Date: Wed, 28 Oct 2020 15:27:58 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, clg@kaod.org,
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>
-Subject: Re: [PATCH] target/ppc/excp_helper: Add a missing break for
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kXeFh-0004uE-Si; Wed, 28 Oct 2020 01:44:08 -0400
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.55])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CLcvN2HVHz4xQk;
+ Wed, 28 Oct 2020 13:44:00 +0800 (CST)
+Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
+ DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Wed, 28 Oct 2020 13:43:56 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
+ dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0487.000;
+ Wed, 28 Oct 2020 13:43:47 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "clg@kaod.org" <clg@kaod.org>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, ganqixin <ganqixin@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>
+Subject: RE: [PATCH] target/ppc/excp_helper: Add a missing break for
  POWERPC_EXCP_HISI
-Message-ID: <20201028042758.GB5604@yekko.fritz.box>
+Thread-Topic: [PATCH] target/ppc/excp_helper: Add a missing break for
+ POWERPC_EXCP_HISI
+Thread-Index: AQHWrOEhDVQBenQ31E2N25gfU+hXv6mr5Y4AgACauqA=
+Date: Wed, 28 Oct 2020 05:43:46 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA0AE06@dggemm531-mbx.china.huawei.com>
 References: <20201028041620.2168707-1-kuhn.chenqun@huawei.com>
+ <20201028042758.GB5604@yekko.fritz.box>
+In-Reply-To: <20201028042758.GB5604@yekko.fritz.box>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="MfFXiAuoTsnnDAfZ"
-Content-Disposition: inline
-In-Reply-To: <20201028041620.2168707-1-kuhn.chenqun@huawei.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:43:58
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,87 +65,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:30:24 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 05:44:09 -0000
 
-
---MfFXiAuoTsnnDAfZ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Oct 28, 2020 at 12:16:20PM +0800, Chen Qun wrote:
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
-ing:
-> ../target/ppc/excp_helper.c: In function =E2=80=98powerpc_excp=E2=80=99:
-> ../target/ppc/excp_helper.c:529:13: warning: this statement may fall thro=
-ugh [-Wimplicit-fallthrough=3D]
->   529 |         msr |=3D env->error_code;
->       |         ~~~~^~~~~~~~~~~~~~~~~~
-> ../target/ppc/excp_helper.c:530:5: note: here
->   530 |     case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer except=
-ion         */
->       |     ^~~~
->=20
-> A break statement may be required to enter this exception.
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-
-This change is incorrect.  We definitely need the fallthrough to set
-srr[01] properly.  So the correct fix is to annotate the fallthrough,
-not remove it.
-
->=20
-> ---
-> I guess there's a break missing in 'POWERPC_EXCP_HISI' branch,
-> just like the 'POWERPC_EXCP_ISI' branch.
-> ---
->  target/ppc/excp_helper.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-> index a988ba15f4..5e69ac1b33 100644
-> --- a/target/ppc/excp_helper.c
-> +++ b/target/ppc/excp_helper.c
-> @@ -527,6 +527,7 @@ static inline void powerpc_excp(PowerPCCPU *cpu, int =
-excp_model, int excp)
->          break;
->      case POWERPC_EXCP_HISI:      /* Hypervisor instruction storage excep=
-tion */
->          msr |=3D env->error_code;
-> +        break;
->      case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer exception    =
-     */
->      case POWERPC_EXCP_HDSI:      /* Hypervisor data storage exception   =
-     */
->      case POWERPC_EXCP_HDSEG:     /* Hypervisor data segment exception   =
-     */
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---MfFXiAuoTsnnDAfZ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+Y804ACgkQbDjKyiDZ
-s5KYbRAAj9x5sKKZDO1UtCkxSmrMkCgdFPK/7lVbDwWM7RlJqU4XQ0sJmGh8/BXL
-v806PJShiabkjXNUcKJeqKT935BTgQodrVZEU10a0Q5Ef2fQzgO+IRuw3n3q8oyi
-A0IYeDr/rbwSLYoMua2H5f1mxI5YeiAIdnb4hkxYyNY0Y0Yj0nv1NMIKm0cWzW01
-W/oiVYaBMxHLE4FP5uPQG5bYmjD0knjspGHJYHRtjAJQ7UtKKGxWCI4XXec5PmOF
-gtcFGiliBDOtfARroyS8ibZUkFl5Do6WGMhifV1isnuNkQXwb5PGEzy/+XACLhyI
-WjaK/4DLex2dMUU6hZBwq4vwWLKr6j7kOQqdvSfBCVQ2mVvutDXePnn0thpPTwb3
-mgiuYcJeTOlr4a7GM/wyWPOFtTZ6DvmJQQ0jFOOsvGbphShBkt5mnx58KCu/UtVs
-zs4YP3u59RCzMzb5JudXSnb60M9r0eMgIAs2PeYka43NMlxoGmT5KoPMDfJE3foz
-JW6dntU8MCYn7b3I8rYziYXwBIwPcWH0AG4kQMBbpnb1jXcr6kz7o+Bt1lCxxaop
-bhI1Sa7qWxC7D+D29S+XwAOBTjQai1krqpCBIWf7EL35ddtw1aTvck+gMpp2k0kA
-6WAumk+DtLRMi43evTsOt+leruUIDNCgfKUwSpufkH264KA2llI=
-=inbc
------END PGP SIGNATURE-----
-
---MfFXiAuoTsnnDAfZ--
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBEYXZpZCBHaWJzb24gW21haWx0
+bzpkYXZpZEBnaWJzb24uZHJvcGJlYXIuaWQuYXVdDQo+IFNlbnQ6IFdlZG5lc2RheSwgT2N0b2Jl
+ciAyOCwgMjAyMCAxMjoyOCBQTQ0KPiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBo
+dWF3ZWkuY29tPg0KPiBDYzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9u
+Z251Lm9yZzsgY2xnQGthb2Qub3JnOw0KPiBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxp
+YW5nQGh1YXdlaS5jb20+OyBnYW5xaXhpbg0KPiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47IEV1bGVy
+IFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIXSB0
+YXJnZXQvcHBjL2V4Y3BfaGVscGVyOiBBZGQgYSBtaXNzaW5nIGJyZWFrIGZvcg0KPiBQT1dFUlBD
+X0VYQ1BfSElTSQ0KPiANCj4gT24gV2VkLCBPY3QgMjgsIDIwMjAgYXQgMTI6MTY6MjBQTSArMDgw
+MCwgQ2hlbiBRdW4gd3JvdGU6DQo+ID4gV2hlbiB1c2luZyAtV2ltcGxpY2l0LWZhbGx0aHJvdWdo
+IGluIG91ciBDRkxBR1MsIHRoZSBjb21waWxlciBzaG93ZWQNCj4gd2FybmluZzoNCj4gPiAuLi90
+YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmM6IEluIGZ1bmN0aW9uIOKAmHBvd2VycGNfZXhjcOKAmToN
+Cj4gPiAuLi90YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmM6NTI5OjEzOiB3YXJuaW5nOiB0aGlzIHN0
+YXRlbWVudCBtYXkgZmFsbCB0aHJvdWdoDQo+IFstV2ltcGxpY2l0LWZhbGx0aHJvdWdoPV0NCj4g
+PiAgIDUyOSB8ICAgICAgICAgbXNyIHw9IGVudi0+ZXJyb3JfY29kZTsNCj4gPiAgICAgICB8ICAg
+ICAgICAgfn5+fl5+fn5+fn5+fn5+fn5+fn5+fg0KPiA+IC4uL3RhcmdldC9wcGMvZXhjcF9oZWxw
+ZXIuYzo1MzA6NTogbm90ZTogaGVyZQ0KPiA+ICAgNTMwIHwgICAgIGNhc2UgUE9XRVJQQ19FWENQ
+X0hERUNSOiAgICAgLyogSHlwZXJ2aXNvcg0KPiBkZWNyZW1lbnRlciBleGNlcHRpb24gICAgICAg
+ICAqLw0KPiA+ICAgICAgIHwgICAgIF5+fn4NCj4gPg0KPiA+IEEgYnJlYWsgc3RhdGVtZW50IG1h
+eSBiZSByZXF1aXJlZCB0byBlbnRlciB0aGlzIGV4Y2VwdGlvbi4NCj4gPg0KPiA+IFJlcG9ydGVk
+LWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2Zm
+LWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+IA0KPiBUaGlzIGNoYW5n
+ZSBpcyBpbmNvcnJlY3QuICBXZSBkZWZpbml0ZWx5IG5lZWQgdGhlIGZhbGx0aHJvdWdoIHRvIHNl
+dCBzcnJbMDFdDQo+IHByb3Blcmx5LiAgU28gdGhlIGNvcnJlY3QgZml4IGlzIHRvIGFubm90YXRl
+IHRoZSBmYWxsdGhyb3VnaCwgbm90IHJlbW92ZSBpdC4NCj4gDQpPSywgSSdsbCBtb2RpZnkgaXQg
+bGF0ZXIuDQonDQpUaGFua3MsDQpDaGVuIFF1bg0KPiA+DQo+ID4gLS0tDQo+ID4gSSBndWVzcyB0
+aGVyZSdzIGEgYnJlYWsgbWlzc2luZyBpbiAnUE9XRVJQQ19FWENQX0hJU0knIGJyYW5jaCwganVz
+dA0KPiA+IGxpa2UgdGhlICdQT1dFUlBDX0VYQ1BfSVNJJyBicmFuY2guDQo+ID4gLS0tDQo+ID4g
+IHRhcmdldC9wcGMvZXhjcF9oZWxwZXIuYyB8IDEgKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
+bnNlcnRpb24oKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS90YXJnZXQvcHBjL2V4Y3BfaGVscGVy
+LmMgYi90YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmMgaW5kZXgNCj4gPiBhOTg4YmExNWY0Li41ZTY5
+YWMxYjMzIDEwMDY0NA0KPiA+IC0tLSBhL3RhcmdldC9wcGMvZXhjcF9oZWxwZXIuYw0KPiA+ICsr
+KyBiL3RhcmdldC9wcGMvZXhjcF9oZWxwZXIuYw0KPiA+IEBAIC01MjcsNiArNTI3LDcgQEAgc3Rh
+dGljIGlubGluZSB2b2lkIHBvd2VycGNfZXhjcChQb3dlclBDQ1BVICpjcHUsDQo+IGludCBleGNw
+X21vZGVsLCBpbnQgZXhjcCkNCj4gPiAgICAgICAgICBicmVhazsNCj4gPiAgICAgIGNhc2UgUE9X
+RVJQQ19FWENQX0hJU0k6ICAgICAgLyogSHlwZXJ2aXNvciBpbnN0cnVjdGlvbiBzdG9yYWdlDQo+
+IGV4Y2VwdGlvbiAqLw0KPiA+ICAgICAgICAgIG1zciB8PSBlbnYtPmVycm9yX2NvZGU7DQo+ID4g
+KyAgICAgICAgYnJlYWs7DQo+ID4gICAgICBjYXNlIFBPV0VSUENfRVhDUF9IREVDUjogICAgIC8q
+IEh5cGVydmlzb3IgZGVjcmVtZW50ZXINCj4gZXhjZXB0aW9uICAgICAgICAgKi8NCj4gPiAgICAg
+IGNhc2UgUE9XRVJQQ19FWENQX0hEU0k6ICAgICAgLyogSHlwZXJ2aXNvciBkYXRhIHN0b3JhZ2UN
+Cj4gZXhjZXB0aW9uICAgICAgICAqLw0KPiA+ICAgICAgY2FzZSBQT1dFUlBDX0VYQ1BfSERTRUc6
+ICAgICAvKiBIeXBlcnZpc29yIGRhdGEgc2VnbWVudA0KPiBleGNlcHRpb24gICAgICAgICovDQo+
+IA0KPiAtLQ0KPiBEYXZpZCBHaWJzb24JCQl8IEknbGwgaGF2ZSBteSBtdXNpYyBiYXJvcXVlLCBh
+bmQgbXkgY29kZQ0KPiBkYXZpZCBBVCBnaWJzb24uZHJvcGJlYXIuaWQuYXUJfCBtaW5pbWFsaXN0
+LCB0aGFuayB5b3UuICBOT1QgX3RoZV8NCj4gX290aGVyXw0KPiAJCQkJfCBfd2F5XyBfYXJvdW5k
+XyENCj4gaHR0cDovL3d3dy5vemxhYnMub3JnL35kZ2lic29uDQo=
 
