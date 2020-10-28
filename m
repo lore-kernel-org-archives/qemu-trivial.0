@@ -1,42 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXm8v-0003wn-8S
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 10:09:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56130)
+	id 1kXmey-0004VE-Lj
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 10:42:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kXm8p-0003um-UV; Wed, 28 Oct 2020 10:09:33 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2422)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kXm8l-0005N5-At; Wed, 28 Oct 2020 10:09:31 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CLr6M6qhhzLphZ;
- Wed, 28 Oct 2020 22:09:15 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 28 Oct 2020 22:09:08 +0800
-Message-ID: <5F997B84.9040900@huawei.com>
-Date: Wed, 28 Oct 2020 22:09:08 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmex-0004UD-Gs
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 10:42:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:25889)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmev-0001dy-WF
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 10:42:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603896160;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aFCLjXrCbVDnSB06L+2FCYKJI5t/01be0QHHgg3oi1g=;
+ b=OanMWsTPuA1FRCsGrN9EDJAd2v5w5H73BnoNZFPwr3J7VCWQ2ZmCJLyZyUKQjIu8tXUCir
+ RJMbYHyKVMrwVsAl+R3PG9vwH505o9+mVGe8fWElr/IUiaagwJ5+ZSUTmav6ts0zC/6cDy
+ UYPvfPuXXByR4atbqBu37mv7I8Trk14=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-406-FlTAmPSBOkKEqrV-egdI9g-1; Wed, 28 Oct 2020 10:42:36 -0400
+X-MC-Unique: FlTAmPSBOkKEqrV-egdI9g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1615B1DDFB;
+ Wed, 28 Oct 2020 14:42:35 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-124.ams2.redhat.com [10.36.112.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E840B1974D;
+ Wed, 28 Oct 2020 14:42:32 +0000 (UTC)
+Subject: Re: [PATCH 7/9] ppc: silence the compiler warnings
+To: David Gibson <david@gibson.dropbear.id.au>,
+ Chen Qun <kuhn.chenqun@huawei.com>
+Cc: qemu-trivial@nongnu.org, Euler Robot <euler.robot@huawei.com>,
+ qemu-devel@nongnu.org, ganqixin@huawei.com, zhang.zhanghailiang@huawei.com,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
+References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
+ <20201028042900.GC5604@yekko.fritz.box>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <ddcb887d-42ec-2021-1785-a6fb0d13d6b9@redhat.com>
+Date: Wed, 28 Oct 2020 15:42:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-To: <raphael.norwitz@nutanix.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Subject: [PATCH] vhost-user-blk: Fix two resource leaks
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 10:09:14
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201028042900.GC5604@yekko.fritz.box>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:51:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -49,43 +80,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 14:09:33 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 14:42:43 -0000
 
-When socket() fails, it returns -1, 0 is the normal return value and should not return
+On 28/10/2020 05.29, David Gibson wrote:
+> On Wed, Oct 28, 2020 at 12:18:17PM +0800, Chen Qun wrote:
+>> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+>> hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
+>> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>>   118 |             if (level) {
+>>       |                ^
+>> hw/ppc/ppc.c:123:9: note: here
+>>   123 |         case PPC6xx_INPUT_INT:
+>>       |         ^~~~
+>>
+>> Add the corresponding "fall through" comment to fix it.
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> 
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+> 
+>> ---
+>> Cc: David Gibson <david@gibson.dropbear.id.au>
+>> ---
+>>  hw/ppc/ppc.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+>> index 4a11fb1640..f9eb8f21b4 100644
+>> --- a/hw/ppc/ppc.c
+>> +++ b/hw/ppc/ppc.c
+>> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
+>>              } else {
+>>                  cpu_ppc_tb_stop(env);
+>>              }
+>> +            /* fall through */
+>>          case PPC6xx_INPUT_INT:
+>>              /* Level sensitive - active high */
+>>              LOG_IRQ("%s: set the external IRQ state to %d\n",
+> 
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: AlexChen <alex.chen@huawei.com>
----
- contrib/vhost-user-blk/vhost-user-blk.c   | 2 +-
- contrib/vhost-user-scsi/vhost-user-scsi.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Is that fall through actually really the right thing to do here? I'd rather
+expect to see a PPC_INTERRUPT_DECR instead of a PPC_INTERRUPT_EXT in case
+someone messes with the TBEN pin? So I assume this is likely rather bug and
+we should a "break" statement here instead?
 
-diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
-index 25eccd02b5..40a2dfc544 100644
---- a/contrib/vhost-user-blk/vhost-user-blk.c
-+++ b/contrib/vhost-user-blk/vhost-user-blk.c
-@@ -474,7 +474,7 @@ static int unix_sock_new(char *unix_fn)
-     assert(unix_fn);
+ Thomas
 
-     sock = socket(AF_UNIX, SOCK_STREAM, 0);
--    if (sock <= 0) {
-+    if (sock < 0) {
-         perror("socket");
-         return -1;
-     }
-diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
-index 3c912384e9..0f9ba4b2a2 100644
---- a/contrib/vhost-user-scsi/vhost-user-scsi.c
-+++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
-@@ -320,7 +320,7 @@ static int unix_sock_new(char *unix_fn)
-     assert(unix_fn);
-
-     sock = socket(AF_UNIX, SOCK_STREAM, 0);
--    if (sock <= 0) {
-+    if (sock < 0) {
-         perror("socket");
-         return -1;
-     }
--- 
-2.19.1
 
