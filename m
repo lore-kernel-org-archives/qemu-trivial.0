@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXd6f-0006Do-4K
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:30:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45272)
+	id 1kXd6c-0006Bm-5W
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:30:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXd6O-00067q-Tn; Wed, 28 Oct 2020 00:30:25 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:46829)
+ id 1kXd6N-00066S-IG; Wed, 28 Oct 2020 00:30:23 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:53649)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXd6K-0002aT-Tl; Wed, 28 Oct 2020 00:30:24 -0400
+ id 1kXd6K-0002a2-Ov; Wed, 28 Oct 2020 00:30:23 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CLbGH2BJjz9sWF; Wed, 28 Oct 2020 15:30:14 +1100 (AEDT)
+ id 4CLbGG6TNhz9sWH; Wed, 28 Oct 2020 15:30:14 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1603859415;
- bh=YEK+OIuUCuCqCeM5hVVFu0/MG7lO3tkM0JLhdsC4ENQ=;
+ d=gibson.dropbear.id.au; s=201602; t=1603859414;
+ bh=4adRTVELwxF6Sc7ccXKYfneCpG4KJ5uE0zT9+mltIzg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b6ecA95qxjpKKGdAs5mpgR8ZY03dDyndUy/5UNbNMUa5bg7yQExBu6dEqvKgmbEFG
- BDEY4PhMLkRQ9Cua+0dsGMmjGugQcKneFUWS9LQdS7Ob4z0x/n/jANza3VwyB9Cw7P
- uGKKjtF/HyZOuontlixyhY5UjUETU/NscBbWx0+4=
-Date: Wed, 28 Oct 2020 15:29:00 +1100
+ b=eg2DvP/cbGfPcgQENEFXjQuefYsOc9HKpJI7YYqfiFPv0ZAn3zl0WoCfxeaa2XgGM
+ dJjmN9WBdnw1VFbdicBIZWfli3dKL2bf+Vg5L2WEKYHMWSe4j7xCxtSwe1z1neFes8
+ X51tQN12MRO/Cf09qXhkKqteySWosji7d8VDqJK0=
+Date: Wed, 28 Oct 2020 15:27:58 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, clg@kaod.org,
  zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
  Euler Robot <euler.robot@huawei.com>
-Subject: Re: [PATCH 7/9] ppc: silence the compiler warnings
-Message-ID: <20201028042900.GC5604@yekko.fritz.box>
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH] target/ppc/excp_helper: Add a missing break for
+ POWERPC_EXCP_HISI
+Message-ID: <20201028042758.GB5604@yekko.fritz.box>
+References: <20201028041620.2168707-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="kfjH4zxOES6UT95V"
+ protocol="application/pgp-signature"; boundary="MfFXiAuoTsnnDAfZ"
 Content-Disposition: inline
-In-Reply-To: <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201028041620.2168707-1-kuhn.chenqun@huawei.com>
 Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -55,52 +55,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:30:29 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 04:30:24 -0000
 
 
---kfjH4zxOES6UT95V
+--MfFXiAuoTsnnDAfZ
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Oct 28, 2020 at 12:18:17PM +0800, Chen Qun wrote:
+On Wed, Oct 28, 2020 at 12:16:20PM +0800, Chen Qun wrote:
 > When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
 ing:
-> hw/ppc/ppc.c: In function =E2=80=98ppc6xx_set_irq=E2=80=99:
-> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit=
--fallthrough=3D]
->   118 |             if (level) {
->       |                ^
-> hw/ppc/ppc.c:123:9: note: here
->   123 |         case PPC6xx_INPUT_INT:
->       |         ^~~~
+> ../target/ppc/excp_helper.c: In function =E2=80=98powerpc_excp=E2=80=99:
+> ../target/ppc/excp_helper.c:529:13: warning: this statement may fall thro=
+ugh [-Wimplicit-fallthrough=3D]
+>   529 |         msr |=3D env->error_code;
+>       |         ~~~~^~~~~~~~~~~~~~~~~~
+> ../target/ppc/excp_helper.c:530:5: note: here
+>   530 |     case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer except=
+ion         */
+>       |     ^~~~
 >=20
-> Add the corresponding "fall through" comment to fix it.
+> A break statement may be required to enter this exception.
 >=20
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+This change is incorrect.  We definitely need the fallthrough to set
+srr[01] properly.  So the correct fix is to annotate the fallthrough,
+not remove it.
 
+>=20
 > ---
-> Cc: David Gibson <david@gibson.dropbear.id.au>
+> I guess there's a break missing in 'POWERPC_EXCP_HISI' branch,
+> just like the 'POWERPC_EXCP_ISI' branch.
 > ---
->  hw/ppc/ppc.c | 1 +
+>  target/ppc/excp_helper.c | 1 +
 >  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-> index 4a11fb1640..f9eb8f21b4 100644
-> --- a/hw/ppc/ppc.c
-> +++ b/hw/ppc/ppc.c
-> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int=
- level)
->              } else {
->                  cpu_ppc_tb_stop(env);
->              }
-> +            /* fall through */
->          case PPC6xx_INPUT_INT:
->              /* Level sensitive - active high */
->              LOG_IRQ("%s: set the external IRQ state to %d\n",
+> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+> index a988ba15f4..5e69ac1b33 100644
+> --- a/target/ppc/excp_helper.c
+> +++ b/target/ppc/excp_helper.c
+> @@ -527,6 +527,7 @@ static inline void powerpc_excp(PowerPCCPU *cpu, int =
+excp_model, int excp)
+>          break;
+>      case POWERPC_EXCP_HISI:      /* Hypervisor instruction storage excep=
+tion */
+>          msr |=3D env->error_code;
+> +        break;
+>      case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer exception    =
+     */
+>      case POWERPC_EXCP_HDSI:      /* Hypervisor data storage exception   =
+     */
+>      case POWERPC_EXCP_HDSEG:     /* Hypervisor data segment exception   =
+     */
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -108,25 +117,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---kfjH4zxOES6UT95V
+--MfFXiAuoTsnnDAfZ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+Y84wACgkQbDjKyiDZ
-s5KCmg//Xw+dYi7q/5oUJq/i75cK1O3nI3waMTrHt5zU4OelZwAQUb/7fB1pdBQP
-mC7VEoQLNMt73BpalW0BZFk5nZTmE8N2Vi7rwTdNZ2RP0Y+drQs6Now9xF3pTXpR
-rToN/5vvmfQDABR3QFZVckuXvOatJUHu80bgfMvZCZOB2in3hF4g3v7VHppgSuy+
-LqkLhkVk8n4Biy0zUVKNGbYpDiSSRT8qiED4QZoVmKpWbAERN/ZnddxUXHa5SqBD
-ZNM20Z4N/88mcKLDld4iKbnbaXSQ5GsMglW7f08fGnWKmz60qQqDgzfhZul6E5vP
-qfx8AA7oSdZY8m/Zpm0sUMfMP8PzwesgGR175/+l0nAVTzfn+wX3wnkgkHkAwHCM
-JKAPrnsXQqPKPychCpI54L9lDmLfS9vs7ItoSkzPHXfTc/E5AROouIQXwdW4cipw
-vqNBxI2UvMFVAP8XZ6UrQu/R96N+DUqZe/x1ViZEtCZh+ZGL8cDZK54Dh/dZdz2B
-gfBZReJBMQMIouk2KqsXqA+DYqJWRvfIgL5Pbk2RaXNptNvCSzyijaMAJs1F3Elp
-uHNwQd62ieoblzH/DSLyU+iBSnYj8wl7Dy85SePOkBEjtklmrGVAsa8AUndHHsZ1
-6lX/N3V3NNlrxMTDbeqALzm6+Ec3u/d1FDpzOCfidPQpdxO3UnE=
-=8AAK
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+Y804ACgkQbDjKyiDZ
+s5KYbRAAj9x5sKKZDO1UtCkxSmrMkCgdFPK/7lVbDwWM7RlJqU4XQ0sJmGh8/BXL
+v806PJShiabkjXNUcKJeqKT935BTgQodrVZEU10a0Q5Ef2fQzgO+IRuw3n3q8oyi
+A0IYeDr/rbwSLYoMua2H5f1mxI5YeiAIdnb4hkxYyNY0Y0Yj0nv1NMIKm0cWzW01
+W/oiVYaBMxHLE4FP5uPQG5bYmjD0knjspGHJYHRtjAJQ7UtKKGxWCI4XXec5PmOF
+gtcFGiliBDOtfARroyS8ibZUkFl5Do6WGMhifV1isnuNkQXwb5PGEzy/+XACLhyI
+WjaK/4DLex2dMUU6hZBwq4vwWLKr6j7kOQqdvSfBCVQ2mVvutDXePnn0thpPTwb3
+mgiuYcJeTOlr4a7GM/wyWPOFtTZ6DvmJQQ0jFOOsvGbphShBkt5mnx58KCu/UtVs
+zs4YP3u59RCzMzb5JudXSnb60M9r0eMgIAs2PeYka43NMlxoGmT5KoPMDfJE3foz
+JW6dntU8MCYn7b3I8rYziYXwBIwPcWH0AG4kQMBbpnb1jXcr6kz7o+Bt1lCxxaop
+bhI1Sa7qWxC7D+D29S+XwAOBTjQai1krqpCBIWf7EL35ddtw1aTvck+gMpp2k0kA
+6WAumk+DtLRMi43evTsOt+leruUIDNCgfKUwSpufkH264KA2llI=
+=inbc
 -----END PGP SIGNATURE-----
 
---kfjH4zxOES6UT95V--
+--MfFXiAuoTsnnDAfZ--
 
