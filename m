@@ -1,68 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXsUz-0006yZ-NU
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 16:56:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60982)
+	id 1kXvx0-0000DY-Hf
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 20:37:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXsUx-0006xA-PE
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:56:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32743)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXsUs-0004bv-Jh
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:56:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603918600;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Nbju9wvpFHvGtSNtcdQyfREsNeYR0h+o55WEJg+slig=;
- b=iHXNkR9mtHWyY/ktqCrQYFZNywG6Tsk7X4GJugouAGKbtI9eYXxRnkmyH9zrEVOWhqBMev
- w1Lif5wijAGa+q17zq8GebonNBLKes7eo8RWPZq0U2Y4Z1b+LS5ARFSgIwU9DYwHTrGDMe
- nUKR0ejT6Df51rxqZVZfDs3Tzw1ToAA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-318-6Q1x66ohNWa6T1suw-VYKw-1; Wed, 28 Oct 2020 16:56:33 -0400
-X-MC-Unique: 6Q1x66ohNWa6T1suw-VYKw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F0FB1007464;
- Wed, 28 Oct 2020 20:56:32 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-124.ams2.redhat.com [10.36.112.124])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B6CAA5C1D0;
- Wed, 28 Oct 2020 20:56:31 +0000 (UTC)
-Subject: Re: [PATCH] MAINTAINERS: update my email address
-To: Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201027060253.353054-1-michael.roth@amd.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <eea1f171-5e62-f241-be13-53c44fc4987f@redhat.com>
-Date: Wed, 28 Oct 2020 21:56:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kXvwy-0000Cv-Fq; Wed, 28 Oct 2020 20:37:56 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:60413)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kXvwu-0000ye-NO; Wed, 28 Oct 2020 20:37:55 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4CM63R1VD1z9sTq; Thu, 29 Oct 2020 11:37:39 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1603931859;
+ bh=QoaRcCy7Nhh4pgDVKXYYG6RiNuQyYN25m0w6Hf9XN9g=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gCBaI9Kn60zDvXgI5AcGMMRLxA9WbBhqq4HK3Z3kozPi+uwt2zM52IRZcSzd9Zm6B
+ QGvcqgeaoX6X0bv4ySjDlaC69NFIUV7foQbdjEMSOmp+D+Tkb1qH0R3fzj/NAKanK4
+ biC6OVbgy3PYVFQAHySx/nXwOCpJ6ZhjGDDy4NdE=
+Date: Thu, 29 Oct 2020 10:39:10 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Euler Robot <euler.robot@huawei.com>,
+ zhang.zhanghailiang@huawei.com, ganqixin@huawei.com
+Subject: Re: [PATCH 8/9] target/ppc: silence the compiler warnings
+Message-ID: <20201028233910.GH5604@yekko.fritz.box>
+References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-9-kuhn.chenqun@huawei.com>
+ <77fb89c5-daa2-0039-bdba-cce0f9895195@redhat.com>
+ <c8255814-80ff-8937-938f-158ff924bb91@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20201027060253.353054-1-michael.roth@amd.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:51:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="YrlhzR9YrZtruaFS"
+Content-Disposition: inline
+In-Reply-To: <c8255814-80ff-8937-938f-158ff924bb91@redhat.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,41 +58,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 20:56:48 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 00:37:56 -0000
 
-On 27/10/2020 07.02, Michael Roth wrote:
-> I've recently switched employers and the current email address is out
-> of date.
-> 
-> Signed-off-by: Michael Roth <michael.roth@amd.com>
-> ---
->  MAINTAINERS | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ef6f5c7399..c72af7c2f5 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2395,7 +2395,7 @@ F: scripts/simplebench/
->  
->  QAPI
->  M: Markus Armbruster <armbru@redhat.com>
-> -M: Michael Roth <mdroth@linux.vnet.ibm.com>
-> +M: Michael Roth <michael.roth@amd.com>
->  S: Supported
->  F: qapi/
->  X: qapi/*.json
-> @@ -2439,7 +2439,7 @@ F: tests/data/qobject/qdict.txt
->  T: git https://repo.or.cz/qemu/armbru.git qapi-next
->  
->  QEMU Guest Agent
-> -M: Michael Roth <mdroth@linux.vnet.ibm.com>
-> +M: Michael Roth <michael.roth@amd.com>
->  S: Maintained
->  F: qga/
->  F: docs/interop/qemu-ga.rst
-> 
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+--YrlhzR9YrZtruaFS
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Wed, Oct 28, 2020 at 04:06:03PM +0100, Thomas Huth wrote:
+> On 28/10/2020 10.56, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 10/28/20 5:18 AM, Chen Qun wrote:
+> >> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed w=
+arning:
+> >> target/ppc/mmu_helper.c: In function =E2=80=98dump_mmu=E2=80=99:
+> >> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall thro=
+ugh [-Wimplicit-fallthrough=3D]
+> >>  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
+> >>       |            ^
+> >> target/ppc/mmu_helper.c:1358:5: note: here
+> >>  1358 |     default:
+> >>       |     ^~~~~~~
+> >>
+> >> Add the corresponding "fall through" comment to fix it.
+> >>
+> >> Reported-by: Euler Robot <euler.robot@huawei.com>
+> >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> >> ---
+> >> Cc: David Gibson <david@gibson.dropbear.id.au>
+> >> ---
+> >>  target/ppc/mmu_helper.c | 1 +
+> >>  1 file changed, 1 insertion(+)
+> >>
+> >> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+> >> index 8972714775..51749b62df 100644
+> >> --- a/target/ppc/mmu_helper.c
+> >> +++ b/target/ppc/mmu_helper.c
+> >> @@ -1355,6 +1355,7 @@ void dump_mmu(CPUPPCState *env)
+> >>              break;
+> >>          }
+> >>  #endif
+> >> +        /* fall through */
+> >=20
+> > I'm surprise the compiler emit a warning for missing comment,
+> > but don't emit one for superfluous and confusing ones (when
+> > building a ppc32-only target). You'd need to put this before
+> > the #endif.
+> >=20
+> > But instead of this band-aid to silent warning, replace the
+> > TODO by a LOG_UNIMP call, and add a break before the #endif.
+>=20
+> +1 for replacing the TODO with a LOG_UNIMP call and adding a break instea=
+d,
+> that would look way less messy than the current code.
+
+True, that would be a better approach.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--YrlhzR9YrZtruaFS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+aAR0ACgkQbDjKyiDZ
+s5LCeQ//aVNlIvG4AKUL0rgLA/GUnfHxNQp7LeMjUq1xT25Y3Vjm2Gjck3igWXqX
+Mlz+P7bLQ/yVhN0g0LuHl8efjlyoDdDOOyqQ68hlZj/mYnNlJ3VBz4nE6buOqXkC
+aU0cl/3b3HMdZlHT/4z3tLCmVXd0PpVCXGsH+mAJO4cnrN0hjNj97zDKTM19Uhwa
+mEIvepeNcF/viNiRz0uSy0tK1ve4eVdOvzB4rcoy1mhnM9NRWuGsfwIyxKNrgAPU
+Lk+nAnUyUTcid2pUcME64DA5iovPDXar8IsyLLShsfsdMi5g6LN7Svp04ZWz6Ag0
+mMzKam7IywS2ldYmCmnTVjg3maagPohh5P3PySvJDa8V8BtKYOdcpbdvE7Ijv+1O
+tnGWXVSwAwrmt0o93zc6CWvAbJxXbf6ThTqlXdET/jDLMa/JCQ6k9qAT690LWllr
+Nb7G9M8425jzIhhbu9P1WPztpmT0ksVqSMAcN9iJ9xOXUZs7IcxWACzMYYA7nzPX
+qcxYnxfZwhPOTNckBnas4KB/QdX8qZxk6RyrcvJdsotsTZflYjVnzn9qT77n+BEF
+L7/C20AFi9pzHSJOmBrnRSTDKwc4iA0JL5geB9Ccpn/zekCCFKr3h0uLXTrweEgi
+y5EtCXu2JhZViZtR3WE9ZIG/UMv2nb/zZnUz3OfPSxLy2NYsfKs=
+=oLrI
+-----END PGP SIGNATURE-----
+
+--YrlhzR9YrZtruaFS--
 
