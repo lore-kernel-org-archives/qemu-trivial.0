@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXcvs-00028G-QP
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43618)
+	id 1kXcvl-0001rw-5x
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 00:19:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvj-0001qA-GT; Wed, 28 Oct 2020 00:19:23 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2053)
+ id 1kXcvf-0001mY-AV; Wed, 28 Oct 2020 00:19:19 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvZ-0007bX-9h; Wed, 28 Oct 2020 00:19:23 -0400
+ id 1kXcvZ-0007bV-Af; Wed, 28 Oct 2020 00:19:19 -0400
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLb1Y3FnlzhbXc;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CLb1Y36GNzhbN0;
  Wed, 28 Oct 2020 12:19:13 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 12:18:58 +0800
+ 12:19:02 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Riku Voipio
- <riku.voipio@iki.fi>, Richard Henderson <richard.henderson@linaro.org>,
- "Paolo Bonzini" <pbonzini@redhat.com>
-Subject: [PATCH 3/9] accel/tcg/user-exec: silence the compiler warnings
-Date: Wed, 28 Oct 2020 12:18:13 +0800
-Message-ID: <20201028041819.2169003-4-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Mark
+ Cave-Ayland" <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko
+ <atar4qemu@gmail.com>
+Subject: [PATCH 6/9] target/sparc/win_helper: silence the compiler warnings
+Date: Wed, 28 Oct 2020 12:18:16 +0800
+Message-ID: <20201028041819.2169003-7-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
@@ -54,42 +54,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 04:19:24 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 04:19:20 -0000
 
 When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
-../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
-      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../accel/tcg/user-exec.c:172:9: note: here
-  172 |         default:
+target/sparc/win_helper.c: In function ‘get_gregset’:
+target/sparc/win_helper.c:304:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  304 |         trace_win_helper_gregset_error(pstate);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+target/sparc/win_helper.c:306:5: note: here
+  306 |     case 0:
+      |     ^~~~
 
-This exception branch fall through the 'default' branch and run the 'g_assert_not_reached' statement.
-So we could use "fall through" instead of "NORETURN" here.
+Add the corresponding "fall through" comment to fix it.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Riku Voipio <riku.voipio@iki.fi>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
- accel/tcg/user-exec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/sparc/win_helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-index 4ebe25461a..330468e990 100644
---- a/accel/tcg/user-exec.c
-+++ b/accel/tcg/user-exec.c
-@@ -167,7 +167,7 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
-              */
-             clear_helper_retaddr();
-             cpu_exit_tb_from_sighandler(cpu, old_set);
--            /* NORETURN */
-+            /* fall through */
- 
-         default:
-             g_assert_not_reached();
+diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
+index 8290a21142..32eacc05e6 100644
+--- a/target/sparc/win_helper.c
++++ b/target/sparc/win_helper.c
+@@ -303,6 +303,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
+     default:
+         trace_win_helper_gregset_error(pstate);
+         /* pass through to normal set of global registers */
++        /* fall through */
+     case 0:
+         return env->bgregs;
+     case PS_AG:
 -- 
 2.27.0
 
