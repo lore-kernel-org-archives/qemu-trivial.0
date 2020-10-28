@@ -1,51 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXeFm-0008QC-Ml
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 01:44:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35000)
+	id 1kXeN1-0002tU-S1
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 01:51:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXeFl-0008PT-1n; Wed, 28 Oct 2020 01:44:09 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2110)
+ id 1kXeMy-0002rk-Id; Wed, 28 Oct 2020 01:51:38 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2303)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXeFh-0004uE-Si; Wed, 28 Oct 2020 01:44:08 -0400
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.55])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CLcvN2HVHz4xQk;
- Wed, 28 Oct 2020 13:44:00 +0800 (CST)
-Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
- DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Wed, 28 Oct 2020 13:43:56 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
- dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0487.000;
- Wed, 28 Oct 2020 13:43:47 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "clg@kaod.org" <clg@kaod.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, ganqixin <ganqixin@huawei.com>, Euler Robot
- <euler.robot@huawei.com>
-Subject: RE: [PATCH] target/ppc/excp_helper: Add a missing break for
- POWERPC_EXCP_HISI
-Thread-Topic: [PATCH] target/ppc/excp_helper: Add a missing break for
- POWERPC_EXCP_HISI
-Thread-Index: AQHWrOEhDVQBenQ31E2N25gfU+hXv6mr5Y4AgACauqA=
-Date: Wed, 28 Oct 2020 05:43:46 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA0AE06@dggemm531-mbx.china.huawei.com>
-References: <20201028041620.2168707-1-kuhn.chenqun@huawei.com>
- <20201028042758.GB5604@yekko.fritz.box>
-In-Reply-To: <20201028042758.GB5604@yekko.fritz.box>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ id 1kXeMw-0007hv-Gf; Wed, 28 Oct 2020 01:51:36 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CLd436Dr8zkZWS;
+ Wed, 28 Oct 2020 13:51:31 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
+ 13:51:17 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <david@gibson.dropbear.id.au>, <clg@kaod.org>,
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: [PATCH] target/ppc/excp_helper: Add a fallthrough for fix compiler
+ warning
+Date: Wed, 28 Oct 2020 13:51:07 +0800
+Message-ID: <20201028055107.2170401-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:43:58
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:18:54
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -65,52 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 05:44:09 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 05:51:38 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBEYXZpZCBHaWJzb24gW21haWx0
-bzpkYXZpZEBnaWJzb24uZHJvcGJlYXIuaWQuYXVdDQo+IFNlbnQ6IFdlZG5lc2RheSwgT2N0b2Jl
-ciAyOCwgMjAyMCAxMjoyOCBQTQ0KPiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBo
-dWF3ZWkuY29tPg0KPiBDYzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9u
-Z251Lm9yZzsgY2xnQGthb2Qub3JnOw0KPiBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxp
-YW5nQGh1YXdlaS5jb20+OyBnYW5xaXhpbg0KPiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47IEV1bGVy
-IFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIXSB0
-YXJnZXQvcHBjL2V4Y3BfaGVscGVyOiBBZGQgYSBtaXNzaW5nIGJyZWFrIGZvcg0KPiBQT1dFUlBD
-X0VYQ1BfSElTSQ0KPiANCj4gT24gV2VkLCBPY3QgMjgsIDIwMjAgYXQgMTI6MTY6MjBQTSArMDgw
-MCwgQ2hlbiBRdW4gd3JvdGU6DQo+ID4gV2hlbiB1c2luZyAtV2ltcGxpY2l0LWZhbGx0aHJvdWdo
-IGluIG91ciBDRkxBR1MsIHRoZSBjb21waWxlciBzaG93ZWQNCj4gd2FybmluZzoNCj4gPiAuLi90
-YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmM6IEluIGZ1bmN0aW9uIOKAmHBvd2VycGNfZXhjcOKAmToN
-Cj4gPiAuLi90YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmM6NTI5OjEzOiB3YXJuaW5nOiB0aGlzIHN0
-YXRlbWVudCBtYXkgZmFsbCB0aHJvdWdoDQo+IFstV2ltcGxpY2l0LWZhbGx0aHJvdWdoPV0NCj4g
-PiAgIDUyOSB8ICAgICAgICAgbXNyIHw9IGVudi0+ZXJyb3JfY29kZTsNCj4gPiAgICAgICB8ICAg
-ICAgICAgfn5+fl5+fn5+fn5+fn5+fn5+fn5+fg0KPiA+IC4uL3RhcmdldC9wcGMvZXhjcF9oZWxw
-ZXIuYzo1MzA6NTogbm90ZTogaGVyZQ0KPiA+ICAgNTMwIHwgICAgIGNhc2UgUE9XRVJQQ19FWENQ
-X0hERUNSOiAgICAgLyogSHlwZXJ2aXNvcg0KPiBkZWNyZW1lbnRlciBleGNlcHRpb24gICAgICAg
-ICAqLw0KPiA+ICAgICAgIHwgICAgIF5+fn4NCj4gPg0KPiA+IEEgYnJlYWsgc3RhdGVtZW50IG1h
-eSBiZSByZXF1aXJlZCB0byBlbnRlciB0aGlzIGV4Y2VwdGlvbi4NCj4gPg0KPiA+IFJlcG9ydGVk
-LWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+IA0KPiBUaGlzIGNoYW5n
-ZSBpcyBpbmNvcnJlY3QuICBXZSBkZWZpbml0ZWx5IG5lZWQgdGhlIGZhbGx0aHJvdWdoIHRvIHNl
-dCBzcnJbMDFdDQo+IHByb3Blcmx5LiAgU28gdGhlIGNvcnJlY3QgZml4IGlzIHRvIGFubm90YXRl
-IHRoZSBmYWxsdGhyb3VnaCwgbm90IHJlbW92ZSBpdC4NCj4gDQpPSywgSSdsbCBtb2RpZnkgaXQg
-bGF0ZXIuDQonDQpUaGFua3MsDQpDaGVuIFF1bg0KPiA+DQo+ID4gLS0tDQo+ID4gSSBndWVzcyB0
-aGVyZSdzIGEgYnJlYWsgbWlzc2luZyBpbiAnUE9XRVJQQ19FWENQX0hJU0knIGJyYW5jaCwganVz
-dA0KPiA+IGxpa2UgdGhlICdQT1dFUlBDX0VYQ1BfSVNJJyBicmFuY2guDQo+ID4gLS0tDQo+ID4g
-IHRhcmdldC9wcGMvZXhjcF9oZWxwZXIuYyB8IDEgKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS90YXJnZXQvcHBjL2V4Y3BfaGVscGVy
-LmMgYi90YXJnZXQvcHBjL2V4Y3BfaGVscGVyLmMgaW5kZXgNCj4gPiBhOTg4YmExNWY0Li41ZTY5
-YWMxYjMzIDEwMDY0NA0KPiA+IC0tLSBhL3RhcmdldC9wcGMvZXhjcF9oZWxwZXIuYw0KPiA+ICsr
-KyBiL3RhcmdldC9wcGMvZXhjcF9oZWxwZXIuYw0KPiA+IEBAIC01MjcsNiArNTI3LDcgQEAgc3Rh
-dGljIGlubGluZSB2b2lkIHBvd2VycGNfZXhjcChQb3dlclBDQ1BVICpjcHUsDQo+IGludCBleGNw
-X21vZGVsLCBpbnQgZXhjcCkNCj4gPiAgICAgICAgICBicmVhazsNCj4gPiAgICAgIGNhc2UgUE9X
-RVJQQ19FWENQX0hJU0k6ICAgICAgLyogSHlwZXJ2aXNvciBpbnN0cnVjdGlvbiBzdG9yYWdlDQo+
-IGV4Y2VwdGlvbiAqLw0KPiA+ICAgICAgICAgIG1zciB8PSBlbnYtPmVycm9yX2NvZGU7DQo+ID4g
-KyAgICAgICAgYnJlYWs7DQo+ID4gICAgICBjYXNlIFBPV0VSUENfRVhDUF9IREVDUjogICAgIC8q
-IEh5cGVydmlzb3IgZGVjcmVtZW50ZXINCj4gZXhjZXB0aW9uICAgICAgICAgKi8NCj4gPiAgICAg
-IGNhc2UgUE9XRVJQQ19FWENQX0hEU0k6ICAgICAgLyogSHlwZXJ2aXNvciBkYXRhIHN0b3JhZ2UN
-Cj4gZXhjZXB0aW9uICAgICAgICAqLw0KPiA+ICAgICAgY2FzZSBQT1dFUlBDX0VYQ1BfSERTRUc6
-ICAgICAvKiBIeXBlcnZpc29yIGRhdGEgc2VnbWVudA0KPiBleGNlcHRpb24gICAgICAgICovDQo+
-IA0KPiAtLQ0KPiBEYXZpZCBHaWJzb24JCQl8IEknbGwgaGF2ZSBteSBtdXNpYyBiYXJvcXVlLCBh
-bmQgbXkgY29kZQ0KPiBkYXZpZCBBVCBnaWJzb24uZHJvcGJlYXIuaWQuYXUJfCBtaW5pbWFsaXN0
-LCB0aGFuayB5b3UuICBOT1QgX3RoZV8NCj4gX290aGVyXw0KPiAJCQkJfCBfd2F5XyBfYXJvdW5k
-XyENCj4gaHR0cDovL3d3dy5vemxhYnMub3JnL35kZ2lic29uDQo=
+When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+../target/ppc/excp_helper.c: In function ‘powerpc_excp’:
+../target/ppc/excp_helper.c:529:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  529 |         msr |= env->error_code;
+      |         ~~~~^~~~~~~~~~~~~~~~~~
+../target/ppc/excp_helper.c:530:5: note: here
+  530 |     case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer exception         */
+      |     ^~~~
+
+Add the corresponding "fall through" comment to fix it.
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ target/ppc/excp_helper.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index a988ba15f4..c639516399 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -527,6 +527,7 @@ static inline void powerpc_excp(PowerPCCPU *cpu, int excp_model, int excp)
+         break;
+     case POWERPC_EXCP_HISI:      /* Hypervisor instruction storage exception */
+         msr |= env->error_code;
++        /* fall through */
+     case POWERPC_EXCP_HDECR:     /* Hypervisor decrementer exception         */
+     case POWERPC_EXCP_HDSI:      /* Hypervisor data storage exception        */
+     case POWERPC_EXCP_HDSEG:     /* Hypervisor data segment exception        */
+-- 
+2.23.0
+
 
