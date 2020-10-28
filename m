@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXmey-0004VE-Lj
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 10:42:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35950)
+	id 1kXmzx-0003rM-AY
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 11:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmex-0004UD-Gs
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 10:42:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:25889)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmzv-0003ox-RK
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:04:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53241)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmev-0001dy-WF
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 10:42:43 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXmzt-0004QA-Va
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 11:04:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603896160;
+ s=mimecast20190719; t=1603897461;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=aFCLjXrCbVDnSB06L+2FCYKJI5t/01be0QHHgg3oi1g=;
- b=OanMWsTPuA1FRCsGrN9EDJAd2v5w5H73BnoNZFPwr3J7VCWQ2ZmCJLyZyUKQjIu8tXUCir
- RJMbYHyKVMrwVsAl+R3PG9vwH505o9+mVGe8fWElr/IUiaagwJ5+ZSUTmav6ts0zC/6cDy
- UYPvfPuXXByR4atbqBu37mv7I8Trk14=
+ bh=oj/aVpU3hJ/jYV5Lahq3ffcVrrVbEq7LwrjB4I3XB80=;
+ b=KWBaS++n/k4Ufw0/6Z1x4XwGM86DVbuIhQrJAqZzfc43qAQbrjZkoVZmHGuOajy3NyQxho
+ Kkj9P9m/rip4R9oqRQVdEr75hIVERyiUDZECW0BkVC0jzMQ7qPvja4cN1OL3TPAW20w6aG
+ vLTO1GW/tVr0CfM3AcenChAjLj/bQcc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-406-FlTAmPSBOkKEqrV-egdI9g-1; Wed, 28 Oct 2020 10:42:36 -0400
-X-MC-Unique: FlTAmPSBOkKEqrV-egdI9g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-299-Fss2iCBrPbObAX4puLPK7Q-1; Wed, 28 Oct 2020 11:04:13 -0400
+X-MC-Unique: Fss2iCBrPbObAX4puLPK7Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1615B1DDFB;
- Wed, 28 Oct 2020 14:42:35 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B0F98C5741;
+ Wed, 28 Oct 2020 15:04:10 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-124.ams2.redhat.com [10.36.112.124])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E840B1974D;
- Wed, 28 Oct 2020 14:42:32 +0000 (UTC)
-Subject: Re: [PATCH 7/9] ppc: silence the compiler warnings
-To: David Gibson <david@gibson.dropbear.id.au>,
- Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-trivial@nongnu.org, Euler Robot <euler.robot@huawei.com>,
- qemu-devel@nongnu.org, ganqixin@huawei.com, zhang.zhanghailiang@huawei.com,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C85F6EF46;
+ Wed, 28 Oct 2020 15:04:07 +0000 (UTC)
+Subject: Re: [PATCH 9/9] hw/timer/renesas_tmr: silence the compiler warnings
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: ganqixin@huawei.com, Magnus Damm <magnus.damm@gmail.com>,
+ zhang.zhanghailiang@huawei.com, Euler Robot <euler.robot@huawei.com>
 References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
- <20201028042900.GC5604@yekko.fritz.box>
+ <20201028041819.2169003-10-kuhn.chenqun@huawei.com>
+ <9992abee-6af6-5fae-15f6-3039fca84e80@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <ddcb887d-42ec-2021-1785-a6fb0d13d6b9@redhat.com>
-Date: Wed, 28 Oct 2020 15:42:31 +0100
+Message-ID: <61ec3c46-f01e-c4ea-de28-a55507192ff3@redhat.com>
+Date: Wed, 28 Oct 2020 16:04:06 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201028042900.GC5604@yekko.fritz.box>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <9992abee-6af6-5fae-15f6-3039fca84e80@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -56,18 +56,18 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:51:10
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:50:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,51 +80,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 14:42:43 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 15:04:24 -0000
 
-On 28/10/2020 05.29, David Gibson wrote:
-> On Wed, Oct 28, 2020 at 12:18:17PM +0800, Chen Qun wrote:
+On 28/10/2020 10.59, Philippe Mathieu-Daudé wrote:
+> On 10/28/20 5:18 AM, Chen Qun wrote:
 >> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
->> hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
->> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
->>   118 |             if (level) {
->>       |                ^
->> hw/ppc/ppc.c:123:9: note: here
->>   123 |         case PPC6xx_INPUT_INT:
->>       |         ^~~~
+>> ../hw/timer/renesas_tmr.c: In function ‘tmr_read’:
+>> ../hw/timer/renesas_tmr.c:221:19: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>>   221 |         } else if (ch == 0) {i
+>>       |                   ^
+>> ../hw/timer/renesas_tmr.c:224:5: note: here
+>>   224 |     case A_TCORB:
+>>       |     ^~~~
 >>
 >> Add the corresponding "fall through" comment to fix it.
 >>
 >> Reported-by: Euler Robot <euler.robot@huawei.com>
 >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> 
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> 
 >> ---
->> Cc: David Gibson <david@gibson.dropbear.id.au>
+>> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+>> Cc: Magnus Damm <magnus.damm@gmail.com>
 >> ---
->>  hw/ppc/ppc.c | 1 +
+>>  hw/timer/renesas_tmr.c | 1 +
 >>  1 file changed, 1 insertion(+)
 >>
->> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
->> index 4a11fb1640..f9eb8f21b4 100644
->> --- a/hw/ppc/ppc.c
->> +++ b/hw/ppc/ppc.c
->> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
->>              } else {
->>                  cpu_ppc_tb_stop(env);
->>              }
->> +            /* fall through */
->>          case PPC6xx_INPUT_INT:
->>              /* Level sensitive - active high */
->>              LOG_IRQ("%s: set the external IRQ state to %d\n",
+>> diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
+>> index 446f2eacdd..e03a8155b2 100644
+>> --- a/hw/timer/renesas_tmr.c
+>> +++ b/hw/timer/renesas_tmr.c
+>> @@ -221,6 +221,7 @@ static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
+>>          } else if (ch == 0) {
+>>              return concat_reg(tmr->tcora);
+>>          }
+>> +        /* fall through */
+>>      case A_TCORB:
+>>          if (size == 1) {
+>>              return tmr->tcorb[ch];
+>>
 > 
+> You fixed A_TCORA but not A_TCORB...
 
-Is that fall through actually really the right thing to do here? I'd rather
-expect to see a PPC_INTERRUPT_DECR instead of a PPC_INTERRUPT_EXT in case
-someone messes with the TBEN pin? So I assume this is likely rather bug and
-we should a "break" statement here instead?
+A_TCORB cannot fall through, since it always does a "return" in both
+branches of the if-statement.
 
- Thomas
+However, it also looks really odd that A_TCORA falls through to A_TCORB here
+and return that register value instead. Is this really intended? Yoshinori,
+could you please double-check whether this is a bug here, or intended?
+
+ Thanks,
+  Thomas
 
 
