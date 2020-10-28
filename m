@@ -1,71 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXrw9-0003EK-9f
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 16:20:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51506)
+	id 1kXsUz-0006yZ-NU
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 16:56:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kXrw8-0003DQ-Gd
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:20:48 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:35933)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kXrw6-00086m-1A
- for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:20:48 -0400
-Received: by mail-ej1-x643.google.com with SMTP id w27so753606ejb.3
- for <qemu-trivial@nongnu.org>; Wed, 28 Oct 2020 13:20:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
- b=PqR4TcuFyFPdv7NBat1OGiwnQbiMl8+Zgcl28nvfnRFFF4toZoYWuLcdT7cMFCLtg+
- oWNhbh8dn7bRSH3N2yz372qiO4K2N3Zg1mQLgHEM2Fwg5/m+CNBPlAJrQEAHZZ7nBwr3
- QcTXLHKQZzJxJaXQgHhwlWkJBBntlgXqtMV76BCIzuWAwGNarev3x1KmRJWoA+phvP5N
- EiLuFmrrpSa2rbTuzW7pMKlljFg/IQaCLvIGrcpLm2co2TuYV3KPozEYXdf/x3bY8lCN
- 4sQTHCvVvo1EueYw4TcyjERmJa+8O3kNAXfFwkldA99HLvl/Axea6d3QZufA0xWASKiZ
- ZJxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
- b=ICwwnt3XDhadGWaivnGJEx9F7nZU4WFZ86Nlm53ztZdyQLJBdOjRJczXKyMkeEHpzt
- qicLKUv8PxUkylvSn4ABcjUdC5SV5jhLupstmNpdk2y6mQe0N/rQLiyFS/N2RTnWDR8B
- U/J+tTAdDYGOGTEChkdhSZQAnvtZFwU8whaptWUeiK1osHJV1isL7zHX4AQrCkt8Awg3
- 0bO4xsRvwnnHrGo/bWdrkiKaj5pyOl/Lj/z9RmTx/YX5ddxBzLyZES1vC9zHzOEvtE5S
- W2FGkJ81D5ozEEGAVX139oY1WDnSPrmdReRjDJSUoFR58XW5xng9RyAmgTo6t3CBOLLJ
- qDXw==
-X-Gm-Message-State: AOAM533CIfRyjNTcp0EgZRcjwGq425ASueHZu0KuEWhzXH40QY5PHIgF
- BHNyOCQZqy+xC4AAuw5XKKYr15u6E/bT5VZ7lkX8NA==
-X-Google-Smtp-Source: ABdhPJyIxE8Q+B6NPFRsCYrd7clF5G4OgDb48xnZMGkC97UHIrxT1DNg9zptazjf2X6CozB4Z0RvnlGiG5WmJ8YrrN4=
-X-Received: by 2002:a17:906:3b59:: with SMTP id
- h25mr912983ejf.56.1603916444230; 
- Wed, 28 Oct 2020 13:20:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXsUx-0006xA-PE
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:56:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32743)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kXsUs-0004bv-Jh
+ for qemu-trivial@nongnu.org; Wed, 28 Oct 2020 16:56:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603918600;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Nbju9wvpFHvGtSNtcdQyfREsNeYR0h+o55WEJg+slig=;
+ b=iHXNkR9mtHWyY/ktqCrQYFZNywG6Tsk7X4GJugouAGKbtI9eYXxRnkmyH9zrEVOWhqBMev
+ w1Lif5wijAGa+q17zq8GebonNBLKes7eo8RWPZq0U2Y4Z1b+LS5ARFSgIwU9DYwHTrGDMe
+ nUKR0ejT6Df51rxqZVZfDs3Tzw1ToAA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-318-6Q1x66ohNWa6T1suw-VYKw-1; Wed, 28 Oct 2020 16:56:33 -0400
+X-MC-Unique: 6Q1x66ohNWa6T1suw-VYKw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F0FB1007464;
+ Wed, 28 Oct 2020 20:56:32 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-124.ams2.redhat.com [10.36.112.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B6CAA5C1D0;
+ Wed, 28 Oct 2020 20:56:31 +0000 (UTC)
+Subject: Re: [PATCH] MAINTAINERS: update my email address
+To: Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20201027060253.353054-1-michael.roth@amd.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <eea1f171-5e62-f241-be13-53c44fc4987f@redhat.com>
+Date: Wed, 28 Oct 2020 21:56:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 28 Oct 2020 20:20:33 +0000
-Message-ID: <CAFEAcA9uyKHO06aZaKSZefpq_eXs12E+AzHHNbL+=amcfq66Cg@mail.gmail.com>
-Subject: Re: [PATCH 2/9] hw/intc/arm_gicv3_kvm: silence the compiler warnings
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20201027060253.353054-1-michael.roth@amd.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 01:51:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.921, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,72 +75,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Oct 2020 20:20:48 -0000
+X-List-Received-Date: Wed, 28 Oct 2020 20:56:48 -0000
 
-On Wed, 28 Oct 2020 at 04:19, Chen Qun <kuhn.chenqun@huawei.com> wrote:
->
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
-ing:
-> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_put=E2=80=99:
-> hw/intc/arm_gicv3_kvm.c:484:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:485:9: note: here
->          default:
->          ^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:495:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:496:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:498:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:499:9: note: here
->          default:
->          ^~~~~~~
->
-> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_get=E2=80=99:
-> hw/intc/arm_gicv3_kvm.c:634:37: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G0][2] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:635:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:637:37: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G0][1] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:638:9: note: here
->          default:
->          ^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:648:39: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G1NS][2] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:649:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:651:39: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G1NS][1] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:652:9: note: here
->          default:
->          ^~~~~~~
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+On 27/10/2020 07.02, Michael Roth wrote:
+> I've recently switched employers and the current email address is out
+> of date.
+> 
+> Signed-off-by: Michael Roth <michael.roth@amd.com>
+> ---
+>  MAINTAINERS | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index ef6f5c7399..c72af7c2f5 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2395,7 +2395,7 @@ F: scripts/simplebench/
+>  
+>  QAPI
+>  M: Markus Armbruster <armbru@redhat.com>
+> -M: Michael Roth <mdroth@linux.vnet.ibm.com>
+> +M: Michael Roth <michael.roth@amd.com>
+>  S: Supported
+>  F: qapi/
+>  X: qapi/*.json
+> @@ -2439,7 +2439,7 @@ F: tests/data/qobject/qdict.txt
+>  T: git https://repo.or.cz/qemu/armbru.git qapi-next
+>  
+>  QEMU Guest Agent
+> -M: Michael Roth <mdroth@linux.vnet.ibm.com>
+> +M: Michael Roth <michael.roth@amd.com>
+>  S: Maintained
+>  F: qga/
+>  F: docs/interop/qemu-ga.rst
+> 
 
-Yep, these are all intentionall fallthrough.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 
