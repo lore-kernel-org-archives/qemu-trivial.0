@@ -1,54 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kY9Tz-0000Zm-8h
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 11:04:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33350)
+	id 1kYB04-0002K4-G8
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 12:42:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kY9Tw-0000Ut-Jj; Thu, 29 Oct 2020 11:04:52 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:35245)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kY9Tu-0002gU-Aw; Thu, 29 Oct 2020 11:04:52 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.118])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id BE12E6FAE2F0;
- Thu, 29 Oct 2020 16:04:46 +0100 (CET)
-Received: from kaod.org (37.59.142.104) by DAG8EX1.mxp5.local (172.16.2.71)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 29 Oct
- 2020 16:04:46 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R005d8c8a92c-bed4-48f7-bc82-cd24f4e669c8,
- E5CD8EB7A660BD10DDB00AFD0F9198C3FA657B0B) smtp.auth=groug@kaod.org
-Date: Thu, 29 Oct 2020 16:04:44 +0100
-From: Greg Kurz <groug@kaod.org>
-To: jokenzhang <zhangxinhao1@huawei.com>
-CC: <qemu-devel@nongnu.org>, <qemu_oss@crudebyte.com>, <dengkai1@huawei.com>, 
- <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH v2 1/3] hw/9pfs : add spaces around operator
-Message-ID: <20201029160444.0d2068f4@bahia.lan>
-In-Reply-To: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
-References: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1kYAzz-0002In-R1; Thu, 29 Oct 2020 12:42:03 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43258)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1kYAzx-0007I6-Ew; Thu, 29 Oct 2020 12:42:03 -0400
+Received: by mail-ot1-x343.google.com with SMTP id a6so2894336otp.10;
+ Thu, 29 Oct 2020 09:42:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6IPaBIQVWrpxrg8zLG4HtnydJbP3ZNQy8OL8nvM/4/A=;
+ b=pylDyyzOnZ5WC4Y4HzGpSoVyrsogelFAnYCZX9bRsQVn0OPexQJXEKntzswbienjAo
+ 8cSz9jgZAs3hn7spWvveiWLxc4yuhxj70ZHkYDZ/OkSdRmrmDBOYrw1EtGzRIuNbUdYT
+ KSpKbJK37x0U86OJkpmlZ8HvZJ+PW14zUk7hDCTCp5Fcyx3I6q8eXOdz32wYGjTR9SWE
+ zT+X4NP20wHyOSPRMegRtfbqnx9rds2GVvsr8pjyAlx37FhSQPoMTdWJ0guwCs+mpHdh
+ VwXY57EBUHnDthGw2bIFWpNuLd/rewVwxlxQULgNHue/bTuF444fVPPiMRONvFLV9fLO
+ N0Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6IPaBIQVWrpxrg8zLG4HtnydJbP3ZNQy8OL8nvM/4/A=;
+ b=ovgmQewxSKYW8/l9+NJ9OhgP9aIDaPAofHjF9BLfxOM1iAo3LTBP4gO0ZSKXrgIj3E
+ 4BB1F+mntAVv+tqybuMS6mos2nHXJydsHD0JUtsNRE6afyIq5Py+X7bemkfCqw2L5fFt
+ lD3tDQG+2tuRJsNrUODQaPPDh5lclfUtzfYAHobJLqdfWy/rCMo/wgQe2bKjgL3wyCjf
+ OV2OczaCUTsTRCbZIkkxvNGBP9VsojAldF85AJyfiyAN+Xswrf+FrfxSW4+fazStcLUa
+ ajq8NBKf8Cgak7h7lOdVjFHxYbms701pK6k3hVdI9q890o2f79dLfRqjZ0R6tPqmpjS7
+ pvTw==
+X-Gm-Message-State: AOAM531b9YapvukmWqlHKi3AMJ3Dvj9NfzVDSX4sSqPN0ehtK7iSOhE1
+ lfqe8yaMS3x379BjMh7rsGzVAdNBNHoW+Vt42LE=
+X-Google-Smtp-Source: ABdhPJwwvz2WJwb/qfo8x7Qy0TGETK+e4QrMyJ5OMmCmHgGHGg9+3wism68U+mqPRB1rMx5DxRjZST3UZCmIfJNy0iQ=
+X-Received: by 2002:a9d:57c3:: with SMTP id q3mr3669316oti.326.1603989719708; 
+ Thu, 29 Oct 2020 09:41:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG8EX1.mxp5.local
- (172.16.2.71)
-X-Ovh-Tracer-GUID: 56680943-3b48-4745-ab7a-5d1628b86e89
-X-Ovh-Tracer-Id: 15712496152762489126
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrleefgdejvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=groug@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 11:04:47
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <5F997B84.9040900@huawei.com> <5F9A5B48.9030509@huawei.com>
+In-Reply-To: <5F9A5B48.9030509@huawei.com>
+From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
+Date: Thu, 29 Oct 2020 12:41:48 -0400
+Message-ID: <CAFubqFsRFh0rV3j8DS7bym-P_JHZdkuH5dyGJskKFLgQUbGABA@mail.gmail.com>
+Subject: Re: [PATCH V2] vhost-user-blk/scsi: Fix broken error handling for
+ socket call
+To: AlexChen <alex.chen@huawei.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=raphael.s.norwitz@gmail.com; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,120 +70,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 15:04:53 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 16:42:05 -0000
 
-On Thu, 29 Oct 2020 22:26:17 +0800
-jokenzhang <zhangxinhao1@huawei.com> wrote:
-
-> Fix code style. Operator needs spaces both sides.
-> 
-> Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
-
-jokenzhang really looks like a computer username or nick, which isn't an
-appropriate way to sign one's work.
-
-Quoting a comment from Eric Blake on a recent patch that had a similar flaw:
-
-It's preferred to have Signed-off-by tags use a rendering of a legal
-name rather than a mere computer username.  Whether that is just a
-westernized form of your name, or you use native characters, or even
-both spellings side-by-side, is up to you (see commit d7d26226b for an
-example of the latter).
-
-With that fixed, you can add my r-b for all three patches.
-
-Reviewed-by: Greg Kurz <groug@kaod.org>
-
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+On Thu, Oct 29, 2020 at 2:04 AM AlexChen <alex.chen@huawei.com> wrote:
+>
+> When socket() fails, it returns -1, 0 is the normal return value and should not return error.
+>
 > Reported-by: Euler Robot <euler.robot@huawei.com>
-> ---
->  hw/9pfs/9p-local.c | 10 +++++-----
->  hw/9pfs/9p.c       | 16 ++++++++--------
->  2 files changed, 13 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-> index 3107637209..af52c1daac 100644
-> --- a/hw/9pfs/9p-local.c
-> +++ b/hw/9pfs/9p-local.c
-> @@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const char *name,
->      memset(buf, 0, ATTR_MAX);
->      while (fgets(buf, ATTR_MAX, fp)) {
->          if (!strncmp(buf, "virtfs.uid", 10)) {
-> -            stbuf->st_uid = atoi(buf+11);
-> +            stbuf->st_uid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.gid", 10)) {
-> -            stbuf->st_gid = atoi(buf+11);
-> +            stbuf->st_gid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.mode", 11)) {
-> -            stbuf->st_mode = atoi(buf+12);
-> +            stbuf->st_mode = atoi(buf + 12);
->          } else if (!strncmp(buf, "virtfs.rdev", 11)) {
-> -            stbuf->st_rdev = atoi(buf+12);
-> +            stbuf->st_rdev = atoi(buf + 12);
->          }
->          memset(buf, 0, ATTR_MAX);
->      }
-> @@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
->          if (fd == -1) {
->              goto out;
->          }
-> -        credp->fc_mode = credp->fc_mode|S_IFREG;
-> +        credp->fc_mode = credp->fc_mode | S_IFREG;
->          if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
->              /* Set cleint credentials in xattr */
->              err = local_set_xattrat(dirfd, name, credp);
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index 741d222c3f..94df440fc7 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString *extension)
->          }
->      }
->  
-> -    if (!(ret&~0777)) {
-> +    if (!(ret & ~0777)) {
->          ret |= S_IFREG;
->      }
->  
-> @@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
->          v9fs_path_unlock(s);
->      } else {
->          err = v9fs_co_open2(pdu, fidp, &name, -1,
-> -                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
-> +                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
->          if (err < 0) {
->              goto out;
->          }
-> @@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
->       * compute bsize factor based on host file system block size
->       * and client msize
->       */
-> -    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
-> +    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
->      if (!bsize_factor) {
->          bsize_factor = 1;
->      }
-> @@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
->       * adjust(divide) the number of blocks, free blocks and available
->       * blocks by bsize factor
->       */
-> -    f_blocks = stbuf->f_blocks/bsize_factor;
-> -    f_bfree  = stbuf->f_bfree/bsize_factor;
-> -    f_bavail = stbuf->f_bavail/bsize_factor;
-> +    f_blocks = stbuf->f_blocks / bsize_factor;
-> +    f_bfree  = stbuf->f_bfree / bsize_factor;
-> +    f_bavail = stbuf->f_bavail / bsize_factor;
->      f_files  = stbuf->f_files;
->      f_ffree  = stbuf->f_ffree;
->      fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
-> @@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__)) v9fs_set_fd_limit(void)
->          error_report("Failed to get the resource limit");
->          exit(1);
->      }
-> -    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
-> -    open_fd_rc = rlim.rlim_cur/2;
-> +    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
-> +    open_fd_rc = rlim.rlim_cur / 2;
->  }
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
 
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+
+
+> ---
+>  contrib/vhost-user-blk/vhost-user-blk.c   | 2 +-
+>  contrib/vhost-user-scsi/vhost-user-scsi.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
+> index 25eccd02b5..40a2dfc544 100644
+> --- a/contrib/vhost-user-blk/vhost-user-blk.c
+> +++ b/contrib/vhost-user-blk/vhost-user-blk.c
+> @@ -474,7 +474,7 @@ static int unix_sock_new(char *unix_fn)
+>      assert(unix_fn);
+>
+>      sock = socket(AF_UNIX, SOCK_STREAM, 0);
+> -    if (sock <= 0) {
+> +    if (sock < 0) {
+>          perror("socket");
+>          return -1;
+>      }
+> diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> index 3c912384e9..0f9ba4b2a2 100644
+> --- a/contrib/vhost-user-scsi/vhost-user-scsi.c
+> +++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> @@ -320,7 +320,7 @@ static int unix_sock_new(char *unix_fn)
+>      assert(unix_fn);
+>
+>      sock = socket(AF_UNIX, SOCK_STREAM, 0);
+> -    if (sock <= 0) {
+> +    if (sock < 0) {
+>          perror("socket");
+>          return -1;
+>      }
+> --
+> 2.19.1
+>
 
