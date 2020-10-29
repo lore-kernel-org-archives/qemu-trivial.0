@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kXvx2-0000GV-2B
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 20:38:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33378)
+	id 1kXxaj-0003zB-1k
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Oct 2020 22:23:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXvww-0000Co-J3; Wed, 28 Oct 2020 20:37:54 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:35627)
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kXxag-0003yG-8K; Wed, 28 Oct 2020 22:23:02 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2306)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kXvwt-0000yg-1l; Wed, 28 Oct 2020 20:37:53 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CM63R0MW0z9sTr; Thu, 29 Oct 2020 11:37:39 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1603931859;
- bh=azraLuprZ5AORMP7clpuyB6bLghQnLorCzcmGs/9tsw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=f9Qn1FTBJVWcbYh/WR0JA26qVjL7hHAPqaoyIAxfLaL1s4Vgdh9gt4Tb6UPZ43bLF
- qzdqKmDy16s9bBzfvl0Kt45xYGBFI50gMUq2JonA7wRTdlIAM09gFwcSVHQB2O874p
- 9HJGZnPvTgnfUFhkTBOsZS1A/HBil2bO9G4oG+bA=
-Date: Thu, 29 Oct 2020 10:38:35 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Chen Qun <kuhn.chenqun@huawei.com>, qemu-trivial@nongnu.org,
- Euler Robot <euler.robot@huawei.com>, qemu-devel@nongnu.org,
- ganqixin@huawei.com, zhang.zhanghailiang@huawei.com,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
-Subject: Re: [PATCH 7/9] ppc: silence the compiler warnings
-Message-ID: <20201028233835.GG5604@yekko.fritz.box>
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-8-kuhn.chenqun@huawei.com>
- <20201028042900.GC5604@yekko.fritz.box>
- <ddcb887d-42ec-2021-1785-a6fb0d13d6b9@redhat.com>
+ (Exim 4.90_1) (envelope-from <zhaolichang@huawei.com>)
+ id 1kXxad-0006LJ-EY; Wed, 28 Oct 2020 22:23:01 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CM8Nk0CZmzkb7k;
+ Thu, 29 Oct 2020 10:22:46 +0800 (CST)
+Received: from [10.174.186.238] (10.174.186.238) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 29 Oct 2020 10:22:42 +0800
+Subject: Re: [PATCH V2 00/14] fix some comment spelling errors
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+CC: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Laurent Vivier <laurent@vivier.eu>
+References: <20201009064449.2336-1-zhaolichang@huawei.com>
+ <a5a68476-0ed8-08f9-f993-464317d798bf@huawei.com>
+ <CAAdtpL5HZzb+_gAyNGQfM1N7vBxmLck2TXiGohv9D9dgO16cRw@mail.gmail.com>
+From: Lichang Zhao <zhaolichang@huawei.com>
+Message-ID: <67ce4e9b-703d-8639-e223-a0e77e54e5cc@huawei.com>
+Date: Thu, 29 Oct 2020 10:22:42 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="2NLGdgz3UMHa/lqP"
-Content-Disposition: inline
-In-Reply-To: <ddcb887d-42ec-2021-1785-a6fb0d13d6b9@redhat.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <CAAdtpL5HZzb+_gAyNGQfM1N7vBxmLck2TXiGohv9D9dgO16cRw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.186.238]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhaolichang@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 22:22:46
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.921,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,93 +57,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 00:37:56 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 02:23:02 -0000
+
+Thank you very much. But I don't know how to do that. Can you help me?
+By the way, this series of patches have been reviewed and four of them have been applied. Can you help me to apply the rest?
 
 
---2NLGdgz3UMHa/lqP
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Oct 28, 2020 at 03:42:31PM +0100, Thomas Huth wrote:
-> On 28/10/2020 05.29, David Gibson wrote:
-> > On Wed, Oct 28, 2020 at 12:18:17PM +0800, Chen Qun wrote:
-> >> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed w=
-arning:
-> >> hw/ppc/ppc.c: In function =E2=80=98ppc6xx_set_irq=E2=80=99:
-> >> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimpli=
-cit-fallthrough=3D]
-> >>   118 |             if (level) {
-> >>       |                ^
-> >> hw/ppc/ppc.c:123:9: note: here
-> >>   123 |         case PPC6xx_INPUT_INT:
-> >>       |         ^~~~
-> >>
-> >> Add the corresponding "fall through" comment to fix it.
-> >>
-> >> Reported-by: Euler Robot <euler.robot@huawei.com>
-> >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> >=20
-> > Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> >=20
-> >> ---
-> >> Cc: David Gibson <david@gibson.dropbear.id.au>
-> >> ---
-> >>  hw/ppc/ppc.c | 1 +
-> >>  1 file changed, 1 insertion(+)
-> >>
-> >> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-> >> index 4a11fb1640..f9eb8f21b4 100644
-> >> --- a/hw/ppc/ppc.c
-> >> +++ b/hw/ppc/ppc.c
-> >> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, =
-int level)
-> >>              } else {
-> >>                  cpu_ppc_tb_stop(env);
-> >>              }
-> >> +            /* fall through */
-> >>          case PPC6xx_INPUT_INT:
-> >>              /* Level sensitive - active high */
-> >>              LOG_IRQ("%s: set the external IRQ state to %d\n",
-> >=20
->=20
-> Is that fall through actually really the right thing to do here? I'd rath=
-er
-> expect to see a PPC_INTERRUPT_DECR instead of a PPC_INTERRUPT_EXT in case
-> someone messes with the TBEN pin? So I assume this is likely rather bug a=
-nd
-> we should a "break" statement here instead?
-
-Oh.. good catch, I think I misread this.  I thought the change was
-correct, because DECRs look somewhat like external interrupts.  But
-this is TBEN, not a DECR interrupt per se.  So, yes, I think this was
-a bug and it should be a break instead.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---2NLGdgz3UMHa/lqP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+aAPgACgkQbDjKyiDZ
-s5L0Zg/9H66EWh7BUIZMOR8b7po1ImYycuFZ+YZ/VBmSQU0G1qUZUnucFiFW9IxC
-GgNIkI7INJ+F6900usbJ8NpYTg2vhf9HV3RJGf48FS29zuPfdOT1ywrB0Te4EBun
-fjVxHBvKmYjf/iqcBIS3WHfItG6SZ/xBQWCmVEEQ2kjzOEJcjlTVBGzUNCsAocrK
-mxwD9KTkBZzkbn0a81qdCXXzh0RfoUfN24ERroAlDUXuxXXMNG+kO7j3UnQLTker
-r84vuU04J3xxGh1ZdzYzX839kPE0wCCjuuYIijEHeqB+pzea3w8Pq+DiKtMPC+q8
-i8NK0oTA6x4dx9H6E4SGH9/7HzTEy5Iab16+xeRTZwaB60MkwByHlOEikIbP3Axa
-lVO+3hjpzeGYKuy9f2lYcojfbiaODCTKjjVJeCfEnCoel6FneTFEoqLFShCVS9rH
-3ACkfBQy+tGx6GrLQNhSPvm1gZymmhcRsCL0Cmfoja04JZ4ig+VK+aTHlHaF+6bC
-BUrcNtjR93sSED5DULcZ50wY9tcWxCLv2FABtSLHdJ2hJc6v5QUlUhzasW2V5HTC
-wfKQSMPgU0CkW8pQk8d/B+EGjswkdgyHTiPykxT/y9MvL6fQ4S9zGTwgKuQGuyo9
-DMUGCR0HiANkVw+z3OqcFZ7XNXe1UAqZx8KL6zEDx/qgkh67msA=
-=LH4S
------END PGP SIGNATURE-----
-
---2NLGdgz3UMHa/lqP--
+On 2020/10/20 14:42, Philippe Mathieu-Daudé wrote:
+> You forgot to Cc qemu-devel@.
+> 
+> (See https://wiki.qemu.org/Contribute/SubmitAPatch#CC_the_relevant_maintainer)
+> 
+> On Tue, Oct 20, 2020 at 4:46 AM Lichang Zhao <zhaolichang@huawei.com> wrote:
+> 
+> Now your name is properly displayed, so I assume you finally ran:
+> 
+> $ git config user.name "Lichang Zhao".
+> 
+> To fix how your name is displayed in your previous contributions,
+> consider sending this patch:
+> 
+> -- >8 --
+> diff --git a/.mailmap b/.mailmap
+> index 663819fb017..a56c5ba5ee1 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -113,6 +113,7 @@ Liu Yu <yu.liu@freescale.com>
+> Liu Yu <Yu.Liu@freescale.com>
+> Li Zhang <zhlcindy@gmail.com>
+> Li Zhang <zhlcindy@linux.vnet.ibm.com>
+> +Lichang Zhao <zhaolichang@huawei.com>
+> Lluís Vilanova <vilanova@ac.upc.edu>
+> Lluís Vilanova <xscript@gmx.net>
+> Longpeng (Mike) <longpeng2@huawei.com>
+> 
+> ---
+> 
+> (or Ack-by it here and I'll send it).
+> 
+>>
+>> On 2020/10/9 14:44, zhaolichang wrote:
+>>> I found that there are many spelling errors in the comments of qemu/target/.
+>>>
+>>> I used spellcheck to check the spelling errors and found some errors in the folder.
+>>>
+>>>
+>>>
+>>> The checkpatch.pl file in the Linux kernel can check spelling errors in patches.
+>>>
+>>> I'm trying to add this function to the checkpatch.pl in qemu,
+>>>
+>>> so that no similar spelling errors will occur in the feture.
+>>>
+>>> It's not done yet and I will commit the patch when it's done.
+>>>
+>>>
+>>>
+>>> v1 -> v2:
+>>>
+>>>   add reviewed-by for patch
+>>>
+>>>
+>>>
+>>> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+>>>
+>>
+>> ping
+>> This series of patches have been reviewed. Can you help me to pull them?
+>>
+> .
+> 
 
