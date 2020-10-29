@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kY8DT-0003MX-NQ
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 09:43:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42134)
+	id 1kY8tx-0004UJ-Ti
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 10:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kY8DS-0003Ip-37; Thu, 29 Oct 2020 09:43:46 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2308)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kY8tw-0004PH-1Y; Thu, 29 Oct 2020 10:27:40 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2312)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kY8DP-0000Nk-Mu; Thu, 29 Oct 2020 09:43:45 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMRVJ0jfZzkbrF;
- Thu, 29 Oct 2020 21:43:36 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 29 Oct 2020 21:43:27 +0800
-Message-ID: <5F9AC6FF.4000301@huawei.com>
-Date: Thu, 29 Oct 2020 21:43:27 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kY8tt-00064C-MV; Thu, 29 Oct 2020 10:27:39 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMST02y61zkc5K;
+ Thu, 29 Oct 2020 22:27:32 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Thu, 29 Oct 2020
+ 22:27:22 +0800
+From: jokenzhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu_oss@crudebyte.com>, <groug@kaod.org>, <dengkai1@huawei.com>,
+ <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: [PATCH v2 2/3] hw/9pfs : open brace '{' following struct go on the
+ same line
+Date: Thu, 29 Oct 2020 22:26:18 +0800
+Message-ID: <20201029142619.1309649-2-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
+In-Reply-To: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
+References: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
 MIME-Version: 1.0
-To: <yuval.shaia.ml@gmail.com>, <marcel.apfelbaum@gmail.com>,
- <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-CC: QEMU <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>, <zhengchuan@huawei.com>
-Subject: [PATCH] contrib/rdmacm-mux: Fix error condition in
- hash_tbl_search_fd_by_ifid()
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga04-in.huawei.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 09:43:35
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
@@ -53,31 +53,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 13:43:46 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 14:27:40 -0000
 
-When fd is not found according to ifid, the _hash_tbl_search_fd_by_ifid()
-returns 0 and assigns the result to *fd, so We have to check that *fd is 0,
-not that fd is 0.
+Fix code style. Open braces for struct should go on the same line.
 
+Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
+Signed-off-by: Kai Deng <dengkai1@huawei.com>
 Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: AlexChen <alex.chen@huawei.com>
 ---
- contrib/rdmacm-mux/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/9pfs/9p.h | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/contrib/rdmacm-mux/main.c b/contrib/rdmacm-mux/main.c
-index bd82abbad3..771ca01e03 100644
---- a/contrib/rdmacm-mux/main.c
-+++ b/contrib/rdmacm-mux/main.c
-@@ -186,7 +186,7 @@ static int hash_tbl_search_fd_by_ifid(int *fd, __be64 *gid_ifid)
-     *fd = _hash_tbl_search_fd_by_ifid(gid_ifid);
-     pthread_rwlock_unlock(&server.lock);
-
--    if (!fd) {
-+    if (!*fd) {
-         syslog(LOG_WARNING, "Can't find matching for ifid 0x%llx\n", *gid_ifid);
-         return -ENOENT;
-     }
+diff --git a/hw/9pfs/9p.h b/hw/9pfs/9p.h
+index 3dd1b50b1a..32df81f360 100644
+--- a/hw/9pfs/9p.h
++++ b/hw/9pfs/9p.h
+@@ -143,8 +143,7 @@ typedef struct {
+  */
+ QEMU_BUILD_BUG_ON(sizeof(P9MsgHeader) != 7);
+ 
+-struct V9fsPDU
+-{
++struct V9fsPDU {
+     uint32_t size;
+     uint16_t tag;
+     uint8_t id;
+@@ -270,8 +269,7 @@ union V9fsFidOpenState {
+     void *private;
+ };
+ 
+-struct V9fsFidState
+-{
++struct V9fsFidState {
+     int fid_type;
+     int32_t fid;
+     V9fsPath path;
+@@ -338,8 +336,7 @@ typedef struct {
+     uint64_t path;
+ } QpfEntry;
+ 
+-struct V9fsState
+-{
++struct V9fsState {
+     QLIST_HEAD(, V9fsPDU) free_list;
+     QLIST_HEAD(, V9fsPDU) active_list;
+     V9fsFidState *fid_list;
 -- 
-2.19.1
+2.29.0-rc1
+
 
