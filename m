@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kY8tz-0004Ys-Gv
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 10:27:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52194)
+	id 1kY9Tz-0000Zm-8h
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 11:04:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kY8tx-0004TF-Eq; Thu, 29 Oct 2020 10:27:41 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2310)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1kY9Tw-0000Ut-Jj; Thu, 29 Oct 2020 11:04:52 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:35245)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kY8tv-00064B-LE; Thu, 29 Oct 2020 10:27:41 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMST02pQSzkc54;
- Thu, 29 Oct 2020 22:27:32 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Thu, 29 Oct 2020
- 22:27:23 +0800
-From: jokenzhang <zhangxinhao1@huawei.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu_oss@crudebyte.com>, <groug@kaod.org>, <dengkai1@huawei.com>,
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1kY9Tu-0002gU-Aw; Thu, 29 Oct 2020 11:04:52 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.118])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id BE12E6FAE2F0;
+ Thu, 29 Oct 2020 16:04:46 +0100 (CET)
+Received: from kaod.org (37.59.142.104) by DAG8EX1.mxp5.local (172.16.2.71)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 29 Oct
+ 2020 16:04:46 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R005d8c8a92c-bed4-48f7-bc82-cd24f4e669c8,
+ E5CD8EB7A660BD10DDB00AFD0F9198C3FA657B0B) smtp.auth=groug@kaod.org
+Date: Thu, 29 Oct 2020 16:04:44 +0100
+From: Greg Kurz <groug@kaod.org>
+To: jokenzhang <zhangxinhao1@huawei.com>
+CC: <qemu-devel@nongnu.org>, <qemu_oss@crudebyte.com>, <dengkai1@huawei.com>, 
  <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH v2 3/3] hw/9pfs : add space before the open parenthesis '('
-Date: Thu, 29 Oct 2020 22:26:19 +0800
-Message-ID: <20201029142619.1309649-3-zhangxinhao1@huawei.com>
-X-Mailer: git-send-email 2.29.0-rc1
+Subject: Re: [PATCH v2 1/3] hw/9pfs : add spaces around operator
+Message-ID: <20201029160444.0d2068f4@bahia.lan>
 In-Reply-To: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
 References: <20201029142619.1309649-1-zhangxinhao1@huawei.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 09:43:35
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG8EX1.mxp5.local
+ (172.16.2.71)
+X-Ovh-Tracer-GUID: 56680943-3b48-4745-ab7a-5d1628b86e89
+X-Ovh-Tracer-Id: 15712496152762489126
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrleefgdejvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecunecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=groug@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 11:04:47
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,31 +62,120 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 14:27:42 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 15:04:53 -0000
 
-Fix code style. Space required before the open parenthesis '('.
+On Thu, 29 Oct 2020 22:26:17 +0800
+jokenzhang <zhangxinhao1@huawei.com> wrote:
 
-Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
-Signed-off-by: Kai Deng <dengkai1@huawei.com>
-Reported-by: Euler Robot <euler.robot@huawei.com>
----
- hw/9pfs/cofs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Fix code style. Operator needs spaces both sides.
+> 
+> Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
 
-diff --git a/hw/9pfs/cofs.c b/hw/9pfs/cofs.c
-index 55991916ec..0b321b456e 100644
---- a/hw/9pfs/cofs.c
-+++ b/hw/9pfs/cofs.c
-@@ -23,7 +23,7 @@ static ssize_t __readlink(V9fsState *s, V9fsPath *path, V9fsString *buf)
-     ssize_t len, maxlen = PATH_MAX;
- 
-     buf->data = g_malloc(PATH_MAX);
--    for(;;) {
-+    for (;;) {
-         len = s->ops->readlink(&s->ctx, path, buf->data, maxlen);
-         if (len < 0) {
-             g_free(buf->data);
--- 
-2.29.0-rc1
+jokenzhang really looks like a computer username or nick, which isn't an
+appropriate way to sign one's work.
+
+Quoting a comment from Eric Blake on a recent patch that had a similar flaw:
+
+It's preferred to have Signed-off-by tags use a rendering of a legal
+name rather than a mere computer username.  Whether that is just a
+westernized form of your name, or you use native characters, or even
+both spellings side-by-side, is up to you (see commit d7d26226b for an
+example of the latter).
+
+With that fixed, you can add my r-b for all three patches.
+
+Reviewed-by: Greg Kurz <groug@kaod.org>
+
+> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> ---
+>  hw/9pfs/9p-local.c | 10 +++++-----
+>  hw/9pfs/9p.c       | 16 ++++++++--------
+>  2 files changed, 13 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
+> index 3107637209..af52c1daac 100644
+> --- a/hw/9pfs/9p-local.c
+> +++ b/hw/9pfs/9p-local.c
+> @@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const char *name,
+>      memset(buf, 0, ATTR_MAX);
+>      while (fgets(buf, ATTR_MAX, fp)) {
+>          if (!strncmp(buf, "virtfs.uid", 10)) {
+> -            stbuf->st_uid = atoi(buf+11);
+> +            stbuf->st_uid = atoi(buf + 11);
+>          } else if (!strncmp(buf, "virtfs.gid", 10)) {
+> -            stbuf->st_gid = atoi(buf+11);
+> +            stbuf->st_gid = atoi(buf + 11);
+>          } else if (!strncmp(buf, "virtfs.mode", 11)) {
+> -            stbuf->st_mode = atoi(buf+12);
+> +            stbuf->st_mode = atoi(buf + 12);
+>          } else if (!strncmp(buf, "virtfs.rdev", 11)) {
+> -            stbuf->st_rdev = atoi(buf+12);
+> +            stbuf->st_rdev = atoi(buf + 12);
+>          }
+>          memset(buf, 0, ATTR_MAX);
+>      }
+> @@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
+>          if (fd == -1) {
+>              goto out;
+>          }
+> -        credp->fc_mode = credp->fc_mode|S_IFREG;
+> +        credp->fc_mode = credp->fc_mode | S_IFREG;
+>          if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
+>              /* Set cleint credentials in xattr */
+>              err = local_set_xattrat(dirfd, name, credp);
+> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+> index 741d222c3f..94df440fc7 100644
+> --- a/hw/9pfs/9p.c
+> +++ b/hw/9pfs/9p.c
+> @@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString *extension)
+>          }
+>      }
+>  
+> -    if (!(ret&~0777)) {
+> +    if (!(ret & ~0777)) {
+>          ret |= S_IFREG;
+>      }
+>  
+> @@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
+>          v9fs_path_unlock(s);
+>      } else {
+>          err = v9fs_co_open2(pdu, fidp, &name, -1,
+> -                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
+> +                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
+>          if (err < 0) {
+>              goto out;
+>          }
+> @@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
+>       * compute bsize factor based on host file system block size
+>       * and client msize
+>       */
+> -    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
+> +    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
+>      if (!bsize_factor) {
+>          bsize_factor = 1;
+>      }
+> @@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU *pdu, struct statfs *stbuf)
+>       * adjust(divide) the number of blocks, free blocks and available
+>       * blocks by bsize factor
+>       */
+> -    f_blocks = stbuf->f_blocks/bsize_factor;
+> -    f_bfree  = stbuf->f_bfree/bsize_factor;
+> -    f_bavail = stbuf->f_bavail/bsize_factor;
+> +    f_blocks = stbuf->f_blocks / bsize_factor;
+> +    f_bfree  = stbuf->f_bfree / bsize_factor;
+> +    f_bavail = stbuf->f_bavail / bsize_factor;
+>      f_files  = stbuf->f_files;
+>      f_ffree  = stbuf->f_ffree;
+>      fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
+> @@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__)) v9fs_set_fd_limit(void)
+>          error_report("Failed to get the resource limit");
+>          exit(1);
+>      }
+> -    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
+> -    open_fd_rc = rlim.rlim_cur/2;
+> +    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
+> +    open_fd_rc = rlim.rlim_cur / 2;
+>  }
 
 
