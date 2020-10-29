@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kY5Dt-0004dX-7U
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 06:32:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46270)
+	id 1kY7Gv-0004uC-Om
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 08:43:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1kY5Dr-0004cU-Dx; Thu, 29 Oct 2020 06:31:59 -0400
-Received: from lizzy.crudebyte.com ([91.194.90.13]:51197)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kY7Gt-0004tU-F1; Thu, 29 Oct 2020 08:43:15 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2424)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1kY5Dp-0002LG-2Q; Thu, 29 Oct 2020 06:31:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=crudebyte.com; s=lizzy; h=Content-Type:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Content-ID:Content-Description;
- bh=xIO64QxRVFR1CseVJzIeEb1lTilqXjjs6Or6ZgT+d0A=; b=jcvK/m26gNT57CYlDP+vRuGwOZ
- SYDHrZA49eMznSoJiCWLfbQsNYhm2vIVJIoLnXLzwH0W6Bqz11C4FO+SZRGAejR72mv1iq6uvjv22
- ZG3EzoXPM4tXtCDvs2rkDWfqlJMAaIy5O0oEmjnojxs8Jv30nBG8SSNsWSj8nMHptvd4aIP1Oimda
- o0HQnyOaZnL8X7s4fqtnNdnu3KsRxVX+/vcgTbuF3iGlq/juvy5jv+61ef5BDaGK01AGpEkYxCsXw
- WYLZ0h2aCmNmIdqEQ/gQ1PCX/+9FCfs/vpKrVzJM4eu/4Zbpy6pBwhoMFRMI2PBaCZFs3qHPlUrsD
- brzZodpA==;
-From: Christian Schoenebeck <qemu_oss@crudebyte.com>
-To: qemu-devel@nongnu.org
-Cc: jokenzhang <zhangxinhao1@huawei.com>, alex.chen@huawei.com,
- qemu-trivial@nongnu.org, dengkai1@huawei.com, Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH 1/3] hw/9pfs : add spaces around operator
-Date: Thu, 29 Oct 2020 11:29:38 +0100
-Message-ID: <4360366.TziOZfpSdE@silver>
-In-Reply-To: <20201028090540.1070935-1-zhangxinhao1@huawei.com>
-References: <20201028090540.1070935-1-zhangxinhao1@huawei.com>
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kY7Gq-0000w7-Va; Thu, 29 Oct 2020 08:43:15 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CMQ8L0VyszLngW;
+ Thu, 29 Oct 2020 20:42:58 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 29 Oct 2020 20:42:51 +0800
+Message-ID: <5F9AB8CB.2050606@huawei.com>
+Date: Thu, 29 Oct 2020 20:42:51 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-Received-SPF: pass client-ip=91.194.90.13; envelope-from=qemu_oss@crudebyte.com;
- helo=lizzy.crudebyte.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 06:31:52
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+To: <kwolf@redhat.com>, <mreitz@redhat.com>
+CC: <qemu-block@nongnu.org>, <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+Subject: Re: block: Remove unused include
+References: <5F8FFB94.3030209@huawei.com>
+In-Reply-To: <5F8FFB94.3030209@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 08:11:09
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.261,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,111 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 10:31:59 -0000
+X-List-Received-Date: Thu, 29 Oct 2020 12:43:15 -0000
 
-On Mittwoch, 28. Oktober 2020 10:05:38 CET jokenzhang wrote:
-> Signed-off-by: jokenzhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+Kindly ping.
+
+Thanks,
+Alex
+
+On 2020/10/21 17:12, AlexChen wrote:
+> The "qemu-common.h" include is not used, remove it.
+> 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
 > ---
->  hw/9pfs/9p-local.c | 10 +++++-----
->  hw/9pfs/9p.c       | 16 ++++++++--------
->  2 files changed, 13 insertions(+), 13 deletions(-)
-
-It would make sense to mention the actual purpose of this patch: fix code 
-style.
-
-Same applies to the other 2 patches.
-
+>  block/dmg-lzfse.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-> index 3107637209..af52c1daac 100644
-> --- a/hw/9pfs/9p-local.c
-> +++ b/hw/9pfs/9p-local.c
-> @@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const
-> char *name, memset(buf, 0, ATTR_MAX);
->      while (fgets(buf, ATTR_MAX, fp)) {
->          if (!strncmp(buf, "virtfs.uid", 10)) {
-> -            stbuf->st_uid = atoi(buf+11);
-> +            stbuf->st_uid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.gid", 10)) {
-> -            stbuf->st_gid = atoi(buf+11);
-> +            stbuf->st_gid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.mode", 11)) {
-> -            stbuf->st_mode = atoi(buf+12);
-> +            stbuf->st_mode = atoi(buf + 12);
->          } else if (!strncmp(buf, "virtfs.rdev", 11)) {
-> -            stbuf->st_rdev = atoi(buf+12);
-> +            stbuf->st_rdev = atoi(buf + 12);
->          }
->          memset(buf, 0, ATTR_MAX);
->      }
-> @@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath
-> *dir_path, const char *name, if (fd == -1) {
->              goto out;
->          }
-> -        credp->fc_mode = credp->fc_mode|S_IFREG;
-> +        credp->fc_mode = credp->fc_mode | S_IFREG;
->          if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
->              /* Set cleint credentials in xattr */
->              err = local_set_xattrat(dirfd, name, credp);
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index 741d222c3f..94df440fc7 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString
-> *extension) }
->      }
+> diff --git a/block/dmg-lzfse.c b/block/dmg-lzfse.c
+> index 19d25bc646..6798cf4fbf 100644
+> --- a/block/dmg-lzfse.c
+> +++ b/block/dmg-lzfse.c
+> @@ -22,7 +22,6 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+>  #include "dmg.h"
+>  #include <lzfse.h>
 > 
-> -    if (!(ret&~0777)) {
-> +    if (!(ret & ~0777)) {
->          ret |= S_IFREG;
->      }
-> 
-> @@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
->          v9fs_path_unlock(s);
->      } else {
->          err = v9fs_co_open2(pdu, fidp, &name, -1,
-> -                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
-> +                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
-> if (err < 0) {
->              goto out;
->          }
-> @@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
-> *pdu, struct statfs *stbuf) * compute bsize factor based on host file
-> system block size
->       * and client msize
->       */
-> -    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
-> +    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
->      if (!bsize_factor) {
->          bsize_factor = 1;
->      }
-> @@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
-> *pdu, struct statfs *stbuf) * adjust(divide) the number of blocks, free
-> blocks and available * blocks by bsize factor
->       */
-> -    f_blocks = stbuf->f_blocks/bsize_factor;
-> -    f_bfree  = stbuf->f_bfree/bsize_factor;
-> -    f_bavail = stbuf->f_bavail/bsize_factor;
-> +    f_blocks = stbuf->f_blocks / bsize_factor;
-> +    f_bfree  = stbuf->f_bfree / bsize_factor;
-> +    f_bavail = stbuf->f_bavail / bsize_factor;
->      f_files  = stbuf->f_files;
->      f_ffree  = stbuf->f_ffree;
->      fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
-> @@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__))
-> v9fs_set_fd_limit(void) error_report("Failed to get the resource limit");
->          exit(1);
->      }
-> -    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
-> -    open_fd_rc = rlim.rlim_cur/2;
-> +    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
-> +    open_fd_rc = rlim.rlim_cur / 2;
->  }
-
-Best regards,
-Christian Schoenebeck
-
 
 
