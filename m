@@ -1,81 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYNz7-0002r2-LJ
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 02:34:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56120)
+	id 1kYQVO-0005Wn-2G
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 05:15:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kYNz6-0002p2-GU; Fri, 30 Oct 2020 02:34:00 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43680)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kYQVM-0005Uh-Az; Fri, 30 Oct 2020 05:15:28 -0400
+Received: from mail-yb1-xb43.google.com ([2607:f8b0:4864:20::b43]:39775)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kYNz5-0000a1-01; Fri, 30 Oct 2020 02:34:00 -0400
-Received: by mail-wr1-x442.google.com with SMTP id g12so5178088wrp.10;
- Thu, 29 Oct 2020 23:33:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kYQVI-0008Ih-Sq; Fri, 30 Oct 2020 05:15:27 -0400
+Received: by mail-yb1-xb43.google.com with SMTP id 67so4539100ybt.6;
+ Fri, 30 Oct 2020 02:15:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+WlayzpdNcz/iU+PGMDZI+CjYpaa0yC2h/lvinVuYOE=;
- b=acKkXA1O/7RDMyyYfaQTiDkJNoi1XCJrymf8qlozbqHNNE3W+UuGVzzO3fAHKJ0ZOX
- G66wWHwhqek58OzjGgKg4QD8vssVwj90R9ESD+tRYOlAPSNMy//55FtaD3rmPrGj2b19
- Fpe2NKiyX2eEGcYNFGN4+CSTHa4A9KI1pbp2tfNhR1n56SPUX3RhE7k5DF2GdMCzuBeH
- h96mNqA7yLOEX19Lr//CWMT8l3Iw/mKSU4H3K0jZ/osIrOMD14SoXnTE7XA4V7FWbK6y
- ttML4JsgxhH08MRDu++GIPLFNm/pppG+rAN/H0adfYxGxR91MCuKcVkX1Zw5z0HKowF1
- TRHg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fTmzJ/jElPGt3FUJEPmktOZo3WNUdJ8tMml+rQeBq28=;
+ b=CbJg6KQnWwSSUA+3V3qGxh8WxhviH8NXtjMZcCFRlJj+vLaOnTLCO8drVFSGV7zAEb
+ G0Q/21keK738qYjHfgzNT0zH12sMPgjhrgMeY3kRXFne/RaKjDU49mRa2d4xwupdEEXf
+ ybEfQDTEe/PNGcCMKmQyyC1pV5JQooZM8ykEm4+nIKowULE5Uv3d5ezuYoBBcf1knI+A
+ 8V8WoXo+jbHPZWlVloTL6WPHIYmHQvgFxP84QLx5pzo999wS2A6onZZVO7BI/HQpoB+J
+ PNu0QfLOcsOTgnNndjwsvjL7mbQ32WotPBUQPrp6TI+vXLFwCFMiNhj6zw2TIn079vF6
+ YU0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+WlayzpdNcz/iU+PGMDZI+CjYpaa0yC2h/lvinVuYOE=;
- b=pa3EVT76YFVcSzXqpfmwAYMPvDm1QPZXSGJcjkdC5TOH3GjTGbHWmqEIQjQPhv6YWK
- n9jETN3wavaN1DTkNJ7aBIlGKriDkrYowXL6FOmu8j++p0B1YOkjNO+ofLX/EHu25SEc
- hHVaykV8djrojX5jjWmYS5jU4OW1Q+BqSNdbATSTIoqn1fas6kLviNqZ3pmzwsG9I4hr
- 5/xvoq13DbgkJP/5S3OlQiD8TpYsaMRDNKRRK4WQQ6MKK2kh67CTADb9jjJG1SNpI6Q2
- 49cTJAS4rn6CWjdZYWWEo48FQGH9TIgyHojMgDj8A16Od6zwIAbuSWof48soKHR40eqF
- Lrkg==
-X-Gm-Message-State: AOAM533KsGd7vrkVssNetlezZxTHgS6S5+SPMVKo9LMvY5EHswC33FUj
- yDABL+Cbm857XyeVVh0LtjU=
-X-Google-Smtp-Source: ABdhPJzsjP+eDeYFK2ApUTdjg8qbFo5NS1pA46O2cbZmvVC1GqFrnKmPwN/EoAZf5OoTftamdkqDBg==
-X-Received: by 2002:adf:f74e:: with SMTP id z14mr1000154wrp.312.1604039637181; 
- Thu, 29 Oct 2020 23:33:57 -0700 (PDT)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id l11sm8515461wro.89.2020.10.29.23.33.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Oct 2020 23:33:56 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2 8/8] target/ppc: replaced the TODO with LOG_UNIMP and
- add break for silence warnings
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Thomas Huth <thuth@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
- <20201030004046.2191790-9-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f950ef22-0124-26bb-2c37-2f6e32d6e1cc@amsat.org>
-Date: Fri, 30 Oct 2020 07:33:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fTmzJ/jElPGt3FUJEPmktOZo3WNUdJ8tMml+rQeBq28=;
+ b=nfTiV6tvLhsSLZKwrk+GWHPvkTN7Zb5ZiS+mzMpwbE8h1pZKYJhM9dq+zz+QIkXVHU
+ Zdla9OQ8IpTXffBSH95WCjPW7aY6jguswsDHQlDQeHR1Tqj+kKACJrFtGbtt4WyDW5x+
+ rKNbrH7q3/AOuWA+OYe8C8oOOeNtnWwucVy8hg46ypwX03kHSpo3wasaJwks4RAeGIrd
+ VVilGCoNHQG454w4CG8y/AYeW3RAWz8kZtPdPLn4byi+bpLLZXbzTEU2iNqCSdQidwzn
+ lBxIfhYzh9Ndu1ZnH1/hHI6nIWJAfffotf7eba4mytyY5N+xPbTY3KQehMTBhcAekJsO
+ 5REA==
+X-Gm-Message-State: AOAM533+mraZ/DqKt3NvGXuns+ZXkSAdab1J37M7yiY8WXWOZH//AX6R
+ aFdtM7+Ye/8FZ8Yz+DQJDUdyyQSVQmC0pJm1Zo0=
+X-Google-Smtp-Source: ABdhPJzyaz3TLdkBpdY/WAo8jRIPqU6hJM+zgBm4GcJo0talYxJXicMoju6vPSqN+oVYAB2CDoFXCIb5oNB0MM0Ai9U=
+X-Received: by 2002:a25:f81e:: with SMTP id u30mr2269160ybd.332.1604049310069; 
+ Fri, 30 Oct 2020 02:15:10 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201030004046.2191790-9-kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+References: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
+In-Reply-To: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Fri, 30 Oct 2020 17:14:59 +0800
+Message-ID: <CAEUhbmXNRkFSvtPg8AQhCmN1X-VYow2JiEypeZFZFnswFB9BUg@mail.gmail.com>
+Subject: Re: [PATCH] target/riscv/csr.c : add space before the open
+ parenthesis '('
+To: Xinhao Zhang <zhangxinhao1@huawei.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, alex.chen@huawei.com, 
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, dengkai1@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b43;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.261,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,54 +76,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 06:34:00 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 09:15:28 -0000
 
-On 10/30/20 1:40 AM, Chen Qun wrote:
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-> target/ppc/mmu_helper.c: In function ‘dump_mmu’:
-> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
->  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
->       |            ^
-> target/ppc/mmu_helper.c:1358:5: note: here
->  1358 |     default:
->       |     ^~~~~~~
-> 
-> Use "qemu_log_mask(LOG_UNIMP**)" instead of the TODO comment.
-> And add the break statement to fix it.
-> 
+On Fri, Oct 30, 2020 at 8:58 AM Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
+>
+> Fix code style. Space required before the open parenthesis '('.
+>
+> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+> Signed-off-by: Kai Deng <dengkai1@huawei.com>
 > Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
-> v1->v2: replace the TODO by a LOG_UNIMP call and add break statement(Base on Philippe's comments)
-> 
-> Cc: Thomas Huth <thuth@redhat.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  target/ppc/mmu_helper.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-> index 8972714775..12723362b7 100644
-> --- a/target/ppc/mmu_helper.c
-> +++ b/target/ppc/mmu_helper.c
-> @@ -1349,11 +1349,12 @@ void dump_mmu(CPUPPCState *env)
->          break;
->      case POWERPC_MMU_3_00:
->          if (ppc64_v3_radix(env_archcpu(env))) {
-> -            /* TODO - Unsupported */
-> +            qemu_log_mask(LOG_UNIMP, "%s: the PPC64 MMU unsupported\n",
-> +                          __func__);
->          } else {
->              dump_slb(env_archcpu(env));
-> -            break;
->          }
-> +        break;
->  #endif
->      default:
->          qemu_log_mask(LOG_UNIMP, "%s: unimplemented\n", __func__);
-> 
+>  target/riscv/csr.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+Reviewed-by: Bin Meng <bin.meng@windriver.com>
 
