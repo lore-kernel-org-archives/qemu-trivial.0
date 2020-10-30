@@ -1,62 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYB04-0002K4-G8
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 12:42:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57140)
+	id 1kYITt-0001bA-EL
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1kYAzz-0002In-R1; Thu, 29 Oct 2020 12:42:03 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43258)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1kYAzx-0007I6-Ew; Thu, 29 Oct 2020 12:42:03 -0400
-Received: by mail-ot1-x343.google.com with SMTP id a6so2894336otp.10;
- Thu, 29 Oct 2020 09:42:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6IPaBIQVWrpxrg8zLG4HtnydJbP3ZNQy8OL8nvM/4/A=;
- b=pylDyyzOnZ5WC4Y4HzGpSoVyrsogelFAnYCZX9bRsQVn0OPexQJXEKntzswbienjAo
- 8cSz9jgZAs3hn7spWvveiWLxc4yuhxj70ZHkYDZ/OkSdRmrmDBOYrw1EtGzRIuNbUdYT
- KSpKbJK37x0U86OJkpmlZ8HvZJ+PW14zUk7hDCTCp5Fcyx3I6q8eXOdz32wYGjTR9SWE
- zT+X4NP20wHyOSPRMegRtfbqnx9rds2GVvsr8pjyAlx37FhSQPoMTdWJ0guwCs+mpHdh
- VwXY57EBUHnDthGw2bIFWpNuLd/rewVwxlxQULgNHue/bTuF444fVPPiMRONvFLV9fLO
- N0Yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6IPaBIQVWrpxrg8zLG4HtnydJbP3ZNQy8OL8nvM/4/A=;
- b=ovgmQewxSKYW8/l9+NJ9OhgP9aIDaPAofHjF9BLfxOM1iAo3LTBP4gO0ZSKXrgIj3E
- 4BB1F+mntAVv+tqybuMS6mos2nHXJydsHD0JUtsNRE6afyIq5Py+X7bemkfCqw2L5fFt
- lD3tDQG+2tuRJsNrUODQaPPDh5lclfUtzfYAHobJLqdfWy/rCMo/wgQe2bKjgL3wyCjf
- OV2OczaCUTsTRCbZIkkxvNGBP9VsojAldF85AJyfiyAN+Xswrf+FrfxSW4+fazStcLUa
- ajq8NBKf8Cgak7h7lOdVjFHxYbms701pK6k3hVdI9q890o2f79dLfRqjZ0R6tPqmpjS7
- pvTw==
-X-Gm-Message-State: AOAM531b9YapvukmWqlHKi3AMJ3Dvj9NfzVDSX4sSqPN0ehtK7iSOhE1
- lfqe8yaMS3x379BjMh7rsGzVAdNBNHoW+Vt42LE=
-X-Google-Smtp-Source: ABdhPJwwvz2WJwb/qfo8x7Qy0TGETK+e4QrMyJ5OMmCmHgGHGg9+3wism68U+mqPRB1rMx5DxRjZST3UZCmIfJNy0iQ=
-X-Received: by 2002:a9d:57c3:: with SMTP id q3mr3669316oti.326.1603989719708; 
- Thu, 29 Oct 2020 09:41:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kYITp-0001WP-Dz; Thu, 29 Oct 2020 20:41:21 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2366)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kYITm-00013i-NU; Thu, 29 Oct 2020 20:41:21 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMk583W8Wz15PJ3;
+ Fri, 30 Oct 2020 08:41:16 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 30 Oct 2020
+ 08:41:08 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v2 4/8] linux-user/mips/cpu_loop: silence the compiler warnings
+Date: Fri, 30 Oct 2020 08:40:42 +0800
+Message-ID: <20201030004046.2191790-5-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-References: <5F997B84.9040900@huawei.com> <5F9A5B48.9030509@huawei.com>
-In-Reply-To: <5F9A5B48.9030509@huawei.com>
-From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
-Date: Thu, 29 Oct 2020 12:41:48 -0400
-Message-ID: <CAFubqFsRFh0rV3j8DS7bym-P_JHZdkuH5dyGJskKFLgQUbGABA@mail.gmail.com>
-Subject: Re: [PATCH V2] vhost-user-blk/scsi: Fix broken error handling for
- socket call
-To: AlexChen <alex.chen@huawei.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=raphael.s.norwitz@gmail.com; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 20:41:14
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,50 +53,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2020 16:42:05 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 00:41:22 -0000
 
-On Thu, Oct 29, 2020 at 2:04 AM AlexChen <alex.chen@huawei.com> wrote:
->
-> When socket() fails, it returns -1, 0 is the normal return value and should not return error.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: AlexChen <alex.chen@huawei.com>
+When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+linux-user/mips/cpu_loop.c: In function ‘cpu_loop’:
+linux-user/mips/cpu_loop.c:104:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  104 |                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+      |                        ^
+linux-user/mips/cpu_loop.c:107:17: note: here
+  107 |                 case 7:
+      |                 ^~~~
+linux-user/mips/cpu_loop.c:108:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  108 |                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+      |                        ^
+linux-user/mips/cpu_loop.c:111:17: note: here
+  111 |                 case 6:
+      |                 ^~~~
+linux-user/mips/cpu_loop.c:112:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  112 |                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+      |                        ^
+linux-user/mips/cpu_loop.c:115:17: note: here
+  115 |                 case 5:
+      |                 ^~~~
 
-Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Add the corresponding "fall through" comment to fix it.
 
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+Cc: Laurent Vivier <laurent@vivier.eu>
+---
+ linux-user/mips/cpu_loop.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> ---
->  contrib/vhost-user-blk/vhost-user-blk.c   | 2 +-
->  contrib/vhost-user-scsi/vhost-user-scsi.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
-> index 25eccd02b5..40a2dfc544 100644
-> --- a/contrib/vhost-user-blk/vhost-user-blk.c
-> +++ b/contrib/vhost-user-blk/vhost-user-blk.c
-> @@ -474,7 +474,7 @@ static int unix_sock_new(char *unix_fn)
->      assert(unix_fn);
->
->      sock = socket(AF_UNIX, SOCK_STREAM, 0);
-> -    if (sock <= 0) {
-> +    if (sock < 0) {
->          perror("socket");
->          return -1;
->      }
-> diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
-> index 3c912384e9..0f9ba4b2a2 100644
-> --- a/contrib/vhost-user-scsi/vhost-user-scsi.c
-> +++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
-> @@ -320,7 +320,7 @@ static int unix_sock_new(char *unix_fn)
->      assert(unix_fn);
->
->      sock = socket(AF_UNIX, SOCK_STREAM, 0);
-> -    if (sock <= 0) {
-> +    if (sock < 0) {
->          perror("socket");
->          return -1;
->      }
-> --
-> 2.19.1
->
+diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
+index 553e8ca7f5..cfe7ba5c47 100644
+--- a/linux-user/mips/cpu_loop.c
++++ b/linux-user/mips/cpu_loop.c
+@@ -104,18 +104,22 @@ void cpu_loop(CPUMIPSState *env)
+                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+                         goto done_syscall;
+                     }
++                    /* fall through */
+                 case 7:
+                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+                         goto done_syscall;
+                     }
++                    /* fall through */
+                 case 6:
+                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+                         goto done_syscall;
+                     }
++                    /* fall through */
+                 case 5:
+                     if ((ret = get_user_ual(arg5, sp_reg + 16)) != 0) {
+                         goto done_syscall;
+                     }
++                    /* fall through */
+                 default:
+                     break;
+                 }
+-- 
+2.27.0
+
 
