@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYWWA-0002Ty-QE
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 11:40:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39684)
+	id 1kYWXO-00044U-9L
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 11:41:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWW7-0002Rd-5j
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:40:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33182)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWXM-00041j-F3
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:41:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWW4-0002CR-2F
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:40:38 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWXK-0002N3-SB
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:41:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604072435;
+ s=mimecast20190719; t=1604072514;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YKCTkjgoWwLDFx1hoXgl39UPJ5hPteXPX0N7OIPqBMg=;
- b=XRenndN8LZNza66tcptyfuGyqb0JoCBpygLnf3L3KV3mv3sHMGaqg2+v9VNX6ITfeDqWBV
- PqDkHzgI6IsfNLWN+Wf4EblHggq6ArmFLwTgFDV1zXu0M4R6Y+aQhqJiNtpxejBjZmaxDQ
- QPhz+3L7ny4ceDT46pRqMyvge/te2E8=
+ bh=LINhjW2PBzTHXol6a+8dC95EBBosWZxhA1s5eV7/b3A=;
+ b=HxF2LVS+RjR5gej++hihoy9yRR7Hp9XcZBn4ZYx+AWCHeJPfYk4qg0w4vlhDRKWjiKqFld
+ JRqt1PfLG+wePEFxnYC85z2tjm9NL73doahWvKHFV7gNm4PjQW3ECq6RzrgPVJUHHoJsA3
+ zE8LGZGUVcBuDzAaUzR69MlMBT0Sx3k=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-495-ezwwrsxWOwy_qMUYCe00dg-1; Fri, 30 Oct 2020 11:40:31 -0400
-X-MC-Unique: ezwwrsxWOwy_qMUYCe00dg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-515--KdqDuQoNAqlzBmG-f_TQw-1; Fri, 30 Oct 2020 11:41:52 -0400
+X-MC-Unique: -KdqDuQoNAqlzBmG-f_TQw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9C1EE87950C;
- Fri, 30 Oct 2020 15:40:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 37D081DDFB;
+ Fri, 30 Oct 2020 15:41:50 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-113-87.ams2.redhat.com [10.36.113.87])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8A2571000320;
- Fri, 30 Oct 2020 15:40:27 +0000 (UTC)
-Subject: Re: [PATCH v2 3/8] accel/tcg/user-exec: silence the compiler warnings
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D3F5719D61;
+ Fri, 30 Oct 2020 15:41:46 +0000 (UTC)
+Subject: Re: [PATCH v2 7/8] ppc: Add a missing break for PPC6xx_INPUT_TBEN
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Riku Voipio <riku.voipio@iki.fi>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+ Euler Robot <euler.robot@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
- <20201030004046.2191790-4-kuhn.chenqun@huawei.com>
+ <20201030004046.2191790-8-kuhn.chenqun@huawei.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <820857af-e8da-e664-bb39-502ce96146a6@redhat.com>
-Date: Fri, 30 Oct 2020 16:40:26 +0100
+Message-ID: <cc36b5d8-c5a5-9096-3b30-502eb1b50108@redhat.com>
+Date: Fri, 30 Oct 2020 16:41:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201030004046.2191790-4-kuhn.chenqun@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20201030004046.2191790-8-kuhn.chenqun@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -80,47 +79,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 15:40:40 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 15:41:56 -0000
 
 On 30/10/2020 01.40, Chen Qun wrote:
 > When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-> ../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
-> ../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
->   169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
->       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ../accel/tcg/user-exec.c:172:9: note: here
->   172 |         default:
+> hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
+> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   118 |             if (level) {
+>       |                ^
+> hw/ppc/ppc.c:123:9: note: here
+>   123 |         case PPC6xx_INPUT_INT:
+>       |         ^~~~
 > 
-> Mark the cpu_exit_tb_from_sighandler() function with QEMU_NORETURN to fix it.
+> According to the discussion, a break statement needs to be added here.
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
-> v1->v2: Add QEMU_NORETURN to cpu_exit_tb_from_sighandler() function
-> to avoid the compiler warnings(Base on Thomas's and Richard's comments).
+> v1->v2: Add a "break" statement here instead of /* fall through */ comments
+> (Base on Thomas's and David review).
 > 
 > Cc: Thomas Huth <thuth@redhat.com>
-> Cc: Riku Voipio <riku.voipio@iki.fi>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
 > ---
->  accel/tcg/user-exec.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  hw/ppc/ppc.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-> index 4ebe25461a..293ee86ea4 100644
-> --- a/accel/tcg/user-exec.c
-> +++ b/accel/tcg/user-exec.c
-> @@ -49,7 +49,8 @@ __thread uintptr_t helper_retaddr;
->  /* exit the current TB from a signal handler. The host registers are
->     restored in a state compatible with the CPU emulator
->   */
-> -static void cpu_exit_tb_from_sighandler(CPUState *cpu, sigset_t *old_set)
-> +static void QEMU_NORETURN cpu_exit_tb_from_sighandler(CPUState *cpu,
-> +                                                      sigset_t *old_set)
->  {
->      /* XXX: use siglongjmp ? */
->      sigprocmask(SIG_SETMASK, old_set, NULL);
+> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+> index 4a11fb1640..1b98272076 100644
+> --- a/hw/ppc/ppc.c
+> +++ b/hw/ppc/ppc.c
+> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
+>              } else {
+>                  cpu_ppc_tb_stop(env);
+>              }
+> +            break;
+>          case PPC6xx_INPUT_INT:
+>              /* Level sensitive - active high */
+>              LOG_IRQ("%s: set the external IRQ state to %d\n",
 > 
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
