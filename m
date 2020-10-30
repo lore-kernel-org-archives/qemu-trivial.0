@@ -1,68 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYZNB-0006W2-N1
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 14:43:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52076)
+	id 1kYZSh-00084a-L4
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 14:49:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kYZMz-0006Tx-Tx
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 14:43:26 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:33950)
+ id 1kYZSg-00084T-OL
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 14:49:18 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:43576)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kYZMt-0001BX-Q8
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 14:43:25 -0400
-Received: by mail-pg1-x543.google.com with SMTP id t14so5979124pgg.1
- for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 11:43:18 -0700 (PDT)
+ id 1kYZSf-0001pp-2m
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 14:49:18 -0400
+Received: by mail-pl1-x643.google.com with SMTP id u7so1315602pls.10
+ for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 11:49:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/fASQS/vg4+7sSwz9Ev+iuGWJBOfUnQURoJcpEt3nsQ=;
- b=RBg1+aqoYs8Tq8GgHzgdMfLYExHuxM9EvNnW6hEvVi//iYGge73JFv29MB4OxJC8cc
- +hs9NGnZ5/2ySSJKEGZ8UZNlSOqotqmooLaFUKySgnQvstjzdKXGKgYDxiZt0x5rxWM0
- sw4c94YX9VNYSL0PcW2JjzO3ir92wmszLAwOTX5LLzq8Slt3SctpMwc7qgz+V7Bud++J
- Np561XHluooNXFjlD3QmoemR1q2RtYoVJ9IygLMnhO9lDvZnFwZw7OLGVR9YMcI7HQ3P
- kpNYfG2WgfR+A3MK6CWRYCaXUilsI4oRa0VIUyPiCvjrPMOfRrUGWRDes5E6jSXG9mUL
- RLdg==
+ bh=QSOyHPfkws29/043P9DzlW3T+ooa6irrXr5ncbzIpUw=;
+ b=lQsCgsNI6sQ6PSAC5Lt8mo3XgOqjTLsjQTKIuWISvKMDYjtkhE9s/DRNQq/Xkg9RKk
+ IJS3C46xKkthO3GN6CdEAUM01V/sOW2/yvelPijDv1DGJVqq42T/T2lhVKkQbqxxCC5B
+ jVFRnFbdQ8X9jbQmVJkB2XeLYno8PQdihV4dnPgjmgqruTTdoGOhbtOpAV7XazKkPzLw
+ GHSkSNkIzIlfUSrte+0rSc++KpYeF5/rKkwo8lLTreXtdRVSjUqaKEuMzomHVKzVJXs9
+ BDFJl9U/QscLYB/U9ccAmoJNxPQlOU/KzBJUIKbyL5ymtIzIXMzk2MpB/Fc23SdkfgKy
+ ouGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=/fASQS/vg4+7sSwz9Ev+iuGWJBOfUnQURoJcpEt3nsQ=;
- b=E0QeWqr2KJnfp9HIbw4gGiBJm5m1IFVfkmWUp3mXMEVtInQIl/gPpoaKtWu1M+ELwU
- 7E3yRedz14f6chu8Lt6g749vyb7kMQlsCPlaAV+yB1CE9nLYchi1RfRK2CKv7k30vb4+
- p86SP+WAXWsFNYJHRflwM4fz0N1/1sCLLDzfkQcThZuq7tqDuEkq/OJgGvT6HLIgbtUx
- Jjy/ZGIa1B/5FpQMXlxsMCOGt2/7WRNMbapMgnQxQxYF9/gohO4sAw3pn2OcIgSdX6TH
- 4Cj3xZV3dZonnI2/q5e+mYvftyfsY/r+zxpow74ZQE48ZaluIRbbTjA1BcRg1rx3NC4z
- 7ZXQ==
-X-Gm-Message-State: AOAM531pmcTBMuOxwwUqIla/X2jvaR6NyqyGJKrDXib4Uktq82hHTF/K
- sYt0fZwnwpwwYqOOj5NYRf/8wT7uTLhP4w==
-X-Google-Smtp-Source: ABdhPJyInc+ULnwdbAzI/w5i+iPjoAPbFvY5/CvBP8kZYT1w+rg59Kvs+2iACap5v3i0t5JO9fmoPQ==
-X-Received: by 2002:a17:90a:de5:: with SMTP id
- 92mr4366744pjv.179.1604083396168; 
- Fri, 30 Oct 2020 11:43:16 -0700 (PDT)
+ bh=QSOyHPfkws29/043P9DzlW3T+ooa6irrXr5ncbzIpUw=;
+ b=KrQVX5HKrRTCFOSrJloFDowrESviHGbMIb+DRCE3Z30mcKAXQ/XAORGxJDiXQOhNxi
+ YcVgaZVcts1ErtJqb1j9LXBPmBd2mZJ+AZMZdd1ogIYaPB313haXDrJKCnCA1dkpdq25
+ GI0NZj6FWXRt6x6zonCHZ6ss8zCkhr9VujYzskUYRFxIHQHi+WjlG/FzSbD0BJH73uXY
+ Ud8ki3bT8DRcn/f6S+T7MtRTM6hA3hZs/j+dlHHVl+dcmCKD8AfvYdTRIC0xstgF7FIk
+ dPsYZONZvQv7eActaB8xCrwM9MhL/mtlzYITa0a5SmeF4WGEkri2KqbYQ8R0I0fR7d9x
+ j4mg==
+X-Gm-Message-State: AOAM531nYRq3LxoWitawRreooV0HvYjj4b2v9nY+B9J9Jg5Ch/UCGt3N
+ KPsCx10M1EL0z9G3rrNX++8rHQ==
+X-Google-Smtp-Source: ABdhPJwHvNTs3MDMHXD2TFkoGRjdQQmuzUAW6teVIkTTy+MouU4+L5b3x7PPxi7NC1JtA9cwA/9plA==
+X-Received: by 2002:a17:902:ee11:b029:d6:30a7:9e71 with SMTP id
+ z17-20020a170902ee11b02900d630a79e71mr10286831plb.8.1604083755575; 
+ Fri, 30 Oct 2020 11:49:15 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id z6sm6717683pfj.48.2020.10.30.11.43.14
+ by smtp.gmail.com with ESMTPSA id bo16sm4492991pjb.41.2020.10.30.11.49.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Oct 2020 11:43:14 -0700 (PDT)
-Subject: Re: [PATCH] target/unicore32/translate: Add missing fallthrough
- annotations
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: qemu-trivial@nongnu.org
-References: <20201030093157.11795-1-thuth@redhat.com>
+ Fri, 30 Oct 2020 11:49:14 -0700 (PDT)
+Subject: Re: [PATCH-for-5.2 v2] hw/rx/rx-gdbsim: Fix memory leak
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>
+References: <20201030134918.1518930-1-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <7c109ad0-c1a8-d60a-839a-b70e988f3059@linaro.org>
-Date: Fri, 30 Oct 2020 11:43:12 -0700
+Message-ID: <996efc40-c616-c73a-c65c-ea3ae13e1d5c@linaro.org>
+Date: Fri, 30 Oct 2020 11:49:12 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201030093157.11795-1-thuth@redhat.com>
+In-Reply-To: <20201030134918.1518930-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -23
@@ -84,26 +85,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 18:43:30 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 18:49:19 -0000
 
-On 10/30/20 2:31 AM, Thomas Huth wrote:
-> Looking at the way the code is formatted here (there is an empty
-> line after break statements, but none where the break is missing),
-> the fallthrough is very likely intended here. So add a fallthrough
-> comment to make the it compilable with -Werror=implicit-fallthrough.
+On 10/30/20 6:49 AM, Philippe Mathieu-Daudé wrote:
+> As load_device_tree() returns allocated memory,
+> we need to free it.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Fixes: bda19d7bb56 ("hw/rx: Add RX GDB simulator")
+> Reported-by: Coverity (CID 1432307: RESOURCE_LEAK)
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  target/unicore32/translate.c | 2 ++
->  1 file changed, 2 insertions(+)
+> v2: NULL-initialize (Richard)
+> ---
+>  hw/rx/rx-gdbsim.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+> index 417ec0564b3..d70865962e8 100644
+> --- a/hw/rx/rx-gdbsim.c
+> +++ b/hw/rx/rx-gdbsim.c
+> @@ -122,7 +122,7 @@ static void rx_gdbsim_init(MachineState *machine)
+>          if (dtb_filename) {
+>              ram_addr_t dtb_offset;
+>              int dtb_size;
+> -            void *dtb;
+> +            g_autofree void *dtb = NULL;
+>  
+>              dtb = load_device_tree(dtb_filename, &dtb_size);
 
-We don't need to guess based on blank lines.
-This matches with the instruction set overview at
+What I said was, merge the declaration and statement:
 
-https://en.wikipedia.org/wiki/Unicore
+  g_autofree void *dtb =
+    load_device_tree(...);
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
+but whatever.  You can still keep my previous conditional r-b.
 
 r~
 
