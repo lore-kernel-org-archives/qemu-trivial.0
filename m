@@ -1,69 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYQVO-0005Wn-2G
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 05:15:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57122)
+	id 1kYQle-0006Fq-4x
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 05:32:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kYQVM-0005Uh-Az; Fri, 30 Oct 2020 05:15:28 -0400
-Received: from mail-yb1-xb43.google.com ([2607:f8b0:4864:20::b43]:39775)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kYQVI-0008Ih-Sq; Fri, 30 Oct 2020 05:15:27 -0400
-Received: by mail-yb1-xb43.google.com with SMTP id 67so4539100ybt.6;
- Fri, 30 Oct 2020 02:15:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fTmzJ/jElPGt3FUJEPmktOZo3WNUdJ8tMml+rQeBq28=;
- b=CbJg6KQnWwSSUA+3V3qGxh8WxhviH8NXtjMZcCFRlJj+vLaOnTLCO8drVFSGV7zAEb
- G0Q/21keK738qYjHfgzNT0zH12sMPgjhrgMeY3kRXFne/RaKjDU49mRa2d4xwupdEEXf
- ybEfQDTEe/PNGcCMKmQyyC1pV5JQooZM8ykEm4+nIKowULE5Uv3d5ezuYoBBcf1knI+A
- 8V8WoXo+jbHPZWlVloTL6WPHIYmHQvgFxP84QLx5pzo999wS2A6onZZVO7BI/HQpoB+J
- PNu0QfLOcsOTgnNndjwsvjL7mbQ32WotPBUQPrp6TI+vXLFwCFMiNhj6zw2TIn079vF6
- YU0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fTmzJ/jElPGt3FUJEPmktOZo3WNUdJ8tMml+rQeBq28=;
- b=nfTiV6tvLhsSLZKwrk+GWHPvkTN7Zb5ZiS+mzMpwbE8h1pZKYJhM9dq+zz+QIkXVHU
- Zdla9OQ8IpTXffBSH95WCjPW7aY6jguswsDHQlDQeHR1Tqj+kKACJrFtGbtt4WyDW5x+
- rKNbrH7q3/AOuWA+OYe8C8oOOeNtnWwucVy8hg46ypwX03kHSpo3wasaJwks4RAeGIrd
- VVilGCoNHQG454w4CG8y/AYeW3RAWz8kZtPdPLn4byi+bpLLZXbzTEU2iNqCSdQidwzn
- lBxIfhYzh9Ndu1ZnH1/hHI6nIWJAfffotf7eba4mytyY5N+xPbTY3KQehMTBhcAekJsO
- 5REA==
-X-Gm-Message-State: AOAM533+mraZ/DqKt3NvGXuns+ZXkSAdab1J37M7yiY8WXWOZH//AX6R
- aFdtM7+Ye/8FZ8Yz+DQJDUdyyQSVQmC0pJm1Zo0=
-X-Google-Smtp-Source: ABdhPJzyaz3TLdkBpdY/WAo8jRIPqU6hJM+zgBm4GcJo0talYxJXicMoju6vPSqN+oVYAB2CDoFXCIb5oNB0MM0Ai9U=
-X-Received: by 2002:a25:f81e:: with SMTP id u30mr2269160ybd.332.1604049310069; 
- Fri, 30 Oct 2020 02:15:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
-In-Reply-To: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 30 Oct 2020 17:14:59 +0800
-Message-ID: <CAEUhbmXNRkFSvtPg8AQhCmN1X-VYow2JiEypeZFZFnswFB9BUg@mail.gmail.com>
-Subject: Re: [PATCH] target/riscv/csr.c : add space before the open
- parenthesis '('
-To: Xinhao Zhang <zhangxinhao1@huawei.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, 
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, alex.chen@huawei.com, 
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, dengkai1@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b43;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb43.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYQlc-0006EV-Vl
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 05:32:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55361)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYQlZ-0006H2-QO
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 05:32:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604050328;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=j9+co+yHNebq0st5iScvOYiGRcFH9wqN3HV3MiZmaMQ=;
+ b=NFw6tIo5KMY5YAQncsJW0jk6ovEXCBqS62mCamy4sKZoFMfiKP+ULQGo8oW59AkQ3vKpPa
+ C1s7/F+ZAl0BCJLJx2hM3iINFxe/KJIx790Z2Dc+RLt1lD6IukRewyXbKnQRHOsoEMPIWr
+ bILsqhR/nsXgI7vEHwqqUXw680vSgWM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-582-cNCtOz6VOnSWcfnF2kaxkA-1; Fri, 30 Oct 2020 05:32:03 -0400
+X-MC-Unique: cNCtOz6VOnSWcfnF2kaxkA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D179F10B9CA1;
+ Fri, 30 Oct 2020 09:32:01 +0000 (UTC)
+Received: from thuth.com (ovpn-113-87.ams2.redhat.com [10.36.113.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 53E876198B;
+ Fri, 30 Oct 2020 09:32:00 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
+Subject: [PATCH] target/unicore32/translate: Add missing fallthrough
+ annotations
+Date: Fri, 30 Oct 2020 10:31:57 +0100
+Message-Id: <20201030093157.11795-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 01:22:25
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,19 +67,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 09:15:28 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 09:32:17 -0000
 
-On Fri, Oct 30, 2020 at 8:58 AM Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
->
-> Fix code style. Space required before the open parenthesis '('.
->
-> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> ---
->  target/riscv/csr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
+Looking at the way the code is formatted here (there is an empty
+line after break statements, but none where the break is missing),
+the fallthrough is very likely intended here. So add a fallthrough
+comment to make the it compilable with -Werror=implicit-fallthrough.
 
-Reviewed-by: Bin Meng <bin.meng@windriver.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ target/unicore32/translate.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
+index d4b06df672..962f9877a0 100644
+--- a/target/unicore32/translate.c
++++ b/target/unicore32/translate.c
+@@ -1801,6 +1801,7 @@ static void disas_uc32_insn(CPUUniCore32State *env, DisasContext *s)
+             do_misc(env, s, insn);
+             break;
+         }
++        /* fallthrough */
+     case 0x1:
+         if (((UCOP_OPCODES >> 2) == 2) && !UCOP_SET_S) {
+             do_misc(env, s, insn);
+@@ -1817,6 +1818,7 @@ static void disas_uc32_insn(CPUUniCore32State *env, DisasContext *s)
+         if (UCOP_SET(8) || UCOP_SET(5)) {
+             ILLEGAL;
+         }
++        /* fallthrough */
+     case 0x3:
+         do_ldst_ir(env, s, insn);
+         break;
+-- 
+2.18.2
+
 
