@@ -1,75 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYUmW-00084M-Lg
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 09:49:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40382)
+	id 1kYVOs-0005bP-LS
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 10:29:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kYUmU-00082Y-Hn; Fri, 30 Oct 2020 09:49:26 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:45342)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kYVOq-0005WK-PL
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:29:04 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:37862)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kYUmS-0004KJ-7A; Fri, 30 Oct 2020 09:49:25 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id a9so6512739wrg.12;
- Fri, 30 Oct 2020 06:49:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=enUHVE6/PhcWn+p+KJmbDxlEVfrqGZDvXq7Vvykiais=;
- b=l15NxchqxHP32IrV97Oaxdtzr3ovzT8yLhgt2wRUvgCAe+k7EG0A73U8V/OnUV6knl
- mW/82zxGRrjpSgDx7j1UkrKtlzvzYUawaXKtHGo8/LSClAxg8aCDf/RZzVdPCUdkMj3b
- RogjorSz2dAWz6uTvdGdEFSkbua9jx1OVGT36A1S9IfT+SPOxUutc4IhJ7NnO2MYT/2Y
- bZCVhECEs/7oiCr0lwZQKBuVCLrnQYhU88EhWS6eURYfaI0wDq7yGToLcgvTLQ16mbW4
- suzBM5oZg/umkpm0UGQzttAQlQcXDf0whC0PQGST+nYHCJ5oss0T7MkM1smJBYAE27MP
- ztbQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kYVOn-0000yW-P4
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:29:04 -0400
+Received: by mail-ej1-x642.google.com with SMTP id p9so8917175eji.4
+ for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 07:29:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CrRzD2OxH5662WFncZKSf2Ox7cQn2AYxZntw1toNEbs=;
+ b=X2PJEKf2WVVNxxn4NBDT/5Xpr1Thzq/P2GXXPWAjEMiQmjVFD8XKRmDCqW7TxjX47o
+ aBoF19VB+zGHQaM8KRIc/4mfxah+ArTI8N0lFuhXSVELywcxWfu+2ajfBN2Y9gY+Kq18
+ hs/41zG3bIlOYt7bqIPfa/ct7K5eQSgANmZPDySyHo3e2t2J0qUfZTvNGXmIZ34izupv
+ ep7snExaGXzDpG0GthKKvG478JeZ+H7TEnmi8v4dM6edSHSEB8ufzsUEc2b9pVlubGD2
+ 6Zkc6BUOcPF4GRsUHfpcUCYex4asRW2JDsA/igpFRQWuCeXL47lzHXxLKH1aSS17s4ES
+ 9y/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=enUHVE6/PhcWn+p+KJmbDxlEVfrqGZDvXq7Vvykiais=;
- b=bDBXQTwoC4233BnPjTJYCoiorzXjHV3S6LBHJ5KOpDmjod/xvlI2heviGfnDoK2bs4
- OAKrlk9hUQB+q/vzMMI2vxZsCVS0vehKz30aOgzlHiOZc4WZH0TDq/oYPBNRL/6U0imZ
- 5au73679Wp4gueqPilFKGD+Jdfgc6eYSkbEw4Fm8jsovOIRMBu1N+P9LpK62oSMUHQpK
- skK+qpMEuR9/u5qp1AZcSx37ud4Z6fTD2T6h1dhpfVYAuWt1WvrCA5srOQKBbRANPLzu
- 65IYJGkB/yrJzTKRJHluMTWgbzhvFcWJiSdZq3upcVxm45dvadCySsqPPdFQVx708TFE
- Ancg==
-X-Gm-Message-State: AOAM533t5Bj+tmFVyDISVdq5ZQc2NWhxBA61c9zabhNKKQ6kuim4dnQo
- Z+g4OOsaNJ9s9WzRQeUYD9ZErWe2xdM=
-X-Google-Smtp-Source: ABdhPJw0zNnE0bCthm0WUdrS9gHjSkaetEIKU5DDAWJXPMiZblBQdUYRYj47r5Vlufe4HkxmVOm9NA==
-X-Received: by 2002:a5d:4f8c:: with SMTP id d12mr3369673wru.351.1604065762105; 
- Fri, 30 Oct 2020 06:49:22 -0700 (PDT)
-Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id 205sm4905578wme.38.2020.10.30.06.49.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2020 06:49:21 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
- Richard Henderson <rth@twiddle.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.2 v2] hw/rx/rx-gdbsim: Fix memory leak
-Date: Fri, 30 Oct 2020 14:49:18 +0100
-Message-Id: <20201030134918.1518930-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CrRzD2OxH5662WFncZKSf2Ox7cQn2AYxZntw1toNEbs=;
+ b=Lb1T9lFIj2Ky+3QwphZknNDlgbyalcRJrRsiQP+xhO/AprZdh18/nho5s1MKMT+r2b
+ /y/taTR/GLuKVv5eFjIPZhzRsp/mL96OONceAx8KgmzNb9KRbm4XeRmDCGuZdXOK/kik
+ MK6o7yX3qGKRqCN0FA/YAwjrwqrGlcDsnn6F8PV0KHDqJbAoHRLNDoOZWO057gBCXZoL
+ hwUxzYbzv7KMSYZT2LDltKFQc3iX0Dl2jbTifNAwPLbj8wfFnM+uTZWfPbqgpf4c4eX8
+ igDxf3977+r/byvw7DwIE/WIZ5XSx9rIKmb9vypUwOD4pJpqmhkitOo47n7MyzonOkH9
+ WpuQ==
+X-Gm-Message-State: AOAM532D/zMDrhUhhiPv160sQmxLmXF1bprrtIOCCrpbx7DRL7gV3/Ju
+ /4yr63IUG1CiUEh8xo4oKe7Q/hOa56VNj/rodU5uDQ==
+X-Google-Smtp-Source: ABdhPJzjC6cJsDtUPsYVPwW+zCCJr8NDdSfog3dkJ/0lZXEQ5qaw/Vt2bV6vV2Cy1MNlcK6ltK+szkSdVtEo/k/iAuE=
+X-Received: by 2002:a17:906:1f42:: with SMTP id
+ d2mr2667860ejk.407.1604068140154; 
+ Fri, 30 Oct 2020 07:29:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+References: <5F9BE974.3040806@huawei.com>
+In-Reply-To: <5F9BE974.3040806@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 30 Oct 2020 14:28:49 +0000
+Message-ID: <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+To: AlexChen <alex.chen@huawei.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,35 +74,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 13:49:27 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 14:29:05 -0000
 
-As load_device_tree() returns allocated memory,
-we need to free it.
+On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+>
+> In exynos4210_fimd_update(), the pointer s is dereferenced before
+> being check if it is valid, which may lead to NULL pointer dereference.
+> So move the assignment to global_width after checking that the s is valid
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  hw/display/exynos4210_fimd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+> index 4c16e1f5a0..a1179d2f89 100644
+> --- a/hw/display/exynos4210_fimd.c
+> +++ b/hw/display/exynos4210_fimd.c
+> @@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
+>      bool blend = false;
+>      uint8_t *host_fb_addr;
+>      bool is_dirty = false;
+> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+>
+>      if (!s || !s->console || !s->enabled ||
+>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+>          return;
+>      }
+> +    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+>      exynos4210_update_resolution(s);
+>      surface = qemu_console_surface(s->console);
 
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Fixes: bda19d7bb56 ("hw/rx: Add RX GDB simulator")
-Reported-by: Coverity (CID 1432307: RESOURCE_LEAK)
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: NULL-initialize (Richard)
----
- hw/rx/rx-gdbsim.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Yep, this is a bug, but QEMU's coding style doesn't permit
+variable declarations in the middle of functions. You need
+to split the declaration (which stays where it is) and the
+initialization (which can moved down below the !s test.
 
-diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
-index 417ec0564b3..d70865962e8 100644
---- a/hw/rx/rx-gdbsim.c
-+++ b/hw/rx/rx-gdbsim.c
-@@ -122,7 +122,7 @@ static void rx_gdbsim_init(MachineState *machine)
-         if (dtb_filename) {
-             ram_addr_t dtb_offset;
-             int dtb_size;
--            void *dtb;
-+            g_autofree void *dtb = NULL;
- 
-             dtb = load_device_tree(dtb_filename, &dtb_size);
-             if (dtb == NULL) {
--- 
-2.26.2
-
+thanks
+-- PMM
 
