@@ -1,70 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYVVW-0004sX-Vp
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 10:35:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51526)
+	id 1kYWWA-0002Ty-QE
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 11:40:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVVR-0004nS-UQ
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:35:55 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:39150)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVVP-00020J-91
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:35:53 -0400
-Received: by mail-ej1-x642.google.com with SMTP id bn26so8923219ejb.6
- for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 07:35:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=lA++Hl5Ff23cexy9HPHp57mTBkMdUE4lxCl2ZEu5RIM=;
- b=FYQYJtbqal6X0CHAm7FeiWXGeqGqRbSLTOTh1aDXPr/tlVrKLucN+qHwwX53e6ItMp
- uvnyA/0L++AZYAXpSmmbcxfLM7m/D4cwKXMMVejo6OxPpLHqDojWmDwA5xgR9F+RC9TE
- 1fHoAi4hOo1etOJaE6eE/G/Y6tSI4lkOv0huUguz/uHBuqSLcwxxi7ppm5v7fr5r4a5T
- VXEqa4j7B5OZLs6y2Gtj5VoMXVJj6iVvC1Po3dQ3OoAc3CCZNYvShUgXZtzYxCGaVN0s
- +7C8N0H80vNc4v489ZrzalwxIdSIuaObjM/2NtGvrbAVj/v+0J1uvs6BCVs6EkZK4MJd
- pxrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=lA++Hl5Ff23cexy9HPHp57mTBkMdUE4lxCl2ZEu5RIM=;
- b=Ccw+1ASZaHe9B9/niWvLyEMDL8a+S1SolEK6J01C1ZDfabT9Nz/CaPA6I0dlxQYGLO
- nSp1+f6JaQjdcUemtFLgjJEw7E9thN9StSV7DTHFxcBafVBbwKs3mLQIObOh4QgtHAWF
- kGRStBlGF4HDyoZRQBIGt1y9crv4HZz3+XcqvH0lTvSMbi87n6IwaC0ik+V/UUUa7m9g
- k+Xo5oPPXCNPjYSTXSYFCo+3iiof6l2pf7NqtZTTdkkDHbN4ss0R5nOtVcD2TJgXK2do
- KMqmQHCwtTNjkxbACnjWnMzVKrvIAEPJx1yLG6GrcamLlDK77fkKRS/TTT01JNAP950W
- hiFQ==
-X-Gm-Message-State: AOAM53098vwjoYBs/opQap09GwO+8KhR2fPHILJSRsAXaj4bPb39uLbx
- x//t9atYFoQ00Y4Kdis5MpVYohGedkmPlRdV58F3AQ==
-X-Google-Smtp-Source: ABdhPJwvOxrrKtyKgJhUGZ+kKOdLBqn04/bm4a7JzmV/3Cmy/KMzHtdyrwuJlxSC2OC2Mq6ppur09aEmua64N9JA1pA=
-X-Received: by 2002:a17:906:af8c:: with SMTP id
- mj12mr2669056ejb.85.1604068548940; 
- Fri, 30 Oct 2020 07:35:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWW7-0002Rd-5j
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:40:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33182)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYWW4-0002CR-2F
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 11:40:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604072435;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YKCTkjgoWwLDFx1hoXgl39UPJ5hPteXPX0N7OIPqBMg=;
+ b=XRenndN8LZNza66tcptyfuGyqb0JoCBpygLnf3L3KV3mv3sHMGaqg2+v9VNX6ITfeDqWBV
+ PqDkHzgI6IsfNLWN+Wf4EblHggq6ArmFLwTgFDV1zXu0M4R6Y+aQhqJiNtpxejBjZmaxDQ
+ QPhz+3L7ny4ceDT46pRqMyvge/te2E8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-495-ezwwrsxWOwy_qMUYCe00dg-1; Fri, 30 Oct 2020 11:40:31 -0400
+X-MC-Unique: ezwwrsxWOwy_qMUYCe00dg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9C1EE87950C;
+ Fri, 30 Oct 2020 15:40:29 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-87.ams2.redhat.com [10.36.113.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8A2571000320;
+ Fri, 30 Oct 2020 15:40:27 +0000 (UTC)
+Subject: Re: [PATCH v2 3/8] accel/tcg/user-exec: silence the compiler warnings
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Riku Voipio <riku.voipio@iki.fi>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+ <20201030004046.2191790-4-kuhn.chenqun@huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <820857af-e8da-e664-bb39-502ce96146a6@redhat.com>
+Date: Fri, 30 Oct 2020 16:40:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <5F9BE993.4050406@huawei.com>
- <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Oct 2020 14:35:37 +0000
-Message-ID: <CAFEAcA-WTw-0EvT1REbTrtgLB9sBbnJBuNW9LMh7eOtsXtrDTw@mail.gmail.com>
-Subject: Re: [PATCH] hw/display/omap_lcdc: Fix potential NULL pointer
- dereference
-To: AlexChen <alex.chen@huawei.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20201030004046.2191790-4-kuhn.chenqun@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 02:24:40
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.253, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,46 +80,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 14:35:55 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 15:40:40 -0000
 
-On Fri, 30 Oct 2020 at 14:29, Peter Maydell <peter.maydell@linaro.org> wrot=
-e:
->
-> On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
-> >
-> > In omap_lcd_interrupts(), the pointer omap_lcd is dereferenced before
-> > being check if it is valid, which may lead to NULL pointer dereference.
-> > So move the assignment to surface after checking that the omap_lcd is v=
-alid.
-> >
-> > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> > ---
-> >  hw/display/omap_lcdc.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
+On 30/10/2020 01.40, Chen Qun wrote:
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+> ../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
+> ../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
+>       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ../accel/tcg/user-exec.c:172:9: note: here
+>   172 |         default:
+> 
+> Mark the cpu_exit_tb_from_sighandler() function with QEMU_NORETURN to fix it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> v1->v2: Add QEMU_NORETURN to cpu_exit_tb_from_sighandler() function
+> to avoid the compiler warnings(Base on Thomas's and Richard's comments).
+> 
+> Cc: Thomas Huth <thuth@redhat.com>
+> Cc: Riku Voipio <riku.voipio@iki.fi>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  accel/tcg/user-exec.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+> index 4ebe25461a..293ee86ea4 100644
+> --- a/accel/tcg/user-exec.c
+> +++ b/accel/tcg/user-exec.c
+> @@ -49,7 +49,8 @@ __thread uintptr_t helper_retaddr;
+>  /* exit the current TB from a signal handler. The host registers are
+>     restored in a state compatible with the CPU emulator
+>   */
+> -static void cpu_exit_tb_from_sighandler(CPUState *cpu, sigset_t *old_set)
+> +static void QEMU_NORETURN cpu_exit_tb_from_sighandler(CPUState *cpu,
+> +                                                      sigset_t *old_set)
+>  {
+>      /* XXX: use siglongjmp ? */
+>      sigprocmask(SIG_SETMASK, old_set, NULL);
+> 
 
-> Applied to target-arm.next, thanks.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Whoops, spoke too soon. This doesn't compile:
-
-../../hw/display/omap_lcdc.c: In function =E2=80=98omap_update_display=E2=
-=80=99:
-../../hw/display/omap_lcdc.c:88:10: error: =E2=80=98surface=E2=80=99 may be=
- used
-uninitialized in this function [-Werror=3Dmaybe-uninitialized]
-         !surface_bits_per_pixel(surface)) {
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-because the early exit check
-    if (!omap_lcd || omap_lcd->plm =3D=3D 1 || !omap_lcd->enable ||
-        !surface_bits_per_pixel(surface)) {
-        return;
-    }
-
-uses 'surface' and this patch moves the initialization of that
-variable down below its first use.
-
-thanks
--- PMM
 
