@@ -1,57 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYVPw-0006WF-3D
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 10:30:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49768)
+	id 1kYVVW-0004sX-Vp
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 10:35:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVPp-0006U0-Ur
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:30:07 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:46215)
+ id 1kYVVR-0004nS-UQ
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:35:55 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:39150)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVPo-00014X-6V
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:30:05 -0400
-Received: by mail-ed1-x542.google.com with SMTP id t11so6804483edj.13
- for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 07:30:02 -0700 (PDT)
+ id 1kYVVP-00020J-91
+ for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 10:35:53 -0400
+Received: by mail-ej1-x642.google.com with SMTP id bn26so8923219ejb.6
+ for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 07:35:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NFC39zceG2i5PizwvZ93zNijf5+W6zdm3h74OVX7MHw=;
- b=u+QJ+YdXWOzUPGLjBli0nwiLKVuv471nujgNi/3R6oF3X6zsMN0E3wsg75seRCVAuJ
- JNTvntIE1UJOcldV+vP4tAmdR4YuG9X9O4dCa4jeXNh+DzfvUAT/D29r+tvNzkpOxo6u
- Sgov0uQD/mFtATUnQlarNkCeeRmr9VSQHvYplgEV1uBnR7DL4yzu7LTaGEJN/ERZ+4cK
- SbYwKI5QGBevA+jI8sVHtmWswVk+1Y5DLGRjhjyomj72R4v6nUIsFH27ROmlUnWRmOc2
- PmJ2rki2L/MMr8q+Wi/hCLJ/jXeOecjx+uf3bfCg5yL7veNuBSbzqikNrV8FLX9AAkRv
- EQiA==
+ :cc:content-transfer-encoding;
+ bh=lA++Hl5Ff23cexy9HPHp57mTBkMdUE4lxCl2ZEu5RIM=;
+ b=FYQYJtbqal6X0CHAm7FeiWXGeqGqRbSLTOTh1aDXPr/tlVrKLucN+qHwwX53e6ItMp
+ uvnyA/0L++AZYAXpSmmbcxfLM7m/D4cwKXMMVejo6OxPpLHqDojWmDwA5xgR9F+RC9TE
+ 1fHoAi4hOo1etOJaE6eE/G/Y6tSI4lkOv0huUguz/uHBuqSLcwxxi7ppm5v7fr5r4a5T
+ VXEqa4j7B5OZLs6y2Gtj5VoMXVJj6iVvC1Po3dQ3OoAc3CCZNYvShUgXZtzYxCGaVN0s
+ +7C8N0H80vNc4v489ZrzalwxIdSIuaObjM/2NtGvrbAVj/v+0J1uvs6BCVs6EkZK4MJd
+ pxrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NFC39zceG2i5PizwvZ93zNijf5+W6zdm3h74OVX7MHw=;
- b=TxR3l9sgN6i07AIQ0YGSEGXpbu254hSf+Y5gw9WlmowV0AI9vN8yyF46DQUKmv91vk
- 4mUoNea+7p7EhaLc5SaIF/y48b7O9gVd9j/r/X4LuQjcx7QwRrGkNf0Z9XzWlHPdjLqs
- D7V+yhJAno8nGqtGfsOoe/Xtfwb8GLprqyw/TG4LuPe25Dj1M7kpGpofL5vdEUSPuEjd
- vxKq6v0YFmgV2TyUvCE1mxr/aD/UOOFBwXlg4tZNLAa+kRnehPEWee5vsH9vK1lf1eKL
- Lpmg7OSKGhyteutImaUXFS1EoH3KnzW4eh1bSJtQKXDqqAPW+ItKb1u7jW6bSmf0qn0x
- oBRQ==
-X-Gm-Message-State: AOAM532x1BBWbf99trTeYotHB/sur4Oto7reY2aha/Em9gYFQNVPLYc4
- gveKrLFiN0qbI1JPT1n7Lxl1VmIvbXu7KJcbx5SHUQ==
-X-Google-Smtp-Source: ABdhPJx6FCWljKrUairC2DLeWPCw2fKw1oLldfsils4Y62/uuplvIwLeKUS5j6F4jcxjXcsCdgijcJKRuYI+Tm2U0so=
-X-Received: by 2002:aa7:d699:: with SMTP id d25mr2639196edr.44.1604068201154; 
- Fri, 30 Oct 2020 07:30:01 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=lA++Hl5Ff23cexy9HPHp57mTBkMdUE4lxCl2ZEu5RIM=;
+ b=Ccw+1ASZaHe9B9/niWvLyEMDL8a+S1SolEK6J01C1ZDfabT9Nz/CaPA6I0dlxQYGLO
+ nSp1+f6JaQjdcUemtFLgjJEw7E9thN9StSV7DTHFxcBafVBbwKs3mLQIObOh4QgtHAWF
+ kGRStBlGF4HDyoZRQBIGt1y9crv4HZz3+XcqvH0lTvSMbi87n6IwaC0ik+V/UUUa7m9g
+ k+Xo5oPPXCNPjYSTXSYFCo+3iiof6l2pf7NqtZTTdkkDHbN4ss0R5nOtVcD2TJgXK2do
+ KMqmQHCwtTNjkxbACnjWnMzVKrvIAEPJx1yLG6GrcamLlDK77fkKRS/TTT01JNAP950W
+ hiFQ==
+X-Gm-Message-State: AOAM53098vwjoYBs/opQap09GwO+8KhR2fPHILJSRsAXaj4bPb39uLbx
+ x//t9atYFoQ00Y4Kdis5MpVYohGedkmPlRdV58F3AQ==
+X-Google-Smtp-Source: ABdhPJwvOxrrKtyKgJhUGZ+kKOdLBqn04/bm4a7JzmV/3Cmy/KMzHtdyrwuJlxSC2OC2Mq6ppur09aEmua64N9JA1pA=
+X-Received: by 2002:a17:906:af8c:: with SMTP id
+ mj12mr2669056ejb.85.1604068548940; 
+ Fri, 30 Oct 2020 07:35:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <5F9BE993.4050406@huawei.com>
-In-Reply-To: <5F9BE993.4050406@huawei.com>
+ <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Oct 2020 14:29:49 +0000
-Message-ID: <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
+Date: Fri, 30 Oct 2020 14:35:37 +0000
+Message-ID: <CAFEAcA-WTw-0EvT1REbTrtgLB9sBbnJBuNW9LMh7eOtsXtrDTw@mail.gmail.com>
 Subject: Re: [PATCH] hw/display/omap_lcdc: Fix potential NULL pointer
  dereference
 To: AlexChen <alex.chen@huawei.com>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
  QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -60,7 +64,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,23 +77,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 14:30:08 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 14:35:55 -0000
 
-On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+On Fri, 30 Oct 2020 at 14:29, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
 >
-> In omap_lcd_interrupts(), the pointer omap_lcd is dereferenced before
-> being check if it is valid, which may lead to NULL pointer dereference.
-> So move the assignment to surface after checking that the omap_lcd is valid.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> ---
->  hw/display/omap_lcdc.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+> >
+> > In omap_lcd_interrupts(), the pointer omap_lcd is dereferenced before
+> > being check if it is valid, which may lead to NULL pointer dereference.
+> > So move the assignment to surface after checking that the omap_lcd is v=
+alid.
+> >
+> > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> > ---
+> >  hw/display/omap_lcdc.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+
+> Applied to target-arm.next, thanks.
+
+Whoops, spoke too soon. This doesn't compile:
+
+../../hw/display/omap_lcdc.c: In function =E2=80=98omap_update_display=E2=
+=80=99:
+../../hw/display/omap_lcdc.c:88:10: error: =E2=80=98surface=E2=80=99 may be=
+ used
+uninitialized in this function [-Werror=3Dmaybe-uninitialized]
+         !surface_bits_per_pixel(surface)) {
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+because the early exit check
+    if (!omap_lcd || omap_lcd->plm =3D=3D 1 || !omap_lcd->enable ||
+        !surface_bits_per_pixel(surface)) {
+        return;
+    }
 
-Applied to target-arm.next, thanks.
+uses 'surface' and this patch moves the initialization of that
+variable down below its first use.
 
+thanks
 -- PMM
 
