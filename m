@@ -1,60 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYQle-0006Fq-4x
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 05:32:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33476)
+	id 1kYR8E-0005ZU-Kx
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 05:55:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYQlc-0006EV-Vl
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 05:32:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55361)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kYQlZ-0006H2-QO
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 05:32:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604050328;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=j9+co+yHNebq0st5iScvOYiGRcFH9wqN3HV3MiZmaMQ=;
- b=NFw6tIo5KMY5YAQncsJW0jk6ovEXCBqS62mCamy4sKZoFMfiKP+ULQGo8oW59AkQ3vKpPa
- C1s7/F+ZAl0BCJLJx2hM3iINFxe/KJIx790Z2Dc+RLt1lD6IukRewyXbKnQRHOsoEMPIWr
- bILsqhR/nsXgI7vEHwqqUXw680vSgWM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-582-cNCtOz6VOnSWcfnF2kaxkA-1; Fri, 30 Oct 2020 05:32:03 -0400
-X-MC-Unique: cNCtOz6VOnSWcfnF2kaxkA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D179F10B9CA1;
- Fri, 30 Oct 2020 09:32:01 +0000 (UTC)
-Received: from thuth.com (ovpn-113-87.ams2.redhat.com [10.36.113.87])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 53E876198B;
- Fri, 30 Oct 2020 09:32:00 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
-Subject: [PATCH] target/unicore32/translate: Add missing fallthrough
- annotations
-Date: Fri, 30 Oct 2020 10:31:57 +0100
-Message-Id: <20201030093157.11795-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 01:22:25
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kYR8D-0005ZL-C1; Fri, 30 Oct 2020 05:55:37 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:32873)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kYR8A-0006T4-II; Fri, 30 Oct 2020 05:55:37 -0400
+Received: from [192.168.100.1] ([82.252.154.198]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MiaLn-1juzmC2oK7-00fkGo; Fri, 30 Oct 2020 10:55:19 +0100
+Subject: Re: [PATCH v2 4/8] linux-user/mips/cpu_loop: silence the compiler
+ warnings
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Thomas Huth <thuth@redhat.com>
+References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+ <20201030004046.2191790-5-kuhn.chenqun@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <b3a0569a-d4a9-d73f-8c20-6e8c6251dace@vivier.eu>
+Date: Fri, 30 Oct 2020 10:55:17 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
+MIME-Version: 1.0
+In-Reply-To: <20201030004046.2191790-5-kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:wM3TDhl3eTI04EfWMRg+X7tQTtHdvtFty5B0VweV2RnshYf5rFI
+ 7t4Bpvq6fz3Dbb4XvDgD7ymfAjqiyvC540DYatGhWlWp3ud++Vk/hfdLQK5+dTxwYjWBikR
+ qBQtBvTWdMshhCH35UEJ6AVNbtUyfC0nrB9xlpahPr63zmi2ktirwFmFIePvKrFb9M5MpdV
+ 9DInIwLoXy+5jUHKkXciA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HxEIL71dBHo=:PUXhlMFFr46YCl9KiSPHJS
+ 9cKsGJOz8Okw7EH6K3z4v9QNOheWglaDCeSvpLjtD1UouOmkTXfwqtNqXH8vVZs3Py8BHmQ8T
+ oMVPeLdEThj3LdkTwCz6zVcabM7Dd/rhCshqHCbcT7LSbbslh08/GAFzsque+KK9ai1u25e6W
+ YZ545ucB9aeyG/t0EgsstJU20QHOxzahpcTBt/bc1sL9my7eXjl4u2WsDs7IvvWyylUcYHGYQ
+ 7r3ebYNpfgoT6tBfUBHZWNAVvteYp+wxi+CZhR+jjSLbs0jLMuE/MUt2CEuvg4vetgLmiNdzz
+ R1QXQd1cLPmtviqvR2F74UOR/5bhznj51PHLUEk4Rs/RFbjUTb22H7hgiABRz2VZ8Y7k7mmeR
+ ediB4MfRuiT8+HhCLcEYNfR4E5x6E+yfJimZ5KSWfNkhtqBRNlO+Gypdzh/eD
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 05:55:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.261,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,39 +63,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 09:32:17 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 09:55:37 -0000
 
-Looking at the way the code is formatted here (there is an empty
-line after break statements, but none where the break is missing),
-the fallthrough is very likely intended here. So add a fallthrough
-comment to make the it compilable with -Werror=implicit-fallthrough.
+Le 30/10/2020 à 01:40, Chen Qun a écrit :
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+> linux-user/mips/cpu_loop.c: In function ‘cpu_loop’:
+> linux-user/mips/cpu_loop.c:104:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   104 |                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:107:17: note: here
+>   107 |                 case 7:
+>       |                 ^~~~
+> linux-user/mips/cpu_loop.c:108:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   108 |                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:111:17: note: here
+>   111 |                 case 6:
+>       |                 ^~~~
+> linux-user/mips/cpu_loop.c:112:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   112 |                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:115:17: note: here
+>   115 |                 case 5:
+>       |                 ^~~~
+> 
+> Add the corresponding "fall through" comment to fix it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  linux-user/mips/cpu_loop.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
+> index 553e8ca7f5..cfe7ba5c47 100644
+> --- a/linux-user/mips/cpu_loop.c
+> +++ b/linux-user/mips/cpu_loop.c
+> @@ -104,18 +104,22 @@ void cpu_loop(CPUMIPSState *env)
+>                      if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 7:
+>                      if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 6:
+>                      if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 5:
+>                      if ((ret = get_user_ual(arg5, sp_reg + 16)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  default:
+>                      break;
+>                  }
+> 
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- target/unicore32/translate.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
-index d4b06df672..962f9877a0 100644
---- a/target/unicore32/translate.c
-+++ b/target/unicore32/translate.c
-@@ -1801,6 +1801,7 @@ static void disas_uc32_insn(CPUUniCore32State *env, DisasContext *s)
-             do_misc(env, s, insn);
-             break;
-         }
-+        /* fallthrough */
-     case 0x1:
-         if (((UCOP_OPCODES >> 2) == 2) && !UCOP_SET_S) {
-             do_misc(env, s, insn);
-@@ -1817,6 +1818,7 @@ static void disas_uc32_insn(CPUUniCore32State *env, DisasContext *s)
-         if (UCOP_SET(8) || UCOP_SET(5)) {
-             ILLEGAL;
-         }
-+        /* fallthrough */
-     case 0x3:
-         do_ldst_ir(env, s, insn);
-         break;
--- 
-2.18.2
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
