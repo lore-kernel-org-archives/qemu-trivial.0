@@ -1,36 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYITt-0001cR-SJ
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44924)
+	id 1kYITu-0001d9-3J
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITo-0001Vw-Qh; Thu, 29 Oct 2020 20:41:20 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2059)
+ id 1kYITo-0001W0-R8; Thu, 29 Oct 2020 20:41:20 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2367)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITl-00013V-Sl; Thu, 29 Oct 2020 20:41:20 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CMk542JtDzhZRH;
- Fri, 30 Oct 2020 08:41:12 +0800 (CST)
+ id 1kYITm-00013j-HI; Thu, 29 Oct 2020 20:41:20 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMk583hqkz15PJ5;
+ Fri, 30 Oct 2020 08:41:16 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 30 Oct 2020
- 08:41:02 +0800
+ 08:41:06 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>
-Subject: [PATCH v2 0/8] silence the compiler warnings
-Date: Fri, 30 Oct 2020 08:40:38 +0800
-Message-ID: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
+ <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>, Richard Henderson
+ <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 3/8] accel/tcg/user-exec: silence the compiler warnings
+Date: Fri, 30 Oct 2020 08:40:41 +0800
+Message-ID: <20201030004046.2191790-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 20:41:10
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 20:41:14
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -52,40 +56,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 30 Oct 2020 00:41:21 -0000
 
-Since v1:
-- Patch1: Add comments to explain the two case of fall through. Addressed Richard Henderson and Thomas Huth review comment.
-- Patch2: Addressed Peter Maydell review comment.
-- Patch3: Add QEMU_NORETURN to cpu_exit_tb_from_sighandler() function to avoid the compiler warnings.
-- Patch4: Addressed Thomas Huth review comment.
-- Patch5: Addressed Artyom Tarasenko and Philippe Mathieu-Daudé review comment.
-- Patch6: Combine the /* fall through */ to the preceding comments. Addressed  Artyom Tarasenko review comment.
-- Patch7: Add a "break" statement here instead of /* fall through */ comments.
-- Patch8: Replace the TODO by a LOG_UNIMP call and add break statement
-- Patch9: Discard this patch since a patch already exists for fix this issue(https://lore.kernel.org/qemu-devel/20200711154242.41222-1-ysato@users)
+When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+../accel/tcg/user-exec.c: In function ‘handle_cpu_signal’:
+../accel/tcg/user-exec.c:169:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../accel/tcg/user-exec.c:172:9: note: here
+  172 |         default:
 
+Mark the cpu_exit_tb_from_sighandler() function with QEMU_NORETURN to fix it.
 
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+v1->v2: Add QEMU_NORETURN to cpu_exit_tb_from_sighandler() function
+to avoid the compiler warnings(Base on Thomas's and Richard's comments).
 
-Chen Qun (8):
-  target/i386: silence the compiler warnings in gen_shiftd_rm_T1
-  hw/intc/arm_gicv3_kvm: silence the compiler warnings
-  accel/tcg/user-exec: silence the compiler warnings
-  linux-user/mips/cpu_loop: silence the compiler warnings
-  target/sparc/translate: silence the compiler warnings
-  target/sparc/win_helper: silence the compiler warnings
-  ppc: Add a missing break for PPC6xx_INPUT_TBEN
-  target/ppc: replaced the TODO with LOG_UNIMP and add break for silence
-    warnings
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: Riku Voipio <riku.voipio@iki.fi>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+---
+ accel/tcg/user-exec.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
- accel/tcg/user-exec.c      | 3 ++-
- hw/intc/arm_gicv3_kvm.c    | 8 ++++++++
- hw/ppc/ppc.c               | 1 +
- linux-user/mips/cpu_loop.c | 4 ++++
- target/i386/translate.c    | 7 +++++--
- target/ppc/mmu_helper.c    | 5 +++--
- target/sparc/translate.c   | 2 +-
- target/sparc/win_helper.c  | 2 +-
- 8 files changed, 25 insertions(+), 7 deletions(-)
-
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 4ebe25461a..293ee86ea4 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -49,7 +49,8 @@ __thread uintptr_t helper_retaddr;
+ /* exit the current TB from a signal handler. The host registers are
+    restored in a state compatible with the CPU emulator
+  */
+-static void cpu_exit_tb_from_sighandler(CPUState *cpu, sigset_t *old_set)
++static void QEMU_NORETURN cpu_exit_tb_from_sighandler(CPUState *cpu,
++                                                      sigset_t *old_set)
+ {
+     /* XXX: use siglongjmp ? */
+     sigprocmask(SIG_SETMASK, old_set, NULL);
 -- 
 2.27.0
 
