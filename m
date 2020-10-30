@@ -1,52 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYRZS-00056r-1H
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 06:23:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47360)
+	id 1kYUmW-00084M-Lg
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 09:49:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYRZQ-00054o-9Z; Fri, 30 Oct 2020 06:23:44 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2112)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYRZO-0008Pk-6J; Fri, 30 Oct 2020 06:23:44 -0400
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CMz0z234cz50Vr;
- Fri, 30 Oct 2020 18:23:31 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
- DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0487.000;
- Fri, 30 Oct 2020 18:23:20 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-CC: Pannengyuan <pannengyuan@huawei.com>, "lvivier@redhat.com"
- <lvivier@redhat.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- ganqixin <ganqixin@huawei.com>
-Subject: RE: [PATCH RESEND v2 0/7] some memleak trivial patchs
-Thread-Topic: [PATCH RESEND v2 0/7] some memleak trivial patchs
-Thread-Index: AQHWqQOAYexAkoH4WUOcMVYmxKZpOamv9+yw
-Date: Fri, 30 Oct 2020 10:23:19 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA18CD8@dggemm531-mbx.china.huawei.com>
-References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kYUmU-00082Y-Hn; Fri, 30 Oct 2020 09:49:26 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:45342)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kYUmS-0004KJ-7A; Fri, 30 Oct 2020 09:49:25 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id a9so6512739wrg.12;
+ Fri, 30 Oct 2020 06:49:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=enUHVE6/PhcWn+p+KJmbDxlEVfrqGZDvXq7Vvykiais=;
+ b=l15NxchqxHP32IrV97Oaxdtzr3ovzT8yLhgt2wRUvgCAe+k7EG0A73U8V/OnUV6knl
+ mW/82zxGRrjpSgDx7j1UkrKtlzvzYUawaXKtHGo8/LSClAxg8aCDf/RZzVdPCUdkMj3b
+ RogjorSz2dAWz6uTvdGdEFSkbua9jx1OVGT36A1S9IfT+SPOxUutc4IhJ7NnO2MYT/2Y
+ bZCVhECEs/7oiCr0lwZQKBuVCLrnQYhU88EhWS6eURYfaI0wDq7yGToLcgvTLQ16mbW4
+ suzBM5oZg/umkpm0UGQzttAQlQcXDf0whC0PQGST+nYHCJ5oss0T7MkM1smJBYAE27MP
+ ztbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=enUHVE6/PhcWn+p+KJmbDxlEVfrqGZDvXq7Vvykiais=;
+ b=bDBXQTwoC4233BnPjTJYCoiorzXjHV3S6LBHJ5KOpDmjod/xvlI2heviGfnDoK2bs4
+ OAKrlk9hUQB+q/vzMMI2vxZsCVS0vehKz30aOgzlHiOZc4WZH0TDq/oYPBNRL/6U0imZ
+ 5au73679Wp4gueqPilFKGD+Jdfgc6eYSkbEw4Fm8jsovOIRMBu1N+P9LpK62oSMUHQpK
+ skK+qpMEuR9/u5qp1AZcSx37ud4Z6fTD2T6h1dhpfVYAuWt1WvrCA5srOQKBbRANPLzu
+ 65IYJGkB/yrJzTKRJHluMTWgbzhvFcWJiSdZq3upcVxm45dvadCySsqPPdFQVx708TFE
+ Ancg==
+X-Gm-Message-State: AOAM533t5Bj+tmFVyDISVdq5ZQc2NWhxBA61c9zabhNKKQ6kuim4dnQo
+ Z+g4OOsaNJ9s9WzRQeUYD9ZErWe2xdM=
+X-Google-Smtp-Source: ABdhPJw0zNnE0bCthm0WUdrS9gHjSkaetEIKU5DDAWJXPMiZblBQdUYRYj47r5Vlufe4HkxmVOm9NA==
+X-Received: by 2002:a5d:4f8c:: with SMTP id d12mr3369673wru.351.1604065762105; 
+ Fri, 30 Oct 2020 06:49:22 -0700 (PDT)
+Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id 205sm4905578wme.38.2020.10.30.06.49.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Oct 2020 06:49:21 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Richard Henderson <rth@twiddle.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH-for-5.2 v2] hw/rx/rx-gdbsim: Fix memory leak
+Date: Fri, 30 Oct 2020 14:49:18 +0100
+Message-Id: <20201030134918.1518930-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 06:23:31
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,34 +82,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 10:23:44 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 13:49:27 -0000
 
-UGluZyENCg0KSGkgYWxsLA0KICBUaGUgcGF0Y2hlMiB+NyBoYXZlIGJlZW4gcmV2aWV3ZWQgZm9y
-IHNvbWUgdGltZS4gDQpDb3VsZCBzb21lb25lIHBsZWFzZSBwaWNrIGl0IHVwo78NCg0KVGhhbmtz
-LA0KQ2hlbiBRdW4NCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDaGVu
-cXVuIChrdWhuKQ0KPiBTZW50OiBGcmlkYXksIE9jdG9iZXIgMjMsIDIwMjAgMjoxMiBQTQ0KPiBU
-bzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0KPiBDYzog
-UGFubmVuZ3l1YW4gPHBhbm5lbmd5dWFuQGh1YXdlaS5jb20+OyBsdml2aWVyQHJlZGhhdC5jb207
-DQo+IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGdhbnFp
-eGluDQo+IDxnYW5xaXhpbkBodWF3ZWkuY29tPjsgQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1
-bkBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBbUEFUQ0ggUkVTRU5EIHYyIDAvN10gc29tZSBtZW1s
-ZWFrIHRyaXZpYWwgcGF0Y2hzDQo+IA0KPiBIaSBhbGwsDQo+IA0KPiAgIEhlcmUgYXJlIHNvbWUg
-bWVtb3J5IGxlYWsgcGF0Y2hlcyByZXBvcnRlZCBieSBFdWxlclJvYm90Lg0KPiBTb21lIHBhdGNo
-IHN1Ym1pc3Npb25zIGhhdmUgYmVlbiB1bmF0dGVuZGVkIGZvciBhIHdoaWxlIGFuZCBJIHJlc2Vu
-ZCB0aGVtLg0KPiANCj4gVGhhbmtzLA0KPiBDaGVuIFF1bg0KPiANCj4gDQo+IENoZW4gUXVuICgx
-KToNCj4gICB0ZXN0cy9taWdyYXRpb246IGZpeCBtZW1sZWFrIGluIHdhaXRfY29tbWFuZC93YWl0
-X2NvbW1hbmRfZmQNCj4gDQo+IFBhbiBOZW5neXVhbiAoNik6DQo+ICAgcWdhL2NoYW5uZWwtcG9z
-aXg6IFBsdWcgbWVtb3J5IGxlYWsgaW4gZ2FfY2hhbm5lbF93cml0ZV9hbGwoKQ0KPiAgIGVsZjJk
-bXAvcWVtdV9lbGY6IFBsdWcgbWVtbGVhayBpbiBRRU1VX0VsZl9pbml0DQo+ICAgZWxmMmRtcC9w
-ZGI6IFBsdWcgbWVtbGVhayBpbiBwZGJfaW5pdF9mcm9tX2ZpbGUNCj4gICBtaWdyYXRpb24vY29s
-bzogUGx1ZyBtZW1sZWFrcyBpbiBjb2xvX3Byb2Nlc3NfaW5jb21pbmdfdGhyZWFkDQo+ICAgYmxv
-Y2tkZXY6IEZpeCBhIG1lbWxlYWsgaW4gZHJpdmVfYmFja3VwX3ByZXBhcmUoKQ0KPiAgIGJsb2Nr
-L2ZpbGUtcG9zaXg6IGZpeCBhIHBvc3NpYmxlIHVuZGVmaW5lZCBiZWhhdmlvcg0KPiANCj4gIGJs
-b2NrL2ZpbGUtcG9zaXguYyAgICAgICAgICAgICAgfCAgMiArLQ0KPiAgYmxvY2tkZXYuYyAgICAg
-ICAgICAgICAgICAgICAgICB8ICAxICsNCj4gIGNvbnRyaWIvZWxmMmRtcC9wZGIuYyAgICAgICAg
-ICAgfCAgMSArDQo+ICBjb250cmliL2VsZjJkbXAvcWVtdV9lbGYuYyAgICAgIHwgIDEgKw0KPiAg
-bWlncmF0aW9uL2NvbG8uYyAgICAgICAgICAgICAgICB8ICA1ICsrKystDQo+ICBxZ2EvY2hhbm5l
-bC1wb3NpeC5jICAgICAgICAgICAgIHwgIDYgKysrKystDQo+ICB0ZXN0cy9xdGVzdC9taWdyYXRp
-b24taGVscGVycy5jIHwgMTYgKysrKysrKysrKysrLS0tLQ0KPiAgNyBmaWxlcyBjaGFuZ2VkLCAy
-NSBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQ0KPiANCj4gLS0NCj4gMi4yMy4wDQoNCg==
+As load_device_tree() returns allocated memory,
+we need to free it.
+
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Fixes: bda19d7bb56 ("hw/rx: Add RX GDB simulator")
+Reported-by: Coverity (CID 1432307: RESOURCE_LEAK)
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v2: NULL-initialize (Richard)
+---
+ hw/rx/rx-gdbsim.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+index 417ec0564b3..d70865962e8 100644
+--- a/hw/rx/rx-gdbsim.c
++++ b/hw/rx/rx-gdbsim.c
+@@ -122,7 +122,7 @@ static void rx_gdbsim_init(MachineState *machine)
+         if (dtb_filename) {
+             ram_addr_t dtb_offset;
+             int dtb_size;
+-            void *dtb;
++            g_autofree void *dtb = NULL;
+ 
+             dtb = load_device_tree(dtb_filename, &dtb_size);
+             if (dtb == NULL) {
+-- 
+2.26.2
+
 
