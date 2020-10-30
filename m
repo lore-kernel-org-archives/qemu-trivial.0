@@ -1,28 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYITx-0001lD-IZ
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45020)
+	id 1kYITy-0001mb-1n
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITu-0001d3-2t; Thu, 29 Oct 2020 20:41:26 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2061)
+ id 1kYITv-0001ff-2D; Thu, 29 Oct 2020 20:41:27 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2063)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITs-00014P-03; Thu, 29 Oct 2020 20:41:25 -0400
+ id 1kYITs-00014T-0H; Thu, 29 Oct 2020 20:41:26 -0400
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CMk5G3V4Xzhd7q;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CMk5G3cqJzhd8P;
  Fri, 30 Oct 2020 08:41:22 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 30 Oct 2020
- 08:41:12 +0800
+ 08:41:10 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
- <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH v2 7/8] ppc: Add a missing break for PPC6xx_INPUT_TBEN
-Date: Fri, 30 Oct 2020 08:40:45 +0800
-Message-ID: <20201030004046.2191790-8-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Artyom
+ Tarasenko" <atar4qemu@gmail.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v2 6/8] target/sparc/win_helper: silence the compiler warnings
+Date: Fri, 30 Oct 2020 08:40:44 +0800
+Message-ID: <20201030004046.2191790-7-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
 References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
@@ -53,43 +55,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 00:41:26 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 00:41:27 -0000
 
 When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
-hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  118 |             if (level) {
-      |                ^
-hw/ppc/ppc.c:123:9: note: here
-  123 |         case PPC6xx_INPUT_INT:
-      |         ^~~~
+target/sparc/win_helper.c: In function ‘get_gregset’:
+target/sparc/win_helper.c:304:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  304 |         trace_win_helper_gregset_error(pstate);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+target/sparc/win_helper.c:306:5: note: here
+  306 |     case 0:
+      |     ^~~~
 
-According to the discussion, a break statement needs to be added here.
+Add the corresponding "fall through" comment to fix it.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
-v1->v2: Add a "break" statement here instead of /* fall through */ comments
-(Base on Thomas's and David review).
+v1->v2: Combine the /* fall through */ to the preceding comments
+(Base on Philippe's comments).
 
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
- hw/ppc/ppc.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/sparc/win_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-index 4a11fb1640..1b98272076 100644
---- a/hw/ppc/ppc.c
-+++ b/hw/ppc/ppc.c
-@@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
-             } else {
-                 cpu_ppc_tb_stop(env);
-             }
-+            break;
-         case PPC6xx_INPUT_INT:
-             /* Level sensitive - active high */
-             LOG_IRQ("%s: set the external IRQ state to %d\n",
+diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
+index 8290a21142..e78660b60a 100644
+--- a/target/sparc/win_helper.c
++++ b/target/sparc/win_helper.c
+@@ -302,7 +302,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
+     switch (pstate) {
+     default:
+         trace_win_helper_gregset_error(pstate);
+-        /* pass through to normal set of global registers */
++        /* fall through to normal set of global registers */
+     case 0:
+         return env->bgregs;
+     case PS_AG:
 -- 
 2.27.0
 
