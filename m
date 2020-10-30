@@ -1,41 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYITy-0001mb-1n
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:41:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45024)
+	id 1kYIc1-0004PC-KB
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2020 20:49:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITv-0001ff-2D; Thu, 29 Oct 2020 20:41:27 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2063)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kYIbn-00048P-Nj; Thu, 29 Oct 2020 20:49:36 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2369)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kYITs-00014T-0H; Thu, 29 Oct 2020 20:41:26 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CMk5G3cqJzhd8P;
- Fri, 30 Oct 2020 08:41:22 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 30 Oct 2020
- 08:41:10 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Artyom
- Tarasenko" <atar4qemu@gmail.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>, Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH v2 6/8] target/sparc/win_helper: silence the compiler warnings
-Date: Fri, 30 Oct 2020 08:40:44 +0800
-Message-ID: <20201030004046.2191790-7-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
-References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kYIbi-0001p3-5k; Thu, 29 Oct 2020 20:49:35 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CMkGY6YhGz15LX2;
+ Fri, 30 Oct 2020 08:49:25 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Fri, 30 Oct 2020
+ 08:49:18 +0800
+From: Xinhao Zhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-riscv@nongnu.org>
+CC: <palmer@dabbelt.com>, <Alistair.Francis@wdc.com>,
+ <sagark@eecs.berkeley.edu>, <kbastian@mail.uni-paderborn.de>,
+ <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: [PATCH] target/riscv/csr.c : add space before the open parenthesis '('
+Date: Fri, 30 Oct 2020 08:48:15 +0800
+Message-ID: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 20:41:10
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 20:41:14
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -55,47 +51,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 00:41:27 -0000
+X-List-Received-Date: Fri, 30 Oct 2020 00:49:40 -0000
 
-When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-target/sparc/win_helper.c: In function ‘get_gregset’:
-target/sparc/win_helper.c:304:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  304 |         trace_win_helper_gregset_error(pstate);
-      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-target/sparc/win_helper.c:306:5: note: here
-  306 |     case 0:
-      |     ^~~~
+Fix code style. Space required before the open parenthesis '('.
 
-Add the corresponding "fall through" comment to fix it.
-
+Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+Signed-off-by: Kai Deng <dengkai1@huawei.com>
 Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
-v1->v2: Combine the /* fall through */ to the preceding comments
-(Base on Philippe's comments).
-
-Cc: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
----
- target/sparc/win_helper.c | 2 +-
+ target/riscv/csr.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
-index 8290a21142..e78660b60a 100644
---- a/target/sparc/win_helper.c
-+++ b/target/sparc/win_helper.c
-@@ -302,7 +302,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
-     switch (pstate) {
-     default:
-         trace_win_helper_gregset_error(pstate);
--        /* pass through to normal set of global registers */
-+        /* fall through to normal set of global registers */
-     case 0:
-         return env->bgregs;
-     case PS_AG:
+diff --git a/target/riscv/csr.c b/target/riscv/csr.c
+index aaef6c6f20..e8b149f0d2 100644
+--- a/target/riscv/csr.c
++++ b/target/riscv/csr.c
+@@ -881,7 +881,7 @@ static int write_satp(CPURISCVState *env, int csrno, target_ulong val)
+         if (env->priv == PRV_S && get_field(env->mstatus, MSTATUS_TVM)) {
+             return -RISCV_EXCP_ILLEGAL_INST;
+         } else {
+-            if((val ^ env->satp) & SATP_ASID) {
++            if ((val ^ env->satp) & SATP_ASID) {
+                 tlb_flush(env_cpu(env));
+             }
+             env->satp = val;
 -- 
-2.27.0
+2.29.0-rc1
 
 
