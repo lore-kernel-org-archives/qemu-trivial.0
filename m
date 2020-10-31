@@ -1,65 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYaKC-00061E-Bu
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 15:44:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45614)
+	id 1kYh5u-0000wM-Vy
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 22:58:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYaKA-00060v-Bk
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 15:44:34 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:45419)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYaK8-0002qF-MR
- for qemu-trivial@nongnu.org; Fri, 30 Oct 2020 15:44:33 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id dg9so7793918edb.12
- for <qemu-trivial@nongnu.org>; Fri, 30 Oct 2020 12:44:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hwd/sGRMmS6NYhHXnZ2qmdx4sh7ls5tI2LhbXvO/RWo=;
- b=tJ9QezteLo5EGmIEucITgD/WbyWawc1cUSVYe+Y3znRtLf1PM66sUd72ZYuWu9e2en
- Gw2L0VTSzxmnxwfJ+6Ax4jD8G/XfwalUY97iH7uRkwG0FoyDcu650fkjiHHE3E31lCaZ
- 8yJQJ8H45wzVAfOWMX1JhVtDQ/ixsvj3PxPehPqw0A3vfHJmgSq5raA5wHaA4nAchrEs
- 97i8HKgoA6pT+N7D94mD9nyfjfKw3fZsMQHHvubf1SufkmGts326nOfwAJw2Lm4Az2uK
- lVwCM7V2pqMn1omhP09TSB7tflC0nxmrkEHe7E6F0BIDafs5bC4/9ebiEgqOYFcW/q0W
- +Z1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hwd/sGRMmS6NYhHXnZ2qmdx4sh7ls5tI2LhbXvO/RWo=;
- b=qoyqJ/EGfaYNH/g5Cxp7ehflAALqZhu1qlvbBKZv+HHrTOALtYb8pPoT4aL3weyUG/
- CSHS/n0fVi6qhDwHZqICvZQo0Slcbl797JTX2j60oZVJ9ALohseheJoKjzTWLQJ88D43
- AgC86wTSbykYuvEFIgk1g38FC4wZH+WBn5xeYuXVVPSL/XV+i9VubVkdjLD6nw9PS06b
- CT52Vbxlv24u1WlttKAQwR//2hmT0ZA3ZV+FTv3Dl6sah0Ywe3jDO04dCFUHq5HE9+sP
- zHQ16S8IfSthquzMQeAlXnrUYYJtgUEN0cfvJFGNGAwtchkn2K/ci4VeTO0YGCjZzANK
- C8gg==
-X-Gm-Message-State: AOAM530BzMlARNWtT+pmgnIRTZPYSNcjS8g27n0KBwMzf34f6axAp6bG
- keuCAdemf4929hBnRt6i/3R4E2kWbeGuIFz50p09xg==
-X-Google-Smtp-Source: ABdhPJyf7JdHK7+3SAme7Y6Uhs+hz0mu67KlD6SY05j+/eZkRXH9PuFFLqPX+zVli6WkwDe2O5PMX+Gp3cI3s6KKh24=
-X-Received: by 2002:aa7:d699:: with SMTP id d25mr4151997edr.44.1604087071158; 
- Fri, 30 Oct 2020 12:44:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kYh5s-0000vc-QT; Fri, 30 Oct 2020 22:58:16 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2064)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kYh5q-00087T-8P; Fri, 30 Oct 2020 22:58:16 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CNP4J2QDNzhcfy;
+ Sat, 31 Oct 2020 10:57:52 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.487.0; Sat, 31 Oct 2020 10:57:47 +0800
+Message-ID: <5F9CD2AB.1060601@huawei.com>
+Date: Sat, 31 Oct 2020 10:57:47 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-References: <20201027163014.247336-1-laurent@vivier.eu>
-In-Reply-To: <20201027163014.247336-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Oct 2020 19:44:20 +0000
-Message-ID: <CAFEAcA_pVT+-xSD_U61dTJF=tKFJRWcTqTenurXk2ETR5n6JzA@mail.gmail.com>
-Subject: Re: [PULL 0/8] Trivial branch for 5.2 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+References: <5F9BE974.3040806@huawei.com>
+ <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/30 22:57:53
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.253,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,33 +55,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Oct 2020 19:44:34 -0000
+X-List-Received-Date: Sat, 31 Oct 2020 02:58:17 -0000
 
-On Tue, 27 Oct 2020 at 16:33, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 4c5b97bfd0dd54dc27717ae8d1cd10e14eef1430:
->
->   Merge remote-tracking branch 'remotes/kraxel/tags/modules-20201022-pull-req=
-> uest' into staging (2020-10-22 12:33:21 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-5.2-pull-request
->
-> for you to fetch changes up to e83029fa605d6aa475be60b191f2af3954591093:
->
->   CHANGELOG: remove disused file (2020-10-27 16:48:50 +0100)
->
-> ----------------------------------------------------------------
-> Pull request trivial branch 20201027
->
-> ----------------------------------------------------------------
+On 2020/10/30 22:28, Peter Maydell wrote:
+> On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+>>
+>> In exynos4210_fimd_update(), the pointer s is dereferenced before
+>> being check if it is valid, which may lead to NULL pointer dereference.
+>> So move the assignment to global_width after checking that the s is valid
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>> ---
+>>  hw/display/exynos4210_fimd.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+>> index 4c16e1f5a0..a1179d2f89 100644
+>> --- a/hw/display/exynos4210_fimd.c
+>> +++ b/hw/display/exynos4210_fimd.c
+>> @@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
+>>      bool blend = false;
+>>      uint8_t *host_fb_addr;
+>>      bool is_dirty = false;
+>> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+>>
+>>      if (!s || !s->console || !s->enabled ||
+>>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+>>          return;
+>>      }
+>> +    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+>>      exynos4210_update_resolution(s);
+>>      surface = qemu_console_surface(s->console);
+> 
+> Yep, this is a bug, but QEMU's coding style doesn't permit
+> variable declarations in the middle of functions. You need
+> to split the declaration (which stays where it is) and the
+> initialization (which can moved down below the !s test.
+> 
+Thans for your review. I have also considered this modification to be incompatible with
+the QEMU's coding style. But the type of global_width is const int which cannot be
+assigned once they are defined.
+Could we define the global_width as int, such as this modification:
 
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index 4c16e1f5a0..34a960a976 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
+     bool blend = false;
+     uint8_t *host_fb_addr;
+     bool is_dirty = false;
+-    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
++    int global_width;
 
-Applied, thanks.
+     if (!s || !s->console || !s->enabled ||
+         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+         return;
+     }
++
++    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+     exynos4210_update_resolution(s);
+     surface = qemu_console_surface(s->console);
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
-for any user-visible changes.
-
--- PMM
 
