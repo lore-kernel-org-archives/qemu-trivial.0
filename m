@@ -1,48 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYjHR-0000YX-LP
-	for mharc-qemu-trivial@gnu.org; Sat, 31 Oct 2020 01:18:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41362)
+	id 1kYnUC-0000RH-UO
+	for mharc-qemu-trivial@gnu.org; Sat, 31 Oct 2020 05:47:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kYjHO-0000Wx-Hz; Sat, 31 Oct 2020 01:18:18 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:46903)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kYjHM-0006qQ-9q; Sat, 31 Oct 2020 01:18:18 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CNSB44xDNz9sS8; Sat, 31 Oct 2020 16:18:04 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1604121484;
- bh=IfzrySUWrgkfxbmthEf/Bl4Sc8gQc05wOAFUqTBSJ/o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=W6YDFEX12ynP2RleU4DnmiHfJYXPJuHPYEMREsxVLPkZeLys2zeu/VmLjZRJz3jhg
- DaXUEvG2cTjrM0Pi8YimJ0tOPUcS4Fv67rPJCHkjYnoJKI0ts741rYo0SKydGNKDUG
- nC3J8EB7ASWU25mBBPPfJowgFGxy1hJa4d5qyBMU=
-Date: Sat, 31 Oct 2020 16:01:02 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2 7/8] ppc: Add a missing break for PPC6xx_INPUT_TBEN
-Message-ID: <20201031050102.GA17638@yekko.fritz.box>
-References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
- <20201030004046.2191790-8-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kYnUB-0000Oc-Eg
+ for qemu-trivial@nongnu.org; Sat, 31 Oct 2020 05:47:47 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:38294)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kYnU8-00085p-E0
+ for qemu-trivial@nongnu.org; Sat, 31 Oct 2020 05:47:47 -0400
+Received: by mail-ed1-x542.google.com with SMTP id k9so9185872edo.5
+ for <qemu-trivial@nongnu.org>; Sat, 31 Oct 2020 02:47:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=urG2kFZ3ce8Op/j8tESCCY+aOGYMljSJmXSJJ2Vr/XI=;
+ b=NAdvUhJsc9heM/Ik8kb4VHKedwI0Wz/vHNVaZMxVJGPulVHpcfEpPuXmCtm6f9C8Gt
+ o5Bq/4yJoGVG75Jchs7tVPp4CEtmKGOiI49mzRknGcmlr8dkbE/z0dhELuxWunRg08YL
+ 8KGWKlMwt81QfpTqHIbsM2hmqpjlsqrFbqZWcrib1K135szWIrXlltsgME0GKKxD5gPY
+ NH+akUUc7P8kML6rOykkzZzOR+QxNPdwbLGWf7HZqklY/fHQGt4JrAuPEay/9wXB3Wtl
+ bMILmrVk7C9lAn6bPPUXo+//18cu9qbu09stemF5VqjO+RMiSj4Roithna9STITbWhEL
+ +cNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=urG2kFZ3ce8Op/j8tESCCY+aOGYMljSJmXSJJ2Vr/XI=;
+ b=TySkzAPW385zh79eWxaGL25jLu/zviFHrYldHmO204w3JCTPkwO6Pr8lDLLgy7hgA4
+ 0YODfGwSBxqwX8oSZiM+uPrfvh1OCteS231/toOD7S8NLvvVell4fWH1ESIBa5Be9YkP
+ h/3vz4JMu+aXwltCt+ZG1f9oo/v40B/bDAXYteYZxLzYaaNNWqKfbIgIpCUxSQhdyLK9
+ hbct4AysNejpvYyJ7xq+rabVwQB+wKWZqhcgUtVrFeSP4Wz/VwacMsh/XWnY9GPhEeep
+ ZINhfxnx7iJkea/BbRRlYT8ixpLgH+Idg/bXlFl9nJ/QzcjhTEfwvt9FeNsQSsQvZ8fu
+ DUww==
+X-Gm-Message-State: AOAM532JyUGps1CQmdqmj48ZzhlYsGbXJH2ASkvqxXpj5Xrs7Urh/08x
+ de8J6P+6JgF4S5EC7sTkU1U/noupqb7lB9iao/1ikA==
+X-Google-Smtp-Source: ABdhPJzi8PlEBw6d+JQsJJBvmxzL4Wo+GoIOuCa8eKh9bCGxWRkZ/1L8LmQ5X4n5kWxdIJuRY8mXMnKduyhiSVDGE7A=
+X-Received: by 2002:a05:6402:b35:: with SMTP id
+ bo21mr7061428edb.52.1604137662703; 
+ Sat, 31 Oct 2020 02:47:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="YZ5djTAD1cGYuMQK"
-Content-Disposition: inline
-In-Reply-To: <20201030004046.2191790-8-kuhn.chenqun@huawei.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
+References: <5F9BE974.3040806@huawei.com>
+ <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
+ <5F9CD2AB.1060601@huawei.com>
+In-Reply-To: <5F9CD2AB.1060601@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 31 Oct 2020 09:47:31 +0000
+Message-ID: <CAFEAcA-ig-+T21OmbiRXhEZF6zpjsXXN=pm7Y=bj-P_d2SHFNg@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+To: AlexChen <alex.chen@huawei.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,83 +76,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Oct 2020 05:18:19 -0000
+X-List-Received-Date: Sat, 31 Oct 2020 09:47:47 -0000
 
+On Sat, 31 Oct 2020 at 02:57, AlexChen <alex.chen@huawei.com> wrote:
+>
+> On 2020/10/30 22:28, Peter Maydell wrote:
+> > On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+> >>
+> >> In exynos4210_fimd_update(), the pointer s is dereferenced before
+> >> being check if it is valid, which may lead to NULL pointer dereference.
+> >> So move the assignment to global_width after checking that the s is valid
+> >>
+> >> Reported-by: Euler Robot <euler.robot@huawei.com>
+> >> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> >> ---
+> >>  hw/display/exynos4210_fimd.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+> >> index 4c16e1f5a0..a1179d2f89 100644
+> >> --- a/hw/display/exynos4210_fimd.c
+> >> +++ b/hw/display/exynos4210_fimd.c
+> >> @@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
+> >>      bool blend = false;
+> >>      uint8_t *host_fb_addr;
+> >>      bool is_dirty = false;
+> >> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+> >>
+> >>      if (!s || !s->console || !s->enabled ||
+> >>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+> >>          return;
+> >>      }
+> >> +    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+> >>      exynos4210_update_resolution(s);
+> >>      surface = qemu_console_surface(s->console);
+> >
+> > Yep, this is a bug, but QEMU's coding style doesn't permit
+> > variable declarations in the middle of functions. You need
+> > to split the declaration (which stays where it is) and the
+> > initialization (which can moved down below the !s test.
+> >
+> Thans for your review. I have also considered this modification to be incompatible with
+> the QEMU's coding style. But the type of global_width is const int which cannot be
+> assigned once they are defined.
+> Could we define the global_width as int, such as this modification:
+>
+> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+> index 4c16e1f5a0..34a960a976 100644
+> --- a/hw/display/exynos4210_fimd.c
+> +++ b/hw/display/exynos4210_fimd.c
+> @@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
+>      bool blend = false;
+>      uint8_t *host_fb_addr;
+>      bool is_dirty = false;
+> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+> +    int global_width;
+>
+>      if (!s || !s->console || !s->enabled ||
+>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+>          return;
+>      }
+> +
+> +    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+>      exynos4210_update_resolution(s);
+>      surface = qemu_console_surface(s->console);
 
---YZ5djTAD1cGYuMQK
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Yes, I think that would be fine.
 
-On Fri, Oct 30, 2020 at 08:40:45AM +0800, Chen Qun wrote:
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
-ing:
-> hw/ppc/ppc.c: In function =E2=80=98ppc6xx_set_irq=E2=80=99:
-> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit=
--fallthrough=3D]
->   118 |             if (level) {
->       |                ^
-> hw/ppc/ppc.c:123:9: note: here
->   123 |         case PPC6xx_INPUT_INT:
->       |         ^~~~
->=20
-> According to the discussion, a break statement needs to be added here.
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> v1->v2: Add a "break" statement here instead of /* fall through */ commen=
-ts
-> (Base on Thomas's and David review).
->=20
-> Cc: Thomas Huth <thuth@redhat.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  hw/ppc/ppc.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-> index 4a11fb1640..1b98272076 100644
-> --- a/hw/ppc/ppc.c
-> +++ b/hw/ppc/ppc.c
-> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int=
- level)
->              } else {
->                  cpu_ppc_tb_stop(env);
->              }
-> +            break;
->          case PPC6xx_INPUT_INT:
->              /* Level sensitive - active high */
->              LOG_IRQ("%s: set the external IRQ state to %d\n",
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---YZ5djTAD1cGYuMQK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+c74wACgkQbDjKyiDZ
-s5K18RAAshjfnaPQGovwz8mLIXHmbQ2zbsn3JgWdJYreDG3GhuSFT0QluQJ9QzXu
-zekS+SF1W05LB+/ptpvH0RcbDyw+qzcBobpdLRTmDGdxs9hfJi1YbU3eB9Cp32W6
-ioSRPurGRpvh1s1iJob3Imfu2uYnk6dudNhazxti/XuNkYrWTgDl+LYkgDHS/bwx
-jjyOugjrtMGMxu/sEmgYxeGtuPdoBuvnwoBYi1PM3BNJSjurjAN2lySPkg8e8enl
-0dAAD9TEfHsUgx+94gQPkLt8Zau9KXww2i/5DzZtGENv1vX2eqRxSx67t2viZ+Hm
-74qKBfmiRI1OfVL3b1eysYEualsZBwSA7MaJfBi0ChoNoD0cgvZBQBhcAa8xP/vT
-ce7fvZuG8r+C0OD1g4nZjTSV4T61EJbKc5/siw/gYEVe4JqMElL9drLWHEbZ5gtK
-uO56WReqhKHq0xtCqD35gdn1PRRh0w7yuPOeBMr9XgQ0W2WCc0v/CgpsGnLfCD2g
-Thoxm9ixmg8SBYdzgJObW/PbCuFaz8nmRm9TDsUvRKnZ0A8O3lSliKdMDNlARzcc
-97gcEZH38HIs0j/MaxCgkIhI48lj2xnQ78sJLdazKp893cp/C+L1C/+7oTlRDkdY
-nQjVhLIrdwrg1TuvkWzdHjco/vN9owLXzcUjDiBkMiabGj4bg6E=
-=wqfi
------END PGP SIGNATURE-----
-
---YZ5djTAD1cGYuMQK--
+thanks
+-- PMM
 
