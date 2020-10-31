@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYh5u-0000wM-Vy
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 22:58:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56406)
+	id 1kYh91-0002Tv-Cc
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Oct 2020 23:01:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kYh5s-0000vc-QT; Fri, 30 Oct 2020 22:58:16 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2064)
+ id 1kYh8z-0002TE-5D; Fri, 30 Oct 2020 23:01:29 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2065)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kYh5q-00087T-8P; Fri, 30 Oct 2020 22:58:16 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CNP4J2QDNzhcfy;
- Sat, 31 Oct 2020 10:57:52 +0800 (CST)
+ id 1kYh8x-0000qj-Ct; Fri, 30 Oct 2020 23:01:28 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CNP8P4FHNzhcVB;
+ Sat, 31 Oct 2020 11:01:25 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.487.0; Sat, 31 Oct 2020 10:57:47 +0800
-Message-ID: <5F9CD2AB.1060601@huawei.com>
-Date: Sat, 31 Oct 2020 10:57:47 +0800
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Sat, 31 Oct 2020 11:01:21 +0800
+Message-ID: <5F9CD381.9010507@huawei.com>
+Date: Sat, 31 Oct 2020 11:01:21 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
-CC: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
+CC: qemu-arm <qemu-arm@nongnu.org>, QEMU <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] hw/display/omap_lcdc: Fix potential NULL pointer
  dereference
-References: <5F9BE974.3040806@huawei.com>
- <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
+References: <5F9BE993.4050406@huawei.com>
+ <CAFEAcA8hpb2UVd3PSY4XuEpKYeu1Am1+41DQ=gN48xbAv281TQ@mail.gmail.com>
+ <CAFEAcA-WTw-0EvT1REbTrtgLB9sBbnJBuNW9LMh7eOtsXtrDTw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-WTw-0EvT1REbTrtgLB9sBbnJBuNW9LMh7eOtsXtrDTw@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
@@ -55,67 +56,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Oct 2020 02:58:17 -0000
+X-List-Received-Date: Sat, 31 Oct 2020 03:01:30 -0000
 
-On 2020/10/30 22:28, Peter Maydell wrote:
-> On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+On 2020/10/30 22:35, Peter Maydell wrote:
+> On Fri, 30 Oct 2020 at 14:29, Peter Maydell <peter.maydell@linaro.org> wrote:
 >>
->> In exynos4210_fimd_update(), the pointer s is dereferenced before
->> being check if it is valid, which may lead to NULL pointer dereference.
->> So move the assignment to global_width after checking that the s is valid
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->> ---
->>  hw/display/exynos4210_fimd.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
->> index 4c16e1f5a0..a1179d2f89 100644
->> --- a/hw/display/exynos4210_fimd.c
->> +++ b/hw/display/exynos4210_fimd.c
->> @@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
->>      bool blend = false;
->>      uint8_t *host_fb_addr;
->>      bool is_dirty = false;
->> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
->>
->>      if (!s || !s->console || !s->enabled ||
->>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
->>          return;
->>      }
->> +    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
->>      exynos4210_update_resolution(s);
->>      surface = qemu_console_surface(s->console);
+>> On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
+>>>
+>>> In omap_lcd_interrupts(), the pointer omap_lcd is dereferenced before
+>>> being check if it is valid, which may lead to NULL pointer dereference.
+>>> So move the assignment to surface after checking that the omap_lcd is valid.
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>>> ---
+>>>  hw/display/omap_lcdc.c | 3 ++-
+>>>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> Yep, this is a bug, but QEMU's coding style doesn't permit
-> variable declarations in the middle of functions. You need
-> to split the declaration (which stays where it is) and the
-> initialization (which can moved down below the !s test.
+>> Applied to target-arm.next, thanks.
 > 
-Thans for your review. I have also considered this modification to be incompatible with
-the QEMU's coding style. But the type of global_width is const int which cannot be
-assigned once they are defined.
-Could we define the global_width as int, such as this modification:
+> Whoops, spoke too soon. This doesn't compile:
+> 
+> ../../hw/display/omap_lcdc.c: In function ‘omap_update_display’:
+> ../../hw/display/omap_lcdc.c:88:10: error: ‘surface’ may be used
+> uninitialized in this function [-Werror=maybe-uninitialized]
+>          !surface_bits_per_pixel(surface)) {
+>           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> 
+> because the early exit check
+>     if (!omap_lcd || omap_lcd->plm == 1 || !omap_lcd->enable ||
+>         !surface_bits_per_pixel(surface)) {
+>         return;
+>     }
+> 
+> uses 'surface' and this patch moves the initialization of that
+> variable down below its first use.
+> 
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index 4c16e1f5a0..34a960a976 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
-     bool blend = false;
-     uint8_t *host_fb_addr;
-     bool is_dirty = false;
--    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-+    int global_width;
+Oh, I apologize for this compilation error, I will fix it in my patch v2.
 
-     if (!s || !s->console || !s->enabled ||
-         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
-         return;
-     }
-+
-+    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-     exynos4210_update_resolution(s);
-     surface = qemu_console_surface(s->console);
-
+Thanks,
+Alex
 
