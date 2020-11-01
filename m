@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kYshB-0006tu-3N
-	for mharc-qemu-trivial@gnu.org; Sat, 31 Oct 2020 11:21:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38476)
+	id 1kZDTm-0001EQ-Km
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Nov 2020 08:33:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYsh9-0006rf-IK
- for qemu-trivial@nongnu.org; Sat, 31 Oct 2020 11:21:31 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:35615)
+ id 1kZDTl-0001E5-3Z
+ for qemu-trivial@nongnu.org; Sun, 01 Nov 2020 08:33:05 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43154)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYsh4-0007Uy-Hz
- for qemu-trivial@nongnu.org; Sat, 31 Oct 2020 11:21:31 -0400
-Received: by mail-ed1-x542.google.com with SMTP id w25so9766673edx.2
- for <qemu-trivial@nongnu.org>; Sat, 31 Oct 2020 08:21:24 -0700 (PDT)
+ id 1kZDTi-0001a5-NT
+ for qemu-trivial@nongnu.org; Sun, 01 Nov 2020 08:33:04 -0500
+Received: by mail-wr1-x442.google.com with SMTP id g12so11461417wrp.10
+ for <qemu-trivial@nongnu.org>; Sun, 01 Nov 2020 05:33:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Y3FTOIWKoACXeB9bxehIKqItvK8BcAi1OznwLkk0X44=;
- b=l6BzSHF1Zid5jZMHZi9FY/B5hhrFH20Fmq5jzzCJ7pVwWdcm7BfawXg7qY6P1tLYnF
- RPkv1rBTTvyR/6jFKOcZFrINseP1RXA8xQllNTXQVs1YjULCNHZy9jJgxtU+d8NMaCx5
- KzTd9+CZZkgI6HS5qDrg16ouY7jSYpawhIAqa/EVXWh3sy99EYLAINxXecKp09UDLKRa
- EP14LqVlXNXn1Tk6Y0n/eEtTkVyS7s+1dpw9Z8KOlnVhOpFPufZb2Q/ay/FQoouuyLx7
- HB9rD0A+qfrPNipe3zqHXp9vCRP8t7IEDAcFu+lj0rSRHICuxebaYBinL34pC807D9qN
- pnjg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e5F37KHKrsAJyEq6bg6gcyfjKzhVjIjvXr9kk8KAAlM=;
+ b=B7xB4TzLdAv9C78E97WURZNvaTfeqKIIP7ENQ1vkcmJDha0uTmxOcof0J8udYYq8oL
+ yRRgOCIx2ut2plK6exAPpOKK65C5WXYsEEkVsEgxMZ3rRK3B9UQ41dc7OK1/58+2GWuQ
+ KVryIOLVE6VGFhFT4CVlu+cn+wALiUxuKamIKRreperSlAYAO4qc4Y4YgI0Z+4VmfzMK
+ bkd3oklTfgjsgNAJzDSCeZNI4Bb5SQVeR9dvBVQBDNJ44Ik389JyP4PQHT02BIjhTam7
+ YJU9o2XXEfOKEyzPJHqIMzN9k9PikJlnqiO6apCRjYG5j2ikvF3b5ZBQ0In6ziuh8Ufk
+ dtVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Y3FTOIWKoACXeB9bxehIKqItvK8BcAi1OznwLkk0X44=;
- b=hBPcazcgFjET5gE8kGQexTWheCu/N2OWSv7zwvpfl7rBTaIyNDCJT6ceaBlRXal77q
- clHDLB8FO7DBLX8bzeo3adfBz4WNhmnBauHaSFS+UyYCSme5LdGdPCXbASIoVwb5415O
- GlOUxxl/zmGaaiT+I+ID2iYwQSrvEnK6DzutUk6gD7/C8KCq9ohcF7GHu4JSJwGJlR7Z
- qGsgghE/MA5x6QZjo89pi6A29NCyisqeMA3K9hmJdOw9Xhnzs7PijolL8O30uIG5JRze
- R/MdbkCFB5x8plf3nHwGUu3m7vevd3pS5Ks5cTrY3wQ8VlxSrTd+jgV/FZf2XyhRHQnO
- g4kQ==
-X-Gm-Message-State: AOAM533jQv9EK4hiQGRzik0b3VEHGAqWcfRJtomulhVLwG1mJE/yrfrD
- GOjbDWJE0Pll478P2wg0g/eIKq7Sb3P0wyCPGwHQ2KpBa/iv0w==
-X-Google-Smtp-Source: ABdhPJwI/gQAgRsOPTmTsgN/9RLhTvdUg/OaVz0wC9nDx2h/Xfv/jDAT6Qp42SR8uhfZ8hkWUbyY6q2UgMKRDEZ5oh0=
-X-Received: by 2002:a05:6402:b35:: with SMTP id
- bo21mr8393283edb.52.1604157683543; 
- Sat, 31 Oct 2020 08:21:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <5F9D449A.900@huawei.com>
-In-Reply-To: <5F9D449A.900@huawei.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e5F37KHKrsAJyEq6bg6gcyfjKzhVjIjvXr9kk8KAAlM=;
+ b=uLKWNNyotr09IxTT1JnTJSylAFbFJaKkEjZNpSQOjHShgBSjYIOGAFqqDQ2eXiD6Pw
+ 2tyfqZVuA/oWcw46Ul7dbDUQD0wSTxdVk7csDTgV2BThT2MDMowj6URRP8wvTXdvmPTq
+ agWqW32tcFnst1bGPnByRA+NldVEC+nTfOq1btTJJjeUNCY4S16AKkahDGCWngOFAVKp
+ nhrW94aAgpLRcr5u9hVWeKc4miKci6DSww5ds8mLQoCbRoSYUfZ11bdBO13tSv5cU+Ss
+ BTn+FmwpJ079+daQZMWNIqa0FHQbCyJeXcJNxWjh7q1puz6ENYpAjwSriUzmuCWai20x
+ VNmA==
+X-Gm-Message-State: AOAM533ZwrBmThv6QRJ5rfGOpx2rAs2MBazx08CgSqgWMqMN0LpZxChK
+ ZVzyRDefpGeNVide2WLH9SO5lQ==
+X-Google-Smtp-Source: ABdhPJxjXNFIH1bl0ejx4jGLsgxVIiby4M+y68qYrJ48Kv6SB5KtWmPetujDtJ8IeFt1+hpxW2NIhw==
+X-Received: by 2002:adf:d4ce:: with SMTP id w14mr14770107wrk.142.1604237580871; 
+ Sun, 01 Nov 2020 05:33:00 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id u3sm21919673wme.0.2020.11.01.05.32.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 01 Nov 2020 05:33:00 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 31 Oct 2020 15:21:12 +0000
-Message-ID: <CAFEAcA9w_JZ5m2Cj9Cuc4GMka8vp-AabtmqNLwe0q7ObN7QKyA@mail.gmail.com>
-Subject: Re: [PATCH] util: Remove redundant checks in the openpty()
-To: AlexChen <alex.chen@huawei.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] hw/input/ps2.c: Remove remnants of printf debug
+Date: Sun,  1 Nov 2020 13:32:58 +0000
+Message-Id: <20201101133258.4240-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -73,56 +75,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Oct 2020 15:21:31 -0000
+X-List-Received-Date: Sun, 01 Nov 2020 13:33:05 -0000
 
-On Sat, 31 Oct 2020 at 11:04, AlexChen <alex.chen@huawei.com> wrote:
->
-> As we can see from the following function call stack, the amaster and the aslave
-> cannot be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
-> In addition, the amaster and the aslave has been dereferenced at the beginning
-> of the openpty(). So the checks on amaster and aslave in the openpty() are redundant.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+In commit 5edab03d4040 we added tracepoints to the ps2 keyboard
+and mouse emulation. However we didn't remove all the debug-by-printf
+support. In fact there is only one printf() remaining, and it is
+redundant with the trace_ps2_write_mouse() event next to it.
+Remove the printf() and the now-unused DEBUG* macros.
 
-This function is trying to match the BSD/glibc openpty()
-function, so the thing to check here is not QEMU's specific
-current usage but the API specification for openpty():
-https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html
-https://www.freebsd.org/cgi/man.cgi?query=openpty
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/input/ps2.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-The spec says that name, termp and winp can all be
-NULL, but it doesn't say this for amaster and aslave,
-so indeed the change in this patch is the correct one.
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index f8746d2f52c..72cdb80ae1c 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -33,12 +33,6 @@
+ 
+ #include "trace.h"
+ 
+-/* debug PC keyboard */
+-//#define DEBUG_KBD
+-
+-/* debug PC keyboard : only mouse */
+-//#define DEBUG_MOUSE
+-
+ /* Keyboard Commands */
+ #define KBD_CMD_SET_LEDS	0xED	/* Set keyboard leds */
+ #define KBD_CMD_ECHO     	0xEE
+@@ -790,9 +784,6 @@ void ps2_write_mouse(void *opaque, int val)
+     PS2MouseState *s = (PS2MouseState *)opaque;
+ 
+     trace_ps2_write_mouse(opaque, val);
+-#ifdef DEBUG_MOUSE
+-    printf("kbd: write mouse 0x%02x\n", val);
+-#endif
+     switch(s->common.write_cmd) {
+     default:
+     case -1:
+-- 
+2.20.1
 
-> ---
->  util/qemu-openpty.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->
-> diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
-> index eb17f5b0bc..427f43a769 100644
-> --- a/util/qemu-openpty.c
-> +++ b/util/qemu-openpty.c
-> @@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
->              (termp != NULL && tcgetattr(sfd, termp) < 0))
->                  goto err;
->
-> -        if (amaster)
-> -                *amaster = mfd;
-> -        if (aslave)
-> -                *aslave = sfd;
-> +        *amaster = mfd;
-> +        *aslave = sfd;
-> +
->          if (winp)
->                  ioctl(sfd, TIOCSWINSZ, winp);
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-though you might like to mention in the commit message that
-the openpty() API doesn't allow NULL amaster or aslave
-arguments.
-
-thanks
--- PMM
 
