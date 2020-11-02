@@ -1,68 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZDTm-0001EQ-Km
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Nov 2020 08:33:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35742)
+	id 1kZRdW-0004WS-Pe
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Nov 2020 23:40:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZDTl-0001E5-3Z
- for qemu-trivial@nongnu.org; Sun, 01 Nov 2020 08:33:05 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43154)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZDTi-0001a5-NT
- for qemu-trivial@nongnu.org; Sun, 01 Nov 2020 08:33:04 -0500
-Received: by mail-wr1-x442.google.com with SMTP id g12so11461417wrp.10
- for <qemu-trivial@nongnu.org>; Sun, 01 Nov 2020 05:33:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e5F37KHKrsAJyEq6bg6gcyfjKzhVjIjvXr9kk8KAAlM=;
- b=B7xB4TzLdAv9C78E97WURZNvaTfeqKIIP7ENQ1vkcmJDha0uTmxOcof0J8udYYq8oL
- yRRgOCIx2ut2plK6exAPpOKK65C5WXYsEEkVsEgxMZ3rRK3B9UQ41dc7OK1/58+2GWuQ
- KVryIOLVE6VGFhFT4CVlu+cn+wALiUxuKamIKRreperSlAYAO4qc4Y4YgI0Z+4VmfzMK
- bkd3oklTfgjsgNAJzDSCeZNI4Bb5SQVeR9dvBVQBDNJ44Ik389JyP4PQHT02BIjhTam7
- YJU9o2XXEfOKEyzPJHqIMzN9k9PikJlnqiO6apCRjYG5j2ikvF3b5ZBQ0In6ziuh8Ufk
- dtVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e5F37KHKrsAJyEq6bg6gcyfjKzhVjIjvXr9kk8KAAlM=;
- b=uLKWNNyotr09IxTT1JnTJSylAFbFJaKkEjZNpSQOjHShgBSjYIOGAFqqDQ2eXiD6Pw
- 2tyfqZVuA/oWcw46Ul7dbDUQD0wSTxdVk7csDTgV2BThT2MDMowj6URRP8wvTXdvmPTq
- agWqW32tcFnst1bGPnByRA+NldVEC+nTfOq1btTJJjeUNCY4S16AKkahDGCWngOFAVKp
- nhrW94aAgpLRcr5u9hVWeKc4miKci6DSww5ds8mLQoCbRoSYUfZ11bdBO13tSv5cU+Ss
- BTn+FmwpJ079+daQZMWNIqa0FHQbCyJeXcJNxWjh7q1puz6ENYpAjwSriUzmuCWai20x
- VNmA==
-X-Gm-Message-State: AOAM533ZwrBmThv6QRJ5rfGOpx2rAs2MBazx08CgSqgWMqMN0LpZxChK
- ZVzyRDefpGeNVide2WLH9SO5lQ==
-X-Google-Smtp-Source: ABdhPJxjXNFIH1bl0ejx4jGLsgxVIiby4M+y68qYrJ48Kv6SB5KtWmPetujDtJ8IeFt1+hpxW2NIhw==
-X-Received: by 2002:adf:d4ce:: with SMTP id w14mr14770107wrk.142.1604237580871; 
- Sun, 01 Nov 2020 05:33:00 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id u3sm21919673wme.0.2020.11.01.05.32.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 01 Nov 2020 05:33:00 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] hw/input/ps2.c: Remove remnants of printf debug
-Date: Sun,  1 Nov 2020 13:32:58 +0000
-Message-Id: <20201101133258.4240-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZRdU-0004Vt-BQ; Sun, 01 Nov 2020 23:40:04 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2122)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZRdR-0004ER-Uz; Sun, 01 Nov 2020 23:40:03 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CPgDt4XDjz6yM6;
+ Mon,  2 Nov 2020 12:39:42 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 2 Nov 2020 12:39:37 +0800
+Message-ID: <5F9F8D88.9030102@huawei.com>
+Date: Mon, 2 Nov 2020 12:39:36 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-arm <qemu-arm@nongnu.org>, QEMU <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
+Subject: [PATCH V2] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=alex.chen@huawei.com;
+ helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/01 23:39:44
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,47 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 01 Nov 2020 13:33:05 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 04:40:04 -0000
 
-In commit 5edab03d4040 we added tracepoints to the ps2 keyboard
-and mouse emulation. However we didn't remove all the debug-by-printf
-support. In fact there is only one printf() remaining, and it is
-redundant with the trace_ps2_write_mouse() event next to it.
-Remove the printf() and the now-unused DEBUG* macros.
+In exynos4210_fimd_update(), the pointer s is dereferinced before
+being check if it is valid, which may lead to NULL pointer dereference.
+So move the assignment to global_width after checking that the s is valid.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
 ---
- hw/input/ps2.c | 9 ---------
- 1 file changed, 9 deletions(-)
+ hw/display/exynos4210_fimd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index f8746d2f52c..72cdb80ae1c 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -33,12 +33,6 @@
- 
- #include "trace.h"
- 
--/* debug PC keyboard */
--//#define DEBUG_KBD
--
--/* debug PC keyboard : only mouse */
--//#define DEBUG_MOUSE
--
- /* Keyboard Commands */
- #define KBD_CMD_SET_LEDS	0xED	/* Set keyboard leds */
- #define KBD_CMD_ECHO     	0xEE
-@@ -790,9 +784,6 @@ void ps2_write_mouse(void *opaque, int val)
-     PS2MouseState *s = (PS2MouseState *)opaque;
- 
-     trace_ps2_write_mouse(opaque, val);
--#ifdef DEBUG_MOUSE
--    printf("kbd: write mouse 0x%02x\n", val);
--#endif
-     switch(s->common.write_cmd) {
-     default:
-     case -1:
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index 4c16e1f5a0..34a960a976 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
+     bool blend = false;
+     uint8_t *host_fb_addr;
+     bool is_dirty = false;
+-    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
++    int global_width;
+
+     if (!s || !s->console || !s->enabled ||
+         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+         return;
+     }
++
++    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+     exynos4210_update_resolution(s);
+     surface = qemu_console_surface(s->console);
+
 -- 
-2.20.1
-
+2.19.1
 
