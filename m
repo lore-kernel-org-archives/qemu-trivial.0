@@ -1,46 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZS9Q-0001vT-RP
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 00:13:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46124)
+	id 1kZVf6-0004wg-C8
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 03:58:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZS9O-0001v9-SX; Mon, 02 Nov 2020 00:13:02 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2492)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kZVey-0004v8-It; Mon, 02 Nov 2020 03:57:54 -0500
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:41903)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZS9L-0007TK-OD; Mon, 02 Nov 2020 00:13:02 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CPgz40JtBzhfcq;
- Mon,  2 Nov 2020 13:12:48 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 2 Nov 2020 13:12:26 +0800
-Message-ID: <5F9F953A.4060603@huawei.com>
-Date: Mon, 2 Nov 2020 13:12:26 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kZVet-0004ep-I0; Mon, 02 Nov 2020 03:57:51 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.214])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 7604269F854D;
+ Mon,  2 Nov 2020 09:57:30 +0100 (CET)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Mon, 2 Nov 2020
+ 09:57:29 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005037cd79f-0a0c-41e0-8de6-6b1d9e550302,
+ 8DD5A59BB4BDDF13F63AE8D0997EBD433013A0F2) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH 7/30] non-virt: Fix Lesser GPL version number
+To: Thomas Huth <thuth@redhat.com>, Chetan Pant <chetan4windows@gmail.com>,
+ <qemu-trivial@nongnu.org>
+CC: <qemu-devel@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20201016144243.26817-1-chetan4windows@gmail.com>
+ <20201016145346.27167-1-chetan4windows@gmail.com>
+ <4105debd-5624-4b45-4c95-1a678b764b57@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6a21dc82-2307-8cf6-3c24-035cd16b9b4b@kaod.org>
+Date: Mon, 2 Nov 2020 09:57:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
- QEMU <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] util: Remove redundant checks in the openpty()
-References: <5F9D449A.900@huawei.com>
- <CAFEAcA9w_JZ5m2Cj9Cuc4GMka8vp-AabtmqNLwe0q7ObN7QKyA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9w_JZ5m2Cj9Cuc4GMka8vp-AabtmqNLwe0q7ObN7QKyA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 00:12:49
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <4105debd-5624-4b45-4c95-1a678b764b57@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: b6d973db-4f9d-4d8b-acd5-733036ad6cc4
+X-Ovh-Tracer-Id: 14553945146829867814
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedruddttddguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepthhhuhhthhesrhgvughhrghtrdgtohhm
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:57:31
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,105 +67,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 05:13:03 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 08:57:57 -0000
 
-On 2020/10/31 23:21, Peter Maydell wrote:
-> On Sat, 31 Oct 2020 at 11:04, AlexChen <alex.chen@huawei.com> wrote:
+On 10/19/20 12:39 PM, Thomas Huth wrote:
+> On 16/10/2020 16.53, Chetan Pant wrote:
+>> There is no "version 2" of the "Lesser" General Public License.
+>> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
+>> This patch replaces all occurrences of "Lesser GPL version 2" with
+>> "Lesser GPL version 2.1" in comment section.
 >>
->> As we can see from the following function call stack, the amaster and the aslave
->> cannot be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
->> In addition, the amaster and the aslave has been dereferenced at the beginning
->> of the openpty(). So the checks on amaster and aslave in the openpty() are redundant.
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> 
-> This function is trying to match the BSD/glibc openpty()
-> function, so the thing to check here is not QEMU's specific
-> current usage but the API specification for openpty():
-> https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html
-> https://www.freebsd.org/cgi/man.cgi?query=openpty
-> 
-> The spec says that name, termp and winp can all be
-> NULL, but it doesn't say this for amaster and aslave,
-> so indeed the change in this patch is the correct one.
-> 
+>> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+C. 
+
 >> ---
->>  util/qemu-openpty.c | 7 +++----
->>  1 file changed, 3 insertions(+), 4 deletions(-)
+>>  hw/intc/xics_pnv.c         | 2 +-
+>>  hw/ppc/pnv.c               | 2 +-
+>>  hw/ppc/pnv_core.c          | 2 +-
+>>  hw/ppc/pnv_lpc.c           | 2 +-
+>>  hw/ppc/pnv_psi.c           | 2 +-
+>>  hw/ppc/pnv_xscom.c         | 2 +-
+>>  include/hw/ppc/pnv.h       | 2 +-
+>>  include/hw/ppc/pnv_core.h  | 2 +-
+>>  include/hw/ppc/pnv_homer.h | 2 +-
+>>  include/hw/ppc/pnv_lpc.h   | 2 +-
+>>  include/hw/ppc/pnv_occ.h   | 2 +-
+>>  include/hw/ppc/pnv_psi.h   | 2 +-
+>>  include/hw/ppc/pnv_xscom.h | 2 +-
+>>  13 files changed, 13 insertions(+), 13 deletions(-)
 >>
->> diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
->> index eb17f5b0bc..427f43a769 100644
->> --- a/util/qemu-openpty.c
->> +++ b/util/qemu-openpty.c
->> @@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
->>              (termp != NULL && tcgetattr(sfd, termp) < 0))
->>                  goto err;
->>
->> -        if (amaster)
->> -                *amaster = mfd;
->> -        if (aslave)
->> -                *aslave = sfd;
->> +        *amaster = mfd;
->> +        *aslave = sfd;
->> +
->>          if (winp)
->>                  ioctl(sfd, TIOCSWINSZ, winp);
+>> diff --git a/hw/intc/xics_pnv.c b/hw/intc/xics_pnv.c
+>> index 35f3811..753c067 100644
+>> --- a/hw/intc/xics_pnv.c
+>> +++ b/hw/intc/xics_pnv.c
+>> @@ -5,7 +5,7 @@
+>>   *
+>>   * This library is free software; you can redistribute it and/or
+>>   * modify it under the terms of the GNU Lesser General Public License
+>> - * as published by the Free Software Foundation; either version 2 of
+>> + * as published by the Free Software Foundation; either version 2.1 of
+>>   * the License, or (at your option) any later version.
+> [...]
 > 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> though you might like to mention in the commit message that
-> the openpty() API doesn't allow NULL amaster or aslave
-> arguments.
->
-
-Thanks for your review, I will add this description to my commit message in my patch V2.
-In addition, since the amaster and the aslave are not allow to be NULL,
-do we need to check that the amaster and the aslave are NULL in the beginning of the openpty()?
-such as this modification:
-
-diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
-index eb17f5b0bc..1aadd39395 100644
---- a/util/qemu-openpty.c
-+++ b/util/qemu-openpty.c
-@@ -61,6 +61,9 @@ static int openpty(int *amaster, int *aslave, char *name,
-         const char *slave;
-         int mfd = -1, sfd = -1;
-
-+        if (!amaster || !aslave)
-+                goto err;
-+
-         *amaster = *aslave = -1;
-
-         mfd = open("/dev/ptmx", O_RDWR | O_NOCTTY);
-@@ -80,10 +83,9 @@ static int openpty(int *amaster, int *aslave, char *name,
-             (termp != NULL && tcgetattr(sfd, termp) < 0))
-                 goto err;
-
--        if (amaster)
--                *amaster = mfd;
--        if (aslave)
--                *aslave = sfd;
-+        *amaster = mfd;
-+        *aslave = sfd;
-+
-         if (winp)
-                 ioctl(sfd, TIOCSWINSZ, winp);
-
-@@ -92,7 +94,8 @@ static int openpty(int *amaster, int *aslave, char *name,
- err:
-         if (sfd != -1)
-                 close(sfd);
--        close(mfd);
-+        if (mfd != -1)
-+                close(mfd);
-         return -1;
- }
- #endif
--- 
-2.19.1
-
-Thanks,
-Alex
 
 
