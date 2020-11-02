@@ -1,71 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZdzc-0006xD-1E
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 12:51:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34274)
+	id 1kZedx-0007VX-Kj
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 13:33:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kZdza-0006uI-0L; Mon, 02 Nov 2020 12:51:42 -0500
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:36591)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kZdzY-0003CN-DU; Mon, 02 Nov 2020 12:51:41 -0500
-Received: by mail-il1-x141.google.com with SMTP id p10so13726231ile.3;
- Mon, 02 Nov 2020 09:51:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gnK39zMRX750DqIj3DHvskbasklpdwswcibNrvwH+7Y=;
- b=bxpliuVtXeh0N4AXOdQ3T731dynaCRHKY7pIIsW/cfFitBG+PNevwYMIWlJwzXXmLR
- mR04MA+7YqJfqkAjwpdJP6EvkzrFoOPtZOWUvPYuELhka5woG7+NiKjtfFHhKWR+R1KC
- 0Lt3UXBms2NPjHvY+JRscnYC+avURjd8MaMyHkxLbwaxwzhKgClnLdRj6oz++f455eMm
- DM9C4TD6qVHOquQMRQLLL1q1j77l30uwlqMWUHyhzqDuGeVUg+5QO4+sRiVNKaQtrmt+
- IhpGk29jYj1gsT7AJBG8LKMKfxRxJRwsTSyB65uxgQFQUeKFe0R0ojWeEPCj3hl57KrV
- 5wLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gnK39zMRX750DqIj3DHvskbasklpdwswcibNrvwH+7Y=;
- b=IktX9mmThcx7i48+2pOdEUYXkDDrMhnUDNTOtvz+DYLECZ4YsA4ThTUVwx6QE/E5mP
- gqWhxHS2vhqkMkaRt5W/sgr+44sk65fRK7zRHlQ7MIQaVBTdtAt9j4QW/2zepKBnrEVS
- xPSfc6kjIFqywhTPuGng0I1glBs/URS2WXYFtUVhcWPOZHL8r3ujFe8S9b8kyNmx/MGb
- P5e7KY9EGJnGYO8lp/1V+LFrGhLEZbTAYgbNnxkfzHyUiNfr8eqLQrbdsvULzC/sBQYm
- /L2O9RISIei84CDKxmkg8LkfHagKkNhdga2J+9Ycqyq+1MWhWoI53WT3CIWYjZIK1fLq
- jLJw==
-X-Gm-Message-State: AOAM5333swjW2KEDJ4tBeS7BzRS9jh8ISK58KSxS/lGW7539mIKIPK2j
- saQoCN94DwXWpNjk11nB7up5nC5lIutCcHXyEKs=
-X-Google-Smtp-Source: ABdhPJwCNH3tH2f7gDkqadpi+5CMACZg7/b5UMdjeH3mwh0K3yVFQ4/U8Q3tRrVdgMJtFM8sb08T+QYteDV0mptD240=
-X-Received: by 2002:a05:6e02:f41:: with SMTP id
- y1mr12054296ilj.267.1604339498902; 
- Mon, 02 Nov 2020 09:51:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1kZedo-0007Pc-76
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 13:33:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30505)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1kZedm-0008RT-GG
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 13:33:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604341993;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FPORZeg+S+HBTkehML7TmlQ3ZPMdeoacbN0FvN5HmHk=;
+ b=BEeF5ETI4LL5yGLxdH11LoUA7d7usL5nqvZH+9tfQ/Wa778MAubH+Swmd39mMLh0n512IZ
+ vzGAN6Wz/+rJDKbzYZa//L3tFNDcshFqL39NW+Z+bQQMQ/4RMuFSSe/dH+u8kCJvQxLVe/
+ wNZYPrG43anDE+b5dvF0WOgtErdrF0E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-202-HZaOJ9qUOQ6ZOp1w1QIIFw-1; Mon, 02 Nov 2020 13:33:08 -0500
+X-MC-Unique: HZaOJ9qUOQ6ZOp1w1QIIFw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D874809DCD;
+ Mon,  2 Nov 2020 18:33:07 +0000 (UTC)
+Received: from work-vm (ovpn-114-142.ams2.redhat.com [10.36.114.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D735873673;
+ Mon,  2 Nov 2020 18:33:02 +0000 (UTC)
+Date: Mon, 2 Nov 2020 18:33:00 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH-for-5.2 v2] tools/virtiofsd: Check vu_init() return value
+ (CID 1435958)
+Message-ID: <20201102183300.GO3673@work-vm>
+References: <20201102092339.2034297-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
-In-Reply-To: <20201030004815.4172849-1-zhangxinhao1@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 2 Nov 2020 09:39:43 -0800
-Message-ID: <CAKmqyKNiyTTWHOdgxsoQoFoDX7XN2Vdjz7oXyMtx8JEXiFwpcw@mail.gmail.com>
-Subject: Re: [PATCH] target/riscv/csr.c : add space before the open
- parenthesis '('
-To: Xinhao Zhang <zhangxinhao1@huawei.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, 
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, alex.chen@huawei.com, 
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, "dengkai (A)" <dengkai1@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201102092339.2034297-1-philmd@redhat.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,39 +77,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 17:51:42 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 18:33:23 -0000
 
-On Thu, Oct 29, 2020 at 5:56 PM Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
->
-> Fix code style. Space required before the open parenthesis '('.
->
-> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
-> Reported-by: Euler Robot <euler.robot@huawei.com>
+* Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
+> Since commit 6f5fd837889, vu_init() can fail if malloc() returns NULL.
+> 
+> This fixes the following Coverity warning:
+> 
+>   CID 1435958 (#1 of 1): Unchecked return value (CHECKED_RETURN)
+> 
+> Fixes: 6f5fd837889 ("libvhost-user: support many virtqueues")
+> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
+Queued.
 
 > ---
->  target/riscv/csr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/riscv/csr.c b/target/riscv/csr.c
-> index aaef6c6f20..e8b149f0d2 100644
-> --- a/target/riscv/csr.c
-> +++ b/target/riscv/csr.c
-> @@ -881,7 +881,7 @@ static int write_satp(CPURISCVState *env, int csrno, target_ulong val)
->          if (env->priv == PRV_S && get_field(env->mstatus, MSTATUS_TVM)) {
->              return -RISCV_EXCP_ILLEGAL_INST;
->          } else {
-> -            if((val ^ env->satp) & SATP_ASID) {
-> +            if ((val ^ env->satp) & SATP_ASID) {
->                  tlb_flush(env_cpu(env));
->              }
->              env->satp = val;
-> --
-> 2.29.0-rc1
->
->
+> v2: Add fuse_log()
+
+Thanks.
+
+> ---
+>  tools/virtiofsd/fuse_virtio.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+> index 324936948d3..83ba07c6cd8 100644
+> --- a/tools/virtiofsd/fuse_virtio.c
+> +++ b/tools/virtiofsd/fuse_virtio.c
+> @@ -1013,8 +1013,11 @@ int virtio_session_mount(struct fuse_session *se)
+>      se->vu_socketfd = data_sock;
+>      se->virtio_dev->se = se;
+>      pthread_rwlock_init(&se->virtio_dev->vu_dispatch_rwlock, NULL);
+> -    vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
+> -            fv_set_watch, fv_remove_watch, &fv_iface);
+> +    if (!vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
+> +                 fv_set_watch, fv_remove_watch, &fv_iface)) {
+> +        fuse_log(FUSE_LOG_ERR, "%s: vu_init failed\n", __func__);
+> +        return -1;
+> +    }
+>  
+>      return 0;
+>  }
+> -- 
+> 2.26.2
+> 
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
 
