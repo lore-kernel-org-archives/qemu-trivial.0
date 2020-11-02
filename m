@@ -1,42 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZXVW-0005tW-EN
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 05:56:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37372)
+	id 1kZYOk-0002JX-BI
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 06:53:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50932)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZXVU-0005t1-VX; Mon, 02 Nov 2020 05:56:12 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2428)
+ id 1kZYOh-0002I6-Ro; Mon, 02 Nov 2020 06:53:15 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZXVP-00060b-Gx; Mon, 02 Nov 2020 05:56:12 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CPqZx0CN6zLq9J;
- Mon,  2 Nov 2020 18:55:53 +0800 (CST)
+ id 1kZYOf-0001aC-1u; Mon, 02 Nov 2020 06:53:15 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CPrrv4CwZz15PnV;
+ Mon,  2 Nov 2020 19:53:03 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 2 Nov 2020 18:55:53 +0800
-Message-ID: <5F9FE5B8.1030803@huawei.com>
-Date: Mon, 2 Nov 2020 18:55:52 +0800
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 2 Nov 2020 19:52:58 +0800
+Message-ID: <5F9FF319.7060108@huawei.com>
+Date: Mon, 2 Nov 2020 19:52:57 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-CC: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: [PATCH V2] util: Remove redundant checks in the openpty()
+To: <kwolf@redhat.com>, <mreitz@redhat.com>
+CC: <qemu-block@nongnu.org>, QEMU <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
+Subject: [PATCH] block/vvfat: Fix bad printf format specifiers
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 04:55:35
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 06:53:05
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,41 +51,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 10:56:13 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 11:53:16 -0000
 
-As we can see from the following function call stack, amaster and aslave
-can not be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
-In addition, according to the API specification for openpty():
-https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html,
-the arguments name, termp and winp can all be NULL, but arguments amaster or aslave
-can not be NULL.
-Finally, amaster and aslave has been dereferenced at the beginning of the openpty().
-So the checks on amaster and aslave in the openpty() are redundant. Remove them.
+We should use printf format specifier "%u" instead of "%d" for
+argument of type "unsigned int".
+In addition, fix two error format problems found by checkpatch.pl:
+ERROR: space required after that ',' (ctx:VxV)
++        fprintf(stderr,"%s attributes=0x%02x begin=%u size=%d\n",
+                       ^
+ERROR: line over 90 characters
++        fprintf(stderr, "%d, %s (%u, %d)\n", i, commit->path ? commit->path : "(null)", commit->param.rename.cluster, commit->action);
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Alex Chen <alex.chen@huawei.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- util/qemu-openpty.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ block/vvfat.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
-index eb17f5b0bc..427f43a769 100644
---- a/util/qemu-openpty.c
-+++ b/util/qemu-openpty.c
-@@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
-             (termp != NULL && tcgetattr(sfd, termp) < 0))
-                 goto err;
+diff --git a/block/vvfat.c b/block/vvfat.c
+index 5abb90e7c7..cc2ec9af21 100644
+--- a/block/vvfat.c
++++ b/block/vvfat.c
+@@ -1437,7 +1437,7 @@ static void print_direntry(const direntry_t* direntry)
+         for(i=0;i<11;i++)
+             ADD_CHAR(direntry->name[i]);
+         buffer[j] = 0;
+-        fprintf(stderr,"%s attributes=0x%02x begin=%d size=%d\n",
++        fprintf(stderr, "%s attributes=0x%02x begin=%u size=%d\n",
+                 buffer,
+                 direntry->attributes,
+                 begin_of_direntry(direntry),le32_to_cpu(direntry->size));
+@@ -1446,7 +1446,7 @@ static void print_direntry(const direntry_t* direntry)
 
--        if (amaster)
--                *amaster = mfd;
--        if (aslave)
--                *aslave = sfd;
-+        *amaster = mfd;
-+        *aslave = sfd;
-+
-         if (winp)
-                 ioctl(sfd, TIOCSWINSZ, winp);
+ static void print_mapping(const mapping_t* mapping)
+ {
+-    fprintf(stderr, "mapping (%p): begin, end = %d, %d, dir_index = %d, "
++    fprintf(stderr, "mapping (%p): begin, end = %u, %u, dir_index = %u, "
+         "first_mapping_index = %d, name = %s, mode = 0x%x, " ,
+         mapping, mapping->begin, mapping->end, mapping->dir_index,
+         mapping->first_mapping_index, mapping->path, mapping->mode);
+@@ -1454,7 +1454,7 @@ static void print_mapping(const mapping_t* mapping)
+     if (mapping->mode & MODE_DIRECTORY)
+         fprintf(stderr, "parent_mapping_index = %d, first_dir_index = %d\n", mapping->info.dir.parent_mapping_index, mapping->info.dir.first_dir_index);
+     else
+-        fprintf(stderr, "offset = %d\n", mapping->info.file.offset);
++        fprintf(stderr, "offset = %u\n", mapping->info.file.offset);
+ }
+ #endif
+
+@@ -1588,7 +1588,7 @@ typedef struct commit_t {
+ static void clear_commits(BDRVVVFATState* s)
+ {
+     int i;
+-DLOG(fprintf(stderr, "clear_commits (%d commits)\n", s->commits.next));
++DLOG(fprintf(stderr, "clear_commits (%u commits)\n", s->commits.next));
+     for (i = 0; i < s->commits.next; i++) {
+         commit_t* commit = array_get(&(s->commits), i);
+         assert(commit->path || commit->action == ACTION_WRITEOUT);
+@@ -2648,7 +2648,9 @@ static int handle_renames_and_mkdirs(BDRVVVFATState* s)
+     fprintf(stderr, "handle_renames\n");
+     for (i = 0; i < s->commits.next; i++) {
+         commit_t* commit = array_get(&(s->commits), i);
+-        fprintf(stderr, "%d, %s (%d, %d)\n", i, commit->path ? commit->path : "(null)", commit->param.rename.cluster, commit->action);
++        fprintf(stderr, "%d, %s (%u, %d)\n", i,
++                commit->path ? commit->path : "(null)",
++                commit->param.rename.cluster, commit->action);
+     }
+ #endif
 
 -- 
 2.19.1
