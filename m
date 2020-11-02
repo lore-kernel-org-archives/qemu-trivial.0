@@ -1,59 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZVf6-0004wg-C8
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 03:58:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37370)
+	id 1kZVxX-00048L-5B
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 04:17:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kZVey-0004v8-It; Mon, 02 Nov 2020 03:57:54 -0500
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:41903)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kZVet-0004ep-I0; Mon, 02 Nov 2020 03:57:51 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.214])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 7604269F854D;
- Mon,  2 Nov 2020 09:57:30 +0100 (CET)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Mon, 2 Nov 2020
- 09:57:29 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005037cd79f-0a0c-41e0-8de6-6b1d9e550302,
- 8DD5A59BB4BDDF13F63AE8D0997EBD433013A0F2) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 7/30] non-virt: Fix Lesser GPL version number
-To: Thomas Huth <thuth@redhat.com>, Chetan Pant <chetan4windows@gmail.com>,
- <qemu-trivial@nongnu.org>
-CC: <qemu-devel@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20201016144243.26817-1-chetan4windows@gmail.com>
- <20201016145346.27167-1-chetan4windows@gmail.com>
- <4105debd-5624-4b45-4c95-1a678b764b57@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <6a21dc82-2307-8cf6-3c24-035cd16b9b4b@kaod.org>
-Date: Mon, 2 Nov 2020 09:57:29 +0100
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZVxV-00047K-EA
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:17:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28510)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZVxT-0003T3-7Z
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:17:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604308617;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iQMV9ZvxKIX641YFiRMCZuHjmOkgGNDRjq3GRDWw8Io=;
+ b=i/wiRKMFgR6rBUlNQpN+QwKgiJ4gnUnXTYhHAQe2KuOWO3wIEcIIsamhKxSLhDTjTmY8U/
+ oQ3UWtM/zbYxUWzJgodRnE+Swhig9y+pXrQ6jxsaOrcsJeMX1UDjTPFVJVpHyU5OlRQS/T
+ 4I5SpCE4gm6wBktdZTBC3WwKaPdKyZA=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-46-4E0C-cLZM-y-TNM0Wz4bZQ-1; Mon, 02 Nov 2020 04:16:56 -0500
+X-MC-Unique: 4E0C-cLZM-y-TNM0Wz4bZQ-1
+Received: by mail-wr1-f69.google.com with SMTP id 31so6166744wrg.12
+ for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 01:16:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=iQMV9ZvxKIX641YFiRMCZuHjmOkgGNDRjq3GRDWw8Io=;
+ b=eibN+wVPav3vtUSh+iS0eYlHZR3V0SEdurjoJSP4a5s6D8zSOY/qfNMX3AxDpUrGMl
+ MuOlWpWzb4MCiUx3cWhxXzFb4GzSEaugm646GjchpwAcT2iJCJjFmNZI1nqQLWTsLrJ1
+ T34U1kzYzqEXRb6yttVlQwZ8H37O7yoeOqJ2telpC7lZkl9E9HuCVlIkuDBzrsWLLk+w
+ IHsHMWdBBj/LiRD8cTI5GBxnVmvN/XB1KeA2ZYnwFGkdZAnyI84i19eZvP+cDg29znfI
+ vya1FR+DF83nPBJIF9VrVk2Mx98F6kFJIA+9WXXemvVJlT1SSrkUflByKTojyxGyh8U2
+ oTqA==
+X-Gm-Message-State: AOAM530yvkakzSE5K8OAWrXJmxA3qWeN3Yo8vTsZDnu6UiskPjDojJUh
+ a/P8cNFM4UVBdxDg61U5tcAsL+yrrCZYqrMY1dJdo39FDObSQLlPl2Q+4Uo/m3MhwRXZKMsalZu
+ ngZAwemlOjFJihIxENw==
+X-Received: by 2002:adf:fc07:: with SMTP id i7mr13825594wrr.223.1604308614960; 
+ Mon, 02 Nov 2020 01:16:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwxP6IpcuGBA2LvpCKTqvxgRbfd3CD8LYHJ0CSLFbh3ysVvJa5VFdpTRsej9uV8BtFKd/rFpA==
+X-Received: by 2002:adf:fc07:: with SMTP id i7mr13825565wrr.223.1604308614699; 
+ Mon, 02 Nov 2020 01:16:54 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id f7sm22434871wrx.64.2020.11.02.01.16.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Nov 2020 01:16:53 -0800 (PST)
+Subject: Re: [PATCH V2] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+To: AlexChen <alex.chen@huawei.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
+References: <5F9F8D88.9030102@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b2945df0-186e-e670-bdfc-34104d8ddf2c@redhat.com>
+Date: Mon, 2 Nov 2020 10:16:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <4105debd-5624-4b45-4c95-1a678b764b57@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <5F9F8D88.9030102@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: b6d973db-4f9d-4d8b-acd5-733036ad6cc4
-X-Ovh-Tracer-Id: 14553945146829867814
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedruddttddguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepthhhuhhthhesrhgvughhrghtrdgtohhm
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:57:31
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,51 +94,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 08:57:57 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 09:17:01 -0000
 
-On 10/19/20 12:39 PM, Thomas Huth wrote:
-> On 16/10/2020 16.53, Chetan Pant wrote:
->> There is no "version 2" of the "Lesser" General Public License.
->> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
->> This patch replaces all occurrences of "Lesser GPL version 2" with
->> "Lesser GPL version 2.1" in comment section.
->>
->> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+On 11/2/20 5:39 AM, AlexChen wrote:
+> In exynos4210_fimd_update(), the pointer s is dereferinced before
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Typo dereferinced -> dereferenced.
 
-C. 
+> being check if it is valid, which may lead to NULL pointer dereference.
+> So move the assignment to global_width after checking that the s is valid.
 
->> ---
->>  hw/intc/xics_pnv.c         | 2 +-
->>  hw/ppc/pnv.c               | 2 +-
->>  hw/ppc/pnv_core.c          | 2 +-
->>  hw/ppc/pnv_lpc.c           | 2 +-
->>  hw/ppc/pnv_psi.c           | 2 +-
->>  hw/ppc/pnv_xscom.c         | 2 +-
->>  include/hw/ppc/pnv.h       | 2 +-
->>  include/hw/ppc/pnv_core.h  | 2 +-
->>  include/hw/ppc/pnv_homer.h | 2 +-
->>  include/hw/ppc/pnv_lpc.h   | 2 +-
->>  include/hw/ppc/pnv_occ.h   | 2 +-
->>  include/hw/ppc/pnv_psi.h   | 2 +-
->>  include/hw/ppc/pnv_xscom.h | 2 +-
->>  13 files changed, 13 insertions(+), 13 deletions(-)
->>
->> diff --git a/hw/intc/xics_pnv.c b/hw/intc/xics_pnv.c
->> index 35f3811..753c067 100644
->> --- a/hw/intc/xics_pnv.c
->> +++ b/hw/intc/xics_pnv.c
->> @@ -5,7 +5,7 @@
->>   *
->>   * This library is free software; you can redistribute it and/or
->>   * modify it under the terms of the GNU Lesser General Public License
->> - * as published by the Free Software Foundation; either version 2 of
->> + * as published by the Free Software Foundation; either version 2.1 of
->>   * the License, or (at your option) any later version.
-> [...]
+Easier to read "after checking 's' is valid."
+
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  hw/display/exynos4210_fimd.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
