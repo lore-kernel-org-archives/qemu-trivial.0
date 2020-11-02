@@ -1,67 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZWUO-0002lA-VA
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 04:51:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49540)
+	id 1kZWZ2-0008N9-5y
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 04:55:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZWUN-0002ge-Ly
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:50:59 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:44594)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZWUL-0007O6-17
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:50:59 -0500
-Received: by mail-ed1-x530.google.com with SMTP id w1so12578925edv.11
- for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 01:50:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QP3mO4N0e2zy5Xe68Nrspvl6MDsRH3Wb8REYuar2i7c=;
- b=yLjZZc66UST0vC9FV1d/x44LtC1CjemfSDSwBhvVLyqmzNV+6lDYzUxkVKnaujtPV0
- O1LBreo4zXOHaqLmfLOkjAl1+ZgY1ayTRIljfHHe+SpjBC4TFwzmKzwSEWqN/r6ybl0D
- Lq86cJwe18b+ZABpVaqAQw4aE1P4heVFnOzy3hke+yKnHxoOxGsjh3tkQ08Ep079s/wn
- dU99f8VrDFoIqqpuO8ZSQIeDlenuwRUP+UZyLF5M7DDFFhXIth4PHen9M+OVC+gwu4TZ
- dZjPi76EaSX0OzO6GqyskzenV9LBug0s4CM0gW9oyX4KvurSPGkQuWGAkJ8hMrMCgaWd
- SyjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QP3mO4N0e2zy5Xe68Nrspvl6MDsRH3Wb8REYuar2i7c=;
- b=Kw8OwmhFy8izkEJpWHt7VneuIap4XSbbVckmIyNs8re0GSWwre/QE6hicVAxZOFQ1g
- lXrOMkPB68uum4VTSveEQOU/XkWR081wMDtRs0/jzp9PWMFWJigMomRKj/mg3AMSt7Xd
- 3D8z8KLlNOKN0sDr269VXxG9z45xTMESWd3nb5Ne+2zBRoZ/Na19CT1yh+60axFWi9eo
- qkgXh2GE9y3JjXdnWgp1QQZr7YU6SKdz6aWmJ0sQuV35zLJEZp4dTc9U7Exr/EGNKPTu
- ixGZFZcdRnoZO2Ksg00sDLiM45X3kFq1Dc6se5N8lM2CBMdTkEPSD6aZQJO4t8zHzz6O
- TuIg==
-X-Gm-Message-State: AOAM530BEZ2l8PM9WlT0i8Gu2d7Lr4IGKALj6QxsxmK09B5nGi2Af7MA
- zoqrWhfr27Q9efPM4zGvYJauOcPNHlqA/xq/4OvzxA==
-X-Google-Smtp-Source: ABdhPJzS4SrpdU3lyJOuW4fF7NAcJ35tbraXqHEEDAxXFvvXhu4hQpkL7oQ4MD3oq1Zx/Dh0BkNBDAlP+mhy74GdqWY=
-X-Received: by 2002:a05:6402:4c6:: with SMTP id
- n6mr16033878edw.204.1604310655376; 
- Mon, 02 Nov 2020 01:50:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZWYz-0008JF-LL; Mon, 02 Nov 2020 04:55:45 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2427)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZWYw-0000dR-MW; Mon, 02 Nov 2020 04:55:45 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CPpFH1lyGzLpPM;
+ Mon,  2 Nov 2020 17:55:31 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 2 Nov 2020 17:55:23 +0800
+Message-ID: <5F9FD78B.8000300@huawei.com>
+Date: Mon, 2 Nov 2020 17:55:23 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-References: <5F9D449A.900@huawei.com>
- <CAFEAcA9w_JZ5m2Cj9Cuc4GMka8vp-AabtmqNLwe0q7ObN7QKyA@mail.gmail.com>
- <5F9F953A.4060603@huawei.com>
-In-Reply-To: <5F9F953A.4060603@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Nov 2020 09:50:43 +0000
-Message-ID: <CAFEAcA9JN00jcP0ss2wjm7QkR3OFZAksVLuTYNv_tjSG8v2esA@mail.gmail.com>
-Subject: Re: [PATCH] util: Remove redundant checks in the openpty()
-To: AlexChen <alex.chen@huawei.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
- QEMU <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+To: <balrogg@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, QEMU <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
+Subject: [PATCH] hw/arm: Fix bad print format specifiers
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 04:55:35
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,17 +51,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 09:51:00 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 09:55:46 -0000
 
-On Mon, 2 Nov 2020 at 05:12, AlexChen <alex.chen@huawei.com> wrote:
-> Thanks for your review, I will add this description to my commit message in my patch V2.
-> In addition, since the amaster and the aslave are not allow to be NULL,
-> do we need to check that the amaster and the aslave are NULL in the beginning of the openpty()?
+We should use printf format specifier "%u" instead of "%i" for
+argument of type "unsigned int".
 
-No, we can just assume it. Our coding style doesn't
-mandate that level of defensive-coding against caller
-errors.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+---
+ hw/arm/pxa2xx.c | 2 +-
+ hw/arm/spitz.c  | 2 +-
+ hw/arm/tosa.c   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 591776ba88..1a98f3bd5c 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -675,7 +675,7 @@ static void pxa2xx_ssp_write(void *opaque, hwaddr addr,
+         if (value & SSCR0_MOD)
+             printf("%s: Attempt to use network mode\n", __func__);
+         if (s->enable && SSCR0_DSS(value) < 4)
+-            printf("%s: Wrong data size: %i bits\n", __func__,
++            printf("%s: Wrong data size: %u bits\n", __func__,
+                             SSCR0_DSS(value));
+         if (!(value & SSCR0_SSE)) {
+             s->sssr = 0;
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 32bdeacfd3..772662f149 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -586,7 +586,7 @@ struct SpitzLCDTG {
+ static void spitz_bl_update(SpitzLCDTG *s)
+ {
+     if (s->bl_power && s->bl_intensity)
+-        zaurus_printf("LCD Backlight now at %i/63\n", s->bl_intensity);
++        zaurus_printf("LCD Backlight now at %u/63\n", s->bl_intensity);
+     else
+         zaurus_printf("LCD Backlight now off\n");
+ }
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index fe88ed89fe..66b244aeff 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -150,7 +150,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
+
+ static uint32_t tosa_ssp_tansfer(SSISlave *dev, uint32_t value)
+ {
+-    fprintf(stderr, "TG: %d %02x\n", value >> 5, value & 0x1f);
++    fprintf(stderr, "TG: %u %02x\n", value >> 5, value & 0x1f);
+     return 0;
+ }
+
+-- 
+2.19.1
 
