@@ -1,85 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZVyx-0005vW-AY
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 04:18:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42994)
+	id 1kZW46-00014g-MD
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 04:23:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZVyv-0005tT-D8
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:18:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21179)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZW45-000127-Cw
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:23:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30794)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZVyt-0003yx-N6
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:18:29 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZW43-0005yv-RR
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 04:23:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604308706;
+ s=mimecast20190719; t=1604309026;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NeU9LZ5/J3nyk/EmK/FBm6lNHZz8wcWlUJKm/PTpzjI=;
- b=KWYoAj8whF07CglShli0yCmykiTmYXXcmbYqUpuCShRWpb/sxVKdRx1OOrzw0yDUj/LZvD
- DBy9lJz3FXKAowB4t1IO1uUvBowbPvnzbfS7y4j44DRs7zuFR6RMbnNyF5OwTkBRJYG4gJ
- fp5sYIIN91s7A19SQQmJb+k6Xazz9hA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-324-MBJ-O-02O_2AiTazvCQC9g-1; Mon, 02 Nov 2020 04:18:25 -0500
-X-MC-Unique: MBJ-O-02O_2AiTazvCQC9g-1
-Received: by mail-wr1-f70.google.com with SMTP id q15so6174033wrw.8
- for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 01:18:25 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oqaCBtiyHyraZrQbnp3YwL6DATj7zhKDy6uE+R2EKuw=;
+ b=iPfg7xCW3QsdHkL4/jbMBgmzYQuAa6GQ/gyjuAXf8I3ctqyT/U9DtomNGLKYmV6G+F/JKp
+ ZTth1fm/cKJ9sV2uasKMpAybEf9k6ogE4fv7qAprliK4WW0a57GIGa5RrmJiT7PFWleEUM
+ TI1t71/Hmg27rddORyMs89CVIAqZEZg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-211-9HcVXU9hNDaNSoTzRc2_wg-1; Mon, 02 Nov 2020 04:23:43 -0500
+X-MC-Unique: 9HcVXU9hNDaNSoTzRc2_wg-1
+Received: by mail-wm1-f72.google.com with SMTP id z7so3110855wme.8
+ for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 01:23:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=NeU9LZ5/J3nyk/EmK/FBm6lNHZz8wcWlUJKm/PTpzjI=;
- b=R0XkJisX7jCM9crm01c0etVEmhNQnfxzg2l2nMJzWbeeL6o6g7r2/qxW0gdCGa3NeV
- K33ByzjRe4rlTNEEoAfgp/ICd2tEfN7vBQFWvef4Mxql6M393DKaQDHxr41cEw+r+nYh
- hU4FD9asWhB+zgWj6To/FI3fm6ujY01ngCFqHZuUZneX8HOnODORxhyl+tUjoclKuT/1
- 9j0aC4i65of0LL6xHN3xUjrPhbggphJFXznszeS3FiZHJ+bCmt3KUbSthfzs30TBBuVC
- d0EF0ll3p+tR5Zl/lYDXqfs1+ShLkZydD/6mGWw8HG9PndP6aSjlipxR+pIEYXxtzeBp
- vJTA==
-X-Gm-Message-State: AOAM530t3XqWbDgcJSqPaxKs48LaoZCN/y3x0gpBTd85qg4Jki13Fiaz
- w4WkA94vTApwl8Ig4sJnDp6Ni++WjNegSc7NwJtVAQAx4wrwh5AKEKX/NHf9lVwJzxpaFFp/cj0
- vyWuUS+qWgUocRRP+6Q==
-X-Received: by 2002:a1c:8087:: with SMTP id b129mr16609202wmd.10.1604308704152; 
- Mon, 02 Nov 2020 01:18:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwWx9CWwQ6fzCw6jXPHe3y5H0bbGDQy2idySo8hSklzd0003nwbP1zVfjAMVpzbcyREpsog+A==
-X-Received: by 2002:a1c:8087:: with SMTP id b129mr16609193wmd.10.1604308703969; 
- Mon, 02 Nov 2020 01:18:23 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ bh=oqaCBtiyHyraZrQbnp3YwL6DATj7zhKDy6uE+R2EKuw=;
+ b=HL2TBeWAQGnhX+QKv3J9C3IiOkfl+Uhzx9orkUMad9WEBwOq9CK2XPNa9YIx0rOMnh
+ +8o082hAUXv15+KFPxQwZ0QgWKS4W+GLyl/Ly5G10tYnlBQUOwAU1GhHM2XwqzHOG0r6
+ wCWHF+jQUL7h3v3rwmxbnsK9y1SB34hr6p5q8nm1447Ff1MAGgztOTq0R9YhDc3+eYXE
+ yRYtlfgKODLbZTgDTQvIlwWTDefTM4O/YfuGS3AsIl4ajIoMBgCq2U9yDxv53KV35QB1
+ i3V2C2PVJ9Cjc84sVUr+mta/FKncfm6/aXUy6H/XxY5LKcOgMKFC4WarA9fnO0bLwc1U
+ BQXg==
+X-Gm-Message-State: AOAM532p07KVGMEE+MF0fXjArbfXp7c8c6Xtccs04OjUjpb6vdOPjLU3
+ cQd+Du/lRcEI6OYe9Lw1sqfANGP/ezAI5ea5aFTqZwCZxoiVS8taWVxMubYW2UD9KyIuZtUnJJw
+ xebi/GFsbaCIMmHn+Eg==
+X-Received: by 2002:a7b:c957:: with SMTP id i23mr17275130wml.155.1604309022051; 
+ Mon, 02 Nov 2020 01:23:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyyk+QDyNpG9dTaMZWy9y7bOQsX/Fs8KwApcQ2y4Nep/+DGI2aKxQqqzql7YYHH2+tbtT9EIQ==
+X-Received: by 2002:a7b:c957:: with SMTP id i23mr17275102wml.155.1604309021883; 
+ Mon, 02 Nov 2020 01:23:41 -0800 (PST)
+Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id m8sm21075616wrw.17.2020.11.02.01.18.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 01:18:23 -0800 (PST)
-Subject: Re: [PATCH] hw/input/ps2.c: Remove remnants of printf debug
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20201101133258.4240-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ee9ddf0f-2368-d965-c6c0-0c467907fb24@redhat.com>
-Date: Mon, 2 Nov 2020 10:18:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ by smtp.gmail.com with ESMTPSA id e25sm22320755wra.71.2020.11.02.01.23.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Nov 2020 01:23:41 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH-for-5.2 v2] tools/virtiofsd: Check vu_init() return value (CID
+ 1435958)
+Date: Mon,  2 Nov 2020 10:23:39 +0100
+Message-Id: <20201102092339.2034297-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20201101133258.4240-1-peter.maydell@linaro.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 01:33:03
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,20 +88,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 09:18:29 -0000
+X-List-Received-Date: Mon, 02 Nov 2020 09:23:49 -0000
 
-On 11/1/20 2:32 PM, Peter Maydell wrote:
-> In commit 5edab03d4040 we added tracepoints to the ps2 keyboard
-> and mouse emulation. However we didn't remove all the debug-by-printf
-> support. In fact there is only one printf() remaining, and it is
-> redundant with the trace_ps2_write_mouse() event next to it.
-> Remove the printf() and the now-unused DEBUG* macros.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/input/ps2.c | 9 ---------
->  1 file changed, 9 deletions(-)
+Since commit 6f5fd837889, vu_init() can fail if malloc() returns NULL.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+This fixes the following Coverity warning:
+
+  CID 1435958 (#1 of 1): Unchecked return value (CHECKED_RETURN)
+
+Fixes: 6f5fd837889 ("libvhost-user: support many virtqueues")
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+v2: Add fuse_log()
+---
+ tools/virtiofsd/fuse_virtio.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+index 324936948d3..83ba07c6cd8 100644
+--- a/tools/virtiofsd/fuse_virtio.c
++++ b/tools/virtiofsd/fuse_virtio.c
+@@ -1013,8 +1013,11 @@ int virtio_session_mount(struct fuse_session *se)
+     se->vu_socketfd = data_sock;
+     se->virtio_dev->se = se;
+     pthread_rwlock_init(&se->virtio_dev->vu_dispatch_rwlock, NULL);
+-    vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
+-            fv_set_watch, fv_remove_watch, &fv_iface);
++    if (!vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
++                 fv_set_watch, fv_remove_watch, &fv_iface)) {
++        fuse_log(FUSE_LOG_ERR, "%s: vu_init failed\n", __func__);
++        return -1;
++    }
+ 
+     return 0;
+ }
+-- 
+2.26.2
 
 
