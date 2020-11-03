@@ -1,46 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZwhW-0000y3-NH
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 08:50:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46380)
+	id 1kZwqH-0004vt-9L
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 08:59:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1kZwhV-0000xF-B4; Tue, 03 Nov 2020 08:50:17 -0500
-Received: from lizzy.crudebyte.com ([91.194.90.13]:34555)
+ (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
+ id 1kZwqF-0004vc-PS; Tue, 03 Nov 2020 08:59:19 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:20774
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1kZwhR-0007D5-6N; Tue, 03 Nov 2020 08:50:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=crudebyte.com; s=lizzy; h=Content-Type:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Content-ID:Content-Description;
- bh=IEgeAFgt20+/1FaaEEZCClpwEUyzNPym2Z3Uczy+I8M=; b=MPbs+eBGN1T1EIWimwzfS83BGV
- U15G4Q1qFCWLYqGrew2eSFfmUGVAvCyykvRFK/HKxtpxuKRdfSJAgdW1uI9ueCudNbtsTxa3RHIPP
- 1IHqRV3OGQScND07GbyeiLaUUeCAu88CCkFPnrIGtaxBI0WPqMWDQECbeYS09TqeRRnFvFHqDln84
- ZPdUZtbLGEQzIzx/MwAeZPilDFyHTAu0iYd8fxcULeFh3jRxT7VaUFToZbNeBMaENrUgd3aQVQQPA
- Kz+gWEsUkiMo9yVYJdJh68tofGZTLH23Ar0Ru3Pkdq/YWzDfMFTDH8pyE+ghvsnU1OHFhxXTGT0+J
- tovjrJ2A==;
-From: Christian Schoenebeck <qemu_oss@crudebyte.com>
-To: qemu-devel@nongnu.org
-Cc: Xinhao Zhang <zhangxinhao1@huawei.com>, alex.chen@huawei.com,
- qemu-trivial@nongnu.org, groug@kaod.org, dengkai1@huawei.com
-Subject: Re: [PATCH v3 1/3] hw/9pfs : add spaces around operator
-Date: Tue, 03 Nov 2020 14:50:02 +0100
-Message-ID: <7327817.i0FNtphoZp@silver>
-In-Reply-To: <20201030043515.1030223-1-zhangxinhao1@huawei.com>
-References: <20201030043515.1030223-1-zhangxinhao1@huawei.com>
+ (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
+ id 1kZwqD-000202-1T; Tue, 03 Nov 2020 08:59:19 -0500
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 0A3Dww7F166531; Tue, 3 Nov 2020 08:59:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=2rKC6YgvSjAuUlYHqVjOe96KiaJ3KHC1xSizfA5KFgo=;
+ b=nXglF+X6n4V5vanj9qy44INXIQWBd9OG7KZXVF4ZP/MTGOoOLS6DisK3brnZV1za3nPs
+ jYa9wRyDYYmapPlpiZq8yX/B+zu6fNdWCg57wonk63Dm3wV4bzpX/hNNwaZwraEi1PXK
+ IGBex8lwLgzSplDjw92aQgHTdY75JhlhU3wtCPsefG/IEPOBUDUwpkUkk4lfPJ5SkxHe
+ 9iorOD/8qFzFa0hfc89pQ7Mv6cRiL8BouLCz4XmsVgvy5ZAFRPME6Dukg6SldOUXPdiQ
+ 0ZJ9luhw9yoTv7UFVRCEOIWT6+x2iCGH7+Q5S7Y4bTBujQ6DOb3C/aoFRKj5ITI2u+fy Yw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 34jt4hqwyr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 03 Nov 2020 08:59:09 -0500
+Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0A3Dx9mh166953;
+ Tue, 3 Nov 2020 08:59:09 -0500
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 34jt4hqwy2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 03 Nov 2020 08:59:09 -0500
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0A3Drl8O030067;
+ Tue, 3 Nov 2020 13:59:07 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma03ams.nl.ibm.com with ESMTP id 34hm6hahsy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 03 Nov 2020 13:59:07 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 0A3Dx5xt66847050
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 3 Nov 2020 13:59:05 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 519B352054;
+ Tue,  3 Nov 2020 13:59:05 +0000 (GMT)
+Received: from [9.160.83.122] (unknown [9.160.83.122])
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 53C035204E;
+ Tue,  3 Nov 2020 13:59:02 +0000 (GMT)
+Subject: Re: [PATCH-for-5.2 0/4] misc: Trivial format string fixes
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ David Gibson <david@gibson.dropbear.id.au>, Gerd Hoffmann
+ <kraxel@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+References: <20201103112558.2554390-1-philmd@redhat.com>
+From: Dov Murik <dovmurik@linux.vnet.ibm.com>
+Message-ID: <64132d34-dbd9-03ee-6f11-a6908df025bf@linux.vnet.ibm.com>
+Date: Tue, 3 Nov 2020 15:58:59 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-Received-SPF: pass client-ip=91.194.90.13; envelope-from=qemu_oss@crudebyte.com;
- helo=lizzy.crudebyte.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 08:50:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20201103112558.2554390-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.312, 18.0.737
+ definitions=2020-11-03_08:2020-11-03,
+ 2020-11-03 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 phishscore=0
+ impostorscore=0 suspectscore=0 priorityscore=1501 malwarescore=0
+ adultscore=0 mlxlogscore=999 lowpriorityscore=0 clxscore=1011 bulkscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011030089
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=dovmurik@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 06:23:44
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -53,211 +107,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 13:50:17 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 13:59:20 -0000
 
-On Freitag, 30. Oktober 2020 05:35:13 CET Xinhao Zhang wrote:
-> Fix code style. Operator needs spaces both sides.
+On 03/11/2020 13:25, Philippe Mathieu-Daudé wrote:
+> IIUC qemu-trivial@ doesn't queue patches during freeze,
 > 
-> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Reviewed-by: Greg Kurz <groug@kaod.org>
-> ---
->  hw/9pfs/9p-local.c | 10 +++++-----
->  hw/9pfs/9p.c       | 16 ++++++++--------
->  2 files changed, 13 insertions(+), 13 deletions(-)
+> so it might be easier if patches are queued by respective
+> 
+> subsystem maintainers.
+> 
+> 
+> 
+> Philippe Mathieu-Daudé (4):
+> 
+>    hw/display/cirrus_vga: Remove debugging code commented out
+> 
+>    hw/display/cirrus_vga: Fix hexadecimal format string specifier
+> 
+>    hw/ppc/spapr_tpm_proxy: Fix hexadecimal format string specifier
+> 
+>    migration/ram: Fix hexadecimal format string specifier
+> 
+> 
+> 
+>   hw/display/cirrus_vga.c | 20 +-------------------
+> 
+>   migration/ram.c         |  2 +-
+> 
+>   hw/ppc/trace-events     |  2 +-
+> 
+>   3 files changed, 3 insertions(+), 21 deletions(-)
+> 
+> 
 > 
 
-Queued on 9p.next:
-https://github.com/cschoenebeck/qemu/commits/9p.next
 
-Thanks!
+There's at least one more easy fix:
 
----
+hw/misc/trace-events:106:mos6522_get_next_irq_time(uint16_t latch, 
+int64_t d, int64_t delta) "latch=%d counter=0x%"PRId64 " 
+delta_next=0x%"PRId64
 
-Actually it's not clear to me why you exactly chose those code style issues to 
-fix, as the same files contain more of them, but okay:
+but I have no idea how to test this.
 
-scripts/checkpatch.pl -f hw/9pfs/9p-local.c hw/9pfs/9p.c hw/9pfs/9p.h hw/9pfs/
-cofs.c
-Checking hw/9pfs/9p-local.c...
-WARNING: Block comments use a leading /* on a separate line
-#289: FILE: hw/9pfs/9p-local.c:289:
-+        /* We can't go this far with map_dirfd not being a valid file 
-descriptor
-
-WARNING: Block comments use a leading /* on a separate line
-#340: FILE: hw/9pfs/9p-local.c:340:
-+    /* FIXME: this should be handled with fchmodat(AT_SYMLINK_NOFOLLOW).
-
-WARNING: Block comments use a leading /* on a separate line
-#355: FILE: hw/9pfs/9p-local.c:355:
-+    /* Fallback for systems that don't support O_PATH: we depend on the file
-
-WARNING: Block comments use a leading /* on a separate line
-#372: FILE: hw/9pfs/9p-local.c:372:
-+    /* Access modes are ignored when O_PATH is supported. If name is a 
-symbolic
-
-WARNING: Block comments use a leading /* on a separate line
-#1084: FILE: hw/9pfs/9p-local.c:1084:
-+        /* We need to remove the metadata as well:
-
-WARNING: Block comments use a leading /* on a separate line
-#1233: FILE: hw/9pfs/9p-local.c:1233:
-+                /* Symbolic links are resolved by the client. We can assume
-
-WARNING: line over 80 characters
-#1399: FILE: hw/9pfs/9p-local.c:1399:
-+static int local_ioc_getversion_init(FsContext *ctx, LocalData *data, Error 
-**errp)
-
-total: 0 errors, 7 warnings, 1596 lines checked
-
-hw/9pfs/9p-local.c has style problems, please review.  If any of these errors
-are false positives report them to the maintainer, see
-CHECKPATCH in MAINTAINERS.
-Checking hw/9pfs/9p.c...
-WARNING: Block comments use a trailing */ on a separate line
-#237: FILE: hw/9pfs/9p.c:237:
-+ * returns 0 if fid got re-opened, 1 if not, < 0 on error */
-
-ERROR: if this code is redundant consider removing it
-#3948: FILE: hw/9pfs/9p.c:3948:
-+#if 0
-
-total: 1 errors, 1 warnings, 4190 lines checked
-
-hw/9pfs/9p.c has style problems, please review.  If any of these errors
-are false positives report them to the maintainer, see
-CHECKPATCH in MAINTAINERS.
-Checking hw/9pfs/9p.h...
-WARNING: Block comments use a leading /* on a separate line
-#140: FILE: hw/9pfs/9p.h:140:
-+/* According to the specification, 9p messages start with a 7-byte header.
-
-WARNING: Block comments use a leading /* on a separate line
-#158: FILE: hw/9pfs/9p.h:158:
-+/* FIXME
-
-ERROR: open brace '{' following struct go on the same line
-#177: FILE: hw/9pfs/9p.h:177:
-+typedef struct V9fsConf
-+{
-
-ERROR: open brace '{' following struct go on the same line
-#188: FILE: hw/9pfs/9p.h:188:
-+typedef struct V9fsXattr
-+{
-
-ERROR: open brace '{' following struct go on the same line
-#406: FILE: hw/9pfs/9p.h:406:
-+typedef struct V9fsFlock
-+{
-
-ERROR: open brace '{' following struct go on the same line
-#416: FILE: hw/9pfs/9p.h:416:
-+typedef struct V9fsGetlock
-+{
-
-total: 4 errors, 2 warnings, 482 lines checked
-
-hw/9pfs/9p.h has style problems, please review.  If any of these errors
-are false positives report them to the maintainer, see
-CHECKPATCH in MAINTAINERS.
-Checking hw/9pfs/cofs.c...
-total: 0 errors, 0 warnings, 372 lines checked
-
-hw/9pfs/cofs.c has no obvious style problems and is ready for submission.
-
-> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-> index 3107637209..af52c1daac 100644
-> --- a/hw/9pfs/9p-local.c
-> +++ b/hw/9pfs/9p-local.c
-> @@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const
-> char *name, memset(buf, 0, ATTR_MAX);
->      while (fgets(buf, ATTR_MAX, fp)) {
->          if (!strncmp(buf, "virtfs.uid", 10)) {
-> -            stbuf->st_uid = atoi(buf+11);
-> +            stbuf->st_uid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.gid", 10)) {
-> -            stbuf->st_gid = atoi(buf+11);
-> +            stbuf->st_gid = atoi(buf + 11);
->          } else if (!strncmp(buf, "virtfs.mode", 11)) {
-> -            stbuf->st_mode = atoi(buf+12);
-> +            stbuf->st_mode = atoi(buf + 12);
->          } else if (!strncmp(buf, "virtfs.rdev", 11)) {
-> -            stbuf->st_rdev = atoi(buf+12);
-> +            stbuf->st_rdev = atoi(buf + 12);
->          }
->          memset(buf, 0, ATTR_MAX);
->      }
-> @@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath
-> *dir_path, const char *name, if (fd == -1) {
->              goto out;
->          }
-> -        credp->fc_mode = credp->fc_mode|S_IFREG;
-> +        credp->fc_mode = credp->fc_mode | S_IFREG;
->          if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
->              /* Set cleint credentials in xattr */
->              err = local_set_xattrat(dirfd, name, credp);
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index 741d222c3f..94df440fc7 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString
-> *extension) }
->      }
-> 
-> -    if (!(ret&~0777)) {
-> +    if (!(ret & ~0777)) {
->          ret |= S_IFREG;
->      }
-> 
-> @@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
->          v9fs_path_unlock(s);
->      } else {
->          err = v9fs_co_open2(pdu, fidp, &name, -1,
-> -                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
-> +                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
-> if (err < 0) {
->              goto out;
->          }
-> @@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
-> *pdu, struct statfs *stbuf) * compute bsize factor based on host file
-> system block size
->       * and client msize
->       */
-> -    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
-> +    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
->      if (!bsize_factor) {
->          bsize_factor = 1;
->      }
-> @@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
-> *pdu, struct statfs *stbuf) * adjust(divide) the number of blocks, free
-> blocks and available * blocks by bsize factor
->       */
-> -    f_blocks = stbuf->f_blocks/bsize_factor;
-> -    f_bfree  = stbuf->f_bfree/bsize_factor;
-> -    f_bavail = stbuf->f_bavail/bsize_factor;
-> +    f_blocks = stbuf->f_blocks / bsize_factor;
-> +    f_bfree  = stbuf->f_bfree / bsize_factor;
-> +    f_bavail = stbuf->f_bavail / bsize_factor;
->      f_files  = stbuf->f_files;
->      f_ffree  = stbuf->f_ffree;
->      fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
-> @@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__))
-> v9fs_set_fd_limit(void) error_report("Failed to get the resource limit");
->          exit(1);
->      }
-> -    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
-> -    open_fd_rc = rlim.rlim_cur/2;
-> +    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
-> +    open_fd_rc = rlim.rlim_cur / 2;
->  }
-
-Best regards,
-Christian Schoenebeck
-
-
+-Dov
 
