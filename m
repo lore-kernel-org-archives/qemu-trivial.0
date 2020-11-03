@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZw9F-00071m-8l
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 08:14:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38406)
+	id 1kZwhW-0000y3-NH
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 08:50:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kZw9B-0006xz-4p; Tue, 03 Nov 2020 08:14:49 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:58323 helo=ozlabs.org)
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1kZwhV-0000xF-B4; Tue, 03 Nov 2020 08:50:17 -0500
+Received: from lizzy.crudebyte.com ([91.194.90.13]:34555)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kZw98-000311-Ej; Tue, 03 Nov 2020 08:14:48 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CQVcc2nnvz9sSs; Wed,  4 Nov 2020 00:14:40 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1604409280;
- bh=5KKGYc46HYuVj17nvHU0QwaSj1jD5BWhEaBhj9s9iYw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=htqVtI1d4aw3JebmdUcZN33H+KzCoHsw+33ws1xO0cGrbf1V2hKZPm6DdjCDmE/00
- aNKLyGjxKbKGNTA0XPWYOLF5+LIyVkJ3+JXD7V7bH0m9yhpwAhZ4W9sck38zRHTKDy
- apmeAtI2zyv1SnlQKPuW6fT9zP/D2Xkuv2F6GRkE=
-Date: Tue, 3 Nov 2020 22:39:48 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
- qemu-ppc@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Gerd Hoffmann <kraxel@redhat.com>, Dov Murik <dovmurik@linux.vnet.ibm.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: Re: [PATCH-for-5.2 3/4] hw/ppc/spapr_tpm_proxy: Fix hexadecimal
- format string specifier
-Message-ID: <20201103113948.GG143651@yekko.fritz.box>
-References: <20201103112558.2554390-1-philmd@redhat.com>
- <20201103112558.2554390-4-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1kZwhR-0007D5-6N; Tue, 03 Nov 2020 08:50:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=crudebyte.com; s=lizzy; h=Content-Type:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Content-ID:Content-Description;
+ bh=IEgeAFgt20+/1FaaEEZCClpwEUyzNPym2Z3Uczy+I8M=; b=MPbs+eBGN1T1EIWimwzfS83BGV
+ U15G4Q1qFCWLYqGrew2eSFfmUGVAvCyykvRFK/HKxtpxuKRdfSJAgdW1uI9ueCudNbtsTxa3RHIPP
+ 1IHqRV3OGQScND07GbyeiLaUUeCAu88CCkFPnrIGtaxBI0WPqMWDQECbeYS09TqeRRnFvFHqDln84
+ ZPdUZtbLGEQzIzx/MwAeZPilDFyHTAu0iYd8fxcULeFh3jRxT7VaUFToZbNeBMaENrUgd3aQVQQPA
+ Kz+gWEsUkiMo9yVYJdJh68tofGZTLH23Ar0Ru3Pkdq/YWzDfMFTDH8pyE+ghvsnU1OHFhxXTGT0+J
+ tovjrJ2A==;
+From: Christian Schoenebeck <qemu_oss@crudebyte.com>
+To: qemu-devel@nongnu.org
+Cc: Xinhao Zhang <zhangxinhao1@huawei.com>, alex.chen@huawei.com,
+ qemu-trivial@nongnu.org, groug@kaod.org, dengkai1@huawei.com
+Subject: Re: [PATCH v3 1/3] hw/9pfs : add spaces around operator
+Date: Tue, 03 Nov 2020 14:50:02 +0100
+Message-ID: <7327817.i0FNtphoZp@silver>
+In-Reply-To: <20201030043515.1030223-1-zhangxinhao1@huawei.com>
+References: <20201030043515.1030223-1-zhangxinhao1@huawei.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="m0vRWufqUC70IDnR"
-Content-Disposition: inline
-In-Reply-To: <20201103112558.2554390-4-philmd@redhat.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+Received-SPF: pass client-ip=91.194.90.13; envelope-from=qemu_oss@crudebyte.com;
+ helo=lizzy.crudebyte.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 08:50:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,73 +53,211 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 13:14:49 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 13:50:17 -0000
 
-
---m0vRWufqUC70IDnR
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Nov 03, 2020 at 12:25:57PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> The '%u' conversion specifier is for decimal notation.
-> When prefixing a format with '0x', we want the hexadecimal
-> specifier ('%x').
->=20
-> Inspired-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+On Freitag, 30. Oktober 2020 05:35:13 CET Xinhao Zhang wrote:
+> Fix code style. Operator needs spaces both sides.
+> 
+> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Reviewed-by: Greg Kurz <groug@kaod.org>
 > ---
->  hw/ppc/trace-events | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/ppc/trace-events b/hw/ppc/trace-events
-> index dcc06d49b5a..6d8d095aa28 100644
-> --- a/hw/ppc/trace-events
-> +++ b/hw/ppc/trace-events
-> @@ -19,7 +19,7 @@ spapr_update_dt_failed_size(unsigned cbold, unsigned cb=
-new, unsigned magic) "Old
->  spapr_update_dt_failed_check(unsigned cbold, unsigned cbnew, unsigned ma=
-gic) "Old blob %u bytes, new blob %u bytes, magic 0x%x"
-> =20
->  # spapr_tpm_proxy.c
-> -spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_devic=
-e_path=3D%s operation=3D0x%"PRIu64
-> +spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_devic=
-e_path=3D%s operation=3D0x%"PRIx64
->  spapr_tpm_execute(uint64_t data_in, uint64_t data_in_sz, uint64_t data_o=
-ut, uint64_t data_out_sz) "data_in=3D0x%"PRIx64", data_in_sz=3D%"PRIu64", d=
-ata_out=3D0x%"PRIx64", data_out_sz=3D%"PRIu64
-> =20
->  # spapr_iommu.c
+>  hw/9pfs/9p-local.c | 10 +++++-----
+>  hw/9pfs/9p.c       | 16 ++++++++--------
+>  2 files changed, 13 insertions(+), 13 deletions(-)
+> 
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Queued on 9p.next:
+https://github.com/cschoenebeck/qemu/commits/9p.next
 
---m0vRWufqUC70IDnR
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks!
 
------BEGIN PGP SIGNATURE-----
+---
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+hQYEACgkQbDjKyiDZ
-s5Ip7A/+O4OeY7yjLbwtMaoMnrxalSFJDk6nGQK+hEIrgK1TjekfgK/T6OSz7Sl7
-dNKzjF+xtwJePuleIYwLzUUehc/Ab/QoG62gz33SIybarJUDUq1GBBX2b6RWuVEg
-50i3gC8pWOPhbL7a6y47LSsyAr3GdNvzE1s3vE1lm3KPp7Dtcq9saE+zPyDOK75J
-FnlhaF/FFA0xVGiLaI2SiA6wF1i852Ppj9NBZzJyh3to3YfjQqQSdAFQB2+eDIqF
-LiovyhGGqaKELqTKhvZxibWQ1GExbRrP0uLz2Elt0N0YP5AH9+6iy57nmmq+xwAs
-DON87piOCyQz4IAfFIHVYzka+cU/HBsBkzNbcs6U4uJlTxSgRBFjamxzy/I6IAkp
-G1UgkhmSr2+NMGYH4v20zzRpBt424BoYg0JQHTojrgPfT0Lb3raluet8JR8lo28I
-M3S9yiyYMo/1nWvM8v2mVRY+LvHp32FPUwiqqwFjJwwoEORV5Rj7HIY6wbjSLqlR
-GS9+5hfzZSAlI1CO36+HKucbw6TYJoVLatt921QvorznBh+ew2FJtNgTtOMWm5IY
-t7y0rEK1x3RadF6Euv4uL0EsUtSRKuzFBb81OD+/BjZaDZRG/Y+71QE2VTnHeIJl
-wgZY4AFR9H25naaGXk+ACQBsK8QUY+JBNo2rs+/8VcVFdNmfLCY=
-=4n5J
------END PGP SIGNATURE-----
+Actually it's not clear to me why you exactly chose those code style issues to 
+fix, as the same files contain more of them, but okay:
 
---m0vRWufqUC70IDnR--
+scripts/checkpatch.pl -f hw/9pfs/9p-local.c hw/9pfs/9p.c hw/9pfs/9p.h hw/9pfs/
+cofs.c
+Checking hw/9pfs/9p-local.c...
+WARNING: Block comments use a leading /* on a separate line
+#289: FILE: hw/9pfs/9p-local.c:289:
++        /* We can't go this far with map_dirfd not being a valid file 
+descriptor
+
+WARNING: Block comments use a leading /* on a separate line
+#340: FILE: hw/9pfs/9p-local.c:340:
++    /* FIXME: this should be handled with fchmodat(AT_SYMLINK_NOFOLLOW).
+
+WARNING: Block comments use a leading /* on a separate line
+#355: FILE: hw/9pfs/9p-local.c:355:
++    /* Fallback for systems that don't support O_PATH: we depend on the file
+
+WARNING: Block comments use a leading /* on a separate line
+#372: FILE: hw/9pfs/9p-local.c:372:
++    /* Access modes are ignored when O_PATH is supported. If name is a 
+symbolic
+
+WARNING: Block comments use a leading /* on a separate line
+#1084: FILE: hw/9pfs/9p-local.c:1084:
++        /* We need to remove the metadata as well:
+
+WARNING: Block comments use a leading /* on a separate line
+#1233: FILE: hw/9pfs/9p-local.c:1233:
++                /* Symbolic links are resolved by the client. We can assume
+
+WARNING: line over 80 characters
+#1399: FILE: hw/9pfs/9p-local.c:1399:
++static int local_ioc_getversion_init(FsContext *ctx, LocalData *data, Error 
+**errp)
+
+total: 0 errors, 7 warnings, 1596 lines checked
+
+hw/9pfs/9p-local.c has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+Checking hw/9pfs/9p.c...
+WARNING: Block comments use a trailing */ on a separate line
+#237: FILE: hw/9pfs/9p.c:237:
++ * returns 0 if fid got re-opened, 1 if not, < 0 on error */
+
+ERROR: if this code is redundant consider removing it
+#3948: FILE: hw/9pfs/9p.c:3948:
++#if 0
+
+total: 1 errors, 1 warnings, 4190 lines checked
+
+hw/9pfs/9p.c has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+Checking hw/9pfs/9p.h...
+WARNING: Block comments use a leading /* on a separate line
+#140: FILE: hw/9pfs/9p.h:140:
++/* According to the specification, 9p messages start with a 7-byte header.
+
+WARNING: Block comments use a leading /* on a separate line
+#158: FILE: hw/9pfs/9p.h:158:
++/* FIXME
+
+ERROR: open brace '{' following struct go on the same line
+#177: FILE: hw/9pfs/9p.h:177:
++typedef struct V9fsConf
++{
+
+ERROR: open brace '{' following struct go on the same line
+#188: FILE: hw/9pfs/9p.h:188:
++typedef struct V9fsXattr
++{
+
+ERROR: open brace '{' following struct go on the same line
+#406: FILE: hw/9pfs/9p.h:406:
++typedef struct V9fsFlock
++{
+
+ERROR: open brace '{' following struct go on the same line
+#416: FILE: hw/9pfs/9p.h:416:
++typedef struct V9fsGetlock
++{
+
+total: 4 errors, 2 warnings, 482 lines checked
+
+hw/9pfs/9p.h has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+Checking hw/9pfs/cofs.c...
+total: 0 errors, 0 warnings, 372 lines checked
+
+hw/9pfs/cofs.c has no obvious style problems and is ready for submission.
+
+> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
+> index 3107637209..af52c1daac 100644
+> --- a/hw/9pfs/9p-local.c
+> +++ b/hw/9pfs/9p-local.c
+> @@ -162,13 +162,13 @@ static void local_mapped_file_attr(int dirfd, const
+> char *name, memset(buf, 0, ATTR_MAX);
+>      while (fgets(buf, ATTR_MAX, fp)) {
+>          if (!strncmp(buf, "virtfs.uid", 10)) {
+> -            stbuf->st_uid = atoi(buf+11);
+> +            stbuf->st_uid = atoi(buf + 11);
+>          } else if (!strncmp(buf, "virtfs.gid", 10)) {
+> -            stbuf->st_gid = atoi(buf+11);
+> +            stbuf->st_gid = atoi(buf + 11);
+>          } else if (!strncmp(buf, "virtfs.mode", 11)) {
+> -            stbuf->st_mode = atoi(buf+12);
+> +            stbuf->st_mode = atoi(buf + 12);
+>          } else if (!strncmp(buf, "virtfs.rdev", 11)) {
+> -            stbuf->st_rdev = atoi(buf+12);
+> +            stbuf->st_rdev = atoi(buf + 12);
+>          }
+>          memset(buf, 0, ATTR_MAX);
+>      }
+> @@ -823,7 +823,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath
+> *dir_path, const char *name, if (fd == -1) {
+>              goto out;
+>          }
+> -        credp->fc_mode = credp->fc_mode|S_IFREG;
+> +        credp->fc_mode = credp->fc_mode | S_IFREG;
+>          if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
+>              /* Set cleint credentials in xattr */
+>              err = local_set_xattrat(dirfd, name, credp);
+> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+> index 741d222c3f..94df440fc7 100644
+> --- a/hw/9pfs/9p.c
+> +++ b/hw/9pfs/9p.c
+> @@ -1091,7 +1091,7 @@ static mode_t v9mode_to_mode(uint32_t mode, V9fsString
+> *extension) }
+>      }
+> 
+> -    if (!(ret&~0777)) {
+> +    if (!(ret & ~0777)) {
+>          ret |= S_IFREG;
+>      }
+> 
+> @@ -2776,7 +2776,7 @@ static void coroutine_fn v9fs_create(void *opaque)
+>          v9fs_path_unlock(s);
+>      } else {
+>          err = v9fs_co_open2(pdu, fidp, &name, -1,
+> -                            omode_to_uflags(mode)|O_CREAT, perm, &stbuf);
+> +                            omode_to_uflags(mode) | O_CREAT, perm, &stbuf);
+> if (err < 0) {
+>              goto out;
+>          }
+> @@ -3428,7 +3428,7 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
+> *pdu, struct statfs *stbuf) * compute bsize factor based on host file
+> system block size
+>       * and client msize
+>       */
+> -    bsize_factor = (s->msize - P9_IOHDRSZ)/stbuf->f_bsize;
+> +    bsize_factor = (s->msize - P9_IOHDRSZ) / stbuf->f_bsize;
+>      if (!bsize_factor) {
+>          bsize_factor = 1;
+>      }
+> @@ -3440,9 +3440,9 @@ static int v9fs_fill_statfs(V9fsState *s, V9fsPDU
+> *pdu, struct statfs *stbuf) * adjust(divide) the number of blocks, free
+> blocks and available * blocks by bsize factor
+>       */
+> -    f_blocks = stbuf->f_blocks/bsize_factor;
+> -    f_bfree  = stbuf->f_bfree/bsize_factor;
+> -    f_bavail = stbuf->f_bavail/bsize_factor;
+> +    f_blocks = stbuf->f_blocks / bsize_factor;
+> +    f_bfree  = stbuf->f_bfree / bsize_factor;
+> +    f_bavail = stbuf->f_bavail / bsize_factor;
+>      f_files  = stbuf->f_files;
+>      f_ffree  = stbuf->f_ffree;
+>      fsid_val = (unsigned int) stbuf->f_fsid.__val[0] |
+> @@ -4185,6 +4185,6 @@ static void __attribute__((__constructor__))
+> v9fs_set_fd_limit(void) error_report("Failed to get the resource limit");
+>          exit(1);
+>      }
+> -    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur/3);
+> -    open_fd_rc = rlim.rlim_cur/2;
+> +    open_fd_hw = rlim.rlim_cur - MIN(400, rlim.rlim_cur / 3);
+> +    open_fd_rc = rlim.rlim_cur / 2;
+>  }
+
+Best regards,
+Christian Schoenebeck
+
+
 
