@@ -1,45 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZr1U-0007VI-Qe
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 02:46:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38826)
+	id 1kZsVw-0002bI-Mf
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 04:22:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZr1S-0007Ur-PA; Tue, 03 Nov 2020 02:46:30 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2432)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kZr1N-0006Ty-Hs; Tue, 03 Nov 2020 02:46:30 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CQMKX00fgzLqYl;
- Tue,  3 Nov 2020 15:46:07 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 3 Nov 2020 15:46:03 +0800
-Message-ID: <5FA10ABA.1080109@huawei.com>
-Date: Tue, 3 Nov 2020 15:46:02 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1kZsVu-0002ax-Qe; Tue, 03 Nov 2020 04:22:02 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:32836)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1kZsVp-0003FV-Ca; Tue, 03 Nov 2020 04:22:02 -0500
+Received: by mail-ej1-x644.google.com with SMTP id 7so23125641ejm.0;
+ Tue, 03 Nov 2020 01:21:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=VZGdbd6PfgqXysXvFRLP0E425CHntjnZXgWfm24fL20=;
+ b=AnROhhVIpRbRxbBdNyp2Sa3JNc7EpbAIN5fr/FQFODse2vvrDZOuZt9VRVv7lZqUHK
+ EpmiRXUZgep7PNRd5gHbd+QE+wjeofHpGqbRUoLrnL995iKRbKt2I+TwQZnYTSLEfYwv
+ J6h8Lx+2L4/dLOgDok0ti/cP3nsnd6zTzZ0KaG4tQJ089L/Wmeo2hnUeJj+J8I2Bpo0a
+ Z9k/yUL9MCvQq1Cg7YC2rmz02jEQrDMUMLYumvmLAOlgqE0X6JthfSkZXIeUK3TBxcws
+ Z3U2oCK850eYGIZYij56jigmJT/fENZEeVHLYpRjVqbp8XWX2YnwQ5bGh6uXPHZpz4Kq
+ i/Nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=VZGdbd6PfgqXysXvFRLP0E425CHntjnZXgWfm24fL20=;
+ b=oNEX7R6p99CqxsQHSLJ28yA4++jqNeDTOcJpwtsUPwp8diZwKQa+f6I88c3tl6uLar
+ 4HpHZRHvugqshdaQEBn82fgpGAqLZAKUfQf9wCvcr6Oj7hGaY375yHHpN3OqqU/7T5DL
+ rgqYl3QmC/0PiLsvkw/Q0PC1QJGXBn0BIpEwsTAgZdD2dTKk15hqbx9JlL0ApgUxew5V
+ GwaNbN0anTFCIzQTzGsFPMblP+bmIrp65+S5kpxeZDtXbaoU99LwIGfnxOuwz+GBBrJk
+ pNN8nsCAuWk1W/2xxJo1ZjQ9yYBEWFH3f9clg9OW/Ieb3pyw5aGUExpcMyTqeGEMcYX1
+ xOQg==
+X-Gm-Message-State: AOAM531eUmoFU6B5JlY18sjGRyUygdGXzTB1276HD4tufsrU0inUkRs5
+ rUw21P8dYPli3D//pLtrhjbQHdZE5EG7fuYwoCQ=
+X-Google-Smtp-Source: ABdhPJycVQ8+SLiEekkGveLsyb3z0+N2W80JhbqbIsaYvIcAVSl7Ro9cimtgHU5tyZeey0JW6VBphQXMJVetNdoYH0s=
+X-Received: by 2002:a17:907:119e:: with SMTP id
+ uz30mr18801418ejb.125.1604395314766; 
+ Tue, 03 Nov 2020 01:21:54 -0800 (PST)
 MIME-Version: 1.0
-To: <edgar.iglesias@gmail.com>
-CC: <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH] target/microblaze: Fix possible array out of bounds in
- mmu_write()
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:52:53
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
+ <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Tue, 3 Nov 2020 01:21:43 -0800
+Message-ID: <CAMo8BfK5wDgvzWFsC0WHyztUCiGR0dGnJgJiAVt5aG7nt8PsDw@mail.gmail.com>
+Subject: Re: [PATCH 1/6] target/xtensa: fix uninitialized variable warning
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ zhang.zhanghailiang@huawei.com, ganqixin@huawei.com, 
+ Euler Robot <euler.robot@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=jcmvbkbc@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.374,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -52,33 +76,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 07:46:31 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 09:22:03 -0000
 
-The size of env->mmu.regs is 3, but the range of 'rn' is [0, 5].
-To avoid data access out of bounds, only if 'rn' is less than 3, we
-can print env->mmu.regs[rn]. In other cases, we can print
-env->mmu.regs[MMU_R_TLBX].
+On Mon, Nov 2, 2020 at 5:52 PM Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
+> The compiler cannot determine whether the return values of the xtensa_ope=
+rand_is_register(isa, opc, opnd)
+>  and xtensa_operand_is_visible(isa, opc, opnd) functions are the same.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- target/microblaze/mmu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+It doesn't have to because 1) they definitely are not the same, but
+2) it doesn't matter.
 
-diff --git a/target/microblaze/mmu.c b/target/microblaze/mmu.c
-index 1dbbb271c4..917ad6d69e 100644
---- a/target/microblaze/mmu.c
-+++ b/target/microblaze/mmu.c
-@@ -234,7 +234,8 @@ void mmu_write(CPUMBState *env, bool ext, uint32_t rn, uint32_t v)
-     unsigned int i;
+> So,it assumes that 'rf' is not assigned, but it's used.
 
-     qemu_log_mask(CPU_LOG_MMU,
--                  "%s rn=%d=%x old=%x\n", __func__, rn, v, env->mmu.regs[rn]);
-+                  "%s rn=%d=%x old=%x\n", __func__, rn, v,
-+                  rn < 3 ? env->mmu.regs[rn] : env->mmu.regs[MMU_R_TLBX]);
+The assumption is wrong. rf is used under the 'if (register_file)'
+condition and register_file is initialized to NULL and then set
+to something non-NULL based on the value of rf here:
 
-     if (cpu->cfg.mmu < 2 || !cpu->cfg.mmu_tlb_access) {
-         qemu_log_mask(LOG_GUEST_ERROR, "MMU access on MMU-less system\n");
--- 
-2.19.1
+958             if (xtensa_operand_is_register(isa, opc, opnd)) {
+959                 rf =3D xtensa_operand_regfile(isa, opc, opnd);
+960                 register_file =3D dc->config->regfile[rf];
+
+> The compiler showed warning:
+> target/xtensa/translate.c: In function =E2=80=98disas_xtensa_insn=E2=80=
+=99:
+> target/xtensa/translate.c:985:43: warning: =E2=80=98rf=E2=80=99 may be us=
+ed uninitialized in this function [-Wmaybe-uninitialized]
+>   985 |                     arg[vopnd].num_bits =3D xtensa_regfile_num_bi=
+ts(isa, rf);
+>       |                                           ^~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~
+>
+> Add a default value for 'rf' to prevented the warning.
+
+I don't see it doing default build with gcc 8.3. But then I don't see
+-Wmaybe-uninitialized in the compiler command line either.
+
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+> Cc: Max Filippov <jcmvbkbc@gmail.com>
+> ---
+>  target/xtensa/translate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+> index 944a157747..eea851bbe7 100644
+> --- a/target/xtensa/translate.c
+> +++ b/target/xtensa/translate.c
+> @@ -953,7 +953,7 @@ static void disas_xtensa_insn(CPUXtensaState *env, Di=
+sasContext *dc)
+>
+>          for (opnd =3D vopnd =3D 0; opnd < opnds; ++opnd) {
+>              void **register_file =3D NULL;
+> -            xtensa_regfile rf;
+> +            xtensa_regfile rf =3D -1;
+
+Please use XTENSA_UNDEFINED instead if you still think this
+is worth changing.
+
+--=20
+Thanks.
+-- Max
 
