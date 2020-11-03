@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZlWq-0002C1-O3
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59972)
+	id 1kZlWs-0002Fq-8a
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlWn-000266-7g; Mon, 02 Nov 2020 20:54:29 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2382)
+ id 1kZlWo-00027O-HZ; Mon, 02 Nov 2020 20:54:30 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2494)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlVO-0001nj-QB; Mon, 02 Nov 2020 20:54:28 -0500
+ id 1kZlVM-0001mc-75; Mon, 02 Nov 2020 20:54:30 -0500
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQCV010rPz15P8T;
- Tue,  3 Nov 2020 09:52:56 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CQCTv14p2zhYxf;
+ Tue,  3 Nov 2020 09:52:51 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
- 09:52:50 +0800
+ 09:52:44 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Paolo
- Bonzini" <pbonzini@redhat.com>
-Subject: [PATCH 4/6] util/qemu-timer: fix uninitialized variable warning for
- expire_time
-Date: Tue, 3 Nov 2020 09:52:26 +0800
-Message-ID: <20201103015228.2250547-5-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH 0/6] fix uninitialized variable warning
+Date: Tue, 3 Nov 2020 09:52:22 +0800
+Message-ID: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
-References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:52:58
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:52:53
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,54 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 01:54:30 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 01:54:31 -0000
 
-After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
- that the statements in the macro must be executed. As a result, some variables
- assignment statements in the macro may be considered as unexecuted by the compiler.
+Hi all,
+  There are some variables initialized warnings reported by the compiler,
+even if the default CFLAG for the compiler parameters are uesed.
 
-The compiler showed warning:
-util/qemu-timer.c: In function ‘timerlist_expired’:
-util/qemu-timer.c:199:24: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
- 199 |     return expire_time <= qemu_clock_get_ns(timer_list->clock->type);
-     |            ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-util/qemu-timer.c: In function ‘timerlist_deadline_ns’:
-util/qemu-timer.c:237:11: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
- 237 |     delta = expire_time - qemu_clock_get_ns(timer_list->clock->type);
-     |     ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This serial has added some default values or changed the assignment places for the variablies to fix them.
 
-Add a default value for 'expire_time' to prevented the warning.
+Thanks,
+Chen Qun
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Paolo Bonzini <pbonzini@redhat.com>
----
- util/qemu-timer.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 8b73882fbb..3910003e86 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -183,7 +183,7 @@ bool qemu_clock_has_timers(QEMUClockType type)
- 
- bool timerlist_expired(QEMUTimerList *timer_list)
- {
--    int64_t expire_time;
-+    int64_t expire_time = -1;
- 
-     if (!qatomic_read(&timer_list->active_timers)) {
-         return false;
-@@ -213,7 +213,7 @@ bool qemu_clock_expired(QEMUClockType type)
- int64_t timerlist_deadline_ns(QEMUTimerList *timer_list)
- {
-     int64_t delta;
--    int64_t expire_time;
-+    int64_t expire_time = -1;
- 
-     if (!qatomic_read(&timer_list->active_timers)) {
-         return -1;
+Chen Qun (6):
+  target/xtensa: fix uninitialized variable warning
+  hw/rdma/rdma_backend: fix uninitialized variable warning in
+    rdma_poll_cq()
+  util/qemu-timer: fix uninitialized variable warning in
+    timer_mod_anticipate_ns()
+  util/qemu-timer: fix uninitialized variable warning for expire_time
+  plugins/loader: fix uninitialized variable warning in
+    plugin_reset_uninstall()
+  migration: fix uninitialized variable warning in
+    migrate_send_rp_req_pages()
+
+ hw/rdma/rdma_backend.c    | 2 +-
+ migration/migration.c     | 2 +-
+ plugins/loader.c          | 2 +-
+ target/xtensa/translate.c | 2 +-
+ util/qemu-timer.c         | 8 +++-----
+ 5 files changed, 7 insertions(+), 9 deletions(-)
+
 -- 
 2.27.0
 
