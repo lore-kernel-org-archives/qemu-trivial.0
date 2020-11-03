@@ -1,79 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZm3R-00017G-DO
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 21:28:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42846)
+	id 1kZm9l-0004aV-IP
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 21:34:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kZm3P-00014K-Hc; Mon, 02 Nov 2020 21:28:11 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40174)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kZm3L-0005sW-LZ; Mon, 02 Nov 2020 21:28:11 -0500
-Received: by mail-wr1-x444.google.com with SMTP id 33so5986384wrl.7;
- Mon, 02 Nov 2020 18:27:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=R4W6Up8fZ0pGiMe32f0Q6Q7teHooQxTaUOD9jKr3cqw=;
- b=IyJiV/+9hXi88DgxKEOvdBYul10dRFkNd13+VlvwR01RDbTDZVgNBv3fuVh25uBov+
- iCAOBVNOwIBAchJr8szsIFd/1p9SHtU5qVdqBRDhwpXWB9UionZaHSG/Rt493X3Rt74N
- mPt4kIulG6FxWSl5b/MAzyXjI0QDfsy5Hu0ioieiRl2pNKIX6fj6p5NSHT3a62prWwb3
- Ji1LdbHeLpdYs5h2j6AY1mD7NjWX5bkMFrhT6tszX7YfpC5HesYIjCUkS8mk2t6y5OxD
- b6rZINTHvV3elNU/cKJzmTQjsO9uFrk0UhilmmOG9WCu4PWxZ/EeO1oIAZXSlW0TgWhx
- OVjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=R4W6Up8fZ0pGiMe32f0Q6Q7teHooQxTaUOD9jKr3cqw=;
- b=IWfa8nUrSsh0u+8Sbt7IzWI2bULJIh1FvHxDh2GCFkfiOzk6AlUfG3g/NiWEvtnvSy
- eXiQeZkis+6IcXQy9wRK0H8iIGjgrFtIhezH6iM8YAFafiDLQgPEiZG2ekKqsPioQnkC
- Sijrb5vRCQgfQM961DAAy+Jn+5LIUFTPYRTqdj27SBEz+xOqBQdnrgKZXuRJMqBImaIu
- XiwDJAUsBkyDj5pDgC6KI2WLxG50+VZXlccU7iqPS/IEyY8lRKnifYjYdRwO2tebsGCq
- Deqwj9hKbg5bnLrfUgN1Yx/ZsslxHV/yksOGpRGhEM1GhWXJnWJ0vjmK4b5qy2rmPnT4
- 16ug==
-X-Gm-Message-State: AOAM5320uEPkRBH6xFhgiEi5YIP2rp/aqLletiU3fSFBoi7gNpXbSH+T
- k8SpN/U6iqVGJH/4T+aMHM8=
-X-Google-Smtp-Source: ABdhPJyzAX2hDZnIDuVPl9JugpukIG4H2xOkd/YeLdJS8bChX+ie5CFfnYVcm0aLpNlKkYMtHBMFwQ==
-X-Received: by 2002:adf:e743:: with SMTP id c3mr23769135wrn.317.1604370476260; 
- Mon, 02 Nov 2020 18:27:56 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id l11sm22500032wro.89.2020.11.02.18.27.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 18:27:55 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 1/6] target/xtensa: fix uninitialized variable warning
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>
-Cc: zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZm9i-0004XM-73; Mon, 02 Nov 2020 21:34:43 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2050)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZm9f-0006Zi-7r; Mon, 02 Nov 2020 21:34:41 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CQDQ21vPKzQmhd;
+ Tue,  3 Nov 2020 10:34:34 +0800 (CST)
+Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Tue, 3 Nov 2020 10:34:34 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
+ dggemm422-hub.china.huawei.com ([169.254.138.104]) with mapi id
+ 14.03.0487.000; Tue, 3 Nov 2020 10:34:28 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, ganqixin <ganqixin@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>
+Subject: RE: [PATCH 5/6] plugins/loader: fix uninitialized variable warning
+ in plugin_reset_uninstall()
+Thread-Topic: [PATCH 5/6] plugins/loader: fix uninitialized variable warning
+ in plugin_reset_uninstall()
+Thread-Index: AQHWsYQOG+BA1V6h/kOkIdkZ4HoI+6m1JgQAgACIJTA=
+Date: Tue, 3 Nov 2020 02:34:27 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA24B18@dggemm531-mbx.china.huawei.com>
 References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
- <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ae6feaeb-9b1f-0996-33d6-1d19fef5f3fc@amsat.org>
-Date: Tue, 3 Nov 2020 03:27:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ <20201103015228.2250547-6-kuhn.chenqun@huawei.com>
+ <b069ab47-8f3d-b4e9-77f6-567b1dcbd296@redhat.com>
+In-Reply-To: <b069ab47-8f3d-b4e9-77f6-567b1dcbd296@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 21:34:35
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,57 +67,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 02:28:11 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 02:34:43 -0000
 
-On 11/3/20 2:52 AM, Chen Qun wrote:
-> The compiler cannot determine whether the return values of the xtensa_operand_is_register(isa, opc, opnd)
->  and xtensa_operand_is_visible(isa, opc, opnd) functions are the same.
-> So,it assumes that 'rf' is not assigned, but it's used.
-> 
-> The compiler showed warning:
-> target/xtensa/translate.c: In function ‘disas_xtensa_insn’:
-> target/xtensa/translate.c:985:43: warning: ‘rf’ may be used uninitialized in this function [-Wmaybe-uninitialized]
->   985 |                     arg[vopnd].num_bits = xtensa_regfile_num_bits(isa, rf);
->       |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> Add a default value for 'rf' to prevented the warning.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Max Filippov <jcmvbkbc@gmail.com>
-> ---
->  target/xtensa/translate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
-> index 944a157747..eea851bbe7 100644
-> --- a/target/xtensa/translate.c
-> +++ b/target/xtensa/translate.c
-> @@ -953,7 +953,7 @@ static void disas_xtensa_insn(CPUXtensaState *env, DisasContext *dc)
->  
->          for (opnd = vopnd = 0; opnd < opnds; ++opnd) {
->              void **register_file = NULL;
-> -            xtensa_regfile rf;
-> +            xtensa_regfile rf = -1;
-
-NAck (code smells).
-
-Deferring to Max, but possible fix:
-
--- >8 --
-@@ -953,10 +953,9 @@ static void disas_xtensa_insn(CPUXtensaState *env,
-DisasContext *dc)
-
-         for (opnd = vopnd = 0; opnd < opnds; ++opnd) {
-             void **register_file = NULL;
--            xtensa_regfile rf;
-+            xtensa_regfile rf = xtensa_operand_regfile(isa, opc, opnd);
-
-             if (xtensa_operand_is_register(isa, opc, opnd)) {
--                rf = xtensa_operand_regfile(isa, opc, opnd);
-                 register_file = dc->config->regfile[rf];
-
-                 if (rf == dc->config->a_regfile) {
----
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
+dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBUdWVzZGF5LCBOb3ZlbWJl
+ciAzLCAyMDIwIDEwOjE4IEFNDQo+IFRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1
+YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+IHFlbXUtdHJpdmlhbEBub25nbnUu
+b3JnDQo+IENjOiBBbGV4IEJlbm7DqWUgPGFsZXguYmVubmVlQGxpbmFyby5vcmc+OyBaaGFuZ2hh
+aWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBnYW5xaXhpbiA8Z2Fu
+cWl4aW5AaHVhd2VpLmNvbT47IEV1bGVyDQo+IFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29t
+Pg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIDUvNl0gcGx1Z2lucy9sb2FkZXI6IGZpeCB1bmluaXRp
+YWxpemVkIHZhcmlhYmxlIHdhcm5pbmcgaW4NCj4gcGx1Z2luX3Jlc2V0X3VuaW5zdGFsbCgpDQo+
+IA0KPiBPbiAxMS8zLzIwIDI6NTIgQU0sIENoZW4gUXVuIHdyb3RlOg0KPiA+IEFmdGVyIHRoZSBX
+SVRIX1FFTVVfTE9DS19HVUFSRCBtYWNybyBpcyBhZGRlZCwgdGhlIGNvbXBpbGVyIGNhbm5vdA0K
+PiA+IGlkZW50aWZ5ICB0aGF0IHRoZSBzdGF0ZW1lbnRzIGluIHRoZSBtYWNybyBtdXN0IGJlIGV4
+ZWN1dGVkLiBBcyBhDQo+ID4gcmVzdWx0LCBzb21lIHZhcmlhYmxlcyAgYXNzaWdubWVudCBzdGF0
+ZW1lbnRzIGluIHRoZSBtYWNybyBtYXkgYmUNCj4gY29uc2lkZXJlZCBhcyB1bmV4ZWN1dGVkIGJ5
+IHRoZSBjb21waWxlci4NCj4gPg0KPiA+IFRoZSBjb21waWxlciBzaG93ZWQgd2FybmluZzoNCj4g
+PiBwbHVnaW5zL2xvYWRlci5jOiBJbiBmdW5jdGlvbiDigJhwbHVnaW5fcmVzZXRfdW5pbnN0YWxs
+4oCZOg0KPiA+IHBsdWdpbnMvbG9hZGVyLmM6MzgyOjE1OiB3YXJuaW5nOiDigJhjdHjigJkgbWF5
+IGJlIHVzZWQgdW5pbml0aWFsaXplZCBpbg0KPiA+IHRoaXMgZnVuY3Rpb24gWy1XbWF5YmUtdW5p
+bml0aWFsaXplZF0NCj4gDQo+IFRoaXMgc2hvdWxkbid0IGhhcHBlbiBhcyB0aGUgZnVuY3Rpb24g
+cmV0dXJucyBiZWZvcmUgKGVsc2UgdGhlcmUgaXMgYSBOVUxMDQo+IGRlcmVmKS4NCj4gDQpZZXMs
+IGluIGZhY3QsIGl0IHNob3VsZG4ndCBoYXZlIGhhcHBlbmVkIHdoZW4gdGhlIHByb2dyYW0gd2Fz
+IHJ1bm5pbmcuDQpCdXQgYWZ0ZXIgYWRkZWQgJ1dJVEhfUUVNVV9MT0NLX0dVQVJEJywgbGV0IHRo
+ZSBjb21waWxlciB0aGluayBpdCBtaWdodCBoYXBwZW4uDQpTbywgd2UgYWRkIGEgZGVmYXVsdCB2
+YWx1ZSwgbWFrZSB0aGUgY29tcGlsZXIgaGFwcHkuDQoNClRoYW5rcywNCkNoZW4gUXVuDQo+ID4g
+IDM4MiB8ICAgICBkYXRhLT5jdHggPSBjdHg7DQo+ID4gICAgICB8ICAgICB+fn5+fn5+fn5+Xn5+
+fn4NCj4gPg0KPiA+IEFkZCBhIGRlZmF1bHQgdmFsdWUgZm9yICdleHBpcmVfdGltZScgdG8gcHJl
+dmVudGVkIHRoZSB3YXJuaW5nLg0KPiA+DQo+ID4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxl
+dWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVuIDxrdWhu
+LmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiBDYzogIkFsZXggQmVubsOpZSIgPGFs
+ZXguYmVubmVlQGxpbmFyby5vcmc+DQo+ID4gLS0tDQo+ID4gIHBsdWdpbnMvbG9hZGVyLmMgfCAy
+ICstDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQ0K
+PiA+DQo+ID4gZGlmZiAtLWdpdCBhL3BsdWdpbnMvbG9hZGVyLmMgYi9wbHVnaW5zL2xvYWRlci5j
+IGluZGV4DQo+ID4gOGFjNWRiYzIwZi4uODg1OTNmZTEzOCAxMDA2NDQNCj4gPiAtLS0gYS9wbHVn
+aW5zL2xvYWRlci5jDQo+ID4gKysrIGIvcGx1Z2lucy9sb2FkZXIuYw0KPiA+IEBAIC0zNjcsNyAr
+MzY3LDcgQEAgdm9pZCBwbHVnaW5fcmVzZXRfdW5pbnN0YWxsKHFlbXVfcGx1Z2luX2lkX3QgaWQs
+DQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBib29sIHJlc2V0KSAgew0KPiA+ICAg
+ICAgc3RydWN0IHFlbXVfcGx1Z2luX3Jlc2V0X2RhdGEgKmRhdGE7DQo+ID4gLSAgICBzdHJ1Y3Qg
+cWVtdV9wbHVnaW5fY3R4ICpjdHg7DQo+ID4gKyAgICBzdHJ1Y3QgcWVtdV9wbHVnaW5fY3R4ICpj
+dHggPSBOVUxMOw0KPiA+DQo+ID4gICAgICBXSVRIX1FFTVVfTE9DS19HVUFSRCgmcGx1Z2luLmxv
+Y2spIHsNCj4gPiAgICAgICAgICBjdHggPSBwbHVnaW5faWRfdG9fY3R4X2xvY2tlZChpZCk7DQo+
+ID4NCg0K
 
