@@ -1,36 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZtYd-0003f8-Po
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 05:28:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48572)
+	id 1kZtns-0005vr-4V
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 05:44:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53094)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kZtYY-0003cG-Fd; Tue, 03 Nov 2020 05:28:50 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2071)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZtnq-0005tT-FA; Tue, 03 Nov 2020 05:44:38 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kZtYS-0001vc-Kb; Tue, 03 Nov 2020 05:28:50 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CQQws2vDrzhdW1;
- Tue,  3 Nov 2020 18:28:29 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
- 18:28:23 +0800
-From: Xinhao Zhang <zhangxinhao1@huawei.com>
-To: <qemu-devel@nongnu.org>
-CC: <xiaoguangrong.eric@gmail.com>, <mst@redhat.com>, <imammedo@redhat.com>,
- <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH 1/3] hw/acpi : Don't use '#' flag of printf format
-Date: Tue, 3 Nov 2020 18:26:32 +0800
-Message-ID: <20201103102634.273021-1-zhangxinhao1@huawei.com>
-X-Mailer: git-send-email 2.29.0-rc1
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZtno-0007o4-2r; Tue, 03 Nov 2020 05:44:38 -0500
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CQRHL680rzQmtC;
+ Tue,  3 Nov 2020 18:44:30 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
+ DGGEMM403-HUB.china.huawei.com ([10.3.20.211]) with mapi id 14.03.0487.000;
+ Tue, 3 Nov 2020 18:44:23 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ ganqixin <ganqixin@huawei.com>
+Subject: RE: [PATCH 0/6] fix uninitialized variable warning
+Thread-Topic: [PATCH 0/6] fix uninitialized variable warning
+Thread-Index: AQHWsYQK80SH2zv/JEWjnKsR4D/51qm1q04AgACKTmA=
+Date: Tue, 3 Nov 2020 10:44:23 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA265A9@dggemm531-mbx.china.huawei.com>
+References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
+ <CAFEAcA-P8iM1PpKajNv7R3EOtFrM6_bWg9Lo_YRY87E+D2uKZQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-P8iM1PpKajNv7R3EOtFrM6_bWg9Lo_YRY87E+D2uKZQ@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 05:28:30
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 05:44:32
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -50,104 +59,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 10:28:51 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 10:44:38 -0000
 
-Fix code style. Don't use '#' flag of printf format ('%#') in
-format strings, use '0x' prefix instead
-
-Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-Signed-off-by: Kai Deng <dengkai1@huawei.com>
----
- hw/acpi/nvdimm.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 8f7cc16add..8ad5516142 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -556,7 +556,7 @@ static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
- 
-     fit = fit_buf->fit;
- 
--    nvdimm_debug("Read FIT: offset %#x FIT size %#x Dirty %s.\n",
-+    nvdimm_debug("Read FIT: offset 0x%x FIT size 0x%x Dirty %s.\n",
-                  read_fit->offset, fit->len, fit_buf->dirty ? "Yes" : "No");
- 
-     if (read_fit->offset > fit->len) {
-@@ -664,7 +664,7 @@ static void nvdimm_dsm_label_size(NVDIMMDevice *nvdimm, hwaddr dsm_mem_addr)
-     label_size = nvdimm->label_size;
-     mxfer = nvdimm_get_max_xfer_label_size();
- 
--    nvdimm_debug("label_size %#x, max_xfer %#x.\n", label_size, mxfer);
-+    nvdimm_debug("label_size 0x%x, max_xfer 0x%x.\n", label_size, mxfer);
- 
-     label_size_out.func_ret_status = cpu_to_le32(NVDIMM_DSM_RET_STATUS_SUCCESS);
-     label_size_out.label_size = cpu_to_le32(label_size);
-@@ -680,19 +680,19 @@ static uint32_t nvdimm_rw_label_data_check(NVDIMMDevice *nvdimm,
-     uint32_t ret = NVDIMM_DSM_RET_STATUS_INVALID;
- 
-     if (offset + length < offset) {
--        nvdimm_debug("offset %#x + length %#x is overflow.\n", offset,
-+        nvdimm_debug("offset 0x%x + length 0x%x is overflow.\n", offset,
-                      length);
-         return ret;
-     }
- 
-     if (nvdimm->label_size < offset + length) {
--        nvdimm_debug("position %#x is beyond label data (len = %" PRIx64 ").\n",
-+        nvdimm_debug("position 0x%x is beyond label data (len = %" PRIx64 ").\n",
-                      offset + length, nvdimm->label_size);
-         return ret;
-     }
- 
-     if (length > nvdimm_get_max_xfer_label_size()) {
--        nvdimm_debug("length (%#x) is larger than max_xfer (%#x).\n",
-+        nvdimm_debug("length (0x%x) is larger than max_xfer (0x%x).\n",
-                      length, nvdimm_get_max_xfer_label_size());
-         return ret;
-     }
-@@ -716,7 +716,7 @@ static void nvdimm_dsm_get_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     get_label_data->offset = le32_to_cpu(get_label_data->offset);
-     get_label_data->length = le32_to_cpu(get_label_data->length);
- 
--    nvdimm_debug("Read Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Read Label Data: offset 0x%x length 0x%x.\n",
-                  get_label_data->offset, get_label_data->length);
- 
-     status = nvdimm_rw_label_data_check(nvdimm, get_label_data->offset,
-@@ -755,7 +755,7 @@ static void nvdimm_dsm_set_label_data(NVDIMMDevice *nvdimm, NvdimmDsmIn *in,
-     set_label_data->offset = le32_to_cpu(set_label_data->offset);
-     set_label_data->length = le32_to_cpu(set_label_data->length);
- 
--    nvdimm_debug("Write Label Data: offset %#x length %#x.\n",
-+    nvdimm_debug("Write Label Data: offset 0x%x length 0x%x.\n",
-                  set_label_data->offset, set_label_data->length);
- 
-     status = nvdimm_rw_label_data_check(nvdimm, set_label_data->offset,
-@@ -838,7 +838,7 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
-     NvdimmDsmIn *in;
-     hwaddr dsm_mem_addr = val;
- 
--    nvdimm_debug("dsm memory address %#" HWADDR_PRIx ".\n", dsm_mem_addr);
-+    nvdimm_debug("dsm memory address 0x%" HWADDR_PRIx ".\n", dsm_mem_addr);
- 
-     /*
-      * The DSM memory is mapped to guest address space so an evil guest
-@@ -852,11 +852,11 @@ nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
-     in->function = le32_to_cpu(in->function);
-     in->handle = le32_to_cpu(in->handle);
- 
--    nvdimm_debug("Revision %#x Handler %#x Function %#x.\n", in->revision,
-+    nvdimm_debug("Revision 0x%x Handler 0x%x Function 0x%x.\n", in->revision,
-                  in->handle, in->function);
- 
-     if (in->revision != 0x1 /* Currently we only support DSM Spec Rev1. */) {
--        nvdimm_debug("Revision %#x is not supported, expect %#x.\n",
-+        nvdimm_debug("Revision 0x%x is not supported, expect 0x%x.\n",
-                      in->revision, 0x1);
-         nvdimm_dsm_no_payload(NVDIMM_DSM_RET_STATUS_UNSUPPORT, dsm_mem_addr);
-         goto exit;
--- 
-2.29.0-rc1
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBUdWVzZGF5LCBOb3ZlbWJlciAz
+LCAyMDIwIDY6MTUgUE0NCj4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2Vp
+LmNvbT4NCj4gQ2M6IFFFTVUgRGV2ZWxvcGVycyA8cWVtdS1kZXZlbEBub25nbnUub3JnPjsgUUVN
+VSBUcml2aWFsDQo+IDxxZW11LXRyaXZpYWxAbm9uZ251Lm9yZz47IFpoYW5naGFpbGlhbmcNCj4g
+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3
+ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIDAvNl0gZml4IHVuaW5pdGlhbGl6ZWQgdmFy
+aWFibGUgd2FybmluZw0KPiANCj4gT24gVHVlLCAzIE5vdiAyMDIwIGF0IDAyOjA3LCBDaGVuIFF1
+biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gSGkgYWxsLA0KPiA+
+ICAgVGhlcmUgYXJlIHNvbWUgdmFyaWFibGVzIGluaXRpYWxpemVkIHdhcm5pbmdzIHJlcG9ydGVk
+IGJ5IHRoZQ0KPiA+IGNvbXBpbGVyLCBldmVuIGlmIHRoZSBkZWZhdWx0IENGTEFHIGZvciB0aGUg
+Y29tcGlsZXIgcGFyYW1ldGVycyBhcmUgdWVzZWQuDQo+ID4NCj4gPiBUaGlzIHNlcmlhbCBoYXMg
+YWRkZWQgc29tZSBkZWZhdWx0IHZhbHVlcyBvciBjaGFuZ2VkIHRoZSBhc3NpZ25tZW50IHBsYWNl
+cw0KPiBmb3IgdGhlIHZhcmlhYmxpZXMgdG8gZml4IHRoZW0uDQo+IA0KPiANCj4gSGk7IGlmIHlv
+dSdyZSByZXBvcnRpbmcvZml4aW5nIGNvbXBpbGVyIGVycm9ycy93YXJuaW5ncyBwbGVhc2UgY2Fu
+IHlvdSBpbmNsdWRlDQo+IHRoZSBjb21waWxlciB2ZXJzaW9uIHRoYXQgcHJvZHVjZWQgdGhlIGVy
+cm9yIGluIHRoZSBjb21taXQgbWVzc2FnZT8gVGhpcyBpcw0KPiBoZWxwZnVsIGZvciB0ZWxsaW5n
+IHVzIHdoZXRoZXIgaXQncyBhIHByb2JsZW0gd2l0aCBvbGRlciBjb21waWxlcnMgb3Igd2hldGhl
+ciB0aGlzDQo+IGlzIGEgbmV3IGNvbXBpbGVyIHRoYXQgY2hlY2tzIGZvciBzb21lIHRoaW5ncyBt
+b3JlIGNhcmVmdWxseS4NCj4gDQpPb3BzLCBJIGRpZG4ndCBjb25zaWRlciB0aGF0LiANClRoZXNl
+IHdhcm5pbmdzIHdlcmUgcmVwb3J0ZWQgYnkgR0NDIDkuMywgDQoNClRoYW5rcywNCkNoZW4gUXVu
+DQoNCg==
 
