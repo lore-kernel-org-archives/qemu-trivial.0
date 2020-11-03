@@ -1,53 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZm9l-0004aV-IP
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 21:34:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44952)
+	id 1kZmis-0007XL-H6
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 22:11:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52944)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZm9i-0004XM-73; Mon, 02 Nov 2020 21:34:43 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2050)
+ (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
+ id 1kZmir-0007X8-D0; Mon, 02 Nov 2020 22:11:01 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2068)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZm9f-0006Zi-7r; Mon, 02 Nov 2020 21:34:41 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CQDQ21vPKzQmhd;
- Tue,  3 Nov 2020 10:34:34 +0800 (CST)
-Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
- DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Tue, 3 Nov 2020 10:34:34 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
- dggemm422-hub.china.huawei.com ([169.254.138.104]) with mapi id
- 14.03.0487.000; Tue, 3 Nov 2020 10:34:28 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-CC: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, ganqixin <ganqixin@huawei.com>, Euler Robot
- <euler.robot@huawei.com>
-Subject: RE: [PATCH 5/6] plugins/loader: fix uninitialized variable warning
- in plugin_reset_uninstall()
-Thread-Topic: [PATCH 5/6] plugins/loader: fix uninitialized variable warning
- in plugin_reset_uninstall()
-Thread-Index: AQHWsYQOG+BA1V6h/kOkIdkZ4HoI+6m1JgQAgACIJTA=
-Date: Tue, 3 Nov 2020 02:34:27 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA24B18@dggemm531-mbx.china.huawei.com>
-References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
- <20201103015228.2250547-6-kuhn.chenqun@huawei.com>
- <b069ab47-8f3d-b4e9-77f6-567b1dcbd296@redhat.com>
-In-Reply-To: <b069ab47-8f3d-b4e9-77f6-567b1dcbd296@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
+ id 1kZmip-0002PJ-07; Mon, 02 Nov 2020 22:11:00 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CQFCf5ZrNzhd5q;
+ Tue,  3 Nov 2020 11:10:38 +0800 (CST)
+Received: from [10.108.235.13] (10.108.235.13) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 3 Nov 2020 11:10:33 +0800
+To: <berrange@redhat.com>
+CC: <hunongda@huawei.com>, <alex.chen@huawei.com>, <qemu-block@nongnu.org>,
+ <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+From: shiliyang <shiliyang@huawei.com>
+Subject: [PATCH] crypto: Add spaces around operator
+Message-ID: <bb45d748-01e4-2fde-9fe3-32a7db4b64e7@huawei.com>
+Date: Tue, 3 Nov 2020 11:10:32 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="gbk"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.108.235.13]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 21:34:35
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=shiliyang@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 22:10:41
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -67,47 +51,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 02:34:43 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 03:11:01 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
-dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBUdWVzZGF5LCBOb3ZlbWJl
-ciAzLCAyMDIwIDEwOjE4IEFNDQo+IFRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1
-YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+IHFlbXUtdHJpdmlhbEBub25nbnUu
-b3JnDQo+IENjOiBBbGV4IEJlbm7DqWUgPGFsZXguYmVubmVlQGxpbmFyby5vcmc+OyBaaGFuZ2hh
-aWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBnYW5xaXhpbiA8Z2Fu
-cWl4aW5AaHVhd2VpLmNvbT47IEV1bGVyDQo+IFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29t
-Pg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIDUvNl0gcGx1Z2lucy9sb2FkZXI6IGZpeCB1bmluaXRp
-YWxpemVkIHZhcmlhYmxlIHdhcm5pbmcgaW4NCj4gcGx1Z2luX3Jlc2V0X3VuaW5zdGFsbCgpDQo+
-IA0KPiBPbiAxMS8zLzIwIDI6NTIgQU0sIENoZW4gUXVuIHdyb3RlOg0KPiA+IEFmdGVyIHRoZSBX
-SVRIX1FFTVVfTE9DS19HVUFSRCBtYWNybyBpcyBhZGRlZCwgdGhlIGNvbXBpbGVyIGNhbm5vdA0K
-PiA+IGlkZW50aWZ5ICB0aGF0IHRoZSBzdGF0ZW1lbnRzIGluIHRoZSBtYWNybyBtdXN0IGJlIGV4
-ZWN1dGVkLiBBcyBhDQo+ID4gcmVzdWx0LCBzb21lIHZhcmlhYmxlcyAgYXNzaWdubWVudCBzdGF0
-ZW1lbnRzIGluIHRoZSBtYWNybyBtYXkgYmUNCj4gY29uc2lkZXJlZCBhcyB1bmV4ZWN1dGVkIGJ5
-IHRoZSBjb21waWxlci4NCj4gPg0KPiA+IFRoZSBjb21waWxlciBzaG93ZWQgd2FybmluZzoNCj4g
-PiBwbHVnaW5zL2xvYWRlci5jOiBJbiBmdW5jdGlvbiDigJhwbHVnaW5fcmVzZXRfdW5pbnN0YWxs
-4oCZOg0KPiA+IHBsdWdpbnMvbG9hZGVyLmM6MzgyOjE1OiB3YXJuaW5nOiDigJhjdHjigJkgbWF5
-IGJlIHVzZWQgdW5pbml0aWFsaXplZCBpbg0KPiA+IHRoaXMgZnVuY3Rpb24gWy1XbWF5YmUtdW5p
-bml0aWFsaXplZF0NCj4gDQo+IFRoaXMgc2hvdWxkbid0IGhhcHBlbiBhcyB0aGUgZnVuY3Rpb24g
-cmV0dXJucyBiZWZvcmUgKGVsc2UgdGhlcmUgaXMgYSBOVUxMDQo+IGRlcmVmKS4NCj4gDQpZZXMs
-IGluIGZhY3QsIGl0IHNob3VsZG4ndCBoYXZlIGhhcHBlbmVkIHdoZW4gdGhlIHByb2dyYW0gd2Fz
-IHJ1bm5pbmcuDQpCdXQgYWZ0ZXIgYWRkZWQgJ1dJVEhfUUVNVV9MT0NLX0dVQVJEJywgbGV0IHRo
-ZSBjb21waWxlciB0aGluayBpdCBtaWdodCBoYXBwZW4uDQpTbywgd2UgYWRkIGEgZGVmYXVsdCB2
-YWx1ZSwgbWFrZSB0aGUgY29tcGlsZXIgaGFwcHkuDQoNClRoYW5rcywNCkNoZW4gUXVuDQo+ID4g
-IDM4MiB8ICAgICBkYXRhLT5jdHggPSBjdHg7DQo+ID4gICAgICB8ICAgICB+fn5+fn5+fn5+Xn5+
-fn4NCj4gPg0KPiA+IEFkZCBhIGRlZmF1bHQgdmFsdWUgZm9yICdleHBpcmVfdGltZScgdG8gcHJl
-dmVudGVkIHRoZSB3YXJuaW5nLg0KPiA+DQo+ID4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxl
-dWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVuIDxrdWhu
-LmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiBDYzogIkFsZXggQmVubsOpZSIgPGFs
-ZXguYmVubmVlQGxpbmFyby5vcmc+DQo+ID4gLS0tDQo+ID4gIHBsdWdpbnMvbG9hZGVyLmMgfCAy
-ICstDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQ0K
-PiA+DQo+ID4gZGlmZiAtLWdpdCBhL3BsdWdpbnMvbG9hZGVyLmMgYi9wbHVnaW5zL2xvYWRlci5j
-IGluZGV4DQo+ID4gOGFjNWRiYzIwZi4uODg1OTNmZTEzOCAxMDA2NDQNCj4gPiAtLS0gYS9wbHVn
-aW5zL2xvYWRlci5jDQo+ID4gKysrIGIvcGx1Z2lucy9sb2FkZXIuYw0KPiA+IEBAIC0zNjcsNyAr
-MzY3LDcgQEAgdm9pZCBwbHVnaW5fcmVzZXRfdW5pbnN0YWxsKHFlbXVfcGx1Z2luX2lkX3QgaWQs
-DQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBib29sIHJlc2V0KSAgew0KPiA+ICAg
-ICAgc3RydWN0IHFlbXVfcGx1Z2luX3Jlc2V0X2RhdGEgKmRhdGE7DQo+ID4gLSAgICBzdHJ1Y3Qg
-cWVtdV9wbHVnaW5fY3R4ICpjdHg7DQo+ID4gKyAgICBzdHJ1Y3QgcWVtdV9wbHVnaW5fY3R4ICpj
-dHggPSBOVUxMOw0KPiA+DQo+ID4gICAgICBXSVRIX1FFTVVfTE9DS19HVUFSRCgmcGx1Z2luLmxv
-Y2spIHsNCj4gPiAgICAgICAgICBjdHggPSBwbHVnaW5faWRfdG9fY3R4X2xvY2tlZChpZCk7DQo+
-ID4NCg0K
+I am reading crypto related code, find some code style problems while
+using checkpatch.pl to check crypto folder. Fix the error style
+problems.
+
+Signed-off-by: Liyang Shi <shiliyang@huawei.com>
+
+---
+ crypto/aes.c          | 6 +++---
+ crypto/desrfb.c       | 2 +-
+ crypto/tlscredsx509.c | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/crypto/aes.c b/crypto/aes.c
+index 159800df65..af72ff7779 100644
+--- a/crypto/aes.c
++++ b/crypto/aes.c
+@@ -1080,9 +1080,9 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
+
+         rk = key->rd_key;
+
+-        if (bits==128)
++        if (bits == 128)
+                 key->rounds = 10;
+-        else if (bits==192)
++        else if (bits == 192)
+                 key->rounds = 12;
+         else
+                 key->rounds = 14;
+@@ -1182,7 +1182,7 @@ int AES_set_decrypt_key(const unsigned char *userKey, const int bits,
+         rk = key->rd_key;
+
+         /* invert the order of the round keys: */
+-        for (i = 0, j = 4*(key->rounds); i < j; i += 4, j -= 4) {
++        for (i = 0, j = 4 * (key->rounds); i < j; i += 4, j -= 4) {
+                 temp = rk[i    ]; rk[i    ] = rk[j    ]; rk[j    ] = temp;
+                 temp = rk[i + 1]; rk[i + 1] = rk[j + 1]; rk[j + 1] = temp;
+                 temp = rk[i + 2]; rk[i + 2] = rk[j + 2]; rk[j + 2] = temp;
+diff --git a/crypto/desrfb.c b/crypto/desrfb.c
+index 3274c36510..14288fcf96 100644
+--- a/crypto/desrfb.c
++++ b/crypto/desrfb.c
+@@ -93,7 +93,7 @@ void deskey(unsigned char *key, int edf)
+                     }
+                 for( j = 0; j < 24; j++ ) {
+                         if( pcr[pc2[j]] ) kn[m] |= bigbyte[j];
+-                        if( pcr[pc2[j+24]] ) kn[n] |= bigbyte[j];
++                        if( pcr[pc2[j + 24]] ) kn[n] |= bigbyte[j];
+                         }
+                 }
+         cookey(kn);
+diff --git a/crypto/tlscredsx509.c b/crypto/tlscredsx509.c
+index dd7267ccdb..c89dd62435 100644
+--- a/crypto/tlscredsx509.c
++++ b/crypto/tlscredsx509.c
+@@ -143,7 +143,7 @@ qcrypto_tls_creds_check_cert_key_usage(QCryptoTLSCredsX509 *creds,
+     if (status < 0) {
+         if (status == GNUTLS_E_REQUESTED_DATA_NOT_AVAILABLE) {
+             usage = isCA ? GNUTLS_KEY_KEY_CERT_SIGN :
+-                GNUTLS_KEY_DIGITAL_SIGNATURE|GNUTLS_KEY_KEY_ENCIPHERMENT;
++                GNUTLS_KEY_DIGITAL_SIGNATURE | GNUTLS_KEY_KEY_ENCIPHERMENT;
+         } else {
+             error_setg(errp,
+                        "Unable to query certificate %s key usage: %s",
+-- 
+2.17.1.windows.2
+
 
