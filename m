@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZlWp-00029u-RQ
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59936)
+	id 1kZlWq-0002C1-O3
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlWh-00025L-PT; Mon, 02 Nov 2020 20:54:23 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2383)
+ id 1kZlWn-000266-7g; Mon, 02 Nov 2020 20:54:29 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2382)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlVO-0001nk-QI; Mon, 02 Nov 2020 20:54:23 -0500
+ id 1kZlVO-0001nj-QB; Mon, 02 Nov 2020 20:54:28 -0500
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQCV00rvpz15L2T;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQCV010rPz15P8T;
  Tue,  3 Nov 2020 09:52:56 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
- 09:52:48 +0800
+ 09:52:50 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
  <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Paolo
  Bonzini" <pbonzini@redhat.com>
-Subject: [PATCH 3/6] util/qemu-timer: fix uninitialized variable warning in
- timer_mod_anticipate_ns()
-Date: Tue, 3 Nov 2020 09:52:25 +0800
-Message-ID: <20201103015228.2250547-4-kuhn.chenqun@huawei.com>
+Subject: [PATCH 4/6] util/qemu-timer: fix uninitialized variable warning for
+ expire_time
+Date: Tue, 3 Nov 2020 09:52:26 +0800
+Message-ID: <20201103015228.2250547-5-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
 References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
@@ -54,50 +54,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 01:54:29 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 01:54:30 -0000
 
 After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
  that the statements in the macro must be executed. As a result, some variables
  assignment statements in the macro may be considered as unexecuted by the compiler.
 
 The compiler showed warning:
-util/qemu-timer.c: In function ‘timer_mod_anticipate_ns’:
-util/qemu-timer.c:474:8: warning: ‘rearm’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-  474 |     if (rearm) {
-      |        ^
+util/qemu-timer.c: In function ‘timerlist_expired’:
+util/qemu-timer.c:199:24: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 199 |     return expire_time <= qemu_clock_get_ns(timer_list->clock->type);
+     |            ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+util/qemu-timer.c: In function ‘timerlist_deadline_ns’:
+util/qemu-timer.c:237:11: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 237 |     delta = expire_time - qemu_clock_get_ns(timer_list->clock->type);
+     |     ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the default value assignment place to prevented the warning.
+Add a default value for 'expire_time' to prevented the warning.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
 Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- util/qemu-timer.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ util/qemu-timer.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 81c28af517..8b73882fbb 100644
+index 8b73882fbb..3910003e86 100644
 --- a/util/qemu-timer.c
 +++ b/util/qemu-timer.c
-@@ -459,7 +459,7 @@ void timer_mod_ns(QEMUTimer *ts, int64_t expire_time)
- void timer_mod_anticipate_ns(QEMUTimer *ts, int64_t expire_time)
- {
-     QEMUTimerList *timer_list = ts->timer_list;
--    bool rearm;
-+    bool rearm = false;
+@@ -183,7 +183,7 @@ bool qemu_clock_has_timers(QEMUClockType type)
  
-     WITH_QEMU_LOCK_GUARD(&timer_list->active_timers_lock) {
-         if (ts->expire_time == -1 || ts->expire_time > expire_time) {
-@@ -467,8 +467,6 @@ void timer_mod_anticipate_ns(QEMUTimer *ts, int64_t expire_time)
-                 timer_del_locked(timer_list, ts);
-             }
-             rearm = timer_mod_ns_locked(timer_list, ts, expire_time);
--        } else {
--            rearm = false;
-         }
-     }
-     if (rearm) {
+ bool timerlist_expired(QEMUTimerList *timer_list)
+ {
+-    int64_t expire_time;
++    int64_t expire_time = -1;
+ 
+     if (!qatomic_read(&timer_list->active_timers)) {
+         return false;
+@@ -213,7 +213,7 @@ bool qemu_clock_expired(QEMUClockType type)
+ int64_t timerlist_deadline_ns(QEMUTimerList *timer_list)
+ {
+     int64_t delta;
+-    int64_t expire_time;
++    int64_t expire_time = -1;
+ 
+     if (!qatomic_read(&timer_list->active_timers)) {
+         return -1;
 -- 
 2.27.0
 
