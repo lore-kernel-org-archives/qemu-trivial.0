@@ -1,28 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZlWs-0002Fq-8a
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59976)
+	id 1kZlWt-0002Jp-TU
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlWo-00027O-HZ; Mon, 02 Nov 2020 20:54:30 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2494)
+ id 1kZlWo-00027N-Gg; Mon, 02 Nov 2020 20:54:30 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2495)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kZlVM-0001mc-75; Mon, 02 Nov 2020 20:54:30 -0500
+ id 1kZlVM-0001md-Iv; Mon, 02 Nov 2020 20:54:30 -0500
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CQCTv14p2zhYxf;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CQCTv1DNmzhdWD;
  Tue,  3 Nov 2020 09:52:51 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
- 09:52:44 +0800
+ 09:52:45 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>
-Subject: [PATCH 0/6] fix uninitialized variable warning
-Date: Tue, 3 Nov 2020 09:52:22 +0800
-Message-ID: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Max Filippov
+ <jcmvbkbc@gmail.com>
+Subject: [PATCH 1/6] target/xtensa: fix uninitialized variable warning
+Date: Tue, 3 Nov 2020 09:52:23 +0800
+Message-ID: <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
+References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -52,35 +55,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 03 Nov 2020 01:54:31 -0000
 
-Hi all,
-  There are some variables initialized warnings reported by the compiler,
-even if the default CFLAG for the compiler parameters are uesed.
+The compiler cannot determine whether the return values of the xtensa_operand_is_register(isa, opc, opnd)
+ and xtensa_operand_is_visible(isa, opc, opnd) functions are the same.
+So,it assumes that 'rf' is not assigned, but it's used.
 
-This serial has added some default values or changed the assignment places for the variablies to fix them.
+The compiler showed warning:
+target/xtensa/translate.c: In function ‘disas_xtensa_insn’:
+target/xtensa/translate.c:985:43: warning: ‘rf’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  985 |                     arg[vopnd].num_bits = xtensa_regfile_num_bits(isa, rf);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Thanks,
-Chen Qun
+Add a default value for 'rf' to prevented the warning.
 
-
-Chen Qun (6):
-  target/xtensa: fix uninitialized variable warning
-  hw/rdma/rdma_backend: fix uninitialized variable warning in
-    rdma_poll_cq()
-  util/qemu-timer: fix uninitialized variable warning in
-    timer_mod_anticipate_ns()
-  util/qemu-timer: fix uninitialized variable warning for expire_time
-  plugins/loader: fix uninitialized variable warning in
-    plugin_reset_uninstall()
-  migration: fix uninitialized variable warning in
-    migrate_send_rp_req_pages()
-
- hw/rdma/rdma_backend.c    | 2 +-
- migration/migration.c     | 2 +-
- plugins/loader.c          | 2 +-
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+Cc: Max Filippov <jcmvbkbc@gmail.com>
+---
  target/xtensa/translate.c | 2 +-
- util/qemu-timer.c         | 8 +++-----
- 5 files changed, 7 insertions(+), 9 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 944a157747..eea851bbe7 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -953,7 +953,7 @@ static void disas_xtensa_insn(CPUXtensaState *env, DisasContext *dc)
+ 
+         for (opnd = vopnd = 0; opnd < opnds; ++opnd) {
+             void **register_file = NULL;
+-            xtensa_regfile rf;
++            xtensa_regfile rf = -1;
+ 
+             if (xtensa_operand_is_register(isa, opc, opnd)) {
+                 rf = xtensa_operand_regfile(isa, opc, opnd);
 -- 
 2.27.0
 
