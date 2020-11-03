@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZluT-0001hF-17
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 21:18:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39592)
+	id 1kZlxi-0004t0-Fo
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 21:22:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZluR-0001dw-AI
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 21:18:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54647)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZlxh-0004pg-BC
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 21:22:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53781)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZltu-0004oj-8y
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 21:18:54 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZlxe-0005LN-Uh
+ for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 21:22:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604369898;
+ s=mimecast20190719; t=1604370134;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ESQS/9ZpN8f5wR/Ua+oxoReioLgsWM4Nnz/LVkHEDRc=;
- b=BUrWNghpzcyB5TdlsDcL83BK9QPEn8wK7bIEVPKXALDD/SJmdft3ITaP9FaX2+YmOFWZN/
- Qn/U2QXVASWakoAsCrWLIfmQ1OsFhn9QqfmOOz18jlcQw+uXMyye73IuuDSidTNzklebwI
- XzHhzPorlWDh+DsorDb7lu212EWHhBA=
+ bh=SWiw7zaw2eb0SGYngU9UL3pFUdknkWkNFfZqseY3VAA=;
+ b=RSwxztDNojzubskDYsk2PGXRZwjADZUx4L4xwWBbn3f/5at5On114CCM4MSxJtaIw0j0Mo
+ 2LGNOswsRh+1wsovUd3TQgHRAkCYad2rex7GQaZtOtyHoT2KHhmFLOKKas2hWBCPPOM7LG
+ vbfWLTgrZiw5BtEvAEdo405B3mMJLsY=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-171-vk7uDe_dPfCuoi0KeGSSQg-1; Mon, 02 Nov 2020 21:18:16 -0500
-X-MC-Unique: vk7uDe_dPfCuoi0KeGSSQg-1
-Received: by mail-wr1-f69.google.com with SMTP id j15so7217946wrd.16
- for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 18:18:16 -0800 (PST)
+ us-mta-499-P9L6xTpkNJizBg1M-BN8Hg-1; Mon, 02 Nov 2020 21:22:12 -0500
+X-MC-Unique: P9L6xTpkNJizBg1M-BN8Hg-1
+Received: by mail-wr1-f69.google.com with SMTP id 2so7250779wrd.14
+ for <qemu-trivial@nongnu.org>; Mon, 02 Nov 2020 18:22:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=ESQS/9ZpN8f5wR/Ua+oxoReioLgsWM4Nnz/LVkHEDRc=;
- b=FJo/vg8oY1stioPsWuesaxtAbJ1Bq5TMCH9IdkZ83utFQ/0u19wtg+2ba64RMxa7zC
- JGFLl6M2XG575eeN8p8sJFvVmT/uN+mj6JO4rHpOVLG590SuRBUkQPz10CpQuwG26mE6
- liHEd8qnu2zJdTC3kmqHXCSaE5HqCJX2V0PazhJsEOr6rDMBOD7hoi0iowOHmlViXc3c
- rnqorH6o70yD/juYybYaPUHj/7ATggRtLggzVrFFBFIgWo7JgyvV+NMwMICYB5RlGCQa
- sR5TInK2APK+X6e89Vb+YttAf1mou9YpxK4ITLlzGh+xLjqqS/jlBPXYfVh6eGGyqhKV
- kO0w==
-X-Gm-Message-State: AOAM531FnzE3tn/zLxmvMzCIsXEaYTrjbqBCxJO2euC6jnZ1WBxC8KZB
- cbEYocPmTN89t4GncuPzWAduWZbUBL2ni7EaDKmY42NyoNUj+iV0hAO7+YyJiNPaiolV64aFRov
- jzyKWdm1SDTB0BNO73w==
-X-Received: by 2002:a1c:2cc2:: with SMTP id s185mr984861wms.77.1604369895700; 
- Mon, 02 Nov 2020 18:18:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhFPuiT+gVFPGa9j4dfWHFSgwNyIcohjaiyosSRuwjfQIy8LUY3Of1VcNoTrNXDTCIIiY/Pw==
-X-Received: by 2002:a1c:2cc2:: with SMTP id s185mr984855wms.77.1604369895545; 
- Mon, 02 Nov 2020 18:18:15 -0800 (PST)
+ bh=SWiw7zaw2eb0SGYngU9UL3pFUdknkWkNFfZqseY3VAA=;
+ b=lIh0GyMWOE8HtDMa3R1fmeZ+3xhH4YrtfXG9RDIGcdfyMIS12nDYHgOEEBVuNAQ/qa
+ 0QN1pYvTWNSh4iEnSbODQTVjqUMEMO4SJM+rqcZ+11V8rHW9uo+XLlCLdse2TDAAXaV8
+ CseZi+ga+qAqGEK2CceyNznlSk2uqokY8Mo4bbsy2+YgHcxLUdrPgZ0zNosrx4LoRqOk
+ gZdCYT1Da5vnMMcYM1Zck45riIwF/K91zJMcH1kNYD9KVQnNHMQUwiDX29RsU9315aJU
+ gV+CBqdAw+Q1P7rPTZO64klyDgdasJaQ8AeYLXWoWXk9900N2KbWlcrSfrE0rhoW3v1v
+ KWmQ==
+X-Gm-Message-State: AOAM531/I0arKADwkOUTNE/8FTOhMPJiOmQp16rk+swdRf6HV+pwd0Iw
+ cY3Af4YoxwcOgt1oqDIPdu8rQDR77vstFpvcM1gHcFg3RfhguQvELwuOWMcvJS6GRzvp/LcUa3I
+ UhCyhRDNGCjhLqtG3gg==
+X-Received: by 2002:adf:e9cc:: with SMTP id l12mr17683775wrn.248.1604370131524; 
+ Mon, 02 Nov 2020 18:22:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw8nNIS66EHHhMzL0zz/1hBcWF+KW/wzA6xHjs1l9F+6WbagkdH0r7nPhO8grMZA0ZqZPePfQ==
+X-Received: by 2002:adf:e9cc:: with SMTP id l12mr17683755wrn.248.1604370131291; 
+ Mon, 02 Nov 2020 18:22:11 -0800 (PST)
 Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id t1sm23552014wrs.48.2020.11.02.18.18.13
+ by smtp.gmail.com with ESMTPSA id o3sm23512461wru.15.2020.11.02.18.22.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 18:18:14 -0800 (PST)
-Subject: Re: [PATCH 5/6] plugins/loader: fix uninitialized variable warning in
- plugin_reset_uninstall()
+ Mon, 02 Nov 2020 18:22:10 -0800 (PST)
+Subject: Re: [PATCH 6/6] migration: fix uninitialized variable warning in
+ migrate_send_rp_req_pages()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+Cc: zhang.zhanghailiang@huawei.com, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, ganqixin@huawei.com,
  Euler Robot <euler.robot@huawei.com>
 References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
- <20201103015228.2250547-6-kuhn.chenqun@huawei.com>
+ <20201103015228.2250547-7-kuhn.chenqun@huawei.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <b069ab47-8f3d-b4e9-77f6-567b1dcbd296@redhat.com>
-Date: Tue, 3 Nov 2020 03:18:12 +0100
+Message-ID: <e259270f-14c6-7033-faad-6406e5de930c@redhat.com>
+Date: Tue, 3 Nov 2020 03:22:08 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201103015228.2250547-6-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201103015228.2250547-7-kuhn.chenqun@huawei.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -84,7 +84,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,7 +97,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 02:18:55 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 02:22:17 -0000
 
 On 11/3/20 2:52 AM, Chen Qun wrote:
 > After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
@@ -105,38 +105,38 @@ On 11/3/20 2:52 AM, Chen Qun wrote:
 >  assignment statements in the macro may be considered as unexecuted by the compiler.
 > 
 > The compiler showed warning:
-> plugins/loader.c: In function ‘plugin_reset_uninstall’:
-> plugins/loader.c:382:15: warning: ‘ctx’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-
-This shouldn't happen as the function returns before
-(else there is a NULL deref).
-
->  382 |     data->ctx = ctx;
->      |     ~~~~~~~~~~^~~~~
+> migration/migration.c: In function ‘migrate_send_rp_req_pages’:
+> migration/migration.c:384:8: warning: ‘received’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+>  384 |     if (received) {
+>      |        ^
 > 
-> Add a default value for 'expire_time' to prevented the warning.
+> Add a default value for 'received' to prevented the warning.
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
-> Cc: "Alex Bennée" <alex.bennee@linaro.org>
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 > ---
->  plugins/loader.c | 2 +-
+>  migration/migration.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/plugins/loader.c b/plugins/loader.c
-> index 8ac5dbc20f..88593fe138 100644
-> --- a/plugins/loader.c
-> +++ b/plugins/loader.c
-> @@ -367,7 +367,7 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
->                              bool reset)
+> diff --git a/migration/migration.c b/migration/migration.c
+> index 9bb4fee5ac..de90486a61 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -361,7 +361,7 @@ int migrate_send_rp_req_pages(MigrationIncomingState *mis,
+>                                RAMBlock *rb, ram_addr_t start, uint64_t haddr)
 >  {
->      struct qemu_plugin_reset_data *data;
-> -    struct qemu_plugin_ctx *ctx;
-> +    struct qemu_plugin_ctx *ctx = NULL;
+>      void *aligned = (void *)(uintptr_t)(haddr & (-qemu_ram_pagesize(rb)));
+> -    bool received;
+> +    bool received = false;
 >  
->      WITH_QEMU_LOCK_GUARD(&plugin.lock) {
->          ctx = plugin_id_to_ctx_locked(id);
+>      WITH_QEMU_LOCK_GUARD(&mis->page_request_mutex) {
+>          received = ramblock_recv_bitmap_test_byte_offset(rb, start);
 > 
+
+Since this helps static analyzer:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
