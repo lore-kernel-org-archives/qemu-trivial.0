@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZtYY-0003bb-2R
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 05:28:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48518)
+	id 1kZtYa-0003eQ-9o
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 05:28:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kZtYU-0003ay-JJ; Tue, 03 Nov 2020 05:28:47 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2385)
+ id 1kZtYW-0003bC-9G; Tue, 03 Nov 2020 05:28:48 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2386)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kZtYQ-0001xa-W7; Tue, 03 Nov 2020 05:28:46 -0500
+ id 1kZtYS-0001xY-J8; Tue, 03 Nov 2020 05:28:47 -0500
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQQww596Yz15LMn;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQQww5Kztz15QxP;
  Tue,  3 Nov 2020 18:28:32 +0800 (CST)
 Received: from huawei.com (10.175.101.6) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
- 18:28:25 +0800
+ 18:28:24 +0800
 From: Xinhao Zhang <zhangxinhao1@huawei.com>
 To: <qemu-devel@nongnu.org>
 CC: <xiaoguangrong.eric@gmail.com>, <mst@redhat.com>, <imammedo@redhat.com>,
  <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH 3/3] hw/acpi : add spaces around operator
-Date: Tue, 3 Nov 2020 18:26:34 +0800
-Message-ID: <20201103102634.273021-3-zhangxinhao1@huawei.com>
+Subject: [PATCH 2/3] hw/acpi : add space before the open parenthesis '('
+Date: Tue, 3 Nov 2020 18:26:33 +0800
+Message-ID: <20201103102634.273021-2-zhangxinhao1@huawei.com>
 X-Mailer: git-send-email 2.29.0-rc1
 In-Reply-To: <20201103102634.273021-1-zhangxinhao1@huawei.com>
 References: <20201103102634.273021-1-zhangxinhao1@huawei.com>
@@ -52,29 +52,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 10:28:48 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 10:28:49 -0000
 
-Fix code style. Operator needs spaces both sides.
+Fix code style. Space required before the open parenthesis '('.
 
 Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
 Signed-off-by: Kai Deng <dengkai1@huawei.com>
 ---
- hw/acpi/pcihp.c | 2 +-
+ hw/acpi/core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-index 32ae8b2c0a..17c32e0ffd 100644
---- a/hw/acpi/pcihp.c
-+++ b/hw/acpi/pcihp.c
-@@ -400,7 +400,7 @@ void acpi_pcihp_init(Object *owner, AcpiPciHpState *s, PCIBus *root_bus,
-     s->io_len = ACPI_PCIHP_SIZE;
-     s->io_base = ACPI_PCIHP_ADDR;
- 
--    s->root= root_bus;
-+    s->root = root_bus;
-     s->legacy_piix = !bridges_enabled;
- 
-     memory_region_init_io(&s->io, owner, &acpi_pcihp_io_ops, s,
+diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+index ade9158cbf..2c0c83221f 100644
+--- a/hw/acpi/core.c
++++ b/hw/acpi/core.c
+@@ -558,7 +558,7 @@ static void acpi_pm1_cnt_write(ACPIREGS *ar, uint16_t val)
+     if (val & ACPI_BITMASK_SLEEP_ENABLE) {
+         /* change suspend type */
+         uint16_t sus_typ = (val >> 10) & 7;
+-        switch(sus_typ) {
++        switch (sus_typ) {
+         case 0: /* soft power off */
+             qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+             break;
 -- 
 2.29.0-rc1
 
