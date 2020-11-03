@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZzN9-0004t5-DJ
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 11:41:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44986)
+	id 1ka2Ju-00032P-Ip
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 14:50:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
- id 1kZzN8-0004ss-5Z; Tue, 03 Nov 2020 11:41:26 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:40635)
+ (Exim 4.90_1) (envelope-from <yuval.shaia.ml@gmail.com>)
+ id 1ka2Js-0002xp-AB; Tue, 03 Nov 2020 14:50:16 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:41520)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
- id 1kZzN6-0000nL-8C; Tue, 03 Nov 2020 11:41:25 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 79so9083281otc.7;
- Tue, 03 Nov 2020 08:41:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <yuval.shaia.ml@gmail.com>)
+ id 1ka2Jq-0000qN-BG; Tue, 03 Nov 2020 14:50:15 -0500
+Received: by mail-lf1-x144.google.com with SMTP id 126so23848958lfi.8;
+ Tue, 03 Nov 2020 11:50:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=etzqwJCnLxbwYnPutYppI360nP/81cKAD5STmw43AkE=;
- b=FeBNeco2VnDBOnRLvuFTuOJEz6M6a+YZizfE0AyEa8R49LnBE30fQJnyh4VIkZHc6X
- lj5sOBlhzKlFURAFPpEn53PE9yMAhvlcUdoxJ6luSq2UxpihZveQE9plontHR7diZuoC
- rl70c4RXRCEkr3rJP4mq90FKN6VAnrKoclPZDjLslj5zNxSJXyNorib5r2AJpqZohwfr
- nFfVEz86UxZGupoPzBC6qLePZZqQRXaV0f/CJtffEekGxrXWivcU432oNbOMU7u2mq8W
- pp9PmLlVpdtEFFFZGXBCXIC4CuKq7hHrg0o9qic8l+P8lpoeKinkoXS23F5kx1TNrc+J
- PxDw==
+ :cc; bh=5U1sh5MZyvuF/dyOxRnLXkyHcEX4/Vlgu2kBTFury7Q=;
+ b=kUVUfKOIGTgeG35cZHyyuf2eQUgiP87AwpbS/SQBn8gtSvaWsVNSAHJpO7Y3NosMTy
+ 37Dfyd1UAHLpefd1W4k1BVd1qNrmPjYVr1t9S9YJ/Z0ekRMbM9kIDFr4pj8T0NjBQlXn
+ 82hgCoSH43YrzG4Jt88mX69lVqZfmJo5vrmF5EC/yNQOEBMMKpNQ5chuzMMu0Ezj8ug9
+ /+21ItvfQe3Y3I/THhBj33CvQ9EoCup9k0aKBMSFjyUBR9YVNpaOQ9/pu6OfKKcAs3GS
+ s57jMRgHGjaoZGLO3MJbWqmfQZUNCWllB8OCvKJuG0GjeJkMp9p3PLzRFKK6eE0GUDmK
+ bV5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=etzqwJCnLxbwYnPutYppI360nP/81cKAD5STmw43AkE=;
- b=AY5+WVjxhNr7ceEHUFNw0++oPHaC1TkfhuV7OKePz+YZLSaVq3zDgiLX2NP/r80ss0
- ouKEh1M+GEDbe4Z3TDteaG/LeoskY+wiyUa/FBg+dmm3Th8t58QaOKtnaDGI004FP8Oo
- WhpgbOJZpxGKhQ/LhITzvknRi0Qts88l/kMDGO/WyOrm/25OwtRJ57gjRbJdlPe2aGYY
- S1EETVUssZA6IP6PU5lD6C61QSWY3fZd8J9X3jTQ53xE2TlR/UwDIs3sasDkgYbvxMrF
- SRs3BvU4lVtl2UUNT1hdfN7r/9AAGwAVG+9RivnmifThDx8hyo44TOl+N33c4mekSQVD
- Dfdw==
-X-Gm-Message-State: AOAM530T+Ln/w2fEYTiViT8f0gbKqMuRWwI8b4aRkh3NKU+3/3LkJisX
- OzLe1iuQB8mTsySbMS1Dpqa+vMqQAG227pBLgfk=
-X-Google-Smtp-Source: ABdhPJw6U9w0n0iViBApvdreKXLYoRy8dqoQZ9IEYRZVGn0O/7xOEeuNqMLpuw5Pbolx0X9cWRH0TX1UOW5Ow4nZeog=
-X-Received: by 2002:a9d:6641:: with SMTP id q1mr11213035otm.190.1604421682703; 
- Tue, 03 Nov 2020 08:41:22 -0800 (PST)
+ bh=5U1sh5MZyvuF/dyOxRnLXkyHcEX4/Vlgu2kBTFury7Q=;
+ b=CoCwnBHQgoaOhEyh70l3kInoTdfKdYC5Bqwnlqj1d2PK9xTPUwxxbwbkfQq36GLlQw
+ AZfGjsR1zKW3VIypdOo0mXFHk1mL/AGIBya6HUyCS2PvAfoJyoKsfvC0kjADtOjsLHrL
+ c6kV0rGI1ebfDiNBsmJAhSHbU21Z+Nf65SMSVNAFmB0RJKQpCUnQnC/6reC1T9wMceJO
+ 9biSqCffLrpnIwsM6zMygj+cZiUsiaoCwvU5cKDsfmIm3uw+zLNBn5Uw3gpdmOvZceZM
+ n4cY8wYja0ANWQVRqWQh4LWK0dKkVD+8yWDgObVCRcOpBy64MjLAzGxBEKPhmp1+x28/
+ mcWA==
+X-Gm-Message-State: AOAM533wwIErzRwUPlzU1N4bRhSTS7t7QsqIM9RTMoB/uuk9VUMFuOJV
+ yJb/h4pgcCttkCp30W/1ojbpXoqKwRtlcKJQiXI=
+X-Google-Smtp-Source: ABdhPJxwQhM0VwrZDzgZMrUStGdyvH+jN7lwZS+EXOpQhJJrNx++LabgnADKCtKIeqK1c7aTgJ4WaA81SvBc5k9HFYQ=
+X-Received: by 2002:ac2:592c:: with SMTP id v12mr8220891lfi.492.1604433011099; 
+ Tue, 03 Nov 2020 11:50:11 -0800 (PST)
 MIME-Version: 1.0
 References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
  <20201103015228.2250547-3-kuhn.chenqun@huawei.com>
 In-Reply-To: <20201103015228.2250547-3-kuhn.chenqun@huawei.com>
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Tue, 3 Nov 2020 18:41:11 +0200
-Message-ID: <CAC_L=vWANsB=2+jrE5aCw3TS2hQ-QwqX8n8ETajxfjV5DOLh1w@mail.gmail.com>
+From: Yuval Shaia <yuval.shaia.ml@gmail.com>
+Date: Tue, 3 Nov 2020 21:49:59 +0200
+Message-ID: <CAMPkWoN1UA+jVBhhZCa3v0EiP+wBR_3gpBBwFWcFZQF0_3HgZQ@mail.gmail.com>
 Subject: Re: [PATCH 2/6] hw/rdma/rdma_backend: fix uninitialized variable
  warning in rdma_poll_cq()
 To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu devel list <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
  zhang.zhanghailiang@huawei.com, ganqixin@huawei.com, 
- Euler Robot <euler.robot@huawei.com>, Yuval Shaia <yuval.shaia.ml@gmail.com>
-Content-Type: multipart/alternative; boundary="00000000000077b0a005b3368826"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=marcel.apfelbaum@gmail.com; helo=mail-ot1-x341.google.com
+ Euler Robot <euler.robot@huawei.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000b14cee05b3392b70"
+Received-SPF: pass client-ip=2a00:1450:4864:20::144;
+ envelope-from=yuval.shaia.ml@gmail.com; helo=mail-lf1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -73,15 +74,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 16:41:26 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 19:50:16 -0000
 
---00000000000077b0a005b3368826
+--000000000000b14cee05b3392b70
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Chen,
+Thanks,
 
-On Tue, Nov 3, 2020 at 3:53 AM Chen Qun <kuhn.chenqun@huawei.com> wrote:
+Reviewed-by:  Yuval Shaia <yuval.shaia.ml@gmail.com>
+
+On Tue, 3 Nov 2020 at 03:53, Chen Qun <kuhn.chenqun@huawei.com> wrote:
 
 > After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identi=
 fy
@@ -133,21 +136,19 @@ e
 > 2.27.0
 >
 >
-Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 
-Thanks for the fix,
-Marcel
-
---00000000000077b0a005b3368826
+--000000000000b14cee05b3392b70
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Chen,</div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">On Tue, Nov 3, 2020 at 3:53 AM Chen Qun &lt;<=
-a href=3D"mailto:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">After the =
-WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify<br>
+<div dir=3D"ltr">Thanks,<div><br><div>Reviewed-by:=C2=A0 Yuval Shaia &lt;<a=
+ href=3D"mailto:yuval.shaia.ml@gmail.com">yuval.shaia.ml@gmail.com</a>&gt;<=
+br></div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Tue, 3 Nov 2020 at 03:53, Chen Qun &lt;<a href=3D"mailto=
+:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex">After the WITH_QEMU_LOCK_G=
+UARD macro is added, the compiler cannot identify<br>
 =C2=A0that the statements in the macro must be executed. As a result, some =
 variables<br>
 =C2=A0assignment statements in the macro may be considered as unexecuted by=
@@ -197,10 +198,8 @@ _cq *ibcq)<br>
 =C2=A0 =C2=A0 =C2=A0RdmaProtectedGSList *cqe_ctx_list;<br>
 -- <br>
 2.27.0<br>
-<br></blockquote><div><br></div><div><div><div>Reviewed-by: Marcel Apfelbau=
-m &lt;<a href=3D"mailto:marcel.apfelbaum@gmail.com" target=3D"_blank">marce=
-l.apfelbaum@gmail.com</a>&gt;</div></div><div><br></div><div>Thanks for the=
- fix,</div><div>Marcel</div></div><div>=C2=A0</div></div></div>
+<br>
+</blockquote></div>
 
---00000000000077b0a005b3368826--
+--000000000000b14cee05b3392b70--
 
