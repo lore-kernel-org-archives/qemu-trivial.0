@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZvoM-0005Ub-9m
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 07:53:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54862)
+	id 1kZvtH-0000V4-FZ
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 07:58:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kZvoK-0005UL-Lv; Tue, 03 Nov 2020 07:53:16 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38789)
+ id 1kZvtF-0000SG-Pa; Tue, 03 Nov 2020 07:58:21 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:39758)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kZvoJ-0002mX-1t; Tue, 03 Nov 2020 07:53:16 -0500
-Received: by mail-wr1-x442.google.com with SMTP id n18so18430338wrs.5;
- Tue, 03 Nov 2020 04:53:14 -0800 (PST)
+ id 1kZvtE-0004Ut-1h; Tue, 03 Nov 2020 07:58:21 -0500
+Received: by mail-wm1-x341.google.com with SMTP id 205so4930827wma.4;
+ Tue, 03 Nov 2020 04:58:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yS9D08AZ8afaCK1IP15sJZEX9oODx19DUeQp9SORkyU=;
- b=Y5MGobrjMyptbaKsDzpZb2PPbtg0ShYaD3ZKPWpTyAkJpvrW9zlHx4RkLhjDgweZuD
- h3tkN22E0a8H8YNsaWRXVa0r1VnGenW9Te/43ygvO2CxWOPdlGZUETW1wP2dpvGJIjyN
- 8h6ZOFkw8pFfFpuq2MmL1ruXjvhdn5VXsjQrVcXeYbk2ReLhI70oAGooDjTWk0Md6TSz
- mdx3k3hbzXuVcgmlWMui/JXjG1SmLkblw2zWVrqOIT+wIfvFx0mbogdWRd12M1KP4Oth
- QtOateaa9sH3E9lTvSWpGpjrB3ZcCf+YUjs+ioVsI0Tdw7d9YYW8RWw3YCuWOS7/H0au
- QzjQ==
+ bh=QGTsdyyuqveNZtckZHCjlvQRIVCWG50U/JEh6Jp/BrI=;
+ b=EtimwTTNYDIRaoy9hmFxwbkf50PoKZdOVyPfN54nXi3O6kbcscbFpEeU5VJb6SI1jo
+ wbdpHDpQOESYxYk/RrEnJvDjHJBw/Iv7+D6AAZKEaYZx39Tnwwcc+3/ncIe0+pl9gWNC
+ C3j2BIuWJAMD8aaIYffyrSJ/Xac2ePoGw/yb0wPAAb7/SvBKtIkddFDDovyyPVYQm2F+
+ bQzKGwRQAt4ZXmbTS2ETWYaE1a8THMieK7CxfkWExx6deHiLWMsr3MvQC6oQdBP1MP0W
+ 0fAZZXgAtH5ey7qn5K7SBZE5xCHpz2lUIP9Pix6c1dTP1V7HpUya3RFgGeaVMWolLEO1
+ o99g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=yS9D08AZ8afaCK1IP15sJZEX9oODx19DUeQp9SORkyU=;
- b=AfYsD844lT+7U4sBSeMi5uTMrk6XrhSMF+TjBLZ/q/66dv5ltJ0HxkFtpPPLKrQCFx
- yKGA3GvqLO2Q+5SiTYVeOTX+IbBw/zAcLaNCL08ENdsEhcd+54qbYUctERudZovTuF7j
- 75do6Nv0rCFoUDdqhwirplZKOJ7KQWEsbjf59SQVDG9shxCKkXLIn3FMyTXOwBJZs26a
- 5DLf6R6ObgZcdkrRC1EEqbjCldmRd/SahDngHAvsVzf4QW0tk8X0/IKCJnlQOqHumpkm
- z3I9JEEjP97Qc7/0zFfCCZI0qo+f0H4/ix4/W1WiH4fWmXJNoEFnE1FVNcNA9m2ICojR
- 2aRg==
-X-Gm-Message-State: AOAM532/IUQgz6nW821T7e1TDiZv1HKHqFKIMr6yj+bAxwiDptFXSDNw
- pFz5muVygZ1lJv9+T/vgPfjBA2TORHk=
-X-Google-Smtp-Source: ABdhPJy5/Lme0k9LC3bce/nCOS5ntFfjzWf6I/0vs0LQ0c9Ug+pRS/D2Ib2rKvlfDVvw0XRhu3qP7Q==
-X-Received: by 2002:adf:fd82:: with SMTP id d2mr25964305wrr.304.1604407992815; 
- Tue, 03 Nov 2020 04:53:12 -0800 (PST)
+ bh=QGTsdyyuqveNZtckZHCjlvQRIVCWG50U/JEh6Jp/BrI=;
+ b=AC1ETCOTIewXexSGPZnOyS7PrZ/68iIE1WWFAXLOyyFxmG/I/WLnV2jCXpGEBFA8AZ
+ OrdsdatjjmwrxHq3SRES18+ChneazxUXygXQntiBiDpsiwkuXwYumzCIR9UjTqO0zkum
+ l+nGSwU3r66saHKkacIvQ9wKxafDClAV6/dmpWGwcA1JC7hJIU4q6Hezj9blEW/5f2bd
+ IdJpDa3xvyOfiYy2VtlQ6RksPAbXjnW2LOhBxFliEgv9M7cZcgcpzs1W38a6eu/C0xSx
+ uiPv8+QaivTDTbZ0/wMRV0d0nkq9uhYWT2V7cEtlrZHdWqVsibiOfD23AgOsRND4zjAT
+ zUZw==
+X-Gm-Message-State: AOAM533GjScUoU9CPSguHvPyC88Ti8EYHHKh6YWul0u+PcV7DtVH63QG
+ poh7P4/sok7oZk01p6V/dHY=
+X-Google-Smtp-Source: ABdhPJyN5vaKE+qtK0Eco7MDtHU8tqYTqZU9NuFnrP+bFH9jK4WTynnPOdOaNeSDKJu14OBu3/MRKw==
+X-Received: by 2002:a05:600c:216:: with SMTP id
+ 22mr3306263wmi.149.1604408298071; 
+ Tue, 03 Nov 2020 04:58:18 -0800 (PST)
 Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id y11sm2682554wmj.36.2020.11.03.04.53.11
+ by smtp.gmail.com with ESMTPSA id g138sm2810017wme.39.2020.11.03.04.58.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Nov 2020 04:53:12 -0800 (PST)
+ Tue, 03 Nov 2020 04:58:17 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 5/30] mips tcg: Fix Lesser GPL version number
+Subject: Re: [PATCH 16/30] boston: Fix Lesser GPL version number
 To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20201014134902.14291-1-chetan4windows@gmail.com>
- <20201016143509.26692-1-chetan4windows@gmail.com>
+Cc: qemu-devel@nongnu.org, paulburton@kernel.org
+References: <20201014134248.14146-1-chetan4windows@gmail.com>
+ <20201023122633.19466-1-chetan4windows@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <9c9dc7ef-fad7-fa11-5e13-ecd931e517dd@amsat.org>
-Date: Tue, 3 Nov 2020 13:53:10 +0100
+Message-ID: <60d7ba5b-6cf4-5dd5-ca22-2878669cf673@amsat.org>
+Date: Tue, 3 Nov 2020 13:58:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201016143509.26692-1-chetan4windows@gmail.com>
+In-Reply-To: <20201023122633.19466-1-chetan4windows@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -84,9 +85,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 12:53:17 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 12:58:22 -0000
 
-On 10/16/20 4:35 PM, Chetan Pant wrote:
+On 10/23/20 2:26 PM, Chetan Pant wrote:
 > There is no "version 2" of the "Lesser" General Public License.
 > It is either "GPL version 2.0" or "Lesser GPL version 2.1".
 > This patch replaces all occurrences of "Lesser GPL version 2" with
@@ -94,25 +95,11 @@ On 10/16/20 4:35 PM, Chetan Pant wrote:
 > 
 > Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 > ---
->  hw/mips/cps.c                    | 2 +-
->  hw/misc/mips_cpc.c               | 2 +-
->  hw/misc/mips_itu.c               | 2 +-
->  include/hw/mips/cps.h            | 2 +-
->  include/hw/misc/mips_cpc.h       | 2 +-
->  include/hw/misc/mips_itu.h       | 2 +-
->  target/mips/cp0_helper.c         | 2 +-
->  target/mips/dsp_helper.c         | 2 +-
->  target/mips/fpu_helper.c         | 2 +-
->  target/mips/gdbstub.c            | 2 +-
->  target/mips/helper.c             | 2 +-
->  target/mips/lmmi_helper.c        | 2 +-
->  target/mips/mips-semi.c          | 2 +-
->  target/mips/msa_helper.c         | 2 +-
->  target/mips/op_helper.c          | 2 +-
->  target/mips/translate.c          | 2 +-
->  target/mips/translate_init.c.inc | 2 +-
->  17 files changed, 17 insertions(+), 17 deletions(-)
+>  hw/core/loader-fit.c              | 2 +-
+>  hw/mips/boston.c                  | 2 +-
+>  hw/pci-host/xilinx-pcie.c         | 2 +-
+>  include/hw/pci-host/xilinx-pcie.h | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
 
-Thanks, applied to mips-next (split in 2 patches:
-target/mips and hw/mips).
+Thanks, applied to mips-next.
 
