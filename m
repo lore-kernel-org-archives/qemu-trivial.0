@@ -1,70 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kZedx-0007VX-Kj
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 13:33:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44108)
+	id 1kZlWi-00025Y-Aq
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2020 20:54:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kZedo-0007Pc-76
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 13:33:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30505)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kZedm-0008RT-GG
- for qemu-trivial@nongnu.org; Mon, 02 Nov 2020 13:33:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604341993;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FPORZeg+S+HBTkehML7TmlQ3ZPMdeoacbN0FvN5HmHk=;
- b=BEeF5ETI4LL5yGLxdH11LoUA7d7usL5nqvZH+9tfQ/Wa778MAubH+Swmd39mMLh0n512IZ
- vzGAN6Wz/+rJDKbzYZa//L3tFNDcshFqL39NW+Z+bQQMQ/4RMuFSSe/dH+u8kCJvQxLVe/
- wNZYPrG43anDE+b5dvF0WOgtErdrF0E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-202-HZaOJ9qUOQ6ZOp1w1QIIFw-1; Mon, 02 Nov 2020 13:33:08 -0500
-X-MC-Unique: HZaOJ9qUOQ6ZOp1w1QIIFw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D874809DCD;
- Mon,  2 Nov 2020 18:33:07 +0000 (UTC)
-Received: from work-vm (ovpn-114-142.ams2.redhat.com [10.36.114.142])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D735873673;
- Mon,  2 Nov 2020 18:33:02 +0000 (UTC)
-Date: Mon, 2 Nov 2020 18:33:00 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH-for-5.2 v2] tools/virtiofsd: Check vu_init() return value
- (CID 1435958)
-Message-ID: <20201102183300.GO3673@work-vm>
-References: <20201102092339.2034297-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZlWe-00024a-NK; Mon, 02 Nov 2020 20:54:21 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2319)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kZlVO-0001nn-RM; Mon, 02 Nov 2020 20:54:20 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CQCTy5VGxzkdZ2;
+ Tue,  3 Nov 2020 09:52:54 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
+ 09:52:47 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Yuval Shaia
+ <yuval.shaia.ml@gmail.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH 2/6] hw/rdma/rdma_backend: fix uninitialized variable warning
+ in rdma_poll_cq()
+Date: Tue, 3 Nov 2020 09:52:24 +0800
+Message-ID: <20201103015228.2250547-3-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
+References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201102092339.2034297-1-philmd@redhat.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:52:58
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,52 +54,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2020 18:33:23 -0000
+X-List-Received-Date: Tue, 03 Nov 2020 01:54:22 -0000
 
-* Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
-> Since commit 6f5fd837889, vu_init() can fail if malloc() returns NULL.
-> 
-> This fixes the following Coverity warning:
-> 
->   CID 1435958 (#1 of 1): Unchecked return value (CHECKED_RETURN)
-> 
-> Fixes: 6f5fd837889 ("libvhost-user: support many virtqueues")
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
+ that the statements in the macro must be executed. As a result, some variables
+ assignment statements in the macro may be considered as unexecuted by the compiler.
 
-Queued.
+The compiler showed warning:
+hw/rdma/rdma_backend.c: In function ‘rdma_poll_cq’:
+hw/rdma/rdma_utils.h:25:5: warning: ‘ne’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 25 |     error_report("%s: " fmt, "rdma", ## __VA_ARGS__)
+    |     ^~~~~~~~~~~~
+hw/rdma/rdma_backend.c:93:12: note: ‘ne’ was declared here
+ 93 |     int i, ne, total_ne = 0;
+    |            ^~
 
-> ---
-> v2: Add fuse_log()
+Add a default value for 'ne' to prevented the warning.
 
-Thanks.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+Cc: Yuval Shaia <yuval.shaia.ml@gmail.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+---
+ hw/rdma/rdma_backend.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  tools/virtiofsd/fuse_virtio.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
-> index 324936948d3..83ba07c6cd8 100644
-> --- a/tools/virtiofsd/fuse_virtio.c
-> +++ b/tools/virtiofsd/fuse_virtio.c
-> @@ -1013,8 +1013,11 @@ int virtio_session_mount(struct fuse_session *se)
->      se->vu_socketfd = data_sock;
->      se->virtio_dev->se = se;
->      pthread_rwlock_init(&se->virtio_dev->vu_dispatch_rwlock, NULL);
-> -    vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
-> -            fv_set_watch, fv_remove_watch, &fv_iface);
-> +    if (!vu_init(&se->virtio_dev->dev, 2, se->vu_socketfd, fv_panic, NULL,
-> +                 fv_set_watch, fv_remove_watch, &fv_iface)) {
-> +        fuse_log(FUSE_LOG_ERR, "%s: vu_init failed\n", __func__);
-> +        return -1;
-> +    }
->  
->      return 0;
->  }
-> -- 
-> 2.26.2
-> 
+diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+index 5de010b1fa..2fe4a3501c 100644
+--- a/hw/rdma/rdma_backend.c
++++ b/hw/rdma/rdma_backend.c
+@@ -90,7 +90,7 @@ static void clean_recv_mads(RdmaBackendDev *backend_dev)
+ 
+ static int rdma_poll_cq(RdmaDeviceResources *rdma_dev_res, struct ibv_cq *ibcq)
+ {
+-    int i, ne, total_ne = 0;
++    int i, ne = 0, total_ne = 0;
+     BackendCtx *bctx;
+     struct ibv_wc wc[2];
+     RdmaProtectedGSList *cqe_ctx_list;
 -- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+2.27.0
 
 
