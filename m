@@ -1,90 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaGjp-0000dX-Fn
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 06:14:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50614)
+	id 1kaJ0t-0006yz-MG
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 08:39:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58322)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kaGjo-0000Zm-3Q
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 06:14:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49334)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kaGjm-000088-Hq
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 06:13:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604488437;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HS+dY8YTCUYIbmhvbzGBHroVhNemjCWzd1W0bmpcS40=;
- b=fRvQe9/T+JgSTxYcmUSpf/7CwhSar07pkXXfsdaXjB903q9PK8CUiB9CADyXT+rqkS0Zs3
- /ciIvgDjf3ytmL2mSWynUrPquJuzKXOqJhL10NlWCvGR+ejViuH0XeKxtQhKx6/JYQrvHD
- mLuzwnPTpmMtPZx+ejXdRx9ZFXAxdWc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-HPBx13r4Nrest6BJUEVE2g-1; Wed, 04 Nov 2020 06:13:54 -0500
-X-MC-Unique: HPBx13r4Nrest6BJUEVE2g-1
-Received: by mail-wr1-f71.google.com with SMTP id w1so9118366wrr.5
- for <qemu-trivial@nongnu.org>; Wed, 04 Nov 2020 03:13:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HS+dY8YTCUYIbmhvbzGBHroVhNemjCWzd1W0bmpcS40=;
- b=phXj7QmeCk0euC+KwgpxS7IilmB5nC4LpIPdfqvetqOZ10Kb4RqLBxT+XPqg1RRgxN
- eeQ9atUcFp9xNFBKGW9/SlVG9R43RHj8bwnI6bKnX5TSici8lsTKchcD1/Wx7NTpFiK+
- h4bbsXnZtffPY4xil0bSJF8UnTocAMUwLxAFgH51GaDrEof72Q09iBTe+xb05EajQ0Hp
- fZE6yxJtz0cnGt3zovx4vY6bfVCkJjpiNUug3+yAx5S2TTDSm7bIiJ5H84uPtrhPGHG1
- QUwAYYJuaM8AVIdKxGREY5UfuELUHU0WuK3uX4EU6lD6X1AL98C3GOVo4FFdOJbkW6n5
- Laww==
-X-Gm-Message-State: AOAM531JN5cc4etJg2/OXH9T597xa2Fg7mVGmW6C5pDdmn/8CSPjPFGE
- X2kb4LDigWmk4UqhuRq73j0EyeTXFqPuSjkGnyaYR6Zpv88lw8SvJwRFnLb2KyhVPUkbxw+kdgQ
- s7sFpLL9O1ZllJLiguQ==
-X-Received: by 2002:adf:cd8d:: with SMTP id q13mr31348789wrj.268.1604488433244; 
- Wed, 04 Nov 2020 03:13:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwgm1JqqBHRaGC57JWmjdH+rLAw6ErCtHRnvvHuNrzvcg4hC+luCKJh1soqvGKuLVswMWp+yw==
-X-Received: by 2002:adf:cd8d:: with SMTP id q13mr31348762wrj.268.1604488433029; 
- Wed, 04 Nov 2020 03:13:53 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id u3sm2031998wro.33.2020.11.04.03.13.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Nov 2020 03:13:52 -0800 (PST)
-Subject: Re: [PATCH 1/4] bsd-user: space required after semicolon
-To: Thomas Huth <thuth@redhat.com>, shiliyang <shiliyang@huawei.com>,
- richard.henderson@linaro.org, pbonzini@redhat.com, alex.bennee@linaro.org,
- laurent@vivier.eu
-Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-References: <fc9d7415-a17f-2958-69fd-0b5f54e553a1@huawei.com>
- <b7231b6c-97ad-5b4c-0932-08fa331dbb30@huawei.com>
- <28961057-f570-a203-e098-6ec0d5be3f75@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <52c7980b-33bc-7e76-b985-9df77259f33b@redhat.com>
-Date: Wed, 4 Nov 2020 12:13:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kaJ0k-0006xF-IB; Wed, 04 Nov 2020 08:39:40 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2504)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kaJ0c-0002iN-GF; Wed, 04 Nov 2020 08:39:35 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR76H58CBzhg5H;
+ Wed,  4 Nov 2020 21:39:03 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 4 Nov 2020
+ 21:38:59 +0800
+From: Xinhao Zhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>
+CC: <sstabellini@kernel.org>, <anthony.perard@citrix.com>, <paul@xen.org>,
+ <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: [PATCH] hw/xen: Don't use '#' flag of printf format
+Date: Wed, 4 Nov 2020 21:37:09 +0800
+Message-ID: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
 MIME-Version: 1.0
-In-Reply-To: <28961057-f570-a203-e098-6ec0d5be3f75@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 00:03:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 08:39:07
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,33 +50,154 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 11:14:00 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 13:39:43 -0000
 
-On 11/4/20 12:08 PM, Thomas Huth wrote:
-> On 04/11/2020 11.20, shiliyang wrote:
->> This patch fixes error style problems found by checkpatch.pl:
->> ERROR: space required after that ';'
->>
->> Signed-off-by: Liyang Shi <shiliyang@huawei.com>
->>
->> ---
->>  bsd-user/elfload.c | 2 +-
->>  bsd-user/syscall.c | 4 ++--
->>  2 files changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->> index 9f4210af9a..25e625d86b 100644
->> --- a/bsd-user/elfload.c
->> +++ b/bsd-user/elfload.c
->> @@ -1227,7 +1227,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct target_pt_regs *regs,
->>      end_data = 0;
->>      interp_ex.a_info = 0;
->>
->> -    for(i=0;i < elf_ex.e_phnum; i++) {
->> +    for(i=0; i < elf_ex.e_phnum; i++) {
-> 
-> While you're at it, please also add white spaces around the "=" in that line.
+Fix code style. Don't use '#' flag of printf format ('%#') in
+format strings, use '0x' prefix instead
 
-IOW please run checkpatch after fixing a checkpatch issue ;)
+Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+Signed-off-by: Kai Deng <dengkai1@huawei.com>
+---
+ hw/xen/xen_pt.c             | 10 +++++-----
+ hw/xen/xen_pt_config_init.c |  6 +++---
+ hw/xen/xen_pt_msi.c         | 16 ++++++++--------
+ 3 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
+index 6d359ee486..a5f3dd590c 100644
+--- a/hw/xen/xen_pt.c
++++ b/hw/xen/xen_pt.c
+@@ -489,7 +489,7 @@ static int xen_pt_register_regions(XenPCIPassthroughState *s, uint16_t *cmd)
+         pci_register_bar(&s->dev, i, type, &s->bar[i]);
+ 
+         XEN_PT_LOG(&s->dev, "IO region %i registered (size=0x%08"PRIx64
+-                   " base_addr=0x%08"PRIx64" type: %#x)\n",
++                   " base_addr=0x%08"PRIx64" type: 0x%x)\n",
+                    i, r->size, r->base_addr, type);
+     }
+ 
+@@ -578,7 +578,7 @@ static void xen_pt_check_bar_overlap(PCIBus *bus, PCIDevice *d, void *opaque)
+         if (ranges_overlap(arg->addr, arg->size, r->addr, r->size)) {
+             XEN_PT_WARN(&s->dev,
+                         "Overlapped to device [%02x:%02x.%d] Region: %i"
+-                        " (addr: %#"FMT_PCIBUS", len: %#"FMT_PCIBUS")\n",
++                        " (addr: 0x%"FMT_PCIBUS", len: 0x%"FMT_PCIBUS")\n",
+                         pci_bus_num(bus), PCI_SLOT(d->devfn),
+                         PCI_FUNC(d->devfn), i, r->addr, r->size);
+             arg->rc = true;
+@@ -618,8 +618,8 @@ static void xen_pt_region_update(XenPCIPassthroughState *s,
+     pci_for_each_device(pci_get_bus(d), pci_dev_bus_num(d),
+                         xen_pt_check_bar_overlap, &args);
+     if (args.rc) {
+-        XEN_PT_WARN(d, "Region: %d (addr: %#"FMT_PCIBUS
+-                    ", len: %#"FMT_PCIBUS") is overlapped.\n",
++        XEN_PT_WARN(d, "Region: %d (addr: 0x%"FMT_PCIBUS
++                    ", len: 0x%"FMT_PCIBUS") is overlapped.\n",
+                     bar, sec->offset_within_address_space,
+                     int128_get64(sec->size));
+     }
+@@ -786,7 +786,7 @@ static void xen_pt_realize(PCIDevice *d, Error **errp)
+ 
+     /* register real device */
+     XEN_PT_LOG(d, "Assigning real physical device %02x:%02x.%d"
+-               " to devfn %#x\n",
++               " to devfn 0x%x\n",
+                s->hostaddr.bus, s->hostaddr.slot, s->hostaddr.function,
+                s->dev.devfn);
+ 
+diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+index c8724cc7c8..c5c4e943a8 100644
+--- a/hw/xen/xen_pt_config_init.c
++++ b/hw/xen/xen_pt_config_init.c
+@@ -1622,7 +1622,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
+         case PCI_EXP_TYPE_PCIE_BRIDGE:
+         case PCI_EXP_TYPE_RC_EC:
+         default:
+-            XEN_PT_ERR(d, "Unsupported device/port type %#x.\n", type);
++            XEN_PT_ERR(d, "Unsupported device/port type 0x%x.\n", type);
+             return -1;
+         }
+     }
+@@ -1645,11 +1645,11 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
+         case PCI_EXP_TYPE_PCIE_BRIDGE:
+         case PCI_EXP_TYPE_RC_EC:
+         default:
+-            XEN_PT_ERR(d, "Unsupported device/port type %#x.\n", type);
++            XEN_PT_ERR(d, "Unsupported device/port type 0x%x.\n", type);
+             return -1;
+         }
+     } else {
+-        XEN_PT_ERR(d, "Unsupported capability version %#x.\n", version);
++        XEN_PT_ERR(d, "Unsupported capability version 0x%x.\n", version);
+         return -1;
+     }
+ 
+diff --git a/hw/xen/xen_pt_msi.c b/hw/xen/xen_pt_msi.c
+index fb4b887b92..b71563f98a 100644
+--- a/hw/xen/xen_pt_msi.c
++++ b/hw/xen/xen_pt_msi.c
+@@ -123,7 +123,7 @@ static int msi_msix_setup(XenPCIPassthroughState *s,
+             *ppirq = XEN_PT_UNASSIGNED_PIRQ;
+         } else {
+             XEN_PT_LOG(&s->dev, "requested pirq %d for MSI%s"
+-                       " (vec: %#x, entry: %#x)\n",
++                       " (vec: 0x%x, entry: 0x%x)\n",
+                        *ppirq, is_msix ? "-X" : "", gvec, msix_entry);
+         }
+     }
+@@ -142,7 +142,7 @@ static int msi_msix_setup(XenPCIPassthroughState *s,
+                                      msix_entry, table_base);
+         if (rc) {
+             XEN_PT_ERR(&s->dev,
+-                       "Mapping of MSI%s (err: %i, vec: %#x, entry %#x)\n",
++                       "Mapping of MSI%s (err: %i, vec: 0x%x, entry 0x%x)\n",
+                        is_msix ? "-X" : "", errno, gvec, msix_entry);
+             return rc;
+         }
+@@ -165,8 +165,8 @@ static int msi_msix_update(XenPCIPassthroughState *s,
+     int rc = 0;
+     uint64_t table_addr = 0;
+ 
+-    XEN_PT_LOG(d, "Updating MSI%s with pirq %d gvec %#x gflags %#x"
+-               " (entry: %#x)\n",
++    XEN_PT_LOG(d, "Updating MSI%s with pirq %d gvec 0x%x gflags 0x%x"
++               " (entry: 0x%x)\n",
+                is_msix ? "-X" : "", pirq, gvec, gflags, msix_entry);
+ 
+     if (is_msix) {
+@@ -208,11 +208,11 @@ static int msi_msix_disable(XenPCIPassthroughState *s,
+     }
+ 
+     if (is_binded) {
+-        XEN_PT_LOG(d, "Unbind MSI%s with pirq %d, gvec %#x\n",
++        XEN_PT_LOG(d, "Unbind MSI%s with pirq %d, gvec 0x%x\n",
+                    is_msix ? "-X" : "", pirq, gvec);
+         rc = xc_domain_unbind_msi_irq(xen_xc, xen_domid, gvec, pirq, gflags);
+         if (rc) {
+-            XEN_PT_ERR(d, "Unbinding of MSI%s failed. (err: %d, pirq: %d, gvec: %#x)\n",
++            XEN_PT_ERR(d, "Unbinding of MSI%s failed. (err: %d, pirq: %d, gvec: 0x%x)\n",
+                        is_msix ? "-X" : "", errno, pirq, gvec);
+             return rc;
+         }
+@@ -539,7 +539,7 @@ int xen_pt_msix_init(XenPCIPassthroughState *s, uint32_t base)
+     }
+ 
+     if (id != PCI_CAP_ID_MSIX) {
+-        XEN_PT_ERR(d, "Invalid id %#x base %#x\n", id, base);
++        XEN_PT_ERR(d, "Invalid id 0x%x base 0x%x\n", id, base);
+         return -1;
+     }
+ 
+@@ -582,7 +582,7 @@ int xen_pt_msix_init(XenPCIPassthroughState *s, uint32_t base)
+         XEN_PT_ERR(d, "Can't open /dev/mem: %s\n", strerror(errno));
+         goto error_out;
+     }
+-    XEN_PT_LOG(d, "table_off = %#x, total_entries = %d\n",
++    XEN_PT_LOG(d, "table_off = 0x%x, total_entries = %d\n",
+                table_off, total_entries);
+     msix->table_offset_adjust = table_off & 0x0fff;
+     msix->phys_iomem_base =
+-- 
+2.29.0-rc1
 
 
