@@ -1,71 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaJf1-0005CJ-Nz
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 09:21:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39206)
+	id 1kaLjP-0004Xy-Bf
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 11:33:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaJf0-0005B7-Pj
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 09:21:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54405)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaJex-0007oL-O9
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 09:21:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604499670;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oGbQhz5oeO/fDS3H5K9to3mCQbm/xwezZXB5Mx1byYs=;
- b=LXRc543wjmp9nPADxC23BM5ChO5C7lCjKt2suSsTdgw6FT43S4Ns08+wE+6xLiC+ePmvgV
- aW/cBOFwgAbGAGjsfeD8JE9IGaraa5eA2ZWgtxOZch0ZyWPeecpaIfIXDm6J3VGcCuid26
- MDzq7kphWz2CdGv60cn7RfYWlvGJAWk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-456-JanRb7PXMp2_jmDDqE1rdg-1; Wed, 04 Nov 2020 09:21:07 -0500
-X-MC-Unique: JanRb7PXMp2_jmDDqE1rdg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F138B18C9F55;
- Wed,  4 Nov 2020 14:21:05 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3BBF37EEC9;
- Wed,  4 Nov 2020 14:21:00 +0000 (UTC)
-Subject: Re: [PATCH] Prefer 'on' | 'off' over 'yes' | 'no' for bool options
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201104140528.608015-1-berrange@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c9251f48-c535-e618-b826-1ba0503ff6f1@redhat.com>
-Date: Wed, 4 Nov 2020 15:20:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kaLjO-0004X4-L7; Wed, 04 Nov 2020 11:33:54 -0500
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:33995)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kaLjM-0000r2-5c; Wed, 04 Nov 2020 11:33:54 -0500
+Received: by mail-il1-x143.google.com with SMTP id p2so5002047ilg.1;
+ Wed, 04 Nov 2020 08:33:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
+ b=NB59nJU80o5gEBh61X4PCFfbJzGBGOWlj6TuXeNwWO/NuRBIQ9WMtKvNxGxF3P4bEB
+ zkBMHt3+5+Z85LNF9I53glrcdcBWdjIc8q1PZdoV+a03TTR1zZBp1QV5SbWZdF6BlAi5
+ vj99CswShiN/rLbN19S4qmewmsncDZhqOPkkFYJKTgIpAH6zAHJB2NCHSPY+YgyPju7y
+ TgxNph46mh3K9+ShNizXqBvFIlyrxyCxkoR2LAhiQ97uBqOO2CCppWDdJZ/Stp5xyrKG
+ t0BcH61ULFdDcuvaG2TNBuf8/XEAu9Yiniyj5YZO6//XmHPkl2L3tJmoaFBOLRBZgypL
+ g7fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
+ b=mNNzYP6DXmQn1r5+TNQ2khlDiJbDxckqiuxsTg9iWjA6F5c5kPTeaq2g7gPW5bsyRg
+ IycGuzWCaOGjJaFArqem6m9uVHaRlCjBLPagI9yB0IYOMb/BoRiQra2u2dahwFGTHQzA
+ dG0gun3WhDV0LHgKyiNZ2iTHgw+9zGB5q9F/75WyT27U+/nyk+vdEvDO0Je1T2QM0Xo7
+ RF/OGzNS11aWcxth5gk1KSbGpAhk77RrD09knY5tL2+ClZV2WDwH46/wGgFWs4kctfzQ
+ w/QTr5rUbeMpz+yJOSr17mYM9mnQXNZKAi0GM/KNYcfblpYRmiQJhPgPJSd1Gkwca456
+ tIOw==
+X-Gm-Message-State: AOAM5310wWcj6L3EEJpeSRlQdfaCvTyDqREQ6wmq1I0EWCXO7tLdJgv3
+ 2Wt/Yb99n/gERV5YQqm20TTel85xvOBzu1E1PuY=
+X-Google-Smtp-Source: ABdhPJy7/J9q5USDPMNzIyY+8ms4dvOYO68l/BY4jW8L5HQbOwwZYaD3aIVqBnVjaVEgz+ASjRvH9ILni7bfHETAdxI=
+X-Received: by 2002:a05:6e02:f41:: with SMTP id
+ y1mr19868790ilj.267.1604507630165; 
+ Wed, 04 Nov 2020 08:33:50 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201104140528.608015-1-berrange@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 22:09:52
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <5FA280F5.8060902@huawei.com>
+In-Reply-To: <5FA280F5.8060902@huawei.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 4 Nov 2020 08:21:52 -0800
+Message-ID: <CAKmqyKOS4bALKNTA9wMK=HANz4Dc=fffq2pZafCxGFqsJ_LMkg@mail.gmail.com>
+Subject: Re: [PATCH] ssi: Fix bad printf format specifiers
+To: AlexChen <alex.chen@huawei.com>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Chubb <peter.chubb@nicta.com.au>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU <qemu-devel@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,110 +76,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 14:21:15 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 16:33:54 -0000
 
-On 04/11/2020 15.05, Daniel P. Berrangé wrote:
-> Update some docs and test cases to use 'on' | 'off' as the preferred
-> value for bool options.
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+On Wed, Nov 4, 2020 at 2:23 AM AlexChen <alex.chen@huawei.com> wrote:
+>
+> We should use printf format specifier "%u" instead of "%d" for
+> argument of type "unsigned int".
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  docs/system/vnc-security.rst | 6 +++---
->  include/authz/listfile.h     | 2 +-
->  qemu-options.hx              | 4 ++--
->  tests/qemu-iotests/233       | 4 ++--
->  4 files changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/docs/system/vnc-security.rst b/docs/system/vnc-security.rst
-> index b237b07330..e97b42dfdc 100644
-> --- a/docs/system/vnc-security.rst
-> +++ b/docs/system/vnc-security.rst
-> @@ -89,7 +89,7 @@ but with ``verify-peer`` set to ``yes`` instead.
->  .. parsed-literal::
->  
->     |qemu_system| [...OPTIONS...] \
-> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
-> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
->       -vnc :1,tls-creds=tls0 -monitor stdio
->  
->  .. _vnc_005fsec_005fcertificate_005fpw:
-> @@ -103,7 +103,7 @@ authentication to provide two layers of authentication for clients.
->  .. parsed-literal::
->  
->     |qemu_system| [...OPTIONS...] \
-> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
-> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
->       -vnc :1,tls-creds=tls0,password -monitor stdio
->     (qemu) change vnc password
->     Password: ********
-> @@ -145,7 +145,7 @@ x509 options:
->  .. parsed-literal::
->  
->     |qemu_system| [...OPTIONS...] \
-> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
-> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
->       -vnc :1,tls-creds=tls0,sasl -monitor stdio
->  
->  .. _vnc_005fsetup_005fsasl:
-> diff --git a/include/authz/listfile.h b/include/authz/listfile.h
-> index 0a1e5bddd3..0b7fe72198 100644
-> --- a/include/authz/listfile.h
-> +++ b/include/authz/listfile.h
-> @@ -73,7 +73,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(QAuthZListFile,
->   * The object can be created on the command line using
->   *
->   *   -object authz-list-file,id=authz0,\
-> - *           filename=/etc/qemu/myvm-vnc.acl,refresh=yes
-> + *           filename=/etc/qemu/myvm-vnc.acl,refresh=on
->   *
->   */
->  struct QAuthZListFile {
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 2c83390504..0bdc07bc47 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -5002,7 +5002,7 @@ SRST
->          Note the use of quotes due to the x509 distinguished name
->          containing whitespace, and escaping of ','.
->  
-> -    ``-object authz-listfile,id=id,filename=path,refresh=yes|no``
-> +    ``-object authz-listfile,id=id,filename=path,refresh=on|off``
->          Create an authorization object that will control access to
->          network services.
->  
-> @@ -5047,7 +5047,7 @@ SRST
->  
->               # |qemu_system| \\
->                   ... \\
-> -                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes \\
-> +                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=on \\
->                   ...
->  
->      ``-object authz-pam,id=id,service=string``
-> diff --git a/tests/qemu-iotests/233 b/tests/qemu-iotests/233
-> index a5c17c3963..0b99530f7f 100755
-> --- a/tests/qemu-iotests/233
-> +++ b/tests/qemu-iotests/233
-> @@ -83,7 +83,7 @@ echo
->  echo "== check plain client to TLS server fails =="
->  
->  nbd_server_start_tcp_socket \
-> -    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=yes \
-> +    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=on \
->      --tls-creds tls0 \
->      -f $IMGFMT "$TEST_IMG" 2>> "$TEST_DIR/server.log"
->  
-> @@ -128,7 +128,7 @@ echo "== check TLS with authorization =="
->  nbd_server_stop
->  
->  nbd_server_start_tcp_socket \
-> -    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=yes \
-> +    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=on \
->      --object "authz-simple,id=authz0,identity=CN=localhost,, \
->        O=Cthulu Dark Lord Enterprises client1,,L=R'lyeh,,C=South Pacific" \
->      --tls-authz authz0 \
-> 
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+>  hw/ssi/imx_spi.c    | 2 +-
+>  hw/ssi/xilinx_spi.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> index 7f703d8328..d8885ae454 100644
+> --- a/hw/ssi/imx_spi.c
+> +++ b/hw/ssi/imx_spi.c
+> @@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
+>      case ECSPI_MSGDATA:
+>          return  "ECSPI_MSGDATA";
+>      default:
+> -        sprintf(unknown, "%d ?", reg);
+> +        sprintf(unknown, "%u ?", reg);
+>          return unknown;
+>      }
+>  }
+> diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
+> index fec8817d94..49ff275593 100644
+> --- a/hw/ssi/xilinx_spi.c
+> +++ b/hw/ssi/xilinx_spi.c
+> @@ -142,7 +142,7 @@ static void xlx_spi_update_irq(XilinxSPI *s)
+>         irq chain unless things really changed.  */
+>      if (pending != s->irqline) {
+>          s->irqline = pending;
+> -        DB_PRINT("irq_change of state %d ISR:%x IER:%X\n",
+> +        DB_PRINT("irq_change of state %u ISR:%x IER:%X\n",
+>                      pending, s->regs[R_IPISR], s->regs[R_IPIER]);
+>          qemu_set_irq(s->irq, pending);
+>      }
+> --
+> 2.19.1
+>
 
