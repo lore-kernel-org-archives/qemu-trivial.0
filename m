@@ -1,62 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaOUs-0003cf-6I
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 14:31:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33684)
+	id 1kaQEp-0006wO-P1
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 16:22:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kaOUq-0003a8-KE
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 14:31:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47393)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1kaOUp-0008Rt-5V
- for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 14:31:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604518262;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=90caXRKGbBJKSi+u08Pj/8dqx+zmWzZSLLu3gdIMp+I=;
- b=D4qVyuIU43ydjugGpLyg4sXzSjoE+iwobKq9dyRObWceVPWzM1bXYhU58O0CDvK+Q2k0Vg
- ewq8Epa6JD16ass4vTQ0O1KUSfAXzWq75sjFM/bML57Tn1r+9GscTcUsTF5g9hixOyDHnS
- 099kSXv1pYbxiHDzyC9XaaGJPaKu6os=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-482--HWCQAkCODiy97hVFcRwYQ-1; Wed, 04 Nov 2020 14:30:35 -0500
-X-MC-Unique: -HWCQAkCODiy97hVFcRwYQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23AC1107AFA9;
- Wed,  4 Nov 2020 19:30:34 +0000 (UTC)
-Received: from scv.redhat.com (ovpn-113-61.rdu2.redhat.com [10.10.113.61])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 874CD5C5DE;
- Wed,  4 Nov 2020 19:30:33 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- John Snow <jsnow@redhat.com>
-Subject: [PATCH] README: Add Documentation blurb
-Date: Wed,  4 Nov 2020 14:30:32 -0500
-Message-Id: <20201104193032.1319248-1-jsnow@redhat.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kaQEo-0006vk-46; Wed, 04 Nov 2020 16:22:38 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:38533)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kaQEl-0005G3-0y; Wed, 04 Nov 2020 16:22:37 -0500
+Received: from [192.168.100.1] ([82.252.154.198]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N6svJ-1kH78m3yk3-018N0C; Wed, 04 Nov 2020 22:22:20 +0100
+Subject: Re: [PATCH v2 4/8] linux-user/mips/cpu_loop: silence the compiler
+ warnings
+To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, zhang.zhanghailiang@huawei.com,
+ ganqixin@huawei.com, Euler Robot <euler.robot@huawei.com>
+References: <20201030004046.2191790-1-kuhn.chenqun@huawei.com>
+ <20201030004046.2191790-5-kuhn.chenqun@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <f5947be2-40a4-ba46-280f-5acc546d4ffd@vivier.eu>
+Date: Wed, 4 Nov 2020 22:22:17 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201030004046.2191790-5-kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 00:03:41
+X-Provags-ID: V03:K1:RoUhkRYYCeYVDdMfDlkz6jcHaVRUpBM7QDRLn7WDAX4y77SsPXL
+ 41fQ6V2g7tWyyZsRQ10PdbHsJyNTNyKPVDLVzoR7ZE+1U02UN+zzYi8/GciiudYIxzi9NqS
+ rJFBgSFNimWINPKwtbb8OCl/Kn/KxvSdDAohD34XwAu6reCWp6MolcGQ2gQHqX3+P4aDMJU
+ fSVGdOZfMAjZGWX9flL1Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:rtn+bfUrVfU=:3V8hdSWT4q57J1+vJpqU6M
+ 35cJHF8T6CrXr7NP1MPHmTJlxBFm/rCAd37StRO1skg+6nGiVVtFApwdU90smi9/GJAZeBiEl
+ 7haPHgxQFCedRweN1Sj2TtNDa7fZNJdIN/8IetE9ByH9PBCcvp+1KxqZnR08UFdCPPuDCLZpx
+ 7XdfZ/NsQzMVecNWhOdh3Wb5I1lgHgAiDm4tWoFvxU6GilX62CuUW7ZjMC8DEqlzig4J8WlUU
+ Kb+fjg4REBDbrm7WcxISVcoMWobUo8ZWytU8g1U/MR/l6zIeL8vyOuuB6Q5IA5CJxinHfRP7Y
+ vAdAEaSRbPxjGlN/wOubEhCobMXO9S0hbrXn2KbSrtrIvgPeAiq1gHdMUSWZoo7RY48TEg/Ow
+ aYa9UPSXOn4f4FDxdkMWiV/Ir7IcJyp7y6PlgRvfLFsWxAV3jmLa7amTGcG04MP5J0IKQ2Zo4
+ YMdnHsakcA==
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 16:22:31
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -69,40 +64,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 19:31:04 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 21:22:38 -0000
 
-Add it in a prominent place: Right after figuring out what QEMU is,
-users may wish to know how to use it more than they want to know how to
-build their own version of it.
+Le 30/10/2020 à 01:40, Chen Qun a écrit :
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+> linux-user/mips/cpu_loop.c: In function ‘cpu_loop’:
+> linux-user/mips/cpu_loop.c:104:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   104 |                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:107:17: note: here
+>   107 |                 case 7:
+>       |                 ^~~~
+> linux-user/mips/cpu_loop.c:108:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   108 |                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:111:17: note: here
+>   111 |                 case 6:
+>       |                 ^~~~
+> linux-user/mips/cpu_loop.c:112:24: warning: this statement may fall through [-Wimplicit-fallthrough=]
+>   112 |                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+>       |                        ^
+> linux-user/mips/cpu_loop.c:115:17: note: here
+>   115 |                 case 5:
+>       |                 ^~~~
+> 
+> Add the corresponding "fall through" comment to fix it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  linux-user/mips/cpu_loop.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
+> index 553e8ca7f5..cfe7ba5c47 100644
+> --- a/linux-user/mips/cpu_loop.c
+> +++ b/linux-user/mips/cpu_loop.c
+> @@ -104,18 +104,22 @@ void cpu_loop(CPUMIPSState *env)
+>                      if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 7:
+>                      if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 6:
+>                      if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  case 5:
+>                      if ((ret = get_user_ual(arg5, sp_reg + 16)) != 0) {
+>                          goto done_syscall;
+>                      }
+> +                    /* fall through */
+>                  default:
+>                      break;
+>                  }
+> 
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- README.rst | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Applied to my linux-user-for-5.2 branch.
 
-diff --git a/README.rst b/README.rst
-index 58b9f2dc15c4..758ea8fd2ff0 100644
---- a/README.rst
-+++ b/README.rst
-@@ -31,6 +31,17 @@ QEMU as a whole is released under the GNU General Public License,
- version 2. For full licensing details, consult the LICENSE file.
- 
- 
-+Documentation
-+=============
-+
-+Documentation can be found hosted online at
-+`<https://www.qemu.org/documentation/>`_. The documentation for the
-+current development version that is available at
-+`<https://www.qemu.org/docs/master/>`_ is generated from the ``docs/``
-+folder in the source tree, and is built by `Sphinx
-+<https://www.sphinx-doc.org/en/master/>_`.
-+
-+
- Building
- ========
- 
--- 
-2.26.2
+Thanks,
+Laurent
 
 
