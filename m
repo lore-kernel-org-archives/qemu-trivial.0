@@ -1,64 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaDUq-000667-Db
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 02:46:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32768)
+	id 1kaFpL-0008JF-MS
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 05:15:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kaDUn-00064b-Av; Wed, 04 Nov 2020 02:46:17 -0500
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:43166)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kaDUj-0006bt-B7; Wed, 04 Nov 2020 02:46:17 -0500
-Received: by mail-ej1-x643.google.com with SMTP id k3so28326616ejj.10;
- Tue, 03 Nov 2020 23:46:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H6y2Xa3sITJofh7w+9vCnAX4wTeS1ZhGD2fNKDpGrXs=;
- b=g6zLMwviiPxq3l/yRBQtZkUwRgWUQ3ZHYoWIZs88C5tLmwKZZdx2HkHARDDpYH+KBz
- lZFjbkkXM3AgFmhjOxchNkxb78ZrmrMRYkOM2D9I2AvKh6VPLcwvNSkrf7F4SRkU26Tv
- wh7ACLaMTntyZ8A+BHjrtk6zUXqqgGHn6wvIdj/xHROVOED/9JyztK0MATvaxJh5wVNd
- DBHqxt2LZJnVy8KpfpuqGMpXE7Una1C+j1cgfd1Ih/W5dwshYKvKujabcKxoU75RceOI
- 4STLvOpmZx8KKc0jplJwWZJ3lxVSqSC6oCujJgU49bTa8u3qqAaTSJfOvcnzHTN7A3VA
- OgBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=H6y2Xa3sITJofh7w+9vCnAX4wTeS1ZhGD2fNKDpGrXs=;
- b=McAPPn3Om90tfJGikG+rFleZnJbT0Vv84HaQQdJL5suSZsU4CbiSdQeLgpO1VRuSz2
- iGsg5WTowcd25rc2U71tCWFII+x8klhHjudD0FulPB+Ti/02D2pBDIT+PmOyVXoSygof
- cfqO+VOo9xS01iXOnmd4FGeOK3jOnIQMLyOaFYGaXMkMn56RMZh8mE6tZJMop6r39xPa
- Y9iykcSNik+6NyWmo8Q2DQfLiN7TRwCNAHiz2c/0TZxhwlqIzEdLiBOyYSKkTBCOldyT
- 6GQ4MUQfx3UIpT4UHN7XjZ2572AjGbscPIOFr7cswKpygFZRz1qVZ7QjfgRPkrak7YtH
- 91dQ==
-X-Gm-Message-State: AOAM5325Qa3GIpr7etPAPpR14GHLiIUpspoE9sJe3x6VvLHCVcfRtaJR
- V4/In4RXJp+gduKtraAkrhaJNWkdGv/4Pzr02l2g25shNoLqGQ==
-X-Google-Smtp-Source: ABdhPJyFWXRTYGiiI85XGL3mNVYWQh9YX3jOynZb7EV1amfF0iEG4YxnDKuO7MQP1VKVmpRL5zQjF95M10XtCiVR1g4=
-X-Received: by 2002:a17:906:af47:: with SMTP id
- ly7mr25257487ejb.532.1604475971609; 
- Tue, 03 Nov 2020 23:46:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaFpH-0008Eg-8W
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 05:15:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54772)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaFpE-0001SO-HG
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 05:15:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604484931;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lwuvA39jbEcdtp0U/yaIRsiu5l7xOHecQGDBWipOLVI=;
+ b=RNX573iNYSSIwo+4uxt3snXzbRrR3fPpcUI4LdiVi9+hDxbSwh1fyh3Abj0RYjA2/PXd7U
+ 4UOaGFe4Iv6etlDXalOG56JeqqWBX5u6arppAhtgdCX4xoT6WUf07B3JJgBqdvcWImWwBN
+ W53T1Zk4e8Oa/9rhiPbCVj4KQYUQc/s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-457-IGFAIwPuOdalQiFWxjPErw-1; Wed, 04 Nov 2020 05:15:28 -0500
+X-MC-Unique: IGFAIwPuOdalQiFWxjPErw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 05DD61009E26;
+ Wed,  4 Nov 2020 10:15:27 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5A2C35B4D6;
+ Wed,  4 Nov 2020 10:15:24 +0000 (UTC)
+Subject: Re: [PATCH] target/microblaze: Fix possible array out of bounds in
+ mmu_write()
+To: AlexChen <alex.chen@huawei.com>, edgar.iglesias@gmail.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+References: <5FA10ABA.1080109@huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <5afc6947-804b-e168-96a8-ee325f208542@redhat.com>
+Date: Wed, 4 Nov 2020 11:15:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <5F96915D.2040102@huawei.com>
-In-Reply-To: <5F96915D.2040102@huawei.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Wed, 4 Nov 2020 11:46:00 +0400
-Message-ID: <CAJ+F1CJT7SDt63ZyUAVCZhoYJ=Ep4KXF7MbcQJREaDHrTZXBeA@mail.gmail.com>
-Subject: Re: [PATCH 0/4] qga: Fix some style problems
-To: AlexChen <alex.chen@huawei.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
- qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000056a96f05b3432c9f"
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <5FA10ABA.1080109@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 00:03:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,65 +77,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 07:46:17 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 10:15:35 -0000
 
---00000000000056a96f05b3432c9f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 03/11/2020 08.46, AlexChen wrote:
+> The size of env->mmu.regs is 3, but the range of 'rn' is [0, 5].
+> To avoid data access out of bounds, only if 'rn' is less than 3, we
+> can print env->mmu.regs[rn]. In other cases, we can print
+> env->mmu.regs[MMU_R_TLBX].
 
-On Mon, Oct 26, 2020 at 1:16 PM AlexChen <alex.chen@huawei.com> wrote:
+... since env->mmu.regs[MMU_R_TLBX] is used in the other cases in this
+function. Makes sense, indeed.
 
-> Fix some error style problems found by checkpatch.pl.
->
-> alexchen (4):
->   qga: Add spaces around operator
->   qga: Delete redundant spaces
->   qga: Open brace '{' following struct go on the same
->   qga: switch and case should be at the same indent
->
->  qga/channel-win32.c  |  6 ++---
->  qga/commands-posix.c |  4 +--
->  qga/commands-win32.c | 28 ++++++++++-----------
->  qga/commands.c       |  4 +--
->  qga/main.c           | 59 ++++++++++++++++++++++----------------------
->  5 files changed, 50 insertions(+), 51 deletions(-)
->
->
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  target/microblaze/mmu.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/microblaze/mmu.c b/target/microblaze/mmu.c
+> index 1dbbb271c4..917ad6d69e 100644
+> --- a/target/microblaze/mmu.c
+> +++ b/target/microblaze/mmu.c
+> @@ -234,7 +234,8 @@ void mmu_write(CPUMBState *env, bool ext, uint32_t rn, uint32_t v)
+>      unsigned int i;
+> 
+>      qemu_log_mask(CPU_LOG_MMU,
+> -                  "%s rn=%d=%x old=%x\n", __func__, rn, v, env->mmu.regs[rn]);
+> +                  "%s rn=%d=%x old=%x\n", __func__, rn, v,
+> +                  rn < 3 ? env->mmu.regs[rn] : env->mmu.regs[MMU_R_TLBX]);
+> 
+>      if (cpu->cfg.mmu < 2 || !cpu->cfg.mmu_tlb_access) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "MMU access on MMU-less system\n");
+> 
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
---=20
-Marc-Andr=C3=A9 Lureau
-
---00000000000056a96f05b3432c9f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 26, 2020 at 1:16 PM AlexC=
-hen &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</a>&gt=
-; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
- 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fix som=
-e error style problems found by <a href=3D"http://checkpatch.pl" rel=3D"nor=
-eferrer" target=3D"_blank">checkpatch.pl</a>.<br>
-<br>
-alexchen (4):<br>
-=C2=A0 qga: Add spaces around operator<br>
-=C2=A0 qga: Delete redundant spaces<br>
-=C2=A0 qga: Open brace &#39;{&#39; following struct go on the same<br>
-=C2=A0 qga: switch and case should be at the same indent<br>
-<br>
-=C2=A0qga/channel-win32.c=C2=A0 |=C2=A0 6 ++---<br>
-=C2=A0qga/commands-posix.c |=C2=A0 4 +--<br>
-=C2=A0qga/commands-win32.c | 28 ++++++++++-----------<br>
-=C2=A0qga/commands.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 4 +--<br>
-=C2=A0qga/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 59 +++++++++++++=
-+++++++++----------------------<br>
-=C2=A05 files changed, 50 insertions(+), 51 deletions(-)<br>
-<br></blockquote><div><br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &l=
-t;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.co=
-m</a>&gt;</div><br clear=3D"all"></div><br>-- <br><div dir=3D"ltr" class=3D=
-"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---00000000000056a96f05b3432c9f--
 
