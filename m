@@ -1,66 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ka2Ju-00032P-Ip
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 14:50:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33716)
+	id 1ka95j-0002eB-68
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2020 22:04:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuval.shaia.ml@gmail.com>)
- id 1ka2Js-0002xp-AB; Tue, 03 Nov 2020 14:50:16 -0500
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:41520)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yuval.shaia.ml@gmail.com>)
- id 1ka2Jq-0000qN-BG; Tue, 03 Nov 2020 14:50:15 -0500
-Received: by mail-lf1-x144.google.com with SMTP id 126so23848958lfi.8;
- Tue, 03 Nov 2020 11:50:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5U1sh5MZyvuF/dyOxRnLXkyHcEX4/Vlgu2kBTFury7Q=;
- b=kUVUfKOIGTgeG35cZHyyuf2eQUgiP87AwpbS/SQBn8gtSvaWsVNSAHJpO7Y3NosMTy
- 37Dfyd1UAHLpefd1W4k1BVd1qNrmPjYVr1t9S9YJ/Z0ekRMbM9kIDFr4pj8T0NjBQlXn
- 82hgCoSH43YrzG4Jt88mX69lVqZfmJo5vrmF5EC/yNQOEBMMKpNQ5chuzMMu0Ezj8ug9
- /+21ItvfQe3Y3I/THhBj33CvQ9EoCup9k0aKBMSFjyUBR9YVNpaOQ9/pu6OfKKcAs3GS
- s57jMRgHGjaoZGLO3MJbWqmfQZUNCWllB8OCvKJuG0GjeJkMp9p3PLzRFKK6eE0GUDmK
- bV5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5U1sh5MZyvuF/dyOxRnLXkyHcEX4/Vlgu2kBTFury7Q=;
- b=CoCwnBHQgoaOhEyh70l3kInoTdfKdYC5Bqwnlqj1d2PK9xTPUwxxbwbkfQq36GLlQw
- AZfGjsR1zKW3VIypdOo0mXFHk1mL/AGIBya6HUyCS2PvAfoJyoKsfvC0kjADtOjsLHrL
- c6kV0rGI1ebfDiNBsmJAhSHbU21Z+Nf65SMSVNAFmB0RJKQpCUnQnC/6reC1T9wMceJO
- 9biSqCffLrpnIwsM6zMygj+cZiUsiaoCwvU5cKDsfmIm3uw+zLNBn5Uw3gpdmOvZceZM
- n4cY8wYja0ANWQVRqWQh4LWK0dKkVD+8yWDgObVCRcOpBy64MjLAzGxBEKPhmp1+x28/
- mcWA==
-X-Gm-Message-State: AOAM533wwIErzRwUPlzU1N4bRhSTS7t7QsqIM9RTMoB/uuk9VUMFuOJV
- yJb/h4pgcCttkCp30W/1ojbpXoqKwRtlcKJQiXI=
-X-Google-Smtp-Source: ABdhPJxwQhM0VwrZDzgZMrUStGdyvH+jN7lwZS+EXOpQhJJrNx++LabgnADKCtKIeqK1c7aTgJ4WaA81SvBc5k9HFYQ=
-X-Received: by 2002:ac2:592c:: with SMTP id v12mr8220891lfi.492.1604433011099; 
- Tue, 03 Nov 2020 11:50:11 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1ka95h-0002dz-GS; Tue, 03 Nov 2020 22:04:05 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2114)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1ka95e-0005nQ-Az; Tue, 03 Nov 2020 22:04:04 -0500
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CQs1869Ydz51rd;
+ Wed,  4 Nov 2020 11:03:40 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Wed, 4 Nov 2020 11:03:43 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0487.000;
+ Wed, 4 Nov 2020 11:03:34 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Max Filippov <jcmvbkbc@gmail.com>
+CC: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ ganqixin <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: RE: [PATCH 1/6] target/xtensa: fix uninitialized variable warning
+Thread-Topic: [PATCH 1/6] target/xtensa: fix uninitialized variable warning
+Thread-Index: AQHWsYQKtNCTbaRXh0S8iybx28woy6m1nFiAgACrZUA=
+Date: Wed, 4 Nov 2020 03:03:34 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA2AD13@dggemm531-mbx.china.huawei.com>
 References: <20201103015228.2250547-1-kuhn.chenqun@huawei.com>
- <20201103015228.2250547-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201103015228.2250547-3-kuhn.chenqun@huawei.com>
-From: Yuval Shaia <yuval.shaia.ml@gmail.com>
-Date: Tue, 3 Nov 2020 21:49:59 +0200
-Message-ID: <CAMPkWoN1UA+jVBhhZCa3v0EiP+wBR_3gpBBwFWcFZQF0_3HgZQ@mail.gmail.com>
-Subject: Re: [PATCH 2/6] hw/rdma/rdma_backend: fix uninitialized variable
- warning in rdma_poll_cq()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com, 
- Euler Robot <euler.robot@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000b14cee05b3392b70"
-Received-SPF: pass client-ip=2a00:1450:4864:20::144;
- envelope-from=yuval.shaia.ml@gmail.com; helo=mail-lf1-x144.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ <20201103015228.2250547-2-kuhn.chenqun@huawei.com>
+ <CAMo8BfK5wDgvzWFsC0WHyztUCiGR0dGnJgJiAVt5aG7nt8PsDw@mail.gmail.com>
+In-Reply-To: <CAMo8BfK5wDgvzWFsC0WHyztUCiGR0dGnJgJiAVt5aG7nt8PsDw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 22:03:47
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,132 +63,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2020 19:50:16 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 03:04:05 -0000
 
---000000000000b14cee05b3392b70
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Thanks,
-
-Reviewed-by:  Yuval Shaia <yuval.shaia.ml@gmail.com>
-
-On Tue, 3 Nov 2020 at 03:53, Chen Qun <kuhn.chenqun@huawei.com> wrote:
-
-> After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identi=
-fy
->  that the statements in the macro must be executed. As a result, some
-> variables
->  assignment statements in the macro may be considered as unexecuted by th=
-e
-> compiler.
->
-> The compiler showed warning:
-> hw/rdma/rdma_backend.c: In function =E2=80=98rdma_poll_cq=E2=80=99:
-> hw/rdma/rdma_utils.h:25:5: warning: =E2=80=98ne=E2=80=99 may be used unin=
-itialized in this
-> function [-Wmaybe-uninitialized]
->  25 |     error_report("%s: " fmt, "rdma", ## __VA_ARGS__)
->     |     ^~~~~~~~~~~~
-> hw/rdma/rdma_backend.c:93:12: note: =E2=80=98ne=E2=80=99 was declared her=
-e
->  93 |     int i, ne, total_ne =3D 0;
->     |            ^~
->
-> Add a default value for 'ne' to prevented the warning.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Yuval Shaia <yuval.shaia.ml@gmail.com>
-> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-> ---
->  hw/rdma/rdma_backend.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
-> index 5de010b1fa..2fe4a3501c 100644
-> --- a/hw/rdma/rdma_backend.c
-> +++ b/hw/rdma/rdma_backend.c
-> @@ -90,7 +90,7 @@ static void clean_recv_mads(RdmaBackendDev *backend_dev=
-)
->
->  static int rdma_poll_cq(RdmaDeviceResources *rdma_dev_res, struct ibv_cq
-> *ibcq)
->  {
-> -    int i, ne, total_ne =3D 0;
-> +    int i, ne =3D 0, total_ne =3D 0;
->      BackendCtx *bctx;
->      struct ibv_wc wc[2];
->      RdmaProtectedGSList *cqe_ctx_list;
-> --
-> 2.27.0
->
->
-
---000000000000b14cee05b3392b70
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thanks,<div><br><div>Reviewed-by:=C2=A0 Yuval Shaia &lt;<a=
- href=3D"mailto:yuval.shaia.ml@gmail.com">yuval.shaia.ml@gmail.com</a>&gt;<=
-br></div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Tue, 3 Nov 2020 at 03:53, Chen Qun &lt;<a href=3D"mailto=
-:kuhn.chenqun@huawei.com">kuhn.chenqun@huawei.com</a>&gt; wrote:<br></div><=
-blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
-eft:1px solid rgb(204,204,204);padding-left:1ex">After the WITH_QEMU_LOCK_G=
-UARD macro is added, the compiler cannot identify<br>
-=C2=A0that the statements in the macro must be executed. As a result, some =
-variables<br>
-=C2=A0assignment statements in the macro may be considered as unexecuted by=
- the compiler.<br>
-<br>
-The compiler showed warning:<br>
-hw/rdma/rdma_backend.c: In function =E2=80=98rdma_poll_cq=E2=80=99:<br>
-hw/rdma/rdma_utils.h:25:5: warning: =E2=80=98ne=E2=80=99 may be used uninit=
-ialized in this function [-Wmaybe-uninitialized]<br>
-=C2=A025 |=C2=A0 =C2=A0 =C2=A0error_report(&quot;%s: &quot; fmt, &quot;rdma=
-&quot;, ## __VA_ARGS__)<br>
-=C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0^~~~~~~~~~~~<br>
-hw/rdma/rdma_backend.c:93:12: note: =E2=80=98ne=E2=80=99 was declared here<=
-br>
-=C2=A093 |=C2=A0 =C2=A0 =C2=A0int i, ne, total_ne =3D 0;<br>
-=C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^~<br>
-<br>
-Add a default value for &#39;ne&#39; to prevented the warning.<br>
-<br>
-Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
-et=3D"_blank">euler.robot@huawei.com</a>&gt;<br>
-Signed-off-by: Chen Qun &lt;<a href=3D"mailto:kuhn.chenqun@huawei.com" targ=
-et=3D"_blank">kuhn.chenqun@huawei.com</a>&gt;<br>
----<br>
-Cc: Yuval Shaia &lt;<a href=3D"mailto:yuval.shaia.ml@gmail.com" target=3D"_=
-blank">yuval.shaia.ml@gmail.com</a>&gt;<br>
-Cc: Marcel Apfelbaum &lt;<a href=3D"mailto:marcel.apfelbaum@gmail.com" targ=
-et=3D"_blank">marcel.apfelbaum@gmail.com</a>&gt;<br>
----<br>
-=C2=A0hw/rdma/rdma_backend.c | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c<br>
-index 5de010b1fa..2fe4a3501c 100644<br>
---- a/hw/rdma/rdma_backend.c<br>
-+++ b/hw/rdma/rdma_backend.c<br>
-@@ -90,7 +90,7 @@ static void clean_recv_mads(RdmaBackendDev *backend_dev)<=
-br>
-<br>
-=C2=A0static int rdma_poll_cq(RdmaDeviceResources *rdma_dev_res, struct ibv=
-_cq *ibcq)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 int i, ne, total_ne =3D 0;<br>
-+=C2=A0 =C2=A0 int i, ne =3D 0, total_ne =3D 0;<br>
-=C2=A0 =C2=A0 =C2=A0BackendCtx *bctx;<br>
-=C2=A0 =C2=A0 =C2=A0struct ibv_wc wc[2];<br>
-=C2=A0 =C2=A0 =C2=A0RdmaProtectedGSList *cqe_ctx_list;<br>
--- <br>
-2.27.0<br>
-<br>
-</blockquote></div>
-
---000000000000b14cee05b3392b70--
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBNYXggRmlsaXBwb3YgW21haWx0
+bzpqY212YmtiY0BnbWFpbC5jb21dDQo+IFNlbnQ6IFR1ZXNkYXksIE5vdmVtYmVyIDMsIDIwMjAg
+NToyMiBQTQ0KPiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0K
+PiBDYzogcWVtdS1kZXZlbCA8cWVtdS1kZXZlbEBub25nbnUub3JnPjsgUUVNVSBUcml2aWFsDQo+
+IDxxZW11LXRyaXZpYWxAbm9uZ251Lm9yZz47IFpoYW5naGFpbGlhbmcNCj4gPHpoYW5nLnpoYW5n
+aGFpbGlhbmdAaHVhd2VpLmNvbT47IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPjsgRXVs
+ZXINCj4gUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFU
+Q0ggMS82XSB0YXJnZXQveHRlbnNhOiBmaXggdW5pbml0aWFsaXplZCB2YXJpYWJsZSB3YXJuaW5n
+DQo+IA0KPiBPbiBNb24sIE5vdiAyLCAyMDIwIGF0IDU6NTIgUE0gQ2hlbiBRdW4gPGt1aG4uY2hl
+bnF1bkBodWF3ZWkuY29tPg0KPiB3cm90ZToNCj4gPg0KPiA+IFRoZSBjb21waWxlciBjYW5ub3Qg
+ZGV0ZXJtaW5lIHdoZXRoZXIgdGhlIHJldHVybiB2YWx1ZXMgb2YgdGhlDQo+ID4geHRlbnNhX29w
+ZXJhbmRfaXNfcmVnaXN0ZXIoaXNhLCBvcGMsIG9wbmQpICBhbmQNCj4geHRlbnNhX29wZXJhbmRf
+aXNfdmlzaWJsZShpc2EsIG9wYywgb3BuZCkgZnVuY3Rpb25zIGFyZSB0aGUgc2FtZS4NCj4gDQo+
+IEl0IGRvZXNuJ3QgaGF2ZSB0byBiZWNhdXNlIDEpIHRoZXkgZGVmaW5pdGVseSBhcmUgbm90IHRo
+ZSBzYW1lLCBidXQNCj4gMikgaXQgZG9lc24ndCBtYXR0ZXIuDQo+IA0KPiA+IFNvLGl0IGFzc3Vt
+ZXMgdGhhdCAncmYnIGlzIG5vdCBhc3NpZ25lZCwgYnV0IGl0J3MgdXNlZC4NCj4gDQo+IFRoZSBh
+c3N1bXB0aW9uIGlzIHdyb25nLiByZiBpcyB1c2VkIHVuZGVyIHRoZSAnaWYgKHJlZ2lzdGVyX2Zp
+bGUpJw0KPiBjb25kaXRpb24gYW5kIHJlZ2lzdGVyX2ZpbGUgaXMgaW5pdGlhbGl6ZWQgdG8gTlVM
+TCBhbmQgdGhlbiBzZXQgdG8gc29tZXRoaW5nDQo+IG5vbi1OVUxMIGJhc2VkIG9uIHRoZSB2YWx1
+ZSBvZiByZiBoZXJlOg0KPiANCkhpIE1heCwNCiAgWWVhaCwgeW91ciBhbmFseXNpcyBpcyBjb3Jy
+ZWN0LiBUaGlzIHJmIGlzIHVzZWQgb25seSB3aGVuIHJlZ2lzdGVyX2ZpbGUgaXMgbm9uLU5VTEwu
+IFdoZW4gdGhpcyBjb25kaXRpb24gaXMgbWV0LCB0aGUgcmYgbXVzdCBoYXZlIGJlZW4gYXNzaWdu
+ZWQgYSB2YWx1ZS4NClRoZSBHQ0MgOS4zIGNvbXBpbGF0aW9uIEkgdXNlIGNvbnRhaW5zIHRoZSBX
+bWF5YmUtdW5pbml0aWFsaXplZCBwYXJhbWV0ZXIgYnkgZGVmYXVsdC4gSXQgY2Fubm90IHJlY29n
+bml6ZSB0aGlzIGNvbXBsZXggbG9naWMganVkZ21lbnQuDQpUaGlzIHdhcm5pbmcgbWF5IGJlIGZy
+ZXF1ZW50bHkgZW5jb3VudGVyZWQgYnkgZGV2ZWxvcGVycyB3aG8gY29tcGlsZSB0aGlzIHBhcnQg
+b2YgY29kZS4NCg0KPiA5NTggICAgICAgICAgICAgaWYgKHh0ZW5zYV9vcGVyYW5kX2lzX3JlZ2lz
+dGVyKGlzYSwgb3BjLCBvcG5kKSkgew0KPiA5NTkgICAgICAgICAgICAgICAgIHJmID0geHRlbnNh
+X29wZXJhbmRfcmVnZmlsZShpc2EsIG9wYywgb3BuZCk7DQo+IDk2MCAgICAgICAgICAgICAgICAg
+cmVnaXN0ZXJfZmlsZSA9IGRjLT5jb25maWctPnJlZ2ZpbGVbcmZdOw0KPiANCj4gPiBUaGUgY29t
+cGlsZXIgc2hvd2VkIHdhcm5pbmc6DQo+ID4gdGFyZ2V0L3h0ZW5zYS90cmFuc2xhdGUuYzogSW4g
+ZnVuY3Rpb24g4oCYZGlzYXNfeHRlbnNhX2luc27igJk6DQo+ID4gdGFyZ2V0L3h0ZW5zYS90cmFu
+c2xhdGUuYzo5ODU6NDM6IHdhcm5pbmc6IOKAmHJm4oCZIG1heSBiZSB1c2VkIHVuaW5pdGlhbGl6
+ZWQgaW4NCj4gdGhpcyBmdW5jdGlvbiBbLVdtYXliZS11bmluaXRpYWxpemVkXQ0KPiA+ICAgOTg1
+IHwgICAgICAgICAgICAgICAgICAgICBhcmdbdm9wbmRdLm51bV9iaXRzID0NCj4geHRlbnNhX3Jl
+Z2ZpbGVfbnVtX2JpdHMoaXNhLCByZik7DQo+ID4gICAgICAgfA0KPiBefn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fg0KPiA+DQo+ID4gQWRkIGEgZGVmYXVsdCB2YWx1ZSBmb3IgJ3JmJyB0
+byBwcmV2ZW50ZWQgdGhlIHdhcm5pbmcuDQo+IA0KPiBJIGRvbid0IHNlZSBpdCBkb2luZyBkZWZh
+dWx0IGJ1aWxkIHdpdGggZ2NjIDguMy4gQnV0IHRoZW4gSSBkb24ndCBzZWUNCj4gLVdtYXliZS11
+bmluaXRpYWxpemVkIGluIHRoZSBjb21waWxlciBjb21tYW5kIGxpbmUgZWl0aGVyLg0KPiANCk1h
+eWJlIGl0J3MgYXZhaWxhYmxlIGFmdGVyIEdDQzksIG9yIHNvbWUgQ0ZMQUcgY29uZmlndXJhdGlv
+bi4NCg0KVGhlIC1XbWF5YmUtdW5pbml0aWFsaXplZCBwYXJhbWV0ZXIgaGFzIHRoaXMgZGVzY3Jp
+cHRpb27vvJoNCiJUaGVzZSB3YXJuaW5ncyBhcmUgb25seSBwb3NzaWJsZSBpbiBvcHRpbWl6aW5n
+IGNvbXBpbGF0aW9uLCBiZWNhdXNlIG90aGVyd2lzZSBHQ0MgZG9lcyBub3Qga2VlcCB0cmFjayBv
+ZiB0aGUgc3RhdGUgb2YgdmFyaWFibGVzLiINCkZyb23vvJpodHRwczovL2djYy5nbnUub3JnL29u
+bGluZWRvY3MvZ2NjL1dhcm5pbmctT3B0aW9ucy5odG1sI1dhcm5pbmctT3B0aW9ucw0KDQpJIGhh
+dmUgdHJpZWQgdG8gY29uZmlndXJlIG9ubHkgIi1PMiAtZmV4Y2VwdGlvbnMiIGZvciB0aGUgQ0ZM
+QUcgb24gR0NDOSwgYW5kIHRoaXMgd2FybmluZyB3aWxsIG9jY3VyLg0KDQo+ID4gUmVwb3J0ZWQt
+Ynk6IEV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiA+IFNpZ25lZC1vZmYt
+Ynk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiBDYzog
+TWF4IEZpbGlwcG92IDxqY212YmtiY0BnbWFpbC5jb20+DQo+ID4gLS0tDQo+ID4gIHRhcmdldC94
+dGVuc2EvdHJhbnNsYXRlLmMgfCAyICstDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKSwgMSBkZWxldGlvbigtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL3RhcmdldC94dGVuc2Ev
+dHJhbnNsYXRlLmMgYi90YXJnZXQveHRlbnNhL3RyYW5zbGF0ZS5jDQo+ID4gaW5kZXggOTQ0YTE1
+Nzc0Ny4uZWVhODUxYmJlNyAxMDA2NDQNCj4gPiAtLS0gYS90YXJnZXQveHRlbnNhL3RyYW5zbGF0
+ZS5jDQo+ID4gKysrIGIvdGFyZ2V0L3h0ZW5zYS90cmFuc2xhdGUuYw0KPiA+IEBAIC05NTMsNyAr
+OTUzLDcgQEAgc3RhdGljIHZvaWQgZGlzYXNfeHRlbnNhX2luc24oQ1BVWHRlbnNhU3RhdGUgKmVu
+diwNCj4gPiBEaXNhc0NvbnRleHQgKmRjKQ0KPiA+DQo+ID4gICAgICAgICAgZm9yIChvcG5kID0g
+dm9wbmQgPSAwOyBvcG5kIDwgb3BuZHM7ICsrb3BuZCkgew0KPiA+ICAgICAgICAgICAgICB2b2lk
+ICoqcmVnaXN0ZXJfZmlsZSA9IE5VTEw7DQo+ID4gLSAgICAgICAgICAgIHh0ZW5zYV9yZWdmaWxl
+IHJmOw0KPiA+ICsgICAgICAgICAgICB4dGVuc2FfcmVnZmlsZSByZiA9IC0xOw0KPiANCj4gUGxl
+YXNlIHVzZSBYVEVOU0FfVU5ERUZJTkVEIGluc3RlYWQgaWYgeW91IHN0aWxsIHRoaW5rIHRoaXMg
+aXMgd29ydGggY2hhbmdpbmcuDQo+IA0KSSBkb24ndCB0aGluayBpdCdzIHdyb25nLCBpdCdzIGp1
+c3QgYSBiaXQgb2YgdHJvdWJsZSBmb3IgdGhlIGNvbXBpbGVyIDopDQoNClRoYW5rcywNCkNoZW4g
+UXVuDQo=
 
