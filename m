@@ -1,49 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaBfg-0000Lp-ID
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 00:49:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41330)
+	id 1kaDUq-000667-Db
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 02:46:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kaBfa-0000LW-It; Wed, 04 Nov 2020 00:49:18 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2483)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kaBfW-00077H-On; Wed, 04 Nov 2020 00:49:18 -0500
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.55])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CQwgw2crRzVknV;
- Wed,  4 Nov 2020 13:49:00 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.225]) by
- DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0487.000;
- Wed, 4 Nov 2020 13:49:02 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "lvivier@redhat.com" <lvivier@redhat.com>
-CC: Pannengyuan <pannengyuan@huawei.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, ganqixin <ganqixin@huawei.com>
-Subject: RE: [PATCH RESEND v2 0/7] some memleak trivial patchs
-Thread-Topic: [PATCH RESEND v2 0/7] some memleak trivial patchs
-Thread-Index: AQHWqQOAYexAkoH4WUOcMVYmxKZpOamv9+ywgAeRBtA=
-Date: Wed, 4 Nov 2020 05:49:01 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA2B5E7@dggemm531-mbx.china.huawei.com>
-References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com> 
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kaDUn-00064b-Av; Wed, 04 Nov 2020 02:46:17 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:43166)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kaDUj-0006bt-B7; Wed, 04 Nov 2020 02:46:17 -0500
+Received: by mail-ej1-x643.google.com with SMTP id k3so28326616ejj.10;
+ Tue, 03 Nov 2020 23:46:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=H6y2Xa3sITJofh7w+9vCnAX4wTeS1ZhGD2fNKDpGrXs=;
+ b=g6zLMwviiPxq3l/yRBQtZkUwRgWUQ3ZHYoWIZs88C5tLmwKZZdx2HkHARDDpYH+KBz
+ lZFjbkkXM3AgFmhjOxchNkxb78ZrmrMRYkOM2D9I2AvKh6VPLcwvNSkrf7F4SRkU26Tv
+ wh7ACLaMTntyZ8A+BHjrtk6zUXqqgGHn6wvIdj/xHROVOED/9JyztK0MATvaxJh5wVNd
+ DBHqxt2LZJnVy8KpfpuqGMpXE7Una1C+j1cgfd1Ih/W5dwshYKvKujabcKxoU75RceOI
+ 4STLvOpmZx8KKc0jplJwWZJ3lxVSqSC6oCujJgU49bTa8u3qqAaTSJfOvcnzHTN7A3VA
+ OgBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=H6y2Xa3sITJofh7w+9vCnAX4wTeS1ZhGD2fNKDpGrXs=;
+ b=McAPPn3Om90tfJGikG+rFleZnJbT0Vv84HaQQdJL5suSZsU4CbiSdQeLgpO1VRuSz2
+ iGsg5WTowcd25rc2U71tCWFII+x8klhHjudD0FulPB+Ti/02D2pBDIT+PmOyVXoSygof
+ cfqO+VOo9xS01iXOnmd4FGeOK3jOnIQMLyOaFYGaXMkMn56RMZh8mE6tZJMop6r39xPa
+ Y9iykcSNik+6NyWmo8Q2DQfLiN7TRwCNAHiz2c/0TZxhwlqIzEdLiBOyYSKkTBCOldyT
+ 6GQ4MUQfx3UIpT4UHN7XjZ2572AjGbscPIOFr7cswKpygFZRz1qVZ7QjfgRPkrak7YtH
+ 91dQ==
+X-Gm-Message-State: AOAM5325Qa3GIpr7etPAPpR14GHLiIUpspoE9sJe3x6VvLHCVcfRtaJR
+ V4/In4RXJp+gduKtraAkrhaJNWkdGv/4Pzr02l2g25shNoLqGQ==
+X-Google-Smtp-Source: ABdhPJyFWXRTYGiiI85XGL3mNVYWQh9YX3jOynZb7EV1amfF0iEG4YxnDKuO7MQP1VKVmpRL5zQjF95M10XtCiVR1g4=
+X-Received: by 2002:a17:906:af47:: with SMTP id
+ ly7mr25257487ejb.532.1604475971609; 
+ Tue, 03 Nov 2020 23:46:11 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga01-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 00:49:08
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <5F96915D.2040102@huawei.com>
+In-Reply-To: <5F96915D.2040102@huawei.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Wed, 4 Nov 2020 11:46:00 +0400
+Message-ID: <CAJ+F1CJT7SDt63ZyUAVCZhoYJ=Ep4KXF7MbcQJREaDHrTZXBeA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] qga: Fix some style problems
+To: AlexChen <alex.chen@huawei.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
+ qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>
+Content-Type: multipart/alternative; boundary="00000000000056a96f05b3432c9f"
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -56,52 +71,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 05:49:18 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 07:46:17 -0000
 
-UGluZyENCg0KSGkgTGF1cmVudCwNCiAgVGhlc2UgcGF0Y2hlcyBoYXZlIGJlZW4gcmV2aWV3ZWQg
-YnkgbWFueSBwZW9wbGUgMiBtb250aHMgYWdvLiANCkNvdWxkIHlvdSBoZWxwIGFkZCB0aGVtIHRv
-IHRoZSB0cml2aWFsIGJyYW5jaD8NCg0KIFBhbiBOZW5neXVhbiAoNik6DQogICBxZ2EvY2hhbm5l
-bC1wb3NpeDogUGx1ZyBtZW1vcnkgbGVhayBpbiBnYV9jaGFubmVsX3dyaXRlX2FsbCgpDQogICBl
-bGYyZG1wL3FlbXVfZWxmOiBQbHVnIG1lbWxlYWsgaW4gUUVNVV9FbGZfaW5pdA0KICAgZWxmMmRt
-cC9wZGI6IFBsdWcgbWVtbGVhayBpbiBwZGJfaW5pdF9mcm9tX2ZpbGUNCiAgIG1pZ3JhdGlvbi9j
-b2xvOiBQbHVnIG1lbWxlYWtzIGluIGNvbG9fcHJvY2Vzc19pbmNvbWluZ190aHJlYWQNCiAgIGJs
-b2NrZGV2OiBGaXggYSBtZW1sZWFrIGluIGRyaXZlX2JhY2t1cF9wcmVwYXJlKCkNCiAgIGJsb2Nr
-L2ZpbGUtcG9zaXg6IGZpeCBhIHBvc3NpYmxlIHVuZGVmaW5lZCBiZWhhdmlvcg0KDQpUaGFua3Oj
-rA0KQ2hlbiBRdW4NCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDaGVu
-cXVuIChrdWhuKQ0KPiBTZW50OiBGcmlkYXksIE9jdG9iZXIgMzAsIDIwMjAgNjoyMyBQTQ0KPiBU
-bzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZw0KPiBDYzog
-UGFubmVuZ3l1YW4gPHBhbm5lbmd5dWFuQGh1YXdlaS5jb20+OyBsdml2aWVyQHJlZGhhdC5jb207
-DQo+IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGdhbnFp
-eGluDQo+IDxnYW5xaXhpbkBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSRTogW1BBVENIIFJFU0VO
-RCB2MiAwLzddIHNvbWUgbWVtbGVhayB0cml2aWFsIHBhdGNocw0KPiANCj4gUGluZyENCj4gDQo+
-IEhpIGFsbCwNCj4gICBUaGUgcGF0Y2hlMiB+NyBoYXZlIGJlZW4gcmV2aWV3ZWQgZm9yIHNvbWUg
-dGltZS4NCj4gQ291bGQgc29tZW9uZSBwbGVhc2UgcGljayBpdCB1cKO/DQo+IA0KPiBUaGFua3Ms
-DQo+IENoZW4gUXVuDQo+IA0KPiA+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+ID4gRnJv
-bTogQ2hlbnF1biAoa3VobikNCj4gPiBTZW50OiBGcmlkYXksIE9jdG9iZXIgMjMsIDIwMjAgMjox
-MiBQTQ0KPiA+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUu
-b3JnDQo+ID4gQ2M6IFBhbm5lbmd5dWFuIDxwYW5uZW5neXVhbkBodWF3ZWkuY29tPjsgbHZpdmll
-ckByZWRoYXQuY29tOw0KPiA+IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVh
-d2VpLmNvbT47IGdhbnFpeGluDQo+ID4gPGdhbnFpeGluQGh1YXdlaS5jb20+OyBDaGVucXVuIChr
-dWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+ID4gU3ViamVjdDogW1BBVENIIFJFU0VO
-RCB2MiAwLzddIHNvbWUgbWVtbGVhayB0cml2aWFsIHBhdGNocw0KPiA+DQo+ID4gSGkgYWxsLA0K
-PiA+DQo+ID4gICBIZXJlIGFyZSBzb21lIG1lbW9yeSBsZWFrIHBhdGNoZXMgcmVwb3J0ZWQgYnkg
-RXVsZXJSb2JvdC4NCj4gPiBTb21lIHBhdGNoIHN1Ym1pc3Npb25zIGhhdmUgYmVlbiB1bmF0dGVu
-ZGVkIGZvciBhIHdoaWxlIGFuZCBJIHJlc2VuZCB0aGVtLg0KPiA+DQo+ID4gVGhhbmtzLA0KPiA+
-IENoZW4gUXVuDQo+ID4NCj4gPg0KPiA+IENoZW4gUXVuICgxKToNCj4gPiAgIHRlc3RzL21pZ3Jh
-dGlvbjogZml4IG1lbWxlYWsgaW4gd2FpdF9jb21tYW5kL3dhaXRfY29tbWFuZF9mZA0KPiA+DQo+
-ID4gUGFuIE5lbmd5dWFuICg2KToNCj4gPiAgIHFnYS9jaGFubmVsLXBvc2l4OiBQbHVnIG1lbW9y
-eSBsZWFrIGluIGdhX2NoYW5uZWxfd3JpdGVfYWxsKCkNCj4gPiAgIGVsZjJkbXAvcWVtdV9lbGY6
-IFBsdWcgbWVtbGVhayBpbiBRRU1VX0VsZl9pbml0DQo+ID4gICBlbGYyZG1wL3BkYjogUGx1ZyBt
-ZW1sZWFrIGluIHBkYl9pbml0X2Zyb21fZmlsZQ0KPiA+ICAgbWlncmF0aW9uL2NvbG86IFBsdWcg
-bWVtbGVha3MgaW4gY29sb19wcm9jZXNzX2luY29taW5nX3RocmVhZA0KPiA+ICAgYmxvY2tkZXY6
-IEZpeCBhIG1lbWxlYWsgaW4gZHJpdmVfYmFja3VwX3ByZXBhcmUoKQ0KPiA+ICAgYmxvY2svZmls
-ZS1wb3NpeDogZml4IGEgcG9zc2libGUgdW5kZWZpbmVkIGJlaGF2aW9yDQo+ID4NCj4gPiAgYmxv
-Y2svZmlsZS1wb3NpeC5jICAgICAgICAgICAgICB8ICAyICstDQo+ID4gIGJsb2NrZGV2LmMgICAg
-ICAgICAgICAgICAgICAgICAgfCAgMSArDQo+ID4gIGNvbnRyaWIvZWxmMmRtcC9wZGIuYyAgICAg
-ICAgICAgfCAgMSArDQo+ID4gIGNvbnRyaWIvZWxmMmRtcC9xZW11X2VsZi5jICAgICAgfCAgMSAr
-DQo+ID4gIG1pZ3JhdGlvbi9jb2xvLmMgICAgICAgICAgICAgICAgfCAgNSArKysrLQ0KPiA+ICBx
-Z2EvY2hhbm5lbC1wb3NpeC5jICAgICAgICAgICAgIHwgIDYgKysrKystDQo+ID4gIHRlc3RzL3F0
-ZXN0L21pZ3JhdGlvbi1oZWxwZXJzLmMgfCAxNiArKysrKysrKysrKystLS0tDQo+ID4gIDcgZmls
-ZXMgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IC0t
-DQo+ID4gMi4yMy4wDQoNCg==
+--00000000000056a96f05b3432c9f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 26, 2020 at 1:16 PM AlexChen <alex.chen@huawei.com> wrote:
+
+> Fix some error style problems found by checkpatch.pl.
+>
+> alexchen (4):
+>   qga: Add spaces around operator
+>   qga: Delete redundant spaces
+>   qga: Open brace '{' following struct go on the same
+>   qga: switch and case should be at the same indent
+>
+>  qga/channel-win32.c  |  6 ++---
+>  qga/commands-posix.c |  4 +--
+>  qga/commands-win32.c | 28 ++++++++++-----------
+>  qga/commands.c       |  4 +--
+>  qga/main.c           | 59 ++++++++++++++++++++++----------------------
+>  5 files changed, 50 insertions(+), 51 deletions(-)
+>
+>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--00000000000056a96f05b3432c9f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 26, 2020 at 1:16 PM AlexC=
+hen &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</a>&gt=
+; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fix som=
+e error style problems found by <a href=3D"http://checkpatch.pl" rel=3D"nor=
+eferrer" target=3D"_blank">checkpatch.pl</a>.<br>
+<br>
+alexchen (4):<br>
+=C2=A0 qga: Add spaces around operator<br>
+=C2=A0 qga: Delete redundant spaces<br>
+=C2=A0 qga: Open brace &#39;{&#39; following struct go on the same<br>
+=C2=A0 qga: switch and case should be at the same indent<br>
+<br>
+=C2=A0qga/channel-win32.c=C2=A0 |=C2=A0 6 ++---<br>
+=C2=A0qga/commands-posix.c |=C2=A0 4 +--<br>
+=C2=A0qga/commands-win32.c | 28 ++++++++++-----------<br>
+=C2=A0qga/commands.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 4 +--<br>
+=C2=A0qga/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 59 +++++++++++++=
++++++++++----------------------<br>
+=C2=A05 files changed, 50 insertions(+), 51 deletions(-)<br>
+<br></blockquote><div><br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &l=
+t;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.co=
+m</a>&gt;</div><br clear=3D"all"></div><br>-- <br><div dir=3D"ltr" class=3D=
+"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--00000000000056a96f05b3432c9f--
 
