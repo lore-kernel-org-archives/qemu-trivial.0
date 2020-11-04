@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaLjP-0004Xy-Bf
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 11:33:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49114)
+	id 1kaN3h-0006Eo-1L
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 12:58:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kaLjO-0004X4-L7; Wed, 04 Nov 2020 11:33:54 -0500
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:33995)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kaN3f-0006Bq-GP
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 12:58:55 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:35942)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kaLjM-0000r2-5c; Wed, 04 Nov 2020 11:33:54 -0500
-Received: by mail-il1-x143.google.com with SMTP id p2so5002047ilg.1;
- Wed, 04 Nov 2020 08:33:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kaN3e-0003tF-03
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 12:58:55 -0500
+Received: by mail-ej1-x643.google.com with SMTP id o21so23973676ejb.3
+ for <qemu-trivial@nongnu.org>; Wed, 04 Nov 2020 09:58:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
- b=NB59nJU80o5gEBh61X4PCFfbJzGBGOWlj6TuXeNwWO/NuRBIQ9WMtKvNxGxF3P4bEB
- zkBMHt3+5+Z85LNF9I53glrcdcBWdjIc8q1PZdoV+a03TTR1zZBp1QV5SbWZdF6BlAi5
- vj99CswShiN/rLbN19S4qmewmsncDZhqOPkkFYJKTgIpAH6zAHJB2NCHSPY+YgyPju7y
- TgxNph46mh3K9+ShNizXqBvFIlyrxyCxkoR2LAhiQ97uBqOO2CCppWDdJZ/Stp5xyrKG
- t0BcH61ULFdDcuvaG2TNBuf8/XEAu9Yiniyj5YZO6//XmHPkl2L3tJmoaFBOLRBZgypL
- g7fQ==
+ :cc; bh=tiMc1SzEb9/AlSm+lWxWCGF+8aQOAj16s2TaXghW7V4=;
+ b=pegGiYYnGCYQtZMM+ZRIsr0ezlbbyMQDuvsUPE1h08A7zhWAT0W5C1RzX0wDTGSx/1
+ bSkNzWInS1evWUmDjytnJNUOJnzhrDw5WSgOO51l2QXnmSAR1Zp/NwQ96DJpkUhcAsmS
+ KuzUCatyIG8ANIKeWtedwViTwp+ZYZskkMBsoDkMCHHXTiZohyPrTAz7YPyw5Sm2pjdW
+ j29q470gQlvMa6LWDUuKZJ7MQyYYfR5rSx1pLdAMKj5NMoPBYmKd740ir+nNXUuEgJNP
+ HM7T0gA0MXkzrkhGyliX/jUUykEBlDUJx2Ectf9VgFx6jGvAxmEdmK7BSPSwAeiXgwhI
+ etjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
- b=mNNzYP6DXmQn1r5+TNQ2khlDiJbDxckqiuxsTg9iWjA6F5c5kPTeaq2g7gPW5bsyRg
- IycGuzWCaOGjJaFArqem6m9uVHaRlCjBLPagI9yB0IYOMb/BoRiQra2u2dahwFGTHQzA
- dG0gun3WhDV0LHgKyiNZ2iTHgw+9zGB5q9F/75WyT27U+/nyk+vdEvDO0Je1T2QM0Xo7
- RF/OGzNS11aWcxth5gk1KSbGpAhk77RrD09knY5tL2+ClZV2WDwH46/wGgFWs4kctfzQ
- w/QTr5rUbeMpz+yJOSr17mYM9mnQXNZKAi0GM/KNYcfblpYRmiQJhPgPJSd1Gkwca456
- tIOw==
-X-Gm-Message-State: AOAM5310wWcj6L3EEJpeSRlQdfaCvTyDqREQ6wmq1I0EWCXO7tLdJgv3
- 2Wt/Yb99n/gERV5YQqm20TTel85xvOBzu1E1PuY=
-X-Google-Smtp-Source: ABdhPJy7/J9q5USDPMNzIyY+8ms4dvOYO68l/BY4jW8L5HQbOwwZYaD3aIVqBnVjaVEgz+ASjRvH9ILni7bfHETAdxI=
-X-Received: by 2002:a05:6e02:f41:: with SMTP id
- y1mr19868790ilj.267.1604507630165; 
- Wed, 04 Nov 2020 08:33:50 -0800 (PST)
+ bh=tiMc1SzEb9/AlSm+lWxWCGF+8aQOAj16s2TaXghW7V4=;
+ b=AWEi951kGRzNMK6dXC6PKNoTC8NgYaY2JPThREQ+DQ0YuSmbkyvfQw4nVX4mjq6aFx
+ nPT8O+e+S7uyntfCFR+T9QAq31M8BcrYJGWwvrJbVkRti9txP52lCW+YR+TGKiEcJMoM
+ h87NDHtQ266lgt9UCeFw42QOdlWbQPwv+Bht30X7BkoJsMQumUnuinwE5UoFlh3zGDle
+ IADiTO9q93ywOX6NBH8yea01lc/BQlNj6Wt0oGjyLUPP4m6GpB4dFiRtKKLw7aX1cW1m
+ F8oJWvt1fDXOqzE7NK5XyckNIwm/CWabdY2ISMDCYEq6FQMEGCsHsrKs1Ok759OzeFcS
+ DNnw==
+X-Gm-Message-State: AOAM533EId4fa/sHqnHrmz0iCnbWXHgysewWRTgMk8lR3AMqAuJZcX7P
+ z4QfYlTtxTumU7JwpF/d1psB2EaE+jvW7t9JhH7Lbw==
+X-Google-Smtp-Source: ABdhPJytUjPJuz14l55SKD3uW1VPsHXkiSs+rTUgRuh5SAgtCdVQaCNjCnJ8PfE1SX00T/nWJ0eCnkD4/iauqwT6Ieo=
+X-Received: by 2002:a17:906:3a97:: with SMTP id
+ y23mr26048032ejd.250.1604512732596; 
+ Wed, 04 Nov 2020 09:58:52 -0800 (PST)
 MIME-Version: 1.0
 References: <5FA280F5.8060902@huawei.com>
-In-Reply-To: <5FA280F5.8060902@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 4 Nov 2020 08:21:52 -0800
-Message-ID: <CAKmqyKOS4bALKNTA9wMK=HANz4Dc=fffq2pZafCxGFqsJ_LMkg@mail.gmail.com>
+ <CAKmqyKOS4bALKNTA9wMK=HANz4Dc=fffq2pZafCxGFqsJ_LMkg@mail.gmail.com>
+In-Reply-To: <CAKmqyKOS4bALKNTA9wMK=HANz4Dc=fffq2pZafCxGFqsJ_LMkg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 Nov 2020 17:58:41 +0000
+Message-ID: <CAFEAcA9bq8Fs62wD6dsrRcYvSogrdzK9cDrzoVmMFcpui8=_uQ@mail.gmail.com>
 Subject: Re: [PATCH] ssi: Fix bad printf format specifiers
-To: AlexChen <alex.chen@huawei.com>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
+To: Alistair Francis <alistair23@gmail.com>
+Cc: AlexChen <alex.chen@huawei.com>, Alistair Francis <alistair@alistair23.me>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Peter Chubb <peter.chubb@nicta.com.au>, 
  QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
  QEMU <qemu-devel@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,52 +77,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 16:33:54 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 17:58:55 -0000
 
-On Wed, Nov 4, 2020 at 2:23 AM AlexChen <alex.chen@huawei.com> wrote:
+On Wed, 4 Nov 2020 at 16:33, Alistair Francis <alistair23@gmail.com> wrote:
 >
-> We should use printf format specifier "%u" instead of "%d" for
-> argument of type "unsigned int".
+> On Wed, Nov 4, 2020 at 2:23 AM AlexChen <alex.chen@huawei.com> wrote:
+> >
+> > We should use printf format specifier "%u" instead of "%d" for
+> > argument of type "unsigned int".
+> >
+> > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > Signed-off-by: Alex Chen <alex.chen@huawei.com>
 >
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
 
-> ---
->  hw/ssi/imx_spi.c    | 2 +-
->  hw/ssi/xilinx_spi.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> index 7f703d8328..d8885ae454 100644
-> --- a/hw/ssi/imx_spi.c
-> +++ b/hw/ssi/imx_spi.c
-> @@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
->      case ECSPI_MSGDATA:
->          return  "ECSPI_MSGDATA";
->      default:
-> -        sprintf(unknown, "%d ?", reg);
-> +        sprintf(unknown, "%u ?", reg);
->          return unknown;
->      }
->  }
-> diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-> index fec8817d94..49ff275593 100644
-> --- a/hw/ssi/xilinx_spi.c
-> +++ b/hw/ssi/xilinx_spi.c
-> @@ -142,7 +142,7 @@ static void xlx_spi_update_irq(XilinxSPI *s)
->         irq chain unless things really changed.  */
->      if (pending != s->irqline) {
->          s->irqline = pending;
-> -        DB_PRINT("irq_change of state %d ISR:%x IER:%X\n",
-> +        DB_PRINT("irq_change of state %u ISR:%x IER:%X\n",
->                      pending, s->regs[R_IPISR], s->regs[R_IPIER]);
->          qemu_set_irq(s->irq, pending);
->      }
-> --
-> 2.19.1
->
+Applied to target-arm.next, thanks.
+
+-- PMM
 
