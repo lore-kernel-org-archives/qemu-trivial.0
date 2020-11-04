@@ -1,43 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaJ0t-0006yz-MG
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 08:39:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58322)
+	id 1kaJf1-0005CJ-Nz
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 09:21:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kaJ0k-0006xF-IB; Wed, 04 Nov 2020 08:39:40 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2504)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
- id 1kaJ0c-0002iN-GF; Wed, 04 Nov 2020 08:39:35 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR76H58CBzhg5H;
- Wed,  4 Nov 2020 21:39:03 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 4 Nov 2020
- 21:38:59 +0800
-From: Xinhao Zhang <zhangxinhao1@huawei.com>
-To: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>
-CC: <sstabellini@kernel.org>, <anthony.perard@citrix.com>, <paul@xen.org>,
- <dengkai1@huawei.com>, <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: [PATCH] hw/xen: Don't use '#' flag of printf format
-Date: Wed, 4 Nov 2020 21:37:09 +0800
-Message-ID: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
-X-Mailer: git-send-email 2.29.0-rc1
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaJf0-0005B7-Pj
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 09:21:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54405)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaJex-0007oL-O9
+ for qemu-trivial@nongnu.org; Wed, 04 Nov 2020 09:21:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604499670;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oGbQhz5oeO/fDS3H5K9to3mCQbm/xwezZXB5Mx1byYs=;
+ b=LXRc543wjmp9nPADxC23BM5ChO5C7lCjKt2suSsTdgw6FT43S4Ns08+wE+6xLiC+ePmvgV
+ aW/cBOFwgAbGAGjsfeD8JE9IGaraa5eA2ZWgtxOZch0ZyWPeecpaIfIXDm6J3VGcCuid26
+ MDzq7kphWz2CdGv60cn7RfYWlvGJAWk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-456-JanRb7PXMp2_jmDDqE1rdg-1; Wed, 04 Nov 2020 09:21:07 -0500
+X-MC-Unique: JanRb7PXMp2_jmDDqE1rdg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F138B18C9F55;
+ Wed,  4 Nov 2020 14:21:05 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3BBF37EEC9;
+ Wed,  4 Nov 2020 14:21:00 +0000 (UTC)
+Subject: Re: [PATCH] Prefer 'on' | 'off' over 'yes' | 'no' for bool options
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20201104140528.608015-1-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <c9251f48-c535-e618-b826-1ba0503ff6f1@redhat.com>
+Date: Wed, 4 Nov 2020 15:20:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <20201104140528.608015-1-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.101.6]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhangxinhao1@huawei.com; helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 08:39:07
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 22:09:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -50,154 +78,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 13:39:43 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 14:21:15 -0000
 
-Fix code style. Don't use '#' flag of printf format ('%#') in
-format strings, use '0x' prefix instead
+On 04/11/2020 15.05, Daniel P. Berrangé wrote:
+> Update some docs and test cases to use 'on' | 'off' as the preferred
+> value for bool options.
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  docs/system/vnc-security.rst | 6 +++---
+>  include/authz/listfile.h     | 2 +-
+>  qemu-options.hx              | 4 ++--
+>  tests/qemu-iotests/233       | 4 ++--
+>  4 files changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/docs/system/vnc-security.rst b/docs/system/vnc-security.rst
+> index b237b07330..e97b42dfdc 100644
+> --- a/docs/system/vnc-security.rst
+> +++ b/docs/system/vnc-security.rst
+> @@ -89,7 +89,7 @@ but with ``verify-peer`` set to ``yes`` instead.
+>  .. parsed-literal::
+>  
+>     |qemu_system| [...OPTIONS...] \
+> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
+> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
+>       -vnc :1,tls-creds=tls0 -monitor stdio
+>  
+>  .. _vnc_005fsec_005fcertificate_005fpw:
+> @@ -103,7 +103,7 @@ authentication to provide two layers of authentication for clients.
+>  .. parsed-literal::
+>  
+>     |qemu_system| [...OPTIONS...] \
+> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
+> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
+>       -vnc :1,tls-creds=tls0,password -monitor stdio
+>     (qemu) change vnc password
+>     Password: ********
+> @@ -145,7 +145,7 @@ x509 options:
+>  .. parsed-literal::
+>  
+>     |qemu_system| [...OPTIONS...] \
+> -     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=yes \
+> +     -object tls-creds-x509,id=tls0,dir=/etc/pki/qemu,endpoint=server,verify-peer=on \
+>       -vnc :1,tls-creds=tls0,sasl -monitor stdio
+>  
+>  .. _vnc_005fsetup_005fsasl:
+> diff --git a/include/authz/listfile.h b/include/authz/listfile.h
+> index 0a1e5bddd3..0b7fe72198 100644
+> --- a/include/authz/listfile.h
+> +++ b/include/authz/listfile.h
+> @@ -73,7 +73,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(QAuthZListFile,
+>   * The object can be created on the command line using
+>   *
+>   *   -object authz-list-file,id=authz0,\
+> - *           filename=/etc/qemu/myvm-vnc.acl,refresh=yes
+> + *           filename=/etc/qemu/myvm-vnc.acl,refresh=on
+>   *
+>   */
+>  struct QAuthZListFile {
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 2c83390504..0bdc07bc47 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -5002,7 +5002,7 @@ SRST
+>          Note the use of quotes due to the x509 distinguished name
+>          containing whitespace, and escaping of ','.
+>  
+> -    ``-object authz-listfile,id=id,filename=path,refresh=yes|no``
+> +    ``-object authz-listfile,id=id,filename=path,refresh=on|off``
+>          Create an authorization object that will control access to
+>          network services.
+>  
+> @@ -5047,7 +5047,7 @@ SRST
+>  
+>               # |qemu_system| \\
+>                   ... \\
+> -                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=yes \\
+> +                 -object authz-simple,id=auth0,filename=/etc/qemu/vnc-sasl.acl,refresh=on \\
+>                   ...
+>  
+>      ``-object authz-pam,id=id,service=string``
+> diff --git a/tests/qemu-iotests/233 b/tests/qemu-iotests/233
+> index a5c17c3963..0b99530f7f 100755
+> --- a/tests/qemu-iotests/233
+> +++ b/tests/qemu-iotests/233
+> @@ -83,7 +83,7 @@ echo
+>  echo "== check plain client to TLS server fails =="
+>  
+>  nbd_server_start_tcp_socket \
+> -    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=yes \
+> +    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=on \
+>      --tls-creds tls0 \
+>      -f $IMGFMT "$TEST_IMG" 2>> "$TEST_DIR/server.log"
+>  
+> @@ -128,7 +128,7 @@ echo "== check TLS with authorization =="
+>  nbd_server_stop
+>  
+>  nbd_server_start_tcp_socket \
+> -    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=yes \
+> +    --object tls-creds-x509,dir=${tls_dir}/server1,endpoint=server,id=tls0,verify-peer=on \
+>      --object "authz-simple,id=authz0,identity=CN=localhost,, \
+>        O=Cthulu Dark Lord Enterprises client1,,L=R'lyeh,,C=South Pacific" \
+>      --tls-authz authz0 \
+> 
 
-Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-Signed-off-by: Kai Deng <dengkai1@huawei.com>
----
- hw/xen/xen_pt.c             | 10 +++++-----
- hw/xen/xen_pt_config_init.c |  6 +++---
- hw/xen/xen_pt_msi.c         | 16 ++++++++--------
- 3 files changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
-index 6d359ee486..a5f3dd590c 100644
---- a/hw/xen/xen_pt.c
-+++ b/hw/xen/xen_pt.c
-@@ -489,7 +489,7 @@ static int xen_pt_register_regions(XenPCIPassthroughState *s, uint16_t *cmd)
-         pci_register_bar(&s->dev, i, type, &s->bar[i]);
- 
-         XEN_PT_LOG(&s->dev, "IO region %i registered (size=0x%08"PRIx64
--                   " base_addr=0x%08"PRIx64" type: %#x)\n",
-+                   " base_addr=0x%08"PRIx64" type: 0x%x)\n",
-                    i, r->size, r->base_addr, type);
-     }
- 
-@@ -578,7 +578,7 @@ static void xen_pt_check_bar_overlap(PCIBus *bus, PCIDevice *d, void *opaque)
-         if (ranges_overlap(arg->addr, arg->size, r->addr, r->size)) {
-             XEN_PT_WARN(&s->dev,
-                         "Overlapped to device [%02x:%02x.%d] Region: %i"
--                        " (addr: %#"FMT_PCIBUS", len: %#"FMT_PCIBUS")\n",
-+                        " (addr: 0x%"FMT_PCIBUS", len: 0x%"FMT_PCIBUS")\n",
-                         pci_bus_num(bus), PCI_SLOT(d->devfn),
-                         PCI_FUNC(d->devfn), i, r->addr, r->size);
-             arg->rc = true;
-@@ -618,8 +618,8 @@ static void xen_pt_region_update(XenPCIPassthroughState *s,
-     pci_for_each_device(pci_get_bus(d), pci_dev_bus_num(d),
-                         xen_pt_check_bar_overlap, &args);
-     if (args.rc) {
--        XEN_PT_WARN(d, "Region: %d (addr: %#"FMT_PCIBUS
--                    ", len: %#"FMT_PCIBUS") is overlapped.\n",
-+        XEN_PT_WARN(d, "Region: %d (addr: 0x%"FMT_PCIBUS
-+                    ", len: 0x%"FMT_PCIBUS") is overlapped.\n",
-                     bar, sec->offset_within_address_space,
-                     int128_get64(sec->size));
-     }
-@@ -786,7 +786,7 @@ static void xen_pt_realize(PCIDevice *d, Error **errp)
- 
-     /* register real device */
-     XEN_PT_LOG(d, "Assigning real physical device %02x:%02x.%d"
--               " to devfn %#x\n",
-+               " to devfn 0x%x\n",
-                s->hostaddr.bus, s->hostaddr.slot, s->hostaddr.function,
-                s->dev.devfn);
- 
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index c8724cc7c8..c5c4e943a8 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -1622,7 +1622,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
-         case PCI_EXP_TYPE_PCIE_BRIDGE:
-         case PCI_EXP_TYPE_RC_EC:
-         default:
--            XEN_PT_ERR(d, "Unsupported device/port type %#x.\n", type);
-+            XEN_PT_ERR(d, "Unsupported device/port type 0x%x.\n", type);
-             return -1;
-         }
-     }
-@@ -1645,11 +1645,11 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
-         case PCI_EXP_TYPE_PCIE_BRIDGE:
-         case PCI_EXP_TYPE_RC_EC:
-         default:
--            XEN_PT_ERR(d, "Unsupported device/port type %#x.\n", type);
-+            XEN_PT_ERR(d, "Unsupported device/port type 0x%x.\n", type);
-             return -1;
-         }
-     } else {
--        XEN_PT_ERR(d, "Unsupported capability version %#x.\n", version);
-+        XEN_PT_ERR(d, "Unsupported capability version 0x%x.\n", version);
-         return -1;
-     }
- 
-diff --git a/hw/xen/xen_pt_msi.c b/hw/xen/xen_pt_msi.c
-index fb4b887b92..b71563f98a 100644
---- a/hw/xen/xen_pt_msi.c
-+++ b/hw/xen/xen_pt_msi.c
-@@ -123,7 +123,7 @@ static int msi_msix_setup(XenPCIPassthroughState *s,
-             *ppirq = XEN_PT_UNASSIGNED_PIRQ;
-         } else {
-             XEN_PT_LOG(&s->dev, "requested pirq %d for MSI%s"
--                       " (vec: %#x, entry: %#x)\n",
-+                       " (vec: 0x%x, entry: 0x%x)\n",
-                        *ppirq, is_msix ? "-X" : "", gvec, msix_entry);
-         }
-     }
-@@ -142,7 +142,7 @@ static int msi_msix_setup(XenPCIPassthroughState *s,
-                                      msix_entry, table_base);
-         if (rc) {
-             XEN_PT_ERR(&s->dev,
--                       "Mapping of MSI%s (err: %i, vec: %#x, entry %#x)\n",
-+                       "Mapping of MSI%s (err: %i, vec: 0x%x, entry 0x%x)\n",
-                        is_msix ? "-X" : "", errno, gvec, msix_entry);
-             return rc;
-         }
-@@ -165,8 +165,8 @@ static int msi_msix_update(XenPCIPassthroughState *s,
-     int rc = 0;
-     uint64_t table_addr = 0;
- 
--    XEN_PT_LOG(d, "Updating MSI%s with pirq %d gvec %#x gflags %#x"
--               " (entry: %#x)\n",
-+    XEN_PT_LOG(d, "Updating MSI%s with pirq %d gvec 0x%x gflags 0x%x"
-+               " (entry: 0x%x)\n",
-                is_msix ? "-X" : "", pirq, gvec, gflags, msix_entry);
- 
-     if (is_msix) {
-@@ -208,11 +208,11 @@ static int msi_msix_disable(XenPCIPassthroughState *s,
-     }
- 
-     if (is_binded) {
--        XEN_PT_LOG(d, "Unbind MSI%s with pirq %d, gvec %#x\n",
-+        XEN_PT_LOG(d, "Unbind MSI%s with pirq %d, gvec 0x%x\n",
-                    is_msix ? "-X" : "", pirq, gvec);
-         rc = xc_domain_unbind_msi_irq(xen_xc, xen_domid, gvec, pirq, gflags);
-         if (rc) {
--            XEN_PT_ERR(d, "Unbinding of MSI%s failed. (err: %d, pirq: %d, gvec: %#x)\n",
-+            XEN_PT_ERR(d, "Unbinding of MSI%s failed. (err: %d, pirq: %d, gvec: 0x%x)\n",
-                        is_msix ? "-X" : "", errno, pirq, gvec);
-             return rc;
-         }
-@@ -539,7 +539,7 @@ int xen_pt_msix_init(XenPCIPassthroughState *s, uint32_t base)
-     }
- 
-     if (id != PCI_CAP_ID_MSIX) {
--        XEN_PT_ERR(d, "Invalid id %#x base %#x\n", id, base);
-+        XEN_PT_ERR(d, "Invalid id 0x%x base 0x%x\n", id, base);
-         return -1;
-     }
- 
-@@ -582,7 +582,7 @@ int xen_pt_msix_init(XenPCIPassthroughState *s, uint32_t base)
-         XEN_PT_ERR(d, "Can't open /dev/mem: %s\n", strerror(errno));
-         goto error_out;
-     }
--    XEN_PT_LOG(d, "table_off = %#x, total_entries = %d\n",
-+    XEN_PT_LOG(d, "table_off = 0x%x, total_entries = %d\n",
-                table_off, total_entries);
-     msix->table_offset_adjust = table_off & 0x0fff;
-     msix->phys_iomem_base =
--- 
-2.29.0-rc1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
