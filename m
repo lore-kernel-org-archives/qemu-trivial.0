@@ -1,42 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaFwf-0003iF-UK
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 05:23:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40868)
+	id 1kaFwy-0004Pv-Br
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2020 05:23:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40934)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaFwc-0003eW-P7; Wed, 04 Nov 2020 05:23:10 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2075)
+ id 1kaFww-0004Li-HS; Wed, 04 Nov 2020 05:23:30 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2503)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaFwZ-0002If-RG; Wed, 04 Nov 2020 05:23:10 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CR2m72xJHzhbBq;
- Wed,  4 Nov 2020 18:23:03 +0800 (CST)
+ id 1kaFwu-0002Kr-O4; Wed, 04 Nov 2020 05:23:30 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR2mV4TQgzhfFQ;
+ Wed,  4 Nov 2020 18:23:22 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 4 Nov 2020 18:23:02 +0800
-Message-ID: <5FA28106.6000901@huawei.com>
-Date: Wed, 4 Nov 2020 18:23:02 +0800
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 4 Nov 2020 18:23:20 +0800
+Message-ID: <5FA28117.3020802@huawei.com>
+Date: Wed, 4 Nov 2020 18:23:19 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: <mst@redhat.com>, <stefanha@redhat.com>, <marcandre.lureau@redhat.com>
+To: <thuth@redhat.com>, <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>
 CC: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: [PATCH] contrib/libvhost-user: Fix bad printf format specifiers
+Subject: [PATCH] qtest: Fix bad printf format specifiers
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
- helo=szxga06-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 05:21:41
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 05:20:51
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,7 +51,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2020 10:23:11 -0000
+X-List-Received-Date: Wed, 04 Nov 2020 10:23:31 -0000
 
 We should use printf format specifier "%u" instead of "%d" for
 argument of type "unsigned int".
@@ -58,100 +59,49 @@ argument of type "unsigned int".
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Alex Chen <alex.chen@huawei.com>
 ---
- contrib/libvhost-user/libvhost-user.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ tests/qtest/arm-cpu-features.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/contrib/libvhost-user/libvhost-user.c b/contrib/libvhost-user/libvhost-user.c
-index bfec8a881a..5c73ffdd6b 100644
---- a/contrib/libvhost-user/libvhost-user.c
-+++ b/contrib/libvhost-user/libvhost-user.c
-@@ -701,7 +701,7 @@ vu_add_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
-         return false;
-     }
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index d20094d5a7..bc681a95d5 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -536,7 +536,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         if (kvm_supports_sve) {
+             g_assert(vls != 0);
+             max_vq = 64 - __builtin_clzll(vls);
+-            sprintf(max_name, "sve%d", max_vq * 128);
++            sprintf(max_name, "sve%u", max_vq * 128);
 
--    DPRINT("Adding region: %d\n", dev->nregions);
-+    DPRINT("Adding region: %u\n", dev->nregions);
-     DPRINT("    guest_phys_addr: 0x%016"PRIx64"\n",
-            msg_region->guest_phys_addr);
-     DPRINT("    memory_size:     0x%016"PRIx64"\n",
-@@ -848,7 +848,7 @@ vu_set_mem_table_exec_postcopy(VuDev *dev, VhostUserMsg *vmsg)
-     VhostUserMemory m = vmsg->payload.memory, *memory = &m;
-     dev->nregions = memory->nregions;
-
--    DPRINT("Nregions: %d\n", memory->nregions);
-+    DPRINT("Nregions: %u\n", memory->nregions);
-     for (i = 0; i < dev->nregions; i++) {
-         void *mmap_addr;
-         VhostUserMemoryRegion *msg_region = &memory->regions[i];
-@@ -938,7 +938,7 @@ vu_set_mem_table_exec(VuDev *dev, VhostUserMsg *vmsg)
-         return vu_set_mem_table_exec_postcopy(dev, vmsg);
-     }
-
--    DPRINT("Nregions: %d\n", memory->nregions);
-+    DPRINT("Nregions: %u\n", memory->nregions);
-     for (i = 0; i < dev->nregions; i++) {
-         void *mmap_addr;
-         VhostUserMemoryRegion *msg_region = &memory->regions[i];
-@@ -1049,8 +1049,8 @@ vu_set_vring_num_exec(VuDev *dev, VhostUserMsg *vmsg)
-     unsigned int index = vmsg->payload.state.index;
-     unsigned int num = vmsg->payload.state.num;
-
--    DPRINT("State.index: %d\n", index);
--    DPRINT("State.num:   %d\n", num);
-+    DPRINT("State.index: %u\n", index);
-+    DPRINT("State.num:   %u\n", num);
-     dev->vq[index].vring.num = num;
-
-     return false;
-@@ -1105,8 +1105,8 @@ vu_set_vring_base_exec(VuDev *dev, VhostUserMsg *vmsg)
-     unsigned int index = vmsg->payload.state.index;
-     unsigned int num = vmsg->payload.state.num;
-
--    DPRINT("State.index: %d\n", index);
--    DPRINT("State.num:   %d\n", num);
-+    DPRINT("State.index: %u\n", index);
-+    DPRINT("State.num:   %u\n", num);
-     dev->vq[index].shadow_avail_idx = dev->vq[index].last_avail_idx = num;
-
-     return false;
-@@ -1117,7 +1117,7 @@ vu_get_vring_base_exec(VuDev *dev, VhostUserMsg *vmsg)
- {
-     unsigned int index = vmsg->payload.state.index;
-
--    DPRINT("State.index: %d\n", index);
-+    DPRINT("State.index: %u\n", index);
-     vmsg->payload.state.num = dev->vq[index].last_avail_idx;
-     vmsg->size = sizeof(vmsg->payload.state);
-
-@@ -1478,8 +1478,8 @@ vu_set_vring_enable_exec(VuDev *dev, VhostUserMsg *vmsg)
-     unsigned int index = vmsg->payload.state.index;
-     unsigned int enable = vmsg->payload.state.num;
-
--    DPRINT("State.index: %d\n", index);
--    DPRINT("State.enable:   %d\n", enable);
-+    DPRINT("State.index: %u\n", index);
-+    DPRINT("State.enable:   %u\n", enable);
-
-     if (index >= dev->max_queues) {
-         vu_panic(dev, "Invalid vring_enable index: %u", index);
-@@ -1728,7 +1728,7 @@ vu_handle_vring_kick(VuDev *dev, VhostUserMsg *vmsg)
-         return false;
-     }
-
--    DPRINT("Got kick message: handler:%p idx:%d\n",
-+    DPRINT("Got kick message: handler:%p idx:%u\n",
-            dev->vq[index].handler, index);
-
-     if (!dev->vq[index].started) {
-@@ -1772,7 +1772,7 @@ vu_process_message(VuDev *dev, VhostUserMsg *vmsg)
-     DPRINT("Request: %s (%d)\n", vu_request_to_string(vmsg->request),
-            vmsg->request);
-     DPRINT("Flags:   0x%x\n", vmsg->flags);
--    DPRINT("Size:    %d\n", vmsg->size);
-+    DPRINT("Size:    %u\n", vmsg->size);
-
-     if (vmsg->fd_num) {
-         int i;
+             /* Enabling a supported length is of course fine. */
+             assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
+@@ -556,7 +556,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+                  * unless all larger, supported vector lengths are also
+                  * disabled.
+                  */
+-                sprintf(name, "sve%d", vq * 128);
++                sprintf(name, "sve%u", vq * 128);
+                 error = g_strdup_printf("cannot disable %s", name);
+                 assert_error(qts, "host", error,
+                              "{ %s: true, %s: false }",
+@@ -569,7 +569,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+              * we need at least one vector length enabled.
+              */
+             vq = __builtin_ffsll(vls);
+-            sprintf(name, "sve%d", vq * 128);
++            sprintf(name, "sve%u", vq * 128);
+             error = g_strdup_printf("cannot disable %s", name);
+             assert_error(qts, "host", error, "{ %s: false }", name);
+             g_free(error);
+@@ -581,7 +581,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+                 }
+             }
+             if (vq <= SVE_MAX_VQ) {
+-                sprintf(name, "sve%d", vq * 128);
++                sprintf(name, "sve%u", vq * 128);
+                 error = g_strdup_printf("cannot enable %s", name);
+                 assert_error(qts, "host", error, "{ %s: true }", name);
+                 g_free(error);
 -- 
 2.19.1
 
