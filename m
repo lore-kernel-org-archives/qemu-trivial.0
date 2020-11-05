@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kar2q-0000tS-MD
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 21:00:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58652)
+	id 1kav2E-0003Zd-1T
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 01:15:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kar2p-0000q8-4f; Thu, 05 Nov 2020 21:00:03 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2506)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kav2C-0003Yz-Sh; Fri, 06 Nov 2020 01:15:40 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2078)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kar2m-0004X2-MA; Thu, 05 Nov 2020 21:00:02 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CS3Vc5ctJzhfrR;
- Fri,  6 Nov 2020 09:59:52 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 6 Nov 2020 09:59:48 +0800
-Message-ID: <5FA4AE14.5040908@huawei.com>
-Date: Fri, 6 Nov 2020 09:59:48 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kav2A-0008Gz-H0; Fri, 06 Nov 2020 01:15:40 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CS99Q2VS0zhdDS;
+ Fri,  6 Nov 2020 14:15:22 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 6 Nov 2020
+ 14:15:18 +0800
+From: Gan Qixin <ganqixin@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <peter.maydell@linaro.org>, <berrange@redhat.com>, <pbonzini@redhat.com>, 
+ <philmd@redhat.com>, <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
+ <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>
+Subject: [PATCH] scripts/checkpatch.pl: Modify the line length limit of the
+ code
+Date: Thu, 5 Nov 2020 23:42:08 +0800
+Message-ID: <20201105154208.12442-1-ganqixin@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, Michael Tokarev
- <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-CC: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH V2 2/2] plugins: Fix two resource leaks in setup_socket()
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 20:40:48
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=ganqixin@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/06 01:15:26
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -52,34 +52,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 02:00:03 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 06:15:41 -0000
 
-Either accept() fails or exits normally, we need to close the fd.
+Modify the rule that limit the length of lines according to the following ideas:
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
+--add a variable max_line_length to indicate the limit of line length and set it to 100 by default
+--when the line length exceeds max_line_length, output warning information instead of error
+--if/while/etc brace do not go on next line whether the line length exceeds max_line_length or not
+
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
- contrib/plugins/lockstep.c | 2 ++
- 1 file changed, 2 insertions(+)
+ scripts/checkpatch.pl | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 319bd44b83..5aad50869d 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -268,11 +268,13 @@ static bool setup_socket(const char *path)
-     socket_fd = accept(fd, NULL, NULL);
-     if (socket_fd < 0 && errno != EINTR) {
-         perror("accept socket");
-+        close(fd);
-         return false;
-     }
-
-     qemu_plugin_outs("setup_socket::ready\n");
-
-+    close(fd);
-     return true;
- }
-
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 88c858f67c..84a72d47ad 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -35,6 +35,7 @@ my $summary_file = 0;
+ my $root;
+ my %debug;
+ my $help = 0;
++my $max_line_length = 100;
+ 
+ sub help {
+ 	my ($exitcode) = @_;
+@@ -1628,17 +1629,13 @@ sub process {
+ # check we are in a valid source file if not then ignore this hunk
+ 		next if ($realfile !~ /$SrcFile/);
+ 
+-#90 column limit; exempt URLs, if no other words on line
++#$max_line_length column limit; exempt URLs, if no other words on line
+ 		if ($line =~ /^\+/ &&
+ 		    !($line =~ /^\+\s*"[^"]*"\s*(?:\s*|,|\)\s*;)\s*$/) &&
+ 		    !($rawline =~ /^[^[:alnum:]]*https?:\S*$/) &&
+-		    $length > 80)
++		    $length > $max_line_length)
+ 		{
+-			if ($length > 90) {
+-				ERROR("line over 90 characters\n" . $herecurr);
+-			} else {
+-				WARN("line over 80 characters\n" . $herecurr);
+-			}
++			WARN("line over $max_line_length characters\n" . $herecurr);
+ 		}
+ 
+ # check for spaces before a quoted newline
+@@ -1831,13 +1828,8 @@ sub process {
+ 			#print "realcnt<$realcnt> ctx_cnt<$ctx_cnt>\n";
+ 			#print "pre<$pre_ctx>\nline<$line>\nctx<$ctx>\nnext<$lines[$ctx_ln - 1]>\n";
+ 
+-			# The length of the "previous line" is checked against 80 because it
+-			# includes the + at the beginning of the line (if the actual line has
+-			# 79 or 80 characters, it is no longer possible to add a space and an
+-			# opening brace there)
+ 			if ($#ctx == 0 && $ctx !~ /{\s*/ &&
+-			    defined($lines[$ctx_ln - 1]) && $lines[$ctx_ln - 1] =~ /^\+\s*\{/ &&
+-			    defined($lines[$ctx_ln - 2]) && length($lines[$ctx_ln - 2]) < 80) {
++			    defined($lines[$ctx_ln - 1]) && $lines[$ctx_ln - 1] =~ /^\+\s*\{/) {
+ 				ERROR("that open brace { should be on the previous line\n" .
+ 					"$here\n$ctx\n$rawlines[$ctx_ln - 1]\n");
+ 			}
 -- 
-2.19.1
+2.23.0
+
 
