@@ -1,66 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaheP-0005YM-EA
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 10:58:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36234)
+	id 1kai8x-0006hZ-NL
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 11:29:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kaheL-0005W5-Sx; Thu, 05 Nov 2020 10:58:09 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:41657)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kaheJ-0002Hr-BN; Thu, 05 Nov 2020 10:58:09 -0500
-Received: by mail-ej1-x644.google.com with SMTP id cw8so3337459ejb.8;
- Thu, 05 Nov 2020 07:58:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=akGYpSdXwXTO+slFHz9QRa/ovyy+/e8Ht98Yg4n5bOU=;
- b=dtVUDhE/CzgiNp69y43doUWVHmeaTMbDeUS6Re52KZJAByFa/MpeNgfSMt8Bf1xSuB
- A09tqQwyd80IYie/jtt8Gg6Hl3c1UpllwyevhLb8+aQiCCxfIP0t0i1XBkMAmubq6vQo
- FwJXXFgnT2dC1g6doZJ8R465CNfXH4LWnohie3aBv5wgVF4mpxWk/dt+oLKL1f2yvLaK
- w4T9i7NBPUSlxDvzfKHOVWdHs1uLYx5RhPfLC9PVQOkyLyIgn+pbpc/nadu3gqvz9F9N
- 70pbo1bTqgN4f1fy6gFgsLYJhQaf+N36k5bKQauslqa9fl3wNGTYs5Z84YgxIKPTyMN5
- f/+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=akGYpSdXwXTO+slFHz9QRa/ovyy+/e8Ht98Yg4n5bOU=;
- b=s4eSxuM9qVI+QREBQuvL4p5WIVK5WYbQwXDpFvfPzsDVRHe1GdpquZ6sEfF9z1EW9j
- BZ18tPGq0B0OOcTdT7z6dG6oASg4wV8/FGcWRMq10grNS2kPYQ5rdrVfITDWOW2jTWp6
- HTxhet1MLmRJBnYkuW+24bCMZS/hBpe++2EQJaMF+xDtysgYwkI+aVVWX7OOsRv0G2YQ
- 14xe23/K6Z/eZb4hZP26A99nBLfS/ppe4tpORs3TqwDySckffaQsUaRnA6S46XG+UknV
- p0hMrhySsYmineQQ0103mklQJO20afvV+PkgG1Wq9lKl0Dg+E+cMArGUpqfuT7MSnP/E
- vZng==
-X-Gm-Message-State: AOAM530/Avl63nQd9fX7VunWU0/6Qx7nphOxvC4xCitogFHc4W8BfqBn
- 5MYIn+vac2FNykNXowkAatRk3SDHR3KXrrwChNI=
-X-Google-Smtp-Source: ABdhPJyj5Csj2Qb+e79XAHPl7Yb1LCv8IaA8GUhHsmo4jXTcZY7fXqNt/gJ39avMtL+Wcbk2+aktZLJDM7gUc2RpaQw=
-X-Received: by 2002:a17:906:5618:: with SMTP id
- f24mr2900200ejq.381.1604591885326; 
- Thu, 05 Nov 2020 07:58:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kai8t-0006gO-AN
+ for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 11:29:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24740)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kai8q-0004z1-2s
+ for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 11:29:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604593776;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=USM4YM/5tBV9h90W9RU/Dy2Gdz0RQksnwHVlqJeEdz8=;
+ b=QRXGFGl/50ziofvFA5cNKe7T+HlfTQwwBCLjlTz748h8BHdbAqAuyFtdZzcU0lu925rBUg
+ MtW0MEe9fPR0KRz9Hz/Bp0oMBUAgnVaAoW7dqSY5JOBTuaYQR4gaVJY1gDJAImhT4HN4Bn
+ 0GexqfWcUSO4se3Dk7Lz/kMLY5cNrNs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-391-XH6fNNp0Oc22AYqCx1XjXg-1; Thu, 05 Nov 2020 11:29:32 -0500
+X-MC-Unique: XH6fNNp0Oc22AYqCx1XjXg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 56E428DF0D2;
+ Thu,  5 Nov 2020 16:29:31 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-114-31.ams2.redhat.com
+ [10.36.114.31])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EF50676644;
+ Thu,  5 Nov 2020 16:29:29 +0000 (UTC)
+Subject: Re: [PATCH v4 0/2] Fixes building nfs on msys2/mingw
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Lieven <pl@kamp.de>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20201105123116.674-1-luoyonggang@gmail.com>
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <89857a12-ba5f-e57e-bcfa-c0075c113ceb@redhat.com>
+Date: Thu, 5 Nov 2020 17:29:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <5FA41448.4040404@huawei.com>
-In-Reply-To: <5FA41448.4040404@huawei.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 5 Nov 2020 19:57:51 +0400
-Message-ID: <CAJ+F1CKHmJk2ngLRoEXdOhZk8DDjaOsWZu6O5qsNhWKDfidAgw@mail.gmail.com>
-Subject: Re: [PATCH] tests/qtest/tpm: Remove redundant check in the
- tpm_test_swtpm_test()
-To: AlexChen <alex.chen@huawei.com>
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: multipart/alternative; boundary="000000000000559e6c05b35e29df"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <20201105123116.674-1-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mreitz@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mreitz@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 01:14:53
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,106 +77,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 15:58:10 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 16:29:46 -0000
 
---000000000000559e6c05b35e29df
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 05.11.20 13:31, Yonggang Luo wrote:
+> V3-V4
+> Use uint64_t instead of blkcnt_t
+> V2-V3
+> Revise the commit message of
+> * block: enable libnfs on msys2/mingw in cirrus.yml
+> 
+> V1-V2
+> Apply suggestion from  Peter Lieven
+> 
+> Yonggang Luo (2):
+>    block: Fixes nfs compiling error on msys2/mingw
+>    block: enable libnfs on msys2/mingw in cirrus.yml
+> 
+>   .cirrus.yml |  1 +
+>   block/nfs.c | 13 ++++++++++++-
+>   2 files changed, 13 insertions(+), 1 deletion(-)
 
-On Thu, Nov 5, 2020 at 7:05 PM AlexChen <alex.chen@huawei.com> wrote:
+Thanks!  Applied to my block branch:
 
-> The 'addr' would not be NULL after checking 'succ' is valid,
-> and it has been dereferenced in the previous code(args =3D
-> g_strdup_printf()).
-> So the check on 'addr' in the tpm_test_swtpm_test() is redundant. Remove
-> it.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->
+https://git.xanclic.moe/XanClic/qemu/commits/branch/block
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Max
 
----
->  tests/qtest/tpm-tests.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/tests/qtest/tpm-tests.c b/tests/qtest/tpm-tests.c
-> index 70c80f8379..0da3a8a4df 100644
-> --- a/tests/qtest/tpm-tests.c
-> +++ b/tests/qtest/tpm-tests.c
-> @@ -70,10 +70,8 @@ void tpm_test_swtpm_test(const char *src_tpm_path,
-> tx_func *tx,
->      qtest_end();
->      tpm_util_swtpm_kill(swtpm_pid);
->
-> -    if (addr) {
-> -        g_unlink(addr->u.q_unix.path);
-> -        qapi_free_SocketAddress(addr);
-> -    }
-> +    g_unlink(addr->u.q_unix.path);
-> +    qapi_free_SocketAddress(addr);
->  }
->
->  void tpm_test_swtpm_migration_test(const char *src_tpm_path,
-> --
-> 2.19.1
->
->
-
---=20
-Marc-Andr=C3=A9 Lureau
-
---000000000000559e6c05b35e29df
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 5, 2020 at 7:05 PM AlexCh=
-en &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</a>&gt;=
- wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">The &#39=
-;addr&#39; would not be NULL after checking &#39;succ&#39; is valid,<br>
-and it has been dereferenced in the previous code(args =3D g_strdup_printf(=
-)).<br>
-So the check on &#39;addr&#39; in the tpm_test_swtpm_test() is redundant. R=
-emove it.<br>
-<br>
-Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
-et=3D"_blank">euler.robot@huawei.com</a>&gt;<br>
-Signed-off-by: Alex Chen &lt;<a href=3D"mailto:alex.chen@huawei.com" target=
-=3D"_blank">alex.chen@huawei.com</a>&gt;<br></blockquote><div><br></div><di=
-v>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lurea=
-u@redhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div> <br></div><blo=
-ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
-:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0tests/qtest/tpm-tests.c | 6 ++----<br>
-=C2=A01 file changed, 2 insertions(+), 4 deletions(-)<br>
-<br>
-diff --git a/tests/qtest/tpm-tests.c b/tests/qtest/tpm-tests.c<br>
-index 70c80f8379..0da3a8a4df 100644<br>
---- a/tests/qtest/tpm-tests.c<br>
-+++ b/tests/qtest/tpm-tests.c<br>
-@@ -70,10 +70,8 @@ void tpm_test_swtpm_test(const char *src_tpm_path, tx_fu=
-nc *tx,<br>
-=C2=A0 =C2=A0 =C2=A0qtest_end();<br>
-=C2=A0 =C2=A0 =C2=A0tpm_util_swtpm_kill(swtpm_pid);<br>
-<br>
--=C2=A0 =C2=A0 if (addr) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 g_unlink(addr-&gt;u.q_unix.path);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 qapi_free_SocketAddress(addr);<br>
--=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 g_unlink(addr-&gt;u.q_unix.path);<br>
-+=C2=A0 =C2=A0 qapi_free_SocketAddress(addr);<br>
-=C2=A0}<br>
-<br>
-=C2=A0void tpm_test_swtpm_migration_test(const char *src_tpm_path,<br>
--- <br>
-2.19.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---000000000000559e6c05b35e29df--
 
