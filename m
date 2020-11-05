@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaeN3-0000dj-1U
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 07:28:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44594)
+	id 1kaeNJ-00014m-1j
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 07:28:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
- id 1kaeN2-0000cY-2J; Thu, 05 Nov 2020 07:28:04 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2331)
+ id 1kaeNG-00011V-B6; Thu, 05 Nov 2020 07:28:18 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2332)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
- id 1kaeMy-0004Hf-Nf; Thu, 05 Nov 2020 07:28:03 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CRjTK0mzyzkcW8;
- Thu,  5 Nov 2020 20:27:33 +0800 (CST)
+ id 1kaeNE-0004SE-8o; Thu, 05 Nov 2020 07:28:18 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CRjTx6WJxzkfw0;
+ Thu,  5 Nov 2020 20:28:05 +0800 (CST)
 Received: from [10.108.235.13] (10.108.235.13) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 5 Nov 2020 20:27:31 +0800
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 5 Nov 2020 20:28:03 +0800
 From: shiliyang <shiliyang@huawei.com>
-Subject: [PATCH V2 0/4] bsd-user: Fix some code style problems
+Subject: [PATCH V2 2/4] bsd-user: suspect code indent for conditional
+ statements
 To: <qemu-devel@nongnu.org>, <philmd@redhat.com>, <pbonzini@redhat.com>,
  <david@redhat.com>
 CC: <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>, <hunongda@huawei.com>
-Message-ID: <1644ceed-b448-782e-24ed-5ceaf3e16335@huawei.com>
-Date: Thu, 5 Nov 2020 20:27:30 +0800
+Message-ID: <9464808c-d676-afab-3b99-ac54f621e9d1@huawei.com>
+Date: Thu, 5 Nov 2020 20:28:03 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
@@ -52,26 +53,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 12:28:04 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 12:28:18 -0000
 
-This patch series fixes error style problems found by checkpatch.pl.
+This patch fixes error style problems found by checkpatch.pl:
+ERROR: suspect code indent for conditional statements
 
-V1->V2:
-Add cover letter message.
-Fix some style error in patch file before.
+Signed-off-by: Liyang Shi <shiliyang@huawei.com>
 
-Liyang Shi (4):
-  bsd-user: "foo * bar" should be "foo *bar"
-  bsd-user: suspect code indent for conditional statements
-  bsd-user: space required after semicolon
-  bsd-user: do not use C99 // comments
+---
+ bsd-user/elfload.c | 10 +++++-----
+ bsd-user/syscall.c |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
- bsd-user/bsdload.c |  6 +++---
- bsd-user/elfload.c | 38 +++++++++++++++++++-------------------
- bsd-user/qemu.h    | 14 +++++++-------
- bsd-user/syscall.c |  6 +++---
- 4 files changed, 32 insertions(+), 32 deletions(-)
+diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+index 35c340f13a..a121e71339 100644
+--- a/bsd-user/elfload.c
++++ b/bsd-user/elfload.c
+@@ -184,7 +184,7 @@ static inline void init_thread(struct target_pt_regs *regs, struct image_info *i
+     memset(regs, 0, sizeof(*regs));
+     regs->ARM_cpsr = 0x10;
+     if (infop->entry & 1)
+-      regs->ARM_cpsr |= CPSR_T;
++        regs->ARM_cpsr |= CPSR_T;
+     regs->ARM_pc = infop->entry & 0xfffffffe;
+     regs->ARM_sp = infop->start_stack;
+     /* FIXME - what to for failure of get_user()? */
+@@ -784,7 +784,7 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+         sp = sp &~ (abi_ulong)15;
+         size = (DLINFO_ITEMS + 1) * 2;
+         if (k_platform)
+-          size += 2;
++            size += 2;
+ #ifdef DLINFO_ARCH_ITEMS
+         size += DLINFO_ARCH_ITEMS * 2;
+ #endif
+@@ -871,7 +871,7 @@ static abi_ulong load_elf_interp(struct elfhdr *interp_elf_ex,
+                 malloc(sizeof(struct elf_phdr) * interp_elf_ex->e_phnum);
 
+         if (!elf_phdata)
+-          return ~((abi_ulong)0UL);
++            return ~((abi_ulong)0UL);
+
+         /*
+          * If the size of this structure has changed, then punt, since
+@@ -1267,7 +1267,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct target_pt_regs *regs,
+
+             if (strcmp(elf_interpreter,"/usr/lib/libc.so.1") == 0 ||
+                 strcmp(elf_interpreter,"/usr/lib/ld.so.1") == 0) {
+-              ibcs2_interpreter = 1;
++                ibcs2_interpreter = 1;
+             }
+
+ #if 0
+@@ -1314,7 +1314,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct target_pt_regs *regs,
+         /* Now figure out which format our binary is */
+         if ((N_MAGIC(interp_ex) != OMAGIC) && (N_MAGIC(interp_ex) != ZMAGIC) &&
+                 (N_MAGIC(interp_ex) != QMAGIC)) {
+-          interpreter_type = INTERPRETER_ELF;
++            interpreter_type = INTERPRETER_ELF;
+         }
+
+         if (interp_elf_ex.e_ident[0] != 0x7f ||
+diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
+index d38ec7a162..9b471b665c 100644
+--- a/bsd-user/syscall.c
++++ b/bsd-user/syscall.c
+@@ -241,7 +241,7 @@ static abi_long do_freebsd_sysctl(abi_ulong namep, int32_t namelen, abi_ulong ol
+         return -TARGET_EFAULT;
+     holdlen = oldlen;
+     for (p = hnamep, q = snamep, i = 0; i < namelen; p++, i++)
+-       *q++ = tswap32(*p);
++        *q++ = tswap32(*p);
+     oidfmt(snamep, namelen, NULL, &kind);
+     /* XXX swap hnewp */
+     ret = get_errno(sysctl(snamep, namelen, holdp, &holdlen, hnewp, newlen));
 -- 
 2.29.1.59.gf9b6481aed
+
 
