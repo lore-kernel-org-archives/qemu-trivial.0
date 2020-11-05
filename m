@@ -1,30 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaZ6w-0003V7-St
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 01:51:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39386)
+	id 1kaZ9s-0004iq-S2
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 01:54:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaZ6u-0003Up-ND; Thu, 05 Nov 2020 01:51:04 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2438)
+ id 1kaZ9n-0004hG-S1; Thu, 05 Nov 2020 01:54:07 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2505)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaZ6p-0001ni-GL; Thu, 05 Nov 2020 01:51:04 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CRZ0g1cbLzLqlb;
- Thu,  5 Nov 2020 14:50:43 +0800 (CST)
+ id 1kaZ9l-0002lJ-A9; Thu, 05 Nov 2020 01:54:03 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CRZ4J30Cgzhffp;
+ Thu,  5 Nov 2020 14:53:52 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 5 Nov 2020 14:50:46 +0800
-Message-ID: <5FA3A0C6.5040500@huawei.com>
-Date: Thu, 5 Nov 2020 14:50:46 +0800
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 5 Nov 2020 14:53:48 +0800
+Message-ID: <5FA3A17C.30108@huawei.com>
+Date: Thu, 5 Nov 2020 14:53:48 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: Thomas Huth <thuth@redhat.com>, <lvivier@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>
-CC: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: [PATCH V2] qtest: Fix bad printf format specifiers
+To: <alex.bennee@linaro.org>, <mjt@tls.msk.ru>, Laurent Vivier
+ <laurent@vivier.eu>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <zhang.zhanghailiang@huawei.com>, <zhengchuan@huawei.com>
+Subject: Re: [PATCH 1/2] plugins: Fix resource leak in connect_socket()
+References: <5F9975E7.6030509@huawei.com>
+In-Reply-To: <5F9975E7.6030509@huawei.com>
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
@@ -36,8 +39,8 @@ X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,57 +54,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 06:51:05 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 06:54:08 -0000
 
-We should use printf format specifier PRIu32 instead of "%d" for
-argument of type 'uint32_t'.
+Kindly ping.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- tests/qtest/arm-cpu-features.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+On 2020/10/28 21:45, AlexChen wrote:
+> Close the fd when connect() fails.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
+> ---
+>  contrib/plugins/lockstep.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+> index a696673dff..319bd44b83 100644
+> --- a/contrib/plugins/lockstep.c
+> +++ b/contrib/plugins/lockstep.c
+> @@ -292,6 +292,7 @@ static bool connect_socket(const char *path)
+> 
+>      if (connect(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
+>          perror("failed to connect");
+> +        close(fd);
+>          return false;
+>      }
+> 
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index d20094d5a7..003ba24fac 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -536,7 +536,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-         if (kvm_supports_sve) {
-             g_assert(vls != 0);
-             max_vq = 64 - __builtin_clzll(vls);
--            sprintf(max_name, "sve%d", max_vq * 128);
-+            sprintf(max_name, "sve%" PRIu32, max_vq * 128);
-
-             /* Enabling a supported length is of course fine. */
-             assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
-@@ -556,7 +556,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-                  * unless all larger, supported vector lengths are also
-                  * disabled.
-                  */
--                sprintf(name, "sve%d", vq * 128);
-+                sprintf(name, "sve%" PRIu32, vq * 128);
-                 error = g_strdup_printf("cannot disable %s", name);
-                 assert_error(qts, "host", error,
-                              "{ %s: true, %s: false }",
-@@ -569,7 +569,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-              * we need at least one vector length enabled.
-              */
-             vq = __builtin_ffsll(vls);
--            sprintf(name, "sve%d", vq * 128);
-+            sprintf(name, "sve%" PRIu32, vq * 128);
-             error = g_strdup_printf("cannot disable %s", name);
-             assert_error(qts, "host", error, "{ %s: false }", name);
-             g_free(error);
-@@ -581,7 +581,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-                 }
-             }
-             if (vq <= SVE_MAX_VQ) {
--                sprintf(name, "sve%d", vq * 128);
-+                sprintf(name, "sve%" PRIu32, vq * 128);
-                 error = g_strdup_printf("cannot enable %s", name);
-                 assert_error(qts, "host", error, "{ %s: true }", name);
-                 g_free(error);
--- 
-2.19.1
 
