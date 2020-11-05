@@ -1,55 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kahTm-0002ty-Ig
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 10:47:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33802)
+	id 1kahWJ-0006XC-Pa
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 10:49:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kahTj-0002pj-Cu
- for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 10:47:11 -0500
-Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:48428)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kahTg-0006gQ-6n
- for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 10:47:10 -0500
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-244-mTztmk3uNUSAD4RJHv7G7A-1; Thu, 05 Nov 2020 10:47:03 -0500
-X-MC-Unique: mTztmk3uNUSAD4RJHv7G7A-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0AFD7809DE6;
- Thu,  5 Nov 2020 15:47:02 +0000 (UTC)
-Received: from bahia.lan (ovpn-113-123.ams2.redhat.com [10.36.113.123])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 21FF96EF5A;
- Thu,  5 Nov 2020 15:47:00 +0000 (UTC)
-Subject: [PATCH for-5.2? 2/2] Makefile: No echoing for 'make help V=1'
-From: Greg Kurz <groug@kaod.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org
-Date: Thu, 05 Nov 2020 16:47:00 +0100
-Message-ID: <160459122012.462591.8467906402712875729.stgit@bahia.lan>
-In-Reply-To: <160459121308.462591.11794514422987547665.stgit@bahia.lan>
-References: <160459121308.462591.11794514422987547665.stgit@bahia.lan>
-User-Agent: StGit/0.21
+ (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
+ id 1kahWD-0006WN-Vl; Thu, 05 Nov 2020 10:49:46 -0500
+Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:14287)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
+ id 1kahW9-0007Zj-5h; Thu, 05 Nov 2020 10:49:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1604591381;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=HSO5V/NnPVdK2gbwb/SgQFXpIENruT650/i5YptNuHI=;
+ b=P8tzvPh99rVSx/kQx1ZrnDKWVLrjAW4NzucSCYKtVmGE2L0iRuDtwyny
+ IhlVmuG+1BcgywbZtBDcQUP6ic2uStdJYZWYjK0qhSVF+yrsyalu5V5Tu
+ Lax9xr1cc6gnDHnSMMEmiIdcOfFKAEnm8CE8LHj+YiqRzAB/MLNr1Efl7 4=;
+Authentication-Results: esa6.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none
+IronPort-SDR: FRgFSROrUrMjH/hztCUYAkc/jqOVljfGZIB4e7Wk3A7tN9Z3dEjgvM1kRupO56CjASnJUoSlLQ
+ OfaAhRxqTqWJE4brvquIjBvsc60gURjFQXvReuQ9J3J4MhQETglWPzZzdElp5iQowhtOvjQQ20
+ wDvw1tRQzwpkxeaYgXqW6mWSZToogQlhzpyiLgAlwSDAa47Md1BXbOSks6REdSkGxQ/cMewJmM
+ fx6F5oQ/GBhbMdy1pgLSFiApddEoK5m8VE0mMQbp3cdq1qbww8iOF+Erk3Ox5EOTXodiIDOZpK
+ aRI=
+X-SBRS: None
+X-MesageID: 30795796
+X-Ironport-Server: esa6.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.158.21
+X-Policy: $RELAYED
+X-IronPort-AV: E=Sophos;i="5.77,453,1596513600"; d="scan'208";a="30795796"
+Date: Thu, 5 Nov 2020 15:49:10 +0000
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: Xinhao Zhang <zhangxinhao1@huawei.com>
+CC: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>,
+ <sstabellini@kernel.org>, <paul@xen.org>, <dengkai1@huawei.com>,
+ <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] hw/xen: Don't use '#' flag of printf format
+Message-ID: <20201105154910.GK2214@perard.uk.xensource.com>
+References: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=groug@kaod.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: kaod.org
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
- helo=us-smtp-delivery-44.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 10:47:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
+Received-SPF: pass client-ip=216.71.155.175;
+ envelope-from=anthony.perard@citrix.com; helo=esa6.hc3370-68.iphmx.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 10:49:36
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,29 +66,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 15:47:11 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 15:49:47 -0000
 
-It doesn't bring much to have echoing with "make help". Suppress it
-unconditionally.
+On Wed, Nov 04, 2020 at 09:37:09PM +0800, Xinhao Zhang wrote:
+> Fix code style. Don't use '#' flag of printf format ('%#') in
+> format strings, use '0x' prefix instead
+> 
+> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+> Signed-off-by: Kai Deng <dengkai1@huawei.com>
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
----
- Makefile |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
 
-diff --git a/Makefile b/Makefile
-index df7a02a61a43..ba6b702107a5 100644
---- a/Makefile
-+++ b/Makefile
-@@ -270,7 +270,7 @@ include $(SRC_PATH)/tests/docker/Makefile.include
- include $(SRC_PATH)/tests/vm/Makefile.include
-=20
- print-help-run =3D printf "  %-30s - %s\\n" "$1" "$2"
--print-help =3D $(quiet-@)$(call print-help-run,$1,$2)
-+print-help =3D @$(call print-help-run,$1,$2)
-=20
- .PHONY: help
- help:
+Thanks,
 
-
+-- 
+Anthony PERARD
 
