@@ -1,59 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kahWJ-0006XC-Pa
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 10:49:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34598)
+	id 1kaheP-0005YM-EA
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 10:58:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
- id 1kahWD-0006WN-Vl; Thu, 05 Nov 2020 10:49:46 -0500
-Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:14287)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
- id 1kahW9-0007Zj-5h; Thu, 05 Nov 2020 10:49:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1604591381;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=HSO5V/NnPVdK2gbwb/SgQFXpIENruT650/i5YptNuHI=;
- b=P8tzvPh99rVSx/kQx1ZrnDKWVLrjAW4NzucSCYKtVmGE2L0iRuDtwyny
- IhlVmuG+1BcgywbZtBDcQUP6ic2uStdJYZWYjK0qhSVF+yrsyalu5V5Tu
- Lax9xr1cc6gnDHnSMMEmiIdcOfFKAEnm8CE8LHj+YiqRzAB/MLNr1Efl7 4=;
-Authentication-Results: esa6.hc3370-68.iphmx.com;
- dkim=none (message not signed) header.i=none
-IronPort-SDR: FRgFSROrUrMjH/hztCUYAkc/jqOVljfGZIB4e7Wk3A7tN9Z3dEjgvM1kRupO56CjASnJUoSlLQ
- OfaAhRxqTqWJE4brvquIjBvsc60gURjFQXvReuQ9J3J4MhQETglWPzZzdElp5iQowhtOvjQQ20
- wDvw1tRQzwpkxeaYgXqW6mWSZToogQlhzpyiLgAlwSDAa47Md1BXbOSks6REdSkGxQ/cMewJmM
- fx6F5oQ/GBhbMdy1pgLSFiApddEoK5m8VE0mMQbp3cdq1qbww8iOF+Erk3Ox5EOTXodiIDOZpK
- aRI=
-X-SBRS: None
-X-MesageID: 30795796
-X-Ironport-Server: esa6.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.158.21
-X-Policy: $RELAYED
-X-IronPort-AV: E=Sophos;i="5.77,453,1596513600"; d="scan'208";a="30795796"
-Date: Thu, 5 Nov 2020 15:49:10 +0000
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: Xinhao Zhang <zhangxinhao1@huawei.com>
-CC: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>,
- <sstabellini@kernel.org>, <paul@xen.org>, <dengkai1@huawei.com>,
- <alex.chen@huawei.com>, <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] hw/xen: Don't use '#' flag of printf format
-Message-ID: <20201105154910.GK2214@perard.uk.xensource.com>
-References: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kaheL-0005W5-Sx; Thu, 05 Nov 2020 10:58:09 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:41657)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kaheJ-0002Hr-BN; Thu, 05 Nov 2020 10:58:09 -0500
+Received: by mail-ej1-x644.google.com with SMTP id cw8so3337459ejb.8;
+ Thu, 05 Nov 2020 07:58:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=akGYpSdXwXTO+slFHz9QRa/ovyy+/e8Ht98Yg4n5bOU=;
+ b=dtVUDhE/CzgiNp69y43doUWVHmeaTMbDeUS6Re52KZJAByFa/MpeNgfSMt8Bf1xSuB
+ A09tqQwyd80IYie/jtt8Gg6Hl3c1UpllwyevhLb8+aQiCCxfIP0t0i1XBkMAmubq6vQo
+ FwJXXFgnT2dC1g6doZJ8R465CNfXH4LWnohie3aBv5wgVF4mpxWk/dt+oLKL1f2yvLaK
+ w4T9i7NBPUSlxDvzfKHOVWdHs1uLYx5RhPfLC9PVQOkyLyIgn+pbpc/nadu3gqvz9F9N
+ 70pbo1bTqgN4f1fy6gFgsLYJhQaf+N36k5bKQauslqa9fl3wNGTYs5Z84YgxIKPTyMN5
+ f/+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=akGYpSdXwXTO+slFHz9QRa/ovyy+/e8Ht98Yg4n5bOU=;
+ b=s4eSxuM9qVI+QREBQuvL4p5WIVK5WYbQwXDpFvfPzsDVRHe1GdpquZ6sEfF9z1EW9j
+ BZ18tPGq0B0OOcTdT7z6dG6oASg4wV8/FGcWRMq10grNS2kPYQ5rdrVfITDWOW2jTWp6
+ HTxhet1MLmRJBnYkuW+24bCMZS/hBpe++2EQJaMF+xDtysgYwkI+aVVWX7OOsRv0G2YQ
+ 14xe23/K6Z/eZb4hZP26A99nBLfS/ppe4tpORs3TqwDySckffaQsUaRnA6S46XG+UknV
+ p0hMrhySsYmineQQ0103mklQJO20afvV+PkgG1Wq9lKl0Dg+E+cMArGUpqfuT7MSnP/E
+ vZng==
+X-Gm-Message-State: AOAM530/Avl63nQd9fX7VunWU0/6Qx7nphOxvC4xCitogFHc4W8BfqBn
+ 5MYIn+vac2FNykNXowkAatRk3SDHR3KXrrwChNI=
+X-Google-Smtp-Source: ABdhPJyj5Csj2Qb+e79XAHPl7Yb1LCv8IaA8GUhHsmo4jXTcZY7fXqNt/gJ39avMtL+Wcbk2+aktZLJDM7gUc2RpaQw=
+X-Received: by 2002:a17:906:5618:: with SMTP id
+ f24mr2900200ejq.381.1604591885326; 
+ Thu, 05 Nov 2020 07:58:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20201104133709.3326630-1-zhangxinhao1@huawei.com>
-Received-SPF: pass client-ip=216.71.155.175;
- envelope-from=anthony.perard@citrix.com; helo=esa6.hc3370-68.iphmx.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 10:49:36
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <5FA41448.4040404@huawei.com>
+In-Reply-To: <5FA41448.4040404@huawei.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 5 Nov 2020 19:57:51 +0400
+Message-ID: <CAJ+F1CKHmJk2ngLRoEXdOhZk8DDjaOsWZu6O5qsNhWKDfidAgw@mail.gmail.com>
+Subject: Re: [PATCH] tests/qtest/tpm: Remove redundant check in the
+ tpm_test_swtpm_test()
+To: AlexChen <alex.chen@huawei.com>
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: multipart/alternative; boundary="000000000000559e6c05b35e29df"
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,19 +74,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 15:49:47 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 15:58:10 -0000
 
-On Wed, Nov 04, 2020 at 09:37:09PM +0800, Xinhao Zhang wrote:
-> Fix code style. Don't use '#' flag of printf format ('%#') in
-> format strings, use '0x' prefix instead
-> 
-> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+--000000000000559e6c05b35e29df
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+On Thu, Nov 5, 2020 at 7:05 PM AlexChen <alex.chen@huawei.com> wrote:
 
-Thanks,
+> The 'addr' would not be NULL after checking 'succ' is valid,
+> and it has been dereferenced in the previous code(args =3D
+> g_strdup_printf()).
+> So the check on 'addr' in the tpm_test_swtpm_test() is redundant. Remove
+> it.
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>
 
--- 
-Anthony PERARD
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+---
+>  tests/qtest/tpm-tests.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>
+> diff --git a/tests/qtest/tpm-tests.c b/tests/qtest/tpm-tests.c
+> index 70c80f8379..0da3a8a4df 100644
+> --- a/tests/qtest/tpm-tests.c
+> +++ b/tests/qtest/tpm-tests.c
+> @@ -70,10 +70,8 @@ void tpm_test_swtpm_test(const char *src_tpm_path,
+> tx_func *tx,
+>      qtest_end();
+>      tpm_util_swtpm_kill(swtpm_pid);
+>
+> -    if (addr) {
+> -        g_unlink(addr->u.q_unix.path);
+> -        qapi_free_SocketAddress(addr);
+> -    }
+> +    g_unlink(addr->u.q_unix.path);
+> +    qapi_free_SocketAddress(addr);
+>  }
+>
+>  void tpm_test_swtpm_migration_test(const char *src_tpm_path,
+> --
+> 2.19.1
+>
+>
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--000000000000559e6c05b35e29df
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 5, 2020 at 7:05 PM AlexCh=
+en &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">The &#39=
+;addr&#39; would not be NULL after checking &#39;succ&#39; is valid,<br>
+and it has been dereferenced in the previous code(args =3D g_strdup_printf(=
+)).<br>
+So the check on &#39;addr&#39; in the tpm_test_swtpm_test() is redundant. R=
+emove it.<br>
+<br>
+Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
+et=3D"_blank">euler.robot@huawei.com</a>&gt;<br>
+Signed-off-by: Alex Chen &lt;<a href=3D"mailto:alex.chen@huawei.com" target=
+=3D"_blank">alex.chen@huawei.com</a>&gt;<br></blockquote><div><br></div><di=
+v>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lurea=
+u@redhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div> <br></div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
+:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0tests/qtest/tpm-tests.c | 6 ++----<br>
+=C2=A01 file changed, 2 insertions(+), 4 deletions(-)<br>
+<br>
+diff --git a/tests/qtest/tpm-tests.c b/tests/qtest/tpm-tests.c<br>
+index 70c80f8379..0da3a8a4df 100644<br>
+--- a/tests/qtest/tpm-tests.c<br>
++++ b/tests/qtest/tpm-tests.c<br>
+@@ -70,10 +70,8 @@ void tpm_test_swtpm_test(const char *src_tpm_path, tx_fu=
+nc *tx,<br>
+=C2=A0 =C2=A0 =C2=A0qtest_end();<br>
+=C2=A0 =C2=A0 =C2=A0tpm_util_swtpm_kill(swtpm_pid);<br>
+<br>
+-=C2=A0 =C2=A0 if (addr) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 g_unlink(addr-&gt;u.q_unix.path);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qapi_free_SocketAddress(addr);<br>
+-=C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 g_unlink(addr-&gt;u.q_unix.path);<br>
++=C2=A0 =C2=A0 qapi_free_SocketAddress(addr);<br>
+=C2=A0}<br>
+<br>
+=C2=A0void tpm_test_swtpm_migration_test(const char *src_tpm_path,<br>
+-- <br>
+2.19.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--000000000000559e6c05b35e29df--
 
