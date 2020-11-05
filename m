@@ -1,52 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kaZaY-0006q7-LN
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 02:21:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45378)
+	id 1kaa6D-0005SG-6Q
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2020 02:54:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
- id 1kaZaW-0006p3-NH; Thu, 05 Nov 2020 02:21:40 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2439)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shiliyang@huawei.com>)
- id 1kaZaT-0003gc-9C; Thu, 05 Nov 2020 02:21:40 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CRZh43tznzLsns;
- Thu,  5 Nov 2020 15:21:24 +0800 (CST)
-Received: from [10.108.235.13] (10.108.235.13) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 5 Nov 2020 15:21:20 +0800
-Subject: Re: [PATCH 1/4] bsd-user: space required after semicolon
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Thomas Huth
- <thuth@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>,
- <alex.bennee@linaro.org>, <laurent@vivier.eu>
-CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-trivial@nongnu.org>, 
- <qemu-devel@nongnu.org>
-References: <fc9d7415-a17f-2958-69fd-0b5f54e553a1@huawei.com>
- <b7231b6c-97ad-5b4c-0932-08fa331dbb30@huawei.com>
- <28961057-f570-a203-e098-6ec0d5be3f75@redhat.com>
- <52c7980b-33bc-7e76-b985-9df77259f33b@redhat.com>
-From: shiliyang <shiliyang@huawei.com>
-Message-ID: <407b8311-7177-e2bb-202c-d8386488fc55@huawei.com>
-Date: Thu, 5 Nov 2020 15:21:20 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaa6B-0005Rx-68
+ for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 02:54:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26584)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaa68-00079w-Ln
+ for qemu-trivial@nongnu.org; Thu, 05 Nov 2020 02:54:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604562859;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MyPxR7rGHD1XZf95M2xm2rKMtSeMe5w5bSYOTmeF/Ko=;
+ b=V4MjjG7152Ud05PnwsUJDDxFv3TO9bUI3UWIJHEDgrKjk9ZJse3Odyb9hs2jBddMx8CAht
+ +esdj8Ibl5JR/G5GRHT7QwmU4Ya+pP+omaq/aC0yJC8Up66fOezC/jP/qJS58+rIAz5c3K
+ +JBmDBsgqe7nGd66IF0Z/PiE/ivCdvw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-6-HhiHFmNuPFCGA4spOWV0JQ-1; Thu, 05 Nov 2020 02:54:15 -0500
+X-MC-Unique: HhiHFmNuPFCGA4spOWV0JQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DBEE7D3E80;
+ Thu,  5 Nov 2020 07:54:13 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-117.ams2.redhat.com [10.36.112.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B18081C93D;
+ Thu,  5 Nov 2020 07:54:12 +0000 (UTC)
+Subject: Re: [PATCH V2] qtest: Fix bad printf format specifiers
+To: AlexChen <alex.chen@huawei.com>, lvivier@redhat.com,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <5FA3A0C6.5040500@huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <466ac5e7-abdd-2796-0b47-ce67557dfd1f@redhat.com>
+Date: Thu, 5 Nov 2020 08:54:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <52c7980b-33bc-7e76-b985-9df77259f33b@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <5FA3A0C6.5040500@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.108.235.13]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=shiliyang@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 01:50:51
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 22:46:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,41 +76,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2020 07:21:41 -0000
+X-List-Received-Date: Thu, 05 Nov 2020 07:54:23 -0000
 
+On 05/11/2020 07.50, AlexChen wrote:
+> We should use printf format specifier PRIu32 instead of "%d" for
+> argument of type 'uint32_t'.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  tests/qtest/arm-cpu-features.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index d20094d5a7..003ba24fac 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -536,7 +536,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>          if (kvm_supports_sve) {
+>              g_assert(vls != 0);
+>              max_vq = 64 - __builtin_clzll(vls);
+> -            sprintf(max_name, "sve%d", max_vq * 128);
+> +            sprintf(max_name, "sve%" PRIu32, max_vq * 128);
+> 
+>              /* Enabling a supported length is of course fine. */
+>              assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
+> @@ -556,7 +556,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>                   * unless all larger, supported vector lengths are also
+>                   * disabled.
+>                   */
+> -                sprintf(name, "sve%d", vq * 128);
+> +                sprintf(name, "sve%" PRIu32, vq * 128);
+>                  error = g_strdup_printf("cannot disable %s", name);
+>                  assert_error(qts, "host", error,
+>                               "{ %s: true, %s: false }",
+> @@ -569,7 +569,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>               * we need at least one vector length enabled.
+>               */
+>              vq = __builtin_ffsll(vls);
+> -            sprintf(name, "sve%d", vq * 128);
+> +            sprintf(name, "sve%" PRIu32, vq * 128);
+>              error = g_strdup_printf("cannot disable %s", name);
+>              assert_error(qts, "host", error, "{ %s: false }", name);
+>              g_free(error);
+> @@ -581,7 +581,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>                  }
+>              }
+>              if (vq <= SVE_MAX_VQ) {
+> -                sprintf(name, "sve%d", vq * 128);
+> +                sprintf(name, "sve%" PRIu32, vq * 128);
+>                  error = g_strdup_printf("cannot enable %s", name);
+>                  assert_error(qts, "host", error, "{ %s: true }", name);
+>                  g_free(error);
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-On 2020/11/4 19:13, Philippe Mathieu-Daudé wrote:
-> On 11/4/20 12:08 PM, Thomas Huth wrote:
->> On 04/11/2020 11.20, shiliyang wrote:
->>> This patch fixes error style problems found by checkpatch.pl:
->>> ERROR: space required after that ';'
->>>
->>> Signed-off-by: Liyang Shi <shiliyang@huawei.com>
->>>
->>> ---
->>>  bsd-user/elfload.c | 2 +-
->>>  bsd-user/syscall.c | 4 ++--
->>>  2 files changed, 3 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->>> index 9f4210af9a..25e625d86b 100644
->>> --- a/bsd-user/elfload.c
->>> +++ b/bsd-user/elfload.c
->>> @@ -1227,7 +1227,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct target_pt_regs *regs,
->>>      end_data = 0;
->>>      interp_ex.a_info = 0;
->>>
->>> -    for(i=0;i < elf_ex.e_phnum; i++) {
->>> +    for(i=0; i < elf_ex.e_phnum; i++) {
->>
->> While you're at it, please also add white spaces around the "=" in that line.
-> 
-Yes, thanks for your review, I will fix it.
-> IOW please run checkpatch after fixing a checkpatch issue ;)
-> 
-Thanks for your advise, I missed this operation. I will fix other checkpatch issues first then send new patch.
-> .
-> 
-Thanks.
 
