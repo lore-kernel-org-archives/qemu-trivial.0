@@ -1,69 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kavMn-00012T-VP
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 01:36:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56882)
+	id 1kaytt-0006vO-9G
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 05:23:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kavMl-00010C-2G
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 01:36:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28300)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kavMg-0007WZ-WC
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 01:36:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604644606;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ac4OdVgQwZBSzTCyiZDUg9So1R3sCXGDWjIdNhFYaMQ=;
- b=EYDHHpwLPYMgOcEs8KSVSB4/22gtU7AKLKwkCarzuOShEnkLDPxTNwCQL7d/U6ZlTATJ4/
- /1/07/NidRmhl5KglZfIQfwUkxOTzguBlxpnXFmH56Rp367I8aXtiIIZx6KwqDVSyejP0y
- AL5SKr+7ePCoohtp21p1aB8IT5SJMoU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-450-AYfBbK2COPWDVqOusN3fqg-1; Fri, 06 Nov 2020 01:36:45 -0500
-X-MC-Unique: AYfBbK2COPWDVqOusN3fqg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3649879525;
- Fri,  6 Nov 2020 06:36:43 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
- [10.36.112.103])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B2D446E70B;
- Fri,  6 Nov 2020 06:36:43 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0A4AB1132BD6; Fri,  6 Nov 2020 07:36:42 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kaytq-0006tL-JA; Fri, 06 Nov 2020 05:23:18 -0500
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:45857)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kayto-0007ET-Ss; Fri, 06 Nov 2020 05:23:18 -0500
+Received: by mail-lj1-x243.google.com with SMTP id t13so796312ljk.12;
+ Fri, 06 Nov 2020 02:23:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=TJ6UbepRXIlGmimkfzgxqHOHuQZTJcVoiiiGH01DJ5o=;
+ b=BvNuBfqjf2tFz99rlNhgnCPpMfUjZ33Km8n0ajL3ALBwX4KA4AnMbLx5latmc51ZE6
+ ew+hslp9yTwGnr7b3hPkr6iizd3ur4DbUre1XckERVIoNXdxWhUydPzsdDhplPuc2unT
+ lYBRz2h1AqFu7nMNGvnejeJR6qP31GDOVi2/RyhPK9UHUkeKsSZS8X6uOGlB+K7lpTsx
+ +AbhmndRl2DY6oxqqobsTRYkA6nh5UxPo2fKVhLM4LMcAQHdgb4DLyMaKi5MuTWf3tmO
+ 11oG8oE1xoWex3eD21gF3fI8g7UTl1nfIIMLh2tc5kNN+abwRVPjbEh+XWyF9PFu4f+9
+ 9mvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=TJ6UbepRXIlGmimkfzgxqHOHuQZTJcVoiiiGH01DJ5o=;
+ b=DhrCnKzmgB7ExubHB6n/zuPZgUgFnow/F0CP2pFiKTHmJsaK/NWir4cU+emCQDDxTk
+ 1AR2FMTFF8BfKCrmYzma+luIywOj0mdCjNQI7HYUD9bxVhKxcEL8E3MMFL433XoDMCn7
+ KuTaE/lRiBQe+P8RGVd8LSfcm7TryPutGB9kmeINNuWM7AKDUGy8aVusVHegX5RGPGUF
+ zgnvKKF5bnPjcUrWutcUm6oi3IyMIlXO8xlwqpeFinvLNBzbGAf3iPcQc5+N+y7s93D6
+ +5E78gTu8fK/aI8Vr2RS4vygnEo8kSOXl/xpPBa09gsEUNHrtUITkKg4J1qIU7vpbWuD
+ w00w==
+X-Gm-Message-State: AOAM533H67VQmfO647ea20gW8fUo9CPbyWXgzXrl+VToNnQ73wFRNpI7
+ uTemtnKEue/KDE8GdrpeSh4=
+X-Google-Smtp-Source: ABdhPJy0oQ/KL8U0vpXVoVqvhDknvyHwbluFcXmgG9bqTRKuZT9zFO8CYzHQqw2jP3YAU4+bqOmUMg==
+X-Received: by 2002:a05:651c:484:: with SMTP id
+ s4mr512954ljc.272.1604658193608; 
+ Fri, 06 Nov 2020 02:23:13 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id r22sm96747ljd.111.2020.11.06.02.23.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Nov 2020 02:23:12 -0800 (PST)
+Date: Fri, 6 Nov 2020 11:23:12 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: AlexChen <alex.chen@huawei.com>
-Cc: Thomas Huth <thuth@redhat.com>,  <lvivier@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  QEMU Trivial <qemu-trivial@nongnu.org>,  QEMU
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH V2] qtest: Fix bad printf format specifiers
-References: <5FA3A0C6.5040500@huawei.com>
-Date: Fri, 06 Nov 2020 07:36:42 +0100
-In-Reply-To: <5FA3A0C6.5040500@huawei.com> (AlexChen's message of "Thu, 5 Nov
- 2020 14:50:46 +0800")
-Message-ID: <87sg9nouth.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
+ zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] target/microblaze: Fix possible array out of bounds in
+ mmu_write()
+Message-ID: <20201106102312.GI2954729@toto>
+References: <5FA10ABA.1080109@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/05 21:51:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5FA10ABA.1080109@huawei.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::243;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,15 +78,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 06:36:55 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 10:23:18 -0000
 
-AlexChen <alex.chen@huawei.com> writes:
+On Tue, Nov 03, 2020 at 03:46:02PM +0800, AlexChen wrote:
+> The size of env->mmu.regs is 3, but the range of 'rn' is [0, 5].
+> To avoid data access out of bounds, only if 'rn' is less than 3, we
+> can print env->mmu.regs[rn]. In other cases, we can print
+> env->mmu.regs[MMU_R_TLBX].
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 
-> We should use printf format specifier PRIu32 instead of "%d" for
-> argument of type 'uint32_t'.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-I prefer v1, which uses %u.
 
-[...]
-
+> ---
+>  target/microblaze/mmu.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/microblaze/mmu.c b/target/microblaze/mmu.c
+> index 1dbbb271c4..917ad6d69e 100644
+> --- a/target/microblaze/mmu.c
+> +++ b/target/microblaze/mmu.c
+> @@ -234,7 +234,8 @@ void mmu_write(CPUMBState *env, bool ext, uint32_t rn, uint32_t v)
+>      unsigned int i;
+> 
+>      qemu_log_mask(CPU_LOG_MMU,
+> -                  "%s rn=%d=%x old=%x\n", __func__, rn, v, env->mmu.regs[rn]);
+> +                  "%s rn=%d=%x old=%x\n", __func__, rn, v,
+> +                  rn < 3 ? env->mmu.regs[rn] : env->mmu.regs[MMU_R_TLBX]);
+> 
+>      if (cpu->cfg.mmu < 2 || !cpu->cfg.mmu_tlb_access) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "MMU access on MMU-less system\n");
+> -- 
+> 2.19.1
 
