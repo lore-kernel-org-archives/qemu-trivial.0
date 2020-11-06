@@ -1,76 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kb4Sq-0003jF-FP
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 11:19:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49874)
+	id 1kb4ua-00076S-1c
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 11:48:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kb4So-0003it-NF
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 11:19:46 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:43270)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kb4Sn-0002Xt-2p
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 11:19:46 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id b9so1828854edu.10
- for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 08:19:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oN9OQFym7O5MXn5HwIx0K857oypcAsC25S2AkjjW1f0=;
- b=WWM4ZThvpDczlIjvihc+LG8gA8M0x/WTWRJ/poAea3s9odFvQRUJ/nZkiWeFcRiDmv
- XzJcgmaiB/W1E8KJTzkCVrKFOdJnHp6ju4kPJwDsTrKy2Ko57L8a6d4YtUPSCF7w33Xe
- QKbVNF0TlpwoLAaskouS5kJGJBuVPaf5ItRv/o2yxUnlF06833WOb5ZQSHtGUwxzrrXT
- 9Eqm2klyyCA8pOX9OPMJ6PJp/mqNuTg//hGhVaRVJdNp08uKLZwmw7fPYG0c1CA9O0No
- A2Fl4GihWgkecnFZUoOuWj4DL39fA+g/UeclKJ2LhWxdeJqDJvzjVACx2IfT84S7S3Y4
- DTMA==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kb4uU-00075a-86
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 11:48:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36881)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kb4uR-00051g-ID
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 11:48:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604681295;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FxRn1SV0tEERrwfDvB8iMmSyym/77PXUc9iRMHBPQhY=;
+ b=Vit5hs35IqAM8dT3bdW32uo91clzeFf+IOMbHIKJl1iP3jCheAo+g9mBazkiEWhLpqJ4b6
+ 7k0HBlaXwKPQuz9LK+5xELlhMcPJnAbEhz/iWPiywtI6G+UGkiowupY5QOnYLp8zC3m1RY
+ HdK0YM5VtP/Ah3JqojdB3R0kLONnIEg=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-504-KpGWZeTPOZiIB2P0BTFPMQ-1; Fri, 06 Nov 2020 11:48:14 -0500
+X-MC-Unique: KpGWZeTPOZiIB2P0BTFPMQ-1
+Received: by mail-wm1-f69.google.com with SMTP id u207so659648wmu.4
+ for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 08:48:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=oN9OQFym7O5MXn5HwIx0K857oypcAsC25S2AkjjW1f0=;
- b=oAF66TOyWomLmjRXtKazVJbuti9f9o4MWUSIpUKlBtN2F1uVE4ghW9U3V8naQ4tXrN
- 3JbvuDiTNq2z2hpl3gjFFiaFSjxquQgsafGZXXOvfhqXhKKTdDvZM/j2inhqf+Rmfxo6
- TZGxv6z4xnZL4go8okJdeQHlPoxXyoW1D/wlMFPHzPPnYSYVNcgZOLboHlN9Q360z50V
- KMJdKxo5gEtt4eTC2TK4abZny8amr8q2NYHmMsuOArTcvUWx6TaSN0b1GbWJw6lLe5mt
- hokZ5+LrnUeNF9rtKEKIzPvq4aXqwRIe3KPbaAEGSA+dtdsumIajXovt3+zcIIsN7bUQ
- FsCQ==
-X-Gm-Message-State: AOAM530ZPx1e5vjSUDoGuTrUVWjqdq/8TfiXmLX4LiWDOWd3hQXWi7QH
- PFUjiOrGvIYKvff+t2QqPplt6DXuymhYMEFXmY1m8A==
-X-Google-Smtp-Source: ABdhPJy92la7BEygKjmWRuyPxBpGxD1RIARCa92qquxKSDcVOg6XhncCJ5khHPwL3sHC0jjtyagt9eNHC6qg5jdiwqU=
-X-Received: by 2002:aa7:db8a:: with SMTP id u10mr1366070edt.204.1604679583194; 
- Fri, 06 Nov 2020 08:19:43 -0800 (PST)
-MIME-Version: 1.0
-References: <20201105154208.12442-1-ganqixin@huawei.com>
- <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
- <87d00qk51l.fsf@dusky.pond.sub.org>
- <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
- <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
- <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
- <87zh3ufoy4.fsf@dusky.pond.sub.org>
-In-Reply-To: <87zh3ufoy4.fsf@dusky.pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Nov 2020 16:19:31 +0000
-Message-ID: <CAFEAcA-3a8gYRPzk4jzv3QfLAw3tL74LoFTMy+VhXZA3QdOfPg@mail.gmail.com>
-Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
- the code
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=FxRn1SV0tEERrwfDvB8iMmSyym/77PXUc9iRMHBPQhY=;
+ b=n9IFaU+ZP+lbSMCmdvx9pBdpT21SQGZIk+KvjKASPSLHl6WaX22CFuXvttec422chL
+ D1jY26pTjcK9RaQp1pX2ktt+r3E9beOL38c1tB6xvqlBHK1BM2r9ew/xt0+E+DVjX8Ml
+ ysmrT+3qOo0v8Gm530vPbDuJccdrzGeN1nsxdfR5/sltkAiBBS2nNpNNhXCQuXh43amb
+ ls3rbObfYJY31emsK148Wa1D2aS/YhfOn6Po6WZqAuVfU25Q5Hm9AiaHPI5bmA8XxivJ
+ dfjZCgervA7qkYsu0DYEaJ7CVHImQM2GxpOBgoTvW/VLiwTrFOEFZ1mXTQRdsRFZJgul
+ +Klg==
+X-Gm-Message-State: AOAM532zJcpyaNu9N0PsWxTU7sEAUV7wbTlqTn8Gkd8YWldVeMoVr/py
+ M62vRjf27fbNEPZKn//62QL7yRhFTWXaId2LHE68PGmvWyFPDaYjhkf7+0a/1yrtNGkdMWkb9i1
+ gvW7uUGLZqN/R34XrtQ==
+X-Received: by 2002:a7b:c349:: with SMTP id l9mr500939wmj.148.1604681292796;
+ Fri, 06 Nov 2020 08:48:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzGR/VYM9Jni3hg/PS84G3gpDxwNqpYSpe3OrH4azJ4WWJv51OR9Vs+r4mtinyWoi6YndSTWg==
+X-Received: by 2002:a7b:c349:: with SMTP id l9mr500915wmj.148.1604681292592;
+ Fri, 06 Nov 2020 08:48:12 -0800 (PST)
+Received: from redhat.com (bzq-79-176-118-93.red.bezeqint.net. [79.176.118.93])
+ by smtp.gmail.com with ESMTPSA id h4sm2855871wrp.52.2020.11.06.08.48.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Nov 2020 08:48:10 -0800 (PST)
+Date: Fri, 6 Nov 2020 11:48:06 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  "Daniel P. Berrange" <berrange@redhat.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, Gan Qixin <ganqixin@huawei.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Gan Qixin <ganqixin@huawei.com>
+Subject: Re: [PATCH] CODING_STYLE.rst: Be less strict about 80 character limit
+Message-ID: <20201106114740-mutt-send-email-mst@kernel.org>
+References: <20201106112940.31300-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <20201106112940.31300-1-peter.maydell@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/06 06:30:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,40 +91,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 16:19:46 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 16:48:23 -0000
 
-On Fri, 6 Nov 2020 at 16:08, Markus Armbruster <armbru@redhat.com> wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> > Personally I just don't think checkpatch should be nudging people
-> > into folding 85-character lines, especially when there are
-> > multiple very similar lines in a row and only one would get
-> > folded, eg the prototypes in target/arm/helper.h -- some of
-> > these just edge beyond 80 characters and I think wrapping them
-> > is clearly worse for readability.
->
-> The warning's intent is "are you sure this line is better not broken?"
-> The problem is people treating it as an order that absolves them from
-> using good judgement instead.
->
-> I propose to fix it by phrasing the warning more clearly.  Instead of
->
->     WARNING: line over 80 characters
->
-> we could say
->
->     WARNING: line over 80 characters
->     Please examine the line, and use your judgement to decide whether
->     it should be broken.
+On Fri, Nov 06, 2020 at 11:29:40AM +0000, Peter Maydell wrote:
+> Relax the wording about line lengths a little bit; this goes with the
+> checkpatch changes to warn at 100 characters rather than 80.
+> 
+> (Compare the Linux kernel commit bdc48fa11e46f8; our coding style is
+> not theirs, but the rationale is good and applies to us too.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-I would suggest that for a line over 80 characters and less than
-85 characters, the answer is going to be "better not broken"
-a pretty high percentage of the time; that is, the warning
-has too many false positives, and we should tune it to have fewer.
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-And the lure of "produce no warnings" is a strong one, so
-we should be at least cautious about what our tooling is
-nudging us into doing.
+> ---
+>  CODING_STYLE.rst | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/CODING_STYLE.rst b/CODING_STYLE.rst
+> index 8b13ef0669e..7bf4e39d487 100644
+> --- a/CODING_STYLE.rst
+> +++ b/CODING_STYLE.rst
+> @@ -85,8 +85,13 @@ Line width
+>  Lines should be 80 characters; try not to make them longer.
+>  
+>  Sometimes it is hard to do, especially when dealing with QEMU subsystems
+> -that use long function or symbol names.  Even in that case, do not make
+> -lines much longer than 80 characters.
+> +that use long function or symbol names. If wrapping the line at 80 columns
+> +is obviously less readable and more awkward, prefer not to wrap it; better
+> +to have an 85 character line than one which is awkwardly wrapped.
+> +
+> +Even in that case, try not to make lines much longer than 80 characters.
+> +(The checkpatch script will warn at 100 characters, but this is intended
+> +as a guard against obviously-overlength lines, not a target.)
+>  
+>  Rationale:
+>  
+> -- 
+> 2.20.1
 
-thanks
--- PMM
 
