@@ -1,74 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kb2ZG-0005oE-Fv
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 09:18:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50590)
+	id 1kb33Z-0000lW-4n
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 09:49:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb2ZF-0005nR-Cg
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:18:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26889)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb33X-0000k8-M5
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:49:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31077)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb2ZB-0001JI-2n
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:18:17 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb33W-0003cb-2j
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:49:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604672292;
+ s=mimecast20190719; t=1604674172;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fosMAQmbhAi5xlqDEKEqu4kiz3808IUhWO0rlufz+SQ=;
- b=He3SJINsQSuCDloQgBLEOI37UDBFpzC2XxhrOVo/XDXfifrEUWVYDpxn5Io0njqfZIjXzx
- XgDeJUchb10H6bX1jm57ddVXFK+vPlh9QNDG/4iSQpDSB3vBc7YoM0Q+dlDIMvdPFWDiLL
- +J8dgRx4s5PrFdHZEpsOpHkV6SK5xLc=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-596-NDlb_5M7O56AqWvPBccRbQ-1; Fri, 06 Nov 2020 09:18:10 -0500
-X-MC-Unique: NDlb_5M7O56AqWvPBccRbQ-1
-Received: by mail-wr1-f72.google.com with SMTP id w6so529994wrk.1
- for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 06:18:09 -0800 (PST)
+ bh=p3RAt5gU4b6xZjcbF/eXTV1ap+70W4fuDZRQSNFImrY=;
+ b=D+RWN71gN+YCKScQVY75EPiLhI1XMurpgiVXYVXdQC08830yHy7YdbKOaWHYu+Ml66dAOu
+ q09/gdV32LoL6dufyJE3jFjHakz5oYphI477+bDS51D1wrtr/ySTT6bv3KPp4/mReO0xCr
+ TyDp52RQw4iUJLodHnHseP+WepCyrN0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-22-lmbQ4BPlOgiq5W5xFnrL2g-1; Fri, 06 Nov 2020 09:49:30 -0500
+X-MC-Unique: lmbQ4BPlOgiq5W5xFnrL2g-1
+Received: by mail-wr1-f69.google.com with SMTP id v14so552072wro.12
+ for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 06:49:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=fosMAQmbhAi5xlqDEKEqu4kiz3808IUhWO0rlufz+SQ=;
- b=lnbRsiBxX0OEd4S/8wDPA7ALr6X4wEYgIE+bsQ6XE9T28YOksxHRTRtbQbi8FA/B94
- 6KH6J5+aUXmwU4gILqpl9ZBSqlJo2G61IObfuxgm8bULZ4EXIA6CGOifnZHQLimuv83/
- 3M56FoBmuwnuaG2T4OjOjsDNwXvATe0E3SCxVOptkDLUpLX72h3/iMLbBAK0MZVv1f6p
- QgNSQI/6HFt1gHoR/P9MywoQXV87e2soFCF5JI/IAG6ZOK1fRIKoqFmmKiOW2Ov2RPy5
- xI13KyC/is3q7+G1wnENlwtMPb+ucxWg9GKo9HGL2cZka56q4HCOFSu+9pqVaQV9WecU
- VIlg==
-X-Gm-Message-State: AOAM532pdo0FNcOtb2jI31xcrdZ5X56RWxPHX9YHlja+obg+9cC9JL3q
- 9937bwr0J3y54l7m5jOtiimFbRBGNIMZiIBIS0DHmvsZYCpeuWv+nDGwNaLkuQrPF1lWe7nlzAV
- FB0V6QU4ZTj0CJfCweQ==
-X-Received: by 2002:a05:6000:4c:: with SMTP id
- k12mr2834258wrx.278.1604672288480; 
- Fri, 06 Nov 2020 06:18:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyL7i0yGFn/i7AtbaHmfMTB3TY7sDatjmGvJEFgEg8ltdYLy1tnRmZnKqUN1YvhExSQxIvbtA==
-X-Received: by 2002:a05:6000:4c:: with SMTP id
- k12mr2834241wrx.278.1604672288251; 
- Fri, 06 Nov 2020 06:18:08 -0800 (PST)
+ bh=p3RAt5gU4b6xZjcbF/eXTV1ap+70W4fuDZRQSNFImrY=;
+ b=CRMeq3cF14dfT0LoPBi3ztMRPp0Pgzp7Hr3Yw4wO2J/JTThvNW9EJFJ1EyDJBGWL8r
+ Vw9F8ETu7d6t1KhDCtMAekIalhBRF/ebPLvUZLA9qCPYTvocU7i1vnv0LkgnAeU6oXCA
+ 5J1zSO5SPJhwGhwjG8gpV7hua8NMMw4gxQuM/UChsxDnMOFqDiK81zP30BDP1h0IjR9W
+ 91o1URgFUDViNy0dA197uIz9DmZYYFoTV2J/4gLoEaCffx3NwCFRjOnRJsKNdgpQRbsJ
+ vO0IMQZeSYliRXFyRH15lqVw+rM+ebcVWRmgRrLFqm0+kksqi1pO5Hk7aw1C7mzLgGWZ
+ yDbA==
+X-Gm-Message-State: AOAM5320+oNxLVChqV4yMo6lmGt9dHdIhQrzduER4Ot2jI0SLPsOYa9p
+ qMm2enh6r+cyO3QAxRrFwRlgcR/shc5spVivevuOkDulzu3swHTxSq4bMGiDn3MeMT25RG/OMny
+ J3qDP2LoGZkAGlm8mOg==
+X-Received: by 2002:adf:9e48:: with SMTP id v8mr3316867wre.55.1604674169210;
+ Fri, 06 Nov 2020 06:49:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxNfigChjYNIUrTqxd+fy+WfbQTdIDSXPIZDwDpHhVixTnfa37iHhJT2gOCgcgD1CLFm82j1A==
+X-Received: by 2002:adf:9e48:: with SMTP id v8mr3316838wre.55.1604674168965;
+ Fri, 06 Nov 2020 06:49:28 -0800 (PST)
 Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id g14sm2374017wrx.22.2020.11.06.06.18.06
+ by smtp.gmail.com with ESMTPSA id 89sm2739596wrp.58.2020.11.06.06.49.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Nov 2020 06:18:07 -0800 (PST)
-Subject: Re: [PATCH] qtest: Fix bad printf format specifiers
-To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
-Cc: AlexChen <alex.chen@huawei.com>, lvivier@redhat.com,
- QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
+ Fri, 06 Nov 2020 06:49:28 -0800 (PST)
+Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
+ the code
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>, Gan Qixin <ganqixin@huawei.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-References: <5FA28117.3020802@huawei.com>
- <67eca43e-99ea-f2ce-5d9e-a9cb5c7a3a83@redhat.com>
- <5FA38A32.2020008@huawei.com>
- <18690aa2-3de9-70ad-477f-934724b284a0@redhat.com>
- <87wnyzouy4.fsf@dusky.pond.sub.org>
+References: <20201105154208.12442-1-ganqixin@huawei.com>
+ <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
+ <87d00qk51l.fsf@dusky.pond.sub.org>
+ <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
+ <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
+ <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1fd5965d-cf5e-b41b-2029-bd3e52c3e498@redhat.com>
-Date: Fri, 6 Nov 2020 15:18:06 +0100
+Message-ID: <66edd934-0ff0-bc91-7539-a6792c1906e9@redhat.com>
+Date: Fri, 6 Nov 2020 15:49:26 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <87wnyzouy4.fsf@dusky.pond.sub.org>
+In-Reply-To: <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -100,121 +104,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 14:18:17 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 14:49:35 -0000
 
-On 11/6/20 7:33 AM, Markus Armbruster wrote:
-> Thomas Huth <thuth@redhat.com> writes:
-> 
->> On 05/11/2020 06.14, AlexChen wrote:
->>> On 2020/11/4 18:44, Thomas Huth wrote:
->>>> On 04/11/2020 11.23, AlexChen wrote:
->>>>> We should use printf format specifier "%u" instead of "%d" for
->>>>> argument of type "unsigned int".
->>>>>
->>>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->>>>> ---
->>>>>  tests/qtest/arm-cpu-features.c | 8 ++++----
->>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
->>>>>
->>>>> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
->>>>> index d20094d5a7..bc681a95d5 100644
->>>>> --- a/tests/qtest/arm-cpu-features.c
->>>>> +++ b/tests/qtest/arm-cpu-features.c
->>>>> @@ -536,7 +536,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>          if (kvm_supports_sve) {
->>>>>              g_assert(vls != 0);
->>>>>              max_vq = 64 - __builtin_clzll(vls);
->>>>> -            sprintf(max_name, "sve%d", max_vq * 128);
->>>>> +            sprintf(max_name, "sve%u", max_vq * 128);
->>>>>
->>>>>              /* Enabling a supported length is of course fine. */
->>>>>              assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
->>>>> @@ -556,7 +556,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>                   * unless all larger, supported vector lengths are also
->>>>>                   * disabled.
->>>>>                   */
->>>>> -                sprintf(name, "sve%d", vq * 128);
->>>>> +                sprintf(name, "sve%u", vq * 128);
->>>>>                  error = g_strdup_printf("cannot disable %s", name);
->>>>>                  assert_error(qts, "host", error,
->>>>>                               "{ %s: true, %s: false }",
->>>>> @@ -569,7 +569,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>               * we need at least one vector length enabled.
->>>>>               */
->>>>>              vq = __builtin_ffsll(vls);
->>>>> -            sprintf(name, "sve%d", vq * 128);
->>>>> +            sprintf(name, "sve%u", vq * 128);
->>>>>              error = g_strdup_printf("cannot disable %s", name);
->>>>>              assert_error(qts, "host", error, "{ %s: false }", name);
->>>>>              g_free(error);
->>>>> @@ -581,7 +581,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>                  }
->>>>>              }
->>>>>              if (vq <= SVE_MAX_VQ) {
->>>>> -                sprintf(name, "sve%d", vq * 128);
->>>>> +                sprintf(name, "sve%u", vq * 128);
->>>>>                  error = g_strdup_printf("cannot enable %s", name);
->>>>>                  assert_error(qts, "host", error, "{ %s: true }", name);
->>>>>                  g_free(error);
->>>>>
->>>>
->>>> max_vq and vq are both "uint32_t" and not "unsigned int" ... so if you want
->>>> to fix this really really correctly, please use PRIu32 from inttypes.h instead.
->>>>
->>>
->>> Hi Thomas,
->>> Thanks for your review.
->>> According to the definition of the macro PRIu32(# define PRIu32         "u"),
->>> using PRIu32 works the same as using %u to print, and using PRIu32 to print
->>> is relatively rare in QEMU(%u 720, PRIu32 only 120). Can we continue to use %u to
->>> print max_vq and vq in this patch.
->>> Of course, this is just my small small suggestion. If you think it is better to use
->>> PRIu32 for printing, I will send patch V2.
+On 11/6/20 3:16 PM, Peter Maydell wrote:
+> On Fri, 6 Nov 2020 at 14:08, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>> Can we keep the error please? Maybe 132 is the next display logical
+>> limit once we increased the warning from 80 to 100.
 >>
->> Well, %u happens to work since "int" is 32-bit with all current compilers
->> that we support.
+>> I understand hardware evolved, we have larger displays with better
+>> resolution and can fit more characters in a line.
+>> I am a bit wary however functions become heavier (more code into
+>> a single function). Maybe this checkpatch change should go with
+>> a another one warning when a function has more than 80 lines,
+>> excluding comments? (Even 80 is too much for my taste).
 > 
-> Yes, it works.
-> 
->>                  But if there is ever a compiler where the size of int is
->> different, you'll get a compiler warning here again.
-> 
-> No, we won't.
-> 
-> If we ever use a compiler where int is narrower than 32 bits, then the
-> type of the argument is actually uint32_t[1].  We can forget about this
-> case, because "int narrower than 32 bits" is not going to fly with our
-> code base.
-> 
-> If we ever use a compiler where int is wider than 32 bits, then the type
-> of the argument is *not* uint32_t[2].  PRIu32 will work anyway, because
-> it will actually retrieve an unsigned int argument, *not* an uint32_t
-> argument[3].
-> 
-> In other words "%" PRIu32 is just a less legible alias for "%u" in all
-> cases that matter.
+> Personally I just don't think checkpatch should be nudging people
+> into folding 85-character lines, especially when there are
+> multiple very similar lines in a row and only one would get
+> folded, eg the prototypes in target/arm/helper.h -- some of
+> these just edge beyond 80 characters and I think wrapping them
+> is clearly worse for readability. If we don't want people
+> sending us "style fix" patches which wrap >80 char lines
+> (which I think we do not) then we shouldn't have checkpatch
+> complain about them, because if it does then that's what we get.
 
-Can we add a checkpatch rule to avoid using 'PRI[dux]32' format,
-so it is clear for everyone?
+I think I was not clear. I am not arguing against changing the *length*
+limit of a line (although I'd still keep one, as I don't think we want
+lines with 500 characters). I'm suggesting an orthogonal change,
+restricting the number of lines in a function :)
 
 > 
-> And that's why I would simply use "%u".
-> 
->>                                                      So if we now fix this
->> up, then let's do it really right and use PRIu32, please.
->>
->>  Thomas
-> 
-> 
-> [1] Because promotion does nothing either argument, and the usual
-> arithmetic conversions convert to uint32_t.  See my first reply.
-> 
-> [2] Because uint32_t gets promoted to unsigned int.  See my first reply.
-> 
-> [3] Because variable arguments undergo default argument promotion (§
-> 6.5.2.2 Function calls), which promotes uint32_t to unsigned int.
-> 
+> thanks
+> -- PMM
 > 
 
 
