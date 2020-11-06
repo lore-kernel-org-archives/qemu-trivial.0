@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kb1cS-00046y-0r
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 08:17:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38656)
+	id 1kb1yH-0005Wd-D9
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 08:40:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kb1cM-000466-Eo
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 08:17:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:44695)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kb1cI-0005IH-3h
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 08:17:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604668641;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lg19tKNtTu5cOQgzFgpqCJsHJ+WoqwugycYFlsvSLX4=;
- b=F+SKajU9nDHAVa6XYGccveIhahZ9h4JGj2Y8HLqcTMye0nTOoe32Ftj7D7cUx5L1Labzwf
- QI9QxdndNfLuN1omyQqtvS1OBaIPoe+hteYFMACIjHMT4UprKemtRErtuf4XQpykmxlOsS
- Blcj/zR0Y3krB3xn68EeV7lMCV2IAck=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-490-3R5GdIWTOlK7WGm3V6pjiQ-1; Fri, 06 Nov 2020 08:17:16 -0500
-X-MC-Unique: 3R5GdIWTOlK7WGm3V6pjiQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DBB691018F61;
- Fri,  6 Nov 2020 13:17:14 +0000 (UTC)
-Received: from [10.3.114.103] (ovpn-114-103.phx2.redhat.com [10.3.114.103])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7F7D64DA7F;
- Fri,  6 Nov 2020 13:17:13 +0000 (UTC)
-Subject: Re: [PATCH V2 1/2] plugins: Fix resource leak in connect_socket()
-To: AlexChen <alex.chen@huawei.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
- zhang.zhanghailiang@huawei.com
-References: <5FA4AE11.6060701@huawei.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <37c069f2-b137-b68d-9fb5-45a98b84aa0c@redhat.com>
-Date: Fri, 6 Nov 2020 07:17:12 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kb1yG-0005WP-CR
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 08:40:04 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:37619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kb1yC-0004Ke-Vf
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 08:40:03 -0500
+Received: by mail-ed1-x532.google.com with SMTP id cq7so1088371edb.4
+ for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 05:40:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AKnReEf/p/xSBuslk1N1S2RpHTmhnhh7XzQnHsR2Bmg=;
+ b=daUn94oyFO4dqdSyWVN0KxTXWNHyPguuirT0xAGFfr8hdcolJNAl6JRJEjTfCwlyYA
+ F3/j0ZABOUrwDzw9UjIPJC/3RKoOCEXgEX2XYvIt5djrw3JdT6h3S/YA4IemHiQjqTTC
+ XVtYvBrl5yE7riAvYYbplZo13KJzTqUJeryW3mdV62J/iprOFZQpSL+9G6GIqnBTUp+k
+ 5tKivf6kspHbqu2R3Kqhhg6BOkbzqVfU9KBA9ov7vKmO5FdXfmBm+2cw3n0k1jFE5W1u
+ 7Fz+hf9Ps6WTsDia3G+auSYSNJ5dGcHh2tGR+LnAfEd3MeDtdgfAz6kc9wWOAECzo1kC
+ xesw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AKnReEf/p/xSBuslk1N1S2RpHTmhnhh7XzQnHsR2Bmg=;
+ b=gIlWo04L+b1NJ4tBhmwCuE7pXhIPnDZP4w7RqfxTntGaJKUGJ4ffVgEZZcS/Re7mgo
+ BT1u4xk/gYQjoQoPxpB0LXAd2c93VzNEFx5V6f+YPZb5OIK/WSuj0sgEy6tUdG/NrZTo
+ 6ruaS7oEg/Vceyshrr2C5g0dvchIhiqqdsE9maVihExGY/nveCE7slwu/oYuOH+ai+9d
+ Dx9zAZ7irg7XXUxFDjPuJwvWQ6PMluhtBXAAfKUoerTx28Ea4+y5h2qQMsj1nHlqB8jl
+ Wzq0yBQ6evTIGXzKcRVhAqhWL5YWvBZ3FucwmZ6FdwDTSceJebNAYgCUDhbFjnyCzRC0
+ b4/g==
+X-Gm-Message-State: AOAM530V6uixd5fqDuuDid84m1zj1T8Aq3iqf7HgCPrK19UqU081hz35
+ BimkTzeNq8mzuQ+BUwRk4NflirSjDuPc/EaOcrW+nQ==
+X-Google-Smtp-Source: ABdhPJwRtfrfzOma3hWqvGkBY3KGtVOhqP+LLmw+So5ynmjLjPEQwQxSFJTBorzAjEl9c55x2EMRSRz9rBZ026fhCIY=
+X-Received: by 2002:a05:6402:30b5:: with SMTP id
+ df21mr2009335edb.146.1604669998555; 
+ Fri, 06 Nov 2020 05:39:58 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <5FA4AE11.6060701@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/06 06:30:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+References: <20201105154208.12442-1-ganqixin@huawei.com>
+ <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
+ <87d00qk51l.fsf@dusky.pond.sub.org>
+In-Reply-To: <87d00qk51l.fsf@dusky.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Nov 2020 13:39:45 +0000
+Message-ID: <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
+Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
+ the code
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Gan Qixin <ganqixin@huawei.com>, "Daniel P. Berrange" <berrange@redhat.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,31 +80,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 13:17:28 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 13:40:04 -0000
 
-On 11/5/20 7:59 PM, AlexChen wrote:
-> Close the fd when the connect() fails.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+On Fri, 6 Nov 2020 at 13:07, Markus Armbruster <armbru@redhat.com> wrote:
+> The current "warn at 80, error at 90" is a compromise.  It's the result
+> of a lengthy argument.  Why reopen it?
 
-Your From: line ("AlexChen") is spelled differently than your S-o-b:
-line ("Alex Chen").  While this is not fatal to the patch, it is
-confusing, so you may want to update your git settings to produce mail
-spelled in the same manner as the S-o-b.
+There was some previous discussion under this thread:
+https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg05653.html
 
-Also, although you did manage to send a 0/2 letter, you did not thread
-things:
-0/2 Message-ID: <5FA4AE0B.1000007@huawei.com>
-1/2 Message-ID: Message-ID: <5FA4AE11.6060701@huawei.com>, but no
-In-Reply-To: or References: headers, which means it is a new top-level
-thread.  You may want to figure out why your mail setup is not
-preserving threading.
+which I think is what prompted this patch.
 
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+thanks
+-- PMM
 
