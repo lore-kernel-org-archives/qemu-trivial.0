@@ -1,95 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kb2Pi-0007eZ-S4
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 09:08:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48708)
+	id 1kb2XQ-0003nF-Qi
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2020 09:16:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb2Pg-0007eI-Ry
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:08:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44479)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kb2Pe-0006Ie-3D
- for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:08:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604671701;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1bS11JZvYuw8fQhIRHUl4jInVsxqktGVvq+Wt24XfiM=;
- b=HojbH0hSTiAZS4wE2bvVrpFXytWhof+RNjtvtdZ0sqyH/JNDRwcgkK1Qhkg6feCiX/8Bzc
- ikBaAslt7gv65WwDTFm+83+NYZmKVo5YMPvt5NaLImaJjZGPclzx6TFltEu4uqMk2QBv7Z
- mKYDvCu4D7csrxpjTLGNiuxCgTvvwtA=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-9-5PJkyokVOIuYXb6EwMGZSw-1; Fri, 06 Nov 2020 09:08:18 -0500
-X-MC-Unique: 5PJkyokVOIuYXb6EwMGZSw-1
-Received: by mail-wm1-f71.google.com with SMTP id a130so601698wmf.0
- for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 06:08:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kb2XP-0003mo-FT
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:16:23 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:36135)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kb2XM-0000jF-Jn
+ for qemu-trivial@nongnu.org; Fri, 06 Nov 2020 09:16:23 -0500
+Received: by mail-ej1-x635.google.com with SMTP id o21so2153766ejb.3
+ for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2020 06:16:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2r+AQ2dd4LfTfleMslIR2TLv1KRDqDqrZHe13NS9LSw=;
+ b=sfLoz2JR1utr6LgMj+mAB80a2PcGzR3WVFDX7NkrgF6Ndq+3qpvjFAWza84XR7jISb
+ eC5vqZVkIYWePnpKVgrGAyYfDbxoG/we113UqIoLEVzaAz4mcY4A7G8lHejyq04Ev3JM
+ 9Pw0E9xHzwB91OCXDZvDytXDy4DQWGeM6U/J7y+Ol7xt5W0gu9/LBTB4yFsKnnMj/yqK
+ vokNvjTUPJ4cZXafoN1Mh2gUQfGakphk2jNjhjAvOV7CfCyLEsxL5oVWmdu8YWyvbiMd
+ baF/s2D+1HCdhAVCt68uh0R3v1EhK+lGpsxTVKL0eliOWyhDvaldn2iIZJRbXcOR/PUL
+ SEOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1bS11JZvYuw8fQhIRHUl4jInVsxqktGVvq+Wt24XfiM=;
- b=KdfKMw1wMcuzt9GSHueCOjtSyUVpWEDMlQ1odHX6GicsyggoiZc3CoZOytS2vAjuVj
- 64fmJA2ncn16DfJIeVzEcXusAKlUTyzCsL36C5ugNnMoxs9E8gzRt4YJMPZ8oL3HFelK
- GBESbZGtQ6ZZK91WSoOFceQE2E/uSp6ku9HGVoz9i8WO/ZyBXVZTMNU3yoEUzWzbpu3z
- 5ZkPETwiI5UBWD9Qr3EFJdyD6G/uOy6QFeXNaCeKVfHD82u5GBb57yhiItUefMv0D7t1
- tYYMsG+TxUMJWOtBEa3pM1DpZAmliJ7QLUGDgZ1683CNbwoaGRF5gRtmFh1cgvtjzigg
- 3ShA==
-X-Gm-Message-State: AOAM532NGXw4AdYw9Jw35DavwsVmGfB7RAXhhWWqja5sxekfeQgvbkBL
- MZcOCF0xjyX6m2yFd1F5o+b3lT7tS3lkjNG6wmS7MO3mS+SKKn1uLiGCffx0zbYlVeVJfhBeQ4p
- TK2Vn1V7+9A7qfT9RCg==
-X-Received: by 2002:adf:fd0e:: with SMTP id e14mr2805885wrr.119.1604671696862; 
- Fri, 06 Nov 2020 06:08:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwissxLkze5VqyFHlFxuJVuw89BiHOEdrKz/Q4ezEp8nQiSA/7yuwGmpfFNsHUAOoH9EioDeQ==
-X-Received: by 2002:adf:fd0e:: with SMTP id e14mr2805848wrr.119.1604671696582; 
- Fri, 06 Nov 2020 06:08:16 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id i33sm2274362wri.79.2020.11.06.06.08.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Nov 2020 06:08:15 -0800 (PST)
-Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
- the code
-To: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Cc: Gan Qixin <ganqixin@huawei.com>, "Daniel P. Berrange"
- <berrange@redhat.com>, zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial
- <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2r+AQ2dd4LfTfleMslIR2TLv1KRDqDqrZHe13NS9LSw=;
+ b=I1Z9BO8PanifoL9RlGqk1Q2XYn85K0gXxjHe68Hu2+UlZd9uUl7c+avbtDgdSe/m84
+ Bwt6hGvHlfPUUrbCgJtZ1CnllLaA0iYLAwxW3Jo9VgdiPuEOw9Z4a0ylb8x1Rc4Yvyil
+ u7sxwCOo2BU08/PhVMzRRqzMDdua2Hp2ERBaq2KP66uATljjdni2XXHzy0UUD2quC0Cn
+ lX9O5w0dDoqiYsq9ErSwKRngRATmAuNHoApjDy0xhC3Nr61zY8hzCu2D3HNJdoT08gsv
+ BH7wZ+MOCvew6cTjVOKQU+MoTqsK1uf2gwf3jndoBObssaxcapoNfzb3NQdD+VQFpksP
+ 9tLg==
+X-Gm-Message-State: AOAM533b3fpiUAOi/suBfhqdO8b0tciyOelqSnb7/NlbWtfWrPVRgE6h
+ tVJFwiNY6nwZ9ODvplOdxwl6M0I57oYJ/uYQReuoKA==
+X-Google-Smtp-Source: ABdhPJwyq3j31Jt+miM0WDUYjRd6q6P9UMAVEHB5eluBsM6Xk0KWI1BCAfdTZMYl75geYp6YWVZdfUNr20IEM9AFkGo=
+X-Received: by 2002:a17:907:9e3:: with SMTP id ce3mr2267791ejc.4.1604672178854; 
+ Fri, 06 Nov 2020 06:16:18 -0800 (PST)
+MIME-Version: 1.0
 References: <20201105154208.12442-1-ganqixin@huawei.com>
  <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
  <87d00qk51l.fsf@dusky.pond.sub.org>
  <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
-Date: Fri, 6 Nov 2020 15:08:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/06 07:11:31
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+ <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
+In-Reply-To: <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Nov 2020 14:16:07 +0000
+Message-ID: <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
+Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
+ the code
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Gan Qixin <ganqixin@huawei.com>, 
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,30 +84,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2020 14:08:25 -0000
+X-List-Received-Date: Fri, 06 Nov 2020 14:16:23 -0000
 
-On 11/6/20 2:39 PM, Peter Maydell wrote:
-> On Fri, 6 Nov 2020 at 13:07, Markus Armbruster <armbru@redhat.com> wrote:
->> The current "warn at 80, error at 90" is a compromise.  It's the result
->> of a lengthy argument.  Why reopen it?
-> 
-> There was some previous discussion under this thread:
-> https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg05653.html
-> 
-> which I think is what prompted this patch.
+On Fri, 6 Nov 2020 at 14:08, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+> Can we keep the error please? Maybe 132 is the next display logical
+> limit once we increased the warning from 80 to 100.
+>
+> I understand hardware evolved, we have larger displays with better
+> resolution and can fit more characters in a line.
+> I am a bit wary however functions become heavier (more code into
+> a single function). Maybe this checkpatch change should go with
+> a another one warning when a function has more than 80 lines,
+> excluding comments? (Even 80 is too much for my taste).
 
-Can we keep the error please? Maybe 132 is the next display logical
-limit once we increased the warning from 80 to 100.
+Personally I just don't think checkpatch should be nudging people
+into folding 85-character lines, especially when there are
+multiple very similar lines in a row and only one would get
+folded, eg the prototypes in target/arm/helper.h -- some of
+these just edge beyond 80 characters and I think wrapping them
+is clearly worse for readability. If we don't want people
+sending us "style fix" patches which wrap >80 char lines
+(which I think we do not) then we shouldn't have checkpatch
+complain about them, because if it does then that's what we get.
 
-I understand hardware evolved, we have larger displays with better
-resolution and can fit more characters in a line.
-I am a bit wary however functions become heavier (more code into
-a single function). Maybe this checkpatch change should go with
-a another one warning when a function has more than 80 lines,
-excluding comments? (Even 80 is too much for my taste).
-
-Regards,
-
-Phil.
-
+thanks
+-- PMM
 
