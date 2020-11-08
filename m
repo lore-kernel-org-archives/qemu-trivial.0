@@ -1,76 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kbfUV-0005Fx-2l
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Nov 2020 02:51:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58894)
+	id 1kbgMa-0004zh-OR
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Nov 2020 03:47:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kbfUU-0005Fq-7d
- for qemu-trivial@nongnu.org; Sun, 08 Nov 2020 02:51:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35814)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kbgMZ-0004xr-9l
+ for qemu-trivial@nongnu.org; Sun, 08 Nov 2020 03:47:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:40928)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kbfUR-0004KS-QU
- for qemu-trivial@nongnu.org; Sun, 08 Nov 2020 02:51:57 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kbgMX-0006qN-R2
+ for qemu-trivial@nongnu.org; Sun, 08 Nov 2020 03:47:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604821914;
+ s=mimecast20190719; t=1604825269;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nL0bY29qh2p8Kz/R4GbIo9Ly4LNewZs159CGHrUEz6Q=;
- b=DWCIxlJKKzNAR+7D5RphZuyyWsVXGpXZQeP1rKpNkpqmldcYml6mxDWGg2OP7D8JAAGFEI
- fsXd37nAquasugkWOU6jlBOdlGc8lszQnZS/hZwlSfqbxq4vx0MJg2g3viUvCL5dAIufuy
- 3Ii8CQ0LuAOTsB9dyJvad6+b/00k1bY=
+ bh=L+f5vdfgsXGbDy67n1OWHyf9jHjzm/CAGFod47OCSns=;
+ b=ICosvDCRCMMLbHyfzbNrwLMdGPo137vFw27iWx1PaL4K1Z5JOEpSJsXxtK2gpHgxqT6EI/
+ 4iB1J5nmL5JMq96dIB6tr0jCfTjn0TW3zjP034zsgJq6oDXb5+P8weIGbW57qy07EHLNHJ
+ 3GO8vifDdS8n3RuLElKdRTYc20Lb+yY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-211-o07Rn1p8N8eJKdfFwah_vQ-1; Sun, 08 Nov 2020 02:51:52 -0500
-X-MC-Unique: o07Rn1p8N8eJKdfFwah_vQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-398-rh5Pb33QN--jDSeiNDPXfA-1; Sun, 08 Nov 2020 03:47:45 -0500
+X-MC-Unique: rh5Pb33QN--jDSeiNDPXfA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B102B805F09;
- Sun,  8 Nov 2020 07:51:51 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 540E2107AFB7;
+ Sun,  8 Nov 2020 08:47:44 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-53.ams2.redhat.com [10.36.112.53])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 956456266E;
- Sun,  8 Nov 2020 07:51:49 +0000 (UTC)
-Subject: Re: [PATCH] qtest: Fix bad printf format specifiers
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
-Cc: AlexChen <alex.chen@huawei.com>, lvivier@redhat.com,
- QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-References: <5FA28117.3020802@huawei.com>
- <67eca43e-99ea-f2ce-5d9e-a9cb5c7a3a83@redhat.com>
- <5FA38A32.2020008@huawei.com>
- <18690aa2-3de9-70ad-477f-934724b284a0@redhat.com>
- <87wnyzouy4.fsf@dusky.pond.sub.org>
- <1fd5965d-cf5e-b41b-2029-bd3e52c3e498@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 208965C1D7;
+ Sun,  8 Nov 2020 08:47:41 +0000 (UTC)
+Subject: Re: [PATCH] macio: set user_creatable to false in macio_class_init()
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+References: <20201107112811.24870-1-mark.cave-ayland@ilande.co.uk>
+Cc: armbru@redhat.com, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <8f5ef0b8-4c43-034f-f609-e7e5ca013970@redhat.com>
-Date: Sun, 8 Nov 2020 08:51:48 +0100
+Message-ID: <70132dc7-8a8c-5cf7-c23f-a8c3a36d63f5@redhat.com>
+Date: Sun, 8 Nov 2020 09:47:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <1fd5965d-cf5e-b41b-2029-bd3e52c3e498@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20201107112811.24870-1-mark.cave-ayland@ilande.co.uk>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/08 01:02:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/08 02:42:23
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,135 +77,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Nov 2020 07:51:58 -0000
+X-List-Received-Date: Sun, 08 Nov 2020 08:47:51 -0000
 
-On 06/11/2020 15.18, Philippe Mathieu-Daudé wrote:
-> On 11/6/20 7:33 AM, Markus Armbruster wrote:
->> Thomas Huth <thuth@redhat.com> writes:
->>
->>> On 05/11/2020 06.14, AlexChen wrote:
->>>> On 2020/11/4 18:44, Thomas Huth wrote:
->>>>> On 04/11/2020 11.23, AlexChen wrote:
->>>>>> We should use printf format specifier "%u" instead of "%d" for
->>>>>> argument of type "unsigned int".
->>>>>>
->>>>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>>>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->>>>>> ---
->>>>>>  tests/qtest/arm-cpu-features.c | 8 ++++----
->>>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
->>>>>>
->>>>>> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
->>>>>> index d20094d5a7..bc681a95d5 100644
->>>>>> --- a/tests/qtest/arm-cpu-features.c
->>>>>> +++ b/tests/qtest/arm-cpu-features.c
->>>>>> @@ -536,7 +536,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>>          if (kvm_supports_sve) {
->>>>>>              g_assert(vls != 0);
->>>>>>              max_vq = 64 - __builtin_clzll(vls);
->>>>>> -            sprintf(max_name, "sve%d", max_vq * 128);
->>>>>> +            sprintf(max_name, "sve%u", max_vq * 128);
->>>>>>
->>>>>>              /* Enabling a supported length is of course fine. */
->>>>>>              assert_sve_vls(qts, "host", vls, "{ %s: true }", max_name);
->>>>>> @@ -556,7 +556,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>>                   * unless all larger, supported vector lengths are also
->>>>>>                   * disabled.
->>>>>>                   */
->>>>>> -                sprintf(name, "sve%d", vq * 128);
->>>>>> +                sprintf(name, "sve%u", vq * 128);
->>>>>>                  error = g_strdup_printf("cannot disable %s", name);
->>>>>>                  assert_error(qts, "host", error,
->>>>>>                               "{ %s: true, %s: false }",
->>>>>> @@ -569,7 +569,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>>               * we need at least one vector length enabled.
->>>>>>               */
->>>>>>              vq = __builtin_ffsll(vls);
->>>>>> -            sprintf(name, "sve%d", vq * 128);
->>>>>> +            sprintf(name, "sve%u", vq * 128);
->>>>>>              error = g_strdup_printf("cannot disable %s", name);
->>>>>>              assert_error(qts, "host", error, "{ %s: false }", name);
->>>>>>              g_free(error);
->>>>>> @@ -581,7 +581,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>>>>                  }
->>>>>>              }
->>>>>>              if (vq <= SVE_MAX_VQ) {
->>>>>> -                sprintf(name, "sve%d", vq * 128);
->>>>>> +                sprintf(name, "sve%u", vq * 128);
->>>>>>                  error = g_strdup_printf("cannot enable %s", name);
->>>>>>                  assert_error(qts, "host", error, "{ %s: true }", name);
->>>>>>                  g_free(error);
->>>>>>
->>>>>
->>>>> max_vq and vq are both "uint32_t" and not "unsigned int" ... so if you want
->>>>> to fix this really really correctly, please use PRIu32 from inttypes.h instead.
->>>>>
->>>>
->>>> Hi Thomas,
->>>> Thanks for your review.
->>>> According to the definition of the macro PRIu32(# define PRIu32         "u"),
->>>> using PRIu32 works the same as using %u to print, and using PRIu32 to print
->>>> is relatively rare in QEMU(%u 720, PRIu32 only 120). Can we continue to use %u to
->>>> print max_vq and vq in this patch.
->>>> Of course, this is just my small small suggestion. If you think it is better to use
->>>> PRIu32 for printing, I will send patch V2.
->>>
->>> Well, %u happens to work since "int" is 32-bit with all current compilers
->>> that we support.
->>
->> Yes, it works.
->>
->>>                  But if there is ever a compiler where the size of int is
->>> different, you'll get a compiler warning here again.
->>
->> No, we won't.
->>
->> If we ever use a compiler where int is narrower than 32 bits, then the
->> type of the argument is actually uint32_t[1].  We can forget about this
->> case, because "int narrower than 32 bits" is not going to fly with our
->> code base.
-
-Agreed.
-
->> If we ever use a compiler where int is wider than 32 bits, then the type
->> of the argument is *not* uint32_t[2].  PRIu32 will work anyway, because
->> it will actually retrieve an unsigned int argument, *not* an uint32_t
->> argument[3].
-
-I can hardly believe that this can be true. Sure, it's true for such cases
-like this one here, where you multiply with an "int". But if you just try to
-print a plain uint32_t variable?
-
-I've seen compiler warning in cases one tries to print a 16-bit (i.e. short)
-variable in the past if you use %d instead of the proper PRId16 (or %hd)
-format specifier - maybe not on x86, but certainly on other architectures.
-If you're statement was right, that should not have happened, should it?
-
->> In other words "%" PRIu32 is just a less legible alias for "%u" in all
->> cases that matter.
+On 07/11/2020 12.28, Mark Cave-Ayland wrote:
+> Commit 348b8d1a76 "macio: don't reference serial_hd() directly within the device"
+> removed the setting of user_creatable to false on the basis that the restriction
+> was due to the use of serial_hd() in macio_instance_init().
 > 
-> Can we add a checkpatch rule to avoid using 'PRI[dux]32' format,
-> so it is clear for everyone?
-
-I don't think that this is a good idea. Using PRI*32 is IMHO perfectly fine
-if you really have a variable of the type [u]int32_t ... it's just not if
-you do some arithmetics with it first.
-
- Thomas
-
-
->>
->>
->> [1] Because promotion does nothing either argument, and the usual
->> arithmetic conversions convert to uint32_t.  See my first reply.
->>
->> [2] Because uint32_t gets promoted to unsigned int.  See my first reply.
->>
->> [3] Because variable arguments undergo default argument promotion (§
->> 6.5.2.2 Function calls), which promotes uint32_t to unsigned int.
->>
->>
+> Unfortunately this isn't the full story since the PIC object property links
+> must still be set before the device is realized. Whilst it is possible to update
+> the macio device and Mac machines to resolve this, the fix is too invasive at
+> this point in the release cycle.
 > 
+> For now simply set user_creatable back to false in macio_class_init() to
+> prevent QEMU from segfaulting in anticipation of the proper fix arriving in
+> QEMU 6.0.
 > 
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> ---
+>  hw/misc/macio/macio.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+> index 51368884d0..bb601f782c 100644
+> --- a/hw/misc/macio/macio.c
+> +++ b/hw/misc/macio/macio.c
+> @@ -456,6 +456,8 @@ static void macio_class_init(ObjectClass *klass, void *data)
+>      k->class_id = PCI_CLASS_OTHERS << 8;
+>      device_class_set_props(dc, macio_properties);
+>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> +    /* Reason: requires PIC property links to be set in macio_*_realize() */
+> +    dc->user_creatable = false;
+>  }
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
