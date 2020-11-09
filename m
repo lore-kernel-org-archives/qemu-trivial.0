@@ -1,31 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc2iF-0003bc-8T
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 03:39:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46618)
+	id 1kc2iG-0003dk-Aa
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 03:39:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kc2iD-0003ay-Kj; Mon, 09 Nov 2020 03:39:41 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2446)
+ id 1kc2iD-0003av-H1; Mon, 09 Nov 2020 03:39:41 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2448)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kc2iA-0004a5-Ua; Mon, 09 Nov 2020 03:39:41 -0500
+ id 1kc2iB-0004a8-8N; Mon, 09 Nov 2020 03:39:41 -0500
 Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CV4DC6bSczLvsl;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CV4DC6MxlzLvsM;
  Mon,  9 Nov 2020 16:39:23 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
  (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Mon, 9 Nov 2020
- 16:39:27 +0800
+ 16:39:25 +0800
 From: Alex Chen <alex.chen@huawei.com>
 To: <alex.bennee@linaro.org>, <mjt@tls.msk.ru>, <laurent@vivier.eu>
 CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <zhengchuan@huawei.com>
-Subject: [PATCH v3 2/2] plugins: Fix two resource leaks in setup_socket()
-Date: Mon, 9 Nov 2020 08:28:29 +0000
-Message-ID: <20201109082829.87496-3-alex.chen@huawei.com>
+Subject: [PATCH v3 0/2] plugins: Fix some resource leaks
+Date: Mon, 9 Nov 2020 08:28:27 +0000
+Message-ID: <20201109082829.87496-1-alex.chen@huawei.com>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20201109082829.87496-1-alex.chen@huawei.com>
-References: <20201109082829.87496-1-alex.chen@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -53,34 +51,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 08:39:42 -0000
+X-List-Received-Date: Mon, 09 Nov 2020 08:39:41 -0000
 
-Either accept() fails or exits normally, we need to close the fd.
+There are 3 resource leaks in contrib/plugins/lockstep.c, fix it.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- contrib/plugins/lockstep.c | 2 ++
- 1 file changed, 2 insertions(+)
+v2->v3:
+- change the "From" line to "Alex Chen"
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 319bd44b83..5aad50869d 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -268,11 +268,13 @@ static bool setup_socket(const char *path)
-     socket_fd = accept(fd, NULL, NULL);
-     if (socket_fd < 0 && errno != EINTR) {
-         perror("accept socket");
-+        close(fd);
-         return false;
-     }
- 
-     qemu_plugin_outs("setup_socket::ready\n");
- 
-+    close(fd);
-     return true;
- }
- 
+v1->v2:
+- add the cover letter
+- modify the subject of the patch[2/2]
+
+Alex Chen (2):
+  plugins: Fix resource leak in connect_socket()
+  plugins: Fix two resource leaks in setup_socket()
+
+ contrib/plugins/lockstep.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
 -- 
 2.19.1
 
