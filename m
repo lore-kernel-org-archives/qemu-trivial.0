@@ -1,70 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc33v-0004y6-5m
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 04:02:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51348)
+	id 1kc3rW-00027H-4U
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 04:53:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34480)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc33t-0004vZ-ON
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:02:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60164)
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kc3rU-000245-3H
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:53:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49616)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc33m-0004P4-V5
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:02:05 -0500
+ (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kc3rS-0005i3-Do
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:53:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604912516;
+ s=mimecast20190719; t=1604915597;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RCQaDlRaOcD7BK1tBAH/BgdwobVhUUGHtxEgwYScgZc=;
- b=Ec29A2XTTQ9rZrFpGUCPdcMbNS2yjkB7cP23WKKgXD4nW/zYFInlePYjo05bvS0z/O1pZ8
- rUEa71ITWnhGBsTp4T23POL5Ke8Sq61EIV91anlMqNJtvmsNINX8KlGEx6nlhlJqmo5XNX
- rKxEyRpj9kVJhW5MGW82DjCd5Yue/Gg=
+ bh=CM6/dZc+cX9dCGBB/uloPgqYimw1JApK4H5qSBPnPpA=;
+ b=YkrPKwHkXfe64E+UQZHBSl5XIsLSLylA3k9Y8B/0/aZvIECtH2aV1f9a+veeHn6X0u3Z4W
+ RLVvgiXjng/pvfyH8d3dvp3Gk4HdYYrxhunO+tLz7YvGu+wBf4roMap36yfaTH8BX9q+jD
+ bRRepdu2exDQ7+1yC/B3NZAuveWUAOA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-11-PtL6ltZJNH6UZxWc3sf-yA-1; Mon, 09 Nov 2020 04:01:54 -0500
-X-MC-Unique: PtL6ltZJNH6UZxWc3sf-yA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-271-3bEu1rdfO1KpL9VHeL6qHQ-1; Mon, 09 Nov 2020 04:53:13 -0500
+X-MC-Unique: 3bEu1rdfO1KpL9VHeL6qHQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76BE857244;
- Mon,  9 Nov 2020 09:01:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
- [10.36.112.103])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1C87D60DA0;
- Mon,  9 Nov 2020 09:01:50 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 8B4631132BD6; Mon,  9 Nov 2020 10:01:48 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,  zhanghailiang
- <zhang.zhanghailiang@huawei.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,  QEMU Developers
- <qemu-devel@nongnu.org>,  Gan Qixin <ganqixin@huawei.com>,  "Chenqun
- (kuhn)" <kuhn.chenqun@huawei.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
- the code
-References: <20201105154208.12442-1-ganqixin@huawei.com>
- <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
- <87d00qk51l.fsf@dusky.pond.sub.org>
- <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
- <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
- <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
- <87zh3ufoy4.fsf@dusky.pond.sub.org>
- <CAFEAcA-3a8gYRPzk4jzv3QfLAw3tL74LoFTMy+VhXZA3QdOfPg@mail.gmail.com>
-Date: Mon, 09 Nov 2020 10:01:48 +0100
-In-Reply-To: <CAFEAcA-3a8gYRPzk4jzv3QfLAw3tL74LoFTMy+VhXZA3QdOfPg@mail.gmail.com>
- (Peter Maydell's message of "Fri, 6 Nov 2020 16:19:31 +0000")
-Message-ID: <87mtzqsy2r.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 331038015FA;
+ Mon,  9 Nov 2020 09:53:12 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-113-179.ams2.redhat.com
+ [10.36.113.179])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9FC2D62A14;
+ Mon,  9 Nov 2020 09:53:10 +0000 (UTC)
+Subject: Re: [PATCH] block: Fix some code style problems, "foo* bar" should be
+ "foo *bar"
+To: shiliyang <shiliyang@huawei.com>, kwolf@redhat.com
+Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-block@nongnu.org,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <b7e77b38-6115-9a3d-5668-f51737476400@huawei.com>
+ <3211f389-6d22-46c1-4a16-e6a2ba66f070@huawei.com>
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <e798f2f7-3daf-6307-020b-32fd3e20949f@redhat.com>
+Date: Mon, 9 Nov 2020 10:53:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <3211f389-6d22-46c1-4a16-e6a2ba66f070@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mreitz@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mreitz@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 00:04:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -73,8 +64,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,47 +79,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 09:02:06 -0000
+X-List-Received-Date: Mon, 09 Nov 2020 09:53:20 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On 30.10.20 04:35, shiliyang wrote:
+> There have some code style problems be found when read the block driver code.
+> So I fixes some problems of this error, ERROR: "foo* bar" should be "foo *bar".
+> 
+> Signed-off-by: Liyang Shi <shiliyang@huawei.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> ---
+>   block/blkdebug.c |  2 +-
+>   block/dmg.c      |  2 +-
+>   block/qcow2.c    |  4 ++--
+>   block/qcow2.h    |  6 +++---
+>   block/vpc.c      | 10 +++++-----
+>   5 files changed, 12 insertions(+), 12 deletions(-)
 
-> On Fri, 6 Nov 2020 at 16:08, Markus Armbruster <armbru@redhat.com> wrote:
->> Peter Maydell <peter.maydell@linaro.org> writes:
->> > Personally I just don't think checkpatch should be nudging people
->> > into folding 85-character lines, especially when there are
->> > multiple very similar lines in a row and only one would get
->> > folded, eg the prototypes in target/arm/helper.h -- some of
->> > these just edge beyond 80 characters and I think wrapping them
->> > is clearly worse for readability.
->>
->> The warning's intent is "are you sure this line is better not broken?"
->> The problem is people treating it as an order that absolves them from
->> using good judgement instead.
->>
->> I propose to fix it by phrasing the warning more clearly.  Instead of
->>
->>     WARNING: line over 80 characters
->>
->> we could say
->>
->>     WARNING: line over 80 characters
->>     Please examine the line, and use your judgement to decide whether
->>     it should be broken.
->
-> I would suggest that for a line over 80 characters and less than
-> 85 characters, the answer is going to be "better not broken"
-> a pretty high percentage of the time; that is, the warning
-> has too many false positives, and we should tune it to have fewer.
->
-> And the lure of "produce no warnings" is a strong one, so
-> we should be at least cautious about what our tooling is
-> nudging us into doing.
+Thanks, applied to my block branch:
 
-CODING_STYLE.rst: "Lines should be 80 characters; try not to make them
-longer."  I'd like to keep the tooling we have to help us with trying
-not to make them longer.
+https://git.xanclic.moe/XanClic/qemu/commits/branch/block
 
-If we have lost the ability to differentiate between "warning" and
-"error", call it something else.
+Max
 
 
