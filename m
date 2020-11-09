@@ -1,46 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc2iG-0003e7-H5
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 03:39:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46636)
+	id 1kc33v-0004y6-5m
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 04:02:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kc2iE-0003bH-Q1; Mon, 09 Nov 2020 03:39:42 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2447)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kc2iC-0004a6-T6; Mon, 09 Nov 2020 03:39:42 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CV4DC68GDzLtwp;
- Mon,  9 Nov 2020 16:39:23 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Mon, 9 Nov 2020
- 16:39:26 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <alex.bennee@linaro.org>, <mjt@tls.msk.ru>, <laurent@vivier.eu>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
- <zhengchuan@huawei.com>
-Subject: [PATCH v3 1/2] plugins: Fix resource leak in connect_socket()
-Date: Mon, 9 Nov 2020 08:28:28 +0000
-Message-ID: <20201109082829.87496-2-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20201109082829.87496-1-alex.chen@huawei.com>
-References: <20201109082829.87496-1-alex.chen@huawei.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc33t-0004vZ-ON
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:02:05 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60164)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc33m-0004P4-V5
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:02:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604912516;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=RCQaDlRaOcD7BK1tBAH/BgdwobVhUUGHtxEgwYScgZc=;
+ b=Ec29A2XTTQ9rZrFpGUCPdcMbNS2yjkB7cP23WKKgXD4nW/zYFInlePYjo05bvS0z/O1pZ8
+ rUEa71ITWnhGBsTp4T23POL5Ke8Sq61EIV91anlMqNJtvmsNINX8KlGEx6nlhlJqmo5XNX
+ rKxEyRpj9kVJhW5MGW82DjCd5Yue/Gg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-11-PtL6ltZJNH6UZxWc3sf-yA-1; Mon, 09 Nov 2020 04:01:54 -0500
+X-MC-Unique: PtL6ltZJNH6UZxWc3sf-yA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76BE857244;
+ Mon,  9 Nov 2020 09:01:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
+ [10.36.112.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1C87D60DA0;
+ Mon,  9 Nov 2020 09:01:50 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8B4631132BD6; Mon,  9 Nov 2020 10:01:48 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,  zhanghailiang
+ <zhang.zhanghailiang@huawei.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,  QEMU Developers
+ <qemu-devel@nongnu.org>,  Gan Qixin <ganqixin@huawei.com>,  "Chenqun
+ (kuhn)" <kuhn.chenqun@huawei.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH] scripts/checkpatch.pl: Modify the line length limit of
+ the code
+References: <20201105154208.12442-1-ganqixin@huawei.com>
+ <CAFEAcA9QMBqF0Bm44q4m1d=QaPVBJodH9rwuYhGx5H6zy6ULcg@mail.gmail.com>
+ <87d00qk51l.fsf@dusky.pond.sub.org>
+ <CAFEAcA-_5vRbsi5fFpyLV2OyDX5TVrpAx7_Z43wqvb1zhQO_8w@mail.gmail.com>
+ <37c519e4-d72b-944c-ed70-038f9c606be9@redhat.com>
+ <CAFEAcA_a=vBjLM8_-KDkYfFuTLDW6cMsQ48or70uwwVusW2q7w@mail.gmail.com>
+ <87zh3ufoy4.fsf@dusky.pond.sub.org>
+ <CAFEAcA-3a8gYRPzk4jzv3QfLAw3tL74LoFTMy+VhXZA3QdOfPg@mail.gmail.com>
+Date: Mon, 09 Nov 2020 10:01:48 +0100
+In-Reply-To: <CAFEAcA-3a8gYRPzk4jzv3QfLAw3tL74LoFTMy+VhXZA3QdOfPg@mail.gmail.com>
+ (Peter Maydell's message of "Fri, 6 Nov 2020 16:19:31 +0000")
+Message-ID: <87mtzqsy2r.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 03:39:34
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 00:04:29
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -53,29 +87,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 08:39:43 -0000
+X-List-Received-Date: Mon, 09 Nov 2020 09:02:06 -0000
 
-Close the fd when the connect() fails.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- contrib/plugins/lockstep.c | 1 +
- 1 file changed, 1 insertion(+)
+> On Fri, 6 Nov 2020 at 16:08, Markus Armbruster <armbru@redhat.com> wrote:
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>> > Personally I just don't think checkpatch should be nudging people
+>> > into folding 85-character lines, especially when there are
+>> > multiple very similar lines in a row and only one would get
+>> > folded, eg the prototypes in target/arm/helper.h -- some of
+>> > these just edge beyond 80 characters and I think wrapping them
+>> > is clearly worse for readability.
+>>
+>> The warning's intent is "are you sure this line is better not broken?"
+>> The problem is people treating it as an order that absolves them from
+>> using good judgement instead.
+>>
+>> I propose to fix it by phrasing the warning more clearly.  Instead of
+>>
+>>     WARNING: line over 80 characters
+>>
+>> we could say
+>>
+>>     WARNING: line over 80 characters
+>>     Please examine the line, and use your judgement to decide whether
+>>     it should be broken.
+>
+> I would suggest that for a line over 80 characters and less than
+> 85 characters, the answer is going to be "better not broken"
+> a pretty high percentage of the time; that is, the warning
+> has too many false positives, and we should tune it to have fewer.
+>
+> And the lure of "produce no warnings" is a strong one, so
+> we should be at least cautious about what our tooling is
+> nudging us into doing.
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index a696673dff..319bd44b83 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -292,6 +292,7 @@ static bool connect_socket(const char *path)
- 
-     if (connect(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
-         perror("failed to connect");
-+        close(fd);
-         return false;
-     }
- 
--- 
-2.19.1
+CODING_STYLE.rst: "Lines should be 80 characters; try not to make them
+longer."  I'd like to keep the tooling we have to help us with trying
+not to make them longer.
+
+If we have lost the ability to differentiate between "warning" and
+"error", call it something else.
 
 
