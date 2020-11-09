@@ -1,72 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc3rW-00027H-4U
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 04:53:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34480)
+	id 1kc3uP-0005Nu-0p
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 04:56:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kc3rU-000245-3H
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:53:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49616)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mreitz@redhat.com>) id 1kc3rS-0005i3-Do
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 04:53:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604915597;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CM6/dZc+cX9dCGBB/uloPgqYimw1JApK4H5qSBPnPpA=;
- b=YkrPKwHkXfe64E+UQZHBSl5XIsLSLylA3k9Y8B/0/aZvIECtH2aV1f9a+veeHn6X0u3Z4W
- RLVvgiXjng/pvfyH8d3dvp3Gk4HdYYrxhunO+tLz7YvGu+wBf4roMap36yfaTH8BX9q+jD
- bRRepdu2exDQ7+1yC/B3NZAuveWUAOA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-271-3bEu1rdfO1KpL9VHeL6qHQ-1; Mon, 09 Nov 2020 04:53:13 -0500
-X-MC-Unique: 3bEu1rdfO1KpL9VHeL6qHQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 331038015FA;
- Mon,  9 Nov 2020 09:53:12 +0000 (UTC)
-Received: from dresden.str.redhat.com (ovpn-113-179.ams2.redhat.com
- [10.36.113.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9FC2D62A14;
- Mon,  9 Nov 2020 09:53:10 +0000 (UTC)
-Subject: Re: [PATCH] block: Fix some code style problems, "foo* bar" should be
- "foo *bar"
-To: shiliyang <shiliyang@huawei.com>, kwolf@redhat.com
-Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-block@nongnu.org,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <b7e77b38-6115-9a3d-5668-f51737476400@huawei.com>
- <3211f389-6d22-46c1-4a16-e6a2ba66f070@huawei.com>
-From: Max Reitz <mreitz@redhat.com>
-Message-ID: <e798f2f7-3daf-6307-020b-32fd3e20949f@redhat.com>
-Date: Mon, 9 Nov 2020 10:53:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kc3uN-0005Kt-DR; Mon, 09 Nov 2020 04:56:19 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2337)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kc3uJ-0006oQ-Ps; Mon, 09 Nov 2020 04:56:19 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CV5wX0xCDzkb91;
+ Mon,  9 Nov 2020 17:55:56 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 9 Nov 2020 17:56:05 +0800
+Message-ID: <5FA91234.1010708@huawei.com>
+Date: Mon, 9 Nov 2020 17:56:04 +0800
+From: Alex Chen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-In-Reply-To: <3211f389-6d22-46c1-4a16-e6a2ba66f070@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mreitz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=mreitz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 00:04:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+To: Markus Armbruster <armbru@redhat.com>
+CC: Thomas Huth <thuth@redhat.com>, =?UTF-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVk?=
+ =?UTF-8?B?w6k=?= <philmd@redhat.com>, <lvivier@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH] qtest: Fix bad printf format specifiers
+References: <5FA28117.3020802@huawei.com>
+ <67eca43e-99ea-f2ce-5d9e-a9cb5c7a3a83@redhat.com>
+ <5FA38A32.2020008@huawei.com>
+ <18690aa2-3de9-70ad-477f-934724b284a0@redhat.com>
+ <87wnyzouy4.fsf@dusky.pond.sub.org>
+ <1fd5965d-cf5e-b41b-2029-bd3e52c3e498@redhat.com>
+ <8f5ef0b8-4c43-034f-f609-e7e5ca013970@redhat.com>
+ <87d00narns.fsf@dusky.pond.sub.org>
+In-Reply-To: <87d00narns.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 03:21:00
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,26 +62,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 09:53:20 -0000
+X-List-Received-Date: Mon, 09 Nov 2020 09:56:19 -0000
 
-On 30.10.20 04:35, shiliyang wrote:
-> There have some code style problems be found when read the block driver code.
-> So I fixes some problems of this error, ERROR: "foo* bar" should be "foo *bar".
+On 2020/11/9 15:57, Markus Armbruster wrote:
+> Thomas Huth <thuth@redhat.com> writes:
 > 
-> Signed-off-by: Liyang Shi <shiliyang@huawei.com>
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> ---
->   block/blkdebug.c |  2 +-
->   block/dmg.c      |  2 +-
->   block/qcow2.c    |  4 ++--
->   block/qcow2.h    |  6 +++---
->   block/vpc.c      | 10 +++++-----
->   5 files changed, 12 insertions(+), 12 deletions(-)
+>> On 06/11/2020 15.18, Philippe Mathieu-Daudé wrote:
+>>> On 11/6/20 7:33 AM, Markus Armbruster wrote:
+>>>> Thomas Huth <thuth@redhat.com> writes:
+>>>>
+>>>>> On 05/11/2020 06.14, AlexChen wrote:
+>>>>>> On 2020/11/4 18:44, Thomas Huth wrote:
+>>>>>>> On 04/11/2020 11.23, AlexChen wrote:
+>>>>>>>> We should use printf format specifier "%u" instead of "%d" for
+>>>>>>>> argument of type "unsigned int".
+>>>>>>>>
+>>>>>>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>>>>>>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>>>>>>>> ---
+>>>>>>>>  tests/qtest/arm-cpu-features.c | 8 ++++----
+>>>>>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>>>>>>>
+[...]
+>>>>>>>>
+>>>>>>>
+>>>>>>> max_vq and vq are both "uint32_t" and not "unsigned int" ... so if you want
+>>>>>>> to fix this really really correctly, please use PRIu32 from inttypes.h instead.
+>>>>>>>
+>>>>>>
+>>>>>> Hi Thomas,
+>>>>>> Thanks for your review.
+>>>>>> According to the definition of the macro PRIu32(# define PRIu32         "u"),
+>>>>>> using PRIu32 works the same as using %u to print, and using PRIu32 to print
+>>>>>> is relatively rare in QEMU(%u 720, PRIu32 only 120). Can we continue to use %u to
+>>>>>> print max_vq and vq in this patch.
+>>>>>> Of course, this is just my small small suggestion. If you think it is better to use
+>>>>>> PRIu32 for printing, I will send patch V2.
+>>>>>
+>>>>> Well, %u happens to work since "int" is 32-bit with all current compilers
+>>>>> that we support.
+>>>>
+>>>> Yes, it works.
+>>>>
+>>>>>                  But if there is ever a compiler where the size of int is
+>>>>> different, you'll get a compiler warning here again.
+>>>>
+>>>> No, we won't.
+>>>>
+>>>> If we ever use a compiler where int is narrower than 32 bits, then the
+>>>> type of the argument is actually uint32_t[1].  We can forget about this
+>>>> case, because "int narrower than 32 bits" is not going to fly with our
+>>>> code base.
+>>
+>> Agreed.
+>>
+>>>> If we ever use a compiler where int is wider than 32 bits, then the type
+>>>> of the argument is *not* uint32_t[2].  PRIu32 will work anyway, because
+>>>> it will actually retrieve an unsigned int argument, *not* an uint32_t
+>>>> argument[3].
+>>
+>> I can hardly believe that this can be true. Sure, it's true for such cases
+>> like this one here, where you multiply with an "int". But if you just try to
+>> print a plain uint32_t variable?
+> 
+> Default argument promotions (§6.5.2.2 Function calls) still apply: "the
+> integer promotions are performed on each argument, and arguments that
+> have type float are promoted to double."
+> 
+>> I've seen compiler warning in cases one tries to print a 16-bit (i.e. short)
+>> variable in the past if you use %d instead of the proper PRId16 (or %hd)
+>> format specifier - maybe not on x86, but certainly on other architectures.
+>> If you're statement was right, that should not have happened, should it?
+> 
+> §7.19.6.1 "The fprintf function" on length modifier 'h':
+> 
+>     Specifies that a following d, i, o, u, x, or X conversion specifier
+>     applies to a short int or unsigned short int argument (the argument
+>     will have been promoted according to the integer promotions, but its
+>     value shall be converted to short int or unsigned short int before
+>     printing)
+> 
+> Integer promotions preserve value including sign.  So, printing a short
+> value with %hd first promotes it to int, then converts it back to short.
+> Neither conversion has an effect.
+> 
+> However, printing an int with %hd has: it converts int to short.
+> Implementation-defined behavior when the value doesn't fit.
+> 
+> Length modifier 'h' is pretty pointless with printf().  So would be a
+> warning to nudge people towards its use.
+> 
+> In fact, GNU libc's PRIu32 does not use it.  inttypes.h:
+> 
+>     /* Unsigned integers.  */
+>     # define PRIu8		"u"
+>     # define PRIu16		"u"
+>     # define PRIu32		"u"
+>     # define PRIu64		__PRI64_PREFIX "u"
+> 
+> where __PRI64_PREFIX is "l" or "ll" depending on system-dependent
+> __WORDSIZE.
+> 
+> In short:
+> 
+>>>> In other words "%" PRIu32 is just a less legible alias for "%u" in all
+>>>> cases that matter.
+> 
 
-Thanks, applied to my block branch:
+Hi Markus,
 
-https://git.xanclic.moe/XanClic/qemu/commits/branch/block
+Thanks for your reply, I have learned a lot.
+May I understand it as follows:
+%u is used when there are parameters obtained by arithmetic operation;
+otherwise, PRIu32 is used to print uint32_t type parameters?
 
-Max
+Thanks,
+Alex
+
 
 
