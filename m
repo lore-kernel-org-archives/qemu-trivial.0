@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcMy2-0005jO-Gx
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Nov 2020 01:17:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42444)
+	id 1kcMy6-0005m2-Ty
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Nov 2020 01:17:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcMxt-0005dj-21; Tue, 10 Nov 2020 01:17:13 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2513)
+ id 1kcMxt-0005dv-QO; Tue, 10 Nov 2020 01:17:13 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2514)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcMxp-0003ZJ-6U; Tue, 10 Nov 2020 01:17:12 -0500
+ id 1kcMxr-0003ZN-3G; Tue, 10 Nov 2020 01:17:13 -0500
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CVd1L0yKtzhjjM;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CVd1L0jyxzhjg7;
  Tue, 10 Nov 2020 14:16:54 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 10 Nov 2020
- 14:16:50 +0800
+ 14:16:54 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <pbonzini@redhat.com>, <kwolf@redhat.com>, <mreitz@redhat.com>,
  <stefanha@redhat.com>, <dnbrdsky@gmail.com>,
  <zhang.zhanghailiang@huawei.com>, <kuhn.chenqun@huawei.com>, Gan Qixin
  <ganqixin@huawei.com>
-Subject: [PATCH 2/4] block/curl.c: Use lock guard macros
-Date: Mon, 9 Nov 2020 23:43:25 +0800
-Message-ID: <20201109154327.325675-3-ganqixin@huawei.com>
+Subject: [PATCH 4/4] block/iscsi.c: Use lock guard macros
+Date: Mon, 9 Nov 2020 23:43:27 +0800
+Message-ID: <20201109154327.325675-5-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201109154327.325675-1-ganqixin@huawei.com>
 References: <20201109154327.325675-1-ganqixin@huawei.com>
@@ -54,57 +54,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Nov 2020 06:17:13 -0000
+X-List-Received-Date: Tue, 10 Nov 2020 06:17:14 -0000
 
 Replace manual lock()/unlock() calls with lock guard macros
-(QEMU_LOCK_GUARD/WITH_QEMU_LOCK_GUARD) in block/curl.c.
+(QEMU_LOCK_GUARD/WITH_QEMU_LOCK_GUARD) in block/iscsi.c.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
- block/curl.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ block/iscsi.c | 28 +++++++++++++---------------
+ 1 file changed, 13 insertions(+), 15 deletions(-)
 
-diff --git a/block/curl.c b/block/curl.c
-index 4f907c47be..d24a4c5897 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -564,23 +564,23 @@ static void curl_detach_aio_context(BlockDriverState *bs)
-     BDRVCURLState *s = bs->opaque;
-     int i;
+diff --git a/block/iscsi.c b/block/iscsi.c
+index e30a7e3606..f5f657b582 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -322,7 +322,7 @@ iscsi_aio_cancel(BlockAIOCB *blockacb)
+     IscsiAIOCB *acb = (IscsiAIOCB *)blockacb;
+     IscsiLun *iscsilun = acb->iscsilun;
  
--    qemu_mutex_lock(&s->mutex);
--    for (i = 0; i < CURL_NUM_STATES; i++) {
--        if (s->states[i].in_use) {
--            curl_clean_state(&s->states[i]);
-+    WITH_QEMU_LOCK_GUARD(&s->mutex) {
-+        for (i = 0; i < CURL_NUM_STATES; i++) {
-+            if (s->states[i].in_use) {
-+                curl_clean_state(&s->states[i]);
-+            }
-+            if (s->states[i].curl) {
-+                curl_easy_cleanup(s->states[i].curl);
-+                s->states[i].curl = NULL;
-+            }
-+            g_free(s->states[i].orig_buf);
-+            s->states[i].orig_buf = NULL;
-         }
--        if (s->states[i].curl) {
--            curl_easy_cleanup(s->states[i].curl);
--            s->states[i].curl = NULL;
-+        if (s->multi) {
-+            curl_multi_cleanup(s->multi);
-+            s->multi = NULL;
-         }
--        g_free(s->states[i].orig_buf);
--        s->states[i].orig_buf = NULL;
--    }
--    if (s->multi) {
--        curl_multi_cleanup(s->multi);
--        s->multi = NULL;
+-    qemu_mutex_lock(&iscsilun->mutex);
++    QEMU_LOCK_GUARD(&iscsilun->mutex);
+ 
+     /* If it was cancelled or completed already, our work is done here */
+     if (acb->cancelled || acb->status != -EINPROGRESS) {
+@@ -339,8 +339,6 @@ iscsi_aio_cancel(BlockAIOCB *blockacb)
+                                          iscsi_abort_task_cb, acb) < 0) {
+         qemu_aio_unref(acb); /* since iscsi_abort_task_cb() won't be called */
      }
--    qemu_mutex_unlock(&s->mutex);
+-
+-    qemu_mutex_unlock(&iscsilun->mutex);
+ }
  
-     timer_del(&s->timer);
+ static const AIOCBInfo iscsi_aiocb_info = {
+@@ -375,22 +373,22 @@ static void iscsi_timed_check_events(void *opaque)
+ {
+     IscsiLun *iscsilun = opaque;
+ 
+-    qemu_mutex_lock(&iscsilun->mutex);
++    WITH_QEMU_LOCK_GUARD(&iscsilun->mutex) {
++        /* check for timed out requests */
++        iscsi_service(iscsilun->iscsi, 0);
+ 
+-    /* check for timed out requests */
+-    iscsi_service(iscsilun->iscsi, 0);
++        if (iscsilun->request_timed_out) {
++            iscsilun->request_timed_out = false;
++            iscsi_reconnect(iscsilun->iscsi);
++        }
+ 
+-    if (iscsilun->request_timed_out) {
+-        iscsilun->request_timed_out = false;
+-        iscsi_reconnect(iscsilun->iscsi);
++        /*
++         * newer versions of libiscsi may return zero events. Ensure we are
++         * able to return to service once this situation changes.
++         */
++        iscsi_set_events(iscsilun);
+     }
+ 
+-    /* newer versions of libiscsi may return zero events. Ensure we are able
+-     * to return to service once this situation changes. */
+-    iscsi_set_events(iscsilun);
+-
+-    qemu_mutex_unlock(&iscsilun->mutex);
+-
+     timer_mod(iscsilun->event_timer,
+               qemu_clock_get_ms(QEMU_CLOCK_REALTIME) + EVENT_INTERVAL);
  }
 -- 
 2.23.0
