@@ -1,79 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc6cf-0008Mg-Qd
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 07:50:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44544)
+	id 1kc89t-0007le-4a
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 09:28:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc6ce-0008MR-Oa
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 07:50:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42563)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kc89q-0007jj-M1
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 09:28:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38077)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kc6cc-0008KA-F0
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 07:50:12 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kc89n-0000Kd-EG
+ for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 09:28:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604926208;
+ s=mimecast20190719; t=1604932109;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=X85Heu0DjKvCPbKlWQBf8i++TCWZFz0FhN0m9dVu4Bc=;
- b=PT79sR2sYIP2LPw9bjITZX8K7gYFpDTPWdN0VCoHdIwzVcIjD+uZLP7ZSwrfJPc/wVN0YJ
- V6Q1t4e6e8GbYvf1WaRS9X5KkYecHK1QrThF4frtd/U5NKk8Wb+xrqlPG+r+EpRdUtnVzT
- eBIRmwDzQnZPguoPVqNYllH7Q/zAbq0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-401-xorZ4snaNkuzY4r-8tRA1w-1; Mon, 09 Nov 2020 07:50:07 -0500
-X-MC-Unique: xorZ4snaNkuzY4r-8tRA1w-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4717F59;
- Mon,  9 Nov 2020 12:50:06 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
- [10.36.112.103])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 93B021002C15;
- Mon,  9 Nov 2020 12:50:05 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id F251D1132BD6; Mon,  9 Nov 2020 13:50:03 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alex Chen <alex.chen@huawei.com>
-Cc: lvivier@redhat.com,  Thomas Huth <thuth@redhat.com>,  QEMU Trivial
- <qemu-trivial@nongnu.org>,  QEMU <qemu-devel@nongnu.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>
-Subject: Re: [PATCH] qtest: Fix bad printf format specifiers
-References: <5FA28117.3020802@huawei.com>
- <67eca43e-99ea-f2ce-5d9e-a9cb5c7a3a83@redhat.com>
- <5FA38A32.2020008@huawei.com>
- <18690aa2-3de9-70ad-477f-934724b284a0@redhat.com>
- <87wnyzouy4.fsf@dusky.pond.sub.org>
- <1fd5965d-cf5e-b41b-2029-bd3e52c3e498@redhat.com>
- <8f5ef0b8-4c43-034f-f609-e7e5ca013970@redhat.com>
- <87d00narns.fsf@dusky.pond.sub.org> <5FA91234.1010708@huawei.com>
-Date: Mon, 09 Nov 2020 13:50:03 +0100
-In-Reply-To: <5FA91234.1010708@huawei.com> (Alex Chen's message of "Mon, 9 Nov
- 2020 17:56:04 +0800")
-Message-ID: <877dqupudg.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ bh=ABO0bW17s4QNEdm6V2eCUdU2YixR478CWuHPtyoqNC4=;
+ b=Iu65hCDzf4hhvnR1HjvSxtOOlEsmrrdi7044DbfWv/6hDhs6tVAcTEIS36muiYlqqcssrG
+ HHbkbWgyv2hPWgkgJwMauDj4p2+I26+h546iR0outaUTI4Fz40VLnOTgM4qbodx6nO6eE8
+ yFylZWJa02Thgc5YmV758Cfe+EWe3Bc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-374-Yocyr7LXOaWsaAajGRBWIg-1; Mon, 09 Nov 2020 09:28:28 -0500
+X-MC-Unique: Yocyr7LXOaWsaAajGRBWIg-1
+Received: by mail-wr1-f71.google.com with SMTP id f4so1343896wru.21
+ for <qemu-trivial@nongnu.org>; Mon, 09 Nov 2020 06:28:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=2BSyDWaNauZ185d46Vlt3NsMFtE+c2wSUIgkW3yWY7c=;
+ b=eAIzbBm77ZBe9NtdESqcDQcAVw6T6Gf1aDJKduIH84yo4ww4kgY8Y4WHr0y6hW+iYk
+ +Ddm2oC6dWG3NIcMR90tOYAzgBdPLNnXHLui2sijiEx360lrNDh7woodUph2xKLMIr0h
+ pA87PC+sj52MwBRqsDmqMP6PRAF/K9GYLityCf0lCN4LtTvlsoirwoW3IHoHH7TR3iUF
+ NpwbBWHQaaL+UfJmZSZhPZ+R+UxNasCqpQH7GqYPqjRDNbd1lXb9XxFP7+zuXMcWurjV
+ 3iRHLQK7vIxCc/Vg11ZpyvFwCsEr4230wZwjqnCw9Q7wKqm2J8Ayv6g9s28PFMshsCTm
+ sKsA==
+X-Gm-Message-State: AOAM530l/4bPUFO4CAsOv5xTgIcyNlJDozbXGxqgbOZfGQiZFx7VzlU2
+ /NMBJnYNNVdsD3RIgklxumsf80CzuQG2aNjFCg+MqiqsCdhf9Ts9sDVmQVQOs+YiUTJhaYKHoN/
+ 74RcEnq6smtigcQJgrQ==
+X-Received: by 2002:a05:6000:372:: with SMTP id
+ f18mr19924465wrf.149.1604932106947; 
+ Mon, 09 Nov 2020 06:28:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw8oKyOkd3sUuAvswGyqjkFta8SI1cd5uCp/LFXTXAmwrYFjFO7gS3/Qk6+7wsZ+5xB9T97Zg==
+X-Received: by 2002:a05:6000:372:: with SMTP id
+ f18mr19924436wrf.149.1604932106704; 
+ Mon, 09 Nov 2020 06:28:26 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id q1sm2293784wrj.59.2020.11.09.06.28.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Nov 2020 06:28:25 -0800 (PST)
+Subject: Re: [PATCH-for-5.2 3/4] hw/ppc/spapr_tpm_proxy: Fix hexadecimal
+ format string specifier
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ qemu-ppc@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Gerd Hoffmann <kraxel@redhat.com>, Dov Murik <dovmurik@linux.vnet.ibm.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+References: <20201103112558.2554390-1-philmd@redhat.com>
+ <20201103112558.2554390-4-philmd@redhat.com>
+ <20201103113948.GG143651@yekko.fritz.box>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <91914453-4c0a-c364-22e2-92ca9d1e50e4@redhat.com>
+Date: Mon, 9 Nov 2020 15:28:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20201103113948.GG143651@yekko.fritz.box>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 00:04:29
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 01:25:23
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,147 +101,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 12:50:13 -0000
+X-List-Received-Date: Mon, 09 Nov 2020 14:28:35 -0000
 
-Alex Chen <alex.chen@huawei.com> writes:
+Hi David,
 
-> On 2020/11/9 15:57, Markus Armbruster wrote:
->> Thomas Huth <thuth@redhat.com> writes:
->>=20
->>> On 06/11/2020 15.18, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> On 11/6/20 7:33 AM, Markus Armbruster wrote:
->>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>>
->>>>>> On 05/11/2020 06.14, AlexChen wrote:
->>>>>>> On 2020/11/4 18:44, Thomas Huth wrote:
->>>>>>>> On 04/11/2020 11.23, AlexChen wrote:
->>>>>>>>> We should use printf format specifier "%u" instead of "%d" for
->>>>>>>>> argument of type "unsigned int".
->>>>>>>>>
->>>>>>>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>>>>>>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->>>>>>>>> ---
->>>>>>>>>  tests/qtest/arm-cpu-features.c | 8 ++++----
->>>>>>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
->>>>>>>>>
-> [...]
->>>>>>>>>
->>>>>>>>
->>>>>>>> max_vq and vq are both "uint32_t" and not "unsigned int" ... so if=
- you want
->>>>>>>> to fix this really really correctly, please use PRIu32 from inttyp=
-es.h instead.
->>>>>>>>
->>>>>>>
->>>>>>> Hi Thomas,
->>>>>>> Thanks for your review.
->>>>>>> According to the definition of the macro PRIu32(# define PRIu32    =
-     "u"),
->>>>>>> using PRIu32 works the same as using %u to print, and using PRIu32 =
-to print
->>>>>>> is relatively rare in QEMU(%u 720, PRIu32 only 120). Can we continu=
-e to use %u to
->>>>>>> print max_vq and vq in this patch.
->>>>>>> Of course, this is just my small small suggestion. If you think it =
-is better to use
->>>>>>> PRIu32 for printing, I will send patch V2.
->>>>>>
->>>>>> Well, %u happens to work since "int" is 32-bit with all current comp=
-ilers
->>>>>> that we support.
->>>>>
->>>>> Yes, it works.
->>>>>
->>>>>>                  But if there is ever a compiler where the size of i=
-nt is
->>>>>> different, you'll get a compiler warning here again.
->>>>>
->>>>> No, we won't.
->>>>>
->>>>> If we ever use a compiler where int is narrower than 32 bits, then th=
-e
->>>>> type of the argument is actually uint32_t[1].  We can forget about th=
-is
->>>>> case, because "int narrower than 32 bits" is not going to fly with ou=
-r
->>>>> code base.
->>>
->>> Agreed.
->>>
->>>>> If we ever use a compiler where int is wider than 32 bits, then the t=
-ype
->>>>> of the argument is *not* uint32_t[2].  PRIu32 will work anyway, becau=
-se
->>>>> it will actually retrieve an unsigned int argument, *not* an uint32_t
->>>>> argument[3].
->>>
->>> I can hardly believe that this can be true. Sure, it's true for such ca=
-ses
->>> like this one here, where you multiply with an "int". But if you just t=
-ry to
->>> print a plain uint32_t variable?
->>=20
->> Default argument promotions (=C2=A76.5.2.2 Function calls) still apply: =
-"the
->> integer promotions are performed on each argument, and arguments that
->> have type float are promoted to double."
->>=20
->>> I've seen compiler warning in cases one tries to print a 16-bit (i.e. s=
-hort)
->>> variable in the past if you use %d instead of the proper PRId16 (or %hd=
-)
->>> format specifier - maybe not on x86, but certainly on other architectur=
-es.
->>> If you're statement was right, that should not have happened, should it=
-?
->>=20
->> =C2=A77.19.6.1 "The fprintf function" on length modifier 'h':
->>=20
->>     Specifies that a following d, i, o, u, x, or X conversion specifier
->>     applies to a short int or unsigned short int argument (the argument
->>     will have been promoted according to the integer promotions, but its
->>     value shall be converted to short int or unsigned short int before
->>     printing)
->>=20
->> Integer promotions preserve value including sign.  So, printing a short
->> value with %hd first promotes it to int, then converts it back to short.
->> Neither conversion has an effect.
->>=20
->> However, printing an int with %hd has: it converts int to short.
->> Implementation-defined behavior when the value doesn't fit.
->>=20
->> Length modifier 'h' is pretty pointless with printf().  So would be a
->> warning to nudge people towards its use.
->>=20
->> In fact, GNU libc's PRIu32 does not use it.  inttypes.h:
->>=20
->>     /* Unsigned integers.  */
->>     # define PRIu8=09=09"u"
->>     # define PRIu16=09=09"u"
->>     # define PRIu32=09=09"u"
->>     # define PRIu64=09=09__PRI64_PREFIX "u"
->>=20
->> where __PRI64_PREFIX is "l" or "ll" depending on system-dependent
->> __WORDSIZE.
->>=20
->> In short:
->>=20
->>>>> In other words "%" PRIu32 is just a less legible alias for "%u" in al=
-l
->>>>> cases that matter.
->>=20
->
-> Hi Markus,
->
-> Thanks for your reply, I have learned a lot.
-> May I understand it as follows:
-> %u is used when there are parameters obtained by arithmetic operation;
-> otherwise, PRIu32 is used to print uint32_t type parameters?
+On 11/3/20 12:39 PM, David Gibson wrote:
+> On Tue, Nov 03, 2020 at 12:25:57PM +0100, Philippe Mathieu-Daudé wrote:
+>> The '%u' conversion specifier is for decimal notation.
+>> When prefixing a format with '0x', we want the hexadecimal
+>> specifier ('%x').
+>>
+>> Inspired-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-No.  Use "%u" unless you need portability to machines where unsigned is
-narrower than 32 bits (we don't).
+As there is no qemu-trivial@ pull request during freeze/rc,
+can you queue this patch via your ppc tree?
 
-On machines where unsigned int is at least 32 bit wide, "%" PRIu32
-is the same as "%u".  It's not wrong, just illegible.
+Thanks,
+
+Phil.
+
+> 
+>> ---
+>>  hw/ppc/trace-events | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/ppc/trace-events b/hw/ppc/trace-events
+>> index dcc06d49b5a..6d8d095aa28 100644
+>> --- a/hw/ppc/trace-events
+>> +++ b/hw/ppc/trace-events
+>> @@ -19,7 +19,7 @@ spapr_update_dt_failed_size(unsigned cbold, unsigned cbnew, unsigned magic) "Old
+>>  spapr_update_dt_failed_check(unsigned cbold, unsigned cbnew, unsigned magic) "Old blob %u bytes, new blob %u bytes, magic 0x%x"
+>>  
+>>  # spapr_tpm_proxy.c
+>> -spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_device_path=%s operation=0x%"PRIu64
+>> +spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_device_path=%s operation=0x%"PRIx64
+>>  spapr_tpm_execute(uint64_t data_in, uint64_t data_in_sz, uint64_t data_out, uint64_t data_out_sz) "data_in=0x%"PRIx64", data_in_sz=%"PRIu64", data_out=0x%"PRIx64", data_out_sz=%"PRIu64
+>>  
+>>  # spapr_iommu.c
+> 
 
 
