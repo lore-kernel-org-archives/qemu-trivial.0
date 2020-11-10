@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcpad-00080A-MP
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38774)
+	id 1kcpah-00084B-0w
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaS-0007vD-DH; Wed, 11 Nov 2020 07:50:56 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2342)
+ id 1kcpaa-0007yd-IV; Wed, 11 Nov 2020 07:51:05 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2519)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaP-00034g-2E; Wed, 11 Nov 2020 07:50:56 -0500
+ id 1kcpaU-00038L-2U; Wed, 11 Nov 2020 07:51:04 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CWPj54nvbzkblb;
- Wed, 11 Nov 2020 20:50:33 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWPjF6xjVzhY63;
+ Wed, 11 Nov 2020 20:50:41 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 20:50:36 +0800
+ 20:50:41 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <laurent@vivier.eu>, <philmd@redhat.com>,
  <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 0/4] Categorize some uncategorized devices
-Date: Wed, 11 Nov 2020 06:17:16 +0800
-Message-ID: <20201110221720.572902-1-ganqixin@huawei.com>
+Subject: [PATCH 3/4] nand: put it into the 'storage' category
+Date: Wed, 11 Nov 2020 06:17:19 +0800
+Message-ID: <20201110221720.572902-4-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201110221720.572902-1-ganqixin@huawei.com>
+References: <20201110221720.572902-1-ganqixin@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 07:50:46
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
+ helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 07:07:25
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,27 +53,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 12:50:56 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 12:51:07 -0000
 
-Hi all,
+The category of the nand device is not set, put it into the 'storage' category.
 
-I categorize some uncategorized devices,could someone help me check it?
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+---
+ hw/block/nand.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks,
-Gan Qixin
-
-Gan Qixin (4):
-  ssd0323: put it into the 'dispaly' category
-  ads7846: put it into the 'dispaly' category
-  nand: put it into the 'storage' category
-  max111x: put it into the 'misc' category
-
- hw/block/nand.c      | 1 +
- hw/display/ads7846.c | 2 ++
- hw/display/ssd0323.c | 1 +
- hw/misc/max111x.c    | 1 +
- 4 files changed, 5 insertions(+)
-
+diff --git a/hw/block/nand.c b/hw/block/nand.c
+index bcceb64ebb..1d7a48a2ec 100644
+--- a/hw/block/nand.c
++++ b/hw/block/nand.c
+@@ -449,6 +449,7 @@ static void nand_class_init(ObjectClass *klass, void *data)
+     dc->reset = nand_reset;
+     dc->vmsd = &vmstate_nand;
+     device_class_set_props(dc, nand_properties);
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+ static const TypeInfo nand_info = {
 -- 
 2.23.0
 
