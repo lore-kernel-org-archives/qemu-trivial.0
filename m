@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcpaT-0007xO-HU
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:50:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38770)
+	id 1kcpab-0007yl-Ew
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaS-0007v1-4f; Wed, 11 Nov 2020 07:50:56 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2343)
+ id 1kcpaQ-0007tv-WC; Wed, 11 Nov 2020 07:50:55 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2341)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaO-00034f-Rw; Wed, 11 Nov 2020 07:50:55 -0500
+ id 1kcpaO-00034h-6G; Wed, 11 Nov 2020 07:50:54 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CWPj550pZzkbyJ;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CWPj54cGGzkbjh;
  Wed, 11 Nov 2020 20:50:33 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 20:50:39 +0800
+ 20:50:37 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <laurent@vivier.eu>, <philmd@redhat.com>,
  <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 2/4] ads7846: put it into the 'dispaly' category
-Date: Wed, 11 Nov 2020 06:17:18 +0800
-Message-ID: <20201110221720.572902-3-ganqixin@huawei.com>
+Subject: [PATCH 1/4] ssd0323: put it into the 'dispaly' category
+Date: Wed, 11 Nov 2020 06:17:17 +0800
+Message-ID: <20201110221720.572902-2-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201110221720.572902-1-ganqixin@huawei.com>
 References: <20201110221720.572902-1-ganqixin@huawei.com>
@@ -53,32 +53,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 12:50:56 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 12:50:55 -0000
 
-The category of the ads7846 device is not set, put it into the 'dispaly' category.
+The category of the ssd0323 device is not set, put it into the 'dispaly' category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
- hw/display/ads7846.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/display/ssd0323.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
-index 023165b2a3..b455cb5acd 100644
---- a/hw/display/ads7846.c
-+++ b/hw/display/ads7846.c
-@@ -163,10 +163,12 @@ static void ads7846_realize(SSISlave *d, Error **errp)
- 
- static void ads7846_class_init(ObjectClass *klass, void *data)
- {
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-     SSISlaveClass *k = SSI_SLAVE_CLASS(klass);
- 
-     k->realize = ads7846_realize;
-     k->transfer = ads7846_transfer;
+diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
+index 17d4b32ae3..cbfd21dfd5 100644
+--- a/hw/display/ssd0323.c
++++ b/hw/display/ssd0323.c
+@@ -370,6 +370,7 @@ static void ssd0323_class_init(ObjectClass *klass, void *data)
+     k->transfer = ssd0323_transfer;
+     k->cs_polarity = SSI_CS_HIGH;
+     dc->vmsd = &vmstate_ssd0323;
 +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
  }
  
- static const TypeInfo ads7846_info = {
+ static const TypeInfo ssd0323_info = {
 -- 
 2.23.0
 
