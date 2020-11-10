@@ -1,74 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kc9U7-0000Xw-8L
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 10:53:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38842)
+	id 1kcI6F-00058P-RV
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Nov 2020 20:05:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kc9U6-0000Wf-5a
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 10:53:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41840)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kc9U3-0005v7-JX
- for qemu-trivial@nongnu.org; Mon, 09 Nov 2020 10:53:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604937210;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0H4GgmRganqhrt02uQ3Zlw3La8h24ueQEO6LTvo4WRo=;
- b=eeWnmlCFSdssatAUUZTcIJmGBpLWShXRAL4DGr7LIGXOhw4FYSBTo3Ne+8PR9QdSVR3Aqu
- vmcCa6LFa3vRrn0km070nthhu1mYfXC8qYNjjcvypeF1nqtGZZubwY+hekd+RV02dBIXF5
- dcFkjSxL7NoHMtGtIko26yrcy7lJyo4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-547-VCiehG7ZMuuW31DoxQx1dQ-1; Mon, 09 Nov 2020 10:53:26 -0500
-X-MC-Unique: VCiehG7ZMuuW31DoxQx1dQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B600B6D245;
- Mon,  9 Nov 2020 15:53:24 +0000 (UTC)
-Received: from [10.3.112.154] (ovpn-112-154.phx2.redhat.com [10.3.112.154])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6DC2019931;
- Mon,  9 Nov 2020 15:53:23 +0000 (UTC)
-Subject: Re: [PATCH V2 1/2] plugins: Fix resource leak in connect_socket()
-To: AlexChen <alex.chen@huawei.com>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- QEMU Trivial <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
- zhang.zhanghailiang@huawei.com
-References: <5FA4AE11.6060701@huawei.com>
- <37c069f2-b137-b68d-9fb5-45a98b84aa0c@redhat.com>
- <5FA8FBE4.7000504@huawei.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <e8b2bb7c-3809-4437-7903-300d6d3bc7bf@redhat.com>
-Date: Mon, 9 Nov 2020 09:53:22 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kcI6E-00056M-Ci; Mon, 09 Nov 2020 20:05:30 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2116)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kcI6A-0006Dc-VE; Mon, 09 Nov 2020 20:05:29 -0500
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CVV5Q13dsz50bF;
+ Tue, 10 Nov 2020 09:04:58 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Tue, 10 Nov 2020 09:05:05 +0800
+Received: from DGGEMM511-MBS.china.huawei.com ([169.254.2.226]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0487.000;
+ Tue, 10 Nov 2020 09:04:58 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, ganqixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, Yoshinori Sato
+ <ysato@users.sourceforge.jp>, =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
+ <f4bug@amsat.org>
+Subject: RE: [PATCH] hw/intc: fix heap-buffer-overflow in rxicu_realize()
+Thread-Topic: [PATCH] hw/intc: fix heap-buffer-overflow in rxicu_realize()
+Thread-Index: AQHWs0I9MjF5nCKDLkWY9Hw35VFGIqnAkhaQ
+Date: Tue, 10 Nov 2020 01:04:57 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA52F71@dggemm511-mbs.china.huawei.com>
+References: <20201105070626.2277696-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201105070626.2277696-1-kuhn.chenqun@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <5FA8FBE4.7000504@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 00:04:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 20:05:08
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,43 +63,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Nov 2020 15:53:34 -0000
+X-List-Received-Date: Tue, 10 Nov 2020 01:05:30 -0000
 
-On 11/9/20 2:20 AM, AlexChen wrote:
-> On 2020/11/6 21:17, Eric Blake wrote:
->> On 11/5/20 7:59 PM, AlexChen wrote:
->>> Close the fd when the connect() fails.
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->>
->> Your From: line ("AlexChen") is spelled differently than your S-o-b:
->> line ("Alex Chen").  While this is not fatal to the patch, it is
->> confusing, so you may want to update your git settings to produce mail
->> spelled in the same manner as the S-o-b.
->>
-> 
-> Hi Eric,
-> 
-> Thanks for you suggestion, I will modify the user.name of git to "Alex Chen".
-> 
->> Also, although you did manage to send a 0/2 letter, you did not thread
->> things:
->> 0/2 Message-ID: <5FA4AE0B.1000007@huawei.com>
->> 1/2 Message-ID: Message-ID: <5FA4AE11.6060701@huawei.com>, but no
->> In-Reply-To: or References: headers, which means it is a new top-level
->> thread.  You may want to figure out why your mail setup is not
->> preserving threading.
->>
-> 
-> This may be my email settings is wrong, I try to modify the setting and send a patch v3.
-
-Thanks for the rapid turnaround - I can confirm that v3 is indeed nicer
-to read.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+UGluZywNCg0KRml4OiBlNzg1OTdjYzQ1N2ZmNzYxMSANCk1heWJlIHRoaXMgYnVnIG5lZWRzIHRv
+IHFlbXUtNS4yIHZlcnNpb24uDQoNClRoZSAiaWN1LT5ucl9zZW5zZSIgaXMgYXJyYXkgbGVuZ3Ro
+LiAgSXQncyBhIHR5cGljYWwgb3V0LW9mLWJvdW5kcyBhcnJheSBidWcuDQoNCg0KVGhhbmtzLA0K
+Q2hlbiBRdW4NCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDaGVucXVu
+IChrdWhuKQ0KPiBTZW50OiBUaHVyc2RheSwgTm92ZW1iZXIgNSwgMjAyMCAzOjA2IFBNDQo+IFRv
+OiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+IENjOiBa
+aGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBnYW5xaXhpbg0K
+PiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVh
+d2VpLmNvbT47DQo+IEV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsgWW9zaGlu
+b3JpIFNhdG8NCj4gPHlzYXRvQHVzZXJzLnNvdXJjZWZvcmdlLmpwPg0KPiBTdWJqZWN0OiBbUEFU
+Q0hdIGh3L2ludGM6IGZpeCBoZWFwLWJ1ZmZlci1vdmVyZmxvdyBpbiByeGljdV9yZWFsaXplKCkN
+Cj4gDQo+IFdoZW4gJ2ogPSBpY3UtPm5yX3NlbnNlIOKAkyAxJywgdGhlICdqIDwgaWN1LT5ucl9z
+ZW5zZScgY29uZGl0aW9uIGlzIHRydWUsIHRoZW4gJ2ogPQ0KPiBpY3UtPm5yX3NlbnNlJywgdGhl
+J2ljdS0+aW5pdF9zZW5zZVtqXScgaGFzIG91dC1vZi1ib3VuZHMgYWNjZXNzLg0KPiBNYXliZSB0
+aGlzIGNvdWxkIGxlYWQgdG8gc29tZSBzZWN1cml0eSBwcm9ibGVtcy4NCj4gDQo+IFRoZSBhc2Fu
+IHNob3dlZCBzdGFjazoNCj4gRVJST1I6IEFkZHJlc3NTYW5pdGl6ZXI6IGhlYXAtYnVmZmVyLW92
+ZXJmbG93IG9uIGFkZHJlc3MgMHg2MDQwMDAwMDRkN2QgYXQNCj4gcGMgMHg1NTg1MmNkMjZhNzYg
+YnAgMHg3ZmZlMzlmMjYyMDAgc3AgMHg3ZmZlMzlmMjYxZjAgUkVBRCBvZiBzaXplIDEgYXQNCj4g
+MHg2MDQwMDAwMDRkN2QgdGhyZWFkIFQwDQo+ICAgICAjMCAweDU1ODUyY2QyNmE3NSBpbiByeGlj
+dV9yZWFsaXplIC4uL2h3L2ludGMvcnhfaWN1LmM6MzExDQo+ICAgICAjMSAweDU1ODUyY2YwNzVm
+NyBpbiBkZXZpY2Vfc2V0X3JlYWxpemVkIC4uL2h3L2NvcmUvcWRldi5jOjg4Ng0KPiAgICAgIzIg
+MHg1NTg1MmNkNGEzMmYgaW4gcHJvcGVydHlfc2V0X2Jvb2wgLi4vcW9tL29iamVjdC5jOjIyNTEN
+Cj4gICAgICMzIDB4NTU4NTJjZDRmOWJiIGluIG9iamVjdF9wcm9wZXJ0eV9zZXQgLi4vcW9tL29i
+amVjdC5jOjEzOTgNCj4gICAgICM0IDB4NTU4NTJjZDU0ZjNmIGluDQo+IG9iamVjdF9wcm9wZXJ0
+eV9zZXRfcW9iamVjdCAuLi9xb20vcW9tLXFvYmplY3QuYzoyOA0KPiAgICAgIzUgMHg1NTg1MmNk
+NGZjM2YgaW4gb2JqZWN0X3Byb3BlcnR5X3NldF9ib29sIC4uL3FvbS9vYmplY3QuYzoxNDY1DQo+
+ICAgICAjNiAweDU1ODUyY2JmMGIyNyBpbiByZWdpc3Rlcl9pY3UgLi4vaHcvcngvcng2Mm4uYzox
+NTYNCj4gICAgICM3IDB4NTU4NTJjYmYxMmE2IGluIHJ4NjJuX3JlYWxpemUgLi4vaHcvcngvcng2
+Mm4uYzoyNjENCj4gICAgICM4IDB4NTU4NTJjZjA3NWY3IGluIGRldmljZV9zZXRfcmVhbGl6ZWQg
+Li4vaHcvY29yZS9xZGV2LmM6ODg2DQo+ICAgICAjOSAweDU1ODUyY2Q0YTMyZiBpbiBwcm9wZXJ0
+eV9zZXRfYm9vbCAuLi9xb20vb2JqZWN0LmM6MjI1MQ0KPiAgICAgIzEwIDB4NTU4NTJjZDRmOWJi
+IGluIG9iamVjdF9wcm9wZXJ0eV9zZXQgLi4vcW9tL29iamVjdC5jOjEzOTgNCj4gICAgICMxMSAw
+eDU1ODUyY2Q1NGYzZiBpbg0KPiBvYmplY3RfcHJvcGVydHlfc2V0X3FvYmplY3QgLi4vcW9tL3Fv
+bS1xb2JqZWN0LmM6MjgNCj4gICAgICMxMiAweDU1ODUyY2Q0ZmMzZiBpbiBvYmplY3RfcHJvcGVy
+dHlfc2V0X2Jvb2wgLi4vcW9tL29iamVjdC5jOjE0NjUNCj4gICAgICMxMyAweDU1ODUyY2JmMWE4
+NSBpbiByeF9nZGJzaW1faW5pdCAuLi9ody9yeC9yeC1nZGJzaW0uYzoxMDkNCj4gICAgICMxNCAw
+eDU1ODUyY2QyMmRlMCBpbiBxZW11X2luaXQgLi4vc29mdG1tdS92bC5jOjQzODANCj4gICAgICMx
+NSAweDU1ODUyY2E1NzA4OCBpbiBtYWluIC4uL3NvZnRtbXUvbWFpbi5jOjQ5DQo+ICAgICAjMTYg
+MHg3ZmVlZmFmYTVkNDIgaW4gX19saWJjX3N0YXJ0X21haW4gKC9saWI2NC9saWJjLnNvLjYrMHgy
+NmQ0MikNCj4gDQo+IENoYW5nZSB0aGUgJ2ogPCBpY3UtPm5yX3NlbnNlJyBjb25kaXRpb24gcGxh
+Y2UgdG8gZml4IGl0Lg0KPiANCj4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxldWxlci5yb2Jv
+dEBodWF3ZWkuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1
+YXdlaS5jb20+DQo+IC0tLQ0KPiBDYzogWW9zaGlub3JpIFNhdG8gPHlzYXRvQHVzZXJzLnNvdXJj
+ZWZvcmdlLmpwPg0KPiAtLS0NCj4gIGh3L2ludGMvcnhfaWN1LmMgfCA2ICsrLS0tLQ0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYg
+LS1naXQgYS9ody9pbnRjL3J4X2ljdS5jIGIvaHcvaW50Yy9yeF9pY3UuYyBpbmRleCA5NGUxN2E5
+ZGVhLi42OTJhNGM3OGUwDQo+IDEwMDY0NA0KPiAtLS0gYS9ody9pbnRjL3J4X2ljdS5jDQo+ICsr
+KyBiL2h3L2ludGMvcnhfaWN1LmMNCj4gQEAgLTMwOCwxMSArMzA4LDkgQEAgc3RhdGljIHZvaWQg
+cnhpY3VfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvcg0KPiAqKmVycnApDQo+ICAgICAg
+ICAgIHJldHVybjsNCj4gICAgICB9DQo+ICAgICAgZm9yIChpID0gaiA9IDA7IGkgPCBOUl9JUlFT
+OyBpKyspIHsNCj4gLSAgICAgICAgaWYgKGljdS0+aW5pdF9zZW5zZVtqXSA9PSBpKSB7DQo+ICsg
+ICAgICAgIGlmIChqIDwgaWN1LT5ucl9zZW5zZSAmJiBpY3UtPmluaXRfc2Vuc2Vbal0gPT0gaSkg
+ew0KPiAgICAgICAgICAgICAgaWN1LT5zcmNbaV0uc2Vuc2UgPSBUUkdfTEVWRUw7DQo+IC0gICAg
+ICAgICAgICBpZiAoaiA8IGljdS0+bnJfc2Vuc2UpIHsNCj4gLSAgICAgICAgICAgICAgICBqKys7
+DQo+IC0gICAgICAgICAgICB9DQo+ICsgICAgICAgICAgICBqKys7DQo+ICAgICAgICAgIH0gZWxz
+ZSB7DQo+ICAgICAgICAgICAgICBpY3UtPnNyY1tpXS5zZW5zZSA9IFRSR19QRURHRTsNCj4gICAg
+ICAgICAgfQ0KPiAtLQ0KPiAyLjI3LjANCg0K
 
