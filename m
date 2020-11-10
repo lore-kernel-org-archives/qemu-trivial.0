@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcpah-00084B-0w
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38822)
+	id 1kcpai-00085a-Pr
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaa-0007yd-IV; Wed, 11 Nov 2020 07:51:05 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2519)
+ id 1kcpaT-0007xs-MK; Wed, 11 Nov 2020 07:51:03 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2520)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaU-00038L-2U; Wed, 11 Nov 2020 07:51:04 -0500
+ id 1kcpaR-00038P-Hz; Wed, 11 Nov 2020 07:50:57 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWPjF6xjVzhY63;
- Wed, 11 Nov 2020 20:50:41 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWPjG02z8zhYM6;
+ Wed, 11 Nov 2020 20:50:42 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 20:50:41 +0800
+ 20:50:42 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <laurent@vivier.eu>, <philmd@redhat.com>,
  <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 3/4] nand: put it into the 'storage' category
-Date: Wed, 11 Nov 2020 06:17:19 +0800
-Message-ID: <20201110221720.572902-4-ganqixin@huawei.com>
+Subject: [PATCH 4/4] max111x: put it into the 'misc' category
+Date: Wed, 11 Nov 2020 06:17:20 +0800
+Message-ID: <20201110221720.572902-5-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201110221720.572902-1-ganqixin@huawei.com>
 References: <20201110221720.572902-1-ganqixin@huawei.com>
@@ -55,25 +55,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 11 Nov 2020 12:51:07 -0000
 
-The category of the nand device is not set, put it into the 'storage' category.
+The category of the max111x device is not set, put it into the 'misc' category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
- hw/block/nand.c | 1 +
+ hw/misc/max111x.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/block/nand.c b/hw/block/nand.c
-index bcceb64ebb..1d7a48a2ec 100644
---- a/hw/block/nand.c
-+++ b/hw/block/nand.c
-@@ -449,6 +449,7 @@ static void nand_class_init(ObjectClass *klass, void *data)
-     dc->reset = nand_reset;
-     dc->vmsd = &vmstate_nand;
-     device_class_set_props(dc, nand_properties);
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
+index 7e6723f343..eae0f9b598 100644
+--- a/hw/misc/max111x.c
++++ b/hw/misc/max111x.c
+@@ -185,6 +185,7 @@ static void max111x_class_init(ObjectClass *klass, void *data)
+     k->transfer = max111x_transfer;
+     dc->reset = max111x_reset;
+     dc->vmsd = &vmstate_max111x;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- static const TypeInfo nand_info = {
+ static const TypeInfo max111x_info = {
 -- 
 2.23.0
 
