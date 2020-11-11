@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcr1a-0004T7-4R
+	id 1kcr1a-0004Uw-PP
 	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 09:23:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34462)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kcr1W-0004Kp-Ma; Wed, 11 Nov 2020 09:22:58 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2414)
+ id 1kcr1V-0004J0-Nq; Wed, 11 Nov 2020 09:22:57 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2521)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kcr1H-0000c5-9k; Wed, 11 Nov 2020 09:22:58 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CWRl33JYRz15SyH;
- Wed, 11 Nov 2020 22:22:23 +0800 (CST)
+ id 1kcr1K-0000cI-VY; Wed, 11 Nov 2020 09:22:57 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWRl84MRGzhk1P;
+ Wed, 11 Nov 2020 22:22:28 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 22:22:26 +0800
+ 22:22:28 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>,
  <ganqixin@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 2/5] util/qemu-timer: fix uninitialized variable warning in
- timer_mod_anticipate_ns()
-Date: Wed, 11 Nov 2020 22:22:00 +0800
-Message-ID: <20201111142203.2359370-3-kuhn.chenqun@huawei.com>
+ <euler.robot@huawei.com>, =?UTF-8?q?Alex=20Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Subject: [PATCH v2 4/5] plugins/loader: fix uninitialized variable warning in
+ plugin_reset_uninstall()
+Date: Wed, 11 Nov 2020 22:22:02 +0800
+Message-ID: <20201111142203.2359370-5-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201111142203.2359370-1-kuhn.chenqun@huawei.com>
 References: <20201111142203.2359370-1-kuhn.chenqun@huawei.com>
@@ -33,15 +33,15 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 07:50:46
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 07:07:25
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,51 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 14:22:59 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 14:22:58 -0000
 
 After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
  that the statements in the macro must be executed. As a result, some variables
  assignment statements in the macro may be considered as unexecuted by the compiler.
 
 When the -Wmaybe-uninitialized capability is enabled on GCC9,the compiler showed warning:
-util/qemu-timer.c: In function ‘timer_mod_anticipate_ns’:
-util/qemu-timer.c:474:8: warning: ‘rearm’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-  474 |     if (rearm) {
-      |        ^
+plugins/loader.c: In function ‘plugin_reset_uninstall’:
+plugins/loader.c:382:15: warning: ‘ctx’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 382 |     data->ctx = ctx;
+     |     ~~~~~~~~~~^~~~~
 
-Change the default value assignment place to prevented the warning.
+Add a default value for 'expire_time' to prevented the warning.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: "Alex Bennée" <alex.bennee@linaro.org>
 ---
- util/qemu-timer.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ plugins/loader.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 81c28af517..8b73882fbb 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -459,7 +459,7 @@ void timer_mod_ns(QEMUTimer *ts, int64_t expire_time)
- void timer_mod_anticipate_ns(QEMUTimer *ts, int64_t expire_time)
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 8ac5dbc20f..88593fe138 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -367,7 +367,7 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
+                             bool reset)
  {
-     QEMUTimerList *timer_list = ts->timer_list;
--    bool rearm;
-+    bool rearm = false;
+     struct qemu_plugin_reset_data *data;
+-    struct qemu_plugin_ctx *ctx;
++    struct qemu_plugin_ctx *ctx = NULL;
  
-     WITH_QEMU_LOCK_GUARD(&timer_list->active_timers_lock) {
-         if (ts->expire_time == -1 || ts->expire_time > expire_time) {
-@@ -467,8 +467,6 @@ void timer_mod_anticipate_ns(QEMUTimer *ts, int64_t expire_time)
-                 timer_del_locked(timer_list, ts);
-             }
-             rearm = timer_mod_ns_locked(timer_list, ts, expire_time);
--        } else {
--            rearm = false;
-         }
-     }
-     if (rearm) {
+     WITH_QEMU_LOCK_GUARD(&plugin.lock) {
+         ctx = plugin_id_to_ctx_locked(id);
 -- 
 2.27.0
 
