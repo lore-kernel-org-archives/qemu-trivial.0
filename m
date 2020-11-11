@@ -1,63 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcjwL-0008NJ-BR
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 01:49:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39444)
+	id 1kckjJ-0000yQ-D3
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 02:39:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1kcjwH-0008My-Ia
- for qemu-trivial@nongnu.org; Wed, 11 Nov 2020 01:49:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27652)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1kcjwF-0003oD-19
- for qemu-trivial@nongnu.org; Wed, 11 Nov 2020 01:49:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605077341;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=dPiocdT4Eok7UlM3ngfAOXYIX54kaY55VIb7vIIprbA=;
- b=Avaw2ggjkC1XaKu9rXPI1dzB/mkmFuEAkK+7o5vS3WzndJy1h/TyFDTmLskguZncpt6fkC
- Dv+NZmu2PR4GLFXRaQofX7Rrzzzl7rhucysGY6yUQ4hvNRsNr8DNxO/tDUPBUBlgqQQcDw
- kIGPvC5RYvuTDBphXjNu3yho7vvDDsI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-532-ntwuhe1aMz6wBlOIn9LXjg-1; Wed, 11 Nov 2020 01:47:50 -0500
-X-MC-Unique: ntwuhe1aMz6wBlOIn9LXjg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73BE3809DDB;
- Wed, 11 Nov 2020 06:47:49 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-13-135.pek2.redhat.com
- [10.72.13.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6D327413C;
- Wed, 11 Nov 2020 06:47:46 +0000 (UTC)
-From: Han Han <hhan@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	laurent@vivier.eu,
-	Han Han <hhan@redhat.com>
-Subject: [PATCH] dev-uas: Fix a error of variable sized type not at end
-Date: Wed, 11 Nov 2020 14:47:37 +0800
-Message-Id: <20201111064737.576673-1-hhan@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kckjH-0000xb-Fc; Wed, 11 Nov 2020 02:39:43 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2090)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kckjF-0004Be-2R; Wed, 11 Nov 2020 02:39:43 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CWGnn3SSJzhkK1;
+ Wed, 11 Nov 2020 15:39:09 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 11 Nov 2020 15:39:08 +0800
+Message-ID: <5FAB9512.7070200@huawei.com>
+Date: Wed, 11 Nov 2020 15:38:58 +0800
+From: Alex Chen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hhan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=hhan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 01:49:01
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+To: <jasowang@redhat.com>
+CC: QEMU <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <zhang.zhanghailiang@huawei.com>, <zhengchuan@huawei.com>
+Subject: Re: [PATCH] net/l2tpv3: Remove redundant check in net_init_l2tpv3()
+References: <5F9B7E9F.8050004@huawei.com>
+In-Reply-To: <5F9B7E9F.8050004@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 02:39:16
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,65 +53,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 06:49:07 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 07:39:43 -0000
 
-Fix the following error when compiling:
+Kindly ping.
 
-FAILED: libcommon.fa.p/hw_usb_dev-uas.c.o
-clang -Ilibcommon.fa.p -I. -I.. -Iqapi -Itrace -Iui -Iui/shader -I/usr/incl=
-ude/libusb-1.0 -I/usr/include/spice-1 -I/usr/include/spice-server -I/usr/in=
-clude/cacard -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/i=
-nclude/nss3 -I/usr/include/nspr4 -I/usr/include/libmount -I/usr/include/blk=
-id -I/usr/include/pixman-1 -I/usr/include/vte-2.91 -I/usr/include/pango-1.0=
- -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng16 -=
-I/usr/include/fribidi -I/usr/include/libxml2 -I/usr/include/cairo -I/usr/in=
-clude/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gio-unix-2.0 -I/=
-usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 =
--I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -I/usr/include/SDL2=
- -I/usr/include/slirp -I/usr/include/virgl -I/usr/include/capstone -Xclang =
--fcolor-diagnostics -pipe -Wall -Winvalid-pch -Werror -std=3Dgnu99 -O2 -g -=
-fsanitize=3Dundefined -fsanitize=3Daddress -m64 -mcx16 -D_GNU_SOURCE -D_FIL=
-E_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decl=
-s -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-co=
-mmon -fwrapv -Wold-style-definition -Wtype-limits -Wformat-security -Wforma=
-t-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendi=
-f-labels -Wexpansion-to-defined -Wno-initializer-overrides -Wno-missing-inc=
-lude-dirs -Wno-shift-negative-value -Wno-string-plus-int -Wno-typedef-redef=
-inition -Wno-tautological-type-limit-compare -Wno-psabi -fstack-protector-s=
-trong -fsanitize=3Dfuzzer-no-link -isystem /home/hhan/Software/qemu/linux-h=
-eaders -isystem linux-headers -iquote /home/hhan/Software/qemu/tcg/i386 -iq=
-uote . -iquote /home/hhan/Software/qemu -iquote /home/hhan/Software/qemu/ac=
-cel/tcg -iquote /home/hhan/Software/qemu/include -iquote /home/hhan/Softwar=
-e/qemu/disas/libvixl -pthread -fPIC -DSTRUCT_IOVEC_DEFINED -D_REENTRANT -Wn=
-o-undef -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=3D600 -DNCURSES_WIDECHAR -MD -MQ =
-libcommon.fa.p/hw_usb_dev-uas.c.o -MF libcommon.fa.p/hw_usb_dev-uas.c.o.d -=
-o libcommon.fa.p/hw_usb_dev-uas.c.o -c ../hw/usb/dev-uas.c
-../hw/usb/dev-uas.c:158:31: error: field 'status' with variable sized type =
-'uas_iu' not at the end of a struct or class is a GNU extension [-Werror,-W=
-gnu-variable-sized-type-not-at-end]
-
-Signed-off-by: Han Han <hhan@redhat.com>
----
- hw/usb/dev-uas.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
-index cec071d96c..5ef3f4fec9 100644
---- a/hw/usb/dev-uas.c
-+++ b/hw/usb/dev-uas.c
-@@ -154,9 +154,9 @@ struct UASRequest {
-=20
- struct UASStatus {
-     uint32_t                  stream;
--    uas_iu                    status;
-     uint32_t                  length;
-     QTAILQ_ENTRY(UASStatus)   next;
-+    uas_iu                    status;
- };
-=20
- /* --------------------------------------------------------------------- *=
-/
---=20
-2.28.0
+On 2020/10/30 10:46, AlexChen wrote:
+> The result has been checked to be NULL before, it cannot be NULL here,
+> so the check is redundant. Remove it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
+> ---
+>  net/l2tpv3.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/net/l2tpv3.c b/net/l2tpv3.c
+> index 55fea17c0f..e4d4218db6 100644
+> --- a/net/l2tpv3.c
+> +++ b/net/l2tpv3.c
+> @@ -655,9 +655,8 @@ int net_init_l2tpv3(const Netdev *netdev,
+>          error_setg(errp, "could not bind socket err=%i", errno);
+>          goto outerr;
+>      }
+> -    if (result) {
+> -        freeaddrinfo(result);
+> -    }
+> +
+> +    freeaddrinfo(result);
+> 
+>      memset(&hints, 0, sizeof(hints));
+> 
+> @@ -686,9 +685,7 @@ int net_init_l2tpv3(const Netdev *netdev,
+>      memcpy(s->dgram_dst, result->ai_addr, result->ai_addrlen);
+>      s->dst_size = result->ai_addrlen;
+> 
+> -    if (result) {
+> -        freeaddrinfo(result);
+> -    }
+> +    freeaddrinfo(result);
+> 
+>      if (l2tpv3->has_counter && l2tpv3->counter) {
+>          s->has_counter = true;
+> 
 
 
