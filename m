@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcqfL-0003Hh-3Z
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 09:00:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51602)
+	id 1kcqjH-0006B2-Lq
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 09:04:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pushbx@ulukai.org>)
- id 1kcoMJ-000523-Mg; Wed, 11 Nov 2020 06:32:16 -0500
-Received: from ulukai.org ([2a01:488:66:1000:b01c:1258:0:1]:51610)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kcqjE-0006Ag-GJ; Wed, 11 Nov 2020 09:04:04 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2485)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pushbx@ulukai.org>)
- id 1kcoMG-0002Mb-QR; Wed, 11 Nov 2020 06:32:15 -0500
-Received: from [192.168.1.5]
- (dynamic-046-114-110-179.46.114.pool.telefonica.de [46.114.110.179])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (Client did not present a certificate)
- by ulukai.org (Postfix) with ESMTPSA id 4CWMyM19Fxz2snQ;
- Wed, 11 Nov 2020 12:31:55 +0100 (CET)
-X-Virus-Status: Clean
-X-Virus-Scanned: clamav-milter 0.102.3 at ulukai.org
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ulukai.org; s=ulukai;
- t=1605094316; bh=jF9riMko6MmxregSBSkLP54s0n4PPwisV+FsItOXbP4=;
- h=From:Subject:To:Cc:Date:From;
- b=Kw0CJbJ7SH21bF5O/9Xqrlm66FHkUJGQkNL/hKFmErxqcsJjXmQ0R676BY6KIeZXO
- gYbFRZCNprFMScOgbJRaqGRjXcom/QZ4Gve72KiavPVl+Si2BJupfuqVgSW/KcWwN+
- 9ogT8OQjYFolHBcBoajRutFMVBzu+wyg84UM2mgo=
-From: "C. Masloch" <pushbx@ulukai.org>
-Subject: [PATCH] multiboot: Fix, do not include kernel filename in Multiboot
- command line
-To: qemu-devel@nongnu.org
-Cc: "C. Masloch" <pushbx@ulukai.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
-Message-ID: <b3838d86-1422-aadc-7f77-3cf402009755@ulukai.org>
-Date: Wed, 11 Nov 2020 12:31:51 +0100
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kcqj8-0002GD-V7; Wed, 11 Nov 2020 09:04:04 -0500
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.55])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CWRK72NVPzVmgW;
+ Wed, 11 Nov 2020 22:03:23 +0800 (CST)
+Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Wed, 11 Nov 2020 22:03:40 +0800
+Received: from DGGEMM511-MBS.china.huawei.com ([169.254.2.226]) by
+ dggemm422-hub.china.huawei.com ([169.254.138.104]) with mapi id
+ 14.03.0487.000; Wed, 11 Nov 2020 22:03:32 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>, ganqixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: RE: [PATCH] hw/intc: fix heap-buffer-overflow in rxicu_realize()
+Thread-Topic: [PATCH] hw/intc: fix heap-buffer-overflow in rxicu_realize()
+Thread-Index: AQHWs0I9MjF5nCKDLkWY9Hw35VFGIqnBABMAgAGoIVA=
+Date: Wed, 11 Nov 2020 14:03:31 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA5B152@dggemm511-mbs.china.huawei.com>
+References: <20201105070626.2277696-1-kuhn.chenqun@huawei.com>
+ <CAFEAcA_0=HHG8+p0j2W2j5hLUgGZ_aWfKMQkROLj0HGoU0D7eg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_0=HHG8+p0j2W2j5hLUgGZ_aWfKMQkROLj0HGoU0D7eg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a01:488:66:1000:b01c:1258:0:1;
- envelope-from=pushbx@ulukai.org; helo=ulukai.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 06:31:57
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga01-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 09:03:42
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 11 Nov 2020 09:00:01 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,80 +62,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 11:32:17 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 14:04:05 -0000
 
-Testing a Multiboot specification compatible kernel entrypoint I found
-that qemu -kernel foo -append bar results in the Multiboot command line
-being passed as "foo bar". Just -kernel foo results in "foo " (with
-trailing blank). If the filename given to -kernel contains a blank, like
--kernel "quux foo" with -append bar then the command line contains that
-blank, unquoted, like "quux foo bar".
-
-GRUB2 only passes the command line content in the Multiboot command
-line. For example, given the kernel command "multiboot /foo bar" GRUB2
-only passes "bar" in the Multiboot command line. I consider GRUB2 to be
-the authoritative example implementation as far as the Multiboot
-specification is concerned.
-
-Test case is as follows, using ldosboot [1], lmacros [2], scanptab [3],
-and bootimg [4]:
-
-ldosboot$ nasm -I ../lmacros/ testpl.asm -o testpl.bin -l testpl.lst &&
-  nasm -I ../lmacros/ -I ./ -I ../scanptab/ -D_IMAGE_EXE
--D_IMAGE_EXE_AUTO_STACK -D_IMAGE_EXE_MIN_CALC=_IMAGE_EXE_AUTO_STACK
--D_IMAGE_EXE_MAX=0 -D_PAYLOAD_FILE='"testpl.bin"'
--D_INILOAD_SIGNATURE='"TP"' iniload.asm -o testpl.com -l testpli.lst &&
-  nasm ../bootimg/bootimg.asm -D_MBR -o diskq.img -D_UNIT=80h
--D_PAYLOADFILE=::empty -I ../lmacros/ -l diskq.lst &&
-  timeout --foreground 10 qemu-system-i386 -kernel testpl.com -curses
--hda diskq.img -append baz 2> /dev/null; stty sane
-
-(The -hda disk image is needed because my kernel's iniload stage expects
-to be booted off a valid FAT filesystem partition, and also qemu -kernel
-passes ROM-BIOS unit 80h (first harddisk unit) partition 0 (first
-primary partition) to the Multiboot specification entrypoint, even if no
-hard disk is present at all.)
-
-Relevant output line on broken qemu:
-
-> Kernel command line = "testpl.com baz"
-
-Expected output: (as seen when booted from GRUB2, or patched qemu)
-
-> Kernel command line = "baz"
-
-Signed-off-by: C. Masloch <pushbx@ulukai.org>
-
-[1]: https://hg.ulukai.org/ecm/ldosboot
-[2]: https://hg.ulukai.org/ecm/lmacros
-[3]: https://hg.ulukai.org/ecm/scanptab
-[4]: https://hg.ulukai.org/ecm/bootimg
-
-
-diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
-index 9e7d69d470..78b36902ff 100644
---- a/hw/i386/multiboot.c
-+++ b/hw/i386/multiboot.c
-@@ -288,8 +288,7 @@ int load_multiboot(FWCfgState *fw_cfg,
-     mbs.offset_mbinfo = mbs.mb_buf_size;
-
-     /* Calculate space for cmdlines, bootloader name, and mb_mods */
--    cmdline_len = strlen(kernel_filename) + 1;
--    cmdline_len += strlen(kernel_cmdline) + 1;
-+    cmdline_len = strlen(kernel_cmdline) + 1;
-     if (initrd_filename) {
-         const char *r = initrd_filename;
-         cmdline_len += strlen(initrd_filename) + 1;
-@@ -360,10 +359,7 @@ int load_multiboot(FWCfgState *fw_cfg,
-     }
-
-     /* Commandline support */
--    char kcmdline[strlen(kernel_filename) + strlen(kernel_cmdline) + 2];
--    snprintf(kcmdline, sizeof(kcmdline), "%s %s",
--             kernel_filename, kernel_cmdline);
--    stl_p(bootinfo + MBI_CMDLINE, mb_add_cmdline(&mbs, kcmdline));
-+    stl_p(bootinfo + MBI_CMDLINE, mb_add_cmdline(&mbs, kernel_cmdline));
-
-     stl_p(bootinfo + MBI_BOOTLOADER, mb_add_bootloader(&mbs,
-bootloader_name));
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBUdWVzZGF5LCBOb3ZlbWJlciAx
+MCwgMjAyMCAxMTozMCBQTQ0KPiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
+ZWkuY29tPg0KPiBDYzogUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBR
+RU1VIFRyaXZpYWwNCj4gPHFlbXUtdHJpdmlhbEBub25nbnUub3JnPjsgWW9zaGlub3JpIFNhdG8g
+PHlzYXRvQHVzZXJzLnNvdXJjZWZvcmdlLmpwPjsNCj4gWmhhbmdoYWlsaWFuZyA8emhhbmcuemhh
+bmdoYWlsaWFuZ0BodWF3ZWkuY29tPjsgZ2FucWl4aW4NCj4gPGdhbnFpeGluQGh1YXdlaS5jb20+
+OyBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQ
+QVRDSF0gaHcvaW50YzogZml4IGhlYXAtYnVmZmVyLW92ZXJmbG93IGluIHJ4aWN1X3JlYWxpemUo
+KQ0KPiANCj4gT24gVGh1LCA1IE5vdiAyMDIwIGF0IDA3OjA4LCBDaGVuIFF1biA8a3Vobi5jaGVu
+cXVuQGh1YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gV2hlbiAnaiA9IGljdS0+bnJfc2Vuc2Ug
+4oCTIDEnLCB0aGUgJ2ogPCBpY3UtPm5yX3NlbnNlJyBjb25kaXRpb24gaXMNCj4gPiB0cnVlLCB0
+aGVuICdqID0gaWN1LT5ucl9zZW5zZScsIHRoZSdpY3UtPmluaXRfc2Vuc2Vbal0nIGhhcyBvdXQt
+b2YtYm91bmRzIGFjY2Vzcy4NCj4gDQo+IFllcywgdGhpcyBpcyBhIGJ1Zy4uLg0KPiANCj4gPiBN
+YXliZSB0aGlzIGNvdWxkIGxlYWQgdG8gc29tZSBzZWN1cml0eSBwcm9ibGVtcy4NCj4gDQo+IC4u
+LmJ1dCBpdCdzIG5vdCBhIHNlY3VyaXR5IGJ1ZywgYmVjYXVzZSB0aGlzIGRldmljZSBjYW4ndCBi
+ZSB1c2VkIHdpdGggS1ZNLCBzbyBpdCdzDQo+IG5vdCBvbiB0aGUgUUVNVSBzZWN1cml0eSBib3Vu
+ZGFyeS4NCj4gDQo+IA0KPiA+ICBody9pbnRjL3J4X2ljdS5jIHwgNiArKy0tLS0NCj4gPiAgMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IGRp
+ZmYgLS1naXQgYS9ody9pbnRjL3J4X2ljdS5jIGIvaHcvaW50Yy9yeF9pY3UuYyBpbmRleA0KPiA+
+IDk0ZTE3YTlkZWEuLjY5MmE0Yzc4ZTAgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvaW50Yy9yeF9pY3Uu
+Yw0KPiA+ICsrKyBiL2h3L2ludGMvcnhfaWN1LmMNCj4gPiBAQCAtMzA4LDExICszMDgsOSBAQCBz
+dGF0aWMgdm9pZCByeGljdV9yZWFsaXplKERldmljZVN0YXRlICpkZXYsIEVycm9yDQo+ICoqZXJy
+cCkNCj4gPiAgICAgICAgICByZXR1cm47DQo+ID4gICAgICB9DQo+ID4gICAgICBmb3IgKGkgPSBq
+ID0gMDsgaSA8IE5SX0lSUVM7IGkrKykgew0KPiA+IC0gICAgICAgIGlmIChpY3UtPmluaXRfc2Vu
+c2Vbal0gPT0gaSkgew0KPiA+ICsgICAgICAgIGlmIChqIDwgaWN1LT5ucl9zZW5zZSAmJiBpY3Ut
+PmluaXRfc2Vuc2Vbal0gPT0gaSkgew0KPiA+ICAgICAgICAgICAgICBpY3UtPnNyY1tpXS5zZW5z
+ZSA9IFRSR19MRVZFTDsNCj4gPiAtICAgICAgICAgICAgaWYgKGogPCBpY3UtPm5yX3NlbnNlKSB7
+DQo+ID4gLSAgICAgICAgICAgICAgICBqKys7DQo+ID4gLSAgICAgICAgICAgIH0NCj4gPiArICAg
+ICAgICAgICAgaisrOw0KPiA+ICAgICAgICAgIH0gZWxzZSB7DQo+ID4gICAgICAgICAgICAgIGlj
+dS0+c3JjW2ldLnNlbnNlID0gVFJHX1BFREdFOw0KPiA+ICAgICAgICAgIH0NCj4gDQo+IFRoaXMg
+d29ya3MsIHNvOg0KPiANCj4gUmV2aWV3ZWQtYnk6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRl
+bGxAbGluYXJvLm9yZz4NCj4gDQo+IGJ1dCB0byBiZSBob25lc3QgSSB0aGluayB0aGlzIHdvdWxk
+IGJlIG1vcmUgcmVhZGFibGU6DQo+IA0KPiAgICAgZm9yIChpID0gMDsgaSA8IE5SX0lSUVM7IGkr
+Kykgew0KPiAgICAgICAgIGljZS0+c3JjW2ldLnNlbnNlID0gVFJHX1BFREdFOw0KPiAgICAgfQ0K
+PiAgICAgZm9yIChpID0gMDsgaSA8IGljdS0+bnJfc2Vuc2U7IGkrKykgew0KPiAgICAgICAgIHVp
+bnQ4X3QgaXJxbm8gPSBpY3UtPmluaXRfc2Vuc2VbaV07DQo+ICAgICAgICAgaWYgKGlycW5vIDwg
+TlJfSVJRUykgew0KPiAgICAgICAgICAgICBpY3UtPnNyY1tpcnFub10uc2Vuc2UgPSBUUkdfTEVW
+RUw7DQo+ICAgICAgICAgfQ0KPiAgICAgfQ0KPiANCkl0IGlzIGEgZ29vZCBwb2ludCEgIA0KSSB0
+cmllZCB0byBtb2RpZnkgYW5kIGNvbXBpbGUgaXQsIGFuZCB0aGUgdGVzdCByZXN1bHRzIGFyZSBl
+eGFjdGx5IHRoZSBzYW1lLg0KIA0KT25seSBHQ0M5IHJlcG9ydHMgYSB3YXJuaW5n77yaDQouLi9o
+dy9pbnRjL3J4X2ljdS5jOiBJbiBmdW5jdGlvbiDigJhyeGljdV9yZWFsaXpl4oCZOg0KLi4vaHcv
+aW50Yy9yeF9pY3UuYzozMTc6MTk6IHdhcm5pbmc6IGNvbXBhcmlzb24gaXMgYWx3YXlzIHRydWUg
+ZHVlIHRvIGxpbWl0ZWQgcmFuZ2Ugb2YgZGF0YSB0eXBlIFstV3R5cGUtbGltaXRzXQ0KICAzMTcg
+fCAgICAgICAgIGlmIChpcnFubyA8IE5SX0lSUVMpIHsNCiAgICAgfCAgICAgICAgICAgICAgICAg
+ICBeDQoNClRoZSAnTlJfSVJRUyA9IDI1NicgLHRoZSAnIGlmIChpcnFubyA8IE5SX0lSUVMpJyBj
+b25kaXRpb24gaXMgYWx3YXlzIHRydWUuIA0KU28sbWF5YmUgd2Ugc2hvdWxkIHJlbW92ZSB0aGlz
+IGNvbmRpdGlvbi4gSSdsbCBtb2RpZnkgaXQgbGF0ZXIuDQoNClRoYW5rcywNCkNoZW4gUXVuDQo=
 
