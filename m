@@ -1,31 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcr1Z-0004QF-41
+	id 1kcr1Z-0004Re-JX
 	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 09:23:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34454)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kcr1W-0004Jz-9G; Wed, 11 Nov 2020 09:22:58 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2523)
+ id 1kcr1W-0004Jg-4c; Wed, 11 Nov 2020 09:22:58 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2522)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kcr1K-0000cJ-Vs; Wed, 11 Nov 2020 09:22:57 -0500
+ id 1kcr1J-0000cK-CM; Wed, 11 Nov 2020 09:22:57 -0500
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWRl84XnSzhk1Y;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWRl849jDzhjsj;
  Wed, 11 Nov 2020 22:22:28 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 22:22:30 +0800
+ 22:22:27 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>,
  <ganqixin@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>, Juan Quintela <quintela@redhat.com>, "Dr. David Alan
- Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH v2 5/5] migration: fix uninitialized variable warning in
- migrate_send_rp_req_pages()
-Date: Wed, 11 Nov 2020 22:22:03 +0800
-Message-ID: <20201111142203.2359370-6-kuhn.chenqun@huawei.com>
+ <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 3/5] util/qemu-timer: fix uninitialized variable warning
+ for expire_time
+Date: Wed, 11 Nov 2020 22:22:01 +0800
+Message-ID: <20201111142203.2359370-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201111142203.2359370-1-kuhn.chenqun@huawei.com>
 References: <20201111142203.2359370-1-kuhn.chenqun@huawei.com>
@@ -63,36 +61,47 @@ After the WITH_QEMU_LOCK_GUARD macro is added, the compiler cannot identify
  assignment statements in the macro may be considered as unexecuted by the compiler.
 
 When the -Wmaybe-uninitialized capability is enabled on GCC9,the compiler showed warning:
-migration/migration.c: In function ‘migrate_send_rp_req_pages’:
-migration/migration.c:384:8: warning: ‘received’ may be used uninitialized in this function [-Wmaybe-uninitialized]
- 384 |     if (received) {
-     |        ^
+util/qemu-timer.c: In function ‘timerlist_expired’:
+util/qemu-timer.c:199:24: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 199 |     return expire_time <= qemu_clock_get_ns(timer_list->clock->type);
+     |            ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+util/qemu-timer.c: In function ‘timerlist_deadline_ns’:
+util/qemu-timer.c:237:11: warning: ‘expire_time’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 237 |     delta = expire_time - qemu_clock_get_ns(timer_list->clock->type);
+     |     ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add a default value for 'received' to prevented the warning.
+Add a default value for 'expire_time' to prevented the warning.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-Cc: Juan Quintela <quintela@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- migration/migration.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ util/qemu-timer.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 9bb4fee5ac..de90486a61 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -361,7 +361,7 @@ int migrate_send_rp_req_pages(MigrationIncomingState *mis,
-                               RAMBlock *rb, ram_addr_t start, uint64_t haddr)
- {
-     void *aligned = (void *)(uintptr_t)(haddr & (-qemu_ram_pagesize(rb)));
--    bool received;
-+    bool received = false;
+diff --git a/util/qemu-timer.c b/util/qemu-timer.c
+index 8b73882fbb..3910003e86 100644
+--- a/util/qemu-timer.c
++++ b/util/qemu-timer.c
+@@ -183,7 +183,7 @@ bool qemu_clock_has_timers(QEMUClockType type)
  
-     WITH_QEMU_LOCK_GUARD(&mis->page_request_mutex) {
-         received = ramblock_recv_bitmap_test_byte_offset(rb, start);
+ bool timerlist_expired(QEMUTimerList *timer_list)
+ {
+-    int64_t expire_time;
++    int64_t expire_time = -1;
+ 
+     if (!qatomic_read(&timer_list->active_timers)) {
+         return false;
+@@ -213,7 +213,7 @@ bool qemu_clock_expired(QEMUClockType type)
+ int64_t timerlist_deadline_ns(QEMUTimerList *timer_list)
+ {
+     int64_t delta;
+-    int64_t expire_time;
++    int64_t expire_time = -1;
+ 
+     if (!qatomic_read(&timer_list->active_timers)) {
+         return -1;
 -- 
 2.27.0
 
