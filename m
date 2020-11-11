@@ -1,43 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcl0N-0007jP-7g
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 02:57:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53998)
+	id 1kclsy-0005p2-IL
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 03:53:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kcl0K-0007gy-Rc; Wed, 11 Nov 2020 02:57:20 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2340)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kcl0G-0001b8-6g; Wed, 11 Nov 2020 02:57:20 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CWHBP0xHSzkh6Q;
- Wed, 11 Nov 2020 15:57:01 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 15:57:06 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <armbru@redhat.com>, <peter.maydell@linaro.org>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH] qemu-keymap.c: Fix bad printf format specifiers
-Date: Wed, 11 Nov 2020 07:46:01 +0000
-Message-ID: <20201111074601.37765-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kclsx-0005ok-JC
+ for qemu-trivial@nongnu.org; Wed, 11 Nov 2020 03:53:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27233)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1kclsw-0004cC-5l
+ for qemu-trivial@nongnu.org; Wed, 11 Nov 2020 03:53:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605084824;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Kuppntx+tdPel+gHf56eSX5K81wrFDEl2mM4r/K/yOY=;
+ b=WkU4b6UX2uS04BemSMBhodFw9gR0b+szQEBhlM52a4GNaFVA/3IfgruFwrucOqL5Z8Lzfk
+ ZEIqf9ICUXvqz7wbXhlcNgjEztY2Fbn4vvvMcY3QD9fGRjh5Tq8VTcFNQXOAdKOAGckkBc
+ KfaJYCo5QiLCd+0yDxE/hvtNNvBW8I0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-479-1BgGsuStM52JSo3-epjuOA-1; Wed, 11 Nov 2020 03:53:43 -0500
+X-MC-Unique: 1BgGsuStM52JSo3-epjuOA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B1B136414C;
+ Wed, 11 Nov 2020 08:53:41 +0000 (UTC)
+Received: from [10.72.12.213] (ovpn-12-213.pek2.redhat.com [10.72.12.213])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0D90610013BD;
+ Wed, 11 Nov 2020 08:53:39 +0000 (UTC)
+Subject: Re: [PATCH] net/l2tpv3: Remove redundant check in net_init_l2tpv3()
+To: Alex Chen <alex.chen@huawei.com>
+Cc: qemu-trivial@nongnu.org, zhengchuan@huawei.com,
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
+References: <5F9B7E9F.8050004@huawei.com> <5FAB9512.7070200@huawei.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <449ef665-7dee-8ac3-66f7-d136607bc6ac@redhat.com>
+Date: Wed, 11 Nov 2020 16:53:38 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <5FAB9512.7070200@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 02:07:52
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 01:49:01
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -50,36 +78,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 07:57:21 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 08:53:47 -0000
 
-We should use printf format specifier "%u" instead of "%d" for
-argument of type "unsigned int".
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- qemu-keymap.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 2020/11/11 下午3:38, Alex Chen wrote:
+> Kindly ping.
+>
+> On 2020/10/30 10:46, AlexChen wrote:
+>> The result has been checked to be NULL before, it cannot be NULL here,
+>> so the check is redundant. Remove it.
+>>
+>> Reported-by: Euler Robot<euler.robot@huawei.com>
+>> Signed-off-by: AlexChen<alex.chen@huawei.com>
+>> ---
+>>   net/l2tpv3.c | 9 +++------
+>>   1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/qemu-keymap.c b/qemu-keymap.c
-index 536e8f2385..6797006dda 100644
---- a/qemu-keymap.c
-+++ b/qemu-keymap.c
-@@ -77,11 +77,11 @@ static void walk_map(struct xkb_keymap *map, xkb_keycode_t code, void *data)
-         xkb_state_update_mask(state,  0, 0, 0,  0, 0, 0);
-         kbase = xkb_state_key_get_one_sym(state, code);
-         xkb_keysym_get_name(kbase, name, sizeof(name));
--        fprintf(outfile, "# evdev %d (0x%x): no evdev -> QKeyCode mapping"
-+        fprintf(outfile, "# evdev %u (0x%x): no evdev -> QKeyCode mapping"
-                 " (xkb keysym %s)\n", evdev, evdev, name);
-         return;
-     }
--    fprintf(outfile, "# evdev %d (0x%x), QKeyCode \"%s\", number 0x%x\n",
-+    fprintf(outfile, "# evdev %u (0x%x), QKeyCode \"%s\", number 0x%x\n",
-             evdev, evdev,
-             QKeyCode_str(qcode),
-             qcode_to_number(qcode));
--- 
-2.19.1
+
+Queued.
+
+Thanks
 
 
