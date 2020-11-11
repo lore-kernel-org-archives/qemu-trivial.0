@@ -1,47 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kcpai-00085a-Pr
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 07:51:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38802)
+	id 1kcqfL-0003Hh-3Z
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Nov 2020 09:00:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaT-0007xs-MK; Wed, 11 Nov 2020 07:51:03 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2520)
+ (Exim 4.90_1) (envelope-from <pushbx@ulukai.org>)
+ id 1kcoMJ-000523-Mg; Wed, 11 Nov 2020 06:32:16 -0500
+Received: from ulukai.org ([2a01:488:66:1000:b01c:1258:0:1]:51610)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kcpaR-00038P-Hz; Wed, 11 Nov 2020 07:50:57 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWPjG02z8zhYM6;
- Wed, 11 Nov 2020 20:50:42 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 20:50:42 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <thuth@redhat.com>, <laurent@vivier.eu>, <philmd@redhat.com>,
- <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH 4/4] max111x: put it into the 'misc' category
-Date: Wed, 11 Nov 2020 06:17:20 +0800
-Message-ID: <20201110221720.572902-5-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201110221720.572902-1-ganqixin@huawei.com>
-References: <20201110221720.572902-1-ganqixin@huawei.com>
+ (Exim 4.90_1) (envelope-from <pushbx@ulukai.org>)
+ id 1kcoMG-0002Mb-QR; Wed, 11 Nov 2020 06:32:15 -0500
+Received: from [192.168.1.5]
+ (dynamic-046-114-110-179.46.114.pool.telefonica.de [46.114.110.179])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Client did not present a certificate)
+ by ulukai.org (Postfix) with ESMTPSA id 4CWMyM19Fxz2snQ;
+ Wed, 11 Nov 2020 12:31:55 +0100 (CET)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.102.3 at ulukai.org
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ulukai.org; s=ulukai;
+ t=1605094316; bh=jF9riMko6MmxregSBSkLP54s0n4PPwisV+FsItOXbP4=;
+ h=From:Subject:To:Cc:Date:From;
+ b=Kw0CJbJ7SH21bF5O/9Xqrlm66FHkUJGQkNL/hKFmErxqcsJjXmQ0R676BY6KIeZXO
+ gYbFRZCNprFMScOgbJRaqGRjXcom/QZ4Gve72KiavPVl+Si2BJupfuqVgSW/KcWwN+
+ 9ogT8OQjYFolHBcBoajRutFMVBzu+wyg84UM2mgo=
+From: "C. Masloch" <pushbx@ulukai.org>
+Subject: [PATCH] multiboot: Fix, do not include kernel filename in Multiboot
+ command line
+To: qemu-devel@nongnu.org
+Cc: "C. Masloch" <pushbx@ulukai.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Message-ID: <b3838d86-1422-aadc-7f77-3cf402009755@ulukai.org>
+Date: Wed, 11 Nov 2020 12:31:51 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 07:07:25
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a01:488:66:1000:b01c:1258:0:1;
+ envelope-from=pushbx@ulukai.org; helo=ulukai.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 06:31:57
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 11 Nov 2020 09:00:01 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,28 +60,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Nov 2020 12:51:07 -0000
+X-List-Received-Date: Wed, 11 Nov 2020 11:32:17 -0000
 
-The category of the max111x device is not set, put it into the 'misc' category.
+Testing a Multiboot specification compatible kernel entrypoint I found
+that qemu -kernel foo -append bar results in the Multiboot command line
+being passed as "foo bar". Just -kernel foo results in "foo " (with
+trailing blank). If the filename given to -kernel contains a blank, like
+-kernel "quux foo" with -append bar then the command line contains that
+blank, unquoted, like "quux foo bar".
 
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
- hw/misc/max111x.c | 1 +
- 1 file changed, 1 insertion(+)
+GRUB2 only passes the command line content in the Multiboot command
+line. For example, given the kernel command "multiboot /foo bar" GRUB2
+only passes "bar" in the Multiboot command line. I consider GRUB2 to be
+the authoritative example implementation as far as the Multiboot
+specification is concerned.
 
-diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
-index 7e6723f343..eae0f9b598 100644
---- a/hw/misc/max111x.c
-+++ b/hw/misc/max111x.c
-@@ -185,6 +185,7 @@ static void max111x_class_init(ObjectClass *klass, void *data)
-     k->transfer = max111x_transfer;
-     dc->reset = max111x_reset;
-     dc->vmsd = &vmstate_max111x;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo max111x_info = {
--- 
-2.23.0
+Test case is as follows, using ldosboot [1], lmacros [2], scanptab [3],
+and bootimg [4]:
 
+ldosboot$ nasm -I ../lmacros/ testpl.asm -o testpl.bin -l testpl.lst &&
+  nasm -I ../lmacros/ -I ./ -I ../scanptab/ -D_IMAGE_EXE
+-D_IMAGE_EXE_AUTO_STACK -D_IMAGE_EXE_MIN_CALC=_IMAGE_EXE_AUTO_STACK
+-D_IMAGE_EXE_MAX=0 -D_PAYLOAD_FILE='"testpl.bin"'
+-D_INILOAD_SIGNATURE='"TP"' iniload.asm -o testpl.com -l testpli.lst &&
+  nasm ../bootimg/bootimg.asm -D_MBR -o diskq.img -D_UNIT=80h
+-D_PAYLOADFILE=::empty -I ../lmacros/ -l diskq.lst &&
+  timeout --foreground 10 qemu-system-i386 -kernel testpl.com -curses
+-hda diskq.img -append baz 2> /dev/null; stty sane
+
+(The -hda disk image is needed because my kernel's iniload stage expects
+to be booted off a valid FAT filesystem partition, and also qemu -kernel
+passes ROM-BIOS unit 80h (first harddisk unit) partition 0 (first
+primary partition) to the Multiboot specification entrypoint, even if no
+hard disk is present at all.)
+
+Relevant output line on broken qemu:
+
+> Kernel command line = "testpl.com baz"
+
+Expected output: (as seen when booted from GRUB2, or patched qemu)
+
+> Kernel command line = "baz"
+
+Signed-off-by: C. Masloch <pushbx@ulukai.org>
+
+[1]: https://hg.ulukai.org/ecm/ldosboot
+[2]: https://hg.ulukai.org/ecm/lmacros
+[3]: https://hg.ulukai.org/ecm/scanptab
+[4]: https://hg.ulukai.org/ecm/bootimg
+
+
+diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
+index 9e7d69d470..78b36902ff 100644
+--- a/hw/i386/multiboot.c
++++ b/hw/i386/multiboot.c
+@@ -288,8 +288,7 @@ int load_multiboot(FWCfgState *fw_cfg,
+     mbs.offset_mbinfo = mbs.mb_buf_size;
+
+     /* Calculate space for cmdlines, bootloader name, and mb_mods */
+-    cmdline_len = strlen(kernel_filename) + 1;
+-    cmdline_len += strlen(kernel_cmdline) + 1;
++    cmdline_len = strlen(kernel_cmdline) + 1;
+     if (initrd_filename) {
+         const char *r = initrd_filename;
+         cmdline_len += strlen(initrd_filename) + 1;
+@@ -360,10 +359,7 @@ int load_multiboot(FWCfgState *fw_cfg,
+     }
+
+     /* Commandline support */
+-    char kcmdline[strlen(kernel_filename) + strlen(kernel_cmdline) + 2];
+-    snprintf(kcmdline, sizeof(kcmdline), "%s %s",
+-             kernel_filename, kernel_cmdline);
+-    stl_p(bootinfo + MBI_CMDLINE, mb_add_cmdline(&mbs, kcmdline));
++    stl_p(bootinfo + MBI_CMDLINE, mb_add_cmdline(&mbs, kernel_cmdline));
+
+     stl_p(bootinfo + MBI_BOOTLOADER, mb_add_bootloader(&mbs,
+bootloader_name));
 
