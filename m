@@ -1,71 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kdAe6-0005yA-ME
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 06:20:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48762)
+	id 1kdBBB-0006xT-MR
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 06:54:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kdAe4-0005vS-G7
- for qemu-trivial@nongnu.org; Thu, 12 Nov 2020 06:20:04 -0500
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:33767)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kdAe2-00078i-Lr
- for qemu-trivial@nongnu.org; Thu, 12 Nov 2020 06:20:04 -0500
-Received: by mail-ej1-x642.google.com with SMTP id 7so7177259ejm.0
- for <qemu-trivial@nongnu.org>; Thu, 12 Nov 2020 03:20:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mtwx3yW8Bx9Eq+J79CcgK1B8BYkrAaVYqOyBWsnkb4E=;
- b=wkXzMSiRcDwuXW+/+bAtM94LLteDSvraggq73XdG2UadnYKFW8QUYgkjftDhagivct
- pgWl+ArErdZsV8eT+PjWkEWXmxrVKGy95UeMj8F/X80iuRSt9WNhXmXbHm1ULjTXtpi3
- rGUx95RNfO+A3r7cz3KrA9bFlJB1x1SspFcgDycfHxA1k9t6dxzsrhsim/I11L6jRtzX
- 9s2PqvASdezwlmJKrLvI1nVv+iTpxXNHot+p8O9WUs0JPnPROZXlWn0gJcIFMXiUYwIX
- z5pIVROBCbo+aY9zAujFc0rqaEX7kS2uKzEfYna9RpRfaW4dk3kULu0AOgG5JqJ4EP1t
- VN7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mtwx3yW8Bx9Eq+J79CcgK1B8BYkrAaVYqOyBWsnkb4E=;
- b=Bthw/wu3443sd4XHtDJkNnJZnwc6lHc9KB5BiEM18BYjvaeWMhv3meE3rl4uwc6F7Q
- Ja8F6cqxjo+Ro8h0PkxhajpJWfg0xGo4dBRAph0pgj1FkwE+v5VguCJJCu/SsIWoC0aZ
- 4OOG1s22przPSV3ShBcSX5Y71UpomdUUSKIa+5Z7OVUivFPoRN2XkJYAlKmPHVbIs+r8
- LKz0j8PW9S74xi5aTeyOa70ncDbAoZhCPqk0T1cllIDC9T+VK+Ga03TGLbPQDqf2ZiRQ
- oYcLO3FXUwYcaq1nXZj0SyME8IsmNLVDqVoNW4B+h/qjG8P3dsBy3COZB7nrKZKCICc1
- Gt6w==
-X-Gm-Message-State: AOAM532YZN8/nHYJCBCiaLP0Hsi6cwTKdjToNq7mVm2nS2ujM8LsY/Xo
- Lf419AStUCwrY/MSftTVUxpvNJ+88ghScnkUved0HQ==
-X-Google-Smtp-Source: ABdhPJy90I8XF8T6wt34SnOAorSBg1rpHSqL3Ijr8HYB1zL1art1pLylVr42eU/E/BxANRjkWNUtXFgGxgghbt44jE4=
-X-Received: by 2002:a17:906:7254:: with SMTP id
- n20mr28360990ejk.382.1605180001080; 
- Thu, 12 Nov 2020 03:20:01 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kdBB9-0006wV-91; Thu, 12 Nov 2020 06:54:15 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2053)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kdBB6-0002UX-H5; Thu, 12 Nov 2020 06:54:14 -0500
+Received: from dggemi402-hub.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CX0P74cdbzQpjJ;
+ Thu, 12 Nov 2020 19:53:47 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.227]) by
+ dggemi402-hub.china.huawei.com ([10.3.17.135]) with mapi id 14.03.0487.000;
+ Thu, 12 Nov 2020 19:53:51 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Subject: RE: [PATCH v2 2/4] ads7846: put it into the 'display' category
+Thread-Topic: [PATCH v2 2/4] ads7846: put it into the 'display' category
+Thread-Index: AQHWuMRQVUxO2iZ1pUaFNOTIOGdJN6nD09KAgACG4uA=
+Date: Thu, 12 Nov 2020 11:53:46 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065A8BC8@DGGEMI525-MBS.china.huawei.com>
 References: <20201111164710.644863-1-ganqixin@huawei.com>
  <20201111164710.644863-3-ganqixin@huawei.com>
-In-Reply-To: <20201111164710.644863-3-ganqixin@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Nov 2020 11:19:49 +0000
-Message-ID: <CAFEAcA85O_q2KzNW1mJevEvM0kO1u0vDgpfVnbFBkk_qovExnw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] ads7846: put it into the 'display' category
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Thomas Huth <thuth@redhat.com>, zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
- Markus Armbruster <armbru@redhat.com>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ <CAFEAcA85O_q2KzNW1mJevEvM0kO1u0vDgpfVnbFBkk_qovExnw@mail.gmail.com>
+In-Reply-To: <CAFEAcA85O_q2KzNW1mJevEvM0kO1u0vDgpfVnbFBkk_qovExnw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188; envelope-from=ganqixin@huawei.com;
+ helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/12 06:53:56
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,38 +63,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Nov 2020 11:20:04 -0000
+X-List-Received-Date: Thu, 12 Nov 2020 11:54:15 -0000
 
-On Thu, 12 Nov 2020 at 07:25, Gan Qixin <ganqixin@huawei.com> wrote:
->
-> The category of the ads7846 device is not set, put it into the 'display'
-> category.
->
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
->  hw/display/ads7846.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
-> index 023165b2a3..b455cb5acd 100644
-> --- a/hw/display/ads7846.c
-> +++ b/hw/display/ads7846.c
-> @@ -163,10 +163,12 @@ static void ads7846_realize(SSISlave *d, Error **errp)
->
->  static void ads7846_class_init(ObjectClass *klass, void *data)
->  {
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
->      SSISlaveClass *k = SSI_SLAVE_CLASS(klass);
->
->      k->realize = ads7846_realize;
->      k->transfer = ads7846_transfer;
-> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
->  }
-
-This isn't a display, despite being in hw/display. It's a
-touch-screen controller, so it ought to be in hw/input
-and be DEVICE_CATEGORY_INPUT.
-
-thanks
--- PMM
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBUaHVyc2RheSwgTm92ZW1iZXIg
+MTIsIDIwMjAgNzoyMCBQTQ0KPiBUbzogZ2FucWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+DQo+
+IENjOiBRRU1VIERldmVsb3BlcnMgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47IFFFTVUgVHJpdmlh
+bA0KPiA8cWVtdS10cml2aWFsQG5vbmdudS5vcmc+OyBUaG9tYXMgSHV0aCA8dGh1dGhAcmVkaGF0
+LmNvbT47DQo+IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47
+IE1pY2hhZWwgUy4gVHNpcmtpbg0KPiA8bXN0QHJlZGhhdC5jb20+OyBMYXVyZW50IFZpdmllciA8
+bGF1cmVudEB2aXZpZXIuZXU+OyBNYXJrdXMgQXJtYnJ1c3Rlcg0KPiA8YXJtYnJ1QHJlZGhhdC5j
+b20+OyBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+Ow0KPiBQaGlsaXBw
+ZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFU
+Q0ggdjIgMi80XSBhZHM3ODQ2OiBwdXQgaXQgaW50byB0aGUgJ2Rpc3BsYXknIGNhdGVnb3J5DQo+
+IA0KPiBPbiBUaHUsIDEyIE5vdiAyMDIwIGF0IDA3OjI1LCBHYW4gUWl4aW4gPGdhbnFpeGluQGh1
+YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gVGhlIGNhdGVnb3J5IG9mIHRoZSBhZHM3ODQ2IGRl
+dmljZSBpcyBub3Qgc2V0LCBwdXQgaXQgaW50byB0aGUgJ2Rpc3BsYXknDQo+ID4gY2F0ZWdvcnku
+DQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBHYW4gUWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+
+DQo+ID4gLS0tDQo+ID4gIGh3L2Rpc3BsYXkvYWRzNzg0Ni5jIHwgMiArKw0KPiA+ICAxIGZpbGUg
+Y2hhbmdlZCwgMiBpbnNlcnRpb25zKCspDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvZGlzcGxh
+eS9hZHM3ODQ2LmMgYi9ody9kaXNwbGF5L2Fkczc4NDYuYyBpbmRleA0KPiA+IDAyMzE2NWIyYTMu
+LmI0NTVjYjVhY2QgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvZGlzcGxheS9hZHM3ODQ2LmMNCj4gPiAr
+KysgYi9ody9kaXNwbGF5L2Fkczc4NDYuYw0KPiA+IEBAIC0xNjMsMTAgKzE2MywxMiBAQCBzdGF0
+aWMgdm9pZCBhZHM3ODQ2X3JlYWxpemUoU1NJU2xhdmUgKmQsIEVycm9yDQo+ID4gKiplcnJwKQ0K
+PiA+DQo+ID4gIHN0YXRpYyB2b2lkIGFkczc4NDZfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqa2xh
+c3MsIHZvaWQgKmRhdGEpICB7DQo+ID4gKyAgICBEZXZpY2VDbGFzcyAqZGMgPSBERVZJQ0VfQ0xB
+U1Moa2xhc3MpOw0KPiA+ICAgICAgU1NJU2xhdmVDbGFzcyAqayA9IFNTSV9TTEFWRV9DTEFTUyhr
+bGFzcyk7DQo+ID4NCj4gPiAgICAgIGstPnJlYWxpemUgPSBhZHM3ODQ2X3JlYWxpemU7DQo+ID4g
+ICAgICBrLT50cmFuc2ZlciA9IGFkczc4NDZfdHJhbnNmZXI7DQo+ID4gKyAgICBzZXRfYml0KERF
+VklDRV9DQVRFR09SWV9ESVNQTEFZLCBkYy0+Y2F0ZWdvcmllcyk7DQo+ID4gIH0NCj4gDQo+IFRo
+aXMgaXNuJ3QgYSBkaXNwbGF5LCBkZXNwaXRlIGJlaW5nIGluIGh3L2Rpc3BsYXkuIEl0J3MgYSB0
+b3VjaC1zY3JlZW4gY29udHJvbGxlciwNCj4gc28gaXQgb3VnaHQgdG8gYmUgaW4gaHcvaW5wdXQg
+YW5kIGJlIERFVklDRV9DQVRFR09SWV9JTlBVVC4NCj4gDQpUaGFua3MgZm9yIHlvdXIgcmVwbHks
+IEkgd2lsbCByZWNhdGVnb3JpemUgYWRzNzg0Ni4NCg0KR2FuIFFpeGluDQo=
 
