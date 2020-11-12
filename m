@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kdPox-0003db-MM
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 22:32:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38544)
+	id 1kdPoy-0003gA-T9
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 22:32:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38574)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kdPou-0003VE-FI; Thu, 12 Nov 2020 22:32:16 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2143)
+ id 1kdPow-0003Zc-8S; Thu, 12 Nov 2020 22:32:18 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2417)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kdPoq-0002r1-QS; Thu, 12 Nov 2020 22:32:16 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CXPCc5HMSz76cZ;
- Fri, 13 Nov 2020 11:31:56 +0800 (CST)
+ id 1kdPok-0002p7-A4; Thu, 12 Nov 2020 22:32:17 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CXPCW04vhz15Vql;
+ Fri, 13 Nov 2020 11:31:51 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Fri, 13 Nov 2020
- 11:31:55 +0800
+ 11:31:50 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <laurent@vivier.eu>, <philmd@redhat.com>,
  <armbru@redhat.com>, <mst@redhat.com>, <kuhn.chenqun@huawei.com>,
  <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH v3 4/4] max111x: put it into the 'misc' category
-Date: Thu, 12 Nov 2020 20:58:24 +0800
-Message-ID: <20201112125824.763182-5-ganqixin@huawei.com>
+Subject: [PATCH v3 1/4] ssd0323: put it into the 'display' category
+Date: Thu, 12 Nov 2020 20:58:21 +0800
+Message-ID: <20201112125824.763182-2-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201112125824.763182-1-ganqixin@huawei.com>
 References: <20201112125824.763182-1-ganqixin@huawei.com>
@@ -31,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
- helo=szxga07-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/12 22:32:06
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/12 22:32:01
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -53,28 +53,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Nov 2020 03:32:17 -0000
+X-List-Received-Date: Fri, 13 Nov 2020 03:32:18 -0000
 
-The category of the max111x device is not set, put it into the 'misc'
+The category of the ssd0323 device is not set, put it into the 'display'
 category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/misc/max111x.c | 1 +
+ hw/display/ssd0323.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
-index 7e6723f343..eae0f9b598 100644
---- a/hw/misc/max111x.c
-+++ b/hw/misc/max111x.c
-@@ -185,6 +185,7 @@ static void max111x_class_init(ObjectClass *klass, void *data)
-     k->transfer = max111x_transfer;
-     dc->reset = max111x_reset;
-     dc->vmsd = &vmstate_max111x;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
+index 17d4b32ae3..cbfd21dfd5 100644
+--- a/hw/display/ssd0323.c
++++ b/hw/display/ssd0323.c
+@@ -370,6 +370,7 @@ static void ssd0323_class_init(ObjectClass *klass, void *data)
+     k->transfer = ssd0323_transfer;
+     k->cs_polarity = SSI_CS_HIGH;
+     dc->vmsd = &vmstate_ssd0323;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
  }
  
- static const TypeInfo max111x_info = {
+ static const TypeInfo ssd0323_info = {
 -- 
 2.23.0
 
