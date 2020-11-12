@@ -1,72 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kd7Bz-00056e-D4
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 02:38:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55522)
+	id 1kd95R-000061-8x
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2020 04:40:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kd7By-00054v-51
- for qemu-trivial@nongnu.org; Thu, 12 Nov 2020 02:38:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:22963)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kd7Bw-00048C-EJ
- for qemu-trivial@nongnu.org; Thu, 12 Nov 2020 02:38:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605166727;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Rg1MH0xKrgji/zEAY3MwmLwrWW5lQmXkgY/iZDyz7O8=;
- b=FY0SMbEGKJyQz5p5hybQXoeYKZueP/UFx+h4IWX6mLCR+hX5Qm/Cm6L/8lUVI5M78tQzMh
- kzbJLBTq65mBQEjEGbLznv90s6AVHdSre8KtPIHHWwLc9x8JlCsf7kQPHzDf1qTRGXegVO
- UvddrPtMwKzxnmy9CKw9IrUsYL/DtBo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-498-b3zecu8uNrm_daPY3JRy9w-1; Thu, 12 Nov 2020 02:38:45 -0500
-X-MC-Unique: b3zecu8uNrm_daPY3JRy9w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5ABB718CB72C;
- Thu, 12 Nov 2020 07:38:44 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-74.ams2.redhat.com [10.36.112.74])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4C75834691;
- Thu, 12 Nov 2020 07:38:42 +0000 (UTC)
-Subject: Re: [PATCH v2 3/4] nand: put it into the 'storage' category
-To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: laurent@vivier.eu, philmd@redhat.com, armbru@redhat.com,
- kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com,
- Qemu-block <qemu-block@nongnu.org>
-References: <20201111164710.644863-1-ganqixin@huawei.com>
- <20201111164710.644863-4-ganqixin@huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <4942269b-86bd-ce1b-eeaa-bebe27a4f0fb@redhat.com>
-Date: Thu, 12 Nov 2020 08:38:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kd95M-000050-EC; Thu, 12 Nov 2020 04:40:08 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:46502
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kd95J-0005Pd-MD; Thu, 12 Nov 2020 04:40:08 -0500
+Received: from host109-155-147-35.range109-155.btcentralplus.com
+ ([109.155.147.35] helo=[192.168.1.110])
+ by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1kd95P-0007ZQ-Mr; Thu, 12 Nov 2020 09:40:16 +0000
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+To: thuth@redhat.com, armbru@redhat.com, david@gibson.dropbear.id.au,
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+References: <thuth@redhat.com, armbru@redhat.com, david@gibson.dropbear.id.au, 
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-trivial@nongnu.org>
+ <20201110103111.18395-1-mark.cave-ayland@ilande.co.uk>
+Message-ID: <1fd15956-056c-3a7e-7696-0ba09f116122@ilande.co.uk>
+Date: Thu, 12 Nov 2020 09:39:52 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201111164710.644863-4-ganqixin@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20201110103111.18395-1-mark.cave-ayland@ilande.co.uk>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/12 00:52:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 109.155.147.35
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2-for-5.2] macio: set user_creatable to false in
+ macio_class_init()
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,31 +60,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Nov 2020 07:38:50 -0000
+X-List-Received-Date: Thu, 12 Nov 2020 09:40:09 -0000
 
-On 11/11/2020 17.47, Gan Qixin wrote:
-> The category of the nand device is not set, put it into the 'storage'
-> category.
+On 10/11/2020 10:31, Mark Cave-Ayland wrote:
+
+> Commit 348b8d1a76 "macio: don't reference serial_hd() directly within the device"
+> removed the setting of user_creatable to false on the basis that the restriction
+> was due to the use of serial_hd() in macio_instance_init().
 > 
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> Unfortunately this isn't the full story since the PIC object property links
+> must still be set before the device is realized. Whilst it is possible to update
+> the macio device and Mac machines to resolve this, the fix is too invasive at
+> this point in the release cycle.
+> 
+> For now simply set user_creatable back to false in macio_class_init() to
+> prevent QEMU from segfaulting in anticipation of the proper fix arriving in
+> QEMU 6.0.
+> 
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/block/nand.c | 1 +
->  1 file changed, 1 insertion(+)
+>   hw/misc/macio/macio.c | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/hw/block/nand.c b/hw/block/nand.c
-> index bcceb64ebb..1d7a48a2ec 100644
-> --- a/hw/block/nand.c
-> +++ b/hw/block/nand.c
-> @@ -449,6 +449,7 @@ static void nand_class_init(ObjectClass *klass, void *data)
->      dc->reset = nand_reset;
->      dc->vmsd = &vmstate_nand;
->      device_class_set_props(dc, nand_properties);
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  }
->  
->  static const TypeInfo nand_info = {
+> v2:
+> - Rebase onto master
+> - Add for-5.2 into subject prefix
+> - Add R-B tags from Philippe and Thomas
 > 
+> 
+> diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+> index 51368884d0..bb601f782c 100644
+> --- a/hw/misc/macio/macio.c
+> +++ b/hw/misc/macio/macio.c
+> @@ -456,6 +456,8 @@ static void macio_class_init(ObjectClass *klass, void *data)
+>       k->class_id = PCI_CLASS_OTHERS << 8;
+>       device_class_set_props(dc, macio_properties);
+>       set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> +    /* Reason: requires PIC property links to be set in macio_*_realize() */
+> +    dc->user_creatable = false;
+>   }
+>   
+>   static const TypeInfo macio_bus_info = {
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Applied to my qemu-macppc branch.
 
+
+ATB,
+
+Mark.
 
