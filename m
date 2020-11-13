@@ -1,72 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kdW4i-0005NV-AO
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Nov 2020 05:13:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59780)
+	id 1kdX31-0002F3-Ir
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Nov 2020 06:15:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kdW4e-0005Ko-RB
- for qemu-trivial@nongnu.org; Fri, 13 Nov 2020 05:12:56 -0500
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:42340)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kdW4V-0002Hm-4v
- for qemu-trivial@nongnu.org; Fri, 13 Nov 2020 05:12:48 -0500
-Received: by mail-ed1-x541.google.com with SMTP id v22so10027715edt.9
- for <qemu-trivial@nongnu.org>; Fri, 13 Nov 2020 02:12:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=E7dPH8+MqDC8AZTpAs3Zo2mNH8pxaD+/sIjtCQl3Pms=;
- b=NwglDyLuljDnKqgii9OqAGMe35v+FAMjKQ0nQLd7Lxl/DvWo3Mjtjq8D3bqlAl7RbC
- rpaYzPA17tU8WvaxWaaPsq7sHCbO6rb95tcq/zrbUNMKXu1msTiTfhkn8Xr6BdOybYOy
- CnavXVk7ABmBxFvu2070JRLPWT2sA7oPEwpTwbbfUo9oZmnB9mGPVGrsyKv9xEgMjx44
- xUwwT66ZxAaI8rf9VFybFLhyB90ikPVz4ZpSMg0oyd5oewc9FC+HWQsNLJFX9dytHk0h
- M/ZLZY+6OtWlmbKA55kiZND7zw0XjjyA010HoygvK8mXCZB+1tekjQnuyja0OyySFgcO
- +PTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=E7dPH8+MqDC8AZTpAs3Zo2mNH8pxaD+/sIjtCQl3Pms=;
- b=rJPl/duWxkG53bsPT0v4IYlQuZCNG/QJ86YYLwU0jy2GJUUtO9dP9KUoW2PASrAj2z
- YTv1C1w6sv+9TPORyS9iGtvdQjAZ/CAu88yW7WAqG2iNJnU8kYDX92Wml3+g30gnoL0H
- bmvBAeJQ7QDSJFE5RExyHueVIW9Q/ZYBYyI/FuWzNoV56nbEhSOgKSS0fvECRrT7VOzi
- 39sQerOg/iquZT3N6zlg5JJXMh7alXqFWsoF5GSngKsw8YIERfSgBYe1CY+aoO4rrne3
- SqncTR5SrbaMjYebyvFnWVzLNTwhH5iz4IjBOPORAjoonn0ru4bWcpD3u2ZmSgas4I+R
- GLNQ==
-X-Gm-Message-State: AOAM532UWlVjrSfnxXqJJZjBMDYaDM+a23/BTbDkXu6x2Upm2SyuDOhr
- vCT5EzrOvfPcCdB0QxmMrZfmNEyQveML525yvnk4bTD012A=
-X-Google-Smtp-Source: ABdhPJzPYaAnKelJ1c9wl3WiMHWkRAQhs9ML05sel2PS7jf5ACkeGYksbVU/p1rU27jBJIjJWI1bS+zUGzmHWFa4CmI=
-X-Received: by 2002:a05:6402:b35:: with SMTP id
- bo21mr1837418edb.52.1605262362822; 
- Fri, 13 Nov 2020 02:12:42 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kdX30-0002DI-50; Fri, 13 Nov 2020 06:15:18 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2953)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kdX2v-0008Bt-Gu; Fri, 13 Nov 2020 06:15:17 -0500
+Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.57])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CXbTs1B7QzXj7q;
+ Fri, 13 Nov 2020 19:14:57 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.227]) by
+ dggemi405-hub.china.huawei.com ([10.3.17.143]) with mapi id 14.03.0487.000;
+ Fri, 13 Nov 2020 19:14:56 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>, =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
+ <philmd@redhat.com>, Markus Armbruster <armbru@redhat.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: RE: [PATCH v3 2/4] ads7846: put it into the 'input' category
+Thread-Topic: [PATCH v3 2/4] ads7846: put it into the 'input' category
+Thread-Index: AQHWuW2N1Zke0LNuwkymCaXDtGrUfKnFUgeAgACSGsA=
+Date: Fri, 13 Nov 2020 11:14:55 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065A96D8@DGGEMI525-MBS.china.huawei.com>
 References: <20201112125824.763182-1-ganqixin@huawei.com>
  <20201112125824.763182-3-ganqixin@huawei.com>
-In-Reply-To: <20201112125824.763182-3-ganqixin@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Nov 2020 10:12:31 +0000
-Message-ID: <CAFEAcA-30x8FS8Kmz3AzvJAR0z7_7utAfPEhCTYmq-dvKW9wFA@mail.gmail.com>
-Subject: Re: [PATCH v3 2/4] ads7846: put it into the 'input' category
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <CAFEAcA-30x8FS8Kmz3AzvJAR0z7_7utAfPEhCTYmq-dvKW9wFA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-30x8FS8Kmz3AzvJAR0z7_7utAfPEhCTYmq-dvKW9wFA@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187; envelope-from=ganqixin@huawei.com;
+ helo=szxga01-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/13 06:15:06
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,42 +62,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Nov 2020 10:12:57 -0000
+X-List-Received-Date: Fri, 13 Nov 2020 11:15:18 -0000
 
-On Fri, 13 Nov 2020 at 03:32, Gan Qixin <ganqixin@huawei.com> wrote:
->
-> The category of the ads7846 device is not set, put it into the 'input'
-> category.
->
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/display/ads7846.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
-> index 023165b2a3..cb3a431cfd 100644
-> --- a/hw/display/ads7846.c
-> +++ b/hw/display/ads7846.c
-> @@ -163,10 +163,12 @@ static void ads7846_realize(SSISlave *d, Error **errp)
->
->  static void ads7846_class_init(ObjectClass *klass, void *data)
->  {
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
->      SSISlaveClass *k = SSI_SLAVE_CLASS(klass);
->
->      k->realize = ads7846_realize;
->      k->transfer = ads7846_transfer;
-> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
->
->  static const TypeInfo ads7846_info = {
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-Really we should move the file too...
-
-thanks
--- PMM
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBGcmlkYXksIE5vdmVtYmVyIDEz
+LCAyMDIwIDY6MTMgUE0NCj4gVG86IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPg0KPiBD
+YzogUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBRRU1VIFRyaXZpYWwN
+Cj4gPHFlbXUtdHJpdmlhbEBub25nbnUub3JnPjsgVGhvbWFzIEh1dGggPHRodXRoQHJlZGhhdC5j
+b20+OyBMYXVyZW50DQo+IFZpdmllciA8bGF1cmVudEB2aXZpZXIuZXU+OyBQaGlsaXBwZSBNYXRo
+aWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5jb20+Ow0KPiBNYXJrdXMgQXJtYnJ1c3RlciA8YXJt
+YnJ1QHJlZGhhdC5jb20+OyBNaWNoYWVsIFMuIFRzaXJraW4NCj4gPG1zdEByZWRoYXQuY29tPjsg
+Q2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsNCj4gWmhhbmdoYWlsaWFu
+ZyA8emhhbmcuemhhbmdoYWlsaWFuZ0BodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENI
+IHYzIDIvNF0gYWRzNzg0NjogcHV0IGl0IGludG8gdGhlICdpbnB1dCcgY2F0ZWdvcnkNCj4gDQo+
+IE9uIEZyaSwgMTMgTm92IDIwMjAgYXQgMDM6MzIsIEdhbiBRaXhpbiA8Z2FucWl4aW5AaHVhd2Vp
+LmNvbT4gd3JvdGU6DQo+ID4NCj4gPiBUaGUgY2F0ZWdvcnkgb2YgdGhlIGFkczc4NDYgZGV2aWNl
+IGlzIG5vdCBzZXQsIHB1dCBpdCBpbnRvIHRoZSAnaW5wdXQnDQo+ID4gY2F0ZWdvcnkuDQo+ID4N
+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBHYW4gUWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+DQo+ID4g
+LS0tDQo+ID4gQ2M6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NCj4g
+PiAtLS0NCj4gPiAgaHcvZGlzcGxheS9hZHM3ODQ2LmMgfCAyICsrDQo+ID4gIDEgZmlsZSBjaGFu
+Z2VkLCAyIGluc2VydGlvbnMoKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9kaXNwbGF5L2Fk
+czc4NDYuYyBiL2h3L2Rpc3BsYXkvYWRzNzg0Ni5jIGluZGV4DQo+ID4gMDIzMTY1YjJhMy4uY2Iz
+YTQzMWNmZCAxMDA2NDQNCj4gPiAtLS0gYS9ody9kaXNwbGF5L2Fkczc4NDYuYw0KPiA+ICsrKyBi
+L2h3L2Rpc3BsYXkvYWRzNzg0Ni5jDQo+ID4gQEAgLTE2MywxMCArMTYzLDEyIEBAIHN0YXRpYyB2
+b2lkIGFkczc4NDZfcmVhbGl6ZShTU0lTbGF2ZSAqZCwgRXJyb3INCj4gPiAqKmVycnApDQo+ID4N
+Cj4gPiAgc3RhdGljIHZvaWQgYWRzNzg0Nl9jbGFzc19pbml0KE9iamVjdENsYXNzICprbGFzcywg
+dm9pZCAqZGF0YSkgIHsNCj4gPiArICAgIERldmljZUNsYXNzICpkYyA9IERFVklDRV9DTEFTUyhr
+bGFzcyk7DQo+ID4gICAgICBTU0lTbGF2ZUNsYXNzICprID0gU1NJX1NMQVZFX0NMQVNTKGtsYXNz
+KTsNCj4gPg0KPiA+ICAgICAgay0+cmVhbGl6ZSA9IGFkczc4NDZfcmVhbGl6ZTsNCj4gPiAgICAg
+IGstPnRyYW5zZmVyID0gYWRzNzg0Nl90cmFuc2ZlcjsNCj4gPiArICAgIHNldF9iaXQoREVWSUNF
+X0NBVEVHT1JZX0lOUFVULCBkYy0+Y2F0ZWdvcmllcyk7DQo+ID4gIH0NCj4gPg0KPiA+ICBzdGF0
+aWMgY29uc3QgVHlwZUluZm8gYWRzNzg0Nl9pbmZvID0gew0KPiANCj4gUmV2aWV3ZWQtYnk6IFBl
+dGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NCj4gDQo+IFJlYWxseSB3ZSBz
+aG91bGQgbW92ZSB0aGUgZmlsZSB0b28uLi4NCj4gDQoNCk9LLCBJIHdpbGwgdHJ5IHRvIG1vdmUg
+dGhlIGZpbGUgdG8gdGhlIGNvcnJlY3QgZm9sZGVyOikNCg0KR2FuIFFpeGluDQo=
 
