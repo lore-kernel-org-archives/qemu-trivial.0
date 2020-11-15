@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keKKb-0006Fv-53
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 10:52:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40858)
+	id 1keMz1-0005pw-Hz
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 13:42:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keKKZ-0006Fa-Vn
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:52:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46088)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keMz0-0005ox-4K
+ for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 13:42:38 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36133)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keKKW-0002Uy-6A
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:52:43 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keMyw-0002Zy-EG
+ for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 13:42:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605455558;
+ s=mimecast20190719; t=1605465752;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cVN7Mv/Rx8J/Azgxujs3ocdpZnUdGQCr9xB6kkkzTk0=;
- b=RICK8urIkdm9BzOabN2yvUf1pYX/d6QjbgOu3OpLkbCplTGUp3OEyZqhM0Yq5LsOc84iD+
- Kqq69uOWmPbG8pwy/FmqqJ2gie4tm4CLF7mItxVOrPi5y/z2LOXBPGEeVsTWfxM819okMA
- MfjlXApd/KVG6MPYBshhOrHdMrOGhnM=
+ bh=6sUED5MhUUVOIdAf6M19MKL+FjvUUmVnheWnKNqEQLU=;
+ b=MIvc44geKleoQ+/GbpL/qLBl2Vwu9LMMl5gPwkTpVBAwryUrx76U+jWfe/XJVX6Wg042nI
+ VizDRy5Ytd/tkAVJC1+RZdI7VPABSc0lXOUqfDHsC7UjS2sa4W0gksGbH5fEbIeXguTFri
+ QA0KuOdsYT13AAplNO0hCunHW4D+BEg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-578-Kwi2MCUmM0u7H3WtjF4UJQ-1; Sun, 15 Nov 2020 10:52:36 -0500
-X-MC-Unique: Kwi2MCUmM0u7H3WtjF4UJQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-49-McbvDtM1PBu0hQywemSyCA-1; Sun, 15 Nov 2020 13:42:24 -0500
+X-MC-Unique: McbvDtM1PBu0hQywemSyCA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 503431084C82;
- Sun, 15 Nov 2020 15:52:35 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7AAB81074664;
+ Sun, 15 Nov 2020 18:42:23 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 30FBB60BFA;
- Sun, 15 Nov 2020 15:52:33 +0000 (UTC)
-Subject: Re: [PATCH 30/30] nomaintainer: Fix Lesser GPL version number
-To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20201014134248.14146-1-chetan4windows@gmail.com>
- <20201023124424.20177-1-chetan4windows@gmail.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8EBEA17253;
+ Sun, 15 Nov 2020 18:42:19 +0000 (UTC)
+Subject: Re: [PATCH] tests/vm: update NetBSD to 9.1
+To: Brad Smith <brad@comstyle.com>, qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20201114040150.GD13329@humpty.home.comstyle.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <6ead487a-1238-0960-0935-f8b618d8176b@redhat.com>
-Date: Sun, 15 Nov 2020 16:52:32 +0100
+Message-ID: <9dac5490-cc47-3b1c-3235-5553c785a9c2@redhat.com>
+Date: Sun, 15 Nov 2020 19:42:18 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201023124424.20177-1-chetan4windows@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20201114040150.GD13329@humpty.home.comstyle.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 08:01:03
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 10:03:07
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
  RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -76,107 +75,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Nov 2020 15:52:44 -0000
+X-List-Received-Date: Sun, 15 Nov 2020 18:42:38 -0000
 
-On 23/10/2020 14.44, Chetan Pant wrote:
-> There is no "version 2" of the "Lesser" General Public License.
-> It is either "GPL version 2.0" or "Lesser GPL version 2.1".
-> This patch replaces all occurrences of "Lesser GPL version 2" with
-> "Lesser GPL version 2.1" in comment section.
+On 14/11/2020 05.01, Brad Smith wrote:
+> tests/vm: update NetBSD to 9.1
 > 
-> This patch contains all the files, whose maintainer I could not get
-> from ‘get_maintainer.pl’ script.
-> 
-> Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
+> Signed-off-by: Brad Smith <brad@comstyle.com>
+> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+> Tested-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->  block/crypto.c                             | 2 +-
->  block/crypto.h                             | 2 +-
->  disas/lm32.c                               | 2 +-
->  exec-vary.c                                | 2 +-
->  exec.c                                     | 2 +-
->  hw/acpi/core.c                             | 2 +-
->  hw/acpi/hmat.c                             | 2 +-
->  hw/acpi/hmat.h                             | 2 +-
->  hw/acpi/ich9.c                             | 2 +-
->  hw/acpi/pcihp.c                            | 2 +-
->  hw/acpi/piix4.c                            | 2 +-
->  hw/audio/milkymist-ac97.c                  | 2 +-
->  hw/char/lm32_juart.c                       | 2 +-
->  hw/char/lm32_uart.c                        | 2 +-
->  hw/char/milkymist-uart.c                   | 2 +-
->  hw/core/bus.c                              | 2 +-
->  hw/core/platform-bus.c                     | 2 +-
->  hw/core/qdev.c                             | 2 +-
->  hw/core/sysbus.c                           | 2 +-
->  hw/display/bcm2835_fb.c                    | 2 +-
->  hw/display/milkymist-tmu2.c                | 2 +-
->  hw/display/milkymist-vgafb.c               | 2 +-
->  hw/display/milkymist-vgafb_template.h      | 2 +-
->  hw/gpio/mpc8xxx.c                          | 2 +-
->  hw/i2c/pm_smbus.c                          | 2 +-
->  hw/ide/ahci.c                              | 2 +-
->  hw/ide/ahci_internal.h                     | 2 +-
->  hw/ide/ich.c                               | 2 +-
->  hw/ide/qdev.c                              | 2 +-
->  hw/input/milkymist-softusb.c               | 2 +-
->  hw/intc/apic.c                             | 2 +-
->  hw/intc/apic_common.c                      | 2 +-
->  hw/intc/ioapic.c                           | 2 +-
->  hw/intc/ioapic_common.c                    | 2 +-
->  hw/intc/lm32_pic.c                         | 2 +-
->  hw/isa/apm.c                               | 2 +-
->  hw/isa/isa-bus.c                           | 2 +-
->  hw/lm32/lm32_boards.c                      | 2 +-
->  hw/lm32/lm32_hwsetup.h                     | 2 +-
->  hw/lm32/milkymist.c                        | 2 +-
->  hw/mem/nvdimm.c                            | 2 +-
->  hw/mem/pc-dimm.c                           | 2 +-
->  hw/misc/applesmc.c                         | 2 +-
->  hw/misc/milkymist-hpdmc.c                  | 2 +-
->  hw/misc/milkymist-pfpu.c                   | 2 +-
->  hw/net/e1000.c                             | 2 +-
->  hw/net/milkymist-minimac2.c                | 2 +-
->  hw/pci-bridge/i82801b11.c                  | 2 +-
->  hw/pci-host/designware.c                   | 2 +-
->  hw/ppc/spapr_iommu.c                       | 2 +-
->  hw/ppc/spapr_vio.c                         | 2 +-
->  hw/scsi/megasas.c                          | 2 +-
->  hw/scsi/mptconfig.c                        | 2 +-
->  hw/scsi/mptendian.c                        | 2 +-
->  hw/scsi/mptsas.c                           | 2 +-
->  hw/sd/milkymist-memcard.c                  | 2 +-
->  hw/timer/hpet.c                            | 2 +-
->  hw/timer/lm32_timer.c                      | 2 +-
->  hw/timer/milkymist-sysctl.c                | 2 +-
->  hw/xen/xen_pvdev.c                         | 2 +-
->  include/exec/ioport.h                      | 2 +-
->  include/exec/memory_ldst.h.inc             | 2 +-
->  include/exec/memory_ldst_cached.h.inc      | 2 +-
->  include/exec/memory_ldst_phys.h.inc        | 2 +-
->  include/exec/tb-context.h                  | 2 +-
->  include/exec/user/thunk.h                  | 2 +-
->  include/hw/acpi/acpi.h                     | 2 +-
->  include/hw/acpi/ich9.h                     | 2 +-
->  include/hw/acpi/pcihp.h                    | 2 +-
->  include/hw/display/milkymist_tmu2.h        | 2 +-
->  include/hw/i386/apic_internal.h            | 2 +-
->  include/hw/i386/ioapic.h                   | 2 +-
->  include/hw/i386/ioapic_internal.h          | 2 +-
->  include/hw/ide/ahci.h                      | 2 +-
->  include/hw/loader-fit.h                    | 2 +-
->  include/hw/pci-host/designware.h           | 2 +-
->  include/hw/pci-host/spapr.h                | 2 +-
->  include/hw/platform-bus.h                  | 2 +-
->  include/hw/ppc/spapr_vio.h                 | 2 +-
->  include/qemu/base64.h                      | 2 +-
->  include/qemu/buffer.h                      | 2 +-
->  include/qemu/filemonitor.h                 | 2 +-
->  memory_ldst.c.inc                          | 2 +-
->  qdev-monitor.c                             | 2 +-
+>  tests/vm/netbsd | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/vm/netbsd b/tests/vm/netbsd
+> index 447de9747d..596717cc76 100755
+> --- a/tests/vm/netbsd
+> +++ b/tests/vm/netbsd
+> @@ -22,8 +22,8 @@ class NetBSDVM(basevm.BaseVM):
+>      name = "netbsd"
+>      arch = "x86_64"
+>  
+> -    link = "https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/images/NetBSD-9.0-amd64.iso"
+> -    csum = "34da4882ee61bdbf69f241195a8933dc800949d30b43fc6988da853d57fc2b8cac50cf97a0d2adaf93250b4e329d189c1a8b83c33bd515226f37745d50c33369"
+> +    link = "https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.1/images/NetBSD-9.1-amd64.iso"
+> +    csum = "65bddc95945991c3b2021f9c8ded7f34c25f0a7611b7aa15a15fe23399e902307e926ae97fcd01dc1662ac67b5f6e4be643c6a2b581692ddcb616d30125066f9"
+>      size = "20G"
+>      pkgs = [
+>          # tools
+> @@ -38,7 +38,7 @@ class NetBSDVM(basevm.BaseVM):
+>          "bash",
+>          "gmake",
+>          "gsed",
+> -        "gettext",
+> +        "gettext-tools",
+>  
+>          # libs: crypto
+>          "gnutls",
+> 
 
-exec.c and qdev-monitor.c have recently been moved around, but that can be
-easily fixed when picking up the patch.
+Works for me.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 
 
