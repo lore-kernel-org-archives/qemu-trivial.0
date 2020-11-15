@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaiu-0006sK-7F
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:22:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39322)
+	id 1keaj2-00071Z-Se
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaip-0006mL-EQ; Mon, 16 Nov 2020 04:22:51 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2525)
+ id 1keaip-0006nB-SN; Mon, 16 Nov 2020 04:22:51 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2148)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaih-0004AO-3L; Mon, 16 Nov 2020 04:22:51 -0500
+ id 1keail-0004Cg-L9; Mon, 16 Nov 2020 04:22:51 -0500
 Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CZNrd43LszhYZD;
- Mon, 16 Nov 2020 17:22:25 +0800 (CST)
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CZNrk5PMrz6xcq;
+ Mon, 16 Nov 2020 17:22:30 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:30 +0800
+ 17:22:34 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Xiao
- Guangrong" <xiaoguangrong.eric@gmail.com>
-Subject: [PATCH 04/13] nvdimm: put it into the 'storage' category
-Date: Mon, 16 Nov 2020 02:48:54 +0800
-Message-ID: <20201115184903.1292715-5-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Stefan
+ Berger" <stefanb@linux.vnet.ibm.com>
+Subject: [PATCH 07/13] tpm: put some tpm devices into the correct category
+Date: Mon, 16 Nov 2020 02:48:57 +0800
+Message-ID: <20201115184903.1292715-8-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
 References: <20201115184903.1292715-1-ganqixin@huawei.com>
@@ -31,16 +31,16 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 03:16:54
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
+ helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:43
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,28 +55,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 16 Nov 2020 09:22:52 -0000
 
-The category of the nvdimm device is not set, put it into the 'storage'
-category.
+Some tpm devices have no category, put them into the correct category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
 ---
- hw/mem/nvdimm.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/tpm/tpm_tis_isa.c    | 1 +
+ hw/tpm/tpm_tis_sysbus.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-index e1574bc07c..e30695b2ce 100644
---- a/hw/mem/nvdimm.c
-+++ b/hw/mem/nvdimm.c
-@@ -236,6 +236,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
- 
-     nvc->read_label_data = nvdimm_read_label_data;
-     nvc->write_label_data = nvdimm_write_label_data;
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
+index 6fd876eebf..10d8a14f19 100644
+--- a/hw/tpm/tpm_tis_isa.c
++++ b/hw/tpm/tpm_tis_isa.c
+@@ -150,6 +150,7 @@ static void tpm_tis_isa_class_init(ObjectClass *klass, void *data)
+     dc->reset = tpm_tis_isa_reset;
+     tc->request_completed = tpm_tis_isa_request_completed;
+     tc->get_version = tpm_tis_isa_get_tpm_version;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- static TypeInfo nvdimm_info = {
+ static const TypeInfo tpm_tis_isa_info = {
+diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
+index 2c32aa7099..45e63efd63 100644
+--- a/hw/tpm/tpm_tis_sysbus.c
++++ b/hw/tpm/tpm_tis_sysbus.c
+@@ -139,6 +139,7 @@ static void tpm_tis_sysbus_class_init(ObjectClass *klass, void *data)
+     dc->reset = tpm_tis_sysbus_reset;
+     tc->request_completed = tpm_tis_sysbus_request_completed;
+     tc->get_version = tpm_tis_sysbus_get_tpm_version;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo tpm_tis_sysbus_info = {
 -- 
 2.23.0
 
