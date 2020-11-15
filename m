@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaj5-00079K-AP
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39400)
+	id 1keaj6-0007Cr-Q2
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaj1-0006yt-QK; Mon, 16 Nov 2020 04:23:03 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2526)
+ id 1keaj3-00071z-03; Mon, 16 Nov 2020 04:23:05 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaiv-0004F2-Gr; Mon, 16 Nov 2020 04:23:03 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CZNrw4hkqzhYZD;
- Mon, 16 Nov 2020 17:22:40 +0800 (CST)
+ id 1keaj1-0004Gu-0o; Mon, 16 Nov 2020 04:23:04 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZNrx2lt5zkYxC;
+ Mon, 16 Nov 2020 17:22:41 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:43 +0800
+ 17:22:50 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Alistair
- Francis" <alistair@alistair23.me>
-Subject: [PATCH 12/13] SPI flash devices: put them into the 'storage' category
-Date: Mon, 16 Nov 2020 02:49:02 +0800
-Message-ID: <20201115184903.1292715-13-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835 cprman
+ into the 'misc' category
+Date: Mon, 16 Nov 2020 02:49:03 +0800
+Message-ID: <20201115184903.1292715-14-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
 References: <20201115184903.1292715-1-ganqixin@huawei.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="y"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 03:16:54
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:28
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -53,29 +54,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 09:23:04 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 09:23:05 -0000
 
-SPI flash devices have no category, put them into the 'storage' category.
+Some peripherals of bcm2835 cprman have no category, put them into the 'misc'
+category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Alistair Francis <alistair@alistair23.me>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/block/m25p80.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/misc/bcm2835_cprman.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 483925f57a..8dd3ef8559 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -1397,6 +1397,7 @@ static void m25p80_class_init(ObjectClass *klass, void *data)
-     device_class_set_props(dc, m25p80_properties);
-     dc->reset = m25p80_reset;
-     mc->pi = data;
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index 7e415a017c..c62958a99e 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -136,6 +136,7 @@ static void pll_class_init(ObjectClass *klass, void *data)
+ 
+     dc->reset = pll_reset;
+     dc->vmsd = &pll_vmstate;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- static const TypeInfo m25p80_info = {
+ static const TypeInfo cprman_pll_info = {
+@@ -239,6 +240,7 @@ static void pll_channel_class_init(ObjectClass *klass, void *data)
+ 
+     dc->reset = pll_channel_reset;
+     dc->vmsd = &pll_channel_vmstate;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo cprman_pll_channel_info = {
+@@ -359,6 +361,7 @@ static void clock_mux_class_init(ObjectClass *klass, void *data)
+ 
+     dc->reset = clock_mux_reset;
+     dc->vmsd = &clock_mux_vmstate;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo cprman_clock_mux_info = {
+@@ -411,6 +414,7 @@ static void dsi0hsck_mux_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->vmsd = &dsi0hsck_mux_vmstate;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo cprman_dsi0hsck_mux_info = {
 -- 
 2.23.0
 
