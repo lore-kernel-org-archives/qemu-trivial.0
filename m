@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaj3-00072F-33
+	id 1keaj3-000731-A8
 	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39366)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keais-0006pZ-0Z; Mon, 16 Nov 2020 04:22:54 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2356)
+ id 1keaiq-0006of-NL; Mon, 16 Nov 2020 04:22:54 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2149)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaip-0004DB-I3; Mon, 16 Nov 2020 04:22:53 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZNrl1pypzkYxK;
- Mon, 16 Nov 2020 17:22:31 +0800 (CST)
+ id 1keail-0004Ce-Cz; Mon, 16 Nov 2020 04:22:52 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CZNrk53Ptz6xcC;
+ Mon, 16 Nov 2020 17:22:30 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:38 +0800
+ 17:22:36 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Gerd
- Hoffmann" <kraxel@redhat.com>
-Subject: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
-Date: Mon, 16 Nov 2020 02:48:59 +0800
-Message-ID: <20201115184903.1292715-10-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Paolo
+ Bonzini" <pbonzini@redhat.com>
+Subject: [PATCH 08/13] AMDVI-PCI: put it into the 'misc' category
+Date: Mon, 16 Nov 2020 02:48:58 +0800
+Message-ID: <20201115184903.1292715-9-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
 References: <20201115184903.1292715-1-ganqixin@huawei.com>
@@ -31,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:28
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
+ helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:43
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -55,28 +55,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 16 Nov 2020 09:22:55 -0000
 
-The category of the u2f-passthru device is not set, put it into the 'usb'
+The category of the AMDVI-PCI device is not set, put it into the 'misc'
 category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- hw/usb/u2f-passthru.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/i386/amd_iommu.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
-index ae00e93f35..000822f396 100644
---- a/hw/usb/u2f-passthru.c
-+++ b/hw/usb/u2f-passthru.c
-@@ -534,6 +534,7 @@ static void u2f_passthru_class_init(ObjectClass *klass, void *data)
-     dc->desc = "QEMU U2F passthrough key";
-     dc->vmsd = &u2f_passthru_vmstate;
-     device_class_set_props(dc, u2f_passthru_properties);
-+    set_bit(DEVICE_CATEGORY_USB, dc->categories);
- }
+diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+index 74a93a5d93..1d4e488f7f 100644
+--- a/hw/i386/amd_iommu.c
++++ b/hw/i386/amd_iommu.c
+@@ -1621,6 +1621,13 @@ static const TypeInfo amdvi = {
+     .class_init = amdvi_class_init
+ };
  
- static const TypeInfo u2f_key_passthru_info = {
++static void amdvi_pci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
+ static const TypeInfo amdviPCI = {
+     .name = TYPE_AMD_IOMMU_PCI,
+     .parent = TYPE_PCI_DEVICE,
+@@ -1629,6 +1636,7 @@ static const TypeInfo amdviPCI = {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { },
+     },
++    .class_init = amdvi_pci_class_init
+ };
+ 
+ static void amdvi_iommu_memory_region_class_init(ObjectClass *klass, void *data)
 -- 
 2.23.0
 
