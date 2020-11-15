@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keJig-00052n-Vl
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 10:13:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34406)
+	id 1keKKb-0006Fv-53
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 10:52:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keJif-00052J-Pt
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:13:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32279)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keKKZ-0006Fa-Vn
+ for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:52:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46088)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keJie-0005tP-CL
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:13:33 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keKKW-0002Uy-6A
+ for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 10:52:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605453211;
+ s=mimecast20190719; t=1605455558;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0RMrKNKZz2pJsIxv3G9oGuavcAJVty/DzkZKzUAvfmc=;
- b=LuBjxnnQ9VaFQtNiqVQz0jeKOpPP6PH1MQmMpu7PcCgj4qICgYkQhsFbutQCd7WbspRYdF
- MIjY3uc/plYfD5cmK2mh2uChlaAADn7DJ7NsheYV7wzq+jWNL1l5bkLOZEbuBLtJwhVmu2
- UGBjchMX1835/cS9gMTW0ISC8pIzRfc=
+ bh=cVN7Mv/Rx8J/Azgxujs3ocdpZnUdGQCr9xB6kkkzTk0=;
+ b=RICK8urIkdm9BzOabN2yvUf1pYX/d6QjbgOu3OpLkbCplTGUp3OEyZqhM0Yq5LsOc84iD+
+ Kqq69uOWmPbG8pwy/FmqqJ2gie4tm4CLF7mItxVOrPi5y/z2LOXBPGEeVsTWfxM819okMA
+ MfjlXApd/KVG6MPYBshhOrHdMrOGhnM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-128-3IkhC9P3PcKija0DQvrO3A-1; Sun, 15 Nov 2020 10:13:27 -0500
-X-MC-Unique: 3IkhC9P3PcKija0DQvrO3A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-578-Kwi2MCUmM0u7H3WtjF4UJQ-1; Sun, 15 Nov 2020 10:52:36 -0500
+X-MC-Unique: Kwi2MCUmM0u7H3WtjF4UJQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0484800C60;
- Sun, 15 Nov 2020 15:13:26 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 503431084C82;
+ Sun, 15 Nov 2020 15:52:35 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9437F5D9CC;
- Sun, 15 Nov 2020 15:13:25 +0000 (UTC)
-Subject: Re: [PATCH 25/30] nvdimm: Fix Lesser GPL version number
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 30FBB60BFA;
+ Sun, 15 Nov 2020 15:52:33 +0000 (UTC)
+Subject: Re: [PATCH 30/30] nomaintainer: Fix Lesser GPL version number
 To: Chetan Pant <chetan4windows@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, xiaoguangrong.eric@gmail.com
+Cc: qemu-devel@nongnu.org
 References: <20201014134248.14146-1-chetan4windows@gmail.com>
- <20201023123749.19941-1-chetan4windows@gmail.com>
+ <20201023124424.20177-1-chetan4windows@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <47856f80-0067-c02d-f679-9587971fe72a@redhat.com>
-Date: Sun, 15 Nov 2020 16:13:24 +0100
+Message-ID: <6ead487a-1238-0960-0935-f8b618d8176b@redhat.com>
+Date: Sun, 15 Nov 2020 16:52:32 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201023123749.19941-1-chetan4windows@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20201023124424.20177-1-chetan4windows@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 08:01:03
@@ -76,33 +76,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Nov 2020 15:13:34 -0000
+X-List-Received-Date: Sun, 15 Nov 2020 15:52:44 -0000
 
-On 23/10/2020 14.37, Chetan Pant wrote:
+On 23/10/2020 14.44, Chetan Pant wrote:
 > There is no "version 2" of the "Lesser" General Public License.
 > It is either "GPL version 2.0" or "Lesser GPL version 2.1".
 > This patch replaces all occurrences of "Lesser GPL version 2" with
 > "Lesser GPL version 2.1" in comment section.
 > 
+> This patch contains all the files, whose maintainer I could not get
+> from ‘get_maintainer.pl’ script.
+> 
 > Signed-off-by: Chetan Pant <chetan4windows@gmail.com>
 > ---
->  hw/acpi/nvdimm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index 8f7cc16..e17734d 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -15,7 +15,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> 
+>  block/crypto.c                             | 2 +-
+>  block/crypto.h                             | 2 +-
+>  disas/lm32.c                               | 2 +-
+>  exec-vary.c                                | 2 +-
+>  exec.c                                     | 2 +-
+>  hw/acpi/core.c                             | 2 +-
+>  hw/acpi/hmat.c                             | 2 +-
+>  hw/acpi/hmat.h                             | 2 +-
+>  hw/acpi/ich9.c                             | 2 +-
+>  hw/acpi/pcihp.c                            | 2 +-
+>  hw/acpi/piix4.c                            | 2 +-
+>  hw/audio/milkymist-ac97.c                  | 2 +-
+>  hw/char/lm32_juart.c                       | 2 +-
+>  hw/char/lm32_uart.c                        | 2 +-
+>  hw/char/milkymist-uart.c                   | 2 +-
+>  hw/core/bus.c                              | 2 +-
+>  hw/core/platform-bus.c                     | 2 +-
+>  hw/core/qdev.c                             | 2 +-
+>  hw/core/sysbus.c                           | 2 +-
+>  hw/display/bcm2835_fb.c                    | 2 +-
+>  hw/display/milkymist-tmu2.c                | 2 +-
+>  hw/display/milkymist-vgafb.c               | 2 +-
+>  hw/display/milkymist-vgafb_template.h      | 2 +-
+>  hw/gpio/mpc8xxx.c                          | 2 +-
+>  hw/i2c/pm_smbus.c                          | 2 +-
+>  hw/ide/ahci.c                              | 2 +-
+>  hw/ide/ahci_internal.h                     | 2 +-
+>  hw/ide/ich.c                               | 2 +-
+>  hw/ide/qdev.c                              | 2 +-
+>  hw/input/milkymist-softusb.c               | 2 +-
+>  hw/intc/apic.c                             | 2 +-
+>  hw/intc/apic_common.c                      | 2 +-
+>  hw/intc/ioapic.c                           | 2 +-
+>  hw/intc/ioapic_common.c                    | 2 +-
+>  hw/intc/lm32_pic.c                         | 2 +-
+>  hw/isa/apm.c                               | 2 +-
+>  hw/isa/isa-bus.c                           | 2 +-
+>  hw/lm32/lm32_boards.c                      | 2 +-
+>  hw/lm32/lm32_hwsetup.h                     | 2 +-
+>  hw/lm32/milkymist.c                        | 2 +-
+>  hw/mem/nvdimm.c                            | 2 +-
+>  hw/mem/pc-dimm.c                           | 2 +-
+>  hw/misc/applesmc.c                         | 2 +-
+>  hw/misc/milkymist-hpdmc.c                  | 2 +-
+>  hw/misc/milkymist-pfpu.c                   | 2 +-
+>  hw/net/e1000.c                             | 2 +-
+>  hw/net/milkymist-minimac2.c                | 2 +-
+>  hw/pci-bridge/i82801b11.c                  | 2 +-
+>  hw/pci-host/designware.c                   | 2 +-
+>  hw/ppc/spapr_iommu.c                       | 2 +-
+>  hw/ppc/spapr_vio.c                         | 2 +-
+>  hw/scsi/megasas.c                          | 2 +-
+>  hw/scsi/mptconfig.c                        | 2 +-
+>  hw/scsi/mptendian.c                        | 2 +-
+>  hw/scsi/mptsas.c                           | 2 +-
+>  hw/sd/milkymist-memcard.c                  | 2 +-
+>  hw/timer/hpet.c                            | 2 +-
+>  hw/timer/lm32_timer.c                      | 2 +-
+>  hw/timer/milkymist-sysctl.c                | 2 +-
+>  hw/xen/xen_pvdev.c                         | 2 +-
+>  include/exec/ioport.h                      | 2 +-
+>  include/exec/memory_ldst.h.inc             | 2 +-
+>  include/exec/memory_ldst_cached.h.inc      | 2 +-
+>  include/exec/memory_ldst_phys.h.inc        | 2 +-
+>  include/exec/tb-context.h                  | 2 +-
+>  include/exec/user/thunk.h                  | 2 +-
+>  include/hw/acpi/acpi.h                     | 2 +-
+>  include/hw/acpi/ich9.h                     | 2 +-
+>  include/hw/acpi/pcihp.h                    | 2 +-
+>  include/hw/display/milkymist_tmu2.h        | 2 +-
+>  include/hw/i386/apic_internal.h            | 2 +-
+>  include/hw/i386/ioapic.h                   | 2 +-
+>  include/hw/i386/ioapic_internal.h          | 2 +-
+>  include/hw/ide/ahci.h                      | 2 +-
+>  include/hw/loader-fit.h                    | 2 +-
+>  include/hw/pci-host/designware.h           | 2 +-
+>  include/hw/pci-host/spapr.h                | 2 +-
+>  include/hw/platform-bus.h                  | 2 +-
+>  include/hw/ppc/spapr_vio.h                 | 2 +-
+>  include/qemu/base64.h                      | 2 +-
+>  include/qemu/buffer.h                      | 2 +-
+>  include/qemu/filemonitor.h                 | 2 +-
+>  memory_ldst.c.inc                          | 2 +-
+>  qdev-monitor.c                             | 2 +-
+
+exec.c and qdev-monitor.c have recently been moved around, but that can be
+easily fixed when picking up the patch.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
