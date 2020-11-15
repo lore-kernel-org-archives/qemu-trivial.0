@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaj3-000731-A8
+	id 1keaj3-00073p-Hx
 	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39348)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaiq-0006of-NL; Mon, 16 Nov 2020 04:22:54 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2149)
+ id 1keaiv-0006tY-GB; Mon, 16 Nov 2020 04:22:57 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2792)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keail-0004Ce-Cz; Mon, 16 Nov 2020 04:22:52 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CZNrk53Ptz6xcC;
- Mon, 16 Nov 2020 17:22:30 +0800 (CST)
+ id 1keaip-0004DG-Rw; Mon, 16 Nov 2020 04:22:57 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZNrl2FqBzkZ18;
+ Mon, 16 Nov 2020 17:22:31 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:36 +0800
+ 17:22:42 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Paolo
- Bonzini" <pbonzini@redhat.com>
-Subject: [PATCH 08/13] AMDVI-PCI: put it into the 'misc' category
-Date: Mon, 16 Nov 2020 02:48:58 +0800
-Message-ID: <20201115184903.1292715-9-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>
+Subject: [PATCH 11/13] spitz: put some Spitz-family devices into the correct
+ category
+Date: Mon, 16 Nov 2020 02:49:01 +0800
+Message-ID: <20201115184903.1292715-12-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
 References: <20201115184903.1292715-1-ganqixin@huawei.com>
@@ -31,9 +32,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
- helo=szxga07-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:43
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:28
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -53,44 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 09:22:55 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 09:23:02 -0000
 
-The category of the AMDVI-PCI device is not set, put it into the 'misc'
-category.
+Some Spitz-family devices have no category, put them into the correct category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/i386/amd_iommu.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/arm/spitz.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 74a93a5d93..1d4e488f7f 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -1621,6 +1621,13 @@ static const TypeInfo amdvi = {
-     .class_init = amdvi_class_init
- };
- 
-+static void amdvi_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 32bdeacfd3..0e5e8a4634 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -1218,6 +1218,7 @@ static void corgi_ssp_class_init(ObjectClass *klass, void *data)
+     k->realize = corgi_ssp_realize;
+     k->transfer = corgi_ssp_transfer;
+     dc->vmsd = &vmstate_corgi_ssp_regs;
 +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+}
-+
- static const TypeInfo amdviPCI = {
-     .name = TYPE_AMD_IOMMU_PCI,
-     .parent = TYPE_PCI_DEVICE,
-@@ -1629,6 +1636,7 @@ static const TypeInfo amdviPCI = {
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { },
-     },
-+    .class_init = amdvi_pci_class_init
- };
+ }
  
- static void amdvi_iommu_memory_region_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo corgi_ssp_info = {
+@@ -1247,6 +1248,7 @@ static void spitz_lcdtg_class_init(ObjectClass *klass, void *data)
+     k->realize = spitz_lcdtg_realize;
+     k->transfer = spitz_lcdtg_transfer;
+     dc->vmsd = &vmstate_spitz_lcdtg_regs;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+ }
+ 
+ static const TypeInfo spitz_lcdtg_info = {
 -- 
 2.23.0
 
