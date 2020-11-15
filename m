@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaj2-00071Z-Se
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39332)
+	id 1keaj3-00072F-33
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaip-0006nB-SN; Mon, 16 Nov 2020 04:22:51 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2148)
+ id 1keais-0006pZ-0Z; Mon, 16 Nov 2020 04:22:54 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2356)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keail-0004Cg-L9; Mon, 16 Nov 2020 04:22:51 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CZNrk5PMrz6xcq;
- Mon, 16 Nov 2020 17:22:30 +0800 (CST)
+ id 1keaip-0004DB-I3; Mon, 16 Nov 2020 04:22:53 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZNrl1pypzkYxK;
+ Mon, 16 Nov 2020 17:22:31 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:34 +0800
+ 17:22:38 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Stefan
- Berger" <stefanb@linux.vnet.ibm.com>
-Subject: [PATCH 07/13] tpm: put some tpm devices into the correct category
-Date: Mon, 16 Nov 2020 02:48:57 +0800
-Message-ID: <20201115184903.1292715-8-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Gerd
+ Hoffmann" <kraxel@redhat.com>
+Subject: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+Date: Mon, 16 Nov 2020 02:48:59 +0800
+Message-ID: <20201115184903.1292715-10-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
 References: <20201115184903.1292715-1-ganqixin@huawei.com>
@@ -31,9 +31,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ganqixin@huawei.com;
- helo=szxga07-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:43
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:28
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -53,42 +53,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 09:22:52 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 09:22:55 -0000
 
-Some tpm devices have no category, put them into the correct category.
+The category of the u2f-passthru device is not set, put it into the 'usb'
+category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/tpm/tpm_tis_isa.c    | 1 +
- hw/tpm/tpm_tis_sysbus.c | 1 +
- 2 files changed, 2 insertions(+)
+ hw/usb/u2f-passthru.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
-index 6fd876eebf..10d8a14f19 100644
---- a/hw/tpm/tpm_tis_isa.c
-+++ b/hw/tpm/tpm_tis_isa.c
-@@ -150,6 +150,7 @@ static void tpm_tis_isa_class_init(ObjectClass *klass, void *data)
-     dc->reset = tpm_tis_isa_reset;
-     tc->request_completed = tpm_tis_isa_request_completed;
-     tc->get_version = tpm_tis_isa_get_tpm_version;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+diff --git a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
+index ae00e93f35..000822f396 100644
+--- a/hw/usb/u2f-passthru.c
++++ b/hw/usb/u2f-passthru.c
+@@ -534,6 +534,7 @@ static void u2f_passthru_class_init(ObjectClass *klass, void *data)
+     dc->desc = "QEMU U2F passthrough key";
+     dc->vmsd = &u2f_passthru_vmstate;
+     device_class_set_props(dc, u2f_passthru_properties);
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
  }
  
- static const TypeInfo tpm_tis_isa_info = {
-diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
-index 2c32aa7099..45e63efd63 100644
---- a/hw/tpm/tpm_tis_sysbus.c
-+++ b/hw/tpm/tpm_tis_sysbus.c
-@@ -139,6 +139,7 @@ static void tpm_tis_sysbus_class_init(ObjectClass *klass, void *data)
-     dc->reset = tpm_tis_sysbus_reset;
-     tc->request_completed = tpm_tis_sysbus_request_completed;
-     tc->get_version = tpm_tis_sysbus_get_tpm_version;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo tpm_tis_sysbus_info = {
+ static const TypeInfo u2f_key_passthru_info = {
 -- 
 2.23.0
 
