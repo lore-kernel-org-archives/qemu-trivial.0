@@ -1,31 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keUZq-0006nU-CC
+	id 1keUZq-0006oA-JP
 	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 21:49:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58578)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1keUZn-0006eT-14; Sun, 15 Nov 2020 21:49:07 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2350)
+ id 1keUZn-0006f5-AR; Sun, 15 Nov 2020 21:49:07 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2351)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1keUZk-0002t6-Bz; Sun, 15 Nov 2020 21:49:06 -0500
+ id 1keUZk-0002t9-Co; Sun, 15 Nov 2020 21:49:06 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZD6N39K6zkYgP;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZD6N3NFfzkYgn;
  Mon, 16 Nov 2020 10:48:44 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 10:48:53 +0800
+ 10:48:51 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, Thomas Huth
- <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 7/7] target/ppc: replaced the TODO with LOG_UNIMP and add
- break for silence warnings
-Date: Mon, 16 Nov 2020 10:48:10 +0800
-Message-ID: <20201116024810.2415819-8-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Artyom
+ Tarasenko" <atar4qemu@gmail.com>, Richard Henderson
+ <richard.henderson@linaro.org>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v3 5/7] target/sparc/win_helper: silence the compiler warnings
+Date: Mon, 16 Nov 2020 10:48:08 +0800
+Message-ID: <20201116024810.2415819-6-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
 References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
@@ -58,52 +59,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 16 Nov 2020 02:49:07 -0000
 
-When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-target/ppc/mmu_helper.c: In function ‘dump_mmu’:
-target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
- 1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
-      |            ^
-target/ppc/mmu_helper.c:1358:5: note: here
- 1358 |     default:
-      |     ^~~~~~~
+When using -Wimplicit-fallthrough in our CFLAGS on GCC9, the compiler showed warning:
+target/sparc/win_helper.c: In function ‘get_gregset’:
+target/sparc/win_helper.c:304:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  304 |         trace_win_helper_gregset_error(pstate);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+target/sparc/win_helper.c:306:5: note: here
+  306 |     case 0:
+      |     ^~~~
 
-Use "qemu_log_mask(LOG_UNIMP**)" instead of the TODO comment.
-And add the break statement to fix it.
+Add the corresponding "fall through" comment to fix it.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
 ---
-v1->v2: replace the TODO by a LOG_UNIMP call and add break statement(Base on Philippe's comments)
+v1->v2: Combine the /* fall through */ to the preceding comments
+(Base on Philippe's comments).
 
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
- target/ppc/mmu_helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ target/sparc/win_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-index 8972714775..3bb50546f8 100644
---- a/target/ppc/mmu_helper.c
-+++ b/target/ppc/mmu_helper.c
-@@ -1349,11 +1349,12 @@ void dump_mmu(CPUPPCState *env)
-         break;
-     case POWERPC_MMU_3_00:
-         if (ppc64_v3_radix(env_archcpu(env))) {
--            /* TODO - Unsupported */
-+            qemu_log_mask(LOG_UNIMP, "%s: the PPC64 MMU is unsupported\n",
-+                          __func__);
-         } else {
-             dump_slb(env_archcpu(env));
--            break;
-         }
-+        break;
- #endif
+diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
+index 8290a21142..e78660b60a 100644
+--- a/target/sparc/win_helper.c
++++ b/target/sparc/win_helper.c
+@@ -302,7 +302,7 @@ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
+     switch (pstate) {
      default:
-         qemu_log_mask(LOG_UNIMP, "%s: unimplemented\n", __func__);
+         trace_win_helper_gregset_error(pstate);
+-        /* pass through to normal set of global registers */
++        /* fall through to normal set of global registers */
+     case 0:
+         return env->bgregs;
+     case PS_AG:
 -- 
 2.27.0
 
