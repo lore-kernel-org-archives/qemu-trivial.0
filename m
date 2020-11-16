@@ -1,80 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kef2S-0004Wv-VX
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 08:59:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52042)
+	id 1kef6L-00063l-Uf
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 09:03:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kef2Q-0004WN-V2; Mon, 16 Nov 2020 08:59:22 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46459)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kef2P-0003GY-CD; Mon, 16 Nov 2020 08:59:22 -0500
-Received: by mail-wr1-x442.google.com with SMTP id d12so18754300wrr.13;
- Mon, 16 Nov 2020 05:59:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mrSkhpHV/FX7vqyYHrqYZ+ipl4u9XbEx+c2jRbUV4po=;
- b=Ayw7gkge+v31z3D8wzZciPE9LkBC7hu5bVN/AlOzGuLAQv0n0Ovs8pCZB+B8/45G0L
- P1U/NLJOxmGXktopLgI6/YdTG0UtjQeG4KIP11Ip/NfTLoPirEYd2l0GU6+WExyPD/OL
- 6fjQlOKAtNsn40nMYjkpsVucNvG8MXNxy1p/YLSrKGi7rSCPijKjgp5xBw7vtbapdmKb
- W3FZD0NSb8GsnrHk2tGgr0OegnzSMQ4ZB9AR/q3JYVGrsJRap+ZxJrUOnkbY3dJZ5Jj1
- 7DJtPdHBXh/AMbm86tyvU+BMBWRw+nFlOO/K8Fv8T+m30wUjmllCfkKYTtf5v9FvDDKT
- yFzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mrSkhpHV/FX7vqyYHrqYZ+ipl4u9XbEx+c2jRbUV4po=;
- b=PhmA8wolZfZ7V5YZwoHDxZN01NNmiYaFgbVzqPG2E8H97xq8vcXpoPF3uKqV4s7S2v
- mXLHX4gYicvdSW06bzoBwxSB0O8uR4GVMdXPpmXMiG/rGnRkJLbYa1kKteezOpqN+YuD
- YK138vAYZZmjEddBIXs4rCSkAx81XbkRje9pvSKIXc84enRP/GSbaYnUvr2OgQNqyd68
- iYR2FRMXFrwIBQzBN9wVysMzzvzGcjndX5F6KbY1CDxrI3xu3Cxd+AkqASGQhVcpIqKX
- A5kxVf39NiCjjSzBDbqu5ZerzdHbtDP55Lv8mmJ4K7pZyjPvdca234EAmmVKf/Jn11Cm
- ppfw==
-X-Gm-Message-State: AOAM530D4h2EMtjBxrRjoXxmr3yIi30PhTPzPfhCeWLlN5scznMrqQGj
- kW6piFrRY1+cUbDQ36CCM7M=
-X-Google-Smtp-Source: ABdhPJxALO93PUv5D9i1rfEggAvlnJ1aMGlQAELb4P8RsQf1W0hdeajvG9tKnWL9JK3sNjnrf1nTeA==
-X-Received: by 2002:adf:eb4d:: with SMTP id u13mr18670657wrn.146.1605535159527; 
- Mon, 16 Nov 2020 05:59:19 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id a15sm23042774wrn.75.2020.11.16.05.59.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2020 05:59:18 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 12/13] SPI flash devices: put them into the 'storage'
- category
-To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: kuhn.chenqun@huawei.com, thuth@redhat.com,
- Alistair Francis <alistair@alistair23.me>, zhang.zhanghailiang@huawei.com
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-13-ganqixin@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e4591e68-04c5-8645-f50a-e5a9553326c9@amsat.org>
-Date: Mon, 16 Nov 2020 14:59:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kef6A-00062U-MQ
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:03:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38480)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kef63-0004Sk-3A
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:03:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605535385;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oTDRJawd+ErdKluXBd8KinOsYZMKSD9G+kc59cOL08w=;
+ b=IeFFl50UWLjLKEDj1cVY691D4MeJZ8uU4ofcOlfzfgVNpvz3klByopbtCu6VVTPtla/+9n
+ uTZpVc6pJoFsOK1SU5F6cJzB5Pco2rVKoGFi1y1JTlq3j/QevmeC6td5wUZ4Jvvm9ztncb
+ Yv7k1TyJmboKhS4OtaPhZsXNZ7BQk1k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-544-Go394t8oOFCguxsC98UEjw-1; Mon, 16 Nov 2020 09:03:03 -0500
+X-MC-Unique: Go394t8oOFCguxsC98UEjw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C2C61017DC6;
+ Mon, 16 Nov 2020 14:03:02 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
+ [10.36.112.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EBC9B610AF;
+ Mon, 16 Nov 2020 14:03:01 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6D93911358BA; Mon, 16 Nov 2020 15:03:00 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Alex Chen <alex.chen@huawei.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>,  "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,  Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>
+Subject: Re: [PATCH v2] json: Fix a memleak in parse_pair()
+References: <20201113145525.85151-1-alex.chen@huawei.com>
+ <7412CDE03601674DA8197E2EBD8937E83BA6762C@dggemm511-mbs.china.huawei.com>
+ <87eektkdjw.fsf@dusky.pond.sub.org>
+ <895daa42-e241-ff9c-6f55-a369ccfe9eb9@redhat.com>
+ <5FB27D08.2070600@huawei.com>
+Date: Mon, 16 Nov 2020 15:03:00 +0100
+In-Reply-To: <5FB27D08.2070600@huawei.com> (Alex Chen's message of "Mon, 16
+ Nov 2020 21:22:16 +0800")
+Message-ID: <87wnylieln.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20201115184903.1292715-13-ganqixin@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,18 +84,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 13:59:23 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 14:03:16 -0000
 
-On 11/15/20 7:49 PM, Gan Qixin wrote:
-> SPI flash devices have no category, put them into the 'storage' category.
-> 
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> ---
->  hw/block/m25p80.c | 1 +
->  1 file changed, 1 insertion(+)
+Alex Chen <alex.chen@huawei.com> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> On 2020/11/16 19:43, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On 11/16/20 7:42 AM, Markus Armbruster wrote:
+>>> "Chenqun (kuhn)" <kuhn.chenqun@huawei.com> writes:
+>>>
+>>>>> -----Original Message-----
+>>>>> From: Chenzhendong (alex)
+>>>>> Sent: Friday, November 13, 2020 10:55 PM
+>>>>> To: armbru@redhat.com
+>>>>> Cc: Chenzhendong (alex) <alex.chen@huawei.com>; qemu-devel@nongnu.org=
+;
+>>>>> qemu-trivial@nongnu.org; Zhanghailiang <zhang.zhanghailiang@huawei.co=
+m>;
+>>>>> Chenqun (kuhn) <kuhn.chenqun@huawei.com>
+>>>>> Subject: [PATCH v2] json: Fix a memleak in parse_pair()
+>>>>>
+>>>>> In qobject_type(), NULL is returned when the 'QObject' returned from
+>>>>> parse_value() is not of QString type, and this 'QObject' memory will =
+leaked.
+>>>>> So we need to first cache the 'QObject' returned from parse_value(), =
+and finally
+>>>>> free 'QObject' memory at the end of the function.
+>>>>> Also, we add a testcast about invalid dict key.
+>>>>>
+>>>>> The memleak stack is as follows:
+>>>>> Direct leak of 32 byte(s) in 1 object(s) allocated from:
+>>>>>     #0 0xfffe4b3c34fb in __interceptor_malloc (/lib64/libasan.so.4+0x=
+d34fb)
+>>>>>     #1 0xfffe4ae48aa3 in g_malloc (/lib64/libglib-2.0.so.0+0x58aa3)
+>>>>>     #2 0xaaab3557d9f7 in qnum_from_int
+>>>>> /Images/source_org/qemu_master/qemu/qobject/qnum.c:25
+>>>>>     #3 0xaaab35584d23 in parse_literal
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:511
+>>>>>     #4 0xaaab35584d23 in parse_value
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:554
+>>>>>     #5 0xaaab35583d77 in parse_pair
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:270
+>>>>>     #6 0xaaab355845db in parse_object
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:327
+>>>>>     #7 0xaaab355845db in parse_value
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:546
+>>>>>     #8 0xaaab35585b1b in json_parser_parse
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:580
+>>>>>     #9 0xaaab35583703 in json_message_process_token
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-streamer.c:92
+>>>>>     #10 0xaaab355ddccf in json_lexer_feed_char
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:313
+>>>>>     #11 0xaaab355de0eb in json_lexer_feed
+>>>>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:350
+>>>>>     #12 0xaaab354aff67 in tcp_chr_read
+>>>>> /Images/source_org/qemu_master/qemu/chardev/char-socket.c:525
+>>>>>     #13 0xfffe4ae429db in g_main_context_dispatch
+>>>>> (/lib64/libglib-2.0.so.0+0x529db)
+>>>>>     #14 0xfffe4ae42d8f  (/lib64/libglib-2.0.so.0+0x52d8f)
+>>>>>     #15 0xfffe4ae430df in g_main_loop_run (/lib64/libglib-2.0.so.0+0x=
+530df)
+>>>>>     #16 0xaaab34d70bff in iothread_run
+>>>>> /Images/source_org/qemu_master/qemu/iothread.c:82
+>>>>>     #17 0xaaab3559d71b in qemu_thread_start
+>>>>> /Images/source_org/qemu_master/qemu/util/qemu-thread-posix.c:519
+>>>>>
+>> ...
+>>>
+>>> Queued, thanks!
+>>=20
+>> If possible can you s%/Images/source_org/qemu_master/qemu/%% to make
+>> description more readable...?
+>>=20
+>
+> Hi Philippe,
+> I am sorry for that, considering that the patch has been queued,
+> do I need to modify the commit message and send patch v3?
+
+I'll take care of it, no need to respin.  Thanks!
 
 
