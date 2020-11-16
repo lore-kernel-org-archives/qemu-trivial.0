@@ -1,90 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kef9w-0001Wg-FI
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 09:07:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53774)
+	id 1kefX5-0003Op-PR
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 09:31:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kef9u-0001Sm-Ud
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:07:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37232)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kefX4-0003N4-9h
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:31:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52714)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kef9r-0005j4-O0
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:07:06 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kefX1-0006iG-Tb
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:31:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605535622;
+ s=mimecast20190719; t=1605537057;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eI58Xn7ECffTSueLPTFxdShtorAs8ktHqKcVEiU0eOU=;
- b=hshHmeWQHHXHcmiIVPN6oekVMwyD7ne25a9nljHlni518+23VJRdk/ji8V7mslDPPoCmkE
- AH8DuBW9g5cUUHO6B/7AC5F+blOdRGObSbyizFbd3x2uxgzQ4dJHegHDjFRV1LI1U9nevM
- /n4EVszVaRDYWdMhyCUsU1lPCvC/82g=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-329-o2T179r_NaqDdeeSRgDFCw-1; Mon, 16 Nov 2020 09:06:59 -0500
-X-MC-Unique: o2T179r_NaqDdeeSRgDFCw-1
-Received: by mail-wr1-f72.google.com with SMTP id w6so11139789wrk.1
- for <qemu-trivial@nongnu.org>; Mon, 16 Nov 2020 06:06:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=eI58Xn7ECffTSueLPTFxdShtorAs8ktHqKcVEiU0eOU=;
- b=PeOLa+ZySeEegZ9W6zdfWn6znV1FEop8fP4PRtd3/Ae6VbPRRhM2esMD+w5jvbnZOc
- gt0vaKqy/O97UTz9+srGUrZv5VRN5kxuVNmrVbrMhhU0hPtccUpZmqJ5KB1Y5V1TIt0v
- vnztAG8MBzDC/PQ9rAJ5hFuKiotIgtM0Au0oc4zJnnMcr/MT+As7Fsl9vS2Tc8t1Puqc
- 9PG9aRuDxQ2UXateDpxjuxJTactXRxHAgNQ6HbuwBHeYtSqemcC/Ws5PZExMgV4W8D5z
- L0FLqHlUzB9y7A9kwLRmcDOz28QBBWuI9RTWcEVKFYCxXMijp/r2sAhznBRfzJA+OLo0
- /a/g==
-X-Gm-Message-State: AOAM533T6C66kbxjpTN93eQXWwnHjoz7EOK58BqhsmUX60pgMMLO7Pd3
- wEHgzbBiJouEG1PBpMlwnT757DhZf8qGD7TBUTiDWHqqMHzYs8A8P3btz1myjw1yNY4OJhw1/TU
- KxNCtSU/DR2/bvtDSyg==
-X-Received: by 2002:adf:ebc6:: with SMTP id v6mr18628919wrn.427.1605535618783; 
- Mon, 16 Nov 2020 06:06:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwZVudP8MfWzLF4BM3IKXTOaHXjLIYGK/PwmWTKm/JzM2xRM/3DTMS6KqqF09FjK5R/dbngFw==
-X-Received: by 2002:adf:ebc6:: with SMTP id v6mr18628885wrn.427.1605535618589; 
- Mon, 16 Nov 2020 06:06:58 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id v2sm22611524wrm.96.2020.11.16.06.06.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2020 06:06:58 -0800 (PST)
-Subject: Re: [PATCH v2] json: Fix a memleak in parse_pair()
-To: Markus Armbruster <armbru@redhat.com>, Alex Chen <alex.chen@huawei.com>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>
-References: <20201113145525.85151-1-alex.chen@huawei.com>
- <7412CDE03601674DA8197E2EBD8937E83BA6762C@dggemm511-mbs.china.huawei.com>
- <87eektkdjw.fsf@dusky.pond.sub.org>
- <895daa42-e241-ff9c-6f55-a369ccfe9eb9@redhat.com>
- <5FB27D08.2070600@huawei.com> <87wnylieln.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c76b8ac0-3e5d-7c0f-2e00-887b9bbc7432@redhat.com>
-Date: Mon, 16 Nov 2020 15:06:57 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ bh=PGNHSg4Sp9CoHAy4ZaQhDb+hO4Vt/JXwwawKzFkEsjY=;
+ b=hCpfcxHnJQ3Mvyzrk8LKFWemJnSFr5lCmY/qsP8I7uiebpvmAZBSkGivcof+i9IlO595xN
+ 1LC4isevH19uzWwpqzyGgHhktxnik+Q/quC8kC6s7Tkw1twMpzsC1fB+qecyR5fwkz4FlM
+ z/EeSZbUYvOJBlydiAT/IZ++zwplzdQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-482-VtsuLlN-NGG2f08pBI8gFA-1; Mon, 16 Nov 2020 09:30:56 -0500
+X-MC-Unique: VtsuLlN-NGG2f08pBI8gFA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C58A6104ECFF;
+ Mon, 16 Nov 2020 14:30:34 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-126.ams2.redhat.com [10.36.113.126])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E21BC1A3D6;
+ Mon, 16 Nov 2020 14:30:25 +0000 (UTC)
+Subject: Re: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
+ cprman into the 'misc' category
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com,
+ Markus Armbruster <armbru@redhat.com>
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-14-ganqixin@huawei.com>
+ <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
+Date: Mon, 16 Nov 2020 15:30:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <87wnylieln.fsf@dusky.pond.sub.org>
+In-Reply-To: <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 22:35:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -99,83 +81,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 14:07:07 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 14:31:02 -0000
 
-On 11/16/20 3:03 PM, Markus Armbruster wrote:
-> Alex Chen <alex.chen@huawei.com> writes:
+On 16/11/2020 14.25, Philippe Mathieu-Daudé wrote:
+> Hi Gan,
 > 
->> On 2020/11/16 19:43, Philippe Mathieu-Daudé wrote:
->>> On 11/16/20 7:42 AM, Markus Armbruster wrote:
->>>> "Chenqun (kuhn)" <kuhn.chenqun@huawei.com> writes:
->>>>
->>>>>> -----Original Message-----
->>>>>> From: Chenzhendong (alex)
->>>>>> Sent: Friday, November 13, 2020 10:55 PM
->>>>>> To: armbru@redhat.com
->>>>>> Cc: Chenzhendong (alex) <alex.chen@huawei.com>; qemu-devel@nongnu.org;
->>>>>> qemu-trivial@nongnu.org; Zhanghailiang <zhang.zhanghailiang@huawei.com>;
->>>>>> Chenqun (kuhn) <kuhn.chenqun@huawei.com>
->>>>>> Subject: [PATCH v2] json: Fix a memleak in parse_pair()
->>>>>>
->>>>>> In qobject_type(), NULL is returned when the 'QObject' returned from
->>>>>> parse_value() is not of QString type, and this 'QObject' memory will leaked.
->>>>>> So we need to first cache the 'QObject' returned from parse_value(), and finally
->>>>>> free 'QObject' memory at the end of the function.
->>>>>> Also, we add a testcast about invalid dict key.
->>>>>>
->>>>>> The memleak stack is as follows:
->>>>>> Direct leak of 32 byte(s) in 1 object(s) allocated from:
->>>>>>     #0 0xfffe4b3c34fb in __interceptor_malloc (/lib64/libasan.so.4+0xd34fb)
->>>>>>     #1 0xfffe4ae48aa3 in g_malloc (/lib64/libglib-2.0.so.0+0x58aa3)
->>>>>>     #2 0xaaab3557d9f7 in qnum_from_int
->>>>>> /Images/source_org/qemu_master/qemu/qobject/qnum.c:25
->>>>>>     #3 0xaaab35584d23 in parse_literal
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:511
->>>>>>     #4 0xaaab35584d23 in parse_value
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:554
->>>>>>     #5 0xaaab35583d77 in parse_pair
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:270
->>>>>>     #6 0xaaab355845db in parse_object
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:327
->>>>>>     #7 0xaaab355845db in parse_value
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:546
->>>>>>     #8 0xaaab35585b1b in json_parser_parse
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:580
->>>>>>     #9 0xaaab35583703 in json_message_process_token
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-streamer.c:92
->>>>>>     #10 0xaaab355ddccf in json_lexer_feed_char
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:313
->>>>>>     #11 0xaaab355de0eb in json_lexer_feed
->>>>>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:350
->>>>>>     #12 0xaaab354aff67 in tcp_chr_read
->>>>>> /Images/source_org/qemu_master/qemu/chardev/char-socket.c:525
->>>>>>     #13 0xfffe4ae429db in g_main_context_dispatch
->>>>>> (/lib64/libglib-2.0.so.0+0x529db)
->>>>>>     #14 0xfffe4ae42d8f  (/lib64/libglib-2.0.so.0+0x52d8f)
->>>>>>     #15 0xfffe4ae430df in g_main_loop_run (/lib64/libglib-2.0.so.0+0x530df)
->>>>>>     #16 0xaaab34d70bff in iothread_run
->>>>>> /Images/source_org/qemu_master/qemu/iothread.c:82
->>>>>>     #17 0xaaab3559d71b in qemu_thread_start
->>>>>> /Images/source_org/qemu_master/qemu/util/qemu-thread-posix.c:519
->>>>>>
->>> ...
->>>>
->>>> Queued, thanks!
->>>
->>> If possible can you s%/Images/source_org/qemu_master/qemu/%% to make
->>> description more readable...?
->>>
+> On 11/15/20 7:49 PM, Gan Qixin wrote:
+>> Some peripherals of bcm2835 cprman have no category, put them into the 'misc'
+>> category.
 >>
->> Hi Philippe,
->> I am sorry for that, considering that the patch has been queued,
->> do I need to modify the commit message and send patch v3?
-
-As the patch was already queued, this was a comment for the maintainer,
-sorry for not being clear enough.
-
+>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+>> ---
+>> Cc: Philippe Mathieu-DaudÃƒÂ© <f4bug@amsat.org>
+>> ---
+>>  hw/misc/bcm2835_cprman.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+>> index 7e415a017c..c62958a99e 100644
+>> --- a/hw/misc/bcm2835_cprman.c
+>> +++ b/hw/misc/bcm2835_cprman.c
+>> @@ -136,6 +136,7 @@ static void pll_class_init(ObjectClass *klass, void *data)
+>>  
+>>      dc->reset = pll_reset;
+>>      dc->vmsd = &pll_vmstate;
+>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
 > 
-> I'll take care of it, no need to respin.  Thanks!
+> Well, this is not an usable device but a part of a bigger device,
+> so here we want the opposite: not list this device in any category.
+> 
+> Maybe we could add a DEVICE_CATEGORY_COMPOSITE for all such QOM
+> types so management apps can filter them out? (And so we are sure
+> all QOM is classified).
+> 
+> Thomas, you already dealt with categorizing devices in the past,
+> what do you think about this? Who else could help? Maybe add
+> someone from libvirt in the thread?
 
-Thanks!
+My 0.02 € : Mark the device as user_creatable = false if it can not really
+be used by the user with the -device CLI parameter. Then it also does not
+need a category. I know Markus will likely have a different opinion, but in
+my eyes it's just ugly if we present devices to the users that they can not use.
+(By the way, this device here seems to be a decendant of TYPE_SYS_BUS_DEVICE
+... shouldn't these show up as user_creatable = false automatically?)
+
+ Thomas
 
 
