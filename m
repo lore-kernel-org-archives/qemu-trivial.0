@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kehQU-0008Nc-9m
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 11:32:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35770)
+	id 1kehis-0001WA-77
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 11:51:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kehQA-0008Ic-7k; Mon, 16 Nov 2020 11:32:05 -0500
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:38996)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kehQ7-00078e-R6; Mon, 16 Nov 2020 11:32:01 -0500
-Received: by mail-io1-xd44.google.com with SMTP id j23so2145161iog.6;
- Mon, 16 Nov 2020 08:31:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=K0XipTWujXiNWwh8ZYB969l148TX9roKPYYgxCYiaik=;
- b=soqM/SeiBjs1po98yFsEc6eZjJaHud0shZWqp4lVZCNybDmDUQ+StFMJbEEth1PopS
- GSFNQiymVlRx+LFcszxLgJ1KbXin5Em1w0IMRi1781t87YCDwoOxtX/UEW5Byv2LNEu9
- LyUn0EdCkpXwLVp5nYBEwxgMOnhdJaN/cTre+cV8VGMDSatW1fgI+Aaor1qzTkzK8z/g
- k0cjTDOMldIiavVoUUiLh4fvhGZoP8acowCEDqBx16hmJI3mX8RSDRmXHLaG7++ZoTbV
- yLnr1ok+BOb8To0v0taPWdW49eqd0V9G9+Shs2EA+1N4m/G1QxwyKKw2LGXV8Et1pSJ4
- HUHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=K0XipTWujXiNWwh8ZYB969l148TX9roKPYYgxCYiaik=;
- b=JQYIl/FWgAVWRNHHMtoIuKeM9lKxSLNVR05iD62Vq//9NrLr+45NhjqLv7UznRqi+C
- xNWjvUONtzGxj0DtW8ckZ1+eu96zG8Pr15xmDT5KeByf8RyLuO5BFnUEy95jWZ5hkJ5u
- UhN/47paRxFLnlj5RD20K2otXdSXd6/LQbIpmETB2oZ2kyM3c5lYvrvXvM0yx02lUfZa
- TY4w64PUZeJnPvTcG1Aru7RFlfKZb4/SaImXr4RmSAG2IxXqhGtJzofQbc+oTqA6fdsg
- u5lb8gFkdzUncenKR6Lwi07fDIbZgc7Nq+3gqFpC5DwcAfUHFmfBVfMBZqsfwJ/PGDbp
- CJgg==
-X-Gm-Message-State: AOAM530ZL+XFCEEB9/9CPjYBuO3j1UFVyn72xg8XR47L5mN/XYU4GxNO
- 4sMmcDYlfprXsYL/R/lW5xvXlB5IkVvsAy48N08=
-X-Google-Smtp-Source: ABdhPJw4Tt0gontzi6TchllUZw0PVS/DJrgBVTdeVT0Zid42pI+f0O7X9ZUSeTM6i0rBj9vi2Jjx36ZuIWWxWf2CMiM=
-X-Received: by 2002:a02:ce26:: with SMTP id v6mr230044jar.91.1605544316239;
- Mon, 16 Nov 2020 08:31:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kehim-0001Ue-UY
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 11:51:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22119)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kehig-0005ns-T3
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 11:51:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605545468;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SGublSHjcjt3qHiIePpIQSsIWKmZJjoqQ5CpTVWosrI=;
+ b=YmQZrMG0zPhwg2Pha6GVvNT0vR1FUxgJK5vWmmRgFi/bUONBk3oB+ESzry6syV9RePyDCr
+ BALt6GOukwBJ84e1rS8qzI/axGaB9Tzqa2DYkF67OJeBMYjKZ0uu/UtV8TpDoXH3yjo/4k
+ U+HkO2vWP3FY0O2lDNg4Mdaofm2EwTc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-559-u_dJI5AuNHii9WmEaWhCtg-1; Mon, 16 Nov 2020 11:51:04 -0500
+X-MC-Unique: u_dJI5AuNHii9WmEaWhCtg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9EA661868426;
+ Mon, 16 Nov 2020 16:51:02 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-126.ams2.redhat.com [10.36.113.126])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 26FDB1759F;
+ Mon, 16 Nov 2020 16:50:58 +0000 (UTC)
+Subject: Re: [PATCH 2/2] plugins: Fix two resource leaks in connect_socket()
+To: AlexChen <alex.chen@huawei.com>, alex.bennee@linaro.org,
+ Laurent Vivier <laurent@vivier.eu>, mjt@tls.msk.ru
+Cc: qemu-trivial@nongnu.org, zhengchuan@huawei.com, qemu-devel@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+References: <5F9975F1.4080205@huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <c91f4827-0be0-b0d1-f183-d3d868079a50@redhat.com>
+Date: Mon, 16 Nov 2020 17:50:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-13-ganqixin@huawei.com>
-In-Reply-To: <20201115184903.1292715-13-ganqixin@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Nov 2020 08:19:41 -0800
-Message-ID: <CAKmqyKO_bfuvYx_Cr_9zEX9afVubBu=E-9XRm5FfgZ6weyMeJg@mail.gmail.com>
-Subject: Re: [PATCH 12/13] SPI flash devices: put them into the 'storage'
- category
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- kuhn.chenqun@huawei.com, Thomas Huth <thuth@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <5F9975F1.4080205@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 22:35:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,38 +77,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 16:32:12 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 16:51:18 -0000
 
-On Mon, Nov 16, 2020 at 1:30 AM Gan Qixin <ganqixin@huawei.com> wrote:
->
-> SPI flash devices have no category, put them into the 'storage' category.
->
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+On 28/10/2020 14.45, AlexChen wrote:
+> Either accept() fails or exits normally, we need to close the fd.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: AlexChen <alex.chen@huawei.com>
 > ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> ---
->  hw/block/m25p80.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 483925f57a..8dd3ef8559 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -1397,6 +1397,7 @@ static void m25p80_class_init(ObjectClass *klass, void *data)
->      device_class_set_props(dc, m25p80_properties);
->      dc->reset = m25p80_reset;
->      mc->pi = data;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>  contrib/plugins/lockstep.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+> index 319bd44b83..5aad50869d 100644
+> --- a/contrib/plugins/lockstep.c
+> +++ b/contrib/plugins/lockstep.c
+> @@ -268,11 +268,13 @@ static bool setup_socket(const char *path)
+>      socket_fd = accept(fd, NULL, NULL);
+
+I think you could also simply close(fd) here instead, then you don't have to
+do it twice below.
+
+ Thomas
+
+
+>      if (socket_fd < 0 && errno != EINTR) {
+>          perror("accept socket");
+> +        close(fd);
+>          return false;
+>      }
+> 
+>      qemu_plugin_outs("setup_socket::ready\n");
+> 
+> +    close(fd);
+>      return true;
 >  }
->
->  static const TypeInfo m25p80_info = {
-> --
-> 2.23.0
->
->
+> 
+
 
