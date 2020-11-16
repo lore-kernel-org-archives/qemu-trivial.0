@@ -1,81 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keegB-0002at-Tn
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 08:36:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46374)
+	id 1kef2S-0004Wv-VX
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 08:59:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1keegA-0002ac-FI
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 08:36:22 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46294)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kef2Q-0004WN-V2; Mon, 16 Nov 2020 08:59:22 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1keeg8-0003LJ-R0
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 08:36:22 -0500
-Received: by mail-wr1-x443.google.com with SMTP id d12so18678233wrr.13
- for <qemu-trivial@nongnu.org>; Mon, 16 Nov 2020 05:36:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=1ubJJlH9rfte8+pUGPT5fJGB+P3KWcyR5Xhz7Eq0wQo=;
- b=Qv/uxgQslJmb+ZD0djxrBv7NMeR7zBpwB4PiRJ0EsU4uezvQvoEUzEkTqgdHxPdSUh
- WOdNbDTegPp6bHxTto+eSsWmCEEH3cX1BgG3TKcqWOQnkAY2m9ZRElaBXZT68aTpcf7b
- YG+bfuPWracV54yEZFctS0I0jBwm4M3+wiRykqioSDvASsi4goGwFFG4yVdAEdVwcBJn
- cwLIr91sp/x+pGnzHnQmwrSJgZMaqVe+5+ZgfkqmuP3E1qMoUV1uRbo9p3ODQr0kZeHO
- /czwXPHetorwxXBMlNIzg+kd6I+igJhJ4v/qqHvaI+jrUnFfv5snW/ZO4D7kVAphJsIv
- /Edg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kef2P-0003GY-CD; Mon, 16 Nov 2020 08:59:22 -0500
+Received: by mail-wr1-x442.google.com with SMTP id d12so18754300wrr.13;
+ Mon, 16 Nov 2020 05:59:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=mrSkhpHV/FX7vqyYHrqYZ+ipl4u9XbEx+c2jRbUV4po=;
+ b=Ayw7gkge+v31z3D8wzZciPE9LkBC7hu5bVN/AlOzGuLAQv0n0Ovs8pCZB+B8/45G0L
+ P1U/NLJOxmGXktopLgI6/YdTG0UtjQeG4KIP11Ip/NfTLoPirEYd2l0GU6+WExyPD/OL
+ 6fjQlOKAtNsn40nMYjkpsVucNvG8MXNxy1p/YLSrKGi7rSCPijKjgp5xBw7vtbapdmKb
+ W3FZD0NSb8GsnrHk2tGgr0OegnzSMQ4ZB9AR/q3JYVGrsJRap+ZxJrUOnkbY3dJZ5Jj1
+ 7DJtPdHBXh/AMbm86tyvU+BMBWRw+nFlOO/K8Fv8T+m30wUjmllCfkKYTtf5v9FvDDKT
+ yFzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=1ubJJlH9rfte8+pUGPT5fJGB+P3KWcyR5Xhz7Eq0wQo=;
- b=NZYfJ4UlLTsjRd8Hoe50FLpOd9ZSrv3E0yknscniCSsN4+Un204VdKPKwZOl4QIIXl
- lweS4JV4H3bkMBaDDXYs1eQvkilL+9fG23uIFJEbB7bj+hDLD0pjIcyv3mPtIeiR5wN6
- IMdWSbgtZRvchJH9/AZIj94JrEU/MbxqxlqsRLvmeRPyS/GfFzXce7EeGal3L5y36vd/
- 9lHLWI8tr5+DLxc6zw4CKP9W/HOncaRGvZ5r7hZJ8J2qrTMoSr6QZpMTBUQEiG6jICLu
- fkQ7vIZotbTe71YdOrjY6Puvt/l5SPdfp3CZU4ku1mxufKDsutS7XDQCRut1TT+LggYj
- IBAA==
-X-Gm-Message-State: AOAM530jR/5WkgbOtD6IN56MQU2WJVDoKgMJJooVG0f2I5tUVN0VDvaj
- eh8AQm3l5I47768ez60Z2lgtvg==
-X-Google-Smtp-Source: ABdhPJxZIChO3DPXHVR9hOQmoAnN1LPQJR99VkoBh31qWTI0kcRylJRbQW3nCdq51Dl1EGx/wTx+Rg==
-X-Received: by 2002:a05:6000:89:: with SMTP id
- m9mr19571523wrx.412.1605533779174; 
- Mon, 16 Nov 2020 05:36:19 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id a131sm19683212wmh.30.2020.11.16.05.36.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 05:36:17 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 9CB811FF7E;
- Mon, 16 Nov 2020 13:36:16 +0000 (GMT)
-References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
- <20201116024810.2415819-4-kuhn.chenqun@huawei.com>
-User-agent: mu4e 1.5.7; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- zhang.zhanghailiang@huawei.com, Riku Voipio <riku.voipio@iki.fi>, "Richard
- Henderson" <richard.henderson@linaro.org>, Philippe =?utf-8?Q?Mathieu-Dau?=
- =?utf-8?Q?d=C3=A9?= <f4bug@amsat.org>, Paolo Bonzini <pbonzini@redhat.com>,
- ganqixin@huawei.com, Euler Robot <euler.robot@huawei.com>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 3/7] accel/tcg/user-exec: silence the compiler warnings
-In-reply-to: <20201116024810.2415819-4-kuhn.chenqun@huawei.com>
-Date: Mon, 16 Nov 2020 13:36:16 +0000
-Message-ID: <87v9e5whin.fsf@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=mrSkhpHV/FX7vqyYHrqYZ+ipl4u9XbEx+c2jRbUV4po=;
+ b=PhmA8wolZfZ7V5YZwoHDxZN01NNmiYaFgbVzqPG2E8H97xq8vcXpoPF3uKqV4s7S2v
+ mXLHX4gYicvdSW06bzoBwxSB0O8uR4GVMdXPpmXMiG/rGnRkJLbYa1kKteezOpqN+YuD
+ YK138vAYZZmjEddBIXs4rCSkAx81XbkRje9pvSKIXc84enRP/GSbaYnUvr2OgQNqyd68
+ iYR2FRMXFrwIBQzBN9wVysMzzvzGcjndX5F6KbY1CDxrI3xu3Cxd+AkqASGQhVcpIqKX
+ A5kxVf39NiCjjSzBDbqu5ZerzdHbtDP55Lv8mmJ4K7pZyjPvdca234EAmmVKf/Jn11Cm
+ ppfw==
+X-Gm-Message-State: AOAM530D4h2EMtjBxrRjoXxmr3yIi30PhTPzPfhCeWLlN5scznMrqQGj
+ kW6piFrRY1+cUbDQ36CCM7M=
+X-Google-Smtp-Source: ABdhPJxALO93PUv5D9i1rfEggAvlnJ1aMGlQAELb4P8RsQf1W0hdeajvG9tKnWL9JK3sNjnrf1nTeA==
+X-Received: by 2002:adf:eb4d:: with SMTP id u13mr18670657wrn.146.1605535159527; 
+ Mon, 16 Nov 2020 05:59:19 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id a15sm23042774wrn.75.2020.11.16.05.59.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Nov 2020 05:59:18 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 12/13] SPI flash devices: put them into the 'storage'
+ category
+To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: kuhn.chenqun@huawei.com, thuth@redhat.com,
+ Alistair Francis <alistair@alistair23.me>, zhang.zhanghailiang@huawei.com
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-13-ganqixin@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e4591e68-04c5-8645-f50a-e5a9553326c9@amsat.org>
+Date: Mon, 16 Nov 2020 14:59:17 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <20201115184903.1292715-13-ganqixin@huawei.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x443.google.com
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,32 +87,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 13:36:22 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 13:59:23 -0000
 
+On 11/15/20 7:49 PM, Gan Qixin wrote:
+> SPI flash devices have no category, put them into the 'storage' category.
+> 
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> ---
+> Cc: Alistair Francis <alistair@alistair23.me>
+> ---
+>  hw/block/m25p80.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Chen Qun <kuhn.chenqun@huawei.com> writes:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> When using -Wimplicit-fallthrough in our CFLAGS on GCC9, the compiler sho=
-wed warning:
-> ../accel/tcg/user-exec.c: In function =E2=80=98handle_cpu_signal=E2=80=99:
-> ../accel/tcg/user-exec.c:169:13: warning: this statement may fall through=
- [-Wimplicit-fallthrough=3D]
->   169 |             cpu_exit_tb_from_sighandler(cpu, old_set);
->       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ../accel/tcg/user-exec.c:172:9: note: here
->   172 |         default:
->
-> Mark the cpu_exit_tb_from_sighandler() function with QEMU_NORETURN to fix=
- it.
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
 
