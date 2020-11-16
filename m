@@ -1,46 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keaj6-0007Cr-Q2
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:23:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39412)
+	id 1kebCh-0004fd-DN
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 04:53:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaj3-00071z-03; Mon, 16 Nov 2020 04:23:05 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2793)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keaj1-0004Gu-0o; Mon, 16 Nov 2020 04:23:04 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZNrx2lt5zkYxC;
- Mon, 16 Nov 2020 17:22:41 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 17:22:50 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835 cprman
- into the 'misc' category
-Date: Mon, 16 Nov 2020 02:49:03 +0800
-Message-ID: <20201115184903.1292715-14-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201115184903.1292715-1-ganqixin@huawei.com>
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kebCf-0004er-HF
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 04:53:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26990)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kebCd-00071Y-AM
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 04:53:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605520418;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=aZYqBjX8yYGXMhNDpYQC9X1C9lD25rvo3M3MRvUXFHs=;
+ b=DIUOSSP/P1fAmMaf1pJyKY4qU2wO2K8cLrlCvxDigh7iB+5u23WRRr+WH35rEW7YpjKlFL
+ uZ2hfbcnUH1dPJuGjpaWBSFg/gdCDwo9VRZXI3KbmV4MNqg6o6OZVJOkzpNGM8PPtKBE5J
+ uM3URL9MykMyPfz4hEE6EhDpgeWiJWA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-274-VZacs1ZiPvet-gtJaMMqlQ-1; Mon, 16 Nov 2020 04:52:54 -0500
+X-MC-Unique: VZacs1ZiPvet-gtJaMMqlQ-1
+Received: by mail-wr1-f71.google.com with SMTP id 91so10569847wrk.17
+ for <qemu-trivial@nongnu.org>; Mon, 16 Nov 2020 01:52:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=aZYqBjX8yYGXMhNDpYQC9X1C9lD25rvo3M3MRvUXFHs=;
+ b=dS1Y80vmMc7/ShXWqwPxoKCBNdhfHfQXRIuQWFspbA0nDzchxUlXcN7KcRMVGe76E7
+ 7ZTUVUs5O9s54YhAn7iwtuykuVHI+jwvKDBRjpVbTovQC7WNUHi/wuyg9e759yem8g7z
+ 90V4NmtcrPaTCISm49utTaVYJz/4ZUx62gFrKcC6ZFNIokd2IaseXwPVfPLFzwvv8hF+
+ CMWQjCCbttKzeuxH6Y5cqqGms1TPQDbA0oFmm2KInxlfYRdo40yAWPYR9nJllBCcJf9C
+ CU+UyWTpM5r9euWyfrOBJAS60tSvBSegopm2PP01uVrcqleqwb9R1WF7taqHb5j6JjC4
+ tyig==
+X-Gm-Message-State: AOAM530vREMQBxAMGG9xYz2ps3gmhY06toTjRCeXEwVxkDNQ8VjhbB9I
+ HTPpDYV27omcHRjVH+/LqBu6bsfyCmbVkRdLlfZ4MoJRqeAm216RAFqYtqnotFTvaLJyip5szO0
+ yqtBOoTie12gcEhgGZQ==
+X-Received: by 2002:a1c:1c1:: with SMTP id 184mr14807551wmb.16.1605520372906; 
+ Mon, 16 Nov 2020 01:52:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzQkEuRwhk9WQ+2jgRdt/346ZUOIMV8Vu89S98gSicG73PjTJIkD3KIe3yYzsxTkAiuKNOJVg==
+X-Received: by 2002:a1c:1c1:: with SMTP id 184mr14807518wmb.16.1605520372500; 
+ Mon, 16 Nov 2020 01:52:52 -0800 (PST)
+Received: from redhat.com (bzq-79-176-118-93.red.bezeqint.net. [79.176.118.93])
+ by smtp.gmail.com with ESMTPSA id a128sm19376773wmf.5.2020.11.16.01.52.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Nov 2020 01:52:51 -0800 (PST)
+Date: Mon, 16 Nov 2020 04:52:49 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Alex Chen <alex.chen@huawei.com>
+Cc: stefanha@redhat.com, marcandre.lureau@redhat.com,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] contrib/libvhost-user: Fix bad printf format specifiers
+Message-ID: <20201116045218-mutt-send-email-mst@kernel.org>
+References: <5FA28106.6000901@huawei.com>
+ <5FB1E074.50205@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="y"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:22:28
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+In-Reply-To: <5FB1E074.50205@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,55 +88,114 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 09:23:05 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 09:53:41 -0000
 
-Some peripherals of bcm2835 cprman have no category, put them into the 'misc'
-category.
+It's in the latest pull weren't you Cc'd?
 
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
-Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/bcm2835_cprman.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 7e415a017c..c62958a99e 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -136,6 +136,7 @@ static void pll_class_init(ObjectClass *klass, void *data)
- 
-     dc->reset = pll_reset;
-     dc->vmsd = &pll_vmstate;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo cprman_pll_info = {
-@@ -239,6 +240,7 @@ static void pll_channel_class_init(ObjectClass *klass, void *data)
- 
-     dc->reset = pll_channel_reset;
-     dc->vmsd = &pll_channel_vmstate;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo cprman_pll_channel_info = {
-@@ -359,6 +361,7 @@ static void clock_mux_class_init(ObjectClass *klass, void *data)
- 
-     dc->reset = clock_mux_reset;
-     dc->vmsd = &clock_mux_vmstate;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo cprman_clock_mux_info = {
-@@ -411,6 +414,7 @@ static void dsi0hsck_mux_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->vmsd = &dsi0hsck_mux_vmstate;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo cprman_dsi0hsck_mux_info = {
--- 
-2.23.0
+On Mon, Nov 16, 2020 at 10:14:12AM +0800, Alex Chen wrote:
+> Kindly ping...
+> 
+> On 2020/11/4 18:23, AlexChen wrote:
+> > We should use printf format specifier "%u" instead of "%d" for
+> > argument of type "unsigned int".
+> > 
+> > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> > ---
+> >  contrib/libvhost-user/libvhost-user.c | 24 ++++++++++++------------
+> >  1 file changed, 12 insertions(+), 12 deletions(-)
+> > 
+> > diff --git a/contrib/libvhost-user/libvhost-user.c b/contrib/libvhost-user/libvhost-user.c
+> > index bfec8a881a..5c73ffdd6b 100644
+> > --- a/contrib/libvhost-user/libvhost-user.c
+> > +++ b/contrib/libvhost-user/libvhost-user.c
+> > @@ -701,7 +701,7 @@ vu_add_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
+> >          return false;
+> >      }
+> > 
+> > -    DPRINT("Adding region: %d\n", dev->nregions);
+> > +    DPRINT("Adding region: %u\n", dev->nregions);
+> >      DPRINT("    guest_phys_addr: 0x%016"PRIx64"\n",
+> >             msg_region->guest_phys_addr);
+> >      DPRINT("    memory_size:     0x%016"PRIx64"\n",
+> > @@ -848,7 +848,7 @@ vu_set_mem_table_exec_postcopy(VuDev *dev, VhostUserMsg *vmsg)
+> >      VhostUserMemory m = vmsg->payload.memory, *memory = &m;
+> >      dev->nregions = memory->nregions;
+> > 
+> > -    DPRINT("Nregions: %d\n", memory->nregions);
+> > +    DPRINT("Nregions: %u\n", memory->nregions);
+> >      for (i = 0; i < dev->nregions; i++) {
+> >          void *mmap_addr;
+> >          VhostUserMemoryRegion *msg_region = &memory->regions[i];
+> > @@ -938,7 +938,7 @@ vu_set_mem_table_exec(VuDev *dev, VhostUserMsg *vmsg)
+> >          return vu_set_mem_table_exec_postcopy(dev, vmsg);
+> >      }
+> > 
+> > -    DPRINT("Nregions: %d\n", memory->nregions);
+> > +    DPRINT("Nregions: %u\n", memory->nregions);
+> >      for (i = 0; i < dev->nregions; i++) {
+> >          void *mmap_addr;
+> >          VhostUserMemoryRegion *msg_region = &memory->regions[i];
+> > @@ -1049,8 +1049,8 @@ vu_set_vring_num_exec(VuDev *dev, VhostUserMsg *vmsg)
+> >      unsigned int index = vmsg->payload.state.index;
+> >      unsigned int num = vmsg->payload.state.num;
+> > 
+> > -    DPRINT("State.index: %d\n", index);
+> > -    DPRINT("State.num:   %d\n", num);
+> > +    DPRINT("State.index: %u\n", index);
+> > +    DPRINT("State.num:   %u\n", num);
+> >      dev->vq[index].vring.num = num;
+> > 
+> >      return false;
+> > @@ -1105,8 +1105,8 @@ vu_set_vring_base_exec(VuDev *dev, VhostUserMsg *vmsg)
+> >      unsigned int index = vmsg->payload.state.index;
+> >      unsigned int num = vmsg->payload.state.num;
+> > 
+> > -    DPRINT("State.index: %d\n", index);
+> > -    DPRINT("State.num:   %d\n", num);
+> > +    DPRINT("State.index: %u\n", index);
+> > +    DPRINT("State.num:   %u\n", num);
+> >      dev->vq[index].shadow_avail_idx = dev->vq[index].last_avail_idx = num;
+> > 
+> >      return false;
+> > @@ -1117,7 +1117,7 @@ vu_get_vring_base_exec(VuDev *dev, VhostUserMsg *vmsg)
+> >  {
+> >      unsigned int index = vmsg->payload.state.index;
+> > 
+> > -    DPRINT("State.index: %d\n", index);
+> > +    DPRINT("State.index: %u\n", index);
+> >      vmsg->payload.state.num = dev->vq[index].last_avail_idx;
+> >      vmsg->size = sizeof(vmsg->payload.state);
+> > 
+> > @@ -1478,8 +1478,8 @@ vu_set_vring_enable_exec(VuDev *dev, VhostUserMsg *vmsg)
+> >      unsigned int index = vmsg->payload.state.index;
+> >      unsigned int enable = vmsg->payload.state.num;
+> > 
+> > -    DPRINT("State.index: %d\n", index);
+> > -    DPRINT("State.enable:   %d\n", enable);
+> > +    DPRINT("State.index: %u\n", index);
+> > +    DPRINT("State.enable:   %u\n", enable);
+> > 
+> >      if (index >= dev->max_queues) {
+> >          vu_panic(dev, "Invalid vring_enable index: %u", index);
+> > @@ -1728,7 +1728,7 @@ vu_handle_vring_kick(VuDev *dev, VhostUserMsg *vmsg)
+> >          return false;
+> >      }
+> > 
+> > -    DPRINT("Got kick message: handler:%p idx:%d\n",
+> > +    DPRINT("Got kick message: handler:%p idx:%u\n",
+> >             dev->vq[index].handler, index);
+> > 
+> >      if (!dev->vq[index].started) {
+> > @@ -1772,7 +1772,7 @@ vu_process_message(VuDev *dev, VhostUserMsg *vmsg)
+> >      DPRINT("Request: %s (%d)\n", vu_request_to_string(vmsg->request),
+> >             vmsg->request);
+> >      DPRINT("Flags:   0x%x\n", vmsg->flags);
+> > -    DPRINT("Size:    %d\n", vmsg->size);
+> > +    DPRINT("Size:    %u\n", vmsg->size);
+> > 
+> >      if (vmsg->fd_num) {
+> >          int i;
+> > 
 
 
