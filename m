@@ -1,75 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kefZx-0004XB-CC
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 09:34:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59646)
+	id 1kehQU-0008Nc-9m
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 11:32:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kefZv-0004Wr-3I
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:33:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42972)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kefZt-0007g5-Cv
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 09:33:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605537236;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZMjHWkaUogV8kmId/9AtqVBdQ3z2mMu/a555HUu6U40=;
- b=dfQNvyNhd3HW3x/SUfPc9oU7q8Aq3mqvghFWPATAPFjtF2/Yw9g+U2ov7ygtiMXJmOVv+0
- UwyAlLv29sSppY1g774vMsxYpi8GRbhNbtvCOW3OBrAT8BajPavRJlzinqxhblxvXBO0lD
- yWLR8QlFnDsziXmwBvut5ImX91/iEPE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-204-pSE7KwDhMu2u8wzbdejdZw-1; Mon, 16 Nov 2020 09:33:52 -0500
-X-MC-Unique: pSE7KwDhMu2u8wzbdejdZw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF609801FDA;
- Mon, 16 Nov 2020 14:33:50 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-126.ams2.redhat.com [10.36.113.126])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BDFCC1002D59;
- Mon, 16 Nov 2020 14:33:43 +0000 (UTC)
-Subject: Re: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
- cprman into the 'misc' category
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: Gan Qixin <ganqixin@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-14-ganqixin@huawei.com>
- <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
- <CAFEAcA9nF=RFnjFoC6b3iCN2Cu_QFsWHzouiK4EZ8TFb6cZaeg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <9958130f-b6cd-ca91-f0af-9e3a916bfc8b@redhat.com>
-Date: Mon, 16 Nov 2020 15:33:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kehQA-0008Ic-7k; Mon, 16 Nov 2020 11:32:05 -0500
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:38996)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kehQ7-00078e-R6; Mon, 16 Nov 2020 11:32:01 -0500
+Received: by mail-io1-xd44.google.com with SMTP id j23so2145161iog.6;
+ Mon, 16 Nov 2020 08:31:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=K0XipTWujXiNWwh8ZYB969l148TX9roKPYYgxCYiaik=;
+ b=soqM/SeiBjs1po98yFsEc6eZjJaHud0shZWqp4lVZCNybDmDUQ+StFMJbEEth1PopS
+ GSFNQiymVlRx+LFcszxLgJ1KbXin5Em1w0IMRi1781t87YCDwoOxtX/UEW5Byv2LNEu9
+ LyUn0EdCkpXwLVp5nYBEwxgMOnhdJaN/cTre+cV8VGMDSatW1fgI+Aaor1qzTkzK8z/g
+ k0cjTDOMldIiavVoUUiLh4fvhGZoP8acowCEDqBx16hmJI3mX8RSDRmXHLaG7++ZoTbV
+ yLnr1ok+BOb8To0v0taPWdW49eqd0V9G9+Shs2EA+1N4m/G1QxwyKKw2LGXV8Et1pSJ4
+ HUHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=K0XipTWujXiNWwh8ZYB969l148TX9roKPYYgxCYiaik=;
+ b=JQYIl/FWgAVWRNHHMtoIuKeM9lKxSLNVR05iD62Vq//9NrLr+45NhjqLv7UznRqi+C
+ xNWjvUONtzGxj0DtW8ckZ1+eu96zG8Pr15xmDT5KeByf8RyLuO5BFnUEy95jWZ5hkJ5u
+ UhN/47paRxFLnlj5RD20K2otXdSXd6/LQbIpmETB2oZ2kyM3c5lYvrvXvM0yx02lUfZa
+ TY4w64PUZeJnPvTcG1Aru7RFlfKZb4/SaImXr4RmSAG2IxXqhGtJzofQbc+oTqA6fdsg
+ u5lb8gFkdzUncenKR6Lwi07fDIbZgc7Nq+3gqFpC5DwcAfUHFmfBVfMBZqsfwJ/PGDbp
+ CJgg==
+X-Gm-Message-State: AOAM530ZL+XFCEEB9/9CPjYBuO3j1UFVyn72xg8XR47L5mN/XYU4GxNO
+ 4sMmcDYlfprXsYL/R/lW5xvXlB5IkVvsAy48N08=
+X-Google-Smtp-Source: ABdhPJw4Tt0gontzi6TchllUZw0PVS/DJrgBVTdeVT0Zid42pI+f0O7X9ZUSeTM6i0rBj9vi2Jjx36ZuIWWxWf2CMiM=
+X-Received: by 2002:a02:ce26:: with SMTP id v6mr230044jar.91.1605544316239;
+ Mon, 16 Nov 2020 08:31:56 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9nF=RFnjFoC6b3iCN2Cu_QFsWHzouiK4EZ8TFb6cZaeg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-13-ganqixin@huawei.com>
+In-Reply-To: <20201115184903.1292715-13-ganqixin@huawei.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 16 Nov 2020 08:19:41 -0800
+Message-ID: <CAKmqyKO_bfuvYx_Cr_9zEX9afVubBu=E-9XRm5FfgZ6weyMeJg@mail.gmail.com>
+Subject: Re: [PATCH 12/13] SPI flash devices: put them into the 'storage'
+ category
+To: Gan Qixin <ganqixin@huawei.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ kuhn.chenqun@huawei.com, Thomas Huth <thuth@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,34 +76,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 14:33:59 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 16:32:12 -0000
 
-On 16/11/2020 14.31, Peter Maydell wrote:
-> On Mon, 16 Nov 2020 at 13:28, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> Well, this is not an usable device but a part of a bigger device,
->> so here we want the opposite: not list this device in any category.
->>
->> Maybe we could add a DEVICE_CATEGORY_COMPOSITE for all such QOM
->> types so management apps can filter them out? (And so we are sure
->> all QOM is classified).
->>
->> Thomas, you already dealt with categorizing devices in the past,
->> what do you think about this? Who else could help? Maybe add
->> someone from libvirt in the thread?
-> 
-> If we could get to the point where we can assert() that
-> dc->categories is non-zero in class init, we would be able
-> to avoid further "forgot to categorize device" bugs getting
-> into the tree in future, which seems like an argument for
-> having some way of marking "really just an implementation
-> detail" devices I guess?
+On Mon, Nov 16, 2020 at 1:30 AM Gan Qixin <ganqixin@huawei.com> wrote:
+>
+> SPI flash devices have no category, put them into the 'storage' category.
+>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 
-IMHO we need:
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-  assert(dc->user_creatable == false ||  categories != 0)
+Alistair
 
-then we don't need something like DEVICE_CATEGORY_COMPOSITE.
-
- Thomas
-
+> ---
+> Cc: Alistair Francis <alistair@alistair23.me>
+> ---
+>  hw/block/m25p80.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 483925f57a..8dd3ef8559 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -1397,6 +1397,7 @@ static void m25p80_class_init(ObjectClass *klass, void *data)
+>      device_class_set_props(dc, m25p80_properties);
+>      dc->reset = m25p80_reset;
+>      mc->pi = data;
+> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>  }
+>
+>  static const TypeInfo m25p80_info = {
+> --
+> 2.23.0
+>
+>
 
