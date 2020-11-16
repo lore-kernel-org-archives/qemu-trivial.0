@@ -1,44 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keUtF-0007fT-71
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 22:09:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32996)
+	id 1keYE9-0006Aw-Fh
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 01:43:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keUtD-0007fC-4x; Sun, 15 Nov 2020 22:09:11 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2352)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1keUtA-0005FA-Dm; Sun, 15 Nov 2020 22:09:10 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZDYC56ftzkXft;
- Mon, 16 Nov 2020 11:08:31 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 11:08:42 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <peter.maydell@linaro.org>, <thuth@redhat.com>, <quintela@redhat.com>,
- <ehabkost@redhat.com>, <berrange@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH] ads7846: moves from the hw/display folder to the hw/input
- folder.
-Date: Sun, 15 Nov 2020 20:35:03 +0800
-Message-ID: <20201115123503.1110665-1-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.23.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1keYE3-00068u-2V
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 01:42:55 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:22957)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1keYE0-0006Ec-7h
+ for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 01:42:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605508971;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=MCAFL6AN+aQXOh4ElNUwG5MPfCTqzbV738jDqk4vLMc=;
+ b=BcNOCbMMcMkoQ2WohBVKN2vodvgy5rBX12/d5noLJhcae3Xv0737q62OlzWxNvjAnWDM+G
+ CgKCrFZw440tx4PApk1SNhnP+hCxMxUvWGDzJZr5NuC/c5+mta07Rhav7qfMc8vRkg+q10
+ A70ttifAa1Jadz1NXzmIywwcoamKwo8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-294-V_LcebjTNAG3RuJyAkElkw-1; Mon, 16 Nov 2020 01:42:47 -0500
+X-MC-Unique: V_LcebjTNAG3RuJyAkElkw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB9E1802B7A;
+ Mon, 16 Nov 2020 06:42:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
+ [10.36.112.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3F7425D9D2;
+ Mon, 16 Nov 2020 06:42:45 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 9801911358BA; Mon, 16 Nov 2020 07:42:43 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Cc: "Chenzhendong (alex)" <alex.chen@huawei.com>,  "armbru@redhat.com"
+ <armbru@redhat.com>,  "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,  Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>
+Subject: Re: [PATCH v2] json: Fix a memleak in parse_pair()
+References: <20201113145525.85151-1-alex.chen@huawei.com>
+ <7412CDE03601674DA8197E2EBD8937E83BA6762C@dggemm511-mbs.china.huawei.com>
+Date: Mon, 16 Nov 2020 07:42:43 +0100
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83BA6762C@dggemm511-mbs.china.huawei.com>
+ (Chenqun's message of "Sat, 14 Nov 2020 09:08:20 +0000")
+Message-ID: <87eektkdjw.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 21:16:58
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 01:42:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,91 +78,121 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 03:09:11 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 06:42:55 -0000
 
-ads7846 is a touch-screen controller that is an input device rather
-than a display device, so move it to the hw/input folder.
+"Chenqun (kuhn)" <kuhn.chenqun@huawei.com> writes:
 
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
- hw/arm/Kconfig                  | 2 +-
- hw/display/Kconfig              | 3 ---
- hw/display/meson.build          | 1 -
- hw/input/Kconfig                | 3 +++
- hw/{display => input}/ads7846.c | 0
- hw/input/meson.build            | 1 +
- 6 files changed, 5 insertions(+), 5 deletions(-)
- rename hw/{display => input}/ads7846.c (100%)
+>> -----Original Message-----
+>> From: Chenzhendong (alex)
+>> Sent: Friday, November 13, 2020 10:55 PM
+>> To: armbru@redhat.com
+>> Cc: Chenzhendong (alex) <alex.chen@huawei.com>; qemu-devel@nongnu.org;
+>> qemu-trivial@nongnu.org; Zhanghailiang <zhang.zhanghailiang@huawei.com>;
+>> Chenqun (kuhn) <kuhn.chenqun@huawei.com>
+>> Subject: [PATCH v2] json: Fix a memleak in parse_pair()
+>> 
+>> In qobject_type(), NULL is returned when the 'QObject' returned from
+>> parse_value() is not of QString type, and this 'QObject' memory will leaked.
+>> So we need to first cache the 'QObject' returned from parse_value(), and finally
+>> free 'QObject' memory at the end of the function.
+>> Also, we add a testcast about invalid dict key.
+>> 
+>> The memleak stack is as follows:
+>> Direct leak of 32 byte(s) in 1 object(s) allocated from:
+>>     #0 0xfffe4b3c34fb in __interceptor_malloc (/lib64/libasan.so.4+0xd34fb)
+>>     #1 0xfffe4ae48aa3 in g_malloc (/lib64/libglib-2.0.so.0+0x58aa3)
+>>     #2 0xaaab3557d9f7 in qnum_from_int
+>> /Images/source_org/qemu_master/qemu/qobject/qnum.c:25
+>>     #3 0xaaab35584d23 in parse_literal
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:511
+>>     #4 0xaaab35584d23 in parse_value
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:554
+>>     #5 0xaaab35583d77 in parse_pair
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:270
+>>     #6 0xaaab355845db in parse_object
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:327
+>>     #7 0xaaab355845db in parse_value
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:546
+>>     #8 0xaaab35585b1b in json_parser_parse
+>> /Images/source_org/qemu_master/qemu/qobject/json-parser.c:580
+>>     #9 0xaaab35583703 in json_message_process_token
+>> /Images/source_org/qemu_master/qemu/qobject/json-streamer.c:92
+>>     #10 0xaaab355ddccf in json_lexer_feed_char
+>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:313
+>>     #11 0xaaab355de0eb in json_lexer_feed
+>> /Images/source_org/qemu_master/qemu/qobject/json-lexer.c:350
+>>     #12 0xaaab354aff67 in tcp_chr_read
+>> /Images/source_org/qemu_master/qemu/chardev/char-socket.c:525
+>>     #13 0xfffe4ae429db in g_main_context_dispatch
+>> (/lib64/libglib-2.0.so.0+0x529db)
+>>     #14 0xfffe4ae42d8f  (/lib64/libglib-2.0.so.0+0x52d8f)
+>>     #15 0xfffe4ae430df in g_main_loop_run (/lib64/libglib-2.0.so.0+0x530df)
+>>     #16 0xaaab34d70bff in iothread_run
+>> /Images/source_org/qemu_master/qemu/iothread.c:82
+>>     #17 0xaaab3559d71b in qemu_thread_start
+>> /Images/source_org/qemu_master/qemu/util/qemu-thread-posix.c:519
+>> 
+>> Fixes: 532fb5328473 ("qapi: Make more of qobject_to()")
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  qobject/json-parser.c | 12 ++++++------
+>>  tests/check-qjson.c   |  9 +++++++++
+>>  2 files changed, 15 insertions(+), 6 deletions(-)
+>> 
+>> diff --git a/qobject/json-parser.c b/qobject/json-parser.c index
+>> d083810d37..c0f521b56b 100644
+>> --- a/qobject/json-parser.c
+>> +++ b/qobject/json-parser.c
+>> @@ -257,8 +257,9 @@ static JSONToken
+>> *parser_context_peek_token(JSONParserContext *ctxt)
+>>   */
+>>  static int parse_pair(JSONParserContext *ctxt, QDict *dict)  {
+>> +    QObject *key_obj = NULL;
+>> +    QString *key;
+>>      QObject *value;
+>> -    QString *key = NULL;
+>>      JSONToken *peek, *token;
+>> 
+>>      peek = parser_context_peek_token(ctxt); @@ -267,7 +268,8 @@ static
+>> int parse_pair(JSONParserContext *ctxt, QDict *dict)
+>>          goto out;
+>>      }
+>> 
+>> -    key = qobject_to(QString, parse_value(ctxt));
+>> +    key_obj = parse_value(ctxt);
+>> +    key = qobject_to(QString, key_obj);
+>>      if (!key) {
+>>          parse_error(ctxt, peek, "key is not a string in object");
+>>          goto out;
+>> @@ -297,13 +299,11 @@ static int parse_pair(JSONParserContext *ctxt,
+>> QDict *dict)
+>> 
+>>      qdict_put_obj(dict, qstring_get_str(key), value);
+>> 
+>> -    qobject_unref(key);
+>> -
+>> +    qobject_unref(key_obj);
+>>      return 0;
+>> 
+>>  out:
+>> -    qobject_unref(key);
+>> -
+>> +    qobject_unref(key_obj);
+>>      return -1;
+>>  }
+>> 
+>
+> Hi Alex,
+>   Perhaps it would be more appropriate to provide the testcase as a separate patch which from Markus.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index fdf4464b94..75a771bc2d 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -155,7 +155,7 @@ config TOSA
- 
- config SPITZ
-     bool
--    select ADS7846 # display
-+    select ADS7846 # touch-screen controller
-     select MAX111X # A/D converter
-     select WM8750  # audio codec
-     select MAX7310 # GPIO expander
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index 15d59e10dc..ca46b5830e 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -9,9 +9,6 @@ config EDID
- config FW_CFG_DMA
-     bool
- 
--config ADS7846
--    bool
--
- config VGA_CIRRUS
-     bool
-     default y if PCI_DEVICES
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index dad3bd2b41..9d79e3951d 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -6,7 +6,6 @@ softmmu_ss.add(when: 'CONFIG_EDID', if_true: files('edid-generate.c', 'edid-regi
- softmmu_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('ramfb.c'))
- softmmu_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('ramfb-standalone.c'))
- 
--softmmu_ss.add(when: 'CONFIG_ADS7846', if_true: files('ads7846.c'))
- softmmu_ss.add(when: 'CONFIG_VGA_CIRRUS', if_true: files('cirrus_vga.c'))
- softmmu_ss.add(when: ['CONFIG_VGA_CIRRUS', 'CONFIG_VGA_ISA'], if_true: files('cirrus_vga_isa.c'))
- softmmu_ss.add(when: 'CONFIG_G364FB', if_true: files('g364fb.c'))
-diff --git a/hw/input/Kconfig b/hw/input/Kconfig
-index 64f14daabf..55865bb386 100644
---- a/hw/input/Kconfig
-+++ b/hw/input/Kconfig
-@@ -1,6 +1,9 @@
- config ADB
-     bool
- 
-+config ADS7846
-+    bool
-+
- config LM832X
-     bool
-     depends on I2C
-diff --git a/hw/display/ads7846.c b/hw/input/ads7846.c
-similarity index 100%
-rename from hw/display/ads7846.c
-rename to hw/input/ads7846.c
-diff --git a/hw/input/meson.build b/hw/input/meson.build
-index e7285b15ae..0042c3f0dc 100644
---- a/hw/input/meson.build
-+++ b/hw/input/meson.build
-@@ -1,5 +1,6 @@
- softmmu_ss.add(files('hid.c'))
- softmmu_ss.add(when: 'CONFIG_ADB', if_true: files('adb.c', 'adb-mouse.c', 'adb-kbd.c'))
-+softmmu_ss.add(when: 'CONFIG_ADS7846', if_true: files('ads7846.c'))
- softmmu_ss.add(when: 'CONFIG_LM832X', if_true: files('lm832x.c'))
- softmmu_ss.add(when: 'CONFIG_PCKBD', if_true: files('pckbd.c'))
- softmmu_ss.add(when: 'CONFIG_PL050', if_true: files('pl050.c'))
--- 
-2.23.0
+I appreciate your consideration.  Since both fix and test case are
+simple, and we need to hurry to have a chance at getting this into 5.2,
+and the part of the work deserving credit the most is finding and
+analyzing the bug, I'd like to take the patch as is.
+
+Queued, thanks!
 
 
