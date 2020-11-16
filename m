@@ -1,90 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kecy3-0001iM-Fl
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 06:46:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49754)
+	id 1kedt8-0001Ia-Oq
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 07:45:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kecy2-0001h7-2R
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 06:46:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28444)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kecxz-0006ZU-Iy
- for qemu-trivial@nongnu.org; Mon, 16 Nov 2020 06:46:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605527198;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NEQNmZvdgUozWvWR8XYhqspP8mkgXk2CmcEgAhIx2DE=;
- b=QoJeP9zlU3I2rq9h7BBLIruYAdnlu10Tvqk8XXBdVRZjGfR4nnLQlTQ5LpUgAWtg2PJv6z
- qEOxEZAXLs/cdAWm7jhb5wXVQLGgchM3djPmtRx9qWz0F5x4+anRURHueml91mQS7J+Njs
- Y46OiCbE2vcojkcWgKMabp4ZqOBgC3w=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-119-yP0ZiCplNr6uMRNae2FSvg-1; Mon, 16 Nov 2020 06:46:37 -0500
-X-MC-Unique: yP0ZiCplNr6uMRNae2FSvg-1
-Received: by mail-wr1-f71.google.com with SMTP id e18so10972001wrs.23
- for <qemu-trivial@nongnu.org>; Mon, 16 Nov 2020 03:46:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kedt5-0001Ga-Bp; Mon, 16 Nov 2020 07:45:39 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35072)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kedt3-0002DC-21; Mon, 16 Nov 2020 07:45:38 -0500
+Received: by mail-wr1-x441.google.com with SMTP id k2so18586225wrx.2;
+ Mon, 16 Nov 2020 04:45:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=dNkWLDdgG92y9ToMxg0tVYSpOCp8Nn6HaIlYVrE2taU=;
+ b=S6mW42jn/XfF3m8gWPc7poyCYkxbaRrS3L9Qly/q6gArpuevyZrGuiZOqs6Y0bv+CQ
+ x6rxsV/2OBWr0N0WKfkGESQC1a4DpJKe8WmEX9BMnvpp6E6fFNYdcY1AClcp3qEMDekB
+ 4YwSho/VD5io5HW6Vc8DZF2WhsttHADzHF+fDbMWWS5UDXqiXa8+zQyCVvyxABw2xOdR
+ hTBGP+Bkev6rWSzMf9MI0l2mIPQAje4gXYx6pspvxCbzoB1SixthSz7Hcmi/ad2PG2vf
+ COLLzkoZmYxpsm4GThn/J3cEkLHUIok3C9/ISu+fR9urkGf6a19CBtTgYwfBA4b25uwk
+ vvlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=NEQNmZvdgUozWvWR8XYhqspP8mkgXk2CmcEgAhIx2DE=;
- b=d0KMqKV+/XjQ5JaaQp3Pw9rZNX8MhXzbzgUWEnBKUT8KA1UWlYQOw2B+JI2Bn8wxYa
- ucEautXpm/mP/ePr2nsf0CZEOKJpy3be6PqFi1QZexUvkfkLbo1oqK7yz38uHhco75oA
- ihVh0j+oGyDK1orkS3rX7gBD1hvw1L356bEjVCAt/G8dsnQD7apkYxTmJKC1DhtHz/p1
- 4mzcrQuzshrcNlWZxM2vwg1coq7MK/zYgt6sFzw3jhSYtrHqUTPvGKnr4hHYvXIy3/vA
- dbIiF0L0qt8HpmOEMY9fWPIgKx1hht+uIAZPt8Wjtqa9UAtrZhQIkjTDKBZbgrb4s8iP
- aUYQ==
-X-Gm-Message-State: AOAM530c5Y1E4r8HCxCpsRf+7hKXr+5J5GGgcmdqrpG/Chg+o9ZzidkO
- zZexAm8TtamQZHQYr8n4djw69zJHMFcd/jFQcQ3DbdRFYdJcl4jV1bPLSDURcZ+xViVlWNo635Z
- oYdrW0lpi6eyUammdzQ==
-X-Received: by 2002:adf:e789:: with SMTP id n9mr18627623wrm.211.1605527195454; 
- Mon, 16 Nov 2020 03:46:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyvbjLZkf7cv/L0687BDM4VNhdTbMBhNCc1PiInbn+NnUyo16Eq2Y4niFq8sFOR9f8ZjaEDbA==
-X-Received: by 2002:adf:e789:: with SMTP id n9mr18627595wrm.211.1605527195211; 
- Mon, 16 Nov 2020 03:46:35 -0800 (PST)
+ bh=dNkWLDdgG92y9ToMxg0tVYSpOCp8Nn6HaIlYVrE2taU=;
+ b=Vs3ta1YjCBmfpCDbIi7MM4o+ng/BAaCat5Jo2DYjFbFPoMo80qsiSn4XKiIU5PJmsh
+ saHdalcYpsMFyZGwi8BD3awZGzggKwvSTTooUimwQtuLPBYnUaYkMUZ93xRLhqJyDcFa
+ jYKCdgjrs9ElviZeVZStWh4xRuSF88l9mIGNcM8frbt5p9/fO9INxzGfddeyP4UYXKgX
+ JpIY3VYPYj4ym9jMseRAjknUSWOn6uU3Holg81BxJ/ZEgo4foCb2L/AA2ntp+mnRlpoE
+ 1pq2XZkPUsWtgo2sFK1S5iLJzk7hzrgyh6ST3pI9+E/TrSETjJBd93mQIgNs4OPEsaZn
+ AVyQ==
+X-Gm-Message-State: AOAM531SHqVnGls2k1TWoYXN/x77X6j4IiBcZ9kJG6TT1kDMQXCDhiUI
+ LCXRDB/H//IVlPJZrJ1UY9Q=
+X-Google-Smtp-Source: ABdhPJwbHPC9sxbLzq+5iwbRNJVOb0K2MkFbjgM61DKxJ4Os722Go/gE6B65LQ5TkFx6MyQ2PXLzMg==
+X-Received: by 2002:adf:9e4c:: with SMTP id v12mr18566385wre.22.1605530735080; 
+ Mon, 16 Nov 2020 04:45:35 -0800 (PST)
 Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id c62sm19308520wme.22.2020.11.16.03.46.33
+ by smtp.gmail.com with ESMTPSA id 60sm20132308wrs.69.2020.11.16.04.45.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2020 03:46:34 -0800 (PST)
-Subject: Re: [PATCH-for-5.2 v3 6/7] ppc: Add a missing break for
- PPC6xx_INPUT_TBEN
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ Mon, 16 Nov 2020 04:45:34 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v3 1/4] ssd0323: put it into the 'display' category
+To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, zhang.zhanghailiang@huawei.com,
- ganqixin@huawei.com, Euler Robot <euler.robot@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
- <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <58864f26-7e06-efc4-86fd-b7b710def15e@redhat.com>
-Date: Mon, 16 Nov 2020 12:46:32 +0100
+Cc: thuth@redhat.com, laurent@vivier.eu, armbru@redhat.com, mst@redhat.com,
+ kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com
+References: <20201112125824.763182-1-ganqixin@huawei.com>
+ <20201112125824.763182-2-ganqixin@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a8f523e3-0b94-fb22-94d9-799d1274bccd@amsat.org>
+Date: Mon, 16 Nov 2020 13:45:33 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201112125824.763182-2-ganqixin@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 22:35:17
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,48 +86,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 11:46:42 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 12:45:39 -0000
 
-David, can you queue this patch for 5.2 (bugfix)?
-
-On 11/16/20 3:48 AM, Chen Qun wrote:
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-> hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
-> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
->   118 |             if (level) {
->       |                ^
-> hw/ppc/ppc.c:123:9: note: here
->   123 |         case PPC6xx_INPUT_INT:
->       |         ^~~~
+On 11/12/20 1:58 PM, Gan Qixin wrote:
+> The category of the ssd0323 device is not set, put it into the 'display'
+> category.
 > 
-> According to the discussion, a break statement needs to be added here.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > ---
-> v1->v2: Add a "break" statement here instead of /* fall through */ comments
-> (Base on Thomas's and David review).
-> 
-> Cc: Thomas Huth <thuth@redhat.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> ---
->  hw/ppc/ppc.c | 1 +
+>  hw/display/ssd0323.c | 1 +
 >  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-> index 4a11fb1640..1b98272076 100644
-> --- a/hw/ppc/ppc.c
-> +++ b/hw/ppc/ppc.c
-> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
->              } else {
->                  cpu_ppc_tb_stop(env);
->              }
-> +            break;
->          case PPC6xx_INPUT_INT:
->              /* Level sensitive - active high */
->              LOG_IRQ("%s: set the external IRQ state to %d\n",
-> 
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
