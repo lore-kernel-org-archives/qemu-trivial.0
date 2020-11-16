@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keUZp-0006lG-Ji
+	id 1keUZp-0006m2-Rh
 	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 21:49:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58564)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1keUZm-0006cJ-42; Sun, 15 Nov 2020 21:49:06 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2349)
+ id 1keUZk-0006Yp-Ib; Sun, 15 Nov 2020 21:49:04 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2855)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1keUZk-0002t4-9j; Sun, 15 Nov 2020 21:49:05 -0500
+ id 1keUZh-0002sV-Lu; Sun, 15 Nov 2020 21:49:04 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZD6N30F8zkYgD;
- Mon, 16 Nov 2020 10:48:44 +0800 (CST)
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CZD6M3Xjpz15Jdf;
+ Mon, 16 Nov 2020 10:48:43 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Mon, 16 Nov 2020
- 10:48:52 +0800
+ 10:48:49 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <zhang.zhanghailiang@huawei.com>, <ganqixin@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
- <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH v3 6/7] ppc: Add a missing break for PPC6xx_INPUT_TBEN
-Date: Mon, 16 Nov 2020 10:48:09 +0800
-Message-ID: <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Artyom
+ Tarasenko" <atar4qemu@gmail.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v3 4/7] target/sparc/translate: silence the compiler warnings
+Date: Mon, 16 Nov 2020 10:48:07 +0800
+Message-ID: <20201116024810.2415819-5-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
 References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
@@ -53,45 +54,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2020 02:49:06 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 02:49:05 -0000
 
-When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-hw/ppc/ppc.c: In function ‘ppc6xx_set_irq’:
-hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
-  118 |             if (level) {
-      |                ^
-hw/ppc/ppc.c:123:9: note: here
-  123 |         case PPC6xx_INPUT_INT:
-      |         ^~~~
+When using -Wimplicit-fallthrough in our CFLAGS on GCC9, the compiler showed warning:
+target/sparc/translate.c: In function ‘gen_st_asi’:
+target/sparc/translate.c:2320:12: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 2320 |         if (!(dc->def->features & CPU_FEATURE_HYPV)) {
+      |            ^
+target/sparc/translate.c:2329:5: note: here
+ 2329 |     case GET_ASI_DIRECT:
+      |     ^~~~
 
-According to the discussion, a break statement needs to be added here.
+The "fall through" statement place is not correctly identified by the compiler.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v1->v2: Add a "break" statement here instead of /* fall through */ comments
-(Base on Thomas's and David review).
-
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
 ---
- hw/ppc/ppc.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/sparc/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-index 4a11fb1640..1b98272076 100644
---- a/hw/ppc/ppc.c
-+++ b/hw/ppc/ppc.c
-@@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int level)
-             } else {
-                 cpu_ppc_tb_stop(env);
-             }
-+            break;
-         case PPC6xx_INPUT_INT:
-             /* Level sensitive - active high */
-             LOG_IRQ("%s: set the external IRQ state to %d\n",
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index 1a4efd4ed6..a3d9aaa46b 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -2324,8 +2324,8 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
+         }
+         /* in OpenSPARC T1+ CPUs TWINX ASIs in store instructions
+          * are ST_BLKINIT_ ASIs */
+-        /* fall through */
+ #endif
++        /* fall through */
+     case GET_ASI_DIRECT:
+         gen_address_mask(dc, addr);
+         tcg_gen_qemu_st_tl(src, addr, da.mem_idx, da.memop);
 -- 
 2.27.0
 
