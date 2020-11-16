@@ -1,68 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1keMz1-0005pw-Hz
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 13:42:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42572)
+	id 1keThO-0007IZ-5D
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Nov 2020 20:52:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keMz0-0005ox-4K
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 13:42:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36133)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1keMyw-0002Zy-EG
- for qemu-trivial@nongnu.org; Sun, 15 Nov 2020 13:42:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605465752;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6sUED5MhUUVOIdAf6M19MKL+FjvUUmVnheWnKNqEQLU=;
- b=MIvc44geKleoQ+/GbpL/qLBl2Vwu9LMMl5gPwkTpVBAwryUrx76U+jWfe/XJVX6Wg042nI
- VizDRy5Ytd/tkAVJC1+RZdI7VPABSc0lXOUqfDHsC7UjS2sa4W0gksGbH5fEbIeXguTFri
- QA0KuOdsYT13AAplNO0hCunHW4D+BEg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-49-McbvDtM1PBu0hQywemSyCA-1; Sun, 15 Nov 2020 13:42:24 -0500
-X-MC-Unique: McbvDtM1PBu0hQywemSyCA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7AAB81074664;
- Sun, 15 Nov 2020 18:42:23 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8EBEA17253;
- Sun, 15 Nov 2020 18:42:19 +0000 (UTC)
-Subject: Re: [PATCH] tests/vm: update NetBSD to 9.1
-To: Brad Smith <brad@comstyle.com>, qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201114040150.GD13329@humpty.home.comstyle.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <9dac5490-cc47-3b1c-3235-5553c785a9c2@redhat.com>
-Date: Sun, 15 Nov 2020 19:42:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1keThL-0007IN-Vn; Sun, 15 Nov 2020 20:52:52 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2487)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1keThI-0005Uq-0J; Sun, 15 Nov 2020 20:52:50 -0500
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CZBs36jYzzVp9q;
+ Mon, 16 Nov 2020 09:52:07 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.128]) by
+ DGGEMM403-HUB.china.huawei.com ([10.3.20.211]) with mapi id 14.03.0487.000;
+ Mon, 16 Nov 2020 09:52:26 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: Zhanghailiang <zhang.zhanghailiang@huawei.com>, ganqixin
+ <ganqixin@huawei.com>, "f4bug@amsat.org" <f4bug@amsat.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Euler Robot <euler.robot@huawei.com>, "Yoshinori
+ Sato" <ysato@users.sourceforge.jp>
+Subject: RE: [PATCH-for-5.2 v2] hw/intc: fix heap-buffer-overflow in
+ rxicu_realize()
+Thread-Topic: [PATCH-for-5.2 v2] hw/intc: fix heap-buffer-overflow in
+ rxicu_realize()
+Thread-Index: AQHWuDV+i+0w/Yg1Z0uWEKx0wUz5p6nJ+ihg
+Date: Mon, 16 Nov 2020 01:52:25 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA735E8@dggemm531-mbx.china.huawei.com>
+References: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20201114040150.GD13329@humpty.home.comstyle.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 10:03:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga01-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 20:11:22
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,46 +61,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Nov 2020 18:42:38 -0000
+X-List-Received-Date: Mon, 16 Nov 2020 01:52:52 -0000
 
-On 14/11/2020 05.01, Brad Smith wrote:
-> tests/vm: update NetBSD to 9.1
-> 
-> Signed-off-by: Brad Smith <brad@comstyle.com>
-> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-> Tested-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  tests/vm/netbsd | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/tests/vm/netbsd b/tests/vm/netbsd
-> index 447de9747d..596717cc76 100755
-> --- a/tests/vm/netbsd
-> +++ b/tests/vm/netbsd
-> @@ -22,8 +22,8 @@ class NetBSDVM(basevm.BaseVM):
->      name = "netbsd"
->      arch = "x86_64"
->  
-> -    link = "https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/images/NetBSD-9.0-amd64.iso"
-> -    csum = "34da4882ee61bdbf69f241195a8933dc800949d30b43fc6988da853d57fc2b8cac50cf97a0d2adaf93250b4e329d189c1a8b83c33bd515226f37745d50c33369"
-> +    link = "https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.1/images/NetBSD-9.1-amd64.iso"
-> +    csum = "65bddc95945991c3b2021f9c8ded7f34c25f0a7611b7aa15a15fe23399e902307e926ae97fcd01dc1662ac67b5f6e4be643c6a2b581692ddcb616d30125066f9"
->      size = "20G"
->      pkgs = [
->          # tools
-> @@ -38,7 +38,7 @@ class NetBSDVM(basevm.BaseVM):
->          "bash",
->          "gmake",
->          "gsed",
-> -        "gettext",
-> +        "gettext-tools",
->  
->          # libs: crypto
->          "gnutls",
-> 
-
-Works for me.
-
-Tested-by: Thomas Huth <thuth@redhat.com>
-
+S2luZGx5IHBpbmfvvIENCg0KTWF5YmUgaXQgc2hvdWxkIGJlIG5lZWQgZm9yIHZlcnNpb24gNS4y
+Lg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IENoZW5xdW4gKGt1aG4p
+DQo+IFNlbnQ6IFdlZG5lc2RheSwgTm92ZW1iZXIgMTEsIDIwMjAgMTA6MTggUE0NCj4gVG86IHFl
+bXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCj4gQ2M6IFpoYW5n
+aGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGdhbnFpeGluDQo+IDxn
+YW5xaXhpbkBodWF3ZWkuY29tPjsgZjRidWdAYW1zYXQub3JnOyBDaGVucXVuIChrdWhuKQ0KPiA8
+a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxp
+bmFyby5vcmc+Ow0KPiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IFlvc2hp
+bm9yaSBTYXRvDQo+IDx5c2F0b0B1c2Vycy5zb3VyY2Vmb3JnZS5qcD4NCj4gU3ViamVjdDogW1BB
+VENILWZvci01LjIgdjJdIGh3L2ludGM6IGZpeCBoZWFwLWJ1ZmZlci1vdmVyZmxvdyBpbiByeGlj
+dV9yZWFsaXplKCkNCj4gDQo+IFdoZW4gJ2ogPSBpY3UtPm5yX3NlbnNlIOKAkyAxJywgdGhlICdq
+IDwgaWN1LT5ucl9zZW5zZScgY29uZGl0aW9uIGlzIHRydWUsIHRoZW4gJ2ogPQ0KPiBpY3UtPm5y
+X3NlbnNlJywgdGhlJ2ljdS0+aW5pdF9zZW5zZVtqXScgaGFzIG91dC1vZi1ib3VuZHMgYWNjZXNz
+Lg0KPiANCj4gVGhlIGFzYW4gc2hvd2VkIHN0YWNrOg0KPiBFUlJPUjogQWRkcmVzc1Nhbml0aXpl
+cjogaGVhcC1idWZmZXItb3ZlcmZsb3cgb24gYWRkcmVzcyAweDYwNDAwMDAwNGQ3ZCBhdA0KPiBw
+YyAweDU1ODUyY2QyNmE3NiBicCAweDdmZmUzOWYyNjIwMCBzcCAweDdmZmUzOWYyNjFmMCBSRUFE
+IG9mIHNpemUgMSBhdA0KPiAweDYwNDAwMDAwNGQ3ZCB0aHJlYWQgVDANCj4gICAgICMwIDB4NTU4
+NTJjZDI2YTc1IGluIHJ4aWN1X3JlYWxpemUgLi4vaHcvaW50Yy9yeF9pY3UuYzozMTENCj4gICAg
+ICMxIDB4NTU4NTJjZjA3NWY3IGluIGRldmljZV9zZXRfcmVhbGl6ZWQgLi4vaHcvY29yZS9xZGV2
+LmM6ODg2DQo+ICAgICAjMiAweDU1ODUyY2Q0YTMyZiBpbiBwcm9wZXJ0eV9zZXRfYm9vbCAuLi9x
+b20vb2JqZWN0LmM6MjI1MQ0KPiAgICAgIzMgMHg1NTg1MmNkNGY5YmIgaW4gb2JqZWN0X3Byb3Bl
+cnR5X3NldCAuLi9xb20vb2JqZWN0LmM6MTM5OA0KPiAgICAgIzQgMHg1NTg1MmNkNTRmM2YgaW4N
+Cj4gb2JqZWN0X3Byb3BlcnR5X3NldF9xb2JqZWN0IC4uL3FvbS9xb20tcW9iamVjdC5jOjI4DQo+
+ICAgICAjNSAweDU1ODUyY2Q0ZmMzZiBpbiBvYmplY3RfcHJvcGVydHlfc2V0X2Jvb2wgLi4vcW9t
+L29iamVjdC5jOjE0NjUNCj4gICAgICM2IDB4NTU4NTJjYmYwYjI3IGluIHJlZ2lzdGVyX2ljdSAu
+Li9ody9yeC9yeDYybi5jOjE1Ng0KPiAgICAgIzcgMHg1NTg1MmNiZjEyYTYgaW4gcng2Mm5fcmVh
+bGl6ZSAuLi9ody9yeC9yeDYybi5jOjI2MQ0KPiAgICAgIzggMHg1NTg1MmNmMDc1ZjcgaW4gZGV2
+aWNlX3NldF9yZWFsaXplZCAuLi9ody9jb3JlL3FkZXYuYzo4ODYNCj4gICAgICM5IDB4NTU4NTJj
+ZDRhMzJmIGluIHByb3BlcnR5X3NldF9ib29sIC4uL3FvbS9vYmplY3QuYzoyMjUxDQo+ICAgICAj
+MTAgMHg1NTg1MmNkNGY5YmIgaW4gb2JqZWN0X3Byb3BlcnR5X3NldCAuLi9xb20vb2JqZWN0LmM6
+MTM5OA0KPiAgICAgIzExIDB4NTU4NTJjZDU0ZjNmIGluDQo+IG9iamVjdF9wcm9wZXJ0eV9zZXRf
+cW9iamVjdCAuLi9xb20vcW9tLXFvYmplY3QuYzoyOA0KPiAgICAgIzEyIDB4NTU4NTJjZDRmYzNm
+IGluIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9vbCAuLi9xb20vb2JqZWN0LmM6MTQ2NQ0KPiAgICAg
+IzEzIDB4NTU4NTJjYmYxYTg1IGluIHJ4X2dkYnNpbV9pbml0IC4uL2h3L3J4L3J4LWdkYnNpbS5j
+OjEwOQ0KPiAgICAgIzE0IDB4NTU4NTJjZDIyZGUwIGluIHFlbXVfaW5pdCAuLi9zb2Z0bW11L3Zs
+LmM6NDM4MA0KPiAgICAgIzE1IDB4NTU4NTJjYTU3MDg4IGluIG1haW4gLi4vc29mdG1tdS9tYWlu
+LmM6NDkNCj4gICAgICMxNiAweDdmZWVmYWZhNWQ0MiBpbiBfX2xpYmNfc3RhcnRfbWFpbiAoL2xp
+YjY0L2xpYmMuc28uNisweDI2ZDQyKQ0KPiANCj4gQWRkIHRoZSAnaWNlLT5zcmNbaV0uc2Vuc2Un
+IGluaXRpYWxpemUgdG8gdGhlIGRlZmF1bHQgdmFsdWUsIGFuZCB0aGVuIHByb2Nlc3MNCj4gaW5p
+dF9zZW5zZSBhcnJheSB0byBpZGVudGlmeSB3aGljaCBpcnFzIHNob3VsZCBiZSBsZXZlbC10cmln
+Z2VyZWQuDQo+IA0KPiBTdWdnZXN0ZWQtYnk6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxA
+bGluYXJvLm9yZz4NCj4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3
+ZWkuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5j
+b20+DQo+IC0tLQ0KPiBDYzogWW9zaGlub3JpIFNhdG8gPHlzYXRvQHVzZXJzLnNvdXJjZWZvcmdl
+LmpwPg0KPiANCj4gdjEtPnYyOg0KPiBNb2RpZnkgdGhlIGNvZGUgbG9naWMgYmFzZWQgb24gUGV0
+ZXIncyBzdWdnZXN0aW9ucy4NCj4gV2UgZmlyc3QgaW5pdGlhbGl6ZSBldmVyeXRoaW5nIHRvIHRo
+ZSBkZWZhdWx0IGJlZm9yZSBwcm9jZXNzaW5nIHRoZSBpbml0X3NlbnNlDQo+IGFycmF5IHRvIGlk
+ZW50aWZ5IHdoaWNoIGlycXMgc2hvdWxkIGJlIGxldmVsLXRyaWdnZXJlZC4NCj4gLS0tDQo+ICBo
+dy9pbnRjL3J4X2ljdS5jIHwgMTggKysrKysrKystLS0tLS0tLS0tDQo+ICAxIGZpbGUgY2hhbmdl
+ZCwgOCBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9o
+dy9pbnRjL3J4X2ljdS5jIGIvaHcvaW50Yy9yeF9pY3UuYyBpbmRleCA5NGUxN2E5ZGVhLi5lNWMw
+MTgwN2I5DQo+IDEwMDY0NA0KPiAtLS0gYS9ody9pbnRjL3J4X2ljdS5jDQo+ICsrKyBiL2h3L2lu
+dGMvcnhfaWN1LmMNCj4gQEAgLTMwMCwyMiArMzAwLDIwIEBAIHN0YXRpYyBjb25zdCBNZW1vcnlS
+ZWdpb25PcHMgaWN1X29wcyA9IHsgIHN0YXRpYw0KPiB2b2lkIHJ4aWN1X3JlYWxpemUoRGV2aWNl
+U3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKSAgew0KPiAgICAgIFJYSUNVU3RhdGUgKmljdSA9IFJY
+X0lDVShkZXYpOw0KPiAtICAgIGludCBpLCBqOw0KPiArICAgIGludCBpOw0KPiANCj4gICAgICBp
+ZiAoaWN1LT5pbml0X3NlbnNlID09IE5VTEwpIHsNCj4gICAgICAgICAgcWVtdV9sb2dfbWFzayhM
+T0dfR1VFU1RfRVJST1IsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgInJ4X2ljdTogdHJpZ2dl
+ci1sZXZlbCBwcm9wZXJ0eSBtdXN0IGJlIHNldC4iKTsNCj4gICAgICAgICAgcmV0dXJuOw0KPiAg
+ICAgIH0NCj4gLSAgICBmb3IgKGkgPSBqID0gMDsgaSA8IE5SX0lSUVM7IGkrKykgew0KPiAtICAg
+ICAgICBpZiAoaWN1LT5pbml0X3NlbnNlW2pdID09IGkpIHsNCj4gLSAgICAgICAgICAgIGljdS0+
+c3JjW2ldLnNlbnNlID0gVFJHX0xFVkVMOw0KPiAtICAgICAgICAgICAgaWYgKGogPCBpY3UtPm5y
+X3NlbnNlKSB7DQo+IC0gICAgICAgICAgICAgICAgaisrOw0KPiAtICAgICAgICAgICAgfQ0KPiAt
+ICAgICAgICB9IGVsc2Ugew0KPiAtICAgICAgICAgICAgaWN1LT5zcmNbaV0uc2Vuc2UgPSBUUkdf
+UEVER0U7DQo+IC0gICAgICAgIH0NCj4gKw0KPiArICAgIGZvciAoaSA9IDA7IGkgPCBOUl9JUlFT
+OyBpKyspIHsNCj4gKyAgICAgICAgaWN1LT5zcmNbaV0uc2Vuc2UgPSBUUkdfUEVER0U7DQo+ICsg
+ICAgfQ0KPiArICAgIGZvciAoaSA9IDA7IGkgPCBpY3UtPm5yX3NlbnNlOyBpKyspIHsNCj4gKyAg
+ICAgICAgdWludDhfdCBpcnFubyA9IGljdS0+aW5pdF9zZW5zZVtpXTsNCj4gKyAgICAgICAgaWN1
+LT5zcmNbaXJxbm9dLnNlbnNlID0gVFJHX0xFVkVMOw0KPiAgICAgIH0NCj4gICAgICBpY3UtPnJl
+cV9pcnEgPSAtMTsNCj4gIH0NCj4gLS0NCj4gMi4yNy4wDQoNCg==
 
