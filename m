@@ -1,49 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kepYn-0005UL-Hw
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2020 20:13:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43920)
+	id 1ketkA-0004Vy-FI
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 00:41:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kepYk-0005Tw-JK; Mon, 16 Nov 2020 20:13:26 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2456)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kepYh-0000zx-Np; Mon, 16 Nov 2020 20:13:26 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CZnxK0dBqzLlmn;
- Tue, 17 Nov 2020 09:12:53 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 17 Nov 2020 09:13:02 +0800
-Message-ID: <5FB3239E.6030709@huawei.com>
-Date: Tue, 17 Nov 2020 09:13:02 +0800
-From: Alex Chen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ketk8-0004Ve-SR
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 00:41:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:27460)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ketk3-0004QS-Jg
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 00:41:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605591682;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Plegi8mUN3rEv9EVmuAu08W29ParO1TI1xW6VIhvtJU=;
+ b=ZeEGkjB6qtWML8/XqlJQv4eKxTL1BKiSJzFmtepviBAIHnhkURxaW8V0xWfW/gt4EPnTGC
+ WuYIxDqtVUt29384F1E+QtfXgWK5x20JWBONup5A9seFq8o/JvGYd3DFzAR2ZgDTaWTOhY
+ GYyNIuWPH7P48Veh1yTyaFN3MCyBD1Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-138-OieUa8xQNYOoWALgY0gNjg-1; Tue, 17 Nov 2020 00:41:19 -0500
+X-MC-Unique: OieUa8xQNYOoWALgY0gNjg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43F411868425;
+ Tue, 17 Nov 2020 05:41:18 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
+ [10.36.112.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A688A19D6C;
+ Tue, 17 Nov 2020 05:41:17 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 35EB211358BA; Tue, 17 Nov 2020 06:41:16 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>,  zhanghailiang
+ <zhang.zhanghailiang@huawei.com>,  QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,  Philippe =?utf-8?Q?Mathieu-Dau?=
+ =?utf-8?Q?d=C3=A9?=
+ <f4bug@amsat.org>,  Gan Qixin <ganqixin@huawei.com>,  "Chenqun (kuhn)"
+ <kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
+ cprman into the 'misc' category
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-14-ganqixin@huawei.com>
+ <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
+ <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
+ <877dqldyoh.fsf@dusky.pond.sub.org>
+ <CAFEAcA-u3jZT2bU6snRL7BWXHUzXuVr9gByssOjoicGZ2-MLXQ@mail.gmail.com>
+Date: Tue, 17 Nov 2020 06:41:16 +0100
+In-Reply-To: <CAFEAcA-u3jZT2bU6snRL7BWXHUzXuVr9gByssOjoicGZ2-MLXQ@mail.gmail.com>
+ (Peter Maydell's message of "Mon, 16 Nov 2020 17:15:25 +0000")
+Message-ID: <873618czgj.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?=
- <alex.bennee@linaro.org>
-CC: <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
- <mjt@tls.msk.ru>, <qemu-trivial@nongnu.org>, <zhengchuan@huawei.com>,
- <qemu-devel@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: Re: [PATCH 2/2] plugins: Fix two resource leaks in connect_socket()
-References: <5F9975F1.4080205@huawei.com>
- <c91f4827-0be0-b0d1-f183-d3d868079a50@redhat.com>
-In-Reply-To: <c91f4827-0be0-b0d1-f183-d3d868079a50@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 20:13:14
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 00:41:22
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -56,52 +85,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 01:13:26 -0000
+X-List-Received-Date: Tue, 17 Nov 2020 05:41:29 -0000
 
-On 2020/11/17 0:50, Thomas Huth wrote:
-> On 28/10/2020 14.45, AlexChen wrote:
->> Either accept() fails or exits normally, we need to close the fd.
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: AlexChen <alex.chen@huawei.com>
->> ---
->>  contrib/plugins/lockstep.c | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
->> index 319bd44b83..5aad50869d 100644
->> --- a/contrib/plugins/lockstep.c
->> +++ b/contrib/plugins/lockstep.c
->> @@ -268,11 +268,13 @@ static bool setup_socket(const char *path)
->>      socket_fd = accept(fd, NULL, NULL);
-> 
-> I think you could also simply close(fd) here instead, then you don't have to
-> do it twice below.
-> 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Hi Thomas and Alex,
-Thanks for your suggestion. It's a simple and effective solution.
-Considering that the patch v3 has been queued by Alex Bennée,
-May I modify this patch and then send patch v4?
+> On Mon, 16 Nov 2020 at 17:09, Markus Armbruster <armbru@redhat.com> wrote:
+>> But TYPE_CPRMAN_PLL is *not* a descendant of TYPE_SYS_BUS_DEVICE, it's a
+>> bus-less device:
+>>
+>>     static const TypeInfo cprman_pll_info = {
+>>         .name = TYPE_CPRMAN_PLL,
+>> --->    .parent = TYPE_DEVICE,
+>>         .instance_size = sizeof(CprmanPllState),
+>>         .class_init = pll_class_init,
+>>         .instance_init = pll_init,
+>>     };
+>
+> I'm really dubious of devices that directly inherit from
+> TYPE_DEVICE, because their reset method won't be automatically
+> called. In this case it looks like the TYPE_BCM2835_CPRMAN
+> device's reset method manually calls reset on these devices,
+> though, so it isn't actually buggy, just confusing.
 
-Thanks,
-Alex
+I guess this is a trap for unwary implementers, aggravated by our usual
+dearth of qdev documentation.  I can see ~100 .parent = TYPE_DEVICE
+lines.  Checking them all manually won't be fun.  Any automation ideas?
 
-> 
->>      if (socket_fd < 0 && errno != EINTR) {
->>          perror("accept socket");
->> +        close(fd);
->>          return false;
->>      }
->>
->>      qemu_plugin_outs("setup_socket::ready\n");
->>
->> +    close(fd);
->>      return true;
->>  }
->>
-> 
-> .
-> 
+The concept "bus-less device" is sane.  We used not to have it, and the
+resulting need for pseudo-busses was annoying enough to make us add
+bus-less devices.
 
 
