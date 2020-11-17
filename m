@@ -1,63 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kf347-00019k-9R
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 10:38:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53916)
+	id 1kf6lN-0003Ss-Mt
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 14:35:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kf346-00019a-8i; Tue, 17 Nov 2020 10:38:42 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:46108)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1kf343-0006qZ-Un; Tue, 17 Nov 2020 10:38:41 -0500
-Received: by mail-ej1-x644.google.com with SMTP id w13so30014322eju.13;
- Tue, 17 Nov 2020 07:38:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eC54fpRPawFW+AF0/OOwtcdxB0ZrAQe1BBA9CslvFTg=;
- b=R57wOBfUn4Ah/oMWpKlSDZIYX5wwy2k8MmevOoVtUYux90XfLbJqh/lRV7UV0rxMdR
- RrlVXorWLRwfZPh0NFfSDxXYuYeFsYrw3VIp0giJvdqyRjpDjmk++3hy/MLsg4TPTpVq
- O/Gv4hdGE02GagE2UTmIQJ5VQrlx7ohUyNyae6Za9kkA4/BwFf9di9BAWGwuyMabmXBC
- 2hA9s9QWJxa2gYYCgxTf9m9gXl4Ck98BDMje9O7+GOZnwnS7U7fNPF3dpdOKT/50puug
- UQv1uTbX3M+4CP6s2GUOpCYnGFpGJSLklKcYVe43wGzJjTN30eMszlAYHGeTbEzTuAz7
- 1hyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eC54fpRPawFW+AF0/OOwtcdxB0ZrAQe1BBA9CslvFTg=;
- b=eM0/zT7kArzT8QNdf871HPmnw6s3DaNXUtmqIFqNGjQCplo1qJknjVUzxrHU5kpsmT
- 2cHLLFBT2DsrG6PyQ3qi/RDVY4G+fXYcP9WxbjQc5DWwk4r4WHIwx9bndqgmmbUd9hXy
- bIuVwxZkwa+/2K3unWrOGeHm0N2xTe/9xw2eXHshPtV/MsQZ1dvp4vWDUhAdDwm9I2Pd
- nuL6naOFqMVs7GIWlmWXlTOrb1uPgHnOSmkwDdFZFKmSbGrOb2XLdjgXc0eFDLwmRUUs
- Wg3m4NyX0+J472SsyHWDU8l0KI2nNJBdG2wtU9SNf55ahqPn6foMnRabq3K4uF7lxgVQ
- 7qgQ==
-X-Gm-Message-State: AOAM530z0jZ4Txw2bBl9bJiMvmfpjhnTgdhFjmMP5Ystxz6UDCcKN0f3
- hoarg9mjsXoXeCxxBlgC9upbsXcHANaOywPDGzA=
-X-Google-Smtp-Source: ABdhPJxXeak4SPlbRgziAMFBOXxEKFMYmsTNOYIUUuA2IT6pUbv9WK8KTKLAUvowjx2r4E9UWBxLtoX1A7FfaKh6dIM=
-X-Received: by 2002:a17:906:b0f:: with SMTP id
- u15mr20158432ejg.109.1605627518234; 
- Tue, 17 Nov 2020 07:38:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1kf6lL-0003Q2-Sc; Tue, 17 Nov 2020 14:35:35 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:50572
+ helo=v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1kf6lI-0006iD-PP; Tue, 17 Nov 2020 14:35:35 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 796BEDB2587;
+ Tue, 17 Nov 2020 20:35:30 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id UzZSkkzj4TIz; Tue, 17 Nov 2020 20:34:54 +0100 (CET)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 1C4B4DB2583;
+ Tue, 17 Nov 2020 20:34:54 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 0E1C5460019; Tue, 17 Nov 2020 20:34:54 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Alex Williamson <alex.williamson@redhat.com>, libvir-list@redhat.com,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for-5.2] docs: Fix some typos (found by codespell)
+Date: Tue, 17 Nov 2020 20:34:48 +0100
+Message-Id: <20201117193448.393472-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-References: <20201014082209.3712625-1-philmd@redhat.com>
-In-Reply-To: <20201014082209.3712625-1-philmd@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 17 Nov 2020 19:38:25 +0400
-Message-ID: <CAJ+F1CLe3pcSiukmd7hxHdc-U+R7LZ_ODNZgXLteESFmOQ9K0A@mail.gmail.com>
-Subject: Re: [PATCH] buildsys: Help git-diff adding .gitattributes config file
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- qemu trival <qemu-trivial@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000ddb69405b44f491d"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=v2201612906741603.powersrv.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 14:07:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,99 +57,142 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 15:38:42 -0000
+X-List-Received-Date: Tue, 17 Nov 2020 19:35:36 -0000
 
---000000000000ddb69405b44f491d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Fix also a similar typo in a code comment.
 
-On Wed, Oct 14, 2020 at 12:25 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
-wrote:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ docs/can.txt                  | 8 ++++----
+ docs/interop/vhost-user.rst   | 2 +-
+ docs/replay.txt               | 2 +-
+ docs/specs/ppc-spapr-numa.rst | 2 +-
+ docs/system/deprecated.rst    | 4 ++--
+ docs/tools/virtiofsd.rst      | 2 +-
+ hw/vfio/igd.c                 | 2 +-
+ 7 files changed, 11 insertions(+), 11 deletions(-)
 
-> Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
-> and 139c1837db7 ("meson: rename included C source files to .c.inc")
-> 'git-diff --function-context' stopped displaying C function context
-> correctly.
-> We can help git-diff by providing attributes to the .[ch].inc path
-> names. See:
-> https://git-scm.com/docs/gitattributes#_generating_diff_text
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
+diff --git a/docs/can.txt b/docs/can.txt
+index 5838f6620c..0d310237df 100644
+--- a/docs/can.txt
++++ b/docs/can.txt
+@@ -19,7 +19,7 @@ interface to implement because such device can be easily connected
+ to systems with different CPU architectures (x86, PowerPC, Arm, etc.).
+ 
+ In 2020, CTU CAN FD controller model has been added as part
+-of the bachelor theses of Jan Charvat. This controller is complete
++of the bachelor thesis of Jan Charvat. This controller is complete
+ open-source/design/hardware solution. The core designer
+ of the project is Ondrej Ille, the financial support has been
+ provided by CTU, and more companies including Volkswagen subsidiaries.
+@@ -31,7 +31,7 @@ testing lead to goal change to provide environment which provides complete
+ emulated environment for testing and RTEMS GSoC slot has been donated
+ to work on CAN hardware emulation on QEMU.
+ 
+-Examples how to use CAN emulation for SJA1000 based borads
++Examples how to use CAN emulation for SJA1000 based boards
+ ==========================================================
+ 
+ When QEMU with CAN PCI support is compiled then one of the next
+@@ -106,8 +106,8 @@ This open-source core provides CAN FD support. CAN FD drames are
+ delivered even to the host systems when SocketCAN interface is found
+ CAN FD capable.
+ 
+-The PCIe borad emulation is provided for now (the device identifier is
+-ctucan_pci). The defauld build defines two CTU CAN FD cores
++The PCIe board emulation is provided for now (the device identifier is
++ctucan_pci). The default build defines two CTU CAN FD cores
+ on the board.
+ 
+ Example how to connect the canbus0-bus (virtual wire) to the host
+diff --git a/docs/interop/vhost-user.rst b/docs/interop/vhost-user.rst
+index 988f154144..72b2e8c7ba 100644
+--- a/docs/interop/vhost-user.rst
++++ b/docs/interop/vhost-user.rst
+@@ -513,7 +513,7 @@ descriptor table (split virtqueue) or descriptor ring (packed
+ virtqueue). However, it can't work when we process descriptors
+ out-of-order because some entries which store the information of
+ inflight descriptors in available ring (split virtqueue) or descriptor
+-ring (packed virtqueue) might be overrided by new entries. To solve
++ring (packed virtqueue) might be overridden by new entries. To solve
+ this problem, slave need to allocate an extra buffer to store this
+ information of inflight descriptors and share it with master for
+ persistent. ``VHOST_USER_GET_INFLIGHT_FD`` and
+diff --git a/docs/replay.txt b/docs/replay.txt
+index 87a64ae068..5b008ca491 100644
+--- a/docs/replay.txt
++++ b/docs/replay.txt
+@@ -328,7 +328,7 @@ between the snapshots. Each of the passes include the following steps:
+  1. loading the snapshot
+  2. replaying to examine the breakpoints
+  3. if breakpoint or watchpoint was met
+-    - loading the snaphot again
++    - loading the snapshot again
+     - replaying to the required breakpoint
+  4. else
+     - proceeding to the p.1 with the earlier snapshot
+diff --git a/docs/specs/ppc-spapr-numa.rst b/docs/specs/ppc-spapr-numa.rst
+index 5fca2bdd8e..ffa687dc89 100644
+--- a/docs/specs/ppc-spapr-numa.rst
++++ b/docs/specs/ppc-spapr-numa.rst
+@@ -198,7 +198,7 @@ This is how it is being done:
+ * user distance 121 and beyond will be interpreted as 160
+ * user distance 10 stays 10
+ 
+-The reasoning behind this aproximation is to avoid any round up to the local
++The reasoning behind this approximation is to avoid any round up to the local
+ distance (10), keeping it exclusive to the 4th NUMA level (which is still
+ exclusive to the node_id). All other ranges were chosen under the developer
+ discretion of what would be (somewhat) sensible considering the user input.
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index 32a0e620db..63e9db1463 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -465,7 +465,7 @@ default configuration.
+ 
+ The CPU model runnability guarantee won't apply anymore to
+ existing CPU models.  Management software that needs runnability
+-guarantees must resolve the CPU model aliases using te
++guarantees must resolve the CPU model aliases using the
+ ``alias-of`` field returned by the ``query-cpu-definitions`` QMP
+ command.
+ 
+@@ -637,7 +637,7 @@ Splitting RAM by default between NUMA nodes had the same issues as ``mem``
+ parameter with the difference that the role of the user plays QEMU using
+ implicit generic or board specific splitting rule.
+ Use ``memdev`` with *memory-backend-ram* backend or ``mem`` (if
+-it's supported by used machine type) to define mapping explictly instead.
++it's supported by used machine type) to define mapping explicitly instead.
+ Users of existing VMs, wishing to preserve the same RAM distribution, should
+ configure it explicitly using ``-numa node,memdev`` options. Current RAM
+ distribution can be retrieved using HMP command ``info numa`` and if separate
+diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+index 34a9e40146..866b7db3ee 100644
+--- a/docs/tools/virtiofsd.rst
++++ b/docs/tools/virtiofsd.rst
+@@ -174,7 +174,7 @@ Using ':' as the separator a rule is of the form:
+ - 'bad' - If a client tries to use a name matching 'key' it's
+   denied using EPERM; when the server passes an attribute
+   name matching 'prepend' it's hidden.  In many ways it's use is very like
+-  'ok' as either an explict terminator or for special handling of certain
++  'ok' as either an explicit terminator or for special handling of certain
+   patterns.
+ 
+ **key** is a string tested as a prefix on an attribute name originating
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+index 64e332746b..470205f487 100644
+--- a/hw/vfio/igd.c
++++ b/hw/vfio/igd.c
+@@ -535,7 +535,7 @@ void vfio_probe_igd_bar4_quirk(VFIOPCIDevice *vdev, int nr)
+     }
+ 
+     /*
+-     * Assume we have no GMS memory, but allow it to be overrided by device
++     * Assume we have no GMS memory, but allow it to be overridden by device
+      * option (experimental).  The spec doesn't actually allow zero GMS when
+      * when IVD (IGD VGA Disable) is clear, but the claim is that it's unused,
+      * so let's not waste VM memory for it.
+-- 
+2.29.2
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
-> ---
->  .gitattributes | 2 ++
->  1 file changed, 2 insertions(+)
->  create mode 100644 .gitattributes
->
-> diff --git a/.gitattributes b/.gitattributes
-> new file mode 100644
-> index 00000000000..3d2fe2ecda8
-> --- /dev/null
-> +++ b/.gitattributes
-> @@ -0,0 +1,2 @@
-> +*.c.inc         diff=3Dc
-> +*.h.inc         diff=3Dc
-> --
-> 2.26.2
->
->
->
-
---=20
-Marc-Andr=C3=A9 Lureau
-
---000000000000ddb69405b44f491d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Oct 14, 2020 at 12:25 PM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">Since commits 0979ed017f0 (&quot;meson: rename .inc.h files to .h.in=
-c&quot;)<br>
-and 139c1837db7 (&quot;meson: rename included C source files to .c.inc&quot=
-;)<br>
-&#39;git-diff --function-context&#39; stopped displaying C function context=
-<br>
-correctly.<br>
-We can help git-diff by providing attributes to the .[ch].inc path<br>
-names. See:<br>
-<a href=3D"https://git-scm.com/docs/gitattributes#_generating_diff_text" re=
-l=3D"noreferrer" target=3D"_blank">https://git-scm.com/docs/gitattributes#_=
-generating_diff_text</a><br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
-hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
-br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:mar=
-candre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt; </div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0.gitattributes | 2 ++<br>
-=C2=A01 file changed, 2 insertions(+)<br>
-=C2=A0create mode 100644 .gitattributes<br>
-<br>
-diff --git a/.gitattributes b/.gitattributes<br>
-new file mode 100644<br>
-index 00000000000..3d2fe2ecda8<br>
---- /dev/null<br>
-+++ b/.gitattributes<br>
-@@ -0,0 +1,2 @@<br>
-+*.c.inc=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0diff=3Dc<br>
-+*.h.inc=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0diff=3Dc<br>
--- <br>
-2.26.2<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---000000000000ddb69405b44f491d--
 
