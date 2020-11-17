@@ -1,87 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kf2yJ-00032F-8a
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 10:32:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52248)
+	id 1kf347-00019k-9R
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 10:38:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf2yH-0002yl-AM
- for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 10:32:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51390)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf2yA-0004jl-0t
- for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 10:32:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605627153;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=skD+vE39++X7ruMC2CTEt06xSV+4zvbwGDq/R0H53so=;
- b=DWf+JvlHt6rW4C2UraAr+0lxnTGMJTG2pnNT+DR5E+TeYLc11sWcKW++FZXcdPbgcjZMhd
- Ss219K5QYckLzjMVL+9erlA5JKLqb7ohrQ2V9Qctjsb5okcdB2uqjpM4cnlziJ9aMVARSn
- qQI+LdTUvZ0ChA7ktxj3SN2hIRU0r80=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-3-hl7-tEr8NlOeWHoUq052kQ-1; Tue, 17 Nov 2020 10:32:29 -0500
-X-MC-Unique: hl7-tEr8NlOeWHoUq052kQ-1
-Received: by mail-wr1-f69.google.com with SMTP id x16so8452598wrn.9
- for <qemu-trivial@nongnu.org>; Tue, 17 Nov 2020 07:32:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kf346-00019a-8i; Tue, 17 Nov 2020 10:38:42 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:46108)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1kf343-0006qZ-Un; Tue, 17 Nov 2020 10:38:41 -0500
+Received: by mail-ej1-x644.google.com with SMTP id w13so30014322eju.13;
+ Tue, 17 Nov 2020 07:38:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eC54fpRPawFW+AF0/OOwtcdxB0ZrAQe1BBA9CslvFTg=;
+ b=R57wOBfUn4Ah/oMWpKlSDZIYX5wwy2k8MmevOoVtUYux90XfLbJqh/lRV7UV0rxMdR
+ RrlVXorWLRwfZPh0NFfSDxXYuYeFsYrw3VIp0giJvdqyRjpDjmk++3hy/MLsg4TPTpVq
+ O/Gv4hdGE02GagE2UTmIQJ5VQrlx7ohUyNyae6Za9kkA4/BwFf9di9BAWGwuyMabmXBC
+ 2hA9s9QWJxa2gYYCgxTf9m9gXl4Ck98BDMje9O7+GOZnwnS7U7fNPF3dpdOKT/50puug
+ UQv1uTbX3M+4CP6s2GUOpCYnGFpGJSLklKcYVe43wGzJjTN30eMszlAYHGeTbEzTuAz7
+ 1hyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=skD+vE39++X7ruMC2CTEt06xSV+4zvbwGDq/R0H53so=;
- b=KW4dAuQA1Q3bi9cLjH89RC75lXpb1aHQWjORfmYLQFfa6LSRk56kykRS+E8O3gz76Q
- Yq9XTozqQw1Euxfd65MdjGIJpugUB7IMg9nq/LZsO3XinkmHVNlnfEnZhRZGjoQLx1EH
- DmVCZWvnOcgw/igf30GMB/K47OkOIpx/Jn36hVok6r6FPm6/U/OivYyssp6NttCWjCF1
- 7paSCYoOiiYI/X/b/HLAiyXON0V9mUoEcuWXDZOPKAzYDasJ6t9Y7pCUHk9ScohFTRk4
- akdLABIhRj7CbRYxXnb0dbKFZQTjh9i4cnMPhUh8N+arlv3XmdBMIGB88EvcToc55e4q
- SiOg==
-X-Gm-Message-State: AOAM531N/8tJq3HKut+ctRlpm5sLlwOzU7/WLgPRuz74YYaOpt6PaQJO
- xPTOAlB57jZvpoUuYbK18xYD/C7n/f+uRDhmtdpYUzLMNJ2G0khMHClmr1gcUmLKInS2qDLX7/U
- /ZIgaK/u7C5o91+OaL6EEGYNzn8ZsCicpji5svPmb88JbfeKK4DZxhoGvZaO+J1K+vxA=
-X-Received: by 2002:a05:6000:1d2:: with SMTP id
- t18mr110364wrx.14.1605627148385; 
- Tue, 17 Nov 2020 07:32:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwZY5nhnPjhDh6okNpB6WRWxirpcugnHQw8YIDTOtOA0rZTarFC5fDTpVZY9t28xJXrl/Vc/Q==
-X-Received: by 2002:a05:6000:1d2:: with SMTP id
- t18mr110331wrx.14.1605627148000; 
- Tue, 17 Nov 2020 07:32:28 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id x2sm22430720wru.44.2020.11.17.07.32.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Nov 2020 07:32:27 -0800 (PST)
-Subject: Re: [PATCH] buildsys: Help git-diff adding .gitattributes config file
-To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20201014082209.3712625-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <0ee718c8-6f4e-fb90-5e52-7818d5db8bce@redhat.com>
-Date: Tue, 17 Nov 2020 16:32:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eC54fpRPawFW+AF0/OOwtcdxB0ZrAQe1BBA9CslvFTg=;
+ b=eM0/zT7kArzT8QNdf871HPmnw6s3DaNXUtmqIFqNGjQCplo1qJknjVUzxrHU5kpsmT
+ 2cHLLFBT2DsrG6PyQ3qi/RDVY4G+fXYcP9WxbjQc5DWwk4r4WHIwx9bndqgmmbUd9hXy
+ bIuVwxZkwa+/2K3unWrOGeHm0N2xTe/9xw2eXHshPtV/MsQZ1dvp4vWDUhAdDwm9I2Pd
+ nuL6naOFqMVs7GIWlmWXlTOrb1uPgHnOSmkwDdFZFKmSbGrOb2XLdjgXc0eFDLwmRUUs
+ Wg3m4NyX0+J472SsyHWDU8l0KI2nNJBdG2wtU9SNf55ahqPn6foMnRabq3K4uF7lxgVQ
+ 7qgQ==
+X-Gm-Message-State: AOAM530z0jZ4Txw2bBl9bJiMvmfpjhnTgdhFjmMP5Ystxz6UDCcKN0f3
+ hoarg9mjsXoXeCxxBlgC9upbsXcHANaOywPDGzA=
+X-Google-Smtp-Source: ABdhPJxXeak4SPlbRgziAMFBOXxEKFMYmsTNOYIUUuA2IT6pUbv9WK8KTKLAUvowjx2r4E9UWBxLtoX1A7FfaKh6dIM=
+X-Received: by 2002:a17:906:b0f:: with SMTP id
+ u15mr20158432ejg.109.1605627518234; 
+ Tue, 17 Nov 2020 07:38:38 -0800 (PST)
 MIME-Version: 1.0
+References: <20201014082209.3712625-1-philmd@redhat.com>
 In-Reply-To: <20201014082209.3712625-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 01:18:45
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 17 Nov 2020 19:38:25 +0400
+Message-ID: <CAJ+F1CLe3pcSiukmd7hxHdc-U+R7LZ_ODNZgXLteESFmOQ9K0A@mail.gmail.com>
+Subject: Re: [PATCH] buildsys: Help git-diff adding .gitattributes config file
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ qemu trival <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000ddb69405b44f491d"
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,11 +71,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 15:32:41 -0000
+X-List-Received-Date: Tue, 17 Nov 2020 15:38:42 -0000
 
-ping?
+--000000000000ddb69405b44f491d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 10/14/20 10:22 AM, Philippe Mathieu-Daudé wrote:
+On Wed, Oct 14, 2020 at 12:25 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com>
+wrote:
+
 > Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
 > and 139c1837db7 ("meson: rename included C source files to .c.inc")
 > 'git-diff --function-context' stopped displaying C function context
@@ -106,21 +88,82 @@ On 10/14/20 10:22 AM, Philippe Mathieu-Daudé wrote:
 > We can help git-diff by providing attributes to the .[ch].inc path
 > names. See:
 > https://git-scm.com/docs/gitattributes#_generating_diff_text
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
 > ---
 >  .gitattributes | 2 ++
 >  1 file changed, 2 insertions(+)
 >  create mode 100644 .gitattributes
-> 
+>
 > diff --git a/.gitattributes b/.gitattributes
 > new file mode 100644
 > index 00000000000..3d2fe2ecda8
 > --- /dev/null
 > +++ b/.gitattributes
 > @@ -0,0 +1,2 @@
-> +*.c.inc         diff=c
-> +*.h.inc         diff=c
-> 
+> +*.c.inc         diff=3Dc
+> +*.h.inc         diff=3Dc
+> --
+> 2.26.2
+>
+>
+>
 
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--000000000000ddb69405b44f491d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Oct 14, 2020 at 12:25 PM Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
+hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">Since commits 0979ed017f0 (&quot;meson: rename .inc.h files to .h.in=
+c&quot;)<br>
+and 139c1837db7 (&quot;meson: rename included C source files to .c.inc&quot=
+;)<br>
+&#39;git-diff --function-context&#39; stopped displaying C function context=
+<br>
+correctly.<br>
+We can help git-diff by providing attributes to the .[ch].inc path<br>
+names. See:<br>
+<a href=3D"https://git-scm.com/docs/gitattributes#_generating_diff_text" re=
+l=3D"noreferrer" target=3D"_blank">https://git-scm.com/docs/gitattributes#_=
+generating_diff_text</a><br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
+br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:mar=
+candre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt; </div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0.gitattributes | 2 ++<br>
+=C2=A01 file changed, 2 insertions(+)<br>
+=C2=A0create mode 100644 .gitattributes<br>
+<br>
+diff --git a/.gitattributes b/.gitattributes<br>
+new file mode 100644<br>
+index 00000000000..3d2fe2ecda8<br>
+--- /dev/null<br>
++++ b/.gitattributes<br>
+@@ -0,0 +1,2 @@<br>
++*.c.inc=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0diff=3Dc<br>
++*.h.inc=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0diff=3Dc<br>
+-- <br>
+2.26.2<br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--000000000000ddb69405b44f491d--
 
