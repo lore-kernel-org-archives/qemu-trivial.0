@@ -1,57 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kf1ZB-0007vH-SZ
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 09:02:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56984)
+	id 1kf2yJ-00032F-8a
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 10:32:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kf1Z9-0007un-Km; Tue, 17 Nov 2020 09:02:39 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2175)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kf1Z5-0006kE-On; Tue, 17 Nov 2020 09:02:39 -0500
-Received: from dggemi402-hub.china.huawei.com (unknown [172.30.72.56])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Cb70r10BZz4yXv;
- Tue, 17 Nov 2020 22:02:04 +0800 (CST)
-Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.162]) by
- dggemi402-hub.china.huawei.com ([10.3.17.135]) with mapi id 14.03.0487.000;
- Tue, 17 Nov 2020 22:02:14 +0800
-From: ganqixin <ganqixin@huawei.com>
-To: Thomas Huth <thuth@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-CC: Markus Armbruster <armbru@redhat.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, "Chenqun
- (kuhn)" <kuhn.chenqun@huawei.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>
-Subject: RE: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
- cprman into the 'misc' category
-Thread-Topic: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
- cprman into the 'misc' category
-Thread-Index: AQHWu/oT9bgTES9M/ECMau6tUXtsrqnKObYAgAASPwCAAgqNQA==
-Date: Tue, 17 Nov 2020 14:02:14 +0000
-Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065C382C@DGGEMI525-MBS.china.huawei.com>
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-14-ganqixin@huawei.com>
- <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
- <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
-In-Reply-To: <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.159]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf2yH-0002yl-AM
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 10:32:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51390)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf2yA-0004jl-0t
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 10:32:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605627153;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=skD+vE39++X7ruMC2CTEt06xSV+4zvbwGDq/R0H53so=;
+ b=DWf+JvlHt6rW4C2UraAr+0lxnTGMJTG2pnNT+DR5E+TeYLc11sWcKW++FZXcdPbgcjZMhd
+ Ss219K5QYckLzjMVL+9erlA5JKLqb7ohrQ2V9Qctjsb5okcdB2uqjpM4cnlziJ9aMVARSn
+ qQI+LdTUvZ0ChA7ktxj3SN2hIRU0r80=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-3-hl7-tEr8NlOeWHoUq052kQ-1; Tue, 17 Nov 2020 10:32:29 -0500
+X-MC-Unique: hl7-tEr8NlOeWHoUq052kQ-1
+Received: by mail-wr1-f69.google.com with SMTP id x16so8452598wrn.9
+ for <qemu-trivial@nongnu.org>; Tue, 17 Nov 2020 07:32:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=skD+vE39++X7ruMC2CTEt06xSV+4zvbwGDq/R0H53so=;
+ b=KW4dAuQA1Q3bi9cLjH89RC75lXpb1aHQWjORfmYLQFfa6LSRk56kykRS+E8O3gz76Q
+ Yq9XTozqQw1Euxfd65MdjGIJpugUB7IMg9nq/LZsO3XinkmHVNlnfEnZhRZGjoQLx1EH
+ DmVCZWvnOcgw/igf30GMB/K47OkOIpx/Jn36hVok6r6FPm6/U/OivYyssp6NttCWjCF1
+ 7paSCYoOiiYI/X/b/HLAiyXON0V9mUoEcuWXDZOPKAzYDasJ6t9Y7pCUHk9ScohFTRk4
+ akdLABIhRj7CbRYxXnb0dbKFZQTjh9i4cnMPhUh8N+arlv3XmdBMIGB88EvcToc55e4q
+ SiOg==
+X-Gm-Message-State: AOAM531N/8tJq3HKut+ctRlpm5sLlwOzU7/WLgPRuz74YYaOpt6PaQJO
+ xPTOAlB57jZvpoUuYbK18xYD/C7n/f+uRDhmtdpYUzLMNJ2G0khMHClmr1gcUmLKInS2qDLX7/U
+ /ZIgaK/u7C5o91+OaL6EEGYNzn8ZsCicpji5svPmb88JbfeKK4DZxhoGvZaO+J1K+vxA=
+X-Received: by 2002:a05:6000:1d2:: with SMTP id
+ t18mr110364wrx.14.1605627148385; 
+ Tue, 17 Nov 2020 07:32:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwZY5nhnPjhDh6okNpB6WRWxirpcugnHQw8YIDTOtOA0rZTarFC5fDTpVZY9t28xJXrl/Vc/Q==
+X-Received: by 2002:a05:6000:1d2:: with SMTP id
+ t18mr110331wrx.14.1605627148000; 
+ Tue, 17 Nov 2020 07:32:28 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id x2sm22430720wru.44.2020.11.17.07.32.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Nov 2020 07:32:27 -0800 (PST)
+Subject: Re: [PATCH] buildsys: Help git-diff adding .gitattributes config file
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20201014082209.3712625-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0ee718c8-6f4e-fb90-5e52-7818d5db8bce@redhat.com>
+Date: Tue, 17 Nov 2020 16:32:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189; envelope-from=ganqixin@huawei.com;
- helo=szxga03-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 09:02:23
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201014082209.3712625-1-philmd@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 01:18:45
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,52 +94,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 14:02:40 -0000
+X-List-Received-Date: Tue, 17 Nov 2020 15:32:41 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBUaG9tYXMgSHV0aCBbbWFpbHRv
-OnRodXRoQHJlZGhhdC5jb21dDQo+IFNlbnQ6IE1vbmRheSwgTm92ZW1iZXIgMTYsIDIwMjAgMTA6
-MzAgUE0NCj4gVG86IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxmNGJ1Z0BhbXNhdC5vcmc+OyBn
-YW5xaXhpbg0KPiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsN
-Cj4gcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCj4gQ2M6IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNo
-ZW5xdW5AaHVhd2VpLmNvbT47IFpoYW5naGFpbGlhbmcNCj4gPHpoYW5nLnpoYW5naGFpbGlhbmdA
-aHVhd2VpLmNvbT47IE1hcmt1cyBBcm1icnVzdGVyDQo+IDxhcm1icnVAcmVkaGF0LmNvbT4NCj4g
-U3ViamVjdDogUmU6IFtQQVRDSCAxMy8xM10gYmNtMjgzNV9jcHJtYW46IHB1dCBzb21lIHBlcmlw
-aGVyYWxzIG9mDQo+IGJjbTI4MzUgY3BybWFuIGludG8gdGhlICdtaXNjJyBjYXRlZ29yeQ0KPiAN
-Cj4gT24gMTYvMTEvMjAyMCAxNC4yNSwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgd3JvdGU6DQo+
-ID4gSGkgR2FuLA0KPiA+DQo+ID4gT24gMTEvMTUvMjAgNzo0OSBQTSwgR2FuIFFpeGluIHdyb3Rl
-Og0KPiA+PiBTb21lIHBlcmlwaGVyYWxzIG9mIGJjbTI4MzUgY3BybWFuIGhhdmUgbm8gY2F0ZWdv
-cnksIHB1dCB0aGVtIGludG8gdGhlDQo+ICdtaXNjJw0KPiA+PiBjYXRlZ29yeS4NCj4gPj4NCj4g
-Pj4gU2lnbmVkLW9mZi1ieTogR2FuIFFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPg0KPiA+PiAt
-LS0NCj4gPj4gQ2M6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMODxpLDgsKpIDxmNGJ1Z0BhbXNhdC5v
-cmc+DQo+ID4+IC0tLQ0KPiA+PiAgaHcvbWlzYy9iY20yODM1X2Nwcm1hbi5jIHwgNCArKysrDQo+
-ID4+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspDQo+ID4+DQo+ID4+IGRpZmYgLS1n
-aXQgYS9ody9taXNjL2JjbTI4MzVfY3BybWFuLmMgYi9ody9taXNjL2JjbTI4MzVfY3BybWFuLmMN
-Cj4gPj4gaW5kZXggN2U0MTVhMDE3Yy4uYzYyOTU4YTk5ZSAxMDA2NDQNCj4gPj4gLS0tIGEvaHcv
-bWlzYy9iY20yODM1X2Nwcm1hbi5jDQo+ID4+ICsrKyBiL2h3L21pc2MvYmNtMjgzNV9jcHJtYW4u
-Yw0KPiA+PiBAQCAtMTM2LDYgKzEzNiw3IEBAIHN0YXRpYyB2b2lkIHBsbF9jbGFzc19pbml0KE9i
-amVjdENsYXNzICprbGFzcywNCj4gPj4gdm9pZCAqZGF0YSkNCj4gPj4NCj4gPj4gICAgICBkYy0+
-cmVzZXQgPSBwbGxfcmVzZXQ7DQo+ID4+ICAgICAgZGMtPnZtc2QgPSAmcGxsX3Ztc3RhdGU7DQo+
-ID4+ICsgICAgc2V0X2JpdChERVZJQ0VfQ0FURUdPUllfTUlTQywgZGMtPmNhdGVnb3JpZXMpOw0K
-PiA+DQo+ID4gV2VsbCwgdGhpcyBpcyBub3QgYW4gdXNhYmxlIGRldmljZSBidXQgYSBwYXJ0IG9m
-IGEgYmlnZ2VyIGRldmljZSwgc28NCj4gPiBoZXJlIHdlIHdhbnQgdGhlIG9wcG9zaXRlOiBub3Qg
-bGlzdCB0aGlzIGRldmljZSBpbiBhbnkgY2F0ZWdvcnkuDQo+ID4NCj4gPiBNYXliZSB3ZSBjb3Vs
-ZCBhZGQgYSBERVZJQ0VfQ0FURUdPUllfQ09NUE9TSVRFIGZvciBhbGwgc3VjaCBRT00gdHlwZXMN
-Cj4gPiBzbyBtYW5hZ2VtZW50IGFwcHMgY2FuIGZpbHRlciB0aGVtIG91dD8gKEFuZCBzbyB3ZSBh
-cmUgc3VyZSBhbGwgUU9NIGlzDQo+ID4gY2xhc3NpZmllZCkuDQo+ID4NCj4gPiBUaG9tYXMsIHlv
-dSBhbHJlYWR5IGRlYWx0IHdpdGggY2F0ZWdvcml6aW5nIGRldmljZXMgaW4gdGhlIHBhc3QsIHdo
-YXQNCj4gPiBkbyB5b3UgdGhpbmsgYWJvdXQgdGhpcz8gV2hvIGVsc2UgY291bGQgaGVscD8gTWF5
-YmUgYWRkIHNvbWVvbmUgZnJvbQ0KPiA+IGxpYnZpcnQgaW4gdGhlIHRocmVhZD8NCj4gDQo+IE15
-IDAuMDIg4oKsIDogTWFyayB0aGUgZGV2aWNlIGFzIHVzZXJfY3JlYXRhYmxlID0gZmFsc2UgaWYg
-aXQgY2FuIG5vdCByZWFsbHkgYmUgdXNlZA0KPiBieSB0aGUgdXNlciB3aXRoIHRoZSAtZGV2aWNl
-IENMSSBwYXJhbWV0ZXIuIFRoZW4gaXQgYWxzbyBkb2VzIG5vdCBuZWVkIGENCj4gY2F0ZWdvcnku
-IEkga25vdyBNYXJrdXMgd2lsbCBsaWtlbHkgaGF2ZSBhIGRpZmZlcmVudCBvcGluaW9uLCBidXQg
-aW4gbXkgZXllcyBpdCdzDQo+IGp1c3QgdWdseSBpZiB3ZSBwcmVzZW50IGRldmljZXMgdG8gdGhl
-IHVzZXJzIHRoYXQgdGhleSBjYW4gbm90IHVzZS4NCj4gKEJ5IHRoZSB3YXksIHRoaXMgZGV2aWNl
-IGhlcmUgc2VlbXMgdG8gYmUgYSBkZWNlbmRhbnQgb2YNCj4gVFlQRV9TWVNfQlVTX0RFVklDRSAu
-Li4gc2hvdWxkbid0IHRoZXNlIHNob3cgdXAgYXMgdXNlcl9jcmVhdGFibGUgPSBmYWxzZQ0KPiBh
-dXRvbWF0aWNhbGx5PykNCg0KSSBhZ3JlZSwgYnV0IG1hcmtpbmcgdXNlcl9jcmVhdGFibGUgYXMg
-ZmFsc2Ugc2VlbXMgdG8gbWFrZSBpdCBkZXZpYXRlIGZyb20gaXRzIG93biBtZWFuaW5nIChsaWtl
-IG1hcmt1cyBzYWlkKS4NCklzIHRoZXJlIGFueSBvdGhlciB3YXkgdG8gYXZvaWQgcHJlc2VudGlu
-ZyBkZXZpY2VzIHRvIHRoZSB1c2VycyBpbiAiLWRldmljZSBoZWxwIj8NCg0KVGhhbmtzLA0KR2Fu
-IFFpeGluDQo=
+ping?
+
+On 10/14/20 10:22 AM, Philippe Mathieu-Daudé wrote:
+> Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
+> and 139c1837db7 ("meson: rename included C source files to .c.inc")
+> 'git-diff --function-context' stopped displaying C function context
+> correctly.
+> We can help git-diff by providing attributes to the .[ch].inc path
+> names. See:
+> https://git-scm.com/docs/gitattributes#_generating_diff_text
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  .gitattributes | 2 ++
+>  1 file changed, 2 insertions(+)
+>  create mode 100644 .gitattributes
+> 
+> diff --git a/.gitattributes b/.gitattributes
+> new file mode 100644
+> index 00000000000..3d2fe2ecda8
+> --- /dev/null
+> +++ b/.gitattributes
+> @@ -0,0 +1,2 @@
+> +*.c.inc         diff=c
+> +*.h.inc         diff=c
+> 
+
 
