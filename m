@@ -1,73 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kezRy-0000kz-Gz
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 06:47:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50204)
+	id 1kf1BO-0006UO-JJ
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 08:38:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kezRv-0000jj-9j; Tue, 17 Nov 2020 06:47:03 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34551)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kezRt-000089-Ic; Tue, 17 Nov 2020 06:47:03 -0500
-Received: by mail-wr1-x442.google.com with SMTP id r17so22890884wrw.1;
- Tue, 17 Nov 2020 03:47:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BUzHDIJvM7T4wLFIeN2N+aVQfm+vrWPFdkmupYjZjVY=;
- b=EUcgOXvHEtCCUt7vHYKnKzgwKD/COPfVB868020gMgHQOsHREefLEiHhoiqAIVURX6
- 0FJLbvts3BrO+9jlfypwTvGOqcSPuuLrT60PO7yVxarnpmCe2nr5/JQA0Avm+g22KxXG
- oslW7Yqc/zyjX6M/dRDqxxtO4NgpsKquoIEPxru0BZeDJWwikgtAQxh1eRNR0kJZ31+L
- hPBqvgjp+8qWaZM9gkYXsCW4OTu13bcJVNeS0LfqDWkwXZR02HvP9mfXgLRtGTFLewXN
- x0PDRBFjjLK+C/lUAXzS/ZIF/hBCXd9J+HP7l1gzRf7JHvQ0BBZmjEHMqFCtFsoh1wRp
- 09rQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=BUzHDIJvM7T4wLFIeN2N+aVQfm+vrWPFdkmupYjZjVY=;
- b=nAJ5egN/W6KnoZ7XqbrWk2j5tZBdGQ3UBT1OXc1BAyZ0Cflmz9/YJrqzkCPbYNV1N2
- Nh/XpiNwYPpmHexME5G9jSBbKgtQUaLhf8jvhqIxrBHUZNFrU3yWUrTQ+l5wU3NyREc6
- ZFugt/isKI0zURDOzhhztEST3nS7KMVDzI3co1bCd5UhJdwgwD+Ic/xakzq5BbVQYPiK
- sZW7kqcwHLDbXmWq5pdWSXFkzGgQbJnlrPBQH1+lOoqwKqkdoSn3DB5IjEJlY43IrHOJ
- hQRd7QCiB537lop/6hFmy8ODHpTYGJrPJv37j7syiITSemfffrbFzh3iNKtfQQQEo8Tf
- J34w==
-X-Gm-Message-State: AOAM530H+/cRocefdDoQRm3baKAM4Aweu2/KbwWCAOtv6kCDL0PU46b5
- CSyo3K1Ums0vynFdF9Ovvc8nqUR3vlI=
-X-Google-Smtp-Source: ABdhPJwrIxHbUWYVnuYtWPdx5Jb32uLtzmWiQHIjFt1W+XVm+kJn/oBIfD5bDrA+SUUzyv9JwSLESw==
-X-Received: by 2002:adf:f041:: with SMTP id t1mr25026819wro.139.1605613618687; 
- Tue, 17 Nov 2020 03:46:58 -0800 (PST)
-Received: from x1w.redhat.com (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id 35sm27419340wro.71.2020.11.17.03.46.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Nov 2020 03:46:58 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH-for-5.2?] MAINTAINERS: Fix default-configs/ entries
-Date: Tue, 17 Nov 2020 12:46:56 +0100
-Message-Id: <20201117114656.1222555-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kf1BM-0006TR-DT; Tue, 17 Nov 2020 08:38:04 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2955)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kf1BJ-0006VS-EO; Tue, 17 Nov 2020 08:38:04 -0500
+Received: from dggemi401-hub.china.huawei.com (unknown [172.30.72.55])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Cb6SW2GxzzXnL6;
+ Tue, 17 Nov 2020 21:37:31 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.162]) by
+ dggemi401-hub.china.huawei.com ([10.3.17.134]) with mapi id 14.03.0487.000;
+ Tue, 17 Nov 2020 21:37:36 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "thuth@redhat.com" <thuth@redhat.com>
+Subject: RE: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+Thread-Topic: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+Thread-Index: AQHWu/oMyb2Urt3Gu0q8d02Pkq8oI6nKRNcAgAIPoiA=
+Date: Tue, 17 Nov 2020 13:37:35 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065C27CD@DGGEMI525-MBS.china.huawei.com>
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-10-ganqixin@huawei.com>
+ <49d4e8e3-7138-18cf-3972-c18e8275d3be@redhat.com>
+In-Reply-To: <49d4e8e3-7138-18cf-3972-c18e8275d3be@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187; envelope-from=ganqixin@huawei.com;
+ helo=szxga01-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 08:37:44
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,109 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 11:47:04 -0000
+X-List-Received-Date: Tue, 17 Nov 2020 13:38:04 -0000
 
-Update the F: line after the Meson refactor.
-
-Fixes: 1bb4cb1c338..73362fc0b0c ("default-configs: ...")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- MAINTAINERS | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2e018a0c1da..6378b5ae416 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -87,7 +87,7 @@ S390 general architecture support
- M: Cornelia Huck <cohuck@redhat.com>
- M: Thomas Huth <thuth@redhat.com>
- S: Supported
--F: default-configs/s390x-softmmu.mak
-+F: default-configs/*/s390x-softmmu.mak
- F: gdb-xml/s390*.xml
- F: hw/char/sclp*.[hc]
- F: hw/char/terminal3270.c
-@@ -226,7 +226,7 @@ R: Jiaxun Yang <jiaxun.yang@flygoat.com>
- R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
- S: Odd Fixes
- F: target/mips/
--F: default-configs/*mips*
-+F: default-configs/*/*mips*
- F: disas/mips.c
- F: docs/system/cpu-models-mips.rst.inc
- F: hw/intc/mips_gic.c
-@@ -250,7 +250,7 @@ S: Maintained
- F: target/moxie/
- F: disas/moxie.c
- F: hw/moxie/
--F: default-configs/moxie-softmmu.mak
-+F: default-configs/*/moxie-softmmu.mak
- 
- NiosII TCG CPUs
- M: Chris Wulff <crwulff@gmail.com>
-@@ -260,7 +260,7 @@ F: target/nios2/
- F: hw/nios2/
- F: hw/intc/nios2_iic.c
- F: disas/nios2.c
--F: default-configs/nios2-softmmu.mak
-+F: default-configs/*/nios2-softmmu.mak
- 
- OpenRISC TCG CPUs
- M: Stafford Horne <shorne@gmail.com>
-@@ -353,7 +353,7 @@ F: hw/xtensa/
- F: tests/tcg/xtensa/
- F: disas/xtensa.c
- F: include/hw/xtensa/xtensa-isa.h
--F: default-configs/xtensa*.mak
-+F: default-configs/*/xtensa*.mak
- 
- TriCore TCG CPUs
- M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-@@ -1018,7 +1018,7 @@ AVR MCUs
- M: Michael Rolnik <mrolnik@gmail.com>
- R: Sarah Harris <S.E.Harris@kent.ac.uk>
- S: Maintained
--F: default-configs/avr-softmmu.mak
-+F: default-configs/*/avr-softmmu.mak
- F: hw/avr/
- F: include/hw/char/avr_usart.h
- F: hw/char/avr_usart.c
-@@ -1047,7 +1047,7 @@ HP B160L
- M: Richard Henderson <richard.henderson@linaro.org>
- R: Helge Deller <deller@gmx.de>
- S: Odd Fixes
--F: default-configs/hppa-softmmu.mak
-+F: default-configs/*/hppa-softmmu.mak
- F: hw/hppa/
- F: pc-bios/hppa-firmware.img
- 
-@@ -1420,7 +1420,7 @@ F: hw/s390x/
- F: include/hw/s390x/
- F: hw/watchdog/wdt_diag288.c
- F: include/hw/watchdog/wdt_diag288.h
--F: default-configs/s390x-softmmu.mak
-+F: default-configs/*/s390x-softmmu.mak
- T: git https://github.com/cohuck/qemu.git s390-next
- T: git https://github.com/borntraeger/qemu.git s390-next
- L: qemu-s390x@nongnu.org
-@@ -2792,13 +2792,13 @@ F: accel/tcg/user-exec*.c
- BSD user
- S: Orphan
- F: bsd-user/
--F: default-configs/*-bsd-user.mak
-+F: default-configs/targets/*-bsd-user.mak
- 
- Linux user
- M: Laurent Vivier <laurent@vivier.eu>
- S: Maintained
- F: linux-user/
--F: default-configs/*-linux-user.mak
-+F: default-configs/targets/*linux-user.mak
- F: scripts/qemu-binfmt-conf.sh
- F: scripts/update-syscalltbl.sh
- F: scripts/update-mips-syscall-args.sh
--- 
-2.26.2
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
+dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBNb25kYXksIE5vdmVtYmVy
+IDE2LCAyMDIwIDEwOjA1IFBNDQo+IFRvOiBnYW5xaXhpbiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47
+IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gcWVtdS10cml2aWFsQG5vbmdudS5vcmc7IE1hcmMt
+QW5kcsOpIEx1cmVhdQ0KPiA8bWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tPjsgdGh1dGhAcmVk
+aGF0LmNvbQ0KPiBDYzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsg
+WmhhbmdoYWlsaWFuZw0KPiA8emhhbmcuemhhbmdoYWlsaWFuZ0BodWF3ZWkuY29tPjsgR2VyZCBI
+b2ZmbWFubiA8a3JheGVsQHJlZGhhdC5jb20+Ow0KPiBFZHVhcmRvIEhhYmtvc3QgPGVoYWJrb3N0
+QHJlZGhhdC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggMDkvMTNdIHUyZi1wYXNzdGhydTog
+cHV0IGl0IGludG8gdGhlICd1c2InIGNhdGVnb3J5DQo+IA0KPiBPbiAxMS8xNS8yMCA3OjQ4IFBN
+LCBHYW4gUWl4aW4gd3JvdGU6DQo+ID4gVGhlIGNhdGVnb3J5IG9mIHRoZSB1MmYtcGFzc3RocnUg
+ZGV2aWNlIGlzIG5vdCBzZXQsIHB1dCBpdCBpbnRvIHRoZSAndXNiJw0KPiA+IGNhdGVnb3J5Lg0K
+PiANCj4gSSBndWVzcyB3ZSBkaXNjdXNzZWQgdGhpcyB3aXRoIFRob21hcyAxIG9yIDIgeWVhcnMg
+YWdvIGJ1dCBJIGRvbid0IHJlbWVtYmVyLg0KPiBJIHRoaW5rIGl0IHdhcyBhYm91dCB1c2luZyBz
+ZXRfYml0cygpIHNvIGRldmljZXMgY2FuIGFwcGVhciBpbiBtdWx0aXBsZQ0KPiBjYXRlZ29yaWVz
+Lg0KPiANCj4gR2VyZCwgZG8geW91IGtub3cgd2hhdCBpcyB0aGUgcG9pbnQgb2YgdGhlICJ1c2Ii
+IGNhdGVnb3J5IGZvciBtYW5hZ2VtZW50DQo+IGFwcHM/IFRoaXMgaXMgYSBidXMgYWNjZXB0aW5n
+IG11bHRpcGxlIGJldHRlciBjYXRlZ29yaXplZCBkZXZpY2VzIChkaXNwbGF5LA0KPiBzdG9yYWdl
+LCBpbnB1dCwgbmV0d29yaywgc291bmQpLg0KPiANCj4gVW5yZWxhdGVkIGJ1dCBtdWx0aXBsZSBk
+ZXZpY2VzIGFyZSByZWxhdGVkIHRvIFNFQ1VSSVRZLg0KPiBNYXliZSBpdCBpcyB0aW1lIHRvIGlu
+dHJvZHVjZSB0aGUgREVWSUNFX0NBVEVHT1JZX1NFQ1VSSVRZPw0KDQpIaSwgUGhpbGlwcGUNClRo
+YW5rcyBmb3IgeW91ciByZXBseSwgYnV0IEknbSBub3Qgc3VyZSBpZiBpdCBpcyBhcHByb3ByaWF0
+ZSB0byBhZGQgYSBzZWN1cml0eSBjYXRlZ29yeSB0byBwbGFjZSB0aGlzIGRldmljZS4NCihNYXli
+ZSBpdCdzIGJlY2F1c2UgSSBkb24ndCBrbm93IG11Y2ggYWJvdXQgdGhlc2UgZGV2aWNlLCBJIGhh
+dmVuJ3QgZmluZCBtYW55IHNhZmV0eS1yZWxhdGVkIGRldmljZXMgaW4gJ21pc2MnIGNhdGVnb3J5
+IG9yIHVuY2F0ZWdvcml6ZWQgZGV2aWNlcykNCg0KVGhhbmtzLA0KR2FuIFFpeGluDQo=
 
