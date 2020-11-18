@@ -1,33 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfM5l-00013R-9q
+	id 1kfM5l-00013y-Gx
 	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 06:57:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44692)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kfM5i-00010j-Ut; Wed, 18 Nov 2020 06:57:38 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2458)
+ id 1kfM5j-00011P-G7; Wed, 18 Nov 2020 06:57:39 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kfM5g-00084M-Kj; Wed, 18 Nov 2020 06:57:38 -0500
+ id 1kfM5h-00084L-Pr; Wed, 18 Nov 2020 06:57:39 -0500
 Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CbhB543qWzLq53;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CbhB53prxzLpjP;
  Wed, 18 Nov 2020 19:57:01 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS406-HUB.china.huawei.com
  (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Wed, 18 Nov 2020
- 19:57:12 +0800
+ 19:57:10 +0800
 From: Chen Qun <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <wuhaotsh@google.com>, <hskinnemoen@google.com>,
  <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>,
- <thuth@redhat.com>, <lvivier@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>, 
- Euler Robot <euler.robot@huawei.com>
-Subject: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree need
- to be initialized
-Date: Wed, 18 Nov 2020 19:56:45 +0800
-Message-ID: <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
+ <thuth@redhat.com>, <lvivier@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>
+Subject: [PATCH-for-5.2? 0/2] two qtest bugfix
+Date: Wed, 18 Nov 2020 19:56:44 +0800
+Message-ID: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
-References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -57,39 +53,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 18 Nov 2020 11:57:39 -0000
 
-According to the glib function requirements, we need initialise
- the variable. Otherwise there will be compilation warnings:
+Hi folks,
+  There are two bug caused by recent testcase code merge.
+EulerRobot found them, and this series fixed them.
 
-glib-autocleanups.h:28:3: warning: ‘full_name’ may be
-used uninitialized in this function [-Wmaybe-uninitialized]
-   28 |   g_free (*pp);
-      |   ^~~~~~~~~~~~
+Thanks,
+Chen Qun
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
- tests/qtest/npcm7xx_timer-test.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+Chen Qun (2):
+  tests/qtest: variable defined by g_autofree need to be initialized
+  tests/qtest: fix memleak in npcm7xx_watchdog_timer-test
 
-diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
-index f08b0cd62a..83774a5b90 100644
---- a/tests/qtest/npcm7xx_timer-test.c
-+++ b/tests/qtest/npcm7xx_timer-test.c
-@@ -512,11 +512,9 @@ static void test_disable_on_expiration(gconstpointer test_data)
-  */
- static void tim_add_test(const char *name, const TestData *td, GTestDataFunc fn)
- {
--    g_autofree char *full_name;
--
--    full_name = g_strdup_printf("npcm7xx_timer/tim[%d]/timer[%d]/%s",
--                                tim_index(td->tim), timer_index(td->timer),
--                                name);
-+    g_autofree char *full_name = g_strdup_printf(
-+        "npcm7xx_timer/tim[%d]/timer[%d]/%s", tim_index(td->tim),
-+        timer_index(td->timer), name);
-     qtest_add_data_func(full_name, td, fn);
- }
- 
+ tests/qtest/npcm7xx_timer-test.c          | 8 +++-----
+ tests/qtest/npcm7xx_watchdog_timer-test.c | 6 ++++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
 -- 
 2.23.0
 
