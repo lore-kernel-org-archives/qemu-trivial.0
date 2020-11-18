@@ -1,76 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kf7Lk-0005kb-DU
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Nov 2020 15:13:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46464)
+	id 1kfI9J-0002I3-Nb
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 02:45:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kf7Lj-0005k9-Gh
- for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 15:13:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36972)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kfI9F-0002Gt-7o
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 02:45:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37047)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kf7Lf-0003P1-FM
- for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 15:13:10 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kfI99-0007BH-UI
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 02:44:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605643985;
+ s=mimecast20190719; t=1605685494;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=t21AfTFro+rR1EC0Vyt9TsauYIigU/PJOL6B/ZsFzuM=;
- b=BYds74hQVDltqCnnJ4jlQn+HGcGrcihXDDFRwGbPrwNIWPthC4QSlu1FIEgCfrGoouwguh
- ntmap8rT6DeBafDY2nkg6r9zbU76WMJ59euCpUCLNS+QdfQo8R2LHNUc8xxoJPLG+ZbkQM
- mPCz20IEd7ou6ZU4uxjNxbk97DkqN0w=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-317-ybeCATrRPdWaYc6dp88Zog-1; Tue, 17 Nov 2020 15:12:55 -0500
-X-MC-Unique: ybeCATrRPdWaYc6dp88Zog-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43B0080046B;
- Tue, 17 Nov 2020 20:12:53 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-138.ams2.redhat.com [10.36.113.138])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 13F5F1759F;
- Tue, 17 Nov 2020 20:12:50 +0000 (UTC)
-Subject: Re: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
- cprman into the 'misc' category
-To: Markus Armbruster <armbru@redhat.com>
-Cc: zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Gan Qixin <ganqixin@huawei.com>,
- kuhn.chenqun@huawei.com
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-14-ganqixin@huawei.com>
- <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
- <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
- <877dqldyoh.fsf@dusky.pond.sub.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <b5c76a27-551f-5b79-a47b-0d4a283a2d37@redhat.com>
-Date: Tue, 17 Nov 2020 21:12:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ bh=Cr60BNQVpl2Jv0xMsNMxK646YXoW+AI1Myjdlseyb9Q=;
+ b=Enr7LrjAfkgy6c9907pAFeqMO4r8hYfiVDVCBeaL7dmUKKTBq8fVnlQfPkh3tIqBYrg4oR
+ MyVebkUFiTQeNmO34w4Xyw1r5gIvSEFrpkKq8GQq+/ZEgqxByISlAfeFllKc2/ZfeI2wpc
+ 4BCylyv6woZSv+ThmGw5HT/iCaQU3/Y=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-450-EHR0zt_KPYeHEP4bJlplVg-1; Wed, 18 Nov 2020 02:44:53 -0500
+X-MC-Unique: EHR0zt_KPYeHEP4bJlplVg-1
+Received: by mail-wm1-f71.google.com with SMTP id y1so670424wma.5
+ for <qemu-trivial@nongnu.org>; Tue, 17 Nov 2020 23:44:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Cr60BNQVpl2Jv0xMsNMxK646YXoW+AI1Myjdlseyb9Q=;
+ b=rjoP+JgHSVELMBGQwahcYhNKl+zDiGPzoH3NcJ6egZTrE6iLNam1OnZYqOPkJleWku
+ b7I93fX70ub3GKyxBcZXDFrwvMYlXbdg2TRk08ZthHbv5D6adN6JLUhkZgg6teNASI9+
+ jg20VW1J9tJe5fZ8Uufg6fV+mF8UUgDE+MeIWPa5GdT4e1a11PCEFBdRoqWszkVwq4RG
+ RsSXBJV5ZxSfFAwuY0fD/tVe/f+jB12mSOPdyQ/kekKHMZ+3p7LKf62X8UA32xLT8NSo
+ tfCFKKkHn500Xqdr05yWTZmQ6yQjgF/Dsxp7yBhsfSdg4HfPBOSthGNYiiJF1B/NdbZA
+ /t5Q==
+X-Gm-Message-State: AOAM5333Nq3S2LyQHd6C2h9x2PKHnDpjkC9l0Ba9eRRjTJt2W1mQO1zj
+ GEXPtCYSRNGw0qtVO4dWn+lp49R+EHA2qug4u+nNFiXkGxlAUJ9KwWNS3FX+ykIY4Ltt2lWbglC
+ 8F4tmYDMfuSiR8xWnWQ==
+X-Received: by 2002:a05:600c:2202:: with SMTP id
+ z2mr3068963wml.95.1605685491722; 
+ Tue, 17 Nov 2020 23:44:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwrp6OVOpaidqfArBZtHWZIw0GmdCT5r4RKOQu2MGAiH5e8B5jciqpMWcNYRyWSI9py6rKZQg==
+X-Received: by 2002:a05:600c:2202:: with SMTP id
+ z2mr3068917wml.95.1605685491232; 
+ Tue, 17 Nov 2020 23:44:51 -0800 (PST)
+Received: from redhat.com (bzq-79-176-118-93.red.bezeqint.net. [79.176.118.93])
+ by smtp.gmail.com with ESMTPSA id 109sm32971104wra.29.2020.11.17.23.44.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Nov 2020 23:44:50 -0800 (PST)
+Date: Wed, 18 Nov 2020 02:44:45 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Alex Williamson <alex.williamson@redhat.com>, libvir-list@redhat.com
+Subject: Re: [PATCH for-5.2] docs: Fix some typos (found by codespell)
+Message-ID: <20201118024440-mutt-send-email-mst@kernel.org>
+References: <20201117193448.393472-1-sw@weilnetz.de>
 MIME-Version: 1.0
-In-Reply-To: <877dqldyoh.fsf@dusky.pond.sub.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20201117193448.393472-1-sw@weilnetz.de>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 01:18:45
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 19:41:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,94 +89,146 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Nov 2020 20:13:11 -0000
+X-List-Received-Date: Wed, 18 Nov 2020 07:45:03 -0000
 
-On 16/11/2020 18.00, Markus Armbruster wrote:
-> Thomas Huth <thuth@redhat.com> writes:
+On Tue, Nov 17, 2020 at 08:34:48PM +0100, Stefan Weil wrote:
+> Fix also a similar typo in a code comment.
 > 
->> On 16/11/2020 14.25, Philippe Mathieu-Daudé wrote:
->>> Hi Gan,
->>>
->>> On 11/15/20 7:49 PM, Gan Qixin wrote:
->>>> Some peripherals of bcm2835 cprman have no category, put them into the 'misc'
->>>> category.
->>>>
->>>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
->>>> ---
->>>> Cc: Philippe Mathieu-DaudÃƒÂ© <f4bug@amsat.org>
->>>> ---
->>>>  hw/misc/bcm2835_cprman.c | 4 ++++
->>>>  1 file changed, 4 insertions(+)
->>>>
->>>> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
->>>> index 7e415a017c..c62958a99e 100644
->>>> --- a/hw/misc/bcm2835_cprman.c
->>>> +++ b/hw/misc/bcm2835_cprman.c
->>>> @@ -136,6 +136,7 @@ static void pll_class_init(ObjectClass *klass, void *data)
->>>>  
->>>>      dc->reset = pll_reset;
->>>>      dc->vmsd = &pll_vmstate;
->>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->>>
->>> Well, this is not an usable device but a part of a bigger device,
->>> so here we want the opposite: not list this device in any category.
->>>
->>> Maybe we could add a DEVICE_CATEGORY_COMPOSITE for all such QOM
->>> types so management apps can filter them out? (And so we are sure
->>> all QOM is classified).
->>>
->>> Thomas, you already dealt with categorizing devices in the past,
->>> what do you think about this? Who else could help? Maybe add
->>> someone from libvirt in the thread?
->>
->> My 0.02 € : Mark the device as user_creatable = false if it can not really
->> be used by the user with the -device CLI parameter. Then it also does not
->> need a category. I know Markus will likely have a different opinion, but in
-> 
-> You're hurting my feelings!  ;-P
-> 
->> my eyes it's just ugly if we present devices to the users that they can not use.
-> 
-> If we believe a device should only ever be used from C, then we should
-> keep it away from the UI.
-> 
-> However, I'm wary of overloading user_creatable.  Even though it has
-> shifted shape a number of times (cannot_instantiate_with_device_add_yet,
-> no_user, and now user_creatable), its purpose has always been focused:
-> distinguishing devices that can be instantiated by generic code from the
-> ones that need device-specific code.  See user_creatable's comment in
-> qdev-core.h.
-> 
-> I don't want to lose that distinction.  That's all.
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Well, currently we have the user_creatable flag and the hotpluggable flag. I
-guess that's simply not enough.
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-I think in the long run, we should maybe replace the two flags with a
-"creatable" type instead that could take the following values:
-
- CREATABLE_AS_SUBDEVICE  /* Device is part of another device and
-                            can only by added by code */
- CREATABLE_BY_QOM        /* Some fancy new QOM function can be
-                            used to e.g. create this as part of
-                            a machine */
- CREATABLE_BY_COLDPLUG   /* For cold-plugging via -device */
- CREATABLE_BY_HOTPLUG    /* For hot-plugging via device_add */
-
-... but that's likely something for the distant future...
-
->> (By the way, this device here seems to be a decendant of TYPE_SYS_BUS_DEVICE
->> ... shouldn't these show up as user_creatable = false automatically?)
+> ---
+>  docs/can.txt                  | 8 ++++----
+>  docs/interop/vhost-user.rst   | 2 +-
+>  docs/replay.txt               | 2 +-
+>  docs/specs/ppc-spapr-numa.rst | 2 +-
+>  docs/system/deprecated.rst    | 4 ++--
+>  docs/tools/virtiofsd.rst      | 2 +-
+>  hw/vfio/igd.c                 | 2 +-
+>  7 files changed, 11 insertions(+), 11 deletions(-)
 > 
-> Yes, unless it is a dynamic sysbus device (which I consider a flawed
-> concept).
-> 
-> But TYPE_CPRMAN_PLL is *not* a descendant of TYPE_SYS_BUS_DEVICE, it's a
-> bus-less device:
-
-Oops, I obviously looked at the wrong device in that file
-(TYPE_BCM2835_CPRMAN instead of TYPE_CPRMAN_PLL) - thanks for the clarification!
-
- Thomas
+> diff --git a/docs/can.txt b/docs/can.txt
+> index 5838f6620c..0d310237df 100644
+> --- a/docs/can.txt
+> +++ b/docs/can.txt
+> @@ -19,7 +19,7 @@ interface to implement because such device can be easily connected
+>  to systems with different CPU architectures (x86, PowerPC, Arm, etc.).
+>  
+>  In 2020, CTU CAN FD controller model has been added as part
+> -of the bachelor theses of Jan Charvat. This controller is complete
+> +of the bachelor thesis of Jan Charvat. This controller is complete
+>  open-source/design/hardware solution. The core designer
+>  of the project is Ondrej Ille, the financial support has been
+>  provided by CTU, and more companies including Volkswagen subsidiaries.
+> @@ -31,7 +31,7 @@ testing lead to goal change to provide environment which provides complete
+>  emulated environment for testing and RTEMS GSoC slot has been donated
+>  to work on CAN hardware emulation on QEMU.
+>  
+> -Examples how to use CAN emulation for SJA1000 based borads
+> +Examples how to use CAN emulation for SJA1000 based boards
+>  ==========================================================
+>  
+>  When QEMU with CAN PCI support is compiled then one of the next
+> @@ -106,8 +106,8 @@ This open-source core provides CAN FD support. CAN FD drames are
+>  delivered even to the host systems when SocketCAN interface is found
+>  CAN FD capable.
+>  
+> -The PCIe borad emulation is provided for now (the device identifier is
+> -ctucan_pci). The defauld build defines two CTU CAN FD cores
+> +The PCIe board emulation is provided for now (the device identifier is
+> +ctucan_pci). The default build defines two CTU CAN FD cores
+>  on the board.
+>  
+>  Example how to connect the canbus0-bus (virtual wire) to the host
+> diff --git a/docs/interop/vhost-user.rst b/docs/interop/vhost-user.rst
+> index 988f154144..72b2e8c7ba 100644
+> --- a/docs/interop/vhost-user.rst
+> +++ b/docs/interop/vhost-user.rst
+> @@ -513,7 +513,7 @@ descriptor table (split virtqueue) or descriptor ring (packed
+>  virtqueue). However, it can't work when we process descriptors
+>  out-of-order because some entries which store the information of
+>  inflight descriptors in available ring (split virtqueue) or descriptor
+> -ring (packed virtqueue) might be overrided by new entries. To solve
+> +ring (packed virtqueue) might be overridden by new entries. To solve
+>  this problem, slave need to allocate an extra buffer to store this
+>  information of inflight descriptors and share it with master for
+>  persistent. ``VHOST_USER_GET_INFLIGHT_FD`` and
+> diff --git a/docs/replay.txt b/docs/replay.txt
+> index 87a64ae068..5b008ca491 100644
+> --- a/docs/replay.txt
+> +++ b/docs/replay.txt
+> @@ -328,7 +328,7 @@ between the snapshots. Each of the passes include the following steps:
+>   1. loading the snapshot
+>   2. replaying to examine the breakpoints
+>   3. if breakpoint or watchpoint was met
+> -    - loading the snaphot again
+> +    - loading the snapshot again
+>      - replaying to the required breakpoint
+>   4. else
+>      - proceeding to the p.1 with the earlier snapshot
+> diff --git a/docs/specs/ppc-spapr-numa.rst b/docs/specs/ppc-spapr-numa.rst
+> index 5fca2bdd8e..ffa687dc89 100644
+> --- a/docs/specs/ppc-spapr-numa.rst
+> +++ b/docs/specs/ppc-spapr-numa.rst
+> @@ -198,7 +198,7 @@ This is how it is being done:
+>  * user distance 121 and beyond will be interpreted as 160
+>  * user distance 10 stays 10
+>  
+> -The reasoning behind this aproximation is to avoid any round up to the local
+> +The reasoning behind this approximation is to avoid any round up to the local
+>  distance (10), keeping it exclusive to the 4th NUMA level (which is still
+>  exclusive to the node_id). All other ranges were chosen under the developer
+>  discretion of what would be (somewhat) sensible considering the user input.
+> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+> index 32a0e620db..63e9db1463 100644
+> --- a/docs/system/deprecated.rst
+> +++ b/docs/system/deprecated.rst
+> @@ -465,7 +465,7 @@ default configuration.
+>  
+>  The CPU model runnability guarantee won't apply anymore to
+>  existing CPU models.  Management software that needs runnability
+> -guarantees must resolve the CPU model aliases using te
+> +guarantees must resolve the CPU model aliases using the
+>  ``alias-of`` field returned by the ``query-cpu-definitions`` QMP
+>  command.
+>  
+> @@ -637,7 +637,7 @@ Splitting RAM by default between NUMA nodes had the same issues as ``mem``
+>  parameter with the difference that the role of the user plays QEMU using
+>  implicit generic or board specific splitting rule.
+>  Use ``memdev`` with *memory-backend-ram* backend or ``mem`` (if
+> -it's supported by used machine type) to define mapping explictly instead.
+> +it's supported by used machine type) to define mapping explicitly instead.
+>  Users of existing VMs, wishing to preserve the same RAM distribution, should
+>  configure it explicitly using ``-numa node,memdev`` options. Current RAM
+>  distribution can be retrieved using HMP command ``info numa`` and if separate
+> diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+> index 34a9e40146..866b7db3ee 100644
+> --- a/docs/tools/virtiofsd.rst
+> +++ b/docs/tools/virtiofsd.rst
+> @@ -174,7 +174,7 @@ Using ':' as the separator a rule is of the form:
+>  - 'bad' - If a client tries to use a name matching 'key' it's
+>    denied using EPERM; when the server passes an attribute
+>    name matching 'prepend' it's hidden.  In many ways it's use is very like
+> -  'ok' as either an explict terminator or for special handling of certain
+> +  'ok' as either an explicit terminator or for special handling of certain
+>    patterns.
+>  
+>  **key** is a string tested as a prefix on an attribute name originating
+> diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+> index 64e332746b..470205f487 100644
+> --- a/hw/vfio/igd.c
+> +++ b/hw/vfio/igd.c
+> @@ -535,7 +535,7 @@ void vfio_probe_igd_bar4_quirk(VFIOPCIDevice *vdev, int nr)
+>      }
+>  
+>      /*
+> -     * Assume we have no GMS memory, but allow it to be overrided by device
+> +     * Assume we have no GMS memory, but allow it to be overridden by device
+>       * option (experimental).  The spec doesn't actually allow zero GMS when
+>       * when IVD (IGD VGA Disable) is clear, but the claim is that it's unused,
+>       * so let's not waste VM memory for it.
+> -- 
+> 2.29.2
 
 
