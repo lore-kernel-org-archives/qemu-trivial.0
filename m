@@ -1,78 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfIsA-00084K-U4
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 03:31:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50030)
+	id 1kfJ23-0007EJ-Oc
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 03:41:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kfIs7-00081F-5t
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 03:31:23 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35424)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kfJ21-00079f-Rn
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 03:41:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57077)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kfIs4-0004fZ-2r
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 03:31:22 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kfJ1z-0006Op-Oh
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 03:41:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605688279;
+ s=mimecast20190719; t=1605688894;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8YHFfKsDiqVIcXpUJvD7U/GPYT2/wQrACBnDe8N2tNA=;
- b=fsnDou8l7ygdFIRvuWJ+DlV4FWjQwLec8tKMrRGFtoTbvvYw+Pj78lq3T5r0MMfP02mceP
- 52DBZK0IL1jOKdMO4nl9vma3EPRdZk0GygZUDnPI038Pg0lf0MZxtMJq1U8wiEgGu6GVI1
- n85SIWOFjos/+4s5JjkHMexyhedNMok=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-465-6UrD8Z9fMpuKVc-g3CPiGw-1; Wed, 18 Nov 2020 03:31:16 -0500
-X-MC-Unique: 6UrD8Z9fMpuKVc-g3CPiGw-1
-Received: by mail-ej1-f69.google.com with SMTP id y23so557040ejp.10
- for <qemu-trivial@nongnu.org>; Wed, 18 Nov 2020 00:31:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=8YHFfKsDiqVIcXpUJvD7U/GPYT2/wQrACBnDe8N2tNA=;
- b=N4nSlHoIFi8DaF/rUA/pz8OpxQTRf6jxB2LI0eqFnoFx1HZSgMkU/a/6ZvaKtLebrU
- 9YfIb8PQmNpxXFBd6IiLevD9V9Tpe5xPnD82Nv43DDvsreLpSQy5GD6xr9q3mt5DyCG0
- cw5c6BN6o4qXuhf4410Rxz293Ap301bsjJOeiZGM8QDuRNC3Pffkga0aN37JdcLQDzjN
- wdBSuAB/si9I3Xz2U9XwiZ4DjAlJjjACTmaoRM9kOGSYbZPacSfIe8n69DiXM+BB1ddU
- mfSsUU5zHxlXpRuYtIGaZIUly3+yawkKSotpF8RMUJKtFnZ/UqxI9nQspyAtOANQpvPU
- 2qEQ==
-X-Gm-Message-State: AOAM531mXJupeFSBaJIJS3nxBVZYcgICC6NDPcnDZccSsD05d5uxMd4p
- m0G8izCcX57FHnZzu2M3Vq6KJ40jcIhgg79vUNn/B8In5Lpu7llcWdAptmgvblN6LpOIkUcs3TD
- h83lmAl4LZvi+cPS0BnpMhEGHj26FyLL6JCVN6zqi0rj4Qaug5PQVlmvsY/I9kFXGM6mSxA==
-X-Received: by 2002:a17:906:ece7:: with SMTP id
- qt7mr4598005ejb.316.1605688274857; 
- Wed, 18 Nov 2020 00:31:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJztpPXyBaN5V06EmjWWCZuAUKVI0wITg6DNFLTosfjiwhGKJ1+x1wN3/gC/CImxDWBJ6riTzA==
-X-Received: by 2002:a17:906:ece7:: with SMTP id
- qt7mr4597987ejb.316.1605688274604; 
- Wed, 18 Nov 2020 00:31:14 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id gl23sm12365587ejb.113.2020.11.18.00.31.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Nov 2020 00:31:13 -0800 (PST)
-Subject: Re: [PATCH] meson: Fixes curses detection on msys2
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20201116213106.589-1-luoyonggang@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <79f83095-560a-27de-cad9-c84266ee16d4@redhat.com>
-Date: Wed, 18 Nov 2020 09:31:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ bh=HQPn8+YoPpjKpJNo8kF2WtzikzDjihdQxtgFENOGXF8=;
+ b=h3PzqxZK8IsYE+j4NWytqafKc3PHdX0kJOuW5jj7CUo3KfW2zHlqyvd2+pSuG90UaQRY8T
+ 78Z58xv6CZdxrNL1BPpQHaqo0sG4DV5DiKlO4nDO+afoYUgywjTAMz245cRPfzPlhZ5vv9
+ MHM8ZbHHl1M7PtKxGRLq0yNlmo3FZs4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-125-tS83GJJSMRet9PxsET-taw-1; Wed, 18 Nov 2020 03:41:30 -0500
+X-MC-Unique: tS83GJJSMRet9PxsET-taw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D1A1E1007483;
+ Wed, 18 Nov 2020 08:41:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-103.ams2.redhat.com
+ [10.36.112.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CBD8360C05;
+ Wed, 18 Nov 2020 08:41:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4C4BF11358BA; Wed, 18 Nov 2020 09:41:26 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: zhang.zhanghailiang@huawei.com,  qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>,  Gan
+ Qixin <ganqixin@huawei.com>,  kuhn.chenqun@huawei.com
+Subject: Re: [PATCH 13/13] bcm2835_cprman: put some peripherals of bcm2835
+ cprman into the 'misc' category
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-14-ganqixin@huawei.com>
+ <c2ca2185-4253-da71-eab4-f96b29067c96@amsat.org>
+ <882df4ee-948c-7e00-d951-9b14ea40b2df@redhat.com>
+ <877dqldyoh.fsf@dusky.pond.sub.org>
+ <b5c76a27-551f-5b79-a47b-0d4a283a2d37@redhat.com>
+Date: Wed, 18 Nov 2020 09:41:26 +0100
+In-Reply-To: <b5c76a27-551f-5b79-a47b-0d4a283a2d37@redhat.com> (Thomas Huth's
+ message of "Tue, 17 Nov 2020 21:12:49 +0100")
+Message-ID: <87blfvoy4p.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20201116213106.589-1-luoyonggang@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 00:38:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -81,9 +71,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,45 +85,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Nov 2020 08:31:24 -0000
+X-List-Received-Date: Wed, 18 Nov 2020 08:41:38 -0000
 
-On 16/11/20 22:31, Yonggang Luo wrote:
-> Fixes regression on curses detection in msys2
-> by commit#925a40df2828d32d3aaaf022282cba81082fb263
-> 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->   meson.build | 13 +++++++++----
->   1 file changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index bbff0880f4..8695f7d1c2 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -494,10 +494,15 @@ if have_system and not get_option('curses').disabled()
->         return 0;
->       }'''
->   
-> -  curses = dependency((targetos == 'windows' ? 'ncurses' : 'ncursesw'),
-> -                      required: false,
-> -                      method: 'pkg-config',
-> -                      static: enable_static)
-> +  curses_dep_list = targetos == 'windows' ? ['ncurses', 'ncursesw'] : ['ncursesw']
-> +  foreach curses_dep : curses_dep_list
-> +    if not curses.found()
-> +      curses = dependency(curses_dep,
-> +                          required: false,
-> +                          method: 'pkg-config',
-> +                          static: enable_static)
-> +    endif
-> +  endforeach
->     msg = get_option('curses').enabled() ? 'curses library not found' : ''
->     if curses.found()
->       if cc.links(curses_test, dependencies: [curses])
-> 
+Thomas Huth <thuth@redhat.com> writes:
 
-Queued, thanks.
+> On 16/11/2020 18.00, Markus Armbruster wrote:
+>> Thomas Huth <thuth@redhat.com> writes:
+>>=20
+>>> On 16/11/2020 14.25, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> Hi Gan,
+>>>>
+>>>> On 11/15/20 7:49 PM, Gan Qixin wrote:
+>>>>> Some peripherals of bcm2835 cprman have no category, put them into th=
+e 'misc'
+>>>>> category.
+>>>>>
+>>>>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+>>>>> ---
+>>>>> Cc: Philippe Mathieu-Daud=C3=83=C6=92=C3=82=C2=A9 <f4bug@amsat.org>
+>>>>> ---
+>>>>>  hw/misc/bcm2835_cprman.c | 4 ++++
+>>>>>  1 file changed, 4 insertions(+)
+>>>>>
+>>>>> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+>>>>> index 7e415a017c..c62958a99e 100644
+>>>>> --- a/hw/misc/bcm2835_cprman.c
+>>>>> +++ b/hw/misc/bcm2835_cprman.c
+>>>>> @@ -136,6 +136,7 @@ static void pll_class_init(ObjectClass *klass, vo=
+id *data)
+>>>>> =20
+>>>>>      dc->reset =3D pll_reset;
+>>>>>      dc->vmsd =3D &pll_vmstate;
+>>>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>>>>
+>>>> Well, this is not an usable device but a part of a bigger device,
+>>>> so here we want the opposite: not list this device in any category.
+>>>>
+>>>> Maybe we could add a DEVICE_CATEGORY_COMPOSITE for all such QOM
+>>>> types so management apps can filter them out? (And so we are sure
+>>>> all QOM is classified).
+>>>>
+>>>> Thomas, you already dealt with categorizing devices in the past,
+>>>> what do you think about this? Who else could help? Maybe add
+>>>> someone from libvirt in the thread?
+>>>
+>>> My 0.02 =E2=82=AC : Mark the device as user_creatable =3D false if it c=
+an not really
+>>> be used by the user with the -device CLI parameter. Then it also does n=
+ot
+>>> need a category. I know Markus will likely have a different opinion, bu=
+t in
+>>=20
+>> You're hurting my feelings!  ;-P
+>>=20
+>>> my eyes it's just ugly if we present devices to the users that they can=
+ not use.
+>>=20
+>> If we believe a device should only ever be used from C, then we should
+>> keep it away from the UI.
+>>=20
+>> However, I'm wary of overloading user_creatable.  Even though it has
+>> shifted shape a number of times (cannot_instantiate_with_device_add_yet,
+>> no_user, and now user_creatable), its purpose has always been focused:
+>> distinguishing devices that can be instantiated by generic code from the
+>> ones that need device-specific code.  See user_creatable's comment in
+>> qdev-core.h.
+>>=20
+>> I don't want to lose that distinction.  That's all.
+>
+> Well, currently we have the user_creatable flag and the hotpluggable flag=
+. I
+> guess that's simply not enough.
+>
+> I think in the long run, we should maybe replace the two flags with a
+> "creatable" type instead that could take the following values:
+>
+>  CREATABLE_AS_SUBDEVICE  /* Device is part of another device and
+>                             can only by added by code */
+>  CREATABLE_BY_QOM        /* Some fancy new QOM function can be
+>                             used to e.g. create this as part of
+>                             a machine */
+>  CREATABLE_BY_COLDPLUG   /* For cold-plugging via -device */
+>  CREATABLE_BY_HOTPLUG    /* For hot-plugging via device_add */
 
-Paolo
+For hot-plug to actually work, both the plug / device and the socket /
+bus need to support it.  CREATABLE_BY_HOTPLUG would be about the former.
+The latter could depend on bus or machine state.
+
+> ... but that's likely something for the distant future...
+
+The future arrives when the need for it overcomes inertia :)
+
+[...]
 
 
