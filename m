@@ -1,92 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfMLb-0005Ue-4a
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 07:14:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48066)
+	id 1kfMeA-0001jm-Op
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 07:33:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfMLZ-0005Sj-7x
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 07:14:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42945)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfMLV-0001Q2-UO
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 07:14:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605701636;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1oEiherJatWdkkqdyhsFB8aXq1Rs0nQu3w5F6NoZyxQ=;
- b=YtiX1+MHopqb49qR9gZEYP5WFm56ZRZzwMrS4SAy/FkcnCR8ltVkuzL53TnC/HbOT+wbHN
- ycXo9jar3C7K1wii9aGBwkZEkv9pSsHETdxmjrJZfP5t312U2Bg4FY6BIYiv+/7KxHAivG
- X8a3eXH/BjwqDWjnqe/yleZBZIqxAr8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-423-94mtnCJlMUm5q53nw5R0TA-1; Wed, 18 Nov 2020 07:13:54 -0500
-X-MC-Unique: 94mtnCJlMUm5q53nw5R0TA-1
-Received: by mail-wr1-f71.google.com with SMTP id 67so855915wra.2
- for <qemu-trivial@nongnu.org>; Wed, 18 Nov 2020 04:13:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1oEiherJatWdkkqdyhsFB8aXq1Rs0nQu3w5F6NoZyxQ=;
- b=Ut/wDi53bULjYOwKJQk69B530knmWnvYTQFJroSuH0xcV7cDXU8FsdRZGgt+2MkhoJ
- iBh+D/APfTtNsmf8EQh2k2qTvyO2G7/hQU2aTcgirvXp44R1dRcEdv2DDYxGMKIXFpzm
- RR4t2PQlRPm7aN39S7C5xQ7qHbSO9pU3Hwz3Evq0wTMTi/M+B/pw+aJQiurUOVzckUv1
- 8mCyuwT7hfqIqO/2QWjgIxyZOsytQtfZKSKNI03L8xWagpt7oyLorkzz22U9QydW2S4d
- n3GBWnWFJFS8Ybx1zVli3eFmO8Z9FrwYE5MUT03jGvOtppgcEs2lV9xAsF0LDd+RELaM
- raDA==
-X-Gm-Message-State: AOAM5339k1U1gfBT1s2c1awzZzlSlfTBK8SoYkcIjVRvbQN4MmwgIaFt
- hzcgAGwtYFbSFNIwWOzo7hwzUto/ca5c8iieOnCoKvlqfxajqWwSPQYfQGP6/mmNNBpYciC7dLL
- BfI1ewxRHJ0uhJOSPQg==
-X-Received: by 2002:a05:600c:4112:: with SMTP id
- j18mr4395159wmi.152.1605701633429; 
- Wed, 18 Nov 2020 04:13:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwjBKSMdgMmzd3wvA3xeKvXjYmLSBIrBPzTmcn+LOb9Yyk6wuFy8gZHDx6JCZk41awtA+CgSA==
-X-Received: by 2002:a05:600c:4112:: with SMTP id
- j18mr4395127wmi.152.1605701633106; 
- Wed, 18 Nov 2020 04:13:53 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id i11sm32877303wrm.1.2020.11.18.04.13.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Nov 2020 04:13:52 -0800 (PST)
-Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
- need to be initialized
-To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: lvivier@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
- zhang.zhanghailiang@huawei.com, hskinnemoen@google.com, wuhaotsh@google.com,
- Euler Robot <euler.robot@huawei.com>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kfMe7-0001j4-AB; Wed, 18 Nov 2020 07:33:12 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2055)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kfMe4-0003x1-EB; Wed, 18 Nov 2020 07:33:11 -0500
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CbhzM4bGFzQsSw;
+ Wed, 18 Nov 2020 20:32:47 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.128]) by
+ DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0487.000;
+ Wed, 18 Nov 2020 20:32:51 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: "lvivier@redhat.com" <lvivier@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "thuth@redhat.com" <thuth@redhat.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>, "hskinnemoen@google.com"
+ <hskinnemoen@google.com>, "wuhaotsh@google.com" <wuhaotsh@google.com>,
+ "Euler Robot" <euler.robot@huawei.com>
+Subject: RE: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
+ g_autofree need to be initialized
+Thread-Topic: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
+ g_autofree need to be initialized
+Thread-Index: AQHWvaH7LAlqtNTNq0CJSxOYz75c7KnNRyyAgACHeGA=
+Date: Wed, 18 Nov 2020 12:32:50 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA81997@dggemm531-mbx.china.huawei.com>
 References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
  <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
-Date: Wed, 18 Nov 2020 13:13:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
+In-Reply-To: <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 00:38:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 07:33:01
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,47 +66,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Nov 2020 12:14:01 -0000
+X-List-Received-Date: Wed, 18 Nov 2020 12:33:12 -0000
 
-On 11/18/20 12:56 PM, Chen Qun wrote:
-> According to the glib function requirements, we need initialise
->  the variable. Otherwise there will be compilation warnings:
-> 
-> glib-autocleanups.h:28:3: warning: ‘full_name’ may be
-> used uninitialized in this function [-Wmaybe-uninitialized]
->    28 |   g_free (*pp);
->       |   ^~~~~~~~~~~~
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
->  tests/qtest/npcm7xx_timer-test.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
-> 
-> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
-> index f08b0cd62a..83774a5b90 100644
-> --- a/tests/qtest/npcm7xx_timer-test.c
-> +++ b/tests/qtest/npcm7xx_timer-test.c
-> @@ -512,11 +512,9 @@ static void test_disable_on_expiration(gconstpointer test_data)
->   */
->  static void tim_add_test(const char *name, const TestData *td, GTestDataFunc fn)
->  {
-
-Or:
-
-> -    g_autofree char *full_name;
-  +    g_autofree char *full_name = NULL;
-
-> -
-> -    full_name = g_strdup_printf("npcm7xx_timer/tim[%d]/timer[%d]/%s",
-> -                                tim_index(td->tim), timer_index(td->timer),
-> -                                name);
-> +    g_autofree char *full_name = g_strdup_printf(
-> +        "npcm7xx_timer/tim[%d]/timer[%d]/%s", tim_index(td->tim),
-> +        timer_index(td->timer), name);
->      qtest_add_data_func(full_name, td, fn);
->  }
->  
-> 
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
+dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVt
+YmVyIDE4LCAyMDIwIDg6MTQgUE0NCj4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5A
+aHVhd2VpLmNvbT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gcWVtdS10cml2aWFsQG5vbmdu
+dS5vcmcNCj4gQ2M6IGx2aXZpZXJAcmVkaGF0LmNvbTsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
+OyB0aHV0aEByZWRoYXQuY29tOw0KPiBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5n
+QGh1YXdlaS5jb20+Ow0KPiBoc2tpbm5lbW9lbkBnb29nbGUuY29tOyB3dWhhb3RzaEBnb29nbGUu
+Y29tOyBFdWxlciBSb2JvdA0KPiA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDog
+UmU6IFtQQVRDSC1mb3ItNS4yPyAxLzJdIHRlc3RzL3F0ZXN0OiB2YXJpYWJsZSBkZWZpbmVkIGJ5
+IGdfYXV0b2ZyZWUNCj4gbmVlZCB0byBiZSBpbml0aWFsaXplZA0KPiANCj4gT24gMTEvMTgvMjAg
+MTI6NTYgUE0sIENoZW4gUXVuIHdyb3RlOg0KPiA+IEFjY29yZGluZyB0byB0aGUgZ2xpYiBmdW5j
+dGlvbiByZXF1aXJlbWVudHMsIHdlIG5lZWQgaW5pdGlhbGlzZSAgdGhlDQo+ID4gdmFyaWFibGUu
+IE90aGVyd2lzZSB0aGVyZSB3aWxsIGJlIGNvbXBpbGF0aW9uIHdhcm5pbmdzOg0KPiA+DQo+ID4g
+Z2xpYi1hdXRvY2xlYW51cHMuaDoyODozOiB3YXJuaW5nOiDigJhmdWxsX25hbWXigJkgbWF5IGJl
+IHVzZWQNCj4gPiB1bmluaXRpYWxpemVkIGluIHRoaXMgZnVuY3Rpb24gWy1XbWF5YmUtdW5pbml0
+aWFsaXplZF0NCj4gPiAgICAyOCB8ICAgZ19mcmVlICgqcHApOw0KPiA+ICAgICAgIHwgICBefn5+
+fn5+fn5+fn4NCj4gPg0KPiA+IFJlcG9ydGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RA
+aHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1
+YXdlaS5jb20+DQo+ID4gLS0tDQo+ID4gIHRlc3RzL3F0ZXN0L25wY203eHhfdGltZXItdGVzdC5j
+IHwgOCArKystLS0tLQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA1IGRl
+bGV0aW9ucygtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL3Rlc3RzL3F0ZXN0L25wY203eHhfdGlt
+ZXItdGVzdC5jDQo+ID4gYi90ZXN0cy9xdGVzdC9ucGNtN3h4X3RpbWVyLXRlc3QuYw0KPiA+IGlu
+ZGV4IGYwOGIwY2Q2MmEuLjgzNzc0YTViOTAgMTAwNjQ0DQo+ID4gLS0tIGEvdGVzdHMvcXRlc3Qv
+bnBjbTd4eF90aW1lci10ZXN0LmMNCj4gPiArKysgYi90ZXN0cy9xdGVzdC9ucGNtN3h4X3RpbWVy
+LXRlc3QuYw0KPiA+IEBAIC01MTIsMTEgKzUxMiw5IEBAIHN0YXRpYyB2b2lkDQo+IHRlc3RfZGlz
+YWJsZV9vbl9leHBpcmF0aW9uKGdjb25zdHBvaW50ZXIgdGVzdF9kYXRhKQ0KPiA+ICAgKi8NCj4g
+PiAgc3RhdGljIHZvaWQgdGltX2FkZF90ZXN0KGNvbnN0IGNoYXIgKm5hbWUsIGNvbnN0IFRlc3RE
+YXRhICp0ZCwNCj4gPiBHVGVzdERhdGFGdW5jIGZuKSAgew0KPiANCj4gT3I6DQo+IA0KPiA+IC0g
+ICAgZ19hdXRvZnJlZSBjaGFyICpmdWxsX25hbWU7DQo+ICAgKyAgICBnX2F1dG9mcmVlIGNoYXIg
+KmZ1bGxfbmFtZSA9IE5VTEw7DQo+IA0KWWVzLCB0aGlzIGFsc28gbWVldHMgdGhlIGdsaWIgcmVx
+dWlyZW1lbnRzLg0KQnV0LCB0aGUgYXNzaWdubWVudCBzdGF0ZW1lbnQgZm9sbG93aW5nIGlzIG5v
+dCBjb21wbGV4LCBzbyB3ZSBjb3VsZCBkbyBib3RoIG9mIHZhcmlhYmxlIGRlZmluaXRpb24gYW5k
+IGFzc2lnbm1lbnQgaW4gYSBzdGF0ZW1lbnQuDQoNClRoYW5rcywNCkNoZW4gUXVuDQo+ID4gLQ0K
+PiA+IC0gICAgZnVsbF9uYW1lID0gZ19zdHJkdXBfcHJpbnRmKCJucGNtN3h4X3RpbWVyL3RpbVsl
+ZF0vdGltZXJbJWRdLyVzIiwNCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0
+aW1faW5kZXgodGQtPnRpbSksDQo+IHRpbWVyX2luZGV4KHRkLT50aW1lciksDQo+ID4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgbmFtZSk7DQo+ID4gKyAgICBnX2F1dG9mcmVlIGNo
+YXIgKmZ1bGxfbmFtZSA9IGdfc3RyZHVwX3ByaW50ZigNCj4gPiArICAgICAgICAibnBjbTd4eF90
+aW1lci90aW1bJWRdL3RpbWVyWyVkXS8lcyIsIHRpbV9pbmRleCh0ZC0+dGltKSwNCj4gPiArICAg
+ICAgICB0aW1lcl9pbmRleCh0ZC0+dGltZXIpLCBuYW1lKTsNCj4gPiAgICAgIHF0ZXN0X2FkZF9k
+YXRhX2Z1bmMoZnVsbF9uYW1lLCB0ZCwgZm4pOyAgfQ0KPiA+DQo+ID4NCg0K
 
