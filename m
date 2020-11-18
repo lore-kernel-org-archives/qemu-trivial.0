@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfSbQ-0001pW-Hi
+	id 1kfSbQ-0001pt-OE
 	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 13:54:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37648)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kfR2K-0003cA-UY
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 12:14:29 -0500
-Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42]:33917)
+ id 1kfR0b-0000qI-9I
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 12:12:41 -0500
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:38239)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kfR2E-0001O8-Rd
- for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 12:14:28 -0500
-Received: by mail-vs1-xe42.google.com with SMTP id v6so1422510vsd.1
- for <qemu-trivial@nongnu.org>; Wed, 18 Nov 2020 09:14:21 -0800 (PST)
+ id 1kfR0Z-0001DW-J4
+ for qemu-trivial@nongnu.org; Wed, 18 Nov 2020 12:12:40 -0500
+Received: by mail-vs1-xe41.google.com with SMTP id y73so1405455vsc.5
+ for <qemu-trivial@nongnu.org>; Wed, 18 Nov 2020 09:12:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tfJNx+8KKFgAeV9NlSHhIf3nEIjrW1gXQxpt/5iCRBE=;
- b=mELCX4ydTAeN5UYwVW6pXiD7ic7s7CJqD3Ei67l085/LKFH/5K4FZWFNlbpM7DqLnK
- jG1jVaJFVtxMn/jjfDHwZoICEh7jdmM1Le6wVMTN6Eh+mlARF5qd+CdeiKtTkoYFOFfB
- 6n/yvx8TH9+g5NZRnJlHq+YFtQhLj88KA0wWC+Y9suut0epb2q0PVv/q4VL8NsgH8lpG
- pwt9HN1LMOLWN5qaRjvhrway0u+jj5NgflhJ10qNACBNrMpJFys9YnuABuJdVY/oOLdK
- COotHmt01Ce92CPbiL9YlKSQtXDi8vs4XtOI8SppY5aSKbgKoY+GwAC94bw6e2tsBWQ5
- ECtw==
+ :cc:content-transfer-encoding;
+ bh=p2CVxCmQCzVOvtam3dzCsdeY2+nYOUt2mUceWYvvva8=;
+ b=lPHxjrdBIRmjvB9LuS18FQ1x+kcUDnD057W5rcqBo3+Zvn1tNDzwaRI6s4YDHs5cA/
+ n2C3fk3VKcBMttAywoe65r/FLU3QQr1HDp+g+oyGDqSugM2Olo25f0PJ3p0qQ+XkU6+7
+ V8XNkR9MdyW/TRgnn+oSYGjVtDpgswMdqHQVbPJnT0POvG5A0Y0r0ef4ZrTqMWtH+5KV
+ bZZS9ogyRpVBtviiAYd/jjjgyI5Q2AYWix4bfBN0g8z2+vhP6sEu+wHNMgPM5C5etlmR
+ +QTnq+df3PcpjmsfjtxhQJu/H0oGK1yxDyg63XPwvzMjp2F4FsFDGnAfenU/hwfzNwdH
+ OtSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tfJNx+8KKFgAeV9NlSHhIf3nEIjrW1gXQxpt/5iCRBE=;
- b=MIx25K7fZYZJgTeE7TKHbCNpgOSPA2J+YyfZuYSqBnenbnLnLqCUePz219w4PoHfFW
- WX5NLC2Y4mCm1njj9w1NpsVMyRtIXqvTZ0ugcsNvsjB7DEr3U7xx+22P2EmAdcr56JP7
- jMkCeK31V2yo3YBWAQbHcxa0eW8kNx4IxLwAK7nK0MMAmeUGTmeGMBsEWbA3e+kDG15x
- u6BL1ISG27hUW4NstasYIhoijYZrDa1EMfi17ko4sZ0H0MeZP44dseyqrag4PnPttjqu
- uXbuhJqzQ0VdlFSDq/1S5gnkUFvN4m1LzcxE4YTs/6rlR6AW0wjcldEWRgBeBVbfYfiq
- YhBw==
-X-Gm-Message-State: AOAM531yLtXmreIeLbGxM0QK4vhbFZcBsUfb8MlMkbdiG1l80zYiT1DB
- Dq0bBdtutAl0kVBbAYdfA+AX3SXn8u8zUDh4w5WPTg==
-X-Google-Smtp-Source: ABdhPJwHTZpCGEe2IcTrNXNlLSs5uDf774Q5ruoWSfRokmsbrp7LGnVkqMi+t3auPRt3+T4ojO6OyOp9UAEujLJr0Js=
-X-Received: by 2002:a05:6102:309a:: with SMTP id
- l26mr4263753vsb.4.1605719660698; 
- Wed, 18 Nov 2020 09:14:20 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=p2CVxCmQCzVOvtam3dzCsdeY2+nYOUt2mUceWYvvva8=;
+ b=U4b4YpVO5/jDxIIVVQUuqyo31N0F1EtSP6fo/5kKxdPkahU7PCR4pD/tDslFRXUMGu
+ t9u6WyT5NavX9cAYIFlqB4434fc4Xz6qXDkbyR74iCCFM3TPqum78EbhcM8rl9eeoSof
+ gFJgyJlJmyrYyxNgxAScDeQ8X6y5Jl3+JG+gPzbczDjHJK5xmLDoaJd+iIEIaH9PP9Py
+ +fhdIsGodOPTuO4nEBk85JErpoC9JJS2lqD05ihi3yp8w0T0J1orFl0DWB/wjAhe+zQb
+ E/nP7pTR1nYiYemEs5ODYdnG9AVocCKi/vLQN8oCgGMGunC5PQ4cyF3Lm6CmPprSKJgF
+ eeYw==
+X-Gm-Message-State: AOAM532TUsP9TntXb6cT99Lt5/18rHhw6ZG1q3uUASuqwhNoz/sPE+XF
+ +wlS7/Kgr5Naf0bMjqpMu8GNfkt4KfbQKM20pEBChg==
+X-Google-Smtp-Source: ABdhPJzRCiHrHUXwIlp8Tybl1wY7HnM8NFqSLRXzJfVqPe/2yM1TWUt0F/Jz9yW3BM+KpG5bPwvNUMsDYWSGQItMXYs=
+X-Received: by 2002:a67:3256:: with SMTP id y83mr4481272vsy.48.1605719556353; 
+ Wed, 18 Nov 2020 09:12:36 -0800 (PST)
 MIME-Version: 1.0
 References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
- <20201118115646.2461726-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201118115646.2461726-3-kuhn.chenqun@huawei.com>
+ <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
 From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Wed, 18 Nov 2020 09:14:09 -0800
-Message-ID: <CAFQmdRbaivcgHt=dQ_nysZ=zpCM=d5K+-MY1129WDa3G=E9MCg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.2? 2/2] tests/qtest: fix memleak in
- npcm7xx_watchdog_timer-test
+Date: Wed, 18 Nov 2020 09:12:25 -0800
+Message-ID: <CAFQmdRagpYyvkx9fvhABzfEwJ4WxVxji=AhMYNNrzTfgAgsLsw@mail.gmail.com>
+Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
+ need to be initialized
 To: Chen Qun <kuhn.chenqun@huawei.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
  Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>, 
  zhang.zhanghailiang@huawei.com, Thomas Huth <thuth@redhat.com>,
  lvivier@redhat.com, Euler Robot <euler.robot@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e42;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe42.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
+ envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -175
@@ -65,7 +66,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 18 Nov 2020 13:54:46 -0500
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,61 +80,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Nov 2020 17:14:30 -0000
+X-List-Received-Date: Wed, 18 Nov 2020 17:12:41 -0000
 
 On Wed, Nov 18, 2020 at 3:57 AM Chen Qun <kuhn.chenqun@huawei.com> wrote:
 >
-> Properly free resp for get_watchdog_action() to avoid memory leak.
-> ASAN shows memory leak stack:
+> According to the glib function requirements, we need initialise
+>  the variable. Otherwise there will be compilation warnings:
 >
-> Indirect leak of 12360 byte(s) in 3 object(s) allocated from:
->     #0 0x7f41ab6cbd4e in __interceptor_calloc (/lib64/libasan.so.5+0x112d4e)
->     #1 0x7f41ab4eaa50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
->     #2 0x556487d5374b in qdict_new ../qobject/qdict.c:29
->     #3 0x556487d65e1a in parse_object ../qobject/json-parser.c:318
->     #4 0x556487d65cb6 in parse_pair ../qobject/json-parser.c:287
->     #5 0x556487d65ebd in parse_object ../qobject/json-parser.c:343
->     #6 0x556487d661d5 in json_parser_parse ../qobject/json-parser.c:580
->     #7 0x556487d513df in json_message_process_token ../qobject/json-streamer.c:92
->     #8 0x556487d63919 in json_lexer_feed_char ../qobject/json-lexer.c:313
->     #9 0x556487d63d75 in json_lexer_feed ../qobject/json-lexer.c:350
->     #10 0x556487d28b2a in qmp_fd_receive ../tests/qtest/libqtest.c:613
->     #11 0x556487d2a16f in qtest_qmp_eventwait_ref ../tests/qtest/libqtest.c:827
->     #12 0x556487d248e2 in get_watchdog_action ../tests/qtest/npcm7xx_watchdog_timer-test.c:94
->     #13 0x556487d25765 in test_enabling_flags ../tests/qtest/npcm7xx_watchdog_timer-test.c:243
+> glib-autocleanups.h:28:3: warning: =E2=80=98full_name=E2=80=99 may be
+> used uninitialized in this function [-Wmaybe-uninitialized]
+>    28 |   g_free (*pp);
+>       |   ^~~~~~~~~~~~
 >
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
 Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
 
+I'd be totally fine with Philippe's suggestion too.
+
+Thanks!
+
 > ---
->  tests/qtest/npcm7xx_watchdog_timer-test.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  tests/qtest/npcm7xx_timer-test.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
 >
-> diff --git a/tests/qtest/npcm7xx_watchdog_timer-test.c b/tests/qtest/npcm7xx_watchdog_timer-test.c
-> index 54d5d6d8f2..3aae5a0438 100644
-> --- a/tests/qtest/npcm7xx_watchdog_timer-test.c
-> +++ b/tests/qtest/npcm7xx_watchdog_timer-test.c
-> @@ -204,6 +204,7 @@ static void test_enabling_flags(gconstpointer watchdog)
+> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer=
+-test.c
+> index f08b0cd62a..83774a5b90 100644
+> --- a/tests/qtest/npcm7xx_timer-test.c
+> +++ b/tests/qtest/npcm7xx_timer-test.c
+> @@ -512,11 +512,9 @@ static void test_disable_on_expiration(gconstpointer=
+ test_data)
+>   */
+>  static void tim_add_test(const char *name, const TestData *td, GTestData=
+Func fn)
 >  {
->      const Watchdog *wd = watchdog;
->      QTestState *qts;
-> +    QDict *rsp;
->
->      /* Neither WTIE or WTRE is set, no interrupt or reset should happen */
->      qts = qtest_init("-machine quanta-gsj");
-> @@ -240,8 +241,9 @@ static void test_enabling_flags(gconstpointer watchdog)
->      g_assert_false(qtest_get_irq(qts, wd->irq));
->      qtest_clock_step(qts, watchdog_calculate_steps(RESET_CYCLES,
->                  watchdog_prescaler(qts, wd)));
-> -    g_assert_false(strcmp(qdict_get_str(get_watchdog_action(qts), "action"),
-> -                "reset"));
-> +    rsp = get_watchdog_action(qts);
-> +    g_assert_false(strcmp(qdict_get_str(rsp, "action"), "reset"));
-> +    qobject_unref(rsp);
->      qtest_qmp_eventwait(qts, "RESET");
->      qtest_quit(qts);
+> -    g_autofree char *full_name;
+> -
+> -    full_name =3D g_strdup_printf("npcm7xx_timer/tim[%d]/timer[%d]/%s",
+> -                                tim_index(td->tim), timer_index(td->time=
+r),
+> -                                name);
+> +    g_autofree char *full_name =3D g_strdup_printf(
+> +        "npcm7xx_timer/tim[%d]/timer[%d]/%s", tim_index(td->tim),
+> +        timer_index(td->timer), name);
+>      qtest_add_data_func(full_name, td, fn);
+>  }
 >
 > --
 > 2.23.0
