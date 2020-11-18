@@ -1,60 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfMeA-0001jm-Op
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 07:33:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52234)
+	id 1kfOxX-0005WY-EV
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Nov 2020 10:01:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kfMe7-0001j4-AB; Wed, 18 Nov 2020 07:33:12 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2055)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kfMe4-0003x1-EB; Wed, 18 Nov 2020 07:33:11 -0500
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.53])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CbhzM4bGFzQsSw;
- Wed, 18 Nov 2020 20:32:47 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.128]) by
- DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0487.000;
- Wed, 18 Nov 2020 20:32:51 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-CC: "lvivier@redhat.com" <lvivier@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "thuth@redhat.com" <thuth@redhat.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, "hskinnemoen@google.com"
- <hskinnemoen@google.com>, "wuhaotsh@google.com" <wuhaotsh@google.com>,
- "Euler Robot" <euler.robot@huawei.com>
-Subject: RE: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
- g_autofree need to be initialized
-Thread-Topic: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
- g_autofree need to be initialized
-Thread-Index: AQHWvaH7LAlqtNTNq0CJSxOYz75c7KnNRyyAgACHeGA=
-Date: Wed, 18 Nov 2020 12:32:50 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA81997@dggemm531-mbx.china.huawei.com>
-References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
- <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
- <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
-In-Reply-To: <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 07:33:01
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
+ id 1kfD7c-00076u-Ct
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 21:23:00 -0500
+Received: from mail-m975.mail.163.com ([123.126.97.5]:33902)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
+ id 1kfD7Z-00008N-2D
+ for qemu-trivial@nongnu.org; Tue, 17 Nov 2020 21:22:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=KUGKcghz5aftqbUb2v
+ XbT8YMF6hW21A1SCqZL6/yazw=; b=arXLY4wnvGwaGD8YAhHVaIgY0+kz4kB24L
+ odfj6ItMmyOovd3cj94PW7w/rsT+pz1v9gQK3tasDSZyJlltE3ud3NY4hOk0B3Hy
+ XBwtwoCw2CzIapqUT0JrsKsp+/on2OM5/ekr5lV5FU+MF7teTJ4f33qdOWd1u2V6
+ LIE7Ha77c=
+Received: from localhost.localdomain (unknown [218.106.182.234])
+ by smtp5 (Coremail) with SMTP id HdxpCgAXV4vKgbRf3jTaAQ--.7817S4;
+ Wed, 18 Nov 2020 10:07:08 +0800 (CST)
+From: ruc_gongyuanjun@163.com
+To: qemu-trivial@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>,
+	yuanjungong <ruc_gongyuanjun@163.com>
+Subject: [PATCH 1/1] /net/tap.c: Fix a memory leak Close fd before returning.
+ Buglink: https://bugs.launchpad.net/qemu/+bug/1904486
+Date: Wed, 18 Nov 2020 10:07:03 +0800
+Message-Id: <20201118020703.26987-1-ruc_gongyuanjun@163.com>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: HdxpCgAXV4vKgbRf3jTaAQ--.7817S4
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Xr1kZw1UWF17Ww45Kr13XFb_yoWxZFbEgw
+ 1kXF4DGrs8JF9akr4UZ3yvqryUuw48WF97Gw12yFyfCa1xXw1I9rs7JF93ZryxWryakr90
+ kFyFvayjkay0kjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRE8sgUUUUUU==
+X-Originating-IP: [218.106.182.234]
+X-CM-SenderInfo: 5uxfsw5rqj53pdqm30i6rwjhhfrp/xtbBiAzg5VaD9Hwc+QAAs5
+Received-SPF: pass client-ip=123.126.97.5;
+ envelope-from=ruc_gongyuanjun@163.com; helo=mail-m975.mail.163.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 21:07:11
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 18 Nov 2020 10:01:21 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,47 +60,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Nov 2020 12:33:12 -0000
+X-List-Received-Date: Wed, 18 Nov 2020 02:23:00 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
-dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVt
-YmVyIDE4LCAyMDIwIDg6MTQgUE0NCj4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5A
-aHVhd2VpLmNvbT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gcWVtdS10cml2aWFsQG5vbmdu
-dS5vcmcNCj4gQ2M6IGx2aXZpZXJAcmVkaGF0LmNvbTsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
-OyB0aHV0aEByZWRoYXQuY29tOw0KPiBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5n
-QGh1YXdlaS5jb20+Ow0KPiBoc2tpbm5lbW9lbkBnb29nbGUuY29tOyB3dWhhb3RzaEBnb29nbGUu
-Y29tOyBFdWxlciBSb2JvdA0KPiA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDog
-UmU6IFtQQVRDSC1mb3ItNS4yPyAxLzJdIHRlc3RzL3F0ZXN0OiB2YXJpYWJsZSBkZWZpbmVkIGJ5
-IGdfYXV0b2ZyZWUNCj4gbmVlZCB0byBiZSBpbml0aWFsaXplZA0KPiANCj4gT24gMTEvMTgvMjAg
-MTI6NTYgUE0sIENoZW4gUXVuIHdyb3RlOg0KPiA+IEFjY29yZGluZyB0byB0aGUgZ2xpYiBmdW5j
-dGlvbiByZXF1aXJlbWVudHMsIHdlIG5lZWQgaW5pdGlhbGlzZSAgdGhlDQo+ID4gdmFyaWFibGUu
-IE90aGVyd2lzZSB0aGVyZSB3aWxsIGJlIGNvbXBpbGF0aW9uIHdhcm5pbmdzOg0KPiA+DQo+ID4g
-Z2xpYi1hdXRvY2xlYW51cHMuaDoyODozOiB3YXJuaW5nOiDigJhmdWxsX25hbWXigJkgbWF5IGJl
-IHVzZWQNCj4gPiB1bmluaXRpYWxpemVkIGluIHRoaXMgZnVuY3Rpb24gWy1XbWF5YmUtdW5pbml0
-aWFsaXplZF0NCj4gPiAgICAyOCB8ICAgZ19mcmVlICgqcHApOw0KPiA+ICAgICAgIHwgICBefn5+
-fn5+fn5+fn4NCj4gPg0KPiA+IFJlcG9ydGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RA
-aHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1
-YXdlaS5jb20+DQo+ID4gLS0tDQo+ID4gIHRlc3RzL3F0ZXN0L25wY203eHhfdGltZXItdGVzdC5j
-IHwgOCArKystLS0tLQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA1IGRl
-bGV0aW9ucygtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL3Rlc3RzL3F0ZXN0L25wY203eHhfdGlt
-ZXItdGVzdC5jDQo+ID4gYi90ZXN0cy9xdGVzdC9ucGNtN3h4X3RpbWVyLXRlc3QuYw0KPiA+IGlu
-ZGV4IGYwOGIwY2Q2MmEuLjgzNzc0YTViOTAgMTAwNjQ0DQo+ID4gLS0tIGEvdGVzdHMvcXRlc3Qv
-bnBjbTd4eF90aW1lci10ZXN0LmMNCj4gPiArKysgYi90ZXN0cy9xdGVzdC9ucGNtN3h4X3RpbWVy
-LXRlc3QuYw0KPiA+IEBAIC01MTIsMTEgKzUxMiw5IEBAIHN0YXRpYyB2b2lkDQo+IHRlc3RfZGlz
-YWJsZV9vbl9leHBpcmF0aW9uKGdjb25zdHBvaW50ZXIgdGVzdF9kYXRhKQ0KPiA+ICAgKi8NCj4g
-PiAgc3RhdGljIHZvaWQgdGltX2FkZF90ZXN0KGNvbnN0IGNoYXIgKm5hbWUsIGNvbnN0IFRlc3RE
-YXRhICp0ZCwNCj4gPiBHVGVzdERhdGFGdW5jIGZuKSAgew0KPiANCj4gT3I6DQo+IA0KPiA+IC0g
-ICAgZ19hdXRvZnJlZSBjaGFyICpmdWxsX25hbWU7DQo+ICAgKyAgICBnX2F1dG9mcmVlIGNoYXIg
-KmZ1bGxfbmFtZSA9IE5VTEw7DQo+IA0KWWVzLCB0aGlzIGFsc28gbWVldHMgdGhlIGdsaWIgcmVx
-dWlyZW1lbnRzLg0KQnV0LCB0aGUgYXNzaWdubWVudCBzdGF0ZW1lbnQgZm9sbG93aW5nIGlzIG5v
-dCBjb21wbGV4LCBzbyB3ZSBjb3VsZCBkbyBib3RoIG9mIHZhcmlhYmxlIGRlZmluaXRpb24gYW5k
-IGFzc2lnbm1lbnQgaW4gYSBzdGF0ZW1lbnQuDQoNClRoYW5rcywNCkNoZW4gUXVuDQo+ID4gLQ0K
-PiA+IC0gICAgZnVsbF9uYW1lID0gZ19zdHJkdXBfcHJpbnRmKCJucGNtN3h4X3RpbWVyL3RpbVsl
-ZF0vdGltZXJbJWRdLyVzIiwNCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0
-aW1faW5kZXgodGQtPnRpbSksDQo+IHRpbWVyX2luZGV4KHRkLT50aW1lciksDQo+ID4gLSAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgbmFtZSk7DQo+ID4gKyAgICBnX2F1dG9mcmVlIGNo
-YXIgKmZ1bGxfbmFtZSA9IGdfc3RyZHVwX3ByaW50ZigNCj4gPiArICAgICAgICAibnBjbTd4eF90
-aW1lci90aW1bJWRdL3RpbWVyWyVkXS8lcyIsIHRpbV9pbmRleCh0ZC0+dGltKSwNCj4gPiArICAg
-ICAgICB0aW1lcl9pbmRleCh0ZC0+dGltZXIpLCBuYW1lKTsNCj4gPiAgICAgIHF0ZXN0X2FkZF9k
-YXRhX2Z1bmMoZnVsbF9uYW1lLCB0ZCwgZm4pOyAgfQ0KPiA+DQo+ID4NCg0K
+From: yuanjungong <ruc_gongyuanjun@163.com>
+
+Signed-off-by: yuanjungong <ruc_gongyuanjun@163.com>
+---
+ net/tap.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/net/tap.c b/net/tap.c
+index c46ff66..fe95fa7 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -817,6 +817,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
+         if (ret < 0) {
+             error_setg_errno(errp, -ret, "%s: Can't use file descriptor %d",
+                              name, fd);
++            close(fd);
+             return -1;
+         }
+ 
+@@ -831,6 +832,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
+                          vhostfdname, vnet_hdr, fd, &err);
+         if (err) {
+             error_propagate(errp, err);
++            close(fd);
+             return -1;
+         }
+     } else if (tap->has_fds) {
+-- 
+2.17.1
+
 
