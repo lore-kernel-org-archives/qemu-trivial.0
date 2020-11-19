@@ -1,51 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfgCW-0000fF-Fz
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 04:26:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33828)
+	id 1kfi1k-000839-HU
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 06:23:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
- id 1kfgCR-0000d0-Dn
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 04:25:56 -0500
-Received: from mail-m972.mail.163.com ([123.126.97.2]:53126)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
- id 1kfgCK-0000Ep-1J
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 04:25:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id; bh=FhJqm6LMcknrGDFitb
- gA+AMYsMPo0SRChj3tSH47gjI=; b=Gs2HDL6uV9id0fCDi7CM0GjGwSPkPw8QEV
- NTCwfrYTgo4nerItc5bwR3OVwc5JcUY3wewG6+LzQlZXgv4yvMdHDjb0vV0S6mev
- 23juGgSZNybNxpWYzx5NnhSM6ifc/om7w0XpBu8ixECAXyk4Xizr3ky6SEF6mk5x
- 8c45RkILs=
-Received: from localhost.localdomain (unknown [218.106.182.234])
- by smtp2 (Coremail) with SMTP id GtxpCgDX+pgOOrZfTZWYCA--.19328S4;
- Thu, 19 Nov 2020 17:25:35 +0800 (CST)
-From: ruc_gongyuanjun@163.com
-To: qemu-trivial@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>,
-	yuanjungong <ruc_gongyuanjun@163.com>
-Subject: [PATCH 1/1] /net/tap.c: Fix a memory leak
-Date: Thu, 19 Nov 2020 17:25:32 +0800
-Message-Id: <20201119092532.20215-1-ruc_gongyuanjun@163.com>
-X-Mailer: git-send-email 2.17.1
-X-CM-TRANSID: GtxpCgDX+pgOOrZfTZWYCA--.19328S4
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Xr47tw18JrW7Ww45Xw13urg_yoW3WwcEgw
- n7ZFWDGrZ8AF9akrsrZ395KryUCw4UWF97Kw1YyFyfCa1xXws2krs7JF93ZFyxWryakr90
- kF9Ivayq9ay0kjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRNBTY5UUUUU==
-X-Originating-IP: [218.106.182.234]
-X-CM-SenderInfo: 5uxfsw5rqj53pdqm30i6rwjhhfrp/xtbB0B-h5VUMOtJh-gAAsl
-Received-SPF: pass client-ip=123.126.97.2;
- envelope-from=ruc_gongyuanjun@163.com; helo=mail-m972.mail.163.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 04:25:36
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kfi1i-00082s-Me; Thu, 19 Nov 2020 06:22:58 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2119)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kfi1c-0007b3-98; Thu, 19 Nov 2020 06:22:58 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CcHMh4PzSz566J;
+ Thu, 19 Nov 2020 19:22:24 +0800 (CST)
+Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Thu, 19 Nov 2020 19:22:39 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.128]) by
+ dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0487.000;
+ Thu, 19 Nov 2020 19:22:32 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Hao Wu <wuhaotsh@google.com>, Havard Skinnemoen
+ <hskinnemoen@google.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, "Euler
+ Robot" <euler.robot@huawei.com>
+Subject: RE: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
+ g_autofree need to be initialized
+Thread-Topic: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by
+ g_autofree need to be initialized
+Thread-Index: AQHWvaH7LAlqtNTNq0CJSxOYz75c7KnOmeyAgACGw+D//3zDgIAArxFw
+Date: Thu, 19 Nov 2020 11:22:31 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BA869D1@dggemm531-mbx.china.huawei.com>
+References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
+ <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
+ <CAFEAcA81CeW=RdrABuAZx2pL6L-nE_AaQ2vbryqm7amUbRjM-g@mail.gmail.com>
+ <7412CDE03601674DA8197E2EBD8937E83BA86327@dggemm531-mbx.china.huawei.com>
+ <CAFEAcA9nwqj-7bDa5oPo9z8h9uaeHAC0dX-KdeZ6hkgZJQDqZA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9nwqj-7bDa5oPo9z8h9uaeHAC0dX-KdeZ6hkgZJQDqZA@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 06:22:41
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,39 +69,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 09:25:56 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 11:22:59 -0000
 
-From: yuanjungong <ruc_gongyuanjun@163.com>
-
-Close fd before returning.
-
-Buglink: https://bugs.launchpad.net/qemu/+bug/1904486
-Signed-off-by: yuanjungong <ruc_gongyuanjun@163.com>
----
- net/tap.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/net/tap.c b/net/tap.c
-index c46ff66..fe95fa7 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -817,6 +817,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
-         if (ret < 0) {
-             error_setg_errno(errp, -ret, "%s: Can't use file descriptor %d",
-                              name, fd);
-+            close(fd);
-             return -1;
-         }
- 
-@@ -831,6 +832,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
-                          vhostfdname, vnet_hdr, fd, &err);
-         if (err) {
-             error_propagate(errp, err);
-+            close(fd);
-             return -1;
-         }
-     } else if (tap->has_fds) {
--- 
-2.17.1
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBUaHVyc2RheSwgTm92ZW1iZXIg
+MTksIDIwMjAgNDozOSBQTQ0KPiBUbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
+ZWkuY29tPg0KPiBDYzogUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBR
+RU1VIFRyaXZpYWwNCj4gPHFlbXUtdHJpdmlhbEBub25nbnUub3JnPjsgSGFvIFd1IDx3dWhhb3Rz
+aEBnb29nbGUuY29tPjsgSGF2YXJkDQo+IFNraW5uZW1vZW4gPGhza2lubmVtb2VuQGdvb2dsZS5j
+b20+OyBaaGFuZ2hhaWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBU
+aG9tYXMgSHV0aCA8dGh1dGhAcmVkaGF0LmNvbT47DQo+IExhdXJlbnQgVml2aWVyIDxsdml2aWVy
+QHJlZGhhdC5jb20+OyBFdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3Vi
+amVjdDogUmU6IFtQQVRDSC1mb3ItNS4yPyAxLzJdIHRlc3RzL3F0ZXN0OiB2YXJpYWJsZSBkZWZp
+bmVkIGJ5IGdfYXV0b2ZyZWUNCj4gbmVlZCB0byBiZSBpbml0aWFsaXplZA0KPiANCj4gT24gVGh1
+LCAxOSBOb3YgMjAyMCBhdCAwODozNSwgQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
+ZWkuY29tPg0KPiB3cm90ZToNCj4gPg0KPiA+ID4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0N
+Cj4gPiA+ID4gIHN0YXRpYyB2b2lkIHRpbV9hZGRfdGVzdChjb25zdCBjaGFyICpuYW1lLCBjb25z
+dCBUZXN0RGF0YSAqdGQsDQo+ID4gPiA+IEdUZXN0RGF0YUZ1bmMgZm4pICB7DQo+ID4gPiA+IC0g
+ICAgZ19hdXRvZnJlZSBjaGFyICpmdWxsX25hbWU7DQo+ID4gPiA+IC0NCj4gPiA+ID4gLSAgICBm
+dWxsX25hbWUgPQ0KPiBnX3N0cmR1cF9wcmludGYoIm5wY203eHhfdGltZXIvdGltWyVkXS90aW1l
+clslZF0vJXMiLA0KPiA+ID4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aW1f
+aW5kZXgodGQtPnRpbSksDQo+ID4gPiB0aW1lcl9pbmRleCh0ZC0+dGltZXIpLA0KPiA+ID4gPiAt
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuYW1lKTsNCj4gPiA+ID4gKyAgICBnX2F1
+dG9mcmVlIGNoYXIgKmZ1bGxfbmFtZSA9IGdfc3RyZHVwX3ByaW50ZigNCj4gPiA+ID4gKyAgICAg
+ICAgIm5wY203eHhfdGltZXIvdGltWyVkXS90aW1lclslZF0vJXMiLCB0aW1faW5kZXgodGQtPnRp
+bSksDQo+ID4gPiA+ICsgICAgICAgIHRpbWVyX2luZGV4KHRkLT50aW1lciksIG5hbWUpOw0KPiA+
+ID4NCj4gPiA+IFdoaWNoIGNvbXBpbGVyIGlzIHNvIHVuaW50ZWxsaWdlbnQgdGhhdCBpdCBjYW5u
+b3Qgc2VlIHRoYXQgYQ0KPiA+ID4gZGVjbGFyYXRpb24gaW1tZWRpYXRlbHkgZm9sbG93ZWQgYnkg
+YW4gYXNzaWdubWVudCBtdXN0IGFsd2F5cyBpbml0aWFsaXplDQo+IHRoZSB2YXJpYWJsZSA/Pz8N
+Cj4gPiA+DQo+ID4gSGkgUGV0ZXIsDQo+ID4gICBHbGliIHJlcXVpcmVzIHRoYXQgYWxsIGdfYXV0
+byogbWFjcm9zIG11c3QgYmUgaW5pdGlhbGl6ZWQuDQo+ID4NCj4gPiBodHRwczovL2RldmVsb3Bl
+ci5nbm9tZS5vcmcvZ2xpYi9zdGFibGUvZ2xpYi1NaXNjZWxsYW5lb3VzLU1hY3Jvcy5odG1sDQo+
+ID4gI2ctYXV0b2ZyZWUNCj4gDQo+IFllcywgYW5kIHdlIGluaXRpYWxpemUgaXQgd2l0aCB0aGUg
+ImZ1bGxfbmFtZSA9IC4uLiIgbGluZS4NCj4gVGhlIGdfYXV0b2ZyZWUgZG9jdW1lbnRhdGlvbiBz
+YXlzICJ0aGlzIG1hY3JvIGhhcyBzaW1pbGFyIGNvbnN0cmFpbnRzIGFzDQo+IGdfYXV0b3B0cigp
+IiwgYW5kIHRoZSBnX2F1dG9wdHIoKSBkb2N1bWVudGF0aW9uIHNheXMgIllvdSBtdXN0IGluaXRp
+YWxpc2UgdGhlDQo+IHZhcmlhYmxlIGluIHNvbWUgd2F5IOKAlCBlaXRoZXIgYnkgdXNlIG9mIGFu
+IGluaXRpYWxpc2VyIG9yIGJ5IGVuc3VyaW5nIHRoYXQgaXQgaXMNCj4gYXNzaWduZWQgdG8gdW5j
+b25kaXRpb25hbGx5IGJlZm9yZSBpdCBnb2VzIG91dCBvZiBzY29wZS4iDQo+IA0KPiBJbiB0aGlz
+IGNhc2UgdGhlIHRlc3QgY29kZSBpcyBkb2luZyB0aGUgc2Vjb25kIG9mIHRob3NlIHR3byB0aGlu
+Z3MuDQoNCkVtbSwgbWF5YmUgSSBkaWRuJ3QgZ2V0IGl0IHJpZ2h0LiBJJ3ZlIHRyaWVkIHNvbWV0
+aGluZyBhcyBmb2xsb3dpbmc6DQpUaGVyZSBhcmUgdGhyZWUgcGllY2VzIG9mIGNvZGUgY29tcGxp
+ZWQgaW4gR0NDOS4zIGFuZCBHQ0M3LjMuDQpDb2RlMe+8mg0KICAgZ19hdXRvZnJlZSBjaGFyICpm
+dWxsX25hbWU7DQogICBmdWxsX25hbWUgPSBnX3N0cmR1cF9wcmludGYoIm5wY203eHhfdGltZXIi
+KTsNCg0KQ29kZTI6DQogICBnX2F1dG9mcmVlIGNoYXIgKmZ1bGxfbmFtZSA9IGdfc3RyZHVwX3By
+aW50ZigibnBjbTd4eF90aW1lciIpOw0KDQpDb2RlM++8mg0KICAgZ19hdXRvZnJlZSBjaGFyICpm
+dWxsX25hbWU7DQogICBmdWxsX25hbWUgPSBOVUxMOw0KDQpUaGUgcmVzdWx0IGlzIGFzIGZvbGxv
+d3M6DQogIENvZGUxOiBBbiB3YXJuaWcgaXMgZ2VuZXJhdGVkIGZvciBHQ0M3LjMgb3IgR0NDOS4z
+Lg0KDQogIENvZGUyIGFuZCBDb2RlMzogbm8gYW55IHdhcm5pZyB3aGV0aGVyIGNvbXBpbGVyIGlz
+IEdDQzcuMyBvciBHQ0M5LjMuDQoNCkkgY2Fubm90IGV4cGxhaW4gd2h5IHRoZSBDb2RlMSB3YXJu
+aW5nIGlzIGdlbmVyYXRlZC4gQnV0IGl0IGFsd2F5cyBnZW5lcmF0ZXMgd2FybmluZyBvbiB0aGUg
+R0NDIGNvbXBpbGVyLg0KDQpUaGFua3MsDQpDaGVuIFF1bg0KDQoNCg0KDQoNCg0KDQoNCg0KDQo=
 
