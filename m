@@ -1,59 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfdO0-0000Hd-H1
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 01:25:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49680)
+	id 1kfemn-00077v-4H
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 02:55:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1kfdNz-0000GK-6T
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 01:25:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42925)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kfeml-00077h-Uy
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 02:55:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51641)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1kfdNw-0003Ji-5U
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 01:25:38 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kfemi-0000aJ-OE
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 02:55:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605767133;
+ s=mimecast20190719; t=1605772513;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cHuIDT+ETt8vmZjczhgnL7FJHgEVsd0hjmInHlmg/hs=;
- b=JUa3Yc7zGSN8eMWe91LV7y+M2vVRCW9dgXeHfdisKcP0R5mgI2MfMXVf6IktrWq2fl8Ngj
- zYUCZNlsVoWb8bC7TAd3WToes+jYoRfeIaPzjXhhsy1JcTsm21R0sD07T5wkOUjZICJPOR
- VmCGAzaopCSgCLSwRxsq1WHBFVxxAsE=
+ bh=Vh7Te/NwyVq7zOA1EUnbBODksjd9sq49sv5NgK1BvEk=;
+ b=EUOmhT2017YgKqp3WUCIipYGHX/7mhvtPLnC/ZcjN2xhLsqJGvnuZGwjUr9s7ljytDhOBK
+ XllJBiNJJPLkYnsFRmrY6TZtUB+4Y73nKrT8AlgqIuy6ZfKAwainw1NG+6RIzX3nm1Muju
+ KCkVHZlEVxhEzsYQiwYPEuN85tPnM28=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-374-tYZutqdLMrWpkaacy76iLA-1; Thu, 19 Nov 2020 01:25:30 -0500
-X-MC-Unique: tYZutqdLMrWpkaacy76iLA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-388-vhifZ1bJNMOtd3EshILjug-1; Thu, 19 Nov 2020 02:55:11 -0500
+X-MC-Unique: vhifZ1bJNMOtd3EshILjug-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 246A98144E2;
- Thu, 19 Nov 2020 06:25:29 +0000 (UTC)
-Received: from [10.72.13.63] (ovpn-13-63.pek2.redhat.com [10.72.13.63])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7398160636;
- Thu, 19 Nov 2020 06:25:27 +0000 (UTC)
-Subject: Re: [PATCH 1/1] /net/tap.c: Fix a memory leak Close fd before
- returning. Buglink: https://bugs.launchpad.net/qemu/+bug/1904486
-To: ruc_gongyuanjun@163.com, qemu-trivial@nongnu.org
-References: <20201118020703.26987-1-ruc_gongyuanjun@163.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <138eb247-9d6b-3bfb-0b0a-993153168bed@redhat.com>
-Date: Thu, 19 Nov 2020 14:25:25 +0800
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7638A80048F;
+ Thu, 19 Nov 2020 07:55:09 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-109.ams2.redhat.com [10.36.113.109])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0F6BD19C4F;
+ Thu, 19 Nov 2020 07:55:06 +0000 (UTC)
+Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
+ need to be initialized
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: lvivier@redhat.com, peter.maydell@linaro.org,
+ zhang.zhanghailiang@huawei.com, hskinnemoen@google.com, wuhaotsh@google.com,
+ Euler Robot <euler.robot@huawei.com>
+References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
+ <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
+ <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <5abd4a9c-d8bf-6918-26fa-7921f6c08195@redhat.com>
+Date: Thu, 19 Nov 2020 08:55:05 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201118020703.26987-1-ruc_gongyuanjun@163.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jasowang@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 23:36:20
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -64,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,45 +82,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 06:25:39 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 07:55:20 -0000
 
+On 18/11/2020 13.13, Philippe Mathieu-Daudé wrote:
+> On 11/18/20 12:56 PM, Chen Qun wrote:
+>> According to the glib function requirements, we need initialise
+>>  the variable. Otherwise there will be compilation warnings:
+>>
+>> glib-autocleanups.h:28:3: warning: ‘full_name’ may be
+>> used uninitialized in this function [-Wmaybe-uninitialized]
+>>    28 |   g_free (*pp);
+>>       |   ^~~~~~~~~~~~
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>> ---
+>>  tests/qtest/npcm7xx_timer-test.c | 8 +++-----
+>>  1 file changed, 3 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
+>> index f08b0cd62a..83774a5b90 100644
+>> --- a/tests/qtest/npcm7xx_timer-test.c
+>> +++ b/tests/qtest/npcm7xx_timer-test.c
+>> @@ -512,11 +512,9 @@ static void test_disable_on_expiration(gconstpointer test_data)
+>>   */
+>>  static void tim_add_test(const char *name, const TestData *td, GTestDataFunc fn)
+>>  {
+> 
+> Or:
+> 
+>> -    g_autofree char *full_name;
+>   +    g_autofree char *full_name = NULL;
 
-On 2020/11/18 上午10:07, ruc_gongyuanjun@163.com wrote:
-> From: yuanjungong <ruc_gongyuanjun@163.com>
->
-> Signed-off-by: yuanjungong <ruc_gongyuanjun@163.com>
-> ---
->   net/tap.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/net/tap.c b/net/tap.c
-> index c46ff66..fe95fa7 100644
-> --- a/net/tap.c
-> +++ b/net/tap.c
-> @@ -817,6 +817,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
->           if (ret < 0) {
->               error_setg_errno(errp, -ret, "%s: Can't use file descriptor %d",
->                                name, fd);
-> +            close(fd);
->               return -1;
->           }
->   
-> @@ -831,6 +832,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
->                            vhostfdname, vnet_hdr, fd, &err);
->           if (err) {
->               error_propagate(errp, err);
-> +            close(fd);
->               return -1;
->           }
->       } else if (tap->has_fds) {
+I think we better go with the current version of the patch - otherwise a
+supersmart new compiler version might warn again that the NULL that we
+assign here is never used...
 
-
-Hi:
-
-Please add resend with correct title and commit log for this patch as 
-what other patch did.
-
-Thanks
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
