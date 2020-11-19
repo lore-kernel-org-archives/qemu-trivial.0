@@ -1,68 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kflbj-0005N9-EM
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 10:12:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43858)
+	id 1kfqAB-0002K8-Hj
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 15:04:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1kfkgJ-0000UD-80; Thu, 19 Nov 2020 09:13:03 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:46108)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kfq9h-0002Ao-Ca; Thu, 19 Nov 2020 15:03:45 -0500
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:37856)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1kfkgG-00015X-6L; Thu, 19 Nov 2020 09:13:02 -0500
-Received: by mail-io1-xd43.google.com with SMTP id r1so6183952iob.13;
- Thu, 19 Nov 2020 06:12:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kfq9I-0002wC-Ht; Thu, 19 Nov 2020 15:03:44 -0500
+Received: by mail-io1-xd44.google.com with SMTP id d17so7472831ion.4;
+ Thu, 19 Nov 2020 12:02:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=A6vEfUEhdxl+0UI83REm74rdcBdx9eu+L5TRh7d5k8o=;
- b=rjiFEuVxqyukpzNw2gc5SG6u0TCNLcJCrGAyFLbhsP8Rv/nC2upYEbocvV0AyGaycC
- 5+jjnu7hV72b2h8uKZCvW030i3whkURt20sP3XnP+GZPwk8hkh1SZdlrFYaf8x3E4089
- EWASYZiwGtAaarIh7Pkt/PzuXPWLgSNI54LFP++MCrK2s1CoVZ29B+NL0uJ797Akcb4j
- U2Vvq3GCSaHG7pzA3E8DyaaqZ6ABRAJMPjPRcQ910BAUIychRx4noZTDl9i5aps4L1oz
- G/XpGWFEtE8cGk8ojhNxLnBbfSDitGqHqGgCVL8I9XQIZEH/PvffS9Xkso5wxWpVGM1m
- mPlQ==
+ :cc; bh=qPTWeo6sJ8+COkYnW7wddR21z8R0rLglTzXlni0Wlcw=;
+ b=AnkfTQEP917cEoa4AazK6DrUW1sUvskak/v41iWRUymNXJhn2Xi/gy6zp7o55RgU8r
+ /x/1alsFVWSB2eFI/QSADD9Uy166bmPsJGOm6L+Qr7mRTaqVrk933ptKpxeifeCma/1F
+ 7D8fNwzYfNBJoVcCvdPd6VKUw34fVltqNll0nQ+OGpKbDFjWBVnKFE6O8CplpfJoMGaf
+ kZL3irH3TbMLudhBFdJN7eREGblpxHSQohNgLP/BNMjLlii2zG8HxQ/yZWlXCKyd+nmI
+ etNi3C+NeKEG+pCYMz4RJMDBAqNqMXS50afqDS15hzly3l27uHtIzaOkh0QDQGlnKTPX
+ 25rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=A6vEfUEhdxl+0UI83REm74rdcBdx9eu+L5TRh7d5k8o=;
- b=ZBvmLMujz0feV8Z80KvkrlkgrQGXVJpp8H33iIuhq5OAohh3isWXHge2zvBdGiLACz
- TaO1ZqEBeEOKrwyI/YfUbjaH1FRjznn3qR/E7WFPPP8pc5ZUxW/m0pSJVyIGdEYWeDjk
- Duq8+KZPnrUMq1Jqx1ZzNron9sOWQi9iOhRLTWOemNvgOV+EzyHoXMfXvG9c0wsn08Q/
- OQ64/Ngw2lMUsNmyhqLwNoPhfHBgPZnfK32EFjUpvjnVmfftS47XJxw1dqAclmJCglqi
- MAAeTixSiX43NdAzInVwQsMsXpJFtlWJ0/NrbJ/WyAPBRL3NN70Tk3gRIdzxjIntwW8k
- s1fQ==
-X-Gm-Message-State: AOAM530TEcWlJrQZtZfeHK5N3gI4jYr/rVRSelZtBoB3KvOkEaTFUDxL
- q094F8snB1/RxcokosxSYjnDJ7w7Efg37ZpHosE=
-X-Google-Smtp-Source: ABdhPJyQe2T+9UmDevo1348FNGImPfclFlDsWRF/dhGDnLlkDMoasvHx4QhcQ91bC70ylTxDcz41jatNuU0XvIHhJJ8=
-X-Received: by 2002:a5d:8592:: with SMTP id f18mr11577347ioj.67.1605795177763; 
- Thu, 19 Nov 2020 06:12:57 -0800 (PST)
+ bh=qPTWeo6sJ8+COkYnW7wddR21z8R0rLglTzXlni0Wlcw=;
+ b=A2rbXsu3WyyEsVzJ4jdly0MDEXT4xOgAX+TqhDCKDrUPXh0OGRnEmXUxlDL4sfM1ae
+ lNK99tmMuGKh/fHtVpUgmCPgaPYadDS9BgqyzpjRdievfDI2yqxvw+NwXIInF/pMBuBO
+ yhuaLMAHIVdOXm+oBYcCKyXpC82MxkOvlh7CHuW1dCSR+xD9qpbm9UhBgoM02emyuHuW
+ q2xT44/fn2MfbMKg41VtuU4phO7jBk6uHAsDZUMmUS/ZGME84tAJQ4/ffyJ4efwT1o+y
+ oRZpBW54HVpqea9+vdYbuC1+VZyhmbe6xU4I++qYcrHWqb5aSvAsk621V5lnmqSYZc3n
+ mqeA==
+X-Gm-Message-State: AOAM531iKUzIT3ViqBNL9Qu1HsJQPnm8jmbHAUmd7buUvZD+FQ6c46Iw
+ gzmuHa4ftaTnKFd0+4Txl+yHfZ07pdkcqt4kF9Q=
+X-Google-Smtp-Source: ABdhPJxlc4+dZHpHBxvj1J5zk1V/gG2ZK3FxDn4QrJYCG6er0lF8RcB4/i13jUW8zHhXNyyW/ENQ8sa/qxxiOYj1bQA=
+X-Received: by 2002:a6b:b30b:: with SMTP id c11mr7232104iof.175.1605816169485; 
+ Thu, 19 Nov 2020 12:02:49 -0800 (PST)
 MIME-Version: 1.0
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-3-ganqixin@huawei.com>
-In-Reply-To: <20201115184903.1292715-3-ganqixin@huawei.com>
-From: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-Date: Thu, 19 Nov 2020 15:12:46 +0100
-Message-ID: <CAM9Jb+hf=mcuN_fYYxMS4s-ha2A8Hkqpnjz=-oTtk7D9bcGVDQ@mail.gmail.com>
-Subject: Re: [PATCH 02/13] virtio-pmem: put it into the 'storage' category
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
- kuhn.chenqun@huawei.com, 
- thuth@redhat.com, zhang.zhanghailiang@huawei.com, 
- "Michael S . Tsirkin" <mst@redhat.com>
+References: <20201116140148.2850128-1-zhangxinhao1@huawei.com>
+In-Reply-To: <20201116140148.2850128-1-zhangxinhao1@huawei.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 19 Nov 2020 11:50:25 -0800
+Message-ID: <CAKmqyKPz3Lfc2JjPRkeQReWpPsY=thSoT6jPUM8SjcqM8mehZg@mail.gmail.com>
+Subject: Re: [PATCH] hw/core/register.c: Don't use '#' flag of printf format
+To: Xinhao Zhang <zhangxinhao1@huawei.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ AlexChen <alex.chen@huawei.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ "dengkai (A)" <dengkai1@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=pankaj.gupta.linux@gmail.com; helo=mail-io1-xd43.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 19 Nov 2020 10:12:18 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,30 +71,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 14:13:04 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 20:04:07 -0000
 
-> The category of the virtio-pmem device is not set, put it into the 'storage'
-> category.
+On Mon, Nov 16, 2020 at 6:07 AM Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
 >
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> ---
->  hw/virtio/virtio-pmem.c | 1 +
->  1 file changed, 1 insertion(+)
+> Fix code style. Don't use '#' flag of printf format ('%#') in
+> format strings, use '0x' prefix instead
 >
-> diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
-> index ddb0125901..98b3139cd0 100644
-> --- a/hw/virtio/virtio-pmem.c
-> +++ b/hw/virtio/virtio-pmem.c
-> @@ -175,6 +175,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
->
->      vpc->fill_device_info = virtio_pmem_fill_device_info;
->      vpc->get_memory_region = virtio_pmem_get_memory_region;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  }
->
->  static TypeInfo virtio_pmem_info = {
+> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+> Signed-off-by: Kai Deng <dengkai1@huawei.com>
 
-Reviewed-by: Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
+Thanks for the patch!
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+I'm going to take this via the RISC-V tree when the 6.0 development
+process starts.
+
+Alistair
+
+> ---
+>  hw/core/register.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/core/register.c b/hw/core/register.c
+> index 31038bd7cc..7986913130 100644
+> --- a/hw/core/register.c
+> +++ b/hw/core/register.c
+> @@ -80,7 +80,7 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
+>
+>      if (!ac || !ac->name) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: write to undefined device state "
+> -                      "(written value: %#" PRIx64 ")\n", prefix, val);
+> +                      "(written value: 0x%" PRIx64 ")\n", prefix, val);
+>          return;
+>      }
+>
+> @@ -89,14 +89,14 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
+>      test = (old_val ^ val) & ac->rsvd;
+>      if (test) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: change of value in reserved bit"
+> -                      "fields: %#" PRIx64 ")\n", prefix, test);
+> +                      "fields: 0x%" PRIx64 ")\n", prefix, test);
+>      }
+>
+>      test = val & ac->unimp;
+>      if (test) {
+>          qemu_log_mask(LOG_UNIMP,
+> -                      "%s:%s writing %#" PRIx64 " to unimplemented bits:" \
+> -                      " %#" PRIx64 "\n",
+> +                      "%s:%s writing 0x%" PRIx64 " to unimplemented bits:" \
+> +                      " 0x%" PRIx64 "\n",
+>                        prefix, reg->access->name, val, ac->unimp);
+>      }
+>
+> @@ -112,7 +112,7 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
+>      }
+>
+>      if (debug) {
+> -        qemu_log("%s:%s: write of value %#" PRIx64 "\n", prefix, ac->name,
+> +        qemu_log("%s:%s: write of value 0x%" PRIx64 "\n", prefix, ac->name,
+>                   new_val);
+>      }
+>
+> @@ -150,7 +150,7 @@ uint64_t register_read(RegisterInfo *reg, uint64_t re, const char* prefix,
+>      }
+>
+>      if (debug) {
+> -        qemu_log("%s:%s: read of value %#" PRIx64 "\n", prefix,
+> +        qemu_log("%s:%s: read of value 0x%" PRIx64 "\n", prefix,
+>                   ac->name, ret);
+>      }
+>
+> @@ -193,7 +193,7 @@ void register_write_memory(void *opaque, hwaddr addr,
+>
+>      if (!reg) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented register " \
+> -                      "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
+> +                      "at address: 0x%" PRIx64 "\n", reg_array->prefix, addr);
+>          return;
+>      }
+>
+> @@ -222,7 +222,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
+>
+>      if (!reg) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented register " \
+> -                      "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
+> +                      "at address: 0x%" PRIx64 "\n", reg_array->prefix, addr);
+>          return 0;
+>      }
+>
+> --
+> 2.29.0-rc1
+>
+>
 
