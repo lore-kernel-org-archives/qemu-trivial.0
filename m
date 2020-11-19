@@ -1,75 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfemn-00077v-4H
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 02:55:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37782)
+	id 1kffH6-0007qv-4S
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 03:26:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kfeml-00077h-Uy
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 02:55:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51641)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kfemi-0000aJ-OE
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 02:55:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605772513;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vh7Te/NwyVq7zOA1EUnbBODksjd9sq49sv5NgK1BvEk=;
- b=EUOmhT2017YgKqp3WUCIipYGHX/7mhvtPLnC/ZcjN2xhLsqJGvnuZGwjUr9s7ljytDhOBK
- XllJBiNJJPLkYnsFRmrY6TZtUB+4Y73nKrT8AlgqIuy6ZfKAwainw1NG+6RIzX3nm1Muju
- KCkVHZlEVxhEzsYQiwYPEuN85tPnM28=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-388-vhifZ1bJNMOtd3EshILjug-1; Thu, 19 Nov 2020 02:55:11 -0500
-X-MC-Unique: vhifZ1bJNMOtd3EshILjug-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7638A80048F;
- Thu, 19 Nov 2020 07:55:09 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-109.ams2.redhat.com [10.36.113.109])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0F6BD19C4F;
- Thu, 19 Nov 2020 07:55:06 +0000 (UTC)
-Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
- need to be initialized
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: lvivier@redhat.com, peter.maydell@linaro.org,
- zhang.zhanghailiang@huawei.com, hskinnemoen@google.com, wuhaotsh@google.com,
- Euler Robot <euler.robot@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kffH1-0007p9-AJ
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 03:26:36 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46752)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kffGw-0003u0-RL
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 03:26:34 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id bo9so932875ejb.13
+ for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2020 00:26:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=KapW45sKsnAnywpOYLI8/0VhYYYVNjQmlsW3R9prmG4=;
+ b=OPLWUNCM0CZbZ7IyvcN/0cjgQ+/1gR24YRz4psJFcJOF+F7k7BsWJwu60tn5WEOj3a
+ fuNKdr09opn3dm4vyxtXpWsoQleg/Wqnp0I6TmDHr/MoT9jTVvtFJBPVBI7niRaHuNxf
+ Hg6BdAoZ2B37Fz35OCEADkzyezIoYTTz96SZTmhlT/zn0yYocpTr7MDpbSpsTpbcJr/J
+ F3wmFYsdU5Zm2Odt2M2sq7kVkk+MKTrytvJh5+R8IzFM8lscmQs76X0AmPdWgYZ1u4yB
+ 8a2znVSx1pKYq8ZaUe1iYk1hnGhSAnyYMbJCp0NmtmB6Bs5hufLAEeQREXF96a8VheU5
+ UT1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=KapW45sKsnAnywpOYLI8/0VhYYYVNjQmlsW3R9prmG4=;
+ b=BduAonTv6EjVeCcCLf5mjwI4qhCo6WKPRnQXKjuUKh1UVB39fm6PddEh2jDB+PMK4Z
+ 1XzHnTd8wQefOQvZR0eX/Ls6J/se/CoGfk4f1RbRbwyP+n+xpe7wpGYYA7zTfZ1J4Vao
+ xSBbdXUNWcC14SDtidbYopmXRCbqsHhGqaEqhES9C+TdLqm0vJPtpVtSOKXj98lNgjjH
+ 9DKRX3A7NIhLJlrS/OQPEvnQN+CksYA0Gvu3DCsJoewV1r4XQRbHLbXbTubhsYGy56ts
+ 1o+Cx1Wv+9SsifHoIA7Sb8YcwJezp9VXkSHpixbMMiGvPWlZEGjQBO0Tb0IebmN4aCe0
+ pYoA==
+X-Gm-Message-State: AOAM5307aIOsi9ZpVMHE6WWshb07k+AZnahLUBXkQhOoQ492df+YjgW5
+ tV6T7tpaAo6wY3Ov/1FJ2Wacoax45KCSN31K5sU+Pg==
+X-Google-Smtp-Source: ABdhPJzBJ0a1RKyXGgVUjURhVUjvgEyOiCYlDPmuJs4UESZye+YsfTJyHryTwlDEFmXWLETt6RpMeGgJp8T9UYEJPs8=
+X-Received: by 2002:a17:906:8485:: with SMTP id
+ m5mr28618305ejx.205.1605774388844; 
+ Thu, 19 Nov 2020 00:26:28 -0800 (PST)
+MIME-Version: 1.0
 References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
  <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
- <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <5abd4a9c-d8bf-6918-26fa-7921f6c08195@redhat.com>
-Date: Thu, 19 Nov 2020 08:55:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
-MIME-Version: 1.0
-In-Reply-To: <cd63f998-e3fe-d93f-f515-a47103592e05@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 23:36:20
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+In-Reply-To: <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Nov 2020 08:26:17 +0000
+Message-ID: <CAFEAcA81CeW=RdrABuAZx2pL6L-nE_AaQ2vbryqm7amUbRjM-g@mail.gmail.com>
+Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
+ need to be initialized
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Hao Wu <wuhaotsh@google.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Euler Robot <euler.robot@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,42 +80,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 07:55:20 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 08:26:37 -0000
 
-On 18/11/2020 13.13, Philippe Mathieu-Daudé wrote:
-> On 11/18/20 12:56 PM, Chen Qun wrote:
->> According to the glib function requirements, we need initialise
->>  the variable. Otherwise there will be compilation warnings:
->>
->> glib-autocleanups.h:28:3: warning: ‘full_name’ may be
->> used uninitialized in this function [-Wmaybe-uninitialized]
->>    28 |   g_free (*pp);
->>       |   ^~~~~~~~~~~~
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->> ---
->>  tests/qtest/npcm7xx_timer-test.c | 8 +++-----
->>  1 file changed, 3 insertions(+), 5 deletions(-)
->>
->> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
->> index f08b0cd62a..83774a5b90 100644
->> --- a/tests/qtest/npcm7xx_timer-test.c
->> +++ b/tests/qtest/npcm7xx_timer-test.c
->> @@ -512,11 +512,9 @@ static void test_disable_on_expiration(gconstpointer test_data)
->>   */
->>  static void tim_add_test(const char *name, const TestData *td, GTestDataFunc fn)
->>  {
-> 
-> Or:
-> 
->> -    g_autofree char *full_name;
->   +    g_autofree char *full_name = NULL;
+On Wed, 18 Nov 2020 at 11:57, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
+> According to the glib function requirements, we need initialise
+>  the variable. Otherwise there will be compilation warnings:
+>
+> glib-autocleanups.h:28:3: warning: =E2=80=98full_name=E2=80=99 may be
+> used uninitialized in this function [-Wmaybe-uninitialized]
+>    28 |   g_free (*pp);
+>       |   ^~~~~~~~~~~~
+>
+>  static void tim_add_test(const char *name, const TestData *td, GTestData=
+Func fn)
+>  {
+> -    g_autofree char *full_name;
+> -
+> -    full_name =3D g_strdup_printf("npcm7xx_timer/tim[%d]/timer[%d]/%s",
+> -                                tim_index(td->tim), timer_index(td->time=
+r),
+> -                                name);
+> +    g_autofree char *full_name =3D g_strdup_printf(
+> +        "npcm7xx_timer/tim[%d]/timer[%d]/%s", tim_index(td->tim),
+> +        timer_index(td->timer), name);
 
-I think we better go with the current version of the patch - otherwise a
-supersmart new compiler version might warn again that the NULL that we
-assign here is never used...
+Which compiler is so unintelligent that it cannot see that
+a declaration immediately followed by an assignment must
+always initialize the variable ???
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+thanks
+-- PMM
 
