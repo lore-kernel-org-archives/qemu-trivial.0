@@ -1,75 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kffTG-0003Pm-A8
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 03:39:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49126)
+	id 1kfg63-0006fH-J7
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 04:19:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kffTE-0003PU-Iw
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 03:39:12 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:40150)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kffT8-00008H-GW
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 03:39:12 -0500
-Received: by mail-ej1-x633.google.com with SMTP id oq3so6718137ejb.7
- for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2020 00:39:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=dlLZzA6K9QTuMfGNpdOXP+aZ77ceZwT+wdu0FDc4SMA=;
- b=F2nKAWq6LGim6G1TjM7iC7e1ChfhwWr3B6mK1oGDh+ZEXTPrjb3HR65PGu2Jnt+VVV
- FEo8z+hRYwkeovTbo0TVlN/iJmQVkcG6gCAsBMTrnK+ZNKYg+VOy7oR4GEqlAjwlJa3j
- /PslAP1mRLOtNnSC102FXUmVDAgva0aOfIuYCwy0oa8WjolfP5LXKyXHEh9uReNYKqHq
- czo5XIraQKG7NikM/UhSUfrDrOQPXnWe0OH3Qied2UABAafXoAFiynG4smTxwhO5wBfb
- nnfjgTm1+rLxIg1ZUPRDKx6zdvh0ibOgF9a4Gx178WRHmA55Bw6fl0pyPR6N4Efff4eX
- 6xPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=dlLZzA6K9QTuMfGNpdOXP+aZ77ceZwT+wdu0FDc4SMA=;
- b=W++Ki33fk3mwe7ap87l9NNz5hFPquyWtROslfeATpsWDYT2trYH0siqGqGcsytKJNY
- 24nJNQ0dM2Z77j/bv0NFoA/7ym29ndE0BtlTIXmmWDe9IjgmSNKR5rm+n2R0ODdAQ5l4
- RSxwyTzrt0FHvMC0gf09ygAtwv8RsT0as23sGnQi4wrh1sLe82kPyu6LFIkePXl3yXuN
- vgza9a8ObX781uYub+L3JYY8MkD5y5aTH+HXFcq7YPZylvn95BSv93UiBJ/Q8l6v7g8N
- F2Jlsnd6WLCf7IgykMXjNlV1+0WG3JuDUjIostU12v3EdcI9HXS07BsszPWTxFSJK+VH
- QFDw==
-X-Gm-Message-State: AOAM530X1NQnpMMlbq3U690g6WT9uhqLZNoaXYOlWXT41Glmv3P6QGqg
- jOkuFbk201IEIhmWqgCOgIg5Qo9wGzgpXAkyslNlzw==
-X-Google-Smtp-Source: ABdhPJwr5Y1200sPvl4PzNXFJKIgWa5yzUIL7BU1zorhk7OmNG+evGwvLb/qzHiNvTmqwmYOZAGWVeVQ6XnMActtNKo=
-X-Received: by 2002:a17:906:1542:: with SMTP id
- c2mr17184449ejd.382.1605775144864; 
- Thu, 19 Nov 2020 00:39:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfg61-0006f1-IL; Thu, 19 Nov 2020 04:19:17 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2798)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfg5x-000685-U4; Thu, 19 Nov 2020 04:19:17 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CcDd13323zkYv5;
+ Thu, 19 Nov 2020 17:18:45 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 19 Nov 2020 17:18:55 +0800
+Message-ID: <5FB6387E.9090407@huawei.com>
+Date: Thu, 19 Nov 2020 17:18:54 +0800
+From: Alex Chen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-References: <20201118115646.2461726-1-kuhn.chenqun@huawei.com>
- <20201118115646.2461726-2-kuhn.chenqun@huawei.com>
- <CAFEAcA81CeW=RdrABuAZx2pL6L-nE_AaQ2vbryqm7amUbRjM-g@mail.gmail.com>
- <7412CDE03601674DA8197E2EBD8937E83BA86327@dggemm531-mbx.china.huawei.com>
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83BA86327@dggemm531-mbx.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Nov 2020 08:38:53 +0000
-Message-ID: <CAFEAcA9nwqj-7bDa5oPo9z8h9uaeHAC0dX-KdeZ6hkgZJQDqZA@mail.gmail.com>
-Subject: Re: [PATCH-for-5.2? 1/2] tests/qtest: variable defined by g_autofree
- need to be initialized
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Hao Wu <wuhaotsh@google.com>, Havard Skinnemoen <hskinnemoen@google.com>, 
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Euler Robot <euler.robot@huawei.com>
+To: =?UTF-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+CC: <quintela@redhat.com>, <pbonzini@redhat.com>, <qemu-trivial@nongnu.org>,
+ <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
+ <zhang.zhanghailiang@huawei.com>
+Subject: Re: [PATCH] display/vmware_vga: Fix bad printf format specifiers
+References: <20201119030151.87393-1-alex.chen@huawei.com>
+ <7eca99aa-54c9-de70-cb72-25cd6f805128@redhat.com>
+In-Reply-To: <7eca99aa-54c9-de70-cb72-25cd6f805128@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 04:19:06
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,44 +55,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 08:39:12 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 09:19:17 -0000
 
-On Thu, 19 Nov 2020 at 08:35, Chenqun (kuhn) <kuhn.chenqun@huawei.com> wrot=
-e:
->
-> > -----Original Message-----
-> > >  static void tim_add_test(const char *name, const TestData *td,
-> > > GTestDataFunc fn)  {
-> > > -    g_autofree char *full_name;
-> > > -
-> > > -    full_name =3D g_strdup_printf("npcm7xx_timer/tim[%d]/timer[%d]/%=
-s",
-> > > -                                tim_index(td->tim),
-> > timer_index(td->timer),
-> > > -                                name);
-> > > +    g_autofree char *full_name =3D g_strdup_printf(
-> > > +        "npcm7xx_timer/tim[%d]/timer[%d]/%s", tim_index(td->tim),
-> > > +        timer_index(td->timer), name);
-> >
-> > Which compiler is so unintelligent that it cannot see that a declaratio=
-n
-> > immediately followed by an assignment must always initialize the variab=
-le ???
-> >
-> Hi Peter,
->   Glib requires that all g_auto* macros must be initialized.
->   https://developer.gnome.org/glib/stable/glib-Miscellaneous-Macros.html#=
-g-autofree
+Hi Philippe,
 
-Yes, and we initialize it with the "full_name =3D ..." line.
-The g_autofree documentation says "this macro has similar constraints
-as g_autoptr()", and the g_autoptr() documentation says
-"You must initialise the variable in some way =E2=80=94 either by use of an
-initialiser or by ensuring that it is assigned to unconditionally
-before it goes out of scope."
+On 2020/11/19 14:16, Philippe Mathieu-Daudé wrote:
+> Hi Alex,
+> 
+> On 11/19/20 4:01 AM, Alex Chen wrote:
+>> We should use printf format specifier "%u" instead of "%d" for
+>> argument of type "unsigned int".
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>> ---
+>>  hw/display/vmware_vga.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+>> index bef0d7d69a..f93bbe15c2 100644
+>> --- a/hw/display/vmware_vga.c
+>> +++ b/hw/display/vmware_vga.c
+>> @@ -534,7 +534,7 @@ static inline void vmsvga_cursor_define(struct vmsvga_state_s *s,
+>>  #endif
+>>          break;
+>>      default:
+>> -        fprintf(stderr, "%s: unhandled bpp %d, using fallback cursor\n",
+>> +        fprintf(stderr, "%s: unhandled bpp %u, using fallback cursor\n",
+>>                  __func__, c->bpp);
+> 
+> The format fix is correct, but since you change that line,
+> "fprintf(stderr)" is old code, nowadays we prefer get rid of it
+> by using warn_report() in place (see "qemu/error-report.h").
+> 
 
-In this case the test code is doing the second of those two things.
+Thanks for your review, since fprintf() is used elsewhere in vmware_vga.c,
+I will send a new patch to replace all fprintf() with warn_report() in vmware_vga.c.
+In addition, is there better to use error_report() instead of warn_report() here?
 
-thanks
--- PMM
+Thanks,
+Alex
+
+
 
