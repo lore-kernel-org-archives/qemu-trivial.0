@@ -1,47 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfg63-0006fH-J7
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 04:19:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60594)
+	id 1kfgCW-0000fF-Fz
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 04:26:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kfg61-0006f1-IL; Thu, 19 Nov 2020 04:19:17 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2798)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kfg5x-000685-U4; Thu, 19 Nov 2020 04:19:17 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CcDd13323zkYv5;
- Thu, 19 Nov 2020 17:18:45 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 19 Nov 2020 17:18:55 +0800
-Message-ID: <5FB6387E.9090407@huawei.com>
-Date: Thu, 19 Nov 2020 17:18:54 +0800
-From: Alex Chen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: =?UTF-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-CC: <quintela@redhat.com>, <pbonzini@redhat.com>, <qemu-trivial@nongnu.org>,
- <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>
-Subject: Re: [PATCH] display/vmware_vga: Fix bad printf format specifiers
-References: <20201119030151.87393-1-alex.chen@huawei.com>
- <7eca99aa-54c9-de70-cb72-25cd6f805128@redhat.com>
-In-Reply-To: <7eca99aa-54c9-de70-cb72-25cd6f805128@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 04:19:06
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
+ id 1kfgCR-0000d0-Dn
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 04:25:56 -0500
+Received: from mail-m972.mail.163.com ([123.126.97.2]:53126)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ruc_gongyuanjun@163.com>)
+ id 1kfgCK-0000Ep-1J
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2020 04:25:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=FhJqm6LMcknrGDFitb
+ gA+AMYsMPo0SRChj3tSH47gjI=; b=Gs2HDL6uV9id0fCDi7CM0GjGwSPkPw8QEV
+ NTCwfrYTgo4nerItc5bwR3OVwc5JcUY3wewG6+LzQlZXgv4yvMdHDjb0vV0S6mev
+ 23juGgSZNybNxpWYzx5NnhSM6ifc/om7w0XpBu8ixECAXyk4Xizr3ky6SEF6mk5x
+ 8c45RkILs=
+Received: from localhost.localdomain (unknown [218.106.182.234])
+ by smtp2 (Coremail) with SMTP id GtxpCgDX+pgOOrZfTZWYCA--.19328S4;
+ Thu, 19 Nov 2020 17:25:35 +0800 (CST)
+From: ruc_gongyuanjun@163.com
+To: qemu-trivial@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>,
+	yuanjungong <ruc_gongyuanjun@163.com>
+Subject: [PATCH 1/1] /net/tap.c: Fix a memory leak
+Date: Thu, 19 Nov 2020 17:25:32 +0800
+Message-Id: <20201119092532.20215-1-ruc_gongyuanjun@163.com>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: GtxpCgDX+pgOOrZfTZWYCA--.19328S4
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Xr47tw18JrW7Ww45Xw13urg_yoW3WwcEgw
+ n7ZFWDGrZ8AF9akrsrZ395KryUCw4UWF97Kw1YyFyfCa1xXws2krs7JF93ZFyxWryakr90
+ kF9Ivayq9ay0kjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRNBTY5UUUUU==
+X-Originating-IP: [218.106.182.234]
+X-CM-SenderInfo: 5uxfsw5rqj53pdqm30i6rwjhhfrp/xtbB0B-h5VUMOtJh-gAAsl
+Received-SPF: pass client-ip=123.126.97.2;
+ envelope-from=ruc_gongyuanjun@163.com; helo=mail-m972.mail.163.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 04:25:36
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,46 +58,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 09:19:17 -0000
+X-List-Received-Date: Thu, 19 Nov 2020 09:25:56 -0000
 
-Hi Philippe,
+From: yuanjungong <ruc_gongyuanjun@163.com>
 
-On 2020/11/19 14:16, Philippe Mathieu-Daudé wrote:
-> Hi Alex,
-> 
-> On 11/19/20 4:01 AM, Alex Chen wrote:
->> We should use printf format specifier "%u" instead of "%d" for
->> argument of type "unsigned int".
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->> ---
->>  hw/display/vmware_vga.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
->> index bef0d7d69a..f93bbe15c2 100644
->> --- a/hw/display/vmware_vga.c
->> +++ b/hw/display/vmware_vga.c
->> @@ -534,7 +534,7 @@ static inline void vmsvga_cursor_define(struct vmsvga_state_s *s,
->>  #endif
->>          break;
->>      default:
->> -        fprintf(stderr, "%s: unhandled bpp %d, using fallback cursor\n",
->> +        fprintf(stderr, "%s: unhandled bpp %u, using fallback cursor\n",
->>                  __func__, c->bpp);
-> 
-> The format fix is correct, but since you change that line,
-> "fprintf(stderr)" is old code, nowadays we prefer get rid of it
-> by using warn_report() in place (see "qemu/error-report.h").
-> 
+Close fd before returning.
 
-Thanks for your review, since fprintf() is used elsewhere in vmware_vga.c,
-I will send a new patch to replace all fprintf() with warn_report() in vmware_vga.c.
-In addition, is there better to use error_report() instead of warn_report() here?
+Buglink: https://bugs.launchpad.net/qemu/+bug/1904486
+Signed-off-by: yuanjungong <ruc_gongyuanjun@163.com>
+---
+ net/tap.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks,
-Alex
-
+diff --git a/net/tap.c b/net/tap.c
+index c46ff66..fe95fa7 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -817,6 +817,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
+         if (ret < 0) {
+             error_setg_errno(errp, -ret, "%s: Can't use file descriptor %d",
+                              name, fd);
++            close(fd);
+             return -1;
+         }
+ 
+@@ -831,6 +832,7 @@ int net_init_tap(const Netdev *netdev, const char *name,
+                          vhostfdname, vnet_hdr, fd, &err);
+         if (err) {
+             error_propagate(errp, err);
++            close(fd);
+             return -1;
+         }
+     } else if (tap->has_fds) {
+-- 
+2.17.1
 
 
