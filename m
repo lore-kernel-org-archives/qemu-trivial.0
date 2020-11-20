@@ -1,64 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kg6ik-0005Je-Kd
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Nov 2020 08:45:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41310)
+	id 1kg9SX-00069x-RL
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Nov 2020 11:40:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kg6ii-0005FF-Qg
- for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 08:45:00 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:33350)
+ id 1kg9SV-00064c-FI
+ for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 11:40:27 -0500
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:38037)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kg6ig-0006uw-VY
- for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 08:45:00 -0500
-Received: by mail-ed1-x530.google.com with SMTP id k4so9594705edl.0
- for <qemu-trivial@nongnu.org>; Fri, 20 Nov 2020 05:44:58 -0800 (PST)
+ id 1kg9ST-0000oj-Qn
+ for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 11:40:27 -0500
+Received: by mail-ej1-x642.google.com with SMTP id a16so13760280ejj.5
+ for <qemu-trivial@nongnu.org>; Fri, 20 Nov 2020 08:40:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=N7WKqA9zpurRykd5uLpJ/XSo1eU6mxFHkZEw4VajoEc=;
- b=QOClg52iF0nwGZIy3gsVbpWmiJT8GG+ivktoYqDALIbMwzV9yy3NrSHTouacSMb8he
- Q1oZUvuH1771PF6SUuQ0lgsntcZx0MJTievS+dYlEXpvFg5C92W2rVHou6NYwsh3jSU5
- kh4viuvxA1FLMK+9Sc28Tmt4kLPK8hj3VE3uz5t2be/Nbj5YPMp4dS7svQUFLKuSmxJD
- RvmM1p+fAhRV1ftLXLvWIWZzyi96oUacTM0sOt9tN2eB48as38ASLfEMdNEzaSqkGGGu
- ulywVDRPucsDaP/Ds9vL6Qe2hyDz3Ro/ZJJG52ZePxLery9ohOqKICpp0OAJNZ0PMXLC
- PtNg==
+ :cc; bh=a/eGltTOKyfKvrChaf2BpxhfQrvDgPj4R/DA6RZ4a4w=;
+ b=co0u2cLSQKoR2/vZ0ZwtwhLzJPoGXksZBsHvV8ZQ2TSqaOmeCL9JlzjIqi4vxKs6QE
+ tGHPCe6UATmZzKauisZ1n+Gam8P9V8A8rsgyZSwXBWVGzKebfdGeDxoD+m97syySrPPP
+ Nn0MBsTo6mkkP/s2zIjMfT01tNoV490kQwSmAP/ZVQeoc7WI37IS2NsWVxu0SydsOXzN
+ Vu/c/Gk32n4bKigL7H3f6Vm+PM1J3htT817P3fOLTfgpEjb6dJPx+opprslwnV/0AUJt
+ qlOu8hxR+okMmZwk+z1DRFjkCIuTcwFjUktpdEc4Rd+YzDaGUfP1IDRoD+5QRFZazDwV
+ I3cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=N7WKqA9zpurRykd5uLpJ/XSo1eU6mxFHkZEw4VajoEc=;
- b=NgWaQPTvv1PFe+ALoFa/ETemJNHb1vugtlvNqQZN+MNhExY0Scq4SoYwtNXAorGs8j
- AQePCMTxTAprrcje++4b1TKB1DIlk9MvvSTK7dV5OevSnxCR0spO85YaRzqk8G0crEN8
- RNE8S+zD8O1LFBHLXbWTT3b7d2kfj2mwXNcfPfsHcDsjZvyVzX3o+vGcd3W7gsPmmsbJ
- Up8V+eGfqidG88Tp1IhsXwtPsCBels18eVRmLsjPoeAQ5AO1HYYPORFk2pWi+j370AFQ
- PrZHkYUua3/WE9GBYjLuMrRUw7Iza4MtkNKSDG1vi654m9jz65oVcZk0VaqR8kFcKpMr
- 3efg==
-X-Gm-Message-State: AOAM533+fltCEx4pJWvwmfIpyhzpmViI1UZZR0aO8O2rcnYJx2YzOi2I
- CsoGVeMryxIuDSR/D7PHQl9c05pr6IiDO3yWpzufFQ==
-X-Google-Smtp-Source: ABdhPJzwGyLnhHJp5o4F6qzfvB+0fE7Qlfv77WE89mwYGtRr41Um0ig0iUG1hr1nOk5G7sGx9TOVPfGQtEmUWi6AJlI=
-X-Received: by 2002:a05:6402:3089:: with SMTP id
- de9mr36449418edb.100.1605879897277; 
- Fri, 20 Nov 2020 05:44:57 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=a/eGltTOKyfKvrChaf2BpxhfQrvDgPj4R/DA6RZ4a4w=;
+ b=OAlDGsH2uqflcwLmTL9AVYs5KfkejPdBzuR2QbqRRqVvtmNfo7iqDBASvGIdgglZkC
+ NMw7bWIlsfeMgvmUzLh14vnr8q2iyy8o4zTS+ZvZF3utQpLhB9do6p7eWj/9KEeq5f7C
+ yHQq+K3uVcF24OxpxnEjMqmtyxzaidCvs4uSnekRJc47zIfKUopXMwVwcPjpTobgbzPj
+ IAyt4mLgKAdTixIqPb2592wmLbcvza8nklwVnzmm/KCO/0UcxvF7iZR2MrF/JhhKDIjy
+ GO54VCWKqm1smf7AMMPnQQvQMvt5vMgKiTJYqx86Z6SEFuP9pwgkJ79MeQylO0Gix6b6
+ 4LBQ==
+X-Gm-Message-State: AOAM533bvassfY0eQq6vixmmHimby8agv0GU3InoWfJeFT2+qQhi68vR
+ /nbhlkJj27tGtUOOOMZtYAdb35qPdTZOn1oYN5j8ZQ==
+X-Google-Smtp-Source: ABdhPJyqQtkWhwBK+kxEw0pqP0S9jdxaoiCsk+OuA4aVIjFhr4Im/UhqB2zQDPbpzVGv4q048plvkzlKX2PoQzby0IY=
+X-Received: by 2002:a17:906:af8c:: with SMTP id
+ mj12mr33051933ejb.85.1605890423353; 
+ Fri, 20 Nov 2020 08:40:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
+References: <5F9FD78B.8000300@huawei.com>
+In-Reply-To: <5F9FD78B.8000300@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Nov 2020 13:44:45 +0000
-Message-ID: <CAFEAcA_BSYrq87it7UXWJUDvUuA8L8U1Y8mxkyZdwzb3n_sSiA@mail.gmail.com>
-Subject: Re: [PATCH-for-5.2 v2] hw/intc: fix heap-buffer-overflow in
- rxicu_realize()
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Euler Robot <euler.robot@huawei.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
+Date: Fri, 20 Nov 2020 16:40:11 +0000
+Message-ID: <CAFEAcA9twgUD_xvHz3eUMznP69RVHYL1vZ4wBRG53vaUi6=Hcg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Fix bad print format specifiers
+To: AlexChen <alex.chen@huawei.com>
+Cc: andrzej zaborowski <balrogg@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -78,50 +72,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Nov 2020 13:45:01 -0000
+X-List-Received-Date: Fri, 20 Nov 2020 16:40:27 -0000
 
-On Wed, 11 Nov 2020 at 14:18, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+On Mon, 2 Nov 2020 at 09:56, AlexChen <alex.chen@huawei.com> wrote:
 >
-> When 'j =3D icu->nr_sense =E2=80=93 1', the 'j < icu->nr_sense' condition=
- is true,
-> then 'j =3D icu->nr_sense', the'icu->init_sense[j]' has out-of-bounds acc=
-ess.
+> We should use printf format specifier "%u" instead of "%i" for
+> argument of type "unsigned int".
 >
-> The asan showed stack:
-> ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000004d7d a=
-t pc 0x55852cd26a76 bp 0x7ffe39f26200 sp 0x7ffe39f261f0
-> READ of size 1 at 0x604000004d7d thread T0
->     #0 0x55852cd26a75 in rxicu_realize ../hw/intc/rx_icu.c:311
->     #1 0x55852cf075f7 in device_set_realized ../hw/core/qdev.c:886
->     #2 0x55852cd4a32f in property_set_bool ../qom/object.c:2251
->     #3 0x55852cd4f9bb in object_property_set ../qom/object.c:1398
->     #4 0x55852cd54f3f in object_property_set_qobject ../qom/qom-qobject.c=
-:28
->     #5 0x55852cd4fc3f in object_property_set_bool ../qom/object.c:1465
->     #6 0x55852cbf0b27 in register_icu ../hw/rx/rx62n.c:156
->     #7 0x55852cbf12a6 in rx62n_realize ../hw/rx/rx62n.c:261
->     #8 0x55852cf075f7 in device_set_realized ../hw/core/qdev.c:886
->     #9 0x55852cd4a32f in property_set_bool ../qom/object.c:2251
->     #10 0x55852cd4f9bb in object_property_set ../qom/object.c:1398
->     #11 0x55852cd54f3f in object_property_set_qobject ../qom/qom-qobject.=
-c:28
->     #12 0x55852cd4fc3f in object_property_set_bool ../qom/object.c:1465
->     #13 0x55852cbf1a85 in rx_gdbsim_init ../hw/rx/rx-gdbsim.c:109
->     #14 0x55852cd22de0 in qemu_init ../softmmu/vl.c:4380
->     #15 0x55852ca57088 in main ../softmmu/main.c:49
->     #16 0x7feefafa5d42 in __libc_start_main (/lib64/libc.so.6+0x26d42)
->
-> Add the 'ice->src[i].sense' initialize to the default value, and then
-> process init_sense array to identify which irqs should be level-triggered=
-.
->
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  hw/arm/pxa2xx.c | 2 +-
+>  hw/arm/spitz.c  | 2 +-
+>  hw/arm/tosa.c   | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-thanks
+Applied to target-arm.next for 5.2, thanks.
+
 -- PMM
 
