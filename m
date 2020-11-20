@@ -1,44 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfxEx-0001fI-OE
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 22:37:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40236)
+	id 1kg6ik-0005Je-Kd
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Nov 2020 08:45:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kfxEk-0001cS-1u; Thu, 19 Nov 2020 22:37:27 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2532)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kfxEg-0006uv-Jl; Thu, 19 Nov 2020 22:37:25 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Ccj050WX1zhbg8;
- Fri, 20 Nov 2020 11:36:53 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS406-HUB.china.huawei.com
- (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Fri, 20 Nov 2020
- 11:37:03 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <quintela@redhat.com>, <pbonzini@redhat.com>, <philmd@redhat.com>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
- <peter.maydell@linaro.org>
-Subject: [PATCH v2 2/2] display/vmware_vga: Replace fprintf(stderr,
- "*\n") with error_report()
-Date: Fri, 20 Nov 2020 03:25:17 +0000
-Message-ID: <20201120032517.104486-3-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20201120032517.104486-1-alex.chen@huawei.com>
-References: <20201120032517.104486-1-alex.chen@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kg6ii-0005FF-Qg
+ for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 08:45:00 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:33350)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kg6ig-0006uw-VY
+ for qemu-trivial@nongnu.org; Fri, 20 Nov 2020 08:45:00 -0500
+Received: by mail-ed1-x530.google.com with SMTP id k4so9594705edl.0
+ for <qemu-trivial@nongnu.org>; Fri, 20 Nov 2020 05:44:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=N7WKqA9zpurRykd5uLpJ/XSo1eU6mxFHkZEw4VajoEc=;
+ b=QOClg52iF0nwGZIy3gsVbpWmiJT8GG+ivktoYqDALIbMwzV9yy3NrSHTouacSMb8he
+ Q1oZUvuH1771PF6SUuQ0lgsntcZx0MJTievS+dYlEXpvFg5C92W2rVHou6NYwsh3jSU5
+ kh4viuvxA1FLMK+9Sc28Tmt4kLPK8hj3VE3uz5t2be/Nbj5YPMp4dS7svQUFLKuSmxJD
+ RvmM1p+fAhRV1ftLXLvWIWZzyi96oUacTM0sOt9tN2eB48as38ASLfEMdNEzaSqkGGGu
+ ulywVDRPucsDaP/Ds9vL6Qe2hyDz3Ro/ZJJG52ZePxLery9ohOqKICpp0OAJNZ0PMXLC
+ PtNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=N7WKqA9zpurRykd5uLpJ/XSo1eU6mxFHkZEw4VajoEc=;
+ b=NgWaQPTvv1PFe+ALoFa/ETemJNHb1vugtlvNqQZN+MNhExY0Scq4SoYwtNXAorGs8j
+ AQePCMTxTAprrcje++4b1TKB1DIlk9MvvSTK7dV5OevSnxCR0spO85YaRzqk8G0crEN8
+ RNE8S+zD8O1LFBHLXbWTT3b7d2kfj2mwXNcfPfsHcDsjZvyVzX3o+vGcd3W7gsPmmsbJ
+ Up8V+eGfqidG88Tp1IhsXwtPsCBels18eVRmLsjPoeAQ5AO1HYYPORFk2pWi+j370AFQ
+ PrZHkYUua3/WE9GBYjLuMrRUw7Iza4MtkNKSDG1vi654m9jz65oVcZk0VaqR8kFcKpMr
+ 3efg==
+X-Gm-Message-State: AOAM533+fltCEx4pJWvwmfIpyhzpmViI1UZZR0aO8O2rcnYJx2YzOi2I
+ CsoGVeMryxIuDSR/D7PHQl9c05pr6IiDO3yWpzufFQ==
+X-Google-Smtp-Source: ABdhPJzwGyLnhHJp5o4F6qzfvB+0fE7Qlfv77WE89mwYGtRr41Um0ig0iUG1hr1nOk5G7sGx9TOVPfGQtEmUWi6AJlI=
+X-Received: by 2002:a05:6402:3089:: with SMTP id
+ de9mr36449418edb.100.1605879897277; 
+ Fri, 20 Nov 2020 05:44:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201111141733.2358800-1-kuhn.chenqun@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Nov 2020 13:44:45 +0000
+Message-ID: <CAFEAcA_BSYrq87it7UXWJUDvUuA8L8U1Y8mxkyZdwzb3n_sSiA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.2 v2] hw/intc: fix heap-buffer-overflow in
+ rxicu_realize()
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Euler Robot <euler.robot@huawei.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,94 +78,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Nov 2020 03:37:30 -0000
+X-List-Received-Date: Fri, 20 Nov 2020 13:45:01 -0000
 
-Replace all fprintf(stderr...) calls in hw/display/vmware_vga.c witherror_report().
-Remove the "\n" from strings passed to all modified calls, since error_report() appends one.
+On Wed, 11 Nov 2020 at 14:18, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
+> When 'j =3D icu->nr_sense =E2=80=93 1', the 'j < icu->nr_sense' condition=
+ is true,
+> then 'j =3D icu->nr_sense', the'icu->init_sense[j]' has out-of-bounds acc=
+ess.
+>
+> The asan showed stack:
+> ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000004d7d a=
+t pc 0x55852cd26a76 bp 0x7ffe39f26200 sp 0x7ffe39f261f0
+> READ of size 1 at 0x604000004d7d thread T0
+>     #0 0x55852cd26a75 in rxicu_realize ../hw/intc/rx_icu.c:311
+>     #1 0x55852cf075f7 in device_set_realized ../hw/core/qdev.c:886
+>     #2 0x55852cd4a32f in property_set_bool ../qom/object.c:2251
+>     #3 0x55852cd4f9bb in object_property_set ../qom/object.c:1398
+>     #4 0x55852cd54f3f in object_property_set_qobject ../qom/qom-qobject.c=
+:28
+>     #5 0x55852cd4fc3f in object_property_set_bool ../qom/object.c:1465
+>     #6 0x55852cbf0b27 in register_icu ../hw/rx/rx62n.c:156
+>     #7 0x55852cbf12a6 in rx62n_realize ../hw/rx/rx62n.c:261
+>     #8 0x55852cf075f7 in device_set_realized ../hw/core/qdev.c:886
+>     #9 0x55852cd4a32f in property_set_bool ../qom/object.c:2251
+>     #10 0x55852cd4f9bb in object_property_set ../qom/object.c:1398
+>     #11 0x55852cd54f3f in object_property_set_qobject ../qom/qom-qobject.=
+c:28
+>     #12 0x55852cd4fc3f in object_property_set_bool ../qom/object.c:1465
+>     #13 0x55852cbf1a85 in rx_gdbsim_init ../hw/rx/rx-gdbsim.c:109
+>     #14 0x55852cd22de0 in qemu_init ../softmmu/vl.c:4380
+>     #15 0x55852ca57088 in main ../softmmu/main.c:49
+>     #16 0x7feefafa5d42 in __libc_start_main (/lib64/libc.so.6+0x26d42)
+>
+> Add the 'ice->src[i].sense' initialize to the default value, and then
+> process init_sense array to identify which irqs should be level-triggered=
+.
+>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- hw/display/vmware_vga.c | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index f93bbe15c2..a012e22e69 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -34,6 +34,7 @@
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qom/object.h"
-+#include "qemu/error-report.h"
- 
- #undef VERBOSE
- #define HW_RECT_ACCEL
-@@ -298,45 +299,45 @@ static inline bool vmsvga_verify_rect(DisplaySurface *surface,
-                                       int x, int y, int w, int h)
- {
-     if (x < 0) {
--        fprintf(stderr, "%s: x was < 0 (%d)\n", name, x);
-+        error_report("%s: x was < 0 (%d)", name, x);
-         return false;
-     }
-     if (x > SVGA_MAX_WIDTH) {
--        fprintf(stderr, "%s: x was > %d (%d)\n", name, SVGA_MAX_WIDTH, x);
-+        error_report("%s: x was > %d (%d)", name, SVGA_MAX_WIDTH, x);
-         return false;
-     }
-     if (w < 0) {
--        fprintf(stderr, "%s: w was < 0 (%d)\n", name, w);
-+        error_report("%s: w was < 0 (%d)", name, w);
-         return false;
-     }
-     if (w > SVGA_MAX_WIDTH) {
--        fprintf(stderr, "%s: w was > %d (%d)\n", name, SVGA_MAX_WIDTH, w);
-+        error_report("%s: w was > %d (%d)", name, SVGA_MAX_WIDTH, w);
-         return false;
-     }
-     if (x + w > surface_width(surface)) {
--        fprintf(stderr, "%s: width was > %d (x: %d, w: %d)\n",
-+        error_report("%s: width was > %d (x: %d, w: %d)",
-                 name, surface_width(surface), x, w);
-         return false;
-     }
- 
-     if (y < 0) {
--        fprintf(stderr, "%s: y was < 0 (%d)\n", name, y);
-+        error_report("%s: y was < 0 (%d)", name, y);
-         return false;
-     }
-     if (y > SVGA_MAX_HEIGHT) {
--        fprintf(stderr, "%s: y was > %d (%d)\n", name, SVGA_MAX_HEIGHT, y);
-+        error_report("%s: y was > %d (%d)", name, SVGA_MAX_HEIGHT, y);
-         return false;
-     }
-     if (h < 0) {
--        fprintf(stderr, "%s: h was < 0 (%d)\n", name, h);
-+        error_report("%s: h was < 0 (%d)", name, h);
-         return false;
-     }
-     if (h > SVGA_MAX_HEIGHT) {
--        fprintf(stderr, "%s: h was > %d (%d)\n", name, SVGA_MAX_HEIGHT, h);
-+        error_report("%s: h was > %d (%d)", name, SVGA_MAX_HEIGHT, h);
-         return false;
-     }
-     if (y + h > surface_height(surface)) {
--        fprintf(stderr, "%s: update height > %d (y: %d, h: %d)\n",
-+        error_report("%s: update height > %d (y: %d, h: %d)",
-                 name, surface_height(surface), y, h);
-         return false;
-     }
-@@ -534,7 +535,7 @@ static inline void vmsvga_cursor_define(struct vmsvga_state_s *s,
- #endif
-         break;
-     default:
--        fprintf(stderr, "%s: unhandled bpp %u, using fallback cursor\n",
-+        error_report("%s: unhandled bpp %u, using fallback cursor",
-                 __func__, c->bpp);
-         cursor_put(qc);
-         qc = cursor_builtin_left_ptr();
--- 
-2.19.1
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 
