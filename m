@@ -1,63 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kfqAB-0002K8-Hj
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 15:04:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52406)
+	id 1kfxEk-0001cZ-8a
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Nov 2020 22:37:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kfq9h-0002Ao-Ca; Thu, 19 Nov 2020 15:03:45 -0500
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:37856)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kfq9I-0002wC-Ht; Thu, 19 Nov 2020 15:03:44 -0500
-Received: by mail-io1-xd44.google.com with SMTP id d17so7472831ion.4;
- Thu, 19 Nov 2020 12:02:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qPTWeo6sJ8+COkYnW7wddR21z8R0rLglTzXlni0Wlcw=;
- b=AnkfTQEP917cEoa4AazK6DrUW1sUvskak/v41iWRUymNXJhn2Xi/gy6zp7o55RgU8r
- /x/1alsFVWSB2eFI/QSADD9Uy166bmPsJGOm6L+Qr7mRTaqVrk933ptKpxeifeCma/1F
- 7D8fNwzYfNBJoVcCvdPd6VKUw34fVltqNll0nQ+OGpKbDFjWBVnKFE6O8CplpfJoMGaf
- kZL3irH3TbMLudhBFdJN7eREGblpxHSQohNgLP/BNMjLlii2zG8HxQ/yZWlXCKyd+nmI
- etNi3C+NeKEG+pCYMz4RJMDBAqNqMXS50afqDS15hzly3l27uHtIzaOkh0QDQGlnKTPX
- 25rA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qPTWeo6sJ8+COkYnW7wddR21z8R0rLglTzXlni0Wlcw=;
- b=A2rbXsu3WyyEsVzJ4jdly0MDEXT4xOgAX+TqhDCKDrUPXh0OGRnEmXUxlDL4sfM1ae
- lNK99tmMuGKh/fHtVpUgmCPgaPYadDS9BgqyzpjRdievfDI2yqxvw+NwXIInF/pMBuBO
- yhuaLMAHIVdOXm+oBYcCKyXpC82MxkOvlh7CHuW1dCSR+xD9qpbm9UhBgoM02emyuHuW
- q2xT44/fn2MfbMKg41VtuU4phO7jBk6uHAsDZUMmUS/ZGME84tAJQ4/ffyJ4efwT1o+y
- oRZpBW54HVpqea9+vdYbuC1+VZyhmbe6xU4I++qYcrHWqb5aSvAsk621V5lnmqSYZc3n
- mqeA==
-X-Gm-Message-State: AOAM531iKUzIT3ViqBNL9Qu1HsJQPnm8jmbHAUmd7buUvZD+FQ6c46Iw
- gzmuHa4ftaTnKFd0+4Txl+yHfZ07pdkcqt4kF9Q=
-X-Google-Smtp-Source: ABdhPJxlc4+dZHpHBxvj1J5zk1V/gG2ZK3FxDn4QrJYCG6er0lF8RcB4/i13jUW8zHhXNyyW/ENQ8sa/qxxiOYj1bQA=
-X-Received: by 2002:a6b:b30b:: with SMTP id c11mr7232104iof.175.1605816169485; 
- Thu, 19 Nov 2020 12:02:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfxEh-0001c0-JY; Thu, 19 Nov 2020 22:37:23 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2531)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfxEe-0006ux-Vv; Thu, 19 Nov 2020 22:37:23 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Ccj050J3gzhZrl;
+ Fri, 20 Nov 2020 11:36:53 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Fri, 20 Nov 2020
+ 11:37:02 +0800
+From: Alex Chen <alex.chen@huawei.com>
+To: <quintela@redhat.com>, <pbonzini@redhat.com>, <philmd@redhat.com>
+CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
+ <peter.maydell@linaro.org>
+Subject: [PATCH v2 1/2] display/vmware_vga: Fix bad printf format specifiers
+Date: Fri, 20 Nov 2020 03:25:16 +0000
+Message-ID: <20201120032517.104486-2-alex.chen@huawei.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20201120032517.104486-1-alex.chen@huawei.com>
+References: <20201120032517.104486-1-alex.chen@huawei.com>
 MIME-Version: 1.0
-References: <20201116140148.2850128-1-zhangxinhao1@huawei.com>
-In-Reply-To: <20201116140148.2850128-1-zhangxinhao1@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 19 Nov 2020 11:50:25 -0800
-Message-ID: <CAKmqyKPz3Lfc2JjPRkeQReWpPsY=thSoT6jPUM8SjcqM8mehZg@mail.gmail.com>
-Subject: Re: [PATCH] hw/core/register.c: Don't use '#' flag of printf format
-To: Xinhao Zhang <zhangxinhao1@huawei.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- AlexChen <alex.chen@huawei.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, 
- "dengkai (A)" <dengkai1@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,98 +51,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Nov 2020 20:04:07 -0000
+X-List-Received-Date: Fri, 20 Nov 2020 03:37:23 -0000
 
-On Mon, Nov 16, 2020 at 6:07 AM Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
->
-> Fix code style. Don't use '#' flag of printf format ('%#') in
-> format strings, use '0x' prefix instead
->
-> Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
-> Signed-off-by: Kai Deng <dengkai1@huawei.com>
+We should use printf format specifier "%u" instead of "%d" for
+argument of type "unsigned int".
 
-Thanks for the patch!
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/display/vmware_vga.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index bef0d7d69a..f93bbe15c2 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -534,7 +534,7 @@ static inline void vmsvga_cursor_define(struct vmsvga_state_s *s,
+ #endif
+         break;
+     default:
+-        fprintf(stderr, "%s: unhandled bpp %d, using fallback cursor\n",
++        fprintf(stderr, "%s: unhandled bpp %u, using fallback cursor\n",
+                 __func__, c->bpp);
+         cursor_put(qc);
+         qc = cursor_builtin_left_ptr();
+-- 
+2.19.1
 
-I'm going to take this via the RISC-V tree when the 6.0 development
-process starts.
-
-Alistair
-
-> ---
->  hw/core/register.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/core/register.c b/hw/core/register.c
-> index 31038bd7cc..7986913130 100644
-> --- a/hw/core/register.c
-> +++ b/hw/core/register.c
-> @@ -80,7 +80,7 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
->
->      if (!ac || !ac->name) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: write to undefined device state "
-> -                      "(written value: %#" PRIx64 ")\n", prefix, val);
-> +                      "(written value: 0x%" PRIx64 ")\n", prefix, val);
->          return;
->      }
->
-> @@ -89,14 +89,14 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
->      test = (old_val ^ val) & ac->rsvd;
->      if (test) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: change of value in reserved bit"
-> -                      "fields: %#" PRIx64 ")\n", prefix, test);
-> +                      "fields: 0x%" PRIx64 ")\n", prefix, test);
->      }
->
->      test = val & ac->unimp;
->      if (test) {
->          qemu_log_mask(LOG_UNIMP,
-> -                      "%s:%s writing %#" PRIx64 " to unimplemented bits:" \
-> -                      " %#" PRIx64 "\n",
-> +                      "%s:%s writing 0x%" PRIx64 " to unimplemented bits:" \
-> +                      " 0x%" PRIx64 "\n",
->                        prefix, reg->access->name, val, ac->unimp);
->      }
->
-> @@ -112,7 +112,7 @@ void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
->      }
->
->      if (debug) {
-> -        qemu_log("%s:%s: write of value %#" PRIx64 "\n", prefix, ac->name,
-> +        qemu_log("%s:%s: write of value 0x%" PRIx64 "\n", prefix, ac->name,
->                   new_val);
->      }
->
-> @@ -150,7 +150,7 @@ uint64_t register_read(RegisterInfo *reg, uint64_t re, const char* prefix,
->      }
->
->      if (debug) {
-> -        qemu_log("%s:%s: read of value %#" PRIx64 "\n", prefix,
-> +        qemu_log("%s:%s: read of value 0x%" PRIx64 "\n", prefix,
->                   ac->name, ret);
->      }
->
-> @@ -193,7 +193,7 @@ void register_write_memory(void *opaque, hwaddr addr,
->
->      if (!reg) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented register " \
-> -                      "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
-> +                      "at address: 0x%" PRIx64 "\n", reg_array->prefix, addr);
->          return;
->      }
->
-> @@ -222,7 +222,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
->
->      if (!reg) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented register " \
-> -                      "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
-> +                      "at address: 0x%" PRIx64 "\n", reg_array->prefix, addr);
->          return 0;
->      }
->
-> --
-> 2.29.0-rc1
->
->
 
