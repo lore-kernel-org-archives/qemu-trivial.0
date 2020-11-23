@@ -1,66 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kgaXK-0003GO-8B
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Nov 2020 16:35:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53934)
+	id 1kh52M-0001Lj-Kl
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2020 01:09:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kgaXI-0003FV-HJ
- for qemu-trivial@nongnu.org; Sat, 21 Nov 2020 16:35:12 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:37055)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kgaXG-0001iE-C3
- for qemu-trivial@nongnu.org; Sat, 21 Nov 2020 16:35:12 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id h21so13714020wmb.2
- for <qemu-trivial@nongnu.org>; Sat, 21 Nov 2020 13:35:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=30WBmceDJTwPjxsqmGWIVvM+TI3KmymUlL0VgNa9GhE=;
- b=GSNdHgksvPN0FGKgAKUWrHw694OjI3izwPC99y1Jx1TuqVkDcJvNj9OPYNh8VXjArl
- s/x9N8DuK0QeOO6UnD6aZGijKDpbJr+dew+fh7RZGHNgryqdluVOtKC5GsNG5s/CpasA
- 6+Wd/01TIVEGS2FvibLBN8SD7uz7qjt2DDTg5SfGBO+5Bn/ERXSy1X1h0/pXkf3iCvY/
- 2QuSDT7ByUzVvPIFCkZSSO2blzl5BoTI/iNsMWlSzpIEkr1x2/TJYEHGbqi7VLlRdoPe
- ieMvXfoVegk3NE92JnkMXJW5Gjd2bI/9yPNZ0cpwjHnNUEvbVkLAAfvzgf4KEEt5HxdJ
- R3ng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=30WBmceDJTwPjxsqmGWIVvM+TI3KmymUlL0VgNa9GhE=;
- b=KvCDCIYBHWnbC/bKVWs73TLuDN/1zGkdha2WHe/2xnTp0OakBIUPOeOJwg1k82xKuz
- OOQBsN0qXG//wGAKtgD1OOGgsZmnHt7aqWjemPog2nYbg0Utf3kNHTxoeUc0FOglrKzK
- mSn8GLZKOMei1GJsTTrcfhMTaj4sbIlOmvUAZ3wPdrXtX+RwcopRedDMUAP5jt8lYeP3
- s7eFWjT137qK1TRknvsWPeJD9iSoV2BRdlX83fmdhze+pXDC2FTmwBsY4nVlAG6X7N2p
- fI2sKPch3VITtZpTdvdMO4uyxDxNOb8GjMdyeBzv3xPyfnoWLcCNSvZ5G3ew7FHMQyZ2
- z1yw==
-X-Gm-Message-State: AOAM530Y9pM4yGIJTVLUonG8yoL1jVcLiOZ65HkBW7Uoi5IrqH1UtJ84
- ecpMzXFOvH8qlrP29HUUhUd24Q==
-X-Google-Smtp-Source: ABdhPJwodMoB89BNH+U6xjqIXSP5WwJTD6p/Zotep09dSHRY0MkvJkz8Sy+JrLmXaC5fHng+J6RPzQ==
-X-Received: by 2002:a7b:cf09:: with SMTP id l9mr6251415wmg.54.1605994508373;
- Sat, 21 Nov 2020 13:35:08 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id n128sm8814122wmb.46.2020.11.21.13.35.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Nov 2020 13:35:07 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] qemu-options.hx: Fix minor issues in icount documentation
-Date: Sat, 21 Nov 2020 21:35:06 +0000
-Message-Id: <20201121213506.15599-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kh52J-0001In-5t; Mon, 23 Nov 2020 01:09:15 -0500
+Received: from ozlabs.org ([203.11.71.1]:48537)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kh52G-0006dP-Mp; Mon, 23 Nov 2020 01:09:14 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4CfcDH1CyCz9sVJ; Mon, 23 Nov 2020 17:09:03 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1606111743;
+ bh=rBWl0re+jjrt/NvAVRE6kU/uCY5mI41Pw2l+O6zFfPk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kfWGSST0zmcB5ktHjPS+D9YCnVXqh4pYbEP0QyvCfEB/FIaoidm1SsHtWebD+n/ND
+ bZJRw8Hoq19QqDofWuDki8S/0HuREfDVgtETOcp80/Toepi0yRpJIJ4oWZGoRTPymC
+ I7s+Iw+7vlu14pkEp3IRuPxkSEhzRePYhYTlq1KY=
+Date: Mon, 23 Nov 2020 16:46:09 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
+ Euler Robot <euler.robot@huawei.com>
+Subject: Re: [PATCH-for-5.2 v3 6/7] ppc: Add a missing break for
+ PPC6xx_INPUT_TBEN
+Message-ID: <20201123054609.GS521467@yekko.fritz.box>
+References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
+ <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
+ <58864f26-7e06-efc4-86fd-b7b710def15e@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="R0KbGFzrRdaLlFh/"
+Content-Disposition: inline
+In-Reply-To: <58864f26-7e06-efc4-86fd-b7b710def15e@redhat.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,115 +56,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Nov 2020 21:35:12 -0000
+X-List-Received-Date: Mon, 23 Nov 2020 06:09:15 -0000
 
-The documentation for the icount documentation has some minor issues:
- * in a couple of places it says "sleep=on|off" when in the context of the
-   sentence it means specifically "sleep=on"
- * the synopsis line for the documentation has drifted out of sync
-   with the synopsis line in the DEF() macro (used for "-help" output)
- * the synopsis line in the DEF() macro is missing a "][" between
-   the sleep= part and the rr= part
- * the synopsis line doesn't indicate that rrsnapshot is an optional
-   part of the rr=mode,rrfile=filename subgrouping
- * we don't document that sleep=on can't be used with shift=auto
-   or align=on
- * the rr option description had some minor grammar and formatting
-   errors and was a bit terse
- * in commit f1f4b57e88ff in 2015 the documentation of the sleep=
-   suboption got added between the two paragraphs defining general
-   behaviour of the icount option. This meant that the second
-   paragraph talking about the behaviour of "this option" reads as
-   if it's talking about sleep=on, when it's really describing -icount
-   as a whole. The paragraph is better moved back up to above the
-   sleep= section.
- * the summary text displayed in "-help" output didn't mention
-   the record-and-replay part
 
-Fix these errors.
+--R0KbGFzrRdaLlFh/
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1774412
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- qemu-options.hx | 42 ++++++++++++++++++++++++------------------
- 1 file changed, 24 insertions(+), 18 deletions(-)
+On Mon, Nov 16, 2020 at 12:46:32PM +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> David, can you queue this patch for 5.2 (bugfix)?
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 2c83390504d..41cb42e7a5d 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3956,30 +3956,34 @@ SRST
- ERST
- 
- DEF("icount", HAS_ARG, QEMU_OPTION_icount, \
--    "-icount [shift=N|auto][,align=on|off][,sleep=on|off,rr=record|replay,rrfile=<filename>,rrsnapshot=<snapshot>]\n" \
-+    "-icount [shift=N|auto][,align=on|off][,sleep=on|off][,rr=record|replay,rrfile=<filename>[,rrsnapshot=<snapshot>]]\n" \
-     "                enable virtual instruction counter with 2^N clock ticks per\n" \
-     "                instruction, enable aligning the host and virtual clocks\n" \
--    "                or disable real time cpu sleeping\n", QEMU_ARCH_ALL)
-+    "                or disable real time cpu sleeping, and optionally enable\n" \
-+    "                record-and-replay mode\n", QEMU_ARCH_ALL)
- SRST
--``-icount [shift=N|auto][,rr=record|replay,rrfile=filename,rrsnapshot=snapshot]``
-+``-icount [shift=N|auto][,align=on|off][,sleep=on|off][,rr=record|replay,rrfile=filename[,rrsnapshot=snapshot]]``
-     Enable virtual instruction counter. The virtual cpu will execute one
-     instruction every 2^N ns of virtual time. If ``auto`` is specified
-     then the virtual cpu speed will be automatically adjusted to keep
-     virtual time within a few seconds of real time.
- 
--    When the virtual cpu is sleeping, the virtual time will advance at
--    default speed unless ``sleep=on|off`` is specified. With
--    ``sleep=on|off``, the virtual time will jump to the next timer
--    deadline instantly whenever the virtual cpu goes to sleep mode and
--    will not advance if no timer is enabled. This behavior give
--    deterministic execution times from the guest point of view.
--
-     Note that while this option can give deterministic behavior, it does
-     not provide cycle accurate emulation. Modern CPUs contain
-     superscalar out of order cores with complex cache hierarchies. The
-     number of instructions executed often has little or no correlation
-     with actual performance.
- 
-+    When the virtual cpu is sleeping, the virtual time will advance at
-+    default speed unless ``sleep=on`` is specified. With
-+    ``sleep=on``, the virtual time will jump to the next timer
-+    deadline instantly whenever the virtual cpu goes to sleep mode and
-+    will not advance if no timer is enabled. This behavior gives
-+    deterministic execution times from the guest point of view.
-+    The default if icount is enabled is ``sleep=off``.
-+    ``sleep=on`` cannot be used together with either ``shift=auto``
-+    or ``align=on``.
-+
-     ``align=on`` will activate the delay algorithm which will try to
-     synchronise the host clock and the virtual clock. The goal is to
-     have a guest running at the real frequency imposed by the shift
-@@ -3989,15 +3993,17 @@ SRST
-     ``shift`` is ``auto``. Note: The sync algorithm will work for those
-     shift values for which the guest clock runs ahead of the host clock.
-     Typically this happens when the shift value is high (how high
--    depends on the host machine).
-+    depends on the host machine). The default if icount is enabled
-+    is ``align=off``.
- 
--    When ``rr`` option is specified deterministic record/replay is
--    enabled. Replay log is written into filename file in record mode and
--    read from this file in replay mode.
--
--    Option rrsnapshot is used to create new vm snapshot named snapshot
--    at the start of execution recording. In replay mode this option is
--    used to load the initial VM state.
-+    When the ``rr`` option is specified deterministic record/replay is
-+    enabled. The ``rrfile=`` option must also be provided to
-+    specify the path to the replay log. In record mode data is written
-+    to this file, and in replay mode it is read back.
-+    If the ``rrsnapshot`` option is given then it specifies a VM snapshot
-+    name. In record mode, a new VM snapshot with the given name is created
-+    at the start of execution recording. In replay mode this option
-+    specifies the snapshot name used to load the initial VM state.
- ERST
- 
- DEF("watchdog", HAS_ARG, QEMU_OPTION_watchdog, \
--- 
-2.20.1
+Sorry about this, I've been on vacation.
 
+Although it is a bugfix, it's been there for a very long time and
+no-one's hit it in practice.
+
+So, I'm disinclined to push it in this late in the 5.2 cycle.
+
+>=20
+> On 11/16/20 3:48 AM, Chen Qun wrote:
+> > When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed wa=
+rning:
+> > hw/ppc/ppc.c: In function =E2=80=98ppc6xx_set_irq=E2=80=99:
+> > hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplic=
+it-fallthrough=3D]
+> >   118 |             if (level) {
+> >       |                ^
+> > hw/ppc/ppc.c:123:9: note: here
+> >   123 |         case PPC6xx_INPUT_INT:
+> >       |         ^~~~
+> >=20
+> > According to the discussion, a break statement needs to be added here.
+> >=20
+> > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> > Reviewed-by: Thomas Huth <thuth@redhat.com>
+> > Acked-by: David Gibson <david@gibson.dropbear.id.au>
+> > ---
+> > v1->v2: Add a "break" statement here instead of /* fall through */ comm=
+ents
+> > (Base on Thomas's and David review).
+> >=20
+> > Cc: Thomas Huth <thuth@redhat.com>
+> > Cc: David Gibson <david@gibson.dropbear.id.au>
+> > ---
+> >  hw/ppc/ppc.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+> > index 4a11fb1640..1b98272076 100644
+> > --- a/hw/ppc/ppc.c
+> > +++ b/hw/ppc/ppc.c
+> > @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, i=
+nt level)
+> >              } else {
+> >                  cpu_ppc_tb_stop(env);
+> >              }
+> > +            break;
+> >          case PPC6xx_INPUT_INT:
+> >              /* Level sensitive - active high */
+> >              LOG_IRQ("%s: set the external IRQ state to %d\n",
+> >=20
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--R0KbGFzrRdaLlFh/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+7TKEACgkQbDjKyiDZ
+s5JZ3xAApOAnr6iAFeE5y3QbiyuSxXA+E/pUK2yIF0pocASe1N+eapY0OZWP0ksm
+cOUp9KqTrIrQ/lfU7fDfMezjTOjn4U8CCU0bLFRpf7RsjPlAHzb0PDdIdsIMcOxP
+BJaAAGbUlk/OS+2JDIABY+7zk3Pnvq4wTwfA3j2hBCwspyfS0vjCuslOMDAVobEG
+Feeal0KCouTgA9To8OBvUIyaxD9UtSgNF+YPHvKtzqMyL74tKPi+yrqtm82G0Wll
+bGjOuJ2COdnVGO/Z2Roo7v02JirnslFIWyivdvReltxKOacDS7H4BnljJT5Dfl1Y
+ZvIbSOiCdzX5pti3cCMMaLqK3LPsSiWROshw8wSFQ/zorX+di0YLn+9QEwQqZujW
+I0bBLiu6/0GpREDvXrZ7qP+KCYGm3KNQd2jyvF7Nv7iLJXUq5hNfcv3qD3Z9q7zv
+oqkwx8S2lMH4uG0bQR+GMnFO40bzvBB2TJdtHU+yTAZmQGs8sIH/St5+DkhlXE4L
+1oB/QAQIE3dlXTCs1GlmPQEGwVZN5nG7375PQ4/MdcdxLmHHDAFb0Gx4uokt8uCs
+5pjVfACyzehVz3XOPGEk1z3XR7DaD6/TcAAdtUFOnVwhWUrTQQbJR3Kgad826Ys1
+qkkPxnbVYJWRCm+E7OJg0iYfgsexgyCX7pMI0cM7vLRdRsRDWU4=
+=JUGW
+-----END PGP SIGNATURE-----
+
+--R0KbGFzrRdaLlFh/--
 
