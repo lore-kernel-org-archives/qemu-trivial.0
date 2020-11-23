@@ -1,39 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kh52U-0001OS-1y
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2020 01:09:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46460)
+	id 1kh52c-0001TE-KH
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2020 01:09:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kh52J-0001KW-T0; Mon, 23 Nov 2020 01:09:17 -0500
-Received: from ozlabs.org ([203.11.71.1]:40973)
+ id 1kh52K-0001Kh-21; Mon, 23 Nov 2020 01:09:17 -0500
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:43027 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kh52G-0006dQ-SU; Mon, 23 Nov 2020 01:09:15 -0500
+ id 1kh52H-0006dU-4l; Mon, 23 Nov 2020 01:09:15 -0500
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CfcDH2M2fz9sVW; Mon, 23 Nov 2020 17:09:03 +1100 (AEDT)
+ id 4CfcDH0CN3z9sVV; Mon, 23 Nov 2020 17:09:02 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1606111743;
- bh=tXatipDtJl/t17nuEywKFNqddeuDYhrJ8q1ElSiYFCs=;
+ bh=spozFEcAIt9uygBScghoMhnwziexs6QmG4xLt8uCI9s=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VwtIde+tR3uwHLxrIOWbbSThUOjxqrKUsHE3z5qRQvtA170vDSHPutKDfNvvO9q4F
- mhNjbCJ1vIPCrXnZ5J41vGA4Xxg7gemtvVkrpOHeFI3LarCJm9l1PHoVYugo33AOwL
- 6hf0fnDFd/cVPteiIkOchnkU7pakqKxkSIqyAf84=
-Date: Mon, 23 Nov 2020 16:46:33 +1100
+ b=ng3N59TbaObksEAwroYB3xN0AwaSUum9zw3jAfCfmSPdvhk0+W6O5gCZ8fgCN2Z1D
+ x+PIhpnTGTouJg1P5imekn/uuZp5izfcfHx6Q0hEkAqCXRNR8GKeGhdfMiS/VZ5TM3
+ QcCwN/gMT53Wm3pO9rPxEWIoxoRFUy2AJgELzXo8=
+Date: Mon, 23 Nov 2020 16:45:10 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Chen Qun <kuhn.chenqun@huawei.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v3 6/7] ppc: Add a missing break for PPC6xx_INPUT_TBEN
-Message-ID: <20201123054633.GT521467@yekko.fritz.box>
+ Euler Robot <euler.robot@huawei.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v3 7/7] target/ppc: replaced the TODO with LOG_UNIMP and
+ add break for silence warnings
+Message-ID: <20201123054510.GR521467@yekko.fritz.box>
 References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
- <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
+ <20201116024810.2415819-8-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="qUsYCxAE223BCwdt"
+ protocol="application/pgp-signature"; boundary="JB7KW7Ey7eB5HOHs"
 Content-Disposition: inline
-In-Reply-To: <20201116024810.2415819-7-kuhn.chenqun@huawei.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+In-Reply-To: <20201116024810.2415819-8-kuhn.chenqun@huawei.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-Spam_score_int: -17
 X-Spam_score: -1.8
@@ -56,56 +60,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 X-List-Received-Date: Mon, 23 Nov 2020 06:09:21 -0000
 
 
---qUsYCxAE223BCwdt
+--JB7KW7Ey7eB5HOHs
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Nov 16, 2020 at 10:48:09AM +0800, Chen Qun wrote:
+On Mon, Nov 16, 2020 at 10:48:10AM +0800, Chen Qun wrote:
 > When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
 ing:
-> hw/ppc/ppc.c: In function =E2=80=98ppc6xx_set_irq=E2=80=99:
-> hw/ppc/ppc.c:118:16: warning: this statement may fall through [-Wimplicit=
--fallthrough=3D]
->   118 |             if (level) {
->       |                ^
-> hw/ppc/ppc.c:123:9: note: here
->   123 |         case PPC6xx_INPUT_INT:
->       |         ^~~~
+> target/ppc/mmu_helper.c: In function =E2=80=98dump_mmu=E2=80=99:
+> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through=
+ [-Wimplicit-fallthrough=3D]
+>  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
+>       |            ^
+> target/ppc/mmu_helper.c:1358:5: note: here
+>  1358 |     default:
+>       |     ^~~~~~~
 >=20
-> According to the discussion, a break statement needs to be added here.
+> Use "qemu_log_mask(LOG_UNIMP**)" instead of the TODO comment.
+> And add the break statement to fix it.
 >=20
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 Applied to ppc-for-6.0, thanks.
 
 > ---
-> v1->v2: Add a "break" statement here instead of /* fall through */ commen=
-ts
-> (Base on Thomas's and David review).
+> v1->v2: replace the TODO by a LOG_UNIMP call and add break statement(Base=
+ on Philippe's comments)
 >=20
 > Cc: Thomas Huth <thuth@redhat.com>
 > Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/ppc/ppc.c | 1 +
->  1 file changed, 1 insertion(+)
+>  target/ppc/mmu_helper.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-> index 4a11fb1640..1b98272076 100644
-> --- a/hw/ppc/ppc.c
-> +++ b/hw/ppc/ppc.c
-> @@ -120,6 +120,7 @@ static void ppc6xx_set_irq(void *opaque, int pin, int=
- level)
->              } else {
->                  cpu_ppc_tb_stop(env);
->              }
-> +            break;
->          case PPC6xx_INPUT_INT:
->              /* Level sensitive - active high */
->              LOG_IRQ("%s: set the external IRQ state to %d\n",
+> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+> index 8972714775..3bb50546f8 100644
+> --- a/target/ppc/mmu_helper.c
+> +++ b/target/ppc/mmu_helper.c
+> @@ -1349,11 +1349,12 @@ void dump_mmu(CPUPPCState *env)
+>          break;
+>      case POWERPC_MMU_3_00:
+>          if (ppc64_v3_radix(env_archcpu(env))) {
+> -            /* TODO - Unsupported */
+> +            qemu_log_mask(LOG_UNIMP, "%s: the PPC64 MMU is unsupported\n=
+",
+> +                          __func__);
+>          } else {
+>              dump_slb(env_archcpu(env));
+> -            break;
+>          }
+> +        break;
+>  #endif
+>      default:
+>          qemu_log_mask(LOG_UNIMP, "%s: unimplemented\n", __func__);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -113,25 +126,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---qUsYCxAE223BCwdt
+--JB7KW7Ey7eB5HOHs
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+7TLkACgkQbDjKyiDZ
-s5JIaxAAu58D+vUeKLPnOb0GWW8m+O2l9o2QvTzU/ROjCHXh3G18gyN6MpCfqCWR
-4jWuRnMGryon4DgtrjbH7XmBZSuBoGVUr/oP5MN5Z1eL3zOI961F+M1Hw4Pqs6KX
-XoeI8Lh9dLXVRNcAmhYAIX0+Y+YJJOIlqoKhrKlfxaFu5ULe/B7D2SHrfUhyFLTI
-AWTiGPyztB0wjp0mMR0O5OzffTcCClDhWaD/hQAfk0DpVQWxQgkPnYbZtARYF5K4
-/rpovZ6bxrmUBRGkG4o6ngpuc9xXVl9xyCPvPdCByR55Ey3REqLCRiUC62SscvI5
-JReBzoa/AgfkJ8ZIGhgL+QdskmqIjV0BbmhaIYgI5jvXVnVQjIM4UHNhWk9szZNF
-2jgqwMsSi6sRpmpQi8VSe2vRHzcloRmvnRoDw1n1tLFiOCx5Can3qrd8JW7eHbTn
-tz76ONN9ShzEzpp9u331DOQZhbup/MVYQUsQ/4pyVMVda1gMg3zZPmYbxawDmhaa
-oAdElmo99oXXT2eB01ncqIXXvWJ8/aYu+u6M4Ekp/NRvJebdlyUBIkyrsDZWLyOI
-XkJfMVzWgBA5To0b90dsGCh71t7Iphin/MqhzdcWxtZMbf/O1nrE6SpkJHWBqGiX
-x0vaWcTjSyUjxr26EDa6QCdcg5IXm83p8uL6Fd4HpFwOF0yTfMs=
-=RvBJ
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+7TGQACgkQbDjKyiDZ
+s5Lc/Q//bLbqwpTPjZ2ali7BsNdujoK+pKMEIb2c/Qr/kM/KehSNPMBU6QAwjGb8
+UpKFJgsww6u1JztqsCY6g03ppOk657SNMPANnuLIX0s4sgCTNzptbt5quUvInIgN
+M6mGqMs0cZ4j6gDzFGYP8HxuRYdh7hS6QWxA/V+o9xSXHECIAuNqvZwPR2M+EkbA
+AAgINJmtjHrXt7rg9+TBLwumwezDlWliCgkfPmd1tc03e0nlIgRxin33Wip42RM1
+cN21LA1efF7KSw47govR9LwWPi3WqPcTke6PwZLIJQ4e7hTMRQs7A41Dsa9AZ28C
+ti+GyWmoZ1swrAVmYs3qOR8EOVGEjA2ZUU5p9U3jKq2Fb0Mf2UMZbrLzvXqS7Mmd
+pcT/YzvIzIphvr0U22Fq8Ei1GcekioHgLPWLN1+6yuzFfijfSJTJto2WJXEzUpd0
+BYQbop+uCnxz8UJpbWOu6v3tukUaPnD8bw7i7lU9ITZKUgI/G01GOEV5oo6UcldN
+J0MAHCYLh7JFwdY17EYitQiiYEt0iYpupkLjqHtgfimTlw3omBSFnZZco4qNBWBz
+HANbZBm71UN2mU6kZpcNSDu2/eT+BxqMW0KGmjAIiusDz8S2FpgCArfV063VCAH4
+cHnsZbEjfw2imjAPvGmLXpzY67ZGVTO6ycdO8d506rqjCuS7xCM=
+=xa5r
 -----END PGP SIGNATURE-----
 
---qUsYCxAE223BCwdt--
+--JB7KW7Ey7eB5HOHs--
 
