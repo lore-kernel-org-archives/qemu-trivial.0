@@ -1,43 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kh52c-0001TE-KH
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2020 01:09:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46464)
+	id 1kh58p-0008K8-Gc
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2020 01:15:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kh52K-0001Kh-21; Mon, 23 Nov 2020 01:09:17 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:43027 helo=ozlabs.org)
+ id 1kh58m-0008Dl-7P; Mon, 23 Nov 2020 01:15:56 -0500
+Received: from bilbo.ozlabs.org ([203.11.71.1]:47977 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kh52H-0006dU-4l; Mon, 23 Nov 2020 01:09:15 -0500
+ id 1kh58k-0000WS-D4; Mon, 23 Nov 2020 01:15:55 -0500
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4CfcDH0CN3z9sVV; Mon, 23 Nov 2020 17:09:02 +1100 (AEDT)
+ id 4CfcN60FWFz9s0b; Mon, 23 Nov 2020 17:15:49 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1606111743;
- bh=spozFEcAIt9uygBScghoMhnwziexs6QmG4xLt8uCI9s=;
+ d=gibson.dropbear.id.au; s=201602; t=1606112150;
+ bh=zS7LbG0eR4BbGOC6MpNDzkX4NqGPgP/CZhApPosKE0g=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ng3N59TbaObksEAwroYB3xN0AwaSUum9zw3jAfCfmSPdvhk0+W6O5gCZ8fgCN2Z1D
- x+PIhpnTGTouJg1P5imekn/uuZp5izfcfHx6Q0hEkAqCXRNR8GKeGhdfMiS/VZ5TM3
- QcCwN/gMT53Wm3pO9rPxEWIoxoRFUy2AJgELzXo8=
-Date: Mon, 23 Nov 2020 16:45:10 +1100
+ b=gmM3yLmi7JAEnkQVYwTyyoU6Ns0YZjECO7NWGI7pIZcNqhqDikUSlDEYx+ZAznkcm
+ GDUVYvcKIm2phevun/72cqUngig4hoNV9t+4iCzJFg9oa5e2KOt9AolwKXcN80tNoy
+ JDaeL6nphk4dNX6s6fh8OSS/vfU/2BdAEuzgTrcU=
+Date: Mon, 23 Nov 2020 17:15:36 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
-To: Chen Qun <kuhn.chenqun@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com, ganqixin@huawei.com,
- Euler Robot <euler.robot@huawei.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH v3 7/7] target/ppc: replaced the TODO with LOG_UNIMP and
- add break for silence warnings
-Message-ID: <20201123054510.GR521467@yekko.fritz.box>
-References: <20201116024810.2415819-1-kuhn.chenqun@huawei.com>
- <20201116024810.2415819-8-kuhn.chenqun@huawei.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org,
+ Dov Murik <dovmurik@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: [PATCH-for-5.2 3/4] hw/ppc/spapr_tpm_proxy: Fix hexadecimal
+ format string specifier
+Message-ID: <20201123061536.GW521467@yekko.fritz.box>
+References: <20201103112558.2554390-1-philmd@redhat.com>
+ <20201103112558.2554390-4-philmd@redhat.com>
+ <20201103113948.GG143651@yekko.fritz.box>
+ <91914453-4c0a-c364-22e2-92ca9d1e50e4@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="JB7KW7Ey7eB5HOHs"
+ protocol="application/pgp-signature"; boundary="2DJuma0xDHN2clgl"
 Content-Disposition: inline
-In-Reply-To: <20201116024810.2415819-8-kuhn.chenqun@huawei.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+In-Reply-To: <91914453-4c0a-c364-22e2-92ca9d1e50e4@redhat.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-Spam_score_int: -17
 X-Spam_score: -1.8
@@ -57,68 +59,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Nov 2020 06:09:21 -0000
+X-List-Received-Date: Mon, 23 Nov 2020 06:15:56 -0000
 
 
---JB7KW7Ey7eB5HOHs
-Content-Type: text/plain; charset=utf-8
+--2DJuma0xDHN2clgl
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Nov 16, 2020 at 10:48:10AM +0800, Chen Qun wrote:
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
-ing:
-> target/ppc/mmu_helper.c: In function =E2=80=98dump_mmu=E2=80=99:
-> target/ppc/mmu_helper.c:1351:12: warning: this statement may fall through=
- [-Wimplicit-fallthrough=3D]
->  1351 |         if (ppc64_v3_radix(env_archcpu(env))) {
->       |            ^
-> target/ppc/mmu_helper.c:1358:5: note: here
->  1358 |     default:
->       |     ^~~~~~~
+On Mon, Nov 09, 2020 at 03:28:24PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Hi David,
 >=20
-> Use "qemu_log_mask(LOG_UNIMP**)" instead of the TODO comment.
-> And add the break statement to fix it.
+> On 11/3/20 12:39 PM, David Gibson wrote:
+> > On Tue, Nov 03, 2020 at 12:25:57PM +0100, Philippe Mathieu-Daud=C3=A9 w=
+rote:
+> >> The '%u' conversion specifier is for decimal notation.
+> >> When prefixing a format with '0x', we want the hexadecimal
+> >> specifier ('%x').
+> >>
+> >> Inspired-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
+> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> >=20
+> > Acked-by: David Gibson <david@gibson.dropbear.id.au>
 >=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+> As there is no qemu-trivial@ pull request during freeze/rc,
+> can you queue this patch via your ppc tree?
 
-Applied to ppc-for-6.0, thanks.
+Done, applied to ppc-for-6.0.
 
-> ---
-> v1->v2: replace the TODO by a LOG_UNIMP call and add break statement(Base=
- on Philippe's comments)
 >=20
-> Cc: Thomas Huth <thuth@redhat.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  target/ppc/mmu_helper.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+> Thanks,
 >=20
-> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-> index 8972714775..3bb50546f8 100644
-> --- a/target/ppc/mmu_helper.c
-> +++ b/target/ppc/mmu_helper.c
-> @@ -1349,11 +1349,12 @@ void dump_mmu(CPUPPCState *env)
->          break;
->      case POWERPC_MMU_3_00:
->          if (ppc64_v3_radix(env_archcpu(env))) {
-> -            /* TODO - Unsupported */
-> +            qemu_log_mask(LOG_UNIMP, "%s: the PPC64 MMU is unsupported\n=
-",
-> +                          __func__);
->          } else {
->              dump_slb(env_archcpu(env));
-> -            break;
->          }
-> +        break;
->  #endif
->      default:
->          qemu_log_mask(LOG_UNIMP, "%s: unimplemented\n", __func__);
+> Phil.
+>=20
+> >=20
+> >> ---
+> >>  hw/ppc/trace-events | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/ppc/trace-events b/hw/ppc/trace-events
+> >> index dcc06d49b5a..6d8d095aa28 100644
+> >> --- a/hw/ppc/trace-events
+> >> +++ b/hw/ppc/trace-events
+> >> @@ -19,7 +19,7 @@ spapr_update_dt_failed_size(unsigned cbold, unsigned=
+ cbnew, unsigned magic) "Old
+> >>  spapr_update_dt_failed_check(unsigned cbold, unsigned cbnew, unsigned=
+ magic) "Old blob %u bytes, new blob %u bytes, magic 0x%x"
+> >> =20
+> >>  # spapr_tpm_proxy.c
+> >> -spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_de=
+vice_path=3D%s operation=3D0x%"PRIu64
+> >> +spapr_h_tpm_comm(const char *device_path, uint64_t operation) "tpm_de=
+vice_path=3D%s operation=3D0x%"PRIx64
+> >>  spapr_tpm_execute(uint64_t data_in, uint64_t data_in_sz, uint64_t dat=
+a_out, uint64_t data_out_sz) "data_in=3D0x%"PRIx64", data_in_sz=3D%"PRIu64"=
+, data_out=3D0x%"PRIx64", data_out_sz=3D%"PRIu64
+> >> =20
+> >>  # spapr_iommu.c
+> >=20
+>=20
+>=20
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -126,25 +126,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---JB7KW7Ey7eB5HOHs
+--2DJuma0xDHN2clgl
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+7TGQACgkQbDjKyiDZ
-s5Lc/Q//bLbqwpTPjZ2ali7BsNdujoK+pKMEIb2c/Qr/kM/KehSNPMBU6QAwjGb8
-UpKFJgsww6u1JztqsCY6g03ppOk657SNMPANnuLIX0s4sgCTNzptbt5quUvInIgN
-M6mGqMs0cZ4j6gDzFGYP8HxuRYdh7hS6QWxA/V+o9xSXHECIAuNqvZwPR2M+EkbA
-AAgINJmtjHrXt7rg9+TBLwumwezDlWliCgkfPmd1tc03e0nlIgRxin33Wip42RM1
-cN21LA1efF7KSw47govR9LwWPi3WqPcTke6PwZLIJQ4e7hTMRQs7A41Dsa9AZ28C
-ti+GyWmoZ1swrAVmYs3qOR8EOVGEjA2ZUU5p9U3jKq2Fb0Mf2UMZbrLzvXqS7Mmd
-pcT/YzvIzIphvr0U22Fq8Ei1GcekioHgLPWLN1+6yuzFfijfSJTJto2WJXEzUpd0
-BYQbop+uCnxz8UJpbWOu6v3tukUaPnD8bw7i7lU9ITZKUgI/G01GOEV5oo6UcldN
-J0MAHCYLh7JFwdY17EYitQiiYEt0iYpupkLjqHtgfimTlw3omBSFnZZco4qNBWBz
-HANbZBm71UN2mU6kZpcNSDu2/eT+BxqMW0KGmjAIiusDz8S2FpgCArfV063VCAH4
-cHnsZbEjfw2imjAPvGmLXpzY67ZGVTO6ycdO8d506rqjCuS7xCM=
-=xa5r
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+7U4gACgkQbDjKyiDZ
+s5Ko0BAAo8aIGyHGsehykVR9yXdK5pYNL8zxFr3APhxaJaodh71Ox7bCLuz0ibEI
+66TPz7eNFoCQ8wv/OI8EpAeFprOfcRSIKXxL9U7lsIhBUCCz5mXqckCMGbl1CyxZ
+g2XxdKpIWEBKact/dKgXceCQMvZo2ArHgl1q1xTRPbPVNwv5MW3IxvnUcpRgxzRa
+dDDA+8G7sWzsf0SxVfURea8RXyZxKmK4b1zlOaha+eu44h2CErRCw6h37zsrw1Lj
+zi18DuXNbNz69OE3xki163Q8cnHbD4xorzh0fZT+2/3pxI73F/smPedJspjEi/AL
+zsy45sEwrqoY4vt5KdXJguwutp5JGuqO2q9+qVUxmra56VSK6XlKRf2geLeCvzJy
+qPMq8eCQsf0VAxK7StQNnuLsIex2iU4mtuvu+t9T/YeCCGfdjHv1fzay27XcVU/6
+cyychIt029oXzig8babaWf1+8CLqqosF2FgKpwKCRUxq79L1Ef4LfC6/vNlW4jB0
+B1gyakEBZMaCaa1079xkVko8X4lD0xahfz+IYn30bbJF376k2k8xzzpnmqoJGv2k
+u6KKHT8uTzlYEFC0zoNXpEhBNv1FQ60iSjj+gJ2oUmjuXCVjEXMDR9QRdTywZTMW
+6Ve7FtPJYpvr6IqsVSmaV+PuSIrX/M68aRcrhx/XaOImxrjnJ5g=
+=56jq
 -----END PGP SIGNATURE-----
 
---JB7KW7Ey7eB5HOHs--
+--2DJuma0xDHN2clgl--
 
