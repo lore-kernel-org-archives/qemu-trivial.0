@@ -1,41 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1khZdi-0007Qc-1u
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Nov 2020 09:49:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48712)
+	id 1khaGP-0002kt-B9
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Nov 2020 10:29:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60944)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1khZdf-0007Nv-Gm; Tue, 24 Nov 2020 09:49:51 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2538)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1khZdc-0004tW-Tn; Tue, 24 Nov 2020 09:49:51 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CgRk809jJzhfCf;
- Tue, 24 Nov 2020 22:49:20 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Tue, 24 Nov 2020
- 22:49:32 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <mst@redhat.com>, <raphael.norwitz@nutanix.com>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH] vhost-user-scsi: Fix memleaks in vus_proc_req()
-Date: Tue, 24 Nov 2020 14:37:27 +0000
-Message-ID: <20201124143727.47037-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1khaGN-0002hs-O1
+ for qemu-trivial@nongnu.org; Tue, 24 Nov 2020 10:29:51 -0500
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:43169)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1khaGL-00022N-40
+ for qemu-trivial@nongnu.org; Tue, 24 Nov 2020 10:29:51 -0500
+Received: by mail-ej1-x641.google.com with SMTP id k27so29018673ejs.10
+ for <qemu-trivial@nongnu.org>; Tue, 24 Nov 2020 07:29:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=YIK4rT06OEVfS5PAOFn7t9VN48hP6GRhcSimvXcCgSQ=;
+ b=CttcBkkcNyEqepfnn77FAVRKHMb7jYBvZrAZhZ6szTgFuj8XrMMpVLtuYzl1J3jS1K
+ MqS56Ge6WgO4SoOI1l/yOc+7N6l84nsa/vMrJo6INkKUO2unSVHKW5jwHcJCV7xmN9wH
+ rnxR2pQ21uh/kvzCtNCq0eOo1uBIuwE/qRAETiue8/KXez4QO7s1rhhWk3pU362HZvlE
+ 5HGa/1rFLN9fscHiEzlzsri03FgpseSnYxun2RXx3p0Ja22kCqyCO/HEv+i3lh7NJCi8
+ vn5A10fbIrn2+NqN02RK698saIMoDDWtu/lauHu24Cz03EWs31/mowHhjEyLXtocwlre
+ 3JgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=YIK4rT06OEVfS5PAOFn7t9VN48hP6GRhcSimvXcCgSQ=;
+ b=k3I0TyRznuCU1EwyPAAalmNsClbPNrO9e2rTphOorpY0XsPKrVg0/HTgViRF3eZAaw
+ cQZ4lqrvqptejr0xw0WgAd+VjNOI/Gu8nZX7etnvFAagDf6Gc2Lvrc7Yz+cb3xUX+L1/
+ Kcp6+l7XvteOxG4DVkpIlGc2qrixY4gu/P7MIC3rgnf3xhCRpisHYYTjMPdqorPLbtsn
+ lwhWQJJwkDqIw7HevhsZ/J97nil4ZWICHxJbPPfsSD3pI8S8xScGtBBlurbUlejjFhkN
+ /2gy7JK63znmXHtb2OsqUG9icKts5Ieb7CAOnWJLsRpBNEvRHwI8nXxnkHiDJn9lM9PF
+ eyFw==
+X-Gm-Message-State: AOAM532y5IswfXb5e7Bux0+de5EWbSp0lAf18cN2HoS5wOK0RYv/G7VH
+ JIPeX5wb6jez/1a03PjkpEsHSCsAkRW5anu8nbmrvQ==
+X-Google-Smtp-Source: ABdhPJzYQbyOdV6QzHuci89/tFe1qmzC5izCPxllk7FamFiBMRWddCBalqN/+pVoS7iFB4JD0Z2wuOIeEzrzF2X8Pkk=
+X-Received: by 2002:a17:906:5a88:: with SMTP id
+ l8mr4504401ejq.407.1606231787291; 
+ Tue, 24 Nov 2020 07:29:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <5F9AC6FF.4000301@huawei.com>
+ <CAC_L=vVg=YitEAKE+wGEmphuL8Eu87mYDiYD=UNKGhqOyd8PpQ@mail.gmail.com>
+ <5FBCF8F0.9060103@huawei.com>
+In-Reply-To: <5FBCF8F0.9060103@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Nov 2020 15:29:36 +0000
+Message-ID: <CAFEAcA985RuM96HP4mvHmU-ffAsQWv4hFFABXQ2ZW_t5Uts7vg@mail.gmail.com>
+Subject: Re: [PATCH] contrib/rdmacm-mux: Fix error condition in
+ hash_tbl_search_fd_by_ifid()
+To: Alex Chen <alex.chen@huawei.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>, 
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, zhengchuan@huawei.com, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -48,48 +80,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Nov 2020 14:49:51 -0000
+X-List-Received-Date: Tue, 24 Nov 2020 15:29:52 -0000
 
-The 'elem' is allocated memory in vu_queue_pop(), and it's memory should be
-freed in all error branchs after vu_queue_pop().
-In addition, in order to free 'elem' memory outside of while(1) loop, move the
-definition of 'elem' to the begin of vus_proc_req().
+On Tue, 24 Nov 2020 at 12:15, Alex Chen <alex.chen@huawei.com> wrote:
+>
+> Hi everyone=EF=BC=8C
+>
+> Who can help me merge this patch into the master branch? This patch may b=
+e need for qemu-5.2
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- contrib/vhost-user-scsi/vhost-user-scsi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+This code has been like this since 2018, so this is not
+a regression in 5.2. At this point in the release cycle
+(rc3 imminent) I think it's best to just leave it until 6.0.
 
-diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
-index 0f9ba4b2a2..4639440a70 100644
---- a/contrib/vhost-user-scsi/vhost-user-scsi.c
-+++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
-@@ -232,6 +232,7 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
-     VugDev *gdev;
-     VusDev *vdev_scsi;
-     VuVirtq *vq;
-+    VuVirtqElement *elem = NULL;
- 
-     assert(vu_dev);
- 
-@@ -248,7 +249,6 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
-     g_debug("Got kicked on vq[%d]@%p", idx, vq);
- 
-     while (1) {
--        VuVirtqElement *elem;
-         VirtIOSCSICmdReq *req;
-         VirtIOSCSICmdResp *rsp;
- 
-@@ -288,6 +288,7 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
- 
-         free(elem);
-     }
-+    free(elem);
- }
- 
- static void vus_queue_set_started(VuDev *vu_dev, int idx, bool started)
--- 
-2.19.1
-
+thanks
+-- PMM
 
