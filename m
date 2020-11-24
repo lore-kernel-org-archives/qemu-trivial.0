@@ -1,73 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1khaGP-0002kt-B9
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Nov 2020 10:29:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60944)
+	id 1khaOR-0007Ni-Su
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Nov 2020 10:38:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1khaGN-0002hs-O1
- for qemu-trivial@nongnu.org; Tue, 24 Nov 2020 10:29:51 -0500
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:43169)
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1khaOQ-0007NF-FL; Tue, 24 Nov 2020 10:38:10 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:38294)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1khaGL-00022N-40
- for qemu-trivial@nongnu.org; Tue, 24 Nov 2020 10:29:51 -0500
-Received: by mail-ej1-x641.google.com with SMTP id k27so29018673ejs.10
- for <qemu-trivial@nongnu.org>; Tue, 24 Nov 2020 07:29:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
+ id 1khaOO-0003A4-Jy; Tue, 24 Nov 2020 10:38:10 -0500
+Received: by mail-ot1-x342.google.com with SMTP id 92so16652310otd.5;
+ Tue, 24 Nov 2020 07:38:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=YIK4rT06OEVfS5PAOFn7t9VN48hP6GRhcSimvXcCgSQ=;
- b=CttcBkkcNyEqepfnn77FAVRKHMb7jYBvZrAZhZ6szTgFuj8XrMMpVLtuYzl1J3jS1K
- MqS56Ge6WgO4SoOI1l/yOc+7N6l84nsa/vMrJo6INkKUO2unSVHKW5jwHcJCV7xmN9wH
- rnxR2pQ21uh/kvzCtNCq0eOo1uBIuwE/qRAETiue8/KXez4QO7s1rhhWk3pU362HZvlE
- 5HGa/1rFLN9fscHiEzlzsri03FgpseSnYxun2RXx3p0Ja22kCqyCO/HEv+i3lh7NJCi8
- vn5A10fbIrn2+NqN02RK698saIMoDDWtu/lauHu24Cz03EWs31/mowHhjEyLXtocwlre
- 3JgA==
+ :cc; bh=T9aximfDkcbO+2+ihjXsHELH/uw7Ph7PjKl7o2wstDs=;
+ b=VlWcPZHEeP7yIr6paGUhRSRchx/CZ7Hgu6UWYi/FjGF3ll7b0WgxSV41fJZyHax6HK
+ QTHKDS+axtFHWAyKGQLVTWsYiYogWs+q1S3uIkBE6oitfWtoP6FbJat+cCYZFs0NgISy
+ QxLVRDBqjFNSz9l30IyS0z56e1JDXWVai11IInX5L4IKf46p2E1Q2+Quuph0kL6qCHqC
+ PIyM6u3loW+ub9GWro4aLPY9TFwDifqCYkF5zC8A1wl3RE4oce/+ILoYmyJwEK/dwqYj
+ 6n8NtAmTg1Ei4zjB9+/7rQDQMqd9OS+IMFmsDhYBjVJIBiYrrLVsMKS3BgRMatahZQKm
+ 9Krg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=YIK4rT06OEVfS5PAOFn7t9VN48hP6GRhcSimvXcCgSQ=;
- b=k3I0TyRznuCU1EwyPAAalmNsClbPNrO9e2rTphOorpY0XsPKrVg0/HTgViRF3eZAaw
- cQZ4lqrvqptejr0xw0WgAd+VjNOI/Gu8nZX7etnvFAagDf6Gc2Lvrc7Yz+cb3xUX+L1/
- Kcp6+l7XvteOxG4DVkpIlGc2qrixY4gu/P7MIC3rgnf3xhCRpisHYYTjMPdqorPLbtsn
- lwhWQJJwkDqIw7HevhsZ/J97nil4ZWICHxJbPPfsSD3pI8S8xScGtBBlurbUlejjFhkN
- /2gy7JK63znmXHtb2OsqUG9icKts5Ieb7CAOnWJLsRpBNEvRHwI8nXxnkHiDJn9lM9PF
- eyFw==
-X-Gm-Message-State: AOAM532y5IswfXb5e7Bux0+de5EWbSp0lAf18cN2HoS5wOK0RYv/G7VH
- JIPeX5wb6jez/1a03PjkpEsHSCsAkRW5anu8nbmrvQ==
-X-Google-Smtp-Source: ABdhPJzYQbyOdV6QzHuci89/tFe1qmzC5izCPxllk7FamFiBMRWddCBalqN/+pVoS7iFB4JD0Z2wuOIeEzrzF2X8Pkk=
-X-Received: by 2002:a17:906:5a88:: with SMTP id
- l8mr4504401ejq.407.1606231787291; 
- Tue, 24 Nov 2020 07:29:47 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=T9aximfDkcbO+2+ihjXsHELH/uw7Ph7PjKl7o2wstDs=;
+ b=HXRQtYlt1LyhvUpz/83N6O/FPEkqbO/ZYakpnjBpzlRPqe8TG6BGQMiGXasFzkRMwI
+ qqFlvIPEJmLCAE/W2dwaEf7gMfylo0ByhVLSnvnSnfcuNOMJ9NcVxrRW1oDQ55sbe6DW
+ 4daOQ+ZBJwFhRNBCHm/MLtbNidQMCfIww7sT+cpxDIlUXF1b6U58rjCOhn+b6Xqo089a
+ B/oFU7rtXZlT60OJbb9lE1ZzJ65j2KgDt+zk2amb9HE/1h5PuMUz/zXuniMn1w1eU15P
+ K/ejtV3gBthQR18b/AUdpTeDdMyqMlgx349iY7JWyyn8WiKhWXl1O5R5PtUMyCQsy2j+
+ v4+Q==
+X-Gm-Message-State: AOAM53151M+lFSpFaO6MU7sulgtwFWCQ5TiXoHHz38NTJGQEvRHliI8h
+ xHpf/++OvBf+5onkpYl17ufdyMGNsIxa6/+DSpk=
+X-Google-Smtp-Source: ABdhPJzHyu+wOhvPtYmSG6qGRzIeV/2pAWwc43pwGaIu6xa1ica19HcnW6AkFi8TvGd/UU8j+nK721Ph5z9UhaWBQnQ=
+X-Received: by 2002:a9d:27e8:: with SMTP id c95mr3784442otb.262.1606232286750; 
+ Tue, 24 Nov 2020 07:38:06 -0800 (PST)
 MIME-Version: 1.0
-References: <5F9AC6FF.4000301@huawei.com>
- <CAC_L=vVg=YitEAKE+wGEmphuL8Eu87mYDiYD=UNKGhqOyd8PpQ@mail.gmail.com>
- <5FBCF8F0.9060103@huawei.com>
-In-Reply-To: <5FBCF8F0.9060103@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Nov 2020 15:29:36 +0000
-Message-ID: <CAFEAcA985RuM96HP4mvHmU-ffAsQWv4hFFABXQ2ZW_t5Uts7vg@mail.gmail.com>
-Subject: Re: [PATCH] contrib/rdmacm-mux: Fix error condition in
- hash_tbl_search_fd_by_ifid()
+References: <20201124143727.47037-1-alex.chen@huawei.com>
+In-Reply-To: <20201124143727.47037-1-alex.chen@huawei.com>
+From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
+Date: Tue, 24 Nov 2020 10:37:55 -0500
+Message-ID: <CAFubqFub7gPiuHAU4fFXPncCZhfM3iPAr-oVDgR3Ewyk_D8hjA@mail.gmail.com>
+Subject: Re: [PATCH] vhost-user-scsi: Fix memleaks in vus_proc_req()
 To: Alex Chen <alex.chen@huawei.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>, 
- Yuval Shaia <yuval.shaia.ml@gmail.com>, zhengchuan@huawei.com, 
- Laurent Vivier <laurent@vivier.eu>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>, qemu-trivial@nongnu.org, 
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=raphael.s.norwitz@gmail.com; helo=mail-ot1-x342.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,19 +69,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Nov 2020 15:29:52 -0000
+X-List-Received-Date: Tue, 24 Nov 2020 15:38:10 -0000
 
-On Tue, 24 Nov 2020 at 12:15, Alex Chen <alex.chen@huawei.com> wrote:
+On Tue, Nov 24, 2020 at 9:50 AM Alex Chen <alex.chen@huawei.com> wrote:
 >
-> Hi everyone=EF=BC=8C
+> The 'elem' is allocated memory in vu_queue_pop(), and it's memory should be
+> freed in all error branchs after vu_queue_pop().
+
+s/branchs/branches
+
+> In addition, in order to free 'elem' memory outside of while(1) loop, move the
+> definition of 'elem' to the begin of vus_proc_req().
+
+s/begin/beginning
+
 >
-> Who can help me merge this patch into the master branch? This patch may b=
-e need for qemu-5.2
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 
-This code has been like this since 2018, so this is not
-a regression in 5.2. At this point in the release cycle
-(rc3 imminent) I think it's best to just leave it until 6.0.
+Other than spelling in the commit message, looks good to me.
 
-thanks
--- PMM
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+
+> ---
+>  contrib/vhost-user-scsi/vhost-user-scsi.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> index 0f9ba4b2a2..4639440a70 100644
+> --- a/contrib/vhost-user-scsi/vhost-user-scsi.c
+> +++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> @@ -232,6 +232,7 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
+>      VugDev *gdev;
+>      VusDev *vdev_scsi;
+>      VuVirtq *vq;
+> +    VuVirtqElement *elem = NULL;
+>
+>      assert(vu_dev);
+>
+> @@ -248,7 +249,6 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
+>      g_debug("Got kicked on vq[%d]@%p", idx, vq);
+>
+>      while (1) {
+> -        VuVirtqElement *elem;
+>          VirtIOSCSICmdReq *req;
+>          VirtIOSCSICmdResp *rsp;
+>
+> @@ -288,6 +288,7 @@ static void vus_proc_req(VuDev *vu_dev, int idx)
+>
+>          free(elem);
+>      }
+> +    free(elem);
+>  }
+>
+>  static void vus_queue_set_started(VuDev *vu_dev, int idx, bool started)
+> --
+> 2.19.1
+>
+>
 
