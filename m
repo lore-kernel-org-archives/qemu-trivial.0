@@ -1,64 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1khsE8-00076Z-BV
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Nov 2020 05:40:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49826)
+	id 1khywk-0005nn-IJ
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Nov 2020 12:51:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53252)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1khsE6-00075A-Ti; Wed, 25 Nov 2020 05:40:42 -0500
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:43705)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1khsE5-00077C-8D; Wed, 25 Nov 2020 05:40:42 -0500
-Received: by mail-ej1-x642.google.com with SMTP id k27so2286793ejs.10;
- Wed, 25 Nov 2020 02:40:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JDXtBYcuuRxOiCAVLeZf6/IcC/h23HsqzybB+jzVtB8=;
- b=pjcHRc2sO1Ywr7UKIOz/Hoo3NTekbEUJKVOd1oJEWf9XIPvoISOqGnQhgVAY3zb8uA
- SVPskk2vgqNM4JZ2tMtqNBEHLe5eIu79rrgc9RMk/lFPuB3f8ZvPCeocP/9AnfSSlzti
- cfYsnSZPhZMYPd4ZsmLfM0b7C/+y6IOgWEEf/d2lOOLH2NcVfQAlVqBuVG4yJ4WmyCB9
- AG5fTJ3laSJx4LJv78kRMWnkZE+QA8BYBID7G4f/HeFaYG+izcgWqEKh9WTdPQsbWoZs
- u9EqclHjenE7pH0LlwRG65BpdEFCaJJ70SmVFzzsbbzwT9B1wruvHkgBRXWhLjuIgzD3
- 7Low==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1khywf-0005m4-R5
+ for qemu-trivial@nongnu.org; Wed, 25 Nov 2020 12:51:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55284)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1khywd-0004sS-2B
+ for qemu-trivial@nongnu.org; Wed, 25 Nov 2020 12:51:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1606326666;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RMYL2lSCqVi2UruegtWz5kDARaAjGnaLDBwI8zbfZBU=;
+ b=SMg01nvyM5uVCBaZpR90hE4TYTzfkvomrK+/2JKyfdy+JehS3t4eD26PObHltt7AnI77X2
+ TBAFSXbMZcsPXUWAjsbBnvSNrI4NpBETSE/MRcNkAQsbGNpmt62eJTlW/Y2JqSvW9Mu38M
+ 868oJFKD9dqRjV/tmRWdSqx9zG6ZYGE=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-420-wt2yCWY_PNudEcT2cKPkGA-1; Wed, 25 Nov 2020 12:51:04 -0500
+X-MC-Unique: wt2yCWY_PNudEcT2cKPkGA-1
+Received: by mail-ej1-f69.google.com with SMTP id y10so1051930ejg.3
+ for <qemu-trivial@nongnu.org>; Wed, 25 Nov 2020 09:51:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JDXtBYcuuRxOiCAVLeZf6/IcC/h23HsqzybB+jzVtB8=;
- b=SQk8J7LfcO0/lDRw94V9nPv2MmUKXyFIHNcLoJBBzLN2vjL+hejF+9lGuO1cSG7Pw6
- 3rrLAMTgAH0JIIBGd+O1cQvSHWTL0UpVcgoIBMcLbZCk55gXmUU/le6oZ6T/E/QXpT1k
- iHXSM5mB1jiVWEx5oRWgzwto/z5DV5o1PoprI+s3sFwnEOy7+QCxILAG+VLATLCqJfDg
- 8KxB3zDGSR3e1juA7ohgMjYWl7c2e1Wjxfoj8+hOVHqoEuLcAPfXUKMV/Gcsg7shiazY
- jNpyf7vENsn3eJJc0hTdbs61k1HmUr7kmnZDBXoCr5ol02Ex/qvHxrjyk0QYESmNbwSk
- Cu1Q==
-X-Gm-Message-State: AOAM5317cACawN5WtkUg6Jb7CuaSMp57AAWMiH6nVJaDEjdqTQI0KOG3
- 6KF9/Nra0v/nIyroRRxKC8z+IF6/dRgpKDIOsOE=
-X-Google-Smtp-Source: ABdhPJy2iLsnwNhbvrORmhV20eqZuojWcvVRTvBFylUANS9HNFsZ/7h7j91ii/hoawtpmryY8S2Rwzh4VAnlf1CYgU0=
-X-Received: by 2002:a17:906:bcd4:: with SMTP id
- lw20mr2457966ejb.527.1606300839322; 
- Wed, 25 Nov 2020 02:40:39 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RMYL2lSCqVi2UruegtWz5kDARaAjGnaLDBwI8zbfZBU=;
+ b=JGtevoyN6CagVhJn7a9UopVzsAEorcTskK+5NomPYhaDt/OYYp48sWKYposqamD7mT
+ /Q/FTi3pWdAo5CHFXpDIuE2uC424ZGnALx2bhxiS6G/Ey6QysDc24FBHPMWaYGxzX8iI
+ zbcAiwiyPpsIdtoUyQ/LWhTl5x62/A25XxKr6nAp3CHRH2IfcSJlkjiRpdgw0ZjC7l/C
+ n9mNwVGEYl3brULgMefuuH1irGsXRNxXU+j4nHJSqHhKzNZqzByDdllfHnOCxQPYGbvY
+ 2bxui7MGMfsPR4TSPeIl6cdzSKu38vRsoarMlKYBiO/PosaxxafAdHqhFJUU9MiHoqZT
+ PxpA==
+X-Gm-Message-State: AOAM531XZyIBcAZRdmStfHm9QGJ0l2v0cEsdvBabfWRXaVFqhpXKJAJ5
+ HYmq0CiJsPgbTiQe20lmK5/WbOVC+2nJAFZPvSL7JY+i1Bxcrj2yaJ+A9slCc/vSiu4j6qXXAtc
+ ahO13lO+JCdIBtAb3zg==
+X-Received: by 2002:a17:906:dbd6:: with SMTP id
+ yc22mr4223887ejb.252.1606326663271; 
+ Wed, 25 Nov 2020 09:51:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJXt5BCbUD2+PbbNVOcncYRGn48YSuOsYWfS7zMcf4Ph6wy2h7SJKiizzzzozPlha9Dl7uRw==
+X-Received: by 2002:a17:906:dbd6:: with SMTP id
+ yc22mr4223865ejb.252.1606326662979; 
+ Wed, 25 Nov 2020 09:51:02 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id u18sm1707312edd.60.2020.11.25.09.51.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Nov 2020 09:51:02 -0800 (PST)
+Subject: Re: [PATCH v1] configure: remove python pkg_resources check
+To: Thomas Huth <thuth@redhat.com>, Olaf Hering <olaf@aepfle.de>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+References: <20201124211925.4194-1-olaf@aepfle.de>
+ <055163a8-9c26-4454-89e8-9b40c31d79a0@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <15bc839d-5022-d047-7f6b-dbc9d5961f27@redhat.com>
+Date: Wed, 25 Nov 2020 18:51:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <20201125102403.57709-1-alex.chen@huawei.com>
-In-Reply-To: <20201125102403.57709-1-alex.chen@huawei.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Wed, 25 Nov 2020 14:40:27 +0400
-Message-ID: <CAJ+F1C+mc-HHs629SYQcRtxrLZxaEne5Bi+NnWOyo4EAEL3oyw@mail.gmail.com>
-Subject: Re: [PATCH] test-qga: fix a resource leak in
- test_qga_guest_get_osinfo()
-To: Alex Chen <alex.chen@huawei.com>
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>,
- qemu trival <qemu-trivial@nongnu.org>, 
- QEMU <qemu-devel@nongnu.org>, zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: multipart/alternative; boundary="000000000000ee2bc805b4ec0ec7"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x642.google.com
+In-Reply-To: <055163a8-9c26-4454-89e8-9b40c31d79a0@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,96 +98,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Nov 2020 10:40:43 -0000
+X-List-Received-Date: Wed, 25 Nov 2020 17:51:10 -0000
 
---000000000000ee2bc805b4ec0ec7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 25/11/20 05:19, Thomas Huth wrote:
+> On 24/11/2020 22.19, Olaf Hering wrote:
+>> Since meson.git#0240d760c7699a059cc89e584363c6431cdd2b61 setuptools is not required anymore.
+> 
+> That commit was part of meson 0.55.1. We require at least meson 0.55.3. So
+> right, this should be fine.
+> 
+>> Signed-off-by: Olaf Hering <olaf@aepfle.de>
+>> ---
+>>   configure | 3 ---
+>>   1 file changed, 3 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index 8c5d2f9a69..ce9b3c0a33 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -1913,9 +1913,6 @@ fi
+>>   
+>>   case "$meson" in
+>>       git | internal)
+>> -        if ! $python -c 'import pkg_resources' > /dev/null 2>&1; then
+>> -            error_exit "Python setuptools not found"
+>> -        fi
+>>           meson="$python ${source_path}/meson/meson.py"
+>>           ;;
+>>       *) meson=$(command -v "$meson") ;;
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
+> I guess we could now also remove the corresponding package from the docker
+> and vm files?
+> 
+> $ grep -r setuptool tests/
+> tests/docker/dockerfiles/debian10.docker:     python3-setuptools \
+> tests/docker/dockerfiles/fedora-win32-cross.docker:    python3-setuptools \
+> tests/docker/dockerfiles/fedora-win64-cross.docker:    python3-setuptools \
+> tests/vm/freebsd:        "py37-setuptools",
+> tests/vm/openbsd:        "py3-setuptools",
+> tests/vm/haiku.x86_64:        "setuptools_python3"
+> tests/vm/netbsd:        "py37-setuptools",
+> 
 
-On Wed, Nov 25, 2020 at 2:37 PM Alex Chen <alex.chen@huawei.com> wrote:
+Yes, it should.  I sent a patch for this.
 
-> The fixture->fd is created in fixture_setup() and, likewise, needs to be
-> closed
-> in fixture_tear_down().
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->
+Paolo
 
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
----
->  tests/test-qga.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/tests/test-qga.c b/tests/test-qga.c
-> index c1b173b3cb..eb33264e8e 100644
-> --- a/tests/test-qga.c
-> +++ b/tests/test-qga.c
-> @@ -111,6 +111,7 @@ fixture_tear_down(TestFixture *fixture, gconstpointer
-> data)
->
->      g_rmdir(fixture->test_dir);
->      g_free(fixture->test_dir);
-> +    close(fixture->fd);
->  }
->
->  static void qmp_assertion_message_error(const char     *domain,
-> --
-> 2.19.1
->
->
->
-
---=20
-Marc-Andr=C3=A9 Lureau
-
---000000000000ee2bc805b4ec0ec7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Nov 25, 2020 at 2:37 PM Alex =
-Chen &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</a>&g=
-t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
-x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">The fi=
-xture-&gt;fd is created in fixture_setup() and, likewise, needs to be close=
-d<br>
-in fixture_tear_down().<br>
-<br>
-Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei.com" targ=
-et=3D"_blank">euler.robot@huawei.com</a>&gt;<br>
-Signed-off-by: Alex Chen &lt;<a href=3D"mailto:alex.chen@huawei.com" target=
-=3D"_blank">alex.chen@huawei.com</a>&gt;<br></blockquote><div><br></div><di=
-v><br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:=
-marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;=C2=A0 <br>=
-</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
-0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0tests/test-qga.c | 1 +<br>
-=C2=A01 file changed, 1 insertion(+)<br>
-<br>
-diff --git a/tests/test-qga.c b/tests/test-qga.c<br>
-index c1b173b3cb..eb33264e8e 100644<br>
---- a/tests/test-qga.c<br>
-+++ b/tests/test-qga.c<br>
-@@ -111,6 +111,7 @@ fixture_tear_down(TestFixture *fixture, gconstpointer d=
-ata)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0g_rmdir(fixture-&gt;test_dir);<br>
-=C2=A0 =C2=A0 =C2=A0g_free(fixture-&gt;test_dir);<br>
-+=C2=A0 =C2=A0 close(fixture-&gt;fd);<br>
-=C2=A0}<br>
-<br>
-=C2=A0static void qmp_assertion_message_error(const char=C2=A0 =C2=A0 =C2=
-=A0*domain,<br>
--- <br>
-2.19.1<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
-
---000000000000ee2bc805b4ec0ec7--
 
