@@ -1,40 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiEWF-0004d7-Dl
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 05:28:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46046)
+	id 1kiEZz-0005v0-9z
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 05:32:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kiEWD-0004cu-T9; Thu, 26 Nov 2020 05:28:53 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2539)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kiEWB-0001Ee-Ha; Thu, 26 Nov 2020 05:28:53 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4ChYr72FFNzhhch;
- Thu, 26 Nov 2020 18:28:23 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Thu, 26 Nov 2020
- 18:28:37 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <groug@kaod.org>, <qemu_oss@crudebyte.com>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
-Date: Thu, 26 Nov 2020 10:16:24 +0000
-Message-ID: <20201126101624.55714-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kiEZy-0005uc-Ck; Thu, 26 Nov 2020 05:32:46 -0500
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44907)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kiEZw-0002cj-Qh; Thu, 26 Nov 2020 05:32:46 -0500
+Received: by mail-oi1-x243.google.com with SMTP id y74so1749687oia.11;
+ Thu, 26 Nov 2020 02:32:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=3+Mxlv6Nd/uo7icmu0ecISLar6ooaj/Ded6ha4ra8hs=;
+ b=LM7PixAS3BMNtoSBcFzzPrXOLEhBqtOQFRc8D+78mkIKFsyc/fIU414ndmhjlIztPW
+ GohtLmjNJ/sFIVi709/aTff91O4hQ288GInbSDhCMoYAf17/f3z9u6f8Zzo2BtNLB82p
+ I9UTwtMHl1ik8NWVO1OVhhkGVCj45B74W+qHbL/+JQgdor0oih5tP5s/EXeCm1hs8PGe
+ 5QcLvAWNYL29fODhaa9DagGmkcWbh/f1nEQmSR/tjsGMvU9fAcnWfpnZm7iuT856EDzg
+ 6b2ySDgGk0olX6vQLEB3pLi1Xtv1054jYeZG8MSsOxgAciBvNSuVAHYo2AbbXdXKuKhA
+ pXYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=3+Mxlv6Nd/uo7icmu0ecISLar6ooaj/Ded6ha4ra8hs=;
+ b=cwcTTL9nxt06s5HReIwJl/ar/RjRlU7Ww3p7xIO73tXXJIoRWgkx6Am9P6nUQF2TGt
+ mFmgOhhstHZETwwyUVeQM5WQyeYS9rRU7fEjI0mwe3QLGvu8gSTGSLercMWU/VpOSXpg
+ 7mGDOiGY04BsMwDg+zT6fckNGI8V3Q9yoglHNYJ45Z/EXk1IIqtJyWtXDn/U5qe6yf+H
+ gObeMJ/98knidZAuOyY0P3F695UF4IvAM5pp6vdEFk0zchRwPkhIGdHgctMqihDfadBS
+ SrD+FkNBIFlMnEq2VGy51kEAtjUqBtHoNmMr9yvR44QeIXka3bmm7TcyqcF+UzVgbQc2
+ swuQ==
+X-Gm-Message-State: AOAM531HGAC165mb5ayBq+fjfCQ3iQ+yaOPyHqSAW1xiRucQGM41fv2p
+ d9+bV18gZazXwMlswe6xy13mJnbsUhjStHgOYgk=
+X-Google-Smtp-Source: ABdhPJxdslI7RNqNMR5vKF93Xj15nz+N7byTxxk1EZ1Q0Uc16w8oPJE8a+HVZUPSVCA9LvKEkd2eMB1pTc1dLzgbOPY=
+X-Received: by 2002:aca:cd17:: with SMTP id d23mr1688099oig.56.1606386763110; 
+ Thu, 26 Nov 2020 02:32:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20201126065702.35095-1-alex.chen@huawei.com>
+In-Reply-To: <20201126065702.35095-1-alex.chen@huawei.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Thu, 26 Nov 2020 18:32:07 +0800
+Message-ID: <CAKXe6SKKqHAwbOHQzy3ZviQKrotFWKJ3h2Gtm0Aw1nk++3+eWw@mail.gmail.com>
+Subject: Re: [PATCH] vnc: Fix a memleak in vnc_display_connect()
+To: Alex Chen <alex.chen@huawei.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org, 
+ Qemu Developers <qemu-devel@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=liq3ea@gmail.com; helo=mail-oi1-x243.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -48,34 +71,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Nov 2020 10:28:54 -0000
+X-List-Received-Date: Thu, 26 Nov 2020 10:32:46 -0000
 
-Only one of the options -s and -f can be used. When -f is used,
-the fd is created externally and does not need to be closed.
-When -s is used, a new socket fd is created, and this socket fd
-needs to be closed at the end of main().
+Alex Chen <alex.chen@huawei.com> =E4=BA=8E2020=E5=B9=B411=E6=9C=8826=E6=97=
+=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=883:10=E5=86=99=E9=81=93=EF=BC=9A
+>
+> Free the 'sioc' when the qio_channel_socket_connect_sync() fails.
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- fsdev/virtfs-proxy-helper.c | 3 +++
- 1 file changed, 3 insertions(+)
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index 15c0e79b06..339d477169 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
-     process_requests(sock);
- error:
-     g_free(rpath);
-+    if (sock_name) {
-+        close(sock);
-+    }
-     g_free(sock_name);
-     do_log(LOG_INFO, "Done\n");
-     closelog();
--- 
-2.19.1
-
+> ---
+>  ui/vnc.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/ui/vnc.c b/ui/vnc.c
+> index 49235056f7..dae56e9493 100644
+> --- a/ui/vnc.c
+> +++ b/ui/vnc.c
+> @@ -3743,6 +3743,7 @@ static int vnc_display_connect(VncDisplay *vd,
+>      sioc =3D qio_channel_socket_new();
+>      qio_channel_set_name(QIO_CHANNEL(sioc), "vnc-reverse");
+>      if (qio_channel_socket_connect_sync(sioc, saddr[0], errp) < 0) {
+> +        object_unref(OBJECT(sioc));
+>          return -1;
+>      }
+>      vnc_connect(vd, sioc, false, false);
+> --
+> 2.19.1
+>
+>
 
