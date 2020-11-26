@@ -1,63 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiErr-0002Pg-1a
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 05:51:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53162)
+	id 1kiFNJ-0004Vl-1S
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 06:23:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiErn-0002OO-Ck; Thu, 26 Nov 2020 05:51:11 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:36041)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiErk-0000a1-Mx; Thu, 26 Nov 2020 05:51:10 -0500
-Received: by mail-ot1-x344.google.com with SMTP id y24so1531932otk.3;
- Thu, 26 Nov 2020 02:51:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=1TY+Qge8Djo48EeksxDvFUXVzrcsvXCDsno3d00X+AQ=;
- b=QqF191c2E20T3O/JhM342+00Ym6xULnyIj/UPTMgP+I9RZk5JsZjkcQZL4CTUQkXKI
- X/OGZ1ehnGe/kDevIcGqjCC+bPe1G2UFjgMHu3fmJj0/Hwoj6uw+afeeQFvQZSbxm5as
- t1aVDnpMkIFsrRcuyxIDqZWb8L0oBFhF9rEJuRxgBjNTImLwzgbCCSXQyHyqyhCiC6/U
- MLZznIhSoPAL5+uNWfZm4/3Ddwl+YM5N02HutENDyq9HG72vEJXLq7ALeepgsQMInLud
- HeBCs+jczJH+4i8GtJOuXqcwVUj6FVqx2bKRKj47A+97ZRj9Ly42Vd2478k/GSMHL5zO
- theQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=1TY+Qge8Djo48EeksxDvFUXVzrcsvXCDsno3d00X+AQ=;
- b=A0nV5cqjEFg1iRYimLE7nARKzb7we8hrSu1EGnOqmDLsfUjIJDf4UG4wHhE+hK+ALL
- NEj4aIfBpp+Go5YpVDIUbUPhUdNOam9yIybWMnU6y0Wdi+JgY/7T/faZMWctTADEWr6v
- LZxI+OOpIgX6gzH5w9L1S2WkQ0pHtfcMs8CTKyEXtzj2MO95GeE53ynK6afAudA6vq5Y
- wRG3IAYJPig+XiJbq/vPySHxvi9emEHnEmbGOPRGVQHpjlDhIgJzwCakR5OzKPcJYRcm
- 0dgo4WuBW6QAkxt/frFMME7UaofmDCdRaYUMFnX2PQyjEe/zda6zD0eewX+sHA/zNRXu
- GbEA==
-X-Gm-Message-State: AOAM5323eYkvQ/kalc1bAwvTIShxecMtbEE7lMmniSO5jMpIxpBkl5oe
- 06Xu3TpSlBCCJKCLV728anVaSipjPHSSCm60+FU=
-X-Google-Smtp-Source: ABdhPJzRoBoy9JQAhTSCn2cHXTcmTFBaMbiKbmthshhtjre1aeUvUHDeWlzE8x+S+nfE2cV0c1Ijh4ZOZ265Yxy/feA=
-X-Received: by 2002:a9d:7e96:: with SMTP id m22mr1882268otp.181.1606387865338; 
- Thu, 26 Nov 2020 02:51:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kiFNH-0004Uk-43; Thu, 26 Nov 2020 06:23:43 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2158)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kiFND-0003rB-AF; Thu, 26 Nov 2020 06:23:42 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Chb3L6DgMz749R;
+ Thu, 26 Nov 2020 19:23:10 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Thu, 26 Nov 2020
+ 19:23:23 +0800
+From: Alex Chen <alex.chen@huawei.com>
+To: <peter.maydell@linaro.org>, <jcd@tribudubois.net>,
+ <peter.chubb@nicta.com.au>
+CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
+ <qemu-arm@nongnu.org>
+Subject: [PATCH 0/5] hw/misc: Fix some bad printf format specifiers
+Date: Thu, 26 Nov 2020 11:11:04 +0000
+Message-ID: <20201126111109.112238-1-alex.chen@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-References: <20201126101624.55714-1-alex.chen@huawei.com>
-In-Reply-To: <20201126101624.55714-1-alex.chen@huawei.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 26 Nov 2020 18:50:29 +0800
-Message-ID: <CAKXe6SLTqMgANNox-Y9=DhZHzRRaqT6taWBu1qenC4hsRe0+Qg@mail.gmail.com>
-Subject: Re: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
-To: Alex Chen <alex.chen@huawei.com>
-Cc: Greg Kurz <groug@kaod.org>, qemu_oss@crudebyte.com, qemu-trivial@nongnu.org,
- Qemu Developers <qemu-devel@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x344.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=alex.chen@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,50 +50,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Nov 2020 10:51:11 -0000
+X-List-Received-Date: Thu, 26 Nov 2020 11:23:43 -0000
 
-Alex Chen <alex.chen@huawei.com> =E4=BA=8E2020=E5=B9=B411=E6=9C=8826=E6=97=
-=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=886:29=E5=86=99=E9=81=93=EF=BC=9A
->
-> Only one of the options -s and -f can be used. When -f is used,
-> the fd is created externally and does not need to be closed.
-> When -s is used, a new socket fd is created, and this socket fd
-> needs to be closed at the end of main().
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> ---
->  fsdev/virtfs-proxy-helper.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> index 15c0e79b06..339d477169 100644
-> --- a/fsdev/virtfs-proxy-helper.c
-> +++ b/fsdev/virtfs-proxy-helper.c
-> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
->      process_requests(sock);
->  error:
->      g_free(rpath);
-> +    if (sock_name) {
-> +        close(sock);
-> +    }
+Find a lot of bad printf format specifiers in hw/misc, fix them.
 
-If 'proxy_socket' failed, you call close(-1).
+Alex Chen (5):
+  i.MX25: Fix bad printf format specifiers
+  i.MX31: Fix bad printf format specifiers
+  i.MX6: Fix bad printf format specifiers
+  i.MX6ul: Fix bad printf format specifiers
+  misc/omap_sdrc: Fix bad printf format specifiers
 
-Maybe following is better?
+ hw/misc/imx25_ccm.c  | 12 ++++++------
+ hw/misc/imx31_ccm.c  | 14 +++++++-------
+ hw/misc/imx6_ccm.c   | 20 ++++++++++----------
+ hw/misc/imx6_src.c   |  2 +-
+ hw/misc/imx6ul_ccm.c |  4 ++--
+ hw/misc/imx_ccm.c    |  4 ++--
+ hw/misc/omap_sdrc.c  |  2 +-
+ 7 files changed, 29 insertions(+), 29 deletions(-)
 
-if (sock >=3D 0) {
-    close(sock);
-}
+-- 
+2.19.1
 
-Thanks,
-Li Qiang
-
->      g_free(sock_name);
->      do_log(LOG_INFO, "Done\n");
->      closelog();
-> --
-> 2.19.1
->
->
 
