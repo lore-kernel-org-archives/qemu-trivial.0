@@ -1,46 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiFdP-0005xu-0w
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 06:40:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40636)
+	id 1kiG3v-0002Dl-VU
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 07:07:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kiFdM-0005wF-Ow; Thu, 26 Nov 2020 06:40:20 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2806)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kiG3r-0002CA-CL
+ for qemu-trivial@nongnu.org; Thu, 26 Nov 2020 07:07:44 -0500
+Received: from 6.mo52.mail-out.ovh.net ([188.165.49.222]:38029)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kiFdJ-0001BX-Oh; Thu, 26 Nov 2020 06:40:20 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4ChbQR0BflzkWsD;
- Thu, 26 Nov 2020 19:39:43 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 26 Nov 2020 19:40:04 +0800
-Message-ID: <5FBF9413.4050907@huawei.com>
-Date: Thu, 26 Nov 2020 19:40:03 +0800
-From: Alex Chen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Li Qiang <liq3ea@gmail.com>
-CC: Greg Kurz <groug@kaod.org>, <qemu_oss@crudebyte.com>,
- <qemu-trivial@nongnu.org>, Qemu Developers <qemu-devel@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1kiG3n-0002Fj-OZ
+ for qemu-trivial@nongnu.org; Thu, 26 Nov 2020 07:07:43 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.137])
+ by mo52.mail-out.ovh.net (Postfix) with ESMTPS id A359B1FEC5F;
+ Thu, 26 Nov 2020 13:07:35 +0100 (CET)
+Received: from kaod.org (37.59.142.96) by DAG8EX1.mxp5.local (172.16.2.71)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 26 Nov
+ 2020 13:07:35 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0017a8ab3fb-4e31-460a-8f95-ed6f7cb74178,
+ 3D9671329B6E73EAAA72C004E5562AE56C463AC8) smtp.auth=groug@kaod.org
+Date: Thu, 26 Nov 2020 13:07:34 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Alex Chen <alex.chen@huawei.com>
+CC: <qemu_oss@crudebyte.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
 Subject: Re: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
+Message-ID: <20201126130734.56f2a84a@bahia.lan>
+In-Reply-To: <20201126101624.55714-1-alex.chen@huawei.com>
 References: <20201126101624.55714-1-alex.chen@huawei.com>
- <CAKXe6SLTqMgANNox-Y9=DhZHzRRaqT6taWBu1qenC4hsRe0+Qg@mail.gmail.com>
-In-Reply-To: <CAKXe6SLTqMgANNox-Y9=DhZHzRRaqT6taWBu1qenC4hsRe0+Qg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG8EX1.mxp5.local
+ (172.16.2.71)
+X-Ovh-Tracer-GUID: 12e4a73d-b486-4a6b-addd-d533006ebef0
+X-Ovh-Tracer-Id: 11134868607857695139
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrudehvddgfeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopeiihhgrnhhgrdiihhgrnhhghhgrihhlihgrnhhgsehhuhgrfigvihdrtghomh
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=groug@kaod.org;
+ helo=6.mo52.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -53,65 +60,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Nov 2020 11:40:21 -0000
+X-List-Received-Date: Thu, 26 Nov 2020 12:07:44 -0000
 
-On 2020/11/26 18:50, Li Qiang wrote:
-> Alex Chen <alex.chen@huawei.com>
->>
->> Only one of the options -s and -f can be used. When -f is used,
->> the fd is created externally and does not need to be closed.
->> When -s is used, a new socket fd is created, and this socket fd
->> needs to be closed at the end of main().
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Alex Chen <alex.chen@huawei.com>
->> ---
->>  fsdev/virtfs-proxy-helper.c | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
->> index 15c0e79b06..339d477169 100644
->> --- a/fsdev/virtfs-proxy-helper.c
->> +++ b/fsdev/virtfs-proxy-helper.c
->> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
->>      process_requests(sock);
->>  error:
->>      g_free(rpath);
->> +    if (sock_name) {
->> +        close(sock);
->> +    }
-> 
-> If 'proxy_socket' failed, you call close(-1).
-> 
-> Maybe following is better?
-> 
-> if (sock >= 0) {
->     close(sock);
-> }
+On Thu, 26 Nov 2020 10:16:24 +0000
+Alex Chen <alex.chen@huawei.com> wrote:
+
+> Only one of the options -s and -f can be used. When -f is used,
+> the fd is created externally and does not need to be closed.
+
+The process running virtfs-proxy-helper has its own copy of
+the fd inherited from its parent. And this fd will be closed
+eventually when the process terminates.
+
+> When -s is used, a new socket fd is created, and this socket fd
+> needs to be closed at the end of main().
 > 
 
-Hi Qiang,
+Same here, the new socket fd is closed when the process
+terminates.
 
-Thanks for your review.
-The 'sock' need to be closed only when option -s is used, that is when 'sock_name' is not NULL.
-So maybe the following is better?
+The only justification to merge such a change would be if
+the code was sitting in some other function, in which
+case we should indeed do proper rollback. But it is main()
+here, so this patch isn't needed.
 
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index 15c0e79b06..3ba68d9878 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
-     process_requests(sock);
- error:
-     g_free(rpath);
-+    if (sock_name && (sock >= 0)) {
-+        close(sock);
-+    }
-     g_free(sock_name);
-     do_log(LOG_INFO, "Done\n");
-     closelog();
+> Reported-by: Euler Robot <euler.robot@huawei.com>
 
-Thanks,
-Alex
+Can you provide a copy of the report in case I'm
+missing something ?
+
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  fsdev/virtfs-proxy-helper.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+> index 15c0e79b06..339d477169 100644
+> --- a/fsdev/virtfs-proxy-helper.c
+> +++ b/fsdev/virtfs-proxy-helper.c
+> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
+>      process_requests(sock);
+>  error:
+>      g_free(rpath);
+> +    if (sock_name) {
+> +        close(sock);
+> +    }
+>      g_free(sock_name);
+>      do_log(LOG_INFO, "Done\n");
+>      closelog();
 
 
