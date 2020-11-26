@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiEel-0007Fh-LJ
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 05:37:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49160)
+	id 1kiErr-0002Pg-1a
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 05:51:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiEek-0007EO-LJ; Thu, 26 Nov 2020 05:37:42 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:42302)
+ id 1kiErn-0002OO-Ck; Thu, 26 Nov 2020 05:51:11 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:36041)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiEej-0004H7-8y; Thu, 26 Nov 2020 05:37:42 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 11so1469004oty.9;
- Thu, 26 Nov 2020 02:37:40 -0800 (PST)
+ id 1kiErk-0000a1-Mx; Thu, 26 Nov 2020 05:51:10 -0500
+Received: by mail-ot1-x344.google.com with SMTP id y24so1531932otk.3;
+ Thu, 26 Nov 2020 02:51:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=2shOX+HFGjx9yof2t8AsTuEfNL0YMKvC4gSmFolDGQY=;
- b=lpYcEQnkmOJlR6C2GvlgFoc9TPG5YFUItL13tg5rv5f+NMCCYdWBYHUk9Jr5Sx8uSC
- XAlheBcPj3iWwqdfhnTBeK3dC/6pTcU2gCYFOwhLbioSX17P5i966QH09k5Y272f+Ozd
- MMDY+5JoxHnY2R+A9O0IPaULtjbfcxs+z5x0YlNtdzk3c9BFHbUg3eZVqcl3B8u+KBGe
- 8ZTk+3sOnVGoTOEXAILIJvcuQKYcoLbMS1IDqs8rNTAub4+qDfR4Pw7ejHPhf1gZDDDm
- yIUv44G1LHpa2+5Sb/kqzK17Ue7ZqM8K2tyT1I8f46KxJhh24UTuxV6nbvY/IY0cla8r
- DmTA==
+ bh=1TY+Qge8Djo48EeksxDvFUXVzrcsvXCDsno3d00X+AQ=;
+ b=QqF191c2E20T3O/JhM342+00Ym6xULnyIj/UPTMgP+I9RZk5JsZjkcQZL4CTUQkXKI
+ X/OGZ1ehnGe/kDevIcGqjCC+bPe1G2UFjgMHu3fmJj0/Hwoj6uw+afeeQFvQZSbxm5as
+ t1aVDnpMkIFsrRcuyxIDqZWb8L0oBFhF9rEJuRxgBjNTImLwzgbCCSXQyHyqyhCiC6/U
+ MLZznIhSoPAL5+uNWfZm4/3Ddwl+YM5N02HutENDyq9HG72vEJXLq7ALeepgsQMInLud
+ HeBCs+jczJH+4i8GtJOuXqcwVUj6FVqx2bKRKj47A+97ZRj9Ly42Vd2478k/GSMHL5zO
+ theQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=2shOX+HFGjx9yof2t8AsTuEfNL0YMKvC4gSmFolDGQY=;
- b=crweY5UbhQyT81/9yJKanNr0rtA7YM5mmLZT5N2BbaYNZj1jYyjjyB4d4RZmsFKr/x
- uVzQcItr59MIXs2SakTOh/GQERCYQY26dk5v/ae59EI7AH9USU8x5rny5+hQ/rY8vVOY
- G+b5Oujal1c5P4KCE8xz8eOF0kGw3HI8PO1Oe9Ky44zhBX25smfCDo0ES4OxODOeRmiK
- s1mazAAb+ClX+oTND6svSXls64Tr6HGiOhhjMmaYjIVtrgNFcNjtQHjfGHav2oWz4/mC
- 7g0Pbgglz/hqJ9hWMkqBEfArxK25YsAL/dkqlCb2vTqkGnasmFD/EXC9lxgIvv7ysU5b
- /KlA==
-X-Gm-Message-State: AOAM532jlIjkz9o8JDU6xbhiKWmNk0GGi1tMsvxm3o3xVCylwOrbO88i
- OLW7NEM4xK6wuMnmri9qWqnztENuTlhtYoU0JFI=
-X-Google-Smtp-Source: ABdhPJwYEFlO61IOOuH68cppSd9RmtPzOakXuEMmsZOGSPMJZF3IswLWSXuRpNF7SpL9anXymaSzZUx2nOkXW6ll+8k=
-X-Received: by 2002:a9d:7e96:: with SMTP id m22mr1855365otp.181.1606387059699; 
- Thu, 26 Nov 2020 02:37:39 -0800 (PST)
+ bh=1TY+Qge8Djo48EeksxDvFUXVzrcsvXCDsno3d00X+AQ=;
+ b=A0nV5cqjEFg1iRYimLE7nARKzb7we8hrSu1EGnOqmDLsfUjIJDf4UG4wHhE+hK+ALL
+ NEj4aIfBpp+Go5YpVDIUbUPhUdNOam9yIybWMnU6y0Wdi+JgY/7T/faZMWctTADEWr6v
+ LZxI+OOpIgX6gzH5w9L1S2WkQ0pHtfcMs8CTKyEXtzj2MO95GeE53ynK6afAudA6vq5Y
+ wRG3IAYJPig+XiJbq/vPySHxvi9emEHnEmbGOPRGVQHpjlDhIgJzwCakR5OzKPcJYRcm
+ 0dgo4WuBW6QAkxt/frFMME7UaofmDCdRaYUMFnX2PQyjEe/zda6zD0eewX+sHA/zNRXu
+ GbEA==
+X-Gm-Message-State: AOAM5323eYkvQ/kalc1bAwvTIShxecMtbEE7lMmniSO5jMpIxpBkl5oe
+ 06Xu3TpSlBCCJKCLV728anVaSipjPHSSCm60+FU=
+X-Google-Smtp-Source: ABdhPJzRoBoy9JQAhTSCn2cHXTcmTFBaMbiKbmthshhtjre1aeUvUHDeWlzE8x+S+nfE2cV0c1Ijh4ZOZ265Yxy/feA=
+X-Received: by 2002:a9d:7e96:: with SMTP id m22mr1882268otp.181.1606387865338; 
+ Thu, 26 Nov 2020 02:51:05 -0800 (PST)
 MIME-Version: 1.0
-References: <20201125102403.57709-1-alex.chen@huawei.com>
-In-Reply-To: <20201125102403.57709-1-alex.chen@huawei.com>
+References: <20201126101624.55714-1-alex.chen@huawei.com>
+In-Reply-To: <20201126101624.55714-1-alex.chen@huawei.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 26 Nov 2020 18:37:03 +0800
-Message-ID: <CAKXe6SJJRx8KQZXLBP8vGmA6_Xz_EZG9d3G-Ogx=3uf_r3Xarw@mail.gmail.com>
-Subject: Re: [PATCH] test-qga: fix a resource leak in
- test_qga_guest_get_osinfo()
+Date: Thu, 26 Nov 2020 18:50:29 +0800
+Message-ID: <CAKXe6SLTqMgANNox-Y9=DhZHzRRaqT6taWBu1qenC4hsRe0+Qg@mail.gmail.com>
+Subject: Re: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
 To: Alex Chen <alex.chen@huawei.com>
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org, 
+Cc: Greg Kurz <groug@kaod.org>, qemu_oss@crudebyte.com, qemu-trivial@nongnu.org,
  Qemu Developers <qemu-devel@nongnu.org>,
  zhanghailiang <zhang.zhanghailiang@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x341.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x344.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -72,37 +71,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Nov 2020 10:37:42 -0000
+X-List-Received-Date: Thu, 26 Nov 2020 10:51:11 -0000
 
-Alex Chen <alex.chen@huawei.com> =E4=BA=8E2020=E5=B9=B411=E6=9C=8825=E6=97=
-=A5=E5=91=A8=E4=B8=89 =E4=B8=8B=E5=8D=886:37=E5=86=99=E9=81=93=EF=BC=9A
+Alex Chen <alex.chen@huawei.com> =E4=BA=8E2020=E5=B9=B411=E6=9C=8826=E6=97=
+=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=886:29=E5=86=99=E9=81=93=EF=BC=9A
 >
-> The fixture->fd is created in fixture_setup() and, likewise, needs to be =
-closed
-> in fixture_tear_down().
+> Only one of the options -s and -f can be used. When -f is used,
+> the fd is created externally and does not need to be closed.
+> When -s is used, a new socket fd is created, and this socket fd
+> needs to be closed at the end of main().
 >
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Alex Chen <alex.chen@huawei.com>
-
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-
 > ---
->  tests/test-qga.c | 1 +
->  1 file changed, 1 insertion(+)
+>  fsdev/virtfs-proxy-helper.c | 3 +++
+>  1 file changed, 3 insertions(+)
 >
-> diff --git a/tests/test-qga.c b/tests/test-qga.c
-> index c1b173b3cb..eb33264e8e 100644
-> --- a/tests/test-qga.c
-> +++ b/tests/test-qga.c
-> @@ -111,6 +111,7 @@ fixture_tear_down(TestFixture *fixture, gconstpointer=
- data)
->
->      g_rmdir(fixture->test_dir);
->      g_free(fixture->test_dir);
-> +    close(fixture->fd);
->  }
->
->  static void qmp_assertion_message_error(const char     *domain,
+> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+> index 15c0e79b06..339d477169 100644
+> --- a/fsdev/virtfs-proxy-helper.c
+> +++ b/fsdev/virtfs-proxy-helper.c
+> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
+>      process_requests(sock);
+>  error:
+>      g_free(rpath);
+> +    if (sock_name) {
+> +        close(sock);
+> +    }
+
+If 'proxy_socket' failed, you call close(-1).
+
+Maybe following is better?
+
+if (sock >=3D 0) {
+    close(sock);
+}
+
+Thanks,
+Li Qiang
+
+>      g_free(sock_name);
+>      do_log(LOG_INFO, "Done\n");
+>      closelog();
 > --
 > 2.19.1
 >
