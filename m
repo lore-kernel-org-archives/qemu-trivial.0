@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiIpE-0006NG-S4
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 10:04:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43630)
+	id 1kiLRw-0001uX-PU
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Nov 2020 12:52:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiIpD-0006Mw-6q; Thu, 26 Nov 2020 10:04:47 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:32900)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kiIp5-0003UE-DV; Thu, 26 Nov 2020 10:04:46 -0500
-Received: by mail-ot1-x343.google.com with SMTP id n12so2138729otk.0;
- Thu, 26 Nov 2020 07:04:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=bdpOYV0pQGg0QXl5yS/Yo3PAPEnYrT9xE899f0g9oJk=;
- b=RRQTY7E99JpgNoChTi+Tqv4fD/a1e48NtiEOo9VLRPS6vfFl29F+ri4+TsJmKCSVSZ
- BqbxmHDizDcnlG5T49c3MIP24hQF5B90pT+e4zqaNrlMPjRgXIE0rYURRIWo6CctUF1K
- QPrFP/hKUhDfRXK+WqpCHran0uEOwcmw+19tTO76qI8qEhOkxDdf0bm7z/GtBG/VNKhz
- pT7trxCV8dpLnKtJoBDHwx4Gmv8M7YQOrpy2TwNUSOoNBweof8MSnN2WknoLkrofuPJ8
- NGBzsUmA1k6oNbDQRsYmp1OUCuim4bb0FwOPyuuHTD7K9GkE8vB5QBK+otG0vPsi7Xlk
- fYzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bdpOYV0pQGg0QXl5yS/Yo3PAPEnYrT9xE899f0g9oJk=;
- b=t1qHu1nYYgH2FoByir2PQiJXHJwngDEq4ruM1kZsS9NlxwSikbaC/EXbcwpqFp4g7t
- MGA5s65R5RLnvw6XVQPMkgTYm4szDX76Au+hl3PZVASSKgNVHTLqb4flamCsRl9PCZpZ
- nae8iW3k/XonyZ38mZXTYTGudBgDLDyJLapJSC0VzQDl1ztIjB4S0Hxo5WInJOHqvwbD
- MKVeafiVsrTJzuq9ygItomkhgCN0aaOveUFR3+A34hXPqzs746KrLZ7ZPbYiBrXG/+aj
- Mo2XZXBzxnzWN4wdXDHdcdFbzLGgEdOBcZ1fKRZviSdRBdXJQJtJSywHo5D3VOqy7EuC
- oprQ==
-X-Gm-Message-State: AOAM533owJRY5QEQ7mKtORe95GMPTkfumasMW26h2fDpB1+bVddhfhUn
- FfZD57wej5F2EJqGjsJDgP8NpGDx16fbcjtF2L4=
-X-Google-Smtp-Source: ABdhPJyMQKvzorpTxpDjDEpxS8Q8D0JOB5fq0Mtic0P6Z5B/y9bLaa4Jq19IJATdCtm+cE/PiUkNYFpKpn1kfNlRSj4=
-X-Received: by 2002:a9d:2643:: with SMTP id a61mr2538454otb.353.1606403076497; 
- Thu, 26 Nov 2020 07:04:36 -0800 (PST)
-MIME-Version: 1.0
-References: <20201126101624.55714-1-alex.chen@huawei.com>
- <CAKXe6SLTqMgANNox-Y9=DhZHzRRaqT6taWBu1qenC4hsRe0+Qg@mail.gmail.com>
- <5FBF9413.4050907@huawei.com>
-In-Reply-To: <5FBF9413.4050907@huawei.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 26 Nov 2020 23:04:00 +0800
-Message-ID: <CAKXe6S+ZfGy44Od2_1MUK-eU9T6nWK0P-FGVR=uZc1dum1tKKA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1kiLRs-0001r5-0S; Thu, 26 Nov 2020 12:52:52 -0500
+Received: from lizzy.crudebyte.com ([91.194.90.13]:53471)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1kiLRn-0000dz-Hf; Thu, 26 Nov 2020 12:52:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=crudebyte.com; s=lizzy; h=Content-Type:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Content-ID:Content-Description;
+ bh=GG7rO0ckcHFQAtHdHjhl3qMiMk2hkIkM6nZa1LPJWa0=; b=W0jvh1JW/VY5bcLPxOHOiwFOgv
+ G8/7Ib2nJLCnOdv/bqqa/dOblBSZOJ1Xq/mxYf6S/+prY75yVZFCYVBC6/S6xWChlAV17zYYWzhfg
+ JkZjcstaSPOfCnQscobXaIErYeYcLlUV2iMzlcQMJp4y3w/qOuv+njKBZ4ZyERjtK5sT7ne/K3CX0
+ X91s6t9T+dbWwzQ5sbJXmDqrTMJVhIxsFbyq+A2K7JzamB2FWF3gfcLpej0rY8haYtUZCtM4AbPaf
+ OH6cBF4QAAPL37q6s+y0QnQ1FHjfh5WddskBEupbmqOKvc4g6pr0C5/VmDvPbB8SVMSJiCmcL8IWW
+ MtGnfbXg==;
+From: Christian Schoenebeck <qemu_oss@crudebyte.com>
+To: qemu-devel@nongnu.org
+Cc: Alex Chen <alex.chen@huawei.com>, Greg Kurz <groug@kaod.org>,
+ qemu-trivial@nongnu.org, zhang.zhanghailiang@huawei.com
 Subject: Re: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
-To: Alex Chen <alex.chen@huawei.com>
-Cc: Greg Kurz <groug@kaod.org>, qemu_oss@crudebyte.com, qemu-trivial@nongnu.org,
- Qemu Developers <qemu-devel@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x343.google.com
+Date: Thu, 26 Nov 2020 18:52:39 +0100
+Message-ID: <2017010.0bgJjaKMus@silver>
+In-Reply-To: <5FBFAA87.5000400@huawei.com>
+References: <20201126101624.55714-1-alex.chen@huawei.com>
+ <20201126130734.56f2a84a@bahia.lan> <5FBFAA87.5000400@huawei.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+Received-SPF: pass client-ip=91.194.90.13; envelope-from=qemu_oss@crudebyte.com;
+ helo=lizzy.crudebyte.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,79 +52,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Nov 2020 15:04:47 -0000
+X-List-Received-Date: Thu, 26 Nov 2020 17:52:53 -0000
 
-Alex Chen <alex.chen@huawei.com> =E4=BA=8E2020=E5=B9=B411=E6=9C=8826=E6=97=
-=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=887:40=E5=86=99=E9=81=93=EF=BC=9A
->
-> On 2020/11/26 18:50, Li Qiang wrote:
-> > Alex Chen <alex.chen@huawei.com>
-> >>
+On Donnerstag, 26. November 2020 14:15:51 CET Alex Chen wrote:
+> Hi Greg,
+> 
+> Thanks for your review.
+> 
+> On 2020/11/26 20:07, Greg Kurz wrote:
+> > On Thu, 26 Nov 2020 10:16:24 +0000
+> > 
+> > Alex Chen <alex.chen@huawei.com> wrote:
 > >> Only one of the options -s and -f can be used. When -f is used,
 > >> the fd is created externally and does not need to be closed.
+
+So somebody is really using the 9p proxy driver for something; interesting.
+
+> > 
+> > The process running virtfs-proxy-helper has its own copy of
+> > the fd inherited from its parent. And this fd will be closed
+> > eventually when the process terminates.
+> > 
 > >> When -s is used, a new socket fd is created, and this socket fd
 > >> needs to be closed at the end of main().
-> >>
+> > 
+> > Same here, the new socket fd is closed when the process
+> > terminates.
+
+Does it? I haven't reviewed much of the 9p proxy code yet, however if chroot() 
+fails for instance, the fd would leak right now, wouldn't it?
+
+Or was your argument that it's the OS's job to free any file descriptor 
+automatically on process terminations in general?
+
+> IMO, it's best to explicitly release resources before the process
+> terminates, just as the variable 'rpath' is explicitly freed in main(),
+> so socket fd also needs to be explicitly closed here.
+> 
+> Looking forward to your reply.
+> 
+> > The only justification to merge such a change would be if
+> > the code was sitting in some other function, in which
+> > case we should indeed do proper rollback. But it is main()
+> > here, so this patch isn't needed.
+> > 
 > >> Reported-by: Euler Robot <euler.robot@huawei.com>
-> >> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> >> ---
-> >>  fsdev/virtfs-proxy-helper.c | 3 +++
-> >>  1 file changed, 3 insertions(+)
-> >>
-> >> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> >> index 15c0e79b06..339d477169 100644
-> >> --- a/fsdev/virtfs-proxy-helper.c
-> >> +++ b/fsdev/virtfs-proxy-helper.c
-> >> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
-> >>      process_requests(sock);
-> >>  error:
-> >>      g_free(rpath);
-> >> +    if (sock_name) {
-> >> +        close(sock);
-> >> +    }
-> >
-> > If 'proxy_socket' failed, you call close(-1).
-> >
-> > Maybe following is better?
-> >
-> > if (sock >=3D 0) {
-> >     close(sock);
-> > }
-> >
->
-> Hi Qiang,
->
-> Thanks for your review.
-> The 'sock' need to be closed only when option -s is used, that is when 's=
-ock_name' is not NULL.
-> So maybe the following is better?
+> > 
+> > Can you provide a copy of the report in case I'm
+> > missing something ?
+> 
+> Our codecheck tool reports a resource leak here, which is relatively simple,
+> like the one below, I did not attach it.
+> 
+> ---------------------
+> "Resource leak: sock"
+> ---------------------
 
-Yes, you're right.
+Yeah, not very helpful that output.
 
-
->
-> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> index 15c0e79b06..3ba68d9878 100644
-> --- a/fsdev/virtfs-proxy-helper.c
-> +++ b/fsdev/virtfs-proxy-helper.c
-> @@ -1154,6 +1154,9 @@ int main(int argc, char **argv)
->      process_requests(sock);
->  error:
->      g_free(rpath);
-> +    if (sock_name && (sock >=3D 0)) {
-
-No need parenthesis for 'sock>=3D0'?
-
-Thanks,
-Li Qiang
-
-> +        close(sock);
-> +    }
->      g_free(sock_name);
->      do_log(LOG_INFO, "Done\n");
->      closelog();
->
+> 
 > Thanks,
 > Alex
->
+
+Best regards,
+Christian Schoenebeck
+
+
 
