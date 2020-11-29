@@ -1,54 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kiZm7-000364-OI
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Nov 2020 04:10:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34768)
+	id 1kjRXv-0002wV-GI
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Nov 2020 13:35:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kiZm3-00034m-35; Fri, 27 Nov 2020 04:10:39 -0500
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:57765)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kiZlw-0007h2-Gj; Fri, 27 Nov 2020 04:10:38 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.59])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 8BFE875D3843;
- Fri, 27 Nov 2020 10:10:28 +0100 (CET)
-Received: from kaod.org (37.59.142.100) by DAG8EX1.mxp5.local (172.16.2.71)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Fri, 27 Nov
- 2020 10:10:27 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R0030cf95699-e326-4233-8c67-b8e67fe4bc53,
- 3F3A8B77B8A7D9894C8FBB5EF0C17793377DB79C) smtp.auth=groug@kaod.org
-Date: Fri, 27 Nov 2020 10:10:26 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Christian Schoenebeck <qemu_oss@crudebyte.com>
-CC: <qemu-devel@nongnu.org>, Alex Chen <alex.chen@huawei.com>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: Re: [PATCH] virtfs-proxy-helper: Fix a resource leak in main()
-Message-ID: <20201127101026.2ca28dc9@bahia.lan>
-In-Reply-To: <13615133.E8RLdmFOkC@silver>
-References: <20201126101624.55714-1-alex.chen@huawei.com>
- <2017010.0bgJjaKMus@silver> <20201126192719.7ea20846@bahia.lan>
- <13615133.E8RLdmFOkC@silver>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1kjRXt-0002wJ-Mg; Sun, 29 Nov 2020 13:35:37 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:33677)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1kjRXs-0001aj-1Z; Sun, 29 Nov 2020 13:35:37 -0500
+Received: by mail-oi1-x242.google.com with SMTP id k26so11890272oiw.0;
+ Sun, 29 Nov 2020 10:35:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=poOQTGWmyr5zCPc2jhOBvrjhSl97XVwSrd0vjJmhZKc=;
+ b=StfJUnclLhbFlmWv0QKE9r6Q7bitVHUxJawpSvZrH4N8GQVn6GrAMAHr6i60LvdNcU
+ Si0W/VFq4VpBA8PL3Z4EbX/O2l6MWuc4j5Nd+wUpD+YQgwJeT8SMCm2YowQpUrIAIHaK
+ NO0BHiF1J1QxSC/roMS7IiMUiBcrpHRfEOGcK9kQczVovP1qAdMUd/j8d2iSWlHe3KbE
+ hgc8CHigaSEYW3Lo/1TUgFtrBl1CKbSTbSkQ9pjv6o3VkzFqhGhnJ42a04WaMkTfIc1o
+ SAWo6007i7MbP3L6Lmv5zxuq76r3QUlID8HPLDKTs+vJazicFvGkq31w4abtYc+nJz/W
+ TZjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=poOQTGWmyr5zCPc2jhOBvrjhSl97XVwSrd0vjJmhZKc=;
+ b=IZGyKNExQuOMDHl5U6ZaaY+E525ckVrVWfeqUTTgdlERsiaOSEWDpBd+2Z8r34/q4A
+ T1qjz0d3kvDJpIA3xAJM4HfYJJhp1ptTlCakh0CqcgtpQkUcuBqD9RoI18+eX9XPBqJR
+ XP0Zf03q09V1Iiv7P5ZZ6Xw1VYqHqt8Ij4yUxQMUrBPEOS9gX6MqcNFeS0qK9rmFeMWS
+ xwbRWLJRCjdW2UhotyZ2oIHZzn9Ao3kZ4GqC4uNIMHQDNm6d5obq3YvKmTfJ0Z5XMZxN
+ G6K/GW42WVJ6UhUJP4TGBFwUmER2AkpTVGoD8oqqsQXqLHetFt9ZP6q2v1mdULf9O7vP
+ zcFA==
+X-Gm-Message-State: AOAM533Hhmdp+O54RQN7TGLAyyKvAbJJoQwQdfAdKVlok+HT/b9rSrfk
+ pnRSLzFIUAdRnmPJeeEeGdX/9xAWdK8LHbQ6ICg=
+X-Google-Smtp-Source: ABdhPJzwpkwY7TrYP6S4aGd+bCpAY2IgyhNtuZAZCxtO2VzaPE4q48BHYnVw2+zdm29nPvWOPkSTDY6ujtDDdq6PSJg=
+X-Received: by 2002:a05:6808:9b7:: with SMTP id
+ e23mr11695837oig.167.1606674933816; 
+ Sun, 29 Nov 2020 10:35:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG8EX1.mxp5.local
- (172.16.2.71)
-X-Ovh-Tracer-GUID: fe4e6638-fdcb-4034-8de0-bb51d13a1df8
-X-Ovh-Tracer-Id: 14016327941689088419
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrudehgedgtdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddttdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepiihhrghnghdriihhrghnghhhrghilhhirghngheshhhurgifvghirdgtohhm
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=groug@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <5F9AC6FF.4000301@huawei.com>
+ <CAC_L=vVg=YitEAKE+wGEmphuL8Eu87mYDiYD=UNKGhqOyd8PpQ@mail.gmail.com>
+ <5FBCF8F0.9060103@huawei.com>
+ <CAFEAcA985RuM96HP4mvHmU-ffAsQWv4hFFABXQ2ZW_t5Uts7vg@mail.gmail.com>
+ <5FBDB096.3040600@huawei.com>
+In-Reply-To: <5FBDB096.3040600@huawei.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Date: Sun, 29 Nov 2020 20:35:23 +0200
+Message-ID: <CAC_L=vXkncoeBO48-Zkie=pm20_CT-Ee1y5HyQqGtc2EK9fnFg@mail.gmail.com>
+Subject: Re: [PATCH] contrib/rdmacm-mux: Fix error condition in
+ hash_tbl_search_fd_by_ifid()
+To: Alex Chen <alex.chen@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>, 
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, zhengchuan@huawei.com, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: multipart/alternative; boundary="000000000000b31f7a05b54328ca"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=marcel.apfelbaum@gmail.com; helo=mail-oi1-x242.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,45 +78,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Nov 2020 09:10:41 -0000
+X-List-Received-Date: Sun, 29 Nov 2020 18:35:37 -0000
 
-On Thu, 26 Nov 2020 19:44:24 +0100
-Christian Schoenebeck <qemu_oss@crudebyte.com> wrote:
+--000000000000b31f7a05b54328ca
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-[...]
-> > The only justification that'd deserve to be in the changelog of
-> > such a patch is something like "because this is good practice
-> > to rollback in case code moves to another function than main()".
-> 
-> Well, the actual motivation was rather a pragmatic one: to shut up a 
-> sanitizer's false positive, which I can understand.
-> 
+Hi Alex,
 
-Yes, this should also be mentioned in the changelog.
+On Wed, Nov 25, 2020 at 3:17 AM Alex Chen <alex.chen@huawei.com> wrote:
 
-> Another option would be using a global variable for the fd instead of a 
-> temporary on stack. That should shut up the sanitizer as well and would not 
-> introduce change to the program flow.
-> 
+> On 2020/11/24 23:29, Peter Maydell wrote:
+> > On Tue, 24 Nov 2020 at 12:15, Alex Chen <alex.chen@huawei.com> wrote:
+> >>
+> >> Hi everyone=EF=BC=8C
+> >>
+> >> Who can help me merge this patch into the master branch? This patch ma=
+y
+> be need for qemu-5.2
+> >
+> > This code has been like this since 2018, so this is not
+> > a regression in 5.2. At this point in the release cycle
+> > (rc3 imminent) I think it's best to just leave it until 6.0.
+> >
+>
+> OK, I see.
+>
+>
+I will send  a pull request as soon as the 6.0 cycle starts.
 
-Using the same sock variable for an fd that is either passed to us
-or that we create is a very poor programming choice actually... :(
+Thanks,
+Marcel
 
-So if the motivation is just to make "Euler Robot" happy and this
-can be addressed as you suggest, I personally prefer that rather
-than piling up fixes on broken code.
 
-> I leave that up to Greg to decide whether or not to handle this. I'm 
-> Switzerland on this one.
-> 
+> Thanks
+> Alex
+>
+>
+>
+>
+>
+>
 
-This won't go into QEMU 5.2 anyway since we only merge fixes for
-critical bugs or regressions at this point. No hurry to decide
-anything now :)
+--000000000000b31f7a05b54328ca
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> Best regards,
-> Christian Schoenebeck
-> 
-> 
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Alex,</div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Nov 25, 2020 at 3:17 AM A=
+lex Chen &lt;<a href=3D"mailto:alex.chen@huawei.com">alex.chen@huawei.com</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On=
+ 2020/11/24 23:29, Peter Maydell wrote:<br>
+&gt; On Tue, 24 Nov 2020 at 12:15, Alex Chen &lt;<a href=3D"mailto:alex.che=
+n@huawei.com" target=3D"_blank">alex.chen@huawei.com</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; Hi everyone=EF=BC=8C<br>
+&gt;&gt;<br>
+&gt;&gt; Who can help me merge this patch into the master branch? This patc=
+h may be need for qemu-5.2<br>
+&gt; <br>
+&gt; This code has been like this since 2018, so this is not<br>
+&gt; a regression in 5.2. At this point in the release cycle<br>
+&gt; (rc3 imminent) I think it&#39;s best to just leave it until 6.0.<br>
+&gt; <br>
+<br>
+OK, I see.<br>
+<br></blockquote><div><br></div><div>I will send=C2=A0 a pull request as so=
+on as the 6.0 cycle starts.</div><div><br></div><div>Thanks,</div><div>Marc=
+el</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Thanks<br>
+Alex<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</blockquote></div></div>
 
+--000000000000b31f7a05b54328ca--
 
