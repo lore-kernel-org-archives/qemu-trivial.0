@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjegm-0003NI-AQ
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57874)
+	id 1kjeh1-0003RR-GP
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegh-0003J4-Q9; Mon, 30 Nov 2020 03:37:35 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2102)
+ id 1kjegm-0003NQ-BL; Mon, 30 Nov 2020 03:37:40 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2105)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjege-0000Tp-Id; Mon, 30 Nov 2020 03:37:35 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Ckz9x6LGlzhfp4;
- Mon, 30 Nov 2020 16:37:09 +0800 (CST)
+ id 1kjegj-0000VY-07; Mon, 30 Nov 2020 03:37:40 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CkzB31L5xzhkXx;
+ Mon, 30 Nov 2020 16:37:15 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
- 16:37:19 +0800
+ 16:37:24 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Xiao
- Guangrong" <xiaoguangrong.eric@gmail.com>
-Subject: [PATCH v2 04/12] nvdimm: put it into the 'storage' category
-Date: Mon, 30 Nov 2020 16:36:22 +0800
-Message-ID: <20201130083630.2520597-5-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Corey
+ Minyard" <minyard@acm.org>
+Subject: [PATCH v2 06/12] ipmi: put some ipmi devices into the correct category
+Date: Mon, 30 Nov 2020 16:36:24 +0800
+Message-ID: <20201130083630.2520597-7-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201130083630.2520597-1-ganqixin@huawei.com>
 References: <20201130083630.2520597-1-ganqixin@huawei.com>
@@ -51,30 +51,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Nov 2020 08:37:36 -0000
+X-List-Received-Date: Mon, 30 Nov 2020 08:37:44 -0000
 
-The category of the nvdimm device is not set, put it into the 'storage'
-category.
+Some ipmi devices have no category, put them into the correct category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+Cc: Corey Minyard <minyard@acm.org>
 ---
- hw/mem/nvdimm.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/ipmi/ipmi_bmc_extern.c | 1 +
+ hw/ipmi/ipmi_bmc_sim.c    | 1 +
+ hw/ipmi/isa_ipmi_bt.c     | 1 +
+ hw/ipmi/isa_ipmi_kcs.c    | 1 +
+ hw/ipmi/pci_ipmi_bt.c     | 1 +
+ hw/ipmi/pci_ipmi_kcs.c    | 1 +
+ 6 files changed, 6 insertions(+)
 
-diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-index e1574bc07c..e30695b2ce 100644
---- a/hw/mem/nvdimm.c
-+++ b/hw/mem/nvdimm.c
-@@ -236,6 +236,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
- 
-     nvc->read_label_data = nvdimm_read_label_data;
-     nvc->write_label_data = nvdimm_write_label_data;
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+index c3f3306e66..aa8faf9a9b 100644
+--- a/hw/ipmi/ipmi_bmc_extern.c
++++ b/hw/ipmi/ipmi_bmc_extern.c
+@@ -529,6 +529,7 @@ static void ipmi_bmc_extern_class_init(ObjectClass *oc, void *data)
+     dc->hotpluggable = false;
+     dc->realize = ipmi_bmc_extern_realize;
+     device_class_set_props(dc, ipmi_bmc_extern_properties);
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- static TypeInfo nvdimm_info = {
+ static const TypeInfo ipmi_bmc_extern_type = {
+diff --git a/hw/ipmi/ipmi_bmc_sim.c b/hw/ipmi/ipmi_bmc_sim.c
+index f78e92d3d5..611650f79e 100644
+--- a/hw/ipmi/ipmi_bmc_sim.c
++++ b/hw/ipmi/ipmi_bmc_sim.c
+@@ -2214,6 +2214,7 @@ static void ipmi_sim_class_init(ObjectClass *oc, void *data)
+     dc->realize = ipmi_sim_realize;
+     device_class_set_props(dc, ipmi_sim_properties);
+     bk->handle_command = ipmi_sim_handle_command;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo ipmi_sim_type = {
+diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
+index b7c2ad557b..7fc6022f13 100644
+--- a/hw/ipmi/isa_ipmi_bt.c
++++ b/hw/ipmi/isa_ipmi_bt.c
+@@ -152,6 +152,7 @@ static void isa_ipmi_bt_class_init(ObjectClass *oc, void *data)
+     iic->get_backend_data = isa_ipmi_bt_get_backend_data;
+     ipmi_bt_class_init(iic);
+     iic->get_fwinfo = isa_ipmi_bt_get_fwinfo;
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo isa_ipmi_bt_info = {
+diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
+index 7dd6bf0040..b50901fc3b 100644
+--- a/hw/ipmi/isa_ipmi_kcs.c
++++ b/hw/ipmi/isa_ipmi_kcs.c
+@@ -159,6 +159,7 @@ static void isa_ipmi_kcs_class_init(ObjectClass *oc, void *data)
+     iic->get_backend_data = isa_ipmi_kcs_get_backend_data;
+     ipmi_kcs_class_init(iic);
+     iic->get_fwinfo = isa_ipmi_kcs_get_fwinfo;
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo isa_ipmi_kcs_info = {
+diff --git a/hw/ipmi/pci_ipmi_bt.c b/hw/ipmi/pci_ipmi_bt.c
+index b6e52730d3..7d7435719a 100644
+--- a/hw/ipmi/pci_ipmi_bt.c
++++ b/hw/ipmi/pci_ipmi_bt.c
+@@ -125,6 +125,7 @@ static void pci_ipmi_bt_class_init(ObjectClass *oc, void *data)
+ 
+     iic->get_backend_data = pci_ipmi_bt_get_backend_data;
+     ipmi_bt_class_init(iic);
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_ipmi_bt_info = {
+diff --git a/hw/ipmi/pci_ipmi_kcs.c b/hw/ipmi/pci_ipmi_kcs.c
+index de13418862..0f1a1e4098 100644
+--- a/hw/ipmi/pci_ipmi_kcs.c
++++ b/hw/ipmi/pci_ipmi_kcs.c
+@@ -125,6 +125,7 @@ static void pci_ipmi_kcs_class_init(ObjectClass *oc, void *data)
+ 
+     iic->get_backend_data = pci_ipmi_kcs_get_backend_data;
+     ipmi_kcs_class_init(iic);
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_ipmi_kcs_info = {
 -- 
 2.23.0
 
