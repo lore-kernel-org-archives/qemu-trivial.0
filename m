@@ -1,31 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjega-0002zZ-0g
+	id 1kjega-00030e-Fn
 	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57804)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegX-0002yO-KP; Mon, 30 Nov 2020 03:37:25 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2811)
+ id 1kjegY-0002yf-Fj; Mon, 30 Nov 2020 03:37:26 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2812)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegU-0000Ot-8Q; Mon, 30 Nov 2020 03:37:25 -0500
+ id 1kjegW-0000Pp-Iv; Mon, 30 Nov 2020 03:37:26 -0500
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Ckz9P6QbxzkjNt;
- Mon, 30 Nov 2020 16:36:41 +0800 (CST)
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Ckz9V6nkrzkjRf;
+ Mon, 30 Nov 2020 16:36:46 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
- 16:37:03 +0800
+ 16:37:10 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
-Subject: [PATCH v2 00/12] Categorize some uncategorized devices
-Date: Mon, 30 Nov 2020 16:36:18 +0800
-Message-ID: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Pankaj
+ Gupta" <pankaj.gupta@cloud.ionos.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Subject: [PATCH v2 02/12] virtio-pmem: put it into the 'storage' category
+Date: Mon, 30 Nov 2020 16:36:20 +0800
+Message-ID: <20201130083630.2520597-3-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201130083630.2520597-1-ganqixin@huawei.com>
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
@@ -50,53 +53,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 30 Nov 2020 08:37:26 -0000
 
-v1->v2:
+The category of the virtio-pmem device is not set, put it into the 'storage'
+category.
 
--Patch2: Add Pankaj Gupta reviewed tag.
--Patch3: Add Philippe Mathieu-Daudé reviewed tag.
--Patch9:
-    Changes suggested by Gerd Hoffmann:
-    Put u2f-passthru into 'misc' category.
--Patch12: 
-    Add Alistair Francis and Philippe Mathieu-Daudé reviewed tag.
--Patch13:
-    bcm2835_cprman is not an usable device, so delete the patch that categorize
-it.
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
+---
+Cc: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/virtio/virtio-pmem.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Gan Qixin (12):
-  pc-dimm: put it into the 'storage' category
-  virtio-pmem: put it into the 'storage' category
-  vmmouse: put it into the 'input' category
-  nvdimm: put it into the 'storage' category
-  mc146818rtc: put it into the 'misc' category
-  ipmi: put some ipmi devices into the correct category
-  tpm: put some tpm devices into the correct category
-  AMDVI-PCI: put it into the 'misc' category
-  u2f-passthru: put it into the 'misc' category
-  tosa-ssp: put it into the 'misc' category
-  spitz: put some Spitz-family devices into the correct category
-  SPI flash devices: put them into the 'storage' category
-
- hw/arm/spitz.c            | 2 ++
- hw/arm/tosa.c             | 2 ++
- hw/block/m25p80.c         | 1 +
- hw/i386/amd_iommu.c       | 8 ++++++++
- hw/i386/vmmouse.c         | 1 +
- hw/ipmi/ipmi_bmc_extern.c | 1 +
- hw/ipmi/ipmi_bmc_sim.c    | 1 +
- hw/ipmi/isa_ipmi_bt.c     | 1 +
- hw/ipmi/isa_ipmi_kcs.c    | 1 +
- hw/ipmi/pci_ipmi_bt.c     | 1 +
- hw/ipmi/pci_ipmi_kcs.c    | 1 +
- hw/mem/nvdimm.c           | 1 +
- hw/mem/pc-dimm.c          | 1 +
- hw/rtc/mc146818rtc.c      | 1 +
- hw/tpm/tpm_tis_isa.c      | 1 +
- hw/tpm/tpm_tis_sysbus.c   | 1 +
- hw/usb/u2f-passthru.c     | 1 +
- hw/virtio/virtio-pmem.c   | 1 +
- 18 files changed, 27 insertions(+)
-
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index ddb0125901..98b3139cd0 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -175,6 +175,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
+ 
+     vpc->fill_device_info = virtio_pmem_fill_device_info;
+     vpc->get_memory_region = virtio_pmem_get_memory_region;
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+ static TypeInfo virtio_pmem_info = {
 -- 
 2.23.0
 
