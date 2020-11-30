@@ -1,41 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjico-0004ZX-5o
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 07:49:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54104)
+	id 1kjisY-00015h-Dg
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 08:06:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kjicl-0004T6-77; Mon, 30 Nov 2020 07:49:47 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2983)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kjich-0000cg-0o; Mon, 30 Nov 2020 07:49:46 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cl4mj1fWfzhYQ8;
- Mon, 30 Nov 2020 20:49:09 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
- 20:49:23 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <eblake@redhat.com>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
- <qemu-block@nongnu.org>
-Subject: [PATCH] qemu-nbd: Fix a memleak in qemu_nbd_client_list()
-Date: Mon, 30 Nov 2020 12:36:51 +0000
-Message-ID: <20201130123651.17543-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <berto@igalia.com>)
+ id 1kjisM-00014R-B8; Mon, 30 Nov 2020 08:05:58 -0500
+Received: from fanzine.igalia.com ([178.60.130.6]:40625)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <berto@igalia.com>)
+ id 1kjisI-0005ha-Km; Mon, 30 Nov 2020 08:05:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
+ s=20170329; 
+ h=Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From;
+ bh=2ii3zZD7jNqWhPp8HQg62f2Ag3MydWhRj+hhn/NZOEQ=; 
+ b=Vz1X5GqgV4/SN9rJvVAkNErDlGUpztLGFGMnPn8QidxL2licfzezrp9fBksXy03s9Naokeg7IOVe4vnRNms3fRJGl7eo4eY2UFld+r3egLMrprCtejcrOT4Fr+lwZAMbDWlkERnHZxa17sLoPWwF7DtcbgL2Mp3zGQz4r22yKDqzVTrJpQGtmbJyc24ji0vqAQYPoj5095TPPDecrC+brZpiVqdI+RYrsORgmWAK3OAGchdRxxEOUZlks3y5O4iqRIQVEyTB/f+WK71x/qJXrHc/l+ZKgzeUjjoARbivHKAoDWCcxY4E+1maINiT6si5P4OIkdsxAXl+mhapZWMfhQ==;
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+ by fanzine.igalia.com with esmtps 
+ (Cipher TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim)
+ id 1kjirn-0004XZ-KC; Mon, 30 Nov 2020 14:05:19 +0100
+Received: from berto by mail.igalia.com with local (Exim)
+ id 1kjirn-0001XU-Ax; Mon, 30 Nov 2020 14:05:19 +0100
+From: Alberto Garcia <berto@igalia.com>
+To: Alex Chen <alex.chen@huawei.com>, eblake@redhat.com
+Cc: alex.chen@huawei.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] qemu-nbd: Fix a memleak in qemu_nbd_client_list()
+In-Reply-To: <20201130123651.17543-1-alex.chen@huawei.com>
+References: <20201130123651.17543-1-alex.chen@huawei.com>
+User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
+ (i586-pc-linux-gnu)
+Date: Mon, 30 Nov 2020 14:05:19 +0100
+Message-ID: <w51v9dnatbk.fsf@maestria.local.igalia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=178.60.130.6; envelope-from=berto@igalia.com;
+ helo=fanzine.igalia.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,31 +53,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Nov 2020 12:49:48 -0000
+X-List-Received-Date: Mon, 30 Nov 2020 13:06:01 -0000
 
-When the qio_channel_socket_connect_sync() fails
-we should goto 'out' label to free the 'sioc' instead of return.
+On Mon 30 Nov 2020 01:36:51 PM CET, Alex Chen wrote:
+> When the qio_channel_socket_connect_sync() fails
+> we should goto 'out' label to free the 'sioc' instead of return.
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- qemu-nbd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Alberto Garcia <berto@igalia.com>
 
-diff --git a/qemu-nbd.c b/qemu-nbd.c
-index a7075c5419..47587a709e 100644
---- a/qemu-nbd.c
-+++ b/qemu-nbd.c
-@@ -181,7 +181,7 @@ static int qemu_nbd_client_list(SocketAddress *saddr, QCryptoTLSCreds *tls,
-     sioc = qio_channel_socket_new();
-     if (qio_channel_socket_connect_sync(sioc, saddr, &err) < 0) {
-         error_report_err(err);
--        return EXIT_FAILURE;
-+        goto out;
-     }
-     rc = nbd_receive_export_list(QIO_CHANNEL(sioc), tls, hostname, &list,
-                                  &err);
--- 
-2.19.1
-
+Berto
 
