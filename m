@@ -1,63 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjgGm-00010a-US
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 05:18:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50070)
+	id 1kjico-0004ZX-5o
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 07:49:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1kjgGl-00010M-Kb; Mon, 30 Nov 2020 05:18:55 -0500
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:35848)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1kjgGk-0001CC-4t; Mon, 30 Nov 2020 05:18:55 -0500
-Received: by mail-il1-x142.google.com with SMTP id z10so2274983ilu.3;
- Mon, 30 Nov 2020 02:18:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eRz4j+1joGd0G3OdSB79/UjF2VSaY8h1oaAexzTrqXs=;
- b=rNt4jpZQvzqjCuyPPMccHBtBVCuDFpKTYX0tUkcxQ983eKkePjmWugX2WkIAVLxVn8
- kb6cHU6seW+k5bD22peRssqk2IExGpr5AcHQJzuf+n6KeUkgHHJgem/T8QGOppGUOoor
- DPvd9L6eUQ6WjJ3IvvT1OmAkaa7XoR5cizMBf+edjzNKzMa+0HPVvCNpsKQUqrHIbWop
- qcQJXXCMKpDsv8Qg3FfQB1UtPiWBDFh30a1M79cMLpB+DOFpcFkv7QgdXw5gKCubofpz
- xBHuHYutRhPY6x+0FH2CdOekNMuKRT4QIR1oC1oJKxhjKhvB+DgjsXRDW3gjg8Lwyvpb
- PMpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eRz4j+1joGd0G3OdSB79/UjF2VSaY8h1oaAexzTrqXs=;
- b=VB/Z55tLIfgUo/HJc65W19V2wbscenKMoTNBsUWOXnyuDxtkG/t7TqH+tulcnpoD97
- Eb+FWBMoDJmtkv+6R8DHpUcpiGiWOke2EWtP1Xao0Cm8oBXcV3hO9ZLjnyprkVvq01fE
- 1GXqdGoaKaoAjH7DvEFOl/5BXvSzYd3qvxwQ3yqMGU/TL5wJ/KKDv102/6ISqF8FcXh6
- pc8cGBl2BHbbSYS5/DbjSawtlOHteq08V328OkSO7DS8r84XjYQJAaBdCbiXHdsD6glq
- 2NXfaUXViLkC1/tZ+BtoY/2BRh9fumdepXyV3tVMjLTwgkAp2uVM/5DGgho+RXKyuMlJ
- 3yuA==
-X-Gm-Message-State: AOAM532O0Gq6nsX9VCwLQg2AdZhWI6El6lJ8Sw/CZEoagJ0nKpcM1Hv0
- 86fivIpYtMnWapq9XDxR9PS/kxhfTyKR2dakHTA=
-X-Google-Smtp-Source: ABdhPJxdO5kyhUCSWqLw+keRKdLNu1iKKgIJQosfb0KyqnY0VXi68kl5X1CXkgfU457whvLAuTk5cEAREO4wY2VIDCo=
-X-Received: by 2002:a92:d4cb:: with SMTP id o11mr18420397ilm.163.1606731532631; 
- Mon, 30 Nov 2020 02:18:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kjicl-0004T6-77; Mon, 30 Nov 2020 07:49:47 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2983)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kjich-0000cg-0o; Mon, 30 Nov 2020 07:49:46 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cl4mj1fWfzhYQ8;
+ Mon, 30 Nov 2020 20:49:09 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
+ 20:49:23 +0800
+From: Alex Chen <alex.chen@huawei.com>
+To: <eblake@redhat.com>
+CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
+ <qemu-block@nongnu.org>
+Subject: [PATCH] qemu-nbd: Fix a memleak in qemu_nbd_client_list()
+Date: Mon, 30 Nov 2020 12:36:51 +0000
+Message-ID: <20201130123651.17543-1-alex.chen@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-References: <20201130083630.2520597-1-ganqixin@huawei.com>
- <20201130083630.2520597-2-ganqixin@huawei.com>
-In-Reply-To: <20201130083630.2520597-2-ganqixin@huawei.com>
-From: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-Date: Mon, 30 Nov 2020 11:18:41 +0100
-Message-ID: <CAM9Jb+iXWAQq7gg8RxS=aVX1MHBVuZucb4rXGaTU40kJ6-TmTw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
- kuhn.chenqun@huawei.com, 
- thuth@redhat.com, zhang.zhanghailiang@huawei.com, 
- "Michael S . Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=pankaj.gupta.linux@gmail.com; helo=mail-il1-x142.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,35 +49,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Nov 2020 10:18:56 -0000
+X-List-Received-Date: Mon, 30 Nov 2020 12:49:48 -0000
 
-> The category of the pc-dimm device is not set, put it into the 'storage'
-> category.
->
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> ---
->  hw/mem/pc-dimm.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-> index 2ffc986734..017146e3d1 100644
-> --- a/hw/mem/pc-dimm.c
-> +++ b/hw/mem/pc-dimm.c
-> @@ -282,6 +282,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
->      mdc->get_plugged_size = memory_device_get_region_size;
->      mdc->get_memory_region = pc_dimm_md_get_memory_region;
->      mdc->fill_device_info = pc_dimm_md_fill_device_info;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+When the qio_channel_socket_connect_sync() fails
+we should goto 'out' label to free the 'sioc' instead of return.
 
-Any reason why pc-dimm would be in the storage category?
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+---
+ qemu-nbd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->  }
->
->  static TypeInfo pc_dimm_info = {
-> --
-> 2.23.0
->
->
+diff --git a/qemu-nbd.c b/qemu-nbd.c
+index a7075c5419..47587a709e 100644
+--- a/qemu-nbd.c
++++ b/qemu-nbd.c
+@@ -181,7 +181,7 @@ static int qemu_nbd_client_list(SocketAddress *saddr, QCryptoTLSCreds *tls,
+     sioc = qio_channel_socket_new();
+     if (qio_channel_socket_connect_sync(sioc, saddr, &err) < 0) {
+         error_report_err(err);
+-        return EXIT_FAILURE;
++        goto out;
+     }
+     rc = nbd_receive_export_list(QIO_CHANNEL(sioc), tls, hostname, &list,
+                                  &err);
+-- 
+2.19.1
+
 
