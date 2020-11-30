@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjega-00030e-Fn
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57808)
+	id 1kjegb-00033Z-Oq
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegY-0002yf-Fj; Mon, 30 Nov 2020 03:37:26 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2812)
+ id 1kjegX-0002yN-KL; Mon, 30 Nov 2020 03:37:25 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2810)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegW-0000Pp-Iv; Mon, 30 Nov 2020 03:37:26 -0500
+ id 1kjegU-0000Os-8N; Mon, 30 Nov 2020 03:37:25 -0500
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Ckz9V6nkrzkjRf;
- Mon, 30 Nov 2020 16:36:46 +0800 (CST)
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Ckz9P6c8QzkjR6;
+ Mon, 30 Nov 2020 16:36:41 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
- 16:37:10 +0800
+ 16:37:07 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Pankaj
- Gupta" <pankaj.gupta@cloud.ionos.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PATCH v2 02/12] virtio-pmem: put it into the 'storage' category
-Date: Mon, 30 Nov 2020 16:36:20 +0800
-Message-ID: <20201130083630.2520597-3-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Michael
+ S . Tsirkin" <mst@redhat.com>
+Subject: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+Date: Mon, 30 Nov 2020 16:36:19 +0800
+Message-ID: <20201130083630.2520597-2-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201130083630.2520597-1-ganqixin@huawei.com>
 References: <20201130083630.2520597-1-ganqixin@huawei.com>
@@ -53,29 +53,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 30 Nov 2020 08:37:26 -0000
 
-The category of the virtio-pmem device is not set, put it into the 'storage'
+The category of the pc-dimm device is not set, put it into the 'storage'
 category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-Reviewed-by: Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
 ---
 Cc: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/virtio/virtio-pmem.c | 1 +
+ hw/mem/pc-dimm.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
-index ddb0125901..98b3139cd0 100644
---- a/hw/virtio/virtio-pmem.c
-+++ b/hw/virtio/virtio-pmem.c
-@@ -175,6 +175,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
- 
-     vpc->fill_device_info = virtio_pmem_fill_device_info;
-     vpc->get_memory_region = virtio_pmem_get_memory_region;
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index 2ffc986734..017146e3d1 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -282,6 +282,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
+     mdc->get_plugged_size = memory_device_get_region_size;
+     mdc->get_memory_region = pc_dimm_md_get_memory_region;
+     mdc->fill_device_info = pc_dimm_md_fill_device_info;
 +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
  }
  
- static TypeInfo virtio_pmem_info = {
+ static TypeInfo pc_dimm_info = {
 -- 
 2.23.0
 
