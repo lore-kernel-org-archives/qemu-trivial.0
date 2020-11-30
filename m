@@ -1,36 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kjeh3-0003Ww-72
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57956)
+	id 1kjeh4-0003bM-RF
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Nov 2020 03:37:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjegt-0003Px-S6; Mon, 30 Nov 2020 03:37:49 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2870)
+ id 1kjegw-0003Qh-VG; Mon, 30 Nov 2020 03:37:53 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2869)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kjego-0000XZ-BL; Mon, 30 Nov 2020 03:37:45 -0500
+ id 1kjego-0000XX-Cl; Mon, 30 Nov 2020 03:37:48 -0500
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CkzB239tlz15V5n;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CkzB23Nm0z15VQK;
  Mon, 30 Nov 2020 16:37:14 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
  (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Nov 2020
- 16:37:32 +0800
+ 16:37:29 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <thuth@redhat.com>, <kuhn.chenqun@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Alistair
- Francis" <alistair.francis@wdc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 12/12] SPI flash devices: put them into the 'storage'
- category
-Date: Mon, 30 Nov 2020 16:36:30 +0800
-Message-ID: <20201130083630.2520597-13-ganqixin@huawei.com>
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>
+Subject: [PATCH v2 10/12] tosa-ssp: put it into the 'misc' category
+Date: Mon, 30 Nov 2020 16:36:28 +0800
+Message-ID: <20201130083630.2520597-11-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201130083630.2520597-1-ganqixin@huawei.com>
 References: <20201130083630.2520597-1-ganqixin@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
@@ -53,29 +51,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Nov 2020 08:37:53 -0000
+X-List-Received-Date: Mon, 30 Nov 2020 08:37:55 -0000
 
-SPI flash devices have no category, put them into the 'storage' category.
+The category of the tosa-ssp device is not set, put it into the 'misc'
+category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/block/m25p80.c | 1 +
- 1 file changed, 1 insertion(+)
+Cc: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/tosa.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 483925f57a..8dd3ef8559 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -1397,6 +1397,7 @@ static void m25p80_class_init(ObjectClass *klass, void *data)
-     device_class_set_props(dc, m25p80_properties);
-     dc->reset = m25p80_reset;
-     mc->pi = data;
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index fe88ed89fe..0e3461c8ed 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -292,10 +292,12 @@ static const TypeInfo tosa_dac_info = {
+ 
+ static void tosa_ssp_class_init(ObjectClass *klass, void *data)
+ {
++    DeviceClass *dc = DEVICE_CLASS(klass);
+     SSISlaveClass *k = SSI_SLAVE_CLASS(klass);
+ 
+     k->realize = tosa_ssp_realize;
+     k->transfer = tosa_ssp_tansfer;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- static const TypeInfo m25p80_info = {
+ static const TypeInfo tosa_ssp_info = {
 -- 
 2.23.0
 
