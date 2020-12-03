@@ -1,79 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kkThT-0002VW-S8
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Dec 2020 10:05:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45192)
+	id 1kkiUx-0005vT-Cm
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2020 01:53:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsuvorov@redhat.com>)
- id 1kkThS-0002TP-Ja
- for qemu-trivial@nongnu.org; Wed, 02 Dec 2020 10:05:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49378)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsuvorov@redhat.com>)
- id 1kkThO-0000kE-CB
- for qemu-trivial@nongnu.org; Wed, 02 Dec 2020 10:05:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606921540;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=37HR1rPOCsaZprDQ6kpD5DvqKCgj2XPvjksXb07SkCo=;
- b=iUrPMdFqiRnW4LGqGdo5QTU/gMFXifkU4xZ3qayxCrsEEwGJpFO1O9n3cLqmiYLy/8Gqe6
- UcFyKCgT+A0HSLAz7QjzqHMdvb7jWOA8cR8wvucucs+R1+JLuVc8QPGe4v80S4/k7DuVH6
- Nz5MSFzKWLpoIyBxJNfVmBVitZZcFww=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-588-hqVepdf0MY-vS7KC9tDWxw-1; Wed, 02 Dec 2020 10:05:38 -0500
-X-MC-Unique: hqVepdf0MY-vS7KC9tDWxw-1
-Received: by mail-ot1-f70.google.com with SMTP id y4so1056519ota.16
- for <qemu-trivial@nongnu.org>; Wed, 02 Dec 2020 07:05:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=37HR1rPOCsaZprDQ6kpD5DvqKCgj2XPvjksXb07SkCo=;
- b=GVoLuXOKVDA60u0Q+QQVQMRXhzuMSSB+8d9Rds3z5encNbrWI6nTMc+MptpgT3z6JV
- laFVCq/6Em7KTR8NVUKq8xYYlT8sKfTQ3RSTuOMyHJtTnzxkWPrG3QgaDRiICoIF8LRR
- P+I5TU0JnMm0kZXqKQ16QfvCGpZA5FCLx4hATtvlzK/AI0EsoKmcLLAszzE04e9P/ifl
- OfzHe31M26Dq3Pu8SeWMGxtkc4pCt0XIlLUHUaflT9/JkYXei1xjpIJ2A/uOoEm/YtAg
- Kr3PT51JHt1E/U5WB+FKQQxZybSZHW/aN/8zA8317EUUOwBFBYzrZyAWfZ1pE5hUpsVE
- JuWA==
-X-Gm-Message-State: AOAM5304UDn1I3UISaLLWT9SjFw5n2M4YgXbSLk2p1FSJ93eN1jpcc2u
- yM6B9fJ31u/TydVLFxAHTN6pANlRJiZZBQ/HNrSALqKPcPH5jUi+6S1b6zLXVpgk7OoBR2EFV6K
- QGeGPNlz/rMDNYk4h7VnBj2z9JT0p4ikfjQ==
-X-Received: by 2002:a05:6830:1002:: with SMTP id
- a2mr2115358otp.316.1606921538174; 
- Wed, 02 Dec 2020 07:05:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzaceapKJNMui+xRoV8p7s2QKTeVoydWGaEu3tlATelw+UAeRp2fVDftSZYCZbh/FMvfJ+wqm2TC0E5po+IPz4=
-X-Received: by 2002:a05:6830:1002:: with SMTP id
- a2mr2115340otp.316.1606921537988; 
- Wed, 02 Dec 2020 07:05:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kkiUv-0005uk-Hi; Thu, 03 Dec 2020 01:53:49 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2961)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kkiUs-0000xT-PL; Thu, 03 Dec 2020 01:53:49 -0500
+Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CmmkS4mWQzXj9S;
+ Thu,  3 Dec 2020 14:53:04 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.228]) by
+ dggemi405-hub.china.huawei.com ([10.3.17.143]) with mapi id 14.03.0487.000;
+ Thu, 3 Dec 2020 14:53:22 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+CC: Qemu Developers <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "thuth@redhat.com" <thuth@redhat.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Subject: RE: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+Thread-Topic: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+Thread-Index: AQHWxvQB7Oi14cb7Ik2dpMwmMFfSI6nf8FWAgAT8dnA=
+Date: Thu, 3 Dec 2020 06:53:21 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065DD609@DGGEMI525-MBS.china.huawei.com>
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <20201130083630.2520597-2-ganqixin@huawei.com>
+ <CAM9Jb+iXWAQq7gg8RxS=aVX1MHBVuZucb4rXGaTU40kJ6-TmTw@mail.gmail.com>
+In-Reply-To: <CAM9Jb+iXWAQq7gg8RxS=aVX1MHBVuZucb4rXGaTU40kJ6-TmTw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20201202132038.1276404-1-philmd@redhat.com>
-In-Reply-To: <20201202132038.1276404-1-philmd@redhat.com>
-From: Julia Suvorova <jusual@redhat.com>
-Date: Wed, 2 Dec 2020 16:05:23 +0100
-Message-ID: <CAMDeoFWm6TQirYh-B31A+V4rPnd+2ibis9X9fBFDJRoS_jhN1Q@mail.gmail.com>
-Subject: Re: [PATCH] hw/pci-host/pam: Replace magic number by
- PAM_REGIONS_COUNT definition
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsuvorov@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsuvorov@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187; envelope-from=ganqixin@huawei.com;
+ helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,28 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Dec 2020 15:05:46 -0000
+X-List-Received-Date: Thu, 03 Dec 2020 06:53:49 -0000
 
-On Wed, Dec 2, 2020 at 2:24 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> While this change helps triskaidekaphobic developers, it
-> is a good practice to avoid magic values and using constant
-> definitions instead.
->
-> Introduce the PAM_REGIONS_COUNT and use it. No logical change.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  include/hw/pci-host/i440fx.h | 2 +-
->  include/hw/pci-host/pam.h    | 2 ++
->  include/hw/pci-host/q35.h    | 2 +-
->  hw/pci-host/pam.c            | 2 +-
->  hw/pci-host/q35.c            | 2 +-
->  5 files changed, 6 insertions(+), 4 deletions(-)
-
-:D
-
-Reviewed-by: Julia Suvorova <jusual@redhat.com>
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQYW5rYWogR3VwdGEgW21haWx0
+bzpwYW5rYWouZ3VwdGEubGludXhAZ21haWwuY29tXQ0KPiBTZW50OiBNb25kYXksIE5vdmVtYmVy
+IDMwLCAyMDIwIDY6MTkgUE0NCj4gVG86IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPg0K
+PiBDYzogUWVtdSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBxZW11LXRyaXZp
+YWxAbm9uZ251Lm9yZzsNCj4gQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29t
+PjsgdGh1dGhAcmVkaGF0LmNvbTsNCj4gWmhhbmdoYWlsaWFuZyA8emhhbmcuemhhbmdoYWlsaWFu
+Z0BodWF3ZWkuY29tPjsgTWljaGFlbCBTIC4gVHNpcmtpbg0KPiA8bXN0QHJlZGhhdC5jb20+DQo+
+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDEvMTJdIHBjLWRpbW06IHB1dCBpdCBpbnRvIHRoZSAn
+c3RvcmFnZScgY2F0ZWdvcnkNCj4gDQo+ID4gVGhlIGNhdGVnb3J5IG9mIHRoZSBwYy1kaW1tIGRl
+dmljZSBpcyBub3Qgc2V0LCBwdXQgaXQgaW50byB0aGUgJ3N0b3JhZ2UnDQo+ID4gY2F0ZWdvcnku
+DQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBHYW4gUWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+
+DQo+ID4gLS0tDQo+ID4gQ2M6IE1pY2hhZWwgUy4gVHNpcmtpbiA8bXN0QHJlZGhhdC5jb20+DQo+
+ID4gLS0tDQo+ID4gIGh3L21lbS9wYy1kaW1tLmMgfCAxICsNCj4gPiAgMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvbWVtL3BjLWRpbW0uYyBi
+L2h3L21lbS9wYy1kaW1tLmMgaW5kZXgNCj4gPiAyZmZjOTg2NzM0Li4wMTcxNDZlM2QxIDEwMDY0
+NA0KPiA+IC0tLSBhL2h3L21lbS9wYy1kaW1tLmMNCj4gPiArKysgYi9ody9tZW0vcGMtZGltbS5j
+DQo+ID4gQEAgLTI4Miw2ICsyODIsNyBAQCBzdGF0aWMgdm9pZCBwY19kaW1tX2NsYXNzX2luaXQo
+T2JqZWN0Q2xhc3MgKm9jLA0KPiB2b2lkICpkYXRhKQ0KPiA+ICAgICAgbWRjLT5nZXRfcGx1Z2dl
+ZF9zaXplID0gbWVtb3J5X2RldmljZV9nZXRfcmVnaW9uX3NpemU7DQo+ID4gICAgICBtZGMtPmdl
+dF9tZW1vcnlfcmVnaW9uID0gcGNfZGltbV9tZF9nZXRfbWVtb3J5X3JlZ2lvbjsNCj4gPiAgICAg
+IG1kYy0+ZmlsbF9kZXZpY2VfaW5mbyA9IHBjX2RpbW1fbWRfZmlsbF9kZXZpY2VfaW5mbzsNCj4g
+PiArICAgIHNldF9iaXQoREVWSUNFX0NBVEVHT1JZX1NUT1JBR0UsIGRjLT5jYXRlZ29yaWVzKTsN
+Cj4gDQo+IEFueSByZWFzb24gd2h5IHBjLWRpbW0gd291bGQgYmUgaW4gdGhlIHN0b3JhZ2UgY2F0
+ZWdvcnk/DQoNCkhpIFBhbmthaiwNClRoYW5rcyBmb3IgeW91IHJlcGx5LiBBcyBmYXIgYXMgSSBr
+bm93LCBwYy1kaW1tIGlzIGEgZGltbSBkZXZpY2UgZm9yIG1lbW9yeSBob3RwbHVnLCBkZXNjcmli
+ZWQgYXMgYSAiRElNTSBtZW1vcnkgbW9kdWxlIiBpbiAiLWRldmljZSBoZWxwIi4gDQpUaGlzIGRl
+dmljZSBsb29rcyByZWxhdGVkIHRvIHN0b3JhZ2UsIHNvIEkgcHV0IGl0IGludG8gdGhlICJzdG9y
+YWdlIiBjYXRlZ29yeSB0byBtYWtlIGl0IGVhc3kgdG8gZmluZC4gSSdtIG5vdCBzdXJlIGlmIHRo
+aXMgaXMgYXBwcm9wcmlhdGUsIGRvIHlvdSBoYXZlIGFueSBiZXR0ZXIgaWRlYXM/DQoNCkdhbiBR
+aXhpbg0KDQo+IA0KPiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIFR5cGVJbmZvIHBjX2RpbW1faW5m
+byA9IHsNCj4gPiAtLQ0KPiA+IDIuMjMuMA0KPiA+DQo+ID4NCg==
 
