@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kkjPk-0002MD-LA
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2020 02:52:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32972)
+	id 1kkjPl-0002NP-2l
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2020 02:52:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kkjPh-0002HU-6x; Thu, 03 Dec 2020 02:52:29 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2108)
+ id 1kkjPh-0002Hn-VU; Thu, 03 Dec 2020 02:52:29 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2107)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kkjPe-00047Z-Ix; Thu, 03 Dec 2020 02:52:28 -0500
+ id 1kkjPe-00047a-Mb; Thu, 03 Dec 2020 02:52:29 -0500
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Cmp2R1WW3zhldb;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Cmp2R1JGLzhcLy;
  Thu,  3 Dec 2020 15:51:59 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Thu, 3 Dec 2020
- 15:52:09 +0800
+ 15:52:12 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <kwolf@redhat.com>, <pbonzini@redhat.com>, <armbru@redhat.com>,
  <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
  <ganqixin@huawei.com>
-Subject: [PATCH v2 0/4] Use lock guard macros in block
-Date: Thu, 3 Dec 2020 15:50:51 +0800
-Message-ID: <20201203075055.127773-1-ganqixin@huawei.com>
+Subject: [PATCH v2 1/4] block/accounting: Use lock guard macros
+Date: Thu, 3 Dec 2020 15:50:52 +0800
+Message-ID: <20201203075055.127773-2-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20201203075055.127773-1-ganqixin@huawei.com>
+References: <20201203075055.127773-1-ganqixin@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -49,39 +51,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Dec 2020 07:52:29 -0000
+X-List-Received-Date: Thu, 03 Dec 2020 07:52:30 -0000
 
-v1->v2:
+Replace manual lock()/unlock() calls with lock guard macros
+(QEMU_LOCK_GUARD/WITH_QEMU_LOCK_GUARD) in block/accounting.
 
--Patch1:
-    Add Paolo Bonzini reviewed tag and delete the .c suffix in the commit
-message.
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+---
+ block/accounting.c | 32 +++++++++++++++-----------------
+ 1 file changed, 15 insertions(+), 17 deletions(-)
 
--Patch2:
-    Add Paolo Bonzini reviewed tag and delete the .c suffix in the commit
-message.
-
--Patch3:
-    Delete the .c suffix in the commit.
-    Changes suggested by Kevin Wolf: Fix wrong indentation format.
-    
--Patch4:
-    Delete the .c suffix in the commit.
-    Changes suggested by Kevin Wolf: Replace QEMU_LOCK_GUARD with
-WITH_QEMU_LOCK_GUARD, and delete the redundant qemu_mutex_unlock().
-
-Gan Qixin (4):
-  block/accounting: Use lock guard macros
-  block/curl: Use lock guard macros
-  block/throttle-groups: Use lock guard macros
-  block/iscsi: Use lock guard macros
-
- block/accounting.c      | 32 +++++++++++++-------------
- block/curl.c            | 28 +++++++++++------------
- block/iscsi.c           | 50 ++++++++++++++++++++---------------------
- block/throttle-groups.c | 48 +++++++++++++++++++--------------------
- 4 files changed, 76 insertions(+), 82 deletions(-)
-
+diff --git a/block/accounting.c b/block/accounting.c
+index 8d41c8a83a..2030851d79 100644
+--- a/block/accounting.c
++++ b/block/accounting.c
+@@ -199,29 +199,27 @@ static void block_account_one_io(BlockAcctStats *stats, BlockAcctCookie *cookie,
+         return;
+     }
+ 
+-    qemu_mutex_lock(&stats->lock);
+-
+-    if (failed) {
+-        stats->failed_ops[cookie->type]++;
+-    } else {
+-        stats->nr_bytes[cookie->type] += cookie->bytes;
+-        stats->nr_ops[cookie->type]++;
+-    }
++    WITH_QEMU_LOCK_GUARD(&stats->lock) {
++        if (failed) {
++            stats->failed_ops[cookie->type]++;
++        } else {
++            stats->nr_bytes[cookie->type] += cookie->bytes;
++            stats->nr_ops[cookie->type]++;
++        }
+ 
+-    block_latency_histogram_account(&stats->latency_histogram[cookie->type],
+-                                    latency_ns);
++        block_latency_histogram_account(&stats->latency_histogram[cookie->type],
++                                        latency_ns);
+ 
+-    if (!failed || stats->account_failed) {
+-        stats->total_time_ns[cookie->type] += latency_ns;
+-        stats->last_access_time_ns = time_ns;
++        if (!failed || stats->account_failed) {
++            stats->total_time_ns[cookie->type] += latency_ns;
++            stats->last_access_time_ns = time_ns;
+ 
+-        QSLIST_FOREACH(s, &stats->intervals, entries) {
+-            timed_average_account(&s->latency[cookie->type], latency_ns);
++            QSLIST_FOREACH(s, &stats->intervals, entries) {
++                timed_average_account(&s->latency[cookie->type], latency_ns);
++            }
+         }
+     }
+ 
+-    qemu_mutex_unlock(&stats->lock);
+-
+     cookie->type = BLOCK_ACCT_NONE;
+ }
+ 
 -- 
 2.27.0
 
