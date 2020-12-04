@@ -1,70 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kl6ah-0004YJ-H8
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2020 03:37:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59590)
+	id 1kl7QS-0001SW-Q5
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2020 04:30:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kl6af-0004Xu-VQ
- for qemu-trivial@nongnu.org; Fri, 04 Dec 2020 03:37:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29768)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1kl7QN-0001PZ-Mx
+ for qemu-trivial@nongnu.org; Fri, 04 Dec 2020 04:30:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41318)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kl6ad-00077F-Fy
- for qemu-trivial@nongnu.org; Fri, 04 Dec 2020 03:37:21 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1kl7QL-0000cF-0c
+ for qemu-trivial@nongnu.org; Fri, 04 Dec 2020 04:30:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607071037;
+ s=mimecast20190719; t=1607074243;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Gikfrlg47BA9IhG4F4I9ADKbrMx6ZT1Vh3HGgIkjTlA=;
- b=BXSASDOZQHCTuGve9VRXAybW05BNYO09gCXXSr2q1EirDfmlOVBiqKOk4K32kXa37UUoSh
- +JEKy33O785ywNZES4sGeH8NRFgRqVMh4w824UVyFVyqjdq8ZFnSlzuOEEuzW3Je/Qx8YP
- zKfJvuPdmvYOnU2c7EZH6VvL8fyy8iE=
+ bh=MglKKjnaUZNXDtCHnuWduN7A2QNExu/e3DNOaxfPfiY=;
+ b=LqNdvWqHawN23Ihso0dh06iWTS80hlPGchaT11nAU2ptD34KLAVHcXqrUVHYCvTxkmFEyf
+ nG+HXuCgvpmbmbWB1ZHbj6PHKLbVRP9dVc7OUhM5nYKq+tolGTWC7awMCHLxL4Zjp9xVNd
+ J1FYvXzBgWtJy7oMSmgh8e6KvXjNEmk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-472-Aa7uV9utPBm5su06_vlaOA-1; Fri, 04 Dec 2020 03:37:15 -0500
-X-MC-Unique: Aa7uV9utPBm5su06_vlaOA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-485-pOPnPDgeMUmAy3eMcMxL6A-1; Fri, 04 Dec 2020 04:30:39 -0500
+X-MC-Unique: pOPnPDgeMUmAy3eMcMxL6A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2356B858182;
- Fri,  4 Dec 2020 08:37:14 +0000 (UTC)
-Received: from gondolin (ovpn-113-97.ams2.redhat.com [10.36.113.97])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A91FC60C15;
- Fri,  4 Dec 2020 08:37:07 +0000 (UTC)
-Date: Fri, 4 Dec 2020 09:36:59 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
- peter.maydell@linaro.org, thuth@redhat.com, zhang.zhanghailiang@huawei.com,
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A40961800D41;
+ Fri,  4 Dec 2020 09:30:37 +0000 (UTC)
+Received: from [10.36.114.254] (ovpn-114-254.ams2.redhat.com [10.36.114.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AA3FF10016FA;
+ Fri,  4 Dec 2020 09:30:32 +0000 (UTC)
+Subject: Re: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize function
+ to avoid memleaks
+To: Cornelia Huck <cohuck@redhat.com>, Gan Qixin <ganqixin@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, peter.maydell@linaro.org, 
+ thuth@redhat.com, zhang.zhanghailiang@huawei.com,
  Euler Robot <euler.robot@huawei.com>, kuhn.chenqun@huawei.com,
  david@gibson.dropbear.id.au, Richard Henderson
- <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>,
- qemu-s390x@nongnu.org
-Subject: Re: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize
- function to avoid memleaks
-Message-ID: <20201204093659.349314af.cohuck@redhat.com>
-In-Reply-To: <20201204081209.360524-4-ganqixin@huawei.com>
+ <richard.henderson@linaro.org>, qemu-s390x@nongnu.org
 References: <20201204081209.360524-1-ganqixin@huawei.com>
  <20201204081209.360524-4-ganqixin@huawei.com>
+ <20201204093659.349314af.cohuck@redhat.com>
+From: David Hildenbrand <david@redhat.com>
 Organization: Red Hat GmbH
+Message-ID: <273f2ea2-4775-36c4-6d50-b419bab701e3@redhat.com>
+Date: Fri, 4 Dec 2020 10:30:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20201204093659.349314af.cohuck@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=cohuck@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,59 +81,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Dec 2020 08:37:22 -0000
+X-List-Received-Date: Fri, 04 Dec 2020 09:30:48 -0000
 
-On Fri, 4 Dec 2020 16:12:09 +0800
-Gan Qixin <ganqixin@huawei.com> wrote:
-
-> When running device-introspect-test, a memory leak occurred in the s390_cpu_initfn
-> function, this patch use timer_free() in the finalize function to fix it.
+On 04.12.20 09:36, Cornelia Huck wrote:
+> On Fri, 4 Dec 2020 16:12:09 +0800
+> Gan Qixin <ganqixin@huawei.com> wrote:
 > 
-> ASAN shows memory leak stack:
+>> When running device-introspect-test, a memory leak occurred in the s390_cpu_initfn
+>> function, this patch use timer_free() in the finalize function to fix it.
+>>
+>> ASAN shows memory leak stack:
+>>
+>> Direct leak of 3552 byte(s) in 74 object(s) allocated from:
+>>     #0 0xfffeb3d4e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
+>>     #1 0xfffeb36e6800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
+>>     #2 0xaaad51a8f9c4 in timer_new_full qemu/include/qemu/timer.h:523
+>>     #3 0xaaad51a8f9c4 in timer_new qemu/include/qemu/timer.h:544
+>>     #4 0xaaad51a8f9c4 in timer_new_ns qemu/include/qemu/timer.h:562
+>>     #5 0xaaad51a8f9c4 in s390_cpu_initfn qemu/target/s390x/cpu.c:304
+>>     #6 0xaaad51e00f58 in object_init_with_type qemu/qom/object.c:371
+>>     #7 0xaaad51e0406c in object_initialize_with_type qemu/qom/object.c:515
+>>     #8 0xaaad51e042e0 in object_new_with_type qemu/qom/object.c:729
+>>     #9 0xaaad51e3ff40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
+>>     #10 0xaaad51910518 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
+>>     #11 0xaaad51911918 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
+>>     #12 0xaaad51911e48 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+>> ---
+>> Cc: Thomas Huth <thuth@redhat.com>
 > 
-> Direct leak of 3552 byte(s) in 74 object(s) allocated from:
->     #0 0xfffeb3d4e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
->     #1 0xfffeb36e6800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
->     #2 0xaaad51a8f9c4 in timer_new_full qemu/include/qemu/timer.h:523
->     #3 0xaaad51a8f9c4 in timer_new qemu/include/qemu/timer.h:544
->     #4 0xaaad51a8f9c4 in timer_new_ns qemu/include/qemu/timer.h:562
->     #5 0xaaad51a8f9c4 in s390_cpu_initfn qemu/target/s390x/cpu.c:304
->     #6 0xaaad51e00f58 in object_init_with_type qemu/qom/object.c:371
->     #7 0xaaad51e0406c in object_initialize_with_type qemu/qom/object.c:515
->     #8 0xaaad51e042e0 in object_new_with_type qemu/qom/object.c:729
->     #9 0xaaad51e3ff40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
->     #10 0xaaad51910518 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
->     #11 0xaaad51911918 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
->     #12 0xaaad51911e48 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+> [Adding missing maintainers. How did you build the cc: list?]
 > 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Thomas Huth <thuth@redhat.com>
-
-[Adding missing maintainers. How did you build the cc: list?]
-
-> ---
->  target/s390x/cpu.c | 5 +++++
->  1 file changed, 5 insertions(+)
+>> ---
+>>  target/s390x/cpu.c | 5 +++++
+>>  1 file changed, 5 insertions(+)
+>>
+>> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+>> index 7b66718c44..8a734c2f8c 100644
+>> --- a/target/s390x/cpu.c
+>> +++ b/target/s390x/cpu.c
+>> @@ -313,6 +313,11 @@ static void s390_cpu_finalize(Object *obj)
+>>  #if !defined(CONFIG_USER_ONLY)
+>>      S390CPU *cpu = S390_CPU(obj);
+>>  
+>> +    timer_del(cpu->env.tod_timer);
+>> +    timer_free(cpu->env.tod_timer);
+>> +    timer_del(cpu->env.cpu_timer);
+>> +    timer_free(cpu->env.cpu_timer);
+>> +
+>>      qemu_unregister_reset(s390_cpu_machine_reset_cb, cpu);
+>>      g_free(cpu->irqstate);
+>>  #endif
 > 
-> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-> index 7b66718c44..8a734c2f8c 100644
-> --- a/target/s390x/cpu.c
-> +++ b/target/s390x/cpu.c
-> @@ -313,6 +313,11 @@ static void s390_cpu_finalize(Object *obj)
->  #if !defined(CONFIG_USER_ONLY)
->      S390CPU *cpu = S390_CPU(obj);
->  
-> +    timer_del(cpu->env.tod_timer);
-> +    timer_free(cpu->env.tod_timer);
-> +    timer_del(cpu->env.cpu_timer);
-> +    timer_free(cpu->env.cpu_timer);
-> +
->      qemu_unregister_reset(s390_cpu_machine_reset_cb, cpu);
->      g_free(cpu->irqstate);
->  #endif
+> Looks sane at first glance.
+> 
 
-Looks sane at first glance.
+Could have sworn we had these in the code at one point - but I don't
+find anything in the git history.
+
+Reviewed-by: David Hildenbrand <david@redhat.com>
+
+-- 
+Thanks,
+
+David / dhildenb
 
 
