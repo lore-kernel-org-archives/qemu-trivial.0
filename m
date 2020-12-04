@@ -1,62 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kksPr-000357-5w
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2020 12:29:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56800)
+	id 1kl5HI-0003uh-Hq
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2020 02:13:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kksPj-000321-00
- for qemu-trivial@nongnu.org; Thu, 03 Dec 2020 12:29:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21620)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1kksPe-0005F5-EA
- for qemu-trivial@nongnu.org; Thu, 03 Dec 2020 12:29:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607016538;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rz2H2g6BTxf3boA5vJnUsLsMTEHCCesGpvJKSvMoL4I=;
- b=XEub11m2RmuKNoiww4BXtveiNo2HME2cU/3uuyuHZOHOwgOOxRabFoqWlqD6zxPI2ThP/r
- H1L593u3FQUpXwpqGsdJXTDKshHlWqq+CJN6hhnb1ONP696IhHkwe2blhAMnzVZAsfBWik
- QghN9pdU3i6kdFZNTIcluov08hd2O58=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-520-Cqj3tDCMM7OkXGOUwVnUqw-1; Thu, 03 Dec 2020 12:28:56 -0500
-X-MC-Unique: Cqj3tDCMM7OkXGOUwVnUqw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9BB3E801F95;
- Thu,  3 Dec 2020 17:28:55 +0000 (UTC)
-Received: from merkur.fritz.box (ovpn-114-175.ams2.redhat.com [10.36.114.175])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C73D71A890;
- Thu,  3 Dec 2020 17:28:53 +0000 (UTC)
-Date: Thu, 3 Dec 2020 18:28:51 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Gan Qixin <ganqixin@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com,
- armbru@redhat.com, kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com
-Subject: Re: [PATCH v2 0/4] Use lock guard macros in block
-Message-ID: <20201203172851.GB5409@merkur.fritz.box>
-References: <20201203075055.127773-1-ganqixin@huawei.com>
+ (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
+ id 1kl5HH-0003uS-GD; Fri, 04 Dec 2020 02:13:15 -0500
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:40019)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
+ id 1kl5HG-0004B8-3K; Fri, 04 Dec 2020 02:13:15 -0500
+Received: by mail-io1-xd42.google.com with SMTP id r9so4777555ioo.7;
+ Thu, 03 Dec 2020 23:13:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4CHpusmkixuTxRRAPlq1qz1p5pY/Jph9sYNqkVnQFWA=;
+ b=uBvmmV49UBsko18sLybMLESG4rQDC40d5mkztDqD2ChhKlBiUp4NKnMASCI4D8qmvR
+ a4IRlI7ZlFOB0iSfHj9d2gvY6wm6nXqo7jto5iSfWdAKobTVTRb00rMmAXvYpHdOzbK/
+ 6/xtozrOWNH0fgqzj+b6QJOA6o6K1eN4h3JpiDLQHujXezBwlBaKZ/Q9SGCFpAlxQRxg
+ dYyTAKASqeZ8kroPVTb+oQNF9yUXIvUz6U0KGwOitymd4JPPhbSS0OX50dSbFfe76yD8
+ ls4bZ/A8d/RxglIn5uZCE3hjEfSJxRMNum4d91SQCVziR3LnFrG7TBViXEQ5Fr24rVN8
+ Wuqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4CHpusmkixuTxRRAPlq1qz1p5pY/Jph9sYNqkVnQFWA=;
+ b=Dl9rKnHVYZmeQIoU3Eey79PSVWeD15vsp8D6aZ3gjOQztCuf4qwZm0iejSvcWDRLOk
+ FA4KnIiRQWUn3kybfV9ME18zujaihAz0QMTAGwyBrw46Hxc7Tm2AZkKCA0hBz+H9v3kB
+ cBeQIVV12T8uHHP9OZhpQ7iQf1hsFiUt68V+B5JGTk3NYhC00YwrC0qfBcPftUX+esqm
+ sJgD1Z2wpYMu51LaBwWdpgSN9jCNaPWBwjin7pXw6dNS1TrkoZZP+0jVgKO+92okCEy1
+ 5rIS4DMQP1NQGeZFtc/MlYZxhhzqit7ILYqlxTFLvbYl/+oYDXyMXwnYxEn4r1Q8rXQN
+ dj6Q==
+X-Gm-Message-State: AOAM531Ar43hDw4ynVkGwgua00OTvIHzEgQpsBaprJxe4jzorbUubm92
+ 9uMbirGhmjyJquKqd8r3uMSeEsyTy1LZzUYQki0=
+X-Google-Smtp-Source: ABdhPJyKGrBvNW0S7Gi0Ac+c8L+QTplpe49u32kFHTwM2U90NUCGN4e2qMontmS8gm0Fnqnr8qtdu8vPboDH9kN/Ad8=
+X-Received: by 2002:a5d:8592:: with SMTP id f18mr4538602ioj.67.1607065992444; 
+ Thu, 03 Dec 2020 23:13:12 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201203075055.127773-1-ganqixin@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <20201130083630.2520597-2-ganqixin@huawei.com>
+ <CAM9Jb+iXWAQq7gg8RxS=aVX1MHBVuZucb4rXGaTU40kJ6-TmTw@mail.gmail.com>
+ <A5B86EC83C48EF4CB2BC58BEF3A2F496065DD609@DGGEMI525-MBS.china.huawei.com>
+In-Reply-To: <A5B86EC83C48EF4CB2BC58BEF3A2F496065DD609@DGGEMI525-MBS.china.huawei.com>
+From: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+Date: Fri, 4 Dec 2020 08:13:01 +0100
+Message-ID: <CAM9Jb+hJRyQzCEcoHG3kepbjyJ2dA341WmR+4CtR3L1oMYWJkg@mail.gmail.com>
+Subject: Re: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+To: ganqixin <ganqixin@huawei.com>
+Cc: Qemu Developers <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, 
+ "thuth@redhat.com" <thuth@redhat.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ "Michael S . Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=pankaj.gupta.linux@gmail.com; helo=mail-io1-xd42.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -69,30 +75,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Dec 2020 17:29:08 -0000
+X-List-Received-Date: Fri, 04 Dec 2020 07:13:15 -0000
 
-Am 03.12.2020 um 08:50 hat Gan Qixin geschrieben:
-> v1->v2:
-> 
-> -Patch1:
->     Add Paolo Bonzini reviewed tag and delete the .c suffix in the commit
-> message.
-> 
-> -Patch2:
->     Add Paolo Bonzini reviewed tag and delete the .c suffix in the commit
-> message.
-> 
-> -Patch3:
->     Delete the .c suffix in the commit.
->     Changes suggested by Kevin Wolf: Fix wrong indentation format.
->     
-> -Patch4:
->     Delete the .c suffix in the commit.
->     Changes suggested by Kevin Wolf: Replace QEMU_LOCK_GUARD with
-> WITH_QEMU_LOCK_GUARD, and delete the redundant qemu_mutex_unlock().
+ >      mdc->get_memory_region = pc_dimm_md_get_memory_region;
+> > >      mdc->fill_device_info = pc_dimm_md_fill_device_info;
+> > > +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+> >
+> > Any reason why pc-dimm would be in the storage category?
+...
+> Thanks for you reply. As far as I know, pc-dimm is a dimm device for memory hotplug, described as a "DIMM memory module" in "-device help".
+> This device looks related to storage, so I put it into the "storage" category to make it easy to find. I'm not sure if this is appropriate, do you have any better ideas?
 
-Thanks, applied to the block branch.
+O.k. I see storage & memory as different devices. Since we don't have
+any memory device type defined, maybe its okay to put it in MISC
+device.
 
-Kevin
-
+Thanks,
+Pankaj
 
