@@ -1,60 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1km1y6-0007EH-Co
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Dec 2020 16:53:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37616)
+	id 1kmBWh-0004cB-2g
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Dec 2020 03:05:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57990)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <darrell.walisser@gmail.com>)
- id 1klyaW-0003JW-8z; Sun, 06 Dec 2020 13:16:48 -0500
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:37122)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <darrell.walisser@gmail.com>)
- id 1klyaS-0006bV-Nc; Sun, 06 Dec 2020 13:16:48 -0500
-Received: by mail-ej1-x643.google.com with SMTP id ga15so16247769ejb.4;
- Sun, 06 Dec 2020 10:16:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=a4JN0QR0CcYpWvQZfmGCqf33++HzeYudhU70aHOHqmY=;
- b=keIOdO2j3Dq/e3SlDvESO3z0Df1Fe+DkJLQMrbc7jZHxRdOeiMU12Xi8wrFc8vJaPe
- V7Ktz2Oh4YckKIFibpsPk4d3tlEJpm+VufHvvSqNF+HspXsDlK4HilvLgyS5YKQAQhJ/
- uIxVrUfelcCO3ElOsflxf+43zYn8p7bTwxJeeoBb36R9WajTgxw6tixTTSxh2nexN9G3
- 33UiMnQKuBUVQGcO6rHJxsSA8vYXjF4rovFk+IJy5x13wi0DH1vSmblS1nixb3AQXg+S
- BQXHdveXARIzO7fQ2OFU0j/fmrikXN06n6bMyZF0sNUXmDfmzYmbBV9OLy8xk5X2hjQO
- IxGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=a4JN0QR0CcYpWvQZfmGCqf33++HzeYudhU70aHOHqmY=;
- b=eUxsVR+WCwY7FIcwZymHP+7vQGPBxFpb2hBge/Z0OCTBg7rW75lPwaBGXDWLEsMS+w
- ysYh8BwdHo8iVCUgwrG7Fk4/3tIlP1a14AF0NnzP/oeEor0xG76oZglz+YMM0VkP1LzP
- nFBhuXnz5/WoYUYA3VxDGc5ik20Dvbzkk7fOY5X7et4qSLwAmcih9o2F1dYx7/NLgjsz
- sLcif4HGTbcpFQhG7I0W2y2A/djG8LfSQH0f7OQaDzEamSVUCNHBMIUqHpo+knrHYtRj
- E+Qn0vUYCLAeiEvseReQFBeL5WFm8E/vd5V2PHNAlxobCe6pagaVQRTIigCYu3rxaRqw
- uRig==
-X-Gm-Message-State: AOAM532QwWTTb8sLz9XmpXPMTZ4X1/fppMGN91P43/grH/OqHhDGC4BU
- ikn7bq9VXJ2fB199xMapH6f/JF7V+2mHEoBfdpULpItjYK8=
-X-Google-Smtp-Source: ABdhPJx0sK46VRvZdc1yDuy004ek9k42/EDci0HQXTZmko2F9HavZ2jnKNXOOMqwoj1vn2xkIXqjbwo4dwRPckvEBT0=
-X-Received: by 2002:a17:906:4e50:: with SMTP id
- g16mr16660049ejw.191.1607278601046; 
- Sun, 06 Dec 2020 10:16:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kmBWd-0004aZ-Gk; Mon, 07 Dec 2020 03:05:39 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2492)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kmBWY-00072U-KF; Mon, 07 Dec 2020 03:05:39 -0500
+Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CqG6z3y49zVm08;
+ Mon,  7 Dec 2020 16:04:27 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.228]) by
+ dggemi405-hub.china.huawei.com ([10.3.17.143]) with mapi id 14.03.0487.000;
+ Mon, 7 Dec 2020 16:05:13 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+CC: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "thuth@redhat.com" <thuth@redhat.com>
+Subject: RE: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+Thread-Topic: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+Thread-Index: AQHWu/oMyb2Urt3Gu0q8d02Pkq8oI6nKRNcAgAIPoiCAGjZOgIAE10ZQ
+Date: Mon, 7 Dec 2020 08:05:12 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065E4158@DGGEMI525-MBS.china.huawei.com>
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-10-ganqixin@huawei.com>
+ <49d4e8e3-7138-18cf-3972-c18e8275d3be@redhat.com>
+ <A5B86EC83C48EF4CB2BC58BEF3A2F496065C27CD@DGGEMI525-MBS.china.huawei.com>
+ <babff5a6-4c78-7d44-4d97-d095e627639d@redhat.com>
+In-Reply-To: <babff5a6-4c78-7d44-4d97-d095e627639d@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-From: Darrell Walisser <darrell.walisser@gmail.com>
-Date: Sun, 6 Dec 2020 13:16:30 -0500
-Message-ID: <CAPDU3-+Q+7zC8e9pmXuaMqmefP_9jrg4kEFMH_=gQZLGskHkjA@mail.gmail.com>
-Subject: [PATCH] sdl2: Add extra mouse buttons
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=darrell.walisser@gmail.com; helo=mail-ej1-x643.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187; envelope-from=ganqixin@huawei.com;
+ helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 06 Dec 2020 16:53:20 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,29 +62,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Dec 2020 18:16:48 -0000
+X-List-Received-Date: Mon, 07 Dec 2020 08:05:41 -0000
 
-Sends mouse buttons 4 and 5, aka "SIDE" and "EXTRA" to the guest
-
-Signed-off-by: Darrell Walisser <darrell.walisser@gmail.com>
----
- ui/sdl2.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/ui/sdl2.c b/ui/sdl2.c
-index 189d26e2a9..a578017268 100644
---- a/ui/sdl2.c
-+++ b/ui/sdl2.c
-@@ -275,6 +275,8 @@ static void sdl_send_mouse_event(struct
-sdl2_console *scon, int dx, int dy,
-         [INPUT_BUTTON_LEFT]       = SDL_BUTTON(SDL_BUTTON_LEFT),
-         [INPUT_BUTTON_MIDDLE]     = SDL_BUTTON(SDL_BUTTON_MIDDLE),
-         [INPUT_BUTTON_RIGHT]      = SDL_BUTTON(SDL_BUTTON_RIGHT),
-+        [INPUT_BUTTON_SIDE]       = SDL_BUTTON(SDL_BUTTON_X1),
-+        [INPUT_BUTTON_EXTRA]      = SDL_BUTTON(SDL_BUTTON_X2)
-     };
-     static uint32_t prev_state;
-
--- 
-2.25.1
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
+dWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPiBTZW50OiBGcmlkYXksIERlY2VtYmVy
+IDQsIDIwMjAgOTo1MCBQTQ0KPiBUbzogZ2FucWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+OyBx
+ZW11LWRldmVsQG5vbmdudS5vcmc7DQo+IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+IENjOiBD
+aGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBaaGFuZ2hhaWxpYW5nDQo+
+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBHZXJkIEhvZmZtYW5uDQo+IDxrcmF4
+ZWxAcmVkaGF0LmNvbT47IHRodXRoQHJlZGhhdC5jb20NCj4gU3ViamVjdDogUmU6IFtQQVRDSCAw
+OS8xM10gdTJmLXBhc3N0aHJ1OiBwdXQgaXQgaW50byB0aGUgJ3VzYicgY2F0ZWdvcnkNCj4gDQo+
+IE9uIDExLzE3LzIwIDI6MzcgUE0sIGdhbnFpeGluIHdyb3RlOg0KPiA+PiAtLS0tLU9yaWdpbmFs
+IE1lc3NhZ2UtLS0tLQ0KPiA+PiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSBbbWFpbHRv
+OnBoaWxtZEByZWRoYXQuY29tXQ0KPiA+PiBTZW50OiBNb25kYXksIE5vdmVtYmVyIDE2LCAyMDIw
+IDEwOjA1IFBNDQo+ID4+IFRvOiBnYW5xaXhpbiA8Z2FucWl4aW5AaHVhd2VpLmNvbT47IHFlbXUt
+ZGV2ZWxAbm9uZ251Lm9yZzsNCj4gPj4gcWVtdS10cml2aWFsQG5vbmdudS5vcmc7IE1hcmMtQW5k
+csOpIEx1cmVhdQ0KPiA+PiA8bWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tPjsgdGh1dGhAcmVk
+aGF0LmNvbQ0KPiA+PiBDYzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29t
+PjsgWmhhbmdoYWlsaWFuZw0KPiA+PiA8emhhbmcuemhhbmdoYWlsaWFuZ0BodWF3ZWkuY29tPjsg
+R2VyZCBIb2ZmbWFubg0KPiA8a3JheGVsQHJlZGhhdC5jb20+Ow0KPiA+PiBFZHVhcmRvIEhhYmtv
+c3QgPGVoYWJrb3N0QHJlZGhhdC5jb20+DQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggMDkvMTNd
+IHUyZi1wYXNzdGhydTogcHV0IGl0IGludG8gdGhlICd1c2InDQo+ID4+IGNhdGVnb3J5DQo+ID4+
+DQo+ID4+IE9uIDExLzE1LzIwIDc6NDggUE0sIEdhbiBRaXhpbiB3cm90ZToNCj4gPj4+IFRoZSBj
+YXRlZ29yeSBvZiB0aGUgdTJmLXBhc3N0aHJ1IGRldmljZSBpcyBub3Qgc2V0LCBwdXQgaXQgaW50
+byB0aGUgJ3VzYicNCj4gPj4+IGNhdGVnb3J5Lg0KPiA+Pg0KPiA+PiBJIGd1ZXNzIHdlIGRpc2N1
+c3NlZCB0aGlzIHdpdGggVGhvbWFzIDEgb3IgMiB5ZWFycyBhZ28gYnV0IEkgZG9uJ3QNCj4gcmVt
+ZW1iZXIuDQo+ID4+IEkgdGhpbmsgaXQgd2FzIGFib3V0IHVzaW5nIHNldF9iaXRzKCkgc28gZGV2
+aWNlcyBjYW4gYXBwZWFyIGluDQo+ID4+IG11bHRpcGxlIGNhdGVnb3JpZXMuDQo+ID4+DQo+ID4+
+IEdlcmQsIGRvIHlvdSBrbm93IHdoYXQgaXMgdGhlIHBvaW50IG9mIHRoZSAidXNiIiBjYXRlZ29y
+eSBmb3INCj4gPj4gbWFuYWdlbWVudCBhcHBzPyBUaGlzIGlzIGEgYnVzIGFjY2VwdGluZyBtdWx0
+aXBsZSBiZXR0ZXIgY2F0ZWdvcml6ZWQNCj4gPj4gZGV2aWNlcyAoZGlzcGxheSwgc3RvcmFnZSwg
+aW5wdXQsIG5ldHdvcmssIHNvdW5kKS4NCj4gPj4NCj4gPj4gVW5yZWxhdGVkIGJ1dCBtdWx0aXBs
+ZSBkZXZpY2VzIGFyZSByZWxhdGVkIHRvIFNFQ1VSSVRZLg0KPiA+PiBNYXliZSBpdCBpcyB0aW1l
+IHRvIGludHJvZHVjZSB0aGUgREVWSUNFX0NBVEVHT1JZX1NFQ1VSSVRZPw0KPiA+DQo+ID4gSGks
+IFBoaWxpcHBlDQo+ID4gVGhhbmtzIGZvciB5b3VyIHJlcGx5LCBidXQgSSdtIG5vdCBzdXJlIGlm
+IGl0IGlzIGFwcHJvcHJpYXRlIHRvIGFkZCBhDQo+IHNlY3VyaXR5IGNhdGVnb3J5IHRvIHBsYWNl
+IHRoaXMgZGV2aWNlLg0KPiA+IChNYXliZSBpdCdzIGJlY2F1c2UgSSBkb24ndCBrbm93IG11Y2gg
+YWJvdXQgdGhlc2UgZGV2aWNlLCBJIGhhdmVuJ3QNCj4gPiBmaW5kIG1hbnkgc2FmZXR5LXJlbGF0
+ZWQgZGV2aWNlcyBpbiAnbWlzYycgY2F0ZWdvcnkgb3IgdW5jYXRlZ29yaXplZA0KPiA+IGRldmlj
+ZXMpDQo+IA0KPiBXaGF0IGlzIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4gJ21pc2MnIGFuZCAndW5j
+YXRlZ29yaXplZCc/DQoNCkluIG15IG9waW5pb24sIGRldmljZXMgdGhhdCB3ZSBmb3Jnb3QgdG8g
+Y2xhc3NpZnkgd2lsbCBhcHBlYXIgaW4gInVuY2F0ZWdvcml6ZWQiIGxpc3QsIGFuZCBkZXZpY2Vz
+IHRoYXQgZG9uJ3QgaGF2ZSBhIHN1aXRhYmxlIGNhdGVnb3J5IHRvIGNob29zZSB3aWxsIGJlIHB1
+dCBpbnRvICJtaXNjIiBjYXRlZ29yeS4NCg0KPiANCj4gPg0KPiA+IFRoYW5rcywNCj4gPiBHYW4g
+UWl4aW4NCj4gPg0KDQo=
 
