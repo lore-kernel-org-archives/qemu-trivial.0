@@ -1,60 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kmBbb-0006YA-66
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Dec 2020 03:10:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58758)
+	id 1kmCGP-00089z-QL
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Dec 2020 03:52:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kmBbZ-0006WH-G8; Mon, 07 Dec 2020 03:10:45 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2242)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kmBbT-0000Gy-QD; Mon, 07 Dec 2020 03:10:45 -0500
-Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.53])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4CqGDy5QtXz13R0c;
- Mon,  7 Dec 2020 16:09:38 +0800 (CST)
-Received: from DGGEMI422-HUB.china.huawei.com (10.1.199.151) by
- dggemi405-hub.china.huawei.com (10.3.17.143) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Mon, 7 Dec 2020 16:10:30 +0800
-Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.228]) by
- dggemi422-hub.china.huawei.com ([10.1.199.151]) with mapi id 14.03.0487.000;
- Mon, 7 Dec 2020 16:10:20 +0800
-From: ganqixin <ganqixin@huawei.com>
-To: Cornelia Huck <cohuck@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "thuth@redhat.com" <thuth@redhat.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, Euler Robot
- <euler.robot@huawei.com>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>, "Richard
- Henderson" <richard.henderson@linaro.org>, David Hildenbrand
- <david@redhat.com>, "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>
-Subject: RE: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize
- function to avoid memleaks
-Thread-Topic: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize
- function to avoid memleaks
-Thread-Index: AQHWyhVlFFCAWnF5sUCF8CY9haDIzKnmFvuAgAU0c8A=
-Date: Mon, 7 Dec 2020 08:10:19 +0000
-Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065E416F@DGGEMI525-MBS.china.huawei.com>
-References: <20201204081209.360524-1-ganqixin@huawei.com>
- <20201204081209.360524-4-ganqixin@huawei.com>
- <20201204093659.349314af.cohuck@redhat.com>
-In-Reply-To: <20201204093659.349314af.cohuck@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.159]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kmCGO-00088z-49
+ for qemu-trivial@nongnu.org; Mon, 07 Dec 2020 03:52:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40383)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kmCGM-00065k-Cr
+ for qemu-trivial@nongnu.org; Mon, 07 Dec 2020 03:52:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607331173;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zVoY5lQPgWaWuAH+POdnr8PAv6pqZawAsiFIxFry3r4=;
+ b=A/0PcGu00R4dF2jSGQWk75VM3et3YDDen6k8I8FKiPAsq0RaSinGbr+hhfx+FkehNWLQnb
+ XaLz6KNXG3F64DwuKYmyQcqj3K6bJtxfjhqDWGaeMd/crMozHyjS14OLN9sS5Q2EvWMYlV
+ Xs9YVE1WZhUcOVb6wzKd3L+H/KtgcvQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-499-d86nbOk0OAOe3J_IK2Ug2Q-1; Mon, 07 Dec 2020 03:52:50 -0500
+X-MC-Unique: d86nbOk0OAOe3J_IK2Ug2Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CFACE107ACE8;
+ Mon,  7 Dec 2020 08:52:48 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-85.ams2.redhat.com [10.36.112.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C4BC36FA;
+ Mon,  7 Dec 2020 08:52:43 +0000 (UTC)
+Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+To: ganqixin <ganqixin@huawei.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Cc: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20201115184903.1292715-1-ganqixin@huawei.com>
+ <20201115184903.1292715-10-ganqixin@huawei.com>
+ <49d4e8e3-7138-18cf-3972-c18e8275d3be@redhat.com>
+ <A5B86EC83C48EF4CB2BC58BEF3A2F496065C27CD@DGGEMI525-MBS.china.huawei.com>
+ <babff5a6-4c78-7d44-4d97-d095e627639d@redhat.com>
+ <A5B86EC83C48EF4CB2BC58BEF3A2F496065E4158@DGGEMI525-MBS.china.huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e97a996d-3f22-bf1d-15f4-f53247e0beb4@redhat.com>
+Date: Mon, 7 Dec 2020 09:52:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255; envelope-from=ganqixin@huawei.com;
- helo=szxga08-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <A5B86EC83C48EF4CB2BC58BEF3A2F496065E4158@DGGEMI525-MBS.china.huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,89 +82,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Dec 2020 08:10:46 -0000
+X-List-Received-Date: Mon, 07 Dec 2020 08:52:56 -0000
 
-> -----Original Message-----
-> From: Cornelia Huck [mailto:cohuck@redhat.com]
-> Sent: Friday, December 4, 2020 4:37 PM
-> To: ganqixin <ganqixin@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
-> peter.maydell@linaro.org; thuth@redhat.com; Zhanghailiang
-> <zhang.zhanghailiang@huawei.com>; Euler Robot
-> <euler.robot@huawei.com>; Chenqun (kuhn)
-> <kuhn.chenqun@huawei.com>; david@gibson.dropbear.id.au; Richard
-> Henderson <richard.henderson@linaro.org>; David Hildenbrand
-> <david@redhat.com>; qemu-s390x@nongnu.org
-> Subject: Re: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize
-> function to avoid memleaks
->=20
-> On Fri, 4 Dec 2020 16:12:09 +0800
-> Gan Qixin <ganqixin@huawei.com> wrote:
->=20
-> > When running device-introspect-test, a memory leak occurred in the
-> > s390_cpu_initfn function, this patch use timer_free() in the finalize
-> function to fix it.
-> >
-> > ASAN shows memory leak stack:
-> >
-> > Direct leak of 3552 byte(s) in 74 object(s) allocated from:
-> >     #0 0xfffeb3d4e1f0 in __interceptor_calloc
-> (/lib64/libasan.so.5+0xee1f0)
-> >     #1 0xfffeb36e6800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
-> >     #2 0xaaad51a8f9c4 in timer_new_full
-> qemu/include/qemu/timer.h:523
-> >     #3 0xaaad51a8f9c4 in timer_new qemu/include/qemu/timer.h:544
-> >     #4 0xaaad51a8f9c4 in timer_new_ns
-> qemu/include/qemu/timer.h:562
-> >     #5 0xaaad51a8f9c4 in s390_cpu_initfn
-> qemu/target/s390x/cpu.c:304
-> >     #6 0xaaad51e00f58 in object_init_with_type
-> qemu/qom/object.c:371
-> >     #7 0xaaad51e0406c in object_initialize_with_type
-> qemu/qom/object.c:515
-> >     #8 0xaaad51e042e0 in object_new_with_type
-> qemu/qom/object.c:729
-> >     #9 0xaaad51e3ff40 in qmp_device_list_properties
-> qemu/qom/qom-qmp-cmds.c:153
-> >     #10 0xaaad51910518 in qdev_device_help
-> qemu/softmmu/qdev-monitor.c:283
-> >     #11 0xaaad51911918 in qmp_device_add
-> qemu/softmmu/qdev-monitor.c:801
-> >     #12 0xaaad51911e48 in hmp_device_add
-> > qemu/softmmu/qdev-monitor.c:916
-> >
-> > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> > ---
-> > Cc: Thomas Huth <thuth@redhat.com>
->=20
-> [Adding missing maintainers. How did you build the cc: list?]
+On 07/12/2020 09.05, ganqixin wrote:
+>> -----Original Message-----
+>> From: Philippe Mathieu-Daudé [mailto:philmd@redhat.com]
+>> Sent: Friday, December 4, 2020 9:50 PM
+>> To: ganqixin <ganqixin@huawei.com>; qemu-devel@nongnu.org;
+>> qemu-trivial@nongnu.org
+>> Cc: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; Zhanghailiang
+>> <zhang.zhanghailiang@huawei.com>; Gerd Hoffmann
+>> <kraxel@redhat.com>; thuth@redhat.com
+>> Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
+>>
+>> On 11/17/20 2:37 PM, ganqixin wrote:
+>>>> -----Original Message-----
+>>>> From: Philippe Mathieu-Daudé [mailto:philmd@redhat.com]
+>>>> Sent: Monday, November 16, 2020 10:05 PM
+>>>> To: ganqixin <ganqixin@huawei.com>; qemu-devel@nongnu.org;
+>>>> qemu-trivial@nongnu.org; Marc-André Lureau
+>>>> <marcandre.lureau@redhat.com>; thuth@redhat.com
+>>>> Cc: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; Zhanghailiang
+>>>> <zhang.zhanghailiang@huawei.com>; Gerd Hoffmann
+>> <kraxel@redhat.com>;
+>>>> Eduardo Habkost <ehabkost@redhat.com>
+>>>> Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb'
+>>>> category
+>>>>
+>>>> On 11/15/20 7:48 PM, Gan Qixin wrote:
+>>>>> The category of the u2f-passthru device is not set, put it into the 'usb'
+>>>>> category.
+>>>>
+>>>> I guess we discussed this with Thomas 1 or 2 years ago but I don't
+>> remember.
+>>>> I think it was about using set_bits() so devices can appear in
+>>>> multiple categories.
+>>>>
+>>>> Gerd, do you know what is the point of the "usb" category for
+>>>> management apps? This is a bus accepting multiple better categorized
+>>>> devices (display, storage, input, network, sound).
+>>>>
+>>>> Unrelated but multiple devices are related to SECURITY.
+>>>> Maybe it is time to introduce the DEVICE_CATEGORY_SECURITY?
+>>>
+>>> Hi, Philippe
+>>> Thanks for your reply, but I'm not sure if it is appropriate to add a
+>> security category to place this device.
+>>> (Maybe it's because I don't know much about these device, I haven't
+>>> find many safety-related devices in 'misc' category or uncategorized
+>>> devices)
+>>
+>> What is the difference between 'misc' and 'uncategorized'?
+> 
+> In my opinion, devices that we forgot to classify will appear in "uncategorized" list, and devices that don't have a suitable category to choose will be put into "misc" category.
 
-Oops, It's my fault. Thanks for helping me add missing maintainers. :)
+That's right. User-creatable devices should have a category, and the
+uncategorized devices just have not been categorized yet.
 
-Gan Qixin
->=20
-> > ---
-> >  target/s390x/cpu.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >
-> > diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c index
-> > 7b66718c44..8a734c2f8c 100644
-> > --- a/target/s390x/cpu.c
-> > +++ b/target/s390x/cpu.c
-> > @@ -313,6 +313,11 @@ static void s390_cpu_finalize(Object *obj)  #if
-> > !defined(CONFIG_USER_ONLY)
-> >      S390CPU *cpu =3D S390_CPU(obj);
-> >
-> > +    timer_del(cpu->env.tod_timer);
-> > +    timer_free(cpu->env.tod_timer);
-> > +    timer_del(cpu->env.cpu_timer);
-> > +    timer_free(cpu->env.cpu_timer);
-> > +
-> >      qemu_unregister_reset(s390_cpu_machine_reset_cb, cpu);
-> >      g_free(cpu->irqstate);
-> >  #endif
->=20
-> Looks sane at first glance.
+So thanks for tackling this, Gan Qixin!
+
+ Thomas
 
 
