@@ -1,75 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kmCGP-00089z-QL
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Dec 2020 03:52:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37258)
+	id 1kmCWb-0005i9-AP
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Dec 2020 04:09:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kmCGO-00088z-49
- for qemu-trivial@nongnu.org; Mon, 07 Dec 2020 03:52:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40383)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kmCGM-00065k-Cr
- for qemu-trivial@nongnu.org; Mon, 07 Dec 2020 03:52:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607331173;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zVoY5lQPgWaWuAH+POdnr8PAv6pqZawAsiFIxFry3r4=;
- b=A/0PcGu00R4dF2jSGQWk75VM3et3YDDen6k8I8FKiPAsq0RaSinGbr+hhfx+FkehNWLQnb
- XaLz6KNXG3F64DwuKYmyQcqj3K6bJtxfjhqDWGaeMd/crMozHyjS14OLN9sS5Q2EvWMYlV
- Xs9YVE1WZhUcOVb6wzKd3L+H/KtgcvQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-499-d86nbOk0OAOe3J_IK2Ug2Q-1; Mon, 07 Dec 2020 03:52:50 -0500
-X-MC-Unique: d86nbOk0OAOe3J_IK2Ug2Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CFACE107ACE8;
- Mon,  7 Dec 2020 08:52:48 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-85.ams2.redhat.com [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9C4BC36FA;
- Mon,  7 Dec 2020 08:52:43 +0000 (UTC)
-Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
-To: ganqixin <ganqixin@huawei.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Cc: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20201115184903.1292715-1-ganqixin@huawei.com>
- <20201115184903.1292715-10-ganqixin@huawei.com>
- <49d4e8e3-7138-18cf-3972-c18e8275d3be@redhat.com>
- <A5B86EC83C48EF4CB2BC58BEF3A2F496065C27CD@DGGEMI525-MBS.china.huawei.com>
- <babff5a6-4c78-7d44-4d97-d095e627639d@redhat.com>
- <A5B86EC83C48EF4CB2BC58BEF3A2F496065E4158@DGGEMI525-MBS.china.huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <e97a996d-3f22-bf1d-15f4-f53247e0beb4@redhat.com>
-Date: Mon, 7 Dec 2020 09:52:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kmCWY-0005fh-Uz; Mon, 07 Dec 2020 04:09:38 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2962)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kmCWT-0003Fa-Ky; Mon, 07 Dec 2020 04:09:38 -0500
+Received: from dggemi405-hub.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4CqHYQ1l18zXkXQ;
+ Mon,  7 Dec 2020 17:08:58 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.228]) by
+ dggemi405-hub.china.huawei.com ([10.3.17.143]) with mapi id 14.03.0487.000;
+ Mon, 7 Dec 2020 17:09:17 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+CC: Qemu Developers <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "thuth@redhat.com" <thuth@redhat.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Subject: RE: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+Thread-Topic: [PATCH v2 01/12] pc-dimm: put it into the 'storage' category
+Thread-Index: AQHWxvQB7Oi14cb7Ik2dpMwmMFfSI6nf8FWAgAT8dnCAARj9gIAFWNMw
+Date: Mon, 7 Dec 2020 09:09:15 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F496065E41B5@DGGEMI525-MBS.china.huawei.com>
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <20201130083630.2520597-2-ganqixin@huawei.com>
+ <CAM9Jb+iXWAQq7gg8RxS=aVX1MHBVuZucb4rXGaTU40kJ6-TmTw@mail.gmail.com>
+ <A5B86EC83C48EF4CB2BC58BEF3A2F496065DD609@DGGEMI525-MBS.china.huawei.com>
+ <CAM9Jb+hJRyQzCEcoHG3kepbjyJ2dA341WmR+4CtR3L1oMYWJkg@mail.gmail.com>
+In-Reply-To: <CAM9Jb+hJRyQzCEcoHG3kepbjyJ2dA341WmR+4CtR3L1oMYWJkg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <A5B86EC83C48EF4CB2BC58BEF3A2F496065E4158@DGGEMI525-MBS.china.huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187; envelope-from=ganqixin@huawei.com;
+ helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,65 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Dec 2020 08:52:56 -0000
+X-List-Received-Date: Mon, 07 Dec 2020 09:09:39 -0000
 
-On 07/12/2020 09.05, ganqixin wrote:
->> -----Original Message-----
->> From: Philippe Mathieu-Daudé [mailto:philmd@redhat.com]
->> Sent: Friday, December 4, 2020 9:50 PM
->> To: ganqixin <ganqixin@huawei.com>; qemu-devel@nongnu.org;
->> qemu-trivial@nongnu.org
->> Cc: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; Zhanghailiang
->> <zhang.zhanghailiang@huawei.com>; Gerd Hoffmann
->> <kraxel@redhat.com>; thuth@redhat.com
->> Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb' category
->>
->> On 11/17/20 2:37 PM, ganqixin wrote:
->>>> -----Original Message-----
->>>> From: Philippe Mathieu-Daudé [mailto:philmd@redhat.com]
->>>> Sent: Monday, November 16, 2020 10:05 PM
->>>> To: ganqixin <ganqixin@huawei.com>; qemu-devel@nongnu.org;
->>>> qemu-trivial@nongnu.org; Marc-André Lureau
->>>> <marcandre.lureau@redhat.com>; thuth@redhat.com
->>>> Cc: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; Zhanghailiang
->>>> <zhang.zhanghailiang@huawei.com>; Gerd Hoffmann
->> <kraxel@redhat.com>;
->>>> Eduardo Habkost <ehabkost@redhat.com>
->>>> Subject: Re: [PATCH 09/13] u2f-passthru: put it into the 'usb'
->>>> category
->>>>
->>>> On 11/15/20 7:48 PM, Gan Qixin wrote:
->>>>> The category of the u2f-passthru device is not set, put it into the 'usb'
->>>>> category.
->>>>
->>>> I guess we discussed this with Thomas 1 or 2 years ago but I don't
->> remember.
->>>> I think it was about using set_bits() so devices can appear in
->>>> multiple categories.
->>>>
->>>> Gerd, do you know what is the point of the "usb" category for
->>>> management apps? This is a bus accepting multiple better categorized
->>>> devices (display, storage, input, network, sound).
->>>>
->>>> Unrelated but multiple devices are related to SECURITY.
->>>> Maybe it is time to introduce the DEVICE_CATEGORY_SECURITY?
->>>
->>> Hi, Philippe
->>> Thanks for your reply, but I'm not sure if it is appropriate to add a
->> security category to place this device.
->>> (Maybe it's because I don't know much about these device, I haven't
->>> find many safety-related devices in 'misc' category or uncategorized
->>> devices)
->>
->> What is the difference between 'misc' and 'uncategorized'?
-> 
-> In my opinion, devices that we forgot to classify will appear in "uncategorized" list, and devices that don't have a suitable category to choose will be put into "misc" category.
-
-That's right. User-creatable devices should have a category, and the
-uncategorized devices just have not been categorized yet.
-
-So thanks for tackling this, Gan Qixin!
-
- Thomas
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQYW5rYWogR3VwdGEgW21haWx0
+bzpwYW5rYWouZ3VwdGEubGludXhAZ21haWwuY29tXQ0KPiBTZW50OiBGcmlkYXksIERlY2VtYmVy
+IDQsIDIwMjAgMzoxMyBQTQ0KPiBUbzogZ2FucWl4aW4gPGdhbnFpeGluQGh1YXdlaS5jb20+DQo+
+IENjOiBRZW11IERldmVsb3BlcnMgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47DQo+IHFlbXUtdHJp
+dmlhbEBub25nbnUub3JnOyBDaGVucXVuIChrdWhuKQ0KPiA8a3Vobi5jaGVucXVuQGh1YXdlaS5j
+b20+OyB0aHV0aEByZWRoYXQuY29tOyBaaGFuZ2hhaWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hhaWxp
+YW5nQGh1YXdlaS5jb20+OyBNaWNoYWVsIFMgLiBUc2lya2luIDxtc3RAcmVkaGF0LmNvbT4NCj4g
+U3ViamVjdDogUmU6IFtQQVRDSCB2MiAwMS8xMl0gcGMtZGltbTogcHV0IGl0IGludG8gdGhlICdz
+dG9yYWdlJyBjYXRlZ29yeQ0KPiANCj4gID4gICAgICBtZGMtPmdldF9tZW1vcnlfcmVnaW9uID0N
+Cj4gcGNfZGltbV9tZF9nZXRfbWVtb3J5X3JlZ2lvbjsNCj4gPiA+ID4gICAgICBtZGMtPmZpbGxf
+ZGV2aWNlX2luZm8gPSBwY19kaW1tX21kX2ZpbGxfZGV2aWNlX2luZm87DQo+ID4gPiA+ICsgICAg
+c2V0X2JpdChERVZJQ0VfQ0FURUdPUllfU1RPUkFHRSwgZGMtPmNhdGVnb3JpZXMpOw0KPiA+ID4N
+Cj4gPiA+IEFueSByZWFzb24gd2h5IHBjLWRpbW0gd291bGQgYmUgaW4gdGhlIHN0b3JhZ2UgY2F0
+ZWdvcnk/DQo+IC4uLg0KPiA+IFRoYW5rcyBmb3IgeW91IHJlcGx5LiBBcyBmYXIgYXMgSSBrbm93
+LCBwYy1kaW1tIGlzIGEgZGltbSBkZXZpY2UgZm9yDQo+IG1lbW9yeSBob3RwbHVnLCBkZXNjcmli
+ZWQgYXMgYSAiRElNTSBtZW1vcnkgbW9kdWxlIiBpbiAiLWRldmljZQ0KPiBoZWxwIi4NCj4gPiBU
+aGlzIGRldmljZSBsb29rcyByZWxhdGVkIHRvIHN0b3JhZ2UsIHNvIEkgcHV0IGl0IGludG8gdGhl
+ICJzdG9yYWdlIg0KPiBjYXRlZ29yeSB0byBtYWtlIGl0IGVhc3kgdG8gZmluZC4gSSdtIG5vdCBz
+dXJlIGlmIHRoaXMgaXMgYXBwcm9wcmlhdGUsIGRvIHlvdQ0KPiBoYXZlIGFueSBiZXR0ZXIgaWRl
+YXM/DQo+IA0KPiBPLmsuIEkgc2VlIHN0b3JhZ2UgJiBtZW1vcnkgYXMgZGlmZmVyZW50IGRldmlj
+ZXMuIFNpbmNlIHdlIGRvbid0IGhhdmUgYW55DQo+IG1lbW9yeSBkZXZpY2UgdHlwZSBkZWZpbmVk
+LCBtYXliZSBpdHMgb2theSB0byBwdXQgaXQgaW4gTUlTQyBkZXZpY2UuDQoNCllvdSdyZSByaWdo
+dC4gTWF5YmUgSSBzaG91bGQgc2VuZCBhIHNlcGFyYXRlIHBhdGNoIHRvIGFkZCB0aGUgIm1lbW9y
+eSIgY2F0ZWdvcnkgYW5kIG1vdmUgdGhlIG1lbW9yeSBkZXZpY2UgZnJvbSAidW5jYXRlZ29yaXpl
+ZCIgYW5kICJtaXNjIiB0byAibWVtb3J5Ii4NCg0KVGhhbmtzLA0KR2FuIFFpeGluDQoNCj4gDQo+
+IFRoYW5rcywNCj4gUGFua2FqDQo=
 
