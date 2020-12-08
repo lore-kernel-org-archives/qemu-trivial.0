@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kmdaM-00081o-4Q
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Dec 2020 09:03:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49674)
+	id 1kmeS4-0000fl-7N
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Dec 2020 09:58:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kmdaF-0007zs-E0; Tue, 08 Dec 2020 09:03:15 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2826)
+ id 1kmeRx-0000bZ-Or; Tue, 08 Dec 2020 09:58:45 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2827)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kmdaB-00072Q-Rq; Tue, 08 Dec 2020 09:03:15 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cr21R3XDRzklwb;
- Tue,  8 Dec 2020 22:02:19 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Tue, 8 Dec 2020
- 22:02:53 +0800
+ id 1kmeRh-0001Iz-Fb; Tue, 08 Dec 2020 09:58:45 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cr3F714QwzkmjZ;
+ Tue,  8 Dec 2020 22:57:31 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Tue, 8 Dec 2020
+ 22:58:01 +0800
 From: Alex Chen <alex.chen@huawei.com>
-To: <eblake@redhat.com>, <vsementsov@virtuozzo.com>
+To: <fam@euphon.net>, <kwolf@redhat.com>, <mreitz@redhat.com>
 CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <qemu-block@nongnu.org>
-Subject: [PATCH v3] qemu-nbd: Fix a memleak in nbd_client_thread()
-Date: Tue, 8 Dec 2020 13:49:44 +0000
-Message-ID: <20201208134944.27962-1-alex.chen@huawei.com>
+Subject: [PATCH] block/nvme: Fix possible array index out of bounds in
+ nvme_process_completion()
+Date: Tue, 8 Dec 2020 14:44:52 +0000
+Message-ID: <20201208144452.91172-1-alex.chen@huawei.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -31,11 +32,11 @@ X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
  helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,104 +50,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Dec 2020 14:03:16 -0000
+X-List-Received-Date: Tue, 08 Dec 2020 14:58:50 -0000
 
-When the qio_channel_socket_connect_sync() fails
-we should goto 'out_socket' label to free the 'sioc' instead of
-goto 'out' label.
-In addition, there's a lot of redundant code in the successful branch
-and the error branch, optimize it.
+The range of 'cid' is [1, NVME_QUEUE_SIZE-1], so when 'cid' is equal to
+NVME_QUEUE_SIZE, it should be continued, otherwise it will lead to array
+index out of bounds when accessing 'q->reqs[cid-1]'
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Alex Chen <alex.chen@huawei.com>
-Signed-off-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
- qemu-nbd.c | 40 +++++++++++++++++-----------------------
- 1 file changed, 17 insertions(+), 23 deletions(-)
+ block/nvme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-nbd.c b/qemu-nbd.c
-index a7075c5419..ee2fbc4cdb 100644
---- a/qemu-nbd.c
-+++ b/qemu-nbd.c
-@@ -265,8 +265,8 @@ static void *nbd_client_thread(void *arg)
-     char *device = arg;
-     NBDExportInfo info = { .request_sizes = false, .name = g_strdup("") };
-     QIOChannelSocket *sioc;
--    int fd;
--    int ret;
-+    int fd = -1;
-+    int ret = EXIT_FAILURE;
-     pthread_t show_parts_thread;
-     Error *local_error = NULL;
- 
-@@ -278,26 +278,24 @@ static void *nbd_client_thread(void *arg)
-         goto out;
-     }
- 
--    ret = nbd_receive_negotiate(NULL, QIO_CHANNEL(sioc),
--                                NULL, NULL, NULL, &info, &local_error);
--    if (ret < 0) {
-+    if (nbd_receive_negotiate(NULL, QIO_CHANNEL(sioc),
-+                              NULL, NULL, NULL, &info, &local_error) < 0) {
-         if (local_error) {
-             error_report_err(local_error);
+diff --git a/block/nvme.c b/block/nvme.c
+index a06a188d53..3a2b3f5486 100644
+--- a/block/nvme.c
++++ b/block/nvme.c
+@@ -402,7 +402,7 @@ static bool nvme_process_completion(NVMeQueuePair *q)
+             q->cq_phase = !q->cq_phase;
          }
--        goto out_socket;
-+        goto out;
-     }
- 
-     fd = open(device, O_RDWR);
-     if (fd < 0) {
-         /* Linux-only, we can use %m in printf.  */
-         error_report("Failed to open %s: %m", device);
--        goto out_socket;
-+        goto out;
-     }
- 
--    ret = nbd_init(fd, sioc, &info, &local_error);
--    if (ret < 0) {
-+    if (nbd_init(fd, sioc, &info, &local_error) < 0) {
-         error_report_err(local_error);
--        goto out_fd;
-+        goto out;
-     }
- 
-     /* update partition table */
-@@ -311,24 +309,20 @@ static void *nbd_client_thread(void *arg)
-         dup2(STDOUT_FILENO, STDERR_FILENO);
-     }
- 
--    ret = nbd_client(fd);
--    if (ret) {
--        goto out_fd;
-+    if (nbd_client(fd) < 0) {
-+        goto out;
-     }
--    close(fd);
--    object_unref(OBJECT(sioc));
--    g_free(info.name);
--    kill(getpid(), SIGTERM);
--    return (void *) EXIT_SUCCESS;
- 
--out_fd:
--    close(fd);
--out_socket:
-+    ret = EXIT_SUCCESS;
-+
-+ out:
-+    if (fd >= 0) {
-+        close(fd);
-+    }
-     object_unref(OBJECT(sioc));
--out:
-     g_free(info.name);
-     kill(getpid(), SIGTERM);
--    return (void *) EXIT_FAILURE;
-+    return (void *) (intptr_t) ret;
- }
- #endif /* HAVE_NBD_DEVICE */
- 
+         cid = le16_to_cpu(c->cid);
+-        if (cid == 0 || cid > NVME_QUEUE_SIZE) {
++        if (cid == 0 || cid >= NVME_QUEUE_SIZE) {
+             warn_report("NVMe: Unexpected CID in completion queue: %"PRIu32", "
+                         "queue size: %u", cid, NVME_QUEUE_SIZE);
+             continue;
 -- 
 2.19.1
 
