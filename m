@@ -1,31 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kmedB-00082C-7O
+	id 1kmedB-00082W-DY
 	for mharc-qemu-trivial@gnu.org; Tue, 08 Dec 2020 10:10:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56274)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kmc7U-00056s-BS; Tue, 08 Dec 2020 07:29:28 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2883)
+ id 1kmc7U-00056u-GJ; Tue, 08 Dec 2020 07:29:28 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2882)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kmc7R-0007oZ-QF; Tue, 08 Dec 2020 07:29:28 -0500
+ id 1kmc7S-0007oU-7v; Tue, 08 Dec 2020 07:29:28 -0500
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CqzxK5p5Wz15Z1R;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CqzxK5dRcz15Z0n;
  Tue,  8 Dec 2020 20:28:37 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS404-HUB.china.huawei.com
  (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Tue, 8 Dec 2020
- 20:29:02 +0800
+ 20:29:01 +0800
 From: "zhouyang (T)" <zhouyang789@huawei.com>
 To: <alex.bennee@linaro.org>
 CC: <qemu-devel@nongnu.org>, <alex.chen@huawei.com>, <hunongda@huawei.com>,
  <qemu-trivial@nongnu.org>
-Subject: [PATCH 2/5] contrib: Fix some code style problems,
- ERROR: "foo * bar" should be "foo *bar"
-Date: Tue, 8 Dec 2020 20:21:31 +0800
-Message-ID: <20201208122134.3308101-3-zhouyang789@huawei.com>
+Subject: [PATCH 0/5]  Fix some style problems in contrib
+Date: Tue, 8 Dec 2020 20:21:29 +0800
+Message-ID: <20201208122134.3308101-1-zhouyang789@huawei.com>
 X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201208122134.3308101-1-zhouyang789@huawei.com>
-References: <20201208122134.3308101-1-zhouyang789@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -54,28 +51,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 08 Dec 2020 12:29:28 -0000
 
-I found some style problems while check the code using checkpatch.pl.
-This commit fixs the issue below:
-ERROR: "foo * bar" should be "foo *bar"
+I found some style problems while check the code using checkpatch.pl and fixed them, please review.
 
-Signed-off-by: zhouyang (T) <zhouyang789@huawei.com>
----
- contrib/plugins/howvec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+zhouyang (T) (5):
+  contrib: Don't use '#' flag of printf format
+  contrib: Fix some code style problems, ERROR: "foo * bar" should be
+    "foo *bar"
+  contrib: Add spaces around operator
+  contrib: space required after that ','
+  contrib: Open brace '{' following struct go on the same line
 
-diff --git a/contrib/plugins/howvec.c b/contrib/plugins/howvec.c
-index 6e602aaccf..2f892da17d 100644
---- a/contrib/plugins/howvec.c
-+++ b/contrib/plugins/howvec.c
-@@ -235,7 +235,7 @@ static void vcpu_insn_exec_before(unsigned int cpu_index, void *udata)
-     (*count)++;
- }
- 
--static uint64_t * find_counter(struct qemu_plugin_insn *insn)
-+static uint64_t *find_counter(struct qemu_plugin_insn *insn)
- {
-     int i;
-     uint64_t *cnt = NULL;
+ contrib/ivshmem-server/main.c |  2 +-
+ contrib/plugins/hotblocks.c   |  2 +-
+ contrib/plugins/hotpages.c    |  2 +-
+ contrib/plugins/howvec.c      | 19 +++++++++----------
+ contrib/plugins/lockstep.c    |  6 +++---
+ 5 files changed, 15 insertions(+), 16 deletions(-)
+
 -- 
 2.23.0
 
