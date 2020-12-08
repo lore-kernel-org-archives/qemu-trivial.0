@@ -1,45 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kmedC-00085l-Vj
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Dec 2020 10:10:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56304)
+	id 1kmfaB-0003om-4D
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Dec 2020 11:11:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kmc7W-0005Aw-Gj; Tue, 08 Dec 2020 07:29:30 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2884)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kmc7R-0007oj-UX; Tue, 08 Dec 2020 07:29:30 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CqzxK5yV5z15Z2x;
- Tue,  8 Dec 2020 20:28:37 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Tue, 8 Dec 2020
- 20:29:02 +0800
-From: "zhouyang (T)" <zhouyang789@huawei.com>
-To: <alex.bennee@linaro.org>
-CC: <qemu-devel@nongnu.org>, <alex.chen@huawei.com>, <hunongda@huawei.com>,
- <qemu-trivial@nongnu.org>
-Subject: [PATCH 1/5] contrib: Don't use '#' flag of printf format
-Date: Tue, 8 Dec 2020 20:21:30 +0800
-Message-ID: <20201208122134.3308101-2-zhouyang789@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201208122134.3308101-1-zhouyang789@huawei.com>
-References: <20201208122134.3308101-1-zhouyang789@huawei.com>
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmfa8-0003nA-MD
+ for qemu-trivial@nongnu.org; Tue, 08 Dec 2020 11:11:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53919)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmfa3-0003dO-Kz
+ for qemu-trivial@nongnu.org; Tue, 08 Dec 2020 11:11:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607443869;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oOjPU9eEQejohvf/b3oKHZOe5b6fc8hqAI7EwKDH3MQ=;
+ b=KyOud0yNXzpdRV5WyAstcRopQ37SiA4qeHTyg0Nq/QZalewlXx0+7mFfMSia8XkTHHHc0i
+ yXiOubQhOKTqvIcMN74yU6WP6y9ebrEEDoixzsrfy7M1GTFxwmENFOU6TCH0CD+//ZFoPh
+ 4IVRQ0CKTkzjaAFOMukbAA8r0cHFy7s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-133-9SXtwvojMnierkudWn6LhA-1; Tue, 08 Dec 2020 11:11:05 -0500
+X-MC-Unique: 9SXtwvojMnierkudWn6LhA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E0948014D9;
+ Tue,  8 Dec 2020 16:10:54 +0000 (UTC)
+Received: from gondolin (ovpn-113-5.ams2.redhat.com [10.36.113.5])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 251A060877;
+ Tue,  8 Dec 2020 16:10:47 +0000 (UTC)
+Date: Tue, 8 Dec 2020 17:10:46 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Gan Qixin <ganqixin@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ peter.maydell@linaro.org, thuth@redhat.com, zhang.zhanghailiang@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, kuhn.chenqun@huawei.com,
+ david@gibson.dropbear.id.au, Richard Henderson
+ <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org
+Subject: Re: [PATCH 3/3] s390x/cpu: Use timer_free() in the finalize
+ function to avoid memleaks
+Message-ID: <20201208171046.7919ecc6.cohuck@redhat.com>
+In-Reply-To: <20201204081209.360524-4-ganqixin@huawei.com>
+References: <20201204081209.360524-1-ganqixin@huawei.com>
+ <20201204081209.360524-4-ganqixin@huawei.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain; charset="y"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhouyang789@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 08 Dec 2020 10:10:18 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -51,90 +77,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Dec 2020 12:29:31 -0000
+X-List-Received-Date: Tue, 08 Dec 2020 16:11:16 -0000
 
-I found some style problems while check the code using checkpatch.pl.
-This commit fixs the misuse of '#' flag of printf format
+On Fri, 4 Dec 2020 16:12:09 +0800
+Gan Qixin <ganqixin@huawei.com> wrote:
 
-Signed-off-by: zhouyang (T) <zhouyang789@huawei.com>
----
- contrib/plugins/hotblocks.c | 2 +-
- contrib/plugins/hotpages.c  | 2 +-
- contrib/plugins/howvec.c    | 2 +-
- contrib/plugins/lockstep.c  | 6 +++---
- 4 files changed, 6 insertions(+), 6 deletions(-)
+> When running device-introspect-test, a memory leak occurred in the s390_cpu_initfn
+> function, this patch use timer_free() in the finalize function to fix it.
+> 
+> ASAN shows memory leak stack:
+> 
+> Direct leak of 3552 byte(s) in 74 object(s) allocated from:
+>     #0 0xfffeb3d4e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
+>     #1 0xfffeb36e6800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
+>     #2 0xaaad51a8f9c4 in timer_new_full qemu/include/qemu/timer.h:523
+>     #3 0xaaad51a8f9c4 in timer_new qemu/include/qemu/timer.h:544
+>     #4 0xaaad51a8f9c4 in timer_new_ns qemu/include/qemu/timer.h:562
+>     #5 0xaaad51a8f9c4 in s390_cpu_initfn qemu/target/s390x/cpu.c:304
+>     #6 0xaaad51e00f58 in object_init_with_type qemu/qom/object.c:371
+>     #7 0xaaad51e0406c in object_initialize_with_type qemu/qom/object.c:515
+>     #8 0xaaad51e042e0 in object_new_with_type qemu/qom/object.c:729
+>     #9 0xaaad51e3ff40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
+>     #10 0xaaad51910518 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
+>     #11 0xaaad51911918 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
+>     #12 0xaaad51911e48 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> ---
+> Cc: Thomas Huth <thuth@redhat.com>
+> ---
+>  target/s390x/cpu.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 
-diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
-index 37435a3fc7..4b08340143 100644
---- a/contrib/plugins/hotblocks.c
-+++ b/contrib/plugins/hotblocks.c
-@@ -63,7 +63,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
- 
-         for (i = 0; i < limit && it->next; i++, it = it->next) {
-             ExecCount *rec = (ExecCount *) it->data;
--            g_string_append_printf(report, "%#016"PRIx64", %d, %ld, %"PRId64"\n",
-+            g_string_append_printf(report, "0x%016"PRIx64", %d, %ld, %"PRId64"\n",
-                                    rec->start_addr, rec->trans_count,
-                                    rec->insns, rec->exec_count);
-         }
-diff --git a/contrib/plugins/hotpages.c b/contrib/plugins/hotpages.c
-index ecd6c18732..eacc678eac 100644
---- a/contrib/plugins/hotpages.c
-+++ b/contrib/plugins/hotpages.c
-@@ -88,7 +88,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-         for (i = 0; i < limit && it->next; i++, it = it->next) {
-             PageCounters *rec = (PageCounters *) it->data;
-             g_string_append_printf(report,
--                                   "%#016"PRIx64", 0x%04x, %"PRId64
-+                                   "0x%016"PRIx64", 0x%04x, %"PRId64
-                                    ", 0x%04x, %"PRId64"\n",
-                                    rec->page_address,
-                                    rec->cpu_read, rec->reads,
-diff --git a/contrib/plugins/howvec.c b/contrib/plugins/howvec.c
-index 3b9a6939f2..6e602aaccf 100644
---- a/contrib/plugins/howvec.c
-+++ b/contrib/plugins/howvec.c
-@@ -209,7 +209,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-              i++, counts = g_list_next(counts)) {
-             InsnExecCount *rec = (InsnExecCount *) counts->data;
-             g_string_append_printf(report,
--                                   "Instr: %-24s\t(%ld hits)\t(op=%#08x/%s)\n",
-+                                   "Instr: %-24s\t(%ld hits)\t(op=0x%08x/%s)\n",
-                                    rec->insn,
-                                    rec->count,
-                                    rec->opcode,
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 5aad50869d..7fd35eb669 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -134,7 +134,7 @@ static void report_divergance(ExecState *us, ExecState *them)
- 
-     /* Output short log entry of going out of sync... */
-     if (verbose || divrec.distance == 1 || diverged) {
--        g_string_printf(out, "@ %#016lx vs %#016lx (%d/%d since last)\n",
-+        g_string_printf(out, "@ 0x%016lx vs 0x%016lx (%d/%d since last)\n",
-                         us->pc, them->pc, g_slist_length(divergence_log),
-                         divrec.distance);
-         qemu_plugin_outs(out->str);
-@@ -144,7 +144,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-         int i;
-         GSList *entry;
- 
--        g_string_printf(out, "Δ insn_count @ %#016lx (%ld) vs %#016lx (%ld)\n",
-+        g_string_printf(out, "Δ insn_count @ 0x%016lx (%ld) vs 0x%016lx (%ld)\n",
-                         us->pc, us->insn_count, them->pc, them->insn_count);
- 
-         for (entry = log, i = 0;
-@@ -152,7 +152,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-              entry = g_slist_next(entry), i++) {
-             ExecInfo *prev = (ExecInfo *) entry->data;
-             g_string_append_printf(out,
--                                   "  previously @ %#016lx/%ld (%ld insns)\n",
-+                                   "  previously @ 0x%016lx/%ld (%ld insns)\n",
-                                    prev->block->pc, prev->block->insns,
-                                    prev->insn_count);
-         }
--- 
-2.23.0
+Thanks, applied.
 
 
