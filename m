@@ -1,98 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kn3jN-0001zr-1M
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Dec 2020 12:58:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49358)
+	id 1knKxj-0004wM-GA
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Dec 2020 07:22:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
- id 1kn3jL-0001yO-HM; Wed, 09 Dec 2020 12:58:23 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:33776
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dovmurik@linux.vnet.ibm.com>)
- id 1kn3jH-0004mz-OM; Wed, 09 Dec 2020 12:58:23 -0500
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 0B9HWPZJ050700; Wed, 9 Dec 2020 12:58:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=xhduCs2iMF0wJqHB93zgtCSLekNneR6CpGVSRCOx7OQ=;
- b=etn1K8Or2R1vlH5cnK5rOjpnAmaafPIfMjZwPP9ewoRw9GF0DKpGy/hOEixRwfC1fMQ5
- vIwojZU7fm88BKUMVQF/0kjywXEBZ8ZCXduWqak1wHznkdRSUSRDE7KUS2+D3mDWsaVq
- iMxN1q6MByNUQ3utz5XkU7LvpXbfKvll/fTw/Oc9EU8Q6CjWj/sO9dAuRsViBIg9wOLN
- Km7TRK3pF9BRYidr5j5FkLvzuvlFVmOwXBbb89pDgrlvdz8fd2twFbt3f5LnBesjp1xA
- P2pijU9DeeUBhI2ttFDbR599kIKDMT7mq4YPYSqXkDKinYfiwiSPVT3Vj2ziRsy+SPVM ZQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 35b1045455-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Dec 2020 12:58:16 -0500
-Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B9Htjjp146275;
- Wed, 9 Dec 2020 12:58:15 -0500
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 35b104544j-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Dec 2020 12:58:15 -0500
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0B9Hv9nE008216;
- Wed, 9 Dec 2020 17:58:13 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma06ams.nl.ibm.com with ESMTP id 3581fhmvxq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 09 Dec 2020 17:58:13 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 0B9HwB5x20381974
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 9 Dec 2020 17:58:11 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2EF9811C052;
- Wed,  9 Dec 2020 17:58:11 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 46F3711C04A;
- Wed,  9 Dec 2020 17:58:09 +0000 (GMT)
-Received: from [9.160.14.198] (unknown [9.160.14.198])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Wed,  9 Dec 2020 17:58:08 +0000 (GMT)
-Subject: Re: [PATCH] target/i386: tracing: format length values as hex
-To: qemu-devel@nongnu.org
-Cc: Brijesh Singh <brijesh.singh@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
-References: <20201103100745.160409-1-dovmurik@linux.vnet.ibm.com>
-From: Dov Murik <dovmurik@linux.vnet.ibm.com>
-Message-ID: <15956748-ce3b-1ff8-ba68-66d441b7b981@linux.vnet.ibm.com>
-Date: Wed, 9 Dec 2020 19:58:06 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1knKxh-0004sh-IG
+ for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 07:22:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26709)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1knKxg-0001Bj-55
+ for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 07:22:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607602939;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GsOY6eSUE7iGc2P0sKlZpXntqXervSpp6Fu+LhG2ITA=;
+ b=NGsQdwTH5gn04eiFrFJyFX05jybGH6IaRHDSf/j5R2N0vmtsAxUNW1nH2T7pyTSYcAIOzk
+ usHX2ghD+KZMxiy6sNHF6LFHLCNq3TgvUslolOrfvIFhKBs2pyvwa0V+u47slh2WpvX5Fz
+ 9GRPoloG6eJNoEhz15R+R5zmY2B8xiE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-bgJ6nnWKMLKXr2vJiOSV7g-1; Thu, 10 Dec 2020 07:22:15 -0500
+X-MC-Unique: bgJ6nnWKMLKXr2vJiOSV7g-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 80804BBEE0;
+ Thu, 10 Dec 2020 12:22:14 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-94.ams2.redhat.com
+ [10.36.112.94])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 49E355275D;
+ Thu, 10 Dec 2020 12:22:14 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 8157E9D92; Thu, 10 Dec 2020 13:22:13 +0100 (CET)
+Date: Thu, 10 Dec 2020 13:22:13 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Darrell Walisser <darrell.walisser@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] sdl2: Add extra mouse buttons
+Message-ID: <20201210122213.astxip4mazb7qotj@sirius.home.kraxel.org>
+References: <CAPDU3-+Q+7zC8e9pmXuaMqmefP_9jrg4kEFMH_=gQZLGskHkjA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201103100745.160409-1-dovmurik@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.343, 18.0.737
- definitions=2020-12-09_14:2020-12-09,
- 2020-12-09 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 phishscore=0
- adultscore=0 priorityscore=1501 spamscore=0 suspectscore=0 bulkscore=0
- malwarescore=0 lowpriorityscore=0 mlxlogscore=999 impostorscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2012090120
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=dovmurik@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+In-Reply-To: <CAPDU3-+Q+7zC8e9pmXuaMqmefP_9jrg4kEFMH_=gQZLGskHkjA@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -105,45 +71,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Dec 2020 17:58:24 -0000
+X-List-Received-Date: Thu, 10 Dec 2020 12:22:21 -0000
 
-ping
+  Hi,
 
-Adding CC qemu-trivial.
+> @@ -275,6 +275,8 @@ static void sdl_send_mouse_event(struct
+> sdl2_console *scon, int dx, int dy,
 
-This already got one R-b:
-https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg00525.html
+Patch is corrupted (mailer wrapped the line).
+Can you resend with git send-email?
 
--Dov
+thanks,
+  Gerd
 
-
-On 03/11/2020 12:07, Dov Murik wrote:
-> Three trace events had a literal "0x" prefix but the 'len' values were
-> formatted in decimal base.  Keep the prefix and format the numbers as
-> hex, as is usually the case for length of memory regions.
-> 
-> Signed-off-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
-> ---
->   target/i386/trace-events | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/target/i386/trace-events b/target/i386/trace-events
-> index 789c700d4a..65c9b0fdda 100644
-> --- a/target/i386/trace-events
-> +++ b/target/i386/trace-events
-> @@ -8,10 +8,10 @@ kvm_x86_update_msi_routes(int num) "Updated %d MSI routes"
-> 
->   # sev.c
->   kvm_sev_init(void) ""
-> -kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zu"
-> -kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zu"
-> +kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zx"
-> +kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zx"
->   kvm_sev_change_state(const char *old, const char *new) "%s -> %s"
->   kvm_sev_launch_start(int policy, void *session, void *pdh) "policy 0x%x session %p pdh %p"
-> -kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIu64
-> +kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIx64
->   kvm_sev_launch_measurement(const char *value) "data %s"
->   kvm_sev_launch_finish(void) ""
-> 
 
