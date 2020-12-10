@@ -1,77 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1knQDu-0000vQ-GU
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Dec 2020 12:59:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59908)
+	id 1knQFf-0001pI-KY
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Dec 2020 13:01:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1knQDs-0000v1-Mm
- for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 12:59:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43580)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1knQFb-0001lm-Jv
+ for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 13:01:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33109)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1knQDq-00009y-Eh
- for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 12:59:24 -0500
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1knQFF-0000V1-Ql
+ for qemu-trivial@nongnu.org; Thu, 10 Dec 2020 13:01:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607623161;
+ s=mimecast20190719; t=1607623245;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=/Ud3KxDqUBdjOZUtEIZXpH5CF1Q02Z/msk2wmjc+8dE=;
- b=XZp4qBLuUvnOLRvaT9KHl8k4tsxgPcUVflavjjiPZBuOR4g+V+RAy01EHyUF5XH13VS9XL
- DPASpibXKxZr95S9F8Cc0SATUss6hMiAEheI5CdRi20kfmZyLwGvunzjI3JzCakYWH6lcs
- AX6eseYnEaIPez+zonAYyFTtuU0vsOM=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-485-PFuZToOJMlOZTbFsrM1dWA-1; Thu, 10 Dec 2020 12:59:19 -0500
-X-MC-Unique: PFuZToOJMlOZTbFsrM1dWA-1
-Received: by mail-wm1-f69.google.com with SMTP id r1so2319869wmn.8
- for <qemu-trivial@nongnu.org>; Thu, 10 Dec 2020 09:59:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/Ud3KxDqUBdjOZUtEIZXpH5CF1Q02Z/msk2wmjc+8dE=;
- b=nY5UZuJIyDia4zbjIQaMDlFGrN2v7fGgbZoblZ7RM72Tgf4wWfVa4uSVjXHtrj+g3X
- UL/P/blyrWX/Oi9tMmTShj7eZ22jtxZm9eCt6+qDfXO6xYku65ePPk1/59hz+eUl+mpt
- 3pt3rVBSPv5G8Vm6TWio6jukLTo9U7A6AJCCcgpwoDPHlCAQqNl7iImpcIjNgZ0z0eO8
- fpDXV+5sGowMEbY0dU34yEp3JzoFcSteSaSlFWkRp8mtyMBFc70fpLJviqIg38RRibGP
- DNtylVOAi0pXCJD3EJOmw4buJWomaT6Xy11KZAhxVU9avxmXf8+OSEPFGhjZVVJAT5KX
- 0NCg==
-X-Gm-Message-State: AOAM530/7MXCp/6E9aYV699LzmTpm3ub2Pj7tVgtKvd7TBByRomVFALd
- PPtCgf0HYSHZPr9R4QeV6lTpqj8RVavxS4iC2FYtzYRCyJZPsbrHsYZSjcU3gLlAesgcEebOplK
- RitLba9qkfIJJvQsSCg==
-X-Received: by 2002:a7b:cb82:: with SMTP id m2mr9265012wmi.75.1607623158450;
- Thu, 10 Dec 2020 09:59:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzEQiDzySAPyn/08D+Jwn9LrpXnRXpJUua0gftvYcLqvx4RatZX0RndEb4S2ie3TXWMMIZUgQ==
-X-Received: by 2002:a7b:cb82:: with SMTP id m2mr9264989wmi.75.1607623158220;
- Thu, 10 Dec 2020 09:59:18 -0800 (PST)
-Received: from x1w.redhat.com (101.red-88-21-206.staticip.rima-tde.net.
- [88.21.206.101])
- by smtp.gmail.com with ESMTPSA id o74sm13298630wme.36.2020.12.10.09.59.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Dec 2020 09:59:17 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [RFC PATCH] virtio: Only display errors if GUEST_ERROR is enabled
-Date: Thu, 10 Dec 2020 18:59:16 +0100
-Message-Id: <20201210175916.187273-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ in-reply-to:in-reply-to:references:references;
+ bh=eEv02TkJ3ZxJp4sNOjbr3fw7o9eG8eOgMJNISH+HE7A=;
+ b=af1E26OiXyL64Yb3yaIdW9Uywzlj5UnWNuw57yPnFpHCvgrmRNAR8nmSSHdhh1CYnSTckG
+ WA6nR+nbPQ+yT8PuZkNXDDZH0gzApl/kdwETEmvq3pjlG1y3jNL2RMILGXlOuAoRayfw4a
+ 7qQtTcN0ZC03JIOc403dVjWa1TnDE7c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-557-dIxifL-nO2ueqh8tL92yAg-1; Thu, 10 Dec 2020 13:00:41 -0500
+X-MC-Unique: dIxifL-nO2ueqh8tL92yAg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B8C8835DE4;
+ Thu, 10 Dec 2020 18:00:40 +0000 (UTC)
+Received: from work-vm (ovpn-113-66.ams2.redhat.com [10.36.113.66])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BE65E60BFA;
+ Thu, 10 Dec 2020 18:00:13 +0000 (UTC)
+Date: Thu, 10 Dec 2020 18:00:10 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Alex Chen <alex.chen@huawei.com>
+Cc: stefanha@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] virtiofsd: Fix potential NULL pointer dereference in
+ virtio_send_msg()
+Message-ID: <20201210180010.GG3629@work-vm>
+References: <20201210151426.89244-1-alex.chen@huawei.com>
 MIME-Version: 1.0
+In-Reply-To: <20201210151426.89244-1-alex.chen@huawei.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,35 +72,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Dec 2020 17:59:24 -0000
+X-List-Received-Date: Thu, 10 Dec 2020 18:01:11 -0000
 
-Do not display virtio guest errors until the user request it.
+* Alex Chen (alex.chen@huawei.com) wrote:
+> The 'ch' will be NULL in the following stack:
+> send_notify_iov()->fuse_send_msg()->virtio_send_msg(),
+> so we should check 'ch' is valid before dereferencing it
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/virtio/virtio.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+Please check, but I don't think we can currently hit this because
+we never call send_notify_iov - it's currently called by
+fuse_lowlevel_notify_inval_entry, inval_inode, and
+fuse_lowlevel_notify_poll -
+but I don't think those are called anywhere.
 
-diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-index eff35fab7ce..bde0d31c5d9 100644
---- a/hw/virtio/virtio.c
-+++ b/hw/virtio/virtio.c
-@@ -3622,9 +3622,11 @@ void GCC_FMT_ATTR(2, 3) virtio_error(VirtIODevice *vdev, const char *fmt, ...)
- {
-     va_list ap;
- 
--    va_start(ap, fmt);
--    error_vreport(fmt, ap);
--    va_end(ap);
-+    if (qemu_loglevel_mask(LOG_GUEST_ERROR)) {
-+        va_start(ap, fmt);
-+        error_vreport(fmt, ap);
-+        va_end(ap);
-+    }
- 
-     if (virtio_vdev_has_feature(vdev, VIRTIO_F_VERSION_1)) {
-         vdev->status = vdev->status | VIRTIO_CONFIG_S_NEEDS_RESET;
+In that case, probably the best fix is to remove those until we
+put notify back in.
+
+Dave
+
+> ---
+>  tools/virtiofsd/fuse_virtio.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+> index 623812c432..31b2187a15 100644
+> --- a/tools/virtiofsd/fuse_virtio.c
+> +++ b/tools/virtiofsd/fuse_virtio.c
+> @@ -205,6 +205,8 @@ static void copy_iov(struct iovec *src_iov, int src_count,
+>  int virtio_send_msg(struct fuse_session *se, struct fuse_chan *ch,
+>                      struct iovec *iov, int count)
+>  {
+> +    assert(ch);
+> +
+>      FVRequest *req = container_of(ch, FVRequest, ch);
+>      struct fv_QueueInfo *qi = ch->qi;
+>      VuDev *dev = &se->virtio_dev->dev;
+> -- 
+> 2.19.1
+> 
 -- 
-2.26.2
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
