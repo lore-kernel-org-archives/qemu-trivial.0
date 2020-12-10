@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1knN0Q-0004aA-5s
+	id 1knN0Q-0004c6-OM
 	for mharc-qemu-trivial@gnu.org; Thu, 10 Dec 2020 09:33:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37696)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <darrell.walisser@gmail.com>)
- id 1knN0L-0004WA-1x; Thu, 10 Dec 2020 09:33:13 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:40822)
+ id 1knN0L-0004WB-AN; Thu, 10 Dec 2020 09:33:14 -0500
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:35037)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <darrell.walisser@gmail.com>)
- id 1knN0J-00018P-Ll; Thu, 10 Dec 2020 09:33:12 -0500
-Received: by mail-io1-xd43.google.com with SMTP id r9so5712961ioo.7;
+ id 1knN0J-00018M-Lu; Thu, 10 Dec 2020 09:33:13 -0500
+Received: by mail-io1-xd44.google.com with SMTP id i9so5718047ioo.2;
  Thu, 10 Dec 2020 06:33:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:to:from:cc:subject:message-id:mime-version;
  bh=l+WiHgdU4xiBBY9SYTWama7q6740QDxFaUE2NyHI0O8=;
- b=lA8cvPywlGkvrjGCg2b4WJPzr2XygG5IaqH6rWKvJB8GQfGBgTJ3b5JCoBdxf3vTX/
- CP/YlcOp5Oq3dLK2e48u5w7pogr8QTyKgaUN1e9QyBixd892VmwvTWJQTRoeXK5iUHyS
- yP2prEb1jgkQy49OeInNcgxo3xU+Z9xWPT7ETbBpLBqhmK3JshgIN8zwBhgky5pBYf6R
- vwKLYJw/Z01Edxzh9QiPnd/tmdjGnQA9wtzTJFS2kHzkaCGtSfNreG8hbsaNzzFD6VMh
- iIgcSPMb4vcWHV57U3AHWByHyEZ8i4DwX3wkitEw8EelhT9EQEu8cgu0K2I4sv5yoFGz
- NhTA==
+ b=uIHn+FNXEDPBS5aKnRimMNEuzS9dmi83EPaP7L9BOtGaLAJY8CfDqnukS80JU60MbE
+ tyf7sG2XaNFtTeRVOaecFObhw2fNCGQEcCOHuF2YfBgLc7CuY8WvwUwn4bnkBr1k/epo
+ e0dUDcQLRhMVlR6rAY182+DIquGNEanidT2Yr82BRbirHnfGFBGkcuHIt6mZ9YQhCX48
+ PAf4QgXYSEQF8OZ49ojSlWeyMY2C5ENzubFTW3VmkbQ5mRcQt6bAZ+Aj5rlCNQT2G2vd
+ +I6lw9NF3NimDZMOrbwcjh3ZIpEGnLEltx+1YNJJXRrf0gZ2O8lPyw0z0yzOcPrdcYKL
+ SpCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:to:from:cc:subject:message-id:mime-version;
  bh=l+WiHgdU4xiBBY9SYTWama7q6740QDxFaUE2NyHI0O8=;
- b=gLqwX1mAiSf4aw2sJvJasvlsKQnbqQWo+XY//CrSJtYsNnzbkrFgs7hir9EM18lnFI
- DvGrTRCuTeFAjC/jBSdLBrtpLbhIdLB7SmCup6/830nPE1kDU1HclbZGt9i4mE2GSgJa
- 2/xXxeyhTmWzsxS7Xa7h5r+C2uudh3itVzQebuoNqYm/Ep0Y8NMG8vD6drEEx0uK9ycc
- SK4BVidFMSD6wbRYPFXgeHwIxJ8F0jeQAfW6bd/cj1PTxn5WkZ7+H7PA51AmxWpUpwzL
- b/gGhG3q9Z7Ph/dWKe10Z8byA4PU1cqIUFusAbAJjaOC6CmuszFVsa7c7TiMAueELuzP
- /eSw==
-X-Gm-Message-State: AOAM530OJXltAaysjW8/UT6dXt3YaB1gx8BNnDAFjFCjICEJL9WT7Ygf
- J3YT5SftArB1OP91k2Ub8G1gYPDXRMo=
-X-Google-Smtp-Source: ABdhPJxaDOotVnmCO2Z0Dz41/GYeWschKU8/mB7hTDTVhopRSuEID1LVZkgoRV0VwZMyneGD6T9ULw==
-X-Received: by 2002:a6b:b5d2:: with SMTP id e201mr5150541iof.111.1607610788652; 
+ b=RUnR0RyReu3ciZ2y/8cRCp7XObPhXdpI1/45T127XOkHadHGW/fhhMPWGBDiP0Fnrj
+ LDiH3OVFmOVZd5FDloRZXLXMLyIniyILLrKLDFWki0O0gXcbIp3fdD7BCY42d0kccMYg
+ Ns7IiV3udT4eWfbEV2Nfh17JZJD8wjOfLmVaZbMXe5hGjYUKlWltdG9kvcsXRqzFOIkk
+ viSAjuWJmkzfp/CJHLfb5THqp7Gpxg9PGpGPT9DQMPTr5GqsU4n49kO1pRudmWUJ5NDy
+ Y6Um417azppB5qas0ZxxggrKm3xUYSW/a5PnDyYv2OHoWwF4/hZkJlcH+hvYHe2QzhKN
+ Pr7g==
+X-Gm-Message-State: AOAM530hsQsza5/y+xBnAysUKrkfnfA/nVGEj8P0gC9IK32NRLrMhY1U
+ 1wSHhWD2WyBjwyc/L/gSya8l3yZURxc=
+X-Google-Smtp-Source: ABdhPJw1kFDhMc8AsFFp89+Pi81h1P5LAhpmaldo2Q1UkXM/6sXc8DhtokJO5ozOfuWSzkSrkHVegw==
+X-Received: by 2002:a02:cc54:: with SMTP id i20mr9403523jaq.136.1607610788305; 
  Thu, 10 Dec 2020 06:33:08 -0800 (PST)
 Received: from ubuntu ([74.119.146.240])
- by smtp.gmail.com with ESMTPSA id t16sm3443019ilb.50.2020.12.10.06.33.07
+ by smtp.gmail.com with ESMTPSA id s1sm2698967iot.0.2020.12.10.06.33.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 10 Dec 2020 06:33:07 -0800 (PST)
 Date: Thu, 10 Dec 2020 14:33:06 +0000
@@ -44,20 +44,20 @@ To: qemu-devel@nongnu.org
 From: Darrell Walisser <darrell.walisser@gmail.com>
 Cc: qemu-trivial@nongnu.org
 Subject: [PATCH] sdl2: Add extra mouse buttons
-Message-ID: <GNUALCfDBqhCUvLwBNJaKqxcPewMtlqCnixk8xTrgI@ubuntu>
+Message-ID: <XXgAoOzljr9denOsyerHO3XbEkdTY0oL7WLHkZopu9w@ubuntu>
 X-Priority: 1
 X-Mailer: PHPMailer 6.1.3 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=darrell.walisser@gmail.com; helo=mail-io1-xd43.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=darrell.walisser@gmail.com; helo=mail-io1-xd44.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,7 +70,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Dec 2020 14:33:15 -0000
+X-List-Received-Date: Thu, 10 Dec 2020 14:33:17 -0000
 
 Allows guest to receive mouse buttons 4 and 5, aka "SIDE" button
 and "EXTRA" button
