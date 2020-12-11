@@ -1,73 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1knkcc-0001fM-Fy
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2020 10:46:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59024)
+	id 1knkfH-0004eW-Hq
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2020 10:49:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1knkcZ-0001bQ-MW; Fri, 11 Dec 2020 10:46:16 -0500
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:35631)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knkfD-0004ce-TM
+ for qemu-trivial@nongnu.org; Fri, 11 Dec 2020 10:48:59 -0500
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:36217)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1knkcU-0004qk-Tx; Fri, 11 Dec 2020 10:46:15 -0500
-Received: by mail-ej1-x643.google.com with SMTP id f23so12975497ejk.2;
- Fri, 11 Dec 2020 07:46:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ans4/Rqn96DP2m3wNK4hs/XKtgakap+FCe9+oTP0ODY=;
- b=L9Kc6yvwcwg3akoS+XqcJL9se/+k9VCYP8xvWsxrHmFv2jmHbhGomQap2/LZ7x5HuH
- trjCDi1L6vgcJ4i3DUJGS97Fn30DbKJXCbPRBSLWjR8ZkObyjg1YwZuUbNhZt/n7+KJO
- G6HYdS6zyP2wsNB0QzMMi+fNKDRDzVflAYmmeOwXTTXlJUHXaM0VfkfuXjCSsWBGt8ul
- mkDlbh4ho4tYnlDV9mxvZ7rZAtXxMVZgkGl1UrMWa89Qrm6fcnANsbnWnO8GAVrDXHZq
- Pp6ZNPCI9wQOcrl/L+3yJ8BiprIraHqH8+loYmy49S/zOT+UpgIkvbyQDwZlhzObQI6O
- P2Ow==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knkfA-0005sV-Qz
+ for qemu-trivial@nongnu.org; Fri, 11 Dec 2020 10:48:59 -0500
+Received: by mail-ej1-x641.google.com with SMTP id lt17so12979424ejb.3
+ for <qemu-trivial@nongnu.org>; Fri, 11 Dec 2020 07:48:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=o8HS7+IP4fCB/697KrqbToVlY2QnDh2aRoTVegTOLog=;
+ b=QUQsmgL+aM1wJcvfqUNVi78K3d7Ize+HqhM66f7EyCvdpm7bzNyNYk/aEihuwyc2BB
+ F0FboP7o9rZ7TbE4H6vjUSD45Wf1iNL3CMwo8h5gZRboMEIHZN+Fsf3WRW6bCMBZujdm
+ e4xVyGjoHF3Ph8xIT6rVbVYXDb8yhJ6pwOxSZGaHcepIRtbcszHfMo7ZaIX1BUAAtvlC
+ THHH7px41KXU/zo7KEuzaxZ2raW1xFZDfthi8NMbmgPlCgizwBUAO536laA7Cz/L5CWu
+ 00YUJpQsfF8qCfvoNoWNQrZEPbXy4gyV6HdYPR4NPbeGfKDYHQ6jbnwd9/GxmpgZS3uF
+ OK0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=ans4/Rqn96DP2m3wNK4hs/XKtgakap+FCe9+oTP0ODY=;
- b=ZBRWPDnlHIT/IBTR1eyrCvrkf/lShQClLDzf8Ey1aNKscrlsmtKFkiH3ACcmk2pzgz
- 76SeAy+jMSMjUQIWcO21eV6NB75pzL85s+3OyBA/XS3q3yjbLxtJEX9PFAkYcmzBWsnr
- M50O2fk8qwCuJ0fZ3bNFQJ/Trh3SazX6jER63eN9mAt4cJgO0jU54HuKfh8dMITRQUbI
- JYLh47hou8phd5RPeUrNgKzzBxCIMc7Gu0Eu3W6P5HjF+Yk5AYGoqPVIm7mNbtzSK7m0
- elgUj2j8phChg6nhboxe9aWjBwTMymenLUzmYgis+JmEJKQiN1/tdqEJvbGccVckmbR9
- X/Mw==
-X-Gm-Message-State: AOAM530buM78R3JVbfEakmJt5e1w91NaB9Pf+zriEaulGbF+OzM1CEPw
- SagPTnS5okZqMmIyQXH0cP65RzazHEc=
-X-Google-Smtp-Source: ABdhPJyOyWXfnDf7kYcsidnRYaSTbS66V6agqASMmBEbVI5hufVsv1eSHWirN+7n8HrzUz8bVItKbA==
-X-Received: by 2002:a17:906:5e0d:: with SMTP id
- n13mr3621364eju.500.1607701567815; 
- Fri, 11 Dec 2020 07:46:07 -0800 (PST)
-Received: from x1w.redhat.com (101.red-88-21-206.staticip.rima-tde.net.
- [88.21.206.101])
- by smtp.gmail.com with ESMTPSA id m7sm7964872eds.73.2020.12.11.07.46.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Dec 2020 07:46:07 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Andrzej Zaborowski <balrogg@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/rtc/twl92230: Add missing 'break'
-Date: Fri, 11 Dec 2020 16:46:05 +0100
-Message-Id: <20201211154605.511714-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=o8HS7+IP4fCB/697KrqbToVlY2QnDh2aRoTVegTOLog=;
+ b=OD9e10VnqhaW1BhSd4v1uPihC1/rO3A2xk4PXVrhVzkga32gh31cihUX1Cr4f4ltwh
+ fRXQl4dEodFioxYvm+SRPHk8ZrTa2QK5naKHxSLcOGepnYiIwOlwzC6JPFrEXwF+bnFM
+ YKPCGR9Knam7EPhskhjzS1RfkYHMtOMaQcMPXtw8spunbbbug9gY6DgGa/xPgjwDjWkX
+ 4dR5ygiMZyB93Oy0QaGq8LAjmoFbvNERWJzrGKrHvC+Dj2XZFC0MZ/kLu4MU0Hzsg+/v
+ fW0jIc6wZ2x+A2LW649o8iIcEdIkC3K0kRhjhGoIl7hIl+dCmwEc+nBNchsQ/Aj0zz1n
+ fEzQ==
+X-Gm-Message-State: AOAM530s+QHy02xRLqy3hUlpVyp+7zKTfG+P40w5kHymfISxDnSanOT7
+ KsCfElo8V8xbWT4kIftWEUC1oOv5Y6EGC8jmQ9pqbg==
+X-Google-Smtp-Source: ABdhPJxTYAbIpQdoZByVxXJF2HKKruXAbGNQbPKFhvvj3f2H01Oncg+741dYm0iNF4n0/900sPBwl/r1JSWsSKgKEhs=
+X-Received: by 2002:a17:906:1151:: with SMTP id
+ i17mr11784274eja.250.1607701732526; 
+ Fri, 11 Dec 2020 07:48:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x643.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+References: <20201211154605.511714-1-f4bug@amsat.org>
+In-Reply-To: <20201211154605.511714-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 11 Dec 2020 15:48:41 +0000
+Message-ID: <CAFEAcA-uv+5yoPNRDY0n69Amhqi_LiamVoBAP-Ui7yD1gGXYWQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/rtc/twl92230: Add missing 'break'
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ Andrzej Zaborowski <balrogg@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,37 +75,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Dec 2020 15:46:16 -0000
+X-List-Received-Date: Fri, 11 Dec 2020 15:49:00 -0000
 
-Add missing 'break' to fix:
+On Fri, 11 Dec 2020 at 15:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> Add missing 'break' to fix:
+>
+>   hw/rtc/twl92230.c: In function =E2=80=98menelaus_write=E2=80=99:
+>   hw/rtc/twl92230.c:713:5: error: label at end of compound statement
+>     713 |     default:
+>         |     ^~~~~~~
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> I noticed Thomas "Compile QEMU with -Wimplicit-fallthrough" series
+> and remembered this old patch.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/rtc/twl92230.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-  hw/rtc/twl92230.c: In function ‘menelaus_write’:
-  hw/rtc/twl92230.c:713:5: error: label at end of compound statement
-    713 |     default:
-        |     ^~~~~~~
+I guess the compiler doesn't care about missing 'break' in
+the last case in a switch statement. But I think putting in
+the 'break' is better style anyway.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-I noticed Thomas "Compile QEMU with -Wimplicit-fallthrough" series
-and remembered this old patch.
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/rtc/twl92230.c | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
-index f838913b378..28656cb0e59 100644
---- a/hw/rtc/twl92230.c
-+++ b/hw/rtc/twl92230.c
-@@ -714,6 +714,7 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
- #ifdef VERBOSE
-         printf("%s: unknown register %02x\n", __func__, addr);
- #endif
-+        break;
-     }
- }
- 
--- 
-2.26.2
-
+thanks
+-- PMM
 
