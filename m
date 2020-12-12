@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ko9c4-0004Tn-Fc
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Dec 2020 13:27:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33498)
+	id 1koB2t-0005tk-2S
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Dec 2020 14:59:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ko9c3-0004Q1-3Z; Sat, 12 Dec 2020 13:27:23 -0500
-Received: from mail-yb1-f193.google.com ([209.85.219.193]:33087)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ko9bu-00051L-Fo; Sat, 12 Dec 2020 13:27:19 -0500
-Received: by mail-yb1-f193.google.com with SMTP id o144so10855314ybc.0;
- Sat, 12 Dec 2020 10:27:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=SGxLZprnZ9I9eN6E8C93gAmx4qCCNevo43IarZetRkY=;
- b=RUJG4Eh0o/0yQS+wRB9G9NZ0Fs1DTGGOp+93V6YfnfG+i40e8AmcYBdoZrP8aWZHqs
- UA49JhNNPLWh3ZJE8jTHJ/h7cN0cTRFyQXjddVTUH8FF69G+su7Vk4LOeJhOCA3q91+g
- h7WC1shfprsJn7VH2S//7amTncq3zntMSYjxiY68zwP8Tn0YK+RQVht6uXcbLa1+otNJ
- FR7mfmppy+8sEZ7PDJw9WEdsOaqaTe9QRcyfU5QU9jrlSopHtCIJKuHtO6PW3/GUirQV
- NY2Pvh/Hei1++SvEGDMC5vdSTjboyHrnkZhB7KTEQuZYQ4CDSXXTLZFOgDHIOYPyPq4p
- AOSQ==
-X-Gm-Message-State: AOAM533nfN37bmXKcXq6ddfrShGdQ+XsnPZoRIU+lJs3wg1Fx32DKbyj
- wUDBomCKc0JkSi7ND9BQi62ZVRYSyrS/66+E7sBrs7wl9os=
-X-Google-Smtp-Source: ABdhPJyaWMr9iZLHmrwE2HeCkk20ZEfA+/aYnIvHXT7icD/PVF1wrWQJ7CWacKMHfI0H7DX4DDZkqKsIt1k+9mJ+zWM=
-X-Received: by 2002:a4a:9cc7:: with SMTP id d7mr14405359ook.8.1607795830665;
- Sat, 12 Dec 2020 09:57:10 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koB2j-0005sE-MG; Sat, 12 Dec 2020 14:59:02 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:33485)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koB2Z-0004xo-KK; Sat, 12 Dec 2020 14:59:01 -0500
+Received: from [192.168.100.1] ([82.252.152.214]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MiaLn-1k9us73ZwN-00fiUk; Sat, 12 Dec 2020 20:58:29 +0100
+Subject: Re: [PATCH V2 08/14] m68k/: fix some comment spelling errors
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ David Edmondson <david.edmondson@oracle.com>,
+ zhaolichang <zhaolichang@huawei.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 References: <20201009064449.2336-1-zhaolichang@huawei.com>
  <20201009064449.2336-9-zhaolichang@huawei.com>
  <f790ec0a-1f0d-90fd-f597-20fddad9a60c@vivier.eu>
-In-Reply-To: <f790ec0a-1f0d-90fd-f597-20fddad9a60c@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Sat, 12 Dec 2020 18:56:59 +0100
-Message-ID: <CAAdtpL4dxKYxu=W3zboCaOuAiJeiV1SzOnPXXLxtoX_BkW7sow@mail.gmail.com>
-Subject: Re: [PATCH V2 08/14] m68k/: fix some comment spelling errors
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: zhaolichang <zhaolichang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- David Edmondson <david.edmondson@oracle.com>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.219.193;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-yb1-f193.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
+ <CAAdtpL4dxKYxu=W3zboCaOuAiJeiV1SzOnPXXLxtoX_BkW7sow@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <f14ca245-4bc4-5d19-a342-2dbcd35470b1@vivier.eu>
+Date: Sat, 12 Dec 2020 20:58:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAAdtpL4dxKYxu=W3zboCaOuAiJeiV1SzOnPXXLxtoX_BkW7sow@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:0p0w8YVK1n7CPdKPaKpBQ0MAbLKHVbt1PujZNG9lmVNo5Vifs87
+ jE3CRxoK3eJ6Zr4Euelbbg4W/LOFJ0nUvLuZF/31dKpMqiqhPtzbo7i6n6WW1fzb9oT8NEY
+ fgm8gp6LIIJAHd6neqwwUwaRIxR/sxB4adpkPuPZR9bLAKijjn7MdJwsb0TptxsxX4eAYeO
+ Wu3OxZBWCnbwYRCCHMX+g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0/WavY6hGL0=:QDb1WNMaZCccqJVIET5Dci
+ CXX1wHtLvlup23mw9tqsGWJ2S6g4K2QUEFoaMQeRnH9Q5274iBrqhXtMxMTUCmTdKnM4WtZTK
+ Jrn/Ba7qNmBqIyYGi4UlAuNAK7YYD7hW3o1t6abTzTh4KGMPf2nolcVVd3NpOWO1TN9QIIEC3
+ /Fg25gAfj1ULxIf9zghxBaARI9jPQ6uZNG3XBmbgtT1V1Z7JILWcN6KT1OsOSV/nvnwpHZ40f
+ /O/gxMS8Geqqi6MM/rinphw806++M2GgFymrIAa6CDt3qqdFUofCx6FdvQMWlKYznW8+qe1Rx
+ /gzzC10MoS5GTNXeHW/7OnpC+XtVpvd1mMQ1cZsO+h4giP8j+of/NM3kyHvtj4x/LbSDGtzgy
+ JxzMlZm9SnMp0N5oCci4OBhzJxgEV3GsdByi3NCApIjpkIqKxUm+wfPfAH7SJnDRYpJCNKSKH
+ oRsKRRSbEg==
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,37 +64,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Dec 2020 18:27:23 -0000
+X-List-Received-Date: Sat, 12 Dec 2020 19:59:07 -0000
 
-Hi Laurent,
+Le 12/12/2020 à 18:56, Philippe Mathieu-Daudé a écrit :
+> Hi Laurent,
+> 
+> On Sat, Dec 12, 2020 at 6:11 PM Laurent Vivier <laurent@vivier.eu> wrote:
+>> Le 09/10/2020 à 08:44, zhaolichang a écrit :
+>>> I found that there are many spelling errors in the comments of qemu/target/m68k.
+>>> I used spellcheck to check the spelling errors and found some errors in the folder.
+>>>
+>>> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
+>>> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
+>>> Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
+> 
+> Do you mind replacing this line by:
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
 
-On Sat, Dec 12, 2020 at 6:11 PM Laurent Vivier <laurent@vivier.eu> wrote:
-> Le 09/10/2020 =C3=A0 08:44, zhaolichang a =C3=A9crit :
-> > I found that there are many spelling errors in the comments of qemu/tar=
-get/m68k.
-> > I used spellcheck to check the spelling errors and found some errors in=
- the folder.
-> >
-> > Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-> > Reviewed-by: David Edmondson <david.edmondson@oracle.com>
-> > Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
+Sorry, too late...
 
-Do you mind replacing this line by:
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Thanks,
-
-Phil.
-
-> > Reviewed-by: Laurent Vivier<laurent@vivier.eu>
-> > ---
-> >  target/m68k/translate.c | 16 ++++++++--------
-> >  1 file changed, 8 insertions(+), 8 deletions(-)
-> >
->
-> Applied to my m68k-for-6.0 branch
->
-> Thanks,
-> Laurent
->
+Laurent
 
