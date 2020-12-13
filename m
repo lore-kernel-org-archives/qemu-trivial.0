@@ -1,59 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koB7y-0001NI-I5
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Dec 2020 15:04:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44674)
+	id 1koTI2-0002hR-Lw
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 10:28:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1koB7p-0001KJ-TA; Sat, 12 Dec 2020 15:04:19 -0500
-Received: from mail-ot1-f49.google.com ([209.85.210.49]:33263)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1koB7m-0006tq-84; Sat, 12 Dec 2020 15:04:16 -0500
-Received: by mail-ot1-f49.google.com with SMTP id b18so11717545ots.0;
- Sat, 12 Dec 2020 12:04:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=iyrFjcoISVU2lOWc2JKH9leEi+k90i5G/Fhgdjh9bAo=;
- b=KCGZTETkNsFHUhgjFtfLph7Ek3gK4Ay1u05QD36j4UDAXE+dUpdl4ZGrT+rcl6zvLI
- ETTxaJx8p/pQHVreOptUkzuWXDqiQGCXLyT1R3/9LMls62aE1r8sFYgskckqkm5dyrYy
- +gmwnSbfeIO9fuMMmiVpOJgeDGf8a890+fC6fdtTgD9IBhYWHXuI/NlD4qfg7Oav4TW1
- 3wcOcK6k/5Brun3qwRZjtzB2DoUNWJDyavZgOacjkjiHZaIUBvclgRUrAdN71T2vpSjS
- i/sf9tUXOq7UtKIrkRfDiEnqMJf5CS6dglSN02T8F17Cs7JPsd9TmE0Sx/pAOx584E8D
- N3Bw==
-X-Gm-Message-State: AOAM532OCZfy0haEuwbpCscd8JypTugcUuKg13NMQvaQkAXknfxkn26N
- C3KwCOp1z6nddpKC/SeRq/khilMLu8F2GFar+Vo=
-X-Google-Smtp-Source: ABdhPJynmlz3iOLBXHvxmb5vJqcrbz3JjNBRKRn5GdGUc32s0kbW25D5rqpzne6HEq5gwG4dSfeirCJ6VLUQaTPDhwA=
-X-Received: by 2002:a9d:4b81:: with SMTP id k1mr14546919otf.371.1607803452655; 
- Sat, 12 Dec 2020 12:04:12 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koTHx-0002fo-5f; Sun, 13 Dec 2020 10:27:58 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:40541)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koTHv-0004DF-8r; Sun, 13 Dec 2020 10:27:56 -0500
+Received: from [192.168.100.1] ([82.252.152.214]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Mdf3x-1kFgdA2hrF-00ZcdW; Sun, 13 Dec 2020 16:27:41 +0100
+Subject: Re: [PATCH] target/i386: tracing: format length values as hex
+To: Dov Murik <dovmurik@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>
+References: <20201103100745.160409-1-dovmurik@linux.vnet.ibm.com>
+ <15956748-ce3b-1ff8-ba68-66d441b7b981@linux.vnet.ibm.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <db4631ee-8748-e7fd-8c19-7d2654fe00e3@vivier.eu>
+Date: Sun, 13 Dec 2020 16:27:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <20201009064449.2336-1-zhaolichang@huawei.com>
- <20201009064449.2336-9-zhaolichang@huawei.com>
- <f790ec0a-1f0d-90fd-f597-20fddad9a60c@vivier.eu>
- <CAAdtpL4dxKYxu=W3zboCaOuAiJeiV1SzOnPXXLxtoX_BkW7sow@mail.gmail.com>
- <f14ca245-4bc4-5d19-a342-2dbcd35470b1@vivier.eu>
-In-Reply-To: <f14ca245-4bc4-5d19-a342-2dbcd35470b1@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Sat, 12 Dec 2020 21:04:01 +0100
-Message-ID: <CAAdtpL6z-3TFzVtq1=8P+GQ+xeapMT-powOfjkF0k7JTKzo5GA@mail.gmail.com>
-Subject: Re: [PATCH V2 08/14] m68k/: fix some comment spelling errors
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- David Edmondson <david.edmondson@oracle.com>, 
- zhaolichang <zhaolichang@huawei.com>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.210.49;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ot1-f49.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
+In-Reply-To: <15956748-ce3b-1ff8-ba68-66d441b7b981@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:6JWgvJjOKHJWCD1+T+ew4t9mVk1uFYcyTrOxJPL5DJpuXT3SF1X
+ R6TPFb5UomcsxdceG3W8MB3FVHNl9tcvEEmbfvjdxT/ZxPwo7gUNPc7SRBCSbJZ2Ia9iAkU
+ CNtkMzyGBO8PJFrKdwJoN+DZkNouy0jETrY0WngsUBJwwBPE2SiWK69r+UZEoC8e69qYeXT
+ przP1vEGA74uyu06uwm6g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TqnMl3ORGsU=:tClY+4SkoKTRT9jBSpGtsj
+ P2eNyCmw4sddKXcuSbmmYWfaZhkaZ2mFo91+8dL/G/zGic3KVNA/tkS0nqpbZBH/C0Ht7T+v3
+ DFhMfuupd2cpdReBedBtlOO5v8rXlXxN1FStDyYtGKSNhs9HASqJNve5FU3aK4m7SNbEoghkS
+ 2t+fRved10VH+Uz4wFbfsEr+LAL2eqoD4Le4QdA/FuOyjFY+r4+CYPUzQPOwfbxPvocX/NPvX
+ Osunv1SFW/RZeH+LSGngvsXpoCNYgCxy859EPrkDkGYCWrQ55c/OQbEWGeeeui/3CVBympNuA
+ RPXsSjqQNlPjWNT7mP8NM2ac6iIKMy0RdoljwQiGzLlm1flcIszWa7TKtc+fweMFuj/t5R36c
+ mRF/6dekWLZlRe2qdpwdMLXF88qTlNdunePxLmGICncwx+ig/Ve4+wjF3hM5JXT/ToGeEmlb0
+ QNj2cJ/pGQ==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,33 +61,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Dec 2020 20:04:20 -0000
+X-List-Received-Date: Sun, 13 Dec 2020 15:27:58 -0000
 
-On Sat, Dec 12, 2020 at 8:58 PM Laurent Vivier <laurent@vivier.eu> wrote:
-> Le 12/12/2020 =C3=A0 18:56, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit :
-> > Hi Laurent,
-> >
-> > On Sat, Dec 12, 2020 at 6:11 PM Laurent Vivier <laurent@vivier.eu> wrot=
-e:
-> >> Le 09/10/2020 =C3=A0 08:44, zhaolichang a =C3=A9crit :
-> >>> I found that there are many spelling errors in the comments of qemu/t=
-arget/m68k.
-> >>> I used spellcheck to check the spelling errors and found some errors =
-in the folder.
-> >>>
-> >>> Signed-off-by: zhaolichang <zhaolichang@huawei.com>
-> >>> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
-> >>> Reviewed-by: Philippe Mathieu-Daude<f4bug@amsat.org>
-> >
-> > Do you mind replacing this line by:
-> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >
->
-> Sorry, too late...
+Le 09/12/2020 à 18:58, Dov Murik a écrit :
+> ping
+> 
+> Adding CC qemu-trivial.
+> 
+> This already got one R-b:
+> https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg00525.html
+> 
+> -Dov
+> 
+> 
+> On 03/11/2020 12:07, Dov Murik wrote:
+>> Three trace events had a literal "0x" prefix but the 'len' values were
+>> formatted in decimal base.  Keep the prefix and format the numbers as
+>> hex, as is usually the case for length of memory regions.
+>>
+>> Signed-off-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
+>> ---
+>>   target/i386/trace-events | 6 +++---
+>>   1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/target/i386/trace-events b/target/i386/trace-events
+>> index 789c700d4a..65c9b0fdda 100644
+>> --- a/target/i386/trace-events
+>> +++ b/target/i386/trace-events
+>> @@ -8,10 +8,10 @@ kvm_x86_update_msi_routes(int num) "Updated %d MSI routes"
+>>
+>>   # sev.c
+>>   kvm_sev_init(void) ""
+>> -kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zu"
+>> -kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zu"
+>> +kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zx"
+>> +kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zx"
+>>   kvm_sev_change_state(const char *old, const char *new) "%s -> %s"
+>>   kvm_sev_launch_start(int policy, void *session, void *pdh) "policy 0x%x session %p pdh %p"
+>> -kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIu64
+>> +kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIx64
+>>   kvm_sev_launch_measurement(const char *value) "data %s"
+>>   kvm_sev_launch_finish(void) ""
+>>
+> 
 
-No problem, mojibake happens, not a big deal.
+Applied to my linux-user-for-6.0 branch.
 
-Thanks anyway :)
+Thanks,
+Laurent
 
-Phil.
 
