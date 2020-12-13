@@ -1,54 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koaCh-0005qO-S9
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 17:50:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42728)
+	id 1koaI4-0000OW-QZ
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 17:56:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koaCf-0005lL-Gq; Sun, 13 Dec 2020 17:50:57 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:39235)
+ id 1koaI3-0000OE-2g; Sun, 13 Dec 2020 17:56:31 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:55977)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koaCc-0001jV-IV; Sun, 13 Dec 2020 17:50:57 -0500
+ id 1koaI1-0003ex-G4; Sun, 13 Dec 2020 17:56:30 -0500
 Received: from [192.168.100.1] ([82.252.135.218]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MPGJh-1kU0WE3bOH-00Pd6l; Sun, 13 Dec 2020 23:50:44 +0100
-Subject: Re: [PATCH v2] hw/block/nand: Decommission the NAND museum
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MQNF3-1kSuhS33xJ-00MOaA; Sun, 13 Dec 2020 23:56:23 +0100
+Subject: Re: [PATCH v2 2/4] Makefile: Require GNU make 3.82+
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Max Reitz <mreitz@redhat.com>
-References: <20200915171639.1355800-1-f4bug@amsat.org>
- <619d329d-f6b3-1e73-e151-a58e366db15d@amsat.org>
- <3647a01c-0932-3446-9bc7-e138ced496dd@amsat.org>
- <f89e9e7d-5ab3-769a-f3d8-22fc05d80af6@amsat.org>
- <8af60250-2c96-28bd-f05c-ee38e390df1a@vivier.eu>
- <CAFEAcA-3enD96MsiD95L+dx=VTf9qMHhoe5g7XcLox+WoG=Tfw@mail.gmail.com>
+ Roman Bolshakov <r.bolshakov@yadro.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200825202755.50626-1-r.bolshakov@yadro.com>
+ <20200825202755.50626-3-r.bolshakov@yadro.com>
+ <1ff85cc3-40dc-98da-fb18-a1b3d134d7dc@redhat.com>
+ <bc560d06-2b8d-3ef0-b9e6-ddaeb58daa13@vivier.eu>
+ <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <450456c9-1bb1-0a26-144a-bbac49068050@vivier.eu>
-Date: Sun, 13 Dec 2020 23:50:42 +0100
+Message-ID: <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
+Date: Sun, 13 Dec 2020 23:56:22 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-3enD96MsiD95L+dx=VTf9qMHhoe5g7XcLox+WoG=Tfw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:90skuRDlzdQmcEHF2bglHeNVXdy6nPCY9R70vkt2ciL49yTB37H
- vsyA/78hQRUsJBWjawyRc+N9qxMXxzNgj71dDgt8HL2ut6l5DQ49j3451O3Y0IUfvjlLRkk
- Vij3pZj0PAKZz3PFbnwYnDkvSWW+j7XAPXWcS/NiJR7ap30Hu9pYw2zosdV8tpdj9H8Q2ZE
- PUk6MsPGufGYgRULpDVZQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:KIFrMgfIUm0=:MeeYB0oviwHraqidt3907A
- 9PnEFjILXHM3eaad3bosc+0m4W+DlcCNYk44b1HpmE4bQC3qr6Kz024D68L93eTjVh3pDh+Ji
- oU75Be4ofiKS3VO8JApxsR018MLtxbns1kUHUdrLCtmZfrpMu6gJCasKfLExiyYb6w6SP5xmC
- b5iMjCNhoQMj/o7HoCj+woZ+GcvJyqQZm/KhlervdSpg47I50v3HUB3kn0Pauoq+xss0DGsX3
- OvpWf+nWsGX6+dmHQgUz6Z3PrBquU1R4gSeoTLpMk4vLtafBmOJKkPOR/yjwhq+Nr3yR3VXb6
- kde4aEdN2Nt+suVlMmrexyAyyNEtqiaCnJpbyugsevn4oKShbj7LEv9L4DaBeMb2/c1RjEAMG
- jB97JQ8cVlF8knK/f0c6qJETz+QFe6ZK8xsEpzGemeq2CxH13zne5hBWWHrCg23C0YlaCaD+x
- +0sn7mfJxA==
+X-Provags-ID: V03:K1:TsbXwlKAq9P1CNDPLPwOhwl7XWKwYE9is614oOk+famloG0pI7E
+ dRjJrBfUYhuJsn/lz2qV/hIjz2MlGXNVOgqjTYSGtBe+ASu6qWT4Z3M/s4upjuTm6vRbdVO
+ WjSQWEWP8SdknU7B7XXqTO0WGRAxdi8YyWx5Zy99MvU7BgTuqgqjsRRMnW9C9vZxj2qEc3A
+ CdoYUGD0ZmQbNvvsg78SA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BrKI+KQA0aE=:UpY+lM4m5YzoCI/37/9sH8
+ k52ZTWF54fhd+8nnLQVaI9Mt8VaWoHLGK1SolTq3iMhZ/6EB9d3ja3IhUPICRascsHhNduPUO
+ LdakfdjRIYhJRjpmUvZziDTkOw8by+WH6Day28M24adNiXsk+08PZNLn/XTBTCIn6EB56prjn
+ a2/FxV8HuCUBFORFcjo7dEV8wP2tdSPbh3Fsm26pA/yu8zTA7IkbfjOn1OVr0jHUf+acq7zAE
+ Yse+vvUAXbiVCb5WvqyDRJCkeiIKIl9opAw8xtRk2AgLWGabt6ZLe2Uw7FxcwTkXJX3bSJhw0
+ LJm/qsNNAbpsxcAqusyM3S4exqvMwCeAnuGGpuhiX+F653o3C1lPahFf3h8RswEFs4r927M18
+ j9T0BGIUbfFZCTQR75KObROwue+L+j6OAFiD1rZ81fSlimlwVL0ZjroQ4ONfaQ1d8XDz4/Jx+
+ lbL4tjTY0g==
 Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -69,94 +65,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Dec 2020 22:50:58 -0000
+X-List-Received-Date: Sun, 13 Dec 2020 22:56:31 -0000
 
-Le 13/12/2020 à 20:01, Peter Maydell a écrit :
-> On Sun, 13 Dec 2020 at 17:21, Laurent Vivier <laurent@vivier.eu> wrote:
+Le 13/12/2020 à 20:04, Peter Maydell a écrit :
+> On Sun, 13 Dec 2020 at 17:22, Laurent Vivier <laurent@vivier.eu> wrote:
 >>
->> Le 16/10/2020 à 18:52, Philippe Mathieu-Daudé a écrit :
->>> Cc'ing qemu-trivial@ since this patch is reviewed.
+>> Le 12/10/2020 à 11:47, Thomas Huth a écrit :
+>>> On 25/08/2020 22.27, Roman Bolshakov wrote:
+>>>> QEMU build fails with cryptic messages if make is too old:
+>>>>
+>>>>   Makefile.ninja:2655: *** multiple target patterns.  Stop.
+>>>>
+>>>> To avoid the confusion it's worth to fail the build right away and print
+>>>> a friendly error message.
+>>>>
+>>>> +ifeq ($(filter undefine,$(value .FEATURES)),)
+>>>> +$(error Unsupported Make version: $(MAKE_VERSION). \
+>>>> +        Please use GNU Make 3.82 or above)
+>>>> +endif
+>>>> +
+>>>>  # Always point to the root of the build tree (needs GNU make).
+>>>>  BUILD_DIR=$(CURDIR)
 >>>
->>> On 10/15/20 8:12 PM, Philippe Mathieu-Daudé wrote:
->>>> ping^2...
->>>>
->>>> On 10/1/20 7:31 PM, Philippe Mathieu-Daudé wrote:
->>>>> ping qemu-block or qemu-arm?
->>>>>
->>>>> On 9/15/20 7:16 PM, Philippe Mathieu-Daudé wrote:
->>>>>> This is the QEMU equivalent of this Linux commit (but 7 years later):
->>>>>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
->>>>>>
->>>>>>      The MTD subsystem has its own small museum of ancient NANDs
->>>>>>      in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
->>>>>>      The museum contains stone age NANDs with 256 bytes pages, as well
->>>>>>      as iron age NANDs with 512 bytes per page and up to 8MiB page size.
->>>>>>
->>>>>>      It is with great sorrow that I inform you that the museum is being
->>>>>>      decommissioned. The MTD subsystem is out of budget for Kconfig
->>>>>>      options and already has too many of them, and there is a general
->>>>>>      kernel trend to simplify the configuration menu.
->>>>>>
->>>>>>      We remove the stone age exhibits along with closing the museum,
->>>>>>      but some of the iron age ones are transferred to the regular NAND
->>>>>>      depot. Namely, only those which have unique device IDs are
->>>>>>      transferred, and the ones which have conflicting device IDs are
->>>>>>      removed.
->>>>>>
->>>>>> The machine using this device are:
->>>>>> - axis-dev88
->>>>>> - tosa (via tc6393xb_init)
->>>>>> - spitz based (akita, borzoi, terrier)
->>>>>>
->>>>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>>>> ---
->>>>>> Peter, as 4 of the 5 machines are ARM-based, can this go via your tree?
->>>>>> ---
->>>>>>   hw/block/nand.c | 13 ++++++-------
->>>>>>   1 file changed, 6 insertions(+), 7 deletions(-)
->>>>>>
->>>>>> diff --git a/hw/block/nand.c b/hw/block/nand.c
->>>>>> index 5c8112ed5a4..5f01ba2bc44 100644
->>>>>> --- a/hw/block/nand.c
->>>>>> +++ b/hw/block/nand.c
->>>>>> @@ -138,7 +138,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
->>>>>>   # define ADDR_SHIFT        16
->>>>>>   # include "nand.c"
->>>>>> -/* Information based on Linux drivers/mtd/nand/nand_ids.c */
->>>>>> +/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
->>>>>>   static const struct {
->>>>>>       int size;
->>>>>>       int width;
->>>>>> @@ -154,15 +154,14 @@ static const struct {
->>>>>>       [0xe8] = { 1,    8,    8, 4, 0 },
->>>>>>       [0xec] = { 1,    8,    8, 4, 0 },
->>>>>>       [0xea] = { 2,    8,    8, 4, 0 },
->>>>>> -    [0xd5] = { 4,    8,    9, 4, 0 },
->>>>>>       [0xe3] = { 4,    8,    9, 4, 0 },
->>>>>>       [0xe5] = { 4,    8,    9, 4, 0 },
->>>>>> -    [0xd6] = { 8,    8,    9, 4, 0 },
->>>>>> -    [0x39] = { 8,    8,    9, 4, 0 },
->>>>>> -    [0xe6] = { 8,    8,    9, 4, 0 },
->>>>>> -    [0x49] = { 8,    16,    9, 4, NAND_BUSWIDTH_16 },
->>>>>> -    [0x59] = { 8,    16,    9, 4, NAND_BUSWIDTH_16 },
->>>>>> +    [0x6b] = { 4,        8,        9, 4, 0 },
->>>>>> +    [0xe3] = { 4,        8,        9, 4, 0 },
->>>>>> +    [0xe5] = { 4,        8,        9, 4, 0 },
->>>>>> +    [0xd6] = { 8,        8,        9, 4, 0 },
->>>>>> +    [0xe6] = { 8,        8,        9, 4, 0 },
->>>>>>       [0x33] = { 16,    8,    9, 5, 0 },
->>>>>>       [0x73] = { 16,    8,    9, 5, 0 },
->>>>>>
->>>>>
->>>>
+>>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>>>
 >>>
 >>
 >> Applied to my trivial-patches branch.
 > 
-> Er, I made review comments on this one; it needs a respin.
+> Commit 09e93326e448ab4 says that the switch to ninja from
+> ninjatool removed the requirement for Make 3.82. Is this
+> change still required?
+>
 
-Yes, removed from my queue.
+It seems 09e93326e448ab4 has been committed on 17th of October, so after Thomas' review.
+I remove it from my queue.
 
 Thanks,
 Laurent
