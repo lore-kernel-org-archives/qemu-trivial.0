@@ -1,71 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kooB9-0002DM-3F
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 08:46:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60332)
+	id 1koqEa-0007t5-K0
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kooB6-0002AN-Hs; Mon, 14 Dec 2020 08:46:16 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:52692 helo=mta-01.yadro.com)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koqEN-0007qv-4q; Mon, 14 Dec 2020 10:57:48 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:33011)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kooB4-0001gp-P7; Mon, 14 Dec 2020 08:46:16 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id AE29F41364;
- Mon, 14 Dec 2020 13:46:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-transfer-encoding:content-disposition
- :content-type:content-type:mime-version:references:message-id
- :subject:subject:from:from:date:date:received:received:received;
- s=mta-01; t=1607953569; x=1609767970; bh=LLMvOVs8uPUNwvRgsR3cv7
- CgrcGxjkoeojxcDo73ISo=; b=DA8FcRe/GEk+LQwW/Hv1Rsj/oCAeVUYzJeET2v
- U5JMbcaz3eMpsA+m5ilb0Ju+XNorRLZ+RMgIVBpJE8STX8xoFJpUzclBMi2nkO7E
- 41VRd92gPdeLfCKIp83Hj9LeH0XK60Ro29FkQOjQeb2x8tGDoVDLFZBWGlrTEPHC
- 9Wwxk=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oEjwrM3kLUp6; Mon, 14 Dec 2020 16:46:09 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 2738841384;
- Mon, 14 Dec 2020 16:46:09 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Mon, 14
- Dec 2020 16:46:08 +0300
-Date: Mon, 14 Dec 2020 16:46:08 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: Laurent Vivier <laurent@vivier.eu>
-CC: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, QEMU Trivial
- <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, Paolo
- Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2 2/4] Makefile: Require GNU make 3.82+
-Message-ID: <X9dsoCeCta4501m0@SPB-NB-133.local>
-References: <20200825202755.50626-1-r.bolshakov@yadro.com>
- <20200825202755.50626-3-r.bolshakov@yadro.com>
- <1ff85cc3-40dc-98da-fb18-a1b3d134d7dc@redhat.com>
- <bc560d06-2b8d-3ef0-b9e6-ddaeb58daa13@vivier.eu>
- <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
- <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1koqEJ-0001PG-V1; Mon, 14 Dec 2020 10:57:46 -0500
+Received: from localhost.localdomain ([82.252.135.218]) by
+ mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MYNS0-1kbD5412tW-00VMqL; Mon, 14 Dec 2020 16:57:40 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 02/19] qemu-options.hx: Fix minor issues in icount documentation
+Date: Mon, 14 Dec 2020 16:57:16 +0100
+Message-Id: <20201214155733.207430-3-laurent@vivier.eu>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
+References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:p/tHvfoeP1YHaAepxycYGHCI5A2loL+jaiXRn5NyVdmTbPD5Cox
+ BlhzuYkTjvnXpdxsd2XYOp1NJjhRjylIVbIM8fGiAMfZmubhMLr4XNvqmOK3Jx0eaCmE4iq
+ Z4863uGqhJIX6WqdBjUMn95heeq3DATaDWOLcPZDEbqdmzQZwPC3fg2Oj13zavB1I3p38Up
+ oP4rXZPei+71fSLw1d9Qw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:k6kugBOBskA=:D99hRrClOnKv3MnjhPzOhB
+ kvAp76+FyYmT135dx2A48ObZUG9Qd3iB4jmkjLzqKa8We4waicij11Y8dyN5kKs2nUh7YYfyH
+ klGKVtbrtAEPuqBfMisupfInhaEvzYmORojCs8rOgMlRI9nAc/Hhv5OyZWd5TTWA5BamdGyZi
+ o2n/aUrcZmFeDtX3KsjkbO0KffdFPwLYTbQlPWWY6Fk6hf515IXppbj5lH2lW85rAlnJYAsL2
+ wndN4Jnccu/gDBUzwiJpmyfTc+O+qTJ4wKqZiGvSQdYU/YjmfJvzXoiNqxs4SQqk+fHOagPlB
+ yt+xV0Vp6x3XTHPAJSl0D1FZyClKBXkVWN0szCOXiaCG/x4fidfQNP45KI2SqmBltSwX884cR
+ H/Fm4bYUdNey40uGR4wHG309YsmcoxWi+klayqTnl0rV4rH2dOwR4i8bVU59RmWgbg6aZOep9
+ aKAsHt4Dhw==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,51 +58,121 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 13:46:16 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:57:50 -0000
 
-On Sun, Dec 13, 2020 at 11:56:22PM +0100, Laurent Vivier wrote:
-> Le 13/12/2020 à 20:04, Peter Maydell a écrit :
-> > On Sun, 13 Dec 2020 at 17:22, Laurent Vivier <laurent@vivier.eu> wrote:
-> >>
-> >> Le 12/10/2020 à 11:47, Thomas Huth a écrit :
-> >>> On 25/08/2020 22.27, Roman Bolshakov wrote:
-> >>>> QEMU build fails with cryptic messages if make is too old:
-> >>>>
-> >>>>   Makefile.ninja:2655: *** multiple target patterns.  Stop.
-> >>>>
-> >>>> To avoid the confusion it's worth to fail the build right away and print
-> >>>> a friendly error message.
-> >>>>
-> >>>> +ifeq ($(filter undefine,$(value .FEATURES)),)
-> >>>> +$(error Unsupported Make version: $(MAKE_VERSION). \
-> >>>> +        Please use GNU Make 3.82 or above)
-> >>>> +endif
-> >>>> +
-> >>>>  # Always point to the root of the build tree (needs GNU make).
-> >>>>  BUILD_DIR=$(CURDIR)
-> >>>
-> >>> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> >>>
-> >>>
-> >>
-> >> Applied to my trivial-patches branch.
-> > 
-> > Commit 09e93326e448ab4 says that the switch to ninja from
-> > ninjatool removed the requirement for Make 3.82. Is this
-> > change still required?
-> >
-> 
-> It seems 09e93326e448ab4 has been committed on 17th of October, so after Thomas' review.
-> I remove it from my queue.
-> 
+From: Peter Maydell <peter.maydell@linaro.org>
 
-I can confirm:
+The documentation for the icount documentation has some minor issues:
+ * in a couple of places it says "sleep=on|off" when in the context of the
+   sentence it means specifically "sleep=on"
+ * the synopsis line for the documentation has drifted out of sync
+   with the synopsis line in the DEF() macro (used for "-help" output)
+ * the synopsis line in the DEF() macro is missing a "][" between
+   the sleep= part and the rr= part
+ * the synopsis line doesn't indicate that rrsnapshot is an optional
+   part of the rr=mode,rrfile=filename subgrouping
+ * we don't document that sleep=on can't be used with shift=auto
+   or align=on
+ * the rr option description had some minor grammar and formatting
+   errors and was a bit terse
+ * in commit f1f4b57e88ff in 2015 the documentation of the sleep=
+   suboption got added between the two paragraphs defining general
+   behaviour of the icount option. This meant that the second
+   paragraph talking about the behaviour of "this option" reads as
+   if it's talking about sleep=on, when it's really describing -icount
+   as a whole. The paragraph is better moved back up to above the
+   sleep= section.
+ * the summary text displayed in "-help" output didn't mention
+   the record-and-replay part
 
-./configure --target-list=x86_64-softmmu --enable-trace-backends=dtrace && make -j$(nproc)
+Fix these errors.
 
-Works fine on macOS with the latest qemu HEAD. The patch can be
-discarded.
+Fixes: https://bugs.launchpad.net/qemu/+bug/1774412
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20201121213506.15599-1-peter.maydell@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ qemu-options.hx | 44 +++++++++++++++++++++++++-------------------
+ 1 file changed, 25 insertions(+), 19 deletions(-)
 
-Regards,
-Roman
+diff --git a/qemu-options.hx b/qemu-options.hx
+index e60ad42976d0..ae8872d1d664 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3958,30 +3958,34 @@ SRST
+ ERST
+ 
+ DEF("icount", HAS_ARG, QEMU_OPTION_icount, \
+-    "-icount [shift=N|auto][,align=on|off][,sleep=on|off,rr=record|replay,rrfile=<filename>,rrsnapshot=<snapshot>]\n" \
++    "-icount [shift=N|auto][,align=on|off][,sleep=on|off][,rr=record|replay,rrfile=<filename>[,rrsnapshot=<snapshot>]]\n" \
+     "                enable virtual instruction counter with 2^N clock ticks per\n" \
+     "                instruction, enable aligning the host and virtual clocks\n" \
+-    "                or disable real time cpu sleeping\n", QEMU_ARCH_ALL)
++    "                or disable real time cpu sleeping, and optionally enable\n" \
++    "                record-and-replay mode\n", QEMU_ARCH_ALL)
+ SRST
+-``-icount [shift=N|auto][,rr=record|replay,rrfile=filename,rrsnapshot=snapshot]``
++``-icount [shift=N|auto][,align=on|off][,sleep=on|off][,rr=record|replay,rrfile=filename[,rrsnapshot=snapshot]]``
+     Enable virtual instruction counter. The virtual cpu will execute one
+     instruction every 2^N ns of virtual time. If ``auto`` is specified
+     then the virtual cpu speed will be automatically adjusted to keep
+     virtual time within a few seconds of real time.
+ 
+-    When the virtual cpu is sleeping, the virtual time will advance at
+-    default speed unless ``sleep=on|off`` is specified. With
+-    ``sleep=on|off``, the virtual time will jump to the next timer
+-    deadline instantly whenever the virtual cpu goes to sleep mode and
+-    will not advance if no timer is enabled. This behavior give
+-    deterministic execution times from the guest point of view.
+-
+     Note that while this option can give deterministic behavior, it does
+     not provide cycle accurate emulation. Modern CPUs contain
+     superscalar out of order cores with complex cache hierarchies. The
+     number of instructions executed often has little or no correlation
+     with actual performance.
+ 
++    When the virtual cpu is sleeping, the virtual time will advance at
++    default speed unless ``sleep=on`` is specified. With
++    ``sleep=on``, the virtual time will jump to the next timer
++    deadline instantly whenever the virtual cpu goes to sleep mode and
++    will not advance if no timer is enabled. This behavior gives
++    deterministic execution times from the guest point of view.
++    The default if icount is enabled is ``sleep=off``.
++    ``sleep=on`` cannot be used together with either ``shift=auto``
++    or ``align=on``.
++
+     ``align=on`` will activate the delay algorithm which will try to
+     synchronise the host clock and the virtual clock. The goal is to
+     have a guest running at the real frequency imposed by the shift
+@@ -3991,15 +3995,17 @@ SRST
+     ``shift`` is ``auto``. Note: The sync algorithm will work for those
+     shift values for which the guest clock runs ahead of the host clock.
+     Typically this happens when the shift value is high (how high
+-    depends on the host machine).
+-
+-    When ``rr`` option is specified deterministic record/replay is
+-    enabled. Replay log is written into filename file in record mode and
+-    read from this file in replay mode.
+-
+-    Option rrsnapshot is used to create new vm snapshot named snapshot
+-    at the start of execution recording. In replay mode this option is
+-    used to load the initial VM state.
++    depends on the host machine). The default if icount is enabled
++    is ``align=off``.
++
++    When the ``rr`` option is specified deterministic record/replay is
++    enabled. The ``rrfile=`` option must also be provided to
++    specify the path to the replay log. In record mode data is written
++    to this file, and in replay mode it is read back.
++    If the ``rrsnapshot`` option is given then it specifies a VM snapshot
++    name. In record mode, a new VM snapshot with the given name is created
++    at the start of execution recording. In replay mode this option
++    specifies the snapshot name used to load the initial VM state.
+ ERST
+ 
+ DEF("watchdog", HAS_ARG, QEMU_OPTION_watchdog, \
+-- 
+2.29.2
+
 
