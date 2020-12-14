@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kodET-0005Ip-Vu
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 21:05:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47274)
+	id 1kodZu-00018z-Q8
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 21:27:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kodER-0005IU-KT; Sun, 13 Dec 2020 21:04:59 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2244)
+ id 1kodZs-00018j-Kk; Sun, 13 Dec 2020 21:27:08 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2060)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kodEO-0000OI-Q7; Sun, 13 Dec 2020 21:04:59 -0500
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4CvPnQ619yz13TXF;
- Mon, 14 Dec 2020 10:03:38 +0800 (CST)
+ id 1kodZp-0008KQ-CC; Sun, 13 Dec 2020 21:27:08 -0500
+Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CvQHl0dxnzQrjS;
+ Mon, 14 Dec 2020 10:26:27 +0800 (CST)
 Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.125]) by
- DGGEMM401-HUB.china.huawei.com ([10.3.20.209]) with mapi id 14.03.0509.000;
- Mon, 14 Dec 2020 10:04:28 +0800
+ DGGEMM402-HUB.china.huawei.com ([10.3.20.210]) with mapi id 14.03.0509.000;
+ Mon, 14 Dec 2020 10:26:49 +0800
 From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Michael Roth <mdroth@linux.vnet.ibm.com>
-CC: Pannengyuan <pannengyuan@huawei.com>, "lvivier@redhat.com"
- <lvivier@redhat.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- ganqixin <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Li
- Qiang" <liq3ea@gmail.com>
-Subject: RE: [PATCH RESEND v2 2/7] qga/channel-posix: Plug memory leak in
- ga_channel_write_all()
-Thread-Topic: [PATCH RESEND v2 2/7] qga/channel-posix: Plug memory leak in
- ga_channel_write_all()
-Thread-Index: AQHWqQODDn5EOG2xVkK8bT0+Bd9UP6n2JZew
-Date: Mon, 14 Dec 2020 02:04:28 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83BB04DE9@dggemm531-mbx.china.huawei.com>
+To: Laurent Vivier <laurent@vivier.eu>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+CC: "lvivier@redhat.com" <lvivier@redhat.com>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, Viktor Prutyanov
+ <viktor.prutyanov@phystech.edu>, Li Qiang <liq3ea@gmail.com>, Pannengyuan
+ <pannengyuan@huawei.com>, ganqixin <ganqixin@huawei.com>, Euler Robot
+ <euler.robot@huawei.com>
+Subject: RE: [PATCH RESEND v2 3/7] elf2dmp/qemu_elf: Plug memleak in
+ QEMU_Elf_init
+Thread-Topic: [PATCH RESEND v2 3/7] elf2dmp/qemu_elf: Plug memleak in
+ QEMU_Elf_init
+Thread-Index: AQHWqQODYbMTtOrl1U2RnapEYWpht6n1FvGAgAESLWA=
+Date: Mon, 14 Dec 2020 02:26:48 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BB05E2C@dggemm531-mbx.china.huawei.com>
 References: <20201023061218.2080844-1-kuhn.chenqun@huawei.com>
- <20201023061218.2080844-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201023061218.2080844-3-kuhn.chenqun@huawei.com>
+ <20201023061218.2080844-4-kuhn.chenqun@huawei.com>
+ <1973545a-9f9b-94d0-fadd-ec7c24fd33b8@vivier.eu>
+In-Reply-To: <1973545a-9f9b-94d0-fadd-ec7c24fd33b8@vivier.eu>
 Accept-Language: en-US
 Content-Language: zh-CN
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.174.185.149]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga08-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -60,70 +62,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 02:04:59 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 02:27:09 -0000
 
-Kindly ping!
-
-Hi Michael,
-  It's a bug, though it's trivial.=20
-Could you review it and add your queues or add trivial queues?
-
-Thanks,
-Chen Qun
-
-> -----Original Message-----
-> From: Chenqun (kuhn)
-> Sent: Friday, October 23, 2020 2:12 PM
-> To: qemu-devel@nongnu.org; qemu-trivial@nongnu.org
-> Cc: Pannengyuan <pannengyuan@huawei.com>; lvivier@redhat.com;
-> Zhanghailiang <zhang.zhanghailiang@huawei.com>; ganqixin
-> <ganqixin@huawei.com>; Euler Robot <euler.robot@huawei.com>; Li Qiang
-> <liq3ea@gmail.com>; Chenqun (kuhn) <kuhn.chenqun@huawei.com>; Michael
-> Roth <mdroth@linux.vnet.ibm.com>
-> Subject: [PATCH RESEND v2 2/7] qga/channel-posix: Plug memory leak in
-> ga_channel_write_all()
->=20
-> From: Pan Nengyuan <pannengyuan@huawei.com>
->=20
-> Missing g_error_free on error path in ga_channel_write_all(). Fix that.
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> Reviewed-by: Li Qiang <liq3ea@gmail.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Michael Roth <mdroth@linux.vnet.ibm.com>
-> ---
->  qga/channel-posix.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
->=20
-> diff --git a/qga/channel-posix.c b/qga/channel-posix.c index
-> 0373975360..8f3821af6d 100644
-> --- a/qga/channel-posix.c
-> +++ b/qga/channel-posix.c
-> @@ -249,7 +249,7 @@ GIOStatus ga_channel_write_all(GAChannel *c, const
-> gchar *buf, gsize size)
->              buf +=3D written;
->          } else if (status !=3D G_IO_STATUS_AGAIN) {
->              g_warning("error writing to channel: %s", err->message);
-> -            return status;
-> +            goto out;
->          }
->      }
->=20
-> @@ -261,6 +261,10 @@ GIOStatus ga_channel_write_all(GAChannel *c,
-> const gchar *buf, gsize size)
->          g_warning("error flushing channel: %s", err->message);
->      }
->=20
-> +out:
-> +    if (err) {
-> +        g_error_free(err);
-> +    }
->      return status;
->  }
->=20
-> --
-> 2.23.0
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBMYXVyZW50IFZpdmllciBbbWFp
+bHRvOmxhdXJlbnRAdml2aWVyLmV1XQ0KPiBTZW50OiBNb25kYXksIERlY2VtYmVyIDE0LCAyMDIw
+IDE6NDQgQU0NCj4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47
+IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCj4gQ2M6
+IGx2aXZpZXJAcmVkaGF0LmNvbTsgWmhhbmdoYWlsaWFuZyA8emhhbmcuemhhbmdoYWlsaWFuZ0Bo
+dWF3ZWkuY29tPjsNCj4gVmlrdG9yIFBydXR5YW5vdiA8dmlrdG9yLnBydXR5YW5vdkBwaHlzdGVj
+aC5lZHU+OyBMaSBRaWFuZw0KPiA8bGlxM2VhQGdtYWlsLmNvbT47IFBhbm5lbmd5dWFuIDxwYW5u
+ZW5neXVhbkBodWF3ZWkuY29tPjsgZ2FucWl4aW4NCj4gPGdhbnFpeGluQGh1YXdlaS5jb20+OyBF
+dWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRD
+SCBSRVNFTkQgdjIgMy83XSBlbGYyZG1wL3FlbXVfZWxmOiBQbHVnIG1lbWxlYWsgaW4NCj4gUUVN
+VV9FbGZfaW5pdA0KPiANCj4gTGUgMjMvMTAvMjAyMCDDoCAwODoxMiwgQ2hlbiBRdW4gYSDDqWNy
+aXTCoDoNCj4gPiBGcm9tOiBQYW4gTmVuZ3l1YW4gPHBhbm5lbmd5dWFuQGh1YXdlaS5jb20+DQo+
+ID4NCj4gPiBNaXNzaW5nIGdfZXJyb3JfZnJlZSBpbiBRRU1VX0VsZl9pbml0KCkgZXJyb3IgcGF0
+aC4gRml4IHRoYXQuDQo+ID4NCj4gPiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVyLnJv
+Ym90QGh1YXdlaS5jb20+DQo+ID4gU2lnbmVkLW9mZi1ieTogUGFuIE5lbmd5dWFuIDxwYW5uZW5n
+eXVhbkBodWF3ZWkuY29tPg0KPiA+IFJldmlld2VkLWJ5OiBWaWt0b3IgUHJ1dHlhbm92IDx2aWt0
+b3IucHJ1dHlhbm92QHBoeXN0ZWNoLmVkdT4NCj4gPiBSZXZpZXdlZC1ieTogTGkgUWlhbmcgPGxp
+cTNlYUBnbWFpbC5jb20+DQo+ID4gU2lnbmVkLW9mZi1ieTogQ2hlbiBRdW4gPGt1aG4uY2hlbnF1
+bkBodWF3ZWkuY29tPg0KPiA+IC0tLQ0KPiA+ICBjb250cmliL2VsZjJkbXAvcWVtdV9lbGYuYyB8
+IDEgKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykNCj4gPg0KPiA+IGRpZmYg
+LS1naXQgYS9jb250cmliL2VsZjJkbXAvcWVtdV9lbGYuYyBiL2NvbnRyaWIvZWxmMmRtcC9xZW11
+X2VsZi5jDQo+ID4gaW5kZXggMGRiNzgxNjU4Ni4uYjYwMWI2ZDdiYSAxMDA2NDQNCj4gPiAtLS0g
+YS9jb250cmliL2VsZjJkbXAvcWVtdV9lbGYuYw0KPiA+ICsrKyBiL2NvbnRyaWIvZWxmMmRtcC9x
+ZW11X2VsZi5jDQo+ID4gQEAgLTEyNiw2ICsxMjYsNyBAQCBpbnQgUUVNVV9FbGZfaW5pdChRRU1V
+X0VsZiAqcWUsIGNvbnN0IGNoYXINCj4gKmZpbGVuYW1lKQ0KPiA+ICAgICAgcWUtPmdtZiA9IGdf
+bWFwcGVkX2ZpbGVfbmV3KGZpbGVuYW1lLCBUUlVFLCAmZ2Vycik7DQo+ID4gICAgICBpZiAoZ2Vy
+cikgew0KPiA+ICAgICAgICAgIGVwcmludGYoIkZhaWxlZCB0byBtYXAgRUxGIGR1bXAgZmlsZSBc
+JyVzXCdcbiIsIGZpbGVuYW1lKTsNCj4gPiArICAgICAgICBnX2Vycm9yX2ZyZWUoZ2Vycik7DQo+
+ID4gICAgICAgICAgcmV0dXJuIDE7DQo+ID4gICAgICB9DQo+ID4NCj4gPg0KPiANCj4gQXBwbGll
+ZCB0byBteSB0cml2aWFsLXBhdGNoZXMgYnJhbmNoLg0KPiANCkhpIExhdXJlbnQsDQogIFRoYW5r
+IHlvdSBmb3IgcGlja2VkIHRoZW0gdXAhDQpCdXQsIHRoZXJlIGFyZSB0d28gcGF0Y2hlcyB0aGF0
+IGhhdmUgbm90IGJlZW4gcGlja2VkIHVwLg0KTWF5YmUgSSBzaG91bGQgcGluZyB0aGUgY29ycmVz
+cG9uZGluZyBNYWludGFpbmVyIGZpcnN0Lg0KDQpUaGUgbWlzc2luZyBwYXRjaGVzIGFyZe+8mg0K
+W1BBVENIIFJFU0VORCB2MiAyLzddIHFnYS9jaGFubmVsLXBvc2l4OiBQbHVnIG1lbW9yeSBsZWFr
+IGluIGdhX2NoYW5uZWxfd3JpdGVfYWxsKCkNCltQQVRDSCBSRVNFTkQgdjIgNS83XSBtaWdyYXRp
+b24vY29sbzogUGx1ZyBtZW1sZWFrcyBpbiBjb2xvX3Byb2Nlc3NfaW5jb21pbmdfdGhyZWFkDQoN
+ClRoYW5rcywNCkNoZW4gUXVuDQo=
 
