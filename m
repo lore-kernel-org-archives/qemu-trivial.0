@@ -1,51 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEy-0008MI-W9
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34444)
+	id 1korDZ-0005XP-CP
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 12:01:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEv-0008JI-VV; Mon, 14 Dec 2020 10:58:21 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:34463)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEZ-0001Rt-MH; Mon, 14 Dec 2020 10:58:19 -0500
-Received: from localhost.localdomain ([82.252.135.218]) by
- mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MtOOm-1jyWIC2Xp0-00upm5; Mon, 14 Dec 2020 16:57:42 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, zhouyang <zhouyang789@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 06/19] fsdev: open brace '{' following struct go on the same
- line
-Date: Mon, 14 Dec 2020 16:57:20 +0100
-Message-Id: <20201214155733.207430-7-laurent@vivier.eu>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
-References: <20201214155733.207430-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1korDS-0005VD-8J
+ for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 12:00:55 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45047)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1korDQ-0004EG-3T
+ for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 12:00:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607965250;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UcjPedgFAePbit+LAmaCdyO9dRJ4HW/XwUf+TQtTjTo=;
+ b=OEe/nr+yW0KSCX6fofrNYymuLGetXSOH1sBhbs6s/Fvw+GKt+Wq0kQhI07ThPiiVkfCE2m
+ AB+fSm5alhgTGK4nzFw8TIPwwG4o3fxjhJZ6wqrG+pq/OKkkEmn/sgFos2oTUX+0GrtR3A
+ 2L8P6AGrEpO6ZuIJt+i7b8nx5QW6jxE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-158-zWbrVVt0PCWa1TMqbhszCQ-1; Mon, 14 Dec 2020 12:00:48 -0500
+X-MC-Unique: zWbrVVt0PCWa1TMqbhszCQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1ECDC1009B67;
+ Mon, 14 Dec 2020 17:00:47 +0000 (UTC)
+Received: from localhost (ovpn-113-200.ams2.redhat.com [10.36.113.200])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BA3755D9DC;
+ Mon, 14 Dec 2020 17:00:46 +0000 (UTC)
+Date: Mon, 14 Dec 2020 17:00:45 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Alex Chen <alex.chen@huawei.com>
+Cc: dgilbert@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] virtiofsd: Remove useless code about send_notify_iov
+Message-ID: <20201214170045.GI620320@stefanha-x1.localdomain>
+References: <20201214121615.29967-1-alex.chen@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:pQqctQitfJUvkSvVY3kMl2Wy0lD3cIpkOHQB4FDBXqoyQrFQwNI
- NI8xPRko5RxqK4esqf6dO4EJ0axzX0MztpV+1grnl1HdNJ9MSrhVbwyK987T1DEikkor8nR
- y9xFGFz6DeJ7unH8mRn9UqnrgYpbdksZ2fse+OxkcUwzYNhUXzImn0dnd9ZRuKG86gQdk0P
- ge8n4QW/yf0yt2q/A1qpQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:yV9ilGWCju0=:F+6hXJ/tZJyHGd1R2N46jR
- AAHar87MsySpfdVoVO25jbjbG4JwGdFnHf+YUpvDTkCEchxoiJ9barOgJ3hRk+45glhCPPi92
- +IwSTlttVzFmZ7cXLR8ZgSjJPGTzb0ZPxTTWZqZ1ZEFuhjHhs0NtTm9gX5D8QlVHT+yFmeLvC
- NZe7+52KfbLieF/Z4Wd+zNF6RPUHR/+3/7gYClszkLWrbicgnDnNgjf5MZpSADF5ZjPfED8VX
- lN3SdQUfsA3kzTG9vy+0lRjZlRZHJ6z7w72NpbsmEq6j6DZBWhiCrBsGt7q8/2naXigesc8cr
- Z7C/OCDfGDwdmKMjpiGgSGwGbG0RwQoGjkWpfwi7v0/vHon6sEFcv9wgC8Azlqpbw9sH4yWwQ
- eEDkOjUI6MsnqpUSXcn1O2aiA8GlxCLgCqhMsS7gSGQ8TzBJBshpGG/YzjLsD5hSdM7H7hZOF
- D8mj1kzsWA==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_NONE=0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <20201214121615.29967-1-alex.chen@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="OfrWf2Fun5Ae4m0Y"
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,77 +72,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:23 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 17:00:56 -0000
 
-From: zhouyang <zhouyang789@huawei.com>
+--OfrWf2Fun5Ae4m0Y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I found some style problems while check the code using checkpatch.pl.
-This commit fixs the issue below:
-ERROR: open brace '{' following struct go on the same line
+On Mon, Dec 14, 2020 at 12:16:15PM +0000, Alex Chen wrote:
+> The 'ch' will be NULL in the following stack:
+> send_notify_iov()->fuse_send_msg()->virtio_send_msg(), and
+> this may lead to NULL pointer dereferenced in virtio_send_msg().
+> But send_notify_iov() was never called, so remove the useless code
+> about send_notify_iov() to fix this problem.
+>=20
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  tools/virtiofsd/fuse_lowlevel.c | 98 ---------------------------------
+>  1 file changed, 98 deletions(-)
 
-Signed-off-by: zhouyang <zhouyang789@huawei.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20201209060735.2760943-1-zhouyang789@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- fsdev/9p-marshal.h | 12 ++++--------
- fsdev/file-op-9p.h |  3 +--
- 2 files changed, 5 insertions(+), 10 deletions(-)
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-diff --git a/fsdev/9p-marshal.h b/fsdev/9p-marshal.h
-index 8f3babb60a05..ceaf2f521ec4 100644
---- a/fsdev/9p-marshal.h
-+++ b/fsdev/9p-marshal.h
-@@ -1,21 +1,18 @@
- #ifndef QEMU_9P_MARSHAL_H
- #define QEMU_9P_MARSHAL_H
- 
--typedef struct V9fsString
--{
-+typedef struct V9fsString {
-     uint16_t size;
-     char *data;
- } V9fsString;
- 
--typedef struct V9fsQID
--{
-+typedef struct V9fsQID {
-     uint8_t type;
-     uint32_t version;
-     uint64_t path;
- } V9fsQID;
- 
--typedef struct V9fsStat
--{
-+typedef struct V9fsStat {
-     int16_t size;
-     int16_t type;
-     int32_t dev;
-@@ -35,8 +32,7 @@ typedef struct V9fsStat
-     int32_t n_muid;
- } V9fsStat;
- 
--typedef struct V9fsIattr
--{
-+typedef struct V9fsIattr {
-     int32_t valid;
-     int32_t mode;
-     int32_t uid;
-diff --git a/fsdev/file-op-9p.h b/fsdev/file-op-9p.h
-index d51cec2f3be0..42f677cf38c2 100644
---- a/fsdev/file-op-9p.h
-+++ b/fsdev/file-op-9p.h
-@@ -110,8 +110,7 @@ typedef union V9fsFidOpenState V9fsFidOpenState;
- 
- void cred_init(FsCred *);
- 
--struct FileOperations
--{
-+struct FileOperations {
-     int (*parse_opts)(QemuOpts *, FsDriverEntry *, Error **errp);
-     int (*init)(FsContext *, Error **errp);
-     void (*cleanup)(FsContext *);
--- 
-2.29.2
+--OfrWf2Fun5Ae4m0Y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/Xmj0ACgkQnKSrs4Gr
+c8gzbwf/bCUBkfZYOsB6f308r6UMHNN+JKwB5bST///FIRAExhgsjVDEKUDlSSvD
+qN8d+2CbJYBqqE3f6M6RRghfKJnT3ZBWyLJH0qhYvAhsFai1AsvRJ1DtZGOeOJVP
+YujxXbR9plJibl3gwTaVFcJwD5htuRitFssJvcWfWKPCbMAFw6JPjui6ZEDtbLPr
+oZBu9V1eMwcA4muwRwDzKWjUYqntU9qoHnLzwwxjPECaiNmTQtvQOdUk5hLy09jR
+nREhDZfQf/o4rwNj+dGc7OAMIPC87f2y9/Utt80bDgApHjmfLiuBKdZWljOhP5s/
+8C1jM9l4GZWHjLj2JEsKLFXTL5R2Tw==
+=t9Am
+-----END PGP SIGNATURE-----
+
+--OfrWf2Fun5Ae4m0Y--
 
 
