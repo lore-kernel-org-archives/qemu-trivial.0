@@ -1,68 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kokgk-0001Yb-PU
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 05:02:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35488)
+	id 1kolqF-0004sc-1n
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 06:16:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kokgj-0001WC-2x
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 05:02:41 -0500
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:32892)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kokgg-0006Pv-8b
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 05:02:40 -0500
-Received: by mail-ej1-x642.google.com with SMTP id b9so21761228ejy.0
- for <qemu-trivial@nongnu.org>; Mon, 14 Dec 2020 02:02:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=g6oGwWfC2tLM6MDB8VMiDetgNUyAFs9ZEtZ1bfezA0I=;
- b=gWxu5+4Kvk8taBGO1FUikbEV0D5yFPhMnPneyora0GdK3f4HG97BwCkkas4WPCS8eL
- KXDVa2bN8XGaxPTq/0XBvWXZTe1hNHzfT9VCVU+EfPSsd55+6VyyLEnbGm93CLAgeJRt
- x2dSq/bnsbtFoEmqjBe93UIO82FBdfnRadtyphLFHULPT9tljQCjYNXPWLs2TRfUArrG
- J6ETWmmjwPSZBmvaVjKP5RWu6vWnVwBHXeYPuHexmWzS+CtnxBIBvYFVO8Vi6PpWQeg+
- cdlzB1e/vzagLyXIUgzPe0N8E/kBsr3h1/yuZh96RDyDBHF09RSAC69ZR5WP0loeYxiB
- MT5Q==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kolq1-0004q9-DE
+ for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 06:16:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26033)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kolpy-0008Kv-IW
+ for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 06:16:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607944578;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OQdMLotxjpaz51sWXsbU/PEXVDKAqbWm1m7IWUWH82I=;
+ b=HEzVwc4nalSfZZBQbRwl6VWuvp/1QHLFOYv3vqUQHkyJKX9ArmAx1czgl0CuusmJEyT7BD
+ 3wYxTUOGAGmqZCVw/WiKPH5pLWHvk386wJmWINsSWky3Fzqs5tl6EFANGu3t1weB7CsfKO
+ p5qT3sNvG/VBuTKk8N2S1FvVJvjEdlU=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-77-lBWaLvEWMFi5kjrvUtj-Zw-1; Mon, 14 Dec 2020 06:16:13 -0500
+X-MC-Unique: lBWaLvEWMFi5kjrvUtj-Zw-1
+Received: by mail-wr1-f70.google.com with SMTP id d2so6503269wrr.5
+ for <qemu-trivial@nongnu.org>; Mon, 14 Dec 2020 03:16:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=g6oGwWfC2tLM6MDB8VMiDetgNUyAFs9ZEtZ1bfezA0I=;
- b=p8ki9Am7W7ZX8oBdu7uKe8PfenI+w/jBevSzT3v6IwWtSC9tBS8dXd7m2C68Pjsf/n
- yUZ6XUAOMosDRt8TJEAQhWEtHN2vjaVafYM0nW4jj2oyMcYlntgaTY6rdSqC3zkQZ3sX
- uj/Q9OUi4EyP/1tSEyxa8c6UGMB8b102TIOjXcbBMLpLZm+waH04BzzvxmujHo2MyTcv
- zyO6x48Nix386HornRV/CZoNdmhF5HuE+p3cJZxVQzuke89W1qHCp7lRTZ6JebaZTWiu
- cypuz9/N0F4jWkUYHDw9pmsWLFa/tlp3bAgsczRbVe+j670kTPE23Prl5y8EsNjKRwQq
- nncA==
-X-Gm-Message-State: AOAM5322zG4FS9NQ9B2amsjRE+CiQNYYeqf4t8yvcYOUOmN9/vk+lter
- dJ9aG02GzNQkqQU2xJneX6Ec3IVgjoHvaYDnCsk9gw==
-X-Google-Smtp-Source: ABdhPJxaNAWKsm2wn0Jla+rzjzLkd73czIC3p9ZncAzAzQesid6qugXzKQqj2exsTmZkYosXFVjiVVSVRxQ37zMgx24=
-X-Received: by 2002:a17:906:195a:: with SMTP id
- b26mr9782024eje.4.1607940156267; 
- Mon, 14 Dec 2020 02:02:36 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OQdMLotxjpaz51sWXsbU/PEXVDKAqbWm1m7IWUWH82I=;
+ b=HfEPUzyiIBmGrz3ExEE44HQaQB2GvZosypmWzcJwduZIOG+sP8bn72683gFMQ3NK2q
+ zgynYSIRRqHIY0O6yFh94VRgP10+9+DC6k+Qe6+WY5LADdnX/jyL1YqeK3OytfIQvrKx
+ QdaIZIdsHdNw8wOPBQT3Z9Zf/yU4brgNpIs/YxEYZLodw6DxIpGwHX6VXOoH5QNCsBJG
+ CBJ/Jo+0WVNbuqQLao8bvzROYtCQjnG7Mxxm2PDsGkFf5TAr9b50Q3qLzFEia7UwXgG7
+ gBTzk11Do3TWDpdEc57PsWtMC6OLeZYJ6A9QVe2XujRYNKiUlrRuizh1lQ/0tHkmMa5y
+ PUew==
+X-Gm-Message-State: AOAM5308q4qnJDbATJTULndnxFK83iMpCMQUwygqGAcjHsP+9+AWAuMJ
+ jyc3OtywWggU2ETW8cN5W8KNFvJTFJkFzAIn8zSMODJ8CgIQSGXn0T8HTbyduWnLxTeVOnA88DY
+ ZuSscuSOZShUeVp+QPg==
+X-Received: by 2002:adf:fb03:: with SMTP id c3mr23545236wrr.248.1607944571561; 
+ Mon, 14 Dec 2020 03:16:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwGgm+3dMjUKaeWCmtokAP0NXT0VSRSsKwFEfFGy9VU4sNgmwWcbwNSh8ircozFPUjZT+/51w==
+X-Received: by 2002:adf:fb03:: with SMTP id c3mr23545193wrr.248.1607944571261; 
+ Mon, 14 Dec 2020 03:16:11 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:63a7:c72e:ea0e:6045?
+ ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
+ by smtp.gmail.com with ESMTPSA id m17sm33867416wrn.0.2020.12.14.03.16.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Dec 2020 03:16:10 -0800 (PST)
+Subject: Re: [PATCH] scripts/git.orderfile: Keep files with .inc extension
+ sorted
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+References: <20201213205132.243628-1-f4bug@amsat.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <c777aead-4080-09e7-7db4-30d56de83d76@redhat.com>
+Date: Mon, 14 Dec 2020 12:16:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <20201214002620.342384-1-f4bug@amsat.org>
-In-Reply-To: <20201214002620.342384-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Dec 2020 10:02:24 +0000
-Message-ID: <CAFEAcA8eB=EC2=_BJYrg3kPWi9U7tqrgg2M0UiOjKcyzgJN10A@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/block/nand: Decommission the NAND museum
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Max Reitz <mreitz@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
+In-Reply-To: <20201213205132.243628-1-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,43 +94,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 10:02:41 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 11:16:29 -0000
 
-On Mon, 14 Dec 2020 at 00:26, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> This is the QEMU equivalent of this Linux commit (but 7 years later):
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
-/?id=3Df7025a43a9da2
->
->     The MTD subsystem has its own small museum of ancient NANDs
->     in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
->     The museum contains stone age NANDs with 256 bytes pages, as well
->     as iron age NANDs with 512 bytes per page and up to 8MiB page size.
->
->     It is with great sorrow that I inform you that the museum is being
->     decommissioned. The MTD subsystem is out of budget for Kconfig
->     options and already has too many of them, and there is a general
->     kernel trend to simplify the configuration menu.
->
->     We remove the stone age exhibits along with closing the museum,
->     but some of the iron age ones are transferred to the regular NAND
->     depot. Namely, only those which have unique device IDs are
->     transferred, and the ones which have conflicting device IDs are
->     removed.
->
-> The machine using this device are:
-> - axis-dev88
-> - tosa (via tc6393xb_init)
-> - spitz based (akita, borzoi, terrier)
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 13/12/20 21:51, Philippe Mathieu-Daudé wrote:
+> Sort .inc files along with the extension including them.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
-> v3: Do not manually convert tabs to space to avoid mistakes...
+>   scripts/git.orderfile | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+> index 3736c1d6aff..b32203b7106 100644
+> --- a/scripts/git.orderfile
+> +++ b/scripts/git.orderfile
+> @@ -12,6 +12,7 @@
+>   # Documentation
+>   docs/*
+>   *.rst
+> +*.rst.inc
+>   
+>   # build system
+>   configure
+> @@ -28,9 +29,11 @@ qga/*.json
+>   
+>   # headers
+>   *.h
+> +*.h.inc
+>   
+>   # decoding tree specification
+>   *.decode
+>   
+>   # code
+>   *.c
+> +*.c.inc
+> 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Queued, thanks.
 
-thanks
--- PMM
+Paolo
+
 
