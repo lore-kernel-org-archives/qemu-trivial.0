@@ -1,58 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koaI4-0000OW-QZ
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 17:56:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43470)
+	id 1kobhA-0000G2-Vd
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Dec 2020 19:26:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koaI3-0000OE-2g; Sun, 13 Dec 2020 17:56:31 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:55977)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koaI1-0003ex-G4; Sun, 13 Dec 2020 17:56:30 -0500
-Received: from [192.168.100.1] ([82.252.135.218]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MQNF3-1kSuhS33xJ-00MOaA; Sun, 13 Dec 2020 23:56:23 +0100
-Subject: Re: [PATCH v2 2/4] Makefile: Require GNU make 3.82+
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200825202755.50626-1-r.bolshakov@yadro.com>
- <20200825202755.50626-3-r.bolshakov@yadro.com>
- <1ff85cc3-40dc-98da-fb18-a1b3d134d7dc@redhat.com>
- <bc560d06-2b8d-3ef0-b9e6-ddaeb58daa13@vivier.eu>
- <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
-Date: Sun, 13 Dec 2020 23:56:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kobh6-0000EL-Rw; Sun, 13 Dec 2020 19:26:28 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:43564)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kobh3-0001DJ-C0; Sun, 13 Dec 2020 19:26:27 -0500
+Received: by mail-wr1-x443.google.com with SMTP id y17so14711588wrr.10;
+ Sun, 13 Dec 2020 16:26:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HpEWn8UPKBlE5og7qP2cAW4mdzti1zrsKB2AYD+k8Bk=;
+ b=hZHkiRJYdXLK/F2HWGCe8BBjQOLr59DYUyDuxrCOaDKlO9ITbbIe0sZ9gZoNopxVDh
+ PW8x1oAYk7aTe3hbbXfb43ZkpLU1z+r3bmlPg+S0iUChxxqgqtGIoXonKQwcCt+og0Yb
+ ixoXSa2wSH9Ak6C/fn22o0kc1/6t21vnnNUztrIhnxjwhD0mTiwe6l6BkljvDcsmyGgN
+ aGnj+gZoM4JaF5CUSjaBlIHbHUrZrBWvtEKrHtJaue62Aj/jwqR7EMkOIul+qNuoJ0LY
+ 4Ds78m44p/8L73yKxLK1nsIJLo5hfSRi++KAnTpQsmPN1bbaDOtSwzlTVveQIRs//ImW
+ t4Hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=HpEWn8UPKBlE5og7qP2cAW4mdzti1zrsKB2AYD+k8Bk=;
+ b=PgBjEHBTpNW0chhbcjHRPhtSMAmAMhdB0VGdM50D0f/73ka9tHoiRBCn3jTRJdlv40
+ jmap9VqeB7EPrtCwaRwxJyO4tZ7cTK0fQaFXVldH8me6lGvxwHtfzkLBPJ7iFoxvsbr4
+ JwL6PAGvw2vwSPV9HV84GBZx6dgFViMYn8FzX9icOrHpMf1bTyK8uQ0JUlmnFRCsc5YM
+ n0RGRHfrHz//TBmGNCnevkBUYkswj0/pGQOBIntxT1Y8VUGzKZKMP7TB+xILeMXDTZnY
+ qrbgDvDnqgePMMgF01lHH79fjNPoQUrNj834IxOkcwhcf0OKttTuF9fivaNahc02/tOr
+ ym7w==
+X-Gm-Message-State: AOAM530ta79qCD5r6Jh1KJJT64G5i5Cy3LpAUhYbHaIyylD+hnWCFeYC
+ T1D/2ucNG5Nz8qUkm3ozunu5SirqDBk=
+X-Google-Smtp-Source: ABdhPJyRCmhrfqFMiQCg035NUpi+GZVT8HSg3mfaqJqjKd9+5HqmH5Ji2iZFGP/V7mi4+mPkyzWn2A==
+X-Received: by 2002:a5d:6909:: with SMTP id t9mr19047192wru.327.1607905582648; 
+ Sun, 13 Dec 2020 16:26:22 -0800 (PST)
+Received: from localhost.localdomain (101.red-88-21-206.staticip.rima-tde.net.
+ [88.21.206.101])
+ by smtp.gmail.com with ESMTPSA id l8sm28197427wmf.35.2020.12.13.16.26.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 13 Dec 2020 16:26:21 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3] hw/block/nand: Decommission the NAND museum
+Date: Mon, 14 Dec 2020 01:26:20 +0100
+Message-Id: <20201214002620.342384-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TsbXwlKAq9P1CNDPLPwOhwl7XWKwYE9is614oOk+famloG0pI7E
- dRjJrBfUYhuJsn/lz2qV/hIjz2MlGXNVOgqjTYSGtBe+ASu6qWT4Z3M/s4upjuTm6vRbdVO
- WjSQWEWP8SdknU7B7XXqTO0WGRAxdi8YyWx5Zy99MvU7BgTuqgqjsRRMnW9C9vZxj2qEc3A
- CdoYUGD0ZmQbNvvsg78SA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BrKI+KQA0aE=:UpY+lM4m5YzoCI/37/9sH8
- k52ZTWF54fhd+8nnLQVaI9Mt8VaWoHLGK1SolTq3iMhZ/6EB9d3ja3IhUPICRascsHhNduPUO
- LdakfdjRIYhJRjpmUvZziDTkOw8by+WH6Day28M24adNiXsk+08PZNLn/XTBTCIn6EB56prjn
- a2/FxV8HuCUBFORFcjo7dEV8wP2tdSPbh3Fsm26pA/yu8zTA7IkbfjOn1OVr0jHUf+acq7zAE
- Yse+vvUAXbiVCb5WvqyDRJCkeiIKIl9opAw8xtRk2AgLWGabt6ZLe2Uw7FxcwTkXJX3bSJhw0
- LJm/qsNNAbpsxcAqusyM3S4exqvMwCeAnuGGpuhiX+F653o3C1lPahFf3h8RswEFs4r927M18
- j9T0BGIUbfFZCTQR75KObROwue+L+j6OAFiD1rZ81fSlimlwVL0ZjroQ4ONfaQ1d8XDz4/Jx+
- lbL4tjTY0g==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,43 +80,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Dec 2020 22:56:31 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 00:26:29 -0000
 
-Le 13/12/2020 à 20:04, Peter Maydell a écrit :
-> On Sun, 13 Dec 2020 at 17:22, Laurent Vivier <laurent@vivier.eu> wrote:
->>
->> Le 12/10/2020 à 11:47, Thomas Huth a écrit :
->>> On 25/08/2020 22.27, Roman Bolshakov wrote:
->>>> QEMU build fails with cryptic messages if make is too old:
->>>>
->>>>   Makefile.ninja:2655: *** multiple target patterns.  Stop.
->>>>
->>>> To avoid the confusion it's worth to fail the build right away and print
->>>> a friendly error message.
->>>>
->>>> +ifeq ($(filter undefine,$(value .FEATURES)),)
->>>> +$(error Unsupported Make version: $(MAKE_VERSION). \
->>>> +        Please use GNU Make 3.82 or above)
->>>> +endif
->>>> +
->>>>  # Always point to the root of the build tree (needs GNU make).
->>>>  BUILD_DIR=$(CURDIR)
->>>
->>> Reviewed-by: Thomas Huth <thuth@redhat.com>
->>>
->>>
->>
->> Applied to my trivial-patches branch.
-> 
-> Commit 09e93326e448ab4 says that the switch to ninja from
-> ninjatool removed the requirement for Make 3.82. Is this
-> change still required?
->
+This is the QEMU equivalent of this Linux commit (but 7 years later):
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
 
-It seems 09e93326e448ab4 has been committed on 17th of October, so after Thomas' review.
-I remove it from my queue.
+    The MTD subsystem has its own small museum of ancient NANDs
+    in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
+    The museum contains stone age NANDs with 256 bytes pages, as well
+    as iron age NANDs with 512 bytes per page and up to 8MiB page size.
 
-Thanks,
-Laurent
+    It is with great sorrow that I inform you that the museum is being
+    decommissioned. The MTD subsystem is out of budget for Kconfig
+    options and already has too many of them, and there is a general
+    kernel trend to simplify the configuration menu.
+
+    We remove the stone age exhibits along with closing the museum,
+    but some of the iron age ones are transferred to the regular NAND
+    depot. Namely, only those which have unique device IDs are
+    transferred, and the ones which have conflicting device IDs are
+    removed.
+
+The machine using this device are:
+- axis-dev88
+- tosa (via tc6393xb_init)
+- spitz based (akita, borzoi, terrier)
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v3: Do not manually convert tabs to space to avoid mistakes...
+
+While this patch only *removes* lines, checkpatch still complains:
+
+ ERROR: code indent should never use tabs
+ #14: FILE: hw/block/nand.c:150:
+ +    [0x6b] = { 4,^I8,^I9, 4, 0 },$
+
+ ERROR: code indent should never use tabs
+ #15: FILE: hw/block/nand.c:151:
+ +    [0xe3] = { 4,^I8,^I9, 4, 0 },$
+
+ ERROR: code indent should never use tabs
+ #16: FILE: hw/block/nand.c:152:
+ +    [0xe5] = { 4,^I8,^I9, 4, 0 },$
+
+ ERROR: code indent should never use tabs
+ #17: FILE: hw/block/nand.c:153:
+ +    [0xd6] = { 8,^I8,^I9, 4, 0 },$
+
+ ERROR: code indent should never use tabs
+ #18: FILE: hw/block/nand.c:154:
+ +    [0xe6] = { 8,^I8,^I9, 4, 0 },$
+---
+ hw/block/nand.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/hw/block/nand.c b/hw/block/nand.c
+index 1d7a48a2ec2..9ed54a0a922 100644
+--- a/hw/block/nand.c
++++ b/hw/block/nand.c
+@@ -137,7 +137,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
+ # define ADDR_SHIFT		16
+ # include "nand.c"
+ 
+-/* Information based on Linux drivers/mtd/nand/nand_ids.c */
++/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
+ static const struct {
+     int size;
+     int width;
+@@ -147,21 +147,11 @@ static const struct {
+ } nand_flash_ids[0x100] = {
+     [0 ... 0xff] = { 0 },
+ 
+-    [0x6e] = { 1,	8,	8, 4, 0 },
+-    [0x64] = { 2,	8,	8, 4, 0 },
+     [0x6b] = { 4,	8,	9, 4, 0 },
+-    [0xe8] = { 1,	8,	8, 4, 0 },
+-    [0xec] = { 1,	8,	8, 4, 0 },
+-    [0xea] = { 2,	8,	8, 4, 0 },
+-    [0xd5] = { 4,	8,	9, 4, 0 },
+     [0xe3] = { 4,	8,	9, 4, 0 },
+     [0xe5] = { 4,	8,	9, 4, 0 },
+     [0xd6] = { 8,	8,	9, 4, 0 },
+-
+-    [0x39] = { 8,	8,	9, 4, 0 },
+     [0xe6] = { 8,	8,	9, 4, 0 },
+-    [0x49] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+-    [0x59] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+ 
+     [0x33] = { 16,	8,	9, 5, 0 },
+     [0x73] = { 16,	8,	9, 5, 0 },
+-- 
+2.26.2
 
 
