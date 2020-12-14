@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEq-0008Eo-8z
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34328)
+	id 1koqEs-0008HY-AG
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEh-00080x-8z; Mon, 14 Dec 2020 10:58:07 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:50781)
+ id 1koqEi-00084o-Km; Mon, 14 Dec 2020 10:58:08 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:60141)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEX-0001Rp-4q; Mon, 14 Dec 2020 10:58:07 -0500
+ id 1koqEZ-0001TV-O3; Mon, 14 Dec 2020 10:58:08 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MjSDU-1kPynE3hs2-00kxt7; Mon, 14 Dec 2020 16:57:51 +0100
+ id 1MZTua-1ka79W1VGY-00WTIv; Mon, 14 Dec 2020 16:57:48 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 17/19] configure / meson: Move check for sys/signal.h to
- meson.build
-Date: Mon, 14 Dec 2020 16:57:31 +0100
-Message-Id: <20201214155733.207430-18-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Pan Nengyuan <pannengyuan@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Kevin Wolf <kwolf@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, Chen Qun <kuhn.chenqun@huawei.com>
+Subject: [PULL 13/19] blockdev: Fix a memleak in drive_backup_prepare()
+Date: Mon, 14 Dec 2020 16:57:27 +0100
+Message-Id: <20201214155733.207430-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:U+sLFcYb/yAKwqzvYeU0betj4us0/md4m36iyOZmM02GhP7r+oR
- pkFf+88GHVvpRsYLOBes7/LFwr7LntVE4WIHxhNtt3vZJb5zOWDSYDRs0NbOabunNxY+aDc
- SLmfj47hh18E/x5T2/a2fQe9nIBWHO+yrSA+v+I3oH3rfI01U1vR0REZLii5gFgY4emWH8b
- aYkAH1tB7JwvrlXMl3Ytg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gVEz/gI4gcg=:Z5iptEpOJN1HMNMi25bLz6
- GtjUr7iPSsZeWGrGeG9JqTICuz7QlQCmSnjMSf8gZrcou3+59h4aPZLmqFfO6BjDw9cbqDM3Y
- F0apfGrAZAf+SwCQ+ojFIwYKhmtgjVYEeyxt9FZPIMsi4nHzmXjVVKGGFFHuNn/dX1gqulxsh
- GPbSjmlOX0NZMXU3vGfmnOYiOKuDivPjvY0S0wS55mzUKfexRvz20aG8O6NhLfyyqoRLt+enz
- 3p45kmTOrLIyl08Qw9nsCSz8cnCdxX8LVW/CsIZoUwLgmdLKl18WZsOpCefL7WcZyZGvLHAb+
- 5fue/hRU6qILWOMsOrP5jLLYjfMizMItgk64kKRs0lcz8sv6mE1AVPyQMP1k38XAbGF36YF6C
- CZed3sI8knPV+/j1BfVXLGI/gXI8mlbJvKxfdTyGUMTA1wkSHEp7b2rjHCWcLWc0oTY8/cgDb
- 8tPApq4isw==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:735+zZjV7Kg4dys7SHq0LOXjYZoOFfqX/1cVH3mOYk/haK2LGKb
+ Th8U6fcsWdlRLgXmtv1T60/d7Srcj+0kFXNA6R+1ST6eIWA+g0AVy4Y3128i+CeYAE70pjB
+ 21wf6MP/ruvpsfcNzwy3TNtKiVIutCF7s2sZlMt8gjn/PexMhAbwSeM2DQeGBxRNZGUtsST
+ lc3xAghxKEsu6Afh6tIFg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ru3d2tFhvI8=:Q63Rp7jrB3UF+FXiXgUYVz
+ yY/DkpNF7ifQYBE4UWU5rFn0KoVC/l9cxXCbidNFg8EoWmALQtjyLL4J0FXJ2Xj78XReeeOmX
+ SEoErDpuE+jz0BAujXjjvMVITqrGxKXNlDykMvNzG+fc3j6IuCeT88UUjuae4wrmjHxgbuAZW
+ gIevbxJXIXs1CZppw0V8Z94JY6XJkBXJfsoYXkBBP95USKBb7gv1skKdHMtUk2rDju5OT3vHW
+ jOIVK2JZLs97KTRA6Kdu0k6+uJ+HxIri7Mza4uL0lWkcwY1wcnc0WlHumBUM00+9Br1BxwOWI
+ GIzqy5LJ3IkYml/CttP7a2WQcvfaH+Tx2YGkd+dS2hS0qlvzvosXDh6gUhGjrPMODC7cEF3lC
+ QVFwUK4Kyi30liDpVjcFaLcxbOu2GNATDW5N0EDXDg1yxu8WE3mUqUS8blJy19dUE7MOasupW
+ KjShUm/gig==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,62 +58,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:07 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:58:09 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-This check can be done in a much shorter way in meson.build
+'local_err' seems forgot to propagate in error path, it'll cause
+a memleak. Fix it.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20201118171052.308191-5-thuth@redhat.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Message-Id: <20201023061218.2080844-7-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure   | 10 ----------
- meson.build |  1 +
- 2 files changed, 1 insertion(+), 10 deletions(-)
+ blockdev.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index ec2fae9e09c0..4f0f9c99d3d2 100755
---- a/configure
-+++ b/configure
-@@ -3101,13 +3101,6 @@ EOF
-     fi
- fi
- 
--#########################################
--# sys/signal.h check
--have_sys_signal_h=no
--if check_include "sys/signal.h" ; then
--  have_sys_signal_h=yes
--fi
--
- ##########################################
- # VTE probe
- 
-@@ -6204,9 +6197,6 @@ fi
- if test "$have_openpty" = "yes" ; then
-     echo "HAVE_OPENPTY=y" >> $config_host_mak
- fi
--if test "$have_sys_signal_h" = "yes" ; then
--    echo "HAVE_SYS_SIGNAL_H=y" >> $config_host_mak
--fi
- 
- # Work around a system header bug with some kernel/XFS header
- # versions where they both try to define 'struct fsxattr':
-diff --git a/meson.build b/meson.build
-index fc7ae6f86826..a790cc527cf9 100644
---- a/meson.build
-+++ b/meson.build
-@@ -839,6 +839,7 @@ config_host_data.set('QEMU_VERSION_MICRO', meson.project_version().split('.')[2]
- config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
- config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
- config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
-+config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
- 
- ignored = ['CONFIG_QEMU_INTERP_PREFIX'] # actually per-target
- arrays = ['CONFIG_AUDIO_DRIVERS', 'CONFIG_BDRV_RW_WHITELIST', 'CONFIG_BDRV_RO_WHITELIST']
+diff --git a/blockdev.c b/blockdev.c
+index 412354b4b6ac..2431448c5d41 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -1827,6 +1827,7 @@ static void drive_backup_prepare(BlkActionState *common, Error **errp)
+     if (set_backing_hd) {
+         bdrv_set_backing_hd(target_bs, source, &local_err);
+         if (local_err) {
++            error_propagate(errp, local_err);
+             goto unref;
+         }
+     }
 -- 
 2.29.2
 
