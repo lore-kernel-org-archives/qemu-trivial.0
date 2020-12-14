@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEv-0008Iy-O1
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
+	id 1koqEq-0008Fb-Gz
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEj-00086M-DT; Mon, 14 Dec 2020 10:58:09 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:54421)
+ id 1koqEh-00081L-FK; Mon, 14 Dec 2020 10:58:07 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:34645)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEd-0001Tk-85; Mon, 14 Dec 2020 10:58:09 -0500
+ id 1koqEV-0001RG-Nn; Mon, 14 Dec 2020 10:58:07 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N4i7l-1k4t0W0EB5-011fGC; Mon, 14 Dec 2020 16:57:47 +0100
+ id 1MoNu2-1kM9J13kGu-00opV9; Mon, 14 Dec 2020 16:57:44 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Pan Nengyuan <pannengyuan@huawei.com>,
- Euler Robot <euler.robot@huawei.com>,
- Stefano Garzarella <sgarzare@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, Chen Qun <kuhn.chenqun@huawei.com>
-Subject: [PULL 12/19] block/file-posix: fix a possible undefined behavior
-Date: Mon, 14 Dec 2020 16:57:26 +0100
-Message-Id: <20201214155733.207430-13-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Gan Qixin <ganqixin@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 08/19] ads7846: moves from the hw/display folder to the
+ hw/input folder.
+Date: Mon, 14 Dec 2020 16:57:22 +0100
+Message-Id: <20201214155733.207430-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qLDPQrEQtWG2Dg8c4z8b4jPx7wioZRQYyfh02lniGNRyZgW6mcH
- yhMzXtwahF9OUjwU9OMfdyrh4hmSD2pnjckaIx0kDeS8plhW4OPaQJJmXCCBJ9p2c625S6j
- hb7CAJq8hMjzsthFFp78RH7aKlmfwCy0BWXtM1pWc0OSuhiBqxK5HkUX0OemwtvmD63H1fL
- HCGKR3AnaIwPCkUPRbHFw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3mjSvXPmnhs=:NPP9GK/c2W8/WX3hkIKezS
- cDOIlq2Ng7CrvMIsf4AQtoLGzRzJ0edp5v0rhpiEWWrTmELQ/2O7IBnJWuBik8QPNKucnHsvT
- gixjUh6YRgFMhFVwETcuDkLXJv2Upp9PTxxTCVCxUQ9XbGV3HoaNWjCevKOyxRgo6V4Gtkwe7
- n710NQgNL7FxranOuJK8o5K9h+Bst5aBys6Ly9tPcTXanSIX7BmZwkd6lU49ucggCY9LOrrSG
- cQBFWsQlkcEts2TjGEJTBgu9wCYne+NTI0reoss4/fnAg0Za7y+tekXHNCp+en2gNnnkDoqRI
- +ssJFxsUKFtKdQsDgRllRf+eRYn/yWgyNrHaKHvfXW9ZIIPIB2e8/PBSAPObYOdWbCoLOn6oY
- do4DarAO0QerLAGWDBSNtgfkIkg3xbmuMiEN7/D80X3qPcAC6C5A67sPDNL4cTIRI8EPeQ93p
- Ywz04Wcu7Q==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:0WKpRjXuBi8JwZ9eWpDAIR94JA6hlF7eM8C5YcsRp8JVnmWtlm5
+ WzVQYJv2gLKKUdqCkiYWlK+NkaK6QwnQzA6pjqgtesWbWeQkTU2WZoBHIKYf7qnecU+//7e
+ fIUyk9Ho4/7Ihlr8najGYrh44PcGGQIhPtND7ybNEvTuJ+x5sTUV4OnW3escUgGbCNKkIIa
+ miWE8wDRAWquFPb0/u1Og==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TMOv9w+DPrc=:saLVOzw4HNpL/dwp92moBc
+ tzmOzB3RCh2P/EhwEBlg73DHUZk47PTpdpGdVoXcPTBay6p4WSn+/r0utuNqRGb6OWYRC+QVd
+ sm3QPPF0JqhPbVSCV4LFrIfzxlcAqIMlIe3p0lqss96T8GNFofoc4aEg9l7t9Odc3m1LcyPxM
+ Cw4PtNBfckaVfr73KCf6V+6OmzN5pXbeKi2XAKZ3BmlrkoYhy4AM2Y8tEm2xsd/+dfiDC+l4e
+ SzIFx6GlRhEA8RB5ohf7/zEIoWViVupZwTVrfeQv4Zl8RPUMtissX6JZxyD3pVbqp4Xp5VKTZ
+ oNhwGBawPmyVtATWCcYE6e3q/TJb7mHd7AkaEnm/9ndwEo7k2CL8UXlAUzbDjJCsp9cx3uB1f
+ cyh/NeXmwNrLGYz+KSprp8bxo0GkIYKlkVif9dCdmMafRjJ6lOuDF2JPwpmkeD0DP1yMVpKZE
+ QL22jiameQ==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,39 +58,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:09 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:58:07 -0000
 
-From: Pan Nengyuan <pannengyuan@huawei.com>
+From: Gan Qixin <ganqixin@huawei.com>
 
-local_err is not initialized to NULL, it will cause a assert error as below:
-qemu/util/error.c:59: error_setv: Assertion `*errp == NULL' failed.
+ads7846 is a touch-screen controller that is an input device rather
+than a display device, so move it to the hw/input folder.
 
-Fixes: c6447510690
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Reviewed-by: Kevin Wolf <kwolf@redhat.com>
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Message-Id: <20201023061218.2080844-8-kuhn.chenqun@huawei.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20201115123503.1110665-1-ganqixin@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block/file-posix.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/Kconfig                  | 2 +-
+ hw/display/Kconfig              | 3 ---
+ hw/display/meson.build          | 1 -
+ hw/input/Kconfig                | 3 +++
+ hw/{display => input}/ads7846.c | 0
+ hw/input/meson.build            | 1 +
+ 6 files changed, 5 insertions(+), 5 deletions(-)
+ rename hw/{display => input}/ads7846.c (100%)
 
-diff --git a/block/file-posix.c b/block/file-posix.c
-index 83e2cc55306c..9804681d5c44 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -2111,7 +2111,7 @@ static void raw_aio_attach_aio_context(BlockDriverState *bs,
- #endif
- #ifdef CONFIG_LINUX_IO_URING
-     if (s->use_linux_io_uring) {
--        Error *local_err;
-+        Error *local_err = NULL;
-         if (!aio_setup_linux_io_uring(new_context, &local_err)) {
-             error_reportf_err(local_err, "Unable to use linux io_uring, "
-                                          "falling back to thread pool: ");
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index eb8a8844cf86..0a242e4c5d8a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -156,7 +156,7 @@ config TOSA
+ 
+ config SPITZ
+     bool
+-    select ADS7846 # display
++    select ADS7846 # touch-screen controller
+     select MAX111X # A/D converter
+     select WM8750  # audio codec
+     select MAX7310 # GPIO expander
+diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+index 15d59e10dc2c..ca46b5830e73 100644
+--- a/hw/display/Kconfig
++++ b/hw/display/Kconfig
+@@ -9,9 +9,6 @@ config EDID
+ config FW_CFG_DMA
+     bool
+ 
+-config ADS7846
+-    bool
+-
+ config VGA_CIRRUS
+     bool
+     default y if PCI_DEVICES
+diff --git a/hw/display/meson.build b/hw/display/meson.build
+index dad3bd2b414b..9d79e3951d9e 100644
+--- a/hw/display/meson.build
++++ b/hw/display/meson.build
+@@ -6,7 +6,6 @@ softmmu_ss.add(when: 'CONFIG_EDID', if_true: files('edid-generate.c', 'edid-regi
+ softmmu_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('ramfb.c'))
+ softmmu_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('ramfb-standalone.c'))
+ 
+-softmmu_ss.add(when: 'CONFIG_ADS7846', if_true: files('ads7846.c'))
+ softmmu_ss.add(when: 'CONFIG_VGA_CIRRUS', if_true: files('cirrus_vga.c'))
+ softmmu_ss.add(when: ['CONFIG_VGA_CIRRUS', 'CONFIG_VGA_ISA'], if_true: files('cirrus_vga_isa.c'))
+ softmmu_ss.add(when: 'CONFIG_G364FB', if_true: files('g364fb.c'))
+diff --git a/hw/input/Kconfig b/hw/input/Kconfig
+index 64f14daabf6c..55865bb38696 100644
+--- a/hw/input/Kconfig
++++ b/hw/input/Kconfig
+@@ -1,6 +1,9 @@
+ config ADB
+     bool
+ 
++config ADS7846
++    bool
++
+ config LM832X
+     bool
+     depends on I2C
+diff --git a/hw/display/ads7846.c b/hw/input/ads7846.c
+similarity index 100%
+rename from hw/display/ads7846.c
+rename to hw/input/ads7846.c
+diff --git a/hw/input/meson.build b/hw/input/meson.build
+index e7285b15ae6d..0042c3f0dc54 100644
+--- a/hw/input/meson.build
++++ b/hw/input/meson.build
+@@ -1,5 +1,6 @@
+ softmmu_ss.add(files('hid.c'))
+ softmmu_ss.add(when: 'CONFIG_ADB', if_true: files('adb.c', 'adb-mouse.c', 'adb-kbd.c'))
++softmmu_ss.add(when: 'CONFIG_ADS7846', if_true: files('ads7846.c'))
+ softmmu_ss.add(when: 'CONFIG_LM832X', if_true: files('lm832x.c'))
+ softmmu_ss.add(when: 'CONFIG_PCKBD', if_true: files('pckbd.c'))
+ softmmu_ss.add(when: 'CONFIG_PL050', if_true: files('pl050.c'))
 -- 
 2.29.2
 
