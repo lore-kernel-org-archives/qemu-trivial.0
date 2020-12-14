@@ -1,87 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kolqF-0004sc-1n
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 06:16:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54586)
+	id 1komzc-0002PD-Rg
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 07:30:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kolq1-0004q9-DE
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 06:16:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26033)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kolpy-0008Kv-IW
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 06:16:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607944578;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OQdMLotxjpaz51sWXsbU/PEXVDKAqbWm1m7IWUWH82I=;
- b=HEzVwc4nalSfZZBQbRwl6VWuvp/1QHLFOYv3vqUQHkyJKX9ArmAx1czgl0CuusmJEyT7BD
- 3wYxTUOGAGmqZCVw/WiKPH5pLWHvk386wJmWINsSWky3Fzqs5tl6EFANGu3t1weB7CsfKO
- p5qT3sNvG/VBuTKk8N2S1FvVJvjEdlU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-77-lBWaLvEWMFi5kjrvUtj-Zw-1; Mon, 14 Dec 2020 06:16:13 -0500
-X-MC-Unique: lBWaLvEWMFi5kjrvUtj-Zw-1
-Received: by mail-wr1-f70.google.com with SMTP id d2so6503269wrr.5
- for <qemu-trivial@nongnu.org>; Mon, 14 Dec 2020 03:16:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OQdMLotxjpaz51sWXsbU/PEXVDKAqbWm1m7IWUWH82I=;
- b=HfEPUzyiIBmGrz3ExEE44HQaQB2GvZosypmWzcJwduZIOG+sP8bn72683gFMQ3NK2q
- zgynYSIRRqHIY0O6yFh94VRgP10+9+DC6k+Qe6+WY5LADdnX/jyL1YqeK3OytfIQvrKx
- QdaIZIdsHdNw8wOPBQT3Z9Zf/yU4brgNpIs/YxEYZLodw6DxIpGwHX6VXOoH5QNCsBJG
- CBJ/Jo+0WVNbuqQLao8bvzROYtCQjnG7Mxxm2PDsGkFf5TAr9b50Q3qLzFEia7UwXgG7
- gBTzk11Do3TWDpdEc57PsWtMC6OLeZYJ6A9QVe2XujRYNKiUlrRuizh1lQ/0tHkmMa5y
- PUew==
-X-Gm-Message-State: AOAM5308q4qnJDbATJTULndnxFK83iMpCMQUwygqGAcjHsP+9+AWAuMJ
- jyc3OtywWggU2ETW8cN5W8KNFvJTFJkFzAIn8zSMODJ8CgIQSGXn0T8HTbyduWnLxTeVOnA88DY
- ZuSscuSOZShUeVp+QPg==
-X-Received: by 2002:adf:fb03:: with SMTP id c3mr23545236wrr.248.1607944571561; 
- Mon, 14 Dec 2020 03:16:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwGgm+3dMjUKaeWCmtokAP0NXT0VSRSsKwFEfFGy9VU4sNgmwWcbwNSh8ircozFPUjZT+/51w==
-X-Received: by 2002:adf:fb03:: with SMTP id c3mr23545193wrr.248.1607944571261; 
- Mon, 14 Dec 2020 03:16:11 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:63a7:c72e:ea0e:6045?
- ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
- by smtp.gmail.com with ESMTPSA id m17sm33867416wrn.0.2020.12.14.03.16.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Dec 2020 03:16:10 -0800 (PST)
-Subject: Re: [PATCH] scripts/git.orderfile: Keep files with .inc extension
- sorted
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>
-References: <20201213205132.243628-1-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <c777aead-4080-09e7-7db4-30d56de83d76@redhat.com>
-Date: Mon, 14 Dec 2020 12:16:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1komzZ-0002Or-2I; Mon, 14 Dec 2020 07:30:17 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2993)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1komzV-0000dn-4o; Mon, 14 Dec 2020 07:30:16 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CvggQ4YPtzhtTn;
+ Mon, 14 Dec 2020 20:29:22 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.498.0; Mon, 14 Dec 2020
+ 20:29:50 +0800
+From: Alex Chen <alex.chen@huawei.com>
+To: <dgilbert@redhat.com>, <stefanha@redhat.com>
+CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
+Subject: [PATCH] virtiofsd: Remove useless code about send_notify_iov
+Date: Mon, 14 Dec 2020 12:16:15 +0000
+Message-ID: <20201214121615.29967-1-alex.chen@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20201213205132.243628-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
+ helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,44 +48,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 11:16:29 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 12:30:18 -0000
 
-On 13/12/20 21:51, Philippe Mathieu-Daudé wrote:
-> Sort .inc files along with the extension including them.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   scripts/git.orderfile | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 3736c1d6aff..b32203b7106 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -12,6 +12,7 @@
->   # Documentation
->   docs/*
->   *.rst
-> +*.rst.inc
->   
->   # build system
->   configure
-> @@ -28,9 +29,11 @@ qga/*.json
->   
->   # headers
->   *.h
-> +*.h.inc
->   
->   # decoding tree specification
->   *.decode
->   
->   # code
->   *.c
-> +*.c.inc
-> 
+The 'ch' will be NULL in the following stack:
+send_notify_iov()->fuse_send_msg()->virtio_send_msg(), and
+this may lead to NULL pointer dereferenced in virtio_send_msg().
+But send_notify_iov() was never called, so remove the useless code
+about send_notify_iov() to fix this problem.
 
-Queued, thanks.
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+---
+ tools/virtiofsd/fuse_lowlevel.c | 98 ---------------------------------
+ 1 file changed, 98 deletions(-)
 
-Paolo
+diff --git a/tools/virtiofsd/fuse_lowlevel.c b/tools/virtiofsd/fuse_lowlevel.c
+index d4119e92ab..e94b71110b 100644
+--- a/tools/virtiofsd/fuse_lowlevel.c
++++ b/tools/virtiofsd/fuse_lowlevel.c
+@@ -2143,104 +2143,6 @@ static void do_destroy(fuse_req_t req, fuse_ino_t nodeid,
+     send_reply_ok(req, NULL, 0);
+ }
+ 
+-static int send_notify_iov(struct fuse_session *se, int notify_code,
+-                           struct iovec *iov, int count)
+-{
+-    struct fuse_out_header out = {
+-        .error = notify_code,
+-    };
+-
+-    if (!se->got_init) {
+-        return -ENOTCONN;
+-    }
+-
+-    iov[0].iov_base = &out;
+-    iov[0].iov_len = sizeof(struct fuse_out_header);
+-
+-    return fuse_send_msg(se, NULL, iov, count);
+-}
+-
+-int fuse_lowlevel_notify_poll(struct fuse_pollhandle *ph)
+-{
+-    if (ph != NULL) {
+-        struct fuse_notify_poll_wakeup_out outarg = {
+-            .kh = ph->kh,
+-        };
+-        struct iovec iov[2];
+-
+-        iov[1].iov_base = &outarg;
+-        iov[1].iov_len = sizeof(outarg);
+-
+-        return send_notify_iov(ph->se, FUSE_NOTIFY_POLL, iov, 2);
+-    } else {
+-        return 0;
+-    }
+-}
+-
+-int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
+-                                     off_t off, off_t len)
+-{
+-    struct fuse_notify_inval_inode_out outarg = {
+-        .ino = ino,
+-        .off = off,
+-        .len = len,
+-    };
+-    struct iovec iov[2];
+-
+-    if (!se) {
+-        return -EINVAL;
+-    }
+-
+-    iov[1].iov_base = &outarg;
+-    iov[1].iov_len = sizeof(outarg);
+-
+-    return send_notify_iov(se, FUSE_NOTIFY_INVAL_INODE, iov, 2);
+-}
+-
+-int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
+-                                     const char *name, size_t namelen)
+-{
+-    struct fuse_notify_inval_entry_out outarg = {
+-        .parent = parent,
+-        .namelen = namelen,
+-    };
+-    struct iovec iov[3];
+-
+-    if (!se) {
+-        return -EINVAL;
+-    }
+-
+-    iov[1].iov_base = &outarg;
+-    iov[1].iov_len = sizeof(outarg);
+-    iov[2].iov_base = (void *)name;
+-    iov[2].iov_len = namelen + 1;
+-
+-    return send_notify_iov(se, FUSE_NOTIFY_INVAL_ENTRY, iov, 3);
+-}
+-
+-int fuse_lowlevel_notify_delete(struct fuse_session *se, fuse_ino_t parent,
+-                                fuse_ino_t child, const char *name,
+-                                size_t namelen)
+-{
+-    struct fuse_notify_delete_out outarg = {
+-        .parent = parent,
+-        .child = child,
+-        .namelen = namelen,
+-    };
+-    struct iovec iov[3];
+-
+-    if (!se) {
+-        return -EINVAL;
+-    }
+-
+-    iov[1].iov_base = &outarg;
+-    iov[1].iov_len = sizeof(outarg);
+-    iov[2].iov_base = (void *)name;
+-    iov[2].iov_len = namelen + 1;
+-
+-    return send_notify_iov(se, FUSE_NOTIFY_DELETE, iov, 3);
+-}
+-
+ int fuse_lowlevel_notify_store(struct fuse_session *se, fuse_ino_t ino,
+                                off_t offset, struct fuse_bufvec *bufv)
+ {
+-- 
+2.19.1
 
 
