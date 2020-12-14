@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEj-00087I-S6
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34340)
+	id 1koqEm-0008AF-N2
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEh-00081e-Mk; Mon, 14 Dec 2020 10:58:07 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:55563)
+ id 1koqEi-00085N-TH; Mon, 14 Dec 2020 10:58:08 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:49479)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEW-0001Rb-PM; Mon, 14 Dec 2020 10:58:06 -0500
+ id 1koqEb-0001TX-D9; Mon, 14 Dec 2020 10:58:08 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mf0FY-1kClNt242U-00gcJ3; Mon, 14 Dec 2020 16:57:51 +0100
+ id 1MIdaF-1krv9b190P-00EfCk; Mon, 14 Dec 2020 16:57:46 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 18/19] configure / meson: Move check for sys/kcov.h to
- meson.build
-Date: Mon, 14 Dec 2020 16:57:32 +0100
-Message-Id: <20201214155733.207430-19-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Pan Nengyuan <pannengyuan@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+ Li Qiang <liq3ea@gmail.com>, Chen Qun <kuhn.chenqun@huawei.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 11/19] elf2dmp/pdb: Plug memleak in pdb_init_from_file
+Date: Mon, 14 Dec 2020 16:57:25 +0100
+Message-Id: <20201214155733.207430-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:rbZW9XEaQF337JySb+YlzD5UFIau91D1uHkkIDObCdul3PdZt6t
- zyJaJ1gzo/TqRtCxrfsz9BvoZx770kD938mNsoW0dpXaUIVul84Q93qRekbu+9fee94iJNP
- zL3mSykFOhrOlHicvdsRD3zVM7aKmTkZ1c+SpAXZyyh+C4/1QNT2E/RA8Zn5lIlXySdSADA
- Q13itQEQAMUBM1wuL8V5Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2OvbeYpJ04Y=:E3g03z0xBf3bEd6zaVaZkb
- hcWcjenxCOKK7y2gOqrwLkUz90bGcBRyRl9iHhKJE3yuoyEDbqkZ2L01M/ZZEJCg5yx3jNdLQ
- nX2xtx0VWkPvbG2BKaNsXJz3XdNBSKdosJWOmH3bmDTB30fu62cFj5wOmssSHlCtCgTC6Ojq8
- O53mqD3IeFDm4Gm2OONxd1ga5rVhgG8PFfJwnEhZungGu1fLQhOZwU8cmhkp5vmgkfNw+zPgF
- AJIkVoJ2PFiX4yWNnxNHDQV3/FJjxTXfltvT5DFokq0nZPdV+I6vLe3RURb99jCBM1UoNxOtK
- AHtGCIWcBfT+L05VN/BWYdAF5JbuDOW0kX8xB3AWlkCC7VZgEv07rVCPTNJmBs11jQtsVY8gh
- 1EqxyoudbHu9W8Klo/tuxQkyjMEjWgj+rG//WIpedf9Yu1T9CQJOmTWQxEwKgCjnauFKowTLj
- lv566iCrow==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:spLQwwA7LagXLll9BNNWryX/92vE+OvP2KVXM5sehnSTSkoBBCG
+ vtzrz4mXtqstfQVkSlBSmh7jVl4lMAJ/CjTjG3LJ1HKORxPfc9U+zT+Hl3cv2Xl0FboNQ/O
+ S8kMOgvSLolOfBzFznya/YWBm/vveOjV2qkjy2O57nC8CkgqVVi34b9jvrfPT3YQhczmoVd
+ ErLi/0HxP2bZ4jEkgPJYA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:aHhxv+F5UdU=:YP/iHiyI3wo1xBc1ny4SXd
+ 5Op4samjG8xWWZAgAzxOa+qGVP06QFz751nKFxCGMzwbpwuL1db1L3x1NiKa64DwIKjDwdaqS
+ DnCClFuBpYfmtKmUq4ibA8DRXycl3mscjG3JZ7kV0YQLdZ2JxE7e3WnFbsmuNsMVEjeQxszM1
+ wBssFfCzQLSxqdcYLB8qGMpwHZfx9JxtF2b3Ot0gB5kChOPE8jno5poJGlk1alchT1vuA9Za8
+ CF5mSxjNfXjopgfUQal3cFeFBmwr3jq0L4FcisPeQOhhlY5re0f/tiFMZaut4DHAjj/lMGVHt
+ 8OqQHIl4Eshqo8y5aheyJMOczMaWX8DOIE+w00tM+gj881kefX1W77DHsfvGmDkK1y9227Nhj
+ Ik2vpWie5qCumqK4WvJ0dUOIJqUcUArVmhbBsIbGYOpa+0tnZBgrt790971kbamlIERhzsQIJ
+ CxVQOlSuGQ==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,92 +60,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:08 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:58:09 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-This check can be done in a much shorter way in meson.build. And while
-we're at it, rename the #define to HAVE_SYS_KCOV_H to match the other
-HAVE_someheader_H symbols that we already have.
+Missing g_error_free in pdb_init_from_file() error path. Fix that.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20201118171052.308191-6-thuth@redhat.com>
-[lv: s/signal/kcov/]
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20201023061218.2080844-5-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure            | 9 ---------
- linux-user/ioctls.h  | 2 +-
- linux-user/syscall.c | 2 +-
- meson.build          | 1 +
- 4 files changed, 3 insertions(+), 11 deletions(-)
+ contrib/elf2dmp/pdb.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index 4f0f9c99d3d2..6c13964b247a 100755
---- a/configure
-+++ b/configure
-@@ -4402,12 +4402,6 @@ if compile_prog "" "" ; then
-   syncfs=yes
- fi
+diff --git a/contrib/elf2dmp/pdb.c b/contrib/elf2dmp/pdb.c
+index a5bd40c99dca..b3a65470680d 100644
+--- a/contrib/elf2dmp/pdb.c
++++ b/contrib/elf2dmp/pdb.c
+@@ -285,6 +285,7 @@ int pdb_init_from_file(const char *name, struct pdb_reader *reader)
+     reader->gmf = g_mapped_file_new(name, TRUE, &gerr);
+     if (gerr) {
+         eprintf("Failed to map PDB file \'%s\'\n", name);
++        g_error_free(gerr);
+         return 1;
+     }
  
--# check for kcov support (kernel must be 4.4+, compiled with certain options)
--kcov=no
--if check_include sys/kcov.h ; then
--    kcov=yes
--fi
--
- # check for btrfs filesystem support (kernel must be 3.9+)
- btrfs=no
- if check_include linux/btrfs.h ; then
-@@ -6112,9 +6106,6 @@ fi
- if test "$syncfs" = "yes" ; then
-   echo "CONFIG_SYNCFS=y" >> $config_host_mak
- fi
--if test "$kcov" = "yes" ; then
--  echo "CONFIG_KCOV=y" >> $config_host_mak
--fi
- if test "$btrfs" = "yes" ; then
-   echo "CONFIG_BTRFS=y" >> $config_host_mak
- fi
-diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
-index 585874f090ff..8efb4d38c014 100644
---- a/linux-user/ioctls.h
-+++ b/linux-user/ioctls.h
-@@ -715,7 +715,7 @@
-   IOCTL_IGNORE(TIOCSTOP)
- #endif
- 
--#ifdef CONFIG_KCOV
-+#ifdef HAVE_SYS_KCOV_H
-   IOCTL(KCOV_ENABLE, 0, TYPE_NULL)
-   IOCTL(KCOV_DISABLE, 0, TYPE_NULL)
-   IOCTL(KCOV_INIT_TRACE, IOC_R, TYPE_ULONG)
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 27adee908ebc..063130be048c 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -73,7 +73,7 @@
- #ifdef CONFIG_SENDFILE
- #include <sys/sendfile.h>
- #endif
--#ifdef CONFIG_KCOV
-+#ifdef HAVE_SYS_KCOV_H
- #include <sys/kcov.h>
- #endif
- 
-diff --git a/meson.build b/meson.build
-index a790cc527cf9..04cdea75dd50 100644
---- a/meson.build
-+++ b/meson.build
-@@ -839,6 +839,7 @@ config_host_data.set('QEMU_VERSION_MICRO', meson.project_version().split('.')[2]
- config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
- config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
- config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
-+config_host_data.set('HAVE_SYS_KCOV_H', cc.has_header('sys/kcov.h'))
- config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
- 
- ignored = ['CONFIG_QEMU_INTERP_PREFIX'] # actually per-target
 -- 
 2.29.2
 
