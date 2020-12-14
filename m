@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEo-0008Bb-72
+	id 1koqEp-0008CR-9j
 	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34302)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34316)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEe-0007wn-5n; Mon, 14 Dec 2020 10:58:04 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:36871)
+ id 1koqEf-0007xY-Uh; Mon, 14 Dec 2020 10:58:05 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:53107)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqES-0001QK-AR; Mon, 14 Dec 2020 10:58:03 -0500
+ id 1koqEW-0001Rf-Oq; Mon, 14 Dec 2020 10:58:05 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M593i-1knkIm2LBM-001Cx9; Mon, 14 Dec 2020 16:57:44 +0100
+ id 1MI5cP-1krMvG1fq3-00FDR2; Mon, 14 Dec 2020 16:57:45 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Pan Nengyuan <pannengyuan@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+ Li Qiang <liq3ea@gmail.com>, Chen Qun <kuhn.chenqun@huawei.com>,
  Thomas Huth <thuth@redhat.com>
-Subject: [PULL 09/19] configure: Test if $make actually exists
-Date: Mon, 14 Dec 2020 16:57:23 +0100
-Message-Id: <20201214155733.207430-10-laurent@vivier.eu>
+Subject: [PULL 10/19] elf2dmp/qemu_elf: Plug memleak in QEMU_Elf_init
+Date: Mon, 14 Dec 2020 16:57:24 +0100
+Message-Id: <20201214155733.207430-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JHnV3P/bmthpjWCnE+kpU7A3yNBH+T/PRHkqdYdsnGgqhgkksYP
- 2czI1wOXl5VseAFpXx7dR86WT4DmruN1g3Ry+2rJswU4xhUKS234L6VjpaHfLG/5pdpEZAh
- 0ZF5SrUohD+zkWJREQAkbhbWXj/+cmfPAfXCQ/dQmZEk80mRBIjw81khcZgSUhg1aWgXUIE
- pJMzzThQ/Z16Nujro/9DQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lKh6vAvFT9Y=:lc3Tb3KSlidjlIiOQGLKVZ
- UAT+ebALPX5wM7f6OEBFyXpwSQpTCARGD9V1If+n5Acp0rCjS7pd1yUmw7fRLv2TzFtHIp/Th
- tt5xX9/Jzc4Gk/j9m/lfi0kS2zXDLD6SnXCJuA99ayE/jdqC6b9Aq4FgMQLIzUOJ0p6uGu+Dj
- BbLDooHwW4YUuNpc852kbheZ1n0XywMtSrnPMqbqu+rcYa3UsrM7yXTMTshQKayPrbhh5DkHt
- fxhGA2EMxQIQz2Ql6kqpKh4OIhIv0FgbX/nBiFP0b3FIl2EcKsa83tWX8KKbfqfuqxCY47IvB
- 2eP05oKwHOU08Ep9pvKuBkno1qkHB0wsxiDwtoSvXpTM3jzrlHiNUP9fdyWIcqr/uozf8uRIA
- 4wt/5no1jRbiA4faXc2eFbQlx024/HQuVeOlVez8Nm21pprBgdezqpLqzeOM919cZga8sMZX8
- TpPp8Gk5Xw==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:PtXP+yICFZb0DJUq14VYTCi8rkarqEddAG8h1oC1sJPCdQT4+ku
+ mA7uoZgpXsNbUE/r1QE+uyZzzZRUKY0hSl9O8pbBvzmHXD9gL5I3GkgStMScos6Ll3DcYlr
+ wgt8mUPgs3tykIhDjf16CRxSsvDu5CdwjZwlTvVvFZdJh28Obej+VGJiRr6mZxmC0RopiKW
+ YodcFpiaQ/n+QGaEgXNyA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7yLRA248l1E=:I5kTAPgFvHrEpf+H8y69GG
+ OzgBhW54yglq4dQ4slmb15OAjct0D+beLUr+SNvqrHfp9hlUoZCW+E0gYLcEdb9rCl+RatsZH
+ thruSszZuRqDvpBUBx+vp+SIkHeh1CbrZ02W05Bub+NFQw05jjnuI67JMxlu+cRMaODtGMz9O
+ mNswV6yi/yZeSeBFtRTjhYQgPAh88yaLdQ43eJQrsC6XJ+80z3clJa02u1XS39e8OzKGkjCpM
+ 4KpIpyjzPRbFGyr9QhF0bw7wuQsh0vEXKkiqGl0Hralqhk02JkMJ+Wg8EnhXF/PzpQAAW1ra0
+ CiqbR/tUALmu6Ubyd6OzLwS2byNOKOa/lsIaTJBj6F0dh+e7JrCbDBXsYIzU5S8DQS/XdhsTg
+ 6jqnjYFIg6/MbhS8uZdg9H+/rzh7eAkUJPg1hXCjw1pRWKQXTOpKpIrpivsdWegYEuYf7U24k
+ fVT4TQALNQ==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,38 +60,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:05 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:58:06 -0000
 
-From: Roman Bolshakov <r.bolshakov@yadro.com>
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-configure doesn't detect if $make is installed on the build host.
-This is also helpful for hosts where an alias for make is used, i.e.
-configure would fail if gmake is not present on macOS.
+Missing g_error_free in QEMU_Elf_init() error path. Fix that.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20200825202755.50626-5-r.bolshakov@yadro.com>
+Message-Id: <20201023061218.2080844-4-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ++++
- 1 file changed, 4 insertions(+)
+ contrib/elf2dmp/qemu_elf.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index 3f823ed16374..c20ed86ff35b 100755
---- a/configure
-+++ b/configure
-@@ -1875,6 +1875,10 @@ if test -z "$python"
- then
-     error_exit "Python not found. Use --python=/path/to/python"
- fi
-+if ! has "$make"
-+then
-+    error_exit "GNU make ($make) not found"
-+fi
+diff --git a/contrib/elf2dmp/qemu_elf.c b/contrib/elf2dmp/qemu_elf.c
+index 0db781658628..b601b6d7ba44 100644
+--- a/contrib/elf2dmp/qemu_elf.c
++++ b/contrib/elf2dmp/qemu_elf.c
+@@ -126,6 +126,7 @@ int QEMU_Elf_init(QEMU_Elf *qe, const char *filename)
+     qe->gmf = g_mapped_file_new(filename, TRUE, &gerr);
+     if (gerr) {
+         eprintf("Failed to map ELF dump file \'%s\'\n", filename);
++        g_error_free(gerr);
+         return 1;
+     }
  
- # Note that if the Python conditional here evaluates True we will exit
- # with status 1 which is a shell 'false' value.
 -- 
 2.29.2
 
