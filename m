@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEg-000809-QN
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34290)
+	id 1koqEh-00080T-1I
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEd-0007vs-D7; Mon, 14 Dec 2020 10:58:03 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:60839)
+ id 1koqEQ-0007rG-Bp; Mon, 14 Dec 2020 10:57:50 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:42109)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEV-0001RJ-5E; Mon, 14 Dec 2020 10:58:03 -0500
+ id 1koqEN-0001Pl-4u; Mon, 14 Dec 2020 10:57:50 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MTiLj-1kgxqV14Yf-00Tz8M; Mon, 14 Dec 2020 16:57:50 +0100
+ id 1MZCX1-1kbUCA2oNd-00V5aw; Mon, 14 Dec 2020 16:57:39 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 16/19] configure / meson: Move check for drm.h to meson.build
-Date: Mon, 14 Dec 2020 16:57:30 +0100
-Message-Id: <20201214155733.207430-17-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ Dov Murik <dovmurik@linux.vnet.ibm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 01/19] target/i386: tracing: format length values as hex
+Date: Mon, 14 Dec 2020 16:57:15 +0100
+Message-Id: <20201214155733.207430-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UvWVOTuKr20VfvZJVASlkISSmLvGBtnXcwPv3Dlyxw9oWILiQxZ
- rCDz1ICJgU2IyJzQATYqcynDP3wD2Bk9nBd7K7lh5wZ6VpAFhYwKCiQDxkXI58q22qgz0Xj
- MbzWj8xWE6s4Mf3zKxgelsVSQF4ZL/y6rZ1HFsfvMdcQVR00XwsxJ15pa3ae5muw+putUSV
- xMTg9uTXZ6Hqh4nMX7A9A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wPZGeL3OaBc=:u/US9yroeaHwdgIarmQ9Gy
- u/WuDnnHNSDBQjYuJz4N7Vaxmdlo/KM6IS8wOCJbCykSg/kJWFuvlIWsCxt/Tu4p+2teiLkfR
- obBeWrJwcZ6K60PfAnI/8yaUy7AepJc8X6ndSvSpxbadZUCjVUzMQ/ONLrS/KyGUEtSu8uBOm
- 1epEGibAM6DDK4tY9QS/nH/+resIDrYelgnQu4D4pYP4zms6Tt69l9kGx/w7e7s08mR5rbbNq
- GsMeAv77/aq2rEN7Ne9gjxH3i1bcbu2nFt1twsMImYZuQC7mKZ5SN9OXHxC2sBS4Yb65Y/C1F
- 91cP+sMPBm97UmMKUdp6h9IukoS3yD0DvcQIETyrLI6Ux3VhOtwXtwTB+Qm0ffoNBOO8UHhF7
- MQL9phDBtrqae/KbmZbb3tcR2050zvtUTR+SYzNPKlyh+glkn3/+yoSBF6tZIFvizwK4/baJk
- 5TipyMw30g==
+X-Provags-ID: V03:K1:UNWULujz9hEHUSm9+OQnipBIRC7mLNsQ8JttQDjL2lt7nCRPxS3
+ wOhTe8HSlI3RarAjbenOqiYHnqV1PcQO45ldFPjuMYGaiouoHi9i0FURKZ552E40Ij1V/LZ
+ M7HRM3fWlGK7HHSTemtxyaZntYHRrUvNi1Z7C0bUJ+dXHg8wLrl+kxW4cQFfutN+1CrrdSF
+ sOTR1MSkZKQIfCqsNX1TQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Pd/eAyQIvbs=:6Qk9M3/W95GY+xuLdF5rp5
+ FGj8FgImkVA1fzJyzW2rFghTwjajhoIX++XymZQPNU2VGr05/mp8yqqaMbQ93SL5sNCYokNxp
+ fet2umgdkmEhyFYZm9zfi4brlozSTxztA0mhimjCQF/3i+9+eNauB4JlFDPqSEpepxWydwgEm
+ q8KN0k+NBIeT2M7CZ1k5XK9RQ+FxlMuTJR5tu5L/o5KjGxCx6TTLRmE8yJRI5wBYLADNZXpMQ
+ 7Cb2RL4BM6E4d0hnv1LUbEuL3LgmBhRMLDOLm+semeSJoL5TH+FrsBcbiJGvAIWXaib/Gcos4
+ B5hFSLLl8JEMBiPNq4gWWg8tSx0+7/kfQnWRUBbys3Rlbn46+zF/8nUXJTSdmoIe9e67esYQ2
+ hRgn2nXcTF5kbneGrX2xJ6ABP0VPhjbrMcMcRWQc8qMpXU6yELIdZN4bGWEHPF96D9/5BwoGa
+ sDu9FIQasw==
 Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -59,62 +59,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:58:04 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:57:55 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Dov Murik <dovmurik@linux.vnet.ibm.com>
 
-This check can be done in a much shorter way in meson.build
+Three trace events had a literal "0x" prefix but the 'len' values were
+formatted in decimal base.  Keep the prefix and format the numbers as
+hex, as is usually the case for length of memory regions.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Dov Murik <dovmurik@linux.vnet.ibm.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20201118171052.308191-4-thuth@redhat.com>
+Message-Id: <20201103100745.160409-1-dovmurik@linux.vnet.ibm.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure   | 10 ----------
- meson.build |  1 +
- 2 files changed, 1 insertion(+), 10 deletions(-)
+ target/i386/trace-events | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/configure b/configure
-index 39e61b275806..ec2fae9e09c0 100755
---- a/configure
-+++ b/configure
-@@ -3101,13 +3101,6 @@ EOF
-     fi
- fi
+diff --git a/target/i386/trace-events b/target/i386/trace-events
+index 9f299e94a2b7..246158ae1f00 100644
+--- a/target/i386/trace-events
++++ b/target/i386/trace-events
+@@ -8,11 +8,11 @@ kvm_x86_update_msi_routes(int num) "Updated %d MSI routes"
  
--#########################################
--# libdrm check
--have_drm_h=no
--if check_include "libdrm/drm.h" ; then
--    have_drm_h=yes
--fi
--
- #########################################
- # sys/signal.h check
- have_sys_signal_h=no
-@@ -6205,9 +6198,6 @@ fi
- if test "$auth_pam" = "yes" ; then
-     echo "CONFIG_AUTH_PAM=y" >> $config_host_mak
- fi
--if test "$have_drm_h" = "yes" ; then
--  echo "HAVE_DRM_H=y" >> $config_host_mak
--fi
- if test "$have_broken_size_max" = "yes" ; then
-     echo "HAVE_BROKEN_SIZE_MAX=y" >> $config_host_mak
- fi
-diff --git a/meson.build b/meson.build
-index ef053c98376d..fc7ae6f86826 100644
---- a/meson.build
-+++ b/meson.build
-@@ -836,6 +836,7 @@ config_host_data.set('QEMU_VERSION_MAJOR', meson.project_version().split('.')[0]
- config_host_data.set('QEMU_VERSION_MINOR', meson.project_version().split('.')[1])
- config_host_data.set('QEMU_VERSION_MICRO', meson.project_version().split('.')[2])
- 
-+config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
- config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
- config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
- 
+ # sev.c
+ kvm_sev_init(void) ""
+-kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zu"
+-kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zu"
++kvm_memcrypt_register_region(void *addr, size_t len) "addr %p len 0x%zx"
++kvm_memcrypt_unregister_region(void *addr, size_t len) "addr %p len 0x%zx"
+ kvm_sev_change_state(const char *old, const char *new) "%s -> %s"
+ kvm_sev_launch_start(int policy, void *session, void *pdh) "policy 0x%x session %p pdh %p"
+-kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIu64
++kvm_sev_launch_update_data(void *addr, uint64_t len) "addr %p len 0x%" PRIx64
+ kvm_sev_launch_measurement(const char *value) "data %s"
+ kvm_sev_launch_finish(void) ""
+ kvm_sev_launch_secret(uint64_t hpa, uint64_t hva, uint64_t secret, int len) "hpa 0x%" PRIx64 " hva 0x%" PRIx64 " data 0x%" PRIx64 " len %d"
 -- 
 2.29.2
 
