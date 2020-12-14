@@ -1,40 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1komzc-0002PD-Rg
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 07:30:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43572)
+	id 1kooB9-0002DM-3F
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 08:46:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1komzZ-0002Or-2I; Mon, 14 Dec 2020 07:30:17 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2993)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kooB6-0002AN-Hs; Mon, 14 Dec 2020 08:46:16 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:52692 helo=mta-01.yadro.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1komzV-0000dn-4o; Mon, 14 Dec 2020 07:30:16 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CvggQ4YPtzhtTn;
- Mon, 14 Dec 2020 20:29:22 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.498.0; Mon, 14 Dec 2020
- 20:29:50 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <dgilbert@redhat.com>, <stefanha@redhat.com>
-CC: <alex.chen@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH] virtiofsd: Remove useless code about send_notify_iov
-Date: Mon, 14 Dec 2020 12:16:15 +0000
-Message-ID: <20201214121615.29967-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kooB4-0001gp-P7; Mon, 14 Dec 2020 08:46:16 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id AE29F41364;
+ Mon, 14 Dec 2020 13:46:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-transfer-encoding:content-disposition
+ :content-type:content-type:mime-version:references:message-id
+ :subject:subject:from:from:date:date:received:received:received;
+ s=mta-01; t=1607953569; x=1609767970; bh=LLMvOVs8uPUNwvRgsR3cv7
+ CgrcGxjkoeojxcDo73ISo=; b=DA8FcRe/GEk+LQwW/Hv1Rsj/oCAeVUYzJeET2v
+ U5JMbcaz3eMpsA+m5ilb0Ju+XNorRLZ+RMgIVBpJE8STX8xoFJpUzclBMi2nkO7E
+ 41VRd92gPdeLfCKIp83Hj9LeH0XK60Ro29FkQOjQeb2x8tGDoVDLFZBWGlrTEPHC
+ 9Wwxk=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oEjwrM3kLUp6; Mon, 14 Dec 2020 16:46:09 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 2738841384;
+ Mon, 14 Dec 2020 16:46:09 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Mon, 14
+ Dec 2020 16:46:08 +0300
+Date: Mon, 14 Dec 2020 16:46:08 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Laurent Vivier <laurent@vivier.eu>
+CC: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, Paolo
+ Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 2/4] Makefile: Require GNU make 3.82+
+Message-ID: <X9dsoCeCta4501m0@SPB-NB-133.local>
+References: <20200825202755.50626-1-r.bolshakov@yadro.com>
+ <20200825202755.50626-3-r.bolshakov@yadro.com>
+ <1ff85cc3-40dc-98da-fb18-a1b3d134d7dc@redhat.com>
+ <bc560d06-2b8d-3ef0-b9e6-ddaeb58daa13@vivier.eu>
+ <CAFEAcA_XA1FcQos+m0vv6DVkbaybYwX5ytsM5gMaLAtL0jGGgA@mail.gmail.com>
+ <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <8010190c-6265-2dbb-cb55-25353d9922ec@vivier.eu>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -48,129 +78,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 12:30:18 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 13:46:16 -0000
 
-The 'ch' will be NULL in the following stack:
-send_notify_iov()->fuse_send_msg()->virtio_send_msg(), and
-this may lead to NULL pointer dereferenced in virtio_send_msg().
-But send_notify_iov() was never called, so remove the useless code
-about send_notify_iov() to fix this problem.
+On Sun, Dec 13, 2020 at 11:56:22PM +0100, Laurent Vivier wrote:
+> Le 13/12/2020 à 20:04, Peter Maydell a écrit :
+> > On Sun, 13 Dec 2020 at 17:22, Laurent Vivier <laurent@vivier.eu> wrote:
+> >>
+> >> Le 12/10/2020 à 11:47, Thomas Huth a écrit :
+> >>> On 25/08/2020 22.27, Roman Bolshakov wrote:
+> >>>> QEMU build fails with cryptic messages if make is too old:
+> >>>>
+> >>>>   Makefile.ninja:2655: *** multiple target patterns.  Stop.
+> >>>>
+> >>>> To avoid the confusion it's worth to fail the build right away and print
+> >>>> a friendly error message.
+> >>>>
+> >>>> +ifeq ($(filter undefine,$(value .FEATURES)),)
+> >>>> +$(error Unsupported Make version: $(MAKE_VERSION). \
+> >>>> +        Please use GNU Make 3.82 or above)
+> >>>> +endif
+> >>>> +
+> >>>>  # Always point to the root of the build tree (needs GNU make).
+> >>>>  BUILD_DIR=$(CURDIR)
+> >>>
+> >>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> >>>
+> >>>
+> >>
+> >> Applied to my trivial-patches branch.
+> > 
+> > Commit 09e93326e448ab4 says that the switch to ninja from
+> > ninjatool removed the requirement for Make 3.82. Is this
+> > change still required?
+> >
+> 
+> It seems 09e93326e448ab4 has been committed on 17th of October, so after Thomas' review.
+> I remove it from my queue.
+> 
 
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- tools/virtiofsd/fuse_lowlevel.c | 98 ---------------------------------
- 1 file changed, 98 deletions(-)
+I can confirm:
 
-diff --git a/tools/virtiofsd/fuse_lowlevel.c b/tools/virtiofsd/fuse_lowlevel.c
-index d4119e92ab..e94b71110b 100644
---- a/tools/virtiofsd/fuse_lowlevel.c
-+++ b/tools/virtiofsd/fuse_lowlevel.c
-@@ -2143,104 +2143,6 @@ static void do_destroy(fuse_req_t req, fuse_ino_t nodeid,
-     send_reply_ok(req, NULL, 0);
- }
- 
--static int send_notify_iov(struct fuse_session *se, int notify_code,
--                           struct iovec *iov, int count)
--{
--    struct fuse_out_header out = {
--        .error = notify_code,
--    };
--
--    if (!se->got_init) {
--        return -ENOTCONN;
--    }
--
--    iov[0].iov_base = &out;
--    iov[0].iov_len = sizeof(struct fuse_out_header);
--
--    return fuse_send_msg(se, NULL, iov, count);
--}
--
--int fuse_lowlevel_notify_poll(struct fuse_pollhandle *ph)
--{
--    if (ph != NULL) {
--        struct fuse_notify_poll_wakeup_out outarg = {
--            .kh = ph->kh,
--        };
--        struct iovec iov[2];
--
--        iov[1].iov_base = &outarg;
--        iov[1].iov_len = sizeof(outarg);
--
--        return send_notify_iov(ph->se, FUSE_NOTIFY_POLL, iov, 2);
--    } else {
--        return 0;
--    }
--}
--
--int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
--                                     off_t off, off_t len)
--{
--    struct fuse_notify_inval_inode_out outarg = {
--        .ino = ino,
--        .off = off,
--        .len = len,
--    };
--    struct iovec iov[2];
--
--    if (!se) {
--        return -EINVAL;
--    }
--
--    iov[1].iov_base = &outarg;
--    iov[1].iov_len = sizeof(outarg);
--
--    return send_notify_iov(se, FUSE_NOTIFY_INVAL_INODE, iov, 2);
--}
--
--int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
--                                     const char *name, size_t namelen)
--{
--    struct fuse_notify_inval_entry_out outarg = {
--        .parent = parent,
--        .namelen = namelen,
--    };
--    struct iovec iov[3];
--
--    if (!se) {
--        return -EINVAL;
--    }
--
--    iov[1].iov_base = &outarg;
--    iov[1].iov_len = sizeof(outarg);
--    iov[2].iov_base = (void *)name;
--    iov[2].iov_len = namelen + 1;
--
--    return send_notify_iov(se, FUSE_NOTIFY_INVAL_ENTRY, iov, 3);
--}
--
--int fuse_lowlevel_notify_delete(struct fuse_session *se, fuse_ino_t parent,
--                                fuse_ino_t child, const char *name,
--                                size_t namelen)
--{
--    struct fuse_notify_delete_out outarg = {
--        .parent = parent,
--        .child = child,
--        .namelen = namelen,
--    };
--    struct iovec iov[3];
--
--    if (!se) {
--        return -EINVAL;
--    }
--
--    iov[1].iov_base = &outarg;
--    iov[1].iov_len = sizeof(outarg);
--    iov[2].iov_base = (void *)name;
--    iov[2].iov_len = namelen + 1;
--
--    return send_notify_iov(se, FUSE_NOTIFY_DELETE, iov, 3);
--}
--
- int fuse_lowlevel_notify_store(struct fuse_session *se, fuse_ino_t ino,
-                                off_t offset, struct fuse_bufvec *bufv)
- {
--- 
-2.19.1
+./configure --target-list=x86_64-softmmu --enable-trace-backends=dtrace && make -j$(nproc)
 
+Works fine on macOS with the latest qemu HEAD. The patch can be
+discarded.
+
+Regards,
+Roman
 
