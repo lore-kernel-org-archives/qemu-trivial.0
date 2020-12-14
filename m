@@ -1,46 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1koqEh-00080s-86
+	id 1koqEh-00082U-Tk
 	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 10:58:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34174)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEQ-0007rZ-S4; Mon, 14 Dec 2020 10:57:51 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:44741)
+ id 1koqER-0007rh-R2; Mon, 14 Dec 2020 10:57:55 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:39781)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1koqEN-0001Pn-6A; Mon, 14 Dec 2020 10:57:50 -0500
+ id 1koqEO-0001Q3-Vl; Mon, 14 Dec 2020 10:57:51 -0500
 Received: from localhost.localdomain ([82.252.135.218]) by
  mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mwwm5-1juxO10CB1-00yQ8i; Mon, 14 Dec 2020 16:57:42 +0100
+ id 1MWRe1-1kd7pH3hal-00XqkO; Mon, 14 Dec 2020 16:57:41 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Julia Suvorova <jusual@redhat.com>
-Subject: [PULL 05/19] hw/pci-host/pam: Replace magic number by
- PAM_REGIONS_COUNT definition
-Date: Mon, 14 Dec 2020 16:57:19 +0100
-Message-Id: <20201214155733.207430-6-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Michael Roth <michael.roth@amd.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 03/19] MAINTAINERS: update my email address
+Date: Mon, 14 Dec 2020 16:57:17 +0100
+Message-Id: <20201214155733.207430-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
 References: <20201214155733.207430-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:yWbPKBhYLElznlki5MBnP6phYaUHaTDcWosOaEOxpm9tcG7y6fP
- WfHvto8f73FKuTOfLWQ1JdQSrhDCZCZAZGge5GQhSCrc+9G1oM4KbYrmD/ct/ZlniR0NuXP
- 9LDRvXrNgrjsdUN/MQiz3gXj3GP09pCV5u2ZpwOSRIIR63AO8mgAIEItDzBwW2dkfa7Sf85
- l/uaVvimA6ucAjhpFLwUg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AjbuZIq1BZU=:YAc6ZOGyf90rBFin/8nn/C
- KeEI2nNL3Z7JrUypjodL8F9YevL2+oEd2nD7Q2B6/PsgZ1taYHPndwK2UHST0lxfwDBWHgTDS
- OxgHnBWtw3JStNCJWLV01jo0A5cg9almBMLmbB2h9pgytHzkVTgZttjJ194PLjEC7mi0enqyo
- zQmjkYDegYUthhcA4NuAcEMb4F/OI64M4/QmtbGmivivv7kWCA5sQlhrXBirpvTB0n9Yots3j
- 2BGLJ65HxnO71jm3Fx1dN6Q2EHZl8Bi6YFcMlRFQ/xHjlpwoH3TYfUTeEAXZc3fcuI3jxRDZn
- 5ETc/7u3MgYsITga7hyzJjqwRHcSZimnXIq4410vTNCveihB771WGRjiuH7qBYTtW6t3J5fYM
- AQmmSJwruVGt0VkP2os4O6XrNxwpuOBpDmbvuVuB/u67LPyctZ9Cnoz2CqMAfpxSLLVtelB6B
- yQ4iGEGKRQ==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:+0RgFeJrRpYWk5HnGpqKDTM5QRbGWWVJd/yuwotCXToR5ZiUbVt
+ XpwMVzJ4GirQXRDQ1A2Ss38d/0nHZO78ixo3dkvKOnp3pz5iZqCkjHKuaQoYSvuIJy/2uNs
+ I6cffMQcd5VZaoX7rR5tB4RaX8fb7Pp2Fp8o8c7Wdaf/wHUef2Roc3T0GZ3bdbgFw++iT7c
+ s4WBRF4BaqmNjZ0w9hYVA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HTe+MwIoAUw=:8DutcSEqLUXrGUXP6gtQeA
+ 3B66pON+vhlXhVGNLt2PEYxpo2rmFjJmeqB1jTTNtQWS+vpz+Z9ov0FxpG6FXrdm1pk/wl0RH
+ PeNtZ8WRxpce549RGcxXRYnt5NQPvoB4J0s+czsm32x4mo6Sr1MM14qbTl0LO4S8uG6GcUFZZ
+ Dh6MpP5RALHgJgb6hGoqmRElAFLcpsif3plrAoyTN3xkEuZ11cl8HpaKDcHSyfF+Zb1kiZCM1
+ Frpn5Y3FKqUweCZWf8DBTUOKOkZN9Ae51rVg8WV8mtPQzZXnHekCkiRaLQiUvufalRY6Osd9+
+ FuopjSxPFjvMQtL1Kja77n6W+xnP5gcLmkGsgQ7bgNtpckP0VhXkh/jv2QZ+GROxR6on7LmJc
+ p233ye2F0irQ9SlrVviMnXuh91j0FRIP0luVYnnbUke9/x6f2RacP39yoNelNDPl9nDLwZinm
+ qNeA+I0Rfg==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,93 +57,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 15:57:56 -0000
+X-List-Received-Date: Mon, 14 Dec 2020 15:58:00 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Michael Roth <michael.roth@amd.com>
 
-While this change helps triskaidekaphobic developers, it
-is a good practice to avoid magic values and using constant
-definitions instead.
+I've recently switched employers and the current email address is out
+of date.
 
-Introduce the PAM_REGIONS_COUNT and use it. No logical change.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Julia Suvorova <jusual@redhat.com>
-Message-Id: <20201202132038.1276404-1-philmd@redhat.com>
+Signed-off-by: Michael Roth <michael.roth@amd.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20201027060253.353054-1-michael.roth@amd.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/pci-host/pam.c            | 2 +-
- hw/pci-host/q35.c            | 2 +-
- include/hw/pci-host/i440fx.h | 2 +-
- include/hw/pci-host/pam.h    | 2 ++
- include/hw/pci-host/q35.h    | 2 +-
- 5 files changed, 6 insertions(+), 4 deletions(-)
+ MAINTAINERS | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/pci-host/pam.c b/hw/pci-host/pam.c
-index a4962057833f..454dd120db97 100644
---- a/hw/pci-host/pam.c
-+++ b/hw/pci-host/pam.c
-@@ -62,7 +62,7 @@ void init_pam(DeviceState *dev, MemoryRegion *ram_memory,
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d48a4e8a8b75..f9d14078bc08 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2427,7 +2427,7 @@ F: scripts/simplebench/
  
- void pam_update(PAMMemoryRegion *pam, int idx, uint8_t val)
- {
--    assert(0 <= idx && idx <= 12);
-+    assert(0 <= idx && idx < PAM_REGIONS_COUNT);
+ QAPI
+ M: Markus Armbruster <armbru@redhat.com>
+-M: Michael Roth <mdroth@linux.vnet.ibm.com>
++M: Michael Roth <michael.roth@amd.com>
+ S: Supported
+ F: qapi/
+ X: qapi/*.json
+@@ -2471,7 +2471,7 @@ F: tests/data/qobject/qdict.txt
+ T: git https://repo.or.cz/qemu/armbru.git qapi-next
  
-     memory_region_set_enabled(&pam->alias[pam->current], false);
-     pam->current = (val >> ((!(idx & 1)) * 4)) & PAM_ATTR_MASK;
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index b67cb9c29f8e..2eb729dff585 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -641,7 +641,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
-     init_pam(DEVICE(mch), mch->ram_memory, mch->system_memory,
-              mch->pci_address_space, &mch->pam_regions[0],
-              PAM_BIOS_BASE, PAM_BIOS_SIZE);
--    for (i = 0; i < 12; ++i) {
-+    for (i = 0; i < ARRAY_SIZE(mch->pam_regions) - 1; ++i) {
-         init_pam(DEVICE(mch), mch->ram_memory, mch->system_memory,
-                  mch->pci_address_space, &mch->pam_regions[i+1],
-                  PAM_EXPAN_BASE + i * PAM_EXPAN_SIZE, PAM_EXPAN_SIZE);
-diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
-index 6c16eaf876dd..24fd53942cab 100644
---- a/include/hw/pci-host/i440fx.h
-+++ b/include/hw/pci-host/i440fx.h
-@@ -29,7 +29,7 @@ struct PCII440FXState {
-     MemoryRegion *system_memory;
-     MemoryRegion *pci_address_space;
-     MemoryRegion *ram_memory;
--    PAMMemoryRegion pam_regions[13];
-+    PAMMemoryRegion pam_regions[PAM_REGIONS_COUNT];
-     MemoryRegion smram_region;
-     MemoryRegion smram, low_smram;
- };
-diff --git a/include/hw/pci-host/pam.h b/include/hw/pci-host/pam.h
-index fec5cd35d60f..c1fd06ba2ae6 100644
---- a/include/hw/pci-host/pam.h
-+++ b/include/hw/pci-host/pam.h
-@@ -80,6 +80,8 @@
- #define SMRAM_C_BASE_SEG_MASK  ((uint8_t)0x7)
- #define SMRAM_C_BASE_SEG       ((uint8_t)0x2)  /* hardwired to b010 */
- 
-+#define PAM_REGIONS_COUNT       13
-+
- typedef struct PAMMemoryRegion {
-     MemoryRegion alias[4];  /* index = PAM value */
-     unsigned current;
-diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-index bbb958176565..ab989698ef8f 100644
---- a/include/hw/pci-host/q35.h
-+++ b/include/hw/pci-host/q35.h
-@@ -44,7 +44,7 @@ struct MCHPCIState {
-     MemoryRegion *pci_address_space;
-     MemoryRegion *system_memory;
-     MemoryRegion *address_space_io;
--    PAMMemoryRegion pam_regions[13];
-+    PAMMemoryRegion pam_regions[PAM_REGIONS_COUNT];
-     MemoryRegion smram_region, open_high_smram;
-     MemoryRegion smram, low_smram, high_smram;
-     MemoryRegion tseg_blackhole, tseg_window;
+ QEMU Guest Agent
+-M: Michael Roth <mdroth@linux.vnet.ibm.com>
++M: Michael Roth <michael.roth@amd.com>
+ S: Maintained
+ F: qga/
+ F: docs/interop/qemu-ga.rst
 -- 
 2.29.2
 
