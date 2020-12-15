@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1korDZ-0005XP-CP
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2020 12:01:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51512)
+	id 1kp93h-0006dt-KE
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Dec 2020 07:04:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1korDS-0005VD-8J
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 12:00:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45047)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1korDQ-0004EG-3T
- for qemu-trivial@nongnu.org; Mon, 14 Dec 2020 12:00:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607965250;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=UcjPedgFAePbit+LAmaCdyO9dRJ4HW/XwUf+TQtTjTo=;
- b=OEe/nr+yW0KSCX6fofrNYymuLGetXSOH1sBhbs6s/Fvw+GKt+Wq0kQhI07ThPiiVkfCE2m
- AB+fSm5alhgTGK4nzFw8TIPwwG4o3fxjhJZ6wqrG+pq/OKkkEmn/sgFos2oTUX+0GrtR3A
- 2L8P6AGrEpO6ZuIJt+i7b8nx5QW6jxE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-158-zWbrVVt0PCWa1TMqbhszCQ-1; Mon, 14 Dec 2020 12:00:48 -0500
-X-MC-Unique: zWbrVVt0PCWa1TMqbhszCQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1ECDC1009B67;
- Mon, 14 Dec 2020 17:00:47 +0000 (UTC)
-Received: from localhost (ovpn-113-200.ams2.redhat.com [10.36.113.200])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BA3755D9DC;
- Mon, 14 Dec 2020 17:00:46 +0000 (UTC)
-Date: Mon, 14 Dec 2020 17:00:45 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Alex Chen <alex.chen@huawei.com>
-Cc: dgilbert@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com
-Subject: Re: [PATCH] virtiofsd: Remove useless code about send_notify_iov
-Message-ID: <20201214170045.GI620320@stefanha-x1.localdomain>
-References: <20201214121615.29967-1-alex.chen@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kp93f-0006am-A8
+ for qemu-trivial@nongnu.org; Tue, 15 Dec 2020 07:03:59 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:44023)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kp93d-00068V-IY
+ for qemu-trivial@nongnu.org; Tue, 15 Dec 2020 07:03:59 -0500
+Received: by mail-ej1-x629.google.com with SMTP id jx16so27279257ejb.10
+ for <qemu-trivial@nongnu.org>; Tue, 15 Dec 2020 04:03:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=01cXpZdWDwdTL+YKu3xh8zJlKwB9s64ctlCEMuj2Yqg=;
+ b=hmambKAZVwxJ122hfqjuMadKI/odgK03SBV6pJIuf4KRl6Bx7WFPDWCQ8wvh7hywiH
+ wp4i1mUh40/S9LYupYuzRBGjBQCiarqNn9pmXDGeYiT1gp0BZ/XjDgX1Lhf7Q+VXadww
+ ZTIZ/TlryFQ8MAogNoUsxr8QuFt9afW/yrrLe08QcXDFOA19wlJwYqoJz0OD6xrGHMZ1
+ /jhACKuk13igFMjkaqBDxuoO2h9cRqCuqRwVhwxyTiB9SRmA+bIuQK7DpB09J1GVhFRI
+ qiEBbT7NDFclJZ+nBOrZIatIeE1k+2mXp2kUf9Kgg+GxJwMrLXdJEjCtLoxvHiBPRDvE
+ OgJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=01cXpZdWDwdTL+YKu3xh8zJlKwB9s64ctlCEMuj2Yqg=;
+ b=JwNiR+fTD3Ix/QEv9+vjyonZ6AyXeO28uyVEWD7C5IyInwxTc4XREeyYPcAdZmN71w
+ 7p2kjSEbvkI4w9bZ4k4IUOlUmtLXFqbHUxfU44MN6R8IAIq8zus6RlQ/XcEvQMrW7D69
+ J1xqGuBT4lzDtue9jDVD91/h7piQ8MRmRmU1SB7+v4z4fqQzC9tSemyMjNOBLbN+AcdL
+ fEZd7NMdy8SSp4J4xhKgekQLIgTmaxUegOzJ9vsLrDM8LhHLIGjHgfJNa01Ph/c8Bhv8
+ elAUzU1bEUjnPVNOR8o3KAdqtvhTEzX3NIBxJ1oyYCF7IzxImJFQqZ7rUrmYHb0Buzt6
+ ZnbQ==
+X-Gm-Message-State: AOAM531Ruvn1RcUOLnfyeTeJOBuO+bpjXReTEOQPcRlCCDL3tHBDMLf6
+ y6SYXCZ6tvOyoDPL00Aw6iZvseDwZgIVjsqRfbi/bw==
+X-Google-Smtp-Source: ABdhPJyt7v4lS7g3av+2ZZORZmUmepAvJbYia+ylQmxhTejzRkdBLUMsCD9nyu37G0vzrmtAPHUBk/3qILm+PxF1p28=
+X-Received: by 2002:a17:907:971c:: with SMTP id
+ jg28mr26592761ejc.85.1608033835424; 
+ Tue, 15 Dec 2020 04:03:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201214121615.29967-1-alex.chen@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="OfrWf2Fun5Ae4m0Y"
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20201214155733.207430-1-laurent@vivier.eu>
+In-Reply-To: <20201214155733.207430-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Dec 2020 12:03:44 +0000
+Message-ID: <CAFEAcA9ji4Hn1nOOAOgomRK6YvJd3G87bbWsgkaV4ihBxy0PAA@mail.gmail.com>
+Subject: Re: [PULL 00/19] Trivial branch for 6.0 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,42 +71,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Dec 2020 17:00:56 -0000
+X-List-Received-Date: Tue, 15 Dec 2020 12:03:59 -0000
 
---OfrWf2Fun5Ae4m0Y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, 14 Dec 2020 at 16:06, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 17584289af1aaa72c932e7e47c25d583b329dc45:
+>
+>   Merge remote-tracking branch 'remotes/vivier/tags/m68k-for-6.0-pull-request=
+> ' into staging (2020-12-12 18:33:46 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
+>
+> for you to fetch changes up to 48f670ecfcbe92f63475c516aefb6e217f469bbf:
+>
+>   configure / meson: Move check for linux/btrfs.h to meson.build (2020-12-13 =
+> 23:56:16 +0100)
+>
+> ----------------------------------------------------------------
+> Pull request trivial-patches 20201214
+>
+> ----------------------------------------------------------------
 
-On Mon, Dec 14, 2020 at 12:16:15PM +0000, Alex Chen wrote:
-> The 'ch' will be NULL in the following stack:
-> send_notify_iov()->fuse_send_msg()->virtio_send_msg(), and
-> this may lead to NULL pointer dereferenced in virtio_send_msg().
-> But send_notify_iov() was never called, so remove the useless code
-> about send_notify_iov() to fix this problem.
->=20
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> ---
->  tools/virtiofsd/fuse_lowlevel.c | 98 ---------------------------------
->  1 file changed, 98 deletions(-)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Applied, thanks.
 
---OfrWf2Fun5Ae4m0Y
-Content-Type: application/pgp-signature; name="signature.asc"
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.0
+for any user-visible changes.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/Xmj0ACgkQnKSrs4Gr
-c8gzbwf/bCUBkfZYOsB6f308r6UMHNN+JKwB5bST///FIRAExhgsjVDEKUDlSSvD
-qN8d+2CbJYBqqE3f6M6RRghfKJnT3ZBWyLJH0qhYvAhsFai1AsvRJ1DtZGOeOJVP
-YujxXbR9plJibl3gwTaVFcJwD5htuRitFssJvcWfWKPCbMAFw6JPjui6ZEDtbLPr
-oZBu9V1eMwcA4muwRwDzKWjUYqntU9qoHnLzwwxjPECaiNmTQtvQOdUk5hLy09jR
-nREhDZfQf/o4rwNj+dGc7OAMIPC87f2y9/Utt80bDgApHjmfLiuBKdZWljOhP5s/
-8C1jM9l4GZWHjLj2JEsKLFXTL5R2Tw==
-=t9Am
------END PGP SIGNATURE-----
-
---OfrWf2Fun5Ae4m0Y--
-
+-- PMM
 
