@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kprXU-00031h-6c
+	id 1kprXU-00032z-Mp
 	for mharc-qemu-trivial@gnu.org; Thu, 17 Dec 2020 06:33:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47464)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kprXS-0002xv-N7; Thu, 17 Dec 2020 06:33:42 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2478)
+ id 1kprXR-0002wu-SS; Thu, 17 Dec 2020 06:33:41 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2563)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kprXL-0005qE-Fz; Thu, 17 Dec 2020 06:33:42 -0500
+ id 1kprXG-0005oC-3s; Thu, 17 Dec 2020 06:33:41 -0500
 Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CxVGc5VcyzM5jF;
- Thu, 17 Dec 2020 19:32:40 +0800 (CST)
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CxVGt6Kx0zhsqH;
+ Thu, 17 Dec 2020 19:32:54 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS405-HUB.china.huawei.com
  (10.3.19.205) with Microsoft SMTP Server id 14.3.498.0; Thu, 17 Dec 2020
- 19:33:20 +0800
+ 19:33:16 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
- <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Subbaraya
- Sundeep" <sundeep.lkml@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 6/7] mss-timer: Use ptimer_free() in the finalize function
- to avoid memleaks
-Date: Thu, 17 Dec 2020 19:31:53 +0800
-Message-ID: <20201217113154.121668-6-ganqixin@huawei.com>
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 3/7] exynos4210_mct: Use ptimer_free() in the finalize
+ function to avoid memleaks
+Date: Thu, 17 Dec 2020 19:31:50 +0800
+Message-ID: <20201217113154.121668-3-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201217113154.121668-1-ganqixin@huawei.com>
 References: <20201217113154.121668-1-ganqixin@huawei.com>
@@ -32,13 +32,12 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=ganqixin@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,67 +51,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Dec 2020 11:33:43 -0000
+X-List-Received-Date: Thu, 17 Dec 2020 11:33:42 -0000
 
 When running device-introspect-test, a memory leak occurred in the
-mss_timer_init function, so use ptimer_free() in the finalize function to avoid
-it.
+exynos4210_mct_init function, so use ptimer_free() in the finalize function to
+avoid it.
 
 ASAN shows memory leak stack:
 
-Indirect leak of 192 byte(s) in 2 object(s) allocated from:
+Indirect leak of 96 byte(s) in 1 object(s) allocated from:
     #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
     #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
     #2 0xaaabf555db78 in ptimer_init /qemu/hw/core/ptimer.c:432
-    #3 0xaaabf58a0010 in mss_timer_init /qemu/hw/timer/mss-timer.c:235
+    #3 0xaaabf56b01a0 in exynos4210_mct_init /qemu/hw/timer/exynos4210_mct.c:1505
     #4 0xaaabf6339f6c in object_initialize_with_type /qemu/qom/object.c:515
-    #5 0xaaabf633ca04 in object_initialize_child_with_propsv /qemu/qom/object.c:564
-    #6 0xaaabf633cc08 in object_initialize_child_with_props /qemu/qom/object.c:547
-    #7 0xaaabf5b8316c in m2sxxx_soc_initfn /qemu/hw/arm/msf2-soc.c:70
-    #8 0xaaabf6339f6c in object_initialize_with_type /qemu/qom/object.c:515
-    #9 0xaaabf633a1e0 in object_new_with_type /qemu/qom/object.c:729
-    #10 0xaaabf6375e40 in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:153
-    #11 0xaaabf653d8ec in qmp_marshal_device_list_properties /qemu/qapi/qapi-commands-qdev.c:59
-    #12 0xaaabf6587d08 in do_qmp_dispatch_bh /qemu/qapi/qmp-dispatch.c:110
+    #5 0xaaabf633a1e0 in object_new_with_type /qemu/qom/object.c:729
+    #6 0xaaabf6375e40 in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:153
+    #7 0xaaabf653d8ec in qmp_marshal_device_list_properties /qemu/qapi/qapi-commands-qdev.c:59
+    #8 0xaaabf6587d08 in do_qmp_dispatch_bh /qemu/qapi/qmp-dispatch.c:110
+    #9 0xaaabf6552708 in aio_bh_call /qemu/util/async.c:136
+    #10 0xaaabf6552708 in aio_bh_poll /qemu/util/async.c:164
+    #11 0xaaabf655f19c in aio_dispatch /qemu/util/aio-posix.c:381
+    #12 0xaaabf65523f4 in aio_ctx_dispatch /qemu/util/async.c:306
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
-Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/mss-timer.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ hw/timer/exynos4210_mct.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index 29943fd744..fe0ca905f3 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
-@@ -244,6 +244,18 @@ static void mss_timer_init(Object *obj)
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &t->mmio);
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 439053acd2..d0e5343996 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1530,6 +1530,19 @@ static void exynos4210_mct_init(Object *obj)
+     sysbus_init_mmio(dev, &s->iomem);
  }
  
-+static void mss_timer_finalize(Object *obj)
++static void exynos4210_mct_finalize(Object *obj)
 +{
-+    MSSTimerState *t = MSS_TIMER(obj);
 +    int i;
++    Exynos4210MCTState *s = EXYNOS4210_MCT(obj);
 +
-+    for (i = 0; i < NUM_TIMERS; i++) {
-+        struct Msf2Timer *st = &t->timers[i];
++    ptimer_free(s->g_timer.ptimer_frc);
 +
-+        ptimer_free(st->ptimer);
++    for (i = 0; i < 2; i++) {
++        ptimer_free(s->l_timer[i].tick_timer.ptimer_tick);
++        ptimer_free(s->l_timer[i].ptimer_frc);
 +    }
 +}
 +
- static const VMStateDescription vmstate_timers = {
-     .name = "mss-timer-block",
-     .version_id = 1,
-@@ -287,6 +299,7 @@ static const TypeInfo mss_timer_info = {
+ static void exynos4210_mct_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1543,6 +1556,7 @@ static const TypeInfo exynos4210_mct_info = {
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(MSSTimerState),
-     .instance_init = mss_timer_init,
-+    .instance_finalize = mss_timer_finalize,
-     .class_init    = mss_timer_class_init,
+     .instance_size = sizeof(Exynos4210MCTState),
+     .instance_init = exynos4210_mct_init,
++    .instance_finalize = exynos4210_mct_finalize,
+     .class_init    = exynos4210_mct_class_init,
  };
  
 -- 
