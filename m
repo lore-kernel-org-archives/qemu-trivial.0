@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kpkES-0001XM-B1
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Dec 2020 22:45:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47194)
+	id 1kprX3-0002T4-IY
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Dec 2020 06:33:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kpkER-0001X8-3x; Wed, 16 Dec 2020 22:45:35 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2476)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kprX0-0002Pd-TX; Thu, 17 Dec 2020 06:33:14 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2895)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhouyang789@huawei.com>)
- id 1kpkEO-0004TF-Ej; Wed, 16 Dec 2020 22:45:34 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CxHtM0kw0zM5X7;
- Thu, 17 Dec 2020 11:44:27 +0800 (CST)
-Received: from [10.108.234.244] (10.108.234.244) by
- DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
- 14.3.498.0; Thu, 17 Dec 2020 11:45:09 +0800
-To: <alex.bennee@linaro.org>, <peter.maydell@linaro.org>
-References: 
-Subject: Re:[PATCH v2 0/5] Fix some style problems in contrib
-CC: <qemu-trivial@nongnu.org>, "Chenzhendong (alex)" <alex.chen@huawei.com>,
- <qemu-devel@nongnu.org>, hunongda <hunongda@huawei.com>
-From: "zhouyang (T)" <zhouyang789@huawei.com>
-Message-ID: <f82ef80a-e3d9-0514-d238-f1b454b32c93@huawei.com>
-Date: Thu, 17 Dec 2020 11:44:56 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kprWy-0005fr-Cx; Thu, 17 Dec 2020 06:33:14 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CxVG70Xnnz15f8P;
+ Thu, 17 Dec 2020 19:32:15 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Thu, 17 Dec 2020
+ 19:32:46 +0800
+From: Gan Qixin <ganqixin@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <peter.maydell@linaro.org>, <b.galvani@gmail.com>,
+ <antonynpavlov@gmail.com>, <i.mitsyanko@gmail.com>, <sundeep.lkml@gmail.com>, 
+ <jan.kiszka@web.de>, <kuhn.chenqun@huawei.com>,
+ <zhang.zhanghailiang@huawei.com>, Gan Qixin <ganqixin@huawei.com>
+Subject: [PATCH v2 0/7] Fix some memleaks caused by ptimer_init
+Date: Thu, 17 Dec 2020 19:31:37 +0800
+Message-ID: <20201217113137.121607-1-ganqixin@huawei.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.108.234.244]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhouyang789@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,33 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Dec 2020 03:45:35 -0000
+X-List-Received-Date: Thu, 17 Dec 2020 11:33:15 -0000
 
-kindly ping
+v1->v2:
+Changes suggested by Peter Maydell:
+    Delete the modification of unrelated whitespace.
 
->v1 -> v2:
->Changed the "From:" and "Signed-off-by:" lines from "zhouyang (T)"
->to my real name "zhouyang".
->
->I found some style problems while check the code using checkpatch.pl
->and fixed them, please review.
->
->zhouyang (5):
->  contrib: Don't use '#' flag of printf format
->  contrib: Fix some code style problems, ERROR: "foo * bar" should be
->    "foo *bar"
->  contrib: Add spaces around operator
->  contrib: space required after that ','
->  contrib: Open brace '{' following struct go on the same line
->
-> contrib/ivshmem-server/main.c |  2 +-
-> contrib/plugins/hotblocks.c   |  2 +-
-> contrib/plugins/hotpages.c    |  2 +-
-> contrib/plugins/howvec.c      | 19 +++++++++----------
-> contrib/plugins/lockstep.c    |  6 +++---
-> 5 files changed, 15 insertions(+), 16 deletions(-)
->
->--
->2.23.0
+Gan Qixin (7):
+  allwinner-a10-pit: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  digic-timer: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  exynos4210_mct: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  exynos4210_pwm: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  exynos4210_rtc: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  mss-timer: Use ptimer_free() in the finalize function to avoid
+    memleaks
+  musicpal: Use ptimer_free() in the finalize function to avoid memleaks
+
+ hw/arm/musicpal.c            | 12 ++++++++++++
+ hw/rtc/exynos4210_rtc.c      |  9 +++++++++
+ hw/timer/allwinner-a10-pit.c | 11 +++++++++++
+ hw/timer/digic-timer.c       |  8 ++++++++
+ hw/timer/exynos4210_mct.c    | 14 ++++++++++++++
+ hw/timer/exynos4210_pwm.c    | 11 +++++++++++
+ hw/timer/mss-timer.c         | 13 +++++++++++++
+ 7 files changed, 78 insertions(+)
+
+-- 
+2.23.0
 
 
