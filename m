@@ -1,44 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kprXU-00032z-Mp
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Dec 2020 06:33:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47458)
+	id 1kpvCl-0003Ny-5u
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Dec 2020 10:28:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kprXR-0002wu-SS; Thu, 17 Dec 2020 06:33:41 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2563)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kprXG-0005oC-3s; Thu, 17 Dec 2020 06:33:41 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CxVGt6Kx0zhsqH;
- Thu, 17 Dec 2020 19:32:54 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.498.0; Thu, 17 Dec 2020
- 19:33:16 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
- <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, Igor Mitsyanko
- <i.mitsyanko@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 3/7] exynos4210_mct: Use ptimer_free() in the finalize
- function to avoid memleaks
-Date: Thu, 17 Dec 2020 19:31:50 +0800
-Message-ID: <20201217113154.121668-3-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201217113154.121668-1-ganqixin@huawei.com>
-References: <20201217113154.121668-1-ganqixin@huawei.com>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1kpvCj-0003KB-I5
+ for qemu-trivial@nongnu.org; Thu, 17 Dec 2020 10:28:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:22589)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1kpvCh-0005yB-8R
+ for qemu-trivial@nongnu.org; Thu, 17 Dec 2020 10:28:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1608218910;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=BTQyBU2bx65y2imo//estOit4JLjzGaDQszoxinPR8I=;
+ b=FlbYF+5aNjhO/oeVvFXPAHTReXCbU6WtD+n33FS6L3SLkd+DWy4H9fEiRMp6tbXpID7WjN
+ 8oimgKifwYoPJUHyFCf35QZSyu9Eb1TN48diTwYA4ZTTGw9qaYdFy/FOHVJlmtCGMTAZnW
+ wxJ//fATQQKiyV2cvKLLcFAMjgaQadY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-202-toqOdtalMRanVsH52mqNyQ-1; Thu, 17 Dec 2020 10:28:28 -0500
+X-MC-Unique: toqOdtalMRanVsH52mqNyQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1390835B61;
+ Thu, 17 Dec 2020 15:28:19 +0000 (UTC)
+Received: from localhost (ovpn-115-250.ams2.redhat.com [10.36.115.250])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 740276ACE1;
+ Thu, 17 Dec 2020 15:28:17 +0000 (UTC)
+Date: Thu, 17 Dec 2020 09:47:35 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Alex Chen <alex.chen@huawei.com>
+Cc: mjt@tls.msk.ru, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] readline: Fix possible array index out of bounds in
+ readline_hist_add()
+Message-ID: <20201217094735.GC4338@stefanha-x1.localdomain>
+References: <20201203135043.117072-1-alex.chen@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=ganqixin@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201203135043.117072-1-alex.chen@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="vOmOzSkFvhd7u8Ms"
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
+ DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,71 +74,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Dec 2020 11:33:42 -0000
+X-List-Received-Date: Thu, 17 Dec 2020 15:28:33 -0000
 
-When running device-introspect-test, a memory leak occurred in the
-exynos4210_mct_init function, so use ptimer_free() in the finalize function to
-avoid it.
+--vOmOzSkFvhd7u8Ms
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-ASAN shows memory leak stack:
+On Thu, Dec 03, 2020 at 01:50:43PM +0000, Alex Chen wrote:
+> When the 'cmdline' is the last entry in 'rs->history' array, there is
+> no need to put this entry to the end of the array, partly because it is
+> the last entry, and partly because the next operition will lead to array
+> index out of bounds.
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> ---
+>  util/readline.c | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Indirect leak of 96 byte(s) in 1 object(s) allocated from:
-    #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
-    #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
-    #2 0xaaabf555db78 in ptimer_init /qemu/hw/core/ptimer.c:432
-    #3 0xaaabf56b01a0 in exynos4210_mct_init /qemu/hw/timer/exynos4210_mct.c:1505
-    #4 0xaaabf6339f6c in object_initialize_with_type /qemu/qom/object.c:515
-    #5 0xaaabf633a1e0 in object_new_with_type /qemu/qom/object.c:729
-    #6 0xaaabf6375e40 in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:153
-    #7 0xaaabf653d8ec in qmp_marshal_device_list_properties /qemu/qapi/qapi-commands-qdev.c:59
-    #8 0xaaabf6587d08 in do_qmp_dispatch_bh /qemu/qapi/qmp-dispatch.c:110
-    #9 0xaaabf6552708 in aio_bh_call /qemu/util/async.c:136
-    #10 0xaaabf6552708 in aio_bh_poll /qemu/util/async.c:164
-    #11 0xaaabf655f19c in aio_dispatch /qemu/util/aio-posix.c:381
-    #12 0xaaabf65523f4 in aio_ctx_dispatch /qemu/util/async.c:306
+Thanks, applied to my block tree:
+https://gitlab.com/stefanha/qemu/commits/block
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
----
- hw/timer/exynos4210_mct.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Stefan
 
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index 439053acd2..d0e5343996 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -1530,6 +1530,19 @@ static void exynos4210_mct_init(Object *obj)
-     sysbus_init_mmio(dev, &s->iomem);
- }
- 
-+static void exynos4210_mct_finalize(Object *obj)
-+{
-+    int i;
-+    Exynos4210MCTState *s = EXYNOS4210_MCT(obj);
-+
-+    ptimer_free(s->g_timer.ptimer_frc);
-+
-+    for (i = 0; i < 2; i++) {
-+        ptimer_free(s->l_timer[i].tick_timer.ptimer_tick);
-+        ptimer_free(s->l_timer[i].ptimer_frc);
-+    }
-+}
-+
- static void exynos4210_mct_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1543,6 +1556,7 @@ static const TypeInfo exynos4210_mct_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(Exynos4210MCTState),
-     .instance_init = exynos4210_mct_init,
-+    .instance_finalize = exynos4210_mct_finalize,
-     .class_init    = exynos4210_mct_class_init,
- };
- 
--- 
-2.23.0
+--vOmOzSkFvhd7u8Ms
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/bKTcACgkQnKSrs4Gr
+c8iVhAf+IJzjhu/Crk8dMJrX7s4rVEJN3GS2V45V2967kIbCwuN5TsFtyzdOrj7D
+ZzjoGI5ndkHtfUQ6BGz5GWD00w+xGDNkSOs8ldl7eCjHmq6kv9YCVGeIMwHQhQFb
+x+MJoM6pYrBg2Ko9sHq2wyBWLw/N2D5E6XIll4IU4vFb1ybhAFZch13vQYz8XFe+
+eNZkIM0oZFOq2TUT67hcF3rGjgnujbYeX3rlPhQPfAwJF09HoeLRHPSHBeF11OEW
+Jm3Gk1xKy5Nfxw17qeK9SSn81HSiH6je27ujQtQ8ofNUof15Pt7TfRi0aDK3P/hS
+mMl2InXz+BxVSu/IR0loRnICgovIlg==
+=FfCr
+-----END PGP SIGNATURE-----
+
+--vOmOzSkFvhd7u8Ms--
 
 
